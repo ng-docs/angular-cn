@@ -73,7 +73,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "lite-server": "^2.2.2",
-    "lodash": "^4.16.2",
+    "lodash": "^4.17.19",
     "protractor": "~7.0.0",
     "puppeteer": "5.1.0",
     "rimraf": "^2.5.4",
