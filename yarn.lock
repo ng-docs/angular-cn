@@ -9361,10 +9361,10 @@ jpm@1.3.1:
     xml2js "0.4.16"
     zip-dir "1.0.2"
 
-jquery@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.0.0.tgz#95a2a9541291a9f819e016f85ba247116d03e4ab"
-  integrity sha1-laKpVBKRqfgZ4Bb4W6JHEW0D5Ks=
+jquery@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.0.tgz#9980b97d9e4194611c36530e7dc46a58d7340fc9"
+  integrity sha512-Xb7SVYMvygPxbFMpTFQiHh1J7HClEaThguL15N/Gg37Lri/qKyhRGZYzHRyLH8Stq3Aow0LsHO2O2ci86fCrNQ==
 
 js-levenshtein@^1.1.6:
   version "1.1.6"
