@@ -161,7 +161,7 @@
     "klaw-sync": "^6.0.0",
     "lighthouse": "6.1.0",
     "lighthouse-logger": "^1.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "lunr": "^2.1.0",
     "mkdirp": "^0.5.1",
     "mocha": "^5.2.0",
