@@ -58,7 +58,7 @@ In the following example, the `childItem` property of the `ItemDetailComponent` 
 
 <code-example path="property-binding/src/app/app.component.html" region="model-property-binding" header="src/app/app.component.html"></code-example>
 
-You can confirm this expectation by looking in the `ItemDetailComponent` where the `@Input()` type is `string`:
+Confirm this expectation by looking in the `ItemDetailComponent` where the `@Input()` type is `string`:
 
 你可以通过查看 `ItemDetailComponent` 来确认这种预期，其中的 `@Input()` 类型为 `string` ：
 

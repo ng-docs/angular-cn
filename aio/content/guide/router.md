@@ -7,29 +7,24 @@ This topic describes how to implement many of the common tasks associated with a
 本主题讲述当把 Angular 路由器添加到应用中时，如何实现多种常见路由任务。
 
 {@a basics}
-## Generate an app with routing enabled
+## Generate an application with routing enabled
 
 ## 生成一个支持路由的应用
 
-The following command uses the Angular CLI to generate a basic Angular app with an app routing module, called `AppRoutingModule`, which is an NgModule where you can configure your routes.
-The app name in the following example is `routing-app`.
+The following command uses the Angular CLI to generate a basic Angular application with an application routing module, called `AppRoutingModule`, which is an NgModule where you can configure your routes.
+The application name in the following example is `routing-app`.
 
 下面的命令会用 Angular CLI 来生成一个带有应用路由模块（`AppRoutingModule`）的基本 Angular 应用，它是一个 NgModule，可用来配置路由。下面的例子中应用的名字是 `routing-app`。
 
 <code-example language="sh">
-  ng new routing-app --routing
+  ng new routing-app --routing --defaults
 </code-example>
-
-When generating a new app, the CLI prompts you to select CSS or a CSS preprocessor.
-For this example, accept the default of `CSS`.
-
-一旦生成新应用，CLI 就会提示你选择 CSS 或 CSS 预处理器。在这个例子中，我们接受 `CSS` 的默认值。
 
 ### Adding components for routing
 
 ### 为路由添加组件
 
-To use the Angular router, an app needs to have at least two components so that it can navigate from one to the other. To create a component using the CLI, enter the following at the command line where `first` is the name of your component:
+To use the Angular router, an application needs to have at least two components so that it can navigate from one to the other. To create a component using the CLI, enter the following at the command line where `first` is the name of your component:
 
 为了使用 Angular 的路由器，应用至少要有两个组件才能从一个导航到另一个。要使用 CLI 创建组件，请在命令行输入以下内容，其中 `first` 是组件的名称：
 
@@ -56,7 +51,7 @@ CLI 会自动添加 `Component` 后缀，所以如果在编写 `first-component`
 
 #### `<base href>`
 
-  This guide works with a CLI-generated Angular app.
+  This guide works with a CLI-generated Angular application.
   If you are working manually, make sure that you have `<base href="/">` in the `<head>` of your index.html file.
   This assumes that the `app` folder is the application root, and uses `"/"`.
 
@@ -94,7 +89,7 @@ Import the `AppRoutingModule` into `AppModule` and add it to the `imports` array
 把 `AppRoutingModule` 导入 `AppModule` 并把它添加到 `imports` 数组中。
 
 The Angular CLI performs this step for you.
-However, if you are creating an app manually or working with an existing, non-CLI app, verify that the imports and configuration are correct.
+However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct.
 The following is the default `AppModule` using the CLI with the `--routing` flag.
 
 Angular CLI 会为你执行这一步骤。但是，如果要手动创建应用或使用现存的非 CLI 应用，请验证导入和配置是否正确。下面是使用 `--routing` 标志生成的默认 `AppModule`。
@@ -112,7 +107,7 @@ Angular CLI 会为你执行这一步骤。但是，如果要手动创建应用�
 
    Angular CLI 会自动执行这一步骤。CLI 还为你的路由设置了 `Routes` 数组，并为 `@NgModule()` 配置了 `imports` 和 `exports` 数组。
 
-   <code-example path="router/src/app/app-routing.module.7.ts" header="CLI app routing module">
+   <code-example path="router/src/app/app-routing.module.7.ts" header="CLI application routing module">
 
    </code-example>
 
@@ -134,7 +129,7 @@ Angular CLI 会为你执行这一步骤。但是，如果要手动创建应用�
 
    把这些路由添加到你的应用中。
 
-   Now that you have defined your routes, you can add them to your application.
+   Now that you have defined your routes, add them to your application.
    First, add links to the two components.
    Assign the anchor tag that you want to add the route to the `routerLink` attribute.
    Set the value of the attribute to the component to show when a user clicks on each link.
@@ -171,10 +166,10 @@ You want that component to retrieve the `id` for the grocery item so it can disp
 
 通常，当用户导航你的应用时，你会希望把信息从一个组件传递到另一个组件。例如，考虑一个显示杂货商品购物清单的应用。列表中的每一项都有一个唯一的 `id`。要想编辑某个项目，用户需要单击“编辑”按钮，打开一个 `EditGroceryItem` 组件。你希望该组件得到该商品的 `id`，以便它能向用户显示正确的信息。
 
-You can use a route to pass this type of information to your application components.
+Use a route to pass this type of information to your application components.
 To do so, you use the [ActivatedRoute](api/router/ActivatedRoute) interface.
 
-你也可以使用一个路由把这种类型的信息传给你的应用组件。要做到这一点，你可以使用 [ActivatedRoute](api/router/ActivatedRoute) 接口。
+可以用一个路由把这种类型的信息传给你的应用组件。要做到这一点，你可以使用 [ActivatedRoute](api/router/ActivatedRoute) 接口。
 
 To get information from a route:
 
@@ -296,7 +291,7 @@ For more details on `pathMatch` see [Spotlight on `pathMatch`](guide/router-tuto
 
 ## 嵌套路由
 
-As your application grows more complex, you may want to create routes that are relative to a component other than your root component.
+As your application grows more complex, you might want to create routes that are relative to a component other than your root component.
 These types of nested routes are called child routes.
 This means you're adding a second `<router-outlet>` to your app, because it is in addition to the `<router-outlet>` in `AppComponent`.
 
@@ -326,18 +321,18 @@ The one difference is that you place child routes in a `children` array within t
 
 ## 使用相对路径
 
-Relative paths allow you to define paths that are relative to the current URL segment.
+Relative paths let you define paths that are relative to the current URL segment.
 The following example shows a relative route to another component, `second-component`.
 `FirstComponent` and `SecondComponent` are at the same level in the tree, however, the link to `SecondComponent` is situated within the `FirstComponent`, meaning that the router has to go up a level and then into the second directory to find the `SecondComponent`.
-Rather than writing out the whole path to get to `SecondComponent`, you can use the `../` notation to go up a level.
+Rather than writing out the whole path to get to `SecondComponent`, use the `../` notation to go up a level.
 
-相对路径允许你定义相对于当前 URL 段的路径。下面的例子展示了到另一个组件 `second-component` 的相对路由。`FirstComponent` 和 `SecondComponent` 在树中处于同一级别，但是，指向 `SecondComponent` 的链接位于 `FirstComponent` 中，这意味着路由器必须先上升一个级别，然后进入二级目录才能找到 `SecondComponent`。你可以使用 `../` 符号来上升一个级别，而不用写出到 `SecondComponent` 的完整路径。
+相对路径允许你定义相对于当前 URL 段的路径。下面的例子展示了到另一个组件 `second-component` 的相对路由。`FirstComponent` 和 `SecondComponent` 在树中处于同一级别，但是，指向 `SecondComponent` 的链接位于 `FirstComponent` 中，这意味着路由器必须先上升一个级别，然后进入二级目录才能找到 `SecondComponent`。可以用 `../` 符号来上升一个级别，而不用写出到 `SecondComponent` 的完整路径。
 
 <code-example path="router/src/app/app.component.8.html" region="relative-route" header="In the template">
 
 </code-example>
 
-In addition to `../`, you can use `./` or no leading slash to specify the current level.
+In addition to `../`, use `./` or no leading slash to specify the current level.
 
 除了 `../`，还可以使用 `./` 或者不带前导斜杠来指定当前级别。
 
@@ -371,7 +366,7 @@ The `goToItems()` method interprets the destination URI as relative to the activ
 
 ## 访问查询参数和片段
 
-Sometimes, a feature of your application requires accessing a part of a route, such as a query parameter or a fragment. The Tour of Heroes app at this stage in the tutorial uses a list view in which you can click on a hero to see details. The router uses an `id` to show the correct hero's details.
+Sometimes, a feature of your application requires accessing a part of a route, such as a query parameter or a fragment. The Tour of Heroes application at this stage in the tutorial uses a list view in which you can click on a hero to see details. The router uses an `id` to show the correct hero's details.
 
 有时，应用中的某个特性需要访问路由的部件，比如查询参数或片段（fragment）。本教程的这个阶段使用了一个“英雄之旅”中的列表视图，你可以在其中点击一个英雄来查看详情。路由器使用 `id` 来显示正确的英雄的详情。
 
@@ -460,8 +455,8 @@ Inject `ActivatedRoute` and `Router` in the constructor of the component class s
 
 ## 惰性加载
 
-You can configure your routes to lazy load modules, which means that Angular only loads modules as needed, rather than loading all modules when the app launches.
-Additionally, you can preload parts of your app in the background to improve the user experience.
+You can configure your routes to lazy load modules, which means that Angular only loads modules as needed, rather than loading all modules when the application launches.
+Additionally, preload parts of your application in the background to improve the user experience.
 
 你可以配置路由定义来实现惰性加载模块，这意味着 Angular 只会在需要时才加载这些模块，而不是在应用启动时就加载全部。
 另外，你可以在后台预加载一些应用部件来改善用户体验。
@@ -474,7 +469,7 @@ For more information on lazy loading and preloading see the dedicated guide [Laz
 
 ## 防止未经授权的访问
 
-Use route guards to prevent users from navigating to parts of an app without authorization.
+Use route guards to prevent users from navigating to parts of an application without authorization.
 The following route guards are available in Angular:
 
 使用路由守卫来防止用户未经授权就导航到应用的某些部分。Angular 中提供了以下路由守卫：
@@ -545,9 +540,9 @@ A link parameters array holds the following ingredients for router navigation:
 
    必备路由参数和可选路由参数，它们将进入该路由的 URL
 
-You can bind the `RouterLink` directive to such an array like this:
+Bind the `RouterLink` directive to such an array like this:
 
-你可以把 `RouterLink` 指令绑定到一个数组，就像这样：
+可以把 `RouterLink` 指令绑定到一个数组，就像这样：
 
 <code-example path="router/src/app/app.component.3.ts" header="src/app/app.component.ts (h-anchor)" region="h-anchor"></code-example>
 
@@ -557,13 +552,13 @@ The following is a two-element array when specifying a route parameter:
 
 <code-example path="router/src/app/heroes/hero-list/hero-list.component.1.html" header="src/app/heroes/hero-list/hero-list.component.html (nav-to-detail)" region="nav-to-detail"></code-example>
 
-You can provide optional route parameters in an object, as in `{ foo: 'foo' }`:
+Provide optional route parameters in an object, as in `{ foo: 'foo' }`:
 
-你可以在对象中提供可选的路由参数，比如 `{ foo: 'foo' }` ：
+可以在对象中提供可选的路由参数，比如 `{ foo: 'foo' }` ：
 
 <code-example path="router/src/app/app.component.3.ts" header="src/app/app.component.ts (cc-query-params)" region="cc-query-params"></code-example>
 
-These three examples cover the needs of an app with one level of routing.
+These three examples cover the needs of an application with one level of routing.
 However, with a child router, such as in the crisis center, you create new link array possibilities.
 
 这三个例子涵盖了你在单级路由的应用中所需的一切。不过，在你添加一个像*危机中心*一样的子路由时，你可以创建新链接数组。
@@ -645,10 +640,8 @@ The link parameters array affords the flexibility to represent any routing depth
 ## `LocationStrategy` 和浏览器的网址样式
 
 When the router navigates to a new component view, it updates the browser's location and history with a URL for that view.
-As this is a strictly local URL the browser won't send this URL to the server and will not reload the page.
 
 当路由器导航到一个新的组件视图时，它会用该视图的 URL 来更新浏览器的当前地址以及历史。
-严格来说，这个 URL 其实是本地的，浏览器不会把该 URL 发给服务器，并且不会重新加载此页面。
 
 Modern HTML5 browsers support <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries" title="HTML5 browser history push-state">history.pushState</a>, a technique that changes a browser's location and history without triggering a server page request.
 The router can compose a "natural" URL that is indistinguishable from one that would otherwise require a page load.
@@ -707,7 +700,7 @@ For more information on providers and the bootstrap process, see [Dependency Inj
 
 ## 选择路由策略
 
-You must choose a routing strategy early in the development of you project because once the application is in production, visitors to your site use and depend on application URL references.
+You must choose a routing strategy early in the development of your project because once the application is in production, visitors to your site use and depend on application URL references.
 
 你必须在开发项目的早期就选择一种路由策略，因为一旦该应用进入了生产阶段，你网站的访问者就会使用并依赖应用的这些 URL 引用。
 
@@ -716,8 +709,8 @@ It produces URLs that are easier for users to understand and it preserves the op
 
 几乎所有的 Angular 项目都会使用默认的 HTML 5 风格。它生成的 URL 更易于被用户理解，它也为将来做**服务端渲染**预留了空间。
 
-Rendering critical pages on the server is a technique that can greatly improve perceived responsiveness when the app first loads.
-An app that would otherwise take ten or more seconds to start could be rendered on the server and delivered to the user's device in less than a second.
+Rendering critical pages on the server is a technique that can greatly improve perceived responsiveness when the application first loads.
+An application that would otherwise take ten or more seconds to start could be rendered on the server and delivered to the user's device in less than a second.
 
 在服务器端渲染指定的页面，是一项可以在该应用首次加载时大幅提升响应速度的技术。那些原本需要十秒甚至更长时间加载的应用，可以预先在服务端渲染好，并在少于一秒的时间内完整渲染在用户的设备上。
 
@@ -728,8 +721,8 @@ This option is only available if application URLs look like normal web URLs with
 ## `<base href>`
 
 The router uses the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries" title="HTML5 browser history push-state">history.pushState</a> for navigation.
-`pushState` allows you to customize in-app URL paths; for example, `localhost:4200/crisis-center`.
-The in-app URLs can be indistinguishable from server URLs.
+`pushState` lets you customize in-application URL paths; for example, `localhost:4200/crisis-center`.
+The in-application URLs can be indistinguishable from server URLs.
 
 路由器使用浏览器的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries" title="HTML5 browser history push-state">history.pushState</a> API 进行导航。借助 `pushState` 你自定义应用中的 URL 路径 `localhost:4200/crisis-center`，应用内的 URL 和服务器的 URL 没有区别。
 
@@ -747,7 +740,7 @@ In the [LocationStrategy and browser URL styles](#browser-url-styles) section, l
 
 </div>
 
-You must add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href&gt; element</a> to the app's `index.html` for `pushState` routing to work.
+You must add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href&gt; element</a> to the application's `index.html` for `pushState` routing to work.
 The browser uses the `<base href>` value to prefix relative URLs when referencing CSS files, scripts, and images.
 
 你必须在应用的 `index.html` 中**添加一个 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href&gt; 元素</a>**才能让 `pushState` 路由正常工作。
@@ -786,16 +779,16 @@ The preferred way to configure the strategy is to add a <a href="https://develop
 
 <code-example path="router/src/index.html" header="src/index.html (base-href)" region="base-href"></code-example>
 
-Without that tag, the browser may not be able to load resources
-(images, CSS, scripts) when "deep linking" into the app.
+Without that tag, the browser might not be able to load resources
+(images, CSS, scripts) when "deep linking" into the application.
 
 如果没有该标记，浏览器就可能无法在“深度链接”进入应用时加载资源（图片，CSS，脚本）。
 
-Some developers may not be able to add the `<base>` element, perhaps because they don't have access to `<head>` or the `index.html`.
+Some developers might not be able to add the `<base>` element, perhaps because they don't have access to `<head>` or the `index.html`.
 
 有些开发人员可能无法添加 `<base>` 元素，这可能是因为它们没有访问 `<head>` 或 `index.html` 的权限。
 
-Those developers may still use HTML5 URLs by taking the following two steps:
+Those developers can still use HTML5 URLs by taking the following two steps:
 
 它们仍然可以使用 HTML 5 格式的 URL，但要采取如下步骤进行补救：
 
@@ -833,8 +826,8 @@ For more complete information on how `<base href>` is used to construct target U
 
 ### `HashLocationStrategy`
 
-You can use `HashLocationStrategy` by providing the `useHash: true` in an object as the second argument of the `RouterModule.forRoot()` in the `AppModule`.
+Use `HashLocationStrategy` by providing the `useHash: true` in an object as the second argument of the `RouterModule.forRoot()` in the `AppModule`.
 
-你可以在根模块的 `RouterModule.forRoot()` 的第二个参数中传入一个带有 `useHash: true` 的对象，以回到基于 `HashLocationStrategy` 的传统方式。
+可以在根模块的 `RouterModule.forRoot()` 的第二个参数中传入一个带有 `useHash: true` 的对象，以回到基于 `HashLocationStrategy` 的传统方式。
 
 <code-example path="router/src/app/app.module.6.ts" header="src/app/app.module.ts (hash URL strategy)"></code-example>

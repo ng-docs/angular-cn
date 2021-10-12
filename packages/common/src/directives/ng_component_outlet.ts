@@ -10,13 +10,13 @@ import {ComponentFactoryResolver, ComponentRef, Directive, Injector, Input, NgMo
 
 
 /**
- * Instantiates a single {@link Component} type and inserts its Host View into current View.
+ * Instantiates a {@link Component} type and inserts its Host View into the current View.
  * `NgComponentOutlet` provides a declarative approach for dynamic component creation.
  *
  * 实例化单个 {@link Component} 类型，并将其宿主视图插入当前视图。`NgComponentOutlet` 为动态组件创建提供了一种声明式方法。
  *
  * `NgComponentOutlet` requires a component type, if a falsy value is set the view will clear and
- * any existing component will get destroyed.
+ * any existing component will be destroyed.
  *
  * `NgComponentOutlet` 所需的组件类型，如果设置为假值，则视图将被清除并且任何现有组件将被销毁。
  *
@@ -36,12 +36,12 @@ import {ComponentFactoryResolver, ComponentRef, Directive, Injector, Input, NgMo
  *     `ngComponentOutletInjector`：可选的自定义 {@link Injector}，将用作此组件的父级。默认为当前视图容器的注入器。
  *
  * * `ngComponentOutletContent`: Optional list of projectable nodes to insert into the content
- * section of the component, if exists.
+ * section of the component, if it exists.
  *
  *     `ngComponentOutletContent`：要插入到组件内容部分的可投影节点的可选列表（如果存在）。
  *
- * * `ngComponentOutletNgModuleFactory`: Optional module factory to allow dynamically loading other
- * module, then load a component from that module.
+ * * `ngComponentOutletNgModuleFactory`: Optional module factory to allow loading another
+ * module dynamically, then loading a component from that module.
  *
  *     `ngComponentOutletNgModuleFactory`：可选模块工厂，允许动态加载其他模块，然后从该模块加载组件。
  *

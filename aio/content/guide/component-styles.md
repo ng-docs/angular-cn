@@ -18,15 +18,15 @@ This page describes how to load and apply these component styles.
 
 本章将会讲解如何加载和使用这些*组件样式*。
 
-You can run the <live-example></live-example> in Stackblitz and download the code from there.
+Run the <live-example></live-example> in Stackblitz and download the code from there.
 
-你可以运行<live-example></live-example>，在 Stackblitz 中试用并下载本页的代码。
+可以运行<live-example></live-example>，在 Stackblitz 中试用并下载本页的代码。
 
 ## Using component styles
 
 ## 使用组件样式
 
-For every Angular component you write, you may define not only an HTML template,
+For every Angular component you write, you can define not only an HTML template,
 but also the CSS styles that go with that template,
 specifying any selectors, rules, and media queries that you need.
 
@@ -68,7 +68,7 @@ This scoping restriction is a ***styling modularity feature***.
 
 这种范围限制就是所谓的***样式模块化***特性
 
-* You can use the CSS class names and selectors that make the most sense in the context of each component.
+* Use the CSS class names and selectors that make the most sense in the context of each component.
 
    可以使用对每个组件最有意义的 CSS 类名和选择器。
 
@@ -81,15 +81,15 @@ This scoping restriction is a ***styling modularity feature***.
 
    组件的样式*不会*因为别的地方修改了样式而被意外改变。
 
-* You can co-locate the CSS code of each component with the TypeScript and HTML code of the component,
+* Co-locate the CSS code of each component with the TypeScript and HTML code of the component,
   which leads to a neat and tidy project structure.
 
-   你可以让每个组件的 CSS 代码和它的 TypeScript、HTML 代码放在一起，这将促成清爽整洁的项目结构。
+   可以让每个组件的 CSS 代码和它的 TypeScript、HTML 代码放在一起，这将促成清爽整洁的项目结构。
 
-* You can change or remove component CSS code without searching through the
+* Change or remove component CSS code without searching through the
   whole application to find where else the code is used.
 
-   将来你可以修改或移除组件的 CSS 代码，而不用遍历整个应用来看它有没有在别处用到。
+   以后还可以修改或移除组件的 CSS 代码，而不用遍历整个应用来看它有没有在别处用到。
 
 {@a special-selectors}
 
@@ -106,16 +106,22 @@ The following sections describe these selectors.
 
 ### :host
 
-Use the `:host` pseudo-class selector to target styles in the element that *hosts* the component (as opposed to
-targeting elements *inside* the component's template).
+Every component is associated within an element that matches the component's selector. This element, into which the template is rendered, 
+is called the _host element_.
+The `:host` pseudo-class selector may be used to create styles that target the host element itself, as opposed to targeting elements inside the host.
 
-使用 `:host` 伪类选择器，用来选择组件*宿主*元素中的元素（相对于组件模板*内部*的元素）。
+每个组件都会关联一个与其组件选择器相匹配的元素。这个元素称为*宿主元素*，模板会渲染到其中。`:host` 伪类选择器可用于创建针对宿主元素自身的样式，而不是针对宿主内部的那些元素。
+
+<code-example path="component-styles/src/app/host-selector-example.component.ts" header="src/app/host-selector-example.component.ts">
+</code-example>
+
+Creating the following style will target the component's host element. Any rule applied to this selector will affect the host element and all its descendants (in this case, italicizing all contained text).
+
+下面的样式将以组件的宿主元素为目标。应用于此选择器的任何规则都将影响宿主元素及其所有后代（在这种情况下，将所有包含的文本斜体）。（译注：后代的样式源自 CSS 的样式继承特性）
 
 <code-example path="component-styles/src/app/hero-details.component.css" region="host" header="src/app/hero-details.component.css"></code-example>
 
-The `:host` selector is the only way to target the host element. You can't reach
-the host element from inside the component with other selectors because it's not part of the
-component's own template. The host element is in a parent component's template.
+The `:host` selector only targets the host element of a component. Any styles within the `:host` block of a child component will *not* affect parent components.
 
 `:host` 选择是是把宿主元素作为目标的*唯一*方式。除此之外，你将没办法指定它，
 因为宿主不是组件自身模板的一部分，而是父组件模板的一部分。
@@ -125,9 +131,9 @@ including another selector inside parentheses after `:host`.
 
 要把宿主样式作为条件，就要像*函数*一样把其它选择器放在 `:host` 后面的括号中。
 
-The next example targets the host element again, but only when it also has the `active` CSS class.
+In this example the host's content also becomes bold when the `active` CSS class is applied to the host element.
 
-下一个例子再次把宿主元素作为目标，但是只有当它同时带有 `active` CSS 类的时候才会生效。
+在这个例子中，当 CSS 类 `active` 应用在宿主元素上时，宿主元素的内容也变成了粗体。
 
 <code-example path="component-styles/src/app/hero-details.component.css" region="hostfunction" header="src/app/hero-details.component.css"></code-example>
 
@@ -138,34 +144,39 @@ Add selectors behind the `:host` to select child elements, for example using `:h
 
 <div class="alert is-helpful">
 
-You should not add selectors (other than `:host-context`) in front of the `:host` selector to style a component based on the outer context of the component's view. Such selectors are not scoped to a component's view and will select the outer context, but it's not native behavior. Use `:host-context` selector for that purpose instead.
+You should not add selectors (other than `:host-context`) in front of the `:host` selector to style a component based on the outer context of the component's view. Such selectors are not scoped to a component's view and will select the outer context, but it's not built-in behavior. Use `:host-context` selector for that purpose instead.
 
-不应该在 `:host` 选择器前面添加除 `:host-context` 之外的选择器来试图基于组件视图的外部上下文为本组件设置样式。因为此类选择器的作用域不会限于组件的视图，而是会选择外部上下文，但这不是自然的行为。请改用 `:host-context` 选择器。
+不应该在 `:host` 选择器前面添加除 `:host-context` 之外的选择器来试图基于组件视图的外部上下文为本组件设置样式。因为此类选择器的作用域不会限于组件的视图，而是会选择外部上下文，但这不是内置的行为。请改用 `:host-context` 选择器。
 
 </div>
 
 ### :host-context
 
-Sometimes it's useful to apply styles based on some condition *outside* of a component's view.
+Sometimes it's useful to apply styles to elements within a component's template 
+based on some condition in an element that is an ancestor of the host element.
 For example, a CSS theme class could be applied to the document `<body>` element, and
 you want to change how your component looks based on that.
 
-有时候，基于某些来自组件视图*外部*的条件应用样式是很有用的。
+有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。
 例如，在文档的 `<body>` 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。
 
 Use the `:host-context()` pseudo-class selector, which works just like the function
 form of `:host()`. The `:host-context()` selector looks for a CSS class in any ancestor of the component host element,
-up to the document root. The `:host-context()` selector is useful when combined with another selector.
+up to the document root. The `:host-context()` selector is only useful when combined with another selector.
 
 这时可以使用 `:host-context()` 伪类选择器。它也以类似 `:host()` 形式使用。它在当前组件宿主元素的*祖先节点*中查找 CSS 类，
-直到文档的根节点为止。在与其它选择器组合使用时，它非常有用。
+直到文档的根节点为止。它只能与其它选择器组合使用。
 
-The following example applies a `background-color` style to all `<h2>` elements *inside* the component, only
-if some ancestor element has the CSS class `theme-light`.
+The following example italicizes all text inside a component, but only
+if some _ancestor_ element of the host element has the CSS class `active`.
 
-在下面的例子中，只有当某个祖先元素有 CSS 类 `theme-light` 时，才会把 `background-color` 样式应用到组件*内部*的所有 `<h2>` 元素中。
+在下面的例子中，只有当该组件的某个祖先元素有 CSS 类 `active` 时，才会把该组件*内部*的所有文本置为斜体。
 
 <code-example path="component-styles/src/app/hero-details.component.css" region="hostcontext" header="src/app/hero-details.component.css"></code-example>
+
+Note that only the host element and its descendants will be affected, not the ancestor with the assigned `active` class.
+
+注意，只有宿主元素及其各级子节点会受到影响，不包括加上 `active` 类的这个节点的祖先。
 
 ### (deprecated) `/deep/`, `>>>`, and `::ng-deep`
 
@@ -248,9 +259,9 @@ The scoping rules outlined earlier apply to each of these loading patterns.
 
 ### 元数据中的样式
 
-You can add a `styles` array property to the `@Component` decorator.
+Add a `styles` array property to the `@Component` decorator.
 
-你可以给 `@Component` 装饰器添加一个 `styles` 数组型属性。
+给 `@Component` 装饰器添加一个 `styles` 数组型属性。
 
 Each string in the array defines some CSS for this component.
 
@@ -281,10 +292,10 @@ ng generate component hero-app --inline-style
 
 ### 组件元数据中的样式文件
 
-You can load styles from external CSS files by adding a `styleUrls` property
+Load styles from external CSS files by adding a `styleUrls` property
 to a component's `@Component` decorator:
 
-你可以通过把外部 CSS 文件添加到 `@Component` 的 `styleUrls` 属性中来加载外部样式。
+把外部 CSS 文件添加到 `@Component` 的 `styleUrls` 属性中以加载外部样式。
 
 <code-tabs>
   <code-pane header="src/app/hero-app.component.ts (CSS in file)" path="component-styles/src/app/hero-app.component.1.ts"></code-pane>
@@ -321,10 +332,10 @@ ng generate component hero-app
 
 ### 模板内联样式
 
-You can embed CSS styles directly into the HTML template by putting them
+Embed CSS styles directly into the HTML template by putting them
 inside `<style>` tags.
 
-你也可以直接在组件的 HTML 模板中写 `<style>` 标签来内嵌 CSS 样式。
+可以直接在组件的 HTML 模板中写 `<style>` 标签来内嵌 CSS 样式。
 
 <code-example path="component-styles/src/app/hero-controls.component.ts" region="inlinestyles" header="src/app/hero-controls.component.ts">
 </code-example>
@@ -346,7 +357,7 @@ When building with the CLI, be sure to include the linked style file among the a
 
 当使用 CLI 进行构建时，要确保这个链接到的样式表文件被复制到了服务器上。参阅[资产文件配置指南](guide/workspace-config#assets-configuration)。
 
-Once included, the CLI will include the stylesheet, whether the link tag's href URL is relative to the application root or the component file.
+Once included, the CLI includes the stylesheet, whether the link tag's href URL is relative to the application root or the component file.
 
 只要引用过，CLI 就会计入这个样式表，无论这个 link 标签的 href 指向的 URL 是相对于应用根目录的还是相对于组件文件的。
 
@@ -356,11 +367,11 @@ Once included, the CLI will include the stylesheet, whether the link tag's href 
 
 ### CSS @imports 语法
 
-You can also import CSS files into the CSS files using the standard CSS `@import` rule.
+Import CSS files into the CSS files using the standard CSS `@import` rule.
 For details, see [`@import`](https://developer.mozilla.org/en/docs/Web/CSS/@import)
 on the [MDN](https://developer.mozilla.org) site.
 
-你还可以利用标准的 CSS [`@import` 规则](https://developer.mozilla.org/en/docs/Web/CSS/@import)来把其它
+可以利用标准的 CSS [`@import` 规则](https://developer.mozilla.org/en/docs/Web/CSS/@import)来把其它
   CSS 文件导入到 CSS 文件中。
 
 In this case, the URL is relative to the CSS file into which you're importing.
@@ -391,9 +402,9 @@ See the [Styles configuration guide](guide/workspace-config#styles-and-scripts-c
 ### 非 CSS 样式文件
 
 If you're building with the CLI,
-you can write style files in [sass](https://sass-lang.com/), [less](http://lesscss.org/), or [stylus](https://stylus-lang.com/) and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions (`.scss`, `.less`, `.styl`) as in the following example:
+you can write style files in [sass](https://sass-lang.com/), or [less](http://lesscss.org/), and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions (`.scss`, `.less`) as in the following example:
 
-如果使用 CLI 进行构建，那么你可以用 [sass](http://sass-lang.com/)、[less](http://lesscss.org/) 或 [stylus](http://stylus-lang.com/) 来编写样式，并使用相应的扩展名（`.scss`、`.less`、`.styl`）把它们指定到 `@Component.styleUrls` 元数据中。例子如下：
+如果使用 CLI 进行构建，那么你可以用 [sass](http://sass-lang.com/) 或 [less](http://lesscss.org/) 来编写样式，并使用相应的扩展名（`.scss`、`.less`）把它们指定到 `@Component.styleUrls` 元数据中。例子如下：
 
 <code-example>
 @Component({
@@ -409,7 +420,7 @@ The CLI build process runs the pertinent CSS preprocessor.
 CLI 的构建过程会运行相关的预处理器。
 
 When generating a component file with `ng generate component`, the CLI emits an empty CSS styles file (`.css`) by default.
-You can configure the CLI to default to your preferred CSS preprocessor as explained in the [Workspace configuration guide](guide/workspace-config#generation-schematics).
+Configure the CLI to default to your preferred CSS preprocessor as explained in the [Workspace configuration guide](guide/workspace-config#generation-schematics).
 
 当使用 `ng generate component` 命令生成组件文件时，CLI 会默认生成一个空白的 CSS 样式文件（`.css`）。
 你可以配置 CLI，让它默认使用你喜欢的 CSS 预处理器，参阅[工作区配置指南](guide/workspace-config#generation-schematics)中的解释。
@@ -421,3 +432,5 @@ Style strings added to the `@Component.styles` array _must be written in CSS_ be
 添加到 `@Component.styles` 数组中的字符串*必须写成 CSS*，因为 CLI 没法对这些内联的样式使用任何 CSS 预处理器。
 
 </div>
+
+@reviewed 2021-09-17

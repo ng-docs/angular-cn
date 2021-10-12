@@ -18,9 +18,9 @@ import {CURRENCIES_EN, CurrenciesSymbols} from './currencies';
  *
  * @see `getLocaleNumberFormat()`.
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -39,9 +39,9 @@ export enum NumberFormatStyle {
  * @see `NgPlural`
  *
  * @see `NgPluralCase`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -65,9 +65,9 @@ export enum Plural {
  *
  * [CLDR 网站](http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -126,9 +126,9 @@ export enum TranslationWidth {
  * @see `getLocaleDateFormat()`
  * @see `getLocaleTimeFormat()`
  * @see `getLocaleDateTimeFormat()`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -175,9 +175,9 @@ export enum FormatWidth {
  *
  * @see `getLocaleNumberSymbol()`
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -329,9 +329,9 @@ export enum WeekDay {
  *
  * 语言环境代码。例如， `fr` 。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -360,9 +360,9 @@ export function getLocaleId(locale: string): string {
  *
  * 本地化的区间字符串数组。例如，`en-US` `[AM, PM]` 。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -398,9 +398,9 @@ export function getLocaleDayPeriods(
  *
  * 本地化名称字符串的数组。例如，`en-US` `[Sunday, Monday, ... Saturday]` 。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -435,9 +435,9 @@ export function getLocaleDayNames(
  *
  * 本地化名称字符串的数组，例如，对于 `en-US` 是 `[January, February, ...]`。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -469,9 +469,9 @@ export function getLocaleMonthNames(
  *
  * 本地化年代字符串的数组。例如，对于 `en-US`，是 `[AD, BC]`。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -497,9 +497,9 @@ export function getLocaleEraNames(
  *
  * 工作日索引号，使用基于 0 的 `en-US` 的工作日索引（星期日= 0，星期一= 1，...）。例如，对于 `fr-FR` ，返回 1 表示第一天是星期一。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -521,9 +521,9 @@ export function getLocaleFirstDayOfWeek(locale: string): WeekDay {
  *
  * 日期值的范围 `[startDay, endDay]` 。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -551,9 +551,9 @@ export function getLocaleWeekEndRange(locale: string): [WeekDay, WeekDay] {
  *
  * @see `FormatWidth`
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -581,9 +581,9 @@ export function getLocaleDateFormat(locale: string, width: FormatWidth): string 
  *
  * @see `FormatWidth`
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
 
  * @publicApi
@@ -612,9 +612,9 @@ export function getLocaleTimeFormat(locale: string, width: FormatWidth): string 
  *
  * @see `FormatWidth`
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -643,9 +643,9 @@ export function getLocaleDateTimeFormat(locale: string, width: FormatWidth): str
  *
  * @see `NumberSymbol`
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -722,9 +722,9 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  *
  * [CLDR 官网](http://cldr.unicode.org/translation/number-patterns)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -748,9 +748,9 @@ export function getLocaleNumberFormat(locale: string, type: NumberFormatStyle): 
  *
  * 本地化的符号字符；如果无法确定主要国家则为 `null`。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -774,9 +774,9 @@ export function getLocaleCurrencySymbol(locale: string): string|null {
  *
  * 货币名称；如果无法确定主要国家/地区，则为 `null`。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化（i18n）指南](guide/i18n)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -821,9 +821,9 @@ export function getLocaleCurrencyCode(locale: string): string|null {
  *
  * 货币值。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  */
 function getLocaleCurrencies(locale: string): {[code: string]: CurrenciesSymbols} {
@@ -864,9 +864,9 @@ function checkFullData(data: any) {
  * 本规则可以将时间段指定为时间范围或单个时间值。
  *
  * This functionality is only available when you have loaded the full locale data.
- * See the ["I18n guide"](guide/i18n#i18n-pipes).
+ * See the ["I18n guide"](guide/i18n-common-format-data-locale).
  *
- * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n 指南”](guide/i18n#i18n-pipes) 。
+ * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n 指南”](guide/i18n-common-format-data-locale) 。
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -879,9 +879,9 @@ function checkFullData(data: any) {
  *
  * @see `getLocaleExtraDayPeriods()`
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -905,9 +905,9 @@ export function getLocaleExtraDayPeriodRules(locale: string): (Time|[Time, Time]
  * 检索特定于语言环境的一天时段，该时段大致指示如何用不同的语言分解一天。例如，对于 `en-US`，这些时段为 morning、noon、afternoon、evening 和 midnight。
  *
  * This functionality is only available when you have loaded the full locale data.
- * See the ["I18n guide"](guide/i18n#i18n-pipes).
+ * See the ["I18n guide"](guide/i18n-common-format-data-locale).
  *
- * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n 指南”](guide/i18n#i18n-pipes) 。
+ * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n 指南”](guide/i18n-common-format-data-locale) 。
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -926,9 +926,9 @@ export function getLocaleExtraDayPeriodRules(locale: string): (Time|[Time, Time]
  * 翻译后的一天时段字符串。
  *
  * @see `getLocaleExtraDayPeriodRules()`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -959,9 +959,9 @@ export function getLocaleExtraDayPeriods(
  *
  * 'rtl' 或 'ltr'
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  */
 export function getLocaleDirection(locale: string): 'ltr'|'rtl' {
@@ -991,9 +991,9 @@ export function getLocaleDirection(locale: string): 'ltr'|'rtl' {
  *
  * 给定索引位置之前的值。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -1054,9 +1054,9 @@ function extractTime(time: string): Time {
  *
  * 符号，或货币代码（如果没有可用的符号）。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -1088,9 +1088,9 @@ const DEFAULT_NB_OF_CURRENCY_DIGITS = 2;
  *
  * 小数位数，通常为 0 或 2。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+ * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n)
+ * [国际化(i18n)指南](guide/i18n-overview)
  *
  * @publicApi
  */

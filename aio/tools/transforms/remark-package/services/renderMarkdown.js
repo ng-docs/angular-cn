@@ -24,7 +24,7 @@ module.exports = function renderMarkdown() {
       //   console.log(require('util').inspect(tree, { colors: true, depth: 4 }));
       // })
       .use(mapHeadings(headingMap))
-      .use(html, { handlers: { code } });
+      .use(html, { handlers: { code }, sanitize: false });
 
     return mark(renderer.processSync(content).toString());
   };

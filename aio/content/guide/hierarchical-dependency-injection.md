@@ -3,7 +3,7 @@
 # 多级注入器
 
 Injectors in Angular have rules that you can leverage to
-achieve the desired visibility of injectables in your apps.
+achieve the desired visibility of injectables in your applications.
 By understanding these rules, you can determine in which
 NgModule, Component or Directive you should declare a provider.
 
@@ -56,7 +56,7 @@ Using the `@Injectable()` `providedIn` property is preferable
 to the `@NgModule()` `providers`
 array because with `@Injectable()` `providedIn`, optimization
 tools can perform
-tree-shaking, which removes services that your app isn't
+tree-shaking, which removes services that your application isn't
 using and results in smaller bundle sizes.
 
 使用 `@Injectable()` 的 `providedIn` 属性优于 `@NgModule()` 的 `providers` 数组，因为使用 `@Injectable()` 的 `providedIn` 时，优化工具可以进行摇树优化，从而删除你的应用程序中未使用的服务，以减小捆绑包尺寸。
@@ -112,7 +112,7 @@ additional `ModuleInjector` and `NullInjector()`.
 
 在 `root` 之上还有两个注入器，一个是额外的 `ModuleInjector`，一个是 `NullInjector()`。
 
-Consider how Angular bootstraps the app with the
+Consider how Angular bootstraps the application with the
 following in `main.ts`:
 
 思考下 Angular 要如何通过 `main.ts` 中的如下代码引导应用程序：
@@ -131,10 +131,10 @@ This is the `root` `ModuleInjector`.
 
 The `platformBrowserDynamic()` method creates an injector
 configured by a `PlatformModule`, which contains platform-specific
-dependencies. This allows multiple apps to share a platform
+dependencies. This allows multiple applications to share a platform
 configuration.
 For example, a browser has only one URL bar, no matter how
-many apps you have running.
+many applications you have running.
 You can configure additional platform-specific providers at the
 platform level by supplying `extraProviders` using the `platformBrowser()` function.
 
@@ -182,7 +182,7 @@ with `root` in their own services.
 If you configure an app-wide provider in the `@NgModule()` of
 `AppModule`, it overrides one configured for `root` in the
 `@Injectable()` metadata. You can do this to configure a
-non-default provider of a service that is shared with multiple apps.
+non-default provider of a service that is shared with multiple applications.
 
 如果你在 `AppModule` 的 `@NgModule()` 中配置应用级提供者，它就会覆盖一个在 `@Injectable()` 的 `root` 元数据中配置的提供者。你可以用这种方式，来配置供多个应用共享的服务的非默认提供者。
 
@@ -226,7 +226,7 @@ export class TestComponent
 
 <div class="alert is-helpful">
 
-**Note:** Please see the
+**Note:** See the
 [resolution rules](guide/hierarchical-dependency-injection#resolution-rules)
 section to understand the relationship between the `ModuleInjector` tree and
 the `ElementInjector` tree.
@@ -235,7 +235,7 @@ the `ElementInjector` tree.
 
 </div>
 
-When you provide services in a component, that service is available via
+When you provide services in a component, that service is available by way of
 the `ElementInjector` at that component instance.
 It may also be visible at
 child component/directives based on visibility rules described in the [resolution rules](guide/hierarchical-dependency-injection#resolution-rules) section.
@@ -320,7 +320,7 @@ and use each in the component class constructor when you inject your service.
 
 可以使用 `@Optional()`，`@Self()`，`@SkipSelf()` 和 `@Host()` 来修饰 Angular 的解析行为。从 `@angular/core` 导入它们，并在注入服务时在组件类构造函数中使用它们。
 
-For a working app showcasing the resolution modifiers that
+For a working application showcasing the resolution modifiers that
 this section covers, see the <live-example name="resolution-modifiers">resolution modifiers example</live-example>.
 
 关于展示本节介绍的解析修饰符的可运行应用，请参阅<live-example name="resolution-modifiers">解析修饰符范例</live-example>。
@@ -361,8 +361,7 @@ Additionally, you can combine all of the modifiers except `@Host()` and `@Self()
 ### `@Optional()`
 
 `@Optional()` allows Angular to consider a service you inject to be optional.
-This way, if it can't be resolved at runtime, Angular simply
-resolves the service as `null`, rather than throwing an error. In
+This way, if it can't be resolved at runtime, Angular resolves the service as `null`, rather than throwing an error. In
 the following example, the service, `OptionalService`, isn't provided in
 the service, `@NgModule()`, or component class, so it isn't available
 anywhere in the app.
@@ -531,7 +530,7 @@ The following is an example of how the `<app-root>` and `<app-child>` view trees
        ...content goes here...
      </#VIEW>
     </app-child>
-  <#VIEW>
+  </#VIEW>
 </app-root>
 
  ```
@@ -544,7 +543,7 @@ Understanding the idea of the `<#VIEW>` demarcation is especially significant wh
 
 ## 在 `@Component()` 中提供服务
 
-How you provide services via an `@Component()` (or `@Directive()`)
+How you provide services using a `@Component()` (or `@Directive()`)
 decorator determines their visibility. The following sections
 demonstrate `providers` and `viewProviders` along with ways to
 modify service visibility with `@SkipSelf()` and `@Host()`.
@@ -618,7 +617,7 @@ should be used at this location.
 
 ### 应用程序结构范例
 
-The example app has a `FlowerService` provided in `root` with an `emoji`
+The example application has a `FlowerService` provided in `root` with an `emoji`
 value of `🌺` (red hibiscus).
 
 范例应用程序的 `root` 提供了 `FlowerService`，其 `emoji` 值为 `🌺`（红色芙蓉）。
@@ -627,7 +626,7 @@ value of `🌺` (red hibiscus).
 
 </code-example>
 
-Consider a simple app with only an `AppComponent` and a `ChildComponent`.
+Consider an application with only an `AppComponent` and a `ChildComponent`.
 The most basic rendered view would look like nested HTML elements such as
 the following:
 
@@ -669,7 +668,7 @@ inject your services, and give you complete control of service visibility.
 
 了解此结构可以告知你如何提供和注入服务，并完全控制服务的可见性。
 
-Now, consider that `<app-root>` simply injects the `FlowerService`:
+Now, consider that `<app-root>` injects the `FlowerService`:
 
 现在，考虑 `<app-root>` 只注入了 `FlowerService` ：
 
@@ -750,7 +749,7 @@ In the example case, the constraints are:
 
     通常，搜索的起点就是注入点。但是，在这个例子中，`<app-root>` `@Component` 的特殊之处在于它们还包括自己的 `viewProviders`，这就是为什么搜索从 `<app-root>` 的 `<#VIEW>` 开始的原因。（对于匹配同一位置的指令，情况却并非如此）。
 
-- The ending location just happens to be the same as the component
+- The ending location happens to be the same as the component
   itself, because it is the topmost component in this application.
 
     结束位置恰好与组件本身相同，因为它就是此应用程序中最顶层的组件。
@@ -863,7 +862,7 @@ set it up on your own, skip ahead to [Modifying service availability](guide/hier
 
 </div>
 
-The example app features a second service, the `AnimalService` to
+The example application features a second service, the `AnimalService` to
 demonstrate `viewProviders`.
 
 该范例应用程序具有第二个服务 `AnimalService` 来演示 `viewProviders`。
@@ -1176,7 +1175,7 @@ In a logical tree, this same idea might look like this:
 
 ```
 
-Though `<app-child>` provides the 🌻 (sunflower), the app renders
+Though `<app-child>` provides the 🌻 (sunflower), the application renders
 the 🌺 (red hibiscus) because `@SkipSelf()`  causes the current
 injector to skip
 itself and look to its parent.
@@ -1212,7 +1211,7 @@ for `FlowerService`, so it doesn't find it and returns `null`.
 
 <div class="alert is-helpful">
 
-**Note:** The example app uses `@Optional()` so the app does
+**Note:** The example application uses `@Optional()` so the application does
 not throw an error, but the principles are the same.
 
 **注意：**范例应用程序使用 `@Optional()` 因此该应用程序不会引发错误，但是其原理是一样的。
@@ -1230,12 +1229,12 @@ for the `AnimalService`, it never sees the 🐳 (whale).
 
 该 `<app-child>` 目前提供在 `viewProviders` 数组中提供了值为 🐶（小狗）的 `AnimalService`。由于注入器只需要查看 `<app-child>` 的 `ElementInjector` 中的 `AnimalService`，它就不会看到🐳（鲸鱼）。
 
-Just as in the `FlowerService` example, if you add `@SkipSelf()`
+As in the `FlowerService` example, if you add `@SkipSelf()`
 to the constructor for the `AnimalService`, the injector won't
 look in the current `<app-child>`'s `ElementInjector` for the
 `AnimalService`.
 
-就像在 `FlowerService` 范例中一样，如果将 `@SkipSelf()` 添加到 `AnimalService` 的构造函数中，则注入器将不在 `AnimalService` 的当前 `<app-child>` 的 `ElementInjector` 中查找 `AnimalService`。
+在 `FlowerService` 这个例子中，如果将 `@SkipSelf()` 添加到 `AnimalService` 的构造函数中，则注入器将不在 `AnimalService` 的当前 `<app-child>` 的 `ElementInjector` 中查找 `AnimalService`。
 
 ```typescript=
 export class ChildComponent {
@@ -1396,14 +1395,12 @@ The logical tree representation shows why this is:
 <app-root @NgModule(AppModule)
         @Inject(AnimalService=>"🐳")>
   <#VIEW @Provide(AnimalService="🦔")
-         @Inject(AnimalService, @SkipSelf, @Host, @Optional)=>"🦔">
-
+         @Inject(AnimalService, @Optional)=>"🦔">
     <!-- ^^@SkipSelf() starts here,  @Host() stops here^^ -->
 
     <app-child>
       <#VIEW @Provide(AnimalService="🐶")
-             @Inject(AnimalService, @SkipSelf, @Host, @Optional)=>"🐶">
-
+             @Inject(AnimalService, @SkipSelf, @Host, @Optional)=>"🦔">
                <!-- Add @SkipSelf ^^-->
 
       </#VIEW>
@@ -1417,7 +1414,7 @@ The logical tree representation shows why this is:
 the `AnimalService` at the `<app-root>`, not the `<app-child>`,
 where the request originates, and `@Host()` stops the search
 at the `<app-root>` `<#VIEW>`. Since `AnimalService` is
-provided via the `viewProviders` array, the injector finds 🦔
+provided by way of the `viewProviders` array, the injector finds 🦔
 (hedgehog) in the `<#VIEW>`.
 
 `@SkipSelf()` 导致注入器从 `<app-root>` 而不是 `<app-child>` 处开始对 `AnimalService` 进行搜索，而 `@Host()` 会在 `<app-root>` 的 `<#VIEW>` 处停止搜索。
@@ -1522,7 +1519,7 @@ Each tax return component has the following characteristics:
 </div>
 
 Suppose that the `HeroTaxReturnComponent` had logic to manage and restore changes.
-That would be a pretty easy task for a simple hero tax return.
+That would be a straightforward task for a hero tax return.
 In the real world, with a rich tax return data model, the change management would be tricky.
 You could delegate that management to a helper service, as this example does.
 
@@ -1549,7 +1546,7 @@ Here is the `HeroTaxReturnComponent` that makes use of `HeroTaxReturnService`.
 
 </code-example>
 
-The _tax-return-to-edit_ arrives via the `@Input()` property, which is implemented with getters and setters.
+The _tax-return-to-edit_ arrives by way of the `@Input()` property, which is implemented with getters and setters.
 The setter initializes the component's own instance of the `HeroTaxReturnService` with the incoming return.
 The getter always returns what that service says is the current state of the hero.
 The component also asks the service to save and restore this tax return.

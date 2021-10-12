@@ -43,9 +43,9 @@ This section shows you how to define a route to show individual product details.
 
    生成用于展示产品详情的新组件。在文件列表中，右键单击 `app` 文件夹，选择 `Angular Generator` 和 `Component`。将组件命名为 `product-details` 。
 
-1. In `app.module.ts`, add a route for product details, with a `path` of `products/:productId` and `ProductDetailsComponent` for the `component`.
+1. In `app.module.ts`, add a route for product details, with a `path` of `products/:productId` and `ProductDetailsComponent` for the `component`, include `ProductDetailsComponent` in `AppModule`'s declarations.
 
-   在 `app.module.ts` 中，添加产品详情的路由，其 `path` 为 `products/:productId`，其 `component` 为 `ProductDetailsComponent`。
+   在 `app.module.ts` 中，添加产品详情的路由，其 `path` 为 `products/:productId`，其 `component` 为 `ProductDetailsComponent`。把 `ProductDetailsComponent` 包含到 `AppModule` 的 `declarations` 中。
 
     <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="product-details-route">
     </code-example>
@@ -187,3 +187,5 @@ To continue exploring Angular:
 
   跳至[部署](start/start-deployment "试试看：部署")以将你的应用部署到 Firebase 或转为本地开发。
 
+
+@reviewed 2021-09-15

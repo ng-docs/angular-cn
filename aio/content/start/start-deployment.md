@@ -153,3 +153,5 @@ To support your UX/UI development, see [Angular Material](https://material.angul
 The Angular community also has an extensive [network of third-party tools and libraries](resources "Angular resources list").
 
 Angular 社区还拥有广泛的[第三方工具和库网络](resources "Angular 资源列表")。
+
+@reviewed 2021-09-15

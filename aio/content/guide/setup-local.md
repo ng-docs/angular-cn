@@ -13,7 +13,7 @@ It includes information about prerequisites, installing the CLI, creating an ini
 
 <header>学习 Angular</header>
 
-If you are new to Angular, you might want to start with [Try it now!](start), which introduces the essentials of Angular in the context of a ready-made basic online store app that you can examine and modify. This standalone tutorial takes advantage of the interactive [StackBlitz](https://stackblitz.com/) environment for online development. You don't need to set up your local environment until you're ready.
+If you are new to Angular, you might want to start with [Try it now!](start), which introduces the essentials of Angular in the context of a ready-made basic online store app for you to examine and modify. This standalone tutorial takes advantage of the interactive [StackBlitz](https://stackblitz.com/) environment for online development. You don't need to set up your local environment until you're ready.
 
 如果你不熟悉 Angular，可能要从[立即尝试！](start)开始，它可以在查看和修改一个现成的基础版在线商店的上下文中介绍 Angular 的要点。这个独立的教程利用交互式的 [StackBlitz](https://stackblitz.com/) 环境进行在线开发。在你准备好这些之前，无需设置本地环境。
 
@@ -135,7 +135,7 @@ CLI 会创建一个新的工作区和一个简单的欢迎应用，随时可以�
 
 ## 运行应用
 
-The Angular CLI includes a server, so that you can build and serve your app locally.
+The Angular CLI includes a server, for you to build and serve your app locally.
 
 Angular CLI 中包含一个服务器，方便你在本地构建和提供应用。
 
@@ -182,7 +182,7 @@ If your installation and setup was successful, you should see a page similar to 
 
   过一遍[英雄之旅教程](tutorial)，这是一个完整的动手练习题，它将教你使用 Angular CLI 进行应用开发的过程，并逐步介绍重要的子系统。
 
-* To learn more about using the Angular CLI, see the [CLI Overview](cli "CLI Overview"). In addition to creating the initial workspace and app scaffolding, you can use the CLI to generate Angular code such as components and services. The CLI supports the full development cycle, including building, testing, bundling, and deployment.
+* To learn more about using the Angular CLI, see the [CLI Overview](cli "CLI Overview"). In addition to creating the initial workspace and app scaffolding, use the CLI to generate Angular code such as components and services. The CLI supports the full development cycle, including building, testing, bundling, and deployment.
 
   要了解关于使用 Angular CLI 的更多信息，请参阅 [CLI 概述](cli "CLI 概述")。除了创建初始工作区和应用搭建之外，你还可以使用 CLI 来生成 Angular 代码，比如组件和服务。CLI 支持完整的开发周期，包括构建、测试、打包和部署。
 
@@ -190,3 +190,5 @@ If your installation and setup was successful, you should see a page similar to 
 
   要了解更多关于 `ng new` 生成的 Angular 文件的信息，请参阅[工作区和项目文件结构](guide/file-structure)。
 
+
+@reviewed 2021-09-15

@@ -31,7 +31,7 @@ Here are some reasons you might want to use AOT.
 
 * *Faster rendering*
    With AOT, the browser downloads a pre-compiled version of the application.
-   The browser loads executable code so it can render the application immediately, without waiting to compile the app first.
+   The browser loads executable code so it can render the application immediately, without waiting to compile the application first.
 
   *更快的渲染*。
   借助 AOT，浏览器可以下载应用的预编译版本。浏览器加载的是可执行代码，因此它可以立即渲染应用，而无需等待先编译好应用。
@@ -44,7 +44,7 @@ Here are some reasons you might want to use AOT.
   编译器会在应用 JavaScript 中内*联*外部 HTML 模板和 CSS 样式表，从而消除了对那些源文件的单独 ajax 请求。
 
 * *Smaller Angular framework download size*
-   There's no need to download the Angular compiler if the app is already compiled.
+   There's no need to download the Angular compiler if the application is already compiled.
    The compiler is roughly half of Angular itself, so omitting it dramatically reduces the application payload.
 
   *较小的 Angular 框架下载大小*。
@@ -75,15 +75,15 @@ Angular offers two ways to compile your application:
 
 Angular 提供了两种方式来编译你的应用：
 
-* **_Just-in-Time_ (JIT)**, which compiles your app in the browser at runtime. This was the default until Angular 8.
+* **_Just-in-Time_ (JIT)**, which compiles your application in the browser at runtime. This was the default until Angular 8.
 
   ***即时编译* (JIT)**，它会在运行期间在浏览器中编译你的应用。这是 Angular 8 及更早版本的默认值。
 
-* **_Ahead-of-Time_ (AOT)**, which compiles your app and libraries at build time. This is the default since Angular 9.
+* **_Ahead-of-Time_ (AOT)**, which compiles your application and libraries at build time. This is the default since Angular 9.
 
    **预先（AOT）编译**，它会在构建时编译你的应用和库。这是 Angular 9 及后续版本的默认值。
 
-When you run the [`ng build`](cli/build) (build only) or [`ng serve`](cli/serve) (build and serve locally) CLI commands, the type of compilation (JIT or AOT) depends on the value of the `aot` property in your build configuration specified in `angular.json`. By default, `aot` is set to `true` for new CLI apps.
+When you run the [`ng build`](cli/build) (build only) or [`ng serve`](cli/serve) (build and serve locally) CLI commands, the type of compilation (JIT or AOT) depends on the value of the `aot` property in your build configuration specified in `angular.json`. By default, `aot` is set to `true` for new CLI applications.
 
 当运行 CLI 命令 [`ng build`](cli/build) (只构建) 或 [`ng serve`](cli/serve) (构建并启动本地服务器) 时，编译类型（JIT 或 AOT）取决于你在 `angular.json` 中的构建配置所指定的 `aot` 属性。默认情况下，对于新的 CLI 应用，其 `aot` 为 `true`。
 
@@ -419,10 +419,9 @@ AOT 收集器只能理解 JavaScript 的一个子集。
 
   <td>
 
-  <code>pi</code>
+  <code>'pi'</code>
 
   </td>
-
   </tr>
    <tr>
 
@@ -1339,7 +1338,6 @@ As a result, templates that previously compiled under View Engine can fail type 
 这就导致了，以前在 View Engine 下能通过编译的模板可能无法在 Ivy 下通过类型检查。之所以会发生这种情况，是因为 Ivy 更严格的检查会捕获真正的错误：或者因为应用程序代码中的类型不正确，或者因为应用程序使用的库中的类型不正确或不够具体。
 
 This stricter type checking is not enabled by default in version 9, but can be enabled by setting the `strictTemplates` configuration option.
-We do expect to make strict type checking the default in the future.
 
 在版本 9 中，默认未启用此更严格的类型检查，但可以通过设置 `strictTemplates` 配置选项来启用它。我们真的希望将来可以把严格类型检查作为默认值。
 
@@ -1424,19 +1422,18 @@ For example, to avoid `Object is possibly 'undefined'` error in the template abo
 
 @Component({
   selector: 'my-component',
-  template: '<span *ngIf="person"> {{person.addresss.street}} </span>'
+  template: '<span *ngIf="person"> {{person.address.street}} </span>'
 })
 class MyComponent {
   person?: Person;
 }
-
 ```
 
 Using `*ngIf` allows the TypeScript compiler to infer that the `person` used in the binding expression will never be `undefined`.
 
 使用 `*ngIf` 能让 TypeScript 编译器推断出这个绑定表达式中使用的 `person` 永远不会是 `undefined`。
 
-For more information about input type narrowing, see [Input setter coercion](guide/template-typecheck#input-setter-coercion) and [Improving template type checking for custom directives](guide/structural-directives#directive-type-checks).
+For more information about input type narrowing, see [Improving template type checking for custom directives](guide/structural-directives#directive-type-checks).
 
 关于输入类型窄化的更多信息，请参阅 [Input setter 的强制类型转换](guide/template-typecheck#input-setter-coercion)和[为自定义指令强化模板类型检查](guide/structural-directives#directive-type-checks)
 

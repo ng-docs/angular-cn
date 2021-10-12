@@ -31,7 +31,7 @@ about the features and tools that can help you develop and deliver Angular appli
 
   [NgModules](guide/ngmodules)一章中提供了关于 Angular 应用模块化结构的深度信息。
 
-* The [Routing and navigation](guide/router) guide provides in-depth information on how to construct applications that allow a user to navigate to different [views](guide/glossary#view) within your single-page app.
+* The [Routing and navigation](guide/router) guide provides in-depth information on how to construct applications that allow a user to navigate to different [views](guide/glossary#view) within your single-page application.
 
   [路由与导航](guide/router)一章中提供了一些深度信息，教你如何构造出一个允许用户导航到单页面应用中不同[视图](guide/glossary#view) 的应用。
 
@@ -47,7 +47,7 @@ The [template syntax](guide/template-syntax) and related topics contain details 
 
 **“组件和模板”**一章提供了[模板语法](guide/template-syntax)的指南和详细信息，用于在视图中随时随地显示组件数据，并从用户那里收集输入，以便做出响应。
 
-Additional pages and sections describe some basic programming techniques for Angular apps.
+Additional pages and sections describe some basic programming techniques for Angular applications.
 
 其它页面和章节则描述了 Angular 应用的一些基本编程技巧。
 
@@ -76,8 +76,8 @@ without deep knowledge of animation techniques or CSS.
 
 ## “客户端-服务器”交互
 
-Angular provides a framework for single-page apps, where most of the logic and data resides on the client.
-Most apps still need to access a server using the `HttpClient` to access and save data.
+Angular provides a framework for single-page applications, where most of the logic and data resides on the client.
+Most applications still need to access a server using the `HttpClient` to access and save data.
 For some platforms and applications, you might also want to use the PWA (Progressive Web App) model to improve the user experience.
 
 Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数据都留在客户端。大多数应用仍然需要使用 `HttpClient` 来访问服务器，以访问和保存数据。对于某些平台和应用，你可能还希望使用 PWA（渐进式 Web 应用）模型来改善用户体验。
@@ -85,8 +85,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 * [HTTP](guide/http): Communicate with a server to get data, save data, and invoke server-side actions with an HTTP client.
 
   [HTTP](guide/http)：与服务器通信，通过 HTTP 客户端来获取数据、保存数据，并调用服务端的动作。
-
-* [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering (SSR). This allows you to run your Angular app on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
+*   [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering (SSR). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
 
   [服务器端渲染](guide/universal)：Angular Universal 通过服务器端渲染（SSR）在服务器上生成静态应用页面。这允许你在服务器上运行 Angular 应用，以提高性能，并在移动设备和低功耗设备上快速显示首屏，同时也方便了网页抓取工具。
 
@@ -118,15 +117,15 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [部署](guide/deployment)：学习如何把 Angular 应用部署到远端服务器上。
 
-* [Security guidelines](guide/security): Learn about Angular's built-in protections against common web-app vulnerabilities and attacks such as cross-site scripting attacks.
+* [Security guidelines](guide/security): Learn about Angular's built-in protections against common web-application vulnerabilities and attacks such as cross-site scripting attacks.
 
   [安全指南](guide/security)：学习 Angular 对常见 Web 应用的弱点和工具（比如跨站脚本攻击）提供的内置防护措施。
 
-* [Internationalization](guide/i18n): Make your app available in multiple languages with Angular's internationalization (i18n) tools.
+* [Internationalization][AioGuideI18nOverview]: Make your application available in multiple languages with Angular's internationalization (i18n) tools.
 
-  [国际化](guide/i18n) ：借助 Angular 的国际化（i18n）工具，可以让你的应用支持多本地环境。
+  [国际化][AioGuideI18nOverview] ：借助 Angular 的国际化（i18n）工具，可以让你的应用支持多本地环境。
 
-* [Accessibility](guide/accessibility): Make your app accessible to all users.
+* [Accessibility](guide/accessibility): Make your application accessible to all users.
 
   [无障碍性](guide/accessibility)：让所有用户都能访问你的应用。
 
@@ -134,7 +133,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 ## 文件结构、配置和依赖
 
-* [Workspace and file structure](guide/file-structure): Understand the structure of Angular workspace and project folders.
+*   [Workspace and file structure](guide/file-structure): Understand the structure of Angular workspace and project folders.
 
  [工作区与文件结构](guide/file-structure)：理解 Angular 工作区与项目文件夹的结构。
 
@@ -142,7 +141,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [构建与运行](guide/build)：学习为项目定义不同的构建和代理服务器设置的配置方式，比如开发、预生产和生产。
 
-* [npm packages](guide/npm-packages): The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm](https://docs.npmjs.com/) packages and distributed via the npm registry. The Angular CLI creates a default `package.json` file, which specifies a starter set of packages that work well together and jointly support many common application scenarios.
+* [npm packages](guide/npm-packages): The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm](https://docs.npmjs.com) packages and distributed using the npm registry. The Angular CLI creates a default `package.json` file, which specifies a starter set of packages that work well together and jointly support many common application scenarios.
 
   [npm 包](guide/npm-packages)：Angular 框架、Angular CLI 和 Angular 应用中用到的组件都是用 [npm](https://docs.npmjs.com/) 打包的，并通过 npm 注册服务器进行发布。Angular CLI 会创建一个默认的 `package.json` 文件，它会指定一组初始的包，它们可以一起使用，共同支持很多常见的应用场景。
 
@@ -150,7 +149,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [TypeScript 配置](guide/typescript-configuration)：TypeScript 是 Angular 应用开发的主要语言。
 
-* [Browser support](guide/browser-support): Make your apps compatible across a wide range of browsers.
+* [Browser support](guide/browser-support): Make your applications compatible across a wide range of browsers.
 
   [浏览器支持](guide/browser-support)：让你的应用能和各种浏览器兼容。
 
@@ -169,3 +168,11 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 * [CLI builders](guide/cli-builder): Learn about customizing and extending the CLI's ability to apply tools to perform complex tasks, such as building and testing applications.
 
   [CLI 构建器](guide/cli-builder)：学习如何自定义和扩展 CLI 的能力，让它使用工具来执行复杂任务，比如构建和测试应用。
+
+<!-- links -->
+
+[AioGuideI18nOverview]: guide/i18n-overview "Angular Internationalization | Angular"
+
+<!-- end links -->
+
+@reviewed 2021-09-15

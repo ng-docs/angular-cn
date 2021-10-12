@@ -11,8 +11,8 @@ import {ApplicationRef} from '../application_ref';
 
 /**
  * @description
- * Hook for manual bootstrapping of the application instead of using bootstrap array in @NgModule
- * annotation.
+ * Hook for manual bootstrapping of the application instead of using `bootstrap` array in @NgModule
+ * annotation. This hook is invoked only when the `bootstrap` array is empty or not provided.
  *
  * 挂钩以手动引导应用程序，而不是在 @NgModule 标记中的 bootstrap 数组。
  *
@@ -21,6 +21,9 @@ import {ApplicationRef} from '../application_ref';
  * See ["Bootstrapping"](guide/bootstrapping) and ["Entry components"](guide/entry-components).
  *
  * @usageNotes
+ *
+ * The example below uses `ApplicationRef.bootstrap()` to render the
+ * `AppComponent` on the page.
  *
  * ```typescript
  * class AppModule implements DoBootstrap {

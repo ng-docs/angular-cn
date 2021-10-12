@@ -1,6 +1,6 @@
 # NgModule API
 
-At a high level, NgModules are a way to organize Angular apps
+At a high level, NgModules are a way to organize Angular applications
 and they accomplish this through the metadata in the `@NgModule`
 decorator.
 The metadata falls into three categories:
@@ -8,15 +8,15 @@ The metadata falls into three categories:
 宏观来讲，NgModule 是组织 Angular 应用的一种方式，它们通过 `@NgModule` 装饰器中的元数据来实现这一点。
 这些元数据可以分成三类：
 
-* **Static:** Compiler configuration which tells the compiler about directive selectors and where in templates the directives should be applied through selector matching. This is configured via the `declarations` array.
+* **Static:** Compiler configuration which tells the compiler about directive selectors and where in templates the directives should be applied through selector matching. This is configured using the `declarations` array.
 
    **静态的：**编译器配置，用于告诉编译器指令的选择器并通过选择器匹配的方式决定要把该指令应用到模板中的什么位置。它是通过 `declarations` 数组来配置的。
 
-* **Runtime:** Injector configuration via the `providers` array.
+* **Runtime:** Injector configuration using the `providers` array.
 
    **运行时：**通过 `providers` 数组提供给注入器的配置。
 
-* **Composability/Grouping:** Bringing NgModules together and making them available via the `imports` and `exports` arrays.
+* **Composability/Grouping:** Bringing NgModules together and making them available using the `imports` and `exports` arrays.
 
    **组合/分组：**通过 `imports` 和 `exports` 数组来把多个 NgModule 放在一起，并让它们可用。
 
@@ -321,7 +321,7 @@ The following table summarizes the `@NgModule` metadata properties.
 
       那些可以动态加载进视图的组件列表。
 
-      By default, an Angular app always has at least one entry component, the root component, `AppComponent`. Its purpose is to serve as a point of entry into the app, that is, you bootstrap it to launch the app.
+      By default, an Angular application always has at least one entry component, the root component, `AppComponent`. Its purpose is to serve as a point of entry into the app, that is, you bootstrap it to launch the application.
 
       默认情况下，Angular 应用至少有一个入口组件，也就是根组件 `AppComponent`。
       它用作进入该应用的入口点，也就是说你通过引导它来启动本应用。
@@ -346,7 +346,7 @@ The following table summarizes the `@NgModule` metadata properties.
 
       而那些使用不易察觉的[`ViewComponentRef.createComponent()`](api/core/ViewContainerRef#createComponent)的方式进行命令式引导的组件仍然需要添加。
 
-      Dynamic component loading is not common in most apps beyond the router. If you need to dynamically load components, you must add these components to the `entryComponents` list yourself.
+      Dynamic component loading is not common in most applications beyond the router. If you need to dynamically load components, you must add these components to the `entryComponents` list yourself.
 
       动态组件加载在除路由器之外的大多数应用中都不太常见。如果你需要动态加载组件，就必须自己把那些组件添加到 `entryComponents` 列表中。
 

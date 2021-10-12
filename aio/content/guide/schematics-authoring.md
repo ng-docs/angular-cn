@@ -3,7 +3,7 @@
 # 创作原理图
 
 You can create your own schematics to operate on Angular projects.
-Library developers typically package schematics with their libraries in order to integrate them with the Angular CLI.
+Library developers typically package schematics with their libraries to integrate them with the Angular CLI.
 You can also create stand-alone schematics to manipulate the files and constructs in Angular applications as a way of customizing them for your development environment and making them conform to your standards and constraints.
 Schematics can be chained, running other schematics to perform complex operations.
 
@@ -42,7 +42,7 @@ When making modifications, you don't actually change the base, but add those mod
 
   每个原理图都在一个上下文中运行，上下文由一个 `SchematicContext` 对象表示。
 
-The context object passed into a rule provides access to utility functions and metadata that the schematic may need to work with, including a logging API to help with debugging.
+The context object passed into a rule provides access to utility functions and metadata that the schematic might need to work with, including a logging API to help with debugging.
 The context also defines a *merge strategy* that determines how changes are merged from the staged tree into the base tree. A change can be accepted or ignored, or throw an exception.
 
 传给规则的上下文对象可以访问该原理图可能会用到的工具函数和元数据，包括一个帮助调试的日志 API。上下文还定义了一个*合并策略*，用于确定如何将这些更改从暂存树合并到基础树中。可以接受或忽略某个更改，也可以抛出异常。
@@ -97,9 +97,9 @@ import {
 
 Rules can collect option values from the caller and inject them into templates.
 The options available to your rules, with their allowed values and defaults, are defined in the schematic's JSON schema file, `<schematic>/schema.json`.
-You can define variable or enumerated data types for the schema using TypeScript interfaces.
+Define variable or enumerated data types for the schema using TypeScript interfaces.
 
-规则可以从调用者那里收集选项值，并把它们注入到模板中。规则可用的选项及其允许的值和默认值是在原理图的 JSON 模式文件 `<schematic>/schema.json` 中定义的。你可以使用 TypeScript 接口来为这个模式定义变量或枚举的数据类型。
+规则可以从调用者那里收集选项值，并把它们注入到模板中。规则可用的选项及其允许的值和默认值是在原理图的 JSON 模式文件 `<schematic>/schema.json` 中定义的。可以用 TypeScript 接口来为这个模式定义变量或枚举的数据类型。
 
 The schema defines the types and default values of variables used in the schematic.
 For example, the hypothetical "Hello World" schematic might have the following schema.
@@ -122,27 +122,27 @@ For example, the hypothetical "Hello World" schematic might have the following s
 }
 </code-example>
 
-You can see examples of schema files for the Angular CLI command schematics in [`@schematics/angular`](https://github.com/angular/angular-cli/blob/master/packages/schematics/angular/application/schema.json).
+See examples of schema files for the Angular CLI command schematics in [`@schematics/angular`](https://github.com/angular/angular-cli/blob/master/packages/schematics/angular/application/schema.json).
 
-你可以在 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/7.0.x/packages/schematics/angular/application/schema.json) 中看到 Angular CLI 命令原理图的模式文件范例。
+可以在 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/7.0.x/packages/schematics/angular/application/schema.json) 中看到 Angular CLI 命令原理图的模式文件范例。
 
 ### Schematic prompts
 
 ### 原理图提示
 
 Schematic *prompts* introduce user interaction into schematic execution.
-You can configure schematic options to display a customizable question to the user.
+Configure schematic options to display a customizable question to the user.
 The prompts are displayed before the execution of the schematic, which then uses the response as the value for the option.
-This allows users to direct the operation of the schematic without requiring in-depth knowledge of the full spectrum of available options.
+This lets users direct the operation of the schematic without requiring in-depth knowledge of the full spectrum of available options.
 
-原理图*提示*能将用户交互引入到原理图执行过程中。你可以配置原理图选项，以向用户显示可自定义的问题。
+原理图*提示*能将用户交互引入到原理图执行过程中。可以配置原理图选项，以向用户显示可自定义的问题。
 在执行原理图之前会显示提示，然后将用户的响应用作选项的值。这使得用户可以指导原理图的操作，而无需深入了解可用选项的全部范围。
 
 The "Hello World" schematic might, for example, ask the user for their name, and display that name in place of the default name "world". To define such a prompt, add an `x-prompt` property to the schema for the `name` variable.
 
 例如，这个 “Hello World” 原理图可能会要求用户提供他的名字，并显示该名字以代替默认名字 “world”。要定义这样的提示，请将 `x-prompt` 属性添加到 `name` 变量的模式中。
 
-Similarly, you can add a prompt to allow the user to decide whether the schematic will use color when executing its hello action. The schema with both prompts would be as follows.
+Similarly, you can add a prompt to let the user decide whether the schematic uses color when executing its hello action. The schema with both prompts would be as follows.
 
 类似地，你可以添加一个提示，以允许用户确定原理图在执行其 hello 操作时是否将使用颜色。带有两个提示的模式如下。
 
@@ -258,7 +258,7 @@ In this form, the `x-prompt` field value is a JSON object with subfields that cu
 | items | 字符串和/或“标签/值”对象（仅对 `list` 类型有效） |
 
 The following example of the long form is from the JSON schema for the schematic that the CLI uses to [generate applications](https://github.com/angular/angular-cli/blob/ba8a6ea59983bb52a6f1e66d105c5a77517f062e/packages/schematics/angular/application/schema.json#L56).
-It defines the prompt that allows users to choose which style preprocessor they want to use for the application being created.
+It defines the prompt that lets users choose which style preprocessor they want to use for the application being created.
 By using the long form, the schematic can provide more explicit formatting of the menu choices.
 
 下面的长格式范例来自 CLI 用来[生成应用程序](https://github.com/angular/angular-cli/blob/ba8a6ea59983bb52a6f1e66d105c5a77517f062e/packages/schematics/angular/application/schema.json#L56)的原理图的 JSON 模式。它定义提示，允许用户选择要用于正在创建的应用程序的样式预处理器。通过使用长格式，原理图可以为菜单选项提供更明确的格式。
@@ -273,8 +273,7 @@ By using the long form, the schematic can provide more explicit formatting of th
         "css",
         "scss",
         "sass",
-        "less",
-        "styl"
+        "less"
       ],
       "x-prompt": {
         "message": "Which stylesheet format would you like to use?",
@@ -283,8 +282,7 @@ By using the long form, the schematic can provide more explicit formatting of th
           { "value": "css",  "label": "CSS" },
           { "value": "scss", "label": "SCSS   [ https://sass-lang.com/documentation/syntax#scss                ]" },
           { "value": "sass", "label": "Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]" },
-          { "value": "less", "label": "Less   [ http://lesscss.org/                                            ]" },
-          { "value": "styl", "label": "Stylus [ https://stylus-lang.com/                                       ]" }
+          { "value": "less", "label": "Less   [ http://lesscss.org/                                            ]" }
         ]
       },
     },
@@ -341,7 +339,7 @@ The following JSON schema is a complete description of the long-form syntax for 
 ## 原理图 CLI
 
 Schematics come with their own command-line tool.
-Using Node 6.9 or above, install the Schematics command line tool globally:
+Using Node 6.9 or later, install the Schematics command line tool globally:
 
 原理图有自己的命令行工具。使用 Node 6.9 或以上版本，全局安装 Schematics 命令行工具：
 
@@ -353,15 +351,15 @@ This installs the `schematics` executable, which you can use to create a new sch
 
 这将安装可执行文件 `schematics`，你可以用它在自己的项目文件夹中创建一个新的原理图集合、把一个新的原理图添加到一个现有的集合中，或者扩展一个现有的原理图。
 
-In the following sections, we will create a new schematics collection using the CLI in order to introduce the files and file structure, and some of the basic concepts.
+In the following sections, you will create a new schematics collection using the CLI to introduce the files and file structure, and some of the basic concepts.
 
 在下面的章节中，我们将使用 CLI 创建一个新的原理图集合，以介绍文件和目录结构，以及一些基本概念。
 
 The most common use of schematics, however, is to integrate an Angular library with the Angular CLI.
-You can do this by creating the schematic files directly within the library project in an Angular workspace, without using the Schematics CLI.
+Do this by creating the schematic files directly within the library project in an Angular workspace, without using the Schematics CLI.
 See [Schematics for Libraries](guide/schematics-for-libraries).
 
-但是，原理图的最常见用途是将 Angular 库与 Angular CLI 集成在一起。你可以直接在 Angular 工作区的库项目中创建原理图文件，而无需使用 Schematics CLI。参阅[库的原理图](guide/schematics-for-libraries)。
+但是，原理图的最常见用途是将 Angular 库与 Angular CLI 集成在一起。可以直接在 Angular 工作区的库项目中创建原理图文件，而无需使用 Schematics CLI。参阅[库的原理图](guide/schematics-for-libraries)。
 
 ### Creating a schematics collection
 
@@ -391,10 +389,10 @@ code .
 </code-example>
 
 The initial schematic gets the same name as the project folder, and is generated in `src/hello-world`.
-You can add related schematics to this collection, and modify the generated skeleton code to define your schematic's functionality.
+Add related schematics to this collection, and modify the generated skeleton code to define your schematic's functionality.
 Each schematic name must be unique within the collection.
 
-最初的原理图与项目文件夹的名字相同，是在 `src/hello-world` 中生成的。你可以把相关的原理图添加到这个集合中，并修改所生成的骨架代码来定义原理图的功能。每个原理图的名称在集合中都必须是唯一的。
+最初的原理图与项目文件夹的名字相同，是在 `src/hello-world` 中生成的。可以把相关的原理图添加到这个集合中，并修改所生成的骨架代码来定义原理图的功能。每个原理图的名称在集合中都必须是唯一的。
 
 ### Running a schematic
 
@@ -410,9 +408,9 @@ schematics &lt;path-to-schematics-project&gt;:&lt;schematics-name&gt; --&lt;requ
 </code-example>
 
 The path can be absolute or relative to the current working directory where the command is executed.
-For example, to run the schematic we just generated (which has no required options), use the following command.
+For example, to run the schematic you just generated (which has no required options), use the following command.
 
-该路径可以是绝对路径，也可以是执行该命令的当前工作目录的相对路径。例如，要运行我们刚生成的原理图（它没有必选项），请使用下面的命令。
+该路径可以是绝对路径，也可以是执行该命令的当前工作目录的相对路径。例如，要运行刚生成的原理图（它没有必选项），请使用下面的命令。
 
 <code-example language="bash">
 schematics .:hello-world
@@ -477,7 +475,7 @@ Each schematic is created with a name, description, and factory function.
   可选属性 `schema` 是一个 JSON 模式文件，它定义了本原理图中可用的命令行参数。
 
 * The optional `aliases` array specifies one or more strings that can be used to invoke the schematic.
-   For example, the schematic for the Angular CLI “generate” command has an alias “g”, allowing you to use the command `ng g`.
+   For example, the schematic for the Angular CLI “generate” command has an alias “g”, that lets you use the command `ng g`.
 
   可选数组属性 `aliases` 指定了一个或多个可用来调用此原理图的字符串。比如，Angular CLI “generate” 命令的原理图有一个别名 “g”，这就可以让你使用命令 `ng g`。
 

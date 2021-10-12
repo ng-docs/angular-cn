@@ -12,16 +12,16 @@ See the [Angular Resources](resources) page for links to the most popular ones.
 ## 安装库
 
 Libraries are published as [npm packages](guide/npm-packages), usually together with schematics that integrate them with the Angular CLI.
-To integrate reusable library code into an application, you need to install the package and import the provided functionality where you will use it. For most published Angular libraries, you can use the Angular CLI `ng add <lib_name>` command.
+To integrate reusable library code into an application, you need to install the package and import the provided functionality where you will use it. For most published Angular libraries, use the Angular CLI `ng add <lib_name>` command.
 
 这些库都是作为 [npm 包](guide/npm-packages)发布的，它们通常都带有一些与 Angular CLI 集成好的 schematic。要把可复用的库代码集成到应用中，你需要安装该软件包并在使用时导入它提供的功能。对于大多数已发布的 Angular 库，你可以使用 Angular CLI 的 `ng add <lib_name>` 命令。
 
-The `ng add` command uses a package manager such as [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to install the library package, and invokes schematics that are included in the package to other scaffolding within the project code, such as adding import statements, fonts, themes, and so on.
+The `ng add` command uses a package manager such as [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to install the library package, and invokes schematics that are included in the package to other scaffolding within the project code, such as adding import statements, fonts, and themes.
 
 `ng add` 命令使用 npm 包管理器或 [yarn](https://yarnpkg.com/) 来安装库包，并调用该包中的 schematic 在项目代码中的添加脚手架，比如添加 import 语句、添加 fonts，添加 themes 等。
 
-A published library typically provides a README or other documentation on how to add that lib to your app.
-For an example, see [Angular Material](https://material.angular.io/) docs.
+A published library typically provides a README or other documentation on how to add that lib to your application.
+For an example, see the [Angular Material](https://material.angular.io/) documentation.
 
 已发布的库通常会提供 README 或者其它文档来介绍如何把该库添加到你的应用中。例子可参阅 [Angular Material](https://material.angular.cn/) 文档。
 
@@ -29,7 +29,7 @@ For an example, see [Angular Material](https://material.angular.io/) docs.
 
 ### 库的类型
 
-Library packages often include typings in `.d.ts` files; see examples in `node_modules/@angular/material`. If your library's package does not include typings and your IDE complains, you may need to install the library's associated `@types/<lib_name>` package.
+Library packages often include typings in `.d.ts` files; see examples in `node_modules/@angular/material`. If your library's package does not include typings and your IDE complains, you might need to install the library's associated `@types/<lib_name>` package.
 
 库包中通常会在 `.d.ts` 文件中包含类型信息。参阅 `node_modules/@angular/material` 中的例子。如果你的库包中没有包含类型信息并且你的 IDE 报错，你可能需要安装与这个库关联的 `@types/<lib_name>` 包。
 
@@ -107,7 +107,7 @@ See the [Angular Update Guide](https://update.angular.io/) for help.
 
 ## 把某个库添加到运行时的全局范围中
 
-Legacy JavaScript libraries that are not imported into an app can be added to the runtime global scope and loaded as if they were in a script tag.
+Legacy JavaScript libraries that are not imported into an application can be added to the runtime global scope and loaded as if they were in a script tag.
 Configure the CLI to do this at build time using the "scripts" and "styles" options of the build target in the [CLI configuration file](guide/workspace-config), `angular.json`.
 
 那些没有导入到应用中的旧版 JavaScript 库可以添加到运行时的全局作用域中，并像在 script 标签中一样加载。可以在 [CLI 配置文件](guide/workspace-config) `angular.json` 中的构建目标（build target）的 "scripts" 和 "styles" 选项中配置 CLI，以便在构建期间添加这些文件。
@@ -145,7 +145,7 @@ Add the Bootstrap CSS file to the "styles" array:
 ],
 ```
 
-Run or restart `ng serve` to see Bootstrap 4 working in your app.
+Run or restart `ng serve` to see Bootstrap 4 working in your application.
 
 运行或重启 `ng serve`，看看你的应用是否正在使用 Bootstrap 4。
 

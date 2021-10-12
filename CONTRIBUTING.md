@@ -235,8 +235,6 @@ When the body is present it must be at least 20 characters long and must conform
 
 The `footer` is optional. The [Commit Message Footer](#commit-footer) format describes what the footer is used for and the structure it must have.
 
-Any line of the commit message cannot be longer than 100 characters.
-
 
 #### <a name="commit-header"></a>Commit Message Header
 
@@ -248,8 +246,7 @@ Any line of the commit message cannot be longer than 100 characters.
   │       └─⫸ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
   │                          elements|forms|http|language-service|localize|platform-browser|
   │                          platform-browser-dynamic|platform-server|router|service-worker|
-  │                          upgrade|zone.js|packaging|changelog|dev-infra|docs-infra|migrations|
-  │                          ngcc|ve
+  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve
   │
   └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
 ```
@@ -302,7 +299,7 @@ There are currently a few exceptions to the "use package name" rule:
 
 * `changelog`: used for updating the release notes in CHANGELOG.md
 
-* `dev-infra`: used for dev-infra related changes within the directories /scripts, /tools and /dev-infra
+* `dev-infra`: used for dev-infra related changes within the directories /scripts and /tools
 
 * `docs-infra`: used for docs-app (angular.io) related changes within the /aio directory of the repo
 
@@ -334,7 +331,8 @@ You can include a comparison of the previous behavior with the new behavior in o
 
 #### <a name="commit-footer"></a>Commit Message Footer
 
-The footer can contain information about breaking changes and is also the place to reference GitHub issues, Jira tickets, and other PRs that this commit closes or is related to.
+The footer can contain information about breaking changes and deprecations and is also the place to reference GitHub issues, Jira tickets, and other PRs that this commit closes or is related to.
+For example:
 
 ```
 BREAKING CHANGE: <breaking change summary>
@@ -345,7 +343,20 @@ BREAKING CHANGE: <breaking change summary>
 Fixes #<issue number>
 ```
 
+or
+
+```
+DEPRECATED: <what is deprecated>
+<BLANK LINE>
+<deprecation description + recommended update path>
+<BLANK LINE>
+<BLANK LINE>
+Closes #<pr number>
+```
+
 Breaking Change section should start with the phrase "BREAKING CHANGE: " followed by a summary of the breaking change, a blank line, and a detailed description of the breaking change that also includes migration instructions.
+
+Similarly, a Deprecation section should start with "DEPRECATED: " followed by a short description of what is deprecated, a blank line, and a detailed description of the deprecation that also mentions the recommended update path.
 
 
 ### Revert commits

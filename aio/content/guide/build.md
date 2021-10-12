@@ -138,7 +138,7 @@ export class AppComponent {
 
 ## 配置针对特定目标的文件替换规则
 
-The main CLI configuration file, `angular.json`, contains a `fileReplacements` section in the configuration for each build target, which allows you to replace any file in the TypeScript program with a target-specific version of that file.
+The main CLI configuration file, `angular.json`, contains a `fileReplacements` section in the configuration for each build target, which lets you replace any file in the TypeScript program with a target-specific version of that file.
 This is useful for including target-specific code or variables in a build that targets a specific environment, such as production or staging.
 
 CLI 的主配置文件 `angular.json` 中的每个构建目标下都包含了一个 `fileReplacements` 区段。这能让你把 TypeScript 程序中的任何文件替换为针对特定目标的版本。
@@ -228,7 +228,7 @@ You can also configure the `serve` command to use the targeted build configurati
 ## 配置文件大小预算
 
 As applications grow in functionality, they also grow in size.
-The CLI allows you to set size thresholds in your configuration to ensure that parts of your application stay within size boundaries that you define.
+The CLI lets you set size thresholds in your configuration to ensure that parts of your application stay within size boundaries that you define.
 
 当应用的功能不断增长时，其文件大小也会同步增长。
 CLI 允许你通过配置项来限制文件大小，以确保应用的各个部分都处于你定义的大小范围内。
@@ -273,7 +273,7 @@ Specify size values in the following formats:
 
   12%：相对于基准大小的百分比大小。（不能用作基准大小的值。）
 
-When you configure a budget, the build system warns or reports an error when a given part of the app reaches or exceeds a boundary size that you set.
+When you configure a budget, the build system warns or reports an error when a given part of the application reaches or exceeds a boundary size that you set.
 
 如果配置了大小范围，构建系统就会在发现应用的某个部分达到或超过了你设置的大小范围时发出警告或报错。
 
@@ -304,21 +304,21 @@ Each budget entry is a JSON object with the following properties:
 
   `bundle` - 特定包的大小。
 
-* `initial` - The initial size of the app.
+* `initial` - The size of JavaScript needed for bootstrapping the application. Defaults to warning @ 500kb and erroring at 1mb.
 
-  `initial` -  应用的初始大小。
+  `initial` -  引导本应用时所需的 JavaScript 大小。默认会在 500kb 时给出警告，1mb 时报错。
 
 * `allScript` - The size of all scripts.
 
   `allScript` - 所有脚本的总大小。
 
-* `all` - The size of the entire app.
+* `all` - The size of the entire application.
 
   `all` - 整个应用的总大小。
 
-* `anyComponentStyle` - This size of any one component stylesheet.
+* `anyComponentStyle` - This size of any one component stylesheet. Defaults to warning at 2kb and erroring at 4kb.
 
-  `anyComponentStyle` - 任何一个组件样式文件的大小。
+  `anyComponentStyle` - 任何一个组件样式文件的大小。默认会在 2kb 时给出警告，在 4kb 时给出错误。
 
 * `anyScript` - The size of any one script.
 
@@ -432,7 +432,7 @@ For more information, see [How CommonJS is making your bundles larger](https://w
 </div>
 
 The Angular CLI outputs warnings if it detects that your browser application depends on CommonJS modules.
-To disable these warnings, you can add the CommonJS module name to `allowedCommonJsDependencies` option in the `build` options located in `angular.json` file.
+To disable these warnings, add the CommonJS module name to `allowedCommonJsDependencies` option in the `build` options located in `angular.json` file.
 
 如果 Angular CLI 检测到你的浏览器端应用依赖了 CommonJS 模块，就会发出警告。
 要禁用这些警告，你可以把这些 CommonJS 模块的名字添加到 `angular.json` 文件的 `build` 区的 `allowedCommonJsDependencies` 选项中。
@@ -457,7 +457,7 @@ To disable these warnings, you can add the CommonJS module name to `allowedCommo
 ## 配置浏览器兼容性
 
 The CLI uses [Autoprefixer](https://github.com/postcss/autoprefixer) to ensure compatibility with different browser and browser versions.
-You may find it necessary to target specific browsers or exclude certain browser versions from your build.
+You might find it necessary to target specific browsers or exclude certain browser versions from your build.
 
 CLI 使用 [Autoprefixer](https://github.com/postcss/autoprefixer) 来确保对不同浏览器及其版本的兼容性。
 你会发现当你要从构建中针对特定的目标浏览器或排除指定的浏览器版本时，这是很有必要的。
@@ -470,10 +470,9 @@ Autoprefixer looks for the `browserslist` configuration when it prefixes your CS
 Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.browserslistrc` 的配置文件中来配置这些选项。
 当 Autoprefixer 为你的 CSS 加前缀时，就会查阅 Browserlist 的配置。
 
-* You can tell Autoprefixer what browsers to target by adding a browserslist property to the package configuration file, `package.json`:
+* Tell Autoprefixer what browsers to target by adding a browserslist property to the package configuration file, `package.json`:
 
-  你可以为 `package.json` 添加 `browserslist` 属性来告诉 Autoprefixer，要针对哪些浏览器：
-
+  可以为 `package.json` 添加 `browserslist` 属性来告诉 Autoprefixer，要针对哪些浏览器：
 ```
  "browserslist": [
    "> 1%",
@@ -499,7 +498,7 @@ See the [browserslist repo](https://github.com/browserslist/browserslist) for mo
 
 ### 使用 Lighthouse 做向后兼容
 
-If you want to produce a progressive web app and are using [Lighthouse](https://developers.google.com/web/tools/lighthouse/) to grade the project, add the following `browserslist` entry to your `package.json` file, in order to eliminate the [old flexbox](https://developers.google.com/web/tools/lighthouse/audits/old-flexbox) prefixes:
+If you want to produce a progressive web application and are using [Lighthouse](https://developers.google.com/web/tools/lighthouse/) to grade the project, add the following `browserslist` entry to your `package.json` file, in order to eliminate the [old flexbox](https://developers.google.com/web/tools/lighthouse/audits/old-flexbox) prefixes:
 
 如果你要制作渐进式应用，并使用 [Lighthouse](https://developers.google.com/web/tools/lighthouse/) 来对该项目进行评分，请为 `package.json` 添加如下的 `browserslist` 条目，以消除[老版本的 flexbox](https://developers.google.com/web/tools/lighthouse/audits/old-flexbox) 前缀：
 
@@ -519,7 +518,7 @@ CSS grid layout support in Autoprefixer, which was previously on by default, is 
 
 Autoprefixer 默认支持 CSS 网格布局，但在 Angular 8 及更高版本中，它默认处于禁用状态。
 
-To use CSS grid with IE10/11, you must explicitly enable it using the `autoplace` option.
+To use CSS grid with Internet Explorer 10/11, you must explicitly enable it using the `autoplace` option.
 To do this, add the following to the top of the global styles file (or within a specific css selector scope):
 
 要在 IE10/11 中使用 CSS 网格布局，必须使用 `autoplace` 选项显式启用它。
@@ -547,10 +546,10 @@ For more information, see [Autoprefixer documentation](https://autoprefixer.gith
 
 ## 代理到后端服务器
 
-You can use the [proxying support](https://webpack.js.org/configuration/dev-server/#devserverproxy) in the `webpack` dev server to divert certain URLs to a backend server, by passing a file to the `--proxy-config` build option.
+Use the [proxying support](https://webpack.js.org/configuration/dev-server/#devserverproxy) in the `webpack` dev server to divert certain URLs to a backend server, by passing a file to the `--proxy-config` build option.
 For example, to divert all calls for `http://localhost:4200/api` to a server running on `http://localhost:3000/api`, take the following steps.
 
-你可以使用 `webpack` 开发服务器中的[代理支持](https://webpack.js.org/configuration/dev-server/#devserver-proxy)来把特定的 URL 转发给后端服务器，只要传入 `--proxy-config` 选项就可以了。
+可以用 `webpack` 开发服务器中的[代理支持](https://webpack.js.org/configuration/dev-server/#devserver-proxy)来把特定的 URL 转发给后端服务器，只要传入 `--proxy-config` 选项就可以了。
 比如，要把所有到 `http://localhost:4200/api` 的调用都转给运行在 `http://localhost:3000/api` 上的服务器，可采取如下步骤。
 
 1. Create a file `proxy.conf.json` in your project's `src/` folder.
@@ -586,14 +585,14 @@ For example, to divert all calls for `http://localhost:4200/api` to a server run
     ...
     ```
 
-1. To run the dev server with this proxy configuration, call `ng serve`.
+1. To run the development server with this proxy configuration, call `ng serve`.
 
    要使用这个代理选项启动开发服务器，请运行 `ng serve` 命令。
 
-You can edit the proxy configuration file to add configuration options; some examples are given below.
+Edit the proxy configuration file to add configuration options; following are some examples.
 For a description of all options, see [webpack DevServer documentation](https://webpack.js.org/configuration/dev-server/#devserverproxy).
 
-你可以编辑这个代理配置文件，以添加配置项，例子如下。
+可以编辑这个代理配置文件，以添加配置项，下面是一些例子。
 要查看所有选项的详细说明，参阅 [webpack DevServer 文档](https://webpack.js.org/configuration/dev-server/#devserver-proxy)。
 
 Note that if you edit the proxy configuration file, you must relaunch the `ng serve` process to make your changes effective.
@@ -605,10 +604,10 @@ Note that if you edit the proxy configuration file, you must relaunch the `ng se
 ### 重写 URL 路径
 
 The `pathRewrite` proxy configuration option lets you rewrite the URL path at run time.
-For example, you can specify the following `pathRewrite` value to the proxy configuration to remove "api" from the end of a path.
+For example, specify the following `pathRewrite` value to the proxy configuration to remove "api" from the end of a path.
 
 `pathRewrite` 代理配置项能让你在运行时重写 URL 路径。
-比如，你可以在代理配置中指定如下的 `pathRewrite` 值，以移除路径末尾的 "api" 部分。
+比如，可以在代理配置中指定如下的 `pathRewrite` 值，以移除路径末尾的 "api" 部分。
 
 ```
 {
@@ -778,3 +777,13 @@ function setupForCorporateProxy(proxyConfig) {
 
 module.exports = setupForCorporateProxy(proxyConfig);
 ```
+
+{@a browser-compat}
+
+## Configuring browser compatibility
+
+## 配置浏览器兼容性
+
+See [browser support guide](guide/browser-support).
+
+参见[浏览器支持指南](guide/browser-support)。

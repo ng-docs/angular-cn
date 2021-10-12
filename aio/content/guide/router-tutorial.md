@@ -2,7 +2,7 @@
 
 # 在单页面应用中使用 Angular 路由
 
-This tutorial describes how you can build a single-page application, SPA that uses multiple Angular routes.
+This tutorial describes how to build a single-page application, SPA that uses multiple Angular routes.
 
 本教程将介绍如何构建一个使用多个 Angular 路由的单页面应用 SPA。
 
@@ -11,12 +11,12 @@ As users access your application's features, the browser needs to render only th
 
 在 SPA（Single Page Application 单页面应用）中，所有应用的所有功能都存在于同一个 HTML 页面中。当用户访问应用的各种特性时，浏览器只需渲染那些用户需要关心的部分，而不用重新加载页面。这种模式可以显著改善应用的用户体验。
 
-To define how users navigate through your application, you use routes. You can add routes to define how users navigate from one part of your application to another.
+To define how users navigate through your application, you use routes. Add routes to define how users navigate from one part of your application to another.
 You can also configure routes to guard against unexpected or unauthorized behavior.
 
-为了定义用户如何在应用中导航，你可以使用路由。你可以添加一些路由来定义用户如何从应用的某个部分导航到另一部分。你也可以配置一些路由来防范意外或未经授权的行为。
+为了定义用户如何在应用中导航，你可以使用路由。可以添加一些路由来定义用户如何从应用的某个部分导航到另一部分。也可以配置一些路由来防范意外或未经授权的行为。
 
-To explore a sample app featuring the contents of this tutorial, see the <live-example></live-example>.
+To explore a sample application featuring the contents of this tutorial, see the <live-example></live-example>.
 
 要探索本教程的范例应用，请参阅<live-example></live-example>。
 
@@ -160,7 +160,7 @@ Using the Angular CLI, create a new application, _angular-router-sample_. This a
 
 ## 从 `@angular/router` 导入 `RouterModule`
 
-Routing allows you to display specific views of your application depending on the URL path.
+Routing lets you display specific views of your application depending on the URL path.
 To add this functionality to your sample application, you need to update the `app.module.ts` file to use the module, `RouterModule`.
 You import this module from `@angular/router`.
 
@@ -213,7 +213,7 @@ what component your application should display for that path.
    <code-example header="src/app/app.module.ts" path="router-tutorial/src/app/app.module.ts" region="import-basic"></code-example>
 
 This code adds the `RouterModule` to the `imports` array. Next, the code uses the `forRoot()` method of the `RouterModule` to
-define your two routes. This method takes an array of JavaScript objects, with each object defining the proprties of a route.
+define your two routes. This method takes an array of JavaScript objects, with each object defining the properties of a route.
 The `forRoot()` method ensures that your application only instantiates one `RouterModule`. For more information, see
 [Singleton Services](/guide/singleton-services#forroot-and-the-router).
 
@@ -308,10 +308,10 @@ on a link, the corresponding component appears.
 ## 标出活动路由
 
 While users can navigate your application using the links you added in the previous section,
-they don't have an easy way to identify what the active route is. You can add this functionality
+they don't have a straightforward way to identify what the active route is. Add this functionality
 using Angular's `routerLinkActive` directive.
 
-虽然用户可以使用上一节中添加的链接来浏览你的应用，但他们并没有简单的方法来确定活动路由是什么。可以使用 Angular 的 `routerLinkActive` 指令添加这个功能。
+虽然用户可以使用上一节中添加的链接来浏览你的应用，但他们并没有简单的方法来确定活动路由是什么。可以用 Angular 的 `routerLinkActive` 指令添加这个功能。
 
 1. From your code editor, open the `app.component.html` file.
 

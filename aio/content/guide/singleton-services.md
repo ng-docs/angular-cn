@@ -2,11 +2,11 @@
 
 # 单例服务
 
-A singleton service is a service for which only one instance exists in an app.
+A singleton service is a service for which only one instance exists in an application.
 
 单例服务是指在应用中只存在一个实例的服务。
 
-For a sample app using the app-wide singleton service that this page describes, see the
+For a sample application using the app-wide singleton service that this page describes, see the
 <live-example name="ngmodules"></live-example> showcasing all the documented features of NgModules.
 
 本页中描述的这种全应用级单例服务的例子位于<live-example name="ngmodules"></live-example>，它示范了 NgModule 的所有已文档化的特性。
@@ -49,7 +49,7 @@ For more detailed information on services, see the [Services](tutorial/toh-pt4) 
 
 ### NgModule 的 `providers` 数组
 
-In apps built with Angular versions prior to 6.0, services are registered NgModule `providers` arrays as follows:
+In applications built with Angular versions prior to 6.0, services are registered NgModule `providers` arrays as follows:
 
 在基于 Angular 6.0 以前的版本构建的应用中，服务是注册在 NgModule 的 `providers` 数组中的，就像这样：
 
@@ -63,7 +63,7 @@ In apps built with Angular versions prior to 6.0, services are registered NgModu
 ```
 
 If this NgModule were the root `AppModule`, the `UserService` would be a singleton and available
-throughout the app. Though you may see it coded this way, using the `providedIn` property of the `@Injectable()` decorator on the service itself is preferable as of Angular 6.0 as it makes your services tree-shakable.
+throughout the application. Though you may see it coded this way, using the `providedIn` property of the `@Injectable()` decorator on the service itself is preferable as of Angular 6.0 as it makes your services tree-shakable.
 
 如果这个 NgModule 是根模块 `AppModule`，此 `UserService` 就会是单例的，并且在整个应用中都可用。虽然你可能会看到这种形式的代码，但是最好使用在服务自身的 `@Injectable()` 装饰器上设置 `providedIn` 属性的形式，因为 Angular 6.0 可以对这些服务进行摇树优化。
 
@@ -101,7 +101,7 @@ There are multiple ways to prevent this:
 
 <div class="alert is-helpful">
 
-**Note:** There are two example apps where you can see this scenario; the more advanced <live-example noDownload name="ngmodules">NgModules live example</live-example>, which contains `forRoot()` and `forChild()` in the routing modules and the `GreetingModule`, and the simpler <live-example name="lazy-loading-ngmodules" noDownload>Lazy Loading live example</live-example>. For an introductory explanation see the [Lazy Loading Feature Modules](guide/lazy-loading-ngmodules) guide.
+**Note:** There are two example applications where you can see this scenario; the more advanced <live-example noDownload name="ngmodules">NgModules live example</live-example>, which contains `forRoot()` and `forChild()` in the routing modules and the `GreetingModule`, and the simpler <live-example name="lazy-loading-ngmodules" noDownload>Lazy Loading live example</live-example>. For an introductory explanation see the [Lazy Loading Feature Modules](guide/lazy-loading-ngmodules) guide.
 
 **注意：**有两个范例应用可以让你查看这种情况，更高级的方式参阅 <live-example noDownload name="ngmodules">NgModules 现场演练</live-example>，它在路由模块中包含 `forRoot()` 和 `forChild()`，而 `GreetingModule` 是一个比较简单的<live-example name="lazy-loading-ngmodules" noDownload>惰性加载范例</live-example>。在[惰性加载模块](guide/lazy-loading-ngmodules)中有简要的解释。
 
@@ -141,7 +141,7 @@ If the `RouterModule` didn’t have `forRoot()` then each feature module would i
 
 **Note:** If you have a module which has both providers and declarations,
 you _can_ use this
-technique to separate them out and you may see this pattern in legacy apps.
+technique to separate them out and you may see this pattern in legacy applications.
 However, since Angular 6.0, the best practice for providing services is with the
 `@Injectable()` `providedIn` property.
 
@@ -179,7 +179,7 @@ of imported modules.
 
 在这个 <live-example name="ngmodules">现场演练</live-example>中，根模块 `AppModule` 导入了 `GreetingModule`，并把它的 `providers` 添加到了 `AppModule` 的服务提供者列表中。特别是，Angular 会把所有从其它模块导入的提供者追加到本模块的 `@NgModule.providers` 中列出的提供者之前。这种顺序可以确保你在 `AppModule` 的 `providers` 中显式列出的提供者，其优先级高于导入模块中给出的提供者。
 
-The sample app imports `GreetingModule` and uses its `forRoot()` method one time, in `AppModule`. Registering it once like this prevents multiple instances.
+The sample application imports `GreetingModule` and uses its `forRoot()` method one time, in `AppModule`. Registering it once like this prevents multiple instances.
 
 在这个范例应用中，导入 `GreetingModule`，并只在 `AppModule` 中调用一次它的 `forRoot()` 方法。像这样注册它一次就可以防止出现多个实例。
 
@@ -208,7 +208,7 @@ snippet, other parts of the file are left out. For the complete file, see the <l
 
 <code-example path="ngmodules/src/app/app.module.ts" region="import-for-root" header="src/app/app.module.ts (imports)"></code-example>
 
-The app displays "Miss Marple" as the user instead of the default "Sherlock Holmes".
+The application displays "Miss Marple" as the user instead of the default "Sherlock Holmes".
 
 该应用不再显示默认的 “Sherlock Holmes”，而是用 “Miss Marple” 作为用户名称。
 
@@ -221,7 +221,7 @@ Remember to import `GreetingModule` as a Javascript import at the top of the fil
 ## 防止重复导入 `GreetingModule`
 
 Only the root `AppModule` should import the `GreetingModule`. If a
-lazy-loaded module imports it too, the app can generate
+lazy-loaded module imports it too, the application can generate
 [multiple instances](guide/ngmodule-faq#q-why-bad) of a service.
 
 只有根模块 `AppModule` 才能导入 `GreetingModule`。如果一个惰性加载模块也导入了它，

@@ -155,7 +155,7 @@ Detect and act upon changes to input property values with the `ngOnChanges()` me
 
 <div class="alert is-helpful">
 
-You may prefer this approach to the property setter when watching multiple, interacting input properties.
+You might prefer this approach to the property setter when watching multiple, interacting input properties.
 
 当需要监视多个、交互式输入属性的时候，本方法比用属性的 setter 更合适。
 
@@ -265,12 +265,12 @@ Test that clicking the *Agree* and *Disagree* buttons update the appropriate cou
 
 [回到顶部](guide/component-interaction#top)
 
-## Parent interacts with child via *local variable*
+## Parent interacts with child using *local variable*
 
 ## 父组件与子组件通过*本地变量*互动
 
 A parent component cannot use data binding to read child properties
-or invoke child methods. You can do both
+or invoke child methods. Do both
 by creating a template reference variable for the child element
 and then reference that variable *within the parent template*
 as seen in the following example.
@@ -280,8 +280,8 @@ as seen in the following example.
 {@a countdown-timer-example}
 
 The following is a child `CountdownTimerComponent` that repeatedly counts down to zero and launches a rocket.
-It has `start` and `stop` methods that control the clock and it displays a
-countdown status message in its own template.
+The `start` and `stop` methods control the clock and a 
+countdown status message displays in its own template.
 
 子组件 `CountdownTimerComponent` 进行倒计时，归零时发射一个导弹。`start` 和 `stop` 方法负责控制时钟并在模板里显示倒计时的状态信息。
 
@@ -302,7 +302,7 @@ The parent component cannot data bind to the child's
 
 父组件不能通过数据绑定使用子组件的 `start` 和 `stop` 方法，也不能访问子组件的 `seconds` 属性。
 
-You can place a local variable, `#timer`, on the tag `<countdown-timer>` representing the child component.
+Place a local variable, `#timer`, on the tag `<countdown-timer>` representing the child component.
 That gives you a reference to the child component and the ability to access
 *any of its properties or methods* from within the parent template.
 
@@ -313,7 +313,7 @@ uses interpolation to display the child's `seconds` property.
 
 这个例子把父组件的按钮绑定到子组件的 `start` 和 `stop` 方法，并用插值来显示子组件的 `seconds` 属性。
 
-Here we see the parent and child working together.
+Here, the parent and child are working together.
 
 下面是父组件和子组件一起工作时的效果。
 
@@ -347,16 +347,20 @@ Test also that clicking the *Stop* button pauses the countdown timer:
 
 ## 父组件调用*@ViewChild()*
 
-The *local variable* approach is simple and easy. But it is limited because
+The *local variable* approach is straightforward. But it is limited because
 the parent-child wiring must be done entirely within the parent template.
 The parent component *itself* has no access to the child.
 
-这个*本地变量*方法是个简单便利的方法。但是它也有局限性，因为父组件-子组件的连接必须全部在父组件的模板中进行。父组件本身的代码对子组件没有访问权。
+这个*本地变量*方法是个简单明了的方法。但是它也有局限性，因为父组件-子组件的连接必须全部在父组件的模板中进行。父组件本身的代码对子组件没有访问权。
 
-You can't use the *local variable* technique if an instance of the parent component *class*
-must read or write child component values or must call child component methods.
+You can't use the *local variable* technique if the parent component's *class* relies on the
+child component's *class*. The parent-child relationship of the components is not established
+within each components respective *class* with the *local variable* technique. Because the *class*
+instances are not connected to one another, the parent *class* cannot access the child *class*
+properties and methods.
 
-如果父组件的*类*需要读取子组件的属性值或调用子组件的方法，就不能使用*本地变量*方法。
+如果父组件的*类*需要依赖于子组件类，就不能使用*本地变量*方法。组件之间的父子关系
+组件的父子关系不能通过在每个组件的*类*中各自定义*本地变量*来建立。这是因为这两个*类*的实例互相不知道，因此父*类*也就不能访问子*类*中的属性和方法。
 
 When the parent component *class* requires that kind of access,
 ***inject*** the child component into the parent as a *ViewChild*.
@@ -365,7 +369,7 @@ When the parent component *class* requires that kind of access,
 
 The following example illustrates this technique with the same
 [Countdown Timer](guide/component-interaction#countdown-timer-example) example.
-Neither its appearance nor its behavior will change.
+Neither its appearance nor its behavior changes.
 The child [CountdownTimerComponent](guide/component-interaction#countdown-timer-example) is the same as well.
 
 下面的例子用与[倒计时](guide/component-interaction#countdown-timer-example)相同的范例来解释这种技术。
@@ -397,7 +401,7 @@ First, you have to import references to the `ViewChild` decorator and the `After
 首先，你必须导入对装饰器 `ViewChild` 以及生命周期钩子 `AfterViewInit` 的引用。
 
 Next, inject the child `CountdownTimerComponent` into the private `timerComponent` property
-via the `@ViewChild` property decoration.
+using the `@ViewChild` property decoration.
 
 接着，通过 `@ViewChild` 属性装饰器，将子组件 `CountdownTimerComponent` 注入到私有属性 `timerComponent` 里面。
 
@@ -420,7 +424,7 @@ So it displays `0` seconds initially.
 Then Angular calls the `ngAfterViewInit` lifecycle hook at which time it is *too late*
 to update the parent view's display of the countdown seconds.
 Angular's unidirectional data flow rule prevents updating the parent view's
-in the same cycle. The app has to *wait one turn* before it can display the seconds.
+in the same cycle. The application must *wait one turn* before it can display the seconds.
 
 然后 Angular 会调用 `ngAfterViewInit` 生命周期钩子，但这时候再更新父组件视图的倒计时就已经太晚了。Angular 的单向数据流规则会阻止在同一个周期内更新父组件视图。应用在显示秒数之前会被迫*再等一轮*。
 
@@ -443,7 +447,7 @@ Use [the same countdown timer tests](guide/component-interaction#countdown-tests
 
 {@a bidirectional-service}
 
-## Parent and children communicate via a service
+## Parent and children communicate using a service
 
 ## 父组件和子组件通过服务来通讯
 
@@ -486,8 +490,8 @@ Each `AstronautComponent` is a child of the `MissionControlComponent` and theref
 <div class="alert is-helpful">
 
 Notice that this example captures the `subscription` and `unsubscribe()` when the `AstronautComponent` is destroyed.
-This is a memory-leak guard step. There is no actual risk in this app because the
-lifetime of a `AstronautComponent` is the same as the lifetime of the app itself.
+This is a memory-leak guard step. There is no actual risk in this application because the
+lifetime of a `AstronautComponent` is the same as the lifetime of the application itself.
 That *would not* always be true in a more complex application.
 
 注意，这个例子保存了 `subscription` 变量，并在 `AstronautComponent` 被销毁时调用 `unsubscribe()` 退订。

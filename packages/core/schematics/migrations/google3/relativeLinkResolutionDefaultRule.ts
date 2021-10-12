@@ -7,14 +7,14 @@
  */
 
 import {RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {RelativeLinkResolutionCollector} from '../relative-link-resolution/collector';
 import {TslintUpdateRecorder} from '../relative-link-resolution/google3/tslint_update_recorder';
 import {RelativeLinkResolutionTransform} from '../relative-link-resolution/transform';
 
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const typeChecker = program.getTypeChecker();
     const ruleName = this.ruleName;
     const sourceFiles = program.getSourceFiles().filter(

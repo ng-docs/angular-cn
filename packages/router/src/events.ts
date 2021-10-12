@@ -41,12 +41,14 @@ export type NavigationTrigger = 'imperative'|'popstate'|'hashchange';
  * 以下代码演示了一个类是如何订阅路由器事件的。
  *
  * ```ts
+ * import {Event, RouterEvent, Router} from '@angular/router';
+ *
  * class MyService {
- *   constructor(public router: Router, logger: Logger) {
+ *   constructor(public router: Router) {
  *     router.events.pipe(
  *        filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
  *     ).subscribe((e: RouterEvent) => {
- *       logger.log(e.id, e.url);
+ *       // Do something
  *     });
  *   }
  * }
@@ -129,7 +131,7 @@ export class NavigationStart extends RouterEvent {
   }
 
   /** @docsNotRequired */
-  toString(): string {
+  override toString(): string {
     return `NavigationStart(id: ${this.id}, url: '${this.url}')`;
   }
 }
@@ -157,7 +159,7 @@ export class NavigationEnd extends RouterEvent {
   }
 
   /** @docsNotRequired */
-  toString(): string {
+  override toString(): string {
     return `NavigationEnd(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${
         this.urlAfterRedirects}')`;
   }
@@ -165,7 +167,7 @@ export class NavigationEnd extends RouterEvent {
 
 /**
  * An event triggered when a navigation is canceled, directly or indirectly.
- * This can happen when a route guard
+ * This can happen for several reasons including when a route guard
  * returns `false` or initiates a redirect by returning a `UrlTree`.
  *
  * 直接或间接取消导航时触发的事件。当路由守卫返回了 `false`，或返回了 `UrlTree` 以发起重定向时，可能会发生这种情况。
@@ -188,7 +190,7 @@ export class NavigationCancel extends RouterEvent {
   }
 
   /** @docsNotRequired */
-  toString(): string {
+  override toString(): string {
     return `NavigationCancel(id: ${this.id}, url: '${this.url}')`;
   }
 }
@@ -216,7 +218,7 @@ export class NavigationError extends RouterEvent {
   }
 
   /** @docsNotRequired */
-  toString(): string {
+  override toString(): string {
     return `NavigationError(id: ${this.id}, url: '${this.url}', error: ${this.error})`;
   }
 }
@@ -242,7 +244,7 @@ export class RoutesRecognized extends RouterEvent {
   }
 
   /** @docsNotRequired */
-  toString(): string {
+  override toString(): string {
     return `RoutesRecognized(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${
         this.urlAfterRedirects}', state: ${this.state})`;
   }
@@ -270,7 +272,7 @@ export class GuardsCheckStart extends RouterEvent {
     super(id, url);
   }
 
-  toString(): string {
+  override toString(): string {
     return `GuardsCheckStart(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${
         this.urlAfterRedirects}', state: ${this.state})`;
   }
@@ -300,7 +302,7 @@ export class GuardsCheckEnd extends RouterEvent {
     super(id, url);
   }
 
-  toString(): string {
+  override toString(): string {
     return `GuardsCheckEnd(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${
         this.urlAfterRedirects}', state: ${this.state}, shouldActivate: ${this.shouldActivate})`;
   }
@@ -335,7 +337,7 @@ export class ResolveStart extends RouterEvent {
     super(id, url);
   }
 
-  toString(): string {
+  override toString(): string {
     return `ResolveStart(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${
         this.urlAfterRedirects}', state: ${this.state})`;
   }
@@ -365,7 +367,7 @@ export class ResolveEnd extends RouterEvent {
     super(id, url);
   }
 
-  toString(): string {
+  override toString(): string {
     return `ResolveEnd(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${
         this.urlAfterRedirects}', state: ${this.state})`;
   }
@@ -566,7 +568,7 @@ export class Scroll {
  *   [ResolveStart](api/router/ResolveStart) ：路由器开始*路由的解析*阶段时。
  *
  * * [ResolveEnd](api/router/ResolveEnd): When the router finishes the *resolve*
- * phase of routing successfuly.
+ * phase of routing successfully.
  *
  *   [ResolveEnd](api/router/ResolveEnd) ：当路由器*成功完成路由的解析*阶段时。
  *

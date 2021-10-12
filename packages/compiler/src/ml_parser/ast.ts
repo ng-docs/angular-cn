@@ -9,6 +9,7 @@
 import {AstPath} from '../ast_path';
 import {I18nMeta} from '../i18n/i18n_ast';
 import {ParseSourceSpan} from '../parse_util';
+import {InterpolatedAttributeToken, InterpolatedTextToken} from './tokens';
 
 interface BaseNode {
   sourceSpan: ParseSourceSpan;
@@ -23,10 +24,12 @@ export abstract class NodeWithI18n implements BaseNode {
 }
 
 export class Text extends NodeWithI18n {
-  constructor(public value: string, sourceSpan: ParseSourceSpan, i18n?: I18nMeta) {
+  constructor(
+      public value: string, sourceSpan: ParseSourceSpan, public tokens: InterpolatedTextToken[],
+      i18n?: I18nMeta) {
     super(sourceSpan, i18n);
   }
-  visit(visitor: Visitor, context: any): any {
+  override visit(visitor: Visitor, context: any): any {
     return visitor.visitText(this, context);
   }
 }
@@ -37,7 +40,7 @@ export class Expansion extends NodeWithI18n {
       sourceSpan: ParseSourceSpan, public switchValueSourceSpan: ParseSourceSpan, i18n?: I18nMeta) {
     super(sourceSpan, i18n);
   }
-  visit(visitor: Visitor, context: any): any {
+  override visit(visitor: Visitor, context: any): any {
     return visitor.visitExpansion(this, context);
   }
 }
@@ -55,11 +58,11 @@ export class ExpansionCase implements BaseNode {
 export class Attribute extends NodeWithI18n {
   constructor(
       public name: string, public value: string, sourceSpan: ParseSourceSpan,
-      readonly keySpan: ParseSourceSpan|undefined, public valueSpan?: ParseSourceSpan,
-      i18n?: I18nMeta) {
+      readonly keySpan: ParseSourceSpan|undefined, public valueSpan: ParseSourceSpan|undefined,
+      public valueTokens: InterpolatedAttributeToken[]|undefined, i18n: I18nMeta|undefined) {
     super(sourceSpan, i18n);
   }
-  visit(visitor: Visitor, context: any): any {
+  override visit(visitor: Visitor, context: any): any {
     return visitor.visitAttribute(this, context);
   }
 }
@@ -71,7 +74,7 @@ export class Element extends NodeWithI18n {
       public endSourceSpan: ParseSourceSpan|null = null, i18n?: I18nMeta) {
     super(sourceSpan, i18n);
   }
-  visit(visitor: Visitor, context: any): any {
+  override visit(visitor: Visitor, context: any): any {
     return visitor.visitElement(this, context);
   }
 }

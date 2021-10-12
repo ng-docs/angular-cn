@@ -6,8 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {forwardRefResolver} from '@angular/compiler-cli/src/ngtsc/annotations';
+import {Reference} from '@angular/compiler-cli/src/ngtsc/imports';
+import {DynamicValue, PartialEvaluator} from '@angular/compiler-cli/src/ngtsc/partial_evaluator';
+import {StaticInterpreter} from '@angular/compiler-cli/src/ngtsc/partial_evaluator/src/interpreter';
+import {reflectObjectLiteral, TypeScriptReflectionHost} from '@angular/compiler-cli/src/ngtsc/reflection';
 import {RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {NgDefinitionCollector} from '../missing-injectable/definition_collector';
 import {TslintUpdateRecorder} from '../missing-injectable/google3/tslint_update_recorder';
@@ -21,7 +26,7 @@ import {MissingInjectableTransform} from '../missing-injectable/transform';
  * Angular decorator (e.g. "@Injectable").
  */
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const ruleName = this.ruleName;
     const typeChecker = program.getTypeChecker();
     const sourceFiles = program.getSourceFiles().filter(
@@ -34,7 +39,15 @@ export class Rule extends Rules.TypedRule {
     sourceFiles.forEach(sourceFile => definitionCollector.visitNode(sourceFile));
 
     const {resolvedModules, resolvedDirectives} = definitionCollector;
-    const transformer = new MissingInjectableTransform(typeChecker, getUpdateRecorder);
+    const transformer = new MissingInjectableTransform(typeChecker, getUpdateRecorder, {
+      Reference,
+      DynamicValue,
+      PartialEvaluator,
+      StaticInterpreter,
+      TypeScriptReflectionHost,
+      forwardRefResolver,
+      reflectObjectLiteral,
+    });
     const updateRecorders = new Map<ts.SourceFile, TslintUpdateRecorder>();
 
     [...transformer.migrateModules(resolvedModules),

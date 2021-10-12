@@ -296,7 +296,7 @@ export class HttpHeaderResponse extends HttpResponseBase {
     super(init);
   }
 
-  readonly type: HttpEventType.ResponseHeader = HttpEventType.ResponseHeader;
+  override readonly type: HttpEventType.ResponseHeader = HttpEventType.ResponseHeader;
 
   /**
    * Copy this `HttpHeaderResponse`, overriding its contents with the
@@ -354,7 +354,7 @@ export class HttpResponse<T> extends HttpResponseBase {
     this.body = init.body !== undefined ? init.body : null;
   }
 
-  readonly type: HttpEventType.Response = HttpEventType.Response;
+  override readonly type: HttpEventType.Response = HttpEventType.Response;
 
   clone(): HttpResponse<T>;
   clone(update: {headers?: HttpHeaders; status?: number; statusText?: string; url?: string;}):
@@ -411,7 +411,7 @@ export class HttpErrorResponse extends HttpResponseBase implements Error {
    *
    * 只要是错误，其 `ok` 就永远为 `false`，就算其 HTTP 状态码是 2xx 也一样。
    */
-  readonly ok = false;
+  override readonly ok = false;
 
   constructor(init: {
     error?: any;

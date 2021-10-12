@@ -71,7 +71,7 @@ For example, if the `@Input()` property is `size`, the `@Output()` property must
 
 The following `sizerComponent` has a `size` value property and a `sizeChange` event.
 The `size` property is an `@Input()`, so data can flow into the `sizerComponent`.
-The `sizeChange` event is an `@Output()`, which allows data to flow out of the `sizerComponent` to the parent component.
+The `sizeChange` event is an `@Output()`, which lets data flow out of the `sizerComponent` to the parent component.
 
 后面的 `sizerComponent` 具有值属性 `size` 和事件属性 `sizeChange`。 `size` 属性是 `@Input()`，因此数据可以流入 `sizerComponent` 。 `sizeChange` 事件是一个 `@Output()` ，它允许数据从 `sizerComponent` 流出到父组件。
 
@@ -126,7 +126,7 @@ Angular assigns the `$event` value to the `AppComponent.fontSizePx` when the use
   
   <header>表单中的双向绑定</header>
 
-  Because no native HTML element follows the `x` value and `xChange` event pattern, two-way binding with form elements requires `NgModel`.
+  Because no built-in HTML element follows the `x` value and `xChange` event pattern, two-way binding with form elements requires `NgModel`.
   For more information on how to use two-way binding in forms, see Angular [NgModel](guide/built-in-directives#ngModel).
 
   因为没有任何原生 HTML 元素遵循了 `x` 值和 `xChange` 事件的命名模式，所以与表单元素进行双向绑定需要使用 `NgModel`。关于如何在表单中使用双向绑定的更多信息，请参见 Angular [NgModel](guide/built-in-directives#ngModel) 。

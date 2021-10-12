@@ -1,13 +1,15 @@
 name: Feature request triage bot
 
-on: [workflow_dispatch]
+on:
+  schedule:
+    # Run at 14:00 every day
+    - cron: '0 14 * * *'
 
 jobs:
   feature_triage:
     if: github.repository == 'angular/angular'
     runs-on: ubuntu-latest
     steps:
-      - uses: angular/dev-infra/github-actions/feature-request@34dd2e86e50f548643797ebeb198784c1a15e276
+      - uses: angular/dev-infra/github-actions/feature-request@f83903fe1ac848407ef81465f66588e5accb6537
         with:
           angular-robot-key: ${{ secrets.ANGULAR_ROBOT_PRIVATE_KEY }}
-          limit: 50

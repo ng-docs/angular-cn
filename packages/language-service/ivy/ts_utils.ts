@@ -5,7 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 /**
  * Return the node that most tightly encompasses the specified `position`.
@@ -88,7 +88,7 @@ export function collectMemberMethods(
   const members: ts.MethodDeclaration[] = [];
   const apparentProps = typeChecker.getTypeAtLocation(clazz).getApparentProperties();
   for (const prop of apparentProps) {
-    if (ts.isMethodDeclaration(prop.valueDeclaration) && prop.valueDeclaration) {
+    if (prop.valueDeclaration && ts.isMethodDeclaration(prop.valueDeclaration)) {
       members.push(prop.valueDeclaration);
     }
   }

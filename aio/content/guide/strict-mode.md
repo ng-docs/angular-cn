@@ -12,9 +12,9 @@ Additionally, strict mode applications are easier to statically analyze and can 
 严格模式会增强可维护性，并且帮助你捕获各种 AOT 的 BUG。
 另外，严格模式的应用还易于进行静态分析，并且当你未来要升级到 Angular 的未来版本时，能帮助 `ng update` 命令的重构代码更加安全和精确，
 
-Specifically, strict mode does the following:
+Specifically, strict mode affects newly generated applications in the following way:
 
-具体来说， `strict` 标志执行以下操作：
+具体来说， `strict` 标志会在以下几方面影响新生成的应用：
 
 * Enables [`strict` mode in TypeScript](https://www.typescriptlang.org/tsconfig#strict), as well as other strictness flags recommended by the TypeScript team. Specifically, `forceConsistentCasingInFileNames`, `noImplicitReturns`,  `noFallthroughCasesInSwitch`.
 
@@ -24,9 +24,9 @@ Specifically, strict mode does the following:
 
   打开 Angular 编译器的严格性标志 [`strictTemplates`](guide/angular-compiler-options#stricttemplates)、[`strictInjectionParameters`](guide/angular-compiler-options#strictinjectionparameters) 和 [`strictInputAccessModifiers`](guide/template-typecheck#troubleshooting-template-errors)。
 
-* [Bundle size budgets](guide/build#configuring-size-budgets) have been reduced by ~75%.
+* Reduces the [bundle size budgets](guide/build#configuring-size-budgets) for the `initial` and `anyComponentStyle` budget types by 75% compared to the previous defaults.
 
-  [打包尺寸预算](guide/build#configuring-size-budgets)减少了约 75％。
+  相对于以前的默认值，把 `initial` 和 `anyComponentStyle`  的[打包尺寸预算](guide/build#configuring-size-budgets)缩小了约 75％。
 
 You can apply these settings at the workspace and project level.
 

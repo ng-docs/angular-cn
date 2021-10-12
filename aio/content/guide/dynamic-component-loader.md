@@ -8,7 +8,7 @@
 
 </div>
 
-Component templates are not always fixed. An application may need to load new components at runtime.
+Component templates are not always fixed. An application might need to load new components at runtime.
 
 组件的模板不会永远是固定的。应用可能会需要在运行期间加载一些新的组件。
 
@@ -54,7 +54,7 @@ Angular 自带的 API 就能支持动态加载组件。
 
 ## 指令
 
-Before you can add components you have to define an anchor point
+Before adding components, you have to define an anchor point
 to tell Angular where to insert components.
 
 在添加组件之前，先要定义一个锚点来告诉 Angular 要把组件插入到什么地方。
@@ -243,3 +243,5 @@ Here are two sample components and the `AdComponent` interface for reference:
 See the <live-example name="dynamic-component-loader"></live-example>.
 
 参阅<live-example name="dynamic-component-loader"></live-example>。
+
+@reviewed 2021-09-17

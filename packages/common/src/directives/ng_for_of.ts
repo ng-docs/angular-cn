@@ -215,30 +215,22 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
     this._ngForOfDirty = true;
   }
   /**
-   * A function that defines how to track changes for items in the iterable.
+   * Specifies a custom `TrackByFunction` to compute the identity of items in an iterable.
    *
-   * 定义如何跟踪可迭代项的更改的函数。
+   * If a custom `TrackByFunction` is not provided, `NgForOf` will use the item's [object
+   * identity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
+   * as the key.
    *
-   * When items are added, moved, or removed in the iterable,
-   * the directive must re-render the appropriate DOM nodes.
-   * To minimize churn in the DOM, only nodes that have changed
-   * are re-rendered.
+   * `NgForOf` uses the computed key to associate items in an iterable with DOM elements
+   * it produces for these items.
    *
-   * 在迭代器中添加、移动或删除条目时，指令必须重新渲染适当的 DOM 节点。为了最大程度地减少 DOM 中的搅动，仅重新渲染已更改的节点。
+   * A custom `TrackByFunction` is useful to provide good user experience in cases when items in an
+   * iterable rendered using `NgForOf` have a natural identifier (for example, custom ID or a
+   * primary key), and this iterable could be updated with new object instances that still
+   * represent the same underlying entity (for example, when data is re-fetched from the server,
+   * and the iterable is recreated and re-rendered, but most of the data is still the same).
    *
-   * By default, the change detector assumes that
-   * the object instance identifies the node in the iterable.
-   * When this function is supplied, the directive uses
-   * the result of calling this function to identify the item node,
-   * rather than the identity of the object itself.
-   *
-   * 默认情况下，变更检测器假定对象实例标识可迭代对象。提供此函数后，指令将使用调用此函数的结果来标识项节点，而不是对象本身的标识。
-   *
-   * The function receives two inputs,
-   * the iteration index and the associated node data.
-   *
-   * 该函数接收两个输入，即迭代索引和关联的节点数据。
-   *
+   * @see `TrackByFunction`
    */
   @Input()
   set ngForTrackBy(fn: TrackByFunction<T>) {

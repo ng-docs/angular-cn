@@ -7,7 +7,7 @@
  */
 
 import {compileClassMetadata, compileDeclareClassMetadata, compileDeclarePipeFromMetadata, compilePipeFromMetadata, FactoryTarget, R3ClassMetadata, R3PipeMetadata, Statement, WrappedNodeExpr} from '@angular/compiler';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {ErrorCode, FatalDiagnosticError} from '../../diagnostics';
 import {Reference} from '../../imports';
@@ -38,7 +38,7 @@ export class PipeSymbol extends SemanticSymbol {
     super(decl);
   }
 
-  isPublicApiAffected(previousSymbol: SemanticSymbol): boolean {
+  override isPublicApiAffected(previousSymbol: SemanticSymbol): boolean {
     if (!(previousSymbol instanceof PipeSymbol)) {
       return true;
     }
@@ -46,7 +46,7 @@ export class PipeSymbol extends SemanticSymbol {
     return this.name !== previousSymbol.name;
   }
 
-  isTypeCheckApiAffected(previousSymbol: SemanticSymbol): boolean {
+  override isTypeCheckApiAffected(previousSymbol: SemanticSymbol): boolean {
     return this.isPublicApiAffected(previousSymbol);
   }
 }

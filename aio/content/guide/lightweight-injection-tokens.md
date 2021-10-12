@@ -175,7 +175,7 @@ class LibCardComponent {
 ```
 
 In this example, the `LibCardComponent` implementation no longer refers to `LibHeaderComponent` in either the type position or the value position.
-This allows full tree shaking of `LibHeaderComponent` to take place.
+This lets full tree shaking of `LibHeaderComponent` take place.
 The `LibHeaderToken` is retained, but it is only a class declaration, with no concrete implementation. It is small and does not materially impact the application size when retained after compilation.
 
 在这个例子中， `LibCardComponent` 的实现里，`LibHeaderComponent` 既不会出现在类型的位置也不会出现在值的位置。这样就可以让 `LibHeaderComponent` 完全被摇树优化掉。`LibHeaderToken` 被留下了，但它只是一个类声明，没有具体的实现。它很小，并且在编译后保留时对应用程序的大小没有实质影响。
@@ -211,12 +211,12 @@ To summarize, the lightweight injection token pattern consists of the following.
 A component that injects a lightweight injection token might need to invoke a method in the injected class.
 Because the token is now an abstract class, and the injectable component implements that class, you must also declare an abstract method in the abstract lightweight injection token class.
 The implementation of the method (with all of its code overhead) resides in the injectable component that can be tree-shaken.
-This allows the parent to communicate with the child (if it is present) in a type-safe manner.
+This lets the parent communicate with the child (if it is present) in a type-safe manner.
 
 那些注入了轻量级注入令牌的组件可能要调用注入的类中的方法。因为令牌现在是一个抽象类，并且可注入组件实现了那个抽象类，所以你还必须在作为轻量级注入令牌的抽象类中声明一个抽象方法。该方法的实现代码（及其所有相关代码）都会留在可注入组件中，但这个组件本身仍可被摇树优化。这样就能让父组件以类型安全的方式与子组件（如果存在）进行通信。
 
 For example, the `LibCardComponent` now queries `LibHeaderToken` rather than `LibHeaderComponent`.
-The following example shows how the pattern allows `LibCardComponent` to communicate with the `LibHeaderComponent` without actually referring to `LibHeaderComponent`.
+The following example shows how the pattern lets `LibCardComponent` communicate with the `LibHeaderComponent` without actually referring to `LibHeaderComponent`.
 
 例如，`LibCardComponent` 现在要查询 `LibHeaderToken` 而不是 `LibHeaderComponent` 。这个例子展示了该模式如何让 `LibCardComponent` 与 `LibHeaderComponent` 通信，却不用实际引用 `LibHeaderComponent` 。
 

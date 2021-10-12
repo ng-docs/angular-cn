@@ -12,7 +12,7 @@ import {FormControl} from '../../model';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '../control_value_accessor';
 import {NgControl} from '../ng_control';
-import {ReactiveErrors} from '../reactive_errors';
+import {disabledAttrWarning} from '../reactive_errors';
 import {_ngModelWarning, cleanUpControl, isPropertyUpdated, selectValueAccessor, setUpControl} from '../shared';
 import {AsyncValidator, AsyncValidatorFn, Validator, ValidatorFn} from '../validators';
 
@@ -90,7 +90,7 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
   @Input('disabled')
   set isDisabled(isDisabled: boolean) {
     if (typeof ngDevMode === 'undefined' || ngDevMode) {
-      ReactiveErrors.disabledAttrWarning();
+      console.warn(disabledAttrWarning);
     }
   }
 
@@ -184,7 +184,7 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
    * 返回一个数组，该数组表示从顶级表单到此控件的路径。每个索引是该级别上控件的字符串名称。
    *
    */
-  get path(): string[] {
+  override get path(): string[] {
     return [];
   }
 
@@ -195,7 +195,7 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
    * 绑定到此指令的 `FormControl`。
    *
    */
-  get control(): FormControl {
+  override get control(): FormControl {
     return this.form;
   }
 
@@ -210,7 +210,7 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
    * 视图模型的新值。
    *
    */
-  viewToModelUpdate(newValue: any): void {
+  override viewToModelUpdate(newValue: any): void {
     this.viewModel = newValue;
     this.update.emit(newValue);
   }

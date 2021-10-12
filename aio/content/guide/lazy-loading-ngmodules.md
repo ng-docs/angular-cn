@@ -2,14 +2,14 @@
 
 # 惰性加载特性模块
 
-By default, NgModules are eagerly loaded, which means that as soon as the app loads, so do all the NgModules, whether or not they are immediately necessary. For large apps with lots of routes, consider lazy loading&mdash;a design pattern that loads NgModules as needed. Lazy loading helps keep initial
+By default, NgModules are eagerly loaded, which means that as soon as the application loads, so do all the NgModules, whether or not they are immediately necessary. For large applications with lots of routes, consider lazy loading&mdash;a design pattern that loads NgModules as needed. Lazy loading helps keep initial
 bundle sizes smaller, which in turn helps decrease load times.
 
 默认情况下，NgModule 都是急性加载的，也就是说它会在应用加载时尽快加载，所有模块都是如此，无论是否立即要用。对于带有很多路由的大型应用，考虑使用惰性加载 —— 一种按需加载 NgModule 的模式。惰性加载可以减小初始包的尺寸，从而减少加载时间。
 
 <div class="alert is-helpful">
 
-For the final sample app with two lazy-loaded modules that this page describes, see the
+For the final sample application with two lazy-loaded modules that this page describes, see the
 <live-example></live-example>.
 
 如果需要本页描述的具有两个惰性加载模块的范例应用，参阅<live-example></live-example>。
@@ -86,7 +86,7 @@ There are two main steps to setting up a lazy-loaded feature module:
 
 ### 建立应用
 
-If you don’t already have an app, you can follow the steps below to
+If you don’t already have an app, follow the following steps to
 create one with the CLI. If you already have an app, skip to
 [Configure the routes](#config-routes). Enter the following command
 where `customer-app` is the name of your app:
@@ -99,7 +99,7 @@ ng new customer-app --routing
 
 </code-example>
 
-This creates an app called `customer-app` and the `--routing` flag
+This creates an application called `customer-app` and the `--routing` flag
 generates a file called `app-routing.module.ts`, which is one of
 the files you need for setting up lazy loading for your feature module.
 Navigate into the project by issuing the command `cd customer-app`.
@@ -157,11 +157,11 @@ The import path is the relative path to the module.
 <header>String-based lazy loading</header>
 <header>基于字符串的惰性加载</header>
 
-In Angular version 8, the string syntax for the `loadChildren` route specification [was deprecated](https://angular.io/guide/deprecations#loadchildren-string-syntax) in favor of the `import()` syntax. However, you can opt into using string-based lazy loading (`loadChildren: './path/to/module#Module'`) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
+In Angular version 8, the string syntax for the `loadChildren` route specification [was deprecated](guide/deprecations#loadchildren-string-syntax) in favor of the `import()` syntax. However, you can opt into using string-based lazy loading (`loadChildren: './path/to/module#Module'`) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
 
-在 Angular 版本 8 中，`loadChildren` 路由规范的字符串语法[已弃用](https://angular.cn/guide/deprecations#loadchildren-string-syntax)，建议改用 `import()` 语法。不过，你仍然可以通过在 `tsconfig` 文件中包含惰性加载的路由来选择使用基于字符串的惰性加载（`loadChildren: './path/to/module#Module'`），这样它就会在编译时包含惰性加载的文件。
+在 Angular 版本 8 中，`loadChildren` 路由规范的字符串语法[已弃用](/guide/deprecations#loadchildren-string-syntax)，建议改用 `import()` 语法。不过，你仍然可以通过在 `tsconfig` 文件中包含惰性加载的路由来选择使用基于字符串的惰性加载（`loadChildren: './path/to/module#Module'`），这样它就会在编译时包含惰性加载的文件。
 
-By default the CLI will generate projects with stricter file inclusions intended to be used with the `import()` syntax.
+By default the CLI generates projects with stricter file inclusions intended to be used with the `import()` syntax.
 
 默认情况下，会用 CLI 生成项目，这些项目将更严格地包含旨在与 `import()` 语法一起使用的文件。
 
@@ -195,16 +195,16 @@ The `orders` route, specified with the `--route` option, is added to the `routes
 
 ### 建立 UI
 
-Though you can type the URL into the address bar, a navigation UI is easier for the user and more common.
+Though you can type the URL into the address bar, a navigation UI is straightforward for the user and more common.
 Replace the default placeholder markup in `app.component.html` with a custom nav
-so you can easily navigate to your modules in the browser:
+so you can navigate to your modules in the browser:
 
 虽然你也可以在地址栏中输入 URL，不过导航 UI 会更好用，也更常见。
-把 `app.component.html` 中的占位脚本替换成一个自定义的导航，以便你在浏览器中能轻松地在模块之间导航。
+把 `app.component.html` 中的占位脚本替换成一个自定义的导航，以便你在浏览器中能在模块之间导航。
 
 <code-example path="lazy-loading-ngmodules/src/app/app.component.html" header="app.component.html" region="app-component-template" header="src/app/app.component.html"></code-example>
 
-To see your app in the browser so far, enter the following command in the terminal window:
+To see your application in the browser so far, enter the following command in the terminal window:
 
 要想在浏览器中看到你的应用，就在终端窗口中输入下列命令：
 
@@ -286,7 +286,7 @@ The other feature module's routing module is configured similarly.
 
 ### 确认它工作正常
 
-You can check to see that a module is indeed being lazy loaded with the Chrome developer tools. In Chrome, open the dev tools by pressing `Cmd+Option+i` on a Mac or `Ctrl+Shift+j` on a PC and go to the Network Tab.
+You can check to see that a module is indeed being lazy loaded with the Chrome developer tools. In Chrome, open the developer tools by pressing `Cmd+Option+i` on a Mac or `Ctrl+Shift+j` on a PC and go to the Network Tab.
 
 你可以使用 Chrome 开发者工具来确认一下这些模块真的是惰性加载的。
 在 Chrome 中，按 `Cmd+Option+i`（Mac）或 `Ctrl+Shift+j`（PC），并选中 `Network` 页标签。
@@ -297,7 +297,7 @@ You can check to see that a module is indeed being lazy loaded with the Chrome d
 
 </div>
 
-Click on the Orders or Customers button. If you see a chunk appear, everything is wired up properly and the feature module is being lazy loaded. A chunk should appear for Orders and for Customers but will only appear once for each.
+Click on the Orders or Customers button. If you see a chunk appear, everything is wired up properly and the feature module is being lazy loaded. A chunk should appear for Orders and for Customers but only appears once for each.
 
 点击 Orders 或 Customers 按钮。如果你看到某个 chunk 文件出现了，就表示一切就绪，特性模块被惰性加载成功了。Orders 和 Customers 都应该出现一次 chunk，并且它们各自只应该出现一次。
 
@@ -355,7 +355,7 @@ For more information, see the [`forRoot()` pattern](guide/singleton-services#for
 
 ## 预加载
 
-Preloading improves UX by loading parts of your app in the background.
+Preloading improves UX by loading parts of your application in the background.
 You can preload modules or component data.
 
 预加载通过在后台加载部分应用来改进用户体验。你可以预加载模块或组件数据。
@@ -364,7 +364,7 @@ You can preload modules or component data.
 
 ### 预加载模块
 
-Preloading modules improves UX by loading parts of your app in the background so users don't have to wait for the elements to download when they activate a route.
+Preloading modules improves UX by loading parts of your application in the background so users don't have to wait for the elements to download when they activate a route.
 
 预加载模块通过在后台加载部分应用来改善用户体验，这样用户在激活路由时就无需等待下载这些元素。
 
@@ -397,10 +397,10 @@ RouterModule.forRoot(
 
 ### 预加载组件数据
 
-To preload component data, you can use a `resolver`.
+To preload component data, use a `resolver`.
 Resolvers improve UX by blocking the page load until all necessary data is available to fully display the page.
 
-要预加载组件数据，你可以使用 `resolver` 守卫。解析器通过阻止页面加载来改进用户体验，直到显示页面时的全部必要数据都可用。
+要预加载组件数据，可以用 `resolver` 守卫。解析器通过阻止页面加载来改进用户体验，直到显示页面时的全部必要数据都可用。
 
 #### Resolvers
 
@@ -416,9 +416,9 @@ With the CLI, the command to generate a service is as follows:
   ng generate service <service-name>
 </code-example>
 
-In your service, import the following router members, implement `Resolve`, and inject the `Router` service:
+In the newly-created service, implement the `Resolve` interface provided by the `@angular/router` package:
 
-在你的服务中，导入下列路由器成员，实现 `Resolve` 接口，并注入到 `Router` 服务中：
+在新创建的服务中，实现由 `@angular/router` 包提供的 `Resolve` 接口：
 
 
 <code-example header="Resolver service (excerpt)">
@@ -427,8 +427,14 @@ import { Resolve } from '@angular/router';
 
 ...
 
-export class CrisisDetailResolverService implements Resolve<> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<> {
+/* An interface that represents your data model */
+export interface Crisis {
+  id: number;
+  name: string;
+}
+
+export class CrisisDetailResolverService implements Resolve<Crisis> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Crisis> {
     // your logic goes here
   }
 }
@@ -441,7 +447,7 @@ Import this resolver into your module's routing module.
 
 <code-example header="Feature module's routing module (excerpt)">
 
-import { YourResolverService }    from './your-resolver.service';
+import { CrisisDetailResolverService } from './crisis-detail-resolver.service';
 
 </code-example>
 
@@ -454,22 +460,47 @@ Add a `resolve` object to the component's `route` configuration.
   path: '/your-path',
   component: YourComponent,
   resolve: {
-    crisis: YourResolverService
+    crisis: CrisisDetailResolverService
   }
 }
 </code-example>
 
-In the component, use an `Observable` to get the data from the `ActivatedRoute`.
+In the component's constructor, inject an instance of the `ActivatedRoute` class that represents the current route.
 
-在此组件中，使用一个 `Observable` 来从 `ActivatedRoute` 获取数据。
+在此组件的构造函数中，注入一个 `ActivatedRoute` 实例，它可以表示当前路由。
 
-<code-example header="Component (excerpt)">
-ngOnInit() {
-  this.route.data
-    .subscribe((your-parameters) => {
-      // your data-specific code goes here
-    });
+<code-example header="Component's constructor (excerpt)">
+
+import { ActivatedRoute } from '@angular/router';
+
+@Component({ ... })
+class YourComponent {
+  constructor(private route: ActivatedRoute) {}
 }
+
+</code-example>
+
+Use the injected instance of the `ActivatedRoute` class to access `data` associated with a given route.
+
+使用注入进来的 `ActivatedRoute` 类实例来访问与指定路由关联的 `data` 值。
+
+<code-example header="Component's ngOnInit lifecycle hook (excerpt)">
+
+import { ActivatedRoute } from '@angular/router';
+
+@Component({ ... })
+class YourComponent {
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.data
+      .subscribe(data => {
+        const crisis: Crisis = data.crisis;
+        // ...
+      });
+  }
+}
+
 </code-example>
 
 For more information with a working example, see the [routing tutorial section on preloading](guide/router-tutorial-toh#preloading-background-loading-of-feature-areas).
@@ -480,9 +511,9 @@ For more information with a working example, see the [routing tutorial section o
 
 ## 对惰性加载模块进行故障排除
 
-A common error when lazy-loading modules is importing common modules in multiple places within an application.  You can test for this condition by first generating the module using the Angular CLI and including the `--route route-name` parameter, where `route-name` is the name of your module. Next, generate the module without the `--route` parameter. If the Angular CLI generates an error when you use the `--route` parameter, but runs correctly without it, you may have imported the same module in multiple places.
+A common error when lazy-loading modules is importing common modules in multiple places within an application.  Test for this condition by first generating the module using the Angular CLI and including the `--route route-name` parameter, where `route-name` is the name of your module. Next, generate the module without the `--route` parameter. If the Angular CLI generates an error when you use the `--route` parameter, but runs correctly without it, you might have imported the same module in multiple places.
 
-惰性加载模块时常见的错误之一，就是在应用程序中的多个位置导入通用模块。你可以通过首先使用 Angular CLI 生成模块并包括 `--route route-name` 参数来测试这种情况，其中 `route-name` 是模块的名称。接下来，生成不带 `--route` 参数的模块。如果你用了`--route` 参数，Angular CLI 就会生成错误，但如果不使用它便可以正确运行，则可能是在多个位置导入了相同的模块。
+惰性加载模块时常见的错误之一，就是在应用程序中的多个位置导入通用模块。可以先用 Angular CLI 生成模块并包括 `--route route-name` 参数，来测试这种情况，其中 `route-name` 是模块的名称。接下来，生成不带 `--route` 参数的模块。如果你用了`--route` 参数，Angular CLI 就会生成错误，但如果不使用它便可以正确运行，则可能是在多个位置导入了相同的模块。
 
 Remember, many common Angular modules should be imported at the base of your application.
 
@@ -496,7 +527,7 @@ For more information on Angular Modules, see [NgModules](guide/ngmodules).
 
 ## 更多关于 NgModule 和路由的知识
 
-You may also be interested in the following:
+You might also be interested in the following:
 
 你可能还对下列内容感兴趣：
 

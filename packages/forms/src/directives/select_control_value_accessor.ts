@@ -165,7 +165,7 @@ export class SelectControlValueAccessor extends BuiltInControlValueAccessor impl
    *
    * @nodoc
    */
-  registerOnChange(fn: (value: any) => any): void {
+  override registerOnChange(fn: (value: any) => any): void {
     this.onChange = (valueString: string) => {
       this.value = this._getOptionValue(valueString);
       fn(this.value);

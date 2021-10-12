@@ -7,7 +7,7 @@
  */
 
 import {Replacement, RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {getImportSpecifier, replaceImport} from '../../utils/typescript/imports';
 import {closestNode} from '../../utils/typescript/nodes';
@@ -20,7 +20,7 @@ import {findRendererReferences} from '../renderer-to-renderer2/util';
  * https://hackmd.angular.io/UTzUZTnPRA-cSa_4mHyfYw
  */
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const typeChecker = program.getTypeChecker();
     const printer = ts.createPrinter();
     const failures: RuleFailure[] = [];

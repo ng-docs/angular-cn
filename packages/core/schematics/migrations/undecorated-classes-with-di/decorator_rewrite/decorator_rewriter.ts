@@ -6,9 +6,8 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {AotCompiler} from '@angular/compiler';
-import {PartialEvaluator} from '@angular/compiler-cli/src/ngtsc/partial_evaluator';
-import * as ts from 'typescript';
+import type {AotCompiler} from '@angular/compiler';
+import ts from 'typescript';
 
 import {ImportManager} from '../../../utils/import_manager';
 import {NgDecorator} from '../../../utils/ng_decorators';
@@ -35,7 +34,7 @@ export class DecoratorRewriter {
 
   constructor(
       private importManager: ImportManager, private typeChecker: ts.TypeChecker,
-      private evaluator: PartialEvaluator, private compiler: AotCompiler) {}
+      private compiler: AotCompiler) {}
 
   rewrite(ngDecorator: NgDecorator, newSourceFile: ts.SourceFile): ts.Decorator {
     const decorator = ngDecorator.node;

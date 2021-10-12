@@ -91,7 +91,7 @@ and confirm that the three `HeroBioComponent` instances have their own cached he
 When a class requires a dependency, that dependency is added to the constructor as a parameter.
 When Angular needs to instantiate the class, it calls upon the DI framework to supply the dependency.
 By default, the DI framework searches for a provider in the injector hierarchy,
-starting at the component's local injector of the component, and if necessary bubbling up
+starting at the component's local injector, and if necessary bubbling up
 through the injector tree until it reaches the root injector.
 
 当类需要某个依赖项时，该依赖项就会作为参数添加到类的构造函数中。
@@ -198,7 +198,7 @@ in the component tree includes it.
 `@Host()` 函数是构造函数属性 `heroCache` 的装饰器，确保从其父组件 `HeroBioComponent` 得到一个缓存服务。如果该父组件中没有该服务，Angular 就会抛出错误，即使组件树里的再上级有某个组件拥有这个服务，还是会抛出错误。
 
 A second `@Host()` function decorates the `loggerService` constructor property.
-The only `LoggerService` instance in the app is provided at the `AppComponent` level.
+The only `LoggerService` instance in the application is provided at the `AppComponent` level.
 The host `HeroBioComponent` doesn't have its own `LoggerService` provider.
 
 另一个 `@Host()` 函数是构造函数属性 `loggerService` 的装饰器。
@@ -230,7 +230,7 @@ with the "!!!" marker to indicate that the logger was found.
 </div>
 
 If you restore the `@Host()` decorator and comment out `@Optional`,
-the app throws an exception when it cannot find the required logger at the host component level.
+the application throws an exception when it cannot find the required logger at the host component level.
 `EXCEPTION: No provider for LoggerService! (HeroContactComponent -> LoggerService)`
 
 如果你恢复了 `@Host()` 装饰器，并且注释掉 `@Optional` 装饰器，应用就会抛出一个错误，因为它在宿主组件这一层找不到所需的 `Logger`。`EXCEPTION: No provider for LoggerService! (HeroContactComponent -> LoggerService)`

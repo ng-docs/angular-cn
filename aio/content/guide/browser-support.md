@@ -40,20 +40,6 @@ Angular 支持大多数常用浏览器，包括下列版本：
     <td>最近的两个主版本</td>
   </tr>
   <tr>
-    <td>IE</td>
-    <td>
-      11<br>
-      <em>*deprecated, see the <a href="guide/deprecations#internet-explorer-11">deprecations guide</a></em>
-    </td>
-  </tr>
-  <tr>
-    <td>IE</td>
-    <td>
-      11<br>
-      <em>*已弃用，参见 <a href="guide/deprecations#internet-explorer-11">弃用指南</a></em>
-    </td>
-  </tr>
-  <tr>
     <td>Safari</td>
     <td>2 most recent major versions</td>
   </tr>
@@ -94,17 +80,17 @@ Angular 在持续集成过程中，对每一个提交都会使用 <a href="https
 Angular is built on the latest standards of the web platform.
 Targeting such a wide range of browsers is challenging because they do not support all features of modern browsers.
 You compensate by loading polyfill scripts ("polyfills") for the browsers that you must support.
-The [table below](#polyfill-libs) identifies most of the polyfills you might need.
+See instructions on how to include polyfills into your project below.
 
 Angular 构建于 Web 平台的最新标准之上。
 要支持这么多浏览器是一个不小的挑战，因为它们不支持现代浏览器的所有特性。
 你可以通过加载腻子脚本("polyfills")来为想要支持的浏览器弥补这些特性。
-[下表](#polyfill-libs) 列出了可能用到的大多数腻子脚本。
+下面讲解了如何将腻子脚本包含到你的项目中。
 
 <div class="alert is-important">
 
 The suggested polyfills are the ones that run full Angular applications.
-You may need additional polyfills to support features not covered by this list.
+You might need additional polyfills to support features not covered by this list.
 Note that polyfills cannot magically transform an old, slow browser into a modern, fast one.
 
 这些建议的腻子脚本是运行完整 Angular 应用所需的。
@@ -112,23 +98,6 @@ Note that polyfills cannot magically transform an old, slow browser into a moder
 注意，这些腻子脚本并没有神奇的魔力来把老旧、慢速的浏览器变成现代、快速的浏览器，它只是填充了 API。
 
 </div>
-
-In Angular CLI version 8 and higher, applications are built using *differential loading*, a strategy where the CLI builds two separate bundles as part of your deployed application.
-
-在 Angular CLI 版本 8 和更高版本中，应用程序是使用*差异化加载*的方式构建的，*差异化加载*是一种策略，CLI 会构建两个单独的捆绑包作为已部署应用程序的一部分。
-
-* The first bundle contains modern ES2015 syntax, takes advantage of built-in support in modern browsers, ships less polyfills, and results in a smaller bundle size.
-
-  第一个捆绑包中包含现代 ES2015 语法，利用了现代浏览器中的内置支持，减少了 polyfill 的发布，并减小了捆绑包的大小。
-
-* The second bundle contains code in the old ES5 syntax, along with all necessary polyfills. This results in a larger bundle size, but supports older browsers.
-
-  第二个捆绑包中包含旧 ES5 语法中的代码以及所有必要的 polyfill。这会导致更大的捆绑包大小，但支持较旧的浏览器。
-
-This strategy allows you to continue to build your web application to support multiple browsers, but only load the necessary code that the browser needs.
-For more information about how this works, see [Differential Loading](guide/deployment#differential-loading) in the [Deployment guide](guide/deployment).
-
-通过此策略，你可以继续构建 Web 应用程序以支持多个浏览器，但仅加载当前浏览器所需的必要代码。关于此工作原理的更多信息，请参阅《[部署指南》](guide/deployment)中的“[差异化加载](guide/deployment#differential-loading) ”。
 
 ## Enabling polyfills with CLI projects
 
@@ -144,247 +113,13 @@ This file incorporates the mandatory and many of the optional polyfills as JavaS
 
 使用 `ng new` 命令创建项目时，会在项目文件夹中创建一个 `src/polyfills.ts` 配置文件。该文件包含许多强制性和可选腻子脚本的 JavaScript `import` 语句。
 
-* The npm packages for the [_mandatory_ polyfills](#polyfill-libs) (such as `zone.js`) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file.
+* The npm packages for the mandatory polyfills (such as `zone.js`) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file.
 
-  使用 `ng new` 创建项目时，会自动为你安装[*强制性*](#polyfill-libs) `zone.js` 的 npm 捆绑包（例如 `zone.js` ），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
+  使用 `ng new` 创建项目时，会自动为你安装一些强制性腻子脚本（例如 `zone.js` ），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
 
 * If you need an _optional_ polyfill, you must install its npm package, then uncomment or create the corresponding import statement in the `src/polyfills.ts` configuration file.
 
-  如果需要*可选的*腻子脚本，则必须安装其 npm 捆绑包，然后取消注释或在 `src/polyfills.ts` 配置文件中创建相应的 import 语句。
-
-For example, if you need the optional [web animations polyfill](https://caniuse.com/web-animation), you could install it with `npm`, using the following command (or the `yarn` equivalent):
-
-比如，如果需要可选的 [Web 动画腻子脚本](http://caniuse.com/#feat=web-animation)，则可以使用以下命令来通过 `npm`（或等效的 `yarn` ）安装它：
-
-<code-example language="sh">
-  # install the optional web animations polyfill
-  npm install --save web-animations-js
-</code-example>
-
-You can then add the import statement in the `src/polyfills.ts` file.
-For many polyfills, you can simply un-comment the corresponding `import` statement in the file, as in the following example.
-
-然后你还要在 `src/polyfills.ts` 文件中添加导入语句。
-对于大多数腻子脚本，你可以直接在此文件中反注释对应的 `import` 语句，如下所示。
-
-<code-example header="src/polyfills.ts">
-  /**
-
-  * Required to support Web Animations `@angular/platform-browser/animations`.
-
-  * Needed for: All but Chrome, Firefox and Opera. https://caniuse.com/web-animation
-  **/
-  import 'web-animations-js';  // Run `npm install --save web-animations-js`.
-</code-example>
-
-If the polyfill you want is not already in `polyfills.ts` file, add the `import` statement by hand.
-
-如果 `polyfills.ts` 文件中没有你想要的腻子脚本，请手动添加 `import` 语句。
-
-{@a polyfill-libs}
-
-### Mandatory polyfills
-
-### 强制性腻子脚本
-
-These are the polyfills required to run an Angular application on each supported browser:
-
-下表中的腻子脚本是每个浏览器中运行 Angular 应用时要用到哪些：
-
-<table>
-  <tr style="vertical-align: top">
-    <th>Browsers (Desktop & Mobile)</th>
-    <th>Polyfills Required</th>
-  </tr>
-  <tr style="vertical-align: top">
-    <th>浏览器（桌面&移动端）</th>
-    <th>所需的腻子脚本</th>
-  </tr>
-  <tr style="vertical-align: top">
-    <td>
-      Chrome, Firefox, Edge, <br>
-      Safari, Android, IE 11
-    </td>
-    <td>
-      <a href="guide/browser-support#core-es6">ES2015</a>
-    </td>
-  </tr>
-</table>
-
-### Optional browser features to polyfill
-
-### 可选浏览器特性的腻子脚本
-
-Some features of Angular may require additional polyfills.
-
-有些 Angular 特性可能需要额外的腻子脚本。
-
-<table>
-  <tr style="vertical-align: top">
-    <th>Feature</th>
-    <th>Polyfill</th>
-    <th style="width: 50%">Browsers (Desktop & Mobile)</th>
-  </tr>
-  <tr style="vertical-align: top">
-    <th>特性</th>
-    <th>腻子脚本</th>
-    <th style="width: 50%">浏览器（桌面&移动端）</th>
-  </tr>
-  <tr style="vertical-align: top">
-    <td><a href="api/animations/AnimationBuilder">AnimationBuilder</a> (Standard animation support does not require polyfills.) </td>
-    <td><a href="guide/browser-support#web-animations">Web Animations</a></td>
-    <td>If AnimationBuilder is used, enables scrubbing
-      support for IE/Edge and Safari.
-      (Chrome and Firefox support this natively).</td>
-  </tr>
-  <tr style="vertical-align: top">
-    <td><a href="api/animations/AnimationBuilder">AnimationBuilder</a>（支持标准动画不需要腻子脚本）</td>
-    <td><a href="guide/browser-support#web-animations">Web 动画</a></td>
-    <td>如果用到了 AnimationBuilder，还要启用 IE/Edge 和 Safari 的 scrubbing（擦除）支持（Chrome 和 Firefox 对此提供了原生支持）</td>
-  </tr>
-
-  <tr style="vertical-align: top">
-    <td>
-      <a href="api/common/NgClass">NgClass</a> on SVG elements
-    </td>
-    <td>
-      <a href="guide/browser-support#classlist">classList</a>
-    </td>
-    <td>
-      IE 11
-    </td>
-  </tr>
-
-  <tr style="vertical-align: top">
-    <td>
-      在 SVG 元素上的 <a href="api/common/NgClass">NgClass</a>
-    </td>
-    <td>
-      <a href="guide/browser-support#classlist">classList</a>
-    </td>
-    <td>
-      IE 11
-    </td>
-  </tr>
-
-  <tr style="vertical-align: top">
-    <td>
-      <a href="guide/router">Router</a> when using <a href="guide/router#location-strategy">hash-based routing</a>
-    </td>
-    <td>
-      <a href="guide/browser-support#core-es7-array">ES7/array</a>
-    </td>
-    <td>
-      IE 11
-    </td>
-  </tr>
-
-  <tr style="vertical-align: top">
-    <td>
-      当[路由器](guide/router)使用[基于 hash 的路由](guide/router#location-strategy)时。
-    </td>
-    <td>
-      <a href="guide/browser-support#core-es7-array">ES7/array</a>
-    </td>
-    <td>
-      IE 11
-    </td>
-  </tr>
-</table>
-
-### Suggested polyfills
-
-### 建议的腻子脚本
-
-The following polyfills are used to test the framework itself. They are a good starting point for an application.
-
-下列腻子脚本是用来测试框架本身的。它们是应用程序的优质起点。
-
-<table>
-  <tr>
-    <th>
-      Polyfill
-    </th>
-    <th>
-      License
-    </th>
-    <th>
-      Size*
-    </th>
-  </tr>
-  <tr>
-    <th>
-      腻子脚本
-    </th>
-    <th>
-      授权方式
-    </th>
-    <th>
-      大小*
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <a id='core-es7-array' href="https://github.com/zloirock/core-js/tree/v2/fn/array">ES7/array</a>
-    </td>
-    <td>
-      MIT
-    </td>
-    <td>
-      0.1KB
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a id='core-es6' href="https://github.com/zloirock/core-js">ES2015</a>
-    </td>
-    <td>
-      MIT
-    </td>
-    <td>
-      27.4KB
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a id='classlist' href="https://github.com/eligrey/classList.js">classList</a>
-    </td>
-    <td>
-      Public domain
-    </td>
-    <td>
-      1KB
-    </td>
-  </tr>
-  <tr>
-    <td>
-       <a id='web-animations' href="https://github.com/web-animations/web-animations-js">Web Animations</a>
-    </td>
-    <td>
-      Apache
-    </td>
-    <td>
-      14.8KB
-    </td>
-  </tr>
-  <tr>
-    <td>
-       <a id='web-animations' href="https://github.com/web-animations/web-animations-js">Web 动画</a>
-    </td>
-    <td>
-      Apache
-    </td>
-    <td>
-      14.8KB
-    </td>
-  </tr>
-</table>
-
-\* Figures are for minified and gzipped code,
-computed with the [closure compiler](https://closure-compiler.appspot.com/home).
-
-\* 这里的数据都按最小化并且 gzip 压缩后的版本算，是由<a href="http://closure-compiler.appspot.com/home">closure compiler</a>计算出的。
+  如果你需要一个**可选的**填充库，就必须安装它们的 npm 包，然后在 `src/polyfills.ts` 文件中反注释或创建一个对应的导入语句。
 
 {@a non-cli}
 
@@ -403,7 +138,6 @@ For example:
 <code-example header="src/index.html" language="html">
   &lt;!-- pre-zone polyfills -->
   &lt;script src="node_modules/core-js/client/shim.min.js">&lt;/script>
-  &lt;script src="node_modules/web-animations-js/web-animations.min.js">&lt;/script>
   &lt;script>
     /**
 
@@ -418,9 +152,9 @@ For example:
     // __zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
     /*
 
-     * in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
+     * in Edge developer tools, the addEventListener will also be wrapped by zone.js
 
-     * with the following flag, it will bypass `zone.js` patch for IE/Edge
+     * with the following flag, it will bypass `zone.js` patch for Edge
      */
     // __Zone_enable_cross_context_check = true;
   &lt;/script>

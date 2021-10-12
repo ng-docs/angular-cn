@@ -15,7 +15,7 @@ NgModule 是一个带有 `@NgModule` 装饰器的类。
 它会标出该模块自己的组件、指令和管道，通过 `exports` 属性公开其中的一部分，以便外部组件使用它们。
 `NgModule` 还能把一些服务提供者添加到应用的依赖注入器中。
 
-For an example app showcasing all the techniques that NgModules related pages
+For an example application showcasing all the techniques that NgModules related pages
 cover, see the <live-example></live-example>. For explanations on the individual techniques, visit the relevant NgModule pages under the NgModules
 section.
 
@@ -77,14 +77,14 @@ NgModule 的元数据会做这些：
 
    提供一些供应用中的其它组件使用的服务。
 
-Every Angular app has at least one module, the root module.
+Every Angular application has at least one module, the root module.
 You [bootstrap](guide/bootstrapping) that module to launch the application.
 
 每个 Angular 应用都至少有一个模块，也就是根模块。
 你可以[引导](guide/bootstrapping)那个模块，以启动该应用。
 
-The root module is all you need in a simple application with a few components.
-As the app grows, you refactor the root module into [feature modules](guide/feature-modules)
+The root module is all you need in an application with few components.
+As the application grows, you refactor the root module into [feature modules](guide/feature-modules)
 that represent collections of related functionality.
 You then import these modules into the root module.
 
@@ -96,7 +96,7 @@ You then import these modules into the root module.
 
 ## 基本的模块
 
-The [Angular CLI](cli) generates the following basic `AppModule` when creating a new app.
+The [Angular CLI](cli) generates the following basic `AppModule` when creating a new application.
 
 [Angular CLI](cli) 在创建新应用时会生成如下基本模块 `AppModule`。
 

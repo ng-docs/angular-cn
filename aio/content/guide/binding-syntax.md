@@ -244,7 +244,7 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
   <code-example>
     {{expression}}
     [target]="expression"
-    bind-target="expression"
+    
   </code-example>
 
 </td>
@@ -271,7 +271,7 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
 
     <code-example>
       (target)="statement"
-      on-target="statement"
+      
     </code-example>
 
   </td>
@@ -299,7 +299,7 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
 
     <code-example>
       [(target)]="expression"
-      bindon-target="expression"
+      
     </code-example>
 
   </td>

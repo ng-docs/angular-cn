@@ -22,7 +22,7 @@ Angular 是一个基于 [TypeScript](https://www.typescriptlang.org/) 构建的�
 
   一套开发工具，可帮助你开发、构建、测试和更新代码
 
-With Angular, you're taking advantage of a platform that can scale from single-developer projects to enterprise-level applications. Angular is designed to make updating as easy as possible, so you can take advantage of the latest developments with a minimum of effort. Best of all, the Angular ecosystem consists of a diverse group of over 1.7 million developers, library authors, and content creators.
+With Angular, you're taking advantage of a platform that can scale from single-developer projects to enterprise-level applications. Angular is designed to make updating as straightforward as possible, so take advantage of the latest developments with a minimum of effort. Best of all, the Angular ecosystem consists of a diverse group of over 1.7 million developers, library authors, and content creators.
 
 借助 Angular，无论单人项目还是企业级应用，你都能获得平台带来的优势。 Angular 的设计目标之一就是让更新更容易，因此你可以用最小的成本升级到最新的 Angular 版本。最重要的是，Angular 的生态系统由包括 170 万名开发人员、库作者和内容创作者在内的多元团队构成。
 
@@ -84,11 +84,11 @@ When Angular renders this component, the resulting DOM looks like this:
 
 <code-example path="what-is-angular/src/app/hello-world-example.html" language="html"></code-example>
 
-Angular's component model offers strong encapsulation and an intuitive application structure. Components also make your application easier to unit test and can improve the overall readability of your code.
+Angular's component model offers strong encapsulation and an intuitive application structure. Components also make your application painless to unit test and can improve the overall readability of your code.
 
 Angular 的组件模型提供了强大的封装能力和直观的应用结构。组件还能让你的应用更容易进行单元测试，并可以提高代码的整体可读性。
 
-For more information on what you can do with components, see the [Components](guide/component-overview) section.
+For more information on what to do with components, see the [Components](guide/component-overview) section.
 
 有关可以用组件做什么的更多信息，请参见[“组件”](guide/component-overview)部分。
 
@@ -136,9 +136,9 @@ Notice the use of the square brackets--that syntax indicates that you're binding
 
 注意这里所用的方括号 —— 该语法表明你正在将 Property 或 Attribute 绑定到组件类中的值。
 
-You can also declare event listeners to listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches. You declare an event listener by specifying the event name in parentheses:
+Declare event listeners to listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches. You declare an event listener by specifying the event name in parentheses:
 
-你还可以声明事件监听器，来监听并响应用户的操作，例如按键、鼠标移动、单击和触摸等。你可以通过在圆括号中指定事件名称来声明一个事件监听器：
+可以声明事件监听器来监听并响应用户的操作，例如按键、鼠标移动、单击和触摸等。你可以通过在圆括号中指定事件名称来声明一个事件监听器：
 
 <code-example path="what-is-angular/src/app/hello-world-bindings/hello-world-bindings.component.html" region="event-binding"></code-example>
 
@@ -148,7 +148,7 @@ The preceding example calls a method, which is defined in the component class:
 
 <code-example path="what-is-angular/src/app/hello-world-bindings/hello-world-bindings.component.ts" region="method"></code-example>
 
-The following is an example of interpolation and bindings within an Angular template:
+The following is a combined example of Interpolation, Property Binding and Event Binding within an Angular template:
 
 以下是在 Angular 模板中插值和绑定的例子：
 
@@ -164,9 +164,9 @@ The following is an example of interpolation and bindings within an Angular temp
   </code-pane>
 </code-tabs>
 
-You can add additional functionality to your templates through the use of [directives](guide/built-in-directives). The most popular directives in Angular are `*ngIf` and `*ngFor`. You can use directives to perform a variety of tasks, such as dynamically modifying the DOM structure. And you can also create your own custom directives to create great user experiences.
+Add additional functionality to your templates through the use of [directives](guide/built-in-directives). The most popular directives in Angular are `*ngIf` and `*ngFor`. Use directives to perform a variety of tasks, such as dynamically modifying the DOM structure. And create your own custom directives to create great user experiences.
 
-你可以使用[指令](guide/built-in-directives)来为模板添加额外功能。 Angular 中最常用的指令是 `*ngIf` 和 `*ngFor` 。你可以使用指令执行各种任务，例如动态修改 DOM 结构。你还可以用自定义指令来创建出色的用户体验。
+可以用[指令](guide/built-in-directives)来为模板添加额外功能。 Angular 中最常用的指令是 `*ngIf` 和 `*ngFor` 。你可以使用指令执行各种任务，例如动态修改 DOM 结构。你还可以用自定义指令来创建出色的用户体验。
 
 The following code is an example of the `*ngIf` directive.
 
@@ -184,11 +184,11 @@ The following code is an example of the `*ngIf` directive.
   </code-pane>
 </code-tabs>
 
-Angular's declarative templates allow you to cleanly separate your application's logic from its presentation. Templates are based on standard HTML, so they're easy to build, maintain, and update.
+Angular's declarative templates let you cleanly separate your application's logic from its presentation. Templates are based on standard HTML, for ease in building, maintaining, and updating.
 
 Angular 的声明式模板使让可以将应用的逻辑和外观完全分开。模板基于标准 HTML，因此易于构建、维护和更新。
 
-For more information on what you can do with templates, see the [Templates](guide/template-syntax) section.
+For more information on templates, see the [Templates](guide/template-syntax) section.
 
 关于模板用法和用途的更多信息，请参见[“模板”](guide/template-syntax)部分。
 
@@ -197,7 +197,7 @@ For more information on what you can do with templates, see the [Templates](guid
 
 ### 依赖注入
 
-Dependency injection allows you to declare the dependencies of your TypeScript classes without taking care of their instantiation. Instead, Angular handles the instantiation for you. This design pattern allows you to write more testable and flexible code. Even though understanding dependency injection is not critical to start using Angular, we strongly recommend it as a best practice and many aspects of Angular take advantage of it to some degree.
+Dependency injection lets you declare the dependencies of your TypeScript classes without taking care of their instantiation. Instead, Angular handles the instantiation for you. This design pattern lets you write more testable and flexible code. Even though understanding dependency injection is not critical to start using Angular, we strongly recommend it as a best practice and many aspects of Angular take advantage of it to some degree.
 
 依赖注入让你可以声明 TypeScript 类的依赖项，而无需操心如何实例化它们，Angular 会为你处理这些琐事。这种设计模式能让你写出更加可测试、也更灵活的代码。尽管了解依赖注入对于开始用 Angular 并不是至关重要的事，但我们还是强烈建议你将其作为最佳实践，并且 Angular 自身的方方面面都在一定程度上利用了它。
 
@@ -221,7 +221,7 @@ For more information about dependency injection and Angular, see the [Dependency
 
 ## Angular CLI
 
-The Angular CLI is the fastest, easiest, and recommended way to develop Angular applications. The Angular CLI makes a number of tasks easy. Here are some examples:
+The Angular CLI is the fastest, straightforward, and recommended way to develop Angular applications. The Angular CLI makes a number of tasks trouble-free. Here are some examples:
 
 Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。Angular CLI 能简化许多任务。这里有些例子：
 
@@ -282,7 +282,7 @@ For more information about the Angular CLI, see the [CLI Reference](/cli) sectio
 
 ## 自带库
 
-The section, [Angular applications: The essentials](#essentials), provides a brief overview of a couple of the key architectural elements you'll use when building Angular applications. But the many benefits of Angular really become apparent when your application grows and you want to add additional functions such as site navigation or user input. That's when you can leverage the Angular platform to incorporate one of the many first-party libraries that Angular provides.
+The section, [Angular applications: The essentials](#essentials), provides a brief overview of a couple of the key architectural elements you'll use when building Angular applications. But the many benefits of Angular really become apparent when your application grows and you want to add additional functions such as site navigation or user input. Use the Angular platform to incorporate one of the many first-party libraries that Angular provides.
 
 [“Angular 应用：基本知识”](#essentials)部分提供了构建 Angular 应用时要用到的几个关键架构元素的简要描述。但是，当你的应用不断成长并且想要添加其他功能（例如站点导航或用户输入）时，Angular 的许多优势才会真正显现出来。届时，你可以通过 Angular 平台，来引入 Angular 所提供的众多自带库之一。
 
@@ -341,7 +341,7 @@ Some of the libraries available to you include:
 </tr>
 </table>
 
-These libraries expand your application's functionality while also allowing you to focus more on the features that make your application unique. And you can add these libraries knowing that they're designed to integrate seamlessly into and update simultaneously with the Angular framework.
+These libraries expand your application's functionality while also letting you focus more on the features that make your application unique. Add these libraries knowing that they're designed to integrate seamlessly into and update simultaneously with the Angular framework.
 
 这些库在扩展应用功能的同时，还能让你将更多精力放在那些令你的应用与众不同的功能上。你可以添加这些库，并相信它们能与 Angular 框架无缝集成并同步更新。
 
@@ -353,11 +353,11 @@ These libraries are only required if and when they can help you add functionalit
 
 ## 下一步
 
-This topic is intended to give you a brief overview of what Angular is, the advantages it provides, and what you can expect as you start to build your applications.
+This topic is intended to give you a brief overview of what Angular is, the advantages it provides, and what to expect as you start to build your applications.
 
 本主题旨在帮你了解 Angular：什么是 Angular？它有哪些优势？当构建应用时它能为你提供什么帮助？
 
-To see Angular in action, see our [Getting Started](https://angular.io/start) tutorial. This tutorial uses [stackblitz.com](https://stackblitz.com/), so you can explore a working example of Angular without any installation requirements.
+To see Angular in action, see our [Getting Started](start) tutorial. This tutorial uses [stackblitz.com](https://stackblitz.com/), for you to explore a working example of Angular without any installation requirements.
 
 要实际使用 Angular，请参阅我们的[入门](https://angular.cn/start)教程。本教程使用 [stackblitz.com](https://stackblitz.com/)，因此你可以浏览 Angular 的可工作范例，而不必先做任何安装工作。
 
@@ -365,4 +365,4 @@ To explore Angular's capabilities further, we recommend reading through the sect
 
 为了进一步探索 Angular 的功能，我们建议你通读《了解 Angular》 和《开发人员指南》这两节。
 
-@reviewed 2021-03-08
+@reviewed 2021-09-14

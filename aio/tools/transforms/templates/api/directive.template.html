@@ -9,21 +9,20 @@
   {% include "includes/selectors.html" %}
 
   {$ memberHelpers.renderDirectiveProperties(doc, '属性') $}
-
   {% include "includes/export-as.html" %}
 
-  {% if doc.description or doc.usageNotes %}
+  {%- if doc.description or doc.usageNotes %}
   <section class="description">
     <h2 id="description">说明</h2>
     {$ (doc.description or '') | trimBlankLines | marked $}
     {$ (doc.usageNotes or '') | trimBlankLines | marked $}
   </section>
-  {% endif %}
+  {%- endif %}
 
   {$ memberHelpers.renderProperties(doc.staticProperties, 'static-properties', 'static-property', '静态属性') $}
   {$ memberHelpers.renderMethodDetails(versionInfo, doc.staticMethods, 'static-methods', 'static-method', '静态方法') $}
   {$ memberHelpers.renderMethodDetails(versionInfo, doc.methods, 'instance-methods', 'instance-method', '方法') $}
   {$ memberHelpers.renderDirectiveAncestors(doc, 'methods') $}
-  {% endblock %}
+{%- endblock %}
 
 {% block endNotes %}{% endblock %}

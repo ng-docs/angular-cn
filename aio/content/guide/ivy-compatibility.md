@@ -15,7 +15,7 @@ Angular 团队一直在努力确保 Ivy 与之前的渲染引擎（“View Engin
 
 ## 如何用 Ivy 调试错误
 
-If you're seeing errors, first temporarily [turn off Ivy](guide/ivy#opting-out-of-angular-ivy) in your `tsconfig.json` and re-start your app.
+If you're seeing errors, first temporarily [turn off Ivy](guide/ivy#opting-out-of-angular-ivy) in your `tsconfig.json` and re-start your application.
 
 如果发现了错误，请先在 `tsconfig.json` 中[暂时关闭 Ivy](guide/ivy#opting-out-of-angular-ivy) ，然后重新启动你的应用程序。
 
@@ -44,16 +44,16 @@ See more details in the original issue [here](https://github.com/angular/angular
    验证你想要惰性加载的组件和 `NgModules` 是否只在惰性模块中才导入过。你在惰性模块之外导入的东西最终都会出现在主发布包中。原始问题请[点击此处](https://github.com/angular/angular-cli/issues/16146#issuecomment-557559287)查看详情。
 
 1. Check that imported libraries have been marked side-effect-free.
-If your app imports from shared libraries that are meant to be free from side effects, add "sideEffects": false to their `package.json`.
+If your application imports from shared libraries that are meant to be free from side effects, add "sideEffects": false to their `package.json`.
 This will ensure that the libraries will be properly tree-shaken if they are imported but not directly referenced.
 See more details in the original issue [here](https://github.com/angular/angular-cli/issues/16799#issuecomment-580912090).
 
    检查导入的库是否已标记为无副作用。如果你的应用导入过那些没有副作用的共享库，就把“sideEffects”：false 添加到他们的 `package.json`。如果这些库被导入过但没有被直接引用，那么这将确保这些库被正确摇树优化了。原始问题请[点击此处](https://github.com/angular/angular-cli/issues/16799#issuecomment-580912090)查看详情。
 
-1. Projects not using Angular CLI will see a significant size regression unless they update their minifier settings and set compile-time constants `ngDevMode`, `ngI18nClosureMode` and `ngJitMode` to `false` (for Terser, please set these to `false` via [`global_defs` config option](https://terser.org/docs/api-reference.html#conditional-compilation)).
-Please note that these constants are not meant to be used by 3rd party library or application code as they are not part of our public API surface and might change in the future.
+1. Projects not using Angular CLI will see a significant size regression unless they update their minifier settings and set compile-time constants `ngDevMode`, `ngI18nClosureMode` and `ngJitMode` to `false` (for Terser, set these to `false` using [`global_defs` config option](https://terser.org/docs/api-reference.html#conditional-compilation)).
+Note that these constants are not meant to be used by 3rd party library or application code as they are not part of our public api surface and might change in the future.
 
-   未使用 Angular CLI 的项目会看到一个显著的大小回归，除非他们更新了最小化工具的设置，并把编译时常量 `ngDevMode`，`ngI18nClosureMode` 和 `ngJitMode` 设为了 `false` （对于 Terser，请通过[`global_defs` 配置选项](https://terser.org/docs/api-reference.html#conditional-compilation)把它们设为 `false` ）。请注意，这些常量不能给第三方库或应用代码使用，因为它们不是我们公共 API 的一部分，可能会在将来发生变化。
+   未使用 Angular CLI 的项目会看到一个显著的大小回归，除非他们更新了最小化工具的设置，并把编译时常量 `ngDevMode`，`ngI18nClosureMode` 和 `ngJitMode` 设为了 `false` （对于 Terser，请通过[`global_defs` 配置选项](https://terser.org/docs/api-reference.html#conditional-compilation)把它们设为 `false` ）。注意，这些常量不能给第三方库或应用代码使用，因为它们不是我们公共 API 的一部分，可能会在将来发生变化。
 
 {@a common-changes}
 
@@ -69,7 +69,7 @@ Please note that these constants are not meant to be used by 3rd party library o
 
   所有使用 Angular DI 的类都必须有一个 Angular 装饰器，比如 `@Directive()` 或者 `@Injectable`（以前，只有在 AOT 模式下或者带有注入标志时才能使用未修饰的类）。详情[参阅这里](guide/ivy-compatibility-examples#undecorated-classes)。
 
-* Unbound inputs for directives (e.g. name in `<my-comp name="">`) are now set upon creation of the view, before change detection runs (previously, all inputs were set during change detection).
+* Unbound inputs for directives (for example, name in `<my-comp name="">`) are now set upon creation of the view, before change detection runs (previously, all inputs were set during change detection).
 
   指令的未绑定输入（例如 `<my-comp name="">` ）现在是在创建视图时设置的，位于运行变更检测之前（以前所有输入都是在变更检测过程中设置的）。
 
@@ -87,7 +87,7 @@ Please note that these constants are not meant to be used by 3rd party library o
 
   像 `@Component` 和 `@Directive` 装饰器里面的 `host` 这样的属性可以被继承（之前，只有具有显式字段装饰器的属性，比如 `@HostBinding` 才会被继承）。
 
-* HammerJS support is opt-in through importing the `HammerModule` (previously, it was always included in production bundles regardless of whether the app used HammerJS).
+* HammerJS support is opt-in through importing the `HammerModule` (previously, it was always included in production bundles regardless of whether the application used HammerJS).
 
   HammerJS 支持是可选的，如果需要则导入 `HammerModule` （以前，它总是包含在生产包中，而不管应用是否使用了 HammerJS）。
 
@@ -116,6 +116,7 @@ Please note that these constants are not meant to be used by 3rd party library o
   默认情况下，不再支持通过本地引用来访问指令输入的前向引用。[详情在此](guide/ivy-compatibility-examples#forward-refs-directive-inputs)
 
 * If there is both an unbound class attribute and a `[class]` binding, the classes in the unbound attribute will also be added (previously, the class binding would overwrite classes in the unbound attribute).
+For more information about the updated style precedence in Ivy, refer to the [style precedence guide](guide/style-precedence).
 
   如果同时存在一个未绑定的 class 属性和一个 `[class]` 绑定，那么未绑定的属性中的类也会被添加进去（以前，类绑定会覆盖未绑定属性中的类）。
 
@@ -155,14 +156,24 @@ Please note that these constants are not meant to be used by 3rd party library o
 
   `DebugElement.classes` 为那些已添加过再删除的类返回 `undefined` （以前，表示添加后再删除的类的值为 `false` ）。
 
-* If selecting the native `<option>` element in a `<select>` where the `<option>`s are created via `*ngFor`, use the `[selected]` property of an `<option>` instead of binding to the `[value]` property of the `<select>` element (previously, you could bind to either.) [details](guide/ivy-compatibility-examples#select-value-binding)
+* If selecting the native `<option>` element in a `<select>` where the `<option>`s are created using `*ngFor`, use the `[selected]` property of an `<option>` instead of binding to the `[value]` property of the `<select>` element (previously, you could bind to either.) [details](guide/ivy-compatibility-examples#select-value-binding)
 
   如果在 `<select>` 中选择原生的 `<option>` 元素，而这个 `<option>` 元素是通过 `*ngFor` 创建的，就使用 `<option>` 的 `[selected]` 属性，而不是绑定到 `<select>` 元素上的 `[value]` 属性（以前，你可以绑定到任何一个。）[详情在此](guide/ivy-compatibility-examples#select-value-binding)
 
-* Embedded views (such as ones created by `*ngFor`) are now inserted in front of anchor DOM comment node (e.g. `<!--ng-for-of-->`) rather than behind it as was the case previously.
-In most cases this does not have any impact on rendered DOM.
-In some cases (such as animations delaying the removal of an embedded view) any new embedded views will be inserted after the embedded view being animated away.
-This difference only last while the animation is active, and might alter the visual appearance of the animation.
-Once the animation is finished the resulting rendered DOM is identical to that rendered with View Engine.
+* Embedded views (such as ones created by `*ngFor`) are now inserted in front of anchor DOM comment node (for example, `<!--ng-for-of-->`) rather than behind it as was the case previously.
+  In most cases this has no impact on rendered DOM.
 
-  嵌入式视图（比如 `*ngFor` 创建的嵌入式视图）现在会插入到锚点注释节点（例如 `<!--ng-for-of-->` ）的前面，而不是像之前一样插入到后面。在大多数情况下，这对渲染的 DOM 没有任何影响。在某些情况下（比如动画会延迟删除嵌入式视图），任何新的嵌入式视图都会插入在这个被删除的嵌入式视图后面。这种差异只会在动画处于活动状态时存在，并可能会改变动画的视觉外观。动画完成后，渲染出的 DOM 与使用 View Engine 渲染的 DOM 完全相同。
+  嵌入式视图（比如 `*ngFor` 创建的嵌入式视图）现在会插入到锚点注释节点（例如 `<!--ng-for-of-->` ）的前面，而不是像之前一样插入到后面。在大多数情况下，这对渲染的 DOM 没有任何影响。
+
+  When animations delay the removal of an embedded view, any new embedded views will be inserted after the embedded view that will be removed once the animation completes.
+  This difference only lasts while the animation is active, and might alter the visual appearance of the animation.
+  When the animation is finished, the resulting rendered DOM is identical to that rendered with View Engine.
+
+   动画会推迟删除嵌入式视图的时机，任何新的嵌入式视图都会插入到这个嵌入式视图的后面，并在这些动画完成时被删除。这种差异只会在动画处于活动状态时存在，并可能会改变动画的视觉外观。当动画完成后，渲染出的 DOM 与使用 View Engine 渲染的 DOM 完全相同。
+
+  One additional exception is the `<select>` element with `<option>` elements dynamically rendered using `NgForOf`. If a [`trackBy`](api/common/NgForOf#ngForTrackBy) function is not provided, the selected `<option>` will not be preserved when the iterable used by the `NgForOf` changes.
+  With View Engine, this programming error was obscured, and often not visible.
+  To avoid this problem, provide the `trackBy` function to correctly associate the model with the rendered DOM elements.
+
+  但带有 `NgForOf` 渲染出来的 `<option>` 的 `<select>` 是一个例外。如果没有提供 [`trackBy`](api/common/NgForOf#ngForTrackBy) 函数，则当 `NgForOf` 使用的可迭代对象发生变化时，选中的 `<option>` 不会被保留。
+  对于 View Engine，这种程序错误被掩盖了，一般不会被看见。要避免此问题，请提供 `trackBy` 函数，以便正确关联模型和渲染出来的元素。

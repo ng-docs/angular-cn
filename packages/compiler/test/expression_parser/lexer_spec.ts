@@ -127,6 +127,14 @@ function expectErrorToken(token: Token, index: any, end: number, message: string
         expectCharacterToken(tokens[3], 3, 4, ']');
       });
 
+      it('should tokenize a safe indexed operator', () => {
+        const tokens: number[] = lex('j?.[k]');
+        expect(tokens.length).toBe(5);
+        expectOperatorToken(tokens[1], 1, 3, '?.');
+        expectCharacterToken(tokens[2], 3, 4, '[');
+        expectCharacterToken(tokens[4], 5, 6, ']');
+      });
+
       it('should tokenize numbers', () => {
         const tokens: number[] = lex('88');
         expect(tokens.length).toEqual(1);
@@ -286,6 +294,36 @@ function expectErrorToken(token: Token, index: any, end: number, message: string
 
       it('should tokenize ?? as operator', () => {
         expectOperatorToken(lex('??')[0], 0, 2, '??');
+      });
+
+      it('should tokenize number with separator', () => {
+        expectNumberToken(lex('123_456')[0], 0, 7, 123_456);
+        expectNumberToken(lex('1_000_000_000')[0], 0, 13, 1_000_000_000);
+        expectNumberToken(lex('123_456.78')[0], 0, 10, 123_456.78);
+        expectNumberToken(lex('123_456_789.123_456_789')[0], 0, 23, 123_456_789.123_456_789);
+        expectNumberToken(lex('1_2_3_4')[0], 0, 7, 1_2_3_4);
+        expectNumberToken(lex('1_2_3_4.5_6_7_8')[0], 0, 15, 1_2_3_4.5_6_7_8);
+      });
+
+      it('should tokenize number starting with an underscore as an identifier', () => {
+        expectIdentifierToken(lex('_123')[0], 0, 4, '_123');
+        expectIdentifierToken(lex('_123_')[0], 0, 5, '_123_');
+        expectIdentifierToken(lex('_1_2_3_')[0], 0, 7, '_1_2_3_');
+      });
+
+      it('should throw error for invalid number separators', () => {
+        expectErrorToken(
+            lex('123_')[0], 3, 3,
+            'Lexer Error: Invalid numeric separator at column 3 in expression [123_]');
+        expectErrorToken(
+            lex('12__3')[0], 2, 2,
+            'Lexer Error: Invalid numeric separator at column 2 in expression [12__3]');
+        expectErrorToken(
+            lex('1_2_3_.456')[0], 5, 5,
+            'Lexer Error: Invalid numeric separator at column 5 in expression [1_2_3_.456]');
+        expectErrorToken(
+            lex('1_2_3._456')[0], 6, 6,
+            'Lexer Error: Invalid numeric separator at column 6 in expression [1_2_3._456]');
       });
     });
   });

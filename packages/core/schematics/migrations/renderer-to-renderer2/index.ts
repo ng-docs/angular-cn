@@ -8,7 +8,7 @@
 
 import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {basename, join, relative} from 'path';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {getProjectTsConfigPaths} from '../../utils/project_tsconfig_paths';
 import {canMigrateFile, createMigrationProgram} from '../../utils/typescript/compiler_host';
@@ -26,8 +26,8 @@ const MODULE_AUGMENTATION_FILENAME = 'ɵɵRENDERER_MIGRATION_CORE_AUGMENTATION.d
  * https://hackmd.angular.io/UTzUZTnPRA-cSa_4mHyfYw
  */
 export default function(): Rule {
-  return (tree: Tree) => {
-    const {buildPaths, testPaths} = getProjectTsConfigPaths(tree);
+  return async (tree: Tree) => {
+    const {buildPaths, testPaths} = await getProjectTsConfigPaths(tree);
     const basePath = process.cwd();
     const allPaths = [...buildPaths, ...testPaths];
 

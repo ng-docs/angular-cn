@@ -97,13 +97,6 @@ the server-rendered app can be properly bootstrapped into a client app.`);
  *
  * `document` 是要渲染的页面的完整文档 HTML，为字符串形式。`url` 是当前渲染请求的 URL。`extraProviders` 是当前渲染请求的平台级提供者。
  *
- * If compiling with the ViewEngine renderer, do not use this in a production server environment.
- * Use pre-compiled {@link NgModuleFactory} with {@link renderModuleFactory} instead. If
- * compiling with the Ivy renderer, this method is the recommended rendering method for
- * platform-server.
- *
- * 如果使用 ViewEngine 渲染器进行编译，请不要在生产服务器环境中使用它。而是将预编译的 {@link NgModuleFactory} 与 {@link renderModuleFactory} 一起使用。如果使用 Ivy 渲染器进行编译，则这是服务端平台的首选渲染方式。
- *
  * @publicApi
  */
 export function renderModule<T>(
@@ -125,6 +118,10 @@ export function renderModule<T>(
  * `document` 是要渲染的页面的完整文档 HTML，为字符串形式。`url` 是当前渲染请求的 URL。`extraProviders` 是当前渲染请求的平台级提供者。
  *
  * @publicApi
+ *
+ * @deprecated
+ * This symbol is no longer necessary as of Angular v13.
+ * Use {@link renderModule} API instead.
  */
 export function renderModuleFactory<T>(
     moduleFactory: NgModuleFactory<T>,

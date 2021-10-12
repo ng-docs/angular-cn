@@ -7,7 +7,7 @@
  */
 
 import {Replacement, RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {findAsyncReferences} from '../../migrations/wait-for-async/util';
 import {getImportSpecifier, replaceImport} from '../../utils/typescript/imports';
@@ -21,7 +21,7 @@ const newFunction = 'waitForAsync';
 
 /** TSLint rule that migrates from `async` to `waitForAsync`. */
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const failures: RuleFailure[] = [];
     const asyncImportSpecifier =
         getImportSpecifier(sourceFile, '@angular/core/testing', deprecatedFunction);

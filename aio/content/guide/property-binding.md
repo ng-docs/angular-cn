@@ -3,9 +3,9 @@
 # 属性绑定
 
 Property binding in Angular helps you set values for properties of HTML elements or directives.
-With property binding, you can do things such as toggle button functionality, set paths programmatically, and share values between components.
+Use property binding to do things such as toggle button functionality, set paths programmatically, and share values between components.
 
-Angular 中的属性绑定可帮助你设置 HTML 元素或指令的属性值。使用属性绑定，你可以执行诸如切换按钮、以编程方式设置路径，以及在组件之间共享值之类的功能。
+Angular 中的属性绑定可帮助你设置 HTML 元素或指令的属性值。使用属性绑定，可以执行诸如切换按钮、以编程方式设置路径，以及在组件之间共享值之类的功能。
 
 <div class="alert is-helpful">
 
@@ -126,7 +126,7 @@ You'd get this error:
 
 <code-example language="bash">
   Template parse errors:
-  Can't bind to 'colspan' since it isn't a known native property
+  Can't bind to 'colspan' because it isn't a known built-in property
 </code-example>
 
 As the message says, the `<td>` element does not have a `colspan` property. This is true
@@ -298,7 +298,7 @@ The following binding pairs do the same thing.
 
 <code-example path="property-binding/src/app/app.component.html" region="property-binding-interpolation" header="src/app/app.component.html"></code-example>
 
-You can use either form when rendering data values as strings, though interpolation is preferable for readability.
+Use either form when rendering data values as strings, though interpolation is preferable for readability.
 However, when setting an element property to a non-string data value, you must use property binding.
 
 将数据值渲染为字符串时，可以使用任一种形式，只是插值形式更易读。但是，要将元素属性设置为非字符串数据值时，必须使用属性绑定。

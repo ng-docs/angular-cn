@@ -668,7 +668,7 @@ export class HttpClient {
    *
    * 与请求一起发送的 HTTP 选项。
    *
-   * @return An `Observable` of the reuested response, wuth body of type `any`.
+   * @return An `Observable` of the requested response, with body of type `any`.
    *
    * 所请求的响应对象的 `Observable`，其响应体是 `any` 类型。
    *
@@ -2161,7 +2161,7 @@ export class HttpClient {
    * 与请求一起发送的 HTTP 选项。
    *
    * @return An `Observable` of the `HttpResponse` for the request,
-   * with a responmse body of the requested type.
+   * with a response body of the requested type.
    *
    * 此请求的响应对象的 `Observable`，其响应体为所请求的类型。
    *
@@ -2783,7 +2783,7 @@ export class HttpClient {
   /**
    * Constructs an `Observable` that, when subscribed, causes the configured
    * `OPTIONS` request to execute on the server. This method allows the client
-   * to determine the supported HTTP methods and other capabilites of an endpoint,
+   * to determine the supported HTTP methods and other capabilities of an endpoint,
    * without implying a resource action. See the individual overloads for
    * details on the return type.
    *

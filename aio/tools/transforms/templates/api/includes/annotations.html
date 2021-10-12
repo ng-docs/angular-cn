@@ -2,8 +2,11 @@
 <section class="annotations">
   <h2 id="annotations">注解</h2>
   {%- for decorator in doc.decorators %}
-    <code-example language="ts" hideCopy="true" class="no-box api-heading{% if decorator.deprecated %} deprecated-api-item{% endif %}">@{$ decorator.name $}({$ decorator.arguments $})</code-example>
-    {% if not decorator.notYetDocumented %}{$ decorator.description | marked $}{% endif %}
-  {% endfor %}
+  <code-example language="ts" hideCopy="true" class="no-box api-heading{% if decorator.deprecated %} deprecated-api-item{% endif %}">@{$ decorator.name $}({$ decorator.arguments $})</code-example>
+
+  {%- if not decorator.notYetDocumented %}
+  {$ decorator.description | marked $}
+  {%- endif %}
+  {%- endfor %}
 </section>
-{% endif %}
+{%- endif -%}

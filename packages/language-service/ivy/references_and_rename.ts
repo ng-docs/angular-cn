@@ -12,7 +12,7 @@ import {MetaType, PipeMeta} from '@angular/compiler-cli/src/ngtsc/metadata';
 import {PerfPhase} from '@angular/compiler-cli/src/ngtsc/perf';
 import {ProgramDriver} from '@angular/compiler-cli/src/ngtsc/program_driver';
 import {SymbolKind} from '@angular/compiler-cli/src/ngtsc/typecheck/api';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {convertToTemplateDocumentSpan, createLocationKey, FilePosition, getParentClassMeta, getRenameTextAndSpanAtPosition, getTargetDetailsAtTemplatePosition, TemplateLocationDetails} from './references_and_rename_utils';
 import {collectMemberMethods, findTightestNode} from './ts_utils';
@@ -154,7 +154,29 @@ export class RenameBuilder {
       // We could not get a template at position so we assume the request came from outside the
       // template.
       if (templateInfo === undefined) {
-        return this.tsLS.getRenameInfo(filePath, position);
+        const renameRequest = this.buildRenameRequestAtTypescriptPosition(filePath, position);
+        if (renameRequest === null) {
+          return {
+            canRename: false,
+            localizedErrorMessage: 'Could not determine rename info at typescript position.',
+          };
+        }
+        if (renameRequest.type === RequestKind.PipeName) {
+          const pipeName = renameRequest.pipeNameExpr.text;
+          return {
+            canRename: true,
+            displayName: pipeName,
+            fullDisplayName: pipeName,
+            triggerSpan: {
+              length: pipeName.length,
+              // Offset the pipe name by 1 to account for start of string '/`/"
+              start: renameRequest.pipeNameExpr.getStart() + 1,
+            },
+          };
+        } else {
+          // TODO(atscott): Add support for other special indirect renames from typescript files.
+          return this.tsLS.getRenameInfo(filePath, position);
+        }
       }
 
       const allTargetDetails = getTargetDetailsAtTemplatePosition(templateInfo, position, this.ttc);

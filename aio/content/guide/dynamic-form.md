@@ -5,7 +5,7 @@
 Many forms, such as questionaires, can be very similar to one another in format and intent.
 To make it faster and easier to generate different versions of such a form,
 you can create a *dynamic form template* based on metadata that describes the business object model.
-You can then use the template to generate new forms automatically, according to changes in the data model.
+Then, use the template to generate new forms automatically, according to changes in the data model.
 
 许多表单（例如问卷）可能在格式和意图上都非常相似。为了更快更轻松地生成这种表单的不同版本，你可以根据描述业务对象模型的元数据来创建*动态表单模板*。然后就可以根据数据模型中的变化，使用该模板自动生成新的表单。
 
@@ -17,11 +17,11 @@ The format and style of the forms a user sees should remain constant, while the 
 如果你有这样一种表单，其内容必须经常更改以满足快速变化的业务需求和监管需求，该技术就特别有用。一个典型的例子就是问卷。你可能需要在不同的上下文中获取用户的意见。用户要看到的表单格式和样式应该保持不变，而你要提的实际问题则会因上下文而异。
 
 In this tutorial you will build a dynamic form that presents a basic questionaire.
-You will build an online application for heroes seeking employment.
+You build an online application for heroes seeking employment.
 The agency is constantly tinkering with the application process, but by using the dynamic form
 you can create the new forms on the fly without changing the application code.
 
-在本教程中，你将构建一个渲染基本问卷的动态表单。你要为正在找工作的英雄们建立一个在线应用。英雄管理局会不断修补应用流程，但是借助动态表单，你可以动态创建新的表单，而无需修改应用代码。
+在本教程中，你会构建一个渲染基本问卷的动态表单。你要为正在找工作的英雄们建立一个在线应用。英雄管理局会不断修补应用流程，但是借助动态表单，你可以动态创建新的表单，而无需修改应用代码。
 
 The tutorial walks you through the following steps.
 
@@ -134,18 +134,18 @@ The following `QuestionBase` is a base class for a set of controls that can repr
 
 From this base, the example derives two new classes, `TextboxQuestion` and `DropdownQuestion`,
 that represent different control types.
-When you create the form template in the next step, you will instantiate these specific question types in order to render the appropriate controls dynamically.
+When you create the form template in the next step, you instantiate these specific question types in order to render the appropriate controls dynamically.
 
 此范例从这个基类派生出两个新类，`TextboxQuestion` 和 `DropdownQuestion`，分别代表不同的控件类型。当你在下一步中创建表单模板时，你会实例化这些具体的问题类，以便动态渲染相应的控件。
 
-* The `TextboxQuestion` control type presents a question and allows users to enter input.
+* The `TextboxQuestion` control type presents a question and lets users enter input.
 
   `TextboxQuestion` 控件类型表示一个普通问题，并允许用户输入答案。
 
    <code-example path="dynamic-form/src/app/question-textbox.ts" header="src/app/question-textbox.ts"></code-example>
 
-   The `TextboxQuestion` control type will be represented in a form template using an `<input>` element.
-   The `type` attribute of the element will be defined based on the `type` field specified in the `options` argument (for example `text`, `email`, `url`).
+   The `TextboxQuestion` control type is represented in a form template using an `<input>` element.
+   The `type` attribute of the element is defined based on the `type` field specified in the `options` argument (for example `text`, `email`, `url`).
 
   `TextboxQuestion` 控件类型将使用 `<input>` 元素表示在表单模板中。该元素的 `type` 属性将根据 `options` 参数中指定的 `type` 字段定义（例如 `text`，`email`，`url` ）。
 
@@ -172,7 +172,7 @@ The following `QuestionControlService` collects a set of `FormGroup` instances t
 
 ## 编写动态表单内容
 
-The dynamic form itself will be represented by a container component, which you will add in a later step.
+The dynamic form itself is represented by a container component, which you add in a later step.
 Each question is represented in the form component's template by an `<app-question>` tag, which matches an instance of `DynamicFormQuestionComponent`.
 
 动态表单本身就是一个容器组件，稍后你会添加它。每个问题都会在表单组件的模板中用一个 `<app-question>` 标签表示，该标签会匹配 `DynamicFormQuestionComponent` 中的一个实例。
@@ -211,7 +211,7 @@ The switch uses directives with the [`formControlName`](api/forms/FormControlNam
 ### 提供数据
 
 Another service is needed to supply a specific set of questions from which to build an individual form.
-For this exercise you will create the `QuestionService` to supply this array of questions from the hard-coded sample data.
+For this exercise you create the `QuestionService` to supply this array of questions from the hard-coded sample data.
 In a real-world app, the service might fetch data from a backend system.
 The key point, however, is that you control the hero job-application questions entirely through the objects returned from `QuestionService`.
 To maintain the questionnaire as requirements change, you only need to add, update, and remove objects from the `questions` array.
@@ -266,7 +266,7 @@ To display an instance of the dynamic form, the `AppComponent` shell template pa
 
 The example provides a model for a job application for heroes, but there are
 no references to any specific hero question other than the objects returned by `QuestionService`.
-This separation of model and data allows you to repurpose the components for any type of survey
+This separation of model and data lets you repurpose the components for any type of survey
 as long as it's compatible with the *question* object model.
 
 这个例子为英雄提供了一个工作申请表的模型，但是除了 `QuestionService` 返回的对象外，没有涉及任何跟英雄有关的问题。这种模型和数据的分离，允许你为任何类型的调查表复用这些组件，只要它与这个*问题*对象模型兼容即可。
@@ -282,7 +282,7 @@ It adds both control metadata and validation criteria dynamically.
 表单模板使用元数据的动态数据绑定来渲染表单，而不用做任何与具体问题有关的硬编码。它动态添加了控件元数据和验证标准。
 
 To ensure valid input, the *Save* button is disabled until the form is in a valid state.
-When the form is valid, you can click *Save* and the app renders the current form values as JSON.
+When the form is valid, click *Save* and the application renders the current form values as JSON.
 
 要确保输入有效，*就要*禁用 *“Save”* 按钮，直到此表单处于有效状态。当表单有效时，你可以单击 *“Save”* 按钮，该应用就会把表单的当前值渲染为 JSON。
 
@@ -302,7 +302,7 @@ The following figure shows the final form.
 
   **不同类型的表单和控件集合**
 
-   This tutorial shows how to build a a questionaire, which is just one kind of dynamic form.
+   This tutorial shows how to build a questionaire, which is just one kind of dynamic form.
    The example uses `FormGroup` to collect a set of controls.
    For an example of a different type of dynamic form, see the section [Creating dynamic forms](guide/reactive-forms#creating-dynamic-forms "Create dynamic forms with arrays") in the Reactive Forms guide.
    That example also shows how to use `FormArray` instead of `FormGroup` to collect a set of controls.

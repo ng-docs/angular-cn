@@ -8,8 +8,19 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # Fetch rules_nodejs so we can install our npm dependencies
 http_archive(
     name = "build_bazel_rules_nodejs",
-    sha256 = "10f534e1c80f795cffe1f2822becd4897754d18564612510c59b3c73544ae7c6",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/3.5.0/rules_nodejs-3.5.0.tar.gz"],
+    sha256 = "3635797a96c7bfcd0d265dacd722a07335e64d6ded9834af8d3f1b7ba5a25bba",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/4.3.0/rules_nodejs-4.3.0.tar.gz"],
+)
+
+# The PKG rules are needed to build tar packages for integration tests. The builtin
+# rule in `@bazel_tools` is not Windows compatible and outdated.
+http_archive(
+    name = "rules_pkg",
+    sha256 = "a89e203d3cf264e564fcb96b6e06dd70bc0557356eb48400ce4b5d97c2c3720d",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_pkg/releases/download/0.5.1/rules_pkg-0.5.1.tar.gz",
+        "https://github.com/bazelbuild/rules_pkg/releases/download/0.5.1/rules_pkg-0.5.1.tar.gz",
+    ],
 )
 
 # Check the rules_nodejs version and download npm dependencies
@@ -34,11 +45,6 @@ yarn_install(
     yarn_lock = "//:yarn.lock",
 )
 
-# Load angular dependencies
-load("//packages/bazel:package.bzl", "rules_angular_dev_dependencies")
-
-rules_angular_dev_dependencies()
-
 # Load protractor dependencies
 load("@npm//@bazel/protractor:package.bzl", "npm_bazel_protractor_dependencies")
 
@@ -49,16 +55,29 @@ load("@io_bazel_rules_webtesting//web:repositories.bzl", "web_test_repositories"
 
 web_test_repositories()
 
-load("//dev-infra/browsers:browser_repositories.bzl", "browser_repositories")
+load("@npm//@angular/dev-infra-private/bazel/browsers:browser_repositories.bzl", "browser_repositories")
 
 browser_repositories()
 
-# Setup the rules_sass toolchain
-load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
+load("@build_bazel_rules_nodejs//toolchains/esbuild:esbuild_repositories.bzl", "esbuild_repositories")
 
-sass_repositories()
+esbuild_repositories()
 
-# Setup the skydoc toolchain
-load("@io_bazel_skydoc//skylark:skylark.bzl", "skydoc_repositories")
+load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 
-skydoc_repositories()
+rules_pkg_dependencies()
+
+load("//packages/common/locales/generate-locales-tool:cldr-data.bzl", "cldr_data_repository")
+
+cldr_data_repository(
+    name = "cldr_data",
+    # Since we use the Github archives for CLDR 37, we need to specify a path
+    # to the available locales. This wouldn't be needed with CLDR 39 as that
+    # comes with an official JSON archive not containing a version suffix.
+    available_locales_path = "cldr-core-37.0.0/availableLocales.json",
+    urls = {
+        "https://github.com/unicode-cldr/cldr-core/archive/37.0.0.zip": "32b5c49c3874aa342b90412c207b42e7aefb2435295891fb714c34ce58b3c706",
+        "https://github.com/unicode-cldr/cldr-dates-full/archive/37.0.0.zip": "e1c410dd8ad7d75df4a5393efaf5d28f0d56c0fa126c5d66e171a3f21a988a1e",
+        "https://github.com/unicode-cldr/cldr-numbers-full/archive/37.0.0.zip": "a921b90cf7f436e63fbdd55880f96e39a203acd9e174b0ceafa20a02c242a12e",
+    },
+)

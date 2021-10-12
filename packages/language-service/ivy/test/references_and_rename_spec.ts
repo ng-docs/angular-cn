@@ -235,7 +235,7 @@ describe('find references and rename locations', () => {
 
     beforeEach(() => {
       const files = {
-        'app.ts': ` 
+        'app.ts': `
           import {Component} from '@angular/core';
 
           @Component({template: '<div (click)="title = otherTitle"></div>' })
@@ -617,7 +617,7 @@ describe('find references and rename locations', () => {
       let file: OpenBuffer;
       beforeEach(() => {
         const files = {
-          'app.ts': ` 
+          'app.ts': `
           import {Component} from '@angular/core';
 
           @Component({template: '<div *ngFor="let hero of heroes; let iRef = index">{{iRef}}</div>'})
@@ -739,6 +739,42 @@ describe('find references and rename locations', () => {
         assertTextSpans(renameLocations, ['name']);
       });
     });
+
+    describe('when cursor is on property read of variable', () => {
+      let file: OpenBuffer;
+      beforeEach(() => {
+        const files = {
+          'app.ts': `
+            import {Component} from '@angular/core';
+
+            @Component({template: '<div (click)="setHero({name})"></div>'})
+            export class AppCmp {
+              name = 'Frodo';
+
+              setHero(hero: {name: string}) {}
+            }`
+        };
+
+        env = LanguageServiceTestEnv.setup();
+        const project = createModuleAndProjectWithDeclarations(env, 'test', files);
+        file = project.openFile('app.ts');
+        file.moveCursorToText('{na¦me}');
+      });
+
+      it('should find references', () => {
+        const refs = getReferencesAtPosition(file)!;
+        expect(refs.length).toBe(2);
+        assertFileNames(refs, ['app.ts']);
+        assertTextSpans(refs, ['name']);
+      });
+
+      it('should find rename locations', () => {
+        const renameLocations = getRenameLocationsAtPosition(file)!;
+        expect(renameLocations.length).toBe(2);
+        assertFileNames(renameLocations, ['app.ts']);
+        assertTextSpans(renameLocations, ['name']);
+      });
+    });
   });
 
   describe('pipes', () => {
@@ -809,20 +845,23 @@ describe('find references and rename locations', () => {
           birthday = '';
         }
       `,
-          'prefix-pipe.ts': prefixPipe
+          'prefix_pipe.ts': prefixPipe
         };
         env = LanguageServiceTestEnv.setup();
         const project = createModuleAndProjectWithDeclarations(env, 'test', files);
-        const file = project.openFile('app.ts');
-        file.moveCursorToText('prefi¦xPipe:');
+        const file = project.openFile('prefix_pipe.ts');
+        file.moveCursorToText(`'prefi¦xPipe'`);
         const renameLocations = getRenameLocationsAtPosition(file)!;
         expect(renameLocations.length).toBe(2);
-        assertFileNames(renameLocations, ['prefix-pipe.ts', 'app.ts']);
+        assertFileNames(renameLocations, ['prefix_pipe.ts', 'app.ts']);
         assertTextSpans(renameLocations, ['prefixPipe']);
 
         const result = file.getRenameInfo() as ts.RenameInfoSuccess;
         expect(result.canRename).toEqual(true);
         expect(result.displayName).toEqual('prefixPipe');
+        expect(file.contents.substring(
+                   result.triggerSpan.start, result.triggerSpan.start + result.triggerSpan.length))
+            .toBe('prefixPipe');
       });
 
       it('finds rename locations in base class', () => {
@@ -1242,7 +1281,7 @@ describe('find references and rename locations', () => {
       }`,
       'app.ts': `
       import {Component} from '@angular/core';
-  
+
       @Component({template: '<div string-model [(model)]="title"></div>'})
       export class AppCmp {
         title = 'title';
@@ -1589,7 +1628,7 @@ describe('find references and rename locations', () => {
 
   function getRenameLocationsAtPosition(file: OpenBuffer) {
     env.expectNoSourceDiagnostics();
-    const result = file.fineRenameLocations();
+    const result = file.findRenameLocations();
     return result?.map((item) => humanizeDocumentSpanLike(item, env));
   }
 });

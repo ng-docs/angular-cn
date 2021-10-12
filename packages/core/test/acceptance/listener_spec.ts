@@ -155,7 +155,7 @@ describe('event listeners', () => {
       let noOfErrors = 0;
 
       class CountingErrorHandler extends ErrorHandler {
-        handleError(error: any): void {
+        override handleError(error: any): void {
           noOfErrors++;
         }
       }
@@ -528,4 +528,69 @@ describe('event listeners', () => {
         expect(eventVariable).toBe(10);
         expect(eventObject?.type).toBe('click');
       });
+
+  it('should be able to use a keyed write on `this` from a listener inside an ng-template', () => {
+    @Component({
+      template: `
+        <ng-template #template>
+          <button (click)="this['mes' + 'sage'] = 'hello'">Click me</button>
+        </ng-template>
+
+        <ng-container [ngTemplateOutlet]="template"></ng-container>
+      `
+    })
+    class MyComp {
+      message = '';
+    }
+
+    TestBed.configureTestingModule({declarations: [MyComp], imports: [CommonModule]});
+    const fixture = TestBed.createComponent(MyComp);
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('button');
+    button.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.message).toBe('hello');
+  });
+
+  it('should reference the correct context object if it is swapped out', () => {
+    @Component({
+      template: `
+        <ng-template let-obj #template>
+          <button (click)="obj.value = obj.value + '!'">Change</button>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="template; context: {$implicit: current}"></ng-container>
+      `
+    })
+    class MyComp {
+      one = {value: 'one'};
+      two = {value: 'two'};
+      current = this.one;
+    }
+
+    TestBed.configureTestingModule({declarations: [MyComp], imports: [CommonModule]});
+    const fixture = TestBed.createComponent(MyComp);
+    const instance = fixture.componentInstance;
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('button');
+
+    expect(instance.one.value).toBe('one');
+    expect(instance.two.value).toBe('two');
+
+    button.click();
+    fixture.detectChanges();
+
+    expect(instance.one.value).toBe('one!');
+    expect(instance.two.value).toBe('two');
+
+    instance.current = instance.two;
+    fixture.detectChanges();
+
+    button.click();
+    fixture.detectChanges();
+
+    expect(instance.one.value).toBe('one!');
+    expect(instance.two.value).toBe('two!');
+  });
 });

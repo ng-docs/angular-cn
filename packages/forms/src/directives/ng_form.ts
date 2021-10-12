@@ -186,7 +186,7 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
    * 指令实例。
    *
    */
-  get formDirective(): Form {
+  override get formDirective(): Form {
     return this;
   }
 
@@ -197,7 +197,7 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
    * 内部 `FormGroup` 实例。
    *
    */
-  get control(): FormGroup {
+  override get control(): FormGroup {
     return this.form;
   }
 
@@ -209,7 +209,7 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
    * 返回表示该组路径的数组。由于此指令始终位于调用表单的顶层，因此它始终是一个空数组。
    *
    */
-  get path(): string[] {
+  override get path(): string[] {
     return [];
   }
 

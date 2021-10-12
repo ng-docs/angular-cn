@@ -99,7 +99,7 @@ When authoring Angular components, you should re-use these native elements direc
 
 原生 HTML 元素捕获了许多对无障碍性很重要的标准交互模式。在制作 Angular 组件时，应尽可能直接复用这些原生元素，而不是重新实现已获良好支持的行为。
 
-For example, instead of creating a custom element for a new variety of button, you can create a component that uses an attribute selector with a native `<button>` element.
+For example, instead of creating a custom element for a new variety of button, create a component that uses an attribute selector with a native `<button>` element.
 This most commonly applies to `<button>` and `<a>`, but can be used with many other types of element.
 
 例如，你可以创建一个组件，它使用属性（Attribute）选择器指向原生 `<button>` 元素，而不是为各种新按钮创建自定义元素。通常这适用于 `<button>` 和 `<a>`，但也可以用于许多其它类型的元素。
@@ -117,7 +117,7 @@ For example, the native `<input>` element cannot have children, so any custom te
 to wrap an `<input>` with additional elements.
 While you might just include the `<input>` in your custom component's template,
 this makes it impossible for users of the component to set arbitrary properties and attributes to the input element.
-Instead, you can create a container component that uses content projection to include the native control in the
+Instead, create a container component that uses content projection to include the native control in the
 component's API.
 
 有时要使用的原生元素需要一个容器元素。例如，原生 `<input>` 元素不能有子元素，因此任何自定义的文本输入组件都需要用其它元素来包装 `<input>`。尽管你可能只在自定义组件的模板中包含 `<input>`，但这将使该组件的用户无法为 `input` 元素设置任意 Property 和 Attribute。相反，你可以创建一个使用内容投影的容器组件，以将原生控件包含在组件的 API 中。

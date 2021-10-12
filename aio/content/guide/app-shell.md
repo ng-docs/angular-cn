@@ -19,7 +19,7 @@ Learn more in [The App Shell Model](https://developers.google.com/web/fundamenta
 
 ## 第 1 步：准备本应用
 
-You can do this with the following CLI command:
+Do this with the following CLI command:
 
 可以用下列 CLI 命令来执行本操作：
 
@@ -45,9 +45,9 @@ ng generate app-shell
 
 For more information about this command see [App shell command](cli/generate#app-shell-command). 
 
-  `client-project` 是你这个客户端应用的名字。
+要了解关于本命令的更多信息，参见 [app-shell 命令](cli/generate#app-shell-command)。
 
-After running this command you will notice that the `angular.json` configuration file has been updated to add two new targets, with a few other changes.
+After running this command you can see that the `angular.json` configuration file has been updated to add two new targets, with a few other changes.
 
 执行完这个命令，你会发现 `angular.json` 配置文件中已经增加了两个新目标，并做了一些其它更改。
 
@@ -116,6 +116,6 @@ Or to use the production configuration.
 ng run my-app:app-shell:production
 </code-example>
 
-To verify the build output, open `dist/my-app/browser/index.html`. Look for default text `app-shell works!` to show that the application shell route was rendered as part of the output.
+To verify the build output, open <code class="no-auto-link">dist/my-app/browser/index.html</code>. Look for default text `app-shell works!` to show that the application shell route was rendered as part of the output.
 
 要验证构建的输出，请打开 `dist/my-app/browser/index.html`。寻找默认的文本 `app-shell works!` 就可以验证这个应用外壳路由确实是作为输出的一部分渲染出来的。

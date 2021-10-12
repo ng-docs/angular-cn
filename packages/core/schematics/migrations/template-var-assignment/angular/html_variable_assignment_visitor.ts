@@ -6,8 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ImplicitReceiver, ParseSourceSpan, PropertyWrite, RecursiveAstVisitor} from '@angular/compiler';
-import {BoundEvent, Element, NullVisitor, Template, Variable, visitAll} from '@angular/compiler/src/render3/r3_ast';
+import type {ImplicitReceiver, ParseSourceSpan, PropertyWrite, RecursiveAstVisitor, TmplAstBoundEvent, TmplAstElement, TmplAstTemplate, TmplAstVariable} from '@angular/compiler';
+import {TemplateAstVisitor} from '../../../utils/template_ast_visitor';
+
 
 export interface TemplateVariableAssignment {
   start: number;
@@ -19,19 +20,46 @@ export interface TemplateVariableAssignment {
  * HTML AST visitor that traverses the Render3 HTML AST in order to find all
  * expressions that write to local template variables within bound events.
  */
-export class HtmlVariableAssignmentVisitor extends NullVisitor {
+export class HtmlVariableAssignmentVisitor extends TemplateAstVisitor {
   variableAssignments: TemplateVariableAssignment[] = [];
 
-  private currentVariables: Variable[] = [];
-  private expressionAstVisitor =
-      new ExpressionAstVisitor(this.variableAssignments, this.currentVariables);
+  private currentVariables: TmplAstVariable[] = [];
+  private expressionAstVisitor;
 
-  visitElement(element: Element): void {
-    visitAll(this, element.outputs);
-    visitAll(this, element.children);
+  constructor(compilerModule: typeof import('@angular/compiler')) {
+    super(compilerModule);
+
+    // AST visitor that resolves all variable assignments within a given expression AST.
+    // This class must be defined within the template visitor due to the need to extend from a class
+    // value found within `@angular/compiler` which is dynamically imported and provided to the
+    // visitor.
+    this.expressionAstVisitor = new (class extends compilerModule.RecursiveAstVisitor {
+      constructor(
+          private variableAssignments: TemplateVariableAssignment[],
+          private currentVariables: TmplAstVariable[]) {
+        super();
+      }
+
+      override visitPropertyWrite(node: PropertyWrite, span: ParseSourceSpan) {
+        if (node.receiver instanceof compilerModule.ImplicitReceiver &&
+            this.currentVariables.some(v => v.name === node.name)) {
+          this.variableAssignments.push({
+            node: node,
+            start: span.start.offset,
+            end: span.end.offset,
+          });
+        }
+        super.visitPropertyWrite(node, span);
+      }
+    })(this.variableAssignments, this.currentVariables);
   }
 
-  visitTemplate(template: Template): void {
+  override visitElement(element: TmplAstElement): void {
+    this.visitAll(element.outputs);
+    this.visitAll(element.children);
+  }
+
+  override visitTemplate(template: TmplAstTemplate): void {
     // Keep track of the template variables which can be accessed by the template
     // child nodes through the implicit receiver.
     this.currentVariables.push(...template.variables);
@@ -39,7 +67,7 @@ export class HtmlVariableAssignmentVisitor extends NullVisitor {
     // Visit all children of the template. The template proxies the outputs of the
     // immediate child elements, so we just ignore outputs on the "Template" in order
     // to not visit similar bound events twice.
-    visitAll(this, template.children);
+    this.visitAll(template.children);
 
     // Remove all previously added variables since all children that could access
     // these have been visited already.
@@ -52,28 +80,7 @@ export class HtmlVariableAssignmentVisitor extends NullVisitor {
     });
   }
 
-  visitBoundEvent(node: BoundEvent) {
+  override visitBoundEvent(node: TmplAstBoundEvent) {
     node.handler.visit(this.expressionAstVisitor, node.handlerSpan);
-  }
-}
-
-/** AST visitor that resolves all variable assignments within a given expression AST. */
-class ExpressionAstVisitor extends RecursiveAstVisitor {
-  constructor(
-      private variableAssignments: TemplateVariableAssignment[],
-      private currentVariables: Variable[]) {
-    super();
-  }
-
-  visitPropertyWrite(node: PropertyWrite, span: ParseSourceSpan) {
-    if (node.receiver instanceof ImplicitReceiver &&
-        this.currentVariables.some(v => v.name === node.name)) {
-      this.variableAssignments.push({
-        node: node,
-        start: span.start.offset,
-        end: span.end.offset,
-      });
-    }
-    super.visitPropertyWrite(node, span);
   }
 }

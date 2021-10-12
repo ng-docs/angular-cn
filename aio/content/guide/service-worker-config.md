@@ -18,12 +18,12 @@ A basic understanding of the following:
 
 The `ngsw-config.json` configuration file specifies which files and data URLs the Angular service
 worker should cache and how it should update the cached files and data. The [Angular CLI](cli)
-processes the configuration file during `ng build`. Manually, you can process it with the
+processes the configuration file during `ng build`. Manually, process it with the
 `ngsw-config` tool (where `<project-name>` is the name of the project being built):
 
 配置文件 `ngsw-config.json` 指定了 Angular Service Worker 应该缓存哪些文件和数据的 URL，以及如何更新缓存的文件和数据。
 [Angular CLI](cli) 会在 `ng build` 期间处理配置文件。
-如果想手动处理，你可以使用 `ngsw-config` 工具（这里的 `<project-name>` 就是要构建的项目名）：
+如果想手动处理，可以用 `ngsw-config` 工具（这里的 `<project-name>` 就是要构建的项目名）：
 
 <code-example language="sh">
 ./node_modules/.bin/ngsw-config ./dist/&lt;project-name&gt; ./ngsw-config.json [/base/href]
@@ -53,7 +53,7 @@ Unless otherwise noted, patterns use a limited glob format:
 
   `?` 匹配除 `/` 之外的一个字符。
 
-* The `!` prefix marks the pattern as being negative, meaning that only files that don't match the pattern will be included.
+* The `!` prefix marks the pattern as being negative, meaning that only files that don't match the pattern are included.
 
    `!` 前缀表示该模式是反的，也就是说只包含与该模式不匹配的文件。
 
@@ -71,11 +71,11 @@ Example patterns:
 
 * `!/**/*.map` exclude all sourcemaps.
 
-   `!/**/*.map` 排除了所有源码映射文件。
+  `!/**/*.map` 排除了所有源码映射文件。
 
-Each section of the configuration file is described below.
+The following sections describe each property of the configuration file.
 
-下面讲讲配置文件中的每一节。
+下面讲讲配置文件中的每个属性。
 
 ## `appData`
 
@@ -96,7 +96,7 @@ Specifies the file that serves as the index page to satisfy navigation requests.
 
 ## `assetGroups`
 
-*Assets* are resources that are part of the application version that update along with the application. They can include resources loaded from the page's origin as well as third-party resources loaded from CDNs and other external URLs. As not all such external URLs may be known at build time, URL patterns can be matched.
+*Assets* are resources that are part of the application version that update along with the application. They can include resources loaded from the page's origin as well as third-party resources loaded from CDNs and other external URLs. As not all such external URLs might be known at build time, URL patterns can be matched.
 
 *资产（Assets）*是与应用一起更新的应用版本的一部分。
 它们可以包含从页面的同源地址加载的资源以及从 CDN 和其它外部 URL 加载的第三方资源。
@@ -178,7 +178,7 @@ The `installMode` determines how these resources are initially cached. The `inst
    `prefetch` 告诉 Angular Service Worker 在缓存当前版本的应用时要获取每一个列出的资源。
   这是个带宽密集型的模式，但可以确保这些资源在请求时可用，即使浏览器正处于离线状态。
 
-* `lazy` does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested will not be cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation.
+* `lazy` does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation.
 
    `lazy` 不会预先缓存任何资源。相反，Angular Service Worker 只会缓存它收到请求的资源。
   这是一种按需缓存模式。永远不会请求的资源也永远不会被缓存。
@@ -218,7 +218,7 @@ This section describes the resources to cache, broken up into the following grou
 
    `files` 列出了与 `dist` 目录中的文件相匹配的模式。它们可以是单个文件也可以是能匹配多个文件的类似 glob 的模式。
 
-* `urls` includes both URLs and URL patterns that will be matched at runtime. These resources are not fetched directly and do not have content hashes, but they will be cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service.<br>
+* `urls` includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service.<br>
   _(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)_
 
    `urls` 包括要在运行时进行匹配的 URL 和 URL 模式。
@@ -319,7 +319,7 @@ A list of URL patterns. URLs that match these patterns are cached according to t
 
 ### `version`
 
-Occasionally APIs change formats in a way that is not backward-compatible. A new version of the application may not be compatible with the old API format and thus may not be compatible with existing cached resources from that API.
+Occasionally APIs change formats in a way that is not backward-compatible. A new version of the application might not be compatible with the old API format and thus might not be compatible with existing cached resources from that API.
 
 API 有时可能会以不向后兼容的方式更改格式。
 新版本的应用可能与旧的 API 格式不兼容，因此也就与该 API 中目前已缓存的资源不兼容。
@@ -334,7 +334,7 @@ API 有时可能会以不向后兼容的方式更改格式。
 
 ### `cacheConfig`
 
-This section defines the policy by which matching requests will be cached.
+This section defines the policy by which matching requests are cached.
 
 本节定义了对匹配上的请求进行缓存时的策略。
 
@@ -370,13 +370,13 @@ This section defines the policy by which matching requests will be cached.
 
    `u`：微秒数
 
-For example, the string `3d12h` will cache content for up to three and a half days.
+For example, the string `3d12h` caches content for up to three and a half days.
 
 比如，字符串 `3d12h` 规定此内容最多缓存三天半。
 
 #### `timeout`
 
-This duration string specifies the network timeout. The network timeout is how long the Angular service worker will wait for the network to respond before using a cached response, if configured to do so. `timeout` is a duration string, using the following unit suffixes:
+This duration string specifies the network timeout. The network timeout is how long the Angular service worker waits for the network to respond before using a cached response, if configured to do so. `timeout` is a duration string, using the following unit suffixes:
 
 这个表示持续时间的字符串用于指定网络超时时间。
 如果配置了网络超时时间，Angular Service Worker 就会先等待这么长时间再使用缓存。`timeout` 是一个表示持续时间的字符串，使用下列后缀单位：
@@ -401,7 +401,7 @@ This duration string specifies the network timeout. The network timeout is how l
 
   `u`：毫秒
 
-For example, the string `5s30u` will translate to five seconds and 30 milliseconds of network timeout.
+For example, the string `5s30u` translates to five seconds and 30 milliseconds of network timeout.
 
 比如，字符串 `5s30u` 将会被翻译成 5 秒零 30 毫秒的网络超时。
 
@@ -429,7 +429,7 @@ To use this strategy set `strategy` to `freshness` and `timeout` to `0u` in `cac
 你还可以模拟第三种策略 [staleWhileRevalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate)，它会返回缓存的数据（如果可用），但是也会在后台从网络上获取新数据，以供下次使用。
 要使用本策略，请在 `cacheConfig` 中把 `strategy` 设置为 `freshness`，并且把 `timeout` 设置为 `0u`。
 
-This will essentially do the following:
+This essentially does the following:
 
 本质上说，它会做如下工作：
 
@@ -440,6 +440,7 @@ This will essentially do the following:
 2. If the network request does not complete after 0ms (that is, immediately), fall back to the cache (ignoring cache age).
 
    如果网络请求没有在 0ms 内（也就是立刻）完成，就用缓存做为后备（忽略缓存有效期）。
+
 3. Once the network request completes, update the cache for future requests.
 
    一旦网络请求完成，就更新缓存，以供将来的请求使用。
@@ -466,7 +467,7 @@ This optional section enables you to specify a custom list of URLs that will be 
 
 ### 处理导航请求
 
-The ServiceWorker will redirect navigation requests that don't match any `asset` or `data` group to the specified [index file](#index-file). A request is considered to be a navigation request if:
+The ServiceWorker redirects navigation requests that don't match any `asset` or `data` group to the specified [index file](#index-file). A request is considered to be a navigation request if:
 
 对于没有匹配上任何 `asset` 或 `data` 组的导航请求，ServiceWorker 会把它们重定向到指定的[索引文件](#index-file)。下列请求将会视为导航请求：
 
@@ -478,7 +479,7 @@ The ServiceWorker will redirect navigation requests that don't match any `asset`
 
    它接受 `text/html` 响应（根据 `Accept` 头的值决定）。
 
-3. Its URL matches certain criteria (see below).
+3. Its URL matches certain criteria (see the following).
 
    它的 URL 符合特定的条件（稍后讲）。
 
@@ -506,16 +507,16 @@ To configure whether navigation requests are sent through to the network or not,
 
 ### 匹配导航请求的 URL
 
-While these default criteria are fine in most cases, it is sometimes desirable to configure different rules. For example, you may want to ignore specific routes (that are not part of the Angular app) and pass them through to the server.
+While these default criteria are fine in most cases, it is sometimes desirable to configure different rules. For example, you might want to ignore specific routes (that are not part of the Angular app) and pass them through to the server.
 
 虽然这些默认条件在大多数情况下都挺好用，不过有时还是要配置一些不同的规则。比如，你可能希望忽略一些特定的路由（它们可能不是 Angular 应用的一部分），而是把它们透传给服务器。
 
-This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that will be matched at runtime. It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.
+This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that are matched at runtime. It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.
 
 该字段包含一个将要在运行期间匹配的 URL 和 [类似 glob 的](#glob-patterns) URL 模式。
 它既可以包含正向模式也可以包含反向模式（比如用 `!` 开头的模式）。
 
-Only requests whose URLs match _any_ of the non-negative URLs/patterns and _none_ of the negative ones will be considered navigation requests. The URL query will be ignored when matching.
+Only requests whose URLs match _any_ of the non-negative URLs/patterns and _none_ of the negative ones are considered navigation requests. The URL query is ignored when matching.
 
 只有那些能匹配**任意**正向 URL 或 URL 模式并且**不匹配任何一个**反向模式的 URL 才会视为导航请求。当匹配时，这些 URL 查询将会被忽略。
 

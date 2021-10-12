@@ -4,7 +4,7 @@
 
 Creating shared modules allows you to organize and streamline your code. You can put commonly
 used directives, pipes, and components into one module and then import just that module wherever
-you need it in other parts of your app.
+you need it in other parts of your application.
 
 创建共享模块能让你更好地组织和梳理代码。你可以把常用的指令、管道和组件放进一个模块中，然后在应用中其它需要这些的地方导入该模块。
 

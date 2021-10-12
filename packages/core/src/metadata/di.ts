@@ -158,7 +158,8 @@ export abstract class Query {}
  */
 export interface ContentChildrenDecorator {
   /**
-   * Parameter decorator that configures a content query.
+   * @description
+   * Property decorator that configures a content query.
    *
    * 用于配置内容查询的参数装饰器。
    *
@@ -198,6 +199,27 @@ export interface ContentChildrenDecorator {
    * * **read** - Used to read a different token from the queried elements.
    *
    *   **read** - 用于从查询到的元素中读取不同的令牌。
+   *
+   * The following selectors are supported.
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
+   * with `@ContentChildren('cmp')`)
+   *   * Any provider defined in the child component tree of the current component (e.g.
+   * `@ContentChildren(SomeService) someService: SomeService`)
+   *   * Any provider defined through a string token (e.g. `@ContentChildren('someToken')
+   * someTokenVal: any`)
+   *   * A `TemplateRef` (e.g. query `<ng-template></ng-template>` with
+   * `@ContentChildren(TemplateRef) template;`)
+   *
+   * In addition, multiple string selectors can be separated with a comma (e.g.
+   * `@ContentChildren('cmp1,cmp2')`)
+   *
+   * The following values are supported by `read`:
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * Any provider defined on the injector of the component that is matched by the `selector` of
+   * this query
+   *   * Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   *   * `TemplateRef`, `ElementRef`, and `ViewContainerRef`
    *
    * @usageNotes
    *
@@ -263,7 +285,8 @@ export const ContentChildren: ContentChildrenDecorator = makePropDecorator(
  */
 export interface ContentChildDecorator {
   /**
-   * Parameter decorator that configures a content query.
+   * @description
+   * Property decorator that configures a content query.
    *
    * 用于配置内容查询的参数装饰器。
    *
@@ -298,6 +321,24 @@ export interface ContentChildDecorator {
    * false to resolve after change detection. Defaults to false.
    *
    *     **static** - 如果为 true，则在变更检测运行之前解析查询结果，如果为 false，则在变更检测之后解析。默认为 false。
+   * The following selectors are supported.
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
+   * with `@ContentChild('cmp')`)
+   *   * Any provider defined in the child component tree of the current component (e.g.
+   * `@ContentChild(SomeService) someService: SomeService`)
+   *   * Any provider defined through a string token (e.g. `@ContentChild('someToken') someTokenVal:
+   * any`)
+   *   * A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ContentChild(TemplateRef)
+   * template;`)
+   *
+   * The following values are supported by `read`:
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * Any provider defined on the injector of the component that is matched by the `selector` of
+   * this query
+   *   * Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   *   * `TemplateRef`, `ElementRef`, and `ViewContainerRef`
+   *
    * @usageNotes
    *
    * {@example core/di/ts/contentChild/content_child_howto.ts region='HowTo'}
@@ -348,7 +389,8 @@ export const ContentChild: ContentChildDecorator = makePropDecorator(
  */
 export interface ViewChildrenDecorator {
   /**
-   * Parameter decorator that configures a view query.
+   * @description
+   * Property decorator that configures a view query.
    *
    * 用于配置视图查询的参数装饰器。
    *
@@ -378,6 +420,27 @@ export interface ViewChildrenDecorator {
    * removed in future versions of Angular.
    *
    *   **read** - 用于从查询的元素中读取不同的令牌。
+   * The following selectors are supported.
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
+   * with `@ViewChildren('cmp')`)
+   *   * Any provider defined in the child component tree of the current component (e.g.
+   * `@ViewChildren(SomeService) someService!: SomeService`)
+   *   * Any provider defined through a string token (e.g. `@ViewChildren('someToken')
+   * someTokenVal!: any`)
+   *   * A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ViewChildren(TemplateRef)
+   * template;`)
+   *
+   * In addition, multiple string selectors can be separated with a comma (e.g.
+   * `@ViewChildren('cmp1,cmp2')`)
+   *
+   * The following values are supported by `read`:
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * Any provider defined on the injector of the component that is matched by the `selector` of
+   * this query
+   *   * Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   *   * `TemplateRef`, `ElementRef`, and `ViewContainerRef`
+   *
    * @usageNotes
    *
    * {@example core/di/ts/viewChildren/view_children_howto.ts region='HowTo'}
@@ -491,6 +554,13 @@ export interface ViewChildDecorator {
    * template;`)
    *
    *     `TemplateRef`（比如可以用 `@ViewChild(TemplateRef) template;` 来查询 `<ng-template></ng-template>`）
+   *
+   * The following values are supported by `read`:
+   *   * Any class with the `@Component` or `@Directive` decorator
+   *   * Any provider defined on the injector of the component that is matched by the `selector` of
+   * this query
+   *   * Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   *   * `TemplateRef`, `ElementRef`, and `ViewContainerRef`
    *
    * @usageNotes
    *

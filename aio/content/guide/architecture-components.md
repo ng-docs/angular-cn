@@ -7,7 +7,7 @@ For example, individual components define and control each of the following view
 
 *组件*控制屏幕上被称为[*视图*](guide/glossary#view "Definition of view")的一小片区域。比如，[教程](tutorial/index)中的下列视图都是由一个个组件所定义和控制的：
 
-* The app root with the navigation links.
+* The application root with the navigation links.
 
    带有导航链接的应用根组件。
 
@@ -36,7 +36,7 @@ The service is provided to the component through the dependency injection system
 
 <code-example path="architecture/src/app/hero-list.component.ts" header="src/app/hero-list.component.ts (class)" region="class"></code-example>
 
-Angular creates, updates, and destroys components as the user moves through the application. Your app can take action at each moment in this lifecycle through optional [lifecycle hooks](guide/lifecycle-hooks), like `ngOnInit()`.
+Angular creates, updates, and destroys components as the user moves through the application. Your application can take action at each moment in this lifecycle through optional [lifecycle hooks](guide/lifecycle-hooks), like `ngOnInit()`.
 
 当用户在应用中穿行时，Angular 就会创建、更新、销毁一些组件。
 你的应用可以通过一些可选的[生命周期钩子](guide/lifecycle-hooks)（比如 `ngOnInit()`）来在每个特定的时机采取行动。
@@ -73,7 +73,7 @@ This example shows some of the most useful `@Component` configuration options:
 
 这个例子展示了一些最常用的 `@Component` 配置选项：
 
-* `selector`: A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an app's HTML contains `<app-hero-list></app-hero-list>`, then
+* `selector`: A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then
 Angular inserts an instance of the `HeroListComponent` view between those tags.
 
    `selector`：是一个 CSS 选择器，它会告诉 Angular，一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。
@@ -116,7 +116,7 @@ A view hierarchy can include views from components in the same NgModule, but it 
 
 ## 模板语法
 
-A template looks like regular HTML, except that it also contains Angular [template syntax](guide/template-syntax), which alters the HTML based on your app's logic and the state of app and DOM data. Your template can use *data binding* to coordinate the app and DOM data, *pipes* to transform data before it is displayed, and *directives* to apply app logic to what gets displayed.
+A template looks like regular HTML, except that it also contains Angular [template syntax](guide/template-syntax), which alters the HTML based on your application's logic and the state of application and DOM data. Your template can use *data binding* to coordinate the application and DOM data, *pipes* to transform data before it is displayed, and *directives* to apply application logic to what gets displayed.
 
 模板很像标准的 HTML，但是它还包含 Angular 的[模板语法](guide/template-syntax)，这些模板语法可以根据你的应用逻辑、应用状态和 DOM 数据来修改这些 HTML。
 你的模板可以使用*数据绑定*来协调应用和 DOM 中的数据，使用*管道*在显示出来之前对其进行转换，使用*指令*来把程序逻辑应用到要显示的内容上。

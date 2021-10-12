@@ -6,8 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import * as compiler from '@angular/compiler';
 import {Replacement, RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {NgComponentTemplateVisitor} from '../../utils/ng_component_template';
 import {NgQueryResolveVisitor} from '../static-queries/angular/ng_query_visitor';
@@ -24,7 +25,7 @@ const FAILURE_MESSAGE = 'Query does not explicitly specify its timing. Read more
  * be applied in order to automatically migrate to the explicit query timing API.
  */
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const typeChecker = program.getTypeChecker();
     const queryVisitor = new NgQueryResolveVisitor(program.getTypeChecker());
     const templateVisitor = new NgComponentTemplateVisitor(typeChecker);
@@ -49,7 +50,7 @@ export class Rule extends Rules.TypedRule {
     });
 
     const queries = resolvedQueries.get(sourceFile);
-    const usageStrategy = new QueryUsageStrategy(classMetadata, typeChecker);
+    const usageStrategy = new QueryUsageStrategy(classMetadata, typeChecker, compiler);
 
     // No queries detected for the given source file.
     if (!queries) {

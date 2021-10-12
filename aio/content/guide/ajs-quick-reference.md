@@ -243,7 +243,7 @@ AngularJS 为模板提供了七十多个内置指令。
 
       应用的启动过程被称为**引导**。
 
-      Although you can bootstrap an AngularJS app in code,
+      Although you can bootstrap an AngularJS application in code,
       many applications bootstrap declaratively with the `ng-app` directive,
       giving it the name of the application's module (`movieHunter`).
 
@@ -264,7 +264,7 @@ AngularJS 为模板提供了七十多个内置指令。
       <code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts" header="app.module.ts"></code-example>
 
       Angular doesn't have a bootstrap directive.
-      To launch the app in code, explicitly bootstrap the application's root module (`AppModule`)
+      To launch the application in code, explicitly bootstrap the application's root module (`AppModule`)
       in `main.ts`
       and the application's root component (`AppComponent`) in `app.module.ts`.
 
@@ -879,9 +879,9 @@ AngularJS 为模板提供了七十多个内置指令。
 
       In this example, if `favoriteHero` is not set, the `ngSwitch` value is `null`
       and `*ngSwitchDefault` displays, "Please enter ...".
-      If `favoriteHero` is set, the app checks the movie hero by calling a component method.
-      If that method returns `true`, the app selects `*ngSwitchCase="true"` and displays: "Excellent choice!"
-      If that methods returns `false`, the app selects `*ngSwitchCase="false"` and displays: "No movie, sorry!"
+      If `favoriteHero` is set, the application checks the movie hero by calling a component method.
+      If that method returns `true`, the application selects `*ngSwitchCase="true"` and displays: "Excellent choice!"
+      If that methods returns `false`, the application selects `*ngSwitchCase="false"` and displays: "No movie, sorry!"
 
       在这个例子中，如果 `favoriteHero` 没有设置，则 `ngSwitch` 的值是 `null`，
       `*ngSwitchDefault` 中会显示 “Please enter ...”。

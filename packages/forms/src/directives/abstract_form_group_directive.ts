@@ -59,7 +59,7 @@ export class AbstractFormGroupDirective extends ControlContainer implements OnIn
    * 绑定到此指令的 `FormGroup`。
    *
    */
-  get control(): FormGroup {
+  override get control(): FormGroup {
     return this.formDirective!.getFormGroup(this);
   }
 
@@ -70,7 +70,7 @@ export class AbstractFormGroupDirective extends ControlContainer implements OnIn
    * 从顶级指令到该组的路径。
    *
    */
-  get path(): string[] {
+  override get path(): string[] {
     return controlPath(this.name == null ? this.name : this.name.toString(), this._parent);
   }
 
@@ -81,7 +81,7 @@ export class AbstractFormGroupDirective extends ControlContainer implements OnIn
    * 该组的顶级指令（如果存在），否则为 null。
    *
    */
-  get formDirective(): Form|null {
+  override get formDirective(): Form|null {
     return this._parent ? this._parent.formDirective : null;
   }
 

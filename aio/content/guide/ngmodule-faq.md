@@ -45,10 +45,9 @@ Do *not* declare the following:
 
 *不要*声明：
 
-* A class that's already declared in another module, whether an app module, @NgModule, or third-party module.
+* A class that's already declared in another module, whether an application module, @NgModule, or third-party module.
 
    已经在其它模块中声明过的类。无论它来自应用自己的模块（@NgModule）还是第三方模块。
-
 * An array of directives imported from another module.
 For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
 
@@ -90,7 +89,7 @@ Membership in one list doesn't imply membership in another list.
 
    `AppComponent` 可能在此模块中引导，但可能是由另一个特性模块声明的。
 
-* A component could be imported from another app module (so you can't declare it) and re-exported by this module.
+* A component could be imported from another application module (so you can't declare it) and re-exported by this module.
 
    某个组件可能是从另一个应用模块中导入的（所以你没法声明它）并且被当前模块重新导出。
 
@@ -158,13 +157,13 @@ should import `BrowserModule` from `@angular/platform-browser`.
 
 几乎所有要在浏览器中使用的应用的**根模块**（`AppModule`）都应该从 `@angular/platform-browser` 中导入 `BrowserModule`。
 
-`BrowserModule` provides services that are essential to launch and run a browser app.
+`BrowserModule` provides services that are essential to launch and run a browser application.
 
 `BrowserModule` 提供了启动和运行浏览器应用的那些基本的服务提供者。
 
 `BrowserModule` also re-exports `CommonModule` from `@angular/common`,
 which means that components in the `AppModule` also have access to
-the Angular directives every app needs, such as `NgIf` and `NgFor`.
+the Angular directives every application needs, such as `NgIf` and `NgFor`.
 
 `BrowserModule` 还从 `@angular/common` 中重新导出了 `CommonModule`，这意味着 `AppModule` 中的组件也同样可以访问那些每个应用都需要的 Angular 指令，如 `NgIf` 和 `NgFor`。
 
@@ -306,7 +305,7 @@ The `forRoot()` static method is a convention that makes it easy for developers 
 
 静态方法 `forRoot()` 是一个约定，它可以让开发人员更轻松的配置模块的想要单例使用的服务及其提供者。`RouterModule.forRoot()` 就是一个很好的例子。
 
-Apps pass a `Routes` array to `RouterModule.forRoot()` in order to configure the app-wide `Router` service with routes.
+Applications pass a `Routes` array to `RouterModule.forRoot()` in order to configure the app-wide `Router` service with routes.
 `RouterModule.forRoot()` returns a [ModuleWithProviders](api/core/ModuleWithProviders).
 You add that result to the `imports` list of the root `AppModule`.
 
@@ -321,6 +320,17 @@ information on `forRoot()` see [the `forRoot()` pattern](guide/singleton-service
 只能在应用的根模块 `AppModule` 中调用并导入 `forRoot()` 的结果。
 在其它模块，特别是惰性加载模块中，不要导入它。
 要了解关于 `forRoot()` 的更多信息，参阅[单例服务](guide/singleton-services)一章的 [the `forRoot()` 模式](guide/singleton-services#the-forroot-pattern)部分。
+
+<div class="alert is-helpful">
+
+Note: the `forRoot()` import can be used in a module other than `AppModule`. Importantly,
+`forRoot()` should only be called once, and the module that imports the `forRoot()` needs to be available to
+the root `ModuleInjector`. For more information, refer to the guide on [Hierarchical injectors](guide/hierarchical-dependency-injection#moduleinjector).
+
+注意：`forRoot()` 导入可以用于除 `AppModule` 之外的模块中。最重要的是，`forRoot()` 只应该被调用一次，而且导入 `forRoot()` 的模块应该可以在根 `ModuleInjector` 中可用。
+欲知详情，参见[多级注入器](guide/hierarchical-dependency-injection#moduleinjector)指南。
+
+</div>
 
 For a service, instead of using `forRoot()`,  specify `providedIn: 'root'` on the service's `@Injectable()` decorator, which
 makes the service automatically available to the whole application and thus singleton by default.
@@ -640,11 +650,11 @@ not the root `AppComponent`.
 
 When an eagerly loaded module provides a service, for example a `UserService`, that service is available application-wide. If the root module provides `UserService` and
 imports another module that provides the same `UserService`, Angular registers one of
-them in the root app injector (see [What if I import the same module twice?](guide/ngmodule-faq#q-reimport)).
+them in the root application injector (see [What if I import the same module twice?](guide/ngmodule-faq#q-reimport)).
 
 当急性加载的模块提供了服务时，比如 `UserService`，该服务是在全应用级可用的。如果根模块提供了 `UserService`，并导入了另一个也提供了同一个 `UserService` 的模块，Angular 就会把它们中的一个注册进应用的根注入器中（参阅[如果两次导入了同一个模块会怎样？](guide/ngmodule-faq#q-reimport)）。
 
-Then, when some component injects `UserService`, Angular finds it in the app root injector,
+Then, when some component injects `UserService`, Angular finds it in the application root injector,
 and delivers the app-wide singleton service. No problem.
 
 然后，当某些组件注入 `UserService` 时，Angular 就会发现它已经在应用的根注入器中了，并交付这个全应用级的单例服务。这样不会出现问题。
@@ -672,10 +682,9 @@ than the app-wide singleton version that Angular injected in one of the eagerly 
 这次，它会从惰性加载模块的*子注入器*中查找 `UserService` 的提供者，并用它创建一个 `UserService` 的新实例。
 这个 `UserService` 实例与 Angular 在主动加载的组件中注入的那个全应用级单例对象截然不同。
 
-This scenario causes your app to create a new instance every time, instead of using the singleton.
+This scenario causes your application to create a new instance every time, instead of using the singleton.
 
 这个场景导致你的应用每次都创建一个新的服务实例，而不是使用单例的服务。
-
 <!--KW--What does this cause? I wasn't able to get the suggestion of this to work from
 the current FAQ:
 To demonstrate, run the <live-example name="ngmodule">live example</live-example>.
@@ -701,7 +710,7 @@ or lazy-loaded later. Neglecting that difference can lead to [adverse consequenc
 
 这意味着模块的行为将取决于它是在应用启动期间加载的还是后来惰性加载的。如果疏忽了这一点，可能导致[严重后果](guide/ngmodule-faq#q-why-bad)。
 
-Why doesn't Angular add lazy-loaded providers to the app root injector as it does for eagerly loaded NgModules?
+Why doesn't Angular add lazy-loaded providers to the application root injector as it does for eagerly loaded NgModules?
 
 为什么 Angular 不能像主动加载模块那样把惰性加载模块的提供者也添加到应用程序的根注入器中呢？为什么会出现这种不一致？
 
@@ -715,14 +724,14 @@ Once an injector starts creating and delivering services, its provider list is f
 
 When an applications starts, Angular first configures the root injector with the providers of all eagerly loaded NgModules
 _before_ creating its first component and injecting any of the provided services.
-Once the application begins, the app root injector is closed to new providers.
+Once the application begins, the application root injector is closed to new providers.
 
 当应用启动时，Angular 会首先使用所有主动加载模块中的提供者来配置根注入器，这发生在它创建第一个组件以及注入任何服务之前。
 一旦应用开始工作，应用的根注入器就不再接受新的提供者了。
 
 Time passes and application logic triggers lazy loading of an NgModule.
 Angular must add the lazy-loaded module's providers to an injector somewhere.
-It can't add them to the app root injector because that injector is closed to new providers.
+It can't add them to the application root injector because that injector is closed to new providers.
 So Angular creates a new child injector for the lazy-loaded module context.
 
 之后，应用逻辑开始惰性加载某个模块。
@@ -743,7 +752,7 @@ that may be difficult to detect and diagnose.
   在惰性加载模块中再次导入这个模块会[导致错误的行为](guide/ngmodule-faq#q-why-bad)，这个错误可能非常难于检测和诊断。
 
 To prevent this issue, write a constructor that attempts to inject the module or service
-from the root app injector. If the injection succeeds, the class has been loaded a second time.
+from the root application injector. If the injection succeeds, the class has been loaded a second time.
 You can throw an error or take other remedial action.
 
 为了防范这种风险，可以写一个构造函数，它会尝试从应用的根注入器中注入该模块或服务。如果这种注入成功了，那就说明这个类是被第二次加载的，你就可以抛出一个错误，或者采取其它挽救措施。
@@ -766,7 +775,7 @@ An entry component is any component that Angular loads _imperatively_ by type.
 
 Angular 根据组件类型*命令式*加载的组件是*入口组件*.
 
-A component loaded _declaratively_ via its selector is _not_ an entry component.
+A component loaded _declaratively_ by way of its selector is _not_ an entry component.
 
 而通过组件选择器*声明式*加载的组件则*不是*入口组件。
 
@@ -842,7 +851,7 @@ Angular 会自动把恰当的组件添加到*入口组件*中。
 由路由配置引用到的组件会被自动加入。
 用这两种机制添加的组件在入口组件中占了绝大多数。
 
-If your app happens to bootstrap or dynamically load a component _by type_ in some other manner,
+If your application happens to bootstrap or dynamically load a component _by type_ in some other manner,
 you must add it to `entryComponents` explicitly.
 
 如果你的应用要用其它手段来*根据类型*引导或动态加载组件，那就得把它显式添加到 `entryComponents` 中。
@@ -863,7 +872,7 @@ For more information, see [Entry Components](guide/entry-components).
 
 ## 为什么 Angular 需要*入口组件*？
 
-The reason is _tree shaking_. For production apps you want to load the smallest, fastest code possible. The code should contain only the classes that you actually need.
+The reason is _tree shaking_. For production applications you want to load the smallest, fastest code possible. The code should contain only the classes that you actually need.
 It should exclude a component that's never used, whether or not that component is declared.
 
 原因在于*摇树优化*。对于产品化应用，你会希望加载尽可能小而快的代码。
@@ -902,7 +911,7 @@ the compiler omits it.
 
 ## 有哪些类型的模块？我应该如何使用它们？
 
-Every app is different. Developers have various levels of experience and comfort with the available choices.
+Every application is different. Developers have various levels of experience and comfort with the available choices.
 Some suggestions and guidelines appear to have wide appeal.
 
 每个应用都不一样。根据不同程度的经验，开发者会做出不同的选择。下列建议和指导原则广受欢迎。
@@ -910,7 +919,7 @@ Some suggestions and guidelines appear to have wide appeal.
 ### `SharedModule`
 
 `SharedModule` is a conventional name for an `NgModule` with the components, directives, and pipes that you use
-everywhere in your app. This module should consist entirely of `declarations`,
+everywhere in your application. This module should consist entirely of `declarations`,
 most of them exported.
 
 为那些可能会在应用中到处使用的组件、指令和管道创建 `SharedModule`。
@@ -929,7 +938,7 @@ Nor should any of its imported or re-exported modules have `providers`.
 如果你要违背这条指导原则，请务必想清楚你在做什么，并要有充分的理由。
 
 Import the `SharedModule` in your _feature_ modules,
-both those loaded when the app starts and those you lazy load later.
+both those loaded when the application starts and those you lazy load later.
 
 在任何特性模块中（无论是你在应用启动时主动加载的模块还是之后惰性加载的模块），你都可以随意导入这个 `SharedModule`。
 
@@ -937,7 +946,7 @@ both those loaded when the app starts and those you lazy load later.
 
 ### 特性模块
 
-Feature modules are modules you create around specific application business domains, user workflows, and utility collections. They support your app by containing a particular feature,
+Feature modules are modules you create around specific application business domains, user workflows, and utility collections. They support your application by containing a particular feature,
 such as routes, services, widgets, etc. To conceptualize what a feature module might be in your
 app, consider that if you would put the files related to a certain functionality, like a search,
 in one folder, that the contents of that folder would be a feature module that you might call

@@ -7,10 +7,8 @@
  */
 
 import {UpdateRecorder} from '@angular-devkit/schematics';
-import {Reference} from '@angular/compiler-cli/src/ngtsc/imports';
-import {DynamicValue, PartialEvaluator, ResolvedValue, ResolvedValueMap} from '@angular/compiler-cli/src/ngtsc/partial_evaluator';
-import {TypeScriptReflectionHost} from '@angular/compiler-cli/src/ngtsc/reflection';
-import * as ts from 'typescript';
+import type {ResolvedValue, ResolvedValueMap} from '@angular/compiler-cli/private/migrations';
+import ts from 'typescript';
 
 import {ResolvedNgModule} from './collector';
 import {createModuleWithProvidersType} from './util';
@@ -24,13 +22,16 @@ const TODO_COMMENT = 'TODO: The following node requires a generic type for `Modu
 
 export class ModuleWithProvidersTransform {
   private printer = ts.createPrinter();
-  private partialEvaluator: PartialEvaluator = new PartialEvaluator(
-      new TypeScriptReflectionHost(this.typeChecker), this.typeChecker,
+  private partialEvaluator = new this.compilerCliMigrationsModule.PartialEvaluator(
+      new this.compilerCliMigrationsModule.TypeScriptReflectionHost(this.typeChecker),
+      this.typeChecker,
       /* dependencyTracker */ null);
 
   constructor(
       private typeChecker: ts.TypeChecker,
-      private getUpdateRecorder: (sf: ts.SourceFile) => UpdateRecorder) {}
+      private getUpdateRecorder: (sf: ts.SourceFile) => UpdateRecorder,
+      private compilerCliMigrationsModule:
+          typeof import('@angular/compiler-cli/private/migrations')) {}
 
   /** Migrates a given NgModule by walking through the referenced providers and static methods. */
   migrateModule(module: ResolvedNgModule): AnalysisFailure[] {
@@ -134,10 +135,10 @@ export class ModuleWithProvidersTransform {
   private _getTypeOfResolvedValue(value: ResolvedValue): string|undefined {
     if (value instanceof Map && this.isModuleWithProvidersType(value)) {
       const mapValue = value.get('ngModule')!;
-      if (mapValue instanceof Reference && ts.isClassDeclaration(mapValue.node) &&
-          mapValue.node.name) {
+      if (mapValue instanceof this.compilerCliMigrationsModule.Reference &&
+          ts.isClassDeclaration(mapValue.node) && mapValue.node.name) {
         return mapValue.node.name.text;
-      } else if (mapValue instanceof DynamicValue) {
+      } else if (mapValue instanceof this.compilerCliMigrationsModule.DynamicValue) {
         addTodoToNode(mapValue.node, TODO_COMMENT);
         this._updateNode(mapValue.node, mapValue.node);
       }

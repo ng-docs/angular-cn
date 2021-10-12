@@ -45,10 +45,13 @@ class _NullComponentFactoryResolver implements ComponentFactoryResolver {
  *
  * [动态组件](guide/dynamic-component-loader)
  *
+ * @see [Usage Example](guide/dynamic-component-loader#resolving-components)
+ * @see <live-example name="dynamic-component-loader" noDownload></live-example>
+of the code in this cookbook
  * @publicApi
  */
 export abstract class ComponentFactoryResolver {
-  static NULL: ComponentFactoryResolver = new _NullComponentFactoryResolver();
+  static NULL: ComponentFactoryResolver = (/* @__PURE__ */ new _NullComponentFactoryResolver());
   /**
    * Retrieves the factory object that creates a component of the given type.
    *
@@ -87,11 +90,11 @@ export class CodegenComponentFactoryResolver implements ComponentFactoryResolver
 }
 
 export class ComponentFactoryBoundToModule<C> extends ComponentFactory<C> {
-  readonly selector: string;
-  readonly componentType: Type<any>;
-  readonly ngContentSelectors: string[];
-  readonly inputs: {propName: string, templateName: string}[];
-  readonly outputs: {propName: string, templateName: string}[];
+  override readonly selector: string;
+  override readonly componentType: Type<any>;
+  override readonly ngContentSelectors: string[];
+  override readonly inputs: {propName: string, templateName: string}[];
+  override readonly outputs: {propName: string, templateName: string}[];
 
   constructor(private factory: ComponentFactory<C>, private ngModule: NgModuleRef<any>) {
     super();
@@ -102,7 +105,7 @@ export class ComponentFactoryBoundToModule<C> extends ComponentFactory<C> {
     this.outputs = factory.outputs;
   }
 
-  create(
+  override create(
       injector: Injector, projectableNodes?: any[][], rootSelectorOrNode?: string|any,
       ngModule?: NgModuleRef<any>): ComponentRef<C> {
     return this.factory.create(

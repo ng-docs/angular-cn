@@ -6,9 +6,15 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Inject, LOCALE_ID, Pipe, PipeTransform} from '@angular/core';
+import {Inject, InjectionToken, LOCALE_ID, Optional, Pipe, PipeTransform} from '@angular/core';
 import {formatDate} from '../i18n/format_date';
 import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
+
+/**
+ * Optionally-provided default timezone to use for all instances of `DatePipe` (such as `'+0430'`).
+ * If the value isn't provided, the `DatePipe` will use the end-user's local system timezone.
+ */
+export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_DEFAULT_TIMEZONE');
 
 // clang-format off
 /**
@@ -19,12 +25,25 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  *
  * 根据区域设置规则格式化日期值。
  *
+ * `DatePipe` is executed only when it detects a pure change to the input value.
+ * A pure change is either a change to a primitive input value
+ * (such as `String`, `Number`, `Boolean`, or `Symbol`),
+ * or a changed object reference (such as `Date`, `Array`, `Function`, or `Object`).
+ *
+ * Note that mutating a `Date` object does not cause the pipe to be rendered again.
+ * To ensure that the pipe is executed, you must create a new `Date` object.
+ *
  * Only the `en-US` locale data comes with Angular. To localize dates
  * in another language, you must import the corresponding locale data.
- * See the [I18n guide](guide/i18n#i18n-pipes) for more information.
+ * See the [I18n guide](guide/i18n-common-format-data-locale) for more information.
  *
  * Angular 只自带了 `en-US` 区域的数据。要想在其它语言中对日期进行本地化，你必须导入相应的区域数据。
- * 欲知详情，参见 [I18n guide](guide/i18n#i18n-pipes)。
+ * 欲知详情，参见 [I18n guide](guide/i18n-common-format-data-locale)。
+ *
+ * The time zone of the formatted value can be specified either by passing it in as the second
+ * parameter of the pipe, or by setting the default through the `DATE_PIPE_DEFAULT_TIMEZONE`
+ * injection token. The value that is passed in as the second parameter takes precedence over
+ * the one defined using the injection token.
  *
  * @see `formatDate()`
  *
@@ -183,7 +202,9 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
 // clang-format on
 @Pipe({name: 'date', pure: true})
 export class DatePipe implements PipeTransform {
-  constructor(@Inject(LOCALE_ID) private locale: string) {}
+  constructor(
+      @Inject(LOCALE_ID) private locale: string,
+      @Inject(DATE_PIPE_DEFAULT_TIMEZONE) @Optional() private defaultTimezone?: string|null) {}
 
   /**
    * @param value The date expression: a `Date` object,  a number
@@ -196,19 +217,19 @@ export class DatePipe implements PipeTransform {
    *
    * 要包含的日期、时间部分的格式，使用预定义选项或自定义格式字符串。
    *
-   * @param timezone A timezone offset (such as `'+0430'`), or a standard
-   * UTC/GMT or continental US timezone abbreviation.
-   * When not supplied, uses the end-user's local system timezone.
+   * @param timezone A timezone offset (such as `'+0430'`), or a standard UTC/GMT, or continental US
+   * timezone abbreviation. When not supplied, either the value of the `DATE_PIPE_DEFAULT_TIMEZONE`
+   * injection token is used or the end-user's local system timezone.
    *
    * 一个时区偏移（比如 `'+0430'`）或标准的 UTC/GMT 或美国大陆时区的缩写。默认为最终用户机器上的本地系统时区。
    *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
-   * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
+   * See [Setting your app locale](guide/i18n-common-locale-id).
    *
    * 要使用的区域格式规则的区域代码。
    * 如果不提供，就使用 `LOCALE_ID` 的值，默认为 `en-US`。
-   * 参见[设置应用的区域](guide/i18n#setting-up-the-locale-of-your-app)。
+   * 参见[设置应用的区域](guide/i18n-common-locale-id)。
    *
    * @returns A date string in the desired format.
    *
@@ -226,7 +247,8 @@ export class DatePipe implements PipeTransform {
     if (value == null || value === '' || value !== value) return null;
 
     try {
-      return formatDate(value, format, locale || this.locale, timezone);
+      return formatDate(
+          value, format, locale || this.locale, timezone ?? this.defaultTimezone ?? undefined);
     } catch (error) {
       throw invalidPipeArgumentError(DatePipe, error.message);
     }

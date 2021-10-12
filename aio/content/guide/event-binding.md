@@ -2,7 +2,7 @@
 
 # 事件绑定
 
-Event binding allows you to listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.
+Event binding lets you listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.
 
 通过事件绑定，你可以侦听并响应用户操作，例如按键、鼠标移动、点击和触摸。
 
@@ -35,6 +35,39 @@ The event binding listens for the button's click events and calls the component'
 <div class="lightbox">
   <img src='generated/images/guide/template-syntax/syntax-diagram.svg' alt="Syntax diagram">
 </div>
+
+## Binding to passive events
+
+## 绑定到被动事件
+
+Angular also supports passive event listeners. For example, use the following steps to make a scroll event passive.
+
+Angular 还支持被动事件侦听器。例如，使用以下步骤使滚动事件变为被动的。
+
+1. Create a file `zone-flags.ts` under `src` directory.
+
+   在 `src` 目录下创建一个文件 `zone-flags.ts` 。
+
+2. Add the following line into this file.
+
+   将以下行添加到此文件中。
+
+```
+(window as any)['__zone_symbol__PASSIVE_EVENTS'] = ['scroll'];
+```
+
+3. In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
+
+   在 `src/polyfills.ts` 文件中，在导入 zone.js 之前，先导入新创建的 `zone-flags` 。
+
+```
+import './zone-flags';
+import 'zone.js';  // Included with Angular CLI.
+```
+
+After those steps, if you add event listeners for the `scroll` event, the listeners will be `passive`.
+
+在这些步骤之后，如果你为 `scroll` 事件添加事件侦听器，侦听器就会是 `passive` 的。
 
 ## Custom events with `EventEmitter`
 

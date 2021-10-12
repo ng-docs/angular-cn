@@ -34,7 +34,7 @@ export interface PopStateEvent {
  *
  * @usageNotes
  *
- * It's better to use the `Router#navigate` service to trigger route changes. Use
+ * It's better to use the `Router.navigate()` service to trigger route changes. Use
  * `Location` only if you need to interact with or create normalized URLs outside of
  * routing.
  *
@@ -317,6 +317,9 @@ export class Location {
    *
    * 订阅所属平台（如浏览器）的 `popState` 事件。
    *
+   * Note: `Location.go()` does not trigger the `popState` event in the browser. Use
+   * `Location.onUrlChange()` to subscribe to URL changes instead.
+   *
    * @param value Event that is triggered when the state history changes.
    *
    * 当状态历史发生变化时触发的事件
@@ -324,6 +327,8 @@ export class Location {
    * @param exception The exception to throw.
    *
    * 要抛出的异常。
+   *
+   * @see [onpopstate](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate)
    *
    * @returns Subscribed events.
    *

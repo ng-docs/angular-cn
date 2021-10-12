@@ -12,7 +12,7 @@ The **`Router`** enables navigation by interpreting a browser URL as an instruct
 
 要处理从一个[视图](guide/glossary#view)到下一个视图的导航，请使用 Angular **`Router`**。 **`Router`** 会通过将浏览器 URL 解释为更改视图的操作指令来启用导航。
 
-To explore a sample app featuring the router's primary features, see the <live-example stackblitz="router"></live-example>.
+To explore a sample app featuring the router's primary features, see the <live-example name="router"></live-example>.
 
 要浏览具有主要路由器功能的示例应用，请参阅<live-example stackblitz="router"></live-example> 。
 
@@ -32,7 +32,7 @@ Before creating a route, you should be familiar with the following:
 
   [模板基础](guide/glossary#template)
 
-* An Angular app&mdash;you can generate a basic Angular app using the [Angular CLI](cli).
+* An Angular app&mdash;you can generate a basic Angular application using the [Angular CLI](cli).
 
   一个 Angular 应用程序 - 你可以使用 [Angular CLI](cli) 生成基本的 Angular 应用程序。
 
@@ -64,6 +64,14 @@ Before creating a route, you should be familiar with the following:
     <p>往《英雄之旅》教程中添加更多路由特性。</p>
     <p class="card-footer">Routing Tour of Heroes</p>
     <p class="card-footer">《英雄之旅》的路由</p>
+  </a>
+  <a href="guide/routing-with-urlmatcher" class="docs-card" title="Creating custom route matches tutorial">
+    <section>Creating custom route matches tutorial</section>
+    <section>自定义路由匹配策略创建教程</section>
+    <p>A tutorial that covers how to use custom matching strategy patterns with Angular routing.</p>
+    <p>讲述如何将 Angular 路由与自定义匹配策略模式结合使用</p>
+    <p class="card-footer">Custom route matches tutorial</p>
+    <p class="card-footer">自定义路由匹配策略创建教程</p>
   </a>
   <a href="guide/router-reference" class="docs-card" title="Router reference">
     <section>Router reference</section>

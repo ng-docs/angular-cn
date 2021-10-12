@@ -42,7 +42,7 @@ philosophy](https://www.google.com/about/appsecurity/).
 <header>最佳实践</header>
 
 * **Keep current with the latest Angular library releases.**
-We regularly update the Angular libraries, and these updates may fix security defects discovered in
+We regularly update the Angular libraries, and these updates might fix security defects discovered in
 previous versions. Check the Angular [change
 log](https://github.com/angular/angular/blob/master/CHANGELOG.md) for security-related updates.
 
@@ -50,7 +50,7 @@ log](https://github.com/angular/angular/blob/master/CHANGELOG.md) for security-r
 我们会频繁的更新 Angular 库，这些更新可能会修复之前版本中发现的安全漏洞。查看 Angular 的[更新记录](https://github.com/angular/angular/blob/master/CHANGELOG.md)，了解与安全有关的更新。
 
 * **Don't modify your copy of Angular.**
-Private, customized versions of Angular tend to fall behind the current version and may not include
+Private, customized versions of Angular tend to fall behind the current version and might not include
 important security fixes and enhancements. Instead, share your Angular improvements with the
 community and make a pull request.
 
@@ -91,15 +91,19 @@ attacker-controlled data enters the DOM, expect security vulnerabilities.
 
 ### Angular 的“跨站脚本安全模型”
 
-To systematically block XSS bugs, Angular treats all values as untrusted by default. When a value is inserted into the DOM from a template binding, or interpolation, Angular sanitizes and escapes untrusted values. If a value was already sanitized outside of Angular and is considered safe, you can communicate this to Angular by marking the [value as trusted](#bypass-security-apis).
+To systematically block XSS bugs, Angular treats all values as untrusted by default. When a value is inserted into the DOM from a template binding, or interpolation, Angular sanitizes and escapes untrusted values. If a value was already sanitized outside of Angular and is considered safe, communicate this to Angular by marking the [value as trusted](#bypass-security-apis).
 
 为了系统性的防范 XSS 问题，Angular 默认把所有值都当做不可信任的。
 当值从模板中以属性（Property）、DOM 元素属性（Attribte)、CSS 类绑定或插值等途径插入到 DOM 中的时候，
-Angular 将对这些值进行无害化处理（Sanitize），对不可信的值进行编码。如果某个值已经在 Angular 之外进行过无害化处理，可以确信是安全的，你可以[把这个值标记为安全的](#bypass-security-apis)来把这一点通知 Angular。
+Angular 将对这些值进行无害化处理（Sanitize），对不可信的值进行编码。如果某个值已经在 Angular 之外进行过无害化处理，可以确信是安全的，可以[把这个值标记为安全的](#bypass-security-apis)来把这一点通知 Angular。
 
 Unlike values to be used for rendering, Angular templates are considered trusted by default, and should be treated as executable code. Never generate templates by concatenating user input and template syntax. Doing this would enable attackers to [inject arbitrary code](https://en.wikipedia.org/wiki/Code_injection) into your application. To prevent these vulnerabilities, always use the default [AOT template compiler](/guide/security#offline-template-compiler) in production deployments.
 
 与用于渲染的值不同，默认情况下，Angular 模板被认为是受信任的，应被视为可执行代码。切勿通过串联用户输入和模板语法来生成模板。这样做会使攻击者能够[将任意代码注入](https://en.wikipedia.org/wiki/Code_injection)你的应用程序。为避免这些漏洞，请始终在生产部署中[使用默认的 AOT 模板编译器。](/guide/security#offline-template-compiler)
+
+An additional layer of protection can be provided through the use of Content security policy and Trusted Types. These web platform features operate at the DOM level which is the most effective place to prevent XSS issues because they can't be bypassed using other, lower-level APIs. For this reason, we strongly encourage developers to take advantage of these features by configuring the [content security policy](#content-security-policy) for their application and enabling [trusted types enforcement](#trusted-types).
+
+借助内容安全策略和可信类型，可以提供额外的保护层。这些 Web 平台特性会在 DOM 级别运行，这是用来防范 XSS 问题的最有效位置，因为即使使用其它低级 API 也无法绕过它们。出于这个原因，我们强烈建议开发人员通过为其应用程序配置[内容安全策略](#content-security-policy)并启用[强制可信类型](#trusted-types)来利用这些特性。
 
 ### Sanitization and security contexts
 
@@ -128,7 +132,7 @@ Angular 定义了四个安全环境 - HTML，样式，URL，和资源 URL：
 
    **URL**：值需要被用作 URL 属性时使用，比如 `<a href>`。
 
-* **Resource URL** is a URL that will be loaded and executed as code, for example, in `<script src>`.
+* **Resource URL** is a URL that is loaded and executed as code, for example, in `<script src>`.
 
    **资源 URL**的值需要作为代码进行加载并执行，比如 `<script src>` 中的 URL。
 
@@ -176,14 +180,13 @@ Angular 认为这些值是不安全的，并自动进行无害化处理。它会
 
 ### 避免直接使用 DOM API
 
-Built-in browser DOM APIs don't automatically
-browser DOM APIs don't automatically protect you from security vulnerabilities.
+Unless you enforce Trusted Types, the built-in browser DOM APIs don't automatically protect you from security vulnerabilities.
 For example, `document`, the node available through `ElementRef`, and many third-party APIs
 contain unsafe methods. In the same way, if you interact with other libraries that manipulate
 the DOM, you likely won't have the same automatic sanitization as with Angular interpolations.
 Avoid directly interacting with the DOM and instead use Angular templates where possible.
 
-浏览器内置的 DOM API 不会自动保护你免受安全漏洞的侵害。比如 `document`、通过 `ElementRef` 拿到的节点和很多第三方 API，都可能包含不安全的方法。如果你使用能操纵 DOM 的其它库，也同样无法借助像 Angular 插值那样的自动清理功能。
+除非你强制使用可信类型（Trusted Types），否则浏览器内置的 DOM API 不会自动保护你免受安全漏洞的侵害。比如 `document`、通过 `ElementRef` 拿到的节点和很多第三方 API，都可能包含不安全的方法。如果你使用能操纵 DOM 的其它库，也同样无法借助像 Angular 插值那样的自动清理功能。
 所以，要避免直接和 DOM 打交道，而是尽可能使用 Angular 模板。
 
 For cases where this is unavoidable, use the built-in Angular sanitization functions.
@@ -203,13 +206,13 @@ as [described below](#bypass-security-apis).
 
 Sometimes applications genuinely need to include executable code, display an `<iframe>` from some
 URL, or construct potentially dangerous URLs. To prevent automatic sanitization in any of these
-situations, you can tell Angular that you inspected a value, checked how it was generated, and made
+situations, tell Angular that you inspected a value, checked how it was generated, and made
 sure it will always be secure. But *be careful*. If you trust a value that might be malicious, you
 are introducing a security vulnerability into your application. If in doubt, find a professional
 security reviewer.
 
 有时候，应用程序确实需要包含可执行的代码，比如使用 URL 显示 `<iframe>`，或者构造出有潜在危险的 URL。
-    为了防止在这种情况下被自动无害化，你可以告诉 Angular：我已经审查了这个值，检查了它是怎么生成的，并确信它总是安全的。
+    为了防止在这种情况下被自动无害化，可以告诉 Angular，你已经审查了这个值，检查了它是怎么生成的，并确信它总是安全的。
     但是**千万要小心**！如果你信任了一个可能是恶意的值，就会在应用中引入一个安全漏洞。如果你有疑问，请找一个安全专家复查下。
 
 To mark a value as trusted, inject `DomSanitizer` and call one of the
@@ -248,11 +251,11 @@ this, mark the URL value as a trusted URL using the `bypassSecurityTrustUrl` cal
 </div>
 
 If you need to convert user input into a trusted value, use a
-component method. The following template allows users to enter a YouTube video ID and load the
+component method. The following template lets users enter a YouTube video ID and load the
 corresponding video in an `<iframe>`. The `<iframe src>` attribute is a resource URL security
 context, because an untrusted source can, for example, smuggle in file downloads that unsuspecting users
 could execute. So call a method on the component to construct a trusted video URL, which causes
-Angular to allow binding into `<iframe src>`:
+Angular to let binding into `<iframe src>`:
 
 如果需要把用户输入转换为一个可信任的值，可以在组件方法中处理。下面的模板允许用户输入一个 YouTube 视频的 ID，
   然后把相应的视频加载到 `<iframe>` 中。`<iframe src>` 是一个“资源 URL”的安全环境，因为不可信的源码可能作为文件下载到本地，被毫无防备的用户执行。
@@ -269,11 +272,124 @@ Angular to allow binding into `<iframe src>`:
 
 Content Security Policy (CSP) is a defense-in-depth
 technique to prevent XSS. To enable CSP, configure your web server to return an appropriate
-`Content-Security-Policy`HTTPheader. Read more about content security policy at the 
+`Content-Security-Policy`HTTPheader. Read more about content security policy at the
 [Web Fundamentals guide](https://developers.google.com/web/fundamentals/security/csp) on the
 Google Developers website.
 
-内容安全策略（CSP）是防止 XSS 的深度防御技术。要启用 CSP，请将你的 Web 服务器配置为返回适当的 `Content-Security-Policy` HTTP 标头。在 Google Developers 网站上的[《网络基础知识》指南](https://developers.google.com/web/fundamentals/security/csp)中了解有关内容安全政策的更多信息。
+内容安全策略（CSP）是防止 XSS 的深度防御技术。要启用 CSP，请将你的 Web 服务器配置为返回适当的 `Content-Security-Policy` HTTP 请求头。在 Google Developers 网站上的[《网络基础知识》指南](https://developers.google.com/web/fundamentals/security/csp)中了解有关内容安全政策的更多信息。
+
+The minimal policy required for brand new Angular is:
+
+新版 Angular 所需的最小化策略是：
+
+```
+default-src 'self'; style-src 'self' 'unsafe-inline';
+```
+
+* The `default-src 'self';` section allows the page to load all its required resources from the same
+  origin.
+
+  `default-src 'self';` 部分允许页面从同一来源加载所有需要的资源。
+
+* `style-src 'self' 'unsafe-inline';` allows the page to load global styles from the same origin
+  (`'self'`) and enables components to load their styles (`'unsafe-inline'` - see
+  [`angular/angular#6361`](https://github.com/angular/angular/issues/6361)).
+
+  `style-src 'self' 'unsafe-inline';` 允许页面从同一来源（ `'self'` ）加载全局样式并允许组件加载它们的样式（ `'unsafe-inline'` - 参见[`angular/angular#6361`](https://github.com/angular/angular/issues/6361) ）。
+
+Angular itself requires only these settings to function correctly. As your project grows, however, you may need to expand your CSP settings beyond this minimum to accommodate additional features specific to your application.
+
+Angular 本身只需要这些设置即可正常运行。但是，随着项目的增长，你可能需要将 CSP 设置扩展到超乎此最小值，以支持应用特有的一些其它特性。
+
+{@a trusted-types}
+### Enforcing Trusted Types
+
+### 强制执行可信类型
+
+We recommend the use of [Trusted Types](https://w3c.github.io/webappsec-trusted-types/dist/spec/) as a way to help secure your applications from cross-site scripting attacks. Trusted Types is a [web platform](https://en.wikipedia.org/wiki/Web_platform)
+feature that can help you prevent cross-site scripting attacks by enforcing
+safer coding practices. Trusted Types can also help simplify the auditing of application code.
+
+我们建议使用[可信类型](https://w3c.github.io/webappsec-trusted-types/dist/spec/)来帮助保护你的应用程序免受跨站脚本攻击。 可信类型是一项 [Web 平台](https://en.wikipedia.org/wiki/Web_platform)功能，可通过实施更安全的编码实践来帮助你防范跨站脚本攻击。可信类型还可以帮助简化应用程序代码的审计。
+
+<div class="callout is-helpful">
+
+Trusted Types might not yet be available in all browsers your application targets. In the case your Trusted-Types-enabled application runs in a browser that doesn't support Trusted Types, the functionality of the application will be preserved, and your application will be guarded against XSS by way of Angular's DomSanitizer. See [caniuse.com/trusted-types](https://caniuse.com/trusted-types) for the current browser support.
+
+可信类型可能尚未在你的应用程序目标的所有浏览器中可用。如果启用了可信类型的应用程序在不支持可信类型的浏览器中运行，应用程序的功能将被保留，并且你的应用程序将通过 Angular 的 DomSanitizer 防范 XSS。有关当前浏览器支持，请参阅 [caniuse.com/trusted-types](https://caniuse.com/trusted-types) 。
+
+</div>
+
+To enforce Trusted Types for your application, you must configure your application's web server to emit HTTP headers with one of the following Angular policies:
+
+要为你的应用程序强制实施可信类型，你必须将应用程序的 Web 服务器配置为使用以下 Angular 策略之一发出 HTTP 请求头：
+
+* `angular` - This policy is used in security-reviewed code that is internal to Angular, and is required for Angular to function when Trusted Types are enforced. Any inline template values or content sanitized by Angular is treated as safe by this policy.
+
+  `angular` - 此策略用于 Angular 内部经过安全审查的代码，并且当强制执行可信类型时，Angular 需要此策略才能正常运行。任何由 Angular 清理的内联模板值或内容都被此政策视为安全的。
+
+* `angular#unsafe-bypass` - This policy is used for applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypass security, such as `bypassSecurityTrustHtml`. Any application that uses these methods must enable this policy.
+
+  `angular#unsafe-bypass` - 此策略用于要使用 Angular 的 [DomSanitizer](api/platform-browser/DomSanitizer) 的各个方法来绕过安全性的应用程序，例如 `bypassSecurityTrustHtml` 。任何使用了这些方法的应用程序都必须启用此策略。
+
+* `angular#unsafe-jit` - This policy is used by the [JIT compiler](api/core/Compiler). You must enable this policy if your application interacts directly with the JIT compiler or is running in JIT mode using the [platform browser dynamic](api/platform-browser-dynamic/platformBrowserDynamic).
+
+  `angular#unsafe-jit` - [JIT 编译器](api/core/Compiler)使用此策略。如果你的应用程序直接与 JIT 编译器交互或使用 [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic) 在 JIT 模式下运行，则必须启用此策略。
+
+You should configure the HTTP headers for Trusted Types in the following locations:
+
+你应该在以下位置为可信类型配置 HTTP 请求头：
+
+* Production serving infrastructure
+
+  生产环境基础设施服务器
+
+* Angular CLI (`ng serve`), using the `headers` property in the `angular.json` file, for local development and end-to-end testing
+
+  Angular CLI ( `ng serve` )，使用 `angular.json` 文件中的 `headers` 属性，用于本地开发和端到端测试
+
+* Karma (`ng test`), using the `customHeaders` property in the `karma.config.js` file, for unit testing
+
+  Karma ( `ng test` )，使用 `karma.config.js` 文件中的 `customHeaders` 属性，进行单元测试
+
+The following is an example of a header specifically configured for Trusted Types and Angular:
+
+以下是为可信类型和 Angular 配置的请求头示例：
+
+<code-example language="html">
+Content-Security-Policy: trusted-types angular; require-trusted-types-for 'script';
+</code-example>
+
+The following is an example of a header specifically configured for Trusted Types and Angular applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypasses security.
+
+以下是为可信类型和 Angular 应用程序专门配置的请求头示例，这些应用程序使用了 Angular [DomSanitizer](api/platform-browser/DomSanitizer) 中那些可以绕过安全性的方法。
+
+<code-example language="html">
+Content-Security-Policy: trusted-types angular angular#unsafe-bypass; require-trusted-types-for 'script';
+</code-example>
+
+The following is an example of a header specifically configured for Trusted Types and Angular applications using JIT:
+
+以下是使用 JIT，且专门为可信类型和 Angular 应用程序配置的请求头示例：
+
+<code-example language="html">
+Content-Security-Policy: trusted-types angular angular#unsafe-jit; require-trusted-types-for 'script';
+</code-example>
+
+<div class="callout is-helpful">
+
+<header>Community contributions</header>
+<header>社区贡献</header>
+
+To learn more about troubleshooting Trusted Type configurations, the following resource might be helpful:
+
+要了解关于如何对可信类型配置进行故障排除的更多信息，以下资源可能会有所帮助：
+
+[Prevent DOM-based cross-site scripting vulnerabilities with Trusted Types](https://web.dev/trusted-types/#how-to-use-trusted-types)
+
+[使用可信类型防范基于 DOM 的跨站脚本漏洞](https://web.dev/trusted-types/#how-to-use-trusted-types)
+
+</div>
 
 {@a offline-template-compiler}
 
@@ -377,7 +493,7 @@ The Stanford University paper
 和[Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://www.owasp.org/index.php/CSRF_Prevention_Cheat_Sheet)。
 这个斯坦福大学论文 [Robust Defenses for Cross-Site Request Forgery](https://seclab.stanford.edu/websec/csrf/csrf.pdf) 有详尽的细节。
 
-See also Dave Smith's easy-to-understand
+See also Dave Smith's 
 [talk on XSRF at AngularConnect 2016](https://www.youtube.com/watch?v=9inczw6qtpY "Cross Site Request Funkery Securing Your Angular Apps From Evil Doers").
 
 参阅 Dave Smith 在<a href="https://www.youtube.com/watch?v=9inczw6qtpY" target="_blank" title="Cross Site Request Funkery Securing Your Angular Apps From Evil Doers">AngularConnect 2016 关于 XSRF 的演讲</a>。
@@ -388,7 +504,7 @@ See also Dave Smith's easy-to-understand
 ### 跨站脚本包含(XSSI)
 
 Cross-site script inclusion, also known as JSON vulnerability, can allow an attacker's website to
-read data from a JSON API. The attack works on older browsers by overriding native JavaScript
+read data from a JSON API. The attack works on older browsers by overriding built-in JavaScript
 object constructors, and then including an API URL using a `<script>` tag.
 
 跨站脚本包含，也被称为 Json 漏洞，它可以允许一个攻击者的网站从 JSON API 读取数据。这种攻击发生在老的浏览器上，

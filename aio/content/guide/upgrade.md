@@ -7,7 +7,7 @@ _AngularJS_ is the name for all 1.x versions of Angular.
 
 *Angular* 这个名字专指现在和未来的 Angular 版本，而 *AngularJS* 专指 Angular 的所有 1.x 版本。
 
-AngularJS apps are great.
+AngularJS applications are great.
 Always consider the business case before moving to Angular.
 An important part of that case is the time and effort to get there.
 This guide describes the built-in tools for efficiently migrating AngularJS projects over to the
@@ -50,7 +50,7 @@ Angular `upgrade` 模块的设计目标就是让你渐进、无缝的完成升�
 There are many ways to structure AngularJS applications. When you begin
 to upgrade these applications to Angular, some will turn out to be
 much more easy to work with than others. There are a few key techniques
-and patterns that you can apply to future proof apps even before you
+and patterns that you can apply to future proof applications even before you
 begin the migration.
 
 AngularJS 应用程序的组织方式有很多种。当你想把它们升级到 Angular 的时候，
@@ -74,8 +74,8 @@ importantly - how **not** to write and organize AngularJS code.
 Angular is a reimagined version of the best parts of AngularJS. In that
 sense, its goals are the same as the AngularJS Style Guide's: To preserve
 the good parts of AngularJS, and to avoid the bad parts. There's a lot
-more to Angular than just that of course, but this does mean that
-*following the style guide helps make your AngularJS app more closely
+more to Angular than that of course, but this does mean that
+*following the style guide helps make your AngularJS application more closely
 aligned with Angular*.
 
 Angular 是一个基于 AngularJS 中最好的部分构思出来的版本。在这种意义上，它的目标和 AngularJS 风格指南是一样的：
@@ -334,6 +334,16 @@ transition period.
 借助它，你可以在同一个应用程序中混用并匹配 AngularJS 和 Angular 的组件，并让它们实现无缝的互操作。
 这意味着你不用被迫一次性做完所有的升级工作，因为在整个演进过程中，这两个框架可以很自然的和睦相处。
 
+<div class="alert is-helpful">
+
+With the <a href="https://blog.angular.io/finding-a-path-forward-with-angularjs-7e186fdd4429">
+deprecation of AngularJS</a>, ngUpgrade is now in a feature complete state. We will continue
+publishing security and bug fixes until December 31st, 2022.
+
+由于 <a href="https://blog.angular.io/finding-a-path-forward-with-angularjs-7e186fdd4429">AngularJS 已弃用</a>，ngUpgrade 现在处于特性开发完毕的状态。我们将会继续发布安全补丁和 BUG 修复，直到 2022-12-31。
+
+</div>
+
 ### How ngUpgrade Works
 
 ### 升级模块工作原理
@@ -481,7 +491,7 @@ and vice versa.
 理解混合式应用的关键在于，DOM 中的每一个元素都只能属于这两个框架之一，而另一个框架则会忽略它。如果一个元素属于 AngularJS，那么 Angular 就会当它不存在，反之亦然。
 
 So normally a hybrid application begins life as an AngularJS application,
-and it is AngularJS that processes the root template, e.g. the index.html.
+and it is AngularJS that processes the root template, for example, the index.html.
 Angular then steps into the picture when an Angular component is used somewhere
 in an AngularJS template. That component's template will then be managed
 by Angular, and it may contain any number of Angular components and
@@ -667,7 +677,7 @@ be used to bootstrap the AngularJS application.
 </code-example>
 
 Pure AngularJS applications can be automatically bootstrapped by using an `ng-app`
-directive somewhere on the HTML page. But for hybrid applications, you manually bootstrap via the
+directive somewhere on the HTML page. But for hybrid applications, you manually bootstrap using the
 `UpgradeModule`. Therefore, it is a good preliminary step to switch AngularJS applications to use the
 manual JavaScript [`angular.bootstrap`](https://docs.angularjs.org/api/ng/function/angular.bootstrap)
 method even before switching them to hybrid mode.
@@ -696,7 +706,7 @@ You can see how this can be done with SystemJS by following the instructions in 
 要想把 AngularJS 应用变成 Hybrid 应用，就要先加载 Angular 框架。
 根据[准备升级到 AngularJS](guide/upgrade-setup) 中给出的步骤，选择性的把<a href="https://github.com/angular/quickstart" target="_blank">“快速上手”的 Github 仓库</a>中的代码复制过来。
 
-You also need to install the `@angular/upgrade` package via `npm install @angular/upgrade --save`
+You also need to install the `@angular/upgrade` package using `npm install @angular/upgrade --save`
 and add a mapping for the `@angular/upgrade/static` package:
 
 也可以通过 `npm install @angular/upgrade --save` 命令来安装 `@angular/upgrade` 包，并给它添加一个到 `@angular/upgrade/static` 包的映射。
@@ -711,7 +721,7 @@ Next, create an `app.module.ts` file and add the following `NgModule` class:
 <code-example path="upgrade-module/src/app/ajs-a-hybrid-bootstrap/app.module.ts" region="ngmodule" header="app.module.ts">
 </code-example>
 
-This bare minimum `NgModule` imports `BrowserModule`, the module every Angular browser-based app must have.
+This bare minimum `NgModule` imports `BrowserModule`, the module every Angular browser-based application must have.
 It also imports `UpgradeModule` from `@angular/upgrade/static`, which exports providers that will be used
 for upgrading and downgrading services and components.
 
@@ -719,7 +729,7 @@ for upgrading and downgrading services and components.
 它还从 `@angular/upgrade/static` 中导入了 `UpgradeModule`，它导出了一些服务提供者，这些提供者会用于升级、降级服务和组件。
 
 In the constructor of the `AppModule`, use dependency injection to get a hold of the `UpgradeModule` instance,
-and use it to bootstrap the AngularJS app in the `AppModule.ngDoBootstrap` method.
+and use it to bootstrap the AngularJS application in the `AppModule.ngDoBootstrap` method.
 The `upgrade.bootstrap` method takes the exact same arguments as [angular.bootstrap](https://docs.angularjs.org/api/ng/function/angular.bootstrap):
 
 在 `AppModule` 的构造函数中，使用依赖注入技术获取了一个 `UpgradeModule` 实例，并用它在 `AppModule.ngDoBootstrap` 方法中启动 AngularJS 应用。
@@ -760,7 +770,7 @@ previously AngularJS but has been rewritten for Angular.
 一旦你开始运行混合式应用，你就可以开始逐渐升级代码了。一种更常见的工作模式就是在 AngularJS 的上下文中使用 Angular 的组件。
 该组件可能是全新的，也可能是把原本 AngularJS 的组件用 Angular 重写而成的。
 
-Say you have a simple Angular component that shows information about a hero:
+Say you have an Angular component that shows information about a hero:
 
 假设你有一个简单的用来显示英雄信息的 Angular 组件：
 
@@ -780,7 +790,7 @@ using the `downgradeComponent()` method. The result is an AngularJS
 <div class="alert is-helpful">
 
 By default, Angular change detection will also run on the component for every
-AngularJS `$digest` cycle. If you wish to only have change detection run when
+AngularJS `$digest` cycle. If you want to only have change detection run when
 the inputs change, you can set `propagateDigest` to `false` when calling
 `downgradeComponent()`.
 
@@ -931,7 +941,7 @@ introduced in AngularJS 1.5.
 不是所有种类的 AngularJS 指令都能升级。该指令必须是一个严格的*组件型指令*，具有[上面的准备指南中描述的](guide/upgrade#using-component-directives)那些特征。
 确保兼容性的最安全的方式是 AngularJS 1.5 中引入的[组件 API](https://docs.angularjs.org/api/ng/type/angular.Module)。
 
-A simple example of an upgradable component is one that just has a template
+An example of an upgradeable component is one that just has a template
 and a controller:
 
 可升级组件的简单例子是只有一个模板和一个控制器的指令：
@@ -1232,7 +1242,7 @@ compilation can pick it up.
 <div class="alert is-helpful">
 
 **Note:** The 'heroes' string inside the factory refers to the AngularJS `HeroesService`.
-It is common in AngularJS apps to choose a service name for the token, for example "heroes",
+It is common in AngularJS applications to choose a service name for the token, for example "heroes",
 and append the "Service" suffix to create the class name.
 
 **注意：**这个工厂中的字符串 'heroes' 指向的是 AngularJS 的 `HeroesService`。
@@ -1338,7 +1348,7 @@ Overall application performance is affected in cases where the user stays on Ang
 
 当用户停留在由 Angular 渲染的页面上时，应用的整体性能也会受到影响。这是因为 AngularJS 的框架和应用仍然被加载并运行了 —— 即使它们从未被访问过。
 
-You can take steps to mitigate both bundle size and performance issues. By isolating your AngularJS app to a separate bundle, you can take advantage of [lazy loading](guide/glossary#lazy-loading) to load, bootstrap, and render the AngularJS application only when needed. This strategy reduces your initial bundle size, defers any potential impact from loading both frameworks until absolutely necessary, and keeps your application running as efficiently as possible.
+You can take steps to mitigate both bundle size and performance issues. By isolating your AngularJS application to a separate bundle, you can take advantage of [lazy loading](guide/glossary#lazy-loading) to load, bootstrap, and render the AngularJS application only when needed. This strategy reduces your initial bundle size, defers any potential impact from loading both frameworks until absolutely necessary, and keeps your application running as efficiently as possible.
 
 你可以采取一些措施来缓解这些包的大小和性能问题。通过把 AngularJS 应用程序分离到一个单独的发布包中，你就可以利用[惰性加载](guide/glossary#lazy-loading)技术来只在必要的时候才加载、引导和渲染这个 AngularJS 应用。这种策略减少了你的初始发布包大小，推迟了同时加载两个框架的潜在影响 —— 直到绝对必要时才加载，以便让你的应用尽可能高效地运行。
 
@@ -1366,14 +1376,14 @@ The steps below show you how to do the following:
 
 ### 为惰性加载 AngularJS 创建一个服务
 
-As of Angular version 8, lazy loading code can be accomplished simply by using the dynamic import syntax `import('...')`. In your application, you create a new service that uses dynamic imports to lazy load AngularJS.
+As of Angular version 8, lazy loading code can be accomplished by using the dynamic import syntax `import('...')`. In your application, you create a new service that uses dynamic imports to lazy load AngularJS.
 
 在 Angular 的版本 8 中，惰性加载代码只需使用动态导入语法 `import('...')` 即可。在这个应用中，你创建了一个新服务，它使用动态导入技术来惰性加载 AngularJS。
 
 <code-example path="upgrade-lazy-load-ajs/src/app/lazy-loader.service.ts" header="src/app/lazy-loader.service.ts">
 </code-example>
 
-The service uses the `import()` method to load your bundled AngularJS application lazily. This decreases the initial bundle size of your application as you're not loading code your user doesn't need yet. You also need to provide a way to _bootstrap_ the application manually after it has been loaded. AngularJS provides a way to manually bootstrap an application using the [angular.bootstrap()](https://docs.angularjs.org/api/ng/function/angular.bootstrap) method with a provided HTML element. Your AngularJS app should also expose a `bootstrap` method that bootstraps the AngularJS app.
+The service uses the `import()` method to load your bundled AngularJS application lazily. This decreases the initial bundle size of your application as you're not loading code your user doesn't need yet. You also need to provide a way to _bootstrap_ the application manually after it has been loaded. AngularJS provides a way to manually bootstrap an application using the [angular.bootstrap()](https://docs.angularjs.org/api/ng/function/angular.bootstrap) method with a provided HTML element. Your AngularJS application should also expose a `bootstrap` method that bootstraps the AngularJS app.
 
 该服务使用 `import()` 方法惰性加载打包好的 AngularJS 应用。这会减少应用初始包的大小，因为你尚未加载用户目前不需要的代码。你还要提供一种方法，在加载完毕后手动*启动*它。AngularJS 提供了一种使用 [angular.bootstrap()](https://docs.angularjs.org/api/ng/function/angular.bootstrap) 方法并传入一个 HTML 元素来手动引导应用的方法。你的 AngularJS 应用也应该公开一个用来引导 AngularJS 应用的 `bootstrap` 方法。
 
@@ -1384,7 +1394,7 @@ To ensure any necessary teardown is triggered in the AngularJS app, such as remo
 <code-example path="upgrade-lazy-load-ajs/src/app/angularjs-app/index.ts" header="angularjs-app">
 </code-example>
 
-Your AngularJS application is configured with only the routes it needs to render content. The remaining routes in your application are handled by the Angular Router. The exposed `bootstrap` method is called in your Angular app to bootstrap the AngularJS application after the bundle is loaded.
+Your AngularJS application is configured with only the routes it needs to render content. The remaining routes in your application are handled by the Angular Router. The exposed `bootstrap` method is called in your Angular application to bootstrap the AngularJS application after the bundle is loaded.
 
 你的 AngularJS 应用只配置了渲染内容所需的那部分路由。而 Angular 路由器会处理应用中其余的路由。你的 Angular 应用中会调用公开的 `bootstrap` 方法，让它在加载完发布包之后引导 AngularJS 应用。
 
@@ -1400,7 +1410,7 @@ Your AngularJS application is configured with only the routes it needs to render
 
 ### 创建一个用来渲染 AngularJS 内容的组件
 
-In your Angular application, you need a component as a placeholder for your AngularJS content. This component uses the service you create to load and bootstrap your AngularJS app after the component is initialized.
+In your Angular application, you need a component as a placeholder for your AngularJS content. This component uses the service you create to load and bootstrap your AngularJS application after the component is initialized.
 
 在 Angular 应用中，你需要一个组件作为 AngularJS 内容的占位符。该组件使用你创建的服务，并在组件初始化完成后加载并引导你的 AngularJS 应用。
 
@@ -1433,7 +1443,7 @@ The following code adds a route object to your routing configuration using the `
 <code-example path="upgrade-lazy-load-ajs/src/app/app-routing.module.ts" header="src/app/app-routing.module.ts">
 </code-example>
 
-When your application matches a route that needs AngularJS, the AngularJS app is loaded and bootstrapped, the AngularJS routes match the necessary URL to render their content, and your application continues to run with both AngularJS and Angular frameworks.
+When your application matches a route that needs AngularJS, the AngularJS application is loaded and bootstrapped, the AngularJS routes match the necessary URL to render their content, and your application continues to run with both AngularJS and Angular frameworks.
 
 当你的应用匹配上需要 AngularJS 的路由时，AngularJS 应用就会被加载并引导。AngularJS 路由会匹配必要的 URL 以渲染它们的内容，而接下来你的应用就会同时运行 AngularJS 和 Angular 框架。
 
@@ -1555,7 +1565,7 @@ And that's all you need do to get the full benefit of AOT for Angular apps!
 ## PhoneCat 升级教程
 
 In this section, you'll learn to prepare and upgrade an application with `ngUpgrade`.
-The example app is [Angular PhoneCat](https://github.com/angular/angular-phonecat)
+The example application is [Angular PhoneCat](https://github.com/angular/angular-phonecat)
 from [the original AngularJS tutorial](https://docs.angularjs.org/tutorial),
 which is where many of us began our Angular adventures. Now you'll see how to
 bring that application to the brave new world of Angular.
@@ -1953,7 +1963,7 @@ Keep this process running in the background, watching and recompiling as you mak
 
 Next, convert your current JavaScript files into TypeScript. Since
 TypeScript is a super-set of ECMAScript 2015, which in turn is a super-set
-of ECMAScript 5, you can simply switch the file extensions from `.js` to `.ts`
+of ECMAScript 5, you can switch the file extensions from `.js` to `.ts`
 and everything will work just like it did before. As the TypeScript compiler
 runs, it emits the corresponding `.js` file for every `.ts` file and the
 compiled JavaScript is what actually gets executed. If you start
@@ -1970,7 +1980,7 @@ features. There's a lot of value the language can provide to AngularJS applicati
 
 有了 TypeScript，你就可以从它的一些特性中获益了。此语言可以为 AngularJS 应用提供很多价值。
 
-For one thing, TypeScript is a superset of ES2015. Any app that has previously
+For one thing, TypeScript is a superset of ES2015. Any application that has previously
 been written in ES5 - like the PhoneCat example has - can with TypeScript
 start incorporating all of the JavaScript features that are new to ES2015.
 These include things like `let`s and `const`s, arrow functions, default function
@@ -2152,7 +2162,7 @@ Once these are done, run:
   npm install
 </code-example>
 
-Soon you can load Angular dependencies into the application via `index.html`,
+Soon you can load Angular dependencies into the application inside `index.html`,
 but first you need to do some directory path adjustments.
 You'll need to load files from `node_modules` and the project root instead of
 from the `/app` directory as you've been doing to this point.
@@ -2180,8 +2190,8 @@ cause relative URLs to be resolved back to the `/app` directory:
 <code-example path="upgrade-phonecat-2-hybrid/index.html" region="base" header="index.html">
 </code-example>
 
-Now you can load Angular via SystemJS. You'll add the Angular polyfills and the
-SystemJS config to the end of the `<head>` section, and then you'll use `System.import`
+Now you can load Angular using SystemJS. You'll add the Angular polyfills and the
+SystemJS configuration to the end of the `<head>` section, and then you'll use `System.import`
 to load the actual application:
 
 现在你可以通过 SystemJS 加载 Angular 了。你还要把 Angular 的腻子脚本(polyfills)
@@ -2200,7 +2210,7 @@ instead of using the `<base>` URL.
 
 在 SystemJS 加载期间为浏览器指出项目的根在哪里，而不再使用 `<base>` URL。
 
-Install the `upgrade` package via `npm install @angular/upgrade --save`
+Install the `upgrade` package using `npm install @angular/upgrade --save`
 and add a mapping for the `@angular/upgrade/static` package.
 
 再通过 `npm install @angular/upgrade --save` 安装 `upgrade` 包，并为 `@angular/upgrade/static` 包添加一个映射。
@@ -2245,7 +2255,7 @@ you can start converting the individual pieces to Angular.
 
 The application is currently bootstrapped using the AngularJS `ng-app` directive
 attached to the `<html>` element of the host page. This will no longer work in the hybrid
-app. Switch to the [ngUpgrade bootstrap](#bootstrapping-hybrid-applications) method
+application. Switch to the [ngUpgrade bootstrap](#bootstrapping-hybrid-applications) method
 instead.
 
 本应用现在是使用宿主页面中附加到 `<html>` 元素上的 AngularJS 指令 `ng-app` 引导的。
@@ -2290,7 +2300,7 @@ exciting! You're not running any actual Angular components yet. That's next.
 `@types/angular` is declared as a UMD module, and due to the way
 <a href="https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript#support-for-umd-module-definitions">UMD typings</a>
 work, once you have an ES6 `import` statement in a file all UMD typed modules must also be
-imported via `import` statements instead of being globally available.
+imported using `import` statements instead of being globally available.
 
 `@types/angular` 声明为 UMD 模块，根据<a href="https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript#support-for-umd-module-definitions" target="_blank">UMD 类型</a>
 的工作方式，一旦你在文件中有一条 ES6 的 `import` 语句，所有的 UMD 类型化的模型必须都通过 `import` 语句导入，
@@ -2299,7 +2309,7 @@ imported via `import` statements instead of being globally available.
 AngularJS is currently loaded by a script tag in `index.html`, which means that the whole app
 has access to it as a global and uses the same instance of the `angular` variable.
 If you used `import * as angular from 'angular'` instead, you'd also have to
-load every file in the AngularJS app to use ES2015 modules in order to ensure AngularJS was being
+load every file in the AngularJS application to use ES2015 modules in order to ensure AngularJS was being
 loaded correctly.
 
 AngularJS 是日前是通过 `index.html` 中的 script 标签加载，这意味着整个应用是作为一个全局变量进行访问的，
@@ -2581,7 +2591,7 @@ AngularJS 注入器具有 AngularJS 路由器的依赖，叫做 `$routeParams`�
 你要把它注入到新的 `PhoneDetailsComponent` 中。
 
 Unfortunately, AngularJS dependencies are not automatically available to Angular components.
-You must upgrade this service via a [factory provider](guide/upgrade#making-angularjs-dependencies-injectable-to-angular)
+You must upgrade this service using a [factory provider](guide/upgrade#making-angularjs-dependencies-injectable-to-angular)
 to make `$routeParams` an Angular injectable.
 Do that in a new file called `ajs-upgraded-providers.ts` and import it in `app.module.ts`:
 
@@ -2718,7 +2728,7 @@ needs at runtime, like the `.json` phone lists and images, also need to be copie
 
 这些文件要带着相应的腻子脚本复制到一起。应用运行时需要的文件，比如电话列表 `.json` 和图片，也需要复制过去。
 
-Install `fs-extra` via `npm install fs-extra --save-dev` for better file copying, and change
+Install `fs-extra` using `npm install fs-extra --save-dev` for better file copying, and change
 `copy-dist-files.js` to the following:
 
 通过 `npm install fs-extra --save-dev` 安装 `fs-extra` 可以更好的复制文件，并且把 `copy-dist-files.js` 文件改成这样：
@@ -2754,7 +2764,7 @@ at the top of the applications component tree.
 像所有的路由器一样，它需要在 UI 中指定一个位置来显示路由的视图。
 在 Angular 中，它是 `<router-outlet>`，并位于应用组件树顶部的*根组件*中。
 
-You don't yet have such a root component, because the app is still managed as an AngularJS app.
+You don't yet have such a root component, because the application is still managed as an AngularJS app.
 Create a new `app.component.ts` file with the following `AppComponent` class:
 
 你还没有这样一个根组件，因为该应用仍然是像一个 AngularJS 应用那样被管理的。
@@ -2763,7 +2773,7 @@ Create a new `app.component.ts` file with the following `AppComponent` class:
 <code-example path="upgrade-phonecat-3-final/app/app.component.ts" header="app/app.component.ts">
 </code-example>
 
-It has a simple template that only includes the `<router-outlet>`.
+It has a template that only includes the `<router-outlet>`.
 This component just renders the contents of the active route and nothing else.
 
 它有一个很简单的模板，只包含 Angular 路由的 `<router-outlet>`。
@@ -2814,7 +2824,7 @@ instead of the default "push state" strategy.
 
 Now update the `AppModule` to import this `AppRoutingModule` and also the
 declare the root `AppComponent` as the bootstrap component.
-That tells Angular that it should bootstrap the app with the _root_ `AppComponent` and
+That tells Angular that it should bootstrap the application with the _root_ `AppComponent` and
 insert its view into the host web page.
 
 现在，修改 `AppModule`，让它导入这个 `AppRoutingModule`，并同时声明根组件 `AppComponent`。
@@ -2976,7 +2986,7 @@ break during the upgrade. E2E tests are especially useful for this purpose.
 The PhoneCat project has both E2E Protractor tests and some Karma unit tests in it.
 Of these two, E2E tests can be dealt with much more easily: By definition,
 E2E tests access the application from the *outside* by interacting with
-the various UI elements the app puts on the screen. E2E tests aren't really that
+the various UI elements the application puts on the screen. E2E tests aren't really that
 concerned with the internal structure of the application components. That
 also means that, although you modify the project quite a bit during the upgrade, the E2E
 test suite should keep passing with just minor modifications. You
@@ -2994,7 +3004,7 @@ you must make a few changes.
 在转成 TypeScript 期间，你不用做什么就能让 E2E 测试正常工作。
 但是当你想改成按照混合式应用进行引导时，必须做一些修改。
 
-Update the `protractor-conf.js` to sync with hybrid apps:
+Update the `protractor-conf.js` to sync with hybrid applications:
 
 再对 `protractor-conf.js` 做下列修改，与混合应用同步：
 
@@ -3157,7 +3167,7 @@ For PhoneCat you need to make the following changes in order to make things work
 When the bootstrap method is switched from that of `UpgradeModule` to
 pure Angular, AngularJS ceases to exist on the page completely.
 At this point, you need to tell Protractor that it should not be looking for
-an AngularJS app anymore, but instead it should find *Angular apps* from
+an AngularJS application anymore, but instead it should find *Angular apps* from
 the page.
 
 当引导方式从 `UpgradeModule` 切换到纯 Angular 的时，AngularJS 就从页面中完全消失了。

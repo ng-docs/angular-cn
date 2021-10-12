@@ -25,13 +25,13 @@ In the following example, the `Logger` class provides a `Logger` instance.
 <code-example path="dependency-injection/src/app/providers.component.ts" region="providers-logger">
 </code-example>
 
-You can, however, configure an injector with an alternative provider in order to deliver some other object that provides the needed logging functionality.
+You can, however, configure an injector with an alternative provider to deliver some other object that provides the needed logging functionality.
 
 不过，你也可以用一个替代提供者来配置注入器，这样就可以指定另一些同样能提供日志功能的对象。
 
-You can configure an injector with a service class, you can provide a substitute class, an object, or a factory function.
+Configure an injector with a service class, and provide a substitute class, an object, or a factory function.
 
-你可以使用服务类来配置注入器，也可以提供一个替代类、一个对象或一个工厂函数。
+可以使用服务类来配置注入器，也可以提供一个替代类、一个对象或一个工厂函数。
 
 {@a token}
 
@@ -42,7 +42,7 @@ You can configure an injector with a service class, you can provide a substitute
 ## 依赖注入令牌
 
 When you configure an [injector](guide/glossary#injector) with a [provider](guide/glossary#provider), you are associating that provider with a [dependency injection token](guide/glossary#di-token), or DI token.
-The injector allows Angular to create a map of any internal dependencies.
+The injector lets Angular create a map of any internal dependencies.
 The DI token acts as a key to that map.
 
 当使用[提供者](guide/glossary#provider)配置[注入器](guide/glossary#injector)时，会将该提供者与[依赖项注入令牌](guide/glossary#di-token)（或叫 DI 令牌）关联起来。注入器允许 Angular 创建任何内部依赖项的映射。DI 令牌会充当该映射的键名。
@@ -99,7 +99,7 @@ The expanded provider configuration is an object literal with two properties:
 * The second property is a provider definition object, which tells the injector how to create the dependency value.
 The provider-definition key can be `useClass`, as in the example.
 It can also be `useExisting`, `useValue`, or `useFactory`.
-Each of these keys provides a different type of dependency, as discussed below.
+Each of these keys provides a different type of dependency, as discussed in the following section.
 
   第二个属性是一个提供者定义对象，它告诉注入器要如何创建依赖值。
   提供者定义对象中的 key 可以是 `useClass` —— 就像这个例子中一样。
@@ -178,7 +178,7 @@ Generally, writing variations of the same parent alias provider uses [forwardRef
 
 <code-example path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-providers" header="dependency-injection-in-action/src/app/parent-finder.component.ts"></code-example>
 
-To streamline your code, you can extract that logic into a helper function using the `provideParent()` helper function.
+To streamline your code, extract that logic into a helper function using the `provideParent()` helper function.
 
 为简化你的代码，可以使用辅助函数 `provideParent()` 来把这个逻辑提取到一个辅助函数中。
 
@@ -255,10 +255,10 @@ To provide and inject the configuration object, specify the object in the `@NgMo
 
 ### 使用 `InjectionToken` 对象
 
-You can define and use an `InjectionToken` object for choosing a provider token for non-class dependencies.
+Define and use an `InjectionToken` object for choosing a provider token for non-class dependencies.
 The following example defines a token, `APP_CONFIG` of the type `InjectionToken`.
 
-你可以定义和使用一个 `InjectionToken` 对象来为非类的依赖选择一个提供者令牌。下列例子定义了一个类型为 `InjectionToken` 的 `APP_CONFIG` 。
+可以定义和使用一个 `InjectionToken` 对象来为非类的依赖选择一个提供者令牌。下列例子定义了一个类型为 `InjectionToken` 的 `APP_CONFIG` 。
 
 <code-example path="dependency-injection/src/app/app.config.ts" region="token" header="src/app/app.config.ts"></code-example>
 
@@ -272,7 +272,7 @@ Next, register the dependency provider in the component using the `InjectionToke
 
 <code-example path="dependency-injection/src/app/providers.component.ts" header="src/app/providers.component.ts" region="providers-9"></code-example>
 
-Now you can inject the configuration object into the constructor with `@Inject()` parameter decorator.
+Now, inject the configuration object into the constructor with `@Inject()` parameter decorator.
 
 现在，借助参数装饰器 `@Inject()`，你可以把这个配置对象注入到构造函数中。
 
@@ -293,7 +293,7 @@ When the transpiler changes TypeScript to JavaScript, the interface disappears b
 
 当转译器把 TypeScript 转换成 JavaScript 时，接口就会消失，因为 JavaScript 没有接口。
 
-Since there is no interface for Angular to find at runtime, the interface cannot be a token, nor can you inject it.
+Because there is no interface for Angular to find at runtime, the interface cannot be a token, nor can you inject it.
 
 由于 Angular 在运行期没有接口，所以该接口不能作为令牌，也不能注入它。
 
@@ -308,7 +308,7 @@ Since there is no interface for Angular to find at runtime, the interface cannot
 
 ## 使用工厂提供者
 
-To create a changeable, dependent value based on information unavailable before run time, you can use a factory provider.
+To create a changeable, dependent value based on information unavailable before run time, use a factory provider.
 
 要想根据运行前尚不可用的信息创建可变的依赖值，可以使用工厂提供者。
 
