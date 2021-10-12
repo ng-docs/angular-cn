@@ -66,6 +66,7 @@ class Bindings {
  *   * the `ElementRef` and `Injector` for the component wrapper
  *
  * @publicApi
+ * @extensible
  */
 @Directive()
 export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {

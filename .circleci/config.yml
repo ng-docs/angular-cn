@@ -24,23 +24,22 @@ version: 2.1
 # **NOTE 2 **: If you change the cache key prefix, also sync the cache_key_fallback to match.
 # **NOTE 3 **: Keep the static part of the cache key as prefix to enable correct fallbacks.
 # See https://circleci.com/docs/2.0/caching/#restoring-cache for how prefixes work in CircleCI.
-var_3: &cache_key v4-angular-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}-{{ checksum "yarn.lock" }}-{{ checksum "WORKSPACE" }}-{{ checksum "packages/bazel/package.bzl" }}-{{ checksum "aio/yarn.lock" }}
+var_3: &cache_key v5-angular-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}-{{ checksum "yarn.lock" }}-{{ checksum "WORKSPACE" }}-{{ checksum "aio/yarn.lock" }}
 # We invalidate the cache if the Bazel version changes because otherwise the `bazelisk` cache
 # folder will contain all previously used versions and ultimately cause the cache restoring to
 # be slower due to its growing size.
-var_4: &cache_key_fallback v4-angular-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}
+var_4: &cache_key_fallback v5-angular-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}
 
 # Windows needs its own cache key because binaries in node_modules are different.
-var_3_win: &cache_key_win v4-angular-win-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}-{{ checksum "yarn.lock" }}-{{ checksum "WORKSPACE" }}-{{ checksum "packages/bazel/package.bzl" }}-{{ checksum "aio/yarn.lock" }}
-var_4_win: &cache_key_win_fallback v4-angular-win-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}
+var_3_win: &cache_key_win v5-angular-win-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}-{{ checksum "yarn.lock" }}-{{ checksum "WORKSPACE" }}-{{ checksum "aio/yarn.lock" }}
+var_4_win: &cache_key_win_fallback v5-angular-win-node-14-{{ checksum "month.txt" }}-{{ checksum ".bazelversion" }}
 
 # Cache key for the `components-repo-unit-tests` job. **Note** when updating the SHA in the
 # cache keys also update the SHA for the "COMPONENTS_REPO_COMMIT" environment variable.
-var_5: &components_repo_unit_tests_cache_key v1-angular-components-{{ checksum "month.txt" }}-7cc42f5d835b7971e9ff73e220b801cf7834d515
+var_5: &components_repo_unit_tests_cache_key v1-angular-components-{{ checksum "month.txt" }}-db18b4093f23ae5c0ef76f6a9699c670ee5d55f7
 var_6: &components_repo_unit_tests_cache_key_fallback v1-angular-components-{{ checksum "month.txt" }}
 
-# Workspace initially persisted by the `setup` job, and then enhanced by `build-npm-packages` and
-# `build-ivy-npm-packages`.
+# Workspace initially persisted by the `setup` job, and then enhanced by `build-npm-packages`.
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 # https://circleci.com/blog/deep-diving-into-circleci-workspaces/
 var_7: &workspace_location ~/
@@ -213,6 +212,10 @@ commands:
           keys:
             - *cache_key_win
             - *cache_key_win_fallback
+      # Install @bazel/bazelisk globally and use that for the first run.
+      # Workaround for https://github.com/bazelbuild/rules_nodejs/issues/894
+      # NB: the issue was for @bazel/bazel but the same problem applies to @bazel/bazelisk
+      - run: yarn global add @bazel/bazelisk@$env:BAZELISK_VERSION
       # On Windows `~/` is not resolved when using as a CLI value. `../` results in the same path.
       - run: yarn install --frozen-lockfile --non-interactive --cache-folder ../.cache/yarn
 
@@ -291,6 +294,7 @@ jobs:
       - run: yarn -s ng-dev pullapprove verify
       - run: yarn -s ng-dev ngbot verify
       - run: yarn -s ng-dev commit-message validate-range $CI_GIT_BASE_REVISION $CI_GIT_REVISION
+      - run: yarn -s check-tooling-setup
 
   test:
     executor:
@@ -459,6 +463,8 @@ jobs:
       name: default-executor
       resource_class: xlarge
     parallelism: 5
+    environment:
+      RXJS_VERSION_7: '7.4.0'
     steps:
       - custom_attach_workspace
       - init_environment
@@ -469,19 +475,31 @@ jobs:
         # Since the parallelism is set to "5", there will be five parallel CircleCI containers.
         # with either "0", "1", etc as node index. This can be passed to the "--shard" argument.
       - run: yarn --cwd aio example-e2e --setup --local --cliSpecsConcurrency=5 --shard=${CIRCLE_NODE_INDEX}/${CIRCLE_NODE_TOTAL}
+        # Run tests with RxJS v7.
+      - run: yarn --cwd aio/tools/examples/shared add rxjs@$RXJS_VERSION_7 && yarn --cwd aio example-use-local && yarn --cwd aio boilerplate:add
+      - run:
+          name: Ensure we use RxJS v7
+          command: >-
+            node --eval "
+              const expected = process.env.RXJS_VERSION_7;
+              const actual = require('./aio/tools/examples/shared/node_modules/rxjs/package.json').version;
+              assert(actual === expected, 'Expected RxJS v' + expected + ', but found v' + actual + '.');
+            "
+        # Exclude some examples that are not yet compatible with v7.
+      - run: yarn --cwd aio example-e2e --cliSpecsConcurrency=5 --shard=${CIRCLE_NODE_INDEX}/${CIRCLE_NODE_TOTAL} --exclude=practical-observable-usage --exclude=upgrade-module --exclude=upgrade-phonecat
 
   # This job should only be run on PR builds, where `CI_PULL_REQUEST` is not `false`.
   aio_preview:
     executor: default-executor
     environment:
-      AIO_SNAPSHOT_ARTIFACT_PATH: &aio_preview_artifact_path "aio/tmp/snapshot.tgz"
+      AIO_SNAPSHOT_ARTIFACT_PATH: &aio_preview_artifact_path 'aio/tmp/snapshot.tgz'
     steps:
       - custom_attach_workspace
       - init_environment
       - run: ./aio/scripts/build-artifacts.sh $AIO_SNAPSHOT_ARTIFACT_PATH $CI_PULL_REQUEST $CI_COMMIT
       - store_artifacts:
           path: *aio_preview_artifact_path
-          # The `destination` needs to be kept in synch with the value of
+          # The `destination` needs to be kept in sync with the value of
           # `AIO_ARTIFACT_PATH` in `aio/aio-builds-setup/Dockerfile`
           destination: aio/dist/aio-snapshot.tgz
       - run: node ./aio/scripts/create-preview $CIRCLE_BUILD_NUM
@@ -531,24 +549,6 @@ jobs:
             - ~/bazel_repository_cache
             - ~/.cache/bazelisk
 
-  # Build the ivy npm packages.
-  build-ivy-npm-packages:
-    executor:
-      name: default-executor
-      resource_class: xlarge
-    steps:
-      - custom_attach_workspace
-      - init_environment
-      - run: node scripts/build/build-ivy-npm-packages.js
-
-      # Save the npm packages from //packages/... for other workflow jobs to read
-      - persist_to_workspace:
-          root: *workspace_location
-          paths:
-            - ng/dist/packages-dist-ivy-aot
-            - ng/dist/angular-in-memory-web-api-dist-ivy-aot
-            - ng/dist/zone.js-dist-ivy-aot
-
   # This job creates compressed tarballs (`.tgz` files) for all Angular packages and stores them as
   # build artifacts. This makes it easy to try out changes from a PR build for testing purposes.
   # More info CircleCI build artifacts: https://circleci.com/docs/2.0/artifacts
@@ -557,12 +557,12 @@ jobs:
   publish_packages_as_artifacts:
     executor: default-executor
     environment:
-      AIMWA_PACKAGES_DIR: &aimwa_packages_dir "dist/angular-in-memory-web-api-dist"
-      AIMWA_PACKAGES_ARCHIVES_DIR: &aimwa_packages_archives_dir "dist/angular-in-memory-web-api-dist-archives"
-      NG_PACKAGES_DIR: &ng_packages_dir "dist/packages-dist"
-      NG_PACKAGES_ARCHIVES_DIR: &ng_packages_archives_dir "dist/packages-dist-archives"
-      ZONEJS_PACKAGES_DIR: &zonejs_packages_dir "dist/zone.js-dist"
-      ZONEJS_PACKAGES_ARCHIVES_DIR: &zonejs_packages_archives_dir "dist/zone.js-dist-archives"
+      AIMWA_PACKAGES_DIR: &aimwa_packages_dir 'dist/angular-in-memory-web-api-dist'
+      AIMWA_PACKAGES_ARCHIVES_DIR: &aimwa_packages_archives_dir 'dist/angular-in-memory-web-api-dist-archives'
+      NG_PACKAGES_DIR: &ng_packages_dir 'dist/packages-dist'
+      NG_PACKAGES_ARCHIVES_DIR: &ng_packages_archives_dir 'dist/packages-dist-archives'
+      ZONEJS_PACKAGES_DIR: &zonejs_packages_dir 'dist/zone.js-dist'
+      ZONEJS_PACKAGES_ARCHIVES_DIR: &zonejs_packages_archives_dir 'dist/zone.js-dist-archives'
     steps:
       - custom_attach_workspace
       - init_environment
@@ -608,6 +608,14 @@ jobs:
           # decryption failures based on the installed OpenSSL version. https://stackoverflow.com/a/39641378/4317734
           command: 'openssl aes-256-cbc -d -in .circleci/github_token -md md5 -k "${KEY}" -out ~/.git_credentials'
       - run: ./scripts/ci/publish-build-artifacts.sh
+
+  aio_misc:
+    executor: default-executor
+    steps:
+      - custom_attach_workspace
+      - run:
+          name: Check website provided in contributors.json file
+          command: yarn node aio/scripts/test-external-urls.js
 
   aio_monitoring_stable:
     executor: default-executor
@@ -661,11 +669,6 @@ jobs:
           name: Starting Saucelabs tunnel service
           command: ./tools/saucelabs/sauce-service.sh run
           background: true
-      # add module umd tsc compile option so the test can work
-      # properly in the legacy browsers
-      - run: yarn tsc -p packages --module UMD
-      - run: yarn tsc -p modules --module UMD
-      - run: yarn bazel build //packages/zone.js:npm_package
       # Build test fixtures for a test that rely on Bazel-generated fixtures. Note that disabling
       # specific tests which are reliant on such generated fixtures is not an option as SystemJS
       # in the Saucelabs legacy job always fetches referenced files, even if the imports would be
@@ -674,10 +677,26 @@ jobs:
       - run:
           name: Preparing Bazel-generated fixtures required in legacy tests
           command: |
-            yarn bazel build //packages/core/test:downleveled_es5_fixture
+            yarn bazel build \
+                //packages/core/test:downleveled_es5_fixture \
+                //packages/common/locales
+
             # Needed for the ES5 downlevel reflector test in `packages/core/test/reflection`.
+            mkdir -p dist/all/@angular/core/test/reflection/
             cp dist/bin/packages/core/test/reflection/es5_downleveled_inheritance_fixture.js \
               dist/all/@angular/core/test/reflection/es5_downleveled_inheritance_fixture.js
+            # Locale files are needed for i18n tests running within Saucelabs. These are added
+            # directly as sources so that the TypeScript compilation of `/packages/tsconfig.json`
+            # can succeed. Note that the base locale and currencies files are checked-in, so
+            # we do not need to re-generate those through Bazel.
+            mkdir -p packages/common/locales/extra
+            cp dist/bin/packages/common/locales/*.ts packages/common/locales
+            cp dist/bin/packages/common/locales/extra/*.ts packages/common/locales/extra
+      # add module umd tsc compile option so the test can work
+      # properly in the legacy browsers
+      - run: yarn tsc -p packages/tsconfig-legacy-saucelabs.json --module UMD
+      - run: yarn tsc -p modules --module UMD
+      - run: yarn bazel build //packages/zone.js:npm_package
       - run:
           # Waiting on ready ensures that we don't run tests too early without Saucelabs not being ready.
           name: Waiting for Saucelabs tunnel to connect
@@ -713,7 +732,7 @@ jobs:
             # repository to be able to support arbitrary SHAs.
             - *components_repo_unit_tests_cache_key_fallback
       - run:
-          name: "Fetching angular/components repository"
+          name: 'Fetching angular/components repository'
           command: ./scripts/ci/clone_angular_components_repo.sh
       - run:
           # Run yarn install to fetch the Bazel binaries as used in the components repo.
@@ -725,19 +744,19 @@ jobs:
             # Temporary directory must be kept in sync with the `$COMPONENTS_REPO_TMP_DIR` env
             # variable. It needs to be hardcoded here, because env variables interpolation is
             # not supported.
-            - "/tmp/angular-components-repo"
+            - '/tmp/angular-components-repo'
       - run:
           # Updates the `angular/components` `package.json` file to refer to the release output
           # inside the `packages-dist` directory.
-          name: Setting up release packages.
-          command: node scripts/ci/update-deps-to-dist-packages.js ${COMPONENTS_REPO_TMP_DIR}/package.json dist/packages-dist/
+          name: Setting up framework release packages.
+          command: node scripts/ci/update-framework-deps-to-dist-packages.js ${COMPONENTS_REPO_TMP_DIR}/package.json dist/packages-dist/
       - run:
           # Run `yarn install` again to install the Angular packages from `packages-dist/` and update the lockfile.
           # NOTE: We cannot rely on Bazel to run `yarn install`, because it uses the `--frozen-lockfile` flag and fails.
           name: Installing local Angular packages.
           command: yarn --cwd ${COMPONENTS_REPO_TMP_DIR} install --non-interactive --cache-folder ~/.cache/yarn
       - run:
-          name: "Running `angular/components` unit tests"
+          name: 'Running `angular/components` unit tests'
           command: ./scripts/ci/run_angular_components_unit_tests.sh
 
   test_zonejs:
@@ -772,11 +791,11 @@ jobs:
       - setup_win
       - run:
           name: Build all windows CI targets
-          command: yarn bazel build --build_tag_filters=-ivy-only //packages/compiler-cli/... //tools/ts-api-guardian/...
+          command: bazel build --build_tag_filters=-ivy-only //packages/compiler-cli/...
           no_output_timeout: 15m
       - run:
           name: Test all windows CI targets
-          command: yarn bazel test --test_tag_filters="-ivy-only,-browser:chromium-local" //packages/compiler-cli/... //tools/ts-api-guardian/...
+          command: bazel test --test_tag_filters="-ivy-only,-browser:chromium-local" //packages/compiler-cli/...
           no_output_timeout: 15m
 
   test_ivy_aot_win:
@@ -785,11 +804,11 @@ jobs:
       - setup_win
       - run:
           name: Build all windows CI targets
-          command: yarn bazel build --config=ivy --build_tag_filters=-no-ivy-aot,-fixme-ivy-aot //packages/compiler-cli/... //tools/ts-api-guardian/...
+          command: bazel build --config=ivy --build_tag_filters=-no-ivy-aot,-fixme-ivy-aot //packages/compiler-cli/...
           no_output_timeout: 15m
       - run:
           name: Test all windows CI targets
-          command: yarn bazel test --config=ivy --test_tag_filters="-no-ivy-aot,-fixme-ivy-aot,-browser:chromium-local" //packages/compiler-cli/... //tools/ts-api-guardian/... //packages/localize/...
+          command: bazel test --config=ivy --test_tag_filters="-no-ivy-aot,-fixme-ivy-aot,-browser:chromium-local" //packages/compiler-cli/... //packages/localize/...
           no_output_timeout: 15m
       # Save dependencies to use on subsequent runs.
       - save_cache:
@@ -815,9 +834,6 @@ workflows:
           requires:
             - setup
       - build-npm-packages:
-          requires:
-            - setup
-      - build-ivy-npm-packages:
           requires:
             - setup
       - legacy-unit-tests-saucelabs:
@@ -861,11 +877,12 @@ workflows:
             # Get the artifacts to publish from the build-packages-dist job
             # since the publishing script expects the legacy outputs layout.
             - build-npm-packages
-            - build-ivy-npm-packages
             - legacy-unit-tests-saucelabs
-      - components-repo-unit-tests:
-          requires:
-            - build-npm-packages
+      # TODO(devversion): re-enable once the Angular components repo has been updated to deal
+      # with partial compilation APF v13 package output (i.e. with the linker processing).
+      #- components-repo-unit-tests:
+      #    requires:
+      #      - build-npm-packages
       - test_zonejs:
           requires:
             - setup
@@ -879,6 +896,9 @@ workflows:
   monitoring:
     jobs:
       - setup
+      - aio_misc:
+          requires:
+            - setup
       - aio_monitoring_stable:
           requires:
             - setup
@@ -907,4 +927,4 @@ workflows:
       - schedule:
           <<: *only_on_master
           # Runs monitoring jobs at 10:00AM every day.
-          cron: "0 10 * * *"
+          cron: '0 10 * * *'

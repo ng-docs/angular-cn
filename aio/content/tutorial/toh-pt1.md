@@ -11,7 +11,7 @@ and place that component in the application shell.
 
 <div class="alert is-helpful">
 
-  For the sample app that this page describes, see the <live-example></live-example>.
+  For the sample application that this page describes, see the <live-example></live-example>.
 
   要查看本页所讲的范例程序，参阅<live-example></live-example>。
 
@@ -244,7 +244,7 @@ Here it binds the `hero.name` property to the HTML textbox so that data can flow
 
 ### 缺少 `FormsModule`
 
-Notice that the app stopped working when you added `[(ngModel)]`.
+Notice that the application stopped working when you added `[(ngModel)]`.
 
 注意，当你加上 `[(ngModel)]` 之后这个应用无法工作了。
 
@@ -269,7 +269,7 @@ It belongs to the optional `FormsModule` and you must _opt-in_ to using it.
 ## _AppModule_
 
 Angular needs to know how the pieces of your application fit together
-and what other files and libraries the app requires.
+and what other files and libraries the application requires.
 This information is called _metadata_.
 
 Angular 需要知道如何把应用程序的各个部分组合到一起，以及该应用需要哪些其它文件和库。
@@ -303,7 +303,7 @@ Open `AppModule` (`app.module.ts`) and import the `FormsModule` symbol from the 
  region="formsmodule-js-import">
 </code-example>
 
-Then add `FormsModule` to the `@NgModule` metadata's `imports` array, which contains a list of external modules that the app needs.
+Then add `FormsModule` to the `@NgModule` metadata's `imports` array, which contains a list of external modules that the application needs.
 
 然后把 `FormsModule` 添加到 `@NgModule` 元数据的 `imports` 数组中，这里是该应用所需外部模块的列表。
 
@@ -311,7 +311,7 @@ Then add `FormsModule` to the `@NgModule` metadata's `imports` array, which cont
 region="ng-imports">
 </code-example>
 
-When the browser refreshes, the app should work again. You can edit the hero's name and see the changes reflected immediately in the `<h2>` above the textbox.
+When the browser refreshes, the application should work again. You can edit the hero's name and see the changes reflected immediately in the `<h2>` above the textbox.
 
 刷新浏览器，应用又能正常工作了。你可以编辑英雄的名字，并且会看到这个改动立刻体现在这个输入框上方的 `<h2>` 中。
 

@@ -17,15 +17,15 @@ This process helps ensure that intentional changes to the options are kept in pl
 | -------------------------------- | ---------------- | -------------- | --------- |
 | TypeScript 配置文件 | 属性变更 | 现有值 | 新值 |
 | `<workspace base>/tsconfig.json` | `"module"` | `"esnext"` | `"es2020"` |
-| Used in `browser` builder options (`ng build` for applications) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 `browser` 构建器选项中使用（用于应用程序的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
+| Used in <code class="no-auto-link">browser</code>  builder options (`ng build` for applications) | `"module"` | `"esnext"` | `"es2020"` |
+| 在 <code class="no-auto-link">browser</code>  构建器选项中使用（用于应用程序的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
 | Used in `ng-packagr` builder options (`ng build` for libraries) | `"module"` | `"esnext"` | `"es2020"` |
 | 在 `ng-packagr` 构建器选项中使用（用于库的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
 | Used in `karma` builder options (`ng test` for applications) | `"module"` | `"esnext"` | `"es2020"` |
 | 在 `karma` 器选项中使用（用于应用程序的 `ng test`）| `"module"` | `"esnext"` | `"es2020"` |
-| Used in `server` builder options (universal) | `"module"` | `"commonjs"` | *removed* |
+| Used in `server` builder options (universal) | `"module"` | `"commonjs"` | _removed_ |
 | 在 `server` 构建器选项中使用（通用） | `"module"` | `"commonjs"` | *已移除* |
-| Used in `server` builder options (universal) | `"target"` | *any* | `"es2016"` |
+| Used in `server` builder options (universal) | `"target"` | _any_ | `"es2016"` |
 | 在 `server` 构建器选项中使用（通用） | `"target"` | *任何* | `"es2016"` |
 | Used in `protractor` builder options (`ng e2e` for applications) | `"target"` | `"es5"` | `"es2018"` |
 | 在 `protractor` 构建器选项中使用（用于应用程序的 `ng e2e`）| `"target"` | `"es5"` | `"es2018"` |
@@ -41,7 +41,7 @@ This migration provides improvements to the long-term supportability of projects
 For the functionality that executes on Node.js, such as Universal and Protractor, the new settings provide performance and troubleshooting benefits as well.
 The minimum Node.js version for the Angular CLI (v10.13) supports features in ES2018 and earlier.
 By targeting later ES versions, the compiler transforms less code and can use newer features directly.
-Since zone.js does not support native `async` and `await`, the universal builds still target ES2016.
+Since zone.js does not support native <code class="no-auto-link">async</code> and `await`, the universal builds still target ES2016.
 
 对于要在 Node.js 上执行的功能（例如 Universal 和 Protractor），新设置还提供了性能和故障排除方面的优势。Angular CLI 的最低 Node.js 版本（v10.13）支持 ES2018 及更早版本中的功能。通过瞄准更高版本的 ES，编译器可以转换更少的代码，并且可以直接使用新特性。由于 zone.js 不支持原生 `async` 和 `await` ，因此通用版本仍以 ES2016 为目标。
 

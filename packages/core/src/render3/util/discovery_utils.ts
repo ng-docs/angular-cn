@@ -38,11 +38,11 @@ import {getTNode, unwrapRNode} from './view_utils';
  * 给定以下 DOM 结构：
  *
  * ```html
- * <my-app>
+ * <app-root>
  *   <div>
  *     <child-comp></child-comp>
  *   </div>
- * </my-app>
+ * </app-root>
  * ```
  *
  * Calling `getComponent` on `<child-comp>` will return the instance of `ChildComponent`
@@ -50,7 +50,7 @@ import {getTNode, unwrapRNode} from './view_utils';
  *
  * 在 `<child-comp>` 上调用 `getComponent` 将返回与此 DOM 元素关联的 `ChildComponent`。
  *
- * Calling the function on `<my-app>` will return the `MyApp` instance.
+ * Calling the function on `<app-root>` will return the `MyApp` instance.
  *
  * 在 `<my-app>` 上调用该函数将返回 `MyApp` 实例。
  *
@@ -228,11 +228,11 @@ export function getInjectionTokens(element: Element): any[] {
  *
  * 给定以下 DOM 结构：
  *
- * ```
- * <my-app>
+ * ```html
+ * <app-root>
  *   <button my-button></button>
  *   <my-comp></my-comp>
- * </my-app>
+ * </app-root>
  * ```
  *
  * Calling `getDirectives` on `<button>` will return an array with an instance of the `MyButton`
@@ -460,17 +460,17 @@ export interface Listener {
  *
  * 给定以下 DOM 结构：
  *
- * ```
- * <my-app>
+ * ```html
+ * <app-root>
  *   <div (click)="doSomething()"></div>
- * </my-app>
- *
+ * </app-root>
  * ```
+ *
  * Calling `getListeners` on `<div>` will return an object that looks as follows:
  *
  * 在 `<div>` 上调用 `getListeners` 将返回一个如下所示的对象：
  *
- * ```
+ * ```ts
  * {
  *   name: 'click',
  *   element: <div>,

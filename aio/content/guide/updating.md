@@ -2,7 +2,7 @@
 
 # 持续更新你的 Angular 项目
 
-Just like Web and the entire web ecosystem, Angular is continuously improving. Angular balances continuous improvement with a strong focus on stability and making updates easy. Keeping your Angular application up-to-date enables you to take advantage of leading-edge new features, as well as optimizations and bug fixes.
+Just like Web and the entire web ecosystem, Angular is continuously improving. Angular balances continuous improvement with a strong focus on stability and making updates straightforward. Keeping your Angular application up-to-date enables you to take advantage of leading-edge new features, as well as optimizations and bug fixes.
 
 就像 Web 及其整个生态系统一样，Angular 也在持续改进中。Angular 平衡了持续改进与强调稳定性之间的冲突，努力让升级变得更简单。让 Angular 应用始终保持最新，可以让你获得前沿的新特性所带来的好处，还有各种优化和 Bug 修复。
 
@@ -63,7 +63,7 @@ To check your application's version of Angular: From within your project directo
 
 ## 查看 Angular 的当前版本
 
-The most recent stable released version of Angular appears in the [Angular documentation](https://angular.io/docs "Angular documentation") at the bottom of the left side navigation. For example, `stable (v5.2.9)`.
+The most recent stable released version of Angular appears in the [Angular documentation](docs "Angular documentation") at the bottom of the left side navigation. For example, `stable (v5.2.9)`.
 
 在 [Angular 文档站](https://angular.cn/docs "Angular documentation")左侧导航栏的底部可以看到 Angular 最新的稳定版版本号。比如 `stable (v5.2.9)`。
 
@@ -77,9 +77,9 @@ You can also find the most current version of Angular by using the CLI command [
 
 ## 升级你的环境和应用
 
-To make updating easy, we provide complete instructions in the interactive [Angular Update Guide](https://update.angular.io/ "Angular Update Guide").
+To make updating uncomplicated, we provide complete instructions in the interactive [Angular Update Guide](https://update.angular.io/ "Angular Update Guide").
 
-为了让升级更简单，我们在交互式 [Angular 升级指南](https://update.angular.io/ "Angular Update Guide")中提供了完整的操作指令。
+为了让升级不那么繁琐，我们在交互式 [Angular 升级指南](https://update.angular.io/ "Angular Update Guide")中提供了完整的操作指令。
 
 The Angular Update Guide provides customized update instructions, based on the current and target versions that you specify. It includes basic and advanced update paths, to match the complexity of your applications. It also includes troubleshooting information and any recommended manual changes to help you get the most out of the new release.
 

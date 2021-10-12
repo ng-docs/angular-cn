@@ -22,7 +22,7 @@ A basic understanding of the following:
 
 ## `SwUpdate` 服务
 
-The `SwUpdate` service gives you access to events that indicate when the service worker has discovered an available update for your application or when it has activated such an update&mdash;meaning it is now serving content from that update to your application.
+The `SwUpdate` service gives you access to events that indicate when the service worker discovers an available update for your application or when it activates such an update&mdash;meaning it is now serving content from that update to your application.
 
 `SwUpdate` 服务让你能访问一些事件，这些事件会指出 Service Worker 何时发现了可用的更新或者一个更新何时可以被激活 —— 这意味着它现在可以通过更新后的版本提供服务了。
 
@@ -55,9 +55,9 @@ The two update events, `available` and `activated`, are `Observable` properties 
 
 <code-example path="service-worker-getting-started/src/app/log-update.service.ts" header="log-update.service.ts" region="sw-update"></code-example>
 
-You can use these events to notify the user of a pending update or to refresh their pages when the code they are running is out of date.
+Use these events to notify the user of a pending update or to refresh their pages when the code they are running is out of date.
 
-你可以使用这些事件来通知用户有一个待做更新或当它们运行的代码已经过期时刷新页面。
+可以用这些事件来通知用户有一个待做更新或当它们运行的代码已经过期时刷新页面。
 
 ### Checking for updates
 
@@ -77,15 +77,16 @@ Do this with the `checkForUpdate()` method:
 
 <code-example path="service-worker-getting-started/src/app/check-for-update.service.ts" header="check-for-update.service.ts"></code-example>
 
-This method returns a `Promise` which indicates that the update check has completed successfully, though it does not indicate whether an update was discovered as a result of the check. Even if one is found, the service worker must still successfully download the changed files, which can fail. If successful, the `available` event will indicate availability of a new version of the application.
+This method returns a `Promise<boolean>` which indicates if an update is available for activation.
+The check might fail, which will cause a rejection of the `Promise`.
 
-该方法返回一个用来表示检查更新已经成功完成的 `Promise`，不过它不会指出是否确实发现了一个更新。
-即使找到了一个，Service Worker 还必须成功下载更新过的文件，而这可能会失败。如果成功了，就会通过一个 `available` 事件来表明当前应用有一个可用的新版本。
+该方法返回一个用来表示检查更新已经成功完成的 `Promise<boolean>`。
+这种检查可能会失败，它会导致此 `Promise` 被拒绝（reject）。
 
 <div class="alert is-important">
 
 In order to avoid negatively affecting the initial rendering of the page, `ServiceWorkerModule` waits for up to 30 seconds by default for the application to stabilize, before registering the ServiceWorker script.
-Constantly polling for updates, for example, with [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) or RxJS' [interval()](https://rxjs.dev/api/index/function/interval), will prevent the application from stabilizing and the ServiceWorker script will not be registered with the browser until the 30 seconds upper limit is reached.
+Constantly polling for updates, for example, with [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) or RxJS' [interval()](https://rxjs.dev/api/index/function/interval), prevents the application from stabilizing and the ServiceWorker script is not registered with the browser until the 30 seconds upper limit is reached.
 
 为了避免影响页面的首次渲染，在注册 ServiceWorker 脚本之前，`ServiceWorkerModule` 默认会在应用程序达到稳定态之前等待最多 30 秒。如果不断轮询更新（比如调用 [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) 或 RxJS 的 [interval()](https://rxjs.dev/api/index/function/interval)）就会阻止应用程序达到稳定态，则直到 30 秒结束之前都不会往浏览器中注册 ServiceWorker 脚本。
 
@@ -94,10 +95,10 @@ Check the {@link ApplicationRef#isStable isStable} documentation for more inform
 
 请注意，应用中所执行的各种轮询都会阻止它达到稳定态。欲知详情，参阅 {@link ApplicationRef#isStable isStable} 文档。
 
-You can avoid that delay by waiting for the application to stabilize first, before starting to poll for updates, as shown in the example above.
+Avoid that delay by waiting for the application to stabilize first, before starting to poll for updates, as shown in the preceding example.
 Alternatively, you might want to define a different {@link SwRegistrationOptions#registrationStrategy registration strategy} for the ServiceWorker.
 
-你可以通过在开始轮询更新之前先等应用达到稳定态来消除这种延迟，如下面的例子所示。
+可以通过在开始轮询更新之前先等应用达到稳定态来消除这种延迟，如上述例子所示。
 另外，你还可以为 ServiceWorker 定义不一样的 {@link SwRegistrationOptions#registrationStrategy 注册策略}。
 
 </div>
@@ -135,22 +136,21 @@ For example, imagine the following scenario:
 例如，设想以下情形：
 
 - A user opens the application for the first time and the service worker caches the latest version of the application.
-  Let's assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
+  Assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
 
   用户首次打开该应用，Service Worker 会缓存该应用的最新版本。假设应用要缓存的资源包括 `index.html`、`main.<main-hash-1>.js` 和 `lazy-chunk.<lazy-hash-1>.js` 。
-
 - The user closes the application and does not open it for a while.
 
   用户关闭该应用程序，并且有一段时间没有打开它。
 
 - After some time, a new version of the application is deployed to the server.
-  This newer version includes the files `index.html`, `main.<main-hash-2>.js` and `lazy-chunk.<lazy-hash-2>.js` (note that the hashes are different now, because the content of the files has changed).
+  This newer version includes the files `index.html`, `main.<main-hash-2>.js` and `lazy-chunk.<lazy-hash-2>.js` (note that the hashes are different now, because the content of the files changed).
   The old version is no longer available on the server.
 
   一段时间后，会将新版本的应用程序部署到服务器。新版本中包含文件 `index.html`、`main.<main-hash-2>.js` 和 `lazy-chunk.<lazy-hash-2>.js` （请注意，哈希值现在已经不同了，因为文件的内容已经改变）。服务器上不再提供旧版本。
 
 - In the meantime, the user's browser decides to evict `lazy-chunk.<lazy-hash-1>.js` from its cache.
-  Browsers may decide to evict specific (or all) resources from a cache in order to reclaim disk space.
+  Browsers might decide to evict specific (or all) resources from a cache in order to reclaim disk space.
 
   同时，用户的浏览器决定从其缓存中清退 `lazy-chunk.<lazy-hash-1>.js` 浏览器可能决定从缓存中清退特定（或所有）资源，以便回收磁盘空间。
 
@@ -163,16 +163,16 @@ For example, imagine the following scenario:
 
   在稍后的某个时刻，该应用程序请求惰性捆绑包 `lazy-chunk.<lazy-hash-1>.js` 。
 - The service worker is unable to find the asset in the cache (remember that the browser evicted it).
-  Nor is it able to retrieve it from the server (since the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
+  Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
 
   Service Worker 无法在缓存中找到该资产（请记住浏览器已经将其清退了）。它也无法从服务器上获取它（因为服务器现在只有较新版本的 `lazy-chunk.<lazy-hash-2>.js`）
 
-In the above scenario, the service worker is not able to serve an asset that would normally be cached.
+In the preceding scenario, the service worker is not able to serve an asset that would normally be cached.
 That particular application version is broken and there is no way to fix the state of the client without reloading the page.
 In such cases, the service worker notifies the client by sending an `UnrecoverableStateEvent` event.
-You can subscribe to `SwUpdate#unrecoverable` to be notified and handle these errors.
+Subscribe to `SwUpdate#unrecoverable` to be notified and handle these errors.
 
-在上述情况下，Service Worker 将无法提供通常会被缓存的资产。该特定的应用程序版本已损坏，并且无法在不重新加载页面的情况下修复客户端的状态。在这种情况下，Service Worker 会通过发送 `UnrecoverableStateEvent` 事件来通知客户端。你可以订阅 `SwUpdate#unrecoverable` 以得到通知并处理这些错误。
+在上述情况下，Service Worker 将无法提供通常会被缓存的资产。该特定的应用程序版本已损坏，并且无法在不重新加载页面的情况下修复客户端的状态。在这种情况下，Service Worker 会通过发送 `UnrecoverableStateEvent` 事件来通知客户端。可以订阅 `SwUpdate#unrecoverable` 以得到通知并处理这些错误。
 
 <code-example path="service-worker-getting-started/src/app/handle-unrecoverable-state.service.ts" header="handle-unrecoverable-state.service.ts" region="sw-unrecoverable-state"></code-example>
 
@@ -181,10 +181,10 @@ You can subscribe to `SwUpdate#unrecoverable` to be notified and handle these er
 
 ## 关于 Angular Service Worker 的更多信息
 
-You may also be interested in the following:
+You might also be interested in the following:
 
 你可能还对下列内容感兴趣：
 
-* [Service Worker in Production](guide/service-worker-devops).
+* [Service Worker Notifications](guide/service-worker-notifications).
 
-   [生产环境下的 Service Worker](guide/service-worker-devops)。
+   [Service Worker 通知](guide/service-worker-notifications)。

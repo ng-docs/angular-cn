@@ -6,11 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {compileClassMetadata, compileComponentFromMetadata, compileDeclareClassMetadata, compileDeclareComponentFromMetadata, ConstantPool, CssSelector, DeclarationListEmitMode, DeclareComponentTemplateInfo, DEFAULT_INTERPOLATION_CONFIG, DomElementSchemaRegistry, Expression, ExternalExpr, FactoryTarget, InterpolationConfig, LexerRange, makeBindingParser, ParsedTemplate, ParseSourceFile, parseTemplate, R3ClassMetadata, R3ComponentMetadata, R3TargetBinder, R3UsedDirectiveMetadata, SelectorMatcher, Statement, TmplAstNode, WrappedNodeExpr} from '@angular/compiler';
-import * as ts from 'typescript';
+import {compileClassMetadata, compileComponentFromMetadata, compileDeclareClassMetadata, compileDeclareComponentFromMetadata, ConstantPool, CssSelector, DeclarationListEmitMode, DeclareComponentTemplateInfo, DEFAULT_INTERPOLATION_CONFIG, DomElementSchemaRegistry, Expression, ExternalExpr, FactoryTarget, InterpolationConfig, LexerRange, makeBindingParser, ParsedTemplate, ParseSourceFile, parseTemplate, R3ClassMetadata, R3ComponentMetadata, R3TargetBinder, R3UsedDirectiveMetadata, SelectorMatcher, Statement, TmplAstNode, ViewEncapsulation, WrappedNodeExpr} from '@angular/compiler';
+import ts from 'typescript';
 
 import {Cycle, CycleAnalyzer, CycleHandlingStrategy} from '../../cycles';
-import {ErrorCode, FatalDiagnosticError, makeRelatedInformation} from '../../diagnostics';
+import {ErrorCode, FatalDiagnosticError, makeDiagnostic, makeRelatedInformation} from '../../diagnostics';
 import {absoluteFrom, relative} from '../../file_system';
 import {ImportedFile, ModuleResolver, Reference, ReferenceEmitter} from '../../imports';
 import {DependencyTracker} from '../../incremental/api';
@@ -23,7 +23,9 @@ import {ClassDeclaration, DeclarationNode, Decorator, ReflectionHost, reflectObj
 import {ComponentScopeReader, LocalModuleScopeRegistry, TypeCheckScopeRegistry} from '../../scope';
 import {AnalysisOutput, CompileResult, DecoratorHandler, DetectResult, HandlerFlags, HandlerPrecedence, ResolveResult} from '../../transform';
 import {TemplateSourceMapping, TypeCheckContext} from '../../typecheck/api';
+import {ExtendedTemplateChecker} from '../../typecheck/extended/api';
 import {SubsetOfKeys} from '../../util/src/typescript';
+import {Xi18nContext} from '../../xi18n';
 
 import {ResourceLoader} from './api';
 import {createValueHasWrongTypeError, getDirectiveDiagnostics, getProviderDiagnostics} from './diagnostics';
@@ -121,7 +123,8 @@ export class ComponentSymbol extends DirectiveSymbol {
   usedPipes: SemanticReference[] = [];
   isRemotelyScoped = false;
 
-  isEmitAffected(previousSymbol: SemanticSymbol, publicApiAffected: Set<SemanticSymbol>): boolean {
+  override isEmitAffected(previousSymbol: SemanticSymbol, publicApiAffected: Set<SemanticSymbol>):
+      boolean {
     if (!(previousSymbol instanceof ComponentSymbol)) {
       return true;
     }
@@ -144,7 +147,7 @@ export class ComponentSymbol extends DirectiveSymbol {
         !isArrayEqual(this.usedPipes, previousSymbol.usedPipes, isSymbolUnaffected);
   }
 
-  isTypeCheckBlockAffected(
+  override isTypeCheckBlockAffected(
       previousSymbol: SemanticSymbol, typeCheckApiAffected: Set<SemanticSymbol>): boolean {
     if (!(previousSymbol instanceof ComponentSymbol)) {
       return true;
@@ -338,6 +341,16 @@ export class ComponentDecoratorHandler implements
 
     // Next, read the `@Component`-specific fields.
     const {decorator: component, metadata, inputs, outputs} = directiveResult;
+    const encapsulation: number =
+        this._resolveEnumValue(component, 'encapsulation', 'ViewEncapsulation') ??
+        ViewEncapsulation.Emulated;
+    const changeDetection: number|null =
+        this._resolveEnumValue(component, 'changeDetection', 'ChangeDetectionStrategy');
+
+    let animations: Expression|null = null;
+    if (component.has('animations')) {
+      animations = new WrappedNodeExpr(component.get('animations')!);
+    }
 
     // Go through the root directories for this project, and select the one with the smallest
     // relative path representation.
@@ -426,6 +439,18 @@ export class ComponentDecoratorHandler implements
       }
     }
 
+    if (encapsulation === ViewEncapsulation.ShadowDom && metadata.selector !== null) {
+      const selectorError = checkCustomElementSelectorForErrors(metadata.selector);
+      if (selectorError !== null) {
+        if (diagnostics === undefined) {
+          diagnostics = [];
+        }
+        diagnostics.push(makeDiagnostic(
+            ErrorCode.COMPONENT_INVALID_SHADOW_DOM_SELECTOR, component.get('selector')!,
+            selectorError));
+      }
+    }
+
     // If inline styles were preprocessed use those
     let inlineStyles: string[]|null = null;
     if (this.preanalyzeStylesCache.has(node)) {
@@ -455,17 +480,6 @@ export class ComponentDecoratorHandler implements
       styles.push(...template.styles);
     }
 
-    const encapsulation: number =
-        this._resolveEnumValue(component, 'encapsulation', 'ViewEncapsulation') || 0;
-
-    const changeDetection: number|null =
-        this._resolveEnumValue(component, 'changeDetection', 'ChangeDetectionStrategy');
-
-    let animations: Expression|null = null;
-    if (component.has('animations')) {
-      animations = new WrappedNodeExpr(component.get('animations')!);
-    }
-
     const output: AnalysisOutput<ComponentAnalysisData> = {
       analysis: {
         baseClass: readBaseClass(node, this.reflector, this.evaluator),
@@ -490,7 +504,8 @@ export class ComponentDecoratorHandler implements
         },
         typeCheckMeta: extractDirectiveTypeCheckMeta(node, inputs, this.reflector),
         classMetadata: extractClassMetadata(
-            node, this.reflector, this.isCore, this.annotateForClosureCompiler),
+            node, this.reflector, this.isCore, this.annotateForClosureCompiler,
+            dec => this._transformDecoratorToInlineResources(dec, component, styles, template)),
         template,
         providersRequiringFactory,
         viewProvidersRequiringFactory,
@@ -596,6 +611,12 @@ export class ComponentDecoratorHandler implements
     ctx.addTemplate(
         new Reference(node), binder, meta.template.diagNodes, scope.pipes, scope.schemas,
         meta.template.sourceMapping, meta.template.file, meta.template.errors);
+  }
+
+  extendedTemplateCheck(
+      component: ts.ClassDeclaration,
+      extendedTemplateChecker: ExtendedTemplateChecker): ts.Diagnostic[] {
+    return extendedTemplateChecker.getDiagnosticsForComponent(component);
   }
 
   resolve(
@@ -825,6 +846,13 @@ export class ComponentDecoratorHandler implements
     return {data};
   }
 
+  xi18n(ctx: Xi18nContext, node: ClassDeclaration, analysis: Readonly<ComponentAnalysisData>):
+      void {
+    ctx.updateFromTemplate(
+        analysis.template.content, analysis.template.declaration.resolvedTemplateUrl,
+        analysis.template.interpolationConfig ?? DEFAULT_INTERPOLATION_CONFIG);
+  }
+
   updateResources(node: ClassDeclaration, analysis: ComponentAnalysisData): void {
     const containingFile = node.getSourceFile().fileName;
 
@@ -897,6 +925,55 @@ export class ComponentDecoratorHandler implements
         compileDeclareClassMetadata(analysis.classMetadata).toStmt() :
         null;
     return compileResults(fac, def, classMetadata, 'ɵcmp');
+  }
+
+  /**
+   * Transforms the given decorator to inline external resources. i.e. if the decorator
+   * resolves to `@Component`, the `templateUrl` and `styleUrls` metadata fields will be
+   * transformed to their semantically-equivalent inline variants.
+   *
+   * This method is used for serializing decorators into the class metadata. The emitted
+   * class metadata should not refer to external resources as this would be inconsistent
+   * with the component definitions/declarations which already inline external resources.
+   *
+   * Additionally, the references to external resources would require libraries to ship
+   * external resources exclusively for the class metadata.
+   */
+  private _transformDecoratorToInlineResources(
+      dec: Decorator, component: Map<string, ts.Expression>, styles: string[],
+      template: ParsedTemplateWithSource): Decorator {
+    if (dec.name !== 'Component') {
+      return dec;
+    }
+
+    // If no external resources are referenced, preserve the original decorator
+    // for the best source map experience when the decorator is emitted in TS.
+    if (!component.has('templateUrl') && !component.has('styleUrls')) {
+      return dec;
+    }
+
+    const metadata = new Map(component);
+
+    // Set the `template` property if the `templateUrl` property is set.
+    if (metadata.has('templateUrl')) {
+      metadata.delete('templateUrl');
+      metadata.set('template', ts.createStringLiteral(template.content));
+    }
+
+    // Set the `styles` property if the `styleUrls` property is set.
+    if (metadata.has('styleUrls')) {
+      metadata.delete('styleUrls');
+      metadata.set('styles', ts.createArrayLiteral(styles.map(s => ts.createStringLiteral(s))));
+    }
+
+    // Convert the metadata to TypeScript AST object literal element nodes.
+    const newMetadataFields: ts.ObjectLiteralElementLike[] = [];
+    for (const [name, value] of metadata.entries()) {
+      newMetadataFields.push(ts.createPropertyAssignment(name, value));
+    }
+
+    // Return the original decorator with the overridden metadata argument.
+    return {...dec, args: [ts.createObjectLiteral(newMetadataFields)]};
   }
 
   private _resolveLiteral(decorator: Decorator): ts.ObjectLiteralExpression {
@@ -1430,4 +1507,32 @@ function makeCyclicImportInfo(
   const message =
       `The ${type} '${name}' is used in the template but importing it would create a cycle: `;
   return makeRelatedInformation(ref.node, message + path);
+}
+
+
+/**
+ * Checks whether a selector is a valid custom element tag name.
+ * Based loosely on https://github.com/sindresorhus/validate-element-name.
+ */
+function checkCustomElementSelectorForErrors(selector: string): string|null {
+  // Avoid flagging components with an attribute or class selector. This isn't bulletproof since it
+  // won't catch cases like `foo[]bar`, but we don't need it to be. This is mainly to avoid flagging
+  // something like `foo-bar[baz]` incorrectly.
+  if (selector.includes('.') || (selector.includes('[') && selector.includes(']'))) {
+    return null;
+  }
+
+  if (!(/^[a-z]/.test(selector))) {
+    return 'Selector of a ShadowDom-encapsulated component must start with a lower case letter.';
+  }
+
+  if (/[A-Z]/.test(selector)) {
+    return 'Selector of a ShadowDom-encapsulated component must all be in lower case.';
+  }
+
+  if (!selector.includes('-')) {
+    return 'Selector of a component that uses ViewEncapsulation.ShadowDom must contain a hyphen.';
+  }
+
+  return null;
 }

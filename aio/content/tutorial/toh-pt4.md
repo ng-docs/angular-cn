@@ -285,7 +285,7 @@ as if heroes could be fetched synchronously.
 <code-example path="toh-pt4/src/app/heroes/heroes.component.1.ts" header="src/app/heroes/heroes.component.ts" region="get-heroes">
 </code-example>
 
-This will not work in a real app.
+This will not work in a real application.
 You're getting away with it now because the service currently returns _mock heroes_.
 But soon the application will fetch heroes from a remote server,
 which is an inherently _asynchronous_ operation.
@@ -683,7 +683,7 @@ Here are the code files discussed on this page.
 
    你把数据访问逻辑重构到了 `HeroService` 类中。
 
-* You registered the `HeroService` as the _provider_ of its service at the root level so that it can be injected anywhere in the app.
+* You registered the `HeroService` as the _provider_ of its service at the root level so that it can be injected anywhere in the application.
 
    你在根注入器中把 `HeroService` 注册为该服务的提供者，以便在别处可以注入它。
 

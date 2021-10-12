@@ -28,6 +28,11 @@ import {NgModuleFactory} from './ng_module_factory';
  * NgModuleFactory 和一些 ComponentFactory 的组合。
  *
  * @publicApi
+ *
+ * @deprecated
+ * Ivy JIT mode doesn't require accessing this symbol.
+ * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
+ * additional context.
  */
 export class ModuleWithComponentFactories<T> {
   constructor(
@@ -99,6 +104,11 @@ const Compiler_compileModuleAndAllComponentsAsync =
  * 每个 `@NgModule` 为其注入器提供一个自己的编译器，它将使用此 NgModule 的指令/管道来编译组件。
  *
  * @publicApi
+ *
+ * @deprecated
+ * Ivy JIT mode doesn't require accessing this symbol.
+ * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
+ * additional context.
  */
 @Injectable()
 export class Compiler {
@@ -195,6 +205,11 @@ export const COMPILER_OPTIONS = new InjectionToken<CompilerOptions[]>('compilerO
  * 用于创建编译器的工厂
  *
  * @publicApi
+ *
+ * @deprecated
+ * Ivy JIT mode doesn't require accessing this symbol.
+ * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
+ * additional context.
  */
 export abstract class CompilerFactory {
   abstract createCompiler(options?: CompilerOptions[]): Compiler;

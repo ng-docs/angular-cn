@@ -5,19 +5,20 @@
 # 找出你要测试多少代码
 
 The CLI can run unit tests and create code coverage reports.
-Code coverage reports show you any parts of your code base that may not be properly tested by your unit tests.
+Code coverage reports show you any parts of your code base that might not be properly tested by your unit tests.
 
 CLI 可以运行单元测试并创建代码覆盖率报告。代码覆盖率报告会向你展示代码库中可能无法通过单元测试进行正确测试的任意部位。
 
 <div class="alert is-helpful">
 
-For the sample app that the testing guides describe, see the <live-example name="testing" embedded-style noDownload>sample app</live-example>.
+For a hands-on experience, <live-example name="testing" stackblitz="specs" noDownload>run tests and explore the test code</live-example> in your browser as your read this guide.
 
-对于本测试指南中描述的范例应用，参阅<live-example name="testing" embedded-style noDownload>范例应用</live-example>。
+要上手练习，请按照本指南中所讲的，在浏览器中<live-example name="testing" stackblitz="specs" noDownload>运行测试，并浏览测试代码</live-example>。
 
-  For the tests features in the testing guides, see <live-example name="testing" stackblitz="specs" noDownload>tests</live-example>.
 
-  要了解本测试指南中涉及的测试特性，请参阅<live-example name="testing" stackblitz="specs" noDownload>tests</live-example>。
+If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -33,7 +34,7 @@ When the tests are complete, the command creates a new `/coverage` folder in the
 
 测试完成后，该命令会在项目中创建一个 `/coverage` 目录。打开 `index.html` 文件，可以查看带有源代码和代码覆盖率值的报表。
 
-If you want to create code-coverage reports every time you test, you can set the following option in the CLI configuration file, `angular.json`:
+If you want to create code-coverage reports every time you test, set the following option in the CLI configuration file, `angular.json`:
 
 如果要在每次测试时都创建代码覆盖率报告，可以在 CLI 配置文件 `angular.json` 中设置以下选项：
 
@@ -50,7 +51,7 @@ If you want to create code-coverage reports every time you test, you can set the
 ## 代码覆盖的实施
 
 The code coverage percentages let you estimate how much of your code is tested.
-If your team decides on a set minimum amount to be unit tested, you can enforce this minimum with the Angular CLI.
+If your team decides on a set minimum amount to be unit tested, enforce this minimum with the Angular CLI.
 
 代码覆盖率可以让你估算出你的代码测试了多少。如果你的团队确定要设置单元测试的最小覆盖率，可以使用 Angular CLI 来强制实施这个最低要求。
 
@@ -82,6 +83,6 @@ The `check` property causes the tool to enforce a minimum of 80% code coverage w
 
 `check` 属性会让该工具在项目中运行单元测试时强制要求至少 80％的代码覆盖率。
 
-You can find more info about the different coverage configuration options [here](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md).
+Find more information about the different coverage configuration options [here](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md).
 
-你可以在[此处](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md)找到关于其它覆盖率配置项的更多信息。
+可以在[此处](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md)找到关于其它覆盖率配置项的更多信息。

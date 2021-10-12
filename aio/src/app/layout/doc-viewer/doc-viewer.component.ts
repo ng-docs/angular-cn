@@ -3,11 +3,13 @@ import { Title } from '@angular/platform-browser';
 
 import { asapScheduler, Observable, of, timer } from 'rxjs';
 import { catchError, observeOn, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { EMPTY_HTML, unwrapHtmlForSink } from 'safevalues';
 
 import { DocumentContents, FETCHING_ERROR_ID, FILE_NOT_FOUND_ID } from 'app/documents/document.service';
 import { Logger } from 'app/shared/logger.service';
 import { TocService } from 'app/shared/toc.service';
 import { ElementsLoader } from 'app/custom-elements/elements-loader';
+import { fromInnerHTML } from 'app/shared/security';
 
 
 // Constants
@@ -15,7 +17,7 @@ export const NO_ANIMATIONS = 'no-animations';
 
 // Initialization prevents flicker once pre-rendering is on
 const initialDocViewerElement = document.querySelector('aio-doc-viewer');
-const initialDocViewerContent = initialDocViewerElement ? initialDocViewerElement.innerHTML : '';
+const initialDocViewerContent = initialDocViewerElement ? fromInnerHTML(initialDocViewerElement) : EMPTY_HTML;
 
 @Component({
   selector: 'aio-doc-viewer',
@@ -68,8 +70,9 @@ export class DocViewerComponent implements OnDestroy {
     private tocService: TocService,
     private elementsLoader: ElementsLoader) {
     this.hostElement = elementRef.nativeElement;
+
     // Security: the initialDocViewerContent comes from the prerendered DOM and is considered to be secure
-    this.hostElement.innerHTML = initialDocViewerContent;
+    this.hostElement.innerHTML = unwrapHtmlForSink(initialDocViewerContent);
 
     if (this.hostElement.firstElementChild) {
       this.currViewContainer = this.hostElement.firstElementChild as HTMLElement;
@@ -95,9 +98,11 @@ export class DocViewerComponent implements OnDestroy {
     const needsToc = !!titleEl && !/no-?toc/i.test(titleEl.className);
     const embeddedToc = targetElem.querySelector('aio-toc.embedded');
 
-    if (titleEl && needsToc && !embeddedToc) {
+    if (titleEl && titleEl.parentNode && needsToc && !embeddedToc) {
       // Add an embedded ToC if it's needed and there isn't one in the content already.
-      titleEl.insertAdjacentHTML('afterend', '<aio-toc class="embedded"></aio-toc>');
+      const toc = document.createElement('aio-toc');
+      toc.className = 'embedded';
+      titleEl.parentNode.insertBefore(toc, titleEl.nextSibling);
     } else if (!needsToc && embeddedToc && embeddedToc.parentNode !== null) {
       // Remove the embedded Toc if it's there and not needed.
       // We cannot use ChildNode.remove() because of IE11
@@ -131,10 +136,14 @@ export class DocViewerComponent implements OnDestroy {
     this.setNoIndex(doc.id === FILE_NOT_FOUND_ID || doc.id === FETCHING_ERROR_ID);
 
     return this.void$.pipe(
-      // Security: `doc.contents` is always authored by the documentation team
+      tap(() => {
+          if (doc.contents === null) {
+            this.nextViewContainer.textContent = '';
+          } else {// Security: `doc.contents` is always authored by the documentation team
       //           and is considered to be safe.
-      tap(() => this.nextViewContainer.innerHTML = doc.contents || ''),
-      tap(() => addTitleAndToc = this.prepareTitleAndToc(this.nextViewContainer, doc.id)),
+       this.nextViewContainer.innerHTML = unwrapHtmlForSink(doc.contents);
+      }
+        }),tap(() => addTitleAndToc = this.prepareTitleAndToc(this.nextViewContainer, doc.id)),
       switchMap(() => this.elementsLoader.loadContainedCustomElements(this.nextViewContainer)),
       tap(() => this.docReady.emit())
       ,
@@ -143,10 +152,10 @@ export class DocViewerComponent implements OnDestroy {
       catchError(err => {
         const errorMessage = `${(err instanceof Error) ? err.stack : err}`;
         this.logger.error(new Error(`[DocViewer] Error preparing document '${doc.id}': ${errorMessage}`));
-        this.nextViewContainer.innerHTML = '';
+        this.nextViewContainer.textContent = '';
         this.setNoIndex(true);
 // TODO(gkalpak): Remove this once gathering debug info is no longer needed.
-          if (/loading chunk \d+ failed/i.test(errorMessage)) {
+          if (/loading chunk \S+ failed/i.test(errorMessage)) {
             // Print some info to help with debugging.
             // (There is no reason to wait for this async call to complete before continuing.)
             printSwDebugInfo();
@@ -193,8 +202,12 @@ export class DocViewerComponent implements OnDestroy {
     // Some properties are not assignable and thus cannot be animated.
     // Example methods, readonly and CSS properties:
     // "length", "parentRule", "getPropertyPriority", "getPropertyValue", "item", "removeProperty", "setProperty"
-    type StringValueCSSStyleDeclaration
-      = Exclude<{ [K in keyof CSSStyleDeclaration]: CSSStyleDeclaration[K] extends string ? K : never }[keyof CSSStyleDeclaration], number>;
+    type StringValueCSSStyleDeclaration = Exclude<
+      {
+        [K in keyof CSSStyleDeclaration]: CSSStyleDeclaration[K] extends string ? K : never;
+      }[keyof CSSStyleDeclaration],
+      number
+    >;
     const animateProp =
       (elem: HTMLElement, prop: StringValueCSSStyleDeclaration, from: string, to: string, duration = 200) => {
         const animationsDisabled = !DocViewerComponent.animationsEnabled
@@ -240,7 +253,7 @@ export class DocViewerComponent implements OnDestroy {
         const prevViewContainer = this.currViewContainer;
         this.currViewContainer = this.nextViewContainer;
         this.nextViewContainer = prevViewContainer;
-        this.nextViewContainer.innerHTML = '';  // Empty to release memory.
+        this.nextViewContainer.textContent = '';  // Empty to release memory.
       }),
     );
   }
@@ -278,10 +291,13 @@ function findTranslationResult(element: Element | null): Element | null {
  * (See https://github.com/angular/angular/issues/28114.)
  */
 async function printSwDebugInfo(): Promise<void> {
-  console.log(`\nServiceWorker: ${navigator.serviceWorker?.controller?.state ?? 'N/A'}`);
+  const sep = '\n----------';
+  const swState = navigator.serviceWorker?.controller?.state ?? 'N/A';
+
+  console.log(`\nServiceWorker: ${swState}`);
 
   if (typeof caches === 'undefined') {
-    console.log('\nCaches: N/A');
+    console.log(`${sep}\nCaches: N/A`);
   } else {
     const allCacheNames = await caches.keys();
     const swCacheNames = allCacheNames.filter(name => name.startsWith('ngsw:/:'));
@@ -291,11 +307,28 @@ async function printSwDebugInfo(): Promise<void> {
     await findCachesAndPrintEntries(swCacheNames, 'assets:app-shell:meta', true);
   }
 
+  if (swState === 'activated') {
+    console.log(sep);
+    await fetchAndPrintSwInternalDebugInfo();
+  }
+
   console.warn(
-      '\nIf you see this error, please report an issue at ' +
+      `${sep}\nIf you see this error, please report an issue at ` +
       'https://github.com/angular/angular/issues/new?template=3-docs-bug.md including the above logs.');
 
   // Internal helpers
+  async function fetchAndPrintSwInternalDebugInfo() {
+    try {
+      const res = await fetch('/ngsw/state');
+      if (!res.ok) {
+        throw new Error(`Response ${res.status} ${res.statusText}`);
+      }
+      console.log(await res.text());
+    } catch (err) {
+      console.log(`Failed to retrieve debug info from '/ngsw/state': ${err.message || err}`);
+    }
+  }
+
   async function findCachesAndPrintEntries(
       swCacheNames: string[], nameSuffix: string, includeValues: boolean,
       ignoredKeys: string[] = []): Promise<void> {
@@ -309,7 +342,7 @@ async function printSwDebugInfo(): Promise<void> {
 
   async function getCacheEntries(
       name: string, includeValues: boolean,
-      ignoredKeys: string[] = []): Promise<{key: string, value?: object}[]> {
+      ignoredKeys: string[] = []): Promise<{key: string, value?: unknown}[]> {
     const ignoredUrls = new Set(ignoredKeys.map(key => new Request(key).url));
 
     const cache = await caches.open(name);
@@ -322,7 +355,7 @@ async function printSwDebugInfo(): Promise<void> {
     return entries;
   }
 
-  function printCacheEntries(name: string, entries: {key: string, value?: object}[]): void {
+  function printCacheEntries(name: string, entries: {key: string, value?: unknown}[]): void {
     const entriesStr = entries
         .map(({key, value}) => `  - ${key}${!value ? '' : `: ${JSON.stringify(value)}`}`)
         .join('\n');

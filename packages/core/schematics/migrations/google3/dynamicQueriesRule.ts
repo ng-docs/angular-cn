@@ -7,7 +7,7 @@
  */
 
 import {Replacement, RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {identifyDynamicQueryNodes, removeOptionsParameter, removeStaticFlag} from '../dynamic-queries/util';
 
@@ -19,7 +19,7 @@ const FAILURE_MESSAGE =
  * TSLint rule that removes the `static` flag from dynamic queries.
  */
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const printer = ts.createPrinter();
     const failures: RuleFailure[] = [];
     const result = identifyDynamicQueryNodes(program.getTypeChecker(), sourceFile);

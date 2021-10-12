@@ -188,7 +188,7 @@ Now you could use your `ItemDirective` in a component. This example uses `AppMod
 要进一步了解指令，参阅[属性型指令](guide/attribute-directives)和[结构型指令](guide/structural-directives)。
 这些也同样适用于[管道](guide/pipes)和组件。
 
-Remember, components, directives, and pipes belong to one module only. You only need to declare them once in your app because you share them by importing the necessary modules. This saves you time and helps keep your app lean.
+Remember, components, directives, and pipes belong to one module only. You only need to declare them once in your application because you share them by importing the necessary modules. This saves you time and helps keep your application lean.
 
 记住：组件、指令和管道都只能属于一个模块。你在应用中也只需要声明它们一次，因为你还可以通过导入必要的模块来使用它们。这能节省你的时间，并且帮助你的应用保持精简。
 
@@ -227,7 +227,7 @@ the class was imported from another module.
 
 ## `providers` 数组
 
-The providers array is where you list the services the app needs. When
+The providers array is where you list the services the application needs. When
 you list services here, they are available app-wide. You can scope
 them when using feature modules and lazy loading. For more information, see
 [Providers](guide/providers).
@@ -264,11 +264,18 @@ root module's `bootstrap` array.
 
 这个根组件通常叫做 `AppComponent`，并且位于根模块的 `bootstrap` 数组中。
 
+In a situation where you want to bootstrap a component based on an API response,
+or you want to mount the `AppComponent` in a different DOM node that doesn't match
+the component selector, please refer to `ApplicationRef.bootstrap()`
+documentation.
+
+如果你要基于某个 API 的响应来启动此组件，或者要在一个不与其组件选择器相匹配的 DOM 节点上装载 `AppComponent`，请参见 `ApplicationRef.bootstrap()` 的文档。
+
 ## More about Angular Modules
 
 ## 关于 Angular 模块的更多知识
 
-For more on NgModules you're likely to see frequently in apps,
+For more on NgModules you're likely to see frequently in applications,
 see [Frequently Used Modules](guide/frequent-ngmodules).
 
 要进一步了解常见的 NgModules 知识，参阅 [关于模块的常见问题](guide/frequent-ngmodules)。

@@ -34,7 +34,7 @@ RxJS 提供了一种对 `Observable` 类型的实现，直到 `Observable` 成�
 
 ## 创建可观察对象的函数
 
-RxJS offers a number of functions that can be used to create new observables. These functions can simplify the process of creating observables from things such as events, timers, promises, and so on. For example:
+RxJS offers a number of functions that can be used to create new observables. These functions can simplify the process of creating observables from things such as events, timers, and promises. For example:
 
 RxJS 提供了一些用来创建可观察对象的函数。这些函数可以简化根据某些东西创建可观察对象的过程，比如事件、定时器、承诺等等。比如：
 
@@ -91,7 +91,7 @@ RxJS 提供了很多操作符，不过只有少数是常用的。
 
 <div class="alert is-helpful">
 
-  Note that, for Angular apps, we prefer combining operators with pipes, rather than chaining. Chaining is used in many RxJS examples.
+  Note that, for Angular applications, we prefer combining operators with pipes, rather than chaining. Chaining is used in many RxJS examples.
 
   注意，对于 Angular 应用来说，我们提倡使用管道来组合操作符，而不是使用链式写法。链式写法仍然在很多 RxJS 中使用着。
 
@@ -165,7 +165,7 @@ Because Angular applications are mostly written in TypeScript, you will typicall
 
 由于 Angular 的应用几乎都是用 TypeScript 写的，你通常会希望知道某个变量是否可观察对象。虽然 Angular 框架并没有针对可观察对象的强制性命名约定，不过你经常会看到可观察对象的名字以“$”符号结尾。
 
-This can be useful when scanning through code and looking for observable values. Also, if you want a property to store the most recent value from an observable, it can be convenient to simply use the same name with or without the “$”.
+This can be useful when scanning through code and looking for observable values. Also, if you want a property to store the most recent value from an observable, it can be convenient to use the same name with or without the “$”.
 
 这在快速浏览代码并查找可观察对象值时会非常有用。同样的，如果你希望用某个属性来存储来自可观察对象的最近一个值，它的命名惯例是与可观察对象同名，但不带“$”后缀。
 

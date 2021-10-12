@@ -2,7 +2,7 @@
 
 # 服务与依赖注入简介
 
-*Service* is a broad category encompassing any value, function, or feature that an app needs.
+*Service* is a broad category encompassing any value, function, or feature that an application needs.
 A service is typically a class with a narrow, well-defined purpose.
 It should do something specific and do it well.
 
@@ -27,7 +27,7 @@ A component can delegate certain tasks to services, such as fetching data from t
 validating user input, or logging directly to the console.
 By defining such processing tasks in an *injectable service class*, you make those tasks
 available to any component.
-You can also make your app more adaptable by injecting different providers of the same kind of service,
+You can also make your application more adaptable by injecting different providers of the same kind of service,
 as appropriate in different circumstances.
 
 组件应该把诸如从服务器获取数据、验证用户输入或直接往控制台中写日志等工作委托给各种服务。通过把各种处理任务定义到可注入的服务类中，你可以让它被任何组件使用。
@@ -85,7 +85,7 @@ Similarly, use the `@Injectable()` decorator to indicate that a component or oth
 
   *提供者*是一个对象，用来告诉注入器应该如何获取或创建依赖。
 
-For any dependency that you need in your app, you must register a provider with the app's injector,
+For any dependency that you need in your app, you must register a provider with the application's injector,
 so that the injector can use the provider to create new instances.
 For a service, the provider is typically the service class itself.
 
@@ -148,7 +148,7 @@ or in the `@NgModule()` or `@Component()` metadata
   When you provide the service at the root level, Angular creates a single, shared instance of `HeroService`
    and injects it into any class that asks for it.
    Registering the provider in the `@Injectable()` metadata also allows Angular to optimize an app
-   by removing the service from the compiled app if it isn't used, a process known as *tree-shaking*.
+   by removing the service from the compiled application if it isn't used, a process known as *tree-shaking*.
 
   当你在根一级提供服务时，Angular 会为 HeroService 创建一个单一的共享实例，并且把它注入到任何想要它的类中。这种在 `@Injectable` 元数据中注册提供者的方式还让 Angular 能够通过移除那些从未被用过的服务来优化大小。
 

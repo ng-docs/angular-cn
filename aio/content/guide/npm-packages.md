@@ -2,7 +2,7 @@
 
 # Npm 包
 
-The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?") and distributed via the [npm registry](https://docs.npmjs.com/).
+The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?") and distributed using the [npm registry](https://docs.npmjs.com/).
 
 Angular 框架、[**Angular CLI**](https://cli.angular.io/)、Angular 应用程序所用到的组件都打包成 [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?")，并通过 [npm registry](https://docs.npmjs.com/) 进行分发。
 
@@ -33,7 +33,7 @@ Both `npm` and `yarn` install the packages that are identified in a [`package.js
 无论使用 `npm` 还是 `yarn` 安装的包，都会记录在 [`package.json`](https://docs.npmjs.com/files/package.json) 文件中。
 
 The CLI command `ng new` creates a `package.json` file when it creates the new workspace.
-This `package.json` is used by all projects in the workspace, including the initial app project that is created by the CLI when it creates the workspace.
+This `package.json` is used by all projects in the workspace, including the initial application project that is created by the CLI when it creates the workspace.
 
 CLI 的 `ng new` 命令会在创建新的工作区的同时创建一个 `package.json`。
 这个 `package.json` 用于此工作区中的所有项目，包括由 CLI 在创建工作区时创建的那个初始项目。
@@ -81,7 +81,7 @@ The `dependencies` section of `package.json` contains:
 
    [**Angular 包**：Angular 的核心和可选模块，它们的包名以 `@angular/` 开头。
 
-* [**Support packages**](#support-packages): 3rd party libraries that must be present for Angular apps to run.
+* [**Support packages**](#support-packages): 3rd party libraries that must be present for Angular applications to run.
 
    [**支持包**](#support-packages)：那些 Angular 应用运行时必需的第三方库。
 
@@ -99,7 +99,7 @@ To add a new dependency, use the [`ng add`](cli/add) command.
 ### Angular 包
 
 The following Angular packages are included as dependencies in the default `package.json` file for a new Angular workspace.
-For a complete list of Angular packages, see the [API reference](https://angular.io/api?type=package).
+For a complete list of Angular packages, see the [API reference](api?type=package).
 
 新 Angular 工作区的 `package.json` 文件中默认包含下列 Angular 包。
 要了解 Angular 包的完整列表，参阅 [API 参考手册](http://angular.cn/api?type=package)。
@@ -111,7 +111,7 @@ Package name                               | Description
 [**@angular/animations**](api/animations) | Angular 的动画库能让你更容易地定义和应用页面和列表的动画效果。欲知详情，参阅[动画](guide/animations)。
 [**@angular/common**](api/common) | The commonly-needed services, pipes, and directives provided by the Angular team. The [`HttpClientModule`](api/common/http/HttpClientModule) is also here, in the [`@angular/common/http`](api/common/http) subfolder. For more information, see the [HttpClient guide](guide/http).
 [**@angular/common**](api/common) | Angular 开发组提供的常用服务、管道和指令。[`HttpClientModule`](api/common/http/HttpClientModule) 也位于这里的 [`@angular/common/http`](api/common/http) 子目录下。欲知详情，参阅 [HttpClient](guide/http)。
-**@angular/compiler** | Angular's template compiler. It understands templates and can convert them to code that makes the application run and render. Typically you don’t interact with the compiler directly; rather, you use it indirectly via `platform-browser-dynamic` when JIT compiling in the browser. For more information, see the [Ahead-of-time Compilation guide](guide/aot-compiler).
+**@angular/compiler** | Angular's template compiler. It understands templates and can convert them to code that makes the application run and render. Typically you don’t interact with the compiler directly; rather, you use it indirectly using `platform-browser-dynamic` when JIT compiling in the browser. For more information, see the [Ahead-of-time Compilation guide](guide/aot-compiler).
 **@angular/compiler** | Angular 的模板编译器。它能理解模板并把模板转换成代码，这些代码可以运行并渲染应用程序。通常，你不必直接与这个编译器打交道，而是当浏览器进行 JIT 编译时，通过 `platform-browser-dynamic` 间接使用它。欲知详情，参阅 [AOT （预先）编译](guide/aot-compiler)。
 [**@angular/core**](api/core) | Critical runtime parts of the framework that are needed by every application. Includes all metadata decorators, `Component`, `Directive`,  dependency injection, and the component lifecycle hooks.
 [**@angular/core**](api/core) | 本框架最关键的运行时部件，每个应用都需要它们。包括全部元数据装饰器（比如 `Component`, `Directive`）、依赖注入和组件生命周期等。
@@ -119,9 +119,9 @@ Package name                               | Description
 [**@angular/forms**](api/forms) | 用于支持[模板驱动表单](guide/forms)和[响应式表单](guide/reactive-forms)。要想了解你的应用最好选择哪种方式，请参阅[表单简介](guide/forms-overview)。
 [**@angular/<br />platform&#8209;browser**](api/platform-browser) | Everything DOM and browser related, especially the pieces that help render into the DOM. This package also includes the `bootstrapModuleFactory()` method for bootstrapping applications for production builds that pre-compile with [AOT](guide/aot-compiler).
 [**@angular/<br />platform&#8209;browser**](api/platform-browser) | 与 DOM 和浏览器有关的一切，特别是那些帮助往 DOM 中渲染的部分。这个包中还包括 `bootstrapModuleFactory()` 方法，该方法可以使用 [AOT](guide/aot-compiler) 编译器构建的生产环境发布包来引导应用。
-[**@angular/<br />platform&#8209;browser&#8209;dynamic**](api/platform-browser-dynamic) | Includes [providers](api/core/Provider) and methods to compile and run the app on the client using the [JIT compiler](guide/aot-compiler).
+[**@angular/<br />platform&#8209;browser&#8209;dynamic**](api/platform-browser-dynamic) | Includes [providers](api/core/Provider) and methods to compile and run the application on the client using the [JIT compiler](guide/aot-compiler).
 [**@angular/<br />platform&#8209;browser&#8209;dynamic**](api/platform-browser-dynamic) | 包含那些用来在 [JIT 编译器](guide/aot-compiler)的客户端上编译并运行应用的[提供者](api/core/Provider)和方法。
-[**@angular/router**](api/router) | The router module navigates among your app pages when the browser URL changes. For more information, see [Routing and Navigation](guide/router).
+[**@angular/router**](api/router) | The router module navigates among your application pages when the browser URL changes. For more information, see [Routing and Navigation](guide/router).
 [**@angular/router**](api/router) | 当浏览器的 URL 变化时，路由器模块可以在应用的页面之间进行导航。欲知详情，参阅[路由与导航](guide/router)。
 
 {@a support-packages}

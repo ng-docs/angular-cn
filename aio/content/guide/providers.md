@@ -7,7 +7,7 @@ A provider is an instruction to the [Dependency Injection](/guide/dependency-inj
 提供者就是一本说明书，用来指导[依赖注入](/guide/dependency-injection)系统该如何获取某个依赖的值。
 大多数情况下，这些依赖就是你要创建和提供的那些服务。
 
-For the final sample app using the provider that this page describes,
+For the final sample application using the provider that this page describes,
 see the <live-example></live-example>.
 
 要想查看本页提到的这个带有特性模块的范例应用，参阅 <live-example></live-example>。
@@ -16,7 +16,7 @@ see the <live-example></live-example>.
 
 ## 提供服务
 
-If you already have an app that was created with the [Angular CLI](cli), you can create a service using the [`ng generate`](cli/generate) CLI command in the root project directory. Replace _User_ with the name of your service.
+If you already have an application that was created with the [Angular CLI](cli), you can create a service using the [`ng generate`](cli/generate) CLI command in the root project directory. Replace _User_ with the name of your service.
 
 如果你是用 [Angular CLI](cli) 创建的应用，那么可以使用下列 CLI 的 [`ng generate`](cli/generate) 命令在项目根目录下创建一个服务。把其中的 `User` 替换成你的服务名。
 
@@ -42,7 +42,7 @@ The service itself is a class that the CLI generated and that's decorated with `
 
 ## 提供者的作用域
 
-When you add a service provider to the root application injector, it’s available throughout the app. Additionally, these providers are also available to all the classes in the app as long they have the lookup token.
+When you add a service provider to the root application injector, it’s available throughout the application. Additionally, these providers are also available to all the classes in the application as long they have the lookup token.
 
 当你把服务提供者添加到应用的根注入器中时，它就在整个应用程序中可用了。
 另外，这些服务提供者也同样对整个应用中的类是可用的 —— 只要它们有供查找用的服务令牌。
@@ -71,7 +71,7 @@ The example above shows the preferred way to provide a service in a module. This
 
 ## 使用惰性加载模块限制提供者的作用域
 
-In the basic CLI-generated app, modules are eagerly loaded which means that they are all loaded when the app launches. Angular uses an injector system to make things available between modules. In an eagerly loaded app, the root application injector makes all of the providers in all of the modules available throughout the app.
+In the basic CLI-generated app, modules are eagerly loaded which means that they are all loaded when the application launches. Angular uses an injector system to make things available between modules. In an eagerly loaded app, the root application injector makes all of the providers in all of the modules available throughout the application.
 
 在 CLI 生成的基本应用中，模块是急性加载的，这意味着它们都是由本应用启动的，Angular 会使用一个依赖注入体系来让一切服务都在模块间有效。对于急性加载式应用，应用中的根注入器会让所有服务提供者都对整个应用有效。
 
@@ -127,7 +127,7 @@ Other components in the same module can’t access it.
 
 ## 在模块中提供服务还是在组件中？
 
-Generally, provide services the whole app needs in the root module and scope services by providing them in lazy loaded modules.
+Generally, provide services the whole application needs in the root module and scope services by providing them in lazy loaded modules.
 
 通常，要在根模块中提供整个应用都需要的服务，在惰性加载模块中提供限定范围的服务。
 

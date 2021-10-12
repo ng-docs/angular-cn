@@ -74,7 +74,7 @@ By using the In-memory Web API, you won't have to set up a server to learn about
 
 **重要：** 这个*内存 Web API* 模块与 Angular 中的 HTTP 模块无关。
 
-If you're just reading this tutorial to learn about `HttpClient`, you can [skip over](#import-heroes) this step.
+If you're reading this tutorial to learn about `HttpClient`, you can [skip over](#import-heroes) this step.
 If you're coding along with this tutorial, stay here and add the In-memory Web API now.
 
 如果你只是在*阅读*本教程来学习 `HttpClient`，那么可以[跳过](#import-heroes)这一步。
@@ -130,7 +130,7 @@ However, don't delete `mock-heroes.ts` yet, as you still need it for a few more 
 
 `in-memory-data.service.ts` 文件已代替了 `mock-heroes.ts` 文件，现在后者可以安全的删除了。
 
-When the server is ready, you'll detach the In-memory Web API, and the app's requests will go through to the server.
+When the server is ready, you'll detach the In-memory Web API, and the application's requests will go through to the server.
 
 等服务器就绪后，你就可以抛弃这个内存 Web API，应用的请求将直接传给服务器。
 
@@ -326,7 +326,7 @@ Because each service method returns a different kind of `Observable` result,
 ### 窥探 `Observable`
 
 The `HeroService` methods will **tap** into the flow of observable values
-and send a message, via the `log()` method, to the message area at the bottom of the page.
+and send a message, using the `log()` method, to the message area at the bottom of the page.
 
 `HeroService` 的方法将会窥探 `Observable` 的数据流，并通过 `log()` 方法往页面底部发送一条消息。
 
@@ -469,7 +469,7 @@ element paired with an add button.
 
 要添加英雄，本应用中只需要英雄的名字。你可以使用一个和添加按钮成对的 `<input>` 元素。
 
-Insert the following into the `HeroesComponent` template, just after
+Insert the following into the `HeroesComponent` template, after
 the heading:
 
 把下列代码插入到 `HeroesComponent` 模板中标题的紧后面：

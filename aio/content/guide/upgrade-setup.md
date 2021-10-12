@@ -147,6 +147,8 @@ most of which you can [learn about later](guide/file-structure).
 
 **Reminder:** The "QuickStart seed" example was created prior to the Angular CLI, so there are some differences between what is described here and an Angular CLI application.
 
+**提醒**：“快速上手”种子项目是在 Angular CLI 之前创建的，因此这里讲的会和 Angular CLI 创建的应用有一些差异。
+
 </div>
 
 {@a app-files}
@@ -218,12 +220,12 @@ Each file has a distinct purpose and evolves independently as the application gr
 
 所有指南和烹饪书都至少有*这几个核心文件*。每个文件都有独特的用途，并且随着应用的成长各自独立演变。
 
-Files outside `src/` concern building, deploying, and testing your app.
+Files outside `src/` concern building, deploying, and testing your application.
 They include configuration files and external dependencies.
 
 `src/` 目录之外的文件为构建、部署和测试 app 相关的文件，他们只包括配置文件和外部依赖。
 
-Files inside `src/` "belong" to your app.
+Files inside `src/` "belong" to your application.
 Add new Typescript, HTML and CSS files inside the `src/` directory, most of them inside `src/app`,
 unless told to do otherwise.
 
@@ -342,12 +344,12 @@ The following are all in `src/`
 
 ## 附录：用 IE 进行本地化开发
 
-If you develop Angular locally with `ng serve`, a `websocket` connection is set up automatically between browser and local dev server, so when your code changes, the browser can automatically refresh.
+If you develop Angular locally with `ng serve`, a `websocket` connection is set up automatically between browser and local development server, so when your code changes, the browser can automatically refresh.
 
 如果你使用 `ng serve` 进行本地化 Angular 开发，就会自动在浏览器和本地开发服务器之间建立一个 `websocket` 连接，这样，在代码发生变化时，浏览器就会自动刷新。
 
 In Windows, by default, one application can only have 6 websocket connections, <a href="https://msdn.microsoft.com/library/ee330736%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396#websocket_maxconn" title="MSDN WebSocket settings">MSDN WebSocket Settings</a>.
-So when IE is refreshed (manually or automatically by `ng serve`), sometimes the websocket does not close properly. When websocket connections exceed the limitations, a `SecurityError` will be thrown. This error will not affect the Angular application, you can just restart IE to clear this error, or modify the windows registry to update the limitations.
+So when IE is refreshed (manually or automatically by `ng serve`), sometimes the websocket does not close properly. When websocket connections exceed the limitations, a `SecurityError` will be thrown. This error will not affect the Angular application, you can restart IE to clear this error, or modify the windows registry to update the limitations.
 
 在 Windows 上，默认情况下，每个应用最多只能有 6 个 websocket 连接，参阅 <a href="https://msdn.microsoft.com/library/ee330736%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396#websocket_maxconn" title="MSDN WebSocket settings">MSDN 上的 WebSocket 设置</a>。
 所以，当 IE 刷新时（手动刷新或由 `ng serve` 自动刷新），websocket 可能无法正常关闭。当 websocket 连接数超过上限时，就会抛出一个 `SecurityError` 异常。这种错误不会影响 Angular 应用，你可以重启 IE 来清除此异常或在 Windows 注册表中加大这个上限。

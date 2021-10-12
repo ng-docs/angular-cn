@@ -3,14 +3,14 @@
 # 用管道转换数据
 
 Use [pipes](guide/glossary#pipe "Definition of a pipe") to transform strings, currency amounts, dates, and other data for display.
-Pipes are simple functions you can use in [template expressions](/guide/glossary#template-expression "Definition of template expression") to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
+Pipes are simple functions to use in [template expressions](/guide/glossary#template-expression "Definition of template expression") to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
 For example, you would use a pipe to show a date as **April 15, 1988** rather than the raw string format.
 
 [管道](guide/glossary#pipe "管道的定义")用来对字符串、货币金额、日期和其他显示数据进行转换和格式化。管道是一些简单的函数，可以在[模板表达式](/guide/glossary#template-expression "模板表达式的定义")中用来接受输入值并返回一个转换后的值。例如，你可以使用一个管道把日期显示为 **1988 年 4 月 15 日**，而不是其原始字符串格式。
 
 <div class="alert is-helpful">
 
-  For the sample app used in this topic, see the <live-example></live-example>.
+For the sample application used in this topic, see the <live-example></live-example>.
 
   本主题中使用的范例应用，参阅<live-example></live-example>。
 
@@ -21,43 +21,43 @@ The following are commonly used built-in pipes for data formatting:
 
 Angular 为典型的数据转换提供了内置的管道，包括国际化的转换（i18n），它使用本地化信息来格式化数据。数据格式化常用的内置管道如下：
 
-* [`DatePipe`](api/common/DatePipe): Formats a date value according to locale rules.
+*   [`DatePipe`](api/common/DatePipe): Formats a date value according to locale rules.
 
   [`DatePipe`](api/common/DatePipe)：根据本地环境中的规则格式化日期值。
 
-* [`UpperCasePipe`](api/common/UpperCasePipe): Transforms text to all upper case.
+*   [`UpperCasePipe`](api/common/UpperCasePipe): Transforms text to all upper case.
 
   [`UpperCasePipe`](api/common/UpperCasePipe)：把文本全部转换成大写。
 
-* [`LowerCasePipe`](api/common/LowerCasePipe): Transforms text to all lower case.
+*   [`LowerCasePipe`](api/common/LowerCasePipe): Transforms text to all lower case.
 
   [`LowerCasePipe`](api/common/LowerCasePipe) ：把文本全部转换成小写。
 
-* [`CurrencyPipe`](api/common/CurrencyPipe): Transforms a number to a currency string, formatted according to locale rules.
+*   [`CurrencyPipe`](api/common/CurrencyPipe): Transforms a number to a currency string, formatted according to locale rules.
 
   [`CurrencyPipe`](api/common/CurrencyPipe) ：把数字转换成货币字符串，根据本地环境中的规则进行格式化。
 
-* [`DecimalPipe`](/api/common/DecimalPipe): Transforms a number into a string with a decimal point, formatted according to locale rules.
+*   [`DecimalPipe`](/api/common/DecimalPipe): Transforms a number into a string with a decimal point, formatted according to locale rules.
 
   [`DecimalPipe`](/api/common/DecimalPipe)：把数字转换成带小数点的字符串，根据本地环境中的规则进行格式化。
 
-* [`PercentPipe`](api/common/PercentPipe): Transforms a number to a percentage string, formatted according to locale rules.
+*   [`PercentPipe`](api/common/PercentPipe): Transforms a number to a percentage string, formatted according to locale rules.
 
   [`PercentPipe`](api/common/PercentPipe) ：把数字转换成百分比字符串，根据本地环境中的规则进行格式化。
 
 <div class="alert is-helpful">
 
-* For a complete list of built-in pipes, see the [pipes API documentation](/api/common#pipes "Pipes API reference summary").
+*   For a complete list of built-in pipes, see the [pipes API documentation](/api/common#pipes "Pipes API reference summary").
 
   关于内置管道的完整列表，请参阅[管道 API 文档](/api/common#pipes "管道 API 参考总结") 。
 
-* To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale](/guide/i18n#i18n-pipes "Formatting data based on locale").
+*   To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
 
-  要了解关于使用管道进行国际化（i18n）工作的更多信息，请参阅[根据本地环境格式化数据](/guide/i18n#i18n-pipes "根据本地环境格式化数据") 。
+  要了解关于使用管道进行国际化（i18n）工作的更多信息，请参阅[根据本地环境格式化数据][AioGuideI18nCommonFormatDataLocale]。
 
 </div>
 
-You can also create pipes to encapsulate custom transformations and use your custom pipes in template expressions.
+Create pipes to encapsulate custom transformations and use your custom pipes in template expressions.
 
 你还可以创建管道来封装自定义转换，并在模板表达式中使用自定义管道。
 
@@ -69,15 +69,15 @@ To use pipes you should have a basic understanding of the following:
 
 要想使用管道，你应该对这些内容有基本的了解：
 
-* [Typescript](guide/glossary#typescript "Definition of Typescript") and HTML5 programming
+*   [Typescript](guide/glossary#typescript "Definition of Typescript") and HTML5 programming
 
   [Typescript](guide/glossary#typescript "Typescript 的定义") 和 HTML5 编程
 
-* [Templates](guide/glossary#template "Definition of a template") in HTML with CSS styles
+*   [Templates](guide/glossary#template "Definition of a template") in HTML with CSS styles
 
   带有 CSS 样式的 HTML [模板](guide/glossary#template "模板的定义")
 
-* [Components](guide/glossary#component "Definition of a component")
+*   [Components](guide/glossary#component "Definition of a component")
 
   [组件](guide/glossary#component "组件的定义")
 
@@ -90,24 +90,17 @@ The tabs in the example show the following:
 
 要应用管道，请如下所示在模板表达式中使用管道操作符（`|`），紧接着是该管道的*名字*，对于内置的 [`DatePipe`](api/common/DatePipe) 它的名字是 `date` 。这个例子中的显示如下：
 
-* `app.component.html` uses `date` in a separate template to display a birthday.
+*   `app.component.html` uses `date` in a separate template to display a birthday.
 
   `app.component.html` 在另一个单独的模板中使用 `date` 来显示生日。
 
-* `hero-birthday1.component.ts` uses the same pipe as part of an in-line template in a component that also sets the birthday value.
+*   `hero-birthday1.component.ts` uses the same pipe as part of an in-line template in a component that also sets the birthday value.
 
   `hero-birthday1.component.ts` 使用相同的管道作为组件内嵌模板的一部分，同时该组件也会设置生日值。
 
 <code-tabs>
-  <code-pane
-    header="src/app/app.component.html"
-    region="hero-birthday-template"
-    path="pipes/src/app/app.component.html">
-  </code-pane>
-  <code-pane
-    header="src/app/hero-birthday1.component.ts"
-    path="pipes/src/app/hero-birthday1.component.ts">
-  </code-pane>
+    <code-pane header="src/app/app.component.html" region="hero-birthday-template" path="pipes/src/app/app.component.html"></code-pane>
+    <code-pane header="src/app/hero-birthday1.component.ts" path="pipes/src/app/hero-birthday1.component.ts"></code-pane>
 </code-tabs>
 
 The component's `birthday` value flows through the pipe operator, `|` to the [`date`](api/common/DatePipe) function.
@@ -121,14 +114,14 @@ The component's `birthday` value flows through the pipe operator, `|` to the [`d
 ## 使用参数和管道链来格式化数据
 
 Use optional parameters to fine-tune a pipe's output.
-For example, you can use the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") with a country code such as EUR as a parameter.
+For example, use the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") with a country code such as EUR as a parameter.
 The template expression `{{ amount | currency:'EUR' }}` transforms the `amount` to currency in euros.
 Follow the pipe name (`currency`) with a colon (`:`) and the parameter value (`'EUR'`).
 
 可以用可选参数微调管道的输出。例如，你可以使用 [`CurrencyPipe`](api/common/CurrencyPipe "API 参考") 和国家代码（如 EUR）作为参数。模板表达式 `{{ amount | currency:'EUR' }}` 会把 `amount` 转换成欧元。紧跟在管道名称（ `currency` ）后面的是冒号（`:`）和参数值（`'EUR'`）。
 
 If the pipe accepts multiple parameters, separate the values with colons.
-For example, `{{ amount | currency:'EUR':'Euros '}}` adds the second parameter, the string literal `'Euros '`, to the output string. You can use any valid template expression as a parameter, such as a string literal or a component property.
+For example, `{{ amount | currency:'EUR':'Euros '}}` adds the second parameter, the string literal `'Euros '`, to the output string. Use any valid template expression as a parameter, such as a string literal or a component property.
 
 如果管道能接受多个参数，就用冒号分隔这些值。例如，`{{ amount | currency:'EUR':'Euros '}}` 会把第二个参数（字符串 `'Euros '`）添加到输出字符串中。你可以使用任何有效的模板表达式作为参数，比如字符串字面量或组件的属性。
 
@@ -144,48 +137,28 @@ The tabs in the following example demonstrates toggling between two different fo
 
 下面的例子显示了两种不同格式（`'shortDate'` 和 `'fullDate'`）之间的切换：
 
-* The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) (named `date`) to show the date as **04/15/88**.
+*   The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) (named `date`) to show the date as **04/15/88**.
 
   该 `app.component.html` 模板使用 [`DatePipe`](api/common/DatePipe) （名为 `date`）的格式参数把日期显示为 **04/15/88** 。
 
-* The `hero-birthday2.component.ts` component binds the pipe's format parameter to the component's `format` property in the `template` section, and adds a button for a click event bound to the component's `toggleFormat()` method.
+*   The `hero-birthday2.component.ts` component binds the pipe's format parameter to the component's `format` property in the `template` section, and adds a button for a click event bound to the component's `toggleFormat()` method.
 
   `hero-birthday2.component.ts` 组件把该管道的 format 参数绑定到 `template` 中组件的 `format` 属性，并添加了一个按钮，其 click 事件绑定到了该组件的 `toggleFormat()` 方法。
 
-* The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form
+*   The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form
 (`'shortDate'`) and a longer form (`'fullDate'`).
 
   `hero-birthday2.component.ts` 组件的 `toggleFormat()` 方法会在短格式（`'shortDate'`）和长格式（`'fullDate'`）之间切换该组件的 `format` 属性。
 
 <code-tabs>
-  <code-pane
-    header="src/app/app.component.html"
-    region="format-birthday"
-    path="pipes/src/app/app.component.html">
-  </code-pane>
-  <code-pane
-    header="src/app/hero-birthday2.component.ts (template)"
-    region="template"
-    path="pipes/src/app/hero-birthday2.component.ts">
-  </code-pane>
-  <code-pane
-    header="src/app/hero-birthday2.component.ts (class)"
-    region="class"
-    path="pipes/src/app/hero-birthday2.component.ts">
-  </code-pane>
+    <code-pane header="src/app/app.component.html" region="format-birthday" path="pipes/src/app/app.component.html"></code-pane>
+    <code-pane header="src/app/hero-birthday2.component.ts (template)" region="template" path="pipes/src/app/hero-birthday2.component.ts"></code-pane>
+    <code-pane header="src/app/hero-birthday2.component.ts (class)" region="class" path="pipes/src/app/hero-birthday2.component.ts"></code-pane>
 </code-tabs>
 
-Clicking the **Toggle Format** button alternates the date format between **04/15/1988** and **Friday, April 15, 1988** as shown in Figure 1.
+Clicking the **Toggle Format** button alternates the date format between **04/15/1988** and **Friday, April 15, 1988**.
 
-点击 **Toggle Format** 按钮可以在 **04/15/1988** 和 **Friday, April 15, 1988** 之间切换日期格式，如图 1 所示。
-
-<div class="lightbox">
-  <img src='generated/images/guide/pipes/date-format-toggle-anim.gif' alt="Date Format Toggle">
-</div>
-
-**Figure 1.** Clicking the button toggles the date format
-
-**图 1.** 单击该按钮切换日期格式
+点击 **Toggle Format** 按钮可以在 **04/15/1988** 和 **Friday, April 15, 1988** 之间切换日期格式。
 
 <div class="alert is-helpful">
 
@@ -199,9 +172,9 @@ For `date` pipe format options, see [DatePipe](api/common/DatePipe "DatePipe API
 
 ### 范例：通过串联管道应用两种格式
 
-You can chain pipes so that the output of one pipe becomes the input to the next.
+Chain pipes so that the output of one pipe becomes the input to the next.
 
-你可以对管道进行串联，以便一个管道的输出成为下一个管道的输入。
+可以对管道进行串联，以便一个管道的输出成为下一个管道的输入。
 
 In the following example, chained pipes first apply a format to a date value, then convert the formatted date to uppercase characters.
 The first tab for the `src/app/app.component.html` template chains `DatePipe` and `UpperCasePipe` to display the birthday as **APR 15, 1988**.
@@ -210,16 +183,8 @@ The second tab for the `src/app/app.component.html` template passes the `fullDat
 在下面的范例中，串联管道首先将格式应用于一个日期值，然后将格式化之后的日期转换为大写字符。 `src/app/app.component.html` 模板的第一个标签页把 `DatePipe` 和 `UpperCasePipe` 的串联起来，将其显示为 **APR 15, 1988**。`src/app/app.component.html` 模板的第二个标签页在串联 `uppercase` 之前，还把 `fullDate` 参数传给了 `date`，将其显示为 **FRIDAY, APRIL 15, 1988**。
 
 <code-tabs>
-  <code-pane
-    header="src/app/app.component.html (1)"
-    region="chained-birthday"
-    path="pipes/src/app/app.component.html">
-  </code-pane>
-  <code-pane
-    header="src/app/app.component.html (2)"
-    region="chained-parameter-birthday"
-    path="pipes/src/app/app.component.html">
-  </code-pane>
+    <code-pane header="src/app/app.component.html (1)" region="chained-birthday" path="pipes/src/app/app.component.html"></code-pane>
+    <code-pane header="src/app/app.component.html (2)" region="chained-parameter-birthday" path="pipes/src/app/app.component.html"></code-pane>
 </code-tabs>
 
 {@a Custom-pipes}
@@ -229,9 +194,9 @@ The second tab for the `src/app/app.component.html` template passes the `fullDat
 ## 为自定义数据转换创建管道
 
 Create custom pipes to encapsulate transformations that are not provided with the built-in pipes.
-You can then use your custom pipe in template expressions, the same way you use built-in pipes—to transform input values to output values for display.
+Then, use your custom pipe in template expressions, the same way you use built-in pipes—to transform input values to output values for display.
 
-创建自定义管道来封装那些内置管道没有提供的转换。然后你就可以在模板表达式中使用你的自定义管道，就像内置管道一样，把输入值转换成显示输出。
+创建自定义管道来封装那些内置管道没有提供的转换。然后就可以在模板表达式中使用自定义管道了，像内置管道一样，把输入值转换成显示输出。
 
 ### Marking a class as a pipe
 
@@ -250,11 +215,11 @@ Use `name` in template expressions as you would for a built-in pipe.
 
 <div class="alert is-important">
 
-* Include your pipe in the `declarations` field of the `NgModule` metadata in order for it to be available to a template. See the `app.module.ts` file in the example app (<live-example></live-example>). For details, see [NgModules](guide/ngmodules "NgModules introduction").
+*   Include your pipe in the `declarations` field of the `NgModule` metadata in order for it to be available to a template. See the `app.module.ts` file in the example application (<live-example></live-example>). For details, see [NgModules](guide/ngmodules "NgModules introduction").
 
   把你的管道包含在 `NgModule` 元数据的 `declarations` 字段中，以便它能用于模板。请查看范例应用中的 `app.module.ts` 文件（<live-example></live-example>）。有关详细信息，请参阅 [NgModules](guide/ngmodules "NgModules 简介") 。
 
-* Register your custom pipes. The [Angular CLI](cli "CLI Overview and Command Reference") [`ng generate pipe`](cli/generate#pipe "ng generate pipe in the CLI Command Reference") command registers the pipe automatically.
+*   Register your custom pipes. The [Angular CLI](cli "CLI Overview and Command Reference") [`ng generate pipe`](cli/generate#pipe "ng generate pipe in the CLI Command Reference") command registers the pipe automatically.
 
   注册自定义管道。[Angular CLI](cli "CLI 概述和命令参考") 的 [`ng generate pipe`](cli/generate#pipe "ng 在 CLI Command Reference 中生成管道") 命令会自动注册该管道。
 
@@ -276,44 +241,40 @@ Angular 调用 `transform` 方法，该方法使用绑定的值作为第一个�
 
 ### 范例：指数级转换
 
-In a game, you may want to implement a transformation that raises a value exponentially to increase a hero's power.
+In a game, you might want to implement a transformation that raises a value exponentially to increase a hero's power.
 For example, if the hero's score is 2, boosting the hero's power exponentially by 10 produces a score of 1024.
-You can use a custom pipe for this transformation.
+Use a custom pipe for this transformation.
 
-在游戏中，你可能希望实现一种指数级转换，以指数级增加英雄的力量。例如，如果英雄的得分是 2，那么英雄的能量会指数级增长 10 次，最终得分为 1024。你可以使用自定义管道进行这种转换。
+在游戏中，可能希望实现一种指数级转换，以指数级增加英雄的力量。例如，如果英雄的得分是 2，那么英雄的能量会指数级增长 10 次，最终得分为 1024。你可以使用自定义管道进行这种转换。
 
 The following code example shows two component definitions:
 
 下列代码范例显示了两个组件定义：
 
-* The `exponential-strength.pipe.ts` component defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation.
-It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe.
+*   The `exponential-strength.pipe.ts` component defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation.
+    It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe.
 
   `exponential-strength.pipe.ts` 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。
+*   The `power-booster.component.ts` component demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`).
 
-* The `power-booster.component.ts` component demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`).
-Figure 2 shows the output.
-
-  `power-booster.component.ts` 组件演示了如何使用该管道，指定了一个值（ `2` ）和一个 exponent 参数（ `10` ）。输出结果如图 2 所示。
+  `power-booster.component.ts` 组件演示了如何使用该管道，指定了一个值（ `2` ）和一个 exponent 参数（ `10` ）。
 
 <code-tabs>
-  <code-pane
-    header="src/app/exponential-strength.pipe.ts"
-    path="pipes/src/app/exponential-strength.pipe.ts">
-  </code-pane>
-  <code-pane
-    header="src/app/power-booster.component.ts"
-    path="pipes/src/app/power-booster.component.ts">
-  </code-pane>
+    <code-pane header="src/app/exponential-strength.pipe.ts" path="pipes/src/app/exponential-strength.pipe.ts"></code-pane>
+    <code-pane header="src/app/power-booster.component.ts" path="pipes/src/app/power-booster.component.ts"></code-pane>
 </code-tabs>
 
-<div class="lightbox">
-  <img src='generated/images/guide/pipes/power-booster.png' alt="Power Booster">
-</div>
+The browser displays the following:
 
-**Figure 2.** Output from the `exponentialStrength` pipe
+浏览器显示如下：
 
-**图 2.** `exponentialStrength` 管道的输出
+<code-example language="none">
+
+Power Booster
+
+Superpower boost: 1024
+
+</code-example>
 
 <div class="alert is-helpful">
 
@@ -338,21 +299,11 @@ For example, you could change the previous custom pipe example to use two-way da
 
 比如，你可以修改前面的自定义管道范例，通过 `ngModel` 的双向绑定来输入数量和提升因子，如下面的代码范例所示。
 
-<code-example path="pipes/src/app/power-boost-calculator.component.ts" header="src/app/power-boost-calculator.component.ts">
+<code-example path="pipes/src/app/power-boost-calculator.component.ts" header="src/app/power-boost-calculator.component.ts"></code-example>
 
-</code-example>
+The `exponentialStrength` pipe executes every time the user changes the "normal power" value or the "boost factor".
 
-The `exponentialStrength` pipe executes every time the user changes the "normal power" value or the "boost factor", as shown in Figure 3.
-
-每当用户改变 “normal power” 值或 “boost factor” 时，就会执行 `exponentialStrength` 管道，如图 3 所示。
-
-<div class="lightbox">
-  <img src='generated/images/guide/pipes/power-boost-calculator-anim.gif' alt="Power Boost Calculator">
-</div>
-
-**Figure 3.** Changing the amount and boost factor for the `exponentialStrength` pipe
-
-**图 3.** 更改 `exponentialStrength` 管道的数值和提升因子
+每当用户改变 “normal power” 值或 “boost factor” 时，就会执行 `exponentialStrength` 管道。
 
 Angular detects each change and immediately runs the pipe.
 This is fine for primitive input values.
@@ -370,25 +321,17 @@ The example tabs show the following:
 
 Angular 会在每次 DOM 事件（每次按键、鼠标移动、计时器滴答和服务器响应）之后运行的[变更检测](guide/glossary#change-detection "变更检测的定义")过程中查找对数据绑定值的[更改](guide/glossary#change-detection "变更检测的定义")。下面这段不使用管道的例子演示了 Angular 如何利用默认的变更检测策略来监控和更新 `heroes` 数组中每个英雄的显示效果。范例显示如下：
 
-* In the `flying-heroes.component.html (v1)` template, the `*ngFor` repeater displays the hero names.
+*   In the `flying-heroes.component.html (v1)` template, the `*ngFor` repeater displays the hero names.
 
   在 `flying-heroes.component.html (v1)` 模板中， `*ngFor` 会重复显示英雄的名字。
 
-* Its companion component class `flying-heroes.component.ts (v1)` provides heroes, adds heroes into the array, and resets the array.
+*   Its companion component class `flying-heroes.component.ts (v1)` provides heroes, adds heroes into the array, and resets the array.
 
   与之相伴的组件类 `flying-heroes.component.ts (v1)` 提供了一些英雄，把这些英雄添加到数组中，并重置了该数组。
 
 <code-tabs>
-  <code-pane
-    header="src/app/flying-heroes.component.html (v1)"
-    region="template-1"
-    path="pipes/src/app/flying-heroes.component.html">
-  </code-pane>
-  <code-pane
-    header="src/app/flying-heroes.component.ts (v1)"
-    region="v1"
-    path="pipes/src/app/flying-heroes.component.ts">
-  </code-pane>
+    <code-pane header="src/app/flying-heroes.component.html (v1)" region="template-1" path="pipes/src/app/flying-heroes.component.html"></code-pane>
+    <code-pane header="src/app/flying-heroes.component.ts (v1)" region="v1" path="pipes/src/app/flying-heroes.component.ts"></code-pane>
 </code-tabs>
 
 Angular updates the display every time the user adds a hero.
@@ -397,7 +340,7 @@ If you add the ability to remove or change a hero, Angular would detect those ch
 
 每次用户添加一个英雄时，Angular 都会更新显示内容。如果用户点击了 **Reset** 按钮，Angular 就会用原来这些英雄组成的新数组来替换 `heroes` ，并更新显示。如果你添加删除或更改了某个英雄的能力，Angular 也会检测这些变化并更新显示。
 
-However, executing a pipe to update the display with every change would slow down your app's performance.
+However, executing a pipe to update the display with every change would slow down your application's performance.
 So Angular uses a faster change-detection algorithm for executing a pipe, as described in the next section.
 
 然而，如果对于每次更改都执行一个管道来更新显示，就会降低你应用的性能。因此，Angular 会使用更快的变更检测算法来执行管道，如下一节所述。
@@ -425,35 +368,27 @@ Angular can quickly determine if it can skip executing the pipe and updating the
 
 使用纯管道，Angular 会忽略复合对象中的变化，例如往现有数组中新增的元素，因为检查原始值或对象引用比对对象中的差异进行深度检查要快得多。Angular 可以快速判断是否可以跳过执行该管道并更新视图。
 
-However, a pure pipe with an array as input may not work the way you want.
+However, a pure pipe with an array as input might not work the way you want.
 To demonstrate this issue, change the previous example to filter the list of heroes to just those heroes who can fly.
 Use the `FlyingHeroesPipe` in the `*ngFor` repeater as shown in the following code.
 The tabs for the example show the following:
 
 但是，以数组作为输入的纯管道可能无法正常工作。为了演示这个问题，修改前面的例子来把英雄列表过滤成那些会飞的英雄。在 `*ngFor` 中使用 `FlyingHeroesPipe` ，代码如下。这个例子的显示如下：
 
-* The template (`flying-heroes.component.html (flyers)`) with the new pipe.
+*   The template (`flying-heroes.component.html (flyers)`) with the new pipe.
 
   带有新管道的模板（`flying-heroes.component.html (flyers)`）。
 
-* The `FlyingHeroesPipe` custom pipe implementation (`flying-heroes.pipe.ts`).
+*   The `FlyingHeroesPipe` custom pipe implementation (`flying-heroes.pipe.ts`).
 
   `FlyingHeroesPipe` 自定义管道实现（`flying-heroes.pipe.ts`）。
 
 <code-tabs>
-  <code-pane
-    header="src/app/flying-heroes.component.html (flyers)"
-    region="template-flying-heroes"
-    path="pipes/src/app/flying-heroes.component.html">
-  </code-pane>
-  <code-pane
-    header="src/app/flying-heroes.pipe.ts"
-    region="pure"
-    path="pipes/src/app/flying-heroes.pipe.ts">
-  </code-pane>
+    <code-pane header="src/app/flying-heroes.component.html (flyers)" region="template-flying-heroes" path="pipes/src/app/flying-heroes.component.html"></code-pane>
+    <code-pane header="src/app/flying-heroes.pipe.ts" region="pure" path="pipes/src/app/flying-heroes.pipe.ts"></code-pane>
 </code-tabs>
 
-The app now shows unexpected behavior: When the user adds flying heroes, none of them appear under "Heroes who fly."
+The application now shows unexpected behavior: When the user adds flying heroes, none of them appear under "Heroes who fly."
 This happens because the code that adds a hero does so by pushing it onto the `heroes` array:
 
 该应用现在展示了意想不到的行为：当用户添加了会飞的英雄时，它们都不会出现在 “Heroes who fly” 中。发生这种情况是因为添加英雄的代码会把它 push 到 `heroes` 数组中：
@@ -465,34 +400,26 @@ The change detector ignores changes to elements of an array, so the pipe doesn't
 而变更检测器会忽略对数组元素的更改，所以管道不会运行。
 
 The reason Angular ignores the changed array element is that the *reference* to the array hasn't changed.
-Since the array is the same, Angular does not update the display.
+Because the array is the same, Angular does not update the display.
 
 Angular 忽略了被改变的数组元素的原因是对数组的*引用*没有改变。由于 Angular 认为该数组仍是相同的，所以不会更新其显示。
 
 One way to get the behavior you want is to change the object reference itself.
-You can replace the array with a new array containing the newly changed elements, and then input the new array to the pipe.
-In the above example, you can create an array with the new hero appended, and assign that to `heroes`. Angular detects the change in the array reference and executes the pipe.
+Replace the array with a new array containing the newly changed elements, and then input the new array to the pipe.
+In the preceding example, create an array with the new hero appended, and assign that to `heroes`. Angular detects the change in the array reference and executes the pipe.
 
-获得所需行为的方法之一是更改对象引用本身。你可以用一个包含新更改过的元素的新数组替换该数组，然后把这个新数组作为输入传给管道。在上面的例子中，你可以创建一个附加了新英雄的数组，并把它赋值给 `heroes`。 Angular 检测到了这个数组引用的变化，并执行了该管道。
+获得所需行为的方法之一是更改对象引用本身。可以用一个包含新更改过的元素的新数组替换该数组，然后把这个新数组作为输入传给管道。在上面的例子中，你可以创建一个附加了新英雄的数组，并把它赋值给 `heroes`。 Angular 检测到了这个数组引用的变化，并执行了该管道。
 
 To summarize, if you mutate the input array, the pure pipe doesn't execute.
-If you *replace* the input array, the pipe executes and the display is updated, as shown in Figure 4.
+If you *replace* the input array, the pipe executes and the display is updated.
 
-总结一下，如果修改了输入数组，纯管道就不会执行。如果*替换*了输入数组，就会执行该管道并更新显示，如图 4 所示。
+总结一下，如果修改了输入数组，纯管道就不会执行。如果*替换*了输入数组，就会执行该管道并更新显示。
 
-<div class="lightbox">
-  <img src='generated/images/guide/pipes/flying-heroes-anim.gif' alt="Flying Heroes">
-</div>
+The preceding example demonstrates changing a component's code to accommodate a pipe.
 
-**Figure 4.** The `flyingHeroes` pipe filtering the display to flying heroes
+上述例子演示了如何更改组件的代码来适应某个管道。
 
-**图 4.** `flyingHeroes` 管道把显示过滤为会飞的英雄
-
-The above example demonstrates changing a component's code to accommodate a pipe.
-
-上面的例子演示了如何更改组件的代码来适应某个管道。
-
-To keep your component simpler and independent of HTML templates that use pipes, you can, as an alternative, use an *impure* pipe to detect changes within composite objects such as arrays, as described in the next section.
+To keep your component independent of HTML templates that use pipes, you can, as an alternative, use an *impure* pipe to detect changes within composite objects such as arrays, as described in the next section.
 
 为了让你的组件更简单，独立于那些使用管道的 HTML，你可以用一个*不纯的*管道来检测复合对象（如数组）中的变化，如下一节所述。
 
@@ -509,7 +436,7 @@ Angular executes an impure pipe every time it detects a change with every keystr
 
 <div class="alert is-important">
 
-While an impure pipe can be useful, be careful using one. A long-running impure pipe could dramatically slow down your app.
+While an impure pipe can be useful, be careful using one. A long-running impure pipe could dramatically slow down your application.
 
 虽然非纯管道很实用，但要小心使用。长时间运行非纯管道可能会大大降低你的应用速度。
 
@@ -527,16 +454,8 @@ The example shows that you don't have to change anything else—the only differe
 下面的代码显示了 `FlyingHeroesImpurePipe` 的完整实现，它扩展了 `FlyingHeroesPipe` 以继承其特性。这个例子表明你不需要修改其他任何东西 - 唯一的区别就是在管道元数据中把 `pure` 标志设置为 `false` 。
 
 <code-tabs>
-  <code-pane
-    header="src/app/flying-heroes.pipe.ts (FlyingHeroesImpurePipe)"
-    region="impure"
-    path="pipes/src/app/flying-heroes.pipe.ts">
-  </code-pane>
-  <code-pane
-    header="src/app/flying-heroes.pipe.ts (FlyingHeroesPipe)"
-    region="pure"
-    path="pipes/src/app/flying-heroes.pipe.ts">
-  </code-pane>
+    <code-pane header="src/app/flying-heroes.pipe.ts (FlyingHeroesImpurePipe)" region="impure" path="pipes/src/app/flying-heroes.pipe.ts"></code-pane>
+    <code-pane header="src/app/flying-heroes.pipe.ts (FlyingHeroesPipe)" region="pure" path="pipes/src/app/flying-heroes.pipe.ts"></code-pane>
 </code-tabs>
 
 `FlyingHeroesImpurePipe` is a good candidate for an impure pipe because the `transform` function is trivial and fast:
@@ -546,7 +465,7 @@ The example shows that you don't have to change anything else—the only differe
 <code-example path="pipes/src/app/flying-heroes.pipe.ts" header="src/app/flying-heroes.pipe.ts (filter)" region="filter"></code-example>
 
 You can derive a `FlyingHeroesImpureComponent` from `FlyingHeroesComponent`.
-As shown in the code below, only the pipe in the template changes.
+As shown in the following code, only the pipe in the template changes.
 
 你可以从 `FlyingHeroesComponent` 派生一个 `FlyingHeroesImpureComponent`。如下面的代码所示，只有模板中的管道发生了变化。
 
@@ -554,7 +473,7 @@ As shown in the code below, only the pipe in the template changes.
 
 <div class="alert is-helpful">
 
-  To confirm that the display updates as the user adds heroes, see the <live-example></live-example>.
+To confirm that the display updates as the user adds heroes, see the <live-example></live-example>.
 
   要想确认是否在用户添加英雄时更新了显示，请参阅<live-example></live-example>。
 
@@ -590,9 +509,7 @@ The following code example binds an observable of message strings
 
 下列代码范例使用 `async` 管道将带有消息字符串（ `message$` ）的可观察对象绑定到视图中。
 
-<code-example path="pipes/src/app/hero-async-message.component.ts" header="src/app/hero-async-message.component.ts">
-
-</code-example>
+<code-example path="pipes/src/app/hero-async-message.component.ts" header="src/app/hero-async-message.component.ts"></code-example>
 
 {@a no-filter-pipe}
 
@@ -605,59 +522,58 @@ The asynchronous method sends an HTTP request, and returns an observable that em
 
 为了[使用 HTTP 与后端服务进行通信](/guide/http "使用 HTTP 与后端服务进行通信")，`HttpClient` 服务使用了可观察对象，并提供了 `HttpClient.get()` 方法来从服务器获取数据。这个异步方法会发送一个 HTTP 请求，并返回一个可观察对象，它会发出请求到的响应数据。
 
-As shown in the previous section, you can use the impure `AsyncPipe` to accept an observable as input and subscribe to the input automatically.
+As shown in the previous section, use the impure `AsyncPipe` to accept an observable as input and subscribe to the input automatically.
 You can also create an impure pipe to make and cache an HTTP request.
 
 如 `AsyncPipe` 所示，你可以使用非纯管道 `AsyncPipe` 接受一个可观察对象作为输入，并自动订阅输入。你也可以创建一个非纯管道来建立和缓存 HTTP 请求。
 
-Impure pipes are called whenever change detection runs for a component, which could be every few milliseconds for `CheckAlways`.
+Impure pipes are called whenever change detection runs for a component, which could be as often as every few milliseconds.
 To avoid performance problems, call the server only when the requested URL changes, as shown in the following example, and use the pipe to cache the server response.
 The tabs show the following:
 
-每当组件运行变更检测时就会调用非纯管道，在 `CheckAlways` 策略下会每隔几毫秒运行一次。为避免出现性能问题，只有当请求的 URL 发生变化时才会调用该服务器（如下例所示），并使用该管道缓存服务器的响应。显示如下：
+每当组件运行变更检测时就会调用非纯管道，这可能每隔几毫秒就运行一次。为避免出现性能问题，只有当请求的 URL 发生变化时才会调用该服务器（如下例所示），并使用该管道缓存服务器的响应。显示如下：
 
-* The `fetch` pipe (`fetch-json.pipe.ts`).
+*   The `fetch` pipe (`fetch-json.pipe.ts`).
 
   `fetch` 管道（ `fetch-json.pipe.ts` ）。
 
-* A harness component (`hero-list.component.ts`) for demonstrating the request, using a template that defines two bindings to the pipe requesting the heroes from the `heroes.json` file. The second binding chains the `fetch` pipe with the built-in `JsonPipe` to display the same hero data in JSON format.
+*   A harness component (`hero-list.component.ts`) for demonstrating the request, using a template that defines two bindings to the pipe requesting the heroes from the `heroes.json` file. The second binding chains the `fetch` pipe with the built-in `JsonPipe` to display the same hero data in JSON format.
 
   一个用于演示该请求的挽具组件（`hero-list.component.ts`），它使用一个模板，该模板定义了两个到该管道的绑定，该管道会向 `heroes.json` 文件请求英雄数组。第二个绑定把 `fetch` 管道与内置的 `JsonPipe` 串联起来，以 JSON 格式显示同一份英雄数据。
 
 <code-tabs>
-  <code-pane
-    header="src/app/fetch-json.pipe.ts"
-    path="pipes/src/app/fetch-json.pipe.ts">
-  </code-pane>
-  <code-pane
-    header="src/app/hero-list.component.ts"
-    path="pipes/src/app/hero-list.component.ts">
-  </code-pane>
+    <code-pane header="src/app/fetch-json.pipe.ts" path="pipes/src/app/fetch-json.pipe.ts"></code-pane>
+    <code-pane header="src/app/hero-list.component.ts" path="pipes/src/app/hero-list.component.ts"></code-pane>
 </code-tabs>
 
-In the above example, a breakpoint on the pipe's request for data shows the following:
+In the preceding example, a breakpoint on the pipe's request for data shows the following:
 
 在上面的例子中，管道请求数据时的剖面展示了如下几点：
 
-* Each binding gets its own pipe instance.
+*   Each binding gets its own pipe instance.
 
   每个绑定都有自己的管道实例。
 
-* Each pipe instance caches its own URL and data and calls the server only once.
+*   Each pipe instance caches its own URL and data and calls the server only once.
 
   每个管道实例都会缓存自己的 URL 和数据，并且只调用一次服务器。
 
-The `fetch` and `fetch-json` pipes display the heroes as shown in Figure 5.
+The `fetch` and `fetch-json` pipes display the heroes in the browser as follows:
 
-`fetch` 和 `fetch-json` 管道会显示英雄，如图 5 所示。
+`fetch` 和 `fetch-json` 管道会像这样在浏览器中显示英雄：
 
-<div class="lightbox">
-  <img src='generated/images/guide/pipes/hero-list.png' alt="Hero List">
-</div>
+<code-example language="none">
 
-**Figure 5.** The `fetch` and `fetch-json` pipes displaying the heroes
+Heroes from JSON File
 
-**图 5.** `fetch` 和 `fetch-json` 管道显示了这些英雄。
+Windstorm
+Bombasto
+Magneto
+Tornado
+
+Heroes as JSON: [ { "name": "Windstorm", "canFly": true }, { "name": "Bombasto", "canFly": false }, { "name": "Magneto", "canFly": false }, { "name": "Tornado", "canFly": true } ]
+
+</code-example>
 
 <div class="alert is-helpful">
 
@@ -680,5 +596,12 @@ Due to precedence, if you want a pipe to apply to the result of a ternary, wrap 
 
 由于这种优先级设定，如果你要用管道处理三目元算符的结果，就要把整个表达式包裹在括号中，比如 `(a ? b : c) | x`。
 
-<code-example path="pipes/src/app/precedence.component.html" region="precedence" header="src/app/precedence.component.html">
-</code-example>
+<code-example path="pipes/src/app/precedence.component.html" region="precedence" header="src/app/precedence.component.html"></code-example>
+
+<!-- links -->
+
+[AioGuideI18nCommonFormatDataLocale]: guide/i18n-common-format-data-locale "Format data based on locale | Angular"
+
+<!-- end links -->
+
+@reviewed 2021-09-15

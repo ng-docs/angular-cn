@@ -58,7 +58,7 @@ The top level of the workspace contains workspace-wide configuration files, conf
 | `.editorconfig` | 代码编辑器的配置。参阅 [EditorConfig](https://editorconfig.org/)。 |
 | `.gitignore` | Specifies intentionally untracked files that [Git](https://git-scm.com/) should ignore. |
 | `.gitignore` | 指定 [Git](https://git-scm.com/) 应忽略的不必追踪的文件。 |
-| `README.md` | Introductory documentation for the root app. |
+| `README.md` | Introductory documentation for the root application. |
 | `README.md` | 根应用的简介文档. |
 | `angular.json` | CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as [TSLint](https://palantir.github.io/tslint/), [Karma](https://karma-runner.github.io/), and [Protractor](https://www.protractortest.org/). For details, see [Angular Workspace Configuration](guide/workspace-config). |
 | `angular.json` | 为工作区中的所有项目指定 CLI 的默认配置，包括 CLI 要用到的构建、启动开发服务器和测试工具的配置项，比如 [TSLint](https://palantir.github.io/tslint/)，[Karma](https://karma-runner.github.io/) 和 [Protractor](http://www.protractortest.org/)。欲知详情，请参阅 [Angular 工作区配置](guide/workspace-config) 部分。 |
@@ -92,7 +92,7 @@ This initial root-level application is the *default app* for CLI commands (unles
 
 <div class="alert is-helpful">
 
-   Besides using the CLI on the command line, you can also manipulate files directly in the app's source folder and configuration files.
+   Besides using the CLI on the command line, you can also manipulate files directly in the application's source folder and configuration files.
 
    除了在命令行中使用 CLI 之外，你还可以使用像 [Angular Console](https://angularconsole.com/) 这样的交互式开发环境，或直接在应用的源文件夹和配置文件中操作这些文件。
 
@@ -151,7 +151,7 @@ Angular components, templates, and styles go here.
 | `src/app/` FILES | PURPOSE |
 | :-------------------------- | :------------------------------------------|
 | `src/app/` 文件 | 用途 |
-| `app/app.component.ts` | Defines the logic for the app's root component, named `AppComponent`. The view associated with this root component becomes the root of the [view hierarchy](guide/glossary#view-hierarchy) as you add components and services to your application. |
+| `app/app.component.ts` | Defines the logic for the application's root component, named `AppComponent`. The view associated with this root component becomes the root of the [view hierarchy](guide/glossary#view-hierarchy) as you add components and services to your application. |
 | `app/app.component.ts` | 为应用的根组件定义逻辑，名为 `AppComponent`。当你向应用中添加组件和服务时，与这个根组件相关联的视图就会成为[视图树](guide/glossary#view-hierarchy)的根。 |
 | `app/app.component.html` | Defines the HTML template associated with the root `AppComponent`. |
 | `app/app.component.html` | 定义与根组件 `AppComponent` 关联的 HTML 模板。 |
@@ -189,26 +189,6 @@ Project-specific [TypeScript](https://www.typescriptlang.org/) configuration fil
 | `tslint.json` | Application-specific [TSLint](https://palantir.github.io/tslint/) configuration. |
 | `tslint.json` | 应用专属的 [TSLint](https://palantir.github.io/tslint/) 配置。 |
 
-### End-to-end test files
-
-### 端到端测试文件
-
-An `e2e/` folder at the top level contains source files for a set of end-to-end tests that correspond to the root-level application, along with test-specific configuration files.
-
-根级的 `e2e/` 文件夹中包含一组针对根应用的端到端测试的源文件，以及测试专属的配置文件。
-
-For a multi-project workspace, application-specific end-to-end tests are in the project root, under `projects/project-name/e2e/`.
-
-对于多项目的工作区，应用专属的端到端测试文件都位于项目各自的根目录下，即 `projects/project-name/e2e/`。
-
-<code-example language="none">
-  e2e/
-     src/                 (end-to-end tests for my-app)
-        app.e2e-spec.ts
-        app.po.ts
-      protractor.conf.js  (test-tool config)
-      tsconfig.json       (TypeScript config inherits from workspace)
-</code-example>
 
 {@a multiple-projects}
 
@@ -233,7 +213,7 @@ The following command creates a workspace with all of the workspace-wide configu
 ng new my-workspace --create-application false
 </code-example>
 
-You can then generate apps and libraries with names that are unique within the workspace.
+You can then generate applications and libraries with names that are unique within the workspace.
 
 然后，你可以使用工作区内唯一的名字来生成应用和库。
 
@@ -258,9 +238,6 @@ my-workspace/
   projects/       (generated applications and libraries)
     my-first-app/ --(an explicitly generated application)
       ...         --(application-specific config)
-      e2e/        ----(corresponding e2e tests)
-         src/     ----(e2e tests source)
-         ...      ----(e2e-specific config)
       src/        --(source and support files for application)
     my-lib/       --(a generated library)
       ...         --(library-specific config)
@@ -275,9 +252,9 @@ When you generate a library using the CLI (with a command such as `ng generate l
 
 当你使用 CLI 命令（例如 `ng generate library my-lib`）生成一个库时，所生成的文件会放在工作区的 `projects/` 文件夹中。关于如何创建自己的库的更多信息，请参阅[创建库](guide/creating-libraries)一章。
 
-Libraries (unlike applications and their associated e2e projects) have their own `package.json` configuration file.
+Libraries unlike applications have their own `package.json` configuration file.
 
-与应用及其相关的 e2e 项目不同，库有它自己的 `package.json` 配置文件。
+库和应用不同，它们有自己的 `package.json` 配置文件。
 
 Under the `projects/` folder, the `my-lib` folder contains your library code.
 

@@ -6,8 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import * as compiler from '@angular/compiler';
 import {RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {NgComponentTemplateVisitor} from '../../utils/ng_component_template';
 import {createHtmlSourceFile} from '../../utils/tslint/tslint_html_source_file';
@@ -20,7 +21,7 @@ const FAILURE_MESSAGE = 'Found assignment to template variable. This does not wo
  * Rule that reports if an Angular template contains property assignments to template variables.
  */
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const typeChecker = program.getTypeChecker();
     const templateVisitor = new NgComponentTemplateVisitor(typeChecker);
     const failures: RuleFailure[] = [];
@@ -34,7 +35,7 @@ export class Rule extends Rules.TypedRule {
     // template variables.
     resolvedTemplates.forEach(template => {
       const filePath = template.filePath;
-      const nodes = analyzeResolvedTemplate(template);
+      const nodes = analyzeResolvedTemplate(template, compiler);
       const templateFile =
           template.inline ? sourceFile : createHtmlSourceFile(filePath, template.content);
 

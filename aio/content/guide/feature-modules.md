@@ -6,18 +6,18 @@ Feature modules are NgModules for the purpose of organizing code.
 
 特性模块是用来对代码进行组织的模块。
 
-For the final sample app with a feature module that this page describes,
+For the final sample application with a feature module that this page describes,
 see the <live-example></live-example>.
 
 要想查看本页提到的这个带有特性模块的范例应用，参阅 <live-example></live-example>。
 
 <hr>
 
-As your app grows, you can organize code relevant for a specific feature.
+As your application grows, you can organize code relevant for a specific feature.
 This helps apply clear boundaries for features. With feature modules,
 you can keep code related to a specific functionality or feature
 separate from other code. Delineating areas of your
-app helps with collaboration between developers and teams, separating
+application helps with collaboration between developers and teams, separating
 directives, and managing the size of the root module.
 
 随着应用的增长，你可能需要组织与特定应用有关的代码。
@@ -31,7 +31,7 @@ directives, and managing the size of the root module.
 A feature module is an organizational best practice, as opposed to a concept of the core Angular API. A feature module delivers a cohesive set of functionality focused on a
 specific application need such as a user workflow, routing, or forms.
 While you can do everything within the root module, feature modules
-help you partition the app into focused areas. A feature module
+help you partition the application into focused areas. A feature module
 collaborates with the root module and with other modules through
 the services it provides and the components, directives, and
 pipes that it shares.
@@ -43,7 +43,7 @@ pipes that it shares.
 
 ## 如何制作特性模块
 
-Assuming you already have an app that you created with the [Angular CLI](cli), create a feature
+Assuming you already have an application that you created with the [Angular CLI](cli), create a feature
 module using the CLI by entering the following command in the
 root project directory. Replace `CustomerDashboard` with the
 name of your module. You can omit the "Module" suffix from the name because the CLI appends it:
@@ -75,7 +75,7 @@ export class CustomerDashboardModule { }
 
 ```
 
-The structure of an NgModule is the same whether it is a root module or a feature module. In the CLI generated feature module, there are two JavaScript import statements at the top of the file: the first imports `NgModule`, which, like the root module, lets you use the `@NgModule` decorator; the second imports `CommonModule`, which contributes many common directives such as `ngIf` and `ngFor`. Feature modules import `CommonModule` instead of `BrowserModule`, which is only imported once in the root module. `CommonModule` only contains information for common directives such as `ngIf` and `ngFor` which are needed in most templates, whereas `BrowserModule` configures the Angular app for the browser which needs to be done only once.
+The structure of an NgModule is the same whether it is a root module or a feature module. In the CLI generated feature module, there are two JavaScript import statements at the top of the file: the first imports `NgModule`, which, like the root module, lets you use the `@NgModule` decorator; the second imports `CommonModule`, which contributes many common directives such as `ngIf` and `ngFor`. Feature modules import `CommonModule` instead of `BrowserModule`, which is only imported once in the root module. `CommonModule` only contains information for common directives such as `ngIf` and `ngFor` which are needed in most templates, whereas `BrowserModule` configures the Angular application for the browser which needs to be done only once.
 
 无论根模块还是特性模块，其 NgModule 结构都是一样的。在 CLI 生成的特性模块中，在文件顶部有两个 JavaScript 的导入语句：第一个导入了 `NgModule`，它像根模块中一样让你能使用 `@NgModule` 装饰器；第二个导入了 `CommonModule`，它提供了很多像 `ngIf` 和 `ngFor` 这样的常用指令。
 特性模块导入 `CommonModule`，而不是 `BrowserModule`，后者只应该在根模块中导入一次。

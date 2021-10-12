@@ -106,7 +106,7 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * 如果支持这个名字的键盘事件，则为 True。
    *
    */
-  supports(eventName: string): boolean {
+  override supports(eventName: string): boolean {
     return KeyEventsPlugin.parseEventName(eventName) != null;
   }
 
@@ -133,7 +133,7 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * 已注册的键盘事件。
    *
    */
-  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
+  override addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
     const parsedEvent = KeyEventsPlugin.parseEventName(eventName)!;
 
     const outsideHandler =

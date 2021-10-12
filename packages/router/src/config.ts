@@ -151,32 +151,10 @@ export type LoadChildrenCallback = () => Type<any>|NgModuleFactory<any>|Observab
  *
  * 本函数返回一组要加载的路由。
  *
- * The string form of `LoadChildren` is deprecated (see `DeprecatedLoadChildren`). The function
- * form (`LoadChildrenCallback`) should be used instead.
- *
- * 不推荐使用 `LoadChildren` 的字符串形式（参见 `DeprecatedLoadChildren`）。应该改用函数形式（`LoadChildrenCallback`）。
- *
- * @see `loadChildrenCallback`
+ * @see `LoadChildrenCallback`
  * @publicApi
  */
-export type LoadChildren = LoadChildrenCallback|DeprecatedLoadChildren;
-
-/**
- * A string of the form `path/to/file#exportName` that acts as a URL for a set of routes to load.
- *
- * 格式为 `path/to/file#exportName` ，用作要加载的一组路由的 URL。
- *
- * @see `loadChildrenCallback`
- * @publicApi
- * @deprecated The `string` form of `loadChildren` is deprecated in favor of the
- * `LoadChildrenCallback` function which uses the ES dynamic `import()` expression.
- * This offers a more natural and standards-based mechanism to dynamically
- * load an ES module at runtime.
- *
- * 不推荐使用 `loadChildren` 的 `string` 形式，而推荐使用使用 ES 的动态 `import()` 表达式 `LoadChildrenCallback`。这提供了一种更自然且基于标准的机制，可在运行时动态加载 ES 模块。
- *
- */
-export type DeprecatedLoadChildren = string;
+export type LoadChildren = LoadChildrenCallback;
 
 /**
  *
@@ -516,8 +494,12 @@ export interface Route {
    * 路径匹配策略，为 “prefix” 或 “full” 之一。默认为“prefix”。
    *
    * By default, the router checks URL elements from the left to see if the URL
-   * matches a given  path, and stops when there is a match. For example,
-   * '/team/11/user' matches 'team/:id'.
+   * matches a given path and stops when there is a config match. Importantly there must still be a
+   * config match for each segment of the URL. For example, '/team/11/user' matches the prefix
+   * 'team/:id' if one of the route's children matches the segment 'user'. That is, the URL
+   * '/team/11/user` matches the config
+   * `{path: 'team/:id', children: [{path: ':user', component: User}]}`
+   * but does not match when there are no children as in `{path: 'team/:id', component: Team}`.
    *
    * 默认情况下，路由器会从左边开始检查 URL 中的各个元素，以查看此 URL 是否匹配给定的路径，遇到任何一个匹配的，就停止。比如，'/team/11/user' 能匹配 'team/:id'。
    *
@@ -548,7 +530,10 @@ export interface Route {
   component?: Type<any>;
   /**
    * A URL to redirect to when the path matches.
+   *
    * Absolute if the URL begins with a slash (/), otherwise relative to the path URL.
+   * Note that no further redirects are evaluated after an absolute redirect.
+   *
    * When not present, router does not redirect.
    *
    * 路径匹配时重定向到的 URL。如果 URL 以斜杠（/）开头，则为绝对值，否则相对于当前路径 URL。如果不存在，则路由器不会重定向。

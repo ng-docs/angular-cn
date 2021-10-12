@@ -2,9 +2,9 @@
 
 # Angular 的 Service Worker 简介
 
-Service workers augment the traditional web deployment model and empower applications to deliver a user experience with the reliability and performance on par with natively-installed code. Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) (also known as a PWA).
+Service workers augment the traditional web deployment model and empower applications to deliver a user experience with the reliability and performance on par with code that is written to run on your operating system and hardware. Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) (also known as a PWA).
 
-Service Worker 可以增强传统的 Web 发布模式，并使应用程序能够提供可与原生代码媲美的高可靠、高性能的用户体验。为 Angular 应用添加 Service Worker 是把应用转换成[渐进式应用（PWA）](https://developers.google.com/web/progressive-web-apps/)的步骤之一。
+Service Worker 可以增强传统的 Web 发布模式，并使应用程序能够提供可与原生代码（它运行在你的操作系统和硬件层面）媲美的高可靠、高性能的用户体验。为 Angular 应用添加 Service Worker 是把应用转换成[渐进式应用（PWA）](https://developers.google.com/web/progressive-web-apps/)的步骤之一。
 
 At its simplest, a service worker is a script that runs in the web browser and manages caching for an application.
 
@@ -25,7 +25,7 @@ Unlike the other scripts that make up an application, such as the Angular applic
 
 Even across a fast reliable network, round-trip delays can introduce significant latency when loading the application. Using a service worker to reduce dependency on the network can significantly improve the user experience.
 
-即使在快速可靠的网络中，往返延迟也可能在加载应用程序时产生显著的延迟。使用 Service Worker 来减少对网络的依赖可以显着改善用户体验。
+即使在快速可靠的网络中，往返延迟也可能在加载应用程序时产生显著的延迟。使用 Service Worker 来减少对网络的依赖可以显著改善用户体验。
 
 ## Service workers in Angular
 
@@ -41,9 +41,9 @@ Angular's service worker is designed to optimize the end user experience of usin
 
 Angular 的 Service Worker 的设计目标是优化那些使用慢速、不可靠网络的最终用户的体验，同时还要尽可能减小提供过期内容的风险。
 
-The Angular service worker's behavior follows that design goal:
+To achieve this, the Angular service worker follows these guidelines:
 
-Angular 的 Service Worker 的行为遵循下列设计目标：
+为了达成此目标，Angular Service Worker 的行为遵循下列设计原则：
 
 * Caching an application is like installing a native application. The application is cached as one unit, and all files update together.
 
@@ -65,14 +65,14 @@ Angular 的 Service Worker 的行为遵循下列设计目标：
 
    只要有可能，Service Worker 就会尽量节省带宽。它只会下载那些发生了变化的资源。
 
-To support these behaviors, the Angular service worker loads a *manifest* file from the server. The manifest describes the resources to cache and includes hashes of every file's contents. When an update to the application is deployed, the contents of the manifest change, informing the service worker that a new version of the application should be downloaded and cached. This manifest is generated from a CLI-generated configuration file called `ngsw-config.json`.
+To support these behaviors, the Angular service worker loads a *manifest* file from the server. The file, called `ngsw.json` (not to be confused with the [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)), describes the resources to cache and includes hashes of every file's contents. When an update to the application is deployed, the contents of the manifest change, informing the service worker that a new version of the application should be downloaded and cached. This manifest is generated from a CLI-generated configuration file called `ngsw-config.json`.
 
 要支持这些行为，Angular 的 Service Worker 会从服务器上下载一个 `manifest` 文件。
-这个 `manifest` 文件描述要缓存的资源，并包含每个文件内容的哈希值。
+这个 `manifest` 文件（不同于 [web 应用的 manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)）描述要缓存的资源，并包含每个文件内容的哈希值。
 当发布了应用的一个新版本时，`manifest` 的内容就会改变，通知 Service Worker 应该下载并缓存应用的一个新版本了。
 这个 manifest 是从 CLI 生成的一个名叫 `ngsw-config.json` 的文件中生成的。
 
-Installing the Angular service worker is as easy as including an `NgModule`. In addition to registering the Angular service worker with the browser, this also makes a few services available for injection which interact with the service worker and can be used to control it. For example, an application can ask to be notified when a new update becomes available, or an application can ask the service worker to check the server for available updates.
+Installing the Angular service worker is as straightforward as including an `NgModule`. In addition to registering the Angular service worker with the browser, this also makes a few services available for injection which interact with the service worker and can be used to control it. For example, an application can ask to be notified when a new update becomes available, or an application can ask the service worker to check the server for available updates.
 
 安装 Angular 的 Service Worker 就像引入一个 `NgModule` 一样简单。
 除了使用浏览器注册 Angular 的 Service Worker 之外，还要制作一些可供注入的服务，它们可以与 Service Worker 交互，并控制它。
@@ -82,17 +82,17 @@ Installing the Angular service worker is as easy as including an `NgModule`. In 
 
 ## 前提条件
 
-To make use of all the features of Angular service worker, use the latest versions of Angular and the Angular CLI.
+To make use of all the features of Angular service workers, use the latest versions of Angular and the Angular CLI.
 
 要使用 Angular Service Worker 的所有功能，请使用最新版本的 Angular 和 Angular CLI。
 
-In order for service workers to be registered, the application must be accessed over HTTPS, not HTTP.
+For service workers to be registered, the application must be accessed over HTTPS, not HTTP.
 Browsers ignore service workers on pages that are served over an insecure connection.
-The reason is that service workers are quite powerful, so extra care needs to be taken to ensure the service worker script has not been tampered with.
+The reason is that service workers are quite powerful, so extra care is needed to ensure the service worker script has not been tampered with.
 
-为了注册 Service Worker，必须通过 HTTPS 而非 HTTP 访问该应用程序。浏览器会忽略通过不安全连接访问的页面上的 Service Worker。原因是 Service Worker 非常强大，因此需要格外小心，以确保 Service Worker 的脚本未被篡改。
+要注册 Service Worker，必须通过 HTTPS 而非 HTTP 访问该应用程序。浏览器会忽略通过不安全连接访问的页面上的 Service Worker。原因是 Service Worker 非常强大，因此需要格外小心，以确保 Service Worker 的脚本未被篡改。
 
-There is one exception to this rule: to make local development easier, browsers do _not_ require a secure connection when accessing an application on `localhost`.
+There is one exception to this rule: to make local development more straightforward, browsers do _not_ require a secure connection when accessing an application on `localhost`.
 
 这条规则有一个例外：为了方便本地开发，当访问 `localhost` 上的应用时，浏览器*不*要求安全连接。
 
@@ -112,7 +112,7 @@ More specifically:
 
 如果用户通过不支持 Service Worker 的浏览器访问你的应用程序，则该 Service Worker 不会注册，并且不会发生相关行为，例如脱机缓存管理和推送通知。进一步来说：
 
-* The browser does not download the service worker script and `ngsw.json` manifest file.
+* The browser does not download the service worker script and the `ngsw.json` manifest file.
 
   浏览器不会下载 Service Worker 脚本和 `ngsw.json` 清单文件。
 
@@ -125,9 +125,9 @@ More specifically:
   相关服务（例如 `SwUpdate.available`）的可观察事件不会触发。
 
 It is highly recommended that you ensure that your application works even without service worker support in the browser.
-Although an unsupported browser ignores service worker caching, it will still report errors if the application attempts to interact with the service worker.
-For example, calling `SwUpdate.checkForUpdate()` will return rejected promises.
-To avoid such an error, you can check whether the Angular service worker is enabled using `SwUpdate.isEnabled()`.
+Although an unsupported browser ignores service worker caching, it still reports errors if the application attempts to interact with the service worker.
+For example, calling `SwUpdate.checkForUpdate()` returns rejected promises.
+To avoid such an error, check whether the Angular service worker is enabled using `SwUpdate.isEnabled`.
 
 强烈建议你确保即使在浏览器中没有 Service Worker 支持的情况下，你的应用也可以正常运行。尽管不受支持的浏览器会忽略 Service Worker 缓存，但如果应用程序尝试与 Service Worker 进行交互，它将仍然会报告错误。例如，调用 `SwUpdate.checkForUpdate()` 将返回被拒绝的承诺。为避免此类错误，你可以使用 `SwUpdate.isEnabled()` 检查是否启用了 Angular Service Worker。
 
@@ -149,7 +149,11 @@ The rest of the articles in this section specifically address the Angular implem
 
 * [Service Worker Communication](guide/service-worker-communications)
 
-   [与 Service Worker 通讯](guide/service-worker-communications).
+  [与 Service Worker 通讯](guide/service-worker-communications).
+
+* [Service Worker Notifications](guide/service-worker-notifications)
+
+  [Service Worker 通知](guide/service-worker-notifications)
 
 * [Service Worker in Production](guide/service-worker-devops)
 

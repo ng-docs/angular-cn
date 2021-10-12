@@ -67,7 +67,7 @@ export class RouterState extends Tree<ActivatedRoute> {
     setRouterState(<RouterState>this, root);
   }
 
-  toString(): string {
+  override toString(): string {
     return this.snapshot.toString();
   }
 }
@@ -109,6 +109,10 @@ export function createEmptyStateSnapshot(
  * currently activated route.
  *
  * 以下示例演示如何使用当前激活的路由中的信息来构造组件。
+ *
+ * Note: the observables in this class only emit when the current and previous values differ based
+ * on shallow equality. For example, changing deeply nested properties in resolved `data` will not
+ * cause the `ActivatedRoute.data` `Observable` to emit a new value.
  *
  * {@example router/activated-route/module.ts region="activated-route"
  *     header="activated-route.component.ts"}
@@ -526,7 +530,7 @@ export class RouterStateSnapshot extends Tree<ActivatedRouteSnapshot> {
     setRouterState(<RouterStateSnapshot>this, root);
   }
 
-  toString(): string {
+  override toString(): string {
     return serializeNode(this._root);
   }
 }

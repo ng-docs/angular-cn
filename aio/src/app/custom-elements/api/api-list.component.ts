@@ -46,13 +46,14 @@ export class ApiListComponent implements OnInit {
     { value: 'const', title: '常量'},
     { value: 'decorator', title: '装饰器' },
     { value: 'directive', title: '指令' },
+    { value: 'element', title: 'Element'},
     { value: 'enum', title: '枚举' },
     { value: 'function', title: '函数' },
     { value: 'interface', title: '接口' },
+    { value: 'package', title: 'Package'},
     { value: 'pipe', title: '管道'},
     { value: 'ngmodule', title: 'NgModule'},
     { value: 'type-alias', title: '类型别名' },
-    { value: 'package', title: '包'}
   ];
 
   statuses: Option[] = [

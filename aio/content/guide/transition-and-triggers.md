@@ -6,7 +6,7 @@ You learned the basics of Angular animations in the [introduction](guide/animati
 
 你已经在[简介](guide/animations)页学习了 Angular 动画的基础知识。
 
-This guide goes into greater depth on special transition states such as `*` (wildcard) and `void`, and show how these special states are used for elements entering and leaving a view.
+This guide goes into greater depth on special transition states such as `*` (wildcard) and `void`, and shows how these special states are used for elements entering and leaving a view.
 This chapter also explores multiple animation triggers, animation callbacks, and sequence-based animation using keyframes.
 
 本章将深入讲解特殊的转场状态，如 `*`（通配符）和 `void`，并说明这些特殊状态如何作用于进入或离开视图的元素。本章还探讨了多重触发器、动画回调，以及使用关键帧技术的序列动画。
@@ -40,7 +40,7 @@ Instead of defining each state-to-state transition pair, any transition to `clos
 
 下面是通配符状态的另一个代码范例，以及我们以前使用 `open` 和 `closed` 状态的实例。但这次，对于每个状态到状态的转换对，我们这次规定从任何状态转场到 `closed` 状态时要花 1 秒钟，而从任何状态转场到 `open` 状态时要花 0.5 秒。
 
-This allows us to add new states without having to include separate transitions for each one.
+This lets us add new states without having to include separate transitions for each one.
 
 这让我们可以添加新状态，而不必把它手动包含到每个单独的转场中。
 
@@ -57,10 +57,10 @@ Use a double arrow syntax to specify state-to-state transitions in both directio
 ### 使用带多个转场状态的通配符状态
 
 In the two-state button example, the wildcard isn't that useful because there are only two possible states, `open` and `closed`.
-Wildcard states are better when an element in one particular state has multiple potential states that it can change to.
+In general, use wildcard states when an element in one particular state has multiple potential states that it can change to.
 If the button can change from `open` to either `closed` or something like `inProgress`, using a wildcard state could reduce the amount of coding needed.
 
-在这个双态按钮的例子中，通配符不是很有用，因为只有两种可能的状态：`open` 和 `closed`。当一个特定状态下的元素可能变更为多个潜在状态时，通配符状态会更好用。如果我们的按钮可以从 `open` 变成 `closed` 或类似 `inProgress` 的状态，则可以使用通配符状态来减少所需的编码量。
+在这个双态按钮的例子中，通配符不是很有用，因为只有两种可能的状态：`open` 和 `closed`。一般而言，当一个特定状态下的元素可能变更为多个潜在状态时，通配符状态会更好用。如果我们的按钮可以从 `open` 变成 `closed` 或类似 `inProgress` 的状态，则可以使用通配符状态来减少所需的编码量。
 
 <div class="lightbox">
   <img src="generated/images/guide/animations/wildcard-3-states.png" alt="wildcard state with 3 states">
@@ -94,17 +94,17 @@ Use the wildcard `*` with a style to tell the animation to use whatever the curr
 
 ### `void` 状态
 
-You can use the `void` state to configure transitions for an element that is entering or leaving a page. See [Animating entering and leaving a view](#enter-leave-view).
+Use the `void` state to configure transitions for an element that is entering or leaving a page. See [Animating entering and leaving a view](#enter-leave-view).
 
-你可以使用 `void` 状态来为进入或离开页面的元素配置转场。参阅[进入和离开视图的动画](#enter-leave-view)。
+可以使用 `void` 状态来为进入或离开页面的元素配置转场。参阅[进入和离开视图的动画](#enter-leave-view)。
 
 ### Combining wildcard and void states
 
 ### 组合使用通配符和 `void` 状态
 
-You can combine wildcard and void states in a transition to trigger animations that enter and leave the page:
+Combine wildcard and void states in a transition to trigger animations that enter and leave the page:
 
-你可以在转场中组合使用通配符和 `void` 状态，以触发那些进入和离开页面的动画：
+可以在转场中组合使用通配符和 `void` 状态，以触发那些进入和离开页面的动画：
 
 * A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left.
 
@@ -134,9 +134,9 @@ This section shows how to animate elements entering or leaving a page.
 
 </div>
 
-Now add a new behavior:
+Add a new behavior:
 
-现在，我们要添加一些新的行为：
+添加一些新的行为：
 
 * When you add a hero to the list of heroes, it appears to fly onto the page from the left.
 
@@ -148,7 +148,7 @@ Now add a new behavior:
 
 <code-example path="animations/src/app/hero-list-enter-leave.component.ts" header="src/app/hero-list-enter-leave.component.ts" region="animationdef" language="typescript"></code-example>
 
-In the above code, you applied the `void` state when the HTML element isn't attached to a view.
+In the preceding code, you applied the `void` state when the HTML element isn't attached to a view.
 
 在上述代码中，当 HTML 元素没有附着在视图中时，我们就会应用 `void` 状态。
 
@@ -211,9 +211,9 @@ The `transition()` function takes additional selector values, `:increment` and `
 
 <div class="alert is-helpful">
 
-**Note:** The following example uses `query()` and `stagger()` methods, which is discussed in the [complex sequences](guide/complex-animation-sequences#complex-sequence) page.
+**Note:** The following example uses `query()` and `stagger()` methods. For more information on these methods, see the [complex sequences](guide/complex-animation-sequences#complex-sequence) page.
 
-**注意：**下面的例子使用 `query()` 和 `stagger()` 方法，它们会在[复杂序列](guide/complex-animation-sequences#complex-sequence)中讨论。
+**注意：**下面的例子使用 `query()` 和 `stagger()` 方法。欲知详情，参见[复杂序列](guide/complex-animation-sequences#complex-sequence)页。
 
 </div>
 
@@ -230,11 +230,11 @@ If a trigger contains a boolean value as a binding value, then this value can be
 <code-example path="animations/src/app/open-close.component.2.html" header="src/app/open-close.component.html" region="trigger-boolean">
 </code-example>
 
-In the code snippet above, the HTML template binds a `<div>` element to a trigger named `openClose` with a status expression of `isOpen`, and with possible values of `true` and `false`. This is an alternative to the practice of creating two named states of `open` and `close`.
+In the code snippet above, the HTML template binds a `<div>` element to a trigger named `openClose` with a status expression of `isOpen`, and with possible values of `true` and `false`. This pattern is an alternative to the practice of creating two named states like `open` and `close`.
 
-在上述代码片段中，HTML 模板将 `<div>` 元素绑定到名为 `openClose` 的触发器，其状态表达式是 `isOpen`，可能的值为 `true` 和 `false`。这种方式可以代替创建两个命名状态 `open` 和 `close` 的方式。
+在上述代码片段中，HTML 模板将 `<div>` 元素绑定到名为 `openClose` 的触发器，其状态表达式是 `isOpen`，可能的值为 `true` 和 `false`。这种模式可以代替创建两个命名状态 `open` 和 `close` 的方式。
 
-In the component code, in the `@Component` metadata under the `animations:` property, when the state evaluates to `true` (meaning "open" here), the associated HTML element's height is a wildcard style or default. In this case, use whatever height the element already had before the animation started. When the element is "closed," the element animates to a height of 0, which makes it invisible.
+In the component code, inside the `@Component` metadata under the `animations:` property, when the state evaluates to `true` (meaning "open" here), the associated HTML element's height is a wildcard style or default. In this case, the animation uses whatever height the element already had before the animation started. When the element is "closed", the element gets animated to a height of 0, which makes it invisible.
 
 在组件代码中，`@Component` 元数据下的 `animations:` 属性中，当该状态求值为 `true` 时（这里表示 "open"），相关 HTML 元素的高度值为通配符样式 `*` 或某个默认值。在这种情况下，它会使用此元素开始动画前的现有高度。当该元素是 "closed" 时，它的高度会从指定的高度运动到 0，这会让它不可见。
 
@@ -245,7 +245,7 @@ In the component code, in the `@Component` metadata under the `animations:` prop
 
 ## 多重动画触发器
 
-You can define more than one animation trigger for a component. You can attach animation triggers to different elements, and the parent-child relationships among the elements affect how and when the animations run.
+You can define more than one animation trigger for a component. Attach animation triggers to different elements, and the parent-child relationships among the elements affect how and when the animations run.
 
 你可以为组件定义多个动画触发器并将这些动画触发器附着到不同的元素上，这些元素之间的父子关系会影响动画的运行方式和时机。
 
@@ -253,7 +253,7 @@ You can define more than one animation trigger for a component. You can attach a
 
 ### 父-子动画
 
-Each time an animation is triggered in Angular, the parent animation always get priority and child animations are blocked. In order for a child animation to run, the parent animation must query each of the elements containing child animations and then allow the animations to run using the [`animateChild()`](api/animations/animateChild) function.
+Each time an animation is triggered in Angular, the parent animation always gets priority and child animations are blocked. For a child animation to run, the parent animation must query each of the elements containing child animations and then let the animations run using the [`animateChild()`](api/animations/animateChild) function.
 
 每次在 Angular 中触发动画时，父动画始终会优先，而子动画会被阻塞。为了运行子动画，父动画必须查询出包含子动画的每个元素，然后使用 [`animateChild()`](api/animations/animateChild) 函数来运行它们。
 
@@ -265,7 +265,7 @@ A special animation control binding called `@.disabled` can be placed on an HTML
 
 可以把一个名叫 `@.disabled` 的动画控制绑定放在 HTML 元素上，以禁用该元素及其子元素上的动画。当 `@.disabled` 绑定为 `true` 时，就会禁止渲染所有动画。
 
-The code sample below shows how to use this feature.
+The following code sample shows how to use this feature.
 
 下面的代码范例展示了如何使用此特性。
 
@@ -297,7 +297,7 @@ Those elements can still animate.
 
   父动画可以使用 [`query()`](api/animations/query) 函数来收集 HTML 模板中位于禁止动画区域内部的元素。这些元素仍然可以播放动画。
 
-* A subanimation can be queried by a parent and then later animated with the `animateChild()` function.
+* A child animation can be queried by a parent and then later animated with the `animateChild()` function.
 
   子动画可以被父动画查询，并且稍后使用 `animateChild()` 来播放它。
 
@@ -323,16 +323,16 @@ To disable all animations for an Angular app, place the `@.disabled` host bindin
 
 ## 动画回调
 
-The animation `trigger()` function emits *callbacks* when it starts and when it finishes. The example below features a component that contains an `openClose` trigger.
+The animation `trigger()` function emits *callbacks* when it starts and when it finishes. The following example features a component that contains an `openClose` trigger.
 
 当动画启动和终止时，`trigger()` 函数会发出一些*回调*。在下面的例子中，我们有一个包含 `openClose` 触发器的组件。
 
 <code-example path="animations/src/app/open-close.component.ts" header="src/app/open-close.component.ts" region="events1" language="typescript"></code-example>
 
-In the HTML template, the animation event is passed back via `$event`, as `@trigger.start` and `@trigger.done`, where `trigger` is the name of the trigger being used.
+In the HTML template, the animation event is passed back via `$event`, as `@triggerName.start` and `@triggerName.done`, where `triggerName` is the name of the trigger being used.
 In this example, the trigger `openClose` appears as follows.
 
-在 HTML 模板中，动画事件可以通过 `$event` 传递回来，比如 `@trigger.start` 和 `@trigger.done`，这里的 `trigger` 表示所使用的触发器名字。在我们的例子中，`openClose` 触发器将会是这样的：
+在 HTML 模板中，动画事件可以通过 `$event` 传递回来，比如 `@triggerName.start` 和 `@triggerName.done`，这里的 `triggerName` 表示所使用的触发器名字。在我们的例子中，`openClose` 触发器将会是这样的：
 
 <code-example path="animations/src/app/open-close.component.3.html" header="src/app/open-close.component.html" region="callbacks">
 </code-example>
@@ -365,7 +365,7 @@ The following code snippet creates console log output for the original example, 
 
 ## 关键帧动画
 
-The previous section features a simple two-state transition. Now create an animation with multiple steps run in sequence using *keyframes*.
+The previous section features a simple two-state transition. Let's now create an animation with multiple steps run in sequence using *keyframes*.
 
 前一节是简单的双态转场。现在，我们要使用*关键帧动画*创建一个具有多个顺序执行步骤的动画。
 
@@ -388,7 +388,7 @@ The code for this color change might look like this.
 
 ### 偏移
 
-Keyframes include an *offset* that defines the point in the animation where each style change occurs.
+Keyframes include an `offset` that defines the point in the animation where each style change occurs.
 Offsets are relative measures from zero to one, marking the beginning and end of the animation, respectively and should be applied to each of the keyframe's steps if used at least once.
 
 关键帧包括一个用来定义动画中每个样式何时开始更改的*偏移（offset）*属性。偏移是个 0 到 1 之间的相对值，分别标记动画的开始和结束时间，并且只要使用了它，就要同样应用于这个关键帧的每个步骤。
@@ -396,7 +396,7 @@ Offsets are relative measures from zero to one, marking the beginning and end of
 Defining offsets for keyframes is optional.
 If you omit them, evenly spaced offsets are automatically assigned.
 For example, three keyframes without predefined offsets receive offsets of 0, 0.5, and 1.
-Specifying an offset of 0.8 for the middle transition in the above example might look like this.
+Specifying an offset of 0.8 for the middle transition in the preceding example might look like this.
 
 定义关键帧的偏移量是可选的。如果省略它们，就会自动分配均匀间隔的偏移。例如，三个没有预定义偏移的关键帧会分别使用 0、0.5、1 作为偏移。在上面的例子中，还可以为中间的转场指定偏移量 0.8。代码如下：
 
@@ -431,7 +431,7 @@ Here's an example of using keyframes to create a pulse effect:
 
   原始的 `open` 和 `closed` 状态（包括其原始的高度、颜色和透明度）会在一秒钟内逐渐发生变化。
 
-* A keyframes sequence inserted in the middle that causes the button to appear to pulsate irregularly over the course of that same 1-second timeframe.
+* A keyframes sequence inserted in the middle that causes the button to appear to pulsate irregularly over the course of that same 1 second timeframe.
 
   插在中间的关键帧序列会导致该按钮在一秒钟内出现不规则的脉动。
 
@@ -449,12 +449,12 @@ The code snippet for this animation might look like this.
 
 ### 可动的属性与单位
 
-Angular's animation support builds on top of web animations, so you can animate any property that the browser considers animatable.
+Angular animations support builds on top of web animations, so you can animate any property that the browser considers animatable.
 This includes positions, sizes, transforms, colors, borders, and more. The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1/) page.
 
 Angular 的动画支持是基于 Web 动画的，所以你可以动浏览器认为可动（animatable）的任意属性。包括位置、大小、变形、颜色、边框等。W3C 在 [CSS 转场](https://www.w3.org/TR/css-transitions-1/)页也维护了一个可动属性的列表。
 
-For positional properties with a numeric value, define a unit by providing the value as a string, in quotes, with the appropriate suffix:
+For properties with a numeric value, define a unit by providing the value as a string, in quotes, with the appropriate suffix:
 
 对于带有数值的位置属性，可以把值作为字符串（别忘了带引号）并使用适当的后缀来定义其单位：
 
@@ -470,17 +470,17 @@ For positional properties with a numeric value, define a unit by providing the v
 
   百分比：`'100%'`
 
-If you don't provide a unit when specifying dimension, Angular assumes a default unit of pixels, or px.
-Expressing 50 pixels as `50` is the same as saying `'50px'`.
+You can also provide the value as a number (thus not providing a unit), in such cases Angular assumes a default unit of pixels, or `px`.
+Expressing 50 pixels as `50` is the same as saying `'50px'` (note that the string `"50"` would instead be considered invalid).
 
-如果在指定尺寸时未提供单位，则 Angular 将使用默认单位像素（px）。把 50 像素表示为 `50` 和 `'50px'` 是一样的。
+你还可以用数字形式提供这个值（不带单位），这种情况下，Angular 假设默认的单位是像素（`px`）。把 50 像素表示为 `50` 和 `'50px'` 是一样的（但要注意，字符串形式的 `"50"` 是无效的）。
 
 ### Automatic property calculation with wildcards
 
 ### 使用通配符自动计算属性
 
 Sometimes you don't know the value of a dimensional style property until runtime.
-For example, elements often have widths and heights that depend on their content and the screen size.
+For example, elements often have widths and heights that depend on their content or the screen size.
 These properties are often challenging to animate using CSS.
 
 有时你在运行之前并不知道某个样式的属性值。比如，元素的宽度和高度通常取决于其内容和屏幕大小。在使用 CSS 动画时，这些属性通常会具有挑战性（译注：因为 CSS 动画不支持自动确定宽高）。
@@ -500,15 +500,15 @@ The animation takes whatever height the element has before it leaves, and animat
 
 ### 关键帧动画总结
 
-The `keyframes()` function in Angular allows you to specify multiple interim styles within a single transition, with an optional offset to define the point in the animation where each style change occurs.
+The `keyframes()` function in Angular allows you to specify multiple interim styles within a single transition, with an optional `offset` to define the point in the animation where each style change should occur.
 
-Angular 中的 `keyframes()` 函数允许你在单个转场中指定多个临时样式，并使用可选的偏移量来定义动画中每次样式变化的发生时机。
+Angular 中的 `keyframes()` 函数允许你在单个转场中指定多个临时样式，并使用可选的 `offset` 来定义动画中每次样式变化的发生时机。
 
 ## More on Angular animations
 
 ## Angular 动画的更多知识
 
-You may also be interested in the following:
+You might also be interested in the following:
 
 你可能还对下列内容感兴趣：
 

@@ -10,9 +10,9 @@ Schematics are packaged into [collections](guide/glossary#collection) and instal
 
 The schematic collection can be a powerful tool for creating, modifying, and maintaining any software project, but is particularly useful for customizing Angular projects to suit the particular needs of your own organization.
 You might use schematics, for example, to generate commonly-used UI patterns or specific components, using predefined templates or layouts.
-You can use schematics to enforce architectural rules and conventions, making your projects consistent and inter-operative.
+Use schematics to enforce architectural rules and conventions, making your projects consistent and inter-operative.
 
-原理图的集合可以作为一个强大的工具，以创建、修改和维护任何软件项目，特别是当要自定义 Angular 项目以满足你自己组织的特定需求时。例如，你可以借助原理图来用预定义的模板或布局生成常用的 UI 模式或特定的组件。你也可以使用原理图来强制执行架构规则和约定，让你的项目保持一致性和互操作性。
+原理图的集合可以作为一个强大的工具，以创建、修改和维护任何软件项目，特别是当要自定义 Angular 项目以满足你自己组织的特定需求时。例如，你可以借助原理图来用预定义的模板或布局生成常用的 UI 模式或特定的组件。也可以用原理图来强制执行架构规则和约定，让你的项目保持一致性和互操作性。
 
 ## Schematics for the Angular CLI
 
@@ -26,9 +26,9 @@ You can modify these schematics, and define new ones to do things like update yo
 
 Schematics that are included in the `@schematics/angular` collection are run by default by the commands `ng generate` and `ng add`.
 The package contains named schematics that configure the options that are available to the CLI for `ng generate` sub-commands, such as `ng generate component` and `ng generate service`.
-The subcommands for `ng generate` are shorthand for the corresponding schematic. You can specify a particular schematic (or collection of schematics) to generate, using the long form:
+The subcommands for `ng generate` are shorthand for the corresponding schematic. To specify a particular schematic (or collection of schematics) to generate, using the long form:
 
-`@schematics/angular` 集合中的原理图是 `ng generate` 和 `ng add` 命令的默认原理图。此包里包含一些有名字的原理图，可用于配置 `ng generate` 子命令的选项，比如 `ng generate component` 和 `ng generate service`。`ng generate` 的子命令是相应原理图的简写。你可以用长格式来指定要生成的原理图（或原理图集合）：
+`@schematics/angular` 集合中的原理图是 `ng generate` 和 `ng add` 命令的默认原理图。此包里包含一些有名字的原理图，可用于配置 `ng generate` 子命令的选项，比如 `ng generate component` 和 `ng generate service`。`ng generate` 的子命令是相应原理图的简写。可以用长格式来指定要生成的原理图（或原理图集合）：
 
 <code-example language="bash">
 ng generate my-schematic-collection:my-schematic-name
@@ -48,7 +48,7 @@ ng generate my-schematic-name --collection collection-name
 
 A JSON schema associated with a schematic tells the Angular CLI what options are available to commands and subcommands, and determines the defaults.
 These defaults can be overridden by providing a different value for an option on the command line.
-See [Workspace Configuration](guide/workspace-config) for information about how you can change the generation option defaults for your workspace.
+See [Workspace Configuration](guide/workspace-config) for information about how to change the generation option defaults for your workspace.
 
 与原理图相关联的 JSON 模式会告诉 Angular CLI 命令和子命令都有哪些选项以及默认值。这些默认值可以通过在命令行中为该选项提供不同的值来进行覆盖。要了解如何更改代码生成选项的默认值，请参阅“ [工作区配置](guide/workspace-config) ”。
 
@@ -65,7 +65,7 @@ As a library developer, you can create your own collections of custom schematics
 
 作为一名库开发人员，你可以创建自己的自定义原理图集合，以便把你的库与 Angular CLI 集成在一起。
 
-* An *add schematic* allows developers to install your library in an Angular workspace using `ng add`.
+* An *add schematic* lets developers install your library in an Angular workspace using `ng add`.
 
   *添加（Add）原理图*允许开发人员使用 `ng add` 在 Angular 工作区中安装你的库。
 
@@ -99,9 +99,9 @@ The `add` command uses your package manager to download new dependencies, and in
 库中通常都会提供一个添加原理图，以便通过 `ng add` 把这个库添加到现有项目中。`add` 命令会运行包管理器来下载新的依赖，并调用一个原理图形式的安装脚本。
 
 For example, the [`@angular/material`](https://material.angular.io/guide/schematics) schematic tells the `add` command to install and set up Angular Material and theming, and register new starter components that can be created with `ng generate`.
-You can look at this one as an example and model for your own add schematic.
+Look at this one as an example and model for your own add schematic.
 
-例如，[`@angular/material`](https://material.angular.cn/guide/schematics) 原理图会要求 `add` 命令安装并设置 Angular Material 及其主题，并注册可通过 `ng generate` 创建的新启动器组件。你可以把它作为自己的 "添加原理图" 的范例。
+例如，[`@angular/material`](https://material.angular.cn/guide/schematics) 原理图会要求 `add` 命令安装并设置 Angular Material 及其主题，并注册可通过 `ng generate` 创建的新启动器组件。可以把它作为自己的 "添加原理图" 的范例。
 
 Partner and third party libraries also support the Angular CLI with add schematics.
 For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io/)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://vmware.github.io/clarity/documentation/v1.0/get-started).

@@ -6,18 +6,6 @@ If your tests aren't working as you expect them to, you can inspect and debug th
 
 如果你的测试没能如预期般工作，可以在浏览器中查看和调试它们。
 
-<div class="alert is-helpful">
-
-  For the sample app that the testing guides describe, see the <live-example name="testing" embedded-style noDownload>sample app</live-example>.
-
-对于测试指南中所讲的范例应用，参阅<live-example name="testing" embedded-style noDownload>范例应用</live-example>。
-
-  For the tests features in the testing guides, see <live-example name="testing" stackblitz="specs" noDownload>tests</live-example>.
-
-  要了解本测试指南中提到的这些测试特性，请参阅<live-example name="testing" stackblitz="specs" noDownload>测试</live-example>。
-
-</div>
-
 Debug specs in the browser in the same way that you debug an application.
 
 在浏览器中调试这些测试规约的方式与调试应用时相同。

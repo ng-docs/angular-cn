@@ -119,7 +119,7 @@ In the table below, you can find a list of packages which implement deployment f
 | 部署到                                                 | NPM 包                                                                        |
 | [Firebase hosting](https://firebase.google.com/docs/hosting)  | [`@angular/fire`](https://npmjs.org/package/@angular/fire)                     |
 | [Azure](https://azure.microsoft.com/en-us/)                   | [`@azure/ng-deploy`](https://npmjs.org/package/@azure/ng-deploy)               |
-| [Now](https://zeit.co/now)                                    | [`@zeit/ng-deploy`](https://npmjs.org/package/@zeit/ng-deploy)                 |
+| [Vercel (Previously known as Zeit)](https://vercel.com/solutions/angular)                                    | [`@zeit/ng-deploy`](https://npmjs.org/package/@zeit/ng-deploy)                 |
 | [Netlify](https://www.netlify.com/)                           | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy) |
 | [GitHub pages](https://pages.github.com/)                     | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages)         |
 | [NPM](https://npmjs.com/)                                     | [`ngx-deploy-npm`](https://npmjs.org/package/ngx-deploy-npm)                   |
@@ -415,6 +415,33 @@ and to
     } ]
   </code-example>
 
+{@a mime}
+
+### Configuring correct MIME-type for JavaScript assets
+
+### 为 JavaScript 资产配置正确的 MIME 类型
+
+All of your application JavaScript files must be served by the server with the [`Content-Type` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type) set to `text/javascript` or another [JavaScript-compatible MIME-type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript).
+
+你的所有应用程序 JavaScript 文件都必须由服务器提供出来，并将 [`Content-Type` 标头](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)设置为 `text/javascript` 或其他[与 JavaScript 兼容的 MIME-type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript) 。
+
+Most servers and hosting services already do this by default.
+
+默认情况下，大多数服务器和托管服务已经这样做了。
+
+Server with misconfigured mime-type for JavaScript files will cause an application to fail to start with the following error:
+
+如果服务器为 JavaScript 文件配置了错误的 MIME 类型，将导致应用程序无法启动并出现以下错误：
+
+```
+Failed to load module script: The server responded with a non-JavaScript MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+```
+
+If this is the case, you will need to check your server configuration and reconfigure it to serve `.js` files with `Content-Type: text/javascript`. See your server's manual for instructions on how to do this.
+
+如果是这种情况，你将需要检查你的服务器配置并将其重新配置为使用 `Content-Type: text/javascript` 来提供 `.js` 文件。有关如何执行此操作的说明，请参阅服务器手册。
+
+
 {@a cors}
 
 ### Requesting services from a different server (CORS)
@@ -569,11 +596,11 @@ You should measure the application's actual behavior when running in the environ
 
 <p>
 The
-<a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" title="Chrome DevTools Network Performance">
+<a href="https://developer.chrome.com/docs/devtools/network/reference/" title="Chrome DevTools Network Performance">
 Chrome DevTools Network Performance page</a> is a good place to start learning about measuring performance.
 </p>
 
-<p><a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" title="Chrome DevTools Network Performance">
+<p><a href="https://developer.chrome.com/docs/devtools/network/reference/" title="Chrome DevTools Network Performance">
 Chrome DevTools 的网络和性能页</a>是你开始学习如何测量性能的好地方。</p>
 
 The [WebPageTest](https://www.webpagetest.org/) tool is another good choice
@@ -691,348 +718,36 @@ for the missing files. Look at where it _tried_ to find those files and adjust t
 
 这里如果不配置 `base` 标签，应用就会失败，并在浏览器的控制台中为缺失的文件显示一个 `404 - Not Found` 错误。看看它*试图*从哪里去查找那些文件，并据此调整 base 标签。
 
-{@a differential-loading}
+{@a deploy-url}
 
-## Differential Loading
+## The `deploy` url
 
-## 差异化加载
+## 部署 url（`deploy-url`）
 
-When building web applications, you want to make sure your application is compatible with the majority of browsers.
-Even as JavaScript continues to evolve, with new features being introduced, not all browsers are updated with support for these new features at the same pace.
+A command line option used to specify the base path for resolving relative URLs for assets such as images, scripts, and style sheets at _compile_ time. For example: `ng build --deploy-url /my/assets`.
 
-在构建 Web 应用时，你肯定想确保你的应用与大多数浏览器兼容。JavaScript 在不断发展，新功能不断推出，不是所有浏览器都能以同样的进度实现这些新功能。
+一个命令行选项，用于指定在*编译*时解析图片、脚本和样式表等资产（assets）的相对 URL 的基础路径。例如： `ng build --deploy-url /my/assets` 。
 
-The code you write in development using TypeScript is compiled and bundled into ES2015, the JavaScript syntax that is compatible with most browsers.
-All modern browsers support ES2015 and beyond, but in most cases, you still have to account for users accessing your application from a browser that doesn't.
-When targeting older browsers, [polyfills](guide/browser-support#polyfills) can bridge the gap by providing functionality that doesn't exist in the older versions of JavaScript supported by those browsers.
+The effects of defining a `deploy url` and `base href` can overlap.
 
-你在开发过程中使用 TypeScript 编写的代码会被编译并打包成 ES2015，这种 JavaScript
- 语法兼容大多数浏览器。
- 所有现代浏览器都支持 ES2015 和更新的版本，但是大多数情况下，你仍然要让用户能从不支持它的浏览器中访问你的应用。
- 当以老式浏览器为目标时，[腻子脚本（polyfills）](guide/browser-support#polyfills)可以提供一些老式浏览器中不存在的功能，从而抹平这种差距。
+`deploy url` 和 `base href` 这两个定义的作用有所重叠。
 
-To maximize compatibility, you could ship a single bundle that includes all your compiled code, plus any polyfills that may be needed.
-Users with modern browsers, however, shouldn't have to pay the price of increased bundle size that comes with polyfills they don't need.
-Differential loading, which is supported in Angular CLI version 8 and higher, can help solve this problem.
+* Both can be used for initial scripts, stylesheets, lazy scripts, and css resources.
 
-为了最大限度地提高兼容性，你可以发布一个包含所有已编译代码的发布包（bundle），以及所有可能会用到的腻子脚本。用户如果在支持大量最新 JavaScript 特性的现代浏览器中使用此应用，就不应该为这些他们用不到的包带来的额外体积付出代价。差异化加载可以帮你解决这个问题。Angular CLI 8 及更高版本就支持它。
+  两者都可用于初始脚本、样式表、惰性脚本和 css 资源。
 
-Differential loading is a strategy that allows your web application to support multiple browsers, but only load the necessary code that the browser needs. When differential loading is enabled the CLI builds two separate bundles as part of your deployed application.
+However, defining a `base href` has a few unique effects.
 
-差异化加载是一种策略，它能让你的应用支持多种浏览器，但是只加载当前浏览器必须用到的代码。
-当启用了差异化加载时，CLI 会构建出两个单独的包，作为你要发布的应用的一部分。
+但是，定义 `base href` 有一些独有的作用。
 
-* The first bundle contains modern ES2015 syntax. This bundle takes advantage of built-in support in modern browsers, ships fewer polyfills, and results in a smaller bundle size.
+* Defining a `base href` can be used for locating relative template (HTML) assets, and relative fetch/XMLHttpRequests.
 
-  第一个包是使用现代的 ES2015 语法，它能发挥现代浏览器内置支持的优势，发布更少的腻子脚本，因此打包尺寸更小。
+  定义 `base href` 可用于定位相对路径模板 (HTML) 资产和针对相对路径的 fetch/XMLHttpRequests。
 
-* The second bundle contains code in the old ES5 syntax, along with all necessary polyfills. This second bundle is larger, but supports older browsers.
+The `base href` can also be used to define the Angular router's default base (see [APP_BASE_HREF](api/common/APP_BASE_HREF)). Users with more complicated setups may need to manually configure the `APP_BASE_HREF` token within the application. (e.g., application routing base is / but assets/scripts/etc. are at /assets/).
 
-  第二个包使用老式的 ES5 语法，包含所有必要的腻子脚本。第二个包的尺寸更大，但是支持老式浏览器。
+`base href` 也可用于定义 Angular 路由器的默认基础 URL（请参阅[APP_BASE_HREF](api/common/APP_BASE_HREF) ）。需要进行更复杂设置的用户可能需要在应用程序中手动配置 `APP_BASE_HREF` 令牌。 （例如，应用程序路由基地址是/，但各种资产、脚本等都在 `/assets`/ 下）。
 
-### Differential builds
+Unlike the `base href` which can be defined in a single place, the `deploy url` needs to be hard-coded into an application at build time. This means specifying a `deploy url` will decrease build speed, but this is the unfortunate cost of using an option that embeds itself throughout an application. That is why a `base href` is generally the better option.
 
-### 差异化构建
-
-When you deploy using the Angular CLI build process, you can choose how and when to support differential loading.
-The [`ng build` CLI command](cli/build) queries the browser configuration and the configured build target to determine if support for legacy browsers is required, and whether the build should produce the necessary bundles used for differential loading.
-
-使用 Angular CLI 构建过程进行部署时，可以选择如何以及何时支持差异化加载。[`ng build` CLI 命令](cli/build)会查询浏览器配置和配置的构建目标，以确定是否需要支持旧版浏览器，以及该构建是否应产生用于差异化加载的必要捆绑包。
-
-The following configurations determine your requirements.
-
-会根据下列配置确定你的要求。
-
-* Browserslist
-
-  浏览器列表
-
-   The Browserslist configuration file is included in your application [project structure](guide/file-structure#application-configuration-files) and provides the minimum browsers your application supports. See the [Browserslist spec](https://github.com/browserslist/browserslist) for complete configuration options.
-
-   `browserslist` 配置文件包含在应用的[项目结构中](guide/file-structure#application-configuration-files)，它提供了本应用打算支持的最低浏览器版本。关于完整的配置选项，请参阅 [Browserslist 规范](https://github.com/browserslist/browserslist)。
-
-* TypeScript configuration
-
-  TypeScript 配置
-
-   In the TypeScript configuration file, the "target" option in the `compilerOptions` section determines the ECMAScript target version that the code is compiled to.
-   Modern browsers support ES2015 natively, while ES5 is more commonly used to support legacy browsers.
-
-   在 TypeScript 配置文件中，`compilerOptions` 区的 `target` 选项会决定编译后代码的 ECMAScript 目标版本。现代浏览器原生支持 ES2015，而 ES5 则更常用于支持老式浏览器。
-
-<div class="alert is-helpful">
-
-   Differential loading is currently only supported when using `es2015` as a compilation target. When used with targets higher than `es2015`, the build process emits a warning.
-
-   当前仅在将 `es2015` 用作编译目标时才支持差异化加载。当目标高于 `es2015` 时，构建过程将发出警告。
-
-</div>
-
-For a development build, the output produced by `ng build` is simpler and easier to debug, allowing you to rely less on sourcemaps of compiled code.
-
-对于开发版本，由 `ng build` 生成的输出更简单且易于调试，从而减小你对编译代码的 sourcemaps 的依赖。
-
-For a production build, your configuration determines which bundles are created for deployment of your application.
-When needed, the `index.html` file is also modified during the build process to include script tags that enable differential loading, as shown in the following example.
-
-对于生产版本，你的配置将决定创建哪些捆绑软件来部署你的应用程序。必要时，还会在构建过程中修改 `index.html` 文件，以包括启用差异化加载的脚本标签，如以下范例所示。
-
-<code-example language="html" header="index.html">
-&lt;body>
-  &lt;app-root>&lt;/app-root>
-  &lt;script src="runtime-es2015.js" type="module">&lt;/script>
-  &lt;script src="runtime-es5.js" nomodule>&lt;/script>
-  &lt;script src="polyfills-es2015.js" type="module">&lt;/script>
-  &lt;script src="polyfills-es5.js" nomodule>&lt;/script>
-  &lt;script src="styles-es2015.js" type="module">&lt;/script>
-  &lt;script src="styles-es5.js" nomodule>&lt;/script>
-  &lt;script src="vendor-es2015.js" type="module">&lt;/script>
-  &lt;script src="vendor-es5.js" nomodule>&lt;/script>
-  &lt;script src="main-es2015.js" type="module">&lt;/script>
-  &lt;script src="main-es5.js" nomodule>&lt;/script>
-&lt;/body>
-</code-example>
-
-Each script tag has a `type="module"` or `nomodule` attribute. Browsers with native support for ES modules only load the scripts with the `module` type attribute and ignore scripts with the `nomodule` attribute. Legacy browsers only load the scripts with the `nomodule` attribute, and ignore the script tags with the `module` type that load ES modules.
-
-每个 script 标签都有一个 `type="module"` 或 `nomodule` 属性。原生支持 ES 模块的浏览器只会加载带有该类型属性的脚本，而忽略那些带有 `nomodule` 属性的脚本。而老式浏览器只会加载带有 `nomodule` 属性的脚本，而忽略那些 type 为 `module` 的脚本标签。
-
-<div class="alert is-helpful">
-
-   Some legacy browsers still download both bundles, but only execute the appropriate scripts based on the attributes mentioned above. You can read more on the issue [here](https://github.com/philipwalton/webpack-esnext-boilerplate/issues/1).
-
-  一些旧版浏览器仍会下载两个捆绑包，但只会根据上述属性执行适当的脚本。你可以在[此处](https://github.com/philipwalton/webpack-esnext-boilerplate/issues/1)阅读关于此问题的更多[信息](https://github.com/philipwalton/webpack-esnext-boilerplate/issues/1)。
-
-</div>
-
-### Configuring differential loading
-
-### 配置差异化加载
-
-To include differential loading in your application builds, you must configure the Browserslist and TypeScript configuration files in your application project.
-
-要想在构建应用时包含差异化加载特性，你必须修改项目中的 Browserslist 和 TypeScript 配置文件。
-
-The following examples show a `.browserslistrc` and `tsconfig.json` file for a newly created Angular application. In this configuration, legacy browsers such as IE 9-11 are ignored, and the compilation target is ES2015.
-
-下面的例子展示了新创建的 Angular 应用的 `browserlistrc` 和 `tsconfig.json` 文件。
-在这份配置中，老式浏览器（比如 IE 9-11）都被忽略了，其编译目标是 ES2015。 
-
-<code-example language="none" header=".browserslistrc">
-# This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
-
-# 构建系统使用此文件来调整 CSS 和 JS 输出，以支持下列指定的浏览器。
-
-# For additional information regarding the format and rule options, please see:
-
-# 有关格式和规则选项的其他信息，请参见：
-
-# https://github.com/browserslist/browserslist#queries
-
-# For the full list of supported browsers by the Angular framework, please see:
-
-# 有关 Angular 框架支持的浏览器的完整列表，请参见：
-
-# https://angular.io/guide/browser-support
-
-# You can see what browsers were selected by your queries by running:
-
-# 你可以通过运行以下命令查看你指定的查询选择了哪些浏览器：
-
-#   npx browserslist
-
-last 1 Chrome version
-last 1 Firefox version
-last 2 Edge major versions
-last 2 Safari major versions
-last 2 iOS major versions
-Firefox ESR
-not IE 11 # Angular supports IE 11 only as an opt-in. To opt-in, remove the 'not' prefix on this line.
-</code-example>
-
-<code-example language="json" header="tsconfig.json">
-
-{
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
-  }
-}
-
-</code-example>
-
-<div class="alert is-important">
-
-   To see which browsers are supported and determine which settings meet to your browser support requirements, see the [Browserslist compatibility page](https://browserl.ist/?q=%3E+0.5%25%2C+last+2+versions%2C+Firefox+ESR%2C+not+dead%2C+not+IE+9-11).
-
-   要查看浏览器的支持度，以决定哪些设置适合你要支持的浏览器，请参阅“ [浏览器列表兼容性”页面](https://browserl.ist/?q=%3E+0.5%25%2C+last+2+versions%2C+Firefox+ESR%2C+Chrome+41%2C+not+dead%2C+not+IE+9-11)。
-
-</div>
-
-The Browserslist configuration allows you to ignore browsers without ES2015 support. In this case, a single build is produced.
-
-Browserslist 配置允许你忽略不支持 ES2015 的浏览器。在这种情况下，将只生成一个版本。
-
-If your Browserslist configuration includes support for any legacy browsers, the build target in the TypeScript configuration determines whether the build will support differential loading.
-
-如果你的 Browserslist 配置包括对所有旧版浏览器的支持，则 TypeScript 配置中的构建目标将确定该构建是否将支持差异化加载。
-
-{@a configuration-table }
-
-| Browserslist | ES target | Build result |
-| -------- | -------- | -------- |
-| 浏览器列表 | ES 目标 | 构建结果 |
-| ES5 support disabled | es2015  | Single build, ES5 not required |
-| 禁用 ES5 支持 | es2015  | 单一构建，不行可 ES5 |
-| ES5 support enabled  | es5     | Single build w/conditional polyfills for ES5 only |
-| 启用 ES5 支持  | es5     | 单一构建，按需附带只供 ES5 使用的腻子脚本  |
-| ES5 support enabled  | es2015  | Differential loading (two builds w/conditional polyfills) |
-| 弃用 ES5 支持  | es2015  | 差异化加载 (按需附带两种构建需要的腻子脚本) |
-
-{@a test-and-serve}
-
-## Local development in older browsers
-
-## 旧版浏览器中的本地开发
-
-Differential loading is not enabled by default for application projects that were generated with Angular CLI 10 and above.
-The `ng serve`, `ng test`, and `ng e2e` commands, however, generate a single ES2015 build which cannot run in older browsers that don't support the modules, such as IE 11.
-
-在 Angular CLI 10 或更高版本生成的应用项目中，默认是不启用差异化加载的。
-`ng serve`，`ng test` 和 `ng e2e` 命令只会生成一个 ES2015 版本，该版本无法在不支持该模块的旧版浏览器（例如 IE 11）中运行。
-
-To maintain the benefits of differential loading, however, a better option is to define multiple configurations for `ng serve`, `ng e2e`, and `ng test`.
-
-要保持差异化加载的好处，更好的选择是为 `ng serve`，`ng e2e` 和 `ng test` 定义多个配置。
-
-{@a differential-serve}
-
-
-### Configuring serve for ES5
-
-### 为 ES5 配置服务
-
-To do this for `ng serve`, create a new file, `tsconfig-es5.app.json` next to `tsconfig.app.json` with the following content.
-
-要让 `ng serve` 做到这一点，就要在 `tsconfig.app.json` 后面创建一个新的文件 `tsconfig-es5.app.json`，包含以下内容。
-
-<code-example language="json">
-
-{
- "extends": "./tsconfig.app.json",
- "compilerOptions": {
-     "target": "es5"
-  }
-}
-
-</code-example>
-
-In `angular.json` add two new configuration sections under the `build` and `serve` targets to point to the new TypeScript configuration.
-
-在 `angular.json` 中，在 `build` 和 `serve` 下添加两个新的配置节，其目标指向新的 TypeScript 配置。
-
-<code-example language="json">
-
-"build": {
-  "builder": "@angular-devkit/build-angular:browser",
-  "options": {
-      ...
-  },
-  "configurations": {
-    "production": {
-        ...
-    },
-    "es5": {
-      "tsConfig": "./tsconfig-es5.app.json"
-    }
-  }
-},
-"serve": {
-  "builder": "@angular-devkit/build-angular:dev-server",
-  "options": {
-      ...
-  },
-  "configurations": {
-    "production": {
-     ...
-    },
-    "es5": {
-      "browserTarget": "&lt;app-name&gt;:build:es5"
-    }
-  }
-},
-
-</code-example>
-
-You can then run the `ng serve` command with this configuration. Make sure to replace `<app-name>` (in `"<app-name>:build:es5"`) with the actual name of the app, as it appears under `projects` in `angular.json`. For example, if your application name is `myAngularApp` the configuration will become `"browserTarget": "myAngularApp:build:es5"`.
-
-然后，你可以使用此配置运行 `ng serve` 命令。务必确保将 `<app-name>`（在 `"<app-name>:build:es5"` 中）替换为应用程序的实际名称，因为它也会出现在 `angular.json` 的 `projects` 中。例如，如果你的应用程序名称为 `myAngularApp` 则配置要变成 `"browserTarget": "myAngularApp:build:es5"`。
-
-<code-example language="sh">
-
-ng serve --configuration es5
-
-</code-example>
-
-{@a differential-test}
-
-### Configuring the test command
-
-### 配置 `test` 命令
-
-Create a new file, `tsconfig-es5.spec.json` next to `tsconfig.spec.json` with the following content.
-
-创建一个新的文件，在 `tsconfig.spec.json` 后面 `tsconfig-es5.spec.json`，包含以下内容。
-
-<code-example language="json">
-
-{
- "extends": "./tsconfig.spec.json",
- "compilerOptions": {
-     "target": "es5"
-  }
-}
-
-</code-example>
-
-<code-example language="json">
-
-"test": {
-  "builder": "@angular-devkit/build-angular:karma",
-  "options": {
-      ...
-  },
-  "configurations": {
-    "es5": {
-      "tsConfig": "./tsconfig-es5.spec.json"
-    }
-  }
-},
-
-</code-example>
-
-You can then run the tests with this configuration
-
-然后，你可以使用此配置运行测试了
-
-<code-example language="sh">
-
-ng test --configuration es5
-
-</code-example>
+与可以只在一个地方定义的 `base href` 不同， `deploy url` 需要在构建时硬编码到应用程序中。这意味着指定 `deploy url` 会降低构建速度，但这是使用在整个应用程序中嵌入自己的选项的代价。这也是为什么说 `base href` 通常是更好的选择。

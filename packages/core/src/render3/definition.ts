@@ -17,16 +17,12 @@ import {initNgDevMode} from '../util/ng_dev_mode';
 import {stringify} from '../util/stringify';
 import {NG_COMP_DEF, NG_DIR_DEF, NG_LOC_ID_DEF, NG_MOD_DEF, NG_PIPE_DEF} from './fields';
 import {ComponentDef, ComponentDefFeature, ComponentTemplate, ComponentType, ContentQueriesFunction, DirectiveDef, DirectiveDefFeature, DirectiveTypesOrFactory, HostBindingsFunction, PipeDef, PipeTypesOrFactory, ViewQueriesFunction} from './interfaces/definition';
-import {AttributeMarker, TAttributes, TConstantsOrFactory} from './interfaces/node';
-import {CssSelectorList, SelectorFlags} from './interfaces/projection';
+import {TAttributes, TConstantsOrFactory} from './interfaces/node';
+import {CssSelectorList} from './interfaces/projection';
 
 
 let _renderCompCount = 0;
 
-// While these types are unused here, they are required so that types don't
-// get resolved lazily. see: https://github.com/Microsoft/web-build-tools/issues/1050
-type _web_build_tools_issue_1050_SelectorFlags = SelectorFlags;
-type _web_build_tools_issue_1050_AttributeMarker = AttributeMarker;
 
 /**
  * Create a component definition object.
@@ -410,22 +406,22 @@ export function ɵɵdefineNgModule<T>(def: {
   /** Unique ID for the module that is used with `getModuleFactory`. */
   id?: string | null;
 }): unknown {
-  const res: NgModuleDef<T> = {
-    type: def.type,
-    bootstrap: def.bootstrap || EMPTY_ARRAY,
-    declarations: def.declarations || EMPTY_ARRAY,
-    imports: def.imports || EMPTY_ARRAY,
-    exports: def.exports || EMPTY_ARRAY,
-    transitiveCompileScopes: null,
-    schemas: def.schemas || null,
-    id: def.id || null,
-  };
-  if (def.id != null) {
-    noSideEffects(() => {
+  return noSideEffects(() => {
+    const res: NgModuleDef<T> = {
+      type: def.type,
+      bootstrap: def.bootstrap || EMPTY_ARRAY,
+      declarations: def.declarations || EMPTY_ARRAY,
+      imports: def.imports || EMPTY_ARRAY,
+      exports: def.exports || EMPTY_ARRAY,
+      transitiveCompileScopes: null,
+      schemas: def.schemas || null,
+      id: def.id || null,
+    };
+    if (def.id != null) {
       autoRegisterModuleById[def.id!] = def.type as unknown as NgModuleType;
-    });
-  }
-  return res;
+    }
+    return res;
+  });
 }
 
 /**

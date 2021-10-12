@@ -3,9 +3,9 @@
 # 在父子指令及组件之间共享数据
 
 A common pattern in Angular is sharing data between a parent component and one or more child components.
-You can implement this pattern by using the `@Input()` and `@Output()` directives.
+Implement this pattern with the `@Input()` and `@Output()` decorators.
 
-Angular 中的一个常见模式就是在父组件和一个或多个子组件之间共享数据。你可以用 `@Input()` 和 `@Output()` 来实现这个模式。
+Angular 中的一个常见模式就是在父组件和一个或多个子组件之间共享数据。可以用 `@Input()` 和 `@Output()` 来实现这个模式。
 
 <div class="alert is-helpful">
 
@@ -30,8 +30,8 @@ The `<parent-component>` serves as the context for the `<child-component>`.
 `<parent-component>` 充当了 `<child-component>` 的上下文。
 
 `@Input()` and `@Output()` give a child component a way to communicate with its parent component.
-`@Input()` allows a parent component to update data in the child component.
-Conversely, `@Output()` allows the child to send data to a parent component.
+`@Input()` lets a parent component update data in the child component.
+Conversely, `@Output()` lets the child send data to a parent component.
 
 `@Input()` 和 `@Output()` 为子组件提供了一种与其父组件通信的方法。 `@Input()` 允许父组件更新子组件中的数据。相反，`@Output()` 允许子组件向父组件发送数据。
 
@@ -122,10 +122,10 @@ The binding source, the part to the right of the equal sign, is the data that th
 
 ### 监视 `@Input()` 的变更
 
-To watch for changes on an `@Input()` property, you can use `OnChanges`, one of Angular's [lifecycle hooks](guide/lifecycle-hooks).
+To watch for changes on an `@Input()` property, use `OnChanges`, one of Angular's [lifecycle hooks](guide/lifecycle-hooks).
 See the [`OnChanges`](guide/lifecycle-hooks#onchanges) section of the [Lifecycle Hooks](guide/lifecycle-hooks) guide for more details and examples.
 
-要想监视 `@Input()` 属性的变化，你可以使用 Angular 的[生命周期钩子](guide/lifecycle-hooks)`OnChanges` 。更多详情和范例，请参阅[生命周期钩子](guide/lifecycle-hooks) 一章的 [`OnChanges`](guide/lifecycle-hooks#onchanges)部分。
+要想监视 `@Input()` 属性的变化，可以用 Angular 的[生命周期钩子](guide/lifecycle-hooks)`OnChanges` 。更多详情和范例，请参阅[生命周期钩子](guide/lifecycle-hooks) 一章的 [`OnChanges`](guide/lifecycle-hooks#onchanges)部分。
 
 {@a output}
 
@@ -133,7 +133,7 @@ See the [`OnChanges`](guide/lifecycle-hooks#onchanges) section of the [Lifecycle
 
 ## 把数据发送到父组件
 
-The `@Output()` decorator in a child component or directive allows data to flow from the child to the parent.
+The `@Output()` decorator in a child component or directive lets data flow from the child to the parent.
 
 子组件或指令中的 `@Output()` 装饰器允许数据从子组件传给父组件。
 
@@ -182,7 +182,7 @@ The following example features an `<input>` where a user can enter a value and c
 
   <code-example path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output" header="src/app/item-output/item-output.component.ts"></code-example>
 
-  The different parts of the above declaration are as follows:
+  The different parts of the preceding declaration are as follows:
 
   上述声明中的差异点如下：
 
@@ -274,7 +274,7 @@ The `addItem()` method takes an argument in the form of a string and then adds t
 
   `$event` 中包含用户在子组件模板上的 `<input>` 中键入的数据。
 
-   To see the `@Output()` working, you can add the following to the parent's template:
+   To see the `@Output()` working, add the following to the parent's template:
 
    要了解 `@Output()` 的工作方式，你可以把以下内容添加到父组件的模板中：
 
@@ -293,9 +293,9 @@ The `addItem()` method takes an argument in the form of a string and then adds t
 
 ## 同时使用 `@Input()` 和 `@Output()`
 
-You can use `@Input()` and `@Output()` on the same child component as follows:
+Use `@Input()` and `@Output()` on the same child component as follows:
 
-你可以在同一个子组件上使用 `@Input()` 和 `@Output()`，范例如下：
+可以在同一个子组件上使用 `@Input()` 和 `@Output()`，范例如下：
 
 <code-example path="inputs-outputs/src/app/app.component.html" region="together" header="src/app/app.component.html"></code-example>
 
@@ -322,3 +322,5 @@ To combine property and event bindings using the banana-in-a-box
 syntax, `[()]`, see [Two-way Binding](guide/two-way-binding).
 
 要想用“盒子里的香蕉” `[()]` 语法来组合属性和事件绑定，参阅[双向绑定](guide/two-way-binding)。
+
+@reviewed 2021-09-17

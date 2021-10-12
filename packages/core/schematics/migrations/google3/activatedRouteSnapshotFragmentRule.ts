@@ -7,12 +7,12 @@
  */
 
 import {Replacement, RuleFailure, Rules} from 'tslint';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {findFragmentAccesses, migrateActivatedRouteSnapshotFragment} from '../activated-route-snapshot-fragment/util';
 
 export class Rule extends Rules.TypedRule {
-  applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
+  override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     if (sourceFile.isDeclarationFile || program.isSourceFileFromExternalLibrary(sourceFile)) {
       return [];
     }

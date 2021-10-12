@@ -138,7 +138,7 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    * `BaseControlValueAccessor` class.
    * @nodoc
    */
-  onChange = () => {};
+  override onChange = () => {};
 
   /**
    * @description
@@ -207,7 +207,7 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    *
    * @nodoc
    */
-  registerOnChange(fn: (_: any) => {}): void {
+  override registerOnChange(fn: (_: any) => {}): void {
     this._fn = fn;
     this.onChange = () => {
       fn(this.value);

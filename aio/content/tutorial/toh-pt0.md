@@ -2,7 +2,7 @@
 
 # 应用的外壳
 
-You begin by creating an initial application using the Angular CLI. Throughout this tutorial, you’ll modify and extend that starter application to create the Tour of Heroes app.
+You begin by creating an initial application using the Angular CLI. Throughout this tutorial, you’ll modify and extend that starter application to create the Tour of Heroes application.
 
 首先，使用 Angular CLI 来创建最初的应用程序。
 在本教程中，你将修改并扩展这个入门级的应用程序，以创建出《英雄之旅》应用。
@@ -15,7 +15,7 @@ In this part of the tutorial, you'll do the following:
 
    设置开发环境。
 
-2. Create a new workspace and initial app project.
+2. Create a new workspace and initial application project.
 
    创建新的工作区，并初始化应用项目。
 
@@ -29,7 +29,7 @@ In this part of the tutorial, you'll do the following:
 
 <div class="alert is-helpful">
 
-  For the sample app that this page describes, see the <live-example></live-example>.
+  For the sample application that this page describes, see the <live-example></live-example>.
 
   要查看本页所讲的范例程序，请参阅<live-example></live-example>。
 
@@ -47,13 +47,13 @@ To set up your development environment, follow the instructions in [Local Enviro
 
 ## 创建新的工作区和一个初始应用
 
-You develop apps in the context of an Angular [workspace](guide/glossary#workspace). A workspace contains the files for one or more [projects](guide/glossary#project). A project is the set of files that comprise an app, a library, or end-to-end (e2e) tests. For this tutorial, you will create a new workspace.
+You develop applications in the context of an Angular [workspace](guide/glossary#workspace). A workspace contains the files for one or more [projects](guide/glossary#project). A project is the set of files that comprise an application or a library. For this tutorial, you will create a new workspace.
 
 Angular 的[工作区](guide/glossary#workspace)就是你开发应用所在的上下文环境。一个工作区包含一个或多个[项目](guide/glossary#project)所需的文件。
 每个项目都是一组由应用、库或端到端（e2e）测试组成的文件集合。
 在本教程中，你将创建一个新的工作区。
 
-To create a new workspace and an initial app project:
+To create a new workspace and an initial application project:
 
 要想创建一个新的工作区和一个初始应用项目，需要：
 
@@ -69,7 +69,7 @@ To create a new workspace and an initial app project:
   ng new angular-tour-of-heroes
 </code-example> 
 
-  3. The `ng new` command prompts you for information about features to include in the initial app project. Accept the defaults by pressing the Enter or Return key.
+  3. The `ng new` command prompts you for information about features to include in the initial application project. Accept the defaults by pressing the Enter or Return key.
 
      `ng new` 命令会提示你输入要在初始应用项目中包含哪些特性，请按 Enter 或 Return 键接受其默认值。
 
@@ -85,19 +85,15 @@ It also creates the following workspace and starter project files:
 
     新的工作区，其根目录名叫 `angular-tour-of-heroes`。
 
-  * An initial skeleton app project, also called `angular-tour-of-heroes` (in the `src` subfolder).
+  * An initial skeleton app project in the `src/app` subfolder.
 
-    一个最初的骨架应用项目，同样叫做 `angular-tour-of-heroes`（位于 `src` 子目录下）。
-
-  * An end-to-end test project (in the e2e subfolder).
-
-    一个端到端测试项目（位于 e2e 子目录下）。
+    一个最初的骨架应用项目，位于 `src/app` 子目录下。
 
   * Related configuration files.
 
     相关的配置文件。
 
-The initial app project contains a simple Welcome app, ready to run.
+The initial app project contains a simple Welcome application, ready to run.
 
 初始应用项目是一个简单的 "欢迎" 应用，随时可以运行它。
 
@@ -117,7 +113,7 @@ Go to the workspace directory and launch the application.
 <div class="alert is-helpful">
 
 The `ng serve` command builds the app, starts the development server,
-watches the source files, and rebuilds the app as you make changes to those files.
+watches the source files, and rebuilds the application as you make changes to those files.
 
 `ng serve` 命令会构建本应用、启动开发服务器、监听源文件，并且当那些文件发生变化时重新构建本应用。
 
@@ -127,7 +123,7 @@ The `--open` flag opens a browser to `http://localhost:4200/`.
 
 </div>
 
-You should see the app running in your browser.
+You should see the application running in your browser.
 
 你会发现本应用正运行在浏览器中。
 
@@ -151,7 +147,7 @@ They display data on the screen, listen for user input, and take action based on
 
 ## 修改应用标题
 
-Open the project in your favorite editor or IDE and navigate to the `src/app` folder to make some changes to the starter app.
+Open the project in your favorite editor or IDE and navigate to the `src/app` folder to make some changes to the starter application.
 
 用你最喜欢的编辑器或 IDE 打开这个项目，并访问 `src/app` 目录，来对这个起始应用做一些修改。
 
@@ -256,6 +252,6 @@ Here are the code files discussed on this page.
 
    你学会了使用 Angular 组件来显示数据。
 
-* You used the double curly braces of interpolation to display the app title.
+* You used the double curly braces of interpolation to display the application title.
 
    你使用双花括号插值显示了应用标题。

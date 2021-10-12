@@ -58,7 +58,7 @@ Pass it to the `RouterModule.forRoot()` method in the module `imports` to config
 
 Each `Route` maps a URL `path` to a component.
 There are no leading slashes in the path.
-The router parses and builds the final URL for you, which allows you to use both relative and absolute paths when navigating between application views.
+The router parses and builds the final URL for you, which lets you use both relative and absolute paths when navigating between application views.
 
 每个 `Route` 都会把一个 URL `path` 映射到一个组件。路径中没有前导斜杠。路由器会为你解析并构建最终的 URL，这样你就可以在应用视图中导航时使用相对路径和绝对路径了。
 
@@ -71,9 +71,9 @@ The corresponding `HeroDetailComponent` uses that value to find and present the 
 The `data` property in the third route is a place to store arbitrary data associated with
 this specific route.
 The data property is accessible within each activated route. Use it to store items such as page titles, breadcrumb text, and other read-only, static data.
-You can use the [resolve guard](guide/router-tutorial-toh#resolve-guard) to retrieve dynamic data.
+Use the [resolve guard](guide/router-tutorial-toh#resolve-guard) to retrieve dynamic data.
 
-第三个路由中的 `data` 属性是存放与该特定路由关联的任意数据的地方。每个激活的路由都可以访问 `data` 属性。可以用它来存储页面标题，面包屑文本和其它只读静态数据等项目。你可以尝试使用[解析器守卫](guide/router-tutorial-toh#resolve-guard)来检索动态数据。
+第三个路由中的 `data` 属性是存放与该特定路由关联的任意数据的地方。每个激活的路由都可以访问 `data` 属性。可以用它来存储页面标题，面包屑文本和其它只读静态数据等项目。可以用[解析器守卫](guide/router-tutorial-toh#resolve-guard)来检索动态数据。
 
 The empty path in the fourth route represents the default path for the application&mdash;the place to go when the path in the URL is empty, as it typically is at the start.
 This default route redirects to the route for the `/heroes` URL and, therefore, displays the `HeroesListComponent`.
@@ -105,7 +105,7 @@ display the components for that outlet.
 
 </code-example>
 
-Given the configuration above, when the browser URL for this application becomes `/heroes`, the router matches that URL to the route path `/heroes` and displays the `HeroListComponent` as a sibling element to the `RouterOutlet` that you've placed in the host component's template.
+Given the preceding configuration, when the browser URL for this application becomes `/heroes`, the router matches that URL to the route path `/heroes` and displays the `HeroListComponent` as a sibling element to the `RouterOutlet` that you've placed in the host component's template.
 
 对于上面的配置，当这个应用的浏览器 URL 变为 `/heroes` 时，路由器就会把这个 URL 与路由路径 `/heroes` 匹配，并把 `HeroListComponent` 作为兄弟元素显示在宿主组件模板中的 `RouterOutlet` 下方。
 
@@ -152,14 +152,14 @@ On each anchor tag, you see a [property binding](guide/property-binding) to the 
 在每个 a 标签上，你会看到一个到 `RouterLinkActive` 指令的[属性绑定](guide/property-binding)，就像 `routerLinkActive="..."`。
 
 The template expression to the right of the equal sign, `=`, contains a space-delimited string of CSS classes that the Router adds when this link is active (and removes when the link is inactive).
-You set the `RouterLinkActive` directive to a string of classes such as `[routerLinkActive]="'active fluffy'"` or bind it to a component property that returns such a string.
+You set the `RouterLinkActive` directive to a string of classes such as `routerLinkActive="active fluffy"` or bind it to a component property that returns such a string (for example, `[routerLinkActive]="someStringProperty"`).
 
-等号 `=` 右侧的模板表达式，包含一个以空格分隔的 CSS 类字符串，当这个链接处于活动状态时，路由器就会加上这些字符串（并在非活动状态时删除）。你可以把 `RouterLinkActive` 指令设置成一串类的字符串，比如 `[routerLinkActive]="'active fluffy'"`，也可以把它绑定到一个返回这样一个字符串的组件属性上。
+等号 `=` 右侧的模板表达式，包含一个以空格分隔的 CSS 类字符串，当这个链接处于活动状态时，路由器就会加上这些字符串（并在非活动状态时删除）。你可以把 `RouterLinkActive` 指令设置成一串类的字符串，比如 `routerLinkActive="active fluffy"`，也可以把它绑定到一个返回这样一个字符串的组件属性上，比如 `[routerLinkActive]="someStringProperty"`。
 
 Active route links cascade down through each level of the route tree, so parent and child router links can be active at the same time.
-To override this behavior, you can bind to the `[routerLinkActiveOptions]` input binding with the `{ exact: true }` expression. By using `{ exact: true }`, a given `RouterLink` will only be active if its URL is an exact match to the current URL.
+To override this behavior, bind to the `[routerLinkActiveOptions]` input binding with the `{ exact: true }` expression. By using `{ exact: true }`, a given `RouterLink` is only active if its URL is an exact match to the current URL.
 
-活动路由链接会级联到路由树的每个级别，这样父路由和子路由链接就可以同时处于活动状态。要覆盖这种行为，你可以用 `{ exact: true }` 表达式绑定到 `[routerLinkActiveOptions]` 输入绑定。使用 `{ exact: true }` 之后，给定的 `RouterLink` 只有在 URL 与当前 URL 完全匹配时才会激活。
+活动路由链接会级联到路由树的每个级别，这样父路由和子路由链接就可以同时处于活动状态。要覆盖这种行为，可以用 `{ exact: true }` 表达式绑定到 `[routerLinkActiveOptions]` 输入绑定。使用 `{ exact: true }` 之后，给定的 `RouterLink` 只有在 URL 与当前 URL 完全匹配时才会激活。
 
 {@a basics-router-state}
 
@@ -233,7 +233,19 @@ Also contains any resolved values from the [resolve guard](guide/router-tutorial
 也包含任何由[解析守卫](guide/router-tutorial-toh#resolve-guard)解析出的值。
 
 </td>
+</tr>
 
+  <tr>
+    <td>
+      <code>params</code>
+    </td>
+    <td>
+
+    An `Observable` that contains the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route.
+
+    `Observable` 可以包含此路由的必选和[可选参数](guide/router-tutorial-toh#optional-route-parameters)。
+
+    </td>
   </tr>
 
   <tr>
@@ -266,6 +278,19 @@ The map supports retrieving single and multiple values from the query parameter.
 
 </td>
 
+  </tr>
+
+  <tr>
+    <td>
+      <code>queryParams</code>
+    </td>
+    <td>
+
+    An `Observable` that contains the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes.
+
+    `Observable` 可以包含对所有路由都可用的[查询参数](guide/router-tutorial-toh#query-parameters)。
+
+    </td>
   </tr>
 
   <tr>
@@ -355,29 +380,12 @@ Contains all the [child routes](guide/router-tutorial-toh#child-routing-componen
   </tr>
 </table>
 
-<div class="alert is-helpful">
-
-Two older properties are still available; however, their replacements are preferable as they may be deprecated in a future Angular version.
-
-还有两个较旧的属性，但更推荐使用它们的替代品，因为它们可能会在以后的 Angular 版本中弃用。
-
-* `params`: An `Observable` that contains the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route. Use `paramMap` instead.
-
-  `params` ：一个 `Observable`，它包含专属于该路由的必要参数和[可选参数](guide/router-tutorial-toh#optional-route-parameters)。请改用 `paramMap`。
-
-* `queryParams`: An `Observable` that contains the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes.
-  Use `queryParamMap` instead.
-
-  `queryParams`：一个包含可用于所有路由的[查询参数](guide/router-tutorial-toh#query-parameters)的 `Observable`。请改用 `queryParamMap`。
-
-</div>
-
 ### Router events
 
 ### 路由器事件
 
 During each navigation, the `Router` emits navigation events through the `Router.events` property.
-These events range from when the navigation starts and ends to many points in between. The full list of navigation events is displayed in the table below.
+These events range from when the navigation starts and ends to many points in between. The full list of navigation events is displayed in the following table.
 
 `Router` 在每次导航过程中都会通过 `Router.events` 属性发出导航事件。这些事件的范围贯穿从导航开始和结束之间的多个时间点。导航事件的完整列表如下表所示。
 

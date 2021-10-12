@@ -29,8 +29,7 @@ following products on your development machine:
 
 * [Yarn](https://yarnpkg.com) (version specified in the engines field of [`package.json`](../package.json)) which is used to install dependencies.
 
-* [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) which is used
-  to execute the selenium standalone server for e2e testing.
+* Optional: [Java](https://openjdk.java.net/) version 7 or higher as required by [Closure Compiler](https://developers.google.com/closure/compiler). Most developers will not need this. Java is required for running some of the integration tests.
 
 ## Getting the Sources
 
@@ -92,6 +91,17 @@ merged if the code is formatted properly and all tests are passing.
 
 <a name="formatting-your-source-code">
 <a name="clang-format"></a>
+
+### Testing changes against a local library/project
+
+Often for developers the best way to ensure the changes they have made work as expected is to run
+use changes in another library or project. To do this developers can build Angular locally, and
+using `yarn link` build a local project with the created artifacts.
+
+This can be done by running:
+```sh
+yarn ng-dev build-and-link <path-to-local-project-root>
+```
 
 ## Formatting your source code
 

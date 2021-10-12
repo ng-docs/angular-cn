@@ -277,9 +277,13 @@ export interface NgModule {
    *
    * [入口组件](guide/entry-components)
    *
-   * @deprecated Since 9.0.0. With Ivy, this property is no longer necessary.
+   * @deprecated
+   * Since 9.0.0. With Ivy, this property is no longer necessary.
+   * (You may need to keep these if building a library that will be consumed by a View Engine
+   * application.)
    *
    * 从 9.0.0 开始。使用 Ivy，不再需要此属性。
+   * （如果你在构建库，可能需要保留这些，因为它可能被 View Engine 应用所消费。）
    *
    */
   entryComponents?: Array<Type<any>|any[]>;
@@ -313,9 +317,8 @@ export interface NgModule {
   schemas?: Array<SchemaMetadata|any[]>;
 
   /**
-   * A name or path that uniquely identifies this NgModule in `getModuleFactory`.
-   * If left `undefined`, the NgModule is not registered with
-   * `getModuleFactory`.
+   * A name or path that uniquely identifies this NgModule in `getNgModuleById`.
+   * If left `undefined`, the NgModule is not registered with `getNgModuleById`.
    *
    * 当前 NgModule 在 `getModuleFactory` 中的名字或唯一标识符。
    * 如果为 `undefined`，则该模块不会被注册进 `getModuleFactory` 中。

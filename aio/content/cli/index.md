@@ -55,8 +55,8 @@ cd my-first-project
 ng serve
 </code-example>
 
-In your browser, open http://localhost:4200/ to see the new app run.
-When you use the [ng serve](cli/serve) command to build an app and serve it locally, the server automatically rebuilds the app and reloads the page when you change any of the source files.
+In your browser, open http://localhost:4200/ to see the new application run.
+When you use the [ng serve](cli/serve) command to build an application and serve it locally, the server automatically rebuilds the application and reloads the page when you change any of the source files.
 
 在浏览器中，打开 <http://localhost:4200/> 查看运行效果。
 当你使用 [ng serve](cli/serve) 命令来构建应用并在本地启动开发服务器时，服务器会自动重新构建此应用，并在修改源码时重新加载此页面。
@@ -77,25 +77,25 @@ If the current working directory is not the right place for your project, you ca
 
 ## 工作区与项目文件
 
-The [ng new](cli/new) command creates an *Angular workspace* folder and generates a new app skeleton.
-A workspace can contain multiple apps and libraries.
-The initial app created by the [ng new](cli/new) command is at the top level of the workspace.
-When you generate an additional app or library in a workspace, it goes into a `projects/` subfolder.
+The [ng new](cli/new) command creates an *Angular workspace* folder and generates a new application skeleton.
+A workspace can contain multiple applications and libraries.
+The initial application created by the [ng new](cli/new) command is at the top level of the workspace.
+When you generate an additional application or library in a workspace, it goes into a `projects/` subfolder.
 
 [ng new](cli/new) 命令会创建一个 *Angular 工作区*目录，并生成一个新的应用骨架。
 每个工作区中可以包含多个应用和库。
 由 [ng new](cli/new) 命令创建的初始应用位于工作区的顶层。
 你在工作区中生成的其它应用或库，会放在 `projects/` 子目录下。
 
-A newly generated app contains the source files for a root module, with a root component and template.
-Each app has a `src` folder that contains the logic, data, and assets.
+A newly generated application contains the source files for a root module, with a root component and template.
+Each application has a `src` folder that contains the logic, data, and assets.
 
 新生成的应用中包含根模块的源码，还有根组件和模板。
 每个应用都有一个 `src` 目录，其中包含逻辑、数据和静态文件。
 
 You can edit the generated files directly, or add to and modify them using CLI commands.
 Use the [ng generate](cli/generate) command to add new files for additional components and services, and code for new pipes, directives, and so on.
-Commands such as [add](cli/add) and [generate](cli/generate), which create or operate on apps and libraries, must be executed from within a workspace or project folder.
+Commands such as [add](cli/add) and [generate](cli/generate), which create or operate on applications and libraries, must be executed from within a workspace or project folder.
 
 你可以直接编辑这些生成的文件，也可以使用 CLI 命令来添加或修改它们。
 使用 [ng generate](cli/generate) 命令也可以添加其它组件和服务，以及管道、指令的源码等。

@@ -2,8 +2,8 @@
 
 # 文本插值
 
-Text interpolation allows you to incorporate dynamic string values into your HTML templates.
-With interpolation, you can dynamically change what appears in an application view, such as displaying a custom greeting that includes the user's name.
+Text interpolation lets you incorporate dynamic string values into your HTML templates.
+Use interpolation to dynamically change what appears in an application view, such as displaying a custom greeting that includes the user's name.
 
 文本插值允许你将动态字符串值合并到 HTML 模板中。通过插值，你可以动态更改应用视图中显示的内容，例如显示包含用户名的自定义问候语。
 
@@ -30,9 +30,9 @@ To illustrate how interpolation works, consider an Angular component that contai
 
 <code-example path="interpolation/src/app/app.component.ts" region="customer" header="src/app/app.component.ts"></code-example>
 
-You can use interpolation to display the value of this variable in the corresponding component template:
+Use interpolation to display the value of this variable in the corresponding component template:
 
-你可以使用插值在相应的组件模板中显示此变量的值：
+可以用插值在相应的组件模板中显示此变量的值：
 
 <code-example path="interpolation/src/app/app.component.html" region="interpolation-example1" header="src/app/app.component.html"></code-example>
 
@@ -97,7 +97,7 @@ With interpolation, Angular performs the following tasks:
 
 <div class="alert is-helpful">
 
-You can configure the interpolation delimiter with the [interpolation](api/core/Component#interpolation) option in the `@Component()` metadata.
+Configure the interpolation delimiter with the [interpolation](api/core/Component#interpolation) option in the `@Component()` metadata.
 
 如果你想用别的分隔符来代替 `{{` 和 `}}`，也可以通过 `@Component()` 元数据中的 [interpolation](api/core/Component#interpolation) 选项来配置插值分隔符。
 
@@ -241,9 +241,9 @@ When using template expressions, follow these best practices:
   **使用短表达式**
 
   Use property names or method calls whenever possible.
-  Keep application and business logic in the component, where it is easier to develop and test.
+  Keep application and business logic in the component, where it is accessible to develop and test.
 
-  尽可能使用属性名称或方法调用。将应用和业务逻辑保留在易于开发和测试的组件中。
+  尽可能使用属性名称或方法调用。将应用和业务逻辑保留在组件中，这里更便于开发和测试。
 
 * **Quick execution**
 

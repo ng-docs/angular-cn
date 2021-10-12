@@ -47,7 +47,7 @@ To create a component, verify that you have met the following prerequisites:
    [安装 Angular CLI](guide/setup-local#install-the-angular-cli)。
 
 1. [Create an Angular workspace](guide/setup-local#create-a-workspace-and-initial-application) with initial application.
-   If you don't have a project, you can create one using `ng new <project-name>`, where `<project-name>` is the name of your Angular application.
+   If you don't have a project, create one using `ng new <project-name>`, where `<project-name>` is the name of your Angular application.
 
    [创建一个带有初始项目的 Angular 工作区](guide/setup-local#create-a-workspace-and-initial-application)。如果还没有项目，你可以用 `ng new <project-name>` 创建一个，其中 `<project-name>` 是你的 Angular 应用的名字。
 
@@ -55,7 +55,7 @@ To create a component, verify that you have met the following prerequisites:
 
 ## 创建一个组件
 
-The easiest way to create a component is with the Angular CLI. You can also create a component manually.
+The best way to create a component is with the Angular CLI. You can also create a component manually.
 
 Angular CLI 是用来创建组件的最简途径。你也可以手动创建一个组件。
 
@@ -116,10 +116,10 @@ For more information, see [ng generate component](cli/generate#component-command
 
 ### 手动创建组件
 
-Although the Angular CLI is the easiest way to create an Angular component, you can also create a component manually.
+Although the Angular CLI is the best way to create an Angular component, you can also create a component manually.
 This section describes how to create the core component file within an existing Angular project.
 
-虽然 Angular CLI 是创建 Angular 组件的最简途径，但你也可以手动创建一个组件。本节将介绍如何在现有的 Angular 项目中创建核心组件文件。
+虽然 Angular CLI 是创建 Angular 组件的最佳途径，但你也可以手动创建一个组件。本节将介绍如何在现有的 Angular 项目中创建核心组件文件。
 
 To create a new component manually:
 
@@ -219,9 +219,9 @@ Specify a component's selector by adding a `selector` statement to the `@Compone
 ## 定义一个组件的模板
 
 A template is a block of HTML that tells Angular how to render the component in your application.
-You can define a template for your component in one of two ways: by referencing an external file, or directly within the component.
+Define a template for your component in one of two ways: by referencing an external file, or directly within the component.
 
-模板是一段 HTML，它告诉 Angular 如何在应用中渲染组件。你可以通过以下两种方式之一为组件定义模板：引用外部文件，或直接写在组件内部。
+模板是一段 HTML，它告诉 Angular 如何在应用中渲染组件。可以通过以下两种方式之一为组件定义模板：引用外部文件，或直接写在组件内部。
 
 To define a template as an external file, add a `templateUrl` property to the `@Component` decorator.
 
@@ -241,10 +241,10 @@ To define a template within the component, add a `template` property to the `@Co
     region="template">
 </code-example>
 
-If you want your template to span multiple lines, you can use backticks (<code> ` </code>).
+If you want your template to span multiple lines, use backticks (<code> ` </code>).
 For example:
 
-如果你想让你的模板跨越多行，你可以使用反引号（ `` ` `` ）。例如：
+如果你想让模板跨越多行，可以使用反引号（ `` ` `` ）。例如：
 
 <code-example
     path="component-overview/src/app/component-overview/component-overview.component.2.ts"
@@ -263,9 +263,9 @@ Angular 组件需要一个用 `template` 或 `templateUrl` 定义的模板。但
 
 ## 声明组件的样式
 
-You can declare component styles uses for its template in one of two ways: by referencing an external file, or directly within the component.
+Declare component styles uses for its template in one of two ways: by referencing an external file, or directly within the component.
 
-你有以下两种方式来为组件的模板声明样式：引用一个外部文件，或直接写在组件内部。
+有两种方式可以为组件的模板声明样式：引用一个外部文件，或直接写在组件内部。
 
 To declare the styles for a component in a separate file, add a `styleUrls` property to the `@Component` decorator.
 
@@ -297,7 +297,7 @@ The `styles` property takes an array of strings that contain the CSS rule declar
 
   关于组件的体系结构概述，请参阅[组件和模板简介](guide/architecture-components)。
 
-* For additional options you can use when creating a component, see [Component](api/core/Component) in the API Reference.
+* For additional options to use when creating a component, see [Component](api/core/Component) in the API Reference.
 
   关于创建组件时可以使用的其他选项，请参阅“API 参考手册”中的[“组件”](api/core/Component)。
 

@@ -17,15 +17,16 @@ Learn more about the [Compiler](https://www.youtube.com/watch?v=anphffaCZrQ) and
 </div>
 
 {@a aot-and-ivy}
+
 ## AOT and Ivy
 
 ## AOT 和 Ivy
 
 AOT compilation with Ivy is faster and should be used by default.
 In the `angular.json` workspace configuration file, set the default build options for your project to always use AOT compilation.
-When using application internationalization (i18n) with Ivy, [translation merging](guide/i18n#merge) also requires the use of AOT compilation.
+When using application internationalization (i18n) with Ivy, [translation merging][AioGuideI18nCommonMerge] also requires the use of AOT compilation.
 
-使用 Ivy 的 AOT 编译速度更快，应该默认使用。在 `angular.json` 工作区配置文件中，将项目的默认构建选项设置为始终使用 AOT 编译。在 Ivy 中使用应用程序国际化（i18n）时，[翻译合并](guide/i18n#merge)还需要使用 AOT 编译。
+使用 Ivy 的 AOT 编译速度更快，应该默认使用。在 `angular.json` 工作区配置文件中，将项目的默认构建选项设置为始终使用 AOT 编译。在 Ivy 中使用应用程序国际化（i18n）时，[翻译合并][AioGuideI18nCommonMerge]还需要使用 AOT 编译。
 
 <code-example language="json" header="angular.json">
 
@@ -43,6 +44,7 @@ When using application internationalization (i18n) with Ivy, [translation mergin
     }
   }
 }
+
 </code-example>
 
 ## Ivy and libraries
@@ -60,6 +62,7 @@ For more information on how to publish libraries see [Publishing your Library](g
 要了解关于如何发布库的知识，参阅[发布库](guide/creating-libraries#publishing-your-library)部分。
 
 {@a maintaining-library-compatibility}
+
 ### Maintaining library compatibility
 
 ### 保持库的兼容性
@@ -75,6 +78,7 @@ When you use the tools integrated into the Angular CLI or `ng-packagr`, your lib
 关于如何编译或打包 Angular 库的更多信息，请参阅[创建库](guide/creating-libraries)指南。当你使用 Angular CLI 或 `ng-packagr` 集成的工具时，将始终以正确的方式自动构建你的库。
 
 {@a ivy-and-universal-app-shell}
+
 ## Ivy and Universal/App shell
 
 ## Ivy 和 Universal / App shell
@@ -89,11 +93,13 @@ You can run `ngcc` after each installation of node_modules by adding a `postinst
 你可以在每次安装 `ngcc` 后通过添加 `postinstall` [npm 脚本](https://docs.npmjs.com/misc/scripts)来运行 `ngcc` ：
 
 <code-example language="json" header="package.json">
+
 {
   "scripts": {
     "postinstall": "ngcc"
   }
 }
+
 </code-example>
 
 <div class="alert is-important">
@@ -102,10 +108,10 @@ You can run `ngcc` after each installation of node_modules by adding a `postinst
  *Don't use `--create-ivy-entry-points` as this will cause Node not to resolve the Ivy version of the packages correctly.
 
    不要使用 `--create-ivy-entry-points` 因为这将导致 Node 无法正确解析软件包的 Ivy 版本。
-
 </div>
 
 {@a opting-out-of-angular-ivy}
+
 ## Opting out of Ivy in version 9
 
 ## 选择性禁用版本 9 中的 Ivy
@@ -136,6 +142,7 @@ The following example shows how to set the `enableIvy` option to `false` in orde
 以下范例显示了如何将 `enableIvy` 选项设置为 `false` 以便选择性的禁用 Ivy。
 
 <code-example language="json" header="tsconfig.app.json">
+
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
@@ -153,6 +160,7 @@ The following example shows how to set the `enableIvy` option to `false` in orde
     "enableIvy": false
   }
 }
+
 </code-example>
 
 <div class="alert is-important">
@@ -176,18 +184,21 @@ To remove, delete the `import '@angular/localize/init';` line from the polyfills
 要移除它，请删除此腻子脚本文件中的一行 `import '@angular/localize/init';`。
 
 <code-example language="typescript" header="polyfills.ts">
+
 /***************************************************************************************************
  * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
  */
 import '@angular/localize/init';
+
 </code-example>
 
 {@a using-ssr-without-angular-ivy}
+
 ### Using SSR without Ivy
 
 ### 在没有 Ivy 的情况下使用 SSR
 
-If you opt out of Ivy and your application uses  [Angular Universal](guide/universal) to render Angular applications on the server, you must also change the way the server performs bootstrapping.
+If you opt out of Ivy and your application uses [Angular Universal](guide/universal) to render Angular applications on the server, you must also change the way the server performs bootstrapping.
 
 如果选择性禁用 Ivy，并且你的应用程序使用 [Angular Universal](guide/universal) 在服务器上渲染 Angular 应用程序，则还必须更改服务器执行引导的方式。
 
@@ -195,15 +206,16 @@ The following example shows how you modify the `server.ts` file to provide the `
 
 下面的范例展示了如何修改 `server.ts` 文件以将 `AppServerModuleNgFactory` 提供为引导模块。
 
-* Import `AppServerModuleNgFactory` from the `app.server.module.ngfactory` virtual file.
+*   Import `AppServerModuleNgFactory` from the `app.server.module.ngfactory` virtual file.
 
   从 `app.server.module.ngfactory` 虚拟文件中导入 `AppServerModuleNgFactory`。
 
-* Set `bootstrap: AppServerModuleNgFactory` in the `ngExpressEngine` call.
+*   Set `bootstrap: AppServerModuleNgFactory` in the `ngExpressEngine` call.
 
   在 `ngExpressEngine` 调用中设置 `bootstrap: AppServerModuleNgFactory`。
 
 <code-example language="typescript" header="server.ts">
+
 import 'zone.js/node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
@@ -218,33 +230,33 @@ import { AppServerModuleNgFactory } from './src/app/app.server.module.ngfactory'
 export function app() {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/ivy-test/browser');
-
+  
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModuleNgFactory,
   }));
-
+  
   server.set('view engine', 'html');
   server.set('views', distFolder);
-
+  
   // Example Express Rest API endpoints
   // app.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
   }));
-
+  
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
     res.render('index', { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
-
+  
   return server;
 }
 
 function run() {
   const port = process.env.PORT || 4000;
-
+  
   // Start up the Node server
   const server = app();
   server.listen(port, () => {
@@ -262,4 +274,13 @@ if (mainModule && mainModule.filename === __filename) {
 }
 
 export * from './src/main.server';
+
 </code-example>
+
+<!-- links -->
+
+[AioGuideI18nCommonMerge]: guide/i18n-common-merge "Common Internationalization task #6: Merge translations into the application | Angular"
+
+<!-- end links -->
+
+@reviewed 2021-09-15

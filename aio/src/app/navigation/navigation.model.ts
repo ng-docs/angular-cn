@@ -8,10 +8,12 @@ export interface NavigationNode {
   // It may also have `url` (if it is a leaf node) or `children` (and no `url`), but it should
   // always have `title`.
   title: string;
+  titleCn?: string;
 
   mode?: string;
   url?: string;
   tooltip?: string;
+  tooltipCn?: string;
   hidden?: boolean;
   divider?: boolean;
   highlight?: boolean;

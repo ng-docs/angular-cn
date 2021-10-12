@@ -66,7 +66,7 @@ Language services include:
 Autocompletion can speed up your development time by providing you with
 contextual possibilities and hints as you type.
 This example shows autocomplete in an interpolation. As you type it out,
-you can hit tab to complete.
+you can press tab to complete.
 
 自动补全可以在输入时为你提供当前情境下的候选内容和提示，从而提高开发速度。下面这个例子展示了插值中的自动补全功能。当你进行输入的时候，就可以按 tab 键来自动补全。
 
@@ -100,7 +100,7 @@ Angular 语言服务能对代码中存在的错误进行预警。在这个例子
 
 ### 快捷信息与导航
 
-The quick-info feature allows you to hover to see where components, directives, modules, and so on come from.
+The quick-info feature lets you hover to see where components, directives, and modules come from.
 You can then click "Go to definition" or press F12 to go directly to the definition.
 
 快捷信息功能使你可以悬停以查看组件、指令、模块等的来源。然后，你可以单击“转到定义”或按 F12 键直接转到定义。
@@ -122,9 +122,9 @@ Angular 语言服务目前在[Visual Studio Code](https://code.visualstudio.com/
 
 ### Visual Studio Code
 
-In [Visual Studio Code](https://code.visualstudio.com/), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template). You can open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext". In the marketplace, search for Angular Language Service extension, and click the **Install** button.
+In [Visual Studio Code](https://code.visualstudio.com/), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template). Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext". In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
-在 [Visual Studio Code 中](https://code.visualstudio.com/)，从 “[扩展程序：市场](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template) 中安装扩展程序。你可以使用左侧菜单窗格中的扩展程序图标从编辑器中打开市场，或使用 VS 快速打开（在 Mac 上为 ⌘+ P，在 Windows 上为 CTRL + P）并输入“? ext”。在市场中，搜索 Angular Language Service 扩展，并点击 **Install** 按钮。
+在 [Visual Studio Code 中](https://code.visualstudio.com/)，从 “[扩展程序：市场](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template) 中安装扩展程序。可以用左侧菜单窗格中的扩展程序图标从编辑器中打开市场，或使用 VS 快速打开（在 Mac 上为 ⌘+ P，在 Windows 上为 CTRL + P）并输入“? ext”。在市场中，搜索 Angular Language Service 扩展，并点击 **Install** 按钮。
 
 The Visual Studio Code integration with the Angular language service is maintained and distributed by the Angular team.
 
@@ -132,9 +132,9 @@ Visual Studio Code 与 Angular 语言服务的集成工作是由 Angular 团队�
 
 ### Visual Studio
 
-In [Visual Studio](https://visualstudio.microsoft.com/), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService). You can open the marketplace from the editor selecting Extensions on the top menu pane, and then selecting Manage Extensions. In the marketplace, search for Angular Language Service extension, and click the **Install** button.
+In [Visual Studio](https://visualstudio.microsoft.com/), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService). Open the marketplace from the editor selecting Extensions on the top menu pane, and then selecting Manage Extensions. In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
-在 [Visual Studio 中](https://visualstudio.microsoft.com/)，从[“扩展程序：市场”](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService)中安装扩展程序。你可以从编辑器中打开市场，在顶部菜单窗格中选择“扩展”，然后选择“管理扩展”。在市场上，搜索 Angular Language Service extension，然后单击**“安装”**按钮。
+在 [Visual Studio 中](https://visualstudio.microsoft.com/)，从[“扩展程序：市场”](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService)中安装扩展程序。可以从编辑器中打开市场，在顶部菜单窗格中选择“扩展”，然后选择“管理扩展”。在市场上，搜索 Angular Language Service extension，然后单击**“安装”**按钮。
 
 The Visual Studio integration with the Angular language service is maintained and distributed by Microsoft with help from the Angular team. Check out the project [here](https://github.com/microsoft/vs-ng-language-service)
 
@@ -201,7 +201,7 @@ npm install --save-dev @angular/language-service
 "typescript-tsdk": "<path to your folder>/node_modules/typescript/lib"
 </code-example>
 
-This allows the Angular Language Service to provide diagnostics and completions in `.ts` files.
+This lets the Angular Language Service provide diagnostics and completions in `.ts` files.
 
 这样就能让 Angular 语言服务提供 `.ts` 文件中的诊断与自动补全信息。
 

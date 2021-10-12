@@ -69,7 +69,7 @@ A structure that provides metadata for a class. See [decorator](#decorator).
 
 ## 应用外壳（app-shell）
 
-App shell is a way to render a portion of your application via a route at build time.
+App shell is a way to render a portion of your application using a route at build time.
 This gives users a meaningful first paint of your application that appears quickly because the browser can render static HTML and CSS without the need to initialize JavaScript.
 
 应用外壳是一种在构建期间通过路由为应用渲染出部分内容的方式。
@@ -160,13 +160,13 @@ between a [token](#token) and a dependency [provider](#provider).
 
 ## 启动/引导 (bootstrap)
 
-A way to initialize and launch an app or system.
+A way to initialize and launch an application or system.
 
 一种用来初始化和启动应用或系统的途径。
 
-In Angular, an app's root NgModule (`AppModule`) has a `bootstrap` property that identifies the app's top-level [components](#component).
+In Angular, an application's root NgModule (`AppModule`) has a `bootstrap` property that identifies the application's top-level [components](#component).
 During the bootstrap process, Angular creates and inserts these components into the `index.html` host web page.
-You can bootstrap multiple apps in the same `index.html`. Each app contains its own components.
+You can bootstrap multiple applications in the same `index.html`. Each application contains its own components.
 
 在 Angular 中，应用的根模块（`AppModule`）有一个 `bootstrap` 属性，用于指出该应用的的顶层[组件](#component)。
 在引导期间，Angular 会创建这些组件，并插入到宿主页面 `index.html` 中。
@@ -262,12 +262,12 @@ These events can trigger change detection.
 
 当应用逻辑更改组件数据时，绑定到视图中 DOM 属性上的值也要随之更改。变更检测器负责更新视图以反映当前的数据模型。类似地，用户也可以与 UI 进行交互，从而引发要更改数据模型状态的事件。这些事件可以触发变更检测。
 
-Using the default ("CheckAlways") change-detection strategy, the change detector goes through the [view hierarchy](#view-tree) on each VM turn to check every [data-bound property](#data-binding) in the template. In the first phase, it compares the current state of the dependent data with the previous state, and collects changes.
+Using the default change-detection strategy, the change detector goes through the [view hierarchy](#view-tree) on each VM turn to check every [data-bound property](#data-binding) in the template. In the first phase, it compares the current state of the dependent data with the previous state, and collects changes.
 In the second phase, it updates the page DOM to reflect any new data values.
 
-使用默认的（“CheckAlways”）变更检测策略，变更检测器将遍历每个视图模型上的[视图层次结构](#view-tree)，以检查模板中的每个[数据绑定属性](#data-binding)。在第一阶段，它将所依赖的数据的当前状态与先前状态进行比较，并收集更改。在第二阶段，它将更新页面上的 DOM 以反映出所有新的数据值。
+使用默认的变更检测策略，变更检测器将遍历每个视图模型上的[视图层次结构](#view-tree)，以检查模板中的每个[数据绑定属性](#data-binding)。在第一阶段，它将所依赖的数据的当前状态与先前状态进行比较，并收集更改。在第二阶段，它将更新页面上的 DOM 以反映出所有新的数据值。
 
-If you set the `OnPush` ("CheckOnce") change-detection strategy, the change detector runs only when [explicitly invoked](api/core/ChangeDetectorRef), or when it is triggered by an `Input` reference change or event handler. This typically improves performance. For more information, see [Optimize Angular's change detection](https://web.dev/faster-angular-change-detection/).
+If you set the `OnPush` change-detection strategy, the change detector runs only when [explicitly invoked](api/core/ChangeDetectorRef), or when it is triggered by an `Input` reference change or event handler. This typically improves performance. For more information, see [Optimize Angular's change detection](https://web.dev/faster-angular-change-detection/).
 
 如果设置了 `OnPush`（“CheckOnce”）变更检测策略，则变更检测器仅在[显式调用](api/core/ChangeDetectorRef)它或由 `@Input` 引用的变化或触发事件处理程序时运行。这通常可以提高性能。欲知详情，参阅[优化 Angular 的变更检测](https://web.dev/faster-angular-change-detection/)。
 
@@ -394,7 +394,7 @@ The custom element feature extends HTML by allowing you to define a tag whose co
 
 这种自定义元素特性通过允许你定义标签（其内容是由 JavaScript 代码来创建和控制的）来扩展 HTML。当自定义元素（也叫 *Web Component*）被添加到 [CustomElementRegistry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) 之后就会被浏览器识别。
 
-You can use the API to transform an Angular component so that it can be registered with the browser and used in any HTML that you add directly to the DOM within an Angular app. The custom element tag inserts the component's view, with change-detection and data-binding functionality, into content that would otherwise be displayed without Angular processing.
+You can use the API to transform an Angular component so that it can be registered with the browser and used in any HTML that you add directly to the DOM within an Angular application. The custom element tag inserts the component's view, with change-detection and data-binding functionality, into content that would otherwise be displayed without Angular processing.
 
 你可以使用 API 来转换 Angular 组件，以便它能够注册进浏览器中，并且可以用在你往 DOM 中添加的任意 HTML 中。
 自定义元素标签可以把组件的视图（包括变更检测和数据绑定功能）插入到不受 Angular 控制的内容中。
@@ -415,7 +415,7 @@ See also [dynamic component loading](#dynamic-components).
 
 ## 数据绑定 (data binding)
 
-A process that allows apps to display data values to a user and respond to user
+A process that allows applications to display data values to a user and respond to user
 actions (such as clicks, touches, and keystrokes).
 
 这个过程可以让应用程序将数据展示给用户，并对用户的操作（点击、触屏、按键）做出回应。
@@ -534,7 +534,7 @@ A design pattern and mechanism for creating and delivering some parts of an appl
 利用依赖注入来创建被请求的部件，并将它们注入到需要它们的部件中。
 
 In Angular, dependencies are typically services, but they also can be values, such as strings or functions.
-An [injector](#injector) for an app (created automatically during bootstrap) instantiates dependencies when needed, using a configured [provider](#provider) of the service or value.
+An [injector](#injector) for an application (created automatically during bootstrap) instantiates dependencies when needed, using a configured [provider](#provider) of the service or value.
 
 在 Angular 中，依赖通常是服务，但是也可以是值，比如字符串或函数。应用的[注入器](#injector)（它是在启动期间自动创建的）会使用该服务或值的配置好的[提供者](#provider)来按需实例化这些依赖。各个不同的提供者可以为同一个服务提供不同的实现。
 
@@ -552,18 +552,6 @@ A lookup token associated with a dependency [provider](#provider), for use with 
 
 一种用来查阅的令牌，它关联到一个依赖[提供者](#provider)，用于[依赖注入](#di)系统中。
 {@a differential-loading}
-
-## differential loading
-
-## 差异化加载
-
-A build technique that creates two bundles for an application. One smaller bundle is for modern browsers. A second, larger bundle allows the application to run correctly in older browsers (such as IE11) that do not support all modern browser APIs.
-
-一种构建技术，它会为同一个应用创建两个发布包。一个是较小的发布包，是针对现代浏览器的。另一个是较大的发布包，能让该应用正确的运行在像 IE 11 这样的老式浏览器上，这些浏览器不能支持全部现代浏览器的 API。
-
-For more information, see the [Deployment](guide/deployment#differential-loading) guide.
-
-欲知详情，参阅 [Deployment](guide/deployment#differential-loading) 一章。
 
 {@a directive}
 {@a directives}
@@ -601,7 +589,7 @@ There are three categories of directive:
 
 Angular supplies a number of built-in directives that begin with the `ng` prefix.
 You can also create new directives to implement your own functionality.
-You associate a *selector* (an HTML tag such as `<my-directive>`) with a custom directive, thereby extending the [template syntax](guide/template-syntax) that you can use in your apps.
+You associate a *selector* (an HTML tag such as `<my-directive>`) with a custom directive; this extends the [template syntax](guide/template-syntax) that you can use in your applications.
 
 Angular 提供了一些以 `ng` 为前缀的内置指令。你也可以创建新的指令来实现自己的功能。
 你可以为自定义指令关联一个*选择器*（一种形如 `<my-directive>` 的 HTML 标记），以扩展[模板语法](guide/template-syntax)，从而让你能在应用中使用它。
@@ -626,7 +614,7 @@ A special-purpose library or API; see [Domain-specific language](https://en.wiki
 
 一种特殊用途的库或 API，参阅[领域特定语言](https://en.wikipedia.org/wiki/Domain-specific_language)词条。
 
-Angular extends TypeScript with domain-specific languages for a number of domains relevant to Angular apps, defined in NgModules such as [animations](guide/animations), [forms](guide/forms), and [routing and navigation](guide/router).
+Angular extends TypeScript with domain-specific languages for a number of domains relevant to Angular applications, defined in NgModules such as [animations](guide/animations), [forms](guide/forms), and [routing and navigation](guide/router).
 
 Angular 使用领域特定语言扩展了 TypeScript，用于与 Angular 应用相关的许多领域。这些 DSL 都定义在 NgModule 中，比如 [动画](guide/animations)、[表单](guide/forms)和[路由与导航](guide/router)。
 
@@ -919,7 +907,7 @@ For example, dependencies can be lazy loaded as needed&mdash;as opposed to [eage
 比如，一些依赖可以根据需要进行惰性加载，与之相对的是那些 [急性加载](#eager-loading) 的模块，它们是根模块所要用的，因此会在启动期间加载。
 
 The [router](#router) makes use of lazy loading to load child views only when the parent view is activated.
-Similarly, you can build custom elements that can be loaded into an Angular app when needed.
+Similarly, you can build custom elements that can be loaded into an Angular application when needed.
 
 [路由器](#router)只有当父视图激活时才需要加载子视图。同样，你还可以构建一些自定义元素，它们也可以在需要时才加载进 Angular 应用。
 
@@ -929,9 +917,9 @@ Similarly, you can build custom elements that can be loaded into an Angular app 
 
 ## 库（Library）
 
-In Angular, a [project](#project) that provides functionality that can be included in other Angular apps.
-A library isn't a complete Angular app and can't run independently.
-(To add re-usable Angular functionality to non-Angular web apps, you can use Angular [custom elements](#angular-element).)
+In Angular, a [project](#project) that provides functionality that can be included in other Angular applications.
+A library isn't a complete Angular application and can't run independently.
+(To add re-usable Angular functionality to non-Angular web applications, you can use Angular [custom elements](#angular-element).)
 
 一种 Angular [项目](#project)。用来让其它 Angular 应用包含它，以提供各种功能。库不是一个完整的 Angular 应用，不能独立运行。（要想为非 Angular 应用添加可复用的 Angular 功能，你可以使用 Angular 的[自定义元素](#angular-element)。）
 
@@ -1033,7 +1021,7 @@ Compare to [NgModule](#ngmodule).
 ## ngcc
 
 Angular compatibility compiler.
-If you build your app using [Ivy](#ivy), but it depends on libraries that have not been compiled with Ivy, the CLI uses `ngcc` to automatically update the dependent libraries to use Ivy.
+If you build your application using [Ivy](#ivy), but it depends on libraries that have not been compiled with Ivy, the CLI uses `ngcc` to automatically update the dependent libraries to use Ivy.
 
 Angular 兼容性编译器。如果使用 [Ivy](#ivy) 构建应用程序，但依赖未用 Ivy 编译的库，则 CLI 将使用 `ngcc` 自动更新依赖库以使用 Ivy。
 
@@ -1227,7 +1215,7 @@ for a class that requires it.
 [注入器](#injector)会使用这个提供者来创建它所依赖的那些类的实例。
 
 Angular registers its own providers with every injector, for services that Angular defines.
-You can register your own providers for services that your app needs.
+You can register your own providers for services that your application needs.
 
 Angular 会为每个注入器注册一些 Angular 自己的服务。你也可以注册应用自己所需的服务提供者。
 
@@ -1324,7 +1312,7 @@ Learn more in the [Routing and Navigation](guide/router#preventing-unauthorized-
 
 ## 路由器 (router)
 
-A tool that configures and implements navigation among states and [views](#view) within an Angular app.
+A tool that configures and implements navigation among states and [views](#view) within an Angular application.
 
 一种工具，用来配置和实现 Angular 应用中各个状态和[视图](#view)之间的导航。
 
@@ -1332,7 +1320,7 @@ The `Router` module is an [NgModule](#ngmodule) that provides the necessary serv
 
 `Router` 模块是一个 [NgModule](#ngmodule)，它提供在应用视图间导航时需要的服务提供者和指令。[路由组件](#routing-component)是一种组件，它导入了 `Router` 模块，并且其模板中包含 `RouterOutlet` 元素，路由器生成的视图就会被显示在那里。
 
-The router defines navigation among views on a single page, as opposed to navigation among pages. It interprets URL-like links to determine which views to create or destroy, and which components to load or unload. It allows you to take advantage of [lazy loading](#lazy-load) in your Angular apps.
+The router defines navigation among views on a single page, as opposed to navigation among pages. It interprets URL-like links to determine which views to create or destroy, and which components to load or unload. It allows you to take advantage of [lazy loading](#lazy-load) in your Angular applications.
 
 路由器定义了在单页面中的各个视图之间导航的方式，而不是在页面之间。它会解释类似 URL 的链接，以决定该创建或销毁哪些视图，以及要加载或卸载哪些组件。它让你可以在 Angular 应用中获得[惰性加载](#lazy-load)的好处。
 
@@ -1390,7 +1378,7 @@ The [Angular CLI](#cli) uses schematics to generate and modify [Angular projects
 
 Angular [CLI](#cli) 使用原理图来生成和修改 [Angular 项目](#project)及其部件。
 
-* Angular provides a set of schematics for use with the CLI. See the [Angular CLI command reference](cli). The [`ng add`](cli/add) command runs schematics as part of adding a library to your project. The [`ng generate`](cli/generate) command runs schematics to create apps, libraries, and Angular code constructs.
+* Angular provides a set of schematics for use with the CLI. See the [Angular CLI command reference](cli). The [`ng add`](cli/add) command runs schematics as part of adding a library to your project. The [`ng generate`](cli/generate) command runs schematics to create applications, libraries, and Angular code constructs.
 
   Angular 提供了一组用于 CLI 的原理图。参阅 [Angular CLI 命令参考手册](cli)。当 [`ng add`](cli/add) 命令向项目中添加某个库时，就会运行原理图。[`ng generate`](cli/generate) 命令则会运行原理图，来创建应用、库和 Angular 代码块。
 
@@ -1453,12 +1441,12 @@ It can also pre-generate pages as HTML files that you serve later.
 一项在服务端生成静态应用页面的技术，它可以在对来自浏览器的请求进行响应时生成这些页面或用它们提供服务。
 它还可以提前把这些页面生成为 HTML 文件，以便稍后用它们来提供服务。
 
-This technique can improve performance on mobile and low-powered devices and improve the user experience by showing a static first page quickly while the client-side app is loading.
-The static version can also make your app more visible to web crawlers.
+This technique can improve performance on mobile and low-powered devices and improve the user experience by showing a static first page quickly while the client-side application is loading.
+The static version can also make your application more visible to web crawlers.
 
 该技术可以增强手机和低功耗设备的性能，而且会在应用加载通过快速展示一个静态首屏来提升用户体验。这个静态版本还能让你的应用对网络蜘蛛更加友好。
 
-You can easily prepare an app for server-side rendering by using the [CLI](#cli) to run the [Angular Universal](#universal) tool, using the `@nguniversal/express-engine` [schematic](#schematic).
+You can easily prepare an application for server-side rendering by using the [CLI](#cli) to run the [Angular Universal](#universal) tool, using the `@nguniversal/express-engine` [schematic](#schematic).
 
 你可以通过 [CLI](#cli) 运行 [Angular Universal](#universal) 工具，借助 `@nguniversal/express-engine` [schematic](#schematic) 原理图来更轻松的让应用支持服务端渲染。
 
@@ -1751,7 +1739,7 @@ A data flow model where the component tree is always checked for changes in one 
 In practice, this means that data in Angular flows downward during change detection.
 A parent component can easily change values in its child components because the parent is checked first.
 A failure could occur, however, if a child component tries to change a value in its parent during change detection (inverting the expected data flow), because the parent component has already been rendered.
-In development mode, Angular throws the `ExpressionChangedAfterItHasBeenCheckedError` error if your app attempts to do this, rather than silently failing to render the new value.
+In development mode, Angular throws the `ExpressionChangedAfterItHasBeenCheckedError` error if your application attempts to do this, rather than silently failing to render the new value.
 
 在实践中，这意味着 Angular 中的数据会在变更检测过程中向下流动。父组件可以很容易地改变子组件中的值，因为父组件是先检查的。但是，如果子组件在更改检测期间（反转预期的数据流）尝试更改其父组件中的值，则可能会导致错误，因为父组件已经渲染过了。在开发模式下，如果你的应用尝试这样做，Angular 会抛出 `ExpressionChangedAfterItHasBeenCheckedError` 错误，而不是沉默地渲染新值。
 
@@ -1850,7 +1838,7 @@ See [custom element](#custom-element).
 
 ## 工作区（Workspace）
 
-A collection of Angular [projects](#project) (that is, applications and libraries) powered by the [Angular CLI] (#cli) that are typically co-located in a single source-control repository (such as [git](https://git-scm.com/)).
+A collection of Angular [projects](#project) (that is, applications and libraries) powered by the [Angular CLI](#cli) that are typically co-located in a single source-control repository (such as [git](https://git-scm.com/)).
 
 一组基于 [Angular CLI](#cli) 的 Angular [项目](#project)（也就是说应用或库），它们通常共同位于一个单一的源码仓库（比如 [git](https://git-scm.com/)）中。
 
@@ -1860,7 +1848,7 @@ In the workspace root, it also creates the workspace [configuration file](#confi
 [CLI](#cli) 的 [`ng new` 命令](cli/new)会在文件系统中创建一个目录（也就是工作区的根目录）。
 在工作区根目录下，还会创建此工作区的[配置文件](#configuration)（`angular.json`），并且还会默认初始化一个同名的应用项目。
 
-Commands that create or operate on apps and libraries (such as `add` and `generate`) must be executed from within a workspace folder.
+Commands that create or operate on applications and libraries (such as `add` and `generate`) must be executed from within a workspace folder.
 
 而用来创建或操作应用和库的命令（比如 `add` 和 `generate`）必须在工作区目录下才能执行。
 
@@ -1903,11 +1891,11 @@ For more information, see [Workspace and Project File Structure](guide/file-stru
 
 ## 区域 (zone)
 
-An execution context for a set of asynchronous tasks. Useful for debugging, profiling, and testing apps that include asynchronous operations such as event processing, promises, and calls to remote servers.
+An execution context for a set of asynchronous tasks. Useful for debugging, profiling, and testing applications that include asynchronous operations such as event processing, promises, and calls to remote servers.
 
 一组异步任务的执行上下文。它对于调试、性能分析和测试那些包含了异步操作（如事件处理、承诺、远程服务器调用等）的应用是非常有用的。
 
-An Angular app runs in a zone where it can respond to asynchronous events by checking for data changes and updating the information it displays by resolving [data bindings](#data-binding).
+An Angular application runs in a zone where it can respond to asynchronous events by checking for data changes and updating the information it displays by resolving [data bindings](#data-binding).
 
 Angular 应用会运行在一个 Zone 区域中，在这里，它可以对异步事件做出反应，可以通过检查数据变更、利用[数据绑定 (data bindings)](#data-binding) 来更新信息显示。
 

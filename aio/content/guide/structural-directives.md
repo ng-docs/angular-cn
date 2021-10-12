@@ -8,15 +8,15 @@ This topic demonstrates how to create a structural directive and provides concep
 
 <div class="alert is-helpful">
 
-For the example app that this page describes, see the <live-example></live-example>.
+For the example application that this page describes, see the <live-example></live-example>.
 
 有关此页面描述的示例应用程序，请参见<live-example></live-example> 。
 
 </div>
 
-For more information on Angular's built-in structural directives, such as `NgIf`, `NgFor`, and `NgSwitch`, see [Built-in directives](guide/built-in-directives).
+For more information on Angular's built-in structural directives, such as `NgIf`, `NgForOf`, and `NgSwitch`, see [Built-in directives](guide/built-in-directives).
 
-有关 Angular 的内置结构型指令（如 `NgIf` ， `NgFor` 和 `NgSwitch`）的更多信息，请参见[内置指令](guide/built-in-directives)。
+有关 Angular 的内置结构型指令（如 `NgIf` ， `NgForOf` 和 `NgSwitch`）的更多信息，请参见[内置指令](guide/built-in-directives)。
 
 {@a unless}
 
@@ -471,7 +471,7 @@ In this example, the `LoadingState<T>` type permits either of two states, `Loade
 
 The `IfLoadedDirective` definition declares the static field `ngTemplateGuard_state`, which expresses the narrowing behavior.
 Within the `AppComponent` template, the `*ifLoaded` structural directive should render this template only when `state` is actually `Loaded<Person>`.
-The type guard allows the type checker to infer that the acceptable type of `state` within the template is a `Loaded<T>`, and further infer that `T` must be an instance of `Person`.
+The type guard lets the type checker infer that the acceptable type of `state` within the template is a `Loaded<T>`, and further infer that `T` must be an instance of `Person`.
 
 `IfLoadedDirective` 定义声明了静态字段 `ngTemplateGuard_state`，以表示其窄化行为。在 `AppComponent` 模板中，`*ifLoaded` 结构型指令只有当实际的 `state` 是 `Loaded<Person>` 类型时，才会渲染该模板。类型守护允许类型检查器推断出模板中可接受的 `state` 类型是 `Loaded<T>`，并进一步推断出 `T` 必须是一个 `Person` 的实例。
 

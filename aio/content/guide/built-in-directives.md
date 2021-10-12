@@ -4,7 +4,7 @@
 
 Directives are classes that add additional behavior to elements
 in your Angular applications.
-With Angular's built-in directives, you can manage forms, lists, styles, and what users see.
+Use Angular's built-in directives to manage forms, lists, styles, and what users see.
 
 指令是为 Angular 应用程序中的元素添加额外行为的类。使用 Angular 的内置指令，你可以管理表单、列表、样式以及要让用户看到的任何内容。
 
@@ -64,12 +64,21 @@ The most common attribute directives are as follows:
 
   [`NgModel`](guide/built-in-directives#ngModel) —— 将数据双向绑定添加到 HTML 表单元素。
 
+<div class="alert is-helpful">
+
+Built-in directives use only public APIs.
+They do not have special access to any private APIs that other directives can't access.
+
+内置指令只会使用公开 API。它们不会访问任何无法被其它指令访问的私有 API。
+
+</div>
+
 {@a ngClass}
 ## Adding and removing classes with `NgClass`
 
 ## 用 `NgClass` 添加和删除类
 
-You can add or remove multiple CSS classes simultaneously with `ngClass`.
+Add or remove multiple CSS classes simultaneously with `ngClass`.
 
 用 `ngClass` 同时添加或删除多个 CSS 类。
 
@@ -128,9 +137,9 @@ For more information, see the <live-example></live-example> `app.component.ts` a
 
 ## 用 `NgStyle` 设置内联样式
 
-You can use `NgStyle` to set multiple inline styles simultaneously, based on the state of the component.
+Use `NgStyle` to set multiple inline styles simultaneously, based on the state of the component.
 
-你可以使用 `NgStyle` 根据组件的状态同时设置多个内联样式。
+可以用 `NgStyle` 根据组件的状态同时设置多个内联样式。
 
 1. To use `NgStyle`, add a method to the component class.
 
@@ -161,9 +170,9 @@ See the <live-example></live-example> `app.component.ts` and `app.component.html
 
 ## 用 `ngModel` 显示和更新属性
 
-You can use the `NgModel` directive to display a data property and update that property when the user makes changes.
+Use the `NgModel` directive to display a data property and update that property when the user makes changes.
 
-你可以使用 `NgModel` 指令显示数据属性，并在用户进行更改时更新该属性。
+可以用 `NgModel` 指令显示数据属性，并在用户进行更改时更新该属性。
 
 1. Import `FormsModule`  and add it to the NgModule's `imports` list.
 
@@ -181,7 +190,7 @@ You can use the `NgModel` directive to display a data property and update that p
 
   此 `[(ngModel)]` 语法只能设置数据绑定属性。
 
-To customize your configuration, you can write the expanded form, which separates the property and event binding.
+To customize your configuration, write the expanded form, which separates the property and event binding.
 Use [property binding](guide/property-binding) to set the property and [event binding](guide/event-binding) to respond to changes.
 The following example changes the `<input>` value to uppercase:
 
@@ -209,10 +218,10 @@ For more information, see [Forms](guide/forms).
 
 `NgModel` 指令适用于[ControlValueAccessor](api/forms/ControlValueAccessor)支持的元素。Angular 为所有基本 HTML 表单元素提供了*值访问器。*有关更多信息，请参见[Forms](guide/forms)。
 
-To apply `[(ngModel)]` to a non-form native element or a third-party custom component, you have to write a value accessor.
+To apply `[(ngModel)]` to a non-form built-in element or a third-party custom component, you have to write a value accessor.
 For more information, see the API documentation on [DefaultValueAccessor](api/forms/DefaultValueAccessor).
 
-要将 `[(ngModel)]` 应用于非格式本机元素或第三方自定义组件，必须编写一个值访问器。有关更多信息，请参见[DefaultValueAccessor](api/forms/DefaultValueAccessor)上的 API 文档。
+要将 `[(ngModel)]` 应用于非表单型内置元素或第三方自定义组件，必须编写一个值访问器。有关更多信息，请参见 [DefaultValueAccessor](api/forms/DefaultValueAccessor) 上的 API 文档。
 
 <div class="alert is-helpful">
 
@@ -260,9 +269,9 @@ For more information, see [Structural Directives](guide/structural-directives).
 
 ## 用 `NgIf` 添加或删除元素
 
-You can add or remove an element by applying an `NgIf` directive to a host element.
+Add or remove an element by applying an `NgIf` directive to a host element.
 
-你可以通过将 `NgIf` 指令应用于宿主元素来添加或删除元素。
+可以将 `NgIf` 指令应用于宿主元素来添加或删除元素。
 
 When `NgIf` is `false`, Angular removes an element and its descendants from the DOM.
 Angular then disposes of their components, which frees up memory and resources.
@@ -312,9 +321,9 @@ In this example, Angular does not display the `nullCustomer` because it is `null
 
 ## `NgFor` 条目列表
 
-You can use the `NgFor` directive to present a list of items.
+Use the `NgFor` directive to present a list of items.
 
-你可以使用 `NgFor` 来指令显示条目列表。
+可以用 `NgFor` 来指令显示条目列表。
 
 1. Define a block of HTML that determines how Angular renders a single item.
 
@@ -361,7 +370,7 @@ In the following example, the selector is `<app-item-detail>`.
 
 <code-example path="built-in-directives/src/app/app.component.html" region="NgFor-2" header="src/app/app.component.html"></code-example>
 
-You can reference a template input variable, such as `item`, in the following locations:
+Reference a template input variable, such as `item`, in the following locations:
 
 你可以在以下位置引用模板输入变量，例如 `item`：
 
@@ -387,9 +396,9 @@ For more information about template input variables, see [Structural directive s
 
 ### 获取 `*ngFor` 的 `index`
 
-You can get the `index` of `*ngFor` in a template input variable and use it in the template.
+Get the `index` of `*ngFor` in a template input variable and use it in the template.
 
-你可以获取 `*ngFor` 的 `index`，并在模板中使用它。
+可以获取 `*ngFor` 的 `index`，并在模板中使用它。
 
 In the `*ngFor`, add a semicolon and `let i=index` to the short hand.
 The following example gets the `index` in a variable named `i` and displays it with the item name.
@@ -432,7 +441,7 @@ For more information about `NgFor` see the [NgForOf API reference](api/common/Ng
 
 ### 用 `*ngFor` 的 `trackBy` 跟踪条目
 
-By tracking changes to an item list, you can reduce the number of calls your application makes to the server.
+Reduce the number of calls your application makes to the server by tracking changes to an item list.
 With the `*ngFor` `trackBy` property, Angular can change and re-render only those items that have changed, rather than reloading the entire list of items.
 
 通过跟踪对条目列表的更改，可以减少应用程序对服务器的调用次数。使用 `*ngFor` 的 `trackBy` 属性，Angular 只能更改和重新渲染已更改的条目，而不必重新加载整个条目列表。
@@ -470,15 +479,6 @@ In the following illustration of the `trackBy` effect, **Reset items** creates n
 
 </div>
 
-<div class="alert is-helpful">
-
-Built-in directives use only public APIs.
-They do not have special access to any private APIs that other directives can't access.
-
-内置指令仅仅使用了公共 API。它们没有用到任何其它指令无权访问的私有 API。
-
-</div>
-
 {@a ngcontainer}
 
 ## Hosting a directive without a DOM element
@@ -489,7 +489,7 @@ The Angular `<ng-container>` is a grouping element that doesn't interfere with s
 
 Angular 的 `<ng-container>` 是一个分组元素，它不会干扰样式或布局，因为 Angular 不会将其放置在 DOM 中。
 
-You can use `<ng-container>` when there's no single element to host the directive.
+Use `<ng-container>` when there's no single element to host the directive.
 
 当没有单个元素承载指令时，可以使用 `<ng-container>`。
 
@@ -562,7 +562,7 @@ Angular puts only the selected element into the DOM.
 
    <code-example path="built-in-directives/src/app/app.component.html" region="NgSwitch" header="src/app/app.component.html"></code-example>
 
-1. In the parent component, define `currentItem` so you can use it in the `[ngSwitch]` expression.
+1. In the parent component, define `currentItem`, to use it in the `[ngSwitch]` expression.
 
    在父组件中，定义 `currentItem` 以便可以在 `[ngSwitch]` 表达式中使用它。
 
@@ -580,10 +580,10 @@ Angular puts only the selected element into the DOM.
 
 </div>
 
-Switch directives also work with native HTML elements and web components.
+Switch directives also work with built-in HTML elements and web components.
 For example, you could replace the `<app-best-item>` switch case with a `<div>` as follows.
 
-Switch 指令也同样适用于原生 HTML 元素和 Web Component。
+Switch 指令也同样适用于内置 HTML 元素和 Web Component。
 比如，你可以像下面的例子中一样把 `<app-best-item>` 分支替换为 `<div>`。
 
 <code-example path="built-in-directives/src/app/app.component.html" region="NgSwitch-div" header="src/app/app.component.html"></code-example>

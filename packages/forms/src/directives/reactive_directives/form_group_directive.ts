@@ -12,7 +12,7 @@ import {FormArray, FormControl, FormGroup} from '../../model';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {ControlContainer} from '../control_container';
 import {Form} from '../form_interface';
-import {ReactiveErrors} from '../reactive_errors';
+import {missingFormException} from '../reactive_errors';
 import {cleanUpControl, cleanUpFormContainer, cleanUpValidators, removeListItem, setUpControl, setUpFormContainer, setUpValidators, syncPendingControls} from '../shared';
 import {AsyncValidator, AsyncValidatorFn, Validator, ValidatorFn} from '../validators';
 
@@ -161,7 +161,7 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
    * 返回此指令的实例。
    *
    */
-  get formDirective(): Form {
+  override get formDirective(): Form {
     return this;
   }
 
@@ -172,7 +172,7 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
    * 返回绑定到该指令的 `FormGroup`。
    *
    */
-  get control(): FormGroup {
+  override get control(): FormGroup {
     return this.form;
   }
 
@@ -184,7 +184,7 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
    * 返回表示该表单组的路径的数组。由于此指令始终位于表单的顶层，因此它始终为空数组。
    *
    */
-  get path(): string[] {
+  override get path(): string[] {
     return [];
   }
 
@@ -457,7 +457,7 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
 
   private _checkFormPresent() {
     if (!this.form && (typeof ngDevMode === 'undefined' || ngDevMode)) {
-      ReactiveErrors.missingFormException();
+      throw missingFormException();
     }
   }
 }

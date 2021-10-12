@@ -8,7 +8,7 @@ _Angular elements_ are Angular components packaged as _custom elements_ (also ca
 
 <div class="alert is-helpful">
 
-  For the sample app that this page describes, see the <live-example></live-example>.
+  For the sample application that this page describes, see the <live-example></live-example>.
 
   这里所说的范例应用，请参阅<live-example></live-example>。
 
@@ -27,15 +27,15 @@ The `@angular/elements` package exports a `createCustomElement()` API that provi
 `@angular/elements` 包导出了一个 `createCustomElement()` API，它在 Angular 组件接口与变更检测功能和内置 DOM API 之间建立了一个桥梁。
 
 Transforming a component to a custom element makes all of the required Angular infrastructure available to the browser.
-Creating a custom element is simple and straightforward, and automatically connects your component-defined view with change detection and data binding, mapping Angular functionality to the corresponding native HTML equivalents.
+Creating a custom element is simple and straightforward, and automatically connects your component-defined view with change detection and data binding, mapping Angular functionality to the corresponding built-in HTML equivalents.
 
 把组件转换成自定义元素可以让所有所需的 Angular 基础设施都在浏览器中可用。
-创建自定义元素的方式简单直观，它会自动把你组件定义的视图连同变更检测与数据绑定等 Angular 的功能映射为相应的原生 HTML 等价物。
+创建自定义元素的方式简单直观，它会自动把你组件定义的视图连同变更检测与数据绑定等 Angular 的功能映射为相应的内置 HTML 等价物。
 
 <div class="alert is-helpful">
 
 We are working on custom elements that can be used by web apps built on other frameworks.
-A minimal, self-contained version of the Angular framework will be injected as a service to support the component's change-detection and data-binding functionality.
+A minimal, self-contained version of the Angular framework is injected as a service to support the component's change-detection and data-binding functionality.
 For more about the direction of development, check out this [video presentation](https://www.youtube.com/watch?v=Z1gLFPLVJjY&t=4s).
 
 我们正在持续开发自定义元素功能，让它们可以用在由其它框架所构建的 Web 应用中。
@@ -52,11 +52,11 @@ Custom elements bootstrap themselves - they start automatically when they are ad
 
 自定义元素会自举 —— 它们在添加到 DOM 中时就会自行启动自己，并在从 DOM 中移除时自行销毁自己。一旦自定义元素添加到了任何页面的 DOM 中，它的外观和行为就和其它的 HTML 元素一样了，不需要对 Angular 的术语或使用约定有任何特殊的了解。
 
-- <b>Easy dynamic content in an Angular app</b>
+- <b>Easy dynamic content in an Angular application</b>
 
    <b>Angular 应用中的简易动态内容</b>
 
-  Transforming a component to a custom element provides an easy path to creating dynamic HTML content in your Angular app. HTML content that you add directly to the DOM in an Angular app is normally displayed without Angular processing, unless you define a _dynamic component_, adding your own code to connect the HTML tag to your app data, and participate in change detection. With a custom element, all of that wiring is taken care of automatically.
+  Transforming a component to a custom element provides a straightforward path to creating dynamic HTML content in your Angular application. HTML content that you add directly to the DOM in an Angular application is normally displayed without Angular processing, unless you define a _dynamic component_, adding your own code to connect the HTML tag to your application data, and participate in change detection. With a custom element, all of that wiring is taken care of automatically.
 
   把组件转换成自定义元素为你在 Angular 应用中创建动态 HTML 内容提供了一种简单的方式。
   在 Angular 应用中，你直接添加到 DOM 中的 HTML 内容是不会经过 Angular 处理的，除非你使用*动态组件*来借助自己的代码把 HTML 标签与你的应用数据关联起来并参与变更检测。而使用自定义组件，所有这些装配工作都是自动的。
@@ -65,7 +65,7 @@ Custom elements bootstrap themselves - they start automatically when they are ad
 
    <b>富内容应用</b>
 
-  If you have a content-rich app, such as the Angular app that presents this documentation, custom elements let you give your content providers sophisticated Angular functionality without requiring knowledge of Angular. For example, an Angular guide like this one is added directly to the DOM by the Angular navigation tools, but can include special elements like `<code-snippet>` that perform complex operations. All you need to tell your content provider is the syntax of your custom element. They don't need to know anything about Angular, or anything about your component's data structures or implementation.
+  If you have a content-rich application, such as the Angular app that presents this documentation, custom elements let you give your content providers sophisticated Angular functionality without requiring knowledge of Angular. For example, an Angular guide like this one is added directly to the DOM by the Angular navigation tools, but can include special elements like `<code-snippet>` that perform complex operations. All you need to tell your content provider is the syntax of your custom element. They don't need to know anything about Angular, or anything about your component's data structures or implementation.
 
    如果你有一个富内容应用（比如正在展示本文档的这个），自定义元素能让你的内容提供者使用复杂的 Angular 功能，而不要求他了解 Angular 的知识。比如，像本文档这样的 Angular 指南是使用 Angular 导航工具直接添加到 DOM 中的，但是其中可以包含特殊的元素，比如 `<code-snippet>`，它可以执行复杂的操作。
    你所要告诉你的内容提供者的一切，就是这个自定义元素的语法。他们不需要了解关于 Angular 的任何知识，也不需要了解你的组件的数据结构或实现。
@@ -75,10 +75,10 @@ Custom elements bootstrap themselves - they start automatically when they are ad
 ### 工作原理
 
 Use the `createCustomElement()` function to convert a component into a class that can be registered with the browser as a custom element.
-After you register your configured class with the browser's custom-element registry, you can use the new element just like a built-in HTML element in content that you add directly into the DOM:
+After you register your configured class with the browser's custom-element registry, use the new element just like a built-in HTML element in content that you add directly into the DOM:
 
 使用 `createCustomElement()` 函数来把组件转换成一个可注册成浏览器中自定义元素的类。
-注册完这个配置好的类之后，你就可以在内容中像内置 HTML 元素一样使用这个新元素了，比如直接把它加到 DOM 中：
+注册完这个配置好的类之后，就可以在内容中像内置 HTML 元素一样使用这个新元素了，比如直接把它加到 DOM 中：
 
 ```
 
@@ -145,7 +145,7 @@ A custom element _hosts_ an Angular component, providing a bridge between the da
    它把属性名转换成与自定义元素兼容的形式（自定义元素不区分大小写），生成的属性名会使用中线分隔的小写形式。
    比如，对于带有 `@Input('myInputProp') inputProp` 的组件，其对应的自定义元素会带有一个 `my-input-prop` 属性。
 
-- Component outputs are dispatched as HTML [Custom Events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent), with the name of the custom event matching the output name. For example, for a component with `@Output() valueChanged = new EventEmitter()`, the corresponding custom element will dispatch events with the name "valueChanged", and the emitted data will be stored on the event’s `detail` property. If you provide an alias, that value is used; for example, `@Output('myClick') clicks = new EventEmitter<string>();` results in dispatch events with the name "myClick".
+- Component outputs are dispatched as HTML [Custom Events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent), with the name of the custom event matching the output name. For example, for a component with `@Output() valueChanged = new EventEmitter()`, the corresponding custom element dispatches events with the name "valueChanged", and the emitted data is stored on the event’s `detail` property. If you provide an alias, that value is used; for example, `@Output('myClick') clicks = new EventEmitter<string>();` results in dispatch events with the name "myClick".
 
    组件的输出属性会用 HTML [自定义事件](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)的形式进行分发，自定义事件的名字就是这个输出属性的名字。
    比如，对于带有 `@Output() valueChanged = new EventEmitter()` 属性的组件，其相应的自定义元素将会分发名叫 "valueChanged" 的事件，事件中所携带的数据存储在该事件对象的 `detail` 属性中。
@@ -216,7 +216,7 @@ The recently-developed [custom elements](https://developer.mozilla.org/en-US/doc
 </tr>
 </table>
 
-In browsers that support Custom Elements natively, the specification requires developers use ES2015 classes to define Custom Elements - developers can opt-in to this by setting the `target: "es2015"` property in their project's [TypeScript configuration file](/guide/typescript-configuration). As Custom Element and ES2015 support may not be available in all browsers, developers can instead choose to use a polyfill to support older browsers and ES5 code.
+In browsers that support Custom Elements natively, the specification requires developers use ES2015 classes to define Custom Elements - developers can opt-in to this by setting the `target: "es2015"` property in their project's [TypeScript configuration file](/guide/typescript-configuration). As Custom Element and ES2015 support might not be available in all browsers, developers can instead choose to use a polyfill to support older browsers and ES5 code.
 
 对于原生支持了自定义元素的浏览器，该规范要求开发人员使用 ES2016 的类来定义自定义元素 —— 开发人员可以在项目的 [TypeScript 配置文件](/guide/typescript-configuration)中设置 `target: "es2015"` 属性来满足这一要求。并不是所有浏览器都支持自定义元素和 ES2015，开发人员也可以选择使用腻子脚本来让它支持老式浏览器和 ES5 的代码。
 
@@ -242,15 +242,15 @@ ng add @angular/elements --project=*your_project_name*
 
 ## 范例：弹窗服务
 
-Previously, when you wanted to add a component to an app at runtime, you had to define a _dynamic component_, and then you would have to load it, attach it to an element in the DOM, and wire up all of the dependencies, change detection, and event handling, as described in [Dynamic Component Loader](guide/dynamic-component-loader).
+Previously, when you wanted to add a component to an application at runtime, you had to define a _dynamic component_, and then you would have to load it, attach it to an element in the DOM, and wire up all of the dependencies, change detection, and event handling, as described in [Dynamic Component Loader](guide/dynamic-component-loader).
 
 以前，如果你要在运行期间把一个组件添加到应用中，就得定义成*动态组件*，然后还要加载它、把它附加到 DOM 中的元素上，并且装配所有的依赖、变更检测和事件处理，详见[动态组件加载器](guide/dynamic-component-loader)。
 
-Using an Angular custom element makes the process much simpler and more transparent, by providing all of the infrastructure and framework automatically&mdash;all you have to do is define the kind of event handling you want. (You do still have to exclude the component from compilation, if you are not going to use it in your app.)
+Using an Angular custom element makes the process much simpler and more transparent, by providing all of the infrastructure and framework automatically&mdash;all you have to do is define the kind of event handling you want. (You do still have to exclude the component from compilation, if you are not going to use it in your application.)
 
 用 Angular 自定义组件会让这个过程更简单、更透明。它会自动提供所有基础设施和框架，而你要做的就是定义所需的各种事件处理逻辑。（如果你不准备在应用中直接用它，还要把该组件在编译时排除出去。）
 
-The Popup Service example app (shown below) defines a component that you can either load dynamically or convert to a custom element.
+The following Popup Service example application defines a component that you can either load dynamically or convert to a custom element.
 
 这个弹窗服务的范例应用（见后面）定义了一个组件，你可以动态加载它也可以把它转换成自定义组件。
 
@@ -258,19 +258,19 @@ The Popup Service example app (shown below) defines a component that you can eit
 
    `popup.component.ts` 定义了一个简单的弹窗元素，用于显示一条输入消息，附带一些动画和样式。
 
-- `popup.service.ts` creates an injectable service that provides two different ways to invoke the PopupComponent; as a dynamic component, or as a custom element. Notice how much more setup is required for the dynamic-loading method.
+- `popup.service.ts` creates an injectable service that provides two different ways to invoke the `PopupComponent`; as a dynamic component, or as a custom element. Notice how much more setup is required for the dynamic-loading method.
 
-   `popup.service.ts` 创建了一个可注入的服务，它提供了两种方式来执行 PopupComponent：作为动态组件或作为自定义元素。注意动态组件的方式需要更多的代码来做搭建工作。
+   `popup.service.ts` 创建了一个可注入的服务，它提供了两种方式来执行 `PopupComponent`：作为动态组件或作为自定义元素。注意动态组件的方式需要更多的代码来做搭建工作。
 
-- `app.module.ts` adds the PopupComponent in the module's `entryComponents` list, to exclude it from compilation and avoid startup warnings or errors.
+- `app.module.ts` adds the `PopupComponent` in the module's `declarations` list.
 
-   `app.module.ts` 把 PopupComponent 添加到模块的 `entryComponents` 列表中，而从编译过程中排除它，以消除启动时的警告和错误。
+   `app.module.ts` 把 `PopupComponent` 添加到模块的 `entryComponents` 列表中，而从编译过程中排除它，以消除启动时的警告和错误。
 
-- `app.component.ts` defines the app's root component, which uses the PopupService to add the pop-up to the DOM at run time. When the app runs, the root component's constructor converts PopupComponent to a custom element.
+- `app.component.ts` defines the application's root component, which uses the `PopupService` to add the pop-up to the DOM at run time. When the application runs, the root component's constructor converts `PopupComponent` to a custom element.
 
-   `app.component.ts` 定义了该应用的根组件，它借助 PopupService 在运行时把这个弹窗添加到 DOM 中。在应用运行期间，根组件的构造函数会把 PopupComponent 转换成自定义元素。
+   `app.component.ts` 定义了该应用的根组件，它借助 `PopupService` 在运行时把这个弹窗添加到 DOM 中。在应用运行期间，根组件的构造函数会把 `PopupComponent` 转换成自定义元素。
 
-For comparison, the demo shows both methods. One button adds the popup using the dynamic-loading method, and the other uses the custom element. You can see that the result is the same; only the preparation is different.
+For comparison, the demo shows both methods. One button adds the popup using the dynamic-loading method, and the other uses the custom element. The result is the same; only the preparation is different.
 
 为了对比，这个范例中同时演示了这两种方式。一个按钮使用动态加载的方式添加弹窗，另一个按钮使用自定义元素的方式。可以看到，两者的结果是一样的，其差别只是准备过程不同。
 
@@ -297,19 +297,19 @@ For comparison, the demo shows both methods. One button adds the popup using the
 
 ## 为自定义元素添加类型支持
 
-Generic DOM APIs, such as `document.createElement()` or `document.querySelector()`, return an element type that is appropriate for the specified arguments. For example, calling `document.createElement('a')` will return an `HTMLAnchorElement`, which TypeScript knows has an `href` property. Similarly, `document.createElement('div')` will return an `HTMLDivElement`, which TypeScript knows has no `href` property.
+Generic DOM APIs, such as `document.createElement()` or `document.querySelector()`, return an element type that is appropriate for the specified arguments. For example, calling `document.createElement('a')` returns an `HTMLAnchorElement`, which TypeScript knows has an `href` property. Similarly, `document.createElement('div')` returns an `HTMLDivElement`, which TypeScript knows has no `href` property.
 
 一般的 DOM API，比如 `document.createElement()` 或 `document.querySelector()`，会返回一个与指定的参数相匹配的元素类型。比如，调用 `document.createElement('a')` 会返回 `HTMLAnchorElement`，这样 TypeScript 就会知道它有一个 `href` 属性，而 `document.createElement('div')` 会返回 `HTMLDivElement`，这样 TypeScript 就会知道它没有 `href` 属性。
 
-When called with unknown elements, such as a custom element name (`popup-element` in our example), the methods will return a generic type, such as `HTMLElement`, since TypeScript can't infer the correct type of the returned element.
+When called with unknown elements, such as a custom element name (`popup-element` in our example), the methods return a generic type, such as `HTMLElement`, because TypeScript can't infer the correct type of the returned element.
 
 当调用未知元素（比如自定义的元素名 `popup-element`）时，该方法会返回泛化类型，比如 `HTMLELement`，这时候 TypeScript 就无法推断出所返回元素的正确类型。
 
-Custom elements created with Angular extend `NgElement` (which in turn extends `HTMLElement`). Additionally, these custom elements will have a property for each input of the corresponding component. For example, our `popup-element` will have a `message` property of type `string`.
+Custom elements created with Angular extend `NgElement` (which in turn extends `HTMLElement`). Additionally, these custom elements will have a property for each input of the corresponding component. For example, our `popup-element` has a `message` property of type `string`.
 
 用 Angular 创建的自定义元素会扩展 `NgElement` 类型（而它扩展了 `HTMLElement`）。除此之外，这些自定义元素还拥有相应组件的每个输入属性。比如，`popup-element` 元素具有一个 `string` 型的 `message` 属性。
 
-There are a few options if you want to get correct types for your custom elements. Let's assume you create a `my-dialog` custom element based on the following component:
+There are a few options if you want to get correct types for your custom elements. Assume you create a `my-dialog` custom element based on the following component:
 
 如果你要让你的自定义元素获得正确的类型，还可使用一些选项。假设你要创建一个基于下列组件的自定义元素 `my-dialog`：
 
@@ -320,9 +320,9 @@ class MyDialog {
 }
 ```
 
-The most straightforward way to get accurate typings is to cast the return value of the relevant DOM methods to the correct type. For that, you can use the `NgElement` and `WithProperties` types (both exported from `@angular/elements`):
+The most straightforward way to get accurate typings is to cast the return value of the relevant DOM methods to the correct type. For that, use the `NgElement` and `WithProperties` types (both exported from `@angular/elements`):
 
-要获得精确类型，最直白的方式是把相关 DOM 方法的返回值转换成正确的类型。要做到这一点，你可以使用 `NgElement` 和 `WithProperties` 类型（都导出自 `@angular/elements`）：
+要获得精确类型，最直白的方式是把相关 DOM 方法的返回值转换成正确的类型。要做到这一点，可以使用 `NgElement` 和 `WithProperties` 类型（都导出自 `@angular/elements`）：
 
 ```ts
 const aDialog = document.createElement('my-dialog') as NgElement & WithProperties<{content: string}>;

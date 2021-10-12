@@ -250,17 +250,32 @@ export class RouterLink implements OnChanges {
    */
   @Input() relativeTo?: ActivatedRoute|null;
 
-  private commands: any[] = [];
-  private preserve!: boolean;
+  private commands: any[]|null = null;
 
   /** @internal */
   onChanges = new Subject<RouterLink>();
 
   constructor(
       private router: Router, private route: ActivatedRoute,
-      @Attribute('tabindex') tabIndex: string, renderer: Renderer2, el: ElementRef) {
-    if (tabIndex == null) {
-      renderer.setAttribute(el.nativeElement, 'tabindex', '0');
+      @Attribute('tabindex') private readonly tabIndexAttribute: string|null|undefined,
+      private readonly renderer: Renderer2, private readonly el: ElementRef) {
+    this.setTabIndexIfNotOnNativeEl('0');
+  }
+
+  /**
+   * Modifies the tab index if there was not a tabindex attribute on the element during
+   * instantiation.
+   */
+  private setTabIndexIfNotOnNativeEl(newTabIndex: string|null) {
+    if (this.tabIndexAttribute != null /* both `null` and `undefined` */) {
+      return;
+    }
+    const renderer = this.renderer;
+    const nativeElement = this.el.nativeElement;
+    if (newTabIndex !== null) {
+      renderer.setAttribute(nativeElement, 'tabindex', newTabIndex);
+    } else {
+      renderer.removeAttribute(nativeElement, 'tabindex');
     }
   }
 
@@ -284,7 +299,7 @@ export class RouterLink implements OnChanges {
    *
    *     **string** ：仅包含字符串的命令数组的简写，即 `['/route']`
    *
-   *   - **null|undefined**: shorthand for an empty array of commands, i.e. `[]`
+   *   - **null|undefined**: effectively disables the `routerLink`
    *
    *     **null | undefined** ：空命令数组的简写，即 `[]`
    *
@@ -294,14 +309,20 @@ export class RouterLink implements OnChanges {
   set routerLink(commands: any[]|string|null|undefined) {
     if (commands != null) {
       this.commands = Array.isArray(commands) ? commands : [commands];
+      this.setTabIndexIfNotOnNativeEl('0');
     } else {
-      this.commands = [];
+      this.commands = null;
+      this.setTabIndexIfNotOnNativeEl(null);
     }
   }
 
   /** @nodoc */
   @HostListener('click')
   onClick(): boolean {
+    if (this.urlTree === null) {
+      return true;
+    }
+
     const extras = {
       skipLocationChange: attrBoolValue(this.skipLocationChange),
       replaceUrl: attrBoolValue(this.replaceUrl),
@@ -311,7 +332,10 @@ export class RouterLink implements OnChanges {
     return true;
   }
 
-  get urlTree(): UrlTree {
+  get urlTree(): UrlTree|null {
+    if (this.commands === null) {
+      return null;
+    }
     return this.router.createUrlTree(this.commands, {
       // If the `relativeTo` input is not defined, we want to use `this.route` by default.
       // Otherwise, we should use the value provided by the user in the input.
@@ -427,14 +451,13 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    */
   @Input() relativeTo?: ActivatedRoute|null;
 
-  private commands: any[] = [];
+  private commands: any[]|null = null;
   private subscription: Subscription;
-  // TODO(issue/24571): remove '!'.
-  private preserve!: boolean;
 
   // the url displayed on the anchor element.
-  // TODO(issue/24571): remove '!'.
-  @HostBinding() href!: string;
+  // @HostBinding('attr.href') is used rather than @HostBinding() because it removes the
+  // href attribute when it becomes `null`.
+  @HostBinding('attr.href') href: string|null = null;
 
   /** @internal */
   onChanges = new Subject<RouterLinkWithHref>();
@@ -462,7 +485,7 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    *
    *     **string**：仅包含字符串的命令数组的简写，即 `['/route']`
    *
-   *   - **null|undefined**: shorthand for an empty array of commands, i.e. `[]`
+   *   - **null|undefined**: Disables the link by removing the `href`
    *
    *     **null | undefined** ：空命令数组的简写，即 `[]`
    *
@@ -473,7 +496,7 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
     if (commands != null) {
       this.commands = Array.isArray(commands) ? commands : [commands];
     } else {
-      this.commands = [];
+      this.commands = null;
     }
   }
 
@@ -497,7 +520,7 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
       return true;
     }
 
-    if (typeof this.target === 'string' && this.target != '_self') {
+    if (typeof this.target === 'string' && this.target != '_self' || this.urlTree === null) {
       return true;
     }
 
@@ -511,10 +534,15 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
   }
 
   private updateTargetUrlAndHref(): void {
-    this.href = this.locationStrategy.prepareExternalUrl(this.router.serializeUrl(this.urlTree));
+    this.href = this.urlTree !== null ?
+        this.locationStrategy.prepareExternalUrl(this.router.serializeUrl(this.urlTree)) :
+        null;
   }
 
-  get urlTree(): UrlTree {
+  get urlTree(): UrlTree|null {
+    if (this.commands === null) {
+      return null;
+    }
     return this.router.createUrlTree(this.commands, {
       // If the `relativeTo` input is not defined, we want to use `this.route` by default.
       // Otherwise, we should use the value provided by the user in the input.

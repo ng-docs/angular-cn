@@ -4,13 +4,13 @@
 
 Angular is a platform and framework for building single-page client applications using HTML and TypeScript.
 Angular is written in TypeScript.
-It implements core and optional functionality as a set of TypeScript libraries that you import into your apps.
+It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.
 
 Angular 是一个用 HTML 和 TypeScript 构建客户端应用的平台与框架。
 Angular 本身就是用 TypeScript 写成的。它将核心功能和可选功能作为一组 TypeScript 库进行实现，你可以把它们导入你的应用中。
 
 The architecture of an Angular application relies on certain fundamental concepts.
-The basic building blocks of the Angular framework are Angular components that are organized into *NgModules*. NgModules collect related code into functional sets; an Angular app is defined by a set of NgModules. An app always has at least a *root module* that enables bootstrapping, and typically has many more *feature modules*.
+The basic building blocks of the Angular framework are Angular components that are organized into *NgModules*. NgModules collect related code into functional sets; an Angular application is defined by a set of NgModules. An application always has at least a *root module* that enables bootstrapping, and typically has many more *feature modules*.
 
 Angular 的基本构造块是 *NgModule*，它为*组件*提供了编译的上下文环境。
 NgModule 会把相关的代码收集到一些功能集中。Angular 应用就是由一组 NgModule 定义出的。
@@ -40,7 +40,7 @@ Modules, components and services are classes that use *decorators*. These decora
 
    服务类的元数据提供了一些信息，Angular 要用这些信息来让组件可以通过*依赖注入（DI）*使用该服务。
 
-An app's components typically define many views, arranged hierarchically. Angular provides the `Router` service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
+An application's components typically define many views, arranged hierarchically. Angular provides the `Router` service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
 
 应用的组件通常会定义很多视图，并进行分级组织。Angular 提供了 `Router` 服务来帮助你定义视图之间的导航路径。
 路由器提供了先进的浏览器内导航功能。
@@ -55,10 +55,9 @@ An app's components typically define many views, arranged hierarchically. Angula
 
 <div class="alert is-helpful">
 
-  For the sample app that this page describes, see the <live-example></live-example>.
+  For the sample application that this page describes, see the <live-example></live-example>.
 
   要想查看本页所讲的范例程序，参阅<live-example></live-example>。
-
 </div>
 
 ## Modules
@@ -71,7 +70,7 @@ Angular 定义了 `NgModule`，它和 JavaScript（ES2015） 的模块不同而�
 NgModule 为一个组件集声明了编译的上下文环境，它专注于某个应用领域、某个工作流或一组紧密相关的能力。
 NgModule 可以将其组件和一组相关代码（如服务）关联起来，形成功能单元。
 
-Every Angular app has a *root module*, conventionally named `AppModule`, which provides the bootstrap mechanism that launches the application. An app typically contains many functional modules.
+Every Angular application has a *root module*, conventionally named `AppModule`, which provides the bootstrap mechanism that launches the application. An application typically contains many functional modules.
 
 每个 Angular 应用都有一个*根模块*，通常命名为 `AppModule`。根模块提供了用来启动应用的引导机制。
 一个应用通常会包含很多特性模块。
@@ -131,7 +130,7 @@ There are two types of data binding:
 模板中的*指令*会提供程序逻辑，而*绑定标记*会把你应用中的数据和 DOM 连接在一起。
 有两种类型的数据绑定：
 
-* *Event binding* lets your app respond to user input in the target environment by updating your application data.
+* *Event binding* lets your application respond to user input in the target environment by updating your application data.
 
    *事件绑定*让你的应用可以通过更新应用的数据来响应目标环境下的用户输入。
 
@@ -186,7 +185,7 @@ For data or logic that isn't associated with a specific view, and that you want 
 
 ### 路由
 
-The Angular `Router` NgModule provides a service that lets you define a navigation path among the different application states and view hierarchies in your app. It is modeled on the familiar browser navigation conventions:
+The Angular `Router` NgModule provides a service that lets you define a navigation path among the different application states and view hierarchies in your application. It is modeled on the familiar browser navigation conventions:
 
 Angular 的 `Router` 模块提供了一个服务，它可以让你定义在应用的各个不同状态和视图层次结构之间导航时要使用的路径。
 它的工作模型基于人们熟知的浏览器导航约定：
@@ -212,7 +211,7 @@ If the router determines that the current application state requires particular 
 
 如果路由器认为当前的应用状态需要某些特定的功能，而定义此功能的模块尚未加载，路由器就会按需*惰性加载*此模块。
 
-The router interprets a link URL according to your app's view navigation rules and data state. You can navigate to new views when the user clicks a button or selects from a drop box, or in response to some other stimulus from any source. The router logs activity in the browser's history, so the back and forward buttons work as well.
+The router interprets a link URL according to your application's view navigation rules and data state. You can navigate to new views when the user clicks a button or selects from a drop box, or in response to some other stimulus from any source. The router logs activity in the browser's history, so the back and forward buttons work as well.
 
 路由器会根据你应用中的导航规则和数据状态来拦截 URL。
 当用户点击按钮、选择下拉框或收到其它任何来源的输入时，你可以导航到一个新视图。

@@ -345,7 +345,7 @@ To apply the `.selected` class to the `<li>` when the user clicks it, use class 
 </div>
 
 Angular's [class binding](guide/attribute-binding#class-binding) can add and remove a CSS class conditionally.
-Just add `[class.some-css-class]="some-condition"` to the element you want to style.
+Add `[class.some-css-class]="some-condition"` to the element you want to style.
 
 Angular 的[类绑定](guide/attribute-binding#class-binding)可以有条件地添加和删除 CSS 类。只需将 `[class.some-css-class]="some-condition"` 添加到要设置样式的元素即可。
 

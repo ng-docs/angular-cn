@@ -48,7 +48,7 @@ To enable routing transition animation, do the following:
 
    定义动画。
 
-Let's illustrate a router transition animation by navigating between two routes, *Home* and *About* associated with the `HomeComponent` and `AboutComponent` views respectively. Both of these component views are children of the top-most view, hosted by `AppComponent`. We'll implement a router transition animation that slides in the new view to the right and slides out the old view when the user navigates between the two routes.
+Illustrate a router transition animation by navigating between two routes, *Home* and *About* associated with the `HomeComponent` and `AboutComponent` views respectively. Both of these component views are children of the top-most view, hosted by `AppComponent`. We'll implement a router transition animation that slides in the new view to the right and slides out the old view when the user navigates between the two routes.
 
 让我们以两个路由之间的导航过程来解释一下路由转场动画，*Home* 和 *About* 分别与 `HomeComponent` 和 `AboutComponent` 的视图相关联。所有这些组件视图都是顶层视图的子节点，其宿主是 `AppComponent`。我们将实现路由器过渡动画，该动画会在出现新视图时向右滑动，并当用户在两个路由之间导航时把旧视图滑出。
 
@@ -66,15 +66,15 @@ To begin, configure a set of routes using methods available in the `RouterModule
 
 首先，使用 `RouterModule` 类提供的方法来配置一组路由。该路由配置会告诉路由器该如何导航。
 
-Use the `RouterModule.forRoot` method to define a set of routes. Also, import this `RouterModule` to the `imports` array of the main module, `AppModule`.
+Use the `RouterModule.forRoot` method to define a set of routes. Also, add `RouterModule` to the `imports` array of the main module, `AppModule`.
 
-使用 `RouterModule.forRoot` 方法来定义一组路由。同时，把其返回值导入到主模块 `AppModule` 的 `imports` 数组中。
+使用 `RouterModule.forRoot` 方法来定义一组路由。同时，把其返回值添加到主模块 `AppModule` 的 `imports` 数组中。
 
 <div class="alert is-helpful">
 
-**Note:** Use the `RouterModule.forRoot` method in the root module, `AppModule`, to register top-level application routes and providers. For feature modules, call the `RouterModule.forChild` method to register additional routes.
+**Note:** Use the `RouterModule.forRoot` method in the root module, `AppModule`, to register top-level application routes and providers. For feature modules, call the `RouterModule.forChild` method instead.
 
-**注意：**在根模块 `AppModule` 中使用 `RouterModule.forRoot` 方法来注册一些顶层应用路由和提供者。对于特性模块，调用 `RouterModule.forChild` 方法来注册其它路由。
+**注意：**在根模块 `AppModule` 中使用 `RouterModule.forRoot` 方法来注册一些顶层应用路由和提供者。对于特性模块，则改用 `RouterModule.forChild` 方法。
 
 </div>
 
@@ -88,13 +88,13 @@ The `home` and `about` paths are associated with the `HomeComponent` and `AboutC
 
 `home` 和 `about` 路径分别关联着 `HomeComponent` 和 `AboutComponent` 视图。该路由配置告诉 Angular 路由器当导航匹配了相应的路径时，就实例化 `HomeComponent` 和 `AboutComponent` 视图。
 
-In addition to `path` and `component`, the `data` property of each route defines the key animation-specific configuration associated with a route. The `data` property value is passed into `AppComponent` when the route changes. You can also pass additional data in route configuration that is consumed within the animation. The data property value has to match the transitions defined in the `routeAnimation` trigger, which we'll define later.
+In addition to `path` and `component`, the `data` property of each route defines the key animation-specific configuration associated with a route. The `data` property value is passed into `AppComponent` when the route changes. You can also pass additional data in route configuration that is consumed within the animation. The data property value has to match the transitions defined in the `routeAnimation` trigger, which we'll define shortly.
 
 除了 `path`、`component` 之外，每个路由定义中的 `data` 属性也定义了与此路由有关的动画配置。当路由变化时，`data` 属性的值就会传给 `AppComponent`。你还可以在路由配置中传递其它的值供路由的动画使用。`data` 属性的值必须满足 `routeAnimation` 中定义的转场动画的要求，稍后我们就会定义它。
 
 <div class="alert is-helpful">
 
-**Note:** The `data` property names that you use can be arbitrary. For example, the name *animation* used in the example above is an arbitrary choice.
+**Note:** The `data` property names that you use can be arbitrary. For example, the name *animation* used in the preceding example is an arbitrary choice.
 
 **注意：**这个 `data` 中的属性名可以是任意的。例如，上面例子中使用的名字 *animation* 就是随便起的。
 
@@ -104,13 +104,13 @@ In addition to `path` and `component`, the `data` property of each route defines
 
 ## 路由出口
 
-After configuring the routes, tell the Angular router where to render the views when matched with a route. You can set a router outlet by inserting a `<router-outlet>` container inside the root `AppComponent` template.
+After configuring the routes, add a `<router-outlet>` inside the root `AppComponent` template. The `<router-outlet>` directive tells the Angular router where to render the views when matched with a route.
 
 配置好路由之后，还要告诉 Angular 路由器当路由匹配时，要把视图渲染到那里。你可以通过在根组件 `AppComponent` 的模板中插入一个 `<router-outlet>` 容器来指定路由出口的位置。
 
-The `<router-outlet>` container has an attribute directive that contains data about active routes and their states, based on the `data` property that we set in the route configuration.
+The `<router-outlet>` directive holds the custom data set for the currently active route which can be accessed via the directive's `activatedRouteData` property, we can use such data to animate our routing transitions.
 
-`<router-outlet>` 容器具有一个属性型指令，它包含关于活动路由及其状态的数据，这些数据会基于我们在路由配置中设置的 `data` 属性。
+`<router-outlet>` 指令持有当前活动路由的一组自定义数据，它可以通过该指令的 `activatedRouteData` 属性来访问，我们可以使用这些数据来播放路由转场动画。
 
 <code-example path="animations/src/app/app.component.html" header="src/app/app.component.html" region="route-animations-outlet"></code-example>
 
@@ -120,15 +120,15 @@ The `<router-outlet>` container has an attribute directive that contains data ab
 
 <code-example path="animations/src/app/app.component.ts" header="src/app/app.component.ts" region="prepare-router-outlet" language="typescript"></code-example>
 
-Here, the `prepareRoute()` method takes the value of the outlet directive (established through `#outlet="outlet"`) and returns a string value representing the state of the animation based on the custom data of the current active route. You can use this data to control which transition to execute for each route.
+Here, the `prepareRoute()` method takes the value of the outlet directive (established through `#outlet="outlet"`) and returns a string value representing the state of the animation based on the custom data of the current active route. Use this data to control which transition to execute for each route.
 
-这里的 `prepareRoute()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`），并根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。你可以使用这个数据来控制各个路由之间该执行哪个转场。
+这里的 `prepareRoute()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`），并根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个转场。
 
 ## Animation definition
 
 ## 动画定义
 
-Animations can be defined directly inside your components. For this example we are defining the animations in a separate file, which allows us to re-use the animations.
+Animations can be defined directly inside your components. For this example you are defining the animations in a separate file, which lets us re-use the animations.
 
 动画可以直接在组件中定义。对于此范例，我们会在独立的文件中定义动画，这让我们可以复用这些动画。
 
@@ -138,11 +138,11 @@ The following code snippet defines a reusable animation named `slideInAnimation`
 
 <code-example path="animations/src/app/animations.ts" header="src/app/animations.ts" region="route-animations" language="typescript"></code-example>
 
-The animation definition does several things:
+The animation definition performs the following tasks:
 
 该动画定义做了如下事情：
 
-* Defines two transitions. A single trigger can define multiple states and transitions.
+* Defines two transitions (a single `trigger` can define multiple states and transitions).
 
   定义两个转场。每个触发器都可以定义多个状态和多个转场。
 
@@ -172,15 +172,19 @@ Make the animation definition available in your application by adding the reusab
 
 <code-example path="animations/src/app/app.component.ts" header="src/app/app.component.ts" region="define" language="typescript"></code-example>
 
+So, let's break down the animation definition and see more closely what it does...
+
+那么，我们来分解一下这个动画定义，并仔细看看它做了什么……
+
 ### Styling the host and child components
 
 ### 为宿主组件和子组件添加样式
 
-During a transition, a new view is inserted directly after the old one and both elements appear on screen at the same time. To prevent this, apply additional styling to the host view, and to the removed and inserted child views. The host view must use relative positioning, and the child views must use absolute positioning. Adding styling to the views animates the containers in place, without the DOM moving things around.
+During a transition, a new view is inserted directly after the old one and both elements appear on screen at the same time. To prevent this behavior, update the host view to use relative positioning. Then, update the removed and inserted child views to use absolute positioning. Adding these styles to the views animates the containers in place and prevents one view from affecting the position of the other on the page.
 
-在转场期间，新视图将直接插入在旧视图后面，并且这两个元素会同时出现在屏幕上。要防止这种情况，就要为宿主视图以及要删除和插入的子视图指定一些额外的样式。宿主视图必须使用相对定位模式，而子视图则必须使用绝对定位模式。在这些视图中添加样式，就可以让容器就地播放动画，而不会让 DOM 移动。
+在转场期间，新视图将直接插入在旧视图后面，并且这两个元素会同时出现在屏幕上。要防止这种行为，就要修改宿主视图，改用相对定位。然后，把已移除或已插入的子视图改用绝对定位。在这些视图中添加样式，就可以让容器就地播放动画，并防止某个视图影响页面中其它视图的位置。
 
-<code-example path="animations/src/app/animations.ts" header="src/app/animations.ts" region="style-view" language="typescript"></code-example>
+<code-example path="animations/src/app/animations.ts" header="src/app/animations.ts (excerpt)" region="style-view" language="typescript"></code-example>
 
 ### Querying the view containers
 
@@ -190,11 +194,11 @@ Use the `query()` method to find and animate elements within the current host co
 
 使用 `query()` 方法可以找出当前宿主组件中的动画元素。`query(":enter")` 语句会返回已插入的视图，`query(":leave")` 语句会返回已移除的视图。
 
-Let's assume that we are routing from the *Home => About*.
+Assume that you are routing from the *Home => About*.
 
-我们假设正在从 *Home* 转场到 *About*，`Home => About`。
+假设你正在从 *Home* 转场到 *About*，`Home => About`。
 
-<code-example path="animations/src/app/animations.ts" header="src/app/animations.ts (Continuation from above)" region="query" language="typescript"></code-example>
+<code-example path="animations/src/app/animations.ts" header="src/app/animations.ts (excerpt)" region="query" language="typescript"></code-example>
 
 The animation code does the following after styling the views:
 
@@ -207,23 +211,23 @@ The animation code does the following after styling the views:
 
   在正在离开的视图上调用 `animateChild()`，来运行其子动画。
 
-* Uses `group()` function to make the inner animations run in parallel.
+* Uses <code>[group](api/animations/group)()</code> function to make the inner animations run in parallel.
 
-  使用 `group()` 函数来并行运行内部动画。
+  使用 [group()](api/animations/group) 函数来并行运行内部动画。
 
-* Within the `group()` function:
+* Within the <code>[group](api/animations/group)()</code> function:
 
-  在 `group()` 函数中：
+  在 [group()](api/animations/group) 函数中：
 
     * Queries the view that is removed and animates it to slide far to the right.
 
       查询已移除的视图，并让它从右侧滑出。
 
     * Slides in the new view by animating the view with an easing function and duration. <br />
-    This animation results in the `about` view sliding from the left to right.
+    This animation results in the `about` view sliding in from the left.
 
       使用缓动函数和持续时间定义的动画，让这个新视图滑入。<br />
-      此动画将导致 `about` 视图从左向右滑动。
+      此动画将导致 `about` 视图从左侧划入。
 
 * Calls the `animateChild()` method on the new view to run its child animations after the main animation completes.
 
@@ -237,7 +241,7 @@ You now have a basic routable animation that animates routing from one view to a
 
 ## 关于 Angular 动画的更多知识
 
-You may also be interested in the following:
+You might also be interested in the following:
 
 你可能还对下列内容感兴趣：
 

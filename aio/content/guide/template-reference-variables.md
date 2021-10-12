@@ -3,7 +3,7 @@
 # 模板变量
 
 Template variables help you use data from one part of a template in another part of the template.
-With template variables, you can perform tasks such as respond to user input or finely tune your application's forms.
+Use template variables to perform tasks such as respond to user input or finely tune your application's forms.
 
 模板变量可以帮助你在模板的另一部分使用这个部分的数据。使用模板变量，你可以执行某些任务，比如响应用户输入或微调应用的表单。
 
@@ -47,10 +47,10 @@ The following template variable, `#phone`, declares a `phone` variable on an `<i
 
 <code-example path="template-reference-variables/src/app/app.component.html" region="ref-var" header="src/app/app.component.html"></code-example>
 
-You can refer to a template variable anywhere in the component's template.
+Refer to a template variable anywhere in the component's template.
 Here, a `<button>` further down the template refers to the `phone` variable.
 
-你可以在组件模板中的任何地方引用某个模板变量。这里的 `<button>` 就引用了 `phone` 变量。
+可以在组件模板中的任何地方引用某个模板变量。这里的 `<button>` 就引用了 `phone` 变量。
 
 <code-example path="template-reference-variables/src/app/app.component.html" region="ref-phone" header="src/app/app.component.html"></code-example>
 
@@ -111,7 +111,7 @@ With `NgForm`, `itemForm` is a reference to the [NgForm](api/forms/NgForm "API: 
 而使用了 `NgForm` 之后，`itemForm` 就是对 [NgForm](api/forms/NgForm "API：NgForm") 指令的引用，可以用它来跟踪表单中每一个控件的值和有效性。
 
 Unlike the native `<form>` element, the `NgForm` directive has a `form` property.
-The `NgForm` `form` property allows you to disable the submit button if the `itemForm.form.valid` is invalid.
+The `NgForm` `form` property lets you disable the submit button if the `itemForm.form.valid` is invalid.
 
 与原生的 `<form>` 元素不同， `NgForm` 指令有一个 `form` 属性。如果 `itemForm.form.valid` 无效，那么 `NgForm` 的 `form` 属性就会让你禁用提交按钮。
 
@@ -119,11 +119,11 @@ The `NgForm` `form` property allows you to disable the submit button if the `ite
 
 ## 模板变量的作用域
 
-You can refer to a template variable anywhere within its surrounding template.
+Refer to a template variable anywhere within its surrounding template.
 [Structural directives](guide/built-in-directives), such as `*ngIf` and `*ngFor`, or `<ng-template>` act as a template boundary.
 You cannot access template variables outside of these boundaries.
 
-你可以在包含此模板变量的模板中的任何地方引用它。而 [结构型指令](guide/built-in-directives)（如 `*ngIf` 和 `*ngFor` 或 `<ng-template>` 同样充当了模板的边界。你不能在这些边界之外访问其中的模板变量。
+可以在包含此模板变量的模板中的任何地方引用它。而 [结构型指令](guide/built-in-directives)（如 `*ngIf` 和 `*ngFor` 或 `<ng-template>` 同样充当了模板的边界。你不能在这些边界之外访问其中的模板变量。
 
 <div class="alert is-helpful">
 
@@ -152,7 +152,7 @@ Accessing a template variable from the parent template works because the child t
 
 在这种情况下，有一个包含这个 `<span>` 的隐式 `<ng-template>`，而该变量的定义在该隐式模板之外。访问父模板中的模板变量是可行的，因为子模板会从父模板继承上下文。
 
-Rewriting the above code in a more verbose form explicitly shows the `<ng-template>`.
+Rewriting the preceding code in a more verbose form explicitly shows the `<ng-template>`.
 
 我们用更啰嗦的形式重写上述的代码，可以明确地显示出 `<ng-template>`。
 
@@ -161,7 +161,7 @@ Rewriting the above code in a more verbose form explicitly shows the `<ng-templa
 
 <!-- New template -->
 <ng-template [ngIf]="true">
-  <!-- Since the context is inherited, the value is available to the new template -->
+  <!-- Because the context is inherited, the value is available to the new template -->
   <span>Value: {{ ref1.value }}</span>
 </ng-template>
 ```
@@ -246,7 +246,7 @@ __proto__: Function
 
 ## 模板输入变量
 
-A _template input variable_ is a variable you can reference within a single instance of the template.
+A _template input variable_ is a variable to reference within a single instance of the template.
 You declare a template input variable using the `let` keyword as in `let hero`.
 
 *模板输入变量*是可以在模板的单个实例中引用的变量。你可以用 `let` 关键字声明模板输入变量，比如 `let hero`。
@@ -255,10 +255,16 @@ There are several such variables in this example: `hero`, `i`, and `odd`.
 
 在这个例子中，有几个这样的变量：`hero`、`i` 和 `odd`。
 
-The variable's scope is limited to a single instance of the repeated template.
-You can use the same variable name again in the definition of other structural directives.
+```html
+<ng-template #hero let-hero let-i="index" let-odd="isOdd">
+  <div [class]="{'odd-row': odd}">{{i}}:{{hero.name}}</div>
+</ng-template>
+```
 
-此变量的范围仅限于可复写模板中的单个实例。你可以在其他结构型指令的定义中再次使用相同的变量名。
+The variable's scope is limited to a single instance of the repeated template.
+Use the same variable name again in the definition of other structural directives.
+
+此变量的范围仅限于可复写模板中的单个实例。可以在其他结构型指令的定义中再次使用相同的变量名。
 
 In contrast, you declare a template variable by prefixing the variable name with `#`, as in `#var`.
 A template variable refers to its attached element, component, or directive.

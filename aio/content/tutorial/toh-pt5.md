@@ -155,7 +155,7 @@ configures it with the `routes` in one step by calling
 
 </div>
 
-Next, `AppRoutingModule` exports `RouterModule` so it will be available throughout the app.
+Next, `AppRoutingModule` exports `RouterModule` so it will be available throughout the application.
 
 接下来，`AppRoutingModule` 导出 `RouterModule`，以便它在整个应用程序中生效。
 
@@ -219,6 +219,11 @@ Append `/heroes` to the URL in the browser address bar.
 You should see the familiar heroes master/detail view.
 
 在地址栏中把 `/heroes` 追加到 URL 后面。你应该能看到熟悉的主从结构的英雄显示界面。
+
+Remove `/heroes` from the URL in the browser address bar.
+The browser should refresh and display the application title but not the list of heroes.
+
+从浏览器地址栏中的 URL 中移除 `/heroes`。浏览器就会刷新，并且显示本应用的标题，而不显示英雄列表。
 
 {@a routerlink}
 
@@ -517,7 +522,7 @@ The `DashboardComponent` hero links do nothing at the moment.
 此刻，`DashboardComponent` 中的英雄连接还没有反应。
 
 Now that the router has a route to `HeroDetailComponent`,
-fix the dashboard hero links to navigate via the _parameterized_ dashboard route.
+fix the dashboard hero links to navigate using the _parameterized_ dashboard route.
 
 路由器已经有一个指向 `HeroDetailComponent` 的路由了，
 修改仪表盘中的英雄连接，让它们通过参数化的英雄详情路由进行导航。
@@ -613,7 +618,7 @@ This section explains the following:
 
    从这个路由中提取出 `id`
 
-* Acquire the hero with that `id` from the server via the `HeroService`
+* Acquire the hero with that `id` from the server using the `HeroService`
 
    通过 `HeroService` 从服务器上获取具有这个 `id` 的英雄数据。
 

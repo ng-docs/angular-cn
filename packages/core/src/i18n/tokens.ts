@@ -15,9 +15,9 @@ import {InjectionToken} from '../di/injection_token';
  *
  * 提供此令牌以设置应用程序的语言环境。它通过 i18n 管道（DatePipe、I18nPluralPipe、CurrencyPipe、DecimalPipe 和 PercentPipe）和 ICU 表达式用于 i18n 提取。
  *
- * See the [i18n guide](guide/i18n#setting-up-locale) for more information.
+ * See the [i18n guide](guide/i18n-common-locale-id) for more information.
  *
- * 有关更多信息，请参见《 [i18n 指南》。](guide/i18n#setting-up-locale)
+ * 有关更多信息，请参见 [i18n 指南](guide/i18n-common-locale-id)。
  *
  * @usageNotes
  *
@@ -46,9 +46,9 @@ export const LOCALE_ID = new InjectionToken<string>('LocaleId');
  *
  * 如果没有传递任何货币代码，请提供此令牌来设置你的应用程序用于 CurrencyPipe 的默认货币代码。仅由 CurrencyPipe 使用，与语言环境的货币无关。如果未配置，则默认为 USD。
  *
- * See the [i18n guide](guide/i18n#setting-up-locale) for more information.
+ * See the [i18n guide](guide/i18n-common-locale-id) for more information.
  *
- * 有关更多信息，请参见[《i18n 指南》](guide/i18n#setting-up-locale)。
+ * 有关更多信息，请参见 [i18n 指南](guide/i18n-common-locale-id)。
  *
  * <div class="alert is-helpful">
  *
@@ -100,9 +100,9 @@ export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrency
  *
  * 当你想用另一种语言翻译应用程序时，可以在引导程序中使用此令牌来提供翻译文件的内容（ `xtb`、`xlf` 或 `xlf2`）
  *
- * See the [i18n guide](guide/i18n#merge) for more information.
+ * See the [i18n guide](guide/i18n-common-merge) for more information.
  *
- * 有关更多信息，请参见[《i18n 指南》](guide/i18n#setting-up-locale)。
+ * 有关更多信息，请参见 [i18n 指南](guide/i18n-common-merge)。
  *
  * @usageNotes
  *
@@ -133,9 +133,9 @@ export const TRANSLATIONS = new InjectionToken<string>('Translations');
  *
  * 在引导程序中提供此令牌以设置 {@link TRANSLATIONS} 的格式： `xtb`、`xlf` 或 `xlf2`。
  *
- * See the [i18n guide](guide/i18n#merge) for more information.
+ * See the [i18n guide](guide/i18n-common-merge) for more information.
  *
- * 有关更多信息，请参见[《i18n 指南》](guide/i18n#setting-up-locale)。
+ * 有关更多信息，请参见 [i18n 指南](guide/i18n-common-merge)。
  *
  * @usageNotes
  *
@@ -175,9 +175,9 @@ export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsForma
  *
  *   Ignore：什么都不做。
  *
- * See the [i18n guide](guide/i18n#missing-translation) for more information.
+ * See the [i18n guide](guide/i18n-common-merge#report-missing-translations) for more information.
  *
- * 有关更多信息，请参见[《i18n 指南》](guide/i18n#setting-up-locale)。
+ * 有关更多信息，请参见 [i18n 指南](guide/i18n-common-merge#report-missing-translations)。
  *
  * @usageNotes
  *

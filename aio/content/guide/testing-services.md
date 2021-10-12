@@ -8,18 +8,19 @@ To check that your services are working as you intend, you can write tests speci
 
 <div class="alert is-helpful">
 
-  For the sample app that the testing guides describe, see the <live-example name="testing" embedded-style noDownload>sample app</live-example>.
+For a hands-on experience, <live-example name="testing" stackblitz="specs" noDownload>run tests and explore the test code</live-example> in your browser as your read this guide.
 
-  对于本测试指南中描述的范例应用，参阅<live-example name="testing" embedded-style noDownload>范例应用</live-example>。
+要上手练习，请按照本指南中所讲的，在浏览器中<live-example name="testing" stackblitz="specs" noDownload>运行测试，并浏览测试代码</live-example>。
 
-  For the tests features in the testing guides, see <live-example name="testing" stackblitz="specs" noDownload>tests</live-example>.
 
-  要了解本测试指南中涉及的测试特性，请参阅<live-example name="testing" stackblitz="specs" noDownload>tests</live-example>。
+If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
 
-Services are often the easiest files to unit test.
+Services are often the smoothest files to unit test.
 Here are some synchronous and asynchronous unit tests of the `ValueService`
 written without assistance from Angular testing utilities.
 
@@ -34,7 +35,7 @@ written without assistance from Angular testing utilities.
 ## 有依赖的服务
 
 Services often depend on other services that Angular injects into the constructor.
-In many cases, it's easy to create and _inject_ these dependencies by hand while
+In many cases, you can create and _inject_ these dependencies by hand while
 calling the service's constructor.
 
 服务通常依赖于 Angular 在构造函数中注入的其它服务。在很多情况下，调用服务的构造函数时，很容易手动创建和*注入*这些依赖。
@@ -63,17 +64,17 @@ However, injecting the real service rarely works well as most dependent services
 
 然而，注入真实服务很难工作良好，因为大多数被依赖的服务都很难创建和控制。
 
-Instead you can mock the dependency, use a dummy value, or create a
-[spy](https://jasmine.github.io/2.0/introduction.html#section-Spies)
+Instead, mock the dependency, use a dummy value, or create a
+[spy](https://jasmine.github.io/tutorials/your_first_suite#section-Spies)
 on the pertinent service method.
 
-相反，你可以模拟依赖、使用仿制品，或者在相关的服务方法上[创建一个测试间谍](https://jasmine.github.io/2.0/introduction.html#section-Spies)。
+相反，可以模拟依赖、使用仿制品，或者在相关的服务方法上[创建一个测试间谍](https://jasmine.github.io/tutorials/your_first_suite#section-Spies)。
 
 <div class="alert is-helpful">
 
-Prefer spies as they are usually the easiest way to mock services.
+Prefer spies as they are usually the best way to mock services.
 
-我更喜欢用测试间谍，因为它们通常是模拟服务的最简单方式。
+我更喜欢用测试间谍，因为它们通常是模拟服务的最佳途径。
 
 </div>
 
@@ -83,7 +84,7 @@ These standard testing techniques are great for unit testing services in isolati
 
 However, you almost always inject services into application classes using Angular
 dependency injection and you should have tests that reflect that usage pattern.
-Angular testing utilities make it easy to investigate how injected services behave.
+Angular testing utilities make it straightforward to investigate how injected services behave.
 
 但是，你几乎总是使用 Angular 依赖注入机制来将服务注入到应用类中，你应该有一些测试来体现这种使用模式。 Angular 测试实用工具可以让你轻松调查这些注入服务的行为。
 
@@ -91,7 +92,7 @@ Angular testing utilities make it easy to investigate how injected services beha
 
 ## 使用 *TestBed* 测试服务
 
-Your app relies on Angular [dependency injection (DI)](guide/dependency-injection)
+Your application relies on Angular [dependency injection (DI)](guide/dependency-injection)
 to create services.
 When a service has a dependent service, DI finds or creates that dependent service.
 And if that dependent service has its own dependencies, DI finds-or-creates them as well.
@@ -200,7 +201,7 @@ Begin by putting re-usable, preparatory code in a _setup_ function instead of `b
 
 The `setup()` function returns an object literal
 with the variables, such as `masterService`, that a test might reference.
-You don't define _semi-global_ variables (e.g., `let masterService: MasterService`)
+You don't define _semi-global_ variables (for example, `let masterService: MasterService`)
 in the body of the `describe()`.
 
 `setup()` 函数返回一个包含测试可能引用的变量（如 `masterService`）的对象字面量。你并没有在 `describe()` 的函数体中定义*半全局*变量（例如 `let masterService: MasterService` ）。

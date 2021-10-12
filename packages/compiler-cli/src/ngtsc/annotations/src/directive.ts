@@ -6,9 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {compileClassMetadata, compileDeclareClassMetadata, compileDeclareDirectiveFromMetadata, compileDirectiveFromMetadata, ConstantPool, Expression, ExternalExpr, FactoryTarget, getSafePropertyAccessString, makeBindingParser, ParsedHostBindings, ParseError, parseHostBindings, R3ClassMetadata, R3DirectiveMetadata, R3FactoryMetadata, R3QueryMetadata, Statement, verifyHostBindings, WrappedNodeExpr} from '@angular/compiler';
-import {emitDistinctChangesOnlyDefaultValue} from '@angular/compiler/src/core';
-import * as ts from 'typescript';
+import {compileClassMetadata, compileDeclareClassMetadata, compileDeclareDirectiveFromMetadata, compileDirectiveFromMetadata, ConstantPool, emitDistinctChangesOnlyDefaultValue, Expression, ExternalExpr, FactoryTarget, getSafePropertyAccessString, makeBindingParser, ParsedHostBindings, ParseError, parseHostBindings, R3ClassMetadata, R3DirectiveMetadata, R3FactoryMetadata, R3QueryMetadata, Statement, verifyHostBindings, WrappedNodeExpr} from '@angular/compiler';
+import ts from 'typescript';
 
 import {ErrorCode, FatalDiagnosticError} from '../../diagnostics';
 import {Reference} from '../../imports';
@@ -64,7 +63,7 @@ export class DirectiveSymbol extends SemanticSymbol {
     super(decl);
   }
 
-  isPublicApiAffected(previousSymbol: SemanticSymbol): boolean {
+  override isPublicApiAffected(previousSymbol: SemanticSymbol): boolean {
     // Note: since components and directives have exactly the same items contributing to their
     // public API, it is okay for a directive to change into a component and vice versa without
     // the API being affected.
@@ -83,7 +82,7 @@ export class DirectiveSymbol extends SemanticSymbol {
         !isArrayEqual(this.exportAs, previousSymbol.exportAs);
   }
 
-  isTypeCheckApiAffected(previousSymbol: SemanticSymbol): boolean {
+  override isTypeCheckApiAffected(previousSymbol: SemanticSymbol): boolean {
     // If the public API of the directive has changed, then so has its type-check API.
     if (this.isPublicApiAffected(previousSymbol)) {
       return true;

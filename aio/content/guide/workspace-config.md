@@ -20,27 +20,27 @@ The following properties, at the top level of the file, configure the workspace.
 
 下列属性位于文件的顶层，用于配置工作区。
 
-* `version`: The configuration-file version.
+*   `version`: The configuration-file version.
 
   `version`：该配置文件的版本。
 
-* `newProjectRoot`: Path where new projects are created. Absolute or relative to the workspace folder.
+*   `newProjectRoot`: Path where new projects are created. Absolute or relative to the workspace folder.
 
   `newProjectRoot`：用来创建新工程的位置。绝对路径或相对于工作区目录的路径。
 
-* `defaultProject`: Default project name to use in commands, where not provided as an argument. When you use `ng new` to create a new app in a new workspace, that app is the default project for the workspace until you change it here.
+*   `defaultProject`: Default project name to use in commands, where not provided as an argument. When you use `ng new` to create a new application in a new workspace, that application is the default project for the workspace until you change it here.
 
   `defaultProject`：当命令中没有指定参数时，要使用的默认工程名。当你用 `ng new` 在新的工作区中创建新应用时，该应用就会一直作为此工作区的默认项目，除非你到这里修改它。
 
-* `schematics` : A set of [schematics](guide/glossary#schematic) that customize the `ng generate` sub-command option defaults for this workspace. See [Generation schematics](#schematics) below.
+*   `schematics` : A set of [schematics](guide/glossary#schematic) that customize the `ng generate` sub-command option defaults for this workspace. See the [Generation schematics](#schematics) section.
 
-   `schematics`：一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅稍后的[生成器原理图](#schematics)。
+   `schematics`：一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅[生成器原理图](#schematics)。
 
-* `projects` : Contains a subsection for each project (library or application) in the workspace, with the per-project configuration options.
+*   `projects` : Contains a subsection for each project (library or application) in the workspace, with the per-project configuration options.
 
   `projects`：对于工作区中的每个项目（应用或库）都会包含一个子分区，子分区中是每个项目的配置项。
 
-The initial app that you create with `ng new app_name` is listed under "projects":
+The initial application that you create with `ng new app_name` is listed under "projects":
 
 你通过 `ng new app_name` 命令创建的初始应用会列在 `projects` 目录下：
 
@@ -60,11 +60,11 @@ When you create a library project with `ng generate library`, the library projec
 
 <div class="alert is-helpful">
 
-  Note that the `projects` section of the configuration file does not correspond exactly to the workspace file structure.
+**NOTE**: The `projects` section of the configuration file does not correspond exactly to the workspace file structure.
 
   请注意，配置文件的 `projects` 节与工作区的文件结构并不完全对应。
 
-  * The initial app created by `ng new` is at the top level of the workspace file structure.
+  * The initial application created by `ng new` is at the top level of the workspace file structure.
 
   `ng new` 创建的这个初始应用位于工作区文件结构的顶层。
 
@@ -107,10 +107,10 @@ The following top-level configuration properties are available for each project,
 | `sourceRoot` | 该项目源文件的根文件夹。 |
 | `projectType` | One of "application" or "library". An application can run independently in a browser, while a library cannot. |
 | `projectType` | "application" 或 "library" 之一。应用可以在浏览器中独立运行，而库则不行。 |
-| `prefix` | A string that Angular prepends to generated selectors. Can be customized to identify an app or feature area. |
+| `prefix` | A string that Angular prepends to generated selectors. Can be customized to identify an application or feature area. |
 | `prefix` | Angular 所生成的选择器的前缀字符串。可以自定义它，以作为应用或功能区的标识。 |
-| `schematics` | A set of schematics that customize the `ng generate` sub-command option defaults for this project. See [Generation schematics](#schematics) below. |
-| `schematics` | 一组原理图（schematic），它可以为该项目自定义 `ng generate` 子命令的默认选项。 |
+| `schematics` | A set of schematics that customize the `ng generate` sub-command option defaults for this project. See the [Generation schematics](#schematics) section. |
+| `schematics` | 一组原理图（schematic），它可以为该项目自定义 `ng generate` 子命令的默认选项。参见[生成原理图](#schematics)部分。 |
 | `architect` | Configuration defaults for Architect builder targets for this project. |
 | `architect` | 为本项目的各个构建器目标配置默认值。 |
 
@@ -162,18 +162,17 @@ Architect 是一个根据[目标](guide/glossary#target)配置运行指定的[�
 ### 默认的建筑师构建器和目标
 
 Angular defines default builders for use with specific CLI commands, or with the general `ng run` command.
-The JSON schemas that define the options and defaults for each of these default builders are collected in the [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/master/packages/angular/cli/lib/config/schema.json) package.
+The JSON schemas that define the options and defaults for each of these default builders are collected in the [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/builders.json) package.
 The schemas configure options for the following builders.
 
 Angular 定义了用于特定 CLI 命令或常规 `ng run` 命令的默认构建器。为每个默认构建器定义选项和默认值的 JSON 模式收集在 [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/master/packages/angular/cli/lib/config/schema.json) 包中。这些架构为以下构建器配置选项。
 
-* app-shell
-* browser
-* dev-server
-* extract-i18n
-* karma
-* server
-* tslint
+* [app-shell](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/src/builders/app-shell/schema.json)
+* [browser](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/src/builders/browser/schema.json)
+* [dev-server](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/src/builders/dev-server/schema.json)
+* [extract-i18n](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/src/builders/extract-i18n/schema.json)
+* [karma](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/src/builders/karma/schema.json)
+* [server](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_angular/src/builders/server/schema.json)
 
 ### Configuring builder targets
 
@@ -206,15 +205,15 @@ See the example in [Build target](#build-target) below.
 </code-example>
 
 * The `architect/build` section configures defaults for options of the `ng build` command.
-  See [Build target](#build-target) below for more information.
+  See the [Build target](#build-target) section for more information.
 
-    `architect/build` 节会为 `ng build` 命令的选项配置默认值。更多信息，参阅稍后的[构建目标](#build-target)部分。
+    `architect/build` 节会为 `ng build` 命令的选项配置默认值。更多信息，参阅[构建目标](#build-target)部分。
 
-* The `architect/serve` section overrides build defaults and supplies additional serve defaults for the `ng serve` command. In addition to the options available for the `ng build` command, it adds options related to serving the app.
+* The `architect/serve` section overrides build defaults and supplies additional serve defaults for the `ng serve` command. In addition to the options available for the `ng build` command, it adds options related to serving the application.
 
   `architect/serve` 节会覆盖构建默认值，并为 `ng serve` 命令提供额外的服务器默认值。除了 `ng build` 命令的可用选项之外，还增加了与开发服务器有关的选项。
 
-* The `architect/e2e` section overrides build-option defaults for building end-to-end testing apps using the `ng e2e` command.
+* The `architect/e2e` section overrides build-option defaults for building end-to-end testing applications using the `ng e2e` command.
 
   `architect/e2e` 节覆盖了构建选项默认值，以便用 `ng e2e` 命令构建端到端测试应用。
 
@@ -222,7 +221,7 @@ See the example in [Build target](#build-target) below.
 
   `architect/test` 节会覆盖测试时的构建选项默认值，并为 `ng test` 命令提供额外的默认值以供运行测试。
 
-* The `architect/lint` section configures defaults for options of the `ng lint` command, which performs code analysis on project source files. The default linting tool for Angular is [TSLint](https://palantir.github.io/tslint/).
+* The `architect/lint` section configures defaults for options of the `ng lint` command, which performs code analysis on project source files. 
 
   `architect/lint` 节为 `ng lint` 命令配置了默认值，用于对项目源文件进行代码分析。Angular 默认的 linting 工具为 [TSLint](https://palantir.github.io/tslint/)。
 
@@ -230,18 +229,17 @@ See the example in [Build target](#build-target) below.
 
   `architect/extract-i18n` 节为 `ng xi18n` 命令所用到的 `ng-xi18n` 工具选项配置了默认值，该命令用于从源代码中提取带标记的消息串，并输出翻译文件。
 
-* The `architect/server` section configures defaults for creating a Universal app with server-side rendering, using the `ng run <project>:server` command.
+* The `architect/server` section configures defaults for creating a Universal application with server-side rendering, using the `ng run <project>:server` command.
 
   `architect/server` 节用于为使用 `ng run <project>:server` 命令创建带服务器端渲染的 Universal 应用配置默认值。
-
-* The `architect/app-shell` section configures defaults for creating an app shell for a progressive web app (PWA), using the `ng run <project>:app-shell` command.
+*   The `architect/app-shell` section configures defaults for creating an application shell for a progressive web application (PWA), using the `ng run <project>:app-shell` command.
 
   `architect/app-shell` 部分使用 `ng run <project>:app-shell` 命令为渐进式 Web 应用（PWA）配置创建应用外壳的默认值。
 
 In general, the options for which you can configure defaults correspond to the command options listed in the [CLI reference page](cli) for each command.
-Note that all options in the configuration file must use [camelCase](guide/glossary#case-conventions), rather than dash-case.
+**NOTE**: All options in the configuration file must use [camelCase](guide/glossary#case-conventions), rather than dash-case.
 
-一般来说，可以为 [CLI 参考手册中](cli)列出的每个命令配置相应的默认值。注意，配置文件中的所有选项都必须使用 [camelCase](guide/glossary#case-conventions)，而不是 dash-case。
+一般来说，可以为 [CLI 参考手册中](cli)列出的每个命令配置相应的默认值。**注意**，配置文件中的所有选项都必须使用 [camelCase](guide/glossary#case-conventions)，而不是 dash-case。
 
 {@a build-target}
 
@@ -256,12 +254,12 @@ The `architect/build` section configures defaults for options of the `ng build` 
 | PROPERTY | DESCRIPTION |
 | :------- | :---------- |
 | 属性 | 说明 |
-| `builder` | The npm package for the build tool used to create this target. The default builder for an application (`ng build myApp`)is `@angular-devkit/build-angular:browser`, which uses the [webpack](https://webpack.js.org/) package bundler.                                                                                    Note that a different builder is used for building a library (`ng build myLib`). |
-| `builder` | 用于构建此目标的构建工具的 npm 包。默认为 `@angular-devkit/build-angular:browser`，它使用的是 [webpack](https://webpack.js.org/) 打包器。 |
-| `options` | This section contains default build target options, used when no named alternative configuration is specified. See [Default build targets](#default-build-targets) below. |
-| `options` | 本节包含构建选项的默认值，当没有指定命名的备用配置时使用。参阅下面的[默认构建选项](#build-props)。 |
-| `configurations` | This section defines and names alternative configurations for different intended destinations. It contains a section for each named configuration, which sets the default options for that intended environment. See [Alternate build configurations](#build-configs) below. |
-| `configurations` | 本节定义并命名针对不同目标的备用配置。它为每个命名配置都包含一节，用于设置该目标环境的默认选项。参阅下面的[备用的构建配置](#build-configs)。 |
+| `builder` | The npm package for the build tool used to create this target. The default builder for an application (`ng build myApp`)is `@angular-devkit/build-angular:browser`, which uses the [webpack](https://webpack.js.org) package bundler. **NOTE**: A different builder is used for building a library (`ng build myLib`). |
+| `builder` | 用于构建此目标的构建工具的 npm 包。默认为 `@angular-devkit/build-angular:browser`，它使用的是 [webpack](https://webpack.js.org) 打包器。 **注意**：当构建库（`ng build myLib`）时使用了不同的构建器。|
+| `options` | This section contains default build target options, used when no named alternative configuration is specified. See the [Default build targets](#default-build-targets) section. |
+| `options` | 本节包含构建选项的默认值，当没有指定命名的备用配置时使用。参阅[默认构建选项](#build-props)。 |
+| `configurations` | This section defines and names alternative configurations for different intended destinations. It contains a section for each named configuration, which sets the default options for that intended environment. See the [Alternate build configurations](#build-configs) section. |
+| `configurations` | 本节定义并命名针对不同目标的备用配置。它为每个命名配置都包含一节，用于设置该目标环境的默认选项。参阅[备用的构建配置](#build-configs)。 |
 
 {@a build-configs}
 
@@ -289,17 +287,17 @@ Angular CLI 具有两种构建配置： `production` 和 `development`。默认�
 
   重写代码，以使用简短、混乱的名称（最小化）
 
-You can define and name additional alternate configurations (such as `stage`, for instance) appropriate to your development process. Some examples of different build configurations are `stable`, `archive` and `next` used by AIO itself, and the individual locale-specific configurations required for building localized versions of an app. For details, see [Internationalization (i18n)](guide/i18n#merge-aot).
+You can define and name additional alternate configurations (such as `stage`, for instance) appropriate to your development process. Some examples of different build configurations are `stable`, `archive`, and `next` used by AIO itself, and the individual locale-specific configurations required for building localized versions of an application. For details, see [Internationalization (i18n)][AioGuideI18nCommonMerge].
 
-你可以定义和命名适用于你的开发过程的其它备用配置（例如 `stage`）。其它构建配置的一些例子是 AIO 自己使用的 `stable`、`archive`、`next`，以及构建本地化版本应用所需的各个与区域有关的配置置。欲知详情，参阅[国际化（i18n）](guide/i18n#merge-aot)。
+你可以定义和命名适用于你的开发过程的其它备用配置（例如 `stage`）。其它构建配置的一些例子是 AIO 自己使用的 `stable`、`archive`、`next`，以及构建本地化版本应用所需的各个与区域有关的配置置。欲知详情，参阅[国际化（i18n）][AioGuideI18nCommonMerge]。
 
 You can select an alternate configuration by passing its name to the `--configuration` command line flag.
 
 你可以通过将它们的名称传给 `--configuration` 命令行标志来选择替代配置。
 
-You can also pass in more than one configuration name as a comma-separated list. For example, to apply both `stage` and `fr` build configurations, use the command `ng build --configuration stage,fr`. In this case,  the command parses the named configurations from left to right. If multiple configurations change the same setting, the last-set value is the final one.
+You can also pass in more than one configuration name as a comma-separated list. For example, to apply both `stage` and `fr` build configurations, use the command `ng build --configuration stage,fr`. In this case, the command parses the named configurations from left to right. If multiple configurations change the same setting, the last-set value is the final one. So in this example, if both `stage` and `fr` configurations set the output path the value in `fr` would get used.
 
-你还可以用逗号分隔的列表传入多个配置名称。例如，要同时应用 `stage` 和 `fr` 构建配置，请使用命令 `ng build --configuration stage,fr`。在这种情况下，该命令从左到右解析命名的配置。如果多个配置更改了同一个设置，则最后设置的值生效。
+你还可以用逗号分隔的列表传入多个配置名称。例如，要同时应用 `stage` 和 `fr` 构建配置，请使用命令 `ng build --configuration stage,fr`。在这种情况下，该命令从左到右解析命名的配置。如果多个配置更改了同一个设置，则最后设置的值生效。所以，在这个例子中，如果同时配置了 `stage` 和 `fr`，则会使用 `fr` 中设置的输出路径的值。
 
 {@a build-props}
 
@@ -318,15 +316,15 @@ Some additional options can only be set through the configuration file, either b
 | OPTIONS PROPERTIES | DESCRIPTION |
 | :----------------- | :---------- |
 | 选项属性 | 说明 |
-| `assets` | An object containing paths to static assets to add to the global context of the project. The default paths point to the project's icon file and its `assets` folder. See more in [Assets configuration](#asset-config) below. |
-| `assets` | 一个对象，包含一些用于添加到项目的全局上下文中的静态文件路径。它的默认路径指向项目的图标文件及项目的 `assets` 文件夹。参阅稍后的[项目资产（asset）配置](#asset-config)部分。 |
-| `styles` | An array of style files to add to the global context of the project. Angular CLI supports CSS imports and all major CSS preprocessors: [sass/scss](https://sass-lang.com/), [less](http://lesscss.org/), and [stylus](https://stylus-lang.com/). See more in [Styles and scripts configuration](#style-script-config) below. |
-| `styles` | 一个对象，包含一些要添加到项目全局上下文中的样式文件。Angular CLI 支持 CSS 导入和所有主要的 CSS 预处理器： [sass/scss](http://sass-lang.com/)、[less](http://lesscss.org/) 和 [stylus](http://stylus-lang.com/)。参阅稍后的 [样式和脚本配置](#style-script-config)部分。 |
-| `stylePreprocessorOptions` | An object containing option-value pairs to pass to style preprocessors. See more in [Styles and scripts configuration](#style-script-config) below. |
-| `stylePreprocessorOptions` | 一个对象，包含要传给样式预处理器的选项"值-对"。参阅稍后的 [样式和脚本配置](#style-script-config) 部分。 |
-| `scripts` | An object containing JavaScript script files to add to the global context of the project. The scripts are loaded exactly as if you had added them in a `<script>` tag inside `index.html`. See more in [Styles and scripts configuration](#style-script-config) below. |
-| `scripts` | 一个对象，包含一些 JavaScript 脚本文件，用于添加到项目的全局上下文中。这些脚本的加载方式和在 `index.html` 的 `<script>` 标签中添加是完全一样的。参阅稍后的 [样式和脚本配置](#style-script-config) 部分。 |
-| `budgets` | Default size-budget type and threshholds for all or parts of your app. You can configure the builder to report a warning or an error when the output reaches or exceeds a threshold size. See [Configure size budgets](guide/build#configure-size-budgets). (Not available in `test` section.) |
+| `assets` | An object containing paths to static assets to add to the global context of the project. The default paths point to the project's icon file and its `assets` folder. See more in the [Assets configuration](#asset-config) section. |
+| `assets` | 一个对象，包含一些用于添加到项目的全局上下文中的静态文件路径。它的默认路径指向项目的图标文件及项目的 `assets` 文件夹。参阅[项目资产（asset）配置](#asset-config)部分。 |
+| `styles` | An array of style files to add to the global context of the project. Angular CLI supports CSS imports and all major CSS preprocessors: [sass/scss](https://sass-lang.com) and [less](http://lesscss.org). See more in the [Styles and scripts configuration](#style-script-config) section. |
+| `styles` | 一个对象，包含一些要添加到项目全局上下文中的样式文件。Angular CLI 支持 CSS 导入和所有主要的 CSS 预处理器： [sass/scss](http://sass-lang.com/) 和 [less](http://lesscss.org/)。参阅 [样式和脚本配置](#style-script-config)部分。 |
+| `stylePreprocessorOptions` | An object containing option-value pairs to pass to style preprocessors. See more in the [Styles and scripts configuration](#style-script-config) section. |
+| `stylePreprocessorOptions` | 一个对象，包含要传给样式预处理器的选项"值-对"。参阅 [样式和脚本配置](#style-script-config) 部分。 |
+| `scripts` | An object containing JavaScript script files to add to the global context of the project. The scripts are loaded exactly as if you had added them in a `<script>` tag inside `index.html`. See more in the [Styles and scripts configuration](#style-script-config) section. |
+| `scripts` | 一个对象，包含一些 JavaScript 脚本文件，用于添加到项目的全局上下文中。这些脚本的加载方式和在 `index.html` 的 `<script>` 标签中添加是完全一样的。参阅 [样式和脚本配置](#style-script-config) 部分。 |
+| `budgets` | Default size-budget type and thresholds for all or parts of your application. You can configure the builder to report a warning or an error when the output reaches or exceeds a threshold size. See [Configure size budgets](guide/build#configure-size-budgets). (Not available in `test` section.) |
 | `budgets` | 全部或部分应用的默认尺寸预算的类型和阈值。当构建的输出达到或超过阈值大小时，你可以将构建器配置为报告警告或错误。参阅[配置尺寸预算](guide/build#configure-size-budgets)。（不适用于 `test` 部分。） |
 | `fileReplacements` | An object containing files and their compile-time replacements. See more in [Configure target-specific file replacements](guide/build#configure-target-specific-file-replacements). |
 | `fileReplacements` | 一个对象，包含一些文件及其编译时替代品。参阅[为指定的目标配置文件替换规则](guide/build#configure-target-specific-file-replacements) 部分。 |
@@ -371,23 +369,23 @@ A asset specification object can have the following fields.
 
 你可以通过把资产指定为对象的形式来进一步配置要复制的资产，而不仅是相对于工作区根目录的路径。一个资产对象可以包含如下字段。
 
-* `glob`:  A [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) using `input` as base directory.
+*   `glob`: A [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) using `input` as base directory.
 
   `glob`：一个 [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) 它使用 `input` 作为基准目录。
 
-* `input`: A path relative to the workspace root.
+*   `input`: A path relative to the workspace root.
 
   `input`：相对于工作区根目录的路径。
 
-* `output`: A path relative to `outDir` (default is `dist/`*project-name*). Because of the security implications, the CLI never writes files outside of the project output path.
+*   `output`: A path relative to `outDir` (default is `dist/`*project-name*). Because of the security implications, the CLI never writes files outside of the project output path.
 
   `output`：相对于 `outDir` 的路径（默认为 `dist/`*project-name* ）。为了杜绝安全隐患，CLI 永远不会在项目输出路径之外写文件。
 
-* `ignore`: A list of globs to exclude.
+*   `ignore`: A list of globs to exclude.
 
   `ignore` ：要排除的 glob 列表。
 
-* `followSymlinks`: Allow glob patterns to follow symlink directories. This allows subdirectories of the symlink to be searched. Defaults to `false`.
+*   `followSymlinks`: Allow glob patterns to follow symlink directories. This allows subdirectories of the symlink to be searched. Defaults to `false`.
 
   `followSymlinks`：允许这些 glob 模式跟踪目录的符号链接。这样会允许搜索符号链接过来的子目录。默认为 `false`。
 
@@ -418,11 +416,11 @@ For example, the following configuration copies assets from a node package:
 
 <code-example language="json">
 "assets": [
- {
-   "glob": "**/*",
-   "input": "./node_modules/some-package/images",
-   "output": "/some-package/"
- }
+  {
+    "glob": "**/*",
+    "input": "./node_modules/some-package/images",
+    "output": "/some-package/"
+  }
 ]
 
 </code-example>
@@ -437,12 +435,12 @@ The following example uses the `ignore` field to exclude certain files in the as
 
 <code-example language="json">
 "assets": [
- {
-   "glob": "**/*",
-   "input": "src/assets/",
-   "ignore": ["**/*.svg"],
-   "output": "/assets/"
- }
+  {
+    "glob": "**/*",
+    "input": "src/assets/",
+    "ignore": ["**/*.svg"],
+    "output": "/assets/"
+  }
 ]
 
 </code-example>
@@ -468,20 +466,20 @@ For example, the following object values create and name a bundle that contains 
 
 <code-example language="json">
 
-   "styles": [
-     {
-       "input": "src/external-module/styles.scss",
-       "inject": false,
-       "bundleName": "external-module"
-     }
-   ],
-   "scripts": [
-     {
-       "input": "src/external-module/main.js",
-       "inject": false,
-       "bundleName": "external-module"
-     }
-   ]
+"styles": [
+  {
+    "input": "src/external-module/styles.scss",
+    "inject": false,
+    "bundleName": "external-module"
+  }
+],
+"scripts": [
+  {
+    "input": "src/external-module/main.js",
+    "inject": false,
+    "bundleName": "external-module"
+  }
+]
 
 </code-example>
 
@@ -506,7 +504,7 @@ You can mix simple and complex file references for styles and scripts.
 
 #### 样式预处理器选项
 
-In Sass and Stylus you can make use of the `includePaths` functionality for both component and global styles, which allows you to add extra base paths that will be checked for imports.
+In Sass you can make use of the `includePaths` functionality for both component and global styles, which allows you to add extra base paths that will be checked for imports.
 
 在 Sass 和 Stylus 中，你可以同时使用组件样式和全局样式的 `includePaths` 功能，从而可以添加将用来检查导入的额外基本路径。
 
@@ -528,15 +526,17 @@ Files in that folder, such as `src/style-paths/_variables.scss`, can be imported
 
 该文件夹中的文件，例如 `src/style-paths/_variables.scss`，可以从项目中的任何位置导入，而无需相对路径：
 
-```ts
+<code-example language="typescript">
+
 // src/app/app.component.scss
 // A relative path works
 @import '../style-paths/variables';
 // But now this works as well
 @import 'variables';
-```
 
-Note that you will also need to add any styles or scripts to the `test` builder if you need them for unit tests.
+</code-example>
+
+**NOTE**: You will also need to add any styles or scripts to the `test` builder if you need them for unit tests.
 See also [Using runtime-global libraries inside your app](guide/using-libraries#using-runtime-global-libraries-inside-your-app).
 
 请注意，如果要将其用于单元测试，则还需要向 `test` 构建器中添加某些样式或脚本。另请参阅[在应用程序内部使用运行时全局库](guide/using-libraries#using-runtime-global-libraries-inside-your-app)。
@@ -573,7 +573,17 @@ There are several options that can be used to fine-tune the optimization of an a
 
 有几个选项可用于微调应用程序的优化方式。
 
-<table class="is-full-width is-fixed-layout">
+| Option    | Description                                                                    | Value Type | Dafault Value |
+|:---       |:---                                                                            |:---        |:---           |
+| 选项    | 说明                                                                    | 值类型 | 默认值 |
+| `scripts` | Enables optimization of the scripts output.                                    | `boolean`  | `true`        |
+| `scripts` | 启用脚本输出优化。                                    | `boolean`  | `true`        |
+| `styles`  | Enables optimization of the styles output.                                     | `boolean`  | `true`        |
+| `styles`  | 启用样式输出优化。                                     | `boolean`  | `true`        |
+| `fonts`   | Enables optimization for fonts. <br /> **NOTE**: This requires internet access. | `boolean`  | `true`        |
+| `fonts`   | 启用字体优化。 <br /> **注意**：这需要进行国际互联网访问。 | `boolean`  | `true`        |
+
+<!--<table class="is-full-width is-fixed-layout">
 <thead>
 <tr>
 <th>Option</th>
@@ -626,13 +636,21 @@ There are several options that can be used to fine-tune the optimization of an a
 <td><code>true</code></td>
 </tr>
 </tbody>
-</table>
+</table>-->
 
 #### Styles optimization options
 
 #### 样式优化选项
 
-<table class="is-full-width is-fixed-layout">
+| Option           | Description                                                                                                              | Value Type | Dafault Value |
+|:---              |:---                                                                                                                      |:---        |:---           |
+| 选项           | 说明                                                                                                              | 值类型 | 默认值 |
+| `minify`         | Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values.        | `boolean`  | `true`        |
+| `minify`         | 最小化 CSS 定义，移除多余的空格和注释、合并标识符，并对值进行最小化。        | `boolean`  | `true`        |
+| `inlineCritical` | Extract and inline critical CSS definitions to improve [First Contentful Paint](https://web.dev/first-contentful-paint). | `boolean`  | `true`        |
+| `inlineCritical` | 提取并内联一些关键 CSS 定义，以提高[首次内容绘制（FCP）性能](https://web.dev/first-contentful-paint)。 | `boolean`  | `true`        |
+
+<!--<table class="is-full-width is-fixed-layout">
 <thead>
 <tr>
 <th>Option</th>
@@ -673,13 +691,19 @@ There are several options that can be used to fine-tune the optimization of an a
 <td><code>true</code></td>
 </tr>
 </tbody>
-</table>
+</table>-->
 
 #### Fonts optimization options
 
 #### 字体优化选项
 
-<table class="is-full-width is-fixed-layout">
+| Option   | Description                                                                                                                                                                                                                          | Value Type | Dafault Value |
+|:---      |:---                                                                                                                                                                                                                                  |:---        |:---           |
+| 选项           | 说明                                                                                                              | 值类型 | 默认值 |
+| `inline` | Reduce [render blocking requests](https://web.dev/render-blocking-resources) by inlining external Google Fonts and Adobe Fonts CSS definitions in the application's HTML index file. <br /> **NOTE**: This requires internet access. | `boolean`  | `true`        |
+| `inline` | 通过在应用的 index.html 中内联外部 Google 字体和 Adobe 字体的 CSS 定义，来减少[阻塞渲染的请求](https://web.dev/render-blocking-resources)<br /> **注意**：这需要国际互联网访问。 | `boolean`  | `true`        |
+
+<!--<table class="is-full-width is-fixed-layout">
 <thead>
 <tr>
 <th>Option</th>
@@ -697,7 +721,7 @@ There are several options that can be used to fine-tune the optimization of an a
 <tbody>
 <tr>
 <td><code>inline</code></td>
-<td>Reduce <a href="https://web.dev/render-blocking-resources/">render blocking requests</a> by inlining external Google fonts and icons CSS definitions in the application's HTML index file.<br><strong>Note:</strong>This requires internet access.</td>
+<td>Reduce <a href="https://web.dev/render-blocking-resources/">render blocking requests</a> by inlining external Google Fonts and Adobe Fonts CSS definitions in the application's HTML index file.<br><strong>Note:</strong>This requires internet access.</td>
 <td><code class="no-auto-link">boolean</code></td>
 <td><code>true</code></td>
 </tr>
@@ -708,29 +732,28 @@ There are several options that can be used to fine-tune the optimization of an a
 <td><code>true</code></td>
 </tr>
 </tbody>
-</table>
+</table>-->
 
-* The `optimization` option applies to scripts, styles and fonts. You can supply a value such as the following to apply optimization to one or the other:
+You can supply a value such as the following to apply optimization to one or the other:
 
-  `optimization` 选项适用于脚本，样式和字体。你可以提供诸如以下的值，以将此优化应用于一个或另一个：
+你可以提供如下值，以便应用其中的一项或几项优化：
 
 <code-example language="json">
 
-  "optimization": {
-    "scripts": true,
-    "styles": {
-      "minify": true,
-      "inlineCritical": true
-    },
-    "fonts": true
-  }
+"optimization": {
+  "scripts": true,
+  "styles": {
+    "minify": true,
+    "inlineCritical": true
+  },
+  "fonts": true
+}
 
 </code-example>
 
 <div class="alert is-helpful">
 
-   For [Universal](guide/glossary#universal), you can reduce the code rendered in the HTML page by
-   setting styles optimization to `true`.
+For [Universal](guide/glossary#universal), you can reduce the code rendered in the HTML page by setting styles optimization to `true`.
 
   字体优化需要互联网访问。
   当启用它时，将会把外部 Google 字体和图标的定义内联在应用的 HTML 索引文件中，从而缩减那些阻塞渲染的请求。
@@ -745,7 +768,19 @@ The `sourceMap` browser builder option can be either a Boolean or an Object for 
 
 `sourceMap` 这个浏览器构建器选项可以是 Boolean 或 Object，以进行更精细的配置以控制应用程序的源码映射。
 
-<table class="is-full-width is-fixed-layout">
+| Option    | Description                                        | Value Type | Dafault Value |
+|:---       |:---                                                |:---        |:---           |
+| 选项           | 说明                                                                                                              | 值类型 | 默认值 |
+| `scripts` | Output source maps for all scripts.                | `boolean`  | `true`        |
+| `scripts` | 为所有脚本输出源码映射文件。                | `boolean`  | `true`        |
+| `styles`  | Output source maps for all styles.                 | `boolean`  | `true`        |
+| `styles`  | 为所有样式输出源码映射文件。                 | `boolean`  | `true`        |
+| `vendor`  | Resolve vendor packages source maps.               | `boolean`  | `false`        |
+| `vendor`  | 解析来自依赖包的源码映射信息。              | `boolean`  | `false`        |
+| `hidden`  | Output source maps used for error reporting tools. | `boolean`  | `false`        |
+| `hidden`  | 为错误报告工具输出源码映射文件。 | `boolean`  | `false`        |
+
+<!--<table class="is-full-width is-fixed-layout">
 <thead>
 <tr>
 <th>Option</th>
@@ -810,29 +845,35 @@ The `sourceMap` browser builder option can be either a Boolean or an Object for 
 <td><code>false</code></td>
 </tr>
 </tbody>
-</table>
-
+</table>-->
 The example below shows how to toggle one or more values to configure the source map outputs:
 
-以下示例显示了如何切换一个或多个值以配置源码映射输出：
+以下示例展示了如何切换一个或多个值以配置源码映射输出：
 
 <code-example language="json">
 
-  "sourceMap": {
-    "scripts": true,
-    "styles": false,
-    "hidden": true,
-    "vendor": true
-  }
+"sourceMap": {
+  "scripts": true,
+  "styles": false,
+  "hidden": true,
+  "vendor": true
+}
 
 </code-example>
 
 <div class="alert is-helpful">
 
-   When using hidden source maps, source maps will not be referenced in the bundle.
-   These are useful if you only want source maps to map error stack traces in error reporting tools,
-   but don't want to expose your source maps in the browser developer tools.
+When using hidden source maps, source maps will not be referenced in the bundle.
+These are useful if you only want source maps to map error stack traces in error reporting tools, but don't want to expose your source maps in the browser developer tools.
 
   使用隐藏式源码映射时，捆绑包中不会引用源码映射。如果你只希望在错误报告工具中通过源码映射映射错误堆栈跟踪，而又不想在浏览器开发工具中公开源码映射，则这些选项很有用。
 
 </div>
+
+<!-- links -->
+
+[AioGuideI18nCommonMerge]: guide/i18n-common-merge "Common Internationalization task #6: Merge translations into the application | Angular"
+
+<!-- end links -->
+
+@reviewed 2021-09-15

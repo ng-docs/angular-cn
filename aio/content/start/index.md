@@ -10,7 +10,7 @@ This tutorial introduces you to the essentials of Angular by walking you through
 
 本教程将通过构建一个电子商务网站，向你介绍 Angular 的基本知识。该网站具有商品名录、购物车和结账表单。
 
-To help you get started right away, this tutorial uses a ready-made application that you can examine and modify interactively on [Stackblitz](https://stackblitz.com/)&mdash;without having to [set up a local work environment](guide/setup-local "Setup guide").
+To help you get started right away, this tutorial uses a ready-made application that you can examine and modify interactively on [StackBlitz](https://stackblitz.com/)&mdash;without having to [set up a local work environment](guide/setup-local "Setup guide").
 StackBlitz is a browser-based development environment where you can create, save, and share projects using a variety of technologies.
 
 为了帮助你更好地起步，本教程提供了一个已完成的应用，你可以在 [Stackblitz](https://stackblitz.com/) 上试验及互动，而不用[建立本地开发环境](guide/setup-local "Setup guide")。
@@ -332,10 +332,16 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
    <code-example header="src/app/product-alerts/product-alerts.component.html" path="getting-started/src/app/product-alerts/product-alerts.component.1.html"></code-example>
 
-1. To display `ProductAlertsComponent` as a child of `ProductListComponent`, add the selector, `<app-product-alerts>` to `product-list.component.html`.
+1. To make `ProductAlertsComponent` available to other components in the application, add it to `AppModule`'s declarations in `app.module.ts`.
+
+   要让 `ProductAlertsComponent` 可用于本应用的其它组件中，就要把它添加到 `app.module.ts` 文件中的 `AppModule` 的 `declarations` 中。
+
+  <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-product-alerts"></code-example>
+
+1. Finally, to display `ProductAlertsComponent` as a child of `ProductListComponent`, add the selector, `<app-product-alerts>` to `product-list.component.html`.
    Pass the current product as input to the component using property binding.
 
-   要将 `ProductAlertsComponent` 显示为 `ProductListComponent` 的子级，请将选择器 `<app-product-alerts>` 添加到 `product-list.component.html` 中。使用属性绑定将当前产品作为输入传给此组件。
+   最后，要将 `ProductAlertsComponent` 显示为 `ProductListComponent` 的子级，请将选择器 `<app-product-alerts>` 添加到 `product-list.component.html` 中。使用属性绑定将当前产品作为输入传给此组件。
 
    <code-example header="src/app/product-list/product-list.component.html" path="getting-started/src/app/product-list/product-list.component.5.html" region="app-product-alerts"></code-example>
 
@@ -360,6 +366,16 @@ The `ProductAlertsComponent` needs to emit an event when the user clicks **Notif
 
 为了使 **Notify Me** 按钮起作用，子组件需要通知并将数据传递给父组件。当用户单击 **Notify Me** 时 `ProductAlertsComponent` 需要引发一个事件，并且 `ProductListComponent` 需要响应此事件。
 
+  <div class="alert is-helpful">
+
+  In new components, the Angular Generator includes an empty `constructor()`, the `OnInit` interface, and the `ngOnInit()` method.
+  Since these steps don't use them, the following code examples omit them for brevity.
+
+  在新建组件时，Angular 生成器会包含一个空的 `constructor()`、`OnInit` 接口和 `ngOnInit()` 方法。
+  由于这些步骤不会使用它们，下列范例代码中都省略了它们，以求简洁。
+
+  </div>
+
 1. In `product-alerts.component.ts`, import `Output` and `EventEmitter` from `@angular/core`.
 
    在 `product-alerts.component.ts` 中，从 `@angular/core` 导入符号 `Output` 和 `EventEmitter`。
@@ -372,15 +388,6 @@ The `ProductAlertsComponent` needs to emit an event when the user clicks **Notif
    在组件类中，使用 `@Output()` 装饰器和 `EventEmitter()` 的实例定义一个名为 `notify` 的属性。使用 `@Output()` 配置 `ProductAlertsComponent`，这会让 `ProductAlertsComponent` 在 `notify` 属性的值发生变化时引发一个事件。
 
    <code-example path="getting-started/src/app/product-alerts/product-alerts.component.ts" header="src/app/product-alerts/product-alerts.component.ts" region="input-output"></code-example>
-
-   <div class="alert is-helpful">
-
-   In new components, the Angular Generator includes an empty `constructor()`, the `OnInit` interface, and the `ngOnInit()` method.
-   Since these steps don't use them, the following code example omits them for brevity.
-
-   在新组件中，Angular Generator 包括一个空的 `constructor()`、一个 `OnInit` 接口和 `ngOnInit()` 方法。由于这些步骤未使用到它们，因此以下代码范例为简洁起见将其省略。
-
-   </div>
 
 1. In `product-alerts.component.html`, update the **Notify Me** button with an event binding to call the `notify.emit()` method.
 

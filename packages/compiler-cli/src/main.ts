@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -7,26 +6,22 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-// Must be imported first, because Angular decorators throw on load.
-import 'reflect-metadata';
-
-import * as ts from 'typescript';
-import * as tsickle from 'tsickle';
-
-import {replaceTsWithNgInErrors} from './ngtsc/diagnostics';
+import ts from 'typescript';
+import type {TsickleHost} from 'tsickle';
+import yargs from 'yargs';
+import {Diagnostics, exitCodeFromResult, filterErrorsAndWarnings, formatDiagnostics, ParsedConfiguration, performCompilation, readConfiguration} from './perform_compile';
+import {createPerformWatchHost, performWatchCompilation} from './perform_watch';
 import * as api from './transformers/api';
 import {GENERATED_FILES} from './transformers/util';
 
-import {exitCodeFromResult, performCompilation, readConfiguration, formatDiagnostics, Diagnostics, ParsedConfiguration, filterErrorsAndWarnings} from './perform_compile';
-import {performWatchCompilation, createPerformWatchHost} from './perform_watch';
-import {NodeJSFileSystem, setFileSystem} from './ngtsc/file_system';
+type TsickleModule = typeof import('tsickle');
 
 export function main(
     args: string[], consoleError: (s: string) => void = console.error,
     config?: NgcParsedConfiguration, customTransformers?: api.CustomTransformers, programReuse?: {
       program: api.Program|undefined,
     },
-    modifiedResourceFiles?: Set<string>|null): number {
+    modifiedResourceFiles?: Set<string>|null, tsickle?: TsickleModule): number {
   let {project, rootNames, options, errors: configErrors, watch, emitFlags} =
       config || readNgcCommandLineAndConfiguration(args);
   if (configErrors.length) {
@@ -47,7 +42,7 @@ export function main(
     options,
     emitFlags,
     oldProgram,
-    emitCallback: createEmitCallback(options),
+    emitCallback: createEmitCallback(options, tsickle),
     customTransformers,
     modifiedResourceFiles
   });
@@ -59,8 +54,8 @@ export function main(
 
 export function mainDiagnosticsForTest(
     args: string[], config?: NgcParsedConfiguration,
-    programReuse?: {program: api.Program|undefined},
-    modifiedResourceFiles?: Set<string>|null): ReadonlyArray<ts.Diagnostic|api.Diagnostic> {
+    programReuse?: {program: api.Program|undefined}, modifiedResourceFiles?: Set<string>|null,
+    tsickle?: TsickleModule): ReadonlyArray<ts.Diagnostic|api.Diagnostic> {
   let {project, rootNames, options, errors: configErrors, watch, emitFlags} =
       config || readNgcCommandLineAndConfiguration(args);
   if (configErrors.length) {
@@ -78,7 +73,7 @@ export function mainDiagnosticsForTest(
     emitFlags,
     oldProgram,
     modifiedResourceFiles,
-    emitCallback: createEmitCallback(options),
+    emitCallback: createEmitCallback(options, tsickle),
   });
 
   if (programReuse !== undefined) {
@@ -88,12 +83,16 @@ export function mainDiagnosticsForTest(
   return compileDiags;
 }
 
-function createEmitCallback(options: api.CompilerOptions): api.TsEmitCallback|undefined {
+function createEmitCallback(
+    options: api.CompilerOptions, tsickle?: TsickleModule): api.TsEmitCallback|undefined {
   if (!options.annotateForClosureCompiler) {
     return undefined;
   }
+  if (tsickle == undefined) {
+    throw Error('Tsickle is not provided but `annotateForClosureCompiler` is enabled.');
+  }
   const tsickleHost: Pick<
-      tsickle.TsickleHost,
+      TsickleHost,
       'shouldSkipTsickleProcessing'|'pathToModuleName'|'shouldIgnoreWarningsForPath'|
       'fileNameToModuleId'|'googmodule'|'untyped'|'convertIndexImportShorthand'|
       'transformDecorators'|'transformTypesToClosure'> = {
@@ -122,13 +121,12 @@ function createEmitCallback(options: api.CompilerOptions): api.TsEmitCallback|un
            host,
            options
          }) =>
-             // tslint:disable-next-line:no-require-imports only depend on tsickle if requested
-      require('tsickle').emitWithTsickle(
-          program, {...tsickleHost, options, host, moduleResolutionHost: host}, host, options,
-          targetSourceFile, writeFile, cancellationToken, emitOnlyDtsFiles, {
-            beforeTs: customTransformers.before,
-            afterTs: customTransformers.after,
-          });
+             tsickle.emitWithTsickle(
+                 program, {...tsickleHost, options, moduleResolutionHost: host}, host, options,
+                 targetSourceFile, writeFile, cancellationToken, emitOnlyDtsFiles, {
+                   beforeTs: customTransformers.before,
+                   afterTs: customTransformers.after,
+                 });
 }
 
 export interface NgcParsedConfiguration extends ParsedConfiguration {
@@ -137,18 +135,27 @@ export interface NgcParsedConfiguration extends ParsedConfiguration {
 
 export function readNgcCommandLineAndConfiguration(args: string[]): NgcParsedConfiguration {
   const options: api.CompilerOptions = {};
-  const parsedArgs = require('minimist')(args);
+  const parsedArgs =
+      yargs(args)
+          .parserConfiguration({'strip-aliased': true})
+          .option('i18nFile', {type: 'string'})
+          .option('i18nFormat', {type: 'string'})
+          .option('locale', {type: 'string'})
+          .option('missingTranslation', {type: 'string', choices: ['error', 'warning', 'ignore']})
+          .option('outFile', {type: 'string'})
+          .option('watch', {type: 'boolean', alias: ['w']})
+          .parseSync();
+
   if (parsedArgs.i18nFile) options.i18nInFile = parsedArgs.i18nFile;
   if (parsedArgs.i18nFormat) options.i18nInFormat = parsedArgs.i18nFormat;
   if (parsedArgs.locale) options.i18nInLocale = parsedArgs.locale;
-  const mt = parsedArgs.missingTranslation;
-  if (mt === 'error' || mt === 'warning' || mt === 'ignore') {
-    options.i18nInMissingTranslations = mt;
-  }
+  if (parsedArgs.missingTranslation)
+    options.i18nInMissingTranslations =
+        parsedArgs.missingTranslation as api.CompilerOptions['i18nInMissingTranslations'];
+
   const config = readCommandLineAndConfiguration(
       args, options, ['i18nFile', 'i18nFormat', 'locale', 'missingTranslation', 'watch']);
-  const watch = parsedArgs.w || parsedArgs.watch;
-  return {...config, watch};
+  return {...config, watch: parsedArgs.watch};
 }
 
 export function readCommandLineAndConfiguration(
@@ -229,13 +236,4 @@ function printDiagnostics(
   }
   const formatHost = getFormatDiagnosticsHost(options);
   consoleError(formatDiagnostics(diagnostics, formatHost));
-}
-
-// CLI entry point
-if (require.main === module) {
-  process.title = 'Angular Compiler (ngc)';
-  const args = process.argv.slice(2);
-  // We are running the real compiler so run against the real file-system
-  setFileSystem(new NodeJSFileSystem());
-  process.exitCode = main(args);
 }

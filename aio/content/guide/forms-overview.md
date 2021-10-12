@@ -48,7 +48,7 @@ Reactive forms and template-driven forms process and manage form data differentl
 
   **响应式表单**提供对底层表单对象模型直接、显式的访问。它们与模板驱动表单相比，更加健壮：它们的可扩展性、可复用性和可测试性都更高。如果表单是你的应用程序的关键部分，或者你已经在使用响应式表单来构建应用，那就使用响应式表单。
 
-* **Template-driven forms** rely on directives in the template to create and manipulate the underlying object model. They are useful for adding a simple form to an app, such as an email list signup form. They're easy to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, template-driven forms could be a good fit.
+* **Template-driven forms** rely on directives in the template to create and manipulate the underlying object model. They are useful for adding a simple form to an app, such as an email list signup form. They're straightforward to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, template-driven forms could be a good fit.
 
   **模板驱动表单**依赖**模板中的**指令来创建和操作底层的对象模型。它们对于向应用添加一个简单的表单非常有用，比如电子邮件列表注册表单。它们很容易添加到应用中，但在扩展性方面不如响应式表单。如果你有可以只在模板中管理的非常基本的表单需求和逻辑，那么模板驱动表单就很合适。
 
@@ -56,7 +56,7 @@ Reactive forms and template-driven forms process and manage form data differentl
 
 ### 关键差异
 
-The table below summarizes the key differences between reactive and template-driven forms.
+The following table summarizes the key differences between reactive and template-driven forms.
 
 下表总结了响应式表单和模板驱动表单之间的一些关键差异。
 
@@ -132,9 +132,9 @@ Both reactive and template-driven forms are built on the following base classes.
 
     `FormArray` 用于追踪表单控件数组的值和状态。
 
-* `ControlValueAccessor` creates a bridge between Angular `FormControl` instances and native DOM elements.
+* `ControlValueAccessor` creates a bridge between Angular `FormControl` instances and built-in DOM elements.
 
-  `ControlValueAccessor` 用于在 Angular 的 `FormControl` 实例和原生 DOM 元素之间创建一个桥梁。
+  `ControlValueAccessor` 用于在 Angular 的 `FormControl` 实例和内置 DOM 元素之间创建一个桥梁。
 
 {@a setup-the-form-model}
 
@@ -437,7 +437,7 @@ The following examples demonstrate the process of testing forms with reactive an
 
 ### 测试响应式表单
 
-Reactive forms provide a relatively easy testing strategy because they provide synchronous access to the form and data models, and they can be tested without rendering the UI.
+Reactive forms provide a relatively straightforward testing strategy because they provide synchronous access to the form and data models, and they can be tested without rendering the UI.
 In these tests, status and data are queried and manipulated through the control without interacting with the change detection cycle.
 
 响应式表单提供了相对简单的测试策略，因为它们能提供对表单和数据模型的同步访问，而且不必渲染 UI 就能测试它们。在这些测试中，控件和数据是通过控件进行查询和操纵的，不需要和变更检测周期打交道。

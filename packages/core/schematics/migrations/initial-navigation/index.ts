@@ -8,7 +8,7 @@
 
 import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {relative} from 'path';
-import * as ts from 'typescript';
+import ts from 'typescript';
 import {getProjectTsConfigPaths} from '../../utils/project_tsconfig_paths';
 import {canMigrateFile, createMigrationProgram} from '../../utils/typescript/compiler_host';
 import {InitialNavigationCollector} from './collector';
@@ -17,8 +17,8 @@ import {UpdateRecorder} from './update_recorder';
 
 /** Entry point for the v10 "initialNavigation RouterModule options" schematic. */
 export default function(): Rule {
-  return (tree: Tree) => {
-    const {buildPaths, testPaths} = getProjectTsConfigPaths(tree);
+  return async (tree: Tree) => {
+    const {buildPaths, testPaths} = await getProjectTsConfigPaths(tree);
     const basePath = process.cwd();
 
     if (!buildPaths.length && !testPaths.length) {

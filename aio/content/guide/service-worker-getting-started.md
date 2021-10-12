@@ -18,17 +18,17 @@ A basic understanding of the information in [Introduction to Angular service wor
 
 ## 为你的项目添加 Service Worker
 
-To set up the Angular service worker in your project, use the CLI command `ng add @angular/pwa`. It takes care of configuring your application to use service workers by adding the `service-worker` package along
+To set up the Angular service worker in your project, use the CLI command `ng add @angular/pwa`. It takes care of configuring your application to use service workers by adding the `@angular/service-worker` package along
 with setting up the necessary support files.
 
-要让你的项目支持 Angular Service Worker，可以使用 CLI 命令 `ng add @angular/pwa`。它会添加 `service-worker` 包，并建立必要的支持文件，小心翼翼地配置你的应用，以便使用 Service Worker。
+要让你的项目支持 Angular Service Worker，可以使用 CLI 命令 `ng add @angular/pwa`。它会添加 `@angular/service-worker` 包，并建立必要的支持文件，小心翼翼地配置你的应用，以便使用 Service Worker。
 
 ```sh
 
 ng add @angular/pwa --project *project-name*
 ```
 
-The above command completes the following actions:
+The preceding command completes the following actions:
 
 上述命令完成了如下步骤：
 
@@ -52,7 +52,7 @@ The above command completes the following actions:
 
        包含要添加到 `manifest.webmanifest` 文件中的链接。
 
-    * Adds meta tags for `theme-color`.
+    * Adds a meta tag for `theme-color`.
 
        为 `theme-color` 添加 meta 标签。
 
@@ -90,10 +90,10 @@ using an example application.
 
 ### 用 `http-server` 启动开发服务器
 
-Because `ng serve` does not work with service workers, you must use a separate HTTP server to test your project locally. You can use any HTTP server. The example below uses the [http-server](https://www.npmjs.com/package/http-server) package from npm. To reduce the possibility of conflicts and avoid serving stale content, test on a dedicated port and disable caching.
+Because `ng serve` does not work with service workers, you must use a separate HTTP server to test your project locally. Use any HTTP server. The following example uses the [http-server](https://www.npmjs.com/package/http-server) package from npm. To reduce the possibility of conflicts and avoid serving stale content, test on a dedicated port and disable caching.
 
 由于 `ng serve` 对 Service Worker 无效，所以必须用一个独立的 HTTP 服务器在本地测试你的项目。
-你可以使用任何 HTTP 服务器。下面这个例子使用来自 npm 中的 [http-server](https://www.npmjs.com/package/http-server) 包。
+可以用任何 HTTP 服务器。下面这个例子使用来自 npm 中的 [http-server](https://www.npmjs.com/package/http-server) 包。
 为了减小端口冲突的可能性，我们在一个专用端口上进行测试。
 
 To serve the directory containing your web files with `http-server`, run the following command:
@@ -108,13 +108,17 @@ http-server -p 8080 -c-1 dist/<project-name>
 
 ### 最初的加载
 
-With the server running, you can point your browser at http://localhost:8080/. Your application should load normally.
+With the server running, point your browser at http://localhost:8080/. Your application should load normally.
 
 在服务器运行起来之后，你可以在浏览器中访问 http://localhost:8080/。你的应用像通常一样加载。
+
+<div class="alert is-helpful">
 
 **Tip:** When testing Angular service workers, it's a good idea to use an incognito or private window in your browser to ensure the service worker doesn't end up reading from a previous leftover state, which can cause unexpected behavior.
 
 **提示：** 当测试 Angular Service Worker 时，最好使用浏览器中的隐身或隐私窗口，以确保 Service Worker 不会从以前的残留状态中读取数据，否则可能导致意外的行为。
+
+</div>
 
 <div class="alert is-helpful">
 
@@ -129,7 +133,11 @@ If you are not using HTTPS, the service worker will only be registered when acce
 
 ### 模拟网络出问题
 
-To simulate a network issue, disable network interaction for your application. In Chrome:
+To simulate a network issue, disable network interaction for your application.
+
+如果想模拟网络问题，以便在你的应用中禁用网络交互。
+
+In Chrome:
 
 要想模拟网络出问题的情况，可以为你的应用禁用网络交互。在 Chrome 中：
 
@@ -141,12 +149,12 @@ To simulate a network issue, disable network interaction for your application. I
 
    进入 **Network 页**。
 
-3. Check the **Offline box**.
+3. Select **Offline** in the **Throttling** dropdown menu.
 
-   勾选 **Offline** 复选框。
+   在 **Throttling** 下拉菜单中选择 **Offline** 复选框。
 
 <div class="lightbox">
-  <img src="generated/images/guide/service-worker/offline-checkbox.png" alt="The offline checkbox in the Network tab is checked">
+  <img src="generated/images/guide/service-worker/offline-option.png" alt="The offline option in the Network tab is selected">
 </div>
 
 Now the application has no access to network interaction.
@@ -161,17 +169,17 @@ With the addition of an Angular service worker, the application behavior changes
 
 有了 Angular Service Worker，本应用的行为就不一样了。刷新时，页面会正常加载。
 
-If you look at the Network tab, you can verify that the service worker is active.
+Look at the Network tab to verify that the service worker is active.
 
-如果你看看 Network 页，就会发现 Service Worker 是激活的。
+看看 Network 页，来验证此 Service Worker 是激活的。
 
 <div class="lightbox">
   <img src="generated/images/guide/service-worker/sw-active.png" alt="Requests are marked as from ServiceWorker">
 </div>
 
-Notice that under the "Size" column, the requests state is `(from ServiceWorker)`. This means that the resources are not being loaded from the network. Instead, they are being loaded from the service worker's cache.
+Notice that under the "Size" column, the requests state is `(ServiceWorker)`. This means that the resources are not being loaded from the network. Instead, they are being loaded from the service worker's cache.
 
-注意，在 “Size” 列中，请求的状态是 `(from ServiceWorker)`。
+注意，在 “Size” 列中，请求的状态是 `(ServiceWorker)`。
 这表示该资源不是从网络上加载的，而是从 Service Worker 的缓存中。
 
 ### What's being cached?
@@ -200,7 +208,7 @@ Notice that all of the files the browser needs to render this application are ca
   图片和字体直接位于所配置的 `outputPath` (默认为 `./dist/<project-name>/`) 或 `resourcesOutputPath` 下。
   关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
 
-<div class="alert is-helpful">
+<div class="alert is-important">
 
 Pay attention to two key points:
 
@@ -221,11 +229,11 @@ Pay attention to two key points:
 ### 修改你的应用
 
 Now that you've seen how service workers cache your application, the
-next step is understanding how updates work. Let's make a change to the application, and watch the service worker install the update:
+next step is understanding how updates work. Make a change to the application, and watch the service worker install the update:
 
 现在，你已经看到了 Service Worker 如何缓存你的应用，接下来的步骤讲它如何进行更新。
 
-1. If you're testing in an incognito window, open a second blank tab. This will keep the incognito and the cache state alive during your test.
+1. If you're testing in an incognito window, open a second blank tab. This keeps the incognito and the cache state alive during your test.
 
    如果你正在隐身窗口中测试，请打开第二个空白页。这会让该隐身窗口和缓存的状态在测试期间持续活着。
 
@@ -262,7 +270,7 @@ Now look at how the browser and service worker handle the updated application.
 
 现在，看看浏览器和 Service Worker 如何处理这个更新后的应用。
 
-1. Open http://localhost:8080 again in the same window. What happens?
+1. Open [http://localhost:8080](http://localhost:8080) again in the same window. What happens?
 
    再次在同一个窗口中打开 <http://localhost:8080>，发生了什么？
 
@@ -270,13 +278,13 @@ Now look at how the browser and service worker handle the updated application.
   <img src="generated/images/guide/service-worker/welcome-msg-en.png" alt="It still says Welcome to Service Workers!">
 </div>
 
-What went wrong? Nothing, actually. The Angular service worker is doing its job and serving the version of the application that it has **installed**, even though there is an update available. In the interest of speed, the service worker doesn't wait to check for updates before it serves the application that it has cached.
+  What went wrong? Nothing, actually. The Angular service worker is doing its job and serving the version of the application that it has **installed**, even though there is an update available. In the interest of speed, the service worker doesn't wait to check for updates before it serves the application that it has cached.
 
 错在哪里？哪里也没错，真的。Angular Service Worker 正在做自己的工作，并且用它**已经安装过**的版本提供服务，虽然，已经有新版本可用了。由于更关注速度，所以 Service Worker 并不会在启动它已经缓存过的版本之前先等待检查更新。
 
-If you look at the `http-server` logs, you can see the service worker requesting `/ngsw.json`. This is how the service worker checks for updates.
+Look at the `http-server` logs to see the service worker requesting `/ngsw.json`. This is how the service worker checks for updates.
 
-如果你看看 `http-server` 的 log，就会发现 Service Worker 请求了 `/ngsw.json` 文件，这是 Service Worker 正在检查更新。
+看看 `http-server` 的 log，就会发现 Service Worker 请求了 `/ngsw.json` 文件，这是 Service Worker 正在检查更新。
 
 2. Refresh the page.
 
@@ -286,7 +294,7 @@ If you look at the `http-server` logs, you can see the service worker requesting
   <img src="generated/images/guide/service-worker/welcome-msg-fr.png" alt="The text has changed to say Bienvenue à app!">
 </div>
 
-The service worker installed the updated version of your application *in the background*, and the next time the page is loaded or reloaded, the service worker switches to the latest version.
+  The service worker installed the updated version of your application *in the background*, and the next time the page is loaded or reloaded, the service worker switches to the latest version.
 
 Service Worker *在后台*安装好了这个更新后的版本，下次加载或刷新页面时，Service Worker 就切换到最新的版本了。
 
@@ -294,9 +302,13 @@ Service Worker *在后台*安装好了这个更新后的版本，下次加载或
 
 ## 关于 Angular Service Worker 的更多信息
 
-You may also be interested in the following:
+You might also be interested in the following:
 
 你可能还对下列内容感兴趣：
+
+* [App Shell](guide/app-shell).
+
+  [应用外壳](guide/app-shell)。
 
 * [Communicating with service workers](guide/service-worker-communications).
 

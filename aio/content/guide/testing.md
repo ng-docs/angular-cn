@@ -34,13 +34,13 @@ This sample application is much like the one in the [_Tour of Heroes_ tutorial](
 
 <div class="alert is-helpful">
 
-  For the sample app that the testing guides describe, see the <live-example noDownload>sample app</live-example>.
+  For a hands-on experience, <live-example name="testing" stackblitz="specs" noDownload>run tests and explore the test code</live-example> in your browser as your read this guide.
 
-  对于本测试指南中所讲的范例应用，参阅<live-example noDownload>范例应用</live-example>。
+  要上手练习，请按照本指南中所讲的，在浏览器中<live-example name="testing" stackblitz="specs" noDownload>运行测试，并浏览测试代码</live-example>。
 
-  For the tests features in the testing guides, see <live-example stackblitz="specs" noDownload>tests</live-example>.
+  If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
-  要了解本测试指南中涉及的各种测试特性，请参阅<live-example stackblitz="specs" noDownload>测试</live-example>。
+  如果你要试用本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -64,7 +64,7 @@ Just run the [`ng test`](cli/test) CLI command:
   ng test
 </code-example>
 
-The `ng test` command builds the app in _watch mode_,
+The `ng test` command builds the application in _watch mode_,
 and launches the [Karma test runner](https://karma-runner.github.io).
 
 `ng test` 命令在*监视模式*下构建应用，并启动 [karma 测试运行器](https://karma-runner.github.io)。
@@ -96,10 +96,10 @@ A Chrome browser also opens and displays the test output in the "Jasmine HTML Re
 </div>
 
 Most people find this browser output easier to read than the console log.
-You can click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group ("test suite").
+Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group ("test suite").
 
 大多数人都会觉得浏览器中的报告比控制台中的日志更容易阅读。
-你可以点击一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
+可以点击某一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
 
 Meanwhile, the `ng test` command is watching for changes.
 
@@ -119,10 +119,10 @@ The CLI takes care of Jasmine and Karma configuration for you.
 
 CLI 会为你生成 Jasmine 和 Karma 的配置文件。
 
-You can fine-tune many options by editing the `karma.conf.js` in the root folder of the project and
+Fine-tune many options by editing the `karma.conf.js` in the root folder of the project and
 the `test.ts` files in the `src/` folder.
 
-不过你也可以通过编辑 `src/` 目录下的 `karma.conf.js` 和 `test.ts` 文件来微调很多选项。
+不过也可以通过编辑 `src/` 目录下的 `karma.conf.js` 和 `test.ts` 文件来微调很多选项。
 
 The `karma.conf.js` file is a partial Karma configuration file.
 The CLI constructs the full runtime configuration in memory, based on application structure specified in the `angular.json` file, supplemented by `karma.conf.js`.
@@ -138,7 +138,7 @@ Search the web for more details about Jasmine and Karma configuration.
 
 ### 其他测试框架
 
-You can also unit test an Angular app with other testing libraries and test runners.
+You can also unit test an Angular application with other testing libraries and test runners.
 Each library and runner has its own distinctive installation procedures, configuration, and syntax.
 
 你还可以使用其它的测试库和测试运行器来对 Angular 应用进行单元测试。
@@ -162,7 +162,7 @@ CLI 为 `AppComponent` 生成了一个名叫 `app.component.spec.ts` 的测试�
 
 <div class="alert is-important">
 
-The test file extension **must be `.spec.ts`** so that tooling can identify it as a file with tests (AKA, a _spec_ file).
+The test file extension **must be `.spec.ts`** so that tooling can identify it as a file with tests (also known as a _spec_ file).
 
 测试文件的扩展名**必须是 `.spec.ts`**，这样工具才能识别出它是一个测试文件，也叫规约（spec）文件。
 
@@ -189,7 +189,7 @@ as the application source code files that they test:
 
 最好把单元测试规约文件放到与它们测试的应用源码文件相同的文件夹中：
 
-- Such tests are easy to find.
+- Such tests are painless to find.
 
   这些测试很容易找到。
 
@@ -237,7 +237,7 @@ next to their corresponding helper files.
 
 ## 建立持续集成环境
 
-One of the best ways to keep your project bug-free is through a test suite, but it's easy to forget to run tests all the time.
+One of the best ways to keep your project bug-free is through a test suite, but you might forget to run tests all the time.
 Continuous integration (CI) servers let you set up your project repository so that your tests run on every commit and pull request.
 
 避免项目出 BUG 的最佳方式之一，就是使用测试套件。但是很容易忘了一直运行它。
@@ -246,7 +246,7 @@ Continuous integration (CI) servers let you set up your project repository so th
 There are paid CI services like Circle CI and Travis CI, and you can also host your own for free using Jenkins and others.
 Although Circle CI and Travis CI are paid services, they are provided free for open source projects.
 You can create a public project on GitHub and add these services without paying.
-Contributions to the Angular repo are automatically run through a whole suite of Circle CI tests.
+Contributions to the Angular repository are automatically run through a whole suite of Circle CI tests.
 
 已经有一些像 Circle CI 和 Travis CI 这样的付费 CI 服务器，你还可以使用 Jenkins 或其它软件来搭建你自己的免费 CI 服务器。
 虽然 Circle CI 和 Travis CI 是收费服务，但是它们也会为开源项目提供免费服务。
@@ -491,9 +491,9 @@ customLaunchers: {
 },
 ```
 
-Now you can run the following command to use the `--no-sandbox` flag:
+Now, run the following command to use the `--no-sandbox` flag:
 
-现在你可以运行下列带有 `--no-sandbox` 标志的命令了：
+现在，运行下列带有 `--no-sandbox` 标志的命令：
 
 <code-example language="sh">
   ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
@@ -507,11 +507,11 @@ Now you can run the following command to use the `--no-sandbox` flag:
 
 </div>
 
-## More info on testing
+## More information on testing
 
 ## 关于测试的更多信息
 
-After you've set up your app for testing, you may find the following testing  guides useful.
+After you've set up your application for testing, you might find the following testing  guides useful.
 
 当你设置准备好测试环境之后，可能会发现以下测试指南很有用。
 
@@ -519,7 +519,7 @@ After you've set up your app for testing, you may find the following testing  gu
 
   [代码覆盖](guide/testing-code-coverage) - 找出你的测试覆盖了多少应用，以及如何指定所需的数量。
 
-* [Testing services](guide/testing-services)&mdash;learn how to test the services your app uses.
+* [Testing services](guide/testing-services)&mdash;learn how to test the services your application uses.
 
   [测试服务](guide/testing-services) - 了解如何测试应用中所用的服务。
 
@@ -535,7 +535,7 @@ After you've set up your app for testing, you may find the following testing  gu
 
   [测试属性型指令](guide/testing-attribute-directives) - 了解如何测试你的属性型指令。
 
-* [Testing pipes](guide/testing-pipes)&mdash;find out how to test attribute directives.
+* [Testing pipes](guide/testing-pipes)&mdash;find out how to test pipes.
 
   [测试管道](guide/testing-pipes) - 了解测试管道的方法。
 

@@ -2,15 +2,23 @@
 
 # DevTools 概述
 
-Angular DevTools is a Chrome extension that provides debugging and profiling capabilities for Angular applications. Angular DevTools supports Angular v9 and above, with Ivy enabled.
+Angular DevTools is a Chrome extension that provides debugging and profiling capabilities for Angular applications. Angular DevTools supports Angular v9 and later, with Ivy enabled.
 
 Angular DevTools 是一个 Chrome 扩展程序，可为 Angular 应用程序提供调试和剖析功能。 Angular DevTools 支持 Angular v9 及更高版本，并支持 Ivy。
+
+<div class="video-container">
+  <iframe
+  src="/assets/videos/introducing-angular-dev-tools.cn.mp4"
+  frameborder="0"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>
+</div>
 
 You can find Angular DevTools in the [Chrome Web Store](https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh).
 
 你可以在 [Chrome 网上应用店](https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh)中找到 Angular DevTools。
 
-After installing Angular DevTools, you can find the extension under the Angular tab in Chrome DevTools.
+After installing Angular DevTools, find the extension under the Angular tab in Chrome DevTools.
 
 安装 Angular DevTools 后，你可以在 Chrome DevTools 的 Angular 标签下找到本扩展程序。
 
@@ -42,9 +50,9 @@ In the top-right corner of Angular DevTools you'll find which version of Angular
 
 ## 错误报告
 
-You can report issues and feature requests on [GitHub](https://github.com/rangle/angular-devtools/issues).
+Report issues and feature requests on [GitHub](https://github.com/rangle/angular-devtools/issues).
 
-你可以在 [GitHub](https://github.com/rangle/angular-devtools/issues) 上报告问题和特性请求。
+可以在 [GitHub](https://github.com/rangle/angular-devtools/issues) 上报告问题和特性请求。
 
 To report an issue with the Profiler, export the Profiler recording by clicking the **Save Profile** button, and then attaching that export as a file in the issue.
 
@@ -61,7 +69,7 @@ To report an issue with the Profiler, export the Profiler recording by clicking 
 
 ## 调试你的应用程序
 
-The **Components** tab lets you explore the structure of your application. You can visualize and inspect the component and directive instances and preview or modify their state. In the next couple of sections we'll look into how you can use this tab effectively to debug your application.
+The **Components** tab lets you explore the structure of your application. You can visualize and inspect the component and directive instances and preview or modify their state. In the next couple of sections we'll look into how to use this tab effectively to debug your application.
 
 **Components** 选项卡使你可以浏览应用程序的结构。你可以可视化并检查组件和指令实例，并预览或修改它们的状态。在接下来的两节中，我们将研究如何有效使用此选项卡来调试应用程序。
 
@@ -89,9 +97,9 @@ Click the individual components or directives in the component explorer to selec
 
 单击组件浏览器中的各个组件或指令，以选择它们并预览其属性。 Angular DevTools 在组件树的右侧显示其属性和元数据。
 
-You can navigate in the component tree using the mouse or the following keyboard shortcuts:
+Navigate in the component tree using the mouse or the following keyboard shortcuts:
 
-你可以使用鼠标或下列键盘快捷键在组件树中导航：
+可以使用鼠标或下列键盘快捷键在组件树中导航：
 
 - Up and down arrows select the previous and next nodes.
 
@@ -133,7 +141,7 @@ For components, Angular DevTools also lets you navigate to the component definit
 
 ### 修改属性值
 
-Like Chrome DevTools, the properties view allows you to edit the value of an input, output, or another property. Right-click on the property value. If edit functionality is available for this value type, you'll see a text input. Type the new value and press `Enter`.
+Like Chrome DevTools, the properties view lets you edit the value of an input, output, or another property. Right-click on the property value. If edit functionality is available for this value type, you'll see a text input. Type the new value and press `Enter`.
 
 与 Chrome DevTools 一样，属性视图可让你编辑输入属性、输出属性或其他属性的值。右键单击属性值。如果此值类型可使用编辑功能，则将看到一个文本输入框。键入新值，然后按 Enter 键。
 
@@ -195,9 +203,9 @@ You can also import an existing recording. Read more about this feature in the [
 
 ### 了解应用程序的执行过程
 
-In the following screenshot, you can find the default view of the Profiler after you complete recording.
+In the following screenshot, find the default view of the Profiler after you complete recording.
 
-在下面的屏幕截图中，你可以在完成录制后找到 Profiler 的默认视图。
+在下面的屏幕截图中，可以在完成录制后找到 Profiler 的默认视图。
 
 <div class="lightbox">
   <img src="generated/images/guide/devtools/default-profiler-view.png" alt="default profiler view">
@@ -211,9 +219,9 @@ Near the top of the view you can see a sequence of bars, each one of them symbol
   <img src="generated/images/guide/devtools/profiler-selected-bar.png" alt="profiler selected bar">
 </div>
 
-Above the change detection timeline, you can find how much time Angular spent in this cycle. Angular DevTools attempts to estimate the frame drop at this point to indicate when the execution of your application might impact the user experience.
+Earlier on the change detection timeline, you can find how much time Angular spent in this cycle. Angular DevTools attempts to estimate the frame drop at this point to indicate when the execution of your application might impact the user experience.
 
-在变更检测时间轴上方，你可以发现 Angular 在此周期中花费了多少时间。 Angular DevTools 会试图估算出掉帧情况，以指示应用程序的执行何时可能会影响用户体验。
+在变更检测时间轴前面，你可以发现 Angular 在此周期中花费了多少时间。 Angular DevTools 会试图估算出掉帧情况，以指示应用程序的执行何时可能会影响用户体验。
 
 Angular DevTools also indicates what triggered the change detection (that is, the change detection's source).
 
@@ -247,11 +255,11 @@ You can also preview the change detection execution in a flame graph-like view. 
 
 你也可以在类似火焰图的视图中预览变更检测的执行情况。该图形中的每个图块代表屏幕上渲染树中位于特定位置的元素。
 
-For example, if during one change detection cycle at a specific position in the component tree we had `ComponentA`, this component was removed and in its place Angular rendered `ComponentB`, you'll see both components at the same tile.
+For example, if during one change detection cycle at a specific position in the component tree you had `ComponentA`, this component was removed and in its place Angular rendered `ComponentB`, you'll see both components at the same tile.
 
 例如，如果在组件树中特定位置的一个变更检测周期中，我们原本有一个 `ComponentA`，然后该组件被删除，而在它的位置上，Angular 再渲染出 `ComponentB`，这样你就会在同一图块上看到两个组件。
 
-Each tile is colored depending on how much time Angular has spent there. DevTools determines the intensity of the color by the time spent relative to the tile where we've spent the most time in change detection.
+Each tile is colored depending on how much time Angular spent there. DevTools determines the intensity of the color by the time spent relative to the tile where we've spent the most time in change detection.
 
 每个图块的颜色取决于 Angular 在这里花费了多少时间。 DevTools 通过相对于我们花费最多时间进行变更检测的图块所花费的时间来确定颜色的深浅。
 
@@ -267,7 +275,7 @@ To preview the components in which Angular did change detection, select the **Ch
 
 要预览 Angular 进行变更检测的组件，请选择火焰图上方顶部的 **Change detection** 复选框。
 
-This view will color all the tiles in which Angular performed change detection in green, and the rest in gray:
+This view colors all the tiles in which Angular performed change detection in green, and the rest in gray:
 
 此视图将把所有在 Angular 中执行过变更检测的图块显示为绿色，其余显示为灰色：
 
@@ -279,7 +287,7 @@ This view will color all the tiles in which Angular performed change detection i
 
 ### 导入剖析记录
 
-Click the **Save Profile** button at the top-left of a recorded profiling session to export it as a JSON file and save it to the disk. Then, you can import the file in the initial view of the profiler by clicking the **Choose file** input:
+Click the **Save Profile** button at the top-left of a recorded profiling session to export it as a JSON file and save it to the disk. Then, import the file in the initial view of the profiler by clicking the **Choose file** input:
 
 单击已记录的性能剖析会话左上角的 **Save Profile** 按钮，以将其导出为 JSON 文件并将其保存到磁盘。然后，你可以通过单击 **Choose file** 输入框来将此文件导入到剖析器的初始视图中：
 

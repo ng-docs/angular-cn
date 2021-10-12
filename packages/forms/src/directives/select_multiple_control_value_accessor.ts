@@ -158,7 +158,7 @@ export class SelectMultipleControlValueAccessor extends BuiltInControlValueAcces
    *
    * @nodoc
    */
-  registerOnChange(fn: (value: any) => any): void {
+  override registerOnChange(fn: (value: any) => any): void {
     this.onChange = (_: any) => {
       const selected: Array<any> = [];
       if (_.selectedOptions !== undefined) {

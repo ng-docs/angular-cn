@@ -28,10 +28,9 @@
 
 <td>
 
-    <p>Bootstraps the app, using the root component from the specified <code>NgModule</code>. </p>
+    <p>Bootstraps the application, using the root component from the specified <code>NgModule</code>. </p>
 
     <p>用 <code>NgModule</code> 中指定的根组件进行启动。</p>
-
 </td>
 
 </tr>
@@ -333,11 +332,10 @@ is available to <code>declarations</code> of this module.</p>
 </td>
 
 </tr><tr>
-
+<td><code>&lt;p&gt;Card No.: <b>{{cardNumber | myCardNumberFormatter}}</b>&lt;/p&gt;</code></td>
 <td>
-
-    <code>&lt;p&gt;Card No.: <b>{{cardNumber | myCardNumberFormatter}}</b>&lt;/p&gt;</code>
-
+<p>Transforms the current value of expression <code>cardNumber</code> using the pipe called <code>myCardNumberFormatter</code>.</p>
+<p>使用名为 <code>myCardNumberFormatter</code> 的管道转换表达式 <code>cardNumber</code> 的当前值。</p>
 </td>
 
 <td>
@@ -803,7 +801,7 @@ so the <code>@Directive</code> configuration applies to components as well</p>
 
 <td>
 
-    <p>Declares an input property that you can update via property binding (example:
+    <p>Declares an input property that you can update using property binding (example:
 <code>&lt;my-cmp [myProperty]="someExpression"&gt;</code>).</p>
 
     <p>声明一个输入属性，你可以通过属性绑定来更新它，如 <code>&lt;my-cmp [myProperty]="someExpression"&gt;</code>。</p>

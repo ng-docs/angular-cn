@@ -138,7 +138,7 @@ The form highlights some design features that make it easier to use. For instanc
 该表单突出了一些易于使用的设计特性。比如，这两个必填字段的左边是绿色条，以便让它们醒目。这些字段都有初始值，所以表单是有效的，并且 **Submit** 按钮也是启用的。
 
 As you work with this form, you will learn how to include validation logic, how to customize the presentation with standard CSS, and how to handle error conditions to ensure valid input.
-If the user deletes the hero name, for example, the form becomes invalid. The app detects the changed status, and displays a validation error in an attention-grabbing style.
+If the user deletes the hero name, for example, the form becomes invalid. The application detects the changed status, and displays a validation error in an attention-grabbing style.
 In addition, the **Submit** button is disabled, and the "required" bar to the left of the input control changes from green to red.
 
 当你使用这个表单时，你将学习如何包含验证逻辑，如何使用标准 CSS 自定义表达式，以及如何处理错误条件以确保输入的有效性。例如，如果用户删除了英雄的名字，那么表单就会失效。该应用会检测已更改的状态，并以醒目的样式显示验证错误。此外，**Submit** 按钮会被禁用，输入控件左侧的“必填”栏也会从绿色变为红色。
@@ -275,7 +275,7 @@ You can recreate the sample application from the code provided here, or you can 
    **Submit** 按钮里面有一些用于样式化的类。此时，表单布局全都是纯 HTML5，没有绑定或指令。
 
 1. The sample form uses some style classes from [Twitter Bootstrap](https://getbootstrap.com/css/): `container`, `form-group`, `form-control`, and `btn`.
-   To use these styles, the app's style sheet imports the library.
+   To use these styles, the application's style sheet imports the library.
 
    范例表单使用的是 [Twitter Bootstrap 中的](https://getbootstrap.com/css/)一些样式类： `container`，`form-group`，`form-control` 和 `btn`。要使用这些样式，就要在该应用的样式表中导入该库。
 
@@ -289,7 +289,7 @@ You can recreate the sample application from the code provided here, or you can 
 
    <code-example path="forms/src/app/hero-form/hero-form.component.html" header="src/app/hero-form/hero-form.component.html (powers)" region="powers"></code-example>
 
-If you run the app right now, you see the list of powers in the selection control. The input elements are not yet bound to data values or events, so they are still blank and have no behavior.
+If you run the application right now, you see the list of powers in the selection control. The input elements are not yet bound to data values or events, so they are still blank and have no behavior.
 
 如果你现在正在运行该应用，你会看到选择控件中的超能力列表。由于尚未将这些 input 元素绑定到数据值或事件，因此它们仍然是空白的，没有任何行为。
 
@@ -407,9 +407,9 @@ Any unique value will do, but using a descriptive name is helpful.
 
    你现在可以移除显示插值的诊断消息了。
 
-1. To confirm that two-way data binding works for the entire hero model, add a new binding at the top to the component's `diagnostic` property.
+1. To confirm that two-way data binding works for the entire hero model, add a new text binding with the [`json` pipe](api/common/JsonPipe) (which would serialize the data to a string) at the top to the component's template.
 
-   要想确认双向数据绑定是否在整个英雄模型上都有效，就要在该组件的顶部添加一个对 `diagnostic` 属性的新绑定。
+   要想确认双向数据绑定是否在整个英雄模型上都有效，可以在该组件的顶部添加一个带有 [`json` 管道](api/common/JsonPipe)的新文本绑定。`json` 管道会把数据序列化为字符串。
 
 After these revisions, the form template should look like the following:
 
@@ -425,7 +425,7 @@ After these revisions, the form template should look like the following:
 
   每个 `<input>` 元素都有一个必需的 `name` 属性，Angular 用它来注册表单中的控件。
 
-If you run the app now and change every hero model property, the form might display like this:
+If you run the application now and change every hero model property, the form might display like this:
 
 如果你现在运行该应用并更改英雄模型的每个属性，该表单可能会显示如下：
 
@@ -437,9 +437,9 @@ The diagnostic near the top of the form confirms that all of your changes are re
 
 通过表单顶部的诊断行可以确认所有的更改都已反映在模型中。
 
-4. When you have observed the effects, you can delete the `{{diagnostic}}` binding.
+4. When you have observed the effects, you can delete the `{{ model | json }}` text binding.
 
-   你已经观察到了这种效果，可以删除 `{{diagnostic}}` 绑定了。
+   你已经观察到了这种效果，可以删除 `{{ model | json }}` 的文本绑定了。
 
 ## Track control states
 
@@ -582,6 +582,10 @@ Angular sets special CSS classes on the control element to reflect the state, as
   </tr>
 
 </table>
+
+Additionally, Angular applies the `ng-submitted` class to `<form>` elements upon submission. This class does *not* apply to inner controls.
+
+此外，Angular 还会在提交时把 `ng-submitted` 类应用到 `<form>` 元素上。这个类**不会**应用到内部控件上。
 
 You use these CSS classes to define the styles for your control based on its status.
 
@@ -786,7 +790,7 @@ To let form users add a new hero, you will add a **New Hero** button that respon
 
    输入一个名字，然后再次点击 **New Hero**。
 
-   Now the app displays a *Name is required* error message, because the input box is no longer pristine.
+   Now the application displays a *Name is required* error message, because the input box is no longer pristine.
    The form remembers that you entered a name before clicking **New Hero**.
 
    现在，该应用会显示一条错误信息 *Name is required*，因为该输入框不再是原始状态。表单会记住你在单击 **New Hero** 之前输入过一个名字。

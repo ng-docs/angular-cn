@@ -11,7 +11,6 @@ import {
 import { MatSidenav } from '@angular/material/sidenav';
 import { DocumentContents, DocumentService } from 'app/documents/document.service';
 import { NotificationComponent } from 'app/layout/notification/notification.component';
-
 import { CurrentNodes, NavigationNode, NavigationService, VersionInfo } from 'app/navigation/navigation.service';
 import { SearchResults } from 'app/search/interfaces';
 import { SearchBoxComponent } from 'app/search/search-box/search-box.component';
@@ -20,12 +19,12 @@ import { Deployment } from 'app/shared/deployment.service';
 import { LocationService } from 'app/shared/location.service';
 import { ScrollService } from 'app/shared/scroll.service';
 import { TocService } from 'app/shared/toc.service';
-
+import { SwUpdatesService } from 'app/sw-updates/sw-updates.service';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 const sideNavView = 'SideNav';
-export const showTopMenuWidth = 1048;
+export const showTopMenuWidth = 1150;
 export const dockSideNavWidth = 992;
 export const showFloatingTocWidth = 800;
 
@@ -35,18 +34,6 @@ export const showFloatingTocWidth = 800;
 })
 export class AppComponent implements OnInit {
 
-  constructor(
-    public deployment: Deployment,
-    private documentService: DocumentService,
-    private hostElement: ElementRef,
-    private locationService: LocationService,
-    private navigationService: NavigationService,
-    private scrollService: ScrollService,
-    private searchService: SearchService,
-    private tocService: TocService,
-  ) {
-  }
-
   currentDocument: DocumentContents;
   currentDocVersion: NavigationNode;
   currentNodes: CurrentNodes = {};
@@ -54,6 +41,7 @@ export class AppComponent implements OnInit {
   docVersions: NavigationNode[];
   dtOn = false;
   footerNodes: NavigationNode[];
+
   /**
    * An HTML friendly identifier for the currently displayed page.
    * This is computed from the `currentDocument.id` by replacing `/` with `-`
@@ -72,10 +60,11 @@ export class AppComponent implements OnInit {
    *
    * * `page-...`: computed from the current document id (e.g. events, guide-security, tutorial-toh-pt2)
    * * `folder-...`: computed from the top level folder for an id (e.g. guide, tutorial, etc)
-   * * `view-...`: computef from the navigation view (e.g. SideNav, TopBar, etc)
+   * * `view-...`: computed from the navigation view (e.g. SideNav, TopBar, etc)
    */
   @HostBinding('class')
   hostClasses = '';
+
   // Disable all Angular animations for the initial render.
   @HostBinding('@.disabled')
   isStarting = true;
@@ -83,12 +72,25 @@ export class AppComponent implements OnInit {
   isFetching = false;
   showTopMenu = false;
   dockSideNav = false;
+  private isFetchingTimeout: any;
+  private isSideNavDoc = false;
+
   sideNavNodes: NavigationNode[];
   topMenuNodes: NavigationNode[];
   topMenuNarrowNodes: NavigationNode[];
+
   hasFloatingToc = false;
+  private showFloatingToc = new BehaviorSubject(false);
   tocMaxHeight: string;
+  private tocMaxHeightOffset = 0;
+
   versionInfo: VersionInfo;
+
+  private currentUrl: string;
+
+  get isOpened() { return this.dockSideNav && this.isSideNavDoc; }
+  get mode() { return this.isOpened ? 'side' : 'over'; }
+
   // Search related properties
   showSearchResults = false;
   searchResults: Observable<SearchResults>;
@@ -96,24 +98,25 @@ export class AppComponent implements OnInit {
   searchElements: QueryList<ElementRef>;
   @ViewChild(SearchBoxComponent, { static: true })
   searchBox: SearchBoxComponent;
+
   @ViewChild(MatSidenav, { static: true })
   sidenav: MatSidenav;
+
   @ViewChild(NotificationComponent, { static: true })
   notification: NotificationComponent;
   notificationAnimating = false;
-  private isFetchingTimeout: any;
-  private isSideNavDoc = false;
-  private showFloatingToc = new BehaviorSubject(false);
-  private tocMaxHeightOffset = 0;
-  private currentUrl: string;
 
-  get isOpened() {
-    return this.dockSideNav && this.isSideNavDoc;
-  }
-
-  get mode() {
-    return this.dockSideNav && (this.isSideNavDoc || this.showTopMenu) ? 'side' : 'over';
-  }
+  constructor(
+    public deployment: Deployment,
+    private documentService: DocumentService,
+    private hostElement: ElementRef,
+    private locationService: LocationService,
+    private navigationService: NavigationService,
+    private scrollService: ScrollService,
+    private searchService: SearchService,
+    private swUpdatesService: SwUpdatesService,
+    private tocService: TocService
+  ) { }
 
   ngOnInit() {
     // Do not initialize the search on browsers that lack web worker support
@@ -159,19 +162,19 @@ export class AppComponent implements OnInit {
     ]).subscribe(([versionInfo, versions]) => {
       // TODO(pbd): consider whether we can lookup the stable and next versions from the internet
       const computedVersions: NavigationNode[] = [
-        { mode: 'next', title: 'next 版', url: 'https://next.angular.io/' },
-        { mode: 'rc', title: 'rc 版', url: 'https://rc.angular.io/' },
-        { mode: 'stable', title: '同步翻译版', url: 'https://angular.cn/' },
+        { title: 'next', url: 'https://next.angular.io/' },
+        { title: 'rc', url: 'https://rc.angular.io/' },
+        { title: 'stable', url: 'https://angular.io/' },
       ];
       if (this.deployment.mode === 'archive') {
         computedVersions.push({ title: `v${versionInfo.major}` });
       }
       this.docVersions = [...computedVersions, ...versions];
 
-      // Find the current version - eithers title matches the current deployment mode
+      // Find the current version - either title matches the current deployment mode
       // or its title matches the major version of the current version info
       this.currentDocVersion = this.docVersions.find(version =>
-        version.mode === this.deployment.mode || version.title === `v${versionInfo.major}`) as NavigationNode;
+        version.title === this.deployment.mode || version.title === `v${versionInfo.major}`) as NavigationNode;
       this.currentDocVersion.title += ` (v${versionInfo.raw})`;
     });
 
@@ -186,7 +189,7 @@ export class AppComponent implements OnInit {
 
     const hasNonEmptyToc = this.tocService.tocList.pipe(map(tocList => tocList.length > 0));
     combineLatest([hasNonEmptyToc, this.showFloatingToc])
-      .subscribe(([hasToc, showFloatingToc]) => this.hasFloatingToc = hasToc && showFloatingToc);
+        .subscribe(([hasToc, showFloatingToc]) => this.hasFloatingToc = hasToc && showFloatingToc);
 
     // Generally, we want to delay updating the shell (e.g. host classes, sidenav state) for the new
     // document, until after the leaving document has been removed (to avoid having the styles for
@@ -200,6 +203,9 @@ export class AppComponent implements OnInit {
       .subscribe(() => this.updateShell());
 
     this.locationService.currentUrl.subscribe(url => this.currentUrl = url);
+
+    // Start listening for SW version update events.
+    this.swUpdatesService.enable();
   }
 
   onDocReady() {
@@ -243,7 +249,7 @@ export class AppComponent implements OnInit {
   onDocVersionChange(versionIndex: number) {
     const version = this.docVersions[versionIndex];
     if (version.url) {
-      const versionUrl = version.url + (!version.url.endsWith('/') ? '/' : '');
+      const versionUrl = version.url  + (!version.url.endsWith('/') ? '/' : '');
       this.locationService.go(`${versionUrl}${this.currentUrl}`);
     }
   }
@@ -324,7 +330,7 @@ export class AppComponent implements OnInit {
       folderClass,
       viewClasses,
       notificationClass,
-      notificationAnimatingClass,
+      notificationAnimatingClass
     ].join(' ');
   }
 
@@ -364,9 +370,9 @@ export class AppComponent implements OnInit {
 
       if (headerEl && footerEl) {
         this.tocMaxHeightOffset =
-          headerEl.clientHeight +
-          footerEl.clientHeight +
-          24; //  fudge margin
+            headerEl.clientHeight +
+            footerEl.clientHeight +
+            24; //  fudge margin
       }
     }
 

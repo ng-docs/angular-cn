@@ -10,19 +10,7 @@ The template options object, `angularCompilerOptions`, is a sibling to the `comp
 
 模板选项对象 `angularCompilerOptions` 和为 TypeScript 编译器提供标准选项的 `compilerOptions` 对象是兄弟。
 
-```json
-    {
-      "compilerOptions": {
-        "experimentalDecorators": true,
-                  ...
-      },
-      "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true,
-        "preserveWhitespaces": true,
-                  ...
-      }
-  }
-```
+<code-example language="json" header="tsconfig.json" path="angular-compiler-options/tsconfig.json" region="angular-compiler-options"></code-example>
 
 {@a tsconfig-extends}
 
@@ -30,7 +18,7 @@ The template options object, `angularCompilerOptions`, is a sibling to the `comp
 
 ## 用 `extends` 语法配置继承方式
 
-Like the TypeScript compiler, The Angular AOT compiler also supports `extends` in the `angularCompilerOptions` section of the TypeScript configuration file.
+Like the TypeScript compiler, the Angular AOT compiler also supports `extends` in the `angularCompilerOptions` section of the TypeScript configuration file.
 The `extends` property is at the top level, parallel to `compilerOptions` and `angularCompilerOptions`.
 
 像 TypeScript 编译器一样，Angular 的 AOT 编译器也支持对 TypeScript 配置文件中的 `angularCompilerOptions` 进行 `extends`。`extends` 属性位于顶层，和 `compilerOptions` 和 `angularCompilerOptions` 平级。
@@ -44,20 +32,7 @@ For example:
 
 比如：
 
-```json
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    ...
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "preserveWhitespaces": true,
-    ...
-  }
-}
-```
+<code-example language="json" header="tsconfig.app.json" path="angular-compiler-options/tsconfig.app.json" region="angular-compiler-options-app"></code-example>
 
 For more information, see the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
 
@@ -83,11 +58,11 @@ Modifies how Angular-specific annotations are emitted to improve tree-shaking. N
 
 修改 Angular 专有注解的生成方式，以改善摇树优化。非 Angular 注解不受影响。可选值为 `static fields`（默认值）或 `decorators`。
 
-* By default, the compiler replaces decorators with a static field in the class, which allows advanced tree-shakers like [Closure compiler](https://github.com/google/closure-compiler) to remove unused classes.
+*   By default, the compiler replaces decorators with a static field in the class, which allows advanced tree-shakers like [Closure compiler](https://github.com/google/closure-compiler) to remove unused classes.
 
   默认情况下，编译器会用类中的静态字段替换装饰器，这允许像 [Closure 编译器](https://github.com/google/closure-compiler)这样的高级摇树器删除未使用的类。
 
-* The `decorators` value leaves the decorators in place, which makes compilation faster. TypeScript emits calls to the`__decorate` helper. Use `--emitDecoratorMetadata` for runtime reflection (but note that the resulting code will not properly tree-shake.
+*   The `decorators` value leaves the decorators in place, which makes compilation faster. TypeScript emits calls to the `__decorate` helper. Use `--emitDecoratorMetadata` for runtime reflection (but note that the resulting code will not properly tree-shake.
 
   `decorators` 值会将装饰器保留在原处，这将使编译速度更快。TypeScript 会生成对辅助器 `__decorate` 的调用。使用 `--emitDecoratorMetadata` 进行运行时反射（但请注意，生成的代码将无法正确摇树）。
 
@@ -104,13 +79,13 @@ Specifies the compilation mode to use. The following modes are available:
 
 指定要使用的编译模式。可以使用以下模式：
 
-- `'full'`: generates fully AOT-compiled code according to the version of Angular that is currently being used.
+*   `'full'`: generates fully AOT-compiled code according to the version of Angular that is currently being used.
 
-  `'full'`：根据当前使用的 Angular 版本生成完全 AOT 编译的代码。
+    `'full'`：根据当前使用的 Angular 版本生成完全 AOT 编译的代码。
 
-- `'partial'`: generates code in a stable, but intermediate form suitable for a published library.
+*   `'partial'`: generates code in a stable, but intermediate form suitable for a published library.
 
-  `'partial'`：生成稳定的中间代码，适用于已发布的库。
+     `'partial'`：生成稳定的中间代码，适用于已发布的库。
 
 The default value is `'full'`.
 
@@ -135,21 +110,21 @@ When `true`, the compiler does not check the TypeScript version and does not rep
 ### `enableI18nLegacyMessageIdFormat`
 
 Instructs the Angular template compiler to generate legacy ids for messages that are tagged in templates by the `i18n` attribute.
-See [Localizing your app](guide/i18n#mark-text-for-translations) for more information about marking messages for localization.
+See [Mark text for translations][AioGuideI18nCommonPrepareMarkTextForTranslations] for more information about marking messages for localization.
 
-指示 Angular 模板编译器为模板中用 `i18n` 属性标出的消息生成旧版 ID。关于为本地化而对消息进行标记的更多信息，请参阅[本地化你的应用程序。](guide/i18n#mark-text-for-translations)
+指示 Angular 模板编译器为模板中用 `i18n` 属性标出的消息生成旧版 ID。关于为本地化而对消息进行标记的更多信息，请参阅[标记要翻译的文本][AioGuideI18nCommonPrepareMarkTextForTranslations]
 
-Set this option to `false` unless your project relies upon translations that were previously generated using legacy ids. Default is `true`.
+Set this option to `false` unless your project relies upon translations that were previously generated using legacy IDs. Default is `true`.
 
 除非你的项目依赖先前已用旧版 ID 生成的翻译，否则请将此选项设置为 `false`。默认值为 `true` 。
 
-The pre-Ivy message extraction tooling generated a variety of legacy formats for extracted message ids.
+The pre-Ivy message extraction tooling generated a variety of legacy formats for extracted message IDs.
 These message formats have a number of issues, such as whitespace handling and reliance upon information inside the original HTML of a template.
 
 Ivy 之前版本的消息提取工具为所提取的消息 id 生成了多种旧格式。这些消息格式存在许多问题，例如对空白字符的处理和对模板原始 HTML 内部信息的依赖。
 
 The new message format is more resilient to whitespace changes, is the same across all translation file formats, and can be generated directly from calls to `$localize`.
-This allows `$localize` messages in application code to use the same id as identical `i18n` messages in component templates.
+This allows `$localize` messages in application code to use the same ID as identical `i18n` messages in component templates.
 
 新的消息格式对空白字符的改动更宽容，在所有翻译文件格式中都相同，并且可以直接通过调用 `$localize` 生成。这允许应用程序代码中的 `$localize` 消息使用与组件模板中 `i18n` 消息完全相同的 id。
 
@@ -159,7 +134,7 @@ Enables the [Ivy](guide/ivy) compilation and rendering pipeline. Default is `tru
 
 启用 [Ivy](guide/ivy) 编译和渲染管道。从版本 9 开始，默认值为 `true`。在版本 9 中，你可以[选择不用 Ivy](guide/ivy#opting-out-of-angular-ivy) 而是继续使用以前的编译器 View Engine。
 
-For library projects generated with the CLI, the `prod` configuration default is `false` in version 9.
+For library projects generated with the CLI, the production configuration default is `false` in version 9.
 
 对于使用 CLI 生成的*库*项目，`prod` 配置默认在版本 9 中为 `false`。
 
@@ -173,7 +148,7 @@ When enabled, the `.js` output of `ngc` does not include any lazy-loaded templat
 
 启用后，`ngc` 的 `.js` 输出不会包含任何惰性加载的模板或样式 URL。
 
-For library projects generated with the CLI, the dev configuration default is `true`.
+For library projects generated with the CLI, the development configuration default is `true`.
 
 对于使用 CLI 生成的库项目，dev 配置下默认为 `true`。
 
@@ -187,22 +162,17 @@ When `true`, enables use of the `<template>` element, which was deprecated in An
 
 ### `flatModuleId`
 
-The module ID to use for importing a flat module (when `flatModuleOutFile` is `true`). References generated by the template compiler use this module name when importing symbols
-from the flat module. Ignored if `flatModuleOutFile` is `false`.
+The module ID to use for importing a flat module (when `flatModuleOutFile` is `true`). References generated by the template compiler use this module name when importing symbols from the flat module. Ignored if `flatModuleOutFile` is `false`.
 
 用于导入扁平模块的模块 ID（当 `flatModuleOutFile` 为 `true` 时）。从扁平模块中导入符号时，模板编译器生成的引用将使用该模块的名称。如果 `flatModuleOutFile` 为 `false` 则忽略。
 
 ### `flatModuleOutFile`
 
-When `true`, generates a flat module index of the given file name and the corresponding flat module metadata. Use to create flat modules that are packaged similarly to `@angular/core` and `@angular/common`. When this option is used, the `package.json` for the library should refer
-to the generated flat module index instead of the library index file.
+When `true`, generates a flat module index of the given file name and the corresponding flat module metadata. Use to create flat modules that are packaged similarly to `@angular/core` and `@angular/common`. When this option is used, the `package.json` for the library should refer to the generated flat module index instead of the library index file.
 
 为 `true` 时，将生成指定文件名和相应扁平模块元数据的扁平模块索引。用于创建像 `@angular/core` 和 `@angular/common` 这样打包的扁平模块。使用此选项时，库的 `package.json` 应引用生成的扁平模块索引而不是库的索引文件。
 
-Produces only one `.metadata.json` file, which contains all the metadata necessary
-for symbols exported from the library index. In the generated `.ngfactory.js` files, the flat
-module index is used to import symbols that include both the public API from the library index
-as well as shrowded internal symbols.
+Produces only one `.metadata.json` file, which contains all the metadata necessary for symbols exported from the library index. In the generated `.ngfactory.js` files, the flat module index is used to import symbols that include both the public API from the library index as well as shrowded internal symbols.
 
 它只会生成一个 `.metadata.json` 文件，该文件包含从库索引中导出的符号所需的全部元数据。在生成的 `.ngfactory.js` 文件中，扁平模块索引用于导入符号，这些符号既包括库索引中的公共 API，也包括缩进的内部符号。
 
@@ -217,9 +187,8 @@ A flat module index `.d.ts` and `.js` is created with the given `flatModuleOutFi
 使用指定的 `flatModuleOutFile` 名在与库索引 `.d.ts` 文件相同的位置创建扁平模块索引 `.d.ts` 和 `.js`。
 
 For example, if a library uses the `public_api.ts` file as the library index of the module, the `tsconfig.json` `files` field would be `["public_api.ts"]`.
-The `flatModuleOutFile` option could then be set to (for example) `"index.js"`, which produces `index.d.ts` and  `index.metadata.json` files.
-The `module` field of the library's `package.json` would be `"index.js"` and the `typings` field
-would be `"index.d.ts"`.
+The `flatModuleOutFile` option could then be set to (for example) `"index.js"`, which produces `index.d.ts` and `index.metadata.json` files.
+The `module` field of the library's `package.json` would be `"index.js"` and the `typings` field would be `"index.d.ts"`.
 
 例如，如果一个库使用 `public_api.ts` 文件作为模块的库索引，则 `tsconfig.json` 的 `files` 字段就是 `["public_api.ts"]`。然后，比如把 `flatModuleOutFile` 选项设置为 `"index.js"`，这将生成 `index.d.ts` 和 `index.metadata.json` 文件。该库的 `package.json` 的 `module` 字段中就会是 `"index.js"`，而 `typings` 字段将是 `"index.d.ts"`。
 
@@ -233,10 +202,17 @@ Default is `false`, but when you use the CLI command `ng new --strict`, it is se
 
 默认值为 `false`，但是当你使用 CLI 命令 `ng new --strict` 时，默认生成的项目配置中会将其设置为 `true`。
 
+<div class="alert is-important">
+
+The `fullTemplateTypeCheck` option has been deprecated in Angular 13 in favor of the `strictTemplates` family of compiler options.
+
+`fullTemplateTypeCheck` 选项已经在 Angular 13 中弃用，改为使用 `strictTemplates` 家族的编译器选项。
+
+</div>
+
 ### `generateCodeForLibraries`
 
-When `true` (the default), generates factory files (`.ngfactory.js` and `.ngstyle.js`)
-for `.d.ts` files with a corresponding `.metadata.json` file.
+When `true` (the default), generates factory files (`.ngfactory.js` and `.ngstyle.js`) for `.d.ts` files with a corresponding `.metadata.json` file.
 
 如果为 `true`（默认值），就会为 `.d.ts` 和相应的 `.metadata.json` 生成工厂文件（`.ngfactory.js` 和 `.ngstyle.js`）。
 
@@ -256,19 +232,16 @@ When `true`, does not produce `.metadata.json` files. Default is `false`.
 
 为 `true` 时，不生成 `.metadata.json` 文件。默认值为 `false`。
 
-The `.metadata.json` files contain information needed by the template compiler from a `.ts`
-file that is not included in the `.d.ts` file produced by the TypeScript compiler.
-This information includes, for example, the content of annotations  (such as a component's template), which TypeScript emits to the `.js` file but not to the `.d.ts` file.
+The `.metadata.json` files contain information needed by the template compiler from a `.ts` file that is not included in the `.d.ts` file produced by the TypeScript compiler.
+This information includes, for example, the content of annotations (such as a component's template), which TypeScript emits to the `.js` file but not to the `.d.ts` file.
 
 `.metadata.json` 文件包含模板编译器从 `.ts` 文件中获得的信息，该信息未包含在 TypeScript 编译器生成的 `.d.ts` 文件中。该信息包括注解的内容（例如组件的模板）等，TypeScript 会将该注解的内容发送到 `.js` 文件中，但不会发送到 `.d.ts` 文件。
 
-You can set to `true` when using factory summaries, because the factory summaries
-include a copy of the information that is in the `.metadata.json` file.
+You can set to `true` when using factory summaries, because the factory summaries include a copy of the information that is in the `.metadata.json` file.
 
 你可以在使用工厂摘要（summary）中将其设置为 `true`，因为工厂摘要中包括 `.metadata.json` 文件中信息的副本。
 
-Set to `true` if you are using TypeScript's `--outFile` option, because the metadata files
-are not valid for this style of TypeScript output. However, we do not recommend using `--outFile` with Angular. Use a bundler, such as [webpack](https://webpack.js.org/), instead.
+Set to `true` if you are using TypeScript's `--outFile` option, because the metadata files are not valid for this style of TypeScript output. However, we do not recommend using `--outFile` with Angular. Use a bundler, such as [webpack](https://webpack.js.org/), instead.
 
 如果要使用 TypeScript 的 `--outFile` 选项，则设置为 `true`，因为元数据文件对于这种 TypeScript 输出风格无效。但是，我们不建议将 `--outFile` 和 Angular 一起使用。请使用打包程序，例如 [webpack](https://webpack.js.org/)。
 
@@ -282,7 +255,7 @@ Can be used to instruct the template compiler to produce `.metadata.json` files 
 
 可用于指示模板编译器生成 `.metadata.json` 文件，以使用 `npm` 软件包进行分发，同时避免产生无法分发至 `npm` 的 `.ngfactory.js` 和 `.ngstyle.js` 文件。
 
-For library projects generated with the CLI, the dev configuration default is `true`.
+For library projects generated with the CLI, the development configuration default is `true`.
 
 对于使用 CLI 生成的库项目，dev 配置默认为 `true`。
 
@@ -305,12 +278,11 @@ The template compiler can then use the error nodes to report an error if these s
 `.metadata.json` 文件即使包含错误也是有效的。如果这些元数据用来确定注解的内容，则模板编译器会报告这些错误。元数据收集器无法预测哪些符号是为了在注解中使用而设计，因此它会先在元数据中为导出的符号中包含错误节点。然后，如果使用了这些符号，则模板编译器可以使用这些错误节点来报告错误。
 
 If the client of a library intends to use a symbol in an annotation, the template compiler does not normally report this until the client uses the symbol.
-This option allows detection of these errors during the build phase of
-the library and is used, for example, in producing Angular libraries themselves.
+This option allows detection of these errors during the build phase of the library and is used, for example, in producing Angular libraries themselves.
 
 如果库的客户代码打算在注解中使用某个符号，则模板编译器通常不会在客户方用到该符号之前就报错。此选项允许你在库的构建阶段就检测到这些错误，例如用于生成 Angular 库本身时。
 
-For library projects generated with the CLI, the dev configuration default is `true`.
+For library projects generated with the CLI, the development configuration default is `true`.
 
 对于使用 CLI 生成的库项目，dev 配置中默认为 `true`。
 
@@ -343,3 +315,29 @@ When you use the CLI command `ng new --strict`, it is set to `true` in the gener
 When `true`, prints extra information while compiling templates. Default is `false`.
 
 如果为 `true`，则在编译模板时输出额外的信息。默认值为 `false`。
+
+{@a cli-options}
+
+## Command Line Options
+
+## 命令行选项
+
+While most of the time you interact with the Angular Compiler indirectly using Angular CLI, when debugging certain issues, you might find it useful to invoke the Angular Compiler directly.
+You can use the `ngc` command provided by the `@angular/compiler-cli` npm package to call the compiler from the command line.
+
+虽然大多数时候你都会使用 Angular CLI 间接与 Angular 编译器交互，但在调试某些问题时，你可能会发现直接调用 Angular 编译器很有用。你可以使用 `@angular/compiler-cli` npm 包提供的 `ngc` 命令从命令行调用编译器。
+
+The `ngc` command is just a wrapper around TypeScript's `tsc` compiler command and is primarily configured via the `tsconfig.json` configuration options documented in [the previous sections](#angular-compiler-options).
+
+`ngc` 命令只是 TypeScript 的 `tsc` 编译器命令的包装器，主要通过[前面部分](#angular-compiler-options)讲过的 `tsconfig.json` 配置选项进行配置。
+
+In addition to the configuration file, you can also use [`tsc` command line options](https://www.typescriptlang.org/docs/handbook/compiler-options.html) to configure `ngc`.
+
+除了配置文件，你还可以使用一些 [`tsc` 命令行选项](https://www.typescriptlang.org/docs/handbook/compiler-options.html)来配置 `ngc` 。
+
+<!-- links -->
+
+[AioGuideI18nCommonPrepareMarkTextForTranslations]: guide/i18n-common-prepare#mark-text-for-translations "Mark text for translations - Prepare templates for translations | Angular"
+
+<!-- end links -->
+@reviewed 2021-09-15

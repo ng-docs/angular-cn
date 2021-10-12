@@ -382,7 +382,7 @@ For more information, see [Component interaction](guide/component-interaction).
 
 <live-example name="component-styles"></live-example>
 
-Demonstrates styling in Angular apps.
+Demonstrates styling in Angular applications.
 For more information, see [Component styles](guide/component-styles).
 
 演示了 Angular 应用中的样式。欲知详情，请参阅[组件样式](guide/component-styles)。
@@ -673,7 +673,7 @@ For more information, see [Security](guide/security).
 
 ### 测试
 
-For the sample app that the testing guides describe, see the <live-example noDownload name="testing">sample app</live-example>.
+For the sample application that the testing guides describe, see the <live-example noDownload name="testing">sample app</live-example>.
 
 对于测试指南中描述的范例应用，参阅 <live-example noDownload name="testing">sample app</live-example>。
 

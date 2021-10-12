@@ -12,7 +12,7 @@ All three types of schematics can be part of a collection that you package with 
 
 这三种原理图都可以作为你打包进库中的集合的一部分。
 
-Download the <live-example downloadOnly>library schematics project</live-example> for a completed example of the steps below.
+Download the <live-example downloadOnly>library schematics project</live-example> for a completed example of the following steps.
 
 下载<live-example downloadOnly>库的原理图项目</live-example>以获取一个已完成下列步骤的例子。
 
@@ -74,7 +74,7 @@ Now you are ready to create that schematic.
 ## 提供安装支持
 
 A schematic for the `ng add` command can enhance the initial installation process for your users.
-The following steps will define this type of schematic.
+The following steps define this type of schematic.
 
 `ng add` 命令的原理图可以增强用户的初始安装过程。可以按如下步骤定义这种原理图。
 
@@ -99,9 +99,9 @@ The task uses the user's preferred package manager to add the library to the pro
 提供初始 `ng add` 支持所需的唯一步骤是使用 `SchematicContext` 来触发安装任务。该任务会借助用户首选的包管理器将该库添加到宿主项目的 `package.json` 配置文件中，并将其安装到该项目的 `node_modules` 目录下。
 
 In this example, the function receives the current `Tree` and returns it without any modifications.
-If you need to, you can do additional setup when your package is installed, such as generating files, updating configuration, or any other initial setup your library requires.
+If you need to, do additional setup when your package is installed, such as generating files, updating configuration, or any other initial setup your library requires.
 
-在这个例子中，该函数会接收当前的 `Tree` 并返回它而不作任何修改。如果需要，你也可以在安装软件包时进行额外的设置，例如生成文件、更新配置、或者库所需的任何其它初始设置。
+在这个例子中，该函数会接收当前的 `Tree` 并返回它而不作任何修改。如果需要，也可以在安装软件包时进行额外的设置，例如生成文件、更新配置、或者库所需的任何其它初始设置。
 
 ### Define dependency type
 
@@ -218,7 +218,7 @@ When you add a schematic to the collection, you have to point to it in the colle
 
 当你要把一个原理图添加到集合中时，就必须在该集合的模式中指向它，并提供一些配置文件来定义用户可以传给该命令的选项。
 
-1. Edit the `schematics/collection.json` file to point to the new schematic subfolder, and include a pointer to a schema file that will specify inputs for the new schematic.
+1. Edit the `schematics/collection.json` file to point to the new schematic subfolder, and include a pointer to a schema file that specifies inputs for the new schematic.
 
    编辑一下 `schematics/collection.json` 文件，指向新的原理图子文件夹，并附上一个指向模式文件的指针，该文件将会指定新原理图的输入。
 
@@ -236,9 +236,9 @@ When you add a schematic to the collection, you have to point to it in the colle
 <code-example header="projects/my-lib/schematics/my-service/schema.json (Schematic JSON Schema)" path="schematics-for-libraries/projects/my-lib/schematics/my-service/schema.json">
 </code-example>
 
-* *id*: A unique id for the schema in the collection.
+* *id*: A unique ID for the schema in the collection.
 
-  *id*：这个模式定义在集合中的唯一 id。
+  *id*：这个模式定义在集合中的唯一 ID。
 
 * *title*: A human-readable description of the schema.
 
@@ -293,7 +293,7 @@ Schematic templates support special syntax to execute code and variable substitu
 
    在 `schematics/my-service/` 目录下创建一个 `files/` 文件夹。
 
-1. Create a file named `__name@dasherize__.service.ts.template` that defines a template you can use for generating files. This template will generate a service that already has Angular's `HttpClient` injected into its constructor.
+1. Create a file named `__name@dasherize__.service.ts.template` that defines a template to use for generating files. This template will generate a service that already has Angular's `HttpClient` injected into its constructor.
 
    创建一个名叫 `__name@dasherize__.service.ts.template` 的文件，它定义了一个可以用来生成文件的模板。这里的模板会生成一个已把 Angular 的 `HttpClient` 注入到其构造函数中的服务。
 
@@ -311,7 +311,7 @@ export class <%= classify(name) %>Service {
 
 </code-example>
 
-* The `classify` and `dasherize` methods are utility functions that your schematic will use to transform your source template and filename.
+* The `classify` and `dasherize` methods are utility functions that your schematic uses to transform your source template and filename.
 
   `classify` 和 `dasherize` 方法是实用函数，你的原理图会用它们来转换你的模板源码和文件名。
 
@@ -371,20 +371,20 @@ The options are the option values passed through from the `ng generate` command.
 
 ## 定义一个生成器规则
 
-We now have the framework in place for creating the code that actually modifies the user's application to set it up for the service defined in your library.
+You now have the framework in place for creating the code that actually modifies the user's application to set it up for the service defined in your library.
 
-我们现在有了一个框架，可用来创建一些真正修改用户程序的代码，以便对库中定义的服务进行设置。
+你现在有了一个框架，可用来创建一些真正修改用户程序的代码，以便对库中定义的服务进行设置。
 
-The Angular workspace where the user has installed your library contains multiple projects (applications and libraries).
-The user can specify the project on the command line, or allow it to default.
+The Angular workspace where the user installed your library contains multiple projects (applications and libraries).
+The user can specify the project on the command line, or let it default.
 In either case, your code needs to identify the specific project to which this schematic is being applied, so that you can retrieve information from the project configuration.
 
 用户安装过此库的 Angular 工作区中会包含多个项目（应用和库）。用户可以在命令行中指定一个项目，也可以使用它的默认值。在任何一种情况下，你的代码都需要知道应该在哪个项目上应用此原理图，这样才能从该项目的配置中检索信息。
 
-You can do this using the `Tree` object that is passed in to the factory function.
-The `Tree` methods give you access to the complete file tree in your workspace, allowing you to read and write files during the execution of the schematic.
+Do this using the `Tree` object that is passed in to the factory function.
+The `Tree` methods give you access to the complete file tree in your workspace, letting you read and write files during the execution of the schematic.
 
-你可以使用传给工厂函数的 `Tree` 对象来做到这一点。通过 `Tree` 的一些方法，你可以访问此工作区的完整文件树，以便在运行原理图时读写文件。
+可以使用传给工厂函数的 `Tree` 对象来做到这一点。通过 `Tree` 的一些方法，你可以访问此工作区的完整文件树，以便在运行原理图时读写文件。
 
 ### Get the project configuration
 
@@ -405,9 +405,9 @@ The `Tree` methods give you access to the complete file tree in your workspace, 
   一定要检查此上下文是否存在，并抛出相应的错误。
 
 1. The `workspace.extensions` property includes a `defaultProject` value for determining which project to use if not provided.
-   We will use that value as a fallback, if no project is explicitly specified in the `ng generate` command.
+   You will use that value as a fallback, if no project is explicitly specified in the `ng generate` command.
 
-   此 `workspace.extensions` 属性中包含一个 `defaultProject` 值，用来确定如果没有提供该参数，要使用哪个项目。如果 `ng generate` 命令中没有明确指定任何项目，我们就会把它作为后备值。
+   此 `workspace.extensions` 属性中包含一个 `defaultProject` 值，用来确定如果没有提供该参数，要使用哪个项目。如果 `ng generate` 命令中没有明确指定任何项目，就会把它作为后备值。
 
 <code-example header="projects/my-lib/schematics/my-service/index.ts (Default Project)" path="schematics-for-libraries/projects/my-lib/schematics/my-service/index.ts" region="project-fallback">
 </code-example>
@@ -439,9 +439,9 @@ The `Tree` methods give you access to the complete file tree in your workspace, 
 
 ### 定义规则
 
-A `Rule` can use external template files, transform them, and return another `Rule` object with the transformed template. You can use the templating to generate any custom files required for your schematic.
+A `Rule` can use external template files, transform them, and return another `Rule` object with the transformed template. Use the templating to generate any custom files required for your schematic.
 
-`Rule` 可以使用外部模板文件，对它们进行转换，并使用转换后的模板返回另一个 `Rule` 对象。你可以使用模板来生成原理图所需的任意自定义文件。
+`Rule` 可以使用外部模板文件，对它们进行转换，并使用转换后的模板返回另一个 `Rule` 对象。可以用模板来生成原理图所需的任意自定义文件。
 
 1. Add the following code to your factory function.
 
@@ -481,12 +481,12 @@ A `Rule` can use external template files, transform them, and return another `Ru
 <code-example header="projects/my-lib/schematics/my-service/index.ts (Chain Rule)" path="schematics-for-libraries/projects/my-lib/schematics/my-service/index.ts" region="chain">
 </code-example>
 
-  The `chain()` method allows you to combine multiple rules into a single rule, so that you can perform multiple operations in a single schematic.
+  The `chain()` method lets you combine multiple rules into a single rule, so that you can perform multiple operations in a single schematic.
     Here you are only merging the template rules with any code executed by the schematic.
 
   该 `chain()` 方法允许你把多个规则组合到一个规则中，这样就可以在一个原理图中执行多个操作。这里你只是把模板规则和原理图要执行的代码合并在一起。
 
-See a complete example of the schematic rule function below.
+See a complete example of the following schematic rule function.
 
 请看原理图规则函数的一个完整例子。
 
@@ -501,7 +501,7 @@ For more information about rules and utility methods, see [Provided Rules](https
 
 ## 运行你的库原理图
 
-After you build your library and schematics, you can install the schematics collection to run against your project. The steps below show you how to generate a service using the schematic you created above.
+After you build your library and schematics, you can install the schematics collection to run against your project. The following steps show you how to generate a service using the schematic you created earlier.
 
 在构建库和原理图之后，你就可以安装一个原理图集合来运行你的项目了。下面的步骤介绍了如何使用上面创建的原理图来生成服务。
 
@@ -548,7 +548,7 @@ npm link dist/my-lib
 
 ### 运行原理图
 
-Now that your library is installed, you can run the schematic using the `ng generate` command.
+Now that your library is installed, run the schematic using the `ng generate` command.
 
 现在你的库已经安装完毕，可以使用 `ng generate` 命令来运行原理图了。
 
@@ -558,7 +558,7 @@ ng generate my-lib:my-service --name my-data
 
 </code-example>
 
-In the console, you will see that the schematic was run and the `my-data.service.ts` file was created in your application folder.
+In the console, you see that the schematic was run and the `my-data.service.ts` file was created in your application folder.
 
 在控制台中，你会看到原理图已经运行过了，`my-data.service.ts` 文件被创建在了你的 app 文件夹中。
 

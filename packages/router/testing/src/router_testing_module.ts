@@ -8,77 +8,9 @@
 
 import {Location, LocationStrategy} from '@angular/common';
 import {MockLocationStrategy, SpyLocation} from '@angular/common/testing';
-import {Compiler, Injectable, Injector, ModuleWithProviders, NgModule, NgModuleFactory, NgModuleFactoryLoader, Optional} from '@angular/core';
-import {ChildrenOutletContexts, ExtraOptions, NoPreloading, PreloadingStrategy, provideRoutes, Route, Router, ROUTER_CONFIGURATION, RouterModule, ROUTES, Routes, UrlHandlingStrategy, UrlSerializer, ɵassignExtraOptionsToRouter as assignExtraOptionsToRouter, ɵflatten as flatten, ɵROUTER_PROVIDERS as ROUTER_PROVIDERS} from '@angular/router';
-
-
-
-/**
- * @description
- *
- * Allows to simulate the loading of ng modules in tests.
- *
- * 允许模拟测试中 ng 模块的加载。
- *
- * ```
- * const loader = TestBed.inject(NgModuleFactoryLoader);
- *
- * @Component({template: 'lazy-loaded'})
- * class LazyLoadedComponent {}
- * @NgModule({
- *   declarations: [LazyLoadedComponent],
- *   imports: [RouterModule.forChild([{path: 'loaded', component: LazyLoadedComponent}])]
- * })
- *
- * class LoadedModule {}
- *
- * // sets up stubbedModules
- * loader.stubbedModules = {lazyModule: LoadedModule};
- *
- * router.resetConfig([
- *   {path: 'lazy', loadChildren: 'lazyModule'},
- * ]);
- *
- * router.navigateByUrl('/lazy/loaded');
- * ```
- *
- * @publicApi
- */
-@Injectable()
-export class SpyNgModuleFactoryLoader implements NgModuleFactoryLoader {
-  /**
-   * @docsNotRequired
-   */
-  private _stubbedModules: {[path: string]: Promise<NgModuleFactory<any>>} = {};
-
-  /**
-   * @docsNotRequired
-   */
-  set stubbedModules(modules: {[path: string]: any}) {
-    const res: {[path: string]: any} = {};
-    for (const t of Object.keys(modules)) {
-      res[t] = this.compiler.compileModuleAsync(modules[t]);
-    }
-    this._stubbedModules = res;
-  }
-
-  /**
-   * @docsNotRequired
-   */
-  get stubbedModules(): {[path: string]: any} {
-    return this._stubbedModules;
-  }
-
-  constructor(private compiler: Compiler) {}
-
-  load(path: string): Promise<NgModuleFactory<any>> {
-    if (this._stubbedModules[path]) {
-      return this._stubbedModules[path];
-    } else {
-      return <any>Promise.reject(new Error(`Cannot find module ${path}`));
-    }
-  }
-}
+import {Compiler, Injector, ModuleWithProviders, NgModule, Optional} from '@angular/core';
+import {ChildrenOutletContexts, ExtraOptions, NoPreloading, PreloadingStrategy, provideRoutes, Route, Router, ROUTER_CONFIGURATION, RouteReuseStrategy, RouterModule, ROUTES, Routes, UrlHandlingStrategy, UrlSerializer, ɵassignExtraOptionsToRouter as assignExtraOptionsToRouter, ɵflatten as flatten, ɵROUTER_PROVIDERS as ROUTER_PROVIDERS} from '@angular/router';
+import {EXTRA_ROUTER_TESTING_PROVIDERS} from './extra_router_testing_providers';
 
 function isUrlHandlingStrategy(opts: ExtraOptions|
                                UrlHandlingStrategy): opts is UrlHandlingStrategy {
@@ -96,39 +28,11 @@ function isUrlHandlingStrategy(opts: ExtraOptions|
  */
 export function setupTestingRouter(
     urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,
-    loader: NgModuleFactoryLoader, compiler: Compiler, injector: Injector, routes: Route[][],
-    opts?: ExtraOptions, urlHandlingStrategy?: UrlHandlingStrategy): Router;
-
-/**
- * Router setup factory function used for testing.
- *
- * 用于测试的路由器设置工厂函数。
- *
- * @deprecated As of v5.2. The 2nd-to-last argument should be `ExtraOptions`, not
- * `UrlHandlingStrategy`
- *
- * 从 v5.2 开始。倒数第二个参数应该是 `ExtraOptions` ，而不是 `UrlHandlingStrategy`
- *
- * @publicApi
- */
-export function setupTestingRouter(
-    urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,
-    loader: NgModuleFactoryLoader, compiler: Compiler, injector: Injector, routes: Route[][],
-    urlHandlingStrategy?: UrlHandlingStrategy): Router;
-
-/**
- * Router setup factory function used for testing.
- *
- * 用于测试的路由器设置工厂函数。
- *
- * @publicApi
- */
-export function setupTestingRouter(
-    urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,
-    loader: NgModuleFactoryLoader, compiler: Compiler, injector: Injector, routes: Route[][],
-    opts?: ExtraOptions|UrlHandlingStrategy, urlHandlingStrategy?: UrlHandlingStrategy) {
-  const router = new Router(
-      null!, urlSerializer, contexts, location, injector, loader, compiler, flatten(routes));
+    compiler: Compiler, injector: Injector, routes: Route[][],
+    opts?: ExtraOptions|UrlHandlingStrategy, urlHandlingStrategy?: UrlHandlingStrategy,
+    routeReuseStrategy?: RouteReuseStrategy) {
+  const router =
+      new Router(null!, urlSerializer, contexts, location, injector, compiler, flatten(routes));
   if (opts) {
     // Handle deprecated argument ordering.
     if (isUrlHandlingStrategy(opts)) {
@@ -142,6 +46,11 @@ export function setupTestingRouter(
   if (urlHandlingStrategy) {
     router.urlHandlingStrategy = urlHandlingStrategy;
   }
+
+  if (routeReuseStrategy) {
+    router.routeReuseStrategy = routeReuseStrategy;
+  }
+
   return router;
 }
 
@@ -153,10 +62,9 @@ export function setupTestingRouter(
  * 设置要用于测试的路由器。
  *
  * The modules sets up the router to be used for testing.
- * It provides spy implementations of `Location`, `LocationStrategy`, and {@link
- * NgModuleFactoryLoader}.
+ * It provides spy implementations of `Location` and `LocationStrategy`.
  *
- * 这些模块会设置用于测试的路由器。它提供 `Location`、`LocationStrategy` 和 {@link NgModuleFactoryLoader} 的间谍实现。
+ * 这些模块会设置用于测试的路由器。它提供 `Location`、`LocationStrategy` 和 `LocationStrategy` 的间谍实现。
  *
  * @usageNotes
  *
@@ -181,17 +89,21 @@ export function setupTestingRouter(
 @NgModule({
   exports: [RouterModule],
   providers: [
-    ROUTER_PROVIDERS, {provide: Location, useClass: SpyLocation},
+    ROUTER_PROVIDERS,
+    EXTRA_ROUTER_TESTING_PROVIDERS,
+    {provide: Location, useClass: SpyLocation},
     {provide: LocationStrategy, useClass: MockLocationStrategy},
-    {provide: NgModuleFactoryLoader, useClass: SpyNgModuleFactoryLoader}, {
+    {
       provide: Router,
       useFactory: setupTestingRouter,
       deps: [
-        UrlSerializer, ChildrenOutletContexts, Location, NgModuleFactoryLoader, Compiler, Injector,
-        ROUTES, ROUTER_CONFIGURATION, [UrlHandlingStrategy, new Optional()]
+        UrlSerializer, ChildrenOutletContexts, Location, Compiler, Injector, ROUTES,
+        ROUTER_CONFIGURATION, [UrlHandlingStrategy, new Optional()],
+        [RouteReuseStrategy, new Optional()]
       ]
     },
-    {provide: PreloadingStrategy, useExisting: NoPreloading}, provideRoutes([])
+    {provide: PreloadingStrategy, useExisting: NoPreloading},
+    provideRoutes([]),
   ]
 })
 export class RouterTestingModule {

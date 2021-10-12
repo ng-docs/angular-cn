@@ -8,7 +8,7 @@
 
 import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {relative} from 'path';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 import {getProjectTsConfigPaths} from '../../utils/project_tsconfig_paths';
 import {canMigrateFile, createMigrationProgram} from '../../utils/typescript/compiler_host';
@@ -19,8 +19,8 @@ import {addToImport, createImport, removeFromImport} from './move-import';
 
 /** Entry point for the V8 move-document migration. */
 export default function(): Rule {
-  return (tree: Tree) => {
-    const {buildPaths, testPaths} = getProjectTsConfigPaths(tree);
+  return async (tree: Tree) => {
+    const {buildPaths, testPaths} = await getProjectTsConfigPaths(tree);
     const basePath = process.cwd();
 
     if (!buildPaths.length && !testPaths.length) {

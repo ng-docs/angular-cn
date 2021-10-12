@@ -48,7 +48,7 @@ export abstract class ControlContainer extends AbstractControlDirective {
    * 该组的路径。
    *
    */
-  get path(): string[]|null {
+  override get path(): string[]|null {
     return null;
   }
 }

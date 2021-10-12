@@ -12,7 +12,7 @@ import {FormArray} from '../../model';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {AbstractFormGroupDirective} from '../abstract_form_group_directive';
 import {ControlContainer} from '../control_container';
-import {ReactiveErrors} from '../reactive_errors';
+import {arrayParentException, groupParentException} from '../reactive_errors';
 import {controlPath} from '../shared';
 import {AsyncValidator, AsyncValidatorFn, Validator, ValidatorFn} from '../validators';
 
@@ -107,7 +107,7 @@ export class FormGroupName extends AbstractFormGroupDirective implements OnInit,
    *
    */
   // TODO(issue/24571): remove '!'.
-  @Input('formGroupName') name!: string|number|null;
+  @Input('formGroupName') override name!: string|number|null;
 
   constructor(
       @Optional() @Host() @SkipSelf() parent: ControlContainer,
@@ -121,9 +121,9 @@ export class FormGroupName extends AbstractFormGroupDirective implements OnInit,
   }
 
   /** @internal */
-  _checkParentType(): void {
+  override _checkParentType(): void {
     if (_hasInvalidParent(this._parent) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
-      ReactiveErrors.groupParentException();
+      throw groupParentException();
     }
   }
 }
@@ -186,7 +186,7 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
    *
    */
   // TODO(issue/24571): remove '!'.
-  @Input('formArrayName') name!: string|number|null;
+  @Input('formArrayName') override name!: string|number|null;
 
   constructor(
       @Optional() @Host() @SkipSelf() parent: ControlContainer,
@@ -235,7 +235,7 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
    * 要绑定到此指令的 `FormArray`。
    *
    */
-  get control(): FormArray {
+  override get control(): FormArray {
     return this.formDirective!.getFormArray(this);
   }
 
@@ -246,7 +246,7 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
    * 该组的顶级指令（如果存在），否则为 null。
    *
    */
-  get formDirective(): FormGroupDirective|null {
+  override get formDirective(): FormGroupDirective|null {
     return this._parent ? <FormGroupDirective>this._parent.formDirective : null;
   }
 
@@ -258,13 +258,13 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
    * 返回一个数组，该数组表示从顶级表单到此控件的路径。每个索引是该级别上控件的字符串名称。
    *
    */
-  get path(): string[] {
+  override get path(): string[] {
     return controlPath(this.name == null ? this.name : this.name.toString(), this._parent);
   }
 
   private _checkParentType(): void {
     if (_hasInvalidParent(this._parent) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
-      ReactiveErrors.arrayParentException();
+      throw arrayParentException();
     }
   }
 }

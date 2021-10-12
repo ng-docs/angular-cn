@@ -2,7 +2,7 @@
 
 # 属性型指令
 
-With attribute directives, you can change the appearance or behavior of DOM elements and Angular components.
+Change the appearance or behavior of DOM elements and Angular components with attribute directives.
 
 使用属性型指令，可以更改 DOM 元素和 Angular 组件的外观或行为。
 
@@ -106,9 +106,9 @@ This section shows you how to detect when a user mouses into or out of the eleme
 
    <code-example path="attribute-directives/src/app/highlight.directive.2.ts" header="src/app/highlight.directive.ts (mouse-methods)" region="mouse-methods"></code-example>
 
-   With the `@HostListener()` decorator, you can subscribe to events of the DOM element that hosts an attribute directive, the `<p>` in this case.
+   Subscribe to events of the DOM element that hosts an attribute directive, the `<p>` in this case, with the `@HostListener()` decorator.
 
-   使用 `@HostListener()` 装饰器，你可以订阅本属性型指令宿主 DOM 元素上的事件（在本例中是 `<p>`）。
+   要订阅本属性型指令宿主 DOM 元素上的事件（在本例中是 `<p>`），可以使用 `@HostListener()` 装饰器。
 
    The handlers delegate to a helper method, `highlight()`, that sets the color on the host DOM element, `el`.
 
@@ -266,7 +266,7 @@ In the following example, the expression `{{ 1 + 1 }}` renders just as it does i
 <code-example path="attribute-directives/src/app/app.component.html" linenums="false" header="src/app/app.component.html" region="ngNonBindable"></code-example>
 
 Applying `ngNonBindable` to an element stops binding for that element's child elements.
-However, `ngNonBindable` still allows directives to work on the element where you apply `ngNonBindable`.
+However, `ngNonBindable` still lets directives work on the element where you apply `ngNonBindable`.
 In the following example, the `appHighlight` directive is still active but Angular does not evaluate the expression `{{ 1 + 1 }}`.
 
 将 `ngNonBindable` 应用于元素将停止对该元素的子元素的绑定。但是，`ngNonBindable` 仍然允许指令在应用 `ngNonBindable` 的元素上工作。在以下示例中，`appHighlight` 指令仍处于活跃状态，但 Angular 不会对表达式 `{{ 1 + 1 }}` 求值。

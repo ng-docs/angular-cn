@@ -26,9 +26,9 @@ When the user clicks the **Delete hero** button, Angular calls the `deleteHero()
 
 当用户单击 **Delete hero** 按钮时，Angular 就会调用组件类中 `deleteHero()` 方法。
 
-You can use template statements with elements, components, or directives in response to events.
+Use template statements with elements, components, or directives in response to events.
 
-你可以将模板语句与元素、组件或指令一起使用以响应事件。
+可以将模板语句与元素、组件或指令一起使用以响应事件。
 
 <div class="alert is-helpful">
 
@@ -110,9 +110,9 @@ In the preceding `deleteHero(hero)`, the `hero` is the template input variable, 
 
   **简明**
 
-  Keep template statements minimal by using method calls or basic property assignments.
+  Use method calls or basic property assignments to keep template statements minimal.
 
-  通过只使用方法调用或基本属性赋值，让模板语句最少化。
+  使用方法调用或基本属性赋值，来让模板语句保持最小化。
 
 * **Work within the context**
 

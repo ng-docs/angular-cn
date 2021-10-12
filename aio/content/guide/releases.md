@@ -6,11 +6,11 @@ We recognize that you need stability from the Angular framework. Stability ensur
 
 我们知道你希望 Angular 框架具有稳定性（stability）。稳定性可以确保组件与库、教程、工具和现有实践不会突然被弃用。稳定性是让基于 Angular 的生态系统变得繁荣的基石。
 
-We also share with you the desire for Angular to keep evolving. We strive to ensure that the foundation on top of which you are building is continuously improving and enabling you to stay up-to-date with the rest of the web ecosystem and your user needs.
+We also share with you the need for Angular to keep evolving. We strive to ensure that the foundation on top of which you are building is continuously improving and enabling you to stay up-to-date with the rest of the web ecosystem and your user needs.
 
 我们也和你一样希望 Angular 能持续演进。我们会努力确保这些你用于构建应用的基础能得到持续的改进，并让你能及时同步到 Web 生态系统的其它部分的最新进展，用户需求也是一样。
 
-This document contains the practices that we follow to provide you with a leading-edge app development platform, balanced with stability. We strive to ensure that future changes are always introduced in a predictable way. We want everyone who depends on Angular to know when and how new features are added, and to be well-prepared when obsolete ones are removed.
+This document contains the practices that we follow to provide you with a leading-edge application development platform, balanced with stability. We strive to ensure that future changes are always introduced in a predictable way. We want everyone who depends on Angular to know when and how new features are added, and to be well-prepared when obsolete ones are removed.
 
 本文档包含一些我们所遵循的实践，它让我们能为你提供一个前沿的应用开发平台，同时兼顾稳定性。我们会努力确保将来的变化总是以一种可预期的方式引入。我们希望每个 Angular 用户都明白我们将在何时添加以及如何添加新特性，并且为那些将要移除的、准备弃用的特性提前做好准备。
 
@@ -39,11 +39,11 @@ The version number is incremented based on the level of change included in the r
 
 版本号是根据本次发布中包含的变更的级别进行递增的。
 
-* **Major releases** contain significant new features, some but minimal developer assistance is expected during the update. When updating to a new major release, you may need to run update scripts, refactor code, run additional tests, and learn new APIs.
+* **Major releases** contain significant new features, some but minimal developer assistance is expected during the update. When updating to a new major release, you might need to run update scripts, refactor code, run additional tests, and learn new APIs.
 
   **主版本**包含重要的新特性，其中的部分特性在升级时会需要由开发人员提供少量的协助才能完成。当升级到新的主版本时，你可能需要运行升级脚本、重构代码、运行其它测试以及学习新的 API。
 
-* **Minor releases** contain new smaller features. Minor releases are fully backward-compatible; no developer assistance is expected during update, but you can optionally modify your apps and libraries to begin using new APIs, features, and capabilities that were added in the release. We update peer dependencies in minor versions by expanding the supported versions, but we do not require projects to update these dependencies.
+* **Minor releases** contain new smaller features. Minor releases are fully backward-compatible; no developer assistance is expected during update, but you can optionally modify your applications and libraries to begin using new APIs, features, and capabilities that were added in the release. We update peer dependencies in minor versions by expanding the supported versions, but we do not require projects to update these dependencies.
 
   **小版本**包含新的小型特性。小版本是完全向后兼容的，在升级期间，不需要开发人员提供协助，但是你可以（可选的）修改你的应用和库，来使用本次发布中新增的 API、特性和能力。我们会扩展库的对等依赖（peer dependency）中的小版本号范围来更新库同级，但并不需要你的项目也更新那些依赖。
 
@@ -64,7 +64,7 @@ The version number is incremented based on the level of change included in the r
 
 ### 所支持的升级路径
 
-In alignment with the versioning scheme described above, we commit to support the following update paths:
+In alignment with the preceding versioning scheme as described, we commit to support the following update paths:
 
 为了和上面所讲的版本方案一致，我们承诺支持如下升级路径：
 
@@ -119,9 +119,9 @@ Dates are offered as general guidance and are subject to change.
 
 </div>
 
-In general, you can expect the following release cycle:
+In general, expect the following release cycle:
 
-通常，你可以期待下列发布周期：
+通常的发布周期如下：
 
 * A major release every 6 months
 
@@ -172,14 +172,14 @@ The following table provides the status for Angular versions under support.
 Version | Status | Released     | Active Ends  | LTS Ends
 ------- | ------ | ------------ | ------------ | ------------
 版本 | 状态 | 发布     | 停止活动  | LTS 结束
-^11.0.0 | Active | Nov 11, 2020 | May 11, 2021 | May 11, 2022
-^11.0.0 | 活跃 | 2020 年 11 月 11 日 | 2021 年 5 月 11 日 | 2022 年 5 月 11 日
+^12.0.0 | Active | May 12, 2021 | Nov 12, 2021 | Nov 12, 2022
+^12.0.0 | 活跃 | 2021 年 5 月 12 日 | 2021 年 11 月 12 日 | 2022 年 11 月 12 日
+^11.0.0 | LTS    | Nov 11, 2020 | May 11, 2021 | May 11, 2022
+^11.0.0 | LTS | 2020 年 11 月 11 日 | 2021 年 5 月 11 日 | 2022 年 5 月 11 日
 ^10.0.0 | LTS    | Jun 24, 2020 | Dec 24, 2020 | Dec 24, 2021
-^10.0.0 | 活跃 | 2020 年 6 月 24 日 | 2020 年 12 月 24 日 | 2021 年 12 月 24 日
-^9.0.0  | LTS    | Feb 06, 2020 | Aug 06, 2020 | Aug 06, 2021
-^9.0.0  | 活跃 | 2020 年 2 月 6 日 | 2020 年 8 月 6 日 | 2021 年 8 月 6 日
+^10.0.0 | LTS | 2020 年 6 月 24 日 | 2020 年 12 月 24 日 | 2021 年 12 月 24 日
 
-Angular versions v4, v5, v6, v7, and v8 are no longer under support.
+Angular versions v4, v5, v6, v7, v8, and v9 are no longer under support.
 
 不再为 v4、v5、v6、v7 和 v8  版提供支持。
 
@@ -209,7 +209,7 @@ Sometimes &quot;breaking changes&quot;, such as the removal of support for selec
 
 "重大变更"（比如移除特定的 API 和特性）有时候是必须的，比如创新、让最佳实践与时俱进、变更依赖关系甚至来自 Web 平台自身的变化。
 
-To make these transitions as easy as possible, we make these commitments to you:
+To make these transitions as straightforward as possible, we make these commitments to you:
 
 要让这些转变尽可能的简单，我们会给你下列保证：
 
@@ -217,7 +217,7 @@ To make these transitions as easy as possible, we make these commitments to you:
 
    我们会尽量减少重大变更的数量，并尽可能提供迁移工具。
 
-* We follow the deprecation policy described here, so you have time to update your apps to the latest APIs and best practices.
+* We follow the deprecation policy described here, so you have time to update your applications to the latest APIs and best practices.
 
    我们会遵循这里所讲的弃用策略，让你有时间把应用升级到最新的 API 和最佳实践。
 
@@ -229,11 +229,11 @@ To help ensure that you have sufficient time and a clear path to update, this is
 
   ** 宣布弃用：** 我们会在[变更记录](https://github.com/angular/angular/blob/master/CHANGELOG.md "Angular change log")中宣布要弃用的那些 API 和特性。启用的 API 在[文档](api?status=deprecated)中会显示成带~~删除线~~的样式。当我们宣布一项弃用时，我们还会宣布一个建议的升级路径。为便于查找，我们在[弃用列表](guide/deprecations)中包含一个关于弃用 API 和特性的汇总表。
 
-* **Deprecation period:** When an API or a feature is deprecated, it will still be present in the next two major releases. After that, deprecated APIs and features will be candidates for removal. A deprecation can be announced in any release, but the removal of a deprecated API or feature will happen only in major release. Until a deprecated API or feature is removed, it will be maintained according to the LTS support policy, meaning that only critical and security issues will be fixed.
+* **Deprecation period:** When an API or a feature is deprecated, it is still present in the next two major releases. After that, deprecated APIs and features are candidates for removal. A deprecation can be announced in any release, but the removal of a deprecated API or feature happens only in major release. Until a deprecated API or feature is removed, it is maintained according to the LTS support policy, meaning that only critical and security issues are fixed.
 
   **弃用阶段：** 当 API 或特性已弃用时，它在接下来的两个主版本中仍然会存在。再往后，弃用的 API 和特性将会进入候选弃用状态。可能会在任何一次发布中宣布弃用，但是只会在主版本中移除已弃用的 API 或特性。除非已弃用的 API 或特性已被移除，否则我们仍然会根据 LTS 支持策略来维护它，也就是说，只会修复严重问题和安全问题。
 
-* **npm dependencies:** We only make npm dependency updates that require changes to your apps in a major release.
+* **npm dependencies:** We only make npm dependency updates that require changes to your applications in a major release.
 In minor releases, we update peer dependencies by expanding the supported versions, but we do not require projects to update these dependencies until a future major version. This means that during minor Angular releases, npm dependency updates within Angular applications and libraries are optional.
 
   **npm 依赖：** 在主版本中，我们只会更新那些需要修改你的应用的那些 npm 依赖项。在次要版本中，我们会通过扩展受支持版本范围的方式来更新对等依赖（peerDependencies），但在下一个主版本到来之前，不会强制要求你升级它们。这意味着，在次要版本中，Angular 应用和库中，npm 依赖项的更新是可选的。
@@ -248,7 +248,7 @@ Angular is a collection of many packages, sub-projects, and tools. To prevent ac
 
 Angular 是很多包、子项目和工具的集合。为了防止你意外使用私有 API（这样你才能更清楚的理解哪些 API 会被这里所说的实践所覆盖），我们对公开 API 包含以及不包含哪些 API 进行了文档化。要了解详情，参阅 [Angular 的公共 API](https://github.com/angular/angular/blob/master/docs/PUBLIC_API.md "Supported Public API Surface of Angular")。
 
-Any changes to the public API surface will be done using the versioning, support, and depreciation policies describe above.
+Any changes to the public API surface are done using the versioning, support, and depreciation policies previously described.
 
 任何对公共 API 的修改都适用于上述这些版本、支持和弃用策略。
 

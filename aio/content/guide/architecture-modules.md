@@ -2,7 +2,7 @@
 
 # NgModule 简介
 
-Angular apps are modular and Angular has its own modularity system called *NgModules*.
+Angular applications are modular and Angular has its own modularity system called *NgModules*.
 NgModules are containers for a cohesive block of code dedicated to an application domain, a workflow, or a closely related set of capabilities. They can contain components, service providers, and other code files whose scope is defined by the containing NgModule. They can import functionality that is exported from other NgModules, and export selected functionality for use by other NgModules.
 
 Angular 应用是模块化的，它拥有自己的模块化系统，称作 *NgModule*。
@@ -10,11 +10,11 @@ Angular 应用是模块化的，它拥有自己的模块化系统，称作 *NgMo
 它可以包含一些组件、服务提供者或其它代码文件，其作用域由包含它们的 NgModule 定义。
 它还可以导入一些由其它模块中导出的功能，并导出一些指定的功能供其它 NgModule 使用。
 
-Every Angular app has at least one NgModule class, [the *root module*](guide/bootstrapping), which is conventionally named `AppModule` and resides in a file named `app.module.ts`. You launch your app by *bootstrapping* the root NgModule.
+Every Angular application has at least one NgModule class, [the *root module*](guide/bootstrapping), which is conventionally named `AppModule` and resides in a file named `app.module.ts`. You launch your application by *bootstrapping* the root NgModule.
 
 每个 Angular 应用都至少有一个 NgModule 类，也就是[根模块](guide/bootstrapping)，它习惯上命名为 `AppModule`，并位于一个名叫 `app.module.ts` 的文件中。*引导*这个根模块就可以启动你的应用。
 
-While a small application might have only one NgModule, most apps have many more *feature modules*. The *root* NgModule for an app is so named because it can include child NgModules in a hierarchy of any depth.
+While a small application might have only one NgModule, most applications have many more *feature modules*. The *root* NgModule for an application is so named because it can include child NgModules in a hierarchy of any depth.
 
 虽然小型的应用可能只有一个 NgModule，不过大多数应用都会有很多*特性模块*。应用的*根模块*之所以叫根模块，是因为它可以包含任意深度的层次化子模块。
 
@@ -38,12 +38,12 @@ NgModule 是一个带有 `@NgModule()` 装饰器的类。`@NgModule()` 装饰器
 
    `imports`（导入表） —— 那些导出了*本*模块中的组件模板所需的类的其它模块。
 
-* `providers`: Creators of [services](guide/architecture-services) that this NgModule contributes to the global collection of services; they become accessible in all parts of the app. (You can also specify providers at the component level.)
+* `providers`: Creators of [services](guide/architecture-services) that this NgModule contributes to the global collection of services; they become accessible in all parts of the application. (You can also specify providers at the component level.)
 
    `providers` —— 本模块向全局服务中贡献的那些[服务](guide/architecture-services)的创建器。
   这些服务能被本应用中的任何部分使用。（你也可以在组件级别指定服务提供者，这通常是首选方式。）
 
-* `bootstrap`: The main application view, called the *root component*, which hosts all other app views. Only the *root NgModule* should set the `bootstrap` property.
+* `bootstrap`: The main application view, called the *root component*, which hosts all other application views. Only the *root NgModule* should set the `bootstrap` property.
 
    `bootstrap` —— 应用的主视图，称为*根组件*。它是应用中所有其它视图的宿主。只有*根模块*才应该设置这个 `bootstrap` 属性。
 
@@ -98,7 +98,7 @@ When you create a component, it's associated directly with a single view, called
 
 <div class="alert is-helpful">
 
-  **Note:** The hierarchical structure of views is a key factor in the way Angular detects and responds to changes in the DOM and app data. 
+  **Note:** The hierarchical structure of views is a key factor in the way Angular detects and responds to changes in the DOM and application data. 
 
   **注意：** 视图的这种层次结构是 Angular 在 DOM 和应用数据中检测与响应变更时的关键因素。
 
@@ -108,7 +108,7 @@ When you create a component, it's associated directly with a single view, called
 
 ## NgModule 和 JavaScript 的模块
 
-The NgModule system is different from and unrelated to the JavaScript (ES2015) module system for managing collections of JavaScript objects. These are *complementary* module systems that you can use together to write your apps.
+The NgModule system is different from and unrelated to the JavaScript (ES2015) module system for managing collections of JavaScript objects. These are *complementary* module systems that you can use together to write your applications.
 
 NgModule 系统与 JavaScript（ES2015）用来管理 JavaScript 对象的模块系统不同，而且也没有直接关联。
 这两种模块系统不同但*互补*。你可以使用它们来共同编写你的应用。

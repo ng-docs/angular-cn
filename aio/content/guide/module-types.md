@@ -8,7 +8,7 @@ You may want to create NgModules for other purposes, or combine the characterist
 
 本主题提供了一个概念性的概述，讲的是你可以创建不同类别的[模块](guide/glossary#ngmodule "NgModule 的定义") 使用模块化结构来组织代码。这些类别并不是一成不变的，而是建议性的。你可能想为其他目的创建模块，或者把其中某些类别的特征结合在一起。
 
-NgModules are a great way to organize an app and keep code related to a specific functionality or feature separate from other code.
+NgModules are a great way to organize an application and keep code related to a specific functionality or feature separate from other code.
 Use NgModules to consolidate [components](guide/glossary#component "Definition of component"), [directives](guide/glossary#directive "Definition of directive"), and [pipes](guide/glossary#pipe "Definition of pipe)") into cohesive blocks of functionality.
 Focus each block on a feature or business domain, a workflow or navigation flow, a common collection of utilities, or one or more [providers](guide/glossary#provider "Definition of provider") for [services](guide/glossary#service "Definition of service").
 
@@ -20,7 +20,7 @@ For more about NgModules, see [Organizing your app with NgModules](guide/ngmodul
 
 <div class="alert is-helpful">
 
-For the example app used in NgModules-related topics, see the <live-example name="ngmodules"></live-example>.
+For the example application used in NgModules-related topics, see the <live-example name="ngmodules"></live-example>.
 
 要获得模块相关主题中使用的范例应用，参阅<live-example name="ngmodules"></live-example>。
 
@@ -30,8 +30,8 @@ For the example app used in NgModules-related topics, see the <live-example name
 
 ## 模块类别汇总
 
-All apps start by [bootstrapping a root NgModule](guide/bootstrapping "Launching an app with a root NgModule").
-You can organize your other NgModules any way you wish.
+All applications start by [bootstrapping a root NgModule](guide/bootstrapping "Launching an app with a root NgModule").
+You can organize your other NgModules any way you want.
 
 所有的应用都是从[引导一个根模块](guide/bootstrapping "用 NgModule 根启动一款应用")开始的。你可以按照自己喜欢的方式组织其它模块。
 
@@ -208,7 +208,7 @@ The following table summarizes the key characteristics of each category.
 
 ## 领域模块
 
-Use a domain NgModule to deliver a user experience dedicated to a particular feature or app domain, such as editing a customer or placing an order.
+Use a domain NgModule to deliver a user experience dedicated to a particular feature or application domain, such as editing a customer or placing an order.
 One example is `ContactModule` in the <live-example name="ngmodules"></live-example>.
 
 使用领域模块来提供专属于特定功能或应用领域的界面，比如编辑客户或下单。例子之一是 <live-example name="ngmodules"></live-example> 中的 `ContactModule`。
@@ -219,7 +219,7 @@ Private supporting subcomponents descend from it.
 
 领域模块用来组织与特定功能有关的代码，里面包含构成此功能的所有组件、路由和模板。领域模块中的顶级组件是该特性或领域的根，是你要导出的唯一组件。各种私有的支撑子组件都是它的后代。
 
-Import a domain NgModule exactly once into another NgModule, such as a domain NgModule, or into the root NgModule (`AppModule`) of an app that contains only a few NgModules.
+Import a domain NgModule exactly once into another NgModule, such as a domain NgModule, or into the root NgModule (`AppModule`) of an application that contains only a few NgModules.
 
 领域模块要导入到另一个模块中一次并且只能一次，比如一个领域模块，或者一个只包含少量模块的应用的根模块（`AppModule`）中。
 
@@ -362,7 +362,7 @@ It would rarely have providers.
 
 ## 共享模块
 
-Put commonly used directives, pipes, and components into one NgModule, typically named `SharedModule`, and then import just that NgModule wherever you need it in other parts of your app.
+Put commonly used directives, pipes, and components into one NgModule, typically named `SharedModule`, and then import just that NgModule wherever you need it in other parts of your application.
 You can import the shared NgModule in your domain NgModules, including [lazy-loaded NgModules](guide/lazy-loading-ngmodules "Lazy-loading an NgModule").
 One example is `SharedModule` in the <live-example name="ngmodules"></live-example>, which provides the `AwesomePipe` custom pipe and `HighlightDirective` directive.
 
@@ -404,7 +404,7 @@ If you want to manage NgModule loading and the use of dependencies and services,
 
 如果你想管理模块的加载以及依赖和服务的使用，参阅下列内容：
 
-* To learn about loading NgModules eagerly when the app starts, or lazy-loading NgModules asynchronously by the router, see [Lazy-loading feature modules](guide/lazy-loading-ngmodules).
+* To learn about loading NgModules eagerly when the application starts, or lazy-loading NgModules asynchronously by the router, see [Lazy-loading feature modules](guide/lazy-loading-ngmodules).
 
   要了解如何在应用启动时急性加载模块，或者让路由器异步加载模块，请参阅[惰性加载特性模块](guide/lazy-loading-ngmodules)。
 

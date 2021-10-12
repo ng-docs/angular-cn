@@ -2,7 +2,7 @@
 
 # Angular 动画简介
 
-Animation provides the illusion of motion: HTML elements change styling over time. Well-designed animations can make your application more fun and easier to use, but they aren't just cosmetic. Animations can improve your app and user experience in a number of ways:
+Animation provides the illusion of motion: HTML elements change styling over time. Well-designed animations can make your application more fun and straightforward to use, but they aren't just cosmetic. Animations can improve your application and user experience in a number of ways:
 
 动画用于提供运动的幻觉：HTML 元素随着时间改变样式。精心设计的动画可以让你的应用更有趣，更易用，但它们不仅仅是装饰性的。动画可以通过几种方式改善你的应用和用户体验：
 
@@ -35,7 +35,7 @@ This guide covers the basic Angular animation features to get you started on add
 
 本指南覆盖了基本的 Angular 动画特性，让你能开始为你的项目添加 Angular 动画。
 
-The features described in this guide &mdash; and the more advanced features described in the related Angular animations guides &mdash; are demonstrated in an example app available as a <live-example></live-example>.
+The features described in this guide &mdash; and the more advanced features described in the related Angular animations guides &mdash; are demonstrated in an example application available as a <live-example></live-example>.
 
 本指南中描述的特性，以及相关的 Angular 动画章节中描述的更多高级特性，都在一个范例 <live-example></live-example> 中进行了演示。
 
@@ -116,22 +116,36 @@ In the component file, add a metadata property called `animations:` within the `
 <code-example path="animations/src/app/app.component.ts" header="src/app/app.component.ts" region="decorator" language="typescript">
 </code-example>
 
-## Animating a simple transition
+## Animating a transition
 
-## 简单转场动画
+## 转场动画
 
-Let's animate a simple transition that changes a single HTML element from one state to another. For example, you can specify that a button displays either **Open** or **Closed** based on the user's last action. When the button is in the `open` state, it's visible and yellow. When it's in the `closed` state, it's transparent and green.
+Let's animate a transition that changes a single HTML element from one state to another. For example, you can specify that a button displays either **Open** or **Closed** based on the user's last action. When the button is in the `open` state, it's visible and yellow. When it's the `closed` state, it's translucent and blue.
 
 我们来做一个简单的转场动作，它把单个 HTML 元素从一个状态变成另一个状态。
-比如，你可以指定按钮根据用户的最后一个动作显示成**Open**或**Closed**状态。当按钮处于 `open` 状态时，它是可见的，并且是黄色的。当它处于 `closed` 状态时，它是透明的，并且是绿色的。
+比如，你可以指定按钮根据用户的最后一个动作显示成**Open**或**Closed**状态。当按钮处于 `open` 状态时，它是可见的，并且是黄色的。当它处于 `closed` 状态时，它是透明的，并且是蓝色的。
 
-In HTML, these attributes are set using ordinary CSS styles such as color and opacity. In Angular, use the `style()` function to specify a set of CSS styles for use with animations. You can collect a set of styles in an animation state, and give the state a name, such as `open` or `closed`.
+In HTML, these attributes are set using ordinary CSS styles such as color and opacity. In Angular, use the `style()` function to specify a set of CSS styles for use with animations. Collect a set of styles in an animation state, and give the state a name, such as `open` or `closed`.
 
 在 HTML 中，这些属性都使用普通的 CSS 样式，比如颜色（color）和透明度（opacity）。在 Angular 中，使用 `style()` 函数来指定一组用作动画的 CSS 样式。
-你可以为动画状态指定一组样式，并为该状态指定一个名字，比如 `open` 或 `closed`。
+可以为动画状态指定一组样式，并为该状态指定一个名字，比如 `open` 或 `closed`。
 
-<div class="lightbox">
-  <img src="generated/images/guide/animations/open-closed.png" alt="open and closed states">
+<div class="alert is-helpful">
+
+  Let's create a new `open-close` component to animate with simple transitions.
+
+  我们创建一个具有简单转场动画的 `open-close` 组件。
+
+  Run the following command in terminal to generate the component:
+
+  在终端窗口运行下列命令以生成该组件：
+
+  `ng g component open-close`
+
+  This will create the component at `src/app/open-close.component.ts`.
+
+  这会在 `src/app/open-close.component.ts` 下创建此组件。
+
 </div>
 
 ### Animation state and styles
@@ -142,11 +156,11 @@ Use Angular's `state()` function to define different states to call at the end o
 
 使用 Angular 的 `state()` 函数来定义不同的状态，供每次转场结束时调用。该函数接受两个参数：一个唯一的名字，比如 `open` 或 `closed` 和一个 `style()` 函数。
 
-Use the `style()` function to define a set of styles to associate with a given state name. Note that the style attributes must be in [*camelCase*](guide/glossary#case-conventions).
+Use the `style()` function to define a set of styles to associate with a given state name. You must use [*camelCase*](guide/glossary#case-conventions) for style attributes that contain dashes, such as `backgroundColor` or wrap them in quotes, such as `'background-color'`.
 
-使用 `style()` 函数来定义一组与指定的状态名相关的样式。注意，样式的属性必须是[*小驼峰*](guide/glossary#case-conventions) 格式的。
+使用 `style()` 函数来定义一组与指定的状态名相关的样式。名称里带中线的样式属性必须是[*小驼峰*](guide/glossary#case-conventions) 格式的，如 `backgroundColor`，或者把它们包裹到引号里，如 `'background-color'`。
 
-Let's see how Angular's `state()` function works with the `style⁣­(⁠)` function to set CSS style attributes. In this code snippet, multiple style attributes are set at the same time for the state. In the `open` state, the button has a height of 200 pixels, an opacity of 1, and a background color of yellow.
+Let's see how Angular's `state()` function works with the `style⁣­(⁠)` function to set CSS style attributes. In this code snippet, multiple style attributes are set at the same time for the state. In the `open` state, the button has a height of 200 pixels, an opacity of 1, and a yellow background color.
 
 我们来看看 Angular 的 `state()` 函数如何与 `style()` 函数联用，来设置 CSS 样式的属性。
 在下面的代码片段中，该状态的多个样式属性都是同时设置的。在 `open` 状态中，该按钮的高度是 200 像素，透明度是 1，背景色是黄色。
@@ -154,9 +168,9 @@ Let's see how Angular's `state()` function works with the `style⁣­(⁠)` func
 <code-example path="animations/src/app/open-close.component.ts" header="src/app/open-close.component.ts" region="state1" language="typescript">
 </code-example>
 
-In the `closed` state, shown below, the button has a height of 100 pixels, an opacity of 0.5, and a background color of green.
+In the following `closed` state, the button has a height of 100 pixels, an opacity of 0.8, and a background color of blue.
 
-在 `closed` 状态中，按钮的高度是 100 像素，透明度是 0.5，背景色是绿色。
+在下面这个 `closed` 状态中，按钮的高度是 100 像素，透明度是 0.5，背景色是绿色。
 
 <code-example path="animations/src/app/open-close.component.ts" header="src/app/open-close.component.ts" region="state2" language="typescript">
 </code-example>
@@ -169,14 +183,14 @@ In Angular, you can set multiple styles without any animation. However, without 
 
 在 Angular 中，你可以设置多个样式而不必用动画。不过，如果没有进一步细化，按钮的转换会立即完成 —— 没有渐隐、没有收缩，也没有其它的可视化效果来指出正在发生变化。
 
-To make the change less abrupt, we need to define an animation *transition* to specify the changes that occur between one state and another over a period of time. The `transition()` function accepts two arguments: the first argument accepts an expression that defines the direction between two transition states, and the second argument accepts one or a series of `animate()` steps.
+To make the change less abrupt, you need to define an animation *transition* to specify the changes that occur between one state and another over a period of time. The `transition()` function accepts two arguments: the first argument accepts an expression that defines the direction between two transition states, and the second argument accepts one or a series of `animate()` steps.
 
-要让这些变化不那么突兀，我们需要定义一个动画*转场*来要求这些状态之间的变化在一段时间内发生。`transition()` 接受两个参数：第一个参数接受一个表达式，它定义两个转场状态之间的方向；第二个参数接受一个或一系列 `animate()` 函数。
+要让这些变化不那么突兀，就要定义一个动画*转场*来要求这些状态之间的变化在一段时间内发生。`transition()` 接受两个参数：第一个参数接受一个表达式，它定义两个转场状态之间的方向；第二个参数接受一个或一系列 `animate()` 函数。
 
-Use the `animate()` function to define the length, delay, and easing of a transition, and to designate the style function for defining styles while transitions are taking place. You can also use the `animate()` function to define the `keyframes()` function for multi-step animations. These definitions are placed in the second argument of the `animate()` function.
+Use the `animate()` function to define the length, delay, and easing of a transition, and to designate the style function for defining styles while transitions are taking place. Use the `animate()` function to define the `keyframes()` function for multi-step animations. These definitions are placed in the second argument of the `animate()` function.
 
 使用 `animate()` 函数来定义长度、延迟和缓动效果，并指定一个样式函数，以定义转场过程中的样式。
-你还可以使用 `animate()` 函数来为多步动画定义 `keyframes()` 函数。这些定义放在 `animate()` 函数的第二个参数中。
+可以用 `animate()` 函数来为多步动画定义 `keyframes()` 函数。这些定义放在 `animate()` 函数的第二个参数中。
 
 #### Animation metadata: duration, delay, and easing
 
@@ -186,13 +200,13 @@ The `animate()` function (second argument of the transition function) accepts th
 
 `animate()` 函数（作为转场函数的第二个参数）可以接受 `timings` 和 `styles` 参数。
 
-The `timings` parameter takes a string defined in three parts.
+The `timings` parameter takes either a number or a string defined in three parts.
 
-`timings` 参数接受一个由三部分组成的字符串。
+`timings` 参数可以接受一个数字或由三部分组成的字符串。
 
->`animate ('duration delay easing')`
+>`animate (duration)` or `animate ('duration delay easing')`
 
-The first part, `duration`, is required. The duration can be expressed in milliseconds as a simple number without quotes, or in seconds with quotes and a time specifier. For example, a duration of a tenth of a second can be expressed as follows:
+The first part, `duration`, is required. The duration can be expressed in milliseconds as a number without quotes, or in seconds with quotes and a time specifier. For example, a duration of a tenth of a second can be expressed as follows:
 
 第一部分 `duration`（持续时间）是必须的。这个持续时间可以表示成一个不带引号的纯数字（表示毫秒），或一个带引号的有单位的时间（表示秒数）。比如，0.1 秒的持续时间有如下表示方式：
 
@@ -247,7 +261,7 @@ This example provides a state transition from `open` to `closed` with a one seco
 region="transition1">
 </code-example>
 
-In the code snippet above, the `=>` operator indicates unidirectional transitions, and `<=>` is bidirectional. Within the transition, `animate()` specifies how long the transition takes. In this case, the state change from `open` to `closed` takes one second, expressed here as `1s`.
+In the preceding code snippet, the `=>` operator indicates unidirectional transitions, and `<=>` is bidirectional. Within the transition, `animate()` specifies how long the transition takes. In this case, the state change from `open` to `closed` takes one second, expressed here as `1s`.
 
 在上面的代码片段中，`=>` 操作符表示单向转场，而 `<=>` 表示双向转场。在转场过程中，`animate()` 指定了转场需要花费的时间。在这里，从 `open` 到 `closed` 状态的转换要花费 1 秒中，表示成 `1s`。
 
@@ -265,7 +279,7 @@ region="transition2">
 
 **注意：**在 `state` 和 `transition` 函数中使用样式时有一些需要注意的地方。
 
-* Use `state()` to define styles that are applied at the end of each transition, they persist after the animation has completed.
+* Use `state()` to define styles that are applied at the end of each transition, they persist after the animation completes.
 
   请用 `state()` 来定义那些每个转场结束时的样式，这些样式在动画完成后仍会保留。
 
@@ -277,10 +291,9 @@ region="transition2">
 
   当禁用了动画时，也会忽略 `transition()` 中的样式，但 `state()` 中的样式不会。
 
-* You can include multiple state pairs within the same `transition()` argument:<br/> `transition( 'on => off, off => void' )`.
+* Include multiple state pairs within the same `transition()` argument:<br/> `transition( 'on => off, off => void' )`.
 
-  你可以在同一个 `transition()` 参数中包含多个状态对：<br/>`transition( 'on => off, off => void' )`。
-
+  可以在同一个 `transition()` 参数中包含多个状态对：<br/>`transition( 'on => off, off => void' )`。
 </div>
 
 ### Triggering the animation
@@ -298,10 +311,6 @@ The `trigger()` function describes the property name to watch for changes. When 
 In this example, we'll name the trigger `openClose`, and attach it to the `button` element. The trigger describes the open and closed states, and the timings for the two transitions.
 
 在这个例子中，我们将把该触发器命名为 `openClose`，并把它附加到 `button` 元素上。该触发器描述了 `open` 和 `closed` 两个状态，以及两个转场效果的时序。
-
-<div class="lightbox">
-  <img src="generated/images/guide/animations/triggering-the-animation.png" alt="triggering the animation">
-</div>
 
 <div class="alert is-helpful">
 
@@ -321,7 +330,7 @@ Animations are defined in the metadata of the component that controls the HTML e
 
 <code-example path="animations/src/app/open-close.component.ts" header="src/app/open-close.component.ts" language="typescript" region="component"></code-example>
 
-When you've defined an animation trigger for a component, you can attach it to an element in that component's template by wrapping the trigger name in brackets and preceding it with an `@` symbol. Then, you can bind the trigger to a template expression using standard Angular property binding syntax as shown below, where `triggerName` is the name of the trigger, and `expression` evaluates to a defined animation state.
+When you've defined an animation trigger for a component, attach it to an element in that component's template by wrapping the trigger name in brackets and preceding it with an `@` symbol. Then, you can bind the trigger to a template expression using standard Angular property binding syntax as shown below, where `triggerName` is the name of the trigger, and `expression` evaluates to a defined animation state.
 
 为组件定义好这些动画触发器之后，你可以给触发器名称加上 `@` 前缀并包在方括号里，来把它附加到组件模板中的元素上。然后，你可以使用 Angular 的标准属性绑定语法（如下所示），来把这个触发器绑定到模板表达式上。这里的 `triggerName` 就是触发器的名称，而 `expression` 的求值结果是前面定义过的动画状态之一。
 
@@ -338,7 +347,7 @@ The following code snippet binds the trigger to the value of the `isOpen` proper
 下列代码片段把该触发器绑定到了 `isOpen` 属性的值上。
 
 <code-example path="animations/src/app/open-close.component.1.html" header="src/app/open-close.component.html"
-region="compare">
+region="trigger">
 </code-example>
 
 In this example, when the `isOpen` expression evaluates to a defined state of `open` or `closed`, it notifies the trigger `openClose` of a state change. Then it's up to the `openClose` code to handle the state change and kick off a state change animation.
@@ -386,20 +395,20 @@ region="trigger">
 
 ### Summary
 
-### 小节
+### 小结
 
-You learned to add animation to a simple transition between two states, using `style()` and `state()` along with `animate()` for the timing.
+You learned to add animation to a transition between two states, using `style()` and `state()` along with `animate()` for the timing.
 
 你已经学会了如何在两个状态之间添加简单的转场动画，只要使用 `style()` 和 `state()`，并使用 `animate()` 来定义时序就可以了。
 
-You can learn about more advanced features in Angular animations under the Animation section, beginning with advanced techniques in [transition and triggers](guide/transition-and-triggers).
+Learn about more advanced features in Angular animations under the Animation section, beginning with advanced techniques in [transition and triggers](guide/transition-and-triggers).
 
-你还可以到 "动画" 组下学习 Angular 动画的高级特性，不妨先从[转场与触发器](guide/transition-and-triggers)中讲述的高级技巧开始。
+请到 "动画" 组下学习 Angular 动画的高级特性，不妨先从[转场与触发器](guide/transition-and-triggers)中讲述的高级技巧开始。
 
 {@a animation-api-summary}
 ## Animations API summary
 
-## 动画 API 小节
+## 动画 API 小结
 
 The functional API provided by the `@angular/animations` module provides a domain-specific language (DSL) for creating and controlling animations in Angular applications. See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
 
@@ -448,7 +457,7 @@ Defines one or more CSS styles to use in animations. Controls the visual appeara
 </tr>
 
 <tr>
-<td><code><a href="api/animations/state" class="code-anchor">state()</a></code></td>
+<td><code>[state](api/animations/state)()</code></td>
 <td>
 
 Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions.
@@ -492,10 +501,10 @@ Allows a sequential change between styles within a specified time interval. Use 
 </tr>
 
 <tr>
-<td><code><a href="api/animations/group" class="code-anchor">group()</a></code></td>
+<td><code>[group](api/animations/group)()</code></td>
 <td>
 
-Specifies a group of animation steps (<em>inner animations</em>) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within <code>sequence()</code> or <code>transition().</code>
+Specifies a group of animation steps (<em>inner animations</em>) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within <code>sequence()</code> or <code>transition()</code>.
 
 指定要并行运行的一组动画步骤（<em>内部动画</em>）。
 该动画只有当所有内部动画步骤都完成之后才会继续。用于 <code>sequence()</code> 或 <code>transition()</code> 中。
@@ -575,7 +584,7 @@ Allows animations on child components to be run within the same timeframe as the
 
 ## 关于 Angular 动画的更多知识
 
-You may also be interested in the following:
+You might also be interested in the following:
 
 你可能还对下列内容感兴趣：
 

@@ -47,10 +47,10 @@ Here's a summary of the stand-alone functions, in order of likely utility:
     <td>
 
       Runs the body of a test (`it`) or setup (`beforeEach`) function within a special _async test zone_.
-      See [discussion above](guide/testing-components-scenarios#waitForAsync).
+      See [waitForAsync](guide/testing-components-scenarios#waitForAsync).
 
       在一个特殊的* async 测试区域*中运行测试（`it`）的函数体或准备函数（`beforeEach`）。
-      参阅[前面的讨论](guide/testing-components-scenarios#waitForAsync)。
+      参阅 [waitForAsync](guide/testing-components-scenarios#waitForAsync)。
 
     </td>
 
@@ -67,10 +67,10 @@ Here's a summary of the stand-alone functions, in order of likely utility:
     <td>
 
       Runs the body of a test (`it`) within a special _fakeAsync test zone_, enabling
-      a linear control flow coding style. See [discussion above](guide/testing-components-scenarios#fake-async).
+      a linear control flow coding style. See [fakeAsync](guide/testing-components-scenarios#fake-async).
 
       在一个特殊的* fakeAsync 测试区域*中运行测试（`it`）的函数体，以便启用线性风格的控制流。
-      参阅[前面的讨论](guide/testing-components-scenarios#fake-async)。
+      参阅 [fakeAsync](guide/testing-components-scenarios#fake-async)。
 
     </td>
 
@@ -105,11 +105,11 @@ Here's a summary of the stand-alone functions, in order of likely utility:
       Accepts an optional argument that moves the virtual clock forward
       by the specified number of milliseconds,
       clearing asynchronous activities scheduled within that timeframe.
-      See [discussion above](guide/testing-components-scenarios#tick).
+      See [tick](guide/testing-components-scenarios#tick).
 
       接受一个可选参数，它可以把虚拟时钟往前推进特定的微秒数。
       清除调度到那个时间帧中的异步活动。
-      参阅[前面的讨论](guide/testing-components-scenarios#tick)。
+      参阅 [tick](guide/testing-components-scenarios#tick)。
 
     </td>
 
@@ -355,11 +355,11 @@ Here are the most important static methods, in order of likely utility.
       Compile the testing module asynchronously after you've finished configuring it.
       You **must** call this method if _any_ of the testing module components have a `templateUrl`
       or `styleUrls` because fetching component template and style files is necessarily asynchronous.
-      See [above](guide/testing-components-scenarios#compile-components).
+      See [compileComponents](guide/testing-components-scenarios#compile-components).
 
       在配置好测试模块之后，异步编译它。
       如果测试模块中的*任何一个*组件具有 `templateUrl` 或 `styleUrls`，那么你**必须**调用这个方法，因为获取组件的模板或样式文件必须是异步的。
-      参阅[前面的讨论](guide/testing-components-scenarios#compile-components)。
+      参阅 [compileComponents](guide/testing-components-scenarios#compile-components)。
 
       After calling `compileComponents`, the `TestBed` configuration is frozen for the duration of the current spec.
 
@@ -528,8 +528,8 @@ Here are the most important static methods, in order of likely utility.
 
       测试垫片(`karma-test-shim`, `browser-test-shim`)会为你调用它，所以你很少需要自己调用它。
 
-      You may call this method _exactly once_. If you must change
-      this default in the middle of your test run, call `resetTestEnvironment` first.
+      Call this method _exactly once_. To change
+      this default in the middle of a test run, call `resetTestEnvironment` first.
 
       这个方法只能被调用**一次**。如果确实需要在测试程序运行期间改变这个默认设置，那么先调用 `resetTestEnvironment`。
 
@@ -856,10 +856,10 @@ Here are the most useful methods for testers.
 
       To resume testing after completion of asynchronous activity or
       asynchronous change detection, hook that promise.
-      See [above](guide/testing-components-scenarios#when-stable).
+      See [whenStable](guide/testing-components-scenarios#when-stable).
 
       要想在完成了异步活动或异步变更检测之后再继续测试，可以对那个承诺对象进行挂钩。
-      参阅 [前面](guide/testing-components-scenarios#when-stable)。
+      参阅 [whenStable](guide/testing-components-scenarios#when-stable)。
 
     </td>
 
@@ -1032,11 +1032,11 @@ Here are the most useful `DebugElement` members for testers, in approximate orde
       为元素提供父级上下文的对象。
       通常是控制该元素的祖级组件实例。
 
-      When an element is repeated within `*ngFor`, the context is an `NgForRow` whose `$implicit`
+      When an element is repeated within `*ngFor`, the context is an `NgForOf` whose `$implicit`
       property is the value of the row instance value.
       For example, the `hero` in `*ngFor="let hero of heroes"`.
 
-      当一个元素被 `*ngFor` 重复，它的上下文为 `NgForRow`，它的 `$implicit` 属性值是该行的实例值。
+      当一个元素被 `*ngFor` 重复，它的上下文为 `NgForOf`，它的 `$implicit` 属性值是该行的实例值。
       比如，`*ngFor="let hero of heroes"` 里的 `hero`。
 
     </td>
@@ -1121,10 +1121,10 @@ Here are the most useful `DebugElement` members for testers, in approximate orde
       Triggers the event by its name if there is a corresponding listener
       in the element's `listeners` collection.
       The second parameter is the _event object_ expected by the handler.
-      See [above](guide/testing-components-scenarios#trigger-event-handler).
+      See [triggerEventHandler](guide/testing-components-scenarios#trigger-event-handler).
 
       如果在该元素的 `listeners` 集合中有相应的监听器，就根据名字触发这个事件。
-      第二个参数是该处理器函数所需的*事件对象*。参阅[前面](guide/testing-components-scenarios#trigger-event-handler)。
+      第二个参数是该处理器函数所需的*事件对象*。参阅 [triggerEventHandler](guide/testing-components-scenarios#trigger-event-handler)。
 
       If the event lacks a listener or there's some other problem,
       consider calling `nativeElement.dispatchEvent(eventObject)`.

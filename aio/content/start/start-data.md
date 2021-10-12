@@ -57,13 +57,17 @@ This section walks you through adding a **Buy** button and setting up a cart ser
 
   <code-example header="src/app/cart.service.ts" path="getting-started/src/app/cart.service.1.ts"></code-example>
 
-1. In the `CartService` class, define an `items` property to store the array of the current products in the cart.
+1. Import the `Product` interface from `./products.js`.
+
+   从 `./products.js` 导入 `Product` 接口。
+
+2. In the `CartService` class, define an `items` property to store the array of the current products in the cart.
 
    在 `CartService` 类中，定义一个 `items` 属性来把当前商品的数组存储在购物车中。
 
    <code-example path="getting-started/src/app/cart.service.ts" header="src/app/cart.service.ts" region="props"></code-example>
 
-1. Define methods to add items to the cart, return cart items, and clear the cart items.
+3. Define methods to add items to the cart, return cart items, and clear the cart items.
 
    定义把商品添加到购物车、返回购物车商品以及清除购物车商品的方法：
 
@@ -188,7 +192,14 @@ For customers to see their cart, you can create the cart view in two steps:
 
     StackBlitz 默认还会在组件中生成一个 `ngOnInit()`。不过在本教程中，你可以忽略 `CartComponent` 的 `ngOnInit()`。
 
-1. Open `app.module.ts` and add a route for the component `CartComponent`, with a `path` of `cart`.
+1. Ensure that the newly created `CartComponent` is added to the module's `declarations` in `app.module.ts`.
+
+   确保新建的 `CartComponent` 已经添加到了 `app.module.ts` 中该模块的 `declarations` 中。
+
+    <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-cart">
+    </code-example>
+
+1. Still in `app.module.ts`, add a route for the component `CartComponent`, with a `path` of `cart`.
 
    打开 `app.module.ts`，为组件 `CartComponent` 添加一个路由，其路由为 `cart` ：
 

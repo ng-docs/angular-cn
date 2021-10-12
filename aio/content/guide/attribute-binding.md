@@ -21,7 +21,7 @@ See the <live-example></live-example> for a working example containing the code 
 
 It is recommended that you set an element property with a [property binding](guide/property-binding) whenever possible.
 However, sometimes you don't have an element property to bind.
-In those situations, you can use attribute binding.
+In those situations, use attribute binding.
 
 建议你尽可能设置带有 [Property 绑定](guide/property-binding)的元素的 Property。但是，有时你没有可绑定的元素 Property。在这种情况下，可以使用 Attribute 绑定。
 
@@ -90,7 +90,7 @@ To use attribute binding with the `<td>` attribute `colspan`:
 
    将 `[attr.colspan]` 设置为等于某个表达式。
 
-In the following example, we bind the `colspan` attribute to the expression `1 + 1`.
+In the following example, you bind the `colspan` attribute to the expression `1 + 1`.
 
 在下面的示例中，我们将 `colspan` Attribute 绑定到表达式 `1 + 1`。
 
@@ -119,9 +119,9 @@ For more information on how to bind to the `colSpan` property, see the [`colspan
 
 ## 绑定到 `class` Attribute
 
-You can use class binding to add and remove CSS class names from an element's `class` attribute.
+Use class binding to add and remove CSS class names from an element's `class` attribute.
 
-你可以使用类绑定从元素的 `class` Attribute 中添加和删除 CSS 类名称。
+可以用类绑定从元素的 `class` Attribute 中添加和删除 CSS 类名称。
 
 ### Binding to a single CSS `class`
 
@@ -255,9 +255,9 @@ The following table summarizes class binding syntax.
 
 ## 绑定到 style Attribute
 
-You can use style binding to set styles dynamically.
+Use style binding to set styles dynamically.
 
-你可以使用样式绑定来动态设置样式。
+可以用样式绑定来动态设置样式。
 
 ### Binding to a single style
 
@@ -416,7 +416,7 @@ The following table summarizes style binding syntax.
 <div class="alert is-helpful">
 
 The [NgStyle](guide/built-in-directives/#ngstyle) directive can be used as an alternative to direct `[style]` bindings.
-However, using the above style binding syntax without `NgStyle` is preferred because due to improvements in style binding in Angular, `NgStyle` no longer provides significant value, and might eventually be removed in the future.
+However, using the preceding style binding syntax without `NgStyle` is preferred because due to improvements in style binding in Angular, `NgStyle` no longer provides significant value, and might eventually be removed in the future.
 
 [NgStyle](guide/built-in-directives/#ngstyle)指令可以用作代替直接绑定 `[style]` 的方法。但是，最好使用上述不用 `NgStyle` 的绑定语法，因为由于 Angular 中样式绑定的改进，`NgStyle` 不再提供显著价值，将来可能会被删除。
 
@@ -493,7 +493,7 @@ The more specific a class or style binding is, the higher its precedence.
 
 总之，类或样式绑定越具体，其优先级就越高。
 
-A binding to a specific class (for example, `[class.foo]`) will take precedence over a generic `[class]` binding, and a binding to a specific style (for example, `[style.bar]`) will take precedence over a generic `[style]` binding.
+A binding to a specific class (for example, `[class.foo]`) takes precedence over a generic `[class]` binding, and a binding to a specific style (for example, `[style.bar]`) takes precedence over a generic `[style]` binding.
 
 绑定到具体类（例如 `[class.foo]` ）将优先于不特定 `[class]` 的绑定，并且绑定到特定样式（例如 `[style.bar]` ）将优先于不特定 `[style]` 的绑定。
 
@@ -522,7 +522,7 @@ In addition, bindings take precedence over static attributes.
 
 此外，绑定会优先于静态属性。
 
-In the following case, `class` and `[class]` have similar specificity, but the `[class]` binding will take precedence because it is dynamic.
+In the following case, `class` and `[class]` have similar specificity, but the `[class]` binding takes precedence because it is dynamic.
 
 在这里，`class` 和 `[class]` 具有相似的特异性，但是 `[class]` 绑定更优先一些，因为它是动态的。
 
@@ -534,7 +534,7 @@ In the following case, `class` and `[class]` have similar specificity, but the `
 ### 委托给优先级较低的样式
 
 It is possible for higher precedence styles to "delegate" to lower precedence styles using `undefined` values.
-Whereas setting a style property to `null` ensures the style is removed, setting it to `undefined` will cause Angular to fall back to the next-highest precedence binding to that style.
+Whereas setting a style property to `null` ensures the style is removed, setting it to `undefined` causes Angular to fall back to the next-highest precedence binding to that style.
 
 可以用 `undefined` 值来把高优先级的样式“委托”给较低优先级的样式。将样式属性设置为 `null` 可以确保样式被删除，而将其设置为 `undefined` 将导致 Angular 回退到该样式的次高优先级绑定。
 
@@ -545,7 +545,7 @@ For example, consider the following template:
 <code-example path="attribute-binding/src/app/app.component.html" region="style-delegation" header="src/app/app.component.html"></code-example>
 
 Imagine that the `dirWithHostBinding` directive and the `comp-with-host-binding` component both have a `[style.width]` host binding.
-In that case, if `dirWithHostBinding` sets its binding to `undefined`, the `width` property will fall back to the value of the `comp-with-host-binding` host binding.
+In that case, if `dirWithHostBinding` sets its binding to `undefined`, the `width` property falls back to the value of the `comp-with-host-binding` host binding.
 However, if `dirWithHostBinding` sets its binding to `null`, the `width` property will be removed entirely.
 
 假设 `dirWithHostBinding` 指令和 `comp-with-host-binding` 组件都具有 `[style.width]` 宿主绑定。在这里，如果 `dirWithHostBinding` 将其绑定设置为 `undefined` ，则 `width` 属性将回退到 `comp-with-host-binding` 宿主绑定的值。但是，如果 `dirWithHostBinding` 将其绑定设置为 `null` ，则会完全删除 `width`
@@ -558,7 +558,7 @@ There are cases where you need to differentiate the behavior of a [Component](ap
 
 在某些情况下，你需要根据在 host 元素上以 HTML 属性的形式设置的静态值来区分[组件](api/core/Component)或[指令](api/core/Directive)的行为。例如，你可能有一个指令，需要知道 `<button>` 或 `<input>` 元素的 `type` 值。
 
-The [Attribute](api/core/Attribute) parameter decorator is great for passing the value of an HTML attribute to a component/directive constructor via [dependency injection](guide/dependency-injection).
+The [Attribute](api/core/Attribute) parameter decorator is great for passing the value of an HTML attribute to a component/directive constructor using [dependency injection](guide/dependency-injection).
 
 [Attribute](api/core/Attribute)参数装饰器非常适合通过[依赖注入](guide/dependency-injection)来将 HTML 属性的值传递给组件/指令构造函数。
 

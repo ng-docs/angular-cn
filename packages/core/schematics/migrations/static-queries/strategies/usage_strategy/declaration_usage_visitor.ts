@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import * as ts from 'typescript';
+import ts from 'typescript';
 import {isFunctionLikeDeclaration, unwrapExpression} from '../../../../utils/typescript/functions';
 import {getPropertyNameText} from '../../../../utils/typescript/property_name';
 
@@ -152,7 +152,7 @@ export class DeclarationUsageVisitor {
       node: ts.PropertyAccessExpression, checkSetter: boolean, checkGetter: boolean) {
     const propertySymbol = this._getPropertyAccessSymbol(node);
 
-    if (!propertySymbol || !propertySymbol.declarations.length ||
+    if (propertySymbol?.declarations === undefined || propertySymbol.declarations.length === 0 ||
         (propertySymbol.getFlags() & ts.SymbolFlags.Accessor) === 0) {
       return;
     }

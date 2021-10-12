@@ -2,12 +2,12 @@
 
 # 创建库
 
-This page provides a conceptual overview of how you can create and publish new libraries to extend Angular functionality.
+This page provides a conceptual overview of how to create and publish new libraries to extend Angular functionality.
 
 对于如何创建和发布新库，以扩展 Angular 的功能，本页面提供了一个概念性的总览
 
-If you find that you need to solve the same problem in more than one app (or want to share your solution with other developers), you have a candidate for a library.
-A simple example might be a button that sends users to your company website, that would be included in all apps that your company builds.
+If you find that you need to solve the same problem in more than one application (or want to share your solution with other developers), you have a candidate for a library.
+A simple example might be a button that sends users to your company website, that would be included in all applications that your company builds.
 
 如果你发现自己要在多个应用中解决同样的问题（或者要把你的解决方案分享给其它开发者），你就有了一个潜在的库。
 简单的例子就是一个用来把用户带到你公司网站上的按钮，该按钮会包含在你公司构建的所有应用中。
@@ -26,6 +26,22 @@ Use the Angular CLI to generate a new library skeleton in a new workspace with t
  ng generate library my-lib
 </code-example>
 
+<div class="callout is-important">
+
+<header>Naming your library</header>
+
+<header>命名你的库</header>
+
+  You should be very careful when choosing the name of your library if you want to publish it later in a public package registry such as npm. See [Publishing your library](guide/creating-libraries#publishing-your-library).
+  
+  如果你想稍后在公共包注册表（例如 npm）中发布它，则在选择库名称时应该非常小心。请参阅[发布你的库](guide/creating-libraries#publishing-your-library)。
+  
+  Avoid using a name that is prefixed with `ng-`, such as `ng-library`. The `ng-` prefix is a reserved keyword used from the Angular framework and its libraries. The `ngx-` prefix is preferred as a convention used to denote that the library is suitable for use with Angular. It is also an excellent indication to consumers of the registry to differentiate between libraries of different JavaScript frameworks.
+  
+  避免使用以 `ng-` 为前缀的名称，例如 `ng-library`。 `ng-` 前缀是 Angular 框架及其库中使用的保留关键字。首选 `ngx-` 前缀作为用于表示该库适合与 Angular 一起使用的约定。这也是注册表的使用者区分不同 JavaScript 框架库的优秀指示器。
+
+</div>
+
 The `ng generate` command creates the `projects/my-lib` folder in your workspace, which contains a component and a service inside an NgModule.
 
 `ng generate` 命令会在你的工作区中创建 `projects/my-lib` 文件夹，其中包含带有一个组件和一个服务的 NgModule。
@@ -36,10 +52,10 @@ The `ng generate` command creates the `projects/my-lib` folder in your workspace
      
      要了解关于库项目的目录结构的详细信息，参阅[项目文件结构](guide/file-structure)中的[库项目文件](guide/file-structure#library-project-files)部分。
 
-     You can use the monorepo model to use the same workspace for multiple projects.
+     Use the monorepo model to use the same workspace for multiple projects.
      See [Setting up for a multi-project workspace](guide/file-structure#multiple-projects).
 
-     你可以使用单一仓库（monorepo）模式将同一个工作区用于多个项目。参阅[建立多项目型工作区](guide/file-structure#multiple-projects)。
+     可以使用单一仓库（monorepo）模式将同一个工作区用于多个项目。参阅[建立多项目型工作区](guide/file-structure#multiple-projects)。
 
 </div>
 
@@ -61,9 +77,9 @@ When you generate a new library, the workspace configuration file, `angular.json
         ...
 </code-example>
 
-You can build, test, and lint the project with CLI commands:
+Build, test, and lint the project with CLI commands:
 
-你可以使用 CLI 命令来构建、测试和 lint 这个项目：
+可以使用 CLI 命令来构建、测试和 lint 这个项目：
 
 <code-example language="bash">
  ng build my-lib --configuration development
@@ -71,7 +87,7 @@ You can build, test, and lint the project with CLI commands:
  ng lint my-lib
 </code-example>
 
-Notice that the configured builder for the project is different from the default builder for app projects.
+Notice that the configured builder for the project is different from the default builder for application projects.
 This builder, among other things, ensures that the library is always built with the [AOT compiler](guide/aot-compiler).
 
 注意，该项目配置的构建器与应用类项目的默认构建器不同。此构建器可以确保库永远使用 [AoT 编译器](guide/aot-compiler)构建。
@@ -131,7 +147,7 @@ Here are some things to consider in migrating application functionality to a lib
 
   考虑如何为客户端应用提供服务。
 
-  * Services should declare their own providers, rather than declaring providers in the NgModule or a component. Declaring a provider makes that service *tree-shakable*. This practice allows the compiler to leave the service out of the bundle if it never gets injected into the application that imports the library. For more about this, see [Tree-shakable providers](guide/architecture-services#providing-services).
+  * Services should declare their own providers, rather than declaring providers in the NgModule or a component. Declaring a provider makes that service *tree-shakable*. This practice lets the compiler leave the service out of the bundle if it never gets injected into the application that imports the library. For more about this, see [Tree-shakable providers](guide/architecture-services#providing-services).
 
      服务应该自己声明提供者（而不是在 NgModule 或组件中声明提供者），以便它们是*可摇树优化的* 。这样，如果服务器从未被注入到导入该库的应用中，编译器就会把该服务从该 bundle 中删除。关于这方面的更多信息，请参阅[Tree-shakable 提供者](guide/architecture-services#providing-services) 。
 
@@ -154,7 +170,7 @@ Here are some things to consider in migrating application functionality to a lib
 ## 使用代码生成原理图与 CLI 集成
 
 
-A library typically includes *reusable code* that defines components, services, and other Angular artifacts (pipes, directives, and so on) that you simply import into a project.
+A library typically includes *reusable code* that defines components, services, and other Angular artifacts (pipes, directives) that you import into a project.
 A library is packaged into an npm package for publishing and sharing.
 This package can also include [schematics](guide/glossary#schematic) that provide instructions for generating or transforming code directly in your project, in the same way that the CLI creates a generic new component with `ng generate component`.
 A schematic that is packaged with a library can, for example, provide the Angular CLI with the information it needs to generate a component that configures and uses a particular feature, or set of features, defined in that library.
@@ -163,16 +179,15 @@ One example of this is [Angular Material's navigation schematic](https://materia
 一个库通常都包含*可复用的代码* ，用于定义组件，服务，以及你刚才导入到项目中的其他 Angular 工件（管道，指令等等）。库被打包成一个 npm 包，用于发布和共享。这个包还可以包含一些[原理图](guide/glossary#schematic) ，它提供直接在项目中生成或转换代码的指令，就像 CLI 用 `ng generate component` 创建一个通用的新 `ng generate component` 。例如，用库打包的原理图可以为 Angular CLI 提供生成组件所需的信息，该组件用于配置和使用该库中定义的特定特性或一组特性。这方面的一个例子是 [Angular Material 的导航原理图](https://material.angular.cn/guide/schematics#navigation-schematic)，它用来配置 CDK 的 [`BreakpointObserver`](https://material.angular.cn/cdk/layout/overview#breakpointobserver) 并把它与 Material 的 [MatSideNav](https://material.angular.cn/components/sidenav/overview) 和 [MatToolbar](https://material.angular.cn/components/toolbar/overview) 组件一起使用。
 
 
-You can create and include the following kinds of schematics:
+Create and include the following kinds of schematics:
 
-你可以创建并包含以下几种原理图。
-
+创建并包含以下几种原理图。
 
 * Include an installation schematic so that `ng add` can add your library to a project.
 
   包含一个安装原理图，以便 `ng add` 可以把你的库添加到项目中。
 
-* Include generation schematics in your library so that `ng generate` can scaffold your defined artifacts (components, services, tests, and so on) in a project.
+* Include generation schematics in your library so that `ng generate` can scaffold your defined artifacts (components, services, tests) in a project.
 
   在库中包含了生成原理图，以便 `ng generate` 可以为项目中的已定义工件（组件，服务，测试等）提供支持。
 
@@ -181,13 +196,13 @@ You can create and include the following kinds of schematics:
   包含一个更新的原理图，以便 `ng update` 可以更新你的库的依赖，并提供一些迁移来破坏新版本中的更改。
 
 What you include in your library depends on your task.
-For example, you could define a schematic to create a dropdown that is pre-populated with canned data to show how to add it to an app.
-If you want a dropdown that would contain different passed-in values each time, your library could define a schematic to create it with a given configuration. Developers could then use `ng generate` to configure an instance for their own app.
+For example, you could define a schematic to create a dropdown that is pre-populated with canned data to show how to add it to an application.
+If you want a dropdown that would contain different passed-in values each time, your library could define a schematic to create it with a given configuration. Developers could then use `ng generate` to configure an instance for their own application.
 
 你的库中所包含的内容取决于你的任务。例如，你可以定义一个原理图来创建一个预先填充了固定数据的下拉列表，以展示如何把它添加到一个应用中。如果你想要一个每次包含不同传入值的下拉列表，那么你的库可以定义一个原理图来用指定的配置创建它。然后，开发人员可以使用 `ng generate` 为自己的应用配置一个实例。
 
 Suppose you want to read a configuration file and then generate a form based on that configuration.
-If that form will need additional customization by the developer who is using your library, it might work best as a schematic.
+If that form needs additional customization by the developer who is using your library, it might work best as a schematic.
 However, if the form will always be the same and not need much customization by developers, then you could create a dynamic component that takes the configuration and generates the form.
 In general, the more complex the customization, the more useful the schematic approach.
 
@@ -224,6 +239,7 @@ cd dist/my-lib
 npm publish
 </code-example>
 
+
 {@a lib-assets}
 
 ## Managing assets in a library
@@ -231,7 +247,7 @@ npm publish
 ## 管理库中的资产（assets）
 
 Starting with version 9.x of the [ng-packagr](https://github.com/ng-packagr/ng-packagr/blob/master/README.md) tool, you can configure the tool to automatically copy assets into your library package as part of the build process.
-You can use this feature when your library needs to publish optional theming files, Sass mixins, or documentation (like a changelog).
+Use this feature when your library needs to publish optional theming files, Sass mixins, or documentation (like a changelog).
 
 从 [ng-packagr](https://github.com/ng-packagr/ng-packagr/blob/master/README.md) 工具的 9.x 版本开始，你可以配置它，以便在构建过程中自动把资产复制到库的发布包里。
 如果你的库需要发布一些可选的主题文件、Sass mixins 或文档（比如变更记录），可以使用这个特性。
@@ -248,7 +264,7 @@ You can use this feature when your library needs to publish optional theming fil
 
 ## 链接库
 
-While working on a published library, you can use [npm link](https://docs.npmjs.com/cli/link) to avoid reinstalling the library on every build.
+While working on a published library, use [npm link](https://docs.npmjs.com/cli/link) to avoid reinstalling the library on every build.
 
 在开发要发布的库时，可以使用 [npm link](https://docs.npmjs.com/cli/link) 来避免每次构建时都被迫重新安装库。
 
@@ -262,20 +278,20 @@ For example, `main` should point at a JavaScript file, not a TypeScript file.
 
 ### 对同级依赖使用 TypeScript 路径映射
 
-Angular libraries should list all `@angular/*` dependencies as peer dependencies.
+Angular libraries should list any `@angular/*` dependencies the library depends on as peer dependencies.
 This ensures that when modules ask for Angular, they all get the exact same module.
 If a library lists `@angular/core` in `dependencies` instead of `peerDependencies`, it might get a different Angular module instead, which would cause your application to break.
 
-Angular 库应该把所有 `@angular/*` 依赖项都列为同级依赖。这确保了当各个模块请求 Angular 时，都会得到完全相同的模块。如果某个库在 `dependencies` 列出 `@angular/core` 而不是用 `peerDependencies`，它可能会得到一个不同的 Angular 模块，这会破坏你的应用。
+各种 Angular 库应该把自己依赖的所有 `@angular/*` 都列为同级依赖。这确保了当各个模块请求 Angular 时，都会得到完全相同的模块。如果某个库在 `dependencies` 列出 `@angular/core` 而不是用 `peerDependencies`，它可能会得到一个不同的 Angular 模块，这会破坏你的应用。
 
 While developing a library, you must install all peer dependencies through `devDependencies` to ensure that the library compiles properly.
-A linked library will then have its own set of Angular libraries that it uses for building, located in its `node_modules` folder.
+A linked library then has its own set of Angular libraries that it uses for building, located in its `node_modules` folder.
 However, this can cause problems while building or running your application.
 
 在开发库的过程中，你必须通过 `devDependencies` 安装所有的同级依赖，以确保库能够正确编译。这样，一个链接过的库就会拥有自己的一组用于构建的 Angular 库，它们位于 `node_modules` 文件夹中。但是，这会在构建或运行应用时引发问题。
 
-To get around this problem you can use TypeScript path mapping to tell TypeScript that it should load some modules from a specific location.
-List all the peer dependencies that your library uses in the workspace TypeScript configuration file `./tsconfig.json`, and point them at the local copy in the app's `node_modules` folder.
+To get around this problem use TypeScript path mapping to tell TypeScript that it should load some modules from a specific location.
+List all the peer dependencies that your library uses in the workspace TypeScript configuration file `./tsconfig.json`, and point them at the local copy in the application's `node_modules` folder.
 
 为了解决此问题，你可以使用 TypeScript 路径映射来告诉 TypeScript 它应该从指定的位置加载某些模块。在 TypeScript 配置文件 `./tsconfig.json` 中列出该库使用的所有同级依赖，并把它们指向应用的 `node_modules` 文件夹中的本地副本。
 
@@ -301,7 +317,7 @@ This mapping ensures that your library always loads the local copies of the modu
 
 ## 在应用中使用自己的库
 
-You don't have to publish your library to the npm package manager in order to use it in your own apps, but you do have to build it first.
+You don't have to publish your library to the npm package manager to use it in your own applications, but you do have to build it first.
 
 你不必把库发布到 npm 包管理器上就可以在自己的应用中使用它，但必须先构建它。
 
@@ -317,10 +333,9 @@ To use your own library in an app:
  ng build my-lib
  </code-example>
 
-* In your apps, import from the library by name:
+* In your applications, import from the library by name:
 
   在你的应用中，按名字从库中导入：
-
  ```
  import { myExport } from 'my-lib';
  ```
@@ -329,8 +344,8 @@ To use your own library in an app:
 
 ### 构建和重建你的库
 
-The build step is important if you haven't published your library as an npm package and then installed the package back into your app from npm.
-For instance, if you clone your git repository and run `npm install`, your editor will show the `my-lib` imports as missing if you haven't yet built your library.
+The build step is important if you haven't published your library as an npm package and then installed the package back into your application from npm.
+For instance, if you clone your git repository and run `npm install`, your editor shows the `my-lib` imports as missing if you haven't yet built your library.
 
 如果你没有把库发布为 npm 包，然后把它从 npm 安装到你的应用中，那么构建步骤就是必要的。例如，如果你克隆了 git 仓库并运行了 `npm install`，编辑器就会把 `my-lib` 的导入显示为缺失状态（如果你还没有构建过该库）。
 
@@ -348,7 +363,7 @@ The Angular CLI uses the `tsconfig` paths to tell the build system where to find
 
 </div>
 
-If you find that changes to your library are not reflected in your app, your app is probably using an old build of the library.
+If you find that changes to your library are not reflected in your application, your app is probably using an old build of the library.
 
 如果你发现库中的更改没有反映到应用中，那么你的应用很可能正在使用这个库的旧版本。
 
@@ -358,7 +373,7 @@ Every time a file is changed a partial build is performed that emits the amended
 
 每当你对它进行修改时，都可以重建你的库，但这个额外的步骤需要时间。*增量构建*功能可以改善库的开发体验。每当文件发生变化时，都会执行局部构建，并修补一些文件。
 
-Incremental builds can be run as a background process in your dev environment. To take advantage of this feature add the `--watch` flag to the build command:
+Incremental builds can be run as a background process in your development environment. To take advantage of this feature add the `--watch` flag to the build command:
 
 增量构建可以作为开发环境中的后台进程运行。要启用这个特性，可以在构建命令中加入 `--watch` 标志：
 
@@ -372,7 +387,7 @@ The CLI `build` command uses a different builder and invokes a different build t
 
 CLI 的 `build` 命令为库使用与应用不同的构建器，并调用不同的构建工具。
 
-* The build system for apps, `@angular-devkit/build-angular`, is based on `webpack`, and is included in all new Angular CLI projects.
+* The build system for applications, `@angular-devkit/build-angular`, is based on `webpack`, and is included in all new Angular CLI projects.
 
   应用的构建体系（`@angular-devkit/build-angular`）基于 `webpack`，并被包含在所有新的 Angular CLI 项目中。
 
@@ -386,7 +401,7 @@ This means that the TypeScript source can result in different JavaScript code in
 这两种构建体系支持不同的东西，即使它们支持相同的东西，它们的执行方式也不同。
 这意味着同一套 TypeScript 源码在生成库时生成的 JavaScript 代码可能与生成应用时生成的 JavaScript 代码也不同。
 
-For this reason, an app that depends on a library should only use TypeScript path mappings that point to the *built library*.
+For this reason, an application that depends on a library should only use TypeScript path mappings that point to the *built library*.
 TypeScript path mappings should *not* point to the library source `.ts` files.
 
 因此，依赖于库的应用应该只使用指向*内置库*的 TypeScript 路径映射。
@@ -400,7 +415,7 @@ TypeScript 的路径映射*不应该*指向库的 `.ts` 源文件。
 
 ## 使用 Ivy 构建库
 
-There are three distribution formats that you can use when publishing a library:
+There are three distribution formats to use when publishing a library:
 
 发布库时可以使用三种分发格式：
 
@@ -466,7 +481,7 @@ For publishing to npm use the partial-Ivy format as it is stable between patch v
 
 对于发布到 npm 的库，请使用 partial-Ivy 格式，因为它在 Angular 的各个补丁版本之间是稳定的。
 
-Avoid compiling libraries with full-Ivy code if you are publishing to npm because the generated Ivy instructions are not part of Angular's public API, and so may change between patch versions.
+Avoid compiling libraries with full-Ivy code if you are publishing to npm because the generated Ivy instructions are not part of Angular's public API, and so might change between patch versions.
 
 如果要发布到 npm，请避免使用完全 Ivy 的方式编译库，因为生成的 Ivy 指令不属于 Angular 公共 API 的一部分，因此在补丁版本之间可能会有所不同。
 
@@ -530,15 +545,15 @@ If you've never published a package in npm before, you must create a user accoun
 
 An application installs many Angular libraries from npm into its `node_modules` directory.
 However, the code in these libraries cannot be bundled directly along with the built application as it is not fully compiled.
-To finish compilation, you can use the Angular linker.
+To finish compilation, use the Angular linker.
 
 应用将 npm 中的许多 Angular 库安装到其 `node_modules` 目录中。但是，这些库中的代码不能与已编译的应用直接捆绑在一起，因为它尚未完全编译。要完成编译，可以使用 Angular 链接器。
 
 For applications that don't use the Angular CLI, the linker is available as a Babel plugin.
-You can use the Babel plugin using the module `@angular/compiler-cli/linker/babel` to incorporate into your builds.
-For example, you can integrate the plugin into a custom Webpack build by registering the linker as a plugin for `babel-loader`.
+Use the Babel plugin using the module `@angular/compiler-cli/linker/babel` to incorporate into your builds.
+For example, integrate the plugin into a custom Webpack build by registering the linker as a plugin for `babel-loader`.
 
-对于不使用 Angular CLI 的应用，链接器可作为 Babel 插件使用。`@angular/compiler-cli/linker/babel` 模块来使用 Babel 插件，以将其并入你的构建中。比如你可以将 `babel-loader` 插件注册为链接器，以将其集成到自定义 Webpack 构建中。
+对于不使用 Angular CLI 的应用，链接器可作为 Babel 插件使用。`@angular/compiler-cli/linker/babel` 模块来使用 Babel 插件，以将其并入你的构建中。比如可以将 `babel-loader` 插件注册为链接器，以将其集成到自定义 Webpack 构建中。
 
 Previously, if you ran `yarn install` or `npm install` you had to re-run `ngcc`.
 Now, libraries only need to be processed by the linker a single time, regardless of other npm operations.

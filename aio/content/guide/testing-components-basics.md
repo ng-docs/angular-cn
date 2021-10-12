@@ -15,21 +15,22 @@ the DOM as described by its template.
 
 这些测试需要在浏览器 DOM 中创建该组件的宿主元素，就像 Angular 所做的那样，然后检查组件类与 DOM 的交互是否如模板中描述的那样工作。
 
-The Angular `TestBed` facilitates this kind of testing as you'll see in the sections below.
+The Angular `TestBed` facilitates this kind of testing as you'll see in the following sections.
 But in many cases, _testing the component class alone_, without DOM involvement,
-can validate much of the component's behavior in an easier, more obvious way.
+can validate much of the component's behavior in an straightforward, more obvious way.
 
 Angular 的 `TestBed` 可以帮你做这种测试，正如你将在下面的章节中看到的那样。但是，在很多情况下，*单独测试组件类*（不需要 DOM 的参与），就能以更简单，更明显的方式验证组件的大部分行为。
 
 <div class="alert is-helpful">
 
-  For the sample app that the testing guides describe, see the <live-example name="testing" embedded-style noDownload>sample app</live-example>.
+For a hands-on experience, <live-example name="testing" stackblitz="specs" noDownload>run tests and explore the test code</live-example> in your browser as your read this guide.
 
-  对于本测试指南中描述的范例应用，参阅<live-example name="testing" embedded-style noDownload>范例应用</live-example>。
+要上手练习，请按照本指南中所讲的，在浏览器中<live-example name="testing" stackblitz="specs" noDownload>运行测试，并浏览测试代码</live-example>。
 
-  For the tests features in the testing guides, see <live-example name="testing" stackblitz="specs" noDownload>tests</live-example>.
 
-  要了解本测试指南中涉及的测试特性，请参阅<live-example name="testing" stackblitz="specs" noDownload>tests</live-example>。
+If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -112,7 +113,7 @@ or its parent component.
   region="class-only"
   header="app/dashboard/dashboard-hero.component.spec.ts (class tests)"></code-example>
 
-When a component has dependencies, you may wish to use the `TestBed` to both
+When a component has dependencies, you might want to use the `TestBed` to both
 create the component and its dependencies.
 
 当组件有依赖时，你可能要使用 `TestBed` 来同时创建该组件及其依赖。
@@ -144,7 +145,7 @@ Then provide and inject _both the_ **component** _and the service_ in the `TestB
   region="class-only-before-each"
   header="app/welcome/welcome.component.spec.ts (class-only setup)"></code-example>
 
-Then exercise the component class, remembering to call the [lifecycle hook methods](guide/lifecycle-hooks) as Angular does when running the app.
+Then exercise the component class, remembering to call the [lifecycle hook methods](guide/lifecycle-hooks) as Angular does when running the application.
 
 然后，测验组件类，别忘了要像 Angular 运行应用时一样[调用生命周期钩子方法](guide/lifecycle-hooks)。
 
@@ -157,7 +158,7 @@ Then exercise the component class, remembering to call the [lifecycle hook metho
 
 ## 组件 DOM 测试
 
-Testing the component _class_ is as easy as [testing a service](guide/testing-services).
+Testing the component _class_ is as straightforward as [testing a service](guide/testing-services).
 
 测试组件*类*[和测试服务](guide/testing-services)一样简单。
 
@@ -169,7 +170,7 @@ respond to user input and gestures, or integrate with its parent and child compo
 
 但组件不仅仅是它的类。组件还会与 DOM 以及其他组件进行交互。*只对类*的测试可以告诉你类的行为。但它们无法告诉你这个组件是否能正确渲染、响应用户输入和手势，或是集成到它的父组件和子组件中。
 
-None of the _class-only_ tests above can answer key questions about how the
+None of the preceding _class-only_ tests can answer key questions about how the
 components actually behave on screen.
 
 以上所有*只对类*的测试都不能回答有关组件会如何在屏幕上实际运行方面的关键问题。
@@ -194,7 +195,7 @@ components actually behave on screen.
 
   `WelcomeComponent` 的模板是否显示了欢迎信息？
 
-These may not be troubling questions for the simple components illustrated above.
+These might not be troubling questions for the preceding simple components illustrated.
 But many components have complex interactions with the DOM elements
 described in their templates, causing HTML to appear and disappear as
 the component state changes.
@@ -248,7 +249,7 @@ function imported from `@angular/core/testing`.
 
 由于 `compileComponents` 是异步的，所以它使用从 `@angular/core/testing` 中导入的实用工具函数 [`waitForAsync`](api/core/testing/waitForAsync)。
 
-Please refer to the [waitForAsync](guide/testing-components-scenarios#waitForAsync) section for more details.
+Refer to the [waitForAsync](guide/testing-components-scenarios#waitForAsync) section for more details.
 
 欲知详情，请参阅 [waitForAsync 部分。](guide/testing-components-scenarios#waitForAsync)
 
@@ -267,7 +268,7 @@ The rest of the file is boilerplate setup code anticipating more advanced tests 
 
 该文件的其它部分是做设置用的样板代码，*可以*预见，如果组件演变得更具实质性内容，就会需要更高级的测试。
 
-You'll learn about these advanced test features below.
+You'll learn about these advanced test features in the following sections.
 For now, you can radically reduce this test file to a more manageable size:
 
 下面你将学习这些高级测试特性。现在，你可以从根本上把这个测试文件减少到一个更容易管理的大小：
@@ -392,9 +393,9 @@ Later you'll encounter the `DebugElement.nativeElement` and it too has the `any`
 
 Angular can't know at compile time what kind of HTML element the `nativeElement` is or
 if it even is an HTML element.
-The app might be running on a _non-browser platform_, such as the server or a
+The application might be running on a _non-browser platform_, such as the server or a
 [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API),
-where the element may have a diminished API or not exist at all.
+where the element might have a diminished API or not exist at all.
 
 Angular 在编译时不知道 `nativeElement` 是什么样的 HTML 元素，甚至可能不是 HTML 元素。该应用可能运行在*非浏览器平台*（如服务器或 [Web Worker）上](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)，在那里本元素可能具有一个缩小版的 API，甚至根本不存在。
 
@@ -404,10 +405,10 @@ one of its derived classes.
 
 本指南中的测试都是为了在浏览器中运行而设计的，因此 `nativeElement` 的值始终是 `HTMLElement` 或其派生类之一。
 
-Knowing that it is an `HTMLElement` of some sort, you can use
+Knowing that it is an `HTMLElement` of some sort, use
 the standard HTML `querySelector` to dive deeper into the element tree.
 
-知道了它是某种 `HTMLElement` ，你就可以使用标准的 HTML `querySelector` 深入了解元素树。
+知道了它是某种 `HTMLElement` ，就可以用标准的 HTML `querySelector` 深入了解元素树。
 
 Here's another test that calls `HTMLElement.querySelector` to get the paragraph element and look for the banner text:
 
@@ -490,7 +491,7 @@ You import the `DebugElement` symbol from the Angular core library.
 ### _By.css()_
 
 Although the tests in this guide all run in the browser,
-some apps might run on a different platform at least some of the time.
+some applications might run on a different platform at least some of the time.
 
 虽然本指南中的测试都是在浏览器中运行的，但有些应用可能至少要在某些时候运行在不同的平台上。
 
@@ -541,11 +542,11 @@ Some noteworthy observations:
 
   你必须解包那个结果才能得到 p 元素。
 
-When you're filtering by CSS selector and only testing properties of a browser's _native element_, the `By.css` approach may be overkill.
+When you're filtering by CSS selector and only testing properties of a browser's _native element_, the `By.css` approach might be overkill.
 
 当你使用 CSS 选择器进行过滤并且只测试浏览器*原生元素*的属性时，用 `By.css` 方法可能会有点过度。
 
-It's often easier and more clear to filter with a standard `HTMLElement` method
+It's often straightforward and more clear to filter with a standard `HTMLElement` method
 such as `querySelector()` or `querySelectorAll()`.
 
 用 `HTMLElement` 方法（比如 `querySelector()` 或 `querySelectorAll()`）进行过滤通常更简单，更清晰。
