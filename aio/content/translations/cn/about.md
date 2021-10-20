@@ -32,7 +32,7 @@ Angular 和 Grails 开发高校[教务管理系统](http://www.github.com/jwgl)�
 但你可以在精神上支持我们，比如：
 
 - 在 Github 上 Star 我们
-- 提供[反馈、纠错](https://github.com/angular/angular-cn/issues)
+- 提供[反馈、纠错](https://github.com/ng-docs/angular-cn/issues)
 - 帮我们宣传
 - 等等
 
@@ -109,7 +109,7 @@ Angular 和 Grails 开发高校[教务管理系统](http://www.github.com/jwgl)�
 - y4code（来自 Github）
 - 另外还有一些做好事不留名的活雷锋
 
-想让你的名字也出现在这里吗？请提供[反馈、纠错](https://github.com/angular/angular-cn/issues)。
+想让你的名字也出现在这里吗？请提供[反馈、纠错](https://github.com/ng-docs/angular-cn/issues)。
 
 ## 我们的友军
 

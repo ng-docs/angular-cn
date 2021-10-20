@@ -1,8 +1,13 @@
 # 关于中文版
 
+## 最新动态
+
+Angular 开发组决定支持本地化社区自主运营，因此本中文版于 2021 年 10 月正式从 Angular 项目组独立了出来，其网站、仓库、维护者也都相应的转移到了 <https://github.com/ng-docs> 组织，以后请到这里跟我们联系。
+
 ## Angular 开发组的致辞
 
-> **这是 Angular 开发组的项目经理（TPM）Naomi Black 和工程总监（Engineering Director）Brad Green 代表官方开发组发来的致辞，这标志着 angular.cn 正式获得了官方身份。如文档中的其它地方一样，点击任意中文即可显示原文。**
+> **这是 Angular 开发组的项目经理（TPM）Naomi Black 和工程总监（Engineering Director）Brad Green 代表官方开发组发来的致辞，这标志着 angular.cn 获得了官方的支持。
+> 如文档中的其它地方一样，点击任意中文即可显示原文。**
 
 Welcome to angular.cn!
 
@@ -72,11 +77,11 @@ Bill Luan, Greater China Regional Lead, Developer Relations, Google
 当然，即便如此，我们理解错误的可能性也还是有的，所以我们的译稿都提供了中英文对照，如果你对某些语句有疑问，只要点一下它，就可以显示对应的英文版内容，读者可自行对照理解。
 
 对于英文词汇，我们尽量采用业内成熟的译法，以利于口头交流。对少部分在 Angular 之外比较罕见的专有名词，我们会在译文中写成中英双语。
-这部分做了初步的梳理，但是仍可能有遗漏，如果你发现哪里有问题，请到我们的<a href="https://github.com/angular/angular-cn" target="_blank">github</a>上提出 issue 或 Pull Request。
+这部分做了初步的梳理，但是仍可能有遗漏，如果你发现哪里有问题，请到我们的<a href="https://github.com/ng-docs/angular-cn" target="_blank">github</a>上提出 issue 或 Pull Request。
 
 ## 授权方式
 
-本文档遵循[“保持署名—非商用”创意共享 4.0 许可证（CC BY-NC 4.0）](http://creativecommons.org/licenses/by-nc/4.0/deed.zh)授权方式，你不用知会我们就可以转载，但必须保持署名（特别是：链接到 <https://angular.cn>，并且不得去掉本页入口链接，也不得修改本页内容），并且不得用于商业目的。如果需要进行任何商业推广，请接洽 Google 开发技术推广部![email](generated/images/translations/cn/mail-dev-rel.gif)，我们将给出积极的回应。
+本文档遵循[“保持署名—非商用”创意共享 4.0 许可证（CC BY 4.0）](http://creativecommons.org/licenses/by/4.0/deed.zh)授权方式，你不用知会我们就可以转载，但必须保持署名（特别是：保持到 <https://angular.cn> 的链接，并且不得去掉本页入口链接，也不得修改本页内容）。
 
 本文档首发于 [Angular 中文网](https://angular.cn/)。如果你要进行转载，请自行同步，不过小心别 DDoS 了我们。
 
@@ -85,7 +90,3 @@ Bill Luan, Greater China Regional Lead, Developer Relations, Google
 三位译者汪志成、叶志敏和杨林的简介请参阅[这里](/translations/cn/about)。
 
 Nice Angular 社区的简介请参阅[这里](/translations/cn/nice-angular)。
-
-## 工作预告
-
-将来，Google 技术推广部还会有一系列线上和线下推广工作，如果你有意为这些活动贡献力量，请接洽 Google 开发技术推广部![email](generated/images/translations/cn/mail-dev-rel.gif)。
