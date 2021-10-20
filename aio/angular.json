@@ -28,7 +28,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/site/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -223,6 +223,91 @@
               "devServerTarget": "site:serve:ci"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/site/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "outputHashing": "media",
+            "optimization": true,
+            "sourceMap": true
+          },
+          "configurations": {
+            "next": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.next.ts"
+                }
+              ]
+            },
+            "rc": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.rc.ts"
+                }
+              ]
+            },
+            "stable": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stable.ts"
+                }
+              ]
+            },
+            "archive": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.archive.ts"
+                }
+              ]
+            },
+            "ci": {},
+            "development": {
+              "outputHashing": "none",
+              "optimization": false,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "stable"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "site:build:development",
+              "serverTarget": "site:server:development"
+            },
+            "stable": {
+              "browserTarget": "site:build:stable",
+              "serverTarget": "site:server:stable"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "stable": {
+              "browserTarget": "site:build:stable",
+              "serverTarget": "site:server:stable"
+            },
+            "development": {
+              "browserTarget": "site:build:development",
+              "serverTarget": "site:server:development"
+            }
+          },
+          "defaultConfiguration": "stable"
         }
       }
     }

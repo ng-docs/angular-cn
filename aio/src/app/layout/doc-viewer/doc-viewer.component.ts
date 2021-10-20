@@ -15,10 +15,6 @@ import { fromInnerHTML } from 'app/shared/security';
 // Constants
 export const NO_ANIMATIONS = 'no-animations';
 
-// Initialization prevents flicker once pre-rendering is on
-const initialDocViewerElement = document.querySelector('aio-doc-viewer');
-const initialDocViewerContent = initialDocViewerElement ? fromInnerHTML(initialDocViewerElement) : EMPTY_HTML;
-
 @Component({
   selector: 'aio-doc-viewer',
   template: '',
@@ -70,6 +66,10 @@ export class DocViewerComponent implements OnDestroy {
     private tocService: TocService,
     private elementsLoader: ElementsLoader) {
     this.hostElement = elementRef.nativeElement;
+
+// Initialization prevents flicker once pre-rendering is on
+    const initialDocViewerElement = document.querySelector('aio-doc-viewer');
+    const initialDocViewerContent = initialDocViewerElement ? fromInnerHTML(initialDocViewerElement) : EMPTY_HTML;
 
     // Security: the initialDocViewerContent comes from the prerendered DOM and is considered to be secure
     this.hostElement.innerHTML = unwrapHtmlForSink(initialDocViewerContent);

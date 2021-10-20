@@ -22,7 +22,7 @@ function getStorage(win: Window, storageType: 'localStorage' | 'sessionStorage')
   // When cookies are disabled in the browser, even trying to access `window[storageType]` throws an
   // error. If so, return a no-op storage.
   try {
-    return win[storageType];
+    return win?.[storageType] ?? new NoopStorage();
   } catch {
     return new NoopStorage();
   }
