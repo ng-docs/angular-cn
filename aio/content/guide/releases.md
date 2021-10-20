@@ -4,7 +4,7 @@
 
 We recognize that you need stability from the Angular framework. Stability ensures that reusable components and libraries, tutorials, tools, and learned practices don't become obsolete unexpectedly. Stability is essential for the ecosystem around Angular to thrive.
 
-我们知道你希望 Angular 框架具有稳定性（stability）。稳定性可以确保组件与库、教程、工具和现有实践不会突然被弃用。稳定性是让基于 Angular 的生态系统变得繁荣的基石。
+你肯定希望 Angular 框架具有稳定性（stability）。稳定性可以确保组件与库、教程、工具和现有实践不会突然被弃用。稳定性是让基于 Angular 的生态系统变得繁荣的基石。
 
 We also share with you the need for Angular to keep evolving. We strive to ensure that the foundation on top of which you are building is continuously improving and enabling you to stay up-to-date with the rest of the web ecosystem and your user needs.
 
