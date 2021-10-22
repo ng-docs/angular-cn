@@ -2873,7 +2873,7 @@ A typical *lazy loaded folder* contains a *routing component*, its child compone
 
 **Do** pre-compute the filtering and sorting logic in components or services before binding the model in templates.
 
-**应该**在把模型绑定到模板中时，把过滤和排序逻辑在组件或服务中进行预先计算。
+**坚持**在把模型绑定到模板中时，把过滤和排序逻辑在组件或服务中进行预先计算。
 
 </div>
 
