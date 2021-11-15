@@ -345,7 +345,7 @@ For example, you could set up the **InProgress** button to have its own looping 
 Then, another animation can be called when the current animation finishes.
 For example, the button goes from the `inProgress` state to the `closed` state when the API call is completed.
 
-然后，在当前动画结束时，可以调用另一个动画。比如，当 API 调用完成时，按钮会从 `inProgress` 状态编程 `closed` 状态。
+然后，在当前动画结束时，可以调用另一个动画。比如，当 API 调用完成时，按钮会从 `inProgress` 状态变成 `closed` 状态。
 
 An animation can influence an end user to *perceive* the operation as faster, even when it isn't.
 Thus, a simple animation can be a cost-effective way to keep users happy, rather than seeking to improve the speed of a server call and having to compensate for circumstances beyond your control, such as an unreliable network connection.
