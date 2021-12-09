@@ -2493,7 +2493,7 @@ It's not possible to stub the component's `HeroDetailService` in the `providers`
 Those are providers for the _testing module_, not the component. They prepare the dependency injector at the _fixture level_.
 
 在 `TestBed.configureTestingModule` 的 `providers` 中 stub 伪造组件的 `HeroDetailService` 是不可行的。
-这些是**测试模块**的提供者，而非组件的。组件级别的供应商应该在**fixture 级别**准备的依赖注入器。
+这些是**测试模块**的提供者，而非组件的。组件级别的提供者应该在**fixture 级别**的依赖注入器中进行准备。
 
 Angular creates the component with its _own_ injector, which is a _child_ of the fixture injector.
 It registers the component's providers (the `HeroDetailService` in this case) with the child injector.
