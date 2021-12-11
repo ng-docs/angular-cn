@@ -53,7 +53,7 @@ To explore the sample application with French translations used in this guide, s
 
 To prepare your application for translations, you should have a basic understanding of the following subjects.
 
-要使你的应用准备好翻译，你应该对以下主题有基本的了解。
+在准备翻译你的应用之前，你应该对以下主题有基本的了解。
 
 * [Templates][AioGuideGlossaryTemplate]
 
