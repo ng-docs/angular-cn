@@ -124,7 +124,7 @@ For example, the hypothetical "Hello World" schematic might have the following s
 
 See examples of schema files for the Angular CLI command schematics in [`@schematics/angular`](https://github.com/angular/angular-cli/blob/master/packages/schematics/angular/application/schema.json).
 
-可以在 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/7.0.x/packages/schematics/angular/application/schema.json) 中看到 Angular CLI 命令原理图的模式文件范例。
+可以在 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/master/packages/schematics/angular/application/schema.json) 中看到 Angular CLI 命令原理图的模式文件范例。
 
 ### Schematic prompts
 
