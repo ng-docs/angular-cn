@@ -10,16 +10,6 @@ cd $(dirname $0)
 
 yarn build
 
-yarn preview >/tmp/preview.log &
-
-pid=$!
-
-sleep 3
-
-npx ts-node --project=./tools/translator/tsconfig.json ./tools/translator/bin/prerender.ts
-
-kill -9 ${pid}
-
 cd ./prebuilt
 
 git pull
