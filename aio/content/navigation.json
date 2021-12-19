@@ -1059,33 +1059,11 @@
           "tooltip": "Browser support and polyfills guide."
         },
         {
-          "titleCn": "更新到版本 12",
-          "title": "Updating to Version 12",
-          "tooltipCn": "支持将应用从版本 11 更新到 12。",
-          "tooltip": "Support for updating your application from version 11 to 12.",
-          "children": [
-            {
-              "url": "guide/updating-to-version-12",
-              "titleCn": "概览",
-              "title": "Overview",
-              "tooltipCn": "将应用从版本 11 更新到 12 所需了解的一切。",
-              "tooltip": "Everything you need to know for updating your application from version 11 to 12."
-            },
-            {
-              "url": "guide/ivy-compatibility",
-              "titleCn": "Ivy 兼容性指南",
-              "title": "Ivy Compatibility Guide",
-              "tooltipCn": "帮助你确保你的应用与 Ivy 兼容的详细信息。",
-              "tooltip": "Details to help you make sure your application is compatible with Ivy."
-            },
-            {
-              "url": "guide/migration-legacy-message-id",
-              "titleCn": "迁移：旧版本地化 ID",
-              "title": "Migration: Legacy Localization IDs",
-              "tooltipCn": "了解如何将用于本地化的旧 ID 迁移到新的、更稳定的 ID。",
-              "tooltip": "Learn how to migrate legacy IDs for localization to new, more stable ones."
-            }
-          ]
+          "url": "guide/updating-to-version-13",
+          "title": "Update to Version 13",
+          "titleCn": "更新到版本 13",
+          "tooltip": "Support to update your application to version 13",
+          "tooltipCn": "支持将应用更新到版本 13。"
         },
         {
           "url": "guide/deprecations",
