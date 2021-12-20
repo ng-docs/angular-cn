@@ -77,7 +77,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
     Enables the persistent build cache by default for all applications.
     See [Issue&nbsp;#21545][GithubAngularAngularCliIssues21545].
 
-    为所有应用程序默认开启持续的构建缓存。
+    为所有应用程序默认开启持久化构建缓存。
     查看 [Issue&nbsp;#21545][GithubAngularAngularCliIssues21545] 。
 
 ### Breaking changes in Angular version 13
