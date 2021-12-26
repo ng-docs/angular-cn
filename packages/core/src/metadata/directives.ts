@@ -9,10 +9,9 @@
 import {ChangeDetectionStrategy} from '../change_detection/constants';
 import {Provider} from '../di/interface/provider';
 import {Type} from '../interface/type';
-import {compileComponent as render3CompileComponent, compileDirective as render3CompileDirective} from '../render3/jit/directive';
-import {compilePipe as render3CompilePipe} from '../render3/jit/pipe';
+import {compileComponent, compileDirective} from '../render3/jit/directive';
+import {compilePipe} from '../render3/jit/pipe';
 import {makeDecorator, makePropDecorator, TypeDecorator} from '../util/decorators';
-import {noop} from '../util/noop';
 
 import {ViewEncapsulation} from './view';
 
@@ -150,7 +149,8 @@ export interface Directive {
    * For the following template HTML, a directive with an `input[type=text]` selector,
    * would be instantiated only on the `<input type="text">` element.
    *
-   * 对于下列模板 HTML，带有 `input[type=text]` 选择器的指令只会在 `<input type="text">` 元素上实例化。
+   * 对于下列模板 HTML，带有 `input[type=text]` 选择器的指令只会在 `<input type="text">`
+   * 元素上实例化。
    *
    * ```html
    * <form>
@@ -380,8 +380,8 @@ export interface Directive {
    * statement evaluates to `false`, then `preventDefault` is applied on the DOM
    * event. A handler method can refer to the `$event` local variable.
    *
-   *   它的 value 就是当该事件发生时要执行的语句。如果该语句返回 `false`，那么就会调用这个 DOM 事件的 `preventDefault` 函数。
-   *   这个语句中可以引用局部变量 `$event` 来获取事件数据。
+   *   它的 value 就是当该事件发生时要执行的语句。如果该语句返回 `false`，那么就会调用这个 DOM
+   * 事件的 `preventDefault` 函数。 这个语句中可以引用局部变量 `$event` 来获取事件数据。
    *
    */
   host?: {[key: string]: string};
@@ -392,7 +392,9 @@ export interface Directive {
    * at run time, in the browser.
    * To ensure the correct behavior, the app must import `@angular/compiler`.
    *
-   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入 `@angular/compiler` 。
+   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT
+   * 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入
+   * `@angular/compiler` 。
    *
    */
   jit?: true;
@@ -407,7 +409,7 @@ export interface Directive {
  */
 export const Directive: DirectiveDecorator = makeDecorator(
     'Directive', (dir: Directive = {}) => dir, undefined, undefined,
-    (type: Type<any>, meta: Directive) => SWITCH_COMPILE_DIRECTIVE(type, meta));
+    (type: Type<any>, meta: Directive) => compileDirective(type, meta));
 
 /**
  * Component decorator interface
@@ -421,7 +423,8 @@ export interface ComponentDecorator {
    * metadata that determines how the component should be processed,
    * instantiated, and used at runtime.
    *
-   * 一个装饰器，用于把某个类标记为 Angular 组件，并为它配置一些元数据，以决定该组件在运行期间该如何处理、实例化和使用。
+   * 一个装饰器，用于把某个类标记为 Angular
+   * 组件，并为它配置一些元数据，以决定该组件在运行期间该如何处理、实例化和使用。
    *
    * Components are the most basic UI building block of an Angular app.
    * An Angular app contains a tree of Angular components.
@@ -680,33 +683,36 @@ export interface Component extends Directive {
   animations?: any[];
 
   /**
-   * An encapsulation policy for the template and CSS styles. One of:
+   * An encapsulation policy for the component's styling.
+   * Possible values:
    *
    * 供模板和 CSS 样式使用的样式封装策略。取值为：
    *
-   * - `ViewEncapsulation.Emulated`: Use shimmed CSS that
-   * emulates the native behavior.
+   * - `ViewEncapsulation.Emulated`: Apply modified component styles in order to emulate
+   *                                 a native Shadow DOM CSS encapsulation behavior.
    *
    *   `ViewEncapsulation.Emulated`：使用垫片（shimmed) CSS 来模拟原生行为。
    *
-   * - `ViewEncapsulation.None`: Use global CSS without any
-   * encapsulation.
+   * - `ViewEncapsulation.None`: Apply component styles globally without any sort of encapsulation.
    *
    *     `ViewEncapsulation.None` ：使用不带任何封装的全局 CSS。
    *
-   * - `ViewEncapsulation.ShadowDom`: Use Shadow DOM v1 to encapsulate styles.
+   * - `ViewEncapsulation.ShadowDom`: Use the browser's native Shadow DOM API to encapsulate styles.
    *
    *   `ViewEncapsulation.ShadowDom`：使用Shadow DOM v1，封装样式。
    *
-   * If not supplied, the value is taken from `CompilerOptions`. The default compiler option is
-   * `ViewEncapsulation.Emulated`.
+   * If not supplied, the value is taken from the `CompilerOptions`
+   * which defaults to `ViewEncapsulation.Emulated`.
    *
-   * 如果没有提供，该值就会从 `CompilerOptions` 中获取它。默认的编译器选项是 `ViewEncapsulation.Emulated`。
+   * 如果没有提供，该值就会从 `CompilerOptions` 中获取它。默认的编译器选项是
+   * `ViewEncapsulation.Emulated`。
    *
-   * If the policy is set to `ViewEncapsulation.Emulated` and the component has no `styles`
-   * or `styleUrls` specified, the policy is automatically switched to `ViewEncapsulation.None`.
+   * If the policy is `ViewEncapsulation.Emulated` and the component has no
+   * {@link Component#styles styles} nor {@link Component#styleUrls styleUrls},
+   * the policy is automatically switched to `ViewEncapsulation.None`.
    *
-   * 如果该策略设置为 `ViewEncapsulation.Emulated`，并且该组件没有指定 `styles` 或 `styleUrls`，就会自动切换到 `ViewEncapsulation.None`。
+   * 如果该策略设置为 `ViewEncapsulation.Emulated`，并且该组件没有指定 `styles` 或
+   * `styleUrls`，就会自动切换到 `ViewEncapsulation.None`。
    */
   encapsulation?: ViewEncapsulation;
 
@@ -723,7 +729,8 @@ export interface Component extends Directive {
    * Angular creates a {@link ComponentFactory} and stores it in the
    * {@link ComponentFactoryResolver}.
    *
-   * 一个组件的集合，它应该和当前组件一起编译。对于这里列出的每个组件，Angular 都会创建一个 {@link ComponentFactory} 并保存进 {@link ComponentFactoryResolver} 中。
+   * 一个组件的集合，它应该和当前组件一起编译。对于这里列出的每个组件，Angular 都会创建一个 {@link
+   * ComponentFactory} 并保存进 {@link ComponentFactoryResolver} 中。
    *
    * @deprecated Since 9.0.0. With Ivy, this property is no longer necessary.
    *
@@ -739,7 +746,8 @@ export interface Component extends Directive {
    * overridden in compiler options.
    *
    * 为 `true` 则保留，为 `false` 则从编译后的模板中移除可能多余的空白字符。
-   * 空白字符就是指那些能在 JavaScript 正则表达式中匹配 `\s` 的字符。默认为 `false`，除非通过编译器选项改写了它。
+   * 空白字符就是指那些能在 JavaScript 正则表达式中匹配 `\s` 的字符。默认为
+   * `false`，除非通过编译器选项改写了它。
    */
   preserveWhitespaces?: boolean;
 }
@@ -754,8 +762,7 @@ export interface Component extends Directive {
  */
 export const Component: ComponentDecorator = makeDecorator(
     'Component', (c: Component = {}) => ({changeDetection: ChangeDetectionStrategy.Default, ...c}),
-    Directive, undefined,
-    (type: Type<any>, meta: Component) => SWITCH_COMPILE_COMPONENT(type, meta));
+    Directive, undefined, (type: Type<any>, meta: Component) => compileComponent(type, meta));
 
 /**
  * Type of the Pipe decorator / constructor function.
@@ -789,7 +796,8 @@ export interface PipeDecorator {
    * to a template. To make it a member of an NgModule,
    * list it in the `declarations` field of the `NgModule` metadata.
    *
-   * 管道必须属于某个 NgModule，才能用于模板。要使其成为 NgModule 的成员，请把它加入 `NgModule` 元数据的 `declarations` 中。
+   * 管道必须属于某个 NgModule，才能用于模板。要使其成为 NgModule 的成员，请把它加入 `NgModule`
+   * 元数据的 `declarations` 中。
    *
    * @see [Style Guide: Pipe Names](guide/styleguide#02-09)
    *
@@ -829,15 +837,17 @@ export interface Pipe {
    * `transform()` method is invoked only when its input arguments
    * change. Pipes are pure by default.
    *
-   * 为 `true` 时，该管道是纯管道，也就是说 `transform()` 方法只有在其输入参数变化时才会被调用。管道默认都是纯管道。
+   * 为 `true` 时，该管道是纯管道，也就是说 `transform()`
+   * 方法只有在其输入参数变化时才会被调用。管道默认都是纯管道。
    *
    * If the pipe has internal state (that is, the result
    * depends on state other than its arguments), set `pure` to false.
    * In this case, the pipe is invoked on each change-detection cycle,
    * even if the arguments have not changed.
    *
-   * 如果该管道具有内部状态（也就是说，其结果会依赖内部状态，而不仅仅依赖参数），就要把 `pure` 设置为 `false`。
-   * 这种情况下，该管道会在每个变更检测周期中都被调用一次 —— 即使其参数没有发生任何变化。
+   * 如果该管道具有内部状态（也就是说，其结果会依赖内部状态，而不仅仅依赖参数），就要把 `pure`
+   * 设置为 `false`。 这种情况下，该管道会在每个变更检测周期中都被调用一次 ——
+   * 即使其参数没有发生任何变化。
    */
   pure?: boolean;
 }
@@ -848,7 +858,7 @@ export interface Pipe {
  */
 export const Pipe: PipeDecorator = makeDecorator(
     'Pipe', (p: Pipe) => ({pure: true, ...p}), undefined, undefined,
-    (type: Type<any>, meta: Pipe) => SWITCH_COMPILE_PIPE(type, meta));
+    (type: Type<any>, meta: Pipe) => compilePipe(type, meta));
 
 
 /**
@@ -861,22 +871,23 @@ export interface InputDecorator {
    * Angular automatically updates the data property with the DOM property's value.
    *
    * 一个装饰器，用来把某个类字段标记为输入属性，并提供配置元数据。
-   * 该输入属性会绑定到模板中的某个 DOM 属性。当变更检测时，Angular 会自动使用这个 DOM 属性的值来更新此数据属性。
+   * 该输入属性会绑定到模板中的某个 DOM 属性。当变更检测时，Angular 会自动使用这个 DOM
+   * 属性的值来更新此数据属性。
    *
-  * @usageNotes
+   * @usageNotes
    *
    * You can supply an optional name to use in templates when the
    * component is instantiated, that maps to the
    * name of the bound property. By default, the original
    * name of the bound property is used for input binding.
-  *
-  * 你可以提供一个可选的仅供模板中使用的名字，在组件实例化时，会把这个名字映射到可绑定属性上。
-  * 默认情况下，输入绑定的名字就是这个可绑定属性的原始名称。
+   *
+   * 你可以提供一个可选的仅供模板中使用的名字，在组件实例化时，会把这个名字映射到可绑定属性上。
+   * 默认情况下，输入绑定的名字就是这个可绑定属性的原始名称。
    *
    * The following example creates a component with two input properties,
    * one of which is given a special binding name.
-  *
-  * 下面的例子创建了一个带有两个输入属性的组件，其中一个还指定了绑定名。
+   *
+   * 下面的例子创建了一个带有两个输入属性的组件，其中一个还指定了绑定名。
    *
    * ```typescript
    * @Component({
@@ -951,9 +962,9 @@ export interface OutputDecorator {
    * The DOM property bound to the output property is automatically updated during change detection.
    *
    * 一个装饰器，用于把一个类字段标记为输出属性，并提供配置元数据。
-  * 凡是绑定到输出属性上的 DOM 属性，Angular 在变更检测期间都会自动进行更新。
-  *
-  * @usageNotes
+   * 凡是绑定到输出属性上的 DOM 属性，Angular 在变更检测期间都会自动进行更新。
+   *
+   * @usageNotes
    *
    * You can supply an optional name to use in templates when the
    * component is instantiated, that maps to the
@@ -961,11 +972,11 @@ export interface OutputDecorator {
    * name of the bound property is used for output binding.
    *
    * 你可以提供一个可选的仅供模板中使用的名字，在组件实例化时，会把这个名字映射到可绑定属性上。
-  * 默认情况下，输出绑定的名字就是这个可绑定属性的原始名称。
-  *
-  * See `Input` decorator for an example of providing a binding name.
-  *
-  * 参见 `@Input` 的例子了解如何指定一个绑定名。
+   * 默认情况下，输出绑定的名字就是这个可绑定属性的原始名称。
+   *
+   * See `Input` decorator for an example of providing a binding name.
+   *
+   * 参见 `@Input` 的例子了解如何指定一个绑定名。
    *
    * @see [Input and Output properties](guide/inputs-outputs)
    *
@@ -1018,7 +1029,8 @@ export interface HostBindingDecorator {
    * if a binding changes it updates the host element of the directive.
    *
    * 一个装饰器，用于把一个 DOM 属性标记为绑定到宿主的属性，并提供配置元数据。
-   * Angular 在变更检测期间会自动检查宿主属性绑定，如果这个绑定变化了，它就会更新该指令所在的宿主元素。
+   * Angular
+   * 在变更检测期间会自动检查宿主属性绑定，如果这个绑定变化了，它就会更新该指令所在的宿主元素。
    *
    * @usageNotes
    *
@@ -1109,13 +1121,13 @@ export interface HostListener {
   /**
    * The DOM event to listen for.
    *
- * 要监听的事件。
+   * 要监听的事件。
    */
   eventName?: string;
   /**
    * A set of arguments to pass to the handler method when the event occurs.
    *
- * 当该事件发生时传给处理器方法的一组参数。
+   * 当该事件发生时传给处理器方法的一组参数。
    */
   args?: string[];
 }
@@ -1125,7 +1137,8 @@ export interface HostListener {
  * Angular invokes the supplied handler method when the host element emits the specified event,
  * and updates the bound element with the result.
  *
- * 将 DOM 事件绑定到宿主监听器并提供配置元数据的装饰器。当宿主元素发出指定事件时，Angular 就会调用所提供的处理器方法，并使用其结果更新绑定的元素。
+ * 将 DOM 事件绑定到宿主监听器并提供配置元数据的装饰器。当宿主元素发出指定事件时，Angular
+ * 就会调用所提供的处理器方法，并使用其结果更新绑定的元素。
  *
  * If the handler method returns false, applies `preventDefault` on the bound element.
  *
@@ -1186,17 +1199,3 @@ export interface HostListener {
  */
 export const HostListener: HostListenerDecorator =
     makePropDecorator('HostListener', (eventName?: string, args?: string[]) => ({eventName, args}));
-
-
-
-export const SWITCH_COMPILE_COMPONENT__POST_R3__ = render3CompileComponent;
-export const SWITCH_COMPILE_DIRECTIVE__POST_R3__ = render3CompileDirective;
-export const SWITCH_COMPILE_PIPE__POST_R3__ = render3CompilePipe;
-
-const SWITCH_COMPILE_COMPONENT__PRE_R3__ = noop;
-const SWITCH_COMPILE_DIRECTIVE__PRE_R3__ = noop;
-const SWITCH_COMPILE_PIPE__PRE_R3__ = noop;
-
-const SWITCH_COMPILE_COMPONENT: typeof render3CompileComponent = SWITCH_COMPILE_COMPONENT__PRE_R3__;
-const SWITCH_COMPILE_DIRECTIVE: typeof render3CompileDirective = SWITCH_COMPILE_DIRECTIVE__PRE_R3__;
-const SWITCH_COMPILE_PIPE: typeof render3CompilePipe = SWITCH_COMPILE_PIPE__PRE_R3__;

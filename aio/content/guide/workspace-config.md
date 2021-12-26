@@ -12,33 +12,37 @@ Angular [工作区](guide/glossary#workspace)根目录下的 `angular.json` 文�
 
 ## JSON 的总体结构
 
-At the top level of `angular.json`, a few properties configure the workspace, and a `projects` section contains the remaining per-project configuration options. CLI defaults set at the workspace level can be overridden by defaults set at the project level, and defaults set at the project level can be overridden on the command line.
+At the top-level of `angular.json`, a few properties configure the workspace and a `projects` section contains the remaining per-project configuration options. You can override CLI defaults set at the workspace level through defaults set at the project level. You can also override defaults set at the project level using the command line.
 
 在 `angular.json` 的顶层，一些属性用于配置工作区，其中的 `projects` 区则包含其余的针对每个项目的配置项。CLI 在工作区级的默认设置可以被项目级的设置所覆盖，而项目级的设置可以被命令行中的设置所覆盖。
 
-The following properties, at the top level of the file, configure the workspace.
+The following properties, at the top-level of the file, configure the workspace.
 
 下列属性位于文件的顶层，用于配置工作区。
 
 *   `version`: The configuration-file version.
 
-  `version`：该配置文件的版本。
+    `version`：该配置文件的版本。
 
 *   `newProjectRoot`: Path where new projects are created. Absolute or relative to the workspace folder.
 
-  `newProjectRoot`：用来创建新工程的位置。绝对路径或相对于工作区目录的路径。
+    `newProjectRoot`：用来创建新工程的位置。绝对路径或相对于工作区目录的路径。
 
 *   `defaultProject`: Default project name to use in commands, where not provided as an argument. When you use `ng new` to create a new application in a new workspace, that application is the default project for the workspace until you change it here.
 
-  `defaultProject`：当命令中没有指定参数时，要使用的默认工程名。当你用 `ng new` 在新的工作区中创建新应用时，该应用就会一直作为此工作区的默认项目，除非你到这里修改它。
+    `defaultProject`：当命令中没有指定参数时，要使用的默认工程名。当你用 `ng new` 在新的工作区中创建新应用时，该应用就会一直作为此工作区的默认项目，除非你到这里修改它。
+
+*   `cli` : A set of options that customize the [Angular CLI](cli). See the [CLI configuration options](#cli-configuration-options) section.
+
+    `cli`：一组用于自定义 [Angular CLI](cli) 的选项。参见 [CLI 配置选项](#cli-configuration-options)部分。
 
 *   `schematics` : A set of [schematics](guide/glossary#schematic) that customize the `ng generate` sub-command option defaults for this workspace. See the [Generation schematics](#schematics) section.
 
-   `schematics`：一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅[生成器原理图](#schematics)。
+    `schematics`：一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅[生成器原理图](#schematics)。
 
 *   `projects` : Contains a subsection for each project (library or application) in the workspace, with the per-project configuration options.
 
-  `projects`：对于工作区中的每个项目（应用或库）都会包含一个子分区，子分区中是每个项目的配置项。
+    `projects`：对于工作区中的每个项目（应用或库）都会包含一个子分区，子分区中是每个项目的配置项。
 
 The initial application that you create with `ng new app_name` is listed under "projects":
 
@@ -77,6 +81,68 @@ When you create a library project with `ng generate library`, the library projec
   欲知详情，参阅[工作区和项目文件结构](guide/file-structure)。
 
 </div>
+
+{@a cli-configuration-options}
+
+## CLI configuration options
+
+## CLI 配置选项
+
+The following configuration properties are a set of options that customize the Angular CLI.
+
+下列配置属性是 Angular CLI 的一组自定义选项。
+
+| Property | Description                                                                                   | Value Type                                              |
+| :------- |:----------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| 属性 | 说明                                                                                            | 值的类型                                                    |
+| `analytics` | Share anonymous [usage data](cli/usage-analytics-gathering) with the Angular Team.            | `boolean` \                                             | `ci` |
+| `analytics` | 与 Angular 团队共享匿名[使用数据](cli/usage-analytics-gathering)。                                        | `boolean` \                                             | `ci` |
+| `analyticsSharing` | A set of analytics sharing options.                                                           | [Analytics sharing options](#analytics-sharing-options) |
+| `analyticsSharing` | 一组分析共享选项。                                                                                     | [分析共享选项](#analytics-sharing-options)                    |
+| `cache` | Control [persistent disk cache](cli/cache) used by [Angular CLI Builders](guide/cli-builder). | [Cache options](#cache-options)                         |
+| `cache` | 控制 [Angular CLI 构建器](guide/cli-builder)使用的[持久化磁盘缓存](cli/cache)。                               | [缓存选项](#cache-options)                         |
+| `defaultCollection` | The default schematics collection to use.                                                     | `string`                                                |
+| `defaultCollection` | 要使用的默认原理图集合。                                                                                  | `string`                                                |
+| `packageManager` | The preferred package manager tool to use.                                                    | `npm` \                                                 | `cnpm` \| `pnpm` \| `yarn` |
+| `packageManager` | 要使用的首选包管理器工具                                                   | `npm` \                                                 | `cnpm` \| `pnpm` \| `yarn` |
+| `warnings` | Control CLI specific console warnings.                                                        | [Warnings options](#warnings-options)                   |
+| `warnings` | 控制 CLI 特定的控制台警告。                                                      | [警告选项](#warnings-options)                   |
+
+### Analytics sharing options
+
+### 分析共享选项
+
+| Property | Description | Value Type |
+| :------- | :---------- | :--------- |
+| 属性 | 说明 | 值的类型 |
+| `tracking` | Analytics sharing info tracking ID. | `string` |
+| `tracking` |  分析共享信息跟踪 ID。  | `string` |
+| `uuid` | Analytics sharing info UUID (Universally Unique Identifier). | `string` |
+| `uuid` | 分析共享信息 UUID（通用唯一标识符）。  | `string` |
+
+### Cache options
+
+### 缓存选项
+
+| Property | Description                                           | Value Type | Default Value |
+| :------- |:------------------------------------------------------| :--------- | :------------ |
+| 属性 | 说明                                                    | 值的类型 | 默认值 |
+| `enabled` | Configure whether disk caching is enabled.            | `boolean` | `true` |
+| `enabled` | 配置是否启用磁盘缓存。                                           | `boolean` | `true` |
+| `environment` | Configure in which environment disk cache is enabled. | `local` \| `ci` \| `all` | `local` |
+| `environment` | 配置在哪个环境中启用磁盘缓存。                                       | `local` \| `ci` \| `all` | `local` |
+| `path` | The directory used to stored cache results.           | `string` | `.angular/cache` |
+| `path` | 用于存储缓存结果的目录。                                          | `string` | `.angular/cache` |
+
+### Warnings options
+
+### 警告选项
+
+| Property | Description | Value Type | Default Value |
+| :------- | :---------- | :--------- | :------------ |
+| 属性 | 说明 | 值的类型 | 默认值 |
+| `versionMismatch` | Show a warning when the global Angular CLI version is newer than the local one. | `boolean` | `true` |
+| `versionMismatch` | 当全局 Angular CLI 版本比本地版本更新时显示警告。  | `boolean` | `true` |
 
 ## Project configuration options
 
@@ -192,14 +258,14 @@ See the example in [Build target](#build-target) below.
 
 <code-example language="json">
       "architect": {
-        "build": { },
-        "serve": { },
-        "e2e" : { },
-        "test": { },
-        "lint": { },
-        "extract-i18n": { },
-        "server": { },
-        "app-shell": { }
+        "build": {},
+        "serve": {},
+        "e2e" : {},
+        "test": {},
+        "lint": {},
+        "extract-i18n": {},
+        "server": {},
+        "app-shell": {}
       }
 
 </code-example>
@@ -575,7 +641,7 @@ There are several options that can be used to fine-tune the optimization of an a
 
 | Option    | Description                                                                    | Value Type | Dafault Value |
 |:---       |:---                                                                            |:---        |:---           |
-| 选项    | 说明                                                                    | 值类型 | 默认值 |
+| 选项    | 说明                                                                    | 值的类型 | 默认值 |
 | `scripts` | Enables optimization of the scripts output.                                    | `boolean`  | `true`        |
 | `scripts` | 启用脚本输出优化。                                    | `boolean`  | `true`        |
 | `styles`  | Enables optimization of the styles output.                                     | `boolean`  | `true`        |
@@ -583,156 +649,27 @@ There are several options that can be used to fine-tune the optimization of an a
 | `fonts`   | Enables optimization for fonts. <br /> **NOTE**: This requires internet access. | `boolean`  | `true`        |
 | `fonts`   | 启用字体优化。 <br /> **注意**：这需要进行国际互联网访问。 | `boolean`  | `true`        |
 
-<!--<table class="is-full-width is-fixed-layout">
-<thead>
-<tr>
-<th>Option</th>
-<th width="40%">Description</th>
-<th>Value Type</th>
-<th>Default Value</th>
-</tr>
-<tr>
-<th>选项</th>
-<th width="40%">说明</th>
-<th>值类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>scripts</code></td>
-<td>Enables optimization of the scripts output.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>scripts</code></td>
-<td>启用对 Script 输出结果的优化。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>styles</code></td>
-<td>Enables optimization of the styles output.</td>
-<td><code>boolean|<a href="#styles-optimization-options">Styles optimization options</a></code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>styles</code></td>
-<td>启用对样式输出结果的优化。</td>
-<td><code>boolean|<a href="#styles-optimization-options">样式优化选项</a></code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>fonts</code></td>
-<td>Enables optimization for fonts.<br><strong>Note:</strong> This requires internet access.</td>
-<td><code class="no-auto-link">boolean|<a href="#fonts-optimization-options">Fonts optimization options</a></code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>fonts</code></td>
-<td>启用对字体的优化。<br><strong>注意：</strong>这要求能访问互联网。</td>
-<td><code class="no-auto-link">boolean|<a href="#fonts-optimization-options">字体优化选项</a></code></td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>-->
-
 #### Styles optimization options
 
 #### 样式优化选项
 
-| Option           | Description                                                                                                              | Value Type | Dafault Value |
+| Option           | Description                                                                                                              | Value Type | Default Value |
 |:---              |:---                                                                                                                      |:---        |:---           |
-| 选项           | 说明                                                                                                              | 值类型 | 默认值 |
+| 选项           | 说明                                                                                                              | 值的类型 | 默认值 |
 | `minify`         | Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values.        | `boolean`  | `true`        |
 | `minify`         | 最小化 CSS 定义，移除多余的空格和注释、合并标识符，并对值进行最小化。        | `boolean`  | `true`        |
 | `inlineCritical` | Extract and inline critical CSS definitions to improve [First Contentful Paint](https://web.dev/first-contentful-paint). | `boolean`  | `true`        |
 | `inlineCritical` | 提取并内联一些关键 CSS 定义，以提高[首次内容绘制（FCP）性能](https://web.dev/first-contentful-paint)。 | `boolean`  | `true`        |
 
-<!--<table class="is-full-width is-fixed-layout">
-<thead>
-<tr>
-<th>Option</th>
-<th width="40%">Description</th>
-<th>Value Type</th>
-<th>Default Value</th>
-</tr>
-<tr>
-<th>选项</th>
-<th width="40%">说明</th>
-<th>值类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>minify</code></td>
-<td>Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>minify</code></td>
-<td>通过移除多余的空格和注释、合并标识符、最小化值，来对 CSS 定义进行最小化。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>inlineCritical</code></td>
-<td>Extract and inline critical CSS definitions to improve <a href="https://web.dev/first-contentful-paint/">First Contentful Paint.</a></td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>inlineCritical</code></td>
-<td>提取并内联一些关键 CSS 定义，以强化<a href="https://web.dev/first-contentful-paint/">First Contentful Paint（首次内容绘制）.</a></td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>-->
-
 #### Fonts optimization options
 
 #### 字体优化选项
 
-| Option   | Description                                                                                                                                                                                                                          | Value Type | Dafault Value |
+| Option   | Description                                                                                                                                                                                                                          | Value Type | Default Value |
 |:---      |:---                                                                                                                                                                                                                                  |:---        |:---           |
-| 选项           | 说明                                                                                                              | 值类型 | 默认值 |
+| 选项           | 说明                                                                                                              | 值的类型 | 默认值 |
 | `inline` | Reduce [render blocking requests](https://web.dev/render-blocking-resources) by inlining external Google Fonts and Adobe Fonts CSS definitions in the application's HTML index file. <br /> **NOTE**: This requires internet access. | `boolean`  | `true`        |
 | `inline` | 通过在应用的 index.html 中内联外部 Google 字体和 Adobe 字体的 CSS 定义，来减少[阻塞渲染的请求](https://web.dev/render-blocking-resources)<br /> **注意**：这需要国际互联网访问。 | `boolean`  | `true`        |
-
-<!--<table class="is-full-width is-fixed-layout">
-<thead>
-<tr>
-<th>Option</th>
-<th width="40%">Description</th>
-<th>Value Type</th>
-<th>Default Value</th>
-</tr>
-<tr>
-<th>选项</th>
-<th width="40%">说明</th>
-<th>值类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>inline</code></td>
-<td>Reduce <a href="https://web.dev/render-blocking-resources/">render blocking requests</a> by inlining external Google Fonts and Adobe Fonts CSS definitions in the application's HTML index file.<br><strong>Note:</strong>This requires internet access.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>inline</code></td>
-<td>通过把外部 Google 字体和图标的 CSS 定义内联到应用的 HTML 索引文件中，来缩小<a href="https://web.dev/render-blocking-resources/">会阻塞渲染的请求</a><br><strong>注意：</strong>这要求能访问互联网。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>-->
 
 You can supply a value such as the following to apply optimization to one or the other:
 
@@ -768,84 +705,18 @@ The `sourceMap` browser builder option can be either a Boolean or an Object for 
 
 `sourceMap` 这个浏览器构建器选项可以是 Boolean 或 Object，以进行更精细的配置以控制应用程序的源码映射。
 
-| Option    | Description                                        | Value Type | Dafault Value |
+| Option    | Description                                        | Value Type | Default Value |
 |:---       |:---                                                |:---        |:---           |
-| 选项           | 说明                                                                                                              | 值类型 | 默认值 |
+| 选项           | 说明                                                                                                              | 值的类型 | 默认值 |
 | `scripts` | Output source maps for all scripts.                | `boolean`  | `true`        |
 | `scripts` | 为所有脚本输出源码映射文件。                | `boolean`  | `true`        |
 | `styles`  | Output source maps for all styles.                 | `boolean`  | `true`        |
 | `styles`  | 为所有样式输出源码映射文件。                 | `boolean`  | `true`        |
 | `vendor`  | Resolve vendor packages source maps.               | `boolean`  | `false`        |
-| `vendor`  | 解析来自依赖包的源码映射信息。              | `boolean`  | `false`        |
-| `hidden`  | Output source maps used for error reporting tools. | `boolean`  | `false`        |
+| `vendor`  | 解析来自依赖包的源码映射信息。              | `boolean`  | `false`       |
+| `hidden`  | Output source maps used for error reporting tools. | `boolean`  | `false`       |
 | `hidden`  | 为错误报告工具输出源码映射文件。 | `boolean`  | `false`        |
 
-<!--<table class="is-full-width is-fixed-layout">
-<thead>
-<tr>
-<th>Option</th>
-<th width="40%">Description</th>
-<th>Value Type</th>
-<th>Default Value</th>
-</tr>
-<tr>
-<th>选项</th>
-<th width="40%">说明</th>
-<th>值类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>scripts</code></td>
-<td>Output source maps for all scripts.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>scripts</code></td>
-<td>为所有脚本输出源码映射。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>styles</code></td>
-<td>Output source maps for all styles.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>styles</code></td>
-<td>为所有样式输出源码映射。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td><code>vendor</code></td>
-<td>Resolve vendor packages source maps.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>vendor</code></td>
-<td>解析所有第三方包的源码映射。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>hidden</code></td>
-<td>Output source maps used for error reporting tools.</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>hidden</code></td>
-<td>输出供错误报告工具使用的源码映射。</td>
-<td><code class="no-auto-link">boolean</code></td>
-<td><code>false</code></td>
-</tr>
-</tbody>
-</table>-->
 The example below shows how to toggle one or more values to configure the source map outputs:
 
 以下示例展示了如何切换一个或多个值以配置源码映射输出：
@@ -876,4 +747,4 @@ These are useful if you only want source maps to map error stack traces in error
 
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-14

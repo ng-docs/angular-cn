@@ -25,7 +25,6 @@ The metadata falls into three categories:
 @NgModule({
   // Static, that is compiler configuration
   declarations: [], // Configure the selectors
-  entryComponents: [], // Generate the host factory
 
   // Runtime, or injector configuration
   providers: [], // Runtime injector configuration
@@ -298,61 +297,6 @@ The following table summarizes the `@NgModule` metadata properties.
       each with its own location in the host web page.
 
       Angular 也可以用多个引导组件进行启动，它们每一个在宿主页面中都有自己的位置。
-
-      A bootstrap component is automatically added to `entryComponents`.
-
-      启动组件会自动添加到 `entryComponents` 中。
-
-    </td>
-
-  </tr>
-
-  <tr>
-
-    <td style="vertical-align: top">
-
-      <code>entryComponents</code>
-
-    </td>
-
-    <td>
-
-      A list of components that can be dynamically loaded into the view.
-
-      那些可以动态加载进视图的组件列表。
-
-      By default, an Angular application always has at least one entry component, the root component, `AppComponent`. Its purpose is to serve as a point of entry into the app, that is, you bootstrap it to launch the application.
-
-      默认情况下，Angular 应用至少有一个入口组件，也就是根组件 `AppComponent`。
-      它用作进入该应用的入口点，也就是说你通过引导它来启动本应用。
-
-      Routed components are also _entry components_ because they need to be loaded dynamically.
-      The router creates them and drops them into the DOM near a `<router-outlet>`.
-
-      路由组件也是*入口组件*，因为你需要动态加载它们。
-      路由器创建它们，并把它们扔到 DOM 中的 `<router-outlet>` 附近。
-
-      While the bootstrapped and routed components are _entry components_,
-      you don't have to add them to a module's `entryComponents` list,
-      as they are added implicitly.
-
-      虽然引导组件和路由组件都是*入口组件*，不过你不用自己把它们加到模块的 `entryComponents` 列表中，因为它们会被隐式添加进去。
-
-      Angular automatically adds components in the module's `bootstrap` and route definitions into the `entryComponents` list.
-
-      Angular 会自动把模块的 `bootstrap` 中的组件和路由定义中的组件添加到 `entryComponents` 列表。
-
-      That leaves only components bootstrapped using one of the imperative techniques, such as [`ViewComponentRef.createComponent()`](api/core/ViewContainerRef#createComponent) as undiscoverable.
-
-      而那些使用不易察觉的[`ViewComponentRef.createComponent()`](api/core/ViewContainerRef#createComponent)的方式进行命令式引导的组件仍然需要添加。
-
-      Dynamic component loading is not common in most applications beyond the router. If you need to dynamically load components, you must add these components to the `entryComponents` list yourself.
-
-      动态组件加载在除路由器之外的大多数应用中都不太常见。如果你需要动态加载组件，就必须自己把那些组件添加到 `entryComponents` 列表中。
-
-      For more information, see [Entry Components](guide/entry-components).
-
-      要了解更多，参阅[入口组件](guide/entry-components)一章。
 
     </td>
 

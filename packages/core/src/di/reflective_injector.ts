@@ -63,6 +63,8 @@ const UNDEFINED = {};
  * Notice, we don't use the `new` operator because we explicitly want to have the `Injector`
  * resolve all of the object's dependencies automatically.
  *
+ * TODO: delete in v14.
+ *
  * @deprecated from v5 - slow and brings in a lot of code, Use `Injector.create` instead.
  *
  * 从 v5 开始 - 速度慢，并且引入了大量代码，请改用 `Injector.create` 。

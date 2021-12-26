@@ -8,8 +8,8 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # Fetch rules_nodejs so we can install our npm dependencies
 http_archive(
     name = "build_bazel_rules_nodejs",
-    sha256 = "3635797a96c7bfcd0d265dacd722a07335e64d6ded9834af8d3f1b7ba5a25bba",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/4.3.0/rules_nodejs-4.3.0.tar.gz"],
+    sha256 = "cfc289523cf1594598215901154a6c2515e8bf3671fd708264a6f6aefe02bf39",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/4.4.6/rules_nodejs-4.4.6.tar.gz"],
 )
 
 # The PKG rules are needed to build tar packages for integration tests. The builtin
@@ -32,11 +32,11 @@ check_rules_nodejs_version(minimum_version_string = "2.2.0")
 
 # Setup the Node.js toolchain
 node_repositories(
-    node_version = "14.16.1",
+    node_version = "16.10.0",
     package_json = ["//:package.json"],
 )
 
-load("//integration:angular_integration_test.bzl", "npm_package_archives")
+load("//integration:npm_package_archives.bzl", "npm_package_archives")
 
 yarn_install(
     name = "npm",
@@ -71,13 +71,7 @@ load("//packages/common/locales/generate-locales-tool:cldr-data.bzl", "cldr_data
 
 cldr_data_repository(
     name = "cldr_data",
-    # Since we use the Github archives for CLDR 37, we need to specify a path
-    # to the available locales. This wouldn't be needed with CLDR 39 as that
-    # comes with an official JSON archive not containing a version suffix.
-    available_locales_path = "cldr-core-37.0.0/availableLocales.json",
     urls = {
-        "https://github.com/unicode-cldr/cldr-core/archive/37.0.0.zip": "32b5c49c3874aa342b90412c207b42e7aefb2435295891fb714c34ce58b3c706",
-        "https://github.com/unicode-cldr/cldr-dates-full/archive/37.0.0.zip": "e1c410dd8ad7d75df4a5393efaf5d28f0d56c0fa126c5d66e171a3f21a988a1e",
-        "https://github.com/unicode-cldr/cldr-numbers-full/archive/37.0.0.zip": "a921b90cf7f436e63fbdd55880f96e39a203acd9e174b0ceafa20a02c242a12e",
+        "https://github.com/unicode-org/cldr-json/releases/download/39.0.0/cldr-39.0.0-json-full.zip": "a631764b6bb7967fab8cc351aff3ffa3f430a23646899976dd9d65801446def6",
     },
 )

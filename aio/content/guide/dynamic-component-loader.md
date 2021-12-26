@@ -8,13 +8,9 @@
 
 </div>
 
-Component templates are not always fixed. An application might need to load new components at runtime.
+Component templates are not always fixed. An application might need to load new components at runtime. This cookbook shows you how to add components dynamically.
 
-组件的模板不会永远是固定的。应用可能会需要在运行期间加载一些新的组件。
-
-This cookbook shows you how to use `ComponentFactoryResolver` to add components dynamically.
-
-这本烹饪书为你展示如何使用 `ComponentFactoryResolver` 来动态添加组件。
+组件的模板不会永远是固定的。应用可能会需要在运行期间加载一些新的组件。这本烹饪书为你展示如何使用 `ComponentFactoryResolver` 来动态添加组件。
 
 See the <live-example name="dynamic-component-loader"></live-example>
 of the code in this cookbook.
@@ -163,12 +159,7 @@ value to select an `adItem` from the array.
 
 </div>
 
-After `loadComponent()` selects an ad, it uses `ComponentFactoryResolver`
-to resolve a `ComponentFactory` for each specific component.
-The `ComponentFactory` then creates an instance of each component.
 
-在 `loadComponent()` 选取了一个广告之后，它使用 `ComponentFactoryResolver` 来为每个具体的组件解析出一个 `ComponentFactory`。
-然后 `ComponentFactory` 会为每一个组件创建一个实例。
 
 Next, you're targeting the `viewContainerRef` that
 exists on this specific instance of the component. How do you know it's

@@ -23,14 +23,9 @@ Angular 的 `TestBed` 可以帮你做这种测试，正如你将在下面的章�
 
 <div class="alert is-helpful">
 
-For a hands-on experience, <live-example name="testing" stackblitz="specs" noDownload>run tests and explore the test code</live-example> in your browser as your read this guide.
+  If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
-要上手练习，请按照本指南中所讲的，在浏览器中<live-example name="testing" stackblitz="specs" noDownload>运行测试，并浏览测试代码</live-example>。
-
-
-If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
-
-如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 

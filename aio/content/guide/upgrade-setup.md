@@ -45,21 +45,12 @@ Perform the _clone-to-launch_ steps with these terminal commands.
 
 运行下列命令来执行*克隆并启动*步骤。
 
-<code-example language="sh" >
+<code-example language="sh">
   git clone https://github.com/angular/quickstart.git quickstart
   cd quickstart
   npm install
-  npm start
-
 </code-example>
 
-<div class="alert is-important">
-
-`npm start` fails in _Bash for Windows_ in versions earlier than the Creator's Update (April 2017).
-
-在*Bash for Windows*中 `npm start` 可能会失败，因为到 2017-04 为止它还不支持访问网络上的服务器。
-
-</div>
 
 {@a download}
 
@@ -73,20 +64,11 @@ and unzip it into your project folder. Then perform the remaining steps with the
 <a href="https://github.com/angular/quickstart/archive/master.zip" title="下载《快速上手》种子库">下载《快速上手》种子</a>
 并解压到你的项目目录中。然后执行下面的命令完成剩余步骤。
 
-<code-example language="sh" >
+<code-example language="sh">
   cd quickstart
   npm install
-  npm start
-
 </code-example>
 
-<div class="alert is-important">
-
-`npm start` fails in _Bash for Windows_ in versions earlier than the Creator's Update (April 2017).
-
-在*Bash for Windows*中 `npm start` 可能会失败，因为到 2017-01 为止它还不支持访问网络上的服务器。
-
-</div>
 
 {@a non-essential}
 
@@ -129,6 +111,99 @@ Open a terminal window in the project folder and enter the following commands fo
   rd e2e /s /q
 
 </code-example>
+
+
+## Update dependency versions
+
+## 更新依赖版本
+
+Since the quickstart repository is deprecated, it is no longer updated and you need some additional steps to use the latest Angular.
+
+由于不推荐使用快速入门仓库（它已不再更新），所以你需要一些额外的步骤来使用最新的 Angular。
+
+1. Remove the obsolete `@angular/http` package (both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`).
+
+   删除过时的 `@angular/http` 包（全都来自 `package.json > dependencies` 和 `src/systemjs.config.js > SystemJS.config() > map` ）。
+
+2. Install the latest versions of the Angular framework packages by running:
+
+   通过运行以下命令来安装最新版本的 Angular 框架包：
+
+   ```sh
+   npm install --save @angular/common@latest @angular/compiler@latest @angular/core@latest @angular/forms@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/router@latest
+   ```
+
+3. Install the latest versions of other packages used by Angular (RxJS, TypeScript, Zone.js) by running:
+
+   通过运行以下命令安装 Angular 用到的其它包的最新版本（RxJS、TypeScript、Zone.js）：
+
+   ```sh
+   npm install --save rxjs@latest zone.js@latest
+   npm install --save-dev typescript@latest
+   ```
+
+4. Install the `systemjs-plugin-babel` package. This will later be used to load the Angular framework files, which are in ES2015 format, using SystemJS.
+
+   安装 `systemjs-plugin-babel` 包。稍后它将用于使用 SystemJS 加载 ES2015 格式的 Angular 框架文件。
+
+   ```sh
+   npm install --save systemjs-plugin-babel@latest
+   ```
+
+5. In order to be able to load the latest Angular framework packages (in ES2015 format) correctly, replace the relevant entries in `src/systemjs.config.js`:
+
+    为了能正确加载最新的 Angular 框架包（ES2015 格式），请替换 `src/systemjs.config.js` 中的相关条目：
+
+    <code-example
+        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+        region="angular-paths">
+    </code-example>
+
+6. In order to be able to load the latest RxJS package correctly, replace the relevant entries in `src/systemjs.config.js`:
+
+    为了能够正确加载最新的 RxJS 包，请替换 `src/systemjs.config.js` 中的相关条目：
+
+    <code-example
+        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+        region="rxjs-paths">
+    </code-example>
+
+7. In order to be able to load the `tslib` package (which is required for files transpiled by TypeScript), add the following entry to `src/systemjs.config.js`:
+
+    为了能够加载 `tslib` 包（这是由 TypeScript 转译后的文件所必需的），请将以下条目添加到 `src/systemjs.config.js` ：
+
+    <code-example
+        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+        region="tslib-paths">
+    </code-example>
+
+8. In order for SystemJS to be able to load the ES2015 Angular files correctly, add the following entries to `src/systemjs.config.js`:
+
+    为了使 SystemJS 能够正确加载 ES2015 Angular 文件，请将以下条目添加到 `src/systemjs.config.js` ：
+
+    <code-example
+        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+        region="plugin-babel">
+    </code-example>
+
+9. Finally, in order to prevent TypeScript typecheck errors for dependencies, add the following entry to `src/tsconfig.json`:
+
+   最后，为了防止依赖项的 TypeScript 类型检查错误，请将以下条目添加到 `src/tsconfig.json` ：
+
+    ```json
+    {
+      "compilerOptions": {
+        "skipLibCheck": true,
+        // ...
+      }
+    }
+    ```
+
+With that, you can now run `npm start` and have the application built and served.
+Once built, the application will be automatically opened in a new browser tab and it will be automatically reloaded when you make changes to the source code.
+
+有了这些，你现在就可以运行 `npm start` 并构建和启动应用程序了。构建后，应用程序将自动在新的浏览器选项卡中打开，并在你更改源代码时自动重新加载。
+
 
 {@a seed}
 
@@ -340,19 +415,6 @@ The following are all in `src/`
 
 </table>
 
-## Appendix: Develop locally with IE
-
-## 附录：用 IE 进行本地化开发
-
-If you develop Angular locally with `ng serve`, a `websocket` connection is set up automatically between browser and local development server, so when your code changes, the browser can automatically refresh.
-
-如果你使用 `ng serve` 进行本地化 Angular 开发，就会自动在浏览器和本地开发服务器之间建立一个 `websocket` 连接，这样，在代码发生变化时，浏览器就会自动刷新。
-
-In Windows, by default, one application can only have 6 websocket connections, <a href="https://msdn.microsoft.com/library/ee330736%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396#websocket_maxconn" title="MSDN WebSocket settings">MSDN WebSocket Settings</a>.
-So when IE is refreshed (manually or automatically by `ng serve`), sometimes the websocket does not close properly. When websocket connections exceed the limitations, a `SecurityError` will be thrown. This error will not affect the Angular application, you can restart IE to clear this error, or modify the windows registry to update the limitations.
-
-在 Windows 上，默认情况下，每个应用最多只能有 6 个 websocket 连接，参阅 <a href="https://msdn.microsoft.com/library/ee330736%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396#websocket_maxconn" title="MSDN WebSocket settings">MSDN 上的 WebSocket 设置</a>。
-所以，当 IE 刷新时（手动刷新或由 `ng serve` 自动刷新），websocket 可能无法正常关闭。当 websocket 连接数超过上限时，就会抛出一个 `SecurityError` 异常。这种错误不会影响 Angular 应用，你可以重启 IE 来清除此异常或在 Windows 注册表中加大这个上限。
 
 ## Appendix: Test using `fakeAsync()/waitForAsync()`
 

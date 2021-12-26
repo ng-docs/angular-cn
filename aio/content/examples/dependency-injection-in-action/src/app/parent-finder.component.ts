@@ -1,4 +1,4 @@
-// tslint:disable: component-selector space-before-function-paren
+/* eslint-disable space-before-function-paren */
 // #docplaster
 // #docregion
 import { Component, forwardRef, Optional, SkipSelf } from '@angular/core';
@@ -153,7 +153,7 @@ export class BethComponent implements Parent {
 export class AlexComponent extends Base
 // #enddocregion alex-class-signature
 {
-  name = 'Alex';
+  override name = 'Alex';
 }
 // #enddocregion alex-1
 

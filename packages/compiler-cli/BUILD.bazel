@@ -58,6 +58,7 @@ esbuild(
     ],
     format = "esm",
     platform = "node",
+    splitting = True,
     target = "node12",
     deps = PUBLIC_TARGETS,
 )
@@ -104,6 +105,7 @@ ts_library(
         "//packages/compiler-cli/src/ngtsc/translator",
         "//packages/compiler-cli/src/ngtsc/typecheck",
         "//packages/compiler-cli/src/ngtsc/typecheck/api",
+        "//packages/compiler-cli/src/ngtsc/util",
         "//packages/compiler-cli/src/transformers/downlevel_decorators_transform",
         "@npm//@bazel/typescript",
         "@npm//@types/node",
@@ -131,7 +133,7 @@ pkg_npm(
     # Do not add more to this list.
     # Dependencies on the full npm_package cause long re-builds.
     visibility = [
-        "//integration:__pkg__",
+        "//integration:__subpackages__",
         "//packages/compiler-cli/integrationtest:__pkg__",
     ],
     deps = [

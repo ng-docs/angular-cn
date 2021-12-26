@@ -276,7 +276,7 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
 // @public
 export class FormBuilder {
     array(controlsConfig: any[], validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null): FormArray;
-    control(formState: any, validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null): FormControl;
+    control(formState: any, validatorOrOpts?: ValidatorFn | ValidatorFn[] | FormControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null): FormControl;
     group(controlsConfig: {
         [key: string]: any;
     }, options?: AbstractControlOptions | null): FormGroup;
@@ -294,7 +294,8 @@ export class FormBuilder {
 
 // @public
 export class FormControl extends AbstractControl {
-    constructor(formState?: any, validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null);
+    constructor(formState?: any, validatorOrOpts?: ValidatorFn | ValidatorFn[] | FormControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null);
+    readonly defaultValue: any;
     patchValue(value: any, options?: {
         onlySelf?: boolean;
         emitEvent?: boolean;
@@ -360,6 +361,14 @@ export class FormControlName extends NgControl implements OnChanges, OnDestroy {
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<FormControlName, [{ optional: true; host: true; skipSelf: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }]>;
 }
+
+// @public
+export interface FormControlOptions extends AbstractControlOptions {
+    initialValueIsDefault?: boolean;
+}
+
+// @public
+export type FormControlStatus = 'VALID' | 'INVALID' | 'PENDING' | 'DISABLED';
 
 // @public
 export class FormGroup extends AbstractControl {
@@ -454,14 +463,8 @@ export class FormsModule {
 }
 
 // @public
-export class MaxLengthValidator implements Validator, OnChanges {
-    // (undocumented)
-    enabled(): boolean;
+export class MaxLengthValidator extends AbstractValidatorDirective {
     maxlength: string | number | null;
-    // (undocumented)
-    ngOnChanges(changes: SimpleChanges): void;
-    registerOnValidatorChange(fn: () => void): void;
-    validate(control: AbstractControl): ValidationErrors | null;
     // (undocumented)
     static ɵdir: i0.ɵɵDirectiveDeclaration<MaxLengthValidator, "[maxlength][formControlName],[maxlength][formControl],[maxlength][ngModel]", never, { "maxlength": "maxlength"; }, {}, never>;
     // (undocumented)
@@ -469,9 +472,8 @@ export class MaxLengthValidator implements Validator, OnChanges {
 }
 
 // @public
-export class MaxValidator extends AbstractValidatorDirective implements OnChanges {
+export class MaxValidator extends AbstractValidatorDirective {
     max: string | number | null;
-    ngOnChanges(changes: SimpleChanges): void;
     // (undocumented)
     static ɵdir: i0.ɵɵDirectiveDeclaration<MaxValidator, "input[type=number][max][formControlName],input[type=number][max][formControl],input[type=number][max][ngModel]", never, { "max": "max"; }, {}, never>;
     // (undocumented)
@@ -479,14 +481,8 @@ export class MaxValidator extends AbstractValidatorDirective implements OnChange
 }
 
 // @public
-export class MinLengthValidator implements Validator, OnChanges {
-    // (undocumented)
-    enabled(): boolean;
+export class MinLengthValidator extends AbstractValidatorDirective {
     minlength: string | number | null;
-    // (undocumented)
-    ngOnChanges(changes: SimpleChanges): void;
-    registerOnValidatorChange(fn: () => void): void;
-    validate(control: AbstractControl): ValidationErrors | null;
     // (undocumented)
     static ɵdir: i0.ɵɵDirectiveDeclaration<MinLengthValidator, "[minlength][formControlName],[minlength][formControl],[minlength][ngModel]", never, { "minlength": "minlength"; }, {}, never>;
     // (undocumented)
@@ -494,9 +490,8 @@ export class MinLengthValidator implements Validator, OnChanges {
 }
 
 // @public
-export class MinValidator extends AbstractValidatorDirective implements OnChanges {
+export class MinValidator extends AbstractValidatorDirective {
     min: string | number | null;
-    ngOnChanges(changes: SimpleChanges): void;
     // (undocumented)
     static ɵdir: i0.ɵɵDirectiveDeclaration<MinValidator, "input[type=number][min][formControlName],input[type=number][min][formControl],input[type=number][min][ngModel]", never, { "min": "min"; }, {}, never>;
     // (undocumented)

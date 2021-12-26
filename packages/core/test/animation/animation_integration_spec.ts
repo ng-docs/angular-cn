@@ -13,13 +13,12 @@ import {fakeAsync, flushMicrotasks, TestBed} from '@angular/core/testing';
 import {ɵDomRendererFactory2} from '@angular/platform-browser';
 import {ANIMATION_MODULE_TYPE, BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {hasStyle} from '@angular/platform-browser/testing/src/browser_util';
-import {ivyEnabled, modifiedInIvy} from '@angular/private/testing';
 
 const DEFAULT_NAMESPACE_ID = 'id';
 const DEFAULT_COMPONENT_ID = '1';
 
 (function() {
-// these tests are only mean't to be run within the DOM (for now)
+// these tests are only meant to be run within the DOM (for now)
 if (isNode) return;
 
 describe('animation tests', function() {
@@ -980,9 +979,9 @@ describe('animation tests', function() {
            expect(fixture.nativeElement.children.length).toBe(1);
 
            engine.flush();
-           expect(getLog().length).toBe(1);
+           expect(getLog().length).toBe(2);
 
-           const player = getLog()[0];
+           const player = getLog()[1];
            expect(player.keyframes).toEqual([
              {opacity: '1', offset: 0},
              {opacity: '0', offset: 1},
@@ -3008,18 +3007,25 @@ describe('animation tests', function() {
          cmp.log = [];
 
          const players = getLog();
-         expect(players.length).toEqual(3);
-         const [p1, p2, p3] = players;
+         expect(players.length).toEqual(4);
 
-         p1.finish();
+         // players:
+         //  - _scp (skipped child player): player for the child animation
+         //  - pp1 (parent player 1): player for parent animation (from 0px to 100px)
+         //  - pcp (parent child player):
+         //     player for child animation executed by parent via query and animateChild
+         //  - pp2 (parent player 2): player for parent animation (from 100px to 0px)
+         const [_scp, pp1, pcp, pp2] = players;
+
+         pp1.finish();
          flushMicrotasks();
          expect(cmp.log).toEqual([]);
 
-         p2.finish();
+         pcp.finish();
          flushMicrotasks();
          expect(cmp.log).toEqual([]);
 
-         p3.finish();
+         pp2.finish();
          flushMicrotasks();
          expect(cmp.log).toEqual(['parent-done', 'child-done']);
        }));
@@ -3081,33 +3087,45 @@ describe('animation tests', function() {
          cmp.log = [];
 
          const players = getLog();
-         // 1 + 4 + 4 = 9 players
-         expect(players.length).toEqual(9);
+         expect(players.length).toEqual(13);
 
-         const [pA, pq1a, pq1b, pq1c, pq1d, pq2a, pq2b, pq2c, pq2d] = getLog();
-         pA.finish();
-         pq1a.finish();
-         pq1b.finish();
-         pq1c.finish();
-         pq1d.finish();
+         // players:
+         //  - _sc1p, _sc2p, _sc3p, _sc4p (skipped child n (1 to 4) players):
+         //     players for the children animations
+         //  - pp1 (parent player 1): player for parent animation (from opacity 0 to opacity 1)
+         //  - pc1p1, pc2p1, pc3p1, pc4p1 (parent child n (1 to 4) player 1):
+         //     players for children animations executed by parent via query and animate
+         //     (from opacity 0 to opacity 1)
+         //  - pc1p2, pc2p2, pc3p2, pc4p2 (parent child n (1 to 4) player 2):
+         //     players for children animations executed by parent via query and animateChild
+         const [_sc1p, _sc2p, _sc3p, _sc4p, pp1, pc1p1, pc2p1, pc3p1, pc4p1, pc1p2, pc2p2, pc3p2, pc4p2] =
+             getLog();
+         pp1.finish();
+         pc1p1.finish();
+         pc2p1.finish();
+         pc3p1.finish();
+         pc4p1.finish();
          flushMicrotasks();
 
          expect(cmp.log).toEqual([]);
-         pq2a.finish();
-         pq2b.finish();
-         pq2c.finish();
-         pq2d.finish();
+         pc1p2.finish();
+         pc2p2.finish();
+         pc3p2.finish();
+         pc4p2.finish();
          flushMicrotasks();
 
          expect(cmp.log).toEqual(['all-done', 'c-0-done', 'c-1-done', 'c-2-done', 'c-3-done']);
 
-         expect(cmp.events['c-0'].totalTime).toEqual(4100);  // 1000 + 1000 + 1800 + 300
+         expect(cmp.events['all'].totalTime).toEqual(4100);  // 1000 + 1000 + 1800 + 300
+         expect(cmp.events['all'].element.innerText.trim().replaceAll('\n', ' '))
+             .toEqual('0 1 2 3');
+         expect(cmp.events['c-0'].totalTime).toEqual(1500);
          expect(cmp.events['c-0'].element.innerText.trim()).toEqual('0');
-         expect(cmp.events['c-1'].totalTime).toEqual(4100);
+         expect(cmp.events['c-1'].totalTime).toEqual(1500);
          expect(cmp.events['c-1'].element.innerText.trim()).toEqual('1');
-         expect(cmp.events['c-2'].totalTime).toEqual(4100);
+         expect(cmp.events['c-2'].totalTime).toEqual(1500);
          expect(cmp.events['c-2'].element.innerText.trim()).toEqual('2');
-         expect(cmp.events['c-3'].totalTime).toEqual(4100);
+         expect(cmp.events['c-3'].totalTime).toEqual(1500);
          expect(cmp.events['c-3'].element.innerText.trim()).toEqual('3');
        }));
   });
@@ -3195,9 +3213,7 @@ describe('animation tests', function() {
           expect(element.style['height']).toEqual(height);
         }
 
-        // In Ivy, change detection needs to run before the ViewQuery for cmp.element will
-        // resolve. Keeping this test enabled since we still want to test the animation logic.
-        if (ivyEnabled) fixture.detectChanges();
+        fixture.detectChanges();
 
         const cmp = fixture.componentInstance;
         const element = cmp.element.nativeElement;
@@ -3622,7 +3638,7 @@ describe('animation tests', function() {
       ]);
     });
 
-    it('should convert hyphenated properties to camelcase by default that are auto/pre style properties',
+    it('should convert hyphenated properties to camelCase by default that are auto/pre style properties',
        () => {
          @Component({
            selector: 'cmp',
@@ -3772,53 +3788,6 @@ describe('animation tests', function() {
       TestBed.createComponent(Cmp);
     }).not.toThrowError();
   });
-
-  modifiedInIvy('FW-952 - Error recovery is handled differently in Ivy than VE')
-      .it('should continue to clean up DOM-related animation artifacts even if a compiler-level error is thrown midway',
-          () => {
-            @Component({
-              selector: 'if-cmp',
-              animations: [
-                trigger(
-                    'foo',
-                    [
-                      transition('* => something', []),
-                    ]),
-              ],
-              template: `
-          value = {{ foo[bar] }}
-          <div #contents>
-            <div *ngIf="exp">1</div>
-            <div *ngIf="exp" @foo>2</div>
-            <div *ngIf="exp" [@foo]="'123'">3</div>
-          </div>
-        `,
-            })
-            class Cmp {
-              exp: any = false;
-
-              @ViewChild('contents', {static: true}) public contents: any;
-            }
-
-            TestBed.configureTestingModule({declarations: [Cmp]});
-
-            const engine = TestBed.inject(ɵAnimationEngine);
-            const fixture = TestBed.createComponent(Cmp);
-
-            const runCD = () => fixture.detectChanges();
-            const cmp = fixture.componentInstance;
-
-            cmp.exp = true;
-            expect(runCD).toThrow();
-
-            const contents = cmp.contents.nativeElement;
-            expect(contents.innerText.replace(/\s+/gm, '')).toEqual('123');
-
-            cmp.exp = false;
-            expect(runCD).toThrow();
-
-            expect(contents.innerText.trim()).toEqual('');
-          });
 
   describe('errors for not using the animation module', () => {
     beforeEach(() => {

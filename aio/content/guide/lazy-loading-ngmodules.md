@@ -223,9 +223,9 @@ Then go to `localhost:4200` where you should see  "customer-app"  and three butt
 
 </div>
 
-These buttons work, because the CLI automatically added the routes to the feature modules to the `routes` array in `app.module.ts`.
+These buttons work, because the CLI automatically added the routes to the feature modules to the `routes` array in `app-routing.module.ts`.
 
-这些按钮生效了，因为 CLI 会自动将特性模块的路由添加到 `app.module.ts` 中的 `routes` 数组中。
+这些按钮生效了，因为 CLI 会自动将特性模块的路由添加到 `app-routing.module.ts` 中的 `routes` 数组中。
 
 {@a config-routes}
 

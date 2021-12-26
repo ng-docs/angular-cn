@@ -3,34 +3,68 @@
 # Angular 国际化
 
 {@searchKeywords i18n}
-{@a angular-i18n}
-{@a localizing-your-app}
 
-*Internationalization* (i18n) is the process of designing and preparing your application to be usable in different locales around the world.
-*Localization* is the process of building versions of your application for different locales, including extracting text for translation into different languages, and formatting data for particular locales.
+*Internationalization* , sometimes referenced as i18n, is the process of designing and preparing your project for use in different locales around the world.
+*Localization* is the process of building versions of your project for different locales.  The localization process includes the following actions.
 
-*国际*化 (i18n) 是设计和准备你的应用程序，以便在全世界的不同地区使用的过程。*本地化*是为不同地区构建应用程序版本的过程，包括提取文本以翻译成不同语言，以及为特定地区设置数据格式。
+*国际*化，有时称为 i18n，是设计和准备项目，以便在世界各地的不同语言环境使用的过程。*本地化*是为不同的语言环境构建项目版本的过程。本地化过程包括以下操作。
 
-A *locale* identifies a region (such as a country) in which people speak a particular language or language variant.
-The locale determines the formatting and parsing of dates, times, numbers, and currencies as well as measurement units and the translated names for time zones, languages, and countries.
+* Extract text for translation into different languages
 
-*语言环境*标识人们使用特定语言或语言变体的地区（例如国家/地区）。语言环境决定日期、时间、数字和货币的格式和解析方式，以及测量单位和时区、语言和国家/地区的翻译名称。
+  提取文本以翻译成不同的语言
 
-<div class="alert is-helpful">
+* Format data for a specific locale
 
-Create an adaptable user interface for all of your target locales that takes into consideration the differences in spacing for different languages.
-For details, see [How to approach internationalization][ThinkwithgoogleMarketfinderIntlEnUsGuideHowToApproachI18nOverview].
+  格式化特定语言环境的数据
 
-要想为所有目标语言环境创建一个适应性强的用户界面，就要将不同语言的间距（spacing）差异考虑在内。有关详细信息，请参阅[如何进行国际化][ThinkwithgoogleMarketfinderIntlEnUsGuideHowToApproachI18nOverview]。
+A *locale* identifies a region in which people speak a particular language or language variant.  Possible regions includes countries and geographical regions.
+A locale determines the formatting and parsing of the following details.
 
+*语言环境*标识人们使用特定语言或语言变体的区域。可能的区域包括国家和地理区域。语言环境决定了以下详细信息的格式和解析。
+
+* Measurement units including date and time, numbers, and currencies
+
+  度量单位，包括日期和时间、数字和货币
+
+* Translated names including time zones, languages, and countries
+
+  翻译名称，包括时区、语言和国家
+
+## Learn about Angular internationalization
+
+## 了解 Angular 国际化
+
+<div class="card-container">
+    <a href="guide/i18n-common-overview" class="docs-card" title="Common internationalization tasks">
+        <section>Common tasks</section>
+        <section>常见任务</section>
+        <p>Learn how to implement many of the common tasks associated with Angular internationalization.</p>
+        <p>学习如何实现与 Angular 国际化有关的常见任务</p>
+        <p class="card-footer">Common internationalization tasks</p>
+        <p class="card-footer">常见国际化任务</p>
+    </a>
+    <a href="guide/i18n-optional-overview" class="docs-card" title="Optional internationalization tasks">
+        <section>Optional practices</section>
+        <section>可选实践</section>
+        <p>Learn how to implement optional practices associated with Angular internationalization.</p>
+        <p>学习如何实现与 Angular 国际化有关的可选实践</p>
+        <p class="card-footer">Optional internationalization practices</p>
+        <p class="card-footer">可选国际化实践</p>
+    </a>
+    <a href="guide/i18n-example" class="docs-card" title="Internationalization example">
+        <section>Internationalization example</section>
+        <section>国际化范例</section>
+        <p>Review an example of Angular internationalization.</p>
+        <p>查看一个 Angular 国际化的例子</p>
+        <p class="card-footer">Example Angular Internationalization application</p>
+        <p class="card-footer">Angular 国际化应用范例</p>
+    </a>
 </div>
 
 <!-- links -->
 
 <!-- external links -->
 
-[ThinkwithgoogleMarketfinderIntlEnUsGuideHowToApproachI18nOverview]: https://marketfinder.thinkwithgoogle.com/intl/en_us/guide/how-to-approach-i18n#overview "Overview - How to approach internationalization | Market Finder | Think with Google"
-
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-07

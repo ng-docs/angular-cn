@@ -43,7 +43,7 @@ To turn off this feature, run the following command:
 要关闭此功能，请执行如下命令：
 
 <code-example language="sh">
-ng config --global --remove cli.analyticsSharing
+ng config --global cli.analyticsSharing undefined
 </code-example>
 
 ## Per user tracking
@@ -56,7 +56,7 @@ If that user enables CLI analytics for their own project, your analytics display
 你可以在全局配置中添加一个自定义的用户 ID，以单独区分命令和标志的使用情况。如果该用户也为自己的项目启用了 CLI 分析，那么分析器会分别显示这些跟踪并标记出各自的使用情况。
 
 <code-example language="sh" >
-ng config --global cli.analyticsSharing.user SOME_USER_NAME
+ng config --global cli.analyticsSharing.uuid SOME_USER_NAME
 </code-example>
 
 To generate a new random user ID, run the following command:
@@ -64,5 +64,5 @@ To generate a new random user ID, run the following command:
 要生成新的随机用户 ID，请执行如下命令：
 
 <code-example language="sh">
-ng config --global cli.analyticsSharing.user ""
+ng config --global cli.analyticsSharing.uuid ""
 </code-example>

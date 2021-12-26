@@ -57,7 +57,11 @@ Angular 支持大多数常用浏览器，包括下列版本：
   </tr>
   <tr>
     <td>Android</td>
-    <td>Q (10.0), Pie (9.0), Oreo (8.0), Nougat (7.0)</td>
+    <td>2 most recent major versions</td>
+  </tr>
+  <tr>
+    <td>Android</td>
+    <td>最近的两个主版本</td>
   </tr>
 </table>
 
@@ -65,11 +69,9 @@ Angular 支持大多数常用浏览器，包括下列版本：
 <div class="alert is-helpful">
 
 Angular's continuous integration process runs unit tests of the framework on all of these browsers for every pull request,
-using [Sauce Labs](https://saucelabs.com/) and
-[BrowserStack](https://www.browserstack.com/).
+using [Sauce Labs](https://saucelabs.com/).
 
-Angular 在持续集成过程中，对每一个提交都会使用 <a href="https://saucelabs.com/" target="_blank">SauceLabs</a> 和
-<a href="https://www.browserstack.com" target="_blank">Browserstack</a> 在上述所有浏览器上执行单元测试。
+Angular 在持续集成过程中，对每一个提交都会使用 [Sauce Labs](https://saucelabs.com/) 在上述所有浏览器上执行单元测试。
 
 </div>
 

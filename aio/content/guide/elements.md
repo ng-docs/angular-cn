@@ -216,27 +216,15 @@ The recently-developed [custom elements](https://developer.mozilla.org/en-US/doc
 </tr>
 </table>
 
-In browsers that support Custom Elements natively, the specification requires developers use ES2015 classes to define Custom Elements - developers can opt-in to this by setting the `target: "es2015"` property in their project's [TypeScript configuration file](/guide/typescript-configuration). As Custom Element and ES2015 support might not be available in all browsers, developers can instead choose to use a polyfill to support older browsers and ES5 code.
+To add the `@angular/elements` package to your workspace, run the following command:
 
-对于原生支持了自定义元素的浏览器，该规范要求开发人员使用 ES2016 的类来定义自定义元素 —— 开发人员可以在项目的 [TypeScript 配置文件](/guide/typescript-configuration)中设置 `target: "es2015"` 属性来满足这一要求。并不是所有浏览器都支持自定义元素和 ES2015，开发人员也可以选择使用腻子脚本来让它支持老式浏览器和 ES5 的代码。
-
-Use the [Angular CLI](cli) to automatically set up your project with the correct polyfill:
-
-使用 [Angular CLI](https://cli.angular.io/) 可以自动为你的项目添加正确的腻子脚本：
+要往工作空间中添加 `@angular/elements` 包，请运行如下命令：
 
 <code-example language="sh">
 
-ng add @angular/elements --project=*your_project_name*
+npm install @angular/elements --save
 
 </code-example>
-
-- For more information about polyfills, see [polyfill documentation](https://www.webcomponents.org/polyfills).
-
-   要了解关于腻子脚本的更多信息，参阅[腻子脚本的相关文档](https://www.webcomponents.org/polyfills)。
-
-- For more information about Angular browser support, see [Browser Support](guide/browser-support).
-
-   要了解 Angular 浏览器支持的更多信息，参阅[浏览器支持](guide/browser-support)。
 
 ## Example: A Popup Service
 

@@ -2,32 +2,43 @@
 
 # 添加本地化包
 
-{@a setting-up-cli}
-{@a add-localize}
+To take advantage of the localization features of Angular, use the [Angular CLI][AioCliMain] to add the `@angular/localize` package to your project.
 
-To take advantage of the localization features of Angular, use the Angular CLI to add the `@angular/localize` package to your project.
+要利用 Angular 的本地化功能，请用 [Angular CLI][AioCliMain] 将 `@angular/localize` 包添加到你的项目中。
 
-要利用 Angular 的本地化功能，请用 Angular CLI 将 `@angular/localize` 包添加到你的项目中。
+To add the `@angular/localize` package, use the following command to update the `package.json` and `polyfills.ts` files in your project.
+
+要添加 `@angular/localize` 包，请使用如下命令来更新项目中的 `package.json` 和  `polyfills.ts` 文件。
 
 <code-example path="i18n/doc-files/commands.sh" region="add-localize" language="sh"></code-example>
 
-This command updates the `package.json` and `polyfills.ts` files of your project to import the `@angular/localize` package.
-
-此命令会更新项目的 `package.json` 和 `polyfills.ts` 文件以导入 `@angular/localize` 包。
-
 <div class="alert is-helpful">
 
-For more information about `package.json` and polyfill packages, see [Workspace npm dependencies][AioGuideNpmPackages].
+For more information about `package.json` and `polyfill.ts` files, see [Workspace npm dependencies][AioGuideNpmPackages].
 
-有关 `package.json` 和 polyfill 包的更多信息，请参阅[工作区的 npm 依赖项][AioGuideNpmPackages]。
+有关 `package.json` 和 `polyfill` 包的更多信息，请参阅[工作区的 npm 依赖项][AioGuideNpmPackages]。
 
 </div>
 
-If `@angular/localize` is not installed, the Angular CLI may generate an error when you try to build a localized version of your application.
+If `@angular/localize` is not installed and you try to build a localized version of your project, the [Angular CLI][AioCliMain] generates an error.
 
-如果未安装 `@angular/localize` ，当你尝试构建应用程序的本地化版本时，Angular CLI 可能会产生错误。
+如果尚未安装 `@angular/localize`，而你试图构建此项目的本地化版本，[Angular CLI][AioCliMain] 就会报错。
+
+<!--todo: add example error -->
+
+## What's next
+
+## 下一步？
+
+* [Refer to locales by ID][AioGuideI18nCommonLocaleId]
+
+  [通过 ID 引用语音环境][AioGuideI18nCommonLocaleId]
 
 <!-- links -->
+
+[AioCliMain]: cli "CLI Overview and Command Reference | Angular"
+
+[AioGuideI18nCommonLocaleId]: guide/i18n-common-locale-id "Refer to locales by ID | Angular"
 
 [AioGuideNpmPackages]: guide/npm-packages "Workspace npm dependencies | Angular"
 
@@ -35,4 +46,4 @@ If `@angular/localize` is not installed, the Angular CLI may generate an error w
 
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-07

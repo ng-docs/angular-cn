@@ -21,7 +21,7 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(heroes => this.log(`fetched heroes`)),
+        tap(heroes => this.log('fetched heroes')),
         catchError(this.handleError('getHeroes'))
       ) as Observable<Hero[]>;
   }
@@ -36,7 +36,7 @@ export class HeroService {
       .pipe(
         map(heroes => heroes[0]), // returns a {0|1} element array
         tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
+          const outcome = h ? 'fetched' : 'did not find';
           this.log(`${outcome} hero id=${id}`);
         }),
         catchError(this.handleError<Hero>(`getHero id=${id}`))
@@ -73,6 +73,7 @@ export class HeroService {
   /**
    * Returns a function that handles Http operation failures.
    * This error handler lets the app continue to run as if no error occurred.
+   *
    * @param operation - name of the operation that failed
    */
   private handleError<T>(operation = 'operation') {
@@ -81,10 +82,13 @@ export class HeroService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      const message = (error.error instanceof ErrorEvent) ?
-        error.error.message :
-       `server returned code ${error.status} with body "${error.error}"`;
+      // If a native error is caught, do not transform it. We only want to
+      // transform response errors that are not wrapped in an `Error`.
+      if (error.error instanceof Event) {
+        throw error.error;
+      }
 
+      const message = `server returned code ${error.status} with body "${error.error}"`;
       // TODO: better job of transforming error for user consumption
       throw new Error(`${operation} failed: ${message}`);
     };

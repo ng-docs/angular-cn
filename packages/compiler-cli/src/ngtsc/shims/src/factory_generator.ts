@@ -161,7 +161,7 @@ function transformFactorySourceFile(
       if (rewrittenModuleSpecifier !== stmt.moduleSpecifier.text) {
         transformedStatements.push(ts.updateImportDeclaration(
             stmt, stmt.decorators, stmt.modifiers, stmt.importClause,
-            ts.createStringLiteral(rewrittenModuleSpecifier)));
+            ts.createStringLiteral(rewrittenModuleSpecifier), undefined));
 
         // Record the identifier by which this imported module goes, so references to its symbols
         // can be discovered later.

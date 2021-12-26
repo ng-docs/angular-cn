@@ -8,7 +8,7 @@
 
 import {APP_BASE_HREF, CommonModule, HashLocationStrategy, Location, LOCATION_INITIALIZED, LocationStrategy, PlatformLocation} from '@angular/common';
 import {SpyLocation} from '@angular/common/testing';
-import {ChangeDetectionStrategy, Component, EventEmitter, Injectable, NgModule, NgModuleRef, NgZone, OnDestroy, ViewChild, ɵConsole as Console, ɵNoopNgZone as NoopNgZone} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Injectable, InjectionToken, NgModule, NgModuleRef, NgZone, OnDestroy, ViewChild, ɵConsole as Console, ɵNoopNgZone as NoopNgZone} from '@angular/core';
 import {ComponentFixture, fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser/src/dom/debug/by';
 import {expect} from '@angular/platform-browser/testing/src/matchers';
@@ -1309,6 +1309,31 @@ describe('Integration', () => {
          expect(location.path()).toEqual('/blocked');
          expect(fixture.nativeElement.innerHTML).toContain('simple');
          expect(location.urlChanges).toEqual(['hash: /blocked']);
+       }));
+
+    it('should accurately track currentNavigation', fakeAsync(() => {
+         const router = TestBed.inject(Router);
+         router.resetConfig([
+           {path: 'one', component: SimpleCmp, canActivate: ['in1Second']},
+           {path: 'two', component: BlankCmp, canActivate: ['in1Second']},
+         ]);
+
+         router.events.subscribe((e) => {
+           if (e instanceof NavigationStart) {
+             if (e.url === '/one') {
+               router.navigateByUrl('two');
+             }
+             router.events.subscribe((e) => {
+               if (e instanceof GuardsCheckEnd) {
+                 expect(router.getCurrentNavigation()?.extractedUrl.toString()).toEqual('/two');
+                 expect(router.getCurrentNavigation()?.extras).toBeDefined();
+               }
+             });
+           }
+         });
+
+         router.navigateByUrl('one');
+         tick(1000);
        }));
   });
 
@@ -5686,9 +5711,11 @@ describe('Integration', () => {
   describe('Custom Route Reuse Strategy', () => {
     class AttachDetachReuseStrategy implements RouteReuseStrategy {
       stored: {[k: string]: DetachedRouteHandle} = {};
+      pathsToDetach = ['a'];
 
       shouldDetach(route: ActivatedRouteSnapshot): boolean {
-        return route.routeConfig!.path === 'a';
+        return typeof route.routeConfig!.path !== 'undefined' &&
+            this.pathsToDetach.includes(route.routeConfig!.path);
       }
 
       store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle): void {
@@ -5802,6 +5829,7 @@ describe('Integration', () => {
          const fixture = createRoot(router, RootCmp);
 
          router.routeReuseStrategy = new AttachDetachReuseStrategy();
+         (router.routeReuseStrategy as AttachDetachReuseStrategy).pathsToDetach = ['a', 'b'];
          spyOn(router.routeReuseStrategy, 'retrieve').and.callThrough();
 
          router.resetConfig([
@@ -5832,7 +5860,7 @@ describe('Integration', () => {
          router.navigateByUrl('/a;p=1/b;p=2');
          advance(fixture);
          // We retrieve both the stored route snapshots
-         expect(router.routeReuseStrategy.retrieve).toHaveBeenCalledTimes(2);
+         expect(router.routeReuseStrategy.retrieve).toHaveBeenCalledTimes(4);
          const teamCmp2 = fixture.debugElement.children[1].componentInstance;
          const simpleCmp2 = fixture.debugElement.children[1].children[1].componentInstance;
          expect(location.path()).toEqual('/a;p=1/b;p=2');
@@ -5843,6 +5871,7 @@ describe('Integration', () => {
          expect(teamCmp.route.snapshot).toBe(router.routerState.snapshot.root.firstChild);
          expect(teamCmp.route.snapshot.params).toEqual({p: '1'});
          expect(teamCmp.route.firstChild.snapshot.params).toEqual({p: '2'});
+         expect(teamCmp.recordedParams).toEqual([{}, {p: '1'}]);
        })));
 
     it('should support shorter lifecycles',
@@ -5993,6 +6022,117 @@ describe('Integration', () => {
          fixture.componentInstance.showRouterOutlet = true;
          advance(fixture);
          expect(fixture.debugElement.query(By.directive(SimpleCmp))).toBeTruthy();
+       }));
+
+    it('should allow to attach parent route with fresh child route', fakeAsync(() => {
+         const CREATED_COMPS = new InjectionToken<string[]>('CREATED_COMPS');
+
+         @Component({selector: 'root', template: `<router-outlet></router-outlet>`})
+         class Root {
+         }
+
+         @Component({selector: 'parent', template: `<router-outlet></router-outlet>`})
+         class Parent {
+           constructor(@Inject(CREATED_COMPS) createdComps: string[]) {
+             createdComps.push('parent');
+           }
+         }
+
+         @Component({selector: 'child', template: `child`})
+         class Child {
+           constructor(@Inject(CREATED_COMPS) createdComps: string[]) {
+             createdComps.push('child');
+           }
+         }
+
+         @NgModule({
+           declarations: [Root, Parent, Child],
+           imports: [
+             CommonModule,
+             RouterTestingModule.withRoutes([
+               {path: 'a', component: Parent, children: [{path: 'b', component: Child}]},
+               {path: 'c', component: SimpleCmp}
+             ]),
+           ],
+           providers: [
+             {provide: RouteReuseStrategy, useClass: AttachDetachReuseStrategy},
+             {provide: CREATED_COMPS, useValue: []}
+           ]
+         })
+         class TestModule {
+         }
+         TestBed.configureTestingModule({imports: [TestModule]});
+
+         const router = TestBed.inject(Router);
+         const fixture = createRoot(router, Root);
+         const createdComps = TestBed.inject(CREATED_COMPS);
+
+         expect(createdComps).toEqual([]);
+
+         router.navigateByUrl('/a/b');
+         advance(fixture);
+         expect(createdComps).toEqual(['parent', 'child']);
+
+         router.navigateByUrl('/c');
+         advance(fixture);
+         expect(createdComps).toEqual(['parent', 'child']);
+
+         // 'a' parent route will be reused by the `RouteReuseStrategy`, child 'b' should be
+         // recreated
+         router.navigateByUrl('/a/b');
+         advance(fixture);
+         expect(createdComps).toEqual(['parent', 'child', 'child']);
+       }));
+
+    it('should not try to detach the outlet of a route that does not get to attach a component',
+       fakeAsync(() => {
+         @Component({selector: 'root', template: `<router-outlet></router-outlet>`})
+         class Root {
+         }
+
+         @Component({selector: 'component-a', template: 'Component A'})
+         class ComponentA {
+         }
+
+         @Component({selector: 'component-b', template: 'Component B'})
+         class ComponentB {
+         }
+
+         @NgModule({
+           declarations: [ComponentA],
+           imports: [RouterModule.forChild([{path: '', component: ComponentA}])],
+         })
+         class LoadedModule {
+         }
+
+         @NgModule({
+           declarations: [Root, ComponentB],
+           imports: [RouterTestingModule.withRoutes([
+             {path: 'a', loadChildren: () => LoadedModule}, {path: 'b', component: ComponentB}
+           ])],
+           providers: [
+             {provide: RouteReuseStrategy, useClass: AttachDetachReuseStrategy},
+           ]
+         })
+         class TestModule {
+         }
+
+         TestBed.configureTestingModule({imports: [TestModule]});
+
+         const router = TestBed.inject(Router);
+         const strategy = TestBed.inject(RouteReuseStrategy);
+         const fixture = createRoot(router, Root);
+
+         spyOn(strategy, 'shouldDetach').and.callThrough();
+
+         router.navigateByUrl('/a');
+         advance(fixture);
+
+         // Deactivate 'a'
+         // 'shouldDetach' should not be called for the componentless route
+         router.navigateByUrl('/b');
+         advance(fixture);
+         expect(strategy.shouldDetach).toHaveBeenCalledTimes(1);
        }));
   });
 });

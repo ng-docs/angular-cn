@@ -14,12 +14,6 @@ import {DECLARATION_COMPONENT_VIEW, LView} from '../render3/interfaces/view';
 import {getCurrentTNode, getLView} from '../render3/state';
 import {getComponentLViewByIndex} from '../render3/util/view_utils';
 import {ViewRef as R3_ViewRef} from '../render3/view_ref';
-import {noop} from '../util/noop';
-
-export const SWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__ = injectChangeDetectorRef;
-const SWITCH_CHANGE_DETECTOR_REF_FACTORY__PRE_R3__ = noop;
-const SWITCH_CHANGE_DETECTOR_REF_FACTORY: typeof injectChangeDetectorRef =
-    SWITCH_CHANGE_DETECTOR_REF_FACTORY__PRE_R3__;
 
 /**
  * Base class that provides change detection functionality.
@@ -55,7 +49,8 @@ const SWITCH_CHANGE_DETECTOR_REF_FACTORY: typeof injectChangeDetectorRef =
  * (`CheckOnce`, rather than the default `CheckAlways`), then forces a second check
  * after an interval. See [live demo](https://plnkr.co/edit/GC512b?p=preview).
  *
- * 下面的例子为组件设置了 `OnPush` 变更检测策略（`CheckOnce` 而不是默认的 `CheckAlways`），然后每隔一段时间强制进行第二轮检测。
+ * 下面的例子为组件设置了 `OnPush` 变更检测策略（`CheckOnce` 而不是默认的
+ *`CheckAlways`），然后每隔一段时间强制进行第二轮检测。
  * 参见[在线例子](http://plnkr.co/edit/GC512b?p=preview)。
  *
  * <code-example path="core/ts/change_detect/change-detection.ts"
@@ -88,7 +83,8 @@ const SWITCH_CHANGE_DETECTOR_REF_FACTORY: typeof injectChangeDetectorRef =
  * becomes true.
  *
  * 下面的例子创建了一个用来显示活动数据的组件。
- * 当 `live` 属性为 `false` 时，该组件就把它的变更检测器从主变更检测器树中分离出来，当该属性变为 `true` 时，则重新附加上它。
+ * 当 `live` 属性为 `false` 时，该组件就把它的变更检测器从主变更检测器树中分离出来，当该属性变为
+ *`true` 时，则重新附加上它。
  *
  * <code-example path="core/ts/change_detect/change-detection.ts" region="reattach"></code-example>
  *
@@ -100,7 +96,8 @@ export abstract class ChangeDetectorRef {
    * change detection strategy, explicitly marks the view as changed so that
    * it can be checked again.
    *
-   * 当视图使用 {@link ChangeDetectionStrategy#OnPush OnPush}（`checkOnce`）变更检测策略时，把该视图显式标记为已更改，以便它再次进行检查。
+   * 当视图使用 {@link ChangeDetectionStrategy#OnPush
+   * OnPush}（`checkOnce`）变更检测策略时，把该视图显式标记为已更改，以便它再次进行检查。
    *
    * Components are normally marked as dirty (in need of rerendering) when inputs
    * have changed or events have fired in the view. Call this method to ensure that
@@ -174,8 +171,7 @@ export abstract class ChangeDetectorRef {
    * @internal
    * @nocollapse
    */
-  static __NG_ELEMENT_ID__:
-      (flags: InjectFlags) => ChangeDetectorRef = SWITCH_CHANGE_DETECTOR_REF_FACTORY;
+  static __NG_ELEMENT_ID__: (flags: InjectFlags) => ChangeDetectorRef = injectChangeDetectorRef;
 }
 
 

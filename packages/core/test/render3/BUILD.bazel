@@ -2,6 +2,10 @@ load("//tools:defaults.bzl", "jasmine_node_test", "karma_web_test_suite", "ts_li
 
 package(default_visibility = ["//visibility:public"])
 
+ES2015_SPECS = [
+    "providers_es2015_spec.ts",
+]
+
 ts_library(
     name = "render3_lib",
     testonly = True,
@@ -14,7 +18,7 @@ ts_library(
             "is_shape_of.ts",
             "jit_spec.ts",
             "matchers.ts",
-        ],
+        ] + ES2015_SPECS,
     ),
     deps = [
         ":matchers",
@@ -34,6 +38,20 @@ ts_library(
         "//packages/platform-browser/testing",
         "//packages/private/testing",
         "@npm//rxjs",
+    ],
+)
+
+ts_library(
+    name = "render3_es2015_test_lib",
+    testonly = True,
+    srcs = ES2015_SPECS,
+    devmode_target = "es2015",
+    tsconfig = "es2015-tsconfig.json",
+    deps = [
+        ":matchers",
+        ":render3_lib",
+        "//packages:types",
+        "//packages/core",
     ],
 )
 
@@ -79,10 +97,8 @@ jasmine_node_test(
         ":domino_es5",
         "//tools/testing:node_es5",
     ],
-    tags = [
-        "ivy-only",
-    ],
     deps = [
+        ":render3_es2015_test_lib",
         ":render3_node_lib",
         "//packages/zone.js/lib",
     ],
@@ -90,10 +106,8 @@ jasmine_node_test(
 
 karma_web_test_suite(
     name = "render3_web",
-    tags = [
-        "ivy-only",
-    ],
     deps = [
+        ":render3_es2015_test_lib",
         ":render3_lib",
     ],
 )

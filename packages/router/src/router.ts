@@ -40,7 +40,8 @@ import {isUrlTree} from './utils/type_guards';
  * Supply an object containing any of these properties to a `Router` navigation function to
  * control how the target URL should be constructed.
  *
- * 本选项用来修改 `Router` 的 URL。向 `Router` 导航功能提供包含任何这些属性的对象，以控制应如何构造目标 URL。
+ * 本选项用来修改 `Router` 的 URL。向 `Router`
+ * 导航功能提供包含任何这些属性的对象，以控制应如何构造目标 URL。
  *
  * @see [Router.navigate() method](api/router/Router#navigate)
  *
@@ -187,7 +188,8 @@ export interface UrlCreationOptions {
  * Supply an object containing any of these properties to a `Router` navigation function to
  * control how the navigation should be handled.
  *
- * 修改 `Router` 导航策略的选项。为 `Router` 导航功能提供包含任何这些属性的对象，以控制导航的处理方式。
+ * 修改 `Router` 导航策略的选项。为 `Router`
+ * 导航功能提供包含任何这些属性的对象，以控制导航的处理方式。
  *
  * @see [Router.navigate() method](api/router/Router#navigate)
  *
@@ -234,19 +236,23 @@ export interface NavigationBehaviorOptions {
    * returned from the [Router.getCurrentNavigation()
    * method](api/router/Router#getcurrentnavigation) while a navigation is executing.
    *
-   * 由开发人员定义的状态，可以传递给任何导航。当执行导航时会通过由 [Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象来访问此值。
+   * 由开发人员定义的状态，可以传递给任何导航。当执行导航时会通过由 [Router.getCurrentNavigation()
+   * 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象来访问此值。
    *
    * After a navigation completes, the router writes an object containing this
    * value together with a `navigationId` to `history.state`.
    * The value is written when `location.go()` or `location.replaceState()`
    * is called before activating this route.
    *
-   * 导航完成后，路由器会将包含该值和 `navigationId` 的对象写入 `history.state`。在激活此路由之前，会在调用 `location.go()` 或 `location.replaceState()` 时写入该值。
+   * 导航完成后，路由器会将包含该值和 `navigationId` 的对象写入
+   * `history.state`。在激活此路由之前，会在调用 `location.go()` 或 `location.replaceState()`
+   * 时写入该值。
    *
    * Note that `history.state` does not pass an object equality test because
    * the router adds the `navigationId` on each navigation.
    *
-   * 需要注意的是 `history.state` 不应该用于对象相等测试，因为每次导航时路由器都会添加 `navigationId`。
+   * 需要注意的是 `history.state` 不应该用于对象相等测试，因为每次导航时路由器都会添加
+   * `navigationId`。
    *
    */
   state?: {[k: string]: any};
@@ -259,7 +265,8 @@ export interface NavigationBehaviorOptions {
  * Supply an object containing any of these properties to a `Router` navigation function to
  * control how the target URL should be constructed or interpreted.
  *
- * 修改 `Router` 导航策略的选项。为 `Router` 导航功能提供包含任何这些属性的对象，以控制应如何构造或解释目标 URL。
+ * 修改 `Router` 导航策略的选项。为 `Router`
+ * 导航功能提供包含任何这些属性的对象，以控制应如何构造或解释目标 URL。
  *
  * @see [Router.navigate() method](api/router/Router#navigate)
  *
@@ -323,7 +330,8 @@ export type RestoredState = {
  * Retrieve the most recent navigation object with the
  * [Router.getCurrentNavigation() method](api/router/Router#getcurrentnavigation) .
  *
- * 有关导航操作的信息。使用 [Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
+ * 有关导航操作的信息。使用 [Router.getCurrentNavigation()
+ * 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
  *
  * * *id* : The unique identifier of the current navigation.
  *
@@ -332,7 +340,8 @@ export type RestoredState = {
  * * *initialUrl* : The target URL passed into the `Router#navigateByUrl()` call before navigation.
  * This is the value before the router has parsed or applied redirects to it.
  *
- *     *initialUrl*：在导航前传给 `Router#navigateByUrl()` 调用的目标 URL。这是路由器解析或对其应用重定向之前的值。
+ *     *initialUrl*：在导航前传给 `Router#navigateByUrl()` 调用的目标
+ * URL。这是路由器解析或对其应用重定向之前的值。
  *
  * * *extractedUrl* : The initial target URL after being parsed with `UrlSerializer.extract()`.
  *
@@ -342,7 +351,8 @@ export type RestoredState = {
  * This URL may not be available immediately, therefore this property can be `undefined`.
  * It is guaranteed to be set after the `RoutesRecognized` event fires.
  *
- *     *finalUrl*：应用重定向之后提取的 URL。该 URL 可能不会立即可用，因此该属性也可以是 `undefined`。在 `RoutesRecognized` 事件触发后进行设置。
+ *     *finalUrl*：应用重定向之后提取的 URL。该 URL 可能不会立即可用，因此该属性也可以是
+ * `undefined`。在 `RoutesRecognized` 事件触发后进行设置。
  *
  * * *trigger* : Identifies how this navigation was triggered.
  * -- 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
@@ -363,7 +373,8 @@ export type RestoredState = {
  * navigation is available, therefore this previous `Navigation` object has a `null` value for its
  * own `previousNavigation`.
  *
- *     *previousNavigation*：先前成功的 `Navigation` 对象。只有一个先前的导航可用，因此该先前的 `Navigation` 对象自己的 `previousNavigation` 值为 `null`。
+ *     *previousNavigation*：先前成功的 `Navigation` 对象。只有一个先前的导航可用，因此该先前的
+ * `Navigation` 对象自己的 `previousNavigation` 值为 `null`。
  * @publicApi
  */
 export interface Navigation {
@@ -378,7 +389,8 @@ export interface Navigation {
    * The target URL passed into the `Router#navigateByUrl()` call before navigation. This is
    * the value before the router has parsed or applied redirects to it.
    *
-   * 导航之前，将目标 URL 传递到 `Router#navigateByUrl()` 调用中。这是路由器解析或对其应用重定向之前的值。
+   * 导航之前，将目标 URL 传递到 `Router#navigateByUrl()`
+   * 调用中。这是路由器解析或对其应用重定向之前的值。
    *
    */
   initialUrl: string|UrlTree;
@@ -394,7 +406,8 @@ export interface Navigation {
    * This URL may not be available immediately, therefore this property can be `undefined`.
    * It is guaranteed to be set after the `RoutesRecognized` event fires.
    *
-   * 应用重定向后的已提取 URL。该 URL 可能不会立即可用，因此该属性也可能是 `undefined`。这会在 `RoutesRecognized` 事件触发后进行设置。
+   * 应用重定向后的已提取 URL。该 URL 可能不会立即可用，因此该属性也可能是 `undefined`。这会在
+   * `RoutesRecognized` 事件触发后进行设置。
    *
    */
   finalUrl?: UrlTree;
@@ -429,7 +442,8 @@ export interface Navigation {
    * is available, therefore this previous `Navigation` object has a `null` value
    * for its own `previousNavigation`.
    *
-   * 先前成功的 `Navigation` 对象。只有一个先前的导航可用，因此该先前 `Navigation` 对象自己的 `previousNavigation` 值为 `null`。
+   * 先前成功的 `Navigation` 对象。只有一个先前的导航可用，因此该先前 `Navigation` 对象自己的
+   * `previousNavigation` 值为 `null`。
    *
    */
   previousNavigation: Navigation|null;
@@ -713,7 +727,9 @@ export class Router {
    * You can choose to update early so that, if navigation fails,
    * you can show an error message with the URL that failed.
    *
-   * 确定路由器何时更新浏览器 URL。默认情况下（`"deferred"`）在导航完成后更新浏览器 URL。设置为 `'eager'` 可以在浏览开始时更新浏览器 URL。你可以选择早期更新，这样，如果导航失败，则可以显示带有失败 URL 的错误消息。
+   * 确定路由器何时更新浏览器 URL。默认情况下（`"deferred"`）在导航完成后更新浏览器 URL。设置为
+   * `'eager'` 可以在浏览开始时更新浏览器
+   * URL。你可以选择早期更新，这样，如果导航失败，则可以显示带有失败 URL 的错误消息。
    *
    */
   urlUpdateStrategy: 'deferred'|'eager' = 'deferred';
@@ -1102,10 +1118,11 @@ export class Router {
                              t.id} is not equal to the current navigation id ${this.navigationId}`;
                          this.cancelNavigationTransition(t, cancelationReason);
                        }
-                       // currentNavigation should always be reset to null here. If navigation was
-                       // successful, lastSuccessfulTransition will have already been set. Therefore
-                       // we can safely set currentNavigation to null here.
-                       this.currentNavigation = null;
+                       // Only clear current navigation if it is still set to the one that
+                       // finalized.
+                       if (this.currentNavigation?.id === t.id) {
+                         this.currentNavigation = null;
+                       }
                      }),
                      catchError((e) => {
                        // TODO(atscott): The NavigationTransition `t` used here does not accurately
@@ -1131,7 +1148,7 @@ export class Router {
                            // This is only applicable with initial navigation, so setting
                            // `navigated` only when not redirecting resolves this scenario.
                            this.navigated = true;
-                           this.restoreHistory(t);
+                           this.restoreHistory(t, true);
                          }
                          const navCancel = new NavigationCancel(
                              t.id, this.serializeUrl(t.extractedUrl), e.message);
@@ -1168,7 +1185,7 @@ export class Router {
                          /* All other errors should reset to the router's internal URL reference to
                           * the pre-error state. */
                        } else {
-                         this.restoreHistory(t);
+                         this.restoreHistory(t, true);
                          const navError =
                              new NavigationError(t.id, this.serializeUrl(t.extractedUrl), e);
                          eventsSubject.next(navError);
@@ -1216,7 +1233,8 @@ export class Router {
    * the Router (the browser back/forward buttons, for example) and schedules a corresponding Router
    * navigation so that the correct events, guards, etc. are triggered.
    *
-   * 设置 location 更改监听器。该监听器检测从路由器外部触发的导航（例如，浏览器的后退/前进按钮），并安排相应的路由器导航，以便触发正确的事件、守卫等。
+   * 设置 location
+   * 更改监听器。该监听器检测从路由器外部触发的导航（例如，浏览器的后退/前进按钮），并安排相应的路由器导航，以便触发正确的事件、守卫等。
    *
    */
   setUpLocationChangeListener(): void {
@@ -1250,7 +1268,8 @@ export class Router {
     }
   }
 
-  /** The current URL.
+  /**
+   * The current URL.
    *
    * 当前 URL
    */
@@ -1303,7 +1322,8 @@ export class Router {
     this.dispose();
   }
 
-  /** Disposes of the router.
+  /**
+   * Disposes of the router.
    *
    * 销毁路由器
    *
@@ -1328,7 +1348,9 @@ export class Router {
    * The fragments are applied to the current URL tree or the one provided  in the `relativeTo`
    * property of the options object, if supplied.
    *
-   * 一个 URL 段的数组，用于构造新的 URL 树。如果此路径是静态的，则可能是 URL 字符串字面量。对于动态路径，可以传入一个路径段的数组，后跟每个段的参数。这些段会应用到当前 URL 树上，或者在选项对象中的 `relativeTo` 属性上（如果有）。
+   * 一个 URL 段的数组，用于构造新的 URL 树。如果此路径是静态的，则可能是 URL
+   * 字符串字面量。对于动态路径，可以传入一个路径段的数组，后跟每个段的参数。这些段会应用到当前 URL
+   * 树上，或者在选项对象中的 `relativeTo` 属性上（如果有）。
    *
    * @param navigationExtras Options that control the navigation strategy.
    *
@@ -1463,7 +1485,9 @@ export class Router {
    * The fragments are applied to the current URL or the one provided  in the `relativeTo` property
    * of the options object, if supplied.
    *
-   * 一个 URL 段的数组，用于构造目标 URL 树。如果此路径是静态的，则可能是 URL 字符串字面量。对于动态路径，可以传入一个路径段的数组，后跟每个段的参数。这些段会应用到当前 URL，或者在选项对象中的 `relativeTo` 属性上（如果有）。
+   * 一个 URL 段的数组，用于构造目标 URL 树。如果此路径是静态的，则可能是 URL
+   * 字符串字面量。对于动态路径，可以传入一个路径段的数组，后跟每个段的参数。这些段会应用到当前
+   * URL，或者在选项对象中的 `relativeTo` 属性上（如果有）。
    *
    * @param extras An options object that determines how the URL should be constructed or
    *     interpreted.
@@ -1500,7 +1524,8 @@ export class Router {
     return this.navigateByUrl(this.createUrlTree(commands, extras), extras);
   }
 
-  /** Serializes a `UrlTree` into a string
+  /**
+   * Serializes a `UrlTree` into a string
    *
    * 把 `UrlTree` 序列化为字符串
    */
@@ -1508,7 +1533,8 @@ export class Router {
     return this.urlSerializer.serialize(url);
   }
 
-  /** Parses a string into a `UrlTree`
+  /**
+   * Parses a string into a `UrlTree`
    *
    * 把字符串解析为 `UrlTree`
    */
@@ -1592,26 +1618,18 @@ export class Router {
       return Promise.resolve(false);
     }
 
-    // * Duplicate navigations may also be triggered by attempts to sync AngularJS and Angular
-    // router states.
-    // * Imperative navigations can be cancelled by router guards, meaning the URL won't change. If
-    //   the user follows that with a navigation using the back/forward button or manual URL change,
-    //   the destination may be the same as the previous imperative attempt. We should not skip
-    //   these navigations because it's a separate case from the one above -- it's not a duplicate
-    //   navigation.
+    // Duplicate navigations may be triggered by attempts to sync AngularJS and
+    // Angular router states. We have the setTimeout in the location listener to
+    // ensure the imperative nav is scheduled before the browser nav.
     const lastNavigation = this.transitions.value;
-    // We don't want to skip duplicate successful navs if they're imperative because
-    // onSameUrlNavigation could be 'reload' (so the duplicate is intended).
     const browserNavPrecededByRouterNav = isBrowserTriggeredNavigation(source) && lastNavigation &&
         !isBrowserTriggeredNavigation(lastNavigation.source);
-    const lastNavigationSucceeded = this.lastSuccessfulId === lastNavigation.id;
-    // If the last navigation succeeded or is in flight, we can use the rawUrl as the comparison.
-    // However, if it failed, we should compare to the final result (urlAfterRedirects).
-    const lastNavigationUrl = (lastNavigationSucceeded || this.currentNavigation) ?
-        lastNavigation.rawUrl :
-        (lastNavigation.urlAfterRedirects ?? this.browserUrlTree);
-    const duplicateNav = lastNavigationUrl.toString() === rawUrl.toString();
-    if (browserNavPrecededByRouterNav && duplicateNav) {
+    const navToSameUrl = lastNavigation.rawUrl.toString() === rawUrl.toString();
+    const lastNavigationInProgress = lastNavigation.id === this.currentNavigation?.id;
+    // We consider duplicates as ones that goes to the same URL while the first
+    // is still processing.
+    const isDuplicateNav = navToSameUrl && lastNavigationInProgress;
+    if (browserNavPrecededByRouterNav && isDuplicateNav) {
       return Promise.resolve(true);  // return value is not used
     }
 
@@ -1693,7 +1711,7 @@ export class Router {
    * Performs the necessary rollback action to restore the browser URL to the
    * state before the transition.
    */
-  private restoreHistory(t: NavigationTransition) {
+  private restoreHistory(t: NavigationTransition, restoringFromCaughtError = false) {
     if (this.canceledNavigationResolution === 'computed') {
       const targetPagePosition = this.currentPageId - t.targetPageId;
       // The navigator change the location before triggered the browser event,
@@ -1715,12 +1733,20 @@ export class Router {
         // TODO(atscott): resetting the `browserUrlTree` should really be done in `resetState`.
         // Investigate if this can be done by running TGP.
         this.browserUrlTree = t.currentUrlTree;
+        this.resetUrlToCurrentUrlTree();
       } else {
         // The browser URL and router state was not updated before the navigation cancelled so
         // there's no restoration needed.
       }
     } else if (this.canceledNavigationResolution === 'replace') {
-      this.resetState(t);
+      // TODO(atscott): It seems like we should _always_ reset the state here. It would be a no-op
+      // for `deferred` navigations that haven't change the internal state yet because guards
+      // reject. For 'eager' navigations, it seems like we also really should reset the state
+      // because the navigation was cancelled. Investigate if this can be done by running TGP.
+      if (restoringFromCaughtError) {
+        this.resetState(t);
+      }
+      this.resetUrlToCurrentUrlTree();
     }
   }
 
@@ -1733,7 +1759,6 @@ export class Router {
     // addition, the URLHandlingStrategy may be configured to specifically preserve parts of the URL
     // when merging, such as the query params so they are not lost on a refresh.
     this.rawUrlTree = this.urlHandlingStrategy.merge(this.currentUrlTree, t.rawUrl);
-    this.resetUrlToCurrentUrlTree();
   }
 
   private resetUrlToCurrentUrlTree(): void {

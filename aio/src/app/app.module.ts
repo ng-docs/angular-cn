@@ -146,7 +146,7 @@ export const svgIconProviders = [
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-docs'}),
-    BrowserAnimationsModule,
+    BrowserAnimationsModule.withConfig({disableAnimations: AppComponent.reducedMotion}),
     CustomElementsModule,
     HttpClientModule,
     MatButtonModule,

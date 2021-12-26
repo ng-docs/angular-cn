@@ -89,7 +89,9 @@ export class ActivateRoutes {
 
   private deactivateRouteAndItsChildren(
       route: TreeNode<ActivatedRoute>, parentContexts: ChildrenOutletContexts): void {
-    if (this.routeReuseStrategy.shouldDetach(route.value.snapshot)) {
+    // If there is no component, the Route is never attached to an outlet (because there is no
+    // component to attach).
+    if (route.value.component && this.routeReuseStrategy.shouldDetach(route.value.snapshot)) {
       this.detachAndStoreRouteSubtree(route, parentContexts);
     } else {
       this.deactivateRouteAndOutlet(route, parentContexts);
@@ -99,6 +101,13 @@ export class ActivateRoutes {
   private detachAndStoreRouteSubtree(
       route: TreeNode<ActivatedRoute>, parentContexts: ChildrenOutletContexts): void {
     const context = parentContexts.getContext(route.value.outlet);
+    const contexts = context && route.value.component ? context.children : parentContexts;
+    const children: {[outletName: string]: TreeNode<ActivatedRoute>} = nodeChildrenAsMap(route);
+
+    for (const childOutlet of Object.keys(children)) {
+      this.deactivateRouteAndItsChildren(children[childOutlet], contexts);
+    }
+
     if (context && context.outlet) {
       const componentRef = context.outlet.detach();
       const contexts = context.children.onOutletDeactivated();
@@ -179,7 +188,9 @@ export class ActivateRoutes {
             // Otherwise attach from `RouterOutlet.ngOnInit` when it is instantiated
             context.outlet.attach(stored.componentRef, stored.route.value);
           }
-          advanceActivatedRouteNodeAndItsChildren(stored.route);
+
+          advanceActivatedRoute(stored.route.value);
+          this.activateChildRoutes(futureNode, null, context.children);
         } else {
           const config = parentLoadedConfig(future.snapshot);
           const cmpFactoryResolver = config ? config.module.componentFactoryResolver : null;
@@ -201,11 +212,6 @@ export class ActivateRoutes {
       }
     }
   }
-}
-
-function advanceActivatedRouteNodeAndItsChildren(node: TreeNode<ActivatedRoute>): void {
-  advanceActivatedRoute(node.value);
-  node.children.forEach(advanceActivatedRouteNodeAndItsChildren);
 }
 
 function parentLoadedConfig(snapshot: ActivatedRouteSnapshot): LoadedRouterConfig|null {

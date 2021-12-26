@@ -16,8 +16,8 @@ def karma_test_prepare(name, env_srcs, env_deps, env_entry_point, test_srcs, tes
         silent = True,
         deps = [
             ":" + name + "_env",
-            "@npm//rollup-plugin-commonjs",
-            "@npm//rollup-plugin-node-resolve",
+            "@npm//@rollup/plugin-commonjs",
+            "@npm//@rollup/plugin-node-resolve",
         ],
     )
     ts_library(
@@ -35,8 +35,8 @@ def karma_test_prepare(name, env_srcs, env_deps, env_entry_point, test_srcs, tes
         config_file = "//packages/zone.js:rollup.config.js",
         deps = [
             ":" + name + "_test",
-            "@npm//rollup-plugin-commonjs",
-            "@npm//rollup-plugin-node-resolve",
+            "@npm//@rollup/plugin-commonjs",
+            "@npm//@rollup/plugin-node-resolve",
         ],
     )
 
@@ -78,7 +78,6 @@ def karma_test(name, env_srcs, env_deps, env_entry_point, test_srcs, test_deps, 
             ],
             tags = ["zone_karma_test"],
             runtime_deps = [
-                "@npm//karma-browserstack-launcher",
                 "@npm//karma-sauce-launcher",
             ],
         )
@@ -110,7 +109,6 @@ def karma_test(name, env_srcs, env_deps, env_entry_point, test_srcs, test_deps, 
                 # Visible to //:saucelabs_unit_tests_poc target
                 visibility = ["//:__pkg__"],
                 runtime_deps = [
-                    "@npm//karma-browserstack-launcher",
                     "@npm//karma-sauce-launcher",
                 ],
             )

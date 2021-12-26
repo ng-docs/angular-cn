@@ -59,16 +59,9 @@ keeps the outputs up-to-date as you save sources.
 
 If you're experiencing problems with seemingly unrelated tests failing, it may be because you're not using the proper flags with your Bazel test runs in Angular.
 
-See also: [`//.bazelrc`](https://github.com/angular/angular/blob/master/.bazelrc) where `--define=angular_ivy_enabled=False` is defined as default.
-
 - `--config=debug`: build and launch in debug mode (see [debugging](#debugging) instructions below)
 - `--test_arg=--node_options=--inspect=9228`: change the inspector port.
-- `--config=ivy` Enables ivy mode if present, otherwise ViewEngine is used. This switches which compiler is used (ngc or ngtsc)
-- `--config=view-engine` Enables ViewEngine mode if present, currently this the default mode. This switches which compiler is used (ngc or ngtsc)
 - `--test_tag_filters=<tag>`: filter tests down to tags defined in the `tag` config of your rules in any given `BUILD.bazel`.
-    - `no-ivy-aot`: Useful for excluding build and test targets that are not meant to be executed in Ivy AOT mode (`--config=ivy`).
-    - `ivy-only`: Useful for excluding all Ivy build and tests targets with `--config=view-engine`.
-    - `fixme-ivy-aot`: Useful for including/excluding build and test targets that are currently broken in Ivy AOT mode (`--config=ivy`).
 
 
 ### Debugging a Node Test
@@ -85,7 +78,7 @@ For additional info and testing options, see the
 [nodejs_test documentation](https://bazelbuild.github.io/rules_nodejs/Built-ins.html#nodejs_test).
 
 - Click on "Resume script execution" to let the code run until the first `debugger` statement or a previously set breakpoint.
-- If you're debugging an ivy test and you want to inspect the generated template instructions, find the template of your component in the call stack and click on `(source mapped from [CompName].js)` at the bottom of the code. You can also disable sourcemaps in the options or go to sources and look into ng:// namespace to see all the generated code.
+- If you're debugging a test and you want to inspect the generated template instructions, find the template of your component in the call stack and click on `(source mapped from [CompName].js)` at the bottom of the code. You can also disable sourcemaps in the options or go to sources and look into ng:// namespace to see all the generated code.
 
 ### Debugging a Node Test in VSCode
 
@@ -112,9 +105,9 @@ Apple+Shift+D on Mac) and click on the green play icon next to the configuration
 
 ### Debugging a Karma Test
 
-- Run test: `yarn bazel run packages/core/test:test_web`
-- Open chrome at: [http://localhost:9876/debug.html](http://localhost:9876/debug.html)
-- Open chrome inspector
+- Run test: `yarn bazel run packages/core/test:test_web_chromium` or `yarn bazel run packages/core/test:test_web_firefox`
+- Open any browser at: [http://localhost:9876/debug.html](http://localhost:9876/debug.html)
+- Open the browser's DevTools to debug the tests (after, for example, having focused on specific tests via `fit` and/or `fdescribe` or having added `debugger` statements in them)
 
 ### Debugging Bazel rules
 
@@ -276,7 +269,7 @@ Require stack:
 
 `bazel run` only works in Bazel Windows with non-test targets. Ensure that you are using `bazel test` instead.
 
-e.g: `yarn bazel test packages/core/test/bundling/forms:symbol_test --config=ivy`
+e.g: `yarn bazel test packages/core/test/bundling/forms:symbol_test`
 
 #### mkdir missing
 If you see the following error::

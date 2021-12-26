@@ -19,20 +19,8 @@ import {assertDefined} from '../util/assert';
 import {stringify} from '../util/stringify';
 
 import {ComponentFactoryResolver} from './component_ref';
-import {getNgLocaleIdDef, getNgModuleDef} from './definition';
-import {setLocaleId} from './i18n/i18n_locale_id';
+import {getNgModuleDef} from './definition';
 import {maybeUnwrapFn} from './util/misc_utils';
-
-
-export function createNgModuleRef__PRE_R3__<T>(
-    ngModule: Type<T>, parentInjector?: Injector): NgModuleRef<T> {
-  throw new Error(`This API is Ivy-only and is not supported in ViewEngine`);
-}
-
-export function createNgModuleRef__POST_R3__<T>(
-    ngModule: Type<T>, parentInjector?: Injector): NgModuleRef<T> {
-  return new NgModuleRef<T>(ngModule, parentInjector ?? null);
-}
 
 /**
  * Returns a new NgModuleRef instance based on the NgModule class and parent injector provided.
@@ -41,9 +29,10 @@ export function createNgModuleRef__POST_R3__<T>(
  *     not provided, `NullInjector` will be used instead.
  * @publicApi
  */
-export const createNgModuleRef: <T>(ngModule: Type<T>, parentInjector?: Injector) =>
-    viewEngine_NgModuleRef<T> = createNgModuleRef__PRE_R3__;
-
+export function createNgModuleRef<T>(
+    ngModule: Type<T>, parentInjector?: Injector): viewEngine_NgModuleRef<T> {
+  return new NgModuleRef<T>(ngModule, parentInjector ?? null);
+}
 export class NgModuleRef<T> extends viewEngine_NgModuleRef<T> implements InternalNgModuleRef<T> {
   // tslint:disable-next-line:require-internal-with-underscore
   _bootstrapComponents: Type<any>[] = [];
@@ -70,8 +59,6 @@ export class NgModuleRef<T> extends viewEngine_NgModuleRef<T> implements Interna
             ngModuleDef,
             `NgModule '${stringify(ngModuleType)}' is not a subtype of 'NgModuleType'.`);
 
-    const ngLocaleIdDef = getNgLocaleIdDef(ngModuleType);
-    ngLocaleIdDef && setLocaleId(ngLocaleIdDef);
     this._bootstrapComponents = maybeUnwrapFn(ngModuleDef!.bootstrap);
     this._r3Injector = createInjectorWithoutInjectorInstances(
                            ngModuleType, _parent,

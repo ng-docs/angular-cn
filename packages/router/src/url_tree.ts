@@ -167,7 +167,8 @@ function matrixParamsMatch(
  * serialized tree.
  * UrlTree is a data structure that provides a lot of affordances in dealing with URLs
  *
- * 由于路由器状态是一棵树，而 URL 只是序列化的状态，所以 URL 就是序列化的树。 UrlTree 是一种数据结构，在处理 URL 时提供了很多便利
+ * 由于路由器状态是一棵树，而 URL 只是序列化的状态，所以 URL 就是序列化的树。 UrlTree
+ * 是一种数据结构，在处理 URL 时提供了很多便利
  *
  * @usageNotes
  *
@@ -326,7 +327,7 @@ export class UrlSegment {
       /** The matrix parameters associated with a segment */
       public parameters: {[name: string]: string}) {}
 
-  get parameterMap() {
+  get parameterMap(): ParamMap {
     if (!this._parameterMap) {
       this._parameterMap = convertToParamMap(this.parameters);
     }
@@ -421,7 +422,9 @@ export abstract class UrlSerializer {
  * colon syntax to specify the outlet, and the ';parameter=value' syntax (e.g., open=true) to
  * specify route specific parameters.
  *
- * DefaultUrlSerializer 使用圆括号序列化辅助段（例如，popup:compose），使用冒号语法指定出口，并使用';parameter=value' 语法（例如 open=true）来指定路由的特有参数。
+ * DefaultUrlSerializer
+ * 使用圆括号序列化辅助段（例如，popup:compose），使用冒号语法指定出口，并使用';parameter=value'
+ * 语法（例如 open=true）来指定路由的特有参数。
  *
  * @publicApi
  */

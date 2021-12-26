@@ -77,13 +77,15 @@ export function routerNgProbeToken() {
  * Use the Angular `Router` service to declaratively specify application states and manage state
  * transitions.
  *
- * 添加指令和提供者，以便在应用程序中定义的视图之间进行应用内导航。使用 Angular `Router` 服务以声明方式指定应用程序状态并管理状态转换。
+ * 添加指令和提供者，以便在应用程序中定义的视图之间进行应用内导航。使用 Angular `Router`
+ * 服务以声明方式指定应用程序状态并管理状态转换。
  *
  * You can import this NgModule multiple times, once for each lazy-loaded bundle.
  * However, only one `Router` service can be active.
  * To ensure this, there are two ways to register routes when importing this module:
  *
- * 你可以多次导入此 NgModule，对于每个惰性加载的包导入一次。但是，只能有一个 `Router` 服务是活动的。为确保这一点，在导入此模块时有两种方法来注册路由：
+ * 你可以多次导入此 NgModule，对于每个惰性加载的包导入一次。但是，只能有一个 `Router`
+ * 服务是活动的。为确保这一点，在导入此模块时有两种方法来注册路由：
  *
  * * The `forRoot()` method creates an `NgModule` that contains all the directives, the given
  * routes, and the `Router` service itself.
@@ -179,7 +181,8 @@ export class RouterModule {
    * without creating a new Router service.
    * When registering for submodules and lazy-loaded submodules, create the NgModule as follows:
    *
-   * 创建带有所有路由器指令和提供者注册的路由的模块，而无需创建新的路由器服务。注册子模块和惰性加载的子模块时，像这样创建 NgModule：
+   * 创建带有所有路由器指令和提供者注册的路由的模块，而无需创建新的路由器服务。注册子模块和惰性加载的子模块时，像这样创建
+   * NgModule：
    *
    * ```
    * @NgModule({
@@ -260,13 +263,15 @@ export function provideRoutes(routes: Routes): any {
  * root component has been created. The bootstrap is not blocked on the completion of the initial
  * navigation.
  *
- *   'enabledNonBlocking' -（默认值）在创建根组件之后开始初始导航。初始导航完成后，引导程序不会被阻止。
+ *   'enabledNonBlocking'
+ * -（默认值）在创建根组件之后开始初始导航。初始导航完成后，引导程序不会被阻止。
  *
  * * 'enabledBlocking' - The initial navigation starts before the root component is created.
  * The bootstrap is blocked until the initial navigation is complete. This value is required
  * for [server-side rendering](guide/universal) to work.
  *
- *   'enabledBlocking' - 初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务器渲染](guide/universal)正常工作所必需的。
+ *   'enabledBlocking' -
+ * 初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务器渲染](guide/universal)正常工作所必需的。
  *
  * * 'disabled' - The initial navigation is not performed. The location listener is set up before
  * the root component gets created. Use if there is a reason to have
@@ -331,9 +336,11 @@ export interface ExtraOptions {
    * starts its initial navigation due to some complex initialization logic.
    *
    * `enabled`、`enabledBlocking`、`enabledNonBlocking` 或 `disabled` 之一。
-   * 设置为 `enabled` 或 `enabledBlocking` ，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。
+   * 设置为 `enabled` 或 `enabledBlocking`
+   * ，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。
    * 该值是让[服务器端渲染](guide/universal)正常工作所必需的。
-   * 设置为 `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。
+   * 设置为
+   * `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。
    * 设置为 `disabled`，不执行初始导航。位置监听器是在创建根组件之前设置的。
    * 如果由于某些复杂的初始化逻辑，而有理由对路由器何时开始其初始导航有更多的控制权，请使用它。
    *
@@ -345,7 +352,8 @@ export interface ExtraOptions {
    * If the handler returns a value, the navigation Promise is resolved with this value.
    * If the handler throws an exception, the navigation Promise is rejected with the exception.
    *
-   * 导航失败的自定义错误处理器。如果处理器返回一个值，则导航的 Promise 将使用该值进行解析。如果处理器引发异常，则导航 Promise 将被拒绝，并带有该异常。
+   * 导航失败的自定义错误处理器。如果处理器返回一个值，则导航的 Promise
+   * 将使用该值进行解析。如果处理器引发异常，则导航 Promise 将被拒绝，并带有该异常。
    *
    */
   errorHandler?: ErrorHandler;
@@ -388,7 +396,9 @@ export interface ExtraOptions {
    * position to the anchor if one is provided, or sets the scroll position to [0, 0] (forward
    * navigation). This option will be the default in the future.
    *
-   *   'enabled' —— 当向后导航时，滚动到以前的滚动位置。当向前导航时，如果提供了锚点，则自动滚动到那个锚点，否则把滚动位置设置为 [0, 0]。该选项将来会变成默认值。
+   *   'enabled' ——
+   * 当向后导航时，滚动到以前的滚动位置。当向前导航时，如果提供了锚点，则自动滚动到那个锚点，否则把滚动位置设置为
+   * [0, 0]。该选项将来会变成默认值。
    *
    * You can implement custom scroll restoration behavior by adapting the enabled behavior as
    * in the following example.
@@ -474,7 +484,8 @@ export interface ExtraOptions {
    * The default implementation is to redirect to the root URL, dropping
    * any path or parameter information. The function takes three parameters:
    *
-   * 一个自定义的 URI 格式无效错误的处理器。每当 encodeURI 包含无效字符序列时，就会调用该处理器。默认的实现是跳转到根路径，抛弃任何路径和参数信息。该函数传入三个参数：
+   * 一个自定义的 URI 格式无效错误的处理器。每当 encodeURI
+   * 包含无效字符序列时，就会调用该处理器。默认的实现是跳转到根路径，抛弃任何路径和参数信息。该函数传入三个参数：
    *
    * - `'URIError'` - Error thrown when parsing a bad URL.
    *
@@ -499,8 +510,9 @@ export interface ExtraOptions {
    * Updating the URL early allows you to handle a failure of navigation by
    * showing an error message with the URL that failed.
    *
-   * 定义路由器要何时更新浏览器 URL。默认情况下（“deferred”），在成功导航后进行更新。如果希望在导航开始时更新 URL，则设置为 “eager” 。
-   * 以便早期更新 URL，这样可以通过显示带有失败 URL 的错误消息来处理导航失败。
+   * 定义路由器要何时更新浏览器
+   * URL。默认情况下（“deferred”），在成功导航后进行更新。如果希望在导航开始时更新 URL，则设置为
+   * “eager” 。 以便早期更新 URL，这样可以通过显示带有失败 URL 的错误消息来处理导航失败。
    *
    */
   urlUpdateStrategy?: 'deferred'|'eager';
@@ -548,6 +560,29 @@ export interface ExtraOptions {
    * v11 中的默认值是 `corrected`。
    */
   relativeLinkResolution?: 'legacy'|'corrected';
+
+  /**
+   * Configures how the Router attempts to restore state when a navigation is cancelled.
+   *
+   * 'replace' - Always uses `location.replaceState` to set the browser state to the state of the
+   * router before the navigation started. This means that if the URL of the browser is updated
+   * _before_ the navigation is canceled, the Router will simply replace the item in history rather
+   * than trying to restore to the previous location in the session history. This happens most
+   * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
+   * buttons.
+   *
+   * 'computed' - Will attempt to return to the same index in the session history that corresponds
+   * to the Angular route when the navigation gets cancelled. For example, if the browser back
+   * button is clicked and the navigation is cancelled, the Router will trigger a forward navigation
+   * and vice versa.
+   *
+   * Note: the 'computed' option is incompatible with any `UrlHandlingStrategy` which only
+   * handles a portion of the URL because the history restoration navigates to the previous place in
+   * the browser history rather than simply resetting a portion of the URL.
+   *
+   * The default value is `replace` when not set.
+   */
+  canceledNavigationResolution?: 'replace'|'computed';
 }
 
 export function setupRouter(
@@ -604,6 +639,10 @@ export function assignExtraOptionsToRouter(opts: ExtraOptions, router: Router): 
 
   if (opts.urlUpdateStrategy) {
     router.urlUpdateStrategy = opts.urlUpdateStrategy;
+  }
+
+  if (opts.canceledNavigationResolution) {
+    router.canceledNavigationResolution = opts.canceledNavigationResolution;
   }
 }
 

@@ -9,6 +9,8 @@
 import {dirname, resolve} from 'path';
 import ts from 'typescript';
 
+const PARSED_TS_VERSION = parseFloat(ts.versionMajorMinor);
+
 /** Update recorder for managing imports. */
 export interface ImportManagerUpdateRecorder {
   addNewImport(start: number, importText: string): void;
@@ -151,7 +153,7 @@ export class ImportManager {
           undefined, undefined,
           ts.createImportClause(
               undefined,
-              ts.createNamedImports([ts.createImportSpecifier(
+              ts.createNamedImports([createImportSpecifier(
                   needsGeneratedUniqueName ? propertyIdentifier : undefined, identifier)])),
           ts.createStringLiteral(moduleName));
     } else {
@@ -190,7 +192,7 @@ export class ImportManager {
       const newNamedBindings = ts.updateNamedImports(
           namedBindings,
           namedBindings.elements.concat(expressions.map(
-              ({propertyName, importName}) => ts.createImportSpecifier(propertyName, importName))));
+              ({propertyName, importName}) => createImportSpecifier(propertyName, importName))));
 
       const newNamedBindingsText =
           this.printer.printNode(ts.EmitHint.Unspecified, newNamedBindings, sourceFile);
@@ -256,4 +258,18 @@ export class ImportManager {
     }
     return commentRanges[commentRanges.length - 1]!.end;
   }
+}
+
+
+/**
+ * Backwards-compatible version of `ts.createImportSpecifier`
+ * to handle a breaking change between 4.4 and 4.5.
+ */
+function createImportSpecifier(
+    propertyName: ts.Identifier|undefined, name: ts.Identifier,
+    isTypeOnly = false): ts.ImportSpecifier {
+  return PARSED_TS_VERSION > 4.4 ? ts.createImportSpecifier(isTypeOnly, propertyName, name) :
+                                   // TODO(crisbeto): backwards-compatibility layer for TS 4.4.
+                                   // Should be cleaned up when we drop support for it.
+      (ts.createImportSpecifier as any)(propertyName, name);
 }

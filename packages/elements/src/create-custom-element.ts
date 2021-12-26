@@ -18,7 +18,8 @@ import {createCustomEvent, getComponentInputs, getDefaultAttributeToPropertyInpu
  * that can be used for custom element registration. Implemented and returned
  * by the {@link createCustomElement createCustomElement() function}.
  *
- * 基于 Angular 组件的类构造函数的原型，该原型可用于自定义元素注册。由 {@link createCustomElement createCustomElement() 函数} 实现并返回。
+ * 基于 Angular 组件的类构造函数的原型，该原型可用于自定义元素注册。由 {@link createCustomElement
+ * createCustomElement() 函数} 实现并返回。
  *
  * @see [Angular Elements Overview](guide/elements "Turning Angular components into custom elements")
  *
@@ -174,7 +175,8 @@ export interface NgElementConfig {
  * Takes the component factory's inputs and outputs to convert them to the proper
  * custom element API and add hooks to input changes.
  *
- * 构建一个类，该类封装给定组件的功能，并使用配置信息为该类提供更多上下文。获取组件工厂的输入和输出，以将它们转换为适当的自定义元素 API，并为输入变更添加钩子。
+ * 构建一个类，该类封装给定组件的功能，并使用配置信息为该类提供更多上下文。获取组件工厂的输入和输出，以将它们转换为适当的自定义元素
+ * API，并为输入变更添加钩子。
  *
  * The configuration's injector is the initial injector set on the class,
  * and used by default for each created instance.This behavior can be overridden with the
@@ -261,8 +263,8 @@ export function createCustomElement<P>(
     override connectedCallback(): void {
       // For historical reasons, some strategies may not have initialized the `events` property
       // until after `connect()` is run. Subscribe to `events` if it is available before running
-      // `connect()` (in order to capture events emitted suring inittialization), otherwise
-      // subscribe afterwards.
+      // `connect()` (in order to capture events emitted during initialization), otherwise subscribe
+      // afterwards.
       //
       // TODO: Consider deprecating/removing the post-connect subscription in a future major version
       //       (e.g. v11).

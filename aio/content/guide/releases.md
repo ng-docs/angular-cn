@@ -64,17 +64,32 @@ The version number is incremented based on the level of change included in the r
 
 ### 所支持的升级路径
 
-In alignment with the preceding versioning scheme as described, we commit to support the following update paths:
+You can `ng update` to any version of Angular, provided that the following criteria are met:
 
-为了和上面所讲的版本方案一致，我们承诺支持如下升级路径：
+你可以 `ng update` 到任何版本的 Angular，前提是满足以下条件：
 
-* If you are updating within the **same major version,** then you can skip any intermediate versions and update directly to the targeted version. For example, you can update directly from 7.0.0 to 7.2.11.
+*   The version you want to update *to* is supported.
 
-  如果你在**同一个主版本**内升级，那么你可以跳过任何中间版本，直接升级到目标版本。比如，你可以直接从 7.0.0 升级到 7.2.11。
+  CLI 支持你要更新*到*的版本。
 
-* If you are updating from **one major version to another,** then we recommend that you **don't skip major versions.** Follow the instructions to incrementally update to the next major version, testing and validating at each step. For example, if you want to update from version 6.x.x to version 8.x.x, we recommend that you update to the latest 7.x.x release first. After successfully updating to 7.x.x, you can then update to 8.x.x.
+*   The version you want to update *from* is within one major version of the version you want to
+    upgrade to.
 
-  如果你要从一个主版本升级到另一个主版本，那么我们建议你不要跳过主版本。要遵循本升级指南，依次升级到下一个主版本，在每一个步骤做完后都测试并验证一下。比如，如果你要从 6.x.x 升级到 8.x.x，我们建议你先升级到 7.x.x 中的最新版。在成功升级到 7.x.x 后，你就可以升级到 8.x.x 了。
+  你要更新“自”的版本是受支持的主要版本之一。
+
+For example, you can update from version 11 to version 12, provided that version 12 is still
+supported. If you want to update across multiple major versions, perform each update one
+major version at a time. For example, to update from version 10 to version 12:
+
+例如，你可以从版本 11 更新到版本 12，前提是版本 12 仍受支持。如果要跨多个主要版本进行更新，请每次更新一个主要版本。例如，要从版本 10 更新到版本 12时：
+
+1. Update from version 10 to version 11.
+
+   从版本 10 更新到版本 11。
+
+1. Update from version 11 to version 12.
+
+   从版本 11 更新到版本 12。
 
 See [Keeping Up-to-Date](guide/updating "Updating your projects") for more information about updating your Angular projects to the most recent version.
 
@@ -169,15 +184,17 @@ The following table provides the status for Angular versions under support.
 
 下表中提供了目前受支持的 Angular 版本的状态。
 
-Version | Status | Released     | Active Ends  | LTS Ends
-------- | ------ | ------------ | ------------ | ------------
-版本 | 状态 | 发布     | 停止活动  | LTS 结束
-^12.0.0 | Active | May 12, 2021 | Nov 12, 2021 | Nov 12, 2022
-^12.0.0 | 活跃 | 2021 年 5 月 12 日 | 2021 年 11 月 12 日 | 2022 年 11 月 12 日
-^11.0.0 | LTS    | Nov 11, 2020 | May 11, 2021 | May 11, 2022
-^11.0.0 | LTS | 2020 年 11 月 11 日 | 2021 年 5 月 11 日 | 2022 年 5 月 11 日
-^10.0.0 | LTS    | Jun 24, 2020 | Dec 24, 2020 | Dec 24, 2021
-^10.0.0 | LTS | 2020 年 6 月 24 日 | 2020 年 12 月 24 日 | 2021 年 12 月 24 日
+Version | Status | Released        | Active Ends     | LTS Ends
+------- |--------|-----------------|-----------------| ------------
+版本 | 状态     | 发布              | 停止活动            | LTS 结束
+^13.0.0 | Active | Nov 04, 2021    | May 04, 2022    | May 04, 2023
+^13.0.0 | 活跃     | 2021 年 11 月 4 日 | 2022 年 5 月 4 日  | 2023 年 5 月 4 日
+^12.0.0 | LTS    | May 12, 2021    | Nov 12, 2021    | Nov 12, 2022
+^12.0.0 | LTS    | 2021 年 5 月 12 日 | 2021 年 11 月 12 日 | 2022 年 11 月 12 日
+^11.0.0 | LTS    | Nov 11, 2020    | May 11, 2021    | May 11, 2022
+^11.0.0 | LTS    | 2020 年 11 月 11 日 | 2021 年 5 月 11 日 | 2022 年 5 月 11 日
+^10.0.0 | LTS    | Jun 24, 2020    | Dec 24, 2020    | Dec 24, 2021
+^10.0.0 | LTS    | 2020 年 6 月 24 日 | 2020 年 12 月 24 日 | 2021 年 12 月 24 日
 
 Angular versions v4, v5, v6, v7, v8, and v9 are no longer under support.
 

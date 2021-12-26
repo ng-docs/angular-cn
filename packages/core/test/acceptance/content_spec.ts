@@ -7,8 +7,7 @@
  */
 
 import {CommonModule} from '@angular/common';
-import {ChangeDetectorRef, Component, Directive, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {Input} from '@angular/core/src/metadata';
+import {ChangeDetectorRef, Component, Directive, Input, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {expect} from '@angular/platform-browser/testing/src/matchers';

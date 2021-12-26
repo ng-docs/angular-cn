@@ -205,6 +205,8 @@ The `timings` parameter takes either a number or a string defined in three parts
 `timings` 参数可以接受一个数字或由三部分组成的字符串。
 
 >`animate (duration)` or `animate ('duration delay easing')`
+> 
+>`animate (duration)` 或 `animate ('duration delay easing')`
 
 The first part, `duration`, is required. The duration can be expressed in milliseconds as a number without quotes, or in seconds with quotes and a time specifier. For example, a duration of a tenth of a second can be expressed as follows:
 
@@ -253,7 +255,7 @@ The third argument, `easing`, controls how the animation [accelerates and decele
 **注意：**要了解缓动曲线的更多信息，请参阅 Angular Material Design 网站下的[自然缓动曲线](https://material.io/design/motion/speed.html#easing)主题。
 </div>
 
-This example provides a state transition from `open` to `closed` with a one second transition between states.
+This example provides a state transition from `open` to `closed` with a 1-second transition between states.
 
 下面的例子提供了一个从 `open` 到 `closed` 的持续一秒的状态转场。
 
@@ -261,11 +263,11 @@ This example provides a state transition from `open` to `closed` with a one seco
 region="transition1">
 </code-example>
 
-In the preceding code snippet, the `=>` operator indicates unidirectional transitions, and `<=>` is bidirectional. Within the transition, `animate()` specifies how long the transition takes. In this case, the state change from `open` to `closed` takes one second, expressed here as `1s`.
+In the preceding code snippet, the `=>` operator indicates unidirectional transitions, and `<=>` is bidirectional. Within the transition, `animate()` specifies how long the transition takes. In this case, the state change from `open` to `closed` takes 1 second, expressed here as `1s`.
 
 在上面的代码片段中，`=>` 操作符表示单向转场，而 `<=>` 表示双向转场。在转场过程中，`animate()` 指定了转场需要花费的时间。在这里，从 `open` 到 `closed` 状态的转换要花费 1 秒中，表示成 `1s`。
 
-This example adds a state transition from the `closed` state to the `open` state with a 0.5 second transition animation arc.
+This example adds a state transition from the `closed` state to the `open` state with a 0.5-second transition animation arc.
 
 下面的例子添加了一个从 `closed` 到 `open` 的状态转场，转场动画持续 0.5 秒。
 
@@ -457,7 +459,7 @@ Defines one or more CSS styles to use in animations. Controls the visual appeara
 </tr>
 
 <tr>
-<td><code>[state](api/animations/state)()</code></td>
+<td><code><a href="api/animations/state" class="code-anchor">state</a>()</code></td>
 <td>
 
 Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions.
@@ -501,7 +503,7 @@ Allows a sequential change between styles within a specified time interval. Use 
 </tr>
 
 <tr>
-<td><code>[group](api/animations/group)()</code></td>
+<td><code><a href="api/animations/group" class="code-anchor">group</a>()</code></td>
 <td>
 
 Specifies a group of animation steps (<em>inner animations</em>) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within <code>sequence()</code> or <code>transition()</code>.

@@ -14,6 +14,8 @@ export type Import = {
   node: ts.ImportDeclaration
 };
 
+const PARSED_TS_VERSION = parseFloat(ts.versionMajorMinor);
+
 /** Gets import information about the specified identifier by using the Type checker. */
 export function getImportOfIdentifier(typeChecker: ts.TypeChecker, node: ts.Identifier): Import|
     null {
@@ -98,13 +100,18 @@ export function replaceImport(
     return node;
   }
 
+  const importPropertyName =
+      existingImportNode.propertyName ? ts.createIdentifier(newImportName) : undefined;
+  const importName = existingImportNode.propertyName ? existingImportNode.name :
+                                                       ts.createIdentifier(newImportName);
+
   return ts.updateNamedImports(node, [
     ...node.elements.filter(current => current !== existingImportNode),
     // Create a new import while trying to preserve the alias of the old one.
-    ts.createImportSpecifier(
-        existingImportNode.propertyName ? ts.createIdentifier(newImportName) : undefined,
-        existingImportNode.propertyName ? existingImportNode.name :
-                                          ts.createIdentifier(newImportName))
+    PARSED_TS_VERSION > 4.4 ? ts.createImportSpecifier(false, importPropertyName, importName) :
+                              // TODO(crisbeto): backwards-compatibility layer for TS 4.4.
+                              // Should be cleaned up when we drop support for it.
+        (ts.createImportSpecifier as any)(importPropertyName, importName)
   ]);
 }
 

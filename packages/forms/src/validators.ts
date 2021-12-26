@@ -41,7 +41,8 @@ function hasValidLength(value: any): boolean {
  * The following example registers a custom validator directive. Adding the validator to the
  * existing collection of validators requires the `multi: true` option.
  *
- * 下面的例子注册了一个自定义验证器指令。要把该验证器添加到现存的验证器集合中，需要使用 `multi: true` 选项。
+ * 下面的例子注册了一个自定义验证器指令。要把该验证器添加到现存的验证器集合中，需要使用 `multi:
+ * true` 选项。
  *
  * ```typescript
  * @Directive({
@@ -67,6 +68,26 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  * 一个 `InjectionToken`，用于注册额外的异步验证器，供 `AbstractControl` 使用。
  *
  * @see `NG_VALIDATORS`
+ *
+ * @usageNotes
+ *
+ * ### Provide a custom async validator directive
+ *
+ * The following example implements the `AsyncValidator` interface to create an
+ * async validator directive with a custom error key.
+ *
+ * ```typescript
+ * @Directive({
+ *   selector: '[customAsyncValidator]',
+ *   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: CustomAsyncValidatorDirective, multi:
+ * true}]
+ * })
+ * class CustomAsyncValidatorDirective implements AsyncValidator {
+ *   validate(control: AbstractControl): Promise<ValidationErrors|null> {
+ *     return Promise.resolve({'custom': true});
+ *   }
+ * }
+ * ```
  *
  * @publicApi
  */
@@ -115,7 +136,8 @@ const EMAIL_REGEXP =
  * A validator is a function that processes a `FormControl` or collection of
  * controls and returns an error map or null. A null map means that validation has passed.
  *
- * 验证器就是一个函数，它可以处理单个 `FormControl` 或一组控件，并返回一个错误映射表（map）或 null。null 表示验证已通过了。
+ * 验证器就是一个函数，它可以处理单个 `FormControl` 或一组控件，并返回一个错误映射表（map）或
+ * null。null 表示验证已通过了。
  *
  * @see [Form Validation](/guide/form-validation)
  *
@@ -237,7 +259,8 @@ export class Validators {
    * @returns An error map that contains the `required` property
    * set to `true` if the validation check fails, otherwise `null`.
    *
-   * 如果验证失败，则此验证器函数返回一个带有 `required` 属性、值为 `true` 的映射表（map），否则为 `null`。
+   * 如果验证失败，则此验证器函数返回一个带有 `required` 属性、值为 `true` 的映射表（map），否则为
+   * `null`。
    *
    * @see `updateValueAndValidity()`
    *
@@ -260,7 +283,10 @@ export class Validators {
    * some enhancements to incorporate more RFC rules (such as rules related to domain names and the
    * lengths of different parts of the address).
    *
-   * 使用适合普通用例的[正则表达式模式测试值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)。该模式基于 [WHATWG HTML 规范](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)中有效电子邮件地址的定义，并进行了一些增强以支持更多的 RFC 规则（例如与域名相关的规则以及地址不同部分的长度）。
+   * 使用适合普通用例的[正则表达式模式测试值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)。该模式基于
+   * [WHATWG HTML
+   * 规范](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)中有效电子邮件地址的定义，并进行了一些增强以支持更多的
+   * RFC 规则（例如与域名相关的规则以及地址不同部分的长度）。
    *
    * The differences from the WHATWG version include:
    *
@@ -317,7 +343,8 @@ export class Validators {
    * (for example in case of an empty string or an empty array), to support optional controls. You
    * can use the standard `required` validator if empty values should not be considered valid.
    *
-   * 此验证器要求控件值的长度大于等于所指定的最小长度。当使用 HTML5 的 `minlength` 属性时，此验证器也会生效。
+   * 此验证器要求控件值的长度大于等于所指定的最小长度。当使用 HTML5 的 `minlength`
+   * 属性时，此验证器也会生效。
    *
    * @usageNotes
    *
@@ -355,7 +382,8 @@ export class Validators {
    * the HTML5 `maxlength` attribute. Note that the `maxLength` validator is intended to be used
    * only for types that have a numeric `length` property, such as strings or arrays.
    *
-   * 此验证器要求控件值的长度小于等于所指定的最大长度。当使用 HTML5 的 `maxlength` 属性时，此验证器也会生效。
+   * 此验证器要求控件值的长度小于等于所指定的最大长度。当使用 HTML5 的 `maxlength`
+   * 属性时，此验证器也会生效。
    *
    * @usageNotes
    *
@@ -421,7 +449,11 @@ export class Validators {
    * `Validators.pattern` you **do not** pass in a `RegExp` object with either the global or sticky
    * flag enabled.
    *
-   * 当要连续运行验证时，使用传递给 `Validators.pattern` 的 `g` 或 `y` 标志创建的 `RegExp` 对象可以在同一输入上产生不同的结果。这是由于在 [ECMA-262 中](https://tc39.es/ecma262/#sec-regexpbuiltinexec)为 `RegExp.prototype.test` 定义的行为（`RegExp` 保留了最后一个匹配项的索引）。由于这种现象，建议你使用 `Validators.pattern` 时**不要**传入启用了全局或粘性标志的 `RegExp`。
+   * 当要连续运行验证时，使用传递给 `Validators.pattern` 的 `g` 或 `y` 标志创建的 `RegExp`
+   * 对象可以在同一输入上产生不同的结果。这是由于在 [ECMA-262
+   * 中](https://tc39.es/ecma262/#sec-regexpbuiltinexec)为 `RegExp.prototype.test`
+   * 定义的行为（`RegExp` 保留了最后一个匹配项的索引）。由于这种现象，建议你使用
+   * `Validators.pattern` 时**不要**传入启用了全局或粘性标志的 `RegExp`。
    *
    * ```typescript
    * // Not recommended (since the `g` flag is used)
@@ -436,7 +468,8 @@ export class Validators {
    * appended to the provided string (if not already present), and the resulting regular
    * expression is used to test the values.
    *
-   * 用于测试值的正则表达式或字符串。如果传递了字符串，会在它前面追加 `^` 字符，并在后面追加 `$` 字符（如果尚不存在），然后使用所得的正则表达式测试这些值。
+   * 用于测试值的正则表达式或字符串。如果传递了字符串，会在它前面追加 `^` 字符，并在后面追加 `$`
+   * 字符（如果尚不存在），然后使用所得的正则表达式测试这些值。
    *
    * @returns A validator function that returns an error map with the
    * `pattern` property if the validation check fails, otherwise `null`.

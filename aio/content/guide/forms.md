@@ -407,7 +407,7 @@ Any unique value will do, but using a descriptive name is helpful.
 
    你现在可以移除显示插值的诊断消息了。
 
-1. To confirm that two-way data binding works for the entire hero model, add a new text binding with the [`json` pipe](api/common/JsonPipe) (which would serialize the data to a string) at the top to the component's template.
+1. To confirm that two-way data binding works for the entire hero model, add a new text binding with the [`json`](api/common/JsonPipe) pipe (which would serialize the data to a string) at the top to the component's template.
 
    要想确认双向数据绑定是否在整个英雄模型上都有效，可以在该组件的顶部添加一个带有 [`json` 管道](api/common/JsonPipe)的新文本绑定。`json` 管道会把数据序列化为字符串。
 

@@ -365,4 +365,4 @@ To explore Angular's capabilities further, we recommend reading through the sect
 
 为了进一步探索 Angular 的功能，我们建议你通读《了解 Angular》 和《开发人员指南》这两节。
 
-@reviewed 2021-09-14
+@reviewed 2021-10-28

@@ -13,15 +13,9 @@ import {DECLARATION_LCONTAINER, LView, LViewFlags, QUERIES, TView} from '../rend
 import {getCurrentTNode, getLView} from '../render3/state';
 import {ViewRef as R3_ViewRef} from '../render3/view_ref';
 import {assertDefined} from '../util/assert';
-import {noop} from '../util/noop';
+
 import {createElementRef, ElementRef} from './element_ref';
 import {EmbeddedViewRef} from './view_ref';
-
-
-
-export const SWITCH_TEMPLATE_REF_FACTORY__POST_R3__ = injectTemplateRef;
-const SWITCH_TEMPLATE_REF_FACTORY__PRE_R3__ = noop;
-const SWITCH_TEMPLATE_REF_FACTORY: typeof injectTemplateRef = SWITCH_TEMPLATE_REF_FACTORY__PRE_R3__;
 
 /**
  * Represents an embedded template that can be used to instantiate embedded views.
@@ -36,8 +30,8 @@ const SWITCH_TEMPLATE_REF_FACTORY: typeof injectTemplateRef = SWITCH_TEMPLATE_RE
  * is injected into the constructor of the directive,
  * using the `TemplateRef` token.
  *
- * 通过把一个指令放在 `<ng-template>` 元素（或一个带 `*` 前缀的指令）上，可以访问 `TemplateRef` 的实例。
- * 内嵌视图的 `TemplateRef` 实例会以 `TemplateRef` 作为令牌，注入到该指令的构造函数中。
+ * 通过把一个指令放在 `<ng-template>` 元素（或一个带 `*` 前缀的指令）上，可以访问 `TemplateRef`
+ * 的实例。 内嵌视图的 `TemplateRef` 实例会以 `TemplateRef` 作为令牌，注入到该指令的构造函数中。
  *
  * You can also use a `Query` to find a `TemplateRef` associated with
  * a component or a directive.
@@ -60,7 +54,8 @@ export abstract class TemplateRef<C> {
    * The data-binding and injection contexts of embedded views created from this `TemplateRef`
    * inherit from the contexts of this location.
    *
-   * 对于从这个 `TemplateRef` 创建的内嵌视图，其数据绑定和依赖注入的上下文是从当前位置的上下文中继承而来的。
+   * 对于从这个 `TemplateRef`
+   * 创建的内嵌视图，其数据绑定和依赖注入的上下文是从当前位置的上下文中继承而来的。
    *
    * Typically new embedded views are attached to the view container of this location, but in
    * advanced use-cases, the view can be attached to a different container while keeping the
@@ -71,7 +66,7 @@ export abstract class TemplateRef<C> {
    *
    */
   // TODO(i): rename to anchor or location
-  abstract get elementRef(): ElementRef;
+  abstract readonly elementRef: ElementRef;
 
   /**
    * Instantiates an embedded view based on this template,
@@ -95,15 +90,17 @@ export abstract class TemplateRef<C> {
    * @internal
    * @nocollapse
    */
-  static __NG_ELEMENT_ID__: () => TemplateRef<any>| null = SWITCH_TEMPLATE_REF_FACTORY;
+  static __NG_ELEMENT_ID__: () => TemplateRef<any>| null = injectTemplateRef;
 }
 
 const ViewEngineTemplateRef = TemplateRef;
 
+// TODO(alxhub): combine interface and implementation. Currently this is challenging since something
+// in g3 depends on them being separate.
 const R3TemplateRef = class TemplateRef<T> extends ViewEngineTemplateRef<T> {
   constructor(
       private _declarationLView: LView, private _declarationTContainer: TContainerNode,
-      public elementRef: ElementRef) {
+      public override elementRef: ElementRef) {
     super();
   }
 

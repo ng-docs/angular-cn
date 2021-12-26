@@ -10,7 +10,7 @@ import {Injectable} from '@angular/core';
 
 import {AsyncValidatorFn, ValidatorFn} from './directives/validators';
 import {ReactiveFormsModule} from './form_providers';
-import {AbstractControl, AbstractControlOptions, FormArray, FormControl, FormGroup, FormHooks} from './model';
+import {AbstractControl, AbstractControlOptions, FormArray, FormControl, FormControlOptions, FormGroup, FormHooks} from './model';
 
 function isAbstractControlOptions(options: AbstractControlOptions|
                                   {[key: string]: any}): options is AbstractControlOptions {
@@ -89,7 +89,8 @@ export class FormBuilder {
    * TypeScript sees this as an error. For example, change the `(group: FormGroup) =>
    * ValidationErrors|null` signature to be `(group: AbstractControl) => ValidationErrors|null`.
    *
-   * 此 api 不是类型安全的，可能会导致 Closure Compiler 重命名时出现问题。应该改用 `FormBuilder#group` 的接受 `AbstractControlOptions` 的重载形式。
+   * 此 api 不是类型安全的，可能会导致 Closure Compiler 重命名时出现问题。应该改用
+   * `FormBuilder#group` 的接受 `AbstractControlOptions` 的重载形式。
    *
    * @param controlsConfig A collection of child controls. The key for each child is the name
    * under which it is registered.
@@ -109,7 +110,8 @@ export class FormBuilder {
    * Note: the legacy format is deprecated and might be removed in one of the next major versions
    * of Angular.
    *
-   *   `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在 Angular 的后面的某个主要版本中将其删除。
+   *   `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在
+   * Angular 的后面的某个主要版本中将其删除。
    */
   group(
       controlsConfig: {[key: string]: any},
@@ -155,7 +157,8 @@ export class FormBuilder {
    * such functions, or an `AbstractControlOptions` object that contains
    * validation functions and a validation trigger.
    *
-   * 一个同步验证器函数或其数组，或者一个包含验证器函数和验证触发器的 `AbstractControlOptions` 对象。
+   * 一个同步验证器函数或其数组，或者一个包含验证器函数和验证触发器的 `AbstractControlOptions`
+   * 对象。
    *
    * @param asyncValidator A single async validator or array of async validator
    * functions.
@@ -176,7 +179,7 @@ export class FormBuilder {
    * </code-example>
    */
   control(
-      formState: any, validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null,
+      formState: any, validatorOrOpts?: ValidatorFn|ValidatorFn[]|FormControlOptions|null,
       asyncValidator?: AsyncValidatorFn|AsyncValidatorFn[]|null): FormControl {
     return new FormControl(formState, validatorOrOpts, asyncValidator);
   }
@@ -196,7 +199,8 @@ export class FormBuilder {
    * such functions, or an `AbstractControlOptions` object that contains
    * validation functions and a validation trigger.
    *
-   * 一个同步验证器函数或其数组，或者一个包含验证器函数和验证触发器的 `AbstractControlOptions` 对象。
+   * 一个同步验证器函数或其数组，或者一个包含验证器函数和验证触发器的 `AbstractControlOptions`
+   * 对象。
    *
    * @param asyncValidator A single async validator or array of async validator
    * functions.

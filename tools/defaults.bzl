@@ -269,6 +269,8 @@ def pkg_npm(name, use_prodmode_output = False, **kwargs):
         provider = "JSEcmaScriptModuleInfo" if use_prodmode_output else "JSModuleInfo",
         include_declarations = True,
         include_default_files = True,
+        forward_linker_mappings = False,
+        include_external_npm_packages = False,
         deps = deps,
     )
 
@@ -318,7 +320,6 @@ def karma_web_test_suite(name, **kwargs):
 
     # Add common deps
     deps = kwargs.pop("deps", []) + [
-        "@npm//karma-browserstack-launcher",
         "@npm//karma-sauce-launcher",
         "@npm//:node_modules/tslib/tslib.js",
         "//tools/rxjs:rxjs_umd_modules",
@@ -389,7 +390,6 @@ def ng_benchmark(**kwargs):
 def nodejs_binary(data = [], **kwargs):
     """Default values for nodejs_binary"""
     _nodejs_binary(
-        configuration_env_vars = ["angular_ivy_enabled"],
         data = data + ["@npm//source-map-support"],
         **kwargs
     )
@@ -430,9 +430,7 @@ def jasmine_node_test(bootstrap = [], **kwargs):
         "@npm//tslib",
         "@npm//xhr2",
     ]
-    configuration_env_vars = kwargs.pop("configuration_env_vars", []) + [
-        "angular_ivy_enabled",
-    ]
+    configuration_env_vars = kwargs.pop("configuration_env_vars", [])
 
     # TODO(josephperrott): update dependency usages to no longer need bazel patch module resolver
     # See: https://github.com/bazelbuild/rules_nodejs/wiki#--bazel_patch_module_resolver-now-defaults-to-false-2324
@@ -575,16 +573,10 @@ def rollup_bundle(name, testonly = False, sourcemap = "true", **kwargs):
 
 def api_golden_test(**kwargs):
     _api_golden_test(
-        tags = [
-            "ivy-only",
-        ],
         **kwargs
     )
 
 def api_golden_test_npm_package(**kwargs):
     _api_golden_test_npm_package(
-        tags = [
-            "ivy-only",
-        ],
         **kwargs
     )

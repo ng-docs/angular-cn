@@ -1,6 +1,6 @@
 load("@build_bazel_rules_nodejs//:index.bzl", "generated_file_test")
 load("//tools:defaults.bzl", "api_golden_test", "api_golden_test_npm_package", "ng_module", "ng_package")
-load("//tools:tsec.bzl", "tsec_test")
+load("@npm//tsec:index.bzl", "tsec_test")
 load("//packages/common/locales:index.bzl", "generate_base_locale_file")
 
 package(default_visibility = ["//visibility:public"])
@@ -61,7 +61,7 @@ ng_package(
     # Do not add more to this list.
     # Dependencies on the full npm_package cause long re-builds.
     visibility = [
-        "//integration:__pkg__",
+        "//integration:__subpackages__",
         "//packages/bazel/test/ng_package:__pkg__",
         "//packages/compiler-cli/integrationtest:__pkg__",
         "//packages/compiler-cli/ngcc/test:__pkg__",

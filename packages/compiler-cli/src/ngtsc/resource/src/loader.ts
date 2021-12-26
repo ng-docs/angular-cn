@@ -261,5 +261,8 @@ function createLookupResolutionHost(adapter: NgCompilerAdapter):
     getDirectories: adapter.getDirectories?.bind(adapter),
     realpath: adapter.realpath?.bind(adapter),
     trace: adapter.trace?.bind(adapter),
+    useCaseSensitiveFileNames: typeof adapter.useCaseSensitiveFileNames === 'function' ?
+        adapter.useCaseSensitiveFileNames.bind(adapter) :
+        adapter.useCaseSensitiveFileNames
   };
 }

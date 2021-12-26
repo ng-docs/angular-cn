@@ -53,6 +53,20 @@ Learn more in [Angular Elements Overview](guide/elements).
 
 参阅 [*Angular 元素*](guide/elements) 一文。
 
+{@a apf}
+
+## Angular package format (APF)
+
+## Angular 包格式 (APF)
+
+An Angular specific specification for layout of npm packages that is used by all first-party Angular packages, and most third-party Angular libraries.
+
+所有第一方 Angular 包和大多数第三方 Angular 库都在使用的 npm 包布局的 Angular 专有规范。
+
+Learn more in the [Angular Package Format specification](guide/angular-package-format).
+
+在 [Angular 包格式规范](guide/angular-package-format)中了解更多信息。
+
 {@a annotation}
 
 ## Annotation
@@ -757,7 +771,7 @@ To learn more, see [Form Validation](guide/form-validation).
 
 ## 不可变性（immutability）
 
-The ability to alter the state of a value after its creation. [Reactive forms](#reactive-forms) perform immutable changes in that
+The inability to alter the state of a value after its creation. [Reactive forms](#reactive-forms) perform immutable changes in that
 each change to the data model produces a new data model rather than modifying the existing one. [Template-driven forms](#template-driven-forms) perform mutable changes with `NgModel` and [two-way data binding](#data-binding) to modify the existing data model in place.
 
 是否能够在创建之后修改值的状态。[响应式表单](#reactive-forms)会执行不可变性的更改，每次更改数据模型都会生成一个新的数据模型，而不是修改现有的数据模型。
@@ -848,16 +862,11 @@ Read more in the [Interpolation](guide/interpolation) guide.
 
 ## Ivy
 
-## 常春藤引擎（Ivy）
+Ivy is the historical code name for Angular's current
+[compilation and rendering pipeline](https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7).
+It is now the only supported engine, so everything uses Ivy.
 
-Ivy is the code name for Angular's [next-generation compilation and rendering pipeline](https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7).
-With the version 9 release of Angular, the new compiler and runtime instructions are used by default instead of the older compiler and runtime, known as [View Engine](#ve).
-
-Ivy 是 Angular 的[下一代编译和渲染管道](https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7)的代号。在 Angular 的版本 9 中，默认情况下使用新的编译器和运行时，而不再用旧的编译器和运行时，也就是 [View Engine](#ve)。
-
-See [Angular Ivy](guide/ivy).
-
-参阅 [Angular Ivy](guide/ivy)。
+Ivy 是 Angular 当前[编译和渲染管道](https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7)的历史代号。它现在是唯一受支持的引擎，所以，一切都在使用 Ivy。
 
 {@a J}
 
@@ -1803,9 +1812,11 @@ View hierarchies can be loaded and unloaded dynamically as the user navigates th
 
 ## 视图引擎（View Engine）
 
-The compilation and rendering pipeline used by Angular before version 9. Compare [Ivy](#ivy).
+A previous compilation and rendering pipeline used by Angular. It has since been replaced by
+[Ivy](#ivy) and is no longer in use. View Engine was deprecated in version 9 and removed in version
+13.
 
-Angular 9 之前的版本使用的编译和渲染管道。可对比 [Ivy](#ivy)。
+Angular 曾经用过的编译和渲染管道。它已被 [Ivy](#ivy) 取代，不再使用了。View Engine 在版本 9 中已弃用，并在版本 13 中删除。
 
 {@a view-tree}
 
