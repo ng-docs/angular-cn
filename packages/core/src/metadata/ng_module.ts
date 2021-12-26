@@ -6,12 +6,10 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {InjectorType, ɵɵdefineInjector} from '../di/interface/defs';
 import {Provider} from '../di/interface/provider';
-import {convertInjectableProviderToFactory} from '../di/util';
 import {Type} from '../interface/type';
 import {SchemaMetadata} from '../metadata/schema';
-import {compileNgModule as render3CompileNgModule} from '../render3/jit/module';
+import {compileNgModule} from '../render3/jit/module';
 import {makeDecorator, TypeDecorator} from '../util/decorators';
 
 
@@ -93,7 +91,8 @@ export interface NgModule {
    *
    * 惰性加载的模块有自己的注入器，通常它是根注入器的一个子注入器。
    * 惰性加载的服务，其作用范围局限于这个惰性加载模块的注入器。
-   * 如果惰性加载模块也提供了 `UserService`，则任何在该模块的上下文中创建的组件（比如通过路由导航）都会获得该服务的一个局部实例，
+   * 如果惰性加载模块也提供了
+   * `UserService`，则任何在该模块的上下文中创建的组件（比如通过路由导航）都会获得该服务的一个局部实例，
    * 而不是根注入器中的全局实例。
    * 而外部模块中的组件仍然会使用由它们的注入器提供的实例。
    *
@@ -140,7 +139,8 @@ export interface NgModule {
    * The set of selectors that are available to a template include those declared here, and
    * those that are exported from imported NgModules.
    *
-   * 在模板中可用的选择器（selector）包括那些直接声明在这里的可声明对象和导入的那些 NgModule 中所导出的可声明对象。
+   * 在模板中可用的选择器（selector）包括那些直接声明在这里的可声明对象和导入的那些 NgModule
+   * 中所导出的可声明对象。
    *
    * Declarables must belong to exactly one module.
    * The compiler emits an error if you try to declare the same class in more than one module.
@@ -185,7 +185,8 @@ export interface NgModule {
    * wherever `ModuleA` is imported.
    *
    * 模板可以使用来自任何导入模块中所导出的可声明对象，包括它们从别的模块导入后重新导出的。
-   * 例如，`ModuleA` 导入了 `ModuleB` 并导出了它，就会让 `ModuleB` 中的可声明对象也同样在那些导入了 `ModuleA` 的模块中可用。
+   * 例如，`ModuleA` 导入了 `ModuleB` 并导出了它，就会让 `ModuleB` 中的可声明对象也同样在那些导入了
+   * `ModuleA` 的模块中可用。
    *
    * ### Example
    *
@@ -220,7 +221,8 @@ export interface NgModule {
    * public declaration are exported.
    *
    * 可声明对象应该且只能属于一个 NgModule。
-   * 一个模块可以列出在它的 `exports` 中列出一些其它模块，这些模块中所有公开的可声明对象也同样会导出。
+   * 一个模块可以列出在它的 `exports`
+   * 中列出一些其它模块，这些模块中所有公开的可声明对象也同样会导出。
    *
    * @usageNotes
    *
@@ -234,7 +236,8 @@ export interface NgModule {
    * ModuleA can import ModuleB and also export it, making exports from ModuleB
    * available to an NgModule that imports ModuleA.
    *
-   * 导出具有传递性。ModuleA 可以导入 ModuleB 并将其导出，这会让所有 ModuleB 中的导出同样可用在导入了 ModuleA 的那些模块中。
+   * 导出具有传递性。ModuleA 可以导入 ModuleB 并将其导出，这会让所有 ModuleB
+   * 中的导出同样可用在导入了 ModuleA 的那些模块中。
    *
    * ### Example
    *
@@ -263,15 +266,16 @@ export interface NgModule {
    * For each component listed here, Angular creates a `ComponentFactory`
    * and stores it in the `ComponentFactoryResolver`.
    *
-   * 对于在这里列出的每个组件，Angular 都会为其创建一个 `ComponentFactory`，并将其保存到 `ComponentFactoryResolver` 中。
+   * 对于在这里列出的每个组件，Angular 都会为其创建一个 `ComponentFactory`，并将其保存到
+   * `ComponentFactoryResolver` 中。
    *
    * Angular automatically adds components in the module's bootstrap
    * and route definitions into the `entryComponents` list. Use this
    * option to add components that are bootstrapped
    * using one of the imperative techniques, such as `ViewContainerRef.createComponent()`.
    *
-   * Angular 会自动把模块的 `bootstrap`（引导模块）和路由定义中引用的组件添加到 `entryComponents` 列表中。
-   * 该选项用于添加那些需要写代码来创建的组件，比如 `ViewContainerRef.createComponent()`。
+   * Angular 会自动把模块的 `bootstrap`（引导模块）和路由定义中引用的组件添加到 `entryComponents`
+   * 列表中。 该选项用于添加那些需要写代码来创建的组件，比如 `ViewContainerRef.createComponent()`。
    *
    * @see [Entry Components](guide/entry-components)
    *
@@ -312,7 +316,8 @@ export interface NgModule {
    * @security When using one of `NO_ERRORS_SCHEMA` or `CUSTOM_ELEMENTS_SCHEMA`
    * you must ensure that allowed elements and properties securely escape inputs.
    *
-   * 当使用 `NO_ERRORS_SCHEMA` 或 `CUSTOM_ELEMENTS_SCHEMA` 之一时，你必须确保所允许的元素和属性的所有输入都经过了安全转义。
+   * 当使用 `NO_ERRORS_SCHEMA` 或 `CUSTOM_ELEMENTS_SCHEMA`
+   * 之一时，你必须确保所允许的元素和属性的所有输入都经过了安全转义。
    */
   schemas?: Array<SchemaMetadata|any[]>;
 
@@ -331,7 +336,9 @@ export interface NgModule {
    * at run time, in the browser.
    * To ensure the correct behavior, the app must import `@angular/compiler`.
    *
-   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入 `@angular/compiler` 。
+   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT
+   * 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入
+   * `@angular/compiler` 。
    *
    */
   jit?: true;
@@ -342,45 +349,27 @@ export interface NgModule {
  * @publicApi
  */
 export const NgModule: NgModuleDecorator = makeDecorator(
-  'NgModule', (ngModule: NgModule) => ngModule, undefined, undefined,
-  /**
-   * Decorator that marks the following class as an NgModule, and supplies
-   * configuration metadata for it.
-   *
-   * 一个装饰器，用于把当前类标记为一个 NgModule，并为之提供配置元数据。
-   *
-   * * The `declarations` and `entryComponents` options configure the compiler
-   * with information about what belongs to the NgModule.
-   *
-   *   `declarations` 和 `entryComponents` 选项告诉编译器，哪些东西是属于本 NgModule 的。
-   *
-   * * The `providers` options configures the NgModule's injector to provide
-   * dependencies the NgModule members.
-   *
-   *   `providers` 选项会配置该 NgModule 的注入器，以便为该 NgModule 的所有成员提供依赖项。
-   *
-   * * The `imports` and `exports` options bring in members from other modules, and make
-   * this module's members available to others.
-   *
-   *   `imports` 选项用于从其它模块中带入成员，`exports` 选项用于把本模块的成员带给其它模块。
-   *
-   */
-  (type: Type<any>, meta: NgModule) => SWITCH_COMPILE_NGMODULE(type, meta));
-
-
-function preR3NgModuleCompile(moduleType: Type<any>, metadata?: NgModule): void {
-  let imports = (metadata && metadata.imports) || [];
-  if (metadata && metadata.exports) {
-    imports = [...imports, metadata.exports];
-  }
-
-  const moduleInjectorType = moduleType as InjectorType<any>;
-  moduleInjectorType.ɵfac = convertInjectableProviderToFactory(moduleType, {useClass: moduleType});
-  moduleInjectorType.ɵinj =
-      ɵɵdefineInjector({providers: metadata && metadata.providers, imports: imports});
-}
-
-
-export const SWITCH_COMPILE_NGMODULE__POST_R3__ = render3CompileNgModule;
-const SWITCH_COMPILE_NGMODULE__PRE_R3__ = preR3NgModuleCompile;
-const SWITCH_COMPILE_NGMODULE: typeof render3CompileNgModule = SWITCH_COMPILE_NGMODULE__PRE_R3__;
+    'NgModule', (ngModule: NgModule) => ngModule, undefined, undefined,
+    /**
+     * Decorator that marks the following class as an NgModule, and supplies
+     * configuration metadata for it.
+     *
+     * 一个装饰器，用于把当前类标记为一个 NgModule，并为之提供配置元数据。
+     *
+     * * The `declarations` and `entryComponents` options configure the compiler
+     * with information about what belongs to the NgModule.
+     *
+     *   `declarations` 和 `entryComponents` 选项告诉编译器，哪些东西是属于本 NgModule 的。
+     *
+     * * The `providers` options configures the NgModule's injector to provide
+     * dependencies the NgModule members.
+     *
+     *   `providers` 选项会配置该 NgModule 的注入器，以便为该 NgModule 的所有成员提供依赖项。
+     *
+     * * The `imports` and `exports` options bring in members from other modules, and make
+     * this module's members available to others.
+     *
+     *   `imports` 选项用于从其它模块中带入成员，`exports` 选项用于把本模块的成员带给其它模块。
+     *
+     */
+    (type: Type<any>, meta: NgModule) => compileNgModule(type, meta));

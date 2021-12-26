@@ -71,10 +71,10 @@ strings, numbers, functions, entity models, configurations, business logic, and 
 ## 为什么要把同一个组件声明在不同的 *NgModule* 属性中？
 
 `AppComponent` is often listed in both `declarations` and `bootstrap`.
-You might see the same component listed in `declarations`, `exports`, and `entryComponents`.
+You might see the same component listed in `declarations` and `exports`.
 
 `AppComponent` 经常被同时列在 `declarations` 和 `bootstrap` 中。
-另外你还可能看到 `HeroComponent` 被同时列在 `declarations`、`exports` 和 `entryComponent` 中。
+另外你还可能看到 `HeroComponent` 被同时列在 `declarations` 和 `exports` 中。
 
 While that seems redundant, these properties have different functions.
 Membership in one list doesn't imply membership in another list.
@@ -807,105 +807,6 @@ For more information, see [Entry Components](guide/entry-components).
 
 要了解更多，参阅[入口组件](guide/entry-components)一章。
 
-## What's the difference between a _bootstrap_ component and an _entry component_?
-
-## *引导组件*和*入口组件*有什么不同？
-
-A bootstrapped component _is_ an [entry component](guide/ngmodule-faq#q-entry-component-defined)
-that Angular loads into the DOM during the bootstrap process (application launch).
-Other entry components are loaded dynamically by other means, such as with the router.
-
-引导组件是[入口组件](guide/ngmodule-faq#q-entry-component-defined)的一种。
-它是被 Angular 的引导（应用启动）过程加载到 DOM 中的入口组件。
-其它入口组件则是被其它方式动态加载的，比如被路由器加载。
-
-The `@NgModule.bootstrap` property tells the compiler that this is an entry component _and_
-it should generate code to bootstrap the application with this component.
-
-`@NgModule.bootstrap` 属性告诉编译器这是一个入口组件，同时它应该生成一些代码来用该组件引导此应用。
-
-There's no need to list a component in both the `bootstrap` and `entryComponents` lists,
-although doing so is harmless.
-
-不需要把组件同时列在 `bootstrap` 和 `entryComponent` 列表中 —— 虽然这样做也没坏处。
-
-For more information, see [Entry Components](guide/entry-components).
-
-要了解更多，参阅[入口组件](guide/entry-components)一章。
-
-## When do I add components to _entryComponents_?
-
-## 什么时候我应该把组件加到 `entryComponents` 中？
-
-Most application developers won't need to add components to the `entryComponents`.
-
-大多数应用开发者都不需要把组件添加到 `entryComponents` 中。
-
-Angular adds certain components to _entry components_ automatically.
-Components listed in `@NgModule.bootstrap` are added automatically.
-Components referenced in router configuration are added automatically.
-These two mechanisms account for almost all entry components.
-
-Angular 会自动把恰当的组件添加到*入口组件*中。
-列在 `@NgModule.bootstrap` 中的组件会自动加入。
-由路由配置引用到的组件会被自动加入。
-用这两种机制添加的组件在入口组件中占了绝大多数。
-
-If your application happens to bootstrap or dynamically load a component _by type_ in some other manner,
-you must add it to `entryComponents` explicitly.
-
-如果你的应用要用其它手段来*根据类型*引导或动态加载组件，那就得把它显式添加到 `entryComponents` 中。
-
-Although it's harmless to add components to this list,
-it's best to add only the components that are truly _entry components_.
-Don't include components that [are referenced](guide/ngmodule-faq#q-template-reference)
-in the templates of other components.
-
-虽然把组件加到这个列表中也没什么坏处，不过最好还是只添加真正的*入口组件*。
-不要添加那些被其它组件的模板[引用过](guide/ngmodule-faq#q-template-reference)的组件。
-
-For more information, see [Entry Components](guide/entry-components).
-
-要了解更多，参阅[入口组件](guide/entry-components)一章。
-
-## Why does Angular need _entryComponents_?
-
-## 为什么 Angular 需要*入口组件*？
-
-The reason is _tree shaking_. For production applications you want to load the smallest, fastest code possible. The code should contain only the classes that you actually need.
-It should exclude a component that's never used, whether or not that component is declared.
-
-原因在于*摇树优化*。对于产品化应用，你会希望加载尽可能小而快的代码。
-代码中应该仅仅包括那些实际用到的类。
-它应该排除那些从未用过的组件，无论该组件是否被声明过。
-
-In fact, many libraries declare and export components you'll never use.
-If you don't reference them, the tree shaker drops these components from the final code package.
-
-事实上，大多数库中声明和导出的组件你都用不到。
-如果你从未引用它们，那么*摇树优化器*就会从最终的代码包中把这些组件砍掉。
-
-If the [Angular compiler](guide/ngmodule-faq#q-angular-compiler) generated code for every declared component, it would defeat the purpose of the tree shaker.
-
-如果[Angular 编译器](guide/ngmodule-faq#q-angular-compiler)为每个声明的组件都生成了代码，那么摇树优化器的作用就没有了。
-
-Instead, the compiler adopts a recursive strategy that generates code only for the components you use.
-
-所以，编译器转而采用一种递归策略，它只为你用到的那些组件生成代码。
-
-The compiler starts with the entry components,
-then it generates code for the declared components it [finds](guide/ngmodule-faq#q-template-reference) in an entry component's template,
-then for the declared components it discovers in the templates of previously compiled components,
-and so on. At the end of the process, the compiler has generated code for every entry component
-and every component reachable from an entry component.
-
-编译器从入口组件开始工作，为它在入口组件的模板中[找到的](guide/ngmodule-faq#q-template-reference)那些组件生成代码，然后又为在这些组件中的模板中发现的组件生成代码，以此类推。
-当这个过程结束时，它就已经为每个入口组件以及从入口组件可以抵达的每个组件生成了代码。
-
-If a component isn't an _entry component_ or wasn't found in a template,
-the compiler omits it.
-
-如果该组件不是*入口组件*或者没有在任何模板中发现过，编译器就会忽略它。
 
 ## What kinds of modules should I have and how should I use them?
 

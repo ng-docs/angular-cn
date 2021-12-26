@@ -508,7 +508,7 @@ import {dispatchEvent} from '@angular/platform-browser/testing/src/browser_util'
 
              selectOptionViaUI('1: Object');
              assertOptionElementSelectedState([false, true, false]);
-             expect(spy.calls.count()).toBe(2);
+             expect(spy).toHaveBeenCalled();
            }));
 
         it('should reflect state of model after option selected and new options subsequently added',
@@ -621,7 +621,7 @@ import {dispatchEvent} from '@angular/platform-browser/testing/src/browser_util'
 
         it('should properly set value to null and undefined', () => {
           const fixture = initTest(FormControlRadioButtons);
-          const form = new FormGroup(
+          const form: FormGroup = new FormGroup(
               {'food': new FormControl('chicken'), 'drink': new FormControl('sprite')});
           fixture.componentInstance.form = form;
           fixture.detectChanges();
@@ -675,7 +675,7 @@ import {dispatchEvent} from '@angular/platform-browser/testing/src/browser_util'
         it('should support removing controls from <type=radio>', () => {
           const fixture = initTest(FormControlRadioButtons);
           const showRadio = new FormControl('yes');
-          const form =
+          const form: FormGroup =
               new FormGroup({'food': new FormControl('fish'), 'drink': new FormControl('sprite')});
           fixture.componentInstance.form = form;
           fixture.componentInstance.showRadio = showRadio;

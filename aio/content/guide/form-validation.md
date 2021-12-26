@@ -319,7 +319,8 @@ Angular 会自动把很多控件属性作为 CSS 类映射到控件所在的元�
 * `.ng-untouched`
 * `.ng-touched`
 * `.ng-submitted` (enclosing form element only)
-  * `.ng-submitted` (只对 form 元素添加)
+
+    `.ng-submitted` (只对 form 元素添加)
 
 In the following example, the hero form uses the `.ng-valid` and `.ng-invalid` classes to
 set the color of each form control's border.

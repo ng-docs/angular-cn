@@ -1468,7 +1468,7 @@ the service becomes available only in the `VillainsListComponent` and its sub-co
 `VillainService` is a singleton with respect to `VillainsListComponent`
 because that is where it is declared. As long as `VillainsListComponent`
 does not get destroyed it will be the same instance of `VillainService`
-but if there are multilple instances of `VillainsListComponent`, then each
+but if there are multiple instances of `VillainsListComponent`, then each
 instance of `VillainsListComponent` will have its own instance of `VillainService`.
 
 `VillainService` 对于 `VillainsListComponent` 来说是单例的，因为它就是在这里声明的。只要 `VillainsListComponent` 没有销毁，它就始终是 `VillainService` 的同一个实例。但是对于 `VillainsListComponent` 的多个实例，每个 `VillainsListComponent` 的实例都会有自己的 `VillainService` 实例。

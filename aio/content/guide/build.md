@@ -494,52 +494,6 @@ See the [browserslist repo](https://github.com/browserslist/browserslist) for mo
 
 参阅 [browserslist 的代码库](https://github.com/browserslist/browserslist)以得到如何指定浏览器及其版本的更多例子。
 
-### Backward compatibility with Lighthouse
-
-### 使用 Lighthouse 做向后兼容
-
-If you want to produce a progressive web application and are using [Lighthouse](https://developers.google.com/web/tools/lighthouse/) to grade the project, add the following `browserslist` entry to your `package.json` file, in order to eliminate the [old flexbox](https://developers.google.com/web/tools/lighthouse/audits/old-flexbox) prefixes:
-
-如果你要制作渐进式应用，并使用 [Lighthouse](https://developers.google.com/web/tools/lighthouse/) 来对该项目进行评分，请为 `package.json` 添加如下的 `browserslist` 条目，以消除[老版本的 flexbox](https://developers.google.com/web/tools/lighthouse/audits/old-flexbox) 前缀：
-
-```
-"browserslist": [
-  "last 2 versions",
-  "not ie <= 10",
-  "not ie_mob <= 10"
-]
-```
-
-### Backward compatibility with CSS grid
-
-### CSS 网格 (Grid) 布局的向后兼容
-
-CSS grid layout support in Autoprefixer, which was previously on by default, is off by default in Angular 8 and higher.
-
-Autoprefixer 默认支持 CSS 网格布局，但在 Angular 8 及更高版本中，它默认处于禁用状态。
-
-To use CSS grid with Internet Explorer 10/11, you must explicitly enable it using the `autoplace` option.
-To do this, add the following to the top of the global styles file (or within a specific css selector scope):
-
-要在 IE10/11 中使用 CSS 网格布局，必须使用 `autoplace` 选项显式启用它。
-为此，请将以下内容添加到全局样式文件的顶部（或用在特定的 css 选择器范围内）：
-
-```
-/* autoprefixer grid: autoplace */
-```
-
-or
-
-或
-
-```
-/* autoprefixer grid: no-autoplace */
-```
-
-For more information, see [Autoprefixer documentation](https://autoprefixer.github.io/).
-
-欲知详情，参阅 [Autoprefixer 文档](https://autoprefixer.github.io/)。
-
 {@a proxy}
 
 ## Proxying to a backend server

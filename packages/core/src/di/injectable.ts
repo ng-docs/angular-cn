@@ -9,12 +9,10 @@
 import {Type} from '../interface/type';
 import {makeDecorator, TypeDecorator} from '../util/decorators';
 
-import {getInjectableDef, InjectableType, ɵɵdefineInjectable} from './interface/defs';
 import {ClassSansProvider, ConstructorSansProvider, ExistingSansProvider, FactorySansProvider, StaticClassSansProvider, ValueSansProvider} from './interface/provider';
-import {compileInjectable as render3CompileInjectable} from './jit/injectable';
-import {convertInjectableProviderToFactory} from './util';
+import {compileInjectable} from './jit/injectable';
 
-
+export {compileInjectable};
 
 /**
  * Injectable providers used in `@Injectable` decorator.
@@ -91,7 +89,8 @@ export interface Injectable {
    * The following options specify that this injectable should be provided in one of the following
    * injectors:
    *
-   * 通过与 `@NgModule` 或其他 `InjectorType` 关联，或通过指定应在以下注入器之一中提供此可注入对象，来确定将提供该对象的注入器：
+   * 通过与 `@NgModule` 或其他 `InjectorType`
+   * 关联，或通过指定应在以下注入器之一中提供此可注入对象，来确定将提供该对象的注入器：
    *
    * - 'root' : The application-level injector in most apps.
    *
@@ -114,31 +113,10 @@ export interface Injectable {
  * Injectable decorator and metadata.
  *
  * Injectable 的装饰器和元数据。
-*
-* @Annotation
+ *
+ * @Annotation
  * @publicApi
  */
 export const Injectable: InjectableDecorator = makeDecorator(
     'Injectable', undefined, undefined, undefined,
-    (type: Type<any>, meta: Injectable) => SWITCH_COMPILE_INJECTABLE(type as any, meta));
-
-
-/**
- * Supports @Injectable() in JIT mode for Render2.
- */
-function render2CompileInjectable(
-    injectableType: Type<any>,
-    options?: {providedIn?: Type<any>|'root'|'platform'|'any'|null}&InjectableProvider): void {
-  if (options && options.providedIn !== undefined && !getInjectableDef(injectableType)) {
-    (injectableType as InjectableType<any>).ɵprov = ɵɵdefineInjectable({
-      token: injectableType,
-      providedIn: options.providedIn,
-      factory: convertInjectableProviderToFactory(injectableType, options),
-    });
-  }
-}
-
-export const SWITCH_COMPILE_INJECTABLE__POST_R3__ = render3CompileInjectable;
-const SWITCH_COMPILE_INJECTABLE__PRE_R3__ = render2CompileInjectable;
-const SWITCH_COMPILE_INJECTABLE: typeof render3CompileInjectable =
-    SWITCH_COMPILE_INJECTABLE__PRE_R3__;
+    (type: Type<any>, meta: Injectable) => compileInjectable(type as any, meta));

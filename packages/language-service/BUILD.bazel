@@ -15,36 +15,6 @@ ts_library(
     ],
 )
 
-ts_library(
-    name = "language-service",
-    srcs = glob(
-        [
-            "src/**/*.ts",
-        ],
-        exclude = [
-            "src/ts_utils.ts",
-        ],
-    ),
-    deps = [
-        ":api",
-        ":ts_utils",
-        "//packages:types",
-        "//packages/compiler",
-        "//packages/compiler-cli",
-        "//packages/core",
-        "@npm//@types/node",
-        "@npm//typescript",
-    ],
-)
-
-ts_library(
-    name = "ts_utils",
-    srcs = ["src/ts_utils.ts"],
-    deps = [
-        "@npm//typescript",
-    ],
-)
-
 pkg_npm(
     name = "npm_package",
     srcs = ["package.json"],
@@ -54,7 +24,7 @@ pkg_npm(
     # Do not add more to this list.
     # Dependencies on the full npm_package cause long re-builds.
     visibility = [
-        "//integration:__pkg__",
+        "//integration:__subpackages__",
     ],
     deps = [
         ":api",

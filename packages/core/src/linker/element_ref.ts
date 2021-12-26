@@ -11,7 +11,6 @@ import {RElement} from '../render3/interfaces/renderer_dom';
 import {LView} from '../render3/interfaces/view';
 import {getCurrentTNode, getLView} from '../render3/state';
 import {getNativeByTNode} from '../render3/util/view_utils';
-import {noop} from '../util/noop';
 
 /**
  * Creates an ElementRef from the most recent node.
@@ -33,10 +32,6 @@ export function createElementRef(tNode: TNode, lView: LView): ElementRef {
   return new ElementRef(getNativeByTNode(tNode, lView) as RElement);
 }
 
-export const SWITCH_ELEMENT_REF_FACTORY__POST_R3__ = injectElementRef;
-const SWITCH_ELEMENT_REF_FACTORY__PRE_R3__ = noop;
-const SWITCH_ELEMENT_REF_FACTORY: typeof injectElementRef = SWITCH_ELEMENT_REF_FACTORY__PRE_R3__;
-
 /**
  * A wrapper around a native element inside of a View.
  *
@@ -51,7 +46,8 @@ const SWITCH_ELEMENT_REF_FACTORY: typeof injectElementRef = SWITCH_ELEMENT_REF_F
  * XSS attacks. Carefully review any use of `ElementRef` in your code. For more detail, see the
  * [Security Guide](https://g.co/ng/security).
  *
- * 允许直接访问 DOM 会导致你的应用在 XSS 攻击前面更加脆弱。要仔细评审对 `ElementRef` 的代码。欲知详情，参见[安全](http://g.co/ng/security)。
+ * 允许直接访问 DOM 会导致你的应用在 XSS 攻击前面更加脆弱。要仔细评审对 `ElementRef`
+ * 的代码。欲知详情，参见[安全](http://g.co/ng/security)。
  *
  * @publicApi
  */
@@ -63,7 +59,8 @@ export class ElementRef<T = any> {
    * The underlying native element or `null` if direct access to native elements is not supported
    * (e.g. when the application runs in a web worker).
    *
-   * 背后的原生元素，如果不支持直接访问原生元素，则为 `null`（比如：在 Web Worker 环境下运行此应用的时候）。
+   * 背后的原生元素，如果不支持直接访问原生元素，则为 `null`（比如：在 Web Worker
+   * 环境下运行此应用的时候）。
    *
    * <div class="callout is-critical">
    *   <header>Use with caution</header>
@@ -76,8 +73,9 @@ export class ElementRef<T = any> {
    *    supported.
    *   </p>
    *   <p>
-   *    当需要直接访问 DOM 时，请把本 API 作为最后选择。优先使用 Angular 提供的模板和数据绑定机制。或者你还可以看看 {@link
-   * Renderer2}，它提供了可安全使用的 API —— 即使环境没有提供直接访问原生元素的功能。
+   *    当需要直接访问 DOM 时，请把本 API 作为最后选择。优先使用 Angular
+   * 提供的模板和数据绑定机制。或者你还可以看看 {@link Renderer2}，它提供了可安全使用的 API ——
+   * 即使环境没有提供直接访问原生元素的功能。
    *   </p>
    *   <p>
    *    Relying on direct DOM access creates tight coupling between your application and rendering
@@ -85,7 +83,9 @@ export class ElementRef<T = any> {
    *    web worker.
    *   </p>
    *   <p>
-   *     如果依赖直接访问 DOM 的方式，就可能在应用和渲染层之间产生紧耦合。这将导致无法分开两者，也就无法将应用发布到 Web Worker 中。
+   *     如果依赖直接访问 DOM
+   * 的方式，就可能在应用和渲染层之间产生紧耦合。这将导致无法分开两者，也就无法将应用发布到 Web
+   * Worker 中。
    *   </p>
    * </div>
    *
@@ -100,7 +100,7 @@ export class ElementRef<T = any> {
    * @internal
    * @nocollapse
    */
-  static __NG_ELEMENT_ID__: () => ElementRef = SWITCH_ELEMENT_REF_FACTORY;
+  static __NG_ELEMENT_ID__: () => ElementRef = injectElementRef;
 }
 
 /**

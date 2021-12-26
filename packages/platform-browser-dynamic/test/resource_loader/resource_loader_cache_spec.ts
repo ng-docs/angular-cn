@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ResourceLoader, UrlResolver} from '@angular/compiler';
 import {Component} from '@angular/core';
 import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import {CachedResourceLoader} from '@angular/platform-browser-dynamic/src/resource_loader/resource_loader_cache';
@@ -14,7 +13,8 @@ import {setTemplateCache} from '@angular/platform-browser-dynamic/test/resource_
 import {expect} from '@angular/platform-browser/testing/src/matchers';
 
 if (isBrowser) {
-  describe('CachedResourceLoader', () => {
+  // TODO(alxhub): Resource loading works very differently in Ivy.
+  xdescribe('CachedResourceLoader', () => {
     let resourceLoader: CachedResourceLoader;
 
     function createCachedResourceLoader(): CachedResourceLoader {
@@ -45,12 +45,14 @@ if (isBrowser) {
 
     it('should allow fakeAsync Tests to load components with templateUrl synchronously',
        fakeAsync(() => {
-         TestBed.configureCompiler({
-           providers: [
-             {provide: UrlResolver, useClass: TestUrlResolver, deps: []},
-             {provide: ResourceLoader, useFactory: createCachedResourceLoader, deps: []}
-           ]
-         });
+         const loader = createCachedResourceLoader();
+         @Component({selector: 'test-cmp', templateUrl: 'test.html'})
+         class TestComponent {
+         }
+
+         //  resolveComponentResources(url => loader.get(url));
+         tick();
+
          TestBed.configureTestingModule({declarations: [TestComponent]});
          TestBed.compileComponents();
          tick();
@@ -63,16 +65,4 @@ if (isBrowser) {
          expect(fixture.debugElement.children[0].nativeElement).toHaveText('Hello');
        }));
   });
-}
-
-@Component({selector: 'test-cmp', templateUrl: 'test.html'})
-class TestComponent {
-}
-
-class TestUrlResolver extends UrlResolver {
-  override resolve(baseUrl: string, url: string): string {
-    // Don't use baseUrl to get the same URL as templateUrl.
-    // This is to remove any difference between Dart and TS tests.
-    return url;
-  }
 }

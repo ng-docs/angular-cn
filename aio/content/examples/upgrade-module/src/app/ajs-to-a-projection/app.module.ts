@@ -1,5 +1,6 @@
-declare var angular: angular.IAngularStatic;
-import { NgModule } from '@angular/core';
+declare const angular: angular.IAngularStatic;
+import '@angular/compiler';
+import { DoBootstrap, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
@@ -14,12 +15,9 @@ import { HeroDetailComponent } from './hero-detail.component';
   ],
   declarations: [
     HeroDetailComponent
-  ],
-  entryComponents: [
-    HeroDetailComponent
   ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   constructor(private upgrade: UpgradeModule) { }
   ngDoBootstrap() {
     this.upgrade.bootstrap(document.body, ['heroApp'], { strictDi: true });

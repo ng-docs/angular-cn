@@ -15,12 +15,10 @@ import {Inject, Optional, SkipSelf} from './di/metadata';
 import {ErrorHandler} from './error_handler';
 import {DEFAULT_LOCALE_ID, USD_CURRENCY_CODE} from './i18n/localization';
 import {DEFAULT_CURRENCY_CODE, LOCALE_ID} from './i18n/tokens';
-import {ivyEnabled} from './ivy_switch';
 import {ComponentFactoryResolver} from './linker';
 import {Compiler} from './linker/compiler';
 import {NgModule} from './metadata';
 import {SCHEDULER} from './render3/component_ref';
-import {setLocaleId} from './render3/i18n/i18n_locale_id';
 import {NgZone} from './zone';
 
 declare const $localize: {locale?: string};
@@ -34,13 +32,8 @@ export function _keyValueDiffersFactory() {
 }
 
 export function _localeFactory(locale?: string): string {
-  locale = locale || getGlobalLocale();
-  if (ivyEnabled) {
-    setLocaleId(locale);
-  }
-  return locale;
+  return locale || getGlobalLocale();
 }
-
 /**
  * Work out the locale from the potential global properties.
  *
@@ -64,8 +57,7 @@ export function getGlobalLocale(): string {
     //
     // * During runtime translation evaluation, the developer is required to set `$localize.locale`
     //   if required, or just to provide their own `LOCALE_ID` provider.
-    return (ivyEnabled && typeof $localize !== 'undefined' && $localize.locale) ||
-        DEFAULT_LOCALE_ID;
+    return (typeof $localize !== 'undefined' && $localize.locale) || DEFAULT_LOCALE_ID;
   }
 }
 
@@ -128,7 +120,8 @@ export function zoneSchedulerFactory(ngZone: NgZone): (fn: () => void) => void {
  * Re-exported by `BrowserModule`, which is included automatically in the root
  * `AppModule` when you create a new app with the CLI `new` command.
  *
- * 由 `BrowserModule` 重新导出，当你使用 CLI `new` 命令创建新应用时，它会自动包含在根 `AppModule` 中。
+ * 由 `BrowserModule` 重新导出，当你使用 CLI `new` 命令创建新应用时，它会自动包含在根 `AppModule`
+ * 中。
  *
  * @publicApi
  */

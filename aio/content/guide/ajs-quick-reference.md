@@ -1057,10 +1057,9 @@ AngularJS 中的很多内置过滤器在 Angular 中都有对应的管道。
 
       <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="json"></code-example>
 
-      The Angular `json` pipe does the same thing.
+      The Angular [`json`](api/common/JsonPipe) pipe does the same thing.
 
-      Angular 的 `json` 管道做完全相同的事。
-
+      Angular 的 [`json`](api/common/JsonPipe) 管道做完全相同的事。
     </td>
 
   </tr>
@@ -1153,11 +1152,11 @@ AngularJS 中的很多内置过滤器在 Angular 中都有对应的管道。
 
       <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="number"></code-example>
 
-      The Angular `number` pipe is similar.
+      The Angular [`number`](api/common/DecimalPipe) pipe is similar.
       It provides more functionality when defining
       the decimal places, as shown in the second example above.
 
-      Angular 的 `number` 管道很相似。
+      Angular 的 [`number`](api/common/DecimalPipe) 管道很相似。
       但在指定小数点位置时，它提供了更多的功能，如第二个范例所示。
 
       Angular also has a `percent` pipe, which formats a number as a local percentage

@@ -165,6 +165,25 @@ export interface AbstractControlOptions {
   updateOn?: 'change'|'blur'|'submit';
 }
 
+/**
+ * Interface for options provided to a {@link FormControl}.
+ *
+ * This interface extends all options from {@link AbstractControlOptions}, plus some options
+ * unique to `FormControl`.
+ *
+ * @publicApi
+ */
+export interface FormControlOptions extends AbstractControlOptions {
+  /**
+   * @description
+   * Whether to use the initial value used to construct the FormControl as its default value as
+   * well. If this option is false or not provided, the default value of a FormControl is `null`.
+   * When a FormControl is {@link FormControl#reset} without an explicit value, its value reverts to
+   * its default value.
+   */
+  initialValueIsDefault?: boolean;
+}
+
 function isOptionsObj(validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|
                       null): validatorOrOpts is AbstractControlOptions {
   return validatorOrOpts != null && !Array.isArray(validatorOrOpts) &&
@@ -200,8 +219,7 @@ function isOptionsObj(validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractContro
  */
 export abstract class AbstractControl {
   /** @internal */
-  // TODO(issue/24571): remove '!'.
-  _pendingDirty!: boolean;
+  _pendingDirty = false;
 
   /**
    * Indicates that a control has its own pending asynchronous validation in progress.
@@ -213,15 +231,13 @@ export abstract class AbstractControl {
   _hasOwnPendingAsyncValidator = false;
 
   /** @internal */
-  // TODO(issue/24571): remove '!'.
-  _pendingTouched!: boolean;
+  _pendingTouched = false;
 
   /** @internal */
   _onCollectionChange = () => {};
 
   /** @internal */
-  // TODO(issue/24571): remove '!'.
-  _updateOn!: FormHooks;
+  _updateOn?: FormHooks;
 
   private _parent: FormGroup|FormArray|null = null;
   private _asyncValidationSubscription: any;
@@ -283,7 +299,8 @@ export abstract class AbstractControl {
    *  - while calling the setter on the `asyncValidator` field (e.g. `control.asyncValidator =
    * asyncValidatorFn`)
    *
-   *      `asyncValidator` 字段上调用 setter 时（例如， `control.asyncValidator = asyncValidatorFn` ）
+   *      `asyncValidator` 字段上调用 setter 时（例如， `control.asyncValidator = asyncValidatorFn`
+   * ）
    *
    * @internal
    */
@@ -385,7 +402,6 @@ export abstract class AbstractControl {
    *
    * 这些状态值是互斥的，因此一个控件不可能同时处于有效状态和无效状态或无效状态和禁用状态。
    */
-  // TODO(issue/24571): remove '!'.
   public readonly status!: FormControlStatus;
 
   /**
@@ -480,7 +496,6 @@ export abstract class AbstractControl {
    *
    * 一个对象，包含由失败的验证所生成的那些错误，如果没出错则为 null。
    */
-  // TODO(issue/24571): remove '!'.
   public readonly errors!: ValidationErrors|null;
 
   /**
@@ -544,9 +559,10 @@ export abstract class AbstractControl {
    * the UI or programmatically. It also emits an event each time you call enable() or disable()
    * without passing along {emitEvent: false} as a function argument.
    *
-   * 一个多播 Observable（可观察对象），每当控件的值发生变化时，它就会发出一个事件 —— 无论是通过 UI 还是通过程序。每当你调用 `enable()` 或 `disable()`，但没有传入 `{emitEvent: false}` 参数时，它也同样会发出一个事件。
+   * 一个多播 Observable（可观察对象），每当控件的值发生变化时，它就会发出一个事件 —— 无论是通过 UI
+   * 还是通过程序。每当你调用 `enable()` 或 `disable()`，但没有传入 `{emitEvent: false}`
+   * 参数时，它也同样会发出一个事件。
    */
-  // TODO(issue/24571): remove '!'.
   public readonly valueChanges!: Observable<any>;
 
   /**
@@ -559,7 +575,6 @@ export abstract class AbstractControl {
    * @see {@link AbstractControl.status}
    *
    */
-  // TODO(issue/24571): remove '!'.
   public readonly statusChanges!: Observable<FormControlStatus>;
 
   /**
@@ -747,7 +762,8 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false` 或不提供，则标记它所有的直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false`
+   * 或不提供，则标记它所有的直系祖先。默认为 `false`。
    */
   markAsTouched(opts: {onlySelf?: boolean} = {}): void {
     (this as {touched: boolean}).touched = true;
@@ -778,7 +794,8 @@ export abstract class AbstractControl {
    * If the control has any children, also marks all children as `untouched`
    * and recalculates the `touched` status of all parent controls.
    *
-   * 如果该控件有任何子控件，还会把所有子控件标记为 `untouched`，并重新计算所有父控件的 `touched` 状态。
+   * 如果该控件有任何子控件，还会把所有子控件标记为 `untouched`，并重新计算所有父控件的 `touched`
+   * 状态。
    *
    *  @see `markAsTouched()`
    * @see `markAsDirty()`
@@ -792,7 +809,8 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false` 或不提供，则标记它所有的直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false`
+   * 或不提供，则标记它所有的直系祖先。默认为 `false`。
    *
    */
   markAsUntouched(opts: {onlySelf?: boolean} = {}): void {
@@ -826,7 +844,8 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false` 或不提供，则标记它所有的直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false`
+   * 或不提供，则标记它所有的直系祖先。默认为 `false`。
    *
    */
   markAsDirty(opts: {onlySelf?: boolean} = {}): void {
@@ -846,7 +865,8 @@ export abstract class AbstractControl {
    * and recalculates the `pristine` status of all parent
    * controls.
    *
-   * 如果该控件有任何子控件，则把所有子控件标记为 `pristine`，并重新计算所有父控件的 `pristine` 状态。
+   * 如果该控件有任何子控件，则把所有子控件标记为 `pristine`，并重新计算所有父控件的 `pristine`
+   * 状态。
    *
    *  @see `markAsTouched()`
    * @see `markAsUntouched()`
@@ -860,7 +880,8 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false` 或不提供，则标记它所有的直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false`
+   * 或不提供，则标记它所有的直系祖先。默认为 `false`。
    *
    */
   markAsPristine(opts: {onlySelf?: boolean} = {}): void {
@@ -895,14 +916,16 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false` 或不提供，则标记它所有的直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true` 则只标记当前控件。如果为 `false`
+   * 或不提供，则标记它所有的直系祖先。默认为 `false`。
    *
    * * `emitEvent`: When true or not supplied (the default), the `statusChanges`
    * observable emits an event with the latest status the control is marked pending.
    * When false, no events are emitted.
    *
-   *   `emitEvent`：如果为 `true` 或未提供（默认值），则 `statusChanges`（Observable）会发出一个事件，传入控件的最近状态，并把控件标记为 `pending` 状态。
-   *   如果为 `false`，则不会发出事件。
+   *   `emitEvent`：如果为 `true` 或未提供（默认值），则
+   * `statusChanges`（Observable）会发出一个事件，传入控件的最近状态，并把控件标记为 `pending`
+   * 状态。 如果为 `false`，则不会发出事件。
    *
    */
   markAsPending(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -921,7 +944,8 @@ export abstract class AbstractControl {
    * Disables the control. This means the control is exempt from validation checks and
    * excluded from the aggregate value of any parent. Its status is `DISABLED`.
    *
-   * 禁用此控件。这意味着该控件在表单验证检查时会被豁免，并且从其父控件的聚合值中排除它的值。它的状态是 `DISABLED`。
+   * 禁用此控件。这意味着该控件在表单验证检查时会被豁免，并且从其父控件的聚合值中排除它的值。它的状态是
+   * `DISABLED`。
    *
    * If the control has children, all children are also disabled.
    *
@@ -937,15 +961,16 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true`，则只标记当前控件。如果为 `false` 或没有提供，则标记所有直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true`，则只标记当前控件。如果为 `false`
+   * 或没有提供，则标记所有直系祖先。默认为 `false`。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
    * `valueChanges`
    * observables emit events with the latest status and value when the control is disabled.
    * When false, no events are emitted.
    *
-   *   `emitEvent`：如果为 `true` 或没有提供（默认），则当控件被禁用时，`statusChanges` 和 `valueChanges` 这两个 Observable 都会发出最近的状态和值。
-   *   如果为 `false`，则不会发出事件。
+   *   `emitEvent`：如果为 `true` 或没有提供（默认），则当控件被禁用时，`statusChanges` 和
+   * `valueChanges` 这两个 Observable 都会发出最近的状态和值。 如果为 `false`，则不会发出事件。
    *
    */
   disable(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -990,15 +1015,16 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    * marks all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true`，则只标记当前控件。如果为 `false` 或没有提供，则标记所有直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true`，则只标记当前控件。如果为 `false`
+   * 或没有提供，则标记所有直系祖先。默认为 `false`。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
    * `valueChanges`
    * observables emit events with the latest status and value when the control is enabled.
    * When false, no events are emitted.
    *
-   *     `emitEvent`：如果为 `true` 或没有提供（默认），则当控件被启用时，`statusChanges` 和 `valueChanges` 这两个 Observable 都会发出最近的状态和值。
-   *     如果为 `false`，则不会发出事件。
+   *     `emitEvent`：如果为 `true` 或没有提供（默认），则当控件被启用时，`statusChanges` 和
+   * `valueChanges` 这两个 Observable 都会发出最近的状态和值。 如果为 `false`，则不会发出事件。
    */
   enable(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
     // If parent has been marked artificially dirty we don't want to re-calculate the
@@ -1073,15 +1099,16 @@ export abstract class AbstractControl {
    * * `onlySelf`: When true, only update this control. When false or not supplied,
    * update all direct ancestors. Default is false.
    *
-   *   `onlySelf`：如果为 `true`，则只标记当前控件。如果为 `false` 或没有提供，则标记所有直系祖先。默认为 `false`。
+   *   `onlySelf`：如果为 `true`，则只标记当前控件。如果为 `false`
+   * 或没有提供，则标记所有直系祖先。默认为 `false`。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
    * `valueChanges`
    * observables emit events with the latest status and value when the control is updated.
    * When false, no events are emitted.
    *
-   *   `emitEvent`：如果为 `true` 或没有提供（默认），则当控件被启用时，`statusChanges` 和 `valueChanges` 这两个 Observable 都会发出最近的状态和值。
-   *   如果为 `false`，则不会发出事件。
+   *   `emitEvent`：如果为 `true` 或没有提供（默认），则当控件被启用时，`statusChanges` 和
+   * `valueChanges` 这两个 Observable 都会发出最近的状态和值。 如果为 `false`，则不会发出事件。
    *
    */
   updateValueAndValidity(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -1383,10 +1410,10 @@ export abstract class AbstractControl {
   abstract _updateValue(): void;
 
   /** @internal */
-  abstract _forEachChild(cb: Function): void;
+  abstract _forEachChild(cb: (c: AbstractControl) => void): void;
 
   /** @internal */
-  abstract _anyControls(condition: Function): boolean;
+  abstract _anyControls(condition: (c: AbstractControl) => boolean): boolean;
 
   /** @internal */
   abstract _allControlsDisabled(): boolean;
@@ -1428,7 +1455,7 @@ export abstract class AbstractControl {
   }
 
   /** @internal */
-  _onDisabledChange: Function[] = [];
+  _onDisabledChange: Array<(isDisabled: boolean) => void> = [];
 
   /** @internal */
   _isBoxedValue(formState: any): boolean {
@@ -1594,39 +1621,50 @@ export abstract class AbstractControl {
  * @publicApi
  */
 export class FormControl extends AbstractControl {
-  /** @internal */
-  _onChange: Function[] = [];
+  /**
+   * The default value of this FormControl, used whenever the control is reset without an explicit
+   * value. See {@link FormControlOptions#initialValueIsDefault} for more information on configuring
+   * a default value.
+   * @publicApi
+   */
+  public readonly defaultValue: any = null;
 
   /** @internal */
+  _onChange: Array<Function> = [];
+
+  /**
+   * This field holds a pending value that has not yet been applied to the form's value.
+   * It is `any` because the value is untyped.
+   * @internal
+   */
   _pendingValue: any;
 
   /** @internal */
-  _pendingChange: any;
+  _pendingChange: boolean = false;
 
   /**
    * Creates a new `FormControl` instance.
    *
    * 创建新的 `FormControl` 实例。
-  *
-  * @param formState Initializes the control with an initial value,
+   *
+   * @param formState Initializes the control with an initial value,
    * or an object that defines the initial value and disabled state.
    *
    * 使用一个初始值或定义了初始值和禁用状态的对象初始化该控件。
-  *
-  * @param validatorOrOpts A synchronous validator function, or an array of
+   *
+   * @param validatorOrOpts A synchronous validator function, or an array of
    * such functions, or an `AbstractControlOptions` object that contains validation functions
    * and a validation trigger.
    *
    * 一个同步验证器函数或其数组，或者一个包含验证函数和验证触发器的 `AbstractControlOptions` 对象。
-  *
-  * @param asyncValidator A single async validator or array of async validator functions
+   *
+   * @param asyncValidator A single async validator or array of async validator functions
    *
    * 一个异步验证器函数或其数组。
-  *
-  */
+   *
+   */
   constructor(
-      formState: any = null,
-      validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null,
+      formState: any = null, validatorOrOpts?: ValidatorFn|ValidatorFn[]|FormControlOptions|null,
       asyncValidator?: AsyncValidatorFn|AsyncValidatorFn[]|null) {
     super(pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts));
     this._applyFormState(formState);
@@ -1640,6 +1678,13 @@ export class FormControl extends AbstractControl {
       // to `true` to allow that during the control creation process.
       emitEvent: !!this.asyncValidator
     });
+    if (isOptionsObj(validatorOrOpts) && validatorOrOpts.initialValueIsDefault) {
+      if (this._isBoxedValue(formState)) {
+        this.defaultValue = formState.value;
+      } else {
+        this.defaultValue = formState;
+      }
+    }
   }
 
   /**
@@ -1678,13 +1723,15 @@ export class FormControl extends AbstractControl {
    * `onChange` event to
    * update the view.
    *
-   *   `emitModelToViewChange`：如果为 `true` 或未提供（默认），则每次变化都会触发一个 `onChange` 事件以更新视图。
+   *   `emitModelToViewChange`：如果为 `true` 或未提供（默认），则每次变化都会触发一个 `onChange`
+   * 事件以更新视图。
    *
    * * `emitViewToModelChange`: When true or not supplied (the default), each change triggers an
    * `ngModelChange`
    * event to update the model.
    *
-   *   `emitViewToModelChange`：如果为 `true` 或未提供（默认），则每次变化都会触发一个 `ngModelChange` 事件以更新模型。
+   *   `emitViewToModelChange`：如果为 `true` 或未提供（默认），则每次变化都会触发一个
+   * `ngModelChange` 事件以更新模型。
    *
    */
   override setValue(value: any, options: {
@@ -1727,8 +1774,23 @@ export class FormControl extends AbstractControl {
   }
 
   /**
-   * Resets the form control, marking it `pristine` and `untouched`, and setting
-   * the value to null.
+   * Resets the form control, marking it `pristine` and `untouched`, and resetting
+   * the value. The new value will be the provided value (if passed), `null`, or the initial value
+   * if `initialValueIsDefault` was set in the constructor via {@link FormControlOptions}.
+   *
+   * ```ts
+   * // By default, the control will reset to null.
+   * const dog = new FormControl('spot');
+   * dog.reset(); // dog.value is null
+   *
+   * // If this flag is set, the control will instead reset to the initial value.
+   * const cat = new FormControl('tabby', {initialValueIsDefault: true});
+   * cat.reset(); // cat.value is "tabby"
+   *
+   * // A value passed to reset always takes precedence.
+   * const fish = new FormControl('finn', {initialValueIsDefault: true});
+   * fish.reset('bubble'); // fish.value is "bubble"
+   * ```
    *
    * 重置该表单控件，把它标记为 `pristine` 和 `untouched`，并把它的值设置为 `null`。
    *
@@ -1756,8 +1818,10 @@ export class FormControl extends AbstractControl {
    *   `statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。
    *   如果为 `false`，则不会发出事件。
    */
-  override reset(formState: any = null, options: {onlySelf?: boolean, emitEvent?: boolean} = {}):
-      void {
+  override reset(formState: any = this.defaultValue, options: {
+    onlySelf?: boolean,
+    emitEvent?: boolean
+  } = {}): void {
     this._applyFormState(formState);
     this.markAsPristine(options);
     this.markAsUntouched(options);
@@ -1773,7 +1837,7 @@ export class FormControl extends AbstractControl {
   /**
    * @internal
    */
-  override _anyControls(condition: Function): boolean {
+  override _anyControls(condition: (c: AbstractControl) => boolean): boolean {
     return false;
   }
 
@@ -1804,7 +1868,7 @@ export class FormControl extends AbstractControl {
    *
    * @internal
    */
-  _unregisterOnChange(fn: Function): void {
+  _unregisterOnChange(fn: (value?: any, emitModelEvent?: boolean) => void): void {
     removeListItem(this._onChange, fn);
   }
 
@@ -1835,7 +1899,7 @@ export class FormControl extends AbstractControl {
   /**
    * @internal
    */
-  override _forEachChild(cb: Function): void {}
+  override _forEachChild(cb: (c: AbstractControl) => void): void {}
 
   /** @internal */
   override _syncPendingControls(): boolean {
@@ -1947,7 +2011,8 @@ export class FormControl extends AbstractControl {
  * has explicitly specified a different `updateOn` value.
  *
  * 该选项对象可用来为每个子控件的 `updateOn` 属性设置默认值。
- * 如果在组级把 `updateOn` 设置为 `'blur'`，则所有子控件的默认值也是 `'blur'`，除非这个子控件显式的指定了另一个 `updateOn` 值。
+ * 如果在组级把 `updateOn` 设置为 `'blur'`，则所有子控件的默认值也是
+ * `'blur'`，除非这个子控件显式的指定了另一个 `updateOn` 值。
  *
  * ```ts
  * const c = new FormGroup({
@@ -1962,23 +2027,23 @@ export class FormGroup extends AbstractControl {
    * Creates a new `FormGroup` instance.
    *
    * 创建一个新的 `FormGroup` 实例
-  *
-  * @param controls A collection of child controls. The key for each child is the name
+   *
+   * @param controls A collection of child controls. The key for each child is the name
    * under which it is registered.
-  *
-  * 一组子控件。每个子控件的名字就是它注册时用的 `key`。
+   *
+   * 一组子控件。每个子控件的名字就是它注册时用的 `key`。
    *
    * @param validatorOrOpts A synchronous validator function, or an array of
    * such functions, or an `AbstractControlOptions` object that contains validation functions
    * and a validation trigger.
    *
    * 一个同步验证器函数或其数组，或者一个包含验证函数和验证触发器的 `AbstractControlOptions` 对象。
-  *
-  * @param asyncValidator A single async validator or array of async validator functions
+   *
+   * @param asyncValidator A single async validator or array of async validator functions
    *
    * 单个的异步验证器函数或其数组。
-  *
-  */
+   *
+   */
   constructor(
       public controls: {[key: string]: AbstractControl},
       validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null,
@@ -2114,7 +2179,8 @@ export class FormGroup extends AbstractControl {
    * Reports false for disabled controls. If you'd like to check for existence in the group
    * only, use {@link AbstractControl#get get} instead.
    *
-   * 对于已禁用的控件，返回 `false`。如果你只想检查它是否存在于该组中，请改用 {@link AbstractControl#get get} 代替。
+   * 对于已禁用的控件，返回 `false`。如果你只想检查它是否存在于该组中，请改用 {@link
+   * AbstractControl#get get} 代替。
    *
    * @param controlName The control name to check for existence in the collection
    *
@@ -2166,8 +2232,8 @@ export class FormGroup extends AbstractControl {
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
    *
-   * 当值变化时，此配置项会决定该控件会如何传播变更以及发出事件。该配置项会被传给 {@link AbstractControl#updateValueAndValidity
-   * updateValueAndValidity} 方法。
+   * 当值变化时，此配置项会决定该控件会如何传播变更以及发出事件。该配置项会被传给 {@link
+   * AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
    *
    * * `onlySelf`: When true, each change only affects this control, and not its parent. Default is
    * false.
@@ -2179,8 +2245,9 @@ export class FormGroup extends AbstractControl {
    * observables emit events with the latest status and value when the control value is updated.
    * When false, no events are emitted.
    *
-   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和 `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。
-   * 如果为 `false` 则不发出事件。
+   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和
+   * `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。 如果为 `false`
+   * 则不发出事件。
    *
    */
   override setValue(
@@ -2198,7 +2265,8 @@ export class FormGroup extends AbstractControl {
    * names as keys, and does its best to match the values to the correct controls
    * in the group.
    *
-   * 修补此 `FormGroup` 的值。它接受一个以控件名为 key 的对象，并尽量把它们的值匹配到组中正确的控件上。
+   * 修补此 `FormGroup` 的值。它接受一个以控件名为 key
+   * 的对象，并尽量把它们的值匹配到组中正确的控件上。
    *
    * It accepts both super-sets and sub-sets of the group without throwing an error.
    *
@@ -2240,9 +2308,9 @@ export class FormGroup extends AbstractControl {
    * is updated. When false, no events are emitted. The configuration options are passed to
    * the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
-   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和 `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。
-   * 如果为 `false` 则不发出事件。
-   * 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
+   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和
+   * `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。 如果为 `false`
+   * 则不发出事件。 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
    *
    */
@@ -2266,7 +2334,8 @@ export class FormGroup extends AbstractControl {
    * Resets the `FormGroup`, marks all descendants `pristine` and `untouched` and sets
    * the value of all descendants to null.
    *
-   * 重置这个 `FormGroup`，把它的各级子控件都标记为 `pristine` 和 `untouched`，并把它们的值都设置为 `null`。
+   * 重置这个 `FormGroup`，把它的各级子控件都标记为 `pristine` 和 `untouched`，并把它们的值都设置为
+   * `null`。
    *
    * You reset to a specific form state by passing in a map of states
    * that matches the structure of your form, with control names as keys. The state
@@ -2298,9 +2367,9 @@ export class FormGroup extends AbstractControl {
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
    *
-   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和 `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。
-   * 如果为 `false` 则不发出事件。
-   * 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
+   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和
+   * `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。 如果为 `false`
+   * 则不发出事件。 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
    *
    * @usageNotes
@@ -2417,7 +2486,7 @@ export class FormGroup extends AbstractControl {
   }
 
   /** @internal */
-  override _anyControls(condition: Function): boolean {
+  override _anyControls(condition: (c: AbstractControl) => boolean): boolean {
     for (const controlName of Object.keys(this.controls)) {
       const control = this.controls[controlName];
       if (this.contains(controlName) && condition(control)) {
@@ -2430,7 +2499,7 @@ export class FormGroup extends AbstractControl {
   /** @internal */
   _reduceValue() {
     return this._reduceChildren(
-        {}, (acc: {[k: string]: AbstractControl}, control: AbstractControl, name: string) => {
+        {}, (acc: {[k: string]: any}, control: AbstractControl, name: string): any => {
           if (control.enabled || this.disabled) {
             acc[name] = control.value;
           }
@@ -2439,7 +2508,7 @@ export class FormGroup extends AbstractControl {
   }
 
   /** @internal */
-  _reduceChildren(initValue: any, fn: Function) {
+  _reduceChildren<T>(initValue: T, fn: (acc: T, control: AbstractControl, name: string) => T): T {
     let res = initValue;
     this._forEachChild((control: AbstractControl, name: string) => {
       res = fn(res, control, name);
@@ -2478,7 +2547,8 @@ export class FormGroup extends AbstractControl {
  * the controls in a `FormArray` is invalid, the entire array becomes invalid.
  *
  * `FormArray` 聚合了数组中每个表单控件的值。
- * 它还会根据其所有子控件的状态总结出自己的状态。比如，如果 `FromArray` 中的任何一个控件是无效的，那么整个数组也会变成无效的。
+ * 它还会根据其所有子控件的状态总结出自己的状态。比如，如果 `FromArray`
+ * 中的任何一个控件是无效的，那么整个数组也会变成无效的。
  *
  * `FormArray` is one of the three fundamental building blocks used to define forms in Angular,
  * along with `FormControl` and `FormGroup`.
@@ -2533,7 +2603,8 @@ export class FormGroup extends AbstractControl {
  * has explicitly specified a different `updateOn` value.
  *
  * 该配置对象可以为每个子控件的 `updateOn` 属性设置默认值。
- * 如果在数组级把 `updateOn` 设置为 `'blur'`，则所有子控件的默认值也是 `'blur'`，除非这个子控件显式的指定了另一个 `updateOn` 值。
+ * 如果在数组级把 `updateOn` 设置为 `'blur'`，则所有子控件的默认值也是
+ * `'blur'`，除非这个子控件显式的指定了另一个 `updateOn` 值。
  *
  * ```ts
  * const arr = new FormArray([
@@ -2551,8 +2622,9 @@ export class FormGroup extends AbstractControl {
  * the `FormArray` directly, as that result in strange and unexpected behavior such
  * as broken change detection.
  *
- * 要改变数组中的控件列表，可以使用 `FormArray` 本身的 `push`、`insert`、`removeAt` 或 `clear` 方法。这些方法能确保表单数组正确的跟踪这些子控件。
- * 不要直接修改实例化 `FormArray` 时传入的那个 `AbstractControl` 数组，否则会导致奇怪的、非预期的行为，比如破坏变更检测机制。
+ * 要改变数组中的控件列表，可以使用 `FormArray` 本身的 `push`、`insert`、`removeAt` 或 `clear`
+ * 方法。这些方法能确保表单数组正确的跟踪这些子控件。 不要直接修改实例化 `FormArray` 时传入的那个
+ * `AbstractControl` 数组，否则会导致奇怪的、非预期的行为，比如破坏变更检测机制。
  *
  * @publicApi
  */
@@ -2561,23 +2633,23 @@ export class FormArray extends AbstractControl {
    * Creates a new `FormArray` instance.
    *
    * 创建一个新的 `FormArray` 实例
-  *
-  * @param controls An array of child controls. Each child control is given an index
+   *
+   * @param controls An array of child controls. Each child control is given an index
    * where it is registered.
    *
    * 一个子控件数组。在注册后，每个子控件都会有一个指定的索引。
    *
-  * @param validatorOrOpts A synchronous validator function, or an array of
+   * @param validatorOrOpts A synchronous validator function, or an array of
    * such functions, or an `AbstractControlOptions` object that contains validation functions
    * and a validation trigger.
    *
    * 一个同步验证器函数或其数组，或者一个包含验证函数和验证触发器的 `AbstractControlOptions` 对象。
    *
-  * @param asyncValidator A single async validator or array of async validator functions
+   * @param asyncValidator A single async validator or array of async validator functions
    *
    * 单个的异步验证器函数或其数组。
    *
-  */
+   */
   constructor(
       public controls: AbstractControl[],
       validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null,
@@ -2769,9 +2841,9 @@ export class FormArray extends AbstractControl {
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
    *
-   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和 `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。
-   * 如果为 `false` 则不发出事件。
-   * 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
+   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和
+   * `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。 如果为 `false`
+   * 则不发出事件。 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
    *
    */
@@ -2789,7 +2861,8 @@ export class FormArray extends AbstractControl {
    * structure of the control, and does its best to match the values to the correct
    * controls in the group.
    *
-   * 修补此 `FormArray` 的值。它接受一个与该控件的结构相匹配的数组，并尽量把它们的值匹配到组中正确的控件上。
+   * 修补此 `FormArray`
+   * 的值。它接受一个与该控件的结构相匹配的数组，并尽量把它们的值匹配到组中正确的控件上。
    *
    * It accepts both super-sets and sub-sets of the array without throwing an error.
    *
@@ -2831,9 +2904,9 @@ export class FormArray extends AbstractControl {
    * is updated. When false, no events are emitted. The configuration options are passed to
    * the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
-   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和 `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。
-   * 如果为 `false` 则不发出事件。
-   * 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
+   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和
+   * `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。 如果为 `false`
+   * 则不发出事件。 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
    *
    */
@@ -2856,7 +2929,8 @@ export class FormArray extends AbstractControl {
    * Resets the `FormArray` and all descendants are marked `pristine` and `untouched`, and the
    * value of all descendants to null or null maps.
    *
-   * 重置这个 `FormArray`，把它的各级子控件都标记为 `pristine` 和 `untouched`，并把它们的值都设置为 `null`。
+   * 重置这个 `FormArray`，把它的各级子控件都标记为 `pristine` 和 `untouched`，并把它们的值都设置为
+   * `null`。
    *
    * You reset to a specific form state by passing in an array of states
    * that matches the structure of the control. The state is a standalone value
@@ -2916,9 +2990,9 @@ export class FormArray extends AbstractControl {
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
    *
-   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和 `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。
-   * 如果为 `false` 则不发出事件。
-   * 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
+   *    `emitEvent`：如果为 `true` 或未提供（默认），则当控件值发生变化时，`statusChanges` 和
+   * `valueChanges` 这两个 `Observable` 分别会以最近的状态和值发出事件。 如果为 `false`
+   * 则不发出事件。 该配置项会被传给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
    *
    */
@@ -3021,7 +3095,7 @@ export class FormArray extends AbstractControl {
   }
 
   /** @internal */
-  override _forEachChild(cb: Function): void {
+  override _forEachChild(cb: (c: AbstractControl, index: number) => void): void {
     this.controls.forEach((control: AbstractControl, index: number) => {
       cb(control, index);
     });
@@ -3035,7 +3109,7 @@ export class FormArray extends AbstractControl {
   }
 
   /** @internal */
-  override _anyControls(condition: Function): boolean {
+  override _anyControls(condition: (c: AbstractControl) => boolean): boolean {
     return this.controls.some((control: AbstractControl) => control.enabled && condition(control));
   }
 

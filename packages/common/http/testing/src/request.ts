@@ -10,6 +10,16 @@ import {HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest, HttpResponse, Ht
 import {Observer} from 'rxjs';
 
 /**
+ * Type that describes options that can be used to create an error
+ * in `TestRequest`.
+ */
+type TestRequestErrorOptions = {
+  headers?: HttpHeaders|{[name: string]: string | string[]},
+  status?: number,
+  statusText?: string,
+};
+
+/**
  * A mock requests that was received and is ready to be answered.
  *
  * 已收到并准备好进行应答的模拟请求。
@@ -45,7 +55,8 @@ export class TestRequest {
    * If the request specifies an expected body type, the body is converted into the requested type.
    * Otherwise, the body is converted to `JSON` by default.
    *
-   * 通过返回 body 以及其他 HTTP 信息（例如响应标头）（如果提供过）来解析请求。如果请求指定了预期的 body 类型，则将 body 转换为所请求的类型。否则，body 在默认情况下转换成 `JSON`。
+   * 通过返回 body 以及其他 HTTP 信息（例如响应标头）（如果提供过）来解析请求。如果请求指定了预期的
+   * body 类型，则将 body 转换为所请求的类型。否则，body 在默认情况下转换成 `JSON`。
    *
    * Both successful and unsuccessful responses can be delivered via `flush()`.
    *
@@ -92,12 +103,14 @@ export class TestRequest {
    *
    * 通过返回 `ErrorEvent` （例如，模拟网络故障）来解决请求。
    *
+   * @deprecated Http requests never emit an `ErrorEvent`. Please specify a `ProgressEvent`.
    */
-  error(error: ErrorEvent, opts: {
-    headers?: HttpHeaders|{[name: string]: string | string[]},
-    status?: number,
-    statusText?: string,
-  } = {}): void {
+  error(error: ErrorEvent, opts?: TestRequestErrorOptions): void;
+  /**
+   * Resolve the request by returning an `ProgressEvent` (e.g. simulating a network failure).
+   */
+  error(error: ProgressEvent, opts?: TestRequestErrorOptions): void;
+  error(error: ProgressEvent|ErrorEvent, opts: TestRequestErrorOptions = {}): void {
     if (this.cancelled) {
       throw new Error(`Cannot return an error for a cancelled request.`);
     }

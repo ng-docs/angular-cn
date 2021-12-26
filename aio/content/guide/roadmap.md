@@ -2,9 +2,9 @@
 
 # Angular 路线图
 
-<p class="roadmap-last-updated">Last updated: 2021-05-19</p>
+<p class="roadmap-last-updated">Last updated: 2021-11-03</p>
 
-<p class="roadmap-last-updated">最后更新于: 2021-05-19</p>
+<p class="roadmap-last-updated">最后更新于: 2021-11-03</p>
 
 Angular receives a large number of feature requests, both from inside Google and from the broader open-source community. At the same time, our list of projects contains plenty of maintenance tasks, code refactorings, and potential performance improvements. We bring together representatives from developer relations, product management, and engineering to prioritize this list. As new projects come into the queue, we regularly position them based on relative priority to other projects. As work gets done, projects move up in the queue.
 
@@ -18,37 +18,29 @@ The following projects are not associated with a particular Angular version. We'
 
 ## 进行中
 
-### Improve test times and debugging with automatic test environment tear down
+### Better developer ergonomics with strict typing for `@angular/forms`
 
-### 通过自动拆除（Tear down）测试环境来缩短测试时间和调试
+### 更好的开发者工程学，带有严格类型的 `@angular/forms`
 
-To improve test time and create better isolation across tests, we want to change <code>[TestBed](api/core/testing/TestBed)</code> to automatically clean up and tear down the test environment after each test run.
+We will work on finding a way to implement stricter type checking for reactive forms with minimal backward incompatible implications. This way, we let developers catch more issues during development time, enable better text editor and IDE support, and improve the type checking for reactive forms.
 
-为了缩短测试时间，并更好地在测试之间进行隔离，我们希望将 `TestBed` 更改为在每次测试运行后自动清理和拆除测试环境。
+我们将努力寻找一种方法，以具有最小向后不兼容影响的方式对响应式表单实施更严格的类型检查。通过这种方式，我们可以让开发人员在开发期间发现更多问题，启用更好的文本编辑器和 IDE 支持，并改进响应式表单的类型检查。
 
-### Deprecate and remove IE11 support
+### Simplified Angular mental model with optional NgModules
 
-### 弃用和删除 IE11 支持
+### 带有可选 NgModules 的简化 Angular 心智模型
 
-IE11 has been preventing Angular from taking advantage of some of the modern features of the Web platform. As part of this project we are going to deprecate and remove IE11 support to open the path for modern features that evergreen browsers provide. We ran an [RFC](https://github.com/angular/angular/issues/41840) to collected feedback from the community and decide on next steps to move forward.
+To simplify the Angular mental model and learning journey, we’ll be working on making NgModules optional. This work lets developers develop standalone components and implement an alternative API for declaring the component’s compilation scope. We kicked this project off with high-level design discussions that we captured in an [RFC](https://github.com/angular/angular/discussions/43784).
 
-IE11 一直在阻止 Angular 利用 Web 平台的一些现代功能。作为该项目的一部分，我们将弃用和删除 IE11 支持，以为使用常绿浏览器提供的现代功能开路。我们运行了一个 [RFC](https://github.com/angular/angular/issues/41840) 来收集来自社区的反馈并决定下一步的走向。
+为了简化 Angular 心智模型和学习之旅，我们将努力使 NgModules 成为可选的。这项工作使开发人员可以开发独立组件并实现用于声明组件编译范围的替代 API。我们通过从[RFC](https://github.com/angular/angular/discussions/43784)中获得的高级设计讨论开始了这个项目。
 
-### Leverage ES2017+ as the default output language
+### Investigate micro frontend architecture for scalable development processes
 
-### 利用 ES2017+ 作为默认输出语言
+### 研究可扩展开发流程的微前端架构
 
-Supporting modern browsers lets us take advantage of the more compact, expressive, and performant new syntax of JavaScript. As part of this project we’ll investigate what are the blockers to move forward with this effort and take the steps forward to enable it.
+Look into independent deployability and development of large-scale applications to improve efficiency and productivity. The Angular community has an established story for micro frontend support. As part of this effort, we’d investigate what would be the correct abstractions to provide better support.
 
-支持现代浏览器让我们可以利用更紧凑、更具表现力和性能的 JavaScript 新语法。作为该项目的一部分，我们将调查推进这项工作的阻碍因素都有什么，并采取措施使其成为可能。
-
-### Revamp performance dashboards to detect regressions
-
-### 改进性能仪表盘来检测性能退化
-
-We have a set of benchmarks that we run against every code change to ensure Angular aligns with our performance standards. To ensure the framework’s runtime does not regress after a code change, we need to refine some of the existing infrastructure the dashboards step on.
-
-我们有一套每次代码更改时都要运行的基准测试，以确保 Angular 符合我们的性能标准。为确保框架的运行时不会在代码更改后倒退，我们需要改进仪表板所使用的一些现有基础设施。
+研究大规模应用程序的独立部署和开发，以提高效率和生产力。 Angular 社区有一个关于微前端支持的既定故事。作为这项工作的一部分，我们将研究什么才是能提供更好支持的正确抽象。
 
 ### Enhanced Angular Material components by integrating [MDC Web](https://material.io/develop/web/)
 
@@ -66,73 +58,41 @@ We're evaluating components in Angular Material against accessibility standards 
 
 我们正在根据 WCAG 等无障碍性标准评估 Angular Material 中的组件，并努力解决此过程中出现的任何问题。
 
-### Remove legacy [View Engine](guide/ivy)
+### Remove legacy [View Engine](guide/glossary#ve)
 
-### 删除旧版[视图引擎](guide/ivy)
+### 删除旧版[视图引擎](guide/glossary#ve)
 
 After the transition of all our internal tooling to Ivy is completed, we will remove the legacy View Engine for reduced Angular conceptual overhead, smaller package size, lower maintenance cost, and lower codebase complexity.
 
 在我们所有内部工具向 Ivy 的转换完成后，我们将移除旧的 View Engine，以减少 Angular 的概念开销、获得更小的包大小、更低的维护成本和更低的代码库复杂度。
 
-### Publish guides on advanced concepts
+### Launch advanced compiler diagnostics
 
-### 发布高级概念指南
+### 启动高级编译器诊断
 
-Develop and publish an in-depth guide on change detection. Develop content for performance profiling of Angular applications. Cover how change detection interacts with Zone.js and explain when it gets triggered, how to profile its duration, as well as common practices for performance optimization.
+Extend the diagnostics of the Angular compiler outside type checking. Introduce other correctness and conformance checks to further guarantee correctness and best practices.
 
-制定并发布有关变更检测的深入指南。开发用于 Angular 应用程序性能分析的内容。涵盖变更检测如何与 Zone.js 交互并解释何时触发、如何分析其持续时间以及性能优化的常用实践。
+将 Angular 编译器的诊断扩展到类型检查之外。引入其他正确性和一致性检查，以进一步保证正确性和最佳实践。
 
-### Update our e2e testing strategy
+### Improve Angular DevTools' integration with framework
 
-### 更新我们的 e2e 测试策略
+### 改进 Angular DevTools 与框架的集成
 
-To ensure we provide a future-proof e2e testing strategy, we want to evaluate the state of Protractor, community innovations, e2e best practices, and explore novel opportunities. As first steps of the effort, we shared an [RFC](https://github.com/angular/protractor/issues/5502) and worked with partners to ensure smooth integration between the Angular CLI and state of the art tooling for e2e testing. As the next step, we need to finalize the recommendations and compile a list of resources for the transition.
+To improve the integration of Angular DevTools with the framework, we are working on moving the codebase to the [angular/angular](https://github.com/angular/angular) monorepository. This includes transitioning Angular DevTools to Bazel and integrating it into the existing processes and CI pipeline.
 
-为了确保我们能提供面向未来的 e2e 测试策略，我们希望评估 Protractor 的状态、社区的创新、e2e 最佳实践，并探索新的机会。
-
-### Angular libraries use Ivy
-
-### Angular 库使用 Ivy
-
-Earlier in 2020, we shared an [RFC](https://github.com/angular/angular/issues/38366) for Ivy library distribution. After invaluable feedback from the community, we developed a design of the project. We are now investing in the development of Ivy library distribution, including an update of the library package format to use Ivy compilation, unblock the deprecation of the View Engine library format, and [ngcc](guide/glossary#ngcc).
-
-在 2020 年早些时候，我们共享了一个用于 Ivy 库发布方式[的 RFC](https://github.com/angular/angular/issues/38366)。经过社区的宝贵反馈，我们开发出了该项目的设计方案。我们现在正致力于 Ivy 库发布方式开发，包括更新库包的格式，以便使用 Ivy 编译，继续推进弃用 View Engine 库格式以及 [ngcc](https://angular.io/guide/glossary#ngcc)。
-
-### Ensure smooth adoption for future RxJS changes (v7 and beyond)
-
-### 确保顺利采用未来的 RxJS 更改（v7 及更高版本）
-
-We want to ensure Angular developers are taking advantage of the latest capabilities of RxJS and have a smooth transition to the next major releases of the framework. For this purpose, we will explore and document the scope of the changes in v7 and beyond RxJS and plan an update strategy.
-
-我们希望确保 Angular 开发人员能够利用 RxJS 的最新功能，并顺利过渡到该框架的下一个主要版本。为此，我们将探索并记录 v7 及 RxJS 之后的变化范围，并计划更新策略。
-
-### Simplified Angular mental model with optional NgModules
-
-### 带有可选 NgModules 的简版 Angular 心智模型
-
-To simplify the Angular mental model and learning journey, we’ll be working on making NgModules optional. This work lets developers develop standalone components and implement an alternative API for declaring the component’s compilation scope.
-
-为了简化 Angular 的心智模型和学习之旅，我们将努力使 NgModules 成为可选的。这项工作使开发人员可以开发独立组件并实现用于声明组件编译范围的替代 API。
+为了改进 Angular DevTools 与框架的集成，我们正在努力将代码库移至[angular/angular](https://github.com/angular/angular)这个单一仓库。这包括将 Angular DevTools 转换为 Bazel，并将其集成到现有流程和 CI 管道中。
 
 ## Future
 
 ## 未来
 
-### Investigate micro frontend architecture for scalable development processes
+### Revamp performance dashboards to detect regressions
 
-### 研究可扩展开发流程的微前端架构
+### 改进性能仪表板以支持回归检测
 
-Look into independent deployability and development of large-scale applications to improve efficiency and productivity. The Angular community has an established story for micro frontend support. As part of this effort, we’d investigate what would be the correct abstractions to provide better support.
+We have a set of benchmarks that we run against every code change to ensure Angular aligns with our performance standards. To ensure the framework’s runtime does not regress after a code change, we need to refine some of the existing infrastructure the dashboards step on.
 
-研究大规模应用程序的独立部署和开发，以提高效率和生产力。 Angular 社区有一个关于微前端支持的既定故事。作为这项工作的一部分，我们将研究什么是正确的抽象以提供更好的支持。
-
-### Better developer ergonomics with strict typing for `@angular/forms`
-
-### 通过为 `@angular/forms` 实现严格类型化来提升开发效率
-
-We will work on implementing stricter type checking for reactive forms. This way, we let developers catch more issues during development time, enable better text editor and IDE support, and improve the type checking for reactive forms.
-
-我们将努力为响应式表单实现更严格的类型检查。这样，我们就可以让开发人员在开发期间捕获更多的问题，提供更好的文本编辑器和 IDE 支持，并改进对响应式表单的类型检查。
+我们有一套针对每一次代码更改都要运行的基准测试，以确保 Angular 符合我们的性能标准。为确保框架的运行时在代码更改后不会退化，我们需要改进仪表板所使用的一些现有基础设施。
 
 ### Leverage full framework capabilities with Zone.js opt-out
 
@@ -166,6 +126,14 @@ A common problem with web applications is their slow initial load time. A way to
 
 Web 应用程序的一个常见问题是它们的初始加载时间很慢。改进它的方法之一是在组件级别应用更细粒度的代码拆分。为了鼓励这种做法，我们将致力于开发更符合人体工程学的代码拆分 API。
 
+### Publish guides on advanced concepts
+
+Develop and publish an in-depth guide on change detection. Develop content for performance profiling of Angular applications. Cover how change detection interacts with Zone.js and explain when it gets triggered, how to profile its duration, as well as common practices for performance optimization.
+
+### Ensure smooth adoption for future RxJS changes (version 8 and beyond)
+
+We want to ensure Angular developers are taking advantage of the latest capabilities of RxJS and have a smooth transition to the next major releases of the framework. For this purpose, we will explore and document the scope of the changes in v7 and beyond RxJS, and plan an update strategy.
+
 <details class="completed-details" open="true">
 <summary>
   <h2>Completed</h2>
@@ -176,6 +144,36 @@ Web 应用程序的一个常见问题是它们的初始加载时间很慢。改�
   </span>
 </summary>
 <div class="details-content">
+
+### Update our e2e testing strategy
+
+_Completed Q3 2021_
+
+To ensure we provide a future-proof e2e testing strategy, we want to evaluate the state of Protractor, community innovations, e2e best practices, and explore novel opportunities. As first steps of the effort, we shared an [RFC](https://github.com/angular/protractor/issues/5502) and worked with partners to ensure smooth integration between the Angular CLI and state of the art tooling for e2e testing. As the next step, we need to finalize the recommendations and compile a list of resources for the transition.
+
+### Angular libraries use Ivy
+
+_Completed Q3 2021_
+
+Earlier in 2020, we shared an [RFC](https://github.com/angular/angular/issues/38366) for Ivy library distribution. After invaluable feedback from the community, we developed a design of the project. We are now investing in the development of Ivy library distribution, including an update of the library package format to use Ivy compilation, unblock the deprecation of the View Engine library format, and [ngcc](guide/glossary#ngcc).
+
+### Improve test times and debugging with automatic test environment tear down
+
+_Completed Q3 2021_
+
+To improve test time and create better isolation across tests, we want to change <code>[TestBed](api/core/testing/TestBed)</code> to automatically clean up and tear down the test environment after each test run.
+
+### Deprecate and remove IE11 support
+
+_Completed Q3 2021_
+
+Internet Explorer 11 (IE11) has been preventing Angular from taking advantage of some of the modern features of the Web platform. As part of this project we are going to deprecate and remove IE11 support to open the path for modern features that evergreen browsers provide. We ran an [RFC](https://github.com/angular/angular/issues/41840) to collect feedback from the community and decide on next steps to move forward.
+
+### Leverage ES2017+ as the default output language
+
+_Completed Q3 2021_
+
+Supporting modern browsers lets us take advantage of the more compact, expressive, and performant new syntax of JavaScript. As part of this project we’ll investigate what the blockers are to moving forward with this effort, and take the steps to enable it.
 
 ### Accelerated debugging and performance profiling with Angular DevTools
 

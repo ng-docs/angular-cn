@@ -2,7 +2,7 @@
 @use '../../mixins';
 
 // Disable sidenav animations for the initial render.
-.starting.mat-drawer-transition .mat-drawer-content {
+.no-animations.mat-drawer-transition .mat-drawer-content {
   transition: none;
 }
 
@@ -13,13 +13,17 @@ mat-sidenav-container.sidenav-container {
   transform: none;
 
   &.has-floating-toc {
-    .mat-sidenav-content {
-      margin-right: 18vw;
+    .sidenav-content-container {
+      padding-right: 18vw;
     }
   }
 
-  .sidenav-content {
+  .sidenav-content-container {
     height: auto;
+
+    .sidenav-content {
+      overflow-x: auto;
+    }
   }
 
   mat-sidenav.sidenav {

@@ -2,35 +2,73 @@
 
 # 根据语言环境格式化数据
 
-{@a i18n-pipes}
-
-Angular provides the following built-in data transformation [pipes][AioGuideGlossaryPipe]. The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to format data based on rules of each locale.
+Angular provides the following built-in data transformation [pipes][AioGuideGlossaryPipe].  The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to format data based on rules of each locale.
 
 Angular 提供了以下内置的数据转换[管道][AioGuideGlossaryPipe]。数据转换管道会使用 [`LOCALE_ID`][AioApiCoreLocaleId] 标记来根据每个语言环境的规则来格式化数据。
 
-* [`DatePipe`][AioApiCommonDatepipe]: Formats a date value.
+| Data transformation pipe                   | Details                                           |
+|:-------------------------------------------|:--------------------------------------------------|
+| 数据转换管道                                     | 详情                                                |
+| [`DatePipe`][AioApiCommonDatepipe]         | Formats a date value.                             |
+| [`DatePipe`][AioApiCommonDatepipe]         | 格式化日期值。                                           |
+| [`CurrencyPipe`][AioApiCommonCurrencypipe] | Transforms a number into a currency string.       |
+| [`CurrencyPipe`][AioApiCommonCurrencypipe] | 将数字转换为货币字符串。                                      |
+| [`DecimalPipe`][AioApiCommonDecimalpipe]   | Transforms a number into a decimal number string. |
+| [`DecimalPipe`][AioApiCommonDecimalpipe]   | 将数字转换为十进制数字字符串。                                   |
+| [`PercentPipe`][AioApiCommonPercentpipe]   | Transforms a number into a percentage string.     |
+| [`PercentPipe`][AioApiCommonPercentpipe]   | 将数字转换为百分比字符串。                                     |
 
-  [ `DatePipe` ][AioApiCommonDatepipe]：格式化日期值。
+## Use DatePipe to display the current date
 
-* [`CurrencyPipe`][AioApiCommonCurrencypipe]: Transforms a number to a currency string.
+## 使用 DatePipe 显示当前日期
 
-  [ `CurrencyPipe` ][AioApiCommonCurrencypipe]：将数字转换为货币字符串。
+To display the current date in the format for the current locale, use the following format for the `DatePipe`.
 
-* [`DecimalPipe`][AioApiCommonDecimalpipe]: Transforms a number into a decimal number string.
+要以当前语言环境的格式显示当前日期，请对 `DatePipe` 使用以下格式。
 
-  [ `DecimalPipe` ][AioApiCommonDecimalpipe]：将数字转换为十进制数字字符串。
+<!--todo: replace with code-example -->
 
-* [`PercentPipe`][AioApiCommonPercentpipe]: Transforms a number to a percentage string.
+<code-example format="typescript" language="typescript">
 
-  [ `PercentPipe` ][AioApiCommonPercentpipe]：将数字转换为百分比字符串。
+{{ today | date }}
 
-For example, `{{today | date}}` uses `DatePipe` to display the current date in the format for the locale in `LOCALE_ID`.
+</code-example>
 
-例如， `{{today | date}}` 会使用 `DatePipe` 以 `LOCALE_ID` 中语言环境的格式显示当前日期。
+## Override current locale for CurrencyPipe
 
-To override the value of `LOCALE_ID`, add the `locale` parameter. For example, to force the currency to use `en-US` no matter which language-locale you set for `LOCALE_ID`, use this form: `{{amount | currency : 'en-US'}}`.
+## 改写 CurrencyPipe 的当前语言环境
 
-要覆盖 `LOCALE_ID` 的值，请添加 `locale` 参数。例如，无论你为 `LOCALE_ID` 设置哪种语言语言环境，要强制货币使用 `en-US` ，请使用以下形式： `{{amount | currency : 'en-US'}}` 。
+Add the `locale` parameter to the pipe to override the current value of `LOCALE_ID` token.
+
+将 `locale` 参数添加到此管道以覆盖 `LOCALE_ID` 标记的当前值。
+
+To force the currency to use American English (`en-US`), use the following format for the `CurrencyPipe`
+
+要强制货币使用美式英语 ( `en-US` )，请以如下格式使用 `CurrencyPipe` 
+
+<!--todo: replace with code-example -->
+
+<code-example format="typescript" language="typescript">
+
+{{ amount | currency : 'en-US' }}
+
+</code-example>
+
+<div class="alert is-helpful">
+
+**NOTE**: The locale specified for the `CurrencyPipe` overrides the global `LOCALE_ID` token of your application.
+
+**注意**：为 `CurrencyPipe` 指定的语音环境设置会覆盖应用程序的全局 `LOCALE_ID` 标记。
+
+</div>
+
+## What's next
+
+## 下一步是什么
+
+- [Prepare templates for translations][AioGuideI18nCommonPrepare]
+
+  [准备翻译模板][AioGuideI18nCommonPrepare]
 
 <!-- links -->
 
@@ -46,8 +84,10 @@ To override the value of `LOCALE_ID`, add the `locale` parameter. For example, t
 
 [AioGuideGlossaryPipe]: guide/glossary#pipe "pipe - Glossary | Angular"
 
+[AioGuideI18nCommonPrepare]: guide/i18n-common-prepare "Prepare templates for translations | Angular"
+
 <!-- external links -->
 
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-28

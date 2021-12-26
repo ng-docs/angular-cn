@@ -20,7 +20,7 @@ export interface ɵStyleData {
  *
  * 表示一个动画步骤中的动画时序参数。
  *
-* @see `animate()`
+ * @see `animate()`
  *
  * @publicApi
  */
@@ -30,8 +30,8 @@ export declare type AnimateTimings = {
    * such as "1s" or "10ms" for one second and 10 milliseconds, respectively.
    * The default unit is milliseconds.
    *
-   * 此动画步骤的完整持续时间。包括一个数字和一个可选的时间单位，比如 "1s" 表示一秒 或 "10ms" 表示 10 毫秒。
-   * 默认的单位是毫秒。
+   * 此动画步骤的完整持续时间。包括一个数字和一个可选的时间单位，比如 "1s" 表示一秒 或 "10ms" 表示
+   * 10 毫秒。 默认的单位是毫秒。
    */
   duration: number,
   /**
@@ -47,7 +47,8 @@ export declare type AnimateTimings = {
    * and decelerates during its run time. An easing function such as `cubic-bezier()`,
    * or one of the following constants:
    *
-   * 一种缓动风格，用于控制此动画步骤在运行期间如何加速和减速。动画函数或者是像 `cubic-bezier()` 这样的函数，或者是下列常量之一：
+   * 一种缓动风格，用于控制此动画步骤在运行期间如何加速和减速。动画函数或者是像 `cubic-bezier()`
+   * 这样的函数，或者是下列常量之一：
    *
    * - `ease-in`
    * - `ease-out`
@@ -100,7 +101,7 @@ export declare interface AnimationOptions {
    *
    * 一组可由开发人员来定义的参数，用于在动画开始时修改样式和时序。
    * 这是一组键值对，它所提供的值会用做默认值。
-  */
+   */
   params?: {[name: string]: any};
 }
 
@@ -269,7 +270,7 @@ export interface AnimationTriggerMetadata extends AnimationMetadata {
    * The trigger name, used to associate it with an element. Unique within the component.
    *
    * 触发器名称，用于把它和元素关联起来。在组件内要唯一。
-    */
+   */
   name: string;
   /**
    * An animation definition object, containing an array of state and transition declarations.
@@ -359,7 +360,8 @@ export interface AnimationTransitionMetadata extends AnimationMetadata {
  * Instantiated and returned by the `animation()` function, and
  * passed to the `useAnimation()` function.
  *
- * 封装一个可复用的动画，包括一组独立的动画步骤。由 `animation()` 函数返回，并传给 `useAnimation()` 函数。
+ * 封装一个可复用的动画，包括一组独立的动画步骤。由 `animation()` 函数返回，并传给 `useAnimation()`
+ * 函数。
  *
  * @publicApi
  */
@@ -637,7 +639,8 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * and `transition()` entries to be evaluated when the expression
  * bound to the trigger changes.
  *
- * 创建一个有名字的动画触发器，包含一个 `state()` 和 `transition()` 的列表，当此触发器的绑定表达式发生变化时，它们就会重新求值。
+ * 创建一个有名字的动画触发器，包含一个 `state()` 和 `transition()`
+ 的列表，当此触发器的绑定表达式发生变化时，它们就会重新求值。
  *
  * @param name An identifying string.
  *
@@ -819,7 +822,8 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * them if needed. This is also the case for when a sub animation is
  * queried by a parent and then later animated using `animateChild()`.
  *
- * 不管内部动画禁用与否，父动画总能 `query()` 模板里已禁用区域中的内部元素，如果需要，也可以播放它们。
+ * 不管内部动画禁用与否，父动画总能 `query()`
+ 模板里已禁用区域中的内部元素，如果需要，也可以播放它们。
  * 还有一种方式是当父动画查询到子动画后，用 `animateChild()` 来播放它。
  *
  * ### Detecting when an animation is disabled
@@ -832,7 +836,8 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * the `.disabled` flag on the event is true.
  *
  * 如果 DOM 中的某个区域（或整个应用程序）的动画被禁用时，动画触发器的回调仍然会触发，但持续 0 秒。
- * 当回调被触发时，它会提供一个 `AnimationEvent` 的例子。如果动画被禁用了，则该事件上的 `.disabled` 标志为 `true`。
+ * 当回调被触发时，它会提供一个 `AnimationEvent` 的例子。如果动画被禁用了，则该事件上的 `.disabled`
+ 标志为 `true`。
  *
  * @publicApi
  */
@@ -870,7 +875,8 @@ export function trigger(name: string, definitions: AnimationMetadata[]): Animati
  * 1000 milliseconds, and delay of 100 ms, and the "ease-out" easing style,
  * which decelerates near the end of the duration.
  *
- * 比如，字符串 "1s 100ms ease-out" 指定了一个 1000 毫秒的持续时间，一个 100 毫秒的延迟和一个 "ease-out" 缓动效果，它会快结束时减速。
+ * 比如，字符串 "1s 100ms ease-out" 指定了一个 1000 毫秒的持续时间，一个 100 毫秒的延迟和一个
+ * "ease-out" 缓动效果，它会快结束时减速。
  *
  * @param styles Sets AnimationStyles for the parent animation.
  * A function call to either `style()` or `keyframes()`
@@ -894,7 +900,8 @@ export function trigger(name: string, definitions: AnimationMetadata[]): Animati
  * `transition()` call to specify an animation step
  * that applies given style data to the parent animation for a given amount of time.
  *
- * 在一个 `sequence()`（动画序列）、`{@link animations/group group()}`（动画分组）或 `transition()`（转场动画）中调用本函数，
+ * 在一个 `sequence()`（动画序列）、`{@link animations/group group()}`（动画分组）或
+ * `transition()`（转场动画）中调用本函数，
  * 以定义一个动画步骤，来把指定的样式数据在父动画上播放指定的时长。
  *
  * ### Syntax Examples
@@ -928,7 +935,8 @@ export function trigger(name: string, definitions: AnimationMetadata[]): Animati
  * - `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")` : Duration is 5000 milliseconds, delay is 10
  * milliseconds, easing according to a bezier curve.
  *
- *   `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")`：持续 5000 毫秒，延迟 10 毫秒，基于一条 Bezier 曲线进行缓动。
+ *   `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")`：持续 5000 毫秒，延迟 10 毫秒，基于一条
+ * Bezier 曲线进行缓动。
  *
  * **Style examples**
  *
@@ -980,7 +988,8 @@ export function animate(
  * - To specify offset styles to be applied at a later time, define steps with
  * `keyframes()`, or use `animate()` calls with a delay value.
  *
- *   要指定供带有延迟的偏移样式，请使用 `keyframes()` 调用来定义步骤；如果要指定延迟的时长，则改用 `animate()` 调用。
+ *   要指定供带有延迟的偏移样式，请使用 `keyframes()` 调用来定义步骤；如果要指定延迟的时长，则改用
+ * `animate()` 调用。
  *
  * For example:
  *
@@ -1087,7 +1096,8 @@ export function sequence(
  * can then be used for an animation `state`, within an animation `sequence`,
  * or as styling data for calls to `animate()` and `keyframes()`.
  *
- * 声明一个包含 CSS 属性/样式的键值对象，可在动画序列中用作动画状态（`state`），或在调用 `animate()` 和 `keyframes()` 时作为传入的样式数据。
+ * 声明一个包含 CSS 属性/样式的键值对象，可在动画序列中用作动画状态（`state`），或在调用 `animate()`
+ *和 `keyframes()` 时作为传入的样式数据。
  *
  * @param tokens A set of CSS styles or HTML styles associated with an animation state.
  * The value can be any of the following:
@@ -1132,8 +1142,8 @@ export function sequence(
  * style({ width: 100, height: 0 })
  * ```
  *
- * The following example uses auto-styling to allow a component to animate from
- * a height of 0 up to the height of the parent element:
+ * The following example uses auto-styling to allow an element to animate from
+ * a height of 0 up to its full height:
  *
  * 下面的例子使用了自动样式，以允许此动画将组件的高度从 0 逐渐增长到其父元素的高度：
  *
@@ -1165,7 +1175,8 @@ export function style(tokens: '*'|{[key: string]: string | number}|
  * the element is detached from the application. For example, when an `ngIf` evaluates
  * to false, the state of the associated element is void.
  *
- *   `void` 你可以使用该名称关联一些样式，用于定义当该元素从应用中移除时的样式。比如，当 `ngIf` 的值为 `false` 时，相关元素的状态就是 `void`。
+ *   `void` 你可以使用该名称关联一些样式，用于定义当该元素从应用中移除时的样式。比如，当 `ngIf`
+ *的值为 `false` 时，相关元素的状态就是 `void`。
  *
  *  - `*` (asterisk) Indicates the default state. You can associate styles with this name
  * to be used as the fallback when the state that is being animated is not declared
@@ -1234,7 +1245,8 @@ export function state(
  * within the animation arc.
  * Compare [CSS Keyframe Animations](https://www.w3schools.com/css/css3_animations.asp).
  *
- * 和 `animate()` 调用一起使用。关键帧动画不会直接在当前状态和目标状态之间应用动画，而是描述在动画弧线的哪个时间点上应用哪个样式。
+ * 和 `animate()`
+ 调用一起使用。关键帧动画不会直接在当前状态和目标状态之间应用动画，而是描述在动画弧线的哪个时间点上应用哪个样式。
  * 详情参见 [CSS 关键帧动画](https://www.w3schools.com/css/css3_animations.asp)。
  *
  * ### Usage
@@ -1245,7 +1257,8 @@ export function state(
  * when each `backgroundColor` value is applied. The color is red at the start, and changes to
  * blue when 20% of the total time has elapsed.
  *
- * 下面的例子中，偏移值描述了每个 `backgroundColor` 值应该何时应用上去。开始时的颜色是红色，在总时间的 20% 处变为蓝色。
+ * 下面的例子中，偏移值描述了每个 `backgroundColor`
+ 值应该何时应用上去。开始时的颜色是红色，在总时间的 20% 处变为蓝色。
  *
  * ```typescript
  * // the provided offset values
@@ -1278,65 +1291,19 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
 }
 
 /**
- * Declares an animation transition as a sequence of animation steps to run when a given
- * condition is satisfied. The condition is a Boolean expression or function that compares
- * the previous and current animation states, and returns true if this transition should occur.
- * When the state criteria of a defined transition are met, the associated animation is
- * triggered.
+ * Declares an animation transition which is played when a certain specified condition is met.
  *
  * 声明一个转场动画，以便在满足给定条件时运行一系列动画步骤。该条件是一个逻辑型表达式或一个函数，
  * 该函数比较以前和现在的动画状态，如果应该开始转场则返回 `true`。
  * 当满足所定义的转场动画的状态标准时，就会开始执行相关的动画。
  *
- * @param stateChangeExpr A Boolean expression or function that compares the previous and current
- * animation states, and returns true if this transition should occur. Note that  "true" and "false"
- * match 1 and 0, respectively. An expression is evaluated each time a state change occurs in the
- * animation trigger element.
- * The animation steps run when the expression evaluates to true.
+ * @param stateChangeExpr A string with a specific format or a function that specifies when the
+ * animation transition should occur (see [State Change Expression](#state-change-expression)).
  *
- * 一个逻辑表达式或一个函数，该函数用来比较以前和现在的动画状态，如果应该开始转场，则返回 `true`。注意，"true" 和 "false" 分别对应于 1 和 0。
- * 在动画触发器所在的元素中，每当状态发生变化时该表达式都会求值一次。
- * 当该表达式求值为真时，则执行这些动画步骤。
+ * @param steps One or more animation objects that represent the animation's instructions.
  *
- * - A state-change string takes the form "state1 => state2", where each side is a defined animation
- * state, or an asterix (*) to refer to a dynamic start or end state.
- *
- *   一个 "state1 => state2" 格式的状态变更字符串，每一侧都是一个事先定义好的动画状态，或者用星号（`*`）来动态获取起始或结束状态。
- *
- *   - The expression string can contain multiple comma-separated statements;
- * for example "state1 => state2, state3 => state4".
- *
- *     该表达式字符串可以包含多个逗号分隔的状态，比如 "state1 => state2, state3 => state4"。
- *
- *   - Special values `:enter` and `:leave` initiate a transition on the entry and exit states,
- * equivalent to  "void => *"  and "* => void".
- *
- *     特殊值 `:enter` 表示进入此状态时的转场，等价于 "void => *"，`:leave` 表示退出此状态时的转场，等价于 "* => void"。
- *
- *   - Special values `:increment` and `:decrement` initiate a transition when a numeric value has
- * increased or decreased in value.
- *
- *     特殊值 `:increment`、`:decrement` 表示数字型值增加或减小时的转场。
- *
- * - A function is executed each time a state change occurs in the animation trigger element.
- * The animation steps run when the function returns true.
- *
- *   一个函数，每当动画触发器所在的元素发生了状态变化时就会执行。
- *   当该函数返回 `true` 时，就会执行这些动画步骤。
- *
- * @param steps One or more animation objects, as returned by the `animate()` or
- * `sequence()` function, that form a transformation from one state to another.
- * A sequence is used by default when you pass an array.
- *
- * 一个或多个由 `animate()` 或 `sequence()` 函数返回的动画对象，用于描述从一个状态到另一个状态的转变过程。
- * 当传入一个数组时，默认当做一个动画序列使用。
- *
- * @param options An options object that can contain a delay value for the start of the animation,
- * and additional developer-defined parameters. Provided values for additional parameters are used
- * as defaults, and override values can be passed to the caller on invocation.
- *
- * 一个配置对象，可以包含一个开始动画之前的延迟值，和一些由开发人员定义的参数。在这些参数中提供的值会被用作样式的默认值，
- * 在调用时调用者可以重写这些值。
+ * @param options An options object that can be used to specify a delay for the animation or provide
+ * custom parameters for it.
  *
  * @returns An object that encapsulates the transition data.
  *
@@ -1344,176 +1311,135 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *
  * @usageNotes
  *
- * The template associated with a component binds an animation trigger to an element.
+ * ### State Change Expression
  *
- * 与组件关联的模板会把动画触发器绑定到某个元素上。
+ * The State Change Expression instructs Angular when to run the transition's animations, it can
+ *either be
+ *  - a string with a specific syntax
+ *  - or a function that compares the previous and current state (value of the expression bound to
+ *    the element's trigger) and returns `true` if the transition should occur or `false` otherwise
  *
- * ```HTML
- * <!-- somewhere inside of my-component-tpl.html -->
- * <div [@myAnimationTrigger]="myStatusExp">...</div>
- * ```
+ * The string format can be:
+ *  - `fromState => toState`, which indicates that the transition's animations should occur then the
+ *    expression bound to the trigger's element goes from `fromState` to `toState`
  *
- * All transitions are defined within an animation trigger,
- * along with named states that the transitions change to and from.
+ *    _Example:_
+ *      ```typescript
+ *        transition('open => closed', animate('.5s ease-out', style({ height: 0 }) ))
+ *      ```
  *
- * 所有转场动画以及用于供转场动画使用的命名状态，都是在动画触发器中定义的，
+ *  - `fromState <=> toState`, which indicates that the transition's animations should occur then
+ *    the expression bound to the trigger's element goes from `fromState` to `toState` or vice versa
  *
- * ```typescript
- * trigger("myAnimationTrigger", [
- *  // define states
- *  state("on", style({ background: "green" })),
- *  state("off", style({ background: "grey" })),
- *  ...]
- * ```
+ *    _Example:_
+ *      ```typescript
+ *        transition('enabled <=> disabled', animate('1s cubic-bezier(0.8,0.3,0,1)'))
+ *      ```
  *
- * Note that when you call the `sequence()` function within a `{@link animations/group group()}`
- * or a `transition()` call, execution does not continue to the next instruction
- * until each of the inner animation steps have completed.
- *
- * 注意，当你在 `{@link animations/group group()}` 或 `transition()` 中调用 `sequence()` 函数时，除非其内部动画步骤已经执行完了，
- * 否则不会继续执行后续步骤。
- *
- * ### Syntax examples
- *
- * ### 语法范例
- *
- * The following examples define transitions between the two defined states (and default states),
- * using various options:
- *
- * 下面的例子中定义了一些在两个已定义状态（和默认状态）之间的转场动画，使用了多种选项：
+ *  - `:enter`/`:leave`, which indicates that the transition's animations should occur when the
+ *    element enters or exists the DOM
  *
  * ```typescript
- * // Transition occurs when the state value
- * // bound to "myAnimationTrigger" changes from "on" to "off"
- * transition("on => off", animate(500))
- * // Run the same animation for both directions
- * transition("on <=> off", animate(500))
- * // Define multiple state-change pairs separated by commas
- * transition("on => off, off => void", animate(500))
- * ```
+ * transition(':enter', [
+ *          style({ opacity: 0 }),
+ *          animate('500ms', style({ opacity: 1 }))
+ *        ])
+ *      ```
  *
- * ### Special values for state-change expressions
+ *  - `:increment`/`:decrement`, which indicates that the transition's animations should occur when
+ *    the numerical expression bound to the trigger's element has increased in value or decreased
  *
- * ### 状态变更表达式的一些特殊值
+ *    _Example:_
+ *      ```typescript
+ *        transition(':increment', query('@counter', animateChild()))
+ *      ```
  *
- * - Catch-all state change for when an element is inserted into the page and the
- * destination state is unknown:
+ *  - a sequence of any of the above divided by commas, which indicates that transition's animations
+ *    should occur whenever one of the state change expressions matches
  *
- *   当元素插入到页面中，并且目标状态未知时的所有状态变更：
+ *    _Example:_
+ *      ```typescript
+ *        transition(':increment, * => enabled, :enter', animate('1s ease', keyframes([
+ *          style({ transform: 'scale(1)', offset: 0}),
+ *          style({ transform: 'scale(1.1)', offset: 0.7}),
+ *          style({ transform: 'scale(1)', offset: 1})
+ *        ]))),
+ *      ```
  *
- * ```typescript
- * transition("void => *", [
- *  style({ opacity: 0 }),
- *  animate(500)
- *  ])
- * ```
+ * Also note that in such context:
+ *  - `void` can be used to indicate the absence of the element
+ *  - asterisks can be used as wildcards that match any state
+ *  - (as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
+ *    equivalent to `:leave`)
+ *  - `true` and `false` also match expression values of `1` and `0` respectively (but do not match
+ *    _truthy_ and _falsy_ values)
  *
- * - Capture a state change between any states:
+ * <div class="alert is-helpful">
  *
- *   任意两个状态之间的变更：
+ *  Be careful about entering end leaving elements as their transitions present a common
+ *  pitfall for developers.
  *
- *  `transition("* => *", animate("1s 0s"))`
+ *  Note that when an element with a trigger enters the DOM its `:enter` transition always
+ *  gets executed, but its `:leave` transition will not be executed if the element is removed
+ *  alongside its parent (as it will be removed "without warning" before its transition has
+ *  a chance to be executed, the only way that such transition can occur is if the element
+ *  is exiting the DOM on its own).
  *
- * - Entry and exit transitions:
  *
- *   进场和立场时的转场动画：
+ * </div>
  *
- * ```typescript
- * transition(":enter", [
- *   style({ opacity: 0 }),
- *   animate(500, style({ opacity: 1 }))
- *   ]),
- * transition(":leave", [
- *   animate(500, style({ opacity: 0 }))
- *   ])
- * ```
- *
- * - Use `:increment` and `:decrement` to initiate transitions:
- *
- *   使用 `:increment` 和 `:decrement` 来开始转场：
- *
- * ```typescript
- * transition(":increment", group([
- *  query(':enter', [
- *     style({ left: '100%' }),
- *     animate('0.5s ease-out', style('*'))
- *   ]),
- *  query(':leave', [
- *     animate('0.5s ease-out', style({ left: '-100%' }))
- *  ])
- * ]))
- *
- * transition(":decrement", group([
- *  query(':enter', [
- *     style({ left: '100%' }),
- *     animate('0.5s ease-out', style('*'))
- *   ]),
- *  query(':leave', [
- *     animate('0.5s ease-out', style({ left: '-100%' }))
- *  ])
- * ]))
- * ```
- *
- * ### State-change functions
- *
- * ### 状态变更函数
- *
- * Here is an example of a `fromState` specified as a state-change function that invokes an
- * animation when true:
- *
- * 下面的例子把 `fromState` 指定为状态变更函数，当它返回 `true` 时就会执行动画：
- *
- * ```typescript
- * transition((fromState, toState) =>
- *  {
- *   return fromState == "off" && toState == "on";
- *  },
- *  animate("1s 0s"))
- * ```
- *
- * ### Animating to the final state
+ * ### Animating to a Final State
  *
  * ### 把动画播放到最终状态
  *
  * If the final step in a transition is a call to `animate()` that uses a timing value
- * with no style data, that step is automatically considered the final animation arc,
- * for the element to reach the final state. Angular automatically adds or removes
+ * with no `style` data, that step is automatically considered the final animation arc,
+ * for the element to reach the final state, in such case Angular automatically adds or removes
  * CSS styles to ensure that the element is in the correct final state.
  *
- * 如果转场动画的最后一步是调用 `animate()`，并且只传入时序参数却不带样式数据，则该步骤会被自动当做动画弧的终点，
- * 以便让该元素达到最终状态。
- * Angular 会根据需要自动添加或移除 CSS 样式，以确保该元素处于正确的最终状态。
  *
- * The following example defines a transition that starts by hiding the element,
- * then makes sure that it animates properly to whatever state is currently active for trigger:
+ * ### Usage Examples
  *
- * 下面的例子定义了一个转场动画，它先隐藏该元素，然后确保它可以正确设置到触发器处于激活状态时的动画：
+ *  - Transition animations applied based on
+ *    the trigger's expression value
  *
- * ```typescript
- * transition("void => *", [
- *   style({ opacity: 0 }),
- *   animate(500)
- *  ])
- * ```
- * ### Boolean value matching
+ *   ```HTML
+ *   <div [@myAnimationTrigger]="myStatusExp">
+ *    ...
+ *   </div>
+ *   ```
  *
- * ### 逻辑值匹配
+ *   ```typescript
+ *   trigger("myAnimationTrigger", [
+ *     ..., // states
+ *     transition("on => off, open => closed", animate(500)),
+ *     transition("* <=> error", query('.indicator', animateChild()))
+ *   ])
+ *   ```
  *
- * If a trigger binding value is a Boolean, it can be matched using a transition expression
- * that compares true and false or 1 and 0. For example:
+ *  - Transition animations applied based on custom logic dependent
+ *    on the trigger's expression value and provided parameters
  *
- * 如果触发器的绑定值是逻辑型的，它就可以使用一个与 `true`、`false` 或 1、0 进行比较的转场表达式进行匹配。例如：
+ *    ```HTML
+ *    <div [@myAnimationTrigger]="{
+ *     value: stepName,
+ *     params: { target: currentTarget }
+ *    }">
+ *     ...
+ *    </div>
+ *    ```
  *
- * ```
- * // in the template
- * <div [@openClose]="open ? true : false">...</div>
- * // in the component metadata
- * trigger('openClose', [
- *   state('true', style({ height: '*' })),
- *   state('false', style({ height: '0px' })),
- *   transition('false <=> true', animate(500))
- * ])
- * ```
+ *    ```typescript
+ *    trigger("myAnimationTrigger", [
+ *      ..., // states
+ *      transition(
+ *        (fromState, toState, _element, params) =>
+ *          ['firststep', 'laststep'].includes(fromState.toLowerCase())
+ *          && toState === params?.['target'],
+ *        animate('1s')
+ *      )
+ *    ])
+ *    ```
  *
  * @publicApi
  **/
@@ -1535,7 +1461,8 @@ export function transition(
  * or `sequence()` function, that form a transformation from one state to another.
  * A sequence is used by default when you pass an array.
  *
- * 一个或多个由 `animate()` 或 `sequence()` 函数返回的动画对象，用于描述从一个状态到另一个状态的转变过程。
+ * 一个或多个由 `animate()` 或 `sequence()`
+ * 函数返回的动画对象，用于描述从一个状态到另一个状态的转变过程。
  * 当传入一个数组时，默认当做一个动画序列使用。
  *
  * @param options An options object that can contain a delay value for the start of the
@@ -1670,13 +1597,9 @@ export function useAnimation(
  *
  * @param selector The element to query, or a set of elements that contain Angular-specific
  * characteristics, specified with one or more of the following tokens.
- *
- * 要查询的元素，或一组具有 Angular 中定义的某些特征的一组元素，可以用如下令牌（token）进行指定：
- *
- *  - `query(":enter")` or `query(":leave")` : Query for newly inserted/removed elements.
- *
- *    `query(":enter")` 或 `query(":leave")`：查询新插入或移除的元素。
- *
+ *  - `query(":enter")` or `query(":leave")` : Query for newly inserted/removed elements (not
+ *     all elements can be queried via these tokens, see
+ *     [Entering and Leaving Elements](#entering-and-leaving-elements))
  *  - `query(":animating")` : Query all currently animating elements.
  *
  *    `query(":animating")`：查询所有正在播放动画的元素。
@@ -1709,6 +1632,8 @@ export function useAnimation(
  * 一个封装了查询数据的对象。
  *
  * @usageNotes
+ *
+ * ### Multiple Tokens
  *
  * Tokens can be merged into a combined query selector string. For example:
  *
@@ -1743,6 +1668,26 @@ export function useAnimation(
  *   animate(...)
  * ], { optional: true })
  * ```
+ *
+ * ### Entering and Leaving Elements
+ *
+ * Not all elements can be queried via the `:enter` and `:leave` tokens, the only ones
+ * that can are those that Angular assumes can enter/leave based on their own logic
+ * (if their insertion/removal is simply a consequence of that of their parent they
+ * should be queried via a different token in their parent's `:enter`/`:leave` transitions).
+ *
+ * The only elements Angular assumes can enter/leave on their own logic (thus the only
+ * ones that can be queried via the `:enter` and `:leave` tokens) are:
+ *  - Those inserted dynamically (via `ViewContainerRef`)
+ *  - Those that have a structural directive (which, under the hood, are a subset of the above ones)
+ *
+ * <div class="alert is-helpful">
+ *
+ *  Note that elements will be successfully queried via `:enter`/`:leave` even if their
+ *  insertion/removal is not done manually via `ViewContainerRef`or caused by their structural
+ *  directive (e.g. they enter/exit alongside their parent).
+ *
+ * </div>
  *
  * ### Usage Example
  *

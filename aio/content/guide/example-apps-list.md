@@ -677,10 +677,6 @@ For the sample application that the testing guides describe, see the <live-examp
 
 对于测试指南中描述的范例应用，参阅 <live-example noDownload name="testing">sample app</live-example>。
 
-For the tests featured in the testing guides, see <live-example name="testing" stackblitz="specs" noDownload>tests</live-example>.
-
-对于测试指南中的测试，参阅 <live-example name="testing" stackblitz="specs" noDownload>tests</live-example>。
-
 Demonstrates techniques for testing Angular.
 For more information, see [Testing](guide/testing).
 

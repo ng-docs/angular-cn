@@ -6,10 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {getDebugContext, getErrorLogger, getOriginalError} from './errors';
-import {DebugContext} from './view/types';
-
-
+import {getErrorLogger, getOriginalError} from './errors';
 
 /**
  * Provides a hook for centralized exception handling.
@@ -20,7 +17,8 @@ import {DebugContext} from './view/types';
  * intercept error handling, write a custom exception handler that replaces this default as
  * appropriate for your app.
  *
- * `ErrorHandler` 的默认实现将错误消息打印到 `console`。要拦截错误处理，请编写一个自定义的异常处理器，该异常处理器将把此默认行为改成你应用所需的。
+ * `ErrorHandler` 的默认实现将错误消息打印到
+ * `console`。要拦截错误处理，请编写一个自定义的异常处理器，该异常处理器将把此默认行为改成你应用所需的。
  *
  * @usageNotes
  *
@@ -51,7 +49,6 @@ export class ErrorHandler {
 
   handleError(error: any): void {
     const originalError = this._findOriginalError(error);
-    const context = this._findContext(error);
     // Note: Browser consoles show the place from where console.error was called.
     // We can use this to give users additional information about the error.
     const errorLogger = getErrorLogger(error);
@@ -60,14 +57,6 @@ export class ErrorHandler {
     if (originalError) {
       errorLogger(this._console, `ORIGINAL ERROR`, originalError);
     }
-    if (context) {
-      errorLogger(this._console, 'ERROR CONTEXT', context);
-    }
-  }
-
-  /** @internal */
-  _findContext(error: any): DebugContext|null {
-    return error ? (getDebugContext(error) || this._findContext(getOriginalError(error))) : null;
   }
 
   /** @internal */

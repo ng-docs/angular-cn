@@ -50,20 +50,21 @@ This section walks you through adding a **Buy** button and setting up a cart ser
 
 ### 定义购物车服务
 
-1. To generate a cart service, right click on the `app` folder, choose **Angular Generator**, and choose **Service**.
-    Name the new service `cart`.
+This section walks you through creating the `CartService` that tracks products added to shopping cart.
 
-   要想生成购物车服务，请右键单击 `app` 文件夹，选择 `Angular Generator`，并选择 `Service`。把这个新服务命名为 `cart`。
+本节将引导你创建用于跟踪添加到购物车的产品的 `CartService` 。
 
-  <code-example header="src/app/cart.service.ts" path="getting-started/src/app/cart.service.1.ts"></code-example>
+1. In the terminal generate a new `cart` service by running the following command:
 
-1. Import the `Product` interface from `./products.js`.
+   在终端中通过运行以下命令生成一个新的 `cart` 服务：
 
-   从 `./products.js` 导入 `Product` 接口。
+    ```sh
+    ng generate service cart
+    ```
 
-2. In the `CartService` class, define an `items` property to store the array of the current products in the cart.
+1. Import the `Product` interface from `./products.ts` into the `cart.service.ts` file, and in the `CartService` class, define an `items` property to store the array of the current products in the cart.
 
-   在 `CartService` 类中，定义一个 `items` 属性来把当前商品的数组存储在购物车中。
+   将 `Product` 接口从 `./products.ts` 导入到 `cart.service.ts` 文件中，在 `CartService` 类中，定义一个 `items` 属性来存储购物车中当前产品的数组。
 
    <code-example path="getting-started/src/app/cart.service.ts" header="src/app/cart.service.ts" region="props"></code-example>
 
@@ -182,19 +183,27 @@ For customers to see their cart, you can create the cart view in two steps:
 
  要创建购物车视图，可遵循与创建  `ProductDetailsComponent` 相同的步骤，并且为这个新组件配置路由。
 
-1. Generate a cart component named `cart` by right-clicking the `app` folder, choosing **Angular Generator**, and **Component**.
+1. Generate a new component named `cart` in the terminal by running the following command:
 
-   右键单击 `app` 文件夹，选择 **Angular Generator** 和 **Component** 以生成一个名为 `cart` 的购物车组件。
+   通过运行以下命令在终端中生成一个名为 `cart` 的新组件：
+
+    ```sh
+    ng generate component cart
+    ```
+
+   This command will generate the `cart.component.ts` file and it associated template and styles files.
+
+   此命令将生成 `cart.component.ts` 文件及其关联的模板和样式文件。
 
    <code-example header="src/app/cart/cart.component.ts" path="getting-started/src/app/cart/cart.component.1.ts"></code-example>
 
-    StackBlitz also generates an `ngOnInit()` by default in components.  You can ignore the `CartComponent` `ngOnInit()` for this tutorial.
+   StackBlitz also generates an `ngOnInit()` by default in components.  You can ignore the `CartComponent` `ngOnInit()` for this tutorial.
 
-    StackBlitz 默认还会在组件中生成一个 `ngOnInit()`。不过在本教程中，你可以忽略 `CartComponent` 的 `ngOnInit()`。
+   StackBlitz 还在组件中默认生成一个 `ngOnInit()` 。对于本教程，你可以忽略 `CartComponent` 的 `ngOnInit()` 。
 
-1. Ensure that the newly created `CartComponent` is added to the module's `declarations` in `app.module.ts`.
+1. Note that the newly created `CartComponent` is added to the module's `declarations` in `app.module.ts`.
 
-   确保新建的 `CartComponent` 已经添加到了 `app.module.ts` 中该模块的 `declarations` 中。
+   请注意，新创建的 `CartComponent` 已添加到 `app.module.ts` 中模块的 `declarations` 中。
 
     <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-cart">
     </code-example>
@@ -398,9 +407,17 @@ Now that you've configured your application to retrieve shipping data, you can c
 
 现在你的应用已经可以检索配送数据了，你还要创建一个配送组件和相关的模板。
 
-1. Generate a new component named `shipping` by right-clicking the `app` folder, choosing **Angular Generator**, and selecting **Component**.
+1. Generate a cart component named `shipping` in the terminal by running the following command:
 
-   右键单击 `app` 文件夹，选择 **Angular Generator** 和 **Component** 来生成一个名为 `shipping` 的新组件。
+   在终端窗口中运行如下命令，以生成名为 `shipping` 的组件：
+
+    ```sh
+    ng generate component shipping
+    ```
+
+    This command will generate the `shipping.component.ts` file and it associated template and styles files.
+
+    右键单击 `app` 文件夹，选择 **Angular Generator** 和 **Component** 来生成一个名为 `shipping` 的新组件。
 
    <code-example header="src/app/shipping/shipping.component.ts" path="getting-started/src/app/shipping/shipping.component.1.ts"></code-example>
 
@@ -412,9 +429,9 @@ Now that you've configured your application to retrieve shipping data, you can c
    <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="shipping-route"></code-example>
 
    There's no link to the new shipping component yet, but you can see its template in the preview pane by entering the URL its route specifies.
-    The URL has the pattern: `https://getting-started.stackblitz.io/shipping` where the `getting-started.stackblitz.io` part may be different for your StackBlitz project.
+    The URL has the pattern: `https://angular-ynqttp--4200.local.webcontainer.io/shipping` where the `angular-ynqttp--4200.local.webcontainer.io` part may be different for your StackBlitz project.
 
-   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://getting-started.stackblitz.io/shipping`，其中的 gets-started.stackblitz.io 部分可能与你的 StackBlitz 项目不同。
+   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping` ，其中的 gets-started.stackblitz.io 部分可能与你的 StackBlitz 项目不同。
 
 ### Configuring the `ShippingComponent` to use `CartService`
 
@@ -450,8 +467,7 @@ This section guides you through modifying the `ShippingComponent` to retrieve sh
 
    The `async` pipe returns the latest value from a stream of data and continues to do so for the life of a given component.
     When Angular destroys that component, the `async` pipe automatically stops.
-    For detailed information about the `async` pipe
-   , see the [AsyncPipe API documentation](/api/common/AsyncPipe).
+    For detailed information about the `async` pipe, see the [AsyncPipe API documentation](/api/common/AsyncPipe).
 
    `async` 管道从数据流中返回最新值，并在所属组件的生命期内持续返回。当 Angular 销毁该组件时，`async` 管道会自动停止。关于 `async` 管道的详细信息，请参阅 [AsyncPipe API 文档](/api/common/AsyncPipe)。
 

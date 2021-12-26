@@ -2,64 +2,117 @@
 
 # 通过 ID 引用语言环境
 
-{@a setting-up-locale}
-{@a setting-up-the-locale-of-your-app}
+Angular uses the Unicode *locale identifier* (Unicode locale ID) to find the correct locale data for internationalization of text strings.
 
-Refer to a locale using the Unicode *locale identifier* (ID), which specifies the language, country, and an optional code for further variants or subdivisions.
-
-使用 Unicode *语言环境标识符*(ID) 引用语言环境，该标识符会指定语言、国家/地区以及用于更下级变体或细分的可选代码。
+Angular 使用 Unicode *语言环境标识符*（Unicode 语言环境 ID）来查找正确的语言环境数据，以实现文本字符串的国际化。
 
 <div class="callout is-helpful">
 
-<header>Unicode locale identifiers</header>
+<header>Unicode locale ID</header>
 
-<header>Unicode 语言环境标识符</header>
+<header>Unicode 语言环境 ID</header>
 
-* For a list of language codes, see [ISO 639-2][LocStandardsIso6392].
+*   A locale ID conforms to the [Unicode Common Locale Data Repository (CLDR) core specification][UnicodeCldrDevelopmentCoreSpecification]. For more information about locale IDs, see [Unicode Language and Locale Identifiers][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798].
 
-  有关语言代码的列表，请参阅 [ISO 639-2][LocStandardsIso6392]。
+  语言环境 ID 遵循 [Unicode 通用语言环境数据仓库 (CLDR) 核心规范][UnicodeCldrDevelopmentCoreSpecification]。有关语言环境 ID 的更多信息，请参阅 [Unicode 语言和语言环境标识符][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798]。
 
-* IDs conform to the Unicode Common Locale Data Repository (CLDR).
-  For more information about Unicode locale identifiers, see [CLDR core specification][UnicodeCldrCoreSpecUnicodeLanguageAndLocaleIdentifiers].
+*   CLDR and Angular use [BCP 47 tags][RfcEditorInfoBcp47] as the base for the locale ID.
 
-  ID 符合 Unicode 通用语言环境数据存储库 (CLDR)。有关 Unicode 语言环境标识符的更多信息，请参阅 [CLDR 核心规范][UnicodeCldrCoreSpecUnicodeLanguageAndLocaleIdentifiers]。
-
-* CLDR and Angular base their identifiers on [BCP47 tags][RfcEditorInfoBcp47].
-
-  CLDR 和 Angular 的标识符基于 [BCP47 标签][RfcEditorInfoBcp47]。
+  CLDR 和 Angular 以 [BCP 47 标签][RfcEditorInfoBcp47] 作为语言环境 ID 的基础。
 
 </div>
 
-The ID consists of a language identifier, such as `en` for English or `fr` for French, followed by a dash (`-`) and a locale extension, such as `US` for the United States or `CA` for Canada.
-For example, `en-US` refers to English in the United States, and `fr-CA` refers to French in Canada.
-Angular uses this ID to find the correct corresponding locale data.
+A locale ID specifies the language, country, and an optional code for further variants or subdivisions.
+A locale ID consists of the language identifier, a dash (`-`) character, and the locale extension.
 
-ID 由语言标识符组成，例如 `en` 表示英语，`fr` 表示法语，后跟短划线 (`-`) 和语言环境扩展，例如 `US` 表示美国或 `CA` 表示加拿大。例如，`en-US` 表示美国英语， `fr-CA` 表示加拿大法语。 Angular 要用此 ID 来查找相应的语言环境数据。
+语言环境 ID 指定语言、国家/地区和其他变体或细分的可选代码。语言环境 ID 由语言标识符、破折号(`-`)字符和语言环境扩展组成。
+
+<code-example>
+
+{language_id}-{locale_extension}
+
+</code-example>
 
 <div class="alert is-helpful">
 
-Many countries, such as France and Canada, use the same language (French, identified as `fr`) but differ in grammar, punctuation, and formats for currency, decimal numbers, and dates.
-Use a more specific locale ID, such as French for Canada (`fr-CA`), when localizing your application.
+To accurately translate your Angular project, you must decide which languages and locales you are targeting for internationalization.
 
-许多国家/地区，例如法国和加拿大，使用相同的语言（法语，标识为 `fr` ），但在语法、标点符号和货币、十进制数字和日期格式方面有所不同。本地化你的应用程序时，请使用更具体的语言环境 ID，例如加拿大法语 ( `fr-CA` )。
+为了准确地翻译你的 Angular 项目，你必须决定你的国际化目标语言和地区。
+
+Many countries share the same language, but differ in usage.
+The differences include grammar, punctuation, formats for currency, decimal numbers, dates, and so on.
+
+许多国家使用相同的语言，但用法上有些差异。这些差异包括语法、标点符号、货币格式、十进制数字、日期等。
 
 </div>
 
-Angular by default uses `en-US` (English in the United States) as the source locale of your application.
+For the examples in this guide, use the following languages and locales.
 
-默认情况下，Angular 使用 `en-US` （美国英语）作为应用程序的源语言环境。
+对于本指南中的示例，使用了如下语言和语言环境。
+
+| Language | Locale                   | Unicode locale ID |
+|:---------|:-------------------------| :---------------- |
+| 语言       | 地区                       | Unicode 语言环境 ID |
+| English  | Canada                   | `en-CA` |
+| 英语       | 加拿大                      | `en-CA` |
+| English  | United States of America | `en-US` |
+| 英语       | 美国                       | `en-US` |
+| French   | Canada                   | `fr-CA` |
+| 法语       | 加拿大                      | `fr-CA` |
+| French   | France                   | `fr-FR` |
+| 法语       | 法国                       | `fr-FR` |
 
 The [Angular repository][GithubAngularAngularTreeMasterPackagesCommonLocales] includes common locales.
-To change the source locale of your application for the build, set the source locale in the `sourceLocale` field in the [workspace configuration][AioGuideWorkspaceConfig] file (`angular.json`) of your application.
-The build process (described in [Merge translations into the app][AioGuideI18nCommonMerge] in this guide) uses the `angular.json` file of your application to automatically set the [`LOCALE_ID`][AioApiCoreLocaleId] token and load the locale data.
 
-[Angular 存储库][GithubAngularAngularTreeMasterPackagesCommonLocales] 包括一些常见的语言环境。要在构建时更改应用程序的源语言环境，请在应用程序的[工作区配置][AioGuideWorkspaceConfig] 文件 ( `angular.json` ) 的 `sourceLocale` 字段中设置源语言环境。构建过程（在本指南的 [合并翻译到应用程序][AioGuideI18nCommonMerge] 中会讲到）使用应用程序的 `angular.json` 文件自动设置 [ `LOCALE_ID` ][AioApiCoreLocaleId] 令牌并加载语言环境数据。
+[Angular 代码仓库][GithubAngularAngularTreeMasterPackagesCommonLocales]中包括常见的一些语言环境。
+
+<div class="callout is-helpful">
+
+For a list of language codes, see [ISO 639-2][LocStandardsIso6392].
+
+有关语言代码列表，请参阅 [ISO 639-2][LocStandardsIso6392]。
+
+<!--todo: Is this accurate.  ISO 639-2 is 3 digit.  ISO 639-1 is 2 digit.  Reference: http://www.loc.gov/standards/iso639-2/php/code_list.php -->
+
+</div>
+
+## Set the source locale ID
+
+## 设置源语言环境 ID
+
+Use the Angular CLI to set the source language in which you are writing the component template and code.
+
+使用 Angular CLI 设置编写组件模板和代码所用的源语言。
+
+By default, Angular uses `en-US` as the source locale of your project.
+
+默认情况下，Angular 使用 `en-US` 作为项目的源语言环境。
+
+To change the source locale of your project for the build, complete the following actions.
+
+要为此构建更改项目的源语言环境，请完成以下操作。
+
+1. Open the [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file
+
+   打开工作空间构建配置文件 [`angular.json`][AioGuideWorkspaceConfig]
+
+1. Change the source locale in the `sourceLocale` field
+
+   在 `sourceLocale` 字段中更改源语言环境
+
+## What's next
+
+## 下一步是什么
+
+*   [Format data based on locale][AioGuideI18nCommonFormatDataLocale]
+
+  [根据语言环境格式化数据][AioGuideI18nCommonFormatDataLocale]
 
 <!-- links -->
 
-[AioGuideI18nCommonMerge]: guide/i18n-common-merge "Merge translations into the application | Angular"
+[AioGuideI18nCommonFormatDataLocale]: guide/i18n-common-format-data-locale "Format data based on locale | Angular"
 
-[AioApiCoreLocaleId]: api/core/LOCALE_ID "LOCALE_ID | Core - API | Angular"
+[AioGuideI18nCommonMerge]: guide/i18n-common-merge "Merge translations into the application | Angular"
 
 [AioGuideWorkspaceConfig]: guide/workspace-config "Angular workspace configuration | Angular"
 
@@ -71,8 +124,10 @@ The build process (described in [Merge translations into the app][AioGuideI18nCo
 
 [RfcEditorInfoBcp47]: https://www.rfc-editor.org/info/bcp47 "BCP 47 | RFC Editor"
 
-[UnicodeCldrCoreSpecUnicodeLanguageAndLocaleIdentifiers]: http://cldr.unicode.org/core-spec#Unicode_Language_and_Locale_Identifiers "Unicode Language and Locale Identifiers - Core Specification | CLDR - Unicode Common Locale Data Repository | Unicode"
+[UnicodeCldrDevelopmentCoreSpecification]: https://cldr.unicode.org/development/core-specification "Core Specification | Unicode CLDR Project"
+
+[UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798]: https://cldr.unicode.org/development/core-specification#h.vgyyng33o798 "Unicode Language and Locale Identifiers - Core Specification | Unicode CLDR Project"
 
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-28

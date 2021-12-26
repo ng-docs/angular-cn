@@ -72,8 +72,14 @@ export function typeToValue(
       // or
       //   import {Foo as Bar} from 'foo';
 
+      if (firstDecl.isTypeOnly) {
+        // The import specifier can't be type-only (e.g. `import {type Foo} from '...')`.
+        return typeOnlyImport(typeNode, firstDecl);
+      }
+
       if (firstDecl.parent.parent.isTypeOnly) {
-        // Type-only imports cannot be represented as value.
+        // The import specifier can't be inside a type-only import clause
+        // (e.g. `import type {Foo} from '...')`.
         return typeOnlyImport(typeNode, firstDecl.parent.parent);
       }
 
@@ -151,11 +157,11 @@ function noValueDeclaration(
   };
 }
 
-function typeOnlyImport(
-    typeNode: ts.TypeNode, importClause: ts.ImportClause): UnavailableTypeValueReference {
+function typeOnlyImport(typeNode: ts.TypeNode, node: ts.ImportClause|ts.ImportSpecifier):
+    UnavailableTypeValueReference {
   return {
     kind: TypeValueReferenceKind.UNAVAILABLE,
-    reason: {kind: ValueUnavailableKind.TYPE_ONLY_IMPORT, typeNode, importClause},
+    reason: {kind: ValueUnavailableKind.TYPE_ONLY_IMPORT, typeNode, node},
   };
 }
 

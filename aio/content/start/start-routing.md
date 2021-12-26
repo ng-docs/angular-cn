@@ -38,14 +38,17 @@ This section shows you how to define a route to show individual product details.
 本应用已经用 Angular `Router` 导航到了 `ProductListComponent`。本节将介绍如何定义显示单个产品详情的路由。
 
 1. Generate a new component for product details.
-    In the file list, right-click the `app` folder, choose `Angular Generator` and `Component`.
-    Name the component `product-details`.
+    In the terminal generate a new `product-details` component by running the following command:
 
-   生成用于展示产品详情的新组件。在文件列表中，右键单击 `app` 文件夹，选择 `Angular Generator` 和 `Component`。将组件命名为 `product-details` 。
+   生成用于展示产品详情的新组件。在终端窗口运行如下命令来生成一个新的 `product-details` 组件：
 
-1. In `app.module.ts`, add a route for product details, with a `path` of `products/:productId` and `ProductDetailsComponent` for the `component`, include `ProductDetailsComponent` in `AppModule`'s declarations.
+    ```sh
+    ng generate component product-details
+    ```
 
-   在 `app.module.ts` 中，添加产品详情的路由，其 `path` 为 `products/:productId`，其 `component` 为 `ProductDetailsComponent`。把 `ProductDetailsComponent` 包含到 `AppModule` 的 `declarations` 中。
+1. In `app.module.ts`, add a route for product details, with a `path` of `products/:productId` and `ProductDetailsComponent` for the `component`.
+
+   在 `app.module.ts` 中，添加产品详情的路由，其 `path` 为 `products/:productId`，其 `component` 为 `ProductDetailsComponent`。
 
     <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="product-details-route">
     </code-example>

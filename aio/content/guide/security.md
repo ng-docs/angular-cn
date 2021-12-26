@@ -16,9 +16,10 @@ You can run the <live-example></live-example> in Stackblitz and download the cod
 
 你可以运行<live-example></live-example>，在 Stackblitz 中试用并下载本页的代码。
 
+{@a report-issues}
+
 <div class="callout is-important">
 
-{@a report-issues}
 <header>Reporting vulnerabilities</header>
 
 <header>举报漏洞</header>
@@ -34,9 +35,10 @@ philosophy](https://www.google.com/about/appsecurity/).
 
 </div>
 
+{@a best-practices}
+
 <div class="callout is-helpful">
 
-{@a best-practices}
 <header>Best practices</header>
 
 <header>最佳实践</header>

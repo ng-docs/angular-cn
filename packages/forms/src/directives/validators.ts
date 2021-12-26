@@ -13,7 +13,7 @@ import {AbstractControl} from '../model';
 import {emailValidator, maxLengthValidator, maxValidator, minLengthValidator, minValidator, NG_VALIDATORS, nullValidator, patternValidator, requiredTrueValidator, requiredValidator} from '../validators';
 
 /**
- * Method that updates string to integer if not alread a number
+ * Method that updates string to integer if not already a number
  *
  * @param value The value to convert to integer
  * @returns value of parameter in number or integer.
@@ -114,7 +114,7 @@ export interface Validator {
  * For internal use only, this class is not intended for use outside of the Forms package.
  */
 @Directive()
-abstract class AbstractValidatorDirective implements Validator {
+abstract class AbstractValidatorDirective implements Validator, OnChanges {
   private _validator: ValidatorFn = nullValidator;
   private _onChange!: () => void;
 
@@ -145,11 +145,8 @@ abstract class AbstractValidatorDirective implements Validator {
    */
   abstract normalizeInput(input: unknown): unknown;
 
-  /**
-   * Helper function invoked from child classes to process changes (from `ngOnChanges` hook).
-   * @nodoc
-   */
-  handleChanges(changes: SimpleChanges): void {
+  /** @nodoc */
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.inputName in changes) {
       const input = this.normalizeInput(changes[this.inputName].currentValue);
       this._validator = this.enabled() ? this.createValidator(input) : nullValidator;
@@ -219,7 +216,7 @@ export const MAX_VALIDATOR: StaticProvider = {
   providers: [MAX_VALIDATOR],
   host: {'[attr.max]': 'enabled() ? max : null'}
 })
-export class MaxValidator extends AbstractValidatorDirective implements OnChanges {
+export class MaxValidator extends AbstractValidatorDirective {
   /**
    * @description
    * Tracks changes to the max bound to this directive.
@@ -231,15 +228,6 @@ export class MaxValidator extends AbstractValidatorDirective implements OnChange
   override normalizeInput = (input: string|number): number => toFloat(input);
   /** @internal */
   override createValidator = (max: number): ValidatorFn => maxValidator(max);
-  /**
-   * Declare `ngOnChanges` lifecycle hook at the main directive level (vs keeping it in base class)
-   * to avoid differences in handling inheritance of lifecycle hooks between Ivy and ViewEngine in
-   * AOT mode. This could be refactored once ViewEngine is removed.
-   * @nodoc
-   */
-  ngOnChanges(changes: SimpleChanges): void {
-    this.handleChanges(changes);
-  }
 }
 
 /**
@@ -279,7 +267,7 @@ export const MIN_VALIDATOR: StaticProvider = {
   providers: [MIN_VALIDATOR],
   host: {'[attr.min]': 'enabled() ? min : null'}
 })
-export class MinValidator extends AbstractValidatorDirective implements OnChanges {
+export class MinValidator extends AbstractValidatorDirective {
   /**
    * @description
    * Tracks changes to the min bound to this directive.
@@ -291,15 +279,6 @@ export class MinValidator extends AbstractValidatorDirective implements OnChange
   override normalizeInput = (input: string|number): number => toFloat(input);
   /** @internal */
   override createValidator = (min: number): ValidatorFn => minValidator(min);
-  /**
-   * Declare `ngOnChanges` lifecycle hook at the main directive level (vs keeping it in base class)
-   * to avoid differences in handling inheritance of lifecycle hooks between Ivy and ViewEngine in
-   * AOT mode. This could be refactored once ViewEngine is removed.
-   * @nodoc
-   */
-  ngOnChanges(changes: SimpleChanges): void {
-    this.handleChanges(changes);
-  }
 }
 
 /**
@@ -459,7 +438,8 @@ export class RequiredValidator implements Validator {
  * A Directive that adds the `required` validator to checkbox controls marked with the
  * `required` attribute. The directive is provided with the `NG_VALIDATORS` multi-provider list.
  *
- * 该指令会借助 `NG_VALIDATORS` 绑定把 `required` 验证器添加到任何带有 `required` 属性的检查框控件上。
+ * 该指令会借助 `NG_VALIDATORS` 绑定把 `required` 验证器添加到任何带有 `required`
+ * 属性的检查框控件上。
  *
  * @see [Form Validation](guide/form-validation)
  *
@@ -471,7 +451,8 @@ export class RequiredValidator implements Validator {
  *
  * ### 使用模板驱动表单为复选框添加必填项验证器
  *
- * The following example shows how to add a checkbox required validator to an input attached to an* ngModel binding.
+ * The following example shows how to add a checkbox required validator to an input attached to an*
+ * ngModel binding.
  *
  * 下面的例子展示了如何为一个带有 ngModel 绑定的检查框添加必填项验证器。
  *
@@ -530,7 +511,8 @@ export const EMAIL_VALIDATOR: any = {
  *
  * ### 添加 email 验证器
  *
- * The following example shows how to add an email validator to an input attached to an ngModel* binding.
+ * The following example shows how to add an email validator to an input attached to an ngModel*
+ * binding.
  *
  * 下面的例子演示了如何为一个带有 ngModel 绑定的输入框添加 email 验证器。
  *
@@ -631,7 +613,8 @@ export const MIN_LENGTH_VALIDATOR: any = {
  * A directive that adds minimum length validation to controls marked with the
  * `minlength` attribute. The directive is provided with the `NG_VALIDATORS` multi-provider list.
  *
- * 该指令用于为带有 `minlength` 属性的控件添加最小长度验证器。该指令会提供 `NG_VALIDATORS` 多重提供者列表。
+ * 该指令用于为带有 `minlength` 属性的控件添加最小长度验证器。该指令会提供 `NG_VALIDATORS`
+ * 多重提供者列表。
  *
  * @see [Form Validation](guide/form-validation)
  *
@@ -661,10 +644,7 @@ export const MIN_LENGTH_VALIDATOR: any = {
   providers: [MIN_LENGTH_VALIDATOR],
   host: {'[attr.minlength]': 'enabled() ? minlength : null'}
 })
-export class MinLengthValidator implements Validator, OnChanges {
-  private _validator: ValidatorFn = nullValidator;
-  private _onChange?: () => void;
-
+export class MinLengthValidator extends AbstractValidatorDirective {
   /**
    * @description
    * Tracks changes to the minimum length bound to this directive.
@@ -672,49 +652,16 @@ export class MinLengthValidator implements Validator, OnChanges {
    * 跟踪与此指令绑定的最小长度的更改。
    *
    */
-  @Input()
-  minlength!: string|number|null;  // This input is always defined, since the name matches selector.
+  @Input() minlength!: string|number|null;
 
-  /** @nodoc */
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('minlength' in changes) {
-      this._createValidator();
-      if (this._onChange) this._onChange();
-    }
-  }
+  /** @internal */
+  override inputName = 'minlength';
 
-  /**
-   * Method that validates whether the value meets a minimum length requirement.
-   * Returns the validation result if enabled, otherwise null.
-   *
-   * 验证值是否满足最小长度要求的方法。如果启用，则返回验证结果，否则返回 null。
-   *
-   * @nodoc
-   */
-  validate(control: AbstractControl): ValidationErrors|null {
-    return this.enabled() ? this._validator(control) : null;
-  }
+  /** @internal */
+  override normalizeInput = (input: string|number): number => toInteger(input);
 
-  /**
-   * Registers a callback function to call when the validator inputs change.
-   *
-   * 注册一个回调函数以在验证器的输入发生更改时调用。
-   *
-   * @nodoc
-   */
-  registerOnValidatorChange(fn: () => void): void {
-    this._onChange = fn;
-  }
-
-  private _createValidator(): void {
-    this._validator =
-        this.enabled() ? minLengthValidator(toInteger(this.minlength!)) : nullValidator;
-  }
-
-  /** @nodoc */
-  enabled(): boolean {
-    return this.minlength != null /* both `null` and `undefined` */;
-  }
+  /** @internal */
+  override createValidator = (minlength: number): ValidatorFn => minLengthValidator(minlength);
 }
 
 /**
@@ -734,7 +681,8 @@ export const MAX_LENGTH_VALIDATOR: any = {
  * A directive that adds max length validation to controls marked with the
  * `maxlength` attribute. The directive is provided with the `NG_VALIDATORS` multi-provider list.
  *
- * 该指令用于为带有 `maxlength` 属性的控件添加最大长度验证器。该指令会提供 `NG_VALIDATORS` 多重提供者列表。
+ * 该指令用于为带有 `maxlength` 属性的控件添加最大长度验证器。该指令会提供 `NG_VALIDATORS`
+ * 多重提供者列表。
  *
  * @see [Form Validation](guide/form-validation)
  *
@@ -764,59 +712,21 @@ export const MAX_LENGTH_VALIDATOR: any = {
   providers: [MAX_LENGTH_VALIDATOR],
   host: {'[attr.maxlength]': 'enabled() ? maxlength : null'}
 })
-export class MaxLengthValidator implements Validator, OnChanges {
-  private _validator: ValidatorFn = nullValidator;
-  private _onChange?: () => void;
-
+export class MaxLengthValidator extends AbstractValidatorDirective {
   /**
    * @description
-   * Tracks changes to the maximum length bound to this directive.
-   *
-   * 跟踪与此指令绑定的最大长度的更改。
-   *
+   * Tracks changes to the minimum length bound to this directive.
    */
-  @Input()
-  maxlength!: string|number|null;  // This input is always defined, since the name matches selector.
+  @Input() maxlength!: string|number|null;
 
-  /** @nodoc */
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('maxlength' in changes) {
-      this._createValidator();
-      if (this._onChange) this._onChange();
-    }
-  }
+  /** @internal */
+  override inputName = 'maxlength';
 
-  /**
-   * Method that validates whether the value exceeds the maximum length requirement.
-   *
-   * 验证值是否超过最大长度要求的方法。
-   *
-   * @nodoc
-   */
-  validate(control: AbstractControl): ValidationErrors|null {
-    return this.enabled() ? this._validator(control) : null;
-  }
+  /** @internal */
+  override normalizeInput = (input: string|number): number => toInteger(input);
 
-  /**
-   * Registers a callback function to call when the validator inputs change.
-   *
-   * 注册一个回调函数以在验证器的输入发生更改时调用。
-   *
-   * @nodoc
-   */
-  registerOnValidatorChange(fn: () => void): void {
-    this._onChange = fn;
-  }
-
-  private _createValidator(): void {
-    this._validator =
-        this.enabled() ? maxLengthValidator(toInteger(this.maxlength!)) : nullValidator;
-  }
-
-  /** @nodoc */
-  enabled(): boolean {
-    return this.maxlength != null /* both `null` and `undefined` */;
-  }
+  /** @internal */
+  override createValidator = (maxlength: number): ValidatorFn => maxLengthValidator(maxlength);
 }
 
 /**

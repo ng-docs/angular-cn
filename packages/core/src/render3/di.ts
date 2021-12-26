@@ -277,7 +277,8 @@ export function diPublicInInjector(
  * of an attribute. (Dynamic attributes are not supported since they are not resolved
  *  at the time of injection and can change over time.)
  *
- * 本方法与 `factory` 函数一起使用，这些工厂函数是 `defineDirective` 或 `defineComponent` 生成物的一部分。该方法会检索属性的静态值。（不支持动态属性，因为它们在注入时尚无法解析，并且会随着时间变化。）
+ * 本方法与 `factory` 函数一起使用，这些工厂函数是 `defineDirective` 或 `defineComponent`
+ * 生成物的一部分。该方法会检索属性的静态值。（不支持动态属性，因为它们在注入时尚无法解析，并且会随着时间变化。）
  *
  * # Example
  *
@@ -704,8 +705,8 @@ export class NodeInjector implements Injector {
       private _tNode: TElementNode|TContainerNode|TElementContainerNode|null,
       private _lView: LView) {}
 
-  get(token: any, notFoundValue?: any): any {
-    return getOrCreateInjectable(this._tNode, this._lView, token, undefined, notFoundValue);
+  get(token: any, notFoundValue?: any, flags?: InjectFlags): any {
+    return getOrCreateInjectable(this._tNode, this._lView, token, flags, notFoundValue);
   }
 }
 

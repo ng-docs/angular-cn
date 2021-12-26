@@ -26,7 +26,7 @@ Before continuing with this topic, you should be familiar with the following:
 
 ## 创建可复用动画
 
-To create a reusable animation, use the <code>[animation](api/animations/animation)()</code> function to define an animation in a separate `.ts` file and declare this animation definition as a `const` export variable. You can then import and reuse this animation in any of your application components using the <code>[useAnimation](api/animations/useAnimation)</a>()</code> function.
+To create a reusable animation, use the <code>[animation](api/animations/animation)()</code> function to define an animation in a separate `.ts` file and declare this animation definition as a `const` export variable. You can then import and reuse this animation in any of your application components using the <code>[useAnimation](api/animations/useAnimation)()</code> function.
 
 要想创建可复用的动画，请使用 [`animation()`](api/animations/animation) 方法来在独立的 `.ts` 文件中定义动画，并把该动画的定义声明为一个导出的 `const` 变量。然后你就可以在应用的组件代码中通过 [`useAnimation()`](api/animations/useAnimation) 来导入并复用它了。
 

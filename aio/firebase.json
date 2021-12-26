@@ -61,6 +61,7 @@
       {"type": 301, "source": "/docs/*/latest/guide/server-communication.html", "destination": "/guide/http"},
       {"type": 301, "source": "/docs/*/latest/guide/style-guide.html", "destination": "/guide/styleguide"},
       {"type": 301, "source": "/guide/bazel", "destination": "https://github.com/angular/angular/blob/master/packages/bazel/docs/BAZEL_SCHEMATICS.md"},
+      {"type": 301, "source": "/guide", "destination": "/docs"},
       {"type": 301, "source": "/guide/cli-quickstart", "destination": "/start"},
       {"type": 301, "source": "/guide/i18n", "destination": "/guide/i18n-overview"},
       {"type": 301, "source": "/guide/service-worker-getstart", "destination": "/guide/service-worker-getting-started"},
@@ -76,6 +77,7 @@
       {"type": 301, "source": "/guide/displaying-data", "destination": "/start#template-syntax"},
       {"type": 301, "source": "/guide/updating-to-version-10", "destination": "https://v10.angular.io/guide/updating-to-version-10"},
       {"type": 301, "source": "/guide/updating-to-version-11", "destination": "https://v11.angular.io/guide/updating-to-version-11"},
+      {"type": 301, "source": "/guide/updating-to-version-12", "destination": "/guide/update-to-latest-version"},
 
       // Renaming of Getting Started topics
       {"type": 301, "source": "/start/data", "destination": "/start/start-data"},
@@ -184,6 +186,9 @@
 
       // Use discoverable link for Angular DevTools and redirect to the guide page
       {"type": 301, "source": "/devtools", "destination": "/guide/devtools"},
+
+      // Use discoverable link for Angular Package Format and redirect to the guide page
+      {"type": 301, "source": "/apf", "destination": "/guide/angular-package-format"},
 
       // Temporarily serve the guide at `/devtools` as well as `/guide/devtools` until users have
       // their SW updated to a version that knows about the `/devtools` redirect.

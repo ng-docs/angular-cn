@@ -110,9 +110,9 @@ When `true`, the compiler does not check the TypeScript version and does not rep
 ### `enableI18nLegacyMessageIdFormat`
 
 Instructs the Angular template compiler to generate legacy ids for messages that are tagged in templates by the `i18n` attribute.
-See [Mark text for translations][AioGuideI18nCommonPrepareMarkTextForTranslations] for more information about marking messages for localization.
+See [Mark text for translations][AioGuideI18nCommonPrepareMarkTextInComponentTemplate] for more information about marking messages for localization.
 
-指示 Angular 模板编译器为模板中用 `i18n` 属性标出的消息生成旧版 ID。关于为本地化而对消息进行标记的更多信息，请参阅[标记要翻译的文本][AioGuideI18nCommonPrepareMarkTextForTranslations]
+指示 Angular 模板编译器为模板中用 `i18n` 属性标出的消息生成旧版 ID。关于为本地化而对消息进行标记的更多信息，请参阅[标记要翻译的文本][AioGuideI18nCommonPrepareMarkTextInComponentTemplate]
 
 Set this option to `false` unless your project relies upon translations that were previously generated using legacy IDs. Default is `true`.
 
@@ -127,16 +127,6 @@ The new message format is more resilient to whitespace changes, is the same acro
 This allows `$localize` messages in application code to use the same ID as identical `i18n` messages in component templates.
 
 新的消息格式对空白字符的改动更宽容，在所有翻译文件格式中都相同，并且可以直接通过调用 `$localize` 生成。这允许应用程序代码中的 `$localize` 消息使用与组件模板中 `i18n` 消息完全相同的 id。
-
-### `enableIvy`
-
-Enables the [Ivy](guide/ivy) compilation and rendering pipeline. Default is `true`, as of version 9. In version 9, you can [opt out of Ivy](guide/ivy#opting-out-of-angular-ivy) to continue using the previous compiler, View Engine.
-
-启用 [Ivy](guide/ivy) 编译和渲染管道。从版本 9 开始，默认值为 `true`。在版本 9 中，你可以[选择不用 Ivy](guide/ivy#opting-out-of-angular-ivy) 而是继续使用以前的编译器 View Engine。
-
-For library projects generated with the CLI, the production configuration default is `false` in version 9.
-
-对于使用 CLI 生成的*库*项目，`prod` 配置默认在版本 9 中为 `false`。
 
 ### `enableResourceInlining`
 
@@ -298,9 +288,9 @@ When you use the CLI command `ng new --strict`, it is set to `true` in the gener
 
 ### `strictTemplates`
 
-When `true`, enables [strict template type checking](guide/template-typecheck#strict-mode). Strict mode is only available when using [Ivy](guide/ivy) (Angular version 9 and later).
+When `true`, enables [strict template type checking](guide/template-typecheck#strict-mode).
 
-如果为 `true`，则在 Angular 9 中启用[严格的模板类型检查](guide/template-typecheck#strict-mode)。仅当使用 [Ivy](guide/ivy) 时，才能使用严格模式。
+如果为 `true`，则在 Angular 9 中启用[严格的模板类型检查](guide/template-typecheck#strict-mode)。
 
 Additional strictness flags allow you to enable and disable specific types of strict template type checking. See [troubleshooting template errors](guide/template-typecheck#troubleshooting-template-errors).
 
@@ -337,7 +327,7 @@ In addition to the configuration file, you can also use [`tsc` command line opti
 
 <!-- links -->
 
-[AioGuideI18nCommonPrepareMarkTextForTranslations]: guide/i18n-common-prepare#mark-text-for-translations "Mark text for translations - Prepare templates for translations | Angular"
+[AioGuideI18nCommonPrepareMarkTextInComponentTemplate]: guide/i18n-common-prepare#mark-text-in-component-template "Mark text in component template - Prepare templates for translations | Angular"
 
 <!-- end links -->
-@reviewed 2021-09-15
+@reviewed 2021-10-13

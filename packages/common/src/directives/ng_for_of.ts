@@ -44,7 +44,8 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * In this form, the template to be rendered for each iteration is the content
  * of an anchor element containing the directive.
  *
- * `ngForOf` 指令通常在 `*ngFor` 的[简写形式](guide/structural-directives#asterisk)内部使用。在这种形式下，每次迭代要渲染的模板是包含指令的锚点元素的内容。
+ * `ngForOf` 指令通常在 `*ngFor`
+ * 的[简写形式](guide/structural-directives#asterisk)内部使用。在这种形式下，每次迭代要渲染的模板是包含指令的锚点元素的内容。
  *
  * The following example shows the shorthand syntax with some options,
  * contained in an `<li>` element.
@@ -60,7 +61,8 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * The content of the `<ng-template>` element is the `<li>` element that held the
  * short-form directive.
  *
- * 简写形式会扩展为使用 `<ng-template>` 元素 `ngForOf` 选择器的长形式。`<ng-template>` 元素的内容是包裹此简写格式指令的 `<li>` 元素。
+ * 简写形式会扩展为使用 `<ng-template>` 元素 `ngForOf` 选择器的长形式。`<ng-template>`
+ * 元素的内容是包裹此简写格式指令的 `<li>` 元素。
  *
  * Here is the expanded version of the short-form example.
  *
@@ -76,7 +78,8 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * The context for each embedded view is logically merged to the current component
  * context according to its lexical position.
  *
- * Angular 在编译模板时会自动扩展简写语法。每个嵌入式视图的上下文都会根据其词法位置在逻辑上合并到当前组件上下文。
+ * Angular
+ * 在编译模板时会自动扩展简写语法。每个嵌入式视图的上下文都会根据其词法位置在逻辑上合并到当前组件上下文。
  *
  * When using the shorthand syntax, Angular allows only [one structural directive
  * on an element](guide/built-in-directives#one-per-element).
@@ -85,7 +88,10 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * For futher discussion, see
  * [Structural Directives](guide/built-in-directives#one-per-element).
  *
- * 使用简写语法时，Angular 在[一个元素上只允许有一个结构型指令](guide/built-in-directives#one-per-element)。例如，如果要根据条件进行迭代，请将 `*ngIf` 放在 `*ngFor` 元素的容器元素上。欲知详情，请参见[《结构型指令》](guide/built-in-directives#one-per-element) 。
+ * 使用简写语法时，Angular
+ * 在[一个元素上只允许有一个结构型指令](guide/built-in-directives#one-per-element)。例如，如果要根据条件进行迭代，请将
+ * `*ngIf` 放在 `*ngFor`
+ * 元素的容器元素上。欲知详情，请参见[《结构型指令》](guide/built-in-directives#one-per-element) 。
  *
  * @usageNotes
  *
@@ -116,8 +122,9 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * more complex then a property access, for example when using the async pipe (`userStreams |
  * async`).
  *
- *   `ngForOf: NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用 `async` 管道时（`userStreams |
- * async`）。
+ *   `ngForOf:
+ * NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用 `async`
+ * 管道时（`userStreams | async`）。
  *
  * - `index: number`: The index of the current item in the iterable.
  *
@@ -171,7 +178,8 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * For more on animations, see [Transitions and Triggers](guide/transition-and-triggers).
  *
  * Angular 使用对象标识符（对象引用）来跟踪迭代器中的添加和删除操作，并把它们同步到 DOM 中。
- * 这对于动画和有状态的控件（如用来接收用户输入的 `<input>` 元素）具有重要意义。添加的行可以带着动画效果进来，删除的行也可以带着动画效果离开。
+ * 这对于动画和有状态的控件（如用来接收用户输入的 `<input>`
+ * 元素）具有重要意义。添加的行可以带着动画效果进来，删除的行也可以带着动画效果离开。
  * 而未变化的行则会保留那些尚未保存的状态，比如用户的输入。
  *
  * The identities of elements in the iterator can change while the data does not.
@@ -180,8 +188,10 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * different identities, and Angular must tear down the entire DOM and rebuild it (as if all old
  * elements were deleted and all new elements inserted).
  *
- * 即使数据没有变化，迭代器中的元素标识符也可能会发生变化。比如，如果迭代器处理的目标是通过 RPC 从服务器取来的，
- * 而 RPC 又重新执行了一次。那么即使数据没有变化，第二次的响应体还是会生成一些具有不同标识符的对象。Angular 将会清除整个 DOM，
+ * 即使数据没有变化，迭代器中的元素标识符也可能会发生变化。比如，如果迭代器处理的目标是通过 RPC
+ * 从服务器取来的， 而 RPC
+ * 又重新执行了一次。那么即使数据没有变化，第二次的响应体还是会生成一些具有不同标识符的对象。Angular
+ * 将会清除整个 DOM，
  * 并重建它（就仿佛把所有老的元素都删除，并插入所有新元素）。这是很昂贵的操作，应该尽力避免。
  *
  * To avoid this expensive operation, you can customize the default tracking algorithm.
@@ -291,11 +301,19 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
       // React on ngForOf changes only once all inputs have been initialized
       const value = this._ngForOf;
       if (!this._differ && value) {
-        try {
+        if (typeof ngDevMode === 'undefined' || ngDevMode) {
+          try {
+            // CAUTION: this logic is duplicated for production mode below, as the try-catch
+            // is only present in development builds.
+            this._differ = this._differs.find(value).create(this.ngForTrackBy);
+          } catch {
+            throw new Error(`Cannot find a differ supporting object '${value}' of type '${
+                getTypeName(value)}'. NgFor only supports binding to Iterables such as Arrays.`);
+          }
+        } else {
+          // CAUTION: this logic is duplicated for development mode above, as the try-catch
+          // is only present in development builds.
           this._differ = this._differs.find(value).create(this.ngForTrackBy);
-        } catch {
-          throw new Error(`Cannot find a differ supporting object '${value}' of type '${
-              getTypeName(value)}'. NgFor only supports binding to Iterables such as Arrays.`);
         }
       }
     }
@@ -306,51 +324,39 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
   }
 
   private _applyChanges(changes: IterableChanges<T>) {
-    const insertTuples: RecordViewTuple<T, U>[] = [];
+    const viewContainer = this._viewContainer;
     changes.forEachOperation(
-        (item: IterableChangeRecord<any>, adjustedPreviousIndex: number|null,
+        (item: IterableChangeRecord<T>, adjustedPreviousIndex: number|null,
          currentIndex: number|null) => {
           if (item.previousIndex == null) {
             // NgForOf is never "null" or "undefined" here because the differ detected
             // that a new item needs to be inserted from the iterable. This implies that
             // there is an iterable value for "_ngForOf".
-            const view = this._viewContainer.createEmbeddedView(
-                this._template, new NgForOfContext<T, U>(null!, this._ngForOf!, -1, -1),
+            viewContainer.createEmbeddedView(
+                this._template, new NgForOfContext<T, U>(item.item, this._ngForOf!, -1, -1),
                 currentIndex === null ? undefined : currentIndex);
-            const tuple = new RecordViewTuple<T, U>(item, view);
-            insertTuples.push(tuple);
           } else if (currentIndex == null) {
-            this._viewContainer.remove(
+            viewContainer.remove(
                 adjustedPreviousIndex === null ? undefined : adjustedPreviousIndex);
           } else if (adjustedPreviousIndex !== null) {
-            const view = this._viewContainer.get(adjustedPreviousIndex)!;
-            this._viewContainer.move(view, currentIndex);
-            const tuple = new RecordViewTuple(item, <EmbeddedViewRef<NgForOfContext<T, U>>>view);
-            insertTuples.push(tuple);
+            const view = viewContainer.get(adjustedPreviousIndex)!;
+            viewContainer.move(view, currentIndex);
+            applyViewChange(view as EmbeddedViewRef<NgForOfContext<T, U>>, item);
           }
         });
 
-    for (let i = 0; i < insertTuples.length; i++) {
-      this._perViewChange(insertTuples[i].view, insertTuples[i].record);
-    }
-
-    for (let i = 0, ilen = this._viewContainer.length; i < ilen; i++) {
-      const viewRef = <EmbeddedViewRef<NgForOfContext<T, U>>>this._viewContainer.get(i);
-      viewRef.context.index = i;
-      viewRef.context.count = ilen;
-      viewRef.context.ngForOf = this._ngForOf!;
+    for (let i = 0, ilen = viewContainer.length; i < ilen; i++) {
+      const viewRef = <EmbeddedViewRef<NgForOfContext<T, U>>>viewContainer.get(i);
+      const context = viewRef.context;
+      context.index = i;
+      context.count = ilen;
+      context.ngForOf = this._ngForOf!;
     }
 
     changes.forEachIdentityChange((record: any) => {
-      const viewRef =
-          <EmbeddedViewRef<NgForOfContext<T, U>>>this._viewContainer.get(record.currentIndex);
-      viewRef.context.$implicit = record.item;
+      const viewRef = <EmbeddedViewRef<NgForOfContext<T, U>>>viewContainer.get(record.currentIndex);
+      applyViewChange(viewRef, record);
     });
-  }
-
-  private _perViewChange(
-      view: EmbeddedViewRef<NgForOfContext<T, U>>, record: IterableChangeRecord<any>) {
-    view.context.$implicit = record.item;
   }
 
   /**
@@ -361,7 +367,8 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
    * The presence of this method is a signal to the Ivy template type-check compiler that the
    * `NgForOf` structural directive renders its template with a specific context type.
    *
-   * 此方法的存在向 Ivy 模板类型检查编译器发出信号，即 `NgForOf` 结构型指令使用特定的上下文类型渲染其模板。
+   * 此方法的存在向 Ivy 模板类型检查编译器发出信号，即 `NgForOf`
+   * 结构型指令使用特定的上下文类型渲染其模板。
    *
    */
   static ngTemplateContextGuard<T, U extends NgIterable<T>>(dir: NgForOf<T, U>, ctx: any):
@@ -370,8 +377,9 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
   }
 }
 
-class RecordViewTuple<T, U extends NgIterable<T>> {
-  constructor(public record: any, public view: EmbeddedViewRef<NgForOfContext<T, U>>) {}
+function applyViewChange<T>(
+    view: EmbeddedViewRef<NgForOfContext<T>>, record: IterableChangeRecord<T>) {
+  view.context.$implicit = record.item;
 }
 
 function getTypeName(type: any): string {

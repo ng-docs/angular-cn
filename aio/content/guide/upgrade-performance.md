@@ -330,8 +330,7 @@ and add a mapping for the `@angular/upgrade/static` package:
 
 你还需要用 `npm install @angular/upgrade --save` 安装 `@angular/upgrade` 包，并添加一个指向 `@angular/upgrade/static` 包的映射：
 
-<code-example header="system.config.js">
-'@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+<code-example path="upgrade-module/src/systemjs.config.1.js" region="upgrade-static-package" header="systemjs.config.js (map)">
 </code-example>
 
 Next, create an `app.module.ts` file and add the following `NgModule` class:

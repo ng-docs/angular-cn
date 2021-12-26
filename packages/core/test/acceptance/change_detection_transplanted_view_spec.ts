@@ -11,7 +11,6 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, T
 import {AfterViewChecked} from '@angular/core/src/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {expect} from '@angular/platform-browser/testing/src/matchers';
-import {onlyInIvy} from '@angular/private/testing';
 
 describe('change detection for transplanted views', () => {
   describe('when declaration appears before insertion', () => {
@@ -542,7 +541,7 @@ describe('change detection for transplanted views', () => {
       expect(fixture.nativeElement.textContent).toEqual('new');
     });
 
-    onlyInIvy('behavior is inconsistent in VE').describe('when insertion is detached', () => {
+    describe('when insertion is detached', () => {
       it('does not refresh CheckAlways transplants', () => {
         const fixture = getFixture(CheckAlwaysDeclaration);
         fixture.detectChanges();

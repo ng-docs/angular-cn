@@ -1,28 +1,37 @@
 # Import global variants of the locale data
 
-# 导入语言环境数据的全局变量
+# 导入语言环境数据的全局变体
 
-{@a import-locale}
+The [Angular CLI][AioCliMain] automatically includes locale data if you run the [`ng build`][AioCliBuild] command with the `--localize` option.
 
-Angular will automatically include locale data if you configure the locale using the `--localize` option with [`ng build`][AioCliBuild] CLI command.
+如果你使用 `--localize` 选项运行 [`ng build`][AioCliBuild] 命令，则 [Angular CLI][AioCliMain] 会自动包含语言环境数据。
 
-如果你是用 `--localize` 选项和 [`ng build`][AioCliBuild] CLI 命令配置的语言环境，Angular 将自动包含语言环境数据。
+<!--todo: replace with code-example -->
 
-The [Angular repository][GithubAngularAngularTreeMasterPackagesCommonLocales] files (`@angular/common/locales`) contain most of the locale data that you need, but some advanced formatting options require additional locale data.
+<code-example language="sh">
 
-[Angular 存储库][GithubAngularAngularTreeMasterPackagesCommonLocales]中的一些文件(`@angular/common/locales`)包含你需要的大部分语言环境数据，但一些高级格式化选项需要额外的语言环境数据。
+ng build --localize
 
+</code-example>
+
+The `@angular/common` package on npm contains the locale data files.
 Global variants of the locale data are available in [`@angular/common/locales/global`][GithubAngularAngularTreeMasterPackagesCommonLocalesGlobal].
 
-语言环境数据的全局变量在 [`@angular/common/locales/global`][GithubAngularAngularTreeMasterPackagesCommonLocalesGlobal] 中。
+npm 上的 `@angular/common` 包中包含语言环境数据文件。语言环境数据的全局变体来自 [`@angular/common/locales/global`][GithubAngularAngularTreeMasterPackagesCommonLocalesGlobal]。
+
+## `import` example for French
+
+## 法语的 `import` 示例
 
 The following example imports the global variants for French (`fr`).
 
-以下示例导入法语 ( `fr` ) 的全局变量。
+以下示例导入了法语 ( `fr` ) 的全局变体。
 
 <code-example path="i18n/doc-files/app.module.ts" header="src/app/app.module.ts" region="global-locale"></code-example>
 
 <!-- links -->
+
+[AioCliMain]: cli "CLI Overview and Command Reference | Angular"
 
 [AioCliBuild]: cli/build "ng build | CLI | Angular"
 
@@ -34,4 +43,4 @@ The following example imports the global variants for French (`fr`).
 
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-13

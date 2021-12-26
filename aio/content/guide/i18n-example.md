@@ -1,8 +1,22 @@
-# Example Angular application: Explore the translated example application
+# Example Angular Internationalization application
 
-# 示例 Angular 应用程序：浏览已翻译的示例应用程序
+# Angular 国际化应用范例
 
-{@a app-pre-translation}
+## Explore the translated example application
+
+## 浏览翻译后的范例应用
+
+<div class="alert is-helpful">
+
+To explore the sample application with French translations used in the [Angular Internationalization][AioGuideI18nOverview] guide, see <live-example name="i18n" title="live example"></live-example>.
+
+要浏览 [Angular 国际化][AioGuideI18nOverview]指南中使用的带法语翻译的范例应用，参见<live-example name="i18n" title="live example"></live-example>。
+
+</div>
+
+## `fr-CA` and `en-US` example
+
+## `fr-CA` 和 `en-US` 范例
 
 The following tabs display the example application and the associated translation files.
 
@@ -23,8 +37,10 @@ The following tabs display the example application and the associated translatio
 
 <!-- links -->
 
+[AioGuideI18nOverview]: guide/i18n-overview "Angular Internationalization | Angular"  
+
 <!-- external links -->
 
 <!-- end links -->
 
-@reviewed 2021-09-15
+@reviewed 2021-10-13

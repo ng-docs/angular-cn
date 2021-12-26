@@ -1110,7 +1110,8 @@ If an expression is not foldable, the collector writes it to `.metadata.json` as
 
 ## 阶段 2：代码生成
 
-The collector makes no attempt to understand the metadata that it collects and outputs to `.metadata.json`. It represents the metadata as best it can and records errors when it detects a metadata syntax violation.
+The collector makes no attempt to understand the metadata that it collects and outputs to `.metadata.json`.
+It represents the metadata as best it can and records errors when it detects a metadata syntax violation.
 It's the compiler's job to interpret the `.metadata.json` in the code generation phase.
 
 收集器不会试图理解它收集并输出到 `.metadata.json` 中的元数据，它所能做的只是尽可能准确的表述这些元数据，并在检测到元数据中的语法违规时记录这些错误。
@@ -1326,26 +1327,6 @@ Enable this phase explicitly by adding the compiler option `"fullTemplateTypeChe
 (see [Angular Compiler Options](guide/angular-compiler-options)).
 
 通过在该项目的 TypeScript 配置文件中的 `"angularCompilerOptions"` 中添加编译器选项 `"fullTemplateTypeCheck"`，可以显式启用本阶段（见[ Angular 编译器选项](guide/angular-compiler-options) ）。
-
-<div class="alert is-helpful">
-
-In [Angular Ivy](guide/ivy), the template type checker has been completely rewritten to be more capable as well as stricter, meaning it can catch a variety of new errors that the previous type checker would not detect.
-
-在 [Angular Ivy 中](guide/ivy) 中，模板类型检查器已被完全重写，以使其功能更强大，更严格。这意味着它可以捕获以前的类型检查器无法检测到的各种新错误。
-
-As a result, templates that previously compiled under View Engine can fail type checking under Ivy. This can happen because Ivy's stricter checking catches genuine errors, or because application code is not typed correctly, or because the application uses libraries in which typings are inaccurate or not specific enough.
-
-这就导致了，以前在 View Engine 下能通过编译的模板可能无法在 Ivy 下通过类型检查。之所以会发生这种情况，是因为 Ivy 更严格的检查会捕获真正的错误：或者因为应用程序代码中的类型不正确，或者因为应用程序使用的库中的类型不正确或不够具体。
-
-This stricter type checking is not enabled by default in version 9, but can be enabled by setting the `strictTemplates` configuration option.
-
-在版本 9 中，默认未启用此更严格的类型检查，但可以通过设置 `strictTemplates` 配置选项来启用它。我们真的希望将来可以把严格类型检查作为默认值。
-
-For more information about type-checking options, and about improvements to template type checking in version 9 and above, see [Template type checking](guide/template-typecheck).
-
-关于这些类型检查选项的更多信息以及 Angular 9 及后续版本对模板类型检查做出的改进，请参阅 [模板类型检查](guide/template-typecheck)。
-
-</div>
 
 Template validation produces error messages when a type error is detected in a template binding
 expression, similar to how type errors are reported by the TypeScript compiler against code in a `.ts`

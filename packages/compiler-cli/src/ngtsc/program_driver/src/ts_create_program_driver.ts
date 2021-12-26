@@ -51,6 +51,7 @@ export class DelegatingCompilerHost implements
   resolveTypeReferenceDirectives = this.delegateMethod('resolveTypeReferenceDirectives');
   trace = this.delegateMethod('trace');
   useCaseSensitiveFileNames = this.delegateMethod('useCaseSensitiveFileNames');
+  getModuleResolutionCache = this.delegateMethod('getModuleResolutionCache');
 }
 
 /**

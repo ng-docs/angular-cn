@@ -15,7 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {browserDetection} from '@angular/platform-browser/testing/src/browser_util';
 
 (function() {
-// these tests are only mean't to be run within the DOM (for now)
+// these tests are only meant to be run within the DOM (for now)
 // Buggy in Chromium 39, see https://github.com/angular/angular/issues/15793
 if (isNode || !ɵsupportsWebAnimations()) return;
 
@@ -249,7 +249,8 @@ describe('animation integration tests using web animations', function() {
                 overflow:hidden;
               }
               .list .inner {
-                line-height:50px;
+                box-sizing: border-box;
+                height: 50px;
               }
             `],
           template: `

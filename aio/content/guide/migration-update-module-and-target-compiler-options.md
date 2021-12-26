@@ -6,7 +6,7 @@
 
 ## 此迁移有什么作用？
 
-This migration adjusts the [`target`](https://www.typescriptlang.org/v2/en/tsconfig#target) and [`module`](https://www.typescriptlang.org/v2/en/tsconfig#module) settings within the [TypeScript configuration files](guide/typescript-configuration) for the workspace.
+This migration adjusts the [`target`](https://www.typescriptlang.org/tsconfig#target) and [`module`](https://www.typescriptlang.org/tsconfig#module) settings within the [TypeScript configuration files](guide/typescript-configuration) for the workspace.
 The changes to each option vary based on the builder or command that uses the TypeScript configuration file.
 Unless otherwise noted, changes are only made if the existing value was not changed since the project was created.
 This process helps ensure that intentional changes to the options are kept in place.

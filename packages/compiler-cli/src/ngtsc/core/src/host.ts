@@ -67,6 +67,7 @@ export class DelegatingCompilerHost implements
   trace = this.delegateMethod('trace');
   useCaseSensitiveFileNames = this.delegateMethod('useCaseSensitiveFileNames');
   writeFile = this.delegateMethod('writeFile');
+  getModuleResolutionCache = this.delegateMethod('getModuleResolutionCache');
 }
 
 /**

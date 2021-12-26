@@ -21,13 +21,13 @@ Tutorials and guides include downloadable examples to accelerate your projects.
     <p class="card-footer">Platform overview</p>
     <p class="card-footer">平台概览</p>
   </a>
-  <a href="guide/setup-local" class="docs-card" title="Angular Local Environment Setup">
-    <section>Get Started</section>
+  <a href="start" class="docs-card" title="Getting started">
+    <section>Getting started</section>
     <section>开始工作</section>
-      <p>Set up your local environment for development with the Angular CLI.</p>
-      <p>使用 Angular CLI 搭建本地开发环境</p>
-    <p class="card-footer">Local setup</p>
-      <p class="card-footer">开始搭建</p>
+    <p>Examine and work with a small ready-made Angular app, without any setup.</p>
+    <p>无需设置，试用一个现成的小型 Angular 应用</p>
+    <p class="card-footer">Try it now</p>
+    <p class="card-footer">立即试用</p>
   </a>
   <a href="guide/architecture" class="docs-card" title="Angular Concepts">
     <section>Learn and Explore</section>
@@ -37,20 +37,20 @@ Tutorials and guides include downloadable examples to accelerate your projects.
     <p class="card-footer">Introduction to Angular concepts</p>
       <p class="card-footer">架构</p>
   </a>
-  <a href="start" class="docs-card" title="Try out Angular">
-    <section>Take a Look</section>
-    <section>走马观花</section>
-      <p>Examine and work with a small ready-made Angular app, without any setup.</p>
-      <p>零设置，试用一个现成的 Angular 应用</p>
-    <p class="card-footer">Try it now</p>
-      <p class="card-footer">现在试试</p>
+  <a href="guide/setup-local" class="docs-card" title="Angular Local Environment Setup">
+    <section>Set up your environment</section>
+    <section>设置环境</section>
+    <p>Set up your local environment for development with the Angular CLI.</p>
+    <p>使用 Angular CLI 搭建本地开发环境。</p>
+    <p class="card-footer">Local setup</p>
+    <p class="card-footer">本地设置</p>
   </a>
   <a href="tutorial" class="docs-card" title="Work through a full tutorial">
     <section>Hello World</section>
     <p>Work through a full tutorial to create your first app.</p>
     <p>一个完整教程，带你从头到尾创建首个应用</p>
-      <p class="card-footer">Tour of Heroes tutorial</p>
-      <p class="card-footer">英雄之旅教程</p>
+    <p class="card-footer">Tour of Heroes tutorial</p>
+    <p class="card-footer">英雄之旅教程</p>
   </a>
 </div>
 

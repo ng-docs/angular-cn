@@ -25,7 +25,6 @@ import {DeclarationNode, isNamedClassDeclaration, TypeScriptReflectionHost} from
 import {AdapterResourceLoader} from '../../resource';
 import {ComponentScopeReader, LocalModuleScopeRegistry, MetadataDtsModuleScopeResolver, TypeCheckScopeRegistry} from '../../scope';
 import {generatedFactoryTransform} from '../../shims';
-import {ivySwitchTransform} from '../../switch';
 import {aliasTransformFactory, CompilationMode, declarationTransformFactory, DecoratorHandler, DtsTransformRegistry, ivyTransformFactory, TraitCompiler} from '../../transform';
 import {TemplateTypeCheckerImpl} from '../../typecheck';
 import {OptimizeFor, TemplateTypeChecker, TypeCheckingConfig} from '../../typecheck/api';
@@ -647,7 +646,6 @@ export class NgCompiler {
       before.push(
           generatedFactoryTransform(this.adapter.factoryTracker.sourceInfo, importRewriter));
     }
-    before.push(ivySwitchTransform);
 
     return {transformers: {before, afterDeclarations} as ts.CustomTransformers};
   }
@@ -1048,7 +1046,7 @@ export class NgCompiler {
       new NgModuleDecoratorHandler(
           reflector, evaluator, metaReader, metaRegistry, scopeRegistry, referencesRegistry, isCore,
           refEmitter, this.adapter.factoryTracker, this.closureCompilerEnabled, injectableRegistry,
-          this.delegatingPerfRecorder, this.options.i18nInLocale),
+          this.delegatingPerfRecorder),
     ];
 
     const traitCompiler = new TraitCompiler(

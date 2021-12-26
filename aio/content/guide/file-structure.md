@@ -60,8 +60,8 @@ The top level of the workspace contains workspace-wide configuration files, conf
 | `.gitignore` | 指定 [Git](https://git-scm.com/) 应忽略的不必追踪的文件。 |
 | `README.md` | Introductory documentation for the root application. |
 | `README.md` | 根应用的简介文档. |
-| `angular.json` | CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as [TSLint](https://palantir.github.io/tslint/), [Karma](https://karma-runner.github.io/), and [Protractor](https://www.protractortest.org/). For details, see [Angular Workspace Configuration](guide/workspace-config). |
-| `angular.json` | 为工作区中的所有项目指定 CLI 的默认配置，包括 CLI 要用到的构建、启动开发服务器和测试工具的配置项，比如 [TSLint](https://palantir.github.io/tslint/)，[Karma](https://karma-runner.github.io/) 和 [Protractor](http://www.protractortest.org/)。欲知详情，请参阅 [Angular 工作区配置](guide/workspace-config) 部分。 |
+| `angular.json` | CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as  [Karma](https://karma-runner.github.io/), and [Protractor](https://www.protractortest.org/). For details, see [Angular Workspace Configuration](guide/workspace-config). |
+| `angular.json` | 为工作区中的所有项目指定 CLI 的默认配置，包括 CLI 要用到的构建、启动开发服务器和测试工具的配置项，比如 [Karma](https://karma-runner.github.io/) 和 [Protractor](http://www.protractortest.org/)。欲知详情，请参阅 [Angular 工作区配置](guide/workspace-config) 部分。 |
 | `package.json` | Configures [npm package dependencies](guide/npm-packages) that are available to all projects in the workspace. See [npm documentation](https://docs.npmjs.com/files/package.json) for the specific format and contents of this file. |
 | `package.json` | 配置工作区中所有项目可用的 [npm 包依赖](guide/npm-packages)。关于此文件的具体格式和内容，请参阅 [npm 的文档](https://docs.npmjs.com/files/package.json)。 |
 | `package-lock.json` | Provides version information for all packages installed into `node_modules` by the npm client. See [npm documentation](https://docs.npmjs.com/files/package-lock.json) for details. If you use the yarn client, this file will be [yarn.lock](https://yarnpkg.com/lang/en/docs/yarn-lock/) instead. |
@@ -72,8 +72,6 @@ The top level of the workspace contains workspace-wide configuration files, conf
 | `node_modules/` | 为整个工作区提供 [npm 包](guide/npm-packages)。这些工作区级的 `node_modules` 依赖对其中的所有项目可见。 |
 | `tsconfig.json` | The base [TypeScript](https://www.typescriptlang.org/) configuration for projects in the workspace. All other configuration files inherit from this base file. For more information, see the [Configuration inheritance with extends](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) section of the TypeScript documentation.|
 | `tsconfig.json` | 工作区中所有项目的基本 [TypeScript](https://www.typescriptlang.org/) 配置。所有其它配置文件都继承自这个基本配置。欲知详情，参阅 TypeScript 文档中的 [通过 extends 进行配置继承](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) 部分。|
-| `tslint.json` | Default [TSLint](https://palantir.github.io/tslint/) configuration for projects in the workspace. |
-| `tslint.json` | 工作区中所有项目的默认的 [TSLint](https://palantir.github.io/tslint/) 配置。 |
 
 
 ## Application project files
@@ -171,7 +169,7 @@ For a multi-project workspace, project-specific configuration files are in the p
 
 根应用的配置文件位于工作区的根目录下。对于多项目工作区，项目专属的配置文件位于项目根目录 `projects/project-name/`。
 
-Project-specific [TypeScript](https://www.typescriptlang.org/) configuration files inherit from the workspace-wide `tsconfig.json`, and project-specific [TSLint](https://palantir.github.io/tslint/) configuration files inherit from the workspace-wide `tslint.json`.
+Project-specific [TypeScript](https://www.typescriptlang.org/) configuration files inherit from the workspace-wide `tsconfig.json`.
 
 项目专属的 [TypeScript](https://www.typescriptlang.org/) 配置文件继承自工作区范围内的 `tsconfig.base.json`，而项目专属的 [TSLint](https://palantir.github.io/tslint/) 配置文件则继承自全工作区级内的 `tslint.json`。
 
@@ -186,8 +184,6 @@ Project-specific [TypeScript](https://www.typescriptlang.org/) configuration fil
 | `tsconfig.app.json` | 应用专属的 [TypeScript](https://www.typescriptlang.org/) 配置，包括 TypeScript 和 Angular 模板编译器的选项。参阅 [TypeScript 配置](guide/typescript-configuration)。 |
 | `tsconfig.spec.json` | [TypeScript](https://www.typescriptlang.org/) configuration for the application tests. See [TypeScript Configuration](guide/typescript-configuration). |
 | `tsconfig.spec.json` | 应用测试的 [TypeScript](https://www.typescriptlang.org/) 配置。参阅 [TypeScript 配置](guide/typescript-configuration)。 |
-| `tslint.json` | Application-specific [TSLint](https://palantir.github.io/tslint/) configuration. |
-| `tslint.json` | 应用专属的 [TSLint](https://palantir.github.io/tslint/) 配置。 |
 
 
 {@a multiple-projects}
@@ -281,5 +277,3 @@ Under the `projects/` folder, the `my-lib` folder contains your library code.
 | `tsconfig.lib.prod.json` | 库专属的 [TypeScript](https://www.typescriptlang.org/) 配置，用于构建生产模式的库。 |
 | `tsconfig.spec.json` | [TypeScript](https://www.typescriptlang.org/) configuration for the library tests. See [TypeScript Configuration](guide/typescript-configuration). |
 | `tsconfig.spec.json` | 测试库时用到的 [TypeScript](https://www.typescriptlang.org/) 配置。参阅 [TypeScript 配置](guide/typescript-configuration)。 |
-| `tslint.json` | Library-specific [TSLint](https://palantir.github.io/tslint/) configuration. |
-| `tslint.json` | 库专属的 [TSLint](https://palantir.github.io/tslint/) 配置。 |

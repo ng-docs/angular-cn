@@ -36,26 +36,22 @@ A best practice is to run your project locally before you deploy it. To run your
 
 ## 在本地运行你的应用
 
-1. Download the source code from your StackBlitz project by clicking the `Download Project` icon in the left menu, across from `Project`, to download your files.
+1. Download the source code from your StackBlitz project by clicking the `Download Project` icon in the left menu, across from `Project`, to download your project as a zip archive.
 
-   在左边的菜单中点击  `Project` 后面的 `Download Project` 图标，以下载你的 StackBlitz 项目的源代码。
+   在左边的菜单中点击  `Project` 后面的 `Download Project` 图标，以下载你的 StackBlitz 项目源代码的 zip 包。
 
-1. Create a new Angular CLI workspace using the [`ng new`](cli/new "CLI ng new command reference") command, where `my-project-name` is what you would like to call your project:
+    <div class="lightbox">
+      <img src="generated/images/guide/start/download-project.png" alt="Download the stackblitz project">
+    </div>
 
-   用 [`ng new`](cli/new "CLI ng 新命令参考")命令创建一个新的 Angular CLI 工作区，其中的 `my-project-name` 就是你要生成的项目名：
+2. Unzip the archive change directory to the newly created project. For example:
 
-   ```sh
-   ng new my-project-name
-   ```
+   解包，并进入新创建的这个项目目录中。比如：
 
-   This command displays a series of configuration prompts. For this tutorial, accept the default settings for each prompt.
-
-   此命令会显示一系列配置提示。对于本教程，请接受每个提示的默认设置。
-
-1. In your newly CLI-generated application, replace the `/src` folder with the `/src` folder from your `StackBlitz` download.
-
-   在新建 CLI 生成的应用中，用从 `StackBlitz` 中下载的 `/src` 文件夹替换原来的 `/src` 文件夹。
-
+    ```sh
+    cd angular-ynqttp
+    ```
+    
 1. Use the following CLI command to run your application locally:
 
    使用以下 CLI 命令在本地运行你的应用：
@@ -64,7 +60,7 @@ A best practice is to run your project locally before you deploy it. To run your
    ng serve
    ```
 
-1. To see your application in the  browser, go to <http://localhost:4200/>.
+1. To see your application in the browser, go to <http://localhost:4200/>.
    If the default port 4200 is not available, you can specify another port with the port flag as in the following example:
 
    要在浏览器中查看你的应用，请访问 <http://localhost:4200/>。如果默认端口 4200 不可用，则可以使用端口标志指定另一个端口，如下所示：

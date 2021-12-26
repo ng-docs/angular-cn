@@ -596,6 +596,11 @@ class _AstToIrVisitor implements cdAst.AstVisitor {
   }
 
   visitCall(ast: cdAst.Call, mode: _Mode): any {
+    const leftMostSafe = this.leftMostSafeNode(ast);
+    if (leftMostSafe) {
+      return this.convertSafeAccess(ast, leftMostSafe, mode);
+    }
+
     const convertedArgs = this.visitAll(ast.args, _Mode.Expression);
 
     if (ast instanceof BuiltinFunctionCall) {
@@ -610,13 +615,10 @@ class _AstToIrVisitor implements cdAst.AstVisitor {
         throw new Error(`Invalid call to $any, expected 1 argument but received ${
             convertedArgs.length || 'none'}`);
       }
-      return (convertedArgs[0] as o.Expression)
-          .cast(o.DYNAMIC_TYPE, this.convertSourceSpan(ast.span));
-    }
-
-    const leftMostSafe = this.leftMostSafeNode(ast);
-    if (leftMostSafe) {
-      return this.convertSafeAccess(ast, leftMostSafe, mode);
+      return convertToStatementIfNeeded(
+          mode,
+          (convertedArgs[0] as o.Expression)
+              .cast(o.DYNAMIC_TYPE, this.convertSourceSpan(ast.span)));
     }
 
     const call = this._visit(receiver, _Mode.Expression)
@@ -672,7 +674,7 @@ class _AstToIrVisitor implements cdAst.AstVisitor {
     // which comes in as leftMostSafe to this routine.
 
     let guardedExpression = this._visit(leftMostSafe.receiver, _Mode.Expression);
-    let temporary: o.ReadVarExpr = undefined!;
+    let temporary: o.ReadVarExpr|undefined = undefined;
     if (this.needsTemporaryInSafeAccess(leftMostSafe.receiver)) {
       // If the expression has method calls or pipes then we need to save the result into a
       // temporary variable to avoid calling stateful or impure code more than once.

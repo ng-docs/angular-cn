@@ -106,6 +106,10 @@ To save your work:
 
    定时保存。
 
+<div class="lightbox">
+  <img src="generated/images/guide/start/fork-the-project.png" alt="Fork the project">
+</div>
+
 In StackBlitz, the preview pane on the right shows the starting state of the example application.
 The preview features two areas:
 
@@ -271,17 +275,25 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
 本节将引导你创建一个子组件 `ProductAlertsComponent`，该子组件可以从其父组件 `ProductListComponent` 接收数据。
 
-1. Right click on the `app` folder and use the `Angular Generator` to generate a new component named `product-alerts`.
+1. Click on the plus sign above the current terminal to create a new terminal to run the command to generate the component.
 
-   右键单击 `app` 文件夹，然后使用 `Angular Generator` 生成一个名为 `product-alerts` 的新组件。
+   点击当前终端上方的加号，新建一个终端，运行命令生成组件。
 
    <div class="lightbox">
-     <img src="generated/images/guide/start/generate-component.png" alt="StackBlitz command to generate component">
+     <img src="generated/images/guide/start/create-new-terminal.png" alt="StackBlitz command to generate component">
    </div>
 
-     The generator creates starter files for the three parts of the component:
+1. In the new terminal, generate a new component named `product-alerts` by running the following command.
 
-     此生成器会为组件的三个部分创建初始文件：
+   在新终端中，通过运行以下命令生成一个名为 `product-alerts` 的新组件。
+
+   ```sh
+   ng generate component product-alerts
+   ```
+
+   The generator creates starter files for the three parts of the component:
+
+   该生成器会为组件的三个部分创建初始文件：
 
     * `product-alerts.component.ts`
     * `product-alerts.component.html`
@@ -332,16 +344,16 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
    <code-example header="src/app/product-alerts/product-alerts.component.html" path="getting-started/src/app/product-alerts/product-alerts.component.1.html"></code-example>
 
-1. To make `ProductAlertsComponent` available to other components in the application, add it to `AppModule`'s declarations in `app.module.ts`.
+1. The generator automatically added the `ProductAlertsComponent` to the `AppModule` to make it available to other components in the application.
 
-   要让 `ProductAlertsComponent` 可用于本应用的其它组件中，就要把它添加到 `app.module.ts` 文件中的 `AppModule` 的 `declarations` 中。
+   生成器会自动把 `ProductAlertsComponent` 添加到 `AppModule` 中，以便它能用于本应用的其它组件中。
 
   <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-product-alerts"></code-example>
 
-1. Finally, to display `ProductAlertsComponent` as a child of `ProductListComponent`, add the selector, `<app-product-alerts>` to `product-list.component.html`.
+1. Finally, to display `ProductAlertsComponent` as a child of `ProductListComponent`, add the `<app-product-alerts>` element to `product-list.component.html`.
    Pass the current product as input to the component using property binding.
 
-   最后，要将 `ProductAlertsComponent` 显示为 `ProductListComponent` 的子级，请将选择器 `<app-product-alerts>` 添加到 `product-list.component.html` 中。使用属性绑定将当前产品作为输入传给此组件。
+   最后，要将 `ProductAlertsComponent` 显示为 `ProductListComponent` 的子级，请将 `<app-product-alerts>` 元素添加到 `product-list.component.html` 中。使用属性绑定将当前产品作为输入传给此组件。
 
    <code-example header="src/app/product-list/product-list.component.html" path="getting-started/src/app/product-list/product-list.component.5.html" region="app-product-alerts"></code-example>
 
@@ -448,3 +460,4 @@ To continue exploring Angular and developing this application:
 
   跳至[部署](start/start-deployment "入门：部署")以转为本地开发，或将你的应用部署到 Firebase 或你自己的服务器上。
 
+@reviewed 2021-09-15
