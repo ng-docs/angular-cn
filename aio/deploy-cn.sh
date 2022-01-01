@@ -10,11 +10,11 @@ cd $(dirname $0)
 
 yarn build
 
-cd ./prebuilt
+cd ./release/prebuilt
 
 git pull
 
-cp -r ../dist/* .
+cp -r ../dist/* ./prebuilt
 
 cp index.html 404.html
 

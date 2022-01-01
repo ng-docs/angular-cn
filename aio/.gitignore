@@ -49,3 +49,5 @@ protractor-results*.txt
 # System Files
 .DS_Store
 Thumbs.db
+
+/release
