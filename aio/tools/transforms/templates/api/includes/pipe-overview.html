@@ -11,7 +11,7 @@
       {%- if param.isOptional or param.defaultValue !== undefined %} ]{% endif %}
     {%- endfor %} }}</code-example>
 
-  {$ ngModuleHelpers.ngModuleList(doc.ngModules, 'Exported from') $}
+  {$ ngModuleHelpers.ngModuleList(doc.ngModules, '导出自') $}
 
   {%- if doc.valueParam.type %}
   <h2 id="input-value">输入值</h2>
