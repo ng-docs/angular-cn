@@ -5,7 +5,7 @@
 {% block overview %}{% endblock %}
 
 {% block details -%}
-  {$ ngModuleHelpers.ngModuleList(doc.ngModules, 'Exported from') $}
+  {$ ngModuleHelpers.ngModuleList(doc.ngModules, '导出自') $}
   {% include "includes/selectors.html" %}
 
   {$ memberHelpers.renderDirectiveProperties(doc, '属性') $}
