@@ -211,6 +211,8 @@ You should avoid situations where focus returns to the `body` element after a ro
 
 * [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/people-use-web/)
 
+  [W3C - 网络无障碍倡议](https://www.w3.org/WAI/people-use-web/)
+
 * [Rob Dodson A11ycasts](https://www.youtube.com/watch?v=HtTyRajRuyY)
 
   [Rob Dodson 的 A11y 播客](https://www.youtube.com/watch?v=HtTyRajRuyY)
@@ -225,4 +227,9 @@ Books
 
 * "A Web for Everyone: Designing Accessible User Experiences", Sarah Horton and Whitney Quesenbery
 
+  “适合所有人的网络：设计可访问的用户体验”，莎拉·霍顿和惠特尼·奎森伯里
+
 * "Inclusive Design Patterns", Heydon Pickering
+
+  “包容性设计模式”，Heydon Pickering
+
