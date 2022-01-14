@@ -1532,7 +1532,7 @@ The `HeroTaxReturnService` caches a single `HeroTaxReturn`, tracks changes to th
 It also delegates to the application-wide singleton `HeroService`, which it gets by injection.
 
 报税单服务 `HeroTaxReturnService` 缓存了单条 `HeroTaxReturn`，用于跟踪那个申报单的变更，并且可以保存或还原它。
-它还委托给了全应用级的单例服务 `HeroService`，它是通过依赖注入机制取得的。
+它还获得了全应用级的单例服务 `HeroService`，它是通过依赖注入机制取得的。
 
 <code-example path="hierarchical-dependency-injection/src/app/hero-tax-return.service.ts" header="src/app/hero-tax-return.service.ts">
 
