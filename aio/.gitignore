@@ -50,4 +50,4 @@ protractor-results*.txt
 .DS_Store
 Thumbs.db
 
-/release
+release/

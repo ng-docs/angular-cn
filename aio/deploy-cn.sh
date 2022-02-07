@@ -14,7 +14,7 @@ cd ./release/prebuilt
 
 git pull
 
-cp -r ../dist/* ./prebuilt
+cp -r ../../dist/* .
 
 cp index.html 404.html
 
