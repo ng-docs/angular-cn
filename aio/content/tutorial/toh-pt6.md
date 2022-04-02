@@ -128,7 +128,7 @@ Replace the default contents of `in-memory-data.service.ts` with the following:
 The `in-memory-data.service.ts` file will take over the function of `mock-heroes.ts`.
 However, don't delete `mock-heroes.ts` yet, as you still need it for a few more steps of this tutorial.
 
-`in-memory-data.service.ts` 文件已代替了 `mock-heroes.ts` 文件，现在后者可以安全的删除了。
+`in-memory-data.service.ts` 文件已代替了 `mock-heroes.ts` 文件。不过先别删除 `mock-heroes.ts`，之后的教程中还有些许步骤用得到它。
 
 When the server is ready, you'll detach the In-memory Web API, and the application's requests will go through to the server.
 
