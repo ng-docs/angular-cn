@@ -47,8 +47,7 @@ class _NullComponentFactoryResolver implements ComponentFactoryResolver {
  * [`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent)
  * does **not** require resolving component factory: component class can be used directly.
  *
- * 注意：从v13开始，通过[`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent)
- * 创建动态组件**不需要**解析组件，可以直接使用组件。
+ * 注意：从v13开始，通过 [`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) 创建动态组件时**不用再**解析组件工厂，可以直接使用组件类。
  * @publicApi
  */
 export abstract class ComponentFactoryResolver {
