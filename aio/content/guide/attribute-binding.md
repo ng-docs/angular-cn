@@ -45,6 +45,7 @@ To bind to an ARIA attribute, type the following:
 Another common use case for attribute binding is with the `colspan` attribute in tables.  Binding to the `colspan` attribute helps you to keep your tables programmatically dynamic.  Depending on the amount of data that your application populates a table with, the number of columns that a row spans could change.
 
 To use attribute binding with the `<td>` attribute `colspan`
+
 1. Specify the `colspan` attribute by using the following syntax: `[attr.colspan]`.
 1. Set `[attr.colspan]` equal to an expression.
 
