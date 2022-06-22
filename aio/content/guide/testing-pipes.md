@@ -40,7 +40,7 @@ Use simple Jasmine to explore the expected cases and the edge cases.
 
 <code-example path="testing/src/app/shared/title-case.pipe.spec.ts" region="excerpt" header="app/shared/title-case.pipe.spec.ts"></code-example>
 
-{@a write-tests}
+<a id="write-tests"></a>
 
 ## Writing DOM tests to support a pipe test
 

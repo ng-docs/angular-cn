@@ -173,7 +173,7 @@ Later sections show some of the additional option possibilities.
 
 要获取这类数据，`get()` 调用需要以下几个选项： `{observe: 'body', responseType: 'json'}`。这些是这些选项的默认值，所以下面的例子不会传递 options 对象。后面几节展示了一些额外的选项。
 
-{@a config-service}
+<a id="config-service"></a>
 
 The example conforms to the best practices for creating scalable solutions by defining a re-usable [injectable service](guide/glossary#service "service definition") to perform the data-handling functionality.
 In addition to fetching data, the service can post-process the data, add error handling, and add retry logic.
@@ -208,7 +208,7 @@ It copies the data fields into the component's `config` object, which is data-bo
   header="app/config/config.component.ts (showConfig v.1)">
 </code-example>
 
-{@a typed-response}
+<a id="typed-response"></a>
 
 ### Requesting a typed response
 
@@ -279,7 +279,7 @@ For example, the following `subscribe` callback receives `data` as an Object, an
    });
 </code-example>
 
-{@a string-union-types}
+<a id="string-union-types"></a>
 
 <div class="callout is-important">
 
@@ -445,7 +445,7 @@ A `download()` method in the `DownloaderComponent` initiates the request by subs
   header="app/downloader/downloader.component.ts (download)" linenums="false">
 </code-example>
 
-{@a error-handling}
+<a id="error-handling"></a>
 
 ## Handling request errors
 
@@ -463,7 +463,7 @@ When an error occurs, you can obtain details of what failed in order to inform y
 
 发生错误时，你可以获取失败的详细信息，以便通知你的用户。在某些情况下，你也可以自动[重试该请求](#retry)。
 
-{@a error-details}
+<a id="error-details"></a>
 
 ### Getting error details
 
@@ -513,7 +513,7 @@ The following code updates the `getConfig()` method, using a [pipe](guide/pipes 
   header="app/config/config.service.ts (getConfig v.3 with error handler)">
 </code-example>
 
-{@a retry}
+<a id="retry"></a>
 
 ### Retrying a failed request
 
@@ -647,7 +647,7 @@ You must call *subscribe()* or nothing happens. Just calling `HeroesService.dele
   region="delete-hero-no-subscribe">
 </code-example>
 
-{@a always-subscribe}
+<a id="always-subscribe"></a>
 
 **Always _subscribe_!**
 
@@ -763,7 +763,7 @@ The following example shows how, when an old token expires, you can update the a
    region="update-headers" linenums="false">
 </code-example>
 
-{@a url-params}
+<a id="url-params"></a>
 
 ## Configuring HTTP URL parameters
 
@@ -807,7 +807,7 @@ You can also create HTTP parameters directly from a query string by using the `f
 const params = new HttpParams({fromString: 'name=foo'});
 </code-example>
 
-{@a intercepting-requests-and-responses}
+<a id="intercepting-requests-and-responses"></a>
 
 ## Intercepting requests and responses
 
@@ -1002,7 +1002,7 @@ If you need to enable and disable an interceptor dynamically, you'll have to bui
 以后你就再也不能修改这些顺序或移除某些拦截器了。
 如果你需要动态启用或禁用某个拦截器，那就要在那个拦截器中自行实现这个功能。
 
-{@a interceptor-events}
+<a id="interceptor-events"></a>
 
 ### Handling interceptor events
 
@@ -1021,7 +1021,7 @@ Some interceptors, however, need to examine and modify the response from `next.h
 很多拦截器只关心发出的请求，而对 `next.handle()` 返回的事件流不会做任何修改。
 但是，有些拦截器需要检查并修改 `next.handle()` 的响应。上述做法就可以在流中看到所有这些事件。
 
-{@a immutability}
+<a id="immutability"></a>
 
 Although interceptors are capable of modifying requests and responses,
 the `HttpRequest` and `HttpResponse` instance properties are `readonly`,
@@ -1214,7 +1214,7 @@ Neither `tap` nor `finalize` touch the values of the observable stream returned 
 
 在这个可观察对象的流中，无论是 `tap` 还是 `finalize` 接触过的值，都会照常发送给调用者。
 
-{@a custom-json-parser}
+<a id="custom-json-parser"></a>
 
 ### Custom JSON parsing
 
@@ -1257,7 +1257,7 @@ You provide the `CustomParser` along with the `CustomJsonInterceptor`.
   header="app/http-interceptors/index.ts">
 </code-example>
 
-{@a caching}
+<a id="caching"></a>
 ### Caching requests
 
 ### 用拦截器实现缓存
@@ -1303,13 +1303,13 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 
   如果可缓存的请求不在缓存中，代码会调用 `sendRequest()`。这个函数会创建一个没有请求头的[请求克隆体](#immutability)，这是因为 npm API 禁止它们。然后，该函数把请求的克隆体转发给 `next.handle()`，它会最终调用服务器并返回来自服务器的响应对象。
 
-{@a send-request}
+<a id="send-request"></a>
 <code-example
   path="http/src/app/http-interceptors/caching-interceptor.ts"
   region="send-request">
 </code-example>
 
-{@a send-request}
+<a id="send-request"></a>
 
 Note how `sendRequest()` intercepts the response on its way back to the application.
 This method pipes the response through the `tap()` operator, whose callback adds the response to the cache.
@@ -1326,7 +1326,7 @@ some of their `HttpClient` requests actually return cached responses.
 
 数据服务，比如 `PackageSearchService`，并不知道它们收到的某些 `HttpClient` 请求实际上是从缓存的请求中返回来的。
 
-{@a cache-refresh}
+<a id="cache-refresh"></a>
 
 ### Using interceptors to request multiple values
 
@@ -1388,7 +1388,7 @@ The `results$` observable makes the request when subscribed.
   先立即发出一次缓存的响应体，然后发出来自服务器的响应。
   订阅者将会看到一个包含这两个响应的序列。
 
-{@a report-progress}
+<a id="report-progress"></a>
 
 ## Tracking and showing request progress
 
@@ -1622,7 +1622,7 @@ use `HttpClientXsrfModule.withOptions()` to override the defaults.
   region="xsrf">
 </code-example>
 
-{@a testing-requests}
+<a id="testing-requests"></a>
 ## Testing HTTP requests
 
 ## 测试 HTTP 请求

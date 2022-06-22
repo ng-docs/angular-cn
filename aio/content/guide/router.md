@@ -6,7 +6,7 @@ This topic describes how to implement many of the common tasks associated with a
 
 本主题讲述当把 Angular 路由器添加到应用中时，如何实现多种常见路由任务。
 
-{@a basics}
+<a id="basics"></a>
 ## Generate an application with routing enabled
 
 ## 生成一个支持路由的应用
@@ -45,7 +45,7 @@ The CLI automatically appends `Component`, so if you were to write `first-compon
 
 CLI 会自动添加 `Component` 后缀，所以如果在编写 `first-component`，那么其组件名就是 `FirstComponentComponent`。
 
-{@a basics-base-href}
+<a id="basics-base-href"></a>
 
 <div class="alert is-helpful">
 
@@ -74,7 +74,7 @@ import { SecondComponent } from './second/second.component';
 
 </code-example>
 
-{@a basic-route}
+<a id="basic-route"></a>
 
 ## Defining a basic route
 
@@ -140,7 +140,7 @@ Angular CLI 会为你执行这一步骤。但是，如果要手动创建应用�
 
    <code-example path="router/src/app/app.component.7.html" header="Template with routerLink and router-outlet"></code-example>
 
-{@a route-order}
+<a id="route-order"></a>
 
 ### Route order
 
@@ -152,7 +152,7 @@ The [wildcard route](guide/router#setting-up-wildcard-routes) comes last because
 
 路由的顺序很重要，因为 `Router` 在匹配路由时使用“先到先得”策略，所以应该在不那么具体的路由前面放置更具体的路由。首先列出静态路径的路由，然后是一个与默认路由匹配的空路径路由。[通配符路由](guide/router#setting-up-wildcard-routes)是最后一个，因为它匹配每一个 URL，只有当其它路由都没有匹配时，`Router` 才会选择它。
 
-{@a getting-route-information}
+<a id="getting-route-information"></a>
 
 ## Getting route information
 
@@ -214,7 +214,7 @@ To get information from a route:
 
    注意：前面的例子使用了一个变量 `name`，并根据 `name` 参数给它赋值。
 
-{@a wildcard-route-how-to}
+<a id="wildcard-route-how-to"></a>
 
 ## Setting up wildcard routes
 
@@ -244,7 +244,7 @@ For more detail on why order matters for routes, see [Route order](guide/router#
 
 这两个星号 `**` 告诉 Angular，这个 `routes` 定义是通配符路由。对于 component 属性，你可以使用应用中的任何组件。常见的选择包括应用专属的 `PageNotFoundComponent`，你可以定义它来向用户[展示 404 页面](guide/router#404-page-how-to)，或者跳转到应用的主组件。通配符路由是最后一个路由，因为它匹配所有的 URL。关于路由顺序的更多详细信息，请参阅[路由顺序](guide/router#route-order)。
 
-{@a 404-page-how-to}
+<a id="404-page-how-to"></a>
 
 ## Displaying a 404 page
 
@@ -285,7 +285,7 @@ For more details on `pathMatch` see [Spotlight on `pathMatch`](guide/router-tuto
 
 关于 `pathMatch` 的详情，请参阅[聚焦 `pathMatch`](guide/router-tutorial-toh#pathmatch)部分。
 
-{@a nesting-routes}
+<a id="nesting-routes"></a>
 
 ## Nesting routes
 
@@ -315,7 +315,7 @@ The one difference is that you place child routes in a `children` array within t
 
 </code-example>
 
-{@a using-relative-paths}
+<a id="using-relative-paths"></a>
 
 ## Using relative paths
 
@@ -449,7 +449,7 @@ Inject `ActivatedRoute` and `Router` in the constructor of the component class s
 
 </code-example>
 
-{@a lazy-loading}
+<a id="lazy-loading"></a>
 
 ## Lazy loading
 
@@ -631,9 +631,9 @@ The link parameters array affords the flexibility to represent any routing depth
 总之，你可以用一级、两级或多级路由来写应用程序。
   链接参数数组提供了用来表示任意深度路由的链接参数数组以及任意合法的路由参数序列、必须的路由器参数以及可选的路由参数对象。
 
-{@a browser-url-styles}
+<a id="browser-url-styles"></a>
 
-{@a location-strategy}
+<a id="location-strategy"></a>
 
 ## `LocationStrategy` and browser URL styles
 
@@ -822,7 +822,7 @@ For more complete information on how `<base href>` is used to construct target U
 
    对所有 Web 资源使用绝对地址：CSS、图片、脚本、模板 HTML。
 
-{@a hashlocationstrategy}
+<a id="hashlocationstrategy"></a>
 
 ### `HashLocationStrategy`
 

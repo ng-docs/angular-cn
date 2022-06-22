@@ -35,7 +35,7 @@ to the deployment directory&mdash;usually `dist/<project-name>` in CLI projects.
 该配置文件使用 JSON 格式。
 所有文件路径都必须以 `/` 开头，也就是相应的部署目录 —— 在 CLI 项目中的它通常是 `dist/<project-name>`。
 
-{@a glob-patterns}
+<a id="glob-patterns"></a>
 
 Unless otherwise noted, patterns use a limited glob format:
 
@@ -86,7 +86,7 @@ The `SwUpdate` service includes that data in the update notifications. Many appl
 `SwUpdate` 服务会在更新通知中包含这些数据。
 许多应用会使用本节来提供 UI 弹窗时要显示的附加信息，以通知用户有可用的更新。
 
-{@a index-file}
+<a id="index-file"></a>
 
 ## `index`
 
@@ -535,7 +535,7 @@ If the field is omitted, it defaults to:
 
 ```
 
-{@a navigation-request-strategy}
+<a id="navigation-request-strategy"></a>
 
 ## `navigationRequestStrategy`
 

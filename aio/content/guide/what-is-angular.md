@@ -34,7 +34,7 @@ See the <live-example name="what-is-angular"></live-example> for a working examp
 
 </div>
 
-{@a essentials}
+<a id="essentials"></a>
 
 ## Angular applications: The essentials
 
@@ -44,7 +44,7 @@ This section explains the core ideas behind Angular. Understanding these ideas c
 
 本节会解释 Angular 背后的核心思想。了解这些思想可以帮助你更有效地设计和构建应用。
 
-{@a components}
+<a id="components"></a>
 
 ### Components
 
@@ -92,7 +92,7 @@ For more information on what to do with components, see the [Components](guide/c
 
 有关可以用组件做什么的更多信息，请参见[“组件”](guide/component-overview)部分。
 
-{@a templates}
+<a id="templates"></a>
 
 ### Templates
 
@@ -192,7 +192,7 @@ For more information on templates, see the [Templates](guide/template-syntax) se
 
 关于模板用法和用途的更多信息，请参见[“模板”](guide/template-syntax)部分。
 
-{@a di}
+<a id="di"></a>
 ### Dependency injection
 
 ### 依赖注入
@@ -217,7 +217,7 @@ For more information about dependency injection and Angular, see the [Dependency
 
 有关依赖注入和 Angular 的更多信息，请参见 Angular 中的[依赖注入](guide/dependency-injection)部分。
 
-{@a cli}
+<a id="cli"></a>
 
 ## Angular CLI
 
@@ -276,7 +276,7 @@ For more information about the Angular CLI, see the [CLI Reference](/cli) sectio
 
 有关 Angular CLI 的更多信息，请参阅 [“CLI 参考手册”](/cli)部分。
 
-{@a 1p-libraries}
+<a id="1p-libraries"></a>
 
 ## First-party libraries
 

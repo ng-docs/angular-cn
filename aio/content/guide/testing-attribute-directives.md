@@ -1,5 +1,5 @@
 
-{@a attribute-directive}
+<a id="attribute-directive"></a>
 
 # Testing Attribute Directives
 

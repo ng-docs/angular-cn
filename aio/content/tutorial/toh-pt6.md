@@ -134,7 +134,7 @@ When the server is ready, you'll detach the In-memory Web API, and the applicati
 
 等服务器就绪后，你就可以抛弃这个内存 Web API，应用的请求将直接传给服务器。
 
-{@a import-heroes}
+<a id="import-heroes"></a>
 
 ## Heroes and HTTP
 
@@ -696,7 +696,7 @@ component's `search()` method with the new search box value.
 
 当用户在搜索框中输入时，一个 *keyup* 事件绑定会调用该组件的 `search()` 方法，并传入新的搜索框的值。
 
-{@a asyncpipe}
+<a id="asyncpipe"></a>
 
 ### `AsyncPipe`
 
@@ -769,7 +769,7 @@ The `searchTerms` becomes an `Observable` emitting a steady stream of search ter
 每当用户在文本框中输入时，这个事件绑定就会使用文本框的值（搜索词）调用 `search()` 函数。
 `searchTerms` 变成了一个能发出搜索词的稳定的流。
 
-{@a search-pipe}
+<a id="search-pipe"></a>
 
 ### Chaining RxJS operators
 
@@ -864,11 +864,11 @@ Here are the code files discussed on this page (all in the `src/app/` folder).
 
 本文讨论过的代码文件如下（都位于 `src/app/` 文件夹中）。
 
-{@a heroservice}
+<a id="heroservice"></a>
 
-{@a inmemorydataservice}
+<a id="inmemorydataservice"></a>
 
-{@a appmodule}
+<a id="appmodule"></a>
 
 #### `HeroService`, `InMemoryDataService`, `AppModule`
 
@@ -887,7 +887,7 @@ Here are the code files discussed on this page (all in the `src/app/` folder).
   </code-pane>
 </code-tabs>
 
-{@a heroescomponent}
+<a id="heroescomponent"></a>
 
 #### `HeroesComponent`
 
@@ -906,7 +906,7 @@ Here are the code files discussed on this page (all in the `src/app/` folder).
   </code-pane>
 </code-tabs>
 
-{@a herodetailcomponent}
+<a id="herodetailcomponent"></a>
 
 #### `HeroDetailComponent`
 
@@ -921,7 +921,7 @@ Here are the code files discussed on this page (all in the `src/app/` folder).
   </code-pane>
 </code-tabs>
 
-{@a dashboardcomponent}
+<a id="dashboardcomponent"></a>
 #### `DashboardComponent`
 
 <code-tabs>
@@ -931,7 +931,7 @@ Here are the code files discussed on this page (all in the `src/app/` folder).
   </code-pane>
 </code-tabs>
 
-{@a herosearchcomponent}
+<a id="herosearchcomponent"></a>
 
 #### `HeroSearchComponent`
 

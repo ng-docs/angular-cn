@@ -232,7 +232,7 @@ Here's a summary of the stand-alone functions, in order of likely utility:
   </tr>
 </table>
 
-{@a testbed-class-summary}
+<a id="testbed-class-summary"></a>
 ## _TestBed_ class summary
 
 ## `TestBed` 类摘要
@@ -259,7 +259,7 @@ is a subset of the `@NgModule` metadata properties.
   };
 </code-example>
 
-{@a metadata-override-object}
+<a id="metadata-override-object"></a>
 
 Each override method takes a `MetadataOverride<T>` where `T` is the kind of metadata
 appropriate to the method, that is, the parameter of an `@NgModule`,
@@ -275,9 +275,9 @@ appropriate to the method, that is, the parameter of an `@NgModule`,
   };
 </code-example>
 
-{@a testbed-methods}
+<a id="testbed-methods"></a>
 
-{@a testbed-api-summary}
+<a id="testbed-api-summary"></a>
 
 The `TestBed` API consists of static class methods that either update or reference a _global_ instance of the `TestBed`.
 
@@ -471,7 +471,7 @@ Here are the most important static methods, in order of likely utility.
 
     <td style="vertical-align: top">
 
-      {@a testbed-inject}
+      <a id="testbed-inject"></a>
 
       <code>inject</code>
     </td>
@@ -511,7 +511,7 @@ Here are the most important static methods, in order of likely utility.
 
     <td style="vertical-align: top">
 
-      {@a testbed-initTestEnvironment}
+      <a id="testbed-initTestEnvironment"></a>
 
       <code>initTestEnvironment</code>
 
@@ -568,7 +568,7 @@ These are rarely needed.
 
 少数 `TestBed` 实例方法没有对应的静态方法。它们很少被使用。
 
-{@a component-fixture-api-summary}
+<a id="component-fixture-api-summary"></a>
 
 ## The _ComponentFixture_
 
@@ -585,7 +585,7 @@ its DOM representation, and aspects of its Angular environment.
 
 `ComponentFixture` 的属性和方法提供了对组件、它的 DOM 和它的 Angular 环境方面的访问。
 
-{@a component-fixture-properties}
+<a id="component-fixture-properties"></a>
 
 ### _ComponentFixture_ properties
 
@@ -701,7 +701,7 @@ Here are the most important properties for testers, in order of likely utility.
   </tr>
 </table>
 
-{@a component-fixture-methods}
+<a id="component-fixture-methods"></a>
 
 ### _ComponentFixture_ methods
 
@@ -884,7 +884,7 @@ Here are the most useful methods for testers.
   </tr>
 </table>
 
-{@a debug-element-details}
+<a id="debug-element-details"></a>
 
 #### _DebugElement_
 
@@ -1211,7 +1211,7 @@ Here are the most useful `DebugElement` members for testers, in approximate orde
   </tr>
 </table>
 
-{@a query-predicate}
+<a id="query-predicate"></a>
 
 The `DebugElement.query(predicate)` and `DebugElement.queryAll(predicate)` methods take a
 predicate that filters the source element's subtree for matching `DebugElement`.

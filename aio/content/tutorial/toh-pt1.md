@@ -65,7 +65,7 @@ CLI 自动生成了三个元数据属性：
 
    `styleUrls`&mdash; 组件私有 CSS 样式表文件的位置。
 
-{@a selector}
+<a id="selector"></a>
 
 The [CSS element selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors),
 `'app-heroes'`, matches the name of the HTML element that identifies this component within a parent component's template.

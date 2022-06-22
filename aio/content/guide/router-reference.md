@@ -6,7 +6,7 @@ The following sections highlight some core router concepts.
 
 下面的部分重点介绍了一些路由器的核心概念。
 
-{@a basics-router-imports}
+<a id="basics-router-imports"></a>
 
 ### Router imports
 
@@ -31,7 +31,7 @@ For more on browser URL styles, see [`LocationStrategy` and browser URL styles](
 
 </div>
 
-{@a basics-config}
+<a id="basics-config"></a>
 
 ### Configuration
 
@@ -49,7 +49,7 @@ The following example creates five route definitions, configures the router via 
 
 <code-example path="router/src/app/app.module.0.ts" header="src/app/app.module.ts (excerpt)"></code-example>
 
-{@a example-config}
+<a id="example-config"></a>
 
 The `appRoutes` array of routes describes how to navigate.
 Pass it to the `RouterModule.forRoot()` method in the module `imports` to configure the router.
@@ -87,7 +87,7 @@ You set the `enableTracing: true` option in the object passed as the second argu
 
 如果你需要查看导航生命周期中发生了什么事件，可以把 `enableTracing` 选项作为路由器默认配置的一部分。这会把每个导航生命周期中发生的每个路由器事件都输出到浏览器控制台中。`enableTracing` 只会用于调试目的。你可以把 `enableTracing: true` 选项作为第二个参数传给 `RouterModule.forRoot()` 方法。
 
-{@a basics-router-outlet}
+<a id="basics-router-outlet"></a>
 
 ### Router outlet
 
@@ -109,9 +109,9 @@ Given the preceding configuration, when the browser URL for this application bec
 
 对于上面的配置，当这个应用的浏览器 URL 变为 `/heroes` 时，路由器就会把这个 URL 与路由路径 `/heroes` 匹配，并把 `HeroListComponent` 作为兄弟元素显示在宿主组件模板中的 `RouterOutlet` 下方。
 
-{@a basics-router-links}
+<a id="basics-router-links"></a>
 
-{@a router-link}
+<a id="router-link"></a>
 
 ### Router links
 
@@ -137,7 +137,7 @@ The router resolves that array into a complete URL.
 
 如果导航路径更加动态，你可以给它绑定到一个模板表达式，该表达式要返回一个[链接参数数组](guide/router#link-parameters-array)。路由器会把该数组解析成一个完整的 URL。
 
-{@a router-link-active}
+<a id="router-link-active"></a>
 
 ### Active router links
 
@@ -161,7 +161,7 @@ To override this behavior, bind to the `[routerLinkActiveOptions]` input binding
 
 活动路由链接会级联到路由树的每个级别，这样父路由和子路由链接就可以同时处于活动状态。要覆盖这种行为，可以用 `{ exact: true }` 表达式绑定到 `[routerLinkActiveOptions]` 输入绑定。使用 `{ exact: true }` 之后，给定的 `RouterLink` 只有在 URL 与当前 URL 完全匹配时才会激活。
 
-{@a basics-router-state}
+<a id="basics-router-state"></a>
 
 ### Router state
 
@@ -175,7 +175,7 @@ Each `ActivatedRoute` in the `RouterState` provides methods to traverse up and d
 
 `RouterState` 中的每个 `ActivatedRoute` 都提供了向上或向下遍历路由树的方法，用于从父路由、子路由和兄弟路由中获取信息。
 
-{@a activated-route}
+<a id="activated-route"></a>
 
 ### Activated route
 

@@ -22,7 +22,7 @@ Declare them in a module if they belong to that particular module.
 这些类只能在应用程序的*一个并且只有一个*模块中声明。
 只有当它们*从属于*某个模块时，才能把在*此*模块中声明它们。
 
-{@a q-declarable}
+<a id="q-declarable"></a>
 ## What is a _declarable_?
 
 ## 什么是*可声明的*？
@@ -147,7 +147,7 @@ Import [BrowserModule](guide/ngmodule-faq#q-browser-vs-common-module) only in th
 
 只能在根模块 `AppModule` 中[导入 _BrowserModule_](guide/ngmodule-faq#q-browser-vs-common-module)。
 
-{@a q-browser-vs-common-module}
+<a id="q-browser-vs-common-module"></a>
 ## Should I import `BrowserModule` or `CommonModule`?
 
 ## 我应该导入 *BrowserModule* 还是 *CommonModule*？
@@ -179,7 +179,7 @@ Importing `CommonModule` also frees feature modules for use on _any_ target plat
 
 特性模块中导入 `CommonModule` 可以让它能用在任何目标平台上，不仅是浏览器。那些跨平台库的作者应该喜欢这种方式的。
 
-{@a q-reimport}
+<a id="q-reimport"></a>
 ## What if I import the same module twice?
 
 ## 如果我两次导入同一个模块会怎么样？
@@ -202,7 +202,7 @@ Angular doesn't like NgModules with circular references, so don't let Module 'A'
 
 Angular 不允许模块之间出现循环依赖，所以不要让模块'A'导入模块'B'，而模块'B'又导入模块'A'。
 
-{@a q-reexport}
+<a id="q-reexport"></a>
 ## What should I export?
 
 ## 我应该导出什么？
@@ -392,7 +392,7 @@ To limit access to a service, consider lazy loading the NgModule that provides t
 
 要限制对某个服务的访问，可以考虑惰性加载提供该服务的 NgModule。参阅[我要如何把服务的范围限定为某个模块？](guide/ngmodule-faq#service-scope)。
 
-{@a q-lazy-loaded-module-provider-visibility}
+<a id="q-lazy-loaded-module-provider-visibility"></a>
 ## Why is a service provided in a lazy-loaded module visible only to that module?
 
 ## 为什么在惰性加载模块中声明的服务提供者只对该模块自身可见？
@@ -450,7 +450,7 @@ The `AppModule` always wins.
 
 由根 `AppModule` 提供的服务相对于所导入模块中提供的服务有优先权。换句话说：`AppModule` 总会获胜。
 
-{@a service-scope}
+<a id="service-scope"></a>
 ## How do I restrict service scope to a module?
 
 ## 我应该如何把服务的范围限制到模块中？
@@ -540,7 +540,7 @@ Though you can limit access to a service by providing it in a lazy loaded module
 
 虽然通过在惰性加载模块中或组件中提供某个服务来限制它的访问都是可行的方式，但在组件中提供服务可能导致这些服务出现多个实例。因此，应该优先使用惰性加载的方式。
 
-{@a q-root-component-or-module}
+<a id="q-root-component-or-module"></a>
 ## Should I add application-wide providers to the root `AppModule` or the root `AppComponent`?
 
 ## 我应该把全应用级提供者添加到根模块 `AppModule` 中还是根组件 `AppComponent` 中？
@@ -603,7 +603,7 @@ This means that lazy-loaded modules can't reach them.
 这对于没有路由器的应用来说*几乎是*整个应用了。
 但对那些带路由的应用，路由操作位于顶层，那里不存在 `AppComponent` 服务。这意味着惰性加载模块不能使用它们。
 
-{@a q-component-or-module}
+<a id="q-component-or-module"></a>
 ## Should I add other providers to a module or a component?
 
 ## 我应该把其它提供者注册到模块中还是组件中？
@@ -639,7 +639,7 @@ not the root `AppComponent`.
 
 [总是在根模块 `AppModule` 中注册*全应用级*服务](guide/ngmodule-faq#q-root-component-or-module)，而不要在根组件 `AppComponent` 中。
 
-{@a q-why-bad}
+<a id="q-why-bad"></a>
 ## Why is it bad if a shared module provides a service to a lazy-loaded module?
 
 ## 为什么在共享模块中为惰性加载模块提供服务是个馊主意？
@@ -694,7 +694,7 @@ The username goes bonkers as the Angular creates a new `UserService` instance ea
 I'd like to see the error so I can include it.-->
 
 
-{@a q-why-child-injector}
+<a id="q-why-child-injector"></a>
 ## Why does lazy loading create a child injector?
 
 ## 为什么惰性加载模块会创建一个子注入器？
@@ -739,7 +739,7 @@ Angular 必须把这个惰性加载模块中的提供者添加到*某个*注入�
 但是它无法将它们添加到应用的根注入器中，因为根注入器已经不再接受新的提供者了。
 于是，Angular 在惰性加载模块的上下文中创建了一个新的子注入器。
 
-{@a q-is-it-loaded}
+<a id="q-is-it-loaded"></a>
 ## How can I tell if an NgModule or service was previously loaded?
 
 ## 我要如何知道一个模块或服务是否已经加载过了？
@@ -766,7 +766,7 @@ Here is a custom constructor for an NgModule called `GreetingModule`.
 <code-example path="ngmodules/src/app/greeting/greeting.module.ts" region="ctor" header="src/app/greeting/greeting.module.ts (Constructor)"></code-example>
 
 
-{@a q-entry-component-defined}
+<a id="q-entry-component-defined"></a>
 ## What is an `entry component`?
 
 ## 什么是*入口组件*？
@@ -894,7 +894,7 @@ For more information, see [JavaScript Modules vs. NgModules](guide/ngmodule-vs-j
 
 要了解更多，参阅 [JavaScript 模块 vs. NgModules](guide/ngmodule-vs-jsmodule) 一章
 
-{@a q-template-reference}
+<a id="q-template-reference"></a>
 ## How does Angular find components, directives, and pipes in a template?<br>What is a <i><b>template reference</b></i>?
 
 ## Angular 如何查找模板中的组件、指令和管道？什么是 ***模板引用*** ？
@@ -917,7 +917,7 @@ or exported by a module that this module imports.
 
 Angular 只查询两种组件、指令或管道：1）那些在当前模块中声明过的，以及 2）那些被当前模块导入的模块所导出的。
 
-{@a q-angular-compiler}
+<a id="q-angular-compiler"></a>
 ## What is the Angular compiler?
 
 ## 什么是 Angular 编译器？

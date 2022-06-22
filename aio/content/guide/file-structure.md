@@ -139,7 +139,7 @@ New Angular projects use strict mode by default. If this is not desired you can 
 
 </div>
 
-{@a app-src}
+<a id="app-src"></a>
 
 Inside the `src/` folder, the `app/` folder contains your project's logic and data.
 Angular components, templates, and styles go here.
@@ -186,7 +186,7 @@ Project-specific [TypeScript](https://www.typescriptlang.org/) configuration fil
 | `tsconfig.spec.json` | 应用测试的 [TypeScript](https://www.typescriptlang.org/) 配置。参阅 [TypeScript 配置](guide/typescript-configuration)。 |
 
 
-{@a multiple-projects}
+<a id="multiple-projects"></a>
 
 ## Multiple projects
 

@@ -41,7 +41,7 @@ Run the <live-example></live-example>.
 
 </div>
 
-{@a template-driven-validation}
+<a id="template-driven-validation"></a>
 
 ## Validating input in template-driven forms
 
@@ -93,9 +93,9 @@ Notice the following features illustrated by the example.
 
    每个嵌套的 `<div>` 为其中一个可能出现的验证错误显示一条自定义消息。比如 `required`、`minlength` 和 `forbiddenName`。
 
-{@a dirty-or-touched}
+<a id="dirty-or-touched"></a>
 
-{@a dirty-or-touching}
+<a id="dirty-or-touching"></a>
 
 <div class="alert is-helpful">
 
@@ -113,7 +113,7 @@ To prevent the validator from displaying errors before the user has a chance to 
 
 </div>
 
-{@a reactive-form-validation}
+<a id="reactive-form-validation"></a>
 
 ## Validating input in reactive forms
 
@@ -164,7 +164,7 @@ built-in validators—this time, in function form, as in the following example.
 
 要想把这个英雄表单改造成一个响应式表单，还是要用那些内置验证器，但这次改为用它们的函数形态。参阅下面的例子。
 
-{@a reactive-component-class}
+<a id="reactive-component-class"></a>
 
 <code-example path="form-validation/src/app/reactive/hero-form-reactive.component.1.ts" region="form-group" header="reactive/hero-form-reactive.component.ts (validator functions)"></code-example>
 
@@ -194,7 +194,7 @@ Notice that the `required` attribute is still present in the template. Although 
 
 请注意，`required` 属性仍然出现在模板中。虽然它对于验证来说不是必须的，但为了无障碍性，还是应该保留它。
 
-{@a custom-validators}
+<a id="custom-validators"></a>
 
 ## Defining custom validators
 
@@ -237,9 +237,9 @@ In the case of an observable, the observable must complete, at which point the f
 
 自定义异步验证器和同步验证器很像，只是它们必须返回一个稍后会输出 null 或“验证错误对象”的承诺（Promise）或可观察对象，如果是可观察对象，那么它必须在某个时间点被完成（complete），那时候这个表单就会使用它输出的最后一个值作为验证结果。（译注：HTTP 服务是自动完成的，但是某些自定义的可观察对象可能需要手动调用 complete 方法）
 
-{@a adding-to-reactive-forms}
+<a id="adding-to-reactive-forms"></a>
 
-{@a addition-to-reactive-forms}
+<a id="addition-to-reactive-forms"></a>
 
 ### Adding custom validators to reactive forms
 
@@ -251,9 +251,9 @@ In reactive forms, add a custom validator by passing the function directly to th
 
 <code-example path="form-validation/src/app/reactive/hero-form-reactive.component.1.ts" region="custom-validator" header="reactive/hero-form-reactive.component.ts (validator functions)"></code-example>
 
-{@a adding-to-template-driven-forms}
+<a id="adding-to-template-driven-forms"></a>
 
-{@a adds-to-template-driven-forms}
+<a id="adds-to-template-driven-forms"></a>
 
 ### Adding custom validators to template-driven forms
 

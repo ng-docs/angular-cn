@@ -38,7 +38,7 @@ Choose from the following modes:
 
 </div>
 
-{@a inspect-generated-css}
+<a id="inspect-generated-css"></a>
 
 ## Inspecting generated CSS
 

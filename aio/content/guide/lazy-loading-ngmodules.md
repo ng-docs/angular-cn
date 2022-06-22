@@ -16,7 +16,7 @@ For the final sample application with two lazy-loaded modules that this page des
 
 </div>
 
-{@a lazy-loading}
+<a id="lazy-loading"></a>
 
 ## Lazy loading basics
 
@@ -64,7 +64,7 @@ For step-by-step instructions on lazy loading modules, continue with the followi
 还要确保从 `AppModule` 中移除了 `ItemsModule`。
 想要一个关于惰性加载模块的分步操作指南，请继续查看本页的后续章节。
 
-{@a step-by-step}
+<a id="step-by-step"></a>
 
 ## Step-by-step setup
 
@@ -227,7 +227,7 @@ These buttons work, because the CLI automatically added the routes to the featur
 
 这些按钮生效了，因为 CLI 会自动将特性模块的路由添加到 `app-routing.module.ts` 中的 `routes` 数组中。
 
-{@a config-routes}
+<a id="config-routes"></a>
 
 ### Imports and route configuration
 
@@ -349,7 +349,7 @@ For more information, see the [`forRoot()` pattern](guide/singleton-services#for
 `forChild()` 方法中没有注入器配置，只有像 `RouterOutlet` 和 `RouterLink` 这样的指令。
 欲知详情，参阅[单例服务](guide/singleton-services)章的 [`forRoot()` 模式](guide/singleton-services#forRoot)小节。
 
-{@a preloading}
+<a id="preloading"></a>
 
 ## Preloading
 

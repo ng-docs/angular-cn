@@ -153,7 +153,7 @@ To make your solution reusable, you need to adjust it so that it does not depend
 
     如果你的库中提供的可选服务可能并没有被所有的客户端应用所使用，那么就可以通过[轻量级令牌设计模式](guide/lightweight-injection-tokens)为这种情况支持正确的树状[结构了](guide/lightweight-injection-tokens) 。
 
-{@a integrating-with-the-cli}
+<a id="integrating-with-the-cli"></a>
 
 {@a integration with the the cli}
 
@@ -219,7 +219,7 @@ npm publish
 </code-example>
 
 
-{@a lib-assets}
+<a id="lib-assets"></a>
 
 ## Managing assets in a library
 
@@ -360,7 +360,7 @@ For this reason, an application that depends on a library should only use TypeSc
 
 </div>
 
-{@a ivy-libraries}
+<a id="ivy-libraries"></a>
 
 ## Publishing libraries
 

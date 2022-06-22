@@ -37,7 +37,7 @@ This guide covers built-in [attribute directives](guide/built-in-directives#buil
 
 本指南涵盖了内置的[属性型指令](guide/built-in-directives#built-in-attribute-directives)和[结构型指令](guide/built-in-directives#built-in-structural-directives)。
 
-{@a attribute-directives}
+<a id="attribute-directives"></a>
 
 ## Built-in attribute directives
 
@@ -73,7 +73,7 @@ They do not have special access to any private APIs that other directives can't 
 
 </div>
 
-{@a ngClass}
+<a id="ngClass"></a>
 ## Adding and removing classes with `NgClass`
 
 ## 用 `NgClass` 添加和删除类
@@ -132,7 +132,7 @@ For more information, see the <live-example></live-example> `app.component.ts` a
 
 在这个例子中，Angular 会在初始化以及发生更改的情况下应用这些类。完整的示例会在 `ngOnInit()` 中进行初始化以及通过单击按钮更改相关属性时调用 `setCurrentClasses()`。这些步骤对于实现 `ngClass` 不是必需的。有关更多信息，请参见<live-example></live-example>中的 `app.component.ts` 和 `app.component.html`。
 
-{@a ngstyle}
+<a id="ngstyle"></a>
 ## Setting inline styles with `NgStyle`
 
 ## 用 `NgStyle` 设置内联样式
@@ -164,7 +164,7 @@ See the <live-example></live-example> `app.component.ts` and `app.component.html
 
 在这个例子中，Angular 会在初始化以及发生更改的情况下应用这些类。完整的示例会在 `ngOnInit()` 中进行初始化以及通过单击按钮更改相关属性时调用 `setCurrentClasses()`。这些步骤对于实现 `ngClass` 不是必需的。有关更多信息，请参见<live-example></live-example>中的 `app.component.ts` 和 `app.component.html`。
 
-{@a ngModel}
+<a id="ngModel"></a>
 
 ## Displaying and updating properties with `ngModel`
 
@@ -231,7 +231,7 @@ When you write an Angular component, you don't need a value accessor or `NgModel
 
 </div>
 
-{@a structural-directives}
+<a id="structural-directives"></a>
 
 ## Built-in structural directives
 
@@ -263,7 +263,7 @@ For more information, see [Structural Directives](guide/structural-directives).
 
 要了解更多信息，参阅[结构型指令](guide/structural-directives)。
 
-{@a ngIf}
+<a id="ngIf"></a>
 
 ## Adding or removing an element with `NgIf`
 
@@ -315,7 +315,7 @@ In this example, Angular does not display the `nullCustomer` because it is `null
 
 <code-example path="built-in-directives/src/app/app.component.html" region="NgIf-2b" header="src/app/app.component.html"></code-example>
 
-{@a ngFor}
+<a id="ngFor"></a>
 
 ## Listing items with `NgFor`
 
@@ -418,7 +418,7 @@ For more information about shorthand, see the [Structural Directives](guide/stru
 
 Angular 会将此指令转换为 `<ng-template>`，然后反复使用此模板为列表中的每个 `item` 创建一组新的元素和绑定。有关简写形式的更多信息，请参见[《结构型指令》](guide/structural-directives#shorthand)指南。
 
-{@a one-per-element}
+<a id="one-per-element"></a>
 ## Repeating elements when a condition is true
 
 ## 当条件为真时复写元素
@@ -436,7 +436,7 @@ For more information about `NgFor` see the [NgForOf API reference](api/common/Ng
 
 有关 `NgFor` 的更多信息，请参见[NgForOf API 参考](api/common/NgForOf)。
 
-{@a ngfor-with-trackby}
+<a id="ngfor-with-trackby"></a>
 ### Tracking items with `*ngFor` `trackBy`
 
 ### 用 `*ngFor` 的 `trackBy` 跟踪条目
@@ -479,7 +479,7 @@ In the following illustration of the `trackBy` effect, **Reset items** creates n
 
 </div>
 
-{@a ngcontainer}
+<a id="ngcontainer"></a>
 
 ## Hosting a directive without a DOM element
 
@@ -522,7 +522,7 @@ Here's a conditional paragraph using `<ng-container>`.
     <img src='generated/images/guide/structural-directives/select-ngcontainer-anim.gif' alt="ngcontainer options work properly">
   </div>
 
-{@a ngSwitch}
+<a id="ngSwitch"></a>
 
 ## Switching cases with `NgSwitch`
 

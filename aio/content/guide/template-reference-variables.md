@@ -240,8 +240,8 @@ __proto__: Function
 
 </code-example>
 
-{@a template-input-variable}
-{@a template-input-variables}
+<a id="template-input-variable"></a>
+<a id="template-input-variables"></a>
 ## Template input variable
 
 ## 模板输入变量

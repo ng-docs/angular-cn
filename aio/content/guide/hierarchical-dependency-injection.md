@@ -29,7 +29,7 @@ unless you configure it in the `providers` property on
 
    `ElementInjector` 层次结构 —— 在每个 DOM 元素上隐式创建。除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中进行配置，否则默认情况下，`ElementInjector` 为空。
 
-{@a register-providers-injectable}
+<a id="register-providers-injectable"></a>
 
 ### `ModuleInjector`
 
@@ -263,7 +263,7 @@ Components and directives on the same element share an injector.
 组件是一种特殊类型的指令，这意味着 `@Directive()` 具有 `providers` 属性，`@Component()` 也同样如此。
 这意味着指令和组件都可以使用 `providers` 属性来配置提供者。当使用 `providers` 属性为组件或指令配置提供者时，该提供程商就属于该组件或指令的 `ElementInjector`。同一元素上的组件和指令共享同一个注入器。
 
-{@a resolution-rules}
+<a id="resolution-rules"></a>
 
 ## Resolution rules
 
@@ -356,7 +356,7 @@ Additionally, you can combine all of the modifiers except `@Host()` and `@Self()
 
 另外，你可以组合除 `@Host()` 和 `@Self()` 之外的所有修饰符，当然还有 `@SkipSelf()` 和 `@Self()`。
 
-{@a optional}
+<a id="optional"></a>
 
 ### `@Optional()`
 
@@ -836,7 +836,7 @@ finds the `FlowerService` and never sees the 🌺 (red hibiscus).
 
 当 `<app-child>` 请求 `FlowerService` 时，注入器从 `<app-child>` 的 `<#VIEW>` 开始搜索（包括 `<#VIEW>`，因为它是从 `@Component()` 注入的），并到 `<app-child>` 结束。在这个例子中，`FlowerService` 在 `<app-child>` 的 `providers` 数组中解析为向日葵🌻。注入器不必在注入器树中进一步查找。一旦找到 `FlowerService`，它便停止运行，再也看不到🌺（红芙蓉）。
 
-{@a use-view-providers}
+<a id="use-view-providers"></a>
 
 ### Using the `viewProviders` array
 
@@ -1102,7 +1102,7 @@ if it is also within the `<#VIEW>`.
 
 `<app-inspector>` 的投影内容中看到了🐳（鲸鱼），而不是🐶（小狗），因为🐶（小狗）在 `<app-child>` 的 `<#VIEW>` 中。如果 `<app-inspector>` 也位于 `<#VIEW>` 则只能看到🐶（小狗）。
 
-{@a modify-visibility}
+<a id="modify-visibility"></a>
 
 ## Modifying service visibility
 
@@ -1420,7 +1420,7 @@ provided by way of the `viewProviders` array, the injector finds 🦔
 `@SkipSelf()` 导致注入器从 `<app-root>` 而不是 `<app-child>` 处开始对 `AnimalService` 进行搜索，而 `@Host()` 会在 `<app-root>` 的 `<#VIEW>` 处停止搜索。
 由于 `AnimalService` 是通过 `viewProviders` 数组提供的，因此注入程序会在 `<#VIEW>` 找到🦔（刺猬）。
 
-{@a component-injectors}
+<a id="component-injectors"></a>
 
 ## `ElementInjector` use case examples
 

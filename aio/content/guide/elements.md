@@ -155,7 +155,7 @@ For more information, see Web Component documentation for [Creating custom event
 
 要了解更多，请参阅 Web Components 的文档：[Creating custom events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events)。
 
-{@a browser-support}
+<a id="browser-support"></a>
 
 ## Browser support for custom elements
 

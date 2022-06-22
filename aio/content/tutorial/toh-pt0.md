@@ -197,7 +197,7 @@ The browser refreshes and displays the new application title.
 
 浏览器自动刷新，并且显示出了新的应用标题。
 
-{@a app-wide-styles}
+<a id="app-wide-styles"></a>
 
 ### Add application styles
 

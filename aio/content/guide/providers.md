@@ -143,8 +143,8 @@ Register a provider with a component when you must limit a service instance to a
 比如，用户编辑组件 `UserEditorComponent`，它需要一个缓存 `UserService` 实例，那就应该把 `UserService` 注册进 `UserEditorComponent` 中。
 然后，每个 `UserEditorComponent` 的实例都会获取它自己的缓存服务实例。
 
-{@a singleton-services}
-{@a component-child-injectors}
+<a id="singleton-services"></a>
+<a id="component-child-injectors"></a>
 
 ## Injector hierarchy and service instances
 

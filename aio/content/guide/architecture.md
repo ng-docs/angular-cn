@@ -158,7 +158,7 @@ Angular 为一些通用的转换提供了预定义管道，你还可以定义自
 
 </div>
 
-{@a dependency-injection}
+<a id="dependency-injection"></a>
 
 ## Services and dependency injection
 

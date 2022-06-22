@@ -107,7 +107,7 @@ The component's `birthday` value flows through the pipe operator, `|` to the [`d
 
 该组件的 `birthday` 值通过管道操作符（|）流向 [`date`](api/common/DatePipe) 函数。
 
-{@a parameterizing-a-pipe}
+<a id="parameterizing-a-pipe"></a>
 
 ## Transforming data with parameters and chained pipes
 
@@ -187,7 +187,7 @@ The second tab for the `src/app/app.component.html` template passes the `fullDat
     <code-pane header="src/app/app.component.html (2)" region="chained-parameter-birthday" path="pipes/src/app/app.component.html"></code-pane>
 </code-tabs>
 
-{@a Custom-pipes}
+<a id="Custom-pipes"></a>
 
 ## Creating pipes for custom data transformations
 
@@ -284,7 +284,7 @@ To examine the behavior the `exponentialStrength` pipe in the <live-example></li
 
 </div>
 
-{@a change-detection}
+<a id="change-detection"></a>
 
 ## Detecting changes with data binding in pipes
 
@@ -345,7 +345,7 @@ So Angular uses a faster change-detection algorithm for executing a pipe, as des
 
 然而，如果对于每次更改都执行一个管道来更新显示，就会降低你应用的性能。因此，Angular 会使用更快的变更检测算法来执行管道，如下一节所述。
 
-{@a pure-and-impure-pipes}
+<a id="pure-and-impure-pipes"></a>
 
 ### Detecting pure changes to primitives and object references
 
@@ -356,7 +356,7 @@ A pure change is either a change to a primitive input value (such as `String`, `
 
 通过默认情况下，管道会定义成*纯的(pure)*，这样 Angular 只有在检测到输入值发生了*纯变更*时才会执行该管道。纯变更是对原始输入值（比如 `String`、`Number`、`Boolean` 或 `Symbol` ）的变更，或是对对象引用的变更（比如 `Date`、`Array`、`Function`、`Object`）。
 
-{@a pure-pipe-pure-fn}
+<a id="pure-pipe-pure-fn"></a>
 
 A pure pipe must use a pure function, which is one that processes inputs and returns values without side effects.
 In other words, given the same input, a pure function should always return the same output.
@@ -423,7 +423,7 @@ To keep your component independent of HTML templates that use pipes, you can, as
 
 为了让你的组件更简单，独立于那些使用管道的 HTML，你可以用一个*不纯的*管道来检测复合对象（如数组）中的变化，如下一节所述。
 
-{@a impure-flying-heroes}
+<a id="impure-flying-heroes"></a>
 
 ### Detecting impure changes within composite objects
 
@@ -479,7 +479,7 @@ To confirm that the display updates as the user adds heroes, see the <live-examp
 
 </div>
 
-{@a async-pipe}
+<a id="async-pipe"></a>
 
 ## Unwrapping data from an observable
 
@@ -511,7 +511,7 @@ The following code example binds an observable of message strings
 
 <code-example path="pipes/src/app/hero-async-message.component.ts" header="src/app/hero-async-message.component.ts"></code-example>
 
-{@a no-filter-pipe}
+<a id="no-filter-pipe"></a>
 
 ## Caching HTTP requests
 

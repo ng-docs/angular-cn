@@ -2,7 +2,7 @@
 
 # 关于 AngularJS 与 Angular 概念的快速参考
 
-{@a top}
+<a id="top"></a>
 
 _Angular_ is the name for the Angular of today and tomorrow.
 _AngularJS_ is the name for all v1.x versions of Angular.
@@ -903,7 +903,7 @@ AngularJS 为模板提供了七十多个内置指令。
 
 </table>
 
-{@a filters-pipes}
+<a id="filters-pipes"></a>
 
 ## Filters/pipes
 
@@ -1205,7 +1205,7 @@ AngularJS 中的很多内置过滤器在 Angular 中都有对应的管道。
 
 </table>
 
-{@a controllers-components}
+<a id="controllers-components"></a>
 
 ## Modules/controllers/components
 
@@ -1486,7 +1486,7 @@ The Angular code is shown using TypeScript.
 
 </table>
 
-{@a style-sheets}
+<a id="style-sheets"></a>
 
 ## Style sheets
 

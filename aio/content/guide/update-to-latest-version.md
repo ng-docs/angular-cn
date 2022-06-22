@@ -82,7 +82,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 
 ### Angular 版本 13 中的重大变化
 
-{@a breaking-changes}
+<a id="breaking-changes"></a>
 
 |  | Details |
 | :-- | :------ |
@@ -114,7 +114,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 
 ### 新的弃用
 
-{@a deprecations}
+<a id="deprecations"></a>
 
 | Removed | Replacement | Details |
 | :------ | :---------- | :------ |

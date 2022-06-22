@@ -55,7 +55,7 @@ Note: this flag only applies to `@ViewChild` and `@ContentChild` queries specifi
 
 ## 常见问题
 
-{@a what-to-do-with-todo}
+<a id="what-to-do-with-todo"></a>
 ### What should I do if I see a `/* TODO: add static flag */` comment printed by the schematic?
 
 ### 当看到由原理图添加的 `/* TODO: add static flag */` 注释时，我该怎么办？
@@ -65,7 +65,7 @@ For more information on how to choose, see the [next question](#how-do-i-choose)
 
 如果你看到这个注释，就意味着原理图无法自己找到恰当的标志。在这种情况下，你必须根据应用的行为添加正确的标志。要了解如何进行选择，请参阅[下一个问题](#how-do-i-choose)。
 
-{@a how-do-i-choose}
+<a id="how-do-i-choose"></a>
 
 ### How do I choose which `static` flag value to use: `true` or `false`?
 
@@ -85,7 +85,7 @@ There are rarer cases where `{static: true}` flag might be necessary (see [answe
 
 在某些很少见的情况下，必须使用 `{static: true}` 标志（参阅[这里的回答](#should-i-use-static-true)）。
 
-{@a should-i-use-static-true}
+<a id="should-i-use-static-true"></a>
 ### Is there a case where I should use `{static: true}`?
 
 ### 什么情况下我应该用 `{static: true}`？
@@ -108,7 +108,7 @@ These results are only retrievable after change detection runs.
 
 注意：把 `static` 设置为 `true` 意味着此查询将不会发现嵌在 `*ngIf` 或 `*ngFor` 中的查询结果。只有在运行过变更检测之后才能取得这些结果。
 
-{@a what-does-this-flag-mean}
+<a id="what-does-this-flag-mean"></a>
 ### What does this flag mean and why is it necessary?
 
 ### 这个标志是什么意思，它有什么必要？
@@ -217,7 +217,7 @@ With this flag, users can indicate that they only care about results that are st
 
 也就是说，如果一个应用程序确实需要更早拿到查询结果（例如，在创建嵌入式视图时需要这种查询结果），就可以添加 `{static: true}` 标志来明确要求静态解析。有了这个标志，用户就可以表明他们只关心那些静态可用的结果，并且在 `ngOnInit` 之前就会填上查询结果。
 
-{@a view-children-and-content-children}
+<a id="view-children-and-content-children"></a>
 ### Does this change affect `@ViewChildren` or `@ContentChildren` queries?
 
 ### 这项变化是否会影响 `@ViewChildren` 或 `@ContentChildren` 查询？
@@ -227,7 +227,7 @@ No, this change only affects `@ViewChild` and `@ContentChild` queries specifical
 
 不，这项变化只会影响 `@ViewChild` 和 `@ContentChild` 查询。默认情况下，`@ViewChildren` 和 `@ContentChildren` 查询已经是“动态”的，并且不支持静态解析。
 
-{@a why-specify-static-false}
+<a id="why-specify-static-false"></a>
 ### ​Why do I have to specify `{static: false}`? Isn't that the default?
 
 ### 为什么我还要指定 `{static: false}`？它不是默认值吗？
@@ -243,7 +243,7 @@ In Angular version 9 and later, it will be safe to remove any `{static: false}` 
 
 在 Angular 9 及更高版本中，任意删除 `{static: false}` 标志都是安全的，届时，我们会在原理图中为你完成这个清理工作。
 
-{@a libraries}
+<a id="libraries"></a>
 ###  Can I keep on using Angular libraries that haven’t yet updated to version 8 yet?
 
 ### 我还可以继续使用尚未更新到版本 8 的 Angular 库吗？
@@ -255,7 +255,7 @@ This guarantees your app will work in version 8 even if libraries take longer to
 绝对没问题！
 因为我们没有改变版本 8 中的默认查询行为（比如编译器在没有设置任何标志的情况下仍然会自己选择一个合适的时机），所以当你的应用运行时，如果你的库没有更新到版本 8，该库的运行方式就和版本 7 中是一样的。这样就可以保证你的应用在版本 8 中仍然可以工作，不过这些库的开发者就需要花费更长的时间来修改代码了。
 
-{@a update-library-to-use-static-flag}
+<a id="update-library-to-use-static-flag"></a>
 ###  Can I update my library to version 8 by adding the `static` flag to view queries, while still being compatible with Angular version 7 apps?
 
 ### 我可以通过为视图查询添加 `static` 标志来把我的库更新到版本 8，那它还能同时和 Angular 7 应用兼容吗？

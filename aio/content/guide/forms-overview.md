@@ -98,7 +98,7 @@ Tests are deeply reliant on manual change detection execution to run properly, a
 模板驱动表单专注于简单的场景，可复用性没那么高。它们抽象出了底层表单 API，并且在视图和数据模型之间使用[异步数据流](#data-flow-in-template-driven-forms)。对模板驱动表单的这种抽象也会影响测试。测试程序非常依赖于手动触发变更检测才能正常运行，并且需要进行更多设置工作。
 
 
-{@a setup}
+<a id="setup"></a>
 
 ## Setting up the form model
 
@@ -136,7 +136,7 @@ Both reactive and template-driven forms are built on the following base classes.
 
   `ControlValueAccessor` 用于在 Angular 的 `FormControl` 实例和内置 DOM 元素之间创建一个桥梁。
 
-{@a setup-the-form-model}
+<a id="setup-the-form-model"></a>
 
 ### Setup in reactive forms
 
@@ -195,7 +195,7 @@ In a template-driven form the source of truth is the template. You do not have d
   <img src="generated/images/guide/forms-overview/key-diff-td-forms.png" alt="Template-driven forms key differences">
 </div>
 
-{@a data-flow-in-forms}
+<a id="data-flow-in-forms"></a>
 
 
 ## Data flow in forms
@@ -213,7 +213,7 @@ The following diagrams illustrate both kinds of data flow for each type of form,
 
 响应式表单和模板驱动表单在处理来自用户或程序化变更时的数据处理方式上有所不同。下面的这些示意图会以上面定义的 `favorite-color` 输入字段为例，分别说明两种表单各自的数据流。
 
-{@a data-flow-in-reactive-forms}
+<a id="data-flow-in-reactive-forms"></a>
 
 ### Data flow in reactive forms
 
@@ -276,7 +276,7 @@ The model-to-view diagram shows how a programmatic change to the model is propag
   <img src="generated/images/guide/forms-overview/dataflow-reactive-forms-mtv.png" alt="Reactive forms data flow - model to view">
 </div>
 
-{@a data-flow-in-template-driven-forms}
+<a id="data-flow-in-template-driven-forms"></a>
 
 ### Data flow in template-driven forms
 
@@ -366,7 +366,7 @@ The model-to-view diagram shows how data flows from model to view when the `favo
   <img src="generated/images/guide/forms-overview/dataflow-td-forms-mtv.png" alt="Template-driven forms data flow - model to view" width="100%">
 </div>
 
-{@a mutability-of-the-data-model}
+<a id="mutability-of-the-data-model"></a>
 
 ### Mutability of the data model
 
@@ -401,7 +401,7 @@ The difference is demonstrated in the previous examples that use the favorite-co
 
   对于模板驱动表单，**`favorite-color` 属性**总会被修改为新值。
 
-{@a validation}
+<a id="validation"></a>
 
 ## Form validation
 

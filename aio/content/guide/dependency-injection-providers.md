@@ -33,9 +33,9 @@ Configure an injector with a service class, and provide a substitute class, an o
 
 可以使用服务类来配置注入器，也可以提供一个替代类、一个对象或一个工厂函数。
 
-{@a token}
+<a id="token"></a>
 
-{@a injection-token}
+<a id="injection-token"></a>
 
 ## Dependency injection tokens
 
@@ -65,7 +65,7 @@ Though classes provide many dependency values, the expanded `provide` object let
 
 尽管许多依赖项的值是通过类提供的，但扩展的 `provide` 对象使你可以将不同种类的提供者与 DI 令牌相关联。
 
-{@a provide}
+<a id="provide"></a>
 
 ## Defining providers
 
@@ -106,7 +106,7 @@ Each of these keys provides a different type of dependency, as discussed in the 
   也可以是 `useExisting`、`useValue` 或 `useFactory`。
   每一个 key 都用于提供一种不同类型的依赖，我们稍后会讨论。
 
-{@a class-provider}
+<a id="class-provider"></a>
 
 ## Specifying an alternative class provider
 
@@ -120,7 +120,7 @@ For example, the following code tells the injector to return a `BetterLogger` in
 <code-example path="dependency-injection/src/app/providers.component.ts" region="providers-4" >
 </code-example>
 
-{@a class-provider-dependencies}
+<a id="class-provider-dependencies"></a>
 
 ### Configuring class providers with dependencies
 
@@ -144,7 +144,7 @@ The injector needs providers for both this new logging service and its dependent
 
 注入器需要提供这个新的日志服务以及该服务所依赖的 `UserService` 对象。
 
-{@a aliased-class-providers}
+<a id="aliased-class-providers"></a>
 
 ### Aliasing class providers
 
@@ -166,7 +166,7 @@ Be sure you don't alias `OldLogger` to `NewLogger` with `useClass`, as this crea
 
 请确保你没有使用 `useClass` 来把 `OldLogger` 设为 `NewLogger` 的别名，因为如果这样做它就会创建两个不同的 `NewLogger` 实例。
 
-{@a provideparent}
+<a id="provideparent"></a>
 
 ## Aliasing a class interface
 
@@ -210,7 +210,7 @@ Next, to use `provideParent()` with a different parent type, provide a second ar
 
 <code-example path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="beth-providers" header="dependency-injection-in-action/src/app/parent-finder.component.ts"></code-example>
 
-{@a value-provider}
+<a id="value-provider"></a>
 
 ## Injecting an object
 
@@ -230,7 +230,7 @@ In this example, `SilentLogger` is an object that fulfills the logger role.
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="silent-logger"></code-example>
 
-{@a non-class-dependencies}
+<a id="non-class-dependencies"></a>
 
 ### Injecting a configuration object
 
@@ -249,7 +249,7 @@ To provide and inject the configuration object, specify the object in the `@NgMo
 
 <code-example path="dependency-injection/src/app/app.module.ts" region="providers" header="src/app/app.module.ts (providers)"></code-example>
 
-{@a injectiontoken}
+<a id="injectiontoken"></a>
 
 ### Using an `InjectionToken` object
 
@@ -278,7 +278,7 @@ Now, inject the configuration object into the constructor with `@Inject()` param
 
 <code-example path="dependency-injection/src/app/app.component.2.ts" region="ctor" header="src/app/app.component.ts"></code-example>
 
-{@a di-and-interfaces}
+<a id="di-and-interfaces"></a>
 
 #### Interfaces and dependency injection
 
@@ -301,8 +301,8 @@ Because there is no interface for Angular to find at runtime, the interface cann
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="provider-9-ctor-interface"></code-example>
 
-{@a factory-provider}
-{@a factory-providers}
+<a id="factory-provider"></a>
+<a id="factory-providers"></a>
 
 ## Using factory providers
 

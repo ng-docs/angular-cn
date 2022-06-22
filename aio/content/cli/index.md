@@ -147,14 +147,12 @@ Command syntax is shown as follows:
     Option aliases are prefixed with a single dash (-).
     Arguments are not prefixed.
     For example:
-    <code-example language="bash">
-        ng build my-app -c production
-    </code-example>
 
   选项名带有双中线前缀（--）。
   选项别名带有单中线前缀（-）。
   参数没有前缀。
   比如：
+
   <code-example format="." language="bash">
       ng build my-app -c production
   </code-example>

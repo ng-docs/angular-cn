@@ -56,7 +56,7 @@ and assign it to the `h1` variable.
   region="setup"
   header="app/banner/banner.component.spec.ts (setup)"></code-example>
 
-{@a detect-changes}
+<a id="detect-changes"></a>
 
 #### _createComponent()_ does not bind data
 
@@ -124,7 +124,7 @@ Here's another test that changes the component's `title` property _before_ calli
   region="after-change">
 </code-example>
 
-{@a auto-detect-changes}
+<a id="auto-detect-changes"></a>
 
 #### Automatic change detection
 
@@ -176,7 +176,7 @@ There is no harm in calling `detectChanges()` more often than is strictly necess
 
 </div>
 
-{@a dispatch-event}
+<a id="dispatch-event"></a>
 #### Change an input value with _dispatchEvent()_
 
 #### 使用 *dispatchEvent()* 改变输入框的值
@@ -251,7 +251,7 @@ To correct the problem, call `compileComponents()` as explained in the following
 
 要解决这个问题，可以像 [调用 `compileComponents`](#compile-components) 中讲的那样调用 `compileComponents()`。
 
-{@a component-with-dependency}
+<a id="component-with-dependency"></a>
 
 ## Component with a dependency
 
@@ -281,7 +281,7 @@ But not the real `UserService`.
 
 这次，除了声明*被测组件外*，该配置还在 `providers` 列表中加入了 `UserService` 提供者。但它不是真正的 `UserService` 。
 
-{@a service-test-doubles}
+<a id="service-test-doubles"></a>
 
 #### Provide service test doubles
 
@@ -311,7 +311,7 @@ This particular test suite supplies a minimal mock of the `UserService` that sat
   region="user-service-stub"
   header="app/welcome/welcome.component.spec.ts"></code-example>
 
-{@a get-injected-service}
+<a id="get-injected-service"></a>
 
 #### Get injected services
 
@@ -339,7 +339,7 @@ The component injector is a property of the fixture's `DebugElement`.
   header="WelcomeComponent's injector">
 </code-example>
 
-{@a testbed-inject}
+<a id="testbed-inject"></a>
 
 #### _TestBed.inject()_
 
@@ -370,7 +370,7 @@ explains when and why you must get the service from the component's injector ins
 
 </div>
 
-{@a welcome-spec-setup}
+<a id="welcome-spec-setup"></a>
 
 #### Final setup and tests
 
@@ -408,7 +408,7 @@ The third test checks that the component displays the proper message when there 
 
 当该服务返回不同的值时，其余的测试会确认该组件的逻辑。第二个测试验证了更改用户名的效果。当用户未登录时，第三个测试会检查组件是否显示了正确的消息。
 
-{@a component-with-async-service}
+<a id="component-with-async-service"></a>
 ## Component with async service
 
 ## 带异步服务的组件
@@ -470,7 +470,7 @@ They should emulate such calls. The setup in this `app/twain/twain.component.spe
   region="setup"
   header="app/twain/twain.component.spec.ts (setup)"></code-example>
 
-{@a service-spy}
+<a id="service-spy"></a>
 
 Focus on the spy.
 
@@ -491,7 +491,7 @@ You can write many useful tests with this spy, even though its `Observable` is s
 
 虽然这个 `Observable` 是同步的，但你也可以用这个间谍编写很多有用的测试。
 
-{@a sync-tests}
+<a id="sync-tests"></a>
 
 #### Synchronous tests
 
@@ -521,7 +521,7 @@ value becomes available. The test must become _asynchronous_.
 
 你在测试错误路径时就没有这么幸运了。虽然服务间谍会同步返回一个错误，但该组件方法会调用 `setTimeout()`。在值可用之前，测试必须等待 JavaScript 引擎的至少一个周期。因此，该测试必须是*异步的*。
 
-{@a fake-async}
+<a id="fake-async"></a>
 
 #### Async test with _fakeAsync()_
 
@@ -564,7 +564,7 @@ XHR calls within a test are rare, but if you need to call XHR, see the [`waitFor
 
 </div>
 
-{@a tick}
+<a id="tick"></a>
 
 #### The _tick()_ function
 
@@ -817,7 +817,7 @@ Then you can assert that the quote element displays the expected text.
 
 然后，你可以断言 quote 元素是否显示了预期的文本。
 
-{@a waitForAsync}
+<a id="waitForAsync"></a>
 
 #### Async test with _waitForAsync()_
 
@@ -852,7 +852,7 @@ When using an `intervalTimer()` such as `setInterval()` in `waitForAsync()`, rem
 
 在 `waitForAsync()` 中使用 `intervalTimer()`（比如 `setInterval()`）时，别忘了在测试后通过 `clearInterval()` 取消这个定时器，否则 `waitForAsync()` 永远不会结束。
 
-{@a when-stable}
+<a id="when-stable"></a>
 
 #### _whenStable_
 
@@ -872,7 +872,7 @@ update the quote element with the expected text.
 
 测试会在该 Promise 的回调中继续进行，它会调用 `detectChanges()` 来用期望的文本更新 quote 元素。
 
-{@a jasmine-done}
+<a id="jasmine-done"></a>
 
 #### Jasmine _done()_
 
@@ -926,7 +926,7 @@ can give you that information and make assertions about the state of the view.
   path="testing/src/app/twain/twain.component.spec.ts"
   region="spy-done-test"></code-example>
 
-{@a marble-testing}
+<a id="marble-testing"></a>
 ## Component marble tests
 
 ## 组件的弹珠测试
@@ -1049,14 +1049,14 @@ The second argument is null because the observable never emits a value.
 
 #### 了解弹珠测试
 
-{@a marble-frame}
+<a id="marble-frame"></a>
 
 A _marble frame_ is a virtual unit of testing time.
 Each symbol (`-`, `x`, `|`, `#`) marks the passing of one frame.
 
 *弹珠帧*是测试时间线上的虚拟单位。每个符号（ `-` ， `x` ， `|` ， `#` ）都表示经过了一帧。
 
-{@a cold-observable}
+<a id="cold-observable"></a>
 
 A _cold_ observable doesn't produce values until you subscribe to it.
 Most of your application observables are cold.
@@ -1076,7 +1076,7 @@ Learn about it on the web, starting with the
 
 RxJS 弹珠测试这个主题非常丰富，超出了本指南的范围。你可以在网上了解它，先从其[官方文档](https://rxjs.dev/guide/testing/marble-testing)开始。
 
-{@a component-with-input-output}
+<a id="component-with-input-output"></a>
 ## Component with inputs and outputs
 
 ## 具有输入和输出属性的组件
@@ -1116,7 +1116,7 @@ Here's the component's full definition:
 
 这里是组件的完整定义：
 
-{@a dashboard-hero-component}
+<a id="dashboard-hero-component"></a>
 
 <code-example
   path="testing/src/app/dashboard/dashboard-hero.component.ts"
@@ -1168,7 +1168,7 @@ so, try the second and third options.
 
 当前的目标是测试 `DashboardHeroComponent` ，而不是 `DashboardComponent` ，所以试试第二个和第三个选项。
 
-{@a dashboard-standalone}
+<a id="dashboard-standalone"></a>
 
 #### Test _DashboardHeroComponent_ stand-alone
 
@@ -1243,7 +1243,7 @@ The test detects that event through its subscription to `selected`.
 
 该测试通过对 `selected` 的订阅来检测该事件。
 
-{@a trigger-event-handler}
+<a id="trigger-event-handler"></a>
 
 #### _triggerEventHandler_
 
@@ -1305,7 +1305,7 @@ which is perfectly fine for _this component_.
   region="click-test-2">
 </code-example>
 
-{@a click-helper}
+<a id="click-helper"></a>
 
 #### _click()_ helper
 
@@ -1357,7 +1357,7 @@ Here's the previous test, rewritten using the click helper.
   header="app/dashboard/dashboard-hero.component.spec.ts (test with click helper)">
 </code-example>
 
-{@a component-inside-test-host}
+<a id="component-inside-test-host"></a>
 ## Component inside a test host
 
 ## 位于测试宿主中的组件
@@ -1456,7 +1456,7 @@ really does find its way up through the event binding to the host component.
 
 只有 selected 事件的测试不一样。它确保被选择的 `DashboardHeroComponent` 英雄确实通过事件绑定被传递到宿主组件。
 
-{@a routing-component}
+<a id="routing-component"></a>
 ## Routing component
 
 ## 路由组件
@@ -1523,7 +1523,7 @@ The following test clicks the displayed hero and confirms that
   region="navigate-test"
   header="app/dashboard/dashboard.component.spec.ts (navigate test)"></code-example>
 
-{@a routed-component-w-param}
+<a id="routed-component-w-param"></a>
 
 ## Routed components
 
@@ -1638,7 +1638,7 @@ the [_marble testing library_](#marble-testing).
 
 </div>
 
-{@a tests-w-test-double}
+<a id="tests-w-test-double"></a>
 
 #### Testing with _ActivatedRouteStub_
 
@@ -1756,7 +1756,7 @@ Use them, alone or in combination, to stay focused on testing the primary compon
 本节会讲减少此类准备工作的两项技术。
 单独使用或组合使用它们，可以让这些测试聚焦于要测试的主要组件上。
 
-{@a stub-component}
+<a id="stub-component"></a>
 
 ##### Stubbing unneeded components
 
@@ -1800,7 +1800,7 @@ The rest are stubs.
 
 其它都是测试桩。
 
-{@a no-errors-schema}
+<a id="no-errors-schema"></a>
 
 #### _NO_ERRORS_SCHEMA_
 
@@ -1879,7 +1879,7 @@ but it ignores the `<app-welcome>` and `<router-outlet>` tags.
 
 Angular 编译器会为 `<app-banner>` 元素创建 `BannerComponentStub`，并把 `RouterLinkStubDirective` 应用到带有 `routerLink` 属性的链接上，不过它会忽略 `<app-welcome>` 和 `<router-outlet>` 标签。
 
-{@a routerlink}
+<a id="routerlink"></a>
 
 ## Components with _RouterLink_
 
@@ -1929,9 +1929,9 @@ question for a separate set of tests.
 
 </div>
 
-{@a by-directive}
+<a id="by-directive"></a>
 
-{@a inject-directive}
+<a id="inject-directive"></a>
 
 #### _By.directive_ and injected directives
 
@@ -1972,7 +1972,7 @@ The `AppComponent` links to validate are as follows:
   region="links"
   header="app/app.component.html (navigation links)"></code-example>
 
-{@a app-component-tests}
+<a id="app-component-tests"></a>
 
 Here are some tests that confirm those links are wired to the `routerLink` directives
 as expected:
@@ -2003,7 +2003,7 @@ re-calculates parameters, or re-arranges navigation options when the user clicks
 
 </div>
 
-{@a why-stubbed-routerlink-tests}
+<a id="why-stubbed-routerlink-tests"></a>
 
 #### What good are these tests?
 
@@ -2042,7 +2042,7 @@ tests with the `RouterTestingModule`.
 
 </div>
 
-{@a page-object}
+<a id="page-object"></a>
 ## Use a _page_ object
 
 ## 使用页面（page）对象
@@ -2133,7 +2133,7 @@ Here are a few more `HeroDetailComponent` tests to reinforce the point.
   region="selected-tests"
   header="app/hero/hero-detail.component.spec.ts (selected tests)"></code-example>
 
-{@a compile-components}
+<a id="compile-components"></a>
 
 ## Calling _compileComponents()_
 
@@ -2341,7 +2341,7 @@ The tests in this guide only call `compileComponents` when necessary.
 
 但这篇指南中的这些测试只会在必要时才调用 `compileComponents`。
 
-{@a import-module}
+<a id="import-module"></a>
 ## Setup with module imports
 
 ## 准备模块的 `imports`
@@ -2438,7 +2438,7 @@ It's a bit tighter and smaller, with fewer import statements (not shown).
 
 它的导入声明少一些（未显示），稍微干净一些，小一些。
 
-{@a feature-module-import}
+<a id="feature-module-import"></a>
 
 #### Import a feature module
 
@@ -2473,7 +2473,7 @@ the module is small, as feature modules tend to be.
 
 </div>
 
-{@a component-override}
+<a id="component-override"></a>
 ## Override component providers
 
 ## 改写组件的服务提供者
@@ -2542,7 +2542,7 @@ Notice that `TestBed.configureTestingModule` no longer provides a (fake) `HeroSe
 
 注意，`TestBed.configureTestingModule` 不再提供（伪造的）`HeroService`，因为[并不需要](#spy-stub)。
 
-{@a override-component-method}
+<a id="override-component-method"></a>
 
 #### The _overrideComponent_ method
 
@@ -2586,7 +2586,7 @@ The type parameter, `T`, is the kind of metadata you'd pass to the `@Component` 
   ...
 </code-example>
 
-{@a spy-stub}
+<a id="spy-stub"></a>
 
 #### Provide a _spy stub_ (_HeroDetailServiceSpy_)
 
@@ -2613,7 +2613,7 @@ Accordingly, the stub implements its methods as spies:
 
 <code-example path="testing/src/app/hero/hero-detail.component.spec.ts" region="hds-spy" header="app/hero/hero-detail.component.spec.ts (HeroDetailServiceSpy)"></code-example>
 
-{@a override-tests}
+<a id="override-tests"></a>
 
 #### The override tests
 
@@ -2626,7 +2626,7 @@ and confirm that service methods were called.
 
 <code-example path="testing/src/app/hero/hero-detail.component.spec.ts" region="override-tests" header="app/hero/hero-detail.component.spec.ts (override tests)"></code-example>
 
-{@a more-overrides}
+<a id="more-overrides"></a>
 
 #### More overrides
 

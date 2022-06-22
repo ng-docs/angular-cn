@@ -26,7 +26,7 @@ In the following sections, you'll add the following features to the application:
 
   单击浏览器的后退和前进按钮以直观地在浏览器的历史记录中浏览。
 
-{@a define-routes}
+<a id="define-routes"></a>
 
 ## Associate a URL path with a component
 

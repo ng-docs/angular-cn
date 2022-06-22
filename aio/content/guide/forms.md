@@ -2,7 +2,7 @@
 
 # 构建模板驱动表单
 
-{@a template-driven}
+<a id="template-driven"></a>
 
 
 This tutorial shows you how to create a template-driven form whose control elements are bound to data properties, with input validation to maintain data integrity and styling to improve the user experience.
@@ -97,7 +97,7 @@ Before going further into template-driven forms, you should have a basic underst
 
   [“表单简介”](guide/forms-overview "Angular 表单概述")中提供的表单设计概念。
 
-{@a intro}
+<a id="intro"></a>
 
 ## Build a template-driven form
 
@@ -207,7 +207,7 @@ In the course of this tutorial, you bind a sample form to data and handle user i
 
      在提交完成后，把已完成的表单替换成页面上不同的内容。
 
-{@a step1}
+<a id="step1"></a>
 
 ## Build the form
 
@@ -297,7 +297,7 @@ If you run the application right now, you see the list of powers in the selectio
   <img src="generated/images/guide/forms/hero-form-3.png" alt="Early form with no binding">
 </div>
 
-{@a ngModel}
+<a id="ngModel"></a>
 
 ## Bind input controls to data properties
 
@@ -335,7 +335,7 @@ The note reminds you to remove the diagnostic lines when you have finished obser
 
 </div>
 
-{@a ngForm}
+<a id="ngForm"></a>
 
 ### Access the overall form status
 

@@ -85,7 +85,7 @@ is in both the `declarations` and the `bootstrap` arrays.
 
 Angular CLI 创建的默认应用只有一个组件 `AppComponent`，所以它会同时出现在 `declarations` 和 `bootstrap` 数组中。
 
-{@a declarations}
+<a id="declarations"></a>
 
 ## The `declarations` array
 
@@ -192,7 +192,7 @@ Remember, components, directives, and pipes belong to one module only. You only 
 
 记住：组件、指令和管道都只能属于一个模块。你在应用中也只需要声明它们一次，因为你还可以通过导入必要的模块来使用它们。这能节省你的时间，并且帮助你的应用保持精简。
 
-{@a imports}
+<a id="imports"></a>
 
 ## The `imports` array
 
@@ -221,7 +221,7 @@ the class was imported from another module.
 列表中的模块导出了本模块中的各个组件模板中所引用的各个组件、指令或管道。在这个例子中，当前组件是 `AppComponent`，它引用了导出自 `BrowserModule`、`FormsModule` 或 `HttpClientModule` 的组件、指令或管道。
 总之，组件的模板中可以引用在当前模块中声明的或从其它模块中导入的组件、指令、管道。
 
-{@a bootstrap-array}
+<a id="bootstrap-array"></a>
 
 ## The `providers` array
 

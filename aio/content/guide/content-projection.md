@@ -76,7 +76,7 @@ The `<ng-content>` element is a placeholder that does not create a real DOM elem
 
 </div>
 
-{@a multi-slot}
+<a id="multi-slot"></a>
 ## Multi-slot content projection
 
 ## 多插槽内容投影

@@ -18,7 +18,7 @@ For more information on Angular's built-in structural directives, such as `NgIf`
 
 有关 Angular 的内置结构型指令（如 `NgIf` ， `NgForOf` 和 `NgSwitch`）的更多信息，请参见[内置指令](guide/built-in-directives)。
 
-{@a unless}
+<a id="unless"></a>
 
 ## Creating a structural directive
 
@@ -135,8 +135,8 @@ To verify that the directive works, click the button to change the value of `con
     <img src='generated/images/guide/structural-directives/unless-anim.gif' alt="UnlessDirective in action">
   </div>
 
-{@a shorthand}
-{@a asterisk}
+<a id="shorthand"></a>
+<a id="asterisk"></a>
 
 ## Structural directive shorthand
 
@@ -385,7 +385,7 @@ The following table provides shorthand examples:
   </tr>
 </table>
 
-{@a directive-type-checks}
+<a id="directive-type-checks"></a>
 
 <!-- To do follow up PR: move this section to a more general location because it also applies to attribute directives. -->
 
@@ -412,7 +412,7 @@ For more information, see [Template type checking](guide/template-typecheck "Tem
 
 本节提供了两种类型守卫的示例。欲知详情，请参见[模板类型检查](guide/template-typecheck "模板类型检查指南")。
 
-{@a narrowing-input-types}
+<a id="narrowing-input-types"></a>
 
 ### Making in-template type requirements more specific with template guards
 
@@ -475,7 +475,7 @@ The type guard lets the type checker infer that the acceptable type of `state` w
 
 `IfLoadedDirective` 定义声明了静态字段 `ngTemplateGuard_state`，以表示其窄化行为。在 `AppComponent` 模板中，`*ifLoaded` 结构型指令只有当实际的 `state` 是 `Loaded<Person>` 类型时，才会渲染该模板。类型守护允许类型检查器推断出模板中可接受的 `state` 类型是 `Loaded<T>`，并进一步推断出 `T` 必须是一个 `Person` 的实例。
 
-{@a narrowing-context-type}
+<a id="narrowing-context-type"></a>
 
 ### Typing the directive's context
 

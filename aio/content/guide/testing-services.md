@@ -23,7 +23,7 @@ written without assistance from Angular testing utilities.
 
 <code-example path="testing/src/app/demo/demo.spec.ts" region="ValueService" header="app/demo/demo.spec.ts"></code-example>
 
-{@a services-with-dependencies}
+<a id="services-with-dependencies"></a>
 
 ## Services with dependencies
 
@@ -105,7 +105,7 @@ when you use the `TestBed` testing utility to provide and create services.
 
 作为服务的*测试人员*，你至少要考虑第一层的服务依赖，但当你用 `TestBed` 测试实用工具来提供和创建服务时，你*可以*让 Angular DI 来创建服务并处理构造函数的参数顺序。
 
-{@a testbed}
+<a id="testbed"></a>
 
 ## Angular _TestBed_
 
@@ -166,7 +166,7 @@ The test consumes that spy in the same way it did earlier.
 <code-example path="testing/src/app/demo/demo.testbed.spec.ts" region="master-service-it">
 </code-example>
 
-{@a no-before-each}
+<a id="no-before-each"></a>
 
 ## Testing without _beforeEach()_
 

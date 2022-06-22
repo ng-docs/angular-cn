@@ -126,7 +126,7 @@ In the following case, `class` and `[class]` have similar specificity, but the `
 
 <code-example path="attribute-binding/src/app/app.component.html" region="dynamic-priority" header="src/app/app.component.html"></code-example>
 
-{@a styling-delegation}
+<a id="styling-delegation"></a>
 
 ## Delegating to styles with lower precedence
 

@@ -12,7 +12,7 @@ The template options object, `angularCompilerOptions`, is a sibling to the `comp
 
 <code-example language="json" header="tsconfig.json" path="angular-compiler-options/tsconfig.json" region="angular-compiler-options"></code-example>
 
-{@a tsconfig-extends}
+<a id="tsconfig-extends"></a>
 
 ## Configuration inheritance with extends
 
@@ -142,7 +142,7 @@ For library projects generated with the CLI, the development configuration defau
 
 对于使用 CLI 生成的库项目，dev 配置下默认为 `true`。
 
-{@a enablelegacytemplate}
+<a id="enablelegacytemplate"></a>
 
 ### `enableLegacyTemplate`
 
@@ -306,7 +306,7 @@ When `true`, prints extra information while compiling templates. Default is `fal
 
 如果为 `true`，则在编译模板时输出额外的信息。默认值为 `false`。
 
-{@a cli-options}
+<a id="cli-options"></a>
 
 ## Command Line Options
 

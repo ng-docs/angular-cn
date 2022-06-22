@@ -41,7 +41,7 @@ Data binding works with properties of DOM elements, components, and directives, 
 
 请注意，绑定是绑定到 `disabled` 这个 Property（属性），而不是 Attribute（属性）。数据绑定使用的是 DOM 元素、组件和指令的 Property，而不是 HTML Attribute。
 
-{@a html-attribute-vs-dom-property}
+<a id="html-attribute-vs-dom-property"></a>
 
 ### HTML attributes and DOM properties
 

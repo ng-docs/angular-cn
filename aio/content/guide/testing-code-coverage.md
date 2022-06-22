@@ -1,4 +1,4 @@
-{@a code-coverage}
+<a id="code-coverage"></a>
 
 # Find out how much code you're testing
 

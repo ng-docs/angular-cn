@@ -35,7 +35,7 @@ See the <live-example></live-example> for a working example containing the code 
 
 </div>
 
-{@a non-null-assertion-operator}
+<a id="non-null-assertion-operator"></a>
 
 ## The non-null assertion operator ( `!` )
 
@@ -69,7 +69,7 @@ For more information, see TypeScript's [strict null checking](http://www.typescr
 
 有关更多信息，请参见 TypeScript 的[严格空检查](http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html "TypeScript 中严格的 null 检查")。
 
-{@a any-type-cast-function}
+<a id="any-type-cast-function"></a>
 
 ## The `$any()` type cast function
 

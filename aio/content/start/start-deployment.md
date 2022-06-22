@@ -74,7 +74,7 @@ A best practice is to run your project locally before you deploy it. To run your
 
    当启动了应用的开发服务器时，你可以编辑代码并在浏览器中查看对此更改的自动更新。要停止此 `ng serve` 命令，请按 `Ctrl` + `c` 键。
 
-{@a building}
+<a id="building"></a>
 ## Building and hosting your application
 
 ## 构建和托管你的应用

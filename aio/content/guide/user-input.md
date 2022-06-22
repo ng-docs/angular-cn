@@ -49,7 +49,7 @@ The following example shows an event binding that implements a click handler:
 
 <code-example path="user-input/src/app/click-me.component.ts" region="click-me-button" header="src/app/click-me.component.ts"></code-example>
 
-{@a click}
+<a id="click"></a>
 
 The `(click)` to the left of the equals sign identifies the button's click event as the **target of the binding**.
 The text in quotes to the right of the equals sign
@@ -150,7 +150,7 @@ for `event.target.value` in which case the same user input would produce:
 
 </div>
 
-{@a keyup1}
+<a id="keyup1"></a>
 
 ### Type the _$event_
 
@@ -271,7 +271,7 @@ It no longer requires knowledge of the `$event` and its structure.
 
 这个方法最漂亮的一点是：组件代码从视图中获得了干净的数据值。再也不用了解 `$event` 变量及其结构了。
 
-{@a key-event}
+<a id="key-event"></a>
 
 ## Key event filtering (with `key.enter`)
 

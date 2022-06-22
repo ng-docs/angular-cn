@@ -29,7 +29,7 @@ Before working with lifecycle hooks, you should have a basic understanding of th
 
   Angular 应用设计基础，就像 [Angular 的基本概念](guide/architecture "基础应用设计概念简介")中所讲的那样。
 
-{@a hooks-overview}
+<a id="hooks-overview"></a>
 
 ## Responding to lifecycle events
 
@@ -51,7 +51,7 @@ You don't have to implement all (or any) of the lifecycle hooks, just the ones y
 
 你不必实现所有生命周期钩子，只要实现你需要的那些就可以了。
 
-{@a hooks-purpose-timing}
+<a id="hooks-purpose-timing"></a>
 
 ### Lifecycle event sequence
 
@@ -310,7 +310,7 @@ Angular 会按以下顺序执行钩子方法。可以用它来执行以下类型
   </tr>
 </table>
 
-{@a the-sample}
+<a id="the-sample"></a>
 
 ### Lifecycle example set
 
@@ -479,7 +479,7 @@ The sample code is also used to illustrate specific tasks in the following secti
 </table>
 
 
-{@a oninit}
+<a id="oninit"></a>
 ## Initializing a component or directive
 
 ## 初始化组件或指令
@@ -523,7 +523,7 @@ Use the `ngOnInit()` method to perform the following initialization tasks.
 
   </div>
 
-{@a ondestroy}
+<a id="ondestroy"></a>
 
 ## Cleaning up on instance destruction
 
@@ -564,7 +564,7 @@ The following examples demonstrate the call sequence and relative frequency of t
 
 下面的例子展示了各个生命周期事件的调用顺序和相对频率，以及如何在组件和指令中单独使用或同时使用这些钩子。
 
-{@a peek-a-boo}
+<a id="peek-a-boo"></a>
 
 ### Sequence and frequency of all lifecycle events
 
@@ -610,7 +610,7 @@ Notice that these three hooks fire *often*, so it is important to keep their log
 如果用户点击*Update Hero*按钮，就会看到另一个 `OnChanges` 和至少两组 `DoCheck`、`AfterContentChecked` 和 `AfterViewChecked` 钩子。
 注意，这三种钩子被触发了*很多次*，所以让它们的逻辑尽可能保持精简是非常重要的！
 
-{@a spy}
+<a id="spy"></a>
 
 ### Use directives to watch the DOM
 
@@ -665,7 +665,7 @@ The spy's `ngOnDestroy()` method reports its last moments.
 Angular 从 DOM 中移除了所有英雄的 div，并且同时销毁了附加在这些 div 上的侦探指令。
 侦探的 `ngOnDestroy()` 方法汇报了它自己的临终时刻。
 
-{@a counter}
+<a id="counter"></a>
 
 ### Use component and directive hooks together
 
@@ -679,7 +679,7 @@ This example applies the `SpyDirective` from the previous example to the `Counte
 
 这个例子将前例中的 `SpyDirective` 用于 `CounterComponent` 的日志，以便监视这些日志条目的创建和销毁。
 
-{@a onchanges}
+<a id="onchanges"></a>
 
 ## Using change detection hooks
 
@@ -729,7 +729,7 @@ The object reference did not change when the value of its own `name` property ch
 日志条目把 *power* 属性的变化显示为字符串。但请注意，`ngOnChanges()` 方法不会捕获对 `hero.name` 更改。这是因为只有当输入属性的值发生变化时，Angular 才会调用该钩子。在这种情况下，`hero` 是输入属性，`hero` 属性的值是*对 hero 对象*的*引用* 。当它自己的 `name` 属性的值发生变化时，对象引用并没有改变。
 
 
-{@a afterview}
+<a id="afterview"></a>
 
 ### Responding to view changes
 
@@ -769,7 +769,7 @@ which can only be reached by querying for the child view using the property deco
 
 <code-example path="lifecycle-hooks/src/app/after-view.component.ts" region="hooks" header="AfterViewComponent (class excerpts)"></code-example>
 
-{@a wait-a-tick}
+<a id="wait-a-tick"></a>
 
 #### Wait before updating the view
 
@@ -810,9 +810,9 @@ Be very careful about how much logic or computation you put into one of these me
 </div>
 
 
-{@a aftercontent}
-{@a aftercontent-hooks}
-{@a content-projection}
+<a id="aftercontent"></a>
+<a id="aftercontent-hooks"></a>
+<a id="content-projection"></a>
 
 ### Responding to projected content changes
 
@@ -908,7 +908,7 @@ which can only be reached by querying for them using the property decorated with
 
 <code-example path="lifecycle-hooks/src/app/after-content.component.ts" region="hooks" header="AfterContentComponent (class excerpts)"></code-example>
 
-{@a no-unidirectional-flow-worries}
+<a id="no-unidirectional-flow-worries"></a>
 
 <div class="alert is-helpful">
 
@@ -930,7 +930,7 @@ Angular 在调用 *AfterView* 钩子之前，就已调用完所有的 *AfterCont
 
 </div>
 
-{@a docheck}
+<a id="docheck"></a>
 
 ## Defining custom change detection
 

@@ -66,7 +66,7 @@ For more information, see the CLI wiki page [Library Support](https://github.com
 要了解更多信息，参阅 CLI 的 wiki 页面[代码库支持](https://github.com/angular/angular-cli/wiki/stories-create-library)。
 </div>
 
-{@a dependencies}
+<a id="dependencies"></a>
 ## Dependencies
 
 The packages listed in the `dependencies` section of `package.json` are essential to *running* applications.
@@ -93,7 +93,7 @@ To add a new dependency, use the [`ng add`](cli/add) command.
 
 要想添加新的依赖，请使用 [`ng add`](cli/add) 命令。
 
-{@a angular-packages}
+<a id="angular-packages"></a>
 ### Angular packages
 
 ### Angular 包
@@ -124,7 +124,7 @@ Package name                               | Description
 [**@angular/router**](api/router) | The router module navigates among your application pages when the browser URL changes. For more information, see [Routing and Navigation](guide/router).
 [**@angular/router**](api/router) | 当浏览器的 URL 变化时，路由器模块可以在应用的页面之间进行导航。欲知详情，参阅[路由与导航](guide/router)。
 
-{@a support-packages}
+<a id="support-packages"></a>
 ### Support packages
 
 ### 支持包
@@ -141,7 +141,7 @@ Package name                               | Description
 [**zone.js**](https://github.com/angular/zone.js) | Angular relies on zone.js to run Angular's change detection processes when native JavaScript operations raise events. Zone.js is an implementation of a [specification](https://gist.github.com/mhevery/63fdcdf7c65886051d55) currently before the [TC39](https://www.ecma-international.org/memento/tc39.htm) committee that determines standards for the JavaScript language.
 [**zone.js**](https://github.com/angular/zone.js) | 当原生 JavaScript 操作发生事件时，Angular 要依靠 zone.js 来运行 Angular 的变更检测过程。Zone.js 是对一个[规范](https://gist.github.com/mhevery/63fdcdf7c65886051d55)的实现，它正在等待 [TC39](http://www.ecma-international.org/memento/TC39.htm) 委员会来决定是否将其纳入语言规范。
 
-{@a polyfills}
+<a id="polyfills"></a>
 ### Polyfill packages
 
 ### 腻子脚本包
@@ -156,7 +156,7 @@ how you can add them.
 [腻子脚本](https://en.wikipedia.org/wiki/Polyfill_(programming) 可以模拟这些缺失的特性。
 [浏览器支持](guide/browser-support)一章中解释了哪些浏览器分别需要哪些腻子脚本，以及如何添加它们。
 
-{@a dev-dependencies}
+<a id="dev-dependencies"></a>
 
 ## DevDependencies
 
