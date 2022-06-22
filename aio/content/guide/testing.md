@@ -1,4 +1,4 @@
-{@a top}
+<a id="top"></a>
 
 # Testing
 
@@ -40,7 +40,7 @@ This sample application is much like the one in the [_Tour of Heroes_ tutorial](
 
 </div>
 
-{@a setup}
+<a id="setup"></a>
 
 ## Set up testing
 
@@ -174,7 +174,7 @@ Adopt these two conventions in your own projects for _every kind_ of test file.
 
 请在你的项目中对*任意类型*的测试文件都坚持这两条约定。
 
-{@a q-spec-file-location}
+<a id="q-spec-file-location"></a>
 
 #### Place your spec file next to the file it tests
 
@@ -205,7 +205,7 @@ as the application source code files that they test:
 
   当重命名源文件时（在所难免），你不会忘了重命名测试文件。
 
-{@a q-specs-in-test-folder}
+<a id="q-specs-in-test-folder"></a>
 
 #### Place your spec files in a test folder
 
@@ -227,7 +227,7 @@ next to their corresponding helper files.
 
 当然，用来测试那些测试助手的规约也位于 `test` 目录下，紧挨着相应的测试助手文件。
 
-{@a ci}
+<a id="ci"></a>
 
 ## Set up continuous integration
 

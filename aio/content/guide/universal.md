@@ -44,7 +44,7 @@ Angular Universal 需要[活跃 LTS 或 维护中 LTS](https://nodejs.org/about/
 
 </div>
 
-{@a the-example}
+<a id="the-example"></a>
 
 ## Universal tutorial
 
@@ -165,7 +165,7 @@ The server-rendered application still launches quickly but the full client appli
 
 服务端渲染的应用仍然可以快速启动，但完整的客户端应用可能需要几秒钟才能加载完。
 
-{@a why-do-it}
+<a id="why-do-it"></a>
 ## Why use server-side rendering?
 
 ## 为何需要服务端渲染？
@@ -186,9 +186,9 @@ There are three main reasons to create a Universal version of your application.
 
    迅速显示出第一个支持[首次内容绘制(FCP)](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)的页面
 
-{@a seo}
+<a id="seo"></a>
 
-{@a web-crawlers}
+<a id="web-crawlers"></a>
 
 ### Facilitate web crawlers (SEO)
 
@@ -209,7 +209,7 @@ Universal also makes a site preview available because each URL returns a fully r
 Angular Universal 可以为你生成应用的静态版本，它易搜索、可链接，浏览时也不必借助 JavaScript。
 它也让站点可以被预览，因为每个 URL 返回的都是一个完全渲染好的页面。
 
-{@a no-javascript}
+<a id="no-javascript"></a>
 ### Improve performance on mobile and low-powered devices
 
 ### 提升手机和低功耗设备上的性能
@@ -223,7 +223,7 @@ people who otherwise couldn't use the application at all.
 对于这些情况，你可能会需要该应用的服务端渲染的、无 JavaScript 的版本。
 虽然有一些限制，不过这个版本可能是那些完全没办法使用该应用的人的唯一选择。
 
-{@a startup-performance}
+<a id="startup-performance"></a>
 ### Show the first page quickly
 
 ### 快速显示第一页
@@ -253,7 +253,7 @@ and gets the full interactive experience after the full application loads.
 同时，你也会在幕后加载完整的 Angular 应用。
 用户会觉得着陆页几乎是立即出现的，而当完整的应用加载完之后，又可以获得完整的交互体验。
 
-{@a how-does-it-work}
+<a id="how-does-it-work"></a>
 ## Universal web servers
 
 ## Universal Web 服务器
@@ -341,7 +341,7 @@ This is a good argument for making the application [routable](guide/router).
 Universal 应用必须仅仅根据客户端过来的请求决定要渲染的内容。
 把该应用做成[可路由的](guide/router)，就是一种好方案。
 
-{@a universal-engine}
+<a id="universal-engine"></a>
 
 ### Universal template engine
 

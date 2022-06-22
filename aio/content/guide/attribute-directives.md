@@ -69,7 +69,7 @@ ng generate directive highlight
 
 </div>
 
-{@a apply-directive}
+<a id="apply-directive"></a>
 ## Applying an attribute directive
 
 ## 应用属性型指令
@@ -84,7 +84,7 @@ Angular creates an instance of the `HighlightDirective` class and injects a refe
 
 Angualr 会创建 `HighlightDirective` 类的实例，并将 `<p>` 元素的引用注入到该指令的构造函数中，它会将 `<p>` 元素的背景样式设置为黄色。
 
-{@a respond-to-user}
+<a id="respond-to-user"></a>
 
 ## Handling user events
 
@@ -128,7 +128,7 @@ The background color appears when the pointer hovers over the paragraph element 
   <img src="generated/images/guide/attribute-directives/highlight-directive-anim.gif" alt="Second Highlight">
 </div>
 
-{@a bindings}
+<a id="bindings"></a>
 ## Passing values into an attribute directive
 
 ## 将值传递给属性型指令
@@ -205,7 +205,7 @@ This section guides you through adding radio buttons to bind your color choice t
        <img src="generated/images/guide/attribute-directives/highlight-directive-v2-anim.gif" alt="Animated gif of the refactored highlight directive changing color according to the radio button the user selects">
    </div>
 
-{@a second-property}
+<a id="second-property"></a>
 
 
 ## Binding to a second property
@@ -248,7 +248,7 @@ When the user chooses a color the selected color becomes the active highlight co
     <img src="generated/images/guide/attribute-directives/highlight-directive-final-anim.gif" alt="Animated gif of final highlight directive that shows red color with no binding and violet with the default color set. When user selects color, the selection takes precedence.">
   </div>
 
-{@a ngNonBindable}
+<a id="ngNonBindable"></a>
 
 ## Deactivating Angular processing with `NgNonBindable`
 

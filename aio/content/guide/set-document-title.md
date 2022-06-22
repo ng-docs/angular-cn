@@ -1,4 +1,4 @@
-{@a top}
+<a id="top"></a>
 
 # Set the document title
 

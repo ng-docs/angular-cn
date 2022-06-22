@@ -23,7 +23,7 @@ This guide explains how to specify metadata and apply available compiler options
 
 </div>
 
-{@a why-aot}
+<a id="why-aot"></a>
 
 Here are some reasons you might want to use AOT.
 
@@ -65,7 +65,7 @@ Here are some reasons you might want to use AOT.
   *更高的安全性*。
   AOT 在将 HTML 模板和组件提供给客户端之前就将其编译为 JavaScript 文件。没有要读取的模板，没有潜藏风险的客户端 HTML 或 JavaScript eval，受到注入攻击的机会就更少了。
 
-{@a overview}
+<a id="overview"></a>
 
 ## Choosing a compiler
 
@@ -219,7 +219,7 @@ Angular 的 [schema.ts](https://github.com/angular/angular/blob/master/packages/
 
 </div>
 
-{@a expression-syntax}
+<a id="expression-syntax"></a>
 
 ### Expression syntax limitations
 
@@ -570,9 +570,9 @@ Angular 库通过这个选项来确保所有的 Angular `.metadata.json` 文件�
 
 </div>
 
-{@a function-expression}
+<a id="function-expression"></a>
 
-{@a arrow-functions}
+<a id="arrow-functions"></a>
 
 ### No arrow functions
 
@@ -626,9 +626,9 @@ In version 5 and later, the compiler automatically performs this rewriting while
 
 在版本 5 和更高版本中，编译器会在发出 `.js` 文件时自动执行此重写。
 
-{@a exported-symbols}
+<a id="exported-symbols"></a>
 
-{@a code-folding}
+<a id="code-folding"></a>
 
 ### Code folding
 
@@ -650,7 +650,7 @@ This process is called _folding_. An expression that can be reduced in this mann
 
 这个过程被称为*折叠*。能用这种方式进行简化的表达式就是*可折叠的*。
 
-{@a var-declaration}
+<a id="var-declaration"></a>
 
 The collector can evaluate references to module-local `const` declarations and initialized `var` and `let` declarations, effectively removing them from the `.metadata.json` file.
 
@@ -1150,7 +1150,7 @@ export class AppComponent {
 
 ```
 
-{@a supported-functions}
+<a id="supported-functions"></a>
 
 ### Supported classes and functions
 
@@ -1191,7 +1191,7 @@ The compiler can only create instances of certain classes, supports only core de
   工厂函数必须导出为命名函数。
   AOT 编译器不支持用 Lambda 表达式（箭头函数）充当工厂函数。
 
-{@a function-calls}
+<a id="function-calls"></a>
 
 ### Functions and static method calls
 
@@ -1252,7 +1252,7 @@ for these methods to see how macros can simplify configuration of complex [NgMod
 Angular 的 [`RouterModule`](api/router/RouterModule) 导出了两个静态宏函数 `forRoot` 和 `forChild`，以帮助声明根路由和子路由。
 查看这些方法的[源码](https://github.com/angular/angular/blob/master/packages/router/src/router_module.ts#L139 "RouterModule.forRoot source code")，以了解宏函数是如何简化复杂的 [NgModule](guide/ngmodules) 配置的。
 
-{@a metadata-rewriting}
+<a id="metadata-rewriting"></a>
 
 ### Metadata rewriting
 
@@ -1312,7 +1312,7 @@ It does not, however, rewrite the `.d.ts` file, so TypeScript doesn't recognize 
 
 编译器会在生成 `.js` 文件期间进行这种重写。它不会重写 `.d.ts` 文件，所以 TypeScript 也不会把这个变量当做一项导出，因此也就不会污染 ES 模块中导出的 API。
 
-{@a binding-expression-validation}
+<a id="binding-expression-validation"></a>
 
 ## Phase 3: Template type checking
 

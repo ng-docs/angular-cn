@@ -28,7 +28,7 @@ To get the most out of this tutorial you should already have a basic understandi
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript "JavaScript")
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language")
 
-{@a components}
+<a id="components"></a>
 
 ## Take a tour of the example application
 
@@ -83,7 +83,7 @@ For more information about components, see [Introduction to Components](guide/ar
 
 有关组件的更多信息，请参见[组件简介](guide/architecture-components "组件和模板简介") 。
 
-{@a new-project}
+<a id="new-project"></a>
 
 ## Create the sample project
 
@@ -140,7 +140,7 @@ For more information on how to use StackBlitz, see the [StackBlitz documentation
 
 有关如何使用 StackBlitz 的更多信息，请参见 [StackBlitz 的文档](https://developer.stackblitz.com/docs/platform/)。
 
-{@a product-list}
+<a id="product-list"></a>
 
 ## Create the product list
 
@@ -255,7 +255,7 @@ For more information, see [Introduction to components and templates](guide/archi
 
 在编辑模板时，你已经了解了 Angular 模板的一些最常用的功能。更多信息，请参阅[组件和模板简介](guide/architecture-components#template-syntax "模板语法")。
 
-{@a passing-data-in}
+<a id="passing-data-in"></a>
 
 ## Pass data to a child component
 
@@ -367,7 +367,7 @@ The Phone XL price is over $700, so the **Notify Me** button appears on that pro
   <img src="generated/images/guide/start/product-alert-button.png" alt="Product alert button added to products over $700">
 </div>
 
-{@a output}
+<a id="output"></a>
 
 ## Pass data to a parent component
 
@@ -438,7 +438,7 @@ For more information on communication between components, see [Component Interac
 
 有关组件之间的通信的更多信息，请参见[组件交互](guide/component-interaction "组件互动")。
 
-{@a whats-next}
+<a id="whats-next"></a>
 
 ## What's next
 

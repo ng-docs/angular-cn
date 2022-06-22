@@ -124,7 +124,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 
 </div>
 
-{@a common}
+<a id="common"></a>
 
 ### @angular/common
 
@@ -134,7 +134,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`CurrencyPipe` - `DEFAULT_CURRENCY_CODE`](api/common/CurrencyPipe#currency-code-deprecation) | `{provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}` | v9 | From v11 the default code will be extracted from the locale data given by `LOCALE_ID`, rather than `USD`. |
 | [`CurrencyPipe` - `DEFAULT_CURRENCY_CODE`](api/common/CurrencyPipe#currency-code-deprecation) | `{provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}` | v9 | 从 v11 开始，默认代码将从 `LOCALE_ID` 给出的语言环境数据中提取，而不是 `USD` 。 |
 
-{@a common-http}
+<a id="common-http"></a>
 
 ### @angular/common/http
 
@@ -144,7 +144,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`XhrFactory`](api/common/http/XhrFactory) | `XhrFactory` in `@angular/common` | v12 | The `XhrFactory` has moved from `@angular/common/http` to `@angular/common`. |
 | [`XhrFactory`](api/common/http/XhrFactory) | `@angular/common` 中的 `XhrFactory` | v12 | `XhrFactory` 已从 `@angular/common/http` 移到了 `@angular/common` 。 |
 
-{@a core}
+<a id="core"></a>
 
 ### @angular/core
 
@@ -184,7 +184,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [Factory-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | [Type-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | v13 | Angular no longer requires component factories to dynamically create components. Use different signature of the `createComponent` method, which allows passing Component class directly. |
 |  [`ViewContainerRef.createComponent` 基于工厂的签名](api/core/ViewContainerRef#createComponent) | [`ViewContainerRef.createComponent` 基于类型的签名](api/core/ViewContainerRef#createComponent) | v13 | Angular 不再需要组件工厂来动态创建组件。使用 `createComponent` 方法的不同签名，允许直接传递 Component 类。 |
 
-{@a testing}
+<a id="testing"></a>
 
 ### @angular/core/testing
 
@@ -200,7 +200,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`aotSummaries` field of the `TestModuleMetadata` type](api/core/testing/TestModuleMetadata) | No replacement needed | v13 | Summary files are unused in Ivy. |
 | [`TestModuleMetadata` 类型的 `aotSummaries` 字段](api/core/testing/TestModuleMetadata) | 无需更换 | v13 | Ivy 中未使用摘要文件。 |
 
-{@a platform-browser-dynamic}
+<a id="platform-browser-dynamic"></a>
 
 ### @angular/platform-browser-dynamic
 
@@ -210,7 +210,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | none | v13 | This symbol is no longer necessary. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
 | [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | 无 | v13 | 不再需要此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](#jit-api-changes)。 |
 
-{@a platform-server}
+<a id="platform-server"></a>
 
 ### @angular/platform-server
 
@@ -220,7 +220,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`renderModuleFactory`](api/platform-server/renderModuleFactory) | [`renderModule`](api/platform-server/renderModule) | v13 | This symbol is no longer necessary. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
 | [`renderModuleFactory`](api/platform-server/renderModuleFactory) | [`renderModule`](api/platform-server/renderModule) | v13 | 不再需要此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](#jit-api-changes)。 |
 
-{@a forms}
+<a id="forms"></a>
 
 ### @angular/forms
 
@@ -232,7 +232,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`FormBuilder.group` legacy options parameter](api/forms/FormBuilder#group) | [`AbstractControlOptions` parameter value](api/forms/AbstractControlOptions) | v11 | none |
 | [`FormBuilder.group` 老式选项参数](api/forms/FormBuilder#group) | [`AbstractControlOptions` 参数值](api/forms/AbstractControlOptions) | v11 | 无 |
 
-{@a service-worker}
+<a id="service-worker"></a>
 
 ### @angular/service-worker
 
@@ -244,7 +244,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`SwUpdate#available`](api/service-worker/SwUpdate#available) | [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) | v13 | The behavior of `SwUpdate#available` can be rebuilt by filtering for `VersionReadyEvent` events on [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) |
 | [`SwUpdate#available`](api/service-worker/SwUpdate#available) | [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) | v13 | `SwUpdate#available` 的行为可以通过过滤[`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates)上的 `VersionReadyEvent` 事件来重建 |
 
-{@a upgrade}
+<a id="upgrade"></a>
 
 ### @angular/upgrade
 
@@ -254,7 +254,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [All entry points](api/upgrade) | [`@angular/upgrade/static`](api/upgrade/static) | v5 | See [Upgrading from AngularJS](guide/upgrade). |
 | [所有入口点](api/upgrade) | [`@angular/upgrade/static`](api/upgrade/static) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。 |
 
-{@a upgrade-static}
+<a id="upgrade-static"></a>
 
 ### @angular/upgrade/static
 
@@ -268,7 +268,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [Factory-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | [NgModule-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | v13 | The `downgradeModule` supports more ergonomic NgModule-based API (vs NgModule factory based API). |
 | [`downgradeModule` 基于工厂的签名](api/upgrade/static/downgradeModule) | [`downgradeModule` 基于 NgModule 的签名](api/upgrade/static/downgradeModule) | v13 | `downgradeModule` 支持更符合人体工程学的基于 NgModule 的 API（相对于基于 NgModule 工厂的 API）。 |
 
-{@a deprecated-features}
+<a id="deprecated-features"></a>
 
 ## Deprecated features
 
@@ -278,7 +278,7 @@ This section lists all of the currently-deprecated features, which includes temp
 
 本部分列出了所有当前已弃用的特性，其中包括模板语法、配置选项以及上述[已弃用 API](#deprecated-apis)部分中未列出的任何其他弃用特性。它还包括已弃用的 API 使用场景或 API 组合，以作为上述信息的补充。
 
-{@a bazelbuilder}
+<a id="bazelbuilder"></a>
 
 ### Bazel builder and schematics
 
@@ -289,7 +289,7 @@ This feature has been deprecated. For more information, please refer to the [mig
 
 Angular Labs 中引入了 Bazel 构建器和原理图，让用户无需管理 Bazel 版本和 BUILD 文件即可试用 Bazel。此特性已被弃用。有关更多信息，请参阅[迁移文档](https://github.com/angular/angular/blob/master/packages/bazel/docs/BAZEL_SCHEMATICS.md)。
 
-{@a wtf}
+<a id="wtf"></a>
 
 ### Web Tracing Framework integration
 
@@ -299,7 +299,7 @@ Angular previously supported an integration with the [Web Tracing Framework (WTF
 
 Angular 以前支持与[Web 跟踪框架 (WTF)](https://google.github.io/tracing-framework)集成，以对 Angular 应用程序进行性能测试。此集成未经维护，现已失效。因此，该集成在 Angular 版本 8 中被弃用，并且由于没有任何现有使用的证据，因此在版本 9 中被删除。
 
-{@a deep-component-style-selector}
+<a id="deep-component-style-selector"></a>
 
 ### `/deep/`, `>>>`, and `::ng-deep` component style selectors
 
@@ -313,7 +313,7 @@ For more information, see [/deep/, >>>, and ::ng-deep](guide/component-styles#de
 
 有关更多信息，请参阅组件样式指南中的 [/deep/、>>> 和 ::ng-deep](guide/component-styles#deprecated-deep--and-ng-deep "组件样式指南，已弃用 deep 和 ngdeep") 。
 
-{@a bind-syntax}
+<a id="bind-syntax"></a>
 
 ### `bind-`, `on-`, `bindon-`, and `ref-` prefixes
 
@@ -344,7 +344,7 @@ should use the more widely documented syntaxes for binding and references:
 
   `#templateRef` 代替 `ref-templateRef`
 
-{@a template-tag}
+<a id="template-tag"></a>
 
 ### `<template>` tag
 
@@ -354,7 +354,7 @@ The `<template>` tag was deprecated in v4 to avoid colliding with the DOM's elem
 
 `<template>` 标签在 v4 中已被弃用，以避免与 DOM 的同名元素发生冲突（例如在使用 Web 组件时）。使用 `<ng-template>` 代替。有关更多信息，请参阅[预先编译](guide/aot-compiler)指南。
 
-{@a ngmodel-reactive}
+<a id="ngmodel-reactive"></a>
 
 ### ngModel with reactive forms
 
@@ -412,7 +412,7 @@ Alternatively, you can choose to surface a separate warning for each instance of
 
 或者，你可以选择为该模式的每个实例显示一个单独的警告，配置值为 `"always"` 。这可能有助于在更新代码时跟踪代码中使用模式的位置。
 
-{@a reflectiveinjector}
+<a id="reflectiveinjector"></a>
 
 ### ReflectiveInjector
 
@@ -432,7 +432,7 @@ In v5, Angular replaced the `ReflectiveInjector` with the `StaticInjector`. The 
 
 <code-example path="deprecation-guide/src/app/app.component.ts" language="typescript" region="static-injector-example"></code-example>
 
-{@a loadChildren}
+<a id="loadChildren"></a>
 
 ### loadChildren string syntax
 
@@ -474,7 +474,7 @@ In version 8, the string syntax for the [`loadChildren`](api/router/LoadChildren
 
 </div>
 
-{@a reflect-metadata}
+<a id="reflect-metadata"></a>
 
 ### Dependency on a reflect-metadata polyfill in JIT mode
 
@@ -492,7 +492,7 @@ In a typical Angular project, the polyfill is not used in production builds, so 
 
 在典型的 Angular 项目中，这个腻子脚本不用于生产版本，因此删除它不会影响生产环境的应用程序。删除它是为了从整体上上简化构建设置并减少外部依赖项的数量。
 
-{@a static-query-resolution}
+<a id="static-query-resolution"></a>
 
 ### `@ViewChild()` / `@ContentChild()` static resolution as the default
 
@@ -502,7 +502,7 @@ See the [dedicated migration guide for static queries](guide/static-query-migrat
 
 参阅[静态查询的专用迁移指南](guide/static-query-migration)。
 
-{@a contentchild-input-together}
+<a id="contentchild-input-together"></a>
 
 ### `@ContentChild()` / `@Input()` used together
 
@@ -521,7 +521,7 @@ properties and add fallback logic as in the following example:
 
 <code-example path="deprecation-guide/src/app/app.component.ts" language="typescript" region="template-with-input"></code-example>
 
-{@a cant-assign-template-vars}
+<a id="cant-assign-template-vars"></a>
 
 ### Cannot assign to template variables
 
@@ -540,7 +540,7 @@ However, in practice, Angular ignores two-way bindings to template variables. St
 
 <code-example path="deprecation-guide/src/app/app.component.html" region="valid-template-bind"></code-example>
 
-{@a binding-to-innertext}
+<a id="binding-to-innertext"></a>
 
 ### Binding to `innerText` in `platform-server`
 
@@ -554,7 +554,7 @@ These two properties have subtle differences, so switching to `textContent` unde
 
 这两个属性有细微的差别，因此在幕后切换到 `textContent` 可能会让用户感到惊讶。出于这个原因，我们弃用了这种行为。展望未来，用户应该在使用 Domino 时显式绑定到 `textContent` 。
 
-{@a wtf-apis}
+<a id="wtf-apis"></a>
 
 ### `wtfStartTimeRange` and all `wtf*` APIs
 
@@ -564,7 +564,7 @@ All of the `wtf*` APIs are deprecated and will be removed in a future version.
 
 所有 `wtf*` API 均已弃用，并将在未来版本中删除。
 
-{@a entryComponents}
+<a id="entryComponents"></a>
 
 ### `entryComponents` and `ANALYZE_FOR_ENTRY_COMPONENTS` no longer required
 
@@ -580,7 +580,7 @@ The same applies to the `ANALYZE_FOR_ENTRY_COMPONENTS` injection token.
 
 **注意**：如果构建将由 View Engine 应用程序使用的库，你可能仍需要保留它们。
 
-{@a moduleWithProviders}
+<a id="moduleWithProviders"></a>
 
 ### `ModuleWithProviders` type without a generic
 
@@ -622,7 +622,7 @@ For full rationale and discussion behind this deprecation, see [RFC: Internet Ex
 **Note**: IE11 will be supported in Angular v12 LTS releases through November 2022.
 -->
 
-{@a input-setter-coercion}
+<a id="input-setter-coercion"></a>
 
 ### Input setter coercion
 
@@ -652,7 +652,7 @@ can be refactored as follows:
 
 <code-example path="deprecation-guide/src/app/submit-button/submit-button.component.ts" language="typescript" region="submitButton"></code-example>
 
-{@a full-template-type-check}
+<a id="full-template-type-check"></a>
 
 ### `fullTemplateTypeCheck`
 
@@ -687,7 +687,7 @@ Projects that currently have `fullTemplateTypeCheck: true` configured can migrat
 
 </code-example>
 
-{@a jit-api-changes}
+<a id="jit-api-changes"></a>
 
 ## JIT API changes due to ViewEngine deprecation
 
@@ -701,7 +701,7 @@ Important note: this deprecation doesn't affect JIT mode in Ivy (JIT remains ava
 
 重要说明：此弃用不会影响 Ivy 中的 JIT 模式（JIT 在 Ivy 中仍然可用，但是我们正在探索将来弃用它的可能性。请参阅 [RFC：Angular JIT 编译模式的用例探索](https://github.com/angular/angular/issues/43133)）。
 
-{@a testrequest-errorevent}
+<a id="testrequest-errorevent"></a>
 
 ### `TestRequest` accepting `ErrorEvent`
 
@@ -730,7 +730,7 @@ const mockRequest = httpTestingController.expectOne(..);
 mockRequest.error(mockError);
 ```
 
-{@a deprecated-cli-flags}
+<a id="deprecated-cli-flags"></a>
 
 ## Deprecated CLI APIs and Options
 
@@ -770,7 +770,7 @@ been an internal package for the Angular CLI. All the relevant functionality has
 
 整个 NPM 包已弃用。它一直是实验性的（从未达到 `1.0.0` ）并且一直是 Angular CLI 的内部包。所有相关特性都已移至 `@angular-devkit/build-angular` 。
 
-{@a removed}
+<a id="removed"></a>
 
 ## Removed APIs
 
@@ -789,7 +789,7 @@ The following APIs have been removed starting with version 11.0.0\*:
 
 \* 要查看版本 10 中移除的 API，请查看 [版本 10 文档站点](https://v10.angular.cn/guide/deprecations#removed)上的本指南。
 
-{@a style-sanitization}
+<a id="style-sanitization"></a>
 
 ### Style Sanitization for `[style]` and `[style.prop]` bindings
 

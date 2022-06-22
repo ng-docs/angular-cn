@@ -120,7 +120,7 @@ Add a `getHeroes` method to return the _mock heroes_.
 <code-example path="toh-pt4/src/app/hero.service.1.ts" header="src/app/hero.service.ts" region="getHeroes">
 </code-example>
 
-{@a provide}
+<a id="provide"></a>
 
 ## Provide the `HeroService`
 
@@ -201,7 +201,7 @@ Replace the definition of the `heroes` property with a declaration.
 <code-example path="toh-pt4/src/app/heroes/heroes.component.ts" header="src/app/heroes/heroes.component.ts" region="heroes">
 </code-example>
 
-{@a inject}
+<a id="inject"></a>
 
 ### Inject the `HeroService`
 
@@ -234,7 +234,7 @@ Create a method to retrieve the heroes from the service.
 <code-example path="toh-pt4/src/app/heroes/heroes.component.1.ts" header="src/app/heroes/heroes.component.ts" region="getHeroes">
 </code-example>
 
-{@a oninit}
+<a id="oninit"></a>
 
 ### Call it in `ngOnInit()`
 
@@ -486,7 +486,7 @@ The service exposes its cache of `messages` and two methods: one to `add()` a me
 
 该服务对外暴露了它的 `messages` 缓存，以及两个方法：`add()` 方法往缓存中添加一条消息，`clear()` 方法用于清空缓存。
 
-{@a inject-message-service}
+<a id="inject-message-service"></a>
 
 ### Inject it into the `HeroService`
 
@@ -629,7 +629,7 @@ the selection. Use the **Clear messages** button to clear the message history.
 滚动到底部，就会在消息区看到来自 `HeroService` 的消息。
 点击 **Clear messages** 按钮，消息区不见了。
 
-{@a final-code-review}
+<a id="final-code-review"></a>
 
 ## Final code review
 

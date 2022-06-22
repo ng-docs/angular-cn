@@ -91,7 +91,7 @@ This scoping restriction is a ***styling modularity feature***.
 
    以后还可以修改或移除组件的 CSS 代码，而不用遍历整个应用来看它有没有在别处用到。
 
-{@a special-selectors}
+<a id="special-selectors"></a>
 
 ## Special selectors
 
@@ -229,7 +229,7 @@ CSS 标准中用于 "刺穿 Shadow DOM" 的组合器已经被弃用，并将[这
 
 </div>
 
-{@a loading-styles}
+<a id="loading-styles"></a>
 
 ## Loading component styles
 

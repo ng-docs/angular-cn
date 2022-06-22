@@ -63,7 +63,7 @@ To report an issue with the Profiler, export the Profiler recording by clicking 
 > 请确保 Profiler 记录中不包含任何机密信息。
 >
 
-{@a components}
+<a id="components"></a>
 
 ## Debug your application
 
@@ -173,7 +173,7 @@ Similar to Chrome DevTools, you can inspect the page to select a particular comp
   <img src="generated/images/guide/devtools/inspect-element.png" alt="selecting dom node">
 </div>
 
-{@a profiler}
+<a id="profiler"></a>
 
 ## Profile your application
 

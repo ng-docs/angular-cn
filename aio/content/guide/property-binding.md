@@ -101,7 +101,7 @@ Declare the `itemImageUrl` property in the class, in this case `AppComponent`.
 
 <code-example path="property-binding/src/app/app.component.ts" region="item-image" header="src/app/app.component.ts"></code-example>
 
-{@a colspan}
+<a id="colspan"></a>
 
 #### `colspan` and `colSpan`
 

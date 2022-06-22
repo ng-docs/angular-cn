@@ -24,7 +24,7 @@ To update search keywords:
 
   If a topic does not have a `@searchKeywords` tag, you can add it to the end of the topic.
 
-{@a format}
+<a id="format"></a>
 ## Search keywords format
 
 You add search keywords to a topic using the `@searchKeywords` tag. This tag takes a set of single words, separated by spaces. The tag and the keywords must be enclosed in curly brackets (`{...}`). For example:

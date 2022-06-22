@@ -24,7 +24,7 @@ This step of the tutorial guides you through creating a shopping cart in the fol
 
   添加一个配送组件，它会使用 Angular 的 `HttpClient` 从 `.json` 文件中检索配送数据来取得购物车中这些商品的运费。
 
-{@a create-cart-service}
+<a id="create-cart-service"></a>
 
 ## Create the shopping cart service
 
@@ -44,7 +44,7 @@ This section walks you through adding a **Buy** button and setting up a cart ser
 下一步是为用户提供一种把产品添加到购物车中的方法。
 本章节将带领你添加一个 **Buy** 按钮并且建立一个购物车服务以保存购物车中的产品信息。
 
-{@a generate-cart-service}
+<a id="generate-cart-service"></a>
 
 ### Define a cart service
 
@@ -86,7 +86,7 @@ This section walks you through creating the `CartService` that tracks products a
    
      `clearCart()` 方法返回一个空数组。
 
-{@a product-details-use-cart-service}
+<a id="product-details-use-cart-service"></a>
 
 ### Use the cart service
 

@@ -17,7 +17,7 @@ of the code in this cookbook.
 
 到<live-example name="dynamic-component-loader"></live-example>查看本烹饪书的源码。
 
-{@a dynamic-loading}
+<a id="dynamic-loading"></a>
 
 ## Dynamic component loading
 
@@ -44,7 +44,7 @@ Angular comes with its own API for loading components dynamically.
 
 Angular 自带的 API 就能支持动态加载组件。
 
-{@a directive}
+<a id="directive"></a>
 
 ## The anchor directive
 
@@ -73,7 +73,7 @@ The next section shows you how.
 
 在 `@Directive` 装饰器中，要注意选择器的名称：`ad-host`，它就是你将应用到元素上的指令。下一节会展示该如何做。
 
-{@a loading-components}
+<a id="loading-components"></a>
 
 ## Loading components
 
@@ -102,7 +102,7 @@ because it doesn't render any additional output.
 
 `<ng-template>` 元素是动态加载组件的最佳选择，因为它不会渲染任何额外的输出。
 
-{@a resolving-components}
+<a id="resolving-components"></a>
 
 ## Resolving components
 
@@ -186,7 +186,7 @@ Use that reference to interact with the component by assigning to its properties
 使用这个引用就可以与该组件进行交互，比如设置它的属性或调用它的方法。
 
 
-{@a common-interface}
+<a id="common-interface"></a>
 
 ## The _AdComponent_ interface
 
@@ -217,7 +217,7 @@ Here are two sample components and the `AdComponent` interface for reference:
 
 </code-tabs>
 
-{@a final-ad-baner}
+<a id="final-ad-baner"></a>
 
 ## Final ad banner
 

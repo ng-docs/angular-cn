@@ -44,7 +44,7 @@ The functions that control complex animation sequences are:
 
   `sequence()` 用于逐个顺序执行多个动画步骤。
 
-{@a complex-sequence}
+<a id="complex-sequence"></a>
 
 ## Animate multiple elements using query() and stagger() functions
 

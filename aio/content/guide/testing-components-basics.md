@@ -30,7 +30,7 @@ Angular 的 `TestBed` 可以帮你做这种测试，正如你将在下面的章�
 </div>
 
 
-{@a component-class-testing}
+<a id="component-class-testing"></a>
 
 ## Component class testing
 
@@ -299,7 +299,7 @@ Optional `override` methods can further fine-tune aspects of the configuration.
 
 </div>
 
-{@a create-component}
+<a id="create-component"></a>
 
 ### _createComponent()_
 
@@ -337,7 +337,7 @@ If you try, `TestBed` throws an error.
 
 </div>
 
-{@a component-fixture}
+<a id="component-fixture"></a>
 
 ### _ComponentFixture_
 
@@ -377,7 +377,7 @@ looks for the expected text.
   region="v4-test-2">
 </code-example>
 
-{@a native-element}
+<a id="native-element"></a>
 
 ### _nativeElement_
 
@@ -414,7 +414,7 @@ Here's another test that calls `HTMLElement.querySelector` to get the paragraph 
   region="v4-test-3">
 </code-example>
 
-{@a debug-element}
+<a id="debug-element"></a>
 
 ### _DebugElement_
 
@@ -481,7 +481,7 @@ You import the `DebugElement` symbol from the Angular core library.
   region="import-debug-element">
 </code-example>
 
-{@a by-css}
+<a id="by-css"></a>
 
 ### _By.css()_
 

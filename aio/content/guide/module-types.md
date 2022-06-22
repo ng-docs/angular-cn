@@ -202,7 +202,7 @@ The following table summarizes the key characteristics of each category.
  </tr>
 </table>
 
-{@a domain}
+<a id="domain"></a>
 
 ## Domain NgModules
 
@@ -237,7 +237,7 @@ For more information about lifecycles, see [Hooking into the component lifecycle
 
 </div>
 
-{@a routed}
+<a id="routed"></a>
 
 ## Routed NgModules
 
@@ -268,7 +268,7 @@ For more information about providers and lazy-loaded routed NgModules, see [Limi
 
 </div>
 
-{@a routing}
+<a id="routing"></a>
 
 ## Routing NgModules
 
@@ -323,7 +323,7 @@ Components, directives, and pipes are the responsibility of the companion domain
 
 不要在路由定义模块中使用可声明对象。组件、指令和管道都是伴生领域模块的责任，而不是路由定义模块的。
 
-{@a service}
+<a id="service"></a>
 
 ## Service NgModules
 
@@ -339,7 +339,7 @@ Use only the root `AppModule` to import service NgModules.
 
 只能使用根模块 `AppModule` 来导入各种服务模块。
 
-{@a widget}
+<a id="widget"></a>
 
 ## Widget NgModules
 
@@ -356,7 +356,7 @@ It would rarely have providers.
 
 小部件模块应该完全由可声明对象组成，其中大部分都是导出的。服务提供者非常罕见。
 
-{@a shared}
+<a id="shared"></a>
 
 ## Shared NgModules
 

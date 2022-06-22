@@ -129,7 +129,7 @@ After the browser refreshes, the list of heroes appears.
 
 浏览器刷新之后，英雄列表出现了。
 
-{@a styles}
+<a id="styles"></a>
 
 ### Style the heroes
 
@@ -365,7 +365,7 @@ The finished `<li>` looks like this:
 
 <code-example path="toh-pt2/src/app/heroes/heroes.component.html" region="li" header="heroes.component.html (list item hero)"></code-example>
 
-{@a final-code-review}
+<a id="final-code-review"></a>
 
 ## Final code review
 

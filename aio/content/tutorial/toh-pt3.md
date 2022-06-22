@@ -162,7 +162,7 @@ You won't change the `HeroesComponent` _class_ but you will change its _template
 
 你不用修改 `HeroesComponent` *类*，但是要修改它的*模板*。
 
-{@a heroes-component-template}
+<a id="heroes-component-template"></a>
 
 ### Update the `HeroesComponent` template
 

@@ -60,8 +60,8 @@ This section describes some techniques for doing that.
 
 本节描述的就是关于这种做法的一些技巧。
 
-{@a find-parent}
-{@a known-parent}
+<a id="find-parent"></a>
+<a id="known-parent"></a>
 
 ### Find a parent component of known type
 
@@ -75,7 +75,7 @@ In the following example, the parent `AlexComponent` has several children includ
 
 在下面的例子中，父组件 `AlexComponent` 具有一些子组件，包括 `CathyComponent`：
 
-{@a alex}
+<a id="alex"></a>
 
 <code-example path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-1" header="parent-finder.component.ts (AlexComponent v.1)"></code-example>
 
@@ -93,7 +93,7 @@ confirms that the `alex` parameter is set.
 
 注意，虽然为了安全起见我们用了 [@Optional](guide/dependency-injection-in-action#optional) 限定符，但是<live-example name="dependency-injection-in-action"></live-example>中仍然会确认 `alex` 参数是否有值。
 
-{@a base-parent}
+<a id="base-parent"></a>
 
 ### Unable to find a parent by its base class
 
@@ -158,7 +158,7 @@ confirms that the `alex` parameter is null.
 <live-example name="dependency-injection-in-action"></live-example> 确认了 `alex` 参数为空。
 因此，*你不能通过父组件的基类注入它*。
 
-{@a class-interface-parent}
+<a id="class-interface-parent"></a>
 
 ### Find a parent by its class interface
 
@@ -183,7 +183,7 @@ and add that provider to the `providers` array of the `@Component()` metadata fo
 
 编写一个 [*别名提供者*](guide/dependency-injection-in-action#useexisting)（一个 `provide` 对象字面量，其中有一个 `useExisting` 定义），创造了另一种方式来注入同一个组件实例，并把那个提供者添加到 `AlexComponent` `@Component()` 元数据的 `providers` 数组中。
 
-{@a alex-providers}
+<a id="alex-providers"></a>
 
 <code-example path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-providers" header="parent-finder.component.ts (AlexComponent providers)"></code-example>
 
@@ -208,7 +208,7 @@ Here's *Alex* and family in action.
   <img src="generated/images/guide/dependency-injection-in-action/alex.png" alt="Alex in action">
 </div>
 
-{@a parent-tree}
+<a id="parent-tree"></a>
 
 ### Find a parent in a tree with _@SkipSelf()_
 
@@ -282,7 +282,7 @@ Here's *Alice*, *Barry*, and family in action.
   <img src="generated/images/guide/dependency-injection-in-action/alice.png" alt="Alice in action">
 </div>
 
-{@a parent-token}
+<a id="parent-token"></a>
 
 ###  Parent class interface
 

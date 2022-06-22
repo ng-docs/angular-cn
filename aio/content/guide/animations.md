@@ -407,7 +407,7 @@ Learn about more advanced features in Angular animations under the Animation sec
 
 请到 "动画" 组下学习 Angular 动画的高级特性，不妨先从[转场与触发器](guide/transition-and-triggers)中讲述的高级技巧开始。
 
-{@a animation-api-summary}
+<a id="animation-api-summary"></a>
 ## Animations API summary
 
 ## 动画 API 小结

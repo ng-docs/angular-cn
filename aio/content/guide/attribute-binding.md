@@ -66,7 +66,7 @@ Attribute 绑定的主要用例之一是设置 ARIA Attribute，如下所示：
 
 <code-example path="attribute-binding/src/app/app.component.html" region="attrib-binding-aria" header="src/app/app.component.html"></code-example>
 
-{@a colspan}
+<a id="colspan"></a>
 
 ## Binding to `colspan`
 
@@ -114,7 +114,7 @@ For more information on how to bind to the `colSpan` property, see the [`colspan
 
 </div>
 
-{@a class-binding}
+<a id="class-binding"></a>
 ## Binding to the `class` attribute
 
 ## 绑定到 `class` Attribute
@@ -250,7 +250,7 @@ The following table summarizes class binding syntax.
   </tr>
 </table>
 
-{@a style-binding}
+<a id="style-binding"></a>
 ## Binding to the style attribute
 
 ## 绑定到 style Attribute
@@ -422,7 +422,7 @@ However, using the preceding style binding syntax without `NgStyle` is preferred
 
 </div>
 
-{@a styling-precedence}
+<a id="styling-precedence"></a>
 ## Styling Precedence
 
 ## 样式优先级
@@ -528,7 +528,7 @@ In the following case, `class` and `[class]` have similar specificity, but the `
 
 <code-example path="attribute-binding/src/app/app.component.html" region="dynamic-priority" header="src/app/app.component.html"></code-example>
 
-{@a styling-delegation}
+<a id="styling-delegation"></a>
 ### Delegating to styles with lower precedence
 
 ### 委托给优先级较低的样式

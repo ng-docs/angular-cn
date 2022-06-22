@@ -213,7 +213,7 @@ In addition to working code snippets, example code can include terminal commands
 
 Whatever the source, the document viewer renders them as code snippets, either individually with the [code-example](#code-example "code-example") component or as a tabbed collection with the [code-tabs](#code-tabs "code-tabs") component.
 
-{@a code-example}
+<a id="code-example"></a>
 
 ### When to use code font
 
@@ -272,7 +272,7 @@ In all other cases, code snippets should be generated automatically from tested 
 
 For hypothetical examples such as illustrations of configuration options in a JSON file, use the `<code-example>` tag with the `header` attribute to identify the context.
 
-{@a from-code-samples}
+<a id="from-code-samples"></a>
 
 ### Compilable example apps
 
@@ -295,7 +295,7 @@ Angular re-tests the samples after every new version of a sample and every new v
 
 When possible, every snippet of code on a guide page should be derived from a code sample file. You tell the Angular documentation engine which code file&mdash;or fragment of a code file&mdash;to display by configuring `<code-example>` attributes.
 
-{@a display-whole-file}
+<a id="display-whole-file"></a>
 
 ### Displaying an entire code file
 
@@ -335,7 +335,7 @@ To include an ignored code file in your project and display it in a guide, remov
 
 </div>
 
-{@a region}
+<a id="region"></a>
 
 ### Displaying part of a code file
 
@@ -454,7 +454,7 @@ Explicitly applying the class `avoid` causes the same result of a red header and
 
 </code-example>
 
-{@a code-tabs}
+<a id="code-tabs"></a>
 
 ### Code Tabs
 
@@ -526,7 +526,7 @@ However, the `linenums` attribute set to `false` in the second `<code-pane>` dis
 </code-tabs>
 ```
 
-{@a source-code-markup}
+<a id="source-code-markup"></a>
 
 ## Preparing source code for code snippets
 
@@ -735,7 +735,7 @@ Source code should follow [Angular's style guide](guide/styleguide) where possib
 
 Hexadecimal should use the shorthand where possible, and use only lowercase letters.
 
-{@a live-examples}
+<a id="live-examples"></a>
 
 ## Live examples
 
@@ -846,7 +846,7 @@ The browser renders the following `<iframe>` and a `<p>` with a link to download
 
 <live-example embedded></live-example>
 
-{@a anchors}
+<a id="anchors"></a>
 
 ## Anchors
 
@@ -878,13 +878,13 @@ When navigating within a page, you can omit the page URL when specifying the lin
 ... the link that [scrolls up](#anchors "Anchors") to ...
 ```
 
-{@a section-anchors}
+<a id="section-anchors"></a>
 
 ### Section header anchors
 
 While the documentation generator automatically creates anchors for headers based on the header wording, titles can change, which can potentially break any links to that section.
 
-To mitigate link breakage, add a custom anchor explicitly, just above the heading or text to which it applies, using the special `{@a name}` syntax as follows:
+To mitigate link breakage, add a custom anchor explicitly, just above the heading or text to which it applies, using the special `<a id="name"></a>` syntax as follows:
 
 <code-example  language="html">
   &#123;@a section-anchors&#125;

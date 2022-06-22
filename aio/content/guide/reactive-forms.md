@@ -34,7 +34,7 @@ Before going further into reactive forms, you should have a basic understanding 
 
   [“表单简介”](guide/forms-overview "Angular 表单概述")中提供的表单设计概念。
 
-{@a intro}
+<a id="intro"></a>
 
 ## Overview of reactive forms
 
@@ -158,7 +158,7 @@ The form control assigned to `name` is displayed when the component is added to 
   <img src="generated/images/guide/reactive-forms/name-editor-1.png" alt="Name Editor, which has a name label and an input so the user can enter a name">
 </div>
 
-{@a display-value}
+<a id="display-value"></a>
 
 ### Displaying a form control value
 
@@ -379,7 +379,7 @@ To display the `ProfileEditor` component that contains the form, add it to a com
   <img src="generated/images/guide/reactive-forms/profile-editor-1.gif" alt="Profile Editor with labels and inputs for first and last name as well as a submit button">
 </div>
 
-{@a nested-groups}
+<a id="nested-groups"></a>
 
 ### Creating nested form groups
 
@@ -592,7 +592,7 @@ Compare using the form builder to creating the instances manually.
 
 </code-tabs>
 
-{@a basic-form-validation}
+<a id="basic-form-validation"></a>
 
 ## Validating form input
 
@@ -676,7 +676,7 @@ For more on form validation, visit the [Form Validation](guide/form-validation "
 
 要了解表单验证的更多知识，参阅[表单验证](guide/form-validation "关于表单验证。")指南。
 
-{@a dynamic-forms}
+<a id="dynamic-forms"></a>
 
 ## Creating dynamic forms
 
@@ -823,7 +823,7 @@ Initially, the form contains one `Alias` field. To add another field, click the 
 
 </div>
 
-{@a reactive-forms-api}
+<a id="reactive-forms-api"></a>
 
 ## Reactive forms API summary
 

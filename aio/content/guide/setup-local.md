@@ -19,8 +19,8 @@ If you are new to Angular, you might want to start with [Try it now!](start), wh
 
 </div>
 
-{@a devenv}
-{@a prerequisites}
+<a id="devenv"></a>
+<a id="prerequisites"></a>
 ## Prerequisites
 
 ## 前提条件
@@ -41,7 +41,7 @@ To install Angular on your local system, you need the following:
 
 要想在你的本地系统中安装 Angular，需要如下步骤：
 
-{@a nodejs}
+<a id="nodejs"></a>
 
 * **Node.js**
 
@@ -63,7 +63,7 @@ To install Angular on your local system, you need the following:
   要了解如何安装 Node.js，参阅 [nodejs.org](http://nodejs.org "Nodejs.org")。
   如果你不确定系统中正在运行的 Node.js 版本是什么，请在终端窗口中运行 `node -v`。
 
-{@a npm}
+<a id="npm"></a>
 
 * **npm package manager**
 
@@ -76,7 +76,7 @@ To install Angular on your local system, you need the following:
 
   Angular、Angular CLI 以及 Angular 应用都要依赖 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)来实现很多特性和功能。要下载并安装 npm 包，你需要一个 npm 包管理器。本指南使用 [npm 客户端](https://docs.npmjs.com/cli/install)命令行界面，该界面默认安装在 `Node.js`。要检查你是否安装了 npm 客户端，请在终端窗口中运行 `npm -v` 。
 
-{@a install-cli}
+<a id="install-cli"></a>
 
 ## Install the Angular CLI
 
@@ -94,7 +94,7 @@ To install the Angular CLI, open a terminal window and run the following command
   npm install -g @angular/cli<aio-angular-dist-tag class="pln"></aio-angular-dist-tag>
 </code-example>
 
-{@a create-proj}
+<a id="create-proj"></a>
 
 ## Create a workspace and initial application
 
@@ -129,7 +129,7 @@ The CLI creates a new workspace and a simple Welcome app, ready to run.
 
 CLI 会创建一个新的工作区和一个简单的欢迎应用，随时可以运行它。
 
-{@a serve}
+<a id="serve"></a>
 
 ## Run the application
 

@@ -14,7 +14,7 @@ See the <live-example></live-example> for a working example containing the code 
 
 </div>
 
-{@a multiple-service-instances}
+<a id="multiple-service-instances"></a>
 
 ## Multiple service instances (sandboxing)
 
@@ -33,7 +33,7 @@ This is called *sandboxing* because each service and component instance has its 
 每个组件都需要该服务的单独实例。
 每个服务有自己的工作状态，与其它组件的服务和状态隔离。这叫做*沙箱化*，因为每个服务和组件实例都在自己的沙箱里运行。
 
-{@a hero-bios-component}
+<a id="hero-bios-component"></a>
 
 In this example, `HeroBiosComponent` presents three instances of `HeroBioComponent`.
 
@@ -82,7 +82,7 @@ and confirm that the three `HeroBioComponent` instances have their own cached he
   <img src="generated/images/guide/dependency-injection-in-action/hero-bios.png" alt="Bios">
 </div>
 
-{@a qualify-dependency-lookup}
+<a id="qualify-dependency-lookup"></a>
 
 ## Qualify dependency lookup with parameter decorators
 
@@ -111,7 +111,7 @@ on the service-valued parameters of a class constructor.
 
 通过在类的构造函数中对服务参数使用*参数装饰器*，可以提供一些选项来修改默认的搜索行为。
 
-{@a optional}
+<a id="optional"></a>
 
 ### Make a dependency `@Optional` and limit search with `@Host`
 
@@ -251,7 +251,7 @@ The `factory` function returns the `localStorage` property that is attached to t
 
 `factory` 函数返回 window 对象上的 `localStorage` 属性。`Inject` 装饰器修饰一个构造函数参数，用于为某个依赖提供自定义提供者。现在，就可以在测试期间使用 `localStorage` 的 Mock API 来覆盖这个提供者了，而不必与真实的浏览器 API 进行交互。
 
-{@a skip}
+<a id="skip"></a>
 
 ### Modify the provider search with `@Self` and `@SkipSelf`
 
@@ -270,7 +270,7 @@ Using the `@Self` decorator, the injector only looks at the component's injector
 使用 `@Self` 装饰器时，注入器只在该组件的注入器中查找提供者。`@SkipSelf` 装饰器可以让你跳过局部注入器，并在注入器树中向上查找，以发现哪个提供者满足该依赖。
 `sessionStorageService` 实例使用浏览器的 `sessionStorage` 来跟 `BrowserStorageService` 打交道，而 `localStorageService` 跳过了局部注入器，使用根注入器提供的 `BrowserStorageService`，它使用浏览器的 `localStorage` API。
 
-{@a component-element}
+<a id="component-element"></a>
 
 ## Inject the component's DOM element
 
@@ -316,7 +316,7 @@ The following image shows the effect of mousing over the `<hero-bios-and-contact
 <div class="lightbox">
   <img src="generated/images/guide/dependency-injection-in-action/highlight.png" alt="Highlighted bios">
 </div>
-{@a defining-providers}
+<a id="defining-providers"></a>
 
 ### Defining providers
 
@@ -350,7 +350,7 @@ The `providers` array shows how you might use the different provider-definition 
 
 `providers` 数组展示了你可以如何使用其它的键来定义提供者：`useValue`、`useClass`、`useExisting` 或 `useFactory`。
 
-{@a usevalue}
+<a id="usevalue"></a>
 
 #### Value providers: `useValue`
 
@@ -407,7 +407,7 @@ Other types of providers can create their values *lazily*; that is, when they're
 
 其它类型的提供者都会*惰性创建*它们的值，也就是说只在需要注入它们的时候才创建。
 
-{@a useclass}
+<a id="useclass"></a>
 
 #### Class providers: `useClass`
 
@@ -458,7 +458,7 @@ Components outside the tree continue to receive the original `LoggerService` ins
 
 <code-example path="dependency-injection-in-action/src/app/date-logger.service.ts" region="date-logger-service" header="src/app/date-logger.service.ts"></code-example>
 
-{@a useexisting}
+<a id="useexisting"></a>
 
 #### Alias providers: `useExisting`
 
@@ -517,7 +517,7 @@ This is illustrated in the following image, which displays the logging date.
 
 </div>
 
-{@a usefactory}
+<a id="usefactory"></a>
 
 #### Factory providers: `useFactory`
 
@@ -595,7 +595,7 @@ for the full source code.
 
 </div>
 
-{@a tokens}
+<a id="tokens"></a>
 
 ## Provider token alternatives: class interface and 'InjectionToken'
 
@@ -612,7 +612,7 @@ That's the subject of the next section.
 
 但令牌不一定都是类，就算它是一个类，它也不一定都返回类型相同的对象。这是下一节的主题。
 
-{@a class-interface}
+<a id="class-interface"></a>
 
 ### Classinterface
 
@@ -684,7 +684,7 @@ Look again at the TypeScript `MinimalLogger` class to confirm that it has no imp
 
 </div>
 
-{@a injection-token}
+<a id="injection-token"></a>
 
 ### 'InjectionToken' objects
 
@@ -722,7 +722,7 @@ The token description is another developer aid.
 类型参数，虽然是可选的，但可以向开发者和开发工具传达类型信息。
 而且这个令牌的描述信息也可以为开发者提供帮助。
 
-{@a di-inheritance}
+<a id="di-inheritance"></a>
 
 ## Inject into a derived class
 
@@ -805,7 +805,7 @@ These complications argue for *avoiding component inheritance*.
 
 分析上面的这些复杂性是为了强调*避免使用组件继承*这一点。
 
-{@a forwardref}
+<a id="forwardref"></a>
 
 ## Break circularities with a forward class reference (*forwardRef*)
 

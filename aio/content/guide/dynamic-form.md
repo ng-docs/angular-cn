@@ -104,7 +104,7 @@ The following code from the example shows the setup in the root module.
 
 </code-tabs>
 
-{@a object-model}
+<a id="object-model"></a>
 
 ## Create a form object model
 
@@ -166,7 +166,7 @@ The following `QuestionControlService` collects a set of `FormGroup` instances t
 
 <code-example path="dynamic-form/src/app/question-control.service.ts" header="src/app/question-control.service.ts"></code-example>
 
-{@a form-component}
+<a id="form-component"></a>
 
 ## Compose dynamic form contents
 
@@ -202,9 +202,9 @@ The switch uses directives with the [`formControlName`](api/forms/FormControlNam
 
 `DynamicFormQuestionComponent` 的目标是展示模型中定义的各类问题。你现在只有两类问题，但可以想象将来还会有更多。模板中的 `ngSwitch` 语句会决定要显示哪种类型的问题。这里用到了带有 [`formControlName`](api/forms/FormControlName "FormControlName 指令的 API Reference 参考") 和[`formGroup`](api/forms/FormGroupDirective "FormGroupDirective API 参考指南") 选择器的指令。这两个指令都是在 `ReactiveFormsModule` 中定义的。
 
-{@a questionnaire-data}
+<a id="questionnaire-data"></a>
 
-{@a surveyire-data}
+<a id="surveyire-data"></a>
 
 ### Supply data
 
@@ -226,7 +226,7 @@ The `QuestionService` supplies a set of questions in the form of an array bound 
 
 </code-example>
 
-{@a dynamic-template}
+<a id="dynamic-template"></a>
 
 ## Create a dynamic form template
 

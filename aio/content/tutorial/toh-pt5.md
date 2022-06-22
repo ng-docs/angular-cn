@@ -225,7 +225,7 @@ The browser should refresh and display the application title but not the list of
 
 从浏览器地址栏中的 URL 中移除 `/heroes`。浏览器就会刷新，并且显示本应用的标题，而不显示英雄列表。
 
-{@a routerlink}
+<a id="routerlink"></a>
 
 ## Add a navigation link (`routerLink`)
 
@@ -425,7 +425,7 @@ After the browser refreshes you can navigate freely between the two views by cli
 
 刷新浏览器，你就能通过点击这些链接在这两个视图之间自由导航了。
 
-{@a hero-details}
+<a id="hero-details"></a>
 
 ## Navigating to hero details
 
@@ -539,7 +539,7 @@ to insert the current iteration's `hero.id` into each
 
 你正在 `*ngFor` 复写器中使用 Angular 的[插值绑定](guide/interpolation)来把当前迭代的 `hero.id` 插入到每个 [`routerLink`](#routerlink) 中。
 
-{@a heroes-component-links}
+<a id="heroes-component-links"></a>
 
 ### `HeroesComponent` hero links
 
@@ -629,7 +629,7 @@ Add the following imports:
 <code-example path="toh-pt5/src/app/hero-detail/hero-detail.component.ts" region="added-imports" header="src/app/hero-detail/hero-detail.component.ts">
 </code-example>
 
-{@a hero-detail-ctor}
+<a id="hero-detail-ctor"></a>
 
 Inject the `ActivatedRoute`, `HeroService`, and `Location` services
 into the constructor, saving their values in private fields:
@@ -742,7 +742,7 @@ the router navigates to the detail view for the hero with `id: 11`,  "Dr Nice".
 
 如果你在浏览器的地址栏中粘贴了 `localhost:4200/detail/11`，路由器也会导航到 `id: 11` 的英雄（"Dr. Nice"）的详情视图。
 
-{@a goback}
+<a id="goback"></a>
 
 ### Find the way back
 
@@ -796,9 +796,9 @@ Here are the code files discussed on this page.
 
 本页讨论的代码文件如下。
 
-{@a approutingmodule}
+<a id="approutingmodule"></a>
 
-{@a appmodule}
+<a id="appmodule"></a>
 
 #### `AppRoutingModule`, `AppModule`, and `HeroService`
 
@@ -819,7 +819,7 @@ Here are the code files discussed on this page.
   </code-pane>
 </code-tabs>
 
-{@a appcomponent}
+<a id="appcomponent"></a>
 
 #### `AppComponent`
 
@@ -835,7 +835,7 @@ Here are the code files discussed on this page.
   </code-pane>
 </code-tabs>
 
-{@a dashboardcomponent}
+<a id="dashboardcomponent"></a>
 
 #### `DashboardComponent`
 
@@ -853,7 +853,7 @@ Here are the code files discussed on this page.
   </code-pane>
 </code-tabs>
 
-{@a heroescomponent}
+<a id="heroescomponent"></a>
 
 #### `HeroesComponent`
 
@@ -873,7 +873,7 @@ Here are the code files discussed on this page.
   </code-pane>
 </code-tabs>
 
-{@a herodetailcomponent}
+<a id="herodetailcomponent"></a>
 
 #### `HeroDetailComponent`
 

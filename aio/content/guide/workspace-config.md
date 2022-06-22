@@ -82,7 +82,7 @@ When you create a library project with `ng generate library`, the library projec
 
 </div>
 
-{@a cli-configuration-options}
+<a id="cli-configuration-options"></a>
 
 ## CLI configuration options
 
@@ -180,7 +180,7 @@ The following top-level configuration properties are available for each project,
 | `architect` | Configuration defaults for Architect builder targets for this project. |
 | `architect` | 为本项目的各个构建器目标配置默认值。 |
 
-{@a schematics}
+<a id="schematics"></a>
 
 ## Generation schematics
 
@@ -207,7 +207,7 @@ You can update your workspace schema file to set a different default for a sub-c
 这个模式中的每个字段都对应于 CLI 子命令选项的参数取值范围和默认值。
 你可以修改此命名空间的模式文件，来为某个子命令选项指定另外的默认值。
 
-{@a architect}
+<a id="architect"></a>
 
 ## Project tool configuration options
 
@@ -221,7 +221,7 @@ See [Angular CLI Builders](guide/cli-builder).
 建筑师（Architect）是 CLI 用来执行复杂任务（例如编译和测试运行）的工具。
 Architect 是一个根据[目标](guide/glossary#target)配置运行指定的[构建器](guide/glossary#builder)以完成指定任务的外壳。你可以定义和配置新的构建器和目标以扩展 CLI。请参阅 [Angular CLI 构建器](guide/cli-builder)。
 
-{@a default-build-targets}
+<a id="default-build-targets"></a>
 
 ### Default Architect builders and targets
 
@@ -307,7 +307,7 @@ In general, the options for which you can configure defaults correspond to the c
 
 一般来说，可以为 [CLI 参考手册中](cli)列出的每个命令配置相应的默认值。**注意**，配置文件中的所有选项都必须使用 [camelCase](guide/glossary#case-conventions)，而不是 dash-case。
 
-{@a build-target}
+<a id="build-target"></a>
 
 ## Build target
 
@@ -327,7 +327,7 @@ The `architect/build` section configures defaults for options of the `ng build` 
 | `configurations` | This section defines and names alternative configurations for different intended destinations. It contains a section for each named configuration, which sets the default options for that intended environment. See the [Alternate build configurations](#build-configs) section. |
 | `configurations` | 本节定义并命名针对不同目标的备用配置。它为每个命名配置都包含一节，用于设置该目标环境的默认选项。参阅[备用的构建配置](#build-configs)。 |
 
-{@a build-configs}
+<a id="build-configs"></a>
 
 ### Alternate build configurations
 
@@ -365,7 +365,7 @@ You can also pass in more than one configuration name as a comma-separated list.
 
 你还可以用逗号分隔的列表传入多个配置名称。例如，要同时应用 `stage` 和 `fr` 构建配置，请使用命令 `ng build --configuration stage,fr`。在这种情况下，该命令从左到右解析命名的配置。如果多个配置更改了同一个设置，则最后设置的值生效。所以，在这个例子中，如果同时配置了 `stage` 和 `fr`，则会使用 `fr` 中设置的输出路径的值。
 
-{@a build-props}
+<a id="build-props"></a>
 
 ### Additional build and test options
 
@@ -395,7 +395,7 @@ Some additional options can only be set through the configuration file, either b
 | `fileReplacements` | An object containing files and their compile-time replacements. See more in [Configure target-specific file replacements](guide/build#configure-target-specific-file-replacements). |
 | `fileReplacements` | 一个对象，包含一些文件及其编译时替代品。参阅[为指定的目标配置文件替换规则](guide/build#configure-target-specific-file-replacements) 部分。 |
 
-{@a complex-config}
+<a id="complex-config"></a>
 
 ## Complex configuration values
 
@@ -407,7 +407,7 @@ The following sections provide more details of how these complex values are used
 
 选项 `assets`，`styles` 和 `scripts` 的值可以是简单的路径字符串，也可以是带有特定字段的对象值。可以使用命令标志将 `sourceMap` 和 `optimization` 选项设置为简单的布尔值，但也可以使用配置文件为其指定复杂的值。以下各节提供了在每种情况下如何使用这些复数值的详细信息。
 
-{@a asset-config}
+<a id="asset-config"></a>
 
 ### Assets configuration
 
@@ -511,7 +511,7 @@ The following example uses the `ignore` field to exclude certain files in the as
 
 </code-example>
 
-{@a style-script-config}
+<a id="style-script-config"></a>
 
 ### Styles and scripts configuration
 
@@ -564,7 +564,7 @@ You can mix simple and complex file references for styles and scripts.
 
 </code-example>
 
-{@a style-preprocessor}
+<a id="style-preprocessor"></a>
 
 #### Style preprocessor options
 

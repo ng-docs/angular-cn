@@ -23,7 +23,7 @@ If you are currently using AngularJS, see [Upgrading from AngularJS](guide/upgra
 
 </div>
 
-{@a announce}
+<a id="announce"></a>
 
 ## Getting notified of new releases
 
@@ -33,7 +33,7 @@ To be notified when new releases are available, follow [@angular](https://twitte
 
 要想获得新版本发布通知，请关注 Twitter 上的 [@angular](https://twitter.com/angular "@angular on Twitter") 或订阅 [Angular 官方博客](https://blog.angular.io "Angular blog")。
 
-{@a learn}
+<a id="learn"></a>
 
 ## Learning about new features
 
@@ -47,7 +47,7 @@ To review a complete list of changes, organized by version, see the [Angular cha
 
 要查看完整的按版本组织的变更列表，参阅 [Angular 更改记录](https://github.com/angular/angular/blob/master/CHANGELOG.md "Angular change log")。
 
-{@a checking-version-app}
+<a id="checking-version-app"></a>
 
 ## Checking your version of Angular
 
@@ -57,7 +57,7 @@ To check your application's version of Angular: From within your project directo
 
 要检查你的应用的 Angular 版本，就到项目目录下执行 `ng version` 命令。
 
-{@a checking-version-angular}
+<a id="checking-version-angular"></a>
 
 ## Finding the current version of Angular
 
@@ -71,7 +71,7 @@ You can also find the most current version of Angular by using the CLI command [
 
 你还可以使用 [CLI 命令 `ng update`](https://github.com/angular/angular-cli/wiki/update "Angular CLI update documentation") 发现 Angular 的最新版本。默认情况下，[`ng update`](cli/update)（不带其它参数）会列出你可用的所有更新。
 
-{@a updating}
+<a id="updating"></a>
 
 ## Updating your environment and apps
 
@@ -93,7 +93,7 @@ For simple updates, the CLI command [`ng update`](cli/update) is all you need. W
 
 [Angular 版本与发布](guide/releases#versioning "Angular Release Practices, Versioning")中描述了你要如何根据版本号来推测所发生的更改等级。它还讲了建议的升级路径。
 
-{@a resources}
+<a id="resources"></a>
 
 ## Resource summary
 

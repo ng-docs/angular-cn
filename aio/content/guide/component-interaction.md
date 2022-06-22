@@ -2,14 +2,14 @@
 
 # 组件之间的交互
 
-{@a top}
+<a id="top"></a>
 
 This cookbook contains recipes for common component communication scenarios
 in which two or more components share information.
 
 本文包含了常见的组件通讯场景，也就是让两个或多个组件之间共享信息的方法。
 
-{@a toc}
+<a id="toc"></a>
 
 <!--
 
@@ -43,7 +43,7 @@ in which two or more components share information.
 
 **参阅<live-example name="component-interaction"></live-example>**。
 
-{@a parent-to-child}
+<a id="parent-to-child"></a>
 
 ## Pass data from parent to child with input binding
 
@@ -96,7 +96,7 @@ E2E test that all children were instantiated and displayed as expected:
 
 [回到顶部](guide/component-interaction#top)
 
-{@a parent-to-child-setter}
+<a id="parent-to-child-setter"></a>
 
 ## Intercept input property changes with a setter
 
@@ -143,7 +143,7 @@ E2E tests of input property setter with empty and non-empty names:
 
 [回到顶部](guide/component-interaction#top)
 
-{@a parent-to-child-on-changes}
+<a id="parent-to-child-on-changes"></a>
 
 ## Intercept input property changes with *ngOnChanges()*
 
@@ -206,7 +206,7 @@ the expected `ngOnChanges` calls and values:
 
 [回到顶部](guide/component-interaction#top)
 
-{@a child-to-parent}
+<a id="child-to-parent"></a>
 
 ## Parent listens for child event
 
@@ -277,7 +277,7 @@ as seen in the following example.
 
 父组件不能使用数据绑定来读取子组件的属性或调用子组件的方法。但可以在父组件模板里，新建一个本地变量来代表子组件，然后利用这个变量来读取子组件的属性和调用子组件的方法，如下例所示。
 
-{@a countdown-timer-example}
+<a id="countdown-timer-example"></a>
 
 The following is a child `CountdownTimerComponent` that repeatedly counts down to zero and launches a rocket.
 The `start` and `stop` methods control the clock and a 
@@ -321,7 +321,7 @@ Here, the parent and child are working together.
   <img src="generated/images/guide/component-interaction/countdown-timer-anim.gif" alt="countdown timer">
 </div>
 
-{@a countdown-tests}
+<a id="countdown-tests"></a>
 
 <h3 class="no-toc">Test it</h3>
 
@@ -341,7 +341,7 @@ Test also that clicking the *Stop* button pauses the countdown timer:
 
 [回到顶部](guide/component-interaction#top)
 
-{@a parent-to-view-child}
+<a id="parent-to-view-child"></a>
 
 ## Parent calls an _@ViewChild()_
 
@@ -445,7 +445,7 @@ Use [the same countdown timer tests](guide/component-interaction#countdown-tests
 
 [回到顶部](guide/component-interaction#top)
 
-{@a bidirectional-service}
+<a id="bidirectional-service"></a>
 
 ## Parent and children communicate using a service
 

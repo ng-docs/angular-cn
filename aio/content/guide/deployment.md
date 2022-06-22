@@ -6,9 +6,9 @@ When you are ready to deploy your Angular application to a remote server, you ha
 
 当你准备把 Angular 应用部署到远程服务器上时，有很多可选的部署方式。
 
-{@a dev-deploy}
+<a id="dev-deploy"></a>
 
-{@a copy-files}
+<a id="copy-files"></a>
 
 ## Simple deployment options
 
@@ -161,7 +161,7 @@ This is the simplest production-ready deployment of your application.
 
 这是对应用进行生产环境部署的最简方式。
 
-{@a deploy-to-github}
+<a id="deploy-to-github"></a>
 
 ### Deploy to GitHub Pages
 
@@ -242,7 +242,7 @@ Check out [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpa
 
 </div>
 
-{@a server-configuration}
+<a id="server-configuration"></a>
 ## Server configuration
 
 ## 服务端配置
@@ -251,7 +251,7 @@ This section covers changes you may have to make to the server or to files deplo
 
 这一节涵盖了你可能对服务器或准备部署到服务器的文件要做的那些修改。
 
-{@a fallback}
+<a id="fallback"></a>
 
 
 ### Routed apps must fallback to `index.html`
@@ -270,7 +270,7 @@ to return the application's host page (`index.html`) when asked for a file that 
 
 如果该应用使用 Angular 路由器，你就必须配置服务器，让它对不存在的文件返回应用的宿主页(`index.html`)。
 
-{@a deep-link}
+<a id="deep-link"></a>
 
 A routed application should support "deep links".
 A _deep link_ is a URL that specifies a path to a component inside the application.
@@ -415,7 +415,7 @@ and to
     } ]
   </code-example>
 
-{@a mime}
+<a id="mime"></a>
 
 ### Configuring correct MIME-type for JavaScript assets
 
@@ -442,7 +442,7 @@ If this is the case, you will need to check your server configuration and reconf
 如果是这种情况，你将需要检查你的服务器配置并将其重新配置为使用 `Content-Type: text/javascript` 来提供 `.js` 文件。有关如何执行此操作的说明，请参阅服务器手册。
 
 
-{@a cors}
+<a id="cors"></a>
 
 ### Requesting services from a different server (CORS)
 
@@ -466,7 +466,7 @@ Read about how to enable CORS for specific servers at
 服务器必须配置成可以接受来自该应用的请求。
 要了解如何对特定的服务器开启 CORS，参阅<a href="http://enable-cors.org/server.html" target="_blank" title="Enabling CORS server">enable-cors.org</a>。
 
-{@a optimize}
+<a id="optimize"></a>
 ## Production optimizations
 
 ## 为生产环境优化
@@ -503,7 +503,7 @@ See [`ng build`](cli/build) for more about CLI build options and what they do.
 
 要了解关于 CLI 构建选项及其作用的更多知识，参阅 [`ng build`](cli/build)。
 
-{@a enable-prod-mode}
+<a id="enable-prod-mode"></a>
 
 ### Enable runtime production mode
 
@@ -528,7 +528,7 @@ runtime production mode.
 
 *生产模式*通过禁用仅供开发用的安全检查和调试工具（例如，expression-changed-after-checked 检测）来提高应用程序性能。使用生产配置构建应用程序时会自动启用 Angular 的运行时生产模式。
 
-{@a lazy-loading}
+<a id="lazy-loading"></a>
 
 ### Lazy loading
 
@@ -577,7 +577,7 @@ CLI 会运行 [Angular Ahead-of-Time Webpack 插件](https://github.com/angular/
 
 </div>
 
-{@a measure}
+<a id="measure"></a>
 
 ### Measure performance
 
@@ -608,7 +608,7 @@ that can also help verify that your deployment was successful.
 
 [WebPageTest](https://www.webpagetest.org/)工具是另一个不错的选择，它还能帮你验证这次部署是否成功。
 
-{@a inspect-bundle}
+<a id="inspect-bundle"></a>
 
 ### Inspect the bundles
 
@@ -676,7 +676,7 @@ Here's the output for the _main_ bundle of an example application called `cli-qu
 
 </div>
 
-{@a base-tag}
+<a id="base-tag"></a>
 
 ## The `base` tag
 
@@ -718,7 +718,7 @@ for the missing files. Look at where it _tried_ to find those files and adjust t
 
 这里如果不配置 `base` 标签，应用就会失败，并在浏览器的控制台中为缺失的文件显示一个 `404 - Not Found` 错误。看看它*试图*从哪里去查找那些文件，并据此调整 base 标签。
 
-{@a deploy-url}
+<a id="deploy-url"></a>
 
 ## The `deploy` url
 

@@ -60,8 +60,8 @@ If you define the component before the service, Angular returns a run-time null 
 
 如果你确实要将组件和服务合并在同一个文件中，则必须先定义服务，再定义组件，这一点很重要。如果在服务之前定义组件，Angular 将返回运行时的空引用错误。
 
-{@a injector-config}
-{@a bootstrap}
+<a id="injector-config"></a>
+<a id="bootstrap"></a>
 
 ## Injecting services
 
@@ -85,7 +85,7 @@ For more information, see [Providing dependencies in modules](guide/providers) a
 
 有关更多信息，请参阅[在模块中提供依赖](guide/providers)和[分层注入器](guide/hierarchical-dependency-injection)。
 
-{@a service-needs-service}
+<a id="service-needs-service"></a>
 
 ## Using services in other services
 

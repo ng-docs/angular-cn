@@ -332,7 +332,7 @@ The following JSON schema is a complete description of the long-form syntax for 
 
 </code-example>
 
-{@a cli}
+<a id="cli"></a>
 
 ## Schematics CLI
 

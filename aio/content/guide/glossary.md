@@ -19,9 +19,9 @@ unexpected definitions.
 [J](#J) [K](#K) [L](#L) [M](#M) [N](#N) [O](#O) [P](#P) [Q](#Q) [R](#R)
 [S](#S) [T](#T) [U](#U) [V](#V) [W](#W) [X](#X) [Y](#Y) [Z](#Z)
 
-{@a A}
+<a id="A"></a>
 
-{@a aot}
+<a id="aot"></a>
 
 ## ahead-of-time (AOT) compilation
 
@@ -39,7 +39,7 @@ By compiling your application using the `ngc` command-line tool, you can bootstr
 
 使用命令行工具 `ngc` 来编译你的应用之后，就可以直接启动一个模块工厂，这意味着你不必再在 JavaScript 打包文件中包含 Angular 编译器。
 
-{@a angular-element}
+<a id="angular-element"></a>
 
 ## Angular element
 
@@ -53,7 +53,7 @@ Learn more in [Angular Elements Overview](guide/elements).
 
 参阅 [*Angular 元素*](guide/elements) 一文。
 
-{@a apf}
+<a id="apf"></a>
 
 ## Angular package format (APF)
 
@@ -67,7 +67,7 @@ Learn more in the [Angular Package Format specification](guide/angular-package-f
 
 在 [Angular 包格式规范](guide/angular-package-format)中了解更多信息。
 
-{@a annotation}
+<a id="annotation"></a>
 
 ## Annotation
 
@@ -77,7 +77,7 @@ A structure that provides metadata for a class. See [decorator](#decorator).
 
 一种为类提供元数据的结构。参阅 [装饰器](#decorator)。
 
-{@a app-shell}
+<a id="app-shell"></a>
 
 ## app-shell
 
@@ -103,7 +103,7 @@ See also [Service Worker and PWA](guide/service-worker-intro).
 
 参阅 [Service Worker 与 PWA](guide/service-worker-intro)。
 
-{@a architect}
+<a id="architect"></a>
 
 ## Architect
 
@@ -129,9 +129,9 @@ Integrators can add builders to enable tools and workflows to run through the An
 使用 [CLI 命令 `ng run`](cli/run)可以通过指定与某个构建器相关联的[目标配置](#target)来调用此构建器。
 整合器（Integrator）可以添加一些构建器来启用某些工具和工作流，以便通过 Angular CLI 来运行它。比如，自定义构建器可以把 CLI 命令（如 `ng build` 或 `ng test`）的内置实现替换为第三方工具。
 
-{@a attribute-directive}
+<a id="attribute-directive"></a>
 
-{@a attribute-directives}
+<a id="attribute-directives"></a>
 
 ## attribute directives
 
@@ -147,9 +147,9 @@ Learn more in [Attribute Directives](guide/attribute-directives).
 
 要了解更多，参阅[*属性型指令*](guide/attribute-directives)
 
-{@a B}
+<a id="B"></a>
 
-{@a binding}
+<a id="binding"></a>
 
 ## binding
 
@@ -168,7 +168,7 @@ between a [token](#token) and a dependency [provider](#provider).
 有时也会指在“[令牌（Token）](#token)”和依赖[提供者（Provider）](#provider)
 之间的[依赖注入](#dependency-injection) 绑定。
 
-{@a bootstrap}
+<a id="bootstrap"></a>
 
 ## bootstrap
 
@@ -190,7 +190,7 @@ Learn more in [Bootstrapping](guide/bootstrapping).
 
 要了解更多，参阅[*引导*](guide/bootstrapping)一章。
 
-{@a builder}
+<a id="builder"></a>
 
 ## builder
 
@@ -212,15 +212,15 @@ The [workspace configuration](guide/workspace-config) file, `angular.json`, cont
 [CLI 命令 `ng run`](cli/run) 使用一个特定的[目标配置](#target)来调用构建器。
 [工作区配置](guide/workspace-config)文件 `angular.json` 中包含这些内置构建器的默认配置。
 
-{@a C}
+<a id="C"></a>
 
-{@a case-conventions}
+<a id="case-conventions"></a>
 
-{@a dash-case}
+<a id="dash-case"></a>
 
-{@a camelcase}
+<a id="camelcase"></a>
 
-{@a kebab-case}
+<a id="kebab-case"></a>
 
 ## case types
 
@@ -258,7 +258,7 @@ Angular 使用大小写约定来区分多种名字，详见[风格指南中的 "
     大写下划线形式（UPPER_UNDERSCORE_CASE）或叫大写蛇形形式（UPPER_SNAKE_CASE）：传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））
     大蛇形形式使用下划线分隔的全大写单词。比如 "FIX_ME"。
 
-{@a change-detection}
+<a id="change-detection"></a>
 
 ## change detection
 
@@ -285,7 +285,7 @@ If you set the `OnPush` change-detection strategy, the change detector runs only
 
 如果设置了 `OnPush`（“CheckOnce”）变更检测策略，则变更检测器仅在[显式调用](api/core/ChangeDetectorRef)它或由 `@Input` 引用的变化或触发事件处理程序时运行。这通常可以提高性能。欲知详情，参阅[优化 Angular 的变更检测](https://web.dev/faster-angular-change-detection/)。
 
-{@a class-decorator}
+<a id="class-decorator"></a>
 
 ## class decorator
 
@@ -305,7 +305,7 @@ The following decorators can declare Angular class types:
 * `@Injectable()`
 * `@NgModule()`
 
-{@a class-field-decorator}
+<a id="class-field-decorator"></a>
 
 ## class field decorator
 
@@ -315,7 +315,7 @@ A [decorator](#decorator) statement immediately before a field in a class defini
 
 出现在类定义中属性紧前方的[装饰器](#decorator)语句用来声明该字段的类型。比如 `@Input` 和 `@Output`。
 
-{@a collection}
+<a id="collection"></a>
 
 
 ## collection
@@ -326,7 +326,7 @@ In Angular, a set of related [schematics](#schematic) collected in an [npm packa
 
 在 Angular 中，是指收录在同一个 [npm 包](#npm-package) 中的[一组原理图（schematics）](#schematic)。
 
-{@a cli}
+<a id="cli"></a>
 
 ## command-line interface (CLI)
 
@@ -349,7 +349,7 @@ See also [Schematics CLI](#schematics-cli).
 
 参阅 [Schematics CLI](#schematics-cli)。
 
-{@a component}
+<a id="component"></a>
 
 ## component
 
@@ -380,7 +380,7 @@ See  [workspace configuration](#cli-config)
 
 参阅[工作区配置](#cli-config)
 
-{@a content-projection}
+<a id="content-projection"></a>
 
 ## content projection
 
@@ -394,7 +394,7 @@ For more information, see [Responding to changes in content](guide/lifecycle-hoo
 
 欲知详情，参阅[内容变化的应对方式](guide/lifecycle-hooks#content-projection)。
 
-{@a custom-element}
+<a id="custom-element"></a>
 
 ## custom element
 
@@ -421,9 +421,9 @@ See also [dynamic component loading](#dynamic-components).
 
 参阅[加载动态组件](#dynamic-components)。
 
-{@a D}
+<a id="D"></a>
 
-{@a data-binding}
+<a id="data-binding"></a>
 
 ## data binding
 
@@ -475,7 +475,7 @@ Read about the following forms of binding in Angular's [Template Syntax](guide/t
 
    [基于 ngModel 的双向数据绑定](guide/built-in-directives#ngModel)
 
-{@a declarable}
+<a id="declarable"></a>
 
 ## declarable
 
@@ -511,9 +511,9 @@ Don't declare the following:
 
    非 Angular 的类和对象，比如：字符串、数字、函数、实体模型、配置、业务逻辑和辅助类
 
-{@a decorator}
+<a id="decorator"></a>
 
-{@a decoration}
+<a id="decoration"></a>
 
 ## decorator | decoration
 
@@ -534,9 +534,9 @@ See [class decorator](#class-decorator), [class field decorator](#class-field-de
 
 参阅 [类装饰器](#class-decorator)、[类属性装饰器](#class-field-decorator)。
 
-{@a di}
+<a id="di"></a>
 
-{@a dependency-injection}
+<a id="dependency-injection"></a>
 
 ## dependency injection (DI)
 
@@ -556,7 +556,7 @@ Learn more in [Dependency Injection in Angular](guide/dependency-injection).
 
 要了解更多，参阅[Angular 中的依赖注入](guide/dependency-injection)一章。
 
-{@a di-token}
+<a id="di-token"></a>
 
 ## DI token
 
@@ -565,10 +565,10 @@ Learn more in [Dependency Injection in Angular](guide/dependency-injection).
 A lookup token associated with a dependency [provider](#provider), for use with the [dependency injection](#di) system.
 
 一种用来查阅的令牌，它关联到一个依赖[提供者](#provider)，用于[依赖注入](#di)系统中。
-{@a differential-loading}
+<a id="differential-loading"></a>
 
-{@a directive}
-{@a directives}
+<a id="directive"></a>
+<a id="directives"></a>
 
 ## directive
 
@@ -618,7 +618,7 @@ You can use **lowerCamelCase** when describing how to apply the directive to an 
 
 **lowerCamelCase**（例如 `ngIf`）用于引用指令的属性名。在描述如何将指令应用于 HTML 模板中的元素时，使用 **lowerCamelCase**。
 
-{@a dom}
+<a id="dom"></a>
 
 ## domain-specific language (DSL)
 
@@ -632,7 +632,7 @@ Angular extends TypeScript with domain-specific languages for a number of domain
 
 Angular 使用领域特定语言扩展了 TypeScript，用于与 Angular 应用相关的许多领域。这些 DSL 都定义在 NgModule 中，比如 [动画](guide/animations)、[表单](guide/forms)和[路由与导航](guide/router)。
 
-{@a dynamic-components}
+<a id="dynamic-components"></a>
 
 ## dynamic component loading
 
@@ -646,9 +646,9 @@ See also [custom element](#custom-element), which provides an easier path with t
 
 参阅[自定义元素](#custom-element)，它提供了一种更简单的方式来达到相同的效果。
 
-{@a E}
+<a id="E"></a>
 
-{@a eager-loading}
+<a id="eager-loading"></a>
 
 ## eager loading
 
@@ -661,7 +661,7 @@ See [lazy loading](#lazy-load).
 在启动时加载的 NgModule 和组件被称为急性加载，与之相对的是那些在运行期间才加载的方式（惰性加载）。
 参阅[惰性加载](#lazy-load)。
 
-{@a ecma}
+<a id="ecma"></a>
 
 ## ECMAScript
 
@@ -679,7 +679,7 @@ To learn more, see [Browser Support](guide/browser-support).
 
 要了解更多，参阅[浏览器支持](guide/browser-support)页。
 
-{@a element}
+<a id="element"></a>
 
 ## element
 
@@ -700,7 +700,7 @@ Compare to [custom element](#custom-element).
 
 可以对比下[自定义元素](#custom-element)。
 
-{@a entry-point}
+<a id="entry-point"></a>
 
 ## entry point
 
@@ -715,9 +715,9 @@ modules, which can be imported using the module names `@angular/core` and
 
 [JavaScript 模块](#module)的目的是供 [npm 包](guide/npm-packages)的用户进行导入。入口点模块通常会重新导出来自其它内部模块的一些符号。每个包可以包含多个入口点。比如 `@angular/core` 就有两个入口点模块，它们可以使用名字 `@angular/core` 和 `@angular/core/testing` 进行导入。
 
-{@a F}
+<a id="F"></a>
 
-{@a form-control}
+<a id="form-control"></a>
 
 ## form control
 
@@ -731,7 +731,7 @@ Read more forms in the [Introduction to forms in Angular](guide/forms-overview).
 
 欲知详情，参阅 [Angular 表单简介](guide/forms-overview)。
 
-{@a form-model}
+<a id="form-model"></a>
 
 ## form model
 
@@ -745,7 +745,7 @@ Learn more about reactive and template-driven forms in the [Introduction to form
 
 要深入了解响应式表单和模板驱动表单，参阅 [Angular 表单简介](guide/forms-overview)。
 
-{@a form-validation}
+<a id="form-validation"></a>
 
 ## form validation
 
@@ -759,13 +759,13 @@ To learn more, see [Form Validation](guide/form-validation).
 
 要了解更多，参阅[表单验证器](guide/form-validation)。
 
-{@a G}
+<a id="G"></a>
 
-{@a H}
+<a id="H"></a>
 
-{@a I}
+<a id="I"></a>
 
-{@a immutability}
+<a id="immutability"></a>
 
 ## immutability
 
@@ -777,7 +777,7 @@ each change to the data model produces a new data model rather than modifying th
 是否能够在创建之后修改值的状态。[响应式表单](#reactive-forms)会执行不可变性的更改，每次更改数据模型都会生成一个新的数据模型，而不是修改现有的数据模型。
 [模板驱动表单](#template-driven-forms)则会执行可变的更改，它通过 `NgModel` 和[双向数据绑定](#data-binding)来就地修改现有的数据模型。
 
-{@a injectable}
+<a id="injectable"></a>
 
 ## injectable
 
@@ -788,7 +788,7 @@ An Angular class or other definition that provides a dependency using the [depen
 Angular 中的类或其它概念使用[依赖注入](#di)机制来提供依赖。
 可供注入的[服务](#service)类必须使用 `@Injectable()` [装饰器](#decorator)标出来。其它条目，比如常量值，也可用于注入。
 
-{@a injector}
+<a id="injector"></a>
 
 ## injector
 
@@ -819,7 +819,7 @@ Learn more about the injector hierarchy in [Hierarchical Dependency Injectors](g
 
 要了解关于多级注入器的更多知识，参阅[多级依赖注入](guide/hierarchical-dependency-injection)一章。
 
-{@a input}
+<a id="input"></a>
 
 ## input
 
@@ -837,7 +837,7 @@ To learn more, see [input and output properties](guide/inputs-outputs).
 
 要了解更多，参阅[输入与输出属性](guide/inputs-outputs)。
 
-{@a interpolation}
+<a id="interpolation"></a>
 
 ## interpolation
 
@@ -858,7 +858,7 @@ Read more in the [Interpolation](guide/interpolation) guide.
 
 更多信息，见[模板语法](guide/template-syntax)中的[插值](guide/interpolation)。
 
-{@a ivy}
+<a id="ivy"></a>
 
 ## Ivy
 
@@ -868,9 +868,9 @@ It is now the only supported engine, so everything uses Ivy.
 
 Ivy 是 Angular 当前[编译和渲染管道](https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7)的历史代号。它现在是唯一受支持的引擎，所以，一切都在使用 Ivy。
 
-{@a J}
+<a id="J"></a>
 
-{@a javascript}
+<a id="javascript"></a>
 
 ## JavaScript
 
@@ -878,7 +878,7 @@ See [ECMAScript](#ecma), [TypeScript](#typescript).
 
 参阅 [ECMAScript](#ecma) 和 [TypeScript](#typescript)。
 
-{@a jit}
+<a id="jit"></a>
 
 ## just-in-time (JIT) compilation
 
@@ -899,11 +899,11 @@ Compare to [ahead-of-time (AOT) compilation](#aot).
 
 参阅[预先 (AOT) 编译](#aot)。
 
-{@a K}
+<a id="K"></a>
 
-{@a L}
+<a id="L"></a>
 
-{@a lazy-load}
+<a id="lazy-load"></a>
 
 ## lazy loading
 
@@ -920,7 +920,7 @@ Similarly, you can build custom elements that can be loaded into an Angular appl
 
 [路由器](#router)只有当父视图激活时才需要加载子视图。同样，你还可以构建一些自定义元素，它们也可以在需要时才加载进 Angular 应用。
 
-{@a library}
+<a id="library"></a>
 
 ## library
 
@@ -944,7 +944,7 @@ See also [schematic](#schematic).
 
 参阅 [原理图（schematic）](#schematic)。
 
-{@a lifecycle-hook}
+<a id="lifecycle-hook"></a>
 
 ## lifecycle hook
 
@@ -999,9 +999,9 @@ To learn more, see [Lifecycle Hooks](guide/lifecycle-hooks).
 
 要了解更多，参阅[生命周期钩子](guide/lifecycle-hooks)页。
 
-{@a M}
+<a id="M"></a>
 
-{@a module}
+<a id="module"></a>
 
 ## module
 
@@ -1024,9 +1024,9 @@ Compare to [NgModule](#ngmodule).
 
 参阅 [NgModule](#ngmodule)。
 
-{@a N}
+<a id="N"></a>
 
-{@a ngcc}
+<a id="ngcc"></a>
 ## ngcc
 
 Angular compatibility compiler.
@@ -1034,7 +1034,7 @@ If you build your application using [Ivy](#ivy), but it depends on libraries tha
 
 Angular 兼容性编译器。如果使用 [Ivy](#ivy) 构建应用程序，但依赖未用 Ivy 编译的库，则 CLI 将使用 `ngcc` 自动更新依赖库以使用 Ivy。
 
-{@a ngmodule}
+<a id="ngmodule"></a>
 ## NgModule
 
 A class definition preceded by the `@NgModule()` [decorator](#decorator), which declares and serves as a manifest for a block of code dedicated to an application domain, a workflow, or a closely related set of capabilities.
@@ -1060,7 +1060,7 @@ To learn more, see [NgModules](guide/ngmodules).
 
 要了解更多，参阅 [NgModules](guide/ngmodules)。
 
-{@a npm-package}
+<a id="npm-package"></a>
 
 ## npm package
 
@@ -1074,7 +1074,7 @@ Learn more about how Angular uses [Npm Packages](guide/npm-packages).
 
 你还可以了解 Angular 如何使用 [Npm 包](guide/npm-packages) 的更多知识。
 
-{@a ngc}
+<a id="ngc"></a>
 
 ## ngc
 
@@ -1084,9 +1084,9 @@ The most recent implementation is internally referred to as `ngtsc` because it's
 `ngc` 是一个 TypeScript 到 JavaScript 的转译器，它会处理 Angular 的注解、元数据、模板，并生成 JavaScript 代码。
 其最新的实现在内部被称为 `ngtsc`，因为它是一个对 TypeScript 编译器 `tsc` 的最小化包装，为其加入了 Angular 代码的转换过程。
 
-{@a O}
+<a id="O"></a>
 
-{@a observable}
+<a id="observable"></a>
 
 ## observable
 
@@ -1110,7 +1110,7 @@ To learn more, see [Observables](guide/observables).
 
 要了解更多，参阅[可观察对象](guide/observables)。
 
-{@a observer}
+<a id="observer"></a>
 
 ## observer
 
@@ -1120,7 +1120,7 @@ An object passed to the `subscribe()` method for an [observable](#observable). T
 
 传给[可观察对象](#observable) 的 `subscribe()` 方法的一个对象，其中定义了[订阅者](#subscriber)的一组回调函数。
 
-{@a output}
+<a id="output"></a>
 
 ## output
 
@@ -1138,9 +1138,9 @@ To learn more, see [Input and Output Properties](guide/inputs-outputs).
 
 要了解更多，参阅[输入与输出属性](guide/inputs-outputs)。
 
-{@a P}
+<a id="P"></a>
 
-{@a pipe}
+<a id="pipe"></a>
 
 ## pipe
 
@@ -1155,7 +1155,7 @@ To learn more, see [Pipes](guide/pipes).
 
 要了解更多，参阅[管道](guide/pipes)页。
 
-{@a platform}
+<a id="platform"></a>
 
 ## platform
 
@@ -1178,7 +1178,7 @@ Support for the various Angular run-time platforms is provided by the `@angular/
 
   使用[服务端渲染](#server-side-rendering)（SSR）时，[`platform-server`](api/platform-server) 包将提供 `DOM`、`XMLHttpRequest` 和其它不依赖浏览器的其它底层功能的 Web 服务器端实现。
 
-{@a polyfill}
+<a id="polyfill"></a>
 ## polyfill
 
 ## 腻子脚本（polyfill）
@@ -1188,7 +1188,7 @@ See [Browser Support](guide/browser-support) for polyfills that support particul
 
 一个 [NPM 包](guide/npm-packages)，它负责弥补浏览器 JavaScript 实现与最新标准之间的 "缝隙"。参阅[浏览器支持](guide/browser-support)页，以了解要在特定平台支持特定功能时所需的腻子脚本。
 
-{@a project}
+<a id="project"></a>
 
 ## project
 
@@ -1210,7 +1210,7 @@ The [`angular.json`](guide/workspace-config) file configures all projects in a [
 
 [`angular.json`](guide/workspace-config) 文件可以配置某个[工作区](#workspace) 中的所有项目。
 
-{@a provider}
+<a id="provider"></a>
 
 ## provider
 
@@ -1236,11 +1236,11 @@ Learn more in [Dependency Injection](guide/dependency-injection).
 
 欲知详情，参阅[依赖注入](guide/dependency-injection)。
 
-{@a Q}
+<a id="Q"></a>
 
-{@a R}
+<a id="R"></a>
 
-{@a reactive-forms}
+<a id="reactive-forms"></a>
 
 ## reactive forms
 
@@ -1280,7 +1280,7 @@ The alternative is a template-driven form. For an introduction and comparison of
 
 另一种方式是模板驱动表单。模板驱动表单的简介和这两种方式的比较，参阅 [Angular 表单简介](guide/forms-overview)。
 
-{@a resolver}
+<a id="resolver"></a>
 
 ## resolver
 
@@ -1298,7 +1298,7 @@ See an example of using a [resolve guard](guide/router-tutorial-toh#resolve-guar
 
 参见使用[解析守卫](guide/router-tutorial-toh#resolve-guard "Routing techniques tutorial")获取动态数据一章中的例子。
 
-{@a route-guard}
+<a id="route-guard"></a>
 
 ## route guard
 
@@ -1314,8 +1314,8 @@ Learn more in the [Routing and Navigation](guide/router#preventing-unauthorized-
 
 欲知详情，参见[路由与导航](guide/router#preventing-unauthorized-access "Examples")一章。
 
-{@a router}
-{@a router-module}
+<a id="router"></a>
+<a id="router-module"></a>
 
 ## router
 
@@ -1337,7 +1337,7 @@ To learn more, see [Routing and Navigation](guide/router).
 
 要了解更多，参阅[路由与导航](guide/router)。
 
-{@a router-outlet}
+<a id="router-outlet"></a>
 
 ## router outlet
 
@@ -1347,7 +1347,7 @@ A [directive](#directive) that acts as a placeholder in a routing component's te
 
 一种[指令](#directive)，它在路由组件的模板中扮演占位符的角色，Angular 会根据当前的路由状态动态填充它。
 
-{@a router-component}
+<a id="router-component"></a>
 
 ## routing component
 
@@ -1360,7 +1360,7 @@ An Angular [component](#component) with a `RouterOutlet` directive in its templa
 For more information, see [Routing and Navigation](guide/router).
 
 要了解更多，参阅[路由与导航](guide/router)。
-{@a rule}
+<a id="rule"></a>
 
 ## rule
 
@@ -1370,9 +1370,9 @@ In [schematics](#schematic), a function that operates on a [file tree](#file-tre
 
 在[原理图](#schematic) 中，是指一个在[文件树](#file-tree)上运行的函数，用于以指定方式创建、删除或修改文件，并返回一个新的 `Tree` 对象。
 
-{@a S}
+<a id="S"></a>
 
-{@a schematic}
+<a id="schematic"></a>
 
 ## schematic
 
@@ -1400,7 +1400,7 @@ For more information, see [Schematics](guide/schematics) and [Integrating Librar
 
 欲知详情，参阅[原理图](guide/schematics)和[把库与 CLI 集成](guide/creating-libraries#integrating-with-the-cli)。
 
-{@a schematics-cli}
+<a id="schematics-cli"></a>
 
 ## Schematics CLI
 
@@ -1418,7 +1418,7 @@ This installs the `schematics` executable, which you can use to create a new sch
 
 这会安装可执行文件 `schematics`，你可以用它来创建新工程、往现有工程中添加新的 schematic，或扩展某个现有的 schematic。
 
-{@a scoped-package}
+<a id="scoped-package"></a>
 
 ## scoped package
 
@@ -1438,7 +1438,7 @@ Import a scoped package in the same way that you import a normal package.
 
 </code-example>
 
-{@a server-side-rendering}
+<a id="server-side-rendering"></a>
 
 ## server-side rendering
 
@@ -1459,7 +1459,7 @@ You can easily prepare an application for server-side rendering by using the [CL
 
 你可以通过 [CLI](#cli) 运行 [Angular Universal](#universal) 工具，借助 `@nguniversal/express-engine` [schematic](#schematic) 原理图来更轻松的让应用支持服务端渲染。
 
-{@a service}
+<a id="service"></a>
 
 ## service
 
@@ -1482,8 +1482,8 @@ To learn more, see [Introduction to Services and Dependency Injection](guide/arc
 
 要了解更多，参阅[服务与依赖注入简介](guide/architecture-services)。
 
-{@a structural-directive}
-{@a structural-directives}
+<a id="structural-directive"></a>
+<a id="structural-directives"></a>
 
 ## structural directives
 
@@ -1497,7 +1497,7 @@ To learn more, see [Structural Directives](guide/structural-directives).
 
 要了解更多，参阅[结构型指令](guide/structural-directives)页。
 
-{@a subscriber}
+<a id="subscriber"></a>
 
 ## subscriber
 
@@ -1528,9 +1528,9 @@ The `subscribe()` method takes a JavaScript object (called an [observer](#observ
 
    `complete`（完成）通知不会发送值，但是当调用结束时会调用这个处理器。异步的值可能会在调用了完成之后继续发送过来。
 
-{@a T}
+<a id="T"></a>
 
-{@a target}
+<a id="target"></a>
 
 ## target
 
@@ -1556,7 +1556,7 @@ You can also define a custom builder, and add a target to the project configurat
 
 你还可以定义一个自定义构建器，并且往项目配置中添加一个目标，来使用你的自定义构建器。然后你就可以通过 [`ng run`](cli/run) 命令来运行此目标。
 
-{@a template}
+<a id="template"></a>
 
 ## template
 
@@ -1580,7 +1580,7 @@ Additional templates, represented by `TemplateRef` objects, can define alternati
 
 用 `TemplateRef` 对象表示的其它模板用来定义一些备用视图或*内嵌*视图，它们可以来自多个不同的组件。
 
-{@a template-driven-forms}
+<a id="template-driven-forms"></a>
 
 ## template-driven forms
 
@@ -1616,7 +1616,7 @@ The alternative is a reactive form. For an introduction and comparison of both f
 
 另一种方式是响应式表单。响应式表单的简介和两种方式的比较参阅 [Angular 表单简介](guide/forms-overview)。
 
-{@a template-expression}
+<a id="template-expression"></a>
 
 ## template expression
 
@@ -1630,7 +1630,7 @@ Read about how to write template expressions in the [template expressions](guide
 
 请到[插值](guide/interpolation)中的[模板表达式](guide/interpolation#template-expressions)部分学习如何编写模板表达式。
 
-{@a template-reference-variable}
+<a id="template-reference-variable"></a>
 
 ## template reference variable
 
@@ -1652,7 +1652,7 @@ For more information, see the [Template reference variable](guide/template-refer
 到[模板表达式](guide/template-reference-variables)部分了解更多模板表达式的知识。
 
 
-{@a template-input-variable}
+<a id="template-input-variable"></a>
 
 ## template input variable
 ## 模板输入变量（template input variable）
@@ -1676,7 +1676,7 @@ Read and learn more about [template input variables](guide/template-reference-va
 
 欲知详情，参见[模板输入变量](guide/template-reference-variables#template-input-variable)。
 
-{@a token}
+<a id="token"></a>
 
 ## token
 
@@ -1686,7 +1686,7 @@ An opaque identifier used for efficient table lookup. In Angular, a [DI token](#
 
 用于高效查表的不透明标识符（译注：不透明是指你不必了解其细节）。在 Angular 中，[DI 令牌](#di-token)用于在[依赖注入](#di)系统中查找[服务提供者](#provider)。
 
-{@a transpile}
+<a id="transpile"></a>
 
 ## transpile
 
@@ -1695,7 +1695,7 @@ An opaque identifier used for efficient table lookup. In Angular, a [DI token](#
 The translation process that transforms one version of JavaScript to another version; for example, down-leveling ES2015 to the older ES5 version.
 
 一种翻译过程，它会把一个版本的 JavaScript 转换成另一个版本，比如把下一版的 ES2015 转换成老版本的 ES5。
-{@a file-tree}
+<a id="file-tree"></a>
 
 ## tree
 
@@ -1707,7 +1707,7 @@ Schematic [rules](#rule) take a tree object as input, operate on them, and retur
 在 [schematics](#schematic) 中，一个用 `Tree` 类表示的虚拟文件系统。
 Schematic [规则](#rule)以一个 `tree` 对象作为输入，对它们进行操作，并且返回一个新的 `tree` 对象。
 
-{@a typescript}
+<a id="typescript"></a>
 
 ## TypeScript
 
@@ -1733,9 +1733,9 @@ A file specifies the root files and the compiler options required to compile a T
 
 一个文件，用来指定编译 TypeScript 项目时的根文件和编译器选项。欲知详情，参阅 [TypeScript 配置](/guide/typescript-configuration)。
 
-{@a U}
+<a id="U"></a>
 
-{@a unidirectional-data-flow}
+<a id="unidirectional-data-flow"></a>
 
 ## unidirectional data flow
 
@@ -1756,7 +1756,7 @@ To avoid this error, a [lifecycle hook](guide/lifecycle-hooks) method that seeks
 
 为了避免这个错误，进行此类更改的[生命周期钩子](guide/lifecycle-hooks)方法中就要触发一次新的变更检测。这次新的变更检测与之前那次的方向一样，但可以成功获得新值。
 
-{@a universal}
+<a id="universal"></a>
 
 ## Universal
 
@@ -1772,9 +1772,9 @@ To learn more, see [Angular Universal: server-side rendering](guide/universal).
 
 欲知详情，参阅 [Angular Universal: 服务端渲染](guide/universal)。
 
-{@a V}
+<a id="V"></a>
 
-{@a view}
+<a id="view"></a>
 
 ## view
 
@@ -1806,7 +1806,7 @@ View hierarchies can be loaded and unloaded dynamically as the user navigates th
 
 当用户在应用中导航时（比如使用[路由器](#router)），视图树可以动态加载或卸载。
 
-{@a ve}
+<a id="ve"></a>
 
 ## View Engine
 
@@ -1818,7 +1818,7 @@ A previous compilation and rendering pipeline used by Angular. It has since been
 
 Angular 曾经用过的编译和渲染管道。它已被 [Ivy](#ivy) 取代，不再使用了。View Engine 在版本 9 中已弃用，并在版本 13 中删除。
 
-{@a view-tree}
+<a id="view-tree"></a>
 
 ## view hierarchy
 
@@ -1832,8 +1832,8 @@ The view hierarchy doesn't imply a component hierarchy. Views that are embedded 
 
 视图树和组件树并不是一一对应的。那些嵌入到指定视图树上下文中的视图也可能是其它组件的宿主视图。那些组件可能和宿主组件位于同一个 NgModule 中，也可能属于其它 NgModule。
 
-{@a W}
-{@a web-component}
+<a id="W"></a>
+<a id="web-component"></a>
 
 ## web component
 
@@ -1843,7 +1843,7 @@ See [custom element](#custom-element).
 
 参阅[自定义元素](#custom-element)
 
-{@a workspace}
+<a id="workspace"></a>
 
 ## workspace
 
@@ -1867,9 +1867,9 @@ For more information, see [Workspace Configuration](guide/workspace-config).
 
 欲知详情，参阅[工作区配置](guide/workspace-config)。
 
-{@a cli-config}
+<a id="cli-config"></a>
 
-{@a config}
+<a id="config"></a>
 
 ## workspace configuration
 
@@ -1891,12 +1891,12 @@ For more information, see [Workspace and Project File Structure](guide/file-stru
 
 欲知详情，参阅[工作区和项目文件结构](guide/file-structure)。
 
-{@a X}
+<a id="X"></a>
 
-{@a Y}
+<a id="Y"></a>
 
-{@a Z}
-{@a zone}
+<a id="Z"></a>
+<a id="zone"></a>
 
 ## zone
 

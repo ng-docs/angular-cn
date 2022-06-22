@@ -27,7 +27,7 @@ There are two ways to make a service a singleton in Angular:
 
   把该服务包含在 `AppModule` 或某个只会被 `AppModule` 导入的模块中。
 
-{@a providedIn}
+<a id="providedIn"></a>
 
 ### Using `providedIn`
 
@@ -67,7 +67,7 @@ throughout the application. Though you may see it coded this way, using the `pro
 
 如果这个 NgModule 是根模块 `AppModule`，此 `UserService` 就会是单例的，并且在整个应用中都可用。虽然你可能会看到这种形式的代码，但是最好使用在服务自身的 `@Injectable()` 装饰器上设置 `providedIn` 属性的形式，因为 Angular 6.0 可以对这些服务进行摇树优化。
 
-{@a forRoot}
+<a id="forRoot"></a>
 
 ## The `forRoot()` pattern
 
@@ -123,7 +123,7 @@ with `providers` and child modules without `providers`.
 
 <code-example path="ngmodules/src/app/greeting/greeting.module.ts" region="for-root" header="src/app/greeting/greeting.module.ts"></code-example>
 
-{@a forRoot-router}
+<a id="forRoot-router"></a>
 
 ### `forRoot()` and the `Router`
 

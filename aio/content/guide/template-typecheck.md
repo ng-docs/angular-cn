@@ -102,7 +102,7 @@ The `fullTemplateTypeCheck` flag has been deprecated in Angular 13. The `strictT
 </div>
 
 
-{@a strict-mode}
+<a id="strict-mode"></a>
 
 ### Strict mode
 
@@ -182,7 +182,7 @@ In strict mode, Angular knows that the `user` in the `<span>` has a type of `Use
 
 `<h2>` 和 `<span>` 在 `*ngFor` 嵌入式视图中。在基本模式下，Angular 不会检查它们中的任何一个。但是，在完全模式下，Angular 会检查 `config` 和 `user` 是否存在，并假设为 `any` 的类型。在严格模式下，Angular 知道该 `user` 在 `<span>` 中是 `User` 类型，而 `address` 是与一个对象，它有一个 `string` 类型的属性 `city`。
 
-{@a troubleshooting-template-errors}
+<a id="troubleshooting-template-errors"></a>
 
 ## Troubleshooting template errors
 
@@ -456,7 +456,7 @@ Additionally, it is possible to provide type hints that are specific to the temp
 作为库作者，你可以采取多种措施为用户提供最佳体验。首先，启用 `strictNullChecks` 并在输入的类型中包括 `null`（如果适用），可以与消费者沟通，看他们是否可以提供可空的值。
 此外，可以提供特定模板类型检查器的类型提示，请参阅本指南的[为自定义指令改进模板类型检查](guide/structural-directives#directive-type-checks)和[输入设置器强制转型](guide/template-typecheck#input-setter-coercion)部分。
 
-{@a input-setter-coercion}
+<a id="input-setter-coercion"></a>
 
 ## Input setter coercion
 

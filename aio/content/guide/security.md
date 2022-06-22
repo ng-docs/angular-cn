@@ -16,7 +16,7 @@ You can run the <live-example></live-example> in Stackblitz and download the cod
 
 你可以运行<live-example></live-example>，在 Stackblitz 中试用并下载本页的代码。
 
-{@a report-issues}
+<a id="report-issues"></a>
 
 <div class="callout is-important">
 
@@ -35,7 +35,7 @@ philosophy](https://www.google.com/about/appsecurity/).
 
 </div>
 
-{@a best-practices}
+<a id="best-practices"></a>
 
 <div class="callout is-helpful">
 
@@ -200,7 +200,7 @@ as [described below](#bypass-security-apis).
 浏览器内置的 DOM API 不会自动针对安全漏洞进行防护。比如，`document`（它可以通过 `ElementRef` 访问）以及其它第三方 API 都可能包含不安全的方法。
 要避免直接与 DOM 交互，只要可能，就尽量使用 Angular 模板。
 
-{@a bypass-security-apis}
+<a id="bypass-security-apis"></a>
 
 ### Trusting safe values
 
@@ -267,7 +267,7 @@ Angular to let binding into `<iframe src>`:
 
 <code-example path="security/src/app/bypass-security.component.ts" header="src/app/bypass-security.component.ts (trust-video-url)" region="trust-video-url"></code-example>
 
-{@a content-security-policy}
+<a id="content-security-policy"></a>
 ### Content security policy
 
 ### 内容安全政策
@@ -303,7 +303,7 @@ Angular itself requires only these settings to function correctly. As your proje
 
 Angular 本身只需要这些设置即可正常运行。但是，随着项目的增长，你可能需要将 CSP 设置扩展到超乎此最小值，以支持应用特有的一些其它特性。
 
-{@a trusted-types}
+<a id="trusted-types"></a>
 ### Enforcing Trusted Types
 
 ### 强制执行可信类型
@@ -393,7 +393,7 @@ To learn more about troubleshooting Trusted Type configurations, the following r
 
 </div>
 
-{@a offline-template-compiler}
+<a id="offline-template-compiler"></a>
 
 ### Use the AOT template compiler
 
@@ -408,7 +408,7 @@ An alternative to the AOT compiler is the JIT compiler which compiles templates 
 
 AOT 编译器的替代方法是 JIT 编译器，它可以在运行时将模板编译为浏览器中的可执行模板代码。Angular 信任这些模板代码，因此动态生成模板并进行编译（尤其是包含用户数据的模板）可以规避 Angular 的内置保护，并且是一种安全性方面的反模式。要了解如何以安全方式动态构建表单，请参见[《动态表单》](guide/dynamic-form)指南。
 
-{@a server-side-xss}
+<a id="server-side-xss"></a>
 ### Server-side XSS protection
 
 ### 服务器端 XSS 保护
@@ -417,7 +417,7 @@ HTML constructed on the server is vulnerable to injection attacks. Injecting tem
 
 在服务器上构造的 HTML 容易受到注入攻击。将模板代码注入到 Angular 应用程序中与注入可执行代码是一样的：它使攻击者可以完全控制该应用程序。为避免这种情况，请使用一种模板语言来自动转义值以防止服务器上的 XSS 漏洞。不要在服务器端使用模板语言生成 Angular 模板；这样做会带来引入模板注入漏洞的高风险。
 
-{@a http}
+<a id="http"></a>
 ## HTTP-level vulnerabilities
 
 ## HTTP 级漏洞
@@ -429,7 +429,7 @@ on the server side, but Angular provides helpers to make integration on the clie
 Angular 内置了一些支持来防范两个常见的 HTTP 漏洞：跨站请求伪造（XSRF）和跨站脚本包含（XSSI）。
 这两个漏洞主要在服务器端防范，但是 Angular 也自带了一些辅助特性，可以让客户端的集成变得更容易。
 
-{@a xsrf}
+<a id="xsrf"></a>
 ### Cross-site request forgery
 
 ### 跨站请求伪造
@@ -500,7 +500,7 @@ See also Dave Smith's
 
 参阅 Dave Smith 在<a href="https://www.youtube.com/watch?v=9inczw6qtpY" target="_blank" title="Cross Site Request Funkery Securing Your Angular Apps From Evil Doers">AngularConnect 2016 关于 XSRF 的演讲</a>。
 
-{@a xssi}
+<a id="xssi"></a>
 ### Cross-site script inclusion (XSSI)
 
 ### 跨站脚本包含(XSSI)
@@ -529,7 +529,7 @@ post](https://security.googleblog.com/2011/05/website-security-for-webmasters.ht
 
 要学习更多这方面的知识，请参阅[谷歌 Web 安全博客文章](https://security.googleblog.com/2011/05/website-security-for-webmasters.html)的 XSSI 小节。
 
-{@a code-review}
+<a id="code-review"></a>
 ## Auditing Angular applications
 
 ## 审计 Angular 应用程序

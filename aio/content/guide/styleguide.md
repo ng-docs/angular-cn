@@ -9,7 +9,7 @@ This style guide presents preferred conventions and, as importantly, explains wh
 如果你正在寻找关于 Angular 语法、约定和应用组织结构的官方指南，那你就来对了。
 本风格指南介绍了提倡的约定，更重要的是，解释了为什么。
 
-{@a toc}
+<a id="toc"></a>
 
 ## Style vocabulary
 
@@ -74,7 +74,7 @@ The guideline uses the shortcut `hero.component.ts|html|css|spec` to represent t
 
 本指南将会使用像 `hero.component.ts|html|css|spec` 的简写来表示上面描述的多个文件，目的是保持本指南的简洁性，增加描述文件结构时的可读性。
 
-{@a single-responsibility}
+<a id="single-responsibility"></a>
 
 ## Single responsibility
 
@@ -87,7 +87,7 @@ This helps make the application cleaner, easier to read and maintain, and more t
 
 对所有的组件、服务等等应用<a href="https://wikipedia.org/wiki/Single_responsibility_principle" target="_blank"><i>单一职责原则(SRP)</i> </a>。这样可以让应用更干净、更易读、更易维护、更易测试。
 
-{@a 01-01}
+<a id="01-01"></a>
 
 ### Rule of One
 
@@ -197,7 +197,7 @@ As the application grows, this rule becomes even more important.
 
 <a href="#toc">回到顶部</a>
 
-{@a 01-02}
+<a id="01-02"></a>
 
 ### Small functions
 
@@ -275,7 +275,7 @@ Naming conventions are hugely important to maintainability and readability. This
 
 命名约定对可维护性和可读性非常重要。本指南为文件名和符号名推荐了一套命名约定。
 
-{@a 02-01}
+<a id="02-01"></a>
 
 ### General Naming Guidelines
 
@@ -331,7 +331,7 @@ Naming conventions are hugely important to maintainability and readability. This
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-02}
+<a id="02-02"></a>
 
 ### Separate file names with dots and dashes
 
@@ -413,7 +413,7 @@ Abbreviations such as `.srv`, `.svc`, and `.serv` can be confusing.
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-03}
+<a id="02-03"></a>
 
 ### Symbols and file names
 
@@ -662,7 +662,7 @@ and reference assets of different types.
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-04}
+<a id="02-04"></a>
 
 ### Service names
 
@@ -817,7 +817,7 @@ As always, strive for consistency.
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-05}
+<a id="02-05"></a>
 
 ### Bootstrapping
 
@@ -875,7 +875,7 @@ As always, strive for consistency.
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-02}
+<a id="05-02"></a>
 
 ### Component selectors
 
@@ -921,7 +921,7 @@ As always, strive for consistency.
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-07}
+<a id="02-07"></a>
 
 ### Component custom prefix
 
@@ -1001,7 +1001,7 @@ For example, the prefix `toh` represents **T**our **o**f **H**eroes and the pref
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-06}
+<a id="02-06"></a>
 
 ### Directive selectors
 
@@ -1039,7 +1039,7 @@ For example, the prefix `toh` represents **T**our **o**f **H**eroes and the pref
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-08}
+<a id="02-08"></a>
 
 ### Directive custom prefix
 
@@ -1104,7 +1104,7 @@ For example, the prefix `toh` represents **T**our **o**f **H**eroes and the pref
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-09}
+<a id="02-09"></a>
 
 ### Pipe names
 
@@ -1210,7 +1210,7 @@ The `name` string cannot use hyphens ("dash-case" or "kebab-case").
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-10}
+<a id="02-10"></a>
 
 ### Unit test file names
 
@@ -1352,7 +1352,7 @@ The `name` string cannot use hyphens ("dash-case" or "kebab-case").
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-11}
+<a id="02-11"></a>
 
 ### _End-to-End_ (E2E) test file names
 
@@ -1442,7 +1442,7 @@ The `name` string cannot use hyphens ("dash-case" or "kebab-case").
 
 <a href="#toc">回到顶部</a>
 
-{@a 02-12}
+<a id="02-12"></a>
 
 ### Angular _NgModule_ names
 
@@ -1685,7 +1685,7 @@ Use the naming conventions for files in this guide.
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-01}
+<a id="04-01"></a>
 
 ### _LIFT_
 
@@ -1727,7 +1727,7 @@ _can I quickly open and start work in all of the related files for this feature_
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-02}
+<a id="04-02"></a>
 
 ### Locate
 
@@ -1763,7 +1763,7 @@ A descriptive folder structure makes a world of difference to you and the people
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-03}
+<a id="04-03"></a>
 
 ### Identify
 
@@ -1822,7 +1822,7 @@ in a single file than as multiple files. Be wary of this loophole.
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-04}
+<a id="04-04"></a>
 
 ### Flat
 
@@ -1884,7 +1884,7 @@ Use a flatter structure until there is an obvious value to creating a new folder
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-05}
+<a id="04-05"></a>
 
 ### _T-DRY_ (Try to be _DRY_)
 
@@ -1929,7 +1929,7 @@ But if something is not obvious or departs from a convention, then spell it out.
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-06}
+<a id="04-06"></a>
 
 ### Overall structural guidelines
 
@@ -1987,7 +1987,7 @@ But if something is not obvious or departs from a convention, then spell it out.
 
 </div>
 
-{@a file-tree}
+<a id="file-tree"></a>
 
 Here is a compliant folder and file structure:
 
@@ -2309,7 +2309,7 @@ Whatever you choose, be consistent.
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-07}
+<a id="04-07"></a>
 
 ### _Folders-by-feature_ structure
 
@@ -2399,7 +2399,7 @@ and more difficult in a flat structure.
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-08}
+<a id="04-08"></a>
 
 ### App _root module_
 
@@ -2450,7 +2450,7 @@ for example, in `/src/app`.
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-09}
+<a id="04-09"></a>
 
 ### Feature modules
 
@@ -2548,7 +2548,7 @@ area, folder, and file; for example, `app/heroes/heroes.module.ts` defines `Hero
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-10}
+<a id="04-10"></a>
 
 ### Shared feature module
 
@@ -2789,7 +2789,7 @@ Yet there is a real danger of that happening if the `SharedModule` provides a se
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-11}
+<a id="04-11"></a>
 
 ### Lazy Loaded folders
 
@@ -2825,7 +2825,7 @@ A typical *lazy loaded folder* contains a *routing component*, its child compone
 
 <a href="#toc">回到顶部</a>
 
-{@a 04-12}
+<a id="04-12"></a>
 
 ### Never directly import lazy loaded folders
 
@@ -2893,7 +2893,7 @@ A typical *lazy loaded folder* contains a *routing component*, its child compone
 
 ## 组件
 
-{@a 05-03}
+<a id="05-03"></a>
 
 ### Components as elements
 
@@ -2963,7 +2963,7 @@ There are a few cases where you give a component an attribute, such as when you 
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-04}
+<a id="05-04"></a>
 
 ### Extract templates and styles to their own files
 
@@ -3064,7 +3064,7 @@ Angular 的 TypeScript 语言服务（即将到来）可以帮助那些编辑器
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-12}
+<a id="05-12"></a>
 
 ### Decorate _input_ and _output_ properties
 
@@ -3137,7 +3137,7 @@ Put it on the line above when doing so is clearly more readable.
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-13}
+<a id="05-13"></a>
 
 ### Avoid aliasing _inputs_ and _outputs_
 
@@ -3200,7 +3200,7 @@ and the directive name doesn't describe the property.
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-14}
+<a id="05-14"></a>
 
 ### Member sequence
 
@@ -3247,7 +3247,7 @@ helps instantly identify which members of the component serve which purpose.
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-15}
+<a id="05-15"></a>
 
 ### Delegate complex component logic to services
 
@@ -3317,7 +3317,7 @@ helps instantly identify which members of the component serve which purpose.
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-16}
+<a id="05-16"></a>
 
 ### Don't prefix _output_ properties
 
@@ -3383,7 +3383,7 @@ helps instantly identify which members of the component serve which purpose.
 
 <a href="#toc">回到顶部</a>
 
-{@a 05-17}
+<a id="05-17"></a>
 
 ### Put presentation logic in the component class
 
@@ -3461,7 +3461,7 @@ You may want to have a required `@Input` field, meaning all your component users
 
 ## 指令
 
-{@a 06-01}
+<a id="06-01"></a>
 
 ### Use directives to enhance an element
 
@@ -3507,7 +3507,7 @@ You may want to have a required `@Input` field, meaning all your component users
 
 <a href="#toc">回到顶部</a>
 
-{@a 06-03}
+<a id="06-03"></a>
 
 ### _HostListener_/_HostBinding_ decorators versus _host_ metadata
 
@@ -3574,7 +3574,7 @@ Compare with the less preferred `host` metadata alternative.
 
 ## 服务
 
-{@a 07-01}
+<a id="07-01"></a>
 
 ### Services are singletons
 
@@ -3616,7 +3616,7 @@ Compare with the less preferred `host` metadata alternative.
 
 <a href="#toc">回到顶部</a>
 
-{@a 07-02}
+<a id="07-02"></a>
 
 ### Single responsibility
 
@@ -3662,7 +3662,7 @@ Compare with the less preferred `host` metadata alternative.
 
 <a href="#toc">回到顶部</a>
 
-{@a 07-03}
+<a id="07-03"></a>
 
 ### Providing a service
 
@@ -3718,7 +3718,7 @@ Compare with the less preferred `host` metadata alternative.
 
 <a href="#toc">回到顶部</a>
 
-{@a 07-04}
+<a id="07-04"></a>
 
 ### Use the @Injectable() class decorator
 
@@ -3769,7 +3769,7 @@ dependencies based on the declared types of that service's constructor parameter
 
 ## 数据服务
 
-{@a 08-01}
+<a id="08-01"></a>
 
 ### Talk to the server through a service
 
@@ -3843,7 +3843,7 @@ Use Lifecycle hooks to tap into important events exposed by Angular.
 
 <a href="#toc">回到顶部</a>
 
-{@a 09-01}
+<a id="09-01"></a>
 
 ### Implement lifecycle hook interfaces
 
@@ -3894,7 +3894,7 @@ Useful tools and tips for Angular.
 
 <a href="#toc">回到顶部</a>
 
-{@a A-02}
+<a id="A-02"></a>
 
 ### File templates and snippets
 

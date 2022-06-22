@@ -22,7 +22,7 @@ This page covers some aspects of TypeScript configuration and the TypeScript env
 
   [typings](guide/typescript-configuration#typings) - TypesScript 类型声明文件。
 
-{@a tsconfig}
+<a id="tsconfig"></a>
 
 ## Configuration files
 
@@ -80,7 +80,7 @@ Angular 工作区的初始 `tsconfig.base.json` 通常是这样的。
 }
 </code-example>
 
-{@a noImplicitAny}
+<a id="noImplicitAny"></a>
 
 ### *noImplicitAny* and *suppressImplicitAnyIndexErrors*
 
@@ -120,7 +120,7 @@ For more information about how the TypeScript configuration affects compilation,
 
 </div>
 
-{@a typings}
+<a id="typings"></a>
 
 ## TypeScript typings
 
@@ -198,7 +198,7 @@ For instance, to install typings for `chai` you run `npm install @types/chai --s
 
 比如，要安装 `chai` 的类型信息，你可以执行 `npm install @types/chai --save-dev`，然后修改 `tsconfig.spec.json` 来把 `"chai"` 添加到 `types` 列表中。
 
-{@a target}
+<a id="target"></a>
 
 ### *target*
 

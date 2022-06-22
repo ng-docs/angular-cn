@@ -123,7 +123,7 @@ This file incorporates the mandatory and many of the optional polyfills as JavaS
 
   如果你需要一个**可选的**填充库，就必须安装它们的 npm 包，然后在 `src/polyfills.ts` 文件中反注释或创建一个对应的导入语句。
 
-{@a non-cli}
+<a id="non-cli"></a>
 
 ## Polyfills for non-CLI users
 

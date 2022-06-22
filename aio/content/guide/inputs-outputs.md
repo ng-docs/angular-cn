@@ -35,7 +35,7 @@ Conversely, `@Output()` lets the child send data to a parent component.
 
 `@Input()` 和 `@Output()` 为子组件提供了一种与其父组件通信的方法。 `@Input()` 允许父组件更新子组件中的数据。相反，`@Output()` 允许子组件向父组件发送数据。
 
-{@a input}
+<a id="input"></a>
 
 ## Sending data to a child component
 
@@ -127,7 +127,7 @@ See the [`OnChanges`](guide/lifecycle-hooks#onchanges) section of the [Lifecycle
 
 要想监视 `@Input()` 属性的变化，可以用 Angular 的[生命周期钩子](guide/lifecycle-hooks)`OnChanges` 。更多详情和范例，请参阅[生命周期钩子](guide/lifecycle-hooks) 一章的 [`OnChanges`](guide/lifecycle-hooks#onchanges)部分。
 
-{@a output}
+<a id="output"></a>
 
 ## Sending data to a parent component
 

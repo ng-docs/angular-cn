@@ -22,7 +22,7 @@ The practices described in this document apply to Angular 2.0 and later. If you 
 
 </div>
 
-{@a versioning}
+<a id="versioning"></a>
 ## Angular versioning
 
 ## Angular 的版本
@@ -59,7 +59,7 @@ The version number is incremented based on the level of change included in the r
 
 </div>
 
-{@a updating}
+<a id="updating"></a>
 ### Supported update paths
 
 ### 所支持的升级路径
@@ -95,7 +95,7 @@ See [Keeping Up-to-Date](guide/updating "Updating your projects") for more infor
 
 参阅[保持更新](guide/updating "Updating your projects")以了解把 Angular 项目升级到最新版本的更多信息。
 
-{@a previews}
+<a id="previews"></a>
 ### Preview releases
 
 ### 预览发布
@@ -116,7 +116,7 @@ The latest `next` or `rc` pre-release version of the documentation is available 
 
 `next` 或 `rc` 预发布版的文档位于 [next.angular.io](https://next.angular.io)。
 
-{@a frequency}
+<a id="frequency"></a>
 
 ## Release frequency
 
@@ -154,8 +154,8 @@ This cadence of releases gives eager developers access to new features as soon a
 
 这种发布的节奏能让渴望新功能的开发者在这些功能开发开发完成并通过我们的代码审查和集成测试流程后立即就可以使用，同时为那些喜欢在新功能经过 Google 和其他使用预发布版本的开发人员的验证后才采纳的生产环境用户，保持平台的稳定性和可靠性。
 
-{@a lts}
-{@a support}
+<a id="lts"></a>
+<a id="support"></a>
 ## Support policy and schedule
 
 ## 支持策略与计划
@@ -216,7 +216,7 @@ As a general rule, a fix is considered for an LTS version if it resolves one of:
 
   LTS 发布以后，由于第三方更改引起的回归性问题，比如浏览器的新版本。
 
-{@a deprecation}
+<a id="deprecation"></a>
 
 ## Deprecation practices
 
@@ -255,7 +255,7 @@ In minor releases, we update peer dependencies by expanding the supported versio
 
   **npm 依赖：** 在主版本中，我们只会更新那些需要修改你的应用的那些 npm 依赖项。在次要版本中，我们会通过扩展受支持版本范围的方式来更新对等依赖（peerDependencies），但在下一个主版本到来之前，不会强制要求你升级它们。这意味着，在次要版本中，Angular 应用和库中，npm 依赖项的更新是可选的。
 
-{@a public-api}
+<a id="public-api"></a>
 
 ## Public API surface
 
@@ -269,7 +269,7 @@ Any changes to the public API surface are done using the versioning, support, an
 
 任何对公共 API 的修改都适用于上述这些版本、支持和弃用策略。
 
-{@a labs}
+<a id="labs"></a>
 
 ## Angular Labs
 

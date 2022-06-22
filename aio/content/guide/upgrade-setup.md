@@ -36,7 +36,7 @@ Setting up a new project on your machine is quick and easy with the [QuickStart 
 
 **前提条件：**确保你已经安装好了 [Node.js® 和 npm](guide/setup-local#prerequisites "Angular prerequisites")。
 
-{@a clone}
+<a id="clone"></a>
 ## Clone
 
 ## 克隆
@@ -52,7 +52,7 @@ Perform the _clone-to-launch_ steps with these terminal commands.
 </code-example>
 
 
-{@a download}
+<a id="download"></a>
 
 ## Download
 
@@ -70,7 +70,7 @@ and unzip it into your project folder. Then perform the remaining steps with the
 </code-example>
 
 
-{@a non-essential}
+<a id="non-essential"></a>
 
 ## Delete _non-essential_ files (optional)
 
@@ -205,7 +205,7 @@ Once built, the application will be automatically opened in a new browser tab an
 有了这些，你现在就可以运行 `npm start` 并构建和启动应用程序了。构建后，应用程序将自动在新的浏览器选项卡中打开，并在你更改源代码时自动重新加载。
 
 
-{@a seed}
+<a id="seed"></a>
 
 ## What's in the QuickStart seed?
 
@@ -226,7 +226,7 @@ most of which you can [learn about later](guide/file-structure).
 
 </div>
 
-{@a app-files}
+<a id="app-files"></a>
 
 Focus on the following three TypeScript (`.ts`) files in the **`/src`** folder.
 

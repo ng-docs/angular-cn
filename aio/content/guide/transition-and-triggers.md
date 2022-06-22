@@ -152,7 +152,7 @@ In the preceding code, you applied the `void` state when the HTML element isn't 
 
 在上述代码中，当 HTML 元素没有附着在视图中时，我们就会应用 `void` 状态。
 
-{@a enter-leave-view}
+<a id="enter-leave-view"></a>
 
 ## :enter and :leave aliases
 
@@ -359,7 +359,7 @@ The following code snippet creates console log output for the original example, 
 
 <code-example path="animations/src/app/open-close.component.ts" header="src/app/open-close.component.ts" region="events" language="typescript"></code-example>
 
-{@a keyframes}
+<a id="keyframes"></a>
 
 ## Keyframes
 

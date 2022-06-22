@@ -6,7 +6,7 @@ This page discusses build-specific configuration options for Angular projects.
 
 本文讨论的是 Angular 项目中与构建有关的配置项。
 
-{@a app-environments}
+<a id="app-environments"></a>
 
 ## Configuring application environments
 
@@ -132,7 +132,7 @@ export class AppComponent {
 }
 ```
 
-{@a file-replacement}
+<a id="file-replacement"></a>
 
 ## Configure target-specific file replacements
 
@@ -220,8 +220,8 @@ You can also configure the `serve` command to use the targeted build configurati
 },
 ```
 
-{@a size-budgets}
-{@a configure-size-budgets}
+<a id="size-budgets"></a>
+<a id="configure-size-budgets"></a>
 
 ## Configuring size budgets
 
@@ -450,7 +450,7 @@ To disable these warnings, add the CommonJS module name to `allowedCommonJsDepen
 },
 </code-example>
 
-{@a browser-compat}
+<a id="browser-compat"></a>
 
 ## Configuring browser compatibility
 
@@ -494,7 +494,7 @@ See the [browserslist repo](https://github.com/browserslist/browserslist) for mo
 
 参阅 [browserslist 的代码库](https://github.com/browserslist/browserslist)以得到如何指定浏览器及其版本的更多例子。
 
-{@a proxy}
+<a id="proxy"></a>
 
 ## Proxying to a backend server
 
@@ -732,7 +732,7 @@ function setupForCorporateProxy(proxyConfig) {
 module.exports = setupForCorporateProxy(proxyConfig);
 ```
 
-{@a browser-compat}
+<a id="browser-compat"></a>
 
 ## Configuring browser compatibility
 

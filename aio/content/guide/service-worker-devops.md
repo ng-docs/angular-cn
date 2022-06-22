@@ -29,7 +29,7 @@ Conceptually, imagine the Angular service worker as a forward cache or a CDN edg
 Service Worker 的工作是从本地缓存中满足 Angular 应用对资源或数据的请求，而不用等待网络。
 和所有缓存一样，它有一些规则来决定内容该如何过期或更新。
 
-{@a versions}
+<a id="versions"></a>
 
 ### App versions
 
@@ -172,7 +172,7 @@ configured lifetimes.
 也就是说，当被缓存资源的 HTTP 缓存头指出该资源已过期时，Angular Service Worker 将继续提供内容，并尝试在后台刷新资源。
 这样，那些被破坏的非哈希资源留在缓存中的时间就不会超出为它配置的生命周期。
 
-{@a tabs}
+<a id="tabs"></a>
 
 ### App tabs
 
