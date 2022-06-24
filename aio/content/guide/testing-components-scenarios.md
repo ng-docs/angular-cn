@@ -658,12 +658,13 @@ import 'zone.js/testing';
 #### 在 `fakeAsync()` 中使用 RxJS 调度器
 
 You can also use RxJS scheduler in `fakeAsync()` just like using `setTimeout()` or `setInterval()`, but you need to import `zone.js/plugins/zone-patch-rxjs-fake-async` to patch RxJS scheduler.
-<code-example
-  path="testing/src/app/demo/async-helper.spec.ts"
-  region="fake-async-test-rxjs">
-</code-example>
 
 `fakeAsync()` 使用 RxJS 的调度器，就像使用 `setTimeout()` 或 `setInterval()` 一样，但你需要导入 `zone.js/plugins/zone-patch-rxjs-fake-async` 来给 RxJS 调度器打补丁。
+
+<code-example
+path="testing/src/app/demo/async-helper.spec.ts"
+region="fake-async-test-rxjs">
+</code-example>
 
 #### Support more macroTasks
 
