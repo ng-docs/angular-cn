@@ -25,6 +25,7 @@ In the following example, `class`, `src`, and `disabled` modify the `<div>`, `<i
 开发人员可以使用字符串值指定属性来定制 HTML。在以下示例中，`class`、`src` 和 `disabled` 修饰了 `<div>`、`<img>` 和 `<button>` 元素。
 
 ```html
+
 <div class="special">Plain old HTML</div>
 <img src="images/item.png">
 <button disabled>Save</button>
@@ -123,6 +124,7 @@ When you add the `disabled` attribute, you are initializing the button's `disabl
 当添加 `disabled` Attribute 时，你正在将按钮的 `disabled` Property 初始化为 `true`，这将禁用该按钮。
 
 ```html
+
 <button disabled>Test Button</button>
 ```
 
@@ -198,25 +200,25 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
 
 <th>
 
-  Type
+Type
 
-  绑定类型
-
-</th>
-
-<th>
-
-  Syntax
-
-  语法
+绑定类型
 
 </th>
 
 <th>
 
-  Category
+Syntax
 
-  分类
+语法
+
+</th>
+
+<th>
+
+Category
+
+分类
 
 </th>
 
@@ -225,17 +227,17 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
 
  <td>
 
-  Interpolation<br>
-  Property<br>
-  Attribute<br>
-  Class<br>
-  Style
+Interpolation<br>
+Property<br>
+Attribute<br>
+Class<br>
+Style
 
-  插值<br>
-  属性<br>
-  Attribute<br>
-  CSS 类<br>
-  样式
+插值<br>
+属性<br>
+Attribute<br>
+CSS 类<br>
+样式
 
 </td>
 
@@ -244,16 +246,16 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
   <code-example>
     {{expression}}
     [target]="expression"
-    
+
   </code-example>
 
 </td>
 
 <td>
 
-  One-way<br>from data source<br>to view target
+One-way<br>from data source<br>to view target
 
-  单向<br>从数据源<br>到视图
+单向<br>从数据源<br>到视图
 
 </td>
 
@@ -396,9 +398,12 @@ The following table summarizes the targets for the different binding types.
     </td>
     <td>
       <code>src</code>, <code>hero</code>, and <code>ngClass</code> in the following:
+
       <code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example>
+
       <!-- For more information, see [Property Binding](guide/property-binding). -->
     </td>
+
   </tr>
   <tr>
     <td>
@@ -411,9 +416,12 @@ The following table summarizes the targets for the different binding types.
     </td>
     <td>
       <code>src</code>、<code>hero</code> 和 <code>ngClass</code>，代码如下:
+
       <code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example>
+
       <!-- For more information, see [Property Binding](guide/property-binding). -->
     </td>
+
   </tr>
   <tr>
     <td>
@@ -426,6 +434,7 @@ The following table summarizes the targets for the different binding types.
     </td>
     <td>
       <code>click</code>, <code>deleteRequest</code>, and <code>myClick</code> in the following:
+
       <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example>
     </td>
   </tr>
@@ -440,6 +449,7 @@ The following table summarizes the targets for the different binding types.
     </td>
     <td>
       <code>click</code>、<code>deleteRequest</code> 和 <code>myClick</code>，代码如下：
+
       <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example>
     </td>
   </tr>

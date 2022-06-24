@@ -244,13 +244,14 @@ to the Angular [`HttpClient`](guide/http) service for XHR calls.
 
 You can test a data service with an injected `HttpClient` spy as you would
 test any service with a dependency.
-<code-example
-  path="testing/src/app/model/hero.service.spec.ts"
-  region="test-with-spies"
-  header="app/model/hero.service.spec.ts (tests with spies)">
-</code-example>
 
 你可以测试一个注入了 `HttpClient` 间谍的数据服务，就像测试所有带依赖的服务一样。
+
+<code-example
+path="testing/src/app/model/hero.service.spec.ts"
+region="test-with-spies"
+header="app/model/hero.service.spec.ts (tests with spies)">
+</code-example>
 
 <div class="alert is-important">
 
