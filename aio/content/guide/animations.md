@@ -314,8 +314,6 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | `useAnimation()`                  | Activates a reusable animation. Used with `animation()`.                                                                                                                                                    |
 | `animateChild()`                  | Allows animations on child components to be run within the same timeframe as the parent.                                                                                                                    |
 
-</table>
-
 ## More on Angular animations
 
 You might also be interested in the following:
