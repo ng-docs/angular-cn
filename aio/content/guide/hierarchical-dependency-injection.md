@@ -17,17 +17,17 @@ There are two injector hierarchies in Angular:
 
 Angular 中有两个注入器层次结构：
 
-1. `ModuleInjector` hierarchy&mdash;configure a `ModuleInjector`
-in this hierarchy using an `@NgModule()` or `@Injectable()` annotation.
+1. `ModuleInjector` hierarchy—configure a `ModuleInjector`
+   in this hierarchy using an `@NgModule()` or `@Injectable()` annotation.
 
-   `ModuleInjector` 层次结构 —— 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。
+      `ModuleInjector` 层次结构 —— 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。
 
-1. `ElementInjector` hierarchy&mdash;created implicitly at each
-DOM element. An `ElementInjector` is empty by default
-unless you configure it in the `providers` property on
-`@Directive()` or `@Component()`.
+1. `ElementInjector` hierarchy—created implicitly at each
+   DOM element. An `ElementInjector` is empty by default
+   unless you configure it in the `providers` property on
+   `@Directive()` or `@Component()`.
 
-   `ElementInjector` 层次结构 —— 在每个 DOM 元素上隐式创建。除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中进行配置，否则默认情况下，`ElementInjector` 为空。
+      `ElementInjector` 层次结构 —— 在每个 DOM 元素上隐式创建。除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中进行配置，否则默认情况下，`ElementInjector` 为空。
 
 <a id="register-providers-injectable"></a>
 
@@ -38,9 +38,9 @@ The `ModuleInjector` can be configured in one of two ways:
 可以通过以下两种方式之一配置 `ModuleInjector` ：
 
 * Using the `@Injectable()` `providedIn` property to
-refer to `@NgModule()`, or `root`.
+  refer to `@NgModule()`, or `root`.
 
-  使用 `@Injectable()` 的 `providedIn` 属性引用 `@NgModule()` 或 `root`。
+    使用 `@Injectable()` 的 `providedIn` 属性引用 `@NgModule()` 或 `root`。
 
 * Using the `@NgModule()` `providers` array.
 
@@ -118,9 +118,7 @@ following in `main.ts`:
 思考下 Angular 要如何通过 `main.ts` 中的如下代码引导应用程序：
 
 ```javascript
-
 platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {...})
-
 ```
 
 The `bootstrapModule()` method creates a child injector of
@@ -215,13 +213,11 @@ by providing the service as follows:
 可以用 `@Component()` 装饰器中的 `providers` 或 `viewProviders` 属性来配置 `ElementInjector` 以提供服务。例如，下面的 `TestComponent` 通过提供此服务来配置 `ElementInjector`：
 
 ```ts
-
 @Component({
   ...
   providers: [{ provide: ItemService, useValue: { name: 'lamp' } }]
 })
 export class TestComponent
-
 ```
 
 <div class="alert is-helpful">
@@ -334,9 +330,9 @@ Resolution modifiers fall into three categories:
 解析修饰符分为三类：
 
 1. What to do if Angular doesn't find what you're
-looking for, that is `@Optional()`
+   looking for, that is `@Optional()`
 
-   如果 Angular 找不到你要的东西该怎么办，用 `@Optional()`
+      如果 Angular 找不到你要的东西该怎么办，用 `@Optional()`
 
 2. Where to start looking, that is `@SkipSelf()`
 
@@ -450,11 +446,10 @@ Use `@SkipSelf()` with `@Optional()` to prevent an error if the value is `null`.
 
 如果值为 `null` 请同时使用 `@SkipSelf()` 和 `@Optional()` 来防止错误。在下面的范例中，将 `Person` 服务注入到构造函数中。`@SkipSelf()` 告诉 Angular 跳过当前的注入器，如果 `Person` 服务为 `null`，则 `@Optional()` 将防止报错。
 
-``` ts
+```ts
 class Person {
   constructor(@Optional() @SkipSelf() parent?: Person) {}
 }
-
 ```
 
 ### `@Host()`
@@ -495,11 +490,9 @@ Components are used in your templates, as in the following example:
 组件在模板中使用，如以下范例所示：
 
 ```
-
 <app-root>
     <app-child></app-child>
 </app-root>
-
 ```
 
 <div class="alert is-helpful">
@@ -532,8 +525,7 @@ The following is an example of how the `<app-root>` and `<app-child>` view trees
     </app-child>
   </#VIEW>
 </app-root>
-
- ```
+```
 
 Understanding the idea of the `<#VIEW>` demarcation is especially significant when you configure services in the component class.
 
@@ -597,19 +589,19 @@ what is going on under the hood.
 **注意：**在逻辑树中，你会看到 `@Provide`，`@Inject` 和 `@NgModule`，这些不是真正的 HTML 属性，只是为了在这里证明其幕后的原理。
 
 - `@Inject(Token)=>Value` demonstrates that if `Token` is injected at
-this location in the logical tree its value would be `Value`.
+  this location in the logical tree its value would be `Value`.
 
-  `@Inject(Token)=>Value` 表示，如果要将 `Token` 注入逻辑树中的此位置，则它的值为 `Value`。
+    `@Inject(Token)=>Value` 表示，如果要将 `Token` 注入逻辑树中的此位置，则它的值为 `Value`。
 
 - `@Provide(Token=Value)` demonstrates that there is a declaration of
-`Token` provider with value `Value` at this location in the logical tree.
+  `Token` provider with value `Value` at this location in the logical tree.
 
-  `@Provide(Token=Value)` 表示，在逻辑树中的此位置存在一个值为 `Value` 的 `Token` 提供者的声明。
+    `@Provide(Token=Value)` 表示，在逻辑树中的此位置存在一个值为 `Value` 的 `Token` 提供者的声明。
 
 - `@NgModule(Token)` demonstrates that a fallback `NgModule` injector
-should be used at this location.
+  should be used at this location.
 
-  `@NgModule(Token)` 表示，应在此位置使用后备的 `NgModule` 注入器。
+    `@NgModule(Token)` 表示，应在此位置使用后备的 `NgModule` 注入器。
 
 </div>
 
@@ -637,7 +629,6 @@ the following:
     <app-child> <!-- ChildComponent selector -->
     </app-child>
 </app-root>
-
 ```
 
 However, behind the scenes, Angular uses a logical view
@@ -646,7 +637,6 @@ representation as follows when resolving injection requests:
 但是，在幕后，Angular 在解析注入请求时使用如下逻辑视图表示形式：
 
 ```
-
 <app-root> <!-- AppComponent selector -->
     <#VIEW>
         <app-child> <!-- ChildComponent selector -->
@@ -655,8 +645,7 @@ representation as follows when resolving injection requests:
         </app-child>
     </#VIEW>
 </app-root>
-
- ```
+```
 
 The `<#VIEW>` here represents an instance of a template.
 Notice that each component has its own `<#VIEW>`.
@@ -689,9 +678,7 @@ The output in the view would be:
 该视图中的输出为：
 
 ```
-
 Emoji from FlowerService: 🌺
-
 ```
 
 In the logical tree, this would be represented as follows:
@@ -699,7 +686,6 @@ In the logical tree, this would be represented as follows:
 在逻辑树中，这可以表示成如下形式：
 
 ```
-
 <app-root @NgModule(AppModule)
         @Inject(FlowerService) flower=>"🌺">
   <#VIEW>
@@ -712,7 +698,6 @@ In the logical tree, this would be represented as follows:
      </app-child>
   </#VIEW>
 </app-root>
-
 ```
 
 When `<app-root>` requests the `FlowerService`, it is the injector's job
@@ -722,16 +707,16 @@ in two phases:
 当 `<app-root>` 请求 `FlowerService` 时，注入器的工作就是解析 `FlowerService` 令牌。令牌的解析分为两个阶段：
 
 1. The injector determines the starting location in the logical tree and
-an ending location of the search. The injector begins with the starting
-location and looks for the token at each level in the logical tree. If
-the token is found it is returned.
+   an ending location of the search. The injector begins with the starting
+   location and looks for the token at each level in the logical tree. If
+   the token is found it is returned.
 
-   注入器确定逻辑树中搜索的开始位置和结束位置。注入程序从起始位置开始，并在逻辑树的每个级别上查找令牌。如果找到令牌，则将其返回。
+      注入器确定逻辑树中搜索的开始位置和结束位置。注入程序从起始位置开始，并在逻辑树的每个级别上查找令牌。如果找到令牌，则将其返回。
 
 2. If the token is not found, the injector looks for the closest
-parent `@NgModule()` to delegate the request to.
+   parent `@NgModule()` to delegate the request to.
 
-   如果未找到令牌，则注入程序将寻找最接近的父 `@NgModule()` 委派该请求。
+      如果未找到令牌，则注入程序将寻找最接近的父 `@NgModule()` 委派该请求。
 
 In the example case, the constraints are:
 
@@ -741,7 +726,7 @@ In the example case, the constraints are:
 
    从属于 `<app-root>` 的  `<#VIEW>` 开始，并结束于 `<app-root>`。
 
-  - Normally the starting point for search is at the point
+- Normally the starting point for search is at the point
   of injection. However, in this case `<app-root>`  `@Component`s
   are special in that they also include their own `viewProviders`,
   which is why the search starts at `<#VIEW>` belonging to `<app-root>`.
@@ -755,9 +740,9 @@ In the example case, the constraints are:
     结束位置恰好与组件本身相同，因为它就是此应用程序中最顶层的组件。
 
 2. The `AppModule` acts as the fallback injector when the
-injection token can't be found in the `ElementInjector`s.
+   injection token can't be found in the `ElementInjector`s.
 
-   当在 `ElementInjector` 中找不到注入令牌时，就用 `AppModule` 充当后备注入器。
+      当在 `ElementInjector` 中找不到注入令牌时，就用 `AppModule` 充当后备注入器。
 
 ### Using the `providers` array
 
@@ -793,10 +778,8 @@ the `AppComponent` template so the view also displays the sunflower:
 要渲染新的值，请在 `AppComponent` 模板的底部添加 `<app-child>`，以便其视图也显示向日葵：
 
 ```
-
 Child Component
 Emoji from FlowerService: 🌻
-
 ```
 
 In the logical tree, this would be represented as follows:
@@ -804,7 +787,6 @@ In the logical tree, this would be represented as follows:
 在逻辑树中，可以把它表示成这样：
 
 ```
-
 <app-root @NgModule(AppModule)
         @Inject(FlowerService) flower=>"🌺">
   <#VIEW>
@@ -823,7 +805,6 @@ In the logical tree, this would be represented as follows:
      </app-child>
   </#VIEW>
 </app-root>
-
 ```
 
 When `<app-child>` requests the `FlowerService`, the injector begins
@@ -925,13 +906,11 @@ Now you should see both values in the browser:
 现在，你应该在浏览器中看到两个值：
 
 ```
-
 AppComponent
 Emoji from AnimalService: 🐳
 
 Child Component
 Emoji from AnimalService: 🐶
-
 ```
 
 The logic tree for this example of `viewProviders` is as follows:
@@ -939,7 +918,6 @@ The logic tree for this example of `viewProviders` is as follows:
 此 `viewProviders` 范例的逻辑树如下：
 
 ```
-
 <app-root @NgModule(AppModule)
         @Inject(AnimalService) animal=>"🐳">
   <#VIEW>
@@ -956,7 +934,6 @@ The logic tree for this example of `viewProviders` is as follows:
      </app-child>
   </#VIEW>
 </app-root>
-
 ```
 
 Just as with the `FlowerService` example, the `AnimalService` is provided
@@ -1030,7 +1007,6 @@ for brevity:
 现在，浏览器将渲染以下内容，为简洁起见，省略了前面的范例：
 
 ```
-
 //...Omitting previous examples. The following applies to this section.
 
 Content projection: This is coming from content. Doesn't get to see
@@ -1041,11 +1017,10 @@ Emoji from AnimalService: 🐳
 
 Emoji from FlowerService: 🌻
 Emoji from AnimalService: 🐶
-
 ```
 
 These four bindings demonstrate the difference between `providers`
-and `viewProviders`. Since the 🐶 (puppy) is declared inside the <#VIEW>,
+and `viewProviders`. Since the 🐶 (puppy) is declared inside the &lt;#VIEW>,
 it isn't visible to the projected content. Instead, the projected
 content sees the 🐳 (whale).
 
@@ -1062,7 +1037,6 @@ The `AnimalService` in the logical tree would look like this:
 逻辑树中的 `AnimalService` 如下所示：
 
 ```
-
 <app-root @NgModule(AppModule)
         @Inject(AnimalService) animal=>"🐳">
   <#VIEW>
@@ -1091,7 +1065,6 @@ The `AnimalService` in the logical tree would look like this:
      </app-child>
   </#VIEW>
 </app-root>
-
 ```
 
 The projected content of `<app-inspector>` sees the 🐳 (whale), not
@@ -1134,7 +1107,6 @@ as shown in `child.component.ts`:
 
 ```typescript=
   constructor(@SkipSelf() public flower : FlowerService) { }
-
 ```
 
 With `@SkipSelf()`, the `<app-child>` injector doesn't look to itself for
@@ -1149,9 +1121,7 @@ the 🌺 (red hibiscus) value, which is available because the `<app-child>`
 然后，它返回到 `<app-child>` 的 `ModuleInjector` 并找到🌺（红芙蓉）值，这是可用的，因为 `<app-child>` `ModuleInjector` 和 `<app-root>` `ModuleInjector` 被展开成了一个 `ModuleInjector`。因此，UI 将渲染以下内容：
 
 ```
-
 Emoji from FlowerService: 🌺
-
 ```
 
 In a logical tree, this same idea might look like this:
@@ -1159,7 +1129,6 @@ In a logical tree, this same idea might look like this:
 在逻辑树中，这种情况可能如下所示：
 
 ```
-
 <app-root @NgModule(AppModule)
         @Inject(FlowerService) flower=>"🌺">
   <#VIEW>
@@ -1172,7 +1141,6 @@ In a logical tree, this same idea might look like this:
       </app-child>
   </#VIEW>
 </app-root>
-
 ```
 
 Though `<app-child>` provides the 🌻 (sunflower), the application renders
@@ -1190,7 +1158,6 @@ because `@Host()` limits the upper bound of the search to the
 如果现在将 `@Host()`（以及 `@SkipSelf()` ）添加到了 `FlowerService` 的 `@Inject`，其结果将为 `null`。这是因为 `@Host()` 将搜索的上限限制为 `<#VIEW>`。这是在逻辑树中的情况：
 
 ```
-
 <app-root @NgModule(AppModule)
         @Inject(FlowerService) flower=>"🌺">
   <#VIEW> <!-- end search here with null-->
@@ -1200,7 +1167,6 @@ because `@Host()` limits the upper bound of the search to the
       </app-parent>
   </#VIEW>
 </app-root>
-
 ```
 
 Here, the services and their values are the same, but `@Host()`
@@ -1243,7 +1209,6 @@ export class ChildComponent {
   constructor(@SkipSelf() public animal : AnimalService) { }
 
 }
-
 ```
 
 Instead, the injector will begin at the `<app-root>`
@@ -1254,14 +1219,12 @@ with a value of 🐶 (puppy):
 相反，注入器将从 `<app-root>` `ElementInjector` 开始找。请记住，`<app-child>` 类在 `viewProviders` 数组中 `AnimalService` 中提供了🐶（小狗）的值：
 
 ```ts
-
 @Component({
   selector: 'app-child',
   ...
   viewProviders:
   [{ provide: AnimalService, useValue: { emoji: '🐶' } }]
 })
-
 ```
 
 The logical tree looks like this with `@SkipSelf()` in `<app-child>`:
@@ -1269,7 +1232,6 @@ The logical tree looks like this with `@SkipSelf()` in `<app-child>`:
 在 `<app-child>` 中使用 `@SkipSelf()` 的逻辑树是这样的：
 
 ```
-
   <app-root @NgModule(AppModule)
           @Inject(AnimalService=>"🐳")>
     <#VIEW><!-- search begins here -->
@@ -1284,7 +1246,6 @@ The logical tree looks like this with `@SkipSelf()` in `<app-child>`:
         </app-child>
     </#VIEW>
   </app-root>
-
 ```
 
 With `@SkipSelf()` in the `<app-child>`, the injector begins its
@@ -1315,7 +1276,6 @@ in the `<app-child>` class and `@Host()` in the constructor:
 export class ChildComponent {
   constructor(@Host() public animal : AnimalService) { }
 }
-
 ```
 
 `@Host()` causes the injector to look until it encounters the edge of the `<#VIEW>`.
@@ -1323,7 +1283,6 @@ export class ChildComponent {
 `@Host()` 导致注入器开始查找，直到遇到 `<#VIEW>` 的边缘。
 
 ```
-
   <app-root @NgModule(AppModule)
           @Inject(AnimalService=>"🐳")>
     <#VIEW>
@@ -1335,7 +1294,6 @@ export class ChildComponent {
         </app-child>
     </#VIEW>
   </app-root>
-
 ```
 
 Add a `viewProviders` array with a third animal, 🦔 (hedgehog), to the
@@ -1344,14 +1302,12 @@ Add a `viewProviders` array with a third animal, 🦔 (hedgehog), to the
 将带有第三个动物🦔（刺猬）的 `viewProviders` 数组添加到 `app.component.ts` 的 `@Component()` 元数据中：
 
 ```typescript
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ],
   viewProviders: [{ provide: AnimalService, useValue: { emoji: '🦔' } }]
 })
-
 ```
 
 Next, add `@SkipSelf()` along with `@Host()` to the constructor for the
@@ -1362,20 +1318,18 @@ constructor :
 接下来，同时把 `@SkipSelf()` 和 `@Host()` 加在 `child.component.ts` 中 `AnimalService` 的构造函数中。这是 `<app-child>` 构造函数中的 `@Host()` 和 `@SkipSelf()`：
 
 ```ts
-
 export class ChildComponent {
 
   constructor(
   @Host() @SkipSelf() public animal : AnimalService) { }
 
 }
-
 ```
 
 When `@Host()` and `SkipSelf()` were applied to the `FlowerService`,
 which is in the `providers` array, the result was `null` because
 `@SkipSelf()` starts its search in the `<app-child>` injector, but
-`@Host()` stops searching at `<#VIEW>`&mdash;where there is no
+`@Host()` stops searching at `<#VIEW>`—where there is no
 `FlowerService`. In the logical tree, you can see that the
 `FlowerService` is visible in `<app-child>`, not its `<#VIEW>`.
 
@@ -1391,7 +1345,6 @@ The logical tree representation shows why this is:
 逻辑树表示法说明了为何如此：
 
 ```html
-
 <app-root @NgModule(AppModule)
         @Inject(AnimalService=>"🐳")>
   <#VIEW @Provide(AnimalService="🦔")
@@ -1407,7 +1360,6 @@ The logical tree representation shows why this is:
       </app-child>
   </#VIEW>
 </app-root>
-
 ```
 
 `@SkipSelf()`, causes the injector to start its search for

@@ -67,7 +67,6 @@ For example, the target property in the following code is the image element's `s
 
 <code-example path="property-binding/src/app/app.component.html" region="property-binding" header="src/app/app.component.html"></code-example>
 
-
 In most cases, the target name is the name of a property, even when it appears to be the name of an attribute.
 In this example, `src` is the name of the `<img>` element property.
 
@@ -130,7 +129,7 @@ You'd get this error:
 </code-example>
 
 As the message says, the `<td>` element does not have a `colspan` property. This is true
-because `colspan` is an attribute&mdash;`colSpan`, with a capital `S`, is the
+because `colspan` is an attribute—`colSpan`, with a capital `S`, is the
 corresponding property. Interpolation and property binding can set only *properties*, not attributes.
 
 如消息中所示，`<td>` 元素没有 `colspan` Property。这是正确的，因为 `colspan` 是一个 Attribute — `colSpan`（带大写 `S`）才是相应的 Property。插值和 Property 绑定只能设置 *Property*，不能设置 Attribute。
@@ -140,7 +139,6 @@ Instead, you'd use property binding and write it like this:
 相反，你应该使用 Property 绑定并将其编写为：
 
 <code-example path="attribute-binding/src/app/app.component.html" region="colSpan" header="src/app/app.component.html"></code-example>
-
 
 Another example is disabling a button when the component says that it `isUnchanged`:
 
@@ -154,13 +152,12 @@ Another is setting a property of a directive:
 
 <code-example path="property-binding/src/app/app.component.html" region="class-binding" header="src/app/app.component.html"></code-example>
 
-Yet another is setting the model property of a custom component&mdash;a great way
+Yet another is setting the model property of a custom component—a great way
 for parent and child components to communicate:
 
 还有一个是设置自定义组件的模型属性，这是父组件和子组件进行通信的一种好办法：
 
 <code-example path="property-binding/src/app/app.component.html" region="model-property-binding" header="src/app/app.component.html"></code-example>
-
 
 ## Toggling button functionality
 
@@ -177,7 +174,6 @@ Because the value of the property `isUnchanged` is `true` in the `AppComponent`,
 由于 `AppComponent` 中属性 `isUnchanged` 的值是 `true`，Angular 会禁用该按钮。
 
 <code-example path="property-binding/src/app/app.component.ts" region="boolean" header="src/app/app.component.ts"></code-example>
-
 
 ## Setting a directive property
 
@@ -267,7 +263,6 @@ The browser doesn't process the HTML and instead displays it raw, as follows.
 "Template &lt;script&gt;alert("evil never sleeps")&lt;/script&gt; Syntax" is the interpolated evil title.
 </code-example>
 
-
 Angular does not allow HTML with `<script>` tags, neither with [interpolation](guide/interpolation) nor property binding, which prevents the JavaScript from running.
 
 Angular 不允许带有 `<script>` 标记的 HTML，既不能用于[插值](guide/interpolation)也不能用于属性绑定，这样就会阻止运行 JavaScript。
@@ -310,4 +305,3 @@ However, when setting an element property to a non-string data value, you must u
 * [Property binding best practices](guide/property-binding-best-practices)
 
   [属性绑定的最佳实践](guide/property-binding-best-practices)
-

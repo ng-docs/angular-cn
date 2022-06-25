@@ -25,7 +25,6 @@ In the following example, `class`, `src`, and `disabled` modify the `<div>`, `<i
 开发人员可以使用字符串值指定属性来定制 HTML。在以下示例中，`class`、`src` 和 `disabled` 修饰了 `<div>`、`<img>` 和 `<button>` 元素。
 
 ```html
-
 <div class="special">Plain old HTML</div>
 <img src="images/item.png">
 <button disabled>Save</button>
@@ -99,7 +98,7 @@ corresponding DOM node with a `value` property and initializes that `value` to "
 ```
 
 When the user enters `Sally` into the `<input>`, the DOM element `value` property becomes `Sally`.
-However, if you look at the HTML attribute `value` using `input.getAttribute('value')`, you can see that the attribute remains unchanged&mdash;it returns "Sarah".
+However, if you look at the HTML attribute `value` using `input.getAttribute('value')`, you can see that the attribute remains unchanged—it returns "Sarah".
 
 当用户将 `Sally` 输入到 `<input>` 时，DOM 元素的 `value` Property 会变为 `Sally`。但是，如果使用 `input.getAttribute('value')` 读取 `value`，你会看到该 Attribute 保持不变 - 它仍然会返回 “Sarah”。
 
@@ -124,7 +123,6 @@ When you add the `disabled` attribute, you are initializing the button's `disabl
 当添加 `disabled` Attribute 时，你正在将按钮的 `disabled` Property 初始化为 `true`，这将禁用该按钮。
 
 ```html
-
 <button disabled>Test Button</button>
 ```
 

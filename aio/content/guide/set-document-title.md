@@ -13,9 +13,9 @@ See the <live-example name="set-document-title"></live-example>.
 
 参阅<live-example name="set-document-title"></live-example>
 
-## The problem with *&lt;title&gt;*
+## The problem with *&lt;title>*
 
-## *&lt;title&gt;*的问题
+## *&lt;title>*的问题
 
 The obvious approach is to bind a property of the component to the HTML `<title>` like this:
 
@@ -60,11 +60,11 @@ for getting and setting the current HTML document title:
 幸运的是，Angular 在*浏览器平台*的包中，提供了一个 `Title` 服务，弥补了这种差异。
 [Title](api/platform-browser/Title)服务是一个简单的类，提供了一个 API，用来获取和设置当前 HTML 文档的标题。
 
-* `getTitle() : string`&mdash;Gets the title of the current HTML document.
+* `getTitle() : string`—Gets the title of the current HTML document.
 
    `getTitle(): string` —— 获取当前 HTML 文档的标题。
 
-* `setTitle( newTitle : string )`&mdash;Sets the title of the current HTML document.
+* `setTitle( newTitle : string )`—Sets the title of the current HTML document.
 
    `setTitle( newTitle: string)` —— 设置当前 HTML 文档的标题。
 

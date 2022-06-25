@@ -165,20 +165,20 @@ other. This is known as "upgrading" and "downgrading".
 
   <b>定义：</b>
 
-  - _Upgrading_: The act of making an AngularJS asset, such as a component or service, available to
-    the Angular part of the application.
+- _Upgrading_: The act of making an AngularJS asset, such as a component or service, available to
+  the Angular part of the application.
 
-    *升级*：让 AngularJS 中的资产，比如组件或服务，可用于应用中的 Angular 部分。
-  - _Downgrading_: The act of making an Angular asset, such as a component or service, available to
-    the AngularJS part of the application.
+  *升级*：让 AngularJS 中的资产，比如组件或服务，可用于应用中的 Angular 部分。
+- _Downgrading_: The act of making an Angular asset, such as a component or service, available to
+  the AngularJS part of the application.
 
-    *降级*：让 Angular 中的资产，比如组件或服务，可用于应用中的 AngularJS 部分
+  *降级*：让 Angular 中的资产，比如组件或服务，可用于应用中的 AngularJS 部分
 
 </div>
 
 An important part of inter-linking dependencies is linking the two main modules together. This is
-where `downgradeModule()` comes in. Use it to create an AngularJS module&mdash;one that you can use
-as a dependency in your main AngularJS module&mdash;that will bootstrap your main Angular module and
+where `downgradeModule()` comes in. Use it to create an AngularJS module—one that you can use
+as a dependency in your main AngularJS module—that will bootstrap your main Angular module and
 kick off the Angular part of the hybrid application. In a sense, it "downgrades" an Angular module to an
 AngularJS module.
 
@@ -312,7 +312,7 @@ A few examples are:
 ### 通过 `downgradeModule()` 启动
 
 As you might have guessed, you don't need to change anything in the way you bootstrap your existing
-AngularJS application. Unlike `UpgradeModule`&mdash;which requires some extra steps&mdash;
+AngularJS application. Unlike `UpgradeModule`—which requires some extra steps—
 `downgradeModule()` is able to take care of bootstrapping the Angular module, as long as you provide
 the recipe.
 

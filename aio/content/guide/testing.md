@@ -21,8 +21,11 @@ Before writing tests for your Angular app, you should have a basic understanding
   Angular 的基本原理
 
 * JavaScript
+
 * HTML
+
 * CSS
+
 * [Angular CLI](/cli)
 
 <hr>
@@ -511,34 +514,34 @@ After you've set up your application for testing, you might find the following t
 
 当你设置准备好测试环境之后，可能会发现以下测试指南很有用。
 
-* [Code coverage](guide/testing-code-coverage)&mdash;find out how much of your app your tests are covering and how to specify required amounts.
+* [Code coverage](guide/testing-code-coverage)—find out how much of your app your tests are covering and how to specify required amounts.
 
   [代码覆盖](guide/testing-code-coverage) - 找出你的测试覆盖了多少应用，以及如何指定所需的数量。
 
-* [Testing services](guide/testing-services)&mdash;learn how to test the services your application uses.
+* [Testing services](guide/testing-services)—learn how to test the services your application uses.
 
   [测试服务](guide/testing-services) - 了解如何测试应用中所用的服务。
 
-* [Basics of testing components](guide/testing-components-basics)&mdash;discover the basics of testing Angular components.
+* [Basics of testing components](guide/testing-components-basics)—discover the basics of testing Angular components.
 
   [测试组件的基础知识](guide/testing-components-basics) - 了解测试 Angular 组件的基础知识。
 
-* [Component testing scenarios](guide/testing-components-scenarios)&mdash;read about the various kinds of component testing scenarios and use cases.
+* [Component testing scenarios](guide/testing-components-scenarios)—read about the various kinds of component testing scenarios and use cases.
 
   [组件测试场景](guide/testing-components-scenarios) - 了解各种组件测试场景和用例。
 
-* [Testing attribute directives](guide/testing-attribute-directives)&mdash;learn about how to test your attribute directives.
+* [Testing attribute directives](guide/testing-attribute-directives)—learn about how to test your attribute directives.
 
   [测试属性型指令](guide/testing-attribute-directives) - 了解如何测试你的属性型指令。
 
-* [Testing pipes](guide/testing-pipes)&mdash;find out how to test pipes.
+* [Testing pipes](guide/testing-pipes)—find out how to test pipes.
 
   [测试管道](guide/testing-pipes) - 了解测试管道的方法。
 
-* [Debugging tests](guide/test-debugging)&mdash;uncover common testing bugs.
+* [Debugging tests](guide/test-debugging)—uncover common testing bugs.
 
   [调试测试代码](guide/testing-attribute-directives) - 发现测试代码的常见 BUG。
 
-* [Testing utility APIs](guide/testing-utility-apis)&mdash;get familiar with Angular testing features.
+* [Testing utility APIs](guide/testing-utility-apis)—get familiar with Angular testing features.
 
   [测试实用工具 API](guide/testing-utility-apis) - 了解 Angular 的测试特性。

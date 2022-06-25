@@ -68,9 +68,9 @@ Additional pages and sections describe some basic programming techniques for Ang
   [表单](guide/forms-overview)：通过基于 HTML 的输入验证，来支持复杂的数据录入场景。
 
 * [Animations](guide/animations): Use Angular's animation library to animate component behavior
-without deep knowledge of animation techniques or CSS.
+  without deep knowledge of animation techniques or CSS.
 
-  [动画](guide/animations)：使用 Angular 的动画库，你可以让组件支持动画行为，而不用深入了解动画技术或 CSS。
+    [动画](guide/animations)：使用 Angular 的动画库，你可以让组件支持动画行为，而不用深入了解动画技术或 CSS。
 
 ## Client-server interaction
 
@@ -85,7 +85,8 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 * [HTTP](guide/http): Communicate with a server to get data, save data, and invoke server-side actions with an HTTP client.
 
   [HTTP](guide/http)：与服务器通信，通过 HTTP 客户端来获取数据、保存数据，并调用服务端的动作。
-*   [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering (SSR). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
+
+* [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering (SSR). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
 
   [服务器端渲染](guide/universal)：Angular Universal 通过服务器端渲染（SSR）在服务器上生成静态应用页面。这允许你在服务器上运行 Angular 应用，以提高性能，并在移动设备和低功耗设备上快速显示首屏，同时也方便了网页抓取工具。
 
@@ -133,9 +134,9 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 ## 文件结构、配置和依赖
 
-*   [Workspace and file structure](guide/file-structure): Understand the structure of Angular workspace and project folders.
+* [Workspace and file structure](guide/file-structure): Understand the structure of Angular workspace and project folders.
 
- [工作区与文件结构](guide/file-structure)：理解 Angular 工作区与项目文件夹的结构。
+  [工作区与文件结构](guide/file-structure)：理解 Angular 工作区与项目文件夹的结构。
 
 * [Building and serving](guide/build): Learn to define different build and proxy server configurations for your project, such as development, staging, and production.
 

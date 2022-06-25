@@ -293,9 +293,9 @@ However, selective child animations can still be run on a disabled parent in one
 不过，选择性的子动画仍然可以用如下方式之一在已禁用的父元素上运行：
 
 * A parent animation can use the [`query()`](api/animations/query) function to collect inner elements located in disabled areas of the HTML template.
-Those elements can still animate.
+  Those elements can still animate.
 
-  父动画可以使用 [`query()`](api/animations/query) 函数来收集 HTML 模板中位于禁止动画区域内部的元素。这些元素仍然可以播放动画。
+    父动画可以使用 [`query()`](api/animations/query) 函数来收集 HTML 模板中位于禁止动画区域内部的元素。这些元素仍然可以播放动画。
 
 * A child animation can be queried by a parent and then later animated with the `animateChild()` function.
 

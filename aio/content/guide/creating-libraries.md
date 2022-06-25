@@ -1,4 +1,4 @@
-﻿# Creating libraries
+# Creating libraries
 
 # 创建库
 
@@ -46,14 +46,14 @@ The `ng generate` command creates the `projects/my-lib` folder in your workspace
 
 <div class="alert is-helpful">
 
-     For more details on how a library project is structured, refer to the [Library project files](guide/file-structure#library-project-files) section of the [Project File Structure guide](guide/file-structure).
-     
-     要了解关于库项目的目录结构的详细信息，参阅[项目文件结构](guide/file-structure)中的[库项目文件](guide/file-structure#library-project-files)部分。
+ For more details on how a library project is structured, refer to the [Library project files](guide/file-structure#library-project-files) section of the [Project File Structure guide](guide/file-structure).
+ 
+ 要了解关于库项目的目录结构的详细信息，参阅[项目文件结构](guide/file-structure)中的[库项目文件](guide/file-structure#library-project-files)部分。
 
-     Use the monorepo model to use the same workspace for multiple projects.
-     See [Setting up for a multi-project workspace](guide/file-structure#multiple-projects).
+ Use the monorepo model to use the same workspace for multiple projects.
+ See [Setting up for a multi-project workspace](guide/file-structure#multiple-projects).
 
-     可以使用单一仓库（monorepo）模式将同一个工作区用于多个项目。参阅[建立多项目型工作区](guide/file-structure#multiple-projects)。
+ 可以使用单一仓库（monorepo）模式将同一个工作区用于多个项目。参阅[建立多项目型工作区](guide/file-structure#multiple-projects)。
 
 </div>
 
@@ -218,7 +218,6 @@ cd dist/my-lib
 npm publish
 </code-example>
 
-
 <a id="lib-assets"></a>
 
 ## Managing assets in a library
@@ -281,19 +280,19 @@ To use your own library in an application:
 
 * Build the library. You cannot use a library before it is built.
 
-  构建该库。在构建之前，无法使用库。
+   构建该库。在构建之前，无法使用库。
 
- <code-example language="bash">
- ng build my-lib
- </code-example>
+  <code-example language="bash">
+  ng build my-lib
+  </code-example>
 
 * In your applications, import from the library by name:
 
-  在你的应用中，按名字从库中导入：
+   在你的应用中，按名字从库中导入：
 
- ```
- import { myExport } from 'my-lib';
- ```
+  ```
+  import { myExport } from 'my-lib';
+  ```
 
 ### Building and rebuilding your library
 
@@ -370,11 +369,11 @@ There are two distribution formats to use when publishing a library:
 
 发布库时可以使用两种分发格式：
 
-* partial-Ivy **(recommended)**&mdash;contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards.
+* partial-Ivy **(recommended)**—contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards.
 
   partial-Ivy（部分 Ivy）**（推荐）** —— 包含可移植代码，从 v12 开始，使用任何版本的 Angular 构建的 Ivy 应用都可以使用这些可移植代码。
 
-* full-Ivy&mdash;contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the _exact_ same version of Angular. This format is useful for environments where all library and application code is built directly from source.
+* full-Ivy—contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the _exact_ same version of Angular. This format is useful for environments where all library and application code is built directly from source.
 
   full-Ivy（完全 Ivy）—— 包含专用的 Angular Ivy 指令，不能保证它们可在 Angular 的不同版本中使用。这种格式要求库和应用使用*完全相同*的 Angular 版本构建。这种格式对于直接从源代码构建所有库和应用代码的环境很有用。
 

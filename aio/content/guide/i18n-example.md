@@ -37,7 +37,7 @@ The following tabs display the example application and the associated translatio
 
 <!-- links -->
 
-[AioGuideI18nOverview]: guide/i18n-overview "Angular Internationalization | Angular"  
+[AioGuideI18nOverview]: guide/i18n-overview "Angular Internationalization | Angular"
 
 <!-- external links -->
 

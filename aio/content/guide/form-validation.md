@@ -84,14 +84,14 @@ Notice the following features illustrated by the example.
    `#name="ngModel"` 把 `NgModel` 导出成了一个名叫 `name` 的局部变量。`NgModel` 把自己控制的 `FormControl` 实例的属性映射出去，让你能在模板中检查控件的状态，比如 `valid` 和 `dirty`。要了解完整的控件属性，参阅 API 参考手册中的[AbstractControl](api/forms/AbstractControl)。
 
   * The `*ngIf` on the `<div>` element reveals a set of nested message `divs`
-    but only if the `name` is invalid and the control is either `dirty` or `touched`.
+     but only if the `name` is invalid and the control is either `dirty` or `touched`.
 
-   `<div>` 元素的 `*ngIf` 展示了一组嵌套的消息 `div`，但是只在有“name”错误和控制器为 `dirty` 或者 `touched` 时才出现。
+    `<div>` 元素的 `*ngIf` 展示了一组嵌套的消息 `div`，但是只在有“name”错误和控制器为 `dirty` 或者 `touched` 时才出现。
 
   * Each nested `<div>` can present a custom message for one of the possible validation errors.
-    There are messages for `required`, `minlength`, and `forbiddenName`.
+     There are messages for `required`, `minlength`, and `forbiddenName`.
 
-   每个嵌套的 `<div>` 为其中一个可能出现的验证错误显示一条自定义消息。比如 `required`、`minlength` 和 `forbiddenName`。
+    每个嵌套的 `<div>` 为其中一个可能出现的验证错误显示一条自定义消息。比如 `required`、`minlength` 和 `forbiddenName`。
 
 <a id="dirty-or-touched"></a>
 
@@ -574,4 +574,3 @@ new FormControl('', {updateOn: 'blur'});
 By default, Angular disables [native HTML form validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation) by adding the `novalidate` attribute on the enclosing `<form>` and uses directives to match these attributes with validator functions in the framework. If you want to use native validation **in combination** with Angular-based validation, you can re-enable it with the `ngNativeValidate` directive. See the [API docs](api/forms/NgForm#native-dom-validation-ui) for details.
 
 默认情况下，Angular 通过在 `<form>` 元素上添加 `novalidate` 属性来禁用[原生 HTML 表单验证](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)，并使用指令将这些属性与框架中的验证器函数相匹配。如果你想将原生验证与基于 Angular 的验证**结合**使用，你可以使用 `ngNativeValidate` 指令来重新启用它。欲知详情，请参阅[ API 文档](api/forms/NgForm#native-dom-validation-ui)。
-

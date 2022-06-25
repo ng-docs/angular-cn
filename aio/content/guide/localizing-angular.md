@@ -30,7 +30,7 @@ To localize Angular documentation, you must include, at a minimum, the following
 * [Tour of Heroes app and tutorial](tutorial)
   * [Create a new project](tutorial/toh-pt0)
   * [The hero editor](tutorial/toh-pt1)
-  * [Display a selection list](tutorial/toh-pt2)   
+  * [Display a selection list](tutorial/toh-pt2)
   * [Create a feature component](tutorial/toh-pt3)
   * [Add services](tutorial/toh-pt4)
   * [Add navigation with routing](tutorial/toh-pt5)

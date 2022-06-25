@@ -414,6 +414,7 @@ Each budget entry is a JSON object with the following properties:
  </table>
 
 {@a commonjs }
+
 ## Configuring CommonJS dependencies
 
 ## 配置 CommonJS 依赖项
@@ -473,6 +474,7 @@ Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.b
 * Tell Autoprefixer what browsers to target by adding a browserslist property to the package configuration file, `package.json`:
 
   可以为 `package.json` 添加 `browserslist` 属性来告诉 Autoprefixer，要针对哪些浏览器：
+
 ```
  "browserslist": [
    "> 1%",
@@ -482,7 +484,7 @@ Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.b
 
 * Alternatively, you can add a new file, `.browserslistrc`, to the project directory, that specifies browsers you want to support:
 
-  或者你也可以在项目目录下添加一个新文件 `.browserslistrc`，用于指定你要支持哪些浏览器： 
+  或者你也可以在项目目录下添加一个新文件 `.browserslistrc`，用于指定你要支持哪些浏览器：
 
 ```
  ### Supported Browsers
@@ -514,30 +516,30 @@ For example, to divert all calls for `http://localhost:4200/api` to a server run
 
    往这个新的代理配置文件中添加如下内容：
 
-    ```
-    {
-      "/api": {
-        "target": "http://localhost:3000",
-        "secure": false
-      }
-    }
-    ```
+   ```
+   {
+     "/api": {
+       "target": "http://localhost:3000",
+       "secure": false
+     }
+   }
+   ```
 
 1. In the CLI configuration file, `angular.json`, add the `proxyConfig` option to the `serve` target:
 
    在 CLI 配置文件 `angular.json` 中为 `serve` 目标添加 `proxyConfig` 选项：
 
-    ```
-    ...
-    "architect": {
-      "serve": {
-        "builder": "@angular-devkit/build-angular:dev-server",
-        "options": {
-          "browserTarget": "your-application-name:build",
-          "proxyConfig": "src/proxy.conf.json"
-        },
-    ...
-    ```
+   ```
+   ...
+   "architect": {
+     "serve": {
+       "builder": "@angular-devkit/build-angular:dev-server",
+       "options": {
+         "browserTarget": "your-application-name:build",
+         "proxyConfig": "src/proxy.conf.json"
+       },
+   ...
+   ```
 
 1. To run the development server with this proxy configuration, call `ng serve`.
 

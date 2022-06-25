@@ -241,7 +241,7 @@ To define a template within the component, add a `template` property to the `@Co
     region="template">
 </code-example>
 
-If you want your template to span multiple lines, use backticks (<code> ` </code>).
+If you want your template to span multiple lines, use backticks (<code> \` </code>).
 For example:
 
 如果你想让模板跨越多行，可以使用反引号（ `` ` `` ）。例如：

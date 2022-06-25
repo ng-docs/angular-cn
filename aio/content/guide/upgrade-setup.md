@@ -37,6 +37,7 @@ Setting up a new project on your machine is quick and easy with the [QuickStart 
 **前提条件：**确保你已经安装好了 [Node.js® 和 npm](guide/setup-local#prerequisites "Angular prerequisites")。
 
 <a id="clone"></a>
+
 ## Clone
 
 ## 克隆
@@ -50,7 +51,6 @@ Perform the _clone-to-launch_ steps with these terminal commands.
   cd quickstart
   npm install
 </code-example>
-
 
 <a id="download"></a>
 
@@ -68,7 +68,6 @@ and unzip it into your project folder. Then perform the remaining steps with the
   cd quickstart
   npm install
 </code-example>
-
 
 <a id="non-essential"></a>
 
@@ -112,7 +111,6 @@ Open a terminal window in the project folder and enter the following commands fo
 
 </code-example>
 
-
 ## Update dependency versions
 
 ## 更新依赖版本
@@ -152,58 +150,57 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
 5. In order to be able to load the latest Angular framework packages (in ES2015 format) correctly, replace the relevant entries in `src/systemjs.config.js`:
 
-    为了能正确加载最新的 Angular 框架包（ES2015 格式），请替换 `src/systemjs.config.js` 中的相关条目：
+   为了能正确加载最新的 Angular 框架包（ES2015 格式），请替换 `src/systemjs.config.js` 中的相关条目：
 
-    <code-example
-        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
-        region="angular-paths">
-    </code-example>
+   <code-example
+       path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+       region="angular-paths">
+   </code-example>
 
 6. In order to be able to load the latest RxJS package correctly, replace the relevant entries in `src/systemjs.config.js`:
 
-    为了能够正确加载最新的 RxJS 包，请替换 `src/systemjs.config.js` 中的相关条目：
+   为了能够正确加载最新的 RxJS 包，请替换 `src/systemjs.config.js` 中的相关条目：
 
-    <code-example
-        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
-        region="rxjs-paths">
-    </code-example>
+   <code-example
+       path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+       region="rxjs-paths">
+   </code-example>
 
 7. In order to be able to load the `tslib` package (which is required for files transpiled by TypeScript), add the following entry to `src/systemjs.config.js`:
 
-    为了能够加载 `tslib` 包（这是由 TypeScript 转译后的文件所必需的），请将以下条目添加到 `src/systemjs.config.js` ：
+   为了能够加载 `tslib` 包（这是由 TypeScript 转译后的文件所必需的），请将以下条目添加到 `src/systemjs.config.js` ：
 
-    <code-example
-        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
-        region="tslib-paths">
-    </code-example>
+   <code-example
+       path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+       region="tslib-paths">
+   </code-example>
 
 8. In order for SystemJS to be able to load the ES2015 Angular files correctly, add the following entries to `src/systemjs.config.js`:
 
-    为了使 SystemJS 能够正确加载 ES2015 Angular 文件，请将以下条目添加到 `src/systemjs.config.js` ：
+   为了使 SystemJS 能够正确加载 ES2015 Angular 文件，请将以下条目添加到 `src/systemjs.config.js` ：
 
-    <code-example
-        path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
-        region="plugin-babel">
-    </code-example>
+   <code-example
+       path="upgrade-phonecat-2-hybrid/systemjs.config.1.js"
+       region="plugin-babel">
+   </code-example>
 
 9. Finally, in order to prevent TypeScript typecheck errors for dependencies, add the following entry to `src/tsconfig.json`:
 
    最后，为了防止依赖项的 TypeScript 类型检查错误，请将以下条目添加到 `src/tsconfig.json` ：
 
-    ```json
-    {
-      "compilerOptions": {
-        "skipLibCheck": true,
-        // ...
-      }
-    }
-    ```
+   ```json
+   {
+     "compilerOptions": {
+       "skipLibCheck": true,
+       // ...
+     }
+   }
+   ```
 
 With that, you can now run `npm start` and have the application built and served.
 Once built, the application will be automatically opened in a new browser tab and it will be automatically reloaded when you make changes to the source code.
 
 有了这些，你现在就可以运行 `npm start` 并构建和启动应用程序了。构建后，应用程序将自动在新的浏览器选项卡中打开，并在你更改源代码时自动重新加载。
-
 
 <a id="seed"></a>
 
@@ -414,7 +411,6 @@ The following are all in `src/`
   </tr>
 
 </table>
-
 
 ## Appendix: Test using `fakeAsync()/waitForAsync()`
 

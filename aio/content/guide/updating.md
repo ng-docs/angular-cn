@@ -10,8 +10,8 @@ This document contains information and resources to help you keep your Angular a
 
 本文档包含一些信息和资源，来帮助你持续更新 Angular 的应用和库。
 
-For information about our versioning policy and practices&mdash;including
-support and deprecation practices, as well as the release schedule&mdash;see [Angular versioning and releases](guide/releases "Angular versioning and releases").
+For information about our versioning policy and practices—including
+support and deprecation practices, as well as the release schedule—see [Angular versioning and releases](guide/releases "Angular versioning and releases").
 
 要了解我们的版本策略和实践（包括支持或弃用某些特性时的做法，以及发布计划），请参阅 [Angular 的版本与发布](guide/releases "Angular versioning and releases")。
 
@@ -39,9 +39,9 @@ To be notified when new releases are available, follow [@angular](https://twitte
 
 ## 了解最新特性
 
-What's new? What's changed? We share the most important things you need to know on the Angular blog in [release announcements]( https://blog.angular.io/tagged/release%20notes "Angular blog - release announcements").
+What's new? What's changed? We share the most important things you need to know on the Angular blog in [release announcements](https://blog.angular.io/tagged/release%20notes "Angular blog - release announcements").
 
-有什么新特性？有哪些变化？我们会在 Angular 官方博客的[发布声明]( https://blog.angular.io/tagged/release%20notes "Angular blog - release announcements")中和你共享那些最重要的信息。
+有什么新特性？有哪些变化？我们会在 Angular 官方博客的[发布声明](https://blog.angular.io/tagged/release%20notes "Angular blog - release announcements")中和你共享那些最重要的信息。
 
 To review a complete list of changes, organized by version, see the [Angular change log](https://github.com/angular/angular/blob/master/CHANGELOG.md "Angular change log").
 

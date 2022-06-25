@@ -259,7 +259,7 @@ service worker has changed, the service worker will be updated in the background
 首次打开应用时或在一段非活动时间之后再访问应用程序时，就会下载 Angular Service Worker。如果 Service Worker 发生了变化，Service Worker 就会在后台进行更新。
 
 Most updates to the Angular service worker are transparent to the
-app&mdash;the old caches are still valid and content is still served
+app—the old caches are still valid and content is still served
 normally. However, occasionally a bugfix or feature in the Angular
 service worker requires the invalidation of old caches. In this case,
 the application will be refreshed transparently from the network.
@@ -309,7 +309,6 @@ Angular Service Worker 会在虚拟目录 `ngsw/` 下暴露出调试信息。
 下面是这个调试页面中的一段范例内容：
 
 ```
-
 NGSW Debug Info:
 
 Driver version: 13.3.7
@@ -329,7 +328,6 @@ Task queue:
  * init post-load (update, cleanup)
 
 Debug log:
-
 ```
 
 #### Driver state
@@ -341,9 +339,7 @@ The first line indicates the driver state:
 第一行表示驱动程序的状态：
 
 ```
-
 Driver state: NORMAL ((nominal))
-
 ```
 
 `NORMAL` indicates that the service worker is operating normally and is not in a degraded state.
@@ -355,25 +351,25 @@ There are two possible degraded states:
 有两种可能的降级状态：
 
 * `EXISTING_CLIENTS_ONLY`: the service worker does not have a
-clean copy of the latest known version of the application. Older cached
-versions are safe to use, so existing tabs continue to run from
-cache, but new loads of the application will be served from the network.
-The service worker will try to recover from this state when a new
-version of the application is detected and installed (that is,
-when a new `ngsw.json` is available).
+  clean copy of the latest known version of the application. Older cached
+  versions are safe to use, so existing tabs continue to run from
+  cache, but new loads of the application will be served from the network.
+  The service worker will try to recover from this state when a new
+  version of the application is detected and installed (that is,
+  when a new `ngsw.json` is available).
 
-   `EXISTING_CLIENTS_ONLY`：这个 Service Worker 没有该应用的最新已知版本的干净副本。
-  较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，
-  但新的应用将从网络上加载。
+     `EXISTING_CLIENTS_ONLY`：这个 Service Worker 没有该应用的最新已知版本的干净副本。
+    较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，
+    但新的应用将从网络上加载。
 
 * `SAFE_MODE`: the service worker cannot guarantee the safety of
-using cached data. Either an unexpected error occurred or all
-cached versions are invalid. All traffic will be served from the
-network, running as little service worker code as possible.
+  using cached data. Either an unexpected error occurred or all
+  cached versions are invalid. All traffic will be served from the
+  network, running as little service worker code as possible.
 
-   `SAFE_MODE`：Service Worker 不能保证使用缓存数据的安全性。
-  发生了意外错误或所有缓存版本都无效。
-  这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。
+     `SAFE_MODE`：Service Worker 不能保证使用缓存数据的安全性。
+    发生了意外错误或所有缓存版本都无效。
+    这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。
 
 In both cases, the parenthetical annotation provides the
 error that caused the service worker to enter the degraded state.
@@ -396,9 +392,7 @@ state of the previous instance.
 #### 最新清单的哈希
 
 ```
-
 Latest manifest hash: eea7f5f464f90789b621170af5a569d6be077e5c
-
 ```
 
 This is the SHA1 hash of the most up-to-date version of the application that the service worker knows about.
@@ -410,9 +404,7 @@ This is the SHA1 hash of the most up-to-date version of the application that the
 #### 最后一次更新检查
 
 ```
-
 Last update check: never
-
 ```
 
 This indicates the last time the service worker checked for a new version, or update, of the application. `never` indicates that the service worker has never checked for an update.
@@ -428,11 +420,9 @@ In this example debug file, the update check is currently scheduled, as explaine
 #### 版本
 
 ```
-
 === Version eea7f5f464f90789b621170af5a569d6be077e5c ===
 
 Clients: 7b79a015-69af-4d3d-9ae6-95ba90c79486, 5bc08295-aaf2-42f3-a4cc-9e4ef9100f65
-
 ```
 
 In this example, the service worker has one version of the application cached and
@@ -450,14 +440,12 @@ API in the browser.
 #### 空闲任务队列
 
 ```
-
 === Idle Task Queue ===
 Last update tick: 1s496u
 Last update run: never
 Task queue:
 
  * init post-load (update, cleanup)
-
 ```
 
 The Idle Task Queue is the queue of all pending tasks that happen
@@ -485,9 +473,7 @@ which the queue might be processed.
 #### 调试日志
 
 ```
-
 Debug log:
-
 ```
 
 Errors that occur within the service worker will be logged here.
@@ -506,21 +492,21 @@ Chrome 等浏览器提供了能与 Service Worker 交互的开发者工具。
 这些工具在使用得当时非常强大，但也要牢记一些事情。
 
 * When using developer tools, the service worker is kept running
-in the background and never restarts. This can cause behavior with Dev
-Tools open to differ from behavior a user might experience.
+  in the background and never restarts. This can cause behavior with Dev
+  Tools open to differ from behavior a user might experience.
 
-   使用开发人员工具时，Service Worker 将继续在后台运行，并且不会重新启动。
-  这可能会导致开着 Dev Tools 时的行为与用户实际遇到的行为不一样。
+     使用开发人员工具时，Service Worker 将继续在后台运行，并且不会重新启动。
+    这可能会导致开着 Dev Tools 时的行为与用户实际遇到的行为不一样。
 
 * If you look in the Cache Storage viewer, the cache is frequently
-out of date. Right click the Cache Storage title and refresh the caches.
+  out of date. Right click the Cache Storage title and refresh the caches.
 
-   如果你查看缓存存储器的查看器，缓存就会经常过期。右键单击缓存存储器的标题并刷新缓存。
+     如果你查看缓存存储器的查看器，缓存就会经常过期。右键单击缓存存储器的标题并刷新缓存。
 
 * Stopping and starting the service worker in the Service Worker
-pane triggers a check for updates.
+  pane triggers a check for updates.
 
-  在 Service Worker 页停止并重新启动这个 Service Worker 将会触发一次更新检查。
+    在 Service Worker 页停止并重新启动这个 Service Worker 将会触发一次更新检查。
 
 ## Service Worker Safety
 

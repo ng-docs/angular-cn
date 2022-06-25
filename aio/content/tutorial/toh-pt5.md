@@ -708,10 +708,10 @@ Open `HeroService` and add the following `getHero()` method with the `id` after 
 
 <div class="alert is-important">
 
-Note the backticks ( &#96; ) that define a JavaScript
+Note the backticks ( \` ) that define a JavaScript
 [_template literal_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) for embedding the `id`.
 
-注意，反引号 ( &#96; ) 用于定义 JavaScript 的 [模板字符串字面量](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)，以便嵌入 `id`。
+注意，反引号 ( \` ) 用于定义 JavaScript 的 [模板字符串字面量](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)，以便嵌入 `id`。
 
 </div>
 

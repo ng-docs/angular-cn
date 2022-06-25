@@ -141,9 +141,9 @@ The following example displays how to mark the `title` attribute on the `img` ta
 
 ## 在组件代码中标记文本
 
-In component code, the translation source text and the metadata are surrounded by backtick (<code>&#96;</code>) characters.
+In component code, the translation source text and the metadata are surrounded by backtick (<code>\`</code>) characters.
 
-在组件代码中，翻译源文本和元数据被反引号 (<code>&#96;</code>) 字符包围。
+在组件代码中，翻译源文本和元数据被反引号 (<code>\`</code>) 字符包围。
 
 Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark a string in your code for translation.
 
@@ -472,7 +472,7 @@ The following code example shows the [en-US `plural()`][GithubAngularAngularBlob
 
 许多语言环境不支持某些复数类别。默认语言环境 (`en-US`) 使用一个非常简单的 `plural()` 函数，该函数不支持 `few` 复数类别。另一个具有简单 `plural()` 函数的语言环境是 `es` 。以下代码示例显示了 [en-US 多重 `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] 函数。
 
-`<code-example path="i18n/doc-files/locale_plural_function.ts" class="no-box" hideCopy></code-example>
+<code-example path="i18n/doc-files/locale_plural_function.ts" class="no-box" hideCopy></code-example>
 
 The `plural()` function only returns 1 (`one`) or 5 (`other`).
 The `few` category never matches.
@@ -522,7 +522,7 @@ The following code example shows how to use the `plural` clause to express the p
 
 使用 HTML 标记和[插值][AioGuideGlossaryInterpolation]。下面的代码示例展示了如何在 `<span>` 元素中使用 `plural` 子句来表达前三种情况。
 
-`<code-example path="i18n/src/app/app.component.html" region="i18n-plural" header="src/app/app.component.html"></code-example>
+<code-example path="i18n/src/app/app.component.html" region="i18n-plural" header="src/app/app.component.html"></code-example>
 
 Review the following details in the previous code example.
 

@@ -70,6 +70,7 @@ Observables are often compared to promises. Here are some key differences:
 <code-example path="comparing-observables/src/observables.ts" 
     header="src/observables.ts (chain)" 
     region="chain"></code-example>
+
 * Promises do not differentiate between the last `.then` clauses (equivalent to subscription) and intermediate `.then` clauses (equivalent to map).
 
    承诺并不区分最后的 `.then()` 语句（等价于订阅）和中间的 `.then()` 语句（等价于映射）。
@@ -77,6 +78,7 @@ Observables are often compared to promises. Here are some key differences:
 <code-example path="comparing-observables/src/promises.ts"
     header="src/promises.ts (chain)" 
     region="chain"></code-example>
+
 ### Cancellation
 
 ### 可取消

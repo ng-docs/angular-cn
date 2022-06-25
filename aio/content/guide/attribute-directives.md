@@ -24,30 +24,30 @@ This section walks you through creating a highlight directive that sets the back
 
 1. To create a directive, use the CLI command [`ng generate directive`](cli/generate).
 
-   要创建指令，请使用 CLI 命令 [`ng generate directive`](cli/generate)。
+      要创建指令，请使用 CLI 命令 [`ng generate directive`](cli/generate)。
 
-  <code-example language="sh">
-ng generate directive highlight
-</code-example>
+     <code-example language="sh">
+   ng generate directive highlight
+   </code-example>
 
-  The CLI creates `src/app/highlight.directive.ts`, a corresponding test file `src/app/highlight.directive.spec.ts`, and declares the directive class in the `AppModule`.
+     The CLI creates `src/app/highlight.directive.ts`, a corresponding test file `src/app/highlight.directive.spec.ts`, and declares the directive class in the `AppModule`.
 
-  CLI 创建 `src/app/highlight.directive.ts` 以及相应的测试文件 `src/app/highlight.directive.spec.ts`，并在 `AppModule` 中声明此指令类。
+     CLI 创建 `src/app/highlight.directive.ts` 以及相应的测试文件 `src/app/highlight.directive.spec.ts`，并在 `AppModule` 中声明此指令类。
 
-  The CLI generates the default `src/app/highlight.directive.ts` as follows:
+     The CLI generates the default `src/app/highlight.directive.ts` as follows:
 
-  CLI 生成默认的 `src/app/highlight.directive.ts`，如下所示：
+     CLI 生成默认的 `src/app/highlight.directive.ts`，如下所示：
 
-  <code-example path="attribute-directives/src/app/highlight.directive.0.ts" header="src/app/highlight.directive.ts"></code-example>
+     <code-example path="attribute-directives/src/app/highlight.directive.0.ts" header="src/app/highlight.directive.ts"></code-example>
 
-  The `@Directive()` decorator's configuration property specifies the directive's CSS attribute selector, `[appHighlight]`.
+     The `@Directive()` decorator's configuration property specifies the directive's CSS attribute selector, `[appHighlight]`.
 
-  `@Directive()` 装饰器的配置属性会指定指令的 CSS 属性选择器 `[appHighlight]`。
+     `@Directive()` 装饰器的配置属性会指定指令的 CSS 属性选择器 `[appHighlight]`。
 
 1. Import `ElementRef` from `@angular/core`.
-  `ElementRef` grants direct access to the host DOM element through its `nativeElement` property.
+   `ElementRef` grants direct access to the host DOM element through its `nativeElement` property.
 
-   从 `@angular/core` 导入 `ElementRef`。`ElementRef` 的 `nativeElement` 属性会提供对宿主 DOM 元素的直接访问权限。
+    从 `@angular/core` 导入 `ElementRef`。`ElementRef` 的 `nativeElement` 属性会提供对宿主 DOM 元素的直接访问权限。
 
 1. Add `ElementRef` in the directive's `constructor()` to [inject](guide/dependency-injection) a reference to the host DOM element, the element to which you apply `appHighlight`.
 
@@ -70,6 +70,7 @@ ng generate directive highlight
 </div>
 
 <a id="apply-directive"></a>
+
 ## Applying an attribute directive
 
 ## 应用属性型指令
@@ -129,6 +130,7 @@ The background color appears when the pointer hovers over the paragraph element 
 </div>
 
 <a id="bindings"></a>
+
 ## Passing values into an attribute directive
 
 ## 将值传递给属性型指令
@@ -206,7 +208,6 @@ This section guides you through adding radio buttons to bind your color choice t
    </div>
 
 <a id="second-property"></a>
-
 
 ## Binding to a second property
 

@@ -152,7 +152,7 @@ Other notable differences from JavaScript syntax include:
 
 ## 表达式上下文
 
-Interpolated expressions have a context&mdash;a particular part of the application to which the expression belongs.
+Interpolated expressions have a context—a particular part of the application to which the expression belongs.
 Typically, this context is the component instance.
 
 插值表达式具有上下文 —— 表达式所属应用中的特定部分。通常，此上下文就是组件实例。
@@ -194,7 +194,7 @@ Additionally, they can't call `console.log()` or `Math.max()` and they are restr
 
 ### 防止命名冲突
 
-The context against which an expression evaluates is the union of the template variables, the directive's context object&mdash;if it has one&mdash;and the component's members.
+The context against which an expression evaluates is the union of the template variables, the directive's context object—if it has one—and the component's members.
 If you reference a name that belongs to more than one of these namespaces, Angular applies the following logic to determine the context:
 
 表达式求值的上下文是模板变量、指令的上下文对象（如果有的话）以及组件成员的并集。如果所引用的名称在多个命名空间都有，则 Angular 将应用以下逻辑来确定上下文：
@@ -261,23 +261,23 @@ When using template expressions, follow these best practices:
 
 * **No visible side effects**
 
-  **没有可见的副作用**
+    **没有可见的副作用**
 
-    According to Angular's [unidirectional data flow model](guide/glossary#unidirectional-data-flow), a template expression should not change any application state other than the value of the target property.
-    Reading a component value should not change some other displayed value.
-    The view should be stable throughout a single rendering pass.
+  According to Angular's [unidirectional data flow model](guide/glossary#unidirectional-data-flow), a template expression should not change any application state other than the value of the target property.
+  Reading a component value should not change some other displayed value.
+  The view should be stable throughout a single rendering pass.
 
-    根据 Angular 的[单向数据流模型](guide/glossary#unidirectional-data-flow)，除了目标属性的值之外，模板表达式不应更改任何应用状态。读取组件值不应更改其他显示值。该视图应在整个渲染过程中保持稳定。
+  根据 Angular 的[单向数据流模型](guide/glossary#unidirectional-data-flow)，除了目标属性的值之外，模板表达式不应更改任何应用状态。读取组件值不应更改其他显示值。该视图应在整个渲染过程中保持稳定。
 
-    <div class="callout is-important">
-      <header>Idempotent expressions reduce side effects</header>
-      <header>幂等表达式能减少副作用</header>
+  <div class="callout is-important">
+    <header>Idempotent expressions reduce side effects</header>
+    <header>幂等表达式能减少副作用</header>
 
-    An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
-    In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
+  An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
+  In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
 
-    [幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。
-用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
+  [幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。
+  用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
 
 Dependent values should not change during a single turn of the event loop.
 If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.
@@ -293,8 +293,8 @@ If an idempotent expression returns a string or a number, it returns the same st
 
   There is one exception to this behavior that applies to `*ngFor`.
   `*ngFor` has `trackBy` functionality that can deal with changing values in objects when iterating over them.
-  See [*ngFor with `trackBy`](guide/built-in-directives#ngfor-with-trackby) for details.
+  See [\*ngFor with `trackBy`](guide/built-in-directives#ngfor-with-trackby) for details.
 
-  对于 `*ngFor`，这种行为有一个例外。`*ngFor` 具有 `trackBy` 功能，在迭代对象时它可以正确处理对象值的变化。详情参见 [带 `trackBy` 的 *ngFor](guide/built-in-directives#ngfor-with-trackby)。
+  对于 `*ngFor`，这种行为有一个例外。`*ngFor` 具有 `trackBy` 功能，在迭代对象时它可以正确处理对象值的变化。详情参见 [带 `trackBy` 的 \*ngFor](guide/built-in-directives#ngfor-with-trackby)。
 
 </div>

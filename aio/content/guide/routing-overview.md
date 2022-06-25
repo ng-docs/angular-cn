@@ -32,7 +32,7 @@ Before creating a route, you should be familiar with the following:
 
   [模板基础](guide/glossary#template)
 
-* An Angular app&mdash;you can generate a basic Angular application using the [Angular CLI](cli).
+* An Angular app—you can generate a basic Angular application using the [Angular CLI](cli).
 
   一个 Angular 应用程序 - 你可以使用 [Angular CLI](cli) 生成基本的 Angular 应用程序。
 

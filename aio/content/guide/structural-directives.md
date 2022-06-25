@@ -109,17 +109,17 @@ In this section, you'll update your application to test the `UnlessDirective`.
    <code-example path="structural-directives/src/app/app.component.ts" header="src/app/app.component.ts (excerpt)" region="condition"></code-example>
 
 1. Update the template to use the directive.
-  Here, `*appUnless` is on two `<p>` tags with opposite `condition` values, one `true` and one `false`.
+   Here, `*appUnless` is on two `<p>` tags with opposite `condition` values, one `true` and one `false`.
 
-   更新模板以使用指令。这里，`*appUnless` 位于两个具有相反 `condition` 的 `<p>` 标记上，一个为 `true` ，一个为 `false` 。
+    更新模板以使用指令。这里，`*appUnless` 位于两个具有相反 `condition` 的 `<p>` 标记上，一个为 `true` ，一个为 `false` 。
 
-   <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (appUnless)" region="appUnless"></code-example>
+    <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (appUnless)" region="appUnless"></code-example>
 
-   The asterisk is shorthand that marks `appUnless` as a structural directive.
-   When the `condition` is falsy, the top (A) paragraph appears and the bottom (B) paragraph disappears.
-   When the `condition` is truthy, the top (A) paragraph disappears and the bottom (B) paragraph appears.
+    The asterisk is shorthand that marks `appUnless` as a structural directive.
+    When the `condition` is falsy, the top (A) paragraph appears and the bottom (B) paragraph disappears.
+    When the `condition` is truthy, the top (A) paragraph disappears and the bottom (B) paragraph appears.
 
-   星号是将 `appUnless` 标记为结构型指令的简写形式。如果 `condition` 是假值，则会让顶部段落 A，而底部段落 B 消失。当 `condition` 为真时，顶部段落 A 消失，而底部段落 B 出现。
+    星号是将 `appUnless` 标记为结构型指令的简写形式。如果 `condition` 是假值，则会让顶部段落 A，而底部段落 B 消失。当 `condition` 为真时，顶部段落 A 消失，而底部段落 B 出现。
 
 1. To change and display the value of `condition` in the browser, add markup that displays the status and a button.
 

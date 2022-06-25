@@ -20,29 +20,29 @@ The following properties, at the top-level of the file, configure the workspace.
 
 下列属性位于文件的顶层，用于配置工作区。
 
-*   `version`: The configuration-file version.
+* `version`: The configuration-file version.
 
-    `version`：该配置文件的版本。
+  `version`：该配置文件的版本。
 
-*   `newProjectRoot`: Path where new projects are created. Absolute or relative to the workspace folder.
+* `newProjectRoot`: Path where new projects are created. Absolute or relative to the workspace folder.
 
-    `newProjectRoot`：用来创建新工程的位置。绝对路径或相对于工作区目录的路径。
+  `newProjectRoot`：用来创建新工程的位置。绝对路径或相对于工作区目录的路径。
 
-*   `defaultProject`: Default project name to use in commands, where not provided as an argument. When you use `ng new` to create a new application in a new workspace, that application is the default project for the workspace until you change it here.
+* `defaultProject`: Default project name to use in commands, where not provided as an argument. When you use `ng new` to create a new application in a new workspace, that application is the default project for the workspace until you change it here.
 
-    `defaultProject`：当命令中没有指定参数时，要使用的默认工程名。当你用 `ng new` 在新的工作区中创建新应用时，该应用就会一直作为此工作区的默认项目，除非你到这里修改它。
+  `defaultProject`：当命令中没有指定参数时，要使用的默认工程名。当你用 `ng new` 在新的工作区中创建新应用时，该应用就会一直作为此工作区的默认项目，除非你到这里修改它。
 
-*   `cli` : A set of options that customize the [Angular CLI](cli). See the [CLI configuration options](#cli-configuration-options) section.
+* `cli` : A set of options that customize the [Angular CLI](cli). See the [CLI configuration options](#cli-configuration-options) section.
 
-    `cli`：一组用于自定义 [Angular CLI](cli) 的选项。参见 [CLI 配置选项](#cli-configuration-options)部分。
+  `cli`：一组用于自定义 [Angular CLI](cli) 的选项。参见 [CLI 配置选项](#cli-configuration-options)部分。
 
-*   `schematics` : A set of [schematics](guide/glossary#schematic) that customize the `ng generate` sub-command option defaults for this workspace. See the [Generation schematics](#schematics) section.
+* `schematics` : A set of [schematics](guide/glossary#schematic) that customize the `ng generate` sub-command option defaults for this workspace. See the [Generation schematics](#schematics) section.
 
-    `schematics`：一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅[生成器原理图](#schematics)。
+  `schematics`：一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅[生成器原理图](#schematics)。
 
-*   `projects` : Contains a subsection for each project (library or application) in the workspace, with the per-project configuration options.
+* `projects` : Contains a subsection for each project (library or application) in the workspace, with the per-project configuration options.
 
-    `projects`：对于工作区中的每个项目（应用或库）都会包含一个子分区，子分区中是每个项目的配置项。
+  `projects`：对于工作区中的每个项目（应用或库）都会包含一个子分区，子分区中是每个项目的配置项。
 
 The initial application that you create with `ng new app_name` is listed under "projects":
 
@@ -68,11 +68,11 @@ When you create a library project with `ng generate library`, the library projec
 
   请注意，配置文件的 `projects` 节与工作区的文件结构并不完全对应。
 
-  * The initial application created by `ng new` is at the top level of the workspace file structure.
+- The initial application created by `ng new` is at the top level of the workspace file structure.
 
   `ng new` 创建的这个初始应用位于工作区文件结构的顶层。
 
-  * Additional applications and libraries go into a `projects` folder in the workspace.
+- Additional applications and libraries go into a `projects` folder in the workspace.
 
     其它应用和库位于工作区的 `projects` 文件夹中。
 
@@ -92,21 +92,21 @@ The following configuration properties are a set of options that customize the A
 
 下列配置属性是 Angular CLI 的一组自定义选项。
 
-| Property | Description                                                                                   | Value Type                                              |
-| :------- |:----------------------------------------------------------------------------------------------|:--------------------------------------------------------|
-| 属性 | 说明                                                                                            | 值的类型                                                    |
-| `analytics` | Share anonymous [usage data](cli/usage-analytics-gathering) with the Angular Team.            | `boolean` \                                             | `ci` |
-| `analytics` | 与 Angular 团队共享匿名[使用数据](cli/usage-analytics-gathering)。                                        | `boolean` \                                             | `ci` |
-| `analyticsSharing` | A set of analytics sharing options.                                                           | [Analytics sharing options](#analytics-sharing-options) |
-| `analyticsSharing` | 一组分析共享选项。                                                                                     | [分析共享选项](#analytics-sharing-options)                    |
-| `cache` | Control [persistent disk cache](cli/cache) used by [Angular CLI Builders](guide/cli-builder). | [Cache options](#cache-options)                         |
-| `cache` | 控制 [Angular CLI 构建器](guide/cli-builder)使用的[持久化磁盘缓存](cli/cache)。                               | [缓存选项](#cache-options)                         |
-| `defaultCollection` | The default schematics collection to use.                                                     | `string`                                                |
-| `defaultCollection` | 要使用的默认原理图集合。                                                                                  | `string`                                                |
-| `packageManager` | The preferred package manager tool to use.                                                    | `npm` \                                                 | `cnpm` \| `pnpm` \| `yarn` |
-| `packageManager` | 要使用的首选包管理器工具                                                   | `npm` \                                                 | `cnpm` \| `pnpm` \| `yarn` |
-| `warnings` | Control CLI specific console warnings.                                                        | [Warnings options](#warnings-options)                   |
-| `warnings` | 控制 CLI 特定的控制台警告。                                                      | [警告选项](#warnings-options)                   |
+| Property | Description | Value Type |
+| :------- | :---------- | :--------- |
+| 属性 | 说明 | 值的类型 |
+| `analytics` | Share anonymous [usage data](cli/usage-analytics-gathering) with the Angular Team. | `boolean` &verbar; `ci` |
+| `analytics` | 与 Angular 团队共享匿名[使用数据](cli/usage-analytics-gathering)。 | `boolean` &verbar; `ci` |
+| `analyticsSharing` | A set of analytics sharing options. | [Analytics sharing options](#analytics-sharing-options) |
+| `analyticsSharing` | 一组分析共享选项。 | [分析共享选项](#analytics-sharing-options) |
+| `cache` | Control [persistent disk cache](cli/cache) used by [Angular CLI Builders](guide/cli-builder). | [Cache options](#cache-options) |
+| `cache` | 控制 [Angular CLI 构建器](guide/cli-builder)使用的[持久化磁盘缓存](cli/cache)。 | [缓存选项](#cache-options) |
+| `defaultCollection` | The default schematics collection to use. | `string` |
+| `defaultCollection` | 要使用的默认原理图集合。 | `string` |
+| `packageManager` | The preferred package manager tool to use. | `npm` &verbar; `cnpm` &verbar; `pnpm` &verbar; `yarn` |
+| `packageManager` | 要使用的首选包管理器工具 | `npm` &verbar; `cnpm` &verbar; `pnpm` &verbar; `yarn` |
+| `warnings` | Control CLI specific console warnings. | [Warnings options](#warnings-options) |
+| `warnings` | 控制 CLI 特定的控制台警告。 | [警告选项](#warnings-options) |
 
 ### Analytics sharing options
 
@@ -116,23 +116,23 @@ The following configuration properties are a set of options that customize the A
 | :------- | :---------- | :--------- |
 | 属性 | 说明 | 值的类型 |
 | `tracking` | Analytics sharing info tracking ID. | `string` |
-| `tracking` |  分析共享信息跟踪 ID。  | `string` |
+| `tracking` | 分析共享信息跟踪 ID。 | `string` |
 | `uuid` | Analytics sharing info UUID (Universally Unique Identifier). | `string` |
-| `uuid` | 分析共享信息 UUID（通用唯一标识符）。  | `string` |
+| `uuid` | 分析共享信息 UUID（通用唯一标识符）。 | `string` |
 
 ### Cache options
 
 ### 缓存选项
 
-| Property | Description                                           | Value Type | Default Value |
-| :------- |:------------------------------------------------------| :--------- | :------------ |
-| 属性 | 说明                                                    | 值的类型 | 默认值 |
-| `enabled` | Configure whether disk caching is enabled.            | `boolean` | `true` |
-| `enabled` | 配置是否启用磁盘缓存。                                           | `boolean` | `true` |
-| `environment` | Configure in which environment disk cache is enabled. | `local` \| `ci` \| `all` | `local` |
-| `environment` | 配置在哪个环境中启用磁盘缓存。                                       | `local` \| `ci` \| `all` | `local` |
-| `path` | The directory used to stored cache results.           | `string` | `.angular/cache` |
-| `path` | 用于存储缓存结果的目录。                                          | `string` | `.angular/cache` |
+| Property | Description | Value Type | Default Value |
+| :------- | :---------- | :--------- | :------------ |
+| 属性 | 说明 | 值的类型 | 默认值 |
+| `enabled` | Configure whether disk caching is enabled. | `boolean` | `true` |
+| `enabled` | 配置是否启用磁盘缓存。 | `boolean` | `true` |
+| `environment` | Configure in which environment disk cache is enabled. | `local` &verbar; `ci` &verbar; `all` | `local` |
+| `environment` | 配置在哪个环境中启用磁盘缓存。 | `local` &verbar; `ci` &verbar; `all` | `local` |
+| `path` | The directory used to stored cache results. | `string` | `.angular/cache` |
+| `path` | 用于存储缓存结果的目录。 | `string` | `.angular/cache` |
 
 ### Warnings options
 
@@ -142,7 +142,7 @@ The following configuration properties are a set of options that customize the A
 | :------- | :---------- | :--------- | :------------ |
 | 属性 | 说明 | 值的类型 | 默认值 |
 | `versionMismatch` | Show a warning when the global Angular CLI version is newer than the local one. | `boolean` | `true` |
-| `versionMismatch` | 当全局 Angular CLI 版本比本地版本更新时显示警告。  | `boolean` | `true` |
+| `versionMismatch` | 当全局 Angular CLI 版本比本地版本更新时显示警告。 | `boolean` | `true` |
 
 ## Project configuration options
 
@@ -298,7 +298,8 @@ See the example in [Build target](#build-target) below.
 * The `architect/server` section configures defaults for creating a Universal application with server-side rendering, using the `ng run <project>:server` command.
 
   `architect/server` 节用于为使用 `ng run <project>:server` 命令创建带服务器端渲染的 Universal 应用配置默认值。
-*   The `architect/app-shell` section configures defaults for creating an application shell for a progressive web application (PWA), using the `ng run <project>:app-shell` command.
+
+* The `architect/app-shell` section configures defaults for creating an application shell for a progressive web application (PWA), using the `ng run <project>:app-shell` command.
 
   `architect/app-shell` 部分使用 `ng run <project>:app-shell` 命令为渐进式 Web 应用（PWA）配置创建应用外壳的默认值。
 
@@ -321,7 +322,7 @@ The `architect/build` section configures defaults for options of the `ng build` 
 | :------- | :---------- |
 | 属性 | 说明 |
 | `builder` | The npm package for the build tool used to create this target. The default builder for an application (`ng build myApp`)is `@angular-devkit/build-angular:browser`, which uses the [webpack](https://webpack.js.org) package bundler. **NOTE**: A different builder is used for building a library (`ng build myLib`). |
-| `builder` | 用于构建此目标的构建工具的 npm 包。默认为 `@angular-devkit/build-angular:browser`，它使用的是 [webpack](https://webpack.js.org) 打包器。 **注意**：当构建库（`ng build myLib`）时使用了不同的构建器。|
+| `builder` | 用于构建此目标的构建工具的 npm 包。默认为 `@angular-devkit/build-angular:browser`，它使用的是 [webpack](https://webpack.js.org) 打包器。 **注意**：当构建库（`ng build myLib`）时使用了不同的构建器。 |
 | `options` | This section contains default build target options, used when no named alternative configuration is specified. See the [Default build targets](#default-build-targets) section. |
 | `options` | 本节包含构建选项的默认值，当没有指定命名的备用配置时使用。参阅[默认构建选项](#build-props)。 |
 | `configurations` | This section defines and names alternative configurations for different intended destinations. It contains a section for each named configuration, which sets the default options for that intended environment. See the [Alternate build configurations](#build-configs) section. |
@@ -435,23 +436,23 @@ A asset specification object can have the following fields.
 
 你可以通过把资产指定为对象的形式来进一步配置要复制的资产，而不仅是相对于工作区根目录的路径。一个资产对象可以包含如下字段。
 
-*   `glob`: A [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) using `input` as base directory.
+* `glob`: A [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) using `input` as base directory.
 
   `glob`：一个 [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) 它使用 `input` 作为基准目录。
 
-*   `input`: A path relative to the workspace root.
+* `input`: A path relative to the workspace root.
 
   `input`：相对于工作区根目录的路径。
 
-*   `output`: A path relative to `outDir` (default is `dist/`*project-name*). Because of the security implications, the CLI never writes files outside of the project output path.
+* `output`: A path relative to `outDir` (default is `dist/`*project-name*). Because of the security implications, the CLI never writes files outside of the project output path.
 
   `output`：相对于 `outDir` 的路径（默认为 `dist/`*project-name* ）。为了杜绝安全隐患，CLI 永远不会在项目输出路径之外写文件。
 
-*   `ignore`: A list of globs to exclude.
+* `ignore`: A list of globs to exclude.
 
   `ignore` ：要排除的 glob 列表。
 
-*   `followSymlinks`: Allow glob patterns to follow symlink directories. This allows subdirectories of the symlink to be searched. Defaults to `false`.
+* `followSymlinks`: Allow glob patterns to follow symlink directories. This allows subdirectories of the symlink to be searched. Defaults to `false`.
 
   `followSymlinks`：允许这些 glob 模式跟踪目录的符号链接。这样会允许搜索符号链接过来的子目录。默认为 `false`。
 
@@ -639,37 +640,37 @@ There are several options that can be used to fine-tune the optimization of an a
 
 有几个选项可用于微调应用程序的优化方式。
 
-| Option    | Description                                                                    | Value Type | Dafault Value |
-|:---       |:---                                                                            |:---        |:---           |
-| 选项    | 说明                                                                    | 值的类型 | 默认值 |
-| `scripts` | Enables optimization of the scripts output.                                    | `boolean`  | `true`        |
-| `scripts` | 启用脚本输出优化。                                    | `boolean`  | `true`        |
-| `styles`  | Enables optimization of the styles output.                                     | `boolean`  | `true`        |
-| `styles`  | 启用样式输出优化。                                     | `boolean`  | `true`        |
-| `fonts`   | Enables optimization for fonts. <br /> **NOTE**: This requires internet access. | `boolean`  | `true`        |
-| `fonts`   | 启用字体优化。 <br /> **注意**：这需要进行国际互联网访问。 | `boolean`  | `true`        |
+| Option | Description | Value Type | Dafault Value |
+| :----- | :---------- | :--------- | :------------ |
+| 选项 | 说明 | 值的类型 | 默认值 |
+| `scripts` | Enables optimization of the scripts output. | `boolean` | `true` |
+| `scripts` | 启用脚本输出优化。 | `boolean` | `true` |
+| `styles` | Enables optimization of the styles output. | `boolean` | `true` |
+| `styles` | 启用样式输出优化。 | `boolean` | `true` |
+| `fonts` | Enables optimization for fonts. <br /> **NOTE**: This requires internet access. | `boolean` | `true` |
+| `fonts` | 启用字体优化。 <br /> **注意**：这需要进行国际互联网访问。 | `boolean` | `true` |
 
 #### Styles optimization options
 
 #### 样式优化选项
 
-| Option           | Description                                                                                                              | Value Type | Default Value |
-|:---              |:---                                                                                                                      |:---        |:---           |
-| 选项           | 说明                                                                                                              | 值的类型 | 默认值 |
-| `minify`         | Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values.        | `boolean`  | `true`        |
-| `minify`         | 最小化 CSS 定义，移除多余的空格和注释、合并标识符，并对值进行最小化。        | `boolean`  | `true`        |
-| `inlineCritical` | Extract and inline critical CSS definitions to improve [First Contentful Paint](https://web.dev/first-contentful-paint). | `boolean`  | `true`        |
-| `inlineCritical` | 提取并内联一些关键 CSS 定义，以提高[首次内容绘制（FCP）性能](https://web.dev/first-contentful-paint)。 | `boolean`  | `true`        |
+| Option | Description | Value Type | Default Value |
+| :----- | :---------- | :--------- | :------------ |
+| 选项 | 说明 | 值的类型 | 默认值 |
+| `minify` | Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values. | `boolean` | `true` |
+| `minify` | 最小化 CSS 定义，移除多余的空格和注释、合并标识符，并对值进行最小化。 | `boolean` | `true` |
+| `inlineCritical` | Extract and inline critical CSS definitions to improve [First Contentful Paint](https://web.dev/first-contentful-paint). | `boolean` | `true` |
+| `inlineCritical` | 提取并内联一些关键 CSS 定义，以提高[首次内容绘制（FCP）性能](https://web.dev/first-contentful-paint)。 | `boolean` | `true` |
 
 #### Fonts optimization options
 
 #### 字体优化选项
 
-| Option   | Description                                                                                                                                                                                                                          | Value Type | Default Value |
-|:---      |:---                                                                                                                                                                                                                                  |:---        |:---           |
-| 选项           | 说明                                                                                                              | 值的类型 | 默认值 |
-| `inline` | Reduce [render blocking requests](https://web.dev/render-blocking-resources) by inlining external Google Fonts and Adobe Fonts CSS definitions in the application's HTML index file. <br /> **NOTE**: This requires internet access. | `boolean`  | `true`        |
-| `inline` | 通过在应用的 index.html 中内联外部 Google 字体和 Adobe 字体的 CSS 定义，来减少[阻塞渲染的请求](https://web.dev/render-blocking-resources)<br /> **注意**：这需要国际互联网访问。 | `boolean`  | `true`        |
+| Option | Description | Value Type | Default Value |
+| :----- | :---------- | :--------- | :------------ |
+| 选项 | 说明 | 值的类型 | 默认值 |
+| `inline` | Reduce [render blocking requests](https://web.dev/render-blocking-resources) by inlining external Google Fonts and Adobe Fonts CSS definitions in the application's HTML index file. <br /> **NOTE**: This requires internet access. | `boolean` | `true` |
+| `inline` | 通过在应用的 index.html 中内联外部 Google 字体和 Adobe 字体的 CSS 定义，来减少[阻塞渲染的请求](https://web.dev/render-blocking-resources)<br /> **注意**：这需要国际互联网访问。 | `boolean` | `true` |
 
 You can supply a value such as the following to apply optimization to one or the other:
 
@@ -705,17 +706,17 @@ The `sourceMap` browser builder option can be either a Boolean or an Object for 
 
 `sourceMap` 这个浏览器构建器选项可以是 Boolean 或 Object，以进行更精细的配置以控制应用程序的源码映射。
 
-| Option    | Description                                        | Value Type | Default Value |
-|:---       |:---                                                |:---        |:---           |
-| 选项           | 说明                                                                                                              | 值的类型 | 默认值 |
-| `scripts` | Output source maps for all scripts.                | `boolean`  | `true`        |
-| `scripts` | 为所有脚本输出源码映射文件。                | `boolean`  | `true`        |
-| `styles`  | Output source maps for all styles.                 | `boolean`  | `true`        |
-| `styles`  | 为所有样式输出源码映射文件。                 | `boolean`  | `true`        |
-| `vendor`  | Resolve vendor packages source maps.               | `boolean`  | `false`        |
-| `vendor`  | 解析来自依赖包的源码映射信息。              | `boolean`  | `false`       |
-| `hidden`  | Output source maps used for error reporting tools. | `boolean`  | `false`       |
-| `hidden`  | 为错误报告工具输出源码映射文件。 | `boolean`  | `false`        |
+| Option | Description | Value Type | Default Value |
+| :----- | :---------- | :--------- | :------------ |
+| 选项 | 说明 | 值的类型 | 默认值 |
+| `scripts` | Output source maps for all scripts. | `boolean` | `true` |
+| `scripts` | 为所有脚本输出源码映射文件。 | `boolean` | `true` |
+| `styles` | Output source maps for all styles. | `boolean` | `true` |
+| `styles` | 为所有样式输出源码映射文件。 | `boolean` | `true` |
+| `vendor` | Resolve vendor packages source maps. | `boolean` | `false` |
+| `vendor` | 解析来自依赖包的源码映射信息。 | `boolean` | `false` |
+| `hidden` | Output source maps used for error reporting tools. | `boolean` | `false` |
+| `hidden` | 为错误报告工具输出源码映射文件。 | `boolean` | `false` |
 
 The example below shows how to toggle one or more values to configure the source map outputs:
 

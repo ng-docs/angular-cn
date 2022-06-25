@@ -24,11 +24,11 @@ This topic describes how to submit pull requests to the Angular repository using
 
 1. At the bottom of the screen, update the **Commit changes** box with a description of the change. Use the format `docs: <short-description-of-change>`, where `<short-description-of-change>` briefly describes your change. Keep the description under 100 characters. For example:
 
-  `docs: fix typo in Tour of Heroes pt.1`
+   `docs: fix typo in Tour of Heroes pt.1`
 
 1. Verify that the **create new branch** option is selected, then click **Commit changes**.
 
-  A Pull Request screen opens.
+   A Pull Request screen opens.
 
 1. Fill out the form in the Pull Request screen. At a minimum, put an `x` in the **Docs have been added / updated** option and the **Documentation content changes** option.
 

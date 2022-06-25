@@ -12,7 +12,7 @@ This page answers the questions many developers ask about NgModule design and im
 
 ## 我应该把哪些类加到 *declarations* 中？
 
-Add [declarable](guide/bootstrapping#the-declarations-array) classes&mdash;components, directives, and pipes&mdash;to a `declarations` list.
+Add [declarable](guide/bootstrapping#the-declarations-array) classes—components, directives, and pipes—to a `declarations` list.
 
 把[可声明](guide/bootstrapping#the-declarations-array)的类（组件、指令和管道）添加到 `declarations` 列表中。
 
@@ -23,11 +23,12 @@ Declare them in a module if they belong to that particular module.
 只有当它们*从属于*某个模块时，才能把在*此*模块中声明它们。
 
 <a id="q-declarable"></a>
+
 ## What is a _declarable_?
 
 ## 什么是*可声明的*？
 
-Declarables are the class types&mdash;components, directives, and pipes&mdash;that
+Declarables are the class types—components, directives, and pipes—that
 you can add to a module's `declarations` list.
 They're the only classes that you can add to `declarations`.
 
@@ -48,10 +49,11 @@ Do *not* declare the following:
 * A class that's already declared in another module, whether an application module, @NgModule, or third-party module.
 
    已经在其它模块中声明过的类。无论它来自应用自己的模块（@NgModule）还是第三方模块。
-* An array of directives imported from another module.
-For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
 
-   从其它模块中导入的指令。例如，不要声明来自 `@angular/forms` 的 FORMS_DIRECTIVES，因为 `FormsModule` 已经声明过它们了。
+* An array of directives imported from another module.
+  For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
+
+     从其它模块中导入的指令。例如，不要声明来自 `@angular/forms` 的 FORMS_DIRECTIVES，因为 `FormsModule` 已经声明过它们了。
 
 * Module classes.
 
@@ -62,9 +64,9 @@ For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the 
    服务类
 
 * Non-Angular classes and objects, such as
-strings, numbers, functions, entity models, configurations, business logic, and helper classes.
+  strings, numbers, functions, entity models, configurations, business logic, and helper classes.
 
-   非 Angular 的类和对象，比如：字符串、数字、函数、实体模型、配置、业务逻辑和辅助类。
+     非 Angular 的类和对象，比如：字符串、数字、函数、实体模型、配置、业务逻辑和辅助类。
 
 ## Why list the same component in multiple `NgModule` properties?
 
@@ -94,9 +96,9 @@ Membership in one list doesn't imply membership in another list.
    某个组件可能是从另一个应用模块中导入的（所以你没法声明它）并且被当前模块重新导出。
 
 * A component could be exported for inclusion in an external component's template
-as well as dynamically loaded in a pop-up dialog.
+  as well as dynamically loaded in a pop-up dialog.
 
-   某个组件可能被导出，以便用在外部组件的模板中，也可能同时被一个弹出式对话框加载。
+     某个组件可能被导出，以便用在外部组件的模板中，也可能同时被一个弹出式对话框加载。
 
 ## What does "Can't bind to 'x' since it isn't a known property of 'y'" mean?
 
@@ -115,7 +117,6 @@ The "x" class isn't visible to other modules until you add it to the `exports` l
 如果“x”其实不是属性，或者是组件的私有属性（比如它不带 `@Input` 或 `@Output` 装饰器），那么你也同样会遇到这个错误。
 
 </div>
-
 
 ## What should I import?
 
@@ -148,6 +149,7 @@ Import [BrowserModule](guide/ngmodule-faq#q-browser-vs-common-module) only in th
 只能在根模块 `AppModule` 中[导入 _BrowserModule_](guide/ngmodule-faq#q-browser-vs-common-module)。
 
 <a id="q-browser-vs-common-module"></a>
+
 ## Should I import `BrowserModule` or `CommonModule`?
 
 ## 我应该导入 *BrowserModule* 还是 *CommonModule*？
@@ -180,6 +182,7 @@ Importing `CommonModule` also frees feature modules for use on _any_ target plat
 特性模块中导入 `CommonModule` 可以让它能用在任何目标平台上，不仅是浏览器。那些跨平台库的作者应该喜欢这种方式的。
 
 <a id="q-reimport"></a>
+
 ## What if I import the same module twice?
 
 ## 如果我两次导入同一个模块会怎么样？
@@ -203,6 +206,7 @@ Angular doesn't like NgModules with circular references, so don't let Module 'A'
 Angular 不允许模块之间出现循环依赖，所以不要让模块'A'导入模块'B'，而模块'B'又导入模块'A'。
 
 <a id="q-reexport"></a>
+
 ## What should I export?
 
 ## 我应该导出什么？
@@ -215,7 +219,7 @@ declared in this NgModule.
 导出那些*其它模块*希望在自己的模板中引用的[可声明类](guide/ngmodule-faq#q-declarable)。这些也是你的*公共*类。
 如果你不导出某个类，它就是*私有的*，只对当前模块中声明的其它组件可见。
 
-You _can_ export any declarable class&mdash;components, directives, and pipes&mdash;whether
+You _can_ export any declarable class—components, directives, and pipes—whether
 it's declared in this NgModule or in an imported NgModule.
 
 你*可以*导出任何可声明类（组件、指令和管道），而不用管它是声明在当前模块中还是某个导入的模块中。
@@ -234,29 +238,29 @@ Don't export the following:
 *不要*导出：
 
 * Private components, directives, and pipes that you need only within components declared in this NgModule.
-If you don't want another NgModule to see it, don't export it.
+  If you don't want another NgModule to see it, don't export it.
 
-   那些你只想在当前模块中声明的那些组件中使用的私有组件、指令和管道。如果你不希望任何模块看到它，就不要导出。
+     那些你只想在当前模块中声明的那些组件中使用的私有组件、指令和管道。如果你不希望任何模块看到它，就不要导出。
 
 * Non-declarable objects such as services, functions, configurations, and entity models.
 
    不可声明的对象，比如服务、函数、配置、实体模型等。
 
 * Components that are only loaded dynamically by the router or by bootstrapping.
-Such [entry components](guide/ngmodule-faq#q-entry-component-defined) can never be selected in another component's template.
-While there's no harm in exporting them, there's also no benefit.
+  Such [entry components](guide/ngmodule-faq#q-entry-component-defined) can never be selected in another component's template.
+  While there's no harm in exporting them, there's also no benefit.
 
-   那些只被路由器或引导函数动态加载的组件。
-      比如[入口组件](guide/ngmodule-faq#q-entry-component-defined)可能从来不会在其它组件的模板中出现。
-      导出它们没有坏处，但也没有好处。
+     那些只被路由器或引导函数动态加载的组件。
+        比如[入口组件](guide/ngmodule-faq#q-entry-component-defined)可能从来不会在其它组件的模板中出现。
+        导出它们没有坏处，但也没有好处。
 
 * Pure service modules that don't have public (exported) declarations.
-For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
-Its only purpose is to add http service providers to the application as a whole.
+  For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
+  Its only purpose is to add http service providers to the application as a whole.
 
-   纯服务模块没有公开（导出）的声明。
-  例如，没必要重新导出 `HttpClientModule`，因为它不导出任何东西。
-  它唯一的用途是一起把 http 的那些服务提供者添加到应用中。
+     纯服务模块没有公开（导出）的声明。
+    例如，没必要重新导出 `HttpClientModule`，因为它不导出任何东西。
+    它唯一的用途是一起把 http 的那些服务提供者添加到应用中。
 
 ## Can I re-export classes and modules?
 
@@ -278,9 +282,7 @@ Angular's own `BrowserModule` exports a couple of NgModules like this:
 Angular 自己的 `BrowserModule` 就重新导出了一组模块，例如：
 
 ```typescript
-
   exports: [CommonModule, ApplicationModule]
-
 ```
 
 An NgModule can export a combination of its own declarations, selected imported classes, and imported NgModules.
@@ -393,6 +395,7 @@ To limit access to a service, consider lazy loading the NgModule that provides t
 要限制对某个服务的访问，可以考虑惰性加载提供该服务的 NgModule。参阅[我要如何把服务的范围限定为某个模块？](guide/ngmodule-faq#service-scope)。
 
 <a id="q-lazy-loaded-module-provider-visibility"></a>
+
 ## Why is a service provided in a lazy-loaded module visible only to that module?
 
 ## 为什么在惰性加载模块中声明的服务提供者只对该模块自身可见？
@@ -451,6 +454,7 @@ The `AppModule` always wins.
 由根 `AppModule` 提供的服务相对于所导入模块中提供的服务有优先权。换句话说：`AppModule` 总会获胜。
 
 <a id="service-scope"></a>
+
 ## How do I restrict service scope to a module?
 
 ## 我应该如何把服务的范围限制到模块中？
@@ -541,6 +545,7 @@ Though you can limit access to a service by providing it in a lazy loaded module
 虽然通过在惰性加载模块中或组件中提供某个服务来限制它的访问都是可行的方式，但在组件中提供服务可能导致这些服务出现多个实例。因此，应该优先使用惰性加载的方式。
 
 <a id="q-root-component-or-module"></a>
+
 ## Should I add application-wide providers to the root `AppModule` or the root `AppComponent`?
 
 ## 我应该把全应用级提供者添加到根模块 `AppModule` 中还是根组件 `AppComponent` 中？
@@ -604,6 +609,7 @@ This means that lazy-loaded modules can't reach them.
 但对那些带路由的应用，路由操作位于顶层，那里不存在 `AppComponent` 服务。这意味着惰性加载模块不能使用它们。
 
 <a id="q-component-or-module"></a>
+
 ## Should I add other providers to a module or a component?
 
 ## 我应该把其它提供者注册到模块中还是组件中？
@@ -640,6 +646,7 @@ not the root `AppComponent`.
 [总是在根模块 `AppModule` 中注册*全应用级*服务](guide/ngmodule-faq#q-root-component-or-module)，而不要在根组件 `AppComponent` 中。
 
 <a id="q-why-bad"></a>
+
 ## Why is it bad if a shared module provides a service to a lazy-loaded module?
 
 ## 为什么在共享模块中为惰性加载模块提供服务是个馊主意？
@@ -685,6 +692,7 @@ than the app-wide singleton version that Angular injected in one of the eagerly 
 This scenario causes your application to create a new instance every time, instead of using the singleton.
 
 这个场景导致你的应用每次都创建一个新的服务实例，而不是使用单例的服务。
+
 <!--KW--What does this cause? I wasn't able to get the suggestion of this to work from
 the current FAQ:
 To demonstrate, run the <live-example name="ngmodule">live example</live-example>.
@@ -693,8 +701,8 @@ Then toggle between the "Contact" and "Heroes" links a few times.
 The username goes bonkers as the Angular creates a new `UserService` instance each time.
 I'd like to see the error so I can include it.-->
 
-
 <a id="q-why-child-injector"></a>
+
 ## Why does lazy loading create a child injector?
 
 ## 为什么惰性加载模块会创建一个子注入器？
@@ -740,6 +748,7 @@ Angular 必须把这个惰性加载模块中的提供者添加到*某个*注入�
 于是，Angular 在惰性加载模块的上下文中创建了一个新的子注入器。
 
 <a id="q-is-it-loaded"></a>
+
 ## How can I tell if an NgModule or service was previously loaded?
 
 ## 我要如何知道一个模块或服务是否已经加载过了？
@@ -765,8 +774,8 @@ Here is a custom constructor for an NgModule called `GreetingModule`.
 
 <code-example path="ngmodules/src/app/greeting/greeting.module.ts" region="ctor" header="src/app/greeting/greeting.module.ts (Constructor)"></code-example>
 
-
 <a id="q-entry-component-defined"></a>
+
 ## What is an `entry component`?
 
 ## 什么是*入口组件*？
@@ -806,7 +815,6 @@ loads the component dynamically into a `RouterOutlet`.
 For more information, see [Entry Components](guide/entry-components).
 
 要了解更多，参阅[入口组件](guide/entry-components)一章。
-
 
 ## What kinds of modules should I have and how should I use them?
 
@@ -878,7 +886,7 @@ Within each file you write an `export` statement to make parts of the module pub
 在现代 JavaScript 中，每个文件都是模块（参阅[模块](http://exploringjs.com/es6/ch_modules.html)）。
 在每个文件中，你要写一个 `export` 语句将模块的一部分公开。
 
-An Angular NgModule is a class with the `@NgModule` decorator&mdash;JavaScript modules
+An Angular NgModule is a class with the `@NgModule` decorator—JavaScript modules
 don't have to have the `@NgModule` decorator. Angular's `NgModule` has `imports` and `exports` and they serve a similar purpose.
 
 Angular 模块是一个带有 `@NgModule` 装饰器的类，而 JavaScript 模块则没有。
@@ -895,6 +903,7 @@ For more information, see [JavaScript Modules vs. NgModules](guide/ngmodule-vs-j
 要了解更多，参阅 [JavaScript 模块 vs. NgModules](guide/ngmodule-vs-jsmodule) 一章
 
 <a id="q-template-reference"></a>
+
 ## How does Angular find components, directives, and pipes in a template?<br>What is a <i><b>template reference</b></i>?
 
 ## Angular 如何查找模板中的组件、指令和管道？什么是 ***模板引用*** ？
@@ -918,6 +927,7 @@ or exported by a module that this module imports.
 Angular 只查询两种组件、指令或管道：1）那些在当前模块中声明过的，以及 2）那些被当前模块导入的模块所导出的。
 
 <a id="q-angular-compiler"></a>
+
 ## What is the Angular compiler?
 
 ## 什么是 Angular 编译器？
@@ -949,7 +959,7 @@ the HTML, the binding instructions, the attached styles.
 Because directives and pipes appear in component templates,
 the Angular compiler incorporates them into compiled component code too.
 
-由于**指令**和**管道**都出现在组件模板中，*Angular 编译器**也同样会把它们组合进编译后的组件代码中。
+由于**指令**和**管道**都出现在组件模板中，\*Angular 编译器\*\*也同样会把它们组合进编译后的组件代码中。
 
 `@NgModule` metadata tells the Angular compiler what components to compile for this module and
 how to link this module with other modules.

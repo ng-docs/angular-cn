@@ -317,7 +317,6 @@ A [decorator](#decorator) statement immediately before a field in a class defini
 
 <a id="collection"></a>
 
-
 ## collection
 
 ## 集合（collection）
@@ -910,7 +909,7 @@ Compare to [ahead-of-time (AOT) compilation](#aot).
 ## 惰性加载（Lazy loading）
 
 A process that speeds up application load time by splitting the application into multiple bundles and loading them on demand.
-For example, dependencies can be lazy loaded as needed&mdash;as opposed to [eager-loaded](#eager-loading) modules that are required by the root module and are thus loaded on launch.
+For example, dependencies can be lazy loaded as needed—as opposed to [eager-loaded](#eager-loading) modules that are required by the root module and are thus loaded on launch.
 
 惰性加载过程会把应用拆分成多个包并且按需加载它们，从而提高应用加载速度。
 比如，一些依赖可以根据需要进行惰性加载，与之相对的是那些 [急性加载](#eager-loading) 的模块，它们是根模块所要用的，因此会在启动期间加载。
@@ -1027,6 +1026,7 @@ Compare to [NgModule](#ngmodule).
 <a id="N"></a>
 
 <a id="ngcc"></a>
+
 ## ngcc
 
 Angular compatibility compiler.
@@ -1035,6 +1035,7 @@ If you build your application using [Ivy](#ivy), but it depends on libraries tha
 Angular 兼容性编译器。如果使用 [Ivy](#ivy) 构建应用程序，但依赖未用 Ivy 编译的库，则 CLI 将使用 `ngcc` 自动更新依赖库以使用 Ivy。
 
 <a id="ngmodule"></a>
+
 ## NgModule
 
 A class definition preceded by the `@NgModule()` [decorator](#decorator), which declares and serves as a manifest for a block of code dedicated to an application domain, a workflow, or a closely related set of capabilities.
@@ -1179,6 +1180,7 @@ Support for the various Angular run-time platforms is provided by the `@angular/
   使用[服务端渲染](#server-side-rendering)（SSR）时，[`platform-server`](api/platform-server) 包将提供 `DOM`、`XMLHttpRequest` 和其它不依赖浏览器的其它底层功能的 Web 服务器端实现。
 
 <a id="polyfill"></a>
+
 ## polyfill
 
 ## 腻子脚本（polyfill）
@@ -1392,9 +1394,9 @@ Angular [CLI](#cli) 使用原理图来生成和修改 [Angular 项目](#project)
   Angular 提供了一组用于 CLI 的原理图。参阅 [Angular CLI 命令参考手册](cli)。当 [`ng add`](cli/add) 命令向项目中添加某个库时，就会运行原理图。[`ng generate`](cli/generate) 命令则会运行原理图，来创建应用、库和 Angular 代码块。
 
 * [Library](#library) developers can create schematics that enable the Angular CLI to add and update their published libraries, and to generate artifacts the library defines.
-Add these schematics to the npm package that you use to publish and share your library.
+  Add these schematics to the npm package that you use to publish and share your library.
 
-    公共库的开发者可以创建原理图，来让 CLI 生成他们自己的发布的库。欲知详情，参阅 [devkit 文档](https://www.npmjs.com/package/@angular-devkit/schematics)。
+  公共库的开发者可以创建原理图，来让 CLI 生成他们自己的发布的库。欲知详情，参阅 [devkit 文档](https://www.npmjs.com/package/@angular-devkit/schematics)。
 
 For more information, see [Schematics](guide/schematics) and [Integrating Libraries with the CLI](guide/creating-libraries#integrating-with-the-cli).
 
@@ -1489,7 +1491,7 @@ To learn more, see [Introduction to Services and Dependency Injection](guide/arc
 
 ## 结构型指令（Structural directives）
 
-A category of [directive](#directive) that is responsible for shaping HTML layout by modifying the DOM&mdash;that is, adding, removing, or manipulating elements and their children.
+A category of [directive](#directive) that is responsible for shaping HTML layout by modifying the DOM—that is, adding, removing, or manipulating elements and their children.
 
 一种[指令](#directive)类型，它能通过修改 DOM （添加、删除或操纵元素及其子元素）来修整或重塑 HTML 的布局。
 
@@ -1651,10 +1653,10 @@ For more information, see the [Template reference variable](guide/template-refer
 
 到[模板表达式](guide/template-reference-variables)部分了解更多模板表达式的知识。
 
-
 <a id="template-input-variable"></a>
 
 ## template input variable
+
 ## 模板输入变量（template input variable）
 
 A template input variable is a variable you can reference within a single instance of the template. You declare a template input variable using the `let` keyword as in `let customer`.
@@ -1814,7 +1816,7 @@ View hierarchies can be loaded and unloaded dynamically as the user navigates th
 
 A previous compilation and rendering pipeline used by Angular. It has since been replaced by
 [Ivy](#ivy) and is no longer in use. View Engine was deprecated in version 9 and removed in version
-13.
+13\.
 
 Angular 曾经用过的编译和渲染管道。它已被 [Ivy](#ivy) 取代，不再使用了。View Engine 在版本 9 中已弃用，并在版本 13 中删除。
 

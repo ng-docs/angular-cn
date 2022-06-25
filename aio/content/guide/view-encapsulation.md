@@ -177,7 +177,9 @@ The second example shows a component that has `ViewEncapsulation.Emulated`. This
 
 第二个示例显示了一个具有 `ViewEncapsulation.Emulated` 的组件。此组件将其模板元素着色为绿色。
 
-<code-example path="view-encapsulation/src/app/emulated-encapsulation.component.ts" header="src/app/emulated-encapsulation.component.ts"></code-example>>
+<code-example path="view-encapsulation/src/app/emulated-encapsulation.component.ts" header="src/app/emulated-encapsulation.component.ts"></code-example>
+
+>
 
 Similar to `ViewEncapsulation.None`, Angular adds the styles for this component to the `<head>` of the document, but with "scoped" styles.
 
@@ -202,7 +204,9 @@ The third example shows a component that has `ViewEncapsulation.ShadowDom`. This
 
 第三个示例显示了一个具有 `ViewEncapsulation.ShadowDom` 的组件。此组件会将其模板元素着色为蓝色。
 
-<code-example path="view-encapsulation/src/app/shadow-dom-encapsulation.component.ts" header="src/app/shadow-dom-encapsulation.component.ts"></code-example>>
+<code-example path="view-encapsulation/src/app/shadow-dom-encapsulation.component.ts" header="src/app/shadow-dom-encapsulation.component.ts"></code-example>
+
+>
 
 Angular adds styles for this component only to the shadow DOM host, so they are not visible outside the shadow DOM.
 

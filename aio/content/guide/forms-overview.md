@@ -65,16 +65,16 @@ The following table summarizes the key differences between reactive and template
   td, th {vertical-align: top};
 </style>
 
-||Reactive|Template-driven|
-|--- |--- |--- |
+|  | Reactive | Template-driven |
+| --- | -------- | --------------- |
 |  | 响应式 | 模板驱动 |
-|[Setup of form model](#setup) | Explicit, created in component class | Implicit, created by directives |
+| [Setup of form model](#setup) | Explicit, created in component class | Implicit, created by directives |
 | [建立表单模型](#setup) | 显式的，在组件类中创建 | 隐式的，由指令创建 |
-|[Data model](#mutability-of-the-data-model) | Structured and immutable | Unstructured and mutable |
+| [Data model](#mutability-of-the-data-model) | Structured and immutable | Unstructured and mutable |
 | [数据模型](#mutability-of-the-data-model) | 结构化和不可变的 | 非结构化和可变的 |
-|[Data flow](#data-flow-in-forms) | Synchronous | Asynchronous |
-|[数据流](#data-flow-in-forms) | 同步 | 异步 |
-|[Form validation](#validation) | Functions | Directives |
+| [Data flow](#data-flow-in-forms) | Synchronous | Asynchronous |
+| [数据流](#data-flow-in-forms) | 同步 | 异步 |
+| [Form validation](#validation) | Functions | Directives |
 | [表单验证](#validation) | 函数 | 指令 |
 
 ### Scalability
@@ -97,13 +97,11 @@ Tests are deeply reliant on manual change detection execution to run properly, a
 
 模板驱动表单专注于简单的场景，可复用性没那么高。它们抽象出了底层表单 API，并且在视图和数据模型之间使用[异步数据流](#data-flow-in-template-driven-forms)。对模板驱动表单的这种抽象也会影响测试。测试程序非常依赖于手动触发变更检测才能正常运行，并且需要进行更多设置工作。
 
-
 <a id="setup"></a>
 
 ## Setting up the form model
 
 ## 建立表单模型
-
 
 Both reactive and template-driven forms track value changes between the form input elements that users interact with and the form data in your component model.
 The two approaches share underlying building blocks, but differ in how you create and manage the common form-control instances.
@@ -114,11 +112,9 @@ The two approaches share underlying building blocks, but differ in how you creat
 
 ### 常用表单基础类
 
-
 Both reactive and template-driven forms are built on the following base classes.
 
 响应式表单和模板驱动表单都建立在下列基础类之上。
-
 
 * `FormControl` tracks the value and validation status of an individual form control.
 
@@ -162,7 +158,6 @@ Figure 1 shows how, in reactive forms, the form model is the source of truth; it
 
 **图 1.** *在响应式表单中直接访问表单模型*
 
-
 <div class="lightbox">
   <img src="generated/images/guide/forms-overview/key-diff-reactive-forms.png" alt="Reactive forms key differences">
 </div>
@@ -190,13 +185,11 @@ In a template-driven form the source of truth is the template. You do not have d
 
 **图 2.** *模板驱动表单中对表单模型的间接访问。*
 
-
 <div class="lightbox">
   <img src="generated/images/guide/forms-overview/key-diff-td-forms.png" alt="Template-driven forms key differences">
 </div>
 
 <a id="data-flow-in-forms"></a>
-
 
 ## Data flow in forms
 
@@ -297,6 +290,7 @@ The view-to-model diagram shows how data flows when an input field's value is ch
 1. The input element emits an "input" event with the value *Blue*.
 
    该输入框元素会发出一个 "input" 事件，带着值 "Blue"。
+
 1. The control value accessor attached to the input triggers the `setValue()` method on the `FormControl` instance.
 
    附着在该输入框上的控件值访问器会触发 `FormControl` 实例上的 `setValue()` 方法。
@@ -314,9 +308,9 @@ The view-to-model diagram shows how data flows when an input field's value is ch
    控件值访问器 `ControlValueAccessory` 还会调用 `NgModel.viewToModelUpdate()` 方法，它会发出一个 `ngModelChange` 事件。
 
 1. Because the component template uses two-way data binding for the `favoriteColor` property, the `favoriteColor` property in the component
-is updated to the value emitted by the `ngModelChange` event (*Blue*).
+   is updated to the value emitted by the `ngModelChange` event (*Blue*).
 
-   由于该组件模板双向数据绑定到了 `favoriteColor`，组件中的 `favoriteColor` 属性就会修改为 `ngModelChange` 事件所发出的值（"Blue"）。
+      由于该组件模板双向数据绑定到了 `favoriteColor`，组件中的 `favoriteColor` 属性就会修改为 `ngModelChange` 事件所发出的值（"Blue"）。
 
 <div class="lightbox">
   <img src="generated/images/guide/forms-overview/dataflow-td-forms-vtm.png" alt="Template-driven forms data flow - view to model" width="100%">
@@ -377,17 +371,17 @@ The change-tracking method plays a role in the efficiency of your application.
 变更追踪的方法对应用的效率有着重要影响。
 
 * **Reactive forms** keep the data model pure by providing it as an immutable data structure.
-Each time a change is triggered on the data model, the `FormControl` instance returns a new data model rather than updating the existing data model.
-This gives you the ability to track unique changes to the data model through the control's observable.
-Change detection is more efficient because it only needs to update on unique changes.
-Because data updates follow reactive patterns, you can integrate with observable operators to transform data.
+  Each time a change is triggered on the data model, the `FormControl` instance returns a new data model rather than updating the existing data model.
+  This gives you the ability to track unique changes to the data model through the control's observable.
+  Change detection is more efficient because it only needs to update on unique changes.
+  Because data updates follow reactive patterns, you can integrate with observable operators to transform data.
 
-  **响应式表单**通过以不可变的数据结构提供数据模型，来保持数据模型的纯粹性。每当在数据模型上触发更改时，`FormControl` 实例都会返回一个新的数据模型，而不会更新现有的数据模型。这使你能够通过该控件的可观察对象跟踪对数据模型的唯一更改。这让变更检测更有效率，因为它只需在唯一性更改（译注：也就是对象引用发生变化）时进行更新。由于数据更新遵循响应式模式，因此你可以把它和可观察对象的各种运算符集成起来以转换数据。
+    **响应式表单**通过以不可变的数据结构提供数据模型，来保持数据模型的纯粹性。每当在数据模型上触发更改时，`FormControl` 实例都会返回一个新的数据模型，而不会更新现有的数据模型。这使你能够通过该控件的可观察对象跟踪对数据模型的唯一更改。这让变更检测更有效率，因为它只需在唯一性更改（译注：也就是对象引用发生变化）时进行更新。由于数据更新遵循响应式模式，因此你可以把它和可观察对象的各种运算符集成起来以转换数据。
 
 * **Template-driven** forms rely on mutability with two-way data binding to update the data model in the component as changes are made in the template.
-Because there are no unique changes to track on the data model when using two-way data binding, change detection is less efficient at determining when updates are required.
+  Because there are no unique changes to track on the data model when using two-way data binding, change detection is less efficient at determining when updates are required.
 
-  **模板驱动的**表单依赖于可变性和双向数据绑定，可以在模板中做出更改时更新组件中的数据模型。由于使用双向数据绑定时没有用来对数据模型进行跟踪的唯一性更改，因此变更检测在需要确定何时更新时效率较低。
+    **模板驱动的**表单依赖于可变性和双向数据绑定，可以在模板中做出更改时更新组件中的数据模型。由于使用双向数据绑定时没有用来对数据模型进行跟踪的唯一性更改，因此变更检测在需要确定何时更新时效率较低。
 
 The difference is demonstrated in the previous examples that use the favorite-color input element.
 
@@ -518,6 +512,7 @@ Here are the steps performed in the view to model test.
 1. Set the new value for the input to *Red*, and dispatch the "input" event on the form input element.
 
    把输入框的新值设置为 *Red*，并在表单输入框元素上派发 "input" 事件。
+
 1. Run change detection through the test fixture.
 
    通过测试夹具（Fixture）来运行变更检测。
@@ -540,6 +535,7 @@ Here are the steps performed in the model to view test.
 1. Use the component instance to set the value of the `favoriteColor` property.
 
    使用组件实例来设置 `favoriteColor` 的值。
+
 1. Run change detection through the test fixture.
 
    通过测试夹具（Fixture）来运行变更检测。
@@ -547,6 +543,7 @@ Here are the steps performed in the model to view test.
 1. Use the `tick()` method to simulate the passage of time within the `fakeAsync()` task.
 
    在 `fakeAsync()` 任务中使用 `tick()` 方法来模拟时间的流逝。
+
 1. Query the view for the form input element.
 
    查询表单输入框元素的视图。
@@ -554,7 +551,6 @@ Here are the steps performed in the model to view test.
 1. Assert that the input value matches the value of the `favoriteColor` property in the component instance.
 
    断言输入框的值与该组件实例的 `favoriteColor` 属性值是匹配的。
-
 
 ## Next steps
 
@@ -591,4 +587,3 @@ To learn more about template-driven forms, see the following guides:
 * `NgForm` directive API reference
 
   `NgForm` 指令 API 参考手册
-

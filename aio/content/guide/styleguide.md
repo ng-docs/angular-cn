@@ -945,7 +945,7 @@ As always, strive for consistency.
 For example, the prefix `toh` represents **T**our **o**f **H**eroes and the prefix `admin` represents an admin feature area.
 
 **坚持**为组件选择器添加自定义前缀。
-例如，`toh` 前缀表示 **T**our **o**f **H**eroes（英雄之旅），而前缀 `admin 表示管理特性区。
+例如，`toh` 前缀表示 **T**our **o**f **H**eroes（英雄之旅），而前缀 `admin` 表示管理特性区。
 
 </div>
 
@@ -1067,14 +1067,9 @@ For example, the prefix `toh` represents **T**our **o**f **H**eroes and the pref
 
 <div class="s-rule avoid">
 
-
-
 **Don't** prefix a directive name with `ng` because that prefix is reserved for Angular and using it could cause bugs that are difficult to diagnose.
 
-
 </div>
-
-
 
 <div class="s-why">
 
@@ -1735,7 +1730,7 @@ _can I quickly open and start work in all of the related files for this feature_
 
 #### Style 04-02
 
-####  风格 04-02
+#### 风格 04-02
 
 <div class="s-rule do">
 
@@ -2392,7 +2387,7 @@ and more difficult in a flat structure.
   For more information, refer to <a href="#file-tree">this folder and file structure example.</a>
 
   欲知详情，参阅<a href="#file-tree">目录和文件结构的范例</a>
-  
+
 </div>
 
 <a href="#toc">Back to top</a>
@@ -3537,7 +3532,7 @@ You may want to have a required `@Input` field, meaning all your component users
 <div class="s-why-last">
 
 **Why?** The property associated with `@HostBinding` or the method associated with `@HostListener`
-can be modified only in a single place&mdash;in the directive's class.
+can be modified only in a single place—in the directive's class.
 If you use the `host` metadata property, you must modify both the property/method declaration in the
 directive's class and the metadata in the decorator associated with the directive.
 

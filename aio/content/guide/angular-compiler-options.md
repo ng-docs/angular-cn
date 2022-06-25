@@ -58,11 +58,11 @@ Modifies how Angular-specific annotations are emitted to improve tree-shaking. N
 
 修改 Angular 专有注解的生成方式，以改善摇树优化。非 Angular 注解不受影响。可选值为 `static fields`（默认值）或 `decorators`。
 
-*   By default, the compiler replaces decorators with a static field in the class, which allows advanced tree-shakers like [Closure compiler](https://github.com/google/closure-compiler) to remove unused classes.
+* By default, the compiler replaces decorators with a static field in the class, which allows advanced tree-shakers like [Closure compiler](https://github.com/google/closure-compiler) to remove unused classes.
 
   默认情况下，编译器会用类中的静态字段替换装饰器，这允许像 [Closure 编译器](https://github.com/google/closure-compiler)这样的高级摇树器删除未使用的类。
 
-*   The `decorators` value leaves the decorators in place, which makes compilation faster. TypeScript emits calls to the `__decorate` helper. Use `--emitDecoratorMetadata` for runtime reflection (but note that the resulting code will not properly tree-shake.
+* The `decorators` value leaves the decorators in place, which makes compilation faster. TypeScript emits calls to the `__decorate` helper. Use `--emitDecoratorMetadata` for runtime reflection (but note that the resulting code will not properly tree-shake.
 
   `decorators` 值会将装饰器保留在原处，这将使编译速度更快。TypeScript 会生成对辅助器 `__decorate` 的调用。使用 `--emitDecoratorMetadata` 进行运行时反射（但请注意，生成的代码将无法正确摇树）。
 
@@ -79,13 +79,13 @@ Specifies the compilation mode to use. The following modes are available:
 
 指定要使用的编译模式。可以使用以下模式：
 
-*   `'full'`: generates fully AOT-compiled code according to the version of Angular that is currently being used.
+* `'full'`: generates fully AOT-compiled code according to the version of Angular that is currently being used.
 
-    `'full'`：根据当前使用的 Angular 版本生成完全 AOT 编译的代码。
+  `'full'`：根据当前使用的 Angular 版本生成完全 AOT 编译的代码。
 
-*   `'partial'`: generates code in a stable, but intermediate form suitable for a published library.
+* `'partial'`: generates code in a stable, but intermediate form suitable for a published library.
 
-     `'partial'`：生成稳定的中间代码，适用于已发布的库。
+   `'partial'`：生成稳定的中间代码，适用于已发布的库。
 
 The default value is `'full'`.
 
@@ -330,4 +330,5 @@ In addition to the configuration file, you can also use [`tsc` command line opti
 [AioGuideI18nCommonPrepareMarkTextInComponentTemplate]: guide/i18n-common-prepare#mark-text-in-component-template "Mark text in component template - Prepare templates for translations | Angular"
 
 <!-- end links -->
+
 @reviewed 2021-10-13

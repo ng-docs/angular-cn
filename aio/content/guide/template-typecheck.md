@@ -101,7 +101,6 @@ The `fullTemplateTypeCheck` flag has been deprecated in Angular 13. The `strictT
 
 </div>
 
-
 <a id="strict-mode"></a>
 
 ### Strict mode
@@ -164,7 +163,6 @@ interface User {
 </code-example>
 
 ```html
-
   <div *ngFor="let user of users">
 
     <h2>{{config.title}}</h2>
@@ -172,7 +170,6 @@ interface User {
     <span>City: {{user.address.city}}</span>
 
   </div>
-
 ```
 
 The `<h2>` and the `<span>` are in the `*ngFor` embedded view.
@@ -353,7 +350,6 @@ As an example, consider the following component:
 模板类型检查器会检查绑定表达式的类型是否与相应指令输入的类型兼容。例如，请考虑以下组件：
 
 ```typescript
-
 export interface User {
   name: string;
 }
@@ -365,7 +361,6 @@ export interface User {
 export class UserDetailComponent {
   @Input() user: User;
 }
-
 ```
 
 The `AppComponent` template uses this component as follows:
@@ -373,7 +368,6 @@ The `AppComponent` template uses this component as follows:
 `AppComponent` 模板按以下方式使用此组件：
 
 ```ts
-
 @Component({
   selector: 'app-root',
   template: '<user-detail [user]="selectedUser"></user-detail>',
@@ -381,7 +375,6 @@ The `AppComponent` template uses this component as follows:
 export class AppComponent {
   selectedUser: User | null = null;
 }
-
 ```
 
 Here, during type checking of the template for `AppComponent`, the `[user]="selectedUser"` binding corresponds with the `UserDetailComponent.user` input.
@@ -417,7 +410,7 @@ For a library compiled without `strictNullChecks`, its declaration files will no
     将 `async` 管道与 Observable 一起使用会同步发出值。
 
 The `async` pipe currently assumes that the Observable it subscribes to can be asynchronous, which means that it's possible that there is no value available yet.
-  In that case, it still has to return something&mdash;which is `null`.
+  In that case, it still has to return something—which is `null`.
   In other words, the return type of the `async` pipe includes `null`, which might result in errors in situations where the Observable is known to emit a non-nullable value synchronously.
 
   `async` 管道当前假定它预订的 Observable 可以是异步的，这意味着可能还没有可用的值。在这种情况下，它仍然必须返回某些内容 —— `null`。换句话说，`async` 管道的返回类型包括 `null`，这在知道此 Observable 会同步发出非空值的情况下可能会导致错误。
@@ -428,12 +421,12 @@ There are two potential workarounds to the preceding issues:
 
 1. In the template, include the non-null assertion operator `!` at the end of a nullable expression, such as  `<user-detail [user]="user!"></user-detail>`.
 
-     在模板中，包括非空断言运算符 `!` 用在可为空的表达式的末尾，例如 `<user-detail [user]="user!"></user-detail>`。
+    在模板中，包括非空断言运算符 `!` 用在可为空的表达式的末尾，例如 `<user-detail [user]="user!"></user-detail>`。
 
-     In this example, the compiler disregards type incompatibilities in nullability, just as in TypeScript code.
-     In the case of the `async` pipe, note that the expression needs to be wrapped in parentheses, as in `<user-detail [user]="(user$ | async)!"></user-detail>`.
+    In this example, the compiler disregards type incompatibilities in nullability, just as in TypeScript code.
+    In the case of the `async` pipe, note that the expression needs to be wrapped in parentheses, as in `<user-detail [user]="(user$ | async)!"></user-detail>`.
 
-     在此范例中，编译器在可空性方面会忽略类型不兼容，就像在 TypeScript 代码中一样。对于 `async` 管道，请注意，表达式需要用括号括起来，如 `<user-detail [user]="(user$ | async)!"></user-detail>`。
+    在此范例中，编译器在可空性方面会忽略类型不兼容，就像在 TypeScript 代码中一样。对于 `async` 管道，请注意，表达式需要用括号括起来，如 `<user-detail [user]="(user$ | async)!"></user-detail>`。
 
 1. Disable strict null checks in Angular templates completely.
 
@@ -472,7 +465,6 @@ Consider the following directive:
 考虑以下指令：
 
 ```typescript
-
 @Component({
   selector: 'submit-button',
   template: `
@@ -496,7 +488,6 @@ class SubmitButton {
     this._disabled = value;
   }
 }
-
 ```
 
 Here, the `disabled` input of the component is being passed on to the `<button>` in the template. All of this works as expected, as long as a `boolean` value is bound to the input. But, suppose a consumer uses this input in the template as an attribute:
@@ -504,9 +495,7 @@ Here, the `disabled` input of the component is being passed on to the `<button>`
 在这里，组件的输入 `disabled` 将传给模板中的 `<button>`。只要将 `boolean` 值绑定到输入，所有这些工作都可以按预期进行。但是，假设使用者使用模板中的这个输入作为属性：
 
 ```html
-
 <submit-button disabled></submit-button>
-
 ```
 
 This has the same effect as the binding:
@@ -514,9 +503,7 @@ This has the same effect as the binding:
 这与绑定具有相同的效果：
 
 ```html
-
 <submit-button [disabled]="''"></submit-button>
-
 ```
 
 At runtime, the input will be set to the empty string, which is not a `boolean` value. Angular component libraries that deal with this problem often "coerce" the value into the right type in the setter:
@@ -524,11 +511,9 @@ At runtime, the input will be set to the empty string, which is not a `boolean` 
 在运行时，输入将设置为空字符串，这不是 `boolean` 值。处理此问题的角组件库通常将值“强制转换”到 setter 中的正确类型中：
 
 ```typescript
-
 set disabled(value: boolean) {
   this._disabled = (value === '') || value;
 }
-
 ```
 
 It would be ideal to change the type of `value` here, from `boolean` to `boolean|''`, to match the set of values which are actually accepted by the setter.
@@ -546,7 +531,6 @@ As a workaround for this problem, Angular supports checking a wider, more permis
 通过向组件类添加带有 `ngAcceptInputType_` 前缀的静态属性来启用此功能：
 
 ```typescript
-
 class SubmitButton {
   private _disabled: boolean;
 
@@ -561,7 +545,6 @@ class SubmitButton {
 
   static ngAcceptInputType_disabled: boolean|'';
 }
-
 ```
 
 <div class="alert is-important">
@@ -595,7 +578,6 @@ In the following example, casting `person` to the `any` type suppresses the erro
 在以下范例中，将 `person` 强制转换为 `any` 类型可以压制错误 `Property address does not exist`。
 
 ```typescript
-
   @Component({
     selector: 'my-component',
     template: '{{$any(person).addresss.street}}'
@@ -603,5 +585,4 @@ In the following example, casting `person` to the `any` type suppresses the erro
   class MyComponent {
     person?: Person;
   }
-
 ```

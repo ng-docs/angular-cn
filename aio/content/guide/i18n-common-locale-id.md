@@ -12,11 +12,11 @@ Angular 使用 Unicode *语言环境标识符*（Unicode 语言环境 ID）来�
 
 <header>Unicode 语言环境 ID</header>
 
-*   A locale ID conforms to the [Unicode Common Locale Data Repository (CLDR) core specification][UnicodeCldrDevelopmentCoreSpecification]. For more information about locale IDs, see [Unicode Language and Locale Identifiers][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798].
+* A locale ID conforms to the [Unicode Common Locale Data Repository (CLDR) core specification][UnicodeCldrDevelopmentCoreSpecification]. For more information about locale IDs, see [Unicode Language and Locale Identifiers][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798].
 
   语言环境 ID 遵循 [Unicode 通用语言环境数据仓库 (CLDR) 核心规范][UnicodeCldrDevelopmentCoreSpecification]。有关语言环境 ID 的更多信息，请参阅 [Unicode 语言和语言环境标识符][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798]。
 
-*   CLDR and Angular use [BCP 47 tags][RfcEditorInfoBcp47] as the base for the locale ID.
+* CLDR and Angular use [BCP 47 tags][RfcEditorInfoBcp47] as the base for the locale ID.
 
   CLDR 和 Angular 以 [BCP 47 标签][RfcEditorInfoBcp47] 作为语言环境 ID 的基础。
 
@@ -50,17 +50,17 @@ For the examples in this guide, use the following languages and locales.
 
 对于本指南中的示例，使用了如下语言和语言环境。
 
-| Language | Locale                   | Unicode locale ID |
-|:---------|:-------------------------| :---------------- |
-| 语言       | 地区                       | Unicode 语言环境 ID |
-| English  | Canada                   | `en-CA` |
-| 英语       | 加拿大                      | `en-CA` |
-| English  | United States of America | `en-US` |
-| 英语       | 美国                       | `en-US` |
-| French   | Canada                   | `fr-CA` |
-| 法语       | 加拿大                      | `fr-CA` |
-| French   | France                   | `fr-FR` |
-| 法语       | 法国                       | `fr-FR` |
+| Language | Locale | Unicode locale ID |
+| :------- | :----- | :---------------- |
+| 语言 | 地区 | Unicode 语言环境 ID |
+| English | Canada | `en-CA` |
+| 英语 | 加拿大 | `en-CA` |
+| English | United States of America | `en-US` |
+| 英语 | 美国 | `en-US` |
+| French | Canada | `fr-CA` |
+| 法语 | 加拿大 | `fr-CA` |
+| French | France | `fr-FR` |
+| 法语 | 法国 | `fr-FR` |
 
 The [Angular repository][GithubAngularAngularTreeMasterPackagesCommonLocales] includes common locales.
 
@@ -104,7 +104,7 @@ To change the source locale of your project for the build, complete the followin
 
 ## 下一步是什么
 
-*   [Format data based on locale][AioGuideI18nCommonFormatDataLocale]
+* [Format data based on locale][AioGuideI18nCommonFormatDataLocale]
 
   [根据语言环境格式化数据][AioGuideI18nCommonFormatDataLocale]
 

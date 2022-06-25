@@ -19,7 +19,7 @@ For example, individual components define and control each of the following view
 
    英雄编辑器。
 
-You define a component's application logic&mdash;what it does to support the view&mdash;inside a class.
+You define a component's application logic—what it does to support the view—inside a class.
 The class interacts with the view through an API of properties and methods.
 
 你在类中定义组件的应用逻辑，为视图提供支持。
@@ -74,10 +74,10 @@ This example shows some of the most useful `@Component` configuration options:
 这个例子展示了一些最常用的 `@Component` 配置选项：
 
 * `selector`: A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then
-Angular inserts an instance of the `HeroListComponent` view between those tags.
+  Angular inserts an instance of the `HeroListComponent` view between those tags.
 
-   `selector`：是一个 CSS 选择器，它会告诉 Angular，一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。
-  比如，如果应用的 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就会在这些标签中插入一个 `HeroListComponent` 实例的视图。
+     `selector`：是一个 CSS 选择器，它会告诉 Angular，一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。
+    比如，如果应用的 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就会在这些标签中插入一个 `HeroListComponent` 实例的视图。
 
 * `templateUrl`: The module-relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property. This template defines the component's *host view*.
 
@@ -140,12 +140,12 @@ This template uses typical HTML elements like `<h2>` and  `<p>`, and also includ
    `{{hero.name}}`、`(click)` 和 `[hero]` 把程序数据绑定到及绑定回 DOM，以响应用户的输入。更多内容参阅稍后的[数据绑定](#data-binding)部分。
 
 * The `<app-hero-detail>` tag in the example is an element that represents a new component, `HeroDetailComponent`.
-`HeroDetailComponent` (code not shown) defines the hero-detail child view of `HeroListComponent`.
-Notice how custom components like this mix seamlessly with native HTML in the same layouts.
+  `HeroDetailComponent` (code not shown) defines the hero-detail child view of `HeroListComponent`.
+  Notice how custom components like this mix seamlessly with native HTML in the same layouts.
 
-   模板中的 `<app-hero-detail>` 标签是一个代表新组件 `HeroDetailComponent` 的元素。
-  `HeroDetailComponent`（代码略）定义了 `HeroListComponent` 的英雄详情子视图。
-  注意观察像这样的自定义组件是如何与原生 HTML 元素无缝的混合在一起的。
+     模板中的 `<app-hero-detail>` 标签是一个代表新组件 `HeroDetailComponent` 的元素。
+    `HeroDetailComponent`（代码略）定义了 `HeroListComponent` 的英雄详情子视图。
+    注意观察像这样的自定义组件是如何与原生 HTML 元素无缝的混合在一起的。
 
 ### Data binding
 
@@ -176,14 +176,14 @@ This example from the `HeroListComponent` template uses three of these forms.
 <code-example path="architecture/src/app/hero-list.component.1.html" header="src/app/hero-list.component.html (binding)" region="binding"></code-example>
 
 * The `{{hero.name}}` [*interpolation*](guide/interpolation)
-displays the component's `hero.name` property value within the `<li>` element.
+  displays the component's `hero.name` property value within the `<li>` element.
 
-   `{{hero.name}}` 这个[*插值*](guide/interpolation)在 `<li>` 标签中显示组件的 `hero.name` 属性的值。
+     `{{hero.name}}` 这个[*插值*](guide/interpolation)在 `<li>` 标签中显示组件的 `hero.name` 属性的值。
 
 * The `[hero]` [*property binding*](guide/property-binding) passes the value of
-`selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`.
+  `selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`.
 
-   `[hero]`[*属性绑定*](guide/property-binding)把父组件 `HeroListComponent` 的 `selectedHero` 的值传到子组件 `HeroDetailComponent` 的 `hero` 属性中。
+     `[hero]`[*属性绑定*](guide/property-binding)把父组件 `HeroListComponent` 的 `selectedHero` 的值传到子组件 `HeroDetailComponent` 的 `hero` 属性中。
 
 * The `(click)` [*event binding*](guide/user-input#binding-to-user-input-events) calls the component's `selectHero` method when the user clicks a hero's name.
 
@@ -256,7 +256,6 @@ You can chain pipes, sending the output of one pipe function to be transformed b
   <!-- shortTime format: output '9:43 AM'-->
 
   <p>The time is {{today | date:'shortTime'}}</p>
-
 ```
 
 ### Directives
@@ -300,13 +299,13 @@ The example template uses two built-in structural directives to add application 
 
 <code-example path="architecture/src/app/hero-list.component.1.html" header="src/app/hero-list.component.html (structural)" region="structural"></code-example>
 
-  * [`*ngFor`](guide/built-in-directives#ngFor) is an iterative; it tells Angular to stamp out one `<li>` per hero in the `heroes` list.
+- [`*ngFor`](guide/built-in-directives#ngFor) is an iterative; it tells Angular to stamp out one `<li>` per hero in the `heroes` list.
 
-     [`*ngFor`](guide/built-in-directives#ngFor) 是一个迭代器，它要求 Angular 为 `heroes` 列表中的每个英雄渲染出一个 `<li>`。
+   [`*ngFor`](guide/built-in-directives#ngFor) 是一个迭代器，它要求 Angular 为 `heroes` 列表中的每个英雄渲染出一个 `<li>`。
 
-  * [`*ngIf`](guide/built-in-directives#ngIf) is a conditional; it includes the `HeroDetail` component only if a selected hero exists.
+- [`*ngIf`](guide/built-in-directives#ngIf) is a conditional; it includes the `HeroDetail` component only if a selected hero exists.
 
-     [`*ngIf`](guide/built-in-directives#ngIf) 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。
+   [`*ngIf`](guide/built-in-directives#ngIf) 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。
 
 #### Attribute directives
 

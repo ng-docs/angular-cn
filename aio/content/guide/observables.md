@@ -14,13 +14,13 @@ This pattern is similar (but not identical) to the [publish/subscribe](https://e
 观察者（Observer）模式是一个软件设计模式，它有一个对象，称之为*主体 Subject*，负责维护一个依赖项（称之为观察者 Observer）的列表，并且在状态变化时自动通知它们。
 该模式和[发布/订阅](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)模式非常相似（但不完全一样）。
 
-Observables are declarative&mdash;that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it.
+Observables are declarative—that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it.
 The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
 
 可观察对象是声明式的 —— 也就是说，虽然你定义了一个用于发布值的函数，但是在有消费者订阅它之前，这个函数并不会实际执行。
 订阅之后，当这个函数执行完或取消订阅时，订阅者就会收到通知。
 
-An observable can deliver multiple values of any type&mdash;literals, messages, or events, depending on the context. The API for receiving values is the same whether the values are delivered synchronously or asynchronously. Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to consume values, and when done, unsubscribing. Whether the stream was keystrokes, an HTTP response, or an interval timer, the interface for listening to values and stopping listening is the same.
+An observable can deliver multiple values of any type—literals, messages, or events, depending on the context. The API for receiving values is the same whether the values are delivered synchronously or asynchronously. Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to consume values, and when done, unsubscribing. Whether the stream was keystrokes, an HTTP response, or an interval timer, the interface for listening to values and stopping listening is the same.
 
 可观察对象可以发送多个任意类型的值 —— 字面量、消息、事件。无论这些值是同步发送的还是异步发送的，接收这些值的 API 都是一样的。
 由于准备（setup）和清场（teardown）的逻辑都是由可观察对象自己处理的，因此你的应用代码只管订阅并消费这些值就可以了，做完之后，取消订阅。无论这个流是按键流、HTTP 响应流还是定时器，对这些值进行监听和停止监听的接口都是一样的。
@@ -61,14 +61,14 @@ A handler for receiving observable notifications implements the `Observer` inter
 用于接收可观察对象通知的处理器要实现 `Observer` 接口。这个对象定义了一些回调函数来处理可观察对象可能会发来的三种通知：
 
 | Notification type | Description |
-|:---------|:-------------------------------------------|
+| :---------------- | :---------- |
 | 通知类型 | 说明 |
 | `next` | Required. A handler for each delivered value. Called zero or more times after execution starts. |
-| `next` | 必要。用来处理每个送达值。在开始执行后可能执行零次或多次。|
+| `next` | 必要。用来处理每个送达值。在开始执行后可能执行零次或多次。 |
 | `error` | Optional. A handler for an error notification. An error halts execution of the observable instance. |
-| `error` |  可选。用来处理错误通知。错误会中断这个可观察对象实例的执行过程。 |
+| `error` | 可选。用来处理错误通知。错误会中断这个可观察对象实例的执行过程。 |
 | `complete` | Optional. A handler for the execution-complete notification. Delayed values can continue to be delivered to the next handler after execution is complete. |
-| `complete` |  可选。用来处理执行完毕（complete）通知。当执行完毕后，这些值就会继续传给下一个处理器。 |
+| `complete` | 可选。用来处理执行完毕（complete）通知。当执行完毕后，这些值就会继续传给下一个处理器。 |
 
 An observer object can define any combination of these handlers. If you don't supply a handler for a notification type, the observer ignores notifications of that type.
 
@@ -89,14 +89,14 @@ In order to show how subscribing works, we need to create a new observable. Ther
 
    为了展示订阅的原理，我们需要创建新的可观察对象。它有一个构造函数可以用来创建新实例，但是为了更简明，也可以使用 `Observable` 上定义的一些静态方法来创建一些常用的简单可观察对象：
 
-  * `of(...items)`&mdash;Returns an `Observable` instance that synchronously delivers the values provided as arguments.
+- `of(...items)`—Returns an `Observable` instance that synchronously delivers the values provided as arguments.
 
-     `of(...items)` —— 返回一个 `Observable` 实例，它用同步的方式把参数中提供的这些值发送出来。
+   `of(...items)` —— 返回一个 `Observable` 实例，它用同步的方式把参数中提供的这些值发送出来。
 
-  * `from(iterable)`&mdash;Converts its argument to an `Observable` instance. This method is commonly used to convert an array to an observable.
+- `from(iterable)`—Converts its argument to an `Observable` instance. This method is commonly used to convert an array to an observable.
 
-     `from(iterable)` —— 把它的参数转换成一个 `Observable` 实例。
-    该方法通常用于把一个数组转换成一个（发送多个值的）可观察对象。
+   `from(iterable)` —— 把它的参数转换成一个 `Observable` 实例。
+  该方法通常用于把一个数组转换成一个（发送多个值的）可观察对象。
 
 </div>
 
@@ -161,7 +161,7 @@ A typical observable creates a new, independent execution for each subscribed ob
 典型的可观察对象会为每一个观察者创建一次新的、独立的执行。
 当观察者进行订阅时，该可观察对象会连上一个事件处理器，并且向那个观察者发送一些值。当第二个观察者订阅时，这个可观察对象就会连上一个新的事件处理器，并独立执行一次，把这些值发送给第二个可观察对象。
 
-Sometimes, instead of starting an independent execution for each subscriber, you want each subscription to get the same values&mdash;even if values have already started emitting. This might be the case with something like an observable of clicks on the document object.
+Sometimes, instead of starting an independent execution for each subscriber, you want each subscription to get the same values—even if values have already started emitting. This might be the case with something like an observable of clicks on the document object.
 
 有时候，不应该对每一个订阅者都独立执行一次，你可能会希望每次订阅都得到同一批值 —— 即使是那些你已经发送过的。这在某些情况下有用，比如用来发送 `document` 上的点击事件的可观察对象。
 

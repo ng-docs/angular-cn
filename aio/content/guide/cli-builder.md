@@ -65,21 +65,21 @@ For example, your `myBuilder` folder could contain the following files.
 
 构建器位于一个 `project` 文件夹中，该文件夹的结构类似于 Angular 工作区，包括位于顶层的全局配置文件，以及位于工作代码所在源文件夹中的更具体的配置。例如，`myBuilder` 文件夹中可能包含如下文件。
 
-| FILES                    | PURPOSE                                                                                      |
-| :----------------------- | :------------------------------------------------------------------------------------------- |
-| 文件                     | 目的                                                                                         |
-| `src/my-builder.ts`      | Main source file for the builder definition.                                                 |
-| `src/my-builder.ts`      | 这个构建器定义的主要源码。                                                                |
-| `src/my-builder.spec.ts` | Source file for tests.                                                                       |
-| `src/my-builder.spec.ts` | 测试的源码。                                                                              |
-| `src/schema.json`        | Definition of builder input options.                                                         |
-| `src/schema.json`        | 构建器输入选项的定义。                                                                     |
-| `builders.json`          | Builders definition.                                                                       |
-| `builders.json`          | 测试配置。                                                                                  |
-| `package.json`           | Dependencies. See <https://docs.npmjs.com/files/package.json>.                               |
-| `package.json`           | 依赖包。参阅 <https://docs.npmjs.com/files/package.json>。                                  |
-| `tsconfig.json`          | [TypeScript configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html). |
-| `tsconfig.json`          | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)        |
+| FILES | PURPOSE |
+| :---- | :------ |
+| 文件 | 目的 |
+| `src/my-builder.ts` | Main source file for the builder definition. |
+| `src/my-builder.ts` | 这个构建器定义的主要源码。 |
+| `src/my-builder.spec.ts` | Source file for tests. |
+| `src/my-builder.spec.ts` | 测试的源码。 |
+| `src/schema.json` | Definition of builder input options. |
+| `src/schema.json` | 构建器输入选项的定义。 |
+| `builders.json` | Builders definition. |
+| `builders.json` | 测试配置。 |
+| `package.json` | Dependencies. See <https://docs.npmjs.com/files/package.json>. |
+| `package.json` | 依赖包。参阅 <https://docs.npmjs.com/files/package.json>。 |
+| `tsconfig.json` | [TypeScript configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html). |
+| `tsconfig.json` | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) |
 
 Publish the builder to `npm` (see [Publishing your Library](guide/creating-libraries#publishing-your-library)). If you publish it as `@example/my-builder`, install it using the following command.
 

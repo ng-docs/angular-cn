@@ -20,11 +20,13 @@ Before learning template syntax, you should be familiar with the following:
   [Angular 的概念](guide/architecture)
 
 * JavaScript
+
 * HTML
+
 * CSS
 
-
 <!-- Do we still need the following section? It seems more relevant to those coming from AngularJS, which is now 7 versions ago. -->
+
 <!-- You may be familiar with the component/template duality from your experience with model-view-controller (MVC) or model-view-viewmodel (MVVM).
 In Angular, the component plays the part of the controller/viewmodel, and the template represents the view. -->
 
@@ -76,7 +78,6 @@ For more information, see the [Security](guide/security) page.
 
 </div>
 
-
 ## More on template syntax
 
 ## 关于模板语法的更多信息
@@ -85,50 +86,50 @@ You might also be interested in the following:
 
 你可能也对以下内容感兴趣：
 
-* [Interpolation](guide/interpolation)&mdash;learn how to use interpolation and expressions in HTML.
+* [Interpolation](guide/interpolation)—learn how to use interpolation and expressions in HTML.
 
   [插值](guide/interpolation) - 学习如何在 HTML 中使用插值和表达式。
 
-* [Template statements](guide/template-statements)&mdash;respond to events in your templates.
+* [Template statements](guide/template-statements)—respond to events in your templates.
 
   [模板语句](guide/template-statements) - 响应模板中的事件。
 
-* [Binding syntax](guide/binding-syntax)&mdash;use binding to coordinate values in your application.
+* [Binding syntax](guide/binding-syntax)—use binding to coordinate values in your application.
 
   [绑定语法](guide/binding-syntax) - 使用绑定来协调应用程序中的值。
-* [Property binding](guide/property-binding)&mdash;set properties of target elements or directive `@Input()` decorators.
+
+* [Property binding](guide/property-binding)—set properties of target elements or directive `@Input()` decorators.
 
   [属性绑定](guide/property-binding) - 设置目标元素的属性或指令中带 `@Input()` 装饰器的属性。
 
-* [Attribute, class, and style bindings](guide/attribute-binding)&mdash;set the value of attributes, classes, and styles.
+* [Attribute, class, and style bindings](guide/attribute-binding)—set the value of attributes, classes, and styles.
 
   [属性（Attribute），类和样式绑定](guide/attribute-binding) - 设置属性、类和样式的值。
 
-* [Event binding](guide/event-binding)&mdash;listen for events and your HTML.
+* [Event binding](guide/event-binding)—listen for events and your HTML.
 
   [事件绑定](guide/event-binding) - 监听事件和 HTML。
 
-* [Two-way binding](guide/two-way-binding)&mdash;share data between a class and its template.
+* [Two-way binding](guide/two-way-binding)—share data between a class and its template.
 
   [双向绑定](guide/two-way-binding) - 在类及其模板之间共享数据。
 
-* [Built-in directives](guide/built-in-directives)&mdash;listen to and modify the behavior and layout of HTML.
+* [Built-in directives](guide/built-in-directives)—listen to and modify the behavior and layout of HTML.
 
   [内置指令](guide/built-in-directives) - 监听和修改 HTML 的行为和布局。
 
-* [Template reference variables](guide/template-reference-variables)&mdash;use special variables to reference a DOM element within a template.
+* [Template reference variables](guide/template-reference-variables)—use special variables to reference a DOM element within a template.
 
   [模板引用变量](guide/template-reference-variables) - 使用特殊变量来引用模板中的 DOM 元素。
 
-* [Inputs and Outputs](guide/inputs-outputs)&mdash;share data between the parent context and child directives or components
+* [Inputs and Outputs](guide/inputs-outputs)—share data between the parent context and child directives or components
 
   [输入和输出](guide/inputs-outputs) - 在父级上下文和子指令或组件之间共享数据
 
-* [Template expression operators](guide/template-expression-operators)&mdash;learn about the pipe operator, `|`, and protect against `null` or `undefined` values in your HTML.
+* [Template expression operators](guide/template-expression-operators)—learn about the pipe operator, `|`, and protect against `null` or `undefined` values in your HTML.
 
   [模板表达式运算符](guide/template-expression-operators) - 了解管道运算符 `|` ，以及如何防范空值 `null` 或 `undefined`。
 
-* [SVG in templates](guide/svg-in-templates)&mdash;dynamically generate interactive graphics.
+* [SVG in templates](guide/svg-in-templates)—dynamically generate interactive graphics.
 
   [模板中的 SVG](guide/svg-in-templates) - 动态生成交互式图形。
-

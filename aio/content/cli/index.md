@@ -24,7 +24,7 @@ npm install -g @angular/cli
 </code-example>
 
 For details about changes between versions, and information about updating from previous releases,
-see the Releases tab on GitHub: https://github.com/angular/angular-cli/releases
+see the Releases tab on GitHub: <https://github.com/angular/angular-cli/releases>
 
 关于版本变更的详情，以及如何从以前版本升级的信息，参阅 GitHub 上的 Releases 页：<https://github.com/angular/angular-cli/releases>
 
@@ -55,7 +55,7 @@ cd my-first-project
 ng serve
 </code-example>
 
-In your browser, open http://localhost:4200/ to see the new application run.
+In your browser, open <http://localhost:4200/> to see the new application run.
 When you use the [ng serve](cli/serve) command to build an application and serve it locally, the server automatically rebuilds the application and reloads the page when you change any of the source files.
 
 在浏览器中，打开 <http://localhost:4200/> 查看运行效果。
@@ -162,11 +162,11 @@ Command syntax is shown as follows:
   通常，生成的工件（artifact）名称可以作为命令的参数进行指定，也可以使用 --name 选项。
 
 * Argument and option names can be given in either
-[camelCase or dash-case](guide/glossary#case-types).
-`--myOptionName` is equivalent to `--my-option-name`.
+  [camelCase or dash-case](guide/glossary#case-types).
+  `--myOptionName` is equivalent to `--my-option-name`.
 
-  参数和选项的名称可以用[小驼峰或中线分隔的格式](guide/glossary#case-types)给出。
-  `--myOptionName` 等价于 `--my-option-name`。
+    参数和选项的名称可以用[小驼峰或中线分隔的格式](guide/glossary#case-types)给出。
+    `--myOptionName` 等价于 `--my-option-name`。
 
 ### Boolean options
 

@@ -18,17 +18,17 @@ This process helps ensure that intentional changes to the options are kept in pl
 | TypeScript 配置文件 | 属性变更 | 现有值 | 新值 |
 | `<workspace base>/tsconfig.json` | `"module"` | `"esnext"` | `"es2020"` |
 | Used in <code class="no-auto-link">browser</code>  builder options (`ng build` for applications) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 <code class="no-auto-link">browser</code>  构建器选项中使用（用于应用程序的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
+| 在 <code class="no-auto-link">browser</code>  构建器选项中使用（用于应用程序的 `ng build`） | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `ng-packagr` builder options (`ng build` for libraries) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 `ng-packagr` 构建器选项中使用（用于库的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
+| 在 `ng-packagr` 构建器选项中使用（用于库的 `ng build`） | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `karma` builder options (`ng test` for applications) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 `karma` 器选项中使用（用于应用程序的 `ng test`）| `"module"` | `"esnext"` | `"es2020"` |
+| 在 `karma` 器选项中使用（用于应用程序的 `ng test`） | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `server` builder options (universal) | `"module"` | `"commonjs"` | _removed_ |
 | 在 `server` 构建器选项中使用（通用） | `"module"` | `"commonjs"` | *已移除* |
 | Used in `server` builder options (universal) | `"target"` | _any_ | `"es2016"` |
 | 在 `server` 构建器选项中使用（通用） | `"target"` | *任何* | `"es2016"` |
 | Used in `protractor` builder options (`ng e2e` for applications) | `"target"` | `"es5"` | `"es2018"` |
-| 在 `protractor` 构建器选项中使用（用于应用程序的 `ng e2e`）| `"target"` | `"es5"` | `"es2018"` |
+| 在 `protractor` 构建器选项中使用（用于应用程序的 `ng e2e`） | `"target"` | `"es5"` | `"es2018"` |
 
 ## Why is this migration necessary?
 
@@ -54,4 +54,3 @@ This behavior can change in the future, because the `"esnext"` option could evol
 As a result, code can become unstable. Using the `"es2020"` option mitigates this risk.
 
 在 TypeScript 3.9 中，由 `module` 控制的 TypeScript 编译器的行为与 `"esnext"` 和 `"es2020"` 值相同。此行为将来可能会更改，因为 `"esnext"` 选项可能会以向后不兼容的方式发展，从而导致在 TypeScript 更新时导致构建期或运行期错误。其后果是，代码可能变得不稳定。使用 `"es2020"` 选项可减轻此风险。
-

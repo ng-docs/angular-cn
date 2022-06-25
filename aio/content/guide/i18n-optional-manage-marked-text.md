@@ -6,11 +6,11 @@ The Angular extractor generates a file with a translation unit entry each of the
 
 Angular 提取器会生成一个文件，其中包含以下每个实例的翻译单元条目。
 
-*   Each `i18n` attribute in a component template
+* Each `i18n` attribute in a component template
 
   组件模板中的每个 `i18n` 属性
 
-*   Each [`$localize`][AioApiLocalizeInitLocalize] tagged message string in component code
+* Each [`$localize`][AioApiLocalizeInitLocalize] tagged message string in component code
 
   组件代码中每个 [`$localize`][AioApiLocalizeInitLocalize] 标记的消息字符串
 

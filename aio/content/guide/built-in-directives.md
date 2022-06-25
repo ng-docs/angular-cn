@@ -20,16 +20,16 @@ The different types of Angular directives are as follows:
 
 Angular 指令的不同类型如下：
 
-1. [Components](guide/component-overview)&mdash;directives with a template.
-  This type of directive is the most common directive type.
+1. [Components](guide/component-overview)—directives with a template.
+   This type of directive is the most common directive type.
 
-   [组件](guide/component-overview) —— 带有模板的指令。这种指令类型是最常见的指令类型。
+    [组件](guide/component-overview) —— 带有模板的指令。这种指令类型是最常见的指令类型。
 
-1. [Attribute directives](guide/built-in-directives#built-in-attribute-directives)&mdash;directives that change the appearance or behavior of an element, component, or another directive.
+1. [Attribute directives](guide/built-in-directives#built-in-attribute-directives)—directives that change the appearance or behavior of an element, component, or another directive.
 
    [属性型指令](guide/built-in-directives#built-in-attribute-directives) —— 更改元素、组件或其他指令的外观或行为的指令。
 
-1. [Structural directives](guide/built-in-directives#built-in-structural-directives)&mdash;directives that change the DOM layout by adding and removing DOM elements.
+1. [Structural directives](guide/built-in-directives#built-in-structural-directives)—directives that change the DOM layout by adding and removing DOM elements.
 
    [结构型指令](guide/built-in-directives#built-in-structural-directives) —— 通过添加和删除 DOM 元素来更改 DOM 布局的指令。
 
@@ -52,15 +52,15 @@ The most common attribute directives are as follows:
 
 许多 NgModule（例如 [`RouterModule`](guide/router "路由和导航") 和 [`FormsModule`](guide/forms "表单") 都定义了自己的属性型指令。最常见的属性型指令如下：
 
-* [`NgClass`](guide/built-in-directives#ngClass)&mdash;adds and removes a set of CSS classes.
+* [`NgClass`](guide/built-in-directives#ngClass)—adds and removes a set of CSS classes.
 
   [`NgClass`](guide/built-in-directives#ngClass) —— 添加和删除一组 CSS 类。
 
-* [`NgStyle`](guide/built-in-directives#ngstyle)&mdash;adds and removes a set of HTML styles.
+* [`NgStyle`](guide/built-in-directives#ngstyle)—adds and removes a set of HTML styles.
 
   [`NgStyle`](guide/built-in-directives#ngstyle) —— 添加和删除一组 HTML 样式。
 
-* [`NgModel`](guide/built-in-directives#ngModel)&mdash;adds two-way data binding to an HTML form element.
+* [`NgModel`](guide/built-in-directives#ngModel)—adds two-way data binding to an HTML form element.
 
   [`NgModel`](guide/built-in-directives#ngModel) —— 将数据双向绑定添加到 HTML 表单元素。
 
@@ -74,6 +74,7 @@ They do not have special access to any private APIs that other directives can't 
 </div>
 
 <a id="ngClass"></a>
+
 ## Adding and removing classes with `NgClass`
 
 ## 用 `NgClass` 添加和删除类
@@ -107,15 +108,15 @@ Because `isSpecial` is true, `ngClass` applies the class of `special` to the `<d
 ### 将 `NgClass` 与方法一起使用
 
 1. To use `NgClass` with a method, add the method to the component class.
-  In the following example, `setCurrentClasses()` sets the property `currentClasses` with an object that adds or removes three classes based on the `true` or `false` state of three other component properties.
+   In the following example, `setCurrentClasses()` sets the property `currentClasses` with an object that adds or removes three classes based on the `true` or `false` state of three other component properties.
 
-   要将 `NgClass` 与方法一起使用，请将方法添加到组件类中。在下面的示例中，`setCurrentClasses()` 使用一个对象来设置属性 `currentClasses`，该对象根据另外三个组件属性为 `true` 或 `false` 来添加或删除三个 CSS 类。
+    要将 `NgClass` 与方法一起使用，请将方法添加到组件类中。在下面的示例中，`setCurrentClasses()` 使用一个对象来设置属性 `currentClasses`，该对象根据另外三个组件属性为 `true` 或 `false` 来添加或删除三个 CSS 类。
 
-  Each key of the object is a CSS class name.
-  If a key is `true`, `ngClass` adds the class.
-  If a key is `false`, `ngClass` removes the class.
+   Each key of the object is a CSS class name.
+   If a key is `true`, `ngClass` adds the class.
+   If a key is `false`, `ngClass` removes the class.
 
-  该对象的每个键（key）都是一个 CSS 类名。如果键为 `true`，则 `ngClass` 添加该类。如果键为 `false`，则 `ngClass` 删除该类。
+   该对象的每个键（key）都是一个 CSS 类名。如果键为 `true`，则 `ngClass` 添加该类。如果键为 `false`，则 `ngClass` 删除该类。
 
 <code-example path="built-in-directives/src/app/app.component.ts" region="setClasses" header="src/app/app.component.ts"></code-example>
 
@@ -133,6 +134,7 @@ For more information, see the <live-example></live-example> `app.component.ts` a
 在这个例子中，Angular 会在初始化以及发生更改的情况下应用这些类。完整的示例会在 `ngOnInit()` 中进行初始化以及通过单击按钮更改相关属性时调用 `setCurrentClasses()`。这些步骤对于实现 `ngClass` 不是必需的。有关更多信息，请参见<live-example></live-example>中的 `app.component.ts` 和 `app.component.html`。
 
 <a id="ngstyle"></a>
+
 ## Setting inline styles with `NgStyle`
 
 ## 用 `NgStyle` 设置内联样式
@@ -143,11 +145,11 @@ Use `NgStyle` to set multiple inline styles simultaneously, based on the state o
 
 1. To use `NgStyle`, add a method to the component class.
 
-   要使用 `NgStyle`，请向组件类添加一个方法。
+    要使用 `NgStyle`，请向组件类添加一个方法。
 
-  In the following example, `setCurrentStyles()` sets the property `currentStyles` with an object that defines three styles, based on the state of three other component properties.
+   In the following example, `setCurrentStyles()` sets the property `currentStyles` with an object that defines three styles, based on the state of three other component properties.
 
-  在下面的例子中，`setCurrentStyles()` 方法基于该组件另外三个属性的状态，用一个定义了三个样式的对象设置了 `currentStyles` 属性。
+   在下面的例子中，`setCurrentStyles()` 方法基于该组件另外三个属性的状态，用一个定义了三个样式的对象设置了 `currentStyles` 属性。
 
 <code-example path="built-in-directives/src/app/app.component.ts" region="setStyles" header="src/app/app.component.ts"></code-example>
 
@@ -247,15 +249,15 @@ This section introduces the most common built-in structural directives:
 
 本节会介绍最常见的内置结构型指令：
 
-* [`NgIf`](guide/built-in-directives#ngIf)&mdash;conditionally creates or disposes of subviews from the template.
+* [`NgIf`](guide/built-in-directives#ngIf)—conditionally creates or disposes of subviews from the template.
 
   [`NgIf`](guide/built-in-directives#ngIf) —— 从模板中创建或销毁子视图。
 
-* [`NgFor`](guide/built-in-directives#ngFor)&mdash;repeat a node for each item in a list.
+* [`NgFor`](guide/built-in-directives#ngFor)—repeat a node for each item in a list.
 
   [`NgFor`](guide/built-in-directives#ngFor) —— 为列表中的每个条目重复渲染一个节点。
 
-* [`NgSwitch`](guide/built-in-directives#ngSwitch)&mdash;a set of directives that switch among alternative views.
+* [`NgSwitch`](guide/built-in-directives#ngSwitch)—a set of directives that switch among alternative views.
 
   [`NgSwitch`](guide/built-in-directives#ngSwitch) —— 一组在备用视图之间切换的指令。
 
@@ -339,21 +341,18 @@ The string `"let item of items"` instructs Angular to do the following:
 
 字符串 `"let item of items"` 会指示 Angular 执行以下操作：
 
-  * Store each item in the `items` array in the local `item` looping variable
-  
-    将 `items` 中的每个条目存储在局部循环变量 `item` 中
-  
-  * Make each item available to the templated HTML for each iteration
-  
-    让每个条目都可用于每次迭代时的模板 HTML 中
-  
-  * Translate `"let item of items"` into an `<ng-template>` around the host element
-  
-    将 `"let item of items"` 转换为环绕宿主元素的 `<ng-template>`
-  
-  * Repeat the `<ng-template>` for each `item` in the list
-  
-    对列表中的每个 `item` 复写这个 `<ng-template>`
+- Store each item in the `items` array in the local `item` looping variable
+
+  将 `items` 中的每个条目存储在局部循环变量 `item` 中
+- Make each item available to the templated HTML for each iteration
+
+  让每个条目都可用于每次迭代时的模板 HTML 中
+- Translate `"let item of items"` into an `<ng-template>` around the host element
+
+  将 `"let item of items"` 转换为环绕宿主元素的 `<ng-template>`
+- Repeat the `<ng-template>` for each `item` in the list
+
+  对列表中的每个 `item` 复写这个 `<ng-template>`
 
 For more information see the [Structural directive shorthand](guide/structural-directives#shorthand) section of [Structural directives](guide/structural-directives).
 
@@ -374,14 +373,13 @@ Reference a template input variable, such as `item`, in the following locations:
 
 你可以在以下位置引用模板输入变量，例如 `item`：
 
-  * within the `ngFor` host element
-  
-    在 `ngFor` 的宿主元素中
-  
-  * within the host element descendants to access the item's properties
+- within the `ngFor` host element
 
-    在宿主元素的后代中，用以访问条目的属性
-  
+  在 `ngFor` 的宿主元素中
+- within the host element descendants to access the item's properties
+
+  在宿主元素的后代中，用以访问条目的属性
+
 The following example references `item` first in an interpolation and then passes in a binding to the `item` property of the `<app-item-detail>` component.
 
 以下示例首先在插值中引用 `item`，然后将它通过绑定传递给 `<app-item-detail>` 组件的 `item` 属性。
@@ -419,6 +417,7 @@ For more information about shorthand, see the [Structural Directives](guide/stru
 Angular 会将此指令转换为 `<ng-template>`，然后反复使用此模板为列表中的每个 `item` 创建一组新的元素和绑定。有关简写形式的更多信息，请参见[《结构型指令》](guide/structural-directives#shorthand)指南。
 
 <a id="one-per-element"></a>
+
 ## Repeating elements when a condition is true
 
 ## 当条件为真时复写元素
@@ -437,6 +436,7 @@ For more information about `NgFor` see the [NgForOf API reference](api/common/Ng
 有关 `NgFor` 的更多信息，请参见[NgForOf API 参考](api/common/NgForOf)。
 
 <a id="ngfor-with-trackby"></a>
+
 ### Tracking items with `*ngFor` `trackBy`
 
 ### 用 `*ngFor` 的 `trackBy` 跟踪条目
@@ -447,10 +447,10 @@ With the `*ngFor` `trackBy` property, Angular can change and re-render only thos
 通过跟踪对条目列表的更改，可以减少应用程序对服务器的调用次数。使用 `*ngFor` 的 `trackBy` 属性，Angular 只能更改和重新渲染已更改的条目，而不必重新加载整个条目列表。
 
 1. Add a method to the component that returns the value `NgFor` should track.
-  In this example, the value to track is the item's `id`.
-  If the browser has already rendered `id`, Angular keeps track of it and doesn't re-query the server for the same `id`.
+   In this example, the value to track is the item's `id`.
+   If the browser has already rendered `id`, Angular keeps track of it and doesn't re-query the server for the same `id`.
 
-   向该组件添加一个方法，该方法返回 `NgFor` 应该跟踪的值。这个例子中，该值是英雄的 `id`。如果浏览器已经渲染过此 `id`，Angular 就会跟踪它，而不会重新向服务器查询相同的 `id`。
+    向该组件添加一个方法，该方法返回 `NgFor` 应该跟踪的值。这个例子中，该值是英雄的 `id`。如果浏览器已经渲染过此 `id`，Angular 就会跟踪它，而不会重新向服务器查询相同的 `id`。
 
 <code-example path="built-in-directives/src/app/app.component.ts" region="trackByItems" header="src/app/app.component.ts"></code-example>
 
@@ -499,7 +499,6 @@ Here's a conditional paragraph using `<ng-container>`.
 
 <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (ngif-ngcontainer)" region="ngif-ngcontainer"></code-example>
 
-
 <div class="lightbox">
   <img src='generated/images/guide/structural-directives/good-paragraph.png' alt="ngcontainer paragraph with proper style">
 </div>
@@ -514,13 +513,13 @@ Here's a conditional paragraph using `<ng-container>`.
 
 1. To conditionally exclude an `<option>`, wrap the `<option>` in an `<ng-container>`.
 
-   要有条件地排除 `<option>`，请将 `<option>` 包裹在 `<ng-container>` 中。
+    要有条件地排除 `<option>`，请将 `<option>` 包裹在 `<ng-container>` 中。
 
-  <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (select-ngcontainer)" region="select-ngcontainer"></code-example>
+   <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (select-ngcontainer)" region="select-ngcontainer"></code-example>
 
-  <div class="lightbox">
-    <img src='generated/images/guide/structural-directives/select-ngcontainer-anim.gif' alt="ngcontainer options work properly">
-  </div>
+   <div class="lightbox">
+     <img src='generated/images/guide/structural-directives/select-ngcontainer-anim.gif' alt="ngcontainer options work properly">
+   </div>
 
 <a id="ngSwitch"></a>
 
@@ -539,22 +538,20 @@ Angular puts only the selected element into the DOM.
 
 `NgSwitch` 是一组指令（共三个）：
 
-  * `NgSwitch`&mdash;an attribute directive that changes the behavior of its companion directives.
-  
-    `NgSwitch` —— 一个属性型指令，它更改其伴生指令的行为。
-  
-  * `NgSwitchCase`&mdash;structural directive that adds its element to the DOM when its bound value equals the switch value and removes its bound value when it doesn't equal the switch value.
-  
-    `NgSwitchCase` —— 结构型指令，当其绑定值等于开关值时将其元素添加到 DOM 中，而在其不等于开关值时将其绑定值移除。
-  
-  * `NgSwitchDefault`&mdash;structural directive that adds its element to the DOM when there is no selected `NgSwitchCase`.
+- `NgSwitch`—an attribute directive that changes the behavior of its companion directives.
 
-    `NgSwitchDefault` —— 结构型指令，当没有选中的 `NgSwitchCase` 时，将其宿主元素添加到 DOM 中。
-  
+  `NgSwitch` —— 一个属性型指令，它更改其伴生指令的行为。
+- `NgSwitchCase`—structural directive that adds its element to the DOM when its bound value equals the switch value and removes its bound value when it doesn't equal the switch value.
+
+  `NgSwitchCase` —— 结构型指令，当其绑定值等于开关值时将其元素添加到 DOM 中，而在其不等于开关值时将其绑定值移除。
+- `NgSwitchDefault`—structural directive that adds its element to the DOM when there is no selected `NgSwitchCase`.
+
+  `NgSwitchDefault` —— 结构型指令，当没有选中的 `NgSwitchCase` 时，将其宿主元素添加到 DOM 中。
+
 1. On an element, such as a `<div>`, add `[ngSwitch]` bound to an expression that returns the switch value, such as `feature`.
-  Though the `feature` value in this example is a string, the switch value can be of any type.
+   Though the `feature` value in this example is a string, the switch value can be of any type.
 
-   在每个元素（比如`<div>`）上，把 `[ngSwitch]` 绑定到一个返回开关值的表达式（例如 `feature`）。尽管这个例子中 `feature` 值是字符串，但此开关值可以是任何类型。
+    在每个元素（比如`<div>`）上，把 `[ngSwitch]` 绑定到一个返回开关值的表达式（例如 `feature`）。尽管这个例子中 `feature` 值是字符串，但此开关值可以是任何类型。
 
 1. Bind to `*ngSwitchCase` and `*ngSwitchDefault` on the elements for the cases.
 
@@ -569,14 +566,14 @@ Angular puts only the selected element into the DOM.
    <code-example path="built-in-directives/src/app/app.component.ts" region="item" header="src/app/app.component.ts"></code-example>
 
 1. In each child component, add an `item` [input property](guide/inputs-outputs#input "Input property") which is bound to the `currentItem` of the parent component.
-  The following two snippets show the parent component and one of the child components.
-  The other child components are identical to `StoutItemComponent`.
+   The following two snippets show the parent component and one of the child components.
+   The other child components are identical to `StoutItemComponent`.
 
-   在每个子组件中，添加一个[输入属性](guide/inputs-outputs#input "输入属性") `item`，该属性会绑定到父组件的 `currentItem`。以下两个片段显示了父组件和其中一个子组件。其他子组件与 `StoutItemComponent` 中的相同。
+    在每个子组件中，添加一个[输入属性](guide/inputs-outputs#input "输入属性") `item`，该属性会绑定到父组件的 `currentItem`。以下两个片段显示了父组件和其中一个子组件。其他子组件与 `StoutItemComponent` 中的相同。
 
-   <code-example path="built-in-directives/src/app/item-switch.component.ts" region="input" header="In each child component, here StoutItemComponent"></code-example><div class="lightbox">
+    <code-example path="built-in-directives/src/app/item-switch.component.ts" region="input" header="In each child component, here StoutItemComponent"></code-example><div class="lightbox">
 
-  <img src="generated/images/guide/built-in-directives/ngswitch.gif" alt="Animation of NgSwitch">
+   <img src="generated/images/guide/built-in-directives/ngswitch.gif" alt="Animation of NgSwitch">
 
 </div>
 

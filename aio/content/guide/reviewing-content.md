@@ -36,6 +36,7 @@ You can review a topic using either the GitHub user interface or in an editor on
 1. Update the `@reviewed` tag, either through the [GitHub user interface](guide/updating-content-github-ui) or through Angular's [standard pull request process](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#submit-pr).
 
 <a id="review-criteria"></a>
+
 ### Review criteria
 
 In general, topics should be reviewed either every six months, or around every major release.

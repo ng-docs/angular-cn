@@ -63,7 +63,6 @@ To use the `@Input()` decorator in a child component class, first import `Input`
 
 <code-example path="inputs-outputs/src/app/item-detail/item-detail.component.ts" region="use-input" header="src/app/item-detail/item-detail.component.ts"></code-example>
 
-
 In this case, `@Input()` decorates the property <code class="no-auto-link">item</code>, which has a type of `string`, however, `@Input()` properties can have any type, such as `number`, `string`, `boolean`, or `object`.
 The value for `item` comes from the parent component.
 
@@ -85,9 +84,9 @@ In this example, the parent component template is `app.component.html`.
 下一步是在父组件的模板中绑定该属性。在这个例子中，父组件模板是 `app.component.html` 。
 
 1. Use the child's selector, here `<app-item-detail>`, as a directive within the
-parent component template.
+   parent component template.
 
-   使用子组件的 selector (`<app-item-detail>`) 作为父组件模板中的指令。
+      使用子组件的 selector (`<app-item-detail>`) 作为父组件模板中的指令。
 
 2. Use [property binding](guide/property-binding) to bind the `item` property in the child to the `currentItem` property of the parent.
 
@@ -168,40 +167,39 @@ The following example features an `<input>` where a user can enter a value and c
 
 1. Import `Output` and `EventEmitter` in the child component class:
 
-   在子组件类中导入 `Output` 和 `EventEmitter`
+    在子组件类中导入 `Output` 和 `EventEmitter`
 
-  ```js
-  import { Output, EventEmitter } from '@angular/core';
-
-  ```
+   ```js
+   import { Output, EventEmitter } from '@angular/core';
+   ```
 
 1. In the component class, decorate a property with `@Output()`.
-  The following example `newItemEvent` `@Output()` has a type of `EventEmitter`, which means it's an event.
+   The following example `newItemEvent` `@Output()` has a type of `EventEmitter`, which means it's an event.
 
-   在组件类中，用 `@Output()` 装饰一个属性。下面的例子中 `newItemEvent` 这个 `@Output()` 的类型为 `EventEmitter` ，这意味着它是一个事件。
+    在组件类中，用 `@Output()` 装饰一个属性。下面的例子中 `newItemEvent` 这个 `@Output()` 的类型为 `EventEmitter` ，这意味着它是一个事件。
 
-  <code-example path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output" header="src/app/item-output/item-output.component.ts"></code-example>
+   <code-example path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output" header="src/app/item-output/item-output.component.ts"></code-example>
 
-  The different parts of the preceding declaration are as follows:
+   The different parts of the preceding declaration are as follows:
 
-  上述声明中的差异点如下：
+   上述声明中的差异点如下：
 
 
-    * `@Output()`&mdash;a decorator function marking the property as a way for data to go from the child to the parent
+* `@Output()`&mdash;a decorator function marking the property as a way for data to go from the child to the parent
 
-       `@Output()` - 一个装饰器函数，它把该属性标记为数据从子组件进入父组件的一种途径
+   `@Output()` - 一个装饰器函数，它把该属性标记为数据从子组件进入父组件的一种途径
 
-    * `newItemEvent`&mdash;the name of the `@Output()`
+* `newItemEvent`&mdash;the name of the `@Output()`
 
-      `newItemEvent` - 这个 `@Output()` 的名字
+  `newItemEvent` - 这个 `@Output()` 的名字
 
-    * `EventEmitter<string>`&mdash;the `@Output()`'s type
+* `EventEmitter<string>`&mdash;the `@Output()`'s type
 
-      `EventEmitter<string>` - 这个 `@Output()` 的类型
+  `EventEmitter<string>` - 这个 `@Output()` 的类型
 
-    * `new EventEmitter<string>()`&mdash;tells Angular to create a new event emitter and that the data it emits is of type string.
+* `new EventEmitter<string>()`&mdash;tells Angular to create a new event emitter and that the data it emits is of type string.
 
-      `new EventEmitter<string>()` - 使用 Angular 来创建一个新的事件发射器，它发出的数据是 `string` 类型的。
+  `new EventEmitter<string>()` - 使用 Angular 来创建一个新的事件发射器，它发出的数据是 `string` 类型的。
 
   For more information on `EventEmitter`, see the [EventEmitter API documentation](api/core/EventEmitter).
 
@@ -209,13 +207,13 @@ The following example features an `<input>` where a user can enter a value and c
 
 1. Create an `addNewItem()` method in the same component class:
 
-   在同一个组件类中创建一个 `addNewItem()` 方法：
+    在同一个组件类中创建一个 `addNewItem()` 方法：
 
-  <code-example path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output-class" header="src/app/item-output/item-output.component.ts"></code-example>
+   <code-example path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output-class" header="src/app/item-output/item-output.component.ts"></code-example>
 
-  The `addNewItem()` function uses the `@Output()`, `newItemEvent`, to raise an event with the value the user types into the `<input>`.
+   The `addNewItem()` function uses the `@Output()`, `newItemEvent`, to raise an event with the value the user types into the `<input>`.
 
-  `addNewItem()` 函数使用  `newItemEvent` 这个 `@Output()` 来引发一个事件，该事件带有用户输入到 `<input>` 中的值。
+   `addNewItem()` 函数使用  `newItemEvent` 这个 `@Output()` 来引发一个事件，该事件带有用户输入到 `<input>` 中的值。
 
 ### Configuring the child's template
 
@@ -262,21 +260,21 @@ The `addItem()` method takes an argument in the form of a string and then adds t
 
 1. Put the child selector, here `<app-item-output>`, within the parent component's template, `app.component.html`.
 
-   把子组件选择器（`<app-item-output>`）放在父组件的模板 `app.component.html` 中。
+    把子组件选择器（`<app-item-output>`）放在父组件的模板 `app.component.html` 中。
 
-   <code-example path="inputs-outputs/src/app/app.component.html" region="output-parent" header="src/app/app.component.html"></code-example>
+    <code-example path="inputs-outputs/src/app/app.component.html" region="output-parent" header="src/app/app.component.html"></code-example>
 
-  The event binding, `(newItemEvent)='addItem($event)'`, connects the event in the child, `newItemEvent`, to the method in the parent, `addItem()`.
+   The event binding, `(newItemEvent)='addItem($event)'`, connects the event in the child, `newItemEvent`, to the method in the parent, `addItem()`.
 
-   事件绑定 `(newItemEvent)='addItem($event)'` 会把子组件中的 `newItemEvent` 事件连接到父组件的 `addItem()` 方法。
+    事件绑定 `(newItemEvent)='addItem($event)'` 会把子组件中的 `newItemEvent` 事件连接到父组件的 `addItem()` 方法。
 
-  The `$event` contains the data that the user types into the `<input>` in the child template UI.
+   The `$event` contains the data that the user types into the `<input>` in the child template UI.
 
-  `$event` 中包含用户在子组件模板上的 `<input>` 中键入的数据。
+   `$event` 中包含用户在子组件模板上的 `<input>` 中键入的数据。
 
-   To see the `@Output()` working, add the following to the parent's template:
+    To see the `@Output()` working, add the following to the parent's template:
 
-   要了解 `@Output()` 的工作方式，你可以把以下内容添加到父组件的模板中：
+    要了解 `@Output()` 的工作方式，你可以把以下内容添加到父组件的模板中：
 
    ```html
      <ul>
@@ -284,10 +282,10 @@ The `addItem()` method takes an argument in the form of a string and then adds t
      </ul>
    ```
 
-   The `*ngFor` iterates over the items in the `items` array.
-   When you enter a value in the child's `<input>` and click the button, the child emits the event and the parent's `addItem()` method pushes the value to the `items` array and new item renders in the list.
+    The `*ngFor` iterates over the items in the `items` array.
+    When you enter a value in the child's `<input>` and click the button, the child emits the event and the parent's `addItem()` method pushes the value to the `items` array and new item renders in the list.
 
-   `*ngFor` 会迭代 `items` 数组中的条目。当你在子组件的 `<input>` 中输入一个值并单击该按钮时，子组件就会发出该事件，而父组件的 `addItem()` 方法会把这个值追加到其 `items` 数组中，并且列表中会渲染出这个新条目。
+    `*ngFor` 会迭代 `items` 数组中的条目。当你在子组件的 `<input>` 中输入一个值并单击该按钮时，子组件就会发出该事件，而父组件的 `addItem()` 方法会把这个值追加到其 `items` 数组中，并且列表中会渲染出这个新条目。
 
 ## Using `@Input()` and `@Output()` together
 

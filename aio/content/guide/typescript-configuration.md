@@ -14,11 +14,11 @@ This page covers some aspects of TypeScript configuration and the TypeScript env
 
 本页面会涵盖 TypeScript 配置与环境的某些方面，这些对 Angular 开发者是很重要的。具体来说包括下列文件：
 
-* [tsconfig.json](guide/typescript-configuration#tsconfig)&mdash;TypeScript compiler configuration.
+* [tsconfig.json](guide/typescript-configuration#tsconfig)—TypeScript compiler configuration.
 
   [tsconfig.json](guide/typescript-configuration#tsconfig) - TypeScript 编译器配置。
 
-* [typings](guide/typescript-configuration#typings)&mdash;TypesScript declaration files.
+* [typings](guide/typescript-configuration#typings)—TypesScript declaration files.
 
   [typings](guide/typescript-configuration#typings) - TypesScript 类型声明文件。
 
@@ -130,7 +130,7 @@ Many JavaScript libraries, such as jQuery, the Jasmine testing library, and Angu
 
 很多 JavaScript 库，比如 jQuery、Jasmine 测试库和 Angular，会通过新的特性和语法来扩展 JavaScript 环境。 而 TypeScript 编译器并不能原生的识别它们。 当编译器不能识别时，它就会抛出一个错误。
 
-Use [TypeScript type definition files](https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html)&mdash;`d.ts files`&mdash;to tell the compiler about the libraries you load.
+Use [TypeScript type definition files](https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html)—`d.ts files`—to tell the compiler about the libraries you load.
 
 可以使用[TypeScript 类型定义文件](https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html)
 —— `.d.ts` 文件 —— 来告诉编译器你要加载的库的类型定义。
@@ -173,7 +173,7 @@ By default, the target is `es2015`. If you are targeting `es5`, you still have n
 
 ### 安装类型定义文件
 
-Many libraries&mdash;jQuery, Jasmine, and Lodash among them&mdash;do *not* include `d.ts` files in their npm packages. Fortunately, either their authors or community contributors have created separate `d.ts` files for these libraries and published them in well-known locations.
+Many libraries—jQuery, Jasmine, and Lodash among them—do *not* include `d.ts` files in their npm packages. Fortunately, either their authors or community contributors have created separate `d.ts` files for these libraries and published them in well-known locations.
 
 遗憾的是，很多库 —— jQuery、Jasmine 和 Lodash 等库 —— 都*没有*在它们自己的 npm 包中包含 `d.ts` 文件。 幸运的是，它们的作者或社区中的贡献者已经为这些库创建了独立的 `d.ts` 文件，并且把它们发布到了一个众所周知的位置。
 
@@ -187,7 +187,6 @@ Which ambient declaration files in `@types/*` are automatically included is dete
 `"types": ["jasmine"]` to allow using Jasmine's ambient declarations in tests.
 
 `@types/*` 中自动包含哪些环境声明文件由 [TypeScript 编译器选项 `types` ](https://www.typescriptlang.org/tsconfig#types)决定。 Angular CLI 会生成一个 `tsconfig.app.json` 文件，用于构建应用程序，其中 `types` 编译器选项设置为 `[]` 以禁止自动包含来自 `@types/*` 的声明。同时，`tsconfig.spec.json` 文件用于测试并设置 `"types": ["jasmine"]` 以允许在测试中使用 Jasmine 的环境声明。
-
 
 After installing `@types/*` declarations, you have to update the `tsconfig.app.json` and
 `tsconfig.spec.json` files to add the newly installed declarations to the list of `types`. If the declarations are only meant for testing, then only the `tsconfig.spec.json` file should be updated.

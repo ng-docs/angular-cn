@@ -6,15 +6,15 @@
 
 ### 这个原理图做了什么？
 
-  1. This schematic adds an `@Injectable()` decorator to classes which are provided in the
-     application but are not decorated.
+1. This schematic adds an `@Injectable()` decorator to classes which are provided in the
+   application but are not decorated.
 
-     该原理图会为应用中不带装饰器的服务提供者添加一个 `@Injectable()` 装饰器。
+   该原理图会为应用中不带装饰器的服务提供者添加一个 `@Injectable()` 装饰器。
 
-  2. The schematic updates providers which follow the `{provide: SomeToken}` pattern
-     to explicitly specify `useValue: undefined`.
+1. The schematic updates providers which follow the `{provide: SomeToken}` pattern
+   to explicitly specify `useValue: undefined`.
 
-     该原理图更新了符合 `{provide: SomeToken}` 模式的提供者，以帮它显式指定 `useValue: undefined`。
+   该原理图更新了符合 `{provide: SomeToken}` 模式的提供者，以帮它显式指定 `useValue: undefined`。
 
 **Example for missing `@Injectable()`**
 
@@ -81,6 +81,7 @@ _Before migration_:
 ```typescript
 {provide: MyToken}
 ```
+
 _After migration_:
 
 *迁移完成后* ：

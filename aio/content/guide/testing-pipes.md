@@ -56,4 +56,3 @@ Consider adding component tests such as this one:
 考虑添加这样的组件测试：
 
 <code-example path="testing/src/app/hero/hero-detail.component.spec.ts" region="title-case-pipe" header="app/hero/hero-detail.component.spec.ts (pipe test)"></code-example>
-

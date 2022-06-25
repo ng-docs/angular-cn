@@ -115,4 +115,3 @@ rmdir /s /q .angular/cache
 For more information, see [rm command](https://man7.org/linux/man-pages/man1/rm.1.html) and [rmdir command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/rmdir).
 
 有关详细信息，请参阅 [rm 命令](https://man7.org/linux/man-pages/man1/rm.1.html) 和 [rmdir 命令](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/rmdir)。
-

@@ -463,10 +463,10 @@ Before importing the  `zone.js` package, you can set the following configuration
 在导入 `zone.js` 软件包之前，你可以做如下配置：
 
 - You can disable some asynchronous API monkey patching for better performance.
-For example, you can disable the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` will not trigger change detection.
-This is useful if, in your application, the callback of the `requestAnimationFrame()` will not update any data.
+  For example, you can disable the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` will not trigger change detection.
+  This is useful if, in your application, the callback of the `requestAnimationFrame()` will not update any data.
 
-  你可以禁用一些异步 API 的猴子补丁，以获得更好的性能。例如，你可以禁用 `requestAnimationFrame()` 的猴子补丁，这样 `requestAnimationFrame()` 的回调就不会触发变更检测。如果你的应用程序不会在 `requestAnimationFrame()` 回调中更新任何数据，则这种方式很有用。
+    你可以禁用一些异步 API 的猴子补丁，以获得更好的性能。例如，你可以禁用 `requestAnimationFrame()` 的猴子补丁，这样 `requestAnimationFrame()` 的回调就不会触发变更检测。如果你的应用程序不会在 `requestAnimationFrame()` 回调中更新任何数据，则这种方式很有用。
 
 - You can specify that certain DOM events do not run inside the Angular zone; for example, to prevent a `mousemove` or `scroll` event to trigger change detection.
 
@@ -526,20 +526,20 @@ To remove Zone.js, make the following changes.
 
 1. Remove the `zone.js` import from `polyfills.ts`:
 
-   从 `polyfills.ts` 中移除对 `zone.js` 的导入：
+    从 `polyfills.ts` 中移除对 `zone.js` 的导入：
 
-  ```typescript
-  /***************************************************************************************************
-   * Zone JS is required by default for Angular itself.
-   */
-  // import 'zone.js';  // Included with Angular CLI.
-  ```
+   ```typescript
+   /***************************************************************************************************
+    * Zone JS is required by default for Angular itself.
+    */
+   // import 'zone.js';  // Included with Angular CLI.
+   ```
 
 2. Bootstrap Angular with the `noop` zone in `src/main.ts`:
 
-   在 `src/main.ts` 中使用 `noop` Zone 引导 Angular：
+    在 `src/main.ts` 中使用 `noop` Zone 引导 Angular：
 
-  ```typescript
-  platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' })
-    .catch(err => console.error(err));
-  ```
+   ```typescript
+   platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' })
+     .catch(err => console.error(err));
+   ```

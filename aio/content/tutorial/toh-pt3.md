@@ -229,9 +229,9 @@ Refactoring the original `HeroesComponent` into two components yields benefits, 
    你通过缩减 `HeroesComponent` 的职责缩小了该组件。
 
 1. You can evolve the `HeroDetailComponent` into a rich hero editor
-without touching the parent `HeroesComponent`.
+   without touching the parent `HeroesComponent`.
 
-   你可以把 `HeroDetailComponent` 改进成一个功能丰富的英雄编辑器，而不用改动父组件 `HeroesComponent`。
+      你可以把 `HeroDetailComponent` 改进成一个功能丰富的英雄编辑器，而不用改动父组件 `HeroesComponent`。
 
 1. You can evolve the `HeroesComponent` without touching the hero detail view.
 
@@ -278,7 +278,7 @@ Here are the code files discussed on this page.
    你用[属性绑定](guide/property-binding)语法来让父组件 `HeroesComponent` 可以控制子组件 `HeroDetailComponent`。
 
 * You used the [`@Input` decorator](guide/inputs-outputs)
-to make the `hero` property available for binding
-by the external `HeroesComponent`.
+  to make the `hero` property available for binding
+  by the external `HeroesComponent`.
 
-   你用 [`@Input` 装饰器](guide/inputs-outputs)来让 `hero` 属性可以在外部的 `HeroesComponent` 中绑定。
+     你用 [`@Input` 装饰器](guide/inputs-outputs)来让 `hero` 属性可以在外部的 `HeroesComponent` 中绑定。

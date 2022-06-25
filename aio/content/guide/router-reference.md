@@ -75,7 +75,7 @@ Use the [resolve guard](guide/router-tutorial-toh#resolve-guard) to retrieve dyn
 
 第三个路由中的 `data` 属性是存放与该特定路由关联的任意数据的地方。每个激活的路由都可以访问 `data` 属性。可以用它来存储页面标题，面包屑文本和其它只读静态数据等项目。可以用[解析器守卫](guide/router-tutorial-toh#resolve-guard)来检索动态数据。
 
-The empty path in the fourth route represents the default path for the application&mdash;the place to go when the path in the URL is empty, as it typically is at the start.
+The empty path in the fourth route represents the default path for the application—the place to go when the path in the URL is empty, as it typically is at the start.
 This default route redirects to the route for the `/heroes` URL and, therefore, displays the `HeroesListComponent`.
 
 第四个路由中的空路径表示该应用的默认路径 - 当 URL 中的路径为空时通常要去的地方，就像它在刚进来时一样。这个默认路由重定向到了 `/heroes` 这个 URL 的路由，因此会显示 `HeroesListComponent`。

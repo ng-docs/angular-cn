@@ -44,27 +44,27 @@ philosophy](https://www.google.com/about/appsecurity/).
 <header>最佳实践</header>
 
 * **Keep current with the latest Angular library releases.**
-We regularly update the Angular libraries, and these updates might fix security defects discovered in
-previous versions. Check the Angular [change
-log](https://github.com/angular/angular/blob/master/CHANGELOG.md) for security-related updates.
+  We regularly update the Angular libraries, and these updates might fix security defects discovered in
+  previous versions. Check the Angular [change
+  log](https://github.com/angular/angular/blob/master/CHANGELOG.md) for security-related updates.
 
-   **及时把 Angular 包更新到最新版本。**
-我们会频繁的更新 Angular 库，这些更新可能会修复之前版本中发现的安全漏洞。查看 Angular 的[更新记录](https://github.com/angular/angular/blob/master/CHANGELOG.md)，了解与安全有关的更新。
+     **及时把 Angular 包更新到最新版本。**
+  我们会频繁的更新 Angular 库，这些更新可能会修复之前版本中发现的安全漏洞。查看 Angular 的[更新记录](https://github.com/angular/angular/blob/master/CHANGELOG.md)，了解与安全有关的更新。
 
 * **Don't modify your copy of Angular.**
-Private, customized versions of Angular tend to fall behind the current version and might not include
-important security fixes and enhancements. Instead, share your Angular improvements with the
-community and make a pull request.
+  Private, customized versions of Angular tend to fall behind the current version and might not include
+  important security fixes and enhancements. Instead, share your Angular improvements with the
+  community and make a pull request.
 
-   **不要修改你的 Angular 副本。**
-私有的、定制版的 Angular 往往跟不上最新版本，这可能导致你忽略重要的安全修复与增强。反之，应该在社区共享你对 Angular 所做的改进并创建 Pull Request。
+     **不要修改你的 Angular 副本。**
+  私有的、定制版的 Angular 往往跟不上最新版本，这可能导致你忽略重要的安全修复与增强。反之，应该在社区共享你对 Angular 所做的改进并创建 Pull Request。
 
 * **Avoid Angular APIs marked in the documentation as “_Security Risk_.”**
-For more information, see the [Trusting safe values](guide/security#bypass-security-apis) section of this page.
+  For more information, see the [Trusting safe values](guide/security#bypass-security-apis) section of this page.
 
-   **避免使用本文档中带“[*安全风险*](guide/security#bypass-security-apis)”标记的 Angular API。** 
-  要了解更多信息，请参阅本章的[信任那些安全的值](guide/security#bypass-security-apis)部分。
-  
+     **避免使用本文档中带“[*安全风险*](guide/security#bypass-security-apis)”标记的 Angular API。** 
+    要了解更多信息，请参阅本章的[信任那些安全的值](guide/security#bypass-security-apis)部分。
+
 </div>
 
 ## Preventing cross-site scripting (XSS)
@@ -81,7 +81,7 @@ common attacks on the web.
 
 To block XSS attacks, you must prevent malicious code from entering the DOM (Document Object Model). For example, if
 attackers can trick you into inserting a `<script>` tag in the DOM, they can run arbitrary code on
-your website. The attack isn't limited to `<script>` tags&mdash;many elements and properties in the
+your website. The attack isn't limited to `<script>` tags—many elements and properties in the
 DOM allow code execution, for example, `<img onerror="...">` and `<a href="javascript:...">`. If
 attacker-controlled data enters the DOM, expect security vulnerabilities.
 
@@ -156,7 +156,7 @@ content, and once by binding it to the `innerHTML` property of an element:
 
 <code-example path="security/src/app/inner-html-binding.component.html" header="src/app/inner-html-binding.component.html"></code-example>
 
-Interpolated content is always escaped&mdash;the HTML isn't interpreted and the browser displays
+Interpolated content is always escaped—the HTML isn't interpreted and the browser displays
 angle brackets in the element's text content.
 
 插值的内容总会被编码 - 其中的 HTML 不会被解释，所以浏览器会在元素的文本内容中显示尖括号。
@@ -268,6 +268,7 @@ Angular to let binding into `<iframe src>`:
 <code-example path="security/src/app/bypass-security.component.ts" header="src/app/bypass-security.component.ts (trust-video-url)" region="trust-video-url"></code-example>
 
 <a id="content-security-policy"></a>
+
 ### Content security policy
 
 ### 内容安全政策
@@ -304,6 +305,7 @@ Angular itself requires only these settings to function correctly. As your proje
 Angular 本身只需要这些设置即可正常运行。但是，随着项目的增长，你可能需要将 CSP 设置扩展到超乎此最小值，以支持应用特有的一些其它特性。
 
 <a id="trusted-types"></a>
+
 ### Enforcing Trusted Types
 
 ### 强制执行可信类型
@@ -409,6 +411,7 @@ An alternative to the AOT compiler is the JIT compiler which compiles templates 
 AOT 编译器的替代方法是 JIT 编译器，它可以在运行时将模板编译为浏览器中的可执行模板代码。Angular 信任这些模板代码，因此动态生成模板并进行编译（尤其是包含用户数据的模板）可以规避 Angular 的内置保护，并且是一种安全性方面的反模式。要了解如何以安全方式动态构建表单，请参见[《动态表单》](guide/dynamic-form)指南。
 
 <a id="server-side-xss"></a>
+
 ### Server-side XSS protection
 
 ### 服务器端 XSS 保护
@@ -418,6 +421,7 @@ HTML constructed on the server is vulnerable to injection attacks. Injecting tem
 在服务器上构造的 HTML 容易受到注入攻击。将模板代码注入到 Angular 应用程序中与注入可执行代码是一样的：它使攻击者可以完全控制该应用程序。为避免这种情况，请使用一种模板语言来自动转义值以防止服务器上的 XSS 漏洞。不要在服务器端使用模板语言生成 Angular 模板；这样做会带来引入模板注入漏洞的高风险。
 
 <a id="http"></a>
+
 ## HTTP-level vulnerabilities
 
 ## HTTP 级漏洞
@@ -430,6 +434,7 @@ Angular 内置了一些支持来防范两个常见的 HTTP 漏洞：跨站请求
 这两个漏洞主要在服务器端防范，但是 Angular 也自带了一些辅助特性，可以让客户端的集成变得更容易。
 
 <a id="xsrf"></a>
+
 ### Cross-site request forgery
 
 ### 跨站请求伪造
@@ -501,6 +506,7 @@ See also Dave Smith's
 参阅 Dave Smith 在<a href="https://www.youtube.com/watch?v=9inczw6qtpY" target="_blank" title="Cross Site Request Funkery Securing Your Angular Apps From Evil Doers">AngularConnect 2016 关于 XSRF 的演讲</a>。
 
 <a id="xssi"></a>
+
 ### Cross-site script inclusion (XSSI)
 
 ### 跨站脚本包含(XSSI)
@@ -530,6 +536,7 @@ post](https://security.googleblog.com/2011/05/website-security-for-webmasters.ht
 要学习更多这方面的知识，请参阅[谷歌 Web 安全博客文章](https://security.googleblog.com/2011/05/website-security-for-webmasters.html)的 XSSI 小节。
 
 <a id="code-review"></a>
+
 ## Auditing Angular applications
 
 ## 审计 Angular 应用程序

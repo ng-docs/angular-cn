@@ -94,7 +94,7 @@ For a service, the provider is typically the service class itself.
 
 <div class="alert is-helpful">
 
-A dependency doesn't have to be a service&mdash;it could be a function, for example, or a value.
+A dependency doesn't have to be a service—it could be a function, for example, or a value.
 
 依赖不一定是服务 —— 它还可能是函数或值。
 
@@ -167,11 +167,11 @@ or in the `@NgModule()` or `@Component()` metadata
 ```
 
 * When you register a provider at the component level, you get a new instance of the
-service with each new instance of that component.
-At the component level, register a service provider in the `providers` property of the `@Component()` metadata.
+  service with each new instance of that component.
+  At the component level, register a service provider in the `providers` property of the `@Component()` metadata.
 
-   当你在组件级注册提供者时，你会为该组件的每一个新实例提供该服务的一个新实例。
-  要在组件级注册，就要在 `@Component()` 元数据的 `providers` 属性中注册服务提供者。
+     当你在组件级注册提供者时，你会为该组件的每一个新实例提供该服务的一个新实例。
+    要在组件级注册，就要在 `@Component()` 元数据的 `providers` 属性中注册服务提供者。
 
 <code-example path="architecture/src/app/hero-list.component.ts" header="src/app/hero-list.component.ts (component providers)" region="providers"></code-example>
 

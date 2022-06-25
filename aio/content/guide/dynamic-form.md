@@ -111,7 +111,7 @@ The following code from the example shows the setup in the root module.
 ## 创建一个表单对象模型
 
 A dynamic form requires an object model that can describe all scenarios needed by the form functionality.
-The example hero-application form is a set of questions&mdash;that is, each control in the form must ask a question and accept an answer.
+The example hero-application form is a set of questions—that is, each control in the form must ask a question and accept an answer.
 
 动态表单需要一个对象模型来描述此表单功能所需的全部场景。英雄应用表单中的例子是一组问题 - 也就是说，表单中的每个控件都必须提问并接受一个答案。
 
@@ -320,4 +320,3 @@ The following figure shows the final form.
    The [Form validation guide](guide/form-validation "Form validation guide") covers the topic in more depth.
 
   [表单验证指南](guide/form-validation "表单验证指南")更深入地介绍了本主题。
-

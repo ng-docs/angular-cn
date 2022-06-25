@@ -167,9 +167,7 @@ To use the Language Service for in-line templates, you must first add an extensi
    把最新版本的 TypeScript 安装到本地的 `node_modules` 目录下：
 
 ```sh
-
 npm install --save-dev typescript
-
 ```
 
 2. Install the Angular Language Service package in the same location:
@@ -177,9 +175,7 @@ npm install --save-dev typescript
    把 Angular 语言服务的包安装到同一位置：
 
 ```sh
-
 npm install --save-dev @angular/language-service
-
 ```
 
 3. Once the package is installed,  add the following to the `"compilerOptions"` section of your project's `tsconfig.json`.

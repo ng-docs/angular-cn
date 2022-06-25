@@ -118,21 +118,21 @@ Possible values are:
 
 可能的值有：
 
-  * `false` - Don't add the package to `package.json`
+- `false` - Don't add the package to `package.json`
 
-     `false` - 不把此包添加到 `package.json`
+   `false` - 不把此包添加到 `package.json`
 
-  * `true` - Add the package to the dependencies
+- `true` - Add the package to the dependencies
 
-     `true` - 把此包添加到 dependencies
+   `true` - 把此包添加到 dependencies
 
-  * `"dependencies"` - Add the package to the dependencies
+- `"dependencies"` - Add the package to the dependencies
 
-     `"dependencies"` - 把此包添加到 dependencies
+   `"dependencies"` - 把此包添加到 dependencies
 
-  * `"devDependencies"` - Add the package to the devDependencies
+- `"devDependencies"` - Add the package to the devDependencies
 
-     `"devDependencies"` - 把此包添加到 devDependencies
+   `"devDependencies"` - 把此包添加到 devDependencies
 
 ## Building your schematics
 
@@ -178,18 +178,18 @@ To tell the library how to build the schematics, add a `tsconfig.schematics.json
 <code-example header="projects/my-lib/package.json (Build Scripts)" path="schematics-for-libraries/projects/my-lib/package.json">
 </code-example>
 
-    * The `build` script compiles your schematic using the custom `tsconfig.schematics.json` file.
+* The `build` script compiles your schematic using the custom `tsconfig.schematics.json` file.
 
-      `build` 脚本使用自定义的 `tsconfig.schematics.json` 文件来编译你的原理图。
+  `build` 脚本使用自定义的 `tsconfig.schematics.json` 文件来编译你的原理图。
 
-    * The `postbuild` script copies the schematic files after the `build` script completes.
+* The `postbuild` script copies the schematic files after the `build` script completes.
 
-      `postbuild` 脚本会在 `build` 脚本完成后复制原理图文件。
+  `postbuild` 脚本会在 `build` 脚本完成后复制原理图文件。
 
-    * Both the `build` and the `postbuild` scripts require dependencies that are found in their parent directory.
-      They can be installed by running `npm install` prior to running the scripts.
+* Both the `build` and the `postbuild` scripts require dependencies that are found in their parent directory.
+  They can be installed by running `npm install` prior to running the scripts.
 
-     `build` 和 `postbuild` 脚本都需要用到其父目录中找到的依赖项。这些依赖项可以通过在运行这些脚本之前运行 `npm install` 来安装。
+ `build` 和 `postbuild` 脚本都需要用到其父目录中找到的依赖项。这些依赖项可以通过在运行这些脚本之前运行 `npm install` 来安装。
 
 ## Providing generation support
 

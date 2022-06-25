@@ -16,6 +16,7 @@ This step of the tutorial guides you through creating a shopping cart in the fol
 * Update the product details view to include a **Buy** button, which adds the current product to a list of products that a cart service manages.
 
   修改商品详情视图，让它包含一个 “Buy” 按钮，它会把当前商品添加到由 "购物车服务" 管理的商品列表中。
+
 * Add a cart component, which displays the items in the cart.
 
   添加一个购物车组件，它会显示购物车中的商品。
@@ -58,9 +59,9 @@ This section walks you through creating the `CartService` that tracks products a
 
    在终端中通过运行以下命令生成一个新的 `cart` 服务：
 
-    ```sh
-    ng generate service cart
-    ```
+   ```sh
+   ng generate service cart
+   ```
 
 1. Import the `Product` interface from `./products.ts` into the `cart.service.ts` file, and in the `CartService` class, define an `items` property to store the array of the current products in the cart.
 
@@ -78,13 +79,13 @@ This section walks you through creating the `CartService` that tracks products a
 
      `addToCart()` 方法会将产品附加到 `items` 数组中。
 
-   * The `getItems()` method collects the items users add to the cart and returns each item with its associated quantity.
+  - The `getItems()` method collects the items users add to the cart and returns each item with its associated quantity.
 
-     `getItems()` 方法会收集用户加到购物车中的商品，并返回每个商品及其数量。
+    `getItems()` 方法会收集用户加到购物车中的商品，并返回每个商品及其数量。
 
-   * The `clearCart()` method returns an empty array of items, which empties the cart. 
-   
-     `clearCart()` 方法返回一个空数组。
+  - The `clearCart()` method returns an empty array of items, which empties the cart. 
+
+    `clearCart()` 方法返回一个空数组。
 
 <a id="product-details-use-cart-service"></a>
 
@@ -117,20 +118,18 @@ This section walks you through using the `CartService` to add a product to the c
     <code-example path="getting-started/src/app/product-details/product-details.component.ts" header="src/app/product-details/product-details.component.ts" region="add-to-cart"></code-example>
 
     The `addToCart()` method does the following:
-    
+
     `addToCart()` 方法做了如下事情:
-    
-    * Takes the current `product` as an argument.
-    
-      以当前'product'作为参数。
-    
-    * Uses the `CartService` `addToCart()` method to add the product to the cart.
-    
-      使用 `CartService` `addToCart()` 方法去添加产品到购物车中。
-    
-    * Displays a message that you've added a product to the cart.
-    
-      显示一条你已经添加了一个产品到购物车到消息。
+
+   - Takes the current `product` as an argument.
+
+     以当前'product'作为参数。
+   - Uses the `CartService` `addToCart()` method to add the product to the cart.
+
+     使用 `CartService` `addToCart()` 方法去添加产品到购物车中。
+   - Displays a message that you've added a product to the cart.
+
+     显示一条你已经添加了一个产品到购物车到消息。
 
 1. In `product-details.component.html`, add a button with the label **Buy**, and bind the `click()` event to the `addToCart()` method.
     This code updates the product details template with a **Buy** button that adds the current product to the cart.
@@ -140,8 +139,7 @@ This section walks you through using the `CartService` to add a product to the c
 
       <code-example header="src/app/product-details/product-details.component.html" path="getting-started/src/app/product-details/product-details.component.html">
       </code-example>
-    
-    
+
 
 1. Verify that the new **Buy** button appears as expected by refreshing the application and clicking on a product's name to display its details.
 
@@ -187,9 +185,9 @@ For customers to see their cart, you can create the cart view in two steps:
 
    通过运行以下命令在终端中生成一个名为 `cart` 的新组件：
 
-    ```sh
-    ng generate component cart
-    ```
+   ```sh
+   ng generate component cart
+   ```
 
    This command will generate the `cart.component.ts` file and it associated template and styles files.
 
@@ -264,7 +262,7 @@ This section shows you how to use the cart service to display the products in th
 
     This code sets the items using the `CartService` `getItems()` method.
     You defined this method [when you created `cart.service.ts`](#generate-cart-service).
-   
+
     这段代码使用 `CartService` 的 `getItems()` 方法来设置条目。你以前在[创建 `cart.service.ts`](#generate-cart-service) 时定义过此方法。
 
 1. Update the cart template with a header, and use a `<div>` with an `*ngFor` to display each of the cart items with its name and price.
@@ -282,25 +280,25 @@ This section shows you how to use the cart service to display the products in th
 
    验证你的购物车如预期般工作：
 
-    * Click **My Store**
+   - Click **My Store**
 
-      点击 **My Store**
+     点击 **My Store**
 
-    * Click on a product name to display its details.
+   - Click on a product name to display its details.
 
-      单击商品名称以显示其详细信息。
+     单击商品名称以显示其详细信息。
 
-    * Click **Buy** to add the product to the cart.
+   - Click **Buy** to add the product to the cart.
 
-      点击**Buy** 将商品添加到购物车。
+     点击**Buy** 将商品添加到购物车。
 
-    * Click **Checkout** to see the cart.
+   - Click **Checkout** to see the cart.
 
-      点击**Checkout**查看购物车。
+       点击**Checkout**查看购物车。
 
-    <div class="lightbox">
-      <img src='generated/images/guide/start/cart-page-full.png' alt="Cart view with products added">
-    </div>
+     <div class="lightbox">
+       <img src='generated/images/guide/start/cart-page-full.png' alt="Cart view with products added">
+     </div>
 
 For more information about services, see [Introduction to Services and Dependency Injection](guide/architecture-services "Concepts > Intro to Services and DI").
 
@@ -411,9 +409,9 @@ Now that you've configured your application to retrieve shipping data, you can c
 
    在终端窗口中运行如下命令，以生成名为 `shipping` 的组件：
 
-    ```sh
-    ng generate component shipping
-    ```
+   ```sh
+   ng generate component shipping
+   ```
 
     This command will generate the `shipping.component.ts` file and it associated template and styles files.
 

@@ -59,9 +59,9 @@ To do this:
 如果某个库没有 `@types/` 类型信息，你仍然可以手动为它添加一些类型信息。为此你要：
 
 1. Create a `typings.d.ts` file in your `src/` directory.
-    This file is automatically included as global type definition.
+   This file is automatically included as global type definition.
 
-    在 `src/` 文件夹中创建一个 `typings.d.ts` 文件。该文件会自动包含在全局类型定义中。
+   在 `src/` 文件夹中创建一个 `typings.d.ts` 文件。该文件会自动包含在全局类型定义中。
 
 2. Add the following code in `src/typings.d.ts`:
 
@@ -82,15 +82,15 @@ To do this:
 
 1. In the component or file that uses the library, add the following code:
 
-    在使用该库的组件或文件中，添加如下代码。
+   在使用该库的组件或文件中，添加如下代码。
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    import * as host from 'host';
-    const parsedUrl = host.parse('https://angular.io');
-    console.log(parsedUrl.hostname);
+   import * as host from 'host';
+   const parsedUrl = host.parse('https://angular.io');
+   console.log(parsedUrl.hostname);
 
-    </code-example>
+   </code-example>
 
 Define more typings as needed.
 
@@ -129,10 +129,9 @@ For example, to use the [Bootstrap 4][GetbootstrapDocs40GettingStartedIntroducti
 
 例如，要使用 [Bootstrap 4][GetbootstrapDocs40GettingStartedIntroduction] 库
 
-1.  Install the library and the associated dependencies using the npm package manager:
+1. Install the library and the associated dependencies using the npm package manager:
 
    使用 npm 包管理器安装库和相关的依赖项：
-
 
 <code-example format="shell" language="shell">
 
@@ -142,36 +141,36 @@ For example, to use the [Bootstrap 4][GetbootstrapDocs40GettingStartedIntroducti
 
     </code-example>
 
-1.  In the `angular.json` configuration file, add the associated script files to the `scripts` array:
+1. In the `angular.json` configuration file, add the associated script files to the `scripts` array:
 
-    在 `angular.json` 配置文件中，把关联的脚本文件添加到 "scripts" 数组中：
+   在 `angular.json` 配置文件中，把关联的脚本文件添加到 "scripts" 数组中：
 
-    <code-example format="json" language="json">
+   <code-example format="json" language="json">
 
-    "scripts": [
-      "node_modules/jquery/dist/jquery.slim.js",
-      "node_modules/popper.js/dist/umd/popper.js",
-      "node_modules/bootstrap/dist/js/bootstrap.js"
-    ],
+   "scripts": [
+     "node_modules/jquery/dist/jquery.slim.js",
+     "node_modules/popper.js/dist/umd/popper.js",
+     "node_modules/bootstrap/dist/js/bootstrap.js"
+   ],
 
-    </code-example>
+   </code-example>
 
-1.  Add the `bootstrap.css` CSS file to the `styles` array:
+1. Add the `bootstrap.css` CSS file to the `styles` array:
 
-    把 `bootstrap.css` 文件添加到 "styles" 数组中：
+   把 `bootstrap.css` 文件添加到 "styles" 数组中：
 
-    <code-example format="css" language="css">
+   <code-example format="css" language="css">
 
-    "styles": [
-      "node_modules/bootstrap/dist/css/bootstrap.css",
-      "src/styles.css"
-    ],
+   "styles": [
+     "node_modules/bootstrap/dist/css/bootstrap.css",
+     "src/styles.css"
+   ],
 
-    </code-example>
+   </code-example>
 
-1.  Run or restart the `ng serve` Angular CLI command to see Bootstrap 4 work in your application.
+1. Run or restart the `ng serve` Angular CLI command to see Bootstrap 4 work in your application.
 
-    运行或重启 `ng serve`，看看你的应用是否正在使用 Bootstrap 4。
+   运行或重启 `ng serve`，看看你的应用是否正在使用 Bootstrap 4。
 
 ### Using runtime-global libraries inside your app
 
@@ -254,6 +253,7 @@ If you do not add the interface for the script-defined extension, your IDE shows
 [AioCliUpdate]: cli/update "ng update | CLI |Angular"
 
 [AioGuideNpmPackages]: guide/npm-packages "Workspace npm dependencies | Angular"
+
 [AioGuideWorkspaceConfig]: guide/workspace-config "Angular workspace configuration | Angular"
 
 [AioResources]: resources "Explore Angular Resources | Angular"

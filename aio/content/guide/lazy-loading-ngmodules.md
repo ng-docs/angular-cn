@@ -2,7 +2,7 @@
 
 # 惰性加载特性模块
 
-By default, NgModules are eagerly loaded, which means that as soon as the application loads, so do all the NgModules, whether or not they are immediately necessary. For large applications with lots of routes, consider lazy loading&mdash;a design pattern that loads NgModules as needed. Lazy loading helps keep initial
+By default, NgModules are eagerly loaded, which means that as soon as the application loads, so do all the NgModules, whether or not they are immediately necessary. For large applications with lots of routes, consider lazy loading—a design pattern that loads NgModules as needed. Lazy loading helps keep initial
 bundle sizes smaller, which in turn helps decrease load times.
 
 默认情况下，NgModule 都是急性加载的，也就是说它会在应用加载时尽快加载，所有模块都是如此，无论是否立即要用。对于带有很多路由的大型应用，考虑使用惰性加载 —— 一种按需加载 NgModule 的模式。惰性加载可以减小初始包的尺寸，从而减少加载时间。
@@ -309,7 +309,7 @@ Click on the Orders or Customers button. If you see a chunk appear, everything i
 
 To see it again, or to test after working in the project, clear everything out by clicking the circle with a line through it in the upper left of the Network Tab:
 
-要想再次查看它或测试本项目后面的行为，只要点击 Network 页左上放的 ` 清除 ` 图标即可。
+要想再次查看它或测试本项目后面的行为，只要点击 Network 页左上放的 `清除` 图标即可。
 
 <div class="lightbox">
 
@@ -411,7 +411,6 @@ With the CLI, the command to generate a service is as follows:
 
 创建一个解析器服务。通过 CLI，生成服务的命令如下：
 
-
 <code-example language="sh">
   ng generate service <service-name>
 </code-example>
@@ -419,7 +418,6 @@ With the CLI, the command to generate a service is as follows:
 In the newly-created service, implement the `Resolve` interface provided by the `@angular/router` package:
 
 在新创建的服务中，实现由 `@angular/router` 包提供的 `Resolve` 接口：
-
 
 <code-example header="Resolver service (excerpt)">
 

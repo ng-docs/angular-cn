@@ -93,6 +93,7 @@ You've seen how to add a delay between each successive animation. But you might 
 **Note:** The <code>[group](api/animations/group)()</code> function is used to group animation *steps*, rather than animated elements.
 
 **注意：** [`group()`](api/animations/group) 函数用于对动画*步骤*进行分组，而不是针对动画元素。
+
 </div>
 
 The following example, uses <code>[group](api/animations/group)()</code>s on both `:enter` and `:leave` for two different timing configurations, thus applying two independent animations to the same element in parallel.

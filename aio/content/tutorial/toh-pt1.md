@@ -53,17 +53,17 @@ The CLI generated three metadata properties:
 
 CLI 自动生成了三个元数据属性：
 
-1. `selector`&mdash; the component's CSS element selector
+1. `selector`— the component's CSS element selector
 
-   `selector`&mdash; 组件的选择器（CSS 元素选择器）
+   `selector`— 组件的选择器（CSS 元素选择器）
 
-1. `templateUrl`&mdash; the location of the component's template file.
+1. `templateUrl`— the location of the component's template file.
 
-   `templateUrl`&mdash; 组件模板文件的位置。
+   `templateUrl`— 组件模板文件的位置。
 
-1. `styleUrls`&mdash; the location of the component's private CSS styles.
+1. `styleUrls`— the location of the component's private CSS styles.
 
-   `styleUrls`&mdash; 组件私有 CSS 样式表文件的位置。
+   `styleUrls`— 组件私有 CSS 样式表文件的位置。
 
 <a id="selector"></a>
 
@@ -393,6 +393,7 @@ Your app should look like this <live-example></live-example>. Here are the code 
 * You displayed the `HeroesComponent` by adding it to the `AppComponent` shell. 
 
    你把 `HeroesComponent` 添加到了壳组件 `AppComponent` 中，以便显示它。
+
 * You applied the `UppercasePipe` to format the name.
 
    你使用 `UppercasePipe` 来格式化英雄的名字。
@@ -408,7 +409,8 @@ Your app should look like this <live-example></live-example>. Here are the code 
 * You imported the `FormsModule` in the `AppModule` so that Angular would recognize and apply the `ngModel` directive. 
 
    你把 `FormsModule` 导入了 `AppModule`，以便 Angular 能识别并应用 `ngModel` 指令。
-* You learned the importance of declaring components in the `AppModule`
-and appreciated that the CLI declared it for you.
 
-   你知道了把组件声明到 `AppModule` 是很重要的，并认识到 CLI 会自动帮你声明它。
+* You learned the importance of declaring components in the `AppModule`
+  and appreciated that the CLI declared it for you.
+
+     你知道了把组件声明到 `AppModule` 是很重要的，并认识到 CLI 会自动帮你声明它。

@@ -116,5 +116,4 @@ You have a complete online store application with a product catalog, a shopping 
 
 [继续前往“部署”部分](start/start-deployment "试试看：部署")，以进行本地开发，或将此应用部署到 Firebase 或你自己的服务器。
 
-
 @reviewed 2021-09-15

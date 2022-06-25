@@ -485,8 +485,8 @@ Two types of errors can occur.
 
 * Something could go wrong on the client-side such as a network error that prevents the request from completing successfully or an exception thrown in an RxJS operator. These errors have `status` set to `0` and the `error` property contains a `ProgressEvent` object, whose `type` might provide further information.
 
-  客户端也可能出现问题，例如网络错误会让请求无法成功完成，或者 RxJS 操作符也会抛出异常。这些错误会产生 JavaScript 的 `ErrorEvent` 对象。
-这些错误的 `status` 为 `0`，并且其 `error` 属性包含一个 `ProgressEvent` 对象，此对象的 `type` 属性可以提供更详细的信息。
+    客户端也可能出现问题，例如网络错误会让请求无法成功完成，或者 RxJS 操作符也会抛出异常。这些错误会产生 JavaScript 的 `ErrorEvent` 对象。
+  这些错误的 `status` 为 `0`，并且其 `error` 属性包含一个 `ProgressEvent` 对象，此对象的 `type` 属性可以提供更详细的信息。
 
 `HttpClient` captures both kinds of errors in its `HttpErrorResponse`. Inspect that response to identify the error's cause.
 
@@ -855,11 +855,9 @@ Most interceptors inspect the request on the way in and forward the (perhaps alt
 大多数拦截器拦截都会在传入时检查请求，然后把（可能被修改过的）请求转发给 `next` 对象的 `handle()` 方法，而 `next` 对象实现了 [`HttpHandler`](api/common/http/HttpHandler) 接口。
 
 ```javascript
-
 export abstract class HttpHandler {
   abstract handle(req: HttpRequest<any>): Observable<HttpEvent<any>>;
 }
-
 ```
 
 Like `intercept()`, the `handle()` method transforms an HTTP request into an `Observable` of [`HttpEvents`](#interceptor-events) which ultimately include the server's response. The `intercept()` method could inspect that observable and alter it before returning it to the caller.
@@ -1079,9 +1077,7 @@ it can't prevent you from modifying a property of a request body object.
 `readonly` 这种赋值保护，无法防范深修改（修改子对象的属性），也不能防范你修改请求体对象中的属性。
 
 ```javascript
-
   req.body.name = req.body.name.trim(); // bad idea!
-
 ```
 
 If you must modify the request body, follow these steps.
@@ -1258,6 +1254,7 @@ You provide the `CustomParser` along with the `CustomJsonInterceptor`.
 </code-example>
 
 <a id="caching"></a>
+
 ### Caching requests
 
 ### 用拦截器实现缓存
@@ -1623,6 +1620,7 @@ use `HttpClientXsrfModule.withOptions()` to override the defaults.
 </code-example>
 
 <a id="testing-requests"></a>
+
 ## Testing HTTP requests
 
 ## 测试 HTTP 请求
@@ -1783,7 +1781,6 @@ Alternatively, call `request.error()` with an `ErrorEvent`.
   region="network-error">
 </code-example>
 
-
 ## Passing metadata to interceptors
 
 ## 将元数据传递给拦截器
@@ -1815,15 +1812,15 @@ The lambda function `() => 3` passed during the creation of the `HttpContextToke
 `HttpContextToken` 创建期间传递的 lambda 函数 `() => 3` 有两个用途：
 
 1. It lets TypeScript infer the type of this token: `HttpContextToken<number>`.
-  The request context is type-safe&mdash;reading a token from a request's context returns a value of the appropriate type.
+   The request context is type-safe—reading a token from a request's context returns a value of the appropriate type.
 
-   它允许 TypeScript 推断此令牌的类型： `HttpContextToken<number>`。这个请求上下文是类型安全的 —— 从请求上下文中读取令牌将返回适当类型的值。
+    它允许 TypeScript 推断此令牌的类型： `HttpContextToken<number>`。这个请求上下文是类型安全的 —— 从请求上下文中读取令牌将返回适当类型的值。
 
 1. It sets the default value for the token.
-  This is the value that the request context returns if no other value was set for this token.
-  Using a default value avoids the need to check if a particular value is set.
+   This is the value that the request context returns if no other value was set for this token.
+   Using a default value avoids the need to check if a particular value is set.
 
-   它会设置令牌的默认值。如果尚未为此令牌设置其他值，那么这就是请求上下文返回的值。使用默认值可以避免检查是否已设置了特定值。
+    它会设置令牌的默认值。如果尚未为此令牌设置其他值，那么这就是请求上下文返回的值。使用默认值可以避免检查是否已设置了特定值。
 
 ### Setting context values when making a request
 

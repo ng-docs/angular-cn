@@ -107,11 +107,11 @@ Using the Angular CLI, create a new application, _angular-router-sample_. This a
 
 1. Create a component, _crisis-list_.
 
-   创建一个组件  _crisis-list_。
+    创建一个组件  _crisis-list_。
 
-  <code-example language="sh">
-   ng generate component crisis-list
-  </code-example>
+   <code-example language="sh">
+    ng generate component crisis-list
+   </code-example>
 
 1. In your code editor, locate the file, `crisis-list.component.html` and replace
    the placeholder content with the following HTML.
@@ -122,11 +122,11 @@ Using the Angular CLI, create a new application, _angular-router-sample_. This a
 
 1. Create a second component, _heroes-list_.
 
-   创建第二个组件 `heroes-list`。
+    创建第二个组件 `heroes-list`。
 
-  <code-example language="sh">
-   ng generate component heroes-list
-  </code-example>
+   <code-example language="sh">
+    ng generate component heroes-list
+   </code-example>
 
 1. In your code editor, locate the file, `heroes-list.component.html` and replace the placeholder content with the following HTML.
 
@@ -142,11 +142,11 @@ Using the Angular CLI, create a new application, _angular-router-sample_. This a
 
 1. Verify that your new application runs as expected by running the `ng serve` command.
 
-   运行 `ng serve` 来验证新应用是否正常运行。
+    运行 `ng serve` 来验证新应用是否正常运行。
 
-  <code-example language="sh">
-   ng serve
-  </code-example>
+   <code-example language="sh">
+    ng serve
+   </code-example>
 
 1. Open a browser to `http://localhost:4200`.
 
@@ -172,9 +172,9 @@ You import this module from `@angular/router`.
 
 1. Add the following `import` statement.
 
-   添加如下 `import` 语句。
+    添加如下 `import` 语句。
 
-  <code-example header="src/app/app.module.ts" path="router-tutorial/src/app/app.module.ts" region="router-import"></code-example>
+   <code-example header="src/app/app.module.ts" path="router-tutorial/src/app/app.module.ts" region="router-import"></code-example>
 
 ## Define your routes
 
@@ -440,4 +440,3 @@ For more information about routing, see the following topics:
 * [Router API](/api/router)
 
   [路由器 API](/api/router)
-

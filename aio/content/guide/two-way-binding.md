@@ -90,7 +90,6 @@ Both methods, `inc()` and `dec()`, call the `resize()` method with a `+1` or `-1
 
 <code-example path="two-way-binding/src/app/sizer/sizer.component.html" header="src/app/sizer.component.html"></code-example>
 
-
 In the `AppComponent` template, `fontSizePx` is two-way bound to the `SizerComponent`.
 
 在 `AppComponent` 模板中， `fontSizePx` 被双向绑定到 `SizerComponent` 。

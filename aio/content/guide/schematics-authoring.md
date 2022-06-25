@@ -26,9 +26,9 @@ The public API for schematics defines classes that represent the basic concepts.
 原理图的公共 API 定义了表达其基本概念的类。
 
 * The virtual file system is represented by a `Tree`.   The `Tree` data structure contains a *base* (a set of files that already exists) and a *staging area* (a list of changes to be applied to the base).
-When making modifications, you don't actually change the base, but add those modifications to the staging area.
+  When making modifications, you don't actually change the base, but add those modifications to the staging area.
 
-  虚拟文件系统用 `Tree`（树）表示。`Tree` 数据结构包含一个*基础状态 base*（一组已经存在的文件）和一个 *暂存区 staging*（需要应用到 base 的更改列表）。在进行修改的过程中，你并没有真正改变它的 base，而是把那些修改添加到了暂存区。
+    虚拟文件系统用 `Tree`（树）表示。`Tree` 数据结构包含一个*基础状态 base*（一组已经存在的文件）和一个 *暂存区 staging*（需要应用到 base 的更改列表）。在进行修改的过程中，你并没有真正改变它的 base，而是把那些修改添加到了暂存区。
 
 * A `Rule` object defines a function that takes a `Tree`, applies transformations, and returns a new `Tree`. The main file for a schematic, `index.ts`, defines a set of rules that implement the schematic's logic.
 
@@ -186,11 +186,11 @@ There are three supported input types.
 | :--------- | :---------- |
 | 输入类型 | 描述 |
 | confirmation | A yes or no question; ideal for Boolean options. |
-| 确认 | 是或否的问题；布尔选项的理想选择。|
+| 确认 | 是或否的问题；布尔选项的理想选择。 |
 | input | Textual input; ideal for string or number options. |
-| 输入 | 文字输入；字符串或数字选项的理想选择。|
+| 输入 | 文字输入；字符串或数字选项的理想选择。 |
 | list | A predefined set of allowed values. |
-| 清单 | 预定义的一组允许值。|
+| 清单 | 预定义的一组允许值。 |
 
 In the short form, the type is inferred from the property's type and constraints.
 
@@ -501,20 +501,19 @@ Each named schematic in the collection has the following main parts.
 
 该集合中每个命名原理图都有以下主要部分。
 
-|               |                                                                   |
-| :------------ | :---------------------------------------------------------------- |
-| `index.ts`    | Code that defines the transformation logic for a named schematic. |
-| `index.ts`    | 定义命名原理图中转换逻辑的代码。                                       |
-| `schema.json` | Schematic variable definition.                                    |
-| `schema.json` | 原理图变量定义。                                                 |
-| `schema.d.ts` | Schematic variables.                                              |
-| `schema.d.ts` | 原理图变量。                                                     |
-| `files/`      | Optional component/template files to replicate.                   |
-| `files/`      | 要复制的可选组件/模板文件。                                      |
+|  |  |
+| :-- | :-- |
+| `index.ts` | Code that defines the transformation logic for a named schematic. |
+| `index.ts` | 定义命名原理图中转换逻辑的代码。 |
+| `schema.json` | Schematic variable definition. |
+| `schema.json` | 原理图变量定义。 |
+| `schema.d.ts` | Schematic variables. |
+| `schema.d.ts` | 原理图变量。 |
+| `files/` | Optional component/template files to replicate. |
+| `files/` | 要复制的可选组件/模板文件。 |
 
 It is possible for a schematic to provide all of its logic in the `index.ts` file, without additional templates.
 You can create dynamic schematics for Angular, however, by providing components and templates in the `files/` folder, like those in standalone Angular projects.
 The logic in the index file configures these templates by defining rules that inject data and modify variables.
 
 原理图可以在 `index.ts` 文件中提供它全部的逻辑，不需要额外的模板。你也可以在 `files/` 文件夹中提供组件和模板来为 Angular 创建动态原理图，比如那些独立的 Angular 项目。这个 index 文件中的逻辑会通过定义一些用来注入数据和修改变量的规则来配置这些模板。
-

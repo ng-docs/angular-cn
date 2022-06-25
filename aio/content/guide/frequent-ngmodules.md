@@ -128,7 +128,6 @@ or your feature module as appropriate, and list them in the `@NgModule`
 当你使用这些 Angular 模块时，在 `AppModule`（或适当的特性模块）中导入它们，并把它们列在当前 `@NgModule` 的 `imports` 数组中。比如，在 [Angular CLI](cli) 生成的基本应用中，`BrowserModule` 会在 `app.module.ts` 中 `AppModule` 的顶部最先导入。
 
 ```typescript
-
 /* import modules so that AppModule can access them */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -146,7 +145,6 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 ```
 
 The imports at the top of the array are JavaScript import statements
@@ -187,7 +185,6 @@ Angular returns an error telling you to use `CommonModule` instead.
   <img src="generated/images/guide/frequent-ngmodules/browser-module-error.gif" width=750 alt="BrowserModule error">
 </div>
 
-
 ## More on NgModules
 
 ## 关于 NgModule 的更多知识
@@ -201,6 +198,7 @@ You may also be interested in the following:
    [引导启动](guide/bootstrapping)。
 
 * [NgModules](guide/ngmodules).
+
 * [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule).
 
    [JavaScript 模块与 NgModules](guide/ngmodule-vs-jsmodule)。
