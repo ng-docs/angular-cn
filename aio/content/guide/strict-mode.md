@@ -7,10 +7,10 @@ Additionally, strict mode applications are easier to statically analyze and can 
 
 Specifically, strict mode affects newly generated applications in the following way:
 
-*   Enables [`strict` mode in TypeScript](https://www.typescriptlang.org/tsconfig#strict), as well as other strictness flags recommended by the TypeScript team.
-    Specifically, `forceConsistentCasingInFileNames`, `noImplicitReturns`, and `noFallthroughCasesInSwitch`.
-*   Turns on strict Angular compiler flags [`strictTemplates`](guide/angular-compiler-options#stricttemplates), [`strictInjectionParameters`](guide/angular-compiler-options#strictinjectionparameters), and [`strictInputAccessModifiers`](guide/template-typecheck#troubleshooting-template-errors).
-*   Reduces the [bundle size budgets](guide/build#configuring-size-budgets) for the `initial` and `anyComponentStyle` budget types by 75% compared to the previous defaults.
+* Enables [`strict` mode in TypeScript](https://www.typescriptlang.org/tsconfig#strict), as well as other strictness flags recommended by the TypeScript team.
+  Specifically, `forceConsistentCasingInFileNames`, `noImplicitReturns`, and `noFallthroughCasesInSwitch`.
+* Turns on strict Angular compiler flags [`strictTemplates`](guide/angular-compiler-options#stricttemplates), [`strictInjectionParameters`](guide/angular-compiler-options#strictinjectionparameters), and [`strictInputAccessModifiers`](guide/template-typecheck#troubleshooting-template-errors).
+* Reduces the [bundle size budgets](guide/build#configuring-size-budgets) for the `initial` and `anyComponentStyle` budget types by 75% compared to the previous defaults.
 
 You can apply these settings at the workspace and project level.
 

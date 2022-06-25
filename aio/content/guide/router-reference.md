@@ -49,7 +49,7 @@ The data property is accessible within each activated route.
 Use it to store items such as page titles, breadcrumb text, and other read-only, static data.
 Use the [resolve guard](guide/router-tutorial-toh#resolve-guard) to retrieve dynamic data.
 
-The empty path in the fourth route represents the default path for the application &mdash;the place to go when the path in the URL is empty, as it typically is at the start.
+The empty path in the fourth route represents the default path for the application —the place to go when the path in the URL is empty, as it typically is at the start.
 This default route redirects to the route for the `/heroes` URL and, therefore, displays the `HeroesListComponent`.
 
 If you need to see what events are happening during the navigation lifecycle, there is the `enableTracing` option as part of the router's default configuration.
@@ -85,7 +85,7 @@ Consider the following template:
 <code-example header="src/app/app.component.html" path="router/src/app/app.component.1.html"></code-example>
 
 The `RouterLink` directives on the anchor tags give the router control over those elements.
-The navigation paths are fixed, so you can assign a string to the `routerLink` \(a "one-time" binding\).
+The navigation paths are fixed, so you can assign a string to the `routerLink` (a "one-time" binding).
 
 Had the navigation path been more dynamic, you could have bound to a template expression that returned an array of route link parameters; that is, the [link parameters array](guide/router#link-parameters-array).
 The router resolves that array into a complete URL.
@@ -104,7 +104,7 @@ routerLinkActive="..."
 
 </code-example>
 
-The template expression to the right of the equal sign, `=`, contains a space-delimited string of CSS classes that the Router adds when this link is active \(and removes when the link is inactive\).
+The template expression to the right of the equal sign, `=`, contains a space-delimited string of CSS classes that the Router adds when this link is active (and removes when the link is inactive).
 You set the `RouterLinkActive` directive to a string of classes such as `routerLinkActive="active fluffy"` or bind it to a component property that returns such a string.
 For example,
 
@@ -136,44 +136,44 @@ Each `ActivatedRoute` in the `RouterState` provides methods to traverse up and d
 The route path and parameters are available through an injected router service called the [ActivatedRoute](api/router/ActivatedRoute).
 It has a great deal of useful information including:
 
-| Property        | Details |
-|:---             |:---     |
-| `url`           | An `Observable` of the route path(s), represented as an array of strings for each part of the route path.                                                                                                                                                        |
-| `data`          | An `Observable` that contains the `data` object provided for the route. Also contains any resolved values from the [resolve guard](guide/router-tutorial-toh#resolve-guard).                                                                                     |
-| `params`        | An `Observable` that contains the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route.                                                                                                                 |
-| `paramMap`      | An `Observable` that contains a [map](api/router/ParamMap) of the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route. The map supports retrieving single and multiple values from the same parameter. |
-| `queryParamMap` | An `Observable` that contains a [map](api/router/ParamMap) of the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes. The map supports retrieving single and multiple values from the query parameter.                       |
-| `queryParams`   | An `Observable` that contains the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes.                                                                                                                                        |
-| `fragment`      | An `Observable` of the URL [fragment](guide/router-tutorial-toh#fragment) available to all routes.                                                                                                                                                               |
-| `outlet`        | The name of the `RouterOutlet` used to render the route. For an unnamed outlet, the outlet name is primary.                                                                                                                                                      |
-| `routeConfig`   | The route configuration used for the route that contains the origin path.                                                                                                                                                                                        |
-| `parent`        | The route's parent `ActivatedRoute` when this route is a [child route](guide/router-tutorial-toh#child-routing-component).                                                                                                                                       |
-| `firstChild`    | Contains the first `ActivatedRoute` in the list of this route's child routes.                                                                                                                                                                                    |
-| `children`      | Contains all the [child routes](guide/router-tutorial-toh#child-routing-component) activated under the current route.                                                                                                                                            |
+| Property | Details |
+| :------- | :------ |
+| `url` | An `Observable` of the route path(s), represented as an array of strings for each part of the route path. |
+| `data` | An `Observable` that contains the `data` object provided for the route. Also contains any resolved values from the [resolve guard](guide/router-tutorial-toh#resolve-guard). |
+| `params` | An `Observable` that contains the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route. |
+| `paramMap` | An `Observable` that contains a [map](api/router/ParamMap) of the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route. The map supports retrieving single and multiple values from the same parameter. |
+| `queryParamMap` | An `Observable` that contains a [map](api/router/ParamMap) of the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes. The map supports retrieving single and multiple values from the query parameter. |
+| `queryParams` | An `Observable` that contains the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes. |
+| `fragment` | An `Observable` of the URL [fragment](guide/router-tutorial-toh#fragment) available to all routes. |
+| `outlet` | The name of the `RouterOutlet` used to render the route. For an unnamed outlet, the outlet name is primary. |
+| `routeConfig` | The route configuration used for the route that contains the origin path. |
+| `parent` | The route's parent `ActivatedRoute` when this route is a [child route](guide/router-tutorial-toh#child-routing-component). |
+| `firstChild` | Contains the first `ActivatedRoute` in the list of this route's child routes. |
+| `children` | Contains all the [child routes](guide/router-tutorial-toh#child-routing-component) activated under the current route. |
 
 ## Router events
 
 During each navigation, the `Router` emits navigation events through the `Router.events` property.
 These events range from when the navigation starts and ends to many points in between. The full list of navigation events is displayed in the following table.
 
-| Router event                                              | Details |
-|:---                                                       |:---     |
-| [`NavigationStart`](api/router/NavigationStart)           | Triggered when navigation starts.                                                                                                                                                     |
-| [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | Triggered before the `Router` [lazy loads](guide/router-tutorial-toh#asynchronous-routing) a route configuration.                                                                     |
-| [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd)     | Triggered after a route has been lazy loaded.                                                                                                                                         |
-| [`RoutesRecognized`](api/router/RoutesRecognized)         | Triggered when the Router parses the URL and the routes are recognized.                                                                                                               |
-| [`GuardsCheckStart`](api/router/GuardsCheckStart)         | Triggered when the Router begins the Guards phase of routing.                                                                                                                         |
-| [`ChildActivationStart`](api/router/ChildActivationStart) | Triggered when the Router begins activating a route's children.                                                                                                                       |
-| [`ActivationStart`](api/router/ActivationStart)           | Triggered when the Router begins activating a route.                                                                                                                                  |
-| [`GuardsCheckEnd`](api/router/GuardsCheckEnd)             | Triggered when the Router finishes the Guards phase of routing successfully.                                                                                                          |
-| [`ResolveStart`](api/router/ResolveStart)                 | Triggered when the Router begins the Resolve phase of routing.                                                                                                                        |
-| [`ResolveEnd`](api/router/ResolveEnd)                     | Triggered when the Router finishes the Resolve phase of routing successfully.                                                                                                          |
-| [`ChildActivationEnd`](api/router/ChildActivationEnd)     | Triggered when the Router finishes activating a route's children.                                                                                                                     |
-| [`ActivationEnd`](api/router/ActivationEnd)               | Triggered when the Router finishes activating a route.                                                                                                                                |
-| [`NavigationEnd`](api/router/NavigationEnd)               | Triggered when navigation ends successfully.                                                                                                                                          |
-| [`NavigationCancel`](api/router/NavigationCancel)         | Triggered when navigation is canceled. This can happen when a [Route Guard](guide/router-tutorial-toh#guards) returns false during navigation, or redirects by returning a `UrlTree`. |
-| [`NavigationError`](api/router/NavigationError)           | Triggered when navigation fails due to an unexpected error.                                                                                                                           |
-| [`Scroll`](api/router/Scroll)                             | Represents a scrolling event.                                                                                                                                                         |
+| Router event | Details |
+| :----------- | :------ |
+| [`NavigationStart`](api/router/NavigationStart) | Triggered when navigation starts. |
+| [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | Triggered before the `Router` [lazy loads](guide/router-tutorial-toh#asynchronous-routing) a route configuration. |
+| [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd) | Triggered after a route has been lazy loaded. |
+| [`RoutesRecognized`](api/router/RoutesRecognized) | Triggered when the Router parses the URL and the routes are recognized. |
+| [`GuardsCheckStart`](api/router/GuardsCheckStart) | Triggered when the Router begins the Guards phase of routing. |
+| [`ChildActivationStart`](api/router/ChildActivationStart) | Triggered when the Router begins activating a route's children. |
+| [`ActivationStart`](api/router/ActivationStart) | Triggered when the Router begins activating a route. |
+| [`GuardsCheckEnd`](api/router/GuardsCheckEnd) | Triggered when the Router finishes the Guards phase of routing successfully. |
+| [`ResolveStart`](api/router/ResolveStart) | Triggered when the Router begins the Resolve phase of routing. |
+| [`ResolveEnd`](api/router/ResolveEnd) | Triggered when the Router finishes the Resolve phase of routing successfully. |
+| [`ChildActivationEnd`](api/router/ChildActivationEnd) | Triggered when the Router finishes activating a route's children. |
+| [`ActivationEnd`](api/router/ActivationEnd) | Triggered when the Router finishes activating a route. |
+| [`NavigationEnd`](api/router/NavigationEnd) | Triggered when navigation ends successfully. |
+| [`NavigationCancel`](api/router/NavigationCancel) | Triggered when navigation is canceled. This can happen when a [Route Guard](guide/router-tutorial-toh#guards) returns false during navigation, or redirects by returning a `UrlTree`. |
+| [`NavigationError`](api/router/NavigationError) | Triggered when navigation fails due to an unexpected error. |
+| [`Scroll`](api/router/Scroll) | Represents a scrolling event. |
 
 When you enable the `enableTracing` option, Angular logs these events to the console.
 For an example of filtering router navigation events, see the [router section](guide/observables-in-angular#router) of the [Observables in Angular](guide/observables-in-angular) guide.
@@ -182,19 +182,19 @@ For an example of filtering router navigation events, see the [router section](g
 
 Here are the key `Router` terms and their meanings:
 
-| Router part           | Details |
-|:---                   |:---     |
-| `Router`              | Displays the application component for the active URL. Manages navigation from one component to the next.                                                                                        |
-| `RouterModule`        | A separate NgModule that provides the necessary service providers and directives for navigating through application views.                                                                       |
-| `Routes`              | Defines an array of Routes, each mapping a URL path to a component.                                                                                                                              |
-| `Route`               | Defines how the router should navigate to a component based on a URL pattern. Most routes consist of a path and a component type.                                                                |
-| `RouterOutlet`        | The directive \(`<router-outlet>`\) that marks where the router displays a view.                                                                                                                 |
-| `RouterLink`          | The directive for binding a clickable HTML element to a route. Clicking an element with a `routerLink` directive that is bound to a *string* or a *link parameters array* triggers a navigation. |
-| `RouterLinkActive`    | The directive for adding/removing classes from an HTML element when an associated `routerLink` contained on or inside the element becomes active/inactive. It can also set the `aria-current` of an active link for better accessibility.                                       |
-| `ActivatedRoute`      | A service that is provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query params, and the global fragment.   |
-| `RouterState`         | The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree.                                              |
-| Link parameters array | An array that the router interprets as a routing instruction. You can bind that array to a `RouterLink` or pass the array as an argument to the `Router.navigate` method.                        |
-| Routing component     | An Angular component with a `RouterOutlet` that displays views based on router navigations.                                                                                                      |
+| Router part | Details |
+| :---------- | :------ |
+| `Router` | Displays the application component for the active URL. Manages navigation from one component to the next. |
+| `RouterModule` | A separate NgModule that provides the necessary service providers and directives for navigating through application views. |
+| `Routes` | Defines an array of Routes, each mapping a URL path to a component. |
+| `Route` | Defines how the router should navigate to a component based on a URL pattern. Most routes consist of a path and a component type. |
+| `RouterOutlet` | The directive (`<router-outlet>`) that marks where the router displays a view. |
+| `RouterLink` | The directive for binding a clickable HTML element to a route. Clicking an element with a `routerLink` directive that is bound to a *string* or a *link parameters array* triggers a navigation. |
+| `RouterLinkActive` | The directive for adding/removing classes from an HTML element when an associated `routerLink` contained on or inside the element becomes active/inactive. It can also set the `aria-current` of an active link for better accessibility. |
+| `ActivatedRoute` | A service that is provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query params, and the global fragment. |
+| `RouterState` | The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree. |
+| Link parameters array | An array that the router interprets as a routing instruction. You can bind that array to a `RouterLink` or pass the array as an argument to the `Router.navigate` method. |
+| Routing component | An Angular component with a `RouterOutlet` that displays views based on router navigations. |
 
 <!-- links -->
 

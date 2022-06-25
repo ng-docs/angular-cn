@@ -2,7 +2,7 @@
 
 ## What does this schematic do?
 
-Some Angular libraries, such as `@angular/router` and `@ngrx/store`, implement APIs that return a type called `ModuleWithProviders` \(typically via a method named `forRoot()`\).
+Some Angular libraries, such as `@angular/router` and `@ngrx/store`, implement APIs that return a type called `ModuleWithProviders` (typically via a method named `forRoot()`).
 This type represents an `NgModule` along with additional providers.
 Angular version 9 deprecates use of `ModuleWithProviders` without an explicitly generic type, where the generic type refers to the type of the `NgModule`.
 
@@ -59,7 +59,7 @@ A future version of Angular will remove the default generic type, making an expl
 
 ## Should I add the generic type when I add new `ModuleWithProviders` types to my application?
 
-Yes, any time your code references the `ModuleWithProviders` type, it should have a generic type that matches the actual `NgModule` that is returned \(for example, `ModuleWithProviders<MyModule>`\).
+Yes, any time your code references the `ModuleWithProviders` type, it should have a generic type that matches the actual `NgModule` that is returned (for example, `ModuleWithProviders<MyModule>`).
 
 ## What should I do if the schematic prints a TODO comment?
 
@@ -73,7 +73,7 @@ Libraries should add the generic type to any usages of the `ModuleWithProviders`
 
 ## What about applications using non-migrated libraries?
 
-The [Angular compatibility compiler](guide/glossary#ngcc) \(`ngcc`\) should automatically transform any non-migrated libraries to generate the proper code.
+The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
 
 <!-- links -->
 

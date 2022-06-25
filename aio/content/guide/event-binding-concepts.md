@@ -1,4 +1,3 @@
-
 # How event binding works
 
 In an event binding, Angular configures an event handler for the target event.
@@ -21,10 +20,10 @@ In the following example the code sets the `<input>` `value` property by binding
 
 With this example, the following actions occur:
 
-1.  The code binds to the `input` event of the `<input>` element, which allows the code to listen for changes.
-1.  When the user makes changes, the component raises the `input` event.
-1.  The binding executes the statement within a context that includes the DOM event object, `$event`.
-1.  Angular retrieves the changed text by calling `getValue($event.target)` and updates the `name` property.
+1. The code binds to the `input` event of the `<input>` element, which allows the code to listen for changes.
+1. When the user makes changes, the component raises the `input` event.
+1. The binding executes the statement within a context that includes the DOM event object, `$event`.
+1. Angular retrieves the changed text by calling `getValue($event.target)` and updates the `name` property.
 
 If the event belongs to a directive or component, `$event` has the shape that the directive or component produces.
 

@@ -28,14 +28,14 @@ ng generate component hero-detail
 
 The command scaffolds the following:
 
-*   Creates a directory `src/app/hero-detail`.
+* Creates a directory `src/app/hero-detail`.
 
 Inside that directory four files are generated:
 
-*   A CSS file for the component styles.
-*   An HTML file for the component template.
-*   A TypeScript file with a component class named `HeroDetailComponent`.
-*   A test file for the `HeroDetailComponent` class.
+* A CSS file for the component styles.
+* An HTML file for the component template.
+* A TypeScript file with a component class named `HeroDetailComponent`.
+* A test file for the `HeroDetailComponent` class.
 
 The command also adds the `HeroDetailComponent` as a declaration in the `@NgModule` decorator of the `src/app/app.module.ts` file.
 
@@ -130,7 +130,7 @@ Refactoring the original `HeroesComponent` into two components yields benefits, 
 1. You reduced the `HeroesComponent` responsibilities.
 
 1. You can evolve the `HeroDetailComponent` into a rich hero editor
-without touching the parent `HeroesComponent`.
+   without touching the parent `HeroesComponent`.
 
 1. You can evolve the `HeroesComponent` without touching the hero detail view.
 
@@ -154,10 +154,10 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You created a separate, reusable `HeroDetailComponent`.
+* You created a separate, reusable `HeroDetailComponent`.
 
-*   You used a [property binding](guide/property-binding) to give the parent `HeroesComponent` control over the child `HeroDetailComponent`.
+* You used a [property binding](guide/property-binding) to give the parent `HeroesComponent` control over the child `HeroDetailComponent`.
 
-*   You used the [`@Input` decorator](guide/inputs-outputs)
-to make the `hero` property available for binding
-by the external `HeroesComponent`.
+* You used the [`@Input` decorator](guide/inputs-outputs)
+  to make the `hero` property available for binding
+  by the external `HeroesComponent`.

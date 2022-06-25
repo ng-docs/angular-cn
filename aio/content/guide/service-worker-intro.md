@@ -1,7 +1,7 @@
 # Angular service worker introduction
 
 Service workers augment the traditional web deployment model and empower applications to deliver a user experience with the reliability and performance on par with code that is written to run on your operating system and hardware.
-Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://developers.google.com/web/progressive-web-apps) \(also known as a PWA\).
+Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://developers.google.com/web/progressive-web-apps) (also known as a PWA).
 
 At its simplest, a service worker is a script that runs in the web browser and manages caching for an application.
 
@@ -28,23 +28,23 @@ Angular's service worker is designed to optimize the end user experience of usin
 
 To achieve this, the Angular service worker follows these guidelines:
 
-*   Caching an application is like installing a native application.
-    The application is cached as one unit, and all files update together.
+* Caching an application is like installing a native application.
+  The application is cached as one unit, and all files update together.
 
-*   A running application continues to run with the same version of all files.
-    It does not suddenly start receiving cached files from a newer version, which are likely incompatible.
+* A running application continues to run with the same version of all files.
+  It does not suddenly start receiving cached files from a newer version, which are likely incompatible.
 
-*   When users refresh the application, they see the latest fully cached version.
-    New tabs load the latest cached code.
+* When users refresh the application, they see the latest fully cached version.
+  New tabs load the latest cached code.
 
-*   Updates happen in the background, relatively quickly after changes are published.
-    The previous version of the application is served until an update is installed and ready.
+* Updates happen in the background, relatively quickly after changes are published.
+  The previous version of the application is served until an update is installed and ready.
 
-*   The service worker conserves bandwidth when possible.
-    Resources are only downloaded if they've changed.
+* The service worker conserves bandwidth when possible.
+  Resources are only downloaded if they've changed.
 
 To support these behaviors, the Angular service worker loads a *manifest* file from the server.
-The file, called `ngsw.json` \(not to be confused with the [web app manifest](https://developer.mozilla.org/docs/Web/Manifest)\), describes the resources to cache and includes hashes of every file's contents.
+The file, called `ngsw.json` (not to be confused with the [web app manifest](https://developer.mozilla.org/docs/Web/Manifest)), describes the resources to cache and includes hashes of every file's contents.
 When an update to the application is deployed, the contents of the manifest change, informing the service worker that a new version of the application should be downloaded and cached.
 This manifest is generated from a CLI-generated configuration file called `ngsw-config.json`.
 
@@ -65,15 +65,15 @@ There is one exception to this rule: to make local development more straightforw
 ### Browser support
 
 To benefit from the Angular service worker, your application must run in a web browser that supports service workers in general.
-Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser \(Android version\) and Samsung Internet.
+Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser (Android version) and Samsung Internet.
 Browsers like IE and Opera Mini do not support service workers.
 
 If the user is accessing your application with a browser that does not support service workers, the service worker is not registered and related behavior such as offline cache management and push notifications does not happen.
 More specifically:
 
-*   The browser does not download the service worker script and the `ngsw.json` manifest file
-*   Active attempts to interact with the service worker, such as calling `SwUpdate.checkForUpdate()`, return rejected promises
-*   The observable events of related services, such as `SwUpdate.available`, are not triggered
+* The browser does not download the service worker script and the `ngsw.json` manifest file
+* Active attempts to interact with the service worker, such as calling `SwUpdate.checkForUpdate()`, return rejected promises
+* The observable events of related services, such as `SwUpdate.available`, are not triggered
 
 It is highly recommended that you ensure that your application works even without service worker support in the browser.
 Although an unsupported browser ignores service worker caching, it still reports errors if the application attempts to interact with the service worker.
@@ -86,11 +86,11 @@ To learn more about other browsers that are service worker ready, see the [Can I
 
 The rest of the articles in this section specifically address the Angular implementation of service workers.
 
-*   [App Shell](guide/app-shell)
-*   [Service Worker Communication](guide/service-worker-communications)
-*   [Service Worker Notifications](guide/service-worker-notifications)
-*   [Service Worker in Production](guide/service-worker-devops)
-*   [Service Worker Configuration](guide/service-worker-config)
+* [App Shell](guide/app-shell)
+* [Service Worker Communication](guide/service-worker-communications)
+* [Service Worker Notifications](guide/service-worker-notifications)
+* [Service Worker in Production](guide/service-worker-devops)
+* [Service Worker Configuration](guide/service-worker-config)
 
 For more information about service workers in general, see [Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers).
 
@@ -98,8 +98,8 @@ For more information about browser support, see the [browser support](https://de
 
 For additional recommendations and examples, see:
 
-*   [Precaching with Angular Service Worker](https://web.dev/precaching-with-the-angular-service-worker)
-*   [Creating a PWA with Angular CLI](https://web.dev/creating-pwa-with-angular-cli)
+* [Precaching with Angular Service Worker](https://web.dev/precaching-with-the-angular-service-worker)
+* [Creating a PWA with Angular CLI](https://web.dev/creating-pwa-with-angular-cli)
 
 ## Next steps
 

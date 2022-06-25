@@ -4,13 +4,13 @@ Angular supports most recent browsers.
 This includes the following specific versions:
 
 | Browser | Supported versions |
-|:---     |:---                |
-| Chrome  | latest                                      |
-| Firefox | latest and extended support release \(ESR\) |
-| Edge    | 2 most recent major versions                |
-| Safari  | 2 most recent major versions                |
-| iOS     | 2 most recent major versions                |
-| Android | 2 most recent major versions                |
+| :------ | :----------------- |
+| Chrome | latest |
+| Firefox | latest and extended support release (ESR) |
+| Edge | 2 most recent major versions |
+| Safari | 2 most recent major versions |
+| iOS | 2 most recent major versions |
+| Android | 2 most recent major versions |
 
 <div class="alert is-helpful">
 
@@ -22,7 +22,7 @@ Angular's continuous integration process runs unit tests of the framework on all
 
 Angular is built on the latest standards of the web platform.
 Targeting such a wide range of browsers is challenging because they do not support all features of modern browsers.
-You compensate by loading polyfill scripts \("polyfills"\) for the browsers that you must support.
+You compensate by loading polyfill scripts ("polyfills") for the browsers that you must support.
 See instructions on how to include polyfills into your project below.
 
 <div class="alert is-important">
@@ -47,14 +47,14 @@ If you are not using the CLI to create your projects, see [Polyfill instructions
 When you create a project with the `ng new` command, a `src/polyfills.ts` configuration file is created as part of your project folder.
 This file incorporates the mandatory and many of the optional polyfills as JavaScript `import` statements.
 
-*   The npm packages for the mandatory polyfills \(such as `zone.js`\) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file
-*   If you need an *optional* polyfill, you must install its npm package, then uncomment or create the corresponding import statement in the `src/polyfills.ts` configuration file
+* The npm packages for the mandatory polyfills (such as `zone.js`) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file
+* If you need an *optional* polyfill, you must install its npm package, then uncomment or create the corresponding import statement in the `src/polyfills.ts` configuration file
 
 <a id="non-cli"></a>
 
 ## Polyfills for non-CLI users
 
-If you are not using the CLI, add your polyfill scripts directly to the host web page \(`index.html`\).
+If you are not using the CLI, add your polyfill scripts directly to the host web page (`index.html`).
 
 For example:
 

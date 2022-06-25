@@ -12,11 +12,11 @@ See the <live-example></live-example> for a working example containing the code 
 
 The different types of Angular directives are as follows:
 
-| Directive Types                                                                   | Details |
-|:---                                                                               |:---     |
-| [Components](guide/component-overview)                                            | Used with a template. This type of directive is the most common directive type.   |
-| [Attribute directives](guide/built-in-directives#built-in-attribute-directives)   | Change the appearance or behavior of an element, component, or another directive. |
-| [Structural directives](guide/built-in-directives#built-in-structural-directives) | Change the DOM layout by adding and removing DOM elements.                        |
+| Directive Types | Details |
+| :-------------- | :------ |
+| [Components](guide/component-overview) | Used with a template. This type of directive is the most common directive type. |
+| [Attribute directives](guide/built-in-directives#built-in-attribute-directives) | Change the appearance or behavior of an element, component, or another directive. |
+| [Structural directives](guide/built-in-directives#built-in-structural-directives) | Change the DOM layout by adding and removing DOM elements. |
 
 This guide covers built-in [attribute directives](guide/built-in-directives#built-in-attribute-directives) and [structural directives](guide/built-in-directives#built-in-structural-directives).
 
@@ -29,10 +29,10 @@ Attribute directives listen to and modify the behavior of other HTML elements, a
 Many NgModules such as the [`RouterModule`](guide/router "Routing and Navigation") and the [`FormsModule`](guide/forms "Forms") define their own attribute directives.
 The most common attribute directives are as follows:
 
-| Common directives                              | Details |
-|:---                                            |:---     |
-| [`NgClass`](guide/built-in-directives#ngClass) | Adds and removes a set of CSS classes.             |
-| [`NgStyle`](guide/built-in-directives#ngstyle) | Adds and removes a set of HTML styles.             |
+| Common directives | Details |
+| :---------------- | :------ |
+| [`NgClass`](guide/built-in-directives#ngClass) | Adds and removes a set of CSS classes. |
+| [`NgStyle`](guide/built-in-directives#ngstyle) | Adds and removes a set of HTML styles. |
 | [`NgModel`](guide/built-in-directives#ngModel) | Adds two-way data binding to an HTML form element. |
 
 <div class="alert is-helpful">
@@ -64,18 +64,18 @@ Because `isSpecial` is true, `ngClass` applies the class of `special` to the `<d
 
 ### Using `NgClass` with a method
 
-1.  To use `NgClass` with a method, add the method to the component class.
-    In the following example, `setCurrentClasses()` sets the property `currentClasses` with an object that adds or removes three classes based on the `true` or `false` state of three other component properties.
+1. To use `NgClass` with a method, add the method to the component class.
+   In the following example, `setCurrentClasses()` sets the property `currentClasses` with an object that adds or removes three classes based on the `true` or `false` state of three other component properties.
 
-    Each key of the object is a CSS class name.
-    If a key is `true`, `ngClass` adds the class.
-    If a key is `false`, `ngClass` removes the class.
+   Each key of the object is a CSS class name.
+   If a key is `true`, `ngClass` adds the class.
+   If a key is `false`, `ngClass` removes the class.
 
-    <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="setClasses"></code-example>
+   <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="setClasses"></code-example>
 
-1.  In the template, add the `ngClass` property binding to `currentClasses` to set the element's classes:
+1. In the template, add the `ngClass` property binding to `currentClasses` to set the element's classes:
 
-    <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgClass-1"></code-example>
+   <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgClass-1"></code-example>
 
 For this use case, Angular applies the classes on initialization and in case of changes.
 The full example calls `setCurrentClasses()` initially with `ngOnInit()` and when the dependent properties change through a button click.
@@ -88,15 +88,15 @@ For more information, see the <live-example></live-example> `app.component.ts` a
 
 Use `NgStyle` to set multiple inline styles simultaneously, based on the state of the component.
 
-1.  To use `NgStyle`, add a method to the component class.
+1. To use `NgStyle`, add a method to the component class.
 
-    In the following example, `setCurrentStyles()` sets the property `currentStyles` with an object that defines three styles, based on the state of three other component properties.
+   In the following example, `setCurrentStyles()` sets the property `currentStyles` with an object that defines three styles, based on the state of three other component properties.
 
-    <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="setStyles"></code-example>
+   <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="setStyles"></code-example>
 
-1.  To set the element's styles, add an `ngStyle` property binding to `currentStyles`.
+1. To set the element's styles, add an `ngStyle` property binding to `currentStyles`.
 
-    <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgStyle-2"></code-example>
+   <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgStyle-2"></code-example>
 
 For this use case, Angular applies the styles upon initialization and in case of changes.
 To do this, the full example calls `setCurrentStyles()` initially with `ngOnInit()` and when the dependent properties change through a button click.
@@ -109,15 +109,15 @@ See the <live-example></live-example> `app.component.ts` and `app.component.html
 
 Use the `NgModel` directive to display a data property and update that property when the user makes changes.
 
-1.  Import `FormsModule`  and add it to the NgModule's `imports` list.
+1. Import `FormsModule`  and add it to the NgModule's `imports` list.
 
-    <code-example header="src/app/app.module.ts (FormsModule import)" path="built-in-directives/src/app/app.module.ts" region="import-forms-module"></code-example>
+   <code-example header="src/app/app.module.ts (FormsModule import)" path="built-in-directives/src/app/app.module.ts" region="import-forms-module"></code-example>
 
-1.  Add an `[(ngModel)]` binding on an HTML `<form>` element and set it equal to the property, here `name`.
+1. Add an `[(ngModel)]` binding on an HTML `<form>` element and set it equal to the property, here `name`.
 
-    <code-example header="src/app/app.component.html (NgModel example)" path="built-in-directives/src/app/app.component.html" region="NgModel-1"></code-example>
+   <code-example header="src/app/app.component.html (NgModel example)" path="built-in-directives/src/app/app.component.html" region="NgModel-1"></code-example>
 
-    This `[(ngModel)]` syntax can only set a data-bound property.
+   This `[(ngModel)]` syntax can only set a data-bound property.
 
 To customize your configuration, write the expanded form, which separates the property and event binding.
 Use [property binding](guide/property-binding) to set the property and [event binding](guide/event-binding) to respond to changes.
@@ -157,11 +157,11 @@ They shape or reshape the DOM's structure, typically by adding, removing, and ma
 
 This section introduces the most common built-in structural directives:
 
-| Common built-in structural directives            | Details |
-|:---                                              |:---     |
-| [`NgIf`](guide/built-in-directives#ngIf)         | Conditionally creates or disposes of subviews from the template. |
-| [`NgFor`](guide/built-in-directives#ngFor)       | Repeat a node for each item in a list.                           |
-| [`NgSwitch`](guide/built-in-directives#ngSwitch) | A set of directives that switch among alternative views.         |
+| Common built-in structural directives | Details |
+| :------------------------------------ | :------ |
+| [`NgIf`](guide/built-in-directives#ngIf) | Conditionally creates or disposes of subviews from the template. |
+| [`NgFor`](guide/built-in-directives#ngFor) | Repeat a node for each item in a list. |
+| [`NgSwitch`](guide/built-in-directives#ngSwitch) | A set of directives that switch among alternative views. |
 
 For more information, see [Structural Directives](guide/structural-directives).
 
@@ -203,17 +203,17 @@ In this example, Angular does not display the `nullCustomer` because it is `null
 
 Use the `NgFor` directive to present a list of items.
 
-1.  Define a block of HTML that determines how Angular renders a single item.
-1.  To list your items, assign the short hand `let item of items` to `*ngFor`.
+1. Define a block of HTML that determines how Angular renders a single item.
+1. To list your items, assign the short hand `let item of items` to `*ngFor`.
 
 <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgFor-1"></code-example>
 
 The string `"let item of items"` instructs Angular to do the following:
 
-*   Store each item in the `items` array in the local `item` looping variable
-*   Make each item available to the templated HTML for each iteration
-*   Translate `"let item of items"` into an `<ng-template>` around the host element
-*   Repeat the `<ng-template>` for each `item` in the list
+* Store each item in the `items` array in the local `item` looping variable
+* Make each item available to the templated HTML for each iteration
+* Translate `"let item of items"` into an `<ng-template>` around the host element
+* Repeat the `<ng-template>` for each `item` in the list
 
 For more information see the [Structural directive shorthand](guide/structural-directives#shorthand) section of [Structural directives](guide/structural-directives).
 
@@ -226,8 +226,8 @@ In the following example, the selector is `<app-item-detail>`.
 
 Reference a template input variable, such as `item`, in the following locations:
 
-*   Within the `ngFor` host element
-*   Within the host element descendants to access the item's properties
+* Within the `ngFor` host element
+* Within the host element descendants to access the item's properties
 
 The following example references `item` first in an interpolation and then passes in a binding to the `item` property of the `<app-item-detail>` component.
 
@@ -251,7 +251,6 @@ then uses this template repeatedly to create a new set of elements and bindings 
 in the list.
 For more information about shorthand, see the [Structural Directives](guide/structural-directives#shorthand) guide.
 
-
 ## Repeating elements when a condition is true
 
 To repeat a block of HTML when a particular condition is true, put the `*ngIf` on a container element that wraps an `*ngFor` element.
@@ -265,21 +264,21 @@ For more information see [one structural directive per element](guide/structural
 Reduce the number of calls your application makes to the server by tracking changes to an item list.
 With the `*ngFor` `trackBy` property, Angular can change and re-render only those items that have changed, rather than reloading the entire list of items.
 
-1.  Add a method to the component that returns the value `NgFor` should track.
-    In this example, the value to track is the item's `id`.
-    If the browser has already rendered `id`, Angular keeps track of it and doesn't re-query the server for the same `id`.
+1. Add a method to the component that returns the value `NgFor` should track.
+   In this example, the value to track is the item's `id`.
+   If the browser has already rendered `id`, Angular keeps track of it and doesn't re-query the server for the same `id`.
 
-    <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="trackByItems"></code-example>
+   <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="trackByItems"></code-example>
 
-1.  In the short hand expression, set `trackBy` to the `trackByItems()` method.
+1. In the short hand expression, set `trackBy` to the `trackByItems()` method.
 
-    <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="trackBy"></code-example>
+   <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="trackBy"></code-example>
 
 **Change ids** creates new items with new `item.id`s.
 In the following illustration of the `trackBy` effect, **Reset items** creates new items with the same `item.id`s.
 
-*   With no `trackBy`, both buttons trigger complete DOM element replacement.
-*   With `trackBy`, only changing the `id` triggers element replacement.
+* With no `trackBy`, both buttons trigger complete DOM element replacement.
+* With `trackBy`, only changing the `id` triggers element replacement.
 
 <div class="lightbox">
 
@@ -305,19 +304,19 @@ Here's a conditional paragraph using `<ng-container>`.
 
 </div>
 
-1.  Import the `ngModel` directive from `FormsModule`.
+1. Import the `ngModel` directive from `FormsModule`.
 
-1.  Add `FormsModule` to the imports section of the relevant Angular module.
+1. Add `FormsModule` to the imports section of the relevant Angular module.
 
-1.  To conditionally exclude an `<option>`, wrap the `<option>` in an `<ng-container>`.
+1. To conditionally exclude an `<option>`, wrap the `<option>` in an `<ng-container>`.
 
-    <code-example header="src/app/app.component.html (select-ngcontainer)" path="structural-directives/src/app/app.component.html" region="select-ngcontainer"></code-example>
+   <code-example header="src/app/app.component.html (select-ngcontainer)" path="structural-directives/src/app/app.component.html" region="select-ngcontainer"></code-example>
 
-    <div class="lightbox">
+   <div class="lightbox">
 
-    <img alt="ngcontainer options work properly" src="generated/images/guide/structural-directives/select-ngcontainer-anim.gif">
+   <img alt="ngcontainer options work properly" src="generated/images/guide/structural-directives/select-ngcontainer-anim.gif">
 
-    </div>
+   </div>
 
 <a id="ngSwitch"></a>
 
@@ -331,33 +330,33 @@ Angular puts only the selected element into the DOM.
 `NgSwitch` is a set of three directives:
 
 | `NgSwitch` directives | Details |
-|:---                   |:---     |
-| `NgSwitch`            | An attribute directive that changes the behavior of its companion directives.                                                                                          |
-| `NgSwitchCase`        | Structural directive that adds its element to the DOM when its bound value equals the switch value and removes its bound value when it doesn't equal the switch value. |
-| `NgSwitchDefault`     | Structural directive that adds its element to the DOM when there is no selected `NgSwitchCase`.                                                                        |
+| :-------------------- | :------ |
+| `NgSwitch` | An attribute directive that changes the behavior of its companion directives. |
+| `NgSwitchCase` | Structural directive that adds its element to the DOM when its bound value equals the switch value and removes its bound value when it doesn't equal the switch value. |
+| `NgSwitchDefault` | Structural directive that adds its element to the DOM when there is no selected `NgSwitchCase`. |
 
-1.  On an element, such as a `<div>`, add `[ngSwitch]` bound to an expression that returns the switch value, such as `feature`.
-    Though the `feature` value in this example is a string, the switch value can be of any type.
+1. On an element, such as a `<div>`, add `[ngSwitch]` bound to an expression that returns the switch value, such as `feature`.
+   Though the `feature` value in this example is a string, the switch value can be of any type.
 
-1.  Bind to `*ngSwitchCase` and `*ngSwitchDefault` on the elements for the cases.
+1. Bind to `*ngSwitchCase` and `*ngSwitchDefault` on the elements for the cases.
 
-    <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgSwitch"></code-example>
+   <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgSwitch"></code-example>
 
-1.  In the parent component, define `currentItem`, to use it in the `[ngSwitch]` expression.
+1. In the parent component, define `currentItem`, to use it in the `[ngSwitch]` expression.
 
-    <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="item"></code-example>
+   <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="item"></code-example>
 
-1.  In each child component, add an `item` [input property](guide/inputs-outputs#input "Input property") which is bound to the `currentItem` of the parent component.
-    The following two snippets show the parent component and one of the child components.
-    The other child components are identical to `StoutItemComponent`.
+1. In each child component, add an `item` [input property](guide/inputs-outputs#input "Input property") which is bound to the `currentItem` of the parent component.
+   The following two snippets show the parent component and one of the child components.
+   The other child components are identical to `StoutItemComponent`.
 
-    <code-example header="In each child component, here StoutItemComponent" path="built-in-directives/src/app/item-switch.component.ts" region="input"></code-example>
+   <code-example header="In each child component, here StoutItemComponent" path="built-in-directives/src/app/item-switch.component.ts" region="input"></code-example>
 
-    <div class="lightbox">
+   <div class="lightbox">
 
-    <img alt="Animation of NgSwitch" src="generated/images/guide/built-in-directives/ngswitch.gif">
+   <img alt="Animation of NgSwitch" src="generated/images/guide/built-in-directives/ngswitch.gif">
 
-    </div>
+   </div>
 
 Switch directives also work with built-in HTML elements and web components.
 For example, you could replace the `<app-best-item>` switch case with a `<div>` as follows.

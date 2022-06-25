@@ -28,19 +28,19 @@ You can change anything in your application during a single event loop.
 
 Like [template expressions](guide/interpolation), template statements use a language that looks like JavaScript.
 However, the parser for template statements differs from the parser for template expressions.
-In addition, the template statements parser specifically supports both basic assignment \(`=`\) and chaining expressions with semicolons \(`;`\).
+In addition, the template statements parser specifically supports both basic assignment (`=`) and chaining expressions with semicolons (`;`).
 
 The following JavaScript and template expression syntax is not allowed:
 
-*   `new`
-*   Increment and decrement operators, `++` and `--`
-*   Operator assignment, such as `+=` and `-=`
-*   The bitwise operators, such as `|` and `&`
-*   The [pipe operator](guide/pipes)
+* `new`
+* Increment and decrement operators, `++` and `--`
+* Operator assignment, such as `+=` and `-=`
+* The bitwise operators, such as `|` and `&`
+* The [pipe operator](guide/pipes)
 
 ## Statement context
 
-Statements have a context &mdash;a particular part of the application to which the statement belongs.
+Statements have a context —a particular part of the application to which the statement belongs.
 
 Statements can refer only to what's in the statement context, which is typically the component instance.
 For example, `deleteHero()` of `(click)="deleteHero()"` is a method of the component in the following snippet.
@@ -60,9 +60,9 @@ In the preceding `deleteHero(hero)`, the `hero` is the template input variable, 
 
 ## Statement best practices
 
-| Practices               | Details |
-|:---                     |:---     |
-| Conciseness             | Use method calls or basic property assignments to keep template statements minimal.                                                                                                                                                                                                         |
+| Practices | Details |
+| :-------- | :------ |
+| Conciseness | Use method calls or basic property assignments to keep template statements minimal. |
 | Work within the context | The context of a template statement can be the component class instance or the template. Because of this, template statements cannot refer to anything in the global namespace such as `window` or `document`. For example, template statements can't call `console.log()` or `Math.max()`. |
 
 <!-- links -->

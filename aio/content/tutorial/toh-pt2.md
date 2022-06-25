@@ -27,7 +27,7 @@ Open the `HeroesComponent` class file and import the mock `HEROES`.
 
 <code-example header="src/app/heroes/heroes.component.ts (import HEROES)" path="toh-pt2/src/app/heroes/heroes.component.ts" region="import-heroes"></code-example>
 
-In the same file \(`HeroesComponent` class\), define a component property called `heroes` to expose the `HEROES` array for binding.
+In the same file (`HeroesComponent` class), define a component property called `heroes` to expose the `HEROES` array for binding.
 
 <code-example header="src/app/heroes/heroes.component.ts" path="toh-pt2/src/app/heroes/heroes.component.ts" region="component"></code-example>
 
@@ -35,11 +35,11 @@ In the same file \(`HeroesComponent` class\), define a component property called
 
 Open the `HeroesComponent` template file and make the following changes:
 
-1.  Add an `<h2>` at the top.
-1.  Below it add an HTML unordered list \(`<ul>`\) element.
-1.  Insert an `<li>` within the `<ul>`.
-1.  Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
-1.  Sprinkle some CSS classes for styling \(you'll add the CSS styles shortly\).
+1. Add an `<h2>` at the top.
+1. Below it add an HTML unordered list (`<ul>`) element.
+1. Insert an `<li>` within the `<ul>`.
+1. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
+1. Sprinkle some CSS classes for styling (you'll add the CSS styles shortly).
 
 Make it look like this:
 
@@ -55,15 +55,15 @@ It repeats the host element for each element in a list.
 
 The syntax in this example is as follows:
 
-| Syntax   | Details |
-|:---      |:---     |
-| `<li>`   | The host element.                                                                  |
+| Syntax | Details |
+| :----- | :------ |
+| `<li>` | The host element. |
 | `heroes` | Holds the mock heroes list from the `HeroesComponent` class, the mock heroes list. |
-| `hero`   | Holds the current hero object for each iteration through the list.                 |
+| `hero` | Holds the current hero object for each iteration through the list. |
 
 <div class="alert is-important">
 
-Don't forget the asterisk \(`*`\) character in front of `ngFor`.
+Don't forget the asterisk (`*`) character in front of `ngFor`.
 It's a critical part of the syntax.
 
 </div>
@@ -93,7 +93,7 @@ That stylesheet didn't include styles for this list of heroes.
 
 You could add more styles to `styles.css` and keep growing that stylesheet as you add components.
 
-You may prefer instead to define private styles for a specific component and keep everything a component needs &mdash;the code, the HTML, and the CSS&mdash; together in one place.
+You may prefer instead to define private styles for a specific component and keep everything a component needs —the code, the HTML, and the CSS— together in one place.
 
 This approach makes it easier to re-use the component somewhere else and deliver the component's intended appearance even if the global styles are different.
 
@@ -152,7 +152,7 @@ The hero details should only be displayed when a hero is selected. When a compon
 
 <div class="alert is-important">
 
-Don't forget the asterisk \(`*`\) character in front of `ngIf`.
+Don't forget the asterisk (`*`) character in front of `ngIf`.
 It's a critical part of the syntax.
 
 </div>
@@ -197,10 +197,10 @@ Here are the code files discussed on this page, including the `HeroesComponent` 
 
 ## Summary
 
-*   The Tour of Heroes application displays a list of heroes with a detail view
-*   The user can select a hero and see that hero's details
-*   You used `*ngFor` to display a list
-*   You used `*ngIf` to conditionally include or exclude a block of HTML
-*   You can toggle a CSS style class with a `class` binding.
+* The Tour of Heroes application displays a list of heroes with a detail view
+* The user can select a hero and see that hero's details
+* You used `*ngFor` to display a list
+* You used `*ngIf` to conditionally include or exclude a block of HTML
+* You can toggle a CSS style class with a `class` binding.
 
 @reviewed 2022-05-23

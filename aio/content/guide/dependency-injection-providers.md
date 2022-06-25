@@ -51,12 +51,12 @@ Angular expands the `providers` value into a full provider object as follows.
 
 The expanded provider configuration is an object literal with two properties:
 
-*   The `provide` property holds the [token](#token) that serves as the key for both locating a dependency value and configuring the injector.
+* The `provide` property holds the [token](#token) that serves as the key for both locating a dependency value and configuring the injector.
 
-*   The second property is a provider definition object, which tells the injector how to create the dependency value.
-    The provider-definition key can be `useClass`, as in the example.
-    It can also be `useExisting`, `useValue`, or `useFactory`.
-    Each of these keys provides a different type of dependency, as discussed in the following section.
+* The second property is a provider definition object, which tells the injector how to create the dependency value.
+  The provider-definition key can be `useClass`, as in the example.
+  It can also be `useExisting`, `useValue`, or `useFactory`.
+  Each of these keys provides a different type of dependency, as discussed in the following section.
 
 <a id="class-provider"></a>
 
@@ -206,10 +206,10 @@ You inject both `Logger` and `UserService` into the factory provider so the inje
 
 <code-example header="src/app/heroes/hero.service.provider.ts (excerpt)" path="dependency-injection/src/app/heroes/hero.service.provider.ts" region="provider"></code-example>
 
-*   The `useFactory` field specifies that the provider is a factory function whose implementation is `heroServiceFactory`
-*   The `deps` property is an array of [provider tokens](#token).
-    The `Logger` and `UserService` classes serve as tokens for their own class providers.
-    The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
+* The `useFactory` field specifies that the provider is a factory function whose implementation is `heroServiceFactory`
+* The `deps` property is an array of [provider tokens](#token).
+  The `Logger` and `UserService` classes serve as tokens for their own class providers.
+  The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
 
 Capturing the factory provider in the exported variable, `heroServiceProvider`, makes the factory provider reusable.
 

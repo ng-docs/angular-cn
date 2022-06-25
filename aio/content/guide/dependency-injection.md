@@ -82,9 +82,9 @@ In this example, the `getHeroes()` method uses the `Logger` service by logging a
 
 ## What's next
 
-*   [Dependency providers](guide/dependency-injection-providers)
-*   [DI tokens and providers](guide/dependency-injection-providers)
-*   [Dependency Injection in Action](guide/dependency-injection-in-action)
+* [Dependency providers](guide/dependency-injection-providers)
+* [DI tokens and providers](guide/dependency-injection-providers)
+* [Dependency Injection in Action](guide/dependency-injection-in-action)
 
 <!-- links -->
 

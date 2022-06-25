@@ -2,9 +2,9 @@
 
 In this tutorial, you'll add the following data persistence features with help from Angular's `HttpClient`.
 
-*   The `HeroService` gets hero data with HTTP requests
-*   Users can add, edit, and delete heroes and save these changes over HTTP
-*   Users can search for heroes by name
+* The `HeroService` gets hero data with HTTP requests
+* Users can add, edit, and delete heroes and save these changes over HTTP
+* Users can search for heroes by name
 
 <div class="alert is-helpful">
 
@@ -192,7 +192,7 @@ Here is the final version of `getHeroes()` with the `tap()` that logs the operat
 
 Most web APIs support a *get by id* request in the form `:baseURL/:id`.
 
-Here, the *base URL* is the `heroesURL` defined in the [Heroes and HTTP](tutorial/toh-pt6#heroes-and-http) section \(`api/heroes`\) and *id* is the number of the hero that you want to retrieve.
+Here, the *base URL* is the `heroesURL` defined in the [Heroes and HTTP](tutorial/toh-pt6#heroes-and-http) section (`api/heroes`) and *id* is the number of the hero that you want to retrieve.
 For example, `api/heroes/11`.
 
 Update the `HeroService` `getHero()` method with the following to make that request:
@@ -201,9 +201,9 @@ Update the `HeroService` `getHero()` method with the following to make that requ
 
 There are three significant differences from  `getHeroes()`:
 
-*   `getHero()` constructs a request URL with the desired hero's id
-*   The server should respond with a single hero rather than an array of heroes
-*   `getHero()` returns an `Observable<Hero>` \("*an observable of Hero objects*"\) rather than an observable of hero *arrays*
+* `getHero()` constructs a request URL with the desired hero's id
+* The server should respond with a single hero rather than an array of heroes
+* `getHero()` returns an `Observable<Hero>` ("*an observable of Hero objects*") rather than an observable of hero *arrays*
 
 ## Update heroes
 
@@ -230,9 +230,9 @@ Add the following to the `HeroService`.
 
 The `HttpClient.put()` method takes three parameters:
 
-*   The URL
-*   The data to update \(the modified hero in this case\)
-*   Options
+* The URL
+* The data to update (the modified hero in this case)
+* Options
 
 The URL is unchanged.
 The heroes web API knows which hero to update by looking at the hero's `id`.
@@ -261,7 +261,7 @@ Add the following to the `HeroesComponent` class:
 
 <code-example header="src/app/heroes/heroes.component.ts (add)" path="toh-pt6/src/app/heroes/heroes.component.ts" region="add"></code-example>
 
-When the given name is non-blank, the handler creates a `Hero`-like object from the name \(it's only missing the `id`\) and passes it to the services `addHero()` method.
+When the given name is non-blank, the handler creates a `Hero`-like object from the name (it's only missing the `id`) and passes it to the services `addHero()` method.
 
 When `addHero()` saves successfully, the `subscribe()` callback receives the new hero and pushes it into to the `heroes` list for display.
 
@@ -271,8 +271,8 @@ Add the following `addHero()` method to the `HeroService` class.
 
 `addHero()` differs from `updateHero()` in two ways:
 
-*   It calls `HttpClient.post()` instead of `put()`
-*   It expects the server to generate an id for the new hero, which it returns in the `Observable<Hero>` to the caller
+* It calls `HttpClient.post()` instead of `put()`
+* It expects the server to generate an id for the new hero, which it returns in the `Observable<Hero>` to the caller
 
 Refresh the browser and add some heroes.
 
@@ -316,10 +316,10 @@ Next, add a `deleteHero()` method to `HeroService` like this.
 
 Notice the following key points:
 
-*   `deleteHero()` calls `HttpClient.delete()`
-*   The URL is the heroes resource URL plus the `id` of the hero to delete
-*   You don't send data as you did with `put()` and `post()`
-*   You still send the `httpOptions`
+* `deleteHero()` calls `HttpClient.delete()`
+* The URL is the heroes resource URL plus the `id` of the hero to delete
+* You don't send data as you did with `put()` and `post()`
+* You still send the `httpOptions`
 
 Refresh the browser and try the new delete functionality.
 
@@ -381,7 +381,7 @@ The `$` is a convention that indicates `heroes$` is an `Observable`, not an arra
 
 <code-example header="src/app/hero-search/hero-search.component.html" path="toh-pt6/src/app/hero-search/hero-search.component.html" region="async"></code-example>
 
-Since `*ngFor` can't do anything with an `Observable`, use the pipe \(`|`\) character followed by `async`.
+Since `*ngFor` can't do anything with an `Observable`, use the pipe (`|`) character followed by `async`.
 This identifies Angular's `AsyncPipe` and subscribes to an `Observable` automatically so you won't have to do so in the component class.
 
 ### Edit the `HeroSearchComponent` class
@@ -421,7 +421,7 @@ The `searchTerms` becomes an `Observable` emitting a steady stream of search ter
 
 Passing a new search term directly to the `searchHeroes()` after every user keystroke would create an excessive amount of HTTP requests, taxing server resources and burning through data plans.
 
-Instead, the `ngOnInit()` method pipes the `searchTerms` observable through a sequence of RxJS operators that reduce the number of calls to the `searchHeroes()`, ultimately returning an observable of timely hero search results \(each a `Hero[]`\).
+Instead, the `ngOnInit()` method pipes the `searchTerms` observable through a sequence of RxJS operators that reduce the number of calls to the `searchHeroes()`, ultimately returning an observable of timely hero search results (each a `Hero[]`).
 
 Here's a closer look at the code.
 
@@ -429,13 +429,13 @@ Here's a closer look at the code.
 
 Each operator works as follows:
 
-*   `debounceTime(300)` waits until the flow of new string events pauses for 300 milliseconds before passing along the latest string.
-    You'll never make requests more frequently than 300ms.
+* `debounceTime(300)` waits until the flow of new string events pauses for 300 milliseconds before passing along the latest string.
+  You'll never make requests more frequently than 300ms.
 
-*   `distinctUntilChanged()` ensures that a request is sent only if the filter text changed.
+* `distinctUntilChanged()` ensures that a request is sent only if the filter text changed.
 
-*   `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`.
-    It cancels and discards previous search observables, returning only the latest search service observable.
+* `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`.
+  It cancels and discards previous search observables, returning only the latest search service observable.
 
 <div class="alert is-helpful">
 
@@ -472,7 +472,7 @@ If you enter characters that match any existing hero names, you'll see something
 
 ## Final code review
 
-Here are the code files discussed on this page \(all in the `src/app/` folder\).
+Here are the code files discussed on this page (all in the `src/app/` folder).
 
 <a id="heroservice"></a>
 <a id="inmemorydataservice"></a>
@@ -531,12 +531,12 @@ Here are the code files discussed on this page \(all in the `src/app/` folder\).
 
 You're at the end of your journey, and you've accomplished a lot.
 
-*   You added the necessary dependencies to use HTTP in the app
-*   You refactored `HeroService` to load heroes from a web API
-*   You extended `HeroService` to support `post()`, `put()`, and `delete()` methods
-*   You updated the components to allow adding, editing, and deleting of heroes
-*   You configured an in-memory web API
-*   You learned how to use observables
+* You added the necessary dependencies to use HTTP in the app
+* You refactored `HeroService` to load heroes from a web API
+* You extended `HeroService` to support `post()`, `put()`, and `delete()` methods
+* You updated the components to allow adding, editing, and deleting of heroes
+* You configured an in-memory web API
+* You learned how to use observables
 
 This concludes the "Tour of Heroes" tutorial.
 You're ready to learn more about Angular development in the fundamentals section, starting with the [Architecture](guide/architecture "Architecture") guide.

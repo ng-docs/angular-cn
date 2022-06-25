@@ -1,7 +1,7 @@
 # Lazy-loading feature modules
 
 By default, NgModules are eagerly loaded, which means that as soon as the application loads, so do all the NgModules, whether or not they are immediately necessary.
-For large applications with lots of routes, consider lazy loading &mdash;a design pattern that loads NgModules as needed.
+For large applications with lots of routes, consider lazy loading —a design pattern that loads NgModules as needed.
 Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.
 
 <div class="alert is-helpful">
@@ -17,7 +17,7 @@ For the final sample application with two lazy-loaded modules that this page des
 This section introduces the basic procedure for configuring a lazy-loaded route.
 For a step-by-step example, see the [step-by-step setup](#step-by-step) section on this page.
 
-To lazy load Angular modules, use `loadChildren` \(instead of `component`\) in your `AppRoutingModule` `routes` configuration as follows.
+To lazy load Angular modules, use `loadChildren` (instead of `component`) in your `AppRoutingModule` `routes` configuration as follows.
 
 <code-example header="AppRoutingModule (excerpt)">
 
@@ -52,8 +52,8 @@ For step-by-step instructions on lazy loading modules, continue with the followi
 
 There are two main steps to setting up a lazy-loaded feature module:
 
-1.  Create the feature module with the CLI, using the `--route` flag.
-1.  Configure the routes.
+1. Create the feature module with the CLI, using the `--route` flag.
+1. Configure the routes.
 
 ### Set up an app
 
@@ -105,7 +105,7 @@ The import path is the relative path to the module.
 <header>String-based lazy loading</header>
 
 In Angular version 8, the string syntax for the `loadChildren` route specification [was deprecated](guide/deprecations#loadchildren-string-syntax) in favor of the `import()` syntax.
-However, you can opt into using string-based lazy loading \(`loadChildren: './path/to/module#Module'`\) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
+However, you can opt into using string-based lazy loading (`loadChildren: './path/to/module#Module'`) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
 
 By default the CLI generates projects with stricter file inclusions intended to be used with the `import()` syntax.
 
@@ -378,11 +378,11 @@ For more information on Angular Modules, see [NgModules](guide/ngmodules).
 
 You might also be interested in the following:
 
-*   [Routing and Navigation](guide/router)
-*   [Providers](guide/providers)
-*   [Types of Feature Modules](guide/module-types)
-*   [Route-level code-splitting in Angular](https://web.dev/route-level-code-splitting-in-angular)
-*   [Route preloading strategies in Angular](https://web.dev/route-preloading-in-angular)
+* [Routing and Navigation](guide/router)
+* [Providers](guide/providers)
+* [Types of Feature Modules](guide/module-types)
+* [Route-level code-splitting in Angular](https://web.dev/route-level-code-splitting-in-angular)
+* [Route preloading strategies in Angular](https://web.dev/route-preloading-in-angular)
 
 <!-- links -->
 

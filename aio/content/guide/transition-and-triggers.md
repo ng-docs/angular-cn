@@ -2,12 +2,12 @@
 
 You learned the basics of Angular animations in the [introduction](guide/animations) page.
 
-This guide goes into greater depth on special transition states such as `*` \(wildcard\) and `void`, and shows how these special states are used for elements entering and leaving a view.
+This guide goes into greater depth on special transition states such as `*` (wildcard) and `void`, and shows how these special states are used for elements entering and leaving a view.
 This chapter also explores multiple animation triggers, animation callbacks, and sequence-based animation using keyframes.
 
 ## Predefined states and wildcard matching
 
-In Angular, transition states can be defined explicitly through the [`state()`](api/animations/state) function, or using the predefined `*` \(wildcard\) and `void` states.
+In Angular, transition states can be defined explicitly through the [`state()`](api/animations/state) function, or using the predefined `*` (wildcard) and `void` states.
 
 ### Wildcard state
 
@@ -50,7 +50,7 @@ If the button can change from `open` to either `closed` or something like `inPro
 The `* => *` transition applies when any change between two states takes place.
 
 Transitions are matched in the order in which they are defined.
-Thus, you can apply other transitions on top of the `* => *` \(any-to-any\) transition.
+Thus, you can apply other transitions on top of the `* => *` (any-to-any) transition.
 For example, define style changes or animations that would apply just to `open => closed`, or just to `closed => open`, and then use `* => *` as a fallback for state pairings that aren't otherwise called out.
 
 To do this, list the more specific transitions *before* `* => *`.
@@ -71,9 +71,9 @@ See [Animating entering and leaving a view](#enter-leave-view).
 
 Combine wildcard and void states in a transition to trigger animations that enter and leave the page:
 
-*   A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left
-*   A transition of `void => *` applies when the element enters a view, regardless of what state it assumes when entering
-*   The wildcard state `*` matches to *any* state, including `void`
+* A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left
+* A transition of `void => *` applies when the element enters a view, regardless of what state it assumes when entering
+* The wildcard state `*` matches to *any* state, including `void`
 
 ## Animating entering and leaving a view
 
@@ -81,8 +81,8 @@ This section shows how to animate elements entering or leaving a page.
 
 Add a new behavior:
 
-*   When you add a hero to the list of heroes, it appears to fly onto the page from the left
-*   When you remove a hero from the list, it appears to fly out to the right
+* When you add a hero to the list of heroes, it appears to fly onto the page from the left
+* When you remove a hero from the list, it appears to fly out to the right
 
 <code-example header="src/app/hero-list-enter-leave.component.ts" path="animations/src/app/hero-list-enter-leave.component.ts" region="animationdef"></code-example>
 
@@ -113,7 +113,7 @@ The `:enter` transition runs when any `*ngIf` or `*ngFor` views are placed on th
 
 **NOTE**: <br />
 Entering/leaving behaviors can sometime be confusing.
-As a rule of thumb consider that any element being added to the DOM by Angular passes via the `:enter` transition, but only elements being directly removed from the DOM by Angular pass via the `:leave` transition \(For example, an element's view is removed from the DOM because its parent is being removed from the DOM or the app's route has changed, then the element will not pass via the `:leave` transition\).
+As a rule of thumb consider that any element being added to the DOM by Angular passes via the `:enter` transition, but only elements being directly removed from the DOM by Angular pass via the `:leave` transition (For example, an element's view is removed from the DOM because its parent is being removed from the DOM or the app's route has changed, then the element will not pass via the `:leave` transition).
 
 </div>
 
@@ -152,7 +152,7 @@ If a trigger contains a boolean value as a binding value, then this value can be
 In the code snippet above, the HTML template binds a `<div>` element to a trigger named `openClose` with a status expression of `isOpen`, and with possible values of `true` and `false`.
 This pattern is an alternative to the practice of creating two named states like `open` and `close`.
 
-In the component code, inside the `@Component` metadata under the `animations:` property, when the state evaluates to `true` \(meaning "open" here\), the associated HTML element's height is a wildcard style or default.
+In the component code, inside the `@Component` metadata under the `animations:` property, when the state evaluates to `true` (meaning "open" here), the associated HTML element's height is a wildcard style or default.
 In this case, the animation uses whatever height the element already had before the animation started.
 When the element is "closed", the element gets animated to a height of 0, which makes it invisible.
 
@@ -187,10 +187,10 @@ You can't selectively disable multiple animations on a single element.
 
 However, selective child animations can still be run on a disabled parent in one of the following ways:
 
-*   A parent animation can use the [`query()`](api/animations/query) function to collect inner elements located in disabled areas of the HTML template.
-    Those elements can still animate.
+* A parent animation can use the [`query()`](api/animations/query) function to collect inner elements located in disabled areas of the HTML template.
+  Those elements can still animate.
 
-*   A child animation can be queried by a parent and then later animated with the `animateChild()` function
+* A child animation can be queried by a parent and then later animated with the `animateChild()` function
 
 #### Disabling all animations
 
@@ -201,7 +201,7 @@ To disable all animations for an Angular app, place the `@.disabled` host bindin
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-Disabling animations application-wide is useful during end-to-end \(E2E\) testing.
+Disabling animations application-wide is useful during end-to-end (E2E) testing.
 
 </div>
 
@@ -280,8 +280,8 @@ Use keyframes to create a pulse effect in your animations by defining styles at 
 
 Here's an example of using keyframes to create a pulse effect:
 
-*   The original `open` and `closed` states, with the original changes in height, color, and opacity, occurring over a timeframe of 1 second
-*   A keyframes sequence inserted in the middle that causes the button to appear to pulsate irregularly over the course of that same 1 second timeframe
+* The original `open` and `closed` states, with the original changes in height, color, and opacity, occurring over a timeframe of 1 second
+* A keyframes sequence inserted in the middle that causes the button to appear to pulsate irregularly over the course of that same 1 second timeframe
 
 <div class="lightbox">
 
@@ -301,22 +301,22 @@ The W3C maintains a list of animatable properties on its [CSS Transitions](https
 
 For properties with a numeric value, define a unit by providing the value as a string, in quotes, with the appropriate suffix:
 
-*   50 pixels:
-    `'50px'`
+* 50 pixels:
+  `'50px'`
 
-*   Relative font size:
-    `'3em'`
+* Relative font size:
+  `'3em'`
 
-*   Percentage:
-    `'100%'`
+* Percentage:
+  `'100%'`
 
-You can also provide the value as a number \(thus not providing a unit\), in such cases Angular assumes a default unit of pixels, or `px`.
+You can also provide the value as a number (thus not providing a unit), in such cases Angular assumes a default unit of pixels, or `px`.
 Expressing 50 pixels as `50` is the same as saying `'50px'`.
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-The string `"50"` would instead be considered invalid\).
+The string `"50"` would instead be considered invalid).
 
 </div>
 
@@ -341,10 +341,10 @@ The `keyframes()` function in Angular allows you to specify multiple interim sty
 
 You might also be interested in the following:
 
-*   [Introduction to Angular animations](guide/animations)
-*   [Complex animation sequences](guide/complex-animation-sequences)
-*   [Reusable animations](guide/reusable-animations)
-*   [Route transition animations](guide/route-animations)
+* [Introduction to Angular animations](guide/animations)
+* [Complex animation sequences](guide/complex-animation-sequences)
+* [Reusable animations](guide/reusable-animations)
+* [Route transition animations](guide/route-animations)
 
 <!-- links -->
 

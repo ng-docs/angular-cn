@@ -43,12 +43,12 @@ The example above shows a single line of HTML, but that HTML belongs to a larger
 
 When the user clicks the button, Angular calls the `onClickMe` method from `ClickMeComponent`.
 
-## Get user input from the &dollar;event object
+## Get user input from the $event object
 
 DOM events carry a payload of information that may be useful to the component.
 This section shows how to bind to the `keyup` event of an input box to get the user's input after each keystroke.
 
-The following code listens to the `keyup` event and passes the entire event payload \(`$event`\) to the component event handler.
+The following code listens to the `keyup` event and passes the entire event payload (`$event`) to the component event handler.
 
 <code-example header="src/app/keyup.components.ts (template v.1)" path="user-input/src/app/keyup.components.ts" region="key-up-component-1-template"></code-example>
 
@@ -62,7 +62,7 @@ For example, a mouse event includes different information than an input box edit
 All [standard DOM event objects](https://developer.mozilla.org/docs/Web/API/Event) have a `target` property, a reference to the element that raised the event.
 In this case, `target` refers to the [`<input>` element](https://developer.mozilla.org/docs/Web/API/HTMLInputElement) and `event.target.value` returns the current contents of that element.
 
-After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character \(`|`\).
+After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character (`|`).
 The [interpolation](guide/interpolation) displays the accumulating input box changes from the `values` property.
 
 Suppose the user enters the letters "abc", and then backspaces to remove them one by one.
@@ -113,7 +113,7 @@ The `OnKey` method more clearly expresses what it expects from the template and 
 Typing the event object reveals a significant objection to passing the entire DOM event into the method:
 The component has too much awareness of the template details.
 It can't extract information without knowing more than it should about the HTML implementation.
-That breaks the separation of concerns between the template \(*what the user sees*\) and the component \(*how the application processes user data*\).
+That breaks the separation of concerns between the template (*what the user sees*) and the component (*how the application processes user data*).
 
 The next section shows how to use template reference variables to address this problem.
 
@@ -122,7 +122,7 @@ The next section shows how to use template reference variables to address this p
 There's another way to get the user data:
 Use Angular [**template reference variables**](guide/template-reference-variables).
 These variables provide direct access to an element from within the template.
-To declare a template reference variable, precede an identifier with a hash \(or pound\) character \(`#`\).
+To declare a template reference variable, precede an identifier with a hash (or pound) character (`#`).
 
 The following example uses a template reference variable to implement a keystroke loopback in a simple template.
 
@@ -146,7 +146,7 @@ Type something in the input box, and watch the display update with each keystrok
 
 <header>This won't work at all unless you bind to an event.</header>
 
-Angular updates the bindings \(and therefore the screen\) only if the app does something in response to asynchronous events, such as keystrokes.
+Angular updates the bindings (and therefore the screen) only if the app does something in response to asynchronous events, such as keystrokes.
 This example code binds the `keyup` event to the number 0, the shortest template statement possible.
 While the statement does nothing useful, it satisfies Angular's requirement so that Angular will update the screen.
 
@@ -210,11 +210,11 @@ Below is the "Little Tour of Heroes" component.
 
 ### Observations
 
-| Observations                                | Details |
-|:---                                         |:---     |
-| Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element.                                                     |
-| Pass values, not elements                   | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`.                                                                        |
-| Keep template statements simple             | The `(blur)` event is bound to two JavaScript statements. The first statement calls `addHero`. The second statement, `newHero.value=''`, clears the input box after a new hero is added to the list. |
+| Observations | Details |
+| :----------- | :------ |
+| Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element. |
+| Pass values, not elements | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`. |
+| Keep template statements simple | The `(blur)` event is bound to two JavaScript statements. The first statement calls `addHero`. The second statement, `newHero.value=''`, clears the input box after a new hero is added to the list. |
 
 ## Source code
 
@@ -230,23 +230,24 @@ Following is all the code discussed in this page.
 Angular also supports passive event listeners.
 For example, you can use the following steps to make the scroll event passive.
 
-1.  Create a file `zone-flags.ts` under `src` directory.
-1.  Add the following line into this file.
+1. Create a file `zone-flags.ts` under `src` directory.
 
-    <code-example format="typescript" language="typescript">
+1. Add the following line into this file.
 
-    (window as any)['__zone_symbol__PASSIVE_EVENTS'] = ['scroll'];
+   <code-example format="typescript" language="typescript">
 
-    </code-example>
+   (window as any)['__zone_symbol__PASSIVE_EVENTS'] = ['scroll'];
 
-1.  In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
+   </code-example>
 
-    <code-example format="typescript" language="typescript">
+1. In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
 
-    import './zone-flags';
-    import 'zone.js';  // Included with Angular CLI.
+   <code-example format="typescript" language="typescript">
 
-    </code-example>
+   import './zone-flags';
+   import 'zone.js';  // Included with Angular CLI.
+
+   </code-example>
 
 After those steps, if you add event listeners for the `scroll` event, the listeners will be `passive`.
 

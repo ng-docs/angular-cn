@@ -30,17 +30,20 @@ You can also review any topic that you like.
 
 **To review a topic:**
 
-1.  Navigate to the topic that you want to review.
-1.  Locate the last reviewed date at the bottom of the topic and verify that the topic meets the [review criteria](#review-criteria).
+1. Navigate to the topic that you want to review.
 
-    If the topic does not have a last reviewed date, you are welcome to add it to the topic.
-    To add a date, use the `YYYY-MM-DD` date format.
-    Example:
-    `@reviewed 2021-03-23`
+1. Locate the last reviewed date at the bottom of the topic and verify that the topic meets the [review criteria](#review-criteria).
 
-1.  Read through the topic.
-1.  If the topic requires an update, either [file an issue](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue) that describes the update required, or [create a pull request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr) with the update.
-1.  Update the `@reviewed` tag, either through the [GitHub user interface](guide/updating-content-github-ui) or through Angular's [standard pull request process](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr).
+   If the topic does not have a last reviewed date, you are welcome to add it to the topic.
+   To add a date, use the `YYYY-MM-DD` date format.
+   Example:
+   `@reviewed 2021-03-23`
+
+1. Read through the topic.
+
+1. If the topic requires an update, either [file an issue](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue) that describes the update required, or [create a pull request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr) with the update.
+
+1. Update the `@reviewed` tag, either through the [GitHub user interface](guide/updating-content-github-ui) or through Angular's [standard pull request process](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr).
 
 <a id="review-criteria"></a>
 

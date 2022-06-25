@@ -34,9 +34,9 @@ You might decide only to test that the `clicked()` method toggles the light's *o
 This component class has no dependencies.
 To test these types of classes, follow the same steps as you would for a service that has no dependencies:
 
-1.  Create a component using the new keyword.
-1.  Poke at its API.
-1.  Assert expectations on its public state.
+1. Create a component using the new keyword.
+1. Poke at its API.
+1. Assert expectations on its public state.
 
 <code-example header="app/demo/demo.spec.ts (Lightswitch tests)" path="testing/src/app/demo/demo.spec.ts" region="Lightswitch"></code-example>
 
@@ -79,11 +79,11 @@ They cannot tell you if the component is going to render properly, respond to us
 
 None of the preceding *class-only* tests can answer key questions about how the components actually behave on screen.
 
-*   Is `Lightswitch.clicked()` bound to anything such that the user can invoke it?
-*   Is the `Lightswitch.message` displayed?
-*   Can the user actually select the hero displayed by `DashboardHeroComponent`?
-*   Is the hero name displayed as expected \(such as uppercase\)?
-*   Is the welcome message displayed by the template of `WelcomeComponent`?
+* Is `Lightswitch.clicked()` bound to anything such that the user can invoke it?
+* Is the `Lightswitch.message` displayed?
+* Can the user actually select the hero displayed by `DashboardHeroComponent`?
+* Is the hero name displayed as expected (such as uppercase)?
+* Is the welcome message displayed by the template of `WelcomeComponent`?
 
 These might not be troubling questions for the preceding simple components illustrated.
 But many components have complex interactions with the DOM elements described in their templates, causing HTML to appear and disappear as the component state changes.
@@ -96,7 +96,7 @@ To write these kinds of test, you'll use additional features of the `TestBed` as
 
 The CLI creates an initial test file for you by default when you ask it to generate a new component.
 
-For example, the following CLI command generates a `BannerComponent` in the `app/banner` folder \(with inline template and styles\):
+For example, the following CLI command generates a `BannerComponent` in the `app/banner` folder (with inline template and styles):
 
 <code-example format="shell" language="shell">
 
@@ -258,9 +258,9 @@ The following example re-implements the previous test with `DebugElement.query()
 
 Some noteworthy observations:
 
-*   The `By.css()` static method selects `DebugElement` nodes with a [standard CSS selector](https://developer.mozilla.org/docs/Web/Guide/CSS/Getting_started/Selectors 'CSS selectors').
-*   The query returns a `DebugElement` for the paragraph.
-*   You must unwrap that result to get the paragraph element.
+* The `By.css()` static method selects `DebugElement` nodes with a [standard CSS selector](https://developer.mozilla.org/docs/Web/Guide/CSS/Getting_started/Selectors "CSS selectors").
+* The query returns a `DebugElement` for the paragraph.
+* You must unwrap that result to get the paragraph element.
 
 When you're filtering by CSS selector and only testing properties of a browser's *native element*, the `By.css` approach might be overkill.
 

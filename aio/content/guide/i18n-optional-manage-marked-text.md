@@ -2,8 +2,8 @@
 
 The Angular extractor generates a file with a translation unit entry each of the following instances.
 
-*   Each `i18n` attribute in a component template
-*   Each [`$localize`][AioApiLocalizeInitLocalize] tagged message string in component code
+* Each `i18n` attribute in a component template
+* Each [`$localize`][AioApiLocalizeInitLocalize] tagged message string in component code
 
 As described in [How meanings control text extraction and merges][AioGuideI18nCommonPrepareHowMeaningsControlTextExtractionAndMerges], Angular assigns each translation unit a unique ID.
 
@@ -89,7 +89,7 @@ The following displays the translation in French.
 
 <code-example header="src/locale/messages.fr.xlf" path="i18n/doc-files/messages.fr.xlf.html" region="i18n-duplicate-custom-id"></code-example>
 
-Both elements now use the same translation \(`Bonjour`\), because both were defined with the same custom ID.
+Both elements now use the same translation (`Bonjour`), because both were defined with the same custom ID.
 
 <code-example path="i18n/doc-files/rendered-output.html"></code-example>
 

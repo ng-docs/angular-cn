@@ -6,15 +6,15 @@
 *Localization* is the process of building versions of your project for different locales.
 The localization process includes the following actions.
 
-*   Extract text for translation into different languages
-*   Format data for a specific locale
+* Extract text for translation into different languages
+* Format data for a specific locale
 
 A *locale* identifies a region in which people speak a particular language or language variant.
 Possible regions includes countries and geographical regions.
 A locale determines the formatting and parsing of the following details.
 
-*   Measurement units including date and time, numbers, and currencies
-*   Translated names including time zones, languages, and countries
+* Measurement units including date and time, numbers, and currencies
+* Translated names including time zones, languages, and countries
 
 ## Learn about Angular internationalization
 

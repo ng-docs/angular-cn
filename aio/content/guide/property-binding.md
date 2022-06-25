@@ -84,7 +84,6 @@ To set the model property of a custom component for parent and child components 
 
 <code-example path="property-binding/src/app/app.component.html" region="model-property-binding" header="src/app/app.component.html"></code-example>
 
-
 ## Toggling button functionality
 
 To disable a button's functionality depending on a Boolean value, bind the DOM `disabled` property to a property in the class that is `true` or `false`.

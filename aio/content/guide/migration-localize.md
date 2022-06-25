@@ -31,14 +31,14 @@ The symbol is loaded by importing the `@angular/localize/init` module, which has
 
 ## Why is this migration necessary?
 
-Prior to Angular version 9, Angular's internationalization \(i18n\) system inlined translated messages into the compiled output as part of this template compilation.
+Prior to Angular version 9, Angular's internationalization (i18n) system inlined translated messages into the compiled output as part of this template compilation.
 This approach required running the template compiler once per target locale, often leading to slow production build times.
 
 In the new i18n system, the Angular compiler tags i18n messages in the compiled code with a global `$localize` handler.
 The inlining of translations then occurs as a post-compilation step for each locale.
 Because the application does not need to be built again for each locale, this makes the process much faster.
 
-The post-compilation inlining step is optional &mdash;for example during development or if the translations will be inlined at runtime.
+The post-compilation inlining step is optional —for example during development or if the translations will be inlined at runtime.
 Therefore this global `$localize` must be available on the global scope at runtime.
 To make `$localize` available on the global scope, each application must now import the `@angular/localize/init` module.
 This has the side-effect of attaching a minimal implementation of `&dollar;localize` to the global scope.
@@ -58,7 +58,7 @@ This schematic automatically adds the `@angular/localize/init` import for you if
 
 ## Why is my tslint failing?
 
-The import of `@angular/localize/init` may cause a tslint error for `no-import-side-effect` because it adds to the global context \(that is, a side effect\).
+The import of `@angular/localize/init` may cause a tslint error for `no-import-side-effect` because it adds to the global context (that is, a side effect).
 To fix this error, add the following to your `tslint.config`:
 
 <code-example format="json" language="json">

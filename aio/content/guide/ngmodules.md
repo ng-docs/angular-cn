@@ -26,10 +26,10 @@ Modules can be loaded eagerly when the application starts or lazy loaded asynchr
 
 NgModule metadata does the following:
 
-*   Declares which components, directives, and pipes belong to the module
-*   Makes some of those components, directives, and pipes public so that other module's component templates can use them
-*   Imports other modules with the components, directives, and pipes that components in the current module need
-*   Provides services that other application components can use
+* Declares which components, directives, and pipes belong to the module
+* Makes some of those components, directives, and pipes public so that other module's component templates can use them
+* Imports other modules with the components, directives, and pipes that components in the current module need
+* Provides services that other application components can use
 
 Every Angular application has at least one module, the root module.
 You [bootstrap](guide/bootstrapping) that module to launch the application.
@@ -49,17 +49,17 @@ The [Angular CLI](cli) generates the following basic `AppModule` when creating a
 </code-example>
 
 At the top are the import statements.
-The next section is where you configure the `@NgModule` by stating what components and directives belong to it \(`declarations`\) as well as which other modules it uses \(`imports`\).
+The next section is where you configure the `@NgModule` by stating what components and directives belong to it (`declarations`) as well as which other modules it uses (`imports`).
 For more information on the structure of an `@NgModule`, be sure to read [Bootstrapping](guide/bootstrapping).
 
 ## More on NgModules
 
 You may also be interested in the following:
 
-*   [Feature Modules](guide/feature-modules)
-*   [Entry Components](guide/entry-components)
-*   [Providers](guide/providers)
-*   [Types of NgModules](guide/module-types)
+* [Feature Modules](guide/feature-modules)
+* [Entry Components](guide/entry-components)
+* [Providers](guide/providers)
+* [Types of NgModules](guide/module-types)
 
 <!-- links -->
 

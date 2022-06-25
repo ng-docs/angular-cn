@@ -11,7 +11,6 @@ Examples of binding include:
 
 Bindings always have two parts: a _target_ which will receive the bound value, and a _template expression_ which produces a value from the model.
 
-
 ## Syntax
 
 Template expressions are similar to JavaScript expressions.
@@ -32,7 +31,7 @@ Other notable differences from JavaScript syntax include:
 
 ## Expression context
 
-Interpolated expressions have a context&mdash;a particular part of the application to which the expression belongs.  Typically, this context is the component instance.
+Interpolated expressions have a context—a particular part of the application to which the expression belongs.  Typically, this context is the component instance.
 
 In the following snippet, the expression `recommended` and the expression `itemImageUrl2` refer to properties of the `AppComponent`.
 
@@ -56,7 +55,7 @@ Template expressions cannot refer to anything in the global namespace, except `u
 
 ### Preventing name collisions
 
-The context against which an expression evaluates is the union of the template variables, the directive's context object&mdash;if it has one&mdash;and the component's members.
+The context against which an expression evaluates is the union of the template variables, the directive's context object—if it has one—and the component's members.
 If you reference a name that belongs to more than one of these namespaces, Angular applies the following precedence logic to determine the context:
 
 1. The template variable name.
@@ -102,7 +101,7 @@ Dependent values should not change during a single turn of the event loop.  If a
 
 </div>
 
- ## What's next
+## What's next
 
 * [Property binding](guide/property-binding)
 * [Event binding](guide/event-binding)

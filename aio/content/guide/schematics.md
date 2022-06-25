@@ -17,7 +17,7 @@ You can modify these schematics, and define new ones to do things like update yo
 Schematics that are included in the `@schematics/angular` collection are run by default by the commands `ng generate` and `ng add`.
 The package contains named schematics that configure the options that are available to the CLI for `ng generate` sub-commands, such as `ng generate component` and `ng generate service`.
 The subcommands for `ng generate` are shorthand for the corresponding schematic.
-To specify a particular schematic \(or collection of schematics\) to generate, using the long form:
+To specify a particular schematic (or collection of schematics) to generate, using the long form:
 
 <code-example format="shell" language="shell">
 
@@ -46,14 +46,14 @@ The schema describes the options available to the CLI for each of the `ng genera
 
 As a library developer, you can create your own collections of custom schematics to integrate your library with the Angular CLI.
 
-*   An *add schematic* lets developers install your library in an Angular workspace using `ng add`
-*   *Generation schematics* can tell the `ng generate` subcommands how to modify projects, add configurations and scripts, and scaffold artifacts that are defined in your library
-*   An *update schematic* can tell the `ng update` command how to update your library's dependencies and adjust for breaking changes when you release a new version
+* An *add schematic* lets developers install your library in an Angular workspace using `ng add`
+* *Generation schematics* can tell the `ng generate` subcommands how to modify projects, add configurations and scripts, and scaffold artifacts that are defined in your library
+* An *update schematic* can tell the `ng update` command how to update your library's dependencies and adjust for breaking changes when you release a new version
 
 For more details of what these look like and how to create them, see:
 
-*   [Authoring Schematics](guide/schematics-authoring)
-*   [Schematics for Libraries](guide/schematics-for-libraries)
+* [Authoring Schematics](guide/schematics-authoring)
+* [Schematics for Libraries](guide/schematics-for-libraries)
 
 ### Add schematics
 
@@ -66,13 +66,13 @@ Look at this one as an example and model for your own add schematic.
 Partner and third party libraries also support the Angular CLI with add schematics.
 For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://vmware.github.io/clarity/documentation/v1.0/get-started).
 
-An add schematic can also update a project with configuration changes, add additional dependencies \(such as polyfills\), or scaffold package-specific initialization code.
+An add schematic can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
 For example, the `@angular/pwa` schematic turns your application into a PWA by adding an application manifest and service worker.
 
 ### Generation schematics
 
 Generation schematics are instructions for the `ng generate` command.
-The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic \(in place of a sub-command\) to generate an artifact defined in your library.
+The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic (in place of a sub-command) to generate an artifact defined in your library.
 
 Angular Material, for example, supplies generation schematics for the UI components that it defines.
 The following command uses one of these schematics to render an Angular Material `<mat-table>` that is pre-configured with a datasource for sorting and pagination.
@@ -106,11 +106,11 @@ ng update
 
 </code-example>
 
-If you pass the command a set of libraries to update \(or the `--all` flag\), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
+If you pass the command a set of libraries to update (or the `--all` flag), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
 
 <div class="alert is-helpful">
 
-If there are inconsistencies \(for example, if peer dependencies cannot be matched by a simple [semver](https://semver.io) range\), the command generates an error and does not change anything in the workspace.
+If there are inconsistencies (for example, if peer dependencies cannot be matched by a simple [semver](https://semver.io) range), the command generates an error and does not change anything in the workspace.
 
 We recommend that you do not force an update of all dependencies by default.
 Try updating specific dependencies first.

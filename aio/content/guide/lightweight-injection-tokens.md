@@ -60,28 +60,28 @@ This is because `LibCardComponent` actually contains two references to the `LibH
 
 </code-example>
 
-*   One of these reference is in the *type position*-- that is, it specifies `LibHeaderComponent` as a type: `header: LibHeaderComponent;`.
+* One of these reference is in the *type position*-- that is, it specifies `LibHeaderComponent` as a type: `header: LibHeaderComponent;`.
 
-*   The other reference is in the *value position*-- that is, LibHeaderComponent is the value of the `@ContentChild()` parameter decorator: `@ContentChild(LibHeaderComponent)`.
+* The other reference is in the *value position*-- that is, LibHeaderComponent is the value of the `@ContentChild()` parameter decorator: `@ContentChild(LibHeaderComponent)`.
 
 The compiler handles token references in these positions differently.
 
-*   The compiler erases *type position* references after conversion from TypeScript, so they have no impact on tree-shaking.
+* The compiler erases *type position* references after conversion from TypeScript, so they have no impact on tree-shaking.
 
-*   The compiler must retain *value position* references at runtime, which prevents the component from being tree-shaken.
+* The compiler must retain *value position* references at runtime, which prevents the component from being tree-shaken.
 
 In the example, the compiler retains the `LibHeaderComponent` token that occurs in the value position, which prevents the referenced component from being tree-shaken, even if the application developer does not actually use `<lib-header>` anywhere.
-If `LibHeaderComponent` is large \(code, template, and styles\), including it unnecessarily can significantly increase the size of the client application.
+If `LibHeaderComponent` is large (code, template, and styles), including it unnecessarily can significantly increase the size of the client application.
 
 ## When to use the lightweight injection token pattern
 
 The tree-shaking problem arises when a component is used as an injection token.
 There are two cases when that can happen.
 
-*   The token is used in the value position of a [content query](guide/lifecycle-hooks#using-aftercontent-hooks "See more about using content queries.").
-*   The token is used as a type specifier for constructor injection.
+* The token is used in the value position of a [content query](guide/lifecycle-hooks#using-aftercontent-hooks "See more about using content queries.").
+* The token is used as a type specifier for constructor injection.
 
-In the following example, both uses of the `OtherComponent` token cause retention of `OtherComponent` \(that is, prevent it from being tree-shaken when it is not used\).
+In the following example, both uses of the `OtherComponent` token cause retention of `OtherComponent` (that is, prevent it from being tree-shaken when it is not used).
 
 <code-example format="typescript" language="typescript">
 
@@ -107,7 +107,7 @@ For all services, a library should use [tree-shakable providers](guide/architect
 ## Using lightweight injection tokens
 
 The lightweight injection token design pattern consists of using a small abstract class as an injection token, and providing the actual implementation at a later stage.
-The abstract class is retained \(not tree-shaken\), but it is small and has no material impact on the application size.
+The abstract class is retained (not tree-shaken), but it is small and has no material impact on the application size.
 
 The following example shows how this works for the `LibHeaderComponent`.
 
@@ -144,17 +144,17 @@ You can safely use that token as the provider in the component definition, allow
 
 To summarize, the lightweight injection token pattern consists of the following.
 
-1.  A lightweight injection token that is represented as an abstract class.
-1.  A component definition that implements the abstract class.
-1.  Injection of the lightweight pattern, using ` @ContentChild()` or `@ContentChildren()`.
-1.  A provider in the implementation of the lightweight injection token which associates the lightweight injection token with the implementation.
+1. A lightweight injection token that is represented as an abstract class.
+1. A component definition that implements the abstract class.
+1. Injection of the lightweight pattern, using `@ContentChild()` or `@ContentChildren()`.
+1. A provider in the implementation of the lightweight injection token which associates the lightweight injection token with the implementation.
 
 ### Use the lightweight injection token for API definition
 
 A component that injects a lightweight injection token might need to invoke a method in the injected class.
 Because the token is now an abstract class, and the injectable component implements that class, you must also declare an abstract method in the abstract lightweight injection token class.
-The implementation of the method \(with all of its code overhead\) resides in the injectable component that can be tree-shaken.
-This lets the parent communicate with the child \(if it is present\) in a type-safe manner.
+The implementation of the method (with all of its code overhead) resides in the injectable component that can be tree-shaken.
+This lets the parent communicate with the child (if it is present) in a type-safe manner.
 
 For example, the `LibCardComponent` now queries `LibHeaderToken` rather than `LibHeaderComponent`.
 The following example shows how the pattern lets `LibCardComponent` communicate with the `LibHeaderComponent` without actually referring to `LibHeaderComponent`.

@@ -14,13 +14,13 @@ npm install -g &commat;angular/cli<aio-angular-dist-tag class="pln"></aio-angula
 
 </code-example>
 
-For details about changes between versions, and information about updating from previous releases, see the Releases tab on GitHub: https://github.com/angular/angular-cli/releases
+For details about changes between versions, and information about updating from previous releases, see the Releases tab on GitHub: <https://github.com/angular/angular-cli/releases>
 
 ## Basic workflow
 
 Invoke the tool on the command line through the `ng` executable.
 Online help is available on the command line.
-Enter the following to list commands or options for a given command \(such as [generate](cli/generate)\) with a short description.
+Enter the following to list commands or options for a given command (such as [generate](cli/generate)) with a short description.
 
 <code-example format="shell" language="shell">
 
@@ -39,7 +39,7 @@ ng serve
 
 </code-example>
 
-In your browser, open http://localhost:4200/ to see the new application run.
+In your browser, open <http://localhost:4200/> to see the new application run.
 When you use the [ng serve](cli/serve) command to build an application and serve it locally, the server automatically rebuilds the application and reloads the page when you change any of the source files.
 
 <div class="alert is-helpful">
@@ -65,7 +65,7 @@ You can edit the generated files directly, or add to and modify them using CLI c
 Use the [ng generate](cli/generate) command to add new files for additional components and services, and code for new pipes, directives, and so on.
 Commands such as [add](cli/add) and [generate](cli/generate), which create or operate on applications and libraries, must be executed from within a workspace or project folder.
 
-*   See more about the [Workspace file structure](guide/file-structure).
+* See more about the [Workspace file structure](guide/file-structure).
 
 ### Workspace and project configuration
 
@@ -81,7 +81,7 @@ Option names in the configuration file must use [camelCase](guide/glossary#case-
 
 </div>
 
-*   See more about [Workspace Configuration](guide/workspace-config).
+* See more about [Workspace Configuration](guide/workspace-config).
 
 ## CLI command-language syntax
 
@@ -89,24 +89,24 @@ Command syntax is shown as follows:
 
 `ng` *commandNameOrAlias* *requiredArg* [*optionalArg*] `[options]`
 
-*   Most commands, and some options, have aliases.
-    Aliases are shown in the syntax statement for each command.
+* Most commands, and some options, have aliases.
+  Aliases are shown in the syntax statement for each command.
 
-*   Option names are prefixed with a double dash \(`--`\) characters.
-    Option aliases are prefixed with a single dash \(`-`\) character.
-    Arguments are not prefixed.
-    For example:
+* Option names are prefixed with a double dash (`--`) characters.
+  Option aliases are prefixed with a single dash (`-`) character.
+  Arguments are not prefixed.
+  For example:
 
-    <code-example format="shell" language="shell">
+  <code-example format="shell" language="shell">
 
-    ng build my-app -c production
+  ng build my-app -c production
 
-    </code-example>
+  </code-example>
 
-*   Typically, the name of a generated artifact can be given as an argument to the command or specified with the `--name` option.
+* Typically, the name of a generated artifact can be given as an argument to the command or specified with the `--name` option.
 
-*   Argument and option names can be given in either [camelCase or dash-case](guide/glossary#case-types).
-    `--myOptionName` is equivalent to `--my-option-name`.
+* Argument and option names can be given in either [camelCase or dash-case](guide/glossary#case-types).
+  `--myOptionName` is equivalent to `--my-option-name`.
 
 ### Boolean options
 

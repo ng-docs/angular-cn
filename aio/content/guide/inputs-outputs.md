@@ -57,14 +57,15 @@ Next, in the child component template, add the following:
 The next step is to bind the property in the parent component's template.
 In this example, the parent component template is `app.component.html`.
 
-1.  Use the child's selector, here `<app-item-detail>`, as a directive within the parent component template.
-1.  Use [property binding](guide/property-binding) to bind the `item` property in the child to the `currentItem` property of the parent.
+1. Use the child's selector, here `<app-item-detail>`, as a directive within the parent component template.
 
-    <code-example header="src/app/app.component.html" path="inputs-outputs/src/app/app.component.html" region="input-parent"></code-example>
+1. Use [property binding](guide/property-binding) to bind the `item` property in the child to the `currentItem` property of the parent.
 
-1.  In the parent component class, designate a value for `currentItem`:
+   <code-example header="src/app/app.component.html" path="inputs-outputs/src/app/app.component.html" region="input-parent"></code-example>
 
-    <code-example header="src/app/app.component.ts" path="inputs-outputs/src/app/app.component.ts" region="parent-property"></code-example>
+1. In the parent component class, designate a value for `currentItem`:
+
+   <code-example header="src/app/app.component.ts" path="inputs-outputs/src/app/app.component.ts" region="parent-property"></code-example>
 
 With `@Input()`, Angular passes the value for `currentItem` to the child so that `item` renders as `Television`.
 
@@ -110,35 +111,35 @@ To use `@Output()`, you must configure the parent and child.
 The following example features an `<input>` where a user can enter a value and click a `<button>` that raises an event.
 The `EventEmitter` then relays the data to the parent component.
 
-1.  Import `Output` and `EventEmitter` in the child component class:
+1. Import `Output` and `EventEmitter` in the child component class:
 
-    <code-example format="javascript" language="javascript">
+   <code-example format="javascript" language="javascript">
 
-    import { Output, EventEmitter } from '&commat;angular/core';
+   import { Output, EventEmitter } from '&commat;angular/core';
 
-    </code-example>
+   </code-example>
 
-1.  In the component class, decorate a property with `@Output()`.
-    The following example `newItemEvent` `@Output()` has a type of `EventEmitter`, which means it's an event.
+1. In the component class, decorate a property with `@Output()`.
+   The following example `newItemEvent` `@Output()` has a type of `EventEmitter`, which means it's an event.
 
-    <code-example header="src/app/item-output/item-output.component.ts" path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output"></code-example>
+   <code-example header="src/app/item-output/item-output.component.ts" path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output"></code-example>
 
-    The different parts of the preceding declaration are as follows:
+   The different parts of the preceding declaration are as follows:
 
-    | Declaration parts            | Details |
-    |:---                          |:---     |
-    | `@Output()`                  | A decorator function marking the property as a way for data to go from the child to the parent. |
-    | `newItemEvent`               | The name of the `@Output()`.                                                                    |
-    | `EventEmitter<string>`       | The `@Output()`'s type.                                                                         |
-    | `new EventEmitter<string>()` | Tells Angular to create a new event emitter and that the data it emits is of type string.       |
+   | Declaration parts | Details |
+   | :---------------- | :------ |
+   | `@Output()` | A decorator function marking the property as a way for data to go from the child to the parent. |
+   | `newItemEvent` | The name of the `@Output()`. |
+   | `EventEmitter<string>` | The `@Output()`'s type. |
+   | `new EventEmitter<string>()` | Tells Angular to create a new event emitter and that the data it emits is of type string. |
 
-    For more information on `EventEmitter`, see the [EventEmitter API documentation](api/core/EventEmitter).
+   For more information on `EventEmitter`, see the [EventEmitter API documentation](api/core/EventEmitter).
 
-1.  Create an `addNewItem()` method in the same component class:
+1. Create an `addNewItem()` method in the same component class:
 
-    <code-example header="src/app/item-output/item-output.component.ts" path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output-class"></code-example>
+   <code-example header="src/app/item-output/item-output.component.ts" path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output-class"></code-example>
 
-    The `addNewItem()` function uses the `@Output()`, `newItemEvent`, to raise an event with the value the user types into the `<input>`.
+   The `addNewItem()` function uses the `@Output()`, `newItemEvent`, to raise an event with the value the user types into the `<input>`.
 
 ### Configuring the child's template
 
@@ -163,27 +164,27 @@ The `addItem()` method takes an argument in the form of a string and then adds t
 
 ### Configuring the parent's template
 
-1.  In the parent's template, bind the parent's method to the child's event.
-1.  Put the child selector, here `<app-item-output>`, within the parent component's template, `app.component.html`.
+1. In the parent's template, bind the parent's method to the child's event.
+1. Put the child selector, here `<app-item-output>`, within the parent component's template, `app.component.html`.
 
-    <code-example header="src/app/app.component.html" path="inputs-outputs/src/app/app.component.html" region="output-parent"></code-example>
+   <code-example header="src/app/app.component.html" path="inputs-outputs/src/app/app.component.html" region="output-parent"></code-example>
 
-    The event binding, `(newItemEvent)='addItem($event)'`, connects the event in the child, `newItemEvent`, to the method in the parent, `addItem()`.
+   The event binding, `(newItemEvent)='addItem($event)'`, connects the event in the child, `newItemEvent`, to the method in the parent, `addItem()`.
 
-    The `$event` contains the data that the user types into the `<input>` in the child template UI.
+   The `$event` contains the data that the user types into the `<input>` in the child template UI.
 
-    To see the `@Output()` working, add the following to the parent's template:
+   To see the `@Output()` working, add the following to the parent's template:
 
-    <code-example format="html" language="html">
+   <code-example format="html" language="html">
 
-    &lt;ul&gt;
-      &lt;li *ngFor="let item of items"&gt;{{item}}&lt;/li&gt;
-    &lt;/ul&gt;
+   &lt;ul&gt;
+     &lt;li *ngFor="let item of items"&gt;{{item}}&lt;/li&gt;
+   &lt;/ul&gt;
 
-    </code-example>
+   </code-example>
 
-    The `*ngFor` iterates over the items in the `items` array.
-    When you enter a value in the child's `<input>` and click the button, the child emits the event and the parent's `addItem()` method pushes the value to the `items` array and new item renders in the list.
+   The `*ngFor` iterates over the items in the `items` array.
+   When you enter a value in the child's `<input>` and click the button, the child emits the event and the parent's `addItem()` method pushes the value to the `items` array and new item renders in the list.
 
 ## Using `@Input()` and `@Output()` together
 

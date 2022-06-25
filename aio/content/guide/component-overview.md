@@ -3,10 +3,10 @@
 Components are the main building block for Angular applications.
 Each component consists of:
 
-*   An HTML template that declares what renders on the page
-*   A TypeScript class that defines behavior
-*   A CSS selector that defines how the component is used in a template
-*   Optionally, CSS styles applied to the template
+* An HTML template that declares what renders on the page
+* A TypeScript class that defines behavior
+* A CSS selector that defines how the component is used in a template
+* Optionally, CSS styles applied to the template
 
 This topic describes how to create and configure an Angular component.
 
@@ -20,9 +20,9 @@ To view or download the example code used in this topic, see the <live-example><
 
 To create a component, verify that you have met the following prerequisites:
 
-1.  [Install the Angular CLI.](guide/setup-local#install-the-angular-cli)
-1.  [Create an Angular workspace](guide/setup-local#create-a-workspace-and-initial-application) with initial application.
-    If you don't have a project, create one using `ng new <project-name>`, where `<project-name>` is the name of your Angular application.
+1. [Install the Angular CLI.](guide/setup-local#install-the-angular-cli)
+1. [Create an Angular workspace](guide/setup-local#create-a-workspace-and-initial-application) with initial application.
+   If you don't have a project, create one using `ng new <project-name>`, where `<project-name>` is the name of your Angular application.
 
 ## Creating a component
 
@@ -33,16 +33,16 @@ You can also create a component manually.
 
 To create a component using the Angular CLI:
 
-1.  From a terminal window, navigate to the directory containing your application.
-1.  Run the `ng generate component <component-name>` command, where `<component-name>` is the name of your new component.
+1. From a terminal window, navigate to the directory containing your application.
+1. Run the `ng generate component <component-name>` command, where `<component-name>` is the name of your new component.
 
 By default, this command creates the following:
 
-*   A folder named after the component
-*   A component file, `<component-name>.component.ts`
-*   A template file, `<component-name>.component.html`
-*   A CSS file, `<component-name>.component.css`
-*   A testing specification file, `<component-name>.component.spec.ts`
+* A folder named after the component
+* A component file, `<component-name>.component.ts`
+* A template file, `<component-name>.component.html`
+* A CSS file, `<component-name>.component.css`
+* A testing specification file, `<component-name>.component.spec.ts`
 
 Where `<component-name>` is the name of your component.
 
@@ -60,37 +60,39 @@ This section describes how to create the core component file within an existing 
 
 To create a new component manually:
 
-1.  Navigate to your Angular project directory.
-1.  Create a new file, `<component-name>.component.ts`.
-1.  At the top of the file, add the following import statement.
+1. Navigate to your Angular project directory.
 
-    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="import"></code-example>
+1. Create a new file, `<component-name>.component.ts`.
 
-1.  After the `import` statement, add a `@Component` decorator.
+1. At the top of the file, add the following import statement.
 
-    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="decorator-skeleton"></code-example>
+   <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="import"></code-example>
 
-1.  Choose a CSS selector for the component.
+1. After the `import` statement, add a `@Component` decorator.
 
-    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="selector"></code-example>
+   <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="decorator-skeleton"></code-example>
 
-    For more information on choosing a selector, see [Specifying a component's selector](#specifying-a-components-css-selector).
+1. Choose a CSS selector for the component.
 
-1.  Define the HTML template that the component uses to display information.
-    In most cases, this template is a separate HTML file.
+   <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="selector"></code-example>
 
-    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="templateUrl"></code-example>
+   For more information on choosing a selector, see [Specifying a component's selector](#specifying-a-components-css-selector).
 
-    For more information on defining a component's template, see [Defining a component's template](#defining-a-components-template).
+1. Define the HTML template that the component uses to display information.
+   In most cases, this template is a separate HTML file.
 
-1.  Select the styles for the component's template.
-    In most cases, you define the styles for your component's template in a separate file.
+   <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="templateUrl"></code-example>
 
-    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="decorator"></code-example>
+   For more information on defining a component's template, see [Defining a component's template](#defining-a-components-template).
 
-1.  Add a `class` statement that includes the code for the component.
+1. Select the styles for the component's template.
+   In most cases, you define the styles for your component's template in a separate file.
 
-    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="class"></code-example>
+   <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="decorator"></code-example>
+
+1. Add a `class` statement that includes the code for the component.
+
+   <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="class"></code-example>
 
 ## Specifying a component's CSS selector
 
@@ -115,7 +117,7 @@ To define a template within the component, add a `template` property to the `@Co
 
 <code-example path="component-overview/src/app/component-overview/component-overview.component.1.ts" region="template"></code-example>
 
-If you want your template to span multiple lines, use backticks \(<code>&grave;</code>\).
+If you want your template to span multiple lines, use backticks (<code>\`</code>).
 For example:
 
 <code-example path="component-overview/src/app/component-overview/component-overview.component.2.ts" region="templatebacktick"></code-example>
@@ -144,10 +146,10 @@ The `styles` property takes an array of strings that contain the CSS rule declar
 
 ## Next steps
 
-*   For an architectural overview of components, see [Introduction to components and templates](guide/architecture-components)
-*   For additional options to use when creating a component, see [Component](api/core/Component) in the API Reference
-*   For more information on styling components, see [Component styles](guide/component-styles)
-*   For more information on templates, see [Template syntax](guide/template-syntax)
+* For an architectural overview of components, see [Introduction to components and templates](guide/architecture-components)
+* For additional options to use when creating a component, see [Component](api/core/Component) in the API Reference
+* For more information on styling components, see [Component styles](guide/component-styles)
+* For more information on templates, see [Template syntax](guide/template-syntax)
 
 <!-- links -->
 

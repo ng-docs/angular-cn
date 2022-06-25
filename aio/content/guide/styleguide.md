@@ -317,13 +317,13 @@ Type names provide pattern matching for any automated tasks.
 
 <div class="s-rule do">
 
-**Do** append the symbol name with the conventional suffix \(such as `Component`, `Directive`, `Module`, `Pipe`, or `Service`\) for a thing of that type.
+**Do** append the symbol name with the conventional suffix (such as `Component`, `Directive`, `Module`, `Pipe`, or `Service`) for a thing of that type.
 
 </div>
 
 <div class="s-rule do">
 
-**Do** give the filename the conventional suffix \(such as `.component.ts`, `.directive.ts`, `.module.ts`, `.pipe.ts`, or `.service.ts`\) for a file of that type.
+**Do** give the filename the conventional suffix (such as `.component.ts`, `.directive.ts`, `.module.ts`, `.pipe.ts`, or `.service.ts`) for a file of that type.
 
 </div>
 
@@ -334,16 +334,16 @@ Consistent conventions make it easy to quickly identify and reference assets of 
 
 </div>
 
-| Symbol name                                                                                                                                                                          | File name |
-|:---                                                                                                                                                                                  |:---       |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class AppComponent { } </code-example>                             | app.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroesComponent { } </code-example>                          | heroes.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroListComponent { } </code-example>                        | hero-list.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroDetailComponent { } </code-example>                      | hero-detail.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &hellip; }) &NewLine;export class ValidationDirective { } </code-example>                      | validation.directive.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule </code-example>                                     | app.module.ts |
+| Symbol name | File name |
+| :---------- | :-------- |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class AppComponent { } </code-example> | app.component.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroesComponent { } </code-example> | heroes.component.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroListComponent { } </code-example> | hero-list.component.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroDetailComponent { } </code-example> | hero-detail.component.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &hellip; }) &NewLine;export class ValidationDirective { } </code-example> | validation.directive.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule </code-example> | app.module.ts |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'initCaps' }) &NewLine;export class InitCapsPipe implements PipeTransform { } </code-example> | init-caps.pipe.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class UserProfileService { } </code-example>                                  | user-profile.service.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class UserProfileService { } </code-example> | user-profile.service.ts |
 
 [Back to top](#toc)
 
@@ -393,11 +393,11 @@ Service names such as `Credit` are nouns and require a suffix and should be name
 
 </div>
 
-| Symbol name                                                                                                                                      | File name |
-|:---                                                                                                                                              |:---       |
+| Symbol name | File name |
+| :---------- | :-------- |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class HeroDataService { } </code-example> | hero-data.service.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class CreditService { } </code-example>   | credit.service.ts    |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class Logger { } </code-example>          | logger.service.ts    |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class CreditService { } </code-example> | credit.service.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class Logger { } </code-example> | logger.service.ts |
 
 [Back to top](#toc)
 
@@ -564,7 +564,7 @@ The Angular HTML parser is case sensitive and recognizes lower camel case.
 
 <div class="s-rule do">
 
-**Do** use a custom prefix for the selector of directives \(for example, the prefix `toh` from **T**our **o**f **H**eroes\).
+**Do** use a custom prefix for the selector of directives (for example, the prefix `toh` from **T**our **o**f **H**eroes).
 
 </div>
 
@@ -609,8 +609,8 @@ Directives are easily identified.
 <div class="s-rule do">
 
 **Do** use consistent names for all pipes, named after their feature.
-The pipe class name should use [UpperCamelCase](guide/glossary#case-types) \(the general convention for class names\), and the corresponding `name` string should use *lowerCamelCase*.
-The `name` string cannot use hyphens \("dash-case" or "kebab-case"\).
+The pipe class name should use [UpperCamelCase](guide/glossary#case-types) (the general convention for class names), and the corresponding `name` string should use *lowerCamelCase*.
+The `name` string cannot use hyphens ("dash-case" or "kebab-case").
 
 </div>
 
@@ -621,9 +621,9 @@ Provides a consistent way to quickly identify and reference pipes.
 
 </div>
 
-| Symbol name                                                                                                                                                                          | File name |
-|:---                                                                                                                                                                                  |:---       |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'ellipsis' }) &NewLine;export class EllipsisPipe implements PipeTransform { } </code-example> | ellipsis.pipe.ts  |
+| Symbol name | File name |
+| :---------- | :-------- |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'ellipsis' }) &NewLine;export class EllipsisPipe implements PipeTransform { } </code-example> | ellipsis.pipe.ts |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'initCaps' }) &NewLine;export class InitCapsPipe implements PipeTransform { } </code-example> | init-caps.pipe.ts |
 
 [Back to top](#toc)
@@ -660,11 +660,11 @@ Provides pattern matching for [karma](https://karma-runner.github.io) or other t
 
 </div>
 
-| Test type  | File names |
-|:---        |:---        |
+| Test type | File names |
+| :-------- | :--------- |
 | Components | heroes.component.spec.ts <br /> hero-list.component.spec.ts <br /> hero-detail.component.spec.ts |
-| Services   | logger.service.spec.ts <br /> hero.service.spec.ts <br /> filter-text.service.spec.ts            |
-| Pipes      | ellipsis.pipe.spec.ts <br /> init-caps.pipe.spec.ts                                              |
+| Services | logger.service.spec.ts <br /> hero.service.spec.ts <br /> filter-text.service.spec.ts |
+| Pipes | ellipsis.pipe.spec.ts <br /> init-caps.pipe.spec.ts |
 
 [Back to top](#toc)
 
@@ -694,8 +694,8 @@ Provides pattern matching for test runners and build automation.
 
 </div>
 
-| Test type        | File names |
-|:---              |:---        |
+| Test type | File names |
+| :-------- | :--------- |
 | End-to-End Tests | app.e2e-spec.ts <br /> heroes.e2e-spec.ts |
 
 [Back to top](#toc)
@@ -765,12 +765,12 @@ A consistent class and file name convention make these modules easy to spot and 
 
 </div>
 
-| Symbol name                                                                                                                                                    | File name |
-|:---                                                                                                                                                            |:---       |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule { } </code-example>           | app.module.ts            |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class HeroesModule { } </code-example>        | heroes.module.ts         |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class VillainsModule { } </code-example>      | villains.module.ts       |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppRoutingModule { } </code-example>    | app-routing.module.ts    |
+| Symbol name | File name |
+| :---------- | :-------- |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule { } </code-example> | app.module.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class HeroesModule { } </code-example> | heroes.module.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class VillainsModule { } </code-example> | villains.module.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppRoutingModule { } </code-example> | app-routing.module.ts |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class HeroesRoutingModule { } </code-example> | heroes-routing.module.ts |
 
 [Back to top](#toc)
@@ -835,7 +835,7 @@ To confirm your intuition about a particular structure, ask:
 <div class="s-why-last">
 
 **Why**? <br />
-To work efficiently you must be able to find files quickly, especially when you do not know \(or do not remember\) the file *names*.
+To work efficiently you must be able to find files quickly, especially when you do not know (or do not remember) the file *names*.
 Keeping related files near each other in an intuitive location saves time.
 A descriptive folder structure makes a world of difference to you and the people who come after you.
 
@@ -926,13 +926,13 @@ Use a flatter structure until there is an obvious value to creating a new folder
 
 <a id="04-05"></a>
 
-### *T-DRY* \(Try to be *DRY*\)
+### *T-DRY* (Try to be *DRY*)
 
 #### Style 04-05
 
 <div class="s-rule do">
 
-**Do** be DRY \(Don't Repeat Yourself\).
+**Do** be DRY (Don't Repeat Yourself).
 
 </div>
 
@@ -980,7 +980,7 @@ But if something is not obvious or departs from a convention, then spell it out.
 
 <div class="s-rule consider">
 
-**Consider** creating a folder for a component when it has multiple accompanying files \(`.ts`, `.html`, `.css`, and `.spec`\).
+**Consider** creating a folder for a component when it has multiple accompanying files (`.ts`, `.html`, `.css`, and `.spec`).
 
 </div>
 
@@ -994,7 +994,7 @@ Helps keep the application structure small and easy to maintain in the early sta
 <div class="s-why-last">
 
 **Why**? <br />
-Components often have four files \(for example, `*.html`, `*.css`, `*.ts`, and `*.spec.ts`\) and can clutter a folder quickly.
+Components often have four files (for example, `*.html`, `*.css`, `*.ts`, and `*.spec.ts`) and can clutter a folder quickly.
 
 </div>
 
@@ -1156,7 +1156,7 @@ Here is a compliant folder and file structure:
 
 <div class="alert is-helpful">
 
-While components in dedicated folders are widely preferred, another option for small applications is to keep components flat \(not in a dedicated folder\).
+While components in dedicated folders are widely preferred, another option for small applications is to keep components flat (not in a dedicated folder).
 This adds up to four files to the existing folder, but also reduces the folder nesting.
 Whatever you choose, be consistent.
 
@@ -1653,7 +1653,7 @@ Large, inline templates and styles obscure the component's purpose and implement
 
 **Why**? <br />
 In most editors, syntax hints and code snippets aren't available when developing inline templates and styles.
-The Angular TypeScript Language Service \(forthcoming\) promises to overcome this deficiency for HTML templates in those editors that support it; it won't help with CSS styles.
+The Angular TypeScript Language Service (forthcoming) promises to overcome this deficiency for HTML templates in those editors that support it; it won't help with CSS styles.
 
 </div>
 
@@ -1749,7 +1749,7 @@ Put it on the line above when doing so is clearly more readable.
 <div class="s-why">
 
 **Why**? <br />
-Two names for the same property \(one private, one public\) is inherently confusing.
+Two names for the same property (one private, one public) is inherently confusing.
 
 </div>
 
@@ -1917,7 +1917,7 @@ If the event itself was prefixed with `on` this would result in an `on-onEvent` 
 <div class="s-why">
 
 **Why**? <br />
-Logic will be contained in one place \(the component class\) instead of being spread in two places.
+Logic will be contained in one place (the component class) instead of being spread in two places.
 
 </div>
 
@@ -2011,7 +2011,7 @@ An element may have more than one attribute directive applied.
 <div class="s-why-last">
 
 **Why**? <br />
-The property associated with `@HostBinding` or the method associated with `@HostListener` can be modified only in a single place &mdash;in the directive's class.
+The property associated with `@HostBinding` or the method associated with `@HostListener` can be modified only in a single place —in the directive's class.
 If you use the `host` metadata property, you must modify both the property/method declaration in the directive's class and the metadata in the decorator associated with the directive.
 
 </div>
@@ -2146,7 +2146,7 @@ In this scenario it would be better to provide the service at the component leve
 
 <a id="07-04"></a>
 
-### Use the &commat;Injectable() class decorator
+### Use the @Injectable() class decorator
 
 #### Style 07-04
 
@@ -2159,7 +2159,7 @@ In this scenario it would be better to provide the service at the component leve
 <div class="s-why">
 
 **Why**? <br />
-The Angular Dependency Injection \(DI\) mechanism resolves a service's own
+The Angular Dependency Injection (DI) mechanism resolves a service's own
 dependencies based on the declared types of that service's constructor parameters.
 
 </div>
@@ -2209,7 +2209,7 @@ Separating the data services moves the logic on how to get it to the data servic
 <div class="s-why">
 
 **Why**? <br />
-This makes it easier to test \(mock or real\) the data calls when testing a component that uses a data service.
+This makes it easier to test (mock or real) the data calls when testing a component that uses a data service.
 
 </div>
 

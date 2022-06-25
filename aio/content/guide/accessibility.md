@@ -45,7 +45,7 @@ Static ARIA attributes require no extra syntax.
 
 <div class="alert is-helpful">
 
-By convention, HTML attributes use lowercase names \(`tabindex`\), while properties use camelCase names \(`tabIndex`\).
+By convention, HTML attributes use lowercase names (`tabindex`), while properties use camelCase names (`tabIndex`).
 
 See the [Binding syntax](guide/binding-syntax#html-attribute-vs-dom-property) guide for more background on the difference between attributes and properties.
 
@@ -57,11 +57,11 @@ The [Angular Material](https://material.angular.io) library, which is maintained
 The [Component Development Kit (CDK)](https://material.angular.io/cdk/categories) includes the `a11y` package that provides tools to support various areas of accessibility.
 For example:
 
-*   `LiveAnnouncer` is used to announce messages for screen-reader users using an `aria-live` region.
-    See the W3C documentation for more information on [aria-live regions](https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live).
+* `LiveAnnouncer` is used to announce messages for screen-reader users using an `aria-live` region.
+  See the W3C documentation for more information on [aria-live regions](https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live).
 
-*   The `cdkTrapFocus` directive traps Tab-key focus within an element.
-    Use it to create accessible experience for components such as modal dialogs, where focus must be constrained.
+* The `cdkTrapFocus` directive traps Tab-key focus within an element.
+  Use it to create accessible experience for components such as modal dialogs, where focus must be constrained.
 
 For full details of these and other tools, see the [Angular CDK accessibility overview](https://material.angular.io/cdk/a11y/overview).
 
@@ -89,14 +89,14 @@ You can see [`MatFormField`](https://material.angular.io/components/form-field/o
 
 The following example shows how to make a progress bar accessible by using host binding to control accessibility-related attributes.
 
-*   The component defines an accessibility-enabled element with both the standard HTML attribute `role`, and ARIA attributes.
-    The ARIA attribute `aria-valuenow` is bound to the user's input.
+* The component defines an accessibility-enabled element with both the standard HTML attribute `role`, and ARIA attributes.
+  The ARIA attribute `aria-valuenow` is bound to the user's input.
 
-    <code-example header="src/app/progress-bar.component.ts" path="accessibility/src/app/progress-bar.component.ts" region="progressbar-component"></code-example>
+  <code-example header="src/app/progress-bar.component.ts" path="accessibility/src/app/progress-bar.component.ts" region="progressbar-component"></code-example>
 
-*   In the template, the `aria-label` attribute ensures that the control is accessible to screen readers.
+* In the template, the `aria-label` attribute ensures that the control is accessible to screen readers.
 
-    <code-example header="src/app/app.component.html" path="accessibility/src/app/app.component.html" region="template"></code-example>
+  <code-example header="src/app/app.component.html" path="accessibility/src/app/app.component.html" region="template"></code-example>
 
 ## Routing
 
@@ -155,20 +155,20 @@ The following example shows how to apply the `active-page` class to active links
 
 ## Additional resources
 
-*   [Accessibility - Google Web Fundamentals](https://developers.google.com/web/fundamentals/accessibility)
-*   [ARIA specification and authoring practices](https://www.w3.org/TR/wai-aria)
-*   [Material Design - Accessibility](https://material.io/design/usability/accessibility.html)
-*   [Smashing Magazine](https://www.smashingmagazine.com/search/?q=accessibility)
-*   [Inclusive Components](https://inclusive-components.design)
-*   [Accessibility Resources and Code Examples](https://dequeuniversity.com/resources)
-*   [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/people-use-web)
-*   [Rob Dodson A11ycasts](https://www.youtube.com/watch?v=HtTyRajRuyY)
-*   [Angular ESLint](https://github.com/angular-eslint/angular-eslint#functionality) provides linting rules that can help you make sure your code meets accessibility standards.
+* [Accessibility - Google Web Fundamentals](https://developers.google.com/web/fundamentals/accessibility)
+* [ARIA specification and authoring practices](https://www.w3.org/TR/wai-aria)
+* [Material Design - Accessibility](https://material.io/design/usability/accessibility.html)
+* [Smashing Magazine](https://www.smashingmagazine.com/search/?q=accessibility)
+* [Inclusive Components](https://inclusive-components.design)
+* [Accessibility Resources and Code Examples](https://dequeuniversity.com/resources)
+* [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/people-use-web)
+* [Rob Dodson A11ycasts](https://www.youtube.com/watch?v=HtTyRajRuyY)
+* [Angular ESLint](https://github.com/angular-eslint/angular-eslint#functionality) provides linting rules that can help you make sure your code meets accessibility standards.
 
 Books
 
-*   "A Web for Everyone: Designing Accessible User Experiences", Sarah Horton and Whitney Quesenbery
-*   "Inclusive Design Patterns", Heydon Pickering
+* "A Web for Everyone: Designing Accessible User Experiences", Sarah Horton and Whitney Quesenbery
+* "Inclusive Design Patterns", Heydon Pickering
 
 <!-- links -->
 

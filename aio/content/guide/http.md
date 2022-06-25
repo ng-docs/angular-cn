@@ -5,20 +5,20 @@ Angular provides a client HTTP API for Angular applications, the `HttpClient` se
 
 The HTTP client service offers the following major features.
 
-*   The ability to request [typed response objects](#typed-response)
-*   Streamlined [error handling](#error-handling)
-*   [Testability](#testing-requests) features
-*   Request and response [interception](#intercepting-requests-and-responses)
+* The ability to request [typed response objects](#typed-response)
+* Streamlined [error handling](#error-handling)
+* [Testability](#testing-requests) features
+* Request and response [interception](#intercepting-requests-and-responses)
 
 ## Prerequisites
 
 Before working with the `HttpClientModule`, you should have a basic understanding of the following:
 
-*   TypeScript programming
-*   Usage of the HTTP protocol
-*   Angular app-design fundamentals, as described in [Angular Concepts](guide/architecture)
-*   Observable techniques and operators.
-    See the [Observables](guide/observables) guide.
+* TypeScript programming
+* Usage of the HTTP protocol
+* Angular app-design fundamentals, as described in [Angular Concepts](guide/architecture)
+* Observable techniques and operators.
+  See the [Observables](guide/observables) guide.
 
 ## Setup for server communication
 
@@ -72,8 +72,8 @@ options: {
 
 Important options include the *observe* and *responseType* properties.
 
-*   The *observe* option specifies how much of the response to return
-*   The *responseType* option specifies the format in which to return data
+* The *observe* option specifies how much of the response to return
+* The *responseType* option specifies the format in which to return data
 
 <div class="alert is-helpful">
 
@@ -266,7 +266,7 @@ In this next example, a `DownloaderService` method reads a text file from the se
 
 `HttpClient.get()` returns a string rather than the default JSON because of the `responseType` option.
 
-The RxJS `tap` operator \(as in "wiretap"\) lets the code inspect both success and error values passing through the observable without disturbing them.
+The RxJS `tap` operator (as in "wiretap") lets the code inspect both success and error values passing through the observable without disturbing them.
 
 A `download()` method in the `DownloaderComponent` initiates the request by subscribing to the service method.
 
@@ -293,11 +293,11 @@ In addition to detecting that an error has occurred, you need to get error detai
 
 Two types of errors can occur.
 
-*   The server backend might reject the request, returning an HTTP response with a status code such as 404 or 500.
-    These are error *responses*.
+* The server backend might reject the request, returning an HTTP response with a status code such as 404 or 500.
+  These are error *responses*.
 
-*   Something could go wrong on the client-side such as a network error that prevents the request from completing successfully or an exception thrown in an RxJS operator.
-    These errors have `status` set to `0` and the `error` property contains a `ProgressEvent` object, whose `type` might provide further information.
+* Something could go wrong on the client-side such as a network error that prevents the request from completing successfully or an exception thrown in an RxJS operator.
+  These errors have `status` set to `0` and the `error` property contains a `ProgressEvent` object, whose `type` might provide further information.
 
 `HttpClient` captures both kinds of errors in its `HttpErrorResponse`.
 Inspect that response to identify the error's cause.
@@ -344,9 +344,9 @@ The `HttpClient.post()` method is similar to `get()` in that it has a type param
 The method takes a resource URL and two additional parameters:
 
 | Parameter | Details |
-|:---       |:---     |
-| body      | The data to POST in the body of the request.                                                          |
-| options   | An object containing method options which, in this case, [specify required headers](#adding-headers). |
+| :-------- | :------ |
+| body | The data to POST in the body of the request. |
+| options | An object containing method options which, in this case, [specify required headers](#adding-headers). |
 
 The example catches errors as [described above](#error-details).
 
@@ -388,7 +388,7 @@ This is true for *all* `HttpClient` *methods*.
 
 <div class="alert is-helpful">
 
-The [`AsyncPipe`](api/common/AsyncPipe) subscribes \(and unsubscribes\) for you automatically.
+The [`AsyncPipe`](api/common/AsyncPipe) subscribes (and unsubscribes) for you automatically.
 
 </div>
 
@@ -502,7 +502,7 @@ Here is a do-nothing `noop` interceptor that passes the request through without 
 The `intercept` method transforms a request into an `Observable` that eventually returns the HTTP response.
 In this sense, each interceptor is fully capable of handling the request entirely by itself.
 
-Most interceptors inspect the request on the way in and forward the \(perhaps altered\) request to the `handle()` method of the `next` object which implements the [`HttpHandler`](api/common/http/HttpHandler) interface.
+Most interceptors inspect the request on the way in and forward the (perhaps altered) request to the `handle()` method of the `next` object which implements the [`HttpHandler`](api/common/http/HttpHandler) interface.
 
 <code-example format="javascript" language="javascript">
 
@@ -532,7 +532,7 @@ This is a common middleware pattern found in frameworks such as Express.js.
 The `NoopInterceptor` is a service managed by Angular's [dependency injection (DI)](guide/dependency-injection) system.
 Like other services, you must provide the interceptor class before the app can use it.
 
-Because interceptors are \(optional\) dependencies of the `HttpClient` service, you must provide them in the same injector \(or a parent of the injector\) that provides `HttpClient`.
+Because interceptors are (optional) dependencies of the `HttpClient` service, you must provide them in the same injector (or a parent of the injector) that provides `HttpClient`.
 Interceptors provided *after* DI creates the `HttpClient` are ignored.
 
 This app provides `HttpClient` in the app's root injector, as a side-effect of importing the `HttpClientModule` in `AppModule`.
@@ -643,9 +643,9 @@ req.body.name = req.body.name.trim(); // bad idea!
 
 If you must modify the request body, follow these steps.
 
-1.  Copy the body and make your change in the copy.
-1.  Clone the request object, using its `clone()` method.
-1.  Replace the clone's body with the modified copy.
+1. Copy the body and make your change in the copy.
+1. Clone the request object, using its `clone()` method.
+1. Replace the clone's body with the modified copy.
 
 <code-example header="app/http-interceptors/trim-name-interceptor.ts (excerpt)" path="http/src/app/http-interceptors/trim-name-interceptor.ts" region="excerpt"></code-example>
 
@@ -688,9 +688,9 @@ The practice of cloning a request to set new headers is so common that there's a
 
 An interceptor that alters headers can be used for a number of different operations, including:
 
-*   Authentication/authorization
-*   Caching behavior; for example, `If-Modified-Since`
-*   XSRF protection
+* Authentication/authorization
+* Caching behavior; for example, `If-Modified-Since`
+* XSRF protection
 
 ### Logging request and response pairs
 
@@ -703,7 +703,7 @@ with the injected `MessageService`.
 <code-example header="app/http-interceptors/logging-interceptor.ts)" path="http/src/app/http-interceptors/logging-interceptor.ts" region="excerpt"></code-example>
 
 The RxJS `tap` operator captures whether the request succeeded or failed.
-The RxJS `finalize` operator is called when the response observable either errors or completes \(which it must\), and reports the outcome to the `MessageService`.
+The RxJS `finalize` operator is called when the response observable either errors or completes (which it must), and reports the outcome to the `MessageService`.
 
 Neither `tap` nor `finalize` touch the values of the observable stream returned to the caller.
 
@@ -741,13 +741,15 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 
 <code-example header="app/http-interceptors/caching-interceptor.ts)" path="http/src/app/http-interceptors/caching-interceptor.ts" region="v1"></code-example>
 
-*   The `isCacheable()` function determines if the request is cacheable.
-    In this sample, only GET requests to the package search API are cacheable.
+* The `isCacheable()` function determines if the request is cacheable.
+  In this sample, only GET requests to the package search API are cacheable.
 
-*   If the request is not cacheable, the interceptor forwards the request to the next handler in the chain
-*   If a cacheable request is found in the cache, the interceptor returns an `of()` *observable* with the cached response, by-passing the `next` handler \(and all other interceptors downstream\)
-*   If a cacheable request is not in cache, the code calls `sendRequest()`.
-    This function forwards the request to `next.handle()` which ultimately calls the server and returns the server's response.
+* If the request is not cacheable, the interceptor forwards the request to the next handler in the chain
+
+* If a cacheable request is found in the cache, the interceptor returns an `of()` *observable* with the cached response, by-passing the `next` handler (and all other interceptors downstream)
+
+* If a cacheable request is not in cache, the code calls `sendRequest()`.
+  This function forwards the request to `next.handle()` which ultimately calls the server and returns the server's response.
 
 <a id="send-request"></a>
 
@@ -785,9 +787,9 @@ That `search()` method creates the custom `x-refresh` header and adds it to the 
 The revised `CachingInterceptor` sets up a server request whether there's a cached value or not, using the same `sendRequest()` method described [above](#send-request).
 The `results$` observable makes the request when subscribed.
 
-*   If there's no cached value, the interceptor returns `results$`.
-*   If there is a cached value, the code *pipes* the cached response onto `results$`, producing a recomposed observable that emits twice, the cached response first \(and immediately\), followed later by the response from the server.
-    Subscribers see a sequence of two responses.
+* If there's no cached value, the interceptor returns `results$`.
+* If there is a cached value, the code *pipes* the cached response onto `results$`, producing a recomposed observable that emits twice, the cached response first (and immediately), followed later by the response from the server.
+  Subscribers see a sequence of two responses.
 
 <a id="report-progress"></a>
 
@@ -810,7 +812,7 @@ When using [`HttpClient.request()`](api/common/http/HttpClient#request) with an 
 
 </div>
 
-Next, pass this request object to the `HttpClient.request()` method, which returns an `Observable` of `HttpEvents` \(the same events processed by [interceptors](#interceptor-events)\).
+Next, pass this request object to the `HttpClient.request()` method, which returns an `Observable` of `HttpEvents` (the same events processed by [interceptors](#interceptor-events)).
 
 <code-example header="app/uploader/uploader.service.ts (upload body)" path="http/src/app/uploader/uploader.service.ts" region="upload-body"></code-example>
 
@@ -856,11 +858,11 @@ It's defined as an RxJS `Subject`, which means it is a multicasting `Observable`
 
 Rather than forward every `searchText` value directly to the injected `PackageSearchService`, the code in `ngOnInit()` pipes search values through three operators, so that a search value reaches the service only if it's a new value and the user stopped typing.
 
-| RxJS operators           | Details |
-|:---                      |:---     |
-| `debounceTime(500)`⁠      | Wait for the user to stop typing \(1/2 second in this case\). |
-| `distinctUntilChanged()` | Wait until the search text changes.                           |
-| `switchMap()`⁠            | Send the search request to the service.                       |
+| RxJS operators | Details |
+| :------------- | :------ |
+| `debounceTime(500)`⁠ | Wait for the user to stop typing (1/2 second in this case). |
+| `distinctUntilChanged()` | Wait until the search text changes. |
+| `switchMap()`⁠ | Send the search request to the service. |
 
 The code sets `packages$` to this re-composed `Observable` of search results.
 The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe) and displays search results as they arrive.
@@ -875,7 +877,7 @@ See [Using interceptors to request multiple values](#cache-refresh) for more abo
 
 The `switchMap()` operator takes a function argument that returns an `Observable`.
 In the example, `PackageSearchService.search` returns an `Observable`, as other data service methods do.
-If a previous search request is still in-flight \(as when the network connection is poor\), the operator cancels that request and sends a new one.
+If a previous search request is still in-flight (as when the network connection is poor), the operator cancels that request and sends a new one.
 
 <div class="alert is-helpful">
 
@@ -897,7 +899,7 @@ If you think you'll reuse this debouncing logic, consider moving it to a utility
 When performing HTTP requests, an interceptor reads a token from a cookie, by default `XSRF-TOKEN`, and sets it as an HTTP header, `X-XSRF-TOKEN`.
 Because only code that runs on your domain could read the cookie, the backend can be certain that the HTTP request came from your client application and not an attacker.
 
-By default, an interceptor sends this header on all mutating requests \(such as POST\)
+By default, an interceptor sends this header on all mutating requests (such as POST)
 to relative URLs, but not on GET/HEAD requests or on requests with an absolute URL.
 
 To take advantage of this, your server needs to set a token in a JavaScript readable session cookie called `XSRF-TOKEN` on either the page load or the first GET request.
@@ -1014,13 +1016,13 @@ You can create a context token using the `new` operator, as in the following exa
 
 The lambda function `() => 3` passed during the creation of the `HttpContextToken` serves two purposes:
 
-1.  It lets TypeScript infer the type of this token:
-    `HttpContextToken<number>`
-    The request context is type-safe &mdash;reading a token from a request's context returns a value of the appropriate type.
+1. It lets TypeScript infer the type of this token:
+   `HttpContextToken<number>`
+   The request context is type-safe —reading a token from a request's context returns a value of the appropriate type.
 
-1.  It sets the default value for the token.
-    This is the value that the request context returns if no other value was set for this token.
-    Using a default value avoids the need to check if a particular value is set.
+1. It sets the default value for the token.
+   This is the value that the request context returns if no other value was set for this token.
+   Using a default value avoids the need to check if a particular value is set.
 
 ### Setting context values when making a request
 

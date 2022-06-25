@@ -11,37 +11,39 @@ Using the GitHub user interface for updates is recommended only for small change
 
 **To update a topic through the GitHub user interface:**
 
-1.  Navigate to the topic for which you want to file a pull request.
-1.  Click the edit icon at the top of the topic.
+1. Navigate to the topic for which you want to file a pull request.
 
-    <div class="lightbox">
+1. Click the edit icon at the top of the topic.
 
-    <img alt="The edit icon for an Angular topic." src="generated/images/guide/contributors-guide/edit-icon.png">
+   <div class="lightbox">
 
-    </div>
+   <img alt="The edit icon for an Angular topic." src="generated/images/guide/contributors-guide/edit-icon.png">
 
-    A GitHub page appears, displaying the source of the topic.
+   </div>
 
-1.  Update the topic.
-1.  At the bottom of the screen, update the **Commit changes** box with a description of the change.
-    Use the format `docs: <short-description-of-change>`, where `<short-description-of-change>` briefly describes your change.
-    Keep the description under 100 characters.
-    For example:
+   A GitHub page appears, displaying the source of the topic.
 
-    <code-example format="github" language="markdown">
+1. Update the topic.
 
-    docs: fix typo in Tour of Heroes pt.1
+1. At the bottom of the screen, update the **Commit changes** box with a description of the change.
+   Use the format `docs: <short-description-of-change>`, where `<short-description-of-change>` briefly describes your change.
+   Keep the description under 100 characters.
+   For example:
 
-    </code-example>
+   <code-example format="github" language="markdown">
 
-1.  Verify that the **create new branch** option is selected, then click **Commit changes**.
+   docs: fix typo in Tour of Heroes pt.1
 
-    A Pull Request screen opens.
+   </code-example>
 
-1.  Fill out the form in the Pull Request screen.
-    At a minimum, put an `x` in the **Docs have been added / updated** option and the **Documentation content changes** option.
+1. Verify that the **create new branch** option is selected, then click **Commit changes**.
 
-1.  Click **Create pull request**.
+   A Pull Request screen opens.
+
+1. Fill out the form in the Pull Request screen.
+   At a minimum, put an `x` in the **Docs have been added / updated** option and the **Documentation content changes** option.
+
+1. Click **Create pull request**.
 
 At this point, your pull request is added to a list of current requests, which the documentation team reviews weekly.
 

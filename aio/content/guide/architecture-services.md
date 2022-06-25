@@ -8,7 +8,7 @@ Angular distinguishes components from services to increase modularity and reusab
 By separating a component's view-related functionality from other kinds of processing, you can make your component classes lean and efficient.
 
 Ideally, a component's job is to enable the user experience and nothing more.
-A component should present properties and methods for data binding, in order to mediate between the view \(rendered by the template\) and the application logic \(which often includes some notion of a *model*\).
+A component should present properties and methods for data binding, in order to mediate between the view (rendered by the template) and the application logic (which often includes some notion of a *model*).
 
 A component can delegate certain tasks to services, such as fetching data from the server, validating user input, or logging directly to the console.
 By defining such processing tasks in an *injectable service class*, you make those tasks available to any component.
@@ -41,21 +41,22 @@ DI is wired into the Angular framework and used everywhere to provide new compon
 Components consume services; that is, you can *inject* a service into a component, giving the component access to that service class.
 
 To define a class as a service in Angular, use the `@Injectable()` decorator to provide the metadata that allows Angular to inject it into a component as a *dependency*.
-Similarly, use the `@Injectable()` decorator to indicate that a component or other class \(such as another service, a pipe, or an NgModule\) *has* a dependency.
+Similarly, use the `@Injectable()` decorator to indicate that a component or other class (such as another service, a pipe, or an NgModule) *has* a dependency.
 
-*   The *injector* is the main mechanism.
-    Angular creates an application-wide injector for you during the bootstrap process, and additional injectors as needed.
-    You don't have to create injectors.
+* The *injector* is the main mechanism.
+  Angular creates an application-wide injector for you during the bootstrap process, and additional injectors as needed.
+  You don't have to create injectors.
 
-*   An injector creates dependencies and maintains a *container* of dependency instances that it reuses, if possible.
-*   A *provider* is an object that tells an injector how to obtain or create a dependency
+* An injector creates dependencies and maintains a *container* of dependency instances that it reuses, if possible.
+
+* A *provider* is an object that tells an injector how to obtain or create a dependency
 
 For any dependency that you need in your app, you must register a provider with the application's injector, so that the injector can use the provider to create new instances.
 For a service, the provider is typically the service class itself.
 
 <div class="alert is-helpful">
 
-A dependency doesn't have to be a service &mdash;it could be a function, for example, or a value.
+A dependency doesn't have to be a service —it could be a function, for example, or a value.
 
 </div>
 
@@ -81,43 +82,43 @@ The process of `HeroService` injection looks something like this.
 
 You must register at least one *provider* of any service you are going to use.
 The provider can be part of the service's own metadata, making that service available everywhere, or you can register providers with specific modules or components.
-You register providers in the metadata of the service \(in the `@Injectable()` decorator\), or in the `@NgModule()` or `@Component()` metadata
+You register providers in the metadata of the service (in the `@Injectable()` decorator), or in the `@NgModule()` or `@Component()` metadata
 
-*   By default, the Angular CLI command [`ng generate service`](cli/generate) registers a provider with the root injector for your service by including provider metadata in the `@Injectable()` decorator.
-    The tutorial uses this method to register the provider of HeroService class definition.
+* By default, the Angular CLI command [`ng generate service`](cli/generate) registers a provider with the root injector for your service by including provider metadata in the `@Injectable()` decorator.
+   The tutorial uses this method to register the provider of HeroService class definition.
 
-   <code-example format="typescript" language="typescript">
+  <code-example format="typescript" language="typescript">
 
-   &commat;Injectable({
-    providedIn: 'root',
-   })
+  &commat;Injectable({
+   providedIn: 'root',
+  })
 
-   </code-example>
+  </code-example>
 
-   When you provide the service at the root level, Angular creates a single, shared instance of `HeroService`
-   and injects it into any class that asks for it.
-   Registering the provider in the `@Injectable()` metadata also allows Angular to optimize an app
-   by removing the service from the compiled application if it isn't used, a process known as *tree-shaking*.
+  When you provide the service at the root level, Angular creates a single, shared instance of `HeroService`
+  and injects it into any class that asks for it.
+  Registering the provider in the `@Injectable()` metadata also allows Angular to optimize an app
+  by removing the service from the compiled application if it isn't used, a process known as *tree-shaking*.
 
-*   When you register a provider with a [specific NgModule](guide/architecture-modules), the same instance of a service is available to all components in that NgModule.
-    To register at this level, use the `providers` property of the `@NgModule()` decorator.
+* When you register a provider with a [specific NgModule](guide/architecture-modules), the same instance of a service is available to all components in that NgModule.
+  To register at this level, use the `providers` property of the `@NgModule()` decorator.
 
-    <code-example format="typescript" language="typescript">
+  <code-example format="typescript" language="typescript">
 
-    &commat;NgModule({
-      providers: [
-      BackendService,
-      Logger
-     ],
-     &hellip;
-    })
+  &commat;NgModule({
+    providers: [
+    BackendService,
+    Logger
+   ],
+   &hellip;
+  })
 
-    </code-example>
+  </code-example>
 
-*   When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
-    At the component level, register a service provider in the `providers` property of the `@Component()` metadata.
+* When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
+   At the component level, register a service provider in the `providers` property of the `@Component()` metadata.
 
-   <code-example header="src/app/hero-list.component.ts (component providers)" path="architecture/src/app/hero-list.component.ts" region="providers"></code-example>
+  <code-example header="src/app/hero-list.component.ts (component providers)" path="architecture/src/app/hero-list.component.ts" region="providers"></code-example>
 
 For more detailed information, see the [Dependency Injection](guide/dependency-injection) section.
 

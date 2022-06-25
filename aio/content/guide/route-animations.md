@@ -4,9 +4,9 @@
 
 A basic understanding of the following concepts:
 
-*   [Introduction to Angular animations](guide/animations)
-*   [Transition and triggers](guide/transition-and-triggers)
-*   [Reusable animations](guide/reusable-animations)
+* [Introduction to Angular animations](guide/animations)
+* [Transition and triggers](guide/transition-and-triggers)
+* [Reusable animations](guide/reusable-animations)
 
 Routing enables users to navigate between different routes in an application.
 When a user navigates from one route to another, the Angular router maps the URL path to a relevant component and displays its view.
@@ -18,9 +18,9 @@ Start with the top-level component that hosts the view, and nest additional anim
 
 To enable routing transition animation, do the following:
 
-1.  Import the routing module into the application and create a routing configuration that defines the possible routes.
-1.  Add a router outlet to tell the Angular router where to place the activated components in the DOM.
-1.  Define the animation.
+1. Import the routing module into the application and create a routing configuration that defines the possible routes.
+1. Add a router outlet to tell the Angular router where to place the activated components in the DOM.
+1. Define the animation.
 
 Illustrate a router transition animation by navigating between two routes, *Home* and *About* associated with the `HomeComponent` and `AboutComponent` views respectively.
 Both of these component views are children of the top-most view, hosted by `AppComponent`.
@@ -79,7 +79,7 @@ We can use the `data` property of each `Route` to animate our routing transition
 <code-example header="src/app/app.component.html" path="animations/src/app/app.component.html" region="route-animations-outlet"></code-example>
 
 `AppComponent` defines a method that can detect when a view changes.
-The method assigns an animation state value to the animation trigger \(`@routeAnimation`\) based on the route configuration `data` property value.
+The method assigns an animation state value to the animation trigger (`@routeAnimation`) based on the route configuration `data` property value.
 Here's an example of an `AppComponent` method that detects when a route change happens.
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="get-route-animations-data"></code-example>
@@ -98,9 +98,9 @@ The following code snippet defines a reusable animation named `slideInAnimation`
 
 The animation definition performs the following tasks:
 
-*   Defines two transitions \(a single `trigger` can define multiple states and transitions\)
-*   Adjusts the styles of the host and child views to control their relative positions during the transition
-*   Uses `query()` to determine which child view is entering and which is leaving the host view
+* Defines two transitions (a single `trigger` can define multiple states and transitions)
+* Adjusts the styles of the host and child views to control their relative positions during the transition
+* Uses `query()` to determine which child view is entering and which is leaving the host view
 
 A route change activates the animation trigger, and a transition matching the state change is applied.
 
@@ -111,11 +111,11 @@ The transition states must match the `data` property value defined in the route 
 
 </div>
 
-Make the animation definition available in your application by adding the reusable animation \(`slideInAnimation`\) to the `animations` metadata of the `AppComponent`.
+Make the animation definition available in your application by adding the reusable animation (`slideInAnimation`) to the `animations` metadata of the `AppComponent`.
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="define"></code-example>
 
-So, let's break down the animation definition and see more closely what it does&hellip;
+So, let's break down the animation definition and see more closely what it does…
 
 ### Styling the host and child components
 
@@ -131,22 +131,26 @@ Adding these styles to the views animates the containers in place and prevents o
 Use the `query()` method to find and animate elements within the current host component.
 The `query(":enter")` statement returns the view that is being inserted, and `query(":leave")` returns the view that is being removed.
 
-Assume that you are routing from the *Home =&gt; About*.
+Assume that you are routing from the *Home => About*.
 
 <code-example header="src/app/animations.ts (excerpt)" path="animations/src/app/animations.ts" region="query"></code-example>
 
 The animation code does the following after styling the views:
 
-1.  `query(':enter', style({ left: '-100%' }))` matches the view that is added and hides the newly added view by positioning it to the far left.
-1.  Calls `animateChild()` on the view that is leaving, to run its child animations.
-1.  Uses [`group()`](api/animations/group) function to make the inner animations run in parallel.
-1.  Within the [`group()`](api/animations/group) function:
-    1.  Queries the view that is removed and animates it to slide far to the right.
-    1.  Slides in the new view by animating the view with an easing function and duration.
+1. `query(':enter', style({ left: '-100%' }))` matches the view that is added and hides the newly added view by positioning it to the far left.
 
-        This animation results in the `about` view sliding in from the left.
+1. Calls `animateChild()` on the view that is leaving, to run its child animations.
 
-1.  Calls the `animateChild()` method on the new view to run its child animations after the main animation completes.
+1. Uses [`group()`](api/animations/group) function to make the inner animations run in parallel.
+
+1. Within the [`group()`](api/animations/group) function:
+
+   1. Queries the view that is removed and animates it to slide far to the right.
+   1. Slides in the new view by animating the view with an easing function and duration.
+
+      This animation results in the `about` view sliding in from the left.
+
+1. Calls the `animateChild()` method on the new view to run its child animations after the main animation completes.
 
 You now have a basic routable animation that animates routing from one view to another.
 
@@ -154,10 +158,10 @@ You now have a basic routable animation that animates routing from one view to a
 
 You might also be interested in the following:
 
-*   [Introduction to Angular animations](guide/animations)
-*   [Transition and triggers](guide/transition-and-triggers)
-*   [Complex animation sequences](guide/complex-animation-sequences)
-*   [Reusable animations](guide/reusable-animations)
+* [Introduction to Angular animations](guide/animations)
+* [Transition and triggers](guide/transition-and-triggers)
+* [Complex animation sequences](guide/complex-animation-sequences)
+* [Reusable animations](guide/reusable-animations)
 
 <!-- links -->
 

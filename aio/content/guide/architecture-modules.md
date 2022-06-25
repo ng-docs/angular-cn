@@ -17,13 +17,13 @@ An NgModule is defined by a class decorated with `@NgModule()`.
 The `@NgModule()` decorator is a function that takes a single metadata object, whose properties describe the module.
 The most important properties are as follows.
 
-| Properties     | Details |
-|:---            |:---     |
-| `declarations` | The [components](guide/architecture-components), *directives*, and *pipes* that belong to this NgModule.                                                                                                                                    |
-| `exports`      | The subset of declarations that should be visible and usable in the *component templates* of other NgModules.                                                                                                                               |
-| `imports`      | Other modules whose exported classes are needed by component templates declared in *this* NgModule.                                                                                                                                         |
-| `providers`    | Creators of [services](guide/architecture-services) that this NgModule contributes to the global collection of services; they become accessible in all parts of the application. \(You can also specify providers at the component level.\) |
-| `bootstrap`    | The main application view, called the *root component*, which hosts all other application views. Only the *root NgModule* should set the `bootstrap` property.                                                                              |
+| Properties | Details |
+| :--------- | :------ |
+| `declarations` | The [components](guide/architecture-components), *directives*, and *pipes* that belong to this NgModule. |
+| `exports` | The subset of declarations that should be visible and usable in the *component templates* of other NgModules. |
+| `imports` | Other modules whose exported classes are needed by component templates declared in *this* NgModule. |
+| `providers` | Creators of [services](guide/architecture-services) that this NgModule contributes to the global collection of services; they become accessible in all parts of the application. (You can also specify providers at the component level.) |
+| `bootstrap` | The main application view, called the *root component*, which hosts all other application views. Only the *root NgModule* should set the `bootstrap` property. |
 
 Here's a simple root NgModule definition.
 
@@ -77,7 +77,7 @@ The hierarchical structure of views is a key factor in the way Angular detects a
 
 ## NgModules and JavaScript modules
 
-The NgModule system is different from, and unrelated to, the JavaScript \(ES2015\) module system for managing collections of JavaScript objects.
+The NgModule system is different from, and unrelated to, the JavaScript (ES2015) module system for managing collections of JavaScript objects.
 These are *complementary* module systems that you can use together to write your applications.
 
 In JavaScript each *file* is a module and all objects defined in the file belong to that module.

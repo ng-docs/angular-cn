@@ -12,7 +12,7 @@ To create a single class binding, type the following:
 
 [class.sale]="onSale"
 
-Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy&mdash;with the exception of `undefined`.  See [styling delegation](guide/style-precedence#styling-delegation) for more information.
+Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy—with the exception of `undefined`.  See [styling delegation](guide/style-precedence#styling-delegation) for more information.
 
 ## Binding to multiple CSS classes
 
@@ -30,7 +30,7 @@ With the object format, Angular adds a class only if its associated value is tru
 
 <div class="alert is-important">
 
-With any object-like expression&mdash;such as `object`, `Array`, `Map`, or `Set`&mdash;the identity of the object must change for Angular to update the class list.
+With any object-like expression—such as `object`, `Array`, `Map`, or `Set`—the identity of the object must change for Angular to update the class list.
 Updating the property without changing object identity has no effect.
 
 </div>
@@ -39,12 +39,12 @@ If there are multiple bindings to the same class name, Angular uses [styling pre
 
 The following table summarizes class binding syntax.
 
-| Binding Type         | Syntax                      | Input Type                                                                  | Example Input Values |
-|:---                  |:---                         |:---                                                                         |:---                  |
-| Single class binding | `[class.sale]="onSale"`     | <code>boolean &verbar; undefined &verbar; null</code>                       | `true`, `false`                      |
-| Multi-class binding  | `[class]="classExpression"` | `string`                                                                    | `"my-class-1 my-class-2 my-class-3"` |
-| Multi-class binding  | `[class]="classExpression"` | <code>Record&lt;string, boolean &verbar; undefined &verbar; null&gt;</code> | `{foo: true, bar: false}`            |
-| Multi-class binding  | `[class]="classExpression"` | <code>Array&lt;string&gt;</code>                                            | `['foo', 'bar']`                     |
+| Binding Type | Syntax | Input Type | Example Input Values |
+| :----------- | :----- | :--------- | :------------------- |
+| Single class binding | `[class.sale]="onSale"` | <code>boolean &verbar; undefined &verbar; null</code> | `true`, `false` |
+| Multi-class binding | `[class]="classExpression"` | `string` | `"my-class-1 my-class-2 my-class-3"` |
+| Multi-class binding | `[class]="classExpression"` | <code>Record&lt;string, boolean &verbar; undefined &verbar; null></code> | `{foo: true, bar: false}` |
+| Multi-class binding | `[class]="classExpression"` | <code>Array&lt;string></code> | `['foo', 'bar']` |
 
 ## Binding to a single style
 
@@ -56,15 +56,15 @@ Angular sets the property to the value of the bound expression, which is usually
 
 1. To write a style in dash-case, type the following:
 
-    <code-example language="html">&lt;nav [style.background-color]="expression"&gt;&lt;/nav&gt;</code-example>
+   <code-example language="html">&lt;nav [style.background-color]="expression"&gt;&lt;/nav&gt;</code-example>
 
 2. To write a style in camelCase, type the following:
 
-    <code-example language="html">&lt;nav [style.backgroundColor]="expression"&gt;&lt;/nav&gt;</code-example>
+   <code-example language="html">&lt;nav [style.backgroundColor]="expression"&gt;&lt;/nav&gt;</code-example>
 
 ## Binding to multiple styles
 
-To toggle multiple styles, bind to the `[style]` attribute&mdash;for example, `[style]="styleExpression"`.  The `styleExpression` can be one of:
+To toggle multiple styles, bind to the `[style]` attribute—for example, `[style]="styleExpression"`.  The `styleExpression` can be one of:
 
 * A string list of styles such as `"width: 100px; height: 100px; background-color: cornflowerblue;"`.
 * An object with style names as the keys and style values as the values, such as `{width: '100px', height: '100px', backgroundColor: 'cornflowerblue'}`.
@@ -86,14 +86,15 @@ If there are multiple bindings to the same style attribute, Angular uses [stylin
 
 The following table summarizes style binding syntax.
 
-| Binding Type                    | Syntax                      | Input Type                                                                 | Example Input Values |
-|:---                             |:---                         |:---                                                                        |:---                  |
-| Single style binding            | `[style.width]="width"`     | <code>string &verbar; undefined &verbar; null</code>                       | `"100px"`                           |
-| Single style binding with units | `[style.width.px]="width"`  | <code>number &verbar; undefined &verbar; null</code>                       | `100`                               |
-| Multi-style binding             | `[style]="styleExpression"` | `string`                                                                   | `"width: 100px; height: 100px"`     |
-| Multi-style binding             | `[style]="styleExpression"` | <code>Record&lt;string, string &verbar; undefined &verbar; null&gt;</code> | `{width: '100px', height: '100px'}` |
+| Binding Type | Syntax | Input Type | Example Input Values |
+| :----------- | :----- | :--------- | :------------------- |
+| Single style binding | `[style.width]="width"` | <code>string &verbar; undefined &verbar; null</code> | `"100px"` |
+| Single style binding with units | `[style.width.px]="width"` | <code>number &verbar; undefined &verbar; null</code> | `100` |
+| Multi-style binding | `[style]="styleExpression"` | `string` | `"width: 100px; height: 100px"` |
+| Multi-style binding | `[style]="styleExpression"` | <code>Record&lt;string, string &verbar; undefined &verbar; null></code> | `{width: '100px', height: '100px'}` |
 
 {@a styling-precedence}
+
 ## Styling precedence
 
 A single HTML element can have its CSS class list and style values bound to multiple sources (for example, host bindings from multiple directives).

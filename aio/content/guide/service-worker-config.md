@@ -4,11 +4,11 @@
 
 A basic understanding of the following:
 
-*   [Service Worker in Production](guide/service-worker-devops)
+* [Service Worker in Production](guide/service-worker-devops)
 
 The `ngsw-config.json` configuration file specifies which files and data URLs the Angular service worker should cache and how it should update the cached files and data.
 The [Angular CLI](cli) processes the configuration file during `ng build`.
-Manually, process it with the `ngsw-config` tool \(where `<project-name>` is the name of the project being built\):
+Manually, process it with the `ngsw-config` tool (where `<project-name>` is the name of the project being built):
 
 <code-example format="shell" language="shell">
 
@@ -17,52 +17,52 @@ Manually, process it with the `ngsw-config` tool \(where `<project-name>` is the
 </code-example>
 
 The configuration file uses the JSON format.
-All file paths must begin with `/`, which corresponds to the deployment directory &mdash;usually `dist/<project-name>` in CLI projects.
+All file paths must begin with `/`, which corresponds to the deployment directory —usually `dist/<project-name>` in CLI projects.
 
 <a id="glob-patterns"></a>
 
-Unless otherwise commented, patterns use a **limited*** glob format that internally will be converted into regex:
+Unless otherwise commented, patterns use a **limited\*** glob format that internally will be converted into regex:
 
 | Glob formats | Details |
-|:---          |:---     |
-| `**`         | Matches 0 or more path segments                                                                        |
-| `*`          | Matches 0 or more characters excluding `/`                                                             |
-| `?`          | Matches exactly one character excluding `/`                                                            |
-| `!` prefix   | Marks the pattern as being negative, meaning that only files that don't match the pattern are included |
+| :----------- | :------ |
+| `**` | Matches 0 or more path segments |
+| `*` | Matches 0 or more characters excluding `/` |
+| `?` | Matches exactly one character excluding `/` |
+| `!` prefix | Marks the pattern as being negative, meaning that only files that don't match the pattern are included |
 
 <div class="alert is-helpful">
 
   **\*** Pay attention that some characters with a special meaning in a regular expression are not escaped and also the pattern is not wrapped in `^`/`$` in the internal glob to regex conversion.
 
-  *   `$` is a special character in regex that matches the end of the string and will not be automatically escaped when converting the glob pattern to a regular expression.
-      If you want to literally match the `$` character, you have to escape it yourself (with `\\$`).
+- `$` is a special character in regex that matches the end of the string and will not be automatically escaped when converting the glob pattern to a regular expression.
+  If you want to literally match the `$` character, you have to escape it yourself (with `\\$`).
 
-      <div class="alert is-important">
+  <div class="alert is-important">
 
-        For example, the glob pattern `/foo/bar/$value` results in an unmatchable expression, because it is impossible to have a string that has any characters after it has ended.
+    For example, the glob pattern `/foo/bar/$value` results in an unmatchable expression, because it is impossible to have a string that has any characters after it has ended.
 
-      </div>
+  </div>
 
-  *   The pattern will not be automatically wrapped in `^` and `$` when converting it to a regular expression.
-      Therefore, the patterns will partially match the request URLs.
-      If you want your patterns to match the beginning and/or end of URLs, you can add `^`/`$` yourself.
+- The pattern will not be automatically wrapped in `^` and `$` when converting it to a regular expression.
+  Therefore, the patterns will partially match the request URLs.
+  If you want your patterns to match the beginning and/or end of URLs, you can add `^`/`$` yourself.
 
-      <div class="alert is-important">
+  <div class="alert is-important">
 
-        For example, the glob pattern `/foo/bar/*.js` will match both `.js` and `.json` files.
-        If you want to only match `.js` files, use `/foo/bar/*.js$`.
+    For example, the glob pattern `/foo/bar/*.js` will match both `.js` and `.json` files.
+    If you want to only match `.js` files, use `/foo/bar/*.js$`.
 
-      </div>
+  </div>
 
 </div>
 
 Example patterns:
 
-| Patterns     | Details |
-|:---          |:---     |
-| `/**/*.html` | Specifies all HTML files              |
-| `/*.html`    | Specifies only HTML files in the root |
-| `!/**/*.map` | Exclude all sourcemaps                |
+| Patterns | Details |
+| :------- | :------ |
+| `/**/*.html` | Specifies all HTML files |
+| `/*.html` | Specifies only HTML files in the root |
+| `!/**/*.map` | Exclude all sourcemaps |
 
 The following sections describe each property of the configuration file.
 
@@ -144,10 +144,10 @@ It identifies this particular group of assets between versions of the configurat
 The `installMode` determines how these resources are initially cached.
 The `installMode` can be either of two values:
 
-| Values     | Details |
-|:---        |:---     |
-| `prefetch` | Tells the Angular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline.                                                                                                                       |
-| `lazy`     | Does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
+| Values | Details |
+| :----- | :------ |
+| `prefetch` | Tells the Angular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline. |
+| `lazy` | Does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
 
 Defaults to `prefetch`.
 
@@ -156,10 +156,10 @@ Defaults to `prefetch`.
 For resources already in the cache, the `updateMode` determines the caching behavior when a new version of the application is discovered.
 Any resources in the group that have changed since the previous version are updated in accordance with `updateMode`.
 
-| Values     | Details |
-|:---        |:---     |
-| `prefetch` | Tells the service worker to download and cache the changed resources immediately.                                                                                                                                                        |
-| `lazy`     | Tells the service worker to not cache those resources. Instead, it treats them as unrequested and waits until they're requested again before updating them. An `updateMode` of `lazy` is only valid if the `installMode` is also `lazy`. |
+| Values | Details |
+| :----- | :------ |
+| `prefetch` | Tells the service worker to download and cache the changed resources immediately. |
+| `lazy` | Tells the service worker to not cache those resources. Instead, it treats them as unrequested and waits until they're requested again before updating them. An `updateMode` of `lazy` is only valid if the `installMode` is also `lazy`. |
 
 Defaults to the value `installMode` is set to.
 
@@ -168,9 +168,9 @@ Defaults to the value `installMode` is set to.
 This section describes the resources to cache, broken up into the following groups:
 
 | Resource groups | Details |
-|:---             |:---     |
-| `files`         | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files.                                                                                                                                                                                                                                                                   |
-| `urls`          | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *\(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.\)* |
+| :-------------- | :------ |
+| `files` | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files. |
+| `urls` | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)* |
 
 ### `cacheQueryOptions`
 
@@ -179,8 +179,8 @@ They are passed to the browsers `Cache#match` function.
 See [MDN](https://developer.mozilla.org/docs/Web/API/Cache/match) for details.
 Currently, only the following options are supported:
 
-| Options        | Details |
-|:---            |:---     |
+| Options | Details |
+| :------ | :------ |
 | `ignoreSearch` | Ignore query parameters. Defaults to `false`. |
 
 ## `dataGroups`
@@ -244,17 +244,17 @@ Similar to `assetGroups`, every data group has a `name` which uniquely identifie
 
 A list of URL patterns.
 URLs that match these patterns are cached according to this data group's policy.
-Only non-mutating requests \(GET and HEAD\) are cached.
+Only non-mutating requests (GET and HEAD) are cached.
 
-*   Negative glob patterns are not supported
-*   `?` is matched literally; that is, it matches *only* the character `?`
+* Negative glob patterns are not supported
+* `?` is matched literally; that is, it matches *only* the character `?`
 
 ### `version`
 
 Occasionally APIs change formats in a way that is not backward-compatible.
 A new version of the application might not be compatible with the old API format and thus might not be compatible with existing cached resources from that API.
 
-`version` provides a mechanism to indicate that the resources being cached have been updated in a backwards-incompatible way, and that the old cache entries &mdash;those from previous versions&mdash; should be discarded.
+`version` provides a mechanism to indicate that the resources being cached have been updated in a backwards-incompatible way, and that the old cache entries —those from previous versions— should be discarded.
 
 `version` is an integer field and defaults to `1`.
 
@@ -264,7 +264,7 @@ This section defines the policy by which matching requests are cached.
 
 #### `maxSize`
 
-\(required\) The maximum number of entries, or responses, in the cache.
+(required) The maximum number of entries, or responses, in the cache.
 Open-ended caches can grow in unbounded ways and eventually exceed storage quotas, calling for eviction.
 
 #### `maxAge`
@@ -273,12 +273,12 @@ Open-ended caches can grow in unbounded ways and eventually exceed storage quota
 `maxAge` is a duration string, using the following unit suffixes:
 
 | Suffixes | Details |
-|:---      |:---     |
-| `d`      | Days         |
-| `h`      | Hours        |
-| `m`      | Minutes      |
-| `s`      | Seconds      |
-| `u`      | Milliseconds |
+| :------- | :------ |
+| `d` | Days |
+| `h` | Hours |
+| `m` | Minutes |
+| `s` | Seconds |
+| `u` | Milliseconds |
 
 For example, the string `3d12h` caches content for up to three and a half days.
 
@@ -289,12 +289,12 @@ The network timeout is how long the Angular service worker waits for the network
 `timeout` is a duration string, using the following unit suffixes:
 
 | Suffixes | Details |
-|:---      |:---     |
-| `d`      | Days         |
-| `h`      | Hours        |
-| `m`      | Minutes      |
-| `s`      | Seconds      |
-| `u`      | Milliseconds |
+| :------- | :------ |
+| `d` | Days |
+| `h` | Hours |
+| `m` | Minutes |
+| `s` | Seconds |
+| `u` | Milliseconds |
 
 For example, the string `5s30u` translates to five seconds and 30 milliseconds of network timeout.
 
@@ -303,21 +303,21 @@ For example, the string `5s30u` translates to five seconds and 30 milliseconds o
 The Angular service worker can use either of two caching strategies for data resources.
 
 | Caching strategies | Details |
-|:---                |:---     |
-| `performance`      | The default, optimizes for responses that are as fast as possible. If a resource exists in the cache, the cached version is used, and no network request is made. This allows for some staleness, depending on the `maxAge`, in exchange for better performance. This is suitable for resources that don't change often; for example, user avatar images. |
-| `freshness`        | Optimizes for currency of data, preferentially fetching requested data from the network. Only if the network times out, according to `timeout`, does the request fall back to the cache. This is useful for resources that change frequently; for example, account balances.                                                                              |
+| :----------------- | :------ |
+| `performance` | The default, optimizes for responses that are as fast as possible. If a resource exists in the cache, the cached version is used, and no network request is made. This allows for some staleness, depending on the `maxAge`, in exchange for better performance. This is suitable for resources that don't change often; for example, user avatar images. |
+| `freshness` | Optimizes for currency of data, preferentially fetching requested data from the network. Only if the network times out, according to `timeout`, does the request fall back to the cache. This is useful for resources that change frequently; for example, account balances. |
 
 <div class="alert is-helpful">
 
-You can also emulate a third strategy, [staleWhileRevalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate), which returns cached data \(if available\), but also fetches fresh data from the network in the background for next time.
+You can also emulate a third strategy, [staleWhileRevalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate), which returns cached data (if available), but also fetches fresh data from the network in the background for next time.
 To use this strategy set `strategy` to `freshness` and `timeout` to `0u` in `cacheConfig`.
 
 This essentially does the following:
 
-1.  Try to fetch from the network first.
-1.  If the network request does not complete after 0ms \(that is, immediately\), fall back to the cache \(ignoring cache age\).
-1.  Once the network request completes, update the cache for future requests.
-1.  If the resource does not exist in the cache, wait for the network request anyway.
+1. Try to fetch from the network first.
+1. If the network request does not complete after 0ms (that is, immediately), fall back to the cache (ignoring cache age).
+1. Once the network request completes, update the cache for future requests.
+1. If the resource does not exist in the cache, wait for the network request anyway.
 
 </div>
 
@@ -327,10 +327,10 @@ Whether the Angular service worker should cache opaque responses or not.
 
 If not specified, the default value depends on the data group's configured strategy:
 
-| Strategies                             | Details |
-|:---                                    |:---     |
-| Groups with the `freshness` strategy   | The default value is `true` \(cache opaque responses\). These groups will request the data anew every time, only falling back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response.                                    |
-| Groups with the `performance` strategy | The default value is `false` \(do not cache opaque responses\). These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
+| Strategies | Details |
+| :--------- | :------ |
+| Groups with the `freshness` strategy | The default value is `true` (cache opaque responses). These groups will request the data anew every time, only falling back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
+| Groups with the `performance` strategy | The default value is `false` (do not cache opaque responses). These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
 
 <div class="callout is-important">
 
@@ -340,7 +340,7 @@ In case you are not familiar, an [opaque response][WhatwgFetchSpecConceptFiltere
 One of the characteristics of an opaque response is that the service worker is not allowed to read its status, meaning it can't check if the request was successful or not.
 See [Introduction to fetch()][GoogleDeveloperWebUpdates201503IntroductionToFetchResponseTypes] for more details.
 
-If you are not able to implement CORS &mdash;for example, if you don't control the origin&mdash; prefer using the `freshness` strategy for resources that result in opaque responses.
+If you are not able to implement CORS —for example, if you don't control the origin— prefer using the `freshness` strategy for resources that result in opaque responses.
 
 </div>
 
@@ -357,14 +357,14 @@ This optional section enables you to specify a custom list of URLs that will be 
 The ServiceWorker redirects navigation requests that don't match any `asset` or `data` group to the specified [index file](#index-file).
 A request is considered to be a navigation request if:
 
-*   Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
-*   It accepts a `text/html` response \(as determined by the value of the `Accept` header\)
-*   Its URL matches certain criteria \(see the following\)
+* Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
+* It accepts a `text/html` response (as determined by the value of the `Accept` header)
+* Its URL matches certain criteria (see the following)
 
 By default, these criteria are:
 
-*   The URL must not contain a file extension \(that is, a `.`\) in the last path segment
-*   The URL must not contain `__`
+* The URL must not contain a file extension (that is, a `.`) in the last path segment
+* The URL must not contain `__`
 
 <div class="alert is-helpful">
 
@@ -375,10 +375,10 @@ To configure whether navigation requests are sent through to the network or not,
 ### Matching navigation request URLs
 
 While these default criteria are fine in most cases, it is sometimes desirable to configure different rules.
-For example, you might want to ignore specific routes \(that are not part of the Angular app\) and pass them through to the server.
+For example, you might want to ignore specific routes (that are not part of the Angular app) and pass them through to the server.
 
 This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that are matched at runtime.
-It can contain both negative patterns \(that is, patterns starting with `!`\) and non-negative patterns and URLs.
+It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.
 
 Only requests whose URLs match *any* of the non-negative URLs/patterns and *none* of the negative ones are considered navigation requests.
 The URL query is ignored when matching.
@@ -411,9 +411,9 @@ This optional property enables you to configure how the service worker handles n
 </code-example>
 
 | Possible values | Details |
-|:---             |:---     |
-| `'performance'` | The default setting. Serves the specified [index file](#index-file), which is typically cached.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `'freshness'`   | Passes the requests through to the network and falls back to the `performance` behavior when offline. This value is useful when the server redirects the navigation requests elsewhere using an HTTP redirect \(3xx status code\). Reasons for using this value include: <ul> <li> Redirecting to an authentication website when authentication is not handled by the application </li> <li> Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign </li> <li> Redirecting to a different website, such as a server-status page, while a page is temporarily down </li> </ul> |
+| :-------------- | :------ |
+| `'performance'` | The default setting. Serves the specified [index file](#index-file), which is typically cached. |
+| `'freshness'` | Passes the requests through to the network and falls back to the `performance` behavior when offline. This value is useful when the server redirects the navigation requests elsewhere using an HTTP redirect (3xx status code). Reasons for using this value include: <ul> <li> Redirecting to an authentication website when authentication is not handled by the application </li> <li> Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign </li> <li> Redirecting to a different website, such as a server-status page, while a page is temporarily down </li> </ul> |
 
 <div class="alert is-important">
 

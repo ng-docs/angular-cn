@@ -14,10 +14,10 @@ Some pipes require at least one parameter and allow more optional parameters, su
 
 The tabs in the following example demonstrates toggling between two different formats (`'shortDate'` and `'fullDate'`):
 
-*   The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) (named `date`) to show the date as **04/15/88**.
-*   The `hero-birthday2.component.ts` component binds the pipe's format parameter to the component's `format` property in the `template` section, and adds a button for a click event bound to the component's `toggleFormat()` method.
-*   The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form
-(`'shortDate'`) and a longer form (`'fullDate'`).
+* The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) (named `date`) to show the date as **04/15/88**.
+* The `hero-birthday2.component.ts` component binds the pipe's format parameter to the component's `format` property in the `template` section, and adds a button for a click event bound to the component's `toggleFormat()` method.
+* The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form
+  (`'shortDate'`) and a longer form (`'fullDate'`).
 
 <code-tabs>
     <code-pane header="src/app/app.component.html" region="format-birthday" path="pipes/src/app/app.component.html"></code-pane>

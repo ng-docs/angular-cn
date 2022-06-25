@@ -6,34 +6,34 @@ The marked text includes text marked with `i18n`, attributes marked with `i18n-`
 
 Complete the following steps to create and update translation files for your project.
 
-1.  [Extract the source language file][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile].
-    1.  Optionally, change the location, format, and name.
-1.  Copy the source language file to [create a translation file for each language][AioGuideI18nCommonTranslationFilesCreateATranslationFileForEachLanguage].
-1.  [Translate each translation file][AioGuideI18nCommonTranslationFilesTranslateEachTranslationFile].
-1.  Translate plurals and alternate expressions separately.
-    1.  [Translate plurals][AioGuideI18nCommonTranslationFilesTranslatePlurals].
-    1.  [Translate alternate expressions][AioGuideI18nCommonTranslationFilesTranslateAlternateExpressions].
-    1.  [Translate nested expressions][AioGuideI18nCommonTranslationFilesTranslateNestedExpressions].
+1. [Extract the source language file][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile].
+   1. Optionally, change the location, format, and name.
+1. Copy the source language file to [create a translation file for each language][AioGuideI18nCommonTranslationFilesCreateATranslationFileForEachLanguage].
+1. [Translate each translation file][AioGuideI18nCommonTranslationFilesTranslateEachTranslationFile].
+1. Translate plurals and alternate expressions separately.
+   1. [Translate plurals][AioGuideI18nCommonTranslationFilesTranslatePlurals].
+   1. [Translate alternate expressions][AioGuideI18nCommonTranslationFilesTranslateAlternateExpressions].
+   1. [Translate nested expressions][AioGuideI18nCommonTranslationFilesTranslateNestedExpressions].
 
 ## Extract the source language file
 
 To extract the source language file, complete the following actions.
 
-1.  Open a terminal window.
-1.  Change to the root directory of your project.
-1.  Run the following CLI command.
+1. Open a terminal window.
+1. Change to the root directory of your project.
+1. Run the following CLI command.
 
-    <code-example path="i18n/doc-files/commands.sh" region="extract-i18n-default"></code-example>
+   <code-example path="i18n/doc-files/commands.sh" region="extract-i18n-default"></code-example>
 
 The `extract-i18n` command creates a source language file named `messages.xlf` in the root directory of your project.
-For more information about the XML Localization Interchange File Format \(XLIFF, version 1.2\), see [XLIFF][WikipediaWikiXliff].
+For more information about the XML Localization Interchange File Format (XLIFF, version 1.2), see [XLIFF][WikipediaWikiXliff].
 
 Use the following [`extract-i18n`][AioCliExtractI18n] command options to change the source language file location, format, and file name.
 
-| Command option  | Details |
-|:---             |:---     |
-| `--format`      | Set the format of the output file    |
-| `--outFile`     | Set the name of the output file      |
+| Command option | Details |
+| :------------- | :------ |
+| `--format` | Set the format of the output file |
+| `--outFile` | Set the name of the output file |
 | `--output-path` | Set the path of the output directory |
 
 ### Change the source language file location
@@ -50,13 +50,13 @@ The following example specifies the output path as an option.
 
 The `extract-i18n` command creates files in the following translation formats.
 
-| Translation format | Details                                                                                                          | File extension |
-|:---                |:---                                                                                                              |:---            |
-| ARB                | [Application Resource Bundle][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]           | `.arb`            |
-| JSON               | [JavaScript Object Notation][JsonMain]                                                                           | `.json`           |
-| XLIFF 1.2          | [XML Localization Interchange File Format, version 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                | `.xlf`            |
-| XLIFF 2            | [XML Localization Interchange File Format, version 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf`            |
-| XMB                | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                 | `.xmb` \(`.xtb`\) |
+| Translation format | Details | File extension |
+| :----------------- | :------ | :------------- |
+| ARB | [Application Resource Bundle][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification] | `.arb` |
+| JSON | [JavaScript Object Notation][JsonMain] | `.json` |
+| XLIFF 1.2 | [XML Localization Interchange File Format, version 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml] | `.xlf` |
+| XLIFF 2 | [XML Localization Interchange File Format, version 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf` |
+| XMB | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb] | `.xmb` (`.xtb`) |
 
 Specify the translation format explicitly with the `--format` command option.
 
@@ -86,46 +86,50 @@ The following example demonstrates naming the output file.
 
 To create a translation file for a locale or language, complete the following actions.
 
-1.  [Extract the source language file][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile].
-1.  Make a copy of the source language file to create a *translation* file for each language.
-1.  Rename the *translation* file to add the locale.
+1. [Extract the source language file][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile].
 
-    <code-example language="file">
+1. Make a copy of the source language file to create a *translation* file for each language.
 
-    messages.xlf --&gt; message.{locale}.xlf
+1. Rename the *translation* file to add the locale.
 
-    </code-example>
+   <code-example language="file">
 
-1.  Create a new directory at your project root named `locale`.
+   messages.xlf --&gt; message.{locale}.xlf
 
-    <code-example language="file">
+   </code-example>
 
-    src/locale
+1. Create a new directory at your project root named `locale`.
 
-    </code-example>
+   <code-example language="file">
 
-1.  Move the *translation* file to the new directory.
-1.  Send the *translation* file to your translator.
-1.  Repeat the above steps for each language you want to add to your application.
+   src/locale
+
+   </code-example>
+
+1. Move the *translation* file to the new directory.
+
+1. Send the *translation* file to your translator.
+
+1. Repeat the above steps for each language you want to add to your application.
 
 ### `extract-i18n` example for French
 
 For example, to create a French translation file, complete the following actions.
 
-1.  Run the `extract-18n` command.
-1.  Make a copy of the `messages.xlf` source language file.
-1.  Rename the copy to `messages.fr.xlf` for the French language \(`fr`\) translation.
-1.  Move the `fr` translation file to the `src/locale` directory.
-1.  Send the `fr` translation file to the translator.
+1. Run the `extract-18n` command.
+1. Make a copy of the `messages.xlf` source language file.
+1. Rename the copy to `messages.fr.xlf` for the French language (`fr`) translation.
+1. Move the `fr` translation file to the `src/locale` directory.
+1. Send the `fr` translation file to the translator.
 
 ## Translate each translation file
 
 Unless you are fluent in the language and have the time to edit translations, you will likely complete the following steps.
 
-1.  Send each translation file to a translator.
-1.  The translator uses an XLIFF file editor complete the following actions.
-    1.  Create the translation.
-    1.  Edit the translation.
+1. Send each translation file to a translator.
+1. The translator uses an XLIFF file editor complete the following actions.
+   1. Create the translation.
+   1. Edit the translation.
 
 ### Translation process example for French
 
@@ -133,32 +137,32 @@ To demonstrate the process, review the `messages.fr.xlf` file in the [Example An
 
 The following actions describe the translation process for French.
 
-1.  Open `messages.fr.xlf` and find the first `<trans-unit>` element.
-    This is a *translation unit*, also known as a *text node*, that represents the translation of the `<h1>` greeting tag that was previously marked with the `i18n` attribute.
+1. Open `messages.fr.xlf` and find the first `<trans-unit>` element.
+   This is a *translation unit*, also known as a *text node*, that represents the translation of the `<h1>` greeting tag that was previously marked with the `i18n` attribute.
 
-    <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello-before"></code-example>
+   <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello-before"></code-example>
 
-    The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
+   The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
 
-1.  Duplicate the `<source>... </source>` element in the text node, rename it to `target`, and then replace the content with the French text.
+1. Duplicate the `<source>... </source>` element in the text node, rename it to `target`, and then replace the content with the French text.
 
-    <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;, after translation)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello"></code-example>
+   <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;, after translation)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello"></code-example>
 
-    In a more complex translation, the information and context in the [description and meaning elements][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] help you choose the right words for translation.
+   In a more complex translation, the information and context in the [description and meaning elements][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] help you choose the right words for translation.
 
-1.  Translate the other text nodes.
-    The following example displays the way to translate.
+1. Translate the other text nodes.
+   The following example displays the way to translate.
 
-    <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-other-nodes"></code-example>
+   <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-other-nodes"></code-example>
 
-    <div class="alert is-important">
+   <div class="alert is-important">
 
-    Don't change the IDs for translation units.
-    Each `id` attribute is generated by Angular and depends on the content of the component text and the assigned meaning.
-    If you change either the text or the meaning, then the `id` attribute changes.
-    For more about managing text updates and IDs, see [custom IDs][AioGuideI18nOptionalManageMarkedText].
+   Don't change the IDs for translation units.
+   Each `id` attribute is generated by Angular and depends on the content of the component text and the assigned meaning.
+   If you change either the text or the meaning, then the `id` attribute changes.
+   For more about managing text updates and IDs, see [custom IDs][AioGuideI18nOptionalManageMarkedText].
 
-    </div>
+   </div>
 
 ## Translate plurals
 
@@ -174,9 +178,9 @@ For language plural rules, see [CLDR plural rules][GithubUnicodeOrgCldrStagingCh
 
 To translate a `plural`, translate the ICU format match values.
 
-*   `just now`
-*   `one minute ago`
-*   `<x id="INTERPOLATION" equiv-text="{{minutes}}"/> minutes ago`
+* `just now`
+* `one minute ago`
+* `<x id="INTERPOLATION" equiv-text="{{minutes}}"/> minutes ago`
 
 The following example displays the way to translate.
 
@@ -193,7 +197,7 @@ The following example displays a `select` ICU expression in the component templa
 <code-example header="src/app/app.component.html" path="i18n/src/app/app.component.html" region="i18n-select"></code-example>
 
 In this example, Angular extracts the expression into two translation units.
-The first contains the text outside of the `select` clause, and uses a placeholder for `select` \(`<x id="ICU">`\):
+The first contains the text outside of the `select` clause, and uses a placeholder for `select` (`<x id="ICU">`):
 
 <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-select-1"></code-example>
 
@@ -233,11 +237,12 @@ The following example displays both translation units after translating.
 
 ## What's next
 
-*   [Merge translations into the app][AioGuideI18nCommonMerge]
+* [Merge translations into the app][AioGuideI18nCommonMerge]
 
 <!-- links -->
 
 [AioCliMain]: cli "CLI Overview and Command Reference | Angular"
+
 [AioCliExtractI18n]: cli/extract-i18n "ng extract-i18n | CLI | Angular"
 
 [AioGuideGlossaryCommandLineInterfaceCli]: guide/glossary#command-line-interface-cli "command-line interface (CLI) - Glossary | Angular"
@@ -245,13 +250,19 @@ The following example displays both translation units after translating.
 [AioGuideI18nCommonMerge]: guide/i18n-common-merge "Merge translations into the application | Angular"
 
 [AioGuideI18nCommonPrepare]: guide/i18n-common-prepare "Prepare templates for translations | Angular"
+
 [AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings]: guide/i18n-common-prepare#add-helpful-descriptions-and-meanings "Add helpful descriptions and meanings - Prepare component for translation | Angular"
 
 [AioGuideI18nCommonTranslationFilesCreateATranslationFileForEachLanguage]: guide/i18n-common-translation-files#create-a-translation-file-for-each-language "Create a translation file for each language - Work with translation files | Angular"
+
 [AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile]: guide/i18n-common-translation-files#extract-the-source-language-file "Extract the source language file - Work with translation files | Angular"
+
 [AioGuideI18nCommonTranslationFilesTranslateAlternateExpressions]: guide/i18n-common-translation-files#translate-alternate-expressions "Translate alternate expressions - Work with translation files | Angular"
+
 [AioGuideI18nCommonTranslationFilesTranslateEachTranslationFile]: guide/i18n-common-translation-files#translate-each-translation-file "Translate each translation file - Work with translation files | Angular"
+
 [AioGuideI18nCommonTranslationFilesTranslateNestedExpressions]: guide/i18n-common-translation-files#translate-nested-expressions "Translate nested expressions - Work with translation files | Angular"
+
 [AioGuideI18nCommonTranslationFilesTranslatePlurals]: guide/i18n-common-translation-files#translate-plurals "Translate plurals - Work with translation files | Angular"
 
 [AioGuideI18nExample]: guide/i18n-example "Example Angular Internationalization application | Angular"
@@ -269,6 +280,7 @@ The following example displays both translation units after translating.
 [JsonMain]: https://www.json.org "Introducing JSON | JSON"
 
 [OasisOpenDocsXliffXliffCoreXliffCoreHtml]: http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html "XLIFF Version 1.2 Specification | Oasis Open Docs"
+
 [OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html]: http://docs.oasis-open.org/xliff/xliff-core/v2.0/cos01/xliff-core-v2.0-cos01.html "XLIFF Version 2.0 | Oasis Open Docs"
 
 [UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]: http://cldr.unicode.org/development/development-process/design-proposals/xmb "XMB | CLDR - Unicode Common Locale Data Repository | Unicode"

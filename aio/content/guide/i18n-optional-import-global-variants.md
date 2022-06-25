@@ -15,13 +15,14 @@ Global variants of the locale data are available in [`@angular/common/locales/gl
 
 ## `import` example for French
 
-The following example imports the global variants for French \(`fr`\).
+The following example imports the global variants for French (`fr`).
 
 <code-example header="src/app/app.module.ts" path="i18n/doc-files/app.module.ts" region="global-locale"></code-example>
 
 <!-- links -->
 
 [AioCliMain]: cli "CLI Overview and Command Reference | Angular"
+
 [AioCliBuild]: cli/build "ng build | CLI | Angular"
 
 <!-- external links -->

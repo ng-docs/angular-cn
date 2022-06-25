@@ -4,9 +4,11 @@ Angular makes use of observables as an interface to handle a variety of common a
 For example:
 
 <!--todo: Have Alex review this -->
+
 <!-- *   You can define [custom events](guide/event-binding#custom-events-with-eventemitter) that send observable output data from a child to a parent component -->
-*   The HTTP module uses observables to handle AJAX requests and responses
-*   The Router and Forms modules use observables to listen for and respond to user-input events
+
+* The HTTP module uses observables to handle AJAX requests and responses
+* The Router and Forms modules use observables to listen for and respond to user-input events
 
 ## Transmitting data between components
 
@@ -33,12 +35,14 @@ Angular's `HttpClient` returns observables from HTTP method calls.
 For instance, `http.get('/api')` returns an observable.
 This provides several advantages over promise-based HTTP APIs:
 
-*   Observables do not mutate the server response \(as can occur through chained `.then()` calls on promises\).
-    Instead, you can use a series of operators to transform values as needed.
+* Observables do not mutate the server response (as can occur through chained `.then()` calls on promises).
+  Instead, you can use a series of operators to transform values as needed.
 
-*   HTTP requests are cancellable through the `unsubscribe()` method
-*   Requests can be configured to get progress event updates
-*   Failed requests can be retried easily
+* HTTP requests are cancellable through the `unsubscribe()` method
+
+* Requests can be configured to get progress event updates
+
+* Failed requests can be retried easily
 
 ## Async pipe
 

@@ -8,87 +8,87 @@ This section builds on the previous steps in the [Getting Started](start "Try it
 
 A best practice is to run your project locally before you deploy it. To run your project locally, you need the following installed on your computer:
 
-*   [Node.js](https://nodejs.org/en).
-*   The [Angular CLI](https://cli.angular.io).
-    From the terminal, install the Angular CLI globally with:
+* [Node.js](https://nodejs.org/en).
+* The [Angular CLI](https://cli.angular.io).
+  From the terminal, install the Angular CLI globally with:
 
-    <code-example format="shell" language="shell">
+  <code-example format="shell" language="shell">
 
-    npm install -g &commat;angular/cli
+  npm install -g &commat;angular/cli
 
-    </code-example>
+  </code-example>
 
-    With the Angular CLI, you can use the command `ng` to create new workspaces, new projects, serve your application during development, or produce builds to share or distribute.
+  With the Angular CLI, you can use the command `ng` to create new workspaces, new projects, serve your application during development, or produce builds to share or distribute.
 
 ## Running your application locally
 
-1.  Download the source code from your StackBlitz project by clicking the `Download Project` icon in the left menu, across from `Project`, to download your project as a zip archive.
+1. Download the source code from your StackBlitz project by clicking the `Download Project` icon in the left menu, across from `Project`, to download your project as a zip archive.
 
-    <div class="lightbox">
+   <div class="lightbox">
 
-    <img alt="Download the stackblitz project" src="generated/images/guide/start/download-project.png">
+   <img alt="Download the stackblitz project" src="generated/images/guide/start/download-project.png">
 
-    </div>
+   </div>
 
-1.  Unzip the archive and change directory to the newly created project. For example:
+1. Unzip the archive and change directory to the newly created project. For example:
+
+   <code-example format="shell" language="shell">
+
+   cd angular-ynqttp
+
+   </code-example>
+
+1. To download and install npm packages, use the following npm CLI command:
+
+   <code-example format="shell" language="shell">
+
+   npm install
+
+   </code-example>
+
+1. Use the following CLI command to run your application locally:
+
+   <code-example format="shell" language="shell">
+
+   ng serve
+
+   </code-example>
+
+1. To see your application in the browser, go to <http://localhost:4200/>.
+   If the default port 4200 is not available, you can specify another port with the port flag as in the following example:
 
     <code-example format="shell" language="shell">
 
-    cd angular-ynqttp
+   ng serve --port 4201
 
-    </code-example>
+   </code-example>
 
-1.  To download and install npm packages, use the following npm CLI command:
-
-    <code-example format="shell" language="shell">
-
-    npm install
-
-    </code-example>
-
-1.  Use the following CLI command to run your application locally:
-
-    <code-example format="shell" language="shell">
-
-    ng serve
-
-    </code-example>
-
-1.  To see your application in the browser, go to http://localhost:4200/.
-    If the default port 4200 is not available, you can specify another port with the port flag as in the following example:
-
-     <code-example format="shell" language="shell">
-
-    ng serve --port 4201
-
-    </code-example>
-
-    While serving your application, you can edit your code and see the changes update automatically in the browser.
-    To stop the `ng serve` command, press `Ctrl`+`c`.
+   While serving your application, you can edit your code and see the changes update automatically in the browser.
+   To stop the `ng serve` command, press `Ctrl`+`c`.
 
 <a id="building"></a>
 
 ## Building and hosting your application
 
-1.  To build your application for production, use the `build` command. By default, this command uses the `production` build configuration.
+1. To build your application for production, use the `build` command. By default, this command uses the `production` build configuration.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    ng build
+   ng build
 
-    </code-example>
+   </code-example>
 
-    This command creates a `dist` folder in the application root directory with all the files that a hosting service needs for serving your application.
+   This command creates a `dist` folder in the application root directory with all the files that a hosting service needs for serving your application.
 
-    <div class="alert is-helpful">
+   <div class="alert is-helpful">
 
-    If the above `ng build` command throws an error about missing packages, append the missing dependencies in your local project's `package.json` file to match the one in the downloaded StackBlitz project.
+   If the above `ng build` command throws an error about missing packages, append the missing dependencies in your local project's `package.json` file to match the one in the downloaded StackBlitz project.
 
-    </div>
+   </div>
 
-1.  Copy the contents of the `dist/my-project-name` folder to your web server.
-    Because these files are static, you can host them on any web server capable of serving files; such as `Node.js`, Java, .NET, or any backend such as [Firebase](https://firebase.google.com/docs/hosting), [Google Cloud](https://cloud.google.com/solutions/web-hosting), or [App Engine](https://cloud.google.com/appengine/docs/standard/python/getting-started/hosting-a-static-website).
-    For more information, see [Building & Serving](guide/build "Building and Serving Angular Apps") and [Deployment](guide/deployment "Deployment guide").
+1. Copy the contents of the `dist/my-project-name` folder to your web server.
+   Because these files are static, you can host them on any web server capable of serving files; such as `Node.js`, Java, .NET, or any backend such as [Firebase](https://firebase.google.com/docs/hosting), [Google Cloud](https://cloud.google.com/solutions/web-hosting), or [App Engine](https://cloud.google.com/appengine/docs/standard/python/getting-started/hosting-a-static-website).
+   For more information, see [Building & Serving](guide/build "Building and Serving Angular Apps") and [Deployment](guide/deployment "Deployment guide").
 
 ## What's next
 

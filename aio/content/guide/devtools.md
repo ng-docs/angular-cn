@@ -21,10 +21,10 @@ After installing Angular DevTools, find the extension under the Angular tab in y
 
 When you open the extension, you'll see two additional tabs:
 
-| Tabs                      | Details |
-|:---                       |:---     |
-| [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state.                    |
-| [Profiler](#profiler)     | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
+| Tabs | Details |
+| :--- | :------ |
+| [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state. |
+| [Profiler](#profiler) | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
 
 <div class="lightbox">
 
@@ -74,10 +74,10 @@ Angular DevTools displays their properties and metadata on the right-hand side o
 
 Navigate in the component tree using the mouse or the following keyboard shortcuts:
 
-| Keyboard shortcut     | Details |
-|:---                   |:---     |
-| Up and down arrows    | Select the previous and next nodes |
-| Left and right arrows | Collapse and expand a node         |
+| Keyboard shortcut | Details |
+| :---------------- | :------ |
+| Up and down arrows | Select the previous and next nodes |
+| Left and right arrows | Collapse and expand a node |
 
 To look up a component or directive by name use the search box above the component tree.
 To navigate to the next search match, press `Enter`.
@@ -185,7 +185,7 @@ When you select a bar, DevTools renders a bar chart with all the components and 
 Earlier on the change detection timeline, you can find how much time Angular spent in this cycle.
 Angular DevTools attempts to estimate the frame drop at this point to indicate when the execution of your application might impact the user experience.
 
-Angular DevTools also indicates what triggered the change detection \(that is, the change detection's source\).
+Angular DevTools also indicates what triggered the change detection (that is, the change detection's source).
 
 ### Understand component execution
 

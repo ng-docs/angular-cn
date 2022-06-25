@@ -113,7 +113,7 @@ Begin by putting re-usable, preparatory code in a *setup* function instead of `b
 <code-example header="app/demo/demo.spec.ts (setup)" path="testing/src/app/demo/demo.spec.ts" region="no-before-each-setup"></code-example>
 
 The `setup()` function returns an object literal with the variables, such as `masterService`, that a test might reference.
-You don't define *semi-global* variables \(for example, `let masterService: MasterService`\) in the body of the `describe()`.
+You don't define *semi-global* variables (for example, `let masterService: MasterService`) in the body of the `describe()`.
 
 Then each test invokes `setup()` in its first line, before continuing with steps that manipulate the test subject and assert expectations.
 
@@ -138,9 +138,9 @@ You can test a data service with an injected `HttpClient` spy as you would test 
 <div class="alert is-important">
 
 The `HeroService` methods return `Observables`.
-You must *subscribe* to an observable to \(a\) cause it to execute and \(b\) assert that the method succeeds or fails.
+You must *subscribe* to an observable to (a) cause it to execute and (b) assert that the method succeeds or fails.
 
-The `subscribe()` method takes a success \(`next`\) and fail \(`error`\) callback.
+The `subscribe()` method takes a success (`next`) and fail (`error`) callback.
 Make sure you provide *both* callbacks so that you capture errors.
 Neglecting to do so produces an asynchronous uncaught observable error that the test runner will likely attribute to a completely different test.
 

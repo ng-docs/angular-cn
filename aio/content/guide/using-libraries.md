@@ -37,33 +37,33 @@ TypeScript looks for types in the `node_modules/@types` directory by default, so
 If a library does not have typings available at `@types/`, you may use it by manually adding typings for it.
 To do this:
 
-1.  Create a `typings.d.ts` file in your `src/` directory.
-    This file is automatically included as global type definition.
+1. Create a `typings.d.ts` file in your `src/` directory.
+   This file is automatically included as global type definition.
 
-1.  Add the following code in `src/typings.d.ts`:
+1. Add the following code in `src/typings.d.ts`:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    declare module 'host' {
-      export interface Host {
-        protocol?: string;
-        hostname?: string;
-        pathname?: string;
-      }
-      export function parse(url: string, queryString?: string): Host;
-    }
+   declare module 'host' {
+     export interface Host {
+       protocol?: string;
+       hostname?: string;
+       pathname?: string;
+     }
+     export function parse(url: string, queryString?: string): Host;
+   }
 
-    </code-example>
+   </code-example>
 
-1.  In the component or file that uses the library, add the following code:
+1. In the component or file that uses the library, add the following code:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    import * as host from 'host';
-    const parsedUrl = host.parse('https://angular.io');
-    console.log(parsedUrl.hostname);
+   import * as host from 'host';
+   const parsedUrl = host.parse('https://angular.io');
+   console.log(parsedUrl.hostname);
 
-    </code-example>
+   </code-example>
 
 Define more typings as needed.
 
@@ -86,40 +86,40 @@ Configure the Angular CLI to do this at build time using the `scripts` and `styl
 
 For example, to use the [Bootstrap 4][GetbootstrapDocs40GettingStartedIntroduction] library
 
-1.  Install the library and the associated dependencies using the npm package manager:
+1. Install the library and the associated dependencies using the npm package manager:
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npm install jquery --save
-    npm install popper.js --save
-    npm install bootstrap --save
+   npm install jquery --save
+   npm install popper.js --save
+   npm install bootstrap --save
 
-    </code-example>
+   </code-example>
 
-1.  In the `angular.json` configuration file, add the associated script files to the `scripts` array:
+1. In the `angular.json` configuration file, add the associated script files to the `scripts` array:
 
-    <code-example format="json" language="json">
+   <code-example format="json" language="json">
 
-    "scripts": [
-      "node_modules/jquery/dist/jquery.slim.js",
-      "node_modules/popper.js/dist/umd/popper.js",
-      "node_modules/bootstrap/dist/js/bootstrap.js"
-    ],
+   "scripts": [
+     "node_modules/jquery/dist/jquery.slim.js",
+     "node_modules/popper.js/dist/umd/popper.js",
+     "node_modules/bootstrap/dist/js/bootstrap.js"
+   ],
 
-    </code-example>
+   </code-example>
 
-1.  Add the `bootstrap.css` CSS file to the `styles` array:
+1. Add the `bootstrap.css` CSS file to the `styles` array:
 
-    <code-example format="css" language="css">
+   <code-example format="css" language="css">
 
-    "styles": [
-      "node_modules/bootstrap/dist/css/bootstrap.css",
-      "src/styles.css"
-    ],
+   "styles": [
+     "node_modules/bootstrap/dist/css/bootstrap.css",
+     "src/styles.css"
+   ],
 
-    </code-example>
+   </code-example>
 
-1.  Run or restart the `ng serve` Angular CLI command to see Bootstrap 4 work in your application.
+1. Run or restart the `ng serve` Angular CLI command to see Bootstrap 4 work in your application.
 
 ### Using runtime-global libraries inside your app
 
@@ -182,6 +182,7 @@ If you do not add the interface for the script-defined extension, your IDE shows
 [AioCliUpdate]: cli/update "ng update | CLI |Angular"
 
 [AioGuideNpmPackages]: guide/npm-packages "Workspace npm dependencies | Angular"
+
 [AioGuideWorkspaceConfig]: guide/workspace-config "Angular workspace configuration | Angular"
 
 [AioResources]: resources "Explore Angular Resources | Angular"

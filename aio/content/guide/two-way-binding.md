@@ -13,16 +13,16 @@ See the <live-example></live-example> for a working example containing the code 
 
 To get the most out of two-way binding, you should have a basic understanding of the following concepts:
 
-*   [Property binding](guide/property-binding)
-*   [Event binding](guide/event-binding)
-*   [Inputs and Outputs](guide/inputs-outputs)
+* [Property binding](guide/property-binding)
+* [Event binding](guide/event-binding)
+* [Inputs and Outputs](guide/inputs-outputs)
 
 Two-way binding combines property binding with event binding:
 
-| Bindings                                   | Details |
-|:---                                        |:---     |
-| [Property binding](guide/property-binding) | Sets a specific element property.    |
-| [Event binding](guide/event-binding)       | Listens for an element change event. |
+| Bindings | Details |
+| :------- | :------ |
+| [Property binding](guide/property-binding) | Sets a specific element property. |
+| [Event binding](guide/event-binding) | Listens for an element change event. |
 
 ## Adding two-way data binding
 

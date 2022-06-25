@@ -2,7 +2,6 @@
 
 This topic explores some aspects of Angular text interpolation.
 
-
 ## Syntax
 
 Template expressions are similar to JavaScript.
@@ -23,7 +22,7 @@ Other notable differences from JavaScript syntax include:
 
 ## Expression context
 
-Interpolated expressions have a context&mdash;a particular part of the application to which the expression belongs.
+Interpolated expressions have a context—a particular part of the application to which the expression belongs.
 Typically, this context is the component instance.
 
 In the following snippet, the expression `recommended` and the expression `itemImageUrl2` refer to properties of the `AppComponent`.
@@ -50,7 +49,7 @@ Additionally, they can't call `console.log()` or `Math.max()` and they are restr
 
 ### Preventing name collisions
 
-The context against which an expression evaluates is the union of the template variables, the directive's context object&mdash;if it has one&mdash;and the component's members.
+The context against which an expression evaluates is the union of the template variables, the directive's context object—if it has one—and the component's members.
 If you reference a name that belongs to more than one of these namespaces, Angular applies the following logic to determine the context:
 
 1. The template variable name.
@@ -107,7 +106,7 @@ When using template expressions, follow these best practices:
 
   There is one exception to this behavior that applies to `*ngFor`.
   `*ngFor` has `trackBy` functionality that can deal with changing values in objects when iterating over them.
-  See [*ngFor with `trackBy`](guide/built-in-directives#ngfor-with-trackby) for details.
+  See [\*ngFor with `trackBy`](guide/built-in-directives#ngfor-with-trackby) for details.
 
   </div>
 

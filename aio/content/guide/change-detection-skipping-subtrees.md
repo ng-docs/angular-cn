@@ -6,10 +6,10 @@ Change detection is sufficiently fast for most applications. However, when an ap
 
 If you are confident that a part of the application is not affected by a state change, you can use [OnPush](https://angular.io/api/core/ChangeDetectionStrategy) to skip change detection in an entire component subtree.
 
-
 ## Using OnPush
 
 OnPush change detection instructs Angular that to only run change detection automatically for a component subtree when:
+
 * The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `==`
 * Angular handles an event within the component with OnPush change detection
 

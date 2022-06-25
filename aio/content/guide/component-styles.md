@@ -65,7 +65,7 @@ This is not recommended because the additional JavaScript cost of this style API
 
 ## Special selectors
 
-Component styles have a few special *selectors* from the world of shadow DOM style scoping \(described in the [CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1) page on the [W3C](https://www.w3.org) site\).
+Component styles have a few special *selectors* from the world of shadow DOM style scoping (described in the [CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1) page on the [W3C](https://www.w3.org) site).
 The following sections describe these selectors.
 
 ### :host
@@ -77,7 +77,7 @@ The `:host` pseudo-class selector may be used to create styles that target the h
 <code-example header="src/app/host-selector-example.component.ts" path="component-styles/src/app/host-selector-example.component.ts"></code-example>
 
 Creating the following style will target the component's host element.
-Any rule applied to this selector will affect the host element and all its descendants \(in this case, italicizing all contained text\).
+Any rule applied to this selector will affect the host element and all its descendants (in this case, italicizing all contained text).
 
 <code-example header="src/app/hero-details.component.css" path="component-styles/src/app/hero-details.component.css" region="host"></code-example>
 
@@ -95,7 +95,7 @@ Add selectors behind the `:host` to select child elements, for example using `:h
 
 <div class="alert is-helpful">
 
-You should not add selectors \(other than `:host-context`\) in front of the `:host` selector to style a component based on the outer context of the component's view.
+You should not add selectors (other than `:host-context`) in front of the `:host` selector to style a component based on the outer context of the component's view.
 Such selectors are not scoped to a component's view and will select the outer context, but it's not built-in behavior.
 Use `:host-context` selector for that purpose instead.
 
@@ -148,7 +148,7 @@ For more information, see the [View Encapsulation](guide/view-encapsulation) sec
 <div class="alert is-important">
 
 The shadow-piercing descendant combinator is deprecated and [support is being removed from major browsers](https://www.chromestatus.com/feature/6750456638341120) and tools.
-As such we plan to drop support in Angular \(for all 3 of `/deep/`, `>>>`, and `::ng-deep`\).
+As such we plan to drop support in Angular (for all 3 of `/deep/`, `>>>`, and `::ng-deep`).
 Until then `::ng-deep` should be preferred for a broader compatibility with the tools.
 
 </div>
@@ -159,9 +159,9 @@ Until then `::ng-deep` should be preferred for a broader compatibility with the 
 
 There are several ways to add styles to a component:
 
-*   By setting `styles` or `styleUrls` metadata
-*   Inline in the template HTML
-*   With CSS imports
+* By setting `styles` or `styleUrls` metadata
+* Inline in the template HTML
+* With CSS imports
 
 The scoping rules outlined earlier apply to each of these loading patterns.
 
@@ -258,7 +258,7 @@ See the [Styles configuration guide](guide/workspace-config#styles-and-scripts-c
 
 ### Non-CSS style files
 
-If you're building with the CLI, you can write style files in [sass](https://sass-lang.com), or [less](https://lesscss.org), and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions \(`.scss`, `.less`\) as in the following example:
+If you're building with the CLI, you can write style files in [sass](https://sass-lang.com), or [less](https://lesscss.org), and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions (`.scss`, `.less`) as in the following example:
 
 <code-example format="typescript" language="typescript">
 
@@ -273,7 +273,7 @@ If you're building with the CLI, you can write style files in [sass](https://sas
 
 The CLI build process runs the pertinent CSS preprocessor.
 
-When generating a component file with `ng generate component`, the CLI emits an empty CSS styles file \(`.css`\) by default.
+When generating a component file with `ng generate component`, the CLI emits an empty CSS styles file (`.css`) by default.
 Configure the CLI to default to your preferred CSS preprocessor as explained in the [Workspace configuration guide](guide/workspace-config#generation-schematics).
 
 <!-- links -->

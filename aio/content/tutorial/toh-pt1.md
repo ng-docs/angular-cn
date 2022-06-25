@@ -31,11 +31,11 @@ You always import the `Component` symbol from the Angular core library and annot
 
 The CLI generated three metadata properties:
 
-| Properties    | Details |
-|:---           |:---     |
-| `selector`    | The component's CSS element selector.               |
-| `templateUrl` | The location of the component's template file.      |
-| `styleUrls`   | The location of the component's private CSS styles. |
+| Properties | Details |
+| :--------- | :------ |
+| `selector` | The component's CSS element selector. |
+| `templateUrl` | The location of the component's template file. |
+| `styleUrls` | The location of the component's private CSS styles. |
 
 <a id="selector"></a>
 
@@ -45,7 +45,7 @@ The `ngOnInit()` is a [lifecycle hook](guide/lifecycle-hooks#oninit).
 Angular calls `ngOnInit()` shortly after creating a component.
 It's a good place to put initialization logic.
 
-Always `export` the component class so you can `import` it elsewhere &hellip; like in the `AppModule`.
+Always `export` the component class so you can `import` it elsewhere … like in the `AppModule`.
 
 ### Add a `hero` property
 
@@ -108,7 +108,7 @@ Modify the `hero.name` binding like this.
 
 The browser refreshes and now the hero's name is displayed in capital letters.
 
-The word `uppercase` in the interpolation binding, right after the pipe \(<code>&verbar;</code>\) character, activates the built-in `UppercasePipe`.
+The word `uppercase` in the interpolation binding, right after the pipe (<code>\|</code>) character, activates the built-in `UppercasePipe`.
 
 [Pipes](guide/pipes) are a good way to format strings, currency amounts, dates and other display data.
 Angular ships with several built-in pipes and you can create your own.
@@ -166,7 +166,7 @@ This is where you *opt-in* to the `FormsModule`.
 
 ### Import `FormsModule`
 
-Open `AppModule` \(`app.module.ts`\) and import the `FormsModule` symbol from the `@angular/forms` library.
+Open `AppModule` (`app.module.ts`) and import the `FormsModule` symbol from the `@angular/forms` library.
 
 <code-example path="toh-pt1/src/app/app.module.ts" header="app.module.ts (FormsModule symbol import)"
  region="formsmodule-js-import"></code-example>
@@ -217,12 +217,12 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You used the CLI to create a second `HeroesComponent`
-*   You displayed the `HeroesComponent` by adding it to the `AppComponent` shell
-*   You applied the `UppercasePipe` to format the name
-*   You used two-way data binding with the `ngModel` directive
-*   You learned about the `AppModule`
-*   You imported the `FormsModule` in the `AppModule` so that Angular would recognize and apply the `ngModel` directive
-*   You learned the importance of declaring components in the `AppModule` and appreciated that the CLI declared it for you
+* You used the CLI to create a second `HeroesComponent`
+* You displayed the `HeroesComponent` by adding it to the `AppComponent` shell
+* You applied the `UppercasePipe` to format the name
+* You used two-way data binding with the `ngModel` directive
+* You learned about the `AppModule`
+* You imported the `FormsModule` in the `AppModule` so that Angular would recognize and apply the `ngModel` directive
+* You learned the importance of declaring components in the `AppModule` and appreciated that the CLI declared it for you
 
 @reviewed 2022-02-28

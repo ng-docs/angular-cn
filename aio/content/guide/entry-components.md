@@ -6,7 +6,7 @@ Entry components are deprecated, for more information, see [entryComponents depr
 
 </div>
 
-An entry component is any component that Angular loads imperatively, \(which means you're not referencing it in the template\), by type.
+An entry component is any component that Angular loads imperatively, (which means you're not referencing it in the template), by type.
 You specify an entry component by bootstrapping it in an NgModule, or including it in a routing definition.
 
 <div class="alert is-helpful">
@@ -18,8 +18,8 @@ Additionally, there are components which you load imperatively; that is, entry c
 
 There are two main kinds of entry components:
 
-*   The bootstrapped root component
-*   A component you specify in a route definition
+* The bootstrapped root component
+* A component you specify in a route definition
 
 ## A bootstrapped entry component
 
@@ -43,7 +43,7 @@ The following is an example of specifying a bootstrapped component, `AppComponen
 
 </code-example>
 
-A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap process \(application launch\).
+A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap process (application launch).
 Other entry components are loaded dynamically by other means, such as with the router.
 
 Angular loads a root `AppComponent` dynamically because it's listed by type in `@NgModule.bootstrap`.
@@ -75,7 +75,7 @@ const routes: Routes = [
 A route definition refers to a component by its type with `component: CustomerListComponent`.
 
 All router components must be entry components.
-Because this would require you to add the component in two places \(router and `entryComponents`\) the Compiler is smart enough to recognize that this is a router definition and automatically add the router component into `entryComponents`.
+Because this would require you to add the component in two places (router and `entryComponents`) the Compiler is smart enough to recognize that this is a router definition and automatically add the router component into `entryComponents`.
 
 ## The `entryComponents` array
 
@@ -107,10 +107,10 @@ So, it's best to add only the components that are truly entry components to help
 
 You may also be interested in the following:
 
-*   [Types of NgModules](guide/module-types)
-*   [Lazy Loading Modules with the Angular Router](guide/lazy-loading-ngmodules)
-*   [Providers](guide/providers)
-*   [NgModules FAQ](guide/ngmodule-faq)
+* [Types of NgModules](guide/module-types)
+* [Lazy Loading Modules with the Angular Router](guide/lazy-loading-ngmodules)
+* [Providers](guide/providers)
+* [NgModules FAQ](guide/ngmodule-faq)
 
 <!-- links -->
 

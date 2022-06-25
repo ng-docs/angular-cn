@@ -62,7 +62,7 @@ const email = new FormControl('angularrox@gmail.com');
 
 This control will be automatically inferred to have the type `FormControl<string|null>`. TypeScript will automatically enforce this type throughout the [`FormControl` API](api/forms/FormControl), such as `email.value`, `email.valueChanges`, `email.setValue(...)`, etc.
 
-### Nullability 
+### Nullability
 
 You might wonder: why does the type of this control include `null`?  This is because the control can become `null` at any time, by calling reset:
 

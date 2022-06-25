@@ -5,8 +5,8 @@
 This migration adds an empty `@Directive()` decorator to undecorated
 base classes that:
 
-*   Use Angular features
-*   Are extended by directives or components
+* Use Angular features
+* Are extended by directives or components
 
 For example, in the diff below, a `@Directive()` decorator is added to `BaseMenu` because `BaseMenu` uses dependency injection.
 
@@ -73,12 +73,12 @@ export class SettingsMenu extends BaseMenu {}
 
 This schematic also decorates classes that use Angular field decorators, including:
 
-*   `@Input()`
-*   `@Output()`
-*   `@HostBinding()`
-*   `@HostListener()`
-*   `@ViewChild()` / `@ViewChildren()`
-*   `@ContentChild()` / `@ContentChildren()`
+* `@Input()`
+* `@Output()`
+* `@HostBinding()`
+* `@HostListener()`
+* `@ViewChild()` / `@ViewChildren()`
+* `@ContentChild()` / `@ContentChildren()`
 
 **Before**:
 
@@ -128,7 +128,7 @@ This additional information comes from adding decorators.
 
 #### Decorator missing from parent class
 
-When the decorator is missing from the parent class, the subclass will inherit a constructor from a class for which the compiler did not generate special constructor info \(because it was not decorated as a directive\).
+When the decorator is missing from the parent class, the subclass will inherit a constructor from a class for which the compiler did not generate special constructor info (because it was not decorated as a directive).
 When Angular then tries to create the subclass, it doesn't have the correct info to create it.
 
 In View Engine, the compiler has global knowledge, so it can look up the missing data.
@@ -168,17 +168,17 @@ However, this example won't compile with Ivy because the `Base` class *requires*
 
 Always requiring a class decorator leads to two main benefits for Angular:
 
-1.  The previous behavior was inconsistent.
-    Some Angular features required a decorator \(dependency injection\), but others did not.
-    Now, all Angular features consistently require a class decorator.
+1. The previous behavior was inconsistent.
+   Some Angular features required a decorator (dependency injection), but others did not.
+   Now, all Angular features consistently require a class decorator.
 
-1.  Supporting undecorated classes increases the code size and complexity of Angular.
-    Always requiring class decorators allows the framework to become smaller and simpler for all users.
+1. Supporting undecorated classes increases the code size and complexity of Angular.
+   Always requiring class decorators allows the framework to become smaller and simpler for all users.
 
 ## What does it mean to have a `@Directive()` decorator with no metadata inside of it?
 
 The presence of the `@Directive` decorator causes Angular to generate extra code for the affected class.
-If that decorator includes no properties \(metadata\), the directive won't be matched to elements or instantiated directly, but other classes that *extend* the directive class will inherit this generated code.
+If that decorator includes no properties (metadata), the directive won't be matched to elements or instantiated directly, but other classes that *extend* the directive class will inherit this generated code.
 You can think of this as an "abstract" directive.
 
 Adding an abstract directive to an `NgModule` will cause an error.
@@ -200,7 +200,7 @@ You can either add `@Directive()` with a selector or move the Angular-specific f
 
 ## What about applications using non-migrated libraries?
 
-The [Angular compatibility compiler](guide/glossary#ngcc) \(`ngcc`\) should automatically transform any non-migrated libraries to generate the proper code.
+The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
 
 <!-- links -->
 
