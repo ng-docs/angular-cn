@@ -1,8 +1,8 @@
-﻿# Creating libraries
+# Creating libraries
 
 This page provides a conceptual overview of how to create and publish new libraries to extend Angular functionality.
 
-If you find that you need to solve the same problem in more than one application \(or want to share your solution with other developers\), you have a candidate for a library.
+If you find that you need to solve the same problem in more than one application (or want to share your solution with other developers), you have a candidate for a library.
 A simple example might be a button that sends users to your company website, that would be included in all applications that your company builds.
 
 ## Getting started
@@ -23,7 +23,7 @@ ng generate library my-lib
 
 You should be very careful when choosing the name of your library if you want to publish it later in a public package registry such as npm.
 See [Publishing your library](guide/creating-libraries#publishing-your-library).
-  
+
 Avoid using a name that is prefixed with `ng-`, such as `ng-library`.
 The `ng-` prefix is a reserved keyword used from the Angular framework and its libraries.
 The `ngx-` prefix is preferred as a convention used to denote that the library is suitable for use with Angular.
@@ -75,45 +75,47 @@ This builder, among other things, ensures that the library is always built with 
 
 To make library code reusable you must define a public API for it.
 This "user layer" defines what is available to consumers of your library.
-A user of your library should be able to access public functionality \(such as NgModules, service providers and general utility functions\) through a single import path.
+A user of your library should be able to access public functionality (such as NgModules, service providers and general utility functions) through a single import path.
 
 The public API for your library is maintained in the `public-api.ts` file in your library folder.
 Anything exported from this file is made public when your library is imported into an application.
 Use an NgModule to expose services and components.
 
-Your library should supply documentation \(typically a README file\) for installation and maintenance.
+Your library should supply documentation (typically a README file) for installation and maintenance.
 
 ## Refactoring parts of an application into a library
 
 To make your solution reusable, you need to adjust it so that it does not depend on application-specific code.
 Here are some things to consider in migrating application functionality to a library.
 
-*   Declarations such as components and pipes should be designed as stateless, meaning they don't rely on or alter external variables.
-    If you do rely on state, you need to evaluate every case and decide whether it is application state or state that the library would manage.
+* Declarations such as components and pipes should be designed as stateless, meaning they don't rely on or alter external variables.
+  If you do rely on state, you need to evaluate every case and decide whether it is application state or state that the library would manage.
 
-*   Any observables that the components subscribe to internally should be cleaned up and disposed of during the lifecycle of those components
-*   Components should expose their interactions through inputs for providing context, and outputs for communicating events to other components
+* Any observables that the components subscribe to internally should be cleaned up and disposed of during the lifecycle of those components
 
-*   Check all internal dependencies.
-    *   For custom classes or interfaces used in components or service, check whether they depend on additional classes or interfaces that also need to be migrated
-    *   Similarly, if your library code depends on a service, that service needs to be migrated
-    *   If your library code or its templates depend on other libraries \(such as Angular Material, for instance\), you must configure your library with those dependencies
+* Components should expose their interactions through inputs for providing context, and outputs for communicating events to other components
 
-*   Consider how you provide services to client applications.
+* Check all internal dependencies.
+  * For custom classes or interfaces used in components or service, check whether they depend on additional classes or interfaces that also need to be migrated
+  * Similarly, if your library code depends on a service, that service needs to be migrated
+  * If your library code or its templates depend on other libraries (such as Angular Material, for instance), you must configure your library with those dependencies
 
-    *   Services should declare their own providers, rather than declaring providers in the NgModule or a component.
-        Declaring a provider makes that service *tree-shakable*.
-        This practice lets the compiler leave the service out of the bundle if it never gets injected into the application that imports the library.
-        For more about this, see [Tree-shakable providers](guide/architecture-services#providing-services).
+* Consider how you provide services to client applications.
 
-    *   If you register global service providers or share providers across multiple NgModules, use the [`forRoot()` and `forChild()` design patterns](guide/singleton-services) provided by the [RouterModule](api/router/RouterModule)
-    *   If your library provides optional services that might not be used by all client applications, support proper tree-shaking for that case by using the [lightweight token design pattern](guide/lightweight-injection-tokens)
+  * Services should declare their own providers, rather than declaring providers in the NgModule or a component.
+    Declaring a provider makes that service *tree-shakable*.
+    This practice lets the compiler leave the service out of the bundle if it never gets injected into the application that imports the library.
+    For more about this, see [Tree-shakable providers](guide/architecture-services#providing-services).
+
+  * If you register global service providers or share providers across multiple NgModules, use the [`forRoot()` and `forChild()` design patterns](guide/singleton-services) provided by the [RouterModule](api/router/RouterModule)
+
+  * If your library provides optional services that might not be used by all client applications, support proper tree-shaking for that case by using the [lightweight token design pattern](guide/lightweight-injection-tokens)
 
 <a id="integrating-with-the-cli"></a>
 
 ## Integrating with the CLI using code-generation schematics
 
-A library typically includes *reusable code* that defines components, services, and other Angular artifacts \(pipes, directives\) that you import into a project.
+A library typically includes *reusable code* that defines components, services, and other Angular artifacts (pipes, directives) that you import into a project.
 A library is packaged into an npm package for publishing and sharing.
 This package can also include [schematics](guide/glossary#schematic) that provide instructions for generating or transforming code directly in your project, in the same way that the CLI creates a generic new component with `ng generate component`.
 A schematic that is packaged with a library can, for example, provide the Angular CLI with the information it needs to generate a component that configures and uses a particular feature, or set of features, defined in that library.
@@ -121,9 +123,9 @@ One example of this is [Angular Material's navigation schematic](https://materia
 
 Create and include the following kinds of schematics:
 
-*   Include an installation schematic so that `ng add` can add your library to a project
-*   Include generation schematics in your library so that `ng generate` can scaffold your defined artifacts \(components, services, tests\) in a project
-*   Include an update schematic so that `ng update` can update your library's dependencies and provide migrations for breaking changes in new releases
+* Include an installation schematic so that `ng add` can add your library to a project
+* Include generation schematics in your library so that `ng generate` can scaffold your defined artifacts (components, services, tests) in a project
+* Include an update schematic so that `ng update` can update your library's dependencies and provide migrations for breaking changes in new releases
 
 What you include in your library depends on your task.
 For example, you could define a schematic to create a dropdown that is pre-populated with canned data to show how to add it to an application.
@@ -160,7 +162,7 @@ npm publish
 
 ## Managing assets in a library
 
-In your Angular library, the distributable can include additional assets like theming files, Sass mixins, or documentation \(like a changelog\).
+In your Angular library, the distributable can include additional assets like theming files, Sass mixins, or documentation (like a changelog).
 For more information [copy assets into your library as part of the build](https://github.com/ng-packagr/ng-packagr/blob/master/docs/copy-assets.md) and [embed assets in component styles](https://github.com/ng-packagr/ng-packagr/blob/master/docs/embed-assets-css.md).
 
 <div class="alert is-important">
@@ -187,6 +189,7 @@ You need to add these manually to the conditional ["exports"](guide/angular-pack
 </code-example>
 
 The above is an extract from the [@angular/material](https://unpkg.com/browse/@angular/material/package.json) distributable.
+
 </div>
 
 ## Peer dependencies
@@ -201,22 +204,22 @@ You don't have to publish your library to the npm package manager to use it the 
 
 To use your own library in an application:
 
-*   Build the library.
-    You cannot use a library before it is built.
+* Build the library.
+  You cannot use a library before it is built.
 
-    <code-example format="shell" language="shell">
+  <code-example format="shell" language="shell">
 
-    ng build my-lib
+  ng build my-lib
 
-    </code-example>
+  </code-example>
 
-*   In your applications, import from the library by name:
+* In your applications, import from the library by name:
 
-    <code-example format="typescript" language="typescript">
+  <code-example format="typescript" language="typescript">
 
-    import { myExport } from 'my-lib';
+  import { myExport } from 'my-lib';
 
-    </code-example>
+  </code-example>
 
 ### Building and rebuilding your library
 
@@ -255,9 +258,9 @@ ng build my-lib --watch
 
 The CLI `build` command uses a different builder and invokes a different build tool for libraries than it does for applications.
 
-*   The build system for applications, `@angular-devkit/build-angular`, is based on `webpack`, and is included in all new Angular CLI projects
-*   The build system for libraries is based on `ng-packagr`.
-    It is only added to your dependencies when you add a library using `ng generate library my-lib`.
+* The build system for applications, `@angular-devkit/build-angular`, is based on `webpack`, and is included in all new Angular CLI projects
+* The build system for libraries is based on `ng-packagr`.
+  It is only added to your dependencies when you add a library using `ng generate library my-lib`.
 
 The two build systems support different things, and even where they support the same things, they do those things differently.
 This means that the TypeScript source can result in different JavaScript code in a built library than it would in a built application.
@@ -273,10 +276,10 @@ TypeScript path mappings should *not* point to the library source `.ts` files.
 
 There are two distribution formats to use when publishing a library:
 
-| Distribution formats        | Details |
-|:---                         |:---     |
-| Partial-Ivy \(recommended\) | Contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards. |
-| Full-Ivy                    | Contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the *exact* same version of Angular. This format is useful for environments where all library and application code is built directly from source. |
+| Distribution formats | Details |
+| :------------------- | :------ |
+| Partial-Ivy (recommended) | Contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards. |
+| Full-Ivy | Contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the *exact* same version of Angular. This format is useful for environments where all library and application code is built directly from source. |
 
 For publishing to npm use the partial-Ivy format as it is stable between patch versions of Angular.
 

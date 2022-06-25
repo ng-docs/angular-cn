@@ -3,6 +3,7 @@
 **Zone.js** is a signaling mechanism that Angular uses to detect when an application state might have changed. It captures asynchronous operations like `setTimeout`, network requests, and event listeners. Angular schedules change detection based on signals from Zone.js
 
 There are cases in which scheduled [tasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks) or [microtasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks) don’t make any changes in the data model, which makes running change detection unnecessary. Common examples are:
+
 * `requestAnimationFrame`, `setTimeout` or `setInterval`
 * Task or microtask scheduling by third-party libraries
 
@@ -17,7 +18,6 @@ You can detect unnecessary change detection calls using Angular DevTools. Often 
 </div>
 
 In the image above, there is a series of change detection calls triggered by event handlers associated with an element. That’s a common challenge when using third-party, non-native Angular components, which do not alter the default behavior of `NgZone`.
-
 
 ## Run tasks outside NgZone
 

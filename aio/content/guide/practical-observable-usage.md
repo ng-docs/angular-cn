@@ -7,11 +7,11 @@ Here are some examples of domains in which observables are particularly useful.
 Observables can simplify the implementation of type-ahead suggestions.
 Typically, a type-ahead has to do a series of separate tasks:
 
-*   Listen for data from an input
-*   Trim the value \(remove whitespace\) and make sure it's a minimum length
-*   Debounce \(so as not to send off API requests for every keystroke, but instead wait for a break in keystrokes\)
-*   Don't send a request if the value stays the same \(rapidly hit a character, then backspace, for instance\)
-*   Cancel ongoing AJAX requests if their results will be invalidated by the updated results
+* Listen for data from an input
+* Trim the value (remove whitespace) and make sure it's a minimum length
+* Debounce (so as not to send off API requests for every keystroke, but instead wait for a break in keystrokes)
+* Don't send a request if the value stays the same (rapidly hit a character, then backspace, for instance)
+* Cancel ongoing AJAX requests if their results will be invalidated by the updated results
 
 Writing this in full JavaScript can be quite involved.
 With observables, you can use a simple series of RxJS operators:

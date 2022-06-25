@@ -3,11 +3,11 @@
 A *component* controls a patch of screen called a [*view*](guide/glossary#view "Definition of view").
 For example, individual components define and control each of the following views from the [Tour of Heroes tutorial](tutorial):
 
-*   The application root with the navigation links
-*   The list of heroes
-*   The hero editor
+* The application root with the navigation links
+* The list of heroes
+* The hero editor
 
-You define a component's application logic &mdash;what it does to support the view&mdash; inside a class.
+You define a component's application logic —what it does to support the view— inside a class.
 The class interacts with the view through an API of properties and methods.
 
 For example, `HeroListComponent` has a `heroes` property that holds an array of heroes.
@@ -45,10 +45,10 @@ Here's an example of basic metadata for `HeroListComponent`.
 This example shows some of the most useful `@Component` configuration options:
 
 | Configuration options | Details |
-|:---                   |:---     |
-| `selector`            | A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then Angular inserts an instance of the `HeroListComponent` view between those tags. |
-| `templateUrl`         | The module-relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property.  This template defines the component's *host view*.                                                                                                  |
-| `providers`           | An array of [providers](guide/glossary#provider) for services that the component requires. In the example, this tells Angular how to provide the `HeroService` instance that the component's constructor uses to get the list of heroes to display.                                                                   |
+| :-------------------- | :------ |
+| `selector` | A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then Angular inserts an instance of the `HeroListComponent` view between those tags. |
+| `templateUrl` | The module-relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property.  This template defines the component's *host view*. |
+| `providers` | An array of [providers](guide/glossary#provider) for services that the component requires. In the example, this tells Angular how to provide the `HeroService` instance that the component's constructor uses to get the list of heroes to display. |
 
 ## Templates and views
 
@@ -71,7 +71,7 @@ The component can also define a *view hierarchy*, which contains *embedded views
 
 </div>
 
-A view hierarchy can include views from components in the same NgModule, but it also can \(and often does\) include views from components that are defined in different NgModules.
+A view hierarchy can include views from components in the same NgModule, but it also can (and often does) include views from components that are defined in different NgModules.
 
 ## Template syntax
 
@@ -85,13 +85,14 @@ For example, here is a template for the Tutorial's `HeroListComponent`.
 This template uses typical HTML elements like `<h2>` and  `<p>`, and also includes Angular template-syntax elements, `*ngFor`, `{{hero.name}}`, `(click)`, `[hero]`, and `<app-hero-detail>`.
 The template-syntax elements tell Angular how to render the HTML to the screen, using program logic and data.
 
-*   The `*ngFor` directive tells Angular to iterate over a list
-*   `{{hero.name}}`, `(click)`, and `[hero]` bind program data to and from the DOM, responding to user input.
-    See more about [data binding](#data-binding) below.
+* The `*ngFor` directive tells Angular to iterate over a list
 
-*   The `<app-hero-detail>` tag in the example is an element that represents a new component, `HeroDetailComponent`.
-    `HeroDetailComponent` \(code not shown\) defines the hero-detail child view of `HeroListComponent`.
-    Notice how custom components like this mix seamlessly with native HTML in the same layouts.
+* `{{hero.name}}`, `(click)`, and `[hero]` bind program data to and from the DOM, responding to user input.
+  See more about [data binding](#data-binding) below.
+
+* The `<app-hero-detail>` tag in the example is an element that represents a new component, `HeroDetailComponent`.
+  `HeroDetailComponent` (code not shown) defines the hero-detail child view of `HeroListComponent`.
+  Notice how custom components like this mix seamlessly with native HTML in the same layouts.
 
 ### Data binding
 
@@ -114,13 +115,13 @@ This example from the `HeroListComponent` template uses three of these forms.
 
 <code-example header="src/app/hero-list.component.html (binding)" path="architecture/src/app/hero-list.component.1.html" region="binding"></code-example>
 
-| Data bindings                                                            | Details |
-|:---                                                                      |:---     |
-| `[hero]` [property binding](guide/property-binding)                      | Passes the value of `selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`. |
-| `(click)` [event binding](guide/user-input#binding-to-user-input-events) | Calls the component's `selectHero` method when the user clicks a hero's name.                                                     |
-| `{{hero.name}}` [interpolation](guide/interpolation)                     | Displays the component's `hero.name` property value within the `<button>` element.                                                |
+| Data bindings | Details |
+| :------------ | :------ |
+| `[hero]` [property binding](guide/property-binding) | Passes the value of `selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`. |
+| `(click)` [event binding](guide/user-input#binding-to-user-input-events) | Calls the component's `selectHero` method when the user clicks a hero's name. |
+| `{{hero.name}}` [interpolation](guide/interpolation) | Displays the component's `hero.name` property value within the `<button>` element. |
 
-Two-way data binding \(used mainly in [template-driven forms](guide/forms)\) combines property and event binding in a single notation.
+Two-way data binding (used mainly in [template-driven forms](guide/forms)) combines property and event binding in a single notation.
 Here's an example from the `HeroDetailComponent` template that uses two-way data binding with the `ngModel` directive.
 
 <code-example header="src/app/hero-detail.component.html (ngModel)" path="architecture/src/app/hero-detail.component.html" region="ngModel"></code-example>
@@ -205,10 +206,10 @@ The example template uses two built-in structural directives to add application 
 
 <code-example header="src/app/hero-list.component.html (structural)" path="architecture/src/app/hero-list.component.1.html" region="structural"></code-example>
 
-| Directives                                  | Details |
-|:---                                         |:---     |
+| Directives | Details |
+| :--------- | :------ |
 | [`*ngFor`](guide/built-in-directives#ngFor) | An iterative; it tells Angular to stamp out one `<li>` per hero in the `heroes` list. |
-| [`*ngIf`](guide/built-in-directives#ngIf)   | A conditional; it includes the `HeroDetail` component only if a selected hero exists. |
+| [`*ngIf`](guide/built-in-directives#ngIf) | A conditional; it includes the `HeroDetail` component only if a selected hero exists. |
 
 #### Attribute directives
 
@@ -216,11 +217,11 @@ The example template uses two built-in structural directives to add application 
 In templates they look like regular HTML attributes, hence the name.
 
 The `ngModel` directive, which implements two-way data binding, is an example of an attribute directive.
-`ngModel` modifies the behavior of an existing element \(typically `<input>`\) by setting its display value property and responding to change events.
+`ngModel` modifies the behavior of an existing element (typically `<input>`) by setting its display value property and responding to change events.
 
 <code-example header="src/app/hero-detail.component.html (ngModel)" path="architecture/src/app/hero-detail.component.html" region="ngModel"></code-example>
 
-Angular has more pre-defined directives that either alter the layout structure \(for example, [ngSwitch](guide/built-in-directives#ngSwitch)\) or modify aspects of DOM elements and components \(for example, [ngStyle](guide/built-in-directives#ngstyle) and [ngClass](guide/built-in-directives#ngClass)\).
+Angular has more pre-defined directives that either alter the layout structure (for example, [ngSwitch](guide/built-in-directives#ngSwitch)) or modify aspects of DOM elements and components (for example, [ngStyle](guide/built-in-directives#ngstyle) and [ngClass](guide/built-in-directives#ngClass)).
 
 <div class="alert is-helpful">
 

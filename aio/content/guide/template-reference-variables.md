@@ -44,7 +44,7 @@ Angular assigns a template variable a value based on where you declare the varia
 ## Variable specifying a name
 
 * If the variable specifies a name on the right-hand side, such as `#var="ngModel"`, the variable refers to the directive or component on the element with a matching `exportAs` name.
-<!-- What does the second half of this mean?^^ Can we explain this more fully? Could I see a working example? -kw -->
+  <!-- What does the second half of this mean?^^ Can we explain this more fully? Could I see a working example? -kw -->
 
 ### Using `NgForm` with template variables
 
@@ -60,6 +60,7 @@ In the following example, the template variable, `itemForm`, appears three times
 Without the `ngForm` attribute value, the reference value of `itemForm` would be
 the [HTMLFormElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement), `<form>`.
 If an element is an Angular Component, a reference with no attribute value will automatically reference the component instance. Otherwise, a reference with no value will reference the DOM element, even if the element has one or more directives applied to it.
+
 <!-- What is the train of thought from talking about a form element to the difference between a component and a directive? Why is the component directive conversation relevant here?  -kw I agree -alex -->
 
 ## Template variable scope
@@ -94,7 +95,9 @@ However, accessing a template variable from a child scope in the parent template
 Here, `ref2` is declared in the child scope created by `*ngIf`, and is not accessible from the parent template.
 
 {@a template-input-variable}
+
 {@a template-input-variables}
+
 ## Template input variable
 
 A _template input variable_ is a variable with a value that is set when an instance of that template is created. See: [Writing structural directives](https://angular.io/guide/structural-directives)

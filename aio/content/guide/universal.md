@@ -102,15 +102,15 @@ npm run dev:ssr
 Open a browser and navigate to `http://localhost:4200`.
 You should see the familiar Tour of Heroes dashboard page.
 
-Navigation using `routerLinks` works correctly because they use the built-in anchor \(`<a>`\) elements.
+Navigation using `routerLinks` works correctly because they use the built-in anchor (`<a>`) elements.
 You can go from the Dashboard to the Heroes page and back.
 Click a hero on the Dashboard page to display its Details page.
 
-If you throttle your network speed so that the client-side scripts take longer to download \(instructions following\), you'll notice:
+If you throttle your network speed so that the client-side scripts take longer to download (instructions following), you'll notice:
 
-*   You can't add or delete a hero
-*   The search box on the Dashboard page is ignored
-*   The *Back* and *Save* buttons on the Details page don't work
+* You can't add or delete a hero
+* The search box on the Dashboard page is ignored
+* The *Back* and *Save* buttons on the Details page don't work
 
 User events other than `routerLink` clicks aren't supported.
 You must wait for the full client application to bootstrap and run, or buffer the events using libraries like [preboot](https://github.com/angular/preboot), which lets you replay these events once the client-side scripts load.
@@ -119,9 +119,9 @@ The transition from the server-rendered application to the client application ha
 
 You can simulate a slower network to see the transition more clearly as follows:
 
-1.  Open the Chrome Dev Tools and go to the Network tab.
-1.  Find the [Network Throttling](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#throttling) dropdown on the far right of the menu bar.
-1.  Try one of the "3G" speeds.
+1. Open the Chrome Dev Tools and go to the Network tab.
+1. Find the [Network Throttling](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#throttling) dropdown on the far right of the menu bar.
+1. Try one of the "3G" speeds.
 
 The server-rendered application still launches quickly but the full client application might take seconds to load.
 
@@ -131,9 +131,9 @@ The server-rendered application still launches quickly but the full client appli
 
 There are three main reasons to create a Universal version of your application.
 
-*   Facilitate web crawlers through [search engine optimization (SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)
-*   Improve performance on mobile and low-powered devices
-*   Show the first page quickly with a [first-contentful paint (FCP)](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)
+* Facilitate web crawlers through [search engine optimization (SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)
+* Improve performance on mobile and low-powered devices
+* Show the first page quickly with a [first-contentful paint (FCP)](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)
 
 <a id="seo"></a>
 <a id="web-crawlers"></a>
@@ -175,7 +175,7 @@ The user perceives near-instant performance from the landing page and gets the f
 ## Universal web servers
 
 A Universal web server responds to application page requests with static HTML rendered by the [Universal template engine](#universal-engine).
-The server receives and responds to HTTP requests from clients \(usually browsers\), and serves static assets such as scripts, CSS, and images.
+The server receives and responds to HTTP requests from clients (usually browsers), and serves static assets such as scripts, CSS, and images.
 It might respond to data requests, either directly or as a proxy to a separate data server.
 
 The sample web server for this guide is based on the popular [Express](https://expressjs.com) framework.
@@ -188,13 +188,13 @@ The principles and decision points discussed here apply to any web server techno
 
 </div>
 
-Universal applications use the Angular `platform-server` package \(as opposed to `platform-browser`\), which provides
+Universal applications use the Angular `platform-server` package (as opposed to `platform-browser`), which provides
 server implementations of the DOM, `XMLHttpRequest`, and other low-level features that don't rely on a browser.
 
-The server \([Node.js Express](https://expressjs.com) in this guide's example\) passes client requests for application pages to the NgUniversal `ngExpressEngine`.
+The server ([Node.js Express](https://expressjs.com) in this guide's example) passes client requests for application pages to the NgUniversal `ngExpressEngine`.
 Under the hood, this calls Universal's `renderModule()` function, while providing caching and other helpful utilities.
 
-The `renderModule()` function takes as inputs a *template* HTML page \(usually `index.html`\), an Angular *module* containing components, and a *route* that determines which components to display.
+The `renderModule()` function takes as inputs a *template* HTML page (usually `index.html`), an Angular *module* containing components, and a *route* that determines which components to display.
 The route comes from the client's request to the server.
 
 Each request results in the appropriate view for the requested route.
@@ -209,7 +209,7 @@ Because a Universal application doesn't execute in the browser, some of the brow
 For example, server-side applications can't reference browser-only global objects such as `window`, `document`, `navigator`, or `location`.
 
 Angular provides some injectable abstractions over these objects, such as [`Location`](api/common/Location) or [`DOCUMENT`](api/common/DOCUMENT); it might substitute adequately for these APIs.
-If Angular doesn't provide it, it's possible to write new abstractions that delegate to the browser APIs while in the browser and to an alternative implementation while on the server \(also known as shimming\).
+If Angular doesn't provide it, it's possible to write new abstractions that delegate to the browser APIs while in the browser and to an alternative implementation while on the server (also known as shimming).
 
 Similarly, without mouse or keyboard events, a server-side application can't rely on a user clicking a button to show a component.
 The application must determine what to render based solely on the incoming client request.
@@ -226,10 +226,10 @@ The important bit in the `server.ts` file is the `ngExpressEngine()` function.
 The `ngExpressEngine()` function is a wrapper around Universal's `renderModule()` function which turns a client's requests into server-rendered HTML pages.
 It accepts an object with the following properties:
 
-| Properties       | Details |
-|:---              |:---     |
-| `bootstrap`      | The root `NgModule` or `NgModule` factory to use for bootstrapping the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
-| `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance.       |
+| Properties | Details |
+| :--------- | :------ |
+| `bootstrap` | The root `NgModule` or `NgModule` factory to use for bootstrapping the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
+| `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance. |
 
 The `ngExpressEngine()` function returns a `Promise` callback that resolves to the rendered page.
 It's up to the engine to decide what to do with that page.
@@ -260,16 +260,16 @@ The browser could ask for one of the application routes such as `/dashboard`, `/
 In fact, if the application were only rendered by the server, *every* application link clicked would arrive at the server as a navigation URL intended for the router.
 
 Fortunately, application routes have something in common: their URLs lack file extensions.
-\(Data requests also lack extensions but they can be recognized because they always begin with `/api`.\)
-All static asset requests have a file extension \(such as `main.js` or `/node_modules/zone.js/bundles/zone.umd.js`\).
+(Data requests also lack extensions but they can be recognized because they always begin with `/api`.)
+All static asset requests have a file extension (such as `main.js` or `/node_modules/zone.js/bundles/zone.umd.js`).
 
 Because you use routing, you can recognize the three types of requests and handle them differently.
 
 | Routing request types | Details |
-|:---                   |:---     |
-| Data request          | Request URL that begins `/api`.     |
-| App navigation        | Request URL with no file extension. |
-| Static asset          | All other requests.                 |
+| :-------------------- | :------ |
+| Data request | Request URL that begins `/api`. |
+| App navigation | Request URL with no file extension. |
+| Static asset | All other requests. |
 
 A Node.js Express server is a pipeline of middleware that filters and processes requests one after the other.
 You configure the Node.js Express server pipeline with calls to `server.get()` like this one for data requests.
@@ -305,15 +305,15 @@ file isn't found.
 
 The tutorial's `HeroService` and `HeroSearchService` delegate to the Angular `HttpClient` module to fetch application data.
 These services send requests to *relative* URLs such as `api/heroes`.
-In a server-side rendered app, HTTP URLs must be *absolute* \(for example, `https://my-server.com/api/heroes`\).
+In a server-side rendered app, HTTP URLs must be *absolute* (for example, `https://my-server.com/api/heroes`).
 This means that the URLs must be somehow converted to absolute when running on the server and be left relative when running in the browser.
 
-If you are using one of the `@nguniversal/*-engine` packages \(such as `@nguniversal/express-engine`\), this is taken care for you automatically.
+If you are using one of the `@nguniversal/*-engine` packages (such as `@nguniversal/express-engine`), this is taken care for you automatically.
 You don't need to do anything to make relative URLs work on the server.
 
 If, for some reason, you are not using an `@nguniversal/*-engine` package, you might need to handle it yourself.
 
-The recommended solution is to pass the full request URL to the `options` argument of [renderModule()](api/platform-server/renderModule) or [renderModuleFactory()](api/platform-server/renderModuleFactory) \(depending on what you use to render `AppServerModule` on the server\).
+The recommended solution is to pass the full request URL to the `options` argument of [renderModule()](api/platform-server/renderModule) or [renderModuleFactory()](api/platform-server/renderModuleFactory) (depending on what you use to render `AppServerModule` on the server).
 This option is the least intrusive as it does not require any changes to the application.
 Here, "request URL" refers to the URL of the request as a response to which the application is being rendered on the server.
 For example, if the client requested `https://my-server.com/dashboard` and you are rendering the application on the server to respond to that request, `options.url` should be set to `https://my-server.com/dashboard`.
@@ -322,12 +322,12 @@ Now, on every HTTP request made as part of rendering the application on the serv
 
 ### Useful scripts
 
-| Scripts                                                                                                    | Details |
-|:---                                                                                                        |:---     |
-| <code-example format="shell" language="shell"> npm run dev:ssr </code-example>                            | Similar to [`ng serve`](cli/serve), which offers live reload during development, but uses server-side rendering. The application runs in watch mode and refreshes the browser after every change. This command is slower than the actual `ng serve` command.                                                                                                                                                  |
-| <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | Builds both the server script and the application in production mode. Use this command when you want to build the project for deployment.                                                                                                                                                                                                                                                                     |
-| <code-example format="shell" language="shell"> npm run serve:ssr </code-example>                          | Starts the server script for serving the application locally with server-side rendering. It uses the build artifacts created by `ng run build:ssr`, so make sure you have run that command as well. <div class="alert is-helpful"> **NOTE**: <br /> `serve:ssr` is not intended to be used to serve your application in production, but only for testing the server-side rendered application locally. </div> |
-| <code-example format="shell" language="shell"> npm run prerender </code-example>                          | Used to prerender an application's pages. Read more about prerendering [here](guide/prerendering).                                                                                                                                                                                                                                                                                                            |
+| Scripts | Details |
+| :------ | :------ |
+| <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | Similar to [`ng serve`](cli/serve), which offers live reload during development, but uses server-side rendering. The application runs in watch mode and refreshes the browser after every change. This command is slower than the actual `ng serve` command. |
+| <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | Builds both the server script and the application in production mode. Use this command when you want to build the project for deployment. |
+| <code-example format="shell" language="shell"> npm run serve:ssr </code-example> | Starts the server script for serving the application locally with server-side rendering. It uses the build artifacts created by `ng run build:ssr`, so make sure you have run that command as well. <div class="alert is-helpful"> **NOTE**: <br /> `serve:ssr` is not intended to be used to serve your application in production, but only for testing the server-side rendered application locally. </div> |
+| <code-example format="shell" language="shell"> npm run prerender </code-example> | Used to prerender an application's pages. Read more about prerendering [here](guide/prerendering). |
 
 <!-- links -->
 

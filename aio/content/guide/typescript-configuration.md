@@ -9,10 +9,10 @@ Typescript must be "transpiled" into JavaScript using the *tsc* compiler, which 
 This page covers some aspects of TypeScript configuration and the TypeScript environment
 that are important to Angular developers, including details about the following files:
 
-| Files                                                    | Details |
-|:---                                                      |:---     |
+| Files | Details |
+| :---- | :------ |
 | [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript compiler configuration. |
-| [typings](guide/typescript-configuration#typings)        | TypesScript declaration files.     |
+| [typings](guide/typescript-configuration#typings) | TypesScript declaration files. |
 
 <a id="tsconfig"></a>
 
@@ -69,7 +69,7 @@ TypeScript developers disagree about whether the `noImplicitAny` flag should be 
 There is no correct answer and you can change the flag later.
 But your choice now can make a difference in larger projects, so it merits discussion.
 
-When the `noImplicitAny` flag is `false` \(the default\), and if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to `any`.
+When the `noImplicitAny` flag is `false` (the default), and if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to `any`.
 That's what is meant by *implicit `any`*.
 
 When the `noImplicitAny` flag is `true` and the TypeScript compiler cannot infer the type, it still generates the JavaScript files, but it also **reports an error**.
@@ -100,7 +100,7 @@ For more information about how the TypeScript configuration affects compilation,
 Many JavaScript libraries, such as jQuery, the Jasmine testing library, and Angular, extend the JavaScript environment with features and syntax that the TypeScript compiler doesn't recognize natively.
 When the compiler doesn't recognize something, it reports an error.
 
-Use [TypeScript type definition files](https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html) &mdash;`d.ts files`&mdash; to tell the compiler about the libraries you load.
+Use [TypeScript type definition files](https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html) —`d.ts files`— to tell the compiler about the libraries you load.
 
 TypeScript-aware editors leverage these same definition files to display type information about library features.
 
@@ -130,7 +130,7 @@ If you are targeting `es5`, you still have newer type declarations due to the li
 
 ### Installable typings files
 
-Many libraries &mdash;jQuery, Jasmine, and Lodash among them&mdash; do *not* include `d.ts` files in their npm packages.
+Many libraries —jQuery, Jasmine, and Lodash among them— do *not* include `d.ts` files in their npm packages.
 Fortunately, either their authors or community contributors have created separate `d.ts` files for these libraries and published them in well-known locations.
 
 You can install these typings with `npm` using the [`@types/*` scoped package](https://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html).

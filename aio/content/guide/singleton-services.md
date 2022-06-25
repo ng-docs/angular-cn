@@ -8,8 +8,8 @@ For a sample application using the app-wide singleton service that this page des
 
 There are two ways to make a service a singleton in Angular:
 
-*   Set the `providedIn` property of the `@Injectable()` to `"root"`
-*   Include the service in the `AppModule` or in a module that is only imported by the `AppModule`
+* Set the `providedIn` property of the `@Injectable()` to `"root"`
+* Include the service in the `AppModule` or in a module that is only imported by the `AppModule`
 
 <a id="providedIn"></a>
 
@@ -46,14 +46,14 @@ Though you may see it coded this way, using the `providedIn` property of the `@I
 Generally, you'll only need `providedIn` for providing services and `forRoot()`/`forChild()` for routing.
 However, understanding how `forRoot()` works to make sure a service is a singleton will inform your development at a deeper level.
 
-If a module defines both providers and declarations \(components, directives, pipes\), then loading the module in multiple feature modules would duplicate the registration of the service.
+If a module defines both providers and declarations (components, directives, pipes), then loading the module in multiple feature modules would duplicate the registration of the service.
 This could result in multiple service instances and the service would no longer behave as a singleton.
 
 There are multiple ways to prevent this:
 
-*   Use the [`providedIn` syntax](guide/singleton-services#providedIn) instead of registering the service in the module.
-*   Separate your services into their own module.
-*   Define `forRoot()` and `forChild()` methods in the module.
+* Use the [`providedIn` syntax](guide/singleton-services#providedIn) instead of registering the service in the module.
+* Separate your services into their own module.
+* Define `forRoot()` and `forChild()` methods in the module.
 
 <div class="alert is-helpful">
 
@@ -65,8 +65,8 @@ For an introductory explanation see the [Lazy Loading Feature Modules](guide/laz
 
 Use `forRoot()` to separate providers from a module so you can import that module into the root module with `providers` and child modules without `providers`.
 
-1.  Create a static method `forRoot()` on the module.
-1.  Place the providers into the `forRoot()` method.
+1. Create a static method `forRoot()` on the module.
+1. Place the providers into the `forRoot()` method.
 
 <code-example header="src/app/greeting/greeting.module.ts" path="ngmodules/src/app/greeting/greeting.module.ts" region="for-root"></code-example>
 
@@ -93,10 +93,10 @@ However, since Angular 6.0, the best practice for providing services is with the
 
 `forRoot()` takes a service configuration object and returns a [ModuleWithProviders](api/core/ModuleWithProviders), which is a simple object with the following properties:
 
-| Properties  | Details |
-|:---         |:---     |
-| `ngModule`  | In this example, the `GreetingModule` class |
-| `providers` | The configured providers                    |
+| Properties | Details |
+| :--------- | :------ |
+| `ngModule` | In this example, the `GreetingModule` class |
+| `providers` | The configured providers |
 
 In the <live-example name="ngmodules">live example</live-example> the root `AppModule` imports the `GreetingModule` and adds the `providers` to the `AppModule` providers.
 Specifically, Angular accumulates all imported providers before appending the items listed in `@NgModule.providers`.
@@ -160,9 +160,9 @@ Here are the two files in their entirety for reference:
 
 You may also be interested in:
 
-*   [Sharing Modules](guide/sharing-ngmodules), which elaborates on the concepts covered on this page
-*   [Lazy Loading Modules](guide/lazy-loading-ngmodules)
-*   [NgModule FAQ](guide/ngmodule-faq)
+* [Sharing Modules](guide/sharing-ngmodules), which elaborates on the concepts covered on this page
+* [Lazy Loading Modules](guide/lazy-loading-ngmodules)
+* [NgModule FAQ](guide/ngmodule-faq)
 
 <!-- links -->
 

@@ -9,7 +9,7 @@ In this tutorial, you build your own application from the ground up, providing e
 If you're completely new to Angular, you might want to try the [**Try it now**](start) quick-start application first.
 It is based on a ready-made  partially-completed project, which you can examine and modify in the StackBlitz interactive development environment, where you can see the results in real time.
 
-The "Try it" tutorial covers the same major topics &mdash;components, template syntax, routing, services, and accessing data using HTTP&mdash; in a condensed format, following the most current best practices.
+The "Try it" tutorial covers the same major topics —components, template syntax, routing, services, and accessing data using HTTP— in a condensed format, following the most current best practices.
 
 </div>
 
@@ -23,15 +23,15 @@ You will find references to and expansions of this application domain in many of
 
 By the end of this tutorial you will be able to do the following:
 
-*   Use built-in Angular [directives](guide/glossary#directive "Directives definition") to show and hide elements and display lists of hero data
-*   Create Angular [components](guide/glossary#component "Components definition") to display hero details and show an array of heroes
-*   Use one-way [data binding](guide/glossary#data-binding "Data binding definition") for read-only data
-*   Add editable fields to update a model with two-way data binding
-*   Bind component methods to user events, like keystrokes and clicks
-*   Enable users to select a hero from a master list and edit that hero in the details view
-*   Format data with [pipes](guide/glossary#pipe "Pipe definition")
-*   Create a shared [service](guide/glossary#service "Service definition") to assemble the heroes
-*   Use [routing](guide/glossary#router "Router definition") to navigate among different views and their components
+* Use built-in Angular [directives](guide/glossary#directive "Directives definition") to show and hide elements and display lists of hero data
+* Create Angular [components](guide/glossary#component "Components definition") to display hero details and show an array of heroes
+* Use one-way [data binding](guide/glossary#data-binding "Data binding definition") for read-only data
+* Add editable fields to update a model with two-way data binding
+* Bind component methods to user events, like keystrokes and clicks
+* Enable users to select a hero from a master list and edit that hero in the details view
+* Format data with [pipes](guide/glossary#pipe "Pipe definition")
+* Create a shared [service](guide/glossary#service "Service definition") to assemble the heroes
+* Use [routing](guide/glossary#router "Router definition") to navigate among different views and their components
 
 You'll learn enough Angular to get started and gain confidence that Angular can do whatever you need it to do.
 
@@ -55,7 +55,7 @@ view and the most heroic heroes:
 
 </div>
 
-You can click the two links above the dashboard \("Dashboard" and "Heroes"\) to navigate between this Dashboard view and a Heroes view.
+You can click the two links above the dashboard ("Dashboard" and "Heroes") to navigate between this Dashboard view and a Heroes view.
 
 If you click the dashboard hero "Magneta," the router opens a "Hero Details" view where you can change the hero's name.
 

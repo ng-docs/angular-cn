@@ -31,31 +31,31 @@ The second method uses a standalone script, `localize-extract`, to locate the le
 
 To migrate legacy localization IDs using the CLI:
 
-1.  Run the `ng extract-i18n` command.
+1. Run the `ng extract-i18n` command.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    ng extract-i18n --format=legacy-migrate
+   ng extract-i18n --format=legacy-migrate
 
-    </code-example>
+   </code-example>
 
-    After running this command, you have a migration file, `messages.json`, containing a mapping between legacy localization IDs and new IDs that you can use to update your application.
+   After running this command, you have a migration file, `messages.json`, containing a mapping between legacy localization IDs and new IDs that you can use to update your application.
 
-1.  Update the IDs in your application using the `npx localize-migrate` command.
+1. Update the IDs in your application using the `npx localize-migrate` command.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npx localize-migrate --files=*.xlf --mapFile=messages.json
+   npx localize-migrate --files=*.xlf --mapFile=messages.json
 
-    </code-example>
+   </code-example>
 
-    <div class="alert is-helpful">
+   <div class="alert is-helpful">
 
-    You can also specify other formats in the `files` parameter, such as `*.xmb`.
+   You can also specify other formats in the `files` parameter, such as `*.xmb`.
 
-    </div>
+   </div>
 
-1.  Commit the updated files to your source control system.
+1. Commit the updated files to your source control system.
 
 After you complete the migration, set the Angular Compiler option, `enableI18nLegacyMessageIdFormat`, to `false`.
 For more information about this option, see [Angular Compiler Options](guide/angular-compiler-options#enablei18nlegacymessageidformat).
@@ -64,38 +64,38 @@ For more information about this option, see [Angular Compiler Options](guide/ang
 
 If you are not using the Angular CLI, you can migrate legacy localization IDs using `localize-extract`:
 
-1.  Run the `npx localize-extract` command.
+1. Run the `npx localize-extract` command.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npx localize-extract --format=legacy-migrate --source=./path/to/bundles/**/*.js --outputPath=./messages.json
+   npx localize-extract --format=legacy-migrate --source=./path/to/bundles/**/*.js --outputPath=./messages.json
 
-    </code-example>
+   </code-example>
 
-    In this command, `./path/to/bundles/` represents the path to your distributable files.
-    You can set the `outputPath` parameter to any directory in your system.
+   In this command, `./path/to/bundles/` represents the path to your distributable files.
+   You can set the `outputPath` parameter to any directory in your system.
 
-    <div class="alert is-helpful">
+   <div class="alert is-helpful">
 
-    Your distributable files must not have been translated, such as by using `localize-translate`, as doing so strips the `$localize` tagged strings that the extractor requires.
+   Your distributable files must not have been translated, such as by using `localize-translate`, as doing so strips the `$localize` tagged strings that the extractor requires.
 
-    </div>
+   </div>
 
-    After running this command, you have a migration file, `messages.json`, containing a mapping between legacy localization IDs and new IDs that you can use to update your application.
+   After running this command, you have a migration file, `messages.json`, containing a mapping between legacy localization IDs and new IDs that you can use to update your application.
 
-1.  Update the IDs in your application using the `npx localize-migrate` command.
+1. Update the IDs in your application using the `npx localize-migrate` command.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npx localize-migrate --files=*.xlf --mapFile=messages.json
+   npx localize-migrate --files=*.xlf --mapFile=messages.json
 
-    </code-example>
+   </code-example>
 
-    <div class="alert is-helpful">
+   <div class="alert is-helpful">
 
-    You can also specify other formats in the `files` parameter, such as `*.xmb`.
+   You can also specify other formats in the `files` parameter, such as `*.xmb`.
 
-    </div>
+   </div>
 
 After you complete the migration, set the Angular Compiler option, `enableI18nLegacyMessageIdFormat`, to `false`.
 For more information about this option, see [Angular Compiler Options](guide/angular-compiler-options#enablei18nlegacymessageidformat).

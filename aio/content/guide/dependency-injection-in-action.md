@@ -1,6 +1,6 @@
 # Dependency injection in action
 
-This guide explores many of the features of dependency injection \(DI\) in Angular.
+This guide explores many of the features of dependency injection (DI) in Angular.
 
 <div class="alert is-helpful">
 
@@ -57,8 +57,8 @@ When a class requires a dependency, that dependency is added to the constructor 
 When Angular needs to instantiate the class, it calls upon the DI framework to supply the dependency.
 By default, the DI framework searches for a provider in the injector hierarchy, starting at the component's local injector, and if necessary bubbling up through the injector tree until it reaches the root injector.
 
-*   The first injector configured with a provider supplies the dependency \(a service instance or value\) to the constructor
-*   If no provider is found in the root injector, the DI framework throws an error
+* The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
+* If no provider is found in the root injector, the DI framework throws an error
 
 There are a number of options for modifying the default search behavior, using *parameter decorators* on the service-valued parameters of a class constructor.
 
@@ -73,11 +73,11 @@ Angular throws an error if it can't find the dependency during that walk.
 In some cases, you need to limit the search or accommodate a missing dependency.
 You can modify Angular's search behavior with the `@Host` and `@Optional` qualifying decorators on a service-valued parameter of the component's constructor.
 
-*   The `@Optional` property decorator tells Angular to return null when it can't find the dependency
-*   The `@Host` property decorator stops the upward search at the *host component*.
-    The host component is typically the component requesting the dependency.
-    However, when this component is projected into a *parent* component, that parent component becomes the host.
-    The following example covers this second case.
+* The `@Optional` property decorator tells Angular to return null when it can't find the dependency
+* The `@Host` property decorator stops the upward search at the *host component*.
+  The host component is typically the component requesting the dependency.
+  However, when this component is projected into a *parent* component, that parent component becomes the host.
+  The following example covers this second case.
 
 These decorators can be used individually or together, as shown in the example.
 This `HeroBiosAndContactsComponent` is a revision of `HeroBiosComponent` which you looked at [above](guide/dependency-injection-in-action#hero-bios-component).
@@ -183,9 +183,9 @@ To illustrate, here's a minimal version of `HighlightDirective` from the [Attrib
 The directive sets the background to a highlight color when the user mouses over the DOM element to which the directive is applied.
 
 Angular sets the constructor's `el` parameter to the injected `ElementRef`.
-\(An `ElementRef` is a wrapper around a DOM element, whose `nativeElement` property exposes the DOM element for the directive to manipulate.\)
+(An `ElementRef` is a wrapper around a DOM element, whose `nativeElement` property exposes the DOM element for the directive to manipulate.)
 
-The sample code applies the directive's `appHighlight` attribute to two `<div>` tags, first without a value \(yielding the default color\) and then with an assigned color value.
+The sample code applies the directive's `appHighlight` attribute to two `<div>` tags, first without a value (yielding the default color) and then with an assigned color value.
 
 <code-example header="src/app/app.component.html (highlight)" path="dependency-injection-in-action/src/app/app.component.html" region="highlight"></code-example>
 
@@ -232,11 +232,11 @@ The `HeroOfTheMonthComponent` example has two value providers.
 
 <code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-value"></code-example>
 
-*   The first provides an existing instance of the `Hero` class to use for the `Hero` token, rather than requiring the injector to create a new instance with `new` or use its own cached instance.
-    Here, the token is the class itself.
+* The first provides an existing instance of the `Hero` class to use for the `Hero` token, rather than requiring the injector to create a new instance with `new` or use its own cached instance.
+  Here, the token is the class itself.
 
-*   The second specifies a literal string resource to use for the `TITLE` token.
-    The `TITLE` provider token is *not* a class, but is instead a special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by an `InjectionToken` instance.
+* The second specifies a literal string resource to use for the `TITLE` token.
+  The `TITLE` provider token is *not* a class, but is instead a special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by an `InjectionToken` instance.
 
 You can use an injection token for any kind of provider but it's particularly helpful when the dependency is a simple value like a string, a number, or a function.
 
@@ -262,7 +262,7 @@ The following code shows two examples in `HeroOfTheMonthComponent`.
 
 <code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-class"></code-example>
 
-The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created \(`HeroService`\) is also the provider's dependency injection token.
+The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created (`HeroService`) is also the provider's dependency injection token.
 The short form is generally preferred; this long form makes the details explicit.
 
 The second provider substitutes `DateLoggerService` for `LoggerService`.
@@ -337,7 +337,7 @@ Notice that this form of provider has a third key, `deps`, which specifies depen
 
 Use this technique to create a dependency object with a factory function whose inputs are a combination of *injected services* and *local state*.
 
-The dependency object \(returned by the factory function\) is typically a class instance, but can be other things as well.
+The dependency object (returned by the factory function) is typically a class instance, but can be other things as well.
 In this example, the dependency object is a string of the names of the runners up to the "Hero of the Month" contest.
 
 In the example, the local state is the number `2`, the number of runners up that the component should show.
@@ -346,12 +346,12 @@ The `runnersUpFactory()` returns the *provider factory function*, which can use 
 
 <code-example header="runners-up.ts (excerpt)" path="dependency-injection-in-action/src/app/runners-up.ts" region="factory-synopsis"></code-example>
 
-The provider factory function \(returned by `runnersUpFactory()`\) returns the actual dependency object, the string of names.
+The provider factory function (returned by `runnersUpFactory()`) returns the actual dependency object, the string of names.
 
-*   The function takes a winning `Hero` and a `HeroService` as arguments.
-    Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.
+* The function takes a winning `Hero` and a `HeroService` as arguments.
+  Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.
 
-*   The function returns the string of names, which Angular than injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
+* The function returns the string of names, which Angular than injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
 
 <div class="alert is-helpful">
 

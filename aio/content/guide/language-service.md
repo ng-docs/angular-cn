@@ -24,10 +24,10 @@ It then uses the Angular Language Service to read your `tsconfig.json` file, fin
 
 Language services include:
 
-*   Completions lists
-*   AOT Diagnostic messages
-*   Quick info
-*   Go to definition
+* Completions lists
+* AOT Diagnostic messages
+* Quick info
+* Go to definition
 
 ### Autocompletion
 
@@ -73,7 +73,7 @@ Angular Language Service is currently available as an extension for [Visual Stud
 ### Visual Studio Code
 
 In [Visual Studio Code](https://code.visualstudio.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
-Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open \(⌘+P on Mac, CTRL+P on Windows\) and type "? ext".
+Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext".
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
 The Visual Studio Code integration with the Angular language service is maintained and distributed by the Angular team.
@@ -96,50 +96,50 @@ Since WebStorm 2019.1, the `@angular/language-service` is not required anymore a
 ### Sublime Text
 
 In [Sublime Text](https://www.sublimetext.com), the Language Service supports only in-line templates when installed as a plug-in.
-You need a custom Sublime plug-in \(or modifications to the current plug-in\) for completions in HTML files.
+You need a custom Sublime plug-in (or modifications to the current plug-in) for completions in HTML files.
 
 To use the Language Service for in-line templates, you must first add an extension to allow TypeScript, then install the Angular Language Service plug-in.
 Starting with TypeScript 2.3, TypeScript has a plug-in model that the language service can use.
 
-1.  Install the latest version of TypeScript in a local `node_modules` directory:
+1. Install the latest version of TypeScript in a local `node_modules` directory:
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npm install --save-dev typescript
+   npm install --save-dev typescript
 
-    </code-example>
+   </code-example>
 
-1.  Install the Angular Language Service package in the same location:
+1. Install the Angular Language Service package in the same location:
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npm install --save-dev &commat;angular/language-service
+   npm install --save-dev &commat;angular/language-service
 
-    </code-example>
+   </code-example>
 
-1.  Once the package is installed,  add the following to the `"compilerOptions"` section of your project's `tsconfig.json`.
+1. Once the package is installed,  add the following to the `"compilerOptions"` section of your project's `tsconfig.json`.
 
-    <code-example header="tsconfig.json" language="json">
+   <code-example header="tsconfig.json" language="json">
 
-    "plugins": [
-        {"name": "&commat;angular/language-service"}
-    ]
+   "plugins": [
+       {"name": "&commat;angular/language-service"}
+   ]
 
-    </code-example>
+   </code-example>
 
-1. In your editor's user preferences \(`Cmd+,` or `Ctrl+,`\), add the following:
+1. In your editor's user preferences (`Cmd+,` or `Ctrl+,`), add the following:
 
-    <code-example header="Sublime Text user preferences" language="json">
+   <code-example header="Sublime Text user preferences" language="json">
 
-    "typescript-tsdk": "&lt;path to your folder&gt;/node_modules/typescript/lib"
+   "typescript-tsdk": "&lt;path to your folder&gt;/node_modules/typescript/lib"
 
-    </code-example>
+   </code-example>
 
 This lets the Angular Language Service provide diagnostics and completions in `.ts` files.
 
 ### Eclipse IDE
 
-Either directly install the "Eclipse IDE for Web and JavaScript developers" package which comes with the Angular Language Server included, or from other Eclipse IDE packages, use Help &gt; Eclipse Marketplace to find and install [Eclipse Wild Web Developer](https://marketplace.eclipse.org/content/wild-web-developer-html-css-javascript-typescript-nodejs-angular-json-yaml-kubernetes-xml).
+Either directly install the "Eclipse IDE for Web and JavaScript developers" package which comes with the Angular Language Server included, or from other Eclipse IDE packages, use Help > Eclipse Marketplace to find and install [Eclipse Wild Web Developer](https://marketplace.eclipse.org/content/wild-web-developer-html-css-javascript-typescript-nodejs-angular-json-yaml-kubernetes-xml).
 
 ## How the Language Service works
 
@@ -158,9 +158,9 @@ The Angular Language Services then looks at `data.---` within its context, asks 
 
 ## More information
 
-*   For more in-depth information on the implementation, see the [Angular Language Service API](https://github.com/angular/angular/blob/main/packages/language-service/src/types.ts)
-*   For more on the design considerations and intentions, see [design documentation here](https://github.com/angular/vscode-ng-language-service/wiki/Design)
-*   See also [Chuck Jazdzewski's presentation](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) on the Angular Language Service from [ng-conf](https://www.ng-conf.org) 2017
+* For more in-depth information on the implementation, see the [Angular Language Service API](https://github.com/angular/angular/blob/main/packages/language-service/src/types.ts)
+* For more on the design considerations and intentions, see [design documentation here](https://github.com/angular/vscode-ng-language-service/wiki/Design)
+* See also [Chuck Jazdzewski's presentation](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) on the Angular Language Service from [ng-conf](https://www.ng-conf.org) 2017
 
 <!-- links -->
 

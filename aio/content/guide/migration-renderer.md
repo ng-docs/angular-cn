@@ -9,7 +9,7 @@ This section provides guidance on migrating from this deprecated API to the newe
 
 The deprecated `Renderer` class has been removed in version 9 of Angular, so it's necessary to migrate to a supported API.
 Using `Renderer2` is the recommended strategy because it supports a similar set of functionality to `Renderer`.
-The API surface is quite large \(with 19 methods\, but the schematic should simplify this process for your applications.
+The API surface is quite large (with 19 methods\\, but the schematic should simplify this process for your applications.
 
 ## Is there action required on my end?
 
@@ -85,27 +85,27 @@ The schematic also keeps their parameter types as `any` so that it doesn't have 
 
 The following table shows all methods that the migration maps from `Renderer` to `Renderer2`.
 
-| Renderer                                                                                 | Renderer2 |
-|:---                                                                                      |:---       |
-| `listen(renderElement, name, callback)`                                                  | `listen(renderElement, name, callback)`                                                                                                                                                        |
-| `setElementProperty(renderElement, propertyName, propertyValue)`                         | `setProperty(renderElement, propertyName, propertyValue)`                                                                                                                                      |
-| `setText(renderNode, text)`                                                              | `setValue(renderNode, text)`                                                                                                                                                                   |
-| `listenGlobal(target, name, callback)`                                                   | `listen(target, name, callback)`                                                                                                                                                               |
-| `selectRootElement(selectorOrNode, debugInfo?)`                                          | `selectRootElement(selectorOrNode)`                                                                                                                                                            |
-| `createElement(parentElement, name, debugInfo?)`                                         | `appendChild(parentElement, createElement(name))`                                                                                                                                              |
-| `setElementStyle(el, style, value?)`                                                     | `value == null ? removeStyle(el, style) : setStyle(el, style, value)`                                                                                                                          |
-| `setElementAttribute(el, name, value?)`                                                  | `attributeValue == null ? removeAttribute(el, name) : setAttribute(el, name, value)`                                                                                                           |
-| `createText(parentElement, value, debugInfo?)`                                           | `appendChild(parentElement, createText(value))`                                                                                                                                                |
-| `createTemplateAnchor(parentElement)`                                                    | `appendChild(parentElement, createComment(''))`                                                                                                                                                |
-| `setElementClass(renderElement, className, isAdd)`                                       | `isAdd ? addClass(renderElement, className) : removeClass(renderElement, className)`                                                                                                           |
-| `projectNodes(parentElement, nodes)`                                                     | `for (let i = 0; i < nodes.length; i++) { appendChild(parentElement, nodes[i]); }`                                                                                                             |
-| `attachViewAfter(node, viewRootNodes)`                                                   | `const parentElement = parentNode(node); const nextSibling = nextSibling(node); for (let i = 0; i < viewRootNodes.length; i++) { insertBefore(parentElement, viewRootNodes[i], nextSibling);}` |
-| `detachView(viewRootNodes)`                                                              | `for (let i = 0; i < viewRootNodes.length; i++) {const node = viewRootNodes[i]; const parentElement = parentNode(node); removeChild(parentElement, node);}`                                    |
-| `destroyView(hostElement, viewAllNodes)`                                                 | `for (let i = 0; i < viewAllNodes.length; i++) { destroyNode(viewAllNodes[i]); }`                                                                                                              |
-| `setBindingDebugInfo()`                                                                  | This function is a noop in `Renderer2`.                                                                                                                                                        |
-| `createViewRoot(hostElement)`                                                            | Should be replaced with a reference to `hostElement`                                                                                                                                           |
-| `invokeElementMethod(renderElement, methodName, args?)`                                  | `(renderElement as any)[methodName].apply(renderElement, args);`                                                                                                                               |
-| `animate(element, startingStyles, keyframes, duration, delay, easing, previousPlayers?)` | Throws an error \(same behavior as `Renderer.animate()`\)                                                                                                                                      |
+| Renderer | Renderer2 |
+| :------- | :-------- |
+| `listen(renderElement, name, callback)` | `listen(renderElement, name, callback)` |
+| `setElementProperty(renderElement, propertyName, propertyValue)` | `setProperty(renderElement, propertyName, propertyValue)` |
+| `setText(renderNode, text)` | `setValue(renderNode, text)` |
+| `listenGlobal(target, name, callback)` | `listen(target, name, callback)` |
+| `selectRootElement(selectorOrNode, debugInfo?)` | `selectRootElement(selectorOrNode)` |
+| `createElement(parentElement, name, debugInfo?)` | `appendChild(parentElement, createElement(name))` |
+| `setElementStyle(el, style, value?)` | `value == null ? removeStyle(el, style) : setStyle(el, style, value)` |
+| `setElementAttribute(el, name, value?)` | `attributeValue == null ? removeAttribute(el, name) : setAttribute(el, name, value)` |
+| `createText(parentElement, value, debugInfo?)` | `appendChild(parentElement, createText(value))` |
+| `createTemplateAnchor(parentElement)` | `appendChild(parentElement, createComment(''))` |
+| `setElementClass(renderElement, className, isAdd)` | `isAdd ? addClass(renderElement, className) : removeClass(renderElement, className)` |
+| `projectNodes(parentElement, nodes)` | `for (let i = 0; i < nodes.length; i++) { appendChild(parentElement, nodes[i]); }` |
+| `attachViewAfter(node, viewRootNodes)` | `const parentElement = parentNode(node); const nextSibling = nextSibling(node); for (let i = 0; i < viewRootNodes.length; i++) { insertBefore(parentElement, viewRootNodes[i], nextSibling);}` |
+| `detachView(viewRootNodes)` | `for (let i = 0; i < viewRootNodes.length; i++) {const node = viewRootNodes[i]; const parentElement = parentNode(node); removeChild(parentElement, node);}` |
+| `destroyView(hostElement, viewAllNodes)` | `for (let i = 0; i < viewAllNodes.length; i++) { destroyNode(viewAllNodes[i]); }` |
+| `setBindingDebugInfo()` | This function is a noop in `Renderer2`. |
+| `createViewRoot(hostElement)` | Should be replaced with a reference to `hostElement` |
+| `invokeElementMethod(renderElement, methodName, args?)` | `(renderElement as any)[methodName].apply(renderElement, args);` |
+| `animate(element, startingStyles, keyframes, duration, delay, easing, previousPlayers?)` | Throws an error (same behavior as `Renderer.animate()`) |
 
 <!-- links -->
 

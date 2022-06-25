@@ -13,8 +13,8 @@ If you'd like to experiment with the application that this guide describes, <liv
 
 ## Testing the `HighlightDirective`
 
-The sample application's `HighlightDirective` sets the background color of an element based on either a data bound color or a default color \(lightgray\).
-It also sets a custom property of the element \(`customProperty`\) to `true` for no reason other than to show that it can.
+The sample application's `HighlightDirective` sets the background color of an element based on either a data bound color or a default color (lightgray).
+It also sets a custom property of the element (`customProperty`) to `true` for no reason other than to show that it can.
 
 <code-example header="app/shared/highlight.directive.ts" path="testing/src/app/shared/highlight.directive.ts"></code-example>
 
@@ -55,17 +55,18 @@ Here are some tests of this component:
 
 A few techniques are noteworthy:
 
-*   The `By.directive` predicate is a great way to get the elements that have this directive *when their element types are unknown*
-*   The [`:not` pseudo-class](https://developer.mozilla.org/docs/Web/CSS/:not) in `By.css('h2:not([highlight])')` helps find `<h2>` elements that *do not* have the directive.
-    `By.css('*:not([highlight])')` finds *any* element that does not have the directive.
+* The `By.directive` predicate is a great way to get the elements that have this directive *when their element types are unknown*
 
-*   `DebugElement.styles` affords access to element styles even in the absence of a real browser, thanks to the `DebugElement` abstraction.
-    But feel free to exploit the `nativeElement` when that seems easier or more clear than the abstraction.
+* The [`:not` pseudo-class](https://developer.mozilla.org/docs/Web/CSS/:not) in `By.css('h2:not([highlight])')` helps find `<h2>` elements that *do not* have the directive.
+  `By.css('*:not([highlight])')` finds *any* element that does not have the directive.
 
-*   Angular adds a directive to the injector of the element to which it is applied.
-    The test for the default color uses the injector of the second `<h2>` to get its `HighlightDirective` instance and its `defaultColor`.
+* `DebugElement.styles` affords access to element styles even in the absence of a real browser, thanks to the `DebugElement` abstraction.
+  But feel free to exploit the `nativeElement` when that seems easier or more clear than the abstraction.
 
-*   `DebugElement.properties` affords access to the artificial custom property that is set by the directive
+* Angular adds a directive to the injector of the element to which it is applied.
+  The test for the default color uses the injector of the second `<h2>` to get its `HighlightDirective` instance and its `defaultColor`.
+
+* `DebugElement.properties` affords access to the artificial custom property that is set by the directive
 
 <!-- links -->
 

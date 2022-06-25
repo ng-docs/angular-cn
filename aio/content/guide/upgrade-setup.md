@@ -23,7 +23,7 @@ Setting up a new project on your machine is quick and easy with the [QuickStart 
 
 ## Prerequisites
 
-Make sure you have [Node.js&reg; and npm installed](guide/setup-local#prerequisites "Angular prerequisites").
+Make sure you have [Node.js® and npm installed](guide/setup-local#prerequisites "Angular prerequisites").
 
 <a id="clone"></a>
 
@@ -57,7 +57,7 @@ npm install
 
 ## Delete *non-essential* files (optional)
 
-You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance \(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`\).
+You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance (***including all git-related artifacts*** such as the `.git` folder and `.gitignore`).
 
 <div class="alert is-important">
 
@@ -91,61 +91,62 @@ rd e2e /s /q
 
 Since the quickstart repository is deprecated, it is no longer updated and you need some additional steps to use the latest Angular.
 
-1.  Remove the obsolete `@angular/http` package \(both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`\).
-1.  Install the latest versions of the Angular framework packages by running:
+1. Remove the obsolete `@angular/http` package (both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`).
 
-    <code-example format="shell" language="shell">
+1. Install the latest versions of the Angular framework packages by running:
 
-    npm install --save &commat;angular/common&commat;latest &commat;angular/compiler&commat;latest &commat;angular/core&commat;latest &commat;angular/forms&commat;latest &commat;angular/platform-browser&commat;latest &commat;angular/platform-browser-dynamic&commat;latest &commat;angular/router&commat;latest
+   <code-example format="shell" language="shell">
 
-    </code-example>
+   npm install --save &commat;angular/common&commat;latest &commat;angular/compiler&commat;latest &commat;angular/core&commat;latest &commat;angular/forms&commat;latest &commat;angular/platform-browser&commat;latest &commat;angular/platform-browser-dynamic&commat;latest &commat;angular/router&commat;latest
 
-1.  Install the latest versions of other packages used by Angular \(RxJS, TypeScript, Zone.js\) by running:
+   </code-example>
 
-    <code-example format="shell" language="shell">
+1. Install the latest versions of other packages used by Angular (RxJS, TypeScript, Zone.js) by running:
 
-    npm install --save rxjs&commat;latest zone.js&commat;latest
-    npm install --save-dev typescript&commat;latest
+   <code-example format="shell" language="shell">
 
-    </code-example>
+   npm install --save rxjs&commat;latest zone.js&commat;latest
+   npm install --save-dev typescript&commat;latest
 
-1.  Install the `systemjs-plugin-babel` package.
-    This will later be used to load the Angular framework files, which are in ES2015 format, using SystemJS.
+   </code-example>
 
-    <code-example format="shell" language="shell">
+1. Install the `systemjs-plugin-babel` package.
+   This will later be used to load the Angular framework files, which are in ES2015 format, using SystemJS.
 
-    npm install --save systemjs-plugin-babel&commat;latest
+   <code-example format="shell" language="shell">
 
-    </code-example>
+   npm install --save systemjs-plugin-babel&commat;latest
 
-1.  In order to be able to load the latest Angular framework packages \(in ES2015 format\) correctly, replace the relevant entries in `src/systemjs.config.js`:
+   </code-example>
 
-    <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="angular-paths"></code-example>
+1. In order to be able to load the latest Angular framework packages (in ES2015 format) correctly, replace the relevant entries in `src/systemjs.config.js`:
 
-1.  In order to be able to load the latest RxJS package correctly, replace the relevant entries in `src/systemjs.config.js`:
+   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="angular-paths"></code-example>
 
-    <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="rxjs-paths"></code-example>
+1. In order to be able to load the latest RxJS package correctly, replace the relevant entries in `src/systemjs.config.js`:
 
-1.  In order to be able to load the `tslib` package \(which is required for files transpiled by TypeScript\), add the following entry to `src/systemjs.config.js`:
+   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="rxjs-paths"></code-example>
 
-    <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="tslib-paths"></code-example>
+1. In order to be able to load the `tslib` package (which is required for files transpiled by TypeScript), add the following entry to `src/systemjs.config.js`:
 
-1.  In order for SystemJS to be able to load the ES2015 Angular files correctly, add the following entries to `src/systemjs.config.js`:
+   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="tslib-paths"></code-example>
 
-    <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="plugin-babel"></code-example>
+1. In order for SystemJS to be able to load the ES2015 Angular files correctly, add the following entries to `src/systemjs.config.js`:
 
-1.  Finally, in order to prevent TypeScript typecheck errors for dependencies, add the following entry to `src/tsconfig.json`:
+   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="plugin-babel"></code-example>
 
-    <code-example format="json" language="json">
+1. Finally, in order to prevent TypeScript typecheck errors for dependencies, add the following entry to `src/tsconfig.json`:
 
-    {
-      "compilerOptions": {
-        "skipLibCheck": true,
-        // &hellip;
-      }
-    }
+   <code-example format="json" language="json">
 
-    </code-example>
+   {
+     "compilerOptions": {
+       "skipLibCheck": true,
+       // &hellip;
+     }
+   }
+
+   </code-example>
 
 With that, you can now run `npm start` and have the application built and served.
 Once built, the application will be automatically opened in a new browser tab and it will be automatically reloaded when you make changes to the source code.
@@ -165,7 +166,7 @@ Consequently, there are many files in the project folder on your machine, most o
 
 <a id="app-files"></a>
 
-Focus on the following three TypeScript \(`.ts`\) files in the `/src` folder.
+Focus on the following three TypeScript (`.ts`) files in the `/src` folder.
 
 <div class="filetree">
   <div class="file">
@@ -206,15 +207,15 @@ Add new Typescript, HTML and CSS files inside the `src/` directory, most of them
 
 The following are all in `src/`
 
-| File                 | Purpose |
-|:---                  |:---     |
-| app/app.component.ts | Defines the same `AppComponent` as the one in the QuickStart playground. It is the **root** component of what will become a tree of nested components as the application evolves.                                                                                                                                                                                                                                                                                                                      |
-| app/app.module.ts    | Defines `AppModule`, the  [root module](guide/bootstrapping "AppModule: the root module") that tells Angular how to assemble the application. When initially created, it declares only the `AppComponent`. Over time, you add more components to declare.                                                                                                                                                                                                                                              |
-| main.ts              | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module \(`AppModule`\) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
+| File | Purpose |
+| :--- | :------ |
+| app/app.component.ts | Defines the same `AppComponent` as the one in the QuickStart playground. It is the **root** component of what will become a tree of nested components as the application evolves. |
+| app/app.module.ts | Defines `AppModule`, the  [root module](guide/bootstrapping "AppModule: the root module") that tells Angular how to assemble the application. When initially created, it declares only the `AppComponent`. Over time, you add more components to declare. |
+| main.ts | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module (`AppModule`) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
 
 ## Appendix: Test using `fakeAsync()/waitForAsync()`
 
-If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests \(for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)\), you need to import `zone.js/testing` in your test setup file.
+If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests (for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)), you need to import `zone.js/testing` in your test setup file.
 
 <div class="alert is-important">
 

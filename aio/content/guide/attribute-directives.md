@@ -12,30 +12,30 @@ See the <live-example></live-example> for a working example containing the code 
 
 This section walks you through creating a highlight directive that sets the background color of the host element to yellow.
 
-1.  To create a directive, use the CLI command [`ng generate directive`](cli/generate).
+1. To create a directive, use the CLI command [`ng generate directive`](cli/generate).
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    ng generate directive highlight
+   ng generate directive highlight
 
-    </code-example>
+   </code-example>
 
-    The CLI creates `src/app/highlight.directive.ts`, a corresponding test file `src/app/highlight.directive.spec.ts`, and declares the directive class in the `AppModule`.
+   The CLI creates `src/app/highlight.directive.ts`, a corresponding test file `src/app/highlight.directive.spec.ts`, and declares the directive class in the `AppModule`.
 
-    The CLI generates the default `src/app/highlight.directive.ts` as follows:
+   The CLI generates the default `src/app/highlight.directive.ts` as follows:
 
-    <code-example header="src/app/highlight.directive.ts" path="attribute-directives/src/app/highlight.directive.0.ts"></code-example>
+   <code-example header="src/app/highlight.directive.ts" path="attribute-directives/src/app/highlight.directive.0.ts"></code-example>
 
-    The `@Directive()` decorator's configuration property specifies the directive's CSS attribute selector, `[appHighlight]`.
+   The `@Directive()` decorator's configuration property specifies the directive's CSS attribute selector, `[appHighlight]`.
 
-1.  Import `ElementRef` from `@angular/core`.
-    `ElementRef` grants direct access to the host DOM element through its `nativeElement` property.
+1. Import `ElementRef` from `@angular/core`.
+   `ElementRef` grants direct access to the host DOM element through its `nativeElement` property.
 
-1.  Add `ElementRef` in the directive's `constructor()` to [inject](guide/dependency-injection) a reference to the host DOM element, the element to which you apply `appHighlight`.
+1. Add `ElementRef` in the directive's `constructor()` to [inject](guide/dependency-injection) a reference to the host DOM element, the element to which you apply `appHighlight`.
 
-1.  Add logic to the `HighlightDirective` class that sets the background to yellow.
+1. Add logic to the `HighlightDirective` class that sets the background to yellow.
 
-    <code-example header="src/app/highlight.directive.ts" path="attribute-directives/src/app/highlight.directive.1.ts"></code-example>
+   <code-example header="src/app/highlight.directive.ts" path="attribute-directives/src/app/highlight.directive.1.ts"></code-example>
 
 <div class="alert is-helpful">
 
@@ -49,9 +49,9 @@ Directives *do not* support namespaces.
 
 ## Applying an attribute directive
 
-1.  To use the `HighlightDirective`, add a `<p>` element to the HTML template with the directive as an attribute.
+1. To use the `HighlightDirective`, add a `<p>` element to the HTML template with the directive as an attribute.
 
-    <code-example header="src/app/app.component.html" path="attribute-directives/src/app/app.component.1.html" region="applied"></code-example>
+   <code-example header="src/app/app.component.html" path="attribute-directives/src/app/app.component.1.html" region="applied"></code-example>
 
 Angular creates an instance of the `HighlightDirective` class and injects a reference to the `<p>` element into the directive's constructor, which sets the `<p>` element's background style to yellow.
 
@@ -61,13 +61,13 @@ Angular creates an instance of the `HighlightDirective` class and injects a refe
 
 This section shows you how to detect when a user mouses into or out of the element and to respond by setting or clearing the highlight color.
 
-1.  Import `HostListener` from '@angular/core'.
+1. Import `HostListener` from '@angular/core'.
 
-    <code-example header="src/app/highlight.directive.ts (imports)" path="attribute-directives/src/app/highlight.directive.2.ts" region="imports"></code-example>
+   <code-example header="src/app/highlight.directive.ts (imports)" path="attribute-directives/src/app/highlight.directive.2.ts" region="imports"></code-example>
 
-1.  Add two event handlers that respond when the mouse enters or leaves, each with the `@HostListener()` decorator.
+1. Add two event handlers that respond when the mouse enters or leaves, each with the `@HostListener()` decorator.
 
-    <code-example header="src/app/highlight.directive.ts (mouse-methods)" path="attribute-directives/src/app/highlight.directive.2.ts" region="mouse-methods"></code-example>
+   <code-example header="src/app/highlight.directive.ts (mouse-methods)" path="attribute-directives/src/app/highlight.directive.2.ts" region="mouse-methods"></code-example>
 
 Subscribe to events of the DOM element that hosts an attribute directive, the `<p>` in this case, with the `@HostListener()` decorator.
 
@@ -95,52 +95,52 @@ The background color appears when the pointer hovers over the paragraph element 
 
 This section walks you through setting the highlight color while applying the `HighlightDirective`.
 
-1.  In `highlight.directive.ts`, import `Input` from `@angular/core`.
+1. In `highlight.directive.ts`, import `Input` from `@angular/core`.
 
-    <code-example header="src/app/highlight.directive.ts (imports)" path="attribute-directives/src/app/highlight.directive.3.ts" region="imports"></code-example>
+   <code-example header="src/app/highlight.directive.ts (imports)" path="attribute-directives/src/app/highlight.directive.3.ts" region="imports"></code-example>
 
-1.  Add an `appHighlight` `@Input()` property.
+1. Add an `appHighlight` `@Input()` property.
 
-    <code-example header="src/app/highlight.directive.ts" path="attribute-directives/src/app/highlight.directive.3.ts" region="input"></code-example>
+   <code-example header="src/app/highlight.directive.ts" path="attribute-directives/src/app/highlight.directive.3.ts" region="input"></code-example>
 
-    The `@Input()` decorator adds metadata to the class that makes the directive's `appHighlight` property available for binding.
+   The `@Input()` decorator adds metadata to the class that makes the directive's `appHighlight` property available for binding.
 
-1.  In `app.component.ts`, add a `color` property to the `AppComponent`.
+1. In `app.component.ts`, add a `color` property to the `AppComponent`.
 
-    <code-example header="src/app/app.component.ts (class)" path="attribute-directives/src/app/app.component.1.ts" region="class"></code-example>
+   <code-example header="src/app/app.component.ts (class)" path="attribute-directives/src/app/app.component.1.ts" region="class"></code-example>
 
-1.  To simultaneously apply the directive and the color, use property binding with the `appHighlight` directive selector, setting it equal to `color`.
+1. To simultaneously apply the directive and the color, use property binding with the `appHighlight` directive selector, setting it equal to `color`.
 
-    <code-example header="src/app/app.component.html (color)" path="attribute-directives/src/app/app.component.html" region="color"></code-example>
+   <code-example header="src/app/app.component.html (color)" path="attribute-directives/src/app/app.component.html" region="color"></code-example>
 
-    The `[appHighlight]` attribute binding performs two tasks:
+   The `[appHighlight]` attribute binding performs two tasks:
 
-    *   Applies the highlighting directive to the `<p>` element
-    *   Sets the directive's highlight color with a property binding
+   * Applies the highlighting directive to the `<p>` element
+   * Sets the directive's highlight color with a property binding
 
 ### Setting the value with user input
 
 This section guides you through adding radio buttons to bind your color choice to the `appHighlight` directive.
 
-1.  Add markup to `app.component.html` for choosing a color as follows:
+1. Add markup to `app.component.html` for choosing a color as follows:
 
-    <code-example header="src/app/app.component.html (v2)" path="attribute-directives/src/app/app.component.html" region="v2"></code-example>
+   <code-example header="src/app/app.component.html (v2)" path="attribute-directives/src/app/app.component.html" region="v2"></code-example>
 
-1.  Revise the `AppComponent.color` so that it has no initial value.
+1. Revise the `AppComponent.color` so that it has no initial value.
 
-    <code-example header="src/app/app.component.ts (class)" path="attribute-directives/src/app/app.component.ts" region="class"></code-example>
+   <code-example header="src/app/app.component.ts (class)" path="attribute-directives/src/app/app.component.ts" region="class"></code-example>
 
-1.  In `highlight.directive.ts`, revise `onMouseEnter` method so that it first tries to highlight with `appHighlight` and falls back to `red` if `appHighlight` is `undefined`.
+1. In `highlight.directive.ts`, revise `onMouseEnter` method so that it first tries to highlight with `appHighlight` and falls back to `red` if `appHighlight` is `undefined`.
 
-    <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.3.ts" region="mouse-enter"></code-example>
+   <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.3.ts" region="mouse-enter"></code-example>
 
-1.  Serve your application to verify that the user can choose the color with the radio buttons.
+1. Serve your application to verify that the user can choose the color with the radio buttons.
 
-    <div class="lightbox">
+   <div class="lightbox">
 
-    <img alt="Animated gif of the refactored highlight directive changing color according to the radio button the user selects" src="generated/images/guide/attribute-directives/highlight-directive-v2-anim.gif">
+   <img alt="Animated gif of the refactored highlight directive changing color according to the radio button the user selects" src="generated/images/guide/attribute-directives/highlight-directive-v2-anim.gif">
 
-    </div>
+   </div>
 
 <a id="second-property"></a>
 
@@ -148,20 +148,20 @@ This section guides you through adding radio buttons to bind your color choice t
 
 This section guides you through configuring your application so the developer can set the default color.
 
-1.  Add a second `Input()` property to `HighlightDirective` called `defaultColor`.
+1. Add a second `Input()` property to `HighlightDirective` called `defaultColor`.
 
-    <code-example header="src/app/highlight.directive.ts (defaultColor)" path="attribute-directives/src/app/highlight.directive.ts" region="defaultColor"></code-example>
+   <code-example header="src/app/highlight.directive.ts (defaultColor)" path="attribute-directives/src/app/highlight.directive.ts" region="defaultColor"></code-example>
 
-1.  Revise the directive's `onMouseEnter` so that it first tries to highlight with the `appHighlight`, then with the `defaultColor`, and falls back to `red` if both properties are `undefined`.
+1. Revise the directive's `onMouseEnter` so that it first tries to highlight with the `appHighlight`, then with the `defaultColor`, and falls back to `red` if both properties are `undefined`.
 
-    <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.ts" region="mouse-enter"></code-example>
+   <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.ts" region="mouse-enter"></code-example>
 
-1.  To bind to the `AppComponent.color` and fall back to "violet" as the default color, add the following HTML.
-    In this case,  the `defaultColor` binding doesn't use square brackets, `[]`, because it is static.
+1. To bind to the `AppComponent.color` and fall back to "violet" as the default color, add the following HTML.
+   In this case,  the `defaultColor` binding doesn't use square brackets, `[]`, because it is static.
 
-    <code-example header="src/app/app.component.html (defaultColor)" path="attribute-directives/src/app/app.component.html" region="defaultColor"></code-example>
+   <code-example header="src/app/app.component.html (defaultColor)" path="attribute-directives/src/app/app.component.html" region="defaultColor"></code-example>
 
-    As with components, you can add multiple directive property bindings to a host element.
+   As with components, you can add multiple directive property bindings to a host element.
 
 The default color is red if there is no default color binding.
 When the user chooses a color the selected color becomes the active highlight color.

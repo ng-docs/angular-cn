@@ -32,7 +32,6 @@ Note that Angular does not actually create a real `<ng-template>` element, but i
 
 ```html
 <div _ngcontent-c0>Mr. Nice</div>
-
 ```
 
 The following example compares the shorthand use of the asterisk in `*ngFor` with the longhand `<ng-template>` form:
@@ -69,8 +68,8 @@ For more information, see the [NgFor API](api/common/NgForOf "API: NgFor") and [
 
 </div>
 
-
 <a id="one-per-element"></a>
+
 ## One structural directive per element
 
 It's a quite common use-case to repeat a block of HTML but only when a particular condition is true. An intuitive way to do that is to put both an `*ngFor` and an `*ngIf` on the same element. However, since both `*ngFor` and `*ngIf` are structural directives, this would be treated as an error by the compiler. You may apply only one _structural_ directive to an element.
@@ -85,8 +84,8 @@ If so (and it seems like it should be so), how should Angular generalize the abi
 There are no easy answers to these questions. Prohibiting multiple structural directives makes them moot.
 There's an easy solution for this use case: put the `*ngIf` on a container element that wraps the `*ngFor` element. One or both elements can be an `<ng-container>` so that no extra DOM elements are generated.
 
-
 <a id="unless"></a>
+
 ## Creating a structural directive
 
 This section guides you through creating an `UnlessDirective` and how to set `condition` values.
@@ -99,36 +98,36 @@ When `condition` is `false`, the browser displays the sentence.
 
 <code-example header="src/app/app.component.html (appUnless-1)" path="structural-directives/src/app/app.component.html" region="appUnless-1"></code-example>
 
-1.  Using the Angular CLI, run the following command, where `unless` is the name of the directive:
+1. Using the Angular CLI, run the following command, where `unless` is the name of the directive:
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    ng generate directive unless
+   ng generate directive unless
 
-    </code-example>
+   </code-example>
 
-    Angular creates the directive class and specifies the CSS selector, `appUnless`, that identifies the directive in a template.
+   Angular creates the directive class and specifies the CSS selector, `appUnless`, that identifies the directive in a template.
 
-1.  Import `Input`, `TemplateRef`, and `ViewContainerRef`.
+1. Import `Input`, `TemplateRef`, and `ViewContainerRef`.
 
-    <code-example header="src/app/unless.directive.ts (skeleton)" path="structural-directives/src/app/unless.directive.ts" region="skeleton"></code-example>
+   <code-example header="src/app/unless.directive.ts (skeleton)" path="structural-directives/src/app/unless.directive.ts" region="skeleton"></code-example>
 
-1.  Inject `TemplateRef` and `ViewContainerRef` in the directive constructor as private variables.
+1. Inject `TemplateRef` and `ViewContainerRef` in the directive constructor as private variables.
 
-    <code-example header="src/app/unless.directive.ts (ctor)" path="structural-directives/src/app/unless.directive.ts" region="ctor"></code-example>
+   <code-example header="src/app/unless.directive.ts (ctor)" path="structural-directives/src/app/unless.directive.ts" region="ctor"></code-example>
 
-    The `UnlessDirective` creates an [embedded view](api/core/EmbeddedViewRef "API: EmbeddedViewRef") from the Angular-generated `<ng-template>` and inserts that view in a [view container](api/core/ViewContainerRef "API: ViewContainerRef") adjacent to the directive's original `<p>` host element.
+   The `UnlessDirective` creates an [embedded view](api/core/EmbeddedViewRef "API: EmbeddedViewRef") from the Angular-generated `<ng-template>` and inserts that view in a [view container](api/core/ViewContainerRef "API: ViewContainerRef") adjacent to the directive's original `<p>` host element.
 
-    [`TemplateRef`](api/core/TemplateRef "API: TemplateRef") helps you get to the `<ng-template>` contents and [`ViewContainerRef`](api/core/ViewContainerRef "API: ViewContainerRef") accesses the view container.
+   [`TemplateRef`](api/core/TemplateRef "API: TemplateRef") helps you get to the `<ng-template>` contents and [`ViewContainerRef`](api/core/ViewContainerRef "API: ViewContainerRef") accesses the view container.
 
-1.  Add an `appUnless` `@Input()` property with a setter.
+1. Add an `appUnless` `@Input()` property with a setter.
 
-    <code-example header="src/app/unless.directive.ts (set)" path="structural-directives/src/app/unless.directive.ts" region="set"></code-example>
+   <code-example header="src/app/unless.directive.ts (set)" path="structural-directives/src/app/unless.directive.ts" region="set"></code-example>
 
-    Angular sets the `appUnless` property whenever the value of the condition changes.
+   Angular sets the `appUnless` property whenever the value of the condition changes.
 
-    *   If the condition is falsy and Angular hasn't created the view previously, the setter causes the view container to create the embedded view from the template
-    *   If the condition is truthy and the view is currently displayed, the setter clears the container, which disposes of the view
+   * If the condition is falsy and Angular hasn't created the view previously, the setter causes the view container to create the embedded view from the template
+   * If the condition is truthy and the view is currently displayed, the setter clears the container, which disposes of the view
 
 The complete directive is as follows:
 
@@ -138,22 +137,22 @@ The complete directive is as follows:
 
 In this section, you'll update your application to test the `UnlessDirective`.
 
-1.  Add a `condition` set to `false` in the `AppComponent`.
+1. Add a `condition` set to `false` in the `AppComponent`.
 
-    <code-example header="src/app/app.component.ts (excerpt)" path="structural-directives/src/app/app.component.ts" region="condition"></code-example>
+   <code-example header="src/app/app.component.ts (excerpt)" path="structural-directives/src/app/app.component.ts" region="condition"></code-example>
 
-1.  Update the template to use the directive.
-    Here, `*appUnless` is on two `<p>` tags with opposite `condition` values, one `true` and one `false`.
+1. Update the template to use the directive.
+   Here, `*appUnless` is on two `<p>` tags with opposite `condition` values, one `true` and one `false`.
 
-    <code-example header="src/app/app.component.html (appUnless)" path="structural-directives/src/app/app.component.html" region="appUnless"></code-example>
+   <code-example header="src/app/app.component.html (appUnless)" path="structural-directives/src/app/app.component.html" region="appUnless"></code-example>
 
-    The asterisk is shorthand that marks `appUnless` as a structural directive.
-    When the `condition` is falsy, the top \(A\) paragraph appears and the bottom \(B\) paragraph disappears.
-    When the `condition` is truthy, the top \(A\) paragraph disappears and the bottom (B) paragraph appears.
+   The asterisk is shorthand that marks `appUnless` as a structural directive.
+   When the `condition` is falsy, the top (A) paragraph appears and the bottom (B) paragraph disappears.
+   When the `condition` is truthy, the top (A) paragraph disappears and the bottom (B) paragraph appears.
 
-1.  To change and display the value of `condition` in the browser, add markup that displays the status and a button.
+1. To change and display the value of `condition` in the browser, add markup that displays the status and a button.
 
-    <code-example header="src/app/app.component.html" path="structural-directives/src/app/app.component.html" region="toggle-info"></code-example>
+   <code-example header="src/app/app.component.html" path="structural-directives/src/app/app.component.html" region="toggle-info"></code-example>
 
 To verify that the directive works, click the button to change the value of `condition`.
 
@@ -181,34 +180,34 @@ The following tables describe each portion of the structural directive grammar:
     <code-pane format="typescript" header="let" hideCopy language="typescript"> let = "let" :local "=" :export ";"? </code-pane>
 </code-tabs>
 
-| Keyword      | Details |
-|:---          |:---     |
-| `prefix`     | HTML attribute key                                 |
-| `key`        | HTML attribute key                                 |
-| `local`      | Local variable name used in the template           |
-| `export`     | Value exported by the directive under a given name |
-| `expression` | Standard Angular expression                        |
+| Keyword | Details |
+| :------ | :------ |
+| `prefix` | HTML attribute key |
+| `key` | HTML attribute key |
+| `local` | Local variable name used in the template |
+| `export` | Value exported by the directive under a given name |
+| `expression` | Standard Angular expression |
 
 ### How Angular translates shorthand
 
 Angular translates structural directive shorthand into the normal binding syntax as follows:
 
-| Shorthand                       | Translation |
-|:---                             |:---         |
-| `prefix` and naked `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example>                                                                                                                       |
-| `keyExp`                        | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **NOTE**: <br /> The `prefix` is added to the `key` </div> |
-| `let`                           | <code-example format="typescript" hideCopy language="typescript"> let-local="export" </code-example>                                                                                                                          |
+| Shorthand | Translation |
+| :-------- | :---------- |
+| `prefix` and naked `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
+| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **NOTE**: <br /> The `prefix` is added to the `key` </div> |
+| `let` | <code-example format="typescript" hideCopy language="typescript"> let-local="export" </code-example> |
 
 ### Shorthand examples
 
 The following table provides shorthand examples:
 
-| Shorthand                                                                                                                                                                                                     | How Angular interprets the syntax |
-|:---                                                                                                                                                                                                           |:---                               |
-| <code-example format="typescript" hideCopy language="typescript"> &ast;ngFor="let item of [1,2,3]" </code-example>                                                                                            | <code-example format="html" hideCopy language="html"> &lt;ng-template ngFor &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-item &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForOf]="[1,2,3]"&gt; </code-example>                                                                                                                                                                                                                                                                                                                  |
+| Shorthand | How Angular interprets the syntax |
+| :-------- | :-------------------------------- |
+| <code-example format="typescript" hideCopy language="typescript"> &ast;ngFor="let item of [1,2,3]" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template ngFor &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-item &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForOf]="[1,2,3]"&gt; </code-example> |
 | <code-example format="typescript" hideCopy language="typescript"> &ast;ngFor="let item of [1,2,3] as items; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trackBy: myTrack; index as i" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template ngFor &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-item &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForOf]="[1,2,3]" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-items="ngForOf" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForTrackBy]="myTrack" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-i="index"&gt; </code-example> |
-| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp" </code-example>                                                                                                             | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp"&gt; </code-example>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp as value" </code-example>                                                                                                    | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-value="ngIf"&gt; </code-example>                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp"&gt; </code-example> |
+| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp as value" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-value="ngIf"&gt; </code-example> |
 
 <a id="directive-type-checks"></a>
 
@@ -220,8 +219,8 @@ You can improve template type checking for custom directives by adding template 
 These properties help the Angular template type checker find mistakes in the template at compile time, which can avoid runtime errors.
 These properties are as follows:
 
-*   A property `ngTemplateGuard_(someInputProperty)` lets you specify a more accurate type for an input expression within the template
-*   The `ngTemplateContextGuard` static property declares the type of the template context
+* A property `ngTemplateGuard_(someInputProperty)` lets you specify a more accurate type for an input expression within the template
+* The `ngTemplateContextGuard` static property declares the type of the template context
 
 This section provides examples of both kinds of type-guard property.
 For more information, see [Template type checking](guide/template-typecheck "Template type-checking guide").

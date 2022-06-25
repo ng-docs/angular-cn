@@ -25,23 +25,23 @@ For more information about how Google handles security issues, see [Google's sec
 
 <header>Best practices</header>
 
-| Practices                                                           | Details |
-|:---                                                                 |:---     |
-| Keep current with the latest Angular library releases               | We regularly update the Angular libraries, and these updates might fix security defects discovered in previous versions. Check the Angular [change log](https://github.com/angular/angular/blob/main/CHANGELOG.md) for security-related updates. |
-| Don't modify your copy of Angular                                   | Private, customized versions of Angular tend to fall behind the current version and might not include important security fixes and enhancements. Instead, share your Angular improvements with the community and make a pull request.              |
-| Avoid Angular APIs marked in the documentation as "*Security Risk*" | For more information, see the [Trusting safe values](guide/security#bypass-security-apis) section of this page.                                                                                                                                    |
+| Practices | Details |
+| :-------- | :------ |
+| Keep current with the latest Angular library releases | We regularly update the Angular libraries, and these updates might fix security defects discovered in previous versions. Check the Angular [change log](https://github.com/angular/angular/blob/main/CHANGELOG.md) for security-related updates. |
+| Don't modify your copy of Angular | Private, customized versions of Angular tend to fall behind the current version and might not include important security fixes and enhancements. Instead, share your Angular improvements with the community and make a pull request. |
+| Avoid Angular APIs marked in the documentation as "*Security Risk*" | For more information, see the [Trusting safe values](guide/security#bypass-security-apis) section of this page. |
 
 </div>
 
 ## Preventing cross-site scripting (XSS)
 
 [Cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) enables attackers to inject malicious code into web pages.
-Such code can then, for example, steal user data \(in particular, login data\) or perform actions to impersonate the user.
+Such code can then, for example, steal user data (in particular, login data) or perform actions to impersonate the user.
 This is one of the most common attacks on the web.
 
-To block XSS attacks, you must prevent malicious code from entering the DOM \(Document Object Model\).
+To block XSS attacks, you must prevent malicious code from entering the DOM (Document Object Model).
 For example, if attackers can trick you into inserting a `<script>` tag in the DOM, they can run arbitrary code on your website.
-The attack isn't limited to `<script>` tags &mdash;many elements and properties in the DOM allow code execution, for example, `<img onerror="...">` and `<a href="javascript:...">`.
+The attack isn't limited to `<script>` tags —many elements and properties in the DOM allow code execution, for example, `<img onerror="...">` and `<a href="javascript:...">`.
 If attacker-controlled data enters the DOM, expect security vulnerabilities.
 
 ### Angular's cross-site scripting security model
@@ -69,11 +69,11 @@ A value that's harmless in CSS is potentially dangerous in a URL.
 Angular defines the following security contexts:
 
 | Security contexts | Details |
-|:---               |:---     |
-| HTML              | Used when interpreting a value as HTML, for example, when binding to `innerHtml`. |
-| Style             | Used when binding CSS into the `style` property.                                  |
-| URL               | Used for URL properties, such as `<a href>`.                                      |
-| Resource URL      | A URL that is loaded and executed as code, for example, in `<script src>`.        |
+| :---------------- | :------ |
+| HTML | Used when interpreting a value as HTML, for example, when binding to `innerHtml`. |
+| Style | Used when binding CSS into the `style` property. |
+| URL | Used for URL properties, such as `<a href>`. |
+| Resource URL | A URL that is loaded and executed as code, for example, in `<script src>`. |
 
 Angular sanitizes untrusted values for HTML, styles, and URLs; sanitizing resource URLs isn't possible because they contain arbitrary code.
 In development mode, Angular prints a console warning when it has to change a value during sanitization.
@@ -84,7 +84,7 @@ The following template binds the value of `htmlSnippet`, once by interpolating i
 
 <code-example header="src/app/inner-html-binding.component.html" path="security/src/app/inner-html-binding.component.html"></code-example>
 
-Interpolated content is always escaped &mdash;the HTML isn't interpreted and the browser displays angle brackets in the element's text content.
+Interpolated content is always escaped —the HTML isn't interpreted and the browser displays angle brackets in the element's text content.
 
 For the HTML to be interpreted, bind it to an HTML property such as `innerHTML`.
 But binding a value that an attacker might control into `innerHTML` normally causes an XSS vulnerability
@@ -109,7 +109,7 @@ Avoid directly interacting with the DOM and instead use Angular templates where 
 
 For cases where this is unavoidable, use the built-in Angular sanitization functions.
 Sanitize untrusted values with the [DomSanitizer.sanitize](api/platform-browser/DomSanitizer#sanitize) method and the appropriate `SecurityContext`.
-That function also accepts values that were marked as trusted using the `bypassSecurityTrust`&hellip; functions, and will not sanitize them, as [described below](#bypass-security-apis).
+That function also accepts values that were marked as trusted using the `bypassSecurityTrust`… functions, and will not sanitize them, as [described below](#bypass-security-apis).
 
 <a id="bypass-security-apis"></a>
 
@@ -123,11 +123,11 @@ If in doubt, find a professional security reviewer.
 
 To mark a value as trusted, inject `DomSanitizer` and call one of the following methods:
 
-*   `bypassSecurityTrustHtml`
-*   `bypassSecurityTrustScript`
-*   `bypassSecurityTrustStyle`
-*   `bypassSecurityTrustUrl`
-*   `bypassSecurityTrustResourceUrl`
+* `bypassSecurityTrustHtml`
+* `bypassSecurityTrustScript`
+* `bypassSecurityTrustStyle`
+* `bypassSecurityTrustUrl`
+* `bypassSecurityTrustResourceUrl`
 
 Remember, whether a value is safe depends on context, so choose the right context for your intended use of the value.
 Imagine that the following template needs to bind a URL to a `javascript:alert(...)` call:
@@ -158,7 +158,7 @@ So call a method on the component to construct a trusted video URL, which causes
 
 ### Content security policy
 
-Content Security Policy \(CSP\) is a defense-in-depth technique to prevent XSS.
+Content Security Policy (CSP) is a defense-in-depth technique to prevent XSS.
 To enable CSP, configure your web server to return an appropriate `Content-Security-Policy` HTTP header.
 Read more about content security policy at the [Web Fundamentals guide](https://developers.google.com/web/fundamentals/security/csp) on the Google Developers website.
 
@@ -170,10 +170,10 @@ default-src 'self'; style-src 'self' 'unsafe-inline';
 
 </code-example>
 
-| Sections                            | Details |
-|:---                                 |:---     |
-| `default-src 'self';`               | Allows the page to load all its required resources from the same origin.                                                                                                                                                  |
-| `style-src 'self' 'unsafe-inline';` | Allows the page to load global styles from the same origin \(`'self'`\) and enables components to load their styles \(`'unsafe-inline'` - see [`angular/angular#6361`](https://github.com/angular/angular/issues/6361)\). |
+| Sections | Details |
+| :------- | :------ |
+| `default-src 'self';` | Allows the page to load all its required resources from the same origin. |
+| `style-src 'self' 'unsafe-inline';` | Allows the page to load global styles from the same origin (`'self'`) and enables components to load their styles (`'unsafe-inline'` - see [`angular/angular#6361`](https://github.com/angular/angular/issues/6361)). |
 
 Angular itself requires only these settings to function correctly.
 As your project grows, however, you may need to expand your CSP settings beyond this minimum to accommodate additional features specific to your application.
@@ -196,17 +196,17 @@ See [caniuse.com/trusted-types](https://caniuse.com/trusted-types) for the curre
 
 To enforce Trusted Types for your application, you must configure your application's web server to emit HTTP headers with one of the following Angular policies:
 
-| Policies                | Detail |
-|:---                     |:---    |
-| `angular`               | This policy is used in security-reviewed code that is internal to Angular, and is required for Angular to function when Trusted Types are enforced. Any inline template values or content sanitized by Angular is treated as safe by this policy.                           |
-| `angular#unsafe-bypass` | This policy is used for applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypass security, such as `bypassSecurityTrustHtml`. Any application that uses these methods must enable this policy.                   |
-| `angular#unsafe-jit`    | This policy is used by the [JIT compiler](api/core/Compiler). You must enable this policy if your application interacts directly with the JIT compiler or is running in JIT mode using the [platform browser dynamic](api/platform-browser-dynamic/platformBrowserDynamic). |
+| Policies | Detail |
+| :------- | :----- |
+| `angular` | This policy is used in security-reviewed code that is internal to Angular, and is required for Angular to function when Trusted Types are enforced. Any inline template values or content sanitized by Angular is treated as safe by this policy. |
+| `angular#unsafe-bypass` | This policy is used for applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypass security, such as `bypassSecurityTrustHtml`. Any application that uses these methods must enable this policy. |
+| `angular#unsafe-jit` | This policy is used by the [JIT compiler](api/core/Compiler). You must enable this policy if your application interacts directly with the JIT compiler or is running in JIT mode using the [platform browser dynamic](api/platform-browser-dynamic/platformBrowserDynamic). |
 
 You should configure the HTTP headers for Trusted Types in the following locations:
 
-*   Production serving infrastructure
-*   Angular CLI \(`ng serve`\), using the `headers` property in the `angular.json` file, for local development and end-to-end testing
-*   Karma \(`ng test`\), using the `customHeaders` property in the `karma.config.js` file, for unit testing
+* Production serving infrastructure
+* Angular CLI (`ng serve`), using the `headers` property in the `angular.json` file, for local development and end-to-end testing
+* Karma (`ng test`), using the `customHeaders` property in the `karma.config.js` file, for unit testing
 
 The following is an example of a header specifically configured for Trusted Types and Angular:
 
@@ -267,21 +267,21 @@ Don't generate Angular templates on the server side using a templating language;
 
 ## HTTP-level vulnerabilities
 
-Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request forgery \(CSRF or XSRF\) and cross-site script inclusion \(XSSI\).
+Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request forgery (CSRF or XSRF) and cross-site script inclusion (XSSI).
 Both of these must be mitigated primarily on the server side, but Angular provides helpers to make integration on the client side easier.
 
 <a id="xsrf"></a>
 
 ### Cross-site request forgery
 
-In a cross-site request forgery \(CSRF or XSRF\), an attacker tricks the user into visiting a different web page \(such as `evil.com`\) with malignant code that secretly sends a malicious request to the application's web server \(such as `example-bank.com`\).
+In a cross-site request forgery (CSRF or XSRF), an attacker tricks the user into visiting a different web page (such as `evil.com`) with malignant code that secretly sends a malicious request to the application's web server (such as `example-bank.com`).
 
 Assume the user is logged into the application at `example-bank.com`.
 The user opens an email and clicks a link to `evil.com`, which opens in a new tab.
 
 The `evil.com` page immediately sends a malicious request to `example-bank.com`.
 Perhaps it's a request to transfer money from the user's account to the attacker's account.
-The browser automatically sends the `example-bank.com` cookies \(including the authentication cookie\) with this request.
+The browser automatically sends the `example-bank.com` cookies (including the authentication cookie) with this request.
 
 If the `example-bank.com` server lacks XSRF protection, it can't tell the difference between a legitimate request from the application and the forged request from `evil.com`.
 
@@ -300,7 +300,7 @@ The malicious code on `evil.com` can't.
 Angular's `HttpClient` has built-in support for the client-side half of this technique.
 Read about it more in the [HttpClient guide](guide/http#security-xsrf-protection).
 
-For information about CSRF at the Open Web Application Security Project \(OWASP\), see [Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf) and [Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
+For information about CSRF at the Open Web Application Security Project (OWASP), see [Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf) and [Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
 The Stanford University paper [Robust Defenses for Cross-Site Request Forgery](https://seclab.stanford.edu/websec/csrf/csrf.pdf) is a rich source of detail.
 
 See also Dave Smith's [talk on XSRF at AngularConnect 2016](https://www.youtube.com/watch?v=9inczw6qtpY "Cross Site Request Funkery Securing Your Angular Apps From Evil Doers").

@@ -6,7 +6,7 @@ Keeping your Angular application up-to-date enables you to take advantage of lea
 
 This document contains information and resources to help you keep your Angular applications and libraries up-to-date.
 
-For information about our versioning policy and practices &mdash;including support and deprecation practices, as well as the release schedule&mdash; see [Angular versioning and releases](guide/releases "Angular versioning and releases").
+For information about our versioning policy and practices —including support and deprecation practices, as well as the release schedule— see [Angular versioning and releases](guide/releases "Angular versioning and releases").
 
 <div class="alert is-helpful">
 
@@ -25,7 +25,7 @@ To be notified when new releases are available, follow [@angular](https://twitte
 
 ## Learning about new features
 
-What's new? What's changed? We share the most important things you need to know on the Angular blog in [release announcements]( https://blog.angular.io/tagged/release%20notes "Angular blog - release announcements").
+What's new? What's changed? We share the most important things you need to know on the Angular blog in [release announcements](https://blog.angular.io/tagged/release%20notes "Angular blog - release announcements").
 
 To review a complete list of changes, organized by version, see the [Angular change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log").
 
@@ -65,23 +65,23 @@ It also describes supported update paths.
 
 ## Resource summary
 
-*   Release announcements:
-    [Angular blog - release announcements](https://blog.angular.io/tagged/release%20notes "Angular blog announcements about recent releases")
+* Release announcements:
+  [Angular blog - release announcements](https://blog.angular.io/tagged/release%20notes "Angular blog announcements about recent releases")
 
-*   Release announcements \(older\):
-    [Angular blog - announcements about releases prior to August 2017](https://blog.angularjs.org/search?q=available&by-date=true "Angular blog announcements about releases prior to August 2017")
+* Release announcements (older):
+  [Angular blog - announcements about releases prior to August 2017](https://blog.angularjs.org/search?q=available&by-date=true "Angular blog announcements about releases prior to August 2017")
 
-*   Release details:
-    [Angular change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
+* Release details:
+  [Angular change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
 
-*   Update instructions:
-    [Angular Update Guide](https://update.angular.io/ "Angular Update Guide")
+* Update instructions:
+  [Angular Update Guide](https://update.angular.io/ "Angular Update Guide")
 
-*   Update command reference:
-    [Angular CLI `ng update` command reference](cli/update)
+* Update command reference:
+  [Angular CLI `ng update` command reference](cli/update)
 
-*   Versioning, release, support, and deprecation practices:
-    [Angular versioning and releases](guide/releases "Angular versioning and releases")
+* Versioning, release, support, and deprecation practices:
+  [Angular versioning and releases](guide/releases "Angular versioning and releases")
 
 <!-- links -->
 

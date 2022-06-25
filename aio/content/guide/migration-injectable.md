@@ -2,8 +2,8 @@
 
 ### What does this schematic do?
 
-1.  This schematic adds an `@Injectable()` decorator to classes which are provided in the application but are not decorated.
-1.  The schematic updates providers which follow the `{provide: SomeToken}` pattern to explicitly specify `useValue: undefined`.
+1. This schematic adds an `@Injectable()` decorator to classes which are provided in the application but are not decorated.
+1. The schematic updates providers which follow the `{provide: SomeToken}` pattern to explicitly specify `useValue: undefined`.
 
 **Example for missing `@Injectable()`**
 

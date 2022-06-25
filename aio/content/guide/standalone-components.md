@@ -17,7 +17,6 @@ Components, directives, and pipes can now be marked as `standalone: true`. Angul
 
 Standalone components specify their dependencies directly instead of getting them through `NgModule`s. For example, if `PhotoGalleryComponent` is a standalone component, it can directly import another standalone component `ImageGridComponent`:
 
-
 ```ts
 @Component({
   standalone: true,
@@ -227,8 +226,8 @@ Such an array could be imported by applications using `NgModule`s and added to t
 
 Angular applications can configure dependency injection by specifying a set of available providers. In a typical application, there are two different injector types:
 
-*   **module injector** with providers configured in `@NgModule.providers` or `@Injectable({providedIn: "..."})`. Those application-wide providers are visible to all components in as well as to other services configured in a module injector.
-*   **node injectors** configured in `@Directive.providers` / `@Component.providers` or `@Component.viewProviders`. Those providers are visible to a given component and all its children only.
+* **module injector** with providers configured in `@NgModule.providers` or `@Injectable({providedIn: "..."})`. Those application-wide providers are visible to all components in as well as to other services configured in a module injector.
+* **node injectors** configured in `@Directive.providers` / `@Component.providers` or `@Component.viewProviders`. Those providers are visible to a given component and all its children only.
 
 #### Environment injectors
 
@@ -248,10 +247,10 @@ The new bootstrap API gives us back the means of configuring “module injectors
 
 Environment injectors can be configured using one of the following:
 
-*   `@NgModule.providers` (in applications bootstrapping through an `NgModule`);
-*   `@Injectable({provideIn: "..."})`(in both the NgModule-based as well as “standalone” applications);
-*   `providers` option in the `bootstrapApplication` call (in fully “standalone” applications);
-*   `providers` field in a `Route` configuration.
+* `@NgModule.providers` (in applications bootstrapping through an `NgModule`);
+* `@Injectable({provideIn: "..."})`(in both the NgModule-based as well as “standalone” applications);
+* `providers` option in the `bootstrapApplication` call (in fully “standalone” applications);
+* `providers` field in a `Route` configuration.
 
 Angular v14 introduces a new TypeScript type `EnvironmentInjector` to represent this new naming. The accompanying `createEnvironmentInjector` API makes it possible to create environment injectors programmatically: 
 
@@ -282,26 +281,26 @@ In reality, the dependency injectors hierarchy is slightly more elaborate in app
 ```ts
 // an existing "datepicker" component with an NgModule
 @Component({
-        selector: 'datepicker',
-        template: '...',
+&nbsp; &nbsp; &nbsp; &nbsp; selector: 'datepicker',
+&nbsp; &nbsp; &nbsp; &nbsp; template: '...',
 })
 class DatePickerComponent {
   constructor(private calendar: CalendarService) {}
 }
 
 @NgModule({
-        declarations: [DatePickerComponent],
-        exports: [DatePickerComponent]
-        providers: [CalendarService],
+&nbsp; &nbsp; &nbsp; &nbsp; declarations: [DatePickerComponent],
+&nbsp; &nbsp; &nbsp; &nbsp; exports: [DatePickerComponent]
+&nbsp; &nbsp; &nbsp; &nbsp; providers: [CalendarService],
 })
 class DatePickerModule {
 }
 
 @Component({
-        selector: 'date-modal',
-        template: '<datepicker></datepicker>',
-        standalone: true,
-        imports: [DatePickerModule]
+&nbsp; &nbsp; &nbsp; &nbsp; selector: 'date-modal',
+&nbsp; &nbsp; &nbsp; &nbsp; template: '<datepicker></datepicker>',
+&nbsp; &nbsp; &nbsp; &nbsp; standalone: true,
+&nbsp; &nbsp; &nbsp; &nbsp; imports: [DatePickerModule]
 })
 class DateModalComponent {
 }

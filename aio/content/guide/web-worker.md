@@ -30,35 +30,36 @@ ng generate web-worker app
 
 The command performs the following actions.
 
-1.  Configures your project to use web workers, if it isn't already.
-1.  Adds the following scaffold code to `src/app/app.worker.ts` to  receive messages.
+1. Configures your project to use web workers, if it isn't already.
 
-    <code-example language="typescript" header="src/app/app.worker.ts">
+1. Adds the following scaffold code to `src/app/app.worker.ts` to  receive messages.
 
-    addEventListener('message', ({ data }) =&gt; {
-      const response = `worker response to &dollar;{data}`;
-      postMessage(response);
-    });
+   <code-example language="typescript" header="src/app/app.worker.ts">
 
-    </code-example>
+   addEventListener('message', ({ data }) =&gt; {
+     const response = `worker response to &dollar;{data}`;
+     postMessage(response);
+   });
 
-1.  Adds the following scaffold code to `src/app/app.component.ts` to use the worker.
+   </code-example>
 
-    <code-example language="typescript" header="src/app/app.component.ts">
+1. Adds the following scaffold code to `src/app/app.component.ts` to use the worker.
 
-    if (typeof Worker !== 'undefined') {
-      // Create a new
-      const worker = new Worker(new URL('./app.worker', import.meta.url));
-      worker.onmessage = ({ data }) =&gt; {
-        console.log(`page got message: &dollar;{data}`);
-      };
-      worker.postMessage('hello');
-    } else {
-      // Web workers are not supported in this environment.
-      // You should add a fallback so that your program still executes correctly.
-    }
+   <code-example language="typescript" header="src/app/app.component.ts">
 
-    </code-example>
+   if (typeof Worker !== 'undefined') {
+     // Create a new
+     const worker = new Worker(new URL('./app.worker', import.meta.url));
+     worker.onmessage = ({ data }) =&gt; {
+       console.log(`page got message: &dollar;{data}`);
+     };
+     worker.postMessage('hello');
+   } else {
+     // Web workers are not supported in this environment.
+     // You should add a fallback so that your program still executes correctly.
+   }
+
+   </code-example>
 
 After you generate this initial scaffold, you must refactor your code to use the web worker by sending messages to and from the worker.
 

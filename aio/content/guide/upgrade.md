@@ -27,7 +27,7 @@ There are a few key techniques and patterns that you can apply to future proof a
 ### Follow the AngularJS Style Guide
 
 The [AngularJS Style Guide][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd] collects patterns and practices that have been proven to result in cleaner and more maintainable AngularJS applications.
-It contains a wealth of information about how to write and organize AngularJS code &mdash;and equally importantly&mdash; how **not** to write and organize AngularJS code.
+It contains a wealth of information about how to write and organize AngularJS code —and equally importantly— how **not** to write and organize AngularJS code.
 
 Angular is a reimagined version of the best parts of AngularJS.
 In that sense, its goals are the same as the Style Guide for AngularJS:
@@ -36,10 +36,10 @@ There is a lot more to Angular than that of course, but this does mean that *fol
 
 There are a few rules in particular that will make it much easier to do *an incremental upgrade* using the Angular `upgrade/static` module:
 
-| Rules                                                                                                                                                                                             | Details |
-|:---                                                                                                                                                                                               |:---     |
-| [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]                                                                                                             | There should be one component per file. This not only makes components easy to navigate and find, but will also allow us to migrate them between languages and frameworks one at a time. In this example application, each controller, component, service, and filter is in its own source file. |
-| [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | Define similar principles on a higher level of abstraction: Different parts of the application should reside in different directories and NgModules.                                                                                                                                             |
+| Rules | Details |
+| :---- | :------ |
+| [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | There should be one component per file. This not only makes components easy to navigate and find, but will also allow us to migrate them between languages and frameworks one at a time. In this example application, each controller, component, service, and filter is in its own source file. |
+| [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | Define similar principles on a higher level of abstraction: Different parts of the application should reside in different directories and NgModules. |
 
 When an application is laid out feature per feature in this way, it can also be migrated one feature at a time.
 For applications that don't already look like this, applying the rules in the AngularJS style guide is a highly recommended preparation step.
@@ -69,11 +69,11 @@ Since TypeScript is a superset of ECMAScript 2015, which in turn is a superset o
 But just doing that is not hugely useful or exciting, of course.
 Additional steps like the following can give us much more bang for the buck:
 
-*   For applications that use a module loader, TypeScript imports and exports \(which are really ECMAScript 2015 imports and exports\) can be used to organize code into modules.
-*   Type annotations can be gradually added to existing functions and variables to pin down their types and get benefits like build-time error checking, great autocompletion support and inline documentation.
-*   JavaScript features new to ES2015, like arrow functions, `let`s and `const`s, default function parameters, and destructuring assignments can also be gradually added to make the code more expressive.
-*   Services and controllers can be turned into *classes*.
-    That way they'll be a step closer to becoming Angular service and component classes, which will make life easier after the upgrade.
+* For applications that use a module loader, TypeScript imports and exports (which are really ECMAScript 2015 imports and exports) can be used to organize code into modules.
+* Type annotations can be gradually added to existing functions and variables to pin down their types and get benefits like build-time error checking, great autocompletion support and inline documentation.
+* JavaScript features new to ES2015, like arrow functions, `let`s and `const`s, default function parameters, and destructuring assignments can also be gradually added to make the code more expressive.
+* Services and controllers can be turned into *classes*.
+  That way they'll be a step closer to becoming Angular service and component classes, which will make life easier after the upgrade.
 
 ### Using Component Directives
 
@@ -86,27 +86,27 @@ Applications built with component directives are much easier to migrate to Angul
 
 To be Angular compatible, an AngularJS component directive should configure these attributes:
 
-| Attributes                         | Details |
-|:---                                |:---     |
-| `restrict: 'E'`                    | Components are usually used as elements.                                                                                       |
-| `scope: {}`                        | An isolate scope. In Angular, components are always isolated from their surroundings, and you should do this in AngularJS too. |
-| `bindToController: {}`             | Component inputs and outputs should be bound to the controller instead of using the `$scope`.                                  |
-| `controller` <br /> `controllerAs` | Components have their own controllers.                                                                                         |
-| `template` <br /> `templateUrl`    | Components have their own templates.                                                                                           |
+| Attributes | Details |
+| :--------- | :------ |
+| `restrict: 'E'` | Components are usually used as elements. |
+| `scope: {}` | An isolate scope. In Angular, components are always isolated from their surroundings, and you should do this in AngularJS too. |
+| `bindToController: {}` | Component inputs and outputs should be bound to the controller instead of using the `$scope`. |
+| `controller` <br /> `controllerAs` | Components have their own controllers. |
+| `template` <br /> `templateUrl` | Components have their own templates. |
 
 Component directives may also use the following attributes:
 
-| Attributes            | Details |
-|:---                   |:---     |
-| `transclude: true/{}` | If the component needs to transclude content from elsewhere.                        |
-| `require`             | If the component needs to communicate with the controller of some parent component. |
+| Attributes | Details |
+| :--------- | :------ |
+| `transclude: true/{}` | If the component needs to transclude content from elsewhere. |
+| `require` | If the component needs to communicate with the controller of some parent component. |
 
 Component directives **should not** use the following attributes:
 
-| Attributes \(avoid\)         | Details |
-|:---                          |:---     |
-| `compile`                    | This will not be supported in Angular.                                                                                         |
-| `replace: true`              | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS.        |
+| Attributes (avoid) | Details |
+| :----------------- | :------ |
+| `compile` | This will not be supported in Angular. |
+| `replace: true` | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS. |
 | `priority` <br /> `terminal` | While AngularJS components may use these, they are not used in Angular and it is better not to write code that relies on them. |
 
 An AngularJS component directive that is fully aligned with the Angular architecture may look something like this:
@@ -116,9 +116,9 @@ An AngularJS component directive that is fully aligned with the Angular architec
 AngularJS 1.5 introduces the [component API][AngularjsDocsApiNgTypeAngularModuleComponent] that makes it easier to define component directives like these.
 It is a good idea to use this API for component directives for several reasons:
 
-*   It requires less boilerplate code.
-*   It enforces the use of component best practices like `controllerAs`.
-*   It has good default values for directive attributes like `scope` and `restrict`.
+* It requires less boilerplate code.
+* It enforces the use of component best practices like `controllerAs`.
+* It has good default values for directive attributes like `scope` and `restrict`.
 
 The component directive example from above looks like this when expressed using the component API:
 
@@ -159,22 +159,22 @@ Dependency injection, the DOM, and change detection.
 
 Dependency injection is front and center in both AngularJS and Angular, but there are some key differences between the two frameworks in how it actually works.
 
-| AngularJS                                                                                                             | Angular |
-|:---                                                                                                                   |:---     |
-| Dependency injection tokens are always strings                                                                        | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings.                        |
+| AngularJS | Angular |
+| :-------- | :------ |
+| Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
 | There is exactly one injector. <br /> Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
 
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
 
-*   You can make AngularJS services available for injection to Angular code by *upgrading* them.
-    The same singleton instance of each service is shared between the frameworks.
-    In Angular these services will always be in the *root injector* and available to all components.
+* You can make AngularJS services available for injection to Angular code by *upgrading* them.
+  The same singleton instance of each service is shared between the frameworks.
+  In Angular these services will always be in the *root injector* and available to all components.
 
-*   You can also make Angular services available for injection to AngularJS code by *downgrading* them.
-    Only services from the Angular root injector can be downgraded.
-    Again, the same singleton instances are shared between the frameworks.
-    When you register a downgraded service, you must explicitly specify a *string token* that you want to use in AngularJS.
+* You can also make Angular services available for injection to AngularJS code by *downgrading* them.
+  Only services from the Angular root injector can be downgraded.
+  Again, the same singleton instances are shared between the frameworks.
+  When you register a downgraded service, you must explicitly specify a *string token* that you want to use in AngularJS.
 
 <div class="lightbox">
 
@@ -199,11 +199,11 @@ The template of that component will then be managed by Angular, and it may conta
 Beyond that, you may interleave the two frameworks.
 You always cross the boundary between the two frameworks by one of two ways:
 
-1.  By using a component from the other framework:
-    An AngularJS template using an Angular component, or an Angular template using an AngularJS component.
+1. By using a component from the other framework:
+   An AngularJS template using an Angular component, or an Angular template using an AngularJS component.
 
-1.  By transcluding or projecting content from the other framework.
-    ngUpgrade bridges the related concepts of AngularJS transclusion and Angular content projection together.
+1. By transcluding or projecting content from the other framework.
+   ngUpgrade bridges the related concepts of AngularJS transclusion and Angular content projection together.
 
 <div class="lightbox">
 
@@ -241,12 +241,12 @@ The code itself doesn't have to call `scope.$apply()` or anything like it.
 In the case of hybrid applications, the `UpgradeModule` bridges the AngularJS and Angular approaches.
 Here is what happens:
 
-*   Everything that happens in the application runs inside the Angular zone.
-    This is true whether the event originated in AngularJS or Angular code.
-    The zone triggers Angular change detection after every event.
+* Everything that happens in the application runs inside the Angular zone.
+  This is true whether the event originated in AngularJS or Angular code.
+  The zone triggers Angular change detection after every event.
 
-*   The `UpgradeModule` will invoke the AngularJS `$rootScope.$apply()` after every turn of the Angular zone.
-    This also triggers AngularJS change detection after every event.
+* The `UpgradeModule` will invoke the AngularJS `$rootScope.$apply()` after every turn of the Angular zone.
+  This also triggers AngularJS change detection after every event.
 
 <div class="lightbox">
 
@@ -263,9 +263,9 @@ When you downgrade an Angular component and then use it from AngularJS, the inpu
 When those inputs change, the corresponding properties in the component are set.
 You can also hook into the changes by implementing the [OnChanges][AioApiCoreOnchanges] interface in the component, just like you could if it hadn't been downgraded.
 
-Correspondingly, when you upgrade an AngularJS component and use it from Angular, all the bindings defined for `scope` \(or `bindToController`\) of the component directive will be hooked into Angular change detection.
+Correspondingly, when you upgrade an AngularJS component and use it from Angular, all the bindings defined for `scope` (or `bindToController`) of the component directive will be hooked into Angular change detection.
 They will be treated as regular Angular inputs.
-Their values will be written to the scope \(or controller\) of the upgraded component when they change.
+Their values will be written to the scope (or controller) of the upgraded component when they change.
 
 ### Using UpgradeModule with Angular *NgModules*
 
@@ -385,7 +385,7 @@ The net result is an AngularJS directive called `heroDetail`, that you can use l
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-This AngularJS is an element directive \(`restrict: 'E'`\) called `heroDetail`.
+This AngularJS is an element directive (`restrict: 'E'`) called `heroDetail`.
 An AngularJS element directive is matched based on its *name*.
 *The `selector` metadata of the downgraded Angular component is ignored*.
 
@@ -473,19 +473,19 @@ All that is left is to add it to the `declarations` array of `AppModule`.
 <div class="alert is-helpful">
 
 Upgraded components are Angular **directives**, instead of **components**, because Angular is unaware that AngularJS will create elements under it.
-As far as Angular knows, the upgraded component is just a directive &mdash;a tag&mdash; and Angular doesn't have to concern itself with its children.
+As far as Angular knows, the upgraded component is just a directive —a tag— and Angular doesn't have to concern itself with its children.
 
 </div>
 
 An upgraded component may also have inputs and outputs, as defined by the scope/controller bindings of the original AngularJS component directive.
 When you use the component from an Angular template, provide the inputs and outputs using **Angular template syntax**, observing the following rules:
 
-| Bindings           | Binding definition            | Template syntax |
-|:---                |:---                           |:---             |
-| Attribute binding  | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">`                                                                                                                                                                                               |
-| Expression binding | `myOutput: '&myOutput'`       | `<my-component (myOutput)="action()">`                                                                                                                                                                                             |
-| One-way binding    | `myValue: '<myValue'`         | `<my-component [myValue]="anExpression">`                                                                                                                                                                                          |
-| Two-way binding    | `myValue: '=myValue'`         | As a two-way binding: <br /> `<my-component [(myValue)]="anExpression">` <br /> Since most AngularJS two-way bindings actually only need a one-way binding in practice, `<my-component [myValue]="anExpression">` is often enough. |
+| Bindings | Binding definition | Template syntax |
+| :------- | :----------------- | :-------------- |
+| Attribute binding | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">` |
+| Expression binding | `myOutput: '&myOutput'` | `<my-component (myOutput)="action()">` |
+| One-way binding | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
+| Two-way binding | `myValue: '=myValue'` | As a two-way binding: <br /> `<my-component [(myValue)]="anExpression">` <br /> Since most AngularJS two-way bindings actually only need a one-way binding in practice, `<my-component [myValue]="anExpression">` is often enough. |
 
 For example, imagine a hero detail AngularJS component directive with one input and one output:
 
@@ -634,10 +634,10 @@ This strategy reduces your initial bundle size, defers any potential impact from
 
 The steps below show you how to do the following:
 
-*   Setup a callback function for your AngularJS bundle.
-*   Create a service that lazy loads and bootstraps your AngularJS app.
-*   Create a routable component for AngularJS content
-*   Create a custom `matcher` function for AngularJS-specific URLs and configure the Angular `Router` with the custom matcher for AngularJS routes.
+* Setup a callback function for your AngularJS bundle.
+* Create a service that lazy loads and bootstraps your AngularJS app.
+* Create a routable component for AngularJS content
+* Create a custom `matcher` function for AngularJS-specific URLs and configure the Angular `Router` with the custom matcher for AngularJS routes.
 
 ### Create a service to lazy load AngularJS
 
@@ -931,13 +931,13 @@ In terms of project structure, this is where the work begins:
 This is actually a pretty good starting point.
 The code uses the AngularJS 1.5 component API and the organization follows the [AngularJS Style Guide][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd], which is an important [preparation step][AioGuideUpgradeFollowTheAngularjsStyleGuide] before a successful upgrade.
 
-*   Each component, service, and filter is in its own source file, as per the [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility].
+* Each component, service, and filter is in its own source file, as per the [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility].
 
-*   The `core`, `phone-detail`, and `phone-list` modules are each in their own subdirectory.
-    Those subdirectories contain the JavaScript code as well as the HTML templates that go with each particular feature.
-    This is in line with the [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] and [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] rules.
+* The `core`, `phone-detail`, and `phone-list` modules are each in their own subdirectory.
+  Those subdirectories contain the JavaScript code as well as the HTML templates that go with each particular feature.
+  This is in line with the [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] and [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] rules.
 
-*   Unit tests are located side-by-side with application code where they are easily found, as described in the rules for [Organizing Tests][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests].
+* Unit tests are located side-by-side with application code where they are easily found, as described in the rules for [Organizing Tests][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests].
 
 ### Switching to TypeScript
 
@@ -975,7 +975,7 @@ npm install &commat;types/angular-material --save-dev
 You should also configure the TypeScript compiler with a `tsconfig.json` in the project directory as described in the [TypeScript Configuration][AioGuideTypescriptConfiguration] guide.
 The `tsconfig.json` file tells the TypeScript compiler how to turn your TypeScript files into ES5 code bundled into CommonJS modules.
 
-Finally, you should add some npm scripts in `package.json` to compile the TypeScript files to JavaScript \(based on the `tsconfig.json` configuration file\):
+Finally, you should add some npm scripts in `package.json` to compile the TypeScript files to JavaScript (based on the `tsconfig.json` configuration file):
 
 <code-example format="shell" language="shell">
 
@@ -1005,7 +1005,7 @@ Now that you have TypeScript though, you can start benefiting from some of its f
 There is a lot of value the language can provide to AngularJS applications.
 
 For one thing, TypeScript is a superset of ES2015.
-Any application that has previously been written in ES5 &mdash;like the PhoneCat example has&mdash; can with TypeScript start incorporating all of the JavaScript features that are new to ES2015.
+Any application that has previously been written in ES5 —like the PhoneCat example has— can with TypeScript start incorporating all of the JavaScript features that are new to ES2015.
 These include things like `let`s and `const`s, arrow functions, default function parameters, and destructuring assignments.
 
 Another thing you can do is start adding *type safety* to your code.
@@ -1088,8 +1088,8 @@ Turn to the [Angular animations][AioGuideAnimations] guide to learn about that.
 Install Angular into the project, along with the SystemJS module loader.
 Take a look at the results of the [upgrade setup instructions][AioGuideUpgradeSetup] and get the following configurations from there:
 
-*   Add Angular and the other new dependencies to `package.json`
-*   The SystemJS configuration file `systemjs.config.js` to the project root directory.
+* Add Angular and the other new dependencies to `package.json`
+* The SystemJS configuration file `systemjs.config.js` to the project root directory.
 
 Once these are done, run:
 
@@ -1191,47 +1191,47 @@ Starting with Angular version 13, the [distribution format][GithubAngularAngular
 
 If your use case requires the UMD format, use [`rollup`][RollupjsMain] to manually produce a bundle from the flat ES module files.
 
-1.  Use `npm` to globally install `rollup`
+1. Use `npm` to globally install `rollup`
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    npm i -g rollup
+   npm i -g rollup
 
-    </code-example>
+   </code-example>
 
-1.  Output the version of `rollup` and verify the installation was successful
+1. Output the version of `rollup` and verify the installation was successful
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    rollup -v
+   rollup -v
 
-    </code-example>
+   </code-example>
 
-1.  Create the `rollup.config.js` configuration file for `rollup` to use the global `ng` command to reference all of the Angular framework exports.
+1. Create the `rollup.config.js` configuration file for `rollup` to use the global `ng` command to reference all of the Angular framework exports.
 
-    1.  Create a file named `rollup.config.js`
-    1.  Copy the following content into `rollup.config.js`
+   1. Create a file named `rollup.config.js`
+   1. Copy the following content into `rollup.config.js`
 
-        <code-example language="javascript">
+      <code-example language="javascript">
 
-        export default {
-          input: 'node_modules/&commat;angular/core/fesm2015/core.js',
-          output: {
-            file: 'bundle.js',
-            format: 'umd',
-            name: 'ng'
-          }
+      export default {
+        input: 'node_modules/&commat;angular/core/fesm2015/core.js',
+        output: {
+          file: 'bundle.js',
+          format: 'umd',
+          name: 'ng'
         }
+      }
 
-        </code-example>
+      </code-example>
 
-1.  Use `rollup` to create the `bundle.js` UMD bundle using settings in `rollup.config.js`
+1. Use `rollup` to create the `bundle.js` UMD bundle using settings in `rollup.config.js`
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    rollup -c rollup.config.js
+   rollup -c rollup.config.js
 
-    </code-example>
+   </code-example>
 
 The `bundle.js` file contains your UMD bundle.
 For an example on GitHub, see [UMD Angular bundle][GithubMgechevAngularUmdBundle].
@@ -1245,8 +1245,8 @@ For an example on GitHub, see [UMD Angular bundle][GithubMgechevAngularUmdBundle
 The first piece you'll port over to Angular is the `Phone` service, which resides in `app/core/phone/phone.service.ts` and makes it possible for components to load phone information from the server.
 Right now it is implemented with ngResource and you're using it for two things:
 
-*   For loading the list of all phones into the phone list component
-*   For loading the details of a single phone into the phone detail component
+* For loading the list of all phones into the phone list component
+* For loading the details of a single phone into the phone detail component
 
 You can replace this implementation with an Angular service class, while keeping the controllers in AngularJS land.
 
@@ -1293,7 +1293,7 @@ Because it is an Angular service, you register it with the `NgModule` providers:
 
 <code-example header="app.module.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phone"></code-example>
 
-Now that you are loading `phone.service.ts` through an import that is resolved by SystemJS, you should **remove the &lt;script&gt; tag** for the service from `index.html`.
+Now that you are loading `phone.service.ts` through an import that is resolved by SystemJS, you should **remove the &lt;script> tag** for the service from `index.html`.
 This is something you'll do to all components as you upgrade them.
 Simultaneously with the AngularJS to Angular upgrade you're also migrating code from scripts to modules.
 
@@ -1362,7 +1362,7 @@ Add the `FormsModule` to `NgModule` imports and declare the new `PhoneListCompon
 
 <code-example header="app.module.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phonelist"></code-example>
 
-Remove the &lt;script&gt; tag for the phone list component from `index.html`.
+Remove the &lt;script> tag for the phone list component from `index.html`.
 
 Now set the remaining `phone-detail.component.ts` as follows:
 
@@ -1388,24 +1388,28 @@ Convert the phone detail component template into Angular syntax as follows:
 
 There are several notable changes here:
 
-*   You've removed the `$ctrl.` prefix from all expressions
-*   You've replaced `ng-src` with property bindings for the standard `src` property
-*   You're using the property binding syntax around `ng-class`.
-    Though Angular does have a [very similar `ngClass`][AioGuideBuiltInDirectives] as AngularJS does, its value is not magically evaluated as an expression.
-    In Angular, you always specify in the template when the value of an attribute is a property expression, as opposed to a literal string.
+* You've removed the `$ctrl.` prefix from all expressions
 
-*   You've replaced `ng-repeat`s with `*ngFor`s
-*   You've replaced `ng-click` with an event binding for the standard `click`
-*   You've wrapped the whole template in an `ngIf` that causes it only to be rendered when there is a phone present.
-    You need this because when the component first loads, you don't have `phone` yet and the expressions will refer to a non-existing value.
-    Unlike in AngularJS, Angular expressions do not fail silently when you try to refer to properties on undefined objects.
-    You need to be explicit about cases where this is expected.
+* You've replaced `ng-src` with property bindings for the standard `src` property
+
+* You're using the property binding syntax around `ng-class`.
+  Though Angular does have a [very similar `ngClass`][AioGuideBuiltInDirectives] as AngularJS does, its value is not magically evaluated as an expression.
+  In Angular, you always specify in the template when the value of an attribute is a property expression, as opposed to a literal string.
+
+* You've replaced `ng-repeat`s with `*ngFor`s
+
+* You've replaced `ng-click` with an event binding for the standard `click`
+
+* You've wrapped the whole template in an `ngIf` that causes it only to be rendered when there is a phone present.
+  You need this because when the component first loads, you don't have `phone` yet and the expressions will refer to a non-existing value.
+  Unlike in AngularJS, Angular expressions do not fail silently when you try to refer to properties on undefined objects.
+  You need to be explicit about cases where this is expected.
 
 Add `PhoneDetailComponent` component to the `NgModule` *declarations*:
 
 <code-example header="app.module.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phonedetail"></code-example>
 
-You should now also remove the phone detail component &lt;script&gt; tag from `index.html`.
+You should now also remove the phone detail component &lt;script> tag from `index.html`.
 
 #### Add the *CheckmarkPipe*
 
@@ -1420,7 +1424,7 @@ Rename the file to `checkmark.pipe.ts` to conform with Angular conventions:
 
 <code-example header="app/core/checkmark/checkmark.pipe.ts" path="upgrade-phonecat-2-hybrid/app/core/checkmark/checkmark.pipe.ts"></code-example>
 
-Now import and declare the newly created pipe and remove the filter &lt;script&gt; tag from `index.html`:
+Now import and declare the newly created pipe and remove the filter &lt;script> tag from `index.html`:
 
 <code-example header="app.module.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="checkmarkpipe"></code-example>
 
@@ -1475,7 +1479,7 @@ It replaces the old AngularJS `ng-view` directive:
 
 A router needs configuration whether it is the AngularJS or Angular or any other router.
 
-The details of Angular router configuration are best left to the [Routing documentation][AioGuideRouter] which recommends that you create a `NgModule` dedicated to router configuration \(called a *Routing Module*\).
+The details of Angular router configuration are best left to the [Routing documentation][AioGuideRouter] which recommends that you create a `NgModule` dedicated to router configuration (called a *Routing Module*).
 
 <code-example header="app/app-routing.module.ts" path="upgrade-phonecat-3-final/app/app-routing.module.ts"></code-example>
 
@@ -1537,12 +1541,12 @@ Also remove any `downgradeInjectable()` or `downgradeComponent()` you find, toge
 You may also completely remove the following files.
 They are AngularJS module configuration files and not needed in Angular:
 
-*   `app/app.module.ajs.ts`
-*   `app/app.config.ts`
-*   `app/core/core.module.ts`
-*   `app/core/phone/phone.module.ts`
-*   `app/phone-detail/phone-detail.module.ts`
-*   `app/phone-list/phone-list.module.ts`
+* `app/app.module.ajs.ts`
+* `app/app.config.ts`
+* `app/core/core.module.ts`
+* `app/core/phone/phone.module.ts`
+* `app/phone-detail/phone-detail.module.ts`
+* `app/phone-list/phone-list.module.ts`
 
 The external typings for AngularJS may be uninstalled as well.
 The only ones you still need are for Jasmine and Angular polyfills.
@@ -1591,13 +1595,13 @@ ng12Hybrid: true
 When you start to upgrade components and their templates to Angular, you'll make more changes because the E2E tests have matchers that are specific to AngularJS.
 For PhoneCat you need to make the following changes in order to make things work with Angular:
 
-| Previous code                                               | New code                  | Details |
-|:---                                                         |:---                       |:---     |
+| Previous code | New code | Details |
+| :------------ | :------- | :------ |
 | `by.repeater('phone in $ctrl.phones').column('phone.name')` | `by.css('.phones .name')` | The repeater matcher relies on AngularJS `ng-repeat` |
-| `by.repeater('phone in $ctrl.phones')`                      | `by.css('.phones li')`    | The repeater matcher relies on AngularJS `ng-repeat` |
-| `by.model('$ctrl.query')`                                   | `by.css('input')`         | The model matcher relies on AngularJS `ng-model`     |
-| `by.model('$ctrl.orderProp')`                               | `by.css('select')`        | The model matcher relies on AngularJS `ng-model`     |
-| `by.binding('$ctrl.phone.name')`                            | `by.css('h1')`            | The binding matcher relies on AngularJS data binding |
+| `by.repeater('phone in $ctrl.phones')` | `by.css('.phones li')` | The repeater matcher relies on AngularJS `ng-repeat` |
+| `by.model('$ctrl.query')` | `by.css('input')` | The model matcher relies on AngularJS `ng-model` |
+| `by.model('$ctrl.orderProp')` | `by.css('select')` | The model matcher relies on AngularJS `ng-model` |
+| `by.binding('$ctrl.phone.name')` | `by.css('h1')` | The binding matcher relies on AngularJS data binding |
 
 When the bootstrap method is switched from that of `UpgradeModule` to pure Angular, AngularJS ceases to exist on the page completely.
 At this point, you need to tell Protractor that it should not be looking for an AngularJS application anymore, but instead it should find *Angular apps* from the page.
@@ -1681,25 +1685,43 @@ And for the phone list component, a few adjustments to the router make the `Rout
 <!-- links -->
 
 [AioApiCoreNgzone]: api/core/NgZone "NgZone | Core - API | Angular"
+
 [AioApiCoreOnchanges]: api/core/OnChanges "OnChanges | Core - API | Angular"
 
 [AioGuideAnimations]: guide/animations "Introduction to Angular animations | Angular"
+
 [AioGuideAotCompiler]: guide/aot-compiler "Ahead-of-time (AOT) compilation | Angular"
+
 [AioGuideBuiltInDirectives]: guide/built-in-directives "Built-in directives | Angular"
+
 [AioGuideDependencyInjection]: guide/dependency-injection "Dependency injection in Angular | Angular"
+
 [AioGuideDependencyInjectionProvidersFactoryProviders]: guide/dependency-injection-providers#factory-providers "Using factory providers - Dependency providers | Angular"
+
 [AioGuideGlossaryLazyLoading]: guide/glossary#lazy-loading "lazy loading - Glossary | Angular"
+
 [AioGuideHierarchicalDependencyInjection]: guide/hierarchical-dependency-injection "Hierarchical injectors | Angular"
+
 [AioGuideLifecycleHooks]: guide/lifecycle-hooks "Lifecycle hooks | Angular"
+
 [AioGuideNgmodules]: guide/ngmodules "NgModules | Angular"
+
 [AioGuideRouter]: guide/router "Common Routing Tasks | Angular"
+
 [AioGuideTypescriptConfiguration]: guide/typescript-configuration "TypeScript configuration | Angular"
+
 [AioGuideUpgradeBootstrappingHybridApplications]: guide/upgrade#bootstrapping-hybrid-applications "Bootstrapping hybrid applications - Upgrading from AngularJS to Angular | Angular"
+
 [AioGuideUpgradeFollowTheAngularjsStyleGuide]: guide/upgrade#follow-the-angularjs-style-guide "Follow the AngularJS Style Guide - Upgrading from AngularJS to Angular | Angular"
+
 [AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular]: guide/upgrade#making-angularjs-dependencies-injectable-to-angular "Making AngularJS Dependencies Injectable to Angular - Upgrading from AngularJS to Angular | Angular"
+
 [AioGuideUpgradePreparation]: guide/upgrade#preparation "Preparation - Upgrading from AngularJS to Angular | Angular"
+
 [AioGuideUpgradeUpgradingWithNgupgrade]: guide/upgrade#upgrading-with-ngupgrade "Upgrading with ngUpgrade - Upgrading from AngularJS to Angular | Angular"
+
 [AioGuideUpgradeUsingComponentDirectives]: guide/upgrade#using-component-directives "Using Component Directives - Upgrading from AngularJS to Angular | Angular"
+
 [AioGuideUpgradeSetup]: guide/upgrade-setup "Setup for upgrading from AngularJS | Angular"
 
 <!-- external links -->
@@ -1707,27 +1729,39 @@ And for the phone list component, a few adjustments to the router make the `Rout
 [AngularBlogFindingAPathForwardWithAngularjs7e186fdd4429]: https://blog.angular.io/finding-a-path-forward-with-angularjs-7e186fdd4429 "Finding a Path Forward with AngularJS | Angular Blog"
 
 [AngularjsDocsApiNgFunctionAngularBootstrap]: https://docs.angularjs.org/api/ng/function/angular.bootstrap "angular.bootstrap | API | AngularJS"
+
 [AngularjsDocsApiNgTypeAngularModule]: https://docs.angularjs.org/api/ng/type/angular.Module "angular.Module | API | AngularJS"
+
 [AngularjsDocsApiNgTypeAngularModuleComponent]: https://docs.angularjs.org/api/ng/type/angular.Module#component "component(name, options); - angular.Module | API | AngularJS"
+
 [AngularjsDocsApiNgrouteDirectiveNgview]: https://docs.angularjs.org/api/ngRoute/directive/ngView "ngView | API | AngularJS"
+
 [AngularjsDocsApiNgrouteProviderRouteprovider]: https://docs.angularjs.org/api/ngRoute/provider/$routeProvider "$routeProvider | API | AngularJS"
+
 [AngularjsDocsApiNgServiceLocation]: https://docs.angularjs.org/api/ng/service/$location "$location | API | AngularJS"
+
 [AngularjsDocsTutorial]: https://docs.angularjs.org/tutorial "PhoneCat Tutorial App | Tutorial | AngularJS"
 
 [BrowserifyMain]: http://browserify.org "Browserify"
 
 [GithubAngularAngularIssues35989]: https://github.com/angular/angular/issues/35989 "Issue 35989: docs(upgrade): correctly document how to use AOT compilation for hybrid apps | angular/angular | GitHub"
+
 [GithubAngularAngularIssues38366]: https://github.com/angular/angular/issues/38366 " Issue 38366: RFC: Ivy Library Distribution| angular/angular | GitHub"
 
 [GithubAngularAngularPhonecat]: https://github.com/angular/angular-phonecat "angular/angular-phonecat | GitHub"
+
 [GithubAngularAngularPhonecatCommits15Snapshot]: https://github.com/angular/angular-phonecat/commits/1.5-snapshot "angular/angular-phonecat v1.5 | GitHub"
 
 [GithubAngularQuickstart]: https://github.com/angular/quickstart "angular/quickstart | GitHub"
 
 [GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd]: https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md "Angular 1 Style Guide | johnpapa/angular-styleguide | GitHub"
+
 [GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure]: https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#folders-by-feature-structure "Folders-by-Feature Structure - Angular 1 Style Guide | johnpapa/angular-styleguide | GitHub"
+
 [GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity]: https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#modularity "Modularity - Angular 1 Style Guide | johnpapa/angular-styleguide | GitHub"
+
 [GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests]: https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#organizing-tests "Organizing Tests - Angular 1 Style Guide | johnpapa/angular-styleguide | GitHub"
+
 [GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]: https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#single-responsibility "Single Responsibility - Angular 1 Style Guide | johnpapa/angular-styleguide | GitHub"
 
 [GithubMgechevAngularUmdBundle]: https://github.com/mgechev/angular-umd-bundle "UMD Angular bundle | mgechev/angular-umd-bundle | GitHub"

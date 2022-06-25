@@ -5,9 +5,9 @@ This topic can help you understand Angular: what Angular is, what advantages it 
 Angular is a development platform, built on [TypeScript](https://www.typescriptlang.org).
 As a platform, Angular includes:
 
-*   A component-based framework for building scalable web applications
-*   A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more
-*   A suite of developer tools to help you develop, build, test, and update your code
+* A component-based framework for building scalable web applications
+* A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more
+* A suite of developer tools to help you develop, build, test, and update your code
 
 With Angular, you're taking advantage of a platform that can scale from single-developer projects to enterprise-level applications.
 Angular is designed to make updating as straightforward as possible, so take advantage of the latest developments with a minimum of effort.
@@ -34,11 +34,12 @@ Components are the building blocks that compose an application.
 A component includes a TypeScript class with a `@Component()` decorator, an HTML template, and styles.
 The `@Component()` decorator specifies the following Angular-specific information:
 
-*   A CSS selector that defines how the component is used in a template.
-    HTML elements in your template that match this selector become instances of the component.
+* A CSS selector that defines how the component is used in a template.
+  HTML elements in your template that match this selector become instances of the component.
 
-*   An HTML template that instructs Angular how to render the component
-*   An optional set of CSS styles that define the appearance of the template's HTML elements
+* An HTML template that instructs Angular how to render the component
+
+* An optional set of CSS styles that define the appearance of the template's HTML elements
 
 The following is a minimal Angular component.
 
@@ -154,13 +155,13 @@ The Angular CLI is the fastest, straightforward, and recommended way to develop 
 The Angular CLI makes a number of tasks trouble-free.
 Here are some examples:
 
-| Command                     | Details |
-|:---                         |:---     |
-| [ng build](cli/build)       | Compiles an Angular app into an output directory.                     |
-| [ng serve](cli/serve)       | Builds and serves your application, rebuilding on file changes.       |
-| [ng generate](cli/generate) | Generates or modifies files based on a schematic.                     |
-| [ng test](cli/test)         | Runs unit tests on a given project.                                   |
-| [ng e2e](cli/e2e)           | Builds and serves an Angular application, then runs end-to-end tests. |
+| Command | Details |
+| :------ | :------ |
+| [ng build](cli/build) | Compiles an Angular app into an output directory. |
+| [ng serve](cli/serve) | Builds and serves your application, rebuilding on file changes. |
+| [ng generate](cli/generate) | Generates or modifies files based on a schematic. |
+| [ng test](cli/test) | Runs unit tests on a given project. |
+| [ng e2e](cli/e2e) | Builds and serves an Angular application, then runs end-to-end tests. |
 
 You'll find the Angular CLI a valuable tool for building out your applications.
 
@@ -176,14 +177,14 @@ Use the Angular platform to incorporate one of the many first-party libraries th
 
 Some of the libraries available to you include:
 
-| Library                                   | Details |
-|:---                                       |:---     |
-| [Angular Router](guide/router)            | Advanced client-side navigation and routing based on Angular components. Supports lazy-loading, nested routes, custom path matching, and more. |
-| [Angular Forms](guide/forms-overview)     | Uniform system for form participation and validation.                                                                                          |
-| [Angular HttpClient](guide/http)          | Robust HTTP client that can power more advanced client-server communication.                                                                   |
-| [Angular Animations](guide/animations)    | Rich system for driving animations based on application state.                                                                                 |
-| [Angular PWA](guide/service-worker-intro) | Tools for building Progressive Web Applications \(PWAs\) including a service worker and Web app manifest.                                      |
-| [Angular Schematics](guide/schematics)    | Automated scaffolding, refactoring, and update tools that simplify development at large scale.                                                 |
+| Library | Details |
+| :------ | :------ |
+| [Angular Router](guide/router) | Advanced client-side navigation and routing based on Angular components. Supports lazy-loading, nested routes, custom path matching, and more. |
+| [Angular Forms](guide/forms-overview) | Uniform system for form participation and validation. |
+| [Angular HttpClient](guide/http) | Robust HTTP client that can power more advanced client-server communication. |
+| [Angular Animations](guide/animations) | Rich system for driving animations based on application state. |
+| [Angular PWA](guide/service-worker-intro) | Tools for building Progressive Web Applications (PWAs) including a service worker and Web app manifest. |
+| [Angular Schematics](guide/schematics) | Automated scaffolding, refactoring, and update tools that simplify development at large scale. |
 
 These libraries expand your application's functionality while also letting you focus more on the features that make your application unique.
 Add these libraries knowing that they're designed to integrate seamlessly into and update simultaneously with the Angular framework.

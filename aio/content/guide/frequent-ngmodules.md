@@ -4,14 +4,14 @@ An Angular application needs at least one module that serves as the root module.
 As you add features to your app, you can add them in modules.
 The following are frequently used Angular modules with examples of some of the things they contain:
 
-| NgModule              | Import it from              | Why you use it |
-|:---                   |:---                         |:---            |
-| `BrowserModule`       | `@angular/platform-browser` | To run your application in a browser.                  |
-| `CommonModule`        | `@angular/common`           | To use `NgIf` and `NgFor`.                             |
-| `FormsModule`         | `@angular/forms`            | To build template driven forms \(includes `NgModel`\). |
-| `ReactiveFormsModule` | `@angular/forms`            | To build reactive forms.                               |
-| `RouterModule`        | `@angular/router`           | To use `RouterLink`, `.forRoot()`, and `.forChild()`.  |
-| `HttpClientModule`    | `@angular/common/http`      | To communicate with a server using the HTTP protocol.  |
+| NgModule | Import it from | Why you use it |
+| :------- | :------------- | :------------- |
+| `BrowserModule` | `@angular/platform-browser` | To run your application in a browser. |
+| `CommonModule` | `@angular/common` | To use `NgIf` and `NgFor`. |
+| `FormsModule` | `@angular/forms` | To build template driven forms (includes `NgModel`). |
+| `ReactiveFormsModule` | `@angular/forms` | To build reactive forms. |
+| `RouterModule` | `@angular/router` | To use `RouterLink`, `.forRoot()`, and `.forChild()`. |
+| `HttpClientModule` | `@angular/common/http` | To communicate with a server using the HTTP protocol. |
 
 ## Importing modules
 
@@ -64,9 +64,9 @@ If you do import `BrowserModule` into a lazy loaded feature module, Angular retu
 
 You may also be interested in the following:
 
-*   [Bootstrapping](guide/bootstrapping)
-*   [NgModules](guide/ngmodules)
-*   [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule)
+* [Bootstrapping](guide/bootstrapping)
+* [NgModules](guide/ngmodules)
+* [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule)
 
 <!-- links -->
 

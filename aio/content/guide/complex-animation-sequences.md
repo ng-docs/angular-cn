@@ -4,8 +4,8 @@
 
 A basic understanding of the following concepts:
 
-*   [Introduction to Angular animations](guide/animations)
-*   [Transition and triggers](guide/transition-and-triggers)
+* [Introduction to Angular animations](guide/animations)
+* [Transition and triggers](guide/transition-and-triggers)
 
 So far, we've learned simple animations of single HTML elements.
 Angular also lets you animate coordinated sequences, such as an entire grid or list of elements as they enter and leave a page.
@@ -13,12 +13,12 @@ You can choose to run multiple animations in parallel, or run discrete animation
 
 The functions that control complex animation sequences are:
 
-| Functions                         | Details |
-|:---                               |:---     |
-| `query()`                         | Finds one or more inner HTML elements. |
-| `stagger()`                       | Applies a cascading delay to animations for multiple elements. |
+| Functions | Details |
+| :-------- | :------ |
+| `query()` | Finds one or more inner HTML elements. |
+| `stagger()` | Applies a cascading delay to animations for multiple elements. |
 | [`group()`](api/animations/group) | Runs multiple animation steps in parallel. |
-| `sequence()`                      | Runs animation steps one after another. |
+| `sequence()` | Runs animation steps one after another. |
 
 <a id="complex-sequence"></a>
 
@@ -26,19 +26,19 @@ The functions that control complex animation sequences are:
 
 Most complex animations rely on the `query()` function to find child elements and apply animations to them, basic examples of such are:
 
-| Examples                               | Details |
-|:---                                    |:---     |
-| `query()` followed by `animate()`      | Used to query simple HTML elements and directly apply animations to them.                                                                                                                            |
-| `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation \(which would be otherwise be blocked by the current/parent element's animation\). |
+| Examples | Details |
+| :------- | :------ |
+| `query()` followed by `animate()` | Used to query simple HTML elements and directly apply animations to them. |
+| `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation (which would be otherwise be blocked by the current/parent element's animation). |
 
 The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Angular-specific tokens:
 
-| Tokens                     | Details |
-|:---                        |:---     |
-| `:enter` <br /> `:leave`   | For entering/leaving elements.               |
-| `:animating`               | For elements currently animating.            |
+| Tokens | Details |
+| :----- | :------ |
+| `:enter` <br /> `:leave` | For entering/leaving elements. |
+| `:animating` | For elements currently animating. |
 | `@*` <br /> `@triggerName` | For elements with any—or a specific—trigger. |
-| `:self`                    | The animating element itself.                |
+| `:self` | The animating element itself. |
 
 <div class="callout is-helpful">
 
@@ -46,7 +46,7 @@ The first argument of `query()` is a [css selector](https://developer.mozilla.or
 
 Not all child elements are actually considered as entering/leaving; this can, at times, be counterintuitive and confusing. Please see the [query api docs](api/animations/query#entering-and-leaving-elements) for more information.
 
-You can also see an illustration of this in the animations live example \(introduced in the animations [introduction section](guide/animations#about-this-guide)\) under the Querying tab.
+You can also see an illustration of this in the animations live example (introduced in the animations [introduction section](guide/animations#about-this-guide)) under the Querying tab.
 
 </div>
 
@@ -54,14 +54,16 @@ You can also see an illustration of this in the animations live example \(introd
 
 After having queried child elements via `query()`, the `stagger()` function lets you define a timing gap between each queried item that is animated and thus animates elements with a delay between them.
 
-The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list \(of heroes\) adding each in sequence, with a slight delay, from top to bottom.
+The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list (of heroes) adding each in sequence, with a slight delay, from top to bottom.
 
-*   Use `query()` to look for an element entering the page that meets certain criteria
-*   For each of these elements, use `style()` to set the same initial style for the element.
-    Make it transparent and use `transform` to move it out of position so that it can slide into place.
+* Use `query()` to look for an element entering the page that meets certain criteria
 
-*   Use `stagger()` to delay each animation by 30 milliseconds
-*   Animate each element on screen for 0.5 seconds using a custom-defined easing curve, simultaneously fading it in and un-transforming it
+* For each of these elements, use `style()` to set the same initial style for the element.
+  Make it transparent and use `transform` to move it out of position so that it can slide into place.
+
+* Use `stagger()` to delay each animation by 30 milliseconds
+
+* Animate each element on screen for 0.5 seconds using a custom-defined easing curve, simultaneously fading it in and un-transforming it
 
 <code-example header="src/app/hero-list-page.component.ts" path="animations/src/app/hero-list-page.component.ts" region="page-animations"></code-example>
 
@@ -91,8 +93,8 @@ But what if you want to create an animation involving several animations happeni
 A second function called `sequence()` lets you run those same animations one after the other.
 Within `sequence()`, the animation steps consist of either `style()` or `animate()` function calls.
 
-*   Use `style()` to apply the provided styling data immediately.
-*   Use `animate()` to apply styling data over a given time interval.
+* Use `style()` to apply the provided styling data immediately.
+* Use `animate()` to apply styling data over a given time interval.
 
 ## Filter animation example
 
@@ -113,16 +115,17 @@ The `filterAnimation` in the component's decorator contains three transitions.
 
 The code in this example performs the following tasks:
 
-*   Skips animations when the user first opens or navigates to this page \(the filter animation narrows what is already there, so it only works on elements that already exist in the DOM\)
-*   Filters heroes based on the search input's value
+* Skips animations when the user first opens or navigates to this page (the filter animation narrows what is already there, so it only works on elements that already exist in the DOM)
+* Filters heroes based on the search input's value
 
 For each change:
 
-*   Hides an element leaving the DOM by setting its opacity and width to 0
-*   Animates an element entering the DOM over 300 milliseconds.
-    During the animation, the element assumes its default width and opacity.
+* Hides an element leaving the DOM by setting its opacity and width to 0
 
-*   If there are multiple elements entering or leaving the DOM, staggers each animation starting at the top of the page, with a 50-millisecond delay between each element
+* Animates an element entering the DOM over 300 milliseconds.
+  During the animation, the element assumes its default width and opacity.
+
+* If there are multiple elements entering or leaving the DOM, staggers each animation starting at the top of the page, with a 50-millisecond delay between each element
 
 ## Animating the items of a reordering list
 
@@ -147,10 +150,10 @@ The remaining functions, `stagger()`, [`group()`](api/animations/group), and `se
 
 You might also be interested in the following:
 
-*   [Introduction to Angular animations](guide/animations)
-*   [Transition and triggers](guide/transition-and-triggers)
-*   [Reusable animations](guide/reusable-animations)
-*   [Route transition animations](guide/route-animations)
+* [Introduction to Angular animations](guide/animations)
+* [Transition and triggers](guide/transition-and-triggers)
+* [Reusable animations](guide/reusable-animations)
+* [Route transition animations](guide/route-animations)
 
 <!-- links -->
 

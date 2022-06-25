@@ -2,10 +2,10 @@
 
 There are new requirements for the Tour of Heroes app:
 
-*   Add a *Dashboard* view
-*   Add the ability to navigate between the *Heroes* and *Dashboard* views
-*   When users click a hero name in either view, navigate to a detail view of the selected hero
-*   When users click a *deep link* in an email, open the detail view for a particular hero
+* Add a *Dashboard* view
+* Add the ability to navigate between the *Heroes* and *Dashboard* views
+* When users click a hero name in either view, navigate to a detail view of the selected hero
+* When users click a *deep link* in an email, open the detail view for a particular hero
 
 <div class="alert is-helpful">
 
@@ -38,9 +38,9 @@ ng generate module app-routing --flat --module=app
 
 <div class="alert is-helpful">
 
-| Parameter      | Details |
-|:---            |:---     |
-| `--flat`       | Puts the file in `src/app` instead of its own folder.                   |
+| Parameter | Details |
+| :-------- | :------ |
+| `--flat` | Puts the file in `src/app` instead of its own folder. |
 | `--module=app` | Tells the CLI to register it in the `imports` array of the `AppModule`. |
 
 </div>
@@ -70,9 +70,9 @@ Since `app-routing.module.ts` already imports `HeroesComponent`, you can use it 
 
 A typical Angular `Route` has two properties:
 
-| Properties  | Details |
-|:---         |:---     |
-| `path`      | A string that matches the URL in the browser address bar.                  |
+| Properties | Details |
+| :--------- | :------ |
+| `path` | A string that matches the URL in the browser address bar. |
 | `component` | The component that the router should create when navigating to this route. |
 
 This tells the router to match that URL to `path: 'heroes'` and display the `HeroesComponent` when the URL is something like `localhost:4200/heroes`.
@@ -187,17 +187,17 @@ Replace the default file content in these three files as follows:
 
 The  *template* presents a grid of hero name links.
 
-*   The `*ngFor` repeater creates as many links as are in the component's `heroes` array.
-*   The links are styled as colored blocks by the `dashboard.component.css`.
-*   The links don't go anywhere yet but [they will shortly](#hero-details).
+* The `*ngFor` repeater creates as many links as are in the component's `heroes` array.
+* The links are styled as colored blocks by the `dashboard.component.css`.
+* The links don't go anywhere yet but [they will shortly](#hero-details).
 
 The *class* is similar to the `HeroesComponent` class.
 
-*   It defines a `heroes` array property
-*   The constructor expects Angular to inject the `HeroService` into a private `heroService` property
-*   The `ngOnInit()` lifecycle hook calls `getHeroes()`
+* It defines a `heroes` array property
+* The constructor expects Angular to inject the `HeroService` into a private `heroService` property
+* The `ngOnInit()` lifecycle hook calls `getHeroes()`
 
-This `getHeroes()` returns the sliced list of heroes at positions 1 and 5, returning only four of the Top Heroes \(2nd, 3rd, 4th, and 5th\).
+This `getHeroes()` returns the sliced list of heroes at positions 1 and 5, returning only four of the Top Heroes (2nd, 3rd, 4th, and 5th).
 
 <code-example header="src/app/dashboard/dashboard.component.ts" path="toh-pt5/src/app/dashboard/dashboard.component.ts" region="getHeroes"></code-example>
 
@@ -246,9 +246,9 @@ At the moment the `HeroDetailComponent` is only visible at the bottom of the `He
 
 The user should be able to get to these details in three ways.
 
-1.  By clicking a hero in the dashboard.
-1.  By clicking a hero in the heroes list.
-1.  By pasting a "deep link" URL into the browser address bar that identifies the hero to display.
+1. By clicking a hero in the dashboard.
+1. By clicking a hero in the heroes list.
+1. By pasting a "deep link" URL into the browser address bar that identifies the hero to display.
 
 In this section, you'll enable navigation to the `HeroDetailComponent` and liberate it from the `HeroesComponent`.
 
@@ -257,7 +257,7 @@ In this section, you'll enable navigation to the `HeroDetailComponent` and liber
 When the user clicks a hero item in the `HeroesComponent`, the application should navigate to the `HeroDetailComponent`, replacing the heroes list view with the hero detail view.
 The heroes list view should no longer show hero details as it does now.
 
-Open the `HeroesComponent` template \(`heroes/heroes.component.html`\) and delete the `<app-hero-detail>` element from the bottom.
+Open the `HeroesComponent` template (`heroes/heroes.component.html`) and delete the `<app-hero-detail>` element from the bottom.
 
 Clicking a hero item now does nothing.
 You'll [fix that shortly](#heroes-component-links) after you enable routing to the `HeroDetailComponent`.
@@ -274,7 +274,7 @@ Then add a *parameterized* route to the `routes` array that matches the path pat
 
 <code-example header="src/app/app-routing.module.ts" path="toh-pt5/src/app/app-routing.module.ts" region="detail-route"></code-example>
 
-The colon \(`:`\) character in the `path` indicates that `:id` is a placeholder for a specific hero `id`.
+The colon (`:`) character in the `path` indicates that `:id` is a placeholder for a specific hero `id`.
 
 At this point, all application routes are in place.
 
@@ -298,11 +298,11 @@ The hero items in the `HeroesComponent` are `<li>` elements whose click events a
 
 <code-example header="src/app/heroes/heroes.component.html (list with onSelect)" path="toh-pt4/src/app/heroes/heroes.component.html" region="list"></code-example>
 
-Strip the `<li>` back to just its `*ngFor`, wrap the badge and name in an anchor \(`<a>`\) element, and add a `routerLink` attribute to the anchor that is the same as in the dashboard template
+Strip the `<li>` back to just its `*ngFor`, wrap the badge and name in an anchor (`<a>`) element, and add a `routerLink` attribute to the anchor that is the same as in the dashboard template
 
 <code-example header="src/app/heroes/heroes.component.html (list with links)" path="toh-pt5/src/app/heroes/heroes.component.html" region="list"></code-example>
 
-You'll have to fix the private stylesheet \(`heroes.component.css`\) to make the list look as it did before.
+You'll have to fix the private stylesheet (`heroes.component.css`) to make the list look as it did before.
 Revised styles are in the [final code review](#heroescomponent) at the bottom of this guide.
 
 #### Remove dead code (optional)
@@ -324,9 +324,9 @@ Now the router creates the `HeroDetailComponent` in response to a URL such as `~
 The `HeroDetailComponent` needs a new way to obtain the hero-to-display.
 This section explains the following:
 
-*   Get the route that created it
-*   Extract the `id` from the route
-*   Acquire the hero with that `id` from the server using the `HeroService`
+* Get the route that created it
+* Extract the `id` from the route
+* Acquire the hero with that `id` from the server using the `HeroService`
 
 Add the following imports:
 
@@ -375,7 +375,7 @@ Open `HeroService` and add the following `getHero()` method with the `id` after 
 <div class="alert is-important">
 
 **IMPORTANT**: <br />
-The backtick \( <code>&grave;</code> \) characters define a JavaScript [template literal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals) for embedding the `id`.
+The backtick ( <code>\`</code> ) characters define a JavaScript [template literal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals) for embedding the `id`.
 
 </div>
 
@@ -470,13 +470,13 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You added the Angular router to navigate among different components
-*   You turned the `AppComponent` into a navigation shell with `<a>` links and a `<router-outlet>`
-*   You configured the router in an `AppRoutingModule`
-*   You defined routes, a redirect route, and a parameterized route
-*   You used the `routerLink` directive in anchor elements
-*   You refactored a tightly-coupled master/detail view into a routed detail view
-*   You used router link parameters to navigate to the detail view of a user-selected hero
-*   You shared the `HeroService` among multiple components
+* You added the Angular router to navigate among different components
+* You turned the `AppComponent` into a navigation shell with `<a>` links and a `<router-outlet>`
+* You configured the router in an `AppRoutingModule`
+* You defined routes, a redirect route, and a parameterized route
+* You used the `routerLink` directive in anchor elements
+* You refactored a tightly-coupled master/detail view into a routed detail view
+* You used router link parameters to navigate to the detail view of a user-selected hero
+* You shared the `HeroService` among multiple components
 
 @reviewed 2022-02-28

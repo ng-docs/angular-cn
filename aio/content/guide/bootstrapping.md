@@ -4,7 +4,7 @@
 
 A basic understanding of the following:
 
-*   [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule)
+* [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule)
 
 An NgModule describes how the application parts fit together.
 Every application has at least one Angular module, the *root* module, which must be present for bootstrapping the application on launch.
@@ -41,11 +41,11 @@ The `@NgModule` decorator identifies `AppModule` as an `NgModule` class.
 `@NgModule` takes a metadata object that tells Angular how to compile and launch the application.
 
 | metadata object | Details |
-|:---             |:---     |
-| declarations    | This application's lone component.                                                                          |
-| imports         | Import `BrowserModule` to have browser-specific services such as DOM rendering, sanitization, and location. |
-| providers       | The service providers.                                                                                      |
-| bootstrap       | The *root* component that Angular creates and inserts into the `index.html` host web page.                  |
+| :-------------- | :------ |
+| declarations | This application's lone component. |
+| imports | Import `BrowserModule` to have browser-specific services such as DOM rendering, sanitization, and location. |
+| providers | The service providers. |
+| bootstrap | The *root* component that Angular creates and inserts into the `index.html` host web page. |
 
 The default application created by the Angular CLI only has one component, `AppComponent`, so it is in both the `declarations` and the `bootstrap` arrays.
 
@@ -85,9 +85,9 @@ When you need it elsewhere, import the module that contains the declarable you n
 Use the `declarations` array for directives.
 To use a directive, component, or pipe in a module, you must do a few things:
 
-1.  Export it from the file where you wrote it.
-1.  Import it into the appropriate module.
-1.  Declare it in the `@NgModule` `declarations` array.
+1. Export it from the file where you wrote it.
+1. Import it into the appropriate module.
+1. Declare it in the `@NgModule` `declarations` array.
 
 Those three steps look like the following. In the file where you create your directive, export it.
 The following example, named `ItemDirective` is the default directive structure that the CLI generates in its own file, `item.directive.ts`:
@@ -137,7 +137,7 @@ For more information, see [Providers](guide/providers).
 ## The `bootstrap` array
 
 The application launches by bootstrapping the root `AppModule`, which is also referred to as an `entryComponent`.
-Among other things, the bootstrapping process creates the component\(s\) listed in the `bootstrap` array and inserts each one into the browser DOM.
+Among other things, the bootstrapping process creates the component(s) listed in the `bootstrap` array and inserts each one into the browser DOM.
 
 Each bootstrapped component is the base of its own tree of components.
 Inserting a bootstrapped component usually triggers a cascade of component creations that fill out that tree.

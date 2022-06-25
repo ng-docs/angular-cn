@@ -6,11 +6,11 @@ The `Component`'s decorator provides the [`encapsulation`](api/core/Component#en
 
 Choose from the following modes:
 
-| Modes                         | Details |
-|:---                           |:---     |
-| `ViewEncapsulation.ShadowDom` | Angular uses the browser's built-in [Shadow DOM API](https://developer.mozilla.org/docs/Web/Web_Components/Shadow_DOM) to enclose the component's view inside a ShadowRoot \(used as the component's host element\) and apply the provided styles in an isolated manner. <div class="alert is-important"> `ViewEncapsulation.ShadowDom` only works on browsers that have built-in support for the shadow DOM \(see [Can I use - Shadow DOM v1](https://caniuse.com/shadowdomv1)\). Not all browsers support it, which is why the `ViewEncapsulation.Emulated` is the recommended and default mode. </div> |
-| `ViewEncapsulation.Emulated`  | Angular modifies the component's CSS selectors so that they are only applied to the component's view and do not affect other elements in the application \(*emulating* Shadow DOM behavior\). For more details, see [Inspecting generated CSS](guide/view-encapsulation#inspect-generated-css).                                                                                                                                                                                                                                                                                                           |
-| `ViewEncapsulation.None`      | Angular does not apply any sort of view encapsulation meaning that any styles specified for the component are actually globally applied and can affect any HTML element present within the application. This mode is essentially the same as including the styles into the HTML itself.                                                                                                                                                                                                                                                                                                                   |
+| Modes | Details |
+| :---- | :------ |
+| `ViewEncapsulation.ShadowDom` | Angular uses the browser's built-in [Shadow DOM API](https://developer.mozilla.org/docs/Web/Web_Components/Shadow_DOM) to enclose the component's view inside a ShadowRoot (used as the component's host element) and apply the provided styles in an isolated manner. <div class="alert is-important"> `ViewEncapsulation.ShadowDom` only works on browsers that have built-in support for the shadow DOM (see [Can I use - Shadow DOM v1](https://caniuse.com/shadowdomv1)). Not all browsers support it, which is why the `ViewEncapsulation.Emulated` is the recommended and default mode. </div> |
+| `ViewEncapsulation.Emulated` | Angular modifies the component's CSS selectors so that they are only applied to the component's view and do not affect other elements in the application (*emulating* Shadow DOM behavior). For more details, see [Inspecting generated CSS](guide/view-encapsulation#inspect-generated-css). |
+| `ViewEncapsulation.None` | Angular does not apply any sort of view encapsulation meaning that any styles specified for the component are actually globally applied and can affect any HTML element present within the application. This mode is essentially the same as including the styles into the HTML itself. |
 
 <a id="inspect-generated-css"></a>
 
@@ -33,10 +33,10 @@ In the DOM of a running Angular application, elements belonging to components us
 
 There are two kinds of such attributes:
 
-| Attributes   | Details |
-|:---          |:---     |
-| `_nghost`    | Are added to elements that enclose a component's view and that would be ShadowRoots in a native Shadow DOM encapsulation. This is typically the case for components' host elements.          |
-| `_ngcontent` | Are added to child element within a component's view, those are used to match the elements with their respective emulated ShadowRoots \(host elements with a matching `_nghost` attribute\). |
+| Attributes | Details |
+| :--------- | :------ |
+| `_nghost` | Are added to elements that enclose a component's view and that would be ShadowRoots in a native Shadow DOM encapsulation. This is typically the case for components' host elements. |
+| `_ngcontent` | Are added to child element within a component's view, those are used to match the elements with their respective emulated ShadowRoots (host elements with a matching `_nghost` attribute). |
 
 The exact values of these attributes are a private implementation detail of Angular.
 They are automatically generated and you should never refer to them in application code.
@@ -66,11 +66,11 @@ As previously mentioned you specify the encapsulation mode in the Component's de
 Although possible, this is not recommended.
 If it is really needed you should be aware of how the styles of components using different encapsulation modes will interact with each other:
 
-| Modes                         | Details |
-|:---                           |:---     |
-| `ViewEncapsulation.Emulated`  | The styles of components are added to the `<head>` of the document, making them available throughout the application, but their selectors only affect elements within their respective components' templates. |
-| `ViewEncapsulation.None`      | The styles of components are added to the `<head>` of the document, making them available throughout the application, so are completely global and affect any matching elements within the document.          |
-| `ViewEncapsulation.ShadowDom` | The styles of components are only added to the shadow DOM host, ensuring that they only affect elements within their respective components' views.                                                            |
+| Modes | Details |
+| :---- | :------ |
+| `ViewEncapsulation.Emulated` | The styles of components are added to the `<head>` of the document, making them available throughout the application, but their selectors only affect elements within their respective components' templates. |
+| `ViewEncapsulation.None` | The styles of components are added to the `<head>` of the document, making them available throughout the application, so are completely global and affect any matching elements within the document. |
+| `ViewEncapsulation.ShadowDom` | The styles of components are only added to the shadow DOM host, ensuring that they only affect elements within their respective components' views. |
 
 <div class="alert is-helpful">
 

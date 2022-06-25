@@ -7,10 +7,10 @@ The optional practices are meant for advanced or custom Angular applications.
 
 To prepare your project for translations, you should have a basic understanding of the following subjects.
 
-*   [Templates][AioGuideGlossaryTemplate]
-*   [Components][AioGuideGlossaryComponent]
-*   [Angular CLI][AioCliMain] [command-line][AioGuideGlossaryCommandLineInterfaceCli] tool for managing the Angular development cycle
-*   [Extensible Markup Language (XML)][W3Xml] used for translation files
+* [Templates][AioGuideGlossaryTemplate]
+* [Components][AioGuideGlossaryComponent]
+* [Angular CLI][AioCliMain] [command-line][AioGuideGlossaryCommandLineInterfaceCli] tool for managing the Angular development cycle
+* [Extensible Markup Language (XML)][W3Xml] used for translation files
 
 ## Learn about optional Angular internationalization practices
 
@@ -37,11 +37,15 @@ To prepare your project for translations, you should have a basic understanding 
 [AioCliMain]: cli "CLI Overview and Command Reference | Angular"
 
 [AioGuideGlossaryCommandLineInterfaceCli]: guide/glossary#command-line-interface-cli "command-line interface (CLI) - Glossary | Angular"
+
 [AioGuideGlossaryComponent]: guide/glossary#component "component - Glossary | Angular"
+
 [AioGuideGlossaryTemplate]: guide/glossary#template "template - Glossary | Angular"
 
 [AioGuideI18nOptionalManageMarkedText]: guide/i18n-optional-manage-marked-text "Manage marked text with custom IDs | Angular"
+
 [AioGuideI18nOptionalImportGlobalVariants]: guide/i18n-optional-import-global-variants "Import global variants of the locale data | Angular"
+
 [AioGuideI18nOptionalManualRuntimeLocale]: guide/i18n-optional-runtime-source-locale "Set the runtime locale manually | Angular"
 
 <!-- external links -->

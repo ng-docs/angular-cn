@@ -114,7 +114,6 @@ As part of this project we'd like to implement mixed orientation support for the
   </summary>
   <div class="details-content">
 
-
 ### Allow binding to protected fields in templates
 
 *Completed Q2 2022*
@@ -198,7 +197,7 @@ To improve test time and create better isolation across tests, we want to change
 
 *Completed Q3 2021*
 
-Internet Explorer 11 \(IE11\) has been preventing Angular from taking advantage of some of the modern features of the Web platform.
+Internet Explorer 11 (IE11) has been preventing Angular from taking advantage of some of the modern features of the Web platform.
 As part of this project we are going to deprecate and remove IE11 support to open the path for modern features that evergreen browsers provide.
 We ran an [RFC](https://github.com/angular/angular/issues/41840) to collect feedback from the community and decide on next steps to move forward.
 
@@ -220,14 +219,14 @@ This project aims to help developers understand the component structure and the 
 
 *Completed Q2 2021*
 
-We want to consolidate release management tooling between the multiple GitHub repositories for Angular \([angular/angular](https://github.com/angular/angular), [angular/angular-cli](https://github.com/angular/angular-cli), and [angular/components](https://github.com/angular/components)\).
+We want to consolidate release management tooling between the multiple GitHub repositories for Angular ([angular/angular](https://github.com/angular/angular), [angular/angular-cli](https://github.com/angular/angular-cli), and [angular/components](https://github.com/angular/components)).
 This effort lets us reuse infrastructure, unify and simplify processes, and improve the reliability of our release process.
 
 ### Higher developer consistency with commit message standardization
 
 *Completed Q2 2021*
 
-We want to unify commit message requirements and conformance across Angular repositories \([angular/angular](https://github.com/angular/angular), [angular/components](https://github.com/angular/components), and [angular/angular-cli](https://github.com/angular/angular-cli)\) to bring consistency to our development process and reuse infrastructure tooling.
+We want to unify commit message requirements and conformance across Angular repositories ([angular/angular](https://github.com/angular/angular), [angular/components](https://github.com/angular/components), and [angular/angular-cli](https://github.com/angular/angular-cli)) to bring consistency to our development process and reuse infrastructure tooling.
 
 ### Transition the Angular language service to Ivy
 

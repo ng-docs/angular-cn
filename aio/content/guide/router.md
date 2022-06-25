@@ -41,7 +41,7 @@ The CLI automatically appends `Component`, so if you were to write `first-compon
 
 <div class="alert is-helpful">
 
-<header<code>&lt;base href&gt;</code></header>
+&lt;header<code>&lt;base href></code></header>
 
 This guide works with a CLI-generated Angular application.
 If you are working manually, make sure that you have `<base href="/">` in the `<head>` of your index.html file.
@@ -74,31 +74,31 @@ The following is the default `AppModule` using the CLI with the `--routing` flag
 
 <code-example header="Default CLI AppModule with routing" path="router/src/app/app.module.8.ts"></code-example>
 
-1.  Import `RouterModule` and `Routes` into your routing module.
+1. Import `RouterModule` and `Routes` into your routing module.
 
-    The Angular CLI performs this step automatically.
-    The CLI also sets up a `Routes` array for your routes and configures the `imports` and `exports` arrays for `@NgModule()`.
+   The Angular CLI performs this step automatically.
+   The CLI also sets up a `Routes` array for your routes and configures the `imports` and `exports` arrays for `@NgModule()`.
 
-    <code-example header="CLI application routing module" path="router/src/app/app-routing.module.7.ts"></code-example>
+   <code-example header="CLI application routing module" path="router/src/app/app-routing.module.7.ts"></code-example>
 
-1.  Define your routes in your `Routes` array.
+1. Define your routes in your `Routes` array.
 
-    Each route in this array is a JavaScript object that contains two properties.
-    The first property, `path`, defines the URL path for the route.
-    The second property, `component`, defines the component Angular should use for the corresponding path.
+   Each route in this array is a JavaScript object that contains two properties.
+   The first property, `path`, defines the URL path for the route.
+   The second property, `component`, defines the component Angular should use for the corresponding path.
 
-    <code-example header="AppRoutingModule (excerpt)" path="router/src/app/app-routing.module.8.ts" region="routes"></code-example>
+   <code-example header="AppRoutingModule (excerpt)" path="router/src/app/app-routing.module.8.ts" region="routes"></code-example>
 
-1.  Add your routes to your application.
+1. Add your routes to your application.
 
-    Now that you have defined your routes, add them to your application.
-    First, add links to the two components.
-    Assign the anchor tag that you want to add the route to the `routerLink` attribute.
-    Set the value of the attribute to the component to show when a user clicks on each link.
-    Next, update your component template to include `<router-outlet>`.
-    This element informs Angular to update the application view with the component for the selected route.
+   Now that you have defined your routes, add them to your application.
+   First, add links to the two components.
+   Assign the anchor tag that you want to add the route to the `routerLink` attribute.
+   Set the value of the attribute to the component to show when a user clicks on each link.
+   Next, update your component template to include `<router-outlet>`.
+   This element informs Angular to update the application view with the component for the selected route.
 
-    <code-example header="Template with routerLink and router-outlet" path="router/src/app/app.component.7.html"></code-example>
+   <code-example header="Template with routerLink and router-outlet" path="router/src/app/app.component.7.html"></code-example>
 
 <a id="route-order"></a>
 
@@ -123,39 +123,39 @@ To do so, you use the [ActivatedRoute](api/router/ActivatedRoute) interface.
 
 To get information from a route:
 
-1.  Import `ActivatedRoute` and `ParamMap` to your component.
+1. Import `ActivatedRoute` and `ParamMap` to your component.
 
-    <code-example header="In the component class (excerpt)" path="router/src/app/heroes/hero-detail/hero-detail.component.ts" region="imports-route-info"></code-example>
+   <code-example header="In the component class (excerpt)" path="router/src/app/heroes/hero-detail/hero-detail.component.ts" region="imports-route-info"></code-example>
 
-    These `import` statements add several important elements that your component needs.
-    To learn more about each, see the following API pages:
+   These `import` statements add several important elements that your component needs.
+   To learn more about each, see the following API pages:
 
-    *   [`Router`](api/router)
-    *   [`ActivatedRoute`](api/router/ActivatedRoute)
-    *   [`ParamMap`](api/router/ParamMap)
+   * [`Router`](api/router)
+   * [`ActivatedRoute`](api/router/ActivatedRoute)
+   * [`ParamMap`](api/router/ParamMap)
 
-1.  Inject an instance of `ActivatedRoute` by adding it to your application's constructor:
+1. Inject an instance of `ActivatedRoute` by adding it to your application's constructor:
 
-    <code-example header="In the component class (excerpt)" path="router/src/app/heroes/hero-detail/hero-detail.component.ts" region="activated-route"></code-example>
+   <code-example header="In the component class (excerpt)" path="router/src/app/heroes/hero-detail/hero-detail.component.ts" region="activated-route"></code-example>
 
-1.  Update the `ngOnInit()` method to access the `ActivatedRoute` and track the `name` parameter:
+1. Update the `ngOnInit()` method to access the `ActivatedRoute` and track the `name` parameter:
 
-    <code-example header="In the component (excerpt)">
+   <code-example header="In the component (excerpt)">
 
-    ngOnInit() {
-      this.route.queryParams.subscribe(params =&gt; {
-        this.name = params['name'];
-      });
-    }
+   ngOnInit() {
+     this.route.queryParams.subscribe(params =&gt; {
+       this.name = params['name'];
+     });
+   }
 
-    </code-example>
+   </code-example>
 
-    <div class="alert is-helpful">
+   <div class="alert is-helpful">
 
-    **NOTE**: <br />
-    The preceding example uses a variable, `name`, and assigns it the value based on the `name` parameter.
+   **NOTE**: <br />
+   The preceding example uses a variable, `name`, and assigns it the value based on the `name` parameter.
 
-    </div>
+   </div>
 
 <a id="wildcard-route-how-to"></a>
 
@@ -198,7 +198,7 @@ To set up a redirect, configure a route with the `path` you want to redirect fro
 
 In this example, the third route is a redirect so that the router defaults to the `first-component` route.
 Notice that this redirect precedes the wildcard route.
-Here, `path: ''` means to use the initial relative URL \(`''`\).
+Here, `path: ''` means to use the initial relative URL (`''`).
 
 For more details on `pathMatch` see [Spotlight on `pathMatch`](guide/router-tutorial-toh#pathmatch).
 
@@ -359,11 +359,11 @@ For more information on lazy loading and preloading see the dedicated guide [Laz
 Use route guards to prevent users from navigating to parts of an application without authorization.
 The following route guards are available in Angular:
 
-*   [`CanActivate`](api/router/CanActivate)
-*   [`CanActivateChild`](api/router/CanActivateChild)
-*   [`CanDeactivate`](api/router/CanDeactivate)
-*   [`Resolve`](api/router/Resolve)
-*   [`CanLoad`](api/router/CanLoad)
+* [`CanActivate`](api/router/CanActivate)
+* [`CanActivateChild`](api/router/CanActivateChild)
+* [`CanDeactivate`](api/router/CanDeactivate)
+* [`Resolve`](api/router/Resolve)
+* [`CanLoad`](api/router/CanLoad)
 
 To use route guards, consider using [component-less routes](api/router/Route#componentless-routes) as this facilitates guarding child routes.
 
@@ -409,8 +409,8 @@ For more information with a working example, see the [routing tutorial section o
 
 A link parameters array holds the following ingredients for router navigation:
 
-*   The path of the route to the destination component
-*   Required and optional route parameters that go into the route URL
+* The path of the route to the destination component
+* Required and optional route parameters that go into the route URL
 
 Bind the `RouterLink` directive to such an array like this:
 
@@ -433,28 +433,28 @@ The following minimal `RouterLink` example builds upon a specified [default chil
 
 Review the following:
 
-*   The first item in the array identifies the parent route \(`/crisis-center`\)
-*   There are no parameters for this parent route
-*   There is no default for the child route so you need to pick one
-*   You're navigating to the `CrisisListComponent`, whose route path is `/`, but you don't need to explicitly add the slash
+* The first item in the array identifies the parent route (`/crisis-center`)
+* There are no parameters for this parent route
+* There is no default for the child route so you need to pick one
+* You're navigating to the `CrisisListComponent`, whose route path is `/`, but you don't need to explicitly add the slash
 
 Consider the following router link that navigates from the root of the application down to the Dragon Crisis:
 
 <code-example header="src/app/app.component.ts (Dragon-anchor)" path="router/src/app/app.component.3.ts" region="Dragon-anchor"></code-example>
 
-*   The first item in the array identifies the parent route \(`/crisis-center`\)
-*   There are no parameters for this parent route
-*   The second item identifies the child route details about a particular crisis \(`/:id`\)
-*   The details child route requires an `id` route parameter
-*   You added the `id` of the Dragon Crisis as the second item in the array \(`1`\)
-*   The resulting path is `/crisis-center/1`
+* The first item in the array identifies the parent route (`/crisis-center`)
+* There are no parameters for this parent route
+* The second item identifies the child route details about a particular crisis (`/:id`)
+* The details child route requires an `id` route parameter
+* You added the `id` of the Dragon Crisis as the second item in the array (`1`)
+* The resulting path is `/crisis-center/1`
 
 You could also redefine the `AppComponent` template with Crisis Center routes exclusively:
 
 <code-example header="src/app/app.component.ts (template)" path="router/src/app/app.component.3.ts" region="template"></code-example>
 
 In summary, you can write applications with one, two or more levels of routing.
-The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, \(required\) router parameters, and \(optional\) route parameter objects.
+The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, (required) router parameters, and (optional) route parameter objects.
 
 <a id="browser-url-styles"></a>
 <a id="location-strategy"></a>
@@ -463,7 +463,7 @@ The link parameters array affords the flexibility to represent any routing depth
 
 When the router navigates to a new component view, it updates the browser's location and history with a URL for that view.
 
-Modern HTML5 browsers support [history.pushState](https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries title="HTML5 browser history push-state"), a technique that changes a browser's location and history without triggering a server page request.
+Modern HTML5 browsers support [history.pushState]\(<https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries> title="HTML5 browser history push-state"), a technique that changes a browser's location and history without triggering a server page request.
 The router can compose a "natural" URL that is indistinguishable from one that would otherwise require a page load.
 
 Here's the Crisis Center URL in this "HTML5 pushState" style:
@@ -474,7 +474,7 @@ localhost:3002/crisis-center
 
 </code-example>
 
-Older browsers send page requests to the server when the location URL changes unless the change occurs after a "#" \(called the "hash"\).
+Older browsers send page requests to the server when the location URL changes unless the change occurs after a "#" (called the "hash").
 Routers can take advantage of this exception by composing in-application route URLs with hashes.
 Here's a "hash URL" that routes to the Crisis Center.
 
@@ -486,10 +486,10 @@ localhost:3002/src/#/crisis-center
 
 The router supports both styles with two `LocationStrategy` providers:
 
-| Providers              | Details |
-|:---                    |:---     |
+| Providers | Details |
+| :-------- | :------ |
 | `PathLocationStrategy` | The default "HTML5 pushState" style. |
-| `HashLocationStrategy` | The "hash URL" style.                |
+| `HashLocationStrategy` | The "hash URL" style. |
 
 The `RouterModule.forRoot()` function sets the `LocationStrategy` to the `PathLocationStrategy`, which makes it the default strategy.
 You also have the option of switching to the `HashLocationStrategy` with an override during the bootstrapping process.
@@ -510,7 +510,7 @@ It produces URLs that are easier for users to understand and it preserves the op
 Rendering critical pages on the server is a technique that can greatly improve perceived responsiveness when the application first loads.
 An application that would otherwise take ten or more seconds to start could be rendered on the server and delivered to the user's device in less than a second.
 
-This option is only available if application URLs look like normal web URLs without hash \(`#`\) characters in the middle.
+This option is only available if application URLs look like normal web URLs without hash (`#`) characters in the middle.
 
 ## `<base href>`
 
@@ -523,7 +523,7 @@ Modern HTML5 browsers were the first to support `pushState` which is why many pe
 <div class="alert is-helpful">
 
 HTML5 style navigation is the router default.
-In the [LocationStrategy and browser URL styles](#browser-url-styles) section, learn why HTML5 style is preferable, how to adjust its behavior, and how to switch to the older hash \(`#`\) style, if necessary.
+In the [LocationStrategy and browser URL styles](#browser-url-styles) section, learn why HTML5 style is preferable, how to adjust its behavior, and how to switch to the older hash (`#`) style, if necessary.
 
 </div>
 
@@ -555,23 +555,24 @@ The preferred way to configure the strategy is to add a [`<base href>` element](
 
 <code-example header="src/index.html (base-href)" path="router/src/index.html" region="base-href"></code-example>
 
-Without that tag, the browser might not be able to load resources \(images, CSS, scripts\) when "deep linking" into the application.
+Without that tag, the browser might not be able to load resources (images, CSS, scripts) when "deep linking" into the application.
 
 Some developers might not be able to add the `<base>` element, perhaps because they don't have access to `<head>` or the `index.html`.
 
 Those developers can still use HTML5 URLs by taking the following two steps:
 
-1.  Provide the router with an appropriate `APP_BASE_HREF` value.
-1.  Use root URLs \(URLs with an `authority`\) for all web resources: CSS, images, scripts, and template HTML files.
+1. Provide the router with an appropriate `APP_BASE_HREF` value.
+1. Use root URLs (URLs with an `authority`) for all web resources: CSS, images, scripts, and template HTML files.
 
-    *   The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
-    *   If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
-        This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
+   * The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
 
-    *   If a link in the page is a root URL \(has an `authority`\), the `<base href>` is not used.
-        In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
+   * If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
+     This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
-    *   A fragment in the `<base href>` is *never* persisted
+   * If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
+     In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
+
+   * A fragment in the `<base href>` is *never* persisted
 
 For more complete information on how `<base href>` is used to construct target URIs, see the [RFC](https://tools.ietf.org/html/rfc3986#section-5.2.2) section on transforming references.
 

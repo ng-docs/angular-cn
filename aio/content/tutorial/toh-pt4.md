@@ -22,8 +22,8 @@ Instead of creating that service with the [`new` keyword](https://developer.mozi
 Services are a great way to share information among classes that *don't know each other*.
 You'll create a `MessageService` and inject it in two places.
 
-*   Inject in `HeroService`, which uses the service to send a message
-*   Inject in `MessagesComponent`, which displays that message, and also displays the ID when the user clicks a hero
+* Inject in `HeroService`, which uses the service to send a message
+* Inject in `MessagesComponent`, which displays that message, and also displays the ID when the user clicks a hero
 
 ## Create the `HeroService`
 
@@ -49,7 +49,7 @@ The `@Injectable()` decorator accepts a metadata object for the service, the sam
 
 ### Get hero data
 
-The `HeroService` could get hero data from anywhere &mdash;a web service, local storage, or a mock data source.
+The `HeroService` could get hero data from anywhere —a web service, local storage, or a mock data source.
 
 Removing data access from components means you can change your mind about the implementation anytime, without touching any components.
 They don't know how the service works.
@@ -200,7 +200,7 @@ Now it returns an `Observable<Hero[]>`.
 
 You'll have to adjust to that difference in `HeroesComponent`.
 
-Find the `getHeroes` method and replace it with the following code \(shown side-by-side with the previous version for comparison\)
+Find the `getHeroes` method and replace it with the following code (shown side-by-side with the previous version for comparison)
 
 <code-tabs>
     <code-pane header="heroes.component.ts (Observable)" path="toh-pt4/src/app/heroes/heroes.component.ts" region="getHeroes"></code-pane>
@@ -214,7 +214,7 @@ The assignment occurs *synchronously*, as if the server could return heroes inst
 
 That *won't work* when the `HeroService` is actually making requests of a remote server.
 
-The new version waits for the `Observable` to emit the array of heroes &mdash;which could happen now or several minutes from now.
+The new version waits for the `Observable` to emit the array of heroes —which could happen now or several minutes from now.
 The `subscribe()` method passes the emitted array to the callback,
 which sets the component's `heroes` property.
 
@@ -224,10 +224,10 @@ This asynchronous approach *will work* when the `HeroService` requests heroes fr
 
 This section guides you through the following:
 
-*   Adding a `MessagesComponent` that displays application messages at the bottom of the screen
-*   Creating an injectable, app-wide `MessageService` for sending messages to be displayed
-*   Injecting `MessageService` into the `HeroService`
-*   Displaying a message when `HeroService` fetches heroes successfully
+* Adding a `MessagesComponent` that displays application messages at the bottom of the screen
+* Creating an injectable, app-wide `MessageService` for sending messages to be displayed
+* Injecting `MessageService` into the `HeroService`
+* Displaying a message when `HeroService` fetches heroes successfully
 
 ### Create `MessagesComponent`
 
@@ -319,11 +319,11 @@ Replace the CLI-generated `MessagesComponent` template with the following.
 
 This template binds directly to the component's `messageService`.
 
-|                                              | Details |
-|:---                                          |:---     |
-| `*ngIf`                                      | Only displays the messages area if there are messages to show. |
-| `*ngFor`                                     | Presents the list of messages in repeated `<div>` elements.    |
-| Angular [event binding](guide/event-binding) | Binds the button's click event to `MessageService.clear()`.    |
+|  | Details |
+| :-- | :------ |
+| `*ngIf` | Only displays the messages area if there are messages to show. |
+| `*ngFor` | Presents the list of messages in repeated `<div>` elements. |
+| Angular [event binding](guide/event-binding) | Binds the button's click event to `MessageService.clear()`. |
 
 The messages will look better when you add the private CSS styles to `messages.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
 
@@ -357,14 +357,14 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You refactored data access to the `HeroService` class
-*   You registered the `HeroService` as the *provider* of its service at the root level so that it can be injected anywhere in the application
-*   You used [Angular Dependency Injection](guide/dependency-injection) to inject it into a component
-*   You gave the `HeroService` `get data` method an asynchronous signature
-*   You discovered `Observable` and the RxJS `Observable` library
-*   You used RxJS `of()` to return an observable of mock heroes \(`Observable<Hero[]>`\)
-*   The component's `ngOnInit` lifecycle hook calls the `HeroService` method, not the constructor
-*   You created a `MessageService` for loosely-coupled communication between classes
-*   The `HeroService` injected into a component is created with another injected service, `MessageService`
+* You refactored data access to the `HeroService` class
+* You registered the `HeroService` as the *provider* of its service at the root level so that it can be injected anywhere in the application
+* You used [Angular Dependency Injection](guide/dependency-injection) to inject it into a component
+* You gave the `HeroService` `get data` method an asynchronous signature
+* You discovered `Observable` and the RxJS `Observable` library
+* You used RxJS `of()` to return an observable of mock heroes (`Observable<Hero[]>`)
+* The component's `ngOnInit` lifecycle hook calls the `HeroService` method, not the constructor
+* You created a `MessageService` for loosely-coupled communication between classes
+* The `HeroService` injected into a component is created with another injected service, `MessageService`
 
 @reviewed 2022-02-28

@@ -4,12 +4,12 @@ Observables provide support for passing messages between parts of your applicati
 They are used frequently in Angular and are a technique for event handling, asynchronous programming, and handling multiple values.
 
 The observer pattern is a software design pattern in which an object, called the *subject*, maintains a list of its dependents, called *observers*, and notifies them automatically of state changes.
-This pattern is similar \(but not identical\) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
+This pattern is similar (but not identical) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
 
-Observables are declarative &mdash;that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it.
+Observables are declarative —that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it.
 The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
 
-An observable can deliver multiple values of any type &mdash;literals, messages, or events, depending on the context.
+An observable can deliver multiple values of any type —literals, messages, or events, depending on the context.
 The API for receiving values is the same whether the values are delivered synchronously or asynchronously.
 Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to consume values, and when done, unsubscribing.
 Whether the stream was keystrokes, an HTTP response, or an interval timer, the interface for listening to values and stopping listening is the same.
@@ -36,10 +36,10 @@ A handler for receiving observable notifications implements the `Observer` inter
 It is an object that defines callback methods to handle the three types of notifications that an observable can send:
 
 | Notification type | Details |
-|:---               |:---     |
-| `next`            | Required. A handler for each delivered value. Called zero or more times after execution starts.                                                           |
-| `error`           | Optional. A handler for an error notification. An error halts execution of the observable instance.                                                       |
-| `complete`        | Optional. A handler for the execution-complete notification. Delayed values can continue to be delivered to the next handler after execution is complete. |
+| :---------------- | :------ |
+| `next` | Required. A handler for each delivered value. Called zero or more times after execution starts. |
+| `error` | Optional. A handler for an error notification. An error halts execution of the observable instance. |
+| `complete` | Optional. A handler for the execution-complete notification. Delayed values can continue to be delivered to the next handler after execution is complete. |
 
 An observer object can define any combination of these handlers.
 If you don't supply a handler for a notification type, the observer ignores notifications of that type.
@@ -54,9 +54,9 @@ You subscribe by calling the `subscribe()` method of the instance, passing an ob
 In order to show how subscribing works, we need to create a new observable.
 There is a constructor that you use to create new instances, but for illustration, we can use some methods from the RxJS library that create simple observables of frequently used types:
 
-| RxJS methods     | Details |
-|:---              |:---     |
-| `of(...items)`   | Returns an `Observable` instance that synchronously delivers the values provided as arguments.                        |
+| RxJS methods | Details |
+| :----------- | :------ |
+| `of(...items)` | Returns an `Observable` instance that synchronously delivers the values provided as arguments. |
 | `from(iterable)` | Converts its argument to an `Observable` instance. This method is commonly used to convert an array to an observable. |
 
 </div>
@@ -107,7 +107,7 @@ A typical observable creates a new, independent execution for each subscribed ob
 When an observer subscribes, the observable wires up an event handler and delivers values to that observer.
 When a second observer subscribes, the observable then wires up a new event handler and delivers values to that second observer in a separate execution.
 
-Sometimes, instead of starting an independent execution for each subscriber, you want each subscription to get the same values &mdash;even if values have already started emitting.
+Sometimes, instead of starting an independent execution for each subscriber, you want each subscription to get the same values —even if values have already started emitting.
 This might be the case with something like an observable of clicks on the document object.
 
 *Multicasting* is the practice of broadcasting to a list of multiple subscribers in a single execution.
@@ -140,7 +140,7 @@ Later we will look at tools that simplify the process of multicasting, allowing 
 Because observables produce values asynchronously, try/catch will not effectively catch errors.
 Instead, you handle errors by specifying an `error` callback on the observer.
 Producing an error also causes the observable to clean up subscriptions and stop producing values.
-An observable can either produce values \(calling the `next` callback\), or it can complete, calling either the `complete` or `error` callback.
+An observable can either produce values (calling the `next` callback), or it can complete, calling either the `complete` or `error` callback.
 
 <code-example format="typescript" language="typescript">
 
@@ -151,7 +151,7 @@ myObservable.subscribe({
 
 </code-example>
 
-Error handling \(and specifically recovering from an error\) is covered in more detail in a later section.
+Error handling (and specifically recovering from an error) is covered in more detail in a later section.
 
 <!-- links -->
 

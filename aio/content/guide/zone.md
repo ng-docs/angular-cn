@@ -107,95 +107,95 @@ Whenever you update the data, your HTML is updated automatically.
 To understand how change detection works, first consider when the application needs to update the HTML.
 Typically, updates occur for one of the following reasons:
 
-1.  Component initialization.
-    For example, when bootstrapping an Angular application, Angular loads the bootstrap component and triggers the [ApplicationRef.tick()](api/core/ApplicationRef#tick) to call change detection and View Rendering.
+1. Component initialization.
+   For example, when bootstrapping an Angular application, Angular loads the bootstrap component and triggers the [ApplicationRef.tick()](api/core/ApplicationRef#tick) to call change detection and View Rendering.
 
-1.  Event listener.
-    The DOM event listener can update the data in an Angular component and also trigger change detection, as in the following example.
+1. Event listener.
+   The DOM event listener can update the data in an Angular component and also trigger change detection, as in the following example.
 
-    <code-example header="src/app/click-me.component.ts" path="user-input/src/app/click-me.component.ts" region="click-me-component"></code-example>
+   <code-example header="src/app/click-me.component.ts" path="user-input/src/app/click-me.component.ts" region="click-me-component"></code-example>
 
-1.  HTTP Data Request.
-    You can also get data from a server through an HTTP request.
-    For example:
+1. HTTP Data Request.
+   You can also get data from a server through an HTTP request.
+   For example:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    &commat;Component({
-      selector: 'app-root',
-      template: '&lt;div&gt;{{data}}&lt;/div&gt;';
-    })
-    export class AppComponent implements OnInit {
-      data = 'initial value';
-      serverUrl = 'SERVER_URL';
-      constructor(private httpClient: HttpClient) {}
+   &commat;Component({
+     selector: 'app-root',
+     template: '&lt;div&gt;{{data}}&lt;/div&gt;';
+   })
+   export class AppComponent implements OnInit {
+     data = 'initial value';
+     serverUrl = 'SERVER_URL';
+     constructor(private httpClient: HttpClient) {}
 
-      ngOnInit() {
-        this.httpClient.get(this.serverUrl).subscribe(response =&gt; {
-          // user does not need to trigger change detection manually
-          this.data = response.data;
-        });
-      }
-    }
+     ngOnInit() {
+       this.httpClient.get(this.serverUrl).subscribe(response =&gt; {
+         // user does not need to trigger change detection manually
+         this.data = response.data;
+       });
+     }
+   }
 
-    </code-example>
+   </code-example>
 
-1.  MacroTasks, such as `setTimeout()` or `setInterval()`.
-    You can also update the data in the callback function of a `macroTask` such as `setTimeout()`.
-    For example:
+1. MacroTasks, such as `setTimeout()` or `setInterval()`.
+   You can also update the data in the callback function of a `macroTask` such as `setTimeout()`.
+   For example:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    &commat;Component({
-      selector: 'app-root',
-      template: '&lt;div&gt;{{data}}&lt;/div&gt;';
-    })
-    export class AppComponent implements OnInit {
-      data = 'initial value';
+   &commat;Component({
+     selector: 'app-root',
+     template: '&lt;div&gt;{{data}}&lt;/div&gt;';
+   })
+   export class AppComponent implements OnInit {
+     data = 'initial value';
 
-      ngOnInit() {
-        setTimeout(() =&gt; {
-          // user does not need to trigger change detection manually
-          this.data = 'value updated';
-        });
-      }
-    }
+     ngOnInit() {
+       setTimeout(() =&gt; {
+         // user does not need to trigger change detection manually
+         this.data = 'value updated';
+       });
+     }
+   }
 
-    </code-example>
+   </code-example>
 
-1.  MicroTasks, such as `Promise.then()`.
-    Other asynchronous APIs return a Promise object \(such as `fetch`\), so the `then()` callback function can also update the data.
-    For example:
+1. MicroTasks, such as `Promise.then()`.
+   Other asynchronous APIs return a Promise object (such as `fetch`), so the `then()` callback function can also update the data.
+   For example:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    &commat;Component({
-      selector: 'app-root',
-      template: '&lt;div&gt;{{data}}&lt;/div&gt;';
-    })
-    export class AppComponent implements OnInit {
-      data = 'initial value';
+   &commat;Component({
+     selector: 'app-root',
+     template: '&lt;div&gt;{{data}}&lt;/div&gt;';
+   })
+   export class AppComponent implements OnInit {
+     data = 'initial value';
 
-      ngOnInit() {
-        Promise.resolve(1).then(v =&gt; {
-          // user does not need to trigger change detection manually
-          this.data = v;
-        });
-      }
-    }
+     ngOnInit() {
+       Promise.resolve(1).then(v =&gt; {
+         // user does not need to trigger change detection manually
+         this.data = v;
+       });
+     }
+   }
 
-    </code-example>
+   </code-example>
 
-1.  Other async operations.
-    In addition to `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously.
-    Some examples include `WebSocket.onmessage()` and `Canvas.toBlob()`.
+1. Other async operations.
+   In addition to `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously.
+   Some examples include `WebSocket.onmessage()` and `Canvas.toBlob()`.
 
-    The preceding list contains most common scenarios in which the application might change the data.
-    Angular runs change detection whenever it detects that data could have changed.
-    The result of change detection is that the DOM is updated with new data.
-    Angular detects the changes in different ways.
-    For component initialization, Angular calls change detection explicitly.
-    For [asynchronous operations](https://developer.mozilla.org/docs/Learn/JavaScript/Asynchronous), Angular uses a zone to detect changes in places where the data could have possibly mutated and it runs change detection automatically.
+   The preceding list contains most common scenarios in which the application might change the data.
+   Angular runs change detection whenever it detects that data could have changed.
+   The result of change detection is that the DOM is updated with new data.
+   Angular detects the changes in different ways.
+   For component initialization, Angular calls change detection explicitly.
+   For [asynchronous operations](https://developer.mozilla.org/docs/Learn/JavaScript/Asynchronous), Angular uses a zone to detect changes in places where the data could have possibly mutated and it runs change detection automatically.
 
 ## Zones and execution contexts
 
@@ -283,18 +283,18 @@ The above example creates a zone with several hooks.
 The `onXXXTask` hooks trigger when the status of the task changes.
 The concept of a *Zone Task* is very similar to the JavaScript VM Task concept:
 
-*   `macroTask`: such as `setTimeout()`
-*   `microTask`: such as `Promise.then()`
-*   `eventTask`: such as `element.addEventListener()`
+* `macroTask`: such as `setTimeout()`
+* `microTask`: such as `Promise.then()`
+* `eventTask`: such as `element.addEventListener()`
 
 These hooks trigger under the following circumstances:
 
-| Hooks            | Details |
-|:---              |:---     |
-| `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`.                                                                                                                                                         |
-| `onInvokeTask`   | Triggers when an asynchronous task is about to execute, such as when the callback of `setTimeout()` is about to execute.                                                                                                                          |
-| `onHasTask`      | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
-| `onInvoke`       | Triggers when a synchronous function is going to execute in the zone.                                                                                                                                                                             |
+| Hooks | Details |
+| :---- | :------ |
+| `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`. |
+| `onInvokeTask` | Triggers when an asynchronous task is about to execute, such as when the callback of `setTimeout()` is about to execute. |
+| `onHasTask` | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
+| `onInvoke` | Triggers when a synchronous function is going to execute in the zone. |
 
 With these hooks, `Zone` can monitor the status of all synchronous and asynchronous operations inside a zone.
 
@@ -330,8 +330,8 @@ Monkey patching is a technique to add or modify the default behavior of a functi
 While Zone.js can monitor all the states of synchronous and asynchronous operations, Angular additionally provides a service called NgZone.
 This service creates a zone named `angular` to automatically trigger change detection when the following conditions are satisfied:
 
-1.  When a sync or async function is executed
-1.  When there is no `microTask` scheduled
+1. When a sync or async function is executed
+1. When there is no `microTask` scheduled
 
 ### NgZone `run()` and `runOutsideOfAngular()`
 
@@ -400,11 +400,11 @@ import 'zone.js';  // Included with Angular CLI.
 
 Before importing the  `zone.js` package, you can set the following configurations:
 
-*   You can disable some asynchronous API monkey patching for better performance.
-    For example, you can disable the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` will not trigger change detection.
-    This is useful if, in your application, the callback of the `requestAnimationFrame()` will not update any data.
+* You can disable some asynchronous API monkey patching for better performance.
+  For example, you can disable the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` will not trigger change detection.
+  This is useful if, in your application, the callback of the `requestAnimationFrame()` will not update any data.
 
-*   You can specify that certain DOM events do not run inside the Angular zone; for example, to prevent a `mousemove` or `scroll` event to trigger change detection
+* You can specify that certain DOM events do not run inside the Angular zone; for example, to prevent a `mousemove` or `scroll` event to trigger change detection
 
 There are several other settings you can change.
 To make these changes, you need to create a `zone-flags.ts` file, such as the following.
@@ -450,25 +450,25 @@ Instead, you can opt to trigger change detection on your own.
 
 To remove Zone.js, make the following changes.
 
-1.  Remove the `zone.js` import from `polyfills.ts`:
+1. Remove the `zone.js` import from `polyfills.ts`:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    /***************************************************************************************************
-     &ast; Zone JS is required by default for Angular itself.
-     */
-    // import 'zone.js';  // Included with Angular CLI.
+   /***************************************************************************************************
+    &ast; Zone JS is required by default for Angular itself.
+    */
+   // import 'zone.js';  // Included with Angular CLI.
 
-    </code-example>
+   </code-example>
 
-1.  Bootstrap Angular with the `noop` zone in `src/main.ts`:
+1. Bootstrap Angular with the `noop` zone in `src/main.ts`:
 
-    <code-example format="typescript" language="typescript">
+   <code-example format="typescript" language="typescript">
 
-    platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' })
-    .catch(err =&gt; console.error(err));
+   platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' })
+   .catch(err =&gt; console.error(err));
 
-    </code-example>
+   </code-example>
 
 <!-- links -->
 

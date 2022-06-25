@@ -4,8 +4,8 @@ To apply a pipe, use the pipe operator (`|`) within a template expression as sho
 
 The tabs in the example show the following:
 
-*   `app.component.html` uses `date` in a separate template to display a birthday.
-*   `hero-birthday1.component.ts` uses the same pipe as part of an in-line template in a component that also sets the birthday value.
+* `app.component.html` uses `date` in a separate template to display a birthday.
+* `hero-birthday1.component.ts` uses the same pipe as part of an in-line template in a component that also sets the birthday value.
 
 <code-tabs>
     <code-pane header="src/app/app.component.html" region="hero-birthday-template" path="pipes/src/app/app.component.html"></code-pane>

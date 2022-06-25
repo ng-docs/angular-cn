@@ -87,7 +87,6 @@ For more information, see [Add in-app navigation with routing](tutorial/toh-pt5)
 Sixth and final step of the Tour of Heroes example application.
 For more information, see [Get data from a server](tutorial/toh-pt6).
 
-
 ## Working with templates
 
 These examples demonstrate features of Angular templates.
@@ -216,7 +215,6 @@ For more information, see [Template reference variables](guide/template-syntax).
 
 Demonstrates responding to user actions.
 For more information, see [User input](guide/user-input).
-
 
 ## Working with components
 
@@ -351,7 +349,6 @@ For more information, see [Validating form input](guide/form-validation).
 
 Demonstrates creating dynamic forms.
 For more information, see [Building dynamic forms](guide/dynamic-form).
-
 
 ## NgModules
 

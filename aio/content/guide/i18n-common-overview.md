@@ -2,17 +2,17 @@
 
 Use the following Angular tasks to internationalize your project.
 
-*   Use built-in pipes to display dates, numbers, percentages, and currencies in a local format.
-*   Mark text in component templates for translation.
-*   Mark plural forms of expressions for translation.
-*   Mark alternate text for translation.
+* Use built-in pipes to display dates, numbers, percentages, and currencies in a local format.
+* Mark text in component templates for translation.
+* Mark plural forms of expressions for translation.
+* Mark alternate text for translation.
 
 After you prepare your project for an international audience, use the [Angular CLI][AioCliMain] to localize your project.
 Complete the following tasks to localize your project.
 
-*   Use the CLI to extract marked text to a *source language* file.
-*   Make a copy of the *source language* file for each language, and send all of *translation* files to a translator or service.
-*   Use the CLI to merge the finished translation files when you build your project for one or more locales.
+* Use the CLI to extract marked text to a *source language* file.
+* Make a copy of the *source language* file for each language, and send all of *translation* files to a translator or service.
+* Use the CLI to merge the finished translation files when you build your project for one or more locales.
 
 <div class="alert is-helpful">
 
@@ -25,10 +25,10 @@ For more details, see [How to approach internationalization][ThinkwithgoogleMark
 
 To prepare your project for translations, you should have a basic understanding of the following subjects.
 
-*   [Templates][AioGuideGlossaryTemplate]
-*   [Components][AioGuideGlossaryComponent]
-*   [Angular CLI][AioCliMain] [command-line][AioGuideGlossaryCommandLineInterfaceCli] tool for managing the Angular development cycle
-*   [Extensible Markup Language (XML)][W3Xml] used for translation files
+* [Templates][AioGuideGlossaryTemplate]
+* [Components][AioGuideGlossaryComponent]
+* [Angular CLI][AioCliMain] [command-line][AioGuideGlossaryCommandLineInterfaceCli] tool for managing the Angular development cycle
+* [Extensible Markup Language (XML)][W3Xml] used for translation files
 
 ## Learn about common Angular internationalization tasks
 
@@ -75,7 +75,9 @@ To prepare your project for translations, you should have a basic understanding 
 [AioCliMain]: cli "CLI Overview and Command Reference | Angular"
 
 [AioGuideGlossaryCommandLineInterfaceCli]: guide/glossary#command-line-interface-cli "command-line interface (CLI) - Glossary | Angular"
+
 [AioGuideGlossaryComponent]: guide/glossary#component "component - Glossary | Angular"
+
 [AioGuideGlossaryTemplate]: guide/glossary#template "template - Glossary | Angular"
 
 <!-- external links -->

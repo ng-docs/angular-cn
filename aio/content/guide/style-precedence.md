@@ -4,29 +4,29 @@ When there are multiple bindings to the same class name or style attribute, Angu
 These rules specify an order for which style and class related bindings have priority.
 This styling precedence is as follows, from the most specific with the highest priority to least specific with the lowest priority:
 
-1.  Template bindings are the most specific because they apply to the element directly and exclusively, so they have the highest precedence.
+1. Template bindings are the most specific because they apply to the element directly and exclusively, so they have the highest precedence.
 
-    | Binding type     | Examples |
-    |:---              |:---     |
-    | Property binding | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example>          |
-    | Map binding      | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
-    | Static value     | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example>                     |
+   | Binding type | Examples |
+   | :----------- | :------- |
+   | Property binding | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example> |
+   | Map binding | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
+   | Static value | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example> |
 
-1.  Directive host bindings are less specific because you can use directives in multiple locations, so they have a lower precedence than template bindings.
+1. Directive host bindings are less specific because you can use directives in multiple locations, so they have a lower precedence than template bindings.
 
-    | Binding type     | Examples |
-    |:---              |:---     |
-    | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
-    | Map binding      | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example>    |
-    | Static value     | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example>            |
+   | Binding type | Examples |
+   | :----------- | :------- |
+   | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
+   | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example> |
+   | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
 
-1.  Component host bindings have the lowest precedence.
+1. Component host bindings have the lowest precedence.
 
-    | Binding type     | Examples |
-    |:---              |:---     |
-    | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example>           |
-    | Map binding      | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
-    | Static value     | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example>                     |
+   | Binding type | Examples |
+   | :----------- | :------- |
+   | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example> |
+   | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
+   | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
 
 ## Precedence and specificity
 

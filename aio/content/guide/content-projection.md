@@ -13,10 +13,10 @@ For example, you could have a `Card` component that accepts content provided by 
 
 The following sections describe common implementations of content projection in Angular, including:
 
-| Content projection                             | Details |
-|:---                                            |:---     |
-| [Single-slot content projection](#single-slot) | With this type of content projection, a component accepts content from a single source.                  |
-| [Multi-slot content projection](#multi-slot)   | In this scenario, a component accepts content from multiple sources.                                     |
+| Content projection | Details |
+| :----------------- | :------ |
+| [Single-slot content projection](#single-slot) | With this type of content projection, a component accepts content from a single source. |
+| [Multi-slot content projection](#multi-slot) | In this scenario, a component accepts content from multiple sources. |
 | [Conditional content projection](#conditional) | Components that use conditional content projection render content only when specific conditions are met. |
 
 <a id="single-slot"></a>
@@ -28,8 +28,8 @@ Single-slot content projection refers to creating a component into which you can
 
 To create a component that uses single-slot content projection:
 
-1.  [Create a component](guide/component-overview#creating-a-component).
-1.  In the template for your component, add an `<ng-content>` element where you want the projected content to appear.
+1. [Create a component](guide/component-overview#creating-a-component).
+1. In the template for your component, add an `<ng-content>` element where you want the projected content to appear.
 
 For example, the following component uses an `<ng-content>` element to display a message.
 
@@ -59,14 +59,14 @@ You accomplish this task by using the `select` attribute of `<ng-content>`.
 
 To create a component that uses multi-slot content projection:
 
-1.  [Create a component](guide/component-overview#creating-a-component).
-1.  In the template for your component, add an `<ng-content>` element where you want the projected content to appear.
-1.  Add a `select` attribute to the `<ng-content>` elements.
-    Angular supports [selectors](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) for any combination of tag name, attribute, CSS class, and the `:not` pseudo-class.
+1. [Create a component](guide/component-overview#creating-a-component).
+1. In the template for your component, add an `<ng-content>` element where you want the projected content to appear.
+1. Add a `select` attribute to the `<ng-content>` elements.
+   Angular supports [selectors](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) for any combination of tag name, attribute, CSS class, and the `:not` pseudo-class.
 
-    For example, the following component uses two  `<ng-content>` elements.
+   For example, the following component uses two  `<ng-content>` elements.
 
-    <code-example header="content-projection/src/app/zippy-multislot/zippy-multislot.component.ts" path="content-projection/src/app/zippy-multislot/zippy-multislot.component.ts"></code-example>
+   <code-example header="content-projection/src/app/zippy-multislot/zippy-multislot.component.ts" path="content-projection/src/app/zippy-multislot/zippy-multislot.component.ts"></code-example>
 
 Content that uses the `question` attribute is projected into the `<ng-content>` element with the `select=[question]` attribute.
 
@@ -96,50 +96,51 @@ Angular will not initialize the content of an `<ng-template>` element until that
 
 The following steps demonstrate a typical implementation of conditional content projection using `<ng-template>`.
 
-1.  [Create a component](guide/component-overview#creating-a-component).
-1.  In the component that accepts an `<ng-template>` element, use an `<ng-container>` element to render that template, such as:
+1. [Create a component](guide/component-overview#creating-a-component).
 
-    <code-example header="content-projection/src/app/example-zippy.template.html" path="content-projection/src/app/example-zippy.template.html" region="ng-container"></code-example>
+1. In the component that accepts an `<ng-template>` element, use an `<ng-container>` element to render that template, such as:
 
-    This example uses the `ngTemplateOutlet` directive to render a given `<ng-template>` element, which you will define in a later step.
-    You can apply an `ngTemplateOutlet` directive to any type of element.
-    This example assigns the directive to an `<ng-container>` element because the component does not need to render a real DOM element.
+   <code-example header="content-projection/src/app/example-zippy.template.html" path="content-projection/src/app/example-zippy.template.html" region="ng-container"></code-example>
 
-1.  Wrap the `<ng-container>` element in another element, such as a `div` element, and apply your conditional logic.
+   This example uses the `ngTemplateOutlet` directive to render a given `<ng-template>` element, which you will define in a later step.
+   You can apply an `ngTemplateOutlet` directive to any type of element.
+   This example assigns the directive to an `<ng-container>` element because the component does not need to render a real DOM element.
 
-    <code-example header="content-projection/src/app/example-zippy.template.html" path="content-projection/src/app/example-zippy.template.html" region="ngif"></code-example>
+1. Wrap the `<ng-container>` element in another element, such as a `div` element, and apply your conditional logic.
 
-1.  In the template where you want to project content, wrap the projected content in an `<ng-template>` element, such as:
+   <code-example header="content-projection/src/app/example-zippy.template.html" path="content-projection/src/app/example-zippy.template.html" region="ngif"></code-example>
 
-    <code-example header="content-projection/src/app/app.component.html"  region="ng-template" path="content-projection/src/app/app.component.html"></code-example>
+1. In the template where you want to project content, wrap the projected content in an `<ng-template>` element, such as:
 
-    The `<ng-template>` element defines a block of content that a component can render based on its own logic.
-    A component can get a reference to this template content, or `TemplateRef`, by using either the `@ContentChild` or `@ContentChildren` decorators.
-    The preceding example creates a custom directive, `appExampleZippyContent`, as an API to mark the `<ng-template>` for the component's content.
-    With the `TemplateRef`, the component can render the referenced content by using either the `ngTemplateOutlet` directive, or with the `ViewContainerRef` method `createEmbeddedView()`.
+   <code-example header="content-projection/src/app/app.component.html"  region="ng-template" path="content-projection/src/app/app.component.html"></code-example>
 
-1.  [Create an attribute directive](guide/attribute-directives#building-an-attribute-directive) with a selector that matches the custom attribute for your template.
-    In this directive, inject a `TemplateRef` instance.
+   The `<ng-template>` element defines a block of content that a component can render based on its own logic.
+   A component can get a reference to this template content, or `TemplateRef`, by using either the `@ContentChild` or `@ContentChildren` decorators.
+   The preceding example creates a custom directive, `appExampleZippyContent`, as an API to mark the `<ng-template>` for the component's content.
+   With the `TemplateRef`, the component can render the referenced content by using either the `ngTemplateOutlet` directive, or with the `ViewContainerRef` method `createEmbeddedView()`.
 
-    <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="zippycontentdirective"></code-example>
+1. [Create an attribute directive](guide/attribute-directives#building-an-attribute-directive) with a selector that matches the custom attribute for your template.
+   In this directive, inject a `TemplateRef` instance.
 
-    In the previous step, you added an `<ng-template>` element with a custom attribute, `appExampleZippyContent`.
-    This code provides the logic that Angular will use when it encounters that custom attribute.
-    In this case, that logic instructs Angular to instantiate a template reference.
+   <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="zippycontentdirective"></code-example>
 
-1.  In the component you want to project content into, use `@ContentChild` to get the template of the projected content.
+   In the previous step, you added an `<ng-template>` element with a custom attribute, `appExampleZippyContent`.
+   This code provides the logic that Angular will use when it encounters that custom attribute.
+   In this case, that logic instructs Angular to instantiate a template reference.
 
-    <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="contentchild"></code-example>
+1. In the component you want to project content into, use `@ContentChild` to get the template of the projected content.
 
-    Prior to this step, your application has a component that instantiates a template when certain conditions are met.
-    You've also created a directive that provides a reference to that template.
-    In this last step, the `@ContentChild` decorator instructs Angular to instantiate the template in the designated component.
+   <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="contentchild"></code-example>
 
-    <div class="alert is-helpful">
+   Prior to this step, your application has a component that instantiates a template when certain conditions are met.
+   You've also created a directive that provides a reference to that template.
+   In this last step, the `@ContentChild` decorator instructs Angular to instantiate the template in the designated component.
 
-    In the case of multi-slot content projection, use `@ContentChildren` to get a `QueryList` of projected elements.
+   <div class="alert is-helpful">
 
-    </div>
+   In the case of multi-slot content projection, use `@ContentChildren` to get a `QueryList` of projected elements.
+
+   </div>
 
 <a id="ngprojectas "></a>
 

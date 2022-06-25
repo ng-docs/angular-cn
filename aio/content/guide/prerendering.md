@@ -19,14 +19,14 @@ npm run prerender
 
 When you add prerendering to your application, the following build options are available:
 
-| Options         | Details |
-|:---             |:---     |
-| `browserTarget` | Specify the target to build.                                                                                                                       |
-| `serverTarget`  | Specify the Server target to use for prerendering the application.                                                                                 |
-| `routes`        | Define an array of additional routes to prerender.                                                                                                 |
-| `guessRoutes`   | Whether builder should extract routes and guess which paths to render.Defaults to `true`.                                                          |
-| `routesFile`    | Specify a file that contains a list of all routes to prerender, separated by newlines. This option is useful if you have a large number of routes. |
-| `numProcesses`  | Specify the number of CPUs to be used while running the prerendering command.                                                                      |
+| Options | Details |
+| :------ | :------ |
+| `browserTarget` | Specify the target to build. |
+| `serverTarget` | Specify the Server target to use for prerendering the application. |
+| `routes` | Define an array of additional routes to prerender. |
+| `guessRoutes` | Whether builder should extract routes and guess which paths to render.Defaults to `true`. |
+| `routesFile` | Specify a file that contains a list of all routes to prerender, separated by newlines. This option is useful if you have a large number of routes. |
+| `numProcesses` | Specify the number of CPUs to be used while running the prerendering command. |
 
 ### Prerendering dynamic routes
 
@@ -35,9 +35,9 @@ An example of a dynamic route is `product/:id`, where `id` is dynamically provid
 
 To prerender dynamic routes, choose one from the following options:
 
-*   Provide additional routes in the command line
-*   Provide routes using a file
-*   Prerender specific routes
+* Provide additional routes in the command line
+* Provide routes using a file
+* Prerender specific routes
 
 #### Provide additional routes in the command line
 
@@ -53,7 +53,7 @@ ng run &lt;app-name&gt;:prerender --routes /product/1 /product/2
 #### Providing additional routes using a file
 
 You can provide routes using a file to generate static pages.
-This method is useful if you have a large number of routes to generate, such as product details for an e-commerce application, which might come from an external source \(Database or CMS\).
+This method is useful if you have a large number of routes to generate, such as product details for an e-commerce application, which might come from an external source (Database or CMS).
 
 To provide routes using a file, use the `--routes-file` option with the name of a `.txt` file containing the routes.
 

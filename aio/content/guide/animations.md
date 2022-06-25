@@ -4,9 +4,9 @@ Animation provides the illusion of motion: HTML elements change styling over tim
 Well-designed animations can make your application more fun and straightforward to use, but they aren't just cosmetic.
 Animations can improve your application and user experience in a number of ways:
 
-*   Without animations, web page transitions can seem abrupt and jarring
-*   Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
-*   Good animations intuitively call the user's attention to where it is needed
+* Without animations, web page transitions can seem abrupt and jarring
+* Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
+* Good animations intuitively call the user's attention to where it is needed
 
 Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow or shrink, fade, or slide off the page.
@@ -20,14 +20,14 @@ The W3C maintains a list of animatable properties on its [CSS Transitions](https
 
 This guide covers the basic Angular animation features to get you started on adding Angular animations to your project.
 
-The features described in this guide &mdash;and the more advanced features described in the related Angular animations guides&mdash; are demonstrated in an example application available as a <live-example></live-example>.
+The features described in this guide —and the more advanced features described in the related Angular animations guides— are demonstrated in an example application available as a <live-example></live-example>.
 
 ## Prerequisites
 
 The guide assumes that you're familiar with building basic Angular apps, as described in the following sections:
 
-*   [Tutorial](tutorial)
-*   [Architecture Overview](guide/architecture)
+* [Tutorial](tutorial)
+* [Architecture Overview](guide/architecture)
 
 ## Getting started
 
@@ -130,7 +130,7 @@ These definitions are placed in the second argument of the `animate()` function.
 
 #### Animation metadata: duration, delay, and easing
 
-The `animate()` function \(second argument of the transition function\) accepts the `timings` and `styles` input parameters.
+The `animate()` function (second argument of the transition function) accepts the `timings` and `styles` input parameters.
 
 The `timings` parameter takes either a number or a string defined in three parts.
 
@@ -152,34 +152,34 @@ The first part, `duration`, is required.
 The duration can be expressed in milliseconds as a number without quotes, or in seconds with quotes and a time specifier.
 For example, a duration of a tenth of a second can be expressed as follows:
 
-*   As a plain number, in milliseconds:
-    `100`
+* As a plain number, in milliseconds:
+  `100`
 
-*   In a string, as milliseconds:
-    `'100ms'`
+* In a string, as milliseconds:
+  `'100ms'`
 
-*   In a string, as seconds:
-    `'0.1s'`
+* In a string, as seconds:
+  `'0.1s'`
 
 The second argument, `delay`, has the same syntax as `duration`.
 For example:
 
-*   Wait for 100ms and then run for 200ms: `'0.2s 100ms'`
+* Wait for 100ms and then run for 200ms: `'0.2s 100ms'`
 
 The third argument, `easing`, controls how the animation [accelerates and decelerates](https://easings.net) during its runtime.
 For example, `ease-in` causes the animation to begin slowly, and to pick up speed as it progresses.
 
-*   Wait for 100ms, run for 200ms.
-    Use a deceleration curve to start out fast and slowly decelerate to a resting point:
-    `'0.2s 100ms ease-out'`
+* Wait for 100ms, run for 200ms.
+  Use a deceleration curve to start out fast and slowly decelerate to a resting point:
+  `'0.2s 100ms ease-out'`
 
-*   Run for 200ms, with no delay.
-    Use a standard curve to start slow, accelerate in the middle, and then decelerate slowly at the end:
-    `'0.2s ease-in-out'`
+* Run for 200ms, with no delay.
+  Use a standard curve to start slow, accelerate in the middle, and then decelerate slowly at the end:
+  `'0.2s ease-in-out'`
 
-*   Start immediately, run for 200ms.
-    Use an acceleration curve to start slow and end at full velocity:
-    `'0.2s ease-in'`
+* Start immediately, run for 200ms.
+  Use an acceleration curve to start slow and end at full velocity:
+  `'0.2s ease-in'`
 
 <div class="alert is-helpful">
 
@@ -205,16 +205,16 @@ This example adds a state transition from the `closed` state to the `open` state
 **NOTE**: <br />
 Some additional notes on using styles within [`state`](api/animations/state) and `transition` functions.
 
-*   Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
-*   Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
-*   When animations are disabled, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
-*   Include multiple state pairs within the same `transition()` argument:
+* Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
+* Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
+* When animations are disabled, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
+* Include multiple state pairs within the same `transition()` argument:
 
-    <code-example format="typescript" language="typescript">
+  <code-example format="typescript" language="typescript">
 
-    transition( 'on =&gt; off, off =&gt; void' )
+  transition( 'on =&gt; off, off =&gt; void' )
 
-    </code-example>
+  </code-example>
 
 </div>
 
@@ -263,7 +263,7 @@ The following code snippet binds the trigger to the value of the `isOpen` proper
 In this example, when the `isOpen` expression evaluates to a defined state of `open` or `closed`, it notifies the trigger `openClose` of a state change.
 Then it's up to the `openClose` code to handle the state change and kick off a state change animation.
 
-For elements entering or leaving a page \(inserted or removed from the DOM\), you can make the animations conditional.
+For elements entering or leaving a page (inserted or removed from the DOM), you can make the animations conditional.
 For example, use `*ngIf` with the animation trigger in the HTML template.
 
 <div class="alert is-helpful">
@@ -295,33 +295,33 @@ Learn about more advanced features in Angular animations under the Animation sec
 
 ## Animations API summary
 
-The functional API provided by the `@angular/animations` module provides a domain-specific language \(DSL\) for creating and controlling animations in Angular applications.
+The functional API provided by the `@angular/animations` module provides a domain-specific language (DSL) for creating and controlling animations in Angular applications.
 See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
 
-| Function name                     | What it does                                                                                                                                                                                                |
-|:---                               |:---                                                                                                                                                                                                         |
-| `trigger()`                       | Kicks off the animation and serves as a container for all other animation function calls. HTML template binds to `triggerName`. Use the first argument to declare a unique trigger name. Uses array syntax. |
-| `style()`                         | Defines one or more CSS styles to use in animations. Controls the visual appearance of HTML elements during animations. Uses object syntax.                                                                 |
-| [`state()`](api/animations/state) | Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions.                              |
-| `animate()`                       | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within.                                                                            |
-| `transition()`                    | Defines the animation sequence between two named states. Uses array syntax.                                                                                                                                 |
-| `keyframes()`                     | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax.                       |
-| [`group()`](api/animations/group) | Specifies a group of animation steps \(*inner animations*\) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.     |
-| `query()`                         | Finds one or more inner HTML elements within the current element.                                                                                                                                           |
-| `sequence()`                      | Specifies a list of animation steps that are run sequentially, one by one.                                                                                                                                  |
-| `stagger()`                       | Staggers the starting time for animations for multiple elements.                                                                                                                                            |
-| `animation()`                     | Produces a reusable animation that can be invoked from elsewhere. Used together with `useAnimation()`.                                                                                                      |
-| `useAnimation()`                  | Activates a reusable animation. Used with `animation()`.                                                                                                                                                    |
-| `animateChild()`                  | Allows animations on child components to be run within the same timeframe as the parent.                                                                                                                    |
+| Function name | What it does |
+| :------------ | :----------- |
+| `trigger()` | Kicks off the animation and serves as a container for all other animation function calls. HTML template binds to `triggerName`. Use the first argument to declare a unique trigger name. Uses array syntax. |
+| `style()` | Defines one or more CSS styles to use in animations. Controls the visual appearance of HTML elements during animations. Uses object syntax. |
+| [`state()`](api/animations/state) | Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions. |
+| `animate()` | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within. |
+| `transition()` | Defines the animation sequence between two named states. Uses array syntax. |
+| `keyframes()` | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax. |
+| [`group()`](api/animations/group) | Specifies a group of animation steps (*inner animations*) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`. |
+| `query()` | Finds one or more inner HTML elements within the current element. |
+| `sequence()` | Specifies a list of animation steps that are run sequentially, one by one. |
+| `stagger()` | Staggers the starting time for animations for multiple elements. |
+| `animation()` | Produces a reusable animation that can be invoked from elsewhere. Used together with `useAnimation()`. |
+| `useAnimation()` | Activates a reusable animation. Used with `animation()`. |
+| `animateChild()` | Allows animations on child components to be run within the same timeframe as the parent. |
 
 ## More on Angular animations
 
 You might also be interested in the following:
 
-*   [Transition and triggers](guide/transition-and-triggers)
-*   [Complex animation sequences](guide/complex-animation-sequences)
-*   [Reusable animations](guide/reusable-animations)
-*   [Route transition animations](guide/route-animations)
+* [Transition and triggers](guide/transition-and-triggers)
+* [Complex animation sequences](guide/complex-animation-sequences)
+* [Reusable animations](guide/reusable-animations)
+* [Route transition animations](guide/route-animations)
 
 <div class="alert is-helpful">
 

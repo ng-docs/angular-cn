@@ -76,7 +76,7 @@ This isn't necessarily good design.
 This example is examining *whether a component can inject its parent via the parent's base class*.
 
 The sample's `CraigComponent` explores this question.
-[Looking back](#alex), you see that the `Alex` component *extends* \(*inherits*\) from a class named `Base`.
+[Looking back](#alex), you see that the `Alex` component *extends* (*inherits*) from a class named `Base`.
 
 <code-example header="parent-finder.component.ts (Alex class signature)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-class-signature"></code-example>
 
@@ -98,7 +98,7 @@ The parent must cooperate by providing an *alias* to itself in the name of a cla
 
 Recall that Angular always adds a component instance to its own injector; that's why you could inject *Alex* into *Cathy* [earlier](#known-parent).
 
-Write an [*alias provider*](guide/dependency-injection-in-action#useexisting) &mdash;a `provide` object literal with a `useExisting` definition&mdash; that creates an *alternative* way to inject the same component instance and add that provider to the `providers` array of the `@Component()` metadata for the `AlexComponent`.
+Write an [*alias provider*](guide/dependency-injection-in-action#useexisting) —a `provide` object literal with a `useExisting` definition— that creates an *alternative* way to inject the same component instance and add that provider to the `providers` array of the `@Component()` metadata for the `AlexComponent`.
 
 <a id="alex-providers"></a>
 
@@ -123,7 +123,7 @@ Here's *Alex* and family in action.
 
 ### Find a parent in a tree with `@SkipSelf()`
 
-Imagine one branch of a component hierarchy: *Alice* -&gt; *Barry* -&gt; *Carol*.
+Imagine one branch of a component hierarchy: *Alice* -> *Barry* -> *Carol*.
 Both *Alice* and *Barry* implement the `Parent` class interface.
 
 *Barry* is the problem.
@@ -148,14 +148,14 @@ It's identical to *Carol*'s constructor except for the additional `@SkipSelf` de
 
 `@SkipSelf` is essential for two reasons:
 
-1.  It tells the injector to start its search for a `Parent` dependency in a component *above* itself, which *is* what parent means.
-1.  Angular throws a cyclic dependency error if you omit the `@SkipSelf` decorator.
+1. It tells the injector to start its search for a `Parent` dependency in a component *above* itself, which *is* what parent means.
+1. Angular throws a cyclic dependency error if you omit the `@SkipSelf` decorator.
 
-    <code-example format="output" hideCopy language="shell">
+   <code-example format="output" hideCopy language="shell">
 
-    NG0200: Circular dependency in DI detected for BethComponent. Dependency path: BethComponent -&gt; Parent -&gt; BethComponent
+   NG0200: Circular dependency in DI detected for BethComponent. Dependency path: BethComponent -&gt; Parent -&gt; BethComponent
 
-    </code-example>
+   </code-example>
 
 Here's *Alice*, *Barry*, and family in action.
 
@@ -167,7 +167,7 @@ Here's *Alice*, *Barry*, and family in action.
 
 <a id="parent-token"></a>
 
-###  Parent class interface
+### Parent class interface
 
 You [learned earlier](guide/dependency-injection-in-action#class-interface) that a class interface is an abstract class used as an interface rather than as a base class.
 
