@@ -30,7 +30,7 @@ processes the configuration file during `ng build`. Manually, process it with th
 </code-example>
 
 The configuration file uses the JSON format. All file paths must begin with `/`, which corresponds
-to the deployment directory&mdash;usually `dist/<project-name>` in CLI projects.
+to the deployment directory—usually `dist/<project-name>` in CLI projects.
 
 该配置文件使用 JSON 格式。
 所有文件路径都必须以 `/` 开头，也就是相应的部署目录 —— 在 CLI 项目中的它通常是 `dist/<project-name>`。
@@ -107,7 +107,6 @@ This field contains an array of asset groups, each of which defines a set of ass
 该字段包含一个资产组的数组，每个资产组中会定义一组资产资源和它们的缓存策略。
 
 ```json
-
 {
   "assetGroups": [
     {
@@ -118,7 +117,6 @@ This field contains an array of asset groups, each of which defines a set of ass
     }
   ]
 }
-
 ```
 
 <div class="alert is-helpful">
@@ -145,7 +143,6 @@ Asset groups follow the Typescript interface shown here:
 这些资产组会遵循下面的 Typescript 接口：
 
 ```typescript
-
 interface AssetGroup {
   name: string;
   installMode?: 'prefetch' | 'lazy';
@@ -158,7 +155,6 @@ interface AssetGroup {
     ignoreSearch?: boolean;
   };
 }
-
 ```
 
 ### `name`
@@ -279,7 +275,6 @@ Data groups follow this Typescript interface:
 数据组遵循下列 TypeScript 接口：
 
 ```typescript
-
 export interface DataGroup {
   name: string;
   urls: string[];
@@ -294,7 +289,6 @@ export interface DataGroup {
     ignoreSearch?: boolean;
   };
 }
-
 ```
 
 ### `name`
@@ -309,13 +303,12 @@ A list of URL patterns. URLs that match these patterns are cached according to t
 
 一个 URL 模式的列表。匹配这些模式的 URL 将会根据该数据组的策略进行缓存。只有非修改型的请求（GET 和 HEAD）才会进行缓存。
 
- * Negative glob patterns are not supported.
- 
-   （不支持 glob 中的否定模式）。
- 
- * `?` is matched literally; that is, it matches *only* the character `?`.
+- Negative glob patterns are not supported.
 
-   `?` 只做字面匹配，也就是说，它*只*能匹配 `?` 字符。
+  （不支持 glob 中的否定模式）。
+- `?` is matched literally; that is, it matches *only* the character `?`.
+
+  `?` 只做字面匹配，也就是说，它*只*能匹配 `?` 字符。
 
 ### `version`
 
@@ -324,7 +317,7 @@ Occasionally APIs change formats in a way that is not backward-compatible. A new
 API 有时可能会以不向后兼容的方式更改格式。
 新版本的应用可能与旧的 API 格式不兼容，因此也就与该 API 中目前已缓存的资源不兼容。
 
-`version` provides a mechanism to indicate that the resources being cached have been updated in a backwards-incompatible way, and that the old cache entries&mdash;those from previous versions&mdash;should be discarded.
+`version` provides a mechanism to indicate that the resources being cached have been updated in a backwards-incompatible way, and that the old cache entries—those from previous versions—should be discarded.
 
 `version` 提供了一种机制，用于指出这些被缓存的资源已经通过不向后兼容的方式进行了更新，并且旧的缓存条目（即来自以前版本的缓存条目）应该被丢弃。
 
@@ -419,7 +412,6 @@ Angular Service Worker 可以使用两种缓存策略之一来获取数据资源
 * `freshness` optimizes for currency of data, preferentially fetching requested data from the network. Only if the network times out, according to `timeout`, does the request fall back to the cache. This is useful for resources that change frequently; for example, account balances.
 
    `freshness` 为数据的即时性而优化，优先从网络获取请求的数据。只有当网络超时时，请求才会根据 `timeout` 的设置回退到缓存中。这对于那些频繁变化的资源很有用，例如账户余额。
-
 
 <div class="alert is-helpful">
 
@@ -525,14 +517,12 @@ If the field is omitted, it defaults to:
 如果省略了该字段，它的默认值是：
 
 ```ts
-
 [
   '/**',           // Include all URLs.
   '!/**/*.*',      // Exclude URLs to files.
   '!/**/*__*',     // Exclude URLs containing `__` in the last segment.
   '!/**/*__*/**',  // Exclude URLs containing `__` in any other segment.
 ]
-
 ```
 
 <a id="navigation-request-strategy"></a>
@@ -563,17 +553,17 @@ Possible values:
 
   `'freshness'`：将请求透传到网络，并在脱机时回退到 `performance` 模式。当服务器在用 HTTP 重定向（3xx 状态代码）将导航请求重定向到其他位置时，此值很有用。使用此值的原因包括：
 
-    - Redirecting to an authentication website when authentication is not handled by the application.
+  - Redirecting to an authentication website when authentication is not handled by the application.
 
-       当应用尚未处理身份验证时，重定向到身份验证网站。
+     当应用尚未处理身份验证时，重定向到身份验证网站。
 
-    - Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign.
+  - Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign.
 
-       重定向特定的 URL，以免在网站重新设计后破坏现有的链接/书签。
+     重定向特定的 URL，以免在网站重新设计后破坏现有的链接/书签。
 
-    - Redirecting to a different website, such as a server-status page, while a page is temporarily down.
+  - Redirecting to a different website, such as a server-status page, while a page is temporarily down.
 
-       当页面暂时关闭时，重定向到其他网站，例如服务器状态页。
+     当页面暂时关闭时，重定向到其他网站，例如服务器状态页。
 
 <div class="alert is-important">
 

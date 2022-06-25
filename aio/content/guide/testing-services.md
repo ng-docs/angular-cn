@@ -14,7 +14,6 @@ To check that your services are working as you intend, you can write tests speci
 
 </div>
 
-
 Services are often the smoothest files to unit test.
 Here are some synchronous and asynchronous unit tests of the `ValueService`
 written without assistance from Angular testing utilities.

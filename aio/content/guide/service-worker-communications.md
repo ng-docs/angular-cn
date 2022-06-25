@@ -22,7 +22,7 @@ A basic understanding of the following:
 
 ## `SwUpdate` 服务
 
-The `SwUpdate` service gives you access to events that indicate when the service worker discovers an available update for your application or when it activates such an update&mdash;meaning it is now serving content from that update to your application.
+The `SwUpdate` service gives you access to events that indicate when the service worker discovers an available update for your application or when it activates such an update—meaning it is now serving content from that update to your application.
 
 `SwUpdate` 服务让你能访问一些事件，这些事件会指出 Service Worker 何时发现了可用的更新或者一个更新何时可以被激活 —— 这意味着它现在可以通过更新后的版本提供服务了。
 
@@ -37,6 +37,7 @@ The `SwUpdate` service supports four separate operations:
 * Getting notified of update *activation*. This is when the service worker starts serving a new version of the application immediately.
 
    获取更新*被激活*的通知。这时候 Service Worker 就可以立即使用这些新版本提供服务了。
+
 * Asking the service worker to check the server for new updates.
 
    要求 Service Worker 向服务器查询是否有新版本。
@@ -64,7 +65,7 @@ Use these events to notify the user of a pending update or to refresh their page
 ### 检查更新
 
 It's possible to ask the service worker to check if any updates have been deployed to the server.
-The service worker checks for updates during initialization and on each navigation request&mdash;that is, when the user navigates from a different address to your application.
+The service worker checks for updates during initialization and on each navigation request—that is, when the user navigates from a different address to your application.
 However, you might choose to manually check for updates if you have a site that changes frequently or want updates to happen on a schedule.
 
 可以要求 Service Worker 检查是否有任何更新已经发布到了服务器上。
@@ -139,6 +140,7 @@ For example, imagine the following scenario:
   Assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
 
   用户首次打开该应用，Service Worker 会缓存该应用的最新版本。假设应用要缓存的资源包括 `index.html`、`main.<main-hash-1>.js` 和 `lazy-chunk.<lazy-hash-1>.js` 。
+
 - The user closes the application and does not open it for a while.
 
   用户关闭该应用程序，并且有一段时间没有打开它。
@@ -162,6 +164,7 @@ For example, imagine the following scenario:
 - At some later point, the application requests the lazy bundle, `lazy-chunk.<lazy-hash-1>.js`.
 
   在稍后的某个时刻，该应用程序请求惰性捆绑包 `lazy-chunk.<lazy-hash-1>.js` 。
+
 - The service worker is unable to find the asset in the cache (remember that the browser evicted it).
   Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
 
@@ -175,7 +178,6 @@ Subscribe to `SwUpdate#unrecoverable` to be notified and handle these errors.
 在上述情况下，Service Worker 将无法提供通常会被缓存的资产。该特定的应用程序版本已损坏，并且无法在不重新加载页面的情况下修复客户端的状态。在这种情况下，Service Worker 会通过发送 `UnrecoverableStateEvent` 事件来通知客户端。可以订阅 `SwUpdate#unrecoverable` 以得到通知并处理这些错误。
 
 <code-example path="service-worker-getting-started/src/app/handle-unrecoverable-state.service.ts" header="handle-unrecoverable-state.service.ts" region="sw-unrecoverable-state"></code-example>
-
 
 ## More on Angular service workers
 

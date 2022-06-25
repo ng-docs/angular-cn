@@ -51,7 +51,7 @@ AngularJS 应用程序的组织方式有很多种。当你想把它们升级到 
 ### 遵循 AngularJS 风格指南
 
 The [AngularJS Style Guide][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd] collects patterns and practices that have been proven to result in cleaner and more maintainable AngularJS applications.
-It contains a wealth of information about how to write and organize AngularJS code &mdash;and equally importantly&mdash; how **not** to write and organize AngularJS code.
+It contains a wealth of information about how to write and organize AngularJS code —and equally importantly— how **not** to write and organize AngularJS code.
 
 [AngularJS 风格指南][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd]收集了一些已证明能写出干净且可维护的 AngularJS 程序的模式与实践。
 它包含了很多关于如何书写和组织 AngularJS 代码的有价值信息，同样重要的是，**不应该**采用的书写和组织 AngularJS 代码的方式。
@@ -323,12 +323,12 @@ Dependency injection is front and center in both AngularJS and Angular, but ther
 
 无论是在 AngularJS 中还是在 Angular 中，依赖注入都位于前沿和中心的位置，但在两个框架的工作原理上，却存在着一些关键的不同之处。
 
-| AngularJS | Angular |
-| :-------- | :------ |
-| Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection].<br />They are often classes.<br />They may also be strings. |
+| AngularJS | Angular |  |
+| :-------- | :------ | --- |
+| Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection].<br />They are often classes.<br />They may also be strings. |  |
 | 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。 | 通常是类，也可能是字符串。 |
-| There is exactly one injector.<br />Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
-| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状分层注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |
+| There is exactly one injector.<br />Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |  |
+| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状分层注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |  |
 
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
@@ -806,7 +806,7 @@ All that is left is to add it to the `declarations` array of `AppModule`.
 <div class="alert is-helpful">
 
 Upgraded components are Angular **directives**, instead of **components**, because Angular is unaware that AngularJS will create elements under it.
-As far as Angular knows, the upgraded component is just a directive &mdash;a tag&mdash; and Angular doesn't have to concern itself with its children.
+As far as Angular knows, the upgraded component is just a directive —a tag— and Angular doesn't have to concern itself with its children.
 
 升级后的组件是 Angular 的**指令**，而不是**组件**，因为 Angular 不知道 AngularJS 将在它下面创建元素。
 Angular 所知道的是升级后的组件只是一个指令（一个标签），Angular 不需要关心组件本身及其子元素。
@@ -1548,7 +1548,7 @@ There is a lot of value the language can provide to AngularJS applications.
 有了 TypeScript，你就可以从它的一些特性中获益了。此语言可以为 AngularJS 应用提供很多价值。
 
 For one thing, TypeScript is a superset of ES2015.
-Any application that has previously been written in ES5 &mdash;like the PhoneCat example has&mdash; can with TypeScript start incorporating all of the JavaScript features that are new to ES2015.
+Any application that has previously been written in ES5 —like the PhoneCat example has— can with TypeScript start incorporating all of the JavaScript features that are new to ES2015.
 These include things like `let`s and `const`s, arrow functions, default function parameters, and destructuring assignments.
 
 首先，TypeScript 是一个 ES2015 的超集。任何以前用 ES5 写的程序(就像 PhoneCat 范例)都可以开始通过 TypeScript
@@ -2018,7 +2018,7 @@ Because it is an Angular service, you register it with the `NgModule` providers:
 
 <code-example path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phone" header="app.module.ts"></code-example>
 
-Now that you are loading `phone.service.ts` through an import that is resolved by SystemJS, you should **remove the &lt;script&gt; tag** for the service from `index.html`.
+Now that you are loading `phone.service.ts` through an import that is resolved by SystemJS, you should **remove the &lt;script> tag** for the service from `index.html`.
 This is something you'll do to all components as you upgrade them.
 Simultaneously with the AngularJS to Angular upgrade you're also migrating code from scripts to modules.
 
@@ -2133,9 +2133,9 @@ Add the `FormsModule` to `NgModule` imports and declare the new `PhoneListCompon
 
 <code-example path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phonelist" header="app.module.ts"></code-example>
 
-Remove the &lt;script&gt; tag for the phone list component from `index.html`.
+Remove the &lt;script> tag for the phone list component from `index.html`.
 
-从 `index.html` 中移除电话列表组件的&lt;script&gt;标签。
+从 `index.html` 中移除电话列表组件的&lt;script>标签。
 
 Now set the remaining `phone-detail.component.ts` as follows:
 
@@ -2220,7 +2220,7 @@ Add `PhoneDetailComponent` component to the `NgModule` *declarations*:
 
 <code-example path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phonedetail" header="app.module.ts"></code-example>
 
-You should now also remove the phone detail component &lt;script&gt; tag from `index.html`.
+You should now also remove the phone detail component &lt;script> tag from `index.html`.
 
 你现在应该从 `index.html` 中移除电话详情组件的&lt;script>。
 
@@ -2247,7 +2247,7 @@ Rename the file to `checkmark.pipe.ts` to conform with Angular conventions:
 
 <code-example path="upgrade-phonecat-2-hybrid/app/core/checkmark/checkmark.pipe.ts" header="app/core/checkmark/checkmark.pipe.ts"></code-example>
 
-Now import and declare the newly created pipe and remove the filter &lt;script&gt; tag from `index.html`:
+Now import and declare the newly created pipe and remove the filter &lt;script> tag from `index.html`:
 
 现在，导入并声明这个新创建的管道，同时从 `index.html` 文件中移除该过滤器的 `<script>` 标签：
 
@@ -2438,7 +2438,7 @@ Switch the bootstrap method of the application from the `UpgradeModule` to the A
 
 If you haven't already, remove all references to the `UpgradeModule` from `app.module.ts`, as well as any [factory provider][AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular] for AngularJS services, and the `app/ajs-upgraded-providers.ts` file.
 
-如果你还没有这么做，请从 `app.module.ts 删除所有 `UpgradeModule 的引用，
+如果你还没有这么做，请从 `app.module.ts 删除所有`UpgradeModule 的引用，
   以及所有用于 AngularJS 服务的[工厂提供者（factory provider）](guide/upgrade#making-angularjs-dependencies-injectable-to-angular)和 `app/ajs-upgraded-providers.ts` 文件。
 
 Also remove any `downgradeInjectable()` or `downgradeComponent()` you find, together with the associated AngularJS factory or directive declarations.
@@ -2545,7 +2545,7 @@ For PhoneCat you need to make the following changes in order to make things work
 | `by.model('$ctrl.orderProp')` | `by.css('select')` | The model matcher relies on AngularJS `ng-model` |
 | `by.model('$ctrl.orderProp')` | `by.css('select')` | 模型匹配器依赖于 AngularJS `ng-model` |
 | `by.binding('$ctrl.phone.name')` | `by.css('h1')` | The binding matcher relies on AngularJS data binding |
-| `by.binding('$ctrl.phone.name')` | `by.css('h1')` |  binding 匹配器依赖于 AngularJS 的数据绑定 |
+| `by.binding('$ctrl.phone.name')` | `by.css('h1')` | binding 匹配器依赖于 AngularJS 的数据绑定 |
 
 When the bootstrap method is switched from that of `UpgradeModule` to pure Angular, AngularJS ceases to exist on the page completely.
 At this point, you need to tell Protractor that it should not be looking for an AngularJS application anymore, but instead it should find *Angular apps* from the page.

@@ -207,6 +207,7 @@ The animation code does the following after styling the views:
 * `query(':enter', style({ left: '-100%' }))` matches the view that is added and hides the newly added view by positioning it to the far left.
 
   `query(':enter style({ left: '-100%'})` 会匹配添加的视图，并通过将其定位在最左侧来隐藏这个新视图。
+
 * Calls `animateChild()` on the view that is leaving, to run its child animations.
 
   在正在离开的视图上调用 `animateChild()`，来运行其子动画。
@@ -219,11 +220,11 @@ The animation code does the following after styling the views:
 
   在 [group()](api/animations/group) 函数中：
 
-    * Queries the view that is removed and animates it to slide far to the right.
+  - Queries the view that is removed and animates it to slide far to the right.
 
-      查询已移除的视图，并让它从右侧滑出。
+    查询已移除的视图，并让它从右侧滑出。
 
-    * Slides in the new view by animating the view with an easing function and duration. <br />
+  - Slides in the new view by animating the view with an easing function and duration. <br />
     This animation results in the `about` view sliding in from the left.
 
       使用缓动函数和持续时间定义的动画，让这个新视图滑入。<br />

@@ -64,7 +64,7 @@ You can use _pipes_ to link operators together. Pipes let you combine multiple f
 
 你可以使用*管道*来把这些操作符链接起来。管道让你可以把多个由操作符返回的函数组合成一个。`pipe()` 函数以你要组合的这些函数作为参数，并且返回一个新的函数，当执行这个新函数时，就会顺序执行那些被组合进去的函数。
 
-A set of operators applied to an observable is a recipe&mdash;that is, a set of instructions for producing the values you’re interested in. By itself, the recipe doesn’t do anything. You need to call `subscribe()` to produce a result through the recipe.
+A set of operators applied to an observable is a recipe—that is, a set of instructions for producing the values you’re interested in. By itself, the recipe doesn’t do anything. You need to call `subscribe()` to produce a result through the recipe.
 
 应用于某个可观察对象上的一组操作符就像一个处理流程 —— 也就是说，对你感兴趣的这些值进行处理的一组操作步骤。这个处理流程本身不会做任何事。你需要调用 `subscribe()` 来通过处理流程得出并生成一个结果。
 
@@ -98,20 +98,20 @@ RxJS 提供了很多操作符，不过只有少数是常用的。
 </div>
 
 | Area | Operators |
-| :------------ | :---------- |
+| :--- | :-------- |
 | 类别 | 操作 |
-| Creation | `from`, `fromEvent`, `of`  |
-| 创建 | `from`, `fromPromise`,`fromEvent`, `of`  |
-| Combination | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip`  |
-| 组合 | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip`  |
-| Filtering | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil`  |
-| 过滤 | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil`  |
+| Creation | `from`, `fromEvent`, `of` |
+| 创建 | `from`, `fromPromise`,`fromEvent`, `of` |
+| Combination | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
+| 组合 | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
+| Filtering | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil` |
+| 过滤 | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil` |
 | Transformation | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap` |
-| 转换 | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap`  |
-| Utility | `tap`  |
-| 工具 | `tap`  |
-| Multicasting | `share`  |
-| 多播 | `share`  |
+| 转换 | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap` |
+| Utility | `tap` |
+| 工具 | `tap` |
+| Multicasting | `share` |
+| 多播 | `share` |
 
 ## Error handling
 

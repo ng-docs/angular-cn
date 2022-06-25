@@ -264,7 +264,7 @@ Compile once, then translate for each locale.
 
 ## 下一步是什么
 
-*   [Deploy multiple locales][AioGuideI18nCommonDeploy]
+* [Deploy multiple locales][AioGuideI18nCommonDeploy]
 
   [部署多个语言环境][AioGuideI18nCommonDeploy]
 

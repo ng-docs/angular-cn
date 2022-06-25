@@ -196,7 +196,7 @@ To summarize, the lightweight injection token pattern consists of the following.
 
    一个实现该抽象类的组件定义。
 
-3. Injection of the lightweight pattern, using ` @ContentChild()` or `@ContentChildren()`.
+3. Injection of the lightweight pattern, using `@ContentChild()` or `@ContentChildren()`.
 
    注入这种轻量级模式时使用 `@ContentChild()` 或者 `@ContentChildren()`。
 

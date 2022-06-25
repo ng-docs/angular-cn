@@ -415,4 +415,3 @@ If you want to manage NgModule loading and the use of dependencies and services,
 * To learn how to create a singleton service to use in NgModules, see [Making a service a singleton](guide/singleton-services "Making a service a singleton").
 
   要了解如何在模块中创建单例服务，请参阅[“使服务成为单例”](guide/singleton-services "使服务成为单例") 。
-

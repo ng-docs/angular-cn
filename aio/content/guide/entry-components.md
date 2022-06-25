@@ -19,9 +19,9 @@ An entry component is any component that Angular loads imperatively, (which mean
 
 <div class="alert is-helpful">
 
-    To contrast the two types of components, there are components which are included in the template, which are declarative. Additionally, there are components which you load imperatively; that is, entry components.
+To contrast the two types of components, there are components which are included in the template, which are declarative. Additionally, there are components which you load imperatively; that is, entry components.
 
-    对比一下这两种组件类型：有一类组件被包含在模板中，它们是声明式加载的；另一类组件你会命令式加载它，这就是入口组件。
+对比一下这两种组件类型：有一类组件被包含在模板中，它们是声明式加载的；另一类组件你会命令式加载它，这就是入口组件。
 
 </div>
 
@@ -98,14 +98,12 @@ this:
 入口组件的第二种类型出现在路由定义中，就像这样：
 
 ```typescript
-
 const routes: Routes = [
   {
     path: '',
     component: CustomerListComponent
   }
 ];
-
 ```
 
 A route definition refers to a component by its type with `component: CustomerListComponent`.

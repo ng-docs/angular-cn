@@ -119,7 +119,7 @@ The syntax in this example is as follows:
 
 <div class="alert is-important">
 
-Don't forget the asterisk (*) in front of `ngFor`. It's a critical part of the syntax.
+Don't forget the asterisk (\*) in front of `ngFor`. It's a critical part of the syntax.
 
 不要忘了 `ngFor` 前面的星号（`*`），它是该语法中的关键部分。
 
@@ -150,8 +150,8 @@ You could add more styles to `styles.css` and keep growing that stylesheet as yo
 
 固然，你可以把更多样式加入到 `styles.css`，并且放任它随着你添加更多组件而不断膨胀。
 
-You may prefer instead to define private styles for a specific component and keep everything a component needs&mdash; the code, the HTML,
-and the CSS &mdash;together in one place.
+You may prefer instead to define private styles for a specific component and keep everything a component needs— the code, the HTML,
+and the CSS —together in one place.
 
 但还有更好的方式。你可以定义属于特定组件的私有样式，并且让组件所需的一切（代码、HTML 和 CSS）都放在一起。
 
@@ -278,13 +278,13 @@ When the application starts, the `selectedHero` is `undefined` _by design_.
 
 当应用启动时，`selectedHero` 是 `undefined`，*设计如此*。
 
-Binding expressions in the template that refer to properties of `selectedHero`&mdash;expressions like `{{selectedHero.name}}`&mdash;_must fail_ because there is no selected hero.
+Binding expressions in the template that refer to properties of `selectedHero`—expressions like `{{selectedHero.name}}`—_must fail_ because there is no selected hero.
 
 但模板中的绑定表达式引用了 `selectedHero` 的属性（表达式为 `{{selectedHero.name}}`），这必然会失败，因为你还没选过英雄呢。
 
-#### The fix - hide empty details with _*ngIf_
+#### The fix - hide empty details with _\*ngIf_
 
-#### 修复 —— 使用 _*ngIf_ 隐藏空白的详情
+#### 修复 —— 使用 _\*ngIf_ 隐藏空白的详情
 
 The component should only display the selected hero details if the `selectedHero` exists.
 
@@ -298,7 +298,7 @@ Add Angular's `*ngIf` directive to the `<div>` and set it to `selectedHero`.
 
 <div class="alert is-important">
 
-Don't forget the asterisk (*) in front of `ngIf`. It's a critical part of the syntax.
+Don't forget the asterisk (\*) in front of `ngIf`. It's a critical part of the syntax.
 
 不要忘了 `ngIf` 前面的星号（`*`），它是该语法中的关键部分。
 

@@ -7,6 +7,7 @@ This topic describes how to implement many of the common tasks associated with a
 本主题讲述当把 Angular 路由器添加到应用中时，如何实现多种常见路由任务。
 
 <a id="basics"></a>
+
 ## Generate an application with routing enabled
 
 ## 生成一个支持路由的应用
@@ -674,11 +675,11 @@ The router supports both styles with two `LocationStrategy` providers:
 
 路由器通过两种 `LocationStrategy` 提供者来支持所有这些风格：
 
-1. `PathLocationStrategy`&mdash;the default "HTML5 pushState" style.
+1. `PathLocationStrategy`—the default "HTML5 pushState" style.
 
    `PathLocationStrategy` - 默认的策略，支持“HTML 5 pushState”风格。
 
-1. `HashLocationStrategy`&mdash;the "hash URL" style.
+1. `HashLocationStrategy`—the "hash URL" style.
 
    `HashLocationStrategy` - 支持“hash URL”风格。
 
@@ -740,10 +741,10 @@ In the [LocationStrategy and browser URL styles](#browser-url-styles) section, l
 
 </div>
 
-You must add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href&gt; element</a> to the application's `index.html` for `pushState` routing to work.
+You must add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href> element</a> to the application's `index.html` for `pushState` routing to work.
 The browser uses the `<base href>` value to prefix relative URLs when referencing CSS files, scripts, and images.
 
-你必须在应用的 `index.html` 中**添加一个 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href&gt; 元素</a>**才能让 `pushState` 路由正常工作。
+你必须在应用的 `index.html` 中**添加一个 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href> 元素</a>**才能让 `pushState` 路由正常工作。
 浏览器要用 `<base href>` 的值为引用 CSS、脚本和图片文件时使用的*相对* URL 添加前缀。
 
 Add the `<base>` element just after the  `<head>` tag.
@@ -773,7 +774,7 @@ While the router uses the <a href="https://developer.mozilla.org/en-US/docs/Web/
 
 由于路由器默认使用 “<a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries" target="_blank" title="Browser history push-state">HTML 5 pushState</a>” 风格，所以你*必须*用一个 `<base href>` 来配置该策略（Strategy）。
 
-The preferred way to configure the strategy is to add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href&gt; element</a> tag in the `<head>` of the `index.html`.
+The preferred way to configure the strategy is to add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" title="base href">&lt;base href> element</a> tag in the `<head>` of the `index.html`.
 
 配置该策略的首选方式是往 `index.html` 的 `<head>` 中添加一个[&lt;base href> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)标签。
 
@@ -805,10 +806,10 @@ Those developers can still use HTML5 URLs by taking the following two steps:
    `<base href>` 的 `path` 应该用 "/" 结尾，浏览器会忽略 `path` 中最右边的 "/" 后面的字符。
 
 * If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
-This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
+  This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
-   如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。
-   这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
+     如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。
+     这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
 
 * If a link in the page is a root URL (has an `authority`), the `<base href>` is not used. In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
 

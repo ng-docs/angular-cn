@@ -1,4 +1,3 @@
-
 <a id="attribute-directive"></a>
 
 # Testing Attribute Directives

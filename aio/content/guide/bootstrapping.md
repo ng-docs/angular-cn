@@ -30,7 +30,6 @@ When you use the [Angular CLI](cli) command `ng new` to generate an app, the def
 当你使用 [Angular CLI](cli) 命令 `ng new` 生成一个应用时，其默认的 `AppModule` 是这样的：
 
 ```typescript
-
 /* JavaScript imports */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -49,7 +48,6 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 ```
 
 After the import statements is a class with the
@@ -63,22 +61,22 @@ The `@NgModule` decorator identifies `AppModule` as an `NgModule` class.
 `@NgModule` 装饰器表明 `AppModule` 是一个 `NgModule` 类。
 `@NgModule` 获取一个元数据对象，它会告诉 Angular 如何编译和启动本应用。
 
-* **_declarations_**&mdash;this application's lone component.
+* **_declarations_**—this application's lone component.
 
    **_declarations_** —— 该应用所拥有的组件。
 
-* **_imports_**&mdash;import `BrowserModule` to have browser specific services such as DOM rendering, sanitization, and location.
+* **_imports_**—import `BrowserModule` to have browser specific services such as DOM rendering, sanitization, and location.
 
    **_imports_** —— 导入 `BrowserModule` 以获取浏览器特有的服务，比如 DOM 渲染、无害化处理和位置（location）。
 
-* **_providers_**&mdash;the service providers.
+* **_providers_**—the service providers.
 
    **_providers_** —— 各种服务提供者。
 
-* **_bootstrap_**&mdash;the _root_ component that Angular creates and inserts
-into the `index.html` host web page.
+* **_bootstrap_**—the _root_ component that Angular creates and inserts
+  into the `index.html` host web page.
 
-   **_bootstrap_** —— *根*组件，Angular 创建它并插入 `index.html` 宿主页面。
+     **_bootstrap_** —— *根*组件，Angular 创建它并插入 `index.html` 宿主页面。
 
 The default application created by the Angular CLI only has one component, `AppComponent`, so it
 is in both the `declarations` and the `bootstrap` arrays.
@@ -125,13 +123,11 @@ An example of what goes into a declarations array follows:
 下面是哪些类可以添加到 `declarations` 数组中的例子：
 
 ```typescript
-
   declarations: [
     YourComponent,
     YourPipe,
     YourDirective
   ],
-
 ```
 
 A declarable can only belong to one module, so only declare it in

@@ -35,6 +35,7 @@ The following sections describe common implementations of content projection in 
   [有条件的内容投影](#conditional)。使用条件内容投影的组件仅在满足特定条件时才渲染内容。
 
 {@a single-slot }
+
 ## Single-slot content projection
 
 ## 单插槽内容投影
@@ -77,6 +78,7 @@ The `<ng-content>` element is a placeholder that does not create a real DOM elem
 </div>
 
 <a id="multi-slot"></a>
+
 ## Multi-slot content projection
 
 ## 多插槽内容投影

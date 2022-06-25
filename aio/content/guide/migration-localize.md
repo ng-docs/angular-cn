@@ -22,13 +22,11 @@ It also lists `@angular/localize` as a dependency in your app's `package.json` t
 它还会在应用的 `package.json` 中列出 `@angular/localize` 作为依赖，以确保找到导入。
 
 ```json
-
 "dependencies": {
   ...
   "@angular/localize": "...",
   ...
 }
-
 ```
 
 `@angular/localize` is a new package that supports i18n of messages in Ivy applications.
@@ -52,7 +50,7 @@ Because the application does not need to be built again for each locale, this ma
 
 在新的 i18n 系统中，Angular 编译器使用全局 `$localize` 处理函数在已编译的代码中标记 i18n 消息。然后这些翻译的内联工作会作为每种本地环境的后编译步骤。由于不需要为每个本地环境重复构建应用，所以这会让这个过程更快。
 
-The post-compilation inlining step is optional&mdash;for example during development or if the translations will be inlined at runtime.
+The post-compilation inlining step is optional—for example during development or if the translations will be inlined at runtime.
 Therefore this global `$localize` must be available on the global scope at runtime.
 To make `$localize` available on the global scope, each application must now import the `@angular/localize/init` module.
 This has the side-effect of attaching a minimal implementation of `$localize` to the global scope.
@@ -85,16 +83,13 @@ To fix this error, add the following to your `tslint.config`:
 `@angular/localize/init` 的导入可能会导致 `no-import-side-effect` 的 tslint 错误，因为它会添加全局上下文（也就是副作用）。要修复此错误，请在 `tslint.config` 添加如下 `tslint.config` ：
 
 ```json
-
 "no-import-side-effect": [
   true,
   {
     "ignore-module": "(core-js/.*|zone\\.js/.*|@angular/localize/init)$"
   }
 ]
-
 ```
-
 
 ## Do I need to change how I write i18n in my Angular templates?
 

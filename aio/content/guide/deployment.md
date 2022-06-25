@@ -114,15 +114,15 @@ In the table below, you can find a list of packages which implement deployment f
 
 在下表中，你可以找到实现了到不同平台部署功能的软件包列表。每个软件包的 `deploy` 命令可能需要不同的命令行选项。你可以通过以下与包名称相关的链接来阅读更多内容：
 
-| Deployment to                                                 | Package                                                                        |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------|
-| 部署到                                                 | NPM 包                                                                        |
-| [Firebase hosting](https://firebase.google.com/docs/hosting)  | [`@angular/fire`](https://npmjs.org/package/@angular/fire)                     |
-| [Azure](https://azure.microsoft.com/en-us/)                   | [`@azure/ng-deploy`](https://npmjs.org/package/@azure/ng-deploy)               |
-| [Vercel (Previously known as Zeit)](https://vercel.com/solutions/angular)                                    | [`@zeit/ng-deploy`](https://npmjs.org/package/@zeit/ng-deploy)                 |
-| [Netlify](https://www.netlify.com/)                           | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy) |
-| [GitHub pages](https://pages.github.com/)                     | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages)         |
-| [NPM](https://npmjs.com/)                                     | [`ngx-deploy-npm`](https://npmjs.org/package/ngx-deploy-npm)                   |
+| Deployment to | Package |
+| ------------- | ------- |
+| 部署到 | NPM 包 |
+| [Firebase hosting](https://firebase.google.com/docs/hosting) | [`@angular/fire`](https://npmjs.org/package/@angular/fire) |
+| [Azure](https://azure.microsoft.com/en-us/) | [`@azure/ng-deploy`](https://npmjs.org/package/@azure/ng-deploy) |
+| [Vercel (Previously known as Zeit)](https://vercel.com/solutions/angular) | [`@zeit/ng-deploy`](https://npmjs.org/package/@zeit/ng-deploy) |
+| [Netlify](https://www.netlify.com/) | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy) |
+| [GitHub pages](https://pages.github.com/) | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages) |
+| [NPM](https://npmjs.com/) | [`ngx-deploy-npm`](https://npmjs.org/package/ngx-deploy-npm) |
 | [Amazon Cloud S3](https://aws.amazon.com/s3/?nc2=h_ql_prod_st_s3) | [`@jefiozie/ngx-aws-deploy`](https://www.npmjs.com/package/@jefiozie/ngx-aws-deploy) |
 
 If you're deploying to a self-managed server or there's no builder for your favorite cloud platform, you can either create a builder that allows you to use the `ng deploy` command, or read through this guide to learn how to manually deploy your application.
@@ -139,20 +139,20 @@ For the simplest deployment, create a production build and copy the output direc
 
 1. Start with the production build:
 
-   使用开发环境进行构建
+    使用开发环境进行构建
 
-  <code-example language="sh">
+   <code-example language="sh">
 
-    ng build
+     ng build
 
-  </code-example>
+   </code-example>
 
 2. Copy _everything_ within the output folder (`dist/project-name/` by default) to a folder on the server.
 
    把输出目录（默认为 `dist/`）下的*每个文件*都复制到到服务器上的某个目录下。
 
 3. Configure the server to redirect requests for missing files to `index.html`.
-Learn more about server-side redirects [below](#fallback).
+   Learn more about server-side redirects [below](#fallback).
 
    配置服务器，让缺失的文件都重定向到 `index.html` 上。
    欲知详情，参阅[稍后](#fallback)的服务端重定向部分。
@@ -176,8 +176,8 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
    为你的项目[创建一个 GitHub Pages 仓库](https://help.github.com/articles/what-is-github-pages/)。
 
 1. Configure `git` in your local project by adding a remote that specifies the GitHub repository you created in previous step.
-  GitHub provides these commands when you create the repository so that you can copy and paste them at your command prompt.
-  The commands should be similar to the following, though GitHub fills in your project-specific settings for you:
+   GitHub provides these commands when you create the repository so that you can copy and paste them at your command prompt.
+   The commands should be similar to the following, though GitHub fills in your project-specific settings for you:
 
    通过添加指定你在上一步中创建的 GitHub 存储库的远端地址，来在本地项目中配置 `git`。创建存储库时，GitHub 已提供了这些命令，以便你可以在命令提示符下复制和粘贴它们。尽管 GitHub 会为你填上某些特定于项目的设置，但这些命令应该类似于以下形式：
 
@@ -243,6 +243,7 @@ Check out [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpa
 </div>
 
 <a id="server-configuration"></a>
+
 ## Server configuration
 
 ## 服务端配置
@@ -252,7 +253,6 @@ This section covers changes you may have to make to the server or to files deplo
 这一节涵盖了你可能对服务器或准备部署到服务器的文件要做的那些修改。
 
 <a id="fallback"></a>
-
 
 ### Routed apps must fallback to `index.html`
 
@@ -288,7 +288,7 @@ The Angular router interprets the URL and routes to that page and hero.
 Angular 路由器会拦截这个 URL，并且把它路由到正确的页面。
 
 But clicking a link in an email, entering it in the browser address bar,
-or merely refreshing the browser while on the hero detail page &mdash;
+or merely refreshing the browser while on the hero detail page —
 all of these actions are handled by the browser itself, _outside_ the running application.
 The browser makes a direct request to the server for that URL, bypassing the router.
 
@@ -315,31 +315,31 @@ The list is by no means exhaustive, but should provide you with a good starting 
 这个列表虽然不够详尽，但可以为你提供一个良好的起点。
 
 * [Apache](https://httpd.apache.org/): add a
-[rewrite rule](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) to the `.htaccess` file as shown
-  (https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess/):
+  [rewrite rule](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) to the `.htaccess` file as shown
+    (<https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess/>):
 
-   [Apache](https://httpd.apache.org/)：在 `.htaccess` 文件中添加一个[重写规则](http://httpd.apache.org/docs/current/mod/mod_rewrite.html)，
-代码如下（[出处](https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess/)）：
+     [Apache](https://httpd.apache.org/)：在 `.htaccess` 文件中添加一个[重写规则](http://httpd.apache.org/docs/current/mod/mod_rewrite.html)，
+  代码如下（[出处](https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess/)）：
 
-  <code-example>
-    RewriteEngine On
-    &#35 If an existing asset or directory is requested go to it as it is
-    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
-    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
-    RewriteRule ^ - [L]<br>
-    &#35 If the requested resource doesn't exist, use index.html
-    RewriteRule ^ /index.html
-  </code-example>
+    <code-example>
+      RewriteEngine On
+      &#35 If an existing asset or directory is requested go to it as it is
+      RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+      RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+      RewriteRule ^ - [L]<br>
+      &#35 If the requested resource doesn't exist, use index.html
+      RewriteRule ^ /index.html
+    </code-example>
 
 * [Nginx](https://nginx.org/): use `try_files`, as described in
-[Front Controller Pattern Web Apps](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps),
-modified to serve `index.html`:
+  [Front Controller Pattern Web Apps](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps),
+  modified to serve `index.html`:
 
-   [NGinx](http://nginx.org/)：使用 `try_files` 指向 `index.html`，详细描述见[Web 应用的前端控制器模式](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps)。
+     [NGinx](http://nginx.org/)：使用 `try_files` 指向 `index.html`，详细描述见[Web 应用的前端控制器模式](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps)。
 
   ```
-
   try_files $uri $uri/ /index.html;
+  ```
 
 * [Ruby](https://www.ruby-lang.org/): create a Ruby server using ([sinatra](http://sinatrarb.com/)) with a basic Ruby file that configures the server `server.rb`:
 
@@ -363,40 +363,39 @@ modified to serve `index.html`:
       folderDir = settings.public_folder + '/project-name'  # ng build output folder
       send_file File.join(folderDir, 'index.html')
   end
-
   ```
 
 * [IIS](https://www.iis.net/): add a rewrite rule to `web.config`, similar to the one shown
-[here](https://stackoverflow.com/a/26152011):
+  [here](https://stackoverflow.com/a/26152011):
 
-   [IIS](https://www.iis.net/)：往 `web.config` 中添加一条重写规则，类似于[这里](http://stackoverflow.com/a/26152011/2116927)：
+     [IIS](https://www.iis.net/)：往 `web.config` 中添加一条重写规则，类似于[这里](http://stackoverflow.com/a/26152011/2116927)：
 
-  <code-example format='.' language="xml">
-    &lt;system.webServer&gt;
-      &lt;rewrite&gt;
-        &lt;rules&gt;
-          &lt;rule name="Angular Routes" stopProcessing="true"&gt;
-            &lt;match url=".*" /&gt;
-            &lt;conditions logicalGrouping="MatchAll"&gt;
-              &lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&gt;
-              &lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&gt;
-            &lt;/conditions&gt;
-            &lt;action type="Rewrite" url="/index.html" /&gt;
-          &lt;/rule&gt;
-        &lt;/rules&gt;
-      &lt;/rewrite&gt;
-    &lt;/system.webServer&gt;
-  </code-example>
+    <code-example format='.' language="xml">
+      &lt;system.webServer&gt;
+        &lt;rewrite&gt;
+          &lt;rules&gt;
+            &lt;rule name="Angular Routes" stopProcessing="true"&gt;
+              &lt;match url=".*" /&gt;
+              &lt;conditions logicalGrouping="MatchAll"&gt;
+                &lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&gt;
+                &lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&gt;
+              &lt;/conditions&gt;
+              &lt;action type="Rewrite" url="/index.html" /&gt;
+            &lt;/rule&gt;
+          &lt;/rules&gt;
+        &lt;/rewrite&gt;
+      &lt;/system.webServer&gt;
+    </code-example>
 
 * [GitHub Pages](https://pages.github.com/): you can't
-[directly configure](https://github.com/isaacs/github/issues/408)
-the GitHub Pages server, but you can add a 404 page.
-Copy `index.html` into `404.html`.
-It will still be served as the 404 response, but the browser will process that page and load the application properly.
-It's also a good idea to
-[serve from `docs/` on master](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch)
-and to
-[create a `.nojekyll` file](https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm)
+  [directly configure](https://github.com/isaacs/github/issues/408)
+  the GitHub Pages server, but you can add a 404 page.
+  Copy `index.html` into `404.html`.
+  It will still be served as the 404 response, but the browser will process that page and load the application properly.
+  It's also a good idea to
+  [serve from `docs/` on master](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch)
+  and to
+  [create a `.nojekyll` file](https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm)
 
    [GitHub 页面服务](https://pages.github.com/)：你没办法[直接配置](https://github.com/isaacs/github/issues/408) Github 的页面服务，但可以添加一个 404 页，只要把 `index.html` 复制到 `404.html` 就可以了。
   它仍然会给出一个 404 响应，但是浏览器将会正确处理该页，并正常加载该应用。
@@ -404,7 +403,7 @@ and to
   并[创建一个 `.nojekyll` 文件](https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm)也是一个好办法。
 
 * [Firebase hosting](https://firebase.google.com/docs/hosting/): add a
-[rewrite rule](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites).
+  [rewrite rule](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites).
 
      [Firebase 托管服务](https://firebase.google.com/docs/hosting/)：添加一条[重写规则](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites)。
 
@@ -441,7 +440,6 @@ If this is the case, you will need to check your server configuration and reconf
 
 如果是这种情况，你将需要检查你的服务器配置并将其重新配置为使用 `Content-Type: text/javascript` 来提供 `.js` 文件。有关如何执行此操作的说明，请参阅服务器手册。
 
-
 <a id="cors"></a>
 
 ### Requesting services from a different server (CORS)
@@ -467,6 +465,7 @@ Read about how to enable CORS for specific servers at
 要了解如何对特定的服务器开启 CORS，参阅<a href="http://enable-cors.org/server.html" target="_blank" title="Enabling CORS server">enable-cors.org</a>。
 
 <a id="optimize"></a>
+
 ## Production optimizations
 
 ## 为生产环境优化
@@ -540,11 +539,11 @@ absolutely must be present when the application starts.
 通过只加载应用启动时绝对必须的那些模块，你可以极大缩短应用启动的时间。
 
 Configure the Angular Router to defer loading of all other modules (and their associated code), either by
-[waiting until the app has launched](guide/router-tutorial-toh#preloading  "Preloading")
+[waiting until the app has launched](guide/router-tutorial-toh#preloading "Preloading")
 or by [_lazy loading_](guide/router#lazy-loading "Lazy loading")
 them on demand.
 
-可以配置 Angular 的路由器，来推迟所有其它模块（及其相关代码）的加载时机，方法有[一直等到应用启动完毕](guide/router-tutorial-toh#preloading  "Preloading")，或者当用到时才按需[*惰性加载*](guide/router#lazy-loading "Lazy loading")。
+可以配置 Angular 的路由器，来推迟所有其它模块（及其相关代码）的加载时机，方法有[一直等到应用启动完毕](guide/router-tutorial-toh#preloading "Preloading")，或者当用到时才按需[*惰性加载*](guide/router#lazy-loading "Lazy loading")。
 
 <div class="callout is-helpful">
 
@@ -682,13 +681,13 @@ Here's the output for the _main_ bundle of an example application called `cli-qu
 
 ## `base` 标签
 
-The HTML [_&lt;base href="..."/&gt;_](/guide/router)
+The HTML [_&lt;base href="..."/>_](/guide/router)
 specifies a base path for resolving relative URLs to assets such as images, scripts, and style sheets.
 For example, given the `<base href="/my/app/">`, the browser resolves a URL such as `some/place/foo.jpg`
 into a server request for `my/app/some/place/foo.jpg`.
 During navigation, the Angular router uses the _base href_ as the base path to component, template, and module files.
 
-HTML 的 [_&lt;base href="..."/&gt;_](/guide/router) 标签指定了用于解析静态文件（如图片、脚本和样式表）相对地址的基地址。
+HTML 的 [_&lt;base href="..."/>_](/guide/router) 标签指定了用于解析静态文件（如图片、脚本和样式表）相对地址的基地址。
 比如，对于 `<base href="/my/app/">`，浏览器就会把 `some/place/foo.jpg` 这样的 URL 解析成到 `my/app/some/place/foo.jpg` 的请求。
 在导航期间，Angular 路由器使用 *base href* 作为到组件模板文件和模块文件的基地址。
 

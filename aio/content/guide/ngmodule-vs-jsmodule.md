@@ -132,4 +132,3 @@ It then configures the `@NgModule` with the following arrays:
 * To learn about frequently used Angular NgModules and how to import them into your app, see [Frequently-used modules](guide/frequent-ngmodules "Frequently-used modules").
 
   要了解经常使用的那些 Angular NgModule 以及如何将它们导入你的应用，请参阅[常用模块](guide/frequent-ngmodules "经常使用的模块")。
-

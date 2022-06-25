@@ -81,9 +81,7 @@ After you register your configured class with the browser's custom-element regis
 注册完这个配置好的类之后，就可以在内容中像内置 HTML 元素一样使用这个新元素了，比如直接把它加到 DOM 中：
 
 ```
-
 <my-popup message="Use Angular!"></my-popup>
-
 ```
 
 When your custom element is placed on a page, the browser creates an instance of the registered class and adds it to the DOM. The content is provided by the component's template, which uses Angular template syntax, and is rendered using the component and DOM data. Input properties in the component correspond to input attributes for the element.
@@ -129,7 +127,6 @@ When the browser encounters the tag for the registered element, it uses the cons
   不要将 [`@Component`](api/core/Component) 的[选择器](api/core/Directive#selector)用作自定义元素的标记名称。由于 Angular 会为单个 DOM 元素创建两个组件实例，所以这可能导致意外行为：一个是常规的 Angular 组件，而另一个是自定义元素。
 
 </div>
-
 
 ### Mapping
 
@@ -234,7 +231,7 @@ Previously, when you wanted to add a component to an application at runtime, you
 
 以前，如果你要在运行期间把一个组件添加到应用中，就得定义成*动态组件*，然后还要加载它、把它附加到 DOM 中的元素上，并且装配所有的依赖、变更检测和事件处理，详见[动态组件加载器](guide/dynamic-component-loader)。
 
-Using an Angular custom element makes the process much simpler and more transparent, by providing all of the infrastructure and framework automatically&mdash;all you have to do is define the kind of event handling you want. (You do still have to exclude the component from compilation, if you are not going to use it in your application.)
+Using an Angular custom element makes the process much simpler and more transparent, by providing all of the infrastructure and framework automatically—all you have to do is define the kind of event handling you want. (You do still have to exclude the component from compilation, if you are not going to use it in your application.)
 
 用 Angular 自定义组件会让这个过程更简单、更透明。它会自动提供所有基础设施和框架，而你要做的就是定义所需的各种事件处理逻辑。（如果你不准备在应用中直接用它，还要把该组件在编译时排除出去。）
 

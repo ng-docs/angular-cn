@@ -166,7 +166,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v11 | The [`async`](api/core/testing/async) function from `@angular/core/testing` has been renamed to `waitForAsync` in order to avoid confusion with the native JavaScript <code class="no-auto-link">async</code> syntax. The existing function is deprecated and will be removed in a future version. |
 | [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v11 | 来自 `@angular/core/testing` 的[`async`](api/core/testing/async)函数已重命名为 `waitForAsync` 以避免与原生 JavaScript `async` 语法混淆。现有特性已弃用，将在未来版本中删除。 |
 | [`getModuleFactory`](api/core/getModuleFactory) | [`getNgModuleById`](api/core/getNgModuleById) | v13 | Ivy allows working with NgModule classes directly, without retrieving corresponding factories. |
-| [`getModuleFactory`](api/core/getModuleFactory) | [`getNgModuleById`](api/core/getNgModuleById) | v13 | Ivy 允许直接使用 NgModule 类，而无需检索相应的工厂。  |
+| [`getModuleFactory`](api/core/getModuleFactory) | [`getNgModuleById`](api/core/getNgModuleById) | v13 | Ivy 允许直接使用 NgModule 类，而无需检索相应的工厂。 |
 | `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly` | none (was part of [issue #40091](https://github.com/angular/angular/issues/40091)) |  | This is a temporary flag introduced as part of bugfix of [issue #40091](https://github.com/angular/angular/issues/40091) and will be removed. |
 | `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly` | 无（是[问题 #40091](https://github.com/angular/angular/issues/40091)的一部分） |  | 这是作为[问题 #40091](https://github.com/angular/angular/issues/40091)的错误修复的一部分引入的临时标志，将被删除。 |
 | Factory-based signature of [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap) | Type-based signature of [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap) | v13 | With Ivy, there is no need to resolve Component factory and Component Type can be provided directly. |
@@ -182,7 +182,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`NgModuleFactory`](api/core/NgModuleFactory) | Use non-factory based framework APIs like [PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule) and [createNgModuleRef](api/core/createNgModuleRef) | v13 | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
 | [`NgModuleFactory`](api/core/NgModuleFactory) | 使用基于非工厂的框架 API，如[PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule)和[createNgModuleRef](api/core/createNgModuleRef) | v13 | Ivy JIT 模式不需要访问这个符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](#jit-api-changes)。 |
 | [Factory-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | [Type-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | v13 | Angular no longer requires component factories to dynamically create components. Use different signature of the `createComponent` method, which allows passing Component class directly. |
-|  [`ViewContainerRef.createComponent` 基于工厂的签名](api/core/ViewContainerRef#createComponent) | [`ViewContainerRef.createComponent` 基于类型的签名](api/core/ViewContainerRef#createComponent) | v13 | Angular 不再需要组件工厂来动态创建组件。使用 `createComponent` 方法的不同签名，允许直接传递 Component 类。 |
+| [`ViewContainerRef.createComponent` 基于工厂的签名](api/core/ViewContainerRef#createComponent) | [`ViewContainerRef.createComponent` 基于类型的签名](api/core/ViewContainerRef#createComponent) | v13 | Angular 不再需要组件工厂来动态创建组件。使用 `createComponent` 方法的不同签名，允许直接传递 Component 类。 |
 
 <a id="testing"></a>
 
@@ -194,7 +194,7 @@ This section contains a complete list all of the currently-deprecated APIs, with
 | [`TestBed.get`](api/core/testing/TestBed#get) | [`TestBed.inject`](api/core/testing/TestBed#inject) | v9 | Same behavior, but type safe. |
 | [`TestBed.get`](api/core/testing/TestBed#get) | [`TestBed.inject`](api/core/testing/TestBed#inject) | v9 | 行为没变，但类型安全。 |
 | [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v10 | Same behavior, but rename to avoid confusion. |
-| [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v10 |  行为相同，只是改名以免混淆。|
+| [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v10 | 行为相同，只是改名以免混淆。 |
 | [`aotSummaries` argument in `TestBed.initTestEnvironment`](api/core/testing/TestBed#inittestenvironment) | No replacement needed | v13 | Summary files are unused in Ivy. |
 | [`aotSummaries` 中的 `TestBed.initTestEnvironment` 参数](api/core/testing/TestBed#inittestenvironment) | 无需更换 | v13 | Ivy 中不使用摘要文件。 |
 | [`aotSummaries` field of the `TestModuleMetadata` type](api/core/testing/TestModuleMetadata) | No replacement needed | v13 | Summary files are unused in Ivy. |

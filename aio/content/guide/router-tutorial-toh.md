@@ -1,4 +1,5 @@
 <a id="router-tutorial"></a>
+
 # Router tutorial: tour of heroes
 
 # 路由器教程：英雄之旅
@@ -85,7 +86,6 @@ You might find the [Tour of Heroes tutorial](/tutorial) helpful, but it is not r
 
 你可能会发现[《英雄之旅》教程](/tutorial)很有用，但这不是必需的。
 
-
 ## The sample application in action
 
 ## 范例应用实战
@@ -122,8 +122,6 @@ The application renders with a row of navigation buttons and the *Heroes* view w
   <img src='generated/images/guide/router/hero-list.gif' alt="Example application with a row of navigation buttons and a list of heroes">
 </div>
 
-
-
 Select one hero and the application takes you to a hero editing screen.
 
 选择其中之一，该应用就会把你带到此英雄的编辑页面。
@@ -131,8 +129,6 @@ Select one hero and the application takes you to a hero editing screen.
 <div class="lightbox">
   <img src='generated/images/guide/router/hero-detail.png' alt="Detail view of hero with additional information, input, and back button">
 </div>
-
-
 
 Alter the name.
 Click the "Back" button and the application returns to the heroes list which displays the changed hero name.
@@ -170,7 +166,6 @@ Notice that the corresponding name in the crisis list does _not_ change.
   <img src='generated/images/guide/router/crisis-center-detail.gif' alt="Crisis Center detail of a crisis with data, an input, and save and cancel buttons.">
 </div>
 
-
 Unlike *Hero Detail*, which updates as you type, *Crisis Detail* changes are temporary until you either save or discard them by pressing the "Save" or "Cancel" buttons.
 Both buttons navigate back to the *Crisis Center* and its list of crises.
 
@@ -185,8 +180,6 @@ Click the browser back button or the "Heroes" link to activate a dialog.
 <div class="lightbox">
   <img src='generated/images/guide/router/confirm-dialog.png' alt="Alert that asks user to confirm discarding changes">
 </div>
-
-
 
 You can say "OK" and lose your changes or click "Cancel" and continue editing.
 
@@ -456,7 +449,7 @@ A redirect route requires a `pathMatch` property to tell the router how to match
 In this app, the router should select the route to the `HeroListComponent` only when the *entire URL* matches `''`, so set the `pathMatch` value to `'full'`.
 
 重定向路由需要一个 `pathMatch` 属性，来告诉路由器如何用 URL 去匹配路由的路径。
-在本应用中，路由器应该只有在*完整的 URL_等于 `''` 时才选择 `HeroListComponent` 组件，因此要把 `pathMatch` 设置为 `'full'`。
+在本应用中，路由器应该只有在*完整的 URL*等于 `''` 时才选择 `HeroListComponent` 组件，因此要把 `pathMatch` 设置为 `'full'`。
 
 <a id="pathmatch"></a>
 
@@ -469,12 +462,12 @@ In this app, the router should select the route to the `HeroListComponent` only 
   Technically, `pathMatch = 'full'` results in a route hit when the *remaining*, unmatched  segments of the URL match `''`.
   In this example, the redirect is in a top level route so the *remaining* URL and the  *entire* URL are the same thing.
 
-  从技术角度看，`pathMatch = 'full'` 会导致 URL 中*剩下的*、未匹配的部分必须等于 `''`。  在这个例子中，跳转路由在一个顶层路由中，因此*剩下的_URL 和*完整的_URL 是一样的。
+  从技术角度看，`pathMatch = 'full'` 会导致 URL 中*剩下的*、未匹配的部分必须等于 `''`。  在这个例子中，跳转路由在一个顶层路由中，因此*剩下的*URL 和*完整的*URL 是一样的。
 
   The other possible `pathMatch` value is `'prefix'` which tells the router to match the  redirect route when the remaining URL begins with the redirect route's prefix  path.
   This doesn't apply to this sample application because if the `pathMatch` value were `'prefix'`,   every URL would match `''`.
 
-  `pathMatch` 的另一个可能的值是 `'prefix'`，它会告诉路由器：当*剩下的_URL 以这个跳转路由中的 `prefix` 值开头时，就会匹配上这个跳转路由。
+  `pathMatch` 的另一个可能的值是 `'prefix'`，它会告诉路由器：当*剩下的*URL 以这个跳转路由中的 `prefix` 值开头时，就会匹配上这个跳转路由。
   但这不适用于此示例应用，因为如果 `pathMatch` 值是 `'prefix'`，那么每个 URL 都会匹配 `''`。
 
   Try setting it to `'prefix'` and clicking the `Go to sidekicks` button.
@@ -703,8 +696,6 @@ The starter application's structure looks like this:
 
 </div>
 
-
-
 Here are the files in this milestone.
 
 下面是本里程碑中的文件列表：
@@ -736,7 +727,6 @@ Here are the files in this milestone.
   </code-pane>
 
 </code-tabs>
-
 
 <a id="routing-module"></a>
 
@@ -801,7 +791,6 @@ The file includes an empty `Routes` object that you can fill with routes to diff
 
 <a id="routing-refactor"></a>
 
-
 ### Refactor the routing configuration into a routing module
 
 ### 将路由配置重构为路由模块
@@ -865,7 +854,7 @@ The routing module is helpful as your application grows and when the configurati
 
 Some developers skip the routing module when the configuration is minimal and merge the routing configuration directly into the companion module (for example, `AppModule`).
 
-在配置很简单时，一些开发者会跳过路由模块，并将路由配置直接混合在关联模块中（比如 `AppModule` ）。
+在配置很简单时，一些开发者会跳过路由模块，并将路由配置直接混合在关联模块中（比如 `AppModule`&nbsp;）。
 
 Most applications should implement a routing module for consistency.
 It keeps the code clean when configuration becomes complex.
@@ -988,7 +977,7 @@ Next, update the `HeroesModule` metadata.
 
 接下来，更新 `HeroesModule` 的元数据。
 
-  * Import and add the `HeroDetailComponent` and `HeroListComponent` to the `declarations` array in the `HeroesModule`.
+- Import and add the `HeroDetailComponent` and `HeroListComponent` to the `declarations` array in the `HeroesModule`.
 
   导入 `HeroDetailComponent` 和 `HeroListComponent`，并添加到 `HeroesModule` 模块的 `declarations` 数组中。
 
@@ -1200,7 +1189,7 @@ When all routes were in one `AppRoutingModule`, you put the default and [wildcar
 
 Each routing module augments the route configuration in the order of import.
 If you listed `AppRoutingModule` first, the wildcard route would be registered _before_ the hero routes.
-The wildcard route&mdash;which matches _every_ URL&mdash;would intercept the attempt to navigate to a hero route.
+The wildcard route—which matches _every_ URL—would intercept the attempt to navigate to a hero route.
 
 每个路由模块都会根据导入的顺序把自己的路由配置追加进去。
 如果你先列出了 `AppRoutingModule`，那么通配符路由就会被注册在“英雄管理”路由*之前*。
@@ -1266,7 +1255,6 @@ Embedding the route parameter token, `:id`, in the route definition path is a go
 而且路径中的值 `15` 已经足够把到“Magneta”的路由和到其它英雄的路由明确区分开。
 
 </div>
-
 
 <a id="route-parameters"></a>
 
@@ -1574,8 +1562,6 @@ as you do when navigating to the `HeroDetailComponent` in order to view the hero
 
 </code-example>
 
-
-
 You can also add optional information to a route request.
 For example, when returning to the `hero-detail.component.ts` list from the hero detail view, it would be nice if the viewed hero were preselected in the list.
 
@@ -1598,11 +1584,11 @@ Optional information can also include other forms such as:
 
   结构松散的搜索条件。比如 `name='wind_'`。
 
-* Multiple values;  for example, `after='12/31/2015' & before='1/1/2017'`&mdash;in no
-particular order&mdash;`before='1/1/2017' & after='12/31/2015'`&mdash; in a
-variety of formats&mdash;`during='currentYear'`.
+* Multiple values;  for example, `after='12/31/2015' & before='1/1/2017'`—in no
+  particular order—`before='1/1/2017' & after='12/31/2015'`— in a
+  variety of formats—`during='currentYear'`.
 
-  多个值。比如 `after='12/31/2015' & before='1/1/2017'` - 没有特定的顺序 - `before='1/1/2017' & after='12/31/2015'` - 具有各种格式 - `during='currentYear'`。
+    多个值。比如 `after='12/31/2015' & before='1/1/2017'` - 没有特定的顺序 - `before='1/1/2017' & after='12/31/2015'` - 具有各种格式 - `during='currentYear'`。
 
 As these kinds of parameters don't fit smoothly in a URL path, you can use optional parameters for conveying arbitrarily complex information during navigation.
 Optional parameters aren't involved in pattern matching and afford flexibility of expression.
@@ -2177,11 +2163,7 @@ Here are the relevant files for this version of the sample application.
 
 </code-tabs>
 
-
-
 <a id="milestone-4"></a>
-
-
 
 ## Milestone 4: Crisis center feature
 
@@ -2217,7 +2199,7 @@ Use mock crises instead of mock heroes:
 
 <code-example path="router/src/app/crisis-center/mock-crises.ts" header="src/app/crisis-center/mock-crises.ts"></code-example>
 
-The resulting crisis center is a foundation for introducing a new concept&mdash;child routing.
+The resulting crisis center is a foundation for introducing a new concept—child routing.
 You can leave Heroes in its current state as a contrast with the Crisis Center.
 
 最终的危机中心可以作为引入子路由这个新概念的基础。
@@ -2379,9 +2361,9 @@ Apply that logic to navigation within the crisis center for which the parent pat
    要导航到 `CrisisCenterHomeComponent`，完整的 URL 是 `/crisis-center` (`/crisis-center` + `''` + `''`)。
 
 * To navigate to the `CrisisDetailComponent` for a crisis with `id=2`, the full URL is
-`/crisis-center/2` (`/crisis-center` + `''` +  `'/2'`).
+  `/crisis-center/2` (`/crisis-center` + `''` +  `'/2'`).
 
-   要导航到 `CrisisDetailComponent` 以展示 `id=2` 的危机，完整的 URL 是 `/crisis-center/2` (`/crisis-center` + `''` + `'/2'`)。
+     要导航到 `CrisisDetailComponent` 以展示 `id=2` 的危机，完整的 URL 是 `/crisis-center/2` (`/crisis-center` + `''` + `'/2'`)。
 
 The absolute URL for the latter example, including the `localhost` origin, is as follows:
 
@@ -2478,7 +2460,7 @@ The router supports directory-like syntax in a _link parameters list_ to help gu
 
 `./` or `no leading slash` is relative to the current level.
 
-`./` 或 ` 无前导斜线 ` 形式是相对于当前级别的。
+`./` 或 `无前导斜线` 形式是相对于当前级别的。
 
 `../` to go up one level in the route path.
 
@@ -3211,7 +3193,7 @@ To demonstrate the fundamentals, this example only logs to the console, `returns
 
 <code-example path="router/src/app/auth/auth.guard.1.ts" header="src/app/auth/auth.guard.ts (excerpt)"></code-example>
 
-Next, open `admin-routing.module.ts `, import the `AuthGuard` class, and
+Next, open `admin-routing.module.ts`, import the `AuthGuard` class, and
 update the admin route with a `canActivate` guard property that references it:
 
 接下来，打开 `admin-routing.module.ts`，导入 `AuthGuard` 类，修改管理路由并通过 `CanActivate()` 守卫来引用 `AuthGuard`：
@@ -3284,7 +3266,7 @@ The `ActivatedRouteSnapshot` contains the _future_ route that will be activated 
 这个 `ActivatedRouteSnapshot` 包含了*即将*被激活的路由，而 `RouterStateSnapshot` 包含了该应用*即将*到达的状态。
 你应该通过守卫进行检查。
 
-If the user is not logged in, you store the attempted URL the user came from using the `RouterStateSnapshot.url` and tell the router to redirect to a login page&mdash;a page you haven't created yet.
+If the user is not logged in, you store the attempted URL the user came from using the `RouterStateSnapshot.url` and tell the router to redirect to a login page—a page you haven't created yet.
 Returning a `UrlTree` tells the `Router` to cancel the current navigation and schedule a new one to redirect the user.
 
 如果用户还没有登录，你就会用 `RouterStateSnapshot.url` 保存用户来自的 URL 并让路由器跳转到登录页（你尚未创建该页）。
@@ -3438,7 +3420,7 @@ response.
 
 <div class="alert is-helpful">
 
-You could wait for the user's answer with synchronous, blocking code, however, the application is more responsive&mdash;and can do other work&mdash;by waiting for the user's answer asynchronously.
+You could wait for the user's answer with synchronous, blocking code, however, the application is more responsive—and can do other work—by waiting for the user's answer asynchronously.
 
 你也可以用同步的方式等用户的答复，阻塞代码。但如果能用异步的方式等待用户的答复，应用就会响应性更好，还能同时做别的事。
 
@@ -3465,7 +3447,7 @@ It returns an `Observable` that resolves when the user eventually decides what t
 
 <a id="CanDeactivate"></a>
 
-Generate a guard that checks for the presence of a `canDeactivate()` method in a component&mdash;any component.
+Generate a guard that checks for the presence of a `canDeactivate()` method in a component—any component.
 
 生成一个守卫（guard），以检查组件（任意组件均可）中是否存在 `canDeactivate()` 方法。
 
@@ -3629,10 +3611,10 @@ Note the following three important points:
 注意以下三个要点：
 
 1. The router's `Resolve` interface is optional.
-The `CrisisDetailResolverService` doesn't inherit from a base class.
-The router looks for that method and calls it if found.
+   The `CrisisDetailResolverService` doesn't inherit from a base class.
+   The router looks for that method and calls it if found.
 
-   路由器的这个 `Resolve` 接口是可选的。`CrisisDetailResolverService` 没有继承自某个基类。路由器只要找到了这个方法，就会调用它。
+      路由器的这个 `Resolve` 接口是可选的。`CrisisDetailResolverService` 没有继承自某个基类。路由器只要找到了这个方法，就会调用它。
 
 1. The router calls the resolver in any case where the user could navigate away so you don't have to code for each use case.
 
@@ -3820,8 +3802,8 @@ Lazy loading has multiple benefits.
    你可以持续扩充惰性加载特性区的功能，而不用增加初始加载的包体积。
 
 You're already part of the way there.
-By organizing the application into modules&mdash;`AppModule`,
-`HeroesModule`, `AdminModule` and `CrisisCenterModule`&mdash;you
+By organizing the application into modules—`AppModule`,
+`HeroesModule`, `AdminModule` and `CrisisCenterModule`—you
 have natural candidates for lazy loading.
 
 你已经完成了一部分。通过把应用组织成一些模块：`AppModule`、`HeroesModule`、`AdminModule` 和 `CrisisCenterModule`，

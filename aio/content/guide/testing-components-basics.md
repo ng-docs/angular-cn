@@ -29,7 +29,6 @@ Angular 的 `TestBed` 可以帮你做这种测试，正如你将在下面的章�
 
 </div>
 
-
 <a id="component-class-testing"></a>
 
 ## Component class testing
@@ -525,7 +524,7 @@ Some noteworthy observations:
 一些值得注意的地方：
 
 - The `By.css()` static method selects `DebugElement` nodes
-  with a [standard CSS selector](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors 'CSS selectors').
+  with a [standard CSS selector](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors "CSS selectors").
 
   静态方法 `By.css()` 会用[标准的 CSS 选择器](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors "CSS 选择器")来选择 `DebugElement` 中的各个节点。
 

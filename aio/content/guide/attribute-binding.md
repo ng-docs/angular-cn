@@ -115,6 +115,7 @@ For more information on how to bind to the `colSpan` property, see the [`colspan
 </div>
 
 <a id="class-binding"></a>
+
 ## Binding to the `class` attribute
 
 ## 绑定到 `class` Attribute
@@ -127,8 +128,8 @@ Use class binding to add and remove CSS class names from an element's `class` at
 
 ### 绑定到单个 CSS `class`
 
-To create a single class binding, use the prefix `class` followed by a dot and the name of the CSS class&mdash;for example, `[class.sale]="onSale"`.
-Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy&mdash;with the exception of `undefined`.
+To create a single class binding, use the prefix `class` followed by a dot and the name of the CSS class—for example, `[class.sale]="onSale"`.
+Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy—with the exception of `undefined`.
 See [styling delegation](guide/style-precedence#styling-delegation) for more information.
 
 要创建单个类绑定，请使用前缀 `class` 后跟一个点和 CSS 类的名称，例如 `[class.sale]="onSale"`。`onSale` 为真值时添加类，在表达式为假值时（`undefined` 除外）删除类。欲知详情，请参见[样式委托](guide/style-precedence#styling-delegation)部分。
@@ -137,7 +138,7 @@ See [styling delegation](guide/style-precedence#styling-delegation) for more inf
 
 ### 绑定到多个 CSS 类
 
-To bind to multiple classes, use `[class]` set to an expression&mdash;for example, `[class]="classExpression"`.
+To bind to multiple classes, use `[class]` set to an expression—for example, `[class]="classExpression"`.
 The expression can be one of:
 
 要绑定到多个类，请使用 `[class]` 来设置表达式 - 例如，`[class]="classExpression"`，此表达式可以取如下值：
@@ -160,7 +161,7 @@ With the object format, Angular adds a class only if its associated value is tru
 
 <div class="alert is-important">
 
-With any object-like expression&mdash;such as `object`, `Array`, `Map`, or `Set`&mdash;the identity of the object must change for Angular to update the class list.
+With any object-like expression—such as `object`, `Array`, `Map`, or `Set`—the identity of the object must change for Angular to update the class list.
 Updating the property without changing object identity has no effect.
 
 对于任何类似对象的表达式（例如 `object`、`Array`、`Map` 或 `Set`，必须更改对象的引用，Angular 才能更新类列表。在不更改对象引用的情况下只更新其 Attribute 是不会生效的。
@@ -251,6 +252,7 @@ The following table summarizes class binding syntax.
 </table>
 
 <a id="style-binding"></a>
+
 ## Binding to the style attribute
 
 ## 绑定到 style Attribute
@@ -263,7 +265,7 @@ Use style binding to set styles dynamically.
 
 ### 绑定到单一样式
 
-To create a single style binding, use the prefix `style` followed by a dot and the name of the CSS style property&mdash;for example, `[style.width]="width"`.
+To create a single style binding, use the prefix `style` followed by a dot and the name of the CSS style property—for example, `[style.width]="width"`.
 Angular sets the property to the value of the bound expression, which is usually a string.
 Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
 
@@ -288,7 +290,7 @@ You can write a style property name in either [dash-case](guide/glossary#dash-ca
 
 ### 绑定到多个样式
 
-To toggle multiple styles, bind to the `[style]` attribute&mdash;for example, `[style]="styleExpression"`.
+To toggle multiple styles, bind to the `[style]` attribute—for example, `[style]="styleExpression"`.
 The `styleExpression` can be one of:
 
 要切换多个样式，请绑定到 `[style]` Attribute，例如 `[style]="styleExpression"` 。`styleExpression` 可以是如下格式之一：
@@ -423,6 +425,7 @@ However, using the preceding style binding syntax without `NgStyle` is preferred
 </div>
 
 <a id="styling-precedence"></a>
+
 ## Styling Precedence
 
 ## 样式优先级
@@ -443,49 +446,49 @@ When there are multiple bindings to the same class name or style property, Angul
 
    模板绑定
 
-    1. Property binding (for example, `<div [class.foo]="hasFoo">` or `<div [style.color]="color">`)
+   1. Property binding (for example, `<div [class.foo]="hasFoo">` or `<div [style.color]="color">`)
 
-       属性绑定（例如，`<div [class.foo]="hasFoo">` 或 `<div [style.color]="color">` ）
+      属性绑定（例如，`<div [class.foo]="hasFoo">` 或 `<div [style.color]="color">` ）
 
-    1. Map binding (for example, `<div [class]="classExpr">` or `<div [style]="styleExpr">`)
+   1. Map binding (for example, `<div [class]="classExpr">` or `<div [style]="styleExpr">`)
 
-       映射表绑定（例如，`<div [class]="classExpr">` 或 `<div [style]="styleExpr">` ）
+      映射表绑定（例如，`<div [class]="classExpr">` 或 `<div [style]="styleExpr">` ）
 
-    1. Static value (for example, `<div class="foo">` or `<div style="color: blue">`)
+   1. Static value (for example, `<div class="foo">` or `<div style="color: blue">`)
 
-       静态值（例如 `<div class="foo">` 或 `<div style="color: blue">` ）
+      静态值（例如 `<div class="foo">` 或 `<div style="color: blue">` ）
 
 1. Directive host bindings
 
    指令宿主绑定
 
-    1. Property binding (for example, `host: {'[class.foo]': 'hasFoo'}` or `host: {'[style.color]': 'color'}`)
+   1. Property binding (for example, `host: {'[class.foo]': 'hasFoo'}` or `host: {'[style.color]': 'color'}`)
 
-       属性绑定（例如，`host: {'[class.foo]': 'hasFoo'}` 或 `host: {'[style.color]': 'color'}` ）
+      属性绑定（例如，`host: {'[class.foo]': 'hasFoo'}` 或 `host: {'[style.color]': 'color'}` ）
 
-    1. Map binding (for example, `host: {'[class]': 'classExpr'}` or `host: {'[style]': 'styleExpr'}`)
+   1. Map binding (for example, `host: {'[class]': 'classExpr'}` or `host: {'[style]': 'styleExpr'}`)
 
-       映射表绑定（例如，`host: {'[class]': 'classExpr'}` 或 `host: {'[style]': 'styleExpr'}` ）
+      映射表绑定（例如，`host: {'[class]': 'classExpr'}` 或 `host: {'[style]': 'styleExpr'}` ）
 
-    1. Static value (for example, `host: {'class': 'foo'}` or `host: {'style': 'color: blue'}`)
+   1. Static value (for example, `host: {'class': 'foo'}` or `host: {'style': 'color: blue'}`)
 
-       静态值（例如，`host: {'class': 'foo'}` 或 `host: {'style': 'color: blue'}` ）
+      静态值（例如，`host: {'class': 'foo'}` 或 `host: {'style': 'color: blue'}` ）
 
 1. Component host bindings
 
    组件宿主绑定
 
-    1. Property binding (for example, `host: {'[class.foo]': 'hasFoo'}` or `host: {'[style.color]': 'color'}`)
+   1. Property binding (for example, `host: {'[class.foo]': 'hasFoo'}` or `host: {'[style.color]': 'color'}`)
 
-       属性绑定（例如，`host: {'[class.foo]': 'hasFoo'}` 或 `host: {'[style.color]': 'color'}` ）
+      属性绑定（例如，`host: {'[class.foo]': 'hasFoo'}` 或 `host: {'[style.color]': 'color'}` ）
 
-    1. Map binding (for example, `host: {'[class]': 'classExpr'}` or `host: {'[style]': 'styleExpr'}`)
+   1. Map binding (for example, `host: {'[class]': 'classExpr'}` or `host: {'[style]': 'styleExpr'}`)
 
-       映射表绑定（例如，`host: {'[class]': 'classExpr'}` 或 `host: {'[style]': 'styleExpr'}` ）
+      映射表绑定（例如，`host: {'[class]': 'classExpr'}` 或 `host: {'[style]': 'styleExpr'}` ）
 
-    1. Static value (for example, `host: {'class': 'foo'}` or `host: {'style': 'color: blue'}`)
+   1. Static value (for example, `host: {'class': 'foo'}` or `host: {'style': 'color: blue'}`)
 
-       静态值（例如，`host: {'class': 'foo'}` 或 `host: {'style': 'color: blue'}` ）
+      静态值（例如，`host: {'class': 'foo'}` 或 `host: {'style': 'color: blue'}` ）
 
 </div>
 
@@ -529,6 +532,7 @@ In the following case, `class` and `[class]` have similar specificity, but the `
 <code-example path="attribute-binding/src/app/app.component.html" region="dynamic-priority" header="src/app/app.component.html"></code-example>
 
 <a id="styling-delegation"></a>
+
 ### Delegating to styles with lower precedence
 
 ### 委托给优先级较低的样式

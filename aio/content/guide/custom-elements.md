@@ -25,7 +25,6 @@ detection APIs.
 Angular 元素提供了一种 API，它允许开发者把 Angular 组件注册为自定义元素（Web Components），并且在内置的 DOM API 和 Angular 的组件接口与变更检测 API 之间建立一个桥梁。
 
 ```ts
-
 //hello-world.ts
 import { Component, Input, NgModule } from '@angular/core';
 
@@ -42,11 +41,9 @@ export class HelloWorld {
   entryComponents: [ HelloWorld ]
 })
 export class HelloWorldModule {}
-
 ```
 
 ```ts
-
 //app.component.ts
 import { Component, NgModuleRef } from '@angular/core';
 import { createNgElementConstructor } from '@angular/elements';
@@ -64,7 +61,6 @@ export class AppComponent {
     customElements.register('hello-world', NgElementConstructor);
   }
 }
-
 ```
 
 Once registered, these components can be used just like built-in HTML elements, because they *are* 
@@ -77,10 +73,8 @@ They can be used in any HTML page:
 它们可以用在任何 HTML 页面中：
 
 ```html
-
 <hello-world name="Angular"></hello-world>
 <hello-world name="Typescript"></hello-world>
-
 ```
 
 Custom Elements are "self-bootstrapping" - they are automatically started when they are added to the 

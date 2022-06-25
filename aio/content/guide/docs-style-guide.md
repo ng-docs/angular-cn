@@ -18,15 +18,14 @@ Before contributing to the Angular documentation, it is helpful if you are famil
 The categories of Angular documentation include:
 
 * [Guides](docs): much of what's in the [documentation section of angular.io](docs).
-Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example.
-These include [Getting Started](start), [Tour of Heroes](tutorial), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/http).
-Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown").
+  Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example.
+  These include [Getting Started](start), [Tour of Heroes](tutorial), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/http).
+  Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown").
 * [API documentation](api): reference documents for the [Angular Application Programming Interface, or API](api).
-These are more succinct than guides and serve as a reference for Angular features.
-They are especially helpful for people already acquainted with Angular concepts.
-The [angular.io](https://angular.io/) infrastructure generates these documents from source code and comments that contributors edit.
+  These are more succinct than guides and serve as a reference for Angular features.
+  They are especially helpful for people already acquainted with Angular concepts.
+  The [angular.io](https://angular.io/) infrastructure generates these documents from source code and comments that contributors edit.
 * [CLI documentation](cli): the [angular.io](https://angular.io/) infrastructure generates these documents from CLI source code.
-
 
 ## Markdown and HTML
 
@@ -229,11 +228,9 @@ The following are some examples:
 The Markdown is as follows:
 
 ```md
-
 * In the `app.component.ts`, add a `logger()` method.
 * The <code class="no-auto-link">item</code> property is `true`.
 * Add the component class name to the `declarations` array.
-
 ```
 
 ### Auto-linking in code snippets
@@ -293,7 +290,7 @@ It might refer instead to a sample belonging to another page.
 The Angular CI process runs all end-to-end tests for every Angular PR.
 Angular re-tests the samples after every new version of a sample and every new version of Angular.
 
-When possible, every snippet of code on a guide page should be derived from a code sample file. You tell the Angular documentation engine which code file&mdash;or fragment of a code file&mdash;to display by configuring `<code-example>` attributes.
+When possible, every snippet of code on a guide page should be derived from a code sample file. You tell the Angular documentation engine which code file—or fragment of a code file—to display by configuring `<code-example>` attributes.
 
 <a id="display-whole-file"></a>
 
@@ -464,15 +461,15 @@ Each tab displays code using a `code-pane`.
 #### `code-tabs` attributes
 
 * `linenums`: The value can be `true`, `false`, or a number indicating the starting line number.
-The default is `false`.
+  The default is `false`.
 
 #### `code-pane` attributes
 
 * `path`: a file in the `content/examples` folder
 * `header`: what displays in the header of a tab
 * `linenums`: overrides the `linenums` property at the `code-tabs` level for this particular pane.
-The value can be `true`, `false`, or a number indicating the starting line number.
-The default is `false`.
+  The value can be `true`, `false`, or a number indicating the starting line number.
+  The default is `false`.
 
 The following example displays multiple code tabs, each with its own header.
 It demonstrates showing line numbers in `<code-tabs>` and `<code-pane>`.
@@ -581,7 +578,6 @@ The following `src/main.ts` is a an example of a file with a single `#docregion`
 
 As a result, the entire file is in the `<code-example>`.
 
-
 ### Naming a `#docregion`
 
 To display multiple snippets from different fragments within the same file, give each fragment its own `#docregion` name as follows, where `your-region-name` is a hyphenated lowercase string:
@@ -621,7 +617,7 @@ Place a `#docregion` within another `#docregion` as in the following example wit
 Combine several fragments from the same file into a single code snippet by defining multiple `#docregion` sections with the same region name.
 The following example defines two nested `#docregion` sections.
 
-The inner region, `class-skeleton`, appears twice&mdash;once to capture the code that opens the class definition and a second time to capture the code that closes the class definition.
+The inner region, `class-skeleton`, appears twice—once to capture the code that opens the class definition and a second time to capture the code that closes the class definition.
 
 <code-example header="src/app/app.component.ts">
 
@@ -643,12 +639,12 @@ export class AppComponent {
 
 </code-example>
 
-The `#docplaster` marker tells the processor what text string to use&mdash;that is, the "plaster"&mdash;to join each of the fragments into a single snippet.
+The `#docplaster` marker tells the processor what text string to use—that is, the "plaster"—to join each of the fragments into a single snippet.
 Place the "plaster" text on the same line.
 For example, `#docplaster ---` would use `---` as the "plaster" text.
 In the case of the previous file, the "plaster" text is empty so there will be nothing in between each fragment.
 
-Without `#docplaster`, the processor inserts the default plaster&mdash;an ellipsis comment&mdash;between the fragments.
+Without `#docplaster`, the processor inserts the default plaster—an ellipsis comment—between the fragments.
 
 Here are the two corresponding code snippets for side-by-side comparison.
 
@@ -758,9 +754,9 @@ Each sample folder usually has a single unnamed definition file, the default `st
 You can create additional, named definition files in the form `name.stackblitz.json`.
 The [Testing](guide/testing) guide (`aio/content/guide/testing.md`) references a named StackBlitz file as follows:
 
-  ```html
-  <live-example stackblitz="specs">Tests</live-example>
-  ```
+```html
+<live-example stackblitz="specs">Tests</live-example>
+```
 
 The `stackblitz` attribute value of `specs` refers to the `examples/testing/specs.stackblitz.json` file.
 If you were to leave out the `stackblitz` attribute, the default would be `examples/testing/stackblitz.json`.
@@ -800,7 +796,6 @@ For example, to include the [Router](guide/router) guide example in this style g
 
 <live-example name="router">Live example from the Router guide</live-example>
 
-
 ### Live Example without download
 
 To omit the download link, add the `noDownload` attribute.
@@ -813,7 +808,6 @@ The browser renders the following:
 
 <live-example noDownload>Just the StackBlitz</live-example>
 
-
 ### Live Example with download-only
 
 To omit the live StackBlitz link and only link to the download, add the `downloadOnly` attribute.
@@ -825,7 +819,6 @@ To omit the live StackBlitz link and only link to the download, add the `downloa
 The browser renders the following:
 
 <live-example downloadOnly>Download only</live-example>
-
 
 ### Embedded live example
 
@@ -865,11 +858,11 @@ The browser renders the following:
 
 <div class="alert is-helpful">
 
-See the ["Anchors"](guide/docs-style-guide#anchors "Style Guide&mdash;Anchors") section for details.
+See the ["Anchors"](guide/docs-style-guide#anchors "Style Guide—Anchors") section for details.
 
 </div>
 
-Notice that the above example includes a title of "Style Guide&mdash;Anchors".
+Notice that the above example includes a title of "Style Guide—Anchors".
 Use titles on anchors to create tooltips and improve UX.
 
 When navigating within a page, you can omit the page URL when specifying the link that [scrolls up](#anchors "Anchors") to the beginning of this section, as in the following:
@@ -909,7 +902,7 @@ You can also add more anchors with more appropriate text.
 <div class="alert is-helpful">
 
 As an alternative, you can use the HTML `<a>` tag.
-When using the `<a>` tag, set the `id` attribute&mdash;rather than the `name` attribute because the documentation generator does not convert the `name` to the proper link URL.
+When using the `<a>` tag, set the `id` attribute—rather than the `name` attribute because the documentation generator does not convert the `name` to the proper link URL.
 For example:
 
 ```html
@@ -1177,18 +1170,17 @@ src="generated/images/guide/docs-style-guide/flying-hero.png"
   <header>Use the HTML <code>&lt;img&gt;</code> tag</header>
 
   Specify images using the `<img>` tag.
-  **Do not use the Markdown image syntax, \!\[\.\.\.\]\(\.\.\.\).**
+  **Do not use the Markdown image syntax, !\[...](...).**
 
   For accessibility, always set the `alt` attribute with a meaningful description of the image.
 
   Nest the `<img>` tag within a `<div class="lightbox">` tag, which styles the image according to the documentation standard.
 
-
-  ```html
-  <div class="lightbox">
-    <img src="generated/images/guide/docs-style-guide/flying-hero.png" alt="flying hero">
-  </div>
-  ```
+```html
+<div class="lightbox">
+  <img src="generated/images/guide/docs-style-guide/flying-hero.png" alt="flying hero">
+</div>
+```
 
   Note that the HTML `<img>` element does not have a closing tag.
 
@@ -1215,7 +1207,6 @@ To control the size of the image, supply your own `width` and `height` attribute
 Here's the "flying hero" markup with a 200px width:
 
 ```html
-
 <div class="lightbox">
   <img src="generated/images/guide/docs-style-guide/flying-hero.png"
     alt="flying Angular hero"
@@ -1297,7 +1288,6 @@ Generally, you don't wrap a floated image in a `<figure>` element.
 
 If you have a floated image inside an alert, callout, or a subsection, apply the `clear-fix` class to the `<div>` to ensure that the image doesn't overflow its container.
 For example:
-
 
 ```html
 <div class="alert is-helpful clear-fix">

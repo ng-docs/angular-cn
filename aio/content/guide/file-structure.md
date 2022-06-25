@@ -52,7 +52,7 @@ The top level of the workspace contains workspace-wide configuration files, conf
 每个工作区中的所有项目共享同一个 [CLI 配置环境](guide/workspace-config)。该工作区的顶层包含着全工作区级的配置文件、根应用的配置文件以及一些包含根应用的源文件和测试文件的子文件夹。
 
 | WORKSPACE CONFIG FILES | PURPOSE |
-| :--------------------- | :------------------------------------------|
+| :--------------------- | :------ |
 | 工作区配置文件 | 用途 |
 | `.editorconfig` | Configuration for code editors. See [EditorConfig](https://editorconfig.org/). |
 | `.editorconfig` | 代码编辑器的配置。参阅 [EditorConfig](https://editorconfig.org/)。 |
@@ -67,12 +67,11 @@ The top level of the workspace contains workspace-wide configuration files, conf
 | `package-lock.json` | Provides version information for all packages installed into `node_modules` by the npm client. See [npm documentation](https://docs.npmjs.com/files/package-lock.json) for details. If you use the yarn client, this file will be [yarn.lock](https://yarnpkg.com/lang/en/docs/yarn-lock/) instead. |
 | `package-lock.json` | 提供 npm 客户端安装到 `node_modules` 的所有软件包的版本信息。欲知详情，请参阅 [npm 的文档](https://docs.npmjs.com/files/package-lock.json)。如果你使用的是 yarn 客户端，那么该文件[就是 yarn.lock](https://yarnpkg.com/lang/en/docs/yarn-lock/)。 |
 | `src/` | Source files for the root-level application project. |
-| `src/` | 根项目的源文件。|
+| `src/` | 根项目的源文件。 |
 | `node_modules/` | Provides [npm packages](guide/npm-packages) to the entire workspace. Workspace-wide `node_modules` dependencies are visible to all projects. |
 | `node_modules/` | 为整个工作区提供 [npm 包](guide/npm-packages)。这些工作区级的 `node_modules` 依赖对其中的所有项目可见。 |
-| `tsconfig.json` | The base [TypeScript](https://www.typescriptlang.org/) configuration for projects in the workspace. All other configuration files inherit from this base file. For more information, see the [Configuration inheritance with extends](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) section of the TypeScript documentation.|
-| `tsconfig.json` | 工作区中所有项目的基本 [TypeScript](https://www.typescriptlang.org/) 配置。所有其它配置文件都继承自这个基本配置。欲知详情，参阅 TypeScript 文档中的 [通过 extends 进行配置继承](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) 部分。|
-
+| `tsconfig.json` | The base [TypeScript](https://www.typescriptlang.org/) configuration for projects in the workspace. All other configuration files inherit from this base file. For more information, see the [Configuration inheritance with extends](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) section of the TypeScript documentation. |
+| `tsconfig.json` | 工作区中所有项目的基本 [TypeScript](https://www.typescriptlang.org/) 配置。所有其它配置文件都继承自这个基本配置。欲知详情，参阅 TypeScript 文档中的 [通过 extends 进行配置继承](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) 部分。 |
 
 ## Application project files
 
@@ -110,7 +109,7 @@ Files at the top level of `src/` support testing and running your application. S
 顶层文件 `src/` 为测试并运行你的应用提供支持。其子文件夹中包含应用源代码和应用的专属配置。
 
 | APP SUPPORT FILES | PURPOSE |
-| :--------------------- | :------------------------------------------|
+| :---------------- | :------ |
 | 应用支持文件 | 目的 |
 | `app/` | Contains the component files in which your application logic and data are defined. See details [below](#app-src). |
 | `app/` | 包含定义应用逻辑和数据的组件文件。详见[下文](#app-src)。 |
@@ -147,7 +146,7 @@ Angular components, templates, and styles go here.
 在 `src/` 文件夹里面，`app/` 文件夹中包含此项目的逻辑和数据。Angular 组件、模板和样式也都在这里。
 
 | `src/app/` FILES | PURPOSE |
-| :-------------------------- | :------------------------------------------|
+| :--------------- | :------ |
 | `src/app/` 文件 | 用途 |
 | `app/app.component.ts` | Defines the logic for the application's root component, named `AppComponent`. The view associated with this root component becomes the root of the [view hierarchy](guide/glossary#view-hierarchy) as you add components and services to your application. |
 | `app/app.component.ts` | 为应用的根组件定义逻辑，名为 `AppComponent`。当你向应用中添加组件和服务时，与这个根组件相关联的视图就会成为[视图树](guide/glossary#view-hierarchy)的根。 |
@@ -174,7 +173,7 @@ Project-specific [TypeScript](https://www.typescriptlang.org/) configuration fil
 项目专属的 [TypeScript](https://www.typescriptlang.org/) 配置文件继承自工作区范围内的 `tsconfig.base.json`，而项目专属的 [TSLint](https://palantir.github.io/tslint/) 配置文件则继承自全工作区级内的 `tslint.json`。
 
 | APPLICATION-SPECIFIC CONFIG FILES | PURPOSE |
-| :--------------------- | :------------------------------------------|
+| :-------------------------------- | :------ |
 | 应用专属的配置文件 | 用途 |
 | `.browserslistrc` | Configures sharing of target browsers and Node.js versions among various front-end tools. See [Browserslist on GitHub](https://github.com/browserslist/browserslist) for more information. |
 | `browserslist` | 配置各种前端工具之间共享的目标浏览器和 Node.js 版本。欲知详情，请参阅 [GitHub 上的浏览器列表](https://github.com/browserslist/browserslist)。 |
@@ -184,7 +183,6 @@ Project-specific [TypeScript](https://www.typescriptlang.org/) configuration fil
 | `tsconfig.app.json` | 应用专属的 [TypeScript](https://www.typescriptlang.org/) 配置，包括 TypeScript 和 Angular 模板编译器的选项。参阅 [TypeScript 配置](guide/typescript-configuration)。 |
 | `tsconfig.spec.json` | [TypeScript](https://www.typescriptlang.org/) configuration for the application tests. See [TypeScript Configuration](guide/typescript-configuration). |
 | `tsconfig.spec.json` | 应用测试的 [TypeScript](https://www.typescriptlang.org/) 配置。参阅 [TypeScript 配置](guide/typescript-configuration)。 |
-
 
 <a id="multiple-projects"></a>
 
@@ -257,7 +255,7 @@ Under the `projects/` folder, the `my-lib` folder contains your library code.
 在 `projects/` 目录下，`my-lib` 文件夹中包含你的库代码。
 
 | LIBRARY SOURCE FILES | PURPOSE |
-| :------------------- | :----------------------------------------------------------------------------|
+| :------------------- | :------ |
 | 库的源文件 | 用途 |
 | `src/lib` | Contains your library project's logic and data. Like an application project, a library project can contain components, services, modules, directives, and pipes. |
 | `src/lib` | 包含库项目的逻辑和数据。像应用项目一样，库项目也可以包含组件、服务、模块、指令和管道。 |

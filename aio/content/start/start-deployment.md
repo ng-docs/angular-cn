@@ -48,10 +48,10 @@ A best practice is to run your project locally before you deploy it. To run your
 
    解包，并进入新创建的这个项目目录中。比如：
 
-    ```sh
-    cd angular-ynqttp
-    ```
-    
+   ```sh
+   cd angular-ynqttp
+   ```
+
 1. Use the following CLI command to run your application locally:
 
    使用以下 CLI 命令在本地运行你的应用：
@@ -75,6 +75,7 @@ A best practice is to run your project locally before you deploy it. To run your
    当启动了应用的开发服务器时，你可以编辑代码并在浏览器中查看对此更改的自动更新。要停止此 `ng serve` 命令，请按 `Ctrl` + `c` 键。
 
 <a id="building"></a>
+
 ## Building and hosting your application
 
 ## 构建和托管你的应用

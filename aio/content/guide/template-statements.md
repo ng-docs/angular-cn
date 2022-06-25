@@ -54,6 +54,7 @@ The following JavaScript and template expression syntax is not allowed:
 不允许使用以下 JavaScript 和模板表达式语法：
 
 * `new`
+
 * increment and decrement operators, `++` and `--`
 
   递增和递减运算符 `++` 和 `--`
@@ -74,7 +75,7 @@ The following JavaScript and template expression syntax is not allowed:
 
 ## 语句的上下文
 
-Statements have a context&mdash;a particular part of the application to which the statement belongs.
+Statements have a context—a particular part of the application to which the statement belongs.
 
 语句具有上下文 - 也就是语句所属应用中的特定部分。
 

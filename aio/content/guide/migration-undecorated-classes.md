@@ -27,28 +27,28 @@ For example, in the diff below, a `@Directive()` decorator is added to `BaseMenu
 
   **之前:**
 
-  ```ts
-  export class BaseMenu {
-    constructor(private vcr: ViewContainerRef) {}
-  }
+```ts
+export class BaseMenu {
+  constructor(private vcr: ViewContainerRef) {}
+}
 
-  @Directive({selector: '[settingsMenu]'})
-  export class SettingsMenu extends BaseMenu {}
-  ```
+@Directive({selector: '[settingsMenu]'})
+export class SettingsMenu extends BaseMenu {}
+```
 
   **After:**
 
   **之后:**
 
-  ```ts
-  @Directive()
-  export class BaseMenu {
-    constructor(private vcr: ViewContainerRef) {}
-  }
+```ts
+@Directive()
+export class BaseMenu {
+  constructor(private vcr: ViewContainerRef) {}
+}
 
-  @Directive({selector: '[settingsMenu]'})
-  export class SettingsMenu extends BaseMenu {}
-  ```
+@Directive({selector: '[settingsMenu]'})
+export class SettingsMenu extends BaseMenu {}
+```
 
 In the event that a directive or component is extended by a class without a decorator, the schematic copies any inherited directive or component metadata to the derived class.
 
@@ -96,7 +96,6 @@ This schematic also decorates classes that use Angular field decorators, includi
 - `@HostListener()`
 - `@ViewChild()` / `@ViewChildren()`
 - `@ContentChild()` / `@ContentChildren()`
-
 
 **Before:**
 

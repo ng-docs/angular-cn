@@ -59,7 +59,6 @@ In applications built with Angular versions prior to 6.0, services are registere
   providers: [UserService],
   ...
 })
-
 ```
 
 If this NgModule were the root `AppModule`, the `UserService` would be a singleton and available

@@ -64,17 +64,17 @@ To prerender dynamic routes, choose one from the following options:
 
 要预先渲染动态路由，请从以下选项中选择一个：
 
- * Provide additional routes in the command line
+- Provide additional routes in the command line
 
-   在命令行中提供额外的路由
+  在命令行中提供额外的路由
 
- * Provide routes using a file
+- Provide routes using a file
 
-   使用文件来提供路由
+  使用文件来提供路由
 
- * Prerender specific routes 
+- Prerender specific routes 
 
-   预先渲染指定路由
+  预先渲染指定路由
 
 #### Provide additional routes in the command line
 

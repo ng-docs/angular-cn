@@ -147,4 +147,4 @@ In this example, the `getHeroes()` method uses the `Logger` service by logging a
 
 * [Dependency Injection in Action](guide/dependency-injection-in-action)
 
-  [依赖注入实战](guide/dependency-injection-in-action) 
+  [依赖注入实战](guide/dependency-injection-in-action)

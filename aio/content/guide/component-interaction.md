@@ -240,7 +240,7 @@ payload `$event` and updates a counter.
 
 </code-example>
 
-The framework passes the event argument&mdash;represented by `$event`&mdash;to the handler method,
+The framework passes the event argument—represented by `$event`—to the handler method,
 and the method processes it:
 
 本框架把事件参数(用 `$event` 表示)传给事件处理方法，该方法会处理它：

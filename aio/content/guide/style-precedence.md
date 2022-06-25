@@ -10,88 +10,88 @@ This styling precedence is as follows, from the most specific with the highest p
 
 1. Template bindings are the most specific because they apply to the element directly and exclusively, so they have the highest precedence.
 
-   模板绑定是最有特异性的，因为它们直接且排他地应用于此元素，因此它们具有最高的优先级。
+    模板绑定是最有特异性的，因为它们直接且排他地应用于此元素，因此它们具有最高的优先级。
 
-  <table width="100%">
-    <col width="40%"></col>
-    <col width="60%"></col>
-    <thead>
-      <tr>
-        <th>Binding type</th>
-        <th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Property binding</td>
-        <td><code>&lt;div [class.foo]="hasFoo"&gt;</code><br><code>&lt;div [style.color]="color"&gt;</code></td>
-      </tr>
-      <tr>
-        <td>Map binding</td>
-        <td><code>&lt;div [class]="classExpression"&gt;</code><br><code>&lt;div [style]="styleExpression"&gt;</code></td>
-      </tr>
-      <tr>
-        <td>Static value</td>
-        <td><code>&lt;div class="foo"&gt;</code><br><code>&lt;div style="color: blue"&gt;</code></td>
-      </tr>
-    </tbody>
-  </table>
+   <table width="100%">
+     <col width="40%"></col>
+     <col width="60%"></col>
+     <thead>
+       <tr>
+         <th>Binding type</th>
+         <th>Example</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>Property binding</td>
+         <td><code>&lt;div [class.foo]="hasFoo"&gt;</code><br><code>&lt;div [style.color]="color"&gt;</code></td>
+       </tr>
+       <tr>
+         <td>Map binding</td>
+         <td><code>&lt;div [class]="classExpression"&gt;</code><br><code>&lt;div [style]="styleExpression"&gt;</code></td>
+       </tr>
+       <tr>
+         <td>Static value</td>
+         <td><code>&lt;div class="foo"&gt;</code><br><code>&lt;div style="color: blue"&gt;</code></td>
+       </tr>
+     </tbody>
+   </table>
 1. Directive host bindings are less specific because you can use directives in multiple locations, so they have a lower precedence than template bindings.
 
-   指令的宿主绑定不太有特异性，因为你可以在多个位置使用该指令，因此它们的优先级比模板绑定低。
+    指令的宿主绑定不太有特异性，因为你可以在多个位置使用该指令，因此它们的优先级比模板绑定低。
 
-  <table width="100%">
-    <col width="40%"></col>
-    <col width="60%"></col>
-    <thead>
-      <tr>
-        <th>Binding type</th>
-        <th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Property binding</td>
-        <td><code>host: {'[class.foo]': 'hasFoo'}</code><br><code>host: {'[style.color]': 'color'}</code></td>
-      </tr>
-      <tr>
-        <td>Map binding</td>
-        <td><code>host: {'[class]': 'classExpr'}</code><br><code>host: {'[style]': 'styleExpr'}</code></td>
-      </tr>
-      <tr>
-        <td>Static value</td>
-        <td><code>host: {'class': 'foo'}</code><br><code>host: {'style': 'color: blue'}</code></td>
-      </tr>
-    </tbody>
-  </table>
+   <table width="100%">
+     <col width="40%"></col>
+     <col width="60%"></col>
+     <thead>
+       <tr>
+         <th>Binding type</th>
+         <th>Example</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>Property binding</td>
+         <td><code>host: {'[class.foo]': 'hasFoo'}</code><br><code>host: {'[style.color]': 'color'}</code></td>
+       </tr>
+       <tr>
+         <td>Map binding</td>
+         <td><code>host: {'[class]': 'classExpr'}</code><br><code>host: {'[style]': 'styleExpr'}</code></td>
+       </tr>
+       <tr>
+         <td>Static value</td>
+         <td><code>host: {'class': 'foo'}</code><br><code>host: {'style': 'color: blue'}</code></td>
+       </tr>
+     </tbody>
+   </table>
 1. Component host bindings have the lowest precedence.
 
-   组件宿主绑定的优先级最低。
+    组件宿主绑定的优先级最低。
 
-    <table width="100%">
-    <col width="40%"></col>
-    <col width="60%"></col>
-    <thead>
-      <tr>
-        <th>Binding type</th>
-        <th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Property binding</td>
-        <td><code>host: {'[class.foo]': 'hasFoo'}</code><br><code>host: {'[style.color]': 'color'}</code></td>
-      </tr>
-      <tr>
-        <td>Map binding</td>
-        <td><code>host: {'[class]': 'classExpression'}</code><br><code>host: {'[style]': 'styleExpression'}</code></td>
-      </tr>
-      <tr>
-        <td>Static value</td>
-        <td><code>host: {'class': 'foo'}</code><br><code>host: {'style': 'color: blue'}</code></td>
-      </tr>
-    </tbody>
-  </table>
+     <table width="100%">
+     <col width="40%"></col>
+     <col width="60%"></col>
+     <thead>
+       <tr>
+         <th>Binding type</th>
+         <th>Example</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>Property binding</td>
+         <td><code>host: {'[class.foo]': 'hasFoo'}</code><br><code>host: {'[style.color]': 'color'}</code></td>
+       </tr>
+       <tr>
+         <td>Map binding</td>
+         <td><code>host: {'[class]': 'classExpression'}</code><br><code>host: {'[style]': 'styleExpression'}</code></td>
+       </tr>
+       <tr>
+         <td>Static value</td>
+         <td><code>host: {'class': 'foo'}</code><br><code>host: {'style': 'color: blue'}</code></td>
+       </tr>
+     </tbody>
+   </table>
 
 ## Precedence and specificity
 

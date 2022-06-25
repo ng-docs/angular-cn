@@ -57,21 +57,21 @@ To create a new workspace and an initial application project:
 
 要想创建一个新的工作区和一个初始应用项目，需要：
 
-  1. Ensure that you are not already in an Angular workspace folder. For example, if you have previously created the Getting Started workspace, change to the parent of that folder.
+1. Ensure that you are not already in an Angular workspace folder. For example, if you have previously created the Getting Started workspace, change to the parent of that folder.
 
-     确保你现在没有位于 Angular 工作区的文件夹中。例如，如果你之前已经创建过 "快速上手" 工作区，请回到其父目录中。
+   确保你现在没有位于 Angular 工作区的文件夹中。例如，如果你之前已经创建过 "快速上手" 工作区，请回到其父目录中。
 
-  2. Run the CLI command `ng new` and provide the name `angular-tour-of-heroes`, as shown here:
+1. Run the CLI command `ng new` and provide the name `angular-tour-of-heroes`, as shown here:
 
-     运行 CLI 命令 `ng new`，空间名请使用 `angular-tour-of-heroes`，如下所示： 
+   运行 CLI 命令 `ng new`，空间名请使用 `angular-tour-of-heroes`，如下所示：
 
 <code-example language="sh">
   ng new angular-tour-of-heroes
-</code-example> 
+</code-example>
 
-  3. The `ng new` command prompts you for information about features to include in the initial application project. Accept the defaults by pressing the Enter or Return key.
+3. The `ng new` command prompts you for information about features to include in the initial application project. Accept the defaults by pressing the Enter or Return key.
 
-     `ng new` 命令会提示你输入要在初始应用项目中包含哪些特性，请按 Enter 或 Return 键接受其默认值。
+   `ng new` 命令会提示你输入要在初始应用项目中包含哪些特性，请按 Enter 或 Return 键接受其默认值。
 
 The Angular CLI installs the necessary Angular `npm` packages and other dependencies. This can take a few minutes.
 
@@ -81,17 +81,17 @@ It also creates the following workspace and starter project files:
 
 它还会创建下列工作区和初始项目的文件：
 
-  * A new workspace, with a root folder named `angular-tour-of-heroes`.
+- A new workspace, with a root folder named `angular-tour-of-heroes`.
 
-    新的工作区，其根目录名叫 `angular-tour-of-heroes`。
+  新的工作区，其根目录名叫 `angular-tour-of-heroes`。
 
-  * An initial skeleton app project in the `src/app` subfolder.
+- An initial skeleton app project in the `src/app` subfolder.
 
-    一个最初的骨架应用项目，位于 `src/app` 子目录下。
+  一个最初的骨架应用项目，位于 `src/app` 子目录下。
 
-  * Related configuration files.
+- Related configuration files.
 
-    相关的配置文件。
+  相关的配置文件。
 
 The initial app project contains a simple Welcome application, ready to run.
 
@@ -155,17 +155,17 @@ You'll find the implementation of the shell `AppComponent` distributed over thre
 
 你会在这里看到 `AppComponent` 壳的三个实现文件：
 
-1. `app.component.ts`&mdash; the component class code, written in TypeScript. 
+1. `app.component.ts`— the component class code, written in TypeScript. 
 
-   `app.component.ts`&mdash; 组件的类代码，这是用 TypeScript 写的。
+   `app.component.ts`— 组件的类代码，这是用 TypeScript 写的。
 
-1. `app.component.html`&mdash; the component template, written in HTML.
+1. `app.component.html`— the component template, written in HTML.
 
-   `app.component.html`&mdash; 组件的模板，这是用 HTML 写的。
+   `app.component.html`— 组件的模板，这是用 HTML 写的。
 
-1. `app.component.css`&mdash; the component's private CSS styles.
+1. `app.component.css`— the component's private CSS styles.
 
-   `app.component.css`&mdash; 组件的私有 CSS 样式。
+   `app.component.css`— 组件的私有 CSS 样式。
 
 ### Change the application title
 

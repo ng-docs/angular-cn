@@ -35,7 +35,7 @@ This guide covers the basic Angular animation features to get you started on add
 
 本指南覆盖了基本的 Angular 动画特性，让你能开始为你的项目添加 Angular 动画。
 
-The features described in this guide &mdash; and the more advanced features described in the related Angular animations guides &mdash; are demonstrated in an example application available as a <live-example></live-example>.
+The features described in this guide — and the more advanced features described in the related Angular animations guides — are demonstrated in an example application available as a <live-example></live-example>.
 
 本指南中描述的特性，以及相关的 Angular 动画章节中描述的更多高级特性，都在一个范例 <live-example></live-example> 中进行了演示。
 
@@ -204,9 +204,9 @@ The `timings` parameter takes either a number or a string defined in three parts
 
 `timings` 参数可以接受一个数字或由三部分组成的字符串。
 
->`animate (duration)` or `animate ('duration delay easing')`
-> 
->`animate (duration)` 或 `animate ('duration delay easing')`
+> `animate (duration)` or `animate ('duration delay easing')`
+>
+> `animate (duration)` 或 `animate ('duration delay easing')`
 
 The first part, `duration`, is required. The duration can be expressed in milliseconds as a number without quotes, or in seconds with quotes and a time specifier. For example, a duration of a tenth of a second can be expressed as follows:
 
@@ -253,6 +253,7 @@ The third argument, `easing`, controls how the animation [accelerates and decele
 **Note:** See the Material Design website's topic on [Natural easing curves](https://material.io/design/motion/speed.html#easing) for general information on easing curves.
 
 **注意：**要了解缓动曲线的更多信息，请参阅 Angular Material Design 网站下的[自然缓动曲线](https://material.io/design/motion/speed.html#easing)主题。
+
 </div>
 
 This example provides a state transition from `open` to `closed` with a 1-second transition between states.
@@ -295,8 +296,9 @@ region="transition2">
 
 * Include multiple state pairs within the same `transition()` argument:<br/> `transition( 'on => off, off => void' )`.
 
-  可以在同一个 `transition()` 参数中包含多个状态对：<br/>`transition( 'on => off, off => void' )`。
-</div>
+    可以在同一个 `transition()` 参数中包含多个状态对：<br/>`transition( 'on => off, off => void' )`。
+
+  </div>
 
 ### Triggering the animation
 
@@ -408,6 +410,7 @@ Learn about more advanced features in Angular animations under the Animation sec
 请到 "动画" 组下学习 Angular 动画的高级特性，不妨先从[转场与触发器](guide/transition-and-triggers)中讲述的高级技巧开始。
 
 <a id="animation-api-summary"></a>
+
 ## Animations API summary
 
 ## 动画 API 小结
@@ -611,4 +614,5 @@ You might also be interested in the following:
 Check out this [presentation](https://www.youtube.com/watch?v=rnTK9meY5us), shown at the AngularConnect conference in November 2017, and the accompanying [source code](https://github.com/matsko/animationsftw.in).
 
 到这个 [Demo](http://animationsftw.in/#/) 中查看 2017 年 11 月的 AngularConnect 大会上完整的动画及其[演示](https://www.youtube.com/watch?v=JhNo3Wvj6UQ&feature=youtu.be&t=2h47m53s)。
+
 </div>

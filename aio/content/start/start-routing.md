@@ -42,9 +42,9 @@ This section shows you how to define a route to show individual product details.
 
    生成用于展示产品详情的新组件。在终端窗口运行如下命令来生成一个新的 `product-details` 组件：
 
-    ```sh
-    ng generate component product-details
-    ```
+   ```sh
+   ng generate component product-details
+   ```
 
 1. In `app.module.ts`, add a route for product details, with a `path` of `products/:productId` and `ProductDetailsComponent` for the `component`.
 
@@ -72,19 +72,19 @@ This section shows you how to define a route to show individual product details.
    `RouterLink` 指令可帮助你自定义 a 元素。在这里，路由或 URL 中包含一个固定的区段 `/products`。最后一段则是变量，插入当前产品的 `id`。
     例如，`id` 为 1 的产品的 URL 是 `https://getting-started-myfork.stackblitz.io/products/1`。
 
- 1. Verify that the router works as intended by clicking the product name.
-    The application should display the `ProductDetailsComponent`, which currently says "product-details works!"
+1. Verify that the router works as intended by clicking the product name.
+   The application should display the `ProductDetailsComponent`, which currently says "product-details works!"
 
-    通过单击产品名称，验证路由器是否如预期般工作。应用中应该显示 `ProductDetailsComponent` 组件，其显示的内容为 “product-details works!”。
+   通过单击产品名称，验证路由器是否如预期般工作。应用中应该显示 `ProductDetailsComponent` 组件，其显示的内容为 “product-details works!”。
 
-    Notice that the URL in the preview window changes.
-    The final segment is `products/#`  where `#` is the number of the route you clicked.
+   Notice that the URL in the preview window changes.
+   The final segment is `products/#`  where `#` is the number of the route you clicked.
 
-    请注意，预览窗口中的 URL 发生了变化。最后一个部分是 `products/#`，其中 `#` 表示你单击的路由的编号。
+   请注意，预览窗口中的 URL 发生了变化。最后一个部分是 `products/#`，其中 `#` 表示你单击的路由的编号。
 
-    <div class="lightbox">
-      <img src="generated/images/guide/start/product-details-works.png" alt="Product details view with updated URL">
-    </div>
+   <div class="lightbox">
+     <img src="generated/images/guide/start/product-details-works.png" alt="Product details view with updated URL">
+   </div>
 
 ## View product details
 
@@ -189,6 +189,5 @@ To continue exploring Angular:
 * Skip ahead to [Deployment](start/start-deployment "Try it: Deployment") to deploy your application to Firebase or move to local development.
 
   跳至[部署](start/start-deployment "试试看：部署")以将你的应用部署到 Firebase 或转为本地开发。
-
 
 @reviewed 2021-09-15

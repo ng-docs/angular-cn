@@ -478,17 +478,15 @@ The sample code is also used to illustrate specific tasks in the following secti
   </tr>
 </table>
 
-
 <a id="oninit"></a>
+
 ## Initializing a component or directive
 
 ## 初始化组件或指令
 
-
 Use the `ngOnInit()` method to perform the following initialization tasks.
 
 使用 `ngOnInit()` 方法执行以下初始化任务。
-
 
 * Perform complex initializations outside of the constructor.
   Components should be cheap and safe to construct.
@@ -554,11 +552,9 @@ The `ngOnDestroy()` method is also the time to notify another part of the applic
 
 `ngOnDestroy()` 方法也可以用来通知应用程序的其它部分，该组件即将消失。
 
-
 ## General examples
 
 ## 一般性例子
-
 
 The following examples demonstrate the call sequence and relative frequency of the various lifecycle events, and how the hooks can be used separately or together for components and directives.
 
@@ -728,7 +724,6 @@ The object reference did not change when the value of its own `name` property ch
 
 日志条目把 *power* 属性的变化显示为字符串。但请注意，`ngOnChanges()` 方法不会捕获对 `hero.name` 更改。这是因为只有当输入属性的值发生变化时，Angular 才会调用该钩子。在这种情况下，`hero` 是输入属性，`hero` 属性的值是*对 hero 对象*的*引用* 。当它自己的 `name` 属性的值发生变化时，对象引用并没有改变。
 
-
 <a id="afterview"></a>
 
 ### Responding to view changes
@@ -779,7 +774,6 @@ In this example, the `doSomething()` method updates the screen when the hero nam
 
 在这个例子中，当英雄名字超过 10 个字符时，`doSomething()` 方法会更新屏幕，但在更新 `comment` 之前会等一个节拍（tick）。
 
-
 <code-example path="lifecycle-hooks/src/app/after-view.component.ts" region="do-something" header="AfterViewComponent (doSomething)"></code-example>
 
 Both the `AfterViewInit()` and `AfterViewChecked()` hooks fire after the component's view is composed.
@@ -796,7 +790,6 @@ for one turn of the browser's JavaScript cycle, which triggers a new change-dete
 
 #### 编写精简的钩子方法来避免性能问题
 
-
 When you run the *AfterView* sample, notice how frequently Angular calls `AfterViewChecked()`-often when there are no changes of interest.
 Be very careful about how much logic or computation you put into one of these methods.
 
@@ -808,7 +801,6 @@ Be very careful about how much logic or computation you put into one of these me
   <img src='generated/images/guide/lifecycle-hooks/after-view-anim.gif' alt="AfterView">
 
 </div>
-
 
 <a id="aftercontent"></a>
 <a id="aftercontent-hooks"></a>
@@ -825,13 +817,13 @@ Identify content projection in a template by looking for the following construct
 *内容投影*是从组件外部导入 HTML 内容，并把它插入在组件模板中指定位置上的一种途径。
 可以在目标中通过查找下列结构来认出内容投影。
 
-  * HTML between component element tags.
+- HTML between component element tags.
 
-    元素标签中间的 HTML。
+  元素标签中间的 HTML。
 
-  * The presence of `<ng-content>` tags in the component's template.
+- The presence of `<ng-content>` tags in the component's template.
 
-    组件模板中的 `<ng-content>` 标签。
+  组件模板中的 `<ng-content>` 标签。
 
 <div class="alert is-helpful">
 
@@ -880,7 +872,6 @@ In this case, the projected content is the `<app-child>` from the parent.
   <img src='generated/images/guide/lifecycle-hooks/projected-child-view.png' alt="Projected Content">
 </div>
 
-
 #### Using AfterContent hooks
 
 #### 使用 AfterContent 钩子
@@ -891,14 +882,14 @@ The key difference is in the child component.
 *AfterContent* 钩子和 *AfterView* 相似。关键的不同点是子组件的类型不同。
 
 * The *AfterView* hooks concern `ViewChildren`, the child components whose element tags
-appear *within* the component's template.
+  appear *within* the component's template.
 
-   *AfterView* 钩子所关心的是 `ViewChildren`，这些子组件的元素标签会出现在该组件的模板*里面*。
+     *AfterView* 钩子所关心的是 `ViewChildren`，这些子组件的元素标签会出现在该组件的模板*里面*。
 
 * The *AfterContent* hooks concern `ContentChildren`, the child components that Angular
-projected into the component.
+  projected into the component.
 
-   *AfterContent* 钩子所关心的是 `ContentChildren`，这些子组件被 Angular 投影进该组件中。
+     *AfterContent* 钩子所关心的是 `ContentChildren`，这些子组件被 Angular 投影进该组件中。
 
 The following *AfterContent* hooks take action based on changing values in a *content child*,
 which can only be reached by querying for them using the property decorated with
@@ -927,7 +918,6 @@ There is a small window between the `AfterContent...` and `AfterView...` hooks t
 
 Angular 在调用 *AfterView* 钩子之前，就已调用完所有的 *AfterContent* 钩子。 在完成该组件视图的合成*之前*， Angular 就已经完成了所投影内容的合成工作。 `AfterContent...` 和 `AfterView...` 钩子之间有一个小的时间窗，允许你修改宿主视图。
 
-
 </div>
 
 <a id="docheck"></a>
@@ -941,11 +931,9 @@ This example shows how to use the `ngDoCheck()` hook to detect and act upon chan
 
 要监控 `ngOnChanges()` 无法捕获的变更，你可以实现自己的变更检查逻辑，比如 *DoCheck* 的例子。这个例子展示了你如何使用 `ngDoCheck()` 钩子来检测和处理 Angular 自己没有捕捉到的变化。
 
-
 The *DoCheck* sample extends the *OnChanges* sample with the following `ngDoCheck()` hook:
 
 *DoCheck* 范例使用下面的 `ngDoCheck()` 钩子扩展了 *OnChanges* 范例：
-
 
 <code-example path="lifecycle-hooks/src/app/do-check.component.ts" region="ng-do-check" header="DoCheckComponent (ngDoCheck)"></code-example>
 
@@ -954,7 +942,6 @@ It writes a special message to the log when there are no substantive changes to 
 The results are illuminating.
 
 这段代码会检查某些*感兴趣的值*，捕获并把它们当前的状态和之前的进行比较。当 `hero` 或 `power` 没有实质性变化时，它就会在日志中写一条特殊的信息，这样你就能看到 `DoCheck()` 被调用的频率。其结果很有启发性。
-
 
 <div class="lightbox">
   <img src='generated/images/guide/lifecycle-hooks/do-check-anim.gif' alt="DoCheck">

@@ -24,6 +24,7 @@ A template variable can refer to the following:
   元素
 
 * [TemplateRef](api/core/TemplateRef)
+
 * a <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" title="MDN: Web Components">web component</a>
 
   [Web 组件](https://developer.mozilla.org/en-US/docs/Web/Web_Components "MDN：Web Components")
@@ -242,6 +243,7 @@ __proto__: Function
 
 <a id="template-input-variable"></a>
 <a id="template-input-variables"></a>
+
 ## Template input variable
 
 ## 模板输入变量

@@ -137,12 +137,12 @@ decorators on a service-valued parameter of the component's constructor.
   `@Optional` 属性装饰器告诉 Angular 当找不到依赖时就返回 null。
 
 * The `@Host` property decorator stops the upward search at the *host component*.
-The host component is typically the component requesting the dependency.
-However, when this component is projected into a *parent* component,
-that parent component becomes the host. The following example covers this second case.
+  The host component is typically the component requesting the dependency.
+  However, when this component is projected into a *parent* component,
+  that parent component becomes the host. The following example covers this second case.
 
-  `@Host` 属性装饰器会禁止在*宿主组件*以上的搜索。宿主组件通常就是请求该依赖的那个组件。
-  不过，当该组件投影进某个*父*组件时，那个父组件就会变成宿主。下面的例子中介绍了第二种情况。
+    `@Host` 属性装饰器会禁止在*宿主组件*以上的搜索。宿主组件通常就是请求该依赖的那个组件。
+    不过，当该组件投影进某个*父*组件时，那个父组件就会变成宿主。下面的例子中介绍了第二种情况。
 
 These decorators can be used individually or together, as shown in the example.
 This `HeroBiosAndContactsComponent` is a revision of `HeroBiosComponent` which you looked at [above](guide/dependency-injection-in-action#hero-bios-component).
@@ -371,18 +371,18 @@ The `HeroOfTheMonthComponent` example has two value providers.
 <code-example path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-value" header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts"></code-example>
 
 * The first provides an existing instance of the `Hero` class to use for the `Hero` token, rather than
-requiring the injector to create a new instance with `new` or use its own cached instance.
-Here, the token is the class itself.
+  requiring the injector to create a new instance with `new` or use its own cached instance.
+  Here, the token is the class itself.
 
-  第一处提供了用于 `Hero` 令牌的 `Hero` 类的现有实例，而不是要求注入器使用 `new` 来创建一个新实例或使用它自己的缓存实例。这里令牌就是这个类本身。
+    第一处提供了用于 `Hero` 令牌的 `Hero` 类的现有实例，而不是要求注入器使用 `new` 来创建一个新实例或使用它自己的缓存实例。这里令牌就是这个类本身。
 
 * The second specifies a literal string resource to use for the `TITLE` token.
-The `TITLE` provider token is *not* a class, but is instead a
-special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by
-an `InjectionToken` instance.
+  The `TITLE` provider token is *not* a class, but is instead a
+  special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by
+  an `InjectionToken` instance.
 
-  第二处为 `TITLE` 令牌指定了一个字符串字面量资源。
-`TITLE` 提供者的令牌*不是一个类*，而是一个特别的提供者查询键，名叫[InjectionToken](guide/dependency-injection-in-action#injection-token)，表示一个 `InjectionToken` 实例。
+    第二处为 `TITLE` 令牌指定了一个字符串字面量资源。
+  `TITLE` 提供者的令牌*不是一个类*，而是一个特别的提供者查询键，名叫[InjectionToken](guide/dependency-injection-in-action#injection-token)，表示一个 `InjectionToken` 实例。
 
 You can use an injection token for any kind of provider but it's particularly
 helpful when the dependency is a simple value like a string, a number, or a function.
@@ -579,9 +579,9 @@ the two *tokens* in the `deps` array.
 Angular 根据 `deps` 数组中指定的两个*令牌*来提供这些注入参数。
 
 * The function returns the string of names, which Angular than injects into
-the `runnersUp` parameter of `HeroOfTheMonthComponent`.
+  the `runnersUp` parameter of `HeroOfTheMonthComponent`.
 
-  该函数返回名字的字符串，Angular 可以把它们注入到 `HeroOfTheMonthComponent` 的 `runnersUp` 参数中。
+    该函数返回名字的字符串，Angular 可以把它们注入到 `HeroOfTheMonthComponent` 的 `runnersUp` 参数中。
 
 <div class="alert is-helpful">
 

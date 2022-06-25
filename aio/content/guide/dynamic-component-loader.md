@@ -159,8 +159,6 @@ value to select an `adItem` from the array.
 
 </div>
 
-
-
 Next, you're targeting the `viewContainerRef` that
 exists on this specific instance of the component. How do you know it's
 this specific instance? Because it's referring to `adHost` and `adHost` is the
@@ -184,7 +182,6 @@ Use that reference to interact with the component by assigning to its properties
 
 `createComponent()` 方法返回一个引用，指向这个刚刚加载的组件。
 使用这个引用就可以与该组件进行交互，比如设置它的属性或调用它的方法。
-
 
 <a id="common-interface"></a>
 

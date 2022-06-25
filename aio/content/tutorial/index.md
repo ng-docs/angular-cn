@@ -17,7 +17,7 @@ It is based on a ready-made  partially-completed project, which you can examine 
 
 如果你对 Angular 还不熟悉，你可能要先[**试一试**](start) 快速上手应用。它基于一个现成的、已部分完成的项目，你可以在 StacBlitz 的交互式开发环境中检查和修改，你还可以在那里实时查看结果。
 
-The "Try it" tutorial covers the same major topics&mdash;components, template syntax, routing, services, and accessing data using HTTP&mdash;in a condensed format, following the most current best practices.
+The "Try it" tutorial covers the same major topics—components, template syntax, routing, services, and accessing data using HTTP—in a condensed format, following the most current best practices.
 
 “试一试”教程遵循最新的最佳实践，以简明的格式，涵盖了与其相同的主要话题 - 组件、模板语法、路由、服务，以及通过 HTTP 访问数据。
 

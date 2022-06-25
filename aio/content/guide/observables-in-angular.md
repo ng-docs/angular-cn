@@ -9,6 +9,7 @@ Angular 使用可观察对象作为处理各种常用异步操作的接口。比
 * You can define [custom events](guide/event-binding#custom-events-with-eventemitter) that send observable output data from a child to a parent component.
 
    `EventEmitter` 类派生自 `Observable`。
+
 * The HTTP module uses observables to handle AJAX requests and responses.
 
    HTTP 模块使用可观察对象来处理 AJAX 请求和响应。

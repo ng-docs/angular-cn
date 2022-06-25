@@ -26,7 +26,6 @@ NgModule 会把相关的代码收集到一些功能集中。Angular 应用就是
    组件使用*服务*。服务会提供那些与视图不直接相关的功能。服务提供者可以作为*依赖*被*注入*到组件中，
   这能让你的代码更加模块化、更加可复用、更加高效。
 
-
 Modules, components and services are classes that use *decorators*. These decorators mark their type and provide metadata that tells Angular how to use them.
 
 模块、组件和服务都是使用*装饰器*的类，这些*装饰器*会标出它们的类型并提供元数据，以告知 Angular 该如何使用它们。
@@ -58,6 +57,7 @@ An application's components typically define many views, arranged hierarchically
   For the sample application that this page describes, see the <live-example></live-example>.
 
   要想查看本页所讲的范例程序，参阅<live-example></live-example>。
+
 </div>
 
 ## Modules
@@ -80,7 +80,7 @@ Like JavaScript modules, NgModules can import functionality from other NgModules
 像 JavaScript 模块一样，NgModule 也可以从其它 NgModule 中导入功能，并允许导出它们自己的功能供其它 NgModule 使用。
 比如，要在你的应用中使用路由器（Router）服务，就要导入 `Router` 这个 NgModule。
 
-Organizing your code into distinct functional modules helps in managing development of complex applications, and in designing for reusability. In addition, this technique lets you take advantage of *lazy-loading*&mdash;that is, loading modules on demand&mdash;to minimize the amount of code that needs to be loaded at startup.
+Organizing your code into distinct functional modules helps in managing development of complex applications, and in designing for reusability. In addition, this technique lets you take advantage of *lazy-loading*—that is, loading modules on demand—to minimize the amount of code that needs to be loaded at startup.
 
 把你的代码组织成一些清晰的特性模块，可以帮助管理复杂应用的开发工作并实现可复用性设计。
 另外，这项技术还能让你获得*惰性加载*（也就是按需加载模块）的优点，以尽可能减小启动时需要加载的代码体积。
@@ -230,7 +230,6 @@ To define navigation rules, you associate *navigation paths* with your component
   更深入的讨论，参阅[路由与导航](guide/router)。
 
 </div>
-
 
 ## What's next
 

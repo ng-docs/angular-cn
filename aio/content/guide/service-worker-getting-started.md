@@ -24,7 +24,6 @@ with setting up the necessary support files.
 要让你的项目支持 Angular Service Worker，可以使用 CLI 命令 `ng add @angular/pwa`。它会添加 `@angular/service-worker` 包，并建立必要的支持文件，小心翼翼地配置你的应用，以便使用 Service Worker。
 
 ```sh
-
 ng add @angular/pwa --project *project-name*
 ```
 
@@ -48,13 +47,13 @@ The preceding command completes the following actions:
 
    修改 `index.html` 文件：
 
-    * Includes a link to add the `manifest.webmanifest` file.
+   - Includes a link to add the `manifest.webmanifest` file.
 
-       包含要添加到 `manifest.webmanifest` 文件中的链接。
+      包含要添加到 `manifest.webmanifest` 文件中的链接。
 
-    * Adds a meta tag for `theme-color`.
+   - Adds a meta tag for `theme-color`.
 
-       为 `theme-color` 添加 meta 标签。
+      为 `theme-color` 添加 meta 标签。
 
 5. Installs icon files to support the installed Progressive Web App (PWA).
 
@@ -69,7 +68,6 @@ Now, build the project:
 现在，构建本项目：
 
 ```sh
-
 ng build 
 ```
 
@@ -108,9 +106,9 @@ http-server -p 8080 -c-1 dist/<project-name>
 
 ### 最初的加载
 
-With the server running, point your browser at http://localhost:8080/. Your application should load normally.
+With the server running, point your browser at <http://localhost:8080/>. Your application should load normally.
 
-在服务器运行起来之后，你可以在浏览器中访问 http://localhost:8080/。你的应用像通常一样加载。
+在服务器运行起来之后，你可以在浏览器中访问 <http://localhost:8080/>。你的应用像通常一样加载。
 
 <div class="alert is-helpful">
 
@@ -127,6 +125,7 @@ If you are not using HTTPS, the service worker will only be registered when acce
 
 **注意：**
 如果没有使用 HTTPS，那么 Service Worker 只会在 `localhost` 上的应用中进行注册。
+
 </div>
 
 ### Simulating a network issue
@@ -270,7 +269,7 @@ Now look at how the browser and service worker handle the updated application.
 
 现在，看看浏览器和 Service Worker 如何处理这个更新后的应用。
 
-1. Open [http://localhost:8080](http://localhost:8080) again in the same window. What happens?
+1. Open <http://localhost:8080> again in the same window. What happens?
 
    再次在同一个窗口中打开 <http://localhost:8080>，发生了什么？
 
@@ -313,4 +312,3 @@ You might also be interested in the following:
 * [Communicating with service workers](guide/service-worker-communications).
 
    [与 Service Worker 通讯](guide/service-worker-communications)。
-

@@ -10,7 +10,7 @@ This tutorial introduces you to the essentials of Angular by walking you through
 
 本教程将通过构建一个电子商务网站，向你介绍 Angular 的基本知识。该网站具有商品名录、购物车和结账表单。
 
-To help you get started right away, this tutorial uses a ready-made application that you can examine and modify interactively on [StackBlitz](https://stackblitz.com/)&mdash;without having to [set up a local work environment](guide/setup-local "Setup guide").
+To help you get started right away, this tutorial uses a ready-made application that you can examine and modify interactively on [StackBlitz](https://stackblitz.com/)—without having to [set up a local work environment](guide/setup-local "Setup guide").
 StackBlitz is a browser-based development environment where you can create, save, and share projects using a variety of technologies.
 
 为了帮助你更好地起步，本教程提供了一个已完成的应用，你可以在 [Stackblitz](https://stackblitz.com/) 上试验及互动，而不用[建立本地开发环境](guide/setup-local "Setup guide")。
@@ -59,19 +59,19 @@ This guide demonstrates building an application with the following components.
 
 本指南演示了如何使用下列组件构建应用。
 
-* `<app-root>`&mdash;the first component to load and the container for the other components.
+* `<app-root>`—the first component to load and the container for the other components.
 
   `<app-root>` - 第一个加载的组件，并且是其他组件的容器。
 
-* `<app-top-bar>`&mdash;the store name and checkout button.
+* `<app-top-bar>`—the store name and checkout button.
 
   `<app-top-bar>` - 商店名称和结帐按钮。
 
-* `<app-product-list>`&mdash;the product list.
+* `<app-product-list>`—the product list.
 
   `<app-product-list>` - 产品列表。
 
-* `<app-product-alerts>`&mdash;a component that contains the application's alerts.
+* `<app-product-alerts>`—a component that contains the application's alerts.
 
   `<app-product-alerts>` - 包含应用中各种通知的组件。
 
@@ -295,9 +295,9 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
    该生成器会为组件的三个部分创建初始文件：
 
-    * `product-alerts.component.ts`
-    * `product-alerts.component.html`
-    * `product-alerts.component.css`
+   - `product-alerts.component.ts`
+   - `product-alerts.component.html`
+   - `product-alerts.component.css`
 
 1. Open `product-alerts.component.ts`.
    The `@Component()` decorator indicates that the following class is a component.
@@ -346,9 +346,9 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
 1. The generator automatically added the `ProductAlertsComponent` to the `AppModule` to make it available to other components in the application.
 
-   生成器会自动把 `ProductAlertsComponent` 添加到 `AppModule` 中，以便它能用于本应用的其它组件中。
+    生成器会自动把 `ProductAlertsComponent` 添加到 `AppModule` 中，以便它能用于本应用的其它组件中。
 
-  <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-product-alerts"></code-example>
+   <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-product-alerts"></code-example>
 
 1. Finally, to display `ProductAlertsComponent` as a child of `ProductListComponent`, add the `<app-product-alerts>` element to `product-list.component.html`.
    Pass the current product as input to the component using property binding.

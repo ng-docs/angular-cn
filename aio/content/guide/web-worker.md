@@ -47,14 +47,14 @@ The command performs the following actions.
 
 - Adds the following scaffold code to `src/app/app.worker.ts` to  receive messages.
 
-  把如下脚手架代码添加到 `src/app/app.worker.ts` 以接收消息。
+   把如下脚手架代码添加到 `src/app/app.worker.ts` 以接收消息。
 
-  <code-example language="typescript" header="src/app/app.worker.ts">
-  addEventListener('message', ({ data }) => {
-    const response = `worker response to ${data}`;
-    postMessage(response);
-  });
- </code-example>
+   <code-example language="typescript" header="src/app/app.worker.ts">
+   addEventListener('message', ({ data }) => {
+     const response = `worker response to ${data}`;
+     postMessage(response);
+   });
+  </code-example>
 
 - Adds the following scaffold code to `src/app/app.component.ts` to use the worker.
 

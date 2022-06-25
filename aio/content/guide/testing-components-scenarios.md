@@ -37,7 +37,7 @@ actually displays the right content where you think it should.
 
 尽管这很小，但你还是决定要添加一个测试来确认该组件实际显示的是你认为合适的内容。
 
-#### Query for the _&lt;h1&gt;_
+#### Query for the _&lt;h1>_
 
 #### 查询 *&lt;h1>* 元素
 
@@ -177,6 +177,7 @@ There is no harm in calling `detectChanges()` more often than is strictly necess
 </div>
 
 <a id="dispatch-event"></a>
+
 #### Change an input value with _dispatchEvent()_
 
 #### 使用 *dispatchEvent()* 改变输入框的值
@@ -409,6 +410,7 @@ The third test checks that the component displays the proper message when there 
 当该服务返回不同的值时，其余的测试会确认该组件的逻辑。第二个测试验证了更改用户名的效果。当用户未登录时，第三个测试会检查组件是否显示了正确的消息。
 
 <a id="component-with-async-service"></a>
+
 ## Component with async service
 
 ## 带异步服务的组件
@@ -682,7 +684,7 @@ By default, `fakeAsync()` supports the following macro tasks.
 
 If you run other macro tasks such as `HTMLCanvasElement.toBlob()`, an _"Unknown macroTask scheduled in fake async test"_ error is thrown.
 
-如果你运行其他宏任务，比如 `HTMLCanvasElement.toBlob()` ，就会抛出 *"Unknown macroTask scheduled in fake async test"* 错误。*
+如果你运行其他宏任务，比如 `HTMLCanvasElement.toBlob()` ，就会抛出 *"Unknown macroTask scheduled in fake async test"* 错误。
 
 <code-tabs>
   <code-pane
@@ -717,7 +719,6 @@ Note that in order to make the `<canvas>` element Zone.js-aware in your app, you
   path="testing/src/app/shared/canvas.component.ts"
   region="import-canvas-patch">
 </code-example>
-
 
 #### Async observables
 
@@ -928,6 +929,7 @@ can give you that information and make assertions about the state of the view.
   region="spy-done-test"></code-example>
 
 <a id="marble-testing"></a>
+
 ## Component marble tests
 
 ## 组件的弹珠测试
@@ -1078,6 +1080,7 @@ Learn about it on the web, starting with the
 RxJS 弹珠测试这个主题非常丰富，超出了本指南的范围。你可以在网上了解它，先从其[官方文档](https://rxjs.dev/guide/testing/marble-testing)开始。
 
 <a id="component-with-input-output"></a>
+
 ## Component with inputs and outputs
 
 ## 具有输入和输出属性的组件
@@ -1207,8 +1210,8 @@ the test must match the element value with the upper-cased name.
 <div class="alert is-helpful">
 
 This small test demonstrates how Angular tests can verify a component's visual
-representation&mdash;something not possible with
-[component class tests](guide/testing-components-basics#component-class-testing)&mdash;at
+representation—something not possible with
+[component class tests](guide/testing-components-basics#component-class-testing)—at
 low cost and without resorting to much slower and more complicated end-to-end tests.
 
 这个小测试演示了 Angular 测试会如何验证一个组件的可视化表示形式 - 这是[组件类测试](guide/testing-components-basics#component-class-testing)所无法实现的 - 成本相对较低，无需进行更慢、更复杂的端到端测试。
@@ -1275,7 +1278,7 @@ The test triggered a "click" event with a `null` event object.
 </code-example>
 
 The test assumes (correctly in this case) that the runtime
-event handler&mdash;the component's `click()` method&mdash;doesn't
+event handler—the component's `click()` method—doesn't
 care about the event object.
 
 测试程序假设（在这里应该这样)运行时间的事件处理器（组件的 `click()` 方法）不关心事件对象。
@@ -1359,6 +1362,7 @@ Here's the previous test, rewritten using the click helper.
 </code-example>
 
 <a id="component-inside-test-host"></a>
+
 ## Component inside a test host
 
 ## 位于测试宿主中的组件
@@ -1458,6 +1462,7 @@ really does find its way up through the event binding to the host component.
 只有 selected 事件的测试不一样。它确保被选择的 `DashboardHeroComponent` 英雄确实通过事件绑定被传递到宿主组件。
 
 <a id="routing-component"></a>
+
 ## Routing component
 
 ## 路由组件
@@ -1951,15 +1956,15 @@ Three points of special interest:
 
 有三点特别重要：
 
-1.  Locate the anchor elements with an attached directive using `By.directive`.
+1. Locate the anchor elements with an attached directive using `By.directive`.
 
    你可以使用 `By.directive` 来定位一个带附属指令的链接元素。
 
-1.  The query returns `DebugElement` wrappers around the matching elements.
+1. The query returns `DebugElement` wrappers around the matching elements.
 
    该查询返回包含了匹配元素的 `DebugElement` 包装器。
 
-1.  Each `DebugElement` exposes a dependency injector with the
+1. Each `DebugElement` exposes a dependency injector with the
     specific instance of the directive attached to that element.
 
    每个 `DebugElement` 都会导出该元素中的一个依赖注入器，其中带有指定的指令实例。
@@ -2044,6 +2049,7 @@ tests with the `RouterTestingModule`.
 </div>
 
 <a id="page-object"></a>
+
 ## Use a _page_ object
 
 ## 使用页面（page）对象
@@ -2228,11 +2234,11 @@ A typical approach is to divide the setup logic into two separate `beforeEach()`
 
 典型的做法是把准备逻辑拆成两个独立的 `beforeEach()` 函数：
 
-1.  An async `beforeEach()` that compiles the components
+1. An async `beforeEach()` that compiles the components
 
    异步的 `beforeEach()` 负责编译组件
 
-1.  A synchronous `beforeEach()` that performs the remaining setup.
+1. A synchronous `beforeEach()` that performs the remaining setup.
 
    同步的 `beforeEach()` 负责执行其余的准备代码。
 
@@ -2343,6 +2349,7 @@ The tests in this guide only call `compileComponents` when necessary.
 但这篇指南中的这些测试只会在必要时才调用 `compileComponents`。
 
 <a id="import-module"></a>
+
 ## Setup with module imports
 
 ## 准备模块的 `imports`
@@ -2475,6 +2482,7 @@ the module is small, as feature modules tend to be.
 </div>
 
 <a id="component-override"></a>
+
 ## Override component providers
 
 ## 改写组件的服务提供者
@@ -2591,7 +2599,7 @@ The type parameter, `T`, is the kind of metadata you'd pass to the `@Component` 
 
 #### Provide a _spy stub_ (_HeroDetailServiceSpy_)
 
-#### 提供 ` 间谍桩 ` (`HeroDetailServiceSpy`)
+#### 提供 `间谍桩` (`HeroDetailServiceSpy`)
 
 This example completely replaces the component's `providers` array with a new array containing a `HeroDetailServiceSpy`.
 

@@ -177,8 +177,8 @@ that's why you could inject *Alex* into *Cathy* [earlier](#known-parent).
 
 回忆一下，Angular 总是会把组件实例添加到它自己的注入器中，因此[以前](#known-parent)你才能把 *Alex* 注入到 *Cathy* 中。
 
-Write an [*alias provider*](guide/dependency-injection-in-action#useexisting)&mdash;a `provide` object literal with a `useExisting`
-definition&mdash;that creates an *alternative* way to inject the same component instance
+Write an [*alias provider*](guide/dependency-injection-in-action#useexisting)—a `provide` object literal with a `useExisting`
+definition—that creates an *alternative* way to inject the same component instance
 and add that provider to the `providers` array of the `@Component()` metadata for the `AlexComponent`.
 
 编写一个 [*别名提供者*](guide/dependency-injection-in-action#useexisting)（一个 `provide` 对象字面量，其中有一个 `useExisting` 定义），创造了另一种方式来注入同一个组件实例，并把那个提供者添加到 `AlexComponent` `@Component()` 元数据的 `providers` 数组中。
@@ -212,7 +212,7 @@ Here's *Alex* and family in action.
 
 ### Find a parent in a tree with _@SkipSelf()_
 
-### 使用 `@SkipSelf()` 在树中查找父组件 
+### 使用 `@SkipSelf()` 在树中查找父组件
 
 Imagine one branch of a component hierarchy: *Alice* -> *Barry* -> *Carol*.
 Both *Alice* and *Barry* implement the `Parent` class interface.
@@ -264,15 +264,15 @@ It's identical to *Carol*'s constructor except for the additional `@SkipSelf` de
 使用 `@SkipSelf` 有两个重要原因：
 
 1. It tells the injector to start its search for a `Parent` dependency in a component *above* itself,
-which *is* what parent means.
+   which *is* what parent means.
 
    它告诉注入器开始从组件树中*高于*自己的位置（也就是父组件）开始搜索 `Parent` 依赖。
 
 2. Angular throws a cyclic dependency error if you omit the `@SkipSelf` decorator.
 
-   如果你省略了 `@SkipSelf` 装饰器，Angular 就会抛出循环依赖错误。
+    如果你省略了 `@SkipSelf` 装饰器，Angular 就会抛出循环依赖错误。
 
-  `NG0200: Circular dependency in DI detected for BethComponent. Dependency path: BethComponent -> Parent -> BethComponent`
+   `NG0200: Circular dependency in DI detected for BethComponent. Dependency path: BethComponent -> Parent -> BethComponent`
 
 Here's *Alice*, *Barry*, and family in action.
 
@@ -284,7 +284,7 @@ Here's *Alice*, *Barry*, and family in action.
 
 <a id="parent-token"></a>
 
-###  Parent class interface
+### Parent class interface
 
 ### 父类接口
 

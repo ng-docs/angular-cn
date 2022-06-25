@@ -35,7 +35,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 
   需要使用 Ivy 构建所有应用程序和库。请参阅[即将到来的 Angular 库分发改进][AngularBlog76c02f782aa4] 博客。
 
-* **Modernization of the Angular Package Format \(APF\)**
+* **Modernization of the Angular Package Format (APF)**
 
   **Angular 包格式 (APF) 的现代化**
 
@@ -86,7 +86,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 
 |  | Details |
 | :-- | :------ |
-| | 详情 |
+|  | 详情 |
 | [**PR&nbsp;#43642**][GithubAngularAngularPull43642] | TypeScript versions older than `4.4.2` are no longer supported. |
 | [ **PR #43642** ][GithubAngularAngularPull43642] | 不再支持 `4.4.2` 之前的 TypeScript 版本。 |
 | [**PR&nbsp;#43740**][GithubAngularAngularPull43740] | NodeJS versions older than `v12.20.0` are no longer supported. The Angular packages now use the NodeJS package exports feature with subpath patterns and requires a NodeJS version above `14.15.0` or `16.10.0`. |
@@ -97,7 +97,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 | [PR #41730][GithubAngularAngularPull41730] | `SpyLocation` 使用的 `RouterTestingModule` 的行为已更改以匹配浏览器的行为。当 `Location.go` 被调用时，它不再发出 `popstate` 事件。此外， `simulateHashChange` 现在会*同时*触发 `hashchange` 事件和 `popstate` 事件。那些用到了 `location.go` 并期望 `Router` 获取更改的测试应迁移到 `simulateHashChange`。每个测试尝试断言的内容都不同，因此没有任何一种改法能适用于所有测试。每个使用 `SpyLocation` 来模拟浏览器 URL 更改的测试都应根据具体情况进行评估。 |
 | [PR&nbsp;#42952][GithubAngularAngularPull42952] | A new type called `FormControlStatus` has been introduced, which is a union of all possible status strings for form controls. `AbstractControl.status` has been narrowed from `string` to `FormControlStatus`, and `statusChanges` has been narrowed from `Observable<any>` to `Observable<FormControlStatus>`. Most applications should consume the new types seamlessly. Any breakage caused by this change is likely due to one of the following two problems: <br/> 1. The app is comparing <code>AbstractControl.status</code> against a string which is not a valid status.<br/> 2. The app is using `statusChanges` events as if they were something other than strings. |
 | [PR #42952][GithubAngularAngularPull42952] | 引入了一种称为 `FormControlStatus` 的新类型，它是表单控件所有可能状态字符串的联合。 `AbstractControl.status` 已经从 `string` 收窄到 `FormControlStatus` ， `statusChanges` 已经从 `Observable<any>` 收窄到 `Observable<FormControlStatus>` 。大多数应用程序应该都能无缝地使用新类型。此更改导致的任何损坏都可能是由于以下两个问题之一造成的：<br/> 1. 该应用程序正在将 `AbstractControl.status` 与无效的状态字符串进行比较。<br/> 2. 该应用程序正在使用 `statusChanges` 事件，而它们不是字符串。 |
-| [PR&nbsp;#43087][GithubAngularAngularPull43087] | Previously ,`null` and `undefined` inputs for `routerLink` were equivalent to empty string and there was no way to disable the navigation of the link. In addition, the `href` is changed from a property `HostBinding()` to an attribute binding \(`HostBinding('attr.href')`\). The effect of this change is that `DebugElement.properties['href']` now returns the `href` value returned by the native element which is the full URL rather than the internal value of the `RouterLink` `href` property. |
+| [PR&nbsp;#43087][GithubAngularAngularPull43087] | Previously ,`null` and `undefined` inputs for `routerLink` were equivalent to empty string and there was no way to disable the navigation of the link. In addition, the `href` is changed from a property `HostBinding()` to an attribute binding (`HostBinding('attr.href')`). The effect of this change is that `DebugElement.properties['href']` now returns the `href` value returned by the native element which is the full URL rather than the internal value of the `RouterLink` `href` property. |
 | [PR #43087][GithubAngularAngularPull43087] | 以前， `routerLink` 的 `null` 和 `undefined` 输入等效于空字符串，并且无法禁用链接的导航。此外，`href` 从 `HostBinding()` Property 绑定更改为 Attribute 绑定（ `HostBinding('attr.href')` ）。此更改的效果是 `DebugElement.properties['href']` 现在会返回由原生元素返回的 `href` 值，该值是完整的 URL，而不是 `RouterLink` `href` 属性的内部值。 |
 | [PR&nbsp;#43496][GithubAngularAngularPull43496] | The router no longer replaces the browser URL when a new navigation cancels an ongoing navigation. The replacement of the browser URL often caused URL flicker and was only in place to support some AngularJS hybrid applications. Hybrid applications which rely on the presence of `navigationId` on each initial navigation handled by the Angular router should instead subscribe to `NavigationCancel` events and manually perform the `location.replaceState` to add `navigationId` to the Router state.<br />In addition, tests that assert `urlChanges` on the `SpyLocation` should be adjusted to account for the lack of the `replaceState` trigger. |
 | [PR #43496][GithubAngularAngularPull43496] | 当新导航取消了正在进行的导航时，路由器不再替换浏览器 URL。浏览器 URL 的替换经常导致 URL 闪烁，这只是为了支持一些 AngularJS 混合应用程序。依赖于 Angular 路由器处理的每个初始导航上存在 `navigationId` 的混合应用程序应改为订阅 `NavigationCancel` 事件并手动执行 `location.replaceState` 以将 `navigationId` 添加到路由器状态中。此外，应调整在 `SpyLocation` 上断言 `urlChanges` 的测试以解决缺少 `replaceState` 触发器的问题。 |
@@ -122,7 +122,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 | [`getModuleFactory`][AioApiCoreGetmodulefactory] | [`getNgModuleById`][AioApiCoreGetngmodulebyid] |  |
 | [ `getModuleFactory` ][AioApiCoreGetmodulefactory] | [ `getNgModuleById` ][AioApiCoreGetngmodulebyid] |  |
 | Factory-based signature of [`ApplicationRef.bootstrap`][AioApiCoreApplicationrefBootstrap] | Type-based signature of [`ApplicationRef.bootstrap`][AioApiCoreApplicationrefBootstrap] | Use the Type-based signature in place of the Factory-based signature. |
-| [ `ApplicationRef.bootstrap` ][AioApiCoreApplicationrefBootstrap] 的基于工厂的签名 | [ `ApplicationRef.bootstrap` ][AioApiCoreApplicationrefBootstrap]的基于类型的签名 |  使用基于类型的签名代替基于工厂的签名。 |
+| [ `ApplicationRef.bootstrap` ][AioApiCoreApplicationrefBootstrap] 的基于工厂的签名 | [ `ApplicationRef.bootstrap` ][AioApiCoreApplicationrefBootstrap]的基于类型的签名 | 使用基于类型的签名代替基于工厂的签名。 |
 | [`PlatformRef.bootstrapModuleFactory`][AioApiCorePlatformrefBootstrapmodulefactory] | [`PlatformRef.bootstrapModule`][AioApiCorePlatformrefBootstrapmodule] |  |
 | [`ModuleWithComponentFactories`][AioApiCoreModulewithcomponentfactories] | none |  |
 | [`ModuleWithComponentFactories`][AioApiCoreModulewithcomponentfactories] | 无 |  |
@@ -131,7 +131,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 | [`CompilerFactory`][AioApiCoreCompilerfactory] | none |  |
 | [`CompilerFactory`][AioApiCoreCompilerfactory] | 无 |  |
 | [`NgModuleFactory`][AioApiCoreNgmodulefactory] | Non-factory based framework APIs | Use the non-factory based framework APIs, such as [`PlatformRef.bootstrapModule`][AioApiCorePlatformrefBootstrapmodule] and [`createNgModuleRef`][AioApiCoreCreatengmoduleref]. |
-| [`NgModuleFactory`][AioApiCoreNgmodulefactory] |  非基于工厂的框架 API | 使用非基于工厂的框架 API，例如 [ `PlatformRef.bootstrapModule` ][AioApiCorePlatformrefBootstrapmodule] 和 [ `createNgModuleRef` ][AioApiCoreCreatengmoduleref]。 |
+| [`NgModuleFactory`][AioApiCoreNgmodulefactory] | 非基于工厂的框架 API | 使用非基于工厂的框架 API，例如 [ `PlatformRef.bootstrapModule` ][AioApiCorePlatformrefBootstrapmodule] 和 [ `createNgModuleRef` ][AioApiCoreCreatengmoduleref]。 |
 | Factory-based signature of [`ViewContainerRef.createComponent`][AioApiCoreViewcontainerrefCreatecomponent] | Type-based signature of [`ViewContainerRef.createComponent`][AioApiCoreViewcontainerrefCreatecomponent] | Use the Type-based signature in place of the Factory-based signature. |
 | [ `ViewContainerRef.createComponent` ][AioApiCoreViewcontainerrefCreatecomponent]的基于工厂的签名 | [ `ViewContainerRef.createComponent` ][AioApiCoreViewcontainerrefCreatecomponent] 基于类型的签名 | 使用基于类型的签名代替基于工厂的签名。 |
 | `aotSummaries` parameter of the [`TestBed.initTestEnvironment` method][AioApiCoreTestingTestbedInittestenvironment] | none |  |

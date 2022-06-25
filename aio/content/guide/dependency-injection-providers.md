@@ -97,9 +97,9 @@ The expanded provider configuration is an object literal with two properties:
     `provide` 属性存有[令牌](#token)，它作为一个 key，在定位依赖值和配置注入器时使用。
 
 * The second property is a provider definition object, which tells the injector how to create the dependency value.
-The provider-definition key can be `useClass`, as in the example.
-It can also be `useExisting`, `useValue`, or `useFactory`.
-Each of these keys provides a different type of dependency, as discussed in the following section.
+  The provider-definition key can be `useClass`, as in the example.
+  It can also be `useExisting`, `useValue`, or `useFactory`.
+  Each of these keys provides a different type of dependency, as discussed in the following section.
 
   第二个属性是一个提供者定义对象，它告诉注入器要如何创建依赖值。
   提供者定义对象中的 key 可以是 `useClass` —— 就像这个例子中一样。
@@ -341,8 +341,8 @@ You inject both `Logger` and `UserService` into the factory provider so the inje
   `useFactory` 字段指定该提供者是一个工厂函数，其实现代码是 `heroServiceFactory`。
 
 * The `deps` property is an array of [provider tokens](#token).
-The `Logger` and `UserService` classes serve as tokens for their own class providers.
-The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
+  The `Logger` and `UserService` classes serve as tokens for their own class providers.
+  The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
 
   `deps` 属性是一个[提供者令牌](#token)数组。 `Logger` 和 `UserService` 类都是自己类提供者的令牌。该注入器解析了这些令牌，并把相应的服务注入到 `heroServiceFactory` 工厂函数的参数中。
 

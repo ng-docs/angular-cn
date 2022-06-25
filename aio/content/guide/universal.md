@@ -105,10 +105,10 @@ To start rendering your application with Universal on your local system, use the
 npm run dev:ssr
 </code-example>
 
-Open a browser and navigate to http://localhost:4200/.
+Open a browser and navigate to <http://localhost:4200/>.
 You should see the familiar Tour of Heroes dashboard page.
 
-打开浏览器，导航到 http://localhost:4200/。你会看到熟悉的“英雄之旅”仪表盘页面。
+打开浏览器，导航到 <http://localhost:4200/>。你会看到熟悉的“英雄之旅”仪表盘页面。
 
 Navigation using `routerLinks` works correctly because they use the built-in anchor (`<a>`) tags.
 You can go from the Dashboard to the Heroes page and back.
@@ -166,6 +166,7 @@ The server-rendered application still launches quickly but the full client appli
 服务端渲染的应用仍然可以快速启动，但完整的客户端应用可能需要几秒钟才能加载完。
 
 <a id="why-do-it"></a>
+
 ## Why use server-side rendering?
 
 ## 为何需要服务端渲染？
@@ -176,7 +177,7 @@ There are three main reasons to create a Universal version of your application.
 
 1. Facilitate web crawlers through [search engine optimization (SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)
 
-  通过[搜索引擎优化(SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)来帮助网络爬虫。
+   通过[搜索引擎优化(SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)来帮助网络爬虫。
 
 1. Improve performance on mobile and low-powered devices
 
@@ -210,6 +211,7 @@ Angular Universal 可以为你生成应用的静态版本，它易搜索、可�
 它也让站点可以被预览，因为每个 URL 返回的都是一个完全渲染好的页面。
 
 <a id="no-javascript"></a>
+
 ### Improve performance on mobile and low-powered devices
 
 ### 提升手机和低功耗设备上的性能
@@ -224,6 +226,7 @@ people who otherwise couldn't use the application at all.
 虽然有一些限制，不过这个版本可能是那些完全没办法使用该应用的人的唯一选择。
 
 <a id="startup-performance"></a>
+
 ### Show the first page quickly
 
 ### 快速显示第一页
@@ -233,7 +236,7 @@ Pages that load faster perform better, [even with changes as small as 100ms](htt
 Your application might have to launch faster to engage these users before they decide to do something else.
 
 快速显示第一页对于吸引用户是至关重要的。
-加载速度更快的页面效果更好，即使其差异只有 100 毫秒也是如此（https://web.dev/shopping-for-speed-on-ebay/）。
+加载速度更快的页面效果更好，即使其差异只有 100 毫秒也是如此（<https://web.dev/shopping-for-speed-on-ebay/>）。
 你的应用要启动得更快一点，以便在用户决定做别的事情之前吸引他们的注意力。
 
 With Angular Universal, you can generate landing pages for the application that look like the complete application.
@@ -254,6 +257,7 @@ and gets the full interactive experience after the full application loads.
 用户会觉得着陆页几乎是立即出现的，而当完整的应用加载完之后，又可以获得完整的交互体验。
 
 <a id="how-does-it-work"></a>
+
 ## Universal web servers
 
 ## Universal Web 服务器
@@ -361,9 +365,9 @@ requests into server-rendered HTML pages. It accepts an object with the followin
 它接受一个具有下列属性的对象：
 
 * `bootstrap`: The root `NgModule` or `NgModule` factory to use for bootstraping the application when rendering on the server. For the example
-application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application.
+  application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application.
 
-   `bootstrap`：在服务器上渲染时用于引导应用程序的根 `NgModule` 或 `NgModule` 工厂。对于这个范例应用，它是 `AppServerModule`。它是 Universal 服务端渲染器和 Angular 应用之间的桥梁。
+     `bootstrap`：在服务器上渲染时用于引导应用程序的根 `NgModule` 或 `NgModule` 工厂。对于这个范例应用，它是 `AppServerModule`。它是 Universal 服务端渲染器和 Angular 应用之间的桥梁。
 
 * `extraProviders`: This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance.
 
@@ -444,7 +448,7 @@ Node.js Express 服务器是一系列中间件构成的管道，它会挨个对 
 <div class="alert is-helpful">
 
   **Note:** This sample server doesn't handle data requests.
-  
+
   **注意：**这个范例服务器不会处理数据请求。
 
   The tutorial's "in-memory web API" module, a demo and development tool, intercepts all HTTP calls and
@@ -549,4 +553,3 @@ Now, on every HTTP request made as part of rendering the application on the serv
   Read more about prerendering [here](guide/prerendering).
 
   此脚本可用于预先渲染应用程序的页面。[在此处](guide/prerendering)阅读有关预先渲染的更多信息。
-

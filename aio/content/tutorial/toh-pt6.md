@@ -375,9 +375,9 @@ There are three significant differences from  `getHeroes()`:
    服务器应该使用单个英雄作为回应，而不是一个英雄数组。
 
 * `getHero()` returns an `Observable<Hero>` ("_an observable of Hero objects_")
- rather than an observable of hero _arrays_ .
+  rather than an observable of hero _arrays_ .
 
-   所以，`getHero()` 会返回 `Observable<Hero>`（“一个可观察的*单个英雄对象*”），而不是一个可观察的英雄对象*数组*。
+    所以，`getHero()` 会返回 `Observable<Hero>`（“一个可观察的*单个英雄对象*”），而不是一个可观察的英雄对象*数组*。
 
 ## Update heroes
 
@@ -509,9 +509,9 @@ Add the following `addHero()` method to the `HeroService` class.
    它调用 `HttpClient.post()` 而不是 `put()`。
 
 * It expects the server to generate an id for the new hero,
-which it returns in the `Observable<Hero>` to the caller.
+  which it returns in the `Observable<Hero>` to the caller.
 
-   它期待服务器为这个新的英雄生成一个 id，然后把它通过 `Observable<Hero>` 返回给调用者。
+     它期待服务器为这个新的英雄生成一个 id，然后把它通过 `Observable<Hero>` 返回给调用者。
 
 Refresh the browser and add some heroes.
 
@@ -797,20 +797,20 @@ Each operator works as follows:
 各个操作符的工作方式如下：
 
 * `debounceTime(300)` waits until the flow of new string events pauses for 300 milliseconds
-before passing along the latest string. You'll never make requests more frequently than 300ms.
+  before passing along the latest string. You'll never make requests more frequently than 300ms.
 
-   在传出最终字符串之前，`debounceTime(300)` 将会等待，直到新增字符串的事件暂停了 300 毫秒。
-  你实际发起请求的间隔永远不会小于 300ms。
+     在传出最终字符串之前，`debounceTime(300)` 将会等待，直到新增字符串的事件暂停了 300 毫秒。
+    你实际发起请求的间隔永远不会小于 300ms。
 
 * `distinctUntilChanged()` ensures that a request is sent only if the filter text changed.
 
    `distinctUntilChanged()` 会确保只在过滤条件变化时才发送请求。
 
 * `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`.
-It cancels and discards previous search observables, returning only the latest search service observable.
+  It cancels and discards previous search observables, returning only the latest search service observable.
 
-   `switchMap()` 会为每个从 `debounce()` 和 `distinctUntilChanged()` 中通过的搜索词调用搜索服务。
-  它会取消并丢弃以前的搜索可观察对象，只保留最近的。
+     `switchMap()` 会为每个从 `debounce()` 和 `distinctUntilChanged()` 中通过的搜索词调用搜索服务。
+    它会取消并丢弃以前的搜索可观察对象，只保留最近的。
 
 <div class="alert is-helpful">
 
@@ -922,6 +922,7 @@ Here are the code files discussed on this page (all in the `src/app/` folder).
 </code-tabs>
 
 <a id="dashboardcomponent"></a>
+
 #### `DashboardComponent`
 
 <code-tabs>

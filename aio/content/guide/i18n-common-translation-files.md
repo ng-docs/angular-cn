@@ -222,23 +222,23 @@ For example, to create a French translation file, complete the following actions
 
 例如，要创建法语翻译文件，请完成以下操作。
 
-1.  Run the `extract-18n` command
+1. Run the `extract-18n` command
 
    运行 `extract-18n` 命令
 
-1.  Make a copy of the `messages.xlf` source language file
+1. Make a copy of the `messages.xlf` source language file
 
    复制 `messages.xlf` 源语言文件
 
-1.  Rename the copy to `messages.fr.xlf` for the French language (`fr`) translation.
+1. Rename the copy to `messages.fr.xlf` for the French language (`fr`) translation.
 
    将副本重命名为 `messages.fr.xlf` 以进行法语 ( `fr` ) 翻译。
 
-1.  Move the `fr` translation file to the `src/locale` directory.
+1. Move the `fr` translation file to the `src/locale` directory.
 
    将 `fr` 翻译文件移动到 `src/locale` 目录。
 
-1.  Send the `fr` translation file to the translator.
+1. Send the `fr` translation file to the translator.
 
    将 `fr` 翻译文件发送给翻译人员。
 
@@ -250,21 +250,21 @@ Unless you are fluent in the language and have the time to edit translations, yo
 
 除非你精通该语言并有时间编辑翻译，否则你可能会完成以下步骤。
 
-1.  Send each translation file to a translator
+1. Send each translation file to a translator
 
    将每个翻译文件发送给翻译人员
 
-1.  The translator uses an XLIFF file editor complete the following actions
+1. The translator uses an XLIFF file editor complete the following actions
 
    翻译人员使用 XLIFF 文件编辑器完成以下操作
 
-   1. Create the translation
+1. Create the translation
 
-      创建翻译
+   创建翻译
 
-   1. Edit the translation
+1. Edit the translation
 
-      编辑翻译
+   编辑翻译
 
 ### Translation process example for French
 
@@ -283,30 +283,28 @@ The following actions describe the translation process for French.
 
    打开 `messages.fr.xlf` 并找到第一个 `<trans-unit>` 元素。这是一个*翻译单元*，也称为*文本节点*，表示之前用 `i18n` 属性标记的 `<h1>` 问候标签的翻译。
 
-    > <code-example path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello-before" header="src/locale/messages.fr.xlf (trans-unit)"></code-example>
-    >
-    > The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
-    >
-    > `id="introductionHeader"` 是一个 [自定义 ID][AioGuideI18nOptionalManageMarkedText]，但没有源 HTML 中所需的 `@@` 前缀。
-    >
+   > <code-example path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello-before" header="src/locale/messages.fr.xlf (trans-unit)"></code-example>
+   >
+   > The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
+   >
+   > `id="introductionHeader"` 是一个 [自定义 ID][AioGuideI18nOptionalManageMarkedText]，但没有源 HTML 中所需的 `@@` 前缀。
 
-1.  Duplicate the `<source>...</source>` element in the text node, rename it to `target`, and then replace the content with the French text.
+1. Duplicate the `<source>...</source>` element in the text node, rename it to `target`, and then replace the content with the French text.
 
    复制文本节点中的 `<source>...</source>` 元素，将其重命名为 `target` ，然后将内容替换为法语文本。
 
-    > <code-example path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello" header="src/locale/messages.fr.xlf (trans-unit, after translation)"></code-example>
-    >
-    > In a more complex translation, the information and context in the [description and meaning elements][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] help you choose the right words for translation.
-    >
-    > 在更复杂的翻译中，[描述和含义元素][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] 中的信息和上下文可帮助你选择正确的单词进行翻译。
-    >
+   > <code-example path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello" header="src/locale/messages.fr.xlf (trans-unit, after translation)"></code-example>
+   >
+   > In a more complex translation, the information and context in the [description and meaning elements][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] help you choose the right words for translation.
+   >
+   > 在更复杂的翻译中，[描述和含义元素][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] 中的信息和上下文可帮助你选择正确的单词进行翻译。
 
-1.  Translate the other text nodes.
+1. Translate the other text nodes.
     The following example displays the way to translate.
 
    翻译其他文本节点。以下示例显示了翻译方式。
 
-    > <code-example path="i18n/doc-files/messages.fr.xlf.html" region="translated-other-nodes" header="src/locale/messages.fr.xlf (trans-unit)"></code-example>
+   > <code-example path="i18n/doc-files/messages.fr.xlf.html" region="translated-other-nodes" header="src/locale/messages.fr.xlf (trans-unit)"></code-example>
 
     <div class="alert is-important">
 
@@ -343,9 +341,9 @@ To translate a `plural`, translate the ICU format match values.
 
 要翻译 `plural` ，就要翻译 ICU 格式的匹配值。
 
-*   `just now`
-*   `one minute ago`
-*   `<x id="INTERPOLATION" equiv-text="{{minutes}}"/> minutes ago`
+* `just now`
+* `one minute ago`
+* `<x id="INTERPOLATION" equiv-text="{{minutes}}"/> minutes ago`
 
 The following example displays the way to translate.
 

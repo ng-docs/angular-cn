@@ -19,7 +19,6 @@ It will also be easier to unit-test with a mock service.
 
 </div>
 
-
 ## Why services
 
 ## 为什么需要服务
@@ -49,9 +48,9 @@ You'll create a `MessageService` and inject it in two places.
    注入到 `HeroService` 中，它会使用该服务发送消息
 
 2. Inject in MessagesComponent, which displays that message, and also displays the ID
-when the user clicks a hero.
+   when the user clicks a hero.
 
-   注入到 `MessagesComponent` 中，它会显示其中的消息。当用户点击某个英雄时，它还会显示该英雄的 ID。
+      注入到 `MessagesComponent` 中，它会显示其中的消息。当用户点击某个英雄时，它还会显示该英雄的 ID。
 
 ## Create the `HeroService`
 
@@ -92,7 +91,7 @@ The `@Injectable()` decorator accepts a metadata object for the service, the sam
 
 ### 获取英雄数据
 
-The `HeroService` could get hero data from anywhere&mdash;a web service, local storage, or a mock data source.
+The `HeroService` could get hero data from anywhere—a web service, local storage, or a mock data source.
 
 `HeroService` 可以从任何地方获取数据：Web 服务、本地存储（LocalStorage）或一个模拟的数据源。
 
@@ -142,11 +141,9 @@ By default, the Angular CLI command `ng generate service` registers a provider w
 默认情况下，Angular CLI 命令 `ng generate service` 会通过给 `@Injectable()` 装饰器添加 `providedIn: 'root'` 元数据的形式，用*根注入器*将你的服务注册成为提供者。
 
 ```
-
 @Injectable({
   providedIn: 'root',
 })
-
 ```
 
 When you provide the service at the root level, Angular creates a single, shared instance of `HeroService` and injects into any class that asks for it.
@@ -397,7 +394,7 @@ That _won't work_ when the `HeroService` is actually making requests of a remote
 
 当 `HeroService` 真的向远端服务器发起请求时，这种方式就行不通了。
 
-The new version waits for the `Observable` to emit the array of heroes&mdash;which
+The new version waits for the `Observable` to emit the array of heroes—which
 could happen now or several minutes from now.
 The `subscribe()` method passes the emitted array to the callback,
 which sets the component's `heroes` property.
@@ -598,9 +595,9 @@ This template binds directly to the component's `messageService`.
    `*ngFor` 用来在一系列 `<div>` 元素中展示消息列表。
 
 * An Angular [event binding](guide/event-binding) binds the button's click event
-to `MessageService.clear()`.
+  to `MessageService.clear()`.
 
-   Angular 的[事件绑定](guide/event-binding)把按钮的 `click` 事件绑定到了 `MessageService.clear()`。
+     Angular 的[事件绑定](guide/event-binding)把按钮的 `click` 事件绑定到了 `MessageService.clear()`。
 
 The messages will look better when you add the private CSS styles to `messages.component.css`
 as listed in one of the ["final code review"](#final-code-review) tabs below.
@@ -712,6 +709,6 @@ Here are the code files discussed on this page.
    你创建了一个 `MessageService`，以便在类之间实现松耦合通讯。
 
 * The `HeroService` injected into a component is created with another injected service,
- `MessageService`.
+  `MessageService`.
 
-   `HeroService` 连同注入到它的服务 `MessageService` 一起，注入到了组件中。
+    `HeroService` 连同注入到它的服务 `MessageService` 一起，注入到了组件中。
