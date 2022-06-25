@@ -301,4 +301,3 @@ When you're familiar with these fundamental building blocks, you can explore the
 
 当你熟悉了这些基础构造块之后，就可以在本文档中进一步查看它们的详情了。
 要学习能帮你构建和发布 Angular 应用的更多工具和技巧，参阅[后续步骤：工具与技巧](guide/architecture-next-steps)。
-</div>
