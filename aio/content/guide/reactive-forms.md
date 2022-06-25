@@ -278,8 +278,6 @@ For complete syntax details, see the API reference documentation for the [Forms 
 | `FormArray`       | Manages the value and validity state of a numerically indexed array of `AbstractControl` instances.                                                                                     |
 | `FormBuilder`     | An injectable service that provides factory methods for creating control instances.                                                                                                     |
 
-</table>
-
 #### Directives
 
 | Directive              | Details |

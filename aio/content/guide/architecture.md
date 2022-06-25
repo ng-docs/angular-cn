@@ -173,8 +173,6 @@ Each of these subjects is introduced in more detail in the following pages.
 When you're familiar with these fundamental building blocks, you can explore them in more detail in the documentation.
 To learn about more tools and techniques that are available to help you build and deploy Angular applications, see [Next steps: tools and techniques](guide/architecture-next-steps).
 
-</div>
-
 <!-- links -->
 
 <!-- external links -->
