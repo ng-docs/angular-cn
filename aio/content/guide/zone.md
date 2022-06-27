@@ -4,18 +4,30 @@ A zone is an execution context that persists across async tasks.
 You can think of it as [thread-local storage](https://en.wikipedia.org/wiki/Thread-local_storage) for JavaScript VMs.
 This guide describes how to use Angular's NgZone to automatically detect changes in the component to update HTML.
 
+Zone 是跨异步任务而持久存在的执行上下文。你可以将其视为 JavaScript VM 中的[线程本地存储](https://en.wikipedia.org/wiki/Thread-local_storage)。本指南介绍了如何使用 Angular 的 的 NgZone 自动检测组件中的更改以更新 HTML。
+
 ## Fundamentals of change detection
+
+## 变更检测的基础
 
 To understand the benefits of `NgZone`, it is important to have a clear grasp of what change detection is and how it works.
 
+要理解 `NgZone` 的好处，重要的是要清楚地了解什么是变更检测以及它的工作原理。
+
 ### Displaying and updating data in Angular
 
+### 在 Angular 中显示和更新数据
+
 In Angular, you can display data by binding controls in an HTML template to the properties of an Angular component.
+
+在 Angular 中，你可以通过把 HTML 模板中的控件绑定到 Angular 组件的属性来显示数据。
 
 <code-example header="src/app/app.component.ts" path="displaying-data/src/app/app.component.1.ts"></code-example>
 
 In addition, you can bind DOM events to a method of an Angular component.
 In such methods, you can also update a property of the Angular component, which updates the corresponding data displayed in the template.
+
+另外，你也可以将 DOM 事件绑定到 Angular 组件中的方法。在此类方法中，你还可以更新 Angular 组件的属性，该属性将更新模板中显示的相应数据。
 
 <code-example header="src/app/click-me.component.ts" path="user-input/src/app/click-me.component.ts" region="click-me-component"></code-example>
 
@@ -23,9 +35,15 @@ In both of the above examples, the component's code updates only the property of
 However, the HTML is also updated automatically.
 This guide describes how and when Angular renders the HTML based on the data from the Angular component.
 
+在以上两个示例中，组件的代码仅更新组件的属性。但是，HTML 也会自动更新。本指南介绍了 Angular 如何以及何时根据 Angular 组件中的数据渲染 HTML。
+
 ### Detecting changes with plain JavaScript
 
+### 使用普通（Plain） JavaScript 检测更改
+
 To clarify how changes are detected and values updated, consider the following code written in plain JavaScript.
+
+为了阐明如何检测到更改和更新值，请考虑以下用普通 JavaScript 编写的代码。
 
 <code-example format="javascript" language="javascript">
 
@@ -99,25 +117,39 @@ To clarify how changes are detected and values updated, consider the following c
 After you update the data, you need to call `detectChange()` manually to check whether the data changed.
 If the data changed, you render the HTML to reflect the updated data.
 
+更新数据后，需要调用 `detectChange()` 来检查数据是否已更改。如果数据已更改，则渲染 HTML 以反映更新的数据。
+
 In Angular, this step is unnecessary.
 Whenever you update the data, your HTML is updated automatically.
 
+在 Angular 中，此步骤是不必要的。每当你更新数据时，你的 HTML 都会自动更新。
+
 ### When apps update HTML
+
+### 应用何时更新 HTML
 
 To understand how change detection works, first consider when the application needs to update the HTML.
 Typically, updates occur for one of the following reasons:
 
+要了解变更检测的工作原理，请首先考虑应用程序何时需要更新 HTML。通常，会由于以下原因之一而发生更新：
+
 1. Component initialization.
    For example, when bootstrapping an Angular application, Angular loads the bootstrap component and triggers the [ApplicationRef.tick()](api/core/ApplicationRef#tick) to call change detection and View Rendering.
 
+   组件初始化。例如，当引导 Angular 应用程序时，Angular 会加载引导组件并触发 [ApplicationRef.tick()](api/core/ApplicationRef#tick) 来调用变更检测和视图渲染。
+
 1. Event listener.
    The DOM event listener can update the data in an Angular component and also trigger change detection, as in the following example.
+
+   事件监听器。 DOM 事件侦听器可以更新 Angular 组件中的数据，还可以触发变更检测，如下例所示。
 
    <code-example header="src/app/click-me.component.ts" path="user-input/src/app/click-me.component.ts" region="click-me-component"></code-example>
 
 1. HTTP Data Request.
    You can also get data from a server through an HTTP request.
    For example:
+
+   HTTP 数据请求。你还可以通过 HTTP 请求从服务器获取数据。例如：
 
    <code-example format="typescript" language="typescript">
 
@@ -144,6 +176,8 @@ Typically, updates occur for one of the following reasons:
    You can also update the data in the callback function of a `macroTask` such as `setTimeout()`.
    For example:
 
+   宏任务，例如 `setTimeout()` 或 `setInterval()` 。你还可以在诸如 `setTimeout()` `macroTask` 的回调函数中更新数据。例如：
+
    <code-example format="typescript" language="typescript">
 
    &commat;Component({
@@ -166,6 +200,8 @@ Typically, updates occur for one of the following reasons:
 1. MicroTasks, such as `Promise.then()`.
    Other asynchronous APIs return a Promise object (such as `fetch`), so the `then()` callback function can also update the data.
    For example:
+
+   微任务，例如 `Promise.then()`。其他异步 API（例如 `fetch`）会返回 Promise 对象，因此 `then()` 回调函数也可以更新数据。例如：
 
    <code-example format="typescript" language="typescript">
 
@@ -190,6 +226,8 @@ Typically, updates occur for one of the following reasons:
    In addition to `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously.
    Some examples include `WebSocket.onmessage()` and `Canvas.toBlob()`.
 
+   其他异步操作。除了 `addEventListener()` ， `setTimeout()` 和 `Promise.then()` ，还有其他一些操作可以异步更新数据。比如 `WebSocket.onmessage()` 和 `Canvas.toBlob()` 。
+
    The preceding list contains most common scenarios in which the application might change the data.
    Angular runs change detection whenever it detects that data could have changed.
    The result of change detection is that the DOM is updated with new data.
@@ -198,6 +236,8 @@ Typically, updates occur for one of the following reasons:
    For [asynchronous operations](https://developer.mozilla.org/docs/Learn/JavaScript/Asynchronous), Angular uses a zone to detect changes in places where the data could have possibly mutated and it runs change detection automatically.
 
 ## Zones and execution contexts
+
+## Zone 和执行上下文
 
 A zone provides an execution context that persists across async tasks.
 [Execution Context](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/this) is an abstract concept that holds information about the environment within the current code being executed.
@@ -225,8 +265,12 @@ func.apply(ctx2);
 The value of `this` in the callback of `setTimeout()` might differ depending on when `setTimeout()` is called.
 Thus, you can lose the context in asynchronous operations.
 
+`setTimeout()` 回调中的 `this` 值可能会有所不同，具体取决于 `setTimeout()` 的调用时机。因此，你可能会在异步操作中丢失上下文。
+
 A zone provides a new zone context other than `this`, the zone context that persists across asynchronous operations.
 In the following example, the new zone context is called `zoneThis`.
+
+Zone 提供了不同于 `this` 的新的 Zone 上下文，该 Zone 上下文在异步操作中保持不变。在下例中，新的 Zone 上下文称为 `zoneThis` 。
 
 <code-example format="javascript" language="javascript">
 
@@ -247,7 +291,11 @@ To get the context, you can call [`Zone.current`](https://github.com/angular/ang
 
 ## Zones and async lifecycle hooks
 
+## Zone 和异步生命周期钩子
+
 Zone.js can create contexts that persist across asynchronous operations as well as provide lifecycle hooks for asynchronous operations.
+
+Zone.js 可以创建在异步操作中持久存在的上下文，并为异步操作提供生命周期钩子。
 
 <code-example format="javascript" language="javascript">
 
@@ -280,17 +328,32 @@ zone.run(() =&gt; {
 
 The above example creates a zone with several hooks.
 
+上面的示例创建了一个具有多个钩子的 Zone。
+
 The `onXXXTask` hooks trigger when the status of the task changes.
 The concept of a *Zone Task* is very similar to the JavaScript VM Task concept:
 
+当任务状态更改时，就会触发 `onXXXTask` 钩子。*Zone 任务*的概念与 JavaScript VM 中任务的概念非常相似：
+
 * `macroTask`: such as `setTimeout()`
+
+  `macroTask`：例如 `setTimeout()`
+
 * `microTask`: such as `Promise.then()`
+
+  `microTask`：例如 `Promise.then()`
+
 * `eventTask`: such as `element.addEventListener()`
+
+  `eventTask`：例如 `element.addEventListener()`
 
 These hooks trigger under the following circumstances:
 
+这些钩子在以下情况下触发：
+
 | Hooks | Details |
 | :---- | :------ |
+| Hooks | 详情 |
 | `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`. |
 | `onInvokeTask` | Triggers when an asynchronous task is about to execute, such as when the callback of `setTimeout()` is about to execute. |
 | `onHasTask` | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
@@ -298,7 +361,11 @@ These hooks trigger under the following circumstances:
 
 With these hooks, `Zone` can monitor the status of all synchronous and asynchronous operations inside a zone.
 
+使用这些钩子，`Zone` 可以监视 Zone 内所有同步和异步操作的状态。
+
 The above example returns the following output:
+
+上面的示例返回以下输出：
 
 <code-example format="output" hideCopy language="shell">
 
@@ -330,10 +397,19 @@ Monkey patching is a technique to add or modify the default behavior of a functi
 While Zone.js can monitor all the states of synchronous and asynchronous operations, Angular additionally provides a service called NgZone.
 This service creates a zone named `angular` to automatically trigger change detection when the following conditions are satisfied:
 
+虽然 Zone.js 可以监视同步和异步操作的所有状态，但 Angular 还提供了一项名为 NgZone 的服务。满足以下条件时，此服务会创建一个名为 `angular` 的 Zone 来自动触发变更检测。
+
 1. When a sync or async function is executed
+
+   当执行同步或异步功能时。
+
 1. When there is no `microTask` scheduled
 
+   已经没有已计划的 `microTask`。
+
 ### NgZone `run()` and `runOutsideOfAngular()`
+
+### NgZone `run()` 和 `runOutsideOfAngular()`
 
 `Zone` handles most asynchronous APIs such as `setTimeout()`, `Promise.then()`, and `addEventListener()`.
 For the full list, see the [Zone Module document](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md).
@@ -342,6 +418,8 @@ Therefore in those asynchronous APIs, you don't need to trigger change detection
 There are still some third party APIs that Zone does not handle.
 In those cases, the `NgZone` service provides a [`run()`](api/core/NgZone#run) method that allows you to execute a function inside the Angular zone.
 This function, and all asynchronous operations in that function, trigger change detection automatically at the correct time.
+
+仍然有一些 Zone 无法处理的第三方 API。在这种情况下，`NgZone` 服务提供了 [`run()`](api/core/NgZone#run) 方法，该方法允许你在 `angular` Zone 中执行函数。此函数以及该函数中的所有异步操作会在正确的时间自动触发变更检测。
 
 <code-example format="typescript" language="typescript">
 
@@ -365,6 +443,8 @@ By default, all asynchronous operations are inside the Angular zone, which trigg
 Another common case is when you don't want to trigger change detection.
 In that situation, you can use another `NgZone` method: [`runOutsideAngular()`](api/core/NgZone#runoutsideangular).
 
+默认情况下，所有异步操作都在 Angular Zone 内，这会自动触发变更检测。另一个常见的情况是你不想触发变更检测。在这种情况下，你可以使用另一个 `NgZone` 方法：[`runOutsideAngular()`](api/core/NgZone#runoutsideangular) 。
+
 <code-example format="typescript" language="typescript">
 
 export class AppComponent implements OnInit {
@@ -386,8 +466,12 @@ export class AppComponent implements OnInit {
 
 ### Setting up Zone.js
 
+### 设置 Zone.js
+
 To make Zone.js available in Angular, you need to import the `zone.js` package.
 If you are using the Angular CLI, this step is done automatically, and you will see the following line in the `src/polyfills.ts`:
+
+为了使 Zone.js 在 Angular 中可用，你需要导入 `zone.js` 包。如果使用的是 Angular CLI，则此步骤将自动完成，并且你会在 `src/polyfills.ts` 中看到以下行：
 
 <code-example format="typescript" language="typescript">
 
@@ -400,14 +484,22 @@ import 'zone.js';  // Included with Angular CLI.
 
 Before importing the  `zone.js` package, you can set the following configurations:
 
+在导入 `zone.js` 软件包之前，你可以做如下配置：
+
 * You can disable some asynchronous API monkey patching for better performance.
   For example, you can disable the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` will not trigger change detection.
   This is useful if, in your application, the callback of the `requestAnimationFrame()` will not update any data.
 
+  你可以禁用一些异步 API 的猴子补丁，以获得更好的性能。例如，你可以禁用 `requestAnimationFrame()` 的猴子补丁，这样 `requestAnimationFrame()` 的回调就不会触发变更检测。如果你的应用程序不会在 `requestAnimationFrame()` 回调中更新任何数据，则这种方式很有用。
+
 * You can specify that certain DOM events do not run inside the Angular zone; for example, to prevent a `mousemove` or `scroll` event to trigger change detection
+
+  你可以指定某些 DOM 事件不在 Angular Zone 内运行；例如，为了防止 `mousemove` 或 `scroll` 事件来触发变更检测。
 
 There are several other settings you can change.
 To make these changes, you need to create a `zone-flags.ts` file, such as the following.
+
+你还可以更改另外几个设置。要进行这些更改，你需要创建一个 `zone-flags.ts` 文件，如下所示。
 
 <code-example format="typescript" language="typescript">
 
@@ -420,6 +512,8 @@ To make these changes, you need to create a `zone-flags.ts` file, such as the fo
 </code-example>
 
 Next, import `zone-flags` before you import `zone.js` in the `polyfills.ts`:
+
+接着，在 `polyfills.ts` 中导入 `zone.js` 之前先导入 `zone-flags`：
 
 <code-example format="typescript" language="typescript">
 
@@ -440,17 +534,25 @@ By default, `Zone` is loaded and works without additional configuration.
 However, you don't necessarily have to use `Zone` to make Angular work.
 Instead, you can opt to trigger change detection on your own.
 
+`Zone` 能帮助 Angular 知道何时要触发变更检测，并使开发人员专注于应用开发。默认情况下，`Zone` 已加载且无需其他配置即可工作。但是，也不是一定要用 `Zone` 才能使 Angular 工作。相反，你也可以选择自己触发变更检测。
+
 <div class="alert is-helpful">
 
 <header>Disabling <code>Zone</code></header>
 
 **If you disable `Zone`, you will need to trigger all change detection at the correct timing yourself, which requires comprehensive knowledge of change detection**.
 
+**如果禁用了 `Zone`，你就要自己在正确的时间触发所有变更检测，这需要你对变更检测机制有全面的了解**。
+
 </div>
 
 To remove Zone.js, make the following changes.
 
+要删除 Zone.js，请进行以下更改。
+
 1. Remove the `zone.js` import from `polyfills.ts`:
+
+   从 `polyfills.ts` 中移除对 `zone.js` 的导入：
 
    <code-example format="typescript" language="typescript">
 
@@ -462,6 +564,8 @@ To remove Zone.js, make the following changes.
    </code-example>
 
 1. Bootstrap Angular with the `noop` zone in `src/main.ts`:
+
+   在 `src/main.ts` 中使用 `noop` Zone 引导 Angular：
 
    <code-example format="typescript" language="typescript">
 

@@ -4,7 +4,9 @@ In documentation, being able to find the content you need is equally as importan
 In [angular.io](https://angular.io), users can discover content in several ways, including:
 
 * Organic search results, such as through [google.com](https://google.com)
+
 * The left navigation bar, also known as sidenav
+
 * Using the search box in the header
 
 You can help improve the documentation experience by adding search keywords to a given topic.

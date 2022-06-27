@@ -1,8 +1,12 @@
 # Add the localize package
 
+# 添加 localize 包
+
 To take advantage of the localization features of Angular, use the [Angular CLI][AioCliMain] to add the `@angular/localize` package to your project.
 
 To add the `@angular/localize` package, use the following command to update the `package.json` and `polyfills.ts` files in your project.
+
+要添加 `@angular/localize` 包，请使用如下命令来更新项目中的 `package.json` 和 `polyfills.ts` 文件。
 
 <code-example path="i18n/doc-files/commands.sh" region="add-localize"></code-example>
 
@@ -17,6 +21,8 @@ If `@angular/localize` is not installed and you try to build a localized version
 <!--todo: add example error -->
 
 ## What's next
+
+## 下一步是什么
 
 * [Refer to locales by ID][AioGuideI18nCommonLocaleId]
 

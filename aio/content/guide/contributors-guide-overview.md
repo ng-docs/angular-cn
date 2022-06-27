@@ -12,28 +12,49 @@ Before you get started with your contributions, we recommend that you review [Co
 
 <div class="card-container">
   <a href="guide/reviewing-content" class="docs-card" title="Reviewing content">
-    <section>Review content</section>
-    <p>Keep Angular content up-to-date by reviewing topics for accuracy.</p>
-    <p class="card-footer">Help keep content up to date</p>
+
+```
+<section>Review content</section>
+<p>Keep Angular content up-to-date by reviewing topics for accuracy.</p>
+<p class="card-footer">Help keep content up to date</p>
+```
+
   </a>
   <a href="guide/updating-search-keywords" class="docs-card" title="Updating search keywords">
-    <section>Update search keywords</section>
-    <p>Help Angular developers by improving the search keywords for existing topics.</p>
-    <p class="card-footer">Improve documentation search</p>
+
+```
+<section>Update search keywords</section>
+<p>Help Angular developers by improving the search keywords for existing topics.</p>
+<p class="card-footer">Improve documentation search</p>
+```
+
   </a>
   <a href="guide/updating-content-github-ui" class="docs-card" title="Updating content through GitHub">
-    <section>Update content through GitHub</section>
-    <p>Learn how to make documentation changes through the GitHub UI.</p>
-    <p class="card-footer">Contribute to Angular in your browser</p>
+
+```
+<section>Update content through GitHub</section>
+<p>Learn how to make documentation changes through the GitHub UI.</p>
+<p class="card-footer">Contribute to Angular in your browser</p>
+```
+
   </a>
   <a href="guide/docs-style-guide" class="docs-card" title="Documentation Style Guide">
-    <section>Documentation style guide</section>
-    <p>Review the syntax and styles used within the Angular documentation set.</p>
-    <p class="card-footer">Get to know the writing style</p>
+
+```
+<section>Documentation style guide</section>
+<p>Review the syntax and styles used within the Angular documentation set.</p>
+<p class="card-footer">Get to know the writing style</p>
+```
+
   </a>
   <a href="guide/localizing-angular" class="docs-card" title="Angular localization guidelines">
-    <section>Angular localization guidelines</section>
-    <p>Learn about the guidelines for localizing Angular documentation.</p>
-    <p class="card-footer">Localize documentation</p>
+
+```
+<section>Angular localization guidelines</section>
+<p>Learn about the guidelines for localizing Angular documentation.</p>
+<p class="card-footer">Localize documentation</p>
+```
+
   </a>
+
 </div>

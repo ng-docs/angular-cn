@@ -227,6 +227,7 @@ Such an array could be imported by applications using `NgModule`s and added to t
 Angular applications can configure dependency injection by specifying a set of available providers. In a typical application, there are two different injector types:
 
 * **module injector** with providers configured in `@NgModule.providers` or `@Injectable({providedIn: "..."})`. Those application-wide providers are visible to all components in as well as to other services configured in a module injector.
+
 * **node injectors** configured in `@Directive.providers` / `@Component.providers` or `@Component.viewProviders`. Those providers are visible to a given component and all its children only.
 
 #### Environment injectors
@@ -248,8 +249,11 @@ The new bootstrap API gives us back the means of configuring “module injectors
 Environment injectors can be configured using one of the following:
 
 * `@NgModule.providers` (in applications bootstrapping through an `NgModule`);
+
 * `@Injectable({provideIn: "..."})`(in both the NgModule-based as well as “standalone” applications);
+
 * `providers` option in the `bootstrapApplication` call (in fully “standalone” applications);
+
 * `providers` field in a `Route` configuration.
 
 Angular v14 introduces a new TypeScript type `EnvironmentInjector` to represent this new naming. The accompanying `createEnvironmentInjector` API makes it possible to create environment injectors programmatically: 

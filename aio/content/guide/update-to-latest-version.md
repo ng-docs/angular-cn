@@ -1,8 +1,12 @@
 # Update Angular
 
+# 更新 Angular
+
 This guide contains information to update to Angular version 14.
 
 ## Update Angular CLI applications
+
+## 更新 Angular CLI 应用程序
 
 For step-by-step instructions on how to update to the latest Angular release and leverage the Angular automated migration tools, use the interactive update guide at [update.angular.io](https://update.angular.io).
 
@@ -30,6 +34,7 @@ For information about the deprecation and removal practices of Angular, see [Ang
 
 |  | Details |
 | :-- | :------ |
+|  | 详情 |
 | [**PR&nbsp;#45729**](https://github.com/angular/angular/pull/45729) | `initialNavigation: 'enabled'` was deprecated in v11 and is replaced by `initialNavigation: 'enabledBlocking'.`. |
 | [**PR&nbsp;#42803**](https://github.com/angular/angular/pull/42803) | Forms `email` input coercion: forms `email` input value will be considered as true if it is defined with any value rather than false and 'false'. |
 | [**PR&nbsp;#33729**](https://github.com/angular/angular/pull/33729) | Objects with a length key set to zero will no longer validate as empty. This is technically a breaking change, since objects with a key `length` and value `0` will no longer validate as empty. This is a very minor change, and any reliance on this behavior is probably a bug anyway. |
@@ -48,25 +53,39 @@ For information about the deprecation and removal practices of Angular, see [Ang
 
 ### New deprecations
 
+### 新的弃用
+
 <a id="deprecations"></a>
 
 | Removed | Replacement | Details |
 | :------ | :---------- | :------ |
+| 已移除 | 替代品 | 详情 |
 | [`FormControlOptions#initialValueIsDefault`](api/forms/FormControlOptions#initialValueIsDefault) | [`FormControlOptions#nonNullable`](api/forms/FormControlOptions#nonNullable) | The `initialValueIsDefault` option for `FormControl` construction has been deprecated in favor of the `nonNullable` option (which has identical behavior). This renaming aligns the `FormControl` constructor with other strictly typed APIs related to nullability. |
 | `ErrorEvent`s passed to [`TestRequest#error`]\(api/common/http/testing/TestRequest#error] | `ProgressEvent` | Http requests never emit an `ErrorEvent`. Use a `ProgressEvent` instead. |
 | [`getModuleFactory`](api/core/getModuleFactory) | `getNgModuleById` | `NgModuleFactory` itself is deprecated. |
 | [`ModuleWithComponentFactories`](api/core/ModuleWithComponentFactories) | n/a | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. |
+| [`ModuleWithComponentFactories`](api/core/ModuleWithComponentFactories) | 不适用 | Ivy JIT 模式不需要访问这个符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](guide/deprecations#jit-api-changes)。 |
 | [`Compiler`](api/core/Compiler) | n/a | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. |
+| [`Compiler`](api/core/Compiler) | 不适用 | Ivy JIT 模式不需要访问这个符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](guide/deprecations#jit-api-changes)。 |
 | [`CompilerFactory`](api/core/CompilerFactory) | n/a | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. |
+| [`CompilerFactory`](api/core/CompilerFactory) | 不适用 | Ivy JIT 模式不需要访问这个符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](guide/deprecations#jit-api-changes)。 |
 | [`NgModuleFactory`](api/core/NgModuleFactory) | n/a | This class was mostly used as a part of ViewEngine-based JIT API and is no longer needed in Ivy JIT mode. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. Angular provides APIs that accept NgModule classes directly (such as [`PlatformRef.bootstrapModule`](api/core/PlatformRef#bootstrapModule) and [`createNgModuleRef`](api/core/createNgModuleRef)), consider switching to those APIs instead of using factory-based ones. |
+| [`NgModuleFactory`](api/core/NgModuleFactory) | 不适用 | This class was mostly used as a part of ViewEngine-based JIT API and is no longer needed in Ivy JIT mode. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. Angular provides APIs that accept NgModule classes directly (such as [`PlatformRef.bootstrapModule`](api/core/PlatformRef#bootstrapModule) and [`createNgModuleRef`](api/core/createNgModuleRef)), consider switching to those APIs instead of using factory-based ones. |
 | [`ComponentFactory`](api/core/ComponentFactory) | n/a | Angular no longer requires `ComponentFactory`s. Other APIs allow Component classes to be used directly. |
+| [`ComponentFactory`](api/core/ComponentFactory) | 不适用 | Angular no longer requires `ComponentFactory`s. Other APIs allow Component classes to be used directly. |
 | [`ComponentFactoryResolver`](api/core/ComponentFactoryResolver) | n/a | Angular no longer requires `ComponentFactory`s. Other APIs allow Component classes to be used directly. |
+| [`ComponentFactoryResolver`](api/core/ComponentFactoryResolver) | 不适用 | Angular no longer requires `ComponentFactory`s. Other APIs allow Component classes to be used directly. |
 | `useJit` and `missingTranslation` in [`CompilerOptions`](api/core/CompilerOptions) | n/a | Ivy JIT mode does not support these options. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. |
+| `useJit` and `missingTranslation` in [`CompilerOptions`](api/core/CompilerOptions) | 不适用 | Ivy JIT mode does not support these options. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. |
 | [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | n/a | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for additional context. |
+| [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | 不适用 | Ivy JIT 模式不需要访问这个符号。有关其他上下文，请参阅[由于 ViewEngine 弃用而导致的 JIT API 更改](guide/deprecations#jit-api-changes)。 |
 | [`RESOURCE_CACHE_PROVIDER`](api/platform-browser-dynamic/RESOURCE_CACHE_PROVIDER) | n/a | This was previously necessary in some cases to test AOT-compiled components with View Engine, but is no longer since Ivy. |
+| [`RESOURCE_CACHE_PROVIDER`](api/platform-browser-dynamic/RESOURCE_CACHE_PROVIDER) | 不适用 | This was previously necessary in some cases to test AOT-compiled components with View Engine, but is no longer since Ivy. |
 | `relativeLinkResolution` in the Router [`ExtraOptions`](api/router/ExtraOptions) | Switch to the default of `'corrected'` link resolution | This option was introduced to fix a bug with link resolution in a backwards compatible way. Existing apps which still depend on the buggy legacy behavior should switch to the new corrected behavior and stop passing this flag. |
 | `resolver` argument in [`RouterOutletContract.activateWith`](api/router/RouterOutletContract#activateWith) | n/a | `ComponentFactory` and `ComponentFactoryResolver` afre deprecated, and passing an argument for a resolver to retrieve a `ComponentFactory` is no longer required. |
+| `resolver` argument in [`RouterOutletContract.activateWith`](api/router/RouterOutletContract#activateWith) | 不适用 | `ComponentFactory` and `ComponentFactoryResolver` afre deprecated, and passing an argument for a resolver to retrieve a `ComponentFactory` is no longer required. |
 | [`OutletContext#resolver`](api/router/OutletContext#resolver) | n/a | `ComponentFactory` and `ComponentFactoryResolver` are deprecated, and using a resolver to retrieve a `ComponentFactory` is no longer required. |
+| [`OutletContext#resolver`](api/router/OutletContext#resolver) | 不适用 | `ComponentFactory` and `ComponentFactoryResolver` are deprecated, and using a resolver to retrieve a `ComponentFactory` is no longer required. |
 | [`SwUpdate#activated`](api/service-worker/SwUpdate#activated) | Return value of [`SwUpdate#activateUpdate`](api/service-worker/SwUpdate#activateUpdate) | The `activated` property is deprecated. Existing usages can migrate to [`SwUpdate#activateUpdate`](api/service-worker/SwUpdate#activateUpdate). |
 | [`SwUpdate#available`](api/service-worker/SwUpdate#available) | [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) | The behavior of [`SwUpdate#available`](api/service-worker/SwUpdate#available) can be achieved by filtering for the [`VersionReadyEvent`](api/service-worker/VersionReadyEvent) from [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) |
 

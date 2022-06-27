@@ -11,6 +11,7 @@ If you are confident that a part of the application is not affected by a state c
 OnPush change detection instructs Angular that to only run change detection automatically for a component subtree when:
 
 * The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `==`
+
 * Angular handles an event within the component with OnPush change detection
 
 You can set the change detection strategy of a component to `OnPush` in the `@Component` decorator:
@@ -35,6 +36,7 @@ As an example, if we set the change detection strategy of `MainComponent` to `On
 
 <div class="lightbox">
   <img alt="Change detection propagation from non-OnPush component" src="generated/images/guide/change-detection/event-trigger.svg">
+
 </div>
 
 ## An event is handled by a component with OnPush
@@ -45,6 +47,7 @@ As an example, if Angular handles an event within `MainComponent`, the framework
 
 <div class="lightbox">
   <img alt="Change detection propagation from OnPush component" src="generated/images/guide/change-detection/on-push-trigger.svg">
+
 </div>
 
 ## An event is handled by a descendant of a component with OnPush
@@ -55,6 +58,7 @@ As an example, in the diagram below, Angular handles an event in `LoginComponent
 
 <div class="lightbox">
   <img alt="Change detection propagation from nested OnPush component" src="generated/images/guide/change-detection/leaf-trigger.svg">
+
 </div>
 
 ## New inputs to component with OnPush
@@ -65,11 +69,13 @@ For example, in the diagram below, `AppComponent` passes a new input to `MainCom
 
 <div class="lightbox">
   <img alt="Change detection propagation with OnPush component that receives new inputs" src="generated/images/guide/change-detection/on-push-input.svg">
+
 </div>
 
 ## Edge cases
 
 * **Modifying input properties in TypeScript code**. When you use an API like `@ViewChild` or `@ContentChild` to get a reference to a component in TypeScript and manually modify an `@Input` property, Angular will not automatically run change detection for OnPush components. If you need Angular to run change detection, you can inject `ChangeDetectorRef` in your component and call `changeDetectorRef.markForCheck()` to tell Angular to schedule a change detection.
+
 * **Modifying object references**. In case an input receives a mutable object as value and you modify the object but preserve the reference, Angular will not invoke change detection. That’s the expected behavior because the previous and the current value of the input point to the same reference.
 
 @reviewed 2022-05-04

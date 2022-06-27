@@ -1,40 +1,40 @@
-<h1>Test Code Page</h1>
+<html><head></head><body><h1>Test Code Page</h1>
 
 <h2>&lt;code-tabs&gt;</h2>
 
 <p>No linenums at code-tabs level</p>
 <code-tabs>
-  <code-pane header='TS code file' language='ts'>
+  <code-pane header="TS code file" language="ts">
   class {
     foo(param: string) {}
   }
   </code-pane>
-  <code-pane header='HTML content file' language='html'>&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
-  <code-pane header='JSON data file' language='json' class='avoid'>{ "key": "value" }</code-pane>
+  <code-pane header="HTML content file" language="html">&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
+  <code-pane header="JSON data file" language="json" class="avoid">{ "key": "value" }</code-pane>
 </code-tabs>
 <p></p>
 
 <p>linenums=true at code-tabs level</p>
-<code-tabs linenums='true'>
-  <code-pane header='TS code file' language='ts'>
+<code-tabs linenums="true">
+  <code-pane header="TS code file" language="ts">
   class {
     foo(param: string) {}
   }
   </code-pane>
-  <code-pane header='HTML content file' language='html'>&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
-  <code-pane header='JSON data file' language='json' class='avoid'>{ "key": "value" }</code-pane>
+  <code-pane header="HTML content file" language="html">&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
+  <code-pane header="JSON data file" language="json" class="avoid">{ "key": "value" }</code-pane>
 </code-tabs>
 <p></p>
 
 <p>No linenums at code-tabs level; linenums=true for second HTML pane</p>
-<code-tabs >
-  <code-pane header='TS code file' language='ts'>
+<code-tabs>
+  <code-pane header="TS code file" language="ts">
   class {
     foo(param: string) {}
   }
   </code-pane>
-  <code-pane header='HTML content file' language='html' linenums='true'>&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
-  <code-pane header='JSON data file' language='json' class='avoid'>{ "key": "value" }</code-pane>
+  <code-pane header="HTML content file" language="html" linenums="true">&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
+  <code-pane header="JSON data file" language="json" class="avoid">{ "key": "value" }</code-pane>
 </code-tabs>
 <p></p>
 
@@ -44,7 +44,7 @@
 <code-example>const foo = 'bar'</code-example>
 
 <p>Multi-line, linenums=true.</p>
-<code-example linenums='true'>
+<code-example linenums="true">
 &lt;hero-details <em>nghost-pmm-5&gt;
   &lt;h2 </em>ngcontent-pmm-5&gt;Bah Dah Bing&lt;/h2&gt;
   &lt;hero-team <em>ngcontent-pmm-5 </em>nghost-pmm-6&gt;
@@ -112,10 +112,10 @@ Try this <live-example></live-example>.
 <live-example name=" testy " stackblitz="super-stackblitz"></live-example>
 
 <p>live-example with name and stackblitz but no download</p>
-<live-example name="testy" stackblitz="super-stackblitz" noDownload></live-example>
+<live-example name="testy" stackblitz="super-stackblitz" nodownload=""></live-example>
 
 <p>live-example embedded with name and stackblitz</p>
-<live-example embedded name="testy" stackblitz="super-stackblitz"></live-example>
+<live-example embedded="" name="testy" stackblitz="super-stackblitz"></live-example>
 
 <p>More text follows ...</p>
 
@@ -135,3 +135,4 @@ Try this <live-example></live-example>.
 
 <p>NgFor</p>
 <aio-gs-ng-for></aio-gs-ng-for>
+</body></html>

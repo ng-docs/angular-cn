@@ -1,7 +1,11 @@
 # Attribute binding
 
+# 属性绑定
+
 Attribute binding in Angular helps you set values for attributes directly.
 With attribute binding, you can improve accessibility, style your application dynamically, and manage multiple CSS classes or styles simultaneously.
+
+Angular 中的 Attribute 绑定可帮助你直接设置 Attribute 值。使用 Attribute 绑定，你可以提升无障碍性、动态设置应用程序样式以及同时管理多个 CSS 类或样式。
 
 <div class="alert is-helpful">
 
@@ -11,12 +15,20 @@ See the <live-example></live-example> for a working example containing the code 
 
 ## Prerequisites
 
+## 先决条件
+
 * [Property Binding](guide/property-binding)
+
+  [property 绑定](guide/property-binding)
 
 ## Syntax
 
+## 语法
+
 Attribute binding syntax resembles [property binding](guide/property-binding), but instead of an element property between brackets, you precede the name of the attribute with the prefix `attr`, followed by a dot.
 Then, you set the attribute value with an expression that resolves to a string.
+
+Attribute 绑定语法类似于 [Property 绑定](guide/property-binding)，但不是直接在方括号之间放置元素的 Property，而是在 Attribute 名称前面加上前缀 `attr`，后跟一个点 `.`。然后，使用解析为字符串的表达式设置 Attribute 值。
 
 <code-example format="html" language="html">
 
@@ -28,9 +40,13 @@ Then, you set the attribute value with an expression that resolves to a string.
 
 When the expression resolves to `null` or `undefined`, Angular removes the attribute altogether.
 
+当表达式解析为 `null` 或 `undefined` 时，Angular 会完全删除该 Attribute。
+
 </div>
 
 ## Binding ARIA attributes
+
+## 绑定 ARIA Attribute
 
 One of the primary use cases for attribute binding is to set ARIA attributes.
 
@@ -42,22 +58,37 @@ To bind to an ARIA attribute, type the following:
 
 ## Binding to `colspan`
 
+## 绑定到 `colspan`
+
 Another common use case for attribute binding is with the `colspan` attribute in tables.  Binding to the `colspan` attribute helps you to keep your tables programmatically dynamic.  Depending on the amount of data that your application populates a table with, the number of columns that a row spans could change.
 
 To use attribute binding with the `<td>` attribute `colspan`
 
+要将 Attribute 绑定到 `<td>` 的 `colspan` Attribute：
+
 1. Specify the `colspan` attribute by using the following syntax: `[attr.colspan]`.
+
+   使用以下语法指定 `colspan`：`[attr.colspan]` 。
+
 1. Set `[attr.colspan]` equal to an expression.
 
+   将 `[attr.colspan]` 设置为等于某个表达式。
+
 In the following example, you bind the `colspan` attribute to the expression `1 + 1`.
+
+在下面的示例中，我们将 `colspan` Attribute 绑定到表达式 `1 + 1`。
 
 <code-example header="src/app/app.component.html" path="attribute-binding/src/app/app.component.html" region="colspan"></code-example>
 
 This binding causes the `<tr>` to span two columns.
 
+此绑定会导致 `<tr>` 跨越两列。
+
 <div class="alert is-helpful">
 
 Sometimes there are differences between the name of property and an attribute.
+
+有时，Property 名和 Attribute 名之间存在差异。
 
 `colspan` is an attribute of `<tr>`, while `colSpan`  with a capital "S" is a property.
 When using attribute binding, use `colspan` with a lowercase "s".
@@ -67,6 +98,8 @@ For more information on how to bind to the `colSpan` property, see the [`colspan
 </div>
 
 ## What’s next
+
+## 下一步是什么【模糊翻译】
 
 * [Class & Style Binding](guide/class-binding)
 

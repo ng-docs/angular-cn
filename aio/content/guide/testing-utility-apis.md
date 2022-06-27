@@ -1,22 +1,34 @@
 # Testing Utility APIs
 
+# 测试实用工具 API
+
 This page describes the most useful Angular testing features.
+
+本页面描述了一些最有用的 Angular 测试特性。
 
 The Angular testing utilities include the `TestBed`, the `ComponentFixture`, and a handful of functions that control the test environment.
 The [`TestBed`](#testbed-api-summary) and [`ComponentFixture`](#component-fixture-api-summary) classes are covered separately.
 
 Here's a summary of the stand-alone functions, in order of likely utility:
 
+下面是一些独立函数的摘要，以使用频率排序：
+
 | Function | Details |
 | :------- | :------ |
+| 函数 | 详情 |
 | `waitForAsync` | Runs the body of a test (`it`) or setup (`beforeEach`) function within a special *async test zone*. See [waitForAsync](guide/testing-components-scenarios#waitForAsync). |
+| `waitForAsync` | 在一个特殊的*async 测试区域*中运行测试（`it`）的函数体或准备函数（`beforeEach`）。 参阅 [waitForAsync](guide/testing-components-scenarios#waitForAsync)。 |
 | `fakeAsync` | Runs the body of a test (`it`) within a special *fakeAsync test zone*, enabling a linear control flow coding style. See [fakeAsync](guide/testing-components-scenarios#fake-async). |
+| `fakeAsync` | 在一个特殊的*fakeAsync 测试区域*中运行测试（`it`）的函数体，以便启用线性风格的控制流。 参阅 [fakeAsync](guide/testing-components-scenarios#fake-async)。 |
 | `tick` | Simulates the passage of time and the completion of pending asynchronous activities by flushing both *timer* and *micro-task* queues within the *fakeAsync test zone*. <div class="alert is-helpful"> The curious, dedicated reader might enjoy this lengthy blog post, ["*Tasks, microtasks, queues and schedules*"](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules). </div> Accepts an optional argument that moves the virtual clock forward by the specified number of milliseconds, clearing asynchronous activities scheduled within that timeframe. See [tick](guide/testing-components-scenarios#tick). |
 | `inject` | Injects one or more services from the current `TestBed` injector into a test function. It cannot inject a service provided by the component itself. See discussion of the [debugElement.injector](guide/testing-components-scenarios#get-injected-services). |
+| `inject` | 从当前的 `TestBed` 注入器中把一个或多个服务注入到一个测试函数中。 它不能用于注入组件自身提供的服务。 参阅 [`debugElement.injector`](guide/testing-components-scenarios#get-injected-services) 部分的讨论。 |
 | `discardPeriodicTasks` | When a `fakeAsync()` test ends with pending timer event *tasks* (queued `setTimeOut` and `setInterval` callbacks), the test fails with a clear error message. <br /> In general, a test should end with no queued tasks. When pending timer tasks are expected, call `discardPeriodicTasks` to flush the *task* queue and avoid the error. |
 | `flushMicrotasks` | When a `fakeAsync()` test ends with pending *micro-tasks* such as unresolved promises, the test fails with a clear error message. <br /> In general, a test should wait for micro-tasks to finish. When pending microtasks are expected, call `flushMicrotasks` to flush the  *micro-task* queue and avoid the error. |
 | `ComponentFixtureAutoDetect` | A provider token for a service that turns on [automatic change detection](guide/testing-components-scenarios#automatic-change-detection). |
+| `ComponentFixtureAutoDetect` | 一个服务提供者令牌，用于开启[自动变更检测](guide/testing-components-scenarios#automatic-change-detection)。 |
 | `getTestBed` | Gets the current instance of the `TestBed`. Usually unnecessary because the static class methods of the `TestBed` class are typically sufficient. The `TestBed` instance exposes a few rarely used members that are not available as static methods. |
+| `getTestBed` | 获取当前 `TestBed` 实例。 通常用不上，因为 `TestBed` 的静态类方法已经够用。 `TestBed` 实例有一些很少需要用到的方法，它们没有对应的静态方法。 |
 
 <a id="testbed-class-summary"></a>
 
@@ -26,7 +38,11 @@ The `TestBed` class is one of the principal Angular testing utilities.
 Its API is quite large and can be overwhelming until you've explored it, a little at a time.
 Read the early part of this guide first to get the basics before trying to absorb the full API.
 
+`TestBed` 类是 Angular 测试工具的主要类之一。它的 API 很庞大，可能有点过于复杂，直到你一点一点的探索它们。 阅读本章前面的部分，了解了基本的知识以后，再试着了解完整 API。
+
 The module definition passed to `configureTestingModule` is a subset of the `@NgModule` metadata properties.
+
+传给 `configureTestingModule` 的模块定义是 `@NgModule` 元数据属性的子集。
 
 <code-example format="javascript" language="javascript">
 
@@ -43,6 +59,8 @@ type TestModuleMetadata = {
 
 Each override method takes a `MetadataOverride<T>` where `T` is the kind of metadata appropriate to the method, that is, the parameter of an `@NgModule`, `@Component`, `@Directive`, or `@Pipe`.
 
+每一个重载方法接受一个 `MetadataOverride<T>`，这里 `T` 是适合这个方法的元数据类型，也就是 `@NgModule`、`@Component`、`@Directive` 或者 `@Pipe` 的参数。
+
 <code-example format="javascript" language="javascript">
 
 type MetadataOverride&lt;T&gt; = {
@@ -58,21 +76,34 @@ type MetadataOverride&lt;T&gt; = {
 
 The `TestBed` API consists of static class methods that either update or reference a *global* instance of the `TestBed`.
 
+`TestBed` 的 API 包含了一系列静态类方法，它们更新或者引用**全局**的 `TestBed` 实例。
+
 Internally, all static methods cover methods of the current runtime `TestBed` instance, which is also returned by the `getTestBed()` function.
+
+在内部，所有静态方法在 `getTestBed()` 函数返回的当前运行时间的 `TestBed` 实例上都有对应的方法。
 
 Call `TestBed` methods *within* a `beforeEach()` to ensure a fresh start before each individual test.
 
+在 `BeforeEach()` 内调用 `TestBed` 方法，以确保在运行每个单独测试时，都有崭新的开始。
+
 Here are the most important static methods, in order of likely utility.
+
+这里列出了最重要的静态方法，以使用频率排序：。
 
 | Methods | Details |
 | :------ | :------ |
+| 方法 | 详情 |
 | `configureTestingModule` | The testing shims (`karma-test-shim`, `browser-test-shim`) establish the [initial test environment](guide/testing) and a default testing module. The default testing module is configured with basic declaratives and some Angular service substitutes that every tester needs. <br /> Call `configureTestingModule` to refine the testing module configuration for a particular set of tests by adding and removing imports, declarations (of components, directives, and pipes), and providers. |
 | `compileComponents` | Compile the testing module asynchronously after you've finished configuring it. You **must** call this method if *any* of the testing module components have a `templateUrl` or `styleUrls` because fetching component template and style files is necessarily asynchronous. See [compileComponents](guide/testing-components-scenarios#compile-components). <br /> After calling `compileComponents`, the `TestBed` configuration is frozen for the duration of the current spec. |
 | `createComponent<T>` | Create an instance of a component of type `T` based on the current `TestBed` configuration. After calling `createComponent`, the `TestBed` configuration is frozen for the duration of the current spec. |
 | `overrideModule` | Replace metadata for the given `NgModule`. Recall that modules can import other modules. The `overrideModule` method can reach deeply into the current testing module to modify one of these inner modules. |
+| `overrideModule` | 替换指定的 `NgModule` 的元数据。回想一下，模块可以导入其它模块。 `overrideModule` 方法可以深入到当前测试模块深处，修改其中一个内部模块。 |
 | `overrideComponent` | Replace metadata for the given component class, which could be nested deeply within an inner module. |
+| `overrideComponent` | 替换指定组件类的元数据，该组件类可能嵌套在一个很深的内部模块中。 |
 | `overrideDirective` | Replace metadata for the given directive class, which could be nested deeply within an inner module. |
+| `overrideDirective` | 替换指定指令类的元数据，该指令可能嵌套在一个很深的内部模块中。 |
 | `overridePipe` | Replace metadata for the given pipe class, which could be nested deeply within an inner module. |
+| `overridePipe` | 替换指定管道类的元数据，该管道可能嵌套在一个很深的内部模块中。 |
 
 \| 
 <a id="testbed-inject"></a>
@@ -85,13 +116,19 @@ Here are the most important static methods, in order of likely utility.
 A few of the `TestBed` instance methods are not covered by static `TestBed` *class* methods.
 These are rarely needed.
 
+少数 `TestBed` 实例方法没有对应的静态方法。它们很少被使用。
+
 <a id="component-fixture-api-summary"></a>
 
 ## The `ComponentFixture`
 
 The `TestBed.createComponent<T>` creates an instance of the component `T` and returns a strongly typed `ComponentFixture` for that component.
 
+`TestBed.createComponent<T>` 会创建一个组件 `T` 的实例，并为该组件返回一个强类型的 `ComponentFixture`。
+
 The `ComponentFixture` properties and methods provide access to the component, its DOM representation, and aspects of its Angular environment.
+
+`ComponentFixture` 的属性和方法提供了对组件、它的 DOM 和它的 Angular 环境方面的访问。
 
 <a id="component-fixture-properties"></a>
 
@@ -99,11 +136,16 @@ The `ComponentFixture` properties and methods provide access to the component, i
 
 Here are the most important properties for testers, in order of likely utility.
 
+下面是对测试最重要的属性，以使用频率排序：。
+
 | Properties | Details |
 | :--------- | :------ |
+| 属性 | 详情 |
 | `componentInstance` | The instance of the component class created by `TestBed.createComponent`. |
+| `componentInstance` | 被 `TestBed.createComponent` 创建的组件类实例。 |
 | `debugElement` | The `DebugElement` associated with the root element of the component. <br /> The `debugElement` provides insight into the component and its DOM element during test and debugging. It's a critical property for testers. The most interesting members are covered [below](#debug-element-details). |
 | `nativeElement` | The native DOM element at the root of the component. |
+| `nativeElement` | 组件的原生根 DOM 元素。 |
 | `changeDetectorRef` | The `ChangeDetectorRef` for the component. <br /> The `ChangeDetectorRef` is most valuable when testing a component that has the `ChangeDetectionStrategy.OnPush` method or the component's change detection is under your programmatic control. |
 
 <a id="component-fixture-methods"></a>
@@ -113,16 +155,24 @@ Here are the most important properties for testers, in order of likely utility.
 The *fixture* methods cause Angular to perform certain tasks on the component tree.
 Call these method to trigger Angular behavior in response to simulated user action.
 
+**fixture** 方法使 Angular 对组件树执行某些任务。 在触发 Angular 行为来模拟的用户行为时，调用这些方法。
+
 Here are the most useful methods for testers.
+
+下面是对测试最有用的方法。
 
 | Methods | Details |
 | :------ | :------ |
+| 方法 | 详情 |
 | `detectChanges` | Trigger a change detection cycle for the component. <br /> Call it to initialize the component (it calls `ngOnInit`) and after your test code, change the component's data bound property values. Angular can't see that you've changed `personComponent.name` and won't update the `name` binding until you call `detectChanges`. <br /> Runs `checkNoChanges` afterwards to confirm that there are no circular updates unless called as `detectChanges(false)`; |
 | `autoDetectChanges` | Set this to `true` when you want the fixture to detect changes automatically. <br /> When autodetect is `true`, the test fixture calls `detectChanges` immediately after creating the component. Then it listens for pertinent zone events and calls `detectChanges` accordingly. When your test code modifies component property values directly, you probably still have to call `fixture.detectChanges` to trigger data binding updates. <br /> The default is `false`. Testers who prefer fine control over test behavior tend to keep it `false`. |
 | `checkNoChanges` | Do a change detection run to make sure there are no pending changes. Throws an exceptions if there are. |
+| `checkNoChanges` | 运行一次变更检测来确认没有待处理的变化。如果有未处理的变化，它将抛出一个错误。 |
 | `isStable` | If the fixture is currently *stable*, returns `true`. If there are async tasks that have not completed, returns `false`. |
+| `isStable` | 如果 fixture 当前是**稳定的**，则返回 `true`。 如果有异步任务没有完成，则返回 `false`。 |
 | `whenStable` | Returns a promise that resolves when the fixture is stable. <br /> To resume testing after completion of asynchronous activity or asynchronous change detection, hook that promise. See [whenStable](guide/testing-components-scenarios#when-stable). |
 | `destroy` | Trigger component destruction. |
+| `destroy` | 触发组件的销毁。 |
 
 <a id="debug-element-details"></a>
 
@@ -130,40 +180,62 @@ Here are the most useful methods for testers.
 
 The `DebugElement` provides crucial insights into the component's DOM representation.
 
+`DebugElement` 提供了对组件的 DOM 的访问。
+
 From the test root component's `DebugElement` returned by `fixture.debugElement`, you can walk (and query) the fixture's entire element and component subtrees.
+
+`fixture.debugElement` 返回测试根组件的 `DebugElement`，通过它你可以访问（查询）fixture 的整个元素和组件子树。
 
 Here are the most useful `DebugElement` members for testers, in approximate order of utility:
 
+下面是 `DebugElement` 最有用的成员，以使用频率排序。
+
 | Members | Details |
 | :------ | :------ |
+| Members | 详情 |
 | `nativeElement` | The corresponding DOM element in the browser (null for WebWorkers). |
+| `nativeElement` | 与浏览器中 DOM 元素对应（WebWorkers 时，值为 null）。 |
 | `query` | Calling `query(predicate: Predicate<DebugElement>)` returns the first `DebugElement` that matches the [predicate](#query-predicate) at any depth in the subtree. |
 | `queryAll` | Calling `queryAll(predicate: Predicate<DebugElement>)` returns all `DebugElements` that matches the [predicate](#query-predicate) at any depth in subtree. |
 | `injector` | The host dependency injector. For example, the root element's component instance injector. |
+| `injector` | 宿主依赖注入器。 比如，根元素的组件实例注入器。 |
 | `componentInstance` | The element's own component instance, if it has one. |
+| `componentInstance` | 元素自己的组件实例（如果有）。 |
 | `context` | An object that provides parent context for this element. Often an ancestor component instance that governs this element. <br /> When an element is repeated within `*ngFor`, the context is an `NgForOf` whose `$implicit` property is the value of the row instance value. For example, the `hero` in `*ngFor="let hero of heroes"`. |
 | `children` | The immediate `DebugElement` children. Walk the tree by descending through `children`. <div class="alert is-helpful"> `DebugElement` also has `childNodes`, a list of `DebugNode` objects. `DebugElement` derives from `DebugNode` objects and there are often more nodes than elements. Testers can usually ignore plain nodes. </div> |
 | `parent` | The `DebugElement` parent. Null if this is the root element. |
+| `parent` | `DebugElement` 的父级。如果 `DebugElement` 是根元素，`parent` 为 null。 |
 | `name` | The element tag name, if it is an element. |
+| `name` | 元素的标签名字，如果它是一个元素的话。 |
 | `triggerEventHandler` | Triggers the event by its name if there is a corresponding listener in the element's `listeners` collection. The second parameter is the *event object* expected by the handler. See [triggerEventHandler](guide/testing-components-scenarios#trigger-event-handler). <br /> If the event lacks a listener or there's some other problem, consider calling `nativeElement.dispatchEvent(eventObject)`. |
 | `listeners` | The callbacks attached to the component's `@Output` properties and/or the element's event properties. |
+| `listeners` | 元素的 `@Output` 属性以及/或者元素的事件属性所附带的回调函数。 |
 | `providerTokens` | This component's injector lookup tokens. Includes the component itself plus the tokens that the component lists in its `providers` metadata. |
+| `providerTokens` | 组件注入器的查询令牌。 包括组件自己的令牌和组件的 `providers` 元数据中列出来的令牌。 |
 | `source` | Where to find this element in the source component template. |
+| `source` | source 是在源组件模板中查询这个元素的处所。 |
 | `references` | Dictionary of objects associated with template local variables (for example, `#foo`),keyed by the local variable name. |
 
 <a id="query-predicate"></a>
 
 The `DebugElement.query(predicate)` and `DebugElement.queryAll(predicate)` methods take a predicate that filters the source element's subtree for matching `DebugElement`.
 
+`DebugElement.query(predicate)` 和 `DebugElement.queryAll(predicate)` 方法接受一个条件方法， 它过滤源元素的子树，返回匹配的 `DebugElement`。
+
 The predicate is any method that takes a `DebugElement` and returns a *truthy* value.
 The following example finds all `DebugElements` with a reference to a template local variable named "content":
+
+这个条件方法是任何接受一个 `DebugElement` 并返回真值的方法。 下面的例子查询所有拥有名为 `content` 的模块本地变量的所有 `DebugElement`：
 
 <code-example header="app/demo/demo.testbed.spec.ts" path="testing/src/app/demo/demo.testbed.spec.ts" region="custom-predicate"></code-example>
 
 The Angular `By` class has three static methods for common predicates:
 
+Angular 的 `By` 类为常用条件方法提供了三个静态方法：
+
 | Static method | Details |
 | :------------ | :------ |
+| Static method | 详情 |
 | `By.all` | Return all elements |
 | `By.css(selector)` | Return elements with matching CSS selectors |
 | `By.directive(directive)` | Return elements that Angular matched to an instance of the directive class |
