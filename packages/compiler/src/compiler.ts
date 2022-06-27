@@ -36,8 +36,6 @@ export {core};
 
 export * from './version';
 export {CompilerConfig, preserveWhitespacesDefault} from './config';
-export * from './ast_path';
-export {Identifiers} from './identifiers';
 export * from './resource_loader';
 export {ConstantPool} from './constant_pool';
 export {DEFAULT_INTERPOLATION_CONFIG, InterpolationConfig} from './ml_parser/interpolation_config';
@@ -54,7 +52,7 @@ export * from './ml_parser/tags';
 export {ParseTreeResult, TreeError} from './ml_parser/parser';
 export {LexerRange} from './ml_parser/lexer';
 export * from './ml_parser/xml_parser';
-export {ArrayType, AssertNotNull, DYNAMIC_TYPE, BinaryOperator, BinaryOperatorExpr, BuiltinMethod, BuiltinType, BuiltinTypeName, BuiltinVar, CastExpr, ClassField, ClassMethod, ClassStmt, CommaExpr, ConditionalExpr, DeclareFunctionStmt, DeclareVarStmt, Expression, ExpressionStatement, ExpressionType, ExpressionVisitor, ExternalExpr, ExternalReference, literalMap, FunctionExpr, IfStmt, InstantiateExpr, InvokeFunctionExpr, LiteralArrayExpr, LiteralExpr, LiteralMapExpr, MapType, NotExpr, NONE_TYPE, ReadKeyExpr, ReadPropExpr, ReadVarExpr, ReturnStatement, StatementVisitor, TaggedTemplateExpr, TemplateLiteral, TemplateLiteralElement, ThrowStmt, TryCatchStmt, Type, TypeVisitor, WrappedNodeExpr, WriteKeyExpr, WritePropExpr, WriteVarExpr, StmtModifier, Statement, STRING_TYPE, TypeofExpr, collectExternalReferences, jsDocComment, leadingComment, LeadingComment, JSDocComment, UnaryOperator, UnaryOperatorExpr, LocalizedString} from './output/output_ast';
+export {ArrayType, DYNAMIC_TYPE, BinaryOperator, BinaryOperatorExpr, BuiltinType, BuiltinTypeName, CommaExpr, ConditionalExpr, DeclareFunctionStmt, DeclareVarStmt, Expression, ExpressionStatement, ExpressionType, ExpressionVisitor, ExternalExpr, ExternalReference, literalMap, FunctionExpr, IfStmt, InstantiateExpr, InvokeFunctionExpr, LiteralArrayExpr, LiteralExpr, LiteralMapExpr, MapType, NotExpr, NONE_TYPE, ReadKeyExpr, ReadPropExpr, ReadVarExpr, ReturnStatement, StatementVisitor, TaggedTemplateExpr, TemplateLiteral, TemplateLiteralElement, Type, TypeModifier, TypeVisitor, WrappedNodeExpr, WriteKeyExpr, WritePropExpr, WriteVarExpr, StmtModifier, Statement, STRING_TYPE, TypeofExpr, jsDocComment, leadingComment, LeadingComment, JSDocComment, UnaryOperator, UnaryOperatorExpr, LocalizedString} from './output/output_ast';
 export {EmitterVisitorContext} from './output/abstract_emitter';
 export {JitEvaluator} from './output/output_jit';
 export * from './parse_util';
@@ -71,7 +69,7 @@ export * from './render3/view/t2_binder';
 export {Identifiers as R3Identifiers} from './render3/r3_identifiers';
 export {R3ClassMetadata, CompileClassMetadataFn, compileClassMetadata} from './render3/r3_class_metadata_compiler';
 export {compileFactoryFunction, R3DependencyMetadata, R3FactoryMetadata, FactoryTarget} from './render3/r3_factory';
-export {compileNgModule, R3NgModuleMetadata} from './render3/r3_module_compiler';
+export {compileNgModule, R3NgModuleMetadata, R3SelectorScopeMode} from './render3/r3_module_compiler';
 export {compileInjector, R3InjectorMetadata} from './render3/r3_injector_compiler';
 export {compilePipeFromMetadata, R3PipeMetadata} from './render3/r3_pipe_compiler';
 export {makeBindingParser, ParsedTemplate, parseTemplate, ParseTemplateOptions} from './render3/view/template';
@@ -87,7 +85,8 @@ export {compileDeclareNgModuleFromMetadata} from './render3/partial/ng_module';
 export {compileDeclarePipeFromMetadata} from './render3/partial/pipe';
 export {publishFacade} from './jit_compiler_facade';
 export {emitDistinctChangesOnlyDefaultValue, ChangeDetectionStrategy, ViewEncapsulation} from './core';
-export * as outputAst from './output/output_ast';
+import * as outputAst from './output/output_ast';
+export {outputAst};
 // This file only reexports content of the `src` folder. Keep it that way.
 
 // This function call has a global side effects and publishes the compiler into global namespace for

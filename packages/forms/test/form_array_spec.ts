@@ -21,7 +21,7 @@ describe('FormArray', () => {
     let logger: string[];
 
     beforeEach(() => {
-      a = new FormArray([]);
+      a = new FormArray<any>([]);
       c1 = new FormControl(1);
       c2 = new FormControl(2);
       c3 = new FormControl(3);
@@ -138,7 +138,7 @@ describe('FormArray', () => {
          // becomes invalid.
          const validatorFn = (value: any) => value.controls.length > 0 ? {controls: true} : null;
          const asyncValidatorFn = (value: any) => of(validatorFn(value));
-         const arr: FormArray = new FormArray([], validatorFn, asyncValidatorFn);
+         const arr: FormArray = new FormArray<any>([], validatorFn, asyncValidatorFn);
          expect(arr.valid).toBe(true);
 
          arr.statusChanges.subscribe(() => logger.push('status change'));
@@ -180,7 +180,7 @@ describe('FormArray', () => {
     it('should work with nested form groups/arrays', () => {
       a = new FormArray([
         new FormGroup(
-            {'c2': new FormControl('v2') as AbstractControl, 'c3': new FormControl('v3')}),
+            {'c2': new FormControl('v2') as AbstractControl, 'c3': new FormControl('v3')}) as any,
         new FormArray([new FormControl('v4'), new FormControl('v5')])
       ]);
       a.at(0).get('c3')!.disable();
@@ -293,23 +293,23 @@ describe('FormArray', () => {
 
     it('should throw if fields are missing from supplied value (subset)', () => {
       expect(() => a.setValue([, 'two']))
-          .toThrowError(new RegExp(`Must supply a value for form control at index: 0`));
+          .toThrowError(new RegExp(`NG01002: Must supply a value for form control at index: 0`));
     });
 
     it('should throw if a value is provided for a missing control (superset)', () => {
       expect(() => a.setValue([
         'one', 'two', 'three'
-      ])).toThrowError(new RegExp(`Cannot find form control at index 2`));
+      ])).toThrowError(new RegExp(`NG01001: Cannot find form control at index: 2`));
     });
 
     it('should throw if a value is not provided for a disabled control', () => {
       c2.disable();
       expect(() => a.setValue(['one']))
-          .toThrowError(new RegExp(`Must supply a value for form control at index: 1`));
+          .toThrowError(new RegExp(`NG01002: Must supply a value for form control at index: 1`));
     });
 
     it('should throw if no controls are set yet', () => {
-      const empty: FormArray = new FormArray([]);
+      const empty: FormArray = new FormArray<any>([]);
       expect(() => empty.setValue(['one']))
           .toThrowError(new RegExp(`no form controls registered with this array`));
     });
@@ -1177,7 +1177,7 @@ describe('FormArray', () => {
     });
 
     it('should keep empty, disabled arrays disabled when updating validity', () => {
-      const arr: FormArray = new FormArray([]);
+      const arr: FormArray = new FormArray<any>([]);
       expect(arr.status).toEqual('VALID');
 
       arr.disable();
@@ -1358,6 +1358,187 @@ describe('FormArray', () => {
         a.valueChanges.subscribe(() => logger.push('change!'));
         a.setControl(0, c2);
         expect(logger).toEqual(['change!']);
+      });
+    });
+  });
+
+  describe('out of bounds positive indices', () => {
+    let c1: FormControl = new FormControl(1);
+    let c2: FormControl = new FormControl(2);
+    let c3: FormControl = new FormControl(3);
+    let c4: FormControl = new FormControl(4);
+    let c99: FormControl = new FormControl(99);
+
+    let fa: FormArray;
+
+    beforeEach(() => {
+      fa = new FormArray([c1, c2, c3, c4]);
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.at(index)`
+    it('should work with at', () => {
+      expect(fa.at(4)).toBeUndefined();
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.splice(index, 1, ...)`
+    it('should work with setControl', () => {
+      fa.setControl(4, c99);
+      expect(fa.value).toEqual([1, 2, 3, 4, 99]);
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.splice(index, 1)`
+    it('should work with removeAt', () => {
+      fa.removeAt(4);
+      expect(fa.value).toEqual([1, 2, 3, 4]);
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.splice(index, 0, ...)`
+    it('should work with insert', () => {
+      fa.insert(4, c99);
+      expect(fa.value).toEqual([1, 2, 3, 4, 99]);
+    });
+  });
+
+  describe('negative indices', () => {
+    let c1: FormControl = new FormControl(1);
+    let c2: FormControl = new FormControl(2);
+    let c3: FormControl = new FormControl(3);
+    let c4: FormControl = new FormControl(4);
+    let c99: FormControl = new FormControl(99);
+
+    let fa: FormArray;
+
+    beforeEach(() => {
+      fa = new FormArray([c1, c2, c3, c4]);
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.at(index)`
+    describe('should work with at', () => {
+      it('wrapping from the back between [-length, 0)', () => {
+        expect(fa.at(-1)).toBe(c4);
+        expect(fa.at(-2)).toBe(c3);
+        expect(fa.at(-3)).toBe(c2);
+        expect(fa.at(-4)).toBe(c1);
+      });
+
+      it('becoming undefined when less than -length', () => {
+        expect(fa.at(-5)).toBeUndefined();
+        expect(fa.at(-10)).toBeUndefined();
+      });
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.splice(index, 1, ...)`
+    describe('should work with setControl', () => {
+      describe('wrapping from the back between [-length, 0)', () => {
+        it('at -1', () => {
+          fa.setControl(-1, c99);
+          expect(fa.value).toEqual([1, 2, 3, 99]);
+        });
+        it('at -2', () => {
+          fa.setControl(-2, c99);
+          expect(fa.value).toEqual([1, 2, 99, 4]);
+        });
+        it('at -3', () => {
+          fa.setControl(-3, c99);
+          expect(fa.value).toEqual([1, 99, 3, 4]);
+        });
+        it('at -4', () => {
+          fa.setControl(-4, c99);
+          expect(fa.value).toEqual([99, 2, 3, 4]);
+        });
+      });
+
+      describe('replacing the first item when less than -length', () => {
+        it('at -5', () => {
+          fa.setControl(-5, c99);
+          expect(fa.value).toEqual([99, 2, 3, 4]);
+        });
+        it('at -10', () => {
+          fa.setControl(-10, c99);
+          expect(fa.value).toEqual([99, 2, 3, 4]);
+        });
+      });
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.splice(index, 1)`
+    describe('should work with removeAt', () => {
+      describe('wrapping from the back between [-length, 0)', () => {
+        it('at -1', () => {
+          fa.removeAt(-1);
+          expect(fa.value).toEqual([1, 2, 3]);
+        });
+        it('at -2', () => {
+          fa.removeAt(-2);
+          expect(fa.value).toEqual([1, 2, 4]);
+        });
+        it('at -3', () => {
+          fa.removeAt(-3);
+          expect(fa.value).toEqual([1, 3, 4]);
+        });
+        it('at -4', () => {
+          fa.removeAt(-4);
+          expect(fa.value).toEqual([2, 3, 4]);
+        });
+      });
+
+      describe('removing the first item when less than -length', () => {
+        it('at -5', () => {
+          fa.removeAt(-5);
+          expect(fa.value).toEqual([2, 3, 4]);
+        });
+        it('at -10', () => {
+          fa.removeAt(-10);
+          expect(fa.value).toEqual([2, 3, 4]);
+        });
+      });
+    });
+
+    // This spec checks the behavior is identical to `Array.prototype.splice(index, 0, ...)`
+    describe('should work with insert', () => {
+      describe('wrapping from the back between [-length, 0)', () => {
+        it('at -1', () => {
+          fa.insert(-1, c99);
+          expect(fa.value).toEqual([1, 2, 3, 99, 4]);
+        });
+        it('at -2', () => {
+          fa.insert(-2, c99);
+          expect(fa.value).toEqual([1, 2, 99, 3, 4]);
+        });
+        it('at -3', () => {
+          fa.insert(-3, c99);
+          expect(fa.value).toEqual([1, 99, 2, 3, 4]);
+        });
+        it('at -4', () => {
+          fa.insert(-4, c99);
+          expect(fa.value).toEqual([99, 1, 2, 3, 4]);
+        });
+      });
+
+      describe('prepending when less than -length', () => {
+        it('at -5', () => {
+          fa.insert(-5, c99);
+          expect(fa.value).toEqual([99, 1, 2, 3, 4]);
+        });
+        it('at -10', () => {
+          fa.insert(-10, c99);
+          expect(fa.value).toEqual([99, 1, 2, 3, 4]);
+        });
+      });
+
+      describe('can be extended', () => {
+        it('by a simple strongly-typed array', () => {
+          abstract class StringFormArray extends FormArray {
+            override value!: string[];
+          }
+        });
+
+        it('by a class that redefines many properties', () => {
+          abstract class OtherTypedFormArray<
+              TControls extends Array<AbstractControl<unknown>>> extends FormArray {
+            override controls!: TControls;
+            override value!: never[];
+          }
+        });
       });
     });
   });

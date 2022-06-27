@@ -7,9 +7,10 @@
  */
 
 import {NgModule} from '@angular/core';
+
 import {COMMON_DIRECTIVES} from './directives/index';
-import {NgLocaleLocalization, NgLocalization} from './i18n/localization';
 import {COMMON_PIPES} from './pipes/index';
+
 
 
 // Note: This does not contain the location providers,
@@ -21,7 +22,8 @@ import {COMMON_PIPES} from './pipes/index';
  * `AppModule` when you create a new app with the CLI `new` command.
  *
  * 导出所有基本的 Angular 指令和管道，例如 `NgIf`、`NgForOf`、`DecimalPipe` 等。
- * 它会由 `BrowserModule` 进行二次导出，当你使用 CLI 的 `new` 命令创建新应用时，`BrowserModule` 会自动包含在根模块 `AppModule` 中。
+ * 它会由 `BrowserModule` 进行二次导出，当你使用 CLI 的 `new` 命令创建新应用时，`BrowserModule`
+ * 会自动包含在根模块 `AppModule` 中。
  *
  * * The `providers` options configure the NgModule's injector to provide
  * localization dependencies to members.
@@ -38,9 +40,6 @@ import {COMMON_PIPES} from './pipes/index';
 @NgModule({
   declarations: [COMMON_DIRECTIVES, COMMON_PIPES],
   exports: [COMMON_DIRECTIVES, COMMON_PIPES],
-  providers: [
-    {provide: NgLocalization, useClass: NgLocaleLocalization},
-  ],
 })
 export class CommonModule {
 }

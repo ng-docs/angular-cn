@@ -82,11 +82,11 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * 在编译模板时会自动扩展简写语法。每个嵌入式视图的上下文都会根据其词法位置在逻辑上合并到当前组件上下文。
  *
  * When using the shorthand syntax, Angular allows only [one structural directive
- * on an element](guide/built-in-directives#one-per-element).
+ * on an element](guide/structural-directives#one-per-element).
  * If you want to iterate conditionally, for example,
  * put the `*ngIf` on a container element that wraps the `*ngFor` element.
  * For futher discussion, see
- * [Structural Directives](guide/built-in-directives#one-per-element).
+ * [Structural Directives](guide/structural-directives#one-per-element).
  *
  * 使用简写语法时，Angular
  * 在[一个元素上只允许有一个结构型指令](guide/built-in-directives#one-per-element)。例如，如果要根据条件进行迭代，请将
@@ -294,6 +294,7 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
    *
    * 要按需应用的更改。
    *
+   * @nodoc
    */
   ngDoCheck(): void {
     if (this._ngForOfDirty) {

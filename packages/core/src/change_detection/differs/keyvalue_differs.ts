@@ -7,6 +7,8 @@
  */
 
 import {Optional, SkipSelf, StaticProvider, ɵɵdefineInjectable} from '../../di';
+import {RuntimeError, RuntimeErrorCode} from '../../errors';
+
 import {DefaultKeyValueDifferFactory} from './default_keyvalue_differ';
 
 
@@ -206,7 +208,9 @@ export class KeyValueDiffers {
    * inherited {@link KeyValueDiffers} instance with the provided factories and return a new
    * {@link KeyValueDiffers} instance.
    *
-   * 接受 {@link KeyValueDifferFactory} 的数组，并返回一个提供者，用于使用提供的工厂扩展所继承的 {@link KeyValueDiffers} 实例，并返回一个新的 {@link KeyValueDiffers} 实例。
+   * 接受 {@link KeyValueDifferFactory}
+   * 的数组，并返回一个提供者，用于使用提供的工厂扩展所继承的 {@link KeyValueDiffers}
+   * 实例，并返回一个新的 {@link KeyValueDiffers} 实例。
    *
    * @usageNotes
    *
@@ -218,7 +222,8 @@ export class KeyValueDiffers {
    * which will only be applied to the injector for this component and its children.
    * This step is all that's required to make a new {@link KeyValueDiffer} available.
    *
-   * 以下示例显示如何扩展现有工厂列表，该列表仅适用于该组件及其子组件的注入器。这是使新的{@link KeyValueDiffer}可用的全部步骤。
+   * 以下示例显示如何扩展现有工厂列表，该列表仅适用于该组件及其子组件的注入器。这是使新的{@link
+   * KeyValueDiffer}可用的全部步骤。
    *
    * ```
    * @Component({
@@ -247,6 +252,9 @@ export class KeyValueDiffers {
     if (factory) {
       return factory;
     }
-    throw new Error(`Cannot find a differ supporting object '${kv}'`);
+    const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
+        `Cannot find a differ supporting object '${kv}'` :
+        '';
+    throw new RuntimeError(RuntimeErrorCode.NO_SUPPORTING_DIFFER_FACTORY, errorMessage);
   }
 }

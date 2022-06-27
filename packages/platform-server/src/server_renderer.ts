@@ -72,8 +72,6 @@ class DefaultServerRenderer2 implements Renderer2 {
   createElement(name: string, namespace?: string, debugInfo?: any): any {
     if (namespace) {
       const doc = this.document || getDOM().getDefaultDocument();
-      // TODO(FW-811): Ivy may cause issues here because it's passing around
-      // full URIs for namespaces, therefore this lookup will fail.
       return doc.createElementNS(NAMESPACE_URIS[namespace], name);
     }
 
@@ -90,12 +88,14 @@ class DefaultServerRenderer2 implements Renderer2 {
   }
 
   appendChild(parent: any, newChild: any): void {
-    parent.appendChild(newChild);
+    const targetParent = isTemplateNode(parent) ? parent.content : parent;
+    targetParent.appendChild(newChild);
   }
 
   insertBefore(parent: any, newChild: any, refChild: any): void {
     if (parent) {
-      parent.insertBefore(newChild, refChild);
+      const targetParent = isTemplateNode(parent) ? parent.content : parent;
+      targetParent.insertBefore(newChild, refChild);
     }
   }
 
@@ -131,8 +131,6 @@ class DefaultServerRenderer2 implements Renderer2 {
 
   setAttribute(el: any, name: string, value: string, namespace?: string): void {
     if (namespace) {
-      // TODO(FW-811): Ivy may cause issues here because it's passing around
-      // full URIs for namespaces, therefore this lookup will fail.
       el.setAttributeNS(NAMESPACE_URIS[namespace], namespace + ':' + name, value);
     } else {
       el.setAttribute(name, value);
@@ -141,8 +139,6 @@ class DefaultServerRenderer2 implements Renderer2 {
 
   removeAttribute(el: any, name: string, namespace?: string): void {
     if (namespace) {
-      // TODO(FW-811): Ivy may cause issues here because it's passing around
-      // full URIs for namespaces, therefore this lookup will fail.
       el.removeAttributeNS(NAMESPACE_URIS[namespace], name);
     } else {
       el.removeAttribute(name);
@@ -248,6 +244,10 @@ function checkNoSyntheticProp(name: string, nameKind: string) {
   }
 }
 
+function isTemplateNode(node: any): node is HTMLTemplateElement {
+  return node.tagName === 'TEMPLATE' && node.content !== undefined;
+}
+
 class EmulatedEncapsulationServerRenderer2 extends DefaultServerRenderer2 {
   private contentAttr: string;
   private hostAttr: string;
@@ -288,8 +288,8 @@ function _readStyleAttribute(element: any): {[name: string]: string} {
         if (colonIndex === -1) {
           throw new Error(`Invalid CSS style: ${style}`);
         }
-        const name = style.substr(0, colonIndex).trim();
-        styleMap[name] = style.substr(colonIndex + 1).trim();
+        const name = style.slice(0, colonIndex).trim();
+        styleMap[name] = style.slice(colonIndex + 1).trim();
       }
     }
   }

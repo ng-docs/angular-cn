@@ -5,9 +5,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'app-sizer',
   template: `
   <div>
-    <button (click)="dec()" title="smaller">-</button>
-    <button (click)="inc()" title="bigger">+</button>
-    <label [style.font-size.px]="size">FontSize: {{size}}px</label>
+    <button type="button" (click)="dec()" title="smaller">-</button>
+    <button type="button" (click)="inc()" title="bigger">+</button>
+    <span [style.font-size.px]="size">FontSize: {{size}}px</span>
   </div>`
 })
 export class SizerComponent {

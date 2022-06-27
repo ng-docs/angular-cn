@@ -17,6 +17,7 @@ import {EMPTY, Observable, Observer, of, Subscription, SubscriptionLike} from 'r
 import {delay, filter, first, map, mapTo, tap} from 'rxjs/operators';
 
 import {forEach} from '../src/utils/collection';
+import {getLoadedRoutes} from '../src/utils/config';
 import {isUrlTree} from '../src/utils/type_guards';
 import {RouterTestingModule} from '../testing';
 
@@ -87,6 +88,7 @@ describe('Integration', () => {
 
       it('should not ignore empty paths in legacy mode',
          fakeAsync(inject([Router], (router: Router) => {
+           const warnSpy = spyOn(console, 'warn');
            router.relativeLinkResolution = 'legacy';
 
            const fixture = createRoot(router, RootCmp);
@@ -96,6 +98,10 @@ describe('Integration', () => {
 
            const link = fixture.nativeElement.querySelector('a');
            expect(link.getAttribute('href')).toEqual('/foo/bar/simple');
+           expect(warnSpy.calls.first().args[0])
+               .toContain('/foo/bar/simple will change to /foo/simple');
+           expect(warnSpy.calls.first().args[0])
+               .toContain('relativeLinkResolution: \'legacy\' is deprecated');
          })));
 
       it('should ignore empty paths in corrected mode',
@@ -457,7 +463,6 @@ describe('Integration', () => {
 
       @NgModule({
         declarations: [Parent, NamedOutletHost, Child1, Child2, Child3],
-        entryComponents: [Parent, NamedOutletHost, Child1, Child2, Child3],
         imports: [RouterModule]
       })
       class TestModule {
@@ -642,7 +647,6 @@ describe('Integration', () => {
 
        @NgModule({
          declarations: [OnPushOutlet, NeedCdCmp],
-         entryComponents: [OnPushOutlet, NeedCdCmp],
          imports: [RouterModule],
        })
        class TestModule {
@@ -749,7 +753,7 @@ describe('Integration', () => {
          }
        }
 
-       @NgModule({declarations: [RecordLocationCmp], entryComponents: [RecordLocationCmp]})
+       @NgModule({declarations: [RecordLocationCmp]})
        class TestModule {
        }
 
@@ -1205,26 +1209,6 @@ describe('Integration', () => {
         ]
       });
     });
-
-    it('should ignore the duplicate resulting from a location sync', fakeAsync(() => {
-         const router = TestBed.inject(Router);
-         const fixture = createRoot(router, RootCmp);
-         const location = TestBed.inject(Location) as SpyLocation;
-         router.resetConfig([{path: 'simple', component: SimpleCmp, canActivate: ['in1Second']}]);
-
-         const recordedEvents: any[] = [];
-         router.events.forEach(e => onlyNavigationStartAndEnd(e) && recordedEvents.push(e));
-
-         // setTimeout used so this navigation resolves at the same time as the one that results
-         // from the location PopStateEvent (see Router#setUpLocationChangeListener).
-         setTimeout(() => {
-           router.navigateByUrl('/simple');
-         }, 0);
-         location.simulateUrlPop('/simple');
-         tick(1000);
-         advance(fixture);
-         expectEvents(recordedEvents, [[NavigationStart, '/simple'], [NavigationEnd, '/simple']]);
-       }));
 
     it('should reset location if a navigation by location is successful', fakeAsync(() => {
          const router = TestBed.inject(Router);
@@ -2007,6 +1991,14 @@ describe('Integration', () => {
       }
     }
 
+    @Component({selector: 'nested-cmp', template: 'nested-cmp'})
+    class NestedComponentWithData {
+      data: any = [];
+      constructor(private route: ActivatedRoute) {
+        route.data.forEach(d => this.data.push(d));
+      }
+    }
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         providers: [
@@ -2017,6 +2009,13 @@ describe('Integration', () => {
           {provide: 'resolveNullError', useValue: (a: any, b: any) => Promise.reject(null)},
           {provide: 'resolveEmpty', useValue: (a: any, b: any) => EMPTY},
           {provide: 'numberOfUrlSegments', useValue: (a: any, b: any) => a.url.length},
+          {
+            provide: 'overridingGuard',
+            useValue: (route: ActivatedRouteSnapshot) => {
+              (route as any).data = {prop: 10};
+              return true;
+            }
+          },
         ]
       });
     });
@@ -2262,6 +2261,206 @@ describe('Integration', () => {
          expect(cmp.route.snapshot.data).toEqual({two: 2});
        })));
 
+    it('should override route static data with resolved data',
+       fakeAsync(inject([Router], (router: Router) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([{
+           path: '',
+           component: NestedComponentWithData,
+           resolve: {prop: 'resolveTwo'},
+           data: {prop: 'static'},
+         }]);
+
+         router.navigateByUrl('/');
+         advance(fixture);
+         const cmp = fixture.debugElement.children[1].componentInstance;
+
+         expect(cmp.data).toEqual([{prop: 2}]);
+       })));
+
+    it('should correctly override inherited route static data with resolved data',
+       fakeAsync(inject([Router], (router: Router) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([{
+           path: 'a',
+           component: WrapperCmp,
+           resolve: {prop2: 'resolveTwo'},
+           data: {prop: 'wrapper-a'},
+           children: [
+             // will inherit data from this child route because it has `path` and its parent has
+             // component
+             {
+               path: 'b',
+               data: {prop: 'nested-b'},
+               resolve: {prop3: 'resolveFour'},
+               children: [
+                 {
+                   path: 'c',
+                   children:
+                       [{path: '', component: NestedComponentWithData, data: {prop3: 'nested'}}]
+                 },
+               ]
+             },
+           ],
+         }]);
+
+         router.navigateByUrl('/a/b/c');
+         advance(fixture);
+
+         const pInj =
+             fixture.debugElement.queryAll(By.directive(NestedComponentWithData))[0].injector!;
+         const cmp = pInj.get(NestedComponentWithData);
+         expect(cmp.data).toEqual([{prop: 'nested-b', prop3: 'nested'}]);
+       })));
+
+    it('should not override inherited resolved data with inherited static data',
+       fakeAsync(inject([Router], (router: Router) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([{
+           path: 'a',
+           component: WrapperCmp,
+           resolve: {prop2: 'resolveTwo'},
+           data: {prop: 'wrapper-a'},
+           children: [
+             // will inherit data from this child route because it has `path` and its parent has
+             // component
+             {
+               path: 'b',
+               data: {prop2: 'parent-b', prop: 'parent-b'},
+               children: [
+                 {
+                   path: 'c',
+                   resolve: {prop2: 'resolveFour'},
+                   children: [
+                     {
+                       path: '',
+                       component: NestedComponentWithData,
+                       data: {prop: 'nested-d'},
+                     },
+                   ]
+                 },
+               ]
+             },
+           ],
+         }]);
+
+         router.navigateByUrl('/a/b/c');
+         advance(fixture);
+
+         const pInj =
+             fixture.debugElement.queryAll(By.directive(NestedComponentWithData))[0].injector!;
+         const cmp = pInj.get(NestedComponentWithData);
+         expect(cmp.data).toEqual([{prop: 'nested-d', prop2: 4}]);
+       })));
+
+    it('should not override nested route static data when both are using resolvers',
+       fakeAsync(inject([Router], (router: Router) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([
+           {
+             path: 'child',
+             component: WrapperCmp,
+             resolve: {prop: 'resolveTwo'},
+             children: [{
+               path: '',
+               pathMatch: 'full',
+               component: NestedComponentWithData,
+               resolve: {prop: 'resolveFour'}
+             }]
+           },
+         ]);
+
+         router.navigateByUrl('/child');
+         advance(fixture);
+
+         const pInj = fixture.debugElement.query(By.directive(NestedComponentWithData)).injector!;
+         const cmp = pInj.get(NestedComponentWithData);
+         expect(cmp.data).toEqual([{prop: 4}]);
+       })));
+
+    it('should not override child route\'s static data when both are using static data',
+       fakeAsync(inject([Router], (router: Router) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([
+           {
+             path: 'child',
+             component: WrapperCmp,
+             data: {prop: 'wrapper'},
+             children: [{
+               path: '',
+               pathMatch: 'full',
+               component: NestedComponentWithData,
+               data: {prop: 'inner'}
+             }]
+           },
+         ]);
+
+         router.navigateByUrl('/child');
+         advance(fixture);
+
+         const pInj = fixture.debugElement.query(By.directive(NestedComponentWithData)).injector!;
+         const cmp = pInj.get(NestedComponentWithData);
+         expect(cmp.data).toEqual([{prop: 'inner'}]);
+       })));
+
+    it('should not override child route\'s static data when wrapper is using resolved data and the child route static data',
+       fakeAsync(inject([Router], (router: Router) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([
+           {
+             path: 'nested',
+             component: WrapperCmp,
+             resolve: {prop: 'resolveTwo', prop2: 'resolveSix'},
+             data: {prop3: 'wrapper-static', prop4: 'another-static'},
+             children: [{
+               path: '',
+               pathMatch: 'full',
+               component: NestedComponentWithData,
+               data: {prop: 'nested', prop4: 'nested-static'}
+             }]
+           },
+         ]);
+
+         router.navigateByUrl('/nested');
+         advance(fixture);
+
+         const pInj = fixture.debugElement.query(By.directive(NestedComponentWithData)).injector!;
+         const cmp = pInj.get(NestedComponentWithData);
+         // Issue 34361 - `prop` should contain value defined in `data` object from the nested
+         // route.
+         expect(cmp.data).toEqual(
+             [{prop: 'nested', prop2: 6, prop3: 'wrapper-static', prop4: 'nested-static'}]);
+       })));
+
+    it('should allow guards alter data resolved by routes',
+       fakeAsync(inject([Router], (router: Router) => {
+         // This is not documented or recommended behavior but is here to prevent unexpected
+         // regressions. This behavior isn't necessary 'by design' but it was discovered during a
+         // refactor that some teams depend on it.
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([
+           {
+             path: 'route',
+             component: NestedComponentWithData,
+             canActivate: ['overridingGuard'],
+           },
+         ]);
+
+         router.navigateByUrl('/route');
+         advance(fixture);
+
+         const pInj = fixture.debugElement.query(By.directive(NestedComponentWithData)).injector!;
+         const cmp = pInj.get(NestedComponentWithData);
+         expect(cmp.data).toEqual([{prop: 10}]);
+       })));
+
     it('should rerun resolvers when the urls segments of a wildcard route change',
        fakeAsync(inject([Router, Location], (router: Router) => {
          const fixture = createRoot(router, RootCmp);
@@ -2334,6 +2533,20 @@ describe('Integration', () => {
            expect(log).toEqual(['resolver2', 'resolver1']);
          })));
     });
+
+    it('can resolve symbol keys', fakeAsync(() => {
+         const router = TestBed.inject(Router);
+         const fixture = createRoot(router, RootCmp);
+         const symbolKey = Symbol('key');
+
+         router.resetConfig(
+             [{path: 'simple', component: SimpleCmp, resolve: {[symbolKey]: 'resolveFour'}}]);
+
+         router.navigateByUrl('/simple');
+         advance(fixture);
+
+         expect(router.routerState.root.snapshot.firstChild!.data[symbolKey]).toEqual(4);
+       }));
   });
 
   describe('router links', () => {
@@ -4283,10 +4496,6 @@ describe('Integration', () => {
         return of(delayMs).pipe(delay(delayMs), mapTo(true));
       }
 
-      @NgModule({imports: [RouterModule.forChild([{path: '', component: BlankCmp}])]})
-      class LoadedModule {
-      }
-
       let log: string[];
 
       beforeEach(() => {
@@ -4338,10 +4547,14 @@ describe('Integration', () => {
            const router = TestBed.inject(Router);
 
            router.resetConfig([
-             {path: 'lazy', canLoad: ['guard1'], loadChildren: () => of(LoadedModule)},
+             {path: 'lazy', canLoad: ['guard1'], loadChildren: () => of(ModuleWithBlankCmpAsRoute)},
              {path: 'redirected', component: SimpleCmp},
              // canLoad should not run for this route because 'lazy' activates first
-             {path: '', canLoad: ['returnFalseAndNavigate'], loadChildren: () => of(LoadedModule)},
+             {
+               path: '',
+               canLoad: ['returnFalseAndNavigate'],
+               loadChildren: () => of(ModuleWithBlankCmpAsRoute)
+             },
            ]);
 
            router.navigateByUrl('/lazy');
@@ -4351,8 +4564,11 @@ describe('Integration', () => {
          }));
 
       it('should execute canLoad guards', fakeAsync(inject([Router], (router: Router) => {
-           router.resetConfig(
-               [{path: 'lazy', canLoad: ['guard1', 'guard2'], loadChildren: () => LoadedModule}]);
+           router.resetConfig([{
+             path: 'lazy',
+             canLoad: ['guard1', 'guard2'],
+             loadChildren: () => ModuleWithBlankCmpAsRoute
+           }]);
 
            router.navigateByUrl('/lazy');
            tick(5);
@@ -4367,7 +4583,7 @@ describe('Integration', () => {
              {
                path: 'lazy',
                canLoad: ['returnUrlTree', 'guard1', 'guard2'],
-               loadChildren: () => LoadedModule
+               loadChildren: () => ModuleWithBlankCmpAsRoute
              },
              {path: 'redirected', component: SimpleCmp}
            ]);
@@ -4383,7 +4599,11 @@ describe('Integration', () => {
       it('should redirect with UrlTree if UrlTree is lower priority',
          fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
            router.resetConfig([
-             {path: 'lazy', canLoad: ['guard1', 'returnUrlTree'], loadChildren: () => LoadedModule},
+             {
+               path: 'lazy',
+               canLoad: ['guard1', 'returnUrlTree'],
+               loadChildren: () => ModuleWithBlankCmpAsRoute
+             },
              {path: 'redirected', component: SimpleCmp}
            ]);
 
@@ -4806,6 +5026,37 @@ describe('Integration', () => {
          expect(nativeLink.className).toEqual('');
          expect(nativeButton.className).toEqual('');
        })));
+
+    it('should set a provided aria-current attribute when the link is active (a tag)',
+       fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
+         const fixture = createRoot(router, RootCmp);
+
+         router.resetConfig([{
+           path: 'team/:id',
+           component: TeamCmp,
+           children: [{
+             path: 'link',
+             component: DummyLinkCmp,
+             children: [{path: 'simple', component: SimpleCmp}, {path: '', component: BlankCmp}]
+           }]
+         }]);
+
+         router.navigateByUrl('/team/22/link;exact=true');
+         advance(fixture);
+         advance(fixture);
+         expect(location.path()).toEqual('/team/22/link;exact=true');
+
+         const nativeLink = fixture.nativeElement.querySelector('a');
+         const nativeButton = fixture.nativeElement.querySelector('button');
+         expect(nativeLink.getAttribute('aria-current')).toEqual('page');
+         expect(nativeButton.hasAttribute('aria-current')).toEqual(false);
+
+         router.navigateByUrl('/team/22/link/simple');
+         advance(fixture);
+         expect(location.path()).toEqual('/team/22/link/simple');
+         expect(nativeLink.hasAttribute('aria-current')).toEqual(false);
+         expect(nativeButton.hasAttribute('aria-current')).toEqual(false);
+       })));
   });
 
   describe('lazy loading', () => {
@@ -5178,6 +5429,59 @@ describe('Integration', () => {
          expect(fixture.nativeElement).toHaveText('team 22 [ user john, right: simple ]');
        })));
 
+    it('should render loadComponent named outlet with children', fakeAsync(() => {
+         const router = TestBed.inject(Router);
+         const fixture = createRoot(router, RootCmp);
+
+         @Component({
+           standalone: true,
+           imports: [RouterModule],
+           template: '[right outlet component: <router-outlet></router-outlet>]',
+         })
+         class RightComponent {
+           constructor(readonly route: ActivatedRoute) {}
+         }
+
+         const loadSpy = jasmine.createSpy();
+         loadSpy.and.returnValue(RightComponent);
+
+         router.resetConfig([
+           {
+             path: 'team/:id',
+             component: TeamCmp,
+             children: [
+               {path: 'user/:name', component: UserCmp},
+               {
+                 path: 'simple',
+                 loadComponent: loadSpy,
+                 outlet: 'right',
+                 children: [{path: '', component: SimpleCmp}]
+               },
+             ]
+           },
+           {path: '', component: SimpleCmp}
+         ]);
+
+         router.navigateByUrl('/team/22/(user/john//right:simple)');
+         advance(fixture);
+
+         expect(fixture.nativeElement)
+             .toHaveText('team 22 [ user john, right: [right outlet component: simple] ]');
+         const rightCmp: RightComponent =
+             fixture.debugElement.query(By.directive(RightComponent)).componentInstance;
+         // Ensure we don't accidentally add `EmptyOutletComponent` via `standardizeConfig`
+         expect(rightCmp.route.routeConfig?.component).not.toBeDefined();
+
+         // Ensure we can navigate away and come back
+         router.navigateByUrl('/');
+         advance(fixture);
+         router.navigateByUrl('/team/22/(user/john//right:simple)');
+         advance(fixture);
+         expect(fixture.nativeElement)
+             .toHaveText('team 22 [ user john, right: [right outlet component: simple] ]');
+         expect(loadSpy.calls.count()).toEqual(1);
+       }));
+
     describe('should use the injector of the lazily-loaded configuration', () => {
       class LazyLoadedServiceDefinedInModule {}
 
@@ -5223,11 +5527,7 @@ describe('Integration', () => {
       class LoadedModule {
       }
 
-      @NgModule({
-        declarations: [EagerParentComponent],
-        entryComponents: [EagerParentComponent],
-        imports: [RouterModule]
-      })
+      @NgModule({declarations: [EagerParentComponent], imports: [RouterModule]})
       class TestModule {
       }
 
@@ -5304,6 +5604,24 @@ describe('Integration', () => {
            [NavigationError, '/lazy/loaded'],
          ]);
        })));
+
+    it('should emit an error when the lazily-loaded config is not valid', fakeAsync(() => {
+         const router = TestBed.inject(Router);
+         @NgModule({imports: [RouterModule.forChild([{path: 'loaded'}])]})
+         class LoadedModule {
+         }
+
+         const fixture = createRoot(router, RootCmp);
+         router.resetConfig([{path: 'lazy', loadChildren: () => LoadedModule}]);
+
+         let recordedError: any = null;
+         router.navigateByUrl('/lazy/loaded').catch(err => recordedError = err);
+         advance(fixture);
+
+         expect(recordedError.message)
+             .toEqual(
+                 `Invalid configuration of route 'lazy/loaded'. One of the following must be provided: component, loadComponent, redirectTo, children or loadChildren`);
+       }));
 
     it('should work with complex redirect rules',
        fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
@@ -5406,14 +5724,14 @@ describe('Integration', () => {
            advance(fixture);
 
            const config = router.config as any;
-           const firstConfig = config[1]._loadedConfig!;
+           const firstRoutes = getLoadedRoutes(config[1])!;
 
-           expect(firstConfig).toBeDefined();
-           expect(firstConfig.routes[0].path).toEqual('LoadedModule1');
+           expect(firstRoutes).toBeDefined();
+           expect(firstRoutes[0].path).toEqual('LoadedModule1');
 
-           const secondConfig = firstConfig.routes[0]._loadedConfig!;
-           expect(secondConfig).toBeDefined();
-           expect(secondConfig.routes[0].path).toEqual('LoadedModule2');
+           const secondRoutes = getLoadedRoutes(firstRoutes[0])!;
+           expect(secondRoutes).toBeDefined();
+           expect(secondRoutes[0].path).toEqual('LoadedModule2');
          }));
 
       it('should not preload when canLoad is present and does not execute guard', fakeAsync(() => {
@@ -5429,9 +5747,9 @@ describe('Integration', () => {
            advance(fixture);
 
            const config = router.config as any;
-           const firstConfig = config[1]._loadedConfig!;
+           const firstRoutes = getLoadedRoutes(config[1])!;
 
-           expect(firstConfig).toBeUndefined();
+           expect(firstRoutes).toBeUndefined();
            expect(log.length).toBe(0);
          }));
 
@@ -5678,6 +5996,7 @@ describe('Integration', () => {
 
       it('should not ignore empty path when in legacy mode',
          fakeAsync(inject([Router], (router: Router) => {
+           const warnSpy = spyOn(console, 'warn');
            router.relativeLinkResolution = 'legacy';
 
            const fixture = createRoot(router, RootCmp);
@@ -5689,6 +6008,10 @@ describe('Integration', () => {
 
            const link = fixture.nativeElement.querySelector('a');
            expect(link.getAttribute('href')).toEqual('/lazy/foo/bar/simple');
+           expect(warnSpy.calls.first().args[0])
+               .toContain('/lazy/foo/bar/simple will change to /lazy/foo/simple');
+           expect(warnSpy.calls.first().args[0])
+               .toContain('relativeLinkResolution: \'legacy\' is deprecated');
          })));
 
       it('should ignore empty path when in corrected mode',
@@ -6220,7 +6543,7 @@ class AbsoluteLinkCmp {
 @Component({
   selector: 'link-cmp',
   template:
-      `<router-outlet></router-outlet><a routerLinkActive="active" (isActiveChange)="this.onRouterLinkActivated($event)" [routerLinkActiveOptions]="{exact: exact}" [routerLink]="['./']">link</a>
+      `<router-outlet></router-outlet><a routerLinkActive="active" (isActiveChange)="this.onRouterLinkActivated($event)" [routerLinkActiveOptions]="{exact: exact}" ariaCurrentWhenActive="page" [routerLink]="['./']">link</a>
  <button routerLinkActive="active" [routerLinkActiveOptions]="{exact: exact}" [routerLink]="['./']">button</button>
  `
 })
@@ -6287,6 +6610,10 @@ class CollectParamsCmp {
 
 @Component({selector: 'blank-cmp', template: ``})
 class BlankCmp {
+}
+
+@NgModule({imports: [RouterModule.forChild([{path: '', component: BlankCmp}])]})
+class ModuleWithBlankCmpAsRoute {
 }
 
 @Component({
@@ -6475,37 +6802,6 @@ class LazyComponent {
 
 @NgModule({
   imports: [RouterTestingModule, CommonModule],
-  entryComponents: [
-    BlankCmp,
-    SimpleCmp,
-    TwoOutletsCmp,
-    TeamCmp,
-    UserCmp,
-    StringLinkCmp,
-    DummyLinkCmp,
-    AbsoluteLinkCmp,
-    AbsoluteSimpleLinkCmp,
-    RelativeLinkCmp,
-    DummyLinkWithParentCmp,
-    LinkWithQueryParamsAndFragment,
-    DivLinkWithState,
-    LinkWithState,
-    CollectParamsCmp,
-    QueryParamsAndFragmentCmp,
-    StringLinkButtonCmp,
-    WrapperCmp,
-    OutletInNgIf,
-    ComponentRecordingRoutePathAndUrl,
-    RouteCmp,
-    RootCmp,
-    RelativeLinkInIfCmp,
-    RootCmpWithTwoOutlets,
-    RootCmpWithNamedOutlet,
-    EmptyQueryParamsCmp,
-    ThrowingCmp,
-    ConditionalThrowingCmp,
-  ],
-
 
   exports: [
     BlankCmp,

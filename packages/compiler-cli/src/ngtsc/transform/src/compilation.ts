@@ -9,6 +9,7 @@
 import {ConstantPool} from '@angular/compiler';
 import ts from 'typescript';
 
+import {SourceFileTypeIdentifier} from '../../core/api';
 import {ErrorCode, FatalDiagnosticError} from '../../diagnostics';
 import {IncrementalBuild} from '../../incremental/api';
 import {SemanticDepGraphUpdater, SemanticSymbol} from '../../incremental/semantic_graph';
@@ -17,7 +18,7 @@ import {PerfEvent, PerfRecorder} from '../../perf';
 import {ClassDeclaration, DeclarationNode, Decorator, isNamedClassDeclaration, ReflectionHost} from '../../reflection';
 import {ProgramTypeCheckAdapter, TypeCheckContext} from '../../typecheck/api';
 import {ExtendedTemplateChecker} from '../../typecheck/extended/api';
-import {getSourceFile, isExported} from '../../util/src/typescript';
+import {getSourceFile} from '../../util/src/typescript';
 import {Xi18nContext} from '../../xi18n';
 
 import {AnalysisOutput, CompilationMode, CompileResult, DecoratorHandler, HandlerFlags, HandlerPrecedence, ResolveResult} from './api';
@@ -96,11 +97,15 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
 
   constructor(
       private handlers: DecoratorHandler<unknown, unknown, SemanticSymbol|null, unknown>[],
-      private reflector: ReflectionHost, private perf: PerfRecorder,
+      private reflector: ReflectionHost,
+      private perf: PerfRecorder,
       private incrementalBuild: IncrementalBuild<ClassRecord, unknown>,
-      private compileNonExportedClasses: boolean, private compilationMode: CompilationMode,
+      private compileNonExportedClasses: boolean,
+      private compilationMode: CompilationMode,
       private dtsTransforms: DtsTransformRegistry,
-      private semanticDepGraphUpdater: SemanticDepGraphUpdater|null) {
+      private semanticDepGraphUpdater: SemanticDepGraphUpdater|null,
+      private sourceFileTypeIdentifier: SourceFileTypeIdentifier,
+  ) {
     for (const handler of handlers) {
       this.handlersByName.set(handler.name, handler);
     }
@@ -117,8 +122,9 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
   private analyze(sf: ts.SourceFile, preanalyze: false): void;
   private analyze(sf: ts.SourceFile, preanalyze: true): Promise<void>|undefined;
   private analyze(sf: ts.SourceFile, preanalyze: boolean): Promise<void>|undefined {
-    // We shouldn't analyze declaration files.
-    if (sf.isDeclarationFile) {
+    // We shouldn't analyze declaration, shim, or resource files.
+    if (sf.isDeclarationFile || this.sourceFileTypeIdentifier.isShim(sf) ||
+        this.sourceFileTypeIdentifier.isResource(sf)) {
       return undefined;
     }
 
@@ -152,6 +158,13 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
     };
 
     visit(sf);
+
+    if (!this.fileToClasses.has(sf)) {
+      // If no traits were detected in the source file we record the source file itself to not have
+      // any traits, such that analysis of the source file can be skipped during incremental
+      // rebuilds.
+      this.filesWithoutTraits.add(sf);
+    }
 
     if (preanalyze && promises.length > 0) {
       return Promise.all(promises).then(() => undefined as void);
@@ -578,8 +591,8 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
     let res: CompileResult[] = [];
 
     for (const trait of record.traits) {
-      if (trait.state !== TraitState.Resolved || trait.analysisDiagnostics !== null ||
-          trait.resolveDiagnostics !== null) {
+      if (trait.state !== TraitState.Resolved || containsErrors(trait.analysisDiagnostics) ||
+          containsErrors(trait.resolveDiagnostics)) {
         // Cannot compile a trait that is not resolved, or had any errors in its declaration.
         continue;
       }
@@ -663,4 +676,9 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
   get exportStatements(): Map<string, Map<string, [string, string]>> {
     return this.reexportMap;
   }
+}
+
+function containsErrors(diagnostics: ts.Diagnostic[]|null): boolean {
+  return diagnostics !== null &&
+      diagnostics.some(diag => diag.category === ts.DiagnosticCategory.Error);
 }

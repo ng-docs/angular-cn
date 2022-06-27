@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {isSyntaxError} from '@angular/compiler';
 import ts from 'typescript';
 
 import {absoluteFrom, AbsoluteFsPath, FileSystem, getFileSystem, ReadonlyFileSystem, relative, resolve} from '../src/ngtsc/file_system';
@@ -134,7 +133,7 @@ export function readConfiguration(
   } catch (e) {
     const errors: ts.Diagnostic[] = [{
       category: ts.DiagnosticCategory.Error,
-      messageText: e.stack,
+      messageText: (e as Error).stack ?? (e as Error).message,
       file: undefined,
       start: undefined,
       length: undefined,
@@ -264,22 +263,12 @@ export function performCompilation({
     }
     return {diagnostics: allDiagnostics, program};
   } catch (e) {
-    let errMsg: string;
-    let code: number;
-    if (isSyntaxError(e)) {
-      // don't report the stack for syntax errors as they are well known errors.
-      errMsg = e.message;
-      code = api.DEFAULT_ERROR_CODE;
-    } else {
-      errMsg = e.stack;
-      // It is not a syntax error we might have a program with unknown state, discard it.
-      program = undefined;
-      code = api.UNKNOWN_ERROR_CODE;
-    }
+    // We might have a program with unknown state, discard it.
+    program = undefined;
     allDiagnostics.push({
       category: ts.DiagnosticCategory.Error,
-      messageText: errMsg,
-      code,
+      messageText: (e as Error).stack ?? (e as Error).message,
+      code: api.UNKNOWN_ERROR_CODE,
       file: undefined,
       start: undefined,
       length: undefined,

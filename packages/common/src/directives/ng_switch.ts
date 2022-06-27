@@ -6,7 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, DoCheck, Host, Input, Optional, TemplateRef, ViewContainerRef, ɵRuntimeError as RuntimeError, ɵRuntimeErrorCode as RuntimeErrorCode} from '@angular/core';
+import {Directive, DoCheck, Host, Input, Optional, TemplateRef, ViewContainerRef, ɵRuntimeError as RuntimeError} from '@angular/core';
+
+import {RuntimeErrorCode} from '../errors';
 
 export class SwitchView {
   private _created = false;
@@ -40,7 +42,8 @@ export class SwitchView {
  * The `[ngSwitch]` directive on a container specifies an expression to match against.
  * The expressions to match are provided by `ngSwitchCase` directives on views within the container.
  *
- * 容器上的 `[ngSwitch]` 指令指定要匹配的表达式。匹配的表达式由容器内视图上的 `ngSwitchCase` 指令提供。
+ * 容器上的 `[ngSwitch]` 指令指定要匹配的表达式。匹配的表达式由容器内视图上的 `ngSwitchCase`
+ * 指令提供。
  *
  * - Every view that matches is rendered.
  *
@@ -69,7 +72,8 @@ export class SwitchView {
  * Within the container, `*ngSwitchCase` statements specify the match expressions
  * as attributes. Include `*ngSwitchDefault` as the final case.
  *
- * 在容器内， `*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault` 作为最后一种情况。
+ * 在容器内， `*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault`
+ * 作为最后一种情况。
  *
  * ```
  * <container-element [ngSwitch]="switch_expression">
@@ -186,14 +190,16 @@ export class NgSwitch {
  * When the expressions match, the given `NgSwitchCase` template is rendered.
  * If multiple match expressions match the switch expression value, all of them are displayed.
  *
- * 提供一个 switch case 表达式来匹配一个封闭的 `ngSwitch` 表达式。当表达式匹配时，将渲染给定的 `NgSwitchCase` 模板。如果多个匹配表达式与开关表达式值相匹配，则会全部显示。
+ * 提供一个 switch case 表达式来匹配一个封闭的 `ngSwitch` 表达式。当表达式匹配时，将渲染给定的
+ * `NgSwitchCase` 模板。如果多个匹配表达式与开关表达式值相匹配，则会全部显示。
  *
  * @usageNotes
  *
  * Within a switch container, `*ngSwitchCase` statements specify the match expressions
  * as attributes. Include `*ngSwitchDefault` as the final case.
  *
- * 在开关容器中， `*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault` 作为最后一种情况。
+ * 在开关容器中， `*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault`
+ * 作为最后一种情况。
  *
  * ```
  * <container-element [ngSwitch]="switch_expression">
@@ -207,7 +213,8 @@ export class NgSwitch {
  * that defines the subtree to be selected if the value of the match expression
  * matches the value of the switch expression.
  *
- * 每个 switch-case 语句包含一个内联 HTML 模板或模板引用，该模板或模板引用定义了 match 表达式的值与 switch 表达式的值匹配时要选择的子树。
+ * 每个 switch-case 语句包含一个内联 HTML 模板或模板引用，该模板或模板引用定义了 match 表达式的值与
+ * switch 表达式的值匹配时要选择的子树。
  *
  * Unlike JavaScript, which uses strict equality, Angular uses loose equality.
  * This means that the empty string, `""` matches 0.
@@ -246,6 +253,7 @@ export class NgSwitchCase implements DoCheck {
    *
    * 执行大小写匹配。仅限内部使用。
    *
+   * @nodoc
    */
   ngDoCheck() {
     this._view.enforceState(this.ngSwitch._matchCase(this.ngSwitchCase));
@@ -261,7 +269,8 @@ export class NgSwitchCase implements DoCheck {
  * match the `NgSwitch` expression.
  * This statement should be the final case in an `NgSwitch`.
  *
- * 创建一个当没有任何 `NgSwitchCase` 表达式能匹配 `NgSwitch` 表达时要渲染的视图。该语句应该是 `NgSwitch` 的最后一种情况。
+ * 创建一个当没有任何 `NgSwitchCase` 表达式能匹配 `NgSwitch` 表达时要渲染的视图。该语句应该是
+ * `NgSwitch` 的最后一种情况。
  *
  * @publicApi
  * @see `NgSwitch`
@@ -283,7 +292,7 @@ export class NgSwitchDefault {
 
 function throwNgSwitchProviderNotFoundError(attrName: string, directiveName: string): never {
   throw new RuntimeError(
-      RuntimeErrorCode.TEMPLATE_STRUCTURE_ERROR,
+      RuntimeErrorCode.PARENT_NG_SWITCH_NOT_FOUND,
       `An element with the "${attrName}" attribute ` +
           `(matching the "${
               directiveName}" directive) must be located inside an element with the "ngSwitch" attribute ` +

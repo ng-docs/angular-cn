@@ -6,14 +6,15 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ComponentFactoryResolver, ComponentRef, Directive, Injector, Input, NgModuleFactory, NgModuleRef, OnChanges, OnDestroy, SimpleChanges, StaticProvider, Type, ViewContainerRef} from '@angular/core';
+import {ComponentRef, createNgModuleRef, Directive, Injector, Input, NgModuleFactory, NgModuleRef, OnChanges, OnDestroy, SimpleChanges, Type, ViewContainerRef} from '@angular/core';
 
 
 /**
  * Instantiates a {@link Component} type and inserts its Host View into the current View.
  * `NgComponentOutlet` provides a declarative approach for dynamic component creation.
  *
- * 实例化单个 {@link Component} 类型，并将其宿主视图插入当前视图。`NgComponentOutlet` 为动态组件创建提供了一种声明式方法。
+ * 实例化单个 {@link Component} 类型，并将其宿主视图插入当前视图。`NgComponentOutlet`
+ * 为动态组件创建提供了一种声明式方法。
  *
  * `NgComponentOutlet` requires a component type, if a falsy value is set the view will clear and
  * any existing component will be destroyed.
@@ -33,17 +34,22 @@ import {ComponentFactoryResolver, ComponentRef, Directive, Injector, Input, NgMo
  * * `ngComponentOutletInjector`: Optional custom {@link Injector} that will be used as parent for
  * the Component. Defaults to the injector of the current view container.
  *
- *     `ngComponentOutletInjector`：可选的自定义 {@link Injector}，将用作此组件的父级。默认为当前视图容器的注入器。
+ *     `ngComponentOutletInjector`：可选的自定义 {@link
+ * Injector}，将用作此组件的父级。默认为当前视图容器的注入器。
  *
  * * `ngComponentOutletContent`: Optional list of projectable nodes to insert into the content
  * section of the component, if it exists.
  *
  *     `ngComponentOutletContent`：要插入到组件内容部分的可投影节点的可选列表（如果存在）。
  *
- * * `ngComponentOutletNgModuleFactory`: Optional module factory to allow loading another
+ * * `ngComponentOutletNgModule`: Optional NgModule class reference to allow loading another
  * module dynamically, then loading a component from that module.
  *
  *     `ngComponentOutletNgModuleFactory`：可选模块工厂，允许动态加载其他模块，然后从该模块加载组件。
+ *
+ * * `ngComponentOutletNgModuleFactory`: Deprecated config option that allows providing optional
+ * NgModule factory to allow loading another module dynamically, then loading a component from that
+ * module. Use `ngComponentOutletNgModule` instead.
  *
  * ### Syntax
  *
@@ -68,13 +74,12 @@ import {ComponentFactoryResolver, ComponentRef, Directive, Injector, Input, NgMo
  * </ng-container>
  * ```
  *
- * Customized ngModuleFactory
+ * Customized NgModule reference
  *
- * 定制的 ngModuleFactory
- *
+ * 定制的 ngModule 引用
  * ```
  * <ng-container *ngComponentOutlet="componentTypeExpression;
- *                                   ngModuleFactory: moduleFactory;">
+ *                                   ngModule: ngModuleClass;">
  * </ng-container>
  * ```
  *
@@ -93,51 +98,64 @@ import {ComponentFactoryResolver, ComponentRef, Directive, Injector, Input, NgMo
  */
 @Directive({selector: '[ngComponentOutlet]'})
 export class NgComponentOutlet implements OnChanges, OnDestroy {
-  // TODO(issue/24571): remove '!'.
   @Input() ngComponentOutlet!: Type<any>;
-  // TODO(issue/24571): remove '!'.
-  @Input() ngComponentOutletInjector!: Injector;
-  // TODO(issue/24571): remove '!'.
-  @Input() ngComponentOutletContent!: any[][];
-  // TODO(issue/24571): remove '!'.
-  @Input() ngComponentOutletNgModuleFactory!: NgModuleFactory<any>;
 
-  private _componentRef: ComponentRef<any>|null = null;
-  private _moduleRef: NgModuleRef<any>|null = null;
+  @Input() ngComponentOutletInjector?: Injector;
+  @Input() ngComponentOutletContent?: any[][];
+
+  @Input() ngComponentOutletNgModule?: Type<any>;
+  /**
+   * @deprecated This input is deprecated, use `ngComponentOutletNgModule` instead.
+   */
+  @Input() ngComponentOutletNgModuleFactory?: NgModuleFactory<any>;
+
+  private _componentRef: ComponentRef<any>|undefined;
+  private _moduleRef: NgModuleRef<any>|undefined;
 
   constructor(private _viewContainerRef: ViewContainerRef) {}
 
+  /** @nodoc */
   ngOnChanges(changes: SimpleChanges) {
-    this._viewContainerRef.clear();
-    this._componentRef = null;
+    const {
+      _viewContainerRef: viewContainerRef,
+      ngComponentOutletNgModule: ngModule,
+      ngComponentOutletNgModuleFactory: ngModuleFactory,
+    } = this;
+    viewContainerRef.clear();
+    this._componentRef = undefined;
 
     if (this.ngComponentOutlet) {
-      const elInjector = this.ngComponentOutletInjector || this._viewContainerRef.parentInjector;
+      const injector = this.ngComponentOutletInjector || viewContainerRef.parentInjector;
 
-      if (changes['ngComponentOutletNgModuleFactory']) {
+      if (changes['ngComponentOutletNgModule'] || changes['ngComponentOutletNgModuleFactory']) {
         if (this._moduleRef) this._moduleRef.destroy();
 
-        if (this.ngComponentOutletNgModuleFactory) {
-          const parentModule = elInjector.get(NgModuleRef);
-          this._moduleRef = this.ngComponentOutletNgModuleFactory.create(parentModule.injector);
+        if (ngModule) {
+          this._moduleRef = createNgModuleRef(ngModule, getParentInjector(injector));
+        } else if (ngModuleFactory) {
+          this._moduleRef = ngModuleFactory.create(getParentInjector(injector));
         } else {
-          this._moduleRef = null;
+          this._moduleRef = undefined;
         }
       }
 
-      const componentFactoryResolver = this._moduleRef ? this._moduleRef.componentFactoryResolver :
-                                                         elInjector.get(ComponentFactoryResolver);
-
-      const componentFactory =
-          componentFactoryResolver.resolveComponentFactory(this.ngComponentOutlet);
-
-      this._componentRef = this._viewContainerRef.createComponent(
-          componentFactory, this._viewContainerRef.length, elInjector,
-          this.ngComponentOutletContent);
+      this._componentRef = viewContainerRef.createComponent(this.ngComponentOutlet, {
+        index: viewContainerRef.length,
+        injector,
+        ngModuleRef: this._moduleRef,
+        projectableNodes: this.ngComponentOutletContent,
+      });
     }
   }
 
+  /** @nodoc */
   ngOnDestroy() {
     if (this._moduleRef) this._moduleRef.destroy();
   }
+}
+
+// Helper function that returns an Injector instance of a parent NgModule.
+function getParentInjector(injector: Injector): Injector {
+  const parentNgModule = injector.get(NgModuleRef);
+  return parentNgModule.injector;
 }

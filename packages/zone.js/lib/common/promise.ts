@@ -96,7 +96,7 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
   const REJECTED_NO_CATCH = 0;
 
   function makeResolver(promise: ZoneAwarePromise<any>, state: boolean): (value: any) => void {
-    return (v) => {
+    return (v: any) => {
       try {
         resolvePromise(promise, state, v);
       } catch (err) {
@@ -254,7 +254,8 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
     const promiseState = (promise as any)[symbolState];
     const delegate = promiseState ?
         (typeof onFulfilled === 'function') ? onFulfilled : forwardResolution :
-        (typeof onRejected === 'function') ? onRejected : forwardRejection;
+        (typeof onRejected === 'function') ? onRejected :
+                                             forwardRejection;
     zone.scheduleMicroTask(source, () => {
       try {
         const parentPromiseValue = (promise as any)[symbolValue];
@@ -283,6 +284,8 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
 
   const noop = function() {};
 
+  const AggregateError = global.AggregateError;
+
   class ZoneAwarePromise<R> implements Promise<R> {
     static toString() {
       return ZONE_AWARE_PROMISE_TO_STRING;
@@ -295,6 +298,47 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
     static reject<U>(error: U): Promise<U> {
       return resolvePromise(<ZoneAwarePromise<U>>new this(null as any), REJECTED, error);
     }
+
+    static any<T>(values: Iterable<PromiseLike<T>>): Promise<T> {
+      if (!values || typeof values[Symbol.iterator] !== 'function') {
+        return Promise.reject(new AggregateError([], 'All promises were rejected'));
+      }
+      const promises: Promise<PromiseLike<T>>[] = [];
+      let count = 0;
+      try {
+        for (let v of values) {
+          count++;
+          promises.push(ZoneAwarePromise.resolve(v));
+        }
+      } catch (err) {
+        return Promise.reject(new AggregateError([], 'All promises were rejected'));
+      }
+      if (count === 0) {
+        return Promise.reject(new AggregateError([], 'All promises were rejected'));
+      }
+      let finished = false;
+      const errors: any[] = [];
+      return new ZoneAwarePromise((resolve, reject) => {
+        for (let i = 0; i < promises.length; i++) {
+          promises[i].then(
+              v => {
+                if (finished) {
+                  return;
+                }
+                finished = true;
+                resolve(v);
+              },
+              err => {
+                errors.push(err);
+                count--;
+                if (count === 0) {
+                  finished = true;
+                  reject(new AggregateError(errors, 'All promises were rejected'));
+                }
+              });
+        }
+      });
+    };
 
     static race<R>(values: PromiseLike<any>[]): Promise<R> {
       let resolve: (v: any) => void;
@@ -401,7 +445,11 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
       (promise as any)[symbolState] = UNRESOLVED;
       (promise as any)[symbolValue] = [];  // queue;
       try {
-        executor && executor(makeResolver(promise, RESOLVED), makeResolver(promise, REJECTED));
+        const onceWrapper = once();
+        executor &&
+            executor(
+                onceWrapper(makeResolver(promise, RESOLVED)),
+                onceWrapper(makeResolver(promise, REJECTED)));
       } catch (error) {
         resolvePromise(promise, false, error);
       }
@@ -419,7 +467,15 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
         onFulfilled?: ((value: R) => TResult1 | PromiseLike<TResult1>)|undefined|null,
         onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>)|undefined|
         null): Promise<TResult1|TResult2> {
-      let C = (this.constructor as any)[Symbol.species];
+      // We must read `Symbol.species` safely because `this` may be anything. For instance, `this`
+      // may be an object without a prototype (created through `Object.create(null)`); thus
+      // `this.constructor` will be undefined. One of the use cases is SystemJS creating
+      // prototype-less objects (modules) via `Object.create(null)`. The SystemJS creates an empty
+      // object and copies promise properties into that object (within the `getOrCreateLoad`
+      // function). The zone.js then checks if the resolved value has the `then` method and invokes
+      // it with the `value` context. Otherwise, this will throw an error: `TypeError: Cannot read
+      // properties of undefined (reading 'Symbol(Symbol.species)')`.
+      let C = (this.constructor as any)?.[Symbol.species];
       if (!C || typeof C !== 'function') {
         C = this.constructor || ZoneAwarePromise;
       }
@@ -439,7 +495,8 @@ Zone.__load_patch('ZoneAwarePromise', (global: any, Zone: ZoneType, api: _ZonePr
     }
 
     finally<U>(onFinally?: () => U | PromiseLike<U>): Promise<R> {
-      let C = (this.constructor as any)[Symbol.species];
+      // See comment on the call to `then` about why thee `Symbol.species` is safely accessed.
+      let C = (this.constructor as any)?.[Symbol.species];
       if (!C || typeof C !== 'function') {
         C = ZoneAwarePromise;
       }

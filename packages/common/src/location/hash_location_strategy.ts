@@ -21,7 +21,8 @@ import {joinWithSlash, normalizeQueryParams} from './util';
  * [hash fragment](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax)
  * of the browser's URL.
  *
- * 此 {@link LocationStrategy} 用来配置 {@link Location} 服务，以便在浏览器 URL 的 [hash 片段](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax)中表示其状态。
+ * 此 {@link LocationStrategy} 用来配置 {@link Location} 服务，以便在浏览器 URL 的 [hash
+ * 片段](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax)中表示其状态。
  *
  * For instance, if you call `location.go('/foo')`, the browser's URL will become
  * `example.com#/foo`.
@@ -52,6 +53,7 @@ export class HashLocationStrategy extends LocationStrategy implements OnDestroy 
     }
   }
 
+  /** @nodoc */
   ngOnDestroy(): void {
     while (this._removeListenerFns.length) {
       this._removeListenerFns.pop()!();
@@ -103,6 +105,10 @@ export class HashLocationStrategy extends LocationStrategy implements OnDestroy 
 
   override back(): void {
     this._platformLocation.back();
+  }
+
+  override getState(): unknown {
+    return this._platformLocation.getState();
   }
 
   override historyGo(relativePosition: number = 0): void {

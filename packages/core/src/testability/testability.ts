@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Injectable} from '../di';
+import {Inject, Injectable, InjectionToken} from '../di';
 import {scheduleMicroTask} from '../util/microtask';
 import {NgZone} from '../zone/ng_zone';
 
@@ -15,7 +15,8 @@ import {NgZone} from '../zone/ng_zone';
  * `declare` keyword causes tsickle to generate externs, so these methods are
  * not renamed by Closure Compiler.
  *
- *  `Testability`  API。`declare` 关键字会导致 tsickle 生成外部变量，因此 Closure Compiler 不会重命名这些方法。
+ *  `Testability`  API。`declare` 关键字会导致 tsickle 生成外部变量，因此 Closure Compiler
+ * 不会重命名这些方法。
  *
  * @publicApi
  */
@@ -52,11 +53,38 @@ interface WaitCallback {
 }
 
 /**
- * The Testability service provides testing hooks that can be accessed from
- * the browser. Each bootstrapped Angular application on the page will have
- * an instance of Testability.
+ * Internal injection token that can used to access an instance of a Testability class.
  *
- *  `Testability` 服务提供了可以从浏览器和诸如 Protractor 之类的服务访问的测试钩子。页面上每个自举的 Angular 应用程序都会有一个 Testability 实例。
+ * This token acts as a bridge between the core bootstrap code and the `Testability` class. This is
+ * needed to ensure that there are no direct references to the `Testability` class, so it can be
+ * tree-shaken away (if not referenced). For the environments/setups when the `Testability` class
+ * should be available, this token is used to add a provider that references the `Testability`
+ * class. Otherwise, only this token is retained in a bundle, but the `Testability` class is not.
+ */
+export const TESTABILITY = new InjectionToken<Testability>('');
+
+/**
+ * Internal injection token to retrieve Testability getter class instance.
+ */
+export const TESTABILITY_GETTER = new InjectionToken<GetTestability>('');
+
+/**
+ * The Testability service provides testing hooks that can be accessed from
+ * the browser.
+ *
+ * Angular applications bootstrapped using an NgModule (via `@NgModule.bootstrap` field) will also
+ * instantiate Testability by default (in both development and production modes).
+ *
+ * For applications bootstrapped using the `bootstrapApplication` function, Testability is not
+ * included by default. You can include it into your applications by getting the list of necessary
+ * providers using the `provideProtractorTestingSupport()` function and adding them into the
+ * `options.providers` array. Example:
+ *
+ * ```typescript
+ * import {provideProtractorTestingSupport} from '@angular/platform-browser';
+ *
+ * await bootstrapApplication(RootComponent, providers: [provideProtractorTestingSupport()]);
+ * ```
  *
  * @publicApi
  */
@@ -69,7 +97,8 @@ export class Testability implements PublicTestability {
    * useful to detect if this could have potentially destabilized another
    * component while it is stabilizing.
    *
-   * 自上次 “whenStable” 回调以来是否完成了任何工作。这对于检测它在稳定过程中是否可能使另一个组件不稳定可能很有用。
+   * 自上次 “whenStable”
+   * 回调以来是否完成了任何工作。这对于检测它在稳定过程中是否可能使另一个组件不稳定可能很有用。
    *
    * @internal
    */
@@ -78,7 +107,15 @@ export class Testability implements PublicTestability {
 
   private taskTrackingZone: {macroTasks: Task[]}|null = null;
 
-  constructor(private _ngZone: NgZone) {
+  constructor(
+      private _ngZone: NgZone, private registry: TestabilityRegistry,
+      @Inject(TESTABILITY_GETTER) testabilityGetter: GetTestability) {
+    // If there was no Testability logic registered in the global scope
+    // before, register the current testability getter as a global one.
+    if (!_testabilityGetter) {
+      setTestabilityGetter(testabilityGetter);
+      testabilityGetter.addToWindow(registry);
+    }
     this._watchAngularEvents();
     _ngZone.run(() => {
       this.taskTrackingZone =
@@ -227,7 +264,8 @@ export class Testability implements PublicTestability {
    *    pending macrotasks changes. If this callback returns true doneCb will not be invoked
    *    and no further updates will be issued.
    *
-   * 可选的。如果指定，则每当挂起的宏任务集发生更改时，都会调用此回调。如果此回调返回 true，那么将不会调用 doneCb，并且不会发出进一步的更新。
+   * 可选的。如果指定，则每当挂起的宏任务集发生更改时，都会调用此回调。如果此回调返回
+   * true，那么将不会调用 doneCb，并且不会发出进一步的更新。
    *
    */
   whenStable(doneCb: Function, timeout?: number, updateCb?: Function): void {
@@ -253,6 +291,25 @@ export class Testability implements PublicTestability {
    */
   getPendingRequestCount(): number {
     return this._pendingCount;
+  }
+  /**
+   * Registers an application with a testability hook so that it can be tracked.
+   * @param token token of application, root element
+   *
+   * @internal
+   */
+  registerApplication(token: any) {
+    this.registry.registerApplication(token, this);
+  }
+
+  /**
+   * Unregisters an application.
+   * @param token token of application, root element
+   *
+   * @internal
+   */
+  unregisterApplication(token: any) {
+    this.registry.unregisterApplication(token);
   }
 
   /**
@@ -286,14 +343,10 @@ export class Testability implements PublicTestability {
  *
  * @publicApi
  */
-@Injectable()
+@Injectable({providedIn: 'platform'})
 export class TestabilityRegistry {
   /** @internal */
   _applications = new Map<any, Testability>();
-
-  constructor() {
-    _testabilityGetter.addToWindow(this);
-  }
 
   /**
    * Registers an application with a testability hook so that it can be tracked
@@ -387,7 +440,7 @@ export class TestabilityRegistry {
    *
    */
   findTestabilityInTree(elem: Node, findInAncestors: boolean = true): Testability|null {
-    return _testabilityGetter.findTestabilityInTree(this, elem, findInAncestors);
+    return _testabilityGetter?.findTestabilityInTree(this, elem, findInAncestors) ?? null;
   }
 }
 
@@ -405,14 +458,6 @@ export interface GetTestability {
       Testability|null;
 }
 
-class _NoopGetTestability implements GetTestability {
-  addToWindow(registry: TestabilityRegistry): void {}
-  findTestabilityInTree(registry: TestabilityRegistry, elem: any, findInAncestors: boolean):
-      Testability|null {
-    return null;
-  }
-}
-
 /**
  * Set the {@link GetTestability} implementation used by the Angular testing framework.
  *
@@ -424,4 +469,4 @@ export function setTestabilityGetter(getter: GetTestability): void {
   _testabilityGetter = getter;
 }
 
-let _testabilityGetter: GetTestability = new _NoopGetTestability();
+let _testabilityGetter: GetTestability|undefined;

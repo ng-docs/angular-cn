@@ -12,10 +12,6 @@
     "packages/compiler-cli/src/ngtsc/partial_evaluator/src/interpreter.ts"
   ],
   [
-    "packages/compiler-cli/src/ngtsc/scope/src/component_scope.ts",
-    "packages/compiler-cli/src/ngtsc/scope/src/local.ts"
-  ],
-  [
     "packages/compiler/src/output/output_ast.ts",
     "packages/compiler/src/render3/view/i18n/meta.ts"
   ],
@@ -46,24 +42,67 @@
     "packages/core/src/change_detection/differs/keyvalue_differs.ts"
   ],
   [
-    "packages/core/src/di/injectable.ts",
-    "packages/core/src/di/jit/injectable.ts"
+    "packages/core/src/di/create_injector.ts",
+    "packages/core/src/di/injector.ts"
   ],
   [
+    "packages/core/src/di/create_injector.ts",
+    "packages/core/src/di/provider_collection.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts",
+    "packages/core/src/di/r3_injector.ts",
     "packages/core/src/di/injector_compatibility.ts",
     "packages/core/src/di/injector.ts"
   ],
   [
+    "packages/core/src/di/create_injector.ts",
+    "packages/core/src/di/provider_collection.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts",
+    "packages/core/src/di/r3_injector.ts",
     "packages/core/src/di/injector_token.ts",
     "packages/core/src/di/injector.ts"
   ],
   [
-    "packages/core/src/di/injector.ts",
-    "packages/core/src/di/null_injector.ts"
+    "packages/core/src/di/create_injector.ts",
+    "packages/core/src/di/provider_collection.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts",
+    "packages/core/src/di/r3_injector.ts",
+    "packages/core/src/di/injector.ts"
   ],
   [
-    "packages/core/src/di/injector.ts",
+    "packages/core/src/di/create_injector.ts",
+    "packages/core/src/di/provider_collection.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts",
+    "packages/core/src/di/r3_injector.ts",
+    "packages/core/src/di/null_injector.ts",
+    "packages/core/src/di/injector.ts"
+  ],
+  [
+    "packages/core/src/di/create_injector.ts",
+    "packages/core/src/di/provider_collection.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts",
+    "packages/core/src/render3/interfaces/node.ts",
+    "packages/core/src/render3/interfaces/view.ts",
+    "packages/core/src/di/injector.ts"
+  ],
+  [
+    "packages/core/src/di/injectable.ts",
+    "packages/core/src/di/jit/injectable.ts"
+  ],
+  [
+    "packages/core/src/di/provider_collection.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts",
     "packages/core/src/di/r3_injector.ts"
+  ],
+  [
+    "packages/core/src/di/r3_injector.ts",
+    "packages/core/src/render3/definition.ts",
+    "packages/core/src/render3/interfaces/definition.ts"
   ],
   [
     "packages/core/src/di/reflective_errors.ts",
@@ -72,10 +111,6 @@
   [
     "packages/core/src/linker/component_factory_resolver.ts",
     "packages/core/src/linker/component_factory.ts",
-    "packages/core/src/linker/ng_module_factory.ts"
-  ],
-  [
-    "packages/core/src/linker/component_factory_resolver.ts",
     "packages/core/src/linker/ng_module_factory.ts"
   ],
   [
@@ -138,25 +173,11 @@
     "packages/core/testing/src/test_bed.ts"
   ],
   [
+    "packages/forms/src/directives.ts",
+    "packages/forms/src/directives/ng_control_status.ts",
     "packages/forms/src/directives/abstract_control_directive.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts"
-  ],
-  [
-    "packages/forms/src/directives/abstract_control_directive.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/directives/abstract_form_group_directive.ts",
-    "packages/forms/src/directives/control_container.ts"
-  ],
-  [
-    "packages/forms/src/directives/abstract_control_directive.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/directives/abstract_form_group_directive.ts",
-    "packages/forms/src/directives/control_container.ts",
-    "packages/forms/src/directives/form_interface.ts",
-    "packages/forms/src/directives/ng_control.ts"
+    "packages/forms/src/model/abstract_model.ts",
+    "packages/forms/src/forms.ts"
   ],
   [
     "packages/forms/src/directives/abstract_form_group_directive.ts",
@@ -165,10 +186,7 @@
   ],
   [
     "packages/forms/src/directives/abstract_form_group_directive.ts",
-    "packages/forms/src/directives/control_container.ts",
-    "packages/forms/src/directives/form_interface.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts"
+    "packages/forms/src/directives/form_interface.ts"
   ],
   [
     "packages/forms/src/directives/abstract_form_group_directive.ts",
@@ -176,13 +194,59 @@
   ],
   [
     "packages/forms/src/directives/abstract_form_group_directive.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts"
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/control_container.ts",
+    "packages/forms/src/directives/form_interface.ts"
   ],
   [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/ng_control.ts",
     "packages/forms/src/directives/control_container.ts",
-    "packages/forms/src/directives/form_interface.ts",
-    "packages/forms/src/directives/ng_control.ts"
+    "packages/forms/src/directives/form_interface.ts"
+  ],
+  [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_name.ts"
+  ],
+  [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
+    "packages/forms/src/directives/control_container.ts",
+    "packages/forms/src/directives/form_interface.ts"
+  ],
+  [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
+    "packages/forms/src/directives/control_container.ts",
+    "packages/forms/src/directives/form_interface.ts"
+  ],
+  [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
+    "packages/forms/src/directives/form_interface.ts"
+  ],
+  [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
+    "packages/forms/src/directives/reactive_directives/form_control_name.ts"
+  ],
+  [
+    "packages/forms/src/directives/abstract_form_group_directive.ts",
+    "packages/forms/src/directives/shared.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
+    "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
+    "packages/forms/src/directives/reactive_directives/form_control_name.ts",
+    "packages/forms/src/directives/control_container.ts",
+    "packages/forms/src/directives/form_interface.ts"
   ],
   [
     "packages/forms/src/directives/ng_form.ts",
@@ -201,14 +265,6 @@
     "packages/forms/src/directives/reactive_directives/form_control_name.ts"
   ],
   [
-    "packages/forms/src/directives/reactive_directives/form_control_directive.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
-    "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
-    "packages/forms/src/directives/reactive_directives/form_control_name.ts"
-  ],
-  [
     "packages/forms/src/directives/reactive_directives/form_control_name.ts",
     "packages/forms/src/directives/reactive_directives/form_group_directive.ts"
   ],
@@ -219,13 +275,6 @@
   ],
   [
     "packages/forms/src/directives/reactive_directives/form_control_name.ts",
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
-    "packages/forms/src/directives/reactive_directives/form_group_directive.ts"
-  ],
-  [
-    "packages/forms/src/directives/reactive_directives/form_control_name.ts",
-    "packages/forms/src/model.ts",
     "packages/forms/src/directives/shared.ts",
     "packages/forms/src/directives/reactive_directives/form_group_name.ts",
     "packages/forms/src/directives/reactive_directives/form_group_directive.ts"
@@ -236,12 +285,6 @@
   ],
   [
     "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/directives/reactive_directives/form_group_name.ts"
-  ],
-  [
-    "packages/forms/src/directives/reactive_directives/form_group_directive.ts",
-    "packages/forms/src/model.ts",
     "packages/forms/src/directives/shared.ts",
     "packages/forms/src/directives/reactive_directives/form_group_name.ts"
   ],
@@ -250,41 +293,30 @@
     "packages/forms/src/directives/shared.ts"
   ],
   [
-    "packages/forms/src/directives/reactive_directives/form_group_name.ts",
-    "packages/forms/src/model.ts",
-    "packages/forms/src/directives/shared.ts"
-  ],
-  [
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/model.ts"
-  ],
-  [
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/validators.ts",
     "packages/forms/src/directives/validators.ts",
-    "packages/forms/src/model.ts"
-  ],
-  [
-    "packages/forms/src/directives/shared.ts",
-    "packages/forms/src/validators.ts",
-    "packages/forms/src/model.ts"
+    "packages/forms/src/model/abstract_model.ts"
   ],
   [
     "packages/forms/src/directives/validators.ts",
     "packages/forms/src/validators.ts"
   ],
   [
-    "packages/router/src/config.ts",
-    "packages/router/src/router_state.ts"
-  ],
-  [
-    "packages/router/src/config.ts",
-    "packages/router/src/router_state.ts",
-    "packages/router/src/shared.ts"
+    "packages/forms/src/directives/validators.ts",
+    "packages/forms/src/validators.ts",
+    "packages/forms/src/model/abstract_model.ts"
   ],
   [
     "packages/router/src/directives/router_outlet.ts",
     "packages/router/src/router_outlet_context.ts"
+  ],
+  [
+    "packages/router/src/models.ts",
+    "packages/router/src/router_state.ts"
+  ],
+  [
+    "packages/router/src/models.ts",
+    "packages/router/src/url_tree.ts",
+    "packages/router/src/shared.ts"
   ],
   [
     "packages/router/src/operators/activate_routes.ts",
@@ -309,10 +341,5 @@
   [
     "packages/router/src/shared.ts",
     "packages/router/src/url_tree.ts"
-  ],
-  [
-    "packages/router/src/shared.ts",
-    "packages/router/src/url_tree.ts",
-    "packages/router/src/utils/collection.ts"
   ]
 ]

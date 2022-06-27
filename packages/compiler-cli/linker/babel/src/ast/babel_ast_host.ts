@@ -71,9 +71,10 @@ export class BabelAstHost implements AstHost<t.Expression> {
     for (const property of obj.properties) {
       assert(property, t.isObjectProperty, 'a property assignment');
       assert(property.value, t.isExpression, 'an expression');
-      assert(property.key, isPropertyName, 'a property name');
+      assert(property.key, isObjectExpressionPropertyName, 'a property name');
+
       const key = t.isIdentifier(property.key) ? property.key.name : property.key.value;
-      result.set(key, property.value);
+      result.set(`${key}`, property.value);
     }
     return result;
   }
@@ -99,7 +100,9 @@ export class BabelAstHost implements AstHost<t.Expression> {
     }
     const stmt = fn.body.body[0];
     assert(stmt, t.isReturnStatement, 'a function body with a single return statement');
-    if (stmt.argument === null) {
+
+    // Babel declares `argument` as optional and nullable, so we account for both scenarios.
+    if (stmt.argument === null || stmt.argument === undefined) {
       throw new FatalLinkerError(stmt, 'Unsupported syntax, expected function to return a value.');
     }
 
@@ -122,7 +125,7 @@ export class BabelAstHost implements AstHost<t.Expression> {
   }
 
   getRange(node: t.Expression): Range {
-    if (node.loc == null || node.start === null || node.end === null) {
+    if (node.loc == null || node.start == null || node.end == null) {
       throw new FatalLinkerError(
           node, 'Unable to read range for node - it is missing location information.');
     }
@@ -154,10 +157,15 @@ function isNotSpreadElement(e: t.Expression|t.SpreadElement): e is t.Expression 
 
 
 /**
- * Return true if the expression can be considered a text based property name.
+ * Return true if the node can be considered a text based property name for an
+ * object expression.
+ *
+ * Notably in the Babel AST, object patterns (for destructuring) could be of type
+ * `t.PrivateName` so we need a distinction between object expressions and patterns.
  */
-function isPropertyName(e: t.Expression): e is t.Identifier|t.StringLiteral|t.NumericLiteral {
-  return t.isIdentifier(e) || t.isStringLiteral(e) || t.isNumericLiteral(e);
+function isObjectExpressionPropertyName(n: t.Node): n is t.Identifier|t.StringLiteral|
+    t.NumericLiteral {
+  return t.isIdentifier(n) || t.isStringLiteral(n) || t.isNumericLiteral(n);
 }
 
 /**

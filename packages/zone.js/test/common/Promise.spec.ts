@@ -116,6 +116,32 @@ describe(
         expect(new MyPromise(() => {}).then(() => null) instanceof MyPromise).toBe(true);
       });
 
+      it('should allow subclassing without Symbol.species if properties are copied (SystemJS case)',
+         () => {
+           let value: any = null;
+           const promise = Promise.resolve();
+           const systemjsModule = Object.create(null);
+
+           // We only copy properties from the `promise` instance onto the `systemjsModule` object.
+           // This is what SystemJS is doing internally:
+           // https://github.com/systemjs/systemjs/blob/main/src/system-core.js#L107-L113
+           for (const property in promise) {
+             const value: any = promise[property as keyof typeof promise];
+             if (!(value in systemjsModule) || systemjsModule[property] !== value) {
+               systemjsModule[property] = value;
+             }
+           }
+
+           queueZone.run(() => {
+             Promise.resolve().then(() => systemjsModule).then((v) => (value = v));
+             flushMicrotasks();
+             // Note: we want to ensure that the promise has been resolved. In this specific case
+             // the promise may resolve to different values in the browser and on the Node.js side.
+             // SystemJS runs only in the browser and it only needs the promise to be resolved.
+             expect(value).not.toEqual(null);
+           });
+         });
+
       it('should allow subclassing with Symbol.species', () => {
         class MyPromise extends Promise<any> {
           constructor(fn: any) {
@@ -599,6 +625,121 @@ describe(
         });
       });
 
+      describe('Promise.any', () => {
+        const any = (Promise as any).any;
+        it('undefined parameters', (done: DoneFn) => {
+          any().then(
+              () => {
+                fail('should not get a resolved promise.');
+              },
+              (err: any) => {
+                expect(err.message).toEqual('All promises were rejected');
+                expect(err.errors).toEqual([]);
+                done();
+              });
+        });
+        it('invalid iterable', (done: DoneFn) => {
+          const invalidIterable: any = {};
+          invalidIterable[Symbol.iterator] = () => 2;
+          any(invalidIterable)
+              .then(
+                  () => {
+                    fail('should not get a resolved promise.');
+                  },
+                  (err: any) => {
+                    expect(err.message).toEqual('All promises were rejected');
+                    expect(err.errors).toEqual([]);
+                    done();
+                  });
+        });
+        it('empty parameters', (done: DoneFn) => {
+          any([]).then(
+              () => {
+                fail('should not get a resolved promise.');
+              },
+              (err: any) => {
+                expect(err.message).toEqual('All promises were rejected');
+                expect(err.errors).toEqual([]);
+                done();
+              });
+        });
+        it('non promises parameters', (done: DoneFn) => {
+          any([1, 'test'])
+              .then(
+                  (v: any) => {
+                    expect(v).toBe(1);
+                    done();
+                  },
+                  (err: any) => {
+                    fail('should not get a rejected promise.');
+                  });
+        });
+        it('mixed parameters, non promise first', (done: DoneFn) => {
+          any([1, Promise.resolve(2)])
+              .then(
+                  (v: any) => {
+                    expect(v).toBe(1);
+                    done();
+                  },
+                  (err: any) => {
+                    fail('should not get a rejected promise.');
+                  });
+        });
+        it('mixed parameters, promise first', (done: DoneFn) => {
+          any([Promise.resolve(1), 2])
+              .then(
+                  (v: any) => {
+                    expect(v).toBe(1);
+                    done();
+                  },
+                  (err: any) => {
+                    fail('should not get a rejected promise.');
+                  });
+        });
+        it('all ok promises', (done: DoneFn) => {
+          any([Promise.resolve(1), Promise.resolve(2)])
+              .then(
+                  (v: any) => {
+                    expect(v).toBe(1);
+                    done();
+                  },
+                  (err: any) => {
+                    fail('should not get a rejected promise.');
+                  });
+        });
+        it('all promises, first rejected', (done: DoneFn) => {
+          any([Promise.reject('error'), Promise.resolve(2)])
+              .then(
+                  (v: any) => {
+                    expect(v).toBe(2);
+                    done();
+                  },
+                  (err: any) => {
+                    fail('should not get a rejected promise.');
+                  });
+        });
+        it('all promises, second rejected', (done: DoneFn) => {
+          any([Promise.resolve(1), Promise.reject('error')])
+              .then(
+                  (v: any) => {
+                    expect(v).toBe(1);
+                    done();
+                  },
+                  (err: any) => {
+                    fail('should not get a rejected promise.');
+                  });
+        });
+        it('all rejected promises', (done: DoneFn) => {
+          any([
+            Promise.reject('error1'), Promise.reject('error2')
+          ]).then((v: any) => {fail('should not get a resolved promise.')}, (err: any) => {
+            expect(err.message).toEqual('All promises were rejected');
+            expect(err.errors).toEqual(['error1', 'error2']);
+            done();
+          });
+        });
+      });
+
       describe('Promise.allSettled', () => {
         const yes = function makeFulfilledResult(value: any) {
           return {status: 'fulfilled', value: value};
@@ -693,6 +834,74 @@ describe(
 
             expect(original.thenArgs.length).toBe(1);
             expect(Subclass.thenArgs.length).toBe(1);
+          });
+        });
+
+        describe('resolve/reject multiple times', () => {
+          it('should ignore second resolve', (done) => {
+            const nested = new Promise(res => setTimeout(() => res('nested')));
+            const p = new Promise(res => {
+              res(nested);
+              res(1);
+            });
+            p.then(v => {
+              expect(v).toBe('nested');
+              done();
+            });
+          });
+          it('should ignore second resolve', (done) => {
+            const nested = new Promise(res => setTimeout(() => res('nested')));
+            const p = new Promise(res => {
+              res(1);
+              res(nested);
+            });
+            p.then(v => {
+              expect(v).toBe(1);
+              done();
+            });
+          });
+          it('should ignore second reject', (done) => {
+            const p = new Promise((res, rej) => {
+              rej(1);
+              rej(2);
+            });
+            p.then(
+                v => {
+                  fail('should not get here');
+                },
+                err => {
+                  expect(err).toBe(1);
+                  done();
+                });
+          });
+          it('should ignore resolve after reject', (done) => {
+            const p = new Promise((res, rej) => {
+              rej(1);
+              res(2);
+            });
+            p.then(
+                v => {
+                  fail('should not get here');
+                },
+                err => {
+                  expect(err).toBe(1);
+                  done();
+                });
+          });
+          it('should ignore reject after resolve', (done) => {
+            const nested = new Promise(res => setTimeout(() => res('nested')));
+            const p = new Promise((res, rej) => {
+              res(nested);
+              rej(1);
+            });
+            p.then(
+                v => {
+                  expect(v).toBe('nested');
+                  done();
+                },
+                err => {
+                  fail('should not be here');
+                });
           });
         });
       });

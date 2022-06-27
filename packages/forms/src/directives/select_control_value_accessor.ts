@@ -32,8 +32,8 @@ function _extractId(valueString: string): string {
  * changes. The value accessor is used by the `FormControlDirective`, `FormControlName`, and
  * `NgModel` directives.
  *
- * 该 `ControlValueAccessor` 用于写入 select 控件的值，并监听 select 控件的变化。该值访问器会被 `FormControlDirective`、`FormControlName` 和
- * `NgModel` 指令使用。
+ * 该 `ControlValueAccessor` 用于写入 select 控件的值，并监听 select 控件的变化。该值访问器会被
+ * `FormControlDirective`、`FormControlName` 和 `NgModel` 指令使用。
  *
  * @usageNotes
  *
@@ -67,7 +67,10 @@ function _extractId(valueString: string): string {
  * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
  * second response will produce objects with different identities.
  *
- * Angular 使用对象标识作为选项。条目标识可能在其实质性数据没有变化的情况发生变化。比如，如果这些条目是通过 RPC 的方式从服务端取到的，当重新执行 RPC 时，就算数据没有变化，第二个响应也会生成一些具有不同对象标识的对象。
+ * Angular
+ * 使用对象标识作为选项。条目标识可能在其实质性数据没有变化的情况发生变化。比如，如果这些条目是通过
+ * RPC 的方式从服务端取到的，当重新执行 RPC
+ * 时，就算数据没有变化，第二个响应也会生成一些具有不同对象标识的对象。
  *
  * To customize the default option comparison algorithm, `<select>` supports `compareWith` input.
  * `compareWith` takes a **function** which has two arguments: `option1` and `option2`.
@@ -97,8 +100,8 @@ function _extractId(valueString: string): string {
  * for selects in IE, see:
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event#browser_compatibility
  *
- * 注意：我们要监听 `change` 事件，这是因为 `input` 事件不会在 Firefox 和 IE 的 `select` 元素上触发：
- * https://bugzilla.mozilla.org/show_bug.cgi?id=1024350
+ * 注意：我们要监听 `change` 事件，这是因为 `input` 事件不会在 Firefox 和 IE 的 `select`
+ * 元素上触发： https://bugzilla.mozilla.org/show_bug.cgi?id=1024350
  * https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4660045/
  *
  * @ngModule ReactiveFormsModule
@@ -141,8 +144,7 @@ export class SelectControlValueAccessor extends BuiltInControlValueAccessor impl
   private _compareWith: (o1: any, o2: any) => boolean = Object.is;
 
   /**
-   * Sets the "value" property on the input element. The "selectedIndex"
-   * property is also set if an ID is provided on the option element.
+   * Sets the "value" property on the select element.
    *
    * 在输入元素上设置 “value” 属性。如果在选项元素上提供了 ID，则还将设置 “selectedIndex” 属性。
    *
@@ -151,9 +153,6 @@ export class SelectControlValueAccessor extends BuiltInControlValueAccessor impl
   writeValue(value: any): void {
     this.value = value;
     const id: string|null = this._getOptionId(value);
-    if (id == null) {
-      this.setProperty('selectedIndex', -1);
-    }
     const valueString = _buildValueString(id, value);
     this.setProperty('value', valueString);
   }

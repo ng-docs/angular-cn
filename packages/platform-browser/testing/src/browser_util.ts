@@ -41,10 +41,6 @@ export class BrowserDetection {
     return this._ua.indexOf('Edge') > -1;
   }
 
-  get isIE(): boolean {
-    return this._ua.indexOf('Trident') > -1;
-  }
-
   get isWebkit(): boolean {
     return this._ua.indexOf('AppleWebKit') > -1 && this._ua.indexOf('Edge') == -1 &&
         this._ua.indexOf('IEMobile') == -1;
@@ -56,7 +52,7 @@ export class BrowserDetection {
   }
 
   get isSlow(): boolean {
-    return this.isAndroid || this.isIE || this.isIOS7;
+    return this.isAndroid || this.isIOS7;
   }
 
   get isChromeDesktop(): boolean {
@@ -91,6 +87,11 @@ export class BrowserDetection {
   get supportsDeprecatedShadowDomV0() {
     const testEl = document.createElement('div') as any;
     return (typeof testEl.createShadowRoot !== 'undefined');
+  }
+
+  get supportsTemplateElement() {
+    const testEl = document.createElement('template') as any;
+    return (typeof testEl.content !== 'undefined');
   }
 }
 

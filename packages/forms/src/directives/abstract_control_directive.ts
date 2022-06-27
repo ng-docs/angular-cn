@@ -8,7 +8,7 @@
 
 import {Observable} from 'rxjs';
 
-import {AbstractControl} from '../model';
+import {AbstractControl} from '../model/abstract_model';
 import {composeAsyncValidators, composeValidators} from '../validators';
 
 import {AsyncValidator, AsyncValidatorFn, ValidationErrors, Validator, ValidatorFn} from './validators';
@@ -82,7 +82,8 @@ export abstract class AbstractControlDirective {
    * errors are not yet available for the input value. If the control is not present, null is
    * returned.
    *
-   * 报告控件是否处于挂起状态，这意味着异步验证正在发生，并且错误尚未可用于输入值。如果控件不存在，则返回 null。
+   * 报告控件是否处于挂起状态，这意味着异步验证正在发生，并且错误尚未可用于输入值。如果控件不存在，则返回
+   * null。
    *
    */
   get pending(): boolean|null {
@@ -95,7 +96,8 @@ export abstract class AbstractControlDirective {
    * in the UI and is exempt from validation checks and excluded from aggregate
    * values of ancestor controls. If the control is not present, null is returned.
    *
-   * 报告该控件是否被禁用，这意味着该控件在 UI 中被禁用，并且免于进行验证检查，并被排除在祖先控件的聚合值之外。如果控件不存在，则返回 null。
+   * 报告该控件是否被禁用，这意味着该控件在 UI
+   * 中被禁用，并且免于进行验证检查，并被排除在祖先控件的聚合值之外。如果控件不存在，则返回 null。
    *
    */
   get disabled(): boolean|null {
@@ -107,7 +109,8 @@ export abstract class AbstractControlDirective {
    * Reports whether the control is enabled, meaning that the control is included in ancestor
    * calculations of validity or value. If the control is not present, null is returned.
    *
-   * 报告控件是否被启用，这意味着控件已包含在祖先的有效性计算或值计算中。如果控件不存在，则返回 null。
+   * 报告控件是否被启用，这意味着控件已包含在祖先的有效性计算或值计算中。如果控件不存在，则返回
+   * null。
    *
    */
   get enabled(): boolean|null {
@@ -154,7 +157,8 @@ export abstract class AbstractControlDirective {
    * Reports whether the control is touched, meaning that the user has triggered
    * a `blur` event on it. If the control is not present, null is returned.
    *
-   * 报告控件是否被接触过，被接触过的意思是用户已在控件上触发过 `blur` 事件。如果控件不存在，则返回 null。
+   * 报告控件是否被接触过，被接触过的意思是用户已在控件上触发过 `blur` 事件。如果控件不存在，则返回
+   * null。
    *
    */
   get touched(): boolean|null {
@@ -167,7 +171,8 @@ export abstract class AbstractControlDirective {
    * 'VALID', 'INVALID', 'DISABLED', and 'PENDING'.
    * If the control is not present, null is returned.
    *
-   * 报告控件的验证状态。可能的值包括：“VALID”、“INVALID”、“DISABLED” 和 “PENDING”。如果控件不存在，则返回 null。
+   * 报告控件的验证状态。可能的值包括：“VALID”、“INVALID”、“DISABLED” 和
+   * “PENDING”。如果控件不存在，则返回 null。
    *
    */
   get status(): string|null {
@@ -179,7 +184,8 @@ export abstract class AbstractControlDirective {
    * Reports whether the control is untouched, meaning that the user has not yet triggered
    * a `blur` event on it. If the control is not present, null is returned.
    *
-   * 报告控件是否未被接触过，未被接触过的意思是用户尚未在其上触发过 `blur` 事件。如果控件不存在，则返回 null。
+   * 报告控件是否未被接触过，未被接触过的意思是用户尚未在其上触发过 `blur`
+   * 事件。如果控件不存在，则返回 null。
    *
    */
   get untouched(): boolean|null {
@@ -204,7 +210,8 @@ export abstract class AbstractControlDirective {
    * value of the control changes in the UI or programmatically.
    * If the control is not present, null is returned.
    *
-   * 返回控件值变更的多播可观察对象，它会在每次控件的值在 UI 中或以编程方式更改时触发。如果控件不存在，则返回 null。
+   * 返回控件值变更的多播可观察对象，它会在每次控件的值在 UI
+   * 中或以编程方式更改时触发。如果控件不存在，则返回 null。
    *
    */
   get valueChanges(): Observable<any>|null {

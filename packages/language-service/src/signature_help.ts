@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Call} from '@angular/compiler';
+import {Call, SafeCall} from '@angular/compiler';
 import {NgCompiler} from '@angular/compiler-cli/src/ngtsc/core';
 import {getSourceFileOrError} from '@angular/compiler-cli/src/ngtsc/file_system';
 import {SymbolKind} from '@angular/compiler-cli/src/ngtsc/typecheck/api';
@@ -48,19 +48,19 @@ export function getSignatureHelp(
   // Additionally, extract the `Call` node for which signature help is being queried, as this
   // is needed to construct the correct span for the results later.
   let shimPosition: number;
-  let expr: Call;
+  let expr: Call|SafeCall;
   switch (targetInfo.context.kind) {
     case TargetNodeKind.RawExpression:
       // For normal expressions, just use the primary TCB position of the expression.
-      shimPosition = symbol.shimLocation.positionInShimFile;
+      shimPosition = symbol.tcbLocation.positionInFile;
 
       // Walk up the parents of this expression and try to find a
       // `Call` for which signature information is being fetched.
-      let callExpr: Call|null = null;
+      let callExpr: Call|SafeCall|null = null;
       const parents = targetInfo.context.parents;
       for (let i = parents.length - 1; i >= 0; i--) {
         const parent = parents[i];
-        if (parent instanceof Call) {
+        if (parent instanceof Call || parent instanceof SafeCall) {
           callExpr = parent;
           break;
         }
@@ -87,10 +87,9 @@ export function getSignatureHelp(
       // from it directly.
       //
       // First, use `findTightestNode` to locate the `ts.Node` at `symbol`'s location.
-      const shimSf =
-          getSourceFileOrError(compiler.getCurrentProgram(), symbol.shimLocation.shimPath);
+      const shimSf = getSourceFileOrError(compiler.getCurrentProgram(), symbol.tcbLocation.tcbPath);
       let shimNode: ts.Node|null =
-          findTightestNode(shimSf, symbol.shimLocation.positionInShimFile) ?? null;
+          findTightestNode(shimSf, symbol.tcbLocation.positionInFile) ?? null;
 
       // This node should be somewhere inside a `ts.CallExpression`. Walk up the AST to find it.
       while (shimNode !== null) {
@@ -115,7 +114,7 @@ export function getSignatureHelp(
       break;
   }
 
-  const res = tsLS.getSignatureHelpItems(symbol.shimLocation.shimPath, shimPosition, options);
+  const res = tsLS.getSignatureHelpItems(symbol.tcbLocation.tcbPath, shimPosition, options);
   if (res === undefined) {
     return undefined;
   }

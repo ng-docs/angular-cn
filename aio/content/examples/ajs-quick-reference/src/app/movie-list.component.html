@@ -39,7 +39,7 @@
     <thead>
       <tr>
         <th>
-          <button (click)="toggleImage()">
+          <button type="button" (click)="toggleImage()">
             {{showImage ? "Hide" : "Show"}} Poster
           </button>
         </th>
@@ -61,6 +61,7 @@
                 [style.height.px]="50"
                 [style.margin.px]="2"
                 [src]="movie.imageurl"
+                [alt]="movie.title"
                 [title]="movie.title">
         </td>
         <td>{{movie.title}}</td>

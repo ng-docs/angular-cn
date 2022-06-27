@@ -7,10 +7,10 @@
  */
 
 import {ChangeDetectorRef as ViewEngine_ChangeDetectorRef} from '../change_detection/change_detector_ref';
-import {InjectionToken} from '../di/injection_token';
 import {Injector} from '../di/injector';
 import {InjectFlags} from '../di/interface/injector';
 import {ProviderToken} from '../di/provider_token';
+import {EnvironmentInjector} from '../di/r3_injector';
 import {Type} from '../interface/type';
 import {ComponentFactory as viewEngine_ComponentFactory, ComponentRef as viewEngine_ComponentRef} from '../linker/component_factory';
 import {ComponentFactoryResolver as viewEngine_ComponentFactoryResolver} from '../linker/component_factory_resolver';
@@ -20,6 +20,7 @@ import {RendererFactory2} from '../render/api';
 import {Sanitizer} from '../sanitization/sanitizer';
 import {VERSION} from '../version';
 import {NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR} from '../view/provider_flags';
+
 import {assertComponentType} from './assert';
 import {createRootComponent, createRootComponentView, createRootContext, LifecycleHooksFeature} from './component';
 import {getComponentDef} from './definition';
@@ -35,7 +36,6 @@ import {createElementNode, writeDirectClass} from './node_manipulation';
 import {extractAttrsAndClassesFromSelector, stringifyCSSSelectorList} from './node_selector_matcher';
 import {enterView, leaveView} from './state';
 import {setUpAttributes} from './util/attrs_utils';
-import {defaultScheduler} from './util/misc_utils';
 import {getTNode} from './util/view_utils';
 import {RootViewRef, ViewRef} from './view_ref';
 
@@ -71,34 +71,31 @@ function getNamespace(elementName: string): string|null {
 }
 
 /**
- * A change detection scheduler token for {@link RootContext}. This token is the default value used
- * for the default `RootContext` found in the {@link ROOT_CONTEXT} token.
+ * Injector that looks up a value using a specific injector, before falling back to the module
+ * injector. Used primarily when creating components or embedded views dynamically.
  *
- * 供 {@link RootContext} 使用的变更检测调度器的令牌。该令牌是供 {@link ROOT_CONTEXT} 对应的默认 `RootContext` 使用的默认值。
+ * 供 {@link RootContext} 使用的变更检测调度器的令牌。该令牌是供 {@link ROOT_CONTEXT} 对应的默认
+ * `RootContext` 使用的默认值。
  */
-export const SCHEDULER = new InjectionToken<((fn: () => void) => void)>('SCHEDULER_TOKEN', {
-  providedIn: 'root',
-  factory: () => defaultScheduler,
-});
+class ChainedInjector implements Injector {
+  constructor(private injector: Injector, private parentInjector: Injector) {}
 
-function createChainedInjector(rootViewInjector: Injector, moduleInjector: Injector): Injector {
-  return {
-    get: <T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T => {
-      const value = rootViewInjector.get(token, NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR as T, flags);
+  get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T {
+    const value = this.injector.get<T|typeof NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR>(
+        token, NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, flags);
 
-      if (value !== NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR ||
-          notFoundValue === NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR) {
-        // Return the value from the root element injector when
-        // - it provides it
-        //   (value !== NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR)
-        // - the module injector should not be checked
-        //   (notFoundValue === NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR)
-        return value;
-      }
-
-      return moduleInjector.get(token, notFoundValue, flags);
+    if (value !== NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR ||
+        notFoundValue === (NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR as unknown as T)) {
+      // Return the value from the root element injector when
+      // - it provides it
+      //   (value !== NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR)
+      // - the module injector should not be checked
+      //   (notFoundValue === NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR)
+      return value as T;
     }
-  };
+
+    return this.parentInjector.get(token, notFoundValue, flags);
+  }
 }
 
 /**
@@ -136,14 +133,25 @@ export class ComponentFactory<T> extends viewEngine_ComponentFactory<T> {
 
   override create(
       injector: Injector, projectableNodes?: any[][]|undefined, rootSelectorOrNode?: any,
-      ngModule?: viewEngine_NgModuleRef<any>|undefined): viewEngine_ComponentRef<T> {
-    ngModule = ngModule || this.ngModule;
+      environmentInjector?: viewEngine_NgModuleRef<any>|EnvironmentInjector|
+      undefined): viewEngine_ComponentRef<T> {
+    environmentInjector = environmentInjector || this.ngModule;
+
+    let realEnvironmentInjector = environmentInjector instanceof EnvironmentInjector ?
+        environmentInjector :
+        environmentInjector?.injector;
+
+    if (realEnvironmentInjector && this.componentDef.getStandaloneInjector !== null) {
+      realEnvironmentInjector = this.componentDef.getStandaloneInjector(realEnvironmentInjector) ||
+          realEnvironmentInjector;
+    }
 
     const rootViewInjector =
-        ngModule ? createChainedInjector(injector, ngModule.injector) : injector;
+        realEnvironmentInjector ? new ChainedInjector(injector, realEnvironmentInjector) : injector;
 
     const rendererFactory =
-        rootViewInjector.get(RendererFactory2, domRendererFactory3) as RendererFactory3;
+        rootViewInjector.get(RendererFactory2, domRendererFactory3 as RendererFactory2) as
+        RendererFactory3;
     const sanitizer = rootViewInjector.get(Sanitizer, null);
 
     const hostRenderer = rendererFactory.createRenderer(null, this.componentDef);
@@ -164,7 +172,7 @@ export class ComponentFactory<T> extends viewEngine_ComponentFactory<T> {
     const rootTView = createTView(TViewType.Root, null, null, 1, 0, null, null, null, null, null);
     const rootLView = createLView(
         null, rootTView, rootContext, rootFlags, null, null, rendererFactory, hostRenderer,
-        sanitizer, rootViewInjector);
+        sanitizer, rootViewInjector, null);
 
     // rootView is the parent when bootstrapping
     // TODO(misko): it looks like we are entering view here but we don't really need to as
@@ -251,7 +259,8 @@ export function injectComponentFactoryResolver(): viewEngine_ComponentFactoryRes
  * Component Instance and allows you to destroy the Component Instance via the {@link #destroy}
  * method.
  *
- * `ComponentRef` 提供了对该组件实例及其相关对象的访问能力，并允许你通过 {@link #destroy} 方法销毁该实例。
+ * `ComponentRef` 提供了对该组件实例及其相关对象的访问能力，并允许你通过 {@link #destroy}
+ * 方法销毁该实例。
  *
  */
 export class ComponentRef<T> extends viewEngine_ComponentRef<T> {

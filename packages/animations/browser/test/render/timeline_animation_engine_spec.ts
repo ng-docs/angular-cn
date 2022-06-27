@@ -78,8 +78,8 @@ describe('TimelineAnimationEngine', () => {
 
        const player = invokeAnimation(engine, element, steps) as MockAnimationPlayer;
        expect(player.keyframes).toEqual([
-         {'width-normalized': '333px-normalized', offset: 0},
-         {'width-normalized': '999px-normalized', offset: 1}
+         new Map<string, string|number>([['width-normalized', '333px-normalized'], ['offset', 0]]),
+         new Map<string, string|number>([['width-normalized', '999px-normalized'], ['offset', 1]])
        ]);
      });
 
@@ -91,9 +91,11 @@ describe('TimelineAnimationEngine', () => {
       style({width: '*'}),
       animate(1000, style({width: '999px'})),
     ];
-
     const player = invokeAnimation(engine, element, steps) as MockAnimationPlayer;
-    expect(player.keyframes).toEqual([{width: '*star*', offset: 0}, {width: '999px', offset: 1}]);
+    expect(player.keyframes).toEqual([
+      new Map<string, string|number>([['width', '*star*'], ['offset', 0]]),
+      new Map<string, string|number>([['width', '999px'], ['offset', 1]])
+    ]);
   });
 });
 })();
@@ -110,13 +112,13 @@ class SuffixNormalizer extends AnimationStyleNormalizer {
     super();
   }
 
-  override normalizePropertyName(propertyName: string, errors: string[]): string {
+  override normalizePropertyName(propertyName: string, errors: Error[]): string {
     return propertyName + this._suffix;
   }
 
   override normalizeStyleValue(
       userProvidedProperty: string, normalizedProperty: string, value: string|number,
-      errors: string[]): string {
+      errors: Error[]): string {
     return value + this._suffix;
   }
 }

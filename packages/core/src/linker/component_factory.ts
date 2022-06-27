@@ -8,6 +8,7 @@
 
 import {ChangeDetectorRef} from '../change_detection/change_detection';
 import {Injector} from '../di/injector';
+import {EnvironmentInjector} from '../di/r3_injector';
 import {Type} from '../interface/type';
 
 import {ElementRef} from './element_ref';
@@ -101,13 +102,17 @@ export abstract class ComponentRef<C> {
  * Instantiate a factory for a given type of component with `resolveComponentFactory()`.
  * Use the resulting `ComponentFactory.create()` method to create a component of that type.
  *
- * 可用来动态创建组件的工厂的基类。`resolveComponentFactory()` 实例化给定类型的组件的工厂。使用生成的 `ComponentFactory.create()` 方法创建该类型的组件。
+ * 可用来动态创建组件的工厂的基类。`resolveComponentFactory()`
+ * 实例化给定类型的组件的工厂。使用生成的 `ComponentFactory.create()` 方法创建该类型的组件。
  *
  * @see [Dynamic Components](guide/dynamic-component-loader)
  *
  * [动态组件](guide/dynamic-component-loader)
  *
  * @publicApi
+ *
+ * @deprecated Angular no longer requires Component factories. Please use other APIs where
+ *     Component class can be used directly.
  */
 export abstract class ComponentFactory<C> {
   /**
@@ -153,5 +158,5 @@ export abstract class ComponentFactory<C> {
    */
   abstract create(
       injector: Injector, projectableNodes?: any[][], rootSelectorOrNode?: string|any,
-      ngModule?: NgModuleRef<any>): ComponentRef<C>;
+      environmentInjector?: EnvironmentInjector|NgModuleRef<any>): ComponentRef<C>;
 }

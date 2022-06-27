@@ -17,6 +17,7 @@ export const NAMESPACE_URIS: {[ns: string]: string} = {
   'xlink': 'http://www.w3.org/1999/xlink',
   'xml': 'http://www.w3.org/XML/1998/namespace',
   'xmlns': 'http://www.w3.org/2000/xmlns/',
+  'math': 'http://www.w3.org/1998/MathML/',
 };
 
 const COMPONENT_REGEX = /%COMP%/g;
@@ -144,8 +145,15 @@ class DefaultDomRenderer2 implements Renderer2 {
 
   createElement(name: string, namespace?: string): any {
     if (namespace) {
-      // In cases where Ivy (not ViewEngine) is giving us the actual namespace, the look up by key
-      // will result in undefined, so we just return the namespace here.
+      // TODO: `|| namespace` was added in
+      // https://github.com/angular/angular/commit/2b9cc8503d48173492c29f5a271b61126104fbdb to
+      // support how Ivy passed around the namespace URI rather than short name at the time. It did
+      // not, however extend the support to other parts of the system (setAttribute, setAttribute,
+      // and the ServerRenderer). We should decide what exactly the semantics for dealing with
+      // namespaces should be and make it consistent.
+      // Related issues:
+      // https://github.com/angular/angular/issues/44028
+      // https://github.com/angular/angular/issues/44883
       return document.createElementNS(NAMESPACE_URIS[namespace] || namespace, name);
     }
 
@@ -161,12 +169,14 @@ class DefaultDomRenderer2 implements Renderer2 {
   }
 
   appendChild(parent: any, newChild: any): void {
-    parent.appendChild(newChild);
+    const targetParent = isTemplateNode(parent) ? parent.content : parent;
+    targetParent.appendChild(newChild);
   }
 
   insertBefore(parent: any, newChild: any, refChild: any): void {
     if (parent) {
-      parent.insertBefore(newChild, refChild);
+      const targetParent = isTemplateNode(parent) ? parent.content : parent;
+      targetParent.insertBefore(newChild, refChild);
     }
   }
 
@@ -199,8 +209,6 @@ class DefaultDomRenderer2 implements Renderer2 {
   setAttribute(el: any, name: string, value: string, namespace?: string): void {
     if (namespace) {
       name = namespace + ':' + name;
-      // TODO(FW-811): Ivy may cause issues here because it's passing around
-      // full URIs for namespaces, therefore this lookup will fail.
       const namespaceUri = NAMESPACE_URIS[namespace];
       if (namespaceUri) {
         el.setAttributeNS(namespaceUri, name, value);
@@ -214,15 +222,10 @@ class DefaultDomRenderer2 implements Renderer2 {
 
   removeAttribute(el: any, name: string, namespace?: string): void {
     if (namespace) {
-      // TODO(FW-811): Ivy may cause issues here because it's passing around
-      // full URIs for namespaces, therefore this lookup will fail.
       const namespaceUri = NAMESPACE_URIS[namespace];
       if (namespaceUri) {
         el.removeAttributeNS(namespaceUri, name);
       } else {
-        // TODO(FW-811): Since ivy is passing around full URIs for namespaces
-        // this could result in properties like `http://www.w3.org/2000/svg:cx="123"`,
-        // which is wrong.
         el.removeAttribute(`${namespace}:${name}`);
       }
     } else {
@@ -285,6 +288,10 @@ function checkNoSyntheticProp(name: string, nameKind: string) {
   - There is corresponding configuration for the animation named \`${
         name}\` defined in the \`animations\` field of the \`@Component\` decorator (see https://angular.io/api/core/Component#animations).`);
   }
+}
+
+function isTemplateNode(node: any): node is HTMLTemplateElement {
+  return node.tagName === 'TEMPLATE' && node.content !== undefined;
 }
 
 class EmulatedEncapsulationDomRenderer2 extends DefaultDomRenderer2 {

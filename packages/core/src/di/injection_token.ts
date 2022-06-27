@@ -105,6 +105,13 @@ export class InjectionToken<T> {
     }
   }
 
+  /**
+   * @internal
+   */
+  get multi(): InjectionToken<Array<T>> {
+    return this as InjectionToken<Array<T>>;
+  }
+
   toString(): string {
     return `InjectionToken ${this._desc}`;
   }

@@ -7,19 +7,19 @@
  */
 
 import '@angular/compiler';
-import {ɵwhenRendered as whenRendered} from '@angular/core';
+
 import {withBody} from '@angular/private/testing';
 import * as path from 'path';
 
 const PACKAGE = 'angular/packages/core/test/bundling/forms_template_driven';
-const BUNDLES = ['bundle.js', 'bundle.min_debug.js', 'bundle.min.js'];
+const BUNDLES = ['bundle.js', 'bundle.debug.min.js', 'bundle.min.js'];
 
 describe('functional test for forms', () => {
   BUNDLES.forEach((bundle) => {
     describe(`using ${bundle} bundle`, () => {
       it('should render template form', withBody('<app-root></app-root>', async () => {
-           require(path.join(PACKAGE, bundle));
-           await (window as any).waitForApp;
+           const {bootstrapApp, whenRendered} = require(path.join(PACKAGE, bundle));
+           await bootstrapApp();
 
            // Template forms
            const templateFormsComponent = (window as any).templateFormsComponent;

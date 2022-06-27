@@ -8,7 +8,9 @@
 
 import {Directive, EventEmitter, forwardRef, Inject, Input, OnChanges, OnDestroy, Optional, Output, Self, SimpleChanges} from '@angular/core';
 
-import {FormArray, FormControl, FormGroup} from '../../model';
+import {FormArray} from '../../model/form_array';
+import {FormControl, isFormControl} from '../../model/form_control';
+import {FormGroup} from '../../model/form_group';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {ControlContainer} from '../control_container';
 import {Form} from '../form_interface';
@@ -36,7 +38,9 @@ export const formDirectiveProvider: any = {
  * and `FormArray` instances to child `FormControlName`, `FormGroupName`,
  * and `FormArrayName` directives.
  *
- * 该指令接受现有的 `FormGroup` 实例。然后，它将使用此 `FormGroup` 实例中的任何子控件 `FormControl`、`FormGroup` 和 `FormArray` 的实例与其子指令 `FormControlName`、`FormGroupName` 和 `FormArrayName` 匹配。
+ * 该指令接受现有的 `FormGroup` 实例。然后，它将使用此 `FormGroup` 实例中的任何子控件
+ * `FormControl`、`FormGroup` 和 `FormArray` 的实例与其子指令 `FormControlName`、`FormGroupName` 和
+ * `FormArrayName` 匹配。
  *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
@@ -408,7 +412,7 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
         // Note: we don't need to clear the list of directives (`this.directives`) here, it would be
         // taken care of in the `removeControl` method invoked when corresponding `formControlName`
         // directive instance is being removed (invoked from `FormControlName.ngOnDestroy`).
-        if (newCtrl instanceof FormControl) {
+        if (isFormControl(newCtrl)) {
           setUpControl(newCtrl, dir);
           (dir as {control: FormControl}).control = newCtrl;
         }

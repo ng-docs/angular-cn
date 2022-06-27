@@ -14,7 +14,6 @@ import {absoluteFrom, AbsoluteFsPath, getSourceFileOrError} from '../../file_sys
 import {runInEachFileSystem} from '../../file_system/testing';
 import {ClassDeclaration} from '../../reflection';
 import {DirectiveSymbol, DomBindingSymbol, ElementSymbol, ExpressionSymbol, InputBindingSymbol, OutputBindingSymbol, PipeSymbol, ReferenceSymbol, Symbol, SymbolKind, TemplateSymbol, TemplateTypeChecker, TypeCheckingConfig, VariableSymbol} from '../api';
-
 import {getClass, ngForDeclaration, ngForTypeCheckTarget, setup as baseTestSetup, TypeCheckingTarget} from '../testing';
 
 runInEachFileSystem(() => {
@@ -80,7 +79,7 @@ runInEachFileSystem(() => {
 
         // Ensure we can go back to the original location using the shim location
         const mapping =
-            templateTypeChecker.getTemplateMappingAtShimLocation(symbol.bindings[0].shimLocation)!;
+            templateTypeChecker.getTemplateMappingAtTcbLocation(symbol.bindings[0].tcbLocation)!;
         expect(mapping.span.toString()).toEqual('name');
       });
 
@@ -154,10 +153,10 @@ runInEachFileSystem(() => {
 
           // Ensure we can map the shim locations back to the template
           const initializerMapping =
-              templateTypeChecker.getTemplateMappingAtShimLocation(symbol.initializerLocation)!;
+              templateTypeChecker.getTemplateMappingAtTcbLocation(symbol.initializerLocation)!;
           expect(initializerMapping.span.toString()).toEqual('bar');
           const localVarMapping =
-              templateTypeChecker.getTemplateMappingAtShimLocation(symbol.localVarLocation)!;
+              templateTypeChecker.getTemplateMappingAtTcbLocation(symbol.localVarLocation)!;
           expect(localVarMapping.span.toString()).toEqual('contextFoo');
         });
 
@@ -177,7 +176,7 @@ runInEachFileSystem(() => {
 
           // Ensure we can map the var shim location back to the template
           const localVarMapping =
-              templateTypeChecker.getTemplateMappingAtShimLocation(symbol.referenceVarLocation);
+              templateTypeChecker.getTemplateMappingAtTcbLocation(symbol.referenceVarLocation);
           expect(localVarMapping!.span.toString()).toEqual('ref1');
         });
 
@@ -870,6 +869,26 @@ runInEachFileSystem(() => {
         expect(callSymbol.tsSymbol).toBeNull();
         expect(program.getTypeChecker().typeToString(callSymbol.tsType)).toBe('string');
       });
+
+      it('should get a symbol for SafeCall expressions', () => {
+        const fileName = absoluteFrom('/main.ts');
+        const {templateTypeChecker, program} = setup([
+          {
+            fileName,
+            templates: {'Cmp': '<div [input]="toString?.(123)"></div>'},
+            source: `export class Cmp { toString?: (value: number) => string; }`
+          },
+        ]);
+        const sf = getSourceFileOrError(program, fileName);
+        const cmp = getClass(sf, 'Cmp');
+        const node = getAstElements(templateTypeChecker, cmp)[0];
+        const safeCallSymbol = templateTypeChecker.getSymbolOfNode(node.inputs[0].value, cmp)!;
+        assertExpressionSymbol(safeCallSymbol);
+        // Note that the symbol returned is for the return value of the SafeCall.
+        expect(safeCallSymbol.tsSymbol).toBeNull();
+        expect(program.getTypeChecker().typeToString(safeCallSymbol.tsType))
+            .toBe('string | undefined');
+      });
     });
 
     describe('input bindings', () => {
@@ -1561,6 +1580,48 @@ runInEachFileSystem(() => {
       const actualDirectives =
           symbol.directives.map(dir => program.getTypeChecker().typeToString(dir.tsType)).sort();
       expect(actualDirectives).toEqual(['GenericDir<any>']);
+    });
+
+    it('has correct tcb location for components with inline TCBs', () => {
+      const fileName = absoluteFrom('/main.ts');
+      const {program, templateTypeChecker} = baseTestSetup(
+          [
+            {
+              fileName,
+              templates: {'Cmp': '<div></div>'},
+              // Force an inline TCB by using a non-exported component class
+              source: `class Cmp {}`,
+            },
+          ],
+          {inlining: true, config: {enableTemplateTypeChecker: true}});
+      const sf = getSourceFileOrError(program, fileName);
+      const cmp = getClass(sf, 'Cmp');
+
+      const nodes = templateTypeChecker.getTemplate(cmp)!;
+
+      const symbol = templateTypeChecker.getSymbolOfNode(nodes[0] as TmplAstElement, cmp)!;
+      assertElementSymbol(symbol);
+      expect(symbol.tcbLocation.tcbPath).toBe(sf.fileName);
+      expect(symbol.tcbLocation.isShimFile).toBe(false);
+    });
+
+    it('has correct tcb location for components with TCBs in a type-checking shim file', () => {
+      const fileName = absoluteFrom('/main.ts');
+      const {program, templateTypeChecker} = setup([
+        {
+          fileName,
+          templates: {'Cmp': '<div></div>'},
+        },
+      ]);
+      const sf = getSourceFileOrError(program, fileName);
+      const cmp = getClass(sf, 'Cmp');
+
+      const nodes = templateTypeChecker.getTemplate(cmp)!;
+
+      const symbol = templateTypeChecker.getSymbolOfNode(nodes[0] as TmplAstElement, cmp)!;
+      assertElementSymbol(symbol);
+      expect(symbol.tcbLocation.tcbPath).not.toBe(sf.fileName);
+      expect(symbol.tcbLocation.isShimFile).toBe(true);
     });
   });
 });

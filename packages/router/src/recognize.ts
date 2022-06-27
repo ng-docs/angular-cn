@@ -9,7 +9,7 @@
 import {Type} from '@angular/core';
 import {Observable, Observer, of} from 'rxjs';
 
-import {Data, ResolveData, Route, Routes} from './config';
+import {Data, ResolveData, Route, Routes} from './models';
 import {ActivatedRouteSnapshot, inheritedParamsDataResolve, ParamsInheritanceStrategy, RouterStateSnapshot} from './router_state';
 import {PRIMARY_OUTLET} from './shared';
 import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
@@ -17,6 +17,8 @@ import {last} from './utils/collection';
 import {getOutlet, sortByMatchingOutlets} from './utils/config';
 import {isImmediateMatch, match, noLeftoversInUrl, split} from './utils/config_matching';
 import {TreeNode} from './utils/tree';
+
+const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
 
 class NoMatch {}
 
@@ -155,34 +157,42 @@ export class Recognizer {
 
     let snapshot: ActivatedRouteSnapshot;
     let consumedSegments: UrlSegment[] = [];
-    let rawSlicedSegments: UrlSegment[] = [];
+    let remainingSegments: UrlSegment[] = [];
 
     if (route.path === '**') {
       const params = segments.length > 0 ? last(segments)!.parameters : {};
+      const pathIndexShift = getPathIndexShift(rawSegment) + segments.length;
       snapshot = new ActivatedRouteSnapshot(
           segments, params, Object.freeze({...this.urlTree.queryParams}), this.urlTree.fragment,
-          getData(route), getOutlet(route), route.component!, route,
-          getSourceSegmentGroup(rawSegment), getPathIndexShift(rawSegment) + segments.length,
-          getResolve(route));
+          getData(route), getOutlet(route), route.component ?? route._loadedComponent ?? null,
+          route, getSourceSegmentGroup(rawSegment), pathIndexShift, getResolve(route),
+          // NG_DEV_MODE is used to prevent the getCorrectedPathIndexShift function from affecting
+          // production bundle size. This value is intended only to surface a warning to users
+          // depending on `relativeLinkResolution: 'legacy'` in dev mode.
+          (NG_DEV_MODE ? getCorrectedPathIndexShift(rawSegment) + segments.length :
+                         pathIndexShift));
     } else {
       const result = match(rawSegment, route, segments);
       if (!result.matched) {
         return null;
       }
       consumedSegments = result.consumedSegments;
-      rawSlicedSegments = segments.slice(result.lastChild);
+      remainingSegments = result.remainingSegments;
+      const pathIndexShift = getPathIndexShift(rawSegment) + consumedSegments.length;
 
       snapshot = new ActivatedRouteSnapshot(
           consumedSegments, result.parameters, Object.freeze({...this.urlTree.queryParams}),
-          this.urlTree.fragment, getData(route), getOutlet(route), route.component!, route,
-          getSourceSegmentGroup(rawSegment),
-          getPathIndexShift(rawSegment) + consumedSegments.length, getResolve(route));
+          this.urlTree.fragment, getData(route), getOutlet(route),
+          route.component ?? route._loadedComponent ?? null, route,
+          getSourceSegmentGroup(rawSegment), pathIndexShift, getResolve(route),
+          (NG_DEV_MODE ? getCorrectedPathIndexShift(rawSegment) + consumedSegments.length :
+                         pathIndexShift));
     }
 
     const childConfig: Route[] = getChildConfig(route);
 
     const {segmentGroup, slicedSegments} = split(
-        rawSegment, consumedSegments, rawSlicedSegments,
+        rawSegment, consumedSegments, remainingSegments,
         // Filter out routes with redirectTo because we are trying to create activated route
         // snapshots and don't handle redirects here. That should have been done in
         // `applyRedirects`.
@@ -232,7 +242,7 @@ function getChildConfig(route: Route): Route[] {
   }
 
   if (route.loadChildren) {
-    return route._loadedConfig!.routes;
+    return route._loadedRoutes!;
   }
 
   return [];
@@ -303,10 +313,20 @@ function getSourceSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGroup {
 
 function getPathIndexShift(segmentGroup: UrlSegmentGroup): number {
   let s = segmentGroup;
-  let res = (s._segmentIndexShift ? s._segmentIndexShift : 0);
+  let res = s._segmentIndexShift ?? 0;
   while (s._sourceSegment) {
     s = s._sourceSegment;
-    res += (s._segmentIndexShift ? s._segmentIndexShift : 0);
+    res += s._segmentIndexShift ?? 0;
+  }
+  return res - 1;
+}
+
+function getCorrectedPathIndexShift(segmentGroup: UrlSegmentGroup): number {
+  let s = segmentGroup;
+  let res = s._segmentIndexShiftCorrected ?? s._segmentIndexShift ?? 0;
+  while (s._sourceSegment) {
+    s = s._sourceSegment;
+    res += s._segmentIndexShiftCorrected ?? s._segmentIndexShift ?? 0;
   }
   return res - 1;
 }

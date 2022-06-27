@@ -12,12 +12,6 @@ import { HelloWorldComponent, HelloWorldOnpushComponent, HelloWorldShadowCompone
     HelloWorldShadowComponent,
     TestCardComponent,
   ],
-  entryComponents: [
-    HelloWorldComponent,
-    HelloWorldOnpushComponent,
-    HelloWorldShadowComponent,
-    TestCardComponent,
-  ],
   imports: [BrowserModule],
 })
 export class AppModule {

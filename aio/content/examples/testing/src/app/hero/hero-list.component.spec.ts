@@ -46,17 +46,19 @@ describe('HeroListComponent', () => {
   it('1st hero should match 1st test hero', () => {
     const expectedHero = HEROES[0];
     const actualHero = page.heroRows[0].textContent;
-    expect(actualHero).toContain(expectedHero.id.toString(), 'hero.id');
-    expect(actualHero).toContain(expectedHero.name, 'hero.name');
+    expect(actualHero)
+      .withContext('hero.id')
+      .toContain(expectedHero.id.toString());
+    expect(actualHero)
+      .withContext('hero.name')
+      .toContain(expectedHero.name);
   });
 
   it('should select hero on click', fakeAsync(() => {
        const expectedHero = HEROES[1];
-       const li = page.heroRows[1];
+       const btn = page.heroRows[1].querySelector('button');
 
-       // In older browsers, such as IE, you might need a CustomEvent instead. See
-       // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
-       li.dispatchEvent(new Event('click'));
+       btn!.dispatchEvent(new Event('click'));
        tick();
        // `.toEqual` because selectedHero is clone of expectedHero; see FakeHeroService
        expect(comp.selectedHero).toEqual(expectedHero);
@@ -64,22 +66,26 @@ describe('HeroListComponent', () => {
 
   it('should navigate to selected hero detail on click', fakeAsync(() => {
        const expectedHero = HEROES[1];
-       const li = page.heroRows[1];
+       const btn = page.heroRows[1].querySelector('button');
 
-       // In older browsers, such as IE, you might need a CustomEvent instead. See
-       // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
-       li.dispatchEvent(new Event('click'));
+       btn!.dispatchEvent(new Event('click'));
        tick();
 
        // should have navigated
-       expect(page.navSpy.calls.any()).toBe(true, 'navigate called');
+       expect(page.navSpy.calls.any())
+        .withContext('navigate called')
+        .toBe(true);
 
        // composed hero detail will be URL like 'heroes/42'
        // expect link array with the route path and hero id
        // first argument to router.navigate is link array
        const navArgs = page.navSpy.calls.first().args[0];
-       expect(navArgs[0]).toContain('heroes', 'nav to heroes detail URL');
-       expect(navArgs[1]).toBe(expectedHero.id, 'expected hero.id');
+       expect(navArgs[0])
+        .withContext('nav to heroes detail URL')
+        .toContain('heroes');
+       expect(navArgs[1])
+        .withContext('expected hero.id')
+        .toBe(expectedHero.id);
      }));
 
   it('should find `HighlightDirective` with `By.directive', () => {
@@ -97,11 +103,15 @@ describe('HeroListComponent', () => {
 
     // different browsers report color values differently
     const isExpectedColor = bgColor === 'gold' || bgColor === 'rgb(255, 215, 0)';
-    expect(isExpectedColor).toBe(true, 'backgroundColor');
+    expect(isExpectedColor)
+      .withContext('backgroundColor')
+      .toBe(true);
   });
 
   it("the `HighlightDirective` is among the element's providers", () => {
-    expect(page.highlightDe.providerTokens).toContain(HighlightDirective, 'HighlightDirective');
+    expect(page.highlightDe.providerTokens)
+      .withContext('HighlightDirective')
+      .toContain(HighlightDirective);
   });
 });
 

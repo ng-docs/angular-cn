@@ -8,7 +8,7 @@
 
 import {Directive, EventEmitter, forwardRef, Host, Inject, Input, OnChanges, OnDestroy, Optional, Output, Self, SimpleChanges, SkipSelf} from '@angular/core';
 
-import {FormControl} from '../../model';
+import {FormControl} from '../../model/form_control';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {AbstractFormGroupDirective} from '../abstract_form_group_directive';
 import {ControlContainer} from '../control_container';
@@ -110,7 +110,9 @@ export class FormControlName extends NgControl implements OnChanges, OnDestroy {
    * while the numerical form allows for form controls to be bound
    * to indices when iterating over controls in a `FormArray`.
    *
-   * 跟踪绑定到此指令的 `FormControl` 名称。该名称对应于父 `FormGroup` 或 `FormArray` 中的键。接受字符串形式的名称或数字。字符串形式的名称对于独立表单很有用，而数字形式则允许在 `FormArray` 控件上进行迭代时将表单控件绑定到索引。
+   * 跟踪绑定到此指令的 `FormControl` 名称。该名称对应于父 `FormGroup` 或 `FormArray`
+   * 中的键。接受字符串形式的名称或数字。字符串形式的名称对于独立表单很有用，而数字形式则允许在
+   * `FormArray` 控件上进行迭代时将表单控件绑定到索引。
    *
    */
   // TODO(issue/24571): remove '!'.
@@ -153,7 +155,8 @@ export class FormControlName extends NgControl implements OnChanges, OnDestroy {
    * Static property used to track whether any ngModel warnings have been sent across
    * all instances of FormControlName. Used to support warning config of "once".
    *
-   * 静态属性，用于跟踪是否曾在所有的 `FormControlName` 实例中发出过这种 ngModel 警告。用于支持警告选项 `"once"`。
+   * 静态属性，用于跟踪是否曾在所有的 `FormControlName` 实例中发出过这种 ngModel
+   * 警告。用于支持警告选项 `"once"`。
    *
    * @internal
    */
@@ -164,7 +167,8 @@ export class FormControlName extends NgControl implements OnChanges, OnDestroy {
    * Instance property used to track whether an ngModel warning has been sent out for this
    * particular FormControlName instance. Used to support warning config of "always".
    *
-   * 实例属性，用于跟踪是否曾在特定的 `FormControlName` 实例中发出过这种 ngModel 警告。用于支持警告选项 `"always"`
+   * 实例属性，用于跟踪是否曾在特定的 `FormControlName` 实例中发出过这种 ngModel
+   * 警告。用于支持警告选项 `"always"`
    *
    * @internal
    */
@@ -260,9 +264,6 @@ export class FormControlName extends NgControl implements OnChanges, OnDestroy {
   private _setUpControl() {
     this._checkParentType();
     (this as {control: FormControl}).control = this.formDirective.addControl(this);
-    if (this.control.disabled && this.valueAccessor!.setDisabledState) {
-      this.valueAccessor!.setDisabledState!(true);
-    }
     this._added = true;
   }
 }

@@ -8,6 +8,7 @@
 
 import {NgIf} from '@angular/common';
 import {RElement} from '@angular/core/src/render3/interfaces/renderer_dom';
+import {ngDevModeResetPerfCounters} from '@angular/core/src/util/ng_dev_mode';
 
 import {RendererType2} from '../../src/render/api_flags';
 import {getLContext, readPatchedData} from '../../src/render3/context_discovery';
@@ -15,7 +16,7 @@ import {AttributeMarker, ɵɵadvance, ɵɵattribute, ɵɵdefineComponent, ɵɵde
 import {ɵɵelement, ɵɵelementEnd, ɵɵelementStart, ɵɵprojection, ɵɵprojectionDef, ɵɵtemplate, ɵɵtext} from '../../src/render3/instructions/all';
 import {RenderFlags} from '../../src/render3/interfaces/definition';
 import {domRendererFactory3, Renderer3, RendererFactory3} from '../../src/render3/interfaces/renderer';
-import {CONTEXT, HEADER_OFFSET} from '../../src/render3/interfaces/view';
+import {CONTEXT, HEADER_OFFSET, ID, LView} from '../../src/render3/interfaces/view';
 import {ɵɵsanitizeUrl} from '../../src/sanitization/sanitization';
 import {Sanitizer} from '../../src/sanitization/sanitizer';
 import {SecurityContext} from '../../src/sanitization/security';
@@ -26,6 +27,7 @@ describe('render3 integration test', () => {
   describe('render', () => {
     describe('text bindings', () => {
       it('should support creation-time values in text nodes', () => {
+        ngDevModeResetPerfCounters();
         function Template(rf: RenderFlags, value: string) {
           if (rf & RenderFlags.Create) {
             ɵɵtext(0, value);
@@ -33,12 +35,12 @@ describe('render3 integration test', () => {
         }
         expect(renderToHtml(Template, 'once', 1, 1)).toEqual('once');
         expect(renderToHtml(Template, 'twice', 1, 1)).toEqual('once');
-        expect(ngDevMode).toHaveProperties({
+        expect(ngDevMode).toEqual(jasmine.objectContaining({
           firstCreatePass: 0,
           tNode: 2,
           tView: 2,  // 1 for root view, 1 for template
           rendererSetText: 1,
-        });
+        }));
       });
     });
   });
@@ -223,7 +225,7 @@ describe('component animations', () => {
   //             ɵɵelement(0, 'child-comp-with-anim');
   //           }
   //         },
-  //         directives: [ChildCompWithAnim]
+  //         dependencies: [ChildCompWithAnim]
   //       });
   //     }
 
@@ -297,7 +299,7 @@ describe('element discovery', () => {
       static ɵcmp = ɵɵdefineComponent({
         type: ParentComp,
         selectors: [['parent-comp']],
-        directives: [ChildComp],
+        dependencies: [ChildComp],
         decls: 2,
         vars: 0,
         template:
@@ -331,7 +333,7 @@ describe('element discovery', () => {
       static ɵcmp = ɵɵdefineComponent({
         type: StructuredComp,
         selectors: [['structured-comp']],
-        directives: [NgIf],
+        dependencies: [NgIf],
         decls: 2,
         vars: 1,
         consts: [['ngIf', '']],
@@ -382,7 +384,7 @@ describe('element discovery', () => {
       static ɵcmp = ɵɵdefineComponent({
         type: StructuredComp,
         selectors: [['structured-comp']],
-        directives: [NgIf],
+        dependencies: [NgIf],
         decls: 2,
         vars: 0,
         template:
@@ -400,19 +402,17 @@ describe('element discovery', () => {
 
     const section = fixture.hostElement.querySelector('section')!;
     const sectionContext = getLContext(section)!;
-    const sectionLView = sectionContext.lView!;
     expect(sectionContext.nodeIndex).toEqual(HEADER_OFFSET);
-    expect(sectionLView.length).toBeGreaterThan(HEADER_OFFSET);
+    expect(sectionContext.lView!.length).toBeGreaterThan(HEADER_OFFSET);
     expect(sectionContext.native).toBe(section);
 
     const div = fixture.hostElement.querySelector('div')!;
     const divContext = getLContext(div)!;
-    const divLView = divContext.lView!;
     expect(divContext.nodeIndex).toEqual(HEADER_OFFSET + 1);
-    expect(divLView.length).toBeGreaterThan(HEADER_OFFSET);
+    expect(divContext.lView!.length).toBeGreaterThan(HEADER_OFFSET);
     expect(divContext.native).toBe(div);
 
-    expect(divLView).toBe(sectionLView);
+    expect(divContext.lView).toBe(sectionContext.lView);
   });
 
   it('should cache the element context on a element was pre-emptively monkey-patched', () => {
@@ -561,7 +561,7 @@ describe('element discovery', () => {
          static ɵcmp = ɵɵdefineComponent({
            type: ParentComp,
            selectors: [['parent-comp']],
-           directives: [ProjectorComp],
+           dependencies: [ProjectorComp],
            decls: 5,
            vars: 0,
            template:
@@ -718,7 +718,7 @@ describe('element discovery', () => {
          static ɵcmp = ɵɵdefineComponent({
            type: StructuredComp,
            selectors: [['structured-comp']],
-           directives: [MyDir1, MyDir2, MyDir3],
+           dependencies: [MyDir1, MyDir2, MyDir3],
            decls: 2,
            vars: 0,
            consts: [['my-dir-1', '', 'my-dir-2', ''], ['my-dir-3']],
@@ -739,7 +739,7 @@ describe('element discovery', () => {
        const div1 = hostElm.querySelector('div:first-child')! as any;
        const div2 = hostElm.querySelector('div:last-child')! as any;
        const context = getLContext(hostElm)!;
-       const componentView = context.lView[context.nodeIndex];
+       const componentView = context.lView![context.nodeIndex];
 
        expect(componentView).toContain(myDir1Instance);
        expect(componentView).toContain(myDir2Instance);
@@ -811,7 +811,7 @@ describe('element discovery', () => {
          static ɵcmp = ɵɵdefineComponent({
            type: ParentComp,
            selectors: [['parent-comp']],
-           directives: [ChildComp, MyDir1, MyDir2],
+           dependencies: [ChildComp, MyDir1, MyDir2],
            decls: 1,
            vars: 0,
            consts: [['my-dir-1', '', 'my-dir-2', '']],
@@ -893,7 +893,7 @@ describe('element discovery', () => {
          static ɵcmp = ɵɵdefineComponent({
            type: ParentComp,
            selectors: [['parent-comp']],
-           directives: [ChildComp],
+           dependencies: [ChildComp],
            decls: 2,
            vars: 0,
            template:
@@ -918,7 +918,7 @@ describe('element discovery', () => {
        const context = getLContext(child)!;
        expect(readPatchedData(child)).toBeTruthy();
 
-       const componentData = context.lView[context.nodeIndex];
+       const componentData = context.lView![context.nodeIndex];
        const component = componentData[CONTEXT];
        expect(component instanceof ChildComp).toBeTruthy();
        expect(readPatchedData(component)).toBe(context.lView);
@@ -1009,7 +1009,7 @@ describe('sanitization', () => {
                 ɵɵelement(0, 'blockquote', 0);
               }
             },
-        directives: [UnsafeUrlHostBindingDir]
+        dependencies: [UnsafeUrlHostBindingDir]
       });
     }
 

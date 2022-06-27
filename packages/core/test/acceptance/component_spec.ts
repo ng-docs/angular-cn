@@ -91,6 +91,31 @@ describe('component', () => {
        expect(fixture.nativeElement.textContent.trim()).toBe('hello');
      });
 
+  it('should not throw when calling `detectChanges` on the ChangeDetectorRef of a destroyed view',
+     () => {
+       @Component({template: 'hello'})
+       class HelloComponent {
+       }
+
+       @Component({template: `<div #insertionPoint></div>`})
+       class App {
+         @ViewChild('insertionPoint', {read: ViewContainerRef}) viewContainerRef!: ViewContainerRef;
+       }
+
+       TestBed.configureTestingModule({declarations: [App, HelloComponent]});
+       const fixture = TestBed.createComponent(App);
+       fixture.detectChanges();
+
+       const componentRef =
+           fixture.componentInstance.viewContainerRef.createComponent(HelloComponent);
+       fixture.detectChanges();
+
+       expect(() => {
+         componentRef.destroy();
+         componentRef.changeDetectorRef.detectChanges();
+       }).not.toThrow();
+     });
+
   // TODO: add tests with Native once tests run in real browser (domino doesn't support shadow root)
   describe('encapsulation', () => {
     @Component({
@@ -348,6 +373,33 @@ describe('component', () => {
       expect(() => TestBed.createComponent(App))
           .toThrowError(
               /"ng-template" tags cannot be used as component hosts. Please use a different tag to activate the Comp component/);
+    });
+
+    it('should throw when multiple components match the same element', () => {
+      @Component({
+        selector: 'comp',
+        template: '...',
+      })
+      class CompA {
+      }
+
+      @Component({
+        selector: 'comp',
+        template: '...',
+      })
+      class CompB {
+      }
+
+      @Component({
+        template: '<comp></comp>',
+      })
+      class App {
+      }
+
+      TestBed.configureTestingModule({declarations: [App, CompA, CompB]});
+      expect(() => TestBed.createComponent(App))
+          .toThrowError(
+              /NG0300: Multiple components match node with tagname comp: CompA and CompB/);
     });
   });
 

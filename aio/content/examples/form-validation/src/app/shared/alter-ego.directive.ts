@@ -15,9 +15,9 @@ export class UniqueAlterEgoValidator implements AsyncValidator {
   constructor(private heroesService: HeroesService) {}
 
   validate(
-    ctrl: AbstractControl
-  ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-    return this.heroesService.isAlterEgoTaken(ctrl.value).pipe(
+    control: AbstractControl
+  ): Observable<ValidationErrors | null> {
+    return this.heroesService.isAlterEgoTaken(control.value).pipe(
       map(isTaken => (isTaken ? { uniqueAlterEgo: true } : null)),
       catchError(() => of(null))
     );
@@ -25,20 +25,24 @@ export class UniqueAlterEgoValidator implements AsyncValidator {
 }
 // #enddocregion async-validator
 
+// #docregion async-validator-directive
 @Directive({
   selector: '[appUniqueAlterEgo]',
   providers: [
     {
       provide: NG_ASYNC_VALIDATORS,
-      useExisting: forwardRef(() => UniqueAlterEgoValidator),
+      useExisting: forwardRef(() => UniqueAlterEgoValidatorDirective),
       multi: true
     }
   ]
 })
-export class UniqueAlterEgoValidatorDirective {
+export class UniqueAlterEgoValidatorDirective implements AsyncValidator {
   constructor(private validator: UniqueAlterEgoValidator) {}
 
-  validate(control: AbstractControl) {
-    this.validator.validate(control);
+  validate(
+    control: AbstractControl
+  ): Observable<ValidationErrors | null> {
+    return this.validator.validate(control);
   }
 }
+// #enddocregion async-validator-directive

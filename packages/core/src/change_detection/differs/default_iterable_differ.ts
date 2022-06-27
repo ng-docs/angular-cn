@@ -6,8 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {RuntimeError, RuntimeErrorCode} from '../../errors';
+import {isListLikeIterable, iterateListLike} from '../../util/iterable';
 import {stringify} from '../../util/stringify';
-import {isListLikeIterable, iterateListLike} from '../change_detection_util';
 
 import {IterableChangeRecord, IterableChanges, IterableDiffer, IterableDifferFactory, NgIterable, TrackByFunction} from './iterable_differs';
 
@@ -155,8 +156,10 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
   diff(collection: NgIterable<V>|null|undefined): DefaultIterableDiffer<V>|null {
     if (collection == null) collection = [];
     if (!isListLikeIterable(collection)) {
-      throw new Error(
-          `Error trying to diff '${stringify(collection)}'. Only arrays and iterables are allowed`);
+      const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
+          `Error trying to diff '${stringify(collection)}'. Only arrays and iterables are allowed` :
+          '';
+      throw new RuntimeError(RuntimeErrorCode.INVALID_DIFFER_INPUT, errorMessage);
     }
 
     if (this.check(collection)) {
@@ -234,7 +237,9 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
    * Set the previousIndexes of moved and added items to their currentIndexes
    * Reset the list of additions, moves and removals
    *
-   * 重置更改对象的状态以便不显示任何更改。这意味着将 previousKey 设置为 currentKey，并清除所有队列（添加、移动、移除）。将已移动和已添加条目的 previousIndexes 设置为其 currentIndexes。重置包含添加、移动和删除的列表
+   * 重置更改对象的状态以便不显示任何更改。这意味着将 previousKey 设置为
+   * currentKey，并清除所有队列（添加、移动、移除）。将已移动和已添加条目的 previousIndexes 设置为其
+   * currentIndexes。重置包含添加、移动和删除的列表
    *
    * @internal
    */
@@ -379,7 +384,10 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
    * better way to think of it is as insert of 'b' rather then switch 'a' with 'b' and then add 'a'
    * at the end.
    *
-   * 再次确认我们没有移出重复的条目。我们需要检查此条目类型是否已被删除：插入 b 将移出第一个 “a”。如果我们现在不重新插入，它将重新在最后插入。这将表现为两个 “a” 调换了位置。这是不正确的，因为更好的方法是插入 “b”，而不是将 “a” 和 “b” 互换，然后在末尾添加 “a”。
+   * 再次确认我们没有移出重复的条目。我们需要检查此条目类型是否已被删除：插入 b 将移出第一个
+   * “a”。如果我们现在不重新插入，它将重新在最后插入。这将表现为两个 “a”
+   * 调换了位置。这是不正确的，因为更好的方法是插入 “b”，而不是将 “a” 和 “b” 互换，然后在末尾添加
+   * “a”。
    *
    * @internal
    */

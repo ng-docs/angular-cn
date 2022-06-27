@@ -8,7 +8,7 @@
 
 import {Directive, EventEmitter, forwardRef, Inject, InjectionToken, Input, OnChanges, OnDestroy, Optional, Output, Self, SimpleChanges} from '@angular/core';
 
-import {FormControl} from '../../model';
+import {FormControl} from '../../model/form_control';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '../control_value_accessor';
 import {NgControl} from '../ng_control';
@@ -39,7 +39,9 @@ export const formControlBinding: any = {
  * a future version of Angular.
  * For details, see [Deprecated features](guide/deprecations#ngmodel-with-reactive-forms).
  *
- * 请注意，已弃用将 `ngModel` 输入属性和 `ngModelChange` 事件与响应式表单指令一起使用的方式，并计划在 Angular 的未来版本中删除。有关详细信息，请参阅[已弃用特性](guide/deprecations#ngmodel-with-reactive-forms)。
+ * 请注意，已弃用将 `ngModel` 输入属性和 `ngModelChange`
+ * 事件与响应式表单指令一起使用的方式，并计划在 Angular
+ * 的未来版本中删除。有关详细信息，请参阅[已弃用特性](guide/deprecations#ngmodel-with-reactive-forms)。
  *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
@@ -117,7 +119,8 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
    * Static property used to track whether any ngModel warnings have been sent across
    * all instances of FormControlDirective. Used to support warning config of "once".
    *
-   * 静态属性，用于跟踪是否已在 FormControlDirective 的所有实例之间发送任何 ngModel 警告。用于支持 "once" 警告配置。
+   * 静态属性，用于跟踪是否已在 FormControlDirective 的所有实例之间发送任何 ngModel 警告。用于支持
+   * "once" 警告配置。
    *
    * @internal
    */
@@ -128,7 +131,8 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
    * Instance property used to track whether an ngModel warning has been sent out for this
    * particular `FormControlDirective` instance. Used to support warning config of "always".
    *
-   * 实例属性，用于跟踪是否已为此特定 `FormControlDirective` 实例发送过 ngModel 警告。用于支持 "always" 警告配置。
+   * 实例属性，用于跟踪是否已为此特定 `FormControlDirective` 实例发送过 ngModel 警告。用于支持
+   * "always" 警告配置。
    *
    * @internal
    */
@@ -155,9 +159,6 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
         cleanUpControl(previousForm, this, /* validateControlPresenceOnChange */ false);
       }
       setUpControl(this.form, this);
-      if (this.control.disabled && this.valueAccessor!.setDisabledState) {
-        this.valueAccessor!.setDisabledState!(true);
-      }
       this.form.updateValueAndValidity({emitEvent: false});
     }
     if (isPropertyUpdated(changes, this.viewModel)) {

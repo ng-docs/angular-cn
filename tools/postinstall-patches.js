@@ -21,7 +21,7 @@ try {
 }
 
 const {set, cd, sed, echo, ls, rm} = require('shelljs');
-const {readFileSync} = require('fs');
+const {readFileSync, writeFileSync} = require('fs');
 const path = require('path');
 const log = console.info;
 
@@ -61,19 +61,83 @@ ls('node_modules/@types').filter(f => f.startsWith('babel__')).forEach(pkg => {
   }
 });
 
-log('\n# patch: use local version of @angular/* and zone.js in component_benchmark from @angular/dev-infra.-private');
-[['@npm//@angular/platform-browser', '@angular//packages/platform-browser'],
- ['@npm//@angular/core', '@angular//packages/core'],
- [
-   'load\\("@npm//@angular/bazel:index.bzl", "ng_module"\\)',
-   'load\("@angular//tools:defaults.bzl", "ng_module"\)'
- ],
- ['@npm//zone.js', '//packages/zone.js/bundles:zone.umd.js'],
+log('\n# patch: use local version of @angular/* and zone.js in Starlark files from @angular/dev-infra-private');
 
-].forEach(([matcher, replacement]) => {
-  sed('-i', matcher, replacement,
-      'node_modules/@angular/dev-infra-private/bazel/benchmark/component_benchmark/component_benchmark.bzl');
-});
+const ngDevPatches = new Map();
+const captureNgDevPatches = (files, patches) =>
+    patches.forEach(p => _captureNgDevPatch(p[0], p[1], files));
+const _captureNgDevPatch = (search, replace, files) => {
+  for (const fileName of files) {
+    const patches = ngDevPatches.get(fileName);
+    const currentPatches = (patches !== null && patches !== undefined) ? patches : [];
+    ngDevPatches.set(fileName, [...currentPatches, [search, replace]]);
+  }
+};
+
+// Patches for the component benchmark rule.
+captureNgDevPatches(
+    [
+      'node_modules/@angular/dev-infra-private/bazel/benchmark/component_benchmark/component_benchmark.bzl',
+    ],
+    [
+      ['@npm//@angular/platform-browser', '@angular//packages/platform-browser'],
+      ['@npm//@angular/core', '@angular//packages/core'],
+      ['@npm//zone.js', '//packages/zone.js/dist:zone'],
+      [
+        'load\\("@npm//@angular/bazel:index.bzl", "ng_module"\\)',
+        'load\("@angular//tools:defaults.bzl", "ng_module"\)'
+      ],
+    ]);
+
+// Patches for the app bundling
+captureNgDevPatches(
+    [
+      'node_modules/@angular/dev-infra-private/bazel/benchmark/app_bundling/index.bzl',
+      'node_modules/@angular/dev-infra-private/bazel/benchmark/app_bundling/esbuild.config-tmpl.mjs',
+    ],
+    [
+      // The app bundle config accesses the linker entry-point as well, so we need
+      // to request it as well.
+      [
+        '"@npm//@angular/compiler-cli"',
+        '"@angular//packages/compiler-cli", "@angular//packages/compiler-cli/linker/babel"'
+      ],
+      // When these entry-points are consumed from sources within Bazel, the package exports
+      // are not available and explicit imports (as per ECMAScript module) are needed.
+      // This can be removed when devmode&prodmode is combined/ESM is used everywhere.
+      [
+        `from '@angular/compiler-cli/linker/babel'`,
+        `from '@angular/compiler-cli/linker/babel/index.js'`
+      ],
+      [
+        `from '@angular/compiler-cli/private/tooling'`,
+        `from '@angular/compiler-cli/private/tooling.js'`
+      ],
+    ]);
+
+// Patches for angular linker
+captureNgDevPatches(
+    [
+      'node_modules/@angular/dev-infra-private/shared-scripts/angular-linker/BUILD.bazel',
+      'node_modules/@angular/dev-infra-private/shared-scripts/angular-linker/esbuild-plugin.mjs',
+    ],
+    [
+      [
+        '"@npm//@angular/compiler-cli"',
+        '"@angular//packages/compiler-cli", "@angular//packages/compiler-cli/linker/babel"'
+      ],
+      [
+        `from '@angular/compiler-cli/linker/babel'`,
+        `from '@angular/compiler-cli/linker/babel/index.js'`
+      ],
+    ]);
+
+// Apply the captured patches for the `@angular/dev-infra-private` package.
+for (const [fileName, patches] of ngDevPatches.entries()) {
+  for (const patch of patches) {
+    sed('-i', patch[0], patch[1], fileName);
+  }
+}
 
 log('\n# patch: delete d.ts files referring to rxjs-compat');
 // more info in https://github.com/angular/angular/pull/33786
@@ -106,6 +170,22 @@ rm('-rf', [
   'node_modules/rxjs/Subscriber.*',
   'node_modules/rxjs/Subscription.*',
 ]);
+
+
+log('\n# patch: dev-infra snapshotting');
+// more info in https://github.com/angular/dev-infra/pull/449
+['node_modules/@angular/dev-infra-private/ng-dev/bundles/cli.js',
+ 'node_modules/@angular/dev-infra-private/ng-dev/bundles/cli.js.map',
+].forEach(filePath => {
+  const contents = readFileSync(filePath, 'utf8');
+  const newContents = contents.replace('*[0-9]*.[0-9]*.[0-9]*', '?[0-9]*.[0-9]*.[0-9]*');
+  if (contents !== newContents) {
+    writeFileSync(filePath, newContents, 'utf8');
+    log(`Release tag matcher for snapshots replaced in ${filePath}`);
+  } else {
+    log(`Release tag matcher for snapshots were already replaced in ${filePath}`);
+  }
+});
 
 
 log('===== finished running the postinstall-patches.js script =====');

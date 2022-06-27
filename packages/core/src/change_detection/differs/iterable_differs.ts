@@ -9,6 +9,7 @@
 import {ɵɵdefineInjectable} from '../../di/interface/defs';
 import {StaticProvider} from '../../di/interface/provider';
 import {Optional, SkipSelf} from '../../di/metadata';
+import {RuntimeError, RuntimeErrorCode} from '../../errors';
 import {DefaultIterableDifferFactory} from '../differs/default_iterable_differ';
 
 
@@ -26,7 +27,8 @@ export type NgIterable<T> = Array<T>|Iterable<T>;
  * A strategy for tracking changes over time to an iterable. Used by {@link NgForOf} to
  * respond to changes in an iterable by effecting equivalent changes in the DOM.
  *
- * 用来跟踪一个迭代内的更改的策略。{@link NgForOf} 使用它通过对 DOM 进行等效更改来响应此迭代内的更改。
+ * 用来跟踪一个迭代内的更改的策略。{@link NgForOf} 使用它通过对 DOM
+ * 进行等效更改来响应此迭代内的更改。
  *
  * @publicApi
  */
@@ -77,7 +79,8 @@ export interface IterableChanges<V> {
    * `Iterable`, rather these are a set of computed operations which may not be the same as the
    * ones applied.
    *
-   * 注意：这些不一定是应用于原始 `Iterable` 的实际操作，而是这些计算的操作集合，可能与所应用的操作不同。
+   * 注意：这些不一定是应用于原始 `Iterable`
+   * 的实际操作，而是这些计算的操作集合，可能与所应用的操作不同。
    *
    * @param record A change which needs to be applied
    *
@@ -87,13 +90,15 @@ export interface IterableChanges<V> {
    *        original `Iterable` location, where as `previousIndex` refers to the transient location
    *        of the item, after applying the operations up to this point.
    *
-   * 此 `record` 的 `IterableChangeRecord#previousIndex` 是指原来 `Iterable` 中的位置，这个 `previousIndex` 是指应用此操作之后条目的瞬时位置。
+   * 此 `record` 的 `IterableChangeRecord#previousIndex` 是指原来 `Iterable` 中的位置，这个
+   * `previousIndex` 是指应用此操作之后条目的瞬时位置。
    *
    * @param currentIndex The `IterableChangeRecord#currentIndex` of the `record` refers to the
    *        original `Iterable` location, where as `currentIndex` refers to the transient location
    *        of the item, after applying the operations up to this point.
    *
-   * 此 `record` 的 `IterableChangeRecord#currentIndex` 是指原来 `Iterable` 中的位置，这个 `currentIndex` 是指应用此操作之后条目的瞬时位置。
+   * 此 `record` 的 `IterableChangeRecord#currentIndex` 是指原来 `Iterable` 中的位置，这个
+   * `currentIndex` 是指应用此操作之后条目的瞬时位置。
    *
    */
   forEachOperation(
@@ -221,7 +226,8 @@ export interface IterableChangeRecord<V> {
  *
  * A custom `trackBy` function must have several properties:
  *
- * 传给 `NgForOf` 指令的可选函数，该函数定义如何跟踪可迭代对象中条目的更改。该函数接受迭代索引和条目 ID 作为参数。提供后，Angular 将根据函数的返回值的变化进行跟踪。
+ * 传给 `NgForOf` 指令的可选函数，该函数定义如何跟踪可迭代对象中条目的更改。该函数接受迭代索引和条目
+ * ID 作为参数。提供后，Angular 将根据函数的返回值的变化进行跟踪。
  *
  * - be [idempotent](https://en.wikipedia.org/wiki/Idempotence) (be without side effects, and always
  * return the same value for a given input)
@@ -298,7 +304,9 @@ export class IterableDiffers {
    * inherited {@link IterableDiffers} instance with the provided factories and return a new
    * {@link IterableDiffers} instance.
    *
-   * 接受一个 {@link IterableDifferFactory} 数组，并返回一个提供者，用于扩展继承的带有提供者工厂的 {@link IterableDiffers} 实例，并返回一个新的 {@link IterableDiffers} 实例。
+   * 接受一个 {@link IterableDifferFactory}
+   * 数组，并返回一个提供者，用于扩展继承的带有提供者工厂的 {@link IterableDiffers}
+   * 实例，并返回一个新的 {@link IterableDiffers} 实例。
    *
    * @usageNotes
    *
@@ -310,7 +318,8 @@ export class IterableDiffers {
    * which will only be applied to the injector for this component and its children.
    * This step is all that's required to make a new {@link IterableDiffer} available.
    *
-   * 以下示例演示了如何扩展现有工厂列表，该列表仅适用于该组件及其子组件的注入器。这就是使新的 {@link IterableDiffer} 可用的全部步骤。
+   * 以下示例演示了如何扩展现有工厂列表，该列表仅适用于该组件及其子组件的注入器。这就是使新的 {@link
+   * IterableDiffer} 可用的全部步骤。
    *
    * ```
    * @Component({
@@ -339,8 +348,11 @@ export class IterableDiffers {
     if (factory != null) {
       return factory;
     } else {
-      throw new Error(`Cannot find a differ supporting object '${iterable}' of type '${
-          getTypeNameForDebugging(iterable)}'`);
+      const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
+          `Cannot find a differ supporting object '${iterable}' of type '${
+              getTypeNameForDebugging(iterable)}'` :
+          '';
+      throw new RuntimeError(RuntimeErrorCode.NO_SUPPORTING_DIFFER_FACTORY, errorMessage);
     }
   }
 }

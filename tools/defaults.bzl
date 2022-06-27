@@ -1,27 +1,31 @@
 """Re-export of some bazel rules with repository-wide defaults."""
 
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
-load("@build_bazel_rules_nodejs//:index.bzl", _nodejs_binary = "nodejs_binary", _pkg_npm = "pkg_npm")
+load("@build_bazel_rules_nodejs//:index.bzl", _nodejs_binary = "nodejs_binary", _nodejs_test = "nodejs_test", _npm_package_bin = "npm_package_bin", _pkg_npm = "pkg_npm")
 load("@npm//@bazel/jasmine:index.bzl", _jasmine_node_test = "jasmine_node_test")
-load("@npm//@bazel/concatjs:index.bzl", _concatjs_devserver = "concatjs_devserver", _karma_web_test = "karma_web_test", _karma_web_test_suite = "karma_web_test_suite")
+load("@npm//@bazel/concatjs:index.bzl", _concatjs_devserver = "concatjs_devserver", _ts_config = "ts_config", _ts_library = "ts_library")
 load("@npm//@bazel/rollup:index.bzl", _rollup_bundle = "rollup_bundle")
 load("@npm//@bazel/terser:index.bzl", "terser_minified")
-load("@npm//@bazel/typescript:index.bzl", _ts_config = "ts_config", _ts_library = "ts_library")
 load("@npm//@bazel/protractor:index.bzl", _protractor_web_test_suite = "protractor_web_test_suite")
 load("@npm//typescript:index.bzl", "tsc")
 load("//packages/bazel:index.bzl", _ng_module = "ng_module", _ng_package = "ng_package")
-load("@npm//@angular/dev-infra-private/bazel/benchmark/ng_rollup_bundle:ng_rollup_bundle.bzl", _ng_rollup_bundle = "ng_rollup_bundle")
-load("//tools:ng_benchmark.bzl", _ng_benchmark = "ng_benchmark")
+load("@npm//@angular/dev-infra-private/bazel/benchmark/app_bundling:index.bzl", _app_bundle = "app_bundle")
+load("@npm//@angular/dev-infra-private/bazel/http-server:index.bzl", _http_server = "http_server")
+load("@npm//@angular/dev-infra-private/bazel/karma:index.bzl", _karma_web_test = "karma_web_test", _karma_web_test_suite = "karma_web_test_suite")
 load("@npm//@angular/dev-infra-private/bazel/api-golden:index.bzl", _api_golden_test = "api_golden_test", _api_golden_test_npm_package = "api_golden_test_npm_package")
 load("@npm//@angular/dev-infra-private/bazel:extract_js_module_output.bzl", "extract_js_module_output")
+load("@npm//@angular/dev-infra-private/bazel/esbuild:index.bzl", _esbuild = "esbuild", _esbuild_config = "esbuild_config")
 
 _DEFAULT_TSCONFIG_TEST = "//packages:tsconfig-test"
-_INTERNAL_NG_MODULE_API_EXTRACTOR = "//packages/bazel/src/api-extractor:api_extractor"
 _INTERNAL_NG_MODULE_COMPILER = "//packages/bazel/src/ngc-wrapped"
 _INTERNAL_NG_MODULE_XI18N = "//packages/bazel/src/ngc-wrapped:xi18n"
 _INTERNAL_NG_PACKAGE_PACKAGER = "//packages/bazel/src/ng_package:packager"
 _INTERNAL_NG_PACKAGE_DEFAULT_ROLLUP_CONFIG_TMPL = "//packages/bazel/src/ng_package:rollup.config.js"
 _INTERNAL_NG_PACKAGE_DEFAULT_ROLLUP = "//packages/bazel/src/ng_package:rollup_for_ng_package"
+
+esbuild = _esbuild
+esbuild_config = _esbuild_config
+http_server = _http_server
 
 # Packages which are versioned together on npm
 ANGULAR_SCOPED_PACKAGES = ["@angular/%s" % p for p in [
@@ -123,6 +127,7 @@ def ts_library(name, tsconfig = None, testonly = False, deps = [], module_name =
         # For prodmode, the target is set to `ES2020`. `@bazel/typecript` sets `ES2015` by
         # default. Note that this should be in sync with the `ng_module` tsconfig generation.
         # https://github.com/bazelbuild/rules_nodejs/blob/901df3868e3ceda177d3ed181205e8456a5592ea/third_party/github.com/bazelbuild/rules_typescript/internal/common/tsconfig.bzl#L195
+        # https://github.com/bazelbuild/rules_nodejs/blob/9b36274dba34204625579463e3da054a9f42cb47/packages/typescript/internal/build_defs.bzl#L85.
         prodmode_target = "es2020",
         # `module_name` is used for AMD module names within emitted JavaScript files.
         module_name = module_name,
@@ -132,18 +137,22 @@ def ts_library(name, tsconfig = None, testonly = False, deps = [], module_name =
         **kwargs
     )
 
-    # Select the es5 .js output of the ts_library for use in downstream boostrap targets
-    # with `output_group = "es5_sources"`. This exposes an internal detail of ts_library
-    # that is not ideal.
-    # TODO(gregmagolan): clean this up by using tsc() in these cases rather than ts_library
+    # The `ts_library` targets by default only expose the type definitions as `DefaultInfo`.
+    # This is an auto-generated target that can be used to access the plain ES2015 devmode output.
+    # TODO(devversion): Should be renamed once we have devmode & prodmode combined.
     native.filegroup(
-        name = "%s_es5" % name,
+        # Note: When changing the suffix of this target, update the `jasmine_node_test` bootstrap
+        # logic which has special logic for resolving such targets.
+        name = "%s_es2015" % name,
         srcs = [":%s" % name],
         testonly = testonly,
+        # Note: Ironically this is named `es5_sources` but it refers to the devmode output.
+        # This is just an artifact of many iterations in `@bazel/concatjs`. This is being
+        # solved together with us combining devmode & prodmode.
         output_group = "es5_sources",
     )
 
-def ng_module(name, tsconfig = None, entry_point = None, testonly = False, deps = [], module_name = None, package_name = None, bundle_dts = True, **kwargs):
+def ng_module(name, tsconfig = None, entry_point = None, testonly = False, deps = [], module_name = None, package_name = None, **kwargs):
     """Default values for ng_module"""
     deps = deps + ["@npm//tslib"]
     if testonly:
@@ -171,10 +180,8 @@ def ng_module(name, tsconfig = None, entry_point = None, testonly = False, deps 
         tsconfig = tsconfig,
         entry_point = entry_point,
         testonly = testonly,
-        bundle_dts = bundle_dts,
         deps = deps,
         compiler = _INTERNAL_NG_MODULE_COMPILER,
-        api_extractor = _INTERNAL_NG_MODULE_API_EXTRACTOR,
         ng_xi18n = _INTERNAL_NG_MODULE_XI18N,
         # `module_name` is used for AMD module names within emitted JavaScript files.
         module_name = module_name,
@@ -383,14 +390,28 @@ def protractor_web_test_suite(**kwargs):
         **kwargs
     )
 
-def ng_benchmark(**kwargs):
-    """Default values for ng_benchmark"""
-    _ng_benchmark(**kwargs)
-
-def nodejs_binary(data = [], **kwargs):
-    """Default values for nodejs_binary"""
+def nodejs_binary(data = [], templated_args = [], **kwargs):
     _nodejs_binary(
         data = data + ["@npm//source-map-support"],
+        # Disable the linker and rely on patched resolution which works better on Windows
+        # and is less prone to race conditions when targets build concurrently.
+        templated_args = ["--nobazel_run_linker"] + templated_args,
+        **kwargs
+    )
+
+def nodejs_test(templated_args = [], **kwargs):
+    _nodejs_test(
+        # Disable the linker and rely on patched resolution which works better on Windows
+        # and is less prone to race conditions when targets build concurrently.
+        templated_args = ["--nobazel_run_linker"] + templated_args,
+        **kwargs
+    )
+
+def npm_package_bin(args = [], **kwargs):
+    _npm_package_bin(
+        # Disable the linker and rely on patched resolution which works better on Windows
+        # and is less prone to race conditions when targets build concurrently.
+        args = ["--nobazel_run_linker"] + args,
         **kwargs
     )
 
@@ -404,15 +425,15 @@ def jasmine_node_test(bootstrap = [], **kwargs):
                  file.
 
                  The label is automatically added to the deps of jasmine_node_test.
-                 If the label ends in `_es5` which by convention selects the es5 outputs
-                 of a ts_library rule, then corresponding ts_library target sans `_es5`
+                 If the label ends in `_es2015` which by convention selects the es2015 outputs
+                 of a ts_library rule, then corresponding ts_library target sans `_es2015`
                  is also added to the deps of jasmine_node_test.
 
                  For example with,
 
                  jasmine_node_test(
                      name = "test",
-                     bootstrap = ["//tools/testing:node_es5"],
+                     bootstrap = ["//tools/testing:node_es2015"],
                      deps = [":test_lib"],
                  )
 
@@ -432,18 +453,19 @@ def jasmine_node_test(bootstrap = [], **kwargs):
     ]
     configuration_env_vars = kwargs.pop("configuration_env_vars", [])
 
-    # TODO(josephperrott): update dependency usages to no longer need bazel patch module resolver
-    # See: https://github.com/bazelbuild/rules_nodejs/wiki#--bazel_patch_module_resolver-now-defaults-to-false-2324
-    templated_args = ["--bazel_patch_module_resolver"] + kwargs.pop("templated_args", [])
+    # Disable the linker and rely on patched resolution which works better on Windows
+    # and is less prone to race conditions when targets build concurrently.
+    templated_args = ["--nobazel_run_linker"] + kwargs.pop("templated_args", [])
+
     for label in bootstrap:
         deps += [label]
         templated_args += ["--node_options=--require=$$(rlocation $(rootpath %s))" % label]
-        if label.endswith("_es5"):
+        if label.endswith("_es2015"):
             # If this label is a filegroup derived from a ts_library then automatically
-            # add the ts_library target (which is the label sans `_es5`) to deps so we pull
+            # add the ts_library target (which is the label sans `_es2015`) to deps so we pull
             # in all of its transitive deps. This removes the need for duplicate deps on the
             # target and makes the usage of this rule less verbose.
-            deps += [label[:-4]]
+            deps += [label[:-len("_es2015")]]
 
     _jasmine_node_test(
         deps = deps,
@@ -452,23 +474,11 @@ def jasmine_node_test(bootstrap = [], **kwargs):
         **kwargs
     )
 
-def ng_rollup_bundle(deps = [], **kwargs):
-    """Default values for ng_rollup_bundle"""
-    deps = deps + [
-        "@npm//tslib",
-        "@npm//reflect-metadata",
-    ]
-    _ng_rollup_bundle(
-        deps = deps,
-        **kwargs
-    )
+def app_bundle(**kwargs):
+    """Default values for app_bundle"""
+    _app_bundle(**kwargs)
 
-# TODO: Consider removing this rule in favor of `ng_rollup_bundle`. Most of the tests use
-# the benchmarking rule from dev-infra, but there are cases where we have a bad mix of
-# the rollup bundle rules here. i.e.
-#   - `@angular/language-service` uses the benchmarking rule for shipping to NPM.
-#   - `@angular/service-worker` uses the benchmarking rule for shipping the worker minified.
-#   - `zone.js` uses this rule (as the only consumer) for creating NPM package bundles.
+# TODO: Consider removing this rule in favor of `esbuild` for more consistent bundling.
 def rollup_bundle(name, testonly = False, sourcemap = "true", **kwargs):
     """A drop in replacement for the rules nodejs [legacy rollup_bundle].
 

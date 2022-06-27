@@ -50,6 +50,11 @@ export interface R3PipeMetadata {
    * Whether the pipe is marked as pure.
    */
   pure: boolean;
+
+  /**
+   * Whether the pipe is standalone.
+   */
+  isStandalone: boolean;
 }
 
 export function compilePipeFromMetadata(metadata: R3PipeMetadata): R3CompiledExpression {
@@ -64,6 +69,10 @@ export function compilePipeFromMetadata(metadata: R3PipeMetadata): R3CompiledExp
   // e.g. `pure: true`
   definitionMapValues.push({key: 'pure', value: o.literal(metadata.pure), quoted: false});
 
+  if (metadata.isStandalone) {
+    definitionMapValues.push({key: 'standalone', value: o.literal(true), quoted: false});
+  }
+
   const expression =
       o.importExpr(R3.definePipe).callFn([o.literalMap(definitionMapValues)], undefined, true);
   const type = createPipeType(metadata);
@@ -75,5 +84,6 @@ export function createPipeType(metadata: R3PipeMetadata): o.Type {
   return new o.ExpressionType(o.importExpr(R3.PipeDeclaration, [
     typeWithParameters(metadata.type.type, metadata.typeArgumentCount),
     new o.ExpressionType(new o.LiteralExpr(metadata.pipeName)),
+    new o.ExpressionType(new o.LiteralExpr(metadata.isStandalone)),
   ]));
 }

@@ -6,7 +6,10 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {AbstractControl, FormArray, FormControl, FormGroup} from '../model';
+import {AbstractControl} from '../model/abstract_model';
+import {FormArray} from '../model/form_array';
+import {FormControl} from '../model/form_control';
+import {FormGroup} from '../model/form_group';
 import {getControlAsyncValidators, getControlValidators, mergeValidators} from '../validators';
 
 import {AbstractControlDirective} from './abstract_control_directive';
@@ -18,7 +21,6 @@ import {NgControl} from './ng_control';
 import {FormArrayName} from './reactive_directives/form_group_name';
 import {ngModelWarning} from './reactive_errors';
 import {AsyncValidatorFn, Validator, ValidatorFn} from './validators';
-
 
 export function controlPath(name: string|null, parent: ControlContainer): string[] {
   return [...parent.path!, name!];
@@ -40,6 +42,10 @@ export function setUpControl(control: FormControl, dir: NgControl): void {
   setUpValidators(control, dir);
 
   dir.valueAccessor!.writeValue(control.value);
+
+  if (control.disabled) {
+    dir.valueAccessor!.setDisabledState?.(true);
+  }
 
   setUpViewChangePipeline(control, dir);
   setUpModelChangePipeline(control, dir);
@@ -88,7 +94,7 @@ export function cleanUpControl(
 }
 
 function registerOnValidatorChange<V>(validators: (V|Validator)[], onChange: () => void): void {
-  validators.forEach((validator: (V|Validator)) => {
+  validators.forEach((validator: V|Validator) => {
     if ((<Validator>validator).registerOnValidatorChange)
       (<Validator>validator).registerOnValidatorChange!(onChange);
   });
@@ -169,7 +175,7 @@ export function cleanUpValidators(
       const validators = getControlValidators(control);
       if (Array.isArray(validators) && validators.length > 0) {
         // Filter out directive validator function.
-        const updatedValidators = validators.filter(validator => validator !== dir.validator);
+        const updatedValidators = validators.filter((validator) => validator !== dir.validator);
         if (updatedValidators.length !== validators.length) {
           isControlUpdated = true;
           control.setValidators(updatedValidators);
@@ -182,7 +188,7 @@ export function cleanUpValidators(
       if (Array.isArray(asyncValidators) && asyncValidators.length > 0) {
         // Filter out directive async validator function.
         const updatedAsyncValidators =
-            asyncValidators.filter(asyncValidator => asyncValidator !== dir.asyncValidator);
+            asyncValidators.filter((asyncValidator) => asyncValidator !== dir.asyncValidator);
         if (updatedAsyncValidators.length !== asyncValidators.length) {
           isControlUpdated = true;
           control.setAsyncValidators(updatedAsyncValidators);
@@ -273,15 +279,22 @@ function _noControlError(dir: NgControl) {
 }
 
 function _throwError(dir: AbstractControlDirective, message: string): void {
-  let messageEnd: string;
-  if (dir.path!.length > 1) {
-    messageEnd = `path: '${dir.path!.join(' -> ')}'`;
-  } else if (dir.path![0]) {
-    messageEnd = `name: '${dir.path}'`;
-  } else {
-    messageEnd = 'unspecified name attribute';
-  }
+  const messageEnd = _describeControlLocation(dir);
   throw new Error(`${message} ${messageEnd}`);
+}
+
+function _describeControlLocation(dir: AbstractControlDirective): string {
+  const path = dir.path;
+  if (path && path.length > 1) return `path: '${path.join(' -> ')}'`;
+  if (path?.[0]) return `name: '${path}'`;
+  return 'unspecified name attribute';
+}
+
+function _throwInvalidValueAccessorError(dir: AbstractControlDirective) {
+  const loc = _describeControlLocation(dir);
+  throw new Error(
+      `Value accessor was not provided as an array for form control with ${loc}. ` +
+      `Check that the \`NG_VALUE_ACCESSOR\` token is configured as a \`multi: true\` provider.`);
 }
 
 export function isPropertyUpdated(changes: {[key: string]: any}, viewModel: any): boolean {
@@ -298,9 +311,9 @@ export function isBuiltInAccessor(valueAccessor: ControlValueAccessor): boolean 
   return Object.getPrototypeOf(valueAccessor.constructor) === BuiltInControlValueAccessor;
 }
 
-export function syncPendingControls(form: FormGroup, directives: NgControl[]): void {
+export function syncPendingControls(form: FormGroup, directives: Set<NgControl>|NgControl[]): void {
   form._syncPendingControls();
-  directives.forEach(dir => {
+  directives.forEach((dir: NgControl) => {
     const control = dir.control as FormControl;
     if (control.updateOn === 'submit' && control._pendingChange) {
       dir.viewToModelUpdate(control._pendingValue);
@@ -315,7 +328,7 @@ export function selectValueAccessor(
   if (!valueAccessors) return null;
 
   if (!Array.isArray(valueAccessors) && (typeof ngDevMode === 'undefined' || ngDevMode))
-    _throwError(dir, 'Value accessor was not provided as an array for form control with');
+    _throwInvalidValueAccessorError(dir);
 
   let defaultAccessor: ControlValueAccessor|undefined = undefined;
   let builtinAccessor: ControlValueAccessor|undefined = undefined;
@@ -324,12 +337,10 @@ export function selectValueAccessor(
   valueAccessors.forEach((v: ControlValueAccessor) => {
     if (v.constructor === DefaultValueAccessor) {
       defaultAccessor = v;
-
     } else if (isBuiltInAccessor(v)) {
       if (builtinAccessor && (typeof ngDevMode === 'undefined' || ngDevMode))
         _throwError(dir, 'More than one built-in value accessor matches form control with');
       builtinAccessor = v;
-
     } else {
       if (customAccessor && (typeof ngDevMode === 'undefined' || ngDevMode))
         _throwError(dir, 'More than one custom value accessor matches form control with');

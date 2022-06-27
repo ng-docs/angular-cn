@@ -20,6 +20,11 @@ describe('AsyncTestZoneSpec', function() {
     log.push('fail');
   }
 
+  function emptyRun() {
+    // Jasmine will throw if there are no tests.
+    it('should pass', () => {});
+  }
+
   beforeEach(() => {
     log = [];
   });
@@ -132,6 +137,55 @@ describe('AsyncTestZoneSpec', function() {
     });
   });
 
+  it('should not call done multiple times in sync test', (done) => {
+    const testFn = () => {
+      Zone.current.run(() => {});
+      Zone.current.run(() => {});
+    };
+    let doneCalledCount = 0;
+    const testZoneSpec = new AsyncTestZoneSpec(() => {
+      doneCalledCount++;
+    }, () => {}, 'name');
+
+    const atz = Zone.current.fork(testZoneSpec);
+
+    atz.run(testFn);
+    setTimeout(() => {
+      expect(doneCalledCount).toBe(1);
+      done();
+    });
+  });
+
+  it('should not call done multiple times in async test with nested zone', (done) => {
+    const testFn = () => {
+      Promise.resolve(1).then(() => {});
+    };
+    let doneCalledCount = 0;
+    const testZoneSpec = new AsyncTestZoneSpec(() => {
+      doneCalledCount++;
+    }, () => {}, 'name');
+
+    const atz = Zone.current.fork(testZoneSpec);
+    const c1 = atz.fork({
+      name: 'child1',
+      onHasTask: (delegate, current, target, hasTaskState) => {
+        return delegate.hasTask(target, hasTaskState);
+      }
+    });
+    const c2 = c1.fork({
+      name: 'child2',
+      onHasTask: (delegate, current, target, hasTaskState) => {
+        return delegate.hasTask(target, hasTaskState);
+      }
+    });
+
+    c2.run(testFn);
+    setTimeout(() => {
+      expect(doneCalledCount).toBe(1);
+      done();
+    }, 50);
+  });
+
   describe('event tasks', ifEnvSupports('document', () => {
              let button: HTMLButtonElement;
              beforeEach(function() {
@@ -198,7 +252,7 @@ describe('AsyncTestZoneSpec', function() {
                  button.dispatchEvent(clickEvent);
                });
              });
-           }));
+           }, emptyRun));
 
   describe('XHRs', ifEnvSupports('XMLHttpRequest', () => {
              it('should wait for XHRs to complete', function(done) {
@@ -257,7 +311,7 @@ describe('AsyncTestZoneSpec', function() {
                  req.send();
                });
              });
-           }));
+           }, emptyRun));
 
   it('should not fail if setInterval is used and canceled', (done) => {
     const testZoneSpec = new AsyncTestZoneSpec(

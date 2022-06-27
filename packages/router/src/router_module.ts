@@ -8,17 +8,19 @@
 
 import {APP_BASE_HREF, HashLocationStrategy, Location, LOCATION_INITIALIZED, LocationStrategy, PathLocationStrategy, PlatformLocation, ViewportScroller} from '@angular/common';
 import {ANALYZE_FOR_ENTRY_COMPONENTS, APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, ApplicationRef, Compiler, ComponentRef, Inject, Injectable, InjectionToken, Injector, ModuleWithProviders, NgModule, NgProbeToken, OnDestroy, Optional, Provider, SkipSelf} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 import {of, Subject} from 'rxjs';
 
 import {EmptyOutletComponent} from './components/empty_outlet';
-import {Route, Routes} from './config';
 import {RouterLink, RouterLinkWithHref} from './directives/router_link';
 import {RouterLinkActive} from './directives/router_link_active';
 import {RouterOutlet} from './directives/router_outlet';
-import {Event} from './events';
+import {Event, stringifyEvent} from './events';
+import {Route, Routes} from './models';
+import {DefaultTitleStrategy, TitleStrategy} from './page_title_strategy';
 import {RouteReuseStrategy} from './route_reuse_strategy';
 import {ErrorHandler, Router} from './router';
-import {ROUTES} from './router_config_loader';
+import {RouterConfigLoader, ROUTES} from './router_config_loader';
 import {ChildrenOutletContexts} from './router_outlet_context';
 import {NoPreloading, PreloadAllModules, PreloadingStrategy, RouterPreloader} from './router_preloader';
 import {RouterScroller} from './router_scroller';
@@ -54,8 +56,8 @@ export const ROUTER_PROVIDERS: Provider[] = [
     useFactory: setupRouter,
     deps: [
       UrlSerializer, ChildrenOutletContexts, Location, Injector, Compiler, ROUTES,
-      ROUTER_CONFIGURATION, [UrlHandlingStrategy, new Optional()],
-      [RouteReuseStrategy, new Optional()]
+      ROUTER_CONFIGURATION, DefaultTitleStrategy, [TitleStrategy, new Optional()],
+      [UrlHandlingStrategy, new Optional()], [RouteReuseStrategy, new Optional()]
     ]
   },
   ChildrenOutletContexts,
@@ -64,6 +66,7 @@ export const ROUTER_PROVIDERS: Provider[] = [
   NoPreloading,
   PreloadAllModules,
   {provide: ROUTER_CONFIGURATION, useValue: {enableTracing: false}},
+  RouterConfigLoader,
 ];
 
 export function routerNgProbeToken() {
@@ -108,7 +111,6 @@ export function routerNgProbeToken() {
 @NgModule({
   declarations: ROUTER_DIRECTIVES,
   exports: ROUTER_DIRECTIVES,
-  entryComponents: [EmptyOutletComponent]
 })
 export class RouterModule {
   // Note: We are injecting the Router so it gets created eagerly...
@@ -285,15 +287,11 @@ export function provideRoutes(routes: Routes): any {
  *
  * [从 v11 开始不推荐使用](guide/releases#deprecation-practices)以下值，并且不应将其用于新应用程序。
  *
- * * 'enabled' - This option is 1:1 replaceable with `enabledBlocking`.
- *
- *   'enabled' - 此选项可以 1：1 替换为 `enabledNonBlocking`。
- *
  * @see `forRoot()`
  *
  * @publicApi
  */
-export type InitialNavigation = 'disabled'|'enabled'|'enabledBlocking'|'enabledNonBlocking';
+export type InitialNavigation = 'disabled'|'enabledBlocking'|'enabledNonBlocking';
 
 /**
  * A set of configuration options for a router module, provided in the
@@ -406,21 +404,22 @@ export interface ExtraOptions {
    * 你可以像下面的例子一样适配它启用时的行为，来自定义恢复滚动位置的策略：
    *
    * ```typescript
-   * class AppModule {
-   *   constructor(router: Router, viewportScroller: ViewportScroller) {
-   *     router.events.pipe(
-   *       filter((e: Event): e is Scroll => e instanceof Scroll)
+   * class AppComponent {
+   *   movieData: any;
+   *
+   *   constructor(private router: Router, private viewportScroller: ViewportScroller,
+   * changeDetectorRef: ChangeDetectorRef) {
+   *   router.events.pipe(filter((event: Event): event is Scroll => event instanceof Scroll)
    *     ).subscribe(e => {
-   *       if (e.position) {
-   *         // backward navigation
-   *         viewportScroller.scrollToPosition(e.position);
-   *       } else if (e.anchor) {
-   *         // anchor navigation
-   *         viewportScroller.scrollToAnchor(e.anchor);
-   *       } else {
-   *         // forward navigation
-   *         viewportScroller.scrollToPosition([0, 0]);
-   *       }
+   *       fetch('http://example.com/movies.json').then(response => {
+   *         this.movieData = response.json();
+   *         // update the template with the data before restoring scroll
+   *         changeDetectorRef.detectChanges();
+   *
+   *         if (e.position) {
+   *           viewportScroller.scrollToPosition(e.position);
+   *         }
+   *       });
    *     });
    *   }
    * }
@@ -558,6 +557,8 @@ export interface ExtraOptions {
    * The default in v11 is `corrected`.
    *
    * v11 中的默认值是 `corrected`。
+   *
+   * @deprecated
    */
   relativeLinkResolution?: 'legacy'|'corrected';
 
@@ -588,6 +589,7 @@ export interface ExtraOptions {
 export function setupRouter(
     urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,
     injector: Injector, compiler: Compiler, config: Route[][], opts: ExtraOptions = {},
+    defaultTitleStrategy: DefaultTitleStrategy, titleStrategy?: TitleStrategy,
     urlHandlingStrategy?: UrlHandlingStrategy, routeReuseStrategy?: RouteReuseStrategy) {
   const router =
       new Router(null, urlSerializer, contexts, location, injector, compiler, flatten(config));
@@ -600,13 +602,15 @@ export function setupRouter(
     router.routeReuseStrategy = routeReuseStrategy;
   }
 
+  router.titleStrategy = titleStrategy ?? defaultTitleStrategy;
+
   assignExtraOptionsToRouter(opts, router);
 
-  if (opts.enableTracing) {
+  if ((typeof ngDevMode === 'undefined' || ngDevMode) && opts.enableTracing) {
     router.events.subscribe((e: Event) => {
       // tslint:disable:no-console
       console.group?.(`Router Event: ${(<any>e.constructor).name}`);
-      console.log(e.toString());
+      console.log(stringifyEvent(e));
       console.log(e);
       console.groupEnd?.();
       // tslint:enable:no-console
@@ -685,9 +689,7 @@ export class RouterInitializer implements OnDestroy {
       if (opts.initialNavigation === 'disabled') {
         router.setUpLocationChangeListener();
         resolve(true);
-      } else if (
-          // TODO: enabled is deprecated as of v11, can be removed in v13
-          opts.initialNavigation === 'enabled' || opts.initialNavigation === 'enabledBlocking') {
+      } else if (opts.initialNavigation === 'enabledBlocking') {
         router.hooks.afterPreactivation = () => {
           // only the initial navigation should be delayed
           if (!this.initNavigation) {

@@ -12,6 +12,7 @@ import ts from 'typescript';
 
 import {AbsoluteFsPath, dirname, getFileSystem, getSourceFileOrError, NgtscCompilerHost} from '../../file_system';
 import {DeclarationNode} from '../../reflection';
+import {getTokenAtPosition} from '../../util/src/typescript';
 
 export function makeProgram(
     files: {name: AbsoluteFsPath, contents: string, isRoot?: boolean}[],
@@ -145,5 +146,17 @@ export function getSourceCodeForDiagnostic(diag: ts.Diagnostic): string {
         `Unable to get source code for diagnostic. Provided diagnostic instance doesn't contain "file", "start" and/or "length" properties.`);
   }
   const text = diag.file.text;
-  return text.substr(diag.start, diag.length);
+  return text.slice(diag.start, diag.start + diag.length);
+}
+
+export function diagnosticToNode<T extends ts.Node>(
+    diagnostic: ts.Diagnostic|ts.DiagnosticRelatedInformation,
+    guard: (node: ts.Node) => node is T): T {
+  const diag = diagnostic as ts.Diagnostic | ts.DiagnosticRelatedInformation;
+  if (diag.file === undefined) {
+    throw new Error(`Expected ts.Diagnostic to have a file source`);
+  }
+  const node = getTokenAtPosition(diag.file, diag.start!);
+  expect(guard(node)).toBe(true);
+  return node as T;
 }

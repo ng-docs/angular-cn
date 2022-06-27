@@ -6,25 +6,26 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Location, PopStateEvent} from '@angular/common';
+import {Location} from '@angular/common';
 import {Compiler, Injectable, Injector, NgModuleRef, NgZone, Type, ɵConsole as Console} from '@angular/core';
-import {BehaviorSubject, EMPTY, Observable, of, Subject, SubscriptionLike} from 'rxjs';
-import {catchError, filter, finalize, map, switchMap, tap} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, EMPTY, Observable, of, Subject, SubscriptionLike} from 'rxjs';
+import {catchError, defaultIfEmpty, filter, finalize, map, switchMap, take, tap} from 'rxjs/operators';
 
-import {QueryParamsHandling, Route, Routes} from './config';
 import {createRouterState} from './create_router_state';
 import {createUrlTree} from './create_url_tree';
 import {Event, GuardsCheckEnd, GuardsCheckStart, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, NavigationTrigger, ResolveEnd, ResolveStart, RouteConfigLoadEnd, RouteConfigLoadStart, RoutesRecognized} from './events';
+import {QueryParamsHandling, Route, Routes} from './models';
 import {activateRoutes} from './operators/activate_routes';
 import {applyRedirects} from './operators/apply_redirects';
 import {checkGuards} from './operators/check_guards';
 import {recognize} from './operators/recognize';
 import {resolveData} from './operators/resolve_data';
 import {switchTap} from './operators/switch_tap';
+import {TitleStrategy} from './page_title_strategy';
 import {DefaultRouteReuseStrategy, RouteReuseStrategy} from './route_reuse_strategy';
 import {RouterConfigLoader} from './router_config_loader';
 import {ChildrenOutletContexts} from './router_outlet_context';
-import {ActivatedRoute, createEmptyState, RouterState, RouterStateSnapshot} from './router_state';
+import {ActivatedRoute, ActivatedRouteSnapshot, createEmptyState, RouterState, RouterStateSnapshot} from './router_state';
 import {isNavigationCancelingError, navigationCancelingError, Params} from './shared';
 import {DefaultUrlHandlingStrategy, UrlHandlingStrategy} from './url_handling_strategy';
 import {containsTree, createEmptyUrlTree, IsActiveMatchOptions, UrlSerializer, UrlTree} from './url_tree';
@@ -32,6 +33,8 @@ import {standardizeConfig, validateConfig} from './utils/config';
 import {Checks, getAllRouteGuards} from './utils/preactivation';
 import {isUrlTree} from './utils/type_guards';
 
+
+const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
 
 /**
  * @description
@@ -393,7 +396,7 @@ export interface Navigation {
    * 调用中。这是路由器解析或对其应用重定向之前的值。
    *
    */
-  initialUrl: string|UrlTree;
+  initialUrl: UrlTree;
   /**
    * The initial target URL after being parsed with `UrlSerializer.extract()`.
    *
@@ -679,6 +682,11 @@ export class Router {
   routeReuseStrategy: RouteReuseStrategy = new DefaultRouteReuseStrategy();
 
   /**
+   * A strategy for setting the title based on the `routerState`.
+   */
+  titleStrategy?: TitleStrategy;
+
+  /**
    * How to handle a navigation request to the current URL. One of:
    *
    * 定义当路由器收到一个导航到当前 URL 的请求时应该怎么做。可取下列值之一：
@@ -702,7 +710,7 @@ export class Router {
   onSameUrlNavigation: 'reload'|'ignore' = 'ignore';
 
   /**
-   * How to merge parameters, data, and resolved data from parent to child
+   * How to merge parameters, data, resolved data, and title from parent to child
    * routes. One of:
    *
    * 如何从父路由向子路由合并参数、数据和解析到的数据。可取下列值之一：
@@ -740,6 +748,8 @@ export class Router {
    * 启用错误修复功能，以更正带空路径的组件中的相对链接。
    *
    * @see `RouterModule`
+   *
+   * @deprecated
    */
   relativeLinkResolution: 'legacy'|'corrected' = 'corrected';
 
@@ -779,6 +789,9 @@ export class Router {
       compiler: Compiler, public config: Routes) {
     const onLoadStart = (r: Route) => this.triggerEvent(new RouteConfigLoadStart(r));
     const onLoadEnd = (r: Route) => this.triggerEvent(new RouteConfigLoadEnd(r));
+    this.configLoader = injector.get(RouterConfigLoader);
+    this.configLoader.onLoadEndListener = onLoadEnd;
+    this.configLoader.onLoadStartListener = onLoadStart;
 
     this.ngModule = injector.get(NgModuleRef);
     this.console = injector.get(Console);
@@ -790,7 +803,6 @@ export class Router {
     this.rawUrlTree = this.currentUrlTree;
     this.browserUrlTree = this.currentUrlTree;
 
-    this.configLoader = new RouterConfigLoader(injector, compiler, onLoadStart, onLoadEnd);
     this.routerState = createEmptyState(this.currentUrlTree, this.rootComponentType);
 
     this.transitions = new BehaviorSubject<NavigationTransition>({
@@ -839,7 +851,7 @@ export class Router {
                      tap(t => {
                        this.currentNavigation = {
                          id: t.id,
-                         initialUrl: t.currentRawUrl,
+                         initialUrl: t.rawUrl,
                          extractedUrl: t.extractedUrl,
                          trigger: t.source,
                          extras: t.extras,
@@ -1067,6 +1079,30 @@ export class Router {
                        });
                      }),
 
+                     // --- LOAD COMPONENTS ---
+                     switchTap((t: NavigationTransition) => {
+                       const loadComponents =
+                           (route: ActivatedRouteSnapshot): Array<Observable<void>> => {
+                             const loaders: Array<Observable<void>> = [];
+                             if (route.routeConfig?.loadComponent &&
+                                 !route.routeConfig._loadedComponent) {
+                               loaders.push(this.configLoader.loadComponent(route.routeConfig)
+                                                .pipe(
+                                                    tap(loadedComponent => {
+                                                      route.component = loadedComponent;
+                                                    }),
+                                                    map(() => void 0),
+                                                    ));
+                             }
+                             for (const child of route.children) {
+                               loaders.push(...loadComponents(child));
+                             }
+                             return loaders;
+                           };
+                       return combineLatest(loadComponents(t.targetSnapshot!.root))
+                           .pipe(defaultIfEmpty(), take(1));
+                     }),
+
                      map((t: NavigationTransition) => {
                        const targetRouterState = createRouterState(
                            this.routeReuseStrategy, t.targetSnapshot!, t.currentRouterState);
@@ -1159,27 +1195,21 @@ export class Router {
                          if (!redirecting) {
                            t.resolve(false);
                          } else {
-                           // setTimeout is required so this navigation finishes with
-                           // the return EMPTY below. If it isn't allowed to finish
-                           // processing, there can be multiple navigations to the same
-                           // URL.
-                           setTimeout(() => {
-                             const mergedTree =
-                                 this.urlHandlingStrategy.merge(e.url, this.rawUrlTree);
-                             const extras = {
-                               skipLocationChange: t.extras.skipLocationChange,
-                               // The URL is already updated at this point if we have 'eager' URL
-                               // updates or if the navigation was triggered by the browser (back
-                               // button, URL bar, etc). We want to replace that item in history if
-                               // the navigation is rejected.
-                               replaceUrl: this.urlUpdateStrategy === 'eager' ||
-                                   isBrowserTriggeredNavigation(t.source)
-                             };
+                           const mergedTree =
+                               this.urlHandlingStrategy.merge(e.url, this.rawUrlTree);
+                           const extras = {
+                             skipLocationChange: t.extras.skipLocationChange,
+                             // The URL is already updated at this point if we have 'eager' URL
+                             // updates or if the navigation was triggered by the browser (back
+                             // button, URL bar, etc). We want to replace that item in history if
+                             // the navigation is rejected.
+                             replaceUrl: this.urlUpdateStrategy === 'eager' ||
+                                 isBrowserTriggeredNavigation(t.source)
+                           };
 
-                             this.scheduleNavigation(
-                                 mergedTree, 'imperative', null, extras,
-                                 {resolve: t.resolve, reject: t.reject, promise: t.promise});
-                           }, 0);
+                           this.scheduleNavigation(
+                               mergedTree, 'imperative', null, extras,
+                               {resolve: t.resolve, reject: t.reject, promise: t.promise});
                          }
 
                          /* All other errors should reset to the router's internal URL reference to
@@ -1311,7 +1341,7 @@ export class Router {
    * ```
    */
   resetConfig(config: Routes): void {
-    validateConfig(config);
+    NG_DEV_MODE && validateConfig(config);
     this.config = config.map(standardizeConfig);
     this.navigated = false;
     this.lastSuccessfulId = -1;
@@ -1543,7 +1573,7 @@ export class Router {
     try {
       urlTree = this.urlSerializer.parse(url);
     } catch (e) {
-      urlTree = this.malformedUriErrorHandler(e, this.urlSerializer, url);
+      urlTree = this.malformedUriErrorHandler(e as URIError, this.urlSerializer, url);
     }
     return urlTree;
   }
@@ -1603,6 +1633,7 @@ export class Router {
               .next(new NavigationEnd(
                   t.id, this.serializeUrl(t.extractedUrl), this.serializeUrl(this.currentUrlTree)));
           this.lastSuccessfulNavigation = this.currentNavigation;
+          this.titleStrategy?.updateTitle(this.routerState.snapshot);
           t.resolve(true);
         },
         e => {
@@ -1616,21 +1647,6 @@ export class Router {
       priorPromise?: {resolve: any, reject: any, promise: Promise<boolean>}): Promise<boolean> {
     if (this.disposed) {
       return Promise.resolve(false);
-    }
-
-    // Duplicate navigations may be triggered by attempts to sync AngularJS and
-    // Angular router states. We have the setTimeout in the location listener to
-    // ensure the imperative nav is scheduled before the browser nav.
-    const lastNavigation = this.transitions.value;
-    const browserNavPrecededByRouterNav = isBrowserTriggeredNavigation(source) && lastNavigation &&
-        !isBrowserTriggeredNavigation(lastNavigation.source);
-    const navToSameUrl = lastNavigation.rawUrl.toString() === rawUrl.toString();
-    const lastNavigationInProgress = lastNavigation.id === this.currentNavigation?.id;
-    // We consider duplicates as ones that goes to the same URL while the first
-    // is still processing.
-    const isDuplicateNav = navToSameUrl && lastNavigationInProgress;
-    if (browserNavPrecededByRouterNav && isDuplicateNav) {
-      return Promise.resolve(true);  // return value is not used
     }
 
     let resolve: any;

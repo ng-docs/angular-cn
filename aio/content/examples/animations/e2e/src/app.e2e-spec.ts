@@ -8,8 +8,11 @@ import * as auto from './auto.po';
 import * as filterStagger from './filter-stagger.po';
 import * as heroGroups from './hero-groups';
 import { getLinkById, sleepFor } from './util';
+import { getComponentSection, getToggleButton } from './querying.po';
 
 describe('Animation Tests', () => {
+  const routingAnimationDuration = 350;
+
   const openCloseHref = getLinkById('open-close');
   const statusSliderHref = getLinkById('status');
   const toggleHref = getLinkById('toggle');
@@ -17,6 +20,9 @@ describe('Animation Tests', () => {
   const autoHref = getLinkById('auto');
   const filterHref = getLinkById('heroes');
   const heroGroupsHref = getLinkById('hero-groups');
+  const queryingHref = getLinkById('querying');
+
+  const newPageSleepFor = (ms = 0) => sleepFor(ms + routingAnimationDuration);
 
   beforeAll(() => browser.get(''));
 
@@ -26,7 +32,7 @@ describe('Animation Tests', () => {
 
     beforeAll(async () => {
       await openCloseHref.click();
-      await sleepFor();
+      await newPageSleepFor(300);
     });
 
     it('should be open', async () => {
@@ -82,7 +88,7 @@ describe('Animation Tests', () => {
 
     beforeAll(async () => {
       await statusSliderHref.click();
-      await sleepFor(2000);
+      await newPageSleepFor(2000);
     });
 
     it('should be inactive with a blue background', async () => {
@@ -123,7 +129,7 @@ describe('Animation Tests', () => {
   describe('Toggle Animations Component', () => {
     beforeAll(async () => {
       await toggleHref.click();
-      await sleepFor();
+      await newPageSleepFor();
     });
 
     it('should disabled animations on the child element', async () => {
@@ -141,7 +147,7 @@ describe('Animation Tests', () => {
   describe('Enter/Leave Component', () => {
     beforeAll(async () => {
       await enterLeaveHref.click();
-      await sleepFor(100);
+      await newPageSleepFor(100);
     });
 
     it('should attach a flyInOut trigger to the list of items', async () => {
@@ -167,7 +173,7 @@ describe('Animation Tests', () => {
   describe('Auto Calculation Component', () => {
     beforeAll(async () => {
       await autoHref.click();
-      await sleepFor(0);
+      await newPageSleepFor();
     });
 
     it('should attach a shrinkOut trigger to the list of items', async () => {
@@ -191,7 +197,7 @@ describe('Animation Tests', () => {
   describe('Filter/Stagger Component', () => {
     beforeAll(async () => {
       await filterHref.click();
-      await sleepFor();
+      await newPageSleepFor();
     });
 
     it('should attach a filterAnimations trigger to the list container', async () => {
@@ -218,7 +224,7 @@ describe('Animation Tests', () => {
   describe('Hero Groups Component', () => {
     beforeAll(async () => {
       await heroGroupsHref.click();
-      await sleepFor(300);
+      await newPageSleepFor(400);
     });
 
     it('should attach a flyInOut trigger to the list of items', async () => {
@@ -241,5 +247,50 @@ describe('Animation Tests', () => {
       await hero.click();
       await browser.wait(async () => await heroesList.count() < total, 2000);
     });
+  });
+
+  describe('Querying Component', () => {
+    const queryingAnimationDuration = 2500;
+
+    beforeAll(async () => {
+      await queryingHref.click();
+      await newPageSleepFor(queryingAnimationDuration);
+    });
+
+    it('should toggle the section', async () => {
+      const toggleButton = getToggleButton();
+      const section = getComponentSection();
+
+      expect(await section.isPresent()).toBe(true);
+
+      // toggling off
+      await toggleButton.click();
+      await newPageSleepFor(queryingAnimationDuration);
+      expect(await section.isPresent()).toBe(false);
+
+      // toggling on
+      await toggleButton.click();
+      await newPageSleepFor(queryingAnimationDuration);
+      expect(await section.isPresent()).toBe(true);
+      await newPageSleepFor(queryingAnimationDuration);
+    });
+
+    it(`should disable the button for the animation's duration`, async () => {
+      const toggleButton = getToggleButton();
+      expect(await toggleButton.isEnabled()).toBe(true);
+
+      // toggling off
+      await toggleButton.click();
+      expect(await toggleButton.isEnabled()).toBe(false);
+      await newPageSleepFor(queryingAnimationDuration);
+      expect(await toggleButton.isEnabled()).toBe(true);
+
+      // toggling on
+      await toggleButton.click();
+      expect(await toggleButton.isEnabled()).toBe(false);
+      await newPageSleepFor(queryingAnimationDuration);
+      expect(await toggleButton.isEnabled()).toBe(true);
+    });
+
   });
 });

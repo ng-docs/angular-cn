@@ -8,7 +8,7 @@
 
 import {Directive, forwardRef, Host, Inject, Input, OnDestroy, OnInit, Optional, Self, SkipSelf} from '@angular/core';
 
-import {FormArray} from '../../model';
+import {FormArray} from '../../model/form_array';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
 import {AbstractFormGroupDirective} from '../abstract_form_group_directive';
 import {ControlContainer} from '../control_container';
@@ -38,7 +38,8 @@ export const formGroupNameProvider: any = {
  * looks for a `FormGroup` registered with that name in the parent
  * `FormGroup` instance you passed into `FormGroupDirective`.
  *
- * 它接受嵌套的字符串名称 `FormGroup` 链接，并寻找使用这个名字在你传给 `FormGroupDirective` 的父 `FormGroup` 实例中注册的 `FormGroup`。
+ * 它接受嵌套的字符串名称 `FormGroup` 链接，并寻找使用这个名字在你传给 `FormGroupDirective` 的父
+ * `FormGroup` 实例中注册的 `FormGroup`。
  *
  * Use nested form groups to validate a sub-group of a
  * form separately from the rest or to group the values of certain
@@ -56,7 +57,7 @@ export const formGroupNameProvider: any = {
  *
  * ### 按名称访问组
  *
- * The following example uses the {@link AbstractControl#get get} method to access the
+ * The following example uses the `AbstractControl.get` method to access the
  * associated `FormGroup`
  *
  * 下面的示例使用 {@link AbstractControl#get get} 方法访问关联的 `FormGroup`
@@ -69,7 +70,7 @@ export const formGroupNameProvider: any = {
  *
  * ### 访问组中的各个控件
  *
- * The following example uses the {@link AbstractControl#get get} method to access
+ * The following example uses the `AbstractControl.get` method to access
  * individual controls within the group using dot syntax.
  *
  * 下面的示例使用 {@link AbstractControl#get get} 方法使用点语法访问组中的各个控件。
@@ -85,7 +86,8 @@ export const formGroupNameProvider: any = {
  * The following example registers a nested *name* `FormGroup` within an existing `FormGroup`,
  * and provides methods to retrieve the nested `FormGroup` and individual controls.
  *
- * 下面的示例在现有 `FormGroup` 注册一个嵌套*名称*的 `FormGroup` ，并提供检索嵌套 `FormGroup` 和各个控件的方法。
+ * 下面的示例在现有 `FormGroup` 注册一个嵌套*名称*的 `FormGroup` ，并提供检索嵌套 `FormGroup`
+ * 和各个控件的方法。
  *
  * {@example forms/ts/nestedFormGroup/nested_form_group_example.ts region='Component'}
  *
@@ -103,7 +105,9 @@ export class FormGroupName extends AbstractFormGroupDirective implements OnInit,
    * while the numerical form allows for form groups to be bound
    * to indices when iterating over groups in a `FormArray`.
    *
-   * 跟踪绑定到此指令的 `FormGroup` 名称。该名称对应于父 `FormGroup` 或 `FormArray` 中的键名。接受字符串或数字形式的名称。字符串形式的名称对于单个表单很有用，而数字形式则允许在 `FormArray` 组上进行迭代时将表单组绑定到索引。
+   * 跟踪绑定到此指令的 `FormGroup` 名称。该名称对应于父 `FormGroup` 或 `FormArray`
+   * 中的键名。接受字符串或数字形式的名称。字符串形式的名称对于单个表单很有用，而数字形式则允许在
+   * `FormArray` 组上进行迭代时将表单组绑定到索引。
    *
    */
   // TODO(issue/24571): remove '!'.
@@ -149,7 +153,8 @@ export const formArrayNameProvider: any = {
  * will look for a `FormArray` registered with that name in the parent
  * `FormGroup` instance you passed into `FormGroupDirective`.
  *
- * 它接受你要链接的嵌套 `FormArray` 的字符串名称，并寻找使用这个名字在你传给 `FormGroupDirective` 的父 `FormGroup` 实例中注册的 `FormGroup`。
+ * 它接受你要链接的嵌套 `FormArray` 的字符串名称，并寻找使用这个名字在你传给 `FormGroupDirective`
+ * 的父 `FormGroup` 实例中注册的 `FormGroup`。
  *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
@@ -182,7 +187,9 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
    * while the numerical form allows for form arrays to be bound
    * to indices when iterating over arrays in a `FormArray`.
    *
-   * 跟踪绑定到指令 `FormArray` 的名称。该名称对应于父 `FormGroup` 或 `FormArray` 中的键名。接受字符串或数字形式的名称。字符串形式的名称对于单个表单很有用，而数字形式则允许在 `FormArray` 数组上进行迭代时将表单数组绑定到索引。
+   * 跟踪绑定到指令 `FormArray` 的名称。该名称对应于父 `FormGroup` 或 `FormArray`
+   * 中的键名。接受字符串或数字形式的名称。字符串形式的名称对于单个表单很有用，而数字形式则允许在
+   * `FormArray` 数组上进行迭代时将表单数组绑定到索引。
    *
    */
   // TODO(issue/24571): remove '!'.

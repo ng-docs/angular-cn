@@ -38,6 +38,10 @@ describe('Format date', () => {
       expect(isDate(toDate('2015-06-15T21:43:11Z'))).toBeTruthy();
     });
 
+    it('should support strings with a 5-digit date', () => {
+      expect(isDate(toDate('22015-06-15'))).toBeTruthy();
+    });
+
     it('should throw for empty string', () => {
       expect(() => toDate('')).toThrow();
     });
@@ -394,7 +398,7 @@ describe('Format date', () => {
       expect(formatDate(date, 'short', 'ar')).toEqual('15‏/6‏/2015, 9:03 ص');
       expect(formatDate(date, 'dd-MM-yy', 'th')).toEqual('15-06-15');
       expect(formatDate(date, 'a', 'hu')).toEqual('de.');
-      expect(formatDate(date, 'a', 'sr')).toEqual('пре подне');
+      expect(formatDate(date, 'a', 'sr')).toEqual('AM');
 
       // TODO(ocombe): activate this test when we support local numbers
       // expect(formatDate(date, 'hh', 'mr')).toEqual('०९');

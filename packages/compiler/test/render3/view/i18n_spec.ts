@@ -16,7 +16,7 @@ import {I18nContext} from '../../../src/render3/view/i18n/context';
 import {serializeI18nMessageForGetMsg} from '../../../src/render3/view/i18n/get_msg_utils';
 import {serializeIcuNode} from '../../../src/render3/view/i18n/icu_serializer';
 import {serializeI18nMessageForLocalize} from '../../../src/render3/view/i18n/localize_utils';
-import {I18nMeta, parseI18nMeta} from '../../../src/render3/view/i18n/meta';
+import {I18nMeta, i18nMetaToJSDoc, parseI18nMeta} from '../../../src/render3/view/i18n/meta';
 import {formatI18nPlaceholderName} from '../../../src/render3/view/i18n/util';
 import {LEADING_TRIVIA_CHARS} from '../../../src/render3/view/template';
 
@@ -52,8 +52,8 @@ describe('I18nContext', () => {
 
     // binding collection checks
     expect(ctx.bindings.size).toBe(0);
-    ctx.appendBinding(expressionParser.parseInterpolation('{{ valueA }}', '', 0) as AST);
-    ctx.appendBinding(expressionParser.parseInterpolation('{{ valueB }}', '', 0) as AST);
+    ctx.appendBinding(expressionParser.parseInterpolation('{{ valueA }}', '', 0, null) as AST);
+    ctx.appendBinding(expressionParser.parseInterpolation('{{ valueB }}', '', 0, null) as AST);
     expect(ctx.bindings.size).toBe(2);
   });
 
@@ -80,7 +80,7 @@ describe('I18nContext', () => {
 
     // set data for root ctx
     ctx.appendBoundText(i18nOf(boundTextA));
-    ctx.appendBinding(expressionParser.parseInterpolation('{{ valueA }}', '', 0) as AST);
+    ctx.appendBinding(expressionParser.parseInterpolation('{{ valueA }}', '', 0, null) as AST);
     ctx.appendElement(i18nOf(elementA), 0);
     ctx.appendTemplate(i18nOf(templateA), 1);
     ctx.appendElement(i18nOf(elementA), 0, true);
@@ -96,11 +96,11 @@ describe('I18nContext', () => {
     // set data for child context
     childCtx.appendElement(i18nOf(elementB), 0);
     childCtx.appendBoundText(i18nOf(boundTextB));
-    childCtx.appendBinding(expressionParser.parseInterpolation('{{ valueB }}', '', 0) as AST);
+    childCtx.appendBinding(expressionParser.parseInterpolation('{{ valueB }}', '', 0, null) as AST);
     childCtx.appendElement(i18nOf(elementC), 1);
     childCtx.appendElement(i18nOf(elementC), 1, true);
     childCtx.appendBoundText(i18nOf(boundTextC));
-    childCtx.appendBinding(expressionParser.parseInterpolation('{{ valueC }}', '', 0) as AST);
+    childCtx.appendBinding(expressionParser.parseInterpolation('{{ valueC }}', '', 0, null) as AST);
     childCtx.appendElement(i18nOf(elementB), 0, true);
 
     expect(childCtx.bindings.size).toBe(2);
@@ -326,11 +326,36 @@ describe('Utils', () => {
           .toEqual(
               {cooked: ':abc::message', raw: ':abc::message', range: jasmine.any(ParseSourceSpan)});
     });
-
-    function meta(customId?: string, meaning?: string, description?: string): I18nMeta {
-      return {customId, meaning, description};
-    }
   });
+
+  describe('jsdoc generation', () => {
+    it('generates with description', () => {
+      const docComment = i18nMetaToJSDoc(meta('', '', 'desc'));
+
+      expect(docComment.tags.length).toBe(1);
+      expect(docComment.tags[0]).toEqual({tagName: o.JSDocTagName.Desc, text: 'desc'});
+    });
+
+    it('generates with no description suppressed', () => {
+      const docComment = i18nMetaToJSDoc(meta('', '', ''));
+
+      expect(docComment.tags.length).toBe(1);
+      expect(docComment.tags[0]).toEqual({
+        tagName: o.JSDocTagName.Suppress,
+        text: '{msgDescriptions}',
+      });
+    });
+
+    it('generates with description and meaning', () => {
+      const docComment = i18nMetaToJSDoc(meta('', 'meaning', ''));
+
+      expect(docComment.tags).toContain({tagName: o.JSDocTagName.Meaning, text: 'meaning'});
+    });
+  });
+
+  function meta(customId?: string, meaning?: string, description?: string): I18nMeta {
+    return {customId, meaning, description};
+  }
 });
 
 describe('serializeI18nMessageForGetMsg', () => {

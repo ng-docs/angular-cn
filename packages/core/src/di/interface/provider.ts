@@ -62,7 +62,8 @@ export interface ValueProvider extends ValueSansProvider {
    * When true, injector returns an array of instances. This is useful to allow multiple
    * providers spread across many files to provide configuration information to a common token.
    *
-   * 如果为 true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中以向公共令牌提供配置信息很有用。
+   * 如果为
+   * true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中以向公共令牌提供配置信息很有用。
    *
    */
   multi?: boolean;
@@ -132,7 +133,8 @@ export interface StaticClassProvider extends StaticClassSansProvider {
    * When true, injector returns an array of instances. This is useful to allow multiple
    * providers spread across many files to provide configuration information to a common token.
    *
-   * 如果为 true，则注入器返回实例数组。这在允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息时很有用。
+   * 如果为
+   * true，则注入器返回实例数组。这在允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息时很有用。
    *
    */
   multi?: boolean;
@@ -197,7 +199,8 @@ export interface ConstructorProvider extends ConstructorSansProvider {
    * When true, injector returns an array of instances. This is useful to allow multiple
    * providers spread across many files to provide configuration information to a common token.
    *
-   * 如果为 true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息很有用。
+   * 如果为
+   * true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息很有用。
    *
    */
   multi?: boolean;
@@ -257,7 +260,8 @@ export interface ExistingProvider extends ExistingSansProvider {
    * When true, injector returns an array of instances. This is useful to allow multiple
    * providers spread across many files to provide configuration information to a common token.
    *
-   * 如果为 true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息很有用。
+   * 如果为
+   * true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息很有用。
    *
    */
   multi?: boolean;
@@ -280,7 +284,8 @@ export interface FactorySansProvider {
    * A function to invoke to create a value for this `token`. The function is invoked with
    * resolved values of `token`s in the `deps` field.
    *
-   * 供调用，来为此 `token` 创建值的函数。调用该函数时，会在 `deps` 字段中的传入 `token` 的解析结果。。
+   * 供调用，来为此 `token` 创建值的函数。调用该函数时，会在 `deps` 字段中的传入 `token`
+   * 的解析结果。。
    *
    */
   useFactory: Function;
@@ -331,7 +336,8 @@ export interface FactoryProvider extends FactorySansProvider {
    * When true, injector returns an array of instances. This is useful to allow multiple
    * providers spread across many files to provide configuration information to a common token.
    *
-   * 如果为 true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息很有用。
+   * 如果为
+   * true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息很有用。
    *
    */
   multi?: boolean;
@@ -341,7 +347,8 @@ export interface FactoryProvider extends FactorySansProvider {
  * Describes how an `Injector` should be configured as static (that is, without reflection).
  * A static provider provides tokens to an injector for various types of dependencies.
  *
- * 描述如何将 `Injector` 配置为静态的（即不需要反射）。静态提供者为各种类型的依赖项提供令牌给注入器。
+ * 描述如何将 `Injector`
+ * 配置为静态的（即不需要反射）。静态提供者为各种类型的依赖项提供令牌给注入器。
  *
  * @see `Injector.create()`.
  * @see ["Dependency Injection Guide"](guide/dependency-injection-providers).
@@ -434,7 +441,8 @@ export interface ClassProvider extends ClassSansProvider {
    * When true, injector returns an array of instances. This is useful to allow multiple
    * providers spread across many files to provide configuration information to a common token.
    *
-   * 如果为 true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息时很有用。
+   * 如果为
+   * true，则注入器返回实例数组。这对于允许多个提供者散布在多个文件中，以向某个公共令牌提供配置信息时很有用。
    *
    */
   multi?: boolean;
@@ -461,3 +469,35 @@ export type Provider = TypeProvider|ValueProvider|ClassProvider|ConstructorProvi
  * overrides).
  */
 export type ProcessProvidersFunction = (providers: Provider[]) => Provider[];
+
+
+/**
+ * A wrapper around an NgModule that associates it with [providers](guide/glossary#provider
+ * "Definition"). Usage without a generic type is deprecated.
+ *
+ * @see [Deprecations](guide/deprecations#modulewithproviders-type-without-a-generic)
+ *
+ * @publicApi
+ */
+export interface ModuleWithProviders<T> {
+  ngModule: Type<T>;
+  providers?: Provider[];
+}
+
+/**
+ * Providers that were imported from NgModules via the `importProvidersFrom` function.
+ *
+ * These providers are meant for use in an application injector (or other environment injectors) and
+ * should not be used in component injectors.
+ *
+ * This type cannot be directly implemented. It's returned from the `importProvidersFrom` function
+ * and serves to prevent the extracted NgModule providers from being used in the wrong contexts.
+ *
+ * @see `importProvidersFrom`
+ *
+ * @publicApi
+ * @developerPreview
+ */
+export interface ImportedNgModuleProviders {
+  ɵproviders: Provider[];
+}

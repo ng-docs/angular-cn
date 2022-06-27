@@ -39,7 +39,7 @@ describe('HttpClient TestRequest', () => {
       mock.expectOne('/some-url').flush(null);
       fail();
     } catch (error) {
-      expect(error.message)
+      expect((error as Error).message)
           .toBe(
               'Expected one matching request for criteria "Match URL: /some-url", found none.' +
               ' Requests received are: GET /some-other-url.');
@@ -61,7 +61,7 @@ describe('HttpClient TestRequest', () => {
       mock.expectOne('/some-url?query=world').flush(null);
       fail();
     } catch (error) {
-      expect(error.message)
+      expect((error as Error).message)
           .toBe(
               'Expected one matching request for criteria "Match URL: /some-url?query=world", found none.' +
               ' Requests received are: GET /some-url?query=hello.');
@@ -85,10 +85,28 @@ describe('HttpClient TestRequest', () => {
       mock.expectOne('/some-url').flush(null);
       fail();
     } catch (error) {
-      expect(error.message)
+      expect((error as Error).message)
           .toBe(
               'Expected one matching request for criteria "Match URL: /some-url", found none.' +
               ' Requests received are: GET /some-other-url?query=world, POST /and-another-url.');
+    }
+  });
+
+  it('throws if there are open requests when verify is called', () => {
+    const mock = new HttpClientTestingBackend();
+    const client = new HttpClient(mock);
+
+    client.get('/some-other-url?query=world').subscribe();
+    client.post('/and-another-url', {}).subscribe();
+
+    try {
+      mock.verify();
+      fail();
+    } catch (error) {
+      expect((error as any).message)
+          .toBe(
+              'Expected no open requests, found 2:' +
+              ' GET /some-other-url?query=world, POST /and-another-url');
     }
   });
 });

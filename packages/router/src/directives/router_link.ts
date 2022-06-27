@@ -7,11 +7,11 @@
  */
 
 import {LocationStrategy} from '@angular/common';
-import {Attribute, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges} from '@angular/core';
+import {Attribute, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges, ɵcoerceToBoolean as coerceToBoolean} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 
-import {QueryParamsHandling} from '../config';
 import {Event, NavigationEnd} from '../events';
+import {QueryParamsHandling} from '../models';
 import {Router} from '../router';
 import {ActivatedRoute} from '../router_state';
 import {Params} from '../shared';
@@ -25,13 +25,15 @@ import {UrlTree} from '../url_tree';
  * that initiates navigation to a route. Navigation opens one or more routed components
  * in one or more `<router-outlet>` locations on the page.
  *
- * 当应用于模板中的元素时，使该元素成为开始导航到某个路由的链接。导航会在页面上的 `<router-outlet>` 位置上打开一个或多个路由组件。
+ * 当应用于模板中的元素时，使该元素成为开始导航到某个路由的链接。导航会在页面上的 `<router-outlet>`
+ * 位置上打开一个或多个路由组件。
  *
  * Given a route configuration `[{ path: 'user/:name', component: UserCmp }]`,
  * the following creates a static link to the route:
  * `<a routerLink="/user/bob">link to user component</a>`
  *
- * 给定路由配置 `[{ path: 'user/:name', component: UserCmp }]` ，以下内容将创建一个到该路由的静态链接：`<a routerLink="/user/bob">link to user component</a>`
+ * 给定路由配置 `[{ path: 'user/:name', component: UserCmp }]`
+ * ，以下内容将创建一个到该路由的静态链接：`<a routerLink="/user/bob">link to user component</a>`
  *
  * You can use dynamic values to generate the link.
  * For a dynamic link, pass an array of path segments,
@@ -39,9 +41,10 @@ import {UrlTree} from '../url_tree';
  * For example, `['/team', teamId, 'user', userName, {details: true}]`
  * generates a link to `/team/11/user/bob;details=true`.
  *
- * 你也可以使用动态值来生成链接。对于动态链接，请传递路径段数组，然后传递每个段的参数。例如， `['/team', teamId, 'user', userName, {details: true}]` 生成到 `/team/11/user/bob;details=true` 。
+ * 你也可以使用动态值来生成链接。对于动态链接，请传递路径段数组，然后传递每个段的参数。例如，
+ * `['/team', teamId, 'user', userName, {details: true}]` 生成到 `/team/11/user/bob;details=true` 。
  *
- * Multiple static segments can be merged into one term and combined with dynamic segements.
+ * Multiple static segments can be merged into one term and combined with dynamic segments.
  * For example, `['/team/11/user', userName, {details: true}]`
  *
  * 多个静态段可以合并为一个词，并与动态段组合。例如， `['/team/11/user', userName, {details: true}]`
@@ -52,7 +55,9 @@ import {UrlTree} from '../url_tree';
  * `/user/(jim//aux:team)`.
  * See {@link Router#createUrlTree createUrlTree} for more information.
  *
- * 你提供给链接的输入将被视为当前 URL 的增量。例如，假设当前 URL 是 `/user/(box//aux:team)`。则链接 `<a [routerLink]="['/user/jim']">Jim</a>` 会创建 URL `/user/(jim//aux:team)` 。欲知详情，请参见 {@link Router#createUrlTree createUrlTree}。
+ * 你提供给链接的输入将被视为当前 URL 的增量。例如，假设当前 URL 是 `/user/(box//aux:team)`。则链接
+ * `<a [routerLink]="['/user/jim']">Jim</a>` 会创建 URL `/user/(jim//aux:team)`
+ * 。欲知详情，请参见 {@link Router#createUrlTree createUrlTree}。
  *
  * @usageNotes
  *
@@ -100,13 +105,15 @@ import {UrlTree} from '../url_tree';
  * By default, the directive constructs the new URL using the given query parameters.
  * The example generates the link: `/user/bob?debug=true#education`.
  *
- * 默认情况下，该指令使用给定的查询参数构造新的 URL。该示例生成链接：`/user/bob?debug=true#education`。
+ * 默认情况下，该指令使用给定的查询参数构造新的
+ * URL。该示例生成链接：`/user/bob?debug=true#education`。
  *
  * You can instruct the directive to handle query parameters differently
  * by specifying the `queryParamsHandling` option in the link.
  * Allowed values are:
  *
- * 你可以通过在链接中使用 `queryParamsHandling` 选项，来指示该指令以不同的方式处理查询参数。允许的值为：
+ * 你可以通过在链接中使用 `queryParamsHandling`
+ * 选项，来指示该指令以不同的方式处理查询参数。允许的值为：
  *
  *  - `'merge'`: Merge the given `queryParams` into the current query params.
  *
@@ -138,7 +145,8 @@ import {UrlTree} from '../url_tree';
  * [`History.state` property](https://developer.mozilla.org/en-US/docs/Web/API/History#Properties).
  * For example:
  *
- * 你可以提供要持久到浏览器的 [`History.state` 属性](https://developer.mozilla.org/en-US/docs/Web/API/History#Properties)中的 `state` 值。例如：
+ * 你可以提供要持久到浏览器的 [`History.state`
+ * 属性](https://developer.mozilla.org/en-US/docs/Web/API/History#Properties)中的 `state` 值。例如：
  *
  * ```
  * <a [routerLink]="['/user/bob']" [state]="{tracingId: 123}">
@@ -150,7 +158,8 @@ import {UrlTree} from '../url_tree';
  * navigation-state value. For example, to capture the `tracingId` during the `NavigationStart`
  * event:
  *
- * 使用 {@link Router.getCurrentNavigation() Router#getCurrentNavigation} 来检索保存的导航状态值。例如，要在 `NavigationStart` 事件中捕获 `tracingId`
+ * 使用 {@link Router.getCurrentNavigation() Router#getCurrentNavigation}
+ * 来检索保存的导航状态值。例如，要在 `NavigationStart` 事件中捕获 `tracingId`
  *
  * ```
  * // Get NavigationStart events
@@ -211,7 +220,8 @@ export class RouterLink implements OnChanges {
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl Router#navigateByUrl}。
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
    *
    * @see {@link NavigationBehaviorOptions#skipLocationChange NavigationBehaviorOptions#skipLocationChange}
    * @see {@link Router#navigateByUrl Router#navigateByUrl}
@@ -222,7 +232,8 @@ export class RouterLink implements OnChanges {
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl Router#navigateByUrl}。
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
    *
    * @see {@link NavigationBehaviorOptions#replaceUrl NavigationBehaviorOptions#replaceUrl}
    * @see {@link Router#navigateByUrl Router#navigateByUrl}
@@ -233,7 +244,8 @@ export class RouterLink implements OnChanges {
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl Router#navigateByUrl}。
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
    *
    * @see {@link NavigationBehaviorOptions#state NavigationBehaviorOptions#state}
    * @see {@link Router#navigateByUrl Router#navigateByUrl}
@@ -324,8 +336,8 @@ export class RouterLink implements OnChanges {
     }
 
     const extras = {
-      skipLocationChange: attrBoolValue(this.skipLocationChange),
-      replaceUrl: attrBoolValue(this.replaceUrl),
+      skipLocationChange: coerceToBoolean(this.skipLocationChange),
+      replaceUrl: coerceToBoolean(this.replaceUrl),
       state: this.state,
     };
     this.router.navigateByUrl(this.urlTree, extras);
@@ -343,7 +355,7 @@ export class RouterLink implements OnChanges {
       queryParams: this.queryParams,
       fragment: this.fragment,
       queryParamsHandling: this.queryParamsHandling,
-      preserveFragment: attrBoolValue(this.preserveFragment),
+      preserveFragment: coerceToBoolean(this.preserveFragment),
     });
   }
 }
@@ -412,7 +424,8 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl Router#navigateByUrl}。
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
    *
    * @see {@link NavigationBehaviorOptions#skipLocationChange NavigationBehaviorOptions#skipLocationChange}
    * @see {@link Router#navigateByUrl Router#navigateByUrl}
@@ -423,7 +436,8 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl Router#navigateByUrl}。
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
    *
    * @see {@link NavigationBehaviorOptions#replaceUrl NavigationBehaviorOptions#replaceUrl}
    * @see {@link Router#navigateByUrl Router#navigateByUrl}
@@ -434,7 +448,8 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl Router#navigateByUrl}。
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
    *
    * @see {@link NavigationBehaviorOptions#state NavigationBehaviorOptions#state}
    * @see {@link Router#navigateByUrl Router#navigateByUrl}
@@ -525,8 +540,8 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
     }
 
     const extras = {
-      skipLocationChange: attrBoolValue(this.skipLocationChange),
-      replaceUrl: attrBoolValue(this.replaceUrl),
+      skipLocationChange: coerceToBoolean(this.skipLocationChange),
+      replaceUrl: coerceToBoolean(this.replaceUrl),
       state: this.state
     };
     this.router.navigateByUrl(this.urlTree, extras);
@@ -550,11 +565,7 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
       queryParams: this.queryParams,
       fragment: this.fragment,
       queryParamsHandling: this.queryParamsHandling,
-      preserveFragment: attrBoolValue(this.preserveFragment),
+      preserveFragment: coerceToBoolean(this.preserveFragment),
     });
   }
-}
-
-function attrBoolValue(s: any): boolean {
-  return s === '' || !!s;
 }

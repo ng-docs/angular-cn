@@ -94,7 +94,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 5. In your forked repository, make your changes in a new git branch:
 
      ```shell
-     git checkout -b my-fix-branch master
+     git checkout -b my-fix-branch main
      ```
 
 6. Create your patch, **including appropriate test cases**.
@@ -117,7 +117,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-11. In GitHub, send a pull request to `angular:master`.
+11. In GitHub, send a pull request to `angular:main`.
 
 ### Reviewing a Pull Request
 
@@ -181,10 +181,10 @@ After your pull request is merged, you can safely delete your branch and pull th
     git push origin --delete my-fix-branch
     ```
 
-* Check out the master branch:
+* Check out the main branch:
 
     ```shell
-    git checkout master -f
+    git checkout main -f
     ```
 
 * Delete the local branch:
@@ -193,10 +193,10 @@ After your pull request is merged, you can safely delete your branch and pull th
     git branch -D my-fix-branch
     ```
 
-* Update your master with the latest upstream version:
+* Update your local `main` with the latest upstream version:
 
     ```shell
-    git pull --ff upstream master
+    git pull --ff upstream main
     ```
 
 
@@ -246,7 +246,8 @@ The `footer` is optional. The [Commit Message Footer](#commit-footer) format des
   │       └─⫸ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
   │                          elements|forms|http|language-service|localize|platform-browser|
   │                          platform-browser-dynamic|platform-server|router|service-worker|
-  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve
+  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve|
+  │                          devtools
   │
   └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
 ```
@@ -308,6 +309,8 @@ There are currently a few exceptions to the "use package name" rule:
 * `ngcc`: used for changes to the [Angular Compatibility Compiler](./packages/compiler-cli/ngcc/README.md)
 
 * `ve`: used for changes specific to ViewEngine (legacy compiler/renderer).
+
+* `devtools`: used for changes in the [browser extension](./devtools/README.md).
 
 * none/empty string: useful for `test` and `refactor` changes that are done across all packages (e.g. `test: add missing unit tests`) and for docs changes that are not related to a specific package (e.g. `docs: fix typo in tutorial`).
 
@@ -394,7 +397,7 @@ The following documents can help you sort out issues with GitHub accounts and mu
 [coc]: https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md
 [commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#
 [corporate-cla]: https://cla.developers.google.com/about/google-corporate
-[dev-doc]: https://github.com/angular/angular/blob/master/docs/DEVELOPER.md
+[dev-doc]: https://github.com/angular/angular/blob/main/docs/DEVELOPER.md
 [github]: https://github.com/angular/angular
 [discord]: https://discord.gg/angular
 [individual-cla]: https://cla.developers.google.com/about/google-individual

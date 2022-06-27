@@ -50,7 +50,6 @@ ng_package(
     name = "npm_package",
     srcs = [
         "package.json",
-        "//packages/core/testing:package.json",
     ],
     nested_packages = [
         "//packages/core/schematics:npm_package",
@@ -103,4 +102,14 @@ api_golden_test(
     ],
     entry_point = "angular/packages/core/src/render3/global_utils_api.d.ts",
     golden = "angular/goldens/public-api/core/global_utils.md",
+)
+
+api_golden_test(
+    name = "core_errors",
+    data = [
+        "//goldens:public-api",
+        "//packages/core",
+    ],
+    entry_point = "angular/packages/core/src/errors.d.ts",
+    golden = "angular/goldens/public-api/core/errors.md",
 )

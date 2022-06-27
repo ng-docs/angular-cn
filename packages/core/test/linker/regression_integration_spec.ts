@@ -267,7 +267,7 @@ describe('regressions', () => {
     @Directive({selector: '[someDir]'})
     class MyDir {
       // TODO(issue/24571): remove '!'.
-      @Input('someDir') template !: TemplateRef<any>;
+      @Input('someDir') template!: TemplateRef<any>;
     }
 
     const ctx =
@@ -473,6 +473,9 @@ describe('regressions using bootstrap', () => {
         expect(logger.errors[errorIndex][1].message).toBe(`Error: ${value}`);
       }
     });
+  } else {
+    // Jasmine will throw if there are no tests.
+    it('should pass', () => {});
   }
 });
 

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, EmbeddedViewRef, Input, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, EmbeddedViewRef, Injector, Input, OnChanges, SimpleChanges, TemplateRef, ViewContainerRef} from '@angular/core';
 
 /**
  * @ngModule CommonModule
@@ -52,7 +52,9 @@ export class NgTemplateOutlet implements OnChanges {
    * declarations.
    * Using the key `$implicit` in the context object will set its value as default.
    *
-   * 附加到 {@link EmbeddedViewRef} 的上下文对象。这应该是一个对象，该对象的键名将可以在局部模板中使用 `let` 声明中进行绑定。在上下文对象中使用 `$implicit` 为键名时，将把它作为默认值。
+   * 附加到 {@link EmbeddedViewRef}
+   * 的上下文对象。这应该是一个对象，该对象的键名将可以在局部模板中使用 `let`
+   * 声明中进行绑定。在上下文对象中使用 `$implicit` 为键名时，将把它作为默认值。
    *
    */
   @Input() public ngTemplateOutletContext: Object|null = null;
@@ -65,19 +67,31 @@ export class NgTemplateOutlet implements OnChanges {
    */
   @Input() public ngTemplateOutlet: TemplateRef<any>|null = null;
 
+  /** Injector to be used within the embedded view. */
+  @Input() public ngTemplateOutletInjector: Injector|null = null;
+
   constructor(private _viewContainerRef: ViewContainerRef) {}
 
+  /** @nodoc */
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['ngTemplateOutlet']) {
+    if (changes['ngTemplateOutlet'] || changes['ngTemplateOutletInjector']) {
       const viewContainerRef = this._viewContainerRef;
 
       if (this._viewRef) {
         viewContainerRef.remove(viewContainerRef.indexOf(this._viewRef));
       }
 
-      this._viewRef = this.ngTemplateOutlet ?
-          viewContainerRef.createEmbeddedView(this.ngTemplateOutlet, this.ngTemplateOutletContext) :
-          null;
+      if (this.ngTemplateOutlet) {
+        const {
+          ngTemplateOutlet: template,
+          ngTemplateOutletContext: context,
+          ngTemplateOutletInjector: injector
+        } = this;
+        this._viewRef = viewContainerRef.createEmbeddedView(
+            template, context, injector ? {injector} : undefined);
+      } else {
+        this._viewRef = null;
+      }
     } else if (
         this._viewRef && changes['ngTemplateOutletContext'] && this.ngTemplateOutletContext) {
       this._viewRef.context = this.ngTemplateOutletContext;

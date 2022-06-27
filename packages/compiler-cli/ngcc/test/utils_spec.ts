@@ -7,10 +7,12 @@
  */
 
 import ts from 'typescript';
-import {absoluteFrom as _abs} from '../../src/ngtsc/file_system';
+
+import {absoluteFrom as _abs, FileSystem, getFileSystem} from '../../src/ngtsc/file_system';
 import {runInEachFileSystem} from '../../src/ngtsc/file_system/testing';
 import {KnownDeclaration} from '../../src/ngtsc/reflection';
-import {FactoryMap, getTsHelperFnFromDeclaration, getTsHelperFnFromIdentifier, isRelativePath, stripExtension} from '../src/utils';
+import {loadTestFiles} from '../../src/ngtsc/testing';
+import {FactoryMap, getTsHelperFnFromDeclaration, getTsHelperFnFromIdentifier, isRelativePath, loadJson, loadSecondaryEntryPointInfoForApfV14, stripExtension} from '../src/utils';
 
 describe('FactoryMap', () => {
   it('should return an existing value', () => {
@@ -55,10 +57,10 @@ describe('FactoryMap', () => {
 });
 
 describe('getTsHelperFnFromDeclaration()', () => {
-  const createFunctionDeclaration = (fnName?: string) => ts.createFunctionDeclaration(
+  const createFunctionDeclaration = (fnName?: string) => ts.factory.createFunctionDeclaration(
       undefined, undefined, undefined, fnName, undefined, [], undefined, undefined);
   const createVariableDeclaration = (varName: string) =>
-      ts.createVariableDeclaration(varName, undefined, undefined);
+      ts.factory.createVariableDeclaration(varName, undefined, undefined, undefined);
 
   it('should recognize the `__assign` helper as function declaration', () => {
     const decl1 = createFunctionDeclaration('__assign');
@@ -141,8 +143,8 @@ describe('getTsHelperFnFromDeclaration()', () => {
   });
 
   it('should return null for non-function/variable declarations', () => {
-    const classDecl =
-        ts.createClassDeclaration(undefined, undefined, '__assign', undefined, undefined, []);
+    const classDecl = ts.factory.createClassDeclaration(
+        undefined, undefined, '__assign', undefined, undefined, []);
 
     expect(classDecl.name!.text).toBe('__assign');
     expect(getTsHelperFnFromDeclaration(classDecl)).toBe(null);
@@ -151,41 +153,41 @@ describe('getTsHelperFnFromDeclaration()', () => {
 
 describe('getTsHelperFnFromIdentifier()', () => {
   it('should recognize the `__assign` helper', () => {
-    const id1 = ts.createIdentifier('__assign');
-    const id2 = ts.createIdentifier('__assign$42');
+    const id1 = ts.factory.createIdentifier('__assign');
+    const id2 = ts.factory.createIdentifier('__assign$42');
 
     expect(getTsHelperFnFromIdentifier(id1)).toBe(KnownDeclaration.TsHelperAssign);
     expect(getTsHelperFnFromIdentifier(id2)).toBe(KnownDeclaration.TsHelperAssign);
   });
 
   it('should recognize the `__spread` helper', () => {
-    const id1 = ts.createIdentifier('__spread');
-    const id2 = ts.createIdentifier('__spread$42');
+    const id1 = ts.factory.createIdentifier('__spread');
+    const id2 = ts.factory.createIdentifier('__spread$42');
 
     expect(getTsHelperFnFromIdentifier(id1)).toBe(KnownDeclaration.TsHelperSpread);
     expect(getTsHelperFnFromIdentifier(id2)).toBe(KnownDeclaration.TsHelperSpread);
   });
 
   it('should recognize the `__spreadArrays` helper', () => {
-    const id1 = ts.createIdentifier('__spreadArrays');
-    const id2 = ts.createIdentifier('__spreadArrays$42');
+    const id1 = ts.factory.createIdentifier('__spreadArrays');
+    const id2 = ts.factory.createIdentifier('__spreadArrays$42');
 
     expect(getTsHelperFnFromIdentifier(id1)).toBe(KnownDeclaration.TsHelperSpreadArrays);
     expect(getTsHelperFnFromIdentifier(id2)).toBe(KnownDeclaration.TsHelperSpreadArrays);
   });
 
   it('should recognize the `__spreadArray` helper', () => {
-    const id1 = ts.createIdentifier('__spreadArray');
-    const id2 = ts.createIdentifier('__spreadArray$42');
+    const id1 = ts.factory.createIdentifier('__spreadArray');
+    const id2 = ts.factory.createIdentifier('__spreadArray$42');
 
     expect(getTsHelperFnFromIdentifier(id1)).toBe(KnownDeclaration.TsHelperSpreadArray);
     expect(getTsHelperFnFromIdentifier(id2)).toBe(KnownDeclaration.TsHelperSpreadArray);
   });
 
   it('should return null for unrecognized helpers', () => {
-    const id1 = ts.createIdentifier('__foo');
-    const id2 = ts.createIdentifier('spread');
-    const id3 = ts.createIdentifier('spread$42');
+    const id1 = ts.factory.createIdentifier('__foo');
+    const id2 = ts.factory.createIdentifier('spread');
+    const id3 = ts.factory.createIdentifier('spread$42');
 
     expect(getTsHelperFnFromIdentifier(id1)).toBe(null);
     expect(getTsHelperFnFromIdentifier(id2)).toBe(null);
@@ -237,5 +239,151 @@ describe('stripExtension()', () => {
     expect(stripExtension('foo')).toBe('foo');
     expect(stripExtension('/foo/bar')).toBe('/foo/bar');
     expect(stripExtension('/fo-o/b_ar')).toBe('/fo-o/b_ar');
+  });
+});
+
+runInEachFileSystem(() => {
+  let fs: FileSystem;
+
+  beforeEach(() => fs = getFileSystem());
+
+  describe('loadJson()', () => {
+    it('should load a `.json` file', () => {
+      const jsonData = {foo: 'yes', bar: 'sure'};
+      loadTestFiles([
+        {
+          name: _abs('/foo/bar.json'),
+          contents: `${JSON.stringify(jsonData)}\n`,
+        },
+      ]);
+
+      expect(loadJson(fs, _abs('/foo/bar.json'))).toEqual(jsonData);
+    });
+
+    it('should return `null` if it fails to read the `.json` file', () => {
+      expect(loadJson(fs, _abs('/does/not/exist.json'))).toBeNull();
+    });
+
+    it('should return `null` if it fails to parse the `.json` file', () => {
+      loadTestFiles([
+        {
+          name: _abs('/foo/bar.txt'),
+          contents: '{This is not valid JSON.}',
+        },
+      ]);
+
+      expect(loadJson(fs, _abs('/foo/bar.json'))).toBeNull();
+    });
+  });
+});
+
+runInEachFileSystem(() => {
+  let fs: FileSystem;
+
+  beforeEach(() => fs = getFileSystem());
+
+  describe('loadSecondaryEntryPointInfoForApfV14()', () => {
+    it('should return `null` if the primary `package.json` failed to be loaded', () => {
+      expect(loadSecondaryEntryPointInfoForApfV14(fs, null, _abs('/foo'), _abs('/foo/bar')))
+          .toBe(null);
+    });
+
+    it('should return `null` if the primary `package.json` has no `exports` property', () => {
+      const primaryPackageJson = {
+        name: 'some-package',
+        version: '1.33.7',
+        main: './index.js',
+      };
+
+      expect(loadSecondaryEntryPointInfoForApfV14(
+                 fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+          .toBe(null);
+    });
+
+    it('should return `null` if the primary `package.json`\'s `exports` property is a string',
+       () => {
+         const primaryPackageJson = {
+           name: 'some-package',
+           exports: './index.js',
+         };
+
+         expect(loadSecondaryEntryPointInfoForApfV14(
+                    fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+             .toBe(null);
+       });
+
+    it('should return `null` if the primary `package.json`\'s `exports` property is a string array',
+       () => {
+         const primaryPackageJson = {
+           name: 'some-package',
+           exports: [
+             './foo.js',
+             './bar.js',
+           ],
+         };
+
+         expect(loadSecondaryEntryPointInfoForApfV14(
+                    fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+             .toBe(null);
+       });
+
+    it('should return `null` if there is no info for the specified entry-point', () => {
+      const primaryPackageJson = {
+        name: 'some-package',
+        exports: {
+          './baz': {
+            main: './baz/index.js',
+          },
+        },
+      };
+
+      expect(loadSecondaryEntryPointInfoForApfV14(
+                 fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+          .toBe(null);
+    });
+
+    it('should return `null` if the entry-point info is a string', () => {
+      const primaryPackageJson = {
+        name: 'some-package',
+        exports: {
+          './bar': './bar/index.js',
+        },
+      };
+
+      expect(loadSecondaryEntryPointInfoForApfV14(
+                 fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+          .toBe(null);
+    });
+
+    it('should return `null` if the entry-point info is a string array', () => {
+      const primaryPackageJson = {
+        name: 'some-package',
+        exports: {
+          './bar': [
+            './bar/a.js',
+            './bar/b.js',
+          ],
+        },
+      };
+
+      expect(loadSecondaryEntryPointInfoForApfV14(
+                 fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+          .toBe(null);
+    });
+
+    it('should return the entry-point info if it exists and is an object', () => {
+      const primaryPackageJson = {
+        name: 'some-package',
+        exports: {
+          './bar': {
+            main: './bar/index.js',
+          },
+        },
+      };
+
+      expect(loadSecondaryEntryPointInfoForApfV14(
+                 fs, primaryPackageJson, _abs('/foo'), _abs('/foo/bar')))
+          .toEqual({main: './bar/index.js'});
+    });
   });
 });

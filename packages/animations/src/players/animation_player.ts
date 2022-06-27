@@ -9,10 +9,13 @@ import {scheduleMicroTask} from '../util';
 
 /**
  * Provides programmatic control of a reusable animation sequence,
- * built using the `build()` method of `AnimationBuilder`. The `build()` method
- * returns a factory, whose `create()` method instantiates and initializes this interface.
+ * built using the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code>
+ * method which returns an `AnimationFactory`, whose
+ * <code>[create](api/animations/AnimationFactory#create)()</code> method instantiates and
+ * initializes this interface.
  *
- * 提供对可复用动画序列的编程控制，该动画序列是使用 `AnimationBuilder` 的 `build()` 方法构建的。 `build()` 方法返回一个工厂，其 `create()` 方法将实例化并初始化此接口。
+ * 提供对可复用动画序列的编程控制，该动画序列是使用 `AnimationBuilder` 的 `build()` 方法构建的。
+ * `build()` 方法返回一个工厂，其 `create()` 方法将实例化并初始化此接口。
  *
  * @see `AnimationBuilder`
  * @see `AnimationFactory`
