@@ -5,10 +5,13 @@ These standards ensure consistency in writing style, Markdown conventions, and c
 
 ## Prerequisites
 
+## 先决条件
+
 Before contributing to the Angular documentation, it is helpful if you are familiar with the following:
 
 | Subjects | Details |
 | :------- | :------ |
+| Subjects | 详情 |
 | `git` | For an introduction, see GitHub's [Git Handbook](https://guides.github.com/introduction/git-handbook) |
 | GitHub | For an introduction, see GitHub's [Hello World](https://guides.github.com/activities/hello-world) |
 | Markdown | See GitHub's [Mastering Markdown](https://guides.github.com/features/mastering-markdown) |
@@ -21,6 +24,7 @@ The categories of Angular documentation include:
 
 | Angular documentation categories | Details |
 | :------------------------------- | :------ |
+| Angular documentation categories | 详情 |
 | [Guides](docs) | Much of what's in the [documentation section of angular.io](docs). Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example. These include [Getting Started](start), [Tour of Heroes](tutorial), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/http). Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown"). |
 | [API documentation](api) | Reference documents for the [Angular Application Programming Interface, or API](api). These are more succinct than guides and serve as a reference for Angular features. They are especially helpful for people already acquainted with Angular concepts. The [angular.io](https://angular.io) infrastructure generates these documents from source code and comments that contributors edit. |
 | [CLI documentation](cli) | The [angular.io](https://angular.io) infrastructure generates these documents from CLI source code. |
@@ -63,6 +67,7 @@ Begin the title with the Markdown hash (`#`) character, which renders as an `<h1
 
 | Title guidance | Details |
 | :------------- | :------ |
+| Title guidance | 详情 |
 | A document can have only one `<h1>` | Title text should be in *Sentence case*, which means the first word is capitalized and all other words are lower case. Technical terms that are always capitalized, like "Angular", are the exception. <code-example format="html" language="html"> &num; Deprecation policy in Angular </code-example> |
 | Always follow the title with at least one blank line | The corresponding text in the left nav is in *Title Case*, which means that you use capital letters to start the first words and all principal words. Use lower case letters for secondary words such as "in", "of", and "the". You can also shorten the nav title to fit in the column. |
 
@@ -196,6 +201,7 @@ A navigation node has the following properties:
 
 | Properties | Details |
 | :--------- | :------ |
+| 属性 | 详情 |
 | `url` | The URL of the guide page, which is an item node only. |
 | `title` | The text displayed in the side nav. |
 | `tooltip` | Text that appears when the reader hovers over the navigation link. |
@@ -225,7 +231,9 @@ Use a single backtick on either side of a term when referring to code or the nam
 The following are some examples:
 
 * In the `app.component.ts`, add a `logger()` method.
+
 * The `name` property is `Sally`.
+
 * Add the component class name to the `declarations` array.
 
 The Markdown is as follows:
@@ -405,6 +413,7 @@ Specify the `<code-example>` output with the following attributes:
 
 | Attributes | Details |
 | :--------- | :------ |
+| Attributes | 详情 |
 | `path` | The path to the file in the `content/examples` folder. |
 | `header` | The header of the code listing. This is the title of the code snippet and can include the path and extra information such as whether the snippet is an excerpt. |
 | `region` | Displays the source file fragment with that region name; regions are identified by `#docregion` markup in the source file. See [Displaying a code snippet](#region "Displaying a code snippet"). |
@@ -470,6 +479,7 @@ Each tab displays code using a `code-pane`.
 
 | Attributes | Details |
 | :--------- | :------ |
+| Attributes | 详情 |
 | `path` | A file in the `content/examples` folder |
 | `header` | What displays in the header of a tab |
 | `linenums` | Overrides the `linenums` property at the `code-tabs` level for this particular pane. The value can be `true`, `false`, or a number indicating the starting line number. The default is `false`. |
@@ -1102,9 +1112,13 @@ They can also contain code snippets.
 When using callouts, consider the following points:
 
 * The callout header text style is uppercase
+
 * The header does not render in the table of contents
+
 * You can write the callout body in Markdown
+
 * A blank line separates the `<header>` tag from the Markdown content
+
 * Avoid using an `<h2>`, `<h3>`, `<h4>`, `<h5>`, or `<h6>`, as the CSS for callouts styles the `<header>` element
 
 Use callouts sparingly to grab the user's attention.
@@ -1208,7 +1222,7 @@ src="generated/images/guide/docs-style-guide/flying-hero.png"
 
 <div class="callout is-important">
 
-<header>Use the HTML <code>&lt;img&gt;</code> tag</header>
+<header>Use the HTML <code>&lt;img></code> tag</header>
 
 Specify images using the `<img>` tag.
 **Do not use the Markdown image syntax, `![... ](... )`.**

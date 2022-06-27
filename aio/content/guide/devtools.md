@@ -1,5 +1,7 @@
 # DevTools Overview
 
+# DevTools 概述
+
 Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications.
 Angular DevTools supports Angular v12 and later.
 
@@ -21,8 +23,11 @@ After installing Angular DevTools, find the extension under the Angular tab in y
 
 When you open the extension, you'll see two additional tabs:
 
+打开扩展程序时，你还会看到另外两个选项卡：
+
 | Tabs | Details |
 | :--- | :------ |
+| Tabs | 详情 |
 | [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state. |
 | [Profiler](#profiler) | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
 
@@ -34,15 +39,23 @@ When you open the extension, you'll see two additional tabs:
 
 In the top-right corner of Angular DevTools you'll find which version of Angular is running on the page as well as the latest commit hash for the extension.
 
+在 Angular DevTools 的右上角，你将找到页面上正在运行哪个版本的 Angular 以及该扩展的最后一次提交的哈希串。
+
 ## Bug reports
+
+## 错误报告
 
 Report issues and feature requests on [GitHub](https://github.com/angular/angular/issues).
 
 To report an issue with the Profiler, export the Profiler recording by clicking the **Save Profile** button, and then attaching that export as a file in the issue.
 
+要报告 Profiler 的问题，请通过单击 **Save Profile（保存配置文件）** 按钮导出 Profiler 记录，然后将该导出内容作为该问题的附件。
+
 <div class="alert is-helpful">
 
 Make sure that the Profiler recording does not contain any confidential information.
+
+请确保 Profiler 记录中不包含任何机密信息。
 
 </div>
 
@@ -50,11 +63,17 @@ Make sure that the Profiler recording does not contain any confidential informat
 
 ## Debug your application
 
+## 调试你的应用程序
+
 The **Components** tab lets you explore the structure of your application.
 You can visualize and inspect the component and directive instances and preview or modify their state.
 In the next couple of sections we'll look into how to use this tab effectively to debug your application.
 
+**Components** 选项卡使你可以浏览应用程序的结构。你可以可视化并检查组件和指令实例，并预览或修改它们的状态。在接下来的两节中，我们将研究如何有效使用此选项卡来调试应用程序。
+
 ### Explore the application structure
+
+### 浏览应用程序的结构
 
 <div class="lightbox">
 
@@ -64,24 +83,37 @@ In the next couple of sections we'll look into how to use this tab effectively t
 
 In the preceding screenshot, you can see the component tree of an application.
 
+在前面的屏幕截图中，你可以看到应用程序的组件树。
+
 The component tree displays a hierarchical relationship of the *components and directives* within your application.
 When you select a component or a directive instance, Angular DevTools presents additional information about that instance.
 
+组件树显示应用程序中*组件和指令*之间的层次关系。选择组件或指令实例时，Angular DevTools 会提供有关该实例的其他信息。
+
 ### View properties
+
+### 查看属性
 
 Click the individual components or directives in the component explorer to select them and preview their properties.
 Angular DevTools displays their properties and metadata on the right-hand side of the component tree.
 
+单击组件浏览器中的各个组件或指令，以选择它们并预览其属性。 Angular DevTools 在组件树的右侧显示其属性和元数据。
+
 Navigate in the component tree using the mouse or the following keyboard shortcuts:
+
+可以使用鼠标或下列键盘快捷键在组件树中导航：
 
 | Keyboard shortcut | Details |
 | :---------------- | :------ |
+| Keyboard shortcut | 详情 |
 | Up and down arrows | Select the previous and next nodes |
 | Left and right arrows | Collapse and expand a node |
 
 To look up a component or directive by name use the search box above the component tree.
 To navigate to the next search match, press `Enter`.
 To navigate to the previous search match, press `Shift + Enter`.
+
+要通过名称查找组件或指令，请使用组件树上方的搜索框。要导航至下一个搜索匹配项，请按 `Enter`。要导航至上一个搜索匹配项，请按 `Shift + Enter` 。
 
 <div class="lightbox">
 
@@ -91,13 +123,19 @@ To navigate to the previous search match, press `Shift + Enter`.
 
 ### Navigate to the host node
 
+### 导航到宿主节点
+
 To go to the host element of a particular component or directive, find it in the component explorer and double-click it.
 Browsers' DevTools opens the Elements tab in Chrome or the Inspector one in Firefox, and selects the associated DOM node.
 
 ### Navigate to source
 
+### 导航到源码
+
 For components, Angular DevTools also lets you navigate to the component definition in the source tab.
 After you select a particular component, click the icon at the top-right of the properties view:
+
+对于组件，Angular DevTools 还允许你导航到源码选项卡中的组件定义。选择特定组件后，单击属性视图右上角的图标：
 
 <div class="lightbox">
 
@@ -106,6 +144,8 @@ After you select a particular component, click the icon at the top-right of the 
 </div>
 
 ### Update property value
+
+### 修改属性值
 
 Like browsers' DevTools, the properties view lets you edit the value of an input, output, or another property.
 Right-click on the property value.
@@ -120,8 +160,12 @@ Type the new value and press `Enter`.
 
 ### Access selected component or directive in console
 
+### 在控制台中访问选定的组件或指令
+
 As a shortcut in the console, Angular DevTools provides you access to instances of the recently selected components or directives.
 Type `$ng0` to get a reference to the instance of the currently selected component or directive, and type `$ng1` for the previously selected instance.
+
+作为控制台中的快捷方式，Angular DevTools 可以让你访问最近选择的组件或指令的实例。键入 `$ng0` 以获取对当前所选组件或指令的实例的引用，键入 `$ng1` 来获取前一个选择的实例。
 
 <div class="lightbox">
 
@@ -130,6 +174,8 @@ Type `$ng0` to get a reference to the instance of the currently selected compone
 </div>
 
 ### Select a directive or component
+
+### 选择指令或组件
 
 Similar to browsers' DevTools, you can inspect the page to select a particular component or directive.
 Click the ***Inspect element*** icon at the top left corner within Angular DevTools and hover over a DOM element on the page.
@@ -145,7 +191,11 @@ The extension recognizes the associated directives and/or components and lets yo
 
 ## Profile your application
 
+## 剖析你的应用程序
+
 The **Profiler** tab lets you preview the execution of Angular's change detection.
+
+**Profiler** 选项卡使你可以预览 Angular 变更检测的执行。
 
 <div class="lightbox">
 
@@ -156,15 +206,23 @@ The **Profiler** tab lets you preview the execution of Angular's change detectio
 The Profiler lets you start profiling or import an existing profile.
 To start profiling your application, hover over the circle at the top-left corner within the **Profiler** tab and click **Start recording**.
 
+通过 Profiler，你可以开始进行剖析或导入现有的剖析记录文件。要开始对应用程序进行性能剖析，请将鼠标悬停在 **Profiler** 选项卡内左上角的圆圈上，然后点击 **Start recording**。
+
 During profiling, Angular DevTools captures execution events, such as change detection and lifecycle hook execution.
 To finish recording, click the circle again to **Stop recording**.
+
+在剖析过程中，Angular DevTools 会捕获执行过的事件，例如变更检测和生命周期挂钩。要完成录制，请再次单击那个圆圈以 **Stop recording**。
 
 You can also import an existing recording.
 Read more about this feature in the [Import recording](#) section.
 
 ### Understand your application's execution
 
+### 了解应用程序的执行过程
+
 In the following screenshot, find the default view of the Profiler after you complete recording.
+
+在下面的屏幕截图中，可以在完成录制后找到 Profiler 的默认视图。
 
 <div class="lightbox">
 
@@ -176,6 +234,8 @@ Near the top of the view you can see a sequence of bars, each one of them symbol
 The taller a bar is, the longer your application has spent in this cycle.
 When you select a bar, DevTools renders a bar chart with all the components and directives that it captured during this cycle.
 
+在此视图的顶部附近，你可以看到一系列条形图，每个条形图表示应用程序中的变更检测周期。竖线越高，应用程序在此周期中花费的时间越长。选择条形图时，DevTools 会渲染一个条形图，其中包含在此循环中捕获的所有组件和指令。
+
 <div class="lightbox">
 
 <img alt="profiler selected bar" src="generated/images/guide/devtools/profiler-selected-bar.png">
@@ -185,11 +245,19 @@ When you select a bar, DevTools renders a bar chart with all the components and 
 Earlier on the change detection timeline, you can find how much time Angular spent in this cycle.
 Angular DevTools attempts to estimate the frame drop at this point to indicate when the execution of your application might impact the user experience.
 
+在变更检测时间轴前面，你可以发现 Angular 在此周期中花费了多少时间。 Angular DevTools 会试图估算出掉帧情况，以指示应用程序的执行何时可能会影响用户体验。
+
 Angular DevTools also indicates what triggered the change detection (that is, the change detection's source).
+
+Angular DevTools 还会指出触发这次变更检测的原因（即变更检测的来源）。
 
 ### Understand component execution
 
+### 了解组件的执行过程
+
 When you click on a bar, you'll find a detailed view about how much time your application spent in the particular directive or component:
+
+单击条形图时，你会发现有关应用程序在特定指令或组件上花费了多少时间的详细视图：
 
 <div class="lightbox">
 
@@ -200,7 +268,11 @@ When you click on a bar, you'll find a detailed view about how much time your ap
 Figure shows the total time spent by NgforOf directive and which method was called in it.
 It also shows the parent hierarchy of the directive selected.
 
+这张图展示了 NgForOf 指令花费的总时间，以及其中调用了哪个方法。它还展示了所选指令的父级层次。
+
 ### Hierarchical views
+
+### 分层视图
 
 <div class="lightbox">
 
@@ -211,19 +283,33 @@ It also shows the parent hierarchy of the directive selected.
 You can also preview the change detection execution in a flame graph-like view.
 Each tile in the graph represents an element on the screen at a specific position in the render tree.
 
+你也可以在类似火焰图的视图中预览变更检测的执行情况。该图形中的每个图块代表屏幕上渲染树中位于特定位置的元素。
+
 For example, if during one change detection cycle at a specific position in the component tree you had `ComponentA`, this component was removed and in its place Angular rendered `ComponentB`, you'll see both components at the same tile.
+
+例如，如果在组件树中特定位置的一个变更检测周期中，我们原本有一个 `ComponentA`，然后该组件被删除，而在它的位置上，Angular 再渲染出 `ComponentB`，这样你就会在同一图块上看到两个组件。
 
 Each tile is colored depending on how much time Angular spent there.
 DevTools determines the intensity of the color by the time spent relative to the tile where we've spent the most time in change detection.
 
+每个图块的颜色取决于 Angular 在这里花费了多少时间。 DevTools 通过相对于我们花费最多时间进行变更检测的图块所花费的时间来确定颜色的深浅。
+
 When you click on a certain tile, you'll see details about it in the panel on the right.
 Double-clicking the tile zooms it in so you can preview the nested children.
 
+单击某个图块时，你会在右侧面板中看到关于该图块的详细信息。双击图块将其放大，以便你可以预览嵌套的子级图块。
+
 ### Debug OnPush
+
+### 调试 OnPush
 
 To preview the components in which Angular did change detection, select the **Change detection** checkbox at the top, above the flame graph.
 
+要预览 Angular 进行变更检测的组件，请选择火焰图上方顶部的 **Change detection** 复选框。
+
 This view colors all the tiles in which Angular performed change detection in green, and the rest in gray:
+
+此视图将把所有在 Angular 中执行过变更检测的图块显示为绿色，其余显示为灰色：
 
 <div class="lightbox">
 
@@ -233,8 +319,12 @@ This view colors all the tiles in which Angular performed change detection in gr
 
 ### Import recording
 
+### 导入剖析记录
+
 Click the **Save Profile** button at the top-left of a recorded profiling session to export it as a JSON file and save it to the disk.
 Then, import the file in the initial view of the profiler by clicking the **Choose file** input:
+
+单击已记录的性能剖析会话左上角的 **Save Profile** 按钮，以将其导出为 JSON 文件并将其保存到磁盘。然后，你可以通过单击 **Choose file** 输入框来将此文件导入到剖析器的初始视图中：
 
 <div class="lightbox">
 

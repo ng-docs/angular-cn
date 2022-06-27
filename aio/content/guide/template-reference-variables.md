@@ -3,11 +3,20 @@
 Template variables help you use data from one part of a template in another part of the template.
 Use template variables to perform tasks such as respond to user input or finely tune your application's forms.
 
+模板变量可以帮助你在模板的另一部分使用这个部分的数据。使用模板变量，你可以执行某些任务，比如响应用户输入或微调应用的表单。
+
 A template variable can refer to the following:
 
+模板变量可以引用这些东西：
+
 * a DOM element within a template
+
+  模板中的 DOM 元素
+
 * a directive or component
+
 * a [TemplateRef](api/core/TemplateRef) from an [ng-template](api/core/ng-template)
+
 * a <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" title="MDN: Web Components">web component</a>
 
 <div class="alert is-helpful">
@@ -18,9 +27,13 @@ See the <live-example></live-example> for a working example containing the code 
 
 ## Prerequisites
 
+## 先决条件
+
 * [Understanding templates](guide/template-overview)
 
 ## Syntax
+
+## 语法
 
 In the template, you use the hash symbol, `#`, to declare a template variable.
 The following template variable, `#phone`, declares a `phone` variable with the `<input>` element as its value.
@@ -30,27 +43,48 @@ The following template variable, `#phone`, declares a `phone` variable with the 
 Refer to a template variable anywhere in the component's template.
 Here, a `<button>` further down the template refers to the `phone` variable.
 
+可以在组件模板中的任何地方引用某个模板变量。这里的 `<button>` 就引用了 `phone` 变量。
+
 <code-example path="template-reference-variables/src/app/app.component.html" region="ref-phone" header="src/app/app.component.html"></code-example>
 
 ## How Angular assigns values to template variables
 
+## Angular 是如何为模板变量赋值的
+
 Angular assigns a template variable a value based on where you declare the variable:
 
+Angular 根据你所声明的变量的位置给模板变量赋值：
+
 * If you declare the variable on a component, the variable refers to the component instance.
+
+  如果在组件上声明变量，该变量就会引用该组件实例。
+
 * If you declare the variable on a standard HTML tag, the variable refers to the element.
+
+  如果在标准的 HTML 标记上声明变量，该变量就会引用该元素。
+
 * If you declare the variable on an `<ng-template>` element, the variable refers to a `TemplateRef` instance which represents the template.
   For more information on `<ng-template>`, see [How Angular uses the asterisk, `*`, syntax](guide/structural-directives#asterisk) in [Structural directives](guide/structural-directives).
+
+  如果你在 `<ng-template>` 元素上声明变量，该变量就会引用一个 `TemplateRef` 实例来代表此模板。关于 `<ng-template>` 的更多信息，请参阅[结构型指令](guide/structural-directives#asterisk) 中的 [Angular 如何使用 `*` 语法](guide/structural-directives#asterisk)部分。
 
 ## Variable specifying a name
 
 * If the variable specifies a name on the right-hand side, such as `#var="ngModel"`, the variable refers to the directive or component on the element with a matching `exportAs` name.
+
+  如果该变量在右侧指定了一个名字，比如 `#var="ngModel"` ，那么该变量就会引用所在元素上具有这个 `exportAs` 名字的指令或组件。
+
   <!-- What does the second half of this mean?^^ Can we explain this more fully? Could I see a working example? -kw -->
 
 ### Using `NgForm` with template variables
 
+### 将 `NgForm` 与模板变量一起使用
+
 In most cases, Angular sets the template variable's value to the element on which it occurs.
 In the previous example, `phone` refers to the phone number `<input>`.
 The button's click handler passes the `<input>` value to the component's `callPhone()` method.
+
+在大多数情况下，Angular 会把模板变量的值设置为它所在的元素。在前面的例子中， `phone` 引用的是电话号码 `<input>` 。该按钮的 click 处理程序会把这个 `<input>` 的值传给该组件的 `callPhone()` 方法。
 
 The `NgForm` directive demonstrates getting a reference to a different value by referencing a directive's `exportAs` name.
 In the following example, the template variable, `itemForm`, appears three times separated by HTML.
@@ -65,6 +99,8 @@ If an element is an Angular Component, a reference with no attribute value will 
 
 ## Template variable scope
 
+## 模板变量的作用域
+
 Just like variables in JavaScript or TypeScript code, template variables are scoped to the template that declares them.
 
 Similarly, [Structural directives](guide/built-in-directives) such as `*ngIf` and `*ngFor`, or `<ng-template>` declarations create a new nested template scope, much like JavaScript's control flow statements like `if` and `for` create new lexical scopes. You cannot access template variables within one of these structural directives from outside of its boundaries.
@@ -73,13 +109,21 @@ Similarly, [Structural directives](guide/built-in-directives) such as `*ngIf` an
 
 Define a variable only once in the template so the runtime value remains predictable.
 
+同名变量在模板中只能定义一次，这样运行时它的值就是可预测的。
+
 </div>
 
 ### Accessing in a nested template
 
+### 在嵌套模板中访问
+
 An inner template can access template variables that the outer template defines.
 
+内部模板可以访问外模板定义的模板变量。
+
 In the following example, changing the text in the `<input>` changes the value in the `<span>` because Angular immediately updates changes through the template variable, `ref1`.
+
+在下面的例子中，修改 `<input>` 中的文本值也会改变 `<span>` 中的值，因为 Angular 会立即通过模板变量 `ref1` 来更新这种变化。
 
 <code-example path="template-reference-variables/src/app/app.component.html" region="template-ref-vars-scope1" header="src/app/app.component.html"></code-example>
 
@@ -99,6 +143,8 @@ Here, `ref2` is declared in the child scope created by `*ngIf`, and is not acces
 {@a template-input-variables}
 
 ## Template input variable
+
+## 模板输入变量
 
 A _template input variable_ is a variable with a value that is set when an instance of that template is created. See: [Writing structural directives](https://angular.io/guide/structural-directives)
 
@@ -127,6 +173,8 @@ When an `<ng-template>` is instantiated, multiple named values can be passed whi
 ```
 
 ## What’s next
+
+## 下一步是什么【模糊翻译】
 
 [Writing structural directives](https://angular.io/guide/structural-directives)
 

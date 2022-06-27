@@ -5,6 +5,7 @@
 There are cases in which scheduled [tasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks) or [microtasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks) don’t make any changes in the data model, which makes running change detection unnecessary. Common examples are:
 
 * `requestAnimationFrame`, `setTimeout` or `setInterval`
+
 * Task or microtask scheduling by third-party libraries
 
 This section covers how to identify such conditions, and how to run code outside the Angular zone to avoid unnecessary change detection calls.
@@ -15,6 +16,7 @@ You can detect unnecessary change detection calls using Angular DevTools. Often 
 
 <div class="lightbox">
   <img alt="Angular DevTools profiler preview showing Zone pollution" src="generated/images/guide/change-detection/zone-pollution.png">
+
 </div>
 
 In the image above, there is a series of change detection calls triggered by event handlers associated with an element. That’s a common challenge when using third-party, non-native Angular components, which do not alter the default behavior of `NgZone`.

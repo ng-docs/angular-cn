@@ -6,6 +6,8 @@ As of Angular 14, reactive forms are strictly typed by default.
 
 ## Prerequisites
 
+## 先决条件
+
 As background for this guide, you should already be familiar with [Angular Reactive Forms](guide/reactive-forms "Reactive Forms").
 
 <a id="intro"></a>

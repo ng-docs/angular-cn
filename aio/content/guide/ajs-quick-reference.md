@@ -1,18 +1,28 @@
 # AngularJS to Angular concepts: Quick reference
 
+# 关于 AngularJS 与 Angular 概念的快速参考
+
 *Angular* is the name for the Angular of today and tomorrow.
+
+*Angular*是现在和未来的 Angular 名称。
 
 *AngularJS* is the name for all v1.x versions of Angular.
 
 This guide helps you transition from AngularJS to Angular
 by mapping AngularJS syntax to the equivalent Angular syntax.
 
+本章提供了一个快速的参考指南，指出一些常用的 AngularJS 语法及其在 Angular 中的等价物。
+
 **See the Angular syntax in this <live-example name="ajs-quick-reference"></live-example>**.
 
 ## Template basics
 
+## 模板基础
+
 Templates are the user-facing part of an Angular application and are written in HTML.
 The following table lists some of the key AngularJS template features with their equivalent Angular template syntax.
+
+模板是 Angular 应用中的门面部分，它是用 HTML 写的。下表中是一些 AngularJS 中的关键模板特性及其在 Angular 中的等价语法。
 
 ### Bindings/interpolation → Bindings/interpolation
 
@@ -21,6 +31,8 @@ The following table lists some of the key AngularJS template features with their
 | <header>Bindings/interpolation</header> <code-example hideCopy format="html" language="html"> Your favorite hero is: {{vm.favoriteHero}} </code-example> In AngularJS, an expression in curly braces denotes one-way binding. This binds the value of the element to a property in the controller associated with this template. <br /> When using the `controller as` syntax, the binding is prefixed with the controller alias (`vm` or `$ctrl`) because you have to be specific about the source of the binding. | <header>Bindings/interpolation</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="interpolation"></code-example> In Angular, a template expression in curly braces still denotes one-way binding. This binds the value of the element to a property of the component. The context of the binding is implied and is always the associated component, so it needs no reference variable. <br /> For more information, see the [Interpolation][AioGuideInterpolation] guide. |
 
 ### Filters → Pipes
+
+### 过滤器/管道【模糊翻译】
 
 | AngularJS | Angular |
 | :-------- | :------ |
@@ -33,6 +45,8 @@ The following table lists some of the key AngularJS template features with their
 | <header>Local variables</header> <code-example hideCopy format="html" language="html"> &lt;tr ng-repeat="movie in vm.movies"&gt; &NewLine;&nbsp; &lt;td&gt; &NewLine;&nbsp;&nbsp;&nbsp; {{movie.title}} &NewLine;&nbsp; &lt;/td&gt; &NewLine;&lt;/tr&gt; </code-example> Here, `movie` is a user-defined local variable. | <header>Input variables</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="local"></code-example> Angular has true template input variables that are explicitly defined using the `let` keyword. <br /> For more information, see the [Structural directive shorthand][AioGuideStructuralDirectivesStructuralDirectiveShorthand] section of [Structural Directives][AioGuideStructuralDirectives]. |
 
 ## Template directives
+
+## 模板指令
 
 AngularJS provides more than seventy built-in directives for templates.
 Many of them are not needed in Angular because of its more capable and expressive binding system.
@@ -118,6 +132,8 @@ The following are some of the key AngularJS built-in directives and their equiva
 
 ## Filters/pipes
 
+## 过滤器/管道
+
 Angular **pipes** provide formatting and transformation for data in the template, similar to AngularJS **filters**.
 Many of the built-in filters in AngularJS have corresponding pipes in Angular.
 For more information on pipes, see [Pipes][AioGuidePipes].
@@ -172,13 +188,21 @@ For more information on pipes, see [Pipes][AioGuidePipes].
 
 ## Modules/controllers/components
 
+## 模块/控制器/组件
+
 In both AngularJS and Angular, modules help you organize your application into cohesive blocks of functionality.
+
+无论在 AngularJS 还是 Angular 中，“模块”都会帮你把应用拆分成一些内聚的功能块。
 
 In AngularJS, you write the code that provides the model and the methods for the view in a **controller**.
 In Angular, you build a **component**.
 
+在 AngularJS 中，你要在**控制器**中写代码，来为视图提供模型和方法。 在 Angular 中，你要创建**组件**。
+
 Because much AngularJS code is in JavaScript, JavaScript code is shown in the AngularJS column.
 The Angular code is shown using TypeScript.
+
+因为很多 AngularJS 的代码是用 JavaScript 写的，所以在 AngularJS 列显示的是 JavaScript 代码，而 Angular 列显示的是 TypeScript 代码。
 
 ### IIFE → none
 
@@ -212,11 +236,15 @@ The Angular code is shown using TypeScript.
 
 ## Style sheets
 
+## 样式表
+
 Style sheets give your application a nice look.
 In AngularJS, you specify the style sheets for your entire application.
 As the application grows over time, the styles for the many parts of the application merge, which can cause unexpected results.
 In Angular, you can still define style sheets for your entire application.
 But now you can also encapsulate a style sheet within a specific component.
+
+样式表让你的应用程序看起来更漂亮。 在 AngularJS 中，你要为整个应用程序指定样式表。 随着应用程序的不断成长，为各个部分指定的样式会被合并，导致无法预计的后果。 在 Angular 中，你仍然要为整个应用程序定义样式，不过现在也可以把样式表封装在特定的组件中。
 
 ### `Link` tag → `styles` configuration or `styleUrls`
 
