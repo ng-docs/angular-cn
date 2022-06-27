@@ -305,7 +305,8 @@ This can cause confusion. For example:
 
 这会引起混乱。例如：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 // this works
 client.get('/foo', {responseType: 'text'})
 
@@ -314,7 +315,8 @@ const options = {
   responseType: 'text',
 };
 client.get('/foo', options)
-```
+
+</code-example>
 
 In the second case, TypeScript infers the type of `options` to be `{responseType: string}`.
 The type is too wide to pass to `HttpClient.get` which is expecting the type of `responseType` to be one of the _specific_ strings.
@@ -326,12 +328,14 @@ Use `as const` to let TypeScript know that you really do mean to use a constant 
 
 使用 `as const`，可以让 TypeScript 知道你并不是真的要使用字面字符串类型：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 const options = {
   responseType: 'text' as const,
 };
 client.get('/foo', options);
-```
+
+</code-example>
 
 </div>
 

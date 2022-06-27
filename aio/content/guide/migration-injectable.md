@@ -24,7 +24,8 @@ _Before migration:_
 
 *迁移之前：*
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export class MyService {...}
 export class MyOtherService {...}
 export class MyThirdClass {...}
@@ -42,7 +43,8 @@ export class MyFifthClass {...}
     {provide: MyFifthClass, useExisting: ...},
   ]
 })
-```
+
+</code-example>
 
 _After migration:_
 
@@ -78,17 +80,21 @@ _Before migration_:
 
 *迁移之前* ：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 {provide: MyToken}
-```
+
+</code-example>
 
 _After migration_:
 
 *迁移完成后* ：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 {provide: MyToken, useValue: undefined}
-```
+
+</code-example>
 
 ### Why is adding `@Injectable()` necessary?
 
@@ -111,11 +117,13 @@ Consider the following pattern:
 
 考虑以下模式：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @NgModule({
   providers: [{provide: MyService}]
 })
-```
+
+</code-example>
 
 Providers using this pattern will behave as if they provide `MyService` as [DI token][DI_TOKEN]
 with the value of `undefined`.

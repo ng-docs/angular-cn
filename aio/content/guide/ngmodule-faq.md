@@ -281,9 +281,11 @@ Angular's own `BrowserModule` exports a couple of NgModules like this:
 模块可以重新导出其它模块，这会导致重新导出它们导出的所有类。
 Angular 自己的 `BrowserModule` 就重新导出了一组模块，例如：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
   exports: [CommonModule, ApplicationModule]
-```
+
+</code-example>
 
 An NgModule can export a combination of its own declarations, selected imported classes, and imported NgModules.
 

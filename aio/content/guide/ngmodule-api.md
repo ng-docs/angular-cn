@@ -20,7 +20,8 @@ The metadata falls into three categories:
 
    **组合/分组：**通过 `imports` 和 `exports` 数组来把多个 NgModule 放在一起，并让它们可用。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @NgModule({
   // Static, that is compiler configuration
   declarations: [], // Configure the selectors
@@ -32,7 +33,8 @@ The metadata falls into three categories:
   imports: [], // composing NgModules together
   exports: [] // making NgModules available to other parts of the app
 })
-```
+
+</code-example>
 
 ## `@NgModule` metadata
 

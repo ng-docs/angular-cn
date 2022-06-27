@@ -29,7 +29,8 @@ When you use the [Angular CLI](cli) command `ng new` to generate an app, the def
 
 当你使用 [Angular CLI](cli) 命令 `ng new` 生成一个应用时，其默认的 `AppModule` 是这样的：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 /* JavaScript imports */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -48,7 +49,8 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-```
+
+</code-example>
 
 After the import statements is a class with the
 **`@NgModule`** [decorator](guide/glossary#decorator '"Decorator" explained').
@@ -122,13 +124,15 @@ An example of what goes into a declarations array follows:
 
 下面是哪些类可以添加到 `declarations` 数组中的例子：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
   declarations: [
     YourComponent,
     YourPipe,
     YourDirective
   ],
-```
+
+</code-example>
 
 A declarable can only belong to one module, so only declare it in
 one `@NgModule`. When you need it elsewhere,

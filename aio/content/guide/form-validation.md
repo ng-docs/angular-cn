@@ -504,11 +504,13 @@ The constructor injects the `HeroesService`, which defines the following interfa
 
 构造函数中注入了 `HeroesService`，它定义了如下接口。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 interface HeroesService {
   isAlterEgoTaken: (alterEgo: string) => Observable<boolean>;
 }
-```
+
+</code-example>
 
 In a real world application, the `HeroesService` would be responsible for making an HTTP request to the hero database to check if the alter ego is available.
 From the validator's point of view, the actual implementation of the service is not important, so the example can just code against the `HeroesService` interface.
@@ -563,9 +565,11 @@ With reactive forms, set the property in the `FormControl` instance.
 
 使用响应式表单时，可以在 `FormControl` 实例中设置该属性。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 new FormControl('', {updateOn: 'blur'});
-```
+
+</code-example>
 
 ## Interaction with native HTML form validation
 

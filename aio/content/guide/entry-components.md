@@ -46,7 +46,8 @@ The following is an example of specifying a bootstrapped component,
 
 下面这个例子中指定了一个引导用组件 `AppComponent`，位于基本的 `app.module.ts` 中：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @NgModule({
   declarations: [
     AppComponent
@@ -60,7 +61,8 @@ The following is an example of specifying a bootstrapped component,
   providers: [],
   bootstrap: [AppComponent] // bootstrapped entry component
 })
-```
+
+</code-example>
 
 A bootstrapped component is an entry component
 that Angular loads into the DOM during the bootstrap process (application launch).
@@ -97,14 +99,16 @@ this:
 
 入口组件的第二种类型出现在路由定义中，就像这样：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 const routes: Routes = [
   {
     path: '',
     component: CustomerListComponent
   }
 ];
-```
+
+</code-example>
 
 A route definition refers to a component by its type with `component: CustomerListComponent`.
 

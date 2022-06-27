@@ -105,7 +105,8 @@ In the following example, the `@Component()` metadata object and the class const
 
 在下列范例中，`@Component()` 元数据对象和类的构造函数会告诉 Angular 如何创建和显示 `TypicalComponent` 的实例。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'app-typical',
   template: '<div>A typical component for {{data.name}}</div>'
@@ -114,7 +115,8 @@ export class TypicalComponent {
   @Input() data: TypicalData;
   constructor(private someService: SomeService) { ... }
 }
-```
+
+</code-example>
 
 The Angular compiler extracts the metadata _once_ and generates a _factory_ for `TypicalComponent`.
 When it needs to create a `TypicalComponent` instance, Angular calls the factory, which produces a new visual element, bound to a new instance of the component class with its injected dependency.
@@ -584,12 +586,14 @@ Consider the following component decorator:
 
 考虑如下组件装饰器：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   ...
   providers: [{provide: server, useFactory: () => new Server()}]
 })
-```
+
+</code-example>
 
 The AOT collector does not support the arrow function, `() => new Server()`, in a metadata expression.
 It generates an error node in place of the function.
@@ -603,7 +607,8 @@ You can fix the error by converting to this:
 
 你可以把它改写成这样来修复这个错误：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export function serverFactory() {
   return new Server();
 }
@@ -612,7 +617,8 @@ export function serverFactory() {
   ...
   providers: [{provide: server, useFactory: serverFactory}]
 })
-```
+
+</code-example>
 
 In version 5 and later, the compiler automatically performs this rewriting while emitting the `.js` file.
 
@@ -652,7 +658,8 @@ Consider the following component definition:
 
 考虑下列组件定义：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 const template = '<div>{{hero.name}}</div>';
 
 @Component({
@@ -662,7 +669,8 @@ const template = '<div>{{hero.name}}</div>';
 export class HeroComponent {
   @Input() hero: Hero;
 }
-```
+
+</code-example>
 
 The compiler could not refer to the `template` constant because it isn't exported.
 The collector, however, can fold the `template` constant into the metadata definition by in-lining its contents.
@@ -672,7 +680,8 @@ The effect is the same as if you had written:
 但是收集器可以通过内联 `template` 常量的方式把它*折叠*进元数据定义中。
 最终的结果和你以前的写法是一样的：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'app-hero',
   template: '<div>{{hero.name}}</div>'
@@ -680,7 +689,8 @@ The effect is the same as if you had written:
 export class HeroComponent {
   @Input() hero: Hero;
 }
-```
+
+</code-example>
 
 There is no longer a reference to `template` and, therefore, nothing to trouble the compiler when it later interprets the _collector's_ output in `.metadata.json`.
 
@@ -690,7 +700,8 @@ You can take this example a step further by including the `template` constant in
 
 你还可以通过把 `template` 常量包含在其它表达式中来让这个例子深入一点：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 const template = '<div>{{hero.name}}</div>';
 
 @Component({
@@ -700,7 +711,8 @@ const template = '<div>{{hero.name}}</div>';
 export class HeroComponent {
   @Input() hero: Hero;
 }
-```
+
+</code-example>
 
 The collector reduces this expression to its equivalent _folded_ string:
 
@@ -1121,7 +1133,8 @@ The compiler can only reference _exported symbols_.
 
   数据绑定的属性同样必须是公开的。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 // BAD CODE - title is private
 @Component({
   selector: 'app-root',
@@ -1130,7 +1143,8 @@ The compiler can only reference _exported symbols_.
 export class AppComponent {
   private title = 'My App'; // Bad
 }
-```
+
+</code-example>
 
 <a id="supported-functions"></a>
 
@@ -1189,11 +1203,13 @@ For example, consider the following function:
 
 考虑下面的函数：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export function wrapInArray<T>(value: T): T[] {
   return [value];
 }
-```
+
+</code-example>
 
 You can call the `wrapInArray` in a metadata definition because it returns the value of an expression that conforms to the compiler's restrictive JavaScript subset.
 
@@ -1203,23 +1219,27 @@ You might use  `wrapInArray()` like this:
 
 你还可以这样使用 `wrapInArray()`：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @NgModule({
   declarations: wrapInArray(TypicalComponent)
 })
 export class TypicalModule {}
-```
+
+</code-example>
 
 The compiler treats this usage as if you had written:
 
 编译器会把这种用法处理成你以前的写法：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @NgModule({
   declarations: [TypicalComponent]
 })
 export class TypicalModule {}
-```
+
+</code-example>
 
 The Angular [`RouterModule`](api/router/RouterModule) exports two macro static methods, `forRoot` and `forChild`, to help declare root and child routes.
 Review the [source code](https://github.com/angular/angular/blob/master/packages/router/src/router_module.ts#L139 "RouterModule.forRoot source code")
@@ -1245,7 +1265,8 @@ You might write something like:
 
 你可以这样写：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 class TypicalServer {
 
 }
@@ -1254,7 +1275,8 @@ class TypicalServer {
   providers: [{provide: SERVER, useFactory: () => TypicalServer}]
 })
 export class TypicalModule {}
-```
+
+</code-example>
 
 Without rewriting, this would be invalid because lambdas are not supported and `TypicalServer` is not exported.
 To allow this, the compiler automatically rewrites this to something like:
@@ -1262,7 +1284,8 @@ To allow this, the compiler automatically rewrites this to something like:
 如果不重写，这就是无效的，因为这里不支持 Lambda 表达式，而且 `TypicalServer` 也没有被导出。
 为了支持这种写法，编译器自动把它重写成了这样：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 class TypicalServer {
 
 }
@@ -1273,7 +1296,8 @@ export const ɵ0 = () => new TypicalServer();
   providers: [{provide: SERVER, useFactory: ɵ0}]
 })
 export class TypicalModule {}
-```
+
+</code-example>
 
 This allows the compiler to generate a reference to `ɵ0` in the factory without having to know what the value of `ɵ0` contains.
 
@@ -1310,7 +1334,8 @@ For example, consider the following component:
 
 比如，考虑下列组件：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'my-component',
   template: '{{person.addresss.street}}'
@@ -1318,7 +1343,8 @@ For example, consider the following component:
 class MyComponent {
   person?: Person;
 }
-```
+
+</code-example>
 
 This produces the following error:
 
@@ -1367,7 +1393,8 @@ For example, to avoid `Object is possibly 'undefined'` error in the template abo
 在 `ngIf` 指令中使用的表达式用来在 Angular 模板编译器中窄化联合类型，就像 TypeScript 中的 `if` 表达式一样。
 比如，要在上述模板中消除 `Object is possibly 'undefined'` 错误，可以把它改成只在 `person` 的值初始化过的时候才生成这个插值。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'my-component',
   template: '<span *ngIf="person"> {{person.address.street}} </span>'
@@ -1375,7 +1402,8 @@ For example, to avoid `Object is possibly 'undefined'` error in the template abo
 class MyComponent {
   person?: Person;
 }
-```
+
+</code-example>
 
 Using `*ngIf` allows the TypeScript compiler to infer that the `person` used in the binding expression will never be `undefined`.
 
@@ -1399,7 +1427,8 @@ There is no convenient way to describe this constraint to TypeScript and the tem
 
 在下面的例子中，`person` 和 `address` 属性总是一起出现的，如果 `person` 非空，则 `address` 也一定非空。没有一种简便的写法可以向 TypeScript 和模板编译器描述这种约束。但是这个例子中使用 `address!.street` 避免了报错。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'my-component',
   template: '<span *ngIf="person"> {{person.name}} lives on {{address!.street}} </span>'
@@ -1413,7 +1442,8 @@ class MyComponent {
     this.address = address;
   }
 }
-```
+
+</code-example>
 
 The non-null assertion operator should be used sparingly as refactoring of the component might break this constraint.
 
@@ -1423,7 +1453,8 @@ In this example it is recommended to include the checking of `address` in the `*
 
 这个例子中，更建议在 `*ngIf` 中包含对 `address` 的检查，代码如下：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'my-component',
   template: '<span *ngIf="person && address"> {{person.name}} lives on {{address.street}} </span>'
@@ -1437,4 +1468,5 @@ class MyComponent {
     this.address = address;
   }
 }
-```
+
+</code-example>

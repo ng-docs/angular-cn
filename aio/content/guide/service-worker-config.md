@@ -142,7 +142,8 @@ Asset groups follow the Typescript interface shown here:
 
 这些资产组会遵循下面的 Typescript 接口：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 interface AssetGroup {
   name: string;
   installMode?: 'prefetch' | 'lazy';
@@ -155,7 +156,8 @@ interface AssetGroup {
     ignoreSearch?: boolean;
   };
 }
-```
+
+</code-example>
 
 ### `name`
 
@@ -274,7 +276,8 @@ Data groups follow this Typescript interface:
 
 数据组遵循下列 TypeScript 接口：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export interface DataGroup {
   name: string;
   urls: string[];
@@ -289,7 +292,8 @@ export interface DataGroup {
     ignoreSearch?: boolean;
   };
 }
-```
+
+</code-example>
 
 ### `name`
 

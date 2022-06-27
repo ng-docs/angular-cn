@@ -1301,14 +1301,16 @@ Add a `viewProviders` array with a third animal, 🦔 (hedgehog), to the
 
 将带有第三个动物🦔（刺猬）的 `viewProviders` 数组添加到 `app.component.ts` 的 `@Component()` 元数据中：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ],
   viewProviders: [{ provide: AnimalService, useValue: { emoji: '🦔' } }]
 })
-```
+
+</code-example>
 
 Next, add `@SkipSelf()` along with `@Host()` to the constructor for the
 `Animal Service` in `child.component.ts`. Here are `@Host()`
