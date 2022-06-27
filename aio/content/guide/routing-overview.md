@@ -14,9 +14,11 @@ The **`Router`** enables navigation by interpreting a browser URL as an instruct
 
 To explore a sample app featuring the router's primary features, see the <live-example name="router"></live-example>.
 
+要浏览具有主要路由器功能的示例应用，请参阅<live-example stackblitz="router"></live-example> 。
+
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Before creating a route, you should be familiar with the following:
 
@@ -41,46 +43,136 @@ Before creating a route, you should be familiar with the following:
 <div class="card-container">
   <a href="guide/router" class="docs-card" title="Common routing tasks">
 
-```
 <section>Common routing tasks</section>
+
+<section>通用路由任务</section>
+
+```
+<section>常见路由任务</section>
+```
+
 <p>Learn how to implement many of the common tasks associated with Angular routing.</p>
+
+<p>了解如何实现与 Angular 路由相关的许多常见任务。</p>
+
+```
+<p>学习如何实现与 Angular 路由有关的多种常见路由任务。</p>
+```
+
 <p class="card-footer">Common routing tasks</p>
+
+<p class="card-footer">通用路由任务</p>
+
+```
+<p class="card-footer">常见路由任务</p>
 ```
 
   </a>
   <a href="guide/router-tutorial" class="docs-card" title="Routing SPA tutorial">
 
-```
 <section>Single-page applications (SPAs) routing tutorial</section>
+
+<section>单页应用程序 (SPA) 路由教程</section>
+
+```
+<section>单页面应用 (SPA) 路由教程</section>
+```
+
 <p>A tutorial that covers patterns associated with Angular routing.</p>
+
+<p>一个涵盖与 Angular 路由相关的模式的教程。</p>
+
+```
+<p>一个涵盖与 Angular 路由有关的多种模式的教程。</p>
+```
+
 <p class="card-footer">Routing SPA tutorial</p>
+
+<p class="card-footer">路由 SPA 教程</p>
+
+```
+<p class="card-footer">路由 SPA 教程</p>
 ```
 
   </a>
   <a href="guide/router-tutorial-toh" class="docs-card" title="Routing Tour of Heroes">
 
-```
 <section>Tour of Heroes expanded routing tutorial</section>
+
+<section>英雄之旅扩展路由教程</section>
+
+```
+<section>《英雄之旅》扩展路由教程</section>
+```
+
 <p>Add more routing features to the Tour of Heroes tutorial.</p>
+
+<p>为 Tour of Heroes 教程添加更多路由特性。</p>
+
+```
+<p>往《英雄之旅》教程中添加更多路由特性。</p>
+```
+
 <p class="card-footer">Routing Tour of Heroes</p>
+
+<p class="card-footer">英雄路由之旅</p>
+
+```
+<p class="card-footer">《英雄之旅》的路由</p>
 ```
 
   </a>
   <a href="guide/routing-with-urlmatcher" class="docs-card" title="Creating custom route matches tutorial">
 
-```
 <section>Creating custom route matches tutorial</section>
+
+<section>创建自定义路由匹配教程</section>
+
+```
+<section>自定义路由匹配策略创建教程</section>
+```
+
 <p>A tutorial that covers how to use custom matching strategy patterns with Angular routing.</p>
+
+<p>一个教程，介绍如何将自定义匹配策略模式与 Angular 路由一起使用。</p>
+
+```
+<p>讲述如何将 Angular 路由与自定义匹配策略模式结合使用</p>
+```
+
 <p class="card-footer">Custom route matches tutorial</p>
+
+<p class="card-footer">自定义路由匹配教程</p>
+
+```
+<p class="card-footer">自定义路由匹配策略创建教程</p>
 ```
 
   </a>
   <a href="guide/router-reference" class="docs-card" title="Router reference">
 
-```
 <section>Router reference</section>
+
+<section>路由器参考</section>
+
+```
+<section>路由器参考手册</section>
+```
+
 <p>Describes some core router API concepts.</p>
+
+<p>描述一些核心路由器 API 概念。</p>
+
+```
+<p>讲述一些核心路由器 API 的概念。</p>
+```
+
 <p class="card-footer">Router reference</p>
+
+<p class="card-footer">路由器参考</p>
+
+```
+<p class="card-footer">路由器参考手册</p>
 ```
 
   </a>

@@ -15,17 +15,22 @@ import {elementPropertyInternal, storePropertyBindingMetadata} from './shared';
 
 
 /**
- *
  * Update an interpolated property on an element with a lone bound value
+ *
+ * 使用唯一绑定值更新元素上的插值属性
  *
  * Used when the value passed to a property has 1 interpolated value in it, an no additional text
  * surrounds that interpolated value:
+ *
+ * 当传递给属性的值中有 1 个内插值时使用，并且该内插值周围没有额外的文本：
  *
  * ```html
  * <div title="{{v0}}"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate('title', v0);
@@ -35,12 +40,35 @@ import {elementPropertyInternal, storePropertyBindingMetadata} from './shared';
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate(
@@ -51,16 +79,21 @@ export function ɵɵpropertyInterpolate(
 
 
 /**
- *
  * Update an interpolated property on an element with single bound value surrounded by text.
  *
+ * 使用被文本包围的单个绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 1 interpolated value in it:
+ *
+ * 当传递给属性的值中有 1 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate1('title', 'prefix', v0, 'suffix');
@@ -70,12 +103,35 @@ export function ɵɵpropertyInterpolate(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate1(
@@ -96,16 +152,21 @@ export function ɵɵpropertyInterpolate1(
 }
 
 /**
- *
  * Update an interpolated property on an element with 2 bound values surrounded by text.
  *
+ * 使用被文本包围的 2 个绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 2 interpolated values in it:
+ *
+ * 当传递给属性的值中有 2 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate2('title', 'prefix', v0, '-', v1, 'suffix');
@@ -115,14 +176,43 @@ export function ɵɵpropertyInterpolate1(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate2(
@@ -143,16 +233,21 @@ export function ɵɵpropertyInterpolate2(
 }
 
 /**
- *
  * Update an interpolated property on an element with 3 bound values surrounded by text.
  *
+ * 使用 3 个被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 3 interpolated values in it:
+ *
+ * 当传递给属性的值中有 3 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}-{{v2}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate3(
@@ -163,16 +258,51 @@ export function ɵɵpropertyInterpolate2(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i1 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v2 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate3(
@@ -193,16 +323,21 @@ export function ɵɵpropertyInterpolate3(
 }
 
 /**
- *
  * Update an interpolated property on an element with 4 bound values surrounded by text.
  *
+ * 使用 4 个被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 4 interpolated values in it:
+ *
+ * 当传递给属性的值中有 4 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate4(
@@ -213,18 +348,59 @@ export function ɵɵpropertyInterpolate3(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i1 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v2 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i2 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v3 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate4(
@@ -245,16 +421,21 @@ export function ɵɵpropertyInterpolate4(
 }
 
 /**
- *
  * Update an interpolated property on an element with 5 bound values surrounded by text.
  *
+ * 使用 5 个被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 5 interpolated values in it:
+ *
+ * 当传递给属性的值中有 5 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate5(
@@ -265,20 +446,67 @@ export function ɵɵpropertyInterpolate4(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i1 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v2 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i2 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v3 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i3 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v4 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate5(
@@ -301,16 +529,21 @@ export function ɵɵpropertyInterpolate5(
 }
 
 /**
- *
  * Update an interpolated property on an element with 6 bound values surrounded by text.
  *
+ * 使用 6 个被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 6 interpolated values in it:
+ *
+ * 当传递给属性的值中有 6 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate6(
@@ -321,22 +554,75 @@ export function ɵɵpropertyInterpolate5(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i1 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v2 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i2 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v3 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i3 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v4 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i4 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v5 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate6(
@@ -359,16 +645,21 @@ export function ɵɵpropertyInterpolate6(
 }
 
 /**
- *
  * Update an interpolated property on an element with 7 bound values surrounded by text.
  *
+ * 使用 7 个被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 7 interpolated values in it:
+ *
+ * 当传递给属性的值中有 7 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}-{{v6}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate7(
@@ -379,24 +670,83 @@ export function ɵɵpropertyInterpolate6(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i1 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v2 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i2 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v3 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i3 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v4 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i4 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v5 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i5 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v6 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate7(
@@ -420,16 +770,21 @@ export function ɵɵpropertyInterpolate7(
 }
 
 /**
- *
  * Update an interpolated property on an element with 8 bound values surrounded by text.
  *
+ * 使用 8 个被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the value passed to a property has 8 interpolated values in it:
+ *
+ * 当传递给属性的值中有 8 个插值时使用：
  *
  * ```html
  * <div title="prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}-{{v6}}-{{v7}}suffix"></div>
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolate8(
@@ -440,26 +795,91 @@ export function ɵɵpropertyInterpolate7(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update
+ *
+ * 要更新的属性名称
+ *
  * @param prefix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v0 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i0 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v1 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i1 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v2 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i2 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v3 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i3 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v4 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i4 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v5 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i5 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v6 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param i6 Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param v7 Value checked for change.
+ *
+ * 检查更改的值。
+ *
  * @param suffix Static value used for concatenation only.
+ *
+ * 仅用于连接的静态值。
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolate8(
@@ -485,7 +905,11 @@ export function ɵɵpropertyInterpolate8(
 /**
  * Update an interpolated property on an element with 9 or more bound values surrounded by text.
  *
+ * 使用 9 个或更多被文本包围的绑定值更新元素上的插值属性。
+ *
  * Used when the number of interpolated values exceeds 8.
+ *
+ * 当内插值的数量超过 8 时使用。
  *
  * ```html
  * <div
@@ -493,6 +917,8 @@ export function ɵɵpropertyInterpolate8(
  * ```
  *
  * Its compiled representation is::
+ *
+ * 其编译后的表示是::
  *
  * ```ts
  * ɵɵpropertyInterpolateV(
@@ -504,12 +930,30 @@ export function ɵɵpropertyInterpolate8(
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new `@Inputs` don't have to be re-compiled.
  *
+ * 如果属性名称也作为元素指令之一的输入属性存在，则将设置 component 属性而不是 element
+ * 属性。此检查必须在运行时进行，因此添加新 `@Inputs` 的子组件不必重新编译。
+ *
  * @param propName The name of the property to update.
+ *
+ * 要更新的属性的名称。
+ *
  * @param values The collection of values and the strings inbetween those values, beginning with a
  * string prefix and ending with a string suffix.
  * (e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`)
+ *
+ * 值和这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。 （例如 `['prefix', value0,
+ * '-', value1, '-', value2, ..., value99, 'suffix']` ）
+ *
  * @param sanitizer An optional sanitizer function
- * @returns itself, so that it may be chained.
+ *
+ * 可选的消毒器功能
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵpropertyInterpolateV(

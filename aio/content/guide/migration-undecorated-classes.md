@@ -4,7 +4,7 @@
 
 ## What does this migration do?
 
-## 这种迁移是做什么的？
+## 这个迁移是做什么的？
 
 This migration adds an empty `@Directive()` decorator to undecorated
 base classes that:
@@ -13,7 +13,7 @@ base classes that:
 
 * Use Angular features
 
-  使用了 Angular 的特性【模糊翻译】
+  使用了 Angular 的特性
 
 * Are extended by directives or components
 
@@ -21,7 +21,7 @@ base classes that:
 
 For example, in the diff below, a `@Directive()` decorator is added to `BaseMenu` because `BaseMenu` uses dependency injection.
 
-例如，在下面的对比中，把一个 `@Directive()` 装饰器加到了 `BaseMenu` 上是因为 `BaseMenu` 使用了依赖性注入。
+比如，在下面的对比中，把一个 `@Directive()` 装饰器加到了 `BaseMenu` 上是因为 `BaseMenu` 使用了依赖性注入。
 
 **Before**:
 
@@ -151,7 +151,7 @@ class Dir extends Base {
 
 ## Why is this migration necessary?
 
-## 为何这次迁移必不可少？
+## 为何此迁移是必要的？
 
 ### Migrating classes that use DI
 
@@ -204,7 +204,7 @@ Without a decorator, the compiler has no way of knowing that the class is a `@Di
 In ViewEngine, base classes with field decorators like `@Input()` worked even when the class did not have a `@Directive()` or `@Component()` decorator.
 For example:
 
-在 ViewEngine 中，包含 `@Input()` 等字段装饰器的基类在组件没有 `@Directive()` 或者 `@Component()` 装饰器时也能正常工作。例如：
+在 ViewEngine 中，包含 `@Input()` 等字段装饰器的基类在组件没有 `@Directive()` 或者 `@Component()` 装饰器时也能正常工作。比如：
 
 <code-example format="typescript" language="typescript">
 
@@ -286,7 +286,7 @@ You can either add `@Directive()` with a selector or move the Angular-specific f
 
 The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
 
-[Angular 兼容性编译器](guide/glossary#ngcc) （ `ngcc` ）会自动转换所有未迁移的库来生成合适的代码。
+[Angular 兼容性编译器](guide/glossary#ngcc) （ `ngcc` ）应该会自动转换所有未迁移的库来生成合适的代码。
 
 <!-- links -->
 

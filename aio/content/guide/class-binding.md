@@ -1,10 +1,14 @@
 # Class and style binding
 
+# 类和样式绑定
+
 Use class and style bindings to add and remove CSS class names from an element's `class` attribute and to set styles dynamically.
+
+使用类和样式绑定从元素的 `class` 属性中添加和删除 CSS 类名，以及动态设置样式。
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 * [Property binding](guide/property-binding)
 
@@ -16,9 +20,15 @@ Use class and style bindings to add and remove CSS class names from an element's
 
 To create a single class binding, type the following:
 
+要创建单个类绑定，请键入以下内容：
+
 [class.sale]="onSale"
 
-Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy—with the exception of `undefined`.  See [styling delegation](guide/style-precedence#styling-delegation) for more information.
+[class.sale][class.sale] ="onSale"
+
+Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy—with the exception of `undefined`. See [styling delegation](guide/style-precedence#styling-delegation) for more information.
+
+当绑定表达式 `onSale` 为真值时，Angular 会添加类，当表达式为假值时，它会删除类 —— `undefined` 除外。有关更多信息，参阅[样式委托](guide/style-precedence#styling-delegation)。
 
 ## Binding to multiple CSS classes
 
@@ -26,9 +36,13 @@ Angular adds the class when the bound expression, `onSale` is truthy, and it rem
 
 To bind to multiple classes, type the following:
 
+要绑定到多个类，请键入以下内容：
+
 `[class]="classExpression"`
 
 The expression can be one of:
+
+表达式可以是以下之一：
 
 * A space-delimited string of class names.
 
@@ -51,7 +65,7 @@ With the object format, Angular adds a class only if its associated value is tru
 With any object-like expression—such as `object`, `Array`, `Map`, or `Set`—the identity of the object must change for Angular to update the class list.
 Updating the property without changing object identity has no effect.
 
-对于任何类似对象的表达式（例如 `object`、`Array`、`Map` 或 `Set`，必须更改对象的引用，Angular 才能更新类列表。在不更改对象引用的情况下只更新其 Attribute 是不会生效的。
+对于任何类似对象的表达式（比如 `object`、`Array`、`Map` 或 `Set`，必须更改对象的引用，Angular 才能更新类列表。在不更改对象引用的情况下只更新其 Attribute 是不会生效的。
 
 </div>
 
@@ -81,15 +95,25 @@ The following table summarizes class binding syntax.
 
 To create a single style binding, use the prefix `style` followed by a dot and the name of the CSS style.
 
+要创建单个样式绑定，请使用 `style` 前缀，后跟一个点和 CSS 样式的名称。
+
 For example, set the ‘width’ style, type the following:  `[style.width]="width"`
 
-Angular sets the property to the value of the bound expression, which is usually a string.  Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
+比如，设置 'width' 样式，键入以下内容： `[style.width]="width"`
+
+Angular sets the property to the value of the bound expression, which is usually a string. Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
+
+Angular 将该属性设置为绑定表达式的值，这通常是一个字符串。 （可选）你可以添加单位扩展名，比如 `em` 或 `%` ，这需要数字类型。
 
 1. To write a style in dash-case, type the following:
+
+   要以中线格式（dash-case）编写样式，请键入以下内容：
 
    <code-example language="html">&lt;nav [style.background-color]="expression"&gt;&lt;/nav&gt;</code-example>
 
 2. To write a style in camelCase, type the following:
+
+   要以驼峰格式（camelCase）编写样式，请键入以下内容：
 
    <code-example language="html">&lt;nav [style.backgroundColor]="expression"&gt;&lt;/nav&gt;</code-example>
 
@@ -97,13 +121,13 @@ Angular sets the property to the value of the bound expression, which is usually
 
 ## 绑定到多个样式
 
-To toggle multiple styles, bind to the `[style]` attribute—for example, `[style]="styleExpression"`.  The `styleExpression` can be one of:
+To toggle multiple styles, bind to the `[style]` attribute—for example, `[style]="styleExpression"`. The `styleExpression` can be one of:
 
-要切换多个样式，请绑定到 `[style]` Attribute，例如 `[style]="styleExpression"` 。`styleExpression` 可以是如下格式之一：
+要切换多个样式，请绑定到 `[style]` Attribute，比如 `[style]="styleExpression"` 。`styleExpression` 可以是如下格式之一：
 
 * A string list of styles such as `"width: 100px; height: 100px; background-color: cornflowerblue;"`.
 
-  样式的字符串列表，例如 `"width: 100px; height: 100px; background-color: cornflowerblue;"`。
+  样式的字符串列表，比如 `"width: 100px; height: 100px; background-color: cornflowerblue;"`。
 
 * An object with style names as the keys and style values as the values, such as `{width: '100px', height: '100px', backgroundColor: 'cornflowerblue'}`.
 
@@ -152,18 +176,22 @@ The following table summarizes style binding syntax.
 
 ## Styling precedence
 
-## 样式优先级【模糊翻译】
+## 样式优先级
 
 A single HTML element can have its CSS class list and style values bound to multiple sources (for example, host bindings from multiple directives).
 
-一个 HTML 元素可以将其 CSS 类列表和样式值绑定到多个源（例如，来自多个指令的宿主绑定）。
+一个 HTML 元素可以将其 CSS 类列表和样式值绑定到多个源（比如，来自多个指令的宿主绑定）。
 
 ## What’s next
 
-## 下一步是什么【模糊翻译】
+## 下一步呢？
 
 * [Component styles](https://angular.io/guide/component-styles)
 
+  [组件样式](https://angular.io/guide/component-styles)
+
 * [Introduction to Angular animations](https://angular.io/guide/animations)
+
+  [Angular 动画介绍](https://angular.io/guide/animations)
 
 @reviewed 2022-05-09

@@ -12,6 +12,9 @@ import {stringifyTask} from '../utils';
 
 /**
  * A base `TaskQueue` implementation to be used as base for concrete implementations.
+ *
+ * 要用作具体实现的基础的基础 `TaskQueue` 实现。
+ *
  */
 export abstract class BaseTaskQueue implements TaskQueue {
   get allTasksCompleted(): boolean {
@@ -21,6 +24,9 @@ export abstract class BaseTaskQueue implements TaskQueue {
 
   /**
    * A map of tasks that should be skipped, mapped to the task that caused them to be skipped.
+   *
+   * 应该跳过的任务映射，映射到导致它们被跳过的任务。
+   *
    */
   private tasksToSkip = new Map<Task, Task>();
 
@@ -85,8 +91,16 @@ export abstract class BaseTaskQueue implements TaskQueue {
   /**
    * Mark the given `task` as to be skipped, then recursive skip all its dependents.
    *
+   * 将给定 `task` 标记为要跳过，然后递归跳过其所有依赖项。
+   *
    * @param task The task to skip
+   *
+   * 要跳过的任务
+   *
    * @param failedTask The task that failed, causing this task to be skipped
+   *
+   * 失败的任务，导致此任务被跳过
+   *
    */
   protected skipDependentTasks(task: Task, failedTask: Task) {
     this.tasksToSkip.set(task, failedTask);

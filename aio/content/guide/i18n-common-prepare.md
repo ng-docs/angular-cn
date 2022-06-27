@@ -1,6 +1,6 @@
 # Prepare component for translation
 
-# 为翻译准备组件
+# 准备翻译组件
 
 To prepare your project for translation, complete the following actions.
 
@@ -143,7 +143,11 @@ To mark the title attribute for translation, complete the following action.
 
 In component code, the translation source text and the metadata are surrounded by backtick (<code>\`</code>) characters.
 
+在组件代码中，翻译源文本和元数据被反引号 (<code>\`</code>) 字符包围。
+
 Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark a string in your code for translation.
+
+使用 [ `$localize` ][AioApiLocalizeInitLocalize] 标记的消息字符串在代码中标记出要翻译的字符串。
 
 <!--todo: replace with code-example -->
 
@@ -170,6 +174,8 @@ i18n 元数据包裹在冒号 (`:`) 字符中，并放在翻译源文本之前�
 ### 包含插值文本
 
 Include [interpolations][AioGuideGlossaryInterpolation] in a [`$localize`][AioApiLocalizeInitLocalize] tagged message string.
+
+在 [`$localize`][AioApiLocalizeInitLocalize] 标记的消息字符串中包含[插值文本][AioGuideGlossaryInterpolation]。
 
 <!--todo: replace with code-example -->
 
@@ -211,11 +217,13 @@ The following parameters provide context and additional information to reduce co
 | Custom ID | Provide a custom identifier |
 | 自定义 ID | 提供自定义标识符 |
 | Description | Provide additional information or context |
-| 说明 | 提供额外的信息或背景 |
+| 描述(Description) | 提供额外的信息或背景 |
 | Meaning | Provide the meaning or intent of the text within the specific context |
 | 含义(Meaning) | 提供文本在特定上下文中的含义或意图 |
 
 For additional information about custom IDs, see [Manage marked text with custom IDs][AioGuideI18nOptionalManageMarkedText].
+
+有关自定义 ID 的其他信息，请参阅[使用自定义 ID 管理已标记的文本][AioGuideI18nOptionalManageMarkedText]。
 
 ### Add helpful descriptions and meanings
 
@@ -227,6 +235,8 @@ To translate a text message accurately, provide additional information or contex
 
 Add a *description* of the text message as the value of the `i18n` attribute or [`$localize`][AioApiLocalizeInitLocalize] tagged message string.
 
+为 `i18n` 属性的值或 [ `$localize` ][AioApiLocalizeInitLocalize] 标记的消息字符串添加文本消息的*描述*。
+
 The following example shows the value of the `i18n` attribute.
 
 以下示例显示了 `i18n` 属性的值。
@@ -234,6 +244,8 @@ The following example shows the value of the `i18n` attribute.
 <code-example header="src/app/app.component.html" path="i18n/doc-files/app.component.html" region="i18n-attribute-desc"></code-example>
 
 The following example shows the value of the [`$localize`][AioApiLocalizeInitLocalize] tagged message string with a description.
+
+以下示例显示了带有描述的 [`$localize`][AioApiLocalizeInitLocalize] 标记消息字符串的值。
 
 <!--todo: replace with code-example -->
 
@@ -254,7 +266,7 @@ Start the `i18n` attribute value with the *meaning* and separate it from the *de
 
 For example, you may want to specify that the `<h1>` tag is a site header that you need translated the same way, whether it is used as a header or referenced in another section of text.
 
-例如，你可能希望将 `<h1>` 标记指定为需要以相同方式翻译的站点标题，无论是把它用作标题还是在其他文本部分中引用。
+比如，你可能希望将 `<h1>` 标记指定为需要以相同方式翻译的站点标题，无论是把它用作标题还是在其他文本部分中引用。
 
 The following example shows how to specify that the `<h1>` tag must be translated as a header or referenced elsewhere.
 
@@ -267,6 +279,8 @@ The result is any text marked with `site header`, as the *meaning* is translated
 其结果是：任何标有 `site header` 的文本都会以相同方式翻译，因为其*含义*完全相同。
 
 The following code example shows the value of the [`$localize`][AioApiLocalizeInitLocalize] tagged message string with a meaning and a description.
+
+以下代码示例显示了带有含义和描述的 [`$localize`][AioApiLocalizeInitLocalize] 标记消息字符串的值。
 
 <!--todo: replace with code-example -->
 
@@ -281,6 +295,13 @@ The following code example shows the value of the [`$localize`][AioApiLocalizeIn
 <header>
 <a name="how-meanings-control-text-extraction-and-merges"></a> How meanings control text extraction and merges
 
+<header><a name="how-meanings-control-text-extraction-and-merges"></a>含义如何控制文本提取和合并
+
+</header>
+
+<header>
+<a name="how-meanings-control-text-extraction-and-merges"></a> 含义（meaning）是如何控制文本提取与合并的
+
 </header>
 
 The Angular extraction tool generates a translation unit entry for each `i18n` attribute in a template.
@@ -292,12 +313,14 @@ Angular 提取工具会为模板中的每个 `i18n` 属性生成一个翻译单�
 
 For more information about the Angular extraction tool, see [Work with translation files][AioGuideI18nCommonTranslationFiles].
 
+有关 Angular 提取工具的更多信息，请参阅[使用翻译文件][AioGuideI18nCommonTranslationFiles]。
+
 </div>
 
 The same text elements with different *meanings* are extracted with different IDs.
 For example, if the word "right" uses the following two definitions in two different locations, the word is translated differently and merged back into the application as different translation entries.
 
-具有不同*含义*的相同文本元素以不同的 ID 提取。例如，如果单词“right”在两个不同的位置使用以下两个定义，则该单词将被以不同地方式翻译并作为不同的翻译条目合并回应用程序。
+具有不同*含义*的相同文本元素以不同的 ID 提取。比如，如果单词“right”在两个不同的位置使用以下两个定义，则该单词将被以不同地方式翻译并作为不同的翻译条目合并回应用程序。
 
 * `correct` as in "you are right"
 
@@ -362,6 +385,8 @@ To simplify translation, use International Components for Unicode clauses (ICU c
 <div class="alert is-helpful">
 
 The ICU clauses adhere to the [ICU Message Format][GithubUnicodeOrgIcuUserguideFormatParseMessages] specified in the [CLDR pluralization rules][UnicodeCldrIndexCldrSpecPluralRules].
+
+ICU 子句遵循 [CLDR 复数规则][UnicodeCldrIndexCldrSpecPluralRules] 中指定的 [ICU 消息格式][GithubUnicodeOrgIcuUserguideFormatParseMessages]。
 
 </div>
 
@@ -431,6 +456,8 @@ other { default_quantity }
 
 For more information about pluralization categories, see [Choosing plural category names][UnicodeCldrIndexCldrSpecPluralRulesTocChoosingPluralCategoryNames] in the [CLDR - Unicode Common Locale Data Repository][UnicodeCldrMain].
 
+有关复数类别的更多信息，请参阅 [CLDR - Unicode Common Locale Data Repository][UnicodeCldrMain] 中的[选择复数类别名称][UnicodeCldrIndexCldrSpecPluralRulesTocChoosingPluralCategoryNames]。
+
 </div>
 
 <div class="callout is-important">
@@ -439,10 +466,14 @@ For more information about pluralization categories, see [Choosing plural catego
 
 <header>Background: Locales may not support some pluralization categories</header>
 
+<header>背景：语言环境可能不支持某些复数类别</header>
+
 Many locales don't support some of the pluralization categories.
 The default locale (`en-US`) uses a very simple `plural()` function that doesn't support the `few` pluralization category.
 Another locale with a simple `plural()` function is `es`.
 The following code example shows the [en-US `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] function.
+
+许多语言环境不支持某些复数类别。默认语言环境 (`en-US`) 使用一个非常简单的 `plural()` 函数，该函数不支持 `few` 复数类别。另一个具有简单 `plural()` 函数的语言环境是 `es` 。以下代码示例显示了 [en-US 多重 `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] 函数。
 
 <code-example path="i18n/doc-files/locale_plural_function.ts" class="no-box" hideCopy></code-example>
 
@@ -492,6 +523,8 @@ updated one minute ago
 Use HTML markup and [interpolations][AioGuideGlossaryInterpolation].
 The following code example shows how to use the `plural` clause to express the previous three situations in a `<span>` element.
 
+使用 HTML 标记和[插值][AioGuideGlossaryInterpolation]。下面的代码示例展示了如何在 `<span>` 元素中使用 `plural` 子句来表达前三种情况。
+
 <code-example header="src/app/app.component.html" path="i18n/src/app/app.component.html" region="i18n-plural"></code-example>
 
 Review the following details in the previous code example.
@@ -500,7 +533,7 @@ Review the following details in the previous code example.
 
 | Parameters | Details |
 | :--------- | :------ |
-| Parameters | 详情 |
+| 参数 | 详情 |
 | `minutes` | The first parameter specifies the component property is `minutes` and determines the number of minutes. |
 | `minutes` | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。 |
 | `plural` | The second parameter specifies the ICU clause is `plural`. |
@@ -513,6 +546,8 @@ Review the following details in the previous code example.
 | `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。 |
 
 `{{minutes}}` is an [interpolation][AioGuideGlossaryInterpolation].
+
+其中 `{{minutes}}` 是一个[插值][AioGuideGlossaryInterpolation]。
 
 ### Mark alternates and nested expressions
 
@@ -628,15 +663,17 @@ The following code example shows `gender` property used with the select clause.
 Combine different clauses together, such as the `plural` and `select` clauses.
 The following code example shows nested clauses based on the `gender` and `minutes` examples.
 
-将不同的子句组合在一起，例如 `plural` 和 `select` 子句。以下代码示例显示了基于 `gender` 和 `minutes` 示例的嵌套子句。
+将不同的子句组合在一起，比如 `plural` 和 `select` 子句。以下代码示例显示了基于 `gender` 和 `minutes` 示例的嵌套子句。
 
 <code-example header="src/app/app.component.html" path="i18n/src/app/app.component.html" region="i18n-nested"></code-example>
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * [Work with translation files][AioGuideI18nCommonTranslationFiles]
+
+  [使用翻译文件][AioGuideI18nCommonTranslationFiles]
 
 <!-- links -->
 

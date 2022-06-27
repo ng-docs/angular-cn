@@ -5,6 +5,8 @@
 [Web workers](https://developer.mozilla.org/docs/Web/API/Web_Workers_API) lets you run CPU-intensive computations in a background thread, freeing the main thread to update the user interface.
 If you find your application performs a lot of computations, such as generating CAD drawings or doing heavy geometrical calculations, using web workers can help increase your application's performance.
 
+[Web Worker](https://developer.mozilla.org/docs/Web/API/Web_Workers_API)允许你在后台线程中运行 CPU 密集型计算，解放主线程以更新用户界面。如果你发现你的应用会进行很多计算，比如生成 CAD 图纸或进行繁重的几何计算，那么使用 Web Worker 可以帮助你提高应用的性能。
+
 <div class="alert is-helpful">
 
 The CLI does not support running Angular itself in a web worker.
@@ -30,7 +32,7 @@ ng generate web-worker &lt;location&gt;
 You can add a web worker anywhere in your application.
 For example, to add a web worker to the root component, `src/app/app.component.ts`, run the following command.
 
-你可以在应用的任何位置添加 Web Worker。例如，要把一个 Web Worker 添加到根组件 `src/app/app.component.ts`，请运行如下命令。
+你可以在应用的任何位置添加 Web Worker。比如，要把一个 Web Worker 添加到根组件 `src/app/app.component.ts`，请运行如下命令。
 
 <code-example format="shell" language="shell">
 

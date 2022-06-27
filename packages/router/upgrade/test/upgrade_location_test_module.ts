@@ -24,6 +24,9 @@ export interface LocationUpgradeTestingConfig {
  * @description
  *
  * Is used in DI to configure the router.
+ *
+ * 在 DI 中用于配置路由器。
+ *
  */
 export const LOC_UPGRADE_TEST_CONFIG =
     new InjectionToken<LocationUpgradeTestingConfig>('LOC_UPGRADE_TEST_CONFIG');
@@ -33,6 +36,9 @@ export const APP_BASE_HREF_RESOLVED = new InjectionToken<string>('APP_BASE_HREF_
 
 /**
  * Module used for configuring Angular's LocationUpgradeService.
+ *
+ * 用于配置 Angular 的 LocationUpgradeService 的模块。
+ *
  */
 @NgModule({imports: [CommonModule]})
 export class LocationUpgradeTestModule {

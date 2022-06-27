@@ -40,6 +40,9 @@ export type MetaDefinition = {
 
 /**
  * Factory to create a `Meta` service instance for the current DOM document.
+ *
+ * 为当前 DOM 文档创建 `Meta` 服务实例的工厂。
+ *
  */
 export function createMeta() {
   return new Meta(ɵɵinject(DOCUMENT));
@@ -56,7 +59,9 @@ export function createMeta() {
  * and security settings, setting HTTP Headers, defining rich content for social sharing,
  * and Search Engine Optimization (SEO).
  *
- * `MetaDefinition` 对象的属性与 HTML `<meta>` 标记的属性一一对应。这些标记定义了文档的元数据，这些元数据对于配置内容安全策略、定义浏览器兼容性和安全设置、设置 HTTP 标头、定义用于社交共享的富内容以及搜索引擎优化（SEO）等都很重要。
+ * `MetaDefinition` 对象的属性与 HTML `<meta>`
+ * 标记的属性一一对应。这些标记定义了文档的元数据，这些元数据对于配置内容安全策略、定义浏览器兼容性和安全设置、设置
+ * HTTP 标头、定义用于社交共享的富内容以及搜索引擎优化（SEO）等都很重要。
  *
  * To identify specific `<meta>` tags in a document, use an attribute selection
  * string in the format `"tag_attribute='value string'"`.
@@ -65,7 +70,10 @@ export function createMeta() {
  * Selectors are used with the `querySelector()` Document method,
  * in the format `meta[{attrSelector}]`.
  *
- * 要在 document 中标识特定的 `<meta>` 标签，请使用格式为 `"tag_attribute='value string'"` 的属性选择字符串。例如，`"name='description'"` 的 `attrSelector` 值，与一个 `name` 属性值为 `"description"` 的标签匹配。这些选择器可以和 document 的 `querySelector()` 方法一起使用，格式为 `meta[{attrSelector}]`。
+ * 要在 document 中标识特定的 `<meta>` 标签，请使用格式为 `"tag_attribute='value string'"`
+ * 的属性选择字符串。比如，`"name='description'"` 的 `attrSelector` 值，与一个 `name` 属性值为
+ * `"description"` 的标签匹配。这些选择器可以和 document 的 `querySelector()` 方法一起使用，格式为
+ * `meta[{attrSelector}]`。
  *
  * @see [HTML meta tag](https://developer.mozilla.org/docs/Web/HTML/Element/meta)
  *
@@ -88,7 +96,9 @@ export class Meta {
    * values in the provided tag definition, and verifies that all other attribute values are equal.
    * If an existing element is found, it is returned and is not modified in any way.
    *
-   * 在当前 HTML 文档中检索或创建特定的 `<meta>`。在搜索现有标签时，Angular 会尝试匹配 `name` 或 `property` 属性值，并验证所有其他属性值是否相等。如果找到现有元素，则将其返回，并且不会进行任何修改。
+   * 在当前 HTML 文档中检索或创建特定的 `<meta>`。在搜索现有标签时，Angular 会尝试匹配 `name` 或
+   * `property`
+   * 属性值，并验证所有其他属性值是否相等。如果找到现有元素，则将其返回，并且不会进行任何修改。
    *
    * @param tag The definition of a `<meta>` element to match or create.
    *
@@ -101,7 +111,8 @@ export class Meta {
    * @returns The existing element with the same attributes and values if found,
    * the new element if no match is found, or `null` if the tag parameter is not defined.
    *
-   * 如果找到具有相同属性和值的现有元素，则找到新元素；如果找不到匹配项，则为新元素；如果未定义 tag 参数，则为 `null`
+   * 如果找到具有相同属性和值的现有元素，则找到新元素；如果找不到匹配项，则为新元素；如果未定义 tag
+   * 参数，则为 `null`
    *
    */
   addTag(tag: MetaDefinition, forceCreation: boolean = false): HTMLMetaElement|null {
@@ -114,7 +125,8 @@ export class Meta {
    * In searching for an existing tag, Angular attempts to match the `name` or `property` attribute
    * values in the provided tag definition, and verifies that all other attribute values are equal.
    *
-   * 在当前 HTML 文档中检索或创建一组 `<meta>`。在搜索现有标签时，Angular 会尝试在所提供的 Tag 定义中匹配 `name` 或 `property` 属性值并验证所有其他属性值是否也相等。
+   * 在当前 HTML 文档中检索或创建一组 `<meta>`。在搜索现有标签时，Angular 会尝试在所提供的 Tag
+   * 定义中匹配 `name` 或 `property` 属性值并验证所有其他属性值是否也相等。
    *
    * @param tags An array of tag definitions to match or create.
    *
@@ -194,7 +206,8 @@ export class Meta {
    * If not supplied, matches a tag with the same `name` or `property` attribute value as the
    * replacement tag.
    *
-   * 要匹配的标签属性和值，以标识现有标签。格式为 `"tag_attribute='value string'"` 字符串。如果没有提供，则改为匹配具有相同 `name` 或 `property` 属性值的标签。
+   * 要匹配的标签属性和值，以标识现有标签。格式为 `"tag_attribute='value string'"`
+   * 字符串。如果没有提供，则改为匹配具有相同 `name` 或 `property` 属性值的标签。
    *
    * @return The modified element.
    *
@@ -282,6 +295,9 @@ export class Meta {
 
 /**
  * Mapping for MetaDefinition properties with their correct meta attribute names
+ *
+ * 使用正确的元属性名称映射 MetaDefinition 属性
+ *
  */
 const META_KEYS_MAP: {[prop: string]: string;} = {
   httpEquiv: 'http-equiv'

@@ -11,6 +11,9 @@ import {MessageRenderer} from './message_renderer';
 
 /**
  * A message renderer that outputs `ɵParsedTranslation` objects.
+ *
+ * 输出 `ɵParsedTranslation` 对象的消息渲染器。
+ *
  */
 export class TargetMessageRenderer implements MessageRenderer<ɵParsedTranslation> {
   private current: MessageInfo = {messageParts: [], placeholderNames: [], text: ''};

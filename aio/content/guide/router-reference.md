@@ -148,6 +148,8 @@ The `RouterLinkActive` directive toggles CSS classes for active `RouterLink` bin
 
 On each anchor tag, you see a [property binding](guide/property-binding) to the `RouterLinkActive` directive that looks like
 
+在每个 a 标签上，你会看到一个到 `RouterLinkActive` 指令的[属性绑定](guide/property-binding)，就像
+
 <code-example format="html" hideCopy language="html">
 
 routerLinkActive="..."
@@ -157,6 +159,8 @@ routerLinkActive="..."
 The template expression to the right of the equal sign, `=`, contains a space-delimited string of CSS classes that the Router adds when this link is active (and removes when the link is inactive).
 You set the `RouterLinkActive` directive to a string of classes such as `routerLinkActive="active fluffy"` or bind it to a component property that returns such a string.
 For example,
+
+等号 `=` 右侧的模板表达式，包含一个以空格分隔的 CSS 类字符串，当这个链接处于活动状态时，路由器就会加上这些字符串（并在非活动状态时删除）。你可以把 `RouterLinkActive` 指令设置成一串类的字符串，比如 `routerLinkActive="active fluffy"`，也可以把它绑定到一个返回这样一个字符串的组件属性上，比如
 
 <code-example format="typescript" hideCopy language="typescript">
 
@@ -170,7 +174,9 @@ By using `{ exact: true }`, a given `RouterLink` is only active if its URL is an
 
 活动路由链接会级联到路由树的每个级别，这样父路由和子路由链接就可以同时处于活动状态。要覆盖这种行为，可以用 `{ exact: true }` 表达式绑定到 `[routerLinkActiveOptions]` 输入绑定。使用 `{ exact: true }` 之后，给定的 `RouterLink` 只有在 URL 与当前 URL 完全匹配时才会激活。
 
-`RouterLinkActive` also allows you to easily apply the `aria-current` attribute to the active element, thus providing a more accessible experience for all users. For more information see the Accessibility Best Practices [Active links identification section](/guide/accessibility#active-links-identification).
+`RouterLinkActive` also allows you to easily apply the `aria-current` attribute to the active element, thus providing a more accessible experience for all users. For more information see the Accessibility Best Practices [Active links identification section](guide/accessibility#active-links-identification).
+
+`RouterLinkActive` 还允许你轻松地将 `aria-current` 属性应用于活动元素，从而为所有用户提供更易于访问的体验。有关更多信息，请参阅可访问性最佳实践[活动链接标识部分](guide/accessibility#active-links-identification)。
 
 <a id="basics-router-state"></a>
 
@@ -237,23 +243,39 @@ These events range from when the navigation starts and ends to many points in be
 
 | Router event | Details |
 | :----------- | :------ |
-| 路由事件【模糊翻译】 | 详情 |
+| 路由事件 | 详情 |
 | [`NavigationStart`](api/router/NavigationStart) | Triggered when navigation starts. |
+| [`NavigationStart`](api/router/NavigationStart) | 开始导航时触发。 |
 | [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | Triggered before the `Router` [lazy loads](guide/router-tutorial-toh#asynchronous-routing) a route configuration. |
+| [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | 路由器[惰性加载](guide/router-tutorial-toh#asynchronous-routing)某个路由配置之前触发。 |
 | [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd) | Triggered after a route has been lazy loaded. |
+| [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd) | 某个路由惰性加载完毕后触发。 |
 | [`RoutesRecognized`](api/router/RoutesRecognized) | Triggered when the Router parses the URL and the routes are recognized. |
+| [`RoutesRecognized`](api/router/RoutesRecognized) | 路由器解析完 URL，并且识别出路由时触发。 |
 | [`GuardsCheckStart`](api/router/GuardsCheckStart) | Triggered when the Router begins the Guards phase of routing. |
+| [`GuardsCheckStart`](api/router/GuardsCheckStart) | 路由器开始执行路由守卫时触发。 |
 | [`ChildActivationStart`](api/router/ChildActivationStart) | Triggered when the Router begins activating a route's children. |
+| [`ChildActivationStart`](api/router/ChildActivationStart) | 路由器开始激活某个路由的子路由时触发。 |
 | [`ActivationStart`](api/router/ActivationStart) | Triggered when the Router begins activating a route. |
+| [`ActivationStart`](api/router/ActivationStart) | 路由器开始激活某个路由时触发。 |
 | [`GuardsCheckEnd`](api/router/GuardsCheckEnd) | Triggered when the Router finishes the Guards phase of routing successfully. |
+| [`GuardsCheckEnd`](api/router/GuardsCheckEnd) | 路由器完全完成了路由守卫阶段时触发。 |
 | [`ResolveStart`](api/router/ResolveStart) | Triggered when the Router begins the Resolve phase of routing. |
+| [`ResolveStart`](api/router/ResolveStart) | 路由器开始路由解析（Resolve）阶段时触发。 |
 | [`ResolveEnd`](api/router/ResolveEnd) | Triggered when the Router finishes the Resolve phase of routing successfully. |
+| [`ResolveEnd`](api/router/ResolveEnd) | 路由器成功完成了路由解析（Resolve）阶段时触发。 |
 | [`ChildActivationEnd`](api/router/ChildActivationEnd) | Triggered when the Router finishes activating a route's children. |
+| [`ChildActivationEnd`](api/router/ChildActivationEnd) | 路由器激活完某个路由的子路由时触发。 |
 | [`ActivationEnd`](api/router/ActivationEnd) | Triggered when the Router finishes activating a route. |
+| [`ActivationEnd`](api/router/ActivationEnd) | 路由器正在激活某个路由时触发。 |
 | [`NavigationEnd`](api/router/NavigationEnd) | Triggered when navigation ends successfully. |
+| [`NavigationEnd`](api/router/NavigationEnd) | 导航成功结束时触发。 |
 | [`NavigationCancel`](api/router/NavigationCancel) | Triggered when navigation is canceled. This can happen when a [Route Guard](guide/router-tutorial-toh#guards) returns false during navigation, or redirects by returning a `UrlTree`. |
+| [`NavigationCancel`](api/router/NavigationCancel) | 导航被取消时触发。这可能是因为在导航期间某个[路由守卫](guide/router-tutorial-toh#guards)返回了 false 或通过返回 `UrlTree` 而进行了重定向。 |
 | [`NavigationError`](api/router/NavigationError) | Triggered when navigation fails due to an unexpected error. |
+| [`NavigationError`](api/router/NavigationError) | 当导航因为非预期的错误而失败时触发。 |
 | [`Scroll`](api/router/Scroll) | Represents a scrolling event. |
+| [`Scroll`](api/router/Scroll) | 表示一个滚动事件。 |
 
 When you enable the `enableTracing` option, Angular logs these events to the console.
 For an example of filtering router navigation events, see the [router section](guide/observables-in-angular#router) of the [Observables in Angular](guide/observables-in-angular) guide.
@@ -270,7 +292,7 @@ Here are the key `Router` terms and their meanings:
 
 | Router part | Details |
 | :---------- | :------ |
-| 路由器部件【模糊翻译】 | 详情 |
+| 路由器部件 | 详情 |
 | `Router` | Displays the application component for the active URL. Manages navigation from one component to the next. |
 | `Router` | 为活动 URL 显示应用中的组件。 管理从一个组件到另一个的导航。 |
 | `RouterModule` | A separate NgModule that provides the necessary service providers and directives for navigating through application views. |
@@ -284,8 +306,9 @@ Here are the key `Router` terms and their meanings:
 | `RouterLink` | The directive for binding a clickable HTML element to a route. Clicking an element with a `routerLink` directive that is bound to a *string* or a *link parameters array* triggers a navigation. |
 | `RouterLink` | 用于将可点击的 HTML 元素绑定到某个路由的指令。单击带有 `routerLink` 指令且绑定到*字符串*或*链接参数数组*的元素，将触发导航。 |
 | `RouterLinkActive` | The directive for adding/removing classes from an HTML element when an associated `routerLink` contained on or inside the element becomes active/inactive. It can also set the `aria-current` of an active link for better accessibility. |
+| `RouterLinkActive` | 当包含在元素上或内部的关联 `routerLink` 变为活动/非活动状态时，用于从 HTML 元素添加/删除类的指令。它还可以设置活动链接的 `aria-current` 以获得更好的可访问性。 |
 | `ActivatedRoute` | A service that is provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query params, and the global fragment. |
-| `ActivatedRoute` | 一个提供给每个路由组件的服务，其中包含当前路由专属的信息，例如路由参数、静态数据、解析数据、全局查询参数和全局片段。 |
+| `ActivatedRoute` | 一个提供给每个路由组件的服务，其中包含当前路由专属的信息，比如路由参数、静态数据、解析数据、全局查询参数和全局片段。 |
 | `RouterState` | The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree. |
 | `RouterState` | 路由器的当前状态，包括一棵当前激活路由的树以及遍历这棵路由树的便捷方法。 |
 | Link parameters array | An array that the router interprets as a routing instruction. You can bind that array to a `RouterLink` or pass the array as an argument to the `Router.navigate` method. |

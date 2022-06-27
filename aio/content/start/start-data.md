@@ -71,7 +71,7 @@ This section walks you through creating the `CartService` that tracks products a
 
 1. Define methods to add items to the cart, return cart items, and clear the cart items.
 
-   定义把商品添加到购物车、返回购物车商品以及清除购物车商品的方法：。
+   定义把商品添加到购物车、返回购物车商品以及清除购物车商品的方法。
 
    <code-example header="src/app/cart.service.ts" path="getting-started/src/app/cart.service.ts" region="methods"></code-example>
 
@@ -121,15 +121,15 @@ This section walks you through using the `CartService` to add a product to the c
 
    * Takes the current `product` as an argument
 
-     以当前'product'作为参数。
+     以当前'product'作为参数
 
    * Uses the `CartService` `addToCart()` method to add the product to the cart
 
-     使用 `CartService` `addToCart()` 方法去添加产品到购物车中。
+     使用 `CartService` `addToCart()` 方法去添加产品到购物车中
 
    * Displays a message that you've added a product to the cart
 
-     显示一条你已经添加了一个产品到购物车到消息。
+     显示一条你已经添加了一个产品到购物车到消息
 
 1. In `product-details.component.html`, add a button with the label **Buy**, and bind the `click()` event to the `addToCart()` method.
    This code updates the product details template with a **Buy** button that adds the current product to the cart.
@@ -194,6 +194,8 @@ For customers to see their cart, you can create the cart view in two steps:
 
    This command will generate the `cart.component.ts` file and its associated template and styles files.
 
+   此命令将生成 `cart.component.ts` 文件及其关联的模板和样式文件。
+
    <code-example header="src/app/cart/cart.component.ts" path="getting-started/src/app/cart/cart.component.1.ts"></code-example>
 
    StackBlitz also generates an `ngOnInit()` by default in components.
@@ -203,11 +205,13 @@ For customers to see their cart, you can create the cart view in two steps:
 
 1. Notice that the newly created `CartComponent` is added to the module's `declarations` in `app.module.ts`.
 
+   请注意，新创建的 `CartComponent` 已添加到 `app.module.ts` 中模块的 `declarations` 中。
+
    <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="declare-cart"></code-example>
 
 1. Still in `app.module.ts`, add a route for the component `CartComponent`, with a `path` of `cart`.
 
-   打开 `app.module.ts`，为组件 `CartComponent` 添加一个路由，其路由为 `cart` ：。
+   打开 `app.module.ts`，为组件 `CartComponent` 添加一个路由，其路由为 `cart` 。
 
    <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="cart-route"></code-example>
 
@@ -258,8 +262,15 @@ This section shows you how to use the cart service to display the products in th
    This code sets the items using the `CartService` `getItems()` method.
    You defined this method [when you created `cart.service.ts`](#generate-cart-service).
 
+    这段代码使用 `CartService` 的 `getItems()` 方法来设置条目。你以前在[创建 `cart.service.ts`](#generate-cart-service) 时定义过此方法。
+
 1. Update the cart template with a header, and use a `<div>` with an `*ngFor` to display each of the cart items with its name and price.
+
+   修改模板，加上标题，用带有 `*ngFor` 的 `<div>` 来显示每个购物车商品的名字和价格。
+
    The resulting `CartComponent` template is as follows.
+
+   生成的 `CartComponent` 模板如下：
 
    <code-example header="src/app/cart/cart.component.html" path="getting-started/src/app/cart/cart.component.2.html" region="prices"></code-example>
 
@@ -269,7 +280,7 @@ This section shows you how to use the cart service to display the products in th
 
    1. Click **My Store**.
 
-      点击 **My Store**。【模糊翻译】
+      点击 **My Store**。
 
    1. Click on a product name to display its details.
 
@@ -356,7 +367,7 @@ The next step is to inject the `HttpClient` service into your service so your ap
 
 1. Inject `HttpClient` into the `CartService` `constructor()`.
 
-   把 `HttpClient` 注入到 `CartService` 的构造函数中：。
+   把 `HttpClient` 注入到 `CartService` 的构造函数中。
 
    <code-example header="src/app/cart.service.ts" path="getting-started/src/app/cart.service.ts" region="inject-http"></code-example>
 
@@ -430,7 +441,7 @@ This section guides you through modifying the `ShippingComponent` to retrieve sh
 
 1. Inject the cart service in the `ShippingComponent` `constructor()`.
 
-   把购物车服务注入到 `ShippingComponent` 的 `constructor()` 构造函数中：。
+   把购物车服务注入到 `ShippingComponent` 的 `constructor()` 构造函数中。
 
    <code-example header="src/app/shipping/shipping.component.ts" path="getting-started/src/app/shipping/shipping.component.ts" region="inject-cart-service"></code-example>
 
@@ -442,7 +453,7 @@ This section guides you through modifying the `ShippingComponent` to retrieve sh
 
 1. Update the `ShippingComponent` template to display the shipping types and prices using the `async` pipe.
 
-   利用 `async` 管道修改配送组件的模板，以显示配送类型和价格：。
+   利用 `async` 管道修改配送组件的模板，以显示配送类型和价格。
 
    <code-example header="src/app/shipping/shipping.component.html" path="getting-started/src/app/shipping/shipping.component.html"></code-example>
 
@@ -450,11 +461,11 @@ This section guides you through modifying the `ShippingComponent` to retrieve sh
    When Angular destroys that component, the `async` pipe automatically stops.
    For detailed information about the `async` pipe, see the [AsyncPipe API documentation](api/common/AsyncPipe).
 
-   `async` 管道从数据流中返回最新值，并在所属组件的生命期内持续返回。当 Angular 销毁该组件时，`async` 管道会自动停止。关于 `async` 管道的详细信息，请参阅 [AsyncPipe API 文档](/api/common/AsyncPipe)。
+   `async` 管道从数据流中返回最新值，并在所属组件的生命期内持续返回。当 Angular 销毁该组件时，`async` 管道会自动停止。关于 `async` 管道的详细信息，请参阅 [AsyncPipe API 文档](api/common/AsyncPipe)。
 
 1. Add a link from the `CartComponent` view to the `ShippingComponent` view.
 
-   在购物车视图中添加一个到配送视图的链接：。
+   在购物车视图中添加一个到配送视图的链接。
 
    <code-example header="src/app/cart/cart.component.html" path="getting-started/src/app/cart/cart.component.2.html"></code-example>
 
@@ -481,7 +492,7 @@ This section guides you through modifying the `ShippingComponent` to retrieve sh
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 You now have a store application with a product catalog, a shopping cart, and you can look up shipping prices.
 

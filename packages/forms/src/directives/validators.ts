@@ -15,8 +15,18 @@ import {emailValidator, maxLengthValidator, maxValidator, minLengthValidator, mi
 /**
  * Method that updates string to integer if not already a number
  *
+ * 如果还不是数字，则将字符串更新为整数的方法
+ *
  * @param value The value to convert to integer.
- * @returns value of parameter converted to number or integer.
+ *
+ * 要转换为整数的值。
+ *
+ * @returns
+ *
+ * value of parameter converted to number or integer.
+ *
+ * 转换为数字或整数的参数值。
+ *
  */
 function toInteger(value: string|number): number {
   return typeof value === 'number' ? value : parseInt(value, 10);
@@ -25,8 +35,18 @@ function toInteger(value: string|number): number {
 /**
  * Method that ensures that provided value is a float (and converts it to float if needed).
  *
+ * 确保提供的值是浮点数（并如果需要将其转换为浮点数）的方法。
+ *
  * @param value The value to convert to float.
- * @returns value of parameter converted to number or float.
+ *
+ * 要转换为浮点数的值。
+ *
+ * @returns
+ *
+ * value of parameter converted to number or float.
+ *
+ * 转换为数字或浮点数的参数值。
+ *
  */
 function toFloat(value: string|number): number {
   return typeof value === 'number' ? value : parseFloat(value);
@@ -49,7 +69,6 @@ export type ValidationErrors = {
  * An interface implemented by classes that perform synchronous validation.
  *
  * 一个接口，实现了它的类可以扮演验证器的角色。
- *
  * @usageNotes
  *
  * ### Provide a custom validator
@@ -62,7 +81,10 @@ export type ValidationErrors = {
  * 下面的例子实现了 `Validator` 接口，以便用一个自定义的错误键来创建验证器指令。
  *
  * ```typescript
- * @Directive({
+ *
+ * ```
+ *
+ * @Directive ({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
  * })
@@ -72,7 +94,6 @@ export type ValidationErrors = {
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export interface Validator {
@@ -112,7 +133,12 @@ export interface Validator {
  * A base class for Validator-based Directives. The class contains common logic shared across such
  * Directives.
  *
+ * 基于 Validator 的指令的基类。该类包含在此类指令之间共享的通用逻辑。
+ *
  * For internal use only, this class is not intended for use outside of the Forms package.
+ *
+ * 仅供内部使用，此类不适合在 Forms 包之外使用。
+ *
  */
 @Directive()
 abstract class AbstractValidatorDirective implements Validator, OnChanges {
@@ -122,8 +148,14 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
   /**
    * A flag that tracks whether this validator is enabled.
    *
+   * 跟踪此验证器是否启用的标志。
+   *
    * Marking it `internal` (vs `protected`), so that this flag can be used in host bindings of
    * directive classes that extend this base class.
+   *
+   * 将其标记为 `internal` （ vs `protected`
+   * ），以便此标志可以在扩展此基类的指令类的主机绑定中使用。
+   *
    * @internal
    */
   _enabled?: boolean;
@@ -134,12 +166,18 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * `minlength='10'`) or a flag that indicates whether validator should be enabled (like
    * `[required]='false'`).
    *
+   * 与指令选择器属性匹配的输入的名称（例如 `minlength` 的 `MinLengthDirective`
+   * ）。具有给定名称的输入可能包含配置信息（例如 `minlength='10'`
+   * ）或表明是否应启用验证器的标志（例如 `[required]='false'` ）。
+   *
    * @internal
    */
   abstract inputName: string;
 
   /**
    * Creates an instance of a validator (specific to a directive that extends this base class).
+   *
+   * 创建验证器的实例（特定于扩展此基类的指令）。
    *
    * @internal
    */
@@ -150,6 +188,9 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * For example, the function might be used to convert string-based representation of the
    * `minlength` input to an integer value that can later be used in the `Validators.minLength`
    * validator.
+   *
+   * 根据指令的特定逻辑执行必要的输入规范化。例如，该函数可能用于将 `minlength`
+   * 输入的基于字符串的表示转换为整数值，该值以后可以在 `Validators.minLength` 验证器中使用。
    *
    * @internal
    */
@@ -179,10 +220,15 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
 
   /**
    * @description
+   *
    * Determines whether this validator should be active or not based on an input.
    * Base class implementation checks whether an input is defined (if the value is different from
    * `null` and `undefined`). Validator classes that extend this base class can override this
    * function with the logic specific to a particular validator directive.
+   *
+   * 根据输入确定此验证器是否应该处于活动状态。基类实现会检查输入是否已定义（如果值不同于 `null` 和
+   * `undefined` ）。扩展此基类的验证器类可以用特定于特定验证器指令的逻辑覆盖此函数。
+   *
    */
   enabled(input: unknown): boolean {
     return input != null /* both `null` and `undefined` */;
@@ -191,7 +237,11 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
 
 /**
  * @description
+ *
  * Provider which adds `MaxValidator` to the `NG_VALIDATORS` multi-provider list.
+ *
+ * 将 `MaxValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
+ *
  */
 export const MAX_VALIDATOR: StaticProvider = {
   provide: NG_VALIDATORS,
@@ -203,14 +253,23 @@ export const MAX_VALIDATOR: StaticProvider = {
  * A directive which installs the {@link MaxValidator} for any `formControlName`,
  * `formControl`, or control with `ngModel` that also has a `max` attribute.
  *
+ * 一个指令，它为任何 `formControlName` 、 `formControl` 或使用也具有 `max` 属性的 `ngModel`
+ * 的控件安装 {@link MaxValidator} 。
+ *
  * @see [Form Validation](guide/form-validation)
+ *
+ * [表单验证](guide/form-validation)
  *
  * @usageNotes
  *
  * ### Adding a max validator
  *
+ * ### 添加 max 验证器
+ *
  * The following example shows how to add a max validator to an input attached to an
  * ngModel binding.
+ *
+ * 以下示例展示了如何将 max 验证器添加到附加到 ngModel 绑定的输入。
  *
  * ```html
  * <input type="number" ngModel max="4">
@@ -229,7 +288,11 @@ export const MAX_VALIDATOR: StaticProvider = {
 export class MaxValidator extends AbstractValidatorDirective {
   /**
    * @description
+   *
    * Tracks changes to the max bound to this directive.
+   *
+   * 跟踪对此指令绑定的最大值的更改。
+   *
    */
   @Input() max!: string|number|null;
   /** @internal */
@@ -242,7 +305,11 @@ export class MaxValidator extends AbstractValidatorDirective {
 
 /**
  * @description
+ *
  * Provider which adds `MinValidator` to the `NG_VALIDATORS` multi-provider list.
+ *
+ * 将 `MinValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
+ *
  */
 export const MIN_VALIDATOR: StaticProvider = {
   provide: NG_VALIDATORS,
@@ -254,14 +321,23 @@ export const MIN_VALIDATOR: StaticProvider = {
  * A directive which installs the {@link MinValidator} for any `formControlName`,
  * `formControl`, or control with `ngModel` that also has a `min` attribute.
  *
+ * 一个指令，它为任何 `formControlName` 、 `formControl` 或使用也具有 `min` 属性的 `ngModel`
+ * 的控件安装 {@link MinValidator} 。
+ *
  * @see [Form Validation](guide/form-validation)
+ *
+ * [表单验证](guide/form-validation)
  *
  * @usageNotes
  *
  * ### Adding a min validator
  *
+ * ### 添加最小值验证器
+ *
  * The following example shows how to add a min validator to an input attached to an
  * ngModel binding.
+ *
+ * 以下示例展示了如何将 min 验证器添加到附加到 ngModel 绑定的输入。
  *
  * ```html
  * <input type="number" ngModel min="4">
@@ -280,7 +356,11 @@ export const MIN_VALIDATOR: StaticProvider = {
 export class MinValidator extends AbstractValidatorDirective {
   /**
    * @description
+   *
    * Tracks changes to the min bound to this directive.
+   *
+   * 跟踪对此指令绑定的 min 的更改。
+   *
    */
   @Input() min!: string|number|null;
   /** @internal */
@@ -296,7 +376,6 @@ export class MinValidator extends AbstractValidatorDirective {
  * An interface implemented by classes that perform asynchronous validation.
  *
  * 由执行异步验证的类实现的接口。
- *
  * @usageNotes
  *
  * ### Provide a custom async validator directive
@@ -310,8 +389,9 @@ export class MinValidator extends AbstractValidatorDirective {
  *
  * ```typescript
  * import { of } from 'rxjs';
+ * ```
  *
- * @Directive({
+ * @Directive ({
  *   selector: '[customAsyncValidator]',
  *   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: CustomAsyncValidatorDirective, multi:
  * true}]
@@ -322,7 +402,6 @@ export class MinValidator extends AbstractValidatorDirective {
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export interface AsyncValidator extends Validator {
@@ -348,7 +427,11 @@ export interface AsyncValidator extends Validator {
 
 /**
  * @description
+ *
  * Provider which adds `RequiredValidator` to the `NG_VALIDATORS` multi-provider list.
+ *
+ * 将 `RequiredValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
+ *
  */
 export const REQUIRED_VALIDATOR: StaticProvider = {
   provide: NG_VALIDATORS,
@@ -358,7 +441,11 @@ export const REQUIRED_VALIDATOR: StaticProvider = {
 
 /**
  * @description
+ *
  * Provider which adds `CheckboxRequiredValidator` to the `NG_VALIDATORS` multi-provider list.
+ *
+ * 将 `CheckboxRequiredValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
+ *
  */
 export const CHECKBOX_REQUIRED_VALIDATOR: StaticProvider = {
   provide: NG_VALIDATORS,
@@ -434,14 +521,13 @@ export class RequiredValidator extends AbstractValidatorDirective {
  * @see [Form Validation](guide/form-validation)
  *
  * [表单验证](guide/form-validation)
- *
  * @usageNotes
  *
  * ### Adding a required checkbox validator using template-driven forms
  *
  * ### 使用模板驱动表单为复选框添加必填项验证器
  *
- * The following example shows how to add a checkbox required validator to an input attached to an*
+ * The following example shows how to add a checkbox required validator to an input attached to an\*
  * ngModel binding.
  *
  * 下面的例子展示了如何为一个带有 ngModel 绑定的检查框添加必填项验证器。
@@ -487,6 +573,9 @@ export const EMAIL_VALIDATOR: any = {
  * incorporate more RFC rules. More information can be found on the [Validators.email
  * page](api/forms/Validators#email).
  *
+ * 电子邮件验证基于 WHATWG HTML 规范，并进行了一些增强以包含更多 RFC
+ * 规则。更多信息，请参阅[Validator.email 页面](api/forms/Validators#email)。
+ *
  * @see [Form Validation](guide/form-validation)
  *
  * [表单验证](guide/form-validation)
@@ -496,7 +585,7 @@ export const EMAIL_VALIDATOR: any = {
  *
  * ### 添加 email 验证器
  *
- * The following example shows how to add an email validator to an input attached to an ngModel*
+ * The following example shows how to add an email validator to an input attached to an ngModel\*
  * binding.
  *
  * 下面的例子演示了如何为一个带有 ngModel 绑定的输入框添加 email 验证器。
@@ -684,7 +773,11 @@ export const MAX_LENGTH_VALIDATOR: any = {
 export class MaxLengthValidator extends AbstractValidatorDirective {
   /**
    * @description
+   *
    * Tracks changes to the minimum length bound to this directive.
+   *
+   * 跟踪对此指令绑定的最小长度的更改。
+   *
    */
   @Input() maxlength!: string|number|null;
 
@@ -700,7 +793,11 @@ export class MaxLengthValidator extends AbstractValidatorDirective {
 
 /**
  * @description
+ *
  * Provider which adds `PatternValidator` to the `NG_VALIDATORS` multi-provider list.
+ *
+ * 将 `PatternValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
+ *
  */
 export const PATTERN_VALIDATOR: any = {
   provide: NG_VALIDATORS,

@@ -13,6 +13,8 @@ import {GenericBrowserDomAdapter} from './generic_browser_adapter';
 /**
  * A `DomAdapter` powered by full browser DOM APIs.
  *
+ * 由完整浏览器 DOM API 提供支持的 `DomAdapter` 。
+ *
  * @security Tread carefully! Interacting with the DOM directly is dangerous and
  * can introduce XSS risks.
  */
@@ -57,7 +59,14 @@ export class BrowserDomAdapter extends GenericBrowserDomAdapter {
     return node instanceof DocumentFragment;
   }
 
-  /** @deprecated No longer being used in Ivy code. To be removed in version 14. */
+  /**
+   * @deprecated
+   *
+   * No longer being used in Ivy code. To be removed in version 14.
+   *
+   * 不再在 Ivy 代码中使用。要在版本 14 中删除。
+   *
+   */
   getGlobalEventTarget(doc: Document, target: string): EventTarget|null {
     if (target === 'window') {
       return window;

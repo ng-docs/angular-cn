@@ -29,6 +29,8 @@ For more information, see the [Angular compiler options](guide/angular-compiler-
 
 ## Features
 
+## 特性
+
 Your editor autodetects that you are opening an Angular file.
 It then uses the Angular Language Service to read your `tsconfig.json` file, find all the templates you have in your application, and then provide language services for any templates that you open.
 
@@ -111,15 +113,17 @@ You can then click "Go to definition" or press F12 to go directly to the definit
 
 Angular Language Service is currently available as an extension for [Visual Studio Code](https://code.visualstudio.com), [WebStorm](https://www.jetbrains.com/webstorm), [Sublime Text](https://www.sublimetext.com) and [Eclipse IDE](https://www.eclipse.org/eclipseide).
 
-Angular 语言服务目前在[Visual Studio Code](https://code.visualstudio.com/)和[WebStorm](https://www.jetbrains.com/webstorm)、[Sublime Text](https://www.sublimetext.com/) 和 [Eclipse IDE](https://www.eclipse.org/eclipseide/) 中都有可用的扩展。
+Angular 语言服务目前在[Visual Studio Code](https://code.visualstudio.com)和[WebStorm](https://www.jetbrains.com/webstorm)、[Sublime Text](https://www.sublimetext.com/) 和 [Eclipse IDE](https://www.eclipse.org/eclipseide/) 中都有可用的扩展。
 
 ### Visual Studio Code
+
+### Visual Studio 代码
 
 In [Visual Studio Code](https://code.visualstudio.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
 Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext".
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
-在 [Visual Studio Code 中](https://code.visualstudio.com/)，从 “[扩展程序：市场](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template) 中安装扩展程序。可以用左侧菜单窗格中的扩展程序图标从编辑器中打开市场，或使用 VS 快速打开（在 Mac 上为 ⌘+ P，在 Windows 上为 CTRL + P）并输入“? ext”。在市场中，搜索 Angular Language Service 扩展，并点击 **Install** 按钮。
+在 [Visual Studio Code 中](https://code.visualstudio.com)，从 “[扩展程序：市场](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template) 中安装扩展程序。可以用左侧菜单窗格中的扩展程序图标从编辑器中打开市场，或使用 VS 快速打开（在 Mac 上为 ⌘+ P，在 Windows 上为 CTRL + P）并输入“? ext”。在市场中，搜索 Angular Language Service 扩展，并点击 **Install** 按钮。
 
 The Visual Studio Code integration with the Angular language service is maintained and distributed by the Angular team.
 
@@ -131,7 +135,7 @@ In [Visual Studio](https://visualstudio.microsoft.com), install the extension fr
 Open the marketplace from the editor selecting Extensions on the top menu pane, and then selecting Manage Extensions.
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
-在 [Visual Studio 中](https://visualstudio.microsoft.com/)，从[“扩展程序：市场”](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService)中安装扩展程序。可以从编辑器中打开市场，在顶部菜单窗格中选择“扩展”，然后选择“管理扩展”。在市场上，搜索 Angular Language Service extension，然后单击**“安装”**按钮。
+在 [Visual Studio 中](https://visualstudio.microsoft.com)，从[“扩展程序：市场”](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService)中安装扩展程序。可以从编辑器中打开市场，在顶部菜单窗格中选择“扩展”，然后选择“管理扩展”。在市场上，搜索 Angular Language Service extension，然后单击**“安装”**按钮。
 
 The Visual Studio integration with the Angular language service is maintained and distributed by Microsoft with help from the Angular team.
 Check out the project [here](https://github.com/microsoft/vs-ng-language-service).
@@ -140,9 +144,11 @@ Microsoft 在 Angular 团队的帮助下维护和发布了 Visual Studio 与 Ang
 
 ### WebStorm
 
+### 网络风暴
+
 In [WebStorm](https://www.jetbrains.com/webstorm), enable the plugin [Angular and AngularJS](https://plugins.jetbrains.com/plugin/6971-angular-and-angularjs).
 
-在 [WebStorm](https://www.jetbrains.com/webstorm/) 中，启用 [Angular 与 AngularJS](https://plugins.jetbrains.com/plugin/6971-angular-and-angularjs) 插件。
+在 [WebStorm](https://www.jetbrains.com/webstorm) 中，启用 [Angular 与 AngularJS](https://plugins.jetbrains.com/plugin/6971-angular-and-angularjs) 插件。
 
 Since WebStorm 2019.1, the `@angular/language-service` is not required anymore and should be removed from your `package.json`.
 
@@ -150,10 +156,12 @@ Since WebStorm 2019.1, the `@angular/language-service` is not required anymore a
 
 ### Sublime Text
 
+### 崇高文本
+
 In [Sublime Text](https://www.sublimetext.com), the Language Service supports only in-line templates when installed as a plug-in.
 You need a custom Sublime plug-in (or modifications to the current plug-in) for completions in HTML files.
 
-在 [Sublime Text](https://www.sublimetext.com/) 中，当安装为插件时，语言服务仅支持内联模板。 你需要自定义 Sublime 插件（或修改当前插件），来实现 HTML 文件中的自动补齐。
+在 [Sublime Text](https://www.sublimetext.com) 中，当安装为插件时，语言服务仅支持内联模板。 你需要自定义 Sublime 插件（或修改当前插件），来实现 HTML 文件中的自动补齐。
 
 To use the Language Service for in-line templates, you must first add an extension to allow TypeScript, then install the Angular Language Service plug-in.
 Starting with TypeScript 2.3, TypeScript has a plug-in model that the language service can use.
@@ -219,7 +227,7 @@ Either directly install the "Eclipse IDE for Web and JavaScript developers" pack
 When you use an editor with a language service, the editor starts a separate language-service process and communicates with it through an [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call), using the [Language Server Protocol](https://microsoft.github.io/language-server-protocol).
 When you type into the editor, the editor sends information to the language-service process to track the state of your project.
 
-当你将编辑器与语言服务一起使用时，该编辑器将启动一个单独的语言服务进程，并使用[语言服务协议](https://microsoft.github.io/language-server-protocol/)通过 [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 与之通信。当你输入编辑器时，编辑器会将信息发送到语言服务流程，以跟踪你的项目状态。
+当你将编辑器与语言服务一起使用时，该编辑器将启动一个单独的语言服务进程，并使用[语言服务协议](https://microsoft.github.io/language-server-protocol)通过 [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 与之通信。当你输入编辑器时，编辑器会将信息发送到语言服务流程，以跟踪你的项目状态。
 
 When you trigger a completion list within a template, the editor first parses the template into an HTML [abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 The Angular compiler interprets that tree to determine the context: which module the template is part of, the current scope, the component selector, and where your cursor is in the template AST.
@@ -241,13 +249,15 @@ The Angular Language Services then looks at `data.---` within its context, asks 
 
 * For more in-depth information on the implementation, see the [Angular Language Service API](https://github.com/angular/angular/blob/main/packages/language-service/src/types.ts)
 
+  关于该实现的更多详细信息，请参阅 [Angular 语言服务 API](https://github.com/angular/angular/blob/main/packages/language-service/src/types.ts)。
+
 * For more on the design considerations and intentions, see [design documentation here](https://github.com/angular/vscode-ng-language-service/wiki/Design)
 
-  关于此设计注意事项和意图的更多信息，请参阅[此处的设计文档](https://github.com/angular/vscode-ng-language-service/wiki/Design)。
+  关于此设计注意事项和意图的更多信息，请参阅[此处的设计文档](https://github.com/angular/vscode-ng-language-service/wiki/Design)
 
 * See also [Chuck Jazdzewski's presentation](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) on the Angular Language Service from [ng-conf](https://www.ng-conf.org) 2017
 
-  另请参阅 [ng-conf](https://www.ng-conf.org/) 2017 上 [Chuck Jazdzewski](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) 关于 Angular 语言服务的 [演讲](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s)。
+  另请参阅 [ng-conf](https://www.ng-conf.org) 2017 上 [Chuck Jazdzewski](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) 关于 Angular 语言服务的 [演讲](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s)
 
 <!-- links -->
 

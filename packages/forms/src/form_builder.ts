@@ -35,6 +35,8 @@ function isFormControlOptions(options: FormControlOptions|{[key: string]: any}|n
  * ControlConfig<T> is a tuple containing a value of type T, plus optional validators and async
  * validators.
  *
+ * 控制配置<T>是一个包含 T 类型的值的元组，以及可选的验证器和异步验证器。
+ *
  * @publicApi
  */
 export type ControlConfig<T> = [T|FormControlState<T>, (ValidatorFn|(ValidatorFn[]))?, (AsyncValidatorFn|AsyncValidatorFn[])?];
@@ -47,6 +49,9 @@ export type ControlConfig<T> = [T|FormControlState<T>, (ValidatorFn|(ValidatorFn
  * FormBuilder accepts values in various container shapes, as well as raw values.
  * Element returns the appropriate corresponding model class, given the container T.
  * The flag N, if not never, makes the resulting `FormControl` have N in its type.
+ *
+ * FormBuilder 接受各种容器形状的值以及原始值。在给定容器 T 的情况下，Element 会返回适当的对应模型类。标志 N （如果不是永远）会使结果 `FormControl` 的类型具有 N 。
+ *
  */
 export type ɵElement<T, N extends null> =
   // The `extends` checks are wrapped in arrays in order to prevent TypeScript from applying type unions
@@ -92,12 +97,23 @@ export class FormBuilder {
 
   /**
    * @description
-   * Returns a FormBuilder in which automatically constructed @see FormControl} elements
+   *
+   * Returns a FormBuilder in which automatically constructed
+   *
+   * 返回一个 FormBuilder ，在其中自动构造
+   *
+   * @see FormControl} elements
    * have `{nonNullable: true}` and are non-nullable.
+   *
+   * FormControl} 元素具有 `{nonNullable: true}` 并且不可为 null。
    *
    * **Constructing non-nullable controls**
    *
+   * **构建不可为空的控件**
+   *
    * When constructing a control, it will be non-nullable, and will reset to its initial value.
+   *
+   * 构造控件时，它将是不可为空的，并将重置为其初始值。
    *
    * ```ts
    * let nnfb = new FormBuilder().nonNullable;
@@ -108,8 +124,12 @@ export class FormBuilder {
    *
    * **Constructing non-nullable groups or arrays**
    *
+   * **构造不可为空的组或数组**
+   *
    * When constructing a group or array, all automatically created inner controls will be
    * non-nullable, and will reset to their initial values.
+   *
+   * 构造组或数组时，所有自动创建的内部控件都将不可为空，并将重置为它们的初始值。
    *
    * ```ts
    * let nnfb = new FormBuilder().nonNullable;
@@ -117,10 +137,15 @@ export class FormBuilder {
    * name.reset();
    * console.log(name); // {who: 'Alex'}
    * ```
+   *
    * **Constructing *nullable* fields on groups or arrays**
+   *
+   * **在组或数组上构造可以为*空*的字段**
    *
    * It is still possible to have a nullable field. In particular, any `FormControl` which is
    * *already* constructed will not be altered. For example:
+   *
+   * 仍然可以有一个可以为 null 的字段。特别是，任何*已经*构建的 `FormControl` 都不会被更改。例如：
    *
    * ```ts
    * let nnfb = new FormBuilder().nonNullable;
@@ -131,6 +156,9 @@ export class FormBuilder {
    *
    * Because the inner control is constructed explicitly by the caller, the builder has
    * no control over how it is created, and cannot exclude the `null`.
+   *
+   * 因为内部控件是由调用者显式构造的，所以构建器无法控制它的创建方式，并且不能排除 `null` 。
+   *
    */
   get nonNullable(): NonNullableFormBuilder {
     const nnfb = new FormBuilder();
@@ -140,21 +168,35 @@ export class FormBuilder {
 
   /**
    * @description
+   *
    * Construct a new `FormGroup` instance. Accepts a single generic argument, which is an object
    * containing all the keys and corresponding inner control types.
    *
+   * 构造一个新的 `FormGroup` 实例。接受单个泛型参数，该参数是包含所有键和对应的内部控件类型的对象。
+   *
    * @param controls A collection of child controls. The key for each child is the name
    * under which it is registered.
-   *
    *
    * 一组子控件。每个 key 就是注册进来的控件的名字。
    *
    * @param options Configuration options object for the `FormGroup`. The object should have the
    * `AbstractControlOptions` type and might contain the following fields:
+   *
+   * `FormGroup` 的配置选项对象。该对象应该具有 `AbstractControlOptions` 类型，并可能包含以下字段：
+   *
    * * `validators`: A synchronous validator function, or an array of validator functions.
+   *
+   *   `validators` ：同步验证器函数或验证器函数数组。
+   *
    * * `asyncValidators`: A single async validator or array of async validator functions.
+   *
+   *   `asyncValidators` ：单个异步验证器或异步验证器函数数组。
+   *
    * * `updateOn`: The event upon which the control should be updated (options: 'change' | 'blur'
-   * | submit').
+   *   | submit').
+   *
+   *   `updateOn` ：应该更新控件的事件（选项： 'change' | 'blur' | submit'）。
+   *
    */
   group<T extends {}>(
       controls: T,
@@ -166,7 +208,6 @@ export class FormBuilder {
    * Construct a new `FormGroup` instance.
    *
    * 构造一个新的 `FormGroup` 实例。
-   *
    * @deprecated This API is not typesafe and can result in issues with Closure Compiler renaming.
    * Use the `FormBuilder#group` overload with `AbstractControlOptions` instead.
    * Note that `AbstractControlOptions` expects `validators` and `asyncValidators` to be valid
@@ -178,12 +219,10 @@ export class FormBuilder {
    *
    * 此 api 不是类型安全的，可能会导致 Closure Compiler 重命名时出现问题。应该改用
    * `FormBuilder#group` 的接受 `AbstractControlOptions` 的重载形式。
-   *
    * @param controls A record of child controls. The key for each child is the name
    * under which the control is registered.
    *
    * 子控件的集合。每个子控件的键就是其注册名称。
-   *
    * @param options Configuration options object for the `FormGroup`. The legacy configuration
    * object consists of:
    *
@@ -194,11 +233,12 @@ export class FormBuilder {
    *   `validator`：一个同步验证器函数或其数组。
    *
    * * `asyncValidator`: A single async validator or array of async validator functions
-   * Note: the legacy format is deprecated and might be removed in one of the next major versions
-   * of Angular.
+   *   Note: the legacy format is deprecated and might be removed in one of the next major versions
+   *   of Angular.
    *
-   *   `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在
-   * Angular 的后面的某个主要版本中将其删除。
+   *     `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在
+   *   Angular 的后面的某个主要版本中将其删除。
+   *
    */
   group(
       controls: {[key: string]: any},
@@ -232,7 +272,14 @@ export class FormBuilder {
     return new FormGroup(reducedControls, {asyncValidators, updateOn, validators}) as any;
   }
 
-  /** @deprecated Use `nonNullable` instead. */
+  /**
+   * @deprecated
+   *
+   * Use `nonNullable` instead.
+   *
+   * 改用 `nonNullable` 。
+   *
+   */
   control<T>(formState: T|FormControlState<T>, opts: FormControlOptions&{
     initialValueIsDefault: true
   }): FormControl<T>;
@@ -241,7 +288,12 @@ export class FormBuilder {
       FormControl<T>;
 
   /**
-   * @deprecated When passing an `options` argument, the `asyncValidator` argument has no effect.
+   * @deprecated
+   *
+   * When passing an `options` argument, the `asyncValidator` argument has no effect.
+   *
+   * 传递 `options` 参数时， `asyncValidator` 参数无效。
+   *
    */
   control<T>(
       formState: T|FormControlState<T>, opts: FormControlOptions,
@@ -373,8 +425,12 @@ export class FormBuilder {
 
 /**
  * @description
+ *
  * `NonNullableFormBuilder` is similar to {@link FormBuilder}, but automatically constructed
  * {@link FormControl} elements have `{nonNullable: true}` and are non-nullable.
+ *
+ * `NonNullableFormBuilder` 类似于 {@link FormBuilder} ，但自动构造的 {@link FormControl} 元素具有
+ * `{nonNullable: true}` 并且不可为空。
  *
  * @publicApi
  */
@@ -387,6 +443,10 @@ export abstract class NonNullableFormBuilder {
    * Similar to `FormBuilder#group`, except any implicitly constructed `FormControl`
    * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
    * that already-constructed controls will not be altered.
+   *
+   * 类似于 `FormBuilder#group` ，只是任何隐式构造的 `FormControl` 都将是不可空的（即它将
+   * `nonNullable` 设置为 true ）。请注意，已经构建的控件不会被更改。
+   *
    */
   abstract group<T extends {}>(
       controls: T,
@@ -397,6 +457,10 @@ export abstract class NonNullableFormBuilder {
    * Similar to `FormBuilder#array`, except any implicitly constructed `FormControl`
    * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
    * that already-constructed controls will not be altered.
+   *
+   * 类似于 `FormBuilder#array` ，只是任何隐式构造的 `FormControl` 都将是不可为空的（即它将
+   * `nonNullable` 设置为 true ）。请注意，已经构建的控件不会被更改。
+   *
    */
   abstract array<T>(
       controls: Array<T>, validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null,
@@ -405,6 +469,10 @@ export abstract class NonNullableFormBuilder {
   /**
    * Similar to `FormBuilder#control`, except this overridden version of `control` forces
    * `nonNullable` to be `true`, resulting in the control always being non-nullable.
+   *
+   * 类似于 `FormBuilder#control` ，只是此 `control` 的覆盖版本会强制 `nonNullable` 为 `true`
+   * ，导致控件始终不可为空。
+   *
    */
   abstract control<T>(
       formState: T|FormControlState<T>,
@@ -414,11 +482,17 @@ export abstract class NonNullableFormBuilder {
 
 /**
  * UntypedFormBuilder is the same as @see FormBuilder, but it provides untyped controls.
+ *
+ * UntypedFormBuilder 与 @see FormBuilder 相同，但它提供了无类型的控件。
+ *
  */
 @Injectable({providedIn: ReactiveFormsModule})
 export class UntypedFormBuilder extends FormBuilder {
   /**
    * Like `FormBuilder#group`, except the resulting group is untyped.
+   *
+   * 与 `FormBuilder#group` 一样，只是结果组是无类型的。
+   *
    */
   override group(
       controlsConfig: {[key: string]: any},
@@ -426,8 +500,14 @@ export class UntypedFormBuilder extends FormBuilder {
       ): UntypedFormGroup;
 
   /**
-   * @deprecated This API is not typesafe and can result in issues with Closure Compiler renaming.
+   * @deprecated
+   *
+   * This API is not typesafe and can result in issues with Closure Compiler renaming.
    * Use the `FormBuilder#group` overload with `AbstractControlOptions` instead.
+   *
+   * 此 API 不是类型安全的，可能会导致 Closure Compiler 重命名问题。改用带有
+   * `AbstractControlOptions` 的 `FormBuilder#group` 重载。
+   *
    */
   override group(
       controlsConfig: {[key: string]: any},
@@ -442,6 +522,9 @@ export class UntypedFormBuilder extends FormBuilder {
 
   /**
    * Like `FormBuilder#control`, except the resulting control is untyped.
+   *
+   * 与 `FormBuilder#control` 一样，只是结果控件是无类型的。
+   *
    */
   override control(
       formState: any, validatorOrOpts?: ValidatorFn|ValidatorFn[]|FormControlOptions|null,
@@ -451,6 +534,9 @@ export class UntypedFormBuilder extends FormBuilder {
 
   /**
    * Like `FormBuilder#array`, except the resulting array is untyped.
+   *
+   * 与 `FormBuilder#array` 一样，只是结果数组是无类型的。
+   *
    */
   override array(
       controlsConfig: any[],

@@ -8,19 +8,21 @@ In this tutorial, you'll add the following data persistence features with help f
 
 * The `HeroService` gets hero data with HTTP requests
 
-  `HeroService` 通过 HTTP 请求获取英雄数据。
+  `HeroService` 通过 HTTP 请求获取英雄数据
 
 * Users can add, edit, and delete heroes and save these changes over HTTP
 
-  用户可以添加、编辑和删除英雄，并通过 HTTP 来保存这些更改。
+  用户可以添加、编辑和删除英雄，并通过 HTTP 来保存这些更改
 
 * Users can search for heroes by name
 
-  用户可以根据名字搜索英雄。
+  用户可以根据名字搜索英雄
 
 <div class="alert is-helpful">
 
 For the sample application that this page describes, see the <live-example></live-example>.
+
+  要查看本页所讲的范例程序，参阅<live-example></live-example>。
 
 </div>
 
@@ -51,6 +53,8 @@ Next, still in the `AppModule`, add `HttpClientModule` to the `imports` array:
 
 This tutorial sample mimics communication with a remote data server by using the [In-memory Web API](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api "In-memory Web API") module.
 
+这个教学例子会与一个使用 [内存 Web API（_In-memory Web API_）](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api "In-memory Web API") 模拟出的远程数据服务器通讯。
+
 After installing the module, the application will make requests to and receive responses from the `HttpClient` without knowing that the *In-memory Web API* is intercepting those requests, applying them to an in-memory data store, and returning simulated responses.
 
 安装完这个模块之后，应用将会通过 `HttpClient` 来发起请求和接收响应，而不用在乎实际上是这个内存 Web API 在拦截这些请求、操作一个内存数据库，并且给出仿真的响应。
@@ -64,8 +68,14 @@ By using the In-memory Web API, you won't have to set up a server to learn about
 **IMPORTANT**: <br />
 The In-memory Web API module has nothing to do with HTTP in Angular.
 
+**重要**：<br />
+这个*内存 Web API* 模块与 Angular 中的 HTTP 模块无关。
+
 If you're reading this tutorial to learn about `HttpClient`, you can [skip over](#import-heroes) this step.
 If you're coding along with this tutorial, stay here and add the In-memory Web API now.
+
+如果你只是在*阅读*本教程来学习 `HttpClient`，那么可以[跳过](#import-heroes)这一步。
+如果你正在随着本教程*敲代码*，那就留下来，并加上这个*内存 Web API*。
 
 </div>
 
@@ -311,7 +321,11 @@ Most web APIs support a *get by id* request in the form `:baseURL/:id`.
 Here, the *base URL* is the `heroesURL` defined in the [Heroes and HTTP](tutorial/toh-pt6#heroes-and-http) section (`api/heroes`) and *id* is the number of the hero that you want to retrieve.
 For example, `api/heroes/11`.
 
+这里的 `baseURL` 就是在 [英雄列表与 HTTP](tutorial/toh-pt6#heroes-and-http) 部分定义过的 `heroesURL`（`api/heroes`）。而 `id` 则是你要获取的英雄的编号，比如，`api/heroes/11`。
+
 Update the `HeroService` `getHero()` method with the following to make that request:
+
+把 `HeroService.getHero()` 方法改成这样，以发起该请求：
 
 <code-example header="src/app/hero.service.ts" path="toh-pt6/src/app/hero.service.ts" region="getHero"></code-example>
 
@@ -321,15 +335,15 @@ There are three significant differences from  `getHeroes()`:
 
 * `getHero()` constructs a request URL with the desired hero's id
 
-  `getHero()` 使用想获取的英雄的 id 构造了一个请求 URL。
+  `getHero()` 使用想获取的英雄的 id 构造了一个请求 URL
 
 * The server should respond with a single hero rather than an array of heroes
 
-  服务器应该使用单个英雄作为回应，而不是一个英雄数组。
+  服务器应该使用单个英雄作为回应，而不是一个英雄数组
 
 * `getHero()` returns an `Observable<Hero>` ("*an observable of Hero objects*") rather than an observable of hero *arrays*
 
-  所以，`getHero()` 会返回 `Observable<Hero>`（“一个可观察的*单个英雄对象*”），而不是一个可观察的英雄对象*数组*。
+  所以，`getHero()` 会返回 `Observable<Hero>`（“一个可观察的*单个英雄对象*”），而不是一个可观察的英雄对象*数组*
 
 ## Update heroes
 
@@ -347,7 +361,7 @@ If you want changes to persist, you must write them back to the server.
 
 At the end of the hero detail template, add a save button with a `click` event binding that invokes a new component method named `save()`.
 
-在英雄详情模板的底部添加一个保存按钮，它绑定了一个 `click` 事件，事件绑定会调用组件中一个名叫 `save()` 的新方法：。
+在英雄详情模板的底部添加一个保存按钮，它绑定了一个 `click` 事件，事件绑定会调用组件中一个名叫 `save()` 的新方法。
 
 <code-example header="src/app/hero-detail/hero-detail.component.html (save)" path="toh-pt6/src/app/hero-detail/hero-detail.component.html" region="save"></code-example>
 
@@ -374,7 +388,7 @@ The `HttpClient.put()` method takes three parameters:
 
 * The URL
 
-  URL 地址【模糊翻译】
+  URL 地址
 
 * The data to update (the modified hero in this case)
 
@@ -382,7 +396,7 @@ The `HttpClient.put()` method takes three parameters:
 
 * Options
 
-  选项【模糊翻译】
+  选项
 
 The URL is unchanged.
 The heroes web API knows which hero to update by looking at the hero's `id`.
@@ -478,6 +492,8 @@ The HTML for the list of heroes should look like this:
 To position the delete button at the far right of the hero entry, add some CSS to the `heroes.component.css`.
 You'll find that CSS in the [final review code](#heroescomponent) below.
 
+要把删除按钮定位在每个英雄条目的最右边，就要往 `heroes.component.css` 中添加一些 CSS。你可以在下方的 [最终代码](#heroescomponent) 中找到这些 CSS。
+
 Add the `delete()` handler to the component class.
 
 把 `delete()` 处理器添加到组件中。
@@ -490,6 +506,8 @@ The component's `delete()` method immediately removes the *hero-to-delete* from 
 虽然这个组件把删除英雄的逻辑委托给了 `HeroService`，但仍保留了更新它自己的英雄列表的职责。 组件的 `delete()` 方法会在 `HeroService` 对服务器的操作成功之前，先从列表中移除*要删除的英雄*。
 
 There's really nothing for the component to do with the `Observable` returned by `heroService.deleteHero()` **but it must subscribe anyway**.
+
+组件与 `heroService.deleteHero()` 返回的 `Observable` 还完全没有关联。**必须订阅它**。
 
 <div class="alert is-important">
 
@@ -513,21 +531,23 @@ Next, add a `deleteHero()` method to `HeroService` like this.
 
 Notice the following key points:
 
+注意以下关键点：
+
 * `deleteHero()` calls `HttpClient.delete()`
 
-  `deleteHero()` 调用了 `HttpClient.delete()`。
+  `deleteHero()` 调用了 `HttpClient.delete()`
 
 * The URL is the heroes resource URL plus the `id` of the hero to delete
 
-  URL 就是英雄的资源 URL 加上要删除的英雄的 `id`。
+  URL 就是英雄的资源 URL 加上要删除的英雄的 `id`
 
 * You don't send data as you did with `put()` and `post()`
 
-  你不用像 `put()` 和 `post()` 中那样发送任何数据。
+  你不用像 `put()` 和 `post()` 中那样发送任何数据
 
 * You still send the `httpOptions`
 
-  你仍要发送 `httpOptions`。
+  你仍要发送 `httpOptions`
 
 Refresh the browser and try the new delete functionality.
 
@@ -599,11 +619,13 @@ CLI 生成了 `HeroSearchComponent` 的三个文件，并把该组件添加到�
 
 Replace the generated `HeroSearchComponent` template with an `<input>` and a list of matching search results, as follows.
 
-把生成的 `HeroSearchComponent` 的*模板*改成一个 `<input>` 和一个匹配到的搜索结果的列表。代码如下：。
+把生成的 `HeroSearchComponent` 的*模板*改成一个 `<input>` 和一个匹配到的搜索结果的列表。代码如下。
 
 <code-example header="src/app/hero-search/hero-search.component.html" path="toh-pt6/src/app/hero-search/hero-search.component.html"></code-example>
 
 Add private CSS styles to `hero-search.component.css` as listed in the [final code review](#herosearchcomponent) below.
+
+从下面的 [最终代码](#herosearchcomponent) 中把私有 CSS 样式添加到 `hero-search.component.css` 中。
 
 As the user types in the search box, an input event binding calls the component's `search()` method with the new search box value.
 
@@ -624,13 +646,15 @@ The `$` is a convention that indicates `heroes$` is an `Observable`, not an arra
 Since `*ngFor` can't do anything with an `Observable`, use the pipe (`|`) character followed by `async`.
 This identifies Angular's `AsyncPipe` and subscribes to an `Observable` automatically so you won't have to do so in the component class.
 
+由于 `*ngFor` 不能直接使用 `Observable`，所以要使用一个管道字符（`|`），后面紧跟着一个 `async`。这表示 Angular 的 `AsyncPipe` 管道，它会自动订阅 `Observable`，这样你就不用在组件类中这么做了。
+
 ### Edit the `HeroSearchComponent` class
 
 ### 修正 `HeroSearchComponent` 类
 
 Replace the generated `HeroSearchComponent` class and metadata as follows.
 
-修改所生成的 `HeroSearchComponent` 类及其元数据，代码如下：。
+修改所生成的 `HeroSearchComponent` 类及其元数据，代码如下。
 
 <code-example header="src/app/hero-search/hero-search.component.ts" path="toh-pt6/src/app/hero-search/hero-search.component.ts"></code-example>
 
@@ -642,6 +666,8 @@ Notice the declaration of `heroes$` as an `Observable`:
 
 You'll set it in [`ngOnInit()`](#search-pipe).
 Before you do, focus on the definition of `searchTerms`.
+
+你将会在 [`ngOnInit()`](#search-pipe) 中设置它，在此之前，先仔细看看 `searchTerms` 的定义。
 
 ### The `searchTerms` RxJS subject
 
@@ -689,7 +715,7 @@ Instead, the `ngOnInit()` method pipes the `searchTerms` observable through a se
 
 Here's a closer look at the code.
 
-代码如下：。
+代码如下。
 
 <code-example header="src/app/hero-search/hero-search.component.ts" path="toh-pt6/src/app/hero-search/hero-search.component.ts" region="search"></code-example>
 
@@ -729,12 +755,17 @@ Results from prior calls are canceled and discarded.
 Canceling a previous `searchHeroes()` Observable doesn't actually abort a pending HTTP request.
 Unwanted results are discarded before they reach your application code.
 
+**注意**：<br />
+取消前一个 `searchHeroes()` 可观察对象并不会中止尚未完成的 HTTP 请求。那些不想要的结果只会在它们抵达应用代码之前被舍弃。
+
 </div>
 
 </div>
 
 Remember that the component *class* does not subscribe to the `heroes$` *observable*.
 That's the job of the [`AsyncPipe`](#asyncpipe) in the template.
+
+记住，组件类中并没有订阅 `heroes$` 这个可观察对象，而是由模板中的 [`AsyncPipe`](#asyncpipe) 完成的。
 
 #### Try it
 
@@ -744,7 +775,7 @@ Run the application again.
 In the *Dashboard*, enter some text in the search box.
 If you enter characters that match any existing hero names, you'll see something like this.
 
-再次运行本应用。在这个 *仪表盘* 中，在搜索框中输入一些文字。如果你输入的字符匹配上了任何现有英雄的名字，你将会看到如下效果：。
+再次运行本应用。在这个 *仪表盘* 中，在搜索框中输入一些文字。如果你输入的字符匹配上了任何现有英雄的名字，你将会看到如下效果。
 
 <div class="lightbox">
 
@@ -823,27 +854,27 @@ You're at the end of your journey, and you've accomplished a lot.
 
 * You added the necessary dependencies to use HTTP in the app
 
-  你添加了在应用程序中使用 HTTP 的必备依赖。
+  你添加了在应用程序中使用 HTTP 的必备依赖
 
 * You refactored `HeroService` to load heroes from a web API
 
-  你重构了 `HeroService`，以通过 web API 来加载英雄数据。
+  你重构了 `HeroService`，以通过 web API 来加载英雄数据
 
 * You extended `HeroService` to support `post()`, `put()`, and `delete()` methods
 
-  你扩展了 `HeroService` 来支持 `post()`、`put()` 和 `delete()` 方法。
+  你扩展了 `HeroService` 来支持 `post()`、`put()` 和 `delete()` 方法
 
 * You updated the components to allow adding, editing, and deleting of heroes
 
-  你修改了组件，以允许用户添加、编辑和删除英雄。
+  你修改了组件，以允许用户添加、编辑和删除英雄
 
 * You configured an in-memory web API
 
-  你配置了一个内存 Web API。
+  你配置了一个内存 Web API
 
 * You learned how to use observables
 
-  你学会了如何使用“可观察对象”。
+  你学会了如何使用“可观察对象”
 
 This concludes the "Tour of Heroes" tutorial.
 You're ready to learn more about Angular development in the fundamentals section, starting with the [Architecture](guide/architecture "Architecture") guide.

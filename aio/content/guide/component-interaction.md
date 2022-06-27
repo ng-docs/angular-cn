@@ -14,18 +14,33 @@ This cookbook contains recipes for common component communication scenarios in w
 
 # Contents
 
+# 目录
+
 * [Pass data from parent to child with input binding](guide/component-interaction#parent-to-child)
+
+  [使用输入绑定把数据从父组件传给子组件](guide/component-interaction#parent-to-child)
 
 * [Intercept input property changes with a setter](guide/component-interaction#parent-to-child-setter)
 
+  [使用赋值器（setter）拦截输入属性的变化](guide/component-interaction#parent-to-child-setter)
+
 * [Intercept input property changes with `ngOnChanges()`](guide/component-interaction#parent-to-child-on-changes)
+
+  [使用 `ngOnChanges()` 拦截输入属性的变化](guide/component-interaction#parent-to-child-on-changes)
 
 * [Parent calls an `@ViewChild()`](guide/component-interaction#parent-to-view-child)
 
+  [在父组件中调用 `@ViewChild()`](guide/component-interaction#parent-to-view-child)
+
 * [Parent and children communicate via a service](guide/component-interaction#bidirectional-service)
-  \-->
+
+  [通过服务进行父子通讯](guide/component-interaction#bidirectional-service)
+
+\-->
 
 **See the <live-example name="component-interaction"></live-example>**.
+
+**参阅<live-example name="component-interaction"></live-example>**。
 
 <a id="parent-to-child"></a>
 
@@ -41,7 +56,7 @@ This cookbook contains recipes for common component communication scenarios in w
 
 The second `@Input` aliases the child component property name `masterName` as `'master'`.
 
-第二个 `@Input` 为子组件的属性名 `masterName` 指定一个别名 `master`(译者注：不推荐为起别名，请参阅风格指南).。
+第二个 `@Input` 为子组件的属性名 `masterName` 指定一个别名 `master`(译者注：不推荐为起别名，参阅风格指南).
 
 The `HeroParentComponent` nests the child `HeroChildComponent` inside an `*ngFor` repeater, binding its `master` string property to the child's `master` alias, and each iteration's `hero` instance to the child's `hero` property.
 
@@ -60,6 +75,8 @@ The running application displays three heroes:
 </div>
 
 ### Test it for Pass data from parent to child with input binding
+
+### 测试它以使用输入绑定将数据从父级传递给子级
 
 E2E test that all children were instantiated and displayed as expected:
 
@@ -101,6 +118,8 @@ Here's the `NameParentComponent` demonstrating name variations including a name 
 
 ### Test it for Intercept input property changes with a setter
 
+### 使用设置器测试它以拦截输入属性更改
+
 E2E tests of input property setter with empty and non-empty names:
 
 端到端测试：输入属性的 setter，分别使用空名字和非空名字。
@@ -114,6 +133,8 @@ E2E tests of input property setter with empty and non-empty names:
 <a id="parent-to-child-on-changes"></a>
 
 ## Intercept input property changes with `ngOnChanges()`
+
+## 通过 `ngOnChanges()` 来截听输入属性值的变化
 
 Detect and act upon changes to input property values with the `ngOnChanges()` method of the `OnChanges` lifecycle hook interface.
 
@@ -154,6 +175,8 @@ Here's the output of a button-pushing sequence:
 </div>
 
 ### Test it for Intercept input property changes with `ngOnChanges()`
+
+### 使用 `ngOnChanges()` 测试它的 Intercept 输入属性更改
 
 Test that ***both*** input properties are set initially and that button clicks trigger the expected `ngOnChanges` calls and values:
 
@@ -203,6 +226,8 @@ The framework passes the event argument —represented by `$event`— to the han
 </div>
 
 ### Test it for Parent listens for child event
+
+### 测试它的父级监听子事件
 
 Test that clicking the *Agree* and *Disagree* buttons update the appropriate counters:
 
@@ -265,6 +290,8 @@ Here, the parent and child are working together.
 
 ### Test it for Parent interacts with child using *local variable*
 
+### 测试它的父级使用*局部变量*与其子级交互
+
 Test that the seconds displayed in the parent template match the seconds displayed in the child's status message.
 Test also that clicking the *Stop* button pauses the countdown timer:
 
@@ -279,6 +306,8 @@ Test also that clicking the *Stop* button pauses the countdown timer:
 <a id="parent-to-view-child"></a>
 
 ## Parent calls an `@ViewChild()`
+
+## 父级调用 `@ViewChild()`
 
 The *local variable* approach is straightforward.
 But it is limited because the parent-child wiring must be done entirely within the parent template.
@@ -341,7 +370,7 @@ The `ngAfterViewInit()` lifecycle hook is an important wrinkle.
 The timer component isn't available until *after* Angular displays the parent view.
 So it displays `0` seconds initially.
 
-`ngAfterViewInit()` 生命周期钩子是非常重要的一步。被注入的计时器组件只有在 Angular 显示了父组件视图之后才能访问，所以它先把秒数显示为 0.。
+`ngAfterViewInit()` 生命周期钩子是非常重要的一步。被注入的计时器组件只有在 Angular 显示了父组件视图之后才能访问，所以它先把秒数显示为 0。
 
 Then Angular calls the `ngAfterViewInit` lifecycle hook at which time it is *too late* to update the parent view's display of the countdown seconds.
 Angular's unidirectional data flow rule prevents updating the parent view's in the same cycle.
@@ -354,6 +383,8 @@ Use `setTimeout()` to wait one tick and then revise the `seconds()` method so th
 使用 `setTimeout()` 来等下一轮，然后改写 `seconds()` 方法，这样它接下来就会从注入的这个计时器组件里获取秒数的值。
 
 ### Test it for Parent calls an `@ViewChild()`
+
+### 测试它的父级调用 `@ViewChild()`
 
 Use [the same countdown timer tests](guide/component-interaction#countdown-tests) as before.
 
@@ -424,6 +455,8 @@ The *History* log demonstrates that messages travel in both directions between t
 </div>
 
 ### Test it for Parent and children communicate using a service
+
+### 测试它的父级和子级使用服务进行通信
 
 Tests click buttons of both the parent `MissionControlComponent` and the `AstronautComponent` children and verify that the history meets expectations:
 

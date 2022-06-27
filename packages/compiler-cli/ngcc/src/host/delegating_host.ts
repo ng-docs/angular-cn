@@ -19,6 +19,10 @@ import {NgccClassSymbol, NgccReflectionHost} from './ngcc_host';
  * that is being compiled. The first type of queries are handled by the regular TypeScript
  * reflection host, whereas the other queries are handled by an `NgccReflectionHost` that is
  * specific to the entry-point's format.
+ *
+ * 一种反射主机实现，它根据反射器查询是反映正在编译的入口点中的声明文件（对于依赖库）或源文件来委托。第一类查询由常规
+ * TypeScript 反射主机处理，而其他查询由特定于入口点格式的 `NgccReflectionHost` 处理。
+ *
  */
 export class DelegatingReflectionHost implements NgccReflectionHost {
   constructor(private tsHost: ReflectionHost, private ngccHost: NgccReflectionHost) {}

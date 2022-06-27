@@ -12,44 +12,105 @@ import * as shx from 'shelljs';
 
 /**
  * Interface describing a file captured in the Bazel action.
- * https://docs.bazel.build/versions/main/skylark/lib/File.html.
+ * <https://docs.bazel.build/versions/main/skylark/lib/File.html>.
+ *
+ * 描述在 Bazel 操作中捕获的文件的接口。
+ * <https://docs.bazel.build/versions/main/skylark/lib/File.html> 。
+ *
  */
 interface BazelFileInfo {
-  /** Execroot-relative path pointing to the file. */
+  /**
+   * Execroot-relative path pointing to the file.
+   *
+   * 指向文件的 Execroot 相对路径。
+   *
+   */
   path: string;
-  /** The path of this file relative to its root. e.g. omitting `bazel-out/<..>/bin`. */
+  /**
+   * The path of this file relative to its root. e.g. omitting `bazel-out/<..>/bin`.
+   *
+   * 此文件相对于其根目录的路径。例如，省略 `bazel-out/<..>/bin` 。
+   *
+   */
   shortPath: string;
 }
 
-/** Interface describing an entry-point. */
+/**
+ * Interface describing an entry-point.
+ *
+ * 描述入口点的接口。
+ *
+ */
 interface EntryPointInfo {
-  /** ES2020 index file for the APF entry-point. */
+  /**
+   * ES2020 index file for the APF entry-point.
+   *
+   * APF 入口点的 ES2020 索引文件。
+   *
+   */
   index: BazelFileInfo;
-  /** Flat ES2020 ES module bundle file. */
+  /**
+   * Flat ES2020 ES module bundle file.
+   *
+   * 平面 ES2020 ES 模块包文件。
+   *
+   */
   fesm2020Bundle: BazelFileInfo;
-  /** Flat ES2015 ES module bundle file. */
+  /**
+   * Flat ES2015 ES module bundle file.
+   *
+   * 平面 ES2015 ES 模块包文件。
+   *
+   */
   fesm2015Bundle: BazelFileInfo;
-  /** Index type definition file for the APF entry-point. */
+  /**
+   * Index type definition file for the APF entry-point.
+   *
+   * APF 入口点的索引类型定义文件。
+   *
+   */
   typings: BazelFileInfo;
   /**
    * Whether the index or typing paths have been guessed. For entry-points built
    * through `ts_library`, there is no explicit setting that declares the entry-point
    * so the index file is guessed.
+   *
+   * 是否已猜测到索引或键入路径。对于通过 `ts_library`
+   * 构建的入口点，没有显式设置来声明入口点，因此会猜测索引文件。
+   *
    */
   guessedPaths: boolean;
 }
 
-/** Interface capturing relevant metadata for packaging. */
+/**
+ * Interface capturing relevant metadata for packaging.
+ *
+ * 捕获相关元数据以进行打包的接口。
+ *
+ */
 interface PackageMetadata {
-  /** NPM package name of the output. */
+  /**
+   * NPM package name of the output.
+   *
+   * 输出的 NPM 包名称。
+   *
+   */
   npmPackageName: string;
-  /** Record of entry-points (including the primary one) and their info. */
+  /**
+   * Record of entry-points (including the primary one) and their info.
+   *
+   * 入口点（包括主要入口点）及其信息的记录。
+   *
+   */
   entryPoints: Record<string, EntryPointInfo>;
 }
 
 /**
  * List of known `package.json` fields which provide information about
  * supported package formats and their associated entry paths.
+ *
+ * 已知的 `package.json` 字段的列表，这些字段提供有关受支持的包格式及其关联的条目路径的信息。
+ *
  */
 const knownFormatPackageJsonFormatFields = [
   'main',
@@ -61,12 +122,21 @@ const knownFormatPackageJsonFormatFields = [
   'fesm2015',
 ] as const;
 
-/** Union type matching known `package.json` format fields. */
+/**
+ * Union type matching known `package.json` format fields.
+ *
+ * 与已知 `package.json` 格式字段匹配的联合类型。
+ *
+ */
 type KnownPackageJsonFormatFields = typeof knownFormatPackageJsonFormatFields[number];
 
 /**
  * Type describing the conditional exports descriptor for an entry-point.
- * https://nodejs.org/api/packages.html#packages_conditional_exports
+ * <https://nodejs.org/api/packages.html#packages_conditional_exports>
+ *
+ * 描述入口点的条件导出描述符的类型。
+ * [https://nodejs.org/api/packages.html#packages_Conditional_exports](https://nodejs.org/api/packages.html#packages_conditional_exports)
+ *
  */
 type ConditionalExport = {
   node?: string;
@@ -77,7 +147,12 @@ type ConditionalExport = {
   default?: string;
 };
 
-/** Type describing a `package.json` the packager deals with. */
+/**
+ * Type describing a `package.json` the packager deals with.
+ *
+ * 描述打包器处理的 `package.json` 的类型。
+ *
+ */
 type PackageJson = {
   [key in KnownPackageJsonFormatFields]?: string;
 }&{
@@ -144,9 +219,18 @@ function main(args: string[]): void {
 
   /**
    * Writes a file with the specified content into the package output.
+   *
+   * 将具有指定内容的文件写入包输出。
+   *
    * @param outputRelativePath Relative path in the output directory where the
    *   file is written to.
+   *
+   * 写入文件的输出目录中的相对路径。
+   *
    * @param fileContent Content of the file.
+   *
+   * 文件的内容。
+   *
    */
   function writeFile(outputRelativePath: string, fileContent: string|Buffer) {
     const outputPath = path.join(outputDirExecPath, outputRelativePath);
@@ -158,9 +242,18 @@ function main(args: string[]): void {
 
   /**
    * Copies a file into the package output to the specified location.
+   *
+   * 将文件复制到包输出中的指定位置。
+   *
    * @param inputPath File that should be copied.
+   *
+   * 应该复制的文件。
+   *
    * @param outputRelativePath Relative path in the output directory where the
    *   file is written to.
+   *
+   * 写入文件的输出目录中的相对路径。
+   *
    */
   function copyFile(inputPath: string, outputRelativePath: string) {
     const fileContent = fs.readFileSync(inputPath, 'utf8');
@@ -171,15 +264,26 @@ function main(args: string[]): void {
    * Gets the relative path for the given file within the owning package. This
    * assumes the file is contained in the owning package.
    *
+   * 获取给定文件在所属包中的相对路径。这假定文件包含在拥有的包中。
+   *
    * e.g. consider the owning package is `packages/core` and the input file
    * is `packages/core/testing/index.d.ts`. This function would return the
    * relative path as followed: `testing/index.d.ts`.
+   *
+   * 例如，考虑拥有的包是 `packages/core` ，输入文件是 `packages/core/testing/index.d.ts`
+   * 。此函数将返回相对路径： `testing/index.d.ts` 。
+   *
    */
   function getOwningPackageRelativePath(file: BazelFileInfo): string {
     return path.relative(owningPackageName, file.shortPath);
   }
 
-  /** Writes an ESM file into the `esm2020` output directory. */
+  /**
+   * Writes an ESM file into the `esm2020` output directory.
+   *
+   * 将 ESM 文件写入 `esm2020` 输出目录。
+   *
+   */
   function writeEsm2020File(file: BazelFileInfo) {
     // Note: files which do not belong to the owning package of this `ng_package` are omitted.
     // this prevents us from accidentally bringing in transitive node module dependencies.
@@ -189,7 +293,12 @@ function main(args: string[]): void {
     }
   }
 
-  /** Gets the output-relative path where the given flat ESM file should be written to. */
+  /**
+   * Gets the output-relative path where the given flat ESM file should be written to.
+   *
+   * 获取应写入给定平面 ESM 文件的输出相对路径。
+   *
+   */
   function getFlatEsmOutputRelativePath(file: BazelFileInfo) {
     // Flat ESM files should be put into their owning package relative sub-path. e.g. if
     // there is a bundle in `packages/animations/fesm2020/browser/testing.mjs` then we
@@ -199,14 +308,24 @@ function main(args: string[]): void {
     return getOwningPackageRelativePath(file);
   }
 
-  /** Gets the output-relative path where a non-flat ESM2020 file should be written to. */
+  /**
+   * Gets the output-relative path where a non-flat ESM2020 file should be written to.
+   *
+   * 获取应写入非平面 ESM2020 文件的输出相对路径。
+   *
+   */
   function getEsm2020OutputRelativePath(file: BazelFileInfo) {
     // Path computed relative to the current package in bazel-bin. e.g. a ES2020 output file
     // in `bazel-out/<..>/packages/core/src/di.mjs` should be stored in `esm2020/src/di.mjs`.
     return path.join('esm2020', getOwningPackageRelativePath(file));
   }
 
-  /** Gets the output-relative path where the typing file is being written to. */
+  /**
+   * Gets the output-relative path where the typing file is being written to.
+   *
+   * 获取要写入键入文件的输出相对路径。
+   *
+   */
   function getTypingOutputRelativePath(file: BazelFileInfo) {
     // Type definitions are intended to be copied into the package output while preserving the
     // sub-path from the owning package. e.g. a file like `packages/animations/browser/__index.d.ts`
@@ -219,6 +338,10 @@ function main(args: string[]): void {
   /**
    * Gets the entry-point sub-path from the package root. e.g. if the package name
    * is `@angular/cdk`, then for `@angular/cdk/a11y` just `a11y` would be returned.
+   *
+   * 从包根获取入口点子路径。例如，如果包名是 `@angular/cdk` ，那么对于 `@angular/cdk/a11y` `a11y`
+   * 返回 a11y 。
+   *
    */
   function getEntryPointSubpath(moduleName: string): string {
     return moduleName.slice(`${metadata.npmPackageName}/`.length);
@@ -228,6 +351,10 @@ function main(args: string[]): void {
    * Gets whether the given module name resolves to a secondary entry-point.
    * e.g. if the package name is `@angular/cdk`, then for `@angular/cdk/a11y`
    * this would return `true`.
+   *
+   * 获取给定的模块名称是否解析为辅助入口点。例如，如果包名是 `@angular/cdk` ，那么对于
+   * `@angular/cdk/a11y` ，这将返回 `true` 。
+   *
    */
   function isSecondaryEntryPoint(moduleName: string): boolean {
     return getEntryPointSubpath(moduleName) !== '';
@@ -288,10 +415,21 @@ function main(args: string[]): void {
    * Inserts or edits properties into the package.json file(s) in the package so that
    * they point to all the right generated artifacts.
    *
+   * 将属性插入或编辑到包中的 package.json 文件中，以使它们指向所有正确生成的工件。
+   *
    * @param packageJsonOutRelativePath Path where the `package.json` is stored in
    *   the package output.
+   *
+   * `package.json` 存储在包输出中的路径。
+   *
    * @param parsedPackage Parsed package.json content
+   *
+   * 解析的 package.json 内容
+   *
    * @param isGeneratedPackageJson Whether the passed package.json has been generated.
+   *
+   * 是否已生成传递的 package.json 。
+   *
    */
   function insertFormatFieldsIntoPackageJson(
       packageJsonOutRelativePath: string, parsedPackage: Readonly<PackageJson>,
@@ -356,6 +494,9 @@ function main(args: string[]): void {
   /**
    * Updates the primary `package.json` file of the NPM package to specify
    * the module conditional exports and the ESM module type.
+   *
+   * 更新 NPM 包的主要 `package.json` 文件以指定模块条件导出和 ESM 模块类型。
+   *
    */
   function updatePrimaryPackageJson(packageJson: Readonly<PackageJson>): PackageJson {
     if (packageJson.type !== undefined) {
@@ -408,7 +549,13 @@ function main(args: string[]): void {
 
   /**
    * Inserts a subpath export mapping into the specified `package.json` object.
+   *
+   * 将子路径导出映射插入指定的 `package.json` 对象。
+   *
    * @throws An error if the mapping is already defined and would conflict.
+   *
+   * 如果映射已定义并且会冲突，则会出现错误。
+   *
    */
   function insertExportMappingOrError(
       packageJson: PackageJson, subpath: string, mapping: ConditionalExport) {
@@ -437,7 +584,12 @@ function main(args: string[]): void {
     }
   }
 
-  /** Whether the package explicitly sets any of the format properties (like `main`). */
+  /**
+   * Whether the package explicitly sets any of the format properties (like `main`).
+   *
+   * 包是否显式设置任何格式属性（例如 `main` ）。
+   *
+   */
   function hasExplicitFormatProperties(parsedPackage: Readonly<PackageJson>): boolean {
     return Object.keys(parsedPackage)
         .some(
@@ -448,6 +600,9 @@ function main(args: string[]): void {
   /**
    * Normalizes the specified path by replacing backslash separators with Posix
    * forward slash separators.
+   *
+   * 通过使用 Posix 正斜杠分隔符替换反斜杠分隔符来规范化指定路径。
+   *
    */
   function normalizePath(path: string): string {
     const result = path.replace(/\\/g, '/');

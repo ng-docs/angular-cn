@@ -60,6 +60,10 @@ export enum ViewEncapsulation {
    * Uses the browser's native Shadow DOM API to encapsulate CSS styles, meaning that it creates
    * a ShadowRoot for the component's host element which is then used to encapsulate
    * all the Component's styling.
+   *
+   * 使用浏览器的本机 Shadow DOM API 来封装 CSS 样式，这意味着它会为组件的宿主元素创建一个
+   * ShadowRoot，然后用该元素来封装所有组件的样式。
+   *
    */
   ShadowDom = 3
 }

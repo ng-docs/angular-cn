@@ -7,6 +7,7 @@
  */
 import {AbsoluteFsPath, Logger, ReadonlyFileSystem, SourceFile, SourceFileLoader} from '@angular/compiler-cli/private/localize';
 import {ɵParsedMessage, ɵSourceLocation} from '@angular/localize';
+
 import {transformSync} from '../babel_core';
 
 import {makeEs2015ExtractPlugin} from './source_files/es2015_extract_plugin';
@@ -21,6 +22,8 @@ export interface ExtractionOptions {
 /**
  * Extracts parsed messages from file contents, by parsing the contents as JavaScript
  * and looking for occurrences of `$localize` in the source code.
+ *
+ * 从文件内容中提取解析后的消息，方法是将内容解析为 JavaScript 并在源代码中查找 `$localize` 。
  *
  * @publicApi used by CLI
  */
@@ -66,6 +69,9 @@ export class MessageExtractor {
   /**
    * Update the location of each message to point to the source-mapped original source location, if
    * available.
+   *
+   * 更新每条消息的位置以指向源映射的原始源位置（如果可用）。
+   *
    */
   private updateSourceLocations(filename: string, contents: string, messages: ɵParsedMessage[]):
       void {
@@ -98,11 +104,23 @@ export class MessageExtractor {
   /**
    * Find the original location using source-maps if available.
    *
+   * 如果可用，使用 source-maps 查找原始位置。
+   *
    * @param sourceFile The generated `sourceFile` that contains the `location`.
+   *
+   * 包含 `location` 的生成的 `sourceFile` 。
+   *
    * @param location The location within the generated `sourceFile` that needs mapping.
    *
-   * @returns A new location that refers to the original source location mapped from the given
+   * 生成的 `sourceFile` 中需要映射的位置。
+   *
+   * @returns
+   *
+   * A new location that refers to the original source location mapped from the given
    *     `location` in the generated `sourceFile`.
+   *
+   * 一个新位置，它是指从生成的 `sourceFile` 中的给定 `location` 映射的原始源位置。
+   *
    */
   private getOriginalLocation(sourceFile: SourceFile, location: ɵSourceLocation): ɵSourceLocation {
     const originalStart =

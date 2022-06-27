@@ -24,6 +24,9 @@ let i18nCommentsWarned = false;
 
 /**
  * Extract translatable messages from an html AST
+ *
+ * 从 html AST 中提取可翻译消息
+ *
  */
 export function extractMessages(
     nodes: html.Node[], interpolationConfig: InterpolationConfig, implicitTags: string[],
@@ -50,8 +53,11 @@ enum _VisitorMode {
 
 /**
  * This Visitor is used:
- * 1. to extract all the translatable strings from an html AST (see `extract()`),
- * 2. to replace the translatable strings with the actual translations (see `merge()`)
+ * 1\. to extract all the translatable strings from an html AST (see `extract()`),
+ * 2\. to replace the translatable strings with the actual translations (see `merge()`)
+ *
+ * 此访问器用于：1.从 html AST 中提取所有可翻译字符串（请参阅 `extract()` ），2.
+ * 用实际的翻译替换可翻译字符串（请参阅 `merge()` ）
  *
  * @internal
  */
@@ -101,6 +107,9 @@ class _Visitor implements html.Visitor {
 
   /**
    * Extracts the messages from the tree
+   *
+   * 从树中提取消息
+   *
    */
   extract(nodes: html.Node[], interpolationConfig: InterpolationConfig): ExtractionResult {
     this._init(_VisitorMode.Extract, interpolationConfig);
@@ -116,6 +125,9 @@ class _Visitor implements html.Visitor {
 
   /**
    * Returns a tree where all translatable nodes are translated
+   *
+   * 返回所有可翻译节点都被翻译的树
+   *
    */
   merge(
       nodes: html.Node[], translations: TranslationBundle,
@@ -425,9 +437,21 @@ class _Visitor implements html.Visitor {
 
   /**
    * Add the node as a child of the block when:
+   *
+   * 在以下情况下，将节点添加为块的子项：
+   *
    * - we are in a block,
+   *
+   *   我们在一个街区里，
+   *
    * - we are not inside a ICU message (those are handled separately),
+   *
+   *   我们不在 ICU 消息中（这些是单独处理的），
+   *
    * - the node is a "direct child" of the block
+   *
+   *   该节点是块的“直接子项”
+   *
    */
   private _mayBeAddBlockChildren(node: html.Node): void {
     if (this._inI18nBlock && !this._inIcu && this._depth == this._blockStartDepth) {
@@ -437,6 +461,9 @@ class _Visitor implements html.Visitor {
 
   /**
    * Marks the start of a section, see `_closeTranslatableSection`
+   *
+   * 标记一个部分的开始，请参阅 `_closeTranslatableSection`
+   *
    */
   private _openTranslatableSection(node: html.Node): void {
     if (this._isInTranslatableSection) {
@@ -448,8 +475,17 @@ class _Visitor implements html.Visitor {
 
   /**
    * A translatable section could be:
+   *
+   * 可翻译的部分可以是：
+   *
    * - the content of translatable element,
+   *
+   *   可翻译元素的内容，
+   *
    * - nodes between `<!-- i18n -->` and `<!-- /i18n -->` comments
+   *
+   *   `<!-- i18n -->` 和 `<!-- /i18n -->` 注释之间的节点
+   *
    */
   private get _isInTranslatableSection(): boolean {
     return this._msgCountAtSectionStart !== void 0;
@@ -458,18 +494,35 @@ class _Visitor implements html.Visitor {
   /**
    * Terminates a section.
    *
+   * 终止一个节。
+   *
    * If a section has only one significant children (comments not significant) then we should not
    * keep the message from this children:
    *
+   * 如果一个部分只有一个重要的子项（注释不重要），那么我们不应该保留来自这个子项的消息：
+   *
    * `<p i18n="meaning|description">{ICU message}</p>` would produce two messages:
+   *
+   * `<p i18n="meaning|description">{ICU message}</p>` 将生成两条消息：
+   *
    * - one for the <p> content with meaning and description,
+   *
+   *   一个为<p>具有含义和描述的内容，
+   *
    * - another one for the ICU message.
+   *
+   *   另一个用于 ICU 消息。
    *
    * In this case the last message is discarded as it contains less information (the AST is
    * otherwise identical).
    *
+   * 在这种情况下，最后一条消息被丢弃，因为它包含的信息较少（ AST 在其他方面是相同的）。
+   *
    * Note that we should still keep messages extracted from attributes inside the section (ie in the
    * ICU message here)
+   *
+   * 请注意，我们仍然应该保留从节内的属性中提取的消息（即在这里的 ICU 消息中）
+   *
    */
   private _closeTranslatableSection(node: html.Node, directChildren: html.Node[]): void {
     if (!this._isInTranslatableSection) {

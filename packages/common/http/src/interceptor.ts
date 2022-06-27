@@ -24,15 +24,16 @@ import {HttpEvent} from './response';
  * response event stream as well, by applying additional RxJS operators on the stream
  * returned by `next.handle()`.
  *
- * 大多数拦截器都会在外发的请求由 `next.handle(transformedReq)` 发给拦截器链中的下一个拦截器之前，对该请求进行转换。
- * 拦截器还可以通过为 `next.handle()` 返回的流添加额外的 RxJS 操作符，来对响应事件流进行转换。
+ * 大多数拦截器都会在外发的请求由 `next.handle(transformedReq)`
+ * 发给拦截器链中的下一个拦截器之前，对该请求进行转换。 拦截器还可以通过为 `next.handle()`
+ * 返回的流添加额外的 RxJS 操作符，来对响应事件流进行转换。
  *
  * More rarely, an interceptor may handle the request entirely,
  * and compose a new event stream instead of invoking `next.handle()`. This is an
  * acceptable behavior, but keep in mind that further interceptors will be skipped entirely.
  *
- * 极少数情况下，拦截器也可以自己完全处理一个请求，并且组合出新的事件流来而不必调用 `next.handle()`。
- * 这也是允许的，不过要时刻记住，这将会完全跳过所有后继拦截器。
+ * 极少数情况下，拦截器也可以自己完全处理一个请求，并且组合出新的事件流来而不必调用
+ * `next.handle()`。 这也是允许的，不过要时刻记住，这将会完全跳过所有后继拦截器。
  *
  * It is also rare but valid for an interceptor to return multiple responses on the
  * event stream for a single request.
@@ -53,8 +54,10 @@ import {HttpEvent} from './response';
  * loading modules), each import creates a new copy of the `HttpClientModule`, which overwrites the
  * interceptors provided in the root module.
  *
- * 要想在整个应用中使用 `HttpInterceptors` 的同一个实例，就只能在 `AppModule` 模块中导入 `HttpClientModule`，并且把拦截器都添加到应用的根注入器中。
- * 如果你在不同的模块中多次导入 `HttpClientModule`，则每次导入都会创建 `HttpClientModule` 的一个新复本，它将会覆盖根模块上提供的那些拦截器。
+ * 要想在整个应用中使用 `HttpInterceptors` 的同一个实例，就只能在 `AppModule` 模块中导入
+ * `HttpClientModule`，并且把拦截器都添加到应用的根注入器中。 如果你在不同的模块中多次导入
+ * `HttpClientModule`，则每次导入都会创建 `HttpClientModule`
+ * 的一个新复本，它将会覆盖根模块上提供的那些拦截器。
  *
  */
 export interface HttpInterceptor {
@@ -95,7 +98,6 @@ export class HttpInterceptorHandler implements HttpHandler {
 /**
  * A multi-provider token that represents the array of registered
  * `HttpInterceptor` objects.
- *
  *
  * 一个多重提供者（multi-provider）令牌，它代表所有已注册的 `HttpInterceptor` 构成的数组。
  *

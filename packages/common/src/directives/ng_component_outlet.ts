@@ -32,24 +32,42 @@ import {ComponentRef, createNgModuleRef, Directive, Injector, Input, NgModuleFac
  * 你可以使用以下可选属性来控制组件的创建过程：
  *
  * * `ngComponentOutletInjector`: Optional custom {@link Injector} that will be used as parent for
- * the Component. Defaults to the injector of the current view container.
+ *   the Component. Defaults to the injector of the current view container.
  *
- *     `ngComponentOutletInjector`：可选的自定义 {@link
- * Injector}，将用作此组件的父级。默认为当前视图容器的注入器。
+ *   `ngComponentOutletInjector` ：可选的自定义 {@link Injector} ，将用作 Component
+ * 的父级。默认为当前视图容器的注入器。
+ *
+ *   ```
+ *   `ngComponentOutletInjector`：可选的自定义 {@link
+ *   ```
+ *
+ *   Injector}，将用作此组件的父级。默认为当前视图容器的注入器。
  *
  * * `ngComponentOutletContent`: Optional list of projectable nodes to insert into the content
- * section of the component, if it exists.
+ *   section of the component, if it exists.
  *
- *     `ngComponentOutletContent`：要插入到组件内容部分的可投影节点的可选列表（如果存在）。
+ *   `ngComponentOutletContent` ：要插入组件的 content 部分的可项目节点的可选列表（如果存在）。
+ *
+ *   ```
+ *   `ngComponentOutletContent`：要插入到组件内容部分的可投影节点的可选列表（如果存在）。
+ *   ```
  *
  * * `ngComponentOutletNgModule`: Optional NgModule class reference to allow loading another
- * module dynamically, then loading a component from that module.
+ *   module dynamically, then loading a component from that module.
  *
- *     `ngComponentOutletNgModuleFactory`：可选模块工厂，允许动态加载其他模块，然后从该模块加载组件。
+ *   `ngComponentOutletNgModule` ：可选的 NgModule
+ * 类引用，以允许动态加载另一个模块，然后从该模块加载组件。
+ *
+ *   ```
+ *   `ngComponentOutletNgModuleFactory`：可选模块工厂，允许动态加载其他模块，然后从该模块加载组件。
+ *   ```
  *
  * * `ngComponentOutletNgModuleFactory`: Deprecated config option that allows providing optional
- * NgModule factory to allow loading another module dynamically, then loading a component from that
- * module. Use `ngComponentOutletNgModule` instead.
+ *   NgModule factory to allow loading another module dynamically, then loading a component from
+ * that module. Use `ngComponentOutletNgModule` instead.
+ *
+ *   `ngComponentOutletNgModuleFactory` ：不推荐使用的配置选项，它允许提供可选的 NgModule
+ * 工厂以允许动态加载另一个模块，然后从该模块加载组件。改用 `ngComponentOutletNgModule` 。
  *
  * ### Syntax
  *
@@ -77,6 +95,7 @@ import {ComponentRef, createNgModuleRef, Directive, Injector, Input, NgModuleFac
  * Customized NgModule reference
  *
  * 定制的 ngModule 引用
+ *
  * ```
  * <ng-container *ngComponentOutlet="componentTypeExpression;
  *                                   ngModule: ngModuleClass;">
@@ -87,12 +106,14 @@ import {ComponentRef, createNgModuleRef, Directive, Injector, Input, NgModuleFac
  *
  * ### 一个简单的例子
  *
- * {@example common/ngComponentOutlet/ts/module.ts region='SimpleExample'}
+ * {
+ *
+ * @example common/ngComponentOutlet/ts/module.ts region='SimpleExample'}
  *
  * A more complete example with additional options:
  *
- * {@example common/ngComponentOutlet/ts/module.ts region='CompleteExample'}
- *
+ * {
+ * @example common/ngComponentOutlet/ts/module.ts region='CompleteExample'}
  * @publicApi
  * @ngModule CommonModule
  */
@@ -105,7 +126,12 @@ export class NgComponentOutlet implements OnChanges, OnDestroy {
 
   @Input() ngComponentOutletNgModule?: Type<any>;
   /**
-   * @deprecated This input is deprecated, use `ngComponentOutletNgModule` instead.
+   * @deprecated
+   *
+   * This input is deprecated, use `ngComponentOutletNgModule` instead.
+   *
+   * 不推荐使用此输入，请改用 `ngComponentOutletNgModule` 。
+   *
    */
   @Input() ngComponentOutletNgModuleFactory?: NgModuleFactory<any>;
 

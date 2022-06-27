@@ -38,7 +38,7 @@ export function unescapeHtml(text: string): string {
  *
  * Example:
  *
- * 例如：
+ * 比如：
  *
  * ```
  * const COUNTER_KEY = makeStateKey<number>('counter');
@@ -61,7 +61,7 @@ export type StateKey<T> = string&{
  *
  * Example:
  *
- * 例如：
+ * 比如：
  *
  * ```
  * const COUNTER_KEY = makeStateKey<number>('counter');

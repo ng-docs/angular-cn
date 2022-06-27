@@ -19,6 +19,9 @@ import {getBasePaths, trackDuration} from './utils';
 /**
  * An EntryPointFinder that searches for all entry-points that can be found given a `basePath` and
  * `pathMappings`.
+ *
+ * 一个 EntryPointFinder ，它搜索给定 `basePath` 和 `pathMappings` 可以找到的所有入口点。
+ *
  */
 export class DirectoryWalkerEntryPointFinder implements EntryPointFinder {
   private basePaths = getBasePaths(this.logger, this.sourceDirectory, this.pathMappings);
@@ -31,6 +34,9 @@ export class DirectoryWalkerEntryPointFinder implements EntryPointFinder {
   /**
    * Search the `sourceDirectory`, and sub-directories, using `pathMappings` as necessary, to find
    * all package entry-points.
+   *
+   * 搜索 `sourceDirectory` 和子目录，必要时使用 `pathMappings` ，以查找所有包入口点。
+   *
    */
   findEntryPoints(): SortedEntryPointsInfo {
     const unsortedEntryPoints: EntryPointWithDependencies[] = [];
@@ -45,8 +51,18 @@ export class DirectoryWalkerEntryPointFinder implements EntryPointFinder {
   /**
    * Search the `basePath` for possible Angular packages and entry-points.
    *
+   * 在 `basePath` 中搜索可能的 Angular 包和入口点。
+   *
    * @param basePath The path at which to start the search.
-   * @returns an array of `EntryPoint`s that were found within `basePath`.
+   *
+   * 开始搜索的路径。
+   *
+   * @returns
+   *
+   * an array of `EntryPoint`s that were found within `basePath`.
+   *
+   * 在 `basePath` 中找到的 `EntryPoint` 数组。
+   *
    */
   walkBasePathForPackages(basePath: AbsoluteFsPath): EntryPointWithDependencies[] {
     this.logger.debug(

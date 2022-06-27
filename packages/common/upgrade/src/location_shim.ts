@@ -766,11 +766,12 @@ export class $locationShim {
    *
    * This method is supported only in HTML5 mode and only in browsers supporting
    * the HTML5 History API methods such as `pushState` and `replaceState`. If you need to support
-   * older browsers (like Android < 4.0), don't use this method.
+   * older browsers (like Android &lt; 4.0), don't use this method.
    *
-   * 仅在 HTML5 模式下以及在支持 HTML5 History API 方法（例如 `pushState` 和
-   * `replaceState`）的浏览器中才支持此方法。如果你需要支持较旧的浏览器（例如 Android
+   * 仅在 HTML5 模式下以及在支持 HTML5 History API 方法（比如 `pushState` 和
+   * `replaceState`）的浏览器中才支持此方法。如果你需要支持较旧的浏览器（比如 Android
    * &lt;4.0），请不要使用此方法。
+   *
    */
   state(): unknown;
   state(state: unknown): this;

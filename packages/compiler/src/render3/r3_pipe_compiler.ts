@@ -14,11 +14,17 @@ import {R3CompiledExpression, R3Reference, typeWithParameters} from './util';
 export interface R3PipeMetadata {
   /**
    * Name of the pipe type.
+   *
+   * 管道类型的名称。
+   *
    */
   name: string;
 
   /**
    * An expression representing a reference to the pipe itself.
+   *
+   * 表示对管道本身的引用的表达式。
+   *
    */
   type: R3Reference;
 
@@ -26,33 +32,53 @@ export interface R3PipeMetadata {
    * An expression representing the pipe being compiled, intended for use within a class definition
    * itself.
    *
+   * 表示正在编译的管道的表达式，用于在类定义本身中使用。
+   *
    * This can differ from the outer `type` if the class is being compiled by ngcc and is inside an
    * IIFE structure that uses a different name internally.
+   *
+   * 如果类正在由 ngcc 编译并且在内部使用不同名称的 IIFE 结构中，这可能与外部 `type` 不同。
+   *
    */
   internalType: o.Expression;
 
   /**
    * Number of generic type parameters of the type itself.
+   *
+   * 类型本身的泛型类型参数的数量。
+   *
    */
   typeArgumentCount: number;
 
   /**
    * Name of the pipe.
+   *
+   * 管道的名称。
+   *
    */
   pipeName: string;
 
   /**
    * Dependencies of the pipe's constructor.
+   *
+   * 管道构造函数的依赖项。
+   *
    */
   deps: R3DependencyMetadata[]|null;
 
   /**
    * Whether the pipe is marked as pure.
+   *
+   * 管道是否标记为纯。
+   *
    */
   pure: boolean;
 
   /**
    * Whether the pipe is standalone.
+   *
+   * 管道是否是独立的。
+   *
    */
   isStandalone: boolean;
 }

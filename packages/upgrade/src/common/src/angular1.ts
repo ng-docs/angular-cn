@@ -263,7 +263,11 @@ try {
 }
 
 /**
- * @deprecated Use `setAngularJSGlobal` instead.
+ * @deprecated
+ *
+ * Use `setAngularJSGlobal` instead.
+ *
+ * 改用 `setAngularJSGlobal` 。
  *
  * @publicApi
  */
@@ -272,7 +276,11 @@ export function setAngularLib(ng: any): void {
 }
 
 /**
- * @deprecated Use `getAngularJSGlobal` instead.
+ * @deprecated
+ *
+ * Use `getAngularJSGlobal` instead.
+ *
+ * 改用 `getAngularJSGlobal` 。
  *
  * @publicApi
  */
@@ -283,7 +291,11 @@ export function getAngularLib(): any {
 /**
  * Resets the AngularJS global.
  *
+ * 重置 AngularJS 全局。
+ *
  * Used when AngularJS is loaded lazily, and not available on `window`.
+ *
+ * 当延迟加载 AngularJS 时使用，并且在 `window` 上不可用。
  *
  * @publicApi
  */
@@ -293,6 +305,8 @@ export function setAngularJSGlobal(ng: any): void {
 
 /**
  * Returns the current AngularJS global.
+ *
+ * 返回当前的 AngularJS 全局。
  *
  * @publicApi
  */

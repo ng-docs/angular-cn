@@ -9,7 +9,7 @@ This page shows how to validate user input from the UI and display useful valida
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Before reading about form validation, you should have a basic understanding of the following.
 
@@ -17,24 +17,26 @@ Before reading about form validation, you should have a basic understanding of t
 
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language") and HTML5  programming
 
-  [TypeScript](https://www.typescriptlang.org/ "TypeScript 语言") 和 HTML5 编程。
+  [TypeScript](https://www.typescriptlang.org/ "TypeScript 语言")和 HTML5 编程
 
 * Fundamental concepts of [Angular application design](guide/architecture "Introduction to Angular application-design concepts")
 
-  [Angular 应用设计](guide/architecture "Angular 应用设计概念简介")的基本概念。
+  [Angular 应用设计](guide/architecture "Angular 应用设计概念简介")的基本概念
 
 * The [two types of forms that Angular supports](guide/forms-overview "Introduction to Angular forms")
 
-  [Angular 支持的两类表单](guide/forms-overview "Angular 表单简介")。
+  [Angular 支持的两类表单](guide/forms-overview "Angular 表单简介")
 
 * Basics of either [Template-driven Forms](guide/forms "Template-driven forms guide") or [Reactive Forms](guide/reactive-forms "Reactive forms guide")
 
-  [模板驱动表单](guide/forms "模板驱动表单指南")或[响应式表单](guide/reactive-forms "响应式表单指南")的基础知识。
+  [模板驱动表单](guide/forms "模板驱动表单指南")或[响应式表单](guide/reactive-forms "响应式表单指南")的基础知识
 
 <div class="alert is-helpful">
 
 Get the complete example code for the reactive and template-driven forms used here to illustrate form validation.
 Run the <live-example></live-example>.
+
+要获取这里用讲解表单验证的响应式表单和模板驱动表单的完整范例代码。请运行<live-example></live-example>。
 
 </div>
 
@@ -47,12 +49,18 @@ Run the <live-example></live-example>.
 To add validation to a template-driven form, you add the same validation attributes as you would with [native HTML form validation](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5/Constraint_validation).
 Angular uses directives to match these attributes with validator functions in the framework.
 
+为了往模板驱动表单中添加验证机制，你要添加一些验证属性，就像[原生的 HTML 表单验证器](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5/Constraint_validation)。
+Angular 会用指令来匹配这些具有验证功能的指令。
+
 Every time the value of a form control changes, Angular runs validation and generates either a list of validation errors that results in an `INVALID` status, or null, which results in a VALID status.
+
+每当表单控件中的值发生变化时，Angular 就会进行验证，并生成一个验证错误的列表（对应着 `INVALID` 状态）或者 null（对应着 VALID 状态）。
 
 You can then inspect the control's state by exporting `ngModel` to a local template variable.
 The following example exports `NgModel` into a variable called `name`:
 
-你可以通过把 `ngModel` 导出成局部模板变量来查看该控件的状态。 比如下面这个例子就把 `NgModel` 导出成了一个名叫 `name` 的变量：
+你可以通过把 `ngModel` 导出成局部模板变量来查看该控件的状态。
+比如下面这个例子就把 `NgModel` 导出成了一个名叫 `name` 的变量：
 
 <code-example header="template/hero-form-template.component.html (name)" path="form-validation/src/app/template/hero-form-template.component.html" region="name-with-error-msg"></code-example>
 
@@ -64,11 +72,13 @@ Notice the following features illustrated by the example.
   It also carries a custom validator directive, `forbiddenName`.
   For more information, see the [Custom validators](#custom-validators) section.
 
+   `<input>` 元素带有一些 HTML 验证属性：`required` 和 `minlength`。它还带有一个自定义的验证器指令 `forbiddenName`。欲知详情，参阅[自定义验证器](guide/form-validation#custom-validators)一节。
+
 * `#name="ngModel"` exports `NgModel` into a local variable called `name`.
   `NgModel` mirrors many of the properties of its underlying `FormControl` instance, so you can use this in the template to check for control states such as `valid` and `dirty`.
   For a full list of control properties, see the [AbstractControl](api/forms/AbstractControl) API reference.
 
-  `#name="ngModel"` 把 `NgModel` 导出成了一个名叫 `name` 的局部变量。`NgModel` 把自己控制的 `FormControl` 实例的属性映射出去，让你能在模板中检查控件的状态，比如 `valid` 和 `dirty`。要了解完整的控件属性，参阅 API 参考手册中的[AbstractControl](api/forms/AbstractControl)。
+   `#name="ngModel"` 把 `NgModel` 导出成了一个名叫 `name` 的局部变量。`NgModel` 把自己控制的 `FormControl` 实例的属性映射出去，让你能在模板中检查控件的状态，比如 `valid` 和 `dirty`。要了解完整的控件属性，参阅 API 参考手册中的[AbstractControl](api/forms/AbstractControl)。
 
   * The `*ngIf` on the `<div>` element reveals a set of nested message `divs` but only if the `name` is invalid and the control is either `dirty` or `touched`.
 
@@ -89,11 +99,11 @@ To prevent the validator from displaying errors before the user has a chance to 
 
 * When the user changes the value in the watched field, the control is marked as "dirty"
 
-  当用户在被监视的字段中修改该值时，控件就会被标记为 `dirty`（脏）。
+  当用户在被监视的字段中修改该值时，控件就会被标记为 `dirty`（脏）
 
 * When the user blurs the form control element, the control is marked as "touched"
 
-  当用户的表单控件失去焦点时，该控件就会被标记为 `touched`（已接触）。
+  当用户的表单控件失去焦点时，该控件就会被标记为 `touched`（已接触）
 
 </div>
 
@@ -119,9 +129,11 @@ Validator functions can be either synchronous or asynchronous.
 
 | Validator type | Details |
 | :------------- | :------ |
-| Validator type | 详情 |
+| 验证器类型 | 详细信息 |
 | Sync validators | Synchronous functions that take a control instance and immediately return either a set of validation errors or `null`. Pass these in as the second argument when you instantiate a `FormControl`. |
+| 同步验证器 | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。 |
 | Async validators | Asynchronous functions that take a control instance and return a Promise or Observable that later emits a set of validation errors or `null`. Pass these in as the third argument when you instantiate a `FormControl`. |
+| 异步验证器 | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。 |
 
 For performance reasons, Angular only runs async validators if all sync validators pass.
 Each must complete before errors are set.
@@ -133,6 +145,8 @@ Each must complete before errors are set.
 ### 内置验证器函数
 
 You can choose to [write your own validator functions](#custom-validators), or you can use some of Angular's built-in validators.
+
+你可以选择[编写自己的验证器函数](#custom-validators)，也可以使用 Angular 的一些内置验证器。
 
 The same built-in validators that are available as attributes in template-driven forms, such as `required` and `minlength`, are all available to use as functions from the `Validators` class.
 For a full list of built-in validators, see the [Validators](api/forms/Validators) API reference.
@@ -150,6 +164,8 @@ built-in validators —this time, in function form, as in the following example.
 
 In this example, the `name` control sets up two built-in validators —`Validators.required` and `Validators.minLength(4)`— and one custom validator, `forbiddenNameValidator`.
 (For more details see [custom validators](#custom-validators).)
+
+在这个例子中，`name` 控件设置了两个内置验证器 - `Validators.required` 和 `Validators.minLength(4)` 以及一个自定义验证器 `forbiddenNameValidator`。（欲知详情，参阅下面的[自定义验证器](#custom-validators)部分。）
 
 All of these validators are synchronous, so they are passed as the second argument.
 Notice that you can support multiple validators by passing the functions in as an array.
@@ -190,25 +206,33 @@ The built-in validators don't always match the exact use case of your applicatio
 Consider the `forbiddenNameValidator` function from previous [reactive-form examples](#reactive-component-class).
 Here's what the definition of that function looks like.
 
+考虑前面的[响应式式表单中](#reactive-component-class)的 `forbiddenNameValidator` 函数。该函数的定义如下。
+
 <code-example header="shared/forbidden-name.directive.ts (forbiddenNameValidator)" path="form-validation/src/app/shared/forbidden-name.directive.ts" region="custom-validator"></code-example>
 
 The function is a factory that takes a regular expression to detect a *specific* forbidden name and returns a validator function.
 
+这个函数是一个工厂，它接受一个用来检测指定名字是否已被禁用的正则表达式，并返回一个验证器函数。
+
 In this sample, the forbidden name is "bob", so the validator rejects any hero name containing "bob".
 Elsewhere it could reject "alice" or any name that the configuring regular expression matches.
 
-在本例中，禁止的名字是“bob”； 验证器会拒绝任何带有“bob”的英雄名字。 在其它地方，只要配置的正则表达式可以匹配上，它可能拒绝“alice”或者任何其它名字。
+在本例中，禁止的名字是“bob”；
+验证器会拒绝任何带有“bob”的英雄名字。
+在其它地方，只要配置的正则表达式可以匹配上，它可能拒绝“alice”或者任何其它名字。
 
 The `forbiddenNameValidator` factory returns the configured validator function.
 That function takes an Angular control object and returns *either* null if the control value is valid *or* a validation error object.
 The validation error object typically has a property whose name is the validation key, `'forbiddenName'`, and whose value is an arbitrary dictionary of values that you could insert into an error message, `{name}`.
 
-`forbiddenNameValidator` 工厂函数返回配置好的验证器函数。 该函数接受一个 Angular 控制器对象，并在控制器值有效时返回 null，或无效时返回验证错误对象。 验证错误对象通常有一个名为验证秘钥（`forbiddenName`）的属性。其值为一个任意词典，你可以用来插入错误信息（`{name}`）。
+`forbiddenNameValidator` 工厂函数返回配置好的验证器函数。
+该函数接受一个 Angular 控制器对象，并在控制器值有效时返回 null，或无效时返回验证错误对象。
+验证错误对象通常有一个名为验证秘钥（`forbiddenName`）的属性。其值为一个任意词典，你可以用来插入错误信息（`{name}`）。
 
 Custom async validators are similar to sync validators, but they must instead return a Promise or observable that later emits null or a validation error object.
 In the case of an observable, the observable must complete, at which point the form uses the last value emitted for validation.
 
-自定义异步验证器和同步验证器很像，只是它们必须返回一个稍后会输出 null 或“验证错误对象”的承诺（Promise）或可观察对象，如果是可观察对象，那么它必须在某个时间点被完成（complete），那时候这个表单就会使用它输出的最后一个值作为验证结果。（译注：HTTP 服务是自动完成的，但是某些自定义的可观察对象可能需要手动调用 complete 方法）。
+自定义异步验证器和同步验证器很像，只是它们必须返回一个稍后会输出 null 或“验证错误对象”的承诺（Promise）或可观察对象，如果是可观察对象，那么它必须在某个时间点被完成（complete），那时候这个表单就会使用它输出的最后一个值作为验证结果。（译注：HTTP 服务是自动完成的，但是某些自定义的可观察对象可能需要手动调用 complete 方法）
 
 <a id="adding-to-reactive-forms"></a>
 
@@ -231,7 +255,7 @@ In reactive forms, add a custom validator by passing the function directly to th
 In template-driven forms, add a directive to the template, where the directive wraps the validator function.
 For example, the corresponding `ForbiddenValidatorDirective` serves as a wrapper around the `forbiddenNameValidator`.
 
-在模板驱动表单中，要为模板添加一个指令，该指令包含了 validator 函数。例如，对应的 `ForbiddenValidatorDirective` 用作 `forbiddenNameValidator` 的包装器。
+在模板驱动表单中，要为模板添加一个指令，该指令包含了 validator 函数。比如，对应的 `ForbiddenValidatorDirective` 用作 `forbiddenNameValidator` 的包装器。
 
 Angular recognizes the directive's role in the validation process because the directive registers itself with the `NG_VALIDATORS` provider, as shown in the following example.
 `NG_VALIDATORS` is a predefined provider with an extensible collection of validators.
@@ -243,7 +267,7 @@ Angular 在验证过程中会识别出该指令的作用，因为该指令把自
 The directive class then implements the `Validator` interface, so that it can easily integrate with Angular forms.
 Here is the rest of the directive to help you get an idea of how it all comes together.
 
-然后该指令类实现了 `Validator` 接口，以便它能简单的与 Angular 表单集成在一起。这个指令的其余部分有助于你理解它们是如何协作的：。
+然后该指令类实现了 `Validator` 接口，以便它能简单的与 Angular 表单集成在一起。这个指令的其余部分有助于你理解它们是如何协作的：
 
 <code-example header="shared/forbidden-name.directive.ts (directive)" path="form-validation/src/app/shared/forbidden-name.directive.ts" region="directive"></code-example>
 
@@ -275,7 +299,7 @@ Angular automatically mirrors many control properties onto the form control elem
 Use these classes to style form control elements according to the state of the form.
 The following classes are currently supported.
 
-Angular 会自动把很多控件属性作为 CSS 类映射到控件所在的元素上。你可以使用这些类来根据表单状态给表单控件元素添加样式。目前支持下列类：。
+Angular 会自动把很多控件属性作为 CSS 类映射到控件所在的元素上。你可以使用这些类来根据表单状态给表单控件元素添加样式。目前支持下列类：
 
 * `.ng-valid`
 
@@ -293,7 +317,7 @@ Angular 会自动把很多控件属性作为 CSS 类映射到控件所在的元�
 
 * `.ng-submitted` (enclosing form element only)
 
-  `.ng-submitted` (只对 form 元素添加)
+    `.ng-submitted` (只对 form 元素添加)
 
 In the following example, the hero form uses the `.ng-valid` and `.ng-invalid` classes to
 set the color of each form control's border.
@@ -309,6 +333,8 @@ set the color of each form control's border.
 A cross-field validator is a [custom validator](#custom-validators "Read about custom validators") that compares the values of different fields in a form and accepts or rejects them in combination.
 For example, you might have a form that offers mutually incompatible options, so that if the user can choose A or B, but not both.
 Some field values might also depend on others; a user might be allowed to choose B only if A is also chosen.
+
+跨字段交叉验证器是一种[自定义验证器](#custom-validators "阅读自定义验证器")，可以对表单中不同字段的值进行比较，并针对它们的组合进行接受或拒绝。比如，你可能有一个提供互不兼容选项的表单，以便让用户选择 A 或 B，而不能两者都选。某些字段值也可能依赖于其它值；用户可能只有当选择了 A 之后才能选择 B。
 
 The following cross validation examples show how to do the following:
 
@@ -393,12 +419,16 @@ To provide better user experience, the template shows an appropriate error messa
 
 This `*ngIf` displays the error if the `FormGroup` has the cross validation error returned by the `identityRevealed` validator, but only if the user finished [interacting with the form](#dirty-or-touched).
 
+如果 `FormGroup` 中有一个由 `identityRevealed` 验证器返回的交叉验证错误，`*ngIf` 就会显示错误，但只有当该用户已经[与表单进行过交互](#dirty-or-touched)的时候才显示。
+
 ### Adding cross-validation to template-driven forms
 
 ### 为模板驱动表单添加交叉验证
 
 For a template-driven form, you must create a directive to wrap the validator function.
 You provide that directive as the validator using the [`NG_VALIDATORS` token](#adding-to-template-driven-forms "Read about providing validators"), as shown in the following example.
+
+对于模板驱动表单，你必须创建一个指令来包装验证器函数。你可以使用[`NG_VALIDATORS` 令牌](#adding-to-template-driven-forms "了解如何提供验证器")来把该指令提供为验证器，如下例所示。
 
 <code-example header="shared/identity-revealed.directive.ts" path="form-validation/src/app/shared/identity-revealed.directive.ts" region="cross-validation-directive"></code-example>
 
@@ -440,7 +470,7 @@ These are very similar to their synchronous counterparts, with the following dif
 Asynchronous validation happens after the synchronous validation, and is performed only if the synchronous validation is successful.
 This check lets forms avoid potentially expensive async validation processes (such as an HTTP request) if the more basic validation methods have already found invalid input.
 
-异步验证在同步验证完成后才会发生，并且只有在同步验证成功时才会执行。如果更基本的验证方法已经发现了无效输入，那么这种检查顺序就可以让表单避免使用昂贵的异步验证流程（例如 HTTP 请求）。
+异步验证在同步验证完成后才会发生，并且只有在同步验证成功时才会执行。如果更基本的验证方法已经发现了无效输入，那么这种检查顺序就可以让表单避免使用昂贵的异步验证流程（比如 HTTP 请求）。
 
 After asynchronous validation begins, the form control enters a `pending` state.
 Inspect the control's `pending` property and use it to give visual feedback about the ongoing validation operation.
@@ -471,6 +501,8 @@ To validate the potential alter ego entry, the validator must initiate an asynch
 
 The following code creates the validator class, `UniqueAlterEgoValidator`, which implements the `AsyncValidator` interface.
 
+下面的代码创建了一个验证器类 `UniqueAlterEgoValidator`，它实现了 `AsyncValidator` 接口。
+
 <code-example path="form-validation/src/app/shared/alter-ego.directive.ts" region="async-validator"></code-example>
 
 The constructor injects the `HeroesService`, which defines the following interface.
@@ -488,7 +520,8 @@ interface HeroesService {
 In a real world application, the `HeroesService` would be responsible for making an HTTP request to the hero database to check if the alter ego is available.
 From the validator's point of view, the actual implementation of the service is not important, so the example can just code against the `HeroesService` interface.
 
-在真实的应用中，`HeroesService` 会负责向英雄数据库发起一个 HTTP 请求，以检查该第二人格是否可用。 从该验证器的视角看，此服务的具体实现无关紧要，所以这个例子仅仅针对 `HeroesService` 接口来写实现代码。
+在真实的应用中，`HeroesService` 会负责向英雄数据库发起一个 HTTP 请求，以检查该第二人格是否可用。
+从该验证器的视角看，此服务的具体实现无关紧要，所以这个例子仅仅针对 `HeroesService` 接口来写实现代码。
 
 As the validation begins, the `UniqueAlterEgoValidator` delegates to the `HeroesService` `isAlterEgoTaken()` method with the current control value.
 At this point the control is marked as `pending` and remains in this state until the observable chain returned from the `validate()` method completes.
@@ -514,27 +547,43 @@ The `pending` flag is set to `false`, and the form validity is updated.
 
 ### Adding async validators to reactive forms
 
+### 将异步验证器添加到响应式表单
+
 To use an async validator in reactive forms, begin by injecting the validator into the constructor of the component class.
+
+要以响应式表单使用异步验证器，请首先将验证器注入组件类的构造函数。
 
 <code-example path="form-validation/src/app/reactive/hero-form-reactive.component.2.ts" region="async-validator-inject"></code-example>
 
 Then, pass the validator function directly to the `FormControl` to apply it.
 
+然后，将验证器函数直接传递给 `FormControl` 以应用它。
+
 In the following example, the `validate` function of `UniqueAlterEgoValidator` is applied to `alterEgoControl` by passing it to the control's `asyncValidators` option and binding it to the instance of `UniqueAlterEgoValidator` that was injected into `HeroFormReactiveComponent`.
 The value of `asyncValidators` can be either a single async validator function, or an array of functions.
 To learn more about `FormControl` options, see the [AbstractControlOptions](api/forms/AbstractControlOptions) API reference.
+
+在以下示例中， `UniqueAlterEgoValidator` 的 `validate` 函数通过将其传递给控件的 `asyncValidators` 选项并将其绑定到注入到 `HeroFormReactiveComponent` 中的 `UniqueAlterEgoValidator` 实例来应用于 `alterEgoControl` 。 `asyncValidators` 的值可以是单个异步验证器函数，也可以是函数数组。要了解有关 `FormControl` 选项的更多信息，参阅[AbstractControlOptions](api/forms/AbstractControlOptions) API 参考。
 
 <code-example path="form-validation/src/app/reactive/hero-form-reactive.component.2.ts" region="async-validator-usage"></code-example>
 
 ### Adding async validators to template-driven forms
 
+### 将异步验证器添加到模板驱动表单
+
 To use an async validator in template-driven forms, create a new directive and register the `NG_ASYNC_VALIDATORS` provider on it.
 
+要在模板驱动表单中使用异步验证器，请创建一个新指令并在其上注册 `NG_ASYNC_VALIDATORS` 提供者。
+
 In the example below, the directive injects the `UniqueAlterEgoValidator` class that contains the actual validation logic and invokes it in the `validate` function, triggered by Angular when validation should happen.
+
+在下面的示例中，该指令注入包含实际验证逻辑的 `UniqueAlterEgoValidator` 类，并在应该进行验证时由 Angular 触发的 `validate` 函数中调用它。
 
 <code-example path="form-validation/src/app/shared/alter-ego.directive.ts" region="async-validator-directive"></code-example>
 
 Then, as with synchronous validators, add the directive's selector to an input to activate it.
+
+然后，与使用同步验证器一样，将指令的选择器添加到输入以激活它。
 
 <code-example header="template/hero-form-template.component.html (unique-alter-ego-input)" path="form-validation/src/app/template/hero-form-template.component.html" region="alterEgo-input"></code-example>
 
@@ -580,6 +629,8 @@ new FormControl('', {updateOn: 'blur'});
 By default, Angular disables [native HTML form validation](https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation) by adding the `novalidate` attribute on the enclosing `<form>` and uses directives to match these attributes with validator functions in the framework.
 If you want to use native validation **in combination** with Angular-based validation, you can re-enable it with the `ngNativeValidate` directive.
 See the [API docs](api/forms/NgForm#native-dom-validation-ui) for details.
+
+默认情况下，Angular 通过在 `<form>` 元素上添加 `novalidate` 属性来禁用[原生 HTML 表单验证](https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation)，并使用指令将这些属性与框架中的验证器函数相匹配。如果你想将原生验证与基于 Angular 的验证**结合**使用，你可以使用 `ngNativeValidate` 指令来重新启用它。欲知详情，参阅[ API 文档](api/forms/NgForm#native-dom-validation-ui)。
 
 <!-- links -->
 

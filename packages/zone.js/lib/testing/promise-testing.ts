@@ -19,11 +19,19 @@
  *   }).then((jsonpResult) => {
  *     // get jsonp result.
  *
- *     // user will expect AsyncZoneSpec wait for
- *     // then, but because jsonp is not zone aware
- *     // AsyncZone will finish before then is called.
+ * async/fakeAsync zoneSpec 测试的 Promise 可以支持 zone.js 不支持的异步操作，例如 it ('test jsonp
+ * in AsyncZone', async() => { new Promise(res => { jsonp(url, (data) = > { // 成功回调 res(data);
+ * }); }).then((jsonpResult) => { // 获取 jsonp 结果。
+ *
+ * ```
+ * // user will expect AsyncZoneSpec wait for
+ * // then, but because jsonp is not zone aware
+ * // AsyncZone will finish before then is called.
+ * ```
+ *
  *   });
  * });
+ *
  */
 Zone.__load_patch('promisefortest', (global: any, Zone: ZoneType, api: _ZonePrivate) => {
   const symbolState: string = api.symbol('state');

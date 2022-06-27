@@ -16,7 +16,8 @@
  * An example of a `Type` is `MyCustomComponent` class, which in JavaScript is represented by
  * the `MyCustomComponent` constructor function.
  *
- * `Type` 的例子之一是 `MyCustomComponent` 类，该类在 JavaScript 中由 `MyCustomComponent` 构造函数表示。
+ * `Type` 的例子之一是 `MyCustomComponent` 类，该类在 JavaScript 中由 `MyCustomComponent`
+ * 构造函数表示。
  *
  * @publicApi
  */
@@ -51,18 +52,28 @@ export type Mutable<T extends {[x: string]: any}, K extends string> = {
 /**
  * Returns a writable type version of type.
  *
+ * 返回 type 的可写类型版本。
+ *
  * USAGE:
  * Given:
+ *
+ * 用法： 给定：
+ *
  * ```
  * interface Person {readonly name: string}
  * ```
  *
  * We would like to get a read/write version of `Person`.
+ *
+ * 我们希望获得 `Person` 的读/写版本。
+ *
  * ```
  * const WritablePerson = Writable<Person>;
  * ```
  *
  * The result is that you can do:
+ *
+ * 结果是你可以这样做：
  *
  * ```
  * const readonlyPerson: Person = {name: 'Marry'};
@@ -72,6 +83,7 @@ export type Mutable<T extends {[x: string]: any}, K extends string> = {
  * // Error: Correctly detects that `Person` did not have `age` property.
  * (readonlyPerson as WritablePerson).age = 30;
  * ```
+ *
  */
 export type Writable<T> = {
   -readonly[K in keyof T]: T[K];

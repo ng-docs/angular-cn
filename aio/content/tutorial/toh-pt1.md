@@ -11,6 +11,8 @@ Next you will create a new component to display hero information and place that 
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
+  要查看本页所讲的范例程序，参阅<live-example></live-example>。
+
 </div>
 
 ## Create the heroes component
@@ -53,12 +55,17 @@ CLI 自动生成了三个元数据属性：
 | :--------- | :------ |
 | 属性 | 详情 |
 | `selector` | The component's CSS element selector. |
+| `selector` | 组件的 CSS 元素选择器 |
 | `templateUrl` | The location of the component's template file. |
+| `templateUrl` | 组件模板文件的位置。 |
 | `styleUrls` | The location of the component's private CSS styles. |
+| `styleUrls` | 组件私有 CSS 样式表文件的位置。 |
 
 <a id="selector"></a>
 
 The [CSS element selector](https://developer.mozilla.org/docs/Web/CSS/Type_selectors), `'app-heroes'`, matches the name of the HTML element that identifies this component within a parent component's template.
+
+[CSS 元素选择器](https://developer.mozilla.org/docs/Web/CSS/Type_selectors) `app-heroes` 用来在父组件的模板中匹配 HTML 元素的名称，以识别出该组件。
 
 The `ngOnInit()` is a [lifecycle hook](guide/lifecycle-hooks#oninit).
 Angular calls `ngOnInit()` shortly after creating a component.
@@ -101,6 +108,9 @@ To display the `HeroesComponent`, you must add it to the template of the shell `
 
 Remember that `app-heroes` is the [element selector](#selector) for the `HeroesComponent`.
 So add an `<app-heroes>` element to the `AppComponent` template file, just below the title.
+
+别忘了，`app-heroes` 就是 `HeroesComponent` 的 [元素选择器](#selector)。
+所以，只要把 `<app-heroes>` 元素添加到 `AppComponent` 的模板文件中就可以了，就放在标题下方。
 
 <code-example header="src/app/app.component.html" path="toh-pt1/src/app/app.component.html"></code-example>
 
@@ -159,9 +169,11 @@ The browser refreshes and displays the hero's information.
 
 ## Format with the `UppercasePipe`
 
+## 使用 `UppercasePipe` 进行格式化
+
 Modify the `hero.name` binding like this.
 
-把 `hero.name` 的绑定修改成这样：。
+把 `hero.name` 的绑定修改成这样。
 
 <code-example header="src/app/heroes/heroes.component.html" path="toh-pt1/src/app/heroes/heroes.component.html" region="pipe"></code-example>
 
@@ -170,6 +182,8 @@ The browser refreshes and now the hero's name is displayed in capital letters.
 浏览器刷新了。现在，英雄的名字显示成了大写字母。
 
 The word `uppercase` in the interpolation binding, right after the pipe (<code>\|</code>) character, activates the built-in `UppercasePipe`.
+
+绑定表达式中的 `uppercase` 位于管道操作符（ `|` ）的右边，用来调用内置管道 `UppercasePipe`。
 
 [Pipes](guide/pipes) are a good way to format strings, currency amounts, dates and other display data.
 Angular ships with several built-in pipes and you can create your own.
@@ -195,6 +209,8 @@ To automate that data flow, setup a two-way data binding between the `<input>` f
 
 ### Two-way binding
 
+### 双向绑定
+
 Refactor the details area in the `HeroesComponent` template so it looks like this:
 
 把模板中的英雄详情区重构成这样：
@@ -203,12 +219,16 @@ Refactor the details area in the `HeroesComponent` template so it looks like thi
 
 `[(ngModel)]` is Angular's two-way data binding syntax.
 
+`[(ngModel)]` 是 Angular 的双向数据绑定语法。
+
 Here it binds the `hero.name` property to the HTML textbox so that data can flow *in both directions*:
 From the `hero.name` property to the textbox and from the textbox back to the `hero.name`.
 
 这里把 `hero.name` 属性绑定到了 HTML 的 textbox 元素上，以便数据流可以**双向流动**：从 `hero.name` 属性流动到 textbox，并且从 textbox 流回到 `hero.name`。
 
 ### The missing `FormsModule`
+
+### 缺少 `FormsModule`
 
 Notice that the application stopped working when you added `[(ngModel)]`.
 
@@ -257,6 +277,8 @@ Angular CLI 在创建项目的时候就在 `src/app/app.module.ts` 中生成了�
 
 ### Import `FormsModule`
 
+### 导入 `FormsModule`
+
 Open `AppModule` (`app.module.ts`) and import the `FormsModule` symbol from the `@angular/forms` library.
 
 打开 `AppModule` (`app.module.ts`) 并从 `@angular/forms` 库中导入 `FormsModule` 符号。
@@ -281,7 +303,7 @@ You can edit the hero's name and see the changes reflected immediately in the `<
 
 Every component must be declared in *exactly one* [NgModule](guide/ngmodules).
 
-每个组件都必须声明在（且只能声明在）一个 [NgModule](guide/ngmodules) 中。
+每个组件都必须声明在（*且只能声明在*）一个 [NgModule](guide/ngmodules) 中。
 
 *You* didn't declare the `HeroesComponent`.
 So why did the application work?
@@ -309,6 +331,9 @@ The `HeroesComponent` is declared in the `@NgModule.declarations` array.
 **NOTE**: <br />
 `AppModule`  declares both application components, `AppComponent` and `HeroesComponent`.
 
+**注意**：<br />
+`AppModule` 声明了应用中的所有组件，`AppComponent` 和 `HeroesComponent`。
+
 </div>
 
 ## Final code review
@@ -317,7 +342,7 @@ The `HeroesComponent` is declared in the `@NgModule.declarations` array.
 
 Here are the code files discussed on this page.
 
-下面是本页所提到的源代码：。
+下面是本页所提到的源代码。
 
 <code-tabs>
     <code-pane header="src/app/heroes/heroes.component.ts" path="toh-pt1/src/app/heroes/heroes.component.ts"></code-pane>
@@ -334,30 +359,30 @@ Here are the code files discussed on this page.
 
 * You used the CLI to create a second `HeroesComponent`
 
-  你使用 CLI 创建了第二个组件 `HeroesComponent`。
+  你使用 CLI 创建了第二个组件 `HeroesComponent`
 
 * You displayed the `HeroesComponent` by adding it to the `AppComponent` shell
 
-  你把 `HeroesComponent` 添加到了壳组件 `AppComponent` 中，以便显示它。
+  你把 `HeroesComponent` 添加到了壳组件 `AppComponent` 中，以便显示它
 
 * You applied the `UppercasePipe` to format the name
 
-  你使用 `UppercasePipe` 来格式化英雄的名字。
+  你使用 `UppercasePipe` 来格式化英雄的名字
 
 * You used two-way data binding with the `ngModel` directive
 
-  你用 `ngModel` 指令实现了双向数据绑定。
+  你用 `ngModel` 指令实现了双向数据绑定
 
 * You learned about the `AppModule`
 
-  你知道了 `AppModule`。
+  你知道了 `AppModule`
 
 * You imported the `FormsModule` in the `AppModule` so that Angular would recognize and apply the `ngModel` directive
 
-  你把 `FormsModule` 导入了 `AppModule`，以便 Angular 能识别并应用 `ngModel` 指令。
+  你把 `FormsModule` 导入了 `AppModule`，以便 Angular 能识别并应用 `ngModel` 指令
 
 * You learned the importance of declaring components in the `AppModule` and appreciated that the CLI declared it for you
 
-  你知道了把组件声明到 `AppModule` 是很重要的，并认识到 CLI 会自动帮你声明它。
+  你知道了把组件声明到 `AppModule` 是很重要的，并认识到 CLI 会自动帮你声明它
 
 @reviewed 2022-02-28

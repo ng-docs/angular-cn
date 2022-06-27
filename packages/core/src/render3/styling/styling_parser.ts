@@ -12,7 +12,12 @@ import {CharCode} from '../../util/char_code';
 /**
  * Stores the locations of key/value indexes while parsing styling.
  *
+ * 在解析样式时存储键/值索引的位置。
+ *
  * In case of `cssText` parsing the indexes are like so:
+ *
+ * 在 `cssText` 解析的情况下，索引是这样的：
+ *
  * ```
  *   "key1: value1; key2: value2; key3: value3"
  *                  ^   ^ ^     ^             ^
@@ -24,6 +29,9 @@ import {CharCode} from '../../util/char_code';
  * ```
  *
  * In case of `className` parsing the indexes are like so:
+ *
+ * 在 `className` 解析的情况下，索引是这样的：
+ *
  * ```
  *   "key1 key2 key3"
  *         ^   ^    ^
@@ -31,7 +39,11 @@ import {CharCode} from '../../util/char_code';
  *         |   +------------------------ keyEnd
  *         +---------------------------- key
  * ```
+ *
  * NOTE: `value` and `valueEnd` are used only for styles, not classes.
+ *
+ * 注意： `value` 和 `valueEnd` 仅用于样式，而不用于类。
+ *
  */
 interface ParserState {
   textEnd: number;
@@ -51,7 +63,13 @@ const parserState: ParserState = {
 
 /**
  * Retrieves the last parsed `key` of style.
+ *
+ * 检索 style 的最后一个解析 `key` 。
+ *
  * @param text the text to substring the key from.
+ *
+ * 要作为键的子字符串的文本。
+ *
  */
 export function getLastParsedKey(text: string): string {
   return text.substring(parserState.key, parserState.keyEnd);
@@ -59,7 +77,13 @@ export function getLastParsedKey(text: string): string {
 
 /**
  * Retrieves the last parsed `value` of style.
+ *
+ * 检索 style 的最后解析的 `value` 。
+ *
  * @param text the text to substring the key from.
+ *
+ * 要作为键的子字符串的文本。
+ *
  */
 export function getLastParsedValue(text: string): string {
   return text.substring(parserState.value, parserState.valueEnd);
@@ -68,15 +92,29 @@ export function getLastParsedValue(text: string): string {
 /**
  * Initializes `className` string for parsing and parses the first token.
  *
+ * 初始化 `className` 字符串以进行解析并解析第一个标记。
+ *
  * This function is intended to be used in this format:
+ *
+ * 此函数旨在以这种格式使用：
+ *
  * ```
  * for (let i = parseClassName(text); i >= 0; i = parseClassNameNext(text, i)) {
  *   const key = getLastParsedKey();
  *   ...
  * }
  * ```
+ *
  * @param text `className` to parse
- * @returns index where the next invocation of `parseClassNameNext` should resume.
+ *
+ * 要 `className` 的类名
+ *
+ * @returns
+ *
+ * index where the next invocation of `parseClassNameNext` should resume.
+ *
+ * 下一次调用 `parseClassNameNext` 应该恢复的索引。
+ *
  */
 export function parseClassName(text: string): number {
   resetParserState(text);
@@ -86,7 +124,12 @@ export function parseClassName(text: string): number {
 /**
  * Parses next `className` token.
  *
+ * 解析下一个 `className` 标记。
+ *
  * This function is intended to be used in this format:
+ *
+ * 此函数旨在以这种格式使用：
+ *
  * ```
  * for (let i = parseClassName(text); i >= 0; i = parseClassNameNext(text, i)) {
  *   const key = getLastParsedKey();
@@ -95,8 +138,19 @@ export function parseClassName(text: string): number {
  * ```
  *
  * @param text `className` to parse
+ *
+ * 要 `className` 的类名
+ *
  * @param index where the parsing should resume.
- * @returns index where the next invocation of `parseClassNameNext` should resume.
+ *
+ * 解析应该在哪里恢复。
+ *
+ * @returns
+ *
+ * index where the next invocation of `parseClassNameNext` should resume.
+ *
+ * 下一次调用 `parseClassNameNext` 应该恢复的索引。
+ *
  */
 export function parseClassNameNext(text: string, index: number): number {
   const end = parserState.textEnd;
@@ -110,7 +164,12 @@ export function parseClassNameNext(text: string, index: number): number {
 /**
  * Initializes `cssText` string for parsing and parses the first key/values.
  *
+ * 初始化 `cssText` 字符串以进行解析并解析第一个键/值。
+ *
  * This function is intended to be used in this format:
+ *
+ * 此函数旨在以这种格式使用：
+ *
  * ```
  * for (let i = parseStyle(text); i >= 0; i = parseStyleNext(text, i))) {
  *   const key = getLastParsedKey();
@@ -118,8 +177,17 @@ export function parseClassNameNext(text: string, index: number): number {
  *   ...
  * }
  * ```
+ *
  * @param text `cssText` to parse
- * @returns index where the next invocation of `parseStyleNext` should resume.
+ *
+ * 要解析的 `cssText`
+ *
+ * @returns
+ *
+ * index where the next invocation of `parseStyleNext` should resume.
+ *
+ * 下一次调用 `parseStyleNext` 应该恢复的索引。
+ *
  */
 export function parseStyle(text: string): number {
   resetParserState(text);
@@ -129,17 +197,34 @@ export function parseStyle(text: string): number {
 /**
  * Parses the next `cssText` key/values.
  *
+ * 解析下一个 `cssText` 键/值。
+ *
  * This function is intended to be used in this format:
+ *
+ * 此函数旨在以这种格式使用：
+ *
  * ```
  * for (let i = parseStyle(text); i >= 0; i = parseStyleNext(text, i))) {
  *   const key = getLastParsedKey();
  *   const value = getLastParsedValue();
  *   ...
  * }
+ * ```
  *
  * @param text `cssText` to parse
+ *
+ * 要解析的 `cssText`
+ *
  * @param index where the parsing should resume.
- * @returns index where the next invocation of `parseStyleNext` should resume.
+ *
+ * 解析应该在哪里恢复。
+ *
+ * @returns
+ *
+ * index where the next invocation of `parseStyleNext` should resume.
+ *
+ * 下一次调用 `parseStyleNext` 应该恢复的索引。
+ *
  */
 export function parseStyleNext(text: string, startIndex: number): number {
   const end = parserState.textEnd;
@@ -157,7 +242,13 @@ export function parseStyleNext(text: string, startIndex: number): number {
 
 /**
  * Reset the global state of the styling parser.
+ *
+ * 重置样式解析器的全局状态。
+ *
  * @param text The styling text to parse.
+ *
+ * 要解析的样式文本。
+ *
  */
 export function resetParserState(text: string): void {
   parserState.key = 0;
@@ -170,11 +261,27 @@ export function resetParserState(text: string): void {
 /**
  * Returns index of next non-whitespace character.
  *
+ * 返回下一个非空格字符的索引。
+ *
  * @param text Text to scan
+ *
+ * 要扫描的文本
+ *
  * @param startIndex Starting index of character where the scan should start.
+ *
+ * 扫描应该开始的字符的起始索引。
+ *
  * @param endIndex Ending index of character where the scan should end.
- * @returns Index of next non-whitespace character (May be the same as `start` if no whitespace at
+ *
+ * 扫描应该结束的字符的结束索引。
+ *
+ * @returns
+ *
+ * Index of next non-whitespace character (May be the same as `start` if no whitespace at
  *          that location.)
+ *
+ * 下一个非空格字符的索引（如果该位置没有空格，可能与 `start` 相同。）
+ *
  */
 export function consumeWhitespace(text: string, startIndex: number, endIndex: number): number {
   while (startIndex < endIndex && text.charCodeAt(startIndex) <= CharCode.SPACE) {
@@ -186,10 +293,26 @@ export function consumeWhitespace(text: string, startIndex: number, endIndex: nu
 /**
  * Returns index of last char in class token.
  *
+ * 返回类标记中最后一个 char 的索引。
+ *
  * @param text Text to scan
+ *
+ * 要扫描的文本
+ *
  * @param startIndex Starting index of character where the scan should start.
+ *
+ * 扫描应该开始的字符的起始索引。
+ *
  * @param endIndex Ending index of character where the scan should end.
- * @returns Index after last char in class token.
+ *
+ * 扫描应该结束的字符的结束索引。
+ *
+ * @returns
+ *
+ * Index after last char in class token.
+ *
+ * 类标记中最后一个 char 之后的索引。
+ *
  */
 export function consumeClassToken(text: string, startIndex: number, endIndex: number): number {
   while (startIndex < endIndex && text.charCodeAt(startIndex) > CharCode.SPACE) {
@@ -201,10 +324,26 @@ export function consumeClassToken(text: string, startIndex: number, endIndex: nu
 /**
  * Consumes all of the characters belonging to style key and token.
  *
+ * 使用属于样式键和标记的所有字符。
+ *
  * @param text Text to scan
+ *
+ * 要扫描的文本
+ *
  * @param startIndex Starting index of character where the scan should start.
+ *
+ * 扫描应该开始的字符的起始索引。
+ *
  * @param endIndex Ending index of character where the scan should end.
- * @returns Index after last style key character.
+ *
+ * 扫描应该结束的字符的结束索引。
+ *
+ * @returns
+ *
+ * Index after last style key character.
+ *
+ * 最后一个风格键字符之后的索引。
+ *
  */
 export function consumeStyleKey(text: string, startIndex: number, endIndex: number): number {
   let ch: number;
@@ -220,10 +359,26 @@ export function consumeStyleKey(text: string, startIndex: number, endIndex: numb
 /**
  * Consumes all whitespace and the separator `:` after the style key.
  *
+ * 使用样式键之后的所有空格和分隔符 `:` 。
+ *
  * @param text Text to scan
+ *
+ * 要扫描的文本
+ *
  * @param startIndex Starting index of character where the scan should start.
+ *
+ * 扫描应该开始的字符的起始索引。
+ *
  * @param endIndex Ending index of character where the scan should end.
- * @returns Index after separator and surrounding whitespace.
+ *
+ * 扫描应该结束的字符的结束索引。
+ *
+ * @returns
+ *
+ * Index after separator and surrounding whitespace.
+ *
+ * 分隔符和周围的空格之后的索引。
+ *
  */
 export function consumeSeparator(
     text: string, startIndex: number, endIndex: number, separator: number): number {
@@ -241,10 +396,26 @@ export function consumeSeparator(
 /**
  * Consumes style value honoring `url()` and `""` text.
  *
+ * 使用尊重 `url()` 和 `""` 文本的样式值。
+ *
  * @param text Text to scan
+ *
+ * 要扫描的文本
+ *
  * @param startIndex Starting index of character where the scan should start.
+ *
+ * 扫描应该开始的字符的起始索引。
+ *
  * @param endIndex Ending index of character where the scan should end.
- * @returns Index after last style value character.
+ *
+ * 扫描应该结束的字符的结束索引。
+ *
+ * @returns
+ *
+ * Index after last style value character.
+ *
+ * 最后一个样式值字符之后的索引。
+ *
  */
 export function consumeStyleValue(text: string, startIndex: number, endIndex: number): number {
   let ch1 = -1;  // 1st previous character
@@ -278,11 +449,30 @@ export function consumeStyleValue(text: string, startIndex: number, endIndex: nu
 /**
  * Consumes all of the quoted characters.
  *
+ * 使用所有引用的字符。
+ *
  * @param text Text to scan
+ *
+ * 要扫描的文本
+ *
  * @param quoteCharCode CharCode of either `"` or `'` quote or `)` for `url(...)`.
+ *
+ * `url(...)` 的 `"` 或 `'` 引用或 `)` 的 CharCode。
+ *
  * @param startIndex Starting index of character where the scan should start.
+ *
+ * 扫描应该开始的字符的起始索引。
+ *
  * @param endIndex Ending index of character where the scan should end.
- * @returns Index after quoted characters.
+ *
+ * 扫描应该结束的字符的结束索引。
+ *
+ * @returns
+ *
+ * Index after quoted characters.
+ *
+ * 引用字符后的索引。
+ *
  */
 export function consumeQuotedText(
     text: string, quoteCharCode: number, startIndex: number, endIndex: number): number {

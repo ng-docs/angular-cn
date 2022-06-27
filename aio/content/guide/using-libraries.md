@@ -6,6 +6,8 @@ When you build your Angular application, take advantage of sophisticated first-p
 [Angular Material][AngularMaterialMain] is an example of a sophisticated first-party library.
 For links to the most popular libraries, see [Angular Resources][AioResources].
 
+当构建 Angular 应用时，你可以从精品第一方库，比如 [Angular Material][AngularMaterialMain]，以及丰富的第三方库生态系统中获益。参阅 [Angular 资源集][AioResources]页面，了解最常用的库链接。
+
 ## Install libraries
 
 ## 安装库
@@ -14,12 +16,18 @@ Libraries are published as [npm packages][AioGuideNpmPackages], usually together
 To integrate reusable library code into an application, you need to install the package and import the provided functionality in the location you use it.
 For most published Angular libraries, use the `ng add <lib_name>` Angular CLI command.
 
+这些库都是作为 [npm 包][AioGuideNpmPackages]发布的，它们通常都带有一些与 Angular CLI 集成好的 schematic。要把可复用的库代码集成到应用中，你需要安装该软件包并在使用时导入它提供的功能。对于大多数已发布的 Angular 库，你可以使用 Angular CLI 的 `ng add <lib_name>` 命令。
+
 The `ng add` Angular CLI command uses a package manager to install the library package and invokes schematics that are included in the package to other scaffolding within the project code.
 Examples of package managers include [npm][NpmjsMain] or [yarn][YarnpkgMain].
 Additional scaffolding within the project code includes import statements, fonts, and themes.
 
+Angular CLI 的 `ng add` 命令使用包管理器来安装库包，并调用该包中的 schematic 在项目代码中的添加脚手架。这些包管理器包括 [npm][NpmjsMain] 或 [yarn][YarnpkgMain]。项目代码中的额外脚手架包括 import 语句、fonts 和 themes。
+
 A published library typically provides a `README` file or other documentation on how to add that library to your application.
 For an example, see the [Angular Material][AngularMaterialMain] documentation.
+
+已发布的库通常会提供一个 `README` 文件或其它文档来介绍如何把该库添加到你的应用中。例子可参阅 [Angular Material][AngularMaterialMain] 文档。
 
 ### Library typings
 
@@ -27,6 +35,8 @@ For an example, see the [Angular Material][AngularMaterialMain] documentation.
 
 Typically, library packages include typings in `.d.ts` files; see examples in `node_modules/@angular/material`.
 If the package of your library does not include typings and your IDE complains, you might need to install the `@types/<lib_name>` package with the library.
+
+通常，库包中会在 `.d.ts` 文件中包含类型信息。参阅 `node_modules/@angular/material` 中的例子。如果库包中没有包含类型信息并且你的 IDE 报错，你可能需要安装与该库关联的 `@types/<lib_name>` 包。
 
 For example, suppose you have a library named `d3`:
 
@@ -94,6 +104,8 @@ Define more typings as needed.
 A library is able to be updated by the publisher, and also has individual dependencies which need to be kept current.
 To check for updates to your installed libraries, use the [`ng update`][AioCliUpdate] Angular CLI command.
 
+库的发布者可以对这些库进行更新，而这些库也有自己的依赖，所有依赖都需要保持最新。要检查已安装库的更新，请使用 [`ng update` 命令][AioCliUpdate]。
+
 Use `ng update <lib_name>` Angular CLI command to update individual library versions.
 The Angular CLI checks the latest published release of the library, and if the latest version is newer than your installed version, downloads it and updates your `package.json` to match the latest version.
 
@@ -103,6 +115,8 @@ When you update Angular to a new version, you need to make sure that any librari
 If libraries have interdependencies, you might have to update them in a particular order.
 See the [Angular Update Guide][AngularUpdateMain] for help.
 
+如果要把 Angular 更新到新版本，你需要确保所用的库都是最新的。如果库之间相互依赖，你可能还要按特定的顺序更新它们。请参阅 [Angular 升级指南][AngularUpdateMain]以获取帮助。
+
 ## Adding a library to the runtime global scope
 
 ## 把某个库添加到运行时的全局范围中
@@ -110,7 +124,11 @@ See the [Angular Update Guide][AngularUpdateMain] for help.
 If a legacy JavaScript library is not imported into an application, you may add it to the runtime global scope and load it as if it was added in a script tag.
 Configure the Angular CLI to do this at build time using the `scripts` and `styles` options of the build target in the [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file.
 
+如果未将老式 JavaScript 库导入应用程序，你可以将其添加到运行时全局范围并加载它，就像将其添加到 script 标记中一样。使用工作区构建配置文件 [`angular.json`][AioGuideWorkspaceConfig] 中此构建目标的 `scripts` 和 `styles` 选项，配置 Angular CLI 以便在构建时执行此操作。
+
 For example, to use the [Bootstrap 4][GetbootstrapDocs40GettingStartedIntroduction] library
+
+比如，要使用 [Bootstrap 4][GetbootstrapDocs40GettingStartedIntroduction] 库
 
 1. Install the library and the associated dependencies using the npm package manager:
 
@@ -173,6 +191,8 @@ import * as &dollar; from 'jquery';
 If you import it using import statements, you have two different copies of the library: one imported as a global library, and one imported as a module.
 This is especially bad for libraries with plugins, like JQuery, because each copy includes different plugins.
 
+如果你使用 import 语句导入它，你将拥有该库的两个不同副本：一个作为全局库导入，另一个作为模块导入。这对于带有插件的库来说尤其糟糕，比如 JQuery，因为每个副本都包含不同的插件。
+
 Instead, run the `npm install @types/jquery` Angular CLI command to download typings for your library and then follow the library installation steps.
 This gives you access to the global variables exposed by that library.
 
@@ -198,7 +218,7 @@ declare var libraryName: any;
 
 Some scripts extend other libraries; for instance with JQuery plugins:
 
-有些脚本扩展了其它库，例如 JQuery 插件：
+有些脚本扩展了其它库，比如 JQuery 插件：
 
 <code-example format="typescript" language="typescript">
 
@@ -209,7 +229,7 @@ Some scripts extend other libraries; for instance with JQuery plugins:
 In this case, the installed `@types/jquery` does not include `myPlugin`, so you need to add an interface in `src/typings.d.ts`.
 For example:
 
-在这种情况下，所安装的 `@types/jquery` 就不包含 `myPlugin`，所以你需要在 `src/typings.d.ts` 中添加一个接口。例如：
+在这种情况下，所安装的 `@types/jquery` 就不包含 `myPlugin`，所以你需要在 `src/typings.d.ts` 中添加一个接口。比如：
 
 <code-example format="typescript" language="typescript">
 

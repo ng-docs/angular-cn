@@ -20,6 +20,9 @@ import {isWithinPackage} from './util';
 
 /**
  * The standard implementation of `MigrationHost`, which is created by the `DecorationAnalyzer`.
+ *
+ * `MigrationHost` 的标准实现，由 `DecorationAnalyzer` 创建。
+ *
  */
 export class DefaultMigrationHost implements MigrationHost {
   constructor(
@@ -56,6 +59,9 @@ export class DefaultMigrationHost implements MigrationHost {
 /**
  * Creates a diagnostic from another one, containing additional information about the synthetic
  * decorator.
+ *
+ * 从另一个诊断创建一个，包含有关合成装饰器的附加信息。
+ *
  */
 function createMigrationDiagnostic(
     diagnostic: ts.Diagnostic, source: ts.Node, decorator: Decorator): ts.Diagnostic {

@@ -89,7 +89,7 @@ export function getComponent<T>(element: Element): T|null {
  * view that the element is part of. Otherwise retrieves the instance of the component whose view
  * owns the element (in this case, the result is the same as calling `getOwningComponent`).
  *
- * 如果在嵌入式视图中（例如 `*ngIf` 或
+ * 如果在嵌入式视图中（比如 `*ngIf` 或
  * `*ngFor`），则检索元素所属的嵌入式视图的上下文。否则，检索其视图中拥有该元素的组件的实例（在这种情况下，其结果与调用
  * `getOwningComponent` 相同）。
  *
@@ -121,7 +121,7 @@ export function getContext<T extends({} | RootContext)>(element: Element): T|nul
  * (i.e. a `ViewChild` of `<app-comp>`), calling `getOwningComponent` on `<child-comp>`
  * would return `<app-comp>`.
  *
- * 例如，如果 `<child-comp>` 在 `<app-comp>` 的模板中使用（即 `<app-comp>` 的 `ViewChild`），在
+ * 比如，如果 `<child-comp>` 在 `<app-comp>` 的模板中使用（即 `<app-comp>` 的 `ViewChild`），在
  * `<child-comp>` 上调用 `getOwningComponent` 将返回 `<app-comp>`。
  *
  * @param elementOrDir DOM element, component or directive instance
@@ -201,7 +201,12 @@ export function getInjector(elementOrDir: Element|{}): Injector {
 /**
  * Retrieve a set of injection tokens at a given DOM node.
  *
+ * 在给定的 DOM 节点处检索一组注入标记。
+ *
  * @param element Element for which the injection tokens should be retrieved.
+ *
+ * 应该检索其注入标记的元素。
+ *
  */
 export function getInjectionTokens(element: Element): any[] {
   const context = getLContext(element)!;
@@ -296,6 +301,9 @@ export function getDirectives(node: Node): {}[] {
  * This information might be useful for debugging purposes or tooling.
  * Currently only `inputs` and `outputs` metadata is available.
  *
+ * 给定指令实例的部分元数据。此信息可能可用于调试目的或工具。当前只有 `inputs` 和 `outputs`
+ * 元数据可用。
+ *
  * @publicApi
  */
 export interface DirectiveDebugMetadata {
@@ -307,10 +315,24 @@ export interface DirectiveDebugMetadata {
  * Partial metadata for a given component instance.
  * This information might be useful for debugging purposes or tooling.
  * Currently the following fields are available:
- *  - inputs
- *  - outputs
- *  - encapsulation
- *  - changeDetection
+ *
+ * 给定组件实例的部分元数据。此信息可能可用于调试目的或工具。目前有以下字段可用：
+ *
+ * - inputs
+ *
+ *   输入
+ *
+ * - outputs
+ *
+ *   输出
+ *
+ * - encapsulation
+ *
+ *   封装
+ *
+ * - changeDetection
+ *
+ *   更改检测
  *
  * @publicApi
  */
@@ -324,8 +346,17 @@ export interface ComponentDebugMetadata extends DirectiveDebugMetadata {
  * The function accepts an instance of a directive or component and returns the corresponding
  * metadata.
  *
+ * 返回特定指令或组件实例的调试（部分）元数据。该函数接受指令或组件的实例，并返回相应的元数据。
+ *
  * @param directiveOrComponentInstance Instance of a directive or component
- * @returns metadata of the passed directive or component
+ *
+ * 指令或组件的实例
+ *
+ * @returns
+ *
+ * metadata of the passed directive or component
+ *
+ * 传递的指令或组件的元数据
  *
  * @publicApi
  * @globalApi ng
@@ -358,10 +389,17 @@ export function getDirectiveMetadata(directiveOrComponentInstance: any): Compone
 /**
  * Retrieve map of local references.
  *
+ * 检索本地引用的映射表。
+ *
  * The references are retrieved as a map of local reference name to element or directive instance.
+ *
+ * 引用被检索为本地引用名称到元素或指令实例的映射。
  *
  * @param target DOM element, component or directive instance for which to retrieve
  *    the local references.
+ *
+ * 要检索其本地引用的 DOM 元素、组件或指令实例。
+ *
  */
 export function getLocalRefs(target: {}): {[key: string]: any} {
   const context = getLContext(target);
@@ -403,12 +441,20 @@ export function getHostElement(componentOrDirective: {}): Element {
 /**
  * Retrieves the rendered text for a given component.
  *
+ * 检索给定组件的呈现文本。
+ *
  * This function retrieves the host element of a component and
  * and then returns the `textContent` for that element. This implies
  * that the text returned will include re-projected content of
  * the component as well.
  *
+ * 此函数会检索组件的宿主元素，然后返回该元素的 `textContent`
+ * 。这意味着返回的文本也将包括组件的重新投影内容。
+ *
  * @param component The component to return the content text for.
+ *
+ * 要返回内容文本的组件。
+ *
  */
 export function getRenderedText(component: any): string {
   const hostElement = getHostElement(component);
@@ -454,7 +500,7 @@ export interface Listener {
   /**
    * Type of the listener (e.g. a native DOM event or a custom @Output).
    *
-   * 监听器的类型（例如，原生 DOM 事件或自定义 @Output）。
+   * 监听器的类型（比如，原生 DOM 事件或自定义 @Output）。
    *
    */
   type: 'dom'|'output';
@@ -467,7 +513,7 @@ export interface Listener {
  * (e.g. through `addEventListener`).
  *
  * 检索与 DOM 元素关联的事件监听器的列表。该列表包含宿主监听器，但不包含在 Angular
- * 上下文之外定义的事件监听器（例如，通过 `addEventListener` ）。
+ * 上下文之外定义的事件监听器（比如，通过 `addEventListener` ）。
  *
  * @usageNotes
  *
@@ -547,7 +593,12 @@ function sortListeners(a: Listener, b: Listener) {
 /**
  * This function should not exist because it is megamorphic and only mostly correct.
  *
+ * 此函数不应该存在，因为它是超态的，并且大部分都是正确的。
+ *
  * See call site for more info.
+ *
+ * 有关更多信息，请参阅调用站点。
+ *
  */
 function isDirectiveDefHack(obj: any): obj is DirectiveDef<any> {
   return obj.type !== undefined && obj.template !== undefined && obj.declaredInputs !== undefined;
@@ -556,7 +607,12 @@ function isDirectiveDefHack(obj: any): obj is DirectiveDef<any> {
 /**
  * Returns the attached `DebugNode` instance for an element in the DOM.
  *
+ * 返回 DOM 中元素的附加 `DebugNode` 实例。
+ *
  * @param element DOM element which is owned by an existing component's view.
+ *
+ * 现有组件的视图拥有的 DOM 元素。
+ *
  */
 export function getDebugNode(element: Element): DebugNode|null {
   if (ngDevMode && !(element instanceof Node)) {
@@ -588,10 +644,17 @@ export function getDebugNode(element: Element): DebugNode|null {
 /**
  * Retrieve the component `LView` from component/element.
  *
+ * 从组件/元素中检索组件 `LView` 。
+ *
  * NOTE: `LView` is a private and should not be leaked outside.
  *       Don't export this method to `ng.*` on window.
  *
+ * 注： `LView` 是私有的，不应泄漏到外面。不要将此方法导出到 window.org 上的 `ng.*` 。
+ *
  * @param target DOM element or component instance for which to retrieve the LView.
+ *
+ * 要检索其 LView 的 DOM 元素或组件实例。
+ *
  */
 export function getComponentLView(target: any): LView {
   const lContext = getLContext(target)!;
@@ -603,7 +666,12 @@ export function getComponentLView(target: any): LView {
   return componentLView;
 }
 
-/** Asserts that a value is a DOM Element. */
+/**
+ * Asserts that a value is a DOM Element.
+ *
+ * 断言值是 DOM 元素。
+ *
+ */
 function assertDomElement(value: any) {
   if (typeof Element !== 'undefined' && !(value instanceof Element)) {
     throw new Error('Expecting instance of DOM Element');

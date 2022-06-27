@@ -9,12 +9,22 @@
 /**
  * This file is a port of shadowCSS from webcomponents.js to TypeScript.
  *
+ * 此文件是从 webcomponents.js 到 TypeScript 的 shadowCSS 的端口。
+ *
  * Please make sure to keep to edits in sync with the source file.
  *
+ * 请确保使编辑与源文件同步。
+ *
  * Source:
- * https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js
+ * <https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js>
+ *
+ * 来源：
+ * <https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js>
  *
  * The original file level comment is reproduced below
+ *
+ * 原始文件级注释在下面复制
+ *
  */
 
 /*
@@ -383,12 +393,22 @@ export class ShadowCss {
    * Handle a css text that is within a rule that should not contain scope selectors by simply
    * removing them! An example of such a rule is `@font-face`.
    *
+   * 处理在不应该包含范围选择器的规则中的 css 文本，只需删除它们！这种规则的一个例子是 `@font-face`
+   * 。
+   *
    * `@font-face` rules cannot contain nested selectors. Nor can they be nested under a selector.
    * Normally this would be a syntax error by the author of the styles. But in some rare cases, such
    * as importing styles from a library, and applying `:host ::ng-deep` to the imported styles, we
    * can end up with broken css if the imported styles happen to contain @font-face rules.
    *
+   * `@font-face`
+   * 规则不能包含嵌套选择器。它们也不能嵌套在选择器下。通常，这将是样式作者的语法错误。但在某些罕见的情况下，例如从库导入样式，并将
+   * `:host ::ng-deep` 应用于导入的样式，如果导入的样式碰巧包含 @font-face
+   * 规则，我们最终可能会出现损坏的 css。
+   *
    * For example:
+   *
+   * 例如：
    *
    * ```
    * :host ::ng-deep {
@@ -399,6 +419,7 @@ export class ShadowCss {
    * as well as some specific at-rules. Since they can't be encapsulated, we have to strip
    * any scoping selectors from them. For more information: https://www.w3.org/TR/css-page-3
    * ```
+   *
    */
   private _stripScopingSelectors(cssText: string): string {
     return processRules(cssText, rule => {
@@ -585,6 +606,9 @@ class SafeSelector {
   /**
    * Replaces all of the substrings that match a regex within a
    * special string (e.g. `__ph-0__`, `__ph-1__`, etc).
+   *
+   * 替换特殊字符串中与正则表达式匹配的所有子字符串（例如 `__ph-0__` 0\_\_ 、 `__ph-1__` 等）。
+   *
    */
   private _escapeRegexMatches(content: string, pattern: RegExp): string {
     return content.replace(pattern, (_, keep) => {
@@ -726,8 +750,13 @@ function escapeBlocks(
  * Combine the `contextSelectors` with the `hostMarker` and the `otherSelectors`
  * to create a selector that matches the same as `:host-context()`.
  *
+ * 将 `contextSelectors` 与 `hostMarker` 和 `otherSelectors` 结合使用，以创建一个与
+ * `:host-context()` 相同的选择器。
+ *
  * Given a single context selector `A` we need to output selectors that match on the host and as an
  * ancestor of the host:
+ *
+ * 给定单个上下文选择器 `A` ，我们需要输出在主机上匹配的选择器并作为主机的祖先：
  *
  * ```
  * A <hostMarker>, A<hostMarker> {}
@@ -736,6 +765,9 @@ function escapeBlocks(
  * When there is more than one context selector we also have to create combinations of those
  * selectors with each other. For example if there are `A` and `B` selectors the output is:
  *
+ * 当有多个上下文选择器时，我们还必须创建这些选择器彼此的组合。例如，如果有 `A` 和 `B`
+ * 选择器，则输出是：
+ *
  * ```
  * AB<hostMarker>, AB <hostMarker>, A B<hostMarker>,
  * B A<hostMarker>, A B <hostMarker>, B A <hostMarker> {}
@@ -743,9 +775,20 @@ function escapeBlocks(
  *
  * And so on...
  *
+ * 等等……
+ *
  * @param hostMarker the string that selects the host element.
+ *
+ * 选择宿主元素的字符串。
+ *
  * @param contextSelectors an array of context selectors that will be combined.
+ *
+ * 将组合的上下文选择器数组。
+ *
  * @param otherSelectors the rest of the selectors that are not context selectors.
+ *
+ * 其余不是上下文选择器的选择器。
+ *
  */
 function combineHostContextSelectors(contextSelectors: string[], otherSelectors: string): string {
   const hostMarker = _polyfillHostNoCombinator;
@@ -785,12 +828,23 @@ function combineHostContextSelectors(contextSelectors: string[], otherSelectors:
  * Mutate the given `groups` array so that there are `multiples` clones of the original array
  * stored.
  *
+ * 变异给定的 `groups` 数组，以便存储原始数组的 `multiples` 克隆。
+ *
  * For example `repeatGroups([a, b], 3)` will result in `[a, b, a, b, a, b]` - but importantly the
  * newly added groups will be clones of the original.
  *
+ * 例如 `repeatGroups([a, b], 3)` 将导致 `[a, b, a, b, a, b]` -
+ * 但重要的是，新添加的组将是原始组的克隆。
+ *
  * @param groups An array of groups of strings that will be repeated. This array is mutated
  *     in-place.
+ *
+ * 将重复的字符串组的数组。此数组是就地变异的。
+ *
  * @param multiples The number of times the current groups should appear.
+ *
+ * 当前组应该出现的次数。
+ *
  */
 export function repeatGroups(groups: string[][], multiples: number): void {
   const length = groups.length;

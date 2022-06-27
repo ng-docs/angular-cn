@@ -4,7 +4,7 @@
 
 The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?") and distributed using the [npm registry](https://docs.npmjs.com).
 
-Angular 框架、[**Angular CLI**](https://cli.angular.io/)、Angular 应用程序所用到的组件都打包成 [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?")，并通过 [npm registry](https://docs.npmjs.com/) 进行分发。
+Angular 框架、[**Angular CLI**](https://cli.angular.io)、Angular 应用程序所用到的组件都打包成 [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?")，并通过 [npm registry](https://docs.npmjs.com) 进行分发。
 
 You can download and install these npm packages by using the [npm CLI client](https://docs.npmjs.com/cli/install), which is installed with and runs as a [Node.js®](https://nodejs.org "Nodejs.org") application.
 By default, the Angular CLI uses the npm client.
@@ -13,7 +13,7 @@ By default, the Angular CLI uses the npm client.
 
 Alternatively, you can use the [yarn client](https://yarnpkg.com) for downloading and installing npm packages.
 
-另外，你还可以使用 [**yarn** 客户端](https://yarnpkg.com/en/) 来下载并安装 npm 包。
+另外，你还可以使用 [**yarn** 客户端](https://yarnpkg.com) 来下载并安装 npm 包。
 
 <div class="alert is-helpful">
 
@@ -50,9 +50,11 @@ The `package.json` is organized into two groups of packages:
 
 | Packages | Details |
 | :------- | :------ |
-| Packages | 详情 |
+| 包 | 详情 |
 | [Dependencies](guide/npm-packages#dependencies) | Essential to *running* applications. |
+| [Dependencies](guide/npm-packages#dependencies) | *运行*应用的基础。 |
 | [DevDependencies](guide/npm-packages#dev-dependencies) | Only necessary to *develop* applications. |
+| [DevDependencies](guide/npm-packages#dev-dependencies) | 只有在*开发*应用时才是必要的。 |
 
 <div class="alert is-helpful">
 
@@ -61,11 +63,17 @@ By default, the CLI command [`ng generate library`](cli/generate) creates a `pac
 That `package.json` is used when publishing the library to npm.
 For more information, see the CLI wiki page [Library Support](guide/creating-libraries).
 
+**代码库开发者**：<br />
+默认情况下，CLI 命令 [`ng generate library`](cli/generate) 会为新的代码库项目创建一个 `package.json`。这个 `package.json` 会在把该代码库发布到 npm 时用到。
+要了解更多信息，参阅 CLI 的 wiki 页面[代码库支持](guide/creating-libraries)。
+
 </div>
 
 <a id="dependencies"></a>
 
 ## Dependencies
+
+## 依赖项
 
 The packages listed in the `dependencies` section of `package.json` are essential to *running* applications.
 
@@ -77,10 +85,13 @@ The `dependencies` section of `package.json` contains:
 
 | Packages | Details |
 | :------- | :------ |
-| Packages | 详情 |
+| 包 | 详情 |
 | [Angular packages](#angular-packages) | Angular core and optional modules; their package names begin `@angular` |
+| [Angular packages](#angular-packages) | Angular 的核心和可选模块，它们的包名以 `@angular/` 开头 |
 | [Support packages](#support-packages) | 3rd party libraries that must be present for Angular applications to run |
+| [Support packages](#support-packages) | 那些 Angular 应用运行时必需的第三方库 |
 | [Polyfill packages](#polyfills) | Polyfills plug gaps in a browser's JavaScript implementation |
+| [Polyfill packages](#polyfills) | 腻子脚本负责抹平不同浏览器的 JavaScript 实现之间的差异 |
 
 To add a new dependency, use the [`ng add`](cli/add) command.
 
@@ -188,7 +199,7 @@ The following `devDependencies` are provided in the default `package.json` file 
 | `@types/...` | TypeScript definition files for 3rd party libraries such as Jasmine and Node.js. |
 | `@types/...` | 第三方库（如 Jasmine、Node.js）的 TypeScript 类型定义文件。 |
 | `jasmine/...` | Packages to support the [Jasmine](https://jasmine.github.io) test library. |
-| `jasmine/...` | 用于支持 [Jasmine](https://jasmine.github.io/) 测试库的包。 |
+| `jasmine/...` | 用于支持 [Jasmine](https://jasmine.github.io) 测试库的包。 |
 | `karma/...` | Packages to support the [karma](https://www.npmjs.com/package/karma) test runner. |
 | `karma/...` | 用于支持 [karma](https://www.npmjs.com/package/karma) 测试运行器的包。 |
 | [`typescript`](https://www.npmjs.com/package/typescript) | The TypeScript language server, including the *tsc* TypeScript compiler. |
@@ -204,9 +215,11 @@ For information about how the Angular CLI handles packages see the following gui
 
 | Topics | Details |
 | :----- | :------ |
-| Topics | 详情 |
+| 主题 | 详情 |
 | [Building and serving](guide/build) | How packages come together to create a development build |
+| [Building and serving](guide/build) | 这些包如何协作，以进行开发期构建 |
 | [Deployment](guide/deployment) | How packages come together to create a production build |
+| [Deployment](guide/deployment) | 这些包如何协作，以创建一个生产环境构建 |
 
 <!-- links -->
 

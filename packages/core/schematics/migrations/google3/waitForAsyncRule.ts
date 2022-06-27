@@ -15,13 +15,28 @@ import {isReferenceToImport} from '../../utils/typescript/symbol';
 
 // This rule is also used inside of Google by Typescript linting.
 
-/** Name of the deprecated function that we're removing. */
+/**
+ * Name of the deprecated function that we're removing.
+ *
+ * 我们要删除的已过时函数的名称。
+ *
+ */
 const deprecatedFunction = 'async';
 
-/** Name of the function that will replace the deprecated one. */
+/**
+ * Name of the function that will replace the deprecated one.
+ *
+ * 将替换已过时的函数的函数名称。
+ *
+ */
 const newFunction = 'waitForAsync';
 
-/** TSLint rule that migrates from `async` to `waitForAsync`. */
+/**
+ * TSLint rule that migrates from `async` to `waitForAsync`.
+ *
+ * 从 `async` 迁移到 `waitForAsync` 的 TSLint 规则。
+ *
+ */
 export class Rule extends Rules.TypedRule {
   override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const failures: RuleFailure[] = [];
@@ -43,7 +58,12 @@ export class Rule extends Rules.TypedRule {
     return failures;
   }
 
-  /** Gets a failure for an import of the `async` function. */
+  /**
+   * Gets a failure for an import of the `async` function.
+   *
+   * 获取 `async` 函数的导入失败。
+   *
+   */
   private _getNamedImportsFailure(
       node: ts.NamedImports, sourceFile: ts.SourceFile, printer: ts.Printer): RuleFailure {
     const replacementText = printer.printNode(
@@ -56,7 +76,12 @@ export class Rule extends Rules.TypedRule {
         this.ruleName, new Replacement(node.getStart(), node.getWidth(), replacementText));
   }
 
-  /** Gets a failure for an identifier node. */
+  /**
+   * Gets a failure for an identifier node.
+   *
+   * 获取标识符节点的故障。
+   *
+   */
   private _getIdentifierNodeFailure(node: ts.Identifier, sourceFile: ts.SourceFile): RuleFailure {
     return new RuleFailure(
         sourceFile, node.getStart(), node.getEnd(),
@@ -65,7 +90,12 @@ export class Rule extends Rules.TypedRule {
         this.ruleName, new Replacement(node.getStart(), node.getWidth(), newFunction));
   }
 
-  /** Finds calls to the `async` function. */
+  /**
+   * Finds calls to the `async` function.
+   *
+   * 查找对 `async` 函数的调用。
+   *
+   */
   private findAsyncReferences(
       sourceFile: ts.SourceFile, typeChecker: ts.TypeChecker,
       asyncImportSpecifier: ts.ImportSpecifier) {

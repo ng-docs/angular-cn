@@ -8,12 +8,22 @@
 
 import ts from 'typescript';
 
-/** Checks whether the given TypeScript node has the specified modifier set. */
+/**
+ * Checks whether the given TypeScript node has the specified modifier set.
+ *
+ * 检查给定的 TypeScript 节点是否具有指定的修饰符集。
+ *
+ */
 export function hasModifier(node: ts.Node, modifierKind: ts.SyntaxKind) {
   return !!node.modifiers && node.modifiers.some(m => m.kind === modifierKind);
 }
 
-/** Find the closest parent node of a particular kind. */
+/**
+ * Find the closest parent node of a particular kind.
+ *
+ * 查找特定类型的最近的父节点。
+ *
+ */
 export function closestNode<T extends ts.Node>(node: ts.Node, kind: ts.SyntaxKind): T|null {
   let current: ts.Node = node;
 
@@ -30,6 +40,10 @@ export function closestNode<T extends ts.Node>(node: ts.Node, kind: ts.SyntaxKin
 /**
  * Checks whether a particular node is part of a null check. E.g. given:
  * `foo.bar ? foo.bar.value : null` the null check would be `foo.bar`.
+ *
+ * 检查特定节点是否是 null 检查的一部分。例如给定： `foo.bar ? foo.bar.value : null` 的 null
+ * 检查将是 `foo.bar` 。
+ *
  */
 export function isNullCheck(node: ts.Node): boolean {
   if (!node.parent) {
@@ -61,7 +75,12 @@ export function isNullCheck(node: ts.Node): boolean {
   return false;
 }
 
-/** Checks whether a property access is safe (e.g. `foo.parent?.value`). */
+/**
+ * Checks whether a property access is safe (e.g. `foo.parent?.value`).
+ *
+ * 检查属性访问是否安全（例如 `foo.parent?.value` ）。
+ *
+ */
 export function isSafeAccess(node: ts.Node): boolean {
   return node.parent != null && ts.isPropertyAccessExpression(node.parent) &&
       node.parent.expression === node && node.parent.questionDotToken != null;

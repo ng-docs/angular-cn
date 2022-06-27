@@ -35,31 +35,58 @@ export interface LexerRange {
 
 /**
  * Options that modify how the text is tokenized.
+ *
+ * 修改文本标记化方式的选项。
+ *
  */
 export interface TokenizeOptions {
-  /** Whether to tokenize ICU messages (considered as text nodes when false). */
+  /**
+   * Whether to tokenize ICU messages (considered as text nodes when false).
+   *
+   * 是否标记 ICU 消息（为 false 时被认为是文本节点）。
+   *
+   */
   tokenizeExpansionForms?: boolean;
-  /** How to tokenize interpolation markers. */
+  /**
+   * How to tokenize interpolation markers.
+   *
+   * 如何标记插值标记。
+   *
+   */
   interpolationConfig?: InterpolationConfig;
   /**
    * The start and end point of the text to parse within the `source` string.
    * The entire `source` string is parsed if this is not provided.
-   * */
+   *
+   * 要在 `source` 字符串中解析的文本的起点和终点。如果未提供，则会解析整个 `source` 字符串。
+   *
+   */
   range?: LexerRange;
   /**
    * If this text is stored in a JavaScript string, then we have to deal with escape sequences.
    *
+   * 如果此文本存储在 JavaScript 字符串中，那么我们就必须处理转义序列。
+   *
    * **Example 1:**
+   *
+   * **示例 1：**
    *
    * ```
    * "abc\"def\nghi"
    * ```
    *
    * - The `\"` must be converted to `"`.
+   *
+   *   `\"` 必须转换为 `"` 。
+   *
    * - The `\n` must be converted to a new line character in a token,
    *   but it should not increment the current line for source mapping.
    *
+   *   `\n` 必须转换为标记中的换行符，但它不应该增加当前行以进行源映射。
+   *
    * **Example 2:**
+   *
+   * **示例 2：**
    *
    * ```
    * "abc\
@@ -68,6 +95,9 @@ export interface TokenizeOptions {
    *
    * The line continuation (`\` followed by a newline) should be removed from a token
    * but the new line should increment the current line for source mapping.
+   *
+   * 应该从标记中删除行继续（ `\` 后跟换行符），但新行应该增加当前行以进行源映射。
+   *
    */
   escapedString?: boolean;
   /**
@@ -75,18 +105,32 @@ export interface TokenizeOptions {
    * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
    * expressions.
    *
+   * 如果此文本存储在外部模板中（例如通过 `templateUrl` ），那么我们需要决定在处理 ICU
+   * 表达式时是否对行尾进行规范化（从 `\r\n` 到 `\n` ）。
+   *
    * If `true` then we will normalize ICU expression line endings.
    * The default is `false`, but this will be switched in a future major release.
+   *
+   * 如果 `true` ，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
+   * ，但这将在未来的主要版本中切换。
+   *
    */
   i18nNormalizeLineEndingsInICUs?: boolean;
   /**
    * An array of characters that should be considered as leading trivia.
    * Leading trivia are characters that are not important to the developer, and so should not be
    * included in source-map segments.  A common example is whitespace.
+   *
+   * 应被视为前导琐事的字符数组。前导琐事是对开发人员不重要的字符，因此不应包含在 source-map
+   * 段中。一个常见的例子是空格。
+   *
    */
   leadingTriviaChars?: string[];
   /**
    * If true, do not convert CRLF to LF.
+   *
+   * 如果为 true，则不要将 CRLF 转换为 LF。
+   *
    */
   preserveLineEndings?: boolean;
 }
@@ -144,8 +188,17 @@ class _Tokenizer {
 
   /**
    * @param _file The html source file being tokenized.
+   *
+   * 被标记化的 html 源文件。
+   *
    * @param _getTagDefinition A function that will retrieve a tag definition for a given tag name.
+   *
+   * 一个函数，它将检索给定标签名称的标签定义。
+   *
    * @param options Configuration of the tokenization.
+   *
+   * 标记化的配置。
+   *
    */
   constructor(
       _file: ParseSourceFile, private _getTagDefinition: (tagName: string) => TagDefinition,
@@ -213,7 +266,12 @@ class _Tokenizer {
   }
 
   /**
-   * @returns whether an ICU token has been created
+   * @returns
+   *
+   * whether an ICU token has been created
+   *
+   * 是否已创建 ICU 令牌
+   *
    * @internal
    */
   private _tokenizeExpansionForm(): boolean {
@@ -684,16 +742,35 @@ class _Tokenizer {
   /**
    * Consume a string that may contain interpolation expressions.
    *
+   * 使用可能包含插值表达式的字符串。
+   *
    * The first token consumed will be of `tokenType` and then there will be alternating
    * `interpolationTokenType` and `tokenType` tokens until the `endPredicate()` returns true.
    *
+   * 使用的第一个标记将是 `tokenType` ，然后将交替使用 `tokenType` `interpolationTokenType` ，直到
+   * `endPredicate()` 返回 true。
+   *
    * If an interpolation token ends prematurely it will have no end marker in its `parts` array.
    *
+   * 如果插值标记过早结束，则其 `parts` 数组中将没有结束标记。
+   *
    * @param textTokenType the kind of tokens to interleave around interpolation tokens.
+   *
+   * 要在插值标记周围交错的标记。
+   *
    * @param interpolationTokenType the kind of tokens that contain interpolation.
+   *
+   * 包含插值的标记。
+   *
    * @param endPredicate a function that should return true when we should stop consuming.
+   *
+   * 一个在我们应该停止使用时应该返回 true 的函数。
+   *
    * @param endInterpolation a function that should return true if there is a premature end to an
    *     interpolation expression - i.e. before we get to the normal interpolation closing marker.
+   *
+   * 一个函数，如果插值表达式过早结束，则应该返回 true ——即在我们到达正常的插值关闭标记之前。
+   *
    */
   private _consumeWithInterpolation(
       textTokenType: TokenType, interpolationTokenType: TokenType, endPredicate: () => boolean,
@@ -728,10 +805,21 @@ class _Tokenizer {
   /**
    * Consume a block of text that has been interpreted as an Angular interpolation.
    *
+   * 使用已被解释为 Angular 插值的文本块。
+   *
    * @param interpolationTokenType the type of the interpolation token to generate.
+   *
+   * 要生成的插值标记的类型。
+   *
    * @param interpolationStart a cursor that points to the start of this interpolation.
+   *
+   * 指向此插值开头的光标。
+   *
    * @param prematureEndPredicate a function that should return true if the next characters indicate
    *     an end to the interpolation before its normal closing marker.
+   *
+   * 一个函数，如果下一个字符表明插值在其正常关闭标记之前结束，则应该返回 true 。
+   *
    */
   private _consumeInterpolation(
       interpolationTokenType: TokenType, interpolationStart: CharacterCursor,
@@ -817,6 +905,9 @@ class _Tokenizer {
   /**
    * Returns true if the current cursor is pointing to the start of a tag
    * (opening/closing/comments/cdata/etc).
+   *
+   * 如果当前光标指向标签的开头 ( opening/close/comments/cdata/etc )，则返回 true 。
+   *
    */
   private _isTagStart(): boolean {
     if (this._cursor.peek() === chars.$LT) {
@@ -921,26 +1012,70 @@ function mergeTextTokens(srcTokens: Token[]): Token[] {
 
 
 /**
- * The _Tokenizer uses objects of this type to move through the input text,
+ * The \_Tokenizer uses objects of this type to move through the input text,
  * extracting "parsed characters". These could be more than one actual character
  * if the text contains escape sequences.
+ *
+ * \_Tokenizer
+ * 使用此类型的对象在输入文本中移动，提取“解析的字符”。如果文本包含转义序列，这些可能是多个实际字符。
+ *
  */
 interface CharacterCursor {
-  /** Initialize the cursor. */
+  /**
+   * Initialize the cursor.
+   *
+   * 初始化光标。
+   *
+   */
   init(): void;
-  /** The parsed character at the current cursor position. */
+  /**
+   * The parsed character at the current cursor position.
+   *
+   * 当前光标位置的解析字符。
+   *
+   */
   peek(): number;
-  /** Advance the cursor by one parsed character. */
+  /**
+   * Advance the cursor by one parsed character.
+   *
+   * 将光标前进一个解析后的字符。
+   *
+   */
   advance(): void;
-  /** Get a span from the marked start point to the current point. */
+  /**
+   * Get a span from the marked start point to the current point.
+   *
+   * 获取从标记的起点到当前点的跨度。
+   *
+   */
   getSpan(start?: this, leadingTriviaCodePoints?: number[]): ParseSourceSpan;
-  /** Get the parsed characters from the marked start point to the current point. */
+  /**
+   * Get the parsed characters from the marked start point to the current point.
+   *
+   * 获取从标记的起点到当前点的解析字符。
+   *
+   */
   getChars(start: this): string;
-  /** The number of characters left before the end of the cursor. */
+  /**
+   * The number of characters left before the end of the cursor.
+   *
+   * 光标结尾之前剩下的字符数。
+   *
+   */
   charsLeft(): number;
-  /** The number of characters between `this` cursor and `other` cursor. */
+  /**
+   * The number of characters between `this` cursor and `other` cursor.
+   *
+   * `this` 光标与 `other` 光标之间的字符数。
+   *
+   */
   diff(other: this): number;
-  /** Make a copy of this cursor */
+  /**
+   * Make a copy of this cursor
+   *
+   * 复制此游标
+   *
+   */
   clone(): CharacterCursor;
 }
 
@@ -1110,7 +1245,12 @@ class EscapedCharacterCursor extends PlainCharacterCursor {
   /**
    * Process the escape sequence that starts at the current position in the text.
    *
+   * 处理从文本中当前位置开始的转义序列。
+   *
    * This method is called to ensure that `peek` has the unescaped value of escape sequences.
+   *
+   * 调用此方法是为了确保 `peek` 具有转义序列的未转义值。
+   *
    */
   protected processEscapeSequence(): void {
     const peek = () => this.internalState.peek;

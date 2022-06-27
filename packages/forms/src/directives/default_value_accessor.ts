@@ -20,6 +20,9 @@ export const DEFAULT_VALUE_ACCESSOR: any = {
 /**
  * We must check whether the agent is Android because composition events
  * behave differently between iOS and Android.
+ *
+ * 我们必须检查代理是否是 Android，因为组合事件在 iOS 和 Android 之间的行为方式不同。
+ *
  */
 function _isAndroid(): boolean {
   const userAgent = getDOM() ? getDOM().getUserAgent() : '';
@@ -41,6 +44,9 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * The default `ControlValueAccessor` for writing a value and listening to changes on input
  * elements. The accessor is used by the `FormControlDirective`, `FormControlName`, and
  * `NgModel` directives.
+ *
+ * 默认的 `ControlValueAccessor` ，用于写入值并监听输入元素的更改。该访问器供 `FormControlDirective`
+ * 、 `FormControlName` 和 `NgModel` 指令使用。
  *
  * {@searchKeywords ngDefaultControl}
  *
@@ -68,12 +74,13 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * processing. In order to attach the default value accessor to a custom element, add the
  * `ngDefaultControl` attribute as shown below.
  *
- * 默认情况下，此值访问器用于 `<input type="text">` 和 `<textarea>` 元素，但你也可以将其用于具有类似行为且不需要特殊处理的自定义组件。为了将默认值访问器附加到自定义元素，请添加 `ngDefaultControl` 属性，如下所示。
+ * 默认情况下，此值访问器用于 `<input type="text">` 和 `<textarea>`
+ * 元素，但你也可以将其用于具有类似行为且不需要特殊处理的自定义组件。为了将默认值访问器附加到自定义元素，请添加
+ * `ngDefaultControl` 属性，如下所示。
  *
  * ```
  * <custom-input-component ngDefaultControl [(ngModel)]="value"></custom-input-component>
  * ```
- *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule
  * @publicApi
@@ -93,7 +100,12 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
   providers: [DEFAULT_VALUE_ACCESSOR]
 })
 export class DefaultValueAccessor extends BaseControlValueAccessor implements ControlValueAccessor {
-  /** Whether the user is creating a composition string (IME events). */
+  /**
+   * Whether the user is creating a composition string (IME events).
+   *
+   * 用户是否正在创建合成字符串（IME 事件）。
+   *
+   */
   private _composing = false;
 
   constructor(

@@ -32,6 +32,10 @@ let shouldThrowErrorOnUnknownElement = false;
  * Sets a strict mode for JIT-compiled components to throw an error on unknown elements,
  * instead of just logging the error.
  * (for AOT-compiled ones this check happens at build time).
+ *
+ * 为 JIT 编译的组件设置严格模式，以在未知元素上抛出错误，而不仅仅是记录错误。 （对于 AOT
+ * 编译的，此检查发生在构建时）。
+ *
  */
 export function ɵsetUnknownElementStrictMode(shouldThrow: boolean) {
   shouldThrowErrorOnUnknownElement = shouldThrow;
@@ -39,6 +43,9 @@ export function ɵsetUnknownElementStrictMode(shouldThrow: boolean) {
 
 /**
  * Gets the current value of the strict mode.
+ *
+ * 获取严格模式的当前值。
+ *
  */
 export function ɵgetUnknownElementStrictMode() {
   return shouldThrowErrorOnUnknownElement;
@@ -78,15 +85,37 @@ function elementStartFirstCreatePass(
 /**
  * Create DOM element. The instruction must later be followed by `elementEnd()` call.
  *
+ * 创建 DOM 元素。该指令稍后必须跟 `elementEnd()` 调用。
+ *
  * @param index Index of the element in the LView array
+ *
+ * LView 数组中元素的索引
+ *
  * @param name Name of the DOM Node
+ *
+ * DOM 节点的名称
+ *
  * @param attrsIndex Index of the element's attributes in the `consts` array.
+ *
+ * 元素属性在 `consts` 数组中的索引。
+ *
  * @param localRefsIndex Index of the element's local references in the `consts` array.
- * @returns This function returns itself so that it may be chained.
+ *
+ * 元素的本地引用在 `consts` 数组中的索引。
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained.
+ *
+ * 此函数返回自己，以便它可以被链接。
  *
  * Attributes and localRefs are passed as an array of strings where elements with an even index
  * hold an attribute name and elements with an odd index hold an attribute value, ex.:
  * ['id', 'warning5', 'class', 'alert']
+ *
+ * 属性和 localRefs
+ * 以字符串数组的形式传递，其中具有偶数索引的元素保存属性名称，具有奇数索引的元素保存属性值，例如：
+ * ['id'、'warning5'、'class'、'alert']['id', 'warning5', 'class', 'alert']
  *
  * @codeGenApi
  */
@@ -151,7 +180,14 @@ export function ɵɵelementStart(
 
 /**
  * Mark the end of the element.
- * @returns This function returns itself so that it may be chained.
+ *
+ * 标记元素的结尾。
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained.
+ *
+ * 此函数返回自己，以便它可以被链接。
  *
  * @codeGenApi
  */
@@ -193,11 +229,29 @@ export function ɵɵelementEnd(): typeof ɵɵelementEnd {
 /**
  * Creates an empty element using {@link elementStart} and {@link elementEnd}
  *
+ * 使用 {@link elementStart} 和 {@link elementEnd} 创建一个空元素
+ *
  * @param index Index of the element in the data array
+ *
+ * 数据数组中元素的索引
+ *
  * @param name Name of the DOM Node
+ *
+ * DOM 节点的名称
+ *
  * @param attrsIndex Index of the element's attributes in the `consts` array.
+ *
+ * 元素属性在 `consts` 数组中的索引。
+ *
  * @param localRefsIndex Index of the element's local references in the `consts` array.
- * @returns This function returns itself so that it may be chained.
+ *
+ * 元素的本地引用在 `consts` 数组中的索引。
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained.
+ *
+ * 此函数返回自己，以便它可以被链接。
  *
  * @codeGenApi
  */
@@ -215,17 +269,49 @@ export function ɵɵelement(
  * This check is relevant for JIT-compiled components (for AOT-compiled
  * ones this check happens at build time).
  *
+ * 验证元素在运行时已知，如果不是这种情况，则生成错误。此检查与 JIT 编译的组件相关（对于 AOT
+ * 编译的组件，此检查发生在构建时）。
+ *
  * The element is considered known if either:
+ *
+ * 在以下任一情况下，该元素被认为是已知的：
+ *
  * - it's a known HTML element
+ *
+ *   这是一个已知的 HTML 元素
+ *
  * - it's a known custom element
+ *
+ *   这是一个已知的自定义元素
+ *
  * - the element matches any directive
+ *
+ *   该元素与任何指令匹配
+ *
  * - the element is allowed by one of the schemas
  *
+ *   模式之一允许该元素
+ *
  * @param element Element to validate
+ *
+ * 要验证的元素
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 一个 `LView` ，表示正在呈现的当前组件。
+ *
  * @param tagName Name of the tag to check
+ *
+ * 要检查的标签名称
+ *
  * @param schemas Array of schemas
+ *
+ * 模式数组
+ *
  * @param hasDirectives Boolean indicating that the element matches any directive
+ *
+ * 指示元素与任何指令匹配的布尔值
+ *
  */
 function validateElementIsKnown(
     element: RElement, lView: LView, tagName: string|null, schemas: SchemaMetadata[]|null,

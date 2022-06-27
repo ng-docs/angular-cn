@@ -1,6 +1,10 @@
 # Understanding template expressions
 
+# 了解模板表达式
+
 This topic explores some aspects of Angular text interpolation.
+
+本主题探讨了 Angular 文本插值的某些方面。
 
 ## Syntax
 
@@ -25,6 +29,8 @@ You can't use JavaScript expressions that have or promote side effects, includin
 
 * Chaining expressions with <code>;</code> or <code>,</code>
 
+  链接表达式<code>;</code>或<code>，</code>
+
 * The increment and decrement operators `++` and `--`
 
   自增和自减运算符：`++` 和 `--`
@@ -43,7 +49,7 @@ Other notable differences from JavaScript syntax include:
 
 * New [template expression operators](guide/template-expression-operators), such as `|`, `?.` and `!`
 
-  新的[模板表达式运算符](guide/template-expression-operators)，例如 `|`，`?.` 和 `!`
+  新的[模板表达式运算符](guide/template-expression-operators)，比如 `|`，`?.` 和 `!`
 
 ## Expression context
 
@@ -61,6 +67,8 @@ In the following snippet, the expression `recommended` and the expression `itemI
 <code-example path="interpolation/src/app/app.component.html" region="component-context" header="src/app/app.component.html"></code-example>
 
 An expression can also refer to properties of the _template's_ context such as a [template input variable](guide/structural-directives#shorthand) or a [template reference variable](guide/template-reference-variables).
+
+表达式还可以引用 _ 模板上下文的 _ 属性，例如[模板输入变量](guide/structural-directives#shorthand)或[模板引用变量](guide/template-reference-variables)。
 
 The following example uses a template input variable of `customer`.
 
@@ -146,7 +154,7 @@ When using template expressions, follow these best practices:
   Angular executes template expressions after every [change detection](guide/glossary#change-detection) cycle.
   Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses and mouse moves.
 
-  Angular 会在每个[变更检测](guide/glossary#change-detection)周期之后执行模板表达式。许多异步活动都会触发变更检测周期，例如解析 Promise、HTTP 结果、计时器事件、按键和鼠标移动。
+  Angular 会在每个[变更检测](guide/glossary#change-detection)周期之后执行模板表达式。许多异步活动都会触发变更检测周期，比如解析 Promise、HTTP 结果、计时器事件、按键和鼠标移动。
 
   Expressions should finish quickly to keep the user experience as efficient as possible, especially on slower devices.
   Consider caching values when their computation requires greater resources.
@@ -166,6 +174,8 @@ When using template expressions, follow these best practices:
   <div class="callout is-important">
 
     <header>Idempotent expressions reduce side effects</header>
+
+  <header>幂等表达式减少副作用</header>
 
     An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
     In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
@@ -192,8 +202,10 @@ When using template expressions, follow these best practices:
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * Property bindings
+
+  属性绑定
 
 @reviewed 2022-03-31

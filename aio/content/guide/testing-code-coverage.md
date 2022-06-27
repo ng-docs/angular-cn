@@ -13,6 +13,8 @@ CLI 可以运行单元测试并创建代码覆盖率报告。代码覆盖率报�
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
+  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+
 </div>
 
 To generate a coverage report run the following command in the root of your project.
@@ -56,7 +58,7 @@ If your team decides on a set minimum amount to be unit tested, enforce this min
 For example, suppose you want the code base to have a minimum of 80% code coverage.
 To enable this, open the [Karma](https://karma-runner.github.io) test platform configuration file, `karma.conf.js`, and add the `check` property in the `coverageReporter:` key.
 
-例如，假设你希望代码库的代码覆盖率至少达到 80％。要启用此功能，请打开 [Karma](https://karma-runner.github.io) 测试平台的配置文件 `karma.conf.js`，并在 `coverageReporter:` 键下添加 `check` 属性。
+比如，假设你希望代码库的代码覆盖率至少达到 80％。要启用此功能，请打开 [Karma](https://karma-runner.github.io) 测试平台的配置文件 `karma.conf.js`，并在 `coverageReporter:` 键下添加 `check` 属性。
 
 <code-example format="javascript" language="javascript">
 

@@ -14,14 +14,25 @@ import {TranslationSerializer} from './translation_serializer';
 import {consolidateMessages, hasLocation} from './utils';
 import {XmlFile} from './xml_file';
 
-/** This is the number of characters that a legacy Xliff 1.2 message id has. */
+/**
+ * This is the number of characters that a legacy Xliff 1.2 message id has.
+ *
+ * 这是旧版 Xliff 1.2 消息 ID 具有的字符数。
+ *
+ */
 const LEGACY_XLIFF_MESSAGE_LENGTH = 40;
 
 /**
  * A translation serializer that can write XLIFF 1.2 formatted files.
  *
- * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
- * https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html
+ * 可以编写 XLIFF 1.2 格式的文件的翻译序列化器。
+ *
+ * <https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html>
+ * <https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html>
+ *
+ * <https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html>
+ * [https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff
+ * -profile-html-1.2.html](https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html)
  *
  * @see Xliff1TranslationParser
  * @publicApi used by CLI
@@ -143,15 +154,27 @@ export class Xliff1TranslationSerializer implements TranslationSerializer {
   /**
    * Get the id for the given `message`.
    *
+   * 获取给定 `message` 的 id。
+   *
    * If there was a custom id provided, use that.
+   *
+   * 如果提供了自定义 ID，请使用它。
    *
    * If we have requested legacy message ids, then try to return the appropriate id
    * from the list of legacy ids that were extracted.
    *
+   * 如果我们请求了旧版消息 ID，请尝试从提取的旧版 ID 列表中返回适当的 id。
+   *
    * Otherwise return the canonical message id.
    *
+   * 否则返回规范消息 ID。
+   *
    * An Xliff 1.2 legacy message id is a hex encoded SHA-1 string, which is 40 characters long. See
-   * https://csrc.nist.gov/csrc/media/publications/fips/180/4/final/documents/fips180-4-draft-aug2014.pdf
+   * <https://csrc.nist.gov/csrc/media/publications/fips/180/4/final/documents/fips180-4-draft-aug2014.pdf>
+   *
+   * Xliff 1.2 旧版消息 ID 是十六进制编码的 SHA-1 字符串，有 40
+   * 个字符长。请参阅<https://csrc.nist.gov/csrc/media/publications/fips/180/4/final/documents/fips180-4-draft-aug2014.pdf>
+   *
    */
   private getMessageId(message: ɵParsedMessage): string {
     return message.customId ||
@@ -164,17 +187,29 @@ export class Xliff1TranslationSerializer implements TranslationSerializer {
 /**
  * Compute the value of the `ctype` attribute from the `placeholder` name.
  *
+ * 根据 `placeholder` 名称计算 `ctype` 属性的值。
+ *
  * The placeholder can take the following forms:
  *
+ * 占位符可以采用以下形式：
+ *
  * - `START_BOLD_TEXT`/`END_BOLD_TEXT`
+ *
  * - `TAG_<ELEMENT_NAME>`
+ *
  * - `START_TAG_<ELEMENT_NAME>`
+ *
  * - `CLOSE_TAG_<ELEMENT_NAME>`
  *
  * In these cases the element name of the tag is extracted from the placeholder name and returned as
  * `x-<element_name>`.
  *
+ * 在这些情况下，标签的元素名称是从占位符名称中提取的，并以 `x-<element_name>` 形式返回。
+ *
  * Line breaks and images are special cases.
+ *
+ * 换行符和图像是特例。
+ *
  */
 function getCtypeForPlaceholder(placeholder: string): string|null {
   const tag = placeholder.replace(/^(START_|CLOSE_)/, '');

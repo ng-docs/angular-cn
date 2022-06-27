@@ -13,11 +13,24 @@ import {ImportGenerator, NamedImport} from './api/import_generator';
 
 /**
  * Information about an import that has been added to a module.
+ *
+ * 有关已添加到模块的导入的信息。
+ *
  */
 export interface Import {
-  /** The name of the module that has been imported. */
+  /**
+   * The name of the module that has been imported.
+   *
+   * 已导入的模块的名称。
+   *
+   */
   specifier: string;
-  /** The `ts.Identifer` by which the imported module is known. */
+  /**
+   * The `ts.Identifer` by which the imported module is known.
+   *
+   * 已知导入模块的 `ts.Identifer` 。
+   *
+   */
   qualifier: ts.Identifier;
 }
 

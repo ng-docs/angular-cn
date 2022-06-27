@@ -26,39 +26,63 @@ const BACKWARDS_COMPATIBILITY_NAVIGATION_URLS = [
  * A specific version of the application, identified by a unique manifest
  * as determined by its hash.
  *
+ * 应用程序的特定版本，由唯一清单标识，该清单由其哈希确定。
+ *
  * Each `AppVersion` can be thought of as a published version of the app
  * that can be installed as an update to any previously installed versions.
+ *
+ * 每个 `AppVersion` 都可以被认为是应用程序的已发布版本，可以作为对任何以前安装的版本的更新安装。
+ *
  */
 export class AppVersion implements UpdateSource {
   /**
    * A Map of absolute URL paths (`/foo.txt`) to the known hash of their contents (if available).
+   *
+   * 绝对 URL 路径 ( `/foo.txt` ) 到其内容的已知哈希值（如果可用）的映射。
+   *
    */
   private hashTable = new Map<NormalizedUrl, string>();
 
   /**
    * All of the asset groups active in this version of the app.
+   *
+   * 此版本的应用程序中的所有活动资产组。
+   *
    */
   private assetGroups: AssetGroup[];
 
   /**
    * All of the data groups active in this version of the app.
+   *
+   * 此版本的应用程序中的所有活动数据组。
+   *
    */
   private dataGroups: DataGroup[];
 
   /**
    * Requests to URLs that match any of the `include` RegExps and none of the `exclude` RegExps
    * are considered navigation requests and handled accordingly.
+   *
+   * 对与任何 `include` RegExps 且不与 `exclude` RegExps 匹配的 URL
+   * 的请求被视为导航请求并进行相应处理。
+   *
    */
   private navigationUrls: {include: RegExp[], exclude: RegExp[]};
 
   /**
    * The normalized URL to the file that serves as the index page to satisfy navigation requests.
    * Usually this is `/index.html`.
+   *
+   * 作为满足导航请求的索引页面的文件的规范化 URL。通常这是 `/index.html` 。
+   *
    */
   private indexUrl = this.adapter.normalizeUrl(this.manifest.index);
 
   /**
    * Tracks whether the manifest has encountered any inconsistencies.
+   *
+   * 跟踪清单是否遇到任何不一致。
+   *
    */
   private _okay = true;
 
@@ -114,6 +138,9 @@ export class AppVersion implements UpdateSource {
    * Fully initialize this version of the application. If this Promise resolves successfully, all
    * required
    * data has been safely downloaded.
+   *
+   * 完全初始化此版本的应用程序。如果此 Promise 成功解析，则已安全下载了所有必需的数据。
+   *
    */
   async initializeFully(updateFrom?: UpdateSource): Promise<void> {
     try {
@@ -204,6 +231,9 @@ export class AppVersion implements UpdateSource {
   /**
    * Determine whether the request is a navigation request.
    * Takes into account: Request mode, `Accept` header, `navigationUrls` patterns.
+   *
+   * 确定请求是否是导航请求。考虑了：请求模式、 `Accept` 标头、 `navigationUrls` 模式。
+   *
    */
   isNavigationRequest(req: Request): boolean {
     if (req.mode !== 'navigate') {
@@ -224,6 +254,9 @@ export class AppVersion implements UpdateSource {
 
   /**
    * Check this version for a given resource with a particular hash.
+   *
+   * 检查此版本以获取具有特定哈希的给定资源。
+   *
    */
   async lookupResourceWithHash(url: NormalizedUrl, hash: string): Promise<Response|null> {
     // Verify that this version has the requested resource cached. If not,
@@ -244,6 +277,9 @@ export class AppVersion implements UpdateSource {
 
   /**
    * Check this version for a given resource regardless of its hash.
+   *
+   * 检查给定资源的此版本，无论其哈希值如何。
+   *
    */
   lookupResourceWithoutHash(url: NormalizedUrl): Promise<CacheState|null> {
     // Limit the search to asset groups, and only scan the cache, don't
@@ -262,6 +298,9 @@ export class AppVersion implements UpdateSource {
 
   /**
    * List all unhashed resources from all asset groups.
+   *
+   * 列出所有资产组中的所有未哈希资源。
+   *
    */
   previouslyCachedResources(): Promise<NormalizedUrl[]> {
     return this.assetGroups.reduce(
@@ -285,6 +324,9 @@ export class AppVersion implements UpdateSource {
 
   /**
    * Return a list of the names of all caches used by this version.
+   *
+   * 返回此版本使用的所有缓存名称的列表。
+   *
    */
   async getCacheNames(): Promise<string[]> {
     const allGroupCacheNames = await Promise.all([
@@ -296,6 +338,9 @@ export class AppVersion implements UpdateSource {
 
   /**
    * Get the opaque application data which was provided with the manifest.
+   *
+   * 获取清单附带的不透明应用程序数据。
+   *
    */
   get appData(): Object|null {
     return this.manifest.appData || null;
@@ -303,6 +348,9 @@ export class AppVersion implements UpdateSource {
 
   /**
    * Check whether a request accepts `text/html` (based on the `Accept` header).
+   *
+   * 检查请求是否接受 `text/html` （基于 `Accept` 标头）。
+   *
    */
   private acceptsTextHtml(req: Request): boolean {
     const accept = req.headers.get('Accept');

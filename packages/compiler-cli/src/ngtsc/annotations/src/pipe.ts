@@ -28,6 +28,9 @@ export interface PipeHandlerData {
 
 /**
  * Represents an Angular pipe.
+ *
+ * 表示 Angular 管道。
+ *
  */
 export class PipeSymbol extends SemanticSymbol {
   constructor(decl: ClassDeclaration, public readonly name: string) {

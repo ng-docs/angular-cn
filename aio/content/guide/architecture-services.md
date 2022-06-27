@@ -35,7 +35,7 @@ Angular 不会*强迫*你遵循这些原则。Angular 只会通过*依赖注入*
 
 Here's an example of a service class that logs to the browser console.
 
-下面是一个服务类的范例，用于把日志记录到浏览器的控制台：。
+下面是一个服务类的范例，用于把日志记录到浏览器的控制台：
 
 <code-example header="src/app/logger.service.ts (class)" path="architecture/src/app/logger.service.ts" region="class"></code-example>
 
@@ -79,7 +79,7 @@ Similarly, use the `@Injectable()` decorator to indicate that a component or oth
 
 * A *provider* is an object that tells an injector how to obtain or create a dependency
 
-  *提供者*是一个对象，用来告诉注入器应该如何获取或创建依赖。
+  *提供者*是一个对象，用来告诉注入器应该如何获取或创建依赖
 
 For any dependency that you need in your app, you must register a provider with the application's injector, so that the injector can use the provider to create new instances.
 For a service, the provider is typically the service class itself.
@@ -97,7 +97,7 @@ A dependency doesn't have to be a service —it could be a function, for example
 When Angular creates a new instance of a component class, it determines which services or other dependencies that component needs by looking at the constructor parameter types.
 For example, the constructor of `HeroListComponent` needs `HeroService`.
 
-当 Angular 创建组件类的新实例时，它会通过查看该组件类的构造函数，来决定该组件依赖哪些服务或其它依赖项。 比如 `HeroListComponent` 的构造函数中需要 `HeroService`：。
+当 Angular 创建组件类的新实例时，它会通过查看该组件类的构造函数，来决定该组件依赖哪些服务或其它依赖项。 比如 `HeroListComponent` 的构造函数中需要 `HeroService`：
 
 <code-example header="src/app/hero-list.component.ts (constructor)" path="architecture/src/app/hero-list.component.ts" region="ctor"></code-example>
 
@@ -112,7 +112,7 @@ When all requested services have been resolved and returned, Angular can call th
 
 The process of `HeroService` injection looks something like this.
 
-`HeroService` 的注入过程如下所示：。
+`HeroService` 的注入过程如下所示：
 
 <div class="lightbox">
 
@@ -133,7 +133,7 @@ You register providers in the metadata of the service (in the `@Injectable()` de
 * By default, the Angular CLI command [`ng generate service`](cli/generate) registers a provider with the root injector for your service by including provider metadata in the `@Injectable()` decorator.
    The tutorial uses this method to register the provider of HeroService class definition.
 
-  默认情况下，Angular CLI 的 [`ng generate service`](cli/generate) 命令会在 `@Injectable()` 装饰器中提供元数据来把它注册到根注入器中。本教程就用这种方法注册了 HeroService 的提供者：。
+  默认情况下，Angular CLI 的 [`ng generate service`](cli/generate) 命令会在 `@Injectable()` 装饰器中提供元数据来把它注册到根注入器中。本教程就用这种方法注册了 HeroService 的提供者：
 
   <code-example format="typescript" language="typescript">
 
@@ -153,7 +153,7 @@ You register providers in the metadata of the service (in the `@Injectable()` de
 * When you register a provider with a [specific NgModule](guide/architecture-modules), the same instance of a service is available to all components in that NgModule.
   To register at this level, use the `providers` property of the `@NgModule()` decorator.
 
-  当你使用[特定的 NgModule](guide/architecture-modules) 注册提供者时，该服务的同一个实例将会对该 NgModule 中的所有组件可用。要想在这一层注册，请用 `@NgModule()` 装饰器中的 `providers` 属性：。
+  当你使用[特定的 NgModule](guide/architecture-modules) 注册提供者时，该服务的同一个实例将会对该 NgModule 中的所有组件可用。要想在这一层注册，请用 `@NgModule()` 装饰器中的 `providers` 属性：
 
   <code-example format="typescript" language="typescript">
 
@@ -176,7 +176,7 @@ You register providers in the metadata of the service (in the `@Injectable()` de
 
 For more detailed information, see the [Dependency Injection](guide/dependency-injection) section.
 
-要了解更多细节，请参阅[依赖注入](guide/dependency-injection)一节。
+要了解更多细节，参阅[依赖注入](guide/dependency-injection)一节。
 
 <!-- links -->
 

@@ -28,13 +28,10 @@ import {ViewRef as R3_ViewRef} from '../render3/view_ref';
  * @see [Using change detection hooks](guide/lifecycle-hooks#using-change-detection-hooks)
  *
  * [使用变更检测钩子](guide/lifecycle-hooks#using-change-detection-hooks)
- *
  * @see [Defining custom change detection](guide/lifecycle-hooks#defining-custom-change-detection)
  *
  * [定义自定义变更检测](guide/lifecycle-hooks#defining-custom-change-detection)
- *
- *
- *@usageNotes
+ * @usageNotes
  *
  * The following examples demonstrate how to modify default change-detection behavior
  * to perform explicit detection when needed.
@@ -50,7 +47,7 @@ import {ViewRef as R3_ViewRef} from '../render3/view_ref';
  * after an interval. See [live demo](https://plnkr.co/edit/GC512b?p=preview).
  *
  * 下面的例子为组件设置了 `OnPush` 变更检测策略（`CheckOnce` 而不是默认的
- *`CheckAlways`），然后每隔一段时间强制进行第二轮检测。
+ * `CheckAlways`），然后每隔一段时间强制进行第二轮检测。
  * 参见[在线例子](http://plnkr.co/edit/GC512b?p=preview)。
  *
  * <code-example path="core/ts/change_detect/change-detection.ts"
@@ -72,7 +69,6 @@ import {ViewRef as R3_ViewRef} from '../render3/view_ref';
  *
  * <code-example path="core/ts/change_detect/change-detection.ts" region="detach"></code-example>
  *
- *
  * ### Reattaching a detached component
  *
  * ### 重新附加一个已分离的组件
@@ -84,7 +80,7 @@ import {ViewRef as R3_ViewRef} from '../render3/view_ref';
  *
  * 下面的例子创建了一个用来显示活动数据的组件。
  * 当 `live` 属性为 `false` 时，该组件就把它的变更检测器从主变更检测器树中分离出来，当该属性变为
- *`true` 时，则重新附加上它。
+ * `true` 时，则重新附加上它。
  *
  * <code-example path="core/ts/change_detect/change-detection.ts" region="reattach"></code-example>
  *
@@ -125,6 +121,7 @@ export abstract class ChangeDetectorRef {
    * 即使已分离的视图已标记为脏的，它们在重新附加上去之前也不会被检查。
    *
    * <!-- TODO: Add a link to a chapter on detach/reattach/local digest -->
+   *
    * <!-- TODO: Add a live demo once ref.detectChanges is merged into master -->
    *
    */
@@ -138,6 +135,7 @@ export abstract class ChangeDetectorRef {
    * 检查该视图及其子视图。与 {@link ChangeDetectorRef#detach detach} 结合使用可以实现局部变更检测。
    *
    * <!-- TODO: Add a link to a chapter on detach/reattach/local digest -->
+   *
    * <!-- TODO: Add a live demo once ref.detectChanges is merged into master -->
    *
    */
@@ -176,7 +174,12 @@ export abstract class ChangeDetectorRef {
 
 
 
-/** Returns a ChangeDetectorRef (a.k.a. a ViewRef) */
+/**
+ * Returns a ChangeDetectorRef (a.k.a. a ViewRef)
+ *
+ * 返回 ChangeDetectorRef （又名 ViewRef）
+ *
+ */
 export function injectChangeDetectorRef(flags: InjectFlags): ChangeDetectorRef {
   return createViewRef(
       getCurrentTNode()!, getLView(),
@@ -186,10 +189,26 @@ export function injectChangeDetectorRef(flags: InjectFlags): ChangeDetectorRef {
 /**
  * Creates a ViewRef and stores it on the injector as ChangeDetectorRef (public alias).
  *
+ * 创建一个 ViewRef 并将其作为 ChangeDetectorRef （公共别名）存储在注入器中。
+ *
  * @param tNode The node that is requesting a ChangeDetectorRef
+ *
+ * 请求 ChangeDetectorRef 的节点
+ *
  * @param lView The view to which the node belongs
+ *
+ * 节点所属的视图
+ *
  * @param isPipe Whether the view is being injected into a pipe.
- * @returns The ChangeDetectorRef to use
+ *
+ * 视图是否正在注入管道。
+ *
+ * @returns
+ *
+ * The ChangeDetectorRef to use
+ *
+ * 要使用的 ChangeDetectorRef
+ *
  */
 function createViewRef(tNode: TNode, lView: LView, isPipe: boolean): ChangeDetectorRef {
   if (isComponentHost(tNode) && !isPipe) {

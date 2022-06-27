@@ -1,9 +1,11 @@
 # DevTools Overview
 
-# DevTools 概述
+# DevTools 概览
 
 Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications.
 Angular DevTools supports Angular v12 and later.
+
+Angular DevTools 是一个浏览器扩展，为 Angular 应用程序提供调试和剖析功能。 Angular DevTools 支持 Angular v12 及更高版本。
 
 <div class="video-container">
 
@@ -13,7 +15,11 @@ Angular DevTools supports Angular v12 and later.
 
 You can find Angular DevTools in the [Chrome Web Store](https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh) and in [Firefox Addons](https://addons.mozilla.org/en-GB/firefox/addon/angular-devtools/).
 
+你可以在 [Chrome 网上应用店](https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh)和 [Firefox Addons](https://addons.mozilla.org/en-GB/firefox/addon/angular-devtools/) 中找到 Angular DevTools。
+
 After installing Angular DevTools, find the extension under the Angular tab in your browser DevTools.
+
+安装 Angular DevTools 后，在浏览器 DevTools 的 Angular 选项卡下找到扩展。
 
 <div class="lightbox">
 
@@ -23,13 +29,15 @@ After installing Angular DevTools, find the extension under the Angular tab in y
 
 When you open the extension, you'll see two additional tabs:
 
-打开扩展程序时，你还会看到另外两个选项卡：
+打开扩展程序时，你会看到两个额外的选项卡：
 
 | Tabs | Details |
 | :--- | :------ |
-| Tabs | 详情 |
+| 选项卡 | 详细信息 |
 | [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state. |
+| [组件](#components) | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。 |
 | [Profiler](#profiler) | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
+| [环境配置器](#profiler) | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。 |
 
 <div class="lightbox">
 
@@ -46,6 +54,8 @@ In the top-right corner of Angular DevTools you'll find which version of Angular
 ## 错误报告
 
 Report issues and feature requests on [GitHub](https://github.com/angular/angular/issues).
+
+在 [GitHub](https://github.com/angular/angular/issues) 上报告问题和特性请求。
 
 To report an issue with the Profiler, export the Profiler recording by clicking the **Save Profile** button, and then attaching that export as a file in the issue.
 
@@ -105,9 +115,11 @@ Navigate in the component tree using the mouse or the following keyboard shortcu
 
 | Keyboard shortcut | Details |
 | :---------------- | :------ |
-| Keyboard shortcut | 详情 |
+| 键盘快捷方式 | 详细信息 |
 | Up and down arrows | Select the previous and next nodes |
+| 向上和向下箭头 | 选择上一个和下一个节点 |
 | Left and right arrows | Collapse and expand a node |
+| 左右箭头 | 折叠和展开节点 |
 
 To look up a component or directive by name use the search box above the component tree.
 To navigate to the next search match, press `Enter`.
@@ -127,6 +139,8 @@ To navigate to the previous search match, press `Shift + Enter`.
 
 To go to the host element of a particular component or directive, find it in the component explorer and double-click it.
 Browsers' DevTools opens the Elements tab in Chrome or the Inspector one in Firefox, and selects the associated DOM node.
+
+要转到特定组件或指令的宿主元素，请在组件浏览器中找到它，然后双击它。 浏览器的 DevTools 将在 Chrome 或 Firefox 的审查器中打开 “Elements” 选项卡，然后选择关联的 DOM 节点。
 
 ### Navigate to source
 
@@ -151,6 +165,8 @@ Like browsers' DevTools, the properties view lets you edit the value of an input
 Right-click on the property value.
 If edit functionality is available for this value type, you'll see a text input.
 Type the new value and press `Enter`.
+
+与浏览器的 DevTools 一样，属性视图可让你编辑输入属性、输出属性或其他属性的值。右键单击属性值。如果此值类型可使用编辑功能，则将看到一个文本输入框。键入新值，然后按 Enter 键。
 
 <div class="lightbox">
 
@@ -180,6 +196,8 @@ Type `$ng0` to get a reference to the instance of the currently selected compone
 Similar to browsers' DevTools, you can inspect the page to select a particular component or directive.
 Click the ***Inspect element*** icon at the top left corner within Angular DevTools and hover over a DOM element on the page.
 The extension recognizes the associated directives and/or components and lets you select the corresponding element in the Component tree.
+
+与浏览器的 DevTools 相似，你可以检查页面以选择特定的组件或指令。单击 DevTools 中左上角的 ***Inspect element（审查元素）***图标，然后将鼠标悬停在页面上的 DOM 元素上。 该扩展可以识别关联的指令和/或组件，并允许你在组件树中选择相应的元素。
 
 <div class="lightbox">
 
@@ -211,10 +229,12 @@ To start profiling your application, hover over the circle at the top-left corne
 During profiling, Angular DevTools captures execution events, such as change detection and lifecycle hook execution.
 To finish recording, click the circle again to **Stop recording**.
 
-在剖析过程中，Angular DevTools 会捕获执行过的事件，例如变更检测和生命周期挂钩。要完成录制，请再次单击那个圆圈以 **Stop recording**。
+在剖析过程中，Angular DevTools 会捕获执行过的事件，比如变更检测和生命周期钩子。要完成录制，请再次单击那个圆圈以 **Stop recording**。
 
 You can also import an existing recording.
 Read more about this feature in the [Import recording](#) section.
+
+你也可以导入现有剖析记录。在[导入记录](#)部分了解有关此功能的更多信息。
 
 ### Understand your application's execution
 
@@ -287,7 +307,7 @@ Each tile in the graph represents an element on the screen at a specific positio
 
 For example, if during one change detection cycle at a specific position in the component tree you had `ComponentA`, this component was removed and in its place Angular rendered `ComponentB`, you'll see both components at the same tile.
 
-例如，如果在组件树中特定位置的一个变更检测周期中，我们原本有一个 `ComponentA`，然后该组件被删除，而在它的位置上，Angular 再渲染出 `ComponentB`，这样你就会在同一图块上看到两个组件。
+比如，如果在组件树中特定位置的一个变更检测周期中，我们原本有一个 `ComponentA`，然后该组件被删除，而在它的位置上，Angular 再渲染出 `ComponentB`，这样你就会在同一图块上看到两个组件。
 
 Each tile is colored depending on how much time Angular spent there.
 DevTools determines the intensity of the color by the time spent relative to the tile where we've spent the most time in change detection.

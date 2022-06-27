@@ -26,6 +26,9 @@ import {SyntheticValue} from './synthetic';
 /**
  * Tracks the scope of a function body, which includes `ResolvedValue`s for the parameters of that
  * body.
+ *
+ * 跟踪函数体的范围，包括该函数体参数的 `ResolvedValue` 。
+ *
  */
 type Scope = Map<ts.ParameterDeclaration, ResolvedValue>;
 
@@ -76,12 +79,18 @@ interface Context {
   originatingFile: ts.SourceFile;
   /**
    * The module name (if any) which was used to reach the currently resolving symbols.
+   *
+   * 用于访问当前解析符号的模块名称（如果有）。
+   *
    */
   absoluteModuleName: string|null;
 
   /**
    * A file name representing the context in which the current `absoluteModuleName`, if any, was
    * resolved.
+   *
+   * 表示当前 `absoluteModuleName` （如果有）的上下文的文件名。
+   *
    */
   resolutionContext: string;
   scope: Scope;
@@ -499,8 +508,13 @@ export class StaticInterpreter {
   /**
    * Visit an expression which was extracted from a foreign-function resolver.
    *
+   * 访问从外部函数解析器提取的表达式。
+   *
    * This will process the result and ensure it's correct for FFR-resolved values, including marking
    * `Reference`s as synthetic.
+   *
+   * 这将处理结果并确保它对于 FFR 解析的值是正确的，包括将 `Reference` 标记为合成。
+   *
    */
   private visitFfrExpression(expr: ts.Expression, context: Context): ResolvedValue {
     const res = this.visitExpression(expr, context);

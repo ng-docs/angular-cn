@@ -124,6 +124,8 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 * [Internationalization][AioGuideI18nOverview]: Make your application available in multiple languages with Angular's internationalization (i18n) tools.
 
+  [国际化][AioGuideI18nOverview] ：借助 Angular 的国际化（i18n）工具，可以让你的应用支持多本地环境。
+
 * [Accessibility](guide/accessibility): Make your application accessible to all users.
 
   [无障碍性](guide/accessibility)：让所有用户都能访问你的应用。
@@ -142,7 +144,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 * [npm packages](guide/npm-packages): The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm](https://docs.npmjs.com) packages and distributed using the npm registry. The Angular CLI creates a default `package.json` file, which specifies a starter set of packages that work well together and jointly support many common application scenarios.
 
-  [npm 包](guide/npm-packages)：Angular 框架、Angular CLI 和 Angular 应用中用到的组件都是用 [npm](https://docs.npmjs.com/) 打包的，并通过 npm 注册服务器进行发布。Angular CLI 会创建一个默认的 `package.json` 文件，它会指定一组初始的包，它们可以一起使用，共同支持很多常见的应用场景。
+  [npm 包](guide/npm-packages)：Angular 框架、Angular CLI 和 Angular 应用中用到的组件都是用 [npm](https://docs.npmjs.com) 打包的，并通过 npm 注册服务器进行发布。Angular CLI 会创建一个默认的 `package.json` 文件，它会指定一组初始的包，它们可以一起使用，共同支持很多常见的应用场景。
 
 * [TypeScript configuration](guide/typescript-configuration): TypeScript is the primary language for Angular application development.
 

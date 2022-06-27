@@ -89,7 +89,12 @@ function isFormData(value: any): value is FormData {
 /**
  * Safely assert whether the given value is a URLSearchParams instance.
  *
+ * 安全地断言给定值是否是 URLSearchParams 实例。
+ *
  * In some execution environments URLSearchParams is not defined.
+ *
+ * 在某些执行环境中， URLSearchParams 未定义。
+ *
  */
 function isUrlSearchParams(value: any): value is URLSearchParams {
   return typeof URLSearchParams !== 'undefined' && value instanceof URLSearchParams;
@@ -136,6 +141,9 @@ export class HttpRequest<T> {
 
   /**
    * Shared and mutable context that can be used by interceptors
+   *
+   * 拦截器可以使用的共享和可变上下文
+   *
    */
   readonly context!: HttpContext;
 
@@ -185,9 +193,13 @@ export class HttpRequest<T> {
    * To pass a string representation of HTTP parameters in the URL-query-string format,
    * the `HttpParamsOptions`' `fromString` may be used. For example:
    *
+   * 要以 URL-query-string 格式传递 HTTP 参数的字符串表示，可以用 `HttpParamsOptions` ' `fromString`
+   * 。例如：
+   *
    * ```
    * new HttpParams({fromString: 'angular=awesome'})
    * ```
+   *
    */
   // TODO(issue/24571): remove '!'.
   readonly params!: HttpParams;

@@ -116,11 +116,19 @@ export function renderModule<T>(
 /**
  * Bootstraps an instance of an Angular application and renders it to a string.
  *
+ * 引导 Angular 应用程序的实例并将其呈现为字符串。
+ *
  * Note: the root component passed into this function *must* be a standalone one (should have the
  * `standalone: true` flag in the `@Component` decorator config).
  *
+ * 注意：传递给此函数的根组件*必须*是独立的（应该在 `@Component` 装饰器配置中具有 `standalone: true`
+ * 标志）。
+ *
  * ```typescript
- * @Component({
+ *
+ * ```
+ *
+ * @Component ({
  *   standalone: true,
  *   template: 'Hello world!'
  * })
@@ -128,17 +136,42 @@ export function renderModule<T>(
  *
  * const output: string = await renderApplication(RootComponent, {appId: 'server-app'});
  * ```
- *
  * @param rootComponent A reference to a Standalone Component that should be rendered.
+ *
+ * 对应该呈现的独立组件的引用。
+ *
  * @param options Additional configuration for the render operation:
- *  - `appId` - a string identifier of this application. The appId is used to prefix all
- *              server-generated stylings and state keys of the application in TransferState
- *              use-cases.
- *  - `document` - the full document HTML of the page to render, as a string.
- *  - `url` - the URL for the current render request.
- *  - `providers` - set of application level providers for the current render request.
- *  - `platformProviders` - the platform level providers for the current render request.
- * @returns A Promise, that returns serialized (to a string) rendered page, once resolved.
+ *
+ * 渲染操作的附加配置：
+ *
+ * - `appId` - a string identifier of this application. The appId is used to prefix all
+ *             server-generated stylings and state keys of the application in TransferState
+ *             use-cases.
+ *
+ *   `appId` - 此应用程序的字符串标识符。 appId 用于在 TransferState
+ * 用例中作为应用程序的所有服务器生成的样式和状态键的前缀。
+ *
+ * - `document` - the full document HTML of the page to render, as a string.
+ *
+ *   `document` - 要呈现的页面的完整文档 HTML，以字符串形式。
+ *
+ * - `url` - the URL for the current render request.
+ *
+ *   `url` - 当前呈现请求的 URL。
+ *
+ * - `providers` - set of application level providers for the current render request.
+ *
+ *   `providers` - 当前渲染请求的应用程序级提供程序集。
+ *
+ * - `platformProviders` - the platform level providers for the current render request.
+ *
+ *   `platformProviders` - 当前渲染请求的平台级提供程序。
+ *
+ * @returns
+ *
+ * A Promise, that returns serialized (to a string) rendered page, once resolved.
+ *
+ * 一个 Promise，一旦解析，就会返回序列化（到字符串）呈现的页面。
  *
  * @publicApi
  * @developerPreview
@@ -173,10 +206,13 @@ export function renderApplication<T>(rootComponent: Type<T>, options: {
  * URL。`extraProviders` 是当前渲染请求的平台级提供者。
  *
  * @publicApi
- *
  * @deprecated
+ *
  * This symbol is no longer necessary as of Angular v13.
  * Use {@link renderModule} API instead.
+ *
+ * 从 Angular v13 开始，不再需要此符号。改用 {@link renderModule} API。
+ *
  */
 export function renderModuleFactory<T>(
     moduleFactory: NgModuleFactory<T>,

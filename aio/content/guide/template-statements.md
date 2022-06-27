@@ -1,5 +1,7 @@
 # Template statements
 
+# 模板语句
+
 Template statements are methods or properties that you can use in your HTML to respond to user events.
 With template statements, your application can engage users through actions such as displaying dynamic content or submitting forms.
 
@@ -9,9 +11,13 @@ With template statements, your application can engage users through actions such
 
 See the <live-example name="template-syntax">Template syntax</live-example> for the syntax and code snippets in this guide.
 
+关于本指南中的语法和代码段的信息，请参阅<live-example name="template-syntax">Template syntax</live-example>。
+
 </div>
 
 In the following example, the template statement `deleteHero()` appears in quotes to the right of the equals sign `=` character as in `(event)="statement"`.
+
+在以下示例中，模板语句 `deleteHero()` 出现在 `=` 号右侧的引号中，`(event)="statement"` 。
 
 <code-example header="src/app/app.component.html" path="template-syntax/src/app/app.component.html" region="context-component-statement"></code-example>
 
@@ -54,11 +60,11 @@ The following JavaScript and template expression syntax is not allowed:
 
 * Operator assignment, such as `+=` and `-=`
 
-  赋值运算符，例如 `+=` 和 `-=`
+  赋值运算符，比如 `+=` 和 `-=`
 
 * The bitwise operators, such as `|` and `&`
 
-  按位运算符，例如 `|` 和 `&`
+  按位运算符，比如 `|` 和 `&`
 
 * The [pipe operator](guide/pipes)
 
@@ -75,7 +81,7 @@ Statements have a context —a particular part of the application to which the s
 Statements can refer only to what's in the statement context, which is typically the component instance.
 For example, `deleteHero()` of `(click)="deleteHero()"` is a method of the component in the following snippet.
 
-语句只能引用语句上下文中的内容，通常是组件实例。例如，`(click)="deleteHero()"` 中的 `deleteHero()` 就是下面代码段中的组件方法之一。
+语句只能引用语句上下文中的内容，通常是组件实例。比如，`(click)="deleteHero()"` 中的 `deleteHero()` 就是下面代码段中的组件方法之一。
 
 <code-example header="src/app/app.component.html" path="template-syntax/src/app/app.component.html" region="context-component-statement"></code-example>
 
@@ -102,11 +108,11 @@ In the preceding `deleteHero(hero)`, the `hero` is the template input variable, 
 
 | Practices | Details |
 | :-------- | :------ |
-| Practices | 详情 |
+| 实践 | 详情 |
 | Conciseness | Use method calls or basic property assignments to keep template statements minimal. |
-| Conciseness | 使用方法调用或基本属性赋值，来让模板语句保持最小化。 |
+| 简明 | 使用方法调用或基本属性赋值，来让模板语句保持最小化。 |
 | Work within the context | The context of a template statement can be the component class instance or the template. Because of this, template statements cannot refer to anything in the global namespace such as `window` or `document`. For example, template statements can't call `console.log()` or `Math.max()`. |
-| Work within the context | 模板语句的上下文可以是组件类实例或模板。因此，模板语句无法引用全局名称空间中的任何内容，例如 `window` 或 `document`。例如，模板语句不能调用 `console.log()` 或 `Math.max()` 。 |
+| 在上下文中工作 | 模板语句的上下文可以是组件类实例或模板。因此，模板语句无法引用全局名称空间中的任何内容，比如 `window` 或 `document`。比如，模板语句不能调用 `console.log()` 或 `Math.max()` 。 |
 
 <!-- links -->
 

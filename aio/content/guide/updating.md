@@ -47,6 +47,8 @@ What's new? What's changed? We share the most important things you need to know 
 
 To review a complete list of changes, organized by version, see the [Angular change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log").
 
+要查看完整的按版本组织的变更列表，参阅 [Angular 更改记录](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")。
+
 <a id="checking-version-app"></a>
 
 ## Checking your version of Angular
@@ -65,6 +67,8 @@ To check your application's version of Angular: From within your project directo
 
 The most recent stable released version of Angular appears in the [Angular documentation](docs "Angular documentation") at the bottom of the left side navigation.
 For example, `stable (v13.0.3)`.
+
+在 [Angular 文档站](https://angular.cn/docs "Angular documentation")左侧导航栏的底部可以看到 Angular 最新的稳定版版本号。比如 `stable (v13.0.3)`。
 
 You can also find the most current version of Angular by using the CLI command [`ng update`](cli/update).
 By default, [`ng update`](cli/update)(without additional arguments) lists the updates that are available to you.
@@ -115,6 +119,8 @@ It also describes supported update paths.
 
 * Release details:
   [Angular change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
+
+   发布详情：[Angular 变更记录](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
 
 * Update instructions:
   [Angular Update Guide](https://update.angular.io/ "Angular Update Guide")

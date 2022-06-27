@@ -19,9 +19,11 @@ that are important to Angular developers, including details about the following 
 
 | Files | Details |
 | :---- | :------ |
-| 文件【模糊翻译】 | 详情 |
+| 文件 | 详情 |
 | [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript compiler configuration. |
+| [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript 编译器配置。 |
 | [typings](guide/typescript-configuration#typings) | TypesScript declaration files. |
+| [typings](guide/typescript-configuration#typings) | TypesScript 类型声明文件。 |
 
 <a id="tsconfig"></a>
 
@@ -85,6 +87,8 @@ Angular 工作区的初始 `tsconfig.base.json` 通常是这样的。
 <a id="noImplicitAny"></a>
 
 ### `noImplicitAny` and `suppressImplicitAnyIndexErrors`
+
+### `noImplicitAny` 与 `suppressImplicitAnyIndexErrors`
 
 TypeScript developers disagree about whether the `noImplicitAny` flag should be `true` or `false`.
 There is no correct answer and you can change the flag later.
@@ -170,7 +174,7 @@ TypeScript 带有一个特殊的声明文件，名为 `lib.d.ts`。该文件包�
 
 Based on the `--target`, TypeScript adds *additional* ambient declarations like `Promise` if the target is `es6`.
 
-基于 `--target`，TypeScript 添加*额外*的环境声明，例如如果目标为 `es6` 时将添加 `Promise`。
+基于 `--target`，TypeScript 添加*额外*的环境声明，比如如果目标为 `es6` 时将添加 `Promise`。
 
 By default, the target is `es2015`.
 If you are targeting `es5`, you still have newer type declarations due to the list of declaration files included:

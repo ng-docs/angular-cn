@@ -32,6 +32,9 @@ export class MultiMetric extends Metric {
 
   /**
    * Starts measuring
+   *
+   * 开始测量
+   *
    */
   override beginMeasure(): Promise<any> {
     return Promise.all(this._metrics.map(metric => metric.beginMeasure()));
@@ -40,6 +43,9 @@ export class MultiMetric extends Metric {
   /**
    * Ends measuring and reports the data
    * since the begin call.
+   *
+   * 结束测量并报告自 begin 调用以来的数据。
+   *
    * @param restart: Whether to restart right after this.
    */
   override endMeasure(restart: boolean): Promise<{[key: string]: any}> {
@@ -50,6 +56,9 @@ export class MultiMetric extends Metric {
   /**
    * Describes the metrics provided by this metric implementation.
    * (e.g. units, ...)
+   *
+   * 描述此度量实现提供的度量。 （例如单位，……）
+   *
    */
   override describe(): {[key: string]: any} {
     return mergeStringMaps(this._metrics.map((metric) => metric.describe()));

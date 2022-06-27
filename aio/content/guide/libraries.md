@@ -6,7 +6,7 @@ Many applications need to solve the same general problems, such as presenting a 
 Developers can create general solutions for particular domains that can be adapted for re-use in different applications.
 Such a solution can be built as Angular *libraries* and these libraries can be published and shared as *npm packages*.
 
-许多应用都需要解决一些同样的常见问题，例如提供统一的用户界面、渲染数据，以及允许数据输入。开发人员可以为特定的领域创建一些通用解决方案，以便在不同的应用中重复使用。像这样的解决方案就可以构建成 Angular *库*，这些库可以作为 *npm 包*进行发布和共享。
+许多应用都需要解决一些同样的常见问题，比如提供统一的用户界面、渲染数据，以及允许数据输入。开发人员可以为特定的领域创建一些通用解决方案，以便在不同的应用中重复使用。像这样的解决方案就可以构建成 Angular *库*，这些库可以作为 *npm 包*进行发布和共享。
 
 An Angular library is an Angular [project](guide/glossary#project) that differs from an application in that it cannot run on its own.
 A library must be imported and used in an application.
@@ -18,7 +18,7 @@ For example, to add [reactive forms](guide/reactive-forms) to an app, add the li
 Similarly, adding the [service worker](guide/service-worker-intro) library to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://developers.google.com/web/progressive-web-apps) (PWA).
 [Angular Material](https://material.angular.io) is an example of a large, general-purpose library that provides sophisticated, reusable, and adaptable UI components.
 
-这些库扩展了 Angular 的基本功能。例如，要向应用添加[响应式表单](guide/reactive-forms)，请使用 `ng add @angular/forms` 添加该库的 npm 包，再从应用代码中，从 `@angular/forms` 库中导入 `ReactiveFormsModule`。同样，把 [Service Worker](guide/service-worker-intro) 库添加到 Angular 应用中是将应用转换为[渐进式 Web 应用程序](https://developers.google.com/web/progressive-web-apps/)（PWA）的步骤之一。[Angular Material](https://material.angular.cn/) 是一个大型通用库的典范，它提供了一些复杂、可复用，兼具高度适应性的 UI 组件。
+这些库扩展了 Angular 的基本功能。比如，要向应用添加[响应式表单](guide/reactive-forms)，请使用 `ng add @angular/forms` 添加该库的 npm 包，再从应用代码中，从 `@angular/forms` 库中导入 `ReactiveFormsModule`。同样，把 [Service Worker](guide/service-worker-intro) 库添加到 Angular 应用中是将应用转换为[渐进式 Web 应用程序](https://developers.google.com/web/progressive-web-apps)（PWA）的步骤之一。[Angular Material](https://material.angular.cn) 是一个大型通用库的典范，它提供了一些复杂、可复用，兼具高度适应性的 UI 组件。
 
 Any application developer can use these and other libraries that have been published as npm packages by the Angular team or by third parties.
 See [Using Published Libraries](guide/using-libraries).
@@ -56,6 +56,10 @@ This complexity can pay off, however, when the library is being used in multiple
 **NOTE**: <br />
 Libraries are intended to be used by Angular applications.
 To add Angular functionality to non-Angular web applications, use [Angular custom elements](guide/elements).
+
+**注意**：<br />
+这里所说的库是为了供 Angular 应用使用的。
+如果想把 Angular 的功能添加到非 Angular 应用中，可以使用 [Angular 自定义元素](guide/elements)。
 
 </div>
 

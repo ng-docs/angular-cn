@@ -282,6 +282,9 @@ export function tmpHashTable(manifest: Manifest): Map<string, string> {
 // Helpers
 /**
  * Join two path segments, ensuring that there is exactly one slash (`/`) between them.
+ *
+ * 连接两个路径段，确保它们之间正好有一个斜线 ( `/` )。
+ *
  */
 function joinPaths(path1: string, path2: string): string {
   return `${path1.replace(/\/$/, '')}/${path2.replace(/^\//, '')}`;

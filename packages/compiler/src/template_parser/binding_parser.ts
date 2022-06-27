@@ -34,6 +34,9 @@ export interface HostListeners {
 
 /**
  * Parses bindings in templates and in the directive host area.
+ *
+ * 解析模板和指令主机区域中的绑定。
+ *
  */
 export class BindingParser {
   constructor(
@@ -118,6 +121,10 @@ export class BindingParser {
    * Similar to `parseInterpolation`, but treats the provided string as a single expression
    * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
    * This is used for parsing the switch expression in ICUs.
+   *
+   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（ `{{` 和 `}}`
+   * ）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
+   *
    */
   parseInterpolationExpression(expression: string, sourceSpan: ParseSourceSpan): ASTWithSource {
     const sourceInfo = sourceSpan.start.toString();
@@ -138,13 +145,36 @@ export class BindingParser {
    * Parses the bindings in a microsyntax expression, and converts them to
    * `ParsedProperty` or `ParsedVariable`.
    *
+   * 解析微语法表达式中的绑定，并将它们转换为 `ParsedProperty` 或 `ParsedVariable` 。
+   *
    * @param tplKey template binding name
+   *
+   * 模板绑定名称
+   *
    * @param tplValue template binding value
+   *
+   * 模板绑定值
+   *
    * @param sourceSpan span of template binding relative to entire the template
+   *
+   * 模板绑定相对于整个模板的跨度
+   *
    * @param absoluteValueOffset start of the tplValue relative to the entire template
+   *
+   * tplValue 相对于整个模板的开始
+   *
    * @param targetMatchableAttrs potential attributes to match in the template
+   *
+   * 模板中要匹配的潜在属性
+   *
    * @param targetProps target property bindings in the template
+   *
+   * 模板中的 target 属性绑定
+   *
    * @param targetVars target variables in the template
+   *
+   * 模板中的目标变量
+   *
    */
   parseInlineTemplateBinding(
       tplKey: string, tplValue: string, sourceSpan: ParseSourceSpan, absoluteValueOffset: number,
@@ -183,15 +213,33 @@ export class BindingParser {
 
   /**
    * Parses the bindings in a microsyntax expression, e.g.
+   *
+   * 解析微语法表达式中的绑定，例如
+   *
    * ```
    *    <tag *tplKey="let value1 = prop; let value2 = localVar">
    * ```
    *
    * @param tplKey template binding name
+   *
+   * 模板绑定名称
+   *
    * @param tplValue template binding value
+   *
+   * 模板绑定值
+   *
    * @param sourceSpan span of template binding relative to entire the template
+   *
+   * 模板绑定相对于整个模板的跨度
+   *
    * @param absoluteKeyOffset start of the `tplKey`
+   *
+   * `tplKey` 的开始
+   *
    * @param absoluteValueOffset start of the `tplValue`
+   *
+   * `tplValue` 的开始
+   *
    */
   private _parseTemplateBindings(
       tplKey: string, tplValue: string, sourceSpan: ParseSourceSpan, absoluteKeyOffset: number,
@@ -506,8 +554,14 @@ export class BindingParser {
 
   /**
    * @param propName the name of the property / attribute
+   *
+   * 属性/属性的名称
+   *
    * @param sourceSpan
    * @param isAttr true when binding to an attribute
+   *
+   * 绑定到属性时为 true
+   *
    */
   private _validatePropertyOrAttributeName(
       propName: string, sourceSpan: ParseSourceSpan, isAttr: boolean): void {
@@ -555,8 +609,16 @@ export function calcPossibleSecurityContexts(
  * Compute a new ParseSourceSpan based off an original `sourceSpan` by using
  * absolute offsets from the specified `absoluteSpan`.
  *
+ * 使用与指定 `absoluteSpan` 的绝对偏移量，根据原始 `sourceSpan` 计算新的 ParseSourceSpan 。
+ *
  * @param sourceSpan original source span
+ *
+ * 原始源跨度
+ *
  * @param absoluteSpan absolute source span to move to
+ *
+ * 要移动到的绝对源跨度
+ *
  */
 function moveParseSourceSpan(
     sourceSpan: ParseSourceSpan, absoluteSpan: AbsoluteSourceSpan): ParseSourceSpan {

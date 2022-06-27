@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 A basic understanding of the following concepts:
 
@@ -82,6 +82,9 @@ Also, add `RouterModule` to the `imports` array of the main module, `AppModule`.
 Use the `RouterModule.forRoot` method in the root module, `AppModule`, to register top-level application routes and providers.
 For feature modules, call the `RouterModule.forChild` method instead.
 
+**注意**：<br />
+在根模块 `AppModule` 中使用 `RouterModule.forRoot` 方法来注册一些顶层应用路由和提供者。对于特性模块，则改用 `RouterModule.forChild` 方法。
+
 </div>
 
 The following configuration defines the possible routes for the application.
@@ -108,6 +111,9 @@ The data property value has to match the transitions defined in the `routeAnimat
 The `data` property names that you use can be arbitrary.
 For example, the name *animation* used in the preceding example is an arbitrary choice.
 
+**注意**：<br />
+这个 `data` 中的属性名可以是任意的。比如，上面例子中使用的名字 *animation* 就是随便起的。
+
 </div>
 
 ## Router outlet
@@ -122,6 +128,8 @@ The `<router-outlet>` directive tells the Angular router where to render the vie
 The `ChildrenOutletContexts` holds information about outlets and activated routes.
 We can use the `data` property of each `Route` to animate our routing transitions.
 
+`ChildrenOutletContexts` 包含有关插座和激活路由的信息。我们可以用每个 `Route` 的 `data` 属性来为我们的路由转换设置动画。
+
 <code-example header="src/app/app.component.html" path="animations/src/app/app.component.html" region="route-animations-outlet"></code-example>
 
 `AppComponent` defines a method that can detect when a view changes.
@@ -134,6 +142,8 @@ Here's an example of an `AppComponent` method that detects when a route change h
 
 Here, the `getRouteAnimationData()` method takes the value of the outlet and returns a string that represents the state of the animation based on the custom data of the current active route.
 Use this data to control which transition to execute for each route.
+
+这里的 `getRouteAnimationData()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`），并根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个转场。
 
 ## Animation definition
 
@@ -156,24 +166,27 @@ The animation definition performs the following tasks:
 
 * Defines two transitions (a single `trigger` can define multiple states and transitions)
 
-  定义两个转场。每个触发器都可以定义多个状态和多个转场。
+  定义两个转场。每个触发器都可以定义多个状态和多个转场
 
 * Adjusts the styles of the host and child views to control their relative positions during the transition
 
-  调整宿主视图和子视图的样式，以便在转场期间，控制它们的相对位置。
+  调整宿主视图和子视图的样式，以便在转场期间，控制它们的相对位置
 
 * Uses `query()` to determine which child view is entering and which is leaving the host view
 
-  使用 `query()` 来确定哪个子视图正在进入或离开宿主视图。
+  使用 `query()` 来确定哪个子视图正在进入或离开宿主视图
 
 A route change activates the animation trigger, and a transition matching the state change is applied.
 
-路由的变化会激活这个动画触发器，并应用一个与该状态变更相匹配的转场。
+路由的变化会激活这个动画触发器，并应用一个与该状态变更相匹配的转场
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 The transition states must match the `data` property value defined in the route configuration.
+
+**注意**：<br />
+这些转场状态必须和路由配置中定义的 `data` 属性的值相一致。
 
 </div>
 
@@ -229,7 +242,13 @@ The animation code does the following after styling the views:
 
 1. Uses [`group()`](api/animations/group) function to make the inner animations run in parallel.
 
+   使用[`group()`](api/animations/group)函数使内部动画并行运行。
+
+使用 [`group()`](api/animations/group) 函数来并行运行内部动画。
+
 1. Within the [`group()`](api/animations/group) function:
+
+   在 [`group()`](api/animations/group) 函数中：
 
    1. Queries the view that is removed and animates it to slide far to the right.
 
@@ -237,7 +256,11 @@ The animation code does the following after styling the views:
 
    1. Slides in the new view by animating the view with an easing function and duration.
 
+      使用缓动函数和持续时间定义的动画，让这个新视图滑入。
+
       This animation results in the `about` view sliding in from the left.
+
+      此动画将导致 `about` 视图从左侧划入。
 
 1. Calls the `animateChild()` method on the new view to run its child animations after the main animation completes.
 

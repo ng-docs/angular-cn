@@ -23,6 +23,10 @@ function isUrlHandlingStrategy(opts: ExtraOptions|
 /**
  * Router setup factory function used for testing. Only used internally to keep the factory that's
  * marked as publicApi cleaner (i.e. not having _both_ `TitleStrategy` and `DefaultTitleStrategy`).
+ *
+ * 用于测试的路由器设置工厂函数。仅在内部使用以保持标记为 publicApi 的工厂更清洁（即不 _ 具有
+ * _`TitleStrategy` 和 `DefaultTitleStrategy` ）。
+ *
  */
 export function setupTestingRouterInternal(
     urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,

@@ -28,21 +28,33 @@ import {PendingTrait, Trait, TraitState} from './trait';
 
 /**
  * Records information about a specific class that has matched traits.
+ *
+ * 记录有关具有匹配特性的特定类的信息。
+ *
  */
 export interface ClassRecord {
   /**
    * The `ClassDeclaration` of the class which has Angular traits applied.
+   *
+   * 应用了 Angular 特性的类的 `ClassDeclaration` 。
+   *
    */
   node: ClassDeclaration;
 
   /**
    * All traits which matched on the class.
+   *
+   * 在类上匹配的所有特性。
+   *
    */
   traits: Trait<unknown, unknown, SemanticSymbol|null, unknown>[];
 
   /**
    * Meta-diagnostics about the class, which are usually related to whether certain combinations of
    * Angular decorators are not permitted.
+   *
+   * 关于类的元诊断，通常与是否允许 Angular 装饰器的某些组合有关。
+   *
    */
   metaDiagnostics: ts.Diagnostic[]|null;
 
@@ -51,11 +63,17 @@ export interface ClassRecord {
 
   /**
    * Whether `traits` contains traits matched from `DecoratorHandler`s marked as `WEAK`.
+   *
+   * `traits` 是否包含从标记为 `WEAK` 的 `DecoratorHandler` 匹配的特性。
+   *
    */
   hasWeakHandlers: boolean;
 
   /**
    * Whether `traits` contains a trait from a `DecoratorHandler` matched as `PRIMARY`.
+   *
+   * `traits` 是否包含来自 `DecoratorHandler` 的匹配为 `PRIMARY` 的特性。
+   *
    */
   hasPrimaryHandler: boolean;
 }
@@ -63,30 +81,48 @@ export interface ClassRecord {
 /**
  * The heart of Angular compilation.
  *
+ * Angular 编译的核心。
+ *
  * The `TraitCompiler` is responsible for processing all classes in the program. Any time a
  * `DecoratorHandler` matches a class, a "trait" is created to represent that Angular aspect of the
  * class (such as the class having a component definition).
  *
+ * `TraitCompiler` 负责处理程序中的所有类。任何时候 `DecoratorHandler`
+ * 与类匹配时，都会创建一个“特征”来表示类的该 Angular 切面（例如具有组件定义的类）。
+ *
  * The `TraitCompiler` transitions each trait through the various phases of compilation, culminating
  * in the production of `CompileResult`s instructing the compiler to apply various mutations to the
  * class (like adding fields or type declarations).
+ *
+ * `TraitCompiler` 通过编译的各个阶段转换每个特性，最终会生成 `CompileResult`
+ * ，以指示编译器对类应用各种突变（例如添加字段或类型声明）。
+ *
  */
 export class TraitCompiler implements ProgramTypeCheckAdapter {
   /**
    * Maps class declarations to their `ClassRecord`, which tracks the Ivy traits being applied to
    * those classes.
+   *
+   * 将类声明映射到它们的 `ClassRecord` ，后者会跟踪应用于这些类的 Ivy 特性。
+   *
    */
   private classes = new Map<ClassDeclaration, ClassRecord>();
 
   /**
    * Maps source files to any class declaration(s) within them which have been discovered to contain
    * Ivy traits.
+   *
+   * 将源文件映射到其中已发现包含 Ivy 特性的任何类声明。
+   *
    */
   protected fileToClasses = new Map<ts.SourceFile, Set<ClassDeclaration>>();
 
   /**
    * Tracks which source files have been analyzed but did not contain any traits. This set allows
    * the compiler to skip analyzing these files in an incremental rebuild.
+   *
+   * 跟踪哪些源文件已被分析但不包含任何特性。此设置允许编译器在增量重建中跳过分析这些文件。
+   *
    */
   protected filesWithoutTraits = new Set<ts.SourceFile>();
 
@@ -210,10 +246,17 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
   /**
    * Import a `ClassRecord` from a previous compilation.
    *
+   * 从以前的编译中导入 `ClassRecord` 。
+   *
    * Traits from the `ClassRecord` have accurate metadata, but the `handler` is from the old program
    * and needs to be updated (matching is done by name). A new pending trait is created and then
    * transitioned to analyzed using the previous analysis. If the trait is in the errored state,
    * instead the errors are copied over.
+   *
+   * `ClassRecord` 中的特性具有准确的元数据，但 `handler`
+   * 来自旧程序，需要更新（匹配是按名称完成的）。创建了一个新的待处理特性，然后使用以前的分析转换为
+   * analyzer 。如果特性处于错误状态，则会复制错误。
+   *
    */
   private adopt(priorRecord: ClassRecord): void {
     const record: ClassRecord = {
@@ -483,6 +526,9 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
   /**
    * Generate type-checking code into the `TypeCheckContext` for any components within the given
    * `ts.SourceFile`.
+   *
+   * 为给定的 `TypeCheckContext` 中的任何组件在 `ts.SourceFile` 中生成类型检查代码。
+   *
    */
   typeCheck(sf: ts.SourceFile, ctx: TypeCheckContext): void {
     if (!this.fileToClasses.has(sf)) {

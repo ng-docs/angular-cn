@@ -12,6 +12,8 @@ Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrea
 
 For the final sample application with two lazy-loaded modules that this page describes, see the <live-example></live-example>.
 
+如果需要本页描述的具有两个惰性加载模块的范例应用，参阅<live-example></live-example>。
+
 </div>
 
 <a id="lazy-loading"></a>
@@ -22,6 +24,9 @@ For the final sample application with two lazy-loaded modules that this page des
 
 This section introduces the basic procedure for configuring a lazy-loaded route.
 For a step-by-step example, see the [step-by-step setup](#step-by-step) section on this page.
+
+本节会介绍配置惰性加载路由的基本过程。
+想要一个分步的范例，参阅本页的[分步设置](#step-by-step)部分。
 
 To lazy load Angular modules, use `loadChildren` (instead of `component`) in your `AppRoutingModule` `routes` configuration as follows.
 
@@ -84,6 +89,9 @@ If you don't already have an app, follow the following steps to create one with 
 If you already have an app, skip to [Configure the routes](#config-routes).
 Enter the following command where `customer-app` is the name of your app:
 
+如果你还没有应用，可以遵循下面的步骤使用 CLI 创建一个。如果已经有了，可以直接跳到 [配置路由](#config-routes)部分。
+输入下列命令，其中的 `customer-app` 表示你的应用名称：
+
 <code-example format="shell" language="shell">
 
 ng new customer-app --routing
@@ -141,10 +149,12 @@ The import path is the relative path to the module.
 
 <header>String-based lazy loading</header>
 
+<header>基于字符串的惰性加载</header>
+
 In Angular version 8, the string syntax for the `loadChildren` route specification [was deprecated](guide/deprecations#loadchildren-string-syntax) in favor of the `import()` syntax.
 However, you can opt into using string-based lazy loading (`loadChildren: './path/to/module#Module'`) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
 
-在 Angular 版本 8 中，`loadChildren` 路由规范的字符串语法[已弃用](/guide/deprecations#loadchildren-string-syntax)，建议改用 `import()` 语法。不过，你仍然可以通过在 `tsconfig` 文件中包含惰性加载的路由来选择使用基于字符串的惰性加载（`loadChildren: './path/to/module#Module'`），这样它就会在编译时包含惰性加载的文件。
+在 Angular 版本 8 中，`loadChildren` 路由规范的字符串语法[已弃用](guide/deprecations#loadchildren-string-syntax)，建议改用 `import()` 语法。不过，你仍然可以通过在 `tsconfig` 文件中包含惰性加载的路由来选择使用基于字符串的惰性加载（`loadChildren: './path/to/module#Module'`），这样它就会在编译时包含惰性加载的文件。
 
 By default the CLI generates projects with stricter file inclusions intended to be used with the `import()` syntax.
 
@@ -402,6 +412,8 @@ ng generate service &lt;service-name&gt;
 
 In the newly-created service, implement the `Resolve` interface provided by the `&commat;angular/router` package:
 
+在新创建的服务中，实现由 `@angular/router` 包提供的 `Resolve` 接口：
+
 <code-example header="Resolver service (excerpt)">
 
 import { Resolve } from '&commat;angular/router';
@@ -517,15 +529,15 @@ You might also be interested in the following:
 
 * [Routing and Navigation](guide/router)
 
-  [路由与导航](guide/router)。
+  [路由与导航](guide/router)
 
 * [Providers](guide/providers)
 
-  [服务提供者](guide/providers)。
+  [服务提供者](guide/providers)
 
 * [Types of Feature Modules](guide/module-types)
 
-  [特性模块的分类](guide/module-types)。
+  [特性模块的分类](guide/module-types)
 
 * [Route-level code-splitting in Angular](https://web.dev/route-level-code-splitting-in-angular)
 

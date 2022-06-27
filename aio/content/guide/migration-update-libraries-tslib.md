@@ -4,7 +4,7 @@
 
 ## What does this migration do?
 
-## 这种迁移是做什么的？
+## 此迁移有什么用？
 
 If you have any libraries within your workspace, this migration will convert `tslib` peer dependencies to direct dependencies for the libraries.
 TypeScript uses the `tslib` package to provide common helper functions used in compiled TypeScript code.
@@ -52,7 +52,7 @@ After:
 
 ## Why is this migration necessary?
 
-## 为何这次迁移必不可少？
+## 为什么此迁移是必要的？
 
 The [`tslib`](https://github.com/Microsoft/tslib) is a runtime library for Typescript.
 The version of this library is bound to the version of the TypeScript compiler used to compile a library.

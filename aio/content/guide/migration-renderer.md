@@ -17,7 +17,7 @@ This section provides guidance on migrating from this deprecated API to the newe
 
 The deprecated `Renderer` class has been removed in version 9 of Angular, so it's necessary to migrate to a supported API.
 Using `Renderer2` is the recommended strategy because it supports a similar set of functionality to `Renderer`.
-The API surface is quite large (with 19 methods\\, but the schematic should simplify this process for your applications.
+The API surface is quite large (with 19 methods), but the schematic should simplify this process for your applications.
 
 已弃用的 `Renderer` 类已经在 Angular 的 9 中删除了，所以有必要迁移到支持的 API。建议使用 `Renderer2` 策略，因为它支持与 `Renderer` 很相似的一组功能。这个 API 非常庞大（有 19 种方法），但原理图会帮你简化这个过程。
 
@@ -37,7 +37,7 @@ The schematic should handle most cases with the exception of `Renderer.animate()
 Some methods either don't have exact equivalents in `Renderer2`, or they correspond to more than one expression.
 For example, both renderers have a `createElement()` method, but they're not equal because a call such as `renderer.createElement(parentNode, namespaceAndName)` in the `Renderer` corresponds to the following block of code in `Renderer2`:
 
-有些方法在 `Renderer2` 没有完全等价的东西，或者对应于多个表达式。例如，这两种渲染器都有 `createElement()` 的方法，但它们是不相等的，比如在 `Renderer` 中调用 `renderer.createElement(parentNode, namespaceAndName)` 时对应 `Renderer2` 中的如下代码块 ：
+有些方法在 `Renderer2` 没有完全等价的东西，或者对应于多个表达式。比如，这两种渲染器都有 `createElement()` 的方法，但它们是不相等的，比如在 `Renderer` 中调用 `renderer.createElement(parentNode, namespaceAndName)` 时对应 `Renderer2` 中的如下代码块 ：
 
 <code-example format="typescript" language="typescript">
 
@@ -109,6 +109,9 @@ The schematic also keeps their parameter types as `any` so that it doesn't have 
 **Library authors should definitely use this migration to move away from the `Renderer`.**
 **Otherwise, the libraries won't work with applications built with version 9.**
 
+**库的作者肯定要做这种迁移来远离 `Renderer`。**
+**否则，这些库将不再适用于用 Angular 9 构建的应用。**
+
 ### Full list of method migrations
 
 ### 方法迁移的完整列表
@@ -119,6 +122,7 @@ The following table shows all methods that the migration maps from `Renderer` to
 
 | Renderer | Renderer2 |
 | :------- | :-------- |
+| 渲染器 | 渲染器 2 |
 | `listen(renderElement, name, callback)` | `listen(renderElement, name, callback)` |
 | `setElementProperty(renderElement, propertyName, propertyValue)` | `setProperty(renderElement, propertyName, propertyValue)` |
 | `setText(renderNode, text)` | `setValue(renderNode, text)` |

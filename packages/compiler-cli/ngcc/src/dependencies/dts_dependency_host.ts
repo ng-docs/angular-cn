@@ -7,11 +7,15 @@
  */
 import {AbsoluteFsPath, ReadonlyFileSystem} from '../../../src/ngtsc/file_system';
 import {PathMappings} from '../path_mappings';
+
 import {EsmDependencyHost} from './esm_dependency_host';
 import {ModuleResolver} from './module_resolver';
 
 /**
  * Helper functions for computing dependencies via typings files.
+ *
+ * 通过类型文件计算依赖项的帮助器函数。
+ *
  */
 export class DtsDependencyHost extends EsmDependencyHost {
   constructor(fs: ReadonlyFileSystem, pathMappings?: PathMappings) {
@@ -22,6 +26,9 @@ export class DtsDependencyHost extends EsmDependencyHost {
 
   /**
    * Attempts to process the `importPath` directly and also inside `@types/...`.
+   *
+   * 尝试直接处理 `importPath` 以及在 `@types/...` 中处理。
+   *
    */
   protected override processImport(
       importPath: string, file: AbsoluteFsPath, dependencies: Set<AbsoluteFsPath>,

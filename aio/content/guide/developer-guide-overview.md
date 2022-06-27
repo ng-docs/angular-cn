@@ -16,7 +16,7 @@ This topic lists the various developer guides for you to learn more about these 
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To get the most out of these developer guides, you should review the following topics:
 
@@ -24,9 +24,15 @@ To get the most out of these developer guides, you should review the following t
 
 * [What is Angular][AioGuideWhatIsAngular]
 
+  [什么是 Angular][AioGuideWhatIsAngular]
+
 * [Getting started tutorial][AioStart]
 
+  [入门教程][AioStart]
+
 * [Understanding Angular][AioGuideUnderstandingAngularOverview]
+
+  [了解 Angular][AioGuideUnderstandingAngularOverview]
 
 ## Learn about Angular's features
 
@@ -37,8 +43,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Routing and Navigation</section>
+<section>路由与导航</section>
 <p>Learn how to use the Angular router to handle page navigation and other tasks.</p>
+<p>学习如何使用 Angular 路由器来处理页面导航和其它任务。</p>
 <p class="card-footer">Router</p>
+<p class="card-footer">路由器</p>
 ```
 
   </a>
@@ -46,8 +55,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Forms</section>
+<section>表单</section>
 <p>Learn about the two approaches to forms in Angular: template-driven and reactive.</p>
+<p>学习 Angular 中做表单的两种方式：模板驱动表单和响应式表单。</p>
 <p class="card-footer">Forms</p>
+<p class="card-footer">表单</p>
 ```
 
   </a>
@@ -56,7 +68,9 @@ To get the most out of these developer guides, you should review the following t
 ```
 <section>HTTP</section>
 <p>Learn how to connect to a server using the HTTP client service in Angular.</p>
+<p>学习如何在 Angular 中使用 HTTP 客户端服务来联系服务器。</p>
 <p class="card-footer">HTTP client</p>
+<p class="card-footer">HTTP 客户端</p>
 ```
 
   </a>
@@ -64,8 +78,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Testing</section>
+<section>测试</section>
 <p>Learn about tips and techniques for testing Angular applications.</p>
+<p>学习测试 Angular 应用的建议和技巧。</p>
 <p class="card-footer">Testing</p>
+<p class="card-footer">测试</p>
 ```
 
   </a>
@@ -73,8 +90,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Internationalization</section>
+<section>国际化</section>
 <p>Learn how to localize your Angular application.</p>
-<p class="card-footer">i18n and &dollar;localize</p>
+<p>学习如何本地化你的 Angular 应用。</p>
+<p class="card-footer">i18n and $localize</p>
+<p class="card-footer">i18n 和 $localize</p>
 ```
 
   </a>
@@ -82,8 +102,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Animations</section>
+<section>动画</section>
 <p>Learn about how to add an animation to your Angular application.</p>
+<p>学习如何为 Angular 应用添加动画。</p>
 <p class="card-footer">Animations</p>
+<p class="card-footer">动画</p>
 ```
 
   </a>
@@ -91,8 +114,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Service Workers and PWA</section>
+<section>Service Worker 与 PWA</section>
 <p>Learn about how to use a service worker to create a progressive web application.</p>
+<p>学习如何使用 Service Worker 来创建渐进式 Web 应用（PWA）。</p>
 <p class="card-footer">Service workers and PWA</p>
+<p class="card-footer">Service worker 与 PWA</p>
 ```
 
   </a>
@@ -101,6 +127,7 @@ To get the most out of these developer guides, you should review the following t
 ```
 <section>Web Workers</section>
 <p>Learn more about how to use a web worker to run a CPU-intensive computation in a background thread.</p>
+<p>学习如何使用 Web Worker 在后台线程中运行 CPU 密集型计算。</p>
 <p class="card-footer">Web Workers</p>
 ```
 
@@ -109,8 +136,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Server-side rendering</section>
+<section>服务端渲染</section>
 <p>Learn more about how to use Angular Universal to create a static application page.</p>
+<p>学习如何使用 Angular Universal 来创建静态应用页面。</p>
 <p class="card-footer">Server-side rendering</p>
+<p class="card-footer">服务端渲染</p>
 ```
 
   </a>
@@ -118,8 +148,11 @@ To get the most out of these developer guides, you should review the following t
 
 ```
 <section>Pre-rendering</section>
+<section>预先渲染</section>
 <p>Learn about how to use pre-rendering to process a dynamic page at build time.</p>
+<p>学习如何使用预先渲染在构建期间处理动态页面。</p>
 <p class="card-footer">Pre-rendering</p>
+<p class="card-footer">预先渲染</p>
 ```
 
   </a>

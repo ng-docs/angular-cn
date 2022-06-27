@@ -10,6 +10,8 @@ Change the appearance or behavior of DOM elements and Angular components with at
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+包含本指南中代码片段的可工作范例，参阅<live-example></live-example>。
+
 </div>
 
 ## Building an attribute directive
@@ -207,6 +209,8 @@ This section guides you through adding radio buttons to bind your color choice t
 
 1. In `highlight.directive.ts`, revise `onMouseEnter` method so that it first tries to highlight with `appHighlight` and falls back to `red` if `appHighlight` is `undefined`.
 
+   在 `highlight.directive.ts` 中，修改 `onMouseEnter` 方法，让它首先尝试使用 `appHighlight` 进行高亮显示，如果 `appHighlight` 是 `undefined` ，则回退为 `red` 。
+
    <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.3.ts" region="mouse-enter"></code-example>
 
 1. Serve your application to verify that the user can choose the color with the radio buttons.
@@ -236,6 +240,8 @@ This section guides you through configuring your application so the developer ca
    <code-example header="src/app/highlight.directive.ts (defaultColor)" path="attribute-directives/src/app/highlight.directive.ts" region="defaultColor"></code-example>
 
 1. Revise the directive's `onMouseEnter` so that it first tries to highlight with the `appHighlight`, then with the `defaultColor`, and falls back to `red` if both properties are `undefined`.
+
+   修改指令的 `onMouseEnter`，使其首先尝试使用 `appHighlight` 进行突出显示，然后尝试 `defaultColor`，如果两个属性都 `undefined`，则变回 `red`。
 
    <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.ts" region="mouse-enter"></code-example>
 
@@ -288,7 +294,7 @@ In the following example, the `appHighlight` directive is still active but Angul
 
 If you apply `ngNonBindable` to a parent element, Angular disables interpolation and binding of any sort, such as property binding or event binding, for the element's children.
 
-如果将 `ngNonBindable` 应用于父元素，则 Angular 会禁用该元素的子元素的任何插值和绑定，例如属性绑定或事件绑定。
+如果将 `ngNonBindable` 应用于父元素，则 Angular 会禁用该元素的子元素的任何插值和绑定，比如属性绑定或事件绑定。
 
 <!-- links -->
 

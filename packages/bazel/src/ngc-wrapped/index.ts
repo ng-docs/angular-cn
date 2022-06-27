@@ -30,6 +30,10 @@ interface BazelOptions extends ExternalBazelOptions {
  * Reference to the previously loaded `compiler-cli` module exports. We cache the exports
  * as `ngc-wrapped` can run as part of a worker where the Angular compiler should not be
  * resolved through a dynamic import for every build.
+ *
+ * 对以前加载的 `compiler-cli` 模块导出的引用。我们缓存导出的内容，因为 `ngc-wrapped`
+ * 可以作为工作器的一部分运行，其中的 Angular 编译器不应该通过每次构建的动态导入来解析。
+ *
  */
 let _cachedCompilerCliModule: CompilerCliModule|null = null;
 
@@ -55,12 +59,21 @@ export async function main(args) {
   return 0;
 }
 
-/** The one FileCache instance used in this process. */
+/**
+ * The one FileCache instance used in this process.
+ *
+ * 此过程中使用的一个 FileCache 实例。
+ *
+ */
 const fileCache = new FileCache<ts.SourceFile>(debug);
 
 /**
  * Loads a module that can either be CommonJS or an ESModule. This is done
  * as interop with the current devmode CommonJS and prodmode ESM output.
+ *
+ * 加载一个可以是 CommonJS 或 ESModule 的模块。这是作为与当前的 devmode CommonJS 和 prodmode ESM
+ * 输出的互操作完成的。
+ *
  */
 async function loadModuleInterop<T>(moduleName: string): Promise<T> {
   // Note: This assumes that there are no conditional exports switching between `import`
@@ -77,6 +90,9 @@ async function loadModuleInterop<T>(moduleName: string): Promise<T> {
 /**
  * Fetches the Angular compiler CLI module dynamically, allowing for an ESM
  * variant of the compiler.
+ *
+ * 动态获取 Angular 编译器 CLI 模块，允许使用编译器的 ESM 变体。
+ *
  */
 async function fetchCompilerCliModule(): Promise<CompilerCliModule> {
   if (_cachedCompilerCliModule !== null) {
@@ -443,7 +459,12 @@ export function compile({
  * consumed by bazel to avoid triggering rebuilds if only unused inputs are
  * changed.
  *
- * See https://bazel.build/contribute/codebase#input-discovery
+ * 写入未使用的输入文件和目录的集合，如果仅更改了未使用的输入，bazel 可以用它们以避免触发重建。
+ *
+ * See <https://bazel.build/contribute/codebase#input-discovery>
+ *
+ * 请参阅<https://bazel.build/contribute/codebase#input-discovery>
+ *
  */
 export function maybeWriteUnusedInputsList(
     program: ts.Program, options: ts.CompilerOptions, bazelOpts: BazelOptions) {
@@ -537,10 +558,17 @@ if (require.main === module) {
 /**
  * Adds support for the optional `fileNameToModuleName` operation to a given `ng.CompilerHost`.
  *
+ * 向给定的 `ng.CompilerHost` 添加对可选的 `fileNameToModuleName` 操作的支持。
+ *
  * This is used within `ngc-wrapped` and the Bazel compilation flow, but is exported here to allow
  * for other consumers of the compiler to access this same logic. For example, the xi18n operation
  * in g3 configures its own `ng.CompilerHost` which also requires `fileNameToModuleName` to work
  * correctly.
+ *
+ * 这在 `ngc-wrapped` 和 Bazel
+ * 编译流中使用，但在此导出以允许编译器的其他使用者访问同一个逻辑。例如，g3 中的 xi18n
+ * 操作配置自己的 `ng.CompilerHost` ，这还需要 `fileNameToModuleName` 才能正常工作。
+ *
  */
 export function patchNgHostWithFileNameToModuleName(
     ngHost: NgCompilerHost, compilerOpts: CompilerOptions, bazelOpts: BazelOptions,

@@ -16,7 +16,8 @@ import {InjectionToken} from '@angular/core';
  * Note: Document might not be available in the Application Context when Application and Rendering
  * Contexts are not the same (e.g. when running the application in a Web Worker).
  *
- * 注意：当应用程序上下文和渲染上下文不同时（例如，在 Web Worker 中运行应用程序时），document 可能在应用程序上下文中不可用。
+ * 注意：当应用程序上下文和渲染上下文不同时（比如，在 Web Worker 中运行应用程序时），document
+ * 可能在应用程序上下文中不可用。
  *
  * @publicApi
  */

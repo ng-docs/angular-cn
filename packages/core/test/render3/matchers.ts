@@ -17,9 +17,20 @@ import {isDOMElement, isDOMText, isTI18n, isTIcu, isTNode, isTView} from './is_s
  * Generic matcher which asserts that an object is of a given shape (`shapePredicate`) and that it
  * contains a subset of properties.
  *
+ * 通用匹配器，它断言一个对象具有给定的形状 ( `shapePredicate` )，并且它包含属性的子集。
+ *
  * @param name Name of `shapePredicate` to display when assertion fails.
+ *
+ * 断言失败时要显示的 `shapePredicate` 的名称。
+ *
  * @param shapePredicate Predicate which verifies that the object is of correct shape.
+ *
+ * 验证对象具有正确形状的谓词。
+ *
  * @param expected Expected set of properties to be found on the object.
+ *
+ * 要在对象上找到的预期属性集。
+ *
  */
 export function matchObjectShape<T>(
     name: string, shapePredicate: (obj: any) => obj is T,
@@ -58,7 +69,12 @@ export function matchObjectShape<T>(
 /**
  * Asymmetric matcher which matches a `TView` of a given shape.
  *
+ * 匹配给定形状的 `TView` 的非对称匹配器。
+ *
  * Expected usage:
+ *
+ * 预期用法：
+ *
  * ```
  * expect(tNode).toEqual(matchTView({type: TViewType.Root}));
  * expect({
@@ -69,6 +85,9 @@ export function matchObjectShape<T>(
  * ```
  *
  * @param expected optional properties which the `TView` must contain.
+ *
+ * `TView` 必须包含的可选属性。
+ *
  */
 export function matchTView(expected?: Partial<TView>): jasmine.AsymmetricMatcher<TView> {
   return matchObjectShape('TView', isTView, expected);
@@ -77,7 +96,12 @@ export function matchTView(expected?: Partial<TView>): jasmine.AsymmetricMatcher
 /**
  * Asymmetric matcher which matches a `TNode` of a given shape.
  *
+ * 匹配给定形状的 `TNode` 的非对称匹配器。
+ *
  * Expected usage:
+ *
+ * 预期用法：
+ *
  * ```
  * expect(tNode).toEqual(matchTNode({type: TNodeType.Element}));
  * expect({
@@ -88,6 +112,9 @@ export function matchTView(expected?: Partial<TView>): jasmine.AsymmetricMatcher
  * ```
  *
  * @param expected optional properties which the `TNode` must contain.
+ *
+ * `TNode` 必须包含的可选属性。
+ *
  */
 export function matchTNode(expected?: Partial<TNode>): jasmine.AsymmetricMatcher<TNode> {
   return matchObjectShape('TNode', isTNode, expected);
@@ -97,7 +124,12 @@ export function matchTNode(expected?: Partial<TNode>): jasmine.AsymmetricMatcher
 /**
  * Asymmetric matcher which matches a `T18n` of a given shape.
  *
+ * 匹配给定形状的 `T18n` 的非对称匹配器。
+ *
  * Expected usage:
+ *
+ * 预期用法：
+ *
  * ```
  * expect(tNode).toEqual(matchT18n({vars: 0}));
  * expect({
@@ -108,6 +140,9 @@ export function matchTNode(expected?: Partial<TNode>): jasmine.AsymmetricMatcher
  * ```
  *
  * @param expected optional properties which the `TI18n` must contain.
+ *
+ * `TI18n` 必须包含的可选属性。
+ *
  */
 export function matchTI18n(expected?: Partial<TI18n>): jasmine.AsymmetricMatcher<TI18n> {
   return matchObjectShape('TI18n', isTI18n, expected);
@@ -117,7 +152,12 @@ export function matchTI18n(expected?: Partial<TI18n>): jasmine.AsymmetricMatcher
 /**
  * Asymmetric matcher which matches a `T1cu` of a given shape.
  *
+ * 匹配给定形状的 `T1cu` 的非对称匹配器。
+ *
  * Expected usage:
+ *
+ * 预期用法：
+ *
  * ```
  * expect(tNode).toEqual(matchTIcu({type: TIcuType.select}));
  * expect({
@@ -128,6 +168,9 @@ export function matchTI18n(expected?: Partial<TI18n>): jasmine.AsymmetricMatcher
  * ```
  *
  * @param expected optional properties which the `TIcu` must contain.
+ *
+ * `TIcu` 必须包含的可选属性。
+ *
  */
 export function matchTIcu(expected?: Partial<TIcu>): jasmine.AsymmetricMatcher<TIcu> {
   return matchObjectShape('TIcu', isTIcu, expected);
@@ -138,7 +181,12 @@ export function matchTIcu(expected?: Partial<TIcu>): jasmine.AsymmetricMatcher<T
 /**
  * Asymmetric matcher which matches a DOM Element.
  *
+ * 匹配 DOM 元素的非对称匹配器。
+ *
  * Expected usage:
+ *
+ * 预期用法：
+ *
  * ```
  * expect(div).toEqual(matchT18n('div', {id: '123'}));
  * expect({
@@ -149,7 +197,13 @@ export function matchTIcu(expected?: Partial<TIcu>): jasmine.AsymmetricMatcher<T
  * ```
  *
  * @param expectedTagName optional DOM tag name.
+ *
+ * 可选的 DOM 标签名称。
+ *
  * @param expectedAttributes optional DOM element properties.
+ *
+ * 可选的 DOM 元素属性。
+ *
  */
 export function matchDomElement(
     expectedTagName: string|undefined = undefined,
@@ -200,7 +254,12 @@ export function matchDomElement(
 /**
  * Asymmetric matcher which matches DOM text node.
  *
+ * 匹配 DOM 文本节点的非对称匹配器。
+ *
  * Expected usage:
+ *
+ * 预期用法：
+ *
  * ```
  * expect(div).toEqual(matchDomText('text'));
  * expect({
@@ -211,6 +270,9 @@ export function matchDomElement(
  * ```
  *
  * @param expectedText optional DOM text.
+ *
+ * 可选的 DOM 文本。
+ *
  */
 export function matchDomText(expectedText: string|undefined = undefined):
     jasmine.AsymmetricMatcher<Text> {

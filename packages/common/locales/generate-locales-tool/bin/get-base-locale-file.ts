@@ -11,7 +11,12 @@ import {generateLocale} from '../locale-file';
 
 import {BASE_LOCALE} from './base-locale';
 
-/** Generates the base locale file and prints it to the stdout. */
+/**
+ * Generates the base locale file and prints it to the stdout.
+ *
+ * 生成基本区域设置文件并将其打印到标准输出。
+ *
+ */
 function main() {
   const cldrData = new CldrData();
   const baseLocaleData = cldrData.getLocaleData(BASE_LOCALE)!;

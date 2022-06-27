@@ -26,6 +26,9 @@ export interface NgIfContext<T = unknown> {
 
 /**
  * A fake version of the NgFor directive.
+ *
+ * NgFor 指令的伪造版本。
+ *
  */
 export declare class NgForOf<T, U extends NgIterable<T>> {
   ngForOf: U&NgIterable<T>|null|undefined;

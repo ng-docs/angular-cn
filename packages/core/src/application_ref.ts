@@ -51,6 +51,9 @@ let _platformInjector: Injector|null = null;
 /**
  * Internal token to indicate whether having multiple bootstrapped platform should be allowed (only
  * one bootstrapped platform is allowed by default). This token helps to support SSR scenarios.
+ *
+ * 用于表明是否允许有多个引导平台的内部标记（默认仅允许一个引导平台）。此令牌有助于支持 SSR 场景。
+ *
  */
 export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultipleToken');
 
@@ -59,6 +62,10 @@ export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultip
  * `PlatformRef.destroy` operation. This token is needed to avoid a direct reference to the
  * `PlatformRef` class (i.e. register the callback via `PlatformRef.onDestroy`), thus making the
  * entire class tree-shakeable.
+ *
+ * 允许注册应该在 `PlatformRef.destroy` 操作期间调用的额外回调的内部标记。需要此标记来避免对
+ * `PlatformRef` 类的直接引用（即通过 `PlatformRef.onDestroy` 注册回调），从而使整个类可树形抖动。
+ *
  */
 const PLATFORM_ON_DESTROY = new InjectionToken<() => void>('PlatformOnDestroy');
 
@@ -158,6 +165,9 @@ export function createPlatform(injector: Injector): PlatformRef {
  * The goal of this function is to bootstrap a platform injector,
  * but avoid referencing `PlatformRef` class.
  * This function is needed for bootstrapping a Standalone Component.
+ *
+ * 此函数的目标是引导平台注入器，但避免引用 `PlatformRef` 类。引导独立组件需要此函数。
+ *
  */
 export function createOrReusePlatformInjector(providers: StaticProvider[] = []): Injector {
   // If a platform injector already exists, it means that the platform
@@ -182,12 +192,23 @@ export function runPlatformInitializers(injector: Injector): void {
 /**
  * Internal bootstrap application API that implements the core bootstrap logic.
  *
+ * 实现核心引导逻辑的内部引导应用程序 API。
+ *
  * Platforms (such as `platform-browser`) may require different set of application and platform
  * providers for an application to function correctly. As a result, platforms may use this function
  * internally and supply the necessary providers during the bootstrap, while exposing
  * platform-specific APIs as a part of their public API.
  *
- * @returns A promise that returns an `ApplicationRef` instance once resolved.
+ * 平台（例如 `platform-browser`
+ * ）可能需要不同的应用程序集和平台提供程序才能使应用程序正常运行。因此，平台可以在内部使用此函数，并在引导期间提供必要的提供者，同时将特定于平台的
+ * API 作为其公共 API 的一部分进行公开。
+ *
+ * @returns
+ *
+ * A promise that returns an `ApplicationRef` instance once resolved.
+ *
+ * 解析后返回 `ApplicationRef` 实例的 Promise。
+ *
  */
 export function internalBootstrapApplication(config: {
   rootComponent: Type<unknown>,
@@ -317,6 +338,9 @@ export function assertPlatform(requiredToken: any): PlatformRef {
 /**
  * Helper function to create an instance of a platform injector (that maintains the 'platform'
  * scope).
+ *
+ * 用于创建平台注入器实例（维护 'platform' 范围）的帮助器函数。
+ *
  */
 export function createPlatformInjector(providers: StaticProvider[] = [], name?: string): Injector {
   return Injector.create({
@@ -354,14 +378,28 @@ export function getPlatform(): PlatformRef|null {
 
 /**
  * Provides additional options to the bootstraping process.
+ *
+ * 为引导过程提供其他选项。
+ *
  */
 export interface BootstrapOptions {
   /**
    * Optionally specify which `NgZone` should be used.
    *
+   * （可选）指定应该使用哪个 `NgZone` 。
+   *
    * - Provide your own `NgZone` instance.
+   *
+   *   提供你自己的 `NgZone` 实例。
+   *
    * - `zone.js` - Use default `NgZone` which requires `Zone.js`.
+   *
+   *   `zone.js` - 使用需要 `Zone.js` `NgZone`
+   *
    * - `noop` - Use `NoopNgZone` which does nothing.
+   *
+   *   `noop` - 使用什么都不做的 `NoopNgZone` 。
+   *
    */
   ngZone?: NgZone|'zone.js'|'noop';
 
@@ -369,8 +407,11 @@ export interface BootstrapOptions {
    * Optionally specify coalescing event change detections or not.
    * Consider the following case.
    *
-   * <div (click)="doSomething()">
-   *   <button (click)="doSomethingElse()"></button>
+   * （可选）指定或不指定合并事件更改检测。考虑以下情况。
+   *
+   * &lt;div (click)="doSomething()">
+   *   &lt;button (click)="doSomethingElse()"></button>
+   *
    * </div>
    *
    * When button is clicked, because of the event bubbling, both
@@ -378,11 +419,19 @@ export interface BootstrapOptions {
    * triggered. We can colesce such kind of events to only trigger
    * change detection only once.
    *
+   * 单击按钮时，由于事件冒泡，将调用两个事件处理程序，并触发 2
+   * 次更改检测。我们可以合并此类事件以仅触发更改检测一次。
+   *
    * By default, this option will be false. So the events will not be
    * coalesced and the change detection will be triggered multiple times.
    * And if this option be set to true, the change detection will be
    * triggered async by scheduling a animation frame. So in the case above,
    * the change detection will only be triggered once.
+   *
+   * 默认情况下，此选项将是 false
+   * 。因此，事件将不会被合并，并且更改检测将被触发多次。如果此选项设置为
+   * true，则更改检测将通过调度动画帧来异步触发。因此在上面的情况下，更改检测将只会触发一次。
+   *
    */
   ngZoneEventCoalescing?: boolean;
 
@@ -390,17 +439,26 @@ export interface BootstrapOptions {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
+   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个更改检测。
+   *
    * Consider the following case.
    *
-   * for (let i = 0; i < 10; i ++) {
+   * 考虑以下情况。
+   *
+   * for (let i = 0; i &lt; 10; i ++) {
    *   ngZone.run(() => {
    *     // do something
    *   });
    * }
    *
+   * for (let i = 0; i &lt; 10; i ++) { ngZone.run(() => { // 做点什么 }); }
+   *
    * This case triggers the change detection multiple times.
    * With ngZoneRunCoalescing options, all change detections in an event loop trigger only once.
    * In addition, the change detection executes in requestAnimation.
+   *
+   * 这种情况会多次触发更改检测。使用 ngZoneRunCoalescing
+   * 选项，事件循环中的所有更改检测只会触发一次。此外，更改检测是在 requestAnimation 中执行的。
    *
    */
   ngZoneRunCoalescing?: boolean;
@@ -414,7 +472,7 @@ export interface BootstrapOptions {
  * factory such as `PlatformBrowser`, or explicitly by calling the `createPlatform()` function.
  *
  * Angular 平台是 Angular 在网页上的入口点。每个页面只有一个平台。页面上运行的每个 Angular
- * 应用程序所共有的服务（例如反射）都在其范围内绑定。当使用 `PlatformBrowser`
+ * 应用程序所共有的服务（比如反射）都在其范围内绑定。当使用 `PlatformBrowser`
  * 这样的平台工厂创建平台时，将隐式初始化此页面的平台；也可以通过调用 `createPlatform()`
  * 函数来显式初始化此页面的平台。
  *
@@ -434,8 +492,14 @@ export class PlatformRef {
    *
    * 为给定的平台创建 `@NgModule` 的实例。
    *
-   * @deprecated Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
+   * @deprecated
+   *
+   * Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
    *     argument is deprecated. Use the `PlatformRef.bootstrapModule` API instead.
+   *
+   * 不推荐将 NgModule 工厂作为 `PlatformRef.bootstrapModuleFactory` 函数参数传递。改用
+   * `PlatformRef.bootstrapModule` API。
+   *
    */
   bootstrapModuleFactory<M>(moduleFactory: NgModuleFactory<M>, options?: BootstrapOptions):
       Promise<NgModuleRef<M>> {
@@ -497,14 +561,16 @@ export class PlatformRef {
    * ### 简单的例子
    *
    * ```typescript
-   * @NgModule({
+   *
+   * ```
+   *
+   * @NgModule ({
    *   imports: [BrowserModule]
    * })
    * class MyModule {}
    *
    * let moduleRef = platformBrowser().bootstrapModule(MyModule);
    * ```
-   *
    */
   bootstrapModule<M>(
       moduleType: Type<M>,
@@ -578,6 +644,9 @@ export class PlatformRef {
 
   /**
    * Indicates whether this instance was destroyed.
+   *
+   * 表明此实例是否已销毁。
+   *
    */
   get destroyed() {
     return this._destroyed;
@@ -750,6 +819,9 @@ export class ApplicationRef {
 
   /**
    * Indicates whether this instance was destroyed.
+   *
+   * 表明此实例是否已销毁。
+   *
    */
   get destroyed() {
     return this._destroyed;
@@ -855,38 +927,61 @@ export class ApplicationRef {
    * Bootstrap a component onto the element identified by its selector or, optionally, to a
    * specified element.
    *
+   * 将组件引导到其选择器标识的元素上，或者（可选）引导到指定的元素。
+   *
    * @usageNotes
+   *
    * ### Bootstrap process
+   *
+   * ### 引导过程
    *
    * When bootstrapping a component, Angular mounts it onto a target DOM element
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动更改检测。可以用 `rootSelectorOrNode`
+   * 参数提供目标 DOM 元素。
+   *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
    * (first matched element is used).
    *
+   * 如果未提供目标 DOM 元素，Angular 会尝试使用被引导组件的 `selector`
+   * 在页面上查找一个（使用第一个匹配的元素）。
+   *
    * ### Example
+   *
+   * ### 例子
    *
    * Generally, we define the component to bootstrap in the `bootstrap` array of `NgModule`,
    * but it requires us to know the component while writing the application code.
+   *
+   * 一般来说，我们在 `NgModule` 的 `bootstrap`
+   * 数组中定义要引导的组件，但它需要我们在编写应用程序代码时了解组件。
    *
    * Imagine a situation where we have to wait for an API call to decide about the component to
    * bootstrap. We can use the `ngDoBootstrap` hook of the `NgModule` and call this method to
    * dynamically bootstrap a component.
    *
-   * {@example core/ts/platform/platform.ts region='componentSelector'}
+   * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的
+   * `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
+   *
+   * {
+   *
+   * @example core/ts/platform/platform.ts region='componentSelector'}
    *
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
    * In the following example, we are providing a CSS selector to match the target element.
    *
-   * {@example core/ts/platform/platform.ts region='cssSelector'}
+   * {
+   * @example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
-   * {@example core/ts/platform/platform.ts region='domNode'}
+   * {
+   * @example core/ts/platform/platform.ts region='domNode'}
    */
   bootstrap<C>(component: Type<C>, rootSelectorOrNode?: string|any): ComponentRef<C>;
 
@@ -906,20 +1001,36 @@ export class ApplicationRef {
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动更改检测。可以用 `rootSelectorOrNode`
+   * 参数提供目标 DOM 元素。
+   *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
    * (first matched element is used).
    *
+   * 如果未提供目标 DOM 元素，Angular 会尝试使用被引导组件的 `selector`
+   * 在页面上查找一个（使用第一个匹配的元素）。
+   *
    * ### Example
+   *
+   * ### 例子
    *
    * Generally, we define the component to bootstrap in the `bootstrap` array of `NgModule`,
    * but it requires us to know the component while writing the application code.
+   *
+   * 一般来说，我们在 `NgModule` 的 `bootstrap`
+   * 数组中定义要引导的组件，但它需要我们在编写应用程序代码时了解组件。
    *
    * Imagine a situation where we have to wait for an API call to decide about the component to
    * bootstrap. We can use the `ngDoBootstrap` hook of the `NgModule` and call this method to
    * dynamically bootstrap a component.
    *
-   * {@example core/ts/platform/platform.ts region='componentSelector'}
+   * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的
+   * `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
+   *
+   * {
+   *
+   * @example core/ts/platform/platform.ts region='componentSelector'}
    *
    * 将新的根组件引导到应用程序时，Angular 将指定的应用程序组件安装到由 componentType 的选择器标识的
    * DOM 元素上，并启动自动变更检测以完成组件的初始化。
@@ -929,14 +1040,20 @@ export class ApplicationRef {
    *
    * In the following example, we are providing a CSS selector to match the target element.
    *
-   * {@example core/ts/platform/platform.ts region='cssSelector'}
+   * {
+   * @example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
-   * {@example core/ts/platform/platform.ts region='domNode'}
+   * {
+   * @example core/ts/platform/platform.ts region='domNode'}
+   * @deprecated
    *
-   * @deprecated Passing Component factories as the `Application.bootstrap` function argument is
+   * Passing Component factories as the `Application.bootstrap` function argument is
    *     deprecated. Pass Component Types instead.
+   *
+   * 不推荐将组件工厂作为 `Application.bootstrap` 函数参数传递。而是传递组件类型。
+   *
    */
   bootstrap<C>(componentFactory: ComponentFactory<C>, rootSelectorOrNode?: string|any):
       ComponentRef<C>;
@@ -945,12 +1062,20 @@ export class ApplicationRef {
    * Bootstrap a component onto the element identified by its selector or, optionally, to a
    * specified element.
    *
+   * 将组件引导到其选择器标识的元素上，或者（可选）引导到指定的元素。
+   *
    * @usageNotes
+   *
    * ### Bootstrap process
+   *
+   * ### 引导过程
    *
    * When bootstrapping a component, Angular mounts it onto a target DOM element
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
+   *
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动更改检测。可以用 `rootSelectorOrNode`
+   * 参数提供目标 DOM 元素。
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
@@ -965,22 +1090,32 @@ export class ApplicationRef {
    * Generally, we define the component to bootstrap in the `bootstrap` array of `NgModule`,
    * but it requires us to know the component while writing the application code.
    *
+   * 一般来说，我们在 `NgModule` 的 `bootstrap`
+   * 数组中定义要引导的组件，但它需要我们在编写应用程序代码时了解组件。
+   *
    * Imagine a situation where we have to wait for an API call to decide about the component to
    * bootstrap. We can use the `ngDoBootstrap` hook of the `NgModule` and call this method to
    * dynamically bootstrap a component.
    *
-   * {@example core/ts/platform/platform.ts region='componentSelector'}
+   * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的
+   * `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
+   *
+   * {
+   *
+   * @example core/ts/platform/platform.ts region='componentSelector'}
    *
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
    * In the following example, we are providing a CSS selector to match the target element.
    *
-   * {@example core/ts/platform/platform.ts region='cssSelector'}
+   * {
+   * @example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
-   * {@example core/ts/platform/platform.ts region='domNode'}
+   * {
+   * @example core/ts/platform/platform.ts region='domNode'}
    */
   bootstrap<C>(componentOrFactory: ComponentFactory<C>|Type<C>, rootSelectorOrNode?: string|any):
       ComponentRef<C> {
@@ -1138,8 +1273,17 @@ export class ApplicationRef {
   /**
    * Registers a listener to be called when an instance is destroyed.
    *
+   * 注册一个要在实例被销毁时调用的侦听器。
+   *
    * @param callback A callback function to add as a listener.
-   * @returns A function which unregisters a listener.
+   *
+   * 要添加为侦听器的回调函数。
+   *
+   * @returns
+   *
+   * A function which unregisters a listener.
+   *
+   * 注销侦听器的函数。
    *
    * @internal
    */
@@ -1153,6 +1297,10 @@ export class ApplicationRef {
    * Destroys an Angular application represented by this `ApplicationRef`. Calling this function
    * will destroy the associated environnement injectors as well as all the bootstrapped components
    * with their views.
+   *
+   * 销毁此 `ApplicationRef` 表示的 Angular
+   * 应用程序。调用此函数将破坏关联的环境注入器以及所有带有视图的引导组件。
+   *
    */
   destroy(): void {
     if (this._destroyed) {

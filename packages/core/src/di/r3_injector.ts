@@ -36,20 +36,32 @@ import {INJECTOR_SCOPE, InjectorScope} from './scope';
 
 /**
  * Marker which indicates that a value has not yet been created from the factory function.
+ *
+ * 表明尚未从工厂函数创建值的标记。
+ *
  */
 const NOT_YET = {};
 
 /**
  * Marker which indicates that the factory function for a token is in the process of being called.
  *
+ * 指示标记的工厂函数正在被调用的过程中的标记。
+ *
  * If the injector is asked to inject a token with its value set to CIRCULAR, that indicates
  * injection of a dependency has recursively attempted to inject the original token, and there is
  * a circular dependency among the providers.
+ *
+ * 如果要求注入器注入值设置为 CIRCULAR
+ * 的标记，则表明依赖注入已递归尝试注入原始标记，并且提供者之间存在循环依赖。
+ *
  */
 const CIRCULAR = {};
 
 /**
  * A lazily initialized NullInjector.
+ *
+ * 延迟初始化的 NullInjector 。
+ *
  */
 let NULL_INJECTOR: Injector|undefined = undefined;
 
@@ -63,6 +75,9 @@ export function getNullInjector(): Injector {
 /**
  * An entry in the injector which tracks information about the given token, including a possible
  * current value.
+ *
+ * 注入器中的条目，用于跟踪有关给定标记的信息，包括可能的当前值。
+ *
  */
 interface Record<T> {
   factory: (() => T)|undefined;
@@ -81,12 +96,28 @@ interface Record<T> {
 export abstract class EnvironmentInjector implements Injector {
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**
-   * @deprecated from v4.0.0 use ProviderToken<T>
+   * @deprecated
+   *
+   * from v4.0.0 use ProviderToken<T>
+   *
+   * 从 v4.0.0 使用 ProviderToken<T>
+   *
    * @suppress {duplicate}
    */
   abstract get(token: any, notFoundValue?: any): any;
@@ -102,13 +133,22 @@ export abstract class EnvironmentInjector implements Injector {
 export class R3Injector extends EnvironmentInjector {
   /**
    * Map of tokens to records which contain the instances of those tokens.
+   *
+   * 标记到包含这些标记实例的记录的映射。
+   *
    * - `null` value implies that we don't have the record. Used by tree-shakable injectors
-   * to prevent further searches.
+   *   to prevent further searches.
+   *
+   *   `null` 值意味着我们没有记录。被 tree-shakable 注入器使用以防止进一步搜索。
+   *
    */
   private records = new Map<ProviderToken<any>, Record<any>|null>();
 
   /**
    * Set of values instantiated by this injector which contain `ngOnDestroy` lifecycle hooks.
+   *
+   * 此注入器实例化的值集，包含 `ngOnDestroy` 生命周期钩子。
+   *
    */
   private _ngOnDestroyHooks = new Set<OnDestroy>();
 
@@ -116,6 +156,9 @@ export class R3Injector extends EnvironmentInjector {
 
   /**
    * Flag indicating that this injector was previously destroyed.
+   *
+   * 表明此注入器以前被破坏的标志。
+   *
    */
   get destroyed(): boolean {
     return this._destroyed;
@@ -153,8 +196,13 @@ export class R3Injector extends EnvironmentInjector {
   /**
    * Destroy the injector and release references to every instance or provider associated with it.
    *
+   * 销毁注入器并释放对与其关联的每个实例或提供者的引用。
+   *
    * Also calls the `OnDestroy` lifecycle hooks of every instance that was created for which a
    * hook was found.
+   *
+   * 还会调用为其创建的每个实例的 `OnDestroy` 生命周期钩子。
+   *
    */
   override destroy(): void {
     this.assertNotDestroyed();
@@ -277,6 +325,9 @@ export class R3Injector extends EnvironmentInjector {
 
   /**
    * Process a `SingleProvider` and add it.
+   *
+   * 处理 `SingleProvider` 并添加它。
+   *
    */
   private processProvider(provider: SingleProvider): void {
     // Determine the token from the provider. Either it's its own token, or has a {provide: ...}
@@ -400,7 +451,12 @@ function providerToRecord(provider: SingleProvider): Record<any> {
 /**
  * Converts a `SingleProvider` into a factory function.
  *
+ * 将 `SingleProvider` 转换为工厂函数。
+ *
  * @param provider provider to convert to factory
+ *
+ * 要转换为工厂的提供者
+ *
  */
 export function providerToFactory(
     provider: SingleProvider, ngModuleType?: InjectorType<any>, providers?: any[]): () => any {

@@ -18,8 +18,15 @@ import {getOrCreateTNode} from './shared';
 /**
  * Create static text node
  *
+ * 创建静态文本节点
+ *
  * @param index Index of the node in the data array
+ *
+ * 数据数组中节点的索引
+ *
  * @param value Static string value to write.
+ *
+ * 要写入的静态字符串值。
  *
  * @codeGenApi
  */

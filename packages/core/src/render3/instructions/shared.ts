@@ -57,6 +57,10 @@ let shouldThrowErrorOnUnknownProperty = false;
  * Sets a strict mode for JIT-compiled components to throw an error on unknown properties,
  * instead of just logging the error.
  * (for AOT-compiled ones this check happens at build time).
+ *
+ * 为 JIT 编译的组件设置严格模式，以在未知属性上抛出错误，而不仅仅是记录错误。 （对于 AOT
+ * 编译的，此检查发生在构建时）。
+ *
  */
 export function ɵsetUnknownPropertyStrictMode(shouldThrow: boolean) {
   shouldThrowErrorOnUnknownProperty = shouldThrow;
@@ -64,6 +68,9 @@ export function ɵsetUnknownPropertyStrictMode(shouldThrow: boolean) {
 
 /**
  * Gets the current value of the strict mode.
+ *
+ * 获取严格模式的当前值。
+ *
  */
 export function ɵgetUnknownPropertyStrictMode() {
   return shouldThrowErrorOnUnknownProperty;
@@ -72,17 +79,30 @@ export function ɵgetUnknownPropertyStrictMode() {
 /**
  * A permanent marker promise which signifies that the current CD tree is
  * clean.
+ *
+ * 一个永久标记承诺，表明当前的 CD 树是干净的。
+ *
  */
 const _CLEAN_PROMISE = (() => Promise.resolve(null))();
 
 /**
  * Invoke `HostBindingsFunction`s for view.
  *
+ * 调用 `HostBindingsFunction` 以进行查看。
+ *
  * This methods executes `TView.hostBindingOpCodes`. It is used to execute the
  * `HostBindingsFunction`s associated with the current `LView`.
  *
+ * 此方法执行 `TView.hostBindingOpCodes` 。它用于执行与当前 `HostBindingsFunction` 关联的 `LView` 。
+ *
  * @param tView Current `TView`.
+ *
+ * 当前 `TView` 。
+ *
  * @param lView Current `LView`.
+ *
+ * 当前 `LView` 。
+ *
  */
 export function processHostBindingOpCodes(tView: TView, lView: LView): void {
   const hostBindingOpCodes = tView.hostBindingOpCodes;
@@ -109,7 +129,12 @@ export function processHostBindingOpCodes(tView: TView, lView: LView): void {
 }
 
 
-/** Refreshes all content queries declared by directives in a given view */
+/**
+ * Refreshes all content queries declared by directives in a given view
+ *
+ * 刷新给定视图中指令声明的所有内容查询
+ *
+ */
 function refreshContentQueries(tView: TView, lView: LView): void {
   const contentQueries = tView.contentQueries;
   if (contentQueries !== null) {
@@ -128,14 +153,24 @@ function refreshContentQueries(tView: TView, lView: LView): void {
   }
 }
 
-/** Refreshes child components in the current view (update mode). */
+/**
+ * Refreshes child components in the current view (update mode).
+ *
+ * 刷新当前视图中的子组件（更新模式）。
+ *
+ */
 function refreshChildComponents(hostLView: LView, components: number[]): void {
   for (let i = 0; i < components.length; i++) {
     refreshComponent(hostLView, components[i]);
   }
 }
 
-/** Renders child components in the current view (creation mode). */
+/**
+ * Renders child components in the current view (creation mode).
+ *
+ * 在当前视图中渲染子组件（创建模式）。
+ *
+ */
 function renderChildComponents(hostLView: LView, components: number[]): void {
   for (let i = 0; i < components.length; i++) {
     renderComponent(hostLView, components[i]);
@@ -181,13 +216,33 @@ export function createLView<T>(
 /**
  * Create and stores the TNode, and hooks it up to the tree.
  *
+ * 创建并存储 TNode，并将其连接到树。
+ *
  * @param tView The current `TView`.
+ *
+ * 当前的 `TView` 。
+ *
  * @param index The index at which the TNode should be saved (null if view, since they are not
  * saved).
+ *
+ * 应该保存 TNode 的索引（如果是视图，则为 null ，因为它们没有保存）。
+ *
  * @param type The type of TNode to create
+ *
+ * 要创建的 TNode 的类型
+ *
  * @param native The native element for this node, if applicable
+ *
+ * 此节点的本机元素（如果适用）
+ *
  * @param name The tag name of the associated native element, if applicable
+ *
+ * 关联的本机元素的标签名称（如果适用）
+ *
  * @param attrs Any attrs for the native element, if applicable
+ *
+ * 本机元素的任何 attrs（如果适用）
+ *
  */
 export function getOrCreateTNode(
     tView: TView, index: number, type: TNodeType.Element|TNodeType.Text, name: string|null,
@@ -273,9 +328,17 @@ export function createTNodeAtIndex(
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode and also it relies on the constructor function being available.
  *
+ * 警告：这是一个**仅限 dev-mode**的函数（因此应始终由 `ngDevMode`
+ * ），**不得**在生产包中使用。该函数会进行超态读取，这对于生产模式来说可能太慢了，并且它依赖于可用的构造函数。
+ *
  * Gets a reference to the host component def (where a current component is declared).
  *
+ * 获取对主机组件 def （声明当前组件的位置）的引用。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 一个 `LView` ，表示正在呈现的当前组件。
+ *
  */
 function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|null {
   !ngDevMode && throwError('Must never be called in production mode');
@@ -294,9 +357,17 @@ function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|null {
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
+ * 警告：这是一个**仅限 dev-mode**的函数（因此应始终由 `ngDevMode`
+ * ），**不得**在生产包中使用。该函数会进行大态读取，这对于生产模式来说可能太慢了。
+ *
  * Checks if the current component is declared inside of a standalone component template.
  *
+ * 检查当前组件是否在独立组件模板中声明。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 一个 `LView` ，表示正在呈现的当前组件。
+ *
  */
 export function isHostComponentStandalone(lView: LView): boolean {
   !ngDevMode && throwError('Must never be called in production mode');
@@ -311,10 +382,18 @@ export function isHostComponentStandalone(lView: LView): boolean {
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
+ * 警告：这是一个**仅限 dev-mode**的函数（因此应始终由 `ngDevMode`
+ * ），**不得**在生产包中使用。该函数会进行大态读取，这对于生产模式来说可能太慢了。
+ *
  * Constructs a string describing the location of the host component template. The function is used
  * in dev mode to produce error messages.
  *
+ * 构造一个描述主机组件模板位置的字符串。该函数在 dev 模式下使用以生成错误消息。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 一个 `LView` ，表示正在呈现的当前组件。
+ *
  */
 export function getTemplateLocationDetails(lView: LView): string {
   !ngDevMode && throwError('Must never be called in production mode');
@@ -329,10 +408,24 @@ export function getTemplateLocationDetails(lView: LView): string {
  * i18nApply()), we need to adjust the blueprint for future
  * template passes.
  *
+ * 在创建视图蓝图后动态创建元素时（例如通过 i18nApply() ），我们需要为未来的模板传递调整蓝图。
+ *
  * @param tView `TView` associated with `LView`
+ *
+ * 与 `TView` 关联的 `LView`
+ *
  * @param lView The `LView` containing the blueprint to adjust
+ *
+ * 包含要调整的蓝图的 `LView`
+ *
  * @param numSlotsToAlloc The number of slots to alloc in the LView, should be >0
+ *
+ * LView 中要分配的插槽数，应该> 0
+ *
  * @param initialValue Initial value to store in blueprint
+ *
+ * 要存储在蓝图中的初始值
+ *
  */
 export function allocExpando(
     tView: TView, lView: LView, numSlotsToAlloc: number, initialValue: any): number {
@@ -361,10 +454,25 @@ export function allocExpando(
 
 /**
  * Processes a view in the creation mode. This includes a number of steps in a specific order:
+ *
+ * 在创建模式下处理视图。这包括按特定顺序的许多步骤：
+ *
  * - creating view query functions (if any);
+ *
+ *   创建视图查询函数（如果有）；
+ *
  * - executing a template function in the creation mode;
+ *
+ *   在创建模式下执行模板函数；
+ *
  * - updating static queries (if any);
+ *
+ *   更新静态查询（如果有）；
+ *
  * - creating child components defined in a given view.
+ *
+ *   创建给定视图中定义的子组件。
+ *
  */
 export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
   ngDevMode && assertEqual(isCreationMode(lView), true, 'Should be run in creation mode');
@@ -428,11 +536,29 @@ export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
 
 /**
  * Processes a view in update mode. This includes a number of steps in a specific order:
+ *
+ * 以更新模式处理视图。这包括按特定顺序的许多步骤：
+ *
  * - executing a template function in update mode;
+ *
+ *   在更新模式下执行模板函数；
+ *
  * - executing hooks;
+ *
+ *   执行钩子；
+ *
  * - refreshing queries;
+ *
+ *   刷新查询；
+ *
  * - setting host bindings;
+ *
+ *   设置主机绑定；
+ *
  * - refreshing child (embedded and component) views.
+ *
+ *   刷新子（嵌入式和组件）视图。
+ *
  */
 export function refreshView<T>(
     tView: TView, lView: LView, templateFn: ComponentTemplate<{}>|null, context: T) {
@@ -629,6 +755,9 @@ export function executeContentQueries(tView: TView, tNode: TNode, lView: LView) 
 
 /**
  * Creates directive instances.
+ *
+ * 创建指令实例。
+ *
  */
 export function createDirectivesInstances(tView: TView, lView: LView, tNode: TDirectiveHostNode) {
   if (!getBindingsEnabled()) return;
@@ -641,6 +770,10 @@ export function createDirectivesInstances(tView: TView, lView: LView, tNode: TDi
 /**
  * Takes a list of local names and indices and pushes the resolved local variable values
  * to LView in the same order as they are loaded in the template with load().
+ *
+ * 获取本地名称和索引的列表，并按照使用 load() 在模板中加载它们的顺序将解析的局部变量值推送到
+ * LView。
+ *
  */
 export function saveResolvedLocalsInData(
     viewData: LView, tNode: TDirectiveHostNode,
@@ -663,8 +796,18 @@ export function saveResolvedLocalsInData(
  * Gets TView from a template function or creates a new TView
  * if it doesn't already exist.
  *
+ * 从模板函数获取 TView ，如果不存在，则创建一个新的 TView。
+ *
  * @param def ComponentDef
- * @returns TView
+ *
+ * 组件定义
+ *
+ * @returns
+ *
+ * TView
+ *
+ * 视图
+ *
  */
 export function getOrCreateTComponentView(def: ComponentDef<any>): TView {
   const tView = def.tView;
@@ -687,15 +830,44 @@ export function getOrCreateTComponentView(def: ComponentDef<any>): TView {
 /**
  * Creates a TView instance
  *
+ * 创建一个 TView 实例
+ *
  * @param type Type of `TView`.
+ *
+ * `TView` 的类型。
+ *
  * @param declTNode Declaration location of this `TView`.
+ *
+ * 此 `TView` 的声明位置。
+ *
  * @param templateFn Template function
+ *
+ * 模板函数
+ *
  * @param decls The number of nodes, local refs, and pipes in this template
+ *
+ * 此模板中的节点、本地引用和管道的数量
+ *
  * @param directives Registry of directives for this view
+ *
+ * 此视图的指令注册表
+ *
  * @param pipes Registry of pipes for this view
+ *
+ * 此视图的管道注册表
+ *
  * @param viewQuery View queries for this view
+ *
+ * 此视图的视图查询
+ *
  * @param schemas Schemas for this view
+ *
+ * 此视图的模式
+ *
  * @param consts Constants for this view
+ *
+ * 此视图的常量
+ *
  */
 export function createTView(
     type: TViewType, declTNode: TNode|null, templateFn: ComponentTemplate<any>|null, decls: number,
@@ -815,9 +987,20 @@ function assertHostNodeExists(rElement: RElement, elementOrSelector: RElement|st
 /**
  * Locates the host native element, used for bootstrapping existing nodes into rendering pipeline.
  *
+ * 定位主机本机元素，用于将现有节点引导到渲染管道。
+ *
  * @param rendererFactory Factory function to create renderer instance.
+ *
+ * 用于创建渲染器实例的工厂函数。
+ *
  * @param elementOrSelector Render element or CSS selector to locate the element.
+ *
+ * 渲染元素或 CSS 选择器以定位元素。
+ *
  * @param encapsulation View Encapsulation defined for component that requests host element.
+ *
+ * 为请求主机元素的组件定义的视图封装。
+ *
  */
 export function locateHostElement(
     renderer: Renderer3, elementOrSelector: RElement|string,
@@ -845,12 +1028,26 @@ export function locateHostElement(
 /**
  * Saves context for this cleanup function in LView.cleanupInstances.
  *
+ * 在 LView.cleanupInstances 中保存此清理函数的上下文。
+ *
  * On the first template pass, saves in TView:
+ *
+ * 在第一个模板传递中，保存在 TView 中：
+ *
  * - Cleanup function
+ *
+ *   清理函数
+ *
  * - Index of context we just saved in LView.cleanupInstances
+ *
+ *   我们刚刚保存在 LView.cleanupInstances 中的上下文索引
  *
  * This function can also be used to store instance specific cleanup fns. In that case the `context`
  * is `null` and the function is store in `LView` (rather than it `TView`).
+ *
+ * 此函数也可用于存储特定于实例的清理 fns。在这种情况下， `context` 为 `null` ，并且函数存储在
+ * `LView` （而不是 `TView` ）中。
+ *
  */
 export function storeCleanupWithContext(
     tView: TView, lView: LView, context: any, cleanupFn: Function): void {
@@ -874,14 +1071,42 @@ export function storeCleanupWithContext(
 /**
  * Constructs a TNode object from the arguments.
  *
+ * 从参数构造一个 TNode 对象。
+ *
  * @param tView `TView` to which this `TNode` belongs (used only in `ngDevMode`)
+ *
+ * 此 `TView` 所属的 `TNode` （仅在 `ngDevMode` 中使用）
+ *
  * @param tParent Parent `TNode`
+ *
+ * 父 `TNode`
+ *
  * @param type The type of the node
+ *
+ * 节点的类型
+ *
  * @param index The index of the TNode in TView.data, adjusted for HEADER_OFFSET
+ *
+ * TView.data 中 TNode 的索引，已针对 HEADER_OFFSET 进行了调整
+ *
  * @param tagName The tag name of the node
+ *
+ * 节点的标签名称
+ *
  * @param attrs The attributes defined on this node
+ *
+ * 在此节点上定义的属性
+ *
  * @param tViews Any TViews attached to this node
- * @returns the TNode object
+ *
+ * 附加到此节点的任何 TView
+ *
+ * @returns
+ *
+ * the TNode object
+ *
+ * TNode 对象
+ *
  */
 export function createTNode(
     tView: TView, tParent: TElementNode|TContainerNode|null, type: TNodeType.Container,
@@ -1010,6 +1235,9 @@ function generatePropertyAliases(
 /**
  * Initializes data structures required to work with directive inputs and outputs.
  * Initialization is done for all directives matched on a given TNode.
+ *
+ * 初始化使用指令输入和输出所需的数据结构。会对给定 TNode 上匹配的所有指令进行初始化。
+ *
  */
 function initializeInputAndOutputAliases(tView: TView, tNode: TNode): void {
   ngDevMode && assertFirstCreatePass(tView);
@@ -1054,12 +1282,20 @@ function initializeInputAndOutputAliases(tView: TView, tNode: TNode): void {
 /**
  * Mapping between attributes names that don't correspond to their element property names.
  *
+ * 与其元素属性名称不对应的属性名称之间的映射。
+ *
  * Performance note: this function is written as a series of if checks (instead of, say, a property
  * object lookup) for performance reasons - the series of `if` checks seems to be the fastest way of
  * mapping property names. Do NOT change without benchmarking.
  *
+ * 性能说明：出于性能原因，此函数被编写为一系列 if 检查（而不是例如属性对象查找） - 这一系列 `if`
+ * 检查似乎是映射属性名称的最快方式。未经基准测试，请勿更改。
+ *
  * Note: this mapping has to be kept in sync with the equally named mapping in the template
  * type-checking machinery of ngtsc.
+ *
+ * 注意：此映射必须与 ngtsc 的模板类型检查机制中的同名映射保持同步。
+ *
  */
 function mapPropName(name: string): string {
   if (name === 'class') return 'className';
@@ -1115,7 +1351,12 @@ export function elementPropertyInternal<T>(
   }
 }
 
-/** If node is an OnPush component, marks its LView dirty. */
+/**
+ * If node is an OnPush component, marks its LView dirty.
+ *
+ * 如果 node 是 OnPush 组件，则将其 LView 标记为脏。
+ *
+ */
 function markDirtyIfOnPush(lView: LView, viewIndex: number): void {
   ngDevMode && assertLView(lView);
   const childComponentLView = getComponentLViewByIndex(viewIndex, lView);
@@ -1173,15 +1414,41 @@ export function setNgReflectProperties(
  * This check is relevant for JIT-compiled components (for AOT-compiled
  * ones this check happens at build time).
  *
+ * 验证元素的属性在运行时已知，如果不是这种情况，则返回 false 。此检查与 JIT 编译的组件相关（对于
+ * AOT 编译的组件，此检查发生在构建时）。
+ *
  * The property is considered known if either:
+ *
+ * 在以下任何一种情况下，该属性都被认为是已知的：
+ *
  * - it's a known property of the element
+ *
+ *   它是元素的已知属性
+ *
  * - the element is allowed by one of the schemas
+ *
+ *   模式之一允许该元素
+ *
  * - the property is used for animations
  *
+ *   该属性用于动画
+ *
  * @param element Element to validate
+ *
+ * 要验证的元素
+ *
  * @param tagName Name of the tag to check
+ *
+ * 要检查的标签名称
+ *
  * @param propName Name of the property to check
+ *
+ * 要检查的属性名称
+ *
  * @param schemas Array of schemas
+ *
+ * 模式数组
+ *
  */
 function validateProperty(
     element: RElement|RComment, tagName: string|null, propName: string,
@@ -1205,8 +1472,17 @@ function validateProperty(
 
 /**
  * Returns true if the tag name is allowed by specified schemas.
+ *
+ * 如果指定的模式允许标记名称，则返回 true 。
+ *
  * @param schemas Array of schemas
+ *
+ * 模式数组
+ *
  * @param tagName Name of the tag
+ *
+ * 标签的名称
+ *
  */
 export function matchingSchemas(schemas: SchemaMetadata[]|null, tagName: string|null): boolean {
   if (schemas !== null) {
@@ -1226,6 +1502,9 @@ export function matchingSchemas(schemas: SchemaMetadata[]|null, tagName: string|
  * The set of known control flow directives.
  * We use this set to produce a more precises error message with a note
  * that the `CommonModule` should also be included.
+ *
+ * 已知控制流指令的集。我们使用此集来生成更精确的错误消息，并说明还应该包含 `CommonModule` 。
+ *
  */
 export const KNOWN_CONTROL_FLOW_DIRECTIVES =
     new Set(['ngIf', 'ngFor', 'ngSwitch', 'ngSwitchCase', 'ngSwitchDefault']);
@@ -1233,9 +1512,20 @@ export const KNOWN_CONTROL_FLOW_DIRECTIVES =
 /**
  * Logs or throws an error that a property is not supported on an element.
  *
+ * 记录或抛出元素不支持某个属性的错误。
+ *
  * @param propName Name of the invalid property.
+ *
+ * 无效属性的名称。
+ *
  * @param tNode A `TNode` that represents a current component that is being rendered.
+ *
+ * 一个 `TNode` ，表示正在呈现的当前组件。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 一个 `LView` ，表示正在呈现的当前组件。
+ *
  */
 function handleUnknownPropertyError(propName: string, tNode: TNode, lView: LView): void {
   let tagName = tNode.value;
@@ -1291,6 +1581,9 @@ function handleUnknownPropertyError(propName: string, tNode: TNode, lView: LView
 
 /**
  * Instantiate a root component.
+ *
+ * 实例化根组件。
+ *
  */
 export function instantiateRootComponent<T>(tView: TView, lView: LView, def: ComponentDef<T>): T {
   const rootTNode = getCurrentTNode()!;
@@ -1315,6 +1608,9 @@ export function instantiateRootComponent<T>(tView: TView, lView: LView, def: Com
 
 /**
  * Resolve the matched directives on a node.
+ *
+ * 解析节点上匹配的指令。
+ *
  */
 export function resolveDirectives(
     tView: TView, lView: LView, tNode: TElementNode|TContainerNode|TElementContainerNode,
@@ -1394,12 +1690,32 @@ export function resolveDirectives(
 /**
  * Add `hostBindings` to the `TView.hostBindingOpCodes`.
  *
+ * 将 `hostBindings` 添加到 `TView.hostBindingOpCodes` 。
+ *
  * @param tView `TView` to which the `hostBindings` should be added.
+ *
+ * 应添加 `TView` 的 `hostBindings` 。
+ *
  * @param tNode `TNode` the element which contains the directive
+ *
+ * `TNode` 包含该指令的元素
+ *
  * @param lView `LView` current `LView`
+ *
+ * `LView` 当前 `LView`
+ *
  * @param directiveIdx Directive index in view.
+ *
+ * 视图中的指令索引。
+ *
  * @param directiveVarsIdx Where will the directive's vars be stored
+ *
+ * 指令的 var 将存储在哪里
+ *
  * @param def `ComponentDef`/`DirectiveDef`, which contains the `hostVars`/`hostBindings` to add.
+ *
+ * `ComponentDef` / `DirectiveDef` ，包含要添加的 `hostVars` / `hostBindings` 。
+ *
  */
 export function registerHostBindingOpCodes(
     tView: TView, tNode: TNode, lView: LView, directiveIdx: number, directiveVarsIdx: number,
@@ -1426,10 +1742,18 @@ export function registerHostBindingOpCodes(
 /**
  * Returns the last selected element index in the `HostBindingOpCodes`
  *
+ * 返回 `HostBindingOpCodes` 中最后选择的元素索引
+ *
  * For perf reasons we don't need to update the selected element index in `HostBindingOpCodes` only
  * if it changes. This method returns the last index (or '0' if not found.)
  *
+ * 出于 perf 的原因，我们不需要仅当 `HostBindingOpCodes`
+ * 中的所选元素索引更改时才更新它。此方法返回最后一个索引（如果找不到，则返回“0”。）
+ *
  * Selected element index are only the ones which are negative.
+ *
+ * 所选元素索引只是那些为负的。
+ *
  */
 function lastSelectedElementIdx(hostBindingOpCodes: HostBindingOpCodes): number {
   let i = hostBindingOpCodes.length;
@@ -1445,6 +1769,9 @@ function lastSelectedElementIdx(hostBindingOpCodes: HostBindingOpCodes): number 
 
 /**
  * Instantiate all the directives that were previously resolved on the current node.
+ *
+ * 实例化以前在当前节点上解析的所有指令。
+ *
  */
 function instantiateAllDirectives(
     tView: TView, lView: LView, tNode: TDirectiveHostNode, native: RNode) {
@@ -1504,8 +1831,16 @@ function invokeDirectivesHostBindings(tView: TView, lView: LView, tNode: TNode) 
 /**
  * Invoke the host bindings in creation mode.
  *
+ * 在创建模式下调用主机绑定。
+ *
  * @param def `DirectiveDef` which may contain the `hostBindings` function.
+ *
+ * `DirectiveDef` ，可能包含 `hostBindings` 函数。
+ *
  * @param directive Instance of directive.
+ *
+ * 指令的实例。
+ *
  */
 export function invokeHostBindingsInCreationMode(def: DirectiveDef<any>, directive: any) {
   if (def.hostBindings !== null) {
@@ -1516,6 +1851,9 @@ export function invokeHostBindingsInCreationMode(def: DirectiveDef<any>, directi
 /**
  * Matches the current node against all available selectors.
  * If a component is matched (at most one), it is returned in first position in the array.
+ *
+ * 将当前节点与所有可用的选择器匹配。如果一个组件匹配（最多一个），则它会在数组中的第一个位置返回。
+ *
  */
 function findDirectiveDefMatches(
     tView: TView, viewData: LView,
@@ -1559,8 +1897,17 @@ function findDirectiveDefMatches(
 
 /**
  * Marks a given TNode as a component's host. This consists of:
+ *
+ * 将给定的 TNode 标记为组件的主机。这包括：
+ *
  * - setting appropriate TNode flags;
+ *
+ *   设置适当的 TNode 标志；
+ *
  * - storing index of component's host element so it will be queued for view refresh during CD.
+ *
+ *   存储组件宿主元素的索引，以便在 CD 期间排队等待视图刷新。
+ *
  */
 export function markAsComponentHost(tView: TView, hostTNode: TNode): void {
   ngDevMode && assertFirstCreatePass(tView);
@@ -1570,7 +1917,12 @@ export function markAsComponentHost(tView: TView, hostTNode: TNode): void {
 }
 
 
-/** Caches local names and their matching directive indices for query and template lookups. */
+/**
+ * Caches local names and their matching directive indices for query and template lookups.
+ *
+ * 缓存本地名称及其匹配的指令索引以进行查询和模板查找。
+ *
+ */
 function cacheMatchingLocalNames(
     tNode: TNode, localRefs: string[]|null, exportsMap: {[key: string]: number}): void {
   if (localRefs) {
@@ -1593,6 +1945,9 @@ function cacheMatchingLocalNames(
 /**
  * Builds up an export map as directives are created, so local refs can be quickly mapped
  * to their directive instances.
+ *
+ * 在创建指令时构建导出映射表，因此本地引用可以快速映射到它们的指令实例。
+ *
  */
 function saveNameToExportMap(
     directiveIdx: number, def: DirectiveDef<any>|ComponentDef<any>,
@@ -1610,7 +1965,13 @@ function saveNameToExportMap(
 /**
  * Initializes the flags on the current node, setting all indices to the initial index,
  * the directive count to 0, and adding the isComponent flag.
+ *
+ * 初始化当前节点上的标志，将所有索引设置为初始索引，指令 count 为 0，并添加 isComponent 标志。
+ *
  * @param index the initial index
+ *
+ * 初始索引
+ *
  */
 export function initTNodeFlags(tNode: TNode, index: number, numberOfDirectives: number) {
   ngDevMode &&
@@ -1627,13 +1988,21 @@ export function initTNodeFlags(tNode: TNode, index: number, numberOfDirectives: 
 /**
  * Setup directive for instantiation.
  *
+ * 实例化的 Setup 指令。
+ *
  * We need to create a `NodeInjectorFactory` which is then inserted in both the `Blueprint` as well
  * as `LView`. `TView` gets the `DirectiveDef`.
+ *
+ * 我们需要创建一个 `NodeInjectorFactory` ，然后将其插入到 `Blueprint` 和 `LView` 中。 `TView` 获取
+ * `DirectiveDef` 。
  *
  * @param tView `TView`
  * @param tNode `TNode`
  * @param lView `LView`
  * @param directiveIndex Index where the directive will be stored in the Expando.
+ *
+ * 指令将在 Expando 中存储的索引。
+ *
  * @param def `DirectiveDef`
  */
 function configureViewWithDirective<T>(
@@ -1715,11 +2084,28 @@ export function setElementAttribute(
 /**
  * Sets initial input properties on directive instances from attribute data
  *
+ * 从属性数据在指令实例上设置初始输入属性
+ *
  * @param lView Current LView that is being processed.
+ *
+ * 正在处理的当前 LView。
+ *
  * @param directiveIndex Index of the directive in directives array
+ *
+ * 指令数组中的指令索引
+ *
  * @param instance Instance of the directive on which to set the initial inputs
+ *
+ * 要设置初始输入的指令实例
+ *
  * @param def The directive def that contains the list of inputs
+ *
+ * 包含输入列表的指令 def
+ *
  * @param tNode The static data for this node
+ *
+ * 此节点的静态数据
+ *
  */
 function setInputsFromAttrs<T>(
     lView: LView, directiveIndex: number, instance: T, def: DirectiveDef<T>, tNode: TNode,
@@ -1748,15 +2134,27 @@ function setInputsFromAttrs<T>(
  * Generates initialInputData for a node and stores it in the template's static storage
  * so subsequent template invocations don't have to recalculate it.
  *
+ * 为节点生成 initialInputData 并将其存储在模板的静态存储中，以便后续的模板调用不必重新计算它。
+ *
  * initialInputData is an array containing values that need to be set as input properties
  * for directives on this node, but only once on creation. We need this array to support
  * the case where you set an @Input property of a directive using attribute-like syntax.
  * e.g. if you have a `name` @Input, you can set it once like this:
  *
+ * initialInputData
+ * 是一个数组，包含需要设置为此节点上指令的输入属性的值，但在创建时只有一次。我们需要此数组来支持你使用类属性语法设置指令的
+ * @Input 属性的情况。例如，如果你有一个 `name` @Input ，你可以像这样设置它：
+ *
  * <my-component name="Bess"></my-component>
  *
  * @param inputs The list of inputs from the directive def
+ *
+ * 指令 def 的输入列表
+ *
  * @param attrs The static attrs on this node
+ *
+ * 此节点上的静态 attrs
+ *
  */
 function generateInitialInputs(inputs: {[key: string]: string}, attrs: TAttributes): InitialInputs|
     null {
@@ -1797,12 +2195,34 @@ const LContainerArray: any = class LContainer extends Array {};
 /**
  * Creates a LContainer, either from a container instruction, or for a ViewContainerRef.
  *
+ * 从容器指令或为 ViewContainerRef 创建 LContainer。
+ *
  * @param hostNative The host element for the LContainer
+ *
+ * LContainer 的主机元素
+ *
  * @param hostTNode The host TNode for the LContainer
+ *
+ * LContainer 的主机 TNode
+ *
  * @param currentView The parent view of the LContainer
+ *
+ * LContainer 的父视图
+ *
  * @param native The native comment element
+ *
+ * 原生注释元素
+ *
  * @param isForViewContainerRef Optional a flag indicating the ViewContainerRef case
- * @returns LContainer
+ *
+ * 可选的标志
+ *
+ * @returns
+ *
+ * LContainer
+ *
+ * 大容器
+ *
  */
 export function createLContainer(
     hostNative: RElement|RComment|LView, currentView: LView, native: RComment,
@@ -1833,6 +2253,9 @@ export function createLContainer(
 /**
  * Goes over embedded views (ones created through ViewContainerRef APIs) and refreshes
  * them by executing an associated template function.
+ *
+ * 遍历嵌入式视图（通过 ViewContainerRef API 创建的视图）并通过执行关联的模板函数来刷新它们。
+ *
  */
 function refreshEmbeddedViews(lView: LView) {
   for (let lContainer = getFirstLContainer(lView); lContainer !== null;
@@ -1851,7 +2274,12 @@ function refreshEmbeddedViews(lView: LView) {
 /**
  * Mark transplanted views as needing to be refreshed at their insertion points.
  *
+ * 将移植的视图标记为需要在其插入点刷新。
+ *
  * @param lView The `LView` that may have transplanted views.
+ *
+ * 可能已移植视图的 `LView` 。
+ *
  */
 function markTransplantedViewsForRefresh(lView: LView) {
   for (let lContainer = getFirstLContainer(lView); lContainer !== null;
@@ -1883,7 +2311,12 @@ function markTransplantedViewsForRefresh(lView: LView) {
 /**
  * Refreshes components by entering the component view and processing its bindings, queries, etc.
  *
- * @param componentHostIdx  Element index in LView[] (adjusted for HEADER_OFFSET)
+ * 通过进入组件视图并处理其绑定、查询等来刷新组件。
+ *
+ * @param componentHostIdx  Element index in LView\[] (adjusted for HEADER_OFFSET)
+ *
+ * LView\[] 中的元素索引（已针对 HEADER_OFFSET 进行调整）
+ *
  */
 function refreshComponent(hostLView: LView, componentHostIdx: number): void {
   ngDevMode && assertEqual(isCreationMode(hostLView), false, 'Should be run in update mode');
@@ -1904,7 +2337,12 @@ function refreshComponent(hostLView: LView, componentHostIdx: number): void {
  * Refreshes all transplanted views marked with `LViewFlags.RefreshTransplantedView` that are
  * children or descendants of the given lView.
  *
+ * 刷新作为给定 lView 的子项或后代的 `LViewFlags.RefreshTransplantedView` 标记的所有移植视图。
+ *
  * @param lView The lView which contains descendant transplanted views that need to be refreshed.
+ *
+ * 包含需要刷新的后代移植视图的 lView。
+ *
  */
 function refreshContainsDirtyView(lView: LView) {
   for (let lContainer = getFirstLContainer(lView); lContainer !== null;
@@ -1947,29 +2385,50 @@ function renderComponent(hostLView: LView, componentHostIdx: number) {
 /**
  * Syncs an LView instance with its blueprint if they have gotten out of sync.
  *
+ * 如果 LView 实例不同步，则将它们与其蓝图同步。
+ *
  * Typically, blueprints and their view instances should always be in sync, so the loop here
  * will be skipped. However, consider this case of two components side-by-side:
  *
+ * 通常，蓝图及其视图实例应始终保持同步，因此将跳过这里的循环。但是，请考虑这种并排两个组件的情况：
+ *
  * App template:
+ *
+ * 应用程序模板：
+ *
  * ```
  * <comp></comp>
  * <comp></comp>
  * ```
  *
  * The following will happen:
- * 1. App template begins processing.
- * 2. First <comp> is matched as a component and its LView is created.
- * 3. Second <comp> is matched as a component and its LView is created.
- * 4. App template completes processing, so it's time to check child templates.
- * 5. First <comp> template is checked. It has a directive, so its def is pushed to blueprint.
- * 6. Second <comp> template is checked. Its blueprint has been updated by the first
+ * 1\. App template begins processing.
+ * 2\. First <comp> is matched as a component and its LView is created.
+ * 3\. Second <comp> is matched as a component and its LView is created.
+ * 4\. App template completes processing, so it's time to check child templates.
+ * 5\. First <comp> template is checked. It has a directive, so its def is pushed to blueprint.
+ * 6\. Second <comp> template is checked. Its blueprint has been updated by the first
  * <comp> template, but its LView was created before this update, so it is out of sync.
+ *
+ * 将发生以下情况： 1. 应用程序模板开始处理。 2.首先<comp>被作为组件匹配，并创建其 LView。 3.
+ * 第二<comp>被作为组件匹配，并创建其 LView。 4.
+ * 应用程序模板已完成处理，因此是时候检查子模板了。 5.第一个<comp>模板已检查。它有一个指令，因此其
+ * def 被推送到蓝图。 6. 第二<comp>模板已检查。它的蓝图已由第一个更新<comp>模板，但其 LView
+ * 是在此更新之前创建的，因此它不同步。
  *
  * Note that embedded views inside ngFor loops will never be out of sync because these views
  * are processed as soon as they are created.
  *
+ * 请注意，ngFor 循环中的嵌入式视图永远不会不同步，因为这些视图是在创建后立即处理的。
+ *
  * @param tView The `TView` that contains the blueprint for syncing
+ *
+ * 包含同步蓝图的 `TView`
+ *
  * @param lView The view to sync
+ *
+ * 要同步的视图
+ *
  */
 function syncViewWithBlueprint(tView: TView, lView: LView) {
   for (let i = lView.length; i < tView.blueprint.length; i++) {
@@ -1980,13 +2439,31 @@ function syncViewWithBlueprint(tView: TView, lView: LView) {
 /**
  * Adds LView or LContainer to the end of the current view tree.
  *
+ * 将 LView 或 LContainer 添加到当前视图树的末尾。
+ *
  * This structure will be used to traverse through nested views to remove listeners
  * and call onDestroy callbacks.
  *
+ * 此结构将用于遍历嵌套视图以删除侦听器并调用 onDestroy 回调。
+ *
  * @param lView The view where LView or LContainer should be added
- * @param adjustedHostIndex Index of the view's host node in LView[], adjusted for header
+ *
+ * 应该添加 LView 或 LContainer 的视图
+ *
+ * @param adjustedHostIndex Index of the view's host node in LView\[], adjusted for header
+ *
+ * LView\[] 中视图主机节点的索引，已针对标头进行调整
+ *
  * @param lViewOrLContainer The LView or LContainer to add to the view tree
- * @returns The state passed in
+ *
+ * 要添加到视图树的 LView 或 LContainer
+ *
+ * @returns
+ *
+ * The state passed in
+ *
+ * 传入的状态
+ *
  */
 export function addToViewTree<T extends LView|LContainer>(lView: LView, lViewOrLContainer: T): T {
   // TODO(benlesh/misko): This implementation is incorrect, because it always adds the LContainer
@@ -2010,13 +2487,26 @@ export function addToViewTree<T extends LView|LContainer>(lView: LView, lViewOrL
 /**
  * Marks current view and all ancestors dirty.
  *
+ * 将当前视图和所有祖先标记为脏。
+ *
  * Returns the root view because it is found as a byproduct of marking the view tree
  * dirty, and can be used by methods that consume markViewDirty() to easily schedule
  * change detection. Otherwise, such methods would need to traverse up the view tree
  * an additional time to get the root view and schedule a tick on it.
  *
+ * 返回根视图，因为它是将视图树标记为脏的副产品，并且可以被使用 markViewDirty()
+ * 的方法用来轻松安排更改检测。否则，此类方法将需要再次向上遍历视图树以获取根视图并在其上安排一个刻度。
+ *
  * @param lView The starting LView to mark dirty
- * @returns the root LView
+ *
+ * 标记脏的启动 LView
+ *
+ * @returns
+ *
+ * the root LView
+ *
+ * 根 LView
+ *
  */
 export function markViewDirty(lView: LView): LView|null {
   while (lView) {
@@ -2036,13 +2526,22 @@ export function markViewDirty(lView: LView): LView|null {
 /**
  * Used to schedule change detection on the whole application.
  *
+ * 用于安排对整个应用程序的更改检测。
+ *
  * Unlike `tick`, `scheduleTick` coalesces multiple calls into one change detection run.
  * It is usually called indirectly by calling `markDirty` when the view needs to be
  * re-rendered.
  *
+ * 与 `tick` 不同， `scheduleTick`
+ * 多个调用合并到一个更改检测运行中。当需要重新渲染视图时，通常通过调用 `markDirty` 来间接调用它。
+ *
  * Typically `scheduleTick` uses `requestAnimationFrame` to coalesce multiple
  * `scheduleTick` requests. The scheduling function can be overridden in
  * `renderComponent`'s `scheduler` option.
+ *
+ * 通常， `scheduleTick` 使用 `requestAnimationFrame` 来合并多个 `scheduleTick` 请求。调度函数可以在
+ * `renderComponent` 的 `scheduler` 选项中被覆盖。
+ *
  */
 export function scheduleTick(rootContext: RootContext, flags: RootContextFlags) {
   const nothingScheduled = rootContext.flags === RootContextFlags.Empty;
@@ -2100,7 +2599,12 @@ export function detectChangesInternal<T>(tView: TView, lView: LView, context: T)
 /**
  * Synchronously perform change detection on a root view and its components.
  *
+ * 对根视图及其组件同步执行更改检测。
+ *
  * @param lView The view which the change detection should be performed on.
+ *
+ * 应该在其上执行更改检测的视图。
+ *
  */
 export function detectChangesInRootView(lView: LView): void {
   tickRootContext(lView[CONTEXT] as RootContext);
@@ -2119,10 +2623,17 @@ export function checkNoChangesInternal<T>(tView: TView, view: LView, context: T)
  * Checks the change detector on a root view and its components, and throws if any changes are
  * detected.
  *
+ * 检查根视图及其组件上的更改检测器，如果检测到任何更改，则抛出。
+ *
  * This is used in development mode to verify that running change detection doesn't
  * introduce other changes.
  *
+ * 这在开发模式下用于验证正在运行的更改检测不会引入其他更改。
+ *
  * @param lView The view which the change detection should be checked on.
+ *
+ * 应该检查更改检测的视图。
+ *
  */
 export function checkNoChangesInRootView(lView: LView): void {
   setIsInCheckNoChangesMode(true);
@@ -2148,23 +2659,59 @@ function executeViewQueryFn<T>(
 /**
  * Stores meta-data for a property binding to be used by TestBed's `DebugElement.properties`.
  *
+ * 存储 TestBed 的 `DebugElement.properties` 使用的属性绑定的元数据。
+ *
  * In order to support TestBed's `DebugElement.properties` we need to save, for each binding:
+ *
+ * 为了支持 TestBed 的 `DebugElement.properties` ，我们需要为每个绑定保存：
+ *
  * - a bound property name;
+ *
+ *   绑定的属性名称；
+ *
  * - a static parts of interpolated strings;
+ *
+ *   a 内插字符串的静态部分；
  *
  * A given property metadata is saved at the binding's index in the `TView.data` (in other words, a
  * property binding metadata will be stored in `TView.data` at the same index as a bound value in
  * `LView`). Metadata are represented as `INTERPOLATION_DELIMITER`-delimited string with the
  * following format:
+ *
+ * 给定的属性元数据会保存在 `TView.data` 中绑定的索引处（换句话说，属性绑定元数据将存储在
+ * `TView.data` 中与 LView 中的绑定值相同的索引 `LView` ）。元数据表示为具有以下格式的
+ * `INTERPOLATION_DELIMITER` 分隔字符串：
+ *
  * - `propertyName` for bound properties;
+ *
+ *   绑定 `propertyName` 的 propertyName ；
+ *
  * - `propertyName�prefix�interpolation_static_part1�..interpolation_static_partN�suffix` for
- * interpolated properties.
+ *   interpolated properties.
+ *
+ *   `propertyName�prefix�interpolation_static_part1�..interpolation_static_partN�suffix`
+ * 的插值属性。
  *
  * @param tData `TData` where meta-data will be saved;
+ *
+ * 将保存元数据的 `TData` ；
+ *
  * @param tNode `TNode` that is a target of the binding;
+ *
+ * 作为绑定目标的 `TNode` ；
+ *
  * @param propertyName bound property name;
+ *
+ * 绑定的属性名称；
+ *
  * @param bindingIndex binding index in `LView`
+ *
+ * `LView` 中的绑定索引
+ *
  * @param interpolationParts static interpolation parts (for property interpolations)
+ *
+ * 静态插值部分（用于属性插值）
+ *
  */
 export function storePropertyBindingMetadata(
     tData: TData, tNode: TNode, propertyName: string, bindingIndex: number,
@@ -2199,7 +2746,10 @@ export function getOrCreateTViewCleanup(tView: TView): any[] {
 
 /**
  * There are cases where the sub component's renderer needs to be included
- * instead of the current renderer (see the componentSyntheticHost* instructions).
+ * instead of the current renderer (see the componentSyntheticHost\* instructions).
+ *
+ * 在某些情况下，需要包含子组件的渲染器而不是当前渲染器（请参阅 componentSyntheticHost\* 说明）。
+ *
  */
 export function loadComponentRenderer(
     currentDef: DirectiveDef<any>|null, tNode: TNode, lView: LView): Renderer3 {
@@ -2215,7 +2765,12 @@ export function loadComponentRenderer(
   return lView[RENDERER];
 }
 
-/** Handles an error thrown in an LView. */
+/**
+ * Handles an error thrown in an LView.
+ *
+ * 处理 LView 中抛出的错误。
+ *
+ */
 export function handleError(lView: LView, error: any): void {
   const injector = lView[INJECTOR];
   const errorHandler = injector ? injector.get(ErrorHandler, null) : null;
@@ -2225,11 +2780,25 @@ export function handleError(lView: LView, error: any): void {
 /**
  * Set the inputs of directives at the current node to corresponding value.
  *
+ * 将当前节点处指令的输入设置为相应的值。
+ *
  * @param tView The current TView
+ *
+ * 当前的 TView
+ *
  * @param lView the `LView` which contains the directives.
+ *
+ * 包含指令的 `LView` 。
+ *
  * @param inputs mapping between the public "input" name and privately-known,
  *        possibly minified, property names to write to.
+ *
+ * 公共“输入”名称与要写入的秘密（可能是缩小的）属性名称之间的映射。
+ *
  * @param value Value to set.
+ *
+ * 要设置的值。
+ *
  */
 export function setInputsForProperty(
     tView: TView, lView: LView, inputs: PropertyAliasValue, publicName: string, value: any): void {
@@ -2249,6 +2818,9 @@ export function setInputsForProperty(
 
 /**
  * Updates a text binding at a given index in a given LView.
+ *
+ * 更新给定 LView 中给定索引处的文本绑定。
+ *
  */
 export function textBindingInternal(lView: LView, index: number, value: string): void {
   ngDevMode && assertString(value, 'Value should be a string');

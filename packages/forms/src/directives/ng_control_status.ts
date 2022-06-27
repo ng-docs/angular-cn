@@ -79,7 +79,6 @@ export const ngGroupStatusHost = {
  * based on control status.
  *
  * 指令自动应用于 Angular 表单控件，该控件会根据控件状态设置 CSS 类。
- *
  * @usageNotes
  *
  * ### CSS classes applied
@@ -91,11 +90,25 @@ export const ngGroupStatusHost = {
  * 当这些属性变为 true 时，将应用以下类：
  *
  * * ng-valid
+ *
+ *   ng 有效
+ *
  * * ng-invalid
+ *
+ *   ng-无效
+ *
  * * ng-pending
+ *
+ *   ng 待处理
+ *
  * * ng-pristine
+ *
  * * ng-dirty
+ *
+ *   ng-脏
+ *
  * * ng-untouched
+ *
  * * ng-touched
  *
  * @ngModule ReactiveFormsModule

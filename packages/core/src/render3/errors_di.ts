@@ -14,7 +14,12 @@ import {stringify} from '../util/stringify';
 import {stringifyForError} from './util/stringify_utils';
 
 
-/** Called when directives inject each other (creating a circular dependency) */
+/**
+ * Called when directives inject each other (creating a circular dependency)
+ *
+ * 当指令相互注入（创建循环依赖）时调用
+ *
+ */
 export function throwCyclicDependencyError(token: string, path?: string[]): never {
   const depPath = path ? `. Dependency path: ${path.join(' > ')} > ${token}` : '';
   throw new RuntimeError(
@@ -43,7 +48,12 @@ export function throwInvalidProviderError(
 }
 
 
-/** Throws an error when a token is not found in DI. */
+/**
+ * Throws an error when a token is not found in DI.
+ *
+ * 在 DI 中找不到标记时抛出错误。
+ *
+ */
 export function throwProviderNotFoundError(token: any, injectorName?: string): never {
   const injectorDetails = injectorName ? ` in ${injectorName}` : '';
   throw new RuntimeError(

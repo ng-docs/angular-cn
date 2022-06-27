@@ -17,30 +17,40 @@ import {createRenderTemplateDirective} from './render_template_directive';
  * between the root and the `ng-template` that renders out the `inner-comp`.
  * The template corresponds to:
  *
+ * 创建基准测试的根组件。目标是在根和渲染 `inner-comp` 的 `ng-template`
+ * 之间添加更多层元素。模板对应于：
+ *
+ * <div>
+ *
+ *   <div>
+ *
+ * ```
  * <div>
  *   <div>
+ *     <div [renderTemplate]="template"></div>
  *     <div>
- *       <div>
- *         <div [renderTemplate]="template"></div>
+ *       <ng-template #template>
  *         <div>
- *           <ng-template #template>
+ *           <div>
  *             <div>
  *               <div>
  *                 <div>
- *                   <div>
- *                     <div>
- *                       <inner-comp></inner-comp>
- *                     </div>
- *                   </div>
+ *                   <inner-comp></inner-comp>
  *                 </div>
  *               </div>
  *             </div>
- *           </ng-template>
+ *           </div>
  *         </div>
- *       </div>
+ *       </ng-template>
  *     </div>
  *   </div>
  * </div>
+ * ```
+ *
+ *   </div>
+ *
+ * </div>
+ *
  */
 export function createAppComponent(injector: Injector|undefined) {
   const RenderTemplate = createRenderTemplateDirective(injector);

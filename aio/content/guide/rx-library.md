@@ -83,7 +83,7 @@ You need to call `subscribe()` to produce a result through the recipe.
 
 Here's an example:
 
-例子如下：【模糊翻译】
+例子如下：
 
 <code-example header="Standalone pipe function" path="rx-library/src/operators.1.ts"></code-example>
 
@@ -107,6 +107,9 @@ RxJS 提供了很多操作符，不过只有少数是常用的。 下面是一�
 **NOTE**: <br />
 For Angular applications, we prefer combining operators with pipes, rather than chaining.
 Chaining is used in many RxJS examples.
+
+**注意**：<br />
+对于 Angular 应用来说，我们提倡使用管道来组合操作符，而不是使用链式写法。链式写法仍然在很多 RxJS 中使用着。
 
 </div>
 

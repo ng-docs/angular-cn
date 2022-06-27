@@ -1,15 +1,15 @@
 # What is Angular?
 
-# 什么是 Angular【模糊翻译】
+# 什么是 Angular？
 
 This topic can help you understand Angular: what Angular is, what advantages it provides, and what you might expect as you start to build your applications.
 
-本主题会帮你了解 Angular：什么是 Angular？它有哪些优势？当构建应用时它能为你提供什么帮助？。
+本主题会帮你了解 Angular：什么是 Angular？它有哪些优势？当构建应用时它能为你提供什么帮助？
 
 Angular is a development platform, built on [TypeScript](https://www.typescriptlang.org).
 As a platform, Angular includes:
 
-Angular 是一个基于 [TypeScript](https://www.typescriptlang.org/) 构建的开发平台。它包括：
+Angular 是一个基于 [TypeScript](https://www.typescriptlang.org) 构建的开发平台。它包括：
 
 * A component-based framework for building scalable web applications
 
@@ -33,6 +33,8 @@ Best of all, the Angular ecosystem consists of a diverse group of over 1.7 milli
 
 See the <live-example name="what-is-angular"></live-example> for a working example containing the code snippets in this guide.
 
+要试用包含本指南中代码片段的可工作范例，请看<live-example name="what-is-angular"></live-example>。
+
 </div>
 
 <a id="essentials"></a>
@@ -50,6 +52,8 @@ Understanding these ideas can help you design and build your applications more e
 
 ### Components
 
+### 组件
+
 Components are the building blocks that compose an application.
 A component includes a TypeScript class with a `@Component()` decorator, an HTML template, and styles.
 The `@Component()` decorator specifies the following Angular-specific information:
@@ -63,11 +67,11 @@ The `@Component()` decorator specifies the following Angular-specific informatio
 
 * An HTML template that instructs Angular how to render the component
 
-  一个 HTML 模板，用于指示 Angular 如何渲染此组件。
+  一个 HTML 模板，用于指示 Angular 如何渲染此组件
 
 * An optional set of CSS styles that define the appearance of the template's HTML elements
 
-  一组可选的 CSS 样式，用于定义模板中 HTML 元素的外观。
+  一组可选的 CSS 样式，用于定义模板中 HTML 元素的外观
 
 The following is a minimal Angular component.
 
@@ -99,6 +103,8 @@ For more information on what to do with components, see the [Components](guide/c
 <a id="templates"></a>
 
 ### Templates
+
+### 模板
 
 Every component has an HTML template that declares how that component renders.
 You define this template either inline or by file path.
@@ -146,7 +152,7 @@ Notice the use of the square brackets—that syntax indicates that you're bindin
 Declare event listeners to listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.
 You declare an event listener by specifying the event name in parentheses:
 
-可以声明事件监听器来监听并响应用户的操作，例如按键、鼠标移动、单击和触摸等。你可以通过在圆括号中指定事件名称来声明一个事件监听器：
+可以声明事件监听器来监听并响应用户的操作，比如按键、鼠标移动、单击和触摸等。你可以通过在圆括号中指定事件名称来声明一个事件监听器：
 
 <code-example format="html" language="html" path="what-is-angular/src/app/hello-world-bindings/hello-world-bindings.component.html" region="event-binding"></code-example>
 
@@ -170,7 +176,7 @@ The most popular directives in Angular are `*ngIf` and `*ngFor`.
 Use directives to perform a variety of tasks, such as dynamically modifying the DOM structure.
 And create your own custom directives to create great user experiences.
 
-可以用[指令](guide/built-in-directives)来为模板添加额外功能。 Angular 中最常用的指令是 `*ngIf` 和 `*ngFor` 。你可以使用指令执行各种任务，例如动态修改 DOM 结构。你还可以用自定义指令来创建出色的用户体验。
+可以用[指令](guide/built-in-directives)来为模板添加额外功能。 Angular 中最常用的指令是 `*ngIf` 和 `*ngFor` 。你可以使用指令执行各种任务，比如动态修改 DOM 结构。你还可以用自定义指令来创建出色的用户体验。
 
 The following code is an example of the `*ngIf` directive.
 
@@ -193,6 +199,8 @@ For more information on templates, see the [Templates](guide/template-syntax) se
 <a id="di"></a>
 
 ### Dependency injection
+
+### 依赖注入
 
 Dependency injection lets you declare the dependencies of your TypeScript classes without taking care of their instantiation.
 Instead, Angular handles the instantiation for you.
@@ -225,6 +233,8 @@ For more information about dependency injection and Angular, see the [Dependency
 
 ## Angular CLI
 
+## 角度 CLI
+
 The Angular CLI is the fastest, straightforward, and recommended way to develop Angular applications.
 The Angular CLI makes a number of tasks trouble-free.
 Here are some examples:
@@ -233,7 +243,7 @@ Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。An
 
 | Command | Details |
 | :------ | :------ |
-| Command | 详情 |
+| 命令 | 详情 |
 | [ng build](cli/build) | Compiles an Angular app into an output directory. |
 | [ng build](cli/build) | 把 Angular 应用编译到一个输出目录中。 |
 | [ng serve](cli/serve) | Builds and serves your application, rebuilding on file changes. |
@@ -251,7 +261,7 @@ You'll find the Angular CLI a valuable tool for building out your applications.
 
 For more information about the Angular CLI, see the [CLI Reference](cli) section.
 
-有关 Angular CLI 的更多信息，请参阅 [“CLI 参考手册”](/cli)部分。
+有关 Angular CLI 的更多信息，请参阅 [“CLI 参考手册”](cli)部分。
 
 <a id="1p-libraries"></a>
 
@@ -263,13 +273,15 @@ The section, [Angular applications: The essentials](#essentials), provides a bri
 But the many benefits of Angular really become apparent when your application grows and you want to add additional functions such as site navigation or user input.
 Use the Angular platform to incorporate one of the many first-party libraries that Angular provides.
 
+[“Angular 应用：基本知识”](#essentials)部分提供了构建 Angular 应用时要用到的几个关键架构元素的简要描述。但是，当你的应用不断成长并且想要添加其他功能（比如站点导航或用户输入）时，Angular 的许多优势才会真正显现出来。届时，你可以通过 Angular 平台，来引入 Angular 所提供的众多自带库之一。
+
 Some of the libraries available to you include:
 
 你可以使用的一些库包括：
 
 | Library | Details |
 | :------ | :------ |
-| 库（Library）【模糊翻译】 | 详情 |
+| 库 | 详情 |
 | [Angular Router](guide/router) | Advanced client-side navigation and routing based on Angular components. Supports lazy-loading, nested routes, custom path matching, and more. |
 | [Angular 路由器](guide/router) | 高级的客户侧导航功能与基于 Angular 组件的路由机制。支持惰性加载、嵌套路由、自定义路径匹配规则等。 |
 | [Angular Forms](guide/forms-overview) | Uniform system for form participation and validation. |
@@ -298,12 +310,12 @@ These libraries are only required if and when they can help you add functionalit
 
 This topic is intended to give you a brief overview of what Angular is, the advantages it provides, and what to expect as you start to build your applications.
 
-本主题旨在帮你了解 Angular：什么是 Angular？它有哪些优势？当构建应用时它能为你提供什么帮助？。
+本主题旨在帮你了解 Angular：什么是 Angular？它有哪些优势？当构建应用时它能为你提供什么帮助？
 
 To see Angular in action, see our [Getting Started](start) tutorial.
 This tutorial uses [stackblitz.com](https://stackblitz.com), for you to explore a working example of Angular without any installation requirements.
 
-要实际使用 Angular，请参阅我们的[入门](https://angular.cn/start)教程。本教程使用 [stackblitz.com](https://stackblitz.com/)，因此你可以浏览 Angular 的可工作范例，而不必先做任何安装工作。
+要实际使用 Angular，请参阅我们的[入门](https://angular.cn/start)教程。本教程使用 [stackblitz.com](https://stackblitz.com)，因此你可以浏览 Angular 的可工作范例，而不必先做任何安装工作。
 
 To explore Angular's capabilities further, we recommend reading through the sections, Understanding Angular and Developer Guides.
 

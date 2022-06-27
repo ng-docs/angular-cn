@@ -11,6 +11,8 @@ import {getCurrentTNode} from '../state';
 /**
  * Facade for the attribute injection from DI.
  *
+ * 来自 DI 的属性注入的门面。
+ *
  * @codeGenApi
  */
 export function ɵɵinjectAttribute(attrNameToInject: string): string|null {

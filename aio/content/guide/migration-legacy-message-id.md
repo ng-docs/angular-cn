@@ -11,7 +11,7 @@ One option for creating these IDs is to have the translation system generate the
 Previously, the format for these IDs are not stable when there are insignificant changes, such as to whitespace.
 The new format is much more robust.
 
-Angular 的翻译体系会根据消息 ID 与另一种语言的译后消息进行匹配。创建这些 ID 的方法之一是让翻译体系为你生成它们。以前，这些 ID 的格式在发生细微更改时（例如，加减空格）是不稳定的。而新格式会更加稳健。
+Angular 的翻译体系会根据消息 ID 与另一种语言的译后消息进行匹配。创建这些 ID 的方法之一是让翻译体系为你生成它们。以前，这些 ID 的格式在发生细微更改时（比如，加减空格）是不稳定的。而新格式会更加稳健。
 
 This topic describes how to migrate old localization IDs to help you future-proof your application in the event that the old format is removed.
 
@@ -65,7 +65,7 @@ To migrate legacy localization IDs using the CLI:
 
    After running this command, you have a migration file, `messages.json`, containing a mapping between legacy localization IDs and new IDs that you can use to update your application.
 
-   运行此命令后，你将拥有一个迁移文件 `messages.json`，其中包含旧版本地化 ID 与新版 ID 之间的映射，可用于更新应用程序。
+   运行此命令后，你将拥有一个迁移文件 `messages.json`，其中包含旧版本地化 ID 与新版 ID 之间的映射，你可以用它来更新应用程序。
 
 1. Update the IDs in your application using the `npx localize-migrate` command.
 
@@ -81,7 +81,7 @@ To migrate legacy localization IDs using the CLI:
 
    You can also specify other formats in the `files` parameter, such as `*.xmb`.
 
-   你还可以在 `files` 参数中指定其它格式，例如 `*.xmb`。
+   你还可以在 `files` 参数中指定其它格式，比如 `*.xmb`。
 
    </div>
 
@@ -92,7 +92,7 @@ To migrate legacy localization IDs using the CLI:
 After you complete the migration, set the Angular Compiler option, `enableI18nLegacyMessageIdFormat`, to `false`.
 For more information about this option, see [Angular Compiler Options](guide/angular-compiler-options#enablei18nlegacymessageidformat).
 
-完成迁移后，将 Angular Compiler 选项 `enableI18nLegacyMessageIdFormat` 设置为 `false`。有关此选项的更多信息，请参见[Angular 编译器选项](/guide/angular-compiler-options#enablei18nlegacymessageidformat)。
+完成迁移后，将 Angular Compiler 选项 `enableI18nLegacyMessageIdFormat` 设置为 `false`。有关此选项的更多信息，请参见[Angular 编译器选项](guide/angular-compiler-options#enablei18nlegacymessageidformat)。
 
 ## Migrate legacy IDs using `localize-extract`
 
@@ -121,7 +121,7 @@ If you are not using the Angular CLI, you can migrate legacy localization IDs us
 
    Your distributable files must not have been translated, such as by using `localize-translate`, as doing so strips the `$localize` tagged strings that the extractor requires.
 
-   一定不能翻译这些可分发文件（例如用 `localize-translate`），因为这样做会剥离带 `$localize` 标记的字符串。
+   一定不能翻译这些可分发文件（比如用 `localize-translate`），因为这样做会剥离带 `$localize` 标记的字符串。
 
    </div>
 
@@ -143,14 +143,14 @@ If you are not using the Angular CLI, you can migrate legacy localization IDs us
 
    You can also specify other formats in the `files` parameter, such as `*.xmb`.
 
-   你还可以在 `files` 参数中指定其它格式，例如 `*.xmb`。
+   你还可以在 `files` 参数中指定其它格式，比如 `*.xmb`。
 
    </div>
 
 After you complete the migration, set the Angular Compiler option, `enableI18nLegacyMessageIdFormat`, to `false`.
 For more information about this option, see [Angular Compiler Options](guide/angular-compiler-options#enablei18nlegacymessageidformat).
 
-完成迁移后，将 Angular Compiler 选项 `enableI18nLegacyMessageIdFormat` 设置为 `false`。有关此选项的更多信息，请参见[Angular 编译器选项](/guide/angular-compiler-options#enablei18nlegacymessageidformat)。
+完成迁移后，将 Angular Compiler 选项 `enableI18nLegacyMessageIdFormat` 设置为 `false`。有关此选项的更多信息，请参见[Angular 编译器选项](guide/angular-compiler-options#enablei18nlegacymessageidformat)。
 
 {@searchKeywords i18n}
 

@@ -35,7 +35,12 @@ export const containingDirPath =
 /**
  * Absolute file path that points to the `ngcc` command line entry-point.
  *
+ * 指向 `ngcc` 命令行入口点的绝对文件路径。
+ *
  * This can be used by the Angular CLI to spawn a process running ngcc using
  * command line options.
+ *
+ * Angular CLI 可以用它来生成一个使用命令行选项运行 ngcc 的进程。
+ *
  */
 export const ngccMainFilePath = join(containingDirPath, './main-ngcc.js');

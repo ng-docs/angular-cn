@@ -9,7 +9,7 @@ It explains how the Angular service worker fits into the larger production envir
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 A basic understanding of the following:
 
@@ -68,6 +68,8 @@ If any of the cached files change, the file's hash will change in `ngsw.json`, c
 <div class="alert is-helpful">
 
 `ngsw.json` is the manifest file that is generated at build time based on `ngsw-config.json`.
+
+`ngsw.json` 是在构建时基于 `ngsw-config.json` 生成的清单文件。
 
 </div>
 
@@ -161,20 +163,26 @@ Angular Service Worker 会保证：正在运行的应用程序会继续运行和
 This guarantee is **stronger** than that provided by the normal web deployment model.
 Without a service worker, there is no guarantee that code lazily loaded later in a running application is from the same version as the initial code for the application.
 
+**重要**：<br />
+这种担保比普通的 Web 部署模型提供的担保还要**更强一点**。
+如果没有 Service Worker，则不能保证稍后在这个正在运行的应用中惰性加载的代码
+和其初始代码的版本是一样的。
+
 </div>
 
 There are a few limited reasons why the Angular service worker might change the version of a running application.
 Some of them are error conditions:
 
-Angular Service Worker 为什么可能会更改运行中的应用的版本有几个有限的原因。 其中一些是因为出错了：
+Angular Service Worker 为什么可能会更改运行中的应用的版本有几个有限的原因。
+其中一些是因为出错了：
 
 * The current version becomes invalid due to a failed hash
 
-  由于哈希验证失败，当前版本变成了无效的。
+  由于哈希验证失败，当前版本变成了无效的
 
 * An unrelated error causes the service worker to enter safe mode; that is, temporary deactivation
 
-  某个无关的错误导致 Service Worker 进入了安全模式，或者说，它被暂时禁用了。
+  某个无关的错误导致 Service Worker 进入了安全模式，或者说，它被暂时禁用了
 
 The Angular service worker is aware of which versions are in use at any given moment and it cleans up versions when no tab is using them.
 
@@ -220,7 +228,7 @@ Angular Service Worker 的大部分更新对应用程序来说都是透明的 - 
 In some cases, you might want to bypass the service worker entirely and let the browser handle the request instead.
 An example is when you rely on a feature that is currently not supported in service workers (for example, [reporting progress on uploaded files](https://github.com/w3c/ServiceWorker/issues/1141)).
 
-某些情况下，你可能想要完全绕过 Service Worker，转而让浏览器处理请求。比如当你要用到某些 Service Worker 尚不支持的特性时（例如[报告文件上传的进度](https://github.com/w3c/ServiceWorker/issues/1141)）。
+某些情况下，你可能想要完全绕过 Service Worker，转而让浏览器处理请求。比如当你要用到某些 Service Worker 尚不支持的特性时（比如[报告文件上传的进度](https://github.com/w3c/ServiceWorker/issues/1141)）。
 
 To bypass the service worker, set `ngsw-bypass` as a request header, or as a query parameter.
 (The value of the header or query parameter is ignored and can be empty or omitted.)
@@ -293,9 +301,11 @@ There are two possible degraded states:
 
 | Degraded states | Details |
 | :-------------- | :------ |
-| Degraded states | 详情 |
+| 降级状态 | 详情 |
 | `EXISTING_CLIENTS_ONLY` | The service worker does not have a clean copy of the latest known version of the application. Older cached versions are safe to use, so existing tabs continue to run from cache, but new loads of the application will be served from the network. The service worker will try to recover from this state when a new version of the application is detected and installed (that is, when a new `ngsw.json` is available). |
+| `EXISTING_CLIENTS_ONLY` | 这个 Service Worker 没有该应用的最新已知版本的干净副本。较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，但新的应用将从网络上加载。 |
 | `SAFE_MODE` | The service worker cannot guarantee the safety of using cached data. Either an unexpected error occurred or all cached versions are invalid. All traffic will be served from the network, running as little service worker code as possible. |
+| `SAFE_MODE` | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。 |
 
 In both cases, the parenthetical annotation provides the
 error that caused the service worker to enter the degraded state.
@@ -305,6 +315,10 @@ error that caused the service worker to enter the degraded state.
 Both states are temporary; they are saved only for the lifetime of the [ServiceWorker instance](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope).
 The browser sometimes terminates an idle service worker to conserve memory and processor power, and creates a new service worker instance in response to network events.
 The new instance starts in the `NORMAL` mode, regardless of the state of the previous instance.
+
+这两种状态都是暂时的；它们仅在 [ServiceWorker 实例](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope) 的生命周期内保存。
+浏览器有时会终止空闲的 Service Worker，以节省内存和处理能力，并创建一个新的 Service Worker 实例来响应网络事件。
+无论先前实例的状态如何，新实例均以 `NORMAL` 模式启动。
 
 #### Latest manifest hash
 
@@ -353,12 +367,18 @@ Clients: 7b79a015-69af-4d3d-9ae6-95ba90c79486, 5bc08295-aaf2-42f3-a4cc-9e4ef9100
 
 In this example, the service worker has one version of the application cached and being used to serve two different tabs.
 
+在这个例子中，Service Worker 拥有一个版本的应用程序缓存并用它服务于两个不同的选项卡。
+
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 This version hash is the "latest manifest hash" listed above.
 Both clients are on the latest version.
 Each client is listed by its ID from the `Clients` API in the browser.
+
+**注意**：<br/>
+这个版本哈希值是上面列出的“最新清单的哈希”。
+它的两个客户运行的都是最新版本。每个客户都用浏览器中 `Clients` API 的 ID 列了出来。
 
 </div>
 
@@ -445,6 +465,8 @@ When the service worker's request for `ngsw.json` returns a `404`, then the serv
 
 ### Safety Worker
 
+### 安全工作者
+
 Also included in the `@angular/service-worker` NPM package is a small script `safety-worker.js`, which when loaded will unregister itself from the browser and remove the service worker caches.
 This script can be used as a last resort to get rid of unwanted service workers already installed on client pages.
 
@@ -455,11 +477,19 @@ This script can be used as a last resort to get rid of unwanted service workers 
 **IMPORTANT**: <br />
 You cannot register this worker directly, as old clients with cached state might not see a new `index.html` which installs the different worker script.
 
+**重要**：<br />
+你不能直接注册这个 Safety Worker，因为具有已缓存状态的旧客户端可能无法看到一个新的、用来安装 另一个 worker 脚本的 `index.html`。
+
 </div>
 
 Instead, you must serve the contents of `safety-worker.js` at the URL of the Service Worker script you are trying to unregister, and must continue to do so until you are certain all users have successfully unregistered the old worker.
 For most sites, this means that you should serve the safety worker at the old Service Worker URL forever.
 This script can be used both to deactivate `@angular/service-worker` (and remove the corresponding caches) as well as any other Service Workers which might have been served in the past on your site.
+
+你必须在想要注销的 Service Worker 脚本的 URL 中提供 `safety-worker.js` 的内容，
+而且必须持续这样做，直到确定所有用户都已成功注销了原有的 Worker。
+对大多数网站而言，这意味着你应该永远为旧的 Service Worker URL 提供 这个 Safety Worker。
+这个脚本可以用来停用 `@angular/service-worker`（并移除相应的缓存）以及任何其它曾在你的站点上提供过的 Service Worker。
 
 ### Changing your app's location
 
@@ -471,6 +501,9 @@ This script can be used both to deactivate `@angular/service-worker` (and remove
 Service workers don't work behind redirect.
 You might have already encountered the error `The script resource is behind a redirect, which is disallowed`.
 
+**重要**：<br />
+Service Worker 无法在重定向后工作。你可能已经遇到过这种错误：`The script resource is behind a redirect, which is disallowed`。
+
 </div>
 
 This can be a problem if you have to change your application's location.
@@ -478,9 +511,11 @@ If you setup a redirect from the old location (for example `example.com`) to the
 Also, the redirect won't even trigger for users who are loading the site entirely from Service Worker.
 The old worker (registered at `example.com`) tries to update and sends requests to the old location `example.com` which get redirected to the new location `www.example.com` and create the error `The script resource is behind a redirect, which is disallowed`.
 
-如果你不得不更改应用的位置，就可能会出现问题。如果你设置了从旧位置（例如 `example.com` ）到新位置（例如 `www.example.com`）的重定向，则 Service Worker 将停止工作。 同样，对于完全从 Service Worker 加载该网站的用户，甚至都不会触发重定向。老的 Worker（注册在 `example.com`）会尝试更新并将请求发送到原来的位置 `example.com`，该位置重定向到新位置 `www.example.com` 就会导致错误 `The script resource is behind a redirect, which is disallowed`。
+如果你不得不更改应用的位置，就可能会出现问题。如果你设置了从旧位置（比如 `example.com` ）到新位置（比如 `www.example.com`）的重定向，则 Service Worker 将停止工作。 同样，对于完全从 Service Worker 加载该网站的用户，甚至都不会触发重定向。老的 Worker（注册在 `example.com`）会尝试更新并将请求发送到原来的位置 `example.com`，该位置重定向到新位置 `www.example.com` 就会导致错误 `The script resource is behind a redirect, which is disallowed`。
 
 To remedy this, you might need to deactivate the old worker using one of the above techniques ([Fail-safe](#fail-safe) or [Safety Worker](#safety-worker)).
+
+为了解决这个问题，你可能需要用上述技巧（[故障安全](#fail-safe)或[Safety Worker](#safety-worker)）之一移除老的 Worker。
 
 ## More on Angular service workers
 
@@ -492,7 +527,7 @@ You might also be interested in the following:
 
 * [Service Worker Configuration](guide/service-worker-config)
 
-  [Service Worker 配置](guide/service-worker-config)。
+  [Service Worker 配置](guide/service-worker-config)
 
 <!-- links -->
 

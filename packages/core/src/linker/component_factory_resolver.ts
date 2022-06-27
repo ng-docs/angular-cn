@@ -47,10 +47,17 @@ class _NullComponentFactoryResolver implements ComponentFactoryResolver {
  * [`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent)
  * does **not** require resolving component factory: component class can be used directly.
  *
- * @publicApi
+ * 注：从 v13
+ * 开始，通过[`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent)创建动态组件**不需要**解析组件工厂：组件类可以直接使用。
  *
- * @deprecated Angular no longer requires Component factories. Please use other APIs where
+ * @publicApi
+ * @deprecated
+ *
+ * Angular no longer requires Component factories. Please use other APIs where
  *     Component class can be used directly.
+ *
+ * Angular 不再需要组件工厂。请使用可以直接使用 Component 类的其他 API。
+ *
  */
 export abstract class ComponentFactoryResolver {
   static NULL: ComponentFactoryResolver = (/* @__PURE__ */ new _NullComponentFactoryResolver());

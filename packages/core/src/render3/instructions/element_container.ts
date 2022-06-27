@@ -49,14 +49,33 @@ function elementContainerStartFirstCreatePass(
  * Creates a logical container for other nodes (<ng-container>) backed by a comment node in the DOM.
  * The instruction must later be followed by `elementContainerEnd()` call.
  *
+ * 为其他节点创建逻辑容器 (<ng-container>) 由 DOM 中的注释节点支持。该指令稍后必须跟
+ * `elementContainerEnd()` 调用。
+ *
  * @param index Index of the element in the LView array
+ *
+ * LView 数组中元素的索引
+ *
  * @param attrsIndex Index of the container attributes in the `consts` array.
+ *
+ * 容器属性在 `consts` 数组中的索引。
+ *
  * @param localRefsIndex Index of the container's local references in the `consts` array.
- * @returns This function returns itself so that it may be chained.
+ *
+ * 容器的本地引用在 `consts` 数组中的索引。
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained.
+ *
+ * 此函数返回自己，以便它可以被链接。
  *
  * Even if this instruction accepts a set of attributes no actual attribute values are propagated to
  * the DOM (as a comment node can't have attributes). Attributes are here only for directive
  * matching purposes and setting initial inputs of directives.
+ *
+ * 即使此指令接受一组属性，也不会将实际的属性值传播到
+ * DOM（因为注释节点不能有属性）。属性在这里仅用于指令匹配和设置指令的初始输入。
  *
  * @codeGenApi
  */
@@ -99,7 +118,14 @@ export function ɵɵelementContainerStart(
 
 /**
  * Mark the end of the <ng-container>.
- * @returns This function returns itself so that it may be chained.
+ *
+ * 标记<ng-container>.
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained.
+ *
+ * 此函数返回自己，以便它可以被链接。
  *
  * @codeGenApi
  */
@@ -129,10 +155,25 @@ export function ɵɵelementContainerEnd(): typeof ɵɵelementContainerEnd {
  * Creates an empty logical container using {@link elementContainerStart}
  * and {@link elementContainerEnd}
  *
+ * 使用 {@link elementContainerStart} 和 {@link elementContainerEnd} 创建一个空的逻辑容器
+ *
  * @param index Index of the element in the LView array
+ *
+ * LView 数组中元素的索引
+ *
  * @param attrsIndex Index of the container attributes in the `consts` array.
+ *
+ * 容器属性在 `consts` 数组中的索引。
+ *
  * @param localRefsIndex Index of the container's local references in the `consts` array.
- * @returns This function returns itself so that it may be chained.
+ *
+ * 容器的本地引用在 `consts` 数组中的索引。
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained.
+ *
+ * 此函数返回自己，以便它可以被链接。
  *
  * @codeGenApi
  */

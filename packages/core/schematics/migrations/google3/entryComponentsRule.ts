@@ -12,7 +12,12 @@ import ts from 'typescript';
 import {migrateEntryComponentsUsages} from '../entry-components/util';
 
 
-/** TSLint rule that removes usages of `entryComponents`. */
+/**
+ * TSLint rule that removes usages of `entryComponents`.
+ *
+ * 删除 entryComponents 用法的 `entryComponents` 规则。
+ *
+ */
 export class Rule extends Rules.TypedRule {
   override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const typeChecker = program.getTypeChecker();

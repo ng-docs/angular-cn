@@ -45,11 +45,13 @@ const UNDEFINED = {};
  * 以下示例创建一个配置为创建 `Engine` 和 `Car` 的 `Injector`。
  *
  * ```typescript
- * @Injectable()
+ *
+ * ```
+ *
+ * @Injectable ()
  * class Engine {
  * }
- *
- * @Injectable()
+ * @Injectable ()
  * class Car {
  *   constructor(public engine:Engine) {}
  * }
@@ -64,11 +66,9 @@ const UNDEFINED = {};
  * resolve all of the object's dependencies automatically.
  *
  * TODO: delete in v14.
- *
  * @deprecated from v5 - slow and brings in a lot of code, Use `Injector.create` instead.
  *
  * 从 v5 开始 - 速度慢，并且引入了大量代码，请改用 `Injector.create` 。
- *
  * @publicApi
  */
 export abstract class ReflectiveInjector implements Injector {
@@ -89,11 +89,13 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   * @Injectable()
+   *
+   * ```
+   *
+   * @Injectable ()
    * class Engine {
    * }
-   *
-   * @Injectable()
+   * @Injectable ()
    * class Car {
    *   constructor(public engine:Engine) {}
    * }
@@ -110,7 +112,6 @@ export abstract class ReflectiveInjector implements Injector {
    * expect(providers[1].key.displayName).toBe("Engine");
    * });
    * ```
-   *
    */
   static resolve(providers: Provider[]): ResolvedReflectiveProvider[] {
     return resolveReflectiveProviders(providers);
@@ -133,11 +134,13 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   * @Injectable()
+   *
+   * ```
+   *
+   * @Injectable ()
    * class Engine {
    * }
-   *
-   * @Injectable()
+   * @Injectable ()
    * class Car {
    *   constructor(public engine:Engine) {}
    * }
@@ -167,11 +170,13 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   * @Injectable()
+   *
+   * ```
+   *
+   * @Injectable ()
    * class Engine {
    * }
-   *
-   * @Injectable()
+   * @Injectable ()
    * class Car {
    *   constructor(public engine:Engine) {}
    * }
@@ -281,11 +286,13 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   * @Injectable()
+   *
+   * ```
+   *
+   * @Injectable ()
    * class Engine {
    * }
-   *
-   * @Injectable()
+   * @Injectable ()
    * class Car {
    *   constructor(public engine:Engine) {}
    * }
@@ -315,11 +322,13 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   * @Injectable()
+   *
+   * ```
+   *
+   * @Injectable ()
    * class Engine {
    * }
-   *
-   * @Injectable()
+   * @Injectable ()
    * class Car {
    *   constructor(public engine:Engine) {}
    * }
@@ -348,6 +357,9 @@ export class ReflectiveInjector_ implements ReflectiveInjector {
   objs: any[];
   /**
    * Private
+   *
+   * 私人
+   *
    */
   constructor(_providers: ResolvedReflectiveProvider[], _parent?: Injector) {
     this._providers = _providers;

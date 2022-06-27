@@ -29,7 +29,12 @@ export class PathMatchTypeTransform {
       }
     }
   }
-  /** Records all changes that were made in the import manager. */
+  /**
+   * Records all changes that were made in the import manager.
+   *
+   * 记录在导入管理器中所做的所有更改。
+   *
+   */
   recordChanges() {
     this.importManager.recordChanges();
   }

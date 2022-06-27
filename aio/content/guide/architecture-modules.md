@@ -33,14 +33,19 @@ NgModule 是一个带有 `@NgModule()` 装饰器的类。`@NgModule()` 装饰器
 | :--------- | :------ |
 | 属性 | 详情 |
 | `declarations` | The [components](guide/architecture-components), *directives*, and *pipes* that belong to this NgModule. |
+| `declarations` | 那些属于本 NgModule 的[组件](guide/architecture-components)、*指令*、*管道*。 |
 | `exports` | The subset of declarations that should be visible and usable in the *component templates* of other NgModules. |
+| `exports` | 那些能在其它模块的*组件模板*中使用的可声明对象的子集。 |
 | `imports` | Other modules whose exported classes are needed by component templates declared in *this* NgModule. |
+| `imports` | 那些导出了*本*模块中的组件模板所需的类的其它模块。 |
 | `providers` | Creators of [services](guide/architecture-services) that this NgModule contributes to the global collection of services; they become accessible in all parts of the application. (You can also specify providers at the component level.) |
+| `providers` | 本模块向全局服务中贡献的那些[服务](guide/architecture-services)的创建器。这些服务能被本应用中的任何部分使用。（你也可以在组件级别指定服务提供者，这通常是首选方式。） |
 | `bootstrap` | The main application view, called the *root component*, which hosts all other application views. Only the *root NgModule* should set the `bootstrap` property. |
+| `bootstrap` | 应用的主视图，称为*根组件*。它是应用中所有其它视图的宿主。只有*根模块*才应该设置这个 `bootstrap` 属性。 |
 
 Here's a simple root NgModule definition.
 
-下面是一个简单的根 NgModule 定义：。
+下面是一个简单的根 NgModule 定义：
 
 <code-example header="src/app/app.module.ts" path="architecture/src/app/mini-app.ts" region="module"></code-example>
 
@@ -98,6 +103,9 @@ Views in the tree can be nested to any depth.
 **NOTE**: <br />
 The hierarchical structure of views is a key factor in the way Angular detects and responds to changes in the DOM and application data.
 
+**注意**：<br />
+视图的这种层次结构是 Angular 在 DOM 和应用数据中检测与响应变更时的关键因素。
+
 </div>
 
 ## NgModules and JavaScript modules
@@ -148,7 +156,7 @@ Angular 会作为一组 JavaScript 模块进行加载，你可以把它们看成
 
 For example, import Angular's `Component` decorator from the `@angular/core` library like this.
 
-例如，像下面这样，从 `@angular/core` 库中导入 Angular 的 `Component` 装饰器：。
+比如，像下面这样，从 `@angular/core` 库中导入 Angular 的 `Component` 装饰器：
 
 <code-example path="architecture/src/app/app.component.ts" region="import"></code-example>
 
@@ -163,7 +171,7 @@ In the example of the simple root module above, the application module needs mat
 `BrowserModule`.
 To access that material, add it to the `@NgModule` metadata `imports` like this.
 
-在上面这个简单的根模块范例中，应用的根模块需要来自 `BrowserModule` 中的素材。要访问这些素材，就要把它加入 `@NgModule` 元数据的 `imports` 中，代码如下：。
+在上面这个简单的根模块范例中，应用的根模块需要来自 `BrowserModule` 中的素材。要访问这些素材，就要把它加入 `@NgModule` 元数据的 `imports` 中，代码如下：
 
 <code-example path="architecture/src/app/mini-app.ts" region="ngmodule-imports"></code-example>
 

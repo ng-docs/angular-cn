@@ -12,25 +12,54 @@ import {ObjectAssignBuiltinFn} from './builtin';
 import {ResolvedValue} from './result';
 import {AssignHelperFn, ReadHelperFn, SpreadArrayHelperFn, SpreadHelperFn} from './ts_helpers';
 
-/** Resolved value for the JavaScript global `Object` declaration. */
+/**
+ * Resolved value for the JavaScript global `Object` declaration.
+ *
+ * JavaScript 全局 `Object` 声明的解析值。
+ *
+ */
 export const jsGlobalObjectValue = new Map([['assign', new ObjectAssignBuiltinFn()]]);
 
-/** Resolved value for the `__assign()` TypeScript helper declaration. */
+/**
+ * Resolved value for the `__assign()` TypeScript helper declaration.
+ *
+ * `__assign()` TypeScript 帮助器声明的解析值。
+ *
+ */
 const assignTsHelperFn = new AssignHelperFn();
 
-/** Resolved value for the `__spread()` and `__spreadArrays()` TypeScript helper declarations. */
+/**
+ * Resolved value for the `__spread()` and `__spreadArrays()` TypeScript helper declarations.
+ *
+ * `__spread()` 和 `__spreadArrays()` TypeScript 帮助器声明的解析值。
+ *
+ */
 const spreadTsHelperFn = new SpreadHelperFn();
 
-/** Resolved value for the `__spreadArray()` TypeScript helper declarations. */
+/**
+ * Resolved value for the `__spreadArray()` TypeScript helper declarations.
+ *
+ * `__spreadArray()` TypeScript 帮助器声明的解析值。
+ *
+ */
 const spreadArrayTsHelperFn = new SpreadArrayHelperFn();
 
-/** Resolved value for the `__read()` TypeScript helper declarations. */
+/**
+ * Resolved value for the `__read()` TypeScript helper declarations.
+ *
+ * `__read()` TypeScript 帮助器声明的解析值。
+ *
+ */
 const readTsHelperFn = new ReadHelperFn();
 
 /**
  * Resolves the specified known declaration to a resolved value. For example,
  * the known JavaScript global `Object` will resolve to a `Map` that provides the
  * `assign` method with a built-in function. This enables evaluation of `Object.assign`.
+ *
+ * 将指定的已知声明解析为解析的值。例如，已知的 JavaScript 全局 `Object` 将解析为 `Map` ，该 Map 为
+ * `assign` 方法提供了一个内置函数。这可以对 `Object.assign` 进行估算。
+ *
  */
 export function resolveKnownDeclaration(decl: KnownDeclaration): ResolvedValue {
   switch (decl) {

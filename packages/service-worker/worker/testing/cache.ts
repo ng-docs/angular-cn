@@ -187,13 +187,23 @@ export class MockCache {
     return dehydrated;
   }
 
-  /** Get the normalized URL from a `RequestInfo` value. */
+  /**
+   * Get the normalized URL from a `RequestInfo` value.
+   *
+   * 从 `RequestInfo` 值获取规范化 URL。
+   *
+   */
   private getRequestUrl(request: RequestInfo): string {
     const url = typeof request === 'string' ? request : request.url;
     return normalizeUrl(url, this.origin);
   }
 
-  /** remove the query/hash part from a url*/
+  /**
+   * remove the query/hash part from a url
+   *
+   * 从 url 中删除查询/哈希部分
+   *
+   */
   private stripQueryAndHash(url: string): string {
     return url.replace(/[?#].*/, '');
   }

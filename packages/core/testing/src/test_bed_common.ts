@@ -12,13 +12,28 @@ import {ComponentFixture} from './component_fixture';
 import {MetadataOverride} from './metadata_override';
 import {TestBed} from './test_bed';
 
-/** Whether test modules should be torn down by default. */
+/**
+ * Whether test modules should be torn down by default.
+ *
+ * 默认情况下是否应该拆除测试模块。
+ *
+ */
 export const TEARDOWN_TESTING_MODULE_ON_DESTROY_DEFAULT = true;
 
-/** Whether unknown elements in templates should throw by default. */
+/**
+ * Whether unknown elements in templates should throw by default.
+ *
+ * 默认情况下，模板中的未知元素是否应抛出。
+ *
+ */
 export const THROW_ON_UNKNOWN_ELEMENTS_DEFAULT = false;
 
-/** Whether unknown properties in templates should throw by default. */
+/**
+ * Whether unknown properties in templates should throw by default.
+ *
+ * 默认情况下，模板中的未知属性是否应抛出。
+ *
+ */
 export const THROW_ON_UNKNOWN_PROPERTIES_DEFAULT = false;
 
 /**
@@ -57,14 +72,28 @@ export interface TestModuleMetadata {
    * Whether NG0304 runtime errors should be thrown when unknown elements are present in component's
    * template. Defaults to `false`, where the error is simply logged. If set to `true`, the error is
    * thrown.
-   * @see https://angular.io/errors/NG8001 for the description of the problem and how to fix it
+   *
+   * 当组件的模板中存在未知元素时，是否应抛出 NG0304 运行时错误。默认为 `false`
+   * ，仅记录错误。如果设置为 `true` ，则抛出错误。
+   *
+   * @see <https://angular.io/errors/NG8001> for the description of the problem and how to fix it
+   *
+   * <https://angular.io/errors/NG8001>用于问题的描述以及如何解决它
+   *
    */
   errorOnUnknownElements?: boolean;
   /**
    * Whether errors should be thrown when unknown properties are present in component's template.
    * Defaults to `false`, where the error is simply logged.
    * If set to `true`, the error is thrown.
-   * @see https://angular.io/errors/NG8002 for the description of the error and how to fix it
+   *
+   * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
+   * ，则抛出错误。
+   *
+   * @see <https://angular.io/errors/NG8002> for the description of the error and how to fix it
+   *
+   * <https://angular.io/errors/NG8002>用于错误的描述以及如何解决它
+   *
    */
   errorOnUnknownProperties?: boolean;
 }
@@ -75,33 +104,63 @@ export interface TestModuleMetadata {
 export interface TestEnvironmentOptions {
   /**
    * Configures the test module teardown behavior in `TestBed`.
+   *
+   * 在 `TestBed` 中配置测试模块的拆卸行为。
+   *
    */
   teardown?: ModuleTeardownOptions;
   /**
    * Whether errors should be thrown when unknown elements are present in component's template.
    * Defaults to `false`, where the error is simply logged.
    * If set to `true`, the error is thrown.
-   * @see https://angular.io/errors/NG8001 for the description of the error and how to fix it
+   *
+   * 当组件的模板中存在未知元素时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
+   * ，则抛出错误。
+   *
+   * @see <https://angular.io/errors/NG8001> for the description of the error and how to fix it
+   *
+   * <https://angular.io/errors/NG8001>用于错误的描述以及如何解决它
+   *
    */
   errorOnUnknownElements?: boolean;
   /**
    * Whether errors should be thrown when unknown properties are present in component's template.
    * Defaults to `false`, where the error is simply logged.
    * If set to `true`, the error is thrown.
-   * @see https://angular.io/errors/NG8002 for the description of the error and how to fix it
+   *
+   * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
+   * ，则抛出错误。
+   *
+   * @see <https://angular.io/errors/NG8002> for the description of the error and how to fix it
+   *
+   * <https://angular.io/errors/NG8002>用于错误的描述以及如何解决它
+   *
    */
   errorOnUnknownProperties?: boolean;
 }
 
 /**
  * Configures the test module teardown behavior in `TestBed`.
+ *
+ * 在 `TestBed` 中配置测试模块的拆卸行为。
+ *
  * @publicApi
  */
 export interface ModuleTeardownOptions {
-  /** Whether the test module should be destroyed after every test. */
+  /**
+   * Whether the test module should be destroyed after every test.
+   *
+   * 是否在每次测试后销毁测试模块。
+   *
+   */
   destroyAfterEach: boolean;
 
-  /** Whether errors during test module destruction should be re-thrown. Defaults to `true`. */
+  /**
+   * Whether errors during test module destruction should be re-thrown. Defaults to `true`.
+   *
+   * 是否应该重新抛出测试模块销毁期间的错误。默认为 `true` 。
+   *
+   */
   rethrowErrors?: boolean;
 }
 
@@ -119,12 +178,21 @@ export interface TestBedStatic {
    * Initialize the environment for testing with a compiler factory, a PlatformRef, and an
    * angular module. These are common to every test in the suite.
    *
+   * 使用编译器工厂、PlatformRef 和 Angular
+   * 模块初始化用于测试的环境。这些在套件中的每个测试中都是通用的。
+   *
    * This may only be called once, to set up the common providers for the current test
    * suite on the current platform. If you absolutely need to change the providers,
    * first use `resetTestEnvironment`.
    *
+   * 这可能只会调用一次，以在当前平台上为当前测试套件设置通用提供者。如果你绝对需要更改提供者，请首先使用
+   * `resetTestEnvironment` 。
+   *
    * Test modules and platforms for individual platforms are available from
-   * '@angular/<platform_name>/testing'.
+   * '@angular/&lt;platform_name>/testing'.
+   *
+   * 单个平台的测试模块和平台可从 '@angular/&lt;platform_name>/testing' 获得。
+   *
    */
   initTestEnvironment(
       ngModule: Type<any>|Type<any>[], platform: PlatformRef,

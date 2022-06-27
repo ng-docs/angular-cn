@@ -16,10 +16,16 @@ import {noop} from '@angular/core/src/util/noop';
 
 /**
  * Fixture useful for testing operations which need `LView` / `TView`
+ *
+ * 夹具可用于测试需要 `LView` / `TView` 的操作
+ *
  */
 export class ViewFixture {
   /**
    * Clean up the `LFrame` stack between tests.
+   *
+   * 在测试之间清理 `LFrame` 堆栈。
+   *
    */
   static cleanUp() {
     while (!specOnlyIsInstructionStateEmpty()) {
@@ -29,6 +35,9 @@ export class ViewFixture {
 
   /**
    * DOM element which acts as a host to the `LView`.
+   *
+   * 作为 `LView` 的主机的 DOM 元素。
+   *
    */
   host: HTMLElement;
 
@@ -64,6 +73,10 @@ export class ViewFixture {
   /**
    * If you use `ViewFixture` and `enter()`, please add `afterEach(ViewFixture.cleanup);` to ensure
    * that he global `LFrame` stack gets cleaned up between the tests.
+   *
+   * 如果你使用 `ViewFixture` 并 `enter()` ，请添加 `afterEach(ViewFixture.cleanup);` 以确保他的全局
+   * `LFrame` 堆栈在测试之间被清理。
+   *
    */
   enterView() {
     enterView(this.lView);

@@ -7,6 +7,7 @@
  */
 
 import {Provider} from '@angular/core';
+
 import {NgClass} from './ng_class';
 import {NgComponentOutlet} from './ng_component_outlet';
 import {NgForOf, NgForOfContext} from './ng_for_of';
@@ -37,6 +38,9 @@ export {
 /**
  * A collection of Angular directives that are likely to be used in each and every Angular
  * application.
+ *
+ * 可能在每个 Angular 应用程序中使用的 Angular 指令的集合。
+ *
  */
 export const COMMON_DIRECTIVES: Provider[] = [
   NgClass,

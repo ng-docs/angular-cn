@@ -194,21 +194,38 @@ export interface IterableChangeRecord<V> {
  * A function optionally passed into the `NgForOf` directive to customize how `NgForOf` uniquely
  * identifies items in an iterable.
  *
+ * 一个可选地传入 `NgForOf` 指令的函数，以自定义 `NgForOf` 如何唯一标识迭代中的条目。
+ *
  * `NgForOf` needs to uniquely identify items in the iterable to correctly perform DOM updates
  * when items in the iterable are reordered, new items are added, or existing items are removed.
  *
+ * `NgForOf` 需要唯一标识 iterable 中的条目，以在对 iterable
+ * 中的条目重新排序、添加新条目或删除现有条目时正确执行 DOM 更新。
  *
  * In all of these scenarios it is usually desirable to only update the DOM elements associated
  * with the items affected by the change. This behavior is important to:
  *
+ * 在所有这些场景中，通常希望仅更新与受更改影响的条目关联的 DOM 元素。此行为对以下内容很重要：
+ *
  * - preserve any DOM-specific UI state (like cursor position, focus, text selection) when the
  *   iterable is modified
+ *
+ *   修改迭代器时保留任何特定于 DOM 的 UI 状态（例如光标位置、焦点、文本选择）
+ *
  * - enable animation of item addition, removal, and iterable reordering
+ *
+ *   启用条目添加、删除和可迭代重新排序的动画
+ *
  * - preserve the value of the `<select>` element when nested `<option>` elements are dynamically
  *   populated using `NgForOf` and the bound iterable is updated
  *
+ *   当使用 `NgForOf` 动态填充嵌套 `<option>` 元素并更新绑定迭代器时，保留 `<select>` 元素的值
+ *
  * A common use for custom `trackBy` functions is when the model that `NgForOf` iterates over
  * contains a property with a unique identifier. For example, given a model:
+ *
+ * 自定义 `trackBy` 函数的一个常见用途是当 `NgForOf`
+ * 迭代的模型包含具有唯一标识符的属性时。例如，给定一个模型：
  *
  * ```ts
  * class User {
@@ -217,7 +234,11 @@ export interface IterableChangeRecord<V> {
  *   ...
  * }
  * ```
+ *
  * a custom `trackBy` function could look like the following:
+ *
+ * 自定义 `trackBy` 函数可能类似于以下内容：
+ *
  * ```ts
  * function userTrackBy(index, user) {
  *   return user.id;
@@ -230,9 +251,17 @@ export interface IterableChangeRecord<V> {
  * ID 作为参数。提供后，Angular 将根据函数的返回值的变化进行跟踪。
  *
  * - be [idempotent](https://en.wikipedia.org/wiki/Idempotence) (be without side effects, and always
- * return the same value for a given input)
+ *   return the same value for a given input)
+ *
+ *   [幂等](https://en.wikipedia.org/wiki/Idempotence)（没有副作用，并且对于给定输入始终返回相同的值）
+ *
  * - return unique value for all unique inputs
+ *
+ *   返回所有唯一输入的唯一值
+ *
  * - be fast
+ *
+ *   快点
  *
  * @see [`NgForOf#ngForTrackBy`](api/common/NgForOf#ngForTrackBy)
  * @publicApi
@@ -246,7 +275,13 @@ export interface TrackByFunction<T> {
 
   /**
    * @param index The index of the item within the iterable.
+   *
+   * 可迭代项中条目的索引。
+   *
    * @param item The item in the iterable.
+   *
+   * 可迭代项中的项。
+   *
    */
   <U extends T>(index: number, item: T&U): any;
 }
@@ -322,7 +357,10 @@ export class IterableDiffers {
    * IterableDiffer} 可用的全部步骤。
    *
    * ```
-   * @Component({
+   *
+   * ```
+   *
+   * @Component ({
    *   viewProviders: [
    *     IterableDiffers.extend([new ImmutableListDiffer()])
    *   ]

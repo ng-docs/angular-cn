@@ -12,6 +12,9 @@ import {APP_INITIALIZER, ApplicationInitStatus, InjectionToken, Injector, Static
 /**
  * An id that identifies a particular application being bootstrapped, that should
  * match across the client/server boundary.
+ *
+ * 一个 id，用于标识正在被引导的特定应用程序，应该跨客户端/服务器边界匹配。
+ *
  */
 export const TRANSITION_ID = new InjectionToken('TRANSITION_ID');
 

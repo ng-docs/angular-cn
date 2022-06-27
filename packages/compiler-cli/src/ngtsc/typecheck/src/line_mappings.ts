@@ -11,7 +11,12 @@ const CR_CHAR = 13;
 const LINE_SEP_CHAR = 8232;
 const PARAGRAPH_CHAR = 8233;
 
-/** Gets the line and character for the given position from the line starts map. */
+/**
+ * Gets the line and character for the given position from the line starts map.
+ *
+ * 从行起始映射表中获取给定位置的行和字符。
+ *
+ */
 export function getLineAndCharacterFromPosition(lineStartsMap: number[], position: number) {
   const lineIndex = findClosestLineStartPosition(lineStartsMap, position);
   return {character: position - lineStartsMap[lineIndex], line: lineIndex};
@@ -20,6 +25,9 @@ export function getLineAndCharacterFromPosition(lineStartsMap: number[], positio
 /**
  * Computes the line start map of the given text. This can be used in order to
  * retrieve the line and character of a given text position index.
+ *
+ * 计算给定文本的行开始映射。这可用于检索给定文本位置索引的行和字符。
+ *
  */
 export function computeLineStartsMap(text: string): number[] {
   const result: number[] = [0];
@@ -41,7 +49,12 @@ export function computeLineStartsMap(text: string): number[] {
   return result;
 }
 
-/** Finds the closest line start for the given position. */
+/**
+ * Finds the closest line start for the given position.
+ *
+ * 查找给定位置的最近的行起点。
+ *
+ */
 function findClosestLineStartPosition<T>(
     linesMap: T[], position: T, low = 0, high = linesMap.length - 1) {
   while (low <= high) {

@@ -14,14 +14,20 @@ import {NgElementStrategy, NgElementStrategyEvent, NgElementStrategyFactory} fro
 import {extractProjectableNodes} from './extract-projectable-nodes';
 import {isFunction, scheduler, strictEquals} from './utils';
 
-/** Time in milliseconds to wait before destroying the component ref when disconnected. */
+/**
+ * Time in milliseconds to wait before destroying the component ref when disconnected.
+ *
+ * 断开连接时销毁组件 ref 之前要等待的时间（以毫秒为单位）。
+ *
+ */
 const DESTROY_DELAY = 10;
 
 /**
  * Factory that creates new ComponentNgElementStrategy instance. Gets the component factory with the
  * constructor's injector's factory resolver and passes that factory to each strategy.
  *
- * 本工厂用来创建新的 ComponentNgElementStrategy 实例。使用构造函数的注入器的工厂解析器来获取组件工厂，并将该工厂传递给每个策略。
+ * 本工厂用来创建新的 ComponentNgElementStrategy
+ * 实例。使用构造函数的注入器的工厂解析器来获取组件工厂，并将该工厂传递给每个策略。
  *
  * @publicApi
  */
@@ -78,7 +84,8 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Changes that have been made to component inputs since the last change detection run.
    * (NOTE: These are only recorded if the component implements the `OnChanges` interface.)
    *
-   * 自上次变更检测运行以来，对组件输入进行的更改。（注意：仅当组件实现了 `OnChanges` 接口时才需要记录这些内容。）
+   * 自上次变更检测运行以来，对组件输入进行的更改。（注意：仅当组件实现了 `OnChanges`
+   * 接口时才需要记录这些内容。）
    *
    */
   private inputChanges: SimpleChanges|null = null;
@@ -128,7 +135,8 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * fired.
    * (This helps detect the first change of an input, even if it is explicitly set to `undefined`.)
    *
-   * 尚未更改的组件输入属性集，也就是尚未触发 `recordInputChange()`（这有助于检测输入的首次更改，即使将其显式设置为 `undefined` 也算。）
+   * 尚未更改的组件输入属性集，也就是尚未触发
+   * `recordInputChange()`（这有助于检测输入的首次更改，即使将其显式设置为 `undefined` 也算。）
    *
    */
   private readonly unchangedInputs =
@@ -334,7 +342,8 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Marks the component view for check, if necessary.
    * (NOTE: This is required when the `ChangeDetectionStrategy` is set to `OnPush`.)
    *
-   * 如有必要，将组件视图标记为要检查。 （注意：当把 `ChangeDetectionStrategy` 设为 `OnPush` 时，这是必需的。）
+   * 如有必要，将组件视图标记为要检查。 （注意：当把 `ChangeDetectionStrategy` 设为 `OnPush`
+   * 时，这是必需的。）
    *
    */
   protected markViewForCheck(viewChangeDetectorRef: ChangeDetectorRef): void {

@@ -37,6 +37,10 @@ const REGISTRY = new DomElementSchemaRegistry();
  * Primary template type-checking engine, which performs type-checking using a
  * `TypeCheckingProgramStrategy` for type-checking program maintenance, and the
  * `ProgramTypeCheckAdapter` for generation of template type-checking code.
+ *
+ * 主要的模板类型检查引擎，它使用 `TypeCheckingProgramStrategy`
+ * 执行类型检查以进行类型检查程序维护，并使用 `ProgramTypeCheckAdapter` 来生成模板类型检查代码。
+ *
  */
 export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
   private state = new Map<AbsoluteFsPath, FileTypeCheckingData>();
@@ -44,26 +48,44 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
   /**
    * Stores the `CompletionEngine` which powers autocompletion for each component class.
    *
+   * 存储为每个组件类提供自动完成的 `CompletionEngine` 。
+   *
    * Must be invalidated whenever the component's template or the `ts.Program` changes. Invalidation
    * on template changes is performed within this `TemplateTypeCheckerImpl` instance. When the
    * `ts.Program` changes, the `TemplateTypeCheckerImpl` as a whole is destroyed and replaced.
+   *
+   * 每当组件的模板或 `ts.Program` 更改时都必须失效。模板更改的无效是在此 `TemplateTypeCheckerImpl`
+   * 实例中执行的。当 `ts.Program` 更改时， `TemplateTypeCheckerImpl` 作为一个整体被销毁和替换。
+   *
    */
   private completionCache = new Map<ts.ClassDeclaration, CompletionEngine>();
   /**
    * Stores the `SymbolBuilder` which creates symbols for each component class.
    *
+   * 存储为每个组件类创建符号的 `SymbolBuilder` 。
+   *
    * Must be invalidated whenever the component's template or the `ts.Program` changes. Invalidation
    * on template changes is performed within this `TemplateTypeCheckerImpl` instance. When the
    * `ts.Program` changes, the `TemplateTypeCheckerImpl` as a whole is destroyed and replaced.
+   *
+   * 每当组件的模板或 `ts.Program` 更改时都必须失效。模板更改的无效是在此 `TemplateTypeCheckerImpl`
+   * 实例中执行的。当 `ts.Program` 更改时， `TemplateTypeCheckerImpl` 作为一个整体被销毁和替换。
+   *
    */
   private symbolBuilderCache = new Map<ts.ClassDeclaration, SymbolBuilder>();
 
   /**
    * Stores directives and pipes that are in scope for each component.
    *
+   * 存储每个组件范围内的指令和管道。
+   *
    * Unlike other caches, the scope of a component is not affected by its template. It will be
    * destroyed when the `ts.Program` changes and the `TemplateTypeCheckerImpl` as a whole is
    * destroyed and replaced.
+   *
+   * 与其他缓存不同，组件的范围不受其模板的影响。当 `ts.Program` 更改并且 `TemplateTypeCheckerImpl`
+   * 整体被销毁和替换时，它将被销毁。
+   *
    */
   private scopeCache = new Map<ts.ClassDeclaration, ScopeData>();
 
@@ -71,9 +93,15 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
    * Stores potential element tags for each component (a union of DOM tags as well as directive
    * tags).
    *
+   * 存储每个组件的潜在元素标签（ DOM 标签以及指令标签的联合）。
+   *
    * Unlike other caches, the scope of a component is not affected by its template. It will be
    * destroyed when the `ts.Program` changes and the `TemplateTypeCheckerImpl` as a whole is
    * destroyed and replaced.
+   *
+   * 与其他缓存不同，组件的范围不受其模板的影响。当 `ts.Program` 更改并且 `TemplateTypeCheckerImpl`
+   * 整体被销毁和替换时，它将被销毁。
+   *
    */
   private elementTagCache = new Map<ts.ClassDeclaration, Map<string, DirectiveInScope|null>>();
 
@@ -201,6 +229,9 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
   /**
    * Retrieve type-checking and template parse diagnostics from the given `ts.SourceFile` using the
    * most recent type-checking program.
+   *
+   * 使用最新的类型检查程序从给定的 `ts.SourceFile` 中检索类型检查和模板解析诊断。
+   *
    */
   getDiagnosticsForFile(sf: ts.SourceFile, optimizeFor: OptimizeFor): ts.Diagnostic[] {
     switch (optimizeFor) {
@@ -477,8 +508,13 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
   /**
    * Remove any shim data that depends on inline operations applied to the type-checking program.
    *
+   * 删除任何依赖于应用于类型检查程序的内联操作的 shim 数据。
+   *
    * This can be useful if new inlines need to be applied, and it's not possible to guarantee that
    * they won't overwrite or corrupt existing inlines that are used by such shims.
+   *
+   * 如果需要应用新的内联，这会很有用，并且无法保证它们不会覆盖或损坏此类 shim 使用的现有内联。
+   *
    */
   clearAllShimDataUsingInlines(): void {
     for (const fileData of this.state.values()) {
@@ -692,37 +728,57 @@ function convertDiagnostic(
 /**
  * Data for template type-checking related to a specific input file in the user's program (which
  * contains components to be checked).
+ *
+ * 与用户程序中的特定输入文件（包含要检查的组件）相关的模板类型检查的数据。
+ *
  */
 export interface FileTypeCheckingData {
   /**
    * Whether the type-checking shim required any inline changes to the original file, which affects
    * whether the shim can be reused.
+   *
+   * 类型检查 shim 是否需要对原始文件进行任何内联更改，这会影响 shim 是否可以重用。
+   *
    */
   hasInlines: boolean;
 
   /**
    * Source mapping information for mapping diagnostics from inlined type check blocks back to the
    * original template.
+   *
+   * 用于将诊断从内联类型检查块映射回原始模板的源映射信息。
+   *
    */
   sourceManager: TemplateSourceManager;
 
   /**
    * Data for each shim generated from this input file.
    *
+   * 从此输入文件生成的每个 shim 的数据。
+   *
    * A single input file will generate one or more shim files that actually contain template
    * type-checking code.
+   *
+   * 单个输入文件将生成一个或多个实际包含模板类型检查代码的 shim 文件。
+   *
    */
   shimData: Map<AbsoluteFsPath, ShimTypeCheckingData>;
 
   /**
    * Whether the template type-checker is certain that all components from this input file have had
    * type-checking code generated into shims.
+   *
+   * 模板类型检查器是否确定此输入文件中的所有组件都有类型检查代码生成到 shims 中。
+   *
    */
   isComplete: boolean;
 }
 
 /**
  * Drives a `TypeCheckContext` to generate type-checking code for every component in the program.
+ *
+ * 驱动 `TypeCheckContext` 为程序中的每个组件生成类型检查代码。
+ *
  */
 class WholeProgramTypeCheckingHost implements TypeCheckingHost {
   constructor(private impl: TemplateTypeCheckerImpl) {}
@@ -754,6 +810,9 @@ class WholeProgramTypeCheckingHost implements TypeCheckingHost {
 
 /**
  * Drives a `TypeCheckContext` to generate type-checking code efficiently for a single input file.
+ *
+ * 驱动 `TypeCheckContext` 为单个输入文件高效地生成类型检查代码。
+ *
  */
 class SingleFileTypeCheckingHost implements TypeCheckingHost {
   private seenInlines = false;
@@ -813,6 +872,9 @@ class SingleFileTypeCheckingHost implements TypeCheckingHost {
 /**
  * Drives a `TypeCheckContext` to generate type-checking code efficiently for only those components
  * which map to a single shim of a single input file.
+ *
+ * 驱动 `TypeCheckContext` 以仅为映射到单个输入文件的单个 shim 的那些组件高效地生成类型检查代码。
+ *
  */
 class SingleShimTypeCheckingHost extends SingleFileTypeCheckingHost {
   constructor(
@@ -839,6 +901,9 @@ class SingleShimTypeCheckingHost extends SingleFileTypeCheckingHost {
 
 /**
  * Cached scope information for a component.
+ *
+ * 组件的缓存范围信息。
+ *
  */
 interface ScopeData {
   directives: DirectiveInScope[];

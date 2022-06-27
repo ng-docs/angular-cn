@@ -25,6 +25,8 @@ export interface TsConfigOptions {
  * Creates a tsconfig based on the default tsconfig
  * to adjust paths, ...
  *
+ * 根据默认 tsconfig 创建一个 tsconfig 以调整路径，...
+ *
  * @param options
  */
 export function createTsConfig(options: TsConfigOptions) {

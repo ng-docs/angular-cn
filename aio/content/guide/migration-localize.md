@@ -41,7 +41,7 @@ The symbol is loaded by importing the `@angular/localize/init` module, which has
 
 ## Why is this migration necessary?
 
-## 为何这次迁移必不可少？
+## 为何这次迁移是必须的？
 
 Prior to Angular version 9, Angular's internationalization (i18n) system inlined translated messages into the compiled output as part of this template compilation.
 This approach required running the template compiler once per target locale, often leading to slow production build times.
@@ -58,6 +58,8 @@ The post-compilation inlining step is optional —for example during development
 Therefore this global `$localize` must be available on the global scope at runtime.
 To make `$localize` available on the global scope, each application must now import the `@angular/localize/init` module.
 This has the side-effect of attaching a minimal implementation of `&dollar;localize` to the global scope.
+
+编译后的内联步骤是可选的 - 比如在开发过程中，或者运行期内联时。因此，这个 `$localize` 在运行时必须在全局范围内可用。为了让全局范围内的 `$localize` 可用，每个应用程序现在都必须导入 `@angular/localize/init` 模块。这就是把 `$localize` 的一个最小实现附加到全局范围带来的副作用。
 
 If this import is missing, you will see an error message like this:
 

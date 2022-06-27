@@ -6,15 +6,21 @@ Many forms, such as questionnaires, can be very similar to one another in format
 To make it faster and easier to generate different versions of such a form, you can create a *dynamic form template* based on metadata that describes the business object model.
 Then, use the template to generate new forms automatically, according to changes in the data model.
 
+许多表单（比如问卷）可能在格式和意图上都非常相似。为了更快更轻松地生成这种表单的不同版本，你可以根据描述业务对象模型的元数据来创建*动态表单模板*。然后就可以根据数据模型中的变化，使用该模板自动生成新的表单。
+
 The technique is particularly useful when you have a type of form whose content must change frequently to meet rapidly changing business and regulatory requirements.
 A typical use-case is a questionnaire.
 You might need to get input from users in different contexts.
 The format and style of the forms a user sees should remain constant, while the actual questions you need to ask vary with the context.
 
+如果你有这样一种表单，其内容必须经常更改以满足快速变化的业务需求和监管需求，该技术就特别有用。一个典型的例子就是问卷。你可能需要在不同的上下文中获取用户的意见。用户要看到的表单格式和样式应该保持不变，而你要提的实际问题则会因上下文而异。
+
 In this tutorial you will build a dynamic form that presents a basic questionnaire.
 You build an online application for heroes seeking employment.
 The agency is constantly tinkering with the application process, but by using the dynamic form
 you can create the new forms on the fly without changing the application code.
+
+在本教程中，你会构建一个渲染基本问卷的动态表单。你要为正在找工作的英雄们建立一个在线应用。英雄管理局会不断修补应用流程，但是借助动态表单，你可以动态创建新的表单，而无需修改应用代码。
 
 The tutorial walks you through the following steps.
 
@@ -49,11 +55,13 @@ The basic version can evolve to support a richer variety of questions, more grac
 
 See the <live-example name="dynamic-form"></live-example>.
 
+参阅 <live-example name="dynamic-form"></live-example>。
+
 </div>
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Before doing this tutorial, you should have a basic understanding to the following.
 
@@ -61,15 +69,15 @@ Before doing this tutorial, you should have a basic understanding to the followi
 
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language") and HTML5 programming
 
-  [TypeScript](https://www.typescriptlang.org/ "TypeScript 语言") 和 HTML5 编程。
+  [TypeScript](https://www.typescriptlang.org/ "TypeScript 语言")和 HTML5 编程
 
 * Fundamental concepts of [Angular app design](guide/architecture "Introduction to Angular app-design concepts")
 
-  [Angular 应用设计](guide/architecture "Angular 应用设计概念简介")的基本概念。
+  [Angular 应用设计](guide/architecture "Angular 应用设计概念简介")的基本概念
 
 * Basic knowledge of [reactive forms](guide/reactive-forms "Reactive forms guide")
 
-  [响应式表单](guide/reactive-forms "反应表单指南")的基础知识。
+  [响应式表单](guide/reactive-forms "反应表单指南")的基础知识
 
 ## Enable reactive forms for your project
 
@@ -78,7 +86,7 @@ Before doing this tutorial, you should have a basic understanding to the followi
 Dynamic forms are based on reactive forms.
 To give the application access reactive forms directives, the [root module](guide/bootstrapping "Learn about bootstrapping an app from the root module.") imports `ReactiveFormsModule` from the `@angular/forms` library.
 
-动态表单是基于响应式表单的。为了让应用访问响应式表达式指令，[根模块会](guide/bootstrapping "要学习如何从根模块启动一个应用。")从 `@angular/forms` 库中导入 `ReactiveFormsModule`。
+动态表单是基于响应式表单的。为了让应用访问响应式表达式指令，[根模块](guide/bootstrapping "要学习如何从根模块启动一个应用。")会从 `@angular/forms` 库中导入 `ReactiveFormsModule`。
 
 The following code from the example shows the setup in the root module.
 
@@ -122,9 +130,11 @@ When you create the form template in the next step, you instantiate these specif
 
 | Control type | Details |
 | :----------- | :------ |
-| Control type | 详情 |
+| 控制类型 | 详细信息 |
 | `TextboxQuestion` control type | Presents a question and lets users enter input. <code-example header="src/app/question-textbox.ts" path="dynamic-form/src/app/question-textbox.ts"></code-example> The `TextboxQuestion` control type is represented in a form template using an `<input>` element. The `type` attribute of the element is defined based on the `type` field specified in the `options` argument (for example `text`, `email`, `url`). |
+| `TextboxQuestion` 控件类型 | 表示问题并让用户输入。<code-example header="src/app/question-textbox.ts" path="dynamic-form/src/app/question-textbox.ts"></code-example>  `TextboxQuestion` 控件类型将使用 `<input>` 元素表示在表单模板中。该元素的 `type` 属性将根据 `options` 参数中指定的 `type` 字段定义（比如 `text`，`email`，`url` ）。 |
 | `DropdownQuestion` control type | Presents a list of choices in a select box. <code-example header="src/app/question-dropdown.ts" path="dynamic-form/src/app/question-dropdown.ts"></code-example> |
+| `DropdownQuestion` 控件类型 | 表示在选择框中的一个选项列表。<code-example header="src/app/question-dropdown.ts" path="dynamic-form/src/app/question-dropdown.ts"></code-example> |
 
 ### Compose form groups
 
@@ -248,14 +258,15 @@ The following figure shows the final form.
 
 ## Next steps
 
-## 下一步
+## 后续步骤
 
 | Steps | Details |
 | :---- | :------ |
-| Steps | 详情 |
+| 步骤 | 详细信息 |
 | Different types of forms and control collection | This tutorial shows how to build a questionaire, which is just one kind of dynamic form. The example uses `FormGroup` to collect a set of controls. For an example of a different type of dynamic form, see the section [Creating dynamic forms](guide/reactive-forms#creating-dynamic-forms "Create dynamic forms with arrays") in the Reactive Forms guide. That example also shows how to use `FormArray` instead of `FormGroup` to collect a set of controls. |
-| Different types of forms and control collection | 本教程展示了如何构建一个问卷，它只是一种动态表单。这个例子使用 `FormGroup` 来收集一组控件。关于不同类型动态表单的范例，请参阅在响应式表单中的[创建动态表单](guide/reactive-forms#creating-dynamic-forms "用数组创建动态表单")一节。那个例子还展示了如何使用 `FormArray` 而不是 `FormGroup` 来收集一组控件。 |
+| 不同类型的表单和控件集合 | 本教程展示了如何构建一个问卷，它只是一种动态表单。这个例子使用 `FormGroup` 来收集一组控件。关于不同类型动态表单的范例，参阅在响应式表单中的[创建动态表单](guide/reactive-forms#creating-dynamic-forms "用数组创建动态表单")一节。那个例子还展示了如何使用 `FormArray` 而不是 `FormGroup` 来收集一组控件。 |
 | Validating user input | The section [Validating form input](guide/reactive-forms#validating-form-input "Basic input validation") introduces the basics of how input validation works in reactive forms. <br /> The [Form validation guide](guide/form-validation "Form validation guide") covers the topic in more depth. |
+| 验证用户输入 | [验证表单输入](guide/reactive-forms#validating-form-input "基本输入验证")部分介绍了如何在响应式表单中进行输入验证的基础知识。<br />[表单验证指南](guide/form-validation "表单验证指南")更深入地介绍了该主题。 |
 
 <!-- links -->
 

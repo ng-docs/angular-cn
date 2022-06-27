@@ -17,16 +17,17 @@ import {InternalFormsSharedModule, NG_MODEL_WITH_FORM_CONTROL_WARNING, REACTIVE_
  * 导出模板驱动表单所需的提供者和指令，使其可用于导入了该模块的 NgModule 中。
  *
  * Providers associated with this module:
+ *
+ * 与此模块关联的提供者：
+ *
  * * `RadioControlRegistry`
  *
  * @see [Forms Overview](/guide/forms-overview)
  *
  * [表单总览](/guide/forms-overview)
- *
  * @see [Template-driven Forms Guide](/guide/forms)
  *
  * [模板驱动表单指南](/guide/forms)
- *
  * @publicApi
  */
 @NgModule({
@@ -43,17 +44,19 @@ export class FormsModule {
  * 导出响应式表单所需的基础设施和指令，使其能用于任何导入了本模块的 NgModule 中。
  *
  * Providers associated with this module:
+ *
+ * 与此模块关联的提供者：
+ *
  * * `FormBuilder`
+ *
  * * `RadioControlRegistry`
  *
  * @see [Forms Overview](guide/forms-overview)
  *
  * [表单概览](guide/forms-overview)
- *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单](/guide/reactive-forms)
- *
  * @publicApi
  */
 @NgModule({
@@ -66,15 +69,15 @@ export class ReactiveFormsModule {
    * Provides options for configuring the reactive forms module.
    *
    * 提供了一些选项，供配置响应式表单模块。
-   *
    * @param opts An object of configuration options
    *
    * 一个配置选项对象
    *
    * * `warnOnNgModelWithFormControl` Configures when to emit a warning when an `ngModel`
-   * binding is used with reactive form directives.
+   *   binding is used with reactive form directives.
    *
-   *   `warnOnNgModelWithFormControl` 配置了当 `ngModel` 绑定与响应式表单指令一起使用时，发出警告的时机。
+   *     `warnOnNgModelWithFormControl` 配置了当 `ngModel`
+   * 绑定与响应式表单指令一起使用时，发出警告的时机。
    *
    */
   static withConfig(opts: {
@@ -83,7 +86,8 @@ export class ReactiveFormsModule {
      *
      * 从 v6 开始
      *
-     */ warnOnNgModelWithFormControl: 'never'|'once'|'always'
+     */
+    warnOnNgModelWithFormControl: 'never'|'once'|'always'
   }): ModuleWithProviders<ReactiveFormsModule> {
     return {
       ngModule: ReactiveFormsModule,

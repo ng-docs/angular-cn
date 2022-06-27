@@ -13,11 +13,11 @@ This tutorial introduces you to the essentials of Angular by walking you through
 To help you get started right away, this tutorial uses a ready-made application that you can examine and modify interactively on [StackBlitz](https://stackblitz.com) —without having to [set up a local work environment](guide/setup-local "Setup guide").
 StackBlitz is a browser-based development environment where you can create, save, and share projects using a variety of technologies.
 
-为了帮助你更好地起步，本教程提供了一个已完成的应用，你可以在 [Stackblitz](https://stackblitz.com/) 上试验及互动，而不用[建立本地开发环境](guide/setup-local "Setup guide")。 StackBlitz 是一个基于浏览器的开发环境，你可以在其中使用各种技术来创建、保存和共享项目。
+为了帮助你更好地起步，本教程提供了一个已完成的应用，你可以在 [Stackblitz](https://stackblitz.com) 上试验及互动，而不用[建立本地开发环境](guide/setup-local "Setup guide")。 StackBlitz 是一个基于浏览器的开发环境，你可以在其中使用各种技术来创建、保存和共享项目。
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To get the most out of this tutorial you should already have a basic understanding of the following.
 
@@ -25,9 +25,13 @@ To get the most out of this tutorial you should already have a basic understandi
 
 * [HTML](https://developer.mozilla.org/docs/Learn/HTML "Learning HTML: Guides and tutorials")
 
+  [HTML](https://developer.mozilla.org/docs/Learn/HTML "学习 HTML：指南和教程")
+
 * [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript "JavaScript")
 
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language")
+
+  [打字稿](https://www.typescriptlang.org/ "TypeScript 语言")
 
 <a id="components"></a>
 
@@ -48,8 +52,11 @@ A component consists of three things:
 | :-- | :------ |
 |  | 详情 |
 | A component class | Handles data and functionality. |
+| 组件类 | 处理数据和功能。 |
 | An HTML template | Determines the UI. |
+| HTML 模板 | 决定 UI。 |
 | Component-specific styles | Define the look and feel. |
+| 组件专属样式 | 定义外观和感觉。 |
 
 This guide demonstrates building an application with the following components.
 
@@ -57,11 +64,15 @@ This guide demonstrates building an application with the following components.
 
 | Components | Details |
 | :--------- | :------ |
-| Components | 详情 |
+| 组件 | 详情 |
 | `<app-root>` | The first component to load and the container for the other components. |
+| `<app-root>` | 第一个加载的组件，并且是其他组件的容器。 |
 | `<app-top-bar>` | The store name and checkout button. |
+| `<app-top-bar>` | 商店名称和结帐按钮。 |
 | `<app-product-list>` | The product list. |
+| `<app-product-list>` | 产品列表。 |
 | `<app-product-alerts>` | A component that contains the application's alerts. |
+| `<app-product-alerts>` | 包含应用中各种通知的组件。 |
 
 <div class="lightbox">
 
@@ -81,6 +92,8 @@ For more information about components, see [Introduction to Components](guide/ar
 
 To create the sample project, generate the <live-example name="getting-started-v0" noDownload>ready-made sample project in StackBlitz</live-example>.
 To save your work:
+
+要创建范例项目，请<live-example name="getting-started-v0" noDownload>在 StackBlitz 中生成一个预置的范例项目</live-example> 。要保存你的工作，请执行以下操作：
 
 1. Log into StackBlitz.
 
@@ -107,7 +120,11 @@ The preview features two areas:
 
 * A top bar with the store name, `My Store`, and a checkout button
 
+  带有商店名称（`My Store`）和结账按钮的顶部栏
+
 * A header for a product list, `Products`
+
+  产品列表(`Products`)及其标题
 
 <div class="lightbox">
 
@@ -126,7 +143,7 @@ The files you use throughout the tutorial are in the `src` folder.
 
 For more information on how to use StackBlitz, see the [StackBlitz documentation](https://developer.stackblitz.com/docs/platform).
 
-有关如何使用 StackBlitz 的更多信息，请参见 [StackBlitz 的文档](https://developer.stackblitz.com/docs/platform/)。
+有关如何使用 StackBlitz 的更多信息，请参见 [StackBlitz 的文档](https://developer.stackblitz.com/docs/platform)。
 
 <a id="product-list"></a>
 
@@ -445,7 +462,7 @@ For more information on communication between components, see [Component Interac
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 In this section, you've created an application that iterates through data and features components that communicate with each other.
 

@@ -26,14 +26,24 @@ export class TslintUpdateRecorder implements UpdateRecorder {
         this.ruleName, new Replacement(oldNode.name.getEnd(), 0, newText)));
   }
 
-  /** Adds the specified import to the source file at the given position */
+  /**
+   * Adds the specified import to the source file at the given position
+   *
+   * 将指定的导入添加到给定位置的源文件
+   *
+   */
   addNewImport(start: number, importText: string) {
     this.failures.push(new RuleFailure(
         this.sourceFile, start, 0, `Source file needs to have import: "${importText}"`,
         this.ruleName, Replacement.appendText(start, importText)));
   }
 
-  /** Updates existing named imports to the given new named imports. */
+  /**
+   * Updates existing named imports to the given new named imports.
+   *
+   * 将现有的命名导入更新为给定的新命名导入。
+   *
+   */
   updateExistingImport(namedBindings: ts.NamedImports, newNamedBindings: string): void {
     this.failures.push(new RuleFailure(
         this.sourceFile, namedBindings.getStart(), 0,

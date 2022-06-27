@@ -7,9 +7,15 @@
  */
 
 import ts from 'typescript';
+
 import {getBaseTypeIdentifiers} from './class_declaration';
 
-/** Gets all base class declarations of the specified class declaration. */
+/**
+ * Gets all base class declarations of the specified class declaration.
+ *
+ * 获取指定类声明的所有基类声明。
+ *
+ */
 export function findBaseClassDeclarations(node: ts.ClassDeclaration, typeChecker: ts.TypeChecker) {
   const result: {identifier: ts.Identifier, node: ts.ClassDeclaration}[] = [];
   let currentClass = node;

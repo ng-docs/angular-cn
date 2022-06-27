@@ -26,14 +26,29 @@ import {getOrCreateLViewCleanup, getOrCreateTViewCleanup, handleError, loadCompo
 /**
  * Adds an event listener to the current node.
  *
+ * 向当前节点添加事件侦听器。
+ *
  * If an output exists on one of the node's directives, it also subscribes to the output
  * and saves the subscription for later cleanup.
  *
+ * 如果节点的指令之一存在输出，它还会订阅输出并保存订阅以供以后清理。
+ *
  * @param eventName Name of the event
+ *
+ * 事件名称
+ *
  * @param listenerFn The function to be called when event emits
+ *
+ * 事件发出时要调用的函数
+ *
  * @param useCapture Whether or not to use capture in event listener
+ *
+ * 是否在事件侦听器中使用捕获
+ *
  * @param eventTargetResolver Function that returns global target information in case this listener
  * should be attached to a global object like window, document or body
+ *
+ * 返回全局目标信息的函数，以防此侦听器应该附加到全局对象，例如窗口、文档或正文
  *
  * @codeGenApi
  */
@@ -52,6 +67,8 @@ export function ɵɵlistener(
 /**
  * Registers a synthetic host listener (e.g. `(@foo.start)`) on a component or directive.
  *
+ * 在组件或指令上注册合成主机侦听器（例如 `(@foo.start)` ）。
+ *
  * This instruction is for compatibility purposes and is designed to ensure that a
  * synthetic host listener (e.g. `@HostListener('@foo.start')`) properly gets rendered
  * in the component's renderer. Normally all host listeners are evaluated with the
@@ -59,14 +76,32 @@ export function ɵɵlistener(
  * to be evaluated with the sub component's renderer (because that's where the
  * animation triggers are defined).
  *
+ * 本操作指南是出于兼容性目的，旨在确保合成主机侦听器（例如 `@HostListener('@foo.start')`
+ * ）在组件的渲染器中正确呈现。通常，所有主机侦听器都使用父组件的渲染器进行估算，但是，对于动画 @triggers
+ * ，它们需要使用子组件的渲染器进行估算（因为这是定义动画触发器的地方）。
+ *
  * Do not use this instruction as a replacement for `listener`. This instruction
  * only exists to ensure compatibility with the ViewEngine's host binding behavior.
  *
+ * 不要使用此指令作为 `listener` 的替代。本操作指南的存在只是为了确保与 ViewEngine
+ * 的主机绑定行为兼容。
+ *
  * @param eventName Name of the event
+ *
+ * 事件名称
+ *
  * @param listenerFn The function to be called when event emits
+ *
+ * 事件发出时要调用的函数
+ *
  * @param useCapture Whether or not to use capture in event listener
+ *
+ * 是否在事件侦听器中使用捕获
+ *
  * @param eventTargetResolver Function that returns global target information in case this listener
  * should be attached to a global object like window, document or body
+ *
+ * 返回全局目标信息的函数，以防此侦听器应该附加到全局对象，例如窗口、文档或正文
  *
  * @codeGenApi
  */
@@ -85,6 +120,10 @@ export function ɵɵsyntheticHostListener(
  * A utility function that checks if a given element has already an event handler registered for an
  * event with a specified name. The TView.cleanup data structure is used to find out which events
  * are registered for a given element.
+ *
+ * 一种工具函数，它会检查给定元素是否已经为具有指定名称的事件注册了事件处理程序。 TView.cleanup
+ * 数据结构用于找出为给定元素注册的事件。
+ *
  */
 function findExistingListener(
     tView: TView, lView: LView, eventName: string, tNodeIdx: number): ((e?: any) => any)|null {
@@ -243,11 +282,25 @@ function executeListenerWithErrorHandling(
  * Wraps an event listener with a function that marks ancestors dirty and prevents default behavior,
  * if applicable.
  *
+ * 使用将祖先标记为脏并防止默认行为的函数包装事件侦听器（如果适用）。
+ *
  * @param tNode The TNode associated with this listener
+ *
+ * 与此侦听器关联的 TNode
+ *
  * @param lView The LView that contains this listener
+ *
+ * 包含此侦听器的 LView
+ *
  * @param listenerFn The listener function to call
+ *
+ * 要调用的侦听器函数
+ *
  * @param wrapWithPreventDefault Whether or not to prevent default behavior
  * (the procedural renderer does this already, so in those cases, we should skip)
+ *
+ * 是否防止默认行为（程序渲染器已经这样做了，因此在这些情况下，我们应该跳过）
+ *
  */
 function wrapListener(
     tNode: TNode, lView: LView<{}|null>, context: {}|null, listenerFn: (e?: any) => any,

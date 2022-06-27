@@ -16,7 +16,12 @@ import {LView, TVIEW} from './interfaces/view';
 import {INTERPOLATION_DELIMITER} from './util/misc_utils';
 import {stringifyForError} from './util/stringify_utils';
 
-/** Verifies that a given type is a Standalone Component. */
+/**
+ * Verifies that a given type is a Standalone Component.
+ *
+ * 验证给定类型是否是独立组件。
+ *
+ */
 export function assertStandaloneComponentType(type: Type<unknown>) {
   const componentDef = getComponentDef(type);
   if (!componentDef) {
@@ -35,7 +40,12 @@ export function assertStandaloneComponentType(type: Type<unknown>) {
   }
 }
 
-/** Called when there are multiple component selectors that match a given node */
+/**
+ * Called when there are multiple component selectors that match a given node
+ *
+ * 当有多个组件选择器与给定节点匹配时调用
+ *
+ */
 export function throwMultipleComponentError(
     tNode: TNode, first: Type<unknown>, second: Type<unknown>): never {
   throw new RuntimeError(
@@ -45,7 +55,12 @@ export function throwMultipleComponentError(
           `${stringifyForError(second)}`);
 }
 
-/** Throws an ExpressionChangedAfterChecked error if checkNoChanges mode is on. */
+/**
+ * Throws an ExpressionChangedAfterChecked error if checkNoChanges mode is on.
+ *
+ * 如果 checkNoChanges 模式处于打开状态，则抛出 ExpressionChangedAfterChecked 错误。
+ *
+ */
 export function throwErrorIfNoChangesMode(
     creationMode: boolean, oldValue: any, currValue: any, propName?: string): never {
   const field = propName ? ` for '${propName}'` : '';
@@ -74,11 +89,22 @@ function constructDetailsForInterpolation(
 
 /**
  * Constructs an object that contains details for the ExpressionChangedAfterItHasBeenCheckedError:
+ *
+ * 构造一个包含 ExpressionChangedAfterItHasBeenCheckedError 详细信息的对象：
+ *
  * - property name (for property bindings or interpolations)
+ *
+ *   属性名称（用于属性绑定或插值）
+ *
  * - old and new values, enriched using information from metadata
+ *
+ *   使用元数据中的信息丰富的新旧值
  *
  * More information on the metadata storage format can be found in `storePropertyBindingMetadata`
  * function description.
+ *
+ * 有关元数据存储格式的更多信息，请 `storePropertyBindingMetadata` 函数描述。
+ *
  */
 export function getExpressionChangedErrorDetails(
     lView: LView, bindingIndex: number, oldValue: any,

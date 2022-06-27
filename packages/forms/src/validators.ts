@@ -34,9 +34,7 @@ function hasValidLength(value: any): boolean {
  * `AbstractControl`s.
  *
  * 一个 `InjectionToken`，用于注册额外的同步验证器，供 `AbstractControl` 使用。
- *
  * @see `NG_ASYNC_VALIDATORS`
- *
  * @usageNotes
  *
  * ### Providing a custom validator
@@ -50,7 +48,10 @@ function hasValidLength(value: any): boolean {
  * true` 选项。
  *
  * ```typescript
- * @Directive({
+ *
+ * ```
+ *
+ * @Directive ({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
  * })
@@ -60,7 +61,6 @@ function hasValidLength(value: any): boolean {
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgValidators');
@@ -71,18 +71,23 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  * `AbstractControl`s.
  *
  * 一个 `InjectionToken`，用于注册额外的异步验证器，供 `AbstractControl` 使用。
- *
  * @see `NG_VALIDATORS`
- *
  * @usageNotes
  *
  * ### Provide a custom async validator directive
  *
+ * ### 提供自定义异步验证器指令
+ *
  * The following example implements the `AsyncValidator` interface to create an
  * async validator directive with a custom error key.
  *
+ * 以下示例实现了 `AsyncValidator` 接口，以创建使用自定义错误键的异步验证器指令。
+ *
  * ```typescript
- * @Directive({
+ *
+ * ```
+ *
+ * @Directive ({
  *   selector: '[customAsyncValidator]',
  *   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: CustomAsyncValidatorDirective, multi:
  * true}]
@@ -93,7 +98,6 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export const NG_ASYNC_VALIDATORS =
@@ -102,32 +106,80 @@ export const NG_ASYNC_VALIDATORS =
 /**
  * A regular expression that matches valid e-mail addresses.
  *
+ * 与有效电子邮件地址匹配的正则表达式。
+ *
  * At a high level, this regexp matches e-mail addresses of the format `local-part@tld`, where:
+ *
+ * 在较高级别，此正则表达式会匹配 `local-part@tld` 格式的电子邮件地址，其中：
+ *
  * - `local-part` consists of one or more of the allowed characters (alphanumeric and some
  *   punctuation symbols).
+ *
+ *   `local-part` 由一个或多个允许的字符（字母数字和一些标点符号）组成。
+ *
  * - `local-part` cannot begin or end with a period (`.`).
+ *
+ *   `local-part` 不能以句点 ( `.` ) 开头或结尾。
+ *
  * - `local-part` cannot be longer than 64 characters.
+ *
+ *   `local-part` 不能长于 64 个字符。
+ *
  * - `tld` consists of one or more `labels` separated by periods (`.`). For example `localhost` or
  *   `foo.com`.
+ *
+ *   `tld` 由一个或多个用句点 ( `.` ) 分隔的 `labels` 组成。例如 `localhost` 或 `foo.com` 。
+ *
  * - A `label` consists of one or more of the allowed characters (alphanumeric, dashes (`-`) and
  *   periods (`.`)).
+ *
+ *   `label` 由一个或多个允许的字符（字母数字、破折号 ( `-` ) 和句点 ( `.` ) ）组成。
+ *
  * - A `label` cannot begin or end with a dash (`-`) or a period (`.`).
+ *
+ *   `label` 不能以短划线 ( `-` ) 或句点 ( `.` ) 开头或结尾。
+ *
  * - A `label` cannot be longer than 63 characters.
+ *
+ *   `label` 不能超过 63 个字符。
+ *
  * - The whole address cannot be longer than 254 characters.
+ *
+ *   整个地址不能超过 254 个字符。
  *
  * ## Implementation background
  *
+ * ## 实现背景
+ *
  * This regexp was ported over from AngularJS (see there for git history):
- * https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27
+ * <https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27>
  * It is based on the
  * [WHATWG version](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address) with
  * some enhancements to incorporate more RFC rules (such as rules related to domain names and the
  * lengths of different parts of the address). The main differences from the WHATWG version are:
- *   - Disallow `local-part` to begin or end with a period (`.`).
- *   - Disallow `local-part` length to exceed 64 characters.
- *   - Disallow total address length to exceed 254 characters.
+ *
+ * 此正则表达式是从 AngularJS 移植的（有关 git 历史记录，请参阅那里）：
+ * <https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27>它基于[WHATWG](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)具有一些增强功能以包含更多
+ * RFC
+ * 规则的[版本](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)（例如与域名和地址不同部分的长度相关的规则）。与
+ * WHATWG 版本的主要区别是：
+ *
+ * - Disallow `local-part` to begin or end with a period (`.`).
+ *
+ *   不允许 `local-part` 以句点 ( `.` ) 开头或结尾。
+ *
+ * - Disallow `local-part` length to exceed 64 characters.
+ *
+ *   不允许 `local-part` 长度超过 64 个字符。
+ *
+ * - Disallow total address length to exceed 254 characters.
+ *
+ *   不允许总地址长度超过 254 个字符。
  *
  * See [this commit](https://github.com/angular/angular.js/commit/f3f5cf72e) for more details.
+ *
+ * 有关更多详细信息，请参阅[此提交](https://github.com/angular/angular.js/commit/f3f5cf72e)。
+ *
  */
 const EMAIL_REGEXP =
     /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -291,7 +343,7 @@ export class Validators {
    * 使用适合普通用例的[正则表达式模式测试值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)。该模式基于
    * [WHATWG HTML
    * 规范](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)中有效电子邮件地址的定义，并进行了一些增强以支持更多的
-   * RFC 规则（例如与域名相关的规则以及地址不同部分的长度）。
+   * RFC 规则（比如与域名相关的规则以及地址不同部分的长度）。
    *
    * The differences from the WHATWG version include:
    *
@@ -313,7 +365,6 @@ export class Validators {
    * validate the value against a different pattern.
    *
    * 如果此模式不能满足你的业务需求，则可以使用 `Validators.pattern()` 来针对其他模式验证值。
-   *
    * @usageNotes
    *
    * ### Validate that the field matches a valid email pattern
@@ -321,18 +372,18 @@ export class Validators {
    * ### 验证该字段匹配有效的 email 格式。
    *
    * ```typescript
-   * const control = new FormControl('bad@', Validators.email);
+   * const control = new FormControl('bad
+   * ```
+   *
+   * @ ', Validators.email);
    *
    * console.log(control.errors); // {email: true}
    * ```
-   *
    * @returns An error map with the `email` property
    * if the validation check fails, otherwise `null`.
    *
    * 如果验证失败，则此验证器函数返回一个带有 `email` 属性的映射表（map），否则为 `null`。
-   *
    * @see `updateValueAndValidity()`
-   *
    */
   static email(control: AbstractControl): ValidationErrors|null {
     return emailValidator(control);
@@ -547,6 +598,9 @@ export class Validators {
 /**
  * Validator that requires the control's value to be greater than or equal to the provided number.
  * See `Validators.min` for additional information.
+ *
+ * 要求控件的值大于或等于提供的数字的验证器。有关其他信息，请参阅 `Validators.min` 。
+ *
  */
 export function minValidator(min: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors|null => {
@@ -563,6 +617,9 @@ export function minValidator(min: number): ValidatorFn {
 /**
  * Validator that requires the control's value to be less than or equal to the provided number.
  * See `Validators.max` for additional information.
+ *
+ * 要求控件的值小于或等于提供的数字的验证器。有关其他信息，请参阅 `Validators.max` 。
+ *
  */
 export function maxValidator(max: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors|null => {
@@ -579,6 +636,9 @@ export function maxValidator(max: number): ValidatorFn {
 /**
  * Validator that requires the control have a non-empty value.
  * See `Validators.required` for additional information.
+ *
+ * 需要控件的验证器具有非空值。有关其他信息，请参阅 `Validators.required` 。
+ *
  */
 export function requiredValidator(control: AbstractControl): ValidationErrors|null {
   return isEmptyInputValue(control.value) ? {'required': true} : null;
@@ -588,6 +648,10 @@ export function requiredValidator(control: AbstractControl): ValidationErrors|nu
  * Validator that requires the control's value be true. This validator is commonly
  * used for required checkboxes.
  * See `Validators.requiredTrue` for additional information.
+ *
+ * 要求控件的值为 true 的验证器。此验证器通常用于所需的复选框。有关其他信息，请参阅
+ * `Validators.requiredTrue` 。
+ *
  */
 export function requiredTrueValidator(control: AbstractControl): ValidationErrors|null {
   return control.value === true ? null : {'required': true};
@@ -596,6 +660,9 @@ export function requiredTrueValidator(control: AbstractControl): ValidationError
 /**
  * Validator that requires the control's value pass an email validation test.
  * See `Validators.email` for additional information.
+ *
+ * 需要控件值的验证器通过电子邮件验证测试。有关其他信息，请参阅 `Validators.email` 。
+ *
  */
 export function emailValidator(control: AbstractControl): ValidationErrors|null {
   if (isEmptyInputValue(control.value)) {
@@ -607,6 +674,9 @@ export function emailValidator(control: AbstractControl): ValidationErrors|null 
 /**
  * Validator that requires the length of the control's value to be greater than or equal
  * to the provided minimum length. See `Validators.minLength` for additional information.
+ *
+ * 要求控件值的长度大于或等于提供的最小长度的验证器。有关其他信息，请参阅 `Validators.minLength` 。
+ *
  */
 export function minLengthValidator(minLength: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors|null => {
@@ -625,6 +695,9 @@ export function minLengthValidator(minLength: number): ValidatorFn {
 /**
  * Validator that requires the length of the control's value to be less than or equal
  * to the provided maximum length. See `Validators.maxLength` for additional information.
+ *
+ * 要求控件值的长度小于或等于提供的最大长度的验证器。有关其他信息，请参阅 `Validators.maxLength` 。
+ *
  */
 export function maxLengthValidator(maxLength: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors|null => {
@@ -637,6 +710,9 @@ export function maxLengthValidator(maxLength: number): ValidatorFn {
 /**
  * Validator that requires the control's value to match a regex pattern.
  * See `Validators.pattern` for additional information.
+ *
+ * 需要控件的值与正则表达式模式匹配的验证器。有关其他信息，请参阅 `Validators.pattern` 。
+ *
  */
 export function patternValidator(pattern: string|RegExp): ValidatorFn {
   if (!pattern) return nullValidator;
@@ -668,6 +744,9 @@ export function patternValidator(pattern: string|RegExp): ValidatorFn {
 
 /**
  * Function that has `ValidatorFn` shape, but performs no operation.
+ *
+ * 具有 `ValidatorFn` 形状但不执行任何操作的函数。
+ *
  */
 export function nullValidator(control: AbstractControl): ValidationErrors|null {
   return null;
@@ -713,8 +792,13 @@ function isValidatorFn<V>(validator: V|Validator|AsyncValidator): validator is V
  * of validator functions (convert validator classes into validator functions). This is needed to
  * have consistent structure in validators list before composing them.
  *
+ * 给定可能包含函数和类的验证器列表，返回验证器函数列表（将验证器类转换为验证器函数）。这需要在组成验证器列表之前在验证器列表中具有一致的结构。
+ *
  * @param validators The set of validators that may contain validators both in plain function form
  *     as well as represented as a validator class.
+ *
+ * 可能包含普通函数形式的验证器以及表示为验证器类的验证器集。
+ *
  */
 export function normalizeValidators<V>(validators: (V|Validator|AsyncValidator)[]): V[] {
   return validators.map(validator => {
@@ -727,6 +811,9 @@ export function normalizeValidators<V>(validators: (V|Validator|AsyncValidator)[
 /**
  * Merges synchronous validators into a single validator function.
  * See `Validators.compose` for additional information.
+ *
+ * 将同步验证器合并到单个验证器函数中。有关其他信息，请参阅 `Validators.compose` 。
+ *
  */
 function compose(validators: (ValidatorFn|null|undefined)[]|null): ValidatorFn|null {
   if (!validators) return null;
@@ -742,6 +829,10 @@ function compose(validators: (ValidatorFn|null|undefined)[]|null): ValidatorFn|n
  * Accepts a list of validators of different possible shapes (`Validator` and `ValidatorFn`),
  * normalizes the list (converts everything to `ValidatorFn`) and merges them into a single
  * validator function.
+ *
+ * 接受具有不同可能形状的验证器列表（ `Validator` 和 `ValidatorFn`
+ * ），对列表进行规范化（将所有内容转换为 `ValidatorFn` ）并将它们合并到一个验证器函数中。
+ *
  */
 export function composeValidators(validators: Array<Validator|ValidatorFn>): ValidatorFn|null {
   return validators != null ? compose(normalizeValidators<ValidatorFn>(validators)) : null;
@@ -750,6 +841,9 @@ export function composeValidators(validators: Array<Validator|ValidatorFn>): Val
 /**
  * Merges asynchronous validators into a single validator function.
  * See `Validators.composeAsync` for additional information.
+ *
+ * 将异步验证器合并到单个验证器函数中。有关其他信息，请参阅 `Validators.composeAsync` 。
+ *
  */
 function composeAsync(validators: (AsyncValidatorFn|null)[]): AsyncValidatorFn|null {
   if (!validators) return null;
@@ -767,6 +861,10 @@ function composeAsync(validators: (AsyncValidatorFn|null)[]): AsyncValidatorFn|n
  * Accepts a list of async validators of different possible shapes (`AsyncValidator` and
  * `AsyncValidatorFn`), normalizes the list (converts everything to `AsyncValidatorFn`) and merges
  * them into a single validator function.
+ *
+ * 接受具有不同可能形状的异步验证器列表（ `AsyncValidator` 和 `AsyncValidatorFn`
+ * ），对该列表进行规范化（将所有内容转换为 `AsyncValidatorFn` ）并将它们合并到一个验证器函数中。
+ *
  */
 export function composeAsyncValidators(validators: Array<AsyncValidator|AsyncValidatorFn>):
     AsyncValidatorFn|null {
@@ -777,6 +875,9 @@ export function composeAsyncValidators(validators: Array<AsyncValidator|AsyncVal
 /**
  * Merges raw control validators with a given directive validator and returns the combined list of
  * validators as an array.
+ *
+ * 将原始控制验证器与给定的指令验证器合并，并以数组的形式返回验证器的组合列表。
+ *
  */
 export function mergeValidators<V>(controlValidators: V|V[]|null, dirValidator: V): V[] {
   if (controlValidators === null) return [dirValidator];
@@ -786,6 +887,9 @@ export function mergeValidators<V>(controlValidators: V|V[]|null, dirValidator: 
 
 /**
  * Retrieves the list of raw synchronous validators attached to a given control.
+ *
+ * 检索附加到给定控件的原始同步验证器列表。
+ *
  */
 export function getControlValidators(control: AbstractControl): ValidatorFn|ValidatorFn[]|null {
   return (control as any)._rawValidators as ValidatorFn | ValidatorFn[] | null;
@@ -793,6 +897,9 @@ export function getControlValidators(control: AbstractControl): ValidatorFn|Vali
 
 /**
  * Retrieves the list of raw asynchronous validators attached to a given control.
+ *
+ * 检索附加到给定控件的原始异步验证器列表。
+ *
  */
 export function getControlAsyncValidators(control: AbstractControl): AsyncValidatorFn|
     AsyncValidatorFn[]|null {
@@ -803,8 +910,18 @@ export function getControlAsyncValidators(control: AbstractControl): AsyncValida
  * Accepts a singleton validator, an array, or null, and returns an array type with the provided
  * validators.
  *
+ * 接受单例验证器、数组或 null ，并返回使用提供的验证器的数组类型。
+ *
  * @param validators A validator, validators, or null.
- * @returns A validators array.
+ *
+ * 一个验证器，一个或多个验证器，或 null 。
+ *
+ * @returns
+ *
+ * A validators array.
+ *
+ * 验证器数组。
+ *
  */
 export function makeValidatorsArray<T extends ValidatorFn|AsyncValidatorFn>(validators: T|T[]|
                                                                             null): T[] {
@@ -815,9 +932,22 @@ export function makeValidatorsArray<T extends ValidatorFn|AsyncValidatorFn>(vali
 /**
  * Determines whether a validator or validators array has a given validator.
  *
+ * 确定验证器或验证器数组是否具有给定的验证器。
+ *
  * @param validators The validator or validators to compare against.
+ *
+ * 要比较的验证器。
+ *
  * @param validator The validator to check.
- * @returns Whether the validator is present.
+ *
+ * 要检查的验证器。
+ *
+ * @returns
+ *
+ * Whether the validator is present.
+ *
+ * 验证器是否存在。
+ *
  */
 export function hasValidator<T extends ValidatorFn|AsyncValidatorFn>(
     validators: T|T[]|null, validator: T): boolean {
@@ -827,9 +957,22 @@ export function hasValidator<T extends ValidatorFn|AsyncValidatorFn>(
 /**
  * Combines two arrays of validators into one. If duplicates are provided, only one will be added.
  *
+ * 将两个验证器数组合并为一个。如果提供了重复项，则只会添加一个。
+ *
  * @param validators The new validators.
+ *
+ * 新的验证器。
+ *
  * @param currentValidators The base array of currrent validators.
- * @returns An array of validators.
+ *
+ * 当前验证器的基础数组。
+ *
+ * @returns
+ *
+ * An array of validators.
+ *
+ * 验证器数组。
+ *
  */
 export function addValidators<T extends ValidatorFn|AsyncValidatorFn>(
     validators: T|T[], currentValidators: T|T[]|null): T[] {

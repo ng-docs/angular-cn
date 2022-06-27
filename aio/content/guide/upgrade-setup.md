@@ -10,6 +10,10 @@
 Use this guide **only** in the context of  [Upgrading from AngularJS](guide/upgrade "Upgrading from AngularJS to Angular") or [Upgrading for Performance](guide/upgrade-performance "Upgrading for Performance").
 Those Upgrade guides refer to this Setup guide for information about using the [deprecated QuickStart GitHub repository](https://github.com/angular/quickstart "Deprecated Angular QuickStart GitHub repository"), which was created prior to the current Angular [CLI](cli "CLI Overview").
 
+**注意**：<br />
+本指南**仅仅**适用于[从 AngularJS 升级](guide/upgrade "Upgrading from AngularJS to Angular")和[注重性能的升级](guide/upgrade-performance "Upgrading for Performance")。
+本指南中提到的升级指南使用的是[已弃用的快速上手 Github 仓库](https://github.com/angular/quickstart "Deprecated Angular QuickStart GitHub repository")，它是在 Angular [CLI](cli "CLI Overview") 推出之前创建的。
+
 **For all other scenarios**, see the current instructions in [Setting up the Local Environment and Workspace](guide/setup-local "Setting up for Local Development").
 
 **对于所有其它场景**，请参阅[建立本地开发环境](guide/setup-local "Setting up for Local Development")中的步骤。
@@ -29,9 +33,11 @@ Setting up a new project on your machine is quick and easy with the [QuickStart 
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Make sure you have [Node.js® and npm installed](guide/setup-local#prerequisites "Angular prerequisites").
+
+确保你已经安装好了 [Node.js® 和 npm](guide/setup-local#prerequisites "Angular prerequisites")。
 
 <a id="clone"></a>
 
@@ -102,6 +108,8 @@ rm non-essential-files.osx.txt
 </code-example>
 
 ### Windows
+
+### 窗户
 
 <code-example format="shell" language="shell">
 
@@ -222,6 +230,8 @@ Consequently, there are many files in the project folder on your machine, most o
 
 Focus on the following three TypeScript (`.ts`) files in the `/src` folder.
 
+注意 `/src` 目录中以下三个 TypeScript (`.ts`) 文件：
+
 <div class="filetree">
   <div class="file">
     src
@@ -284,6 +294,8 @@ The following are all in `src/`
 ## 附录：使用 `fakeAsync()/waitForAsync()` 进行测试
 
 If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests (for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)), you need to import `zone.js/testing` in your test setup file.
+
+如果你使用 `fakeAsync()` 或 `async()` 辅助函数来运行单元测试（详情参阅[测试指南](guide/testing-components-scenarios#fake-async)），就要在测试的准备文件中导入 `zone.js/testing`。
 
 <div class="alert is-important">
 

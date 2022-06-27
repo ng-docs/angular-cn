@@ -150,6 +150,9 @@ export class DefinitionBuilder {
   /**
    * Converts and definition info result that points to a template typecheck file to a reference to
    * the corresponding location in the template.
+   *
+   * 将指向模板类型检查文件的 info 结果转换并定义为对模板中相应位置的引用。
+   *
    */
   private mapShimResultsToTemplates(definitionInfos: readonly ts.DefinitionInfo[]):
       readonly ts.DefinitionInfo[] {
@@ -311,6 +314,9 @@ export class DefinitionBuilder {
 
 /**
  * Gets an Angular-specific definition in a TypeScript source file.
+ *
+ * 获取 TypeScript 源文件中特定于 Angular 的定义。
+ *
  */
 function getDefinitionForExpressionAtPosition(
     fileName: string, position: number, compiler: NgCompiler): ts.DefinitionInfoAndBoundSpan|

@@ -20,7 +20,12 @@ try {
   resolvedInquirerModule = null;
 }
 
-/** Whether prompts are currently supported. */
+/**
+ * Whether prompts are currently supported.
+ *
+ * 当前是否支持提示。
+ *
+ */
 export function supportsPrompt(): boolean {
   return !!resolvedInquirerModule && !!process.stdin.isTTY;
 }
@@ -28,6 +33,9 @@ export function supportsPrompt(): boolean {
 /**
  * Gets the resolved instance of "inquirer" which can be used to programmatically
  * create prompts.
+ *
+ * 获取“inquirer”的解析实例，可用于以编程方式创建提示。
+ *
  */
 export function getInquirer(): Inquirer {
   return resolvedInquirerModule!;

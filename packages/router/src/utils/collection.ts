@@ -39,6 +39,9 @@ export function shallowEqual(a: Params, b: Params): boolean {
 
 /**
  * Test equality for arrays of strings or a string.
+ *
+ * 测试字符串数组或字符串的相等性。
+ *
  */
 export function equalArraysOrString(a: string|string[], b: string|string[]) {
   if (Array.isArray(a) && Array.isArray(b)) {
@@ -53,6 +56,9 @@ export function equalArraysOrString(a: string|string[], b: string|string[]) {
 
 /**
  * Flattens single-level nested arrays.
+ *
+ * 展平单级嵌套数组。
+ *
  */
 export function flatten<T>(arr: T[][]): T[] {
   return Array.prototype.concat.apply([], arr);
@@ -60,6 +66,9 @@ export function flatten<T>(arr: T[][]): T[] {
 
 /**
  * Return the last element of an array.
+ *
+ * 返回数组的最后一个元素。
+ *
  */
 export function last<T>(a: T[]): T|null {
   return a.length > 0 ? a[a.length - 1] : null;
@@ -67,6 +76,9 @@ export function last<T>(a: T[]): T|null {
 
 /**
  * Verifys all booleans in an array are `true`.
+ *
+ * 验证数组中的所有布尔值都是 `true` 。
+ *
  */
 export function and(bools: boolean[]): boolean {
   return !bools.some(v => !v);

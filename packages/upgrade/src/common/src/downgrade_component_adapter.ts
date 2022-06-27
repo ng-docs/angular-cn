@@ -269,6 +269,9 @@ export class DowngradeComponentAdapter {
 
 /**
  * Group a set of DOM nodes into `ngContent` groups, based on the given content selectors.
+ *
+ * 根据给定的内容选择器，将一组 DOM 节点分组为 `ngContent` 组。
+ *
  */
 export function groupNodesBySelector(ngContentSelectors: string[], nodes: Node[]): Node[][] {
   const projectableNodes: Node[][] = [];

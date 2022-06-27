@@ -23,9 +23,14 @@ const builtinNodeJsModules = new Set<string>(module.builtinModules);
  * Holds information about entry points that are removed because
  * they have dependencies that are missing (directly or transitively).
  *
+ * 保留有关已删除的入口点的信息，因为它们具有缺失的依赖项（直接或传递）。
+ *
  * This might not be an error, because such an entry point might not actually be used
  * in the application. If it is used then the `ngc` application compilation would
  * fail also, so we don't need ngcc to catch this.
+ *
+ * 这可能不是错误，因为这样的入口点可能并没有在应用程序中真正使用。如果使用了它，那么 `ngc`
+ * 应用程序编译也将失败，因此我们不需要 ngcc 来捕获它。
  *
  * For example, consider an application that uses the `@angular/router` package.
  * This package includes an entry-point called `@angular/router/upgrade`, which has a dependency
@@ -33,6 +38,12 @@ const builtinNodeJsModules = new Set<string>(module.builtinModules);
  * If the application never uses code from `@angular/router/upgrade` then there is no need for
  * `@angular/upgrade` to be installed.
  * In this case the ngcc tool should just ignore the `@angular/router/upgrade` end-point.
+ *
+ * 例如，考虑一个使用 `@angular/router` 包的应用程序。此包包含一个名为 `@angular/router/upgrade`
+ * 的入口点，它依赖于 `@angular/upgrade` 包。如果应用程序从不使用 `@angular/router/upgrade`
+ * 中的代码，则无需安装 `@angular/upgrade` 。在这种情况下，ngcc 工具应该只忽略
+ * `@angular/router/upgrade` 端点。
+ *
  */
 export interface InvalidEntryPoint {
   entryPoint: EntryPoint;
@@ -43,8 +54,13 @@ export interface InvalidEntryPoint {
  * Holds information about dependencies of an entry-point that do not need to be processed
  * by the ngcc tool.
  *
+ * 保存有关不需要由 ngcc 工具处理的入口点依赖项的信息。
+ *
  * For example, the `rxjs` package does not contain any Angular decorators that need to be
  * compiled and so this can be safely ignored by ngcc.
+ *
+ * 例如， `rxjs` 包不包含任何需要编译的 Angular 装饰器，因此这可以被 ngcc 安全地忽略。
+ *
  */
 export interface IgnoredDependency {
   entryPoint: EntryPoint;
@@ -59,21 +75,36 @@ export interface DependencyDiagnostics {
 /**
  * Represents a partially ordered list of entry-points.
  *
+ * 表示入口点的部分有序列表。
+ *
  * The entry-points' order/precedence is such that dependent entry-points always come later than
  * their dependencies in the list.
  *
+ * 入口点的顺序/优先级是这样的，即依赖的入口点在列表中始终晚于它们的依赖项。
+ *
  * See `DependencyResolver#sortEntryPointsByDependency()`.
+ *
+ * 请参阅 `DependencyResolver#sortEntryPointsByDependency()` 。
+ *
  */
 export type PartiallyOrderedEntryPoints = PartiallyOrderedList<EntryPoint>;
 
 /**
  * A list of entry-points, sorted by their dependencies, and the dependency graph.
  *
+ * 按依赖项排序的入口点列表和依赖图。
+ *
  * The `entryPoints` array will be ordered so that no entry point depends upon an entry point that
  * appears later in the array.
  *
+ * `entryPoints` 数组将被排序，以便没有入口点依赖于数组中靠后出现的入口点。
+ *
  * Some entry points or their dependencies may have been ignored. These are captured for
  * diagnostic purposes in `invalidEntryPoints` and `ignoredDependencies` respectively.
+ *
+ * 某些入口点或其依赖项可能已被忽略。出于诊断目的，它们会分别在 `invalidEntryPoints` 和
+ * `ignoredDependencies` 中捕获。
+ *
  */
 export interface SortedEntryPointsInfo extends DependencyDiagnostics {
   entryPoints: PartiallyOrderedEntryPoints;
@@ -82,6 +113,9 @@ export interface SortedEntryPointsInfo extends DependencyDiagnostics {
 
 /**
  * A class that resolves dependencies between entry-points.
+ *
+ * 解析入口点之间依赖项的类。
+ *
  */
 export class DependencyResolver {
   constructor(
@@ -91,9 +125,23 @@ export class DependencyResolver {
   /**
    * Sort the array of entry points so that the dependant entry points always come later than
    * their dependencies in the array.
+   *
+   * 对入口点数组进行排序，以使依赖的入口点在数组中始终晚于它们的依赖项。
+   *
    * @param entryPoints An array entry points to sort.
+   *
+   * 要排序的数组条目。
+   *
    * @param target If provided, only return entry-points depended on by this entry-point.
-   * @returns the result of sorting the entry points by dependency.
+   *
+   * 如果提供，则仅返回此入口点依赖的入口点。
+   *
+   * @returns
+   *
+   * the result of sorting the entry points by dependency.
+   *
+   * 按依赖项对入口点进行排序的结果。
+   *
    */
   sortEntryPointsByDependency(entryPoints: EntryPointWithDependencies[], target?: EntryPoint):
       SortedEntryPointsInfo {
@@ -141,8 +189,13 @@ export class DependencyResolver {
   /**
    * Computes a dependency graph of the given entry-points.
    *
+   * 计算给定入口点的依赖图。
+   *
    * The graph only holds entry-points that ngcc cares about and whose dependencies
    * (direct and transitive) all exist.
+   *
+   * 该图仅包含 ngcc 关心的并且都存在其依赖项（直接和可传递）的入口点。
+   *
    */
   private computeDependencyGraph(entryPoints: EntryPointWithDependencies[]): DependencyGraph {
     const invalidEntryPoints: InvalidEntryPoint[] = [];
@@ -222,6 +275,9 @@ export class DependencyResolver {
 
   /**
    * Filter out the deepImports that can be ignored, according to this entryPoint's config.
+   *
+   * 根据此 entryPoint 的配置，过滤掉可以忽略的 deepImport 。
+   *
    */
   private filterIgnorableDeepImports(entryPoint: EntryPoint, deepImports: Set<AbsoluteFsPath>):
       AbsoluteFsPath[] {

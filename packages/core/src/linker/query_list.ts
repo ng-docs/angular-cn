@@ -31,7 +31,8 @@ function symbolIterator<T>(this: QueryList<T>): Iterator<T> {
  * javascript `for (var i of items)` loops as well as in Angular templates with
  * `*ngFor="let i of myList"`.
  *
- * 实现一个可迭代接口，因此它可以用于 ES6 JavaScript 的 `for (var i of items)` 循环，和 Angular 模板中的 `*ngFor="let i of myList"`。
+ * 实现一个可迭代接口，因此它可以用于 ES6 JavaScript 的 `for (var i of items)` 循环，和 Angular
+ * 模板中的 `*ngFor="let i of myList"`。
  *
  * Changes can be observed by subscribing to the changes `Observable`.
  *
@@ -48,12 +49,14 @@ function symbolIterator<T>(this: QueryList<T>): Iterator<T> {
  * ### 例子
  *
  * ```typescript
- * @Component({...})
- * class Container {
- *   @ViewChildren(Item) items:QueryList<Item>;
- * }
+ *
  * ```
  *
+ * @Component ({...})
+ * class Container {
+ * @ViewChildren (Item) items:QueryList<Item>;
+ * }
+ * ```
  * @publicApi
  */
 export class QueryList<T> implements Iterable<T> {
@@ -68,6 +71,9 @@ export class QueryList<T> implements Iterable<T> {
 
   /**
    * Returns `Observable` of `QueryList` notifying the subscriber of changes.
+   *
+   * 返回 `QueryList` 的 `Observable` ，通知订阅者更改。
+   *
    */
   get changes(): Observable<any> {
     return this._changes || (this._changes = new EventEmitter());
@@ -77,6 +83,10 @@ export class QueryList<T> implements Iterable<T> {
    * @param emitDistinctChangesOnly Whether `QueryList.changes` should fire only when actual change
    *     has occurred. Or if it should fire when query is recomputed. (recomputing could resolve in
    *     the same result)
+   *
+   * `QueryList.changes` 是否仅在发生实际更改时才触发。或者如果它应该在重新计算查询时触发。
+   * （重新计算可以解决相同的结果）
+   *
    */
   constructor(private _emitDistinctChangesOnly: boolean = false) {
     // This function should be declared on the prototype, but doing so there will cause the class
@@ -102,7 +112,8 @@ export class QueryList<T> implements Iterable<T> {
    * See
    * [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
    *
-   * 参见 [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+   * 参见
+   * [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
    */
   map<U>(fn: (item: T, index: number, array: T[]) => U): U[] {
     return this._results.map(fn);
@@ -112,7 +123,8 @@ export class QueryList<T> implements Iterable<T> {
    * See
    * [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
    *
-   * 参见 [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+   * 参见
+   * [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
    */
   filter(fn: (item: T, index: number, array: T[]) => boolean): T[] {
     return this._results.filter(fn);
@@ -122,7 +134,8 @@ export class QueryList<T> implements Iterable<T> {
    * See
    * [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
    *
-   * 参见 [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+   * 参见
+   * [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
    */
   find(fn: (item: T, index: number, array: T[]) => boolean): T|undefined {
     return this._results.find(fn);
@@ -132,7 +145,8 @@ export class QueryList<T> implements Iterable<T> {
    * See
    * [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
    *
-   * 参见 [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+   * 参见
+   * [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
    */
   reduce<U>(fn: (prevValue: U, curValue: T, curIndex: number, array: T[]) => U, init: U): U {
     return this._results.reduce(fn, init);
@@ -142,7 +156,8 @@ export class QueryList<T> implements Iterable<T> {
    * See
    * [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
    *
-   * 参见 [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+   * 参见
+   * [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
    */
   forEach(fn: (item: T, index: number, array: T[]) => void): void {
     this._results.forEach(fn);
@@ -152,7 +167,8 @@ export class QueryList<T> implements Iterable<T> {
    * See
    * [Array.some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
    *
-   * 参见 [Array.some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+   * 参见
+   * [Array.some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
    */
   some(fn: (value: T, index: number, array: T[]) => boolean): boolean {
     return this._results.some(fn);
@@ -177,17 +193,22 @@ export class QueryList<T> implements Iterable<T> {
    * on change detection, it will not notify of changes to the queries, unless a new change
    * occurs.
    *
-   * 更新查询列表中存储的数据，并将 `dirty` 标志重置为 `false`，以便当检测到变更时，除非发生新变更，否则不会通知这些查询的变更。
+   * 更新查询列表中存储的数据，并将 `dirty` 标志重置为
+   * `false`，以便当检测到变更时，除非发生新变更，否则不会通知这些查询的变更。
    *
    * @param resultsTree The query results to store
    *
    * 要存储的查询结果
-   *
    * @param identityAccessor Optional function for extracting stable object identity from a value
    *    in the array. This function is executed for each element of the query result list while
    *    comparing current query list with the new one (provided as a first argument of the `reset`
    *    function) to detect if the lists are different. If the function is not provided, elements
    *    are compared as is (without any pre-processing).
+   *
+   * 从数组中的值提取稳定对象标识的可选函数。此函数会为查询结果列表的每个元素执行，同时将当前查询列表与新查询列表（作为
+   * `reset`
+   * 函数的第一个参数提供）进行比较以检测列表是否不同。如果未提供此函数，则会按原样比较元素（不进行任何预处理）。
+   *
    */
   reset(resultsTree: Array<T|any[]>, identityAccessor?: (value: T) => unknown): void {
     // Cast to `QueryListInternal` so that we can mutate fields which are readonly for the usage of
@@ -214,12 +235,22 @@ export class QueryList<T> implements Iterable<T> {
       this._changes.emit(this);
   }
 
-  /** internal */
+  /**
+   * internal
+   *
+   * 内部
+   *
+   */
   setDirty() {
     (this as {dirty: boolean}).dirty = true;
   }
 
-  /** internal */
+  /**
+   * internal
+   *
+   * 内部
+   *
+   */
   destroy(): void {
     (this.changes as EventEmitter<any>).complete();
     (this.changes as EventEmitter<any>).unsubscribe();
@@ -235,6 +266,9 @@ export class QueryList<T> implements Iterable<T> {
 
 /**
  * Internal set of APIs used by the framework. (not to be made public)
+ *
+ * 框架使用的内部 API 集。 （不公开）
+ *
  */
 interface QueryListInternal<T> extends QueryList<T> {
   reset(a: any[]): void;

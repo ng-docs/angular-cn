@@ -13,11 +13,14 @@ import {textBindingInternal} from './shared';
 
 
 /**
- *
  * Update text content with a lone bound value
+ *
+ * 使用唯一绑定值更新文本内容
  *
  * Used when a text node has 1 interpolated value in it, an no additional text
  * surrounds that interpolated value:
+ *
+ * 当文本节点中有 1 个内插值时使用，并且该内插值周围没有额外的文本：
  *
  * ```html
  * <div>{{v0}}</div>
@@ -25,11 +28,22 @@ import {textBindingInternal} from './shared';
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate(v0);
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate(v0: any): typeof ɵɵtextInterpolate {
@@ -39,10 +53,13 @@ export function ɵɵtextInterpolate(v0: any): typeof ɵɵtextInterpolate {
 
 
 /**
- *
  * Update text content with single bound value surrounded by other text.
  *
+ * 使用被其他文本包围的单个绑定值更新文本内容。
+ *
  * Used when a text node has 1 interpolated value in it:
+ *
+ * 当文本节点中有 1 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}suffix</div>
@@ -50,11 +67,22 @@ export function ɵɵtextInterpolate(v0: any): typeof ɵɵtextInterpolate {
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate1('prefix', v0, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate1(
@@ -68,10 +96,13 @@ export function ɵɵtextInterpolate1(
 }
 
 /**
- *
  * Update text content with 2 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 2 个绑定值更新文本内容。
+ *
  * Used when a text node has 2 interpolated values in it:
+ *
+ * 当文本节点中有 2 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}suffix</div>
@@ -79,11 +110,22 @@ export function ɵɵtextInterpolate1(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate2('prefix', v0, '-', v1, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate2(
@@ -97,10 +139,13 @@ export function ɵɵtextInterpolate2(
 }
 
 /**
- *
  * Update text content with 3 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 3 个绑定值更新文本内容。
+ *
  * Used when a text node has 3 interpolated values in it:
+ *
+ * 当文本节点中有 3 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}suffix</div>
@@ -108,12 +153,23 @@ export function ɵɵtextInterpolate2(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate3(
  * 'prefix', v0, '-', v1, '-', v2, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate3(
@@ -128,10 +184,13 @@ export function ɵɵtextInterpolate3(
 }
 
 /**
- *
  * Update text content with 4 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 4 个绑定值更新文本内容。
+ *
  * Used when a text node has 4 interpolated values in it:
+ *
+ * 当文本节点中有 4 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}suffix</div>
@@ -139,12 +198,23 @@ export function ɵɵtextInterpolate3(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate4(
  * 'prefix', v0, '-', v1, '-', v2, '-', v3, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see ɵɵtextInterpolateV
+ *
+ * ɵɵtextInterplateV
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate4(
@@ -159,10 +229,13 @@ export function ɵɵtextInterpolate4(
 }
 
 /**
- *
  * Update text content with 5 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 5 个绑定值更新文本内容。
+ *
  * Used when a text node has 5 interpolated values in it:
+ *
+ * 当文本节点中有 5 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}suffix</div>
@@ -170,12 +243,23 @@ export function ɵɵtextInterpolate4(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate5(
  * 'prefix', v0, '-', v1, '-', v2, '-', v3, '-', v4, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate5(
@@ -190,10 +274,13 @@ export function ɵɵtextInterpolate5(
 }
 
 /**
- *
  * Update text content with 6 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 6 个绑定值更新文本内容。
+ *
  * Used when a text node has 6 interpolated values in it:
+ *
+ * 当文本节点中有 6 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}suffix</div>
@@ -201,14 +288,31 @@ export function ɵɵtextInterpolate5(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate6(
  *    'prefix', v0, '-', v1, '-', v2, '-', v3, '-', v4, '-', v5, 'suffix');
  * ```
  *
  * @param i4 Static value used for concatenation only.
- * @param v5 Value checked for change. @returns itself, so that it may be chained.
+ *
+ * 仅用于连接的静态值。
+ *
+ * @param v5 Value checked for change.
+ *
+ * 检查更改的值。
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate6(
@@ -224,10 +328,13 @@ export function ɵɵtextInterpolate6(
 }
 
 /**
- *
  * Update text content with 7 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 7 个绑定值更新文本内容。
+ *
  * Used when a text node has 7 interpolated values in it:
+ *
+ * 当文本节点中有 7 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}-{{v6}}suffix</div>
@@ -235,12 +342,23 @@ export function ɵɵtextInterpolate6(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate7(
  *    'prefix', v0, '-', v1, '-', v2, '-', v3, '-', v4, '-', v5, '-', v6, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate7(
@@ -257,10 +375,13 @@ export function ɵɵtextInterpolate7(
 }
 
 /**
- *
  * Update text content with 8 bound values surrounded by other text.
  *
+ * 使用被其他文本包围的 8 个绑定值更新文本内容。
+ *
  * Used when a text node has 8 interpolated values in it:
+ *
+ * 当文本节点中有 8 个插值时使用：
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}-{{v6}}-{{v7}}suffix</div>
@@ -268,12 +389,23 @@ export function ɵɵtextInterpolate7(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolate8(
  *  'prefix', v0, '-', v1, '-', v2, '-', v3, '-', v4, '-', v5, '-', v6, '-', v7, 'suffix');
  * ```
- * @returns itself, so that it may be chained.
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @see textInterpolateV
+ *
+ * 文本插值 V
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate8(
@@ -292,7 +424,11 @@ export function ɵɵtextInterpolate8(
 /**
  * Update text content with 9 or more bound values other surrounded by text.
  *
+ * 使用 9 个或更多被文本包围的绑定值更新文本内容。
+ *
  * Used when the number of interpolated values exceeds 8.
+ *
+ * 当内插值的数量超过 8 时使用。
  *
  * ```html
  * <div>prefix{{v0}}-{{v1}}-{{v2}}-{{v3}}-{{v4}}-{{v5}}-{{v6}}-{{v7}}-{{v8}}-{{v9}}suffix</div>
@@ -300,17 +436,29 @@ export function ɵɵtextInterpolate8(
  *
  * Its compiled representation is:
  *
+ * 其编译后的表示是：
+ *
  * ```ts
  * ɵɵtextInterpolateV(
  *  ['prefix', v0, '-', v1, '-', v2, '-', v3, '-', v4, '-', v5, '-', v6, '-', v7, '-', v9,
  *  'suffix']);
  * ```
- *.
+ *
+ * .
+ *
  * @param values The collection of values and the strings in between those values, beginning with
  * a string prefix and ending with a string suffix.
  * (e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`)
  *
- * @returns itself, so that it may be chained.
+ * 值以及这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。 （例如 `['prefix', value0,
+ * '-', value1, '-', value2, ..., value99, 'suffix']` ）
+ *
+ * @returns
+ *
+ * itself, so that it may be chained.
+ *
+ * 本身，以便它可以被链接起来。
+ *
  * @codeGenApi
  */
 export function ɵɵtextInterpolateV(values: any[]): typeof ɵɵtextInterpolateV {

@@ -27,7 +27,12 @@ export function createLocalizeStatements(
 /**
  * This visitor walks over an i18n tree, capturing literal strings and placeholders.
  *
+ * 此访问者走过一棵 i18n 树，捕获文字字符串和占位符。
+ *
  * The result can be used for generating the `$localize` tagged template literals.
+ *
+ * 结果可用于生成 `$localize` 标记的模板文字。
+ *
  */
 class LocalizeSerializerVisitor implements i18n.Visitor {
   constructor(
@@ -84,10 +89,22 @@ class LocalizeSerializerVisitor implements i18n.Visitor {
 /**
  * Serialize an i18n message into two arrays: messageParts and placeholders.
  *
+ * 将 i18n 消息序列化为两个数组： messageParts 和占位符。
+ *
  * These arrays will be used to generate `$localize` tagged template literals.
  *
+ * 这些数组将用于生成 `$localize` 标记的模板文字。
+ *
  * @param message The message to be serialized.
- * @returns an object containing the messageParts and placeholders.
+ *
+ * 要序列化的消息。
+ *
+ * @returns
+ *
+ * an object containing the messageParts and placeholders.
+ *
+ * 包含 messageParts 和占位符的对象。
+ *
  */
 export function serializeI18nMessageForLocalize(message: i18n.Message):
     {messageParts: o.LiteralPiece[], placeHolders: o.PlaceholderPiece[]} {
@@ -108,11 +125,23 @@ function getSourceSpan(message: i18n.Message): ParseSourceSpan {
 /**
  * Convert the list of serialized MessagePieces into two arrays.
  *
+ * 将序列化 MessagePieces 列表转换为两个数组。
+ *
  * One contains the literal string pieces and the other the placeholders that will be replaced by
  * expressions when rendering `$localize` tagged template literals.
  *
+ * 一个包含文字字符串，另一个包含在呈现 `$localize` 标记的模板文字时将被表达式替换的占位符。
+ *
  * @param pieces The pieces to process.
- * @returns an object containing the messageParts and placeholders.
+ *
+ * 要处理的部分。
+ *
+ * @returns
+ *
+ * an object containing the messageParts and placeholders.
+ *
+ * 包含 messageParts 和占位符的对象。
+ *
  */
 function processMessagePieces(pieces: o.MessagePiece[]):
     {messageParts: o.LiteralPiece[], placeHolders: o.PlaceholderPiece[]} {

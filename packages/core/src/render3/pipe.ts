@@ -25,9 +25,21 @@ import {load} from './util/view_utils';
 /**
  * Create a pipe.
  *
+ * 创建一个管道。
+ *
  * @param index Pipe index where the pipe will be stored.
+ *
+ * 将存储管道的管道索引。
+ *
  * @param pipeName The name of the pipe
- * @returns T the instance of the pipe.
+ *
+ * 管道的名称
+ *
+ * @returns
+ *
+ * T the instance of the pipe.
+ *
+ * T 管道的实例。
  *
  * @codeGenApi
  */
@@ -69,9 +81,22 @@ export function ɵɵpipe(index: number, pipeName: string): any {
  * Searches the pipe registry for a pipe with the given name. If one is found,
  * returns the pipe. Otherwise, an error is thrown because the pipe cannot be resolved.
  *
+ * 在管道注册表中搜索具有给定名称的管道。如果找到，则返回管道。否则，会由于无法解析管道而抛出错误。
+ *
  * @param name Name of pipe to resolve
+ *
+ * 要解析的管道名称
+ *
  * @param registry Full list of available pipes
- * @returns Matching PipeDef
+ *
+ * 可用管道的完整列表
+ *
+ * @returns
+ *
+ * Matching PipeDef
+ *
+ * 匹配 PipeDef
+ *
  */
 function getPipeDef(name: string, registry: PipeDefList|null): PipeDef<any>|undefined {
   if (registry) {
@@ -95,12 +120,24 @@ function getPipeDef(name: string, registry: PipeDefList|null): PipeDef<any>|unde
 /**
  * Invokes a pipe with 1 arguments.
  *
+ * 调用带有 1 参数的管道。
+ *
  * This instruction acts as a guard to {@link PipeTransform#transform} invoking
  * the pipe only when an input to the pipe changes.
  *
+ * 此指令仅作为 {@link PipeTransform#transform} 的保护，仅当管道的输入更改时才调用管道。
+ *
  * @param index Pipe index where the pipe was stored on creation.
+ *
+ * 创建时存储管道的管道索引。
+ *
  * @param slotOffset the offset in the reserved slot space
+ *
+ * 保留插槽空间中的偏移量
+ *
  * @param v1 1st argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第一个参数。
  *
  * @codeGenApi
  */
@@ -117,13 +154,28 @@ export function ɵɵpipeBind1(index: number, slotOffset: number, v1: any): any {
 /**
  * Invokes a pipe with 2 arguments.
  *
+ * 调用带有 2 个参数的管道。
+ *
  * This instruction acts as a guard to {@link PipeTransform#transform} invoking
  * the pipe only when an input to the pipe changes.
  *
+ * 此指令仅作为 {@link PipeTransform#transform} 的保护，仅当管道的输入更改时才调用管道。
+ *
  * @param index Pipe index where the pipe was stored on creation.
+ *
+ * 创建时存储管道的管道索引。
+ *
  * @param slotOffset the offset in the reserved slot space
+ *
+ * 保留插槽空间中的偏移量
+ *
  * @param v1 1st argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第一个参数。
+ *
  * @param v2 2nd argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第二个参数。
  *
  * @codeGenApi
  */
@@ -140,14 +192,32 @@ export function ɵɵpipeBind2(index: number, slotOffset: number, v1: any, v2: an
 /**
  * Invokes a pipe with 3 arguments.
  *
+ * 调用带有 3 个参数的管道。
+ *
  * This instruction acts as a guard to {@link PipeTransform#transform} invoking
  * the pipe only when an input to the pipe changes.
  *
+ * 此指令仅作为 {@link PipeTransform#transform} 的保护，仅当管道的输入更改时才调用管道。
+ *
  * @param index Pipe index where the pipe was stored on creation.
+ *
+ * 创建时存储管道的管道索引。
+ *
  * @param slotOffset the offset in the reserved slot space
+ *
+ * 保留插槽空间中的偏移量
+ *
  * @param v1 1st argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第一个参数。
+ *
  * @param v2 2nd argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第二个参数。
+ *
  * @param v3 4rd argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第四个参数。
  *
  * @codeGenApi
  */
@@ -164,15 +234,36 @@ export function ɵɵpipeBind3(index: number, slotOffset: number, v1: any, v2: an
 /**
  * Invokes a pipe with 4 arguments.
  *
+ * 调用带有 4 个参数的管道。
+ *
  * This instruction acts as a guard to {@link PipeTransform#transform} invoking
  * the pipe only when an input to the pipe changes.
  *
+ * 此指令仅作为 {@link PipeTransform#transform} 的保护，仅当管道的输入更改时才调用管道。
+ *
  * @param index Pipe index where the pipe was stored on creation.
+ *
+ * 创建时存储管道的管道索引。
+ *
  * @param slotOffset the offset in the reserved slot space
+ *
+ * 保留插槽空间中的偏移量
+ *
  * @param v1 1st argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第一个参数。
+ *
  * @param v2 2nd argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第二个参数。
+ *
  * @param v3 3rd argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第三个参数。
+ *
  * @param v4 4th argument to {@link PipeTransform#transform}.
+ *
+ * {@link PipeTransform#transform} 的第四个参数。
  *
  * @codeGenApi
  */
@@ -190,12 +281,24 @@ export function ɵɵpipeBind4(
 /**
  * Invokes a pipe with variable number of arguments.
  *
+ * 调用具有可变数量的参数的管道。
+ *
  * This instruction acts as a guard to {@link PipeTransform#transform} invoking
  * the pipe only when an input to the pipe changes.
  *
+ * 此指令仅作为 {@link PipeTransform#transform} 的保护，仅当管道的输入更改时才调用管道。
+ *
  * @param index Pipe index where the pipe was stored on creation.
+ *
+ * 创建时存储管道的管道索引。
+ *
  * @param slotOffset the offset in the reserved slot space
+ *
+ * 保留插槽空间中的偏移量
+ *
  * @param values Array of arguments to pass to {@link PipeTransform#transform} method.
+ *
+ * 要传递给 {@link PipeTransform#transform} 方法的参数数组。
  *
  * @codeGenApi
  */

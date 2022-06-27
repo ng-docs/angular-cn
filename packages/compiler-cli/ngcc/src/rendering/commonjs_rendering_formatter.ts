@@ -22,6 +22,11 @@ import {stripExtension} from './utils';
  * A RenderingFormatter that works with CommonJS files, instead of `import` and `export` statements
  * the module is an IIFE with a factory function call with dependencies, which are defined in a
  * wrapper function for AMD, CommonJS and global module formats.
+ *
+ * 使用 CommonJS 文件的 RenderingFormatter ，而不是 `import` 和 `export` 语句，该模块是一个
+ * IIFE，带有带有依赖项的工厂函数调用，这些依赖项是在 AMD、CommonJS
+ * 和全局模块格式的包装器函数中定义的。
+ *
  */
 export class CommonJsRenderingFormatter extends Esm5RenderingFormatter {
   constructor(fs: PathManipulation, protected commonJsHost: NgccReflectionHost, isCore: boolean) {
@@ -29,7 +34,10 @@ export class CommonJsRenderingFormatter extends Esm5RenderingFormatter {
   }
 
   /**
-   *  Add the imports below any in situ imports as `require` calls.
+   * Add the imports below any in situ imports as `require` calls.
+   *
+   * 在任何原位导入下方添加导入作为 `require` 调用。
+   *
    */
   override addImports(output: MagicString, imports: Import[], file: ts.SourceFile): void {
     // Avoid unnecessary work if there are no imports to add.
@@ -45,6 +53,9 @@ export class CommonJsRenderingFormatter extends Esm5RenderingFormatter {
 
   /**
    * Add the exports to the bottom of the file.
+   *
+   * 将导出添加到文件底部。
+   *
    */
   override addExports(
       output: MagicString, entryPointBasePath: string, exports: ExportInfo[],

@@ -40,9 +40,8 @@ export class I18nPluralPipe implements PipeTransform {
    * @param value the number to be formatted
    *
    * 要格式化的数字
-   *
    * @param pluralMap an object that mimics the ICU format, see
-   * http://userguide.icu-project.org/formatparse/messages.
+   * <http://userguide.icu-project.org/formatparse/messages>.
    *
    * 模仿 ICU 格式的对象，请参见<http://userguide.icu-project.org/formatparse/messages> 。
    *

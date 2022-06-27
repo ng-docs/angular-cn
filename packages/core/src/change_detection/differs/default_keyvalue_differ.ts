@@ -95,6 +95,9 @@ export class DefaultKeyValueDiffer<K, V> implements KeyValueDiffer<K, V>, KeyVal
   /**
    * Check the current state of the map vs the previous.
    * The algorithm is optimised for when the keys do no change.
+   *
+   * 检查地图的当前状态与以前的状态。该算法已针对键不更改的情况进行了优化。
+   *
    */
   check(map: Map<any, any>|{[k: string]: any}): boolean {
     this._reset();
@@ -145,10 +148,24 @@ export class DefaultKeyValueDiffer<K, V> implements KeyValueDiffer<K, V>, KeyVal
   /**
    * Inserts a record before `before` or append at the end of the list when `before` is null.
    *
+   * 当 `before` 为 null 时，在列表 `before` 插入记录或附加在列表的末尾。
+   *
    * Notes:
+   *
+   * 说明：
+   *
    * - This method appends at `this._appendAfter`,
+   *
+   *   此方法附加在 `this._appendAfter` ，
+   *
    * - This method updates `this._appendAfter`,
+   *
+   *   此方法会更新 `this._appendAfter` ，
+   *
    * - The return value is the new value for the insertion pointer.
+   *
+   *   返回值是插入指针的新值。
+   *
    */
   private _insertBeforeOrAppend(
       before: KeyValueChangeRecord_<K, V>|null,

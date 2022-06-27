@@ -17,7 +17,12 @@ import {getPluralFunction} from './plural-function';
 
 const WEEK_DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-/** Generate contents for the basic locale data file */
+/**
+ * Generate contents for the basic locale data file
+ *
+ * 为基本区域设置数据文件生成内容
+ *
+ */
 export function generateLocale(
     locale: string, localeData: CldrLocaleData, baseCurrencies: BaseCurrencies) {
   return `${fileHeader}
@@ -33,6 +38,10 @@ export default ${generateBasicLocaleString(locale, localeData, baseCurrencies)};
 /**
  * Collect up the basic locale data [ localeId, dateTime, number, currency, directionality,
  * pluralCase ].
+ *
+ * 收集基本的区域设置数据[localeId、dateTime、数字、货币、方向性、复数 Case][ localeId, dateTime,
+ * number, currency, directionality, pluralCase ] 。
+ *
  */
 export function generateBasicLocaleString(
     locale: string, localeData: CldrLocaleData, baseCurrencies: BaseCurrencies) {
@@ -56,7 +65,15 @@ export function generateBasicLocaleString(
 
 /**
  * Returns the writing direction for a locale
- * @returns 'rtl' | 'ltr'
+ *
+ * 返回区域设置的书写方向
+ *
+ * @returns
+ *
+ * 'rtl' | 'ltr'
+ *
+ * 'rtl' | “ltr”
+ *
  */
 function getDirectionality(localeData: CldrLocaleData): 'rtl'|'ltr' {
   const rtl = localeData.get('scriptMetadata/{script}/rtl');
@@ -66,7 +83,15 @@ function getDirectionality(localeData: CldrLocaleData): 'rtl'|'ltr' {
 
 /**
  * Returns dateTime data for a locale
- * @returns [ firstDayOfWeek, weekendRange, formats ]
+ *
+ * 返回区域设置的 dateTime 数据
+ *
+ * @returns
+ *
+ * [ firstDayOfWeek, weekendRange, formats ]
+ *
+ * [firstDayOfWeek，周末范围，格式][ firstDayOfWeek, weekendRange, formats ]
+ *
  */
 function getDateTimeSettings(localeData: CldrLocaleData) {
   return [
@@ -78,11 +103,23 @@ function getDateTimeSettings(localeData: CldrLocaleData) {
 
 /**
  * Returns the number symbols and formats for a locale
- * @returns [ symbols, formats ]
+ *
+ * 返回区域设置的数字符号和格式
+ *
+ * @returns
+ *
+ * [ symbols, formats ]
  * symbols: [ decimal, group, list, percentSign, plusSign, minusSign, exponential,
  * superscriptingExponent, perMille, infinity, nan, timeSeparator, currencyDecimal?, currencyGroup?
  * ]
  * formats: [ currency, decimal, percent, scientific ]
+ *
+ * [符号，格式][ symbols, formats ]符号：
+ * [十进制、组、列表、百分比符号、加号、减号、指数、上标指数、perMille、无穷大、南、timeSeparator、currencyDecimal?、currencyGroup?][
+ * decimal, group, list, percentSign, plusSign, minusSign, exponential, superscriptingExponent,
+ * perMille, infinity, nan, timeSeparator, currencyDecimal?, currencyGroup?
+ * ]格式：[货币、小数、百分比、科学][ currency, decimal, percent, scientific ]
+ *
  */
 function getNumberSettings(localeData: CldrLocaleData) {
   const decimalFormat = localeData.main('numbers/decimalFormats-numberSystem-latn/standard');
@@ -118,7 +155,15 @@ function getNumberSettings(localeData: CldrLocaleData) {
 
 /**
  * Returns week-end range for a locale, based on US week days
- * @returns [number, number]
+ *
+ * 根据美国工作日返回区域设置的周末范围
+ *
+ * @returns
+ *
+ * [number, number]
+ *
+ * [数，数][number, number]
+ *
  */
 function getWeekendRange(localeData: CldrLocaleData) {
   const startDay =
@@ -134,9 +179,19 @@ function getWeekendRange(localeData: CldrLocaleData) {
 
 /**
  * Returns date-related translations for a locale
- * @returns [ dayPeriodsFormat, dayPeriodsStandalone, daysFormat, dayStandalone, monthsFormat,
+ *
+ * 返回区域设置的与日期相关的翻译
+ *
+ * @returns
+ *
+ * [ dayPeriodsFormat, dayPeriodsStandalone, daysFormat, dayStandalone, monthsFormat,
  * monthsStandalone, eras ]
  * each value: [ narrow, abbreviated, wide, short? ]
+ *
+ * [dayPeriodsFormat、dayPeriodsStandalone、daysFormat、dayStandalone、monthsFormat、monthsStandalone、擦除][
+ * dayPeriodsFormat, dayPeriodsStandalone, daysFormat, dayStandalone, monthsFormat,
+ * monthsStandalone, eras ]每个值：[窄、缩写、宽、短？][ narrow, abbreviated, wide, short? ]
+ *
  */
 function getDateTimeTranslations(localeData: CldrLocaleData) {
   const dayNames = localeData.main(`dates/calendars/gregorian/days`);
@@ -195,8 +250,17 @@ function getDateTimeTranslations(localeData: CldrLocaleData) {
 
 /**
  * Returns date, time and dateTime formats for a locale
- * @returns [dateFormats, timeFormats, dateTimeFormats]
+ *
+ * 返回区域设置的日期、时间和 dateTime 格式
+ *
+ * @returns
+ *
+ * [dateFormats, timeFormats, dateTimeFormats]
  * each format: [ short, medium, long, full ]
+ *
+ * [dateFormats、timeFormats、dateTimeFormats][dateFormats, timeFormats,
+ * dateTimeFormats]每种格式：[短、中、长、完整][ short, medium, long, full ]
+ *
  */
 function getDateTimeFormats(localeData: CldrLocaleData) {
   function getFormats(data: any) {
@@ -216,7 +280,15 @@ function getDateTimeFormats(localeData: CldrLocaleData) {
 
 /**
  * Returns the first day of the week, based on US week days
- * @returns number
+ *
+ * 根据美国工作日返回一周的第一天
+ *
+ * @returns
+ *
+ * number
+ *
+ * 号码
+ *
  */
 function getFirstDayOfWeek(localeData: CldrLocaleData) {
   // The `cldrjs` package does not provide proper types for `supplemental`. The

@@ -8,6 +8,7 @@
 
 import {TrustedHTML} from '../util/security/trusted_type_defs';
 import {trustedHTMLFromString} from '../util/security/trusted_types';
+
 import {getInertBodyHelper, InertBodyHelper} from './inert_body';
 import {_sanitizeUrl, sanitizeSrcset} from './url_sanitizer';
 
@@ -104,6 +105,9 @@ const SKIP_TRAVERSING_CONTENT_IF_INVALID_ELEMENTS = tagSet('script,style,templat
 /**
  * SanitizingHtmlSerializer serializes a DOM fragment, stripping out any unsafe elements and unsafe
  * attributes.
+ *
+ * SanitizingHtmlSerializer 序列化 DOM 片段，剥离任何不安全的元素和不安全的属性。
+ *
  */
 class SanitizingHtmlSerializer {
   // Explicitly track if something was stripped, to avoid accidentally warning of sanitization just
@@ -154,8 +158,17 @@ class SanitizingHtmlSerializer {
    * be traversed. Element content must always be traversed (even if the element itself is not
    * valid/safe), unless the element is one of `SKIP_TRAVERSING_CONTENT_IF_INVALID_ELEMENTS`.
    *
+   * 清理开始元素标记（如果有效）并返回是否应该遍历元素的内容。必须始终遍历元素内容（即使元素本身无效/安全），除非元素是
+   * `SKIP_TRAVERSING_CONTENT_IF_INVALID_ELEMENTS` 之一。
+   *
    * @param element The element to sanitize.
+   *
+   * 要清理的元素。
+   *
    * @return True if the element's contents should be traversed.
+   *
+   * 如果要遍历元素的内容，则为 True。
+   *
    */
   private startElement(element: Element): boolean {
     const tagName = element.nodeName.toLowerCase();
@@ -217,6 +230,9 @@ const NON_ALPHANUMERIC_REGEXP = /([^\#-~ |!])/g;
  * Escapes all potentially dangerous characters, so that the
  * resulting string can be safely inserted into attribute or
  * element text.
+ *
+ * 对所有具有潜在危险的字符进行转译，以便将结果字符串安全地插入到属性或元素文本中。
+ *
  * @param value
  */
 function encodeEntities(value: string) {
@@ -242,6 +258,9 @@ let inertBodyHelper: InertBodyHelper;
 /**
  * Sanitizes the given unsafe, untrusted HTML fragment, and returns HTML text that is safe to add to
  * the DOM in a browser environment.
+ *
+ * 清理给定的不安全、不可信的 HTML 片段，并返回可在浏览器环境中安全地添加到 DOM 的 HTML 文本。
+ *
  */
 export function _sanitizeHtml(defaultDoc: any, unsafeHtmlInput: string): TrustedHTML|string {
   let inertBodyElement: HTMLElement|null = null;

@@ -18,11 +18,15 @@ import {WebDriverAdapter} from './web_driver_adapter';
 
 /**
  * The Sampler owns the sample loop:
- * 1. calls the prepare/execute callbacks,
- * 2. gets data from the metric
- * 3. asks the validator for a valid sample
- * 4. reports the new data to the reporter
- * 5. loop until there is a valid sample
+ * 1\. calls the prepare/execute callbacks,
+ * 2\. gets data from the metric
+ * 3\. asks the validator for a valid sample
+ * 4\. reports the new data to the reporter
+ * 5\. loop until there is a valid sample
+ *
+ * Sampler 拥有示例循环：1.调用 prepare/execute
+ * 回调，2.从度量中获取数据 3.向验证器请求有效样本 4.将新数据报告给报告器 5.循环直到有有效样本
+ *
  */
 @Injectable()
 export class Sampler {

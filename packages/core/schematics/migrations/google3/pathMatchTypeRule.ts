@@ -14,6 +14,9 @@ import {PathMatchTypeTransform} from '../path-match-type/transform';
 
 /**
  * TSLint rule that updates return value for guards that return UrlTree.
+ *
+ * 更新返回 UrlTree 的守卫的返回值的 TSLint 规则。
+ *
  */
 export class Rule extends Rules.TypedRule {
   override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
@@ -34,7 +37,12 @@ export class Rule extends Rules.TypedRule {
     }
     return [];
 
-    /** Gets the update recorder for the specified source file. */
+    /**
+     * Gets the update recorder for the specified source file.
+     *
+     * 获取指定源文件的更新记录器。
+     *
+     */
     function getUpdateRecorder(sourceFile: ts.SourceFile): TslintUpdateRecorder {
       if (updateRecorders.has(sourceFile)) {
         return updateRecorders.get(sourceFile)!;

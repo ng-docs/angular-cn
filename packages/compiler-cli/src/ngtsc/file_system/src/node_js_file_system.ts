@@ -15,6 +15,9 @@ import {AbsoluteFsPath, FileStats, FileSystem, PathManipulation, PathSegment, Pa
 
 /**
  * A wrapper around the Node.js file-system that supports path manipulation.
+ *
+ * 支持路径操作的 Node.js 文件系统的包装器。
+ *
  */
 export class NodeJSPathManipulation implements PathManipulation {
   pwd(): AbsoluteFsPath {
@@ -64,6 +67,9 @@ const currentFileName = isCommonJS ? __filename : fileURLToPath(currentFileUrl!)
 
 /**
  * A wrapper around the Node.js file-system that supports readonly operations and path manipulation.
+ *
+ * 支持只读操作和路径操作的 Node.js 文件系统的包装器。
+ *
  */
 export class NodeJSReadonlyFileSystem extends NodeJSPathManipulation implements ReadonlyFileSystem {
   private _caseSensitive: boolean|undefined = undefined;
@@ -105,6 +111,9 @@ export class NodeJSReadonlyFileSystem extends NodeJSPathManipulation implements 
 
 /**
  * A wrapper around the Node.js file-system (i.e. the `fs` package).
+ *
+ * Node.js 文件系统的包装器（即 `fs` 包）。
+ *
  */
 export class NodeJSFileSystem extends NodeJSReadonlyFileSystem implements FileSystem {
   writeFile(path: AbsoluteFsPath, data: string|Uint8Array, exclusive: boolean = false): void {
@@ -151,6 +160,9 @@ export class NodeJSFileSystem extends NodeJSReadonlyFileSystem implements FileSy
 
 /**
  * Toggle the case of each character in a string.
+ *
+ * 切换字符串中每个字符的大小写。
+ *
  */
 function toggleCase(str: string): string {
   return str.replace(/\w/g, ch => ch.toUpperCase() === ch ? ch.toLowerCase() : ch.toUpperCase());

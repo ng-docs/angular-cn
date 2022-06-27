@@ -30,9 +30,15 @@ export interface LocalNgModuleData {
  * are local (declared in the ts.Program being compiled), and can produce `LocalModuleScope`s
  * which summarize the compilation scope of a component.
  *
+ * 一个注册表，它收集有关本地的 NgModules、指令、组件和管道的信息（在正在编译的 ts.Program
+ * 中声明），并且可以生成 `LocalModuleScope` ，它总结了组件的编译范围。
+ *
  * This class implements the logic of NgModule declarations, imports, and exports and can produce,
  * for a given component, the set of directives and pipes which are "visible" in that component's
  * template.
+ *
+ * 此类实现了 NgModule
+ * 声明、导入和导出的逻辑，并且可以为给定组件生成在该组件模板中“可见”的指令和管道集。
  *
  * The `LocalModuleScopeRegistry` has two "modes" of operation. During analysis, data for each
  * individual NgModule, Directive, Component, and Pipe is added to the registry. No attempt is made
@@ -41,29 +47,51 @@ export interface LocalNgModuleData {
  * and applies the NgModule logic to generate a `LocalModuleScope`, the full scope for the given
  * module or component.
  *
+ * `LocalModuleScopeRegistry` 有两种操作“模式”。在分析期间，每个
+ * NgModule、Directive、组件和管道的数据都会添加到注册表。不会尝试遍历或验证 NgModule
+ * 图（导入、导出等）。经过分析，可以调用 `getScopeOfModule` 或 `getScopeForComponent`
+ * 之一，它会遍历 NgModule 图并应用 NgModule 逻辑生成 `LocalModuleScope`
+ * ，即给定模块或组件的完整范围。
+ *
  * The `LocalModuleScopeRegistry` is also capable of producing `ts.Diagnostic` errors when Angular
  * semantics are violated.
+ *
+ * 当违反 Angular 语义时， `LocalModuleScopeRegistry` 也能产生 `ts.Diagnostic` 错误。
+ *
  */
 export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScopeReader {
   /**
    * Tracks whether the registry has been asked to produce scopes for a module or component. Once
    * this is true, the registry cannot accept registrations of new directives/pipes/modules as it
    * would invalidate the cached scope data.
+   *
+   * 跟踪是否已要求注册表为模块或组件生成范围。一旦这是真的，注册表将不能接受新指令/管道/模块的注册，因为它会使缓存的范围数据无效。
+   *
    */
   private sealed = false;
 
   /**
    * A map of components from the current compilation unit to the NgModule which declared them.
    *
+   * 从当前编译单元到声明它们的 NgModule 的组件映射。
+   *
    * As components and directives are not distinguished at the NgModule level, this map may also
    * contain directives. This doesn't cause any problems but isn't useful as there is no concept of
    * a directive's compilation scope.
+   *
+   * 由于在 NgModule
+   * 级别不区分组件和指令，因此此映射也可能包含指令。这不会导致任何问题，但没有用，因为没有指令的编译范围的概念。
+   *
    */
   private declarationToModule = new Map<ClassDeclaration, DeclarationData>();
 
   /**
    * This maps from the directive/pipe class to a map of data for each NgModule that declares the
    * directive/pipe. This data is needed to produce an error for the given class.
+   *
+   * 这从指令/管道类映射到声明该指令/管道的每个 NgModule
+   * 的数据映射。需要此数据才能为给定类产生错误。
+   *
    */
   private duplicateDeclarations =
       new Map<ClassDeclaration, Map<ClassDeclaration, DeclarationData>>();
@@ -72,27 +100,42 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
 
   /**
    * A cache of calculated `LocalModuleScope`s for each NgModule declared in the current program.
-
+   *
+   * 当前程序中声明的每个 NgModule 的计算得出的 `LocalModuleScope` 的缓存。
+   *
    */
   private cache = new Map<ClassDeclaration, LocalModuleScope|null>();
 
   /**
    * Tracks the `RemoteScope` for components requiring "remote scoping".
    *
+   * 跟踪需要“远程范围界定”的组件的 `RemoteScope` 。
+   *
    * Remote scoping is when the set of directives which apply to a given component is set in the
    * NgModule's file instead of directly on the component def (which is sometimes needed to get
    * around cyclic import issues). This is not used in calculation of `LocalModuleScope`s, but is
    * tracked here for convenience.
+   *
+   * 远程作用域是指适用于给定组件的指令集在 NgModule 的文件中设置，而不是直接在组件 def
+   * 上设置（有时需要解决循环导入问题）。这不会用于计算 `LocalModuleScope`
+   * ，但为方便起见，在此进行跟踪。
+   *
    */
   private remoteScoping = new Map<ClassDeclaration, RemoteScope>();
 
   /**
    * Tracks errors accumulated in the processing of scopes for each module declaration.
+   *
+   * 跟踪在每个模块声明的范围处理中积累的错误。
+   *
    */
   private scopeErrors = new Map<ClassDeclaration, ts.Diagnostic[]>();
 
   /**
    * Tracks which NgModules have directives/pipes that are declared in more than one module.
+   *
+   * 跟踪哪些 NgModule 具有在多个模块中声明的指令/管道。
+   *
    */
   private modulesWithStructuralErrors = new Set<ClassDeclaration>();
 
@@ -103,6 +146,9 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
 
   /**
    * Add an NgModule's data to the registry.
+   *
+   * 将 NgModule 的数据添加到注册表。
+   *
    */
   registerNgModuleMetadata(data: NgModuleMeta): void {
     this.assertCollecting();
@@ -130,8 +176,13 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * If `node` is declared in more than one NgModule (duplicate declaration), then get the
    * `DeclarationData` for each offending declaration.
    *
+   * 如果 `node` 在多个 NgModule （重复声明）中声明，则获取每个有问题的声明的 `DeclarationData` 。
+   *
    * Ordinarily a class is only declared in one NgModule, in which case this function returns
    * `null`.
+   *
+   * 通常，一个类仅在一个 NgModule 中声明，在这种情况下，此函数会返回 `null` 。
+   *
    */
   getDuplicateDeclarations(node: ClassDeclaration): DeclarationData[]|null {
     if (!this.duplicateDeclarations.has(node)) {
@@ -145,9 +196,16 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * Collects registered data for a module and its directives/pipes and convert it into a full
    * `LocalModuleScope`.
    *
+   * 收集模块及其指令/管道的注册数据，并将其转换为完整的 `LocalModuleScope` 。
+   *
    * This method implements the logic of NgModule imports and exports. It returns the
    * `LocalModuleScope` for the given NgModule if one can be produced, `null` if no scope was ever
    * defined, or the string `'error'` if the scope contained errors.
+   *
+   * 此方法实现了 NgModule 导入和导出的逻辑。如果可以生成，它会返回给定 `LocalModuleScope` 的
+   * LocalModuleScope ，如果没有定义范围，则返回 `null` ，如果范围包含错误，则返回字符串 `'error'`
+   * 。
+   *
    */
   getScopeOfModule(clazz: ClassDeclaration): LocalModuleScope|null {
     return this.moduleToRef.has(clazz) ?
@@ -158,6 +216,10 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
   /**
    * Retrieves any `ts.Diagnostic`s produced during the calculation of the `LocalModuleScope` for
    * the given NgModule, or `null` if no errors were present.
+   *
+   * 检索在计算给定 NgModule 的 `LocalModuleScope` 期间生成的任何 `ts.Diagnostic`
+   * ，如果不存在错误，则为 `null` 。
+   *
    */
   getDiagnosticsOfModule(clazz: ClassDeclaration): ts.Diagnostic[]|null {
     // Required to ensure the errors are populated for the given class. If it has been processed
@@ -214,6 +276,9 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
 
   /**
    * Implementation of `getScopeOfModule` which accepts a reference to a class.
+   *
+   * `getScopeOfModule` 的实现，它接受对类的引用。
+   *
    */
   private getScopeOfModuleReference(ref: Reference<ClassDeclaration>): LocalModuleScope|null {
     if (this.cache.has(ref.node)) {
@@ -469,6 +534,9 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
 
   /**
    * Check whether a component requires remote scoping.
+   *
+   * 检查组件是否需要远程范围。
+   *
    */
   getRemoteScope(node: ClassDeclaration): RemoteScope|null {
     return this.remoteScoping.has(node) ? this.remoteScoping.get(node)! : null;
@@ -477,6 +545,9 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
   /**
    * Set a component as requiring remote scoping, with the given directives and pipes to be
    * registered remotely.
+   *
+   * 将组件设置为需要远程范围，并使用要远程注册的给定指令和管道。
+   *
    */
   setComponentRemoteScope(node: ClassDeclaration, directives: Reference[], pipes: Reference[]):
       void {
@@ -486,14 +557,25 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
   /**
    * Look up the `ExportScope` of a given `Reference` to an NgModule.
    *
+   * 查找给定 `ExportScope` `Reference` 的 ExportScope。
+   *
    * The NgModule in question may be declared locally in the current ts.Program, or it may be
    * declared in a .d.ts file.
    *
-   * @returns `null` if no scope could be found, or `'invalid'` if the `Reference` is not a valid
+   * 有问题的 NgModule 可以在当前的 ts.Program 中本地声明，也可以在 .d.ts 文件中声明。
+   *
+   * @returns
+   *
+   * `null` if no scope could be found, or `'invalid'` if the `Reference` is not a valid
    *     NgModule.
+   *
+   * 如果找不到范围，则为 `null` ，如果 `Reference` 不是有效的 NgModule ，则为 `'invalid'` 。
    *
    * May also contribute diagnostics of its own by adding to the given `diagnostics`
    * array parameter.
+   *
+   * 也可以通过添加到给定的 `diagnostics` 数组参数来贡献自己的诊断。
+   *
    */
   private getExportedScope(
       ref: Reference<ClassDeclaration>, diagnostics: ts.Diagnostic[],
@@ -585,6 +667,9 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
 
 /**
  * Produce a `ts.Diagnostic` for an invalid import or export from an NgModule.
+ *
+ * 为从 `ts.Diagnostic` 的无效导入或导出生成 ts.Diagnostic。
+ *
  */
 function invalidRef(
     decl: Reference<ClassDeclaration>, rawExpr: ts.Expression|null,
@@ -624,6 +709,9 @@ function invalidRef(
 
 /**
  * Produce a `ts.Diagnostic` for an import or export which itself has errors.
+ *
+ * 为本身有错误的导入或导出生成 `ts.Diagnostic` 。
+ *
  */
 function invalidTransitiveNgModuleRef(
     decl: Reference<ClassDeclaration>, rawExpr: ts.Expression|null,
@@ -638,6 +726,9 @@ function invalidTransitiveNgModuleRef(
 /**
  * Produce a `ts.Diagnostic` for an exported directive or pipe which was not declared or imported
  * by the NgModule in question.
+ *
+ * 为 `ts.Diagnostic` 未声明或导入的导出指令或管道生成 ts.Diagnostic。
+ *
  */
 function invalidReexport(
     decl: Reference<ClassDeclaration>, rawExpr: ts.Expression|null,
@@ -664,6 +755,9 @@ function invalidReexport(
 
 /**
  * Produce a `ts.Diagnostic` for a collision in re-export names between two directives/pipes.
+ *
+ * 为两个指令/管道之间的重新导出名称冲突生成 `ts.Diagnostic` 。
+ *
  */
 function reexportCollision(
     module: ClassDeclaration, refA: Reference<ClassDeclaration>,

@@ -28,6 +28,9 @@ export interface I18nMessageFactory {
 
 /**
  * Returns a function converting html nodes to an i18n Message given an interpolationConfig
+ *
+ * 返回给定插值配置的将 html 节点转换为 i18n 消息的函数
+ *
  */
 export function createI18nMessageFactory(interpolationConfig: InterpolationConfig):
     I18nMessageFactory {
@@ -165,10 +168,24 @@ class _I18nVisitor implements html.Visitor {
   /**
    * Convert, text and interpolated tokens up into text and placeholder pieces.
    *
+   * 将文本和插值标记转换为文本和占位符块。
+   *
    * @param tokens The text and interpolated tokens.
+   *
+   * 文本和内插标记。
+   *
    * @param sourceSpan The span of the whole of the `text` string.
+   *
+   * 整个 `text` 字符串的跨度。
+   *
    * @param context The current context of the visitor, used to compute and store placeholders.
+   *
+   * 访问者的当前上下文，用于计算和存储占位符。
+   *
    * @param previousI18n Any i18n metadata associated with this `text` from a previous pass.
+   *
+   * 上一次传递中与 `text` 本关联的任何 i18n 元数据。
+   *
    */
   private _visitTextWithInterpolation(
       tokens: (InterpolatedTextToken|InterpolatedAttributeToken)[], sourceSpan: ParseSourceSpan,
@@ -224,11 +241,22 @@ class _I18nVisitor implements html.Visitor {
 /**
  * Re-use the source-spans from `previousI18n` metadata for the `nodes`.
  *
+ * 为 `nodes` 重用 `previousI18n` 元数据中的 source-spans 。
+ *
  * Whitespace removal can invalidate the source-spans of interpolation nodes, so we
  * reuse the source-span stored from a previous pass before the whitespace was removed.
  *
+ * 删除空格可能会导致插值节点的 source-span 无效，因此我们重用了在删除空格之前从上一次传递中存储的
+ * source-span 。
+ *
  * @param nodes The `Text` and `Placeholder` nodes to be processed.
+ *
+ * 要处理的 `Text` 和 `Placeholder` 节点。
+ *
  * @param previousI18n Any i18n metadata for these `nodes` stored from a previous pass.
+ *
+ * 从上一次传递中存储的这些 `nodes` 的任何 i18n 元数据。
+ *
  */
 function reusePreviousSourceSpans(nodes: i18n.Node[], previousI18n: i18n.I18nMeta|undefined): void {
   if (previousI18n instanceof i18n.Message) {
@@ -253,6 +281,9 @@ function reusePreviousSourceSpans(nodes: i18n.Node[], previousI18n: i18n.I18nMet
 
 /**
  * Asserts that the `message` contains exactly one `Container` node.
+ *
+ * 断言 `message` 正好包含一个 `Container` 节点。
+ *
  */
 function assertSingleContainerMessage(message: i18n.Message): void {
   const nodes = message.nodes;
@@ -265,6 +296,9 @@ function assertSingleContainerMessage(message: i18n.Message): void {
 /**
  * Asserts that the `previousNodes` and `node` collections have the same number of elements and
  * corresponding elements have the same node type.
+ *
+ * 断言 `previousNodes` 和 `node` 集合具有相同数量的元素，并且对应的元素具有相同的节点类型。
+ *
  */
 function assertEquivalentNodes(previousNodes: i18n.Node[], nodes: i18n.Node[]): void {
   if (previousNodes.length !== nodes.length) {

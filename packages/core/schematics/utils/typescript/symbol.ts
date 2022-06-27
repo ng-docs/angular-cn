@@ -19,7 +19,12 @@ export function getValueSymbolOfDeclaration(node: ts.Node, typeChecker: ts.TypeC
   return symbol;
 }
 
-/** Checks whether a node is referring to a specific import specifier. */
+/**
+ * Checks whether a node is referring to a specific import specifier.
+ *
+ * 检查节点是否正在引用特定的导入说明符。
+ *
+ */
 export function isReferenceToImport(
     typeChecker: ts.TypeChecker, node: ts.Node, importSpecifier: ts.ImportSpecifier): boolean {
   const nodeSymbol = typeChecker.getTypeAtLocation(node).getSymbol();
@@ -28,7 +33,12 @@ export function isReferenceToImport(
       nodeSymbol.declarations[0] === importSymbol.declarations[0];
 }
 
-/** Checks whether a node's type is nullable (`null`, `undefined` or `void`). */
+/**
+ * Checks whether a node's type is nullable (`null`, `undefined` or `void`).
+ *
+ * 检查节点的类型是否可以为 null （ `null` 、 `undefined` 或 `void` ）。
+ *
+ */
 export function isNullableType(typeChecker: ts.TypeChecker, node: ts.Node) {
   // Skip expressions in the form of `foo.bar!.baz` since the `TypeChecker` seems
   // to identify them as null, even though the user indicated that it won't be.
@@ -63,6 +73,9 @@ export function isNullableType(typeChecker: ts.TypeChecker, node: ts.Node) {
 /**
  * Walks through the types and sub-types of a node, looking for a
  * type that has the same name as one of the passed-in ones.
+ *
+ * 遍历节点的类型和子类型，寻找与传入的类型之一同名的类型。
+ *
  */
 export function hasOneOfTypes(
     typeChecker: ts.TypeChecker, node: ts.Node, types: string[]): boolean {

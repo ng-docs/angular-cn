@@ -44,10 +44,17 @@ import {DirectPackageJsonUpdater, PackageJsonUpdater} from './writing/package_js
 /**
  * This is the main entry-point into ngcc (aNGular Compatibility Compiler).
  *
+ * 这是 ngcc （aNGular 兼容编译器）的主要入口点。
+ *
  * You can call this function to process one or more npm packages, to ensure
  * that they are compatible with the ivy compiler (ngtsc).
  *
+ * 你可以调用此函数来处理一个或多个 npm 包，以确保它们与 ivy 编译器 (ngtsc) 兼容。
+ *
  * @param options The options telling ngcc what to compile and how.
+ *
+ * 告诉 ngcc 要编译什么以及如何编译的选项。
+ *
  */
 export function mainNgcc<T extends AsyncNgccOptions|SyncNgccOptions>(options: T):
     T extends AsyncNgccOptions ? Promise<void>: void;

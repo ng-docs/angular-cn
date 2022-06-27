@@ -17,6 +17,8 @@ export function createEmptyUrlTree() {
  * A set of options which specify how to determine if a `UrlTree` is active, given the `UrlTree`
  * for the current router state.
  *
+ * 一组选项，指定如何在给定当前路由器状态的 `UrlTree` 的情况下确定 `UrlTree` 是否处于活动状态。
+ *
  * @publicApi
  * @see Router.isActive
  */
@@ -24,39 +26,82 @@ export interface IsActiveMatchOptions {
   /**
    * Defines the strategy for comparing the matrix parameters of two `UrlTree`s.
    *
+   * 定义比较两个 `UrlTree` 的矩阵参数的策略。
+   *
    * The matrix parameter matching is dependent on the strategy for matching the
    * segments. That is, if the `paths` option is set to `'subset'`, only
    * the matrix parameters of the matching segments will be compared.
    *
+   * 矩阵参数匹配取决于匹配段的策略。也就是说，如果 `paths` 选项设置为 `'subset'`
+   * ，则只会比较匹配段的矩阵参数。
+   *
    * - `'exact'`: Requires that matching segments also have exact matrix parameter
-   * matches.
+   *   matches.
+   *
+   *   `'exact'` ：要求匹配的段也具有精确的矩阵参数匹配。
+   *
    * - `'subset'`: The matching segments in the router's active `UrlTree` may contain
-   * extra matrix parameters, but those that exist in the `UrlTree` in question must match.
+   *   extra matrix parameters, but those that exist in the `UrlTree` in question must match.
+   *
+   *   `'subset'` ：路由器的活动 `UrlTree` 中的匹配段可能包含额外的矩阵参数，但相关 `UrlTree`
+   * 中存在的那些必须匹配。
+   *
    * - `'ignored'`: When comparing `UrlTree`s, matrix params will be ignored.
+   *
+   *   `'ignored'` ：比较 `UrlTree` 时，矩阵参数将被忽略。
+   *
    */
   matrixParams: 'exact'|'subset'|'ignored';
   /**
    * Defines the strategy for comparing the query parameters of two `UrlTree`s.
    *
+   * 定义比较两个 `UrlTree` 的查询参数的策略。
+   *
    * - `'exact'`: the query parameters must match exactly.
+   *
+   *   `'exact'` ：查询参数必须完全匹配。
+   *
    * - `'subset'`: the active `UrlTree` may contain extra parameters,
-   * but must match the key and value of any that exist in the `UrlTree` in question.
+   *   but must match the key and value of any that exist in the `UrlTree` in question.
+   *
+   *   `'subset'` ：活动的 `UrlTree` 可能包含额外的参数，但必须与相关 `UrlTree`
+   * 中存在的任何参数的键和值匹配。
+   *
    * - `'ignored'`: When comparing `UrlTree`s, query params will be ignored.
+   *
+   *   `'ignored'` ：比较 `UrlTree` 时，查询参数将被忽略。
+   *
    */
   queryParams: 'exact'|'subset'|'ignored';
   /**
    * Defines the strategy for comparing the `UrlSegment`s of the `UrlTree`s.
    *
+   * 定义用于比较 `UrlSegment` 的 `UrlTree` 的策略。
+   *
    * - `'exact'`: all segments in each `UrlTree` must match.
+   *
+   *   `'exact'` ：每个 `UrlTree` 中的所有段都必须匹配。
+   *
    * - `'subset'`: a `UrlTree` will be determined to be active if it
-   * is a subtree of the active route. That is, the active route may contain extra
-   * segments, but must at least have all the segments of the `UrlTree` in question.
+   *   is a subtree of the active route. That is, the active route may contain extra
+   *   segments, but must at least have all the segments of the `UrlTree` in question.
+   *
+   *   `'subset'` ：如果 `UrlTree`
+   * 是活动路由的子树，则将其确定为活动状态。也就是说，活动路由可能包含额外的段，但必须至少具有相关的
+   * `UrlTree` 的所有段。
+   *
    */
   paths: 'exact'|'subset';
   /**
    * - `'exact'`: indicates that the `UrlTree` fragments must be equal.
+   *
+   *   `'exact'` ：表明 `UrlTree` 片段必须相等。
+   *
    * - `'ignored'`: the fragments will not be compared when determining if a
-   * `UrlTree` is active.
+   *   `UrlTree` is active.
+   *
+   *   `'ignored'` ：确定 `UrlTree` 是否处于活动状态时，不会比较片段。
+   *
    */
   fragment: 'exact'|'ignored';
 }
@@ -169,7 +214,6 @@ function matrixParamsMatch(
  *
  * 由于路由器状态是一棵树，而 URL 只是序列化的状态，所以 URL 就是序列化的树。 UrlTree
  * 是一种数据结构，在处理 URL 时提供了很多便利
- *
  * @usageNotes
  *
  * ### Example
@@ -177,7 +221,10 @@ function matrixParamsMatch(
  * ### 例子
  *
  * ```
- * @Component({templateUrl:'template.html'})
+ *
+ * ```
+ *
+ * @Component ({templateUrl:'template.html'})
  * class MyComponent {
  *   constructor(router: Router) {
  *     const tree: UrlTree =
@@ -191,7 +238,6 @@ function matrixParamsMatch(
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export class UrlTree {
@@ -246,7 +292,12 @@ export class UrlSegmentGroup {
    * Should be removed in when `relativeLinkResolution` is removed.
    */
   _segmentIndexShiftCorrected?: number;
-  /** The parent node in the url tree */
+  /**
+   * The parent node in the url tree
+   *
+   * url 树中的父节点
+   *
+   */
   parent: UrlSegmentGroup|null = null;
 
   constructor(
@@ -295,7 +346,6 @@ export class UrlSegmentGroup {
  * parameters associated with the segment.
  *
  * UrlSegment 是两个斜杠之间的 URL 的一部分。它包含路径和与该段关联的矩阵参数。
- *
  * @usageNotes
  *
  * ### Example
@@ -303,7 +353,10 @@ export class UrlSegmentGroup {
  * ### 例子
  *
  * ```
- * @Component({templateUrl:'template.html'})
+ *
+ * ```
+ *
+ * @Component ({templateUrl:'template.html'})
  * class MyComponent {
  *   constructor(router: Router) {
  *     const tree: UrlTree = router.parseUrl('/team;id=33');
@@ -314,7 +367,6 @@ export class UrlSegmentGroup {
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export class UrlSegment {
@@ -425,8 +477,8 @@ export abstract class UrlSerializer {
  * specify route specific parameters.
  *
  * DefaultUrlSerializer
- * 使用圆括号序列化辅助段（例如，popup:compose），使用冒号语法指定出口，并使用';parameter=value'
- * 语法（例如 open=true）来指定路由的特有参数。
+ * 使用圆括号序列化辅助段（比如，popup:compose），使用冒号语法指定出口，并使用';parameter=value'
+ * 语法（比如 open=true）来指定路由的特有参数。
  *
  * @publicApi
  */
@@ -505,7 +557,12 @@ function serializeSegment(segment: UrlSegmentGroup, root: boolean): string {
  * Encodes a URI string with the default encoding. This function will only ever be called from
  * `encodeUriQuery` or `encodeUriSegment` as it's the base set of encodings to be used. We need
  * a custom encoding because encodeURIComponent is too aggressive and encodes stuff that doesn't
- * have to be encoded per https://url.spec.whatwg.org.
+ * have to be encoded per <https://url.spec.whatwg.org>.
+ *
+ * 使用默认编码对 URI 字符串进行编码。此函数只会从 `encodeUriQuery` 或 `encodeUriSegment`
+ * 调用，因为它是要使用的基本编码集。我们需要一个自定义编码，因为 encodeURIComponent
+ * 太激进了，并且编码的东西不必按照<https://url.spec.whatwg.org>进行编码。
+ *
  */
 function encodeUriString(s: string): string {
   return encodeURIComponent(s)
@@ -519,7 +576,11 @@ function encodeUriString(s: string): string {
  * This function should be used to encode both keys and values in a query string key/value. In
  * the following URL, you need to call encodeUriQuery on "k" and "v":
  *
- * http://www.site.org/html;mk=mv?k=v#f
+ * 此函数应用于对查询字符串键/值中的键和值进行编码。在以下 URL 中，你需要对“k”和“v”调用
+ * encodeUriQuery：
+ *
+ * <http://www.site.org/html;mk=mv?k=v#f>
+ *
  */
 export function encodeUriQuery(s: string): string {
   return encodeUriString(s).replace(/%3B/gi, ';');
@@ -529,7 +590,10 @@ export function encodeUriQuery(s: string): string {
  * This function should be used to encode a URL fragment. In the following URL, you need to call
  * encodeUriFragment on "f":
  *
- * http://www.site.org/html;mk=mv?k=v#f
+ * 此函数应用于编码 URL 片段。在以下 URL 中，你需要在“f”上调用 encodeUriFragment ：
+ *
+ * <http://www.site.org/html;mk=mv?k=v#f>
+ *
  */
 export function encodeUriFragment(s: string): string {
   return encodeURI(s);
@@ -540,7 +604,11 @@ export function encodeUriFragment(s: string): string {
  * pair for matrix params. In the following URL, you need to call encodeUriSegment on "html",
  * "mk", and "mv":
  *
- * http://www.site.org/html;mk=mv?k=v#f
+ * 此函数应该在任何 URI 段以及矩阵参数的键/值对中的键和值上运行。在以下 URL
+ * 中，你需要对“html”、“mk”和“mv”调用 encodeUriSegment：
+ *
+ * <http://www.site.org/html;mk=mv?k=v#f>
+ *
  */
 export function encodeUriSegment(s: string): string {
   return encodeUriString(s).replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/%26/gi, '&');
@@ -802,6 +870,10 @@ export function createRoot(rootCandidate: UrlSegmentGroup) {
  * Recursively merges primary segment children into their parents and also drops empty children
  * (those which have no segments and no children themselves). The latter prevents serializing a
  * group into something like `/a(aux:)`, where `aux` is an empty child segment.
+ *
+ * 递归地将主要段子项合并到它们的父项中，并删除空子项（那些没有段也没有子项的）。后者可防止将组序列化为
+ * `/a(aux:)` 之类的东西，其中 `aux` 是空的子段。
+ *
  */
 export function squashSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGroup {
   const newChildren = {} as any;
@@ -820,10 +892,16 @@ export function squashSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGro
 /**
  * When possible, merges the primary outlet child into the parent `UrlSegmentGroup`.
  *
+ * 可能时，将主要出口子项合并到父 `UrlSegmentGroup` 中。
+ *
  * When a segment group has only one child which is a primary outlet, merges that child into the
  * parent. That is, the child segment group's segments are merged into the `s` and the child's
  * children become the children of `s`. Think of this like a 'squash', merging the child segment
  * group into the parent.
+ *
+ * 当一个段组只有一个作为主要出口的子项时，将该子项合并到父项中。也就是说，子段组的段被合并到 `s`
+ * 中，并且孩子的子项成为 `s` 的子项。可以把它想象成一个“壁球”，将子段组合并到父段中。
+ *
  */
 function mergeTrivialChildren(s: UrlSegmentGroup): UrlSegmentGroup {
   if (s.numberOfChildren === 1 && s.children[PRIMARY_OUTLET]) {

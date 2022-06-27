@@ -32,25 +32,38 @@ class Bindings {
  *
  * A helper class that allows an AngularJS component to be used from Angular.
  *
+ * 允许从 Angular 使用 AngularJS 组件的帮助器类。
+ *
  * *Part of the [upgrade/static](api?query=upgrade%2Fstatic)
  * library for hybrid upgrade apps that support AOT compilation.*
  *
+ * *支持 AOT 编译的混合升级应用程序的[upgrade/静态](api?query=upgrade%2Fstatic)库的一部分。*
+ *
  * This helper class should be used as a base class for creating Angular directives
  * that wrap AngularJS components that need to be "upgraded".
+ *
+ * 此帮助器类应该用作创建包装需要“升级”的 AngularJS 组件的 Angular 指令的基类。
  *
  * @usageNotes
  *
  * ### Examples
  *
+ * ### 例子
+ *
  * Let's assume that you have an AngularJS component called `ng1Hero` that needs
  * to be made available in Angular templates.
  *
- * {@example upgrade/static/ts/full/module.ts region="ng1-hero"}
+ * 假设你有一个名为 `ng1Hero` 的 AngularJS 组件，需要在 Angular 模板中使用。
+ *
+ * {
+ *
+ * @example upgrade/static/ts/full/module.ts region="ng1-hero"}
  *
  * We must create a `Directive` that will make this AngularJS component
  * available inside Angular templates.
  *
- * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
+ * {
+ * @example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
  *
  * In this example you can see that we must derive from the `UpgradeComponent`
  * base class but also provide an {@link Directive `@Directive`} decorator. This is
@@ -64,7 +77,6 @@ class Bindings {
  * * call the base class from the constructor, passing
  *   * the AngularJS name of the component (`ng1Hero`)
  *   * the `ElementRef` and `Injector` for the component wrapper
- *
  * @publicApi
  * @extensible
  */
@@ -100,11 +112,20 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
    * Instead you should derive a new class from this one and call the super constructor
    * from the base class.
    *
+   * 创建一个新的 `UpgradeComponent`
+   * 实例。你通常不需要这样做。相反，你应该从中派生一个新类，并从基类调用超级构造函数。
+   *
    * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper" }
    *
    * * The `name` parameter should be the name of the AngularJS directive.
+   *
+   *   `name` 参数应该是 AngularJS 指令的名称。
+   *
    * * The `elementRef` and `injector` parameters should be acquired from Angular by dependency
    *   injection into the base class constructor.
+   *
+   *   `elementRef` 和 `injector` 参数应该通过依赖注入到基类构造函数的方式从 Angular 获取。
+   *
    */
   constructor(private name: string, private elementRef: ElementRef, private injector: Injector) {
     this.helper = new UpgradeHelper(injector, name, elementRef);

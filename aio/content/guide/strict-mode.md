@@ -1,5 +1,7 @@
 # Strict mode
 
+# 严格模式
+
 Angular CLI creates all new workspaces and projects with **strict mode** enabled.
 
 Angular CLI 创建所有新工作区和项目时会弃用**严格模式**。
@@ -7,7 +9,7 @@ Angular CLI 创建所有新工作区和项目时会弃用**严格模式**。
 Strict mode improves maintainability and helps you catch bugs ahead of time.
 Additionally, strict mode applications are easier to statically analyze and can help the `ng update` command refactor code more safely and precisely when you are updating to future versions of Angular.
 
-严格模式会增强可维护性，并且帮助你捕获各种 AOT 的 BUG。 另外，严格模式的应用还易于进行静态分析，并且当你未来要升级到 Angular 的未来版本时，能帮助 `ng update` 命令的重构代码更加安全和精确，。
+严格模式会增强可维护性，并且帮助你捕获各种 AOT 的 BUG。 另外，严格模式的应用还易于进行静态分析，并且当你未来要升级到 Angular 的未来版本时，能帮助 `ng update` 命令的重构代码更加安全和精确。
 
 Specifically, strict mode affects newly generated applications in the following way:
 
@@ -15,6 +17,8 @@ Specifically, strict mode affects newly generated applications in the following 
 
 * Enables [`strict` mode in TypeScript](https://www.typescriptlang.org/tsconfig#strict), as well as other strictness flags recommended by the TypeScript team.
   Specifically, `forceConsistentCasingInFileNames`, `noImplicitReturns`, and `noFallthroughCasesInSwitch`.
+
+  [在 TypeScript 中启用 `strict` 模式](https://www.staging-typescript.org/tsconfig#strict)，以及 TypeScript 团队建议的其他严格性标志。具体而言，包括 `forceConsistentCasingInFileNames`、`noImplicitReturns`、`noFallthroughCasesInSwitch`。
 
 * Turns on strict Angular compiler flags [`strictTemplates`](guide/angular-compiler-options#stricttemplates), [`strictInjectionParameters`](guide/angular-compiler-options#strictinjectionparameters), and [`strictInputAccessModifiers`](guide/template-typecheck#troubleshooting-template-errors).
 

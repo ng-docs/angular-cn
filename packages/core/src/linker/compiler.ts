@@ -26,11 +26,15 @@ import {NgModuleFactory} from './ng_module_factory';
  * NgModuleFactory 和一些 ComponentFactory 的组合。
  *
  * @publicApi
- *
  * @deprecated
+ *
  * Ivy JIT mode doesn't require accessing this symbol.
  * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
  * additional context.
+ *
+ * Ivy JIT 模式不需要访问此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
+ * 更改](guide/deprecations#jit-api-changes)。
+ *
  */
 export class ModuleWithComponentFactories<T> {
   constructor(
@@ -53,11 +57,15 @@ export class ModuleWithComponentFactories<T> {
  * 每个 `@NgModule` 为其注入器提供一个自己的编译器，它将使用此 NgModule 的指令/管道来编译组件。
  *
  * @publicApi
- *
  * @deprecated
+ *
  * Ivy JIT mode doesn't require accessing this symbol.
  * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
  * additional context.
+ *
+ * Ivy JIT 模式不需要访问此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
+ * 更改](guide/deprecations#jit-api-changes)。
+ *
  */
 @Injectable({providedIn: 'root'})
 export class Compiler {
@@ -142,6 +150,8 @@ export class Compiler {
 /**
  * Options for creating a compiler.
  *
+ * 创建编译器的选项。
+ *
  * Note: the `useJit` and `missingTranslation` config options are not used in Ivy, passing them has
  * no effect. Those config options are deprecated since v13.
  *
@@ -151,13 +161,23 @@ export class Compiler {
  */
 export type CompilerOptions = {
   /**
-   * @deprecated not used at all in Ivy, providing this config option has no effect.
+   * @deprecated
+   *
+   * not used at all in Ivy, providing this config option has no effect.
+   *
+   * 在 Ivy 中根本不使用，提供此配置选项没有效果。
+   *
    */
   useJit?: boolean,
   defaultEncapsulation?: ViewEncapsulation,
   providers?: StaticProvider[],
   /**
-   * @deprecated not used at all in Ivy, providing this config option has no effect.
+   * @deprecated
+   *
+   * not used at all in Ivy, providing this config option has no effect.
+   *
+   * 在 Ivy 中根本不使用，提供此配置选项没有效果。
+   *
    */
   missingTranslation?: MissingTranslationStrategy,
   preserveWhitespaces?: boolean,
@@ -178,11 +198,15 @@ export const COMPILER_OPTIONS = new InjectionToken<CompilerOptions[]>('compilerO
  * 用于创建编译器的工厂
  *
  * @publicApi
- *
  * @deprecated
+ *
  * Ivy JIT mode doesn't require accessing this symbol.
  * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
  * additional context.
+ *
+ * Ivy JIT 模式不需要访问此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
+ * 更改](guide/deprecations#jit-api-changes)。
+ *
  */
 export abstract class CompilerFactory {
   abstract createCompiler(options?: CompilerOptions[]): Compiler;

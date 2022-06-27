@@ -23,30 +23,60 @@ import {NgAdapterInjector} from './util';
  * An `NgModule`, which you import to provide AngularJS core services,
  * and has an instance method used to bootstrap the hybrid upgrade application.
  *
+ * 一个 `NgModule` ，你导入它以提供 AngularJS 核心服务，并有一个用于引导混合升级应用程序的实例方法。
+ *
  * *Part of the [upgrade/static](api?query=upgrade/static)
  * library for hybrid upgrade apps that support AOT compilation*
+ *
+ * *支持 AOT 编译的混合升级应用程序的[upgrade/静态](api?query=upgrade/static)库的一部分*
  *
  * The `upgrade/static` package contains helpers that allow AngularJS and Angular components
  * to be used together inside a hybrid upgrade application, which supports AOT compilation.
  *
+ * `upgrade/static` 包包含帮助器，允许在支持 AOT 编译的混合升级应用程序中一起使用 AngularJS 和
+ * Angular 组件。
+ *
  * Specifically, the classes and functions in the `upgrade/static` module allow the following:
+ *
+ * 具体来说， `upgrade/static` 模块中的类和函数允许以下内容：
  *
  * 1. Creation of an Angular directive that wraps and exposes an AngularJS component so
  *    that it can be used in an Angular template. See `UpgradeComponent`.
+ *
+ *    创建一个包装并公开 AngularJS 组件的 Angular 指令，以便可以在 Angular 模板中使用它。请参阅
+ * `UpgradeComponent` 。
+ *
  * 2. Creation of an AngularJS directive that wraps and exposes an Angular component so
  *    that it can be used in an AngularJS template. See `downgradeComponent`.
+ *
+ *    创建一个包装并公开 Angular 组件的 AngularJS 指令，以便它可以在 AngularJS 模板中使用。请参阅
+ * `downgradeComponent` 。
+ *
  * 3. Creation of an Angular root injector provider that wraps and exposes an AngularJS
  *    service so that it can be injected into an Angular context. See
  *    {@link UpgradeModule#upgrading-an-angular-1-service Upgrading an AngularJS service} below.
+ *
+ *    创建一个包装并公开 AngularJS 服务的 Angular 根注入器提供程序，以便可以将其注入 Angular
+ * 上下文。请参阅下面的{@link UpgradeModule#upgrading-an-angular-1-service 升级 AngularJS 服务}。
+ *
  * 4. Creation of an AngularJS service that wraps and exposes an Angular injectable
  *    so that it can be injected into an AngularJS context. See `downgradeInjectable`.
+ *
+ *    创建一个包装并公开 Angular 可注入物的 AngularJS 服务，以便可以将其注入 AngularJS
+ * 上下文。请参阅 `downgradeInjectable` 。
+ *
  * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
  *    coexisting in a single application.
+ *
+ *    混合 Angular 应用程序的引导，该应用程序包含在单个应用程序中共存的两个框架。
  *
  * @usageNotes
  *
  * ```ts
- * import {UpgradeModule} from '@angular/upgrade/static';
+ * import {UpgradeModule} from '
+ * ```
+ *
+ * @angular /upgrade/static';
  * ```
  *
  * See also the {@link UpgradeModule#examples examples} below.
@@ -108,19 +138,23 @@ import {NgAdapterInjector} from './util';
  *
  * Import the `UpgradeModule` into your top level {@link NgModule Angular `NgModule`}.
  *
- * {@example upgrade/static/ts/full/module.ts region='ng2-module'}
+ * {
+ * @example upgrade/static/ts/full/module.ts region='ng2-module'}
  *
  * Then inject `UpgradeModule` into your Angular `NgModule` and use it to bootstrap the top level
  * [AngularJS module](https://docs.angularjs.org/api/ng/type/angular.Module) in the
  * `ngDoBootstrap()` method.
  *
- * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng1'}
+ * {
+ * @example upgrade/static/ts/full/module.ts region='bootstrap-ng1'}
  *
  * Finally, kick off the whole process, by bootstrapping your top level Angular `NgModule`.
  *
- * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
+ * {
+ * @example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
  *
- * {@a upgrading-an-angular-1-service}
+ * {
+ * @a upgrading-an-angular-1-service}
  * ### Upgrading an AngularJS service
  *
  * There is no specific API for upgrading an AngularJS service. Instead you should just follow the
@@ -128,27 +162,37 @@ import {NgAdapterInjector} from './util';
  *
  * Let's say you have an AngularJS service:
  *
- * {@example upgrade/static/ts/full/module.ts region="ng1-text-formatter-service"}
+ * {
+ * @example upgrade/static/ts/full/module.ts region="ng1-text-formatter-service"}
  *
  * Then you should define an Angular provider to be included in your `NgModule` `providers`
  * property.
  *
- * {@example upgrade/static/ts/full/module.ts region="upgrade-ng1-service"}
+ * {
+ * @example upgrade/static/ts/full/module.ts region="upgrade-ng1-service"}
  *
  * Then you can use the "upgraded" AngularJS service by injecting it into an Angular component
  * or service.
  *
- * {@example upgrade/static/ts/full/module.ts region="use-ng1-upgraded-service"}
- *
+ * {
+ * @example upgrade/static/ts/full/module.ts region="use-ng1-upgraded-service"}
  * @publicApi
  */
 @NgModule({providers: [angular1Providers]})
 export class UpgradeModule {
   /**
    * The AngularJS `$injector` for the upgrade application.
+   *
+   * 升级应用程序的 AngularJS `$injector` 。
+   *
    */
   public $injector: any /*angular.IInjectorService*/;
-  /** The Angular Injector **/
+  /**
+   * The Angular Injector
+   *
+   * Angular 注入器
+   *
+   */
   public injector: Injector;
 
   constructor(
@@ -167,9 +211,21 @@ export class UpgradeModule {
 
   /**
    * Bootstrap an AngularJS application from this NgModule
+   *
+   * 从此 NgModule 引导 AngularJS 应用程序
+   *
    * @param element the element on which to bootstrap the AngularJS application
+   *
+   * 要引导 AngularJS 应用程序的元素
+   *
    * @param [modules] the AngularJS modules to bootstrap for this application
+   *
+   * 要为此应用程序引导的 AngularJS 模块
+   *
    * @param [config] optional extra AngularJS bootstrap configuration
+   *
+   * 可选的额外 AngularJS 引导配置
+   *
    */
   bootstrap(
       element: Element, modules: string[] = [], config?: any /*angular.IAngularBootstrapConfig*/) {

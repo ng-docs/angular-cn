@@ -2,13 +2,15 @@
 
 # Testing
 
+# 测试
+
 Testing your Angular application helps you check that your app is working as you expect.
 
 测试你的 Angular 应用可以帮助你检查此应用是否正常运行。
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Before writing tests for your Angular app, you should have a basic understanding of the following concepts:
 
@@ -26,6 +28,8 @@ Before writing tests for your Angular app, you should have a basic understanding
 
 * [Angular CLI](cli)
 
+  [角度 CLI](cli)
+
 The testing documentation offers tips and techniques for unit and integration testing Angular applications through a sample application created with the [Angular CLI](cli).
 This sample application is much like the one in the [*Tour of Heroes* tutorial](tutorial).
 
@@ -34,6 +38,8 @@ This sample application is much like the one in the [*Tour of Heroes* tutorial](
 <div class="alert is-helpful">
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+  如果你要试用本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -45,7 +51,7 @@ If you'd like to experiment with the application that this guide describes, <liv
 
 The Angular CLI downloads and installs everything you need to test an Angular application with the [Jasmine test framework](https://jasmine.github.io).
 
-Angular CLI 会下载并安装试用 [Jasmine 测试框架](https://jasmine.github.io/) 测试 Angular 应用时所需的一切。
+Angular CLI 会下载并安装试用 [Jasmine 测试框架](https://jasmine.github.io) 测试 Angular 应用时所需的一切。
 
 The project you create with the CLI is immediately ready to test.
 Just run the [`ng test`](cli/test) CLI command:
@@ -85,7 +91,7 @@ It shows that Karma ran three tests that all passed.
 
 A Chrome browser also opens and displays the test output in the "Jasmine HTML Reporter" like this.
 
-它还会打开 Chrome 浏览器并在“ Jasmine HTML 报告器”中显示测试输出，就像这样：。
+它还会打开 Chrome 浏览器并在“ Jasmine HTML 报告器”中显示测试输出，就像这样。
 
 <div class="lightbox">
 
@@ -252,7 +258,11 @@ This article explains how to configure your project to run Circle CI and Travis 
 
 1. Create a folder called `.circleci` at the project root.
 
+   在项目的根目录下创建一个名叫 `.circleci` 的目录。
+
 1. In the new folder, create a file called `config.yml` with the following content:
+
+   在这个新建的目录下，创建一个名为 `config.yml` 的文件，内容如下：
 
    <code-example format="yaml" language="yaml">
 
@@ -278,10 +288,17 @@ This article explains how to configure your project to run Circle CI and Travis 
    This configuration caches `node_modules/` and uses [`npm run`](https://docs.npmjs.com/cli/run-script) to run CLI commands, because `@angular/cli` is not installed globally.
    The double hyphen (`--`) characters is needed to pass arguments into the `npm` script.
 
+   该配置会缓存 `node_modules/` 并使用 [`npm run`](https://docs.npmjs.com/cli/run-script) 来运行 CLI 命令，因为 `@angular/cli` 并没有装到全局。
+   要把参数传给 `npm` 脚本，这个单独的双中线（`--`）是必须的。
+
 1. Commit your changes and push them to your repository.
+
+   提交你的修改，并把它们推送到你的代码仓库中。
 
 1. [Sign up for Circle CI](https://circleci.com/docs/2.0/first-steps) and [add your project](https://circleci.com/add-projects).
    Your project should start building.
+
+   [注册 Circle CI](https://circleci.com/docs/2.0/first-steps)，并[添加你的项目](https://circleci.com/add-projects)。你的项目将会开始构建。
 
    * Learn more about Circle CI from [Circle CI documentation](https://circleci.com/docs/2.0).
 
@@ -292,6 +309,8 @@ This article explains how to configure your project to run Circle CI and Travis 
 ### 为 Travis CI 配置项目
 
 1. Create a file called `.travis.yml` at the project root, with the following content:
+
+   在项目根目录下创建一个名叫 `.travis.yml` 的文件，内容如下：
 
    <code-example format="yaml" language="yaml">
 
@@ -320,8 +339,13 @@ This article explains how to configure your project to run Circle CI and Travis 
 
 1. Commit your changes and push them to your repository.
 
+   提交你的更改，并把它们推送到你的代码仓库。
+
 1. [Sign up for Travis CI](https://travis-ci.org/auth) and [add your project](https://travis-ci.org/profile).
    You'll need to push a new commit to trigger a build.
+
+   [注册 Travis CI](https://travis-ci.org/auth) 并[添加你的项目](https://travis-ci.org/profile)。
+   你需要推送一个新的提交，以触发构建。
 
    * Learn more about Travis CI testing from [Travis CI documentation](https://docs.travis-ci.com).
 
@@ -332,6 +356,8 @@ This article explains how to configure your project to run Circle CI and Travis 
 ### 为 GitLab CI 配置项目
 
 1. Create a file called `.gitlab-ci.yml` at the project root, with the following content:
+
+   在项目根目录下创建一个名为 `.gitlab-ci.yml` 的文件，内容如下：
 
    <code-example format="yaml" language="yaml">
 
@@ -381,11 +407,15 @@ This article explains how to configure your project to run Circle CI and Travis 
 1. [Sign up for GitLab CI](https://gitlab.com/users/sign_in) and [add your project](https://gitlab.com/projects/new).
    You'll need to push a new commit to trigger a build.
 
+   [注册 GitLab CI](https://gitlab.com/users/sign_in) 并[添加你的项目](https://gitlab.com/projects/new)。你需要推送新的提交以触发构建。
+
 1. Commit your changes and push them to your repository.
+
+   提交你的更改并将其推送到你的代码仓库。
 
    * Learn more about GitLab CI testing from [GitLab CI/CD documentation](https://docs.gitlab.com/ee/ci).
 
-     [从 GitLab CI / CD 文档中](https://docs.gitlab.com/ee/ci/)了解有关 GitLab CI 测试的更多信息。
+     [从 GitLab CI / CD 文档中](https://docs.gitlab.com/ee/ci)了解有关 GitLab CI 测试的更多信息。
 
 ### Configure project for GitHub Actions
 
@@ -393,7 +423,11 @@ This article explains how to configure your project to run Circle CI and Travis 
 
 1. Create a folder called `.github/workflows` at root of your project.
 
+   在项目的根目录下创建一个名叫 `.github/workflows` 的文件夹。
+
 1. In the new folder, create a file called `main.yml` with the following content:
+
+   在新文件夹中，创建一个名为 `main.yml` 的文件，其内容如下：
 
    <code-example format="yaml" language="yaml">
 
@@ -421,7 +455,11 @@ This article explains how to configure your project to run Circle CI and Travis 
 1. [Sign up for GitHub](https://github.com/join) and [add your project](https://github.com/new).
    You'll need to push a new commit to trigger a build.
 
+   [注册 GitHub](https://github.com/join) 并[添加你的项目](https://github.com/new)。你需要推送新的提交以触发构建。
+
 1. Commit your changes and push them to your repository.
+
+   提交你的更改并将其推送到你的代码仓库。
 
    * Learn more about GitHub Actions from [GitHub Actions documentation](https://docs.github.com/en/actions)
 
@@ -475,6 +513,9 @@ ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
 Right now, you'll also want to include the `--disable-gpu` flag if you're running on Windows.
 See [crbug.com/737678](https://crbug.com/737678).
 
+**注意**：<br />
+目前，如果你正运行在 Windows 中，还要包含 `--disable-gpu` 标志。参阅 [crbug.com/737678](https://crbug.com/737678)。
+
 </div>
 
 ## More information on testing
@@ -489,13 +530,21 @@ After you've set up your application for testing, you might find the following t
 | :-- | :------ |
 |  | 详情 |
 | [Code coverage](guide/testing-code-coverage) | How much of your app your tests are covering and how to specify required amounts. |
+| [代码覆盖](guide/testing-code-coverage) | 找出你的测试覆盖了多少应用，以及如何指定所需的数量。 |
 | [Testing services](guide/testing-services) | How to test the services your application uses. |
+| [测试服务](guide/testing-services) | 如何测试应用中所用的服务。 |
 | [Basics of testing components](guide/testing-components-basics) | Basics of testing Angular components. |
+| [测试组件的基础知识](guide/testing-components-basics) | 测试 Angular 组件的基础知识。 |
 | [Component testing scenarios](guide/testing-components-scenarios) | Various kinds of component testing scenarios and use cases. |
+| \[组件测试场景(guide/testing-components-scenarios) | 了解各种组件测试场景和用例。 |
 | [Testing attribute directives](guide/testing-attribute-directives) | How to test your attribute directives. |
+| [测试属性型指令](guide/testing-attribute-directives) | 如何测试你的属性型指令。 |
 | [Testing pipes](guide/testing-pipes) | How to test pipes. |
+| [测试管道](guide/testing-pipes) | 如何测试管道。 |
 | [Debugging tests](guide/test-debugging) | Common testing bugs. |
+| [调试测试代码](guide/test-debugging) | 发现测试代码的常见 BUG。 |
 | [Testing utility APIs](guide/testing-utility-apis) | Angular testing features. |
+| [测试实用工具 API](guide/testing-utility-apis) | Angular 的测试特性。 |
 
 <!-- links -->
 

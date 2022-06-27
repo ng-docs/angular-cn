@@ -24,6 +24,9 @@ export type PrivateDeclarationsAnalyses = ExportInfo[];
 /**
  * This class will analyze a program to find all the declared classes
  * (i.e. on an NgModule) that are not publicly exported via an entry-point.
+ *
+ * 此类将分析程序以查找所有未通过入口点公开导出的声明类（即 NgModule 上）。
+ *
  */
 export class PrivateDeclarationsAnalyzer {
   constructor(

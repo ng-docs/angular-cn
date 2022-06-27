@@ -262,11 +262,26 @@ export class CompilerFacadeImpl implements CompilerFacade {
   /**
    * JIT compiles an expression and returns the result of executing that expression.
    *
+   * JIT 会编译一个表达式并返回执行该表达式的结果。
+   *
    * @param def the definition which will be compiled and executed to get the value to patch
-   * @param context an object map of @angular/core symbol names to symbols which will be available
+   *
+   * 将被编译和执行以获取要 patch 的值的定义
+   *
+   * @param context an object map of
+   *
+   * 的对象映射表
+   *
+   * @angular /core symbol names to symbols which will be available
    * in the context of the compiled expression
    * @param sourceUrl a URL to use for the source map of the compiled expression
+   *
+   * 用于已编译表达式的源映射的 URL
+   *
    * @param preStatements a collection of statements that should be evaluated before the expression.
+   *
+   * 应该在表达式之前估算的语句的集合。
+   *
    */
   private jitExpression(
       def: Expression, context: {[key: string]: any}, sourceUrl: string,
@@ -521,10 +536,17 @@ type R3DirectiveMetadataFacadeNoPropAndWhitespace =
 /**
  * Convert the expression, if present to an `R3ProviderExpression`.
  *
+ * 将表达式（如果存在）转换为 `R3ProviderExpression` 。
+ *
  * In JIT mode we do not want the compiler to wrap the expression in a `forwardRef()` call because,
  * if it is referencing a type that has not yet been defined, it will have already been wrapped in
  * a `forwardRef()` - either by the application developer or during partial-compilation. Thus we can
  * use `ForwardRefHandling.None`.
+ *
+ * 在 JIT 模式下，我们不希望编译器将表达式包装在 `forwardRef()`
+ * 调用中，因为如果它引用了一个尚未定义的类型，它将已经被包装在 `forwardRef()` 中 -
+ * 要么是由应用程序开发人员或在部分编译期间。因此我们可以用 `ForwardRefHandling.None` 。
+ *
  */
 function convertToProviderExpression(obj: any, property: string): MaybeForwardRefExpression|
     undefined {

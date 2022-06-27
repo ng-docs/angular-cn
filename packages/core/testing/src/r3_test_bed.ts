@@ -48,60 +48,93 @@ let _nextRootElementId = 0;
 
 /**
  * @description
+ *
  * Configures and initializes environment for unit testing and provides methods for
  * creating components and services in unit tests.
  *
+ * 为单元测试配置和初始化环境，并提供在单元测试中创建组件和服务的方法。
+ *
  * TestBed is the primary api for writing unit tests for Angular applications and libraries.
+ *
+ * TestBed 是为 Angular 应用程序和库编写单元测试的主要 api。
  *
  * Note: Use `TestBed` in tests. It will be set to either `TestBedViewEngine` or `TestBedRender3`
  * according to the compiler used.
+ *
+ * 注意：在测试中使用 `TestBed` 。根据使用的编译器，它将设置为 `TestBedViewEngine` 或
+ * `TestBedRender3` 。
+ *
  */
 export class TestBedRender3 implements TestBed {
   /**
    * Teardown options that have been configured at the environment level.
    * Used as a fallback if no instance-level options have been provided.
+   *
+   * 已在环境级别配置的拆卸选项。如果没有提供实例级选项，则用作后备。
+   *
    */
   private static _environmentTeardownOptions: ModuleTeardownOptions|undefined;
 
   /**
    * "Error on unknown elements" option that has been configured at the environment level.
    * Used as a fallback if no instance-level option has been provided.
+   *
+   * 已在环境级别配置的“未知元素错误”选项。如果没有提供实例级选项，则用作后备。
+   *
    */
   private static _environmentErrorOnUnknownElementsOption: boolean|undefined;
 
   /**
    * "Error on unknown properties" option that has been configured at the environment level.
    * Used as a fallback if no instance-level option has been provided.
+   *
+   * 已在环境级别配置的“未知属性错误”选项。如果没有提供实例级选项，则用作后备。
+   *
    */
   private static _environmentErrorOnUnknownPropertiesOption: boolean|undefined;
 
   /**
    * Teardown options that have been configured at the `TestBed` instance level.
    * These options take precedence over the environment-level ones.
+   *
+   * 已在 `TestBed` 实例级别配置的拆卸选项。这些选项优先于环境级别的选项。
+   *
    */
   private _instanceTeardownOptions: ModuleTeardownOptions|undefined;
 
   /**
    * "Error on unknown elements" option that has been configured at the `TestBed` instance level.
    * This option takes precedence over the environment-level one.
+   *
+   * 已在 `TestBed` 实例级别配置的“未知元素错误”选项。此选项优先于环境级别的选项。
+   *
    */
   private _instanceErrorOnUnknownElementsOption: boolean|undefined;
 
   /**
    * "Error on unknown properties" option that has been configured at the `TestBed` instance level.
    * This option takes precedence over the environment-level one.
+   *
+   * 已在 `TestBed` 实例级别配置的“未知属性错误”选项。此选项优先于环境级别的选项。
+   *
    */
   private _instanceErrorOnUnknownPropertiesOption: boolean|undefined;
 
   /**
    * Stores the previous "Error on unknown elements" option value,
    * allowing to restore it in the reset testing module logic.
+   *
+   * 存储以前的“未知元素错误”选项值，允许在重置测试模块逻辑中恢复它。
+   *
    */
   private _previousErrorOnUnknownElementsOption: boolean|undefined;
 
   /**
    * Stores the previous "Error on unknown properties" option value,
    * allowing to restore it in the reset testing module logic.
+   *
+   * 存储以前的“未知属性错误”选项值，允许在重置测试模块逻辑中恢复它。
+   *
    */
   private _previousErrorOnUnknownPropertiesOption: boolean|undefined;
 
@@ -120,7 +153,7 @@ export class TestBedRender3 implements TestBed {
    * `resetTestEnvironment` 。
    *
    * Test modules and platforms for individual platforms are available from
-   * '@angular/<platform_name>/testing'.
+   * '@angular/&lt;platform_name>/testing'.
    *
    * 可从 '@angular/&lt;platform_name>/testing' 获得适用于各个平台的测试模块和平台。
    *
@@ -153,6 +186,9 @@ export class TestBedRender3 implements TestBed {
   /**
    * Allows overriding default providers, directives, pipes, modules of the test injector,
    * which are defined in test_injector.js
+   *
+   * 允许覆盖测试注入器的默认提供程序、指令、管道、模块，它们在 test_injector.js 中定义
+   *
    */
   static configureTestingModule(moduleDef: TestModuleMetadata): TestBedStatic {
     _getTestBedRender3().configureTestingModule(moduleDef);
@@ -163,6 +199,9 @@ export class TestBedRender3 implements TestBed {
    * Compile components with a `templateUrl` for the test's NgModule.
    * It is necessary to call this function
    * as fetching urls is asynchronous.
+   *
+   * 使用 `templateUrl` Url 为测试的 NgModule 编译组件。有必要调用此函数，因为获取 url 是异步的。
+   *
    */
   static compileComponents(): Promise<any> {
     return _getTestBedRender3().compileComponents();
@@ -199,7 +238,12 @@ export class TestBedRender3 implements TestBed {
    * Overrides the template of the given component, compiling the template
    * in the context of the TestingModule.
    *
+   * 覆盖给定组件的模板，在 TestingModule 的上下文中编译模板。
+   *
    * Note: This works for JIT and AOTed components as well.
+   *
+   * 注意：这也适用于 JIT 和 AOTed 组件。
+   *
    */
   static overrideTemplateUsingTestingModule(component: Type<any>, template: string): TestBedStatic {
     _getTestBedRender3().overrideTemplateUsingTestingModule(component, template);
@@ -226,11 +270,32 @@ export class TestBedRender3 implements TestBed {
     return _getTestBedRender3().inject(token, notFoundValue, flags);
   }
 
-  /** @deprecated from v9.0.0 use TestBed.inject */
+  /**
+   * @deprecated
+   *
+   * from v9.0.0 use TestBed.inject
+   *
+   * 从 v9.0.0 使用 TestBed.inject
+   *
+   */
   static get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): any;
-  /** @deprecated from v9.0.0 use TestBed.inject */
+  /**
+   * @deprecated
+   *
+   * from v9.0.0 use TestBed.inject
+   *
+   * 从 v9.0.0 使用 TestBed.inject
+   *
+   */
   static get(token: any, notFoundValue?: any): any;
-  /** @deprecated from v9.0.0 use TestBed.inject */
+  /**
+   * @deprecated
+   *
+   * from v9.0.0 use TestBed.inject
+   *
+   * 从 v9.0.0 使用 TestBed.inject
+   *
+   */
   static get(
       token: any, notFoundValue: any = Injector.THROW_IF_NOT_FOUND,
       flags: InjectFlags = InjectFlags.Default): any {
@@ -280,7 +345,7 @@ export class TestBedRender3 implements TestBed {
    * `resetTestEnvironment` 。
    *
    * Test modules and platforms for individual platforms are available from
-   * '@angular/<platform_name>/testing'.
+   * '@angular/&lt;platform_name>/testing'.
    *
    * 可从 '@angular/&lt;platform_name>/testing' 获得适用于各个平台的测试模块和平台。
    *
@@ -408,11 +473,32 @@ export class TestBedRender3 implements TestBed {
                                   result;
   }
 
-  /** @deprecated from v9.0.0 use TestBed.inject */
+  /**
+   * @deprecated
+   *
+   * from v9.0.0 use TestBed.inject
+   *
+   * 从 v9.0.0 使用 TestBed.inject
+   *
+   */
   get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): any;
-  /** @deprecated from v9.0.0 use TestBed.inject */
+  /**
+   * @deprecated
+   *
+   * from v9.0.0 use TestBed.inject
+   *
+   * 从 v9.0.0 使用 TestBed.inject
+   *
+   */
   get(token: any, notFoundValue?: any): any;
-  /** @deprecated from v9.0.0 use TestBed.inject */
+  /**
+   * @deprecated
+   *
+   * from v9.0.0 use TestBed.inject
+   *
+   * 从 v9.0.0 使用 TestBed.inject
+   *
+   */
   get(token: any, notFoundValue: any = Injector.THROW_IF_NOT_FOUND,
       flags: InjectFlags = InjectFlags.Default): any {
     return this.inject(token, notFoundValue, flags);
@@ -452,6 +538,9 @@ export class TestBedRender3 implements TestBed {
 
   /**
    * Overwrites all providers for the given token with the given provider definition.
+   *
+   * 使用给定的提供程序定义覆盖给定标记的所有提供程序。
+   *
    */
   overrideProvider(token: any, provider: {useFactory?: Function, useValue?: any, deps?: any[]}):
       void {
@@ -520,14 +609,24 @@ export class TestBedRender3 implements TestBed {
   /**
    * Check whether the module scoping queue should be flushed, and flush it if needed.
    *
+   * 检查是否应该刷新模块范围队列，并在需要时刷新它。
+   *
    * When the TestBed is reset, it clears the JIT module compilation queue, cancelling any
    * in-progress module compilation. This creates a potential hazard - the very first time the
    * TestBed is initialized (or if it's reset without being initialized), there may be pending
    * compilations of modules declared in global scope. These compilations should be finished.
    *
+   * 当 TestBed 重置时，它会清除 JIT
+   * 模块编译队列，从而取消任何正在进行的模块编译。这会产生潜在的危险 - 第一次初始化 TestBed
+   * 时（或者如果它在未初始化的情况下被重置），可能会有在全局范围内声明的模块的挂起编译。这些编译应该已经完成。
+   *
    * To ensure that globally declared modules have their components scoped properly, this function
    * is called whenever TestBed is initialized or reset. The _first_ time that this happens, prior
    * to any other operations, the scoping queue is flushed.
+   *
+   * 为了确保全局声明的模块的组件范围正确，每当 TestBed 初始化或重置时都会调用此函数。_ 第 _
+   * 一次发生这种情况时，在任何其他操作之前，作用域队列会被刷新。
+   *
    */
   private checkGlobalCompilationFinished(): void {
     // Checking _testNgModuleRef is null should not be necessary, but is left in as an additional

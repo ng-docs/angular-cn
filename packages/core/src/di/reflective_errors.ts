@@ -69,9 +69,14 @@ function addKey(this: InjectionError, injector: ReflectiveInjector, key: Reflect
  * Thrown when trying to retrieve a dependency by key from {@link Injector}, but the
  * {@link Injector} does not have a {@link Provider} for the given key.
  *
+ * 尝试从 {@link Injector} 中按键检索依赖项时抛出，但 {@link Injector} 没有给定键的 {@link Provider}
+ * 。
+ *
  * @usageNotes
  *
  * ### Example
+ *
+ * ### 例子
  *
  * ```typescript
  * class A {
@@ -80,6 +85,7 @@ function addKey(this: InjectionError, injector: ReflectiveInjector, key: Reflect
  *
  * expect(() => Injector.resolveAndCreate([A])).toThrowError();
  * ```
+ *
  */
 export function noProviderError(injector: ReflectiveInjector, key: ReflectiveKey): InjectionError {
   return injectionError(injector, key, function(keys: ReflectiveKey[]) {
@@ -91,9 +97,13 @@ export function noProviderError(injector: ReflectiveInjector, key: ReflectiveKey
 /**
  * Thrown when dependencies form a cycle.
  *
+ * 当依赖项形成循环时抛出。
+ *
  * @usageNotes
  *
  * ### Example
+ *
+ * ### 例子
  *
  * ```typescript
  * var injector = Injector.resolveAndCreate([
@@ -105,6 +115,9 @@ export function noProviderError(injector: ReflectiveInjector, key: ReflectiveKey
  * ```
  *
  * Retrieving `A` or `B` throws a `CyclicDependencyError` as the graph above cannot be constructed.
+ *
+ * 检索 `A` 或 `B` 会抛出 `CyclicDependencyError` ，因为无法构造上面的图。
+ *
  */
 export function cyclicDependencyError(
     injector: ReflectiveInjector, key: ReflectiveKey): InjectionError {
@@ -116,12 +129,18 @@ export function cyclicDependencyError(
 /**
  * Thrown when a constructing type returns with an Error.
  *
+ * 当构造类型返回 Error 时抛出。
+ *
  * The `InstantiationError` class contains the original error plus the dependency graph which caused
  * this object to be instantiated.
+ *
+ * `InstantiationError` 类包含原始错误以及导致此对象实例化的依赖图。
  *
  * @usageNotes
  *
  * ### Example
+ *
+ * ### 例子
  *
  * ```typescript
  * class A {
@@ -131,7 +150,7 @@ export function cyclicDependencyError(
  * }
  *
  * var injector = Injector.resolveAndCreate([A]);
-
+ *
  * try {
  *   injector.get(A);
  * } catch (e) {
@@ -140,6 +159,7 @@ export function cyclicDependencyError(
  *   expect(e.originalStack).toBeDefined();
  * }
  * ```
+ *
  */
 export function instantiationError(
     injector: ReflectiveInjector, originalException: any, originalStack: any,
@@ -155,13 +175,18 @@ export function instantiationError(
  * Thrown when an object other then {@link Provider} (or `Type`) is passed to {@link Injector}
  * creation.
  *
+ * 当将 {@link Provider} （或 `Type` ）以外的对象传递给 {@link Injector} 创建时抛出。
+ *
  * @usageNotes
  *
  * ### Example
  *
+ * ### 例子
+ *
  * ```typescript
  * expect(() => Injector.resolveAndCreate(["not a type"])).toThrowError();
  * ```
+ *
  */
 export function invalidProviderError(provider: any) {
   return Error(
@@ -171,12 +196,18 @@ export function invalidProviderError(provider: any) {
 /**
  * Thrown when the class has no annotation information.
  *
+ * 当类没有注解信息时抛出。
+ *
  * Lack of annotation information prevents the {@link Injector} from determining which dependencies
  * need to be injected into the constructor.
+ *
+ * 缺乏注解信息会导致 {@link Injector} 无法确定需要将哪些依赖项注入构造函数。
  *
  * @usageNotes
  *
  * ### Example
+ *
+ * ### 例子
  *
  * ```typescript
  * class A {
@@ -187,6 +218,8 @@ export function invalidProviderError(provider: any) {
  * ```
  *
  * This error is also thrown when the class not marked with {@link Injectable} has parameter types.
+ *
+ * 当未使用 {@link Injectable} 标记的类具有参数类型时，也会抛出此错误。
  *
  * ```typescript
  * class B {}
@@ -219,9 +252,13 @@ export function noAnnotationError(typeOrFunc: Type<any>|Function, params: any[][
 /**
  * Thrown when getting an object by index.
  *
+ * 按索引获取对象时抛出。
+ *
  * @usageNotes
  *
  * ### Example
+ *
+ * ### 例子
  *
  * ```typescript
  * class A {}
@@ -240,9 +277,13 @@ export function outOfBoundsError(index: number) {
 /**
  * Thrown when a multi provider and a regular provider are bound to the same token.
  *
+ * 当多重提供程序和常规提供程序绑定到同一个标记时抛出。
+ *
  * @usageNotes
  *
  * ### Example
+ *
+ * ### 例子
  *
  * ```typescript
  * expect(() => Injector.resolveAndCreate([
@@ -250,6 +291,7 @@ export function outOfBoundsError(index: number) {
  *   { provide: "Strings", useValue: "string2", multi: false}
  * ])).toThrowError();
  * ```
+ *
  */
 export function mixingMultiProvidersWithRegularProvidersError(
     provider1: any, provider2: any): Error {

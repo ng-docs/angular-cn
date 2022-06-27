@@ -8,20 +8,30 @@
 import {InjectFlags} from '../core';
 import * as o from '../output/output_ast';
 import {Identifiers as R3} from '../render3/r3_identifiers';
+
 import {R3CompiledExpression, R3Reference, typeWithParameters} from './util';
 
 
 /**
  * Metadata required by the factory generator to generate a `factory` function for a type.
+ *
+ * 工厂生成器为某种类型生成 `factory` 函数所需的元数据。
+ *
  */
 export interface R3ConstructorFactoryMetadata {
   /**
    * String name of the type being generated (used to name the factory function).
+   *
+   * 正在生成的类型的字符串名称（用于命名工厂函数）。
+   *
    */
   name: string;
 
   /**
    * An expression representing the interface type being constructed.
+   *
+   * 表示正在构造的接口类型的表达式。
+   *
    */
   type: R3Reference;
 
@@ -29,12 +39,22 @@ export interface R3ConstructorFactoryMetadata {
    * An expression representing the constructor type, intended for use within a class definition
    * itself.
    *
+   * 表示构造函数类型的表达式，旨在在类定义本身中使用。
+   *
    * This can differ from the outer `type` if the class is being compiled by ngcc and is inside
    * an IIFE structure that uses a different name internally.
+   *
+   * 如果类正在由 ngcc 编译并且在内部使用不同名称的 IIFE 结构中，这可能与外部 `type` 不同。
+   *
    */
   internalType: o.Expression;
 
-  /** Number of arguments for the `type`. */
+  /**
+   * Number of arguments for the `type`.
+   *
+   * `type` 的参数数。
+   *
+   */
   typeArgumentCount: number;
 
   /**
@@ -44,11 +64,20 @@ export interface R3ConstructorFactoryMetadata {
    * be inherited from `fnOrClass` which is interpreted as the current type. If this is `'invalid'`,
    * then one or more of the parameters wasn't resolvable and any attempt to use these deps will
    * result in a runtime error.
+   *
+   * 无论 `fnOrClass` 是构造函数还是用户定义的工厂，它都可能有 0
+   * 个或多个参数，这些参数将根据这些参数的 `R3DependencyMetadata` 注入。如果这是 `null`
+   * ，则该类型的构造函数不存在，并将继承自 `fnOrClass` ，它被解释为当前类型。如果这是 `'invalid'`
+   * ，则一个或多个参数不可解析，并且任何使用这些 deps 的尝试都将导致运行时错误。
+   *
    */
   deps: R3DependencyMetadata[]|'invalid'|null;
 
   /**
    * Type of the target being created by the factory.
+   *
+   * 工厂正在创建的目标的类型。
+   *
    */
   target: FactoryTarget;
 }
@@ -83,6 +112,9 @@ export interface R3DependencyMetadata {
   /**
    * An expression representing the token or value to be injected.
    * Or `null` if the dependency could not be resolved - making it invalid.
+   *
+   * 表示要注入的标记或值的表达式。如果无法解析依赖项，则为 `null` - 使其无效。
+   *
    */
   token: o.Expression|null;
 
@@ -90,32 +122,52 @@ export interface R3DependencyMetadata {
    * If an @Attribute decorator is present, this is the literal type of the attribute name, or
    * the unknown type if no literal type is available (e.g. the attribute name is an expression).
    * Otherwise it is null;
+   *
+   * 如果存在 @Attribute
+   * 装饰器，则这是属性名称的文字类型，如果没有可用的文字类型，则为未知类型（例如属性名称是表达式）。否则为
+   * null ；
+   *
    */
   attributeNameType: o.Expression|null;
 
   /**
    * Whether the dependency has an @Host qualifier.
+   *
+   * 依赖项是否具有 @Host 限定符。
+   *
    */
   host: boolean;
 
   /**
    * Whether the dependency has an @Optional qualifier.
+   *
+   * 依赖项是否具有 @Optional 限定符。
+   *
    */
   optional: boolean;
 
   /**
    * Whether the dependency has an @Self qualifier.
+   *
+   * 依赖项是否具有 @Self 限定符。
+   *
    */
   self: boolean;
 
   /**
    * Whether the dependency has an @SkipSelf qualifier.
+   *
+   * 依赖项是否具有 @SkipSelf 限定符。
+   *
    */
   skipSelf: boolean;
 }
 
 /**
  * Construct a factory function expression for the given `R3FactoryMetadata`.
+ *
+ * 为给定的 `R3FactoryMetadata` 构造工厂函数表达式。
+ *
  */
 export function compileFactoryFunction(meta: R3FactoryMetadata): R3CompiledExpression {
   const t = o.variable('t');

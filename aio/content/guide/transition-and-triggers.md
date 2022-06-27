@@ -17,6 +17,8 @@ This chapter also explores multiple animation triggers, animation callbacks, and
 
 In Angular, transition states can be defined explicitly through the [`state()`](api/animations/state) function, or using the predefined `*` (wildcard) and `void` states.
 
+在 Angular 中，转场状态可以通过 [`state()`](api/animations/state) 函数进行显式定义，或使用预定义的 `*`（通配符）状态和 `void` 状态。
+
 ### Wildcard state
 
 ### 通配符状态
@@ -103,6 +105,8 @@ Wildcard is a fallback value that's used if the state being animated isn't decla
 Use the `void` state to configure transitions for an element that is entering or leaving a page.
 See [Animating entering and leaving a view](#enter-leave-view).
 
+可以使用 `void` 状态来为进入或离开页面的元素配置转场。参阅[进入和离开视图的动画](#enter-leave-view)。
+
 ### Combining wildcard and void states
 
 ### 组合使用通配符和 `void` 状态
@@ -113,15 +117,15 @@ Combine wildcard and void states in a transition to trigger animations that ente
 
 * A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left
 
-  当元素离开视图时，就会触发 `* => void` 转场，而不管它离开前处于什么状态。
+  当元素离开视图时，就会触发 `* => void` 转场，而不管它离开前处于什么状态
 
 * A transition of `void => *` applies when the element enters a view, regardless of what state it assumes when entering
 
-  当元素进入视图时，就会触发 `void => *` 转场，而不管它进入时处于什么状态。
+  当元素进入视图时，就会触发 `void => *` 转场，而不管它进入时处于什么状态
 
 * The wildcard state `*` matches to *any* state, including `void`
 
-  通配符状态 `*` 会匹配*任何*状态 —— 包括 `void`。
+  通配符状态 `*` 会匹配*任何*状态 —— 包括 `void`
 
 ## Animating entering and leaving a view
 
@@ -137,11 +141,11 @@ Add a new behavior:
 
 * When you add a hero to the list of heroes, it appears to fly onto the page from the left
 
-  当你把一个英雄添加到英雄列表中时，它看起来是从左侧飞进页面的。
+  当你把一个英雄添加到英雄列表中时，它看起来是从左侧飞进页面的
 
 * When you remove a hero from the list, it appears to fly out to the right
 
-  当你从列表中移除一个英雄时，它看起来是从右侧飞出去的。
+  当你从列表中移除一个英雄时，它看起来是从右侧飞出去的
 
 <code-example header="src/app/hero-list-enter-leave.component.ts" path="animations/src/app/hero-list-enter-leave.component.ts" region="animationdef"></code-example>
 
@@ -186,6 +190,8 @@ The `:enter` transition runs when any `*ngIf` or `*ngFor` views are placed on th
 Entering/leaving behaviors can sometime be confusing.
 As a rule of thumb consider that any element being added to the DOM by Angular passes via the `:enter` transition, but only elements being directly removed from the DOM by Angular pass via the `:leave` transition (For example, an element's view is removed from the DOM because its parent is being removed from the DOM or the app's route has changed, then the element will not pass via the `:leave` transition).
 
+**注**：<br />进入/离开行为有时会令人困惑。作为经验法则，考虑到 Angular 添加到 DOM 的任何元素都会通过 `:enter` 转换传递，但只有通过 Angular 直接从 DOM 删除的元素会通过 `:leave` 转换传递（例如，元素的视图是从 DOM，因为其父级正在从 DOM 中删除或应用程序的路由已更改，则元素将不会通过 `:leave` 转换）。
+
 </div>
 
 This example has a special trigger for the enter and leave animation called `myInsertRemoveTrigger`.
@@ -203,6 +209,8 @@ In the component file, the `:enter` transition sets an initial opacity of 0, and
 
 Note that this example doesn't need to use [`state()`](api/animations/state).
 
+请注意，此示例不需要使用[`state()`](api/animations/state) 。
+
 ## :increment and :decrement in transitions
 
 ## 转场中的 `:increment` 和 `:decrement`
@@ -217,6 +225,9 @@ Use these to kick off a transition when a numeric value has increased or decreas
 **NOTE**: <br />
 The following example uses `query()` and `stagger()` methods.
 For more information on these methods, see the [complex sequences](guide/complex-animation-sequences#complex-sequence) page.
+
+**注意**：<br />
+下面的例子使用 `query()` 和 `stagger()` 方法。欲知详情，参见[复杂序列](guide/complex-animation-sequences#complex-sequence)页。
 
 </div>
 
@@ -318,6 +329,9 @@ To disable all animations for an Angular app, place the `@.disabled` host bindin
 **NOTE**: <br />
 Disabling animations application-wide is useful during end-to-end (E2E) testing.
 
+**注意**：<br />
+禁用应用级的动画在端到端（E2E）测试中是很有用的。
+
 </div>
 
 ## Animation callbacks
@@ -334,14 +348,14 @@ The following example features a component that contains an `openClose` trigger.
 In the HTML template, the animation event is passed back via `$event`, as `@triggerName.start` and `@triggerName.done`, where `triggerName` is the name of the trigger being used.
 In this example, the trigger `openClose` appears as follows.
 
-在 HTML 模板中，动画事件可以通过 `$event` 传递回来，比如 `@triggerName.start` 和 `@triggerName.done`，这里的 `triggerName` 表示所使用的触发器名字。在我们的例子中，`openClose` 触发器将会是这样的：。
+在 HTML 模板中，动画事件可以通过 `$event` 传递回来，比如 `@triggerName.start` 和 `@triggerName.done`，这里的 `triggerName` 表示所使用的触发器名字。在我们的例子中，`openClose` 触发器将会是这样的。
 
 <code-example header="src/app/open-close.component.html" path="animations/src/app/open-close.component.3.html" region="callbacks"></code-example>
 
 A potential use for animation callbacks could be to cover for a slow API call, such as a database lookup.
 For example, you could set up the **InProgress** button to have its own looping animation where it pulsates or does some other visual motion while the backend system operation finishes.
 
-动画回调的潜在用途之一，是用来覆盖比较慢的 API 调用，比如查阅数据库。例如，你可以建立一个 **InProgress** 按钮，让它拥有自己的循环动画。当后端系统操作完成时，它会播放脉动效果或其它一些视觉动作。
+动画回调的潜在用途之一，是用来覆盖比较慢的 API 调用，比如查阅数据库。比如，你可以建立一个 **InProgress** 按钮，让它拥有自己的循环动画。当后端系统操作完成时，它会播放脉动效果或其它一些视觉动作。
 
 Then, another animation can be called when the current animation finishes.
 For example, the button goes from the `inProgress` state to the `closed` state when the API call is completed.
@@ -356,7 +370,7 @@ Thus, a simple animation can be a cost-effective way to keep users happy, rather
 Callbacks can serve as a debugging tool, for example in conjunction with `console.warn()` to view the application's progress in a browser's Developer JavaScript Console.
 The following code snippet creates console log output for the original example, a button with the two states of `open` and `closed`.
 
-回调可以作为调试工具，例如与 `console.warn()` 结合使用，以便在浏览器的开发者控制台中查看应用的进度。下列代码片段为我们原始的双态按钮（`open` 与 `closed`）范例创建了控制台输出。
+回调可以作为调试工具，比如与 `console.warn()` 结合使用，以便在浏览器的开发者控制台中查看应用的进度。下列代码片段为我们原始的双态按钮（`open` 与 `closed`）范例创建了控制台输出。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="events"></code-example>
 
@@ -375,7 +389,7 @@ Angular's `keyframe()` function is similar to keyframes in CSS.
 Keyframes allow several style changes within a single timing segment.
 For example, the button, instead of fading, could change color several times over a single 2-second timespan.
 
-Angular 的 `keyframe()` 函数类似于 CSS 中的关键帧。关键帧允许在单个时间段内进行多种样式更改。例如，我们的按钮可以在单个的 2 秒时间段内多次改变颜色，而不是渐隐掉。
+Angular 的 `keyframe()` 函数类似于 CSS 中的关键帧。关键帧允许在单个时间段内进行多种样式更改。比如，我们的按钮可以在单个的 2 秒时间段内多次改变颜色，而不是渐隐掉。
 
 <div class="lightbox">
 
@@ -385,7 +399,7 @@ Angular 的 `keyframe()` 函数类似于 CSS 中的关键帧。关键帧允许�
 
 The code for this color change might look like this.
 
-这些更改颜色的代码如下所示：。
+这些更改颜色的代码如下所示。
 
 <code-example header="src/app/status-slider.component.ts" path="animations/src/app/status-slider.component.ts" region="keyframes"></code-example>
 
@@ -403,7 +417,7 @@ If you omit them, evenly spaced offsets are automatically assigned.
 For example, three keyframes without predefined offsets receive offsets of 0, 0.5, and 1.
 Specifying an offset of 0.8 for the middle transition in the preceding example might look like this.
 
-定义关键帧的偏移量是可选的。如果省略它们，就会自动分配均匀间隔的偏移。例如，三个没有预定义偏移的关键帧会分别使用 0、0.5、1 作为偏移。在上面的例子中，还可以为中间的转场指定偏移量 0.8。代码如下：。
+定义关键帧的偏移量是可选的。如果省略它们，就会自动分配均匀间隔的偏移。比如，三个没有预定义偏移的关键帧会分别使用 0、0.5、1 作为偏移。在上面的例子中，还可以为中间的转场指定偏移量 0.8。代码如下。
 
 <div class="lightbox">
 
@@ -413,7 +427,7 @@ Specifying an offset of 0.8 for the middle transition in the preceding example m
 
 The code with offsets specified would be as follows.
 
-带有指定偏移量的代码如下：。
+带有指定偏移量的代码如下。
 
 <code-example header="src/app/status-slider.component.ts" path="animations/src/app/status-slider.component.ts" region="keyframesWithOffsets"></code-example>
 
@@ -449,7 +463,7 @@ Here's an example of using keyframes to create a pulse effect:
 
 The code snippet for this animation might look like this.
 
-此动画的代码片段是这样的：。
+此动画的代码片段是这样的。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.1.ts" region="trigger"></code-example>
 
@@ -461,7 +475,7 @@ Angular animations support builds on top of web animations, so you can animate a
 This includes positions, sizes, transforms, colors, borders, and more.
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
-Angular 的动画支持是基于 Web 动画的，所以你可以动浏览器认为可动（animatable）的任意属性。包括位置、大小、变形、颜色、边框等。W3C 在 [CSS 转场](https://www.w3.org/TR/css-transitions-1/)页也维护了一个可动属性的列表。
+Angular 的动画支持是基于 Web 动画的，所以你可以动浏览器认为可动（animatable）的任意属性。包括位置、大小、变形、颜色、边框等。W3C 在 [CSS 转场](https://www.w3.org/TR/css-transitions-1)页也维护了一个可动属性的列表。
 
 For properties with a numeric value, define a unit by providing the value as a string, in quotes, with the appropriate suffix:
 
@@ -470,7 +484,7 @@ For properties with a numeric value, define a unit by providing the value as a s
 * 50 pixels:
   `'50px'`
 
-  50 像素：`'50px'`【模糊翻译】
+  50 像素：`'50px'`
 
 * Relative font size:
   `'3em'`
@@ -480,15 +494,20 @@ For properties with a numeric value, define a unit by providing the value as a s
 * Percentage:
   `'100%'`
 
-  百分比：`'100%'`【模糊翻译】
+  百分比：`'100%'`
 
 You can also provide the value as a number (thus not providing a unit), in such cases Angular assumes a default unit of pixels, or `px`.
 Expressing 50 pixels as `50` is the same as saying `'50px'`.
+
+你还可以用数字形式提供这个值（不带单位），这种情况下，Angular 假设默认的单位是像素（`px`）。把 50 像素表示为 `50` 和 `'50px'` 是一样的。
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 The string `"50"` would instead be considered invalid).
+
+**注意**：<br />
+字符串形式的 `"50"` 是无效的。
 
 </div>
 

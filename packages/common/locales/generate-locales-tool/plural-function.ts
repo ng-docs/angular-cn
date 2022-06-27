@@ -14,6 +14,9 @@ const {load: createCldr} = require('cldr');
 
 /**
  * Returns the plural function for a locale.
+ *
+ * 返回区域设置的复数函数。
+ *
  */
 export function getPluralFunction(localeData: CldrLocaleData, withTypes = true) {
   // We use the resolved bundle for extracting the plural function. This matches with the

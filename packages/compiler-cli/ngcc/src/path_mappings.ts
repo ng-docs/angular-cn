@@ -15,6 +15,9 @@ export type PathMappings = {
 
 /**
  * If `pathMappings` is not provided directly, then try getting it from `tsConfig`, if available.
+ *
+ * 如果未直接提供 `pathMappings` ，请尝试从 `tsConfig` （如果可用）获取它。
+ *
  */
 export function getPathMappingsFromTsConfig(
     fs: PathManipulation, tsConfig: ParsedConfiguration|null,

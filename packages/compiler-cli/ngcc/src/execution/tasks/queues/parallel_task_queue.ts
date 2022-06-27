@@ -8,17 +8,26 @@
 import {Logger} from '../../../../../src/ngtsc/logging';
 import {PartiallyOrderedTasks, Task, TaskDependencies} from '../api';
 import {getBlockedTasks, sortTasksByPriority, stringifyTask} from '../utils';
+
 import {BaseTaskQueue} from './base_task_queue';
 
 /**
  * A `TaskQueue` implementation that assumes tasks are processed in parallel, thus has to ensure a
  * task's dependencies have been processed before processing the task.
+ *
+ * 假定任务是并行处理的 `TaskQueue` 实现，因此必须确保在处理任务之前已处理任务的依赖项。
+ *
  */
 export class ParallelTaskQueue extends BaseTaskQueue {
   /**
    * A map from Tasks to the Tasks that it depends upon.
    *
+   * 从 Tasks 到它依赖的 Tasks 的映射。
+   *
    * This is the reverse mapping of `TaskDependencies`.
+   *
+   * 这是 `TaskDependencies` 的逆映射。
+   *
    */
   private blockedTasks: Map<Task, Set<Task>>;
 

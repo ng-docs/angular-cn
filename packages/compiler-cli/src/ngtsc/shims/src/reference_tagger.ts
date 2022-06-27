@@ -18,7 +18,13 @@ import {makeShimFileName} from './util';
  * Manipulates the `referencedFiles` property of `ts.SourceFile`s to add references to shim files
  * for each original source file, causing the shims to be loaded into the program as well.
  *
+ * 操作 `ts.SourceFile` s 的 `referencedFiles` 属性以添加对每个原始源文件的 shim 文件的引用，从而使
+ * shims 也被加载到程序中。
+ *
  * `ShimReferenceTagger`s are intended to operate during program creation only.
+ *
+ * `ShimReferenceTagger` 旨在仅在程序创建期间运行。
+ *
  */
 export class ShimReferenceTagger {
   private suffixes: string[];
@@ -26,12 +32,20 @@ export class ShimReferenceTagger {
   /**
    * Tracks which original files have been processed and had shims generated if necessary.
    *
+   * 跟踪哪些原始文件已被处理并在必要时生成了 shim。
+   *
    * This is used to avoid generating shims twice for the same file.
+   *
+   * 这用于避免为同一个文件生成两次 shim。
+   *
    */
   private tagged = new Set<ts.SourceFile>();
 
   /**
    * Whether shim tagging is currently being performed.
+   *
+   * 当前是否正在执行 shim 标记。
+   *
    */
   private enabled: boolean = true;
 
@@ -41,6 +55,9 @@ export class ShimReferenceTagger {
 
   /**
    * Tag `sf` with any needed references if it's not a shim itself.
+   *
+   * 如果 `sf` 不是 shim 本身，则使用任何需要的引用标记它。
+   *
    */
   tag(sf: ts.SourceFile): void {
     if (!this.enabled || sf.isDeclarationFile || isShim(sf) || this.tagged.has(sf) ||
@@ -75,6 +92,9 @@ export class ShimReferenceTagger {
 
   /**
    * Disable the `ShimReferenceTagger` and free memory associated with tracking tagged files.
+   *
+   * 禁用 `ShimReferenceTagger` 并释放与跟踪标记文件关联的内存。
+   *
    */
   finalize(): void {
     this.enabled = false;

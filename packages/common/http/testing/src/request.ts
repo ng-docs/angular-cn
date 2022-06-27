@@ -12,6 +12,9 @@ import {Observer} from 'rxjs';
 /**
  * Type that describes options that can be used to create an error
  * in `TestRequest`.
+ *
+ * 描述可用于在 `TestRequest` 中创建错误的选项的类型。
+ *
  */
 type TestRequestErrorOptions = {
   headers?: HttpHeaders|{[name: string]: string | string[]},
@@ -55,7 +58,7 @@ export class TestRequest {
    * If the request specifies an expected body type, the body is converted into the requested type.
    * Otherwise, the body is converted to `JSON` by default.
    *
-   * 通过返回 body 以及其他 HTTP 信息（例如响应标头）（如果提供过）来解析请求。如果请求指定了预期的
+   * 通过返回 body 以及其他 HTTP 信息（比如响应标头）（如果提供过）来解析请求。如果请求指定了预期的
    * body 类型，则将 body 转换为所请求的类型。否则，body 在默认情况下转换成 `JSON`。
    *
    * Both successful and unsuccessful responses can be delivered via `flush()`.
@@ -101,13 +104,21 @@ export class TestRequest {
   /**
    * Resolve the request by returning an `ErrorEvent` (e.g. simulating a network failure).
    *
-   * 通过返回 `ErrorEvent` （例如，模拟网络故障）来解决请求。
+   * 通过返回 `ErrorEvent` （比如，模拟网络故障）来解决请求。
    *
-   * @deprecated Http requests never emit an `ErrorEvent`. Please specify a `ProgressEvent`.
+   * @deprecated
+   *
+   * Http requests never emit an `ErrorEvent`. Please specify a `ProgressEvent`.
+   *
+   * Http 请求永远不会发出 `ErrorEvent` 。请指定 `ProgressEvent` 。
+   *
    */
   error(error: ErrorEvent, opts?: TestRequestErrorOptions): void;
   /**
    * Resolve the request by returning an `ProgressEvent` (e.g. simulating a network failure).
+   *
+   * 通过返回 `ProgressEvent` 来解决请求（例如模拟网络故障）。
+   *
    */
   error(error: ProgressEvent, opts?: TestRequestErrorOptions): void;
   error(error: ProgressEvent|ErrorEvent, opts: TestRequestErrorOptions = {}): void {
@@ -146,6 +157,9 @@ export class TestRequest {
 
 /**
  * Helper function to convert a response body to an ArrayBuffer.
+ *
+ * 将响应主体转换为 ArrayBuffer 的帮助器函数。
+ *
  */
 function _toArrayBufferBody(body: ArrayBuffer|Blob|string|number|Object|
                             (string | number | Object | null)[]): ArrayBuffer {
@@ -160,6 +174,9 @@ function _toArrayBufferBody(body: ArrayBuffer|Blob|string|number|Object|
 
 /**
  * Helper function to convert a response body to a Blob.
+ *
+ * 将响应正文转换为 Blob 的帮助器函数。
+ *
  */
 function _toBlob(body: ArrayBuffer|Blob|string|number|Object|
                  (string | number | Object | null)[]): Blob {
@@ -177,6 +194,9 @@ function _toBlob(body: ArrayBuffer|Blob|string|number|Object|
 
 /**
  * Helper function to convert a response body to JSON data.
+ *
+ * 将响应正文转换为 JSON 数据的帮助器函数。
+ *
  */
 function _toJsonBody(
     body: ArrayBuffer|Blob|boolean|string|number|Object|
@@ -197,6 +217,9 @@ function _toJsonBody(
 
 /**
  * Helper function to convert a response body to a string.
+ *
+ * 将响应主体转换为字符串的帮助器函数。
+ *
  */
 function _toTextBody(body: ArrayBuffer|Blob|string|number|Object|
                      (string | number | Object | null)[]): string {
@@ -214,6 +237,9 @@ function _toTextBody(body: ArrayBuffer|Blob|string|number|Object|
 
 /**
  * Convert a response body to the requested type.
+ *
+ * 将响应正文转换为请求的类型。
+ *
  */
 function _maybeConvertBody(
     responseType: string,

@@ -31,6 +31,9 @@ import {flatten} from './utils/collection';
 
 /**
  * The directives defined in the `RouterModule`.
+ *
+ * `RouterModule` 中定义的指令。
+ *
  */
 const ROUTER_DIRECTIVES =
     [RouterOutlet, RouterLink, RouterLinkWithHref, RouterLinkActive, EmptyOutletComponent];
@@ -91,21 +94,21 @@ export function routerNgProbeToken() {
  * 服务是活动的。为确保这一点，在导入此模块时有两种方法来注册路由：
  *
  * * The `forRoot()` method creates an `NgModule` that contains all the directives, the given
- * routes, and the `Router` service itself.
+ *   routes, and the `Router` service itself.
  *
- *   `forRoot()` 方法会创建一个 `NgModule`，其中包含所有指令、给定的路由以及 `Router` 服务本身。
+ *     `forRoot()` 方法会创建一个 `NgModule`，其中包含所有指令、给定的路由以及 `Router` 服务本身。
  *
  * * The `forChild()` method creates an `NgModule` that contains all the directives and the given
- * routes, but does not include the `Router` service.
+ *   routes, but does not include the `Router` service.
  *
- *   `forChild()` 方法会创建一个 `NgModule`，其中包含所有指令和给定的路由，但不包括 `Router` 服务。
+ *     `forChild()` 方法会创建一个 `NgModule`，其中包含所有指令和给定的路由，但不包括 `Router`
+ * 服务。
+ *
  * @see [Routing and Navigation guide](guide/router) for an
  * overview of how the `Router` service should be used.
  *
  * [路由和导航指南](guide/router)，概述了应如何使用 `Router` 服务。
- *
  * @see [路由与导航](guide/router.html) 以获得如何使用路由器服务的概览。
- *
  * @publicApi
  */
 @NgModule({
@@ -127,19 +130,20 @@ export class RouterModule {
    * 在根目录下注册 NgModule 时，请按以下方式导入：
    *
    * ```
-   * @NgModule({
+   *
+   * ```
+   *
+   * @NgModule ({
    *   imports: [RouterModule.forRoot(ROUTES)]
    * })
    * class MyNgModule {}
    * ```
-   *
    * @param routes An array of `Route` objects that define the navigation paths for the application.
    *
    * `Route` 对象的数组，这些对象定义应用程序的导航路径。
    * @param config An `ExtraOptions` configuration object that controls how navigation is performed.
    *
    * 一个 `ExtraOptions` 配置对象，该对象会控制如何执行导航。
-   *
    * @return The new `NgModule`.
    *
    * 新的 `NgModule` 。
@@ -187,12 +191,14 @@ export class RouterModule {
    * NgModule：
    *
    * ```
-   * @NgModule({
+   *
+   * ```
+   *
+   * @NgModule ({
    *   imports: [RouterModule.forChild(ROUTES)]
    * })
    * class MyNgModule {}
    * ```
-   *
    * @param routes An array of `Route` objects that define the navigation paths for the submodule.
    *
    * `Route` 对象的数组，它们定义了子模块的导航路径。
@@ -235,17 +241,18 @@ export function provideForRootGuard(router: Router): any {
  * @param routes The route configuration to provide.
  *
  * 注册路由。
- *
  * @usageNotes
  *
  * ```
- * @NgModule({
+ *
+ * ```
+ *
+ * @NgModule ({
  *   imports: [RouterModule.forChild(ROUTES)],
  *   providers: [provideRoutes(EXTRA_ROUTES)]
  * })
  * class MyNgModule {}
  * ```
- *
  * @publicApi
  */
 export function provideRoutes(routes: Routes): any {
@@ -262,25 +269,25 @@ export function provideRoutes(routes: Routes): any {
  * `ExtraOptions` 对象中的允许值，用于配置路由器何时执行初始导航操作。
  *
  * * 'enabledNonBlocking' - (default) The initial navigation starts after the
- * root component has been created. The bootstrap is not blocked on the completion of the initial
- * navigation.
+ *   root component has been created. The bootstrap is not blocked on the completion of the initial
+ *   navigation.
  *
- *   'enabledNonBlocking'
- * -（默认值）在创建根组件之后开始初始导航。初始导航完成后，引导程序不会被阻止。
+ *     'enabledNonBlocking'
+ *   \-（默认值）在创建根组件之后开始初始导航。初始导航完成后，引导程序不会被阻止。
  *
  * * 'enabledBlocking' - The initial navigation starts before the root component is created.
- * The bootstrap is blocked until the initial navigation is complete. This value is required
- * for [server-side rendering](guide/universal) to work.
+ *   The bootstrap is blocked until the initial navigation is complete. This value is required
+ *   for [server-side rendering](guide/universal) to work.
  *
- *   'enabledBlocking' -
- * 初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务器渲染](guide/universal)正常工作所必需的。
+ *     'enabledBlocking' -
+ *   初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务器渲染](guide/universal)正常工作所必需的。
  *
  * * 'disabled' - The initial navigation is not performed. The location listener is set up before
- * the root component gets created. Use if there is a reason to have
- * more control over when the router starts its initial navigation due to some complex
- * initialization logic.
+ *   the root component gets created. Use if there is a reason to have
+ *   more control over when the router starts its initial navigation due to some complex
+ *   initialization logic.
  *
- *   `false` - 同 'legacy_disabled'. @deprecated since v4
+ *     `false` - 同 'legacy_disabled'. @deprecated since v4
  *
  * The following values have been [deprecated](guide/releases#deprecation-practices) since v11,
  * and should not be used for new applications.
@@ -288,7 +295,6 @@ export function provideRoutes(routes: Routes): any {
  * [从 v11 开始不推荐使用](guide/releases#deprecation-practices)以下值，并且不应将其用于新应用程序。
  *
  * @see `forRoot()`
- *
  * @publicApi
  */
 export type InitialNavigation = 'disabled'|'enabledBlocking'|'enabledNonBlocking';
@@ -391,12 +397,12 @@ export interface ExtraOptions {
    *   'top' - 在任何一次导航中都把滚动位置设置为 x=0, y=0。
    *
    * * 'enabled'- Restores the previous scroll position on backward navigation, else sets the
-   * position to the anchor if one is provided, or sets the scroll position to [0, 0] (forward
-   * navigation). This option will be the default in the future.
+   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \(forward
+   *   navigation). This option will be the default in the future.
    *
-   *   'enabled' ——
-   * 当向后导航时，滚动到以前的滚动位置。当向前导航时，如果提供了锚点，则自动滚动到那个锚点，否则把滚动位置设置为
-   * [0, 0]。该选项将来会变成默认值。
+   *     'enabled' ——
+   *   当向后导航时，滚动到以前的滚动位置。当向前导航时，如果提供了锚点，则自动滚动到那个锚点，否则把滚动位置设置为
+   *   [0, 0]。该选项将来会变成默认值。
    *
    * You can implement custom scroll restoration behavior by adapting the enabled behavior as
    * in the following example.
@@ -424,6 +430,7 @@ export interface ExtraOptions {
    *   }
    * }
    * ```
+   *
    */
   scrollPositionRestoration?: 'disabled'|'enabled'|'top';
 
@@ -467,12 +474,15 @@ export interface ExtraOptions {
    *
    * 设置为 “always” 时会始终启用父参数的无条件继承。
    *
-   *
    * Note that when dealing with matrix parameters, "parent" refers to the parent `Route`
    * config which does not necessarily mean the "URL segment to the left". When the `Route` `path`
    * contains multiple segments, the matrix parameters must appear on the last segment. For example,
    * matrix parameters for `{path: 'a/b', component: MyComp}` should appear as `a/b;foo=bar` and not
    * `a;foo=bar/b`.
+   *
+   * 请注意，在处理矩阵参数时，“parent”是指父 `Route` 配置，并不一定意味着“左侧的 URL 段”。当
+   * `Route` `path` 包含多个段时，矩阵参数必须出现在最后一个段上。例如， `{path: 'a/b', component:
+   * MyComp}` 矩阵参数应该显示为 `a/b;foo=bar` 而不是 `a;foo=bar/b` 。
    *
    */
   paramsInheritanceStrategy?: 'emptyOnly'|'always';
@@ -565,6 +575,8 @@ export interface ExtraOptions {
   /**
    * Configures how the Router attempts to restore state when a navigation is cancelled.
    *
+   * 配置在取消导航时路由器如何尝试恢复状态。
+   *
    * 'replace' - Always uses `location.replaceState` to set the browser state to the state of the
    * router before the navigation started. This means that if the URL of the browser is updated
    * _before_ the navigation is canceled, the Router will simply replace the item in history rather
@@ -572,16 +584,30 @@ export interface ExtraOptions {
    * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
    * buttons.
    *
+   * 'replace' - 始终使用 `location.replaceState`
+   * 将浏览器状态设置为导航开始之前的路由器状态。这意味着，如果在取消导航 _ 之前 _ 更新了浏览器的
+   * URL，则路由器将简单地替换历史记录中的条目，而不是尝试恢复到会话历史记录中的前一个位置。这种情况最常见的情况是
+   * `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮进行导航。
+   *
    * 'computed' - Will attempt to return to the same index in the session history that corresponds
    * to the Angular route when the navigation gets cancelled. For example, if the browser back
    * button is clicked and the navigation is cancelled, the Router will trigger a forward navigation
    * and vice versa.
    *
+   * “compute” - 当导航被取消时，将尝试返回会话历史记录中与 Angular
+   * 路由对应的同一个索引。例如，如果单击浏览器后退按钮并取消导航，则路由器将触发向前导航，反之亦然。
+   *
    * Note: the 'computed' option is incompatible with any `UrlHandlingStrategy` which only
    * handles a portion of the URL because the history restoration navigates to the previous place in
    * the browser history rather than simply resetting a portion of the URL.
    *
+   * 注意： ' `UrlHandlingStrategy` ' 选项与任何仅处理一部分 URL 的 UrlHandlingStrategy
+   * 不兼容，因为历史恢复会导航到浏览器历史记录中的上一个位置，而不是简单地重置 URL 的一部分。
+   *
    * The default value is `replace` when not set.
+   *
+   * 默认值是未设置时的 `replace` 。
+   *
    */
   canceledNavigationResolution?: 'replace'|'computed';
 }
@@ -657,13 +683,21 @@ export function rootRoute(router: Router): ActivatedRoute {
 /**
  * Router initialization requires two steps:
  *
+ * 路由器初始化需要两个步骤：
+ *
  * First, we start the navigation in a `APP_INITIALIZER` to block the bootstrap if
  * a resolver or a guard executes asynchronously.
+ *
+ * 首先，我们在 `APP_INITIALIZER` 中启动导航，以在解析器或保护器异步执行时阻止引导。
  *
  * Next, we actually run activation in a `BOOTSTRAP_LISTENER`, using the
  * `afterPreactivation` hook provided by the router.
  * The router navigation starts, reaches the point when preactivation is done, and then
  * pauses. It waits for the hook to be resolved. We then resolve it only in a bootstrap listener.
+ *
+ * 接下来，我们实际上使用路由器提供的 `afterPreactivation` 钩子在 `BOOTSTRAP_LISTENER`
+ * 中运行激活。路由器导航启动，到达预激活完成时，然后暂停。它会等待钩子被解析。然后，我们仅在引导侦听器中解析它。
+ *
  */
 @Injectable()
 export class RouterInitializer implements OnDestroy {

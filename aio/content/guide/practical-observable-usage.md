@@ -17,11 +17,11 @@ Typically, a type-ahead has to do a series of separate tasks:
 
 * Listen for data from an input
 
-  从输入中监听数据。
+  从输入中监听数据
 
 * Trim the value (remove whitespace) and make sure it's a minimum length
 
-  移除输入值前后的空白字符，并确认它达到了最小长度。
+  移除输入值前后的空白字符，并确认它达到了最小长度
 
 * Debounce (so as not to send off API requests for every keystroke, but instead wait for a break in keystrokes)
 
@@ -29,11 +29,11 @@ Typically, a type-ahead has to do a series of separate tasks:
 
 * Don't send a request if the value stays the same (rapidly hit a character, then backspace, for instance)
 
-  如果输入值没有变化，则不要发起请求（比如按某个字符，然后快速按退格）。
+  如果输入值没有变化，则不要发起请求（比如按某个字符，然后快速按退格）
 
 * Cancel ongoing AJAX requests if their results will be invalidated by the updated results
 
-  如果已发出的 AJAX 请求的结果会因为后续的修改而变得无效，那就取消它。
+  如果已发出的 AJAX 请求的结果会因为后续的修改而变得无效，那就取消它
 
 Writing this in full JavaScript can be quite involved.
 With observables, you can use a simple series of RxJS operators:

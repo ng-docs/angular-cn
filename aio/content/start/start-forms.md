@@ -101,7 +101,7 @@ To confirm submission, open the console to see an object containing the name and
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 You have a complete online store application with a product catalog, a shopping cart, and a checkout function.
 

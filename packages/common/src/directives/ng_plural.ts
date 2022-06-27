@@ -15,7 +15,6 @@ import {SwitchView} from './ng_switch';
 
 /**
  * @ngModule CommonModule
- *
  * @usageNotes
  *
  * ```
@@ -25,7 +24,6 @@ import {SwitchView} from './ng_switch';
  *   <ng-template ngPluralCase="few">there are a few</ng-template>
  * </some-element>
  * ```
- *
  * @description
  *
  * Adds / removes DOM sub-trees based on a numeric value. Tailored for pluralization.
@@ -41,7 +39,8 @@ import {SwitchView} from './ng_switch';
  * to a switch expression. Inner elements with a `[ngPluralCase]` will display based on their
  * expression:
  *
- * 要使用此指令，必须提供一个容器元素，该元素将 `[ngPlural]` 属性设置为 switch 表达式。 `[ngPluralCase]` 内部元素将根据其表达式显示：
+ * 要使用此指令，必须提供一个容器元素，该元素将 `[ngPlural]` 属性设置为 switch 表达式。
+ * `[ngPluralCase]` 内部元素将根据其表达式显示：
  *
  * - if `[ngPluralCase]` is set to a value starting with `=`, it will only display if the value
  *   matches the switch expression exactly,
@@ -53,7 +52,7 @@ import {SwitchView} from './ng_switch';
  *
  *   否则，该视图将被视为“类别匹配”，并且仅在未找到精确值匹配且该值映射到已定义语言环境的类别时才会显示。
  *
- * See http://cldr.unicode.org/index/cldr-spec/plural-rules
+ * See <http://cldr.unicode.org/index/cldr-spec/plural-rules>
  *
  * 参见 <http://cldr.unicode.org/index/cldr-spec/plural-rules>
  *
@@ -107,7 +106,8 @@ export class NgPlural {
  * Creates a view that will be added/removed from the parent {@link NgPlural} when the
  * given expression matches the plural expression according to CLDR rules.
  *
- * 创建一个视图，当给定表达式根据 CLDR 规则与复数表达式匹配时，将在父视图 {@link NgPlural} 中添加/删除该视图。
+ * 创建一个视图，当给定表达式根据 CLDR 规则与复数表达式匹配时，将在父视图 {@link NgPlural}
+ *中添加/删除该视图。
  *
  * @usageNotes
  *

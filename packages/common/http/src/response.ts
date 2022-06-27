@@ -326,8 +326,8 @@ export class HttpHeaderResponse extends HttpResponseBase {
  * `HttpResponse` is a `HttpEvent` available on the response event
  * stream.
  *
- *
  * `HttpResponse` 是一个用于事件响应流的 `HttpEvent`。
+ *
  * @publicApi
  */
 export class HttpResponse<T> extends HttpResponseBase {
@@ -388,7 +388,8 @@ export class HttpResponse<T> extends HttpResponseBase {
  * non-successful HTTP status, an error while executing the request,
  * or some other failure which occurred during the parsing of the response.
  *
- * 一个用于表示错误或失败的响应对象，或者来自执行请求时发生的错误给出的失败的 HTTP 状态码，或者来自在解析响应对象期间发生的其它错误。
+ * 一个用于表示错误或失败的响应对象，或者来自执行请求时发生的错误给出的失败的 HTTP
+ * 状态码，或者来自在解析响应对象期间发生的其它错误。
  *
  * Any error returned on the `Observable` response stream will be
  * wrapped in an `HttpErrorResponse` to provide additional context about
@@ -396,7 +397,8 @@ export class HttpResponse<T> extends HttpResponseBase {
  * will contain either a wrapped Error object or the error response returned
  * from the server.
  *
- * 任何从 `Observable` 响应流中返回的错误都会被包装成 `HttpErrorResponse` 对象，以便在发生错误时，提供关于 HTTP 层状态的额外上下文信息。
+ * 任何从 `Observable` 响应流中返回的错误都会被包装成 `HttpErrorResponse`
+ * 对象，以便在发生错误时，提供关于 HTTP 层状态的额外上下文信息。
  * 该错误或者包含一个包装好的错误对象，或者包含一个从服务端返回的错误响应体。
  *
  * @publicApi
@@ -438,7 +440,10 @@ export class HttpErrorResponse extends HttpResponseBase implements Error {
 
 /**
  * Http status codes.
- * As per https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+ * As per <https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml>
+ *
+ * Http 状态代码。根据<https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml>
+ *
  * @publicApi
  */
 export const enum HttpStatusCode {

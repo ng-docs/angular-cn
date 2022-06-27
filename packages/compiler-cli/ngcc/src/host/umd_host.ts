@@ -102,10 +102,22 @@ export class UmdReflectionHost extends Esm5ReflectionHost {
   /**
    * Get the top level statements for a module.
    *
+   * 获取模块的顶级语句。
+   *
    * In UMD modules these are the body of the UMD factory function.
    *
+   * 在 UMD 模块中，这些是 UMD 工厂函数的主体。
+   *
    * @param sourceFile The module whose statements we want.
-   * @returns An array of top level statements for the given module.
+   *
+   * 我们想要其语句的模块。
+   *
+   * @returns
+   *
+   * An array of top level statements for the given module.
+   *
+   * 给定模块的顶级语句数组。
+   *
    */
   protected override getModuleStatements(sourceFile: ts.SourceFile): ts.Statement[] {
     const umdModule = this.getUmdModule(sourceFile);
@@ -165,6 +177,9 @@ export class UmdReflectionHost extends Esm5ReflectionHost {
 
   /**
    * Extract all "classes" from the `statement` and add them to the `classes` map.
+   *
+   * 从 `statement` 提取所有“类”并将它们添加到 `classes` 映射表中。
+   *
    */
   protected override addClassSymbolsFromStatement(
       classes: Map<ts.Symbol, NgccClassSymbol>, statement: ts.Statement): void {
@@ -184,7 +199,13 @@ export class UmdReflectionHost extends Esm5ReflectionHost {
    * `exports.MyClass = MyClass_1 = <class def>;`. If so, the declaration of `MyClass_1`
    * is associated with the `MyClass` identifier.
    *
+   * 分析给定的语句以查看它是否与 exports 声明对应，例如 `exports.MyClass = MyClass_1 = <class
+   * def>;` .如果是这样，则 `MyClass_1` 的声明与 `MyClass` 标识符相关联。
+   *
    * @param statement The statement that needs to be preprocessed.
+   *
+   * 需要预处理的语句。
+   *
    */
   protected override preprocessStatement(statement: ts.Statement): void {
     super.preprocessStatement(statement);
@@ -292,9 +313,9 @@ export class UmdReflectionHost extends Esm5ReflectionHost {
       statement: WildcardReexportStatement, containingFile: ts.SourceFile): ExportDeclaration[] {
     const reexportArg = statement.expression.arguments[0];
 
-    const requireCall = isRequireCall(reexportArg) ?
-        reexportArg :
-        ts.isIdentifier(reexportArg) ? findRequireCallReference(reexportArg, this.checker) : null;
+    const requireCall = isRequireCall(reexportArg) ? reexportArg :
+        ts.isIdentifier(reexportArg) ? findRequireCallReference(reexportArg, this.checker) :
+                                       null;
 
     let importPath: string|null = null;
 
@@ -355,6 +376,9 @@ export class UmdReflectionHost extends Esm5ReflectionHost {
   /**
    * Is the identifier a parameter on a UMD factory function, e.g. `function factory(this, core)`?
    * If so then return its declaration.
+   *
+   * 标识符是 UMD 工厂函数的参数，例如 `function factory(this, core)` ？如果是这样，则返回其声明。
+   *
    */
   private findUmdImportParameter(id: ts.Identifier): ts.ParameterDeclaration|null {
     const symbol = id && this.checker.getSymbolAtLocation(id) || null;
@@ -475,6 +499,9 @@ export class UmdReflectionHost extends Esm5ReflectionHost {
   /**
    * If this is an IIFE then try to grab the outer and inner classes otherwise fallback on the super
    * class.
+   *
+   * 如果这是 IIFE，则尝试获取外部类和内部类，否则回退到超类。
+   *
    */
   protected override getDeclarationOfExpression(expression: ts.Expression): Declaration|null {
     const inner = getInnerClassDeclaration(expression);
@@ -569,13 +596,22 @@ function getUmdWrapper(statement: ts.Statement):
  * Parse the wrapper function of a UMD module and extract info about the factory function calls for
  * the various formats (CommonJS, CommonJS2, AMD, global).
  *
+ * 解析 UMD
+ * 模块的包装函数，并提取有关各种格式（CommonJS、CommonJS2、AMD、全局）的工厂函数调用的信息。
+ *
  * NOTE:
  * For more info on the distinction between CommonJS and CommonJS2 see
- * https://github.com/webpack/webpack/issues/1114.
+ * <https://github.com/webpack/webpack/issues/1114>.
+ *
+ * 注：有关 CommonJS 和 CommonJS2
+ * 之间区别的更多信息，请参阅<https://github.com/webpack/webpack/issues/1114> 。
  *
  * The supported format for the UMD wrapper function body is a single statement which is either a
  * `ts.ConditionalExpression` (i.e. using a ternary operator) (typically emitted by Rollup) or a
  * `ts.IfStatement` (typically emitted by Webpack). For example:
+ *
+ * UMD 包装器函数体的支持格式是单个语句，它可以是 `ts.ConditionalExpression`
+ * （即使用三元运算符）（通常由 Rollup 发出）或 `ts.IfStatement` （通常由 Webpack 发出）。例如：
  *
  * ```js
  * // Using a conditional expression:
@@ -594,6 +630,8 @@ function getUmdWrapper(statement: ts.Statement):
  * ```
  *
  * or
+ *
+ * 或
  *
  * ```js
  * // Using an `if` statement:
@@ -614,6 +652,7 @@ function getUmdWrapper(statement: ts.Statement):
  *   // ...
  * });
  * ```
+ *
  */
 function parseUmdWrapperFunction(wrapperFn: ts.FunctionExpression): UmdModule['factoryCalls'] {
   const stmt = wrapperFn.body.statements[0];
@@ -647,6 +686,8 @@ function parseUmdWrapperFunction(wrapperFn: ts.FunctionExpression): UmdModule['f
 /**
  * Extract `UmdConditionalFactoryCall`s from a `ts.ConditionalExpression` of the form:
  *
+ * 从以下形式的 `ts.ConditionalExpression` 中提取 `UmdConditionalFactoryCall` ：
+ *
  * ```js
  * typeof exports === 'object' && typeof module !== 'undefined' ?
  *   // CommonJS2 factory call.
@@ -657,6 +698,7 @@ function parseUmdWrapperFunction(wrapperFn: ts.FunctionExpression): UmdModule['f
  *   // Global factory call.
  *   (factory((global['my-lib'] = {}), global.foo, global.bar));
  * ```
+ *
  */
 function extractFactoryCallsFromConditionalExpression(node: ts.ConditionalExpression):
     UmdConditionalFactoryCall[] {
@@ -689,6 +731,8 @@ function extractFactoryCallsFromConditionalExpression(node: ts.ConditionalExpres
 /**
  * Extract `UmdConditionalFactoryCall`s from a `ts.IfStatement` of the form:
  *
+ * 从以下形式的 `ts.IfStatement` 中提取 `UmdConditionalFactoryCall` ：
+ *
  * ```js
  * if (typeof exports === 'object' && typeof module === 'object')
  *   // CommonJS2 factory call.
@@ -703,6 +747,7 @@ function extractFactoryCallsFromConditionalExpression(node: ts.ConditionalExpres
  *   // Global factory call.
  *   root['my-lib'] = factory(root['foo'], root['bar']);
  * ```
+ *
  */
 function extractFactoryCallsFromIfStatement(node: ts.IfStatement): UmdConditionalFactoryCall[] {
   const factoryCalls: UmdConditionalFactoryCall[] = [];
@@ -769,6 +814,9 @@ function getFunctionCallFromExpression(node: ts.Expression): ts.CallExpression {
 
 /**
  * Get the `define` call for setting up the AMD dependencies in the UMD wrapper.
+ *
+ * 获取用于在 UMD 包装器中设置 AMD 依赖项的 `define` 调用。
+ *
  */
 function getAmdDefineCall(calls: UmdConditionalFactoryCall[]): ts.CallExpression|null {
   // The `define` call for AMD dependencies is the one that is guarded with a `&&` expression whose
@@ -784,6 +832,9 @@ function getAmdDefineCall(calls: UmdConditionalFactoryCall[]): ts.CallExpression
 
 /**
  * Get the factory call for setting up the CommonJS dependencies in the UMD wrapper.
+ *
+ * 获取工厂调用以在 UMD 包装器中设置 CommonJS 依赖项。
+ *
  */
 function getCommonJsFactoryCall(calls: UmdConditionalFactoryCall[]): ts.CallExpression|null {
   // The factory call for CommonJS dependencies is the one that is guarded with a `typeof exports`
@@ -798,6 +849,9 @@ function getCommonJsFactoryCall(calls: UmdConditionalFactoryCall[]): ts.CallExpr
 
 /**
  * Get the factory call for setting up the CommonJS2 dependencies in the UMD wrapper.
+ *
+ * 获取工厂调用以在 UMD 包装器中设置 CommonJS2 依赖项。
+ *
  */
 function getCommonJs2FactoryCall(calls: UmdConditionalFactoryCall[]): ts.CallExpression|null {
   // The factory call for CommonJS2 dependencies is the one that is guarded with a `&&` expression
@@ -813,6 +867,9 @@ function getCommonJs2FactoryCall(calls: UmdConditionalFactoryCall[]): ts.CallExp
 
 /**
  * Get the factory call for setting up the global dependencies in the UMD wrapper.
+ *
+ * 获取工厂调用以在 UMD 包装器中设置全局依赖项。
+ *
  */
 function getGlobalFactoryCall(calls: UmdConditionalFactoryCall[]): ts.CallExpression|null {
   // The factory call for global dependencies is the one that is the final else-case (i.e. the one
@@ -869,8 +926,14 @@ interface UmdModule {
 /**
  * Represents a factory call found inside the UMD wrapper function.
  *
+ * 表示在 UMD 包装器函数中找到的工厂调用。
+ *
  * Each factory call corresponds to a format (such as AMD, CommonJS, etc.) and is guarded by a
  * condition (except for the last factory call, which is reached when all other conditions fail).
+ *
+ * 每个工厂调用都对应一种格式（例如 AMD、CommonJS
+ * 等），并由一个条件保护（最后一个工厂调用除外，当所有其他条件都失败时会达到）。
+ *
  */
 interface UmdConditionalFactoryCall {
   condition: ts.BinaryExpression|null;
@@ -879,6 +942,9 @@ interface UmdConditionalFactoryCall {
 
 /**
  * Is the `node` an identifier with the name "exports"?
+ *
+ * `node` 是名为“exports”的标识符吗？
+ *
  */
 function isExportsIdentifier(node: ts.Node): node is ts.Identifier {
   return ts.isIdentifier(node) && node.text === 'exports';

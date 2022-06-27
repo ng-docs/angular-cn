@@ -143,11 +143,24 @@ export function getSanitizationBypassType(value: any): BypassType|null {
 /**
  * Mark `html` string as trusted.
  *
+ * 将 `html` 字符串标记为受信任。
+ *
  * This function wraps the trusted string in `String` and brands it in a way which makes it
  * recognizable to {@link htmlSanitizer} to be trusted implicitly.
  *
+ * 此函数将受信任的字符串包装在 `String` 中，并以一种使 {@link htmlSanitizer}
+ * 可识别为隐式信任的方式对它进行标记。
+ *
  * @param trustedHtml `html` string which needs to be implicitly trusted.
- * @returns a `html` which has been branded to be implicitly trusted.
+ *
+ * 需要隐式信任的 `html` 字符串。
+ *
+ * @returns
+ *
+ * a `html` which has been branded to be implicitly trusted.
+ *
+ * 已被标记为隐式信任的 `html` 。
+ *
  */
 export function bypassSanitizationTrustHtml(trustedHtml: string): SafeHtml {
   return new SafeHtmlImpl(trustedHtml);
@@ -155,11 +168,24 @@ export function bypassSanitizationTrustHtml(trustedHtml: string): SafeHtml {
 /**
  * Mark `style` string as trusted.
  *
+ * 将 `style` 字符串标记为受信任。
+ *
  * This function wraps the trusted string in `String` and brands it in a way which makes it
  * recognizable to {@link styleSanitizer} to be trusted implicitly.
  *
+ * 此函数将受信任的字符串包装在 `String` 中，并以一种使 {@link styleSanitizer}
+ * 可识别为隐式信任的方式对它进行标记。
+ *
  * @param trustedStyle `style` string which needs to be implicitly trusted.
- * @returns a `style` hich has been branded to be implicitly trusted.
+ *
+ * 需要隐式信任的 `style` 字符串。
+ *
+ * @returns
+ *
+ * a `style` hich has been branded to be implicitly trusted.
+ *
+ * 一种被认为是隐式信任的 `style` 。
+ *
  */
 export function bypassSanitizationTrustStyle(trustedStyle: string): SafeStyle {
   return new SafeStyleImpl(trustedStyle);
@@ -167,11 +193,24 @@ export function bypassSanitizationTrustStyle(trustedStyle: string): SafeStyle {
 /**
  * Mark `script` string as trusted.
  *
+ * 将 `script` 字符串标记为受信任。
+ *
  * This function wraps the trusted string in `String` and brands it in a way which makes it
  * recognizable to {@link scriptSanitizer} to be trusted implicitly.
  *
+ * 此函数将受信任的字符串包装在 `String` 中，并以一种使 {@link scriptSanitizer}
+ * 可识别为隐式信任的方式对它进行标记。
+ *
  * @param trustedScript `script` string which needs to be implicitly trusted.
- * @returns a `script` which has been branded to be implicitly trusted.
+ *
+ * 需要隐式信任的 `script` 字符串。
+ *
+ * @returns
+ *
+ * a `script` which has been branded to be implicitly trusted.
+ *
+ * 已被标记为隐式信任的 `script` 。
+ *
  */
 export function bypassSanitizationTrustScript(trustedScript: string): SafeScript {
   return new SafeScriptImpl(trustedScript);
@@ -179,11 +218,24 @@ export function bypassSanitizationTrustScript(trustedScript: string): SafeScript
 /**
  * Mark `url` string as trusted.
  *
+ * 将 `url` 字符串标记为受信任。
+ *
  * This function wraps the trusted string in `String` and brands it in a way which makes it
  * recognizable to {@link urlSanitizer} to be trusted implicitly.
  *
+ * 此函数将受信任的字符串包装在 `String` 中，并以一种使 {@link urlSanitizer}
+ * 可识别为隐式信任的方式对它进行标记。
+ *
  * @param trustedUrl `url` string which needs to be implicitly trusted.
- * @returns a `url`  which has been branded to be implicitly trusted.
+ *
+ * 需要隐式信任的 `url` 字符串。
+ *
+ * @returns
+ *
+ * a `url`  which has been branded to be implicitly trusted.
+ *
+ * 已被标记为隐式信任的 `url` 。
+ *
  */
 export function bypassSanitizationTrustUrl(trustedUrl: string): SafeUrl {
   return new SafeUrlImpl(trustedUrl);
@@ -191,11 +243,24 @@ export function bypassSanitizationTrustUrl(trustedUrl: string): SafeUrl {
 /**
  * Mark `url` string as trusted.
  *
+ * 将 `url` 字符串标记为受信任。
+ *
  * This function wraps the trusted string in `String` and brands it in a way which makes it
  * recognizable to {@link resourceUrlSanitizer} to be trusted implicitly.
  *
+ * 此函数将受信任的字符串包装在 `String` 中，并以一种使 {@link resourceUrlSanitizer}
+ * 可识别为隐式信任的方式对它进行标记。
+ *
  * @param trustedResourceUrl `url` string which needs to be implicitly trusted.
- * @returns a `url` which has been branded to be implicitly trusted.
+ *
+ * 需要隐式信任的 `url` 字符串。
+ *
+ * @returns
+ *
+ * a `url` which has been branded to be implicitly trusted.
+ *
+ * 已被标记为隐式信任的 `url` 。
+ *
  */
 export function bypassSanitizationTrustResourceUrl(trustedResourceUrl: string): SafeResourceUrl {
   return new SafeResourceUrlImpl(trustedResourceUrl);

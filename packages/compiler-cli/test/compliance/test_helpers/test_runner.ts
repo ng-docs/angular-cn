@@ -15,8 +15,16 @@ import {CompilationMode, ComplianceTest, getAllComplianceTests} from './get_comp
 /**
  * Set up jasmine specs for each of the compliance tests.
  *
+ * 为每个合规性测试设置 jasmine 规范。
+ *
  * @param type A description of the type of tests being run.
+ *
+ * 正在运行的测试类型的描述。
+ *
  * @param compileFn The function that will do the compilation of the source files
+ *
+ * 将进行源文件编译的函数
+ *
  */
 export function runTests(
     type: CompilationMode, compileFn: (fs: FileSystem, test: ComplianceTest) => CompileResult) {

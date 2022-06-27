@@ -10,6 +10,8 @@ By following a few guidelines, you can use property binding in a way that helps 
 
 See the <live-example name="property-binding"></live-example> for a working example containing the code snippets in this guide.
 
+本章包含代码片段的工作实例参阅<live-example name="property-binding"></live-example>。
+
 </div>
 
 ## Avoid side effects
@@ -44,7 +46,7 @@ As a best practice, use only properties and methods that return values.
 A template expression should evaluate to the type of value that the target property expects.
 For example, return a string if the target property expects a string, a number if it expects a number, or an object if it expects an object.
 
-模板表达式应该求值为目标属性所期望的值类型。例如，如果目标属性需要一个字符串，就返回一个字符串；如果需要一个数字，就返回一个数字；如果需要一个对象，就返回一个对象。
+模板表达式应该求值为目标属性所期望的值类型。比如，如果目标属性需要一个字符串，就返回一个字符串；如果需要一个数字，就返回一个数字；如果需要一个对象，就返回一个对象。
 
 ### Passing in a string
 

@@ -16,7 +16,12 @@ import {canMigrateFile, createMigrationProgram} from '../../utils/typescript/com
 import {migrateEntryComponentsUsages} from './util';
 
 
-/** Migration that removes `entryComponents` usages. */
+/**
+ * Migration that removes `entryComponents` usages.
+ *
+ * 删除 `entryComponents` 用法的迁移。
+ *
+ */
 export default function(): Rule {
   return async (tree: Tree) => {
     const {buildPaths, testPaths} = await getProjectTsConfigPaths(tree);

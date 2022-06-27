@@ -7,16 +7,16 @@ For example, use the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") w
 The template expression `{{ amount | currency:'EUR' }}` transforms the `amount` to currency in euros.
 Follow the pipe name (`currency`) with a colon (`:`) and the parameter value (`'EUR'`).
 
-可以用可选参数微调管道的输出。例如，你可以使用 [`CurrencyPipe`](api/common/CurrencyPipe "API 参考") 和国家代码（如 EUR）作为参数。模板表达式 `{{ amount | currency:'EUR' }}` 会把 `amount` 转换成欧元。紧跟在管道名称（ `currency` ）后面的是冒号（`:`）和参数值（`'EUR'`）。
+可以用可选参数微调管道的输出。比如，你可以使用 [`CurrencyPipe`](api/common/CurrencyPipe "API 参考") 和国家代码（如 EUR）作为参数。模板表达式 `{{ amount | currency:'EUR' }}` 会把 `amount` 转换成欧元。紧跟在管道名称（ `currency` ）后面的是冒号（`:`）和参数值（`'EUR'`）。
 
 If the pipe accepts multiple parameters, separate the values with colons.
 For example, `{{ amount | currency:'EUR':'Euros '}}` adds the second parameter, the string literal `'Euros '`, to the output string. Use any valid template expression as a parameter, such as a string literal or a component property.
 
-如果管道能接受多个参数，就用冒号分隔这些值。例如，`{{ amount | currency:'EUR':'Euros '}}` 会把第二个参数（字符串 `'Euros '`）添加到输出字符串中。你可以使用任何有效的模板表达式作为参数，比如字符串字面量或组件的属性。
+如果管道能接受多个参数，就用冒号分隔这些值。比如，`{{ amount | currency:'EUR':'Euros '}}` 会把第二个参数（字符串 `'Euros '`）添加到输出字符串中。你可以使用任何有效的模板表达式作为参数，比如字符串字面量或组件的属性。
 
-Some pipes require at least one parameter and allow more optional parameters, such as [`SlicePipe`](/api/common/SlicePipe "API reference for SlicePipe"). For example, `{{ slice:1:5 }}` creates a new array or string containing a subset of the elements starting with element `1` and ending with element `5`.
+Some pipes require at least one parameter and allow more optional parameters, such as [`SlicePipe`](api/common/SlicePipe "API reference for SlicePipe"). For example, `{{ slice:1:5 }}` creates a new array or string containing a subset of the elements starting with element `1` and ending with element `5`.
 
-有些管道需要至少一个参数，并且允许使用更多的可选参数，比如 [`SlicePipe`](/api/common/SlicePipe "SlicePipe 的 API 参考") 。例如， `{{ slice:1:5 }}` 会创建一个新数组或字符串，它以第 `1` 个元素开头，并以第 `5` 个元素结尾。
+有些管道需要至少一个参数，并且允许使用更多的可选参数，比如 [`SlicePipe`](api/common/SlicePipe "SlicePipe 的 API 参考") 。比如， `{{ slice:1:5 }}` 会创建一个新数组或字符串，它以第 `1` 个元素开头，并以第 `5` 个元素结尾。
 
 ## Example: Formatting a date
 

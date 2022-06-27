@@ -40,21 +40,39 @@ A locale determines the formatting and parsing of the following details.
     <a href="guide/i18n-common-overview" class="docs-card" title="Common internationalization tasks">
 
 ```
-    <section>Common tasks</section>
-    <p>Learn how to implement many of the common tasks associated with Angular internationalization.</p>
-    <p class="card-footer">Common internationalization tasks</p>
+<section>Common tasks</section>
+    <section>常见任务</section>
+<p>Learn how to implement many of the common tasks associated with Angular internationalization.</p>
+    <p>学习如何实现与 Angular 国际化有关的常见任务</p>
+<p class="card-footer">Common internationalization tasks</p>
+    <p class="card-footer">常见国际化任务</p>
+```
+
 </a>
 <a href="guide/i18n-optional-overview" class="docs-card" title="Optional internationalization tasks">
-    <section>Optional practices</section>
-    <p>Learn how to implement optional practices associated with Angular internationalization.</p>
-    <p class="card-footer">Optional internationalization practices</p>
+
+```
+<section>Optional practices</section>
+    <section>可选实践</section>
+<p>Learn how to implement optional practices associated with Angular internationalization.</p>
+    <p>学习如何实现与 Angular 国际化有关的可选实践</p>
+<p class="card-footer">Optional internationalization practices</p>
+    <p class="card-footer">可选国际化实践</p>
+```
+
 </a>
 <a href="guide/i18n-example" class="docs-card" title="Internationalization example">
-    <section>Internationalization example</section>
-    <p>Review an example of Angular internationalization.</p>
-    <p class="card-footer">Example Angular Internationalization application</p>
-</a>
+
 ```
+<section>Internationalization example</section>
+    <section>国际化范例</section>
+<p>Review an example of Angular internationalization.</p>
+    <p>查看一个 Angular 国际化的例子</p>
+<p class="card-footer">Example Angular Internationalization application</p>
+    <p class="card-footer">Angular 国际化应用范例</p>
+```
+
+</a>
 
 </div>
 

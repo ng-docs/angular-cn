@@ -7,7 +7,9 @@
  */
 
 import {ComponentRef} from '@angular/core';
+
 import {exportNgVar} from '../../dom/util';
+
 import {AngularProfiler} from './common_tools';
 
 const PROFILER_GLOBAL_NAME = 'profiler';
@@ -20,9 +22,11 @@ const PROFILER_GLOBAL_NAME = 'profiler';
  *
  * Usage:
  *
+ * 用法：
+ *
  * 1. Open developer console (e.g. in Chrome Ctrl + Shift + j)
  *
- *    打开开发人员控制台（例如，Chrome 中是 Ctrl + Shift + j）
+ *    打开开发人员控制台（比如，Chrome 中是 Ctrl + Shift + j）
  *
  * 1. Type `ng.` (usually the console will show auto-complete suggestion)
  *

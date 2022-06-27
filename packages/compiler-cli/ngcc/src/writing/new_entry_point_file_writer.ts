@@ -24,8 +24,15 @@ export const NGCC_PROPERTY_EXTENSION = '_ivy_ngcc';
  * files onto the files in this copy, and finally updates the package.json with a new
  * entry-point format property that points to this new entry-point.
  *
+ * 此 FileWriter
+ * 会创建原始入口点的副本，然后将转换后的文件写入此副本中的文件，最后使用指向这个新入口点的新入口点格式属性更新
+ * package.json。
+ *
  * If there are transformed typings files in this bundle, they are updated in-place (see the
  * `InPlaceFileWriter`).
+ *
+ * 如果此包中存在转换后的类型文件，它们会就地更新（请参阅 `InPlaceFileWriter` ）。
+ *
  */
 export class NewEntryPointFileWriter extends InPlaceFileWriter {
   constructor(
@@ -90,13 +97,24 @@ export class NewEntryPointFileWriter extends InPlaceFileWriter {
    * If a source file has an associated source-map, then copy this, while updating its sourceRoot
    * accordingly.
    *
+   * 如果源文件有关联的 source-map ，则复制它，同时相应地更新其 sourceRoot 。
+   *
    * For now don't try to parse the source for inline source-maps or external source-map links,
    * since that is more complex and will slow ngcc down.
    * Instead just check for a source-map file residing next to the source file, which is by far
    * the most common case.
    *
+   * 现在不要尝试解析内联 source-maps 或外部 source-map 链接的源代码，因为这更复杂，并且会减慢 ngcc
+   * 的速度。而是检查位于源文件旁边的 source-map 文件，这是迄今为止最常见的情况。
+   *
    * @param originalSrcPath absolute path to the original source file being copied.
+   *
+   * 要复制的原始源文件的绝对路径。
+   *
    * @param newSrcPath absolute path to where the source will be written.
+   *
+   * 将写入源代码的绝对路径。
+   *
    */
   protected copyAndUpdateSourceMap(originalSrcPath: AbsoluteFsPath, newSrcPath: AbsoluteFsPath):
       void {

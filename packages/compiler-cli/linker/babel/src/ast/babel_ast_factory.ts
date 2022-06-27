@@ -11,6 +11,9 @@ import {types as t} from '../babel_core';
 
 /**
  * A Babel flavored implementation of the AstFactory.
+ *
+ * AstFactory 的 Babel 风格的实现。
+ *
  */
 export class BabelAstFactory implements AstFactory<t.Statement, t.Expression> {
   constructor(

@@ -4,13 +4,21 @@
 
 This guide is about structural directives and provides conceptual information on how such directives work, how Angular interprets their shorthand syntax, and how to add template guard properties to catch template type errors.
 
+本指南是关于结构指令的，并提供了有关此类指令的工作方式、Angular 如何解释它们的速记语法以及如何添加模板保护属性以捕获模板类型错误的概念信息。
+
 Structural directives are directives which change the DOM layout by adding and removing DOM element.
 
+结构指令是通过添加和删除 DOM 元素来更改 DOM 布局的指令。
+
 Angular provides a set of built-in structural directives (such as `NgIf`, `NgFor`, `NgSwitch` and others) which are commonly used in all Angular projects. For more information see [Built-in directives](guide/built-in-directives).
+
+Angular 提供了一组内置的结构指令（例如 `NgIf` 、 `NgFor` 、 `NgSwitch` 等），在所有 Angular 项目中通用。有关更多信息，请参阅[内置指令](guide/built-in-directives)。
 
 <div class="alert is-helpful">
 
 For the example application that this page describes, see the <live-example name="structural-directives"></live-example>.
+
+对于本页面介绍的示例应用程序，请参阅<live-example name="structural-directives"></live-example>.
 
 </div>
 
@@ -24,15 +32,23 @@ For the example application that this page describes, see the <live-example name
 When structural directives are applied they generally are prefixed by an asterisk, `*`,  such as `*ngIf`. This convention is shorthand that Angular interprets and converts into a longer form.
 Angular transforms the asterisk in front of a structural directive into an `<ng-template>` that surrounds the host element and its descendants.
 
+应用结构指令时，它们通常以星号 `*` 为前缀，例如 `*ngIf` 。本约定是 Angular 解释并转换为更长形式的速记。 Angular 会将结构指令前面的星号转换为围绕宿主元素及其后代的 `<ng-template>` 。
+
 For example, let's take the following code which uses an `*ngIf` to displays the hero's name if `hero` exists:
+
+例如，让我们采取以下代码，如果 `hero` 存在，则使用 `*ngIf` 来显示英雄的名字：
 
 <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (asterisk)" region="asterisk"></code-example>
 
 Angular creates an `<ng-template>` element and applies the `*ngIf` directive onto it where it becomes a property binding in square brackets, `[ngIf]`. The rest of the `<div>`, including its class attribute, is then moved inside the `<ng-template>`:
 
+Angular 创建一个 `<ng-template>` 元素，并将 `*ngIf` 指令应用于它，在那里它成为方括号中的属性绑定 `[ngIf]` 。然后， `<div>` 的其余部分（包括其 class 属性）会在 `<ng-template>` 中移动：
+
 <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (ngif-template)" region="ngif-template"></code-example>
 
 Note that Angular does not actually create a real `<ng-template>` element, but instead only renders the `<div>` element.
+
+请注意，Angular 实际上并没有创建真正的 `<ng-template>` 元素，而是仅呈现 `<div>` 元素。
 
 ```html
 <div _ngcontent-c0>Mr. Nice</div>
@@ -49,6 +65,8 @@ All other bindings and attributes on the element apply to the `<div>` element wi
 Other modifiers on the host element, in addition to the `ngFor` string, remain in place as the element moves inside the `<ng-template>`.
 In this example, the `[class.odd]="odd"` stays on the `<div>`.
 
+在这里，与 `ngFor` 结构指令相关的所有内容都被移动到 `<ng-template>` 。元素上的所有其他绑定和属性都适用于 `<ng-template>` 中的 `<div>` 元素。当元素在 `<ng-template>` 中移动时，宿主元素上的其他修饰符（除了 `ngFor` 字符串）会保持在原位。在此示例中， `[class.odd]="odd"` 保留在 `<div>` 上。
+
 The `let` keyword declares a template input variable that you can reference within the template.
 The input variables in this example are `hero`, `i`, and `odd`.
 The parser translates `let hero`, `let i`, and `let odd` into variables named `let-hero`, `let-i`, and `let-odd`.
@@ -60,9 +78,13 @@ Angular sets `i` and `odd` to the current value of the context's `index` and `od
 The parser applies PascalCase to all directives and prefixes them with the directive's attribute name, such as ngFor.
 For example, the `ngFor` input properties, `of` and `trackBy`, map to `ngForOf` and `ngForTrackBy`.
 
+解析器将 PascalCase 应用于所有指令，并以指令的属性名称为前缀，例如 ngFor 。例如， `ngFor` 输入属性 `of` 和 `trackBy` 映射到 `ngForOf` 和 `ngForTrackBy` 。
+
 As the `NgFor` directive loops through the list, it sets and resets properties of its own context object.
 These properties can include, but aren't limited to, `index`, `odd`, and a special property
 named `$implicit`.
+
+当 `NgFor` 指令遍历列表时，它会设置和重置其自己的上下文对象的属性。这些属性可以包括但不限于 `index` 、 `odd` 和名为 `$implicit` 的特殊属性。
 
 Angular sets `let-hero` to the value of the context's `$implicit` property, which `NgFor` has initialized with the hero for the current iteration.
 
@@ -76,7 +98,11 @@ For more information, see the [NgFor API](api/common/NgForOf "API: NgFor") and [
 
   Note that Angular's `<ng-template>` element defines a template that doesn't render anything by default, if you just wrap elements in an `<ng-template>` without applying a structural directive those elements will not be rendered.
 
+请注意，Angular 的 `<ng-template>` 元素定义了一个默认不渲染任何内容的模板，如果你只是在 `<ng-template>` 中包装元素而不应用结构指令，则不会渲染这些元素。
+
   For more information, see the [ng-template API](api/core/ng-template) documentation.
+
+有关更多信息，请参阅[ng-template API](api/core/ng-template)文档。
 
 </div>
 
@@ -84,17 +110,29 @@ For more information, see the [NgFor API](api/common/NgForOf "API: NgFor") and [
 
 ## One structural directive per element
 
+## 每个元素一个结构指令
+
 It's a quite common use-case to repeat a block of HTML but only when a particular condition is true. An intuitive way to do that is to put both an `*ngFor` and an `*ngIf` on the same element. However, since both `*ngFor` and `*ngIf` are structural directives, this would be treated as an error by the compiler. You may apply only one _structural_ directive to an element.
+
+重复一个 HTML 块是一个很常见的用例，但前提是在特定条件为真时。一种直观的方法是将 `*ngFor` 和 `*ngIf` 放在同一个元素上。但是，由于 `*ngFor` 和 `*ngIf` 都是结构指令，因此编译器会将其视为错误。你只能将一个 _ 结构 _ 指令应用于一个元素。
 
 The reason is simplicity. Structural directives can do complex things with the host element and its descendants.
 
+原因是简单。结构指令可以用宿主元素及其后代做复杂的事情。
+
 When two directives lay claim to the same host element, which one should take precedence?
+
+当两个指令都声称使用了同一个宿主元素时，哪一个应该优先？
 
 Which should go first, the `NgIf` or the `NgFor`? Can the `NgIf` cancel the effect of the `NgFor`?
 If so (and it seems like it should be so), how should Angular generalize the ability to cancel for other structural directives?
 
+哪个应该先走， `NgIf` 或 `NgFor` ？ `NgIf` 可以取消 `NgFor` 的效果吗？如果是这样（看起来应该是这样），Angular 应该如何概括其他结构指令的取消能力？
+
 There are no easy answers to these questions. Prohibiting multiple structural directives makes them moot.
 There's an easy solution for this use case: put the `*ngIf` on a container element that wraps the `*ngFor` element. One or both elements can be an `<ng-container>` so that no extra DOM elements are generated.
+
+这些问题没有简单的答案。禁止多个结构指令使它们没有实际意义。这个用例有一个简单的解决方案：将 `*ngIf` 放在包装 `*ngFor` 元素的容器元素上。一个或两个元素可以是 `<ng-container>` ，以便不会生成额外的 DOM 元素。
 
 <a id="unless"></a>
 
@@ -243,7 +281,7 @@ The following tables describe each portion of the structural directive grammar:
 
 | Keyword | Details |
 | :------ | :------ |
-| Keyword | 详情 |
+| 关键字 | 详情 |
 | `prefix` | HTML attribute key |
 | `prefix` | HTML 属性的键名 |
 | `key` | HTML attribute key |
@@ -269,6 +307,7 @@ Angular 会将结构型指令的简写形式转换为普通的绑定语法，如
 | `prefix` and naked `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
 | `prefix` 和裸 `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
 | `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **NOTE**: <br /> The `prefix` is added to the `key` </div> |
+| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> |
 | `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> |
 | `let` | <code-example format="typescript" hideCopy language="typescript"> let-local="export" </code-example> |
 
@@ -335,16 +374,16 @@ For example, the `NgIf` implementation uses type-narrowing to ensure that the te
 To provide the specific type requirement, the `NgIf` directive defines a [static property `ngTemplateGuard_ngIf: 'binding'`](api/common/NgIf#static-properties).
 The `binding` value is a special case for a common kind of type-narrowing where the input expression is evaluated in order to satisfy the type requirement.
 
-例如，`NgIf` 的实现使用类型窄化来确保只有当 `*ngIf` 的输入表达式为真时，模板才会被实例化。为了提供具体的类型要求，`NgIf` 指令定义了一个[静态属性 `ngTemplateGuard_ngIf: 'binding'`](api/common/NgIf#static-properties)。这里的 `binding` 值是一种常见的类型窄化的例子，它会对输入表达式进行求值，以满足类型要求。
+比如，`NgIf` 的实现使用类型窄化来确保只有当 `*ngIf` 的输入表达式为真时，模板才会被实例化。为了提供具体的类型要求，`NgIf` 指令定义了一个[静态属性 `ngTemplateGuard_ngIf: 'binding'`](api/common/NgIf#static-properties)。这里的 `binding` 值是一种常见的类型窄化的例子，它会对输入表达式进行求值，以满足类型要求。
 
 To provide a more specific type for an input expression to a directive within the template, add an `ngTemplateGuard_xx` property to the directive, where the suffix to the static property name, `xx`, is the `@Input()` field name.
 The value of the property can be either a general type-narrowing function based on its return type, or the string `"binding"`, as in the case of `NgIf`.
 
-要为模板中指令的输入表达式提供更具体的类型，请在指令中添加 `ngTemplateGuard_xx` 属性，其中静态属性名称 `xx` 就是 `@Input()` 字段的名字。该属性的值可以是基于其返回类型的常规类型窄化函数，也可以是字符串，例如 `NgIf` 中的 `"binding"`。
+要为模板中指令的输入表达式提供更具体的类型，请在指令中添加 `ngTemplateGuard_xx` 属性，其中静态属性名称 `xx` 就是 `@Input()` 字段的名字。该属性的值可以是基于其返回类型的常规类型窄化函数，也可以是字符串，比如 `NgIf` 中的 `"binding"`。
 
 For example, consider the following structural directive that takes the result of a template expression as an input:
 
-例如，考虑以下结构型指令，该指令以模板表达式的结果作为输入：
+比如，考虑以下结构型指令，该指令以模板表达式的结果作为输入：
 
 <code-example format="typescript" header="IfLoadedDirective" language="typescript">
 

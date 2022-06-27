@@ -151,10 +151,12 @@ export interface StaticClassProvider extends StaticClassSansProvider {
  * @usageNotes
  *
  * ```ts
- * @Injectable(SomeModule, {deps: []})
- * class MyService {}
+ *
  * ```
  *
+ * @Injectable (SomeModule, {deps: []})
+ * class MyService {}
+ * ```
  * @publicApi
  */
 export interface ConstructorSansProvider {
@@ -351,10 +353,12 @@ export interface FactoryProvider extends FactorySansProvider {
  * 配置为静态的（即不需要反射）。静态提供者为各种类型的依赖项提供令牌给注入器。
  *
  * @see `Injector.create()`.
+ *
+ * `Injector.create()` 。
+ *
  * @see ["Dependency Injection Guide"](guide/dependency-injection-providers).
  *
  * [“依赖注入指南”](guide/dependency-injection-providers) 。
- *
  * @publicApi
  */
 export type StaticProvider =
@@ -362,7 +366,7 @@ export type StaticProvider =
 
 
 /**
- * Configures the `Injector` to return an instance of `Type` when `Type' is used as the token.
+ * Configures the `Injector` to return an instance of `Type` when \`Type' is used as the token.
  *
  * 配置此 `Injector`，以将“类型”用作令牌时返回 `Type` 的实例。
  *
@@ -377,8 +381,8 @@ export type StaticProvider =
  *
  * @usageNotes
  *
- * {@example core/di/ts/provider_spec.ts region='TypeProvider'}
- *
+ * {
+ * @example core/di/ts/provider_spec.ts region='TypeProvider'}
  * @publicApi
  */
 export interface TypeProvider extends Type<any> {}
@@ -467,6 +471,9 @@ export type Provider = TypeProvider|ValueProvider|ClassProvider|ConstructorProvi
 /**
  * Describes a function that is used to process provider lists (such as provider
  * overrides).
+ *
+ * 描述用于处理提供程序列表的函数（例如提供程序覆盖）。
+ *
  */
 export type ProcessProvidersFunction = (providers: Provider[]) => Provider[];
 
@@ -475,7 +482,12 @@ export type ProcessProvidersFunction = (providers: Provider[]) => Provider[];
  * A wrapper around an NgModule that associates it with [providers](guide/glossary#provider
  * "Definition"). Usage without a generic type is deprecated.
  *
+ * 将 NgModule 与[provider](guide/glossary#provider "定义")关联的 NgModule
+ * 的包装器。不推荐使用没有泛型类型的用法。
+ *
  * @see [Deprecations](guide/deprecations#modulewithproviders-type-without-a-generic)
+ *
+ * [弃用](guide/deprecations#modulewithproviders-type-without-a-generic)
  *
  * @publicApi
  */
@@ -487,14 +499,20 @@ export interface ModuleWithProviders<T> {
 /**
  * Providers that were imported from NgModules via the `importProvidersFrom` function.
  *
+ * 通过 `importProvidersFrom` 函数从 NgModules 导入的提供程序。
+ *
  * These providers are meant for use in an application injector (or other environment injectors) and
  * should not be used in component injectors.
+ *
+ * 这些提供程序旨在用于应用程序注入器（或其他环境注入器），不应在组件注入器中使用。
  *
  * This type cannot be directly implemented. It's returned from the `importProvidersFrom` function
  * and serves to prevent the extracted NgModule providers from being used in the wrong contexts.
  *
- * @see `importProvidersFrom`
+ * 这种类型不能直接实现。它是从 `importProvidersFrom` 函数返回的，用于防止提取的 NgModule
+ * 提供程序在错误的上下文中使用。
  *
+ * @see `importProvidersFrom`
  * @publicApi
  * @developerPreview
  */

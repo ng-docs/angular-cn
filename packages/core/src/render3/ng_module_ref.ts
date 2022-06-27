@@ -24,9 +24,18 @@ import {maybeUnwrapFn} from './util/misc_utils';
 
 /**
  * Returns a new NgModuleRef instance based on the NgModule class and parent injector provided.
+ *
+ * 根据提供的 NgModule 类和父注入器返回一个新的 NgModuleRef 实例。
+ *
  * @param ngModule NgModule class.
+ *
+ * NgModule 类。
+ *
  * @param parentInjector Optional injector instance to use as a parent for the module injector. If
  *     not provided, `NullInjector` will be used instead.
+ *
+ * 用作模块注入器的父级的可选注入器实例。如果未提供，将改为使用 `NullInjector` 。
+ *
  * @publicApi
  */
 export function createNgModuleRef<T>(
@@ -141,6 +150,8 @@ class EnvironmentNgModuleRefAdapter extends viewEngine_NgModuleRef<null> {
 
 /**
  * Create a new environment injector.
+ *
+ * 创建一个新的环境注入器。
  *
  * @publicApi
  * @developerPreview

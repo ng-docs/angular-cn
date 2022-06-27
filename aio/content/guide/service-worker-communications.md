@@ -8,7 +8,7 @@ Importing `ServiceWorkerModule` into your `AppModule` doesn't just register the 
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 A basic understanding of the following:
 
@@ -24,25 +24,43 @@ A basic understanding of the following:
 
 The `SwUpdate` service gives you access to events that indicate when the service worker discovers and installs an available update for your application.
 
+`SwUpdate` 服务让你能访问一些事件，这些事件会指出 Service Worker 何时发现并安装了可用的更新
+
 The `SwUpdate` service supports three separate operations:
+
+`SwUpdate` 服务支持四个独立的操作：
 
 * Get notified when an updated version is *detected* on the server, *installed and ready* to be used locally or when an *installation fails*
 
+  当在服务器上*检测到*新版本、已安装并可本地使用或安装失败时获得通知
+
 * Ask the service worker to check the server for new updates
+
+  要求 Service Worker 检查服务器上是否有更新。
 
 * Ask the service worker to activate the latest version of the application for the current tab
 
+  要求 Service Worker 为当前标签页激活应用的最新版本
+
 ### Version updates
+
+### 版本更新
 
 The `versionUpdates` is an `Observable` property of `SwUpdate` and emits four event types:
 
+`versionUpdates` 是 `SwUpdate` 的一个 `Observable` 属性，并且会发出四种事件类型：
+
 | Event types | Details |
 | :---------- | :------ |
-| Event types | 详情 |
+| 事件类型 | 详情 |
 | `VersionDetectedEvent` | Emitted when the service worker has detected a new version of the app on the server and is about to start downloading it. |
+| `VersionDetectedEvent` | 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出。 |
 | `NoNewVersionDetectedEvent` | Emitted when the service worker has checked the version of the app on the server and did not find a new version. |
+| `NoNewVersionDetectedEvent` | 当 Service Worker 检查了服务器上应用程序的版本并且没有找到新版本时发出。 |
 | `VersionReadyEvent` | Emitted when a new version of the app is available to be activated by clients. It may be used to notify the user of an available update or prompt them to refresh the page. |
+| `VersionReadyEvent` | 当有新版本的应用程序可供客户端激活时发出。它可用于通知用户可用的更新或提示他们刷新页面。 |
 | `VersionInstallationFailedEvent` | Emitted when the installation of a new version failed. It may be used for logging/monitoring purposes. |
+| `VersionInstallationFailedEvent` | 在新版本安装失败时发出。它可用于日志/监控目的。 |
 
 <code-example header="log-update.service.ts" path="service-worker-getting-started/src/app/log-update.service.ts" region="sw-update"></code-example>
 
@@ -72,11 +90,16 @@ The check might fail, which will cause a rejection of the `Promise`.
 In order to avoid negatively affecting the initial rendering of the page, `ServiceWorkerModule` waits for up to 30 seconds by default for the application to stabilize, before registering the ServiceWorker script.
 Constantly polling for updates, for example, with [setInterval()](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) or RxJS' [interval()](https://rxjs.dev/api/index/function/interval), prevents the application from stabilizing and the ServiceWorker script is not registered with the browser until the 30 seconds upper limit is reached.
 
+为了避免影响页面的首次渲染，在注册 ServiceWorker 脚本之前，`ServiceWorkerModule` 默认会在应用程序达到稳定态之前等待最多 30 秒。如果不断轮询更新（比如调用 [setInterval()](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) 或 RxJS 的 [interval()](https://rxjs.dev/api/index/function/interval)）就会阻止应用程序达到稳定态，则直到 30 秒结束之前都不会往浏览器中注册 ServiceWorker 脚本。
+
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 This is true for any kind of polling done by your application.
 Check the [isStable](api/core/ApplicationRef#isStable) documentation for more information.
+
+**注意**：<br />
+应用中所执行的各种轮询都会阻止它达到稳定态。欲知详情，参阅 [isStable](api/core/ApplicationRef#isStable) 文档。
 
 </div>
 
@@ -116,7 +139,7 @@ In some cases, the version of the application used by the service worker to serv
 
 For example, imagine the following scenario:
 
-例如，设想以下情形：
+比如，设想以下情形：
 
 * A user opens the application for the first time and the service worker caches the latest version of the application.
   Assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
@@ -130,14 +153,21 @@ For example, imagine the following scenario:
 * After some time, a new version of the application is deployed to the server.
   This newer version includes the files `index.html`, `main.<main-hash-2>.js` and `lazy-chunk.<lazy-hash-2>.js`.
 
+  一段时间后，会将新版本的应用程序部署到服务器。新版本中包含文件 `index.html`、`main.<main-hash-2>.js` 和 `lazy-chunk.<lazy-hash-2>.js`。
+
   <div class="alert is-helpful">
 
   **NOTE**: <br />
   The hashes are different now, because the content of the files changed.
 
+  **注意**：<br />
+  哈希值现在已经不同了，因为文件的内容已经改变）。服务器上不再提供旧版本。
+
   </div>
 
   The old version is no longer available on the server.
+
+  旧版本在服务器上不再可用。
 
 * In the meantime, the user's browser decides to evict `lazy-chunk.<lazy-hash-1>.js` from its cache.
   Browsers might decide to evict specific (or all) resources from a cache in order to reclaim disk space.

@@ -14,6 +14,9 @@ import {wrapReference} from './util';
 
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareNgModule()` call expressions.
+ *
+ * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareNgModule()` 调用表达式。
+ *
  */
 export class PartialNgModuleLinkerVersion1<TExpression> implements PartialLinker<TExpression> {
   constructor(
@@ -33,6 +36,9 @@ export class PartialNgModuleLinkerVersion1<TExpression> implements PartialLinker
 
 /**
  * Derives the `R3NgModuleMetadata` structure from the AST object.
+ *
+ * 从 AST 对象 `R3NgModuleMetadata` 结构。
+ *
  */
 export function toR3NgModuleMeta<TExpression>(
     metaObj: AstObject<R3DeclareNgModuleMetadata, TExpression>,
@@ -112,7 +118,12 @@ export function toR3NgModuleMeta<TExpression>(
 /**
  * Extract an array from the body of the function.
  *
+ * 从函数体中提取一个数组。
+ *
  * If `field` is `function() { return [exp1, exp2, exp3]; }` then we return `[exp1, exp2, exp3]`.
+ *
+ * 如果 `field` 是 `function() { return [exp1, exp2, exp3]; }` 然后我们返回 `[exp1, exp2, exp3]`
+ * `function() { return [exp1, exp2, exp3]; }`
  *
  */
 function unwrapForwardRefs<TExpression>(field: AstValue<unknown, TExpression>):
@@ -122,6 +133,9 @@ function unwrapForwardRefs<TExpression>(field: AstValue<unknown, TExpression>):
 
 /**
  * Wrap the array of expressions into an array of R3 references.
+ *
+ * 将表达式数组包装到 R3 引用数组中。
+ *
  */
 function wrapReferences<TExpression>(values: AstValue<TExpression[], TExpression>): R3Reference[] {
   return values.getArray().map(i => wrapReference(i.getOpaque()));

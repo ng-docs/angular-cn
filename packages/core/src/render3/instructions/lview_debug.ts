@@ -71,7 +71,12 @@ interface TViewDebug extends ITView {
 /**
  * This function clones a blueprint and creates LView.
  *
+ * 此函数会克隆蓝图并创建 LView。
+ *
  * Simple slice will keep the same type, and we need it to be LView
+ *
+ * 简单切片将保持相同的类型，我们需要它是 LView
+ *
  */
 export function cloneToLViewFromTViewBlueprint<T>(tView: TView): LView<T> {
   const debugTView = tView as TViewDebug;
@@ -125,6 +130,9 @@ function nameSuffix(text: string|null|undefined): string {
  * This class is a debug version of Object literal so that we can have constructor name show up
  * in
  * debug tools in ngDevMode.
+ *
+ * 此类是 Object 文字的调试版本，因此我们可以在 ngDevMode 的调试工具中显示构造函数名称。
+ *
  */
 export const TViewConstructor = class TView implements ITView {
   constructor(
@@ -214,14 +222,24 @@ class TNode implements ITNode {
    * Return a human debug version of the set of `NodeInjector`s which will be consulted when
    * resolving tokens from this `TNode`.
    *
+   * 返回 `NodeInjector` 集的人工调试版本，在解析来自此 `TNode` 的标记时将参考该版本。
+   *
    * When debugging applications, it is often difficult to determine which `NodeInjector`s will be
    * consulted. This method shows a list of `DebugNode`s representing the `TNode`s which will be
    * consulted in order when resolving a token starting at this `TNode`.
    *
+   * 调试应用程序时，通常很难确定将参考哪些 `NodeInjector` 。此方法显示了一个表示 `TNode` 的
+   * `DebugNode` 列表，在解析从此 `TNode` 开始的标记时，将按顺序查阅这些列表。
+   *
    * The original data is stored in `LView` and `TView` with a lot of offset indexes, and so it is
    * difficult to reason about.
    *
+   * 原始数据存储在具有许多偏移索引的 `LView` 和 `TView` 中，因此很难推理。
+   *
    * @param lView The `LView` instance for this `TNode`.
+   *
+   * 此 `TNode` 的 `LView` 实例。
+   *
    */
   debugNodeInjectorPath(lView: LView): DebugNode[] {
     const path: DebugNode[] = [];
@@ -364,7 +382,12 @@ let TVIEWDATA_EMPTY: unknown[];  // can't initialize here or it will not be tree
 /**
  * This function clones a blueprint and creates TData.
  *
+ * 此函数会克隆蓝图并创建 TData。
+ *
  * Simple slice will keep the same type, and we need it to be TData
+ *
+ * 简单切片将保持相同的类型，我们需要它是 TData
+ *
  */
 export function cloneToTViewData(list: any[]): TData {
   if (TVIEWDATA_EMPTY === undefined) TVIEWDATA_EMPTY = new TViewData();
@@ -404,12 +427,21 @@ export function toDebug(obj: any): any {
  * Use this method to unwrap a native element in `LView` and convert it into HTML for easier
  * reading.
  *
+ * 使用此方法在 `LView` 中解开本机元素，并将其转换为 HTML 以便于阅读。
+ *
  * @param value possibly wrapped native DOM node.
+ *
+ * 可能包装的本机 DOM 节点。
+ *
  * @param includeChildren If `true` then the serialized HTML form will include child elements
  * (same
  * as `outerHTML`). If `false` then the serialized HTML form will only contain the element
  * itself
  * (will not serialize child elements).
+ *
+ * 如果为 `true` ，则序列化的 HTML 表单将包含子元素（与 `outerHTML` 相同）。如果为 `false`
+ * ，则序列化的 HTML 表单将仅包含元素本身（不会序列化子元素）。
+ *
  */
 function toHtml(value: any, includeChildren: boolean = false): string|null {
   const node: Node|null = unwrapRNode(value) as any;
@@ -437,6 +469,9 @@ export class LViewDebug<T = unknown> implements ILViewDebug<T> {
 
   /**
    * Flags associated with the `LView` unpacked into a more readable state.
+   *
+   * 与 `LView` 关联的标志已解压缩为更具可读性的状态。
+   *
    */
   get flags() {
     const flags = this._raw_lView[FLAGS];
@@ -468,6 +503,9 @@ export class LViewDebug<T = unknown> implements ILViewDebug<T> {
   /**
    * The tree of nodes associated with the current `LView`. The nodes have been normalized into
    * a tree structure with relevant details pulled out for readability.
+   *
+   * 与当前 `LView` 关联的节点树。节点已被规范化为树形结构，并为便于阅读而提取了相关细节。
+   *
    */
   get nodes(): DebugNode[] {
     const lView = this._raw_lView;
@@ -533,6 +571,9 @@ export class LViewDebug<T = unknown> implements ILViewDebug<T> {
 
   /**
    * Normalized view of child views (and containers) attached at this location.
+   *
+   * 附加在此位置的子视图（和容器）的规范化视图。
+   *
    */
   get childViews(): Array<ILViewDebug<T>|ILContainerDebug> {
     const childViews: Array<ILViewDebug<T>|ILContainerDebug> = [];
@@ -565,6 +606,8 @@ function toLViewRange(tView: TView, lView: LView, start: number, end: number): L
 
 /**
  * Turns a flat list of nodes into a tree by walking the associated `TNode` tree.
+ *
+ * 通过遍历关联的 `TNode` 树，将平面节点列表转换为树。
  *
  * @param tNode
  * @param lView
@@ -631,6 +674,8 @@ function buildNodeInjectorDebug(tNode: ITNode, tView: ITView, lView: LView): Nod
 /**
  * Convert a number at `idx` location in `array` into binary representation.
  *
+ * 将 `array` 中 `idx` 位置的数字转换为二进制表示。
+ *
  * @param array
  * @param idx
  */
@@ -646,6 +691,8 @@ function binary(array: any[], idx: number): string {
 
 /**
  * Convert a bloom filter at location `idx` in `array` into binary representation.
+ *
+ * 将 `array` 中位置 `idx` 处的布隆过滤器转换为二进制表示。
  *
  * @param array
  * @param idx

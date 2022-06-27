@@ -23,6 +23,9 @@ interface NormalizedProvider extends TypeProvider, ValueProvider, ClassProvider,
 /**
  * `Dependency` is used by the framework to extend DI.
  * This is internal to Angular and should not be used directly.
+ *
+ * 框架使用 `Dependency` 来扩展 DI。这是 Angular 的内部，不应直接使用。
+ *
  */
 export class ReflectiveDependency {
   constructor(
@@ -122,6 +125,9 @@ export class ResolvedReflectiveFactory {
 
 /**
  * Resolve a single provider.
+ *
+ * 解析单个提供程序。
+ *
  */
 function resolveReflectiveFactory(provider: NormalizedProvider): ResolvedReflectiveFactory {
   let factoryFn: Function;
@@ -146,8 +152,13 @@ function resolveReflectiveFactory(provider: NormalizedProvider): ResolvedReflect
 /**
  * Converts the `Provider` into `ResolvedProvider`.
  *
+ * 将 `Provider` 转换为 `ResolvedProvider` 。
+ *
  * `Injector` internally only uses `ResolvedProvider`, `Provider` contains convenience provider
  * syntax.
+ *
+ * `Injector` 在内部仅使用 `ResolvedProvider` ， `Provider` 包含便利提供者语法。
+ *
  */
 function resolveReflectiveProvider(provider: NormalizedProvider): ResolvedReflectiveProvider {
   return new ResolvedReflectiveProvider_(
@@ -157,6 +168,9 @@ function resolveReflectiveProvider(provider: NormalizedProvider): ResolvedReflec
 
 /**
  * Resolve a list of Providers.
+ *
+ * 解析 Providers 列表。
+ *
  */
 export function resolveReflectiveProviders(providers: Provider[]): ResolvedReflectiveProvider[] {
   const normalized = _normalizeProviders(providers, []);
@@ -168,6 +182,9 @@ export function resolveReflectiveProviders(providers: Provider[]): ResolvedRefle
 /**
  * Merges a list of ResolvedProviders into a list where each key is contained exactly once and
  * multi providers have been merged.
+ *
+ * 将 ResolvedProviders 列表合并到一个列表中，其中每个键都仅包含一次，并且多提供程序已合并。
+ *
  */
 export function mergeResolvedReflectiveProviders(
     providers: ResolvedReflectiveProvider[],

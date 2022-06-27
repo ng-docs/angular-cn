@@ -15,7 +15,7 @@ The Angular Schematics tooling guards against side effects and errors by creatin
 A schematic describes a pipeline of transformations that can be applied to the virtual file system.
 When a schematic runs, the transformations are recorded in memory, and only applied in the real file system once they're confirmed to be valid.
 
-在应用程序中操作代码可能既强大又危险。例如，创建一个已存在的文件会出错，如果出现这种情况，就应该放弃已应用的所有其它更改。Angular 原理图工具通过创建虚拟文件系统来防止副作用和错误。原理图描述了一个可应用于虚拟文件系统的转换管道。当原理图运行时，转换就会被记录在内存中，只有当这些更改被确认有效时，才会应用到实际的文件系统中。
+在应用程序中操作代码可能既强大又危险。比如，创建一个已存在的文件会出错，如果出现这种情况，就应该放弃已应用的所有其它更改。Angular 原理图工具通过创建虚拟文件系统来防止副作用和错误。原理图描述了一个可应用于虚拟文件系统的转换管道。当原理图运行时，转换就会被记录在内存中，只有当这些更改被确认有效时，才会应用到实际的文件系统中。
 
 ## Schematics concepts
 
@@ -57,6 +57,8 @@ A change can be accepted or ignored, or throw an exception.
 
 When you create a new blank schematic with the [Schematics CLI](#cli), the generated entry function is a *rule factory*.
 A `RuleFactory` object defines a higher-order function that creates a `Rule`.
+
+当你使用 [Schematics CLI](#cli) 创建一个新的空白原理图时，它所生成的入口函数就是一个*规则工厂*。`RuleFactory` 对象定义了一个用于创建 `Rule` 的高阶函数。
 
 <code-example header="index.ts" language="typescript">
 
@@ -109,7 +111,7 @@ Define variable or enumerated data types for the schema using TypeScript interfa
 The schema defines the types and default values of variables used in the schematic.
 For example, the hypothetical "Hello World" schematic might have the following schema.
 
-该模式定义了原理图中使用的变量的类型和默认值。例如，假设的 “Hello World” 原理图可能具有以下模式定义（schema）。
+该模式定义了原理图中使用的变量的类型和默认值。比如，假设的 “Hello World” 原理图可能具有以下模式定义（schema）。
 
 <code-example header="src/hello-world/schema.json" language="json">
 
@@ -129,6 +131,8 @@ For example, the hypothetical "Hello World" schematic might have the following s
 
 See examples of schema files for the Angular CLI command schematics in [`@schematics/angular`](https://github.com/angular/angular-cli/blob/main/packages/schematics/angular/application/schema.json).
 
+可以在 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/main/packages/schematics/angular/application/schema.json) 中看到 Angular CLI 命令原理图的模式文件范例。
+
 ### Schematic prompts
 
 ### 原理图提示
@@ -143,7 +147,7 @@ This lets users direct the operation of the schematic without requiring in-depth
 The "Hello World" schematic might, for example, ask the user for their name, and display that name in place of the default name "world".
 To define such a prompt, add an `x-prompt` property to the schema for the `name` variable.
 
-例如，这个 “Hello World” 原理图可能会要求用户提供他的名字，并显示该名字以代替默认名字 “world”。要定义这样的提示，请将 `x-prompt` 属性添加到 `name` 变量的模式中。
+比如，这个 “Hello World” 原理图可能会要求用户提供他的名字，并显示该名字以代替默认名字 “world”。要定义这样的提示，请将 `x-prompt` 属性添加到 `name` 变量的模式中。
 
 Similarly, you can add a prompt to let the user decide whether the schematic uses color when executing its hello action.
 The schema with both prompts would be as follows.
@@ -192,7 +196,7 @@ There are three supported input types.
 | confirmation | A yes or no question; ideal for Boolean options. |
 | 确认 | 是或否的问题；布尔选项的理想选择。 |
 | input | Textual input; ideal for string or number options. |
-| 输入属性 (input) | 文字输入；字符串或数字选项的理想选择。 |
+| 输入 | 文字输入；字符串或数字选项的理想选择。 |
 | list | A predefined set of allowed values. |
 | 清单 | 预定义的一组允许值。 |
 
@@ -202,17 +206,17 @@ In the short form, the type is inferred from the property's type and constraints
 
 | Property schema | Prompt type |
 | :-------------- | :---------- |
-| 属性模式【模糊翻译】 | 提示类型【模糊翻译】 |
+| 属性模式 | 提示类型 |
 | "type": "boolean" | confirmation ("yes"=`true`, "no"=`false`) |
 | "type": "boolean" | 确认（“yes” = `true`，“no” = `false` ） |
 | "type": "string" | input |
-| "type": "string" | 输入属性 (input) |
+| "type": "string" | 输入 |
 | "type": "number" | input (only valid numbers accepted) |
 | "type": "number" | 输入（仅接受有效数字） |
 | "type": "integer" | input (only valid numbers accepted) |
 | "type": "integer" | 输入（仅接受有效数字） |
 | "enum": [……&hellip;] | list (enum members become list selections) |
-| "enum": [………&hellip;] | 列表（枚举成员成为列表中的选择项） |
+| "enum": […………&hellip;] | 列表（枚举成员成为列表中的选择项） |
 
 In the following example, the property takes an enumerated value, so the schematic automatically chooses the list type, and creates a menu from the possible values.
 
@@ -253,9 +257,9 @@ In this form, the `x-prompt` field value is a JSON object with subfields that cu
 
 | Field | Data value |
 | :---- | :--------- |
-| 字段 | 数据值【模糊翻译】 |
+| 字段 | 数据值 |
 | type | `confirmation`, `input`, or `list` (selected automatically in short form) |
-| 类型【模糊翻译】 | `confirmation`，`input` 或 `list` （以简短形式自动选择） |
+| type | `confirmation`，`input` 或 `list` （以简短形式自动选择） |
 | message | string (required) |
 | message | 字符串（必填） |
 | items | string and/or label/value object pair (only valid with type `list`) |
@@ -390,7 +394,7 @@ The command creates a new project folder (the root folder for the collection) an
 Go to the collection folder, install your npm dependencies, and open your new collection in your favorite editor to see the generated files.
 For example, if you are using VS Code:
 
-转到 collection 文件夹，安装你的 npm 依赖，然后在常用的编辑器中打开这个新集合，看看所生成的文件。例如，如果你正在使用 VSCode：
+转到 collection 文件夹，安装你的 npm 依赖，然后在常用的编辑器中打开这个新集合，看看所生成的文件。比如，如果你正在使用 VSCode：
 
 <code-example format="shell" language="shell">
 
@@ -425,7 +429,7 @@ schematics &lt;path-to-schematics-project&gt;:&lt;schematics-name&gt; --&lt;requ
 The path can be absolute or relative to the current working directory where the command is executed.
 For example, to run the schematic you just generated (which has no required options), use the following command.
 
-该路径可以是绝对路径，也可以是执行该命令的当前工作目录的相对路径。例如，要运行刚生成的原理图（它没有必选项），请使用下面的命令。
+该路径可以是绝对路径，也可以是执行该命令的当前工作目录的相对路径。比如，要运行刚生成的原理图（它没有必选项），请使用下面的命令。
 
 <code-example format="shell" language="shell">
 
@@ -527,7 +531,7 @@ Each named schematic in the collection has the following main parts.
 
 | Parts | Details |
 | :---- | :------ |
-| Parts | 详情 |
+| 部分 | 详情 |
 | `index.ts` | Code that defines the transformation logic for a named schematic. |
 | `index.ts` | 定义命名原理图中转换逻辑的代码。 |
 | `schema.json` | Schematic variable definition. |

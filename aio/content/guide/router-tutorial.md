@@ -20,6 +20,8 @@ You can also configure routes to guard against unexpected or unauthorized behavi
 
 To explore a sample application featuring the contents of this tutorial, see the <live-example></live-example>.
 
+要探索本教程的范例应用，请参阅<live-example></live-example>。
+
 ## Objectives
 
 ## 目标
@@ -58,7 +60,7 @@ To explore a sample application featuring the contents of this tutorial, see the
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To complete this tutorial, you should have a basic understanding of the following concepts:
 
@@ -72,9 +74,11 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
+  [角度 CLI](cli)
+
 You might find the [Tour of Heroes tutorial](tutorial) helpful, but it is not required.
 
-你可能会发现[《英雄之旅》教程](/tutorial)很有用，但这不是必需的。
+你可能会发现[《英雄之旅》教程](tutorial)很有用，但这不是必需的。
 
 ## Create a sample application
 
@@ -230,7 +234,7 @@ This method takes an array of JavaScript objects, with each object defining the 
 The `forRoot()` method ensures that your application only instantiates one `RouterModule`.
 For more information, see [Singleton Services](guide/singleton-services#forroot-and-the-router).
 
-这段代码把 `RouterModule` 添加到了 `imports` 数组中。接下来，该代码使用 `RouterModule` 的 `forRoot()` 方法来定义你的两个路由。该方法接受一个 JavaScript 对象数组，每个对象定义一个路由的属性。`forRoot()` 方法确保你的应用只会实例化一个 `RouterModule`。欲知详情，请参阅[单例服务](/guide/singleton-services#forroot-and-the-router)。
+这段代码把 `RouterModule` 添加到了 `imports` 数组中。接下来，该代码使用 `RouterModule` 的 `forRoot()` 方法来定义你的两个路由。该方法接受一个 JavaScript 对象数组，每个对象定义一个路由的属性。`forRoot()` 方法确保你的应用只会实例化一个 `RouterModule`。欲知详情，请参阅[单例服务](guide/singleton-services#forroot-and-the-router)。
 
 ## Update your component with `router-outlet`
 
@@ -267,7 +271,7 @@ You should see only the application title.
 To view the `crisis-list` component, add `crisis-list` to the end of the path in your browser's address bar.
 For example:
 
-在浏览器中查看更新后的应用。你应该只看到应用标题。要查看 `crisis-list` 组件，就要把 `crisis-list` 添加到浏览器地址栏的路径末尾。例如：
+在浏览器中查看更新后的应用。你应该只看到应用标题。要查看 `crisis-list` 组件，就要把 `crisis-list` 添加到浏览器地址栏的路径末尾。比如：
 
 <code-example format="https" language="https">
 
@@ -348,7 +352,9 @@ In this tutorial, that CSS class is `activebutton`, but you could use any class 
 
 再次查看你的申请表。单击其中一个按钮时，该按钮的样式会自动更新，并为该用户标出该活动组件。通过添加 `routerLinkActive` 指令，可以通知你的应用把一个特定的 CSS 类应用到当前的活动路由中。在本教程中，这个 CSS 类是 `activebutton`，但你可以使用任何想要的类。
 
-Note that we are also specifying a value for the `routerLinkActive`'s `ariaCurrentWhenActive`. This makes sure that visually impaired users (which may not perceive the different styling being applied) can also identify the active button. For more information see the Accessibility Best Practices [Active links identification section](/guide/accessibility#active-links-identification).
+Note that we are also specifying a value for the `routerLinkActive`'s `ariaCurrentWhenActive`. This makes sure that visually impaired users (which may not perceive the different styling being applied) can also identify the active button. For more information see the Accessibility Best Practices [Active links identification section](guide/accessibility#active-links-identification).
+
+请注意，我们还为 `routerLinkActive` 的 `ariaCurrentWhenActive` 指定了一个值。这可确保视障用户（他们可能无法感知正在应用的不同样式）也可以识别活动按钮。有关更多信息，请参阅可访问性最佳实践[活动链接标识部分](guide/accessibility#active-links-identification)。
 
 ## Adding a redirect
 
@@ -377,7 +383,9 @@ In this step of the tutorial, you add a route that redirects the user to display
    | :--------- | :------ |
    | 属性 | 详情 |
    | `redirectTo` | This property instructs Angular to redirect from an empty path to the `heroes-list` path. |
+   | `redirectTo` | 这个属性指示 Angular 从空路径重定向到 `heroes-list` 路径。 |
    | `pathMatch` | This property instructs Angular on how much of the URL to match. For this tutorial, you should set this property to `full`. This strategy is recommended when you have an empty string for a path. For more information about this property, see the [Route API documentation](api/router/Route). |
+   | `pathMatch` | 这个属性指示 Angular 要如何匹配 URL。对于本教程，你应该把这个属性设置为 `full`。当路径为空字符串时，建议使用此策略。关于此属性的更多信息，请参阅 [Route API 文档](/api/router/Route)。 |
 
 Now when you open your application, it displays the `heroes-list` component by default.
 
@@ -452,11 +460,11 @@ For more information about routing, see the following topics:
 
 * [In-app Routing and Navigation](guide/router)
 
-  [应用内路由和导航](/guide/router)
+  [应用内路由和导航](guide/router)
 
 * [Router API](api/router)
 
-  [路由器 API](/api/router)
+  [路由器 API](api/router)
 
 <!-- links -->
 

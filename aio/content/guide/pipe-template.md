@@ -4,7 +4,11 @@
 
 To apply a pipe, use the pipe operator (`|`) within a template expression as shown in the following code example, along with the *name* of the pipe, which is `date` for the built-in [`DatePipe`](api/common/DatePipe).
 
+要应用管道，请在模板表达式中使用管道运算符 ( `|` )，如以下代码示例所示，以及管道*名称*，对于内置[`DatePipe`](api/common/DatePipe)来说是 `date` 。
+
 The tabs in the example show the following:
+
+示例中的选项卡显示以下内容：
 
 * `app.component.html` uses `date` in a separate template to display a birthday.
 

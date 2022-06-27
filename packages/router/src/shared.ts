@@ -26,6 +26,7 @@ export const PRIMARY_OUTLET = 'primary';
  *
  * @see `convertToParamMap()`
  * @see `ParamMap`
+ *
  * @publicApi
  */
 export type Params = {

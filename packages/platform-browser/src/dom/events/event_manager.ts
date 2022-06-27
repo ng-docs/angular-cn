@@ -79,21 +79,22 @@ export class EventManager {
    * @param target A target for global event notifications. One of "window", "document", or "body".
    *
    * 全局事件通知的目标。 "window"、"document"、"body" 之一。
-   *
    * @param eventName The name of the event to listen for.
    *
    * 要监听的事件的名称。
-   *
    * @param handler A function to call when the notification occurs. Receives the
    * event object as an argument.
    *
    * 事件发生时要调用的函数。接收事件对象作为参数。
-   *
    * @returns A callback function that can be used to remove the handler.
    *
    * 可用于删除处理器的回调函数。
+   * @deprecated
    *
-   * @deprecated No longer being used in Ivy code. To be removed in version 14.
+   * No longer being used in Ivy code. To be removed in version 14.
+   *
+   * 不再在 Ivy 代码中使用。要在版本 14 中删除。
+   *
    */
   addGlobalEventListener(target: string, eventName: string, handler: Function): Function {
     const plugin = this._findPluginFor(eventName);

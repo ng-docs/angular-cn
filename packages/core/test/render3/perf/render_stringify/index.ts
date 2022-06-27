@@ -10,21 +10,36 @@ import {createBenchmark} from '../micro_bench';
 // These benchmarks compare various implementations of the `renderStringify` utility
 // which vary in subtle ways which end up having an effect on performance.
 
-/** Uses string concatenation to convert a value into a string. */
+/**
+ * Uses string concatenation to convert a value into a string.
+ *
+ * 使用字符串连接将值转换为字符串。
+ *
+ */
 function renderStringifyConcat(value: any): string {
   if (typeof value === 'string') return value;
   if (value == null) return '';
   return '' + value;
 }
 
-/** Uses `toString` to convert a value into a string. */
+/**
+ * Uses `toString` to convert a value into a string.
+ *
+ * 使用 `toString` 将值转换为字符串。
+ *
+ */
 function renderStringifyToString(value: any): string {
   if (typeof value === 'string') return value;
   if (value == null) return '';
   return value.toString();
 }
 
-/** Uses the `String` constructor to convert a value into a string. */
+/**
+ * Uses the `String` constructor to convert a value into a string.
+ *
+ * 使用 `String` 构造函数将值转换为字符串。
+ *
+ */
 function renderStringifyConstructor(value: any): string {
   if (typeof value === 'string') return value;
   if (value == null) return '';

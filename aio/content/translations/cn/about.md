@@ -113,7 +113,7 @@ Angular 和 Grails 开发高校[教务管理系统](http://www.github.com/jwgl)�
 
 ## 我们的友军
 
-本网站最初是由来自[NiceAngular 社区](/translations/cn/nice-angular)的雪狼和叶志敏翻译的，后来杨林老师中途加入并做出了卓越贡献，我们还得到了鸣谢清单中各位网友的帮助，但这只是 Angular 中文社区的冰山一角。
+本网站最初是由来自[NiceAngular 社区](translations/cn/nice-angular)的雪狼和叶志敏翻译的，后来杨林老师中途加入并做出了卓越贡献，我们还得到了鸣谢清单中各位网友的帮助，但这只是 Angular 中文社区的冰山一角。
 
 完整的 Angular 中文社区浩如烟海，此处仅仅列举笔者所接触、合作过的一些重要人物：
 

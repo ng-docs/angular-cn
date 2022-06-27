@@ -13,9 +13,9 @@ Welcome to angular.cn!
 
 欢迎光临 angular.cn！
 
-This official site and the developer guides you will find here are the result of hard work and dedication by members of Angular's Chinese developer community. More than just a linguistic translation, this site was localized and updated by developers who use and know Angular, and understand the concepts as engineers. Led by friends Zhicheng WANG (Ralph), Zhimin YE (Rex) Lin YANG (todoubaba), united by a commitment to open source software and helping developers, the [angular.cn](/translations/cn/about) team is motivated by the desire to make Angular more accessible to the millions of Chinese-speaking developers worldwide.
+This official site and the developer guides you will find here are the result of hard work and dedication by members of Angular's Chinese developer community. More than just a linguistic translation, this site was localized and updated by developers who use and know Angular, and understand the concepts as engineers. Led by friends Zhicheng WANG (Ralph), Zhimin YE (Rex) Lin YANG (todoubaba), united by a commitment to open source software and helping developers, the [angular.cn](translations/cn/about) team is motivated by the desire to make Angular more accessible to the millions of Chinese-speaking developers worldwide.
 
-这份官方网站和开发指南的中文版是中国的 Angular 开发者社区共同努力奉献的成果。他们来自深谙 Angular 设计理念的工程师，故此，这份中文版不仅是语言上的简单汉化。出于对“开源精神”和“共享精神”的执着与推崇，汪志成、叶志敏和杨林共同带领[angular.cn 团队](/translations/cn/about)奋力工作，力争让全世界的中文开发者与 Angular 实现零距离的亲密接触。
+这份官方网站和开发指南的中文版是中国的 Angular 开发者社区共同努力奉献的成果。他们来自深谙 Angular 设计理念的工程师，故此，这份中文版不仅是语言上的简单汉化。出于对“开源精神”和“共享精神”的执着与推崇，汪志成、叶志敏和杨林共同带领[angular.cn 团队](translations/cn/about)奋力工作，力争让全世界的中文开发者与 Angular 实现零距离的亲密接触。
 
 This Chinese version of angular.io is also the first official release of Angular's developer content in any language other than English!
 
@@ -83,10 +83,10 @@ Bill Luan, Greater China Regional Lead, Developer Relations, Google
 
 本文档遵循[“保持署名—非商用”创意共享 4.0 许可证（CC BY 4.0）](http://creativecommons.org/licenses/by/4.0/deed.zh)授权方式，你不用知会我们就可以转载，但必须保持署名（特别是：保持到 <https://angular.cn> 的链接，并且不得去掉本页入口链接，也不得修改本页内容）。
 
-本文档首发于 [Angular 中文网](https://angular.cn/)。如果你要进行转载，请自行同步，不过小心别 DDoS 了我们。
+本文档首发于 [Angular 中文网](https://angular.cn)。如果你要进行转载，请自行同步，不过小心别 DDoS 了我们。
 
 ## 关于我们
 
-三位译者汪志成、叶志敏和杨林的简介请参阅[这里](/translations/cn/about)。
+三位译者汪志成、叶志敏和杨林的简介请参阅[这里](translations/cn/about)。
 
-Nice Angular 社区的简介请参阅[这里](/translations/cn/nice-angular)。
+Nice Angular 社区的简介请参阅[这里](translations/cn/nice-angular)。

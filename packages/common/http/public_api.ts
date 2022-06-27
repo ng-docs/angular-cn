@@ -11,19 +11,31 @@ import {XhrFactory as XhrFactory_fromAngularCommon} from '@angular/common';
 /**
  * A wrapper around the `XMLHttpRequest` constructor.
  *
+ * `XMLHttpRequest` 构造函数的包装器。
+ *
  * @publicApi
  * @see `XhrFactory`
  * @deprecated
+ *
  * `XhrFactory` has moved, please import `XhrFactory` from `@angular/common` instead.
+ *
+ * `XhrFactory` 已移动，请改为从 `@angular/common` 导入 `XhrFactory` 。
+ *
  */
 export type XhrFactory = XhrFactory_fromAngularCommon;
 /**
  * A wrapper around the `XMLHttpRequest` constructor.
  *
+ * `XMLHttpRequest` 构造函数的包装器。
+ *
  * @publicApi
  * @see `XhrFactory`
  * @deprecated
+ *
  * `XhrFactory` has moved, please import `XhrFactory` from `@angular/common` instead.
+ *
+ * `XhrFactory` 已移动，请改为从 `@angular/common` 导入 `XhrFactory` 。
+ *
  */
 export const XhrFactory = XhrFactory_fromAngularCommon;
 

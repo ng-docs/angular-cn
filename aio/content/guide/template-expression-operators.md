@@ -1,10 +1,12 @@
 # Template expression operators
 
-# 模板表达运算符
+# 模板表达式运算符
 
 <div class="callout is-critical">
 
 <header>Marked for archiving</header>
+
+<header>已标记为归档</header>
 
 To ensure that you have the best experience possible, this topic is marked for archiving until we determine that it clearly conveys the most accurate information possible.
 
@@ -29,13 +31,15 @@ Angular 模板表达语言采用了 JavaScript 语法的子集，并为特定情
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+有关包含本指南中代码片段的有效示例，请参见<live-example></live-example>
+
 </div>
 
 <a id="non-null-assertion-operator"></a>
 
 ## The non-null assertion operator (`!`)
 
-## 非空断言运算符（ `!` ）【模糊翻译】
+## 非空断言运算符（ `!` ）
 
 When you use TypeScript's `--strictNullChecks` flag, you can prevent the type checker from throwing an error with Angular's non-null assertion operator, `!`.
 
@@ -47,7 +51,7 @@ Angular 非空断言运算符使 TypeScript 类型检查器暂停对特定属性
 
 For example, you can assert that `item` properties are also defined.
 
-例如，你可以断言 `item` 也是已定义的。
+比如，你可以断言 `item` 也是已定义的。
 
 <code-example header="src/app/app.component.html" path="template-expression-operators/src/app/app.component.html" region="non-null"></code-example>
 

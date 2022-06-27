@@ -30,6 +30,10 @@ const QUERY_TYPES = new Set([
  * selector are allowed to be used for abstract base classes. These abstract directives should not
  * appear in the declarations of an `NgModule` and additional verification is done when processing
  * the module.
+ *
+ * 从 `Directive` 或 `Component` 中提取元数据的帮助器函数。允许将不带选择器的 `Directive`
+ * 用于抽象基类。这些抽象指令不应该出现在 `NgModule` 的声明中，并且在处理模块时会进行额外的验证。
+ *
  */
 export function extractDirectiveMetadata(
     clazz: ClassDeclaration, decorator: Readonly<Decorator|null>, reflector: ReflectionHost,
@@ -231,7 +235,12 @@ export function extractQueryMetadata(
 
   const arg = evaluator.evaluate(node);
 
-  /** Whether or not this query should collect only static results (see view/api.ts)  */
+  /**
+   * Whether or not this query should collect only static results (see view/api.ts)
+   *
+   * 此查询是否应该仅收集静态结果（请参阅 view/api.ts ）
+   *
+   */
   let isStatic: boolean = false;
 
   // Extract the predicate
@@ -506,6 +515,9 @@ function isPropertyTypeMember(member: ClassMember): boolean {
 /**
  * Interpret property mapping fields on the decorator (e.g. inputs or outputs) and return the
  * correctly shaped metadata object.
+ *
+ * 解释装饰器上的属性映射字段（例如输入或输出）并返回正确形状的元数据对象。
+ *
  */
 function parseFieldToPropertyMapping(
     directive: Map<string, ts.Expression>, field: string,
@@ -527,6 +539,9 @@ function parseFieldToPropertyMapping(
 /**
  * Parse property decorators (e.g. `Input` or `Output`) and return the correctly shaped metadata
  * object.
+ *
+ * 解析属性装饰器（例如 `Input` 或 `Output` ）并返回形状正确的元数据对象。
+ *
  */
 function parseDecoratedFields(
     fields: {member: ClassMember, decorators: Decorator[]}[], evaluator: PartialEvaluator,

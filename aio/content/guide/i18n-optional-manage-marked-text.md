@@ -1,6 +1,6 @@
 # Manage marked text with custom IDs
 
-# 管理带有自定义 ID 的已标记文本
+# 使用自定义 ID 管理标记文本
 
 The Angular extractor generates a file with a translation unit entry each of the following instances.
 
@@ -12,7 +12,11 @@ Angular 提取器会生成一个文件，其中包含以下每个实例的翻译
 
 * Each [`$localize`][AioApiLocalizeInitLocalize] tagged message string in component code
 
+  组件代码中每个 [`$localize`][AioApiLocalizeInitLocalize] 标记的消息字符串
+
 As described in [How meanings control text extraction and merges][AioGuideI18nCommonPrepareHowMeaningsControlTextExtractionAndMerges], Angular assigns each translation unit a unique ID.
+
+如[含义(meaning)如何控制文本提取与合并][AioGuideI18nCommonPrepareHowMeaningsControlTextExtractionAndMerges]中所述，Angular 会为每个翻译单元分配一个唯一的 ID。
 
 The following example displays translation units with unique IDs.
 
@@ -36,6 +40,8 @@ Additional metadata may include the library, component, or area of the applicati
 
 To specify a custom ID in the `i18n` attribute or [`$localize`][AioApiLocalizeInitLocalize] tagged message string, use the `@@` prefix.
 The following example defines the `introductionHeader` custom ID in a heading element.
+
+要在 `i18n` 属性或以 [ `$localize` ][AioApiLocalizeInitLocalize] 标记的消息字符串中指定自定义 ID，请使用 `@@` 前缀。以下示例在标题元素中定义了自定义 ID `introductionHeader`。
 
 <code-example header="app/app.component.html" path="i18n/doc-files/app.component.html" region="i18n-attribute-solo-id"></code-example>
 
@@ -118,7 +124,7 @@ If you use the same ID for two different text elements, the extraction tool extr
 
 For example, in the following code snippet the same `myId` custom ID is defined for two different text elements.
 
-例如，在以下代码片段中，为两个不同的文本元素定义了相同的自定义 ID `myId`。
+比如，在以下代码片段中，为两个不同的文本元素定义了相同的自定义 ID `myId`。
 
 <code-example header="app/app.component.html" path="i18n/doc-files/app.component.html" region="i18n-duplicate-custom-id"></code-example>
 

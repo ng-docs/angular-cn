@@ -18,8 +18,13 @@ import {TemplateData} from './context';
 /**
  * Powers autocompletion for a specific component.
  *
+ * 支持特定组件的自动完成。
+ *
  * Internally caches autocompletion results, and must be discarded if the component template or
  * surrounding TS program have changed.
+ *
+ * 在内部缓存自动完成结果，如果组件模板或周围的 TS 程序发生更改，则必须丢弃。
+ *
  */
 export class CompletionEngine {
   private componentContext: TcbLocation|null;
@@ -27,6 +32,9 @@ export class CompletionEngine {
   /**
    * Cache of completions for various levels of the template, including the root template (`null`).
    * Memoizes `getTemplateContextCompletions`.
+   *
+   * 模板的各个级别的自动完成缓存，包括根模板 ( `null` )。记住 `getTemplateContextCompletions` 。
+   *
    */
   private templateContextCache =
       new Map<TmplAstTemplate|null, Map<string, ReferenceCompletion|VariableCompletion>>();
@@ -61,10 +69,18 @@ export class CompletionEngine {
   /**
    * Get global completions within the given template context and AST node.
    *
+   * 在给定的模板上下文和 AST 节点中获取全局自动完成。
+   *
    * @param context the given template context - either a `TmplAstTemplate` embedded view, or `null`
    *     for the root
    * template context.
+   *
+   * 给定的模板上下文 - `TmplAstTemplate` 嵌入式视图，或根模板上下文为 `null` 。
+   *
    * @param node the given AST node
+   *
+   * 给定的 AST 节点
+   *
    */
   getGlobalCompletions(context: TmplAstTemplate|null, node: AST|TmplAstNode): GlobalCompletion
       |null {
@@ -204,6 +220,9 @@ export class CompletionEngine {
   /**
    * Get global completions within the given template context - either a `TmplAstTemplate` embedded
    * view, or `null` for the root context.
+   *
+   * 在给定的模板上下文中获取全局自动完成 - `TmplAstTemplate` 嵌入式视图，或根上下文为 `null` 。
+   *
    */
   private getTemplateContextCompletions(context: TmplAstTemplate|null):
       Map<string, ReferenceCompletion|VariableCompletion>|null {

@@ -31,15 +31,16 @@ import {noop} from './util/noop';
  * The function is executed during the application bootstrap process,
  * and the needed data is available on startup.
  *
- * 例如，你可以创建一个工厂函数来加载语言数据或外部配置，并将该函数提供给 `APP_INITIALIZER`
+ * 比如，你可以创建一个工厂函数来加载语言数据或外部配置，并将该函数提供给 `APP_INITIALIZER`
  * 令牌。该功能在应用程序引导过程中执行，并且所需的数据在启动时可用。
  *
  * @see `ApplicationInitStatus`
- *
  * @usageNotes
  *
  * The following example illustrates how to configure a multi-provider using `APP_INITIALIZER` token
  * and a function returning a promise.
+ *
+ * 以下示例展示了如何使用 `APP_INITIALIZER` 标记和返回 Promise 的函数配置多提供者。
  *
  * ```
  *  function initializeApp(): Promise<any> {
@@ -48,8 +49,9 @@ import {noop} from './util/noop';
  *      resolve();
  *    });
  *  }
+ * ```
  *
- *  @NgModule({
+ * @NgModule ({
  *   imports: [BrowserModule],
  *   declarations: [AppComponent],
  *   bootstrap: [AppComponent],
@@ -74,8 +76,7 @@ import {noop} from './util/noop';
  *        tap(user => { ... })
  *     );
  *  }
- *
- *  @NgModule({
+ * @NgModule ({
  *    imports: [BrowserModule, HttpClientModule],
  *    declarations: [AppComponent],
  *    bootstrap: [AppComponent],
@@ -88,7 +89,6 @@ import {noop} from './util/noop';
  *  })
  *  export class AppModule {}
  * ```
- *
  * @publicApi
  */
 export const APP_INITIALIZER =

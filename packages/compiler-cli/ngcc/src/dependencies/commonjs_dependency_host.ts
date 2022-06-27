@@ -14,6 +14,9 @@ import {DependencyHostBase} from './dependency_host';
 
 /**
  * Helper functions for computing dependencies.
+ *
+ * 用于计算依赖项的帮助函数。
+ *
  */
 export class CommonJsDependencyHost extends DependencyHostBase {
   protected override canSkipFile(fileContents: string): boolean {
@@ -83,10 +86,19 @@ export class CommonJsDependencyHost extends DependencyHostBase {
  * This is a performance short-circuit, which saves us from creating
  * a TypeScript AST unnecessarily.
  *
+ * 检查是否需要解析源文件以进行导入。这是一个性能短路，它使我们免于创建不必要的 TypeScript AST。
+ *
  * @param source The content of the source file to check.
  *
- * @returns false if there are definitely no require calls
+ * 要检查的源文件的内容。
+ *
+ * @returns
+ *
+ * false if there are definitely no require calls
  * in this file, true otherwise.
+ *
+ * 如果此文件中绝对没有 require 调用，则为 false ，否则为 true 。
+ *
  */
 export function hasRequireCalls(source: string): boolean {
   return /require\(['"]/.test(source);

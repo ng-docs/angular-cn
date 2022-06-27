@@ -12,6 +12,9 @@ import {Inject, Injectable, ɵɵinject} from '@angular/core';
 
 /**
  * Factory to create Title service.
+ *
+ * 工厂创建 Title 服务。
+ *
  */
 export function createTitle() {
   return new Title(ɵɵinject(DOCUMENT));
@@ -27,7 +30,8 @@ export function createTitle() {
  * (representing the `<title>` tag). Instead, this service can be used to set and get the current
  * title value.
  *
- * 由于 Angular 应用程序不能在整个 HTML 文档(`<html>` 标签)上引导，因此无法绑定到 `HTMLTitleElement` 的 `text` 属性（即 `<title>` 标签）。可以改用此服务来设置和获取当前标题值。
+ * 由于 Angular 应用程序不能在整个 HTML 文档(`<html>` 标签)上引导，因此无法绑定到 `HTMLTitleElement`
+ * 的 `text` 属性（即 `<title>` 标签）。可以改用此服务来设置和获取当前标题值。
  *
  * @publicApi
  */

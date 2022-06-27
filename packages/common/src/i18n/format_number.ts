@@ -20,6 +20,9 @@ const PERCENT_CHAR = '%';
 
 /**
  * Transforms a number to a locale string based on a style and a format.
+ *
+ * 根据样式和格式将数字转换为区域设置字符串。
+ *
  */
 function formatNumberToLocaleString(
     value: number, pattern: ParsedNumberFormat, locale: string, groupSymbol: NumberSymbol,
@@ -142,13 +145,13 @@ function formatNumberToLocaleString(
  * such as "$" or "Canadian Dollar". Used in output string, but does not affect the operation
  * of the function.
  *
- * 包含货币符号或其名称的字符串，例如 “$” 或 “加元”。在输出字符串中使用，但不影响该函数的操作。
+ * 包含货币符号或其名称的字符串，比如 “$” 或 “加元”。在输出字符串中使用，但不影响该函数的操作。
  *
  * @param currencyCode The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
  * currency code, such as `USD` for the US dollar and `EUR` for the euro.
  * Used to determine the number of digits in the decimal part.
  *
- * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) 货币代码，例如 `USD` 表示美元，`EUR`
+ * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) 货币代码，比如 `USD` 表示美元，`EUR`
  * 表示欧元。用于确定小数部分的位数。
  *
  * @param digitsInfo Decimal representation options, specified by a string in the following format:
@@ -385,7 +388,10 @@ function toPercent(parsedNumber: ParsedNumber): ParsedNumber {
 
 /**
  * Parses a number.
- * Significant bits of this parse algorithm came from https://github.com/MikeMcl/big.js/
+ * Significant bits of this parse algorithm came from <https://github.com/MikeMcl/big.js/>
+ *
+ * 解析一个数字。此解析算法的重要位来自<https://github.com/MikeMcl/big.js/>
+ *
  */
 function parseNumber(num: number): ParsedNumber {
   let numStr = Math.abs(num) + '';
@@ -443,6 +449,9 @@ function parseNumber(num: number): ParsedNumber {
 /**
  * Round the parsed number to the specified number of decimal places
  * This function changes the parsedNumber in-place
+ *
+ * 将解析后的数字四舍五入到指定的小数位此函数会就地更改 parsedNumber
+ *
  */
 function roundNumber(parsedNumber: ParsedNumber, minFrac: number, maxFrac: number) {
   if (minFrac > maxFrac) {

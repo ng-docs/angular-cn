@@ -41,6 +41,9 @@ export abstract class HttpXsrfTokenExtractor {
 
 /**
  * `HttpXsrfTokenExtractor` which retrieves the token from a cookie.
+ *
+ * `HttpXsrfTokenExtractor` ，它从 Cookie 中检索标记。
+ *
  */
 @Injectable()
 export class HttpXsrfCookieExtractor implements HttpXsrfTokenExtractor {
@@ -72,6 +75,9 @@ export class HttpXsrfCookieExtractor implements HttpXsrfTokenExtractor {
 
 /**
  * `HttpInterceptor` which adds an XSRF token to eligible outgoing requests.
+ *
+ * `HttpInterceptor` ，它将 XSRF 标记添加到符合条件的传出请求。
+ *
  */
 @Injectable()
 export class HttpXsrfInterceptor implements HttpInterceptor {

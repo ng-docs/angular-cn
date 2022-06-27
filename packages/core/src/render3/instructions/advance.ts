@@ -15,8 +15,13 @@ import {getLView, getSelectedIndex, getTView, isInCheckNoChangesMode, setSelecte
 /**
  * Advances to an element for later binding instructions.
  *
+ * 前进到一个元素以供以后的绑定操作指南使用。
+ *
  * Used in conjunction with instructions like {@link property} to act on elements with specified
  * indices, for example those created with {@link element} or {@link elementStart}.
+ *
+ * 与 {@link property} 等指令结合使用以作用于具有指定索引的元素，例如那些使用 {@link element}
+ * 或 {@link elementStart} 创建的元素。
  *
  * ```ts
  * (rf: RenderFlags, ctx: any) => {
@@ -31,7 +36,10 @@ import {getLView, getSelectedIndex, getTView, isInCheckNoChangesMode, setSelecte
  *   }
  *  }
  * ```
+ *
  * @param delta Number of elements to advance forwards by.
+ *
+ * 要前进的元素数。
  *
  * @codeGenApi
  */

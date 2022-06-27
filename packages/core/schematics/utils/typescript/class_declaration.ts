@@ -8,7 +8,12 @@
 
 import ts from 'typescript';
 
-/** Determines the base type identifiers of a specified class declaration. */
+/**
+ * Determines the base type identifiers of a specified class declaration.
+ *
+ * 确定指定类声明的基类型标识符。
+ *
+ */
 export function getBaseTypeIdentifiers(node: ts.ClassDeclaration): ts.Identifier[]|null {
   if (!node.heritageClauses) {
     return null;
@@ -20,7 +25,12 @@ export function getBaseTypeIdentifiers(node: ts.ClassDeclaration): ts.Identifier
       .filter(ts.isIdentifier);
 }
 
-/** Gets the first found parent class declaration of a given node. */
+/**
+ * Gets the first found parent class declaration of a given node.
+ *
+ * 获取给定节点的第一个找到的父类声明。
+ *
+ */
 export function findParentClassDeclaration(node: ts.Node): ts.ClassDeclaration|null {
   while (!ts.isClassDeclaration(node)) {
     if (ts.isSourceFile(node)) {
@@ -31,7 +41,12 @@ export function findParentClassDeclaration(node: ts.Node): ts.ClassDeclaration|n
   return node;
 }
 
-/** Checks whether the given class declaration has an explicit constructor or not. */
+/**
+ * Checks whether the given class declaration has an explicit constructor or not.
+ *
+ * 检查给定的类声明是否具有显式构造函数。
+ *
+ */
 export function hasExplicitConstructor(node: ts.ClassDeclaration): boolean {
   return node.members.some(ts.isConstructorDeclaration);
 }

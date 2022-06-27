@@ -17,7 +17,12 @@ import {stripExtension} from './util';
  * A path that's relative to the logical root of a TypeScript project (one of the project's
  * rootDirs).
  *
+ * 相对于 TypeScript 项目的逻辑根（项目的 rootDirs 之一）的路径。
+ *
  * Paths in the type system use POSIX format.
+ *
+ * 类型系统中的路径使用 POSIX 格式。
+ *
  */
 export type LogicalProjectPath = BrandedPath<'LogicalProjectPath'>;
 
@@ -37,22 +42,35 @@ export const LogicalProjectPath = {
 /**
  * A utility class which can translate absolute paths to source files into logical paths in
  * TypeScript's logical file system, based on the root directories of the project.
+ *
+ * 一个工具类，可以根据项目的根目录将源文件的绝对路径转换为 TypeScript 逻辑文件系统中的逻辑路径。
+ *
  */
 export class LogicalFileSystem {
   /**
    * The root directories of the project, sorted with the longest path first.
+   *
+   * 项目的根目录，按最长的路径优先排序。
+   *
    */
   private rootDirs: AbsoluteFsPath[];
 
   /**
    * The same root directories as `rootDirs` but with each one converted to its
    * canonical form for matching in case-insensitive file-systems.
+   *
+   * 与 `rootDirs`
+   * 相同的根目录，但每个目录都转换为其规范形式，以在不区分大小写的文件系统中进行匹配。
+   *
    */
   private canonicalRootDirs: AbsoluteFsPath[];
 
   /**
    * A cache of file paths to project paths, because computation of these paths is slightly
    * expensive.
+   *
+   * 项目路径的文件路径的缓存，因为这些路径的计算略贵。
+   *
    */
   private cache: Map<AbsoluteFsPath, LogicalProjectPath|null> = new Map();
 
@@ -69,8 +87,13 @@ export class LogicalFileSystem {
   /**
    * Get the logical path in the project of a `ts.SourceFile`.
    *
+   * 获取 `ts.SourceFile` 项目中的逻辑路径。
+   *
    * This method is provided as a convenient alternative to calling
    * `logicalPathOfFile(absoluteFromSourceFile(sf))`.
+   *
+   * 提供此方法是作为调用 `logicalPathOfFile(absoluteFromSourceFile(sf))` 的便利替代方案。
+   *
    */
   logicalPathOfSf(sf: ts.SourceFile): LogicalProjectPath|null {
     return this.logicalPathOfFile(absoluteFromSourceFile(sf));
@@ -79,8 +102,15 @@ export class LogicalFileSystem {
   /**
    * Get the logical path in the project of a source file.
    *
-   * @returns A `LogicalProjectPath` to the source file, or `null` if the source file is not in any
+   * 获取源文件在项目中的逻辑路径。
+   *
+   * @returns
+   *
+   * A `LogicalProjectPath` to the source file, or `null` if the source file is not in any
    * of the TS project's root directories.
+   *
+   * 源文件的 `LogicalProjectPath` ，如果源文件不在 TS 项目的任何根目录中，则为 `null` 。
+   *
    */
   logicalPathOfFile(physicalFile: AbsoluteFsPath): LogicalProjectPath|null {
     if (!this.cache.has(physicalFile)) {
@@ -117,6 +147,9 @@ export class LogicalFileSystem {
 /**
  * Is the `path` a descendant of the `base`?
  * E.g. `foo/bar/zee` is within `foo/bar` but not within `foo/car`.
+ *
+ * `path` 是 `base` 的后代吗？例如， `foo/bar/zee` 在 `foo/bar` 内，但不在 `foo/car` 内。
+ *
  */
 function isWithinBasePath(base: AbsoluteFsPath, path: AbsoluteFsPath): boolean {
   return isLocalRelativePath(relative(base, path));

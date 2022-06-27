@@ -11,6 +11,8 @@ You use data binding to specify things such as the source of an image, the state
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+包含本指南中代码片段的可工作范例，参阅<live-example></live-example>。
+
 </div>
 
 ## Data binding and HTML
@@ -58,6 +60,8 @@ Attribute 会初始化 DOM Property，你可以配置它们以修改元素的行
 
 * A few HTML attributes have 1:1 mapping to properties; for example,
 
+  少数 HTML Attribute 可以 1:1 映射到同名的 Property。比如,
+
   <code-example format="html" hideCopy language="html">
 
   id
@@ -66,6 +70,8 @@ Attribute 会初始化 DOM Property，你可以配置它们以修改元素的行
 
 * Some HTML attributes don't have corresponding properties; for example,
 
+  某些 HTML Attribute 没有对应的 Property；比如，
+
   <code-example format="html" hideCopy language="html">
 
   aria-&ast;
@@ -73,6 +79,8 @@ Attribute 会初始化 DOM Property，你可以配置它们以修改元素的行
   </code-example>
 
 * Some DOM properties don't have corresponding attributes; for example,
+
+  某些 DOM Property 没有对应的 Attribute；比如，
 
   <code-example format="html" hideCopy language="html">
 
@@ -120,6 +128,8 @@ The HTML attribute `value` specifies the initial value; the DOM `value` property
 作为 HTML Attribute 的 `value` 会指定初始值； 而 DOM 的 Property `value` 则是当前值。
 
 To see attributes versus DOM properties in a functioning app, see the <live-example name="binding-syntax"></live-example> especially for binding syntax.
+
+要在运行的应用程序中查看 Attribute 与 DOM Property，参阅<live-example name="binding-syntax"></live-example>，请特别关注绑定语法的信息。
 
 #### Example 2: a disabled button
 
@@ -176,6 +186,8 @@ Generally, use property binding over attribute binding as a boolean value is eas
 To see the `disabled` button example in a functioning application, see the <live-example></live-example>.
 This example shows you how to toggle the disabled property from the component.
 
+要在运行的应用程序中查看 `disabled` 按钮，请参见<live-example></live-example>。本示例说明如何从组件中切换 disabled 这个 Property。
+
 ## Types of data binding
 
 ## 数据绑定的类型
@@ -185,6 +197,8 @@ Angular provides three categories of data binding according to the direction of 
 Angular 根据数据流的方向提供三种类型的数据绑定：
 
 * From source to view
+
+  从源到视图
 
 * From view to source
 
@@ -198,13 +212,16 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
 | :--- | :----- | :------- |
 | 类型 | 语法 | 分类 |
 | Interpolation <br /> Property <br /> Attribute <br /> Class <br /> Style | <code-example> {{expression}} &NewLine;[target]="expression" </code-example> | One-way from data source to view target |
+| 插值 <br /> Property <br /> Attribute <br /> 类 <br /> 样式 | <code-example> {{expression}} &NewLine;[target]="expression" </code-example> | 单向从数据源到视图 |
 | Event | <code-example> (target)="statement" </code-example> | One-way from view target to data source |
-| 事件 | <code-example> (target)="statement" </code-example> | One-way from view target to data source |
+| 事件 | <code-example> (target)="statement" </code-example> | 单向从视图到数据源 |
 | Two-way | <code-example> [(target)]="expression" </code-example> | Two-way |
 | 双向 | <code-example> [(target)]="expression" </code-example> | 双向 |
 
 Binding types other than interpolation have a target name to the left of the equal sign.
 The target of a binding is a property or event, which you surround with square bracket (`[ ]`) characters, parenthesis (`( )`) characters, or both (`[( )]`) characters.
+
+插值以外的绑定类型在等号左侧有一个目标名称。绑定的目标是 property 或事件，你可以用方括号 ( `[ ]` ) 字符、括号 ( `( )` ) 字符或两者 ( `[( )]` ) 字符括起来。
 
 The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direction of data flow.
 
@@ -212,18 +229,20 @@ The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direct
 
 * Use `[]` to bind from source to view
 
-  使用 `[]` 从源绑定到视图。
+  使用 `[]` 从源绑定到视图
 
 * Use `()` to bind from view to source
 
-  使用 `()` 从视图绑定到源。
+  使用 `()` 从视图绑定到源
 
 * Use `[()]` to bind in a two way sequence of view to source to view
 
-  使用 `[()]` 进行双向绑定，将视图绑定到源再绑定到视图。
+  使用 `[()]` 进行双向绑定，将视图绑定到源再绑定到视图
 
 Place the expression or statement to the right of the equal sign within double quote (`""`) characters.
 For more information see [Interpolation](guide/interpolation) and [Template statements](guide/template-statements).
+
+将表达式或语句放在双引号 `""` 中等号的右侧。有关更多信息，请参见[插值](guide/interpolation)和[模板语句](guide/template-statements)。
 
 ## Binding types and targets
 
@@ -239,9 +258,9 @@ The following table summarizes the targets for the different binding types.
 | :--- | :----- | :------- |
 | 类型 | 目标 | 例子 |
 | Property | Element property <br /> Component property <br /> Directive property | `alt`, `src`, `hero`, and `ngClass` in the following: <code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). --> |
-| 属性 | Element property <br /> Component property <br /> Directive property | `alt`, `src`, `hero`, and `ngClass` in the following: <code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). --> |
-| Event | Elementevent <br /> Component event <br /> Directive event | `click`, `deleteRequest`, and `myClick` in the following: <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example> |
-| 事件 | Elementevent <br /> Component event <br /> Directive event | `click`, `deleteRequest`, and `myClick` in the following: <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example> |
+| 属性 | 元素属性 <br /> 组件属性 <br /> 指令属性 | 下面例子中的 `alt`、`src`、`hero` 和 `ngClass`：<code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). --> |
+| Event | Element event <br /> Component event <br /> Directive event | `click`, `deleteRequest`, and `myClick` in the following: <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example> |
+| 事件 | 元素事件 <br /> 组件事件 <br /> 指令事件 | 下面例子中的 `click`、`deleteRequest` 和 `myClick`：<code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example> |
 | Two-way | Event and property | <code-example path="template-syntax/src/app/app.component.html" region="2-way-binding-syntax-1"></code-example> |
 | 双向 | 事件与属性 | <code-example path="template-syntax/src/app/app.component.html" region="2-way-binding-syntax-1"></code-example> |
 | Attribute | Attribute (the exception) | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example> |

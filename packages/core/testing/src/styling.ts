@@ -9,8 +9,18 @@
 /**
  * Returns element classes in form of a stable (sorted) string.
  *
+ * 以稳定（已排序）字符串的形式返回元素类。
+ *
  * @param element HTML Element.
- * @returns Returns element classes in form of a stable (sorted) string.
+ *
+ * HTML 元素。
+ *
+ * @returns
+ *
+ * Returns element classes in form of a stable (sorted) string.
+ *
+ * 以稳定（已排序）字符串的形式返回元素类。
+ *
  */
 export function getSortedClassName(element: Element): string {
   const names: string[] = Object.keys(getElementClasses(element));
@@ -21,8 +31,18 @@ export function getSortedClassName(element: Element): string {
 /**
  * Returns element classes in form of a map.
  *
+ * 以映射的形式返回元素类。
+ *
  * @param element HTML Element.
- * @returns Map of class values.
+ *
+ * HTML 元素。
+ *
+ * @returns
+ *
+ * Map of class values.
+ *
+ * 类值的映射表。
+ *
  */
 export function getElementClasses(element: Element): {[key: string]: true} {
   const classes: {[key: string]: true} = {};
@@ -39,8 +59,18 @@ export function getElementClasses(element: Element): {[key: string]: true} {
 /**
  * Returns element styles in form of a stable (sorted) string.
  *
+ * 以稳定（已排序）字符串的形式返回元素样式。
+ *
  * @param element HTML Element.
- * @returns Returns element styles in form of a stable (sorted) string.
+ *
+ * HTML 元素。
+ *
+ * @returns
+ *
+ * Returns element styles in form of a stable (sorted) string.
+ *
+ * 以稳定（已排序）字符串的形式返回元素样式。
+ *
  */
 export function getSortedStyle(element: Element): string {
   const styles = getElementStyles(element);
@@ -60,8 +90,18 @@ export function getSortedStyle(element: Element): string {
 /**
  * Returns element styles in form of a map.
  *
+ * 以映射表的形式返回元素样式。
+ *
  * @param element HTML Element.
- * @returns Map of style values.
+ *
+ * HTML 元素。
+ *
+ * @returns
+ *
+ * Map of style values.
+ *
+ * 样式值的映射表。
+ *
  */
 export function getElementStyles(element: Element): {[key: string]: string} {
   const styles: {[key: string]: string} = {};

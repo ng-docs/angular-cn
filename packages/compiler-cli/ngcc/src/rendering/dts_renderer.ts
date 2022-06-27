@@ -28,9 +28,16 @@ import {FileToWrite, getImportRewriter} from './utils';
  * A structure that captures information about what needs to be rendered
  * in a typings file.
  *
+ * 一种结构，可捕获有关需要在类型化文件中呈现的内容的信息。
+ *
  * It is created as a result of processing the analysis passed to the renderer.
  *
+ * 它是作为处理传递给渲染器的分析的结果而创建的。
+ *
  * The `renderDtsFile()` method consumes it when rendering a typings file.
+ *
+ * `renderDtsFile()` 方法在渲染类型文件时会使用它。
+ *
  */
 class DtsRenderInfo {
   classInfo: DtsClassInfo[] = [];
@@ -42,6 +49,9 @@ class DtsRenderInfo {
 
 /**
  * Information about a class in a typings file.
+ *
+ * Typings 文件中有关类的信息。
+ *
  */
 export interface DtsClassInfo {
   dtsDeclaration: ts.Declaration;
@@ -51,8 +61,14 @@ export interface DtsClassInfo {
 /**
  * A base-class for rendering an `AnalyzedFile`.
  *
+ * 用于呈现 `AnalyzedFile` 的基类。
+ *
  * Package formats have output files that must be rendered differently. Concrete sub-classes must
  * implement the `addImports`, `addDefinitions` and `removeDecorators` abstract methods.
+ *
+ * 包格式具有必须以不同方式呈现的输出文件。具体的子类必须实现 `addImports` 、 `addDefinitions` 和
+ * `removeDecorators` 抽象方法。
+ *
  */
 export class DtsRenderer {
   constructor(

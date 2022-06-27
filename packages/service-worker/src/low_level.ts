@@ -14,12 +14,18 @@ export const ERR_SW_NOT_SUPPORTED = 'Service workers are disabled or not support
 /**
  * An event emitted when a new version of the app is available.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 有新版本的应用程序可用时发出的事件。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @deprecated
+ *
  * This event is only emitted by the deprecated {@link SwUpdate#available}.
  * Use the {@link VersionReadyEvent} instead, which is emitted by {@link SwUpdate#versionUpdates}.
  * See {@link SwUpdate#available} docs for an example.
+ *
+ * 此事件仅由已过时的 {@link SwUpdate#available} 发出。改用 {@link VersionReadyEvent} ，它由 {@link
+ * SwUpdate#versionUpdates} 发出。有关示例，请参阅 {@link SwUpdate#available} 文档。
  *
  * @publicApi
  */
@@ -32,11 +38,17 @@ export interface UpdateAvailableEvent {
 /**
  * An event emitted when a new version of the app has been downloaded and activated.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 下载并激活新版本的应用程序时发出的事件。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @deprecated
+ *
  * This event is only emitted by the deprecated {@link SwUpdate#activated}.
  * Use the return value of {@link SwUpdate#activateUpdate} instead.
+ *
+ * 此事件仅由已过时的 {@link SwUpdate#activate} 发出。改用 {@link SwUpdate#activateUpdate}
+ * 的返回值。
  *
  * @publicApi
  */
@@ -50,8 +62,10 @@ export interface UpdateActivatedEvent {
  * An event emitted when the service worker has checked the version of the app on the server and it
  * didn't find a new version that it doesn't have already downloaded.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 当服务工作人员检查了服务器上应用程序的版本并且没有找到尚未下载的新版本时发出的事件。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface NoNewVersionDetectedEvent {
@@ -63,8 +77,10 @@ export interface NoNewVersionDetectedEvent {
  * An event emitted when the service worker has detected a new version of the app on the server and
  * is about to start downloading it.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出的事件。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface VersionDetectedEvent {
@@ -76,8 +92,10 @@ export interface VersionDetectedEvent {
  * An event emitted when the installation of a new version failed.
  * It may be used for logging/monitoring purposes.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 新版本安装失败时发出的事件。它可用于日志/监控目的。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface VersionInstallationFailedEvent {
@@ -89,8 +107,10 @@ export interface VersionInstallationFailedEvent {
 /**
  * An event emitted when a new version of the app is available.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 有新版本的应用程序可用时发出的事件。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface VersionReadyEvent {
@@ -104,6 +124,9 @@ export interface VersionReadyEvent {
  * A union of all event types that can be emitted by
  * {@link api/service-worker/SwUpdate#versionUpdates SwUpdate#versionUpdates}.
  *
+ * {@link api/service-worker/SwUpdate#versionUpdates SwUpdate#versionUpdates}
+ * 可以发出的所有事件类型的联合。
+ *
  * @publicApi
  */
 export type VersionEvent =
@@ -113,13 +136,19 @@ export type VersionEvent =
  * An event emitted when the version of the app used by the service worker to serve this client is
  * in a broken state that cannot be recovered from and a full page reload is required.
  *
+ * 当 Service Worker
+ * 用来为此客户端提供服务的应用程序版本处于无法恢复的损坏状态并且需要重新加载整页时发出的事件。
+ *
  * For example, the service worker may not be able to retrieve a required resource, neither from the
  * cache nor from the server. This could happen if a new version is deployed to the server and the
  * service worker cache has been partially cleaned by the browser, removing some files of a previous
  * app version but not all.
  *
- * @see {@link guide/service-worker-communications Service worker communication guide}
+ * 例如，服务工作者可能无法从缓存或服务器中检索所需的资源。如果将新版本部署到服务器并且浏览器已部分清除
+ * Service Worker 缓存（删除了以前应用程序版本的某些文件，但不是全部），可能会发生这种情况。
  *
+ * @see {
+ * @link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface UnrecoverableStateEvent {
@@ -129,6 +158,9 @@ export interface UnrecoverableStateEvent {
 
 /**
  * An event emitted when a `PushEvent` is received by the service worker.
+ *
+ * 服务工作者收到 `PushEvent` 时发出的事件。
+ *
  */
 export interface PushEvent {
   type: 'PUSH';

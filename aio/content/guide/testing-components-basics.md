@@ -21,6 +21,8 @@ Angular 的 `TestBed` 可以帮你做这种测试，正如你将在下面的章�
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+
 </div>
 
 <a id="component-class-testing"></a>
@@ -145,6 +147,8 @@ None of the preceding *class-only* tests can answer key questions about how the 
 
 * Is the hero name displayed as expected (such as uppercase)?
 
+  英雄名字是否按预期显示的（也就是大写字母）？
+
 * Is the welcome message displayed by the template of `WelcomeComponent`?
 
   `WelcomeComponent` 的模板是否显示了欢迎信息？
@@ -249,6 +253,8 @@ After configuring `TestBed`, you call its `createComponent()` method.
 
 `TestBed.createComponent()` creates an instance of the `BannerComponent`, adds a corresponding element to the test-runner DOM, and returns a [`ComponentFixture`](#component-fixture).
 
+`TestBed.createComponent()` 会创建 `BannerComponent` 的实例，它把一个对应元素添加到了测试运行器的 DOM 中，并返回一个[`ComponentFixture`](#component-fixture) 对象。
+
 <div class="alert is-important">
 
 Do not re-configure `TestBed` after calling `createComponent`.
@@ -306,6 +312,8 @@ Later you'll encounter the `DebugElement.nativeElement` and it too has the `any`
 
 Angular can't know at compile time what kind of HTML element the `nativeElement` is or if it even is an HTML element.
 The application might be running on a *non-browser platform*, such as the server or a [Web Worker](https://developer.mozilla.org/docs/Web/API/Web_Workers_API), where the element might have a diminished API or not exist at all.
+
+Angular 在编译时不知道 `nativeElement` 是什么样的 HTML 元素，甚至可能不是 HTML 元素。该应用可能运行在*非浏览器平台*（如服务器或 [Web Worker）上](https://developer.mozilla.org/docs/Web/API/Web_Workers_API)，在那里本元素可能具有一个缩小版的 API，甚至根本不存在。
 
 The tests in this guide are designed to run in a browser so a `nativeElement` value will always be an `HTMLElement` or one of its derived classes.
 
@@ -384,7 +392,7 @@ For example, the component might render first on the server as part of a strateg
 The server-side renderer might not support the full HTML element API.
 If it doesn't support `querySelector`, the previous test could fail.
 
-例如，作为优化策略的一部分，该组件可能会首先在服务器上渲染，以便在连接不良的设备上更快地启动本应用。服务器端渲染器可能不支持完整的 HTML 元素 API。如果它不支持 `querySelector`，之前的测试就会失败。
+比如，作为优化策略的一部分，该组件可能会首先在服务器上渲染，以便在连接不良的设备上更快地启动本应用。服务器端渲染器可能不支持完整的 HTML 元素 API。如果它不支持 `querySelector`，之前的测试就会失败。
 
 The `DebugElement` offers query methods that work for all supported platforms.
 These query methods take a *predicate* function that returns `true` when a node in the `DebugElement` tree matches the selection criteria.
@@ -409,6 +417,8 @@ Some noteworthy observations:
 一些值得注意的地方：
 
 * The `By.css()` static method selects `DebugElement` nodes with a [standard CSS selector](https://developer.mozilla.org/docs/Web/Guide/CSS/Getting_started/Selectors "CSS selectors").
+
+  `By.css()` 静态方法使用[标准 CSS 选择器](https://developer.mozilla.org/docs/Web/Guide/CSS/Getting_started/Selectors "CSS 选择器")选择 `DebugElement` 节点。
 
 * The query returns a `DebugElement` for the paragraph.
 

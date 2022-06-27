@@ -43,13 +43,24 @@ const ANIMATION_PHASES = ['start', 'done'];
 /**
  * Performs autocompletion operations on a given node in the template.
  *
+ * 在模板中的给定节点上执行自动完成操作。
+ *
  * This class acts as a closure around all of the context required to perform the 3 autocompletion
  * operations (completions, get details, and get symbol) at a specific node.
+ *
+ * 此类作为在特定节点上执行 3
+ * 个自动完成操作（自动完成、获取详细信息和获取符号）所需的所有上下文的闭包。
  *
  * The generic `N` type for the template node is narrowed internally for certain operations, as the
  * compiler operations required to implement completion may be different for different node types.
  *
+ * 对于某些操作，模板节点的通用 `N`
+ * 类型会在内部缩小，因为实现自动完成所需的编译器操作对于不同的节点类型可能不同。
+ *
  * @param N type of the template node in question, narrowed accordingly.
+ *
+ * 相关模板节点的类型，相应缩小。
+ *
  */
 export class CompletionBuilder<N extends TmplAstNode|AST> {
   private readonly typeChecker = this.compiler.getCurrentProgram().getTypeChecker();
@@ -66,6 +77,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Analogue for `ts.LanguageService.getCompletionsAtPosition`.
+   *
+   * `ts.LanguageService.getCompletionsAtPosition` 的类似物。
+   *
    */
   getCompletionsAtPosition(options: ts.GetCompletionsAtPositionOptions|
                            undefined): ts.WithMetadata<ts.CompletionInfo>|undefined {
@@ -148,6 +162,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Analogue for `ts.LanguageService.getCompletionEntryDetails`.
+   *
+   * `ts.LanguageService.getCompletionEntryDetails` 的类似物。
+   *
    */
   getCompletionEntryDetails(
       entryName: string, formatOptions: ts.FormatCodeOptions|ts.FormatCodeSettings|undefined,
@@ -165,6 +182,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Analogue for `ts.LanguageService.getCompletionEntrySymbol`.
+   *
+   * `ts.LanguageService.getCompletionEntrySymbol` 的类似物。
+   *
    */
   getCompletionEntrySymbol(name: string): ts.Symbol|undefined {
     if (this.isPropertyExpressionCompletion()) {
@@ -182,8 +202,13 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
    * Determine if the current node is the completion of a property expression, and narrow the type
    * of `this.node` if so.
    *
+   * 确定当前节点是否是属性表达式的自动完成，如果是则缩小 `this.node` 的类型。
+   *
    * This narrowing gives access to additional methods related to completion of property
    * expressions.
+   *
+   * 这种缩小允许访问与属性表达式的自动完成相关的其他方法。
+   *
    */
   private isPropertyExpressionCompletion(this: CompletionBuilder<TmplAstNode|AST>):
       this is PropertyExpressionCompletionBuilder {
@@ -195,6 +220,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Get completions for property expressions.
+   *
+   * 获取属性表达式的自动完成。
+   *
    */
   private getPropertyExpressionCompletion(
       this: PropertyExpressionCompletionBuilder,
@@ -250,6 +278,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Get the details of a specific completion for a property expression.
+   *
+   * 获取属性表达式的特定自动完成的详细信息。
+   *
    */
   private getPropertyExpressionCompletionDetails(
       this: PropertyExpressionCompletionBuilder, entryName: string,
@@ -279,6 +310,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Get the `ts.Symbol` for a specific completion for a property expression.
+   *
+   * 获取属性表达式的特定自动完成的 `ts.Symbol` 。
+   *
    */
   private getPropertyExpressionCompletionSymbol(
       this: PropertyExpressionCompletionBuilder, name: string): ts.Symbol|undefined {
@@ -298,6 +332,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
 
   /**
    * Get completions for a property expression in a global context (e.g. `{{y|}}`).
+   *
+   * 在全局上下文中获取属性表达式的自动完成（例如 `{{y|}}` ）。
+   *
    */
   private getGlobalPropertyExpressionCompletion(
       this: PropertyExpressionCompletionBuilder,
@@ -376,6 +413,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
   /**
    * Get the details of a specific completion for a property expression in a global context (e.g.
    * `{{y|}}`).
+   *
+   * 获取全局上下文中属性表达式的特定自动完成的详细信息（例如 `{{y|}}` ）。
+   *
    */
   private getGlobalPropertyExpressionCompletionDetails(
       this: PropertyExpressionCompletionBuilder, entryName: string,
@@ -420,6 +460,9 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
    * Get the `ts.Symbol` of a specific completion for a property expression in a global context
    * (e.g.
    * `{{y|}}`).
+   *
+   * 获取全局上下文中属性表达式的特定自动完成的 `ts.Symbol` （例如 `{{y|}}` ）。
+   *
    */
   private getGlobalPropertyExpressionCompletionSymbol(
       this: PropertyExpressionCompletionBuilder, entryName: string): ts.Symbol|undefined {
@@ -867,6 +910,10 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
   /**
    * From the AST node of the cursor position, include completion of string literals, number
    * literals, `true`, `false`, `null`, and `undefined`.
+   *
+   * 从光标位置的 AST 节点，包括字符串文字、数字文字、 `true` 、 `false` 、 `null` 和 `undefined`
+   * 的自动完成。
+   *
    */
   private isValidNodeContextCompletion(completion: ts.CompletionEntry): boolean {
     if (completion.kind === ts.ScriptElementKind.string) {

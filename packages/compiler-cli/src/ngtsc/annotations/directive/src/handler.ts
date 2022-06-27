@@ -205,6 +205,11 @@ export class DirectiveDecoratorHandler implements
    * that indicated the usage. Classes are considered using Angular features if they
    * contain class members that are either decorated with a known Angular decorator,
    * or if they correspond to a known Angular lifecycle hook.
+   *
+   * 检查给定的类是否使用 Angular 特性并返回表明使用情况的 TypeScript 节点。如果类包含使用已知
+   * Angular 装饰器装饰的类成员，或者它们对应于已知的 Angular 生命周期钩子，则可以考虑使用 Angular
+   * 特性。
+   *
    */
   private findClassFieldWithAngularFeatures(node: ClassDeclaration): ClassMember|undefined {
     return this.reflector.getMembersOfClass(node).find(member => {

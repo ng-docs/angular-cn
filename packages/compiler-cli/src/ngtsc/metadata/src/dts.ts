@@ -18,6 +18,10 @@ import {extractDirectiveTypeCheckMeta, extractReferencesFromType, readBooleanTyp
 /**
  * A `MetadataReader` that can read metadata from `.d.ts` files, which have static Ivy properties
  * from an upstream compilation already.
+ *
+ * 一个 `MetadataReader` ，可以从 `.d.ts` 文件中读取元数据，这些文件已经具有来自上游编译的静态 Ivy
+ * 属性。
+ *
  */
 export class DtsMetadataReader implements MetadataReader {
   constructor(private checker: ts.TypeChecker, private reflector: ReflectionHost) {}
@@ -26,7 +30,12 @@ export class DtsMetadataReader implements MetadataReader {
    * Read the metadata from a class that has already been compiled somehow (either it's in a .d.ts
    * file, or in a .ts file with a handwritten definition).
    *
+   * 从已经以某种方式编译的类中读取元数据（它在 .d.ts 文件中，或在具有手写定义的 .ts 文件中）。
+   *
    * @param ref `Reference` to the class of interest, with the context of how it was obtained.
+   *
+   * 对感兴趣的类的 `Reference` ，以及它是如何获取的上下文。
+   *
    */
   getNgModuleMetadata(ref: Reference<ClassDeclaration>): NgModuleMeta|null {
     const clazz = ref.node;
@@ -63,6 +72,9 @@ export class DtsMetadataReader implements MetadataReader {
 
   /**
    * Read directive (or component) metadata from a referenced class in a .d.ts file.
+   *
+   * 从 .d.ts 文件中的引用类读取指令（或组件）元数据。
+   *
    */
   getDirectiveMetadata(ref: Reference<ClassDeclaration>): DirectiveMeta|null {
     const clazz = ref.node;
@@ -124,6 +136,9 @@ export class DtsMetadataReader implements MetadataReader {
 
   /**
    * Read pipe metadata from a referenced class in a .d.ts file.
+   *
+   * 从 .d.ts 文件中的引用类读取管道元数据。
+   *
    */
   getPipeMetadata(ref: Reference<ClassDeclaration>): PipeMeta|null {
     const def = this.reflector.getMembersOfClass(ref.node).find(

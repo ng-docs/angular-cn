@@ -7,6 +7,7 @@
  */
 
 import ts from 'typescript';
+
 import {getCallDecoratorImport} from './typescript/decorators';
 
 export type CallExpressionDecorator = ts.Decorator&{
@@ -23,6 +24,9 @@ export interface NgDecorator {
 /**
  * Gets all decorators which are imported from an Angular package (e.g. "@angular/core")
  * from a list of decorators.
+ *
+ * 从装饰器列表中获取从 Angular 包导入的所有装饰器（例如“@angular/core”）。
+ *
  */
 export function getAngularDecorators(
     typeChecker: ts.TypeChecker, decorators: ReadonlyArray<ts.Decorator>): NgDecorator[] {

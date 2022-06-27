@@ -41,13 +41,13 @@ import {UrlTree} from '../url_tree';
  * For example, `['/team', teamId, 'user', userName, {details: true}]`
  * generates a link to `/team/11/user/bob;details=true`.
  *
- * 你也可以使用动态值来生成链接。对于动态链接，请传递路径段数组，然后传递每个段的参数。例如，
+ * 你也可以使用动态值来生成链接。对于动态链接，请传递路径段数组，然后传递每个段的参数。比如，
  * `['/team', teamId, 'user', userName, {details: true}]` 生成到 `/team/11/user/bob;details=true` 。
  *
  * Multiple static segments can be merged into one term and combined with dynamic segments.
  * For example, `['/team/11/user', userName, {details: true}]`
  *
- * 多个静态段可以合并为一个词，并与动态段组合。例如， `['/team/11/user', userName, {details: true}]`
+ * 多个静态段可以合并为一个词，并与动态段组合。比如， `['/team/11/user', userName, {details: true}]`
  *
  * The input that you provide to the link is treated as a delta to the current URL.
  * For instance, suppose the current URL is `/user/(box//aux:team)`.
@@ -55,10 +55,9 @@ import {UrlTree} from '../url_tree';
  * `/user/(jim//aux:team)`.
  * See {@link Router#createUrlTree createUrlTree} for more information.
  *
- * 你提供给链接的输入将被视为当前 URL 的增量。例如，假设当前 URL 是 `/user/(box//aux:team)`。则链接
+ * 你提供给链接的输入将被视为当前 URL 的增量。比如，假设当前 URL 是 `/user/(box//aux:team)`。则链接
  * `<a [routerLink]="['/user/jim']">Jim</a>` 会创建 URL `/user/(jim//aux:team)`
  * 。欲知详情，请参见 {@link Router#createUrlTree createUrlTree}。
- *
  * @usageNotes
  *
  * You can use absolute or relative paths in a link, set query parameters,
@@ -115,17 +114,17 @@ import {UrlTree} from '../url_tree';
  * 你可以通过在链接中使用 `queryParamsHandling`
  * 选项，来指示该指令以不同的方式处理查询参数。允许的值为：
  *
- *  - `'merge'`: Merge the given `queryParams` into the current query params.
+ * - `'merge'`: Merge the given `queryParams` into the current query params.
  *
- *    `'merge'` ：将给定的 `queryParams` 合并到当前查询参数中。
+ *   `'merge'` ：将给定的 `queryParams` 合并到当前查询参数中。
  *
- *  - `'preserve'`: Preserve the current query params.
+ * - `'preserve'`: Preserve the current query params.
  *
- *    `'preserve'` ：保留当前的查询参数。
+ *   `'preserve'` ：保留当前的查询参数。
  *
  * For example:
  *
- * 例如：
+ * 比如：
  *
  * ```
  * <a [routerLink]="['/user/bob']" [queryParams]="{debug: true}" queryParamsHandling="merge">
@@ -146,7 +145,7 @@ import {UrlTree} from '../url_tree';
  * For example:
  *
  * 你可以提供要持久到浏览器的 [`History.state`
- * 属性](https://developer.mozilla.org/en-US/docs/Web/API/History#Properties)中的 `state` 值。例如：
+ * 属性](https://developer.mozilla.org/en-US/docs/Web/API/History#Properties)中的 `state` 值。比如：
  *
  * ```
  * <a [routerLink]="['/user/bob']" [state]="{tracingId: 123}">
@@ -159,7 +158,7 @@ import {UrlTree} from '../url_tree';
  * event:
  *
  * 使用 {@link Router.getCurrentNavigation() Router#getCurrentNavigation}
- * 来检索保存的导航状态值。例如，要在 `NavigationStart` 事件中捕获 `tracingId`
+ * 来检索保存的导航状态值。比如，要在 `NavigationStart` 事件中捕获 `tracingId`
  *
  * ```
  * // Get NavigationStart events
@@ -170,7 +169,6 @@ import {UrlTree} from '../url_tree';
  * ```
  *
  * @ngModule RouterModule
- *
  * @publicApi
  */
 @Directive({selector: ':not(a):not(area)[routerLink]'})
@@ -257,8 +255,15 @@ export class RouterLink implements OnChanges {
    * Specify a value here when you do not want to use the default value
    * for `routerLink`, which is the current activated route.
    * Note that a value of `undefined` here will use the `routerLink` default.
-   * @see {@link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
+   *
+   * 作为 UrlCreationOptions 的一部分传递给 {@link Router#createUrlTree Router# `UrlCreationOptions`
+   * } 。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
+   * `undefined` 值将使用 `routerLink` 默认值。
+   *
+   * @see {
+   * @link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
+   * @see {
+   * @link Router#createUrlTree Router#createUrlTree}
    */
   @Input() relativeTo?: ActivatedRoute|null;
 
@@ -277,6 +282,9 @@ export class RouterLink implements OnChanges {
   /**
    * Modifies the tab index if there was not a tabindex attribute on the element during
    * instantiation.
+   *
+   * 如果实例化期间元素上没有 tabindex 属性，则修改选项卡索引。
+   *
    */
   private setTabIndexIfNotOnNativeEl(newTabIndex: string|null) {
     if (this.tabIndexAttribute != null /* both `null` and `undefined` */) {
@@ -303,19 +311,20 @@ export class RouterLink implements OnChanges {
    *
    * 传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
    *
-   *   - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
+   * - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
    *
-   *     **array** ：传递给 @link Router#createUrlTree Router#createUrlTree} 的命令。
+   *   **array** ：传递给 @link Router#createUrlTree Router#createUrlTree} 的命令。
    *
-   *   - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
+   * - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
    *
-   *     **string** ：仅包含字符串的命令数组的简写，即 `['/route']`
+   *   **string** ：仅包含字符串的命令数组的简写，即 `['/route']`
    *
-   *   - **null|undefined**: effectively disables the `routerLink`
+   * - **null|undefined**: effectively disables the `routerLink`
    *
-   *     **null | undefined** ：空命令数组的简写，即 `[]`
+   *   **null | undefined** ：空命令数组的简写，即 `[]`
    *
-   * @see {@link Router#createUrlTree Router#createUrlTree}
+   * @see {
+   * @link Router#createUrlTree Router#createUrlTree}
    */
   @Input()
   set routerLink(commands: any[]|string|null|undefined) {
@@ -461,8 +470,15 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    * Specify a value here when you do not want to use the default value
    * for `routerLink`, which is the current activated route.
    * Note that a value of `undefined` here will use the `routerLink` default.
-   * @see {@link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
+   *
+   * 作为 UrlCreationOptions 的一部分传递给 {@link Router#createUrlTree Router# `UrlCreationOptions`
+   * } 。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
+   * `undefined` 值将使用 `routerLink` 默认值。
+   *
+   * @see {
+   * @link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
+   * @see {
+   * @link Router#createUrlTree Router#createUrlTree}
    */
   @Input() relativeTo?: ActivatedRoute|null;
 
@@ -492,19 +508,20 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    *
    * 传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
    *
-   *   - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
+   * - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
    *
-   *     **array** ：传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
+   *   **array** ：传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
    *
-   *   - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
+   * - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
    *
-   *     **string**：仅包含字符串的命令数组的简写，即 `['/route']`
+   *   **string**：仅包含字符串的命令数组的简写，即 `['/route']`
    *
-   *   - **null|undefined**: Disables the link by removing the `href`
+   * - **null|undefined**: Disables the link by removing the `href`
    *
-   *     **null | undefined** ：空命令数组的简写，即 `[]`
+   *   **null | undefined** ：空命令数组的简写，即 `[]`
    *
-   * @see {@link Router#createUrlTree Router#createUrlTree}
+   * @see {
+   * @link Router#createUrlTree Router#createUrlTree}
    */
   @Input()
   set routerLink(commands: any[]|string|null|undefined) {

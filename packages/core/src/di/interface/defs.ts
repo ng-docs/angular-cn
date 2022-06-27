@@ -29,7 +29,7 @@ import {ClassProvider, ConstructorProvider, ExistingProvider, FactoryProvider, S
  * that the injectable does not belong to any scope.
  *
  * 可选的参数 `providedIn` 规定给定的类型属于某个特定的 `InjectorDef`、`NgModule`
- 还是一个特殊的范围（例如 `'root'`）。如果值为 `null` 表示可注入对象不属于任何范围。
+ 还是一个特殊的范围（比如 `'root'`）。如果值为 `null` 表示可注入对象不属于任何范围。
  *
  * @codeGenApi
  * @publicApi The ViewEngine compiler emits code with this type for injectables. This code is
@@ -44,7 +44,7 @@ export interface ɵɵInjectableDeclaration<T> {
    *
    * - `InjectorType` such as `NgModule`,
    *
-   *   `InjectorType` 例如 `NgModule` ，
+   *   `InjectorType` 比如 `NgModule` ，
    *
    * - `'root'` the root injector
    *
@@ -95,11 +95,19 @@ export interface ɵɵInjectableDeclaration<T> {
  * Information about the providers to be included in an `Injector` as well as how the given type
  * which carries the information should be created by the DI system.
  *
+ * DI 系统应该如何创建有关要包含在 `Injector` 中的提供程序的信息以及携带这些信息的给定类型。
+ *
  * An `InjectorDef` can import other types which have `InjectorDefs`, forming a deep nested
  * structure of providers with a defined priority (identically to how `NgModule`s also have
  * an import/dependency structure).
  *
+ * `InjectorDef` 可以导入具有 `InjectorDefs`
+ * 的其他类型，形成具有定义的优先级的提供者的深层嵌套结构（与 `NgModule` s
+ * 也具有导入/依赖结构的方式相同）。
+ *
  * NOTE: This is a private type and should not be exported
+ *
+ * 注：这是一种私有类型，不应导出
  *
  * @codeGenApi
  */
@@ -142,6 +150,8 @@ export interface InjectableType<T> extends Type<T> {
  *
  * `InjectorTypes` can be used to configure a `StaticInjector`.
  *
+ * `InjectorTypes` 可用于配置 `StaticInjector` 。
+ *
  * This is an opaque type whose structure is highly version dependent. Do not rely on any
  * properties.
  *
@@ -158,9 +168,17 @@ export interface InjectorType<T> extends Type<T> {
  * Describes the `InjectorDef` equivalent of a `ModuleWithProviders`, an `InjectorType` with an
  * associated array of providers.
  *
+ * 描述 `ModuleWithProviders` 的 `InjectorDef` 等效项，这是一个具有关联的提供程序数组的
+ * `InjectorType` 。
+ *
  * Objects of this type can be listed in the imports section of an `InjectorDef`.
  *
+ * 这种类型的对象可以在 `InjectorDef` 的导入部分中列出。
+ *
  * NOTE: This is a private type and should not be exported
+ *
+ * 注：这是一种私有类型，不应导出
+ *
  */
 export interface InjectorTypeWithProviders<T> {
   ngModule: InjectorType<T>;
@@ -185,18 +203,18 @@ export interface InjectorTypeWithProviders<T> {
  * 选项：
  *
  * * `providedIn` determines which injectors will include the injectable, by either associating it
- *   with an `@NgModule` or other `InjectorType`, or by specifying that this injectable should be
- *   provided in the `'root'` injector, which will be the application-level injector in most apps.
+ *     with an `@NgModule` or other `InjectorType`, or by specifying that this injectable should be
+ *     provided in the `'root'` injector, which will be the application-level injector in most apps.
  *
- *   `providedIn` 决定哪些注入器应该包含此可注入对象：或者将其与 `@NgModule` 关联，或者将其与其他
- * `InjectorType` 关联，或者指定应该在 `'root'`
- * 注入器（对大多数应用来说这是全应用级注入器）中提供它。
+ *     `providedIn` 决定哪些注入器应该包含此可注入对象：或者将其与 `@NgModule` 关联，或者将其与其他
+ *   `InjectorType` 关联，或者指定应该在 `'root'`
+ *   注入器（对大多数应用来说这是全应用级注入器）中提供它。
  *
  * * `factory` gives the zero argument function which will create an instance of the injectable.
- *   The factory can call `inject` to access the `Injector` and request injection of dependencies.
+ *     The factory can call `inject` to access the `Injector` and request injection of dependencies.
  *
- *   `factory` 是一个零参数函数，该函数将创建可注入的实例。工厂可以调用 `inject` 来访问 `Injector`
- * 并请求注入依赖项。
+ *     `factory` 是一个零参数函数，该函数将创建可注入的实例。工厂可以调用 `inject` 来访问 `Injector`
+ *   并请求注入依赖项。
  *
  * @codeGenApi
  * @publicApi This instruction has been emitted by ViewEngine for some time and is deployed to npm.
@@ -227,17 +245,30 @@ export const defineInjectable = ɵɵdefineInjectable;
 /**
  * Construct an `InjectorDef` which configures an injector.
  *
+ * 构造一个配置注入器的 `InjectorDef` 。
+ *
  * This should be assigned to a static injector def (`ɵinj`) field on a type, which will then be an
  * `InjectorType`.
  *
+ * 这应该分配给类型上的静态注入器 def ( `ɵinj` ) 字段，然后是 `InjectorType` 。
+ *
  * Options:
+ *
+ * 选项：
  *
  * * `providers`: an optional array of providers to add to the injector. Each provider must
  *   either have a factory or point to a type which has a `ɵprov` static property (the
  *   type must be an `InjectableType`).
+ *
+ *   `providers` ：要添加到注入器的可选提供者数组。每个提供者必须有一个工厂或指向具有 `ɵprov`
+ * 静态属性的类型（类型必须是 `InjectableType` ）。
+ *
  * * `imports`: an optional array of imports of other `InjectorType`s or `InjectorTypeWithModule`s
  *   whose providers will also be added to the injector. Locally provided types will override
  *   providers from imports.
+ *
+ *   `imports` ：其他 `InjectorType` 或 `InjectorTypeWithModule`
+ * 的导入的可选数组，其提供者也将被添加到注入器。本地提供的类型将覆盖导入中的提供者。
  *
  * @codeGenApi
  */
@@ -249,7 +280,12 @@ export function ɵɵdefineInjector(options: {providers?: any[], imports?: any[]}
  * Read the injectable def (`ɵprov`) for `type` in a way which is immune to accidentally reading
  * inherited value.
  *
+ * 以不会意外读取继承值的方式读取 `type` 的可注入 def ( `ɵprov` )。
+ *
  * @param type A type which may have its own (non-inherited) `ɵprov`.
+ *
+ * 可能有自己的（非继承的） `ɵprov` 的类型。
+ *
  */
 export function getInjectableDef<T>(type: any): ɵɵInjectableDeclaration<T>|null {
   return getOwnDefinition(type, NG_PROV_DEF) || getOwnDefinition(type, NG_INJECTABLE_DEF);
@@ -258,6 +294,9 @@ export function getInjectableDef<T>(type: any): ɵɵInjectableDeclaration<T>|nul
 /**
  * Return definition only if it is defined directly on `type` and is not inherited from a base
  * class of `type`.
+ *
+ * 仅当定义是直接在 `type` 上定义并且不是从 `type` 的基类继承时，才返回定义。
+ *
  */
 function getOwnDefinition<T>(type: any, field: string): ɵɵInjectableDeclaration<T>|null {
   return type.hasOwnProperty(field) ? type[field] : null;
@@ -266,10 +305,19 @@ function getOwnDefinition<T>(type: any, field: string): ɵɵInjectableDeclaratio
 /**
  * Read the injectable def (`ɵprov`) for `type` or read the `ɵprov` from one of its ancestors.
  *
+ * 读取 `type` 的可注入 def ( `ɵprov` ) 或从其祖先之一读取 `ɵprov` 。
+ *
  * @param type A type which may have `ɵprov`, via inheritance.
  *
- * @deprecated Will be removed in a future version of Angular, where an error will occur in the
+ * 通过继承可能具有 `ɵprov` 的类型。
+ *
+ * @deprecated
+ *
+ * Will be removed in a future version of Angular, where an error will occur in the
  *     scenario if we find the `ɵprov` on an ancestor only.
+ *
+ * 将在未来的 Angular 版本中删除，如果我们仅在祖先上找到 `ɵprov` ，则会在场景中发生错误。
+ *
  */
 export function getInheritedInjectableDef<T>(type: any): ɵɵInjectableDeclaration<T>|null {
   const def = type && (type[NG_PROV_DEF] || type[NG_INJECTABLE_DEF]);
@@ -289,7 +337,12 @@ export function getInheritedInjectableDef<T>(type: any): ɵɵInjectableDeclarati
   }
 }
 
-/** Gets the name of a type, accounting for some cross-browser differences. */
+/**
+ * Gets the name of a type, accounting for some cross-browser differences.
+ *
+ * 获取类型的名称，考虑一些跨浏览器的区别。
+ *
+ */
 function getTypeName(type: any): string {
   // `Function.prototype.name` behaves differently between IE and other browsers. In most browsers
   // it'll always return the name of the function itself, no matter how many other functions it
@@ -308,7 +361,12 @@ function getTypeName(type: any): string {
 /**
  * Read the injector def type in a way which is immune to accidentally reading inherited value.
  *
+ * 以不会意外读取继承值的方式读取注入器的 def 类型。
+ *
  * @param type type which may have an injector def (`ɵinj`)
+ *
+ * 可能有注入器的类型 def ( `ɵinj` )
+ *
  */
 export function getInjectorDef<T>(type: any): ɵɵInjectorDef<T>|null {
   return type && (type.hasOwnProperty(NG_INJ_DEF) || type.hasOwnProperty(NG_INJECTOR_DEF)) ?

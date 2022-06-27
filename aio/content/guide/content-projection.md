@@ -10,12 +10,14 @@ This topic describes how to use content projection to create flexible, reusable 
 
 To view or download the example code used in this topic, see the <live-example></live-example>.
 
+要查看或下载本主题中用到的示例代码，请参见<live-example></live-example> 。
+
 </div>
 
 Content projection is a pattern in which you insert, or *project*, the content you want to use inside another component.
 For example, you could have a `Card` component that accepts content provided by another component.
 
-内容投影是一种模式，你可以在其中插入或*投影*要在另一个组件中使用的内容。例如，你可能有一个 `Card` 组件，它可以接受另一个组件提供的内容。
+内容投影是一种模式，你可以在其中插入或*投影*要在另一个组件中使用的内容。比如，你可能有一个 `Card` 组件，它可以接受另一个组件提供的内容。
 
 The following sections describe common implementations of content projection in Angular, including:
 
@@ -25,8 +27,11 @@ The following sections describe common implementations of content projection in 
 | :----------------- | :------ |
 | 内容投影 | 详情 |
 | [Single-slot content projection](#single-slot) | With this type of content projection, a component accepts content from a single source. |
+| [单槽内容投影](#single-slot) | 使用这种类型的内容投影，组件可以从单一来源接受内容。 |
 | [Multi-slot content projection](#multi-slot) | In this scenario, a component accepts content from multiple sources. |
+| [多槽内容投影](#multi-slot) | 在这种情况下，组件可以从多个来源接受内容。 |
 | [Conditional content projection](#conditional) | Components that use conditional content projection render content only when specific conditions are met. |
+| [条件内容投影](#conditional) | 使用条件内容投影的组件仅在满足特定条件时才渲染内容。 |
 
 <a id="single-slot"></a>
 
@@ -45,7 +50,7 @@ To create a component that uses single-slot content projection:
 
 1. [Create a component](guide/component-overview#creating-a-component).
 
-   [创建](guide/component-overview)一个组件。
+   [创建一个组件](guide/component-overview)。
 
 1. In the template for your component, add an `<ng-content>` element where you want the projected content to appear.
 
@@ -53,14 +58,14 @@ To create a component that uses single-slot content projection:
 
 For example, the following component uses an `<ng-content>` element to display a message.
 
-例如，以下组件使用 `<ng-content>` 元素来显示消息。
+比如，以下组件使用 `<ng-content>` 元素来显示消息。
 
 <code-example header="content-projection/src/app/zippy-basic/zippy-basic.component.ts" path="content-projection/src/app/zippy-basic/zippy-basic.component.ts"></code-example>
 
 With the `<ng-content>` element in place, users of this component can now project their own message into the component.
 For example:
 
-有了 `<ng-content>` 元素，该组件的用户现在可以将自己的消息投影到该组件中。例如：
+有了 `<ng-content>` 元素，该组件的用户现在可以将自己的消息投影到该组件中。比如：
 
 <code-example header="content-projection/src/app/app.component.html" path="content-projection/src/app/app.component.html" region="single-slot"></code-example>
 
@@ -102,9 +107,11 @@ To create a component that uses multi-slot content projection:
 1. Add a `select` attribute to the `<ng-content>` elements.
    Angular supports [selectors](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) for any combination of tag name, attribute, CSS class, and the `:not` pseudo-class.
 
+   将 `select` 属性添加到 `<ng-content>` 元素。 Angular 使用的[选择器](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors)支持标签名、属性、CSS 类和 `:not` 伪类的任意组合。
+
    For example, the following component uses two  `<ng-content>` elements.
 
-   例如，以下组件会使用两个 `<ng-content>` 元素。
+   比如，以下组件会使用两个 `<ng-content>` 元素。
 
    <code-example header="content-projection/src/app/zippy-multislot/zippy-multislot.component.ts" path="content-projection/src/app/zippy-multislot/zippy-multislot.component.ts"></code-example>
 
@@ -117,6 +124,8 @@ Content that uses the `question` attribute is projected into the `<ng-content>` 
 <div class="callout is-helpful">
 
 <header>ng-content without a select attribute</header>
+
+<header>不带 select 属性的 ng-content</header>
 
 If your component includes an `<ng-content>` element without a `select` attribute, that instance receives all projected components that do not match any of the other `<ng-content>` elements.
 
@@ -154,11 +163,11 @@ The following steps demonstrate a typical implementation of conditional content 
 
 1. [Create a component](guide/component-overview#creating-a-component).
 
-   [创建](guide/component-overview)一个组件。
+   [创建一个组件](guide/component-overview#creating-a-component)。
 
 1. In the component that accepts an `<ng-template>` element, use an `<ng-container>` element to render that template, such as:
 
-   在接受 `<ng-template>` 元素的组件中，使用 `<ng-container>` 元素渲染该模板，例如：
+   在接受 `<ng-template>` 元素的组件中，使用 `<ng-container>` 元素渲染该模板，比如：
 
    <code-example header="content-projection/src/app/example-zippy.template.html" path="content-projection/src/app/example-zippy.template.html" region="ng-container"></code-example>
 
@@ -170,13 +179,13 @@ The following steps demonstrate a typical implementation of conditional content 
 
 1. Wrap the `<ng-container>` element in another element, such as a `div` element, and apply your conditional logic.
 
-   将 `<ng-container>` 元素包装在另一个元素（例如 `div` 元素）中，然后应用条件逻辑。
+   将 `<ng-container>` 元素包装在另一个元素（比如 `div` 元素）中，然后应用条件逻辑。
 
    <code-example header="content-projection/src/app/example-zippy.template.html" path="content-projection/src/app/example-zippy.template.html" region="ngif"></code-example>
 
 1. In the template where you want to project content, wrap the projected content in an `<ng-template>` element, such as:
 
-   在要投影内容的模板中，将投影的内容包装在 `<ng-template>` 元素中，例如：
+   在要投影内容的模板中，将投影的内容包装在 `<ng-template>` 元素中，比如：
 
    <code-example header="content-projection/src/app/app.component.html"  region="ng-template" path="content-projection/src/app/app.component.html"></code-example>
 
@@ -185,16 +194,20 @@ The following steps demonstrate a typical implementation of conditional content 
    The preceding example creates a custom directive, `appExampleZippyContent`, as an API to mark the `<ng-template>` for the component's content.
    With the `TemplateRef`, the component can render the referenced content by using either the `ngTemplateOutlet` directive, or with the `ViewContainerRef` method `createEmbeddedView()`.
 
-   这个 `<ng-template>` 元素定义了一个组件可以根据其自身逻辑渲染的内容块。组件可以使用 [`@ContentChild`](/api/core/ContentChild) 或 [`@ContentChildren`](/api/core/ContentChildren) 装饰器获得对此模板内容的引用（即 [`TemplateRef`](/api/core/TemplateRef)）。前面的示例创建了一个自定义指令 `appExampleZippyContent` 作为 API，以将 `<ng-template>` 标记为组件内容。借助这个 `TemplateRef`，组件可以使用 [`ngTemplateOutlet`](/api/common/NgTemplateOutlet)指令或[`ViewContainerRef.createEmbeddedView()`](/api/core/ViewContainerRef#createembeddedview)方法来渲染所引用的内容。
+   这个 `<ng-template>` 元素定义了一个组件可以根据其自身逻辑渲染的内容块。组件可以使用 [`@ContentChild`](api/core/ContentChild) 或 [`@ContentChildren`](api/core/ContentChildren) 装饰器获得对此模板内容的引用（即 [`TemplateRef`](api/core/TemplateRef)）。前面的示例创建了一个自定义指令 `appExampleZippyContent` 作为 API，以将 `<ng-template>` 标记为组件内容。借助这个 `TemplateRef`，组件可以使用 [`ngTemplateOutlet`](api/common/NgTemplateOutlet)指令或[`ViewContainerRef.createEmbeddedView()`](api/core/ViewContainerRef#createembeddedview)方法来渲染所引用的内容。
 
 1. [Create an attribute directive](guide/attribute-directives#building-an-attribute-directive) with a selector that matches the custom attribute for your template.
    In this directive, inject a `TemplateRef` instance.
+
+   [创建一个属性型指令](guide/attribute-directives#building-an-attribute-directive)，它具有与这个模板的自定义属性相匹配的选择器。在此指令中，注入 `TemplateRef` 实例。
 
    <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="zippycontentdirective"></code-example>
 
    In the previous step, you added an `<ng-template>` element with a custom attribute, `appExampleZippyContent`.
    This code provides the logic that Angular will use when it encounters that custom attribute.
    In this case, that logic instructs Angular to instantiate a template reference.
+
+   在上一步中，你已添加了具有自定义属性 `appExampleZippyContent` 的 `<ng-template>` 元素。这段代码提供了当 Angular 遇到该自定义属性时要使用的逻辑。在这里，该逻辑指示 Angular 实例化这个模板引用。
 
 1. In the component you want to project content into, use `@ContentChild` to get the template of the projected content.
 
@@ -212,6 +225,8 @@ The following steps demonstrate a typical implementation of conditional content 
 
    In the case of multi-slot content projection, use `@ContentChildren` to get a `QueryList` of projected elements.
 
+   如果是多插槽内容投影，则可以使用 `@ContentChildren` 获取投影元素的查询列表（`QueryList`）。
+
    </div>
 
 <a id="ngprojectas "></a>
@@ -223,17 +238,19 @@ The following steps demonstrate a typical implementation of conditional content 
 As described in [Multi-slot Content Projection](#multi-slot), you typically use either an attribute, element, CSS Class, or some combination of all three to identify where to project your content.
 For example, in the following HTML template, a paragraph tag uses a custom attribute, `question`, to project content into the `app-zippy-multislot` component.
 
+如[多插槽内容投影](#multi-slot)中所述，你通常会使用属性、元素、CSS 类或这三者的某种组合来标识将内容投影到何处。比如，在以下 HTML 模板中，p 标签会使用自定义属性 `question` 将内容投影到 `app-zippy-multislot` 组件中。
+
 <code-example header="content-projection/src/app/app.component.html" path="content-projection/src/app/app.component.html" region="multi-slot"></code-example>
 
 In some cases, you might want to project content as a different element.
 For example, the content you want to project might be a child of another element.
 Accomplish this with the `ngProjectAs` attribute.
 
-在某些情况下，你可能希望将内容投影为其他元素。例如，你要投影的内容可能是另一个元素的子元素。可以用 `ngProjectAs` 属性来完成此操作。
+在某些情况下，你可能希望将内容投影为其他元素。比如，你要投影的内容可能是另一个元素的子元素。可以用 `ngProjectAs` 属性来完成此操作。
 
 For instance, consider the following HTML snippet:
 
-例如，考虑以下 HTML 代码段：
+比如，考虑以下 HTML 代码段：
 
 <code-example header="content-projection/src/app/app.component.html" path="content-projection/src/app/app.component.html" region="ngprojectas"></code-example>
 
@@ -243,9 +260,13 @@ This example uses an `<ng-container>` attribute to simulate projecting a compone
 
 <div class="callout is-helpful">
 
-<header>Reminder</header>
+<header>Reminder!</header>
+
+<header>注意！</header>
 
 The `ng-container` element is a logical construct that is used to group other DOM elements; however, the `ng-container` itself is not rendered in the DOM tree.
+
+`ng-container` 元素是一个逻辑结构，可用于对其他 DOM 元素进行分组；但是，`ng-container` 本身未在 DOM 树中渲染。
 
 </div>
 

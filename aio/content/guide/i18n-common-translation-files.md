@@ -1,10 +1,14 @@
 # Work with translation files
 
-# 使用翻译文件
+# 处理翻译文件
 
 After you prepare a component for translation, use the [`extract-i18n`][AioCliExtractI18n] [Angular CLI][AioCliMain] command to extract the marked text in the component into a *source language* file.
 
+准备好要翻译的组件后，使用 [Angular CLI][AioCliMain] 的 [`extract-i18n`][AioCliExtractI18n] 命令将组件中的标记文本提取到*源语言*文件中。
+
 The marked text includes text marked with `i18n`, attributes marked with `i18n-`*attribute*, and text tagged with `$localize` as described in [Prepare templates for translations][AioGuideI18nCommonPrepare].
+
+已标记的文本包括标记为 `i18n` 的文本、标记为 `i18n-`*属性*的属性和标记为 `$localize` 的文本，如[准备翻译模板][AioGuideI18nCommonPrepare]中所述。
 
 Complete the following steps to create and update translation files for your project.
 
@@ -12,13 +16,19 @@ Complete the following steps to create and update translation files for your pro
 
 1. [Extract the source language file][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile].
 
-   1. Optionally, change the location, format, and name.
+   [提取源语言文件][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile]。
 
-      （可选）更改位置、格式和名称。
+1. Optionally, change the location, format, and name.
+
+   （可选）更改位置、格式和名称。
 
 1. Copy the source language file to [create a translation file for each language][AioGuideI18nCommonTranslationFilesCreateATranslationFileForEachLanguage].
 
+   复制源语言文件以便为[每种语言创建一个翻译文件][AioGuideI18nCommonTranslationFilesCreateATranslationFileForEachLanguage]。
+
 1. [Translate each translation file][AioGuideI18nCommonTranslationFilesTranslateEachTranslationFile].
+
+   [翻译每个翻译文件][AioGuideI18nCommonTranslationFilesTranslateEachTranslationFile]
 
 1. Translate plurals and alternate expressions separately.
 
@@ -26,9 +36,15 @@ Complete the following steps to create and update translation files for your pro
 
    1. [Translate plurals][AioGuideI18nCommonTranslationFilesTranslatePlurals].
 
+      [翻译复数][AioGuideI18nCommonTranslationFilesTranslatePlurals]。
+
    1. [Translate alternate expressions][AioGuideI18nCommonTranslationFilesTranslateAlternateExpressions].
 
+      [翻译替代表达式][AioGuideI18nCommonTranslationFilesTranslateAlternateExpressions]。
+
    1. [Translate nested expressions][AioGuideI18nCommonTranslationFilesTranslateNestedExpressions].
+
+      [翻译嵌套表达式][AioGuideI18nCommonTranslationFilesTranslateNestedExpressions]。
 
 ## Extract the source language file
 
@@ -55,7 +71,11 @@ To extract the source language file, complete the following actions.
 The `extract-i18n` command creates a source language file named `messages.xlf` in the root directory of your project.
 For more information about the XML Localization Interchange File Format (XLIFF, version 1.2), see [XLIFF][WikipediaWikiXliff].
 
+`extract-i18n` 命令在项目的根目录中创建一个名为 `messages.xlf` 的源语言文件。有关 XML 本地化交换文件格式（XLIFF，版本 1.2）的更多信息，请参阅 [XLIFF][WikipediaWikiXliff]。
+
 Use the following [`extract-i18n`][AioCliExtractI18n] command options to change the source language file location, format, and file name.
+
+使用以下 [`extract-i18n`][AioCliExtractI18n] 命令选项更改源语言文件位置、格式和文件名。
 
 | Command option | Details |
 | :------------- | :------ |
@@ -95,12 +115,17 @@ The `extract-i18n` command creates files in the following translation formats.
 
 | Translation format | Details | File extension |
 | :----------------- | :------ | :------------- |
-| 翻译格式 | 详情 | 文件扩展名【模糊翻译】 |
+| 翻译格式 | 详情 | 文件扩展名 |
 | ARB | [Application Resource Bundle][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification] | `.arb` |
+| ARB | [应用资源包][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification] | `.arb` |
 | JSON | [JavaScript Object Notation][JsonMain] | `.json` |
+| JSON | [JavaScript 对象表示法][JsonMain] | `.json` |
 | XLIFF 1.2 | [XML Localization Interchange File Format, version 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml] | `.xlf` |
+| XLIFF 1.2 | [XML 本地化交换文件格式，版本 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml] | `.xlf` |
 | XLIFF 2 | [XML Localization Interchange File Format, version 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf` |
+| XLIFF 2 | [XML 本地化交换文件格式，版本 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf` |
 | XMB | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb] | `.xmb` (`.xtb`) |
+| XMB | [XML 消息包][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb] | `.xmb` (`.xtb`) |
 
 Specify the translation format explicitly with the `--format` command option.
 
@@ -152,6 +177,8 @@ To create a translation file for a locale or language, complete the following ac
 
 1. [Extract the source language file][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile].
 
+   [提取源语言文件][AioGuideI18nCommonTranslationFilesExtractTheSourceLanguageFile]。
+
 1. Make a copy of the source language file to create a *translation* file for each language.
 
    复制源语言文件，为每种语言创建一个*翻译*文件。
@@ -194,7 +221,7 @@ To create a translation file for a locale or language, complete the following ac
 
 For example, to create a French translation file, complete the following actions.
 
-例如，要创建法语翻译文件，请完成以下操作。
+比如，要创建法语翻译文件，请完成以下操作。
 
 1. Run the `extract-18n` command.
 
@@ -238,13 +265,15 @@ Unless you are fluent in the language and have the time to edit translations, yo
 
    1. Edit the translation.
 
-      编辑翻译。【模糊翻译】
+      编辑翻译。
 
 ### Translation process example for French
 
 ### 法语翻译流程示例
 
 To demonstrate the process, review the `messages.fr.xlf` file in the [Example Angular Internationalization application][AioGuideI18nExample].  The [Example Angular Internationalization application][AioGuideI18nExample] includes a French translation for you to edit without a special XLIFF editor or knowledge of French.
+
+要演示该过程，请查看 [Angular 国际化应用范例][AioGuideI18nExample]中的 `messages.fr.xlf` 文件。[Angular 国际化应用范例][AioGuideI18nExample]中就包含法语翻译文件，你无需特殊的 XLIFF 编辑器或法语知识即可进行编辑。
 
 The following actions describe the translation process for French.
 
@@ -259,6 +288,8 @@ The following actions describe the translation process for French.
 
    The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
 
+   `id="introductionHeader"` 是[自定义 ID][AioGuideI18nOptionalManageMarkedText] ，但没有源 HTML 中所需的 `@@` 前缀。
+
 1. Duplicate the `<source>... </source>` element in the text node, rename it to `target`, and then replace the content with the French text.
 
    复制文本节点中的 `<source>...</source>` 元素，将其重命名为 `target` ，然后将内容替换为法语文本。
@@ -266,6 +297,8 @@ The following actions describe the translation process for French.
    <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;, after translation)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello"></code-example>
 
    In a more complex translation, the information and context in the [description and meaning elements][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] help you choose the right words for translation.
+
+   在更复杂的翻译中，[描述和含义元素][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings]中的信息和上下文可帮助你选择正确的词进行翻译。
 
 1. Translate the other text nodes.
    The following example displays the way to translate.
@@ -281,6 +314,8 @@ The following actions describe the translation process for French.
    If you change either the text or the meaning, then the `id` attribute changes.
    For more about managing text updates and IDs, see [custom IDs][AioGuideI18nOptionalManageMarkedText].
 
+    不要更改这些翻译单元的 ID。每个 `id` 属性由 Angular 生成，它取决于组件文本的内容和所指定的含义。如果你更改了文本或含义，则 `id` 属性就会更改。有关管理文本更新和 ID 的更多信息，请参阅 [自定义 ID][AioGuideI18nOptionalManageMarkedText]。
+
    </div>
 
 ## Translate plurals
@@ -294,6 +329,8 @@ Add or remove plural cases as needed for each language.
 <div class="alert is-helpful">
 
 For language plural rules, see [CLDR plural rules][GithubUnicodeOrgCldrStagingChartsLatestSupplementalLanguagePluralRulesHtml].
+
+语言复数规则，参见 [CLDR 复数规则][GithubUnicodeOrgCldrStagingChartsLatestSupplementalLanguagePluralRulesHtml]。
 
 </div>
 
@@ -396,9 +433,11 @@ The following example displays both translation units after translating.
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * [Merge translations into the app][AioGuideI18nCommonMerge]
+
+  [将翻译结果合并到应用程序中][AioGuideI18nCommonMerge]
 
 <!-- links -->
 

@@ -1,5 +1,7 @@
 # Tutorial: Creating custom route matches
 
+# 教程：创建自定义路由匹配器
+
 The Angular Router supports a powerful matching strategy that you can use to help users navigate your application.
 This matching strategy supports static routes, variable routes with parameters, wildcard routes, and so on.
 Also, build your own custom pattern matching for situations in which the URLs are more complicated.
@@ -13,6 +15,8 @@ This matcher looks for a Twitter handle in the URL.
 
 For a working example of the final version of this tutorial, see the <live-example></live-example>.
 
+有关本教程最终版本的工作示例，请参阅<live-example></live-example> 。
+
 ## Objectives
 
 ## 目标
@@ -23,7 +27,7 @@ Implement Angular's `UrlMatcher` to create a custom route matcher.
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To complete this tutorial, you should have a basic understanding of the following concepts:
 
@@ -37,13 +41,15 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
+  [角度 CLI](cli)
+
 If you are unfamiliar with how Angular's router works, review [Using Angular routes in a single-page application](guide/router-tutorial).
 
 如果你不熟悉 Angular 路由器的工作原理，请阅读[在单页应用程序中使用 Angular 路由](guide/router-tutorial)。
 
 ## Create a sample application
 
-## 创建一个范例应用
+## 创建示例应用程序
 
 Using the Angular CLI, create a new application, *angular-custom-route-match*.
 In addition to the default Angular application framework, you will also create a *profile* component.
@@ -240,11 +246,11 @@ To learn more about the Angular Router, see the following topics:
 
 * [In-app Routing and Navigation](guide/router)
 
-  [应用内路由和导航](/guide/router)
+  [应用内路由和导航](guide/router)
 
 * [Router API](api/router)
 
-  [路由器 API](/api/router)
+  [路由器 API](api/router)
 
 <div class="alert is-helpful">
 

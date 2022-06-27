@@ -87,6 +87,8 @@ The expanded provider configuration is an object literal with two properties:
 
 * The `provide` property holds the [token](#token) that serves as the key for both locating a dependency value and configuring the injector.
 
+    `provide` 属性存有[令牌](#token)，它作为一个 key，在定位依赖值和配置注入器时使用。
+
 * The second property is a provider definition object, which tells the injector how to create the dependency value.
   The provider-definition key can be `useClass`, as in the example.
   It can also be `useExisting`, `useValue`, or `useFactory`.
@@ -103,7 +105,7 @@ The expanded provider configuration is an object literal with two properties:
 Different classes can provide the same service.
 For example, the following code tells the injector to return a `BetterLogger` instance when the component asks for a logger using the `Logger` token.
 
-不同的类可以提供相同的服务。例如，以下代码告诉注入器，当组件使用 `Logger` 令牌请求一个 logger 时，给它返回一个 `BetterLogger`。
+不同的类可以提供相同的服务。比如，以下代码告诉注入器，当组件使用 `Logger` 令牌请求一个 logger 时，给它返回一个 `BetterLogger`。
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="providers-4" ></code-example>
 
@@ -322,11 +324,13 @@ You inject both `Logger` and `UserService` into the factory provider so the inje
 
 * The `useFactory` field specifies that the provider is a factory function whose implementation is `heroServiceFactory`
 
-  `useFactory` 字段指定该提供者是一个工厂函数，其实现代码是 `heroServiceFactory`。
+  `useFactory` 字段指定该提供者是一个工厂函数，其实现代码是 `heroServiceFactory`
 
 * The `deps` property is an array of [provider tokens](#token).
   The `Logger` and `UserService` classes serve as tokens for their own class providers.
   The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
+
+  `deps` 属性是一个[提供者令牌](#token)数组。 `Logger` 和 `UserService` 类都是自己类提供者的令牌。该注入器解析了这些令牌，并把相应的服务注入到 `heroServiceFactory` 工厂函数的参数中。
 
 Capturing the factory provider in the exported variable, `heroServiceProvider`, makes the factory provider reusable.
 

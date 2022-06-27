@@ -9,7 +9,7 @@ Use special syntax within a template to build on many of Angular's features.
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Before learning template syntax, you should be familiar with the following:
 
@@ -48,6 +48,8 @@ The template syntax guides show you how to control the UX/UI by coordinating dat
 Most of the Template Syntax guides have dedicated working example applications that demonstrate the individual topic of each guide.
 To see all of them working together in one application, see the comprehensive <live-example title="Template Syntax Live Code"></live-example>.
 
+大多数模板语法指南都有专门的可工作的范例应用，这些应用程序演示了每个指南中的各个主题。要查看把所有应用合在一起时的工作情况，请参阅综合<live-example title="Template Syntax Live Code"></live-example>。
+
 </div>
 
 ## Empower your HTML
@@ -57,7 +59,7 @@ To see all of them working together in one application, see the comprehensive <l
 Extend the HTML vocabulary of your applications With special Angular syntax in your templates.
 For example, Angular helps you get and set DOM (Document Object Model) values dynamically with features such as built-in template functions, variables, event listening, and data binding.
 
-在模板中使用 Angular 的特有语法来扩展应用程序的 HTML 词汇表。例如，Angular 可以通过内置的模板函数、变量、事件监听和数据绑定等功能来帮助你动态获取和设置 DOM（文档对象模型）中的值。
+在模板中使用 Angular 的特有语法来扩展应用程序的 HTML 词汇表。比如，Angular 可以通过内置的模板函数、变量、事件监听和数据绑定等功能来帮助你动态获取和设置 DOM（文档对象模型）中的值。
 
 Almost all HTML syntax is valid template syntax.
 However, because an Angular template is part of an overall webpage, and not the entire page, you don't need to include elements such as `<html>`, `<body>`, or `<base>`, and can focus exclusively on the part of the page you are developing.
@@ -84,24 +86,31 @@ You might also be interested in the following:
 
 | Topics | Details |
 | :----- | :------ |
-| Topics | 详情 |
+| 主题 | 详情 |
 | [Interpolation](guide/interpolation) | Learn how to use interpolation and expressions in HTML. |
-| [插值](guide/interpolation) | Learn how to use interpolation and expressions in HTML. |
+| [插值](guide/interpolation) | 学习如何在 HTML 中使用插值和表达式。 |
 | [Template statements](guide/template-statements) | Respond to events in your templates. |
+| [模板语句](guide/template-statements) | 响应模板中的事件。 |
 | [Binding syntax](guide/binding-syntax) | Use binding to coordinate values in your application. |
-| [绑定语法](guide/binding-syntax) | Use binding to coordinate values in your application. |
+| [绑定语法](guide/binding-syntax) | 使用绑定来协调应用程序中的值。 |
 | [Property binding](guide/property-binding) | Set properties of target elements or directive `@Input()` decorators. |
-| [property 绑定](guide/property-binding) | Set properties of target elements or directive `@Input()` decorators. |
+| [property 绑定](guide/property-binding) | 设置目标元素的属性或指令中带 `@Input()` 装饰器的属性。 |
 | [Attribute, class, and style bindings](guide/attribute-binding) | Set the value of attributes, classes, and styles. |
+| [属性（Attribute），类和样式绑定](guide/attribute-binding) | 设置 Attribute、类和样式的值。 |
 | [Event binding](guide/event-binding) | Listen for events and your HTML. |
-| [事件绑定](guide/event-binding) | Listen for events and your HTML. |
+| [事件绑定](guide/event-binding) | 监听事件和 HTML。 |
 | [Two-way binding](guide/two-way-binding) | Share data between a class and its template. |
+| [双向绑定](guide/two-way-binding) | 在类及其模板之间共享数据。 |
 | [Built-in directives](guide/built-in-directives) | Listen to and modify the behavior and layout of HTML. |
+| [内置指令](guide/built-in-directives) | 监听和修改 HTML 的行为和布局。 |
 | [Template reference variables](guide/template-reference-variables) | Use special variables to reference a DOM element within a template. |
+| [模板引用变量](guide/template-reference-variables) | U 使用特殊变量来引用模板中的 DOM 元素。 |
 | [Inputs and Outputs](guide/inputs-outputs) | Share data between the parent context and child directives or components |
-| [输入和输出](guide/inputs-outputs) | Share data between the parent context and child directives or components |
+| [输入和输出](guide/inputs-outputs) | 在父级上下文和子指令或组件之间共享数据 |
 | [Template expression operators](guide/template-expression-operators) | Learn about the pipe operator (<code>&verbar;</code>), and protect against `null` or `undefined` values in your HTML. |
+| [模板表达式运算符](guide/template-expression-operators) | 了解管道运算符 &verbar; ，以及如何防范空值 `null` 或 `undefined`。 |
 | [SVG in templates](guide/svg-in-templates) | Dynamically generate interactive graphics. |
+| [模板中的 SVG](guide/svg-in-templates) | 动态生成交互式图形。 |
 
 <!-- links -->
 

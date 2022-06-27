@@ -13,6 +13,9 @@ import {ImportManagerUpdateRecorder} from '../../utils/import_manager';
 /**
  * Update recorder interface that is used to transform source files
  * in a non-colliding way.
+ *
+ * 更新用于以非冲突方式转换源文件的记录器接口。
+ *
  */
 export interface UpdateRecorder extends ImportManagerUpdateRecorder {
   updateNode(

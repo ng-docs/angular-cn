@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_ID, ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -39,8 +39,8 @@ import { ScrollSpyService } from 'app/shared/scroll-spy.service';
 import { SearchBoxComponent } from 'app/search/search-box/search-box.component';
 import { NotificationComponent } from 'app/layout/notification/notification.component';
 import { TocService } from 'app/shared/toc.service';
-import { currentDateProvider, CurrentDateToken } from 'app/shared/current-date';
-import { windowProvider, WindowToken } from 'app/shared/window';
+import { CurrentDateToken, currentDateProvider } from 'app/shared/current-date';
+import { WindowToken, windowProvider } from 'app/shared/window';
 
 import { CustomElementsModule } from 'app/custom-elements/custom-elements.module';
 import { SharedModule } from 'app/shared/shared.module';
@@ -145,7 +145,7 @@ export const svgIconProviders = [
 
 @NgModule({
   imports: [
-    BrowserModule.withServerTransition({appId: 'ng-docs'}),
+    BrowserModule,
     BrowserAnimationsModule.withConfig({disableAnimations: AppComponent.reducedMotion}),
     CustomElementsModule,
     HttpClientModule,
@@ -192,7 +192,6 @@ export const svgIconProviders = [
     TocService,
     { provide: CurrentDateToken, useFactory: currentDateProvider },
     { provide: WindowToken, useFactory: windowProvider },
-    { provide: APP_ID, useFactory: () => "ng-docs" },
   ],
   bootstrap: [ AppComponent ]
 })

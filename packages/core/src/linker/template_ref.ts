@@ -79,12 +79,13 @@ export abstract class TemplateRef<C> {
    * in the `<ng-template>` usage.
    *
    * 这个新视图的上下文环境，继承自所附着的元素。
-   *
    * @param injector Injector to be used within the embedded view.
+   *
+   * 要在嵌入式视图中使用的注入器。
+   *
    * @returns The new embedded view object.
    *
    * 这个新的视图对象。
-   *
    */
   abstract createEmbeddedView(context: C, injector?: Injector): EmbeddedViewRef<C>;
 
@@ -130,7 +131,14 @@ const R3TemplateRef = class TemplateRef<T> extends ViewEngineTemplateRef<T> {
 /**
  * Creates a TemplateRef given a node.
  *
- * @returns The TemplateRef instance to use
+ * 在给定节点的情况下创建一个 TemplateRef。
+ *
+ * @returns
+ *
+ * The TemplateRef instance to use
+ *
+ * 要使用的 TemplateRef 实例
+ *
  */
 export function injectTemplateRef<T>(): TemplateRef<T>|null {
   return createTemplateRef<T>(getCurrentTNode()!, getLView());
@@ -139,9 +147,22 @@ export function injectTemplateRef<T>(): TemplateRef<T>|null {
 /**
  * Creates a TemplateRef and stores it on the injector.
  *
+ * 创建一个 TemplateRef 并将其存储在注入器上。
+ *
  * @param hostTNode The node on which a TemplateRef is requested
+ *
+ * 请求 TemplateRef 的节点
+ *
  * @param hostLView The `LView` to which the node belongs
- * @returns The TemplateRef instance or null if we can't create a TemplateRef on a given node type
+ *
+ * 节点所属的 `LView`
+ *
+ * @returns
+ *
+ * The TemplateRef instance or null if we can't create a TemplateRef on a given node type
+ *
+ * TemplateRef 实例；如果我们无法在给定的节点类型上创建 TemplateRef ，则为 null
+ *
  */
 export function createTemplateRef<T>(hostTNode: TNode, hostLView: LView): TemplateRef<T>|null {
   if (hostTNode.type & TNodeType.Container) {
