@@ -29,17 +29,21 @@ To make the code in a JavaScript module available to other modules, use an `expo
 
 要让 JavaScript 模块中的代码可用于其它模块，请在模块中相关代码的末尾使用 `export` 导出它，比如：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export class AppComponent { ... }
-```
+
+</code-example>
 
 When you need that module’s code in another module, use an `import` statement as follows:
 
 如果你在另一个模块中需要来自本模块的代码时，请使用 `import` 语句，如下所示：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 import { AppComponent } from './app.component';
-```
+
+</code-example>
 
 Each module has its own top-level scope.
 In other words, top-level variables and functions in a module are not seen in other scripts or modules.

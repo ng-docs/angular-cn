@@ -141,7 +141,8 @@ To understand how change detection works, first consider when the application ne
 
    HTTP 数据请求。你还可以通过 HTTP 请求从服务器获取数据。例如：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'app-root',
   template: '<div>{{data}}</div>';
@@ -158,13 +159,15 @@ export class AppComponent implements OnInit {
     });
   }
 }
-```
+
+</code-example>
 
 4. MacroTasks, such as `setTimeout()` or `setInterval()`. You can also update the data in the callback function of a `macroTask` such as `setTimeout()`. For example:
 
    宏任务，例如 `setTimeout()` 或 `setInterval()` 。你还可以在诸如 `setTimeout()` `macroTask` 的回调函数中更新数据。例如：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'app-root',
   template: '<div>{{data}}</div>';
@@ -179,13 +182,15 @@ export class AppComponent implements OnInit {
     });
   }
 }
-```
+
+</code-example>
 
 5. MicroTasks, such as `Promise.then()`. Other asynchronous APIs return a Promise object (such as `fetch`), so the `then()` callback function can also update the data. For example:
 
    微任务，例如 `Promise.then()`。其他异步 API（例如 `fetch`）会返回 Promise 对象，因此 `then()` 回调函数也可以更新数据。例如：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 @Component({
   selector: 'app-root',
   template: '<div>{{data}}</div>';
@@ -200,7 +205,8 @@ export class AppComponent implements OnInit {
     });
   }
 }
-```
+
+</code-example>
 
 6. Other async operations. In addition to `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously. Some examples include `WebSocket.onmessage()` and `Canvas.toBlob()`.
 
@@ -403,7 +409,8 @@ This function, and all asynchronous operations in that function, trigger change 
 
 仍然有一些 Zone 无法处理的第三方 API。在这种情况下，`NgZone` 服务提供了 [`run()`](api/core/NgZone#run) 方法，该方法允许你在 `angular` Zone 中执行函数。此函数以及该函数中的所有异步操作会在正确的时间自动触发变更检测。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export class AppComponent implements OnInit {
   constructor(private ngZone: NgZone) {}
   ngOnInit() {
@@ -417,7 +424,8 @@ export class AppComponent implements OnInit {
     });
   }
 }
-```
+
+</code-example>
 
 By default, all asynchronous operations are inside the Angular zone, which triggers change detection automatically.
 Another common case is when you don't want to trigger change detection.
@@ -425,7 +433,8 @@ In that situation, you can use another `NgZone` method: [`runOutsideAngular()`](
 
 默认情况下，所有异步操作都在 Angular Zone 内，这会自动触发变更检测。另一个常见的情况是你不想触发变更检测。在这种情况下，你可以使用另一个 `NgZone` 方法：[`runOutsideAngular()`](api/core/NgZone#runoutsideangular) 。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export class AppComponent implements OnInit {
   constructor(private ngZone: NgZone) {}
   ngOnInit() {
@@ -440,7 +449,8 @@ export class AppComponent implements OnInit {
     });
   }
 }
-```
+
+</code-example>
 
 ### Setting up Zone.js
 
@@ -451,12 +461,14 @@ If you are using the Angular CLI, this step is done automatically, and you will 
 
 为了使 Zone.js 在 Angular 中可用，你需要导入 `zone.js` 包。如果使用的是 Angular CLI，则此步骤将自动完成，并且你会在 `src/polyfills.ts` 中看到以下行：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js';  // Included with Angular CLI.
-```
+
+</code-example>
 
 Before importing the  `zone.js` package, you can set the following configurations:
 
@@ -477,13 +489,15 @@ To make these changes, you need to create a `zone-flags.ts` file, such as the fo
 
 你还可以更改另外几个设置。要进行这些更改，你需要创建一个 `zone-flags.ts` 文件，如下所示。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 // disable patching requestAnimationFrame
 (window as any).__Zone_disable_requestAnimationFrame = true;
 
 // disable patching specified eventNames
 (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove'];
-```
+
+</code-example>
 
 Next, import `zone-flags` before you import `zone.js` in the `polyfills.ts`:
 

@@ -58,7 +58,8 @@ This causes the CLI to create a folder called `customer-dashboard` with a file i
 
 这会让 CLI 创建一个名叫 `customer-dashboard` 的文件夹，其中有一个名叫 `customer-dashboard.module.ts`，内容如下：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -69,7 +70,8 @@ import { CommonModule } from '@angular/common';
   declarations: []
 })
 export class CustomerDashboardModule { }
-```
+
+</code-example>
 
 The structure of an NgModule is the same whether it is a root module or a feature module. In the CLI generated feature module, there are two JavaScript import statements at the top of the file: the first imports `NgModule`, which, like the root module, lets you use the `@NgModule` decorator; the second imports `CommonModule`, which contributes many common directives such as `ngIf` and `ngFor`. Feature modules import `CommonModule` instead of `BrowserModule`, which is only imported once in the root module. `CommonModule` only contains information for common directives such as `ngIf` and `ngFor` which are needed in most templates, whereas `BrowserModule` configures the Angular application for the browser which needs to be done only once.
 

@@ -349,7 +349,8 @@ As an example, consider the following component:
 
 模板类型检查器会检查绑定表达式的类型是否与相应指令输入的类型兼容。例如，请考虑以下组件：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 export interface User {
   name: string;
 }
@@ -361,7 +362,8 @@ export interface User {
 export class UserDetailComponent {
   @Input() user: User;
 }
-```
+
+</code-example>
 
 The `AppComponent` template uses this component as follows:
 
@@ -510,11 +512,13 @@ At runtime, the input will be set to the empty string, which is not a `boolean` 
 
 在运行时，输入将设置为空字符串，这不是 `boolean` 值。处理此问题的角组件库通常将值“强制转换”到 setter 中的正确类型中：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 set disabled(value: boolean) {
   this._disabled = (value === '') || value;
 }
-```
+
+</code-example>
 
 It would be ideal to change the type of `value` here, from `boolean` to `boolean|''`, to match the set of values which are actually accepted by the setter.
 TypeScript prior to version 4.3 requires that both the getter and setter have the same type, so if the getter should return a `boolean` then the setter is stuck with the narrower type.
@@ -530,7 +534,8 @@ As a workaround for this problem, Angular supports checking a wider, more permis
 作为解决此问题的一种取巧方式，Angular 支持对 `@Input()` 检查比声明的输入字段更宽松的类型。
 通过向组件类添加带有 `ngAcceptInputType_` 前缀的静态属性来启用此功能：
 
-```typescript
+<code-example format="typescript" language="typescript">
+
 class SubmitButton {
   private _disabled: boolean;
 
@@ -545,7 +550,8 @@ class SubmitButton {
 
   static ngAcceptInputType_disabled: boolean|'';
 }
-```
+
+</code-example>
 
 <div class="alert is-important">
 
@@ -577,7 +583,8 @@ In the following example, casting `person` to the `any` type suppresses the erro
 
 在以下范例中，将 `person` 强制转换为 `any` 类型可以压制错误 `Property address does not exist`。
 
-```typescript
+<code-example format="typescript" language="typescript">
+
   @Component({
     selector: 'my-component',
     template: '{{$any(person).addresss.street}}'
@@ -585,4 +592,5 @@ In the following example, casting `person` to the `any` type suppresses the erro
   class MyComponent {
     person?: Person;
   }
-```
+
+</code-example>
