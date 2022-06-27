@@ -17,23 +17,38 @@ import {hasNameIdentifier, isDefined} from '../utils';
 /**
  * A structure returned from `getModuleWithProvidersFunctions()` that describes functions
  * that return ModuleWithProviders objects.
+ *
+ * 从 `getModuleWithProvidersFunctions()` 返回的结构，描述返回 ModuleWithProviders 对象的函数。
+ *
  */
 export interface ModuleWithProvidersInfo {
   /**
    * The name of the declared function.
+   *
+   * 声明的函数的名称。
+   *
    */
   name: string;
   /**
    * The declaration of the function that returns the `ModuleWithProviders` object.
+   *
+   * 返回 `ModuleWithProviders` 对象的函数声明。
+   *
    */
   declaration: ts.SignatureDeclaration;
   /**
    * Declaration of the containing class (if this is a method)
+   *
+   * 包含类的声明（如果这是一个方法）
+   *
    */
   container: DeclarationNode|null;
   /**
    * The declaration of the class that the `ngModule` property on the `ModuleWithProviders` object
    * refers to.
+   *
+   * `ModuleWithProviders` 对象上的 `ngModule` 属性所引用的类的声明。
+   *
    */
   ngModule: Reference<ClassDeclaration>;
 }
@@ -116,12 +131,32 @@ export class ModuleWithProvidersAnalyzer {
   /**
    * Parse a function/method node (or its implementation), to see if it returns a
    * `ModuleWithProviders` object.
+   *
+   * 解析函数/方法节点（或其实现），以查看它是否返回 `ModuleWithProviders` 对象。
+   *
    * @param name The name of the function.
+   *
+   * 函数的名称。
+   *
    * @param node the node to check - this could be a function, a method or a variable declaration.
+   *
+   * 要检查的节点 - 这可以是函数、方法或变量声明。
+   *
    * @param implementation the actual function expression if `node` is a variable declaration.
+   *
+   * 如果 `node` 是变量声明，则为实际的函数表达式。
+   *
    * @param container the class that contains the function, if it is a method.
-   * @returns info about the function if it does return a `ModuleWithProviders` object; `null`
+   *
+   * 包含函数的类（如果是方法）。
+   *
+   * @returns
+   *
+   * info about the function if it does return a `ModuleWithProviders` object; `null`
    * otherwise.
+   *
+   * 有关函数的信息（如果确实返回了 `ModuleWithProviders` 对象）；否则 `null` 。
+   *
    */
   private parseForModuleWithProviders(
       name: string, node: ts.Node|null, implementation: ts.Node|null = node,

@@ -32,10 +32,12 @@ export const formControlBinding: any = {
  * E.g.:
  *
  * 当输入发生变化时，`ngModel` 会强制运行额外的变更检测，比如：
+ *
  * ```
  * <div>{{myModel.valid}}</div>
  * <input [(ngModel)]="myValue" #myModel="ngModel">
  * ```
+ *
  * I.e. `ngModel` can export itself on the element and then be used in the template.
  * Normally, this would result in expressions before the `input` that use the exported directive
  * to have an old value as they have been
@@ -258,6 +260,7 @@ export class NgModel extends NgControl implements OnChanges, OnDestroy {
 
   /**
    * @description
+   *
    * Tracks the configuration options for this `ngModel` instance.
    *
    * 跟踪该 `ngModel` 实例的配置项。
@@ -277,10 +280,10 @@ export class NgModel extends NgControl implements OnChanges, OnDestroy {
    * 不会把自己注册进它的父表单中，其行为就像没在表单中一样。默认为 false。
    *
    * **updateOn**: Defines the event upon which the form control value and validity update.
-   * Defaults to 'change'. Possible values: `'change'` | `'blur'` | `'submit'`.
+   * Defaults to 'change'. Possible values: `'change'` \| `'blur'` \| `'submit'`.
    *
    * **updateOn**: 用来定义该何时更新表单控件的值和有效性。默认为
-   * `'change'`。可能的取值为：`'change'` | `'blur'` | `'submit'`。
+   * `'change'`。可能的取值为：`'change'` \| `'blur'` \| `'submit'`。
    *
    */
   // TODO(issue/24571): remove '!'.

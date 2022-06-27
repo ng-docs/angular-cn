@@ -16,18 +16,31 @@ import {DtsProcessing, Task, TaskCompletedCallback, TaskProcessingOutcome, TaskQ
 /**
  * A function that can handle a specific outcome of a task completion.
  *
+ * 可以处理任务完成的特定结果的函数。
+ *
  * These functions can be composed using the `composeTaskCompletedCallbacks()`
  * to create a `TaskCompletedCallback` function that can be passed to an `Executor`.
+ *
+ * 可以用 `composeTaskCompletedCallbacks()` 来组合这些函数，以创建一个可以传递给 `Executor` 的
+ * `TaskCompletedCallback` 函数。
+ *
  */
 export type TaskCompletedHandler = (task: Task, message: string|null) => void;
 
 /**
  * Compose a group of TaskCompletedHandlers into a single TaskCompletedCallback.
  *
+ * 将一组 TaskCompletedHandlers 组成一个 TaskCompletedCallback 。
+ *
  * The compose callback will receive an outcome and will delegate to the appropriate handler based
  * on this outcome.
  *
+ * compose 回调将接收到一个结果，并根据此结果委托给适当的处理程序。
+ *
  * @param callbacks a map of outcomes to handlers.
+ *
+ * 处理程序的结果映射表。
+ *
  */
 export function composeTaskCompletedCallbacks(
     callbacks: Record<TaskProcessingOutcome, TaskCompletedHandler>): TaskCompletedCallback {
@@ -44,7 +57,12 @@ export function composeTaskCompletedCallbacks(
 /**
  * Create a handler that will mark the entry-points in a package as being processed.
  *
+ * 创建一个处理程序，将包中的入口点标记为正在处理。
+ *
  * @param pkgJsonUpdater The service used to update the package.json
+ *
+ * 用于更新 package.json 的服务
+ *
  */
 export function createMarkAsProcessedHandler(
     fs: PathManipulation, pkgJsonUpdater: PackageJsonUpdater): TaskCompletedHandler {
@@ -63,6 +81,9 @@ export function createMarkAsProcessedHandler(
 
 /**
  * Create a handler that will throw an error.
+ *
+ * 创建一个将抛出错误的处理程序。
+ *
  */
 export function createThrowErrorHandler(fs: ReadonlyFileSystem): TaskCompletedHandler {
   return (task: Task, message: string|null): void => {
@@ -72,6 +93,9 @@ export function createThrowErrorHandler(fs: ReadonlyFileSystem): TaskCompletedHa
 
 /**
  * Create a handler that logs an error and marks the task as failed.
+ *
+ * 创建一个记录错误并将任务标记为失败的处理程序。
+ *
  */
 export function createLogErrorHandler(
     logger: Logger, fs: ReadonlyFileSystem, taskQueue: TaskQueue): TaskCompletedHandler {

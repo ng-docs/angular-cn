@@ -7,6 +7,7 @@
  */
 import {NodeJSFileSystem} from '../../../../src/ngtsc/file_system';
 import {ConsoleLogger} from '../../../../src/ngtsc/logging';
+
 import {removeLockFile} from './util';
 
 /// <reference types="node" />
@@ -35,6 +36,9 @@ logger.debug(`The lock-file path is ${lockFilePath}`);
 /**
  * When the parent process exits (for whatever reason) remove the loc-file if it exists and as long
  * as it was one that was created by the parent process.
+ *
+ * 当父进程退出（由于某种原因）时，请删除 loc-file（如果存在）并且它是由父进程创建的。
+ *
  */
 process.on('disconnect', () => {
   removeLockFile(fs, logger, lockFilePath, ppid);

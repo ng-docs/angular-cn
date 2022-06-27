@@ -7,6 +7,7 @@
  */
 import {ConstantPool} from '@angular/compiler';
 import ts from 'typescript';
+
 import {Reexport} from '../../../src/ngtsc/imports';
 import {ClassDeclaration, Decorator} from '../../../src/ngtsc/reflection';
 import {CompileResult} from '../../../src/ngtsc/transform';
@@ -25,6 +26,9 @@ export interface CompiledFile {
 
   /**
    * Any re-exports which should be added next to this class, both in .js and (if possible) .d.ts.
+   *
+   * 应该在此类旁边添加的任何重新导出，包括 .js 和（如果可能）.d.ts 。
+   *
    */
   reexports: Reexport[];
 }

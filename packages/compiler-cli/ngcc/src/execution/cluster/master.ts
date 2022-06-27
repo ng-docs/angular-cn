@@ -25,6 +25,9 @@ import {Deferred, sendMessageToWorker} from './utils';
 /**
  * The cluster master is responsible for analyzing all entry-points, planning the work that needs to
  * be done, distributing it to worker-processes and collecting/post-processing the results.
+ *
+ * 集群主控器负责分析所有入口点、规划需要完成的工作、将其分发给工作进程以及收集/后处理结果。
+ *
  */
 export class ClusterMaster {
   private finishedDeferred = new Deferred<void>();
@@ -74,7 +77,12 @@ export class ClusterMaster {
     });
   }
 
-  /** Try to find available (idle) workers and assign them available (non-blocked) tasks. */
+  /**
+   * Try to find available (idle) workers and assign them available (non-blocked) tasks.
+   *
+   * 尝试寻找可用的（空闲）工作人员并为他们分配可用的（非阻塞）任务。
+   *
+   */
   private maybeDistributeWork(): void {
     let isWorkerAvailable = false;
 
@@ -143,7 +151,12 @@ export class ClusterMaster {
     }
   }
 
-  /** Handle a worker's exiting. (Might be intentional or not.) */
+  /**
+   * Handle a worker's exiting. (Might be intentional or not.)
+   *
+   * 处理 Worker 的退出。 （可能是故意的，也可能不是。）
+   *
+   */
   private onWorkerExit(worker: cluster.Worker, code: number|null, signal: string|null): void {
     // If the worker's exiting was intentional, nothing to do.
     if (worker.exitedAfterDisconnect) return;
@@ -156,8 +169,9 @@ export class ClusterMaster {
         `Worker #${worker.id} exited unexpectedly (code: ${code} | signal: ${signal}).\n` +
         `  Current task: ${(assignment == null) ? '-' : stringifyTask(assignment.task)}\n` +
         `  Current phase: ${
-            (assignment == null) ? '-' :
-                                   (assignment.files == null) ? 'compiling' : 'writing files'}`);
+            (assignment == null)           ? '-' :
+                (assignment.files == null) ? 'compiling' :
+                                             'writing files'}`);
 
     if (assignment == null) {
       // The crashed worker process was not in the middle of a task:
@@ -198,7 +212,12 @@ export class ClusterMaster {
     }
   }
 
-  /** Handle a message from a worker. */
+  /**
+   * Handle a message from a worker.
+   *
+   * 处理来自工作人员的消息。
+   *
+   */
   private onWorkerMessage(workerId: number, msg: MessageFromWorker): void {
     // A worker is now ready and can retrieve a processing task.
     if (msg.type === 'ready') {
@@ -230,7 +249,12 @@ export class ClusterMaster {
     }
   }
 
-  /** Handle a worker's coming online and ready for retrieving IPC messages. */
+  /**
+   * Handle a worker's coming online and ready for retrieving IPC messages.
+   *
+   * 处理 Worker 上线并准备好检索 IPC 消息。
+   *
+   */
   private onWorkerReady(workerId: number): void {
     if (this.taskAssignments.has(workerId)) {
       throw new Error(`Invariant violated: Worker #${workerId} came online more than once.`);
@@ -245,7 +269,12 @@ export class ClusterMaster {
     this.maybeDistributeWork();
   }
 
-  /** Handle a worker's having completed their assigned task. */
+  /**
+   * Handle a worker's having completed their assigned task.
+   *
+   * 处理工作人员已完成分配的任务。
+   *
+   */
   private onWorkerTaskCompleted(workerId: number, msg: TaskCompletedMessage): void {
     const assignment = this.taskAssignments.get(workerId) || null;
 
@@ -262,7 +291,12 @@ export class ClusterMaster {
     this.maybeDistributeWork();
   }
 
-  /** Handle a worker's message regarding the files transformed while processing its task. */
+  /**
+   * Handle a worker's message regarding the files transformed while processing its task.
+   *
+   * 处理工作人员关于在处理任务时转换的文件的消息。
+   *
+   */
   private onWorkerTransformedFiles(workerId: number, msg: TransformedFilesMessage): void {
     const assignment = this.taskAssignments.get(workerId) || null;
 
@@ -285,7 +319,12 @@ export class ClusterMaster {
     assignment.files = newFiles;
   }
 
-  /** Handle a worker's request to update a `package.json` file. */
+  /**
+   * Handle a worker's request to update a `package.json` file.
+   *
+   * 处理工作人员更新 `package.json` 文件的请求。
+   *
+   */
   private onWorkerUpdatePackageJson(workerId: number, msg: UpdatePackageJsonMessage): void {
     const assignment = this.taskAssignments.get(workerId) || null;
 
@@ -315,7 +354,12 @@ export class ClusterMaster {
     this.pkgJsonUpdater.writeChanges(msg.changes, msg.packageJsonPath, entryPoint.packageJson);
   }
 
-  /** Stop all workers and stop listening on cluster events. */
+  /**
+   * Stop all workers and stop listening on cluster events.
+   *
+   * 停止所有工作人员并停止侦听集群事件。
+   *
+   */
   private stopWorkers(): void {
     const workers = Object.values(cluster.workers) as cluster.Worker[];
     this.logger.debug(`Stopping ${workers.length} workers...`);
@@ -327,6 +371,9 @@ export class ClusterMaster {
   /**
    * Wrap an event handler to ensure that `finishedDeferred` will be rejected on error (regardless
    * if the handler completes synchronously or asynchronously).
+   *
+   * 包装事件处理程序以确保 `finishedDeferred` 在错误时被拒绝（无论处理程序是同步还是异步完成）。
+   *
    */
   private wrapEventHandler<Args extends unknown[]>(fn: (...args: Args) => void|Promise<void>):
       (...args: Args) => Promise<void> {
@@ -340,7 +387,12 @@ export class ClusterMaster {
   }
 }
 
-/** Gets the absolute file path to the cluster worker script. */
+/**
+ * Gets the absolute file path to the cluster worker script.
+ *
+ * 获取集群工作程序脚本的绝对文件路径。
+ *
+ */
 export function getClusterWorkerScriptPath(fileSystem: PathManipulation): AbsoluteFsPath {
   // This is an interop allowing for the worker script to be determined in both
   // a CommonJS module, or an ES module which does not come with `require` by default.

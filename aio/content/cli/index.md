@@ -71,6 +71,8 @@ Since you want to be able to create files inside that folder, make sure you have
 
 If the current working directory is not the right place for your project, you can change to a more appropriate directory by running `cd <path-to-other-directory>`.
 
+如果当前工作目录不适合放你的项目，可以先运行 `cd <path-to-other-directory>` 来切换到更合适的目录。
+
 </div>
 
 ## Workspaces and project files
@@ -110,10 +112,15 @@ This is where you can set per-project defaults for CLI command options, and spec
 
 The [ng config](cli/config) command lets you set and retrieve configuration values from the command line, or you can edit the `angular.json` file directly.
 
+[ng config](cli/config) 让你可以从命令行中设置和获取配置项的值。你也可以直接编辑 `angular.json` 文件。
+
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 Option names in the configuration file must use [camelCase](guide/glossary#case-types), while option names supplied to commands must be dash-case.
+
+**注意**：<br />
+此配置文件中的选项名称必须使用[小驼峰(camelCase)形式](guide/glossary#case-types)，不过当在命令行中提供它是可以使用小驼峰和中线分隔(dash-case)两种形式。
 
 </div>
 
@@ -141,6 +148,11 @@ Command syntax is shown as follows:
   Arguments are not prefixed.
   For example:
 
+  选项名带有双中线前缀（`--`）。
+  选项别名带有单中线前缀（`-`）。
+  参数没有前缀。
+  比如：
+
   <code-example format="shell" language="shell">
 
   ng build my-app -c production
@@ -148,6 +160,8 @@ Command syntax is shown as follows:
   </code-example>
 
 * Typically, the name of a generated artifact can be given as an argument to the command or specified with the `--name` option.
+
+  通常，生成的工件（artifact）名称可以作为命令的参数进行指定，也可以使用 `--name` 选项。
 
 * Argument and option names can be given in either [camelCase or dash-case](guide/glossary#case-types).
   `--myOptionName` is equivalent to `--my-option-name`.

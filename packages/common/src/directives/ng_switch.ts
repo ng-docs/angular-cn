@@ -37,8 +37,8 @@ export class SwitchView {
 
 /**
  * @ngModule CommonModule
- *
  * @description
+ *
  * The `[ngSwitch]` directive on a container specifies an expression to match against.
  * The expressions to match are provided by `ngSwitchCase` directives on views within the container.
  *
@@ -54,9 +54,13 @@ export class SwitchView {
  *   如果没有匹配项，则渲染 `ngSwitchDefault`
  *
  * - Elements within the `[NgSwitch]` statement but outside of any `NgSwitchCase`
- * or `ngSwitchDefault` directive are preserved at the location.
+ *   or `ngSwitchDefault` directive are preserved at the location.
  *
- *     `[NgSwitch]` 语句内任何除 `NgSwitchCase` 或 `ngSwitchDefault` 指令之外的元素都保留在原位。
+ *   `[NgSwitch]` 语句中但任何 `NgSwitchCase` 或 `ngSwitchDefault` 指令之外的元素都会保留在该位置。
+ *
+ *   ```
+ *   `[NgSwitch]` 语句内任何除 `NgSwitchCase` 或 `ngSwitchDefault` 指令之外的元素都保留在原位。
+ *   ```
  *
  * @usageNotes
  *
@@ -119,7 +123,6 @@ export class SwitchView {
  *       <some-element *ngSwitchDefault>...</some-element>
  *     </container-element>
  * ```
- *
  * @publicApi
  * @see `NgSwitchCase`
  * @see `NgSwitchDefault`

@@ -27,7 +27,7 @@ import {joinWithSlash, normalizeQueryParams} from './util';
  * For instance, if you call `location.go('/foo')`, the browser's URL will become
  * `example.com#/foo`.
  *
- * 例如，如果你调用 `location.go('/foo')` ，则浏览器的 URL 将变为 `example.com#/foo` 。
+ * 比如，如果你调用 `location.go('/foo')` ，则浏览器的 URL 将变为 `example.com#/foo` 。
  *
  * @usageNotes
  *

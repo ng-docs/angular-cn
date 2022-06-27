@@ -89,7 +89,7 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * [Structural Directives](guide/structural-directives#one-per-element).
  *
  * 使用简写语法时，Angular
- * 在[一个元素上只允许有一个结构型指令](guide/built-in-directives#one-per-element)。例如，如果要根据条件进行迭代，请将
+ * 在[一个元素上只允许有一个结构型指令](guide/built-in-directives#one-per-element)。比如，如果要根据条件进行迭代，请将
  * `*ngIf` 放在 `*ngFor`
  * 元素的容器元素上。欲知详情，请参见[《结构型指令》](guide/built-in-directives#one-per-element) 。
  *
@@ -102,7 +102,7 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * `NgForOf` provides exported values that can be aliased to local variables.
  * For example:
  *
- * `NgForOf` 可以为所提供的导出值指定一个局部变量别名。例如：
+ * `NgForOf` 可以为所提供的导出值指定一个局部变量别名。比如：
  *
  * ```
  * <li *ngFor="let user of users; index as i; first as isFirst">
@@ -119,12 +119,12 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  *   `$implicit: T`：迭代目标（绑定到 `ngForOf`）中每个条目的值。
  *
  * - `ngForOf: NgIterable<T>`: The value of the iterable expression. Useful when the expression is
- * more complex then a property access, for example when using the async pipe (`userStreams |
- * async`).
+ *   more complex then a property access, for example when using the async pipe (`userStreams |
+ *   async`).
  *
- *   `ngForOf:
- * NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用 `async`
- * 管道时（`userStreams | async`）。
+ *     `ngForOf:
+ *   NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用
+ * `async` 管道时（`userStreams | async`）。
  *
  * - `index: number`: The index of the current item in the iterable.
  *
@@ -206,7 +206,6 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * @see [Structural Directives](guide/structural-directives)
  *
  * [结构型指令](guide/structural-directives)
- *
  * @ngModule CommonModule
  * @publicApi
  */
@@ -227,18 +226,29 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
   /**
    * Specifies a custom `TrackByFunction` to compute the identity of items in an iterable.
    *
+   * 指定自定义 `TrackByFunction` 来计算 iterable 中条目的标识。
+   *
    * If a custom `TrackByFunction` is not provided, `NgForOf` will use the item's [object
    * identity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
    * as the key.
    *
+   * 如果未提供自定义 `TrackByFunction` ， `NgForOf`
+   * 将使用条目的[对象标识](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)作为键。
+   *
    * `NgForOf` uses the computed key to associate items in an iterable with DOM elements
    * it produces for these items.
+   *
+   * `NgForOf` 使用计算的键将 iterable 中的条目与它为这些条目生成的 DOM 元素关联起来。
    *
    * A custom `TrackByFunction` is useful to provide good user experience in cases when items in an
    * iterable rendered using `NgForOf` have a natural identifier (for example, custom ID or a
    * primary key), and this iterable could be updated with new object instances that still
    * represent the same underlying entity (for example, when data is re-fetched from the server,
    * and the iterable is recreated and re-rendered, but most of the data is still the same).
+   *
+   * 在使用 `NgForOf` 渲染的迭代中的条目具有自然标识符（例如自定义 ID 或主键）的情况下，自定义
+   * `TrackByFunction`
+   * 可用于提供良好的用户体验，并且可以用仍然表示同一个基础实体（例如，当从服务器重新获取数据，并且重新创建和重新渲染迭代器，但大多数数据仍然是相同的）。
    *
    * @see `TrackByFunction`
    */

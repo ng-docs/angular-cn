@@ -9,6 +9,9 @@ import {FatalLinkerError} from '../fatal_linker_error';
 
 /**
  * Assert that the given `node` is of the type guarded by the `predicate` function.
+ *
+ * 断言给定 `node` 是由 `predicate` 函数保护的类型。
+ *
  */
 export function assert<T, K extends T>(
     node: T, predicate: (node: T) => node is K, expected: string): asserts node is K {

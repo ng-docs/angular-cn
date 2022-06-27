@@ -1,9 +1,11 @@
 # Format data based on locale
 
-# 基于语言环境格式化数据
+# 根据语言环境格式化数据
 
 Angular provides the following built-in data transformation [pipes][AioGuideGlossaryPipe].
 The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to format data based on rules of each locale.
+
+Angular 提供了以下内置的数据转换[管道][AioGuideGlossaryPipe]。数据转换管道会使用 [`LOCALE_ID`][AioApiCoreLocaleId] 标记来根据每个语言环境的规则来格式化数据。
 
 | Data transformation pipe | Details |
 | :----------------------- | :------ |
@@ -58,13 +60,18 @@ To force the currency to use American English (`en-US`), use the following forma
 **NOTE**: <br />
 The locale specified for the `CurrencyPipe` overrides the global `LOCALE_ID` token of your application.
 
+**注意**：<br />
+为 `CurrencyPipe` 指定的语音环境设置会覆盖应用程序的全局 `LOCALE_ID` 标记。
+
 </div>
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * [Prepare templates for translations][AioGuideI18nCommonPrepare]
+
+  [准备翻译模板][AioGuideI18nCommonPrepare]
 
 <!-- links -->
 

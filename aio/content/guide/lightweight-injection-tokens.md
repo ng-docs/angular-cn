@@ -233,7 +233,7 @@ This lets the parent communicate with the child (if it is present) in a type-saf
 For example, the `LibCardComponent` now queries `LibHeaderToken` rather than `LibHeaderComponent`.
 The following example shows how the pattern lets `LibCardComponent` communicate with the `LibHeaderComponent` without actually referring to `LibHeaderComponent`.
 
-例如，`LibCardComponent` 现在要查询 `LibHeaderToken` 而不是 `LibHeaderComponent` 。这个例子展示了该模式如何让 `LibCardComponent` 与 `LibHeaderComponent` 通信，却不用实际引用 `LibHeaderComponent` 。
+比如，`LibCardComponent` 现在要查询 `LibHeaderToken` 而不是 `LibHeaderComponent` 。这个例子展示了该模式如何让 `LibCardComponent` 与 `LibHeaderComponent` 通信，却不用实际引用 `LibHeaderComponent` 。
 
 <code-example format="typescript" language="typescript">
 
@@ -283,9 +283,11 @@ Lightweight injection tokens are only useful with components.
 The Angular style guide suggests that you name components using the "Component" suffix.
 The example "LibHeaderComponent" follows this convention.
 
-轻量级注入令牌只对组件有用。Angular 风格指南中建议你使用“Component”后缀命名组件。例如“LibHeaderComponent”就遵循这个约定。
+轻量级注入令牌只对组件有用。Angular 风格指南中建议你使用“Component”后缀命名组件。比如“LibHeaderComponent”就遵循这个约定。
 
 To maintain the relationship between the component and its token while still distinguishing between them, the recommended style is to use the component base name with the suffix "`Token`" to name your lightweight injection tokens: "`LibHeaderToken`".
+
+为了维护组件及其令牌之间的对应关系，同时又要区分它们，推荐的写法是使用组件基本名加上后缀“`Token`”来命名你的轻量级注入令牌：“`LibHeaderToken`”。
 
 <!-- links -->
 

@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 * [Basics of components](guide/architecture-components)
 
@@ -26,6 +26,8 @@ Interpolation refers to embedding expressions into marked up text. By default, i
 
 To illustrate how interpolation works, consider an Angular component that contains a currentCustomer variable:
 
+为了说明插值的工作原理，请考虑一个包含 `currentCustomer` 变量的 Angular 组件：
+
 <code-example path="interpolation/src/app/app.component.ts" region="customer"></code-example>
 
 Use interpolation to display the value of this variable in the corresponding component template:
@@ -36,6 +38,8 @@ Use interpolation to display the value of this variable in the corresponding com
 
 Angular replaces currentCustomer with the string value of the corresponding component property. In this case, the value is `Maria`.
 
+Angular 会用相应组件属性的字符串值替换掉 `currentCustomer`。在这里，它的值是 `Maria`。
+
 In the following example, Angular evaluates the `title` and `itemImageUrl` properties to display some title text and an image.
 
 在以下示例中，Angular 会求出 `title` 和 `itemImageUrl` 属性的值，以显示一些标题文本和图像。
@@ -44,7 +48,7 @@ In the following example, Angular evaluates the `title` and `itemImageUrl` prope
 
 ## What's Next
 
-## 下一步是什么【模糊翻译】
+## 下一步呢？
 
 * [Property binding](guide/property-binding)
 

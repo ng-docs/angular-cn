@@ -15,6 +15,9 @@ import {isLocalDirectory} from './utils';
 
 /**
  * Implement this interface to extend the cleaning strategies of the `PackageCleaner`.
+ *
+ * 实现此接口以扩展 `PackageCleaner` 的清理策略。
+ *
  */
 export interface CleaningStrategy {
   canClean(path: AbsoluteFsPath, basename: PathSegment): boolean;
@@ -24,6 +27,9 @@ export interface CleaningStrategy {
 /**
  * A CleaningStrategy that reverts changes to package.json files by removing the build marker and
  * other properties.
+ *
+ * 一种 CleanStrategy ，它通过删除构建标记和其他属性来恢复对 package.json 文件的更改。
+ *
  */
 export class PackageJsonCleaner implements CleaningStrategy {
   constructor(private fs: FileSystem) {}
@@ -40,6 +46,9 @@ export class PackageJsonCleaner implements CleaningStrategy {
 
 /**
  * A CleaningStrategy that removes the extra directory containing generated entry-point formats.
+ *
+ * 一种 CleanStrategy ，它会删除包含生成的入口点格式的额外目录。
+ *
  */
 export class NgccDirectoryCleaner implements CleaningStrategy {
   constructor(private fs: FileSystem) {}
@@ -54,6 +63,9 @@ export class NgccDirectoryCleaner implements CleaningStrategy {
 /**
  * A CleaningStrategy that reverts files that were overwritten and removes the backup files that
  * ngcc created.
+ *
+ * 一种 CleanStrategy ，它会恢复被覆盖的文件并删除 ngcc 创建的备份文件。
+ *
  */
 export class BackupFileCleaner implements CleaningStrategy {
   constructor(private fs: FileSystem) {}

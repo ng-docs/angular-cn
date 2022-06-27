@@ -16,7 +16,12 @@ import {XmlFile} from './xml_file';
 /**
  * A translation serializer that can write files in XMB format.
  *
- * http://cldr.unicode.org/development/development-process/design-proposals/xmb
+ * 一个可以以 XMB 格式写入文件的翻译序列化器。
+ *
+ * <http://cldr.unicode.org/development/development-process/design-proposals/xmb>
+ *
+ * [http://cldr.unicode.org/ development/
+ * development-process/design-proposals/xmb](http://cldr.unicode.org/development/development-process/design-proposals/xmb)
  *
  * @see XmbTranslationParser
  * @publicApi used by CLI
@@ -100,16 +105,29 @@ export class XmbTranslationSerializer implements TranslationSerializer {
   /**
    * Get the id for the given `message`.
    *
+   * 获取给定 `message` 的 id。
+   *
    * If there was a custom id provided, use that.
+   *
+   * 如果提供了自定义 ID，请使用它。
    *
    * If we have requested legacy message ids, then try to return the appropriate id
    * from the list of legacy ids that were extracted.
    *
+   * 如果我们请求了旧版消息 ID，请尝试从提取的旧版 ID 列表中返回适当的 id。
+   *
    * Otherwise return the canonical message id.
+   *
+   * 否则返回规范消息 ID。
    *
    * An XMB legacy message id is a 64 bit number encoded as a decimal string, which will have
    * at most 20 digits, since 2^65-1 = 36,893,488,147,419,103,231. This digest is based on:
-   * https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java
+   * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
+   *
+   * XMB 旧版消息 ID 是编码为十进制字符串的 64 位数字，最多有 20 位，因为 2^65-1 =
+   * 36,893,488,147,419,103,231 。本摘要基于：
+   * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
+   *
    */
   private getMessageId(message: ɵParsedMessage): string {
     return message.customId ||

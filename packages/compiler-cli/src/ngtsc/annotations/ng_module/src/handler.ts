@@ -51,6 +51,9 @@ export interface NgModuleResolution {
 
 /**
  * Represents an Angular NgModule.
+ *
+ * 表示一个 Angular NgModule。
+ *
  */
 export class NgModuleSymbol extends SemanticSymbol {
   private remotelyScopedComponents: {
@@ -122,6 +125,9 @@ export class NgModuleSymbol extends SemanticSymbol {
 
 /**
  * Compiles @NgModule annotations to ngModuleDef fields.
+ *
+ * 将 @NgModule 注解编译为 ngModuleDef 字段。
+ *
  */
 export class NgModuleDecoratorHandler implements
     DecoratorHandler<Decorator, NgModuleAnalysis, NgModuleSymbol, NgModuleResolution> {
@@ -611,6 +617,9 @@ export class NgModuleDecoratorHandler implements
 
   /**
    * Add class metadata statements, if provided, to the `ngModuleStatements`.
+   *
+   * 将类元数据语句（如果提供）添加到 `ngModuleStatements` 。
+   *
    */
   private insertMetadataStatement(ngModuleStatements: Statement[], metadata: Expression|null):
       void {
@@ -621,6 +630,9 @@ export class NgModuleDecoratorHandler implements
 
   /**
    * Add remote scoping statements, as needed, to the `ngModuleStatements`.
+   *
+   * 根据需要，将远程范围声明添加到 `ngModuleStatements` 。
+   *
    */
   private appendRemoteScopingStatements(
       ngModuleStatements: Statement[], node: ClassDeclaration,
@@ -704,6 +716,9 @@ export class NgModuleDecoratorHandler implements
 
   /**
    * Compute a list of `Reference`s from a resolved metadata value.
+   *
+   * 从解析的元数据值计算 `Reference` 列表。
+   *
    */
   private resolveTypeList(
       expr: ts.Node, resolvedList: ResolvedValue, className: string, arrayName: string,
@@ -767,6 +782,9 @@ function isNgModule(node: ClassDeclaration, compilation: ScopeData): boolean {
 
 /**
  * Checks whether the given `ts.Expression` is the expression `module.id`.
+ *
+ * 检查给定的 `ts.Expression` 是否是表达式 `module.id` 。
+ *
  */
 function isModuleIdExpression(expr: ts.Expression): boolean {
   return ts.isPropertyAccessExpression(expr) && ts.isIdentifier(expr.expression) &&
@@ -782,6 +800,9 @@ export interface TopLevelImportedExpression {
 /**
  * Helper method to produce a diagnostics for a situation when a standalone component
  * is referenced in the `@NgModule.bootstrap` array.
+ *
+ * 在 `@NgModule.bootstrap` 数组中引用独立组件时，为这种情况生成诊断的帮助器方法。
+ *
  */
 function makeStandaloneBootstrapDiagnostic(
     ngModuleClass: ClassDeclaration, bootstrappedClassRef: Reference<ClassDeclaration>,

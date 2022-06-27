@@ -18,93 +18,146 @@ import {childNodesAsList, hasClass, hasStyle, isCommentNode} from './browser_uti
 /**
  * Jasmine matchers that check Angular specific conditions.
  *
+ * 检查 Angular 特定条件的 Jasmine 匹配器。
+ *
  * Note: These matchers will only work in a browser environment.
+ *
+ * 注意：这些匹配器仅在浏览器环境中工作。
+ *
  */
 export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
   /**
    * Expect the value to be a `Promise`.
    *
+   * 期望值是 `Promise` 。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toBePromise'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toBePromise'}
    */
   toBePromise(): boolean;
 
   /**
    * Expect the value to be an instance of a class.
    *
+   * 期望值是类的实例。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toBeAnInstanceOf'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toBeAnInstanceOf'}
    */
   toBeAnInstanceOf(expected: any): boolean;
 
   /**
    * Expect the element to have exactly the given text.
    *
+   * 期望元素具有给定的文本。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toHaveText'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toHaveText'}
    */
   toHaveText(expected: string): boolean;
 
   /**
    * Expect the element to have the given CSS class.
    *
+   * 期望元素具有给定的 CSS 类。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toHaveCssClass'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toHaveCssClass'}
    */
   toHaveCssClass(expected: string): boolean;
 
   /**
    * Expect the element to have the given CSS styles.
    *
+   * 期望元素具有给定的 CSS 样式。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toHaveCssStyle'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toHaveCssStyle'}
    */
   toHaveCssStyle(expected: {[k: string]: string}|string): boolean;
 
   /**
    * Expect a class to implement the interface of the given class.
    *
+   * 期望一个类实现给定类的接口。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toImplement'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toImplement'}
    */
   toImplement(expected: any): boolean;
 
   /**
    * Expect an exception to contain the given error text.
    *
+   * 期望出现一个包含给定错误文本的异常。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example testing/ts/matchers.ts region='toContainError'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example testing/ts/matchers.ts region='toContainError'}
    */
   toContainError(expected: any): boolean;
 
   /**
    * Expect a component of the given type to show.
+   *
+   * 期望显示给定类型的组件。
+   *
    */
   toContainComponent(expectedComponentType: Type<any>, expectationFailOutput?: any): boolean;
 
   /**
    * Invert the matchers.
+   *
+   * 反转匹配器。
+   *
    */
   not: NgMatchers<T>;
 }
@@ -114,9 +167,14 @@ const _global = <any>(typeof window === 'undefined' ? global : window);
 /**
  * Jasmine matching function with Angular matchers mixed in.
  *
+ * 混合了 Angular 匹配器的 Jasmine 匹配函数。
+ *
  * ## Example
  *
+ * ## 例子
+ *
  * {@example testing/ts/matchers.ts region='toHaveText'}
+ *
  */
 export const expect: <T = any>(actual: T) => NgMatchers<T> = _global.expect;
 

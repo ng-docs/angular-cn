@@ -23,6 +23,9 @@ class ViewContainerRefToken {
 /**
  * Creates a helper directive that renders out a template
  * reference that is passed in as an input.
+ *
+ * 创建一个帮助器指令，该指令呈现作为输入传入的模板引用。
+ *
  */
 export function createRenderTemplateDirective(injector: Injector|undefined) {
   return class RenderTemplate {

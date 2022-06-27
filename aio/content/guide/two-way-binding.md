@@ -1,5 +1,7 @@
 # Two-way binding
 
+# 双向绑定
+
 Two-way binding gives components in your application a way to share data.
 Use two-way binding to listen for events and update values simultaneously between parent and child components.
 
@@ -9,11 +11,13 @@ Use two-way binding to listen for events and update values simultaneously betwee
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+包含本指南中的代码片段的可工作示例参见<live-example></live-example>。
+
 </div>
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To get the most out of two-way binding, you should have a basic understanding of the following concepts:
 
@@ -21,7 +25,7 @@ To get the most out of two-way binding, you should have a basic understanding of
 
 * [Property binding](guide/property-binding)
 
-  [property 绑定](guide/property-binding)
+  [属性绑定](guide/property-binding)
 
 * [Event binding](guide/event-binding)
 
@@ -37,11 +41,11 @@ Two-way binding combines property binding with event binding:
 
 | Bindings | Details |
 | :------- | :------ |
-| Bindings | 详情 |
+| 绑定 | 详情 |
 | [Property binding](guide/property-binding) | Sets a specific element property. |
-| [property 绑定](guide/property-binding) | Sets a specific element property. |
+| [属性绑定](guide/property-binding) | 设置特定的元素属性。 |
 | [Event binding](guide/event-binding) | Listens for an element change event. |
-| [事件绑定](guide/event-binding) | Listens for an element change event. |
+| [事件绑定](guide/event-binding) | 侦听元素更改事件。 |
 
 ## Adding two-way data binding
 
@@ -61,7 +65,7 @@ Angular 的双向绑定语法是方括号和圆括号的组合 `[()]`。`[]` 进
 For two-way data binding to work, the `@Output()` property must use the pattern, `inputChange`, where `input` is the name of the `@Input()` property.
 For example, if the `@Input()` property is `size`, the `@Output()` property must be `sizeChange`.
 
-为了使双向数据绑定有效，`@Output()` 属性的名字必须遵循 `inputChange` 模式，其中 `input` 是相应 `@Input()` 属性的名字。例如，如果 `@Input()` 属性为 `size` ，则 `@Output()` 属性必须为 `sizeChange` 。
+为了使双向数据绑定有效，`@Output()` 属性的名字必须遵循 `inputChange` 模式，其中 `input` 是相应 `@Input()` 属性的名字。比如，如果 `@Input()` 属性为 `size` ，则 `@Output()` 属性必须为 `sizeChange` 。
 
 The following `sizerComponent` has a `size` value property and a `sizeChange` event.
 The `size` property is an `@Input()`, so data can flow into the `sizerComponent`.
@@ -104,7 +108,7 @@ The revised `AppComponent.fontSizePx` value updates the style binding, which mak
 The two-way binding syntax is shorthand for a combination of property binding and event binding.
 The `SizerComponent` binding as separate property binding and event binding is as follows.
 
-双向绑定语法是属性绑定和事件绑定的组合的简写形式。拆成单独的属性绑定和事件绑定形式的 `SizerComponent` 代码如下：。
+双向绑定语法是属性绑定和事件绑定的组合的简写形式。拆成单独的属性绑定和事件绑定形式的 `SizerComponent` 代码如下。
 
 <code-example header="src/app/app.component.html (expanded)" path="two-way-binding/src/app/app.component.html" region="two-way-2"></code-example>
 
@@ -116,6 +120,8 @@ Angular assigns the `$event` value to the `AppComponent.fontSizePx` when the use
 <div class="callout is-helpful">
 
 <header>Two-way binding in forms</header>
+
+  <header>表单中的双向绑定</header>
 
 Because no built-in HTML element follows the `x` value and `xChange` event pattern, two-way binding with form elements requires `NgModel`.
 For more information on how to use two-way binding in forms, see Angular [NgModel](guide/built-in-directives#ngModel).

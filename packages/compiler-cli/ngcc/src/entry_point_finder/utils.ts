@@ -107,8 +107,19 @@ function isExistingDirectory(fs: ReadonlyFileSystem, path: AbsoluteFsPath): bool
 
 /**
  * Extract everything in the `path` up to the first `*`.
+ *
+ * 提取 `path` 中直到第一个 `*` 的所有内容。
+ *
  * @param path The path to parse.
- * @returns The extracted prefix and a flag to indicate whether there was a wildcard `*`.
+ *
+ * 要解析的路径。
+ *
+ * @returns
+ *
+ * The extracted prefix and a flag to indicate whether there was a wildcard `*`.
+ *
+ * 提取的前缀和一个标志，以表明是否存在通配符 `*` 。
+ *
  */
 function extractPathPrefix(path: string): {prefix: string, hasWildcard: boolean} {
   const [prefix, rest] = path.split('*', 2);
@@ -118,9 +129,22 @@ function extractPathPrefix(path: string): {prefix: string, hasWildcard: boolean}
 /**
  * Run a task and track how long it takes.
  *
+ * 运行任务并跟踪所需的时间。
+ *
  * @param task The task whose duration we are tracking.
+ *
+ * 我们正在跟踪其持续时间的任务。
+ *
  * @param log The function to call with the duration of the task.
- * @returns The result of calling `task`.
+ *
+ * 在任务持续期间要调用的函数。
+ *
+ * @returns
+ *
+ * The result of calling `task`.
+ *
+ * 调用 `task` 的结果。
+ *
  */
 export function trackDuration<T = void>(task: () => T extends Promise<unknown>? never : T,
                                                               log: (duration: number) => void): T {
@@ -134,10 +158,17 @@ export function trackDuration<T = void>(task: () => T extends Promise<unknown>? 
 /**
  * Remove paths that are contained by other paths.
  *
+ * 删除其他路径包含的路径。
+ *
  * For example:
  * Given `['a/b/c', 'a/b/x', 'a/b', 'd/e', 'd/f']` we will end up with `['a/b', 'd/e', 'd/f]`.
  * (Note that we do not get `d` even though `d/e` and `d/f` share a base directory, since `d` is not
  * one of the base paths.)
+ *
+ * 例如：给定 `['a/b/c', 'a/b/x', 'a/b', 'd/e', 'd/f']` 我们最终将得到 `['a/b', 'd/e', 'd/f]` 。
+ * （请注意，即使 `d/e` 和 `d/f` 共享一个基本目录，我们也不会得到 `d` ，因为 `d`
+ * 不是基本路径之一。）
+ *
  */
 function dedupePaths(fs: PathManipulation, paths: AbsoluteFsPath[]): AbsoluteFsPath[] {
   const root: Node = {children: new Map()};
@@ -149,6 +180,9 @@ function dedupePaths(fs: PathManipulation, paths: AbsoluteFsPath[]): AbsoluteFsP
 
 /**
  * Add a path (defined by the `segments`) to the current `node` in the tree.
+ *
+ * 将路径（由 `segments` 定义）添加到树中的当前 `node` 。
+ *
  */
 function addPath(fs: PathManipulation, root: Node, path: AbsoluteFsPath): void {
   let node = root;
@@ -173,6 +207,9 @@ function addPath(fs: PathManipulation, root: Node, path: AbsoluteFsPath): void {
 
 /**
  * Flatten the tree of nodes back into an array of absolute paths.
+ *
+ * 将节点树展平为绝对路径数组。
+ *
  */
 function flattenTree(root: Node): AbsoluteFsPath[] {
   const paths: AbsoluteFsPath[] = [];

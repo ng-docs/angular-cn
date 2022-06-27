@@ -405,9 +405,9 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
   }
 
   /**
-   * Get rid of any excess {@link IterableChangeRecord_}s from the previous collection
+   * Get rid of any excess {@link IterableChangeRecord\_}s from the previous collection
    *
-   * 摆脱上一个集合中任何多余的 {@link IterableChangeRecord_}
+   * 摆脱上一个集合中任何多余的 {@link IterableChangeRecord\_}
    *
    * - `record` The first excess {@link IterableChangeRecord\_}.
    *
@@ -662,7 +662,12 @@ class _DuplicateItemRecordList<V> {
   /**
    * Append the record to the list of duplicates.
    *
+   * 将记录附加到重复项列表。
+   *
    * Note: by design all records in the list of duplicates hold the same value in record.item.
+   *
+   * 注意：按照设计，重复列表中的所有记录在 Record.item 中都包含相同的值。
+   *
    */
   add(record: IterableChangeRecord_<V>): void {
     if (this._head === null) {
@@ -694,9 +699,14 @@ class _DuplicateItemRecordList<V> {
   }
 
   /**
-   * Remove one {@link IterableChangeRecord_} from the list of duplicates.
+   * Remove one {@link IterableChangeRecord\_} from the list of duplicates.
+   *
+   * 从重复项列表中删除一个 {@link IterableChangeRecord\_} 。
    *
    * Returns whether the list of duplicates is empty.
+   *
+   * 返回重复项列表是否为空。
+   *
    */
   remove(record: IterableChangeRecord_<V>): boolean {
     // TODO(vicb):
@@ -739,11 +749,18 @@ class _DuplicateMap<V> {
   }
 
   /**
-   * Retrieve the `value` using key. Because the IterableChangeRecord_ value may be one which we
+   * Retrieve the `value` using key. Because the IterableChangeRecord\_ value may be one which we
    * have already iterated over, we use the `atOrAfterIndex` to pretend it is not there.
+   *
+   * 使用键检索 `value` 。因为 IterableChangeRecord\_ 的值可能是我们已经迭代过的值，所以我们用
+   * `atOrAfterIndex` 来假装它不存在。
    *
    * Use case: `[a, b, c, a, a]` if we are at index `3` which is the second `a` then asking if we
    * have any more `a`s needs to return the second `a`.
+   *
+   * 用例： `[a, b, c, a, a]` 如果我们在索引 `3` 处，这是第二个 `a` 那么询问我们是否还有 `a` s
+   * 需要返回第二个 `a` 。
+   *
    */
   get(trackById: any, atOrAfterIndex: number|null): IterableChangeRecord_<V>|null {
     const key = trackById;
@@ -752,9 +769,14 @@ class _DuplicateMap<V> {
   }
 
   /**
-   * Removes a {@link IterableChangeRecord_} from the list of duplicates.
+   * Removes a {@link IterableChangeRecord\_} from the list of duplicates.
+   *
+   * 从重复项列表中删除 {@link IterableChangeRecord\_} 。
    *
    * The list of duplicates also is removed from the map if it gets empty.
+   *
+   * 如果重复列表为空，也会从地图中删除。
+   *
    */
   remove(record: IterableChangeRecord_<V>): IterableChangeRecord_<V> {
     const key = record.trackById;

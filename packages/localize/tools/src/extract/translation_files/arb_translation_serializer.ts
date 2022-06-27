@@ -7,13 +7,18 @@
  */
 import {AbsoluteFsPath, PathManipulation} from '@angular/compiler-cli/private/localize';
 import {ɵParsedMessage, ɵSourceLocation} from '@angular/localize';
+
 import {TranslationSerializer} from './translation_serializer';
 import {consolidateMessages, hasLocation} from './utils';
 
 /**
  * A translation serializer that can render JSON formatted as an Application Resource Bundle (ARB).
  *
- * See https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification
+ * 一个翻译序列化器，可以呈现格式化为应用程序资源包 (ARB) 的 JSON。
+ *
+ * See <https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification>
+ *
+ * 请参阅<https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification>
  *
  * ```
  * {
@@ -34,6 +39,7 @@ import {consolidateMessages, hasLocation} from './utils';
  *   ...
  * }
  * ```
+ *
  */
 export class ArbTranslationSerializer implements TranslationSerializer {
   constructor(

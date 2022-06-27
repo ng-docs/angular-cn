@@ -8,7 +8,12 @@
  */
 
 
-/** Template string function that can be used to strip indentation from a given string literal. */
+/**
+ * Template string function that can be used to strip indentation from a given string literal.
+ *
+ * 模板字符串函数，可用于从给定的字符串文字中去除缩进。
+ *
+ */
 export function dedent(strings: TemplateStringsArray, ...values: any[]) {
   let joinedString = '';
   for (let i = 0; i < values.length; i++) {
@@ -30,8 +35,16 @@ export function dedent(strings: TemplateStringsArray, ...values: any[]) {
 /**
  * Tests to see if the line is blank.
  *
+ * 测试该行是否为空。
+ *
  * A blank line is such which contains only whitespace.
+ *
+ * 空行就是这样，仅包含空格。
+ *
  * @param text string to test for blank-ness.
+ *
+ * 测试空格的字符串。
+ *
  */
 function isBlank(text: string): boolean {
   return /^\s*$/.test(text);
@@ -39,6 +52,8 @@ function isBlank(text: string): boolean {
 
 /**
  * Returns number of whitespace leading characters.
+ *
+ * 返回空格前导字符的数量。
  *
  * @param text
  */
@@ -50,6 +65,8 @@ function numOfWhiteSpaceLeadingChars(text: string): number {
 /**
  * Jasmine AsymmetricMatcher which can be used to assert `.debug` properties.
  *
+ * Jasmine AsymmetricMatcher ，可用于断言 `.debug` 属性。
+ *
  * ```
  * expect(obj).toEqual({
  *   create: matchDebug('someValue')
@@ -58,7 +75,12 @@ function numOfWhiteSpaceLeadingChars(text: string): number {
  *
  * In the above example it will assert that `obj.create.debug === 'someValue'`.
  *
+ * 在上面的示例中，它将断言 `obj.create.debug === 'someValue'` 。
+ *
  * @param expected Expected value.
+ *
+ * 预期值。
+ *
  */
 export function matchDebug<T>(expected: T): any {
   const matcher = function() {};

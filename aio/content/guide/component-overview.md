@@ -13,7 +13,7 @@ Each component consists of:
 
 * A TypeScript class that defines behavior
 
-  一个用于定义行为的 Typescript 类
+  一个用于定义行为的 TypeScript 类
 
 * A CSS selector that defines how the component is used in a template
 
@@ -31,15 +31,17 @@ This topic describes how to create and configure an Angular component.
 
 To view or download the example code used in this topic, see the <live-example></live-example>.
 
+要查看或下载本主题中使用的范例代码，参阅 <live-example></live-example>。
+
 </div>
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To create a component, verify that you have met the following prerequisites:
 
-要创建一个组件，请先验证你是否满足以下先决条件：
+要创建一个组件，请先验证你是否满足以下前提条件：
 
 1. [Install the Angular CLI.](guide/setup-local#install-the-angular-cli)
 
@@ -108,7 +110,7 @@ Where `<component-name>` is the name of your component.
 You can change how `ng generate component` creates new components.
 For more information, see [ng generate component](cli/generate#component-command) in the Angular CLI documentation.
 
-你可以更改 `ng generate component` 创建新组件的方式。欲知详情，请参阅 Angular CLI 文档中的 [ng generate component](cli/generate#component-command)。
+你可以更改 `ng generate component` 创建新组件的方式。欲知详情，参阅 Angular CLI 文档中的 [ng generate component](cli/generate#component-command)。
 
 </div>
 
@@ -153,6 +155,8 @@ To create a new component manually:
 
    For more information on choosing a selector, see [Specifying a component's selector](#specifying-a-components-css-selector).
 
+   关于选择选择器的更多信息，参阅[指定组件的选择器](#specifying-a-components-css-selector)。
+
 1. Define the HTML template that the component uses to display information.
    In most cases, this template is a separate HTML file.
 
@@ -161,6 +165,8 @@ To create a new component manually:
    <code-example path="component-overview/src/app/component-overview/component-overview.component.ts" region="templateUrl"></code-example>
 
    For more information on defining a component's template, see [Defining a component's template](#defining-a-components-template).
+
+   关于定义组件模板的更多信息，参阅[定义组件的模板](#defining-a-components-template)。
 
 1. Select the styles for the component's template.
    In most cases, you define the styles for your component's template in a separate file.
@@ -183,7 +189,7 @@ Every component requires a CSS *selector*. A selector instructs Angular to insta
 For example, consider a component `hello-world.component.ts` that defines its selector as `app-hello-world`.
 This selector instructs Angular to instantiate this component any time the tag `<app-hello-world>` appears in a template.
 
-每个组件都需要一个 CSS *选择器*。选择器会告诉 Angular：当在模板 HTML 中找到相应的标签时，就把该组件实例化在那里。例如，考虑一个组件 `hello-world.component.ts` ，它的选择器定义为 `app-hello-world` 。 当 `<app-hello-world>` 出现在模板中时，这个选择器就会让 Angular 实例化该组件。
+每个组件都需要一个 CSS *选择器*。选择器会告诉 Angular：当在模板 HTML 中找到相应的标签时，就把该组件实例化在那里。比如，考虑一个组件 `hello-world.component.ts` ，它的选择器定义为 `app-hello-world` 。 当 `<app-hello-world>` 出现在模板中时，这个选择器就会让 Angular 实例化该组件。
 
 Specify a component's selector by adding a `selector` statement to the `@Component` decorator.
 
@@ -215,6 +221,8 @@ To define a template within the component, add a `template` property to the `@Co
 If you want your template to span multiple lines, use backticks (<code>\`</code>).
 For example:
 
+如果你想让模板跨越多行，可以使用反引号（ `` ` `` ）。比如：
+
 <code-example path="component-overview/src/app/component-overview/component-overview.component.2.ts" region="templatebacktick"></code-example>
 
 <div class="alert is-helpful">
@@ -232,6 +240,8 @@ Angular 组件需要一个用 `template` 或 `templateUrl` 定义的模板。但
 
 Declare component styles used for its template in one of two ways:
 By referencing an external file, or directly within the component.
+
+有两种方式可以为组件的模板声明样式：引用一个外部文件，或直接写在组件内部。
 
 To declare the styles for a component in a separate file, add a `styleUrls` property to the `@Component` decorator.
 
@@ -255,19 +265,19 @@ The `styles` property takes an array of strings that contain the CSS rule declar
 
 * For an architectural overview of components, see [Introduction to components and templates](guide/architecture-components)
 
-  关于组件的体系结构概述，请参阅[组件和模板简介](guide/architecture-components)。
+  关于组件的体系结构概述，参阅[组件和模板简介](guide/architecture-components)
 
 * For additional options to use when creating a component, see [Component](api/core/Component) in the API Reference
 
-  关于创建组件时可以使用的其他选项，请参阅“API 参考手册”中的[“组件”](api/core/Component)。
+  关于创建组件时可以使用的其他选项，参阅“API 参考手册”中的[“组件”](api/core/Component)
 
 * For more information on styling components, see [Component styles](guide/component-styles)
 
-  要了解关于为组件指定样式的更多信息，请参阅[组件样式](guide/component-styles)。
+  要了解关于为组件指定样式的更多信息，参阅[组件样式](guide/component-styles)
 
 * For more information on templates, see [Template syntax](guide/template-syntax)
 
-  关于模板的详细信息，请参阅[模板语法](guide/template-syntax)。
+  关于模板的详细信息，参阅[模板语法](guide/template-syntax)
 
 <!-- links -->
 

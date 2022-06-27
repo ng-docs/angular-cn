@@ -19,8 +19,9 @@ import {Directive, ElementRef, InjectionToken, Renderer2} from '@angular/core';
  * that integrates with Angular forms.
  *
  * 实现此接口以创建与 Angular 表单集成的自定义表单控件指令。
- *
  * @see DefaultValueAccessor
+ *
+ * 默认值访问器
  *
  * @publicApi
  */
@@ -74,7 +75,8 @@ export interface ControlValueAccessor {
    * When implementing the `registerOnChange` method in your own value accessor,
    * save the given function so your class calls it at the appropriate time.
    *
-   * 在你自己的值访问器中实现 `registerOnChange` 方法时，请保存给定的函数，以便你的类在适当的时机调用它。
+   * 在你自己的值访问器中实现 `registerOnChange`
+   * 方法时，请保存给定的函数，以便你的类在适当的时机调用它。
    *
    * @usageNotes
    *
@@ -121,7 +123,8 @@ export interface ControlValueAccessor {
    * function so your class calls it when the control should be considered
    * blurred or "touched".
    *
-   * 在你自己的值访问器中实现 `registerOnTouched` ，请保存给定函数，以便你的类在应将控件视为失焦或“已接触过”时调用它。
+   * 在你自己的值访问器中实现 `registerOnTouched`
+   * ，请保存给定函数，以便你的类在应将控件视为失焦或“已接触过”时调用它。
    *
    * @usageNotes
    *
@@ -163,7 +166,8 @@ export interface ControlValueAccessor {
    * or from 'DISABLED'. Depending on the status, it enables or disables the
    * appropriate DOM element.
    *
-   * 当控件状态更改为 “DISABLED” 或从 “DISABLED” 更改时，表单 API 要调用的函数。根据其状态，它会启用或禁用适当的 DOM 元素。
+   * 当控件状态更改为 “DISABLED” 或从 “DISABLED” 更改时，表单 API
+   * 要调用的函数。根据其状态，它会启用或禁用适当的 DOM 元素。
    *
    * @usageNotes
    *
@@ -189,20 +193,31 @@ export interface ControlValueAccessor {
  * Base class for all ControlValueAccessor classes defined in Forms package.
  * Contains common logic and utility functions.
  *
+ * Forms 包中定义的所有 ControlValueAccessor 类的基类。包含通用逻辑和实用程序函数。
+ *
  * Note: this is an *internal-only* class and should not be extended or used directly in
  * applications code.
+ *
+ * 注意：这是一个*仅限内部的*类，不应在应用程序代码中扩展或直接使用。
+ *
  */
 @Directive()
 export class BaseControlValueAccessor {
   /**
    * The registered callback function called when a change or input event occurs on the input
    * element.
+   *
+   * input 元素上发生更改或输入事件时调用的注册回调函数。
+   *
    * @nodoc
    */
   onChange = (_: any) => {};
 
   /**
    * The registered callback function called when a blur event occurs on the input element.
+   *
+   * 输入元素上发生模糊事件时调用的注册回调函数。
+   *
    * @nodoc
    */
   onTouched = () => {};
@@ -212,6 +227,9 @@ export class BaseControlValueAccessor {
   /**
    * Helper method that sets a property on a target element using the current Renderer
    * implementation.
+   *
+   * 使用当前的 Renderer 实现在目标元素上设置属性的帮助器方法。
+   *
    * @nodoc
    */
   protected setProperty(key: string, value: any): void {
@@ -220,6 +238,9 @@ export class BaseControlValueAccessor {
 
   /**
    * Registers a function called when the control is touched.
+   *
+   * 注册一个在触摸控件时调用的函数。
+   *
    * @nodoc
    */
   registerOnTouched(fn: () => void): void {
@@ -228,6 +249,9 @@ export class BaseControlValueAccessor {
 
   /**
    * Registers a function called when the control value changes.
+   *
+   * 注册一个在控件值更改时调用的函数。
+   *
    * @nodoc
    */
   registerOnChange(fn: (_: any) => {}): void {
@@ -236,6 +260,9 @@ export class BaseControlValueAccessor {
 
   /**
    * Sets the "disabled" property on the range input element.
+   *
+   * 设置 range 输入元素的“disabled”属性。
+   *
    * @nodoc
    */
   setDisabledState(isDisabled: boolean): void {
@@ -249,8 +276,15 @@ export class BaseControlValueAccessor {
  * built-in CVAs and custom CVAs, so that Forms logic can recognize built-in CVAs and treat custom
  * ones with higher priority (when both built-in and custom CVAs are present).
  *
+ * 所有内置 ControlValueAccessor 类的基类（DefaultValueAccessor 除外，在找不到其他 CVA
+ * 的情况下使用）。我们使用此类来区分默认 CVA、内置 CVA 和自定义 CVA，以便 Forms 逻辑可以识别内置
+ * CVA 并处理具有更高优先级的自定义 CVA（当同时存在内置 CVA 和自定义 CVA 时）。
+ *
  * Note: this is an *internal-only* class and should not be extended or used directly in
  * applications code.
+ *
+ * 注意：这是一个*仅限内部的*类，不应在应用程序代码中扩展或直接使用。
+ *
  */
 @Directive()
 export class BuiltInControlValueAccessor extends BaseControlValueAccessor {

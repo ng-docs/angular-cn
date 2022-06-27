@@ -4,16 +4,18 @@
 
 ## What does this migration do?
 
-## 这种迁移是做什么的？
+## 此迁移有什么作用？
 
 This migration adjusts the [`target`](https://www.typescriptlang.org/tsconfig#target) and [`module`](https://www.typescriptlang.org/tsconfig#module) settings within the [TypeScript configuration files](guide/typescript-configuration) for the workspace.
 The changes to each option vary based on the builder or command that uses the TypeScript configuration file.
 Unless otherwise commented, changes are only made if the existing value was not changed since the project was created.
 This process helps ensure that intentional changes to the options are kept in place.
 
+此迁移会调整工作区的[TypeScript 配置文件](guide/typescript-configuration)中的[`target`](https://www.typescriptlang.org/tsconfig#target)和[`module`](https://www.typescriptlang.org/tsconfig#module)设置。对每个选项的更改因使用 TypeScript 配置文件的构建器或命令而异。除非另有注释，否则仅当自项目创建以来现有值未更改时，才会进行更改。此过程有助于确保对选项的有意更改保持不变。
+
 | TypeScript configuration files | Changed property | Existing value | New value |
 | :----------------------------- | :--------------- | :------------- | :-------- |
-| TypeScript 配置文件【模糊翻译】 | 属性变更【模糊翻译】 | 现有值【模糊翻译】 | 新值【模糊翻译】 |
+| TypeScript 配置文件 | 属性变更 | 现有值 | 新值 |
 | `<workspace base>/tsconfig.json` | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `browser`  builder options (`ng build` for applications) | `"module"` | `"esnext"` | `"es2020"` |
 | 在 `browser` 构建器选项中使用（用于应用程序的 `ng build`） | `"module"` | `"esnext"` | `"es2020"` |
@@ -30,7 +32,7 @@ This process helps ensure that intentional changes to the options are kept in pl
 
 ## Why is this migration necessary?
 
-## 为何这次迁移必不可少？
+## 为什么此迁移是必要的？
 
 This migration provides improvements to the long-term supportability of projects by updating the projects to use recommended best practice compilation options.
 
@@ -41,7 +43,7 @@ The minimum Node.js version for the Angular CLI (v10.13) supports features in ES
 By targeting later ES versions, the compiler transforms less code and can use newer features directly.
 Since zone.js does not support native `async` and `await`, the universal builds still target ES2016.
 
-对于要在 Node.js 上执行的功能（例如 Universal 和 Protractor），新设置还提供了性能和故障排除方面的优势。Angular CLI 的最低 Node.js 版本（v10.13）支持 ES2018 及更早版本中的功能。通过瞄准更高版本的 ES，编译器可以转换更少的代码，并且可以直接使用新特性。由于 zone.js 不支持原生 `async` 和 `await` ，因此通用版本仍以 ES2016 为目标。
+对于要在 Node.js 上执行的功能（比如 Universal 和 Protractor），新设置还提供了性能和故障排除方面的优势。Angular CLI 的最低 Node.js 版本（v10.13）支持 ES2018 及更早版本中的功能。通过瞄准更高版本的 ES，编译器可以转换更少的代码，并且可以直接使用新特性。由于 zone.js 不支持原生 `async` 和 `await` ，因此通用版本仍以 ES2016 为目标。
 
 ## Why `"es2020"` instead of `"esnext"`?
 

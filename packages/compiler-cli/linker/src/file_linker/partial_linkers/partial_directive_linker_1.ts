@@ -17,6 +17,9 @@ import {extractForwardRef, wrapReference} from './util';
 
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareDirective()` call expressions.
+ *
+ * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareDirective()` 调用表达式。
+ *
  */
 export class PartialDirectiveLinkerVersion1<TExpression> implements PartialLinker<TExpression> {
   constructor(private sourceUrl: AbsoluteFsPath, private code: string) {}
@@ -31,6 +34,9 @@ export class PartialDirectiveLinkerVersion1<TExpression> implements PartialLinke
 
 /**
  * Derives the `R3DirectiveMetadata` structure from the AST object.
+ *
+ * 从 AST 对象 `R3DirectiveMetadata` 结构。
+ *
  */
 export function toR3DirectiveMeta<TExpression>(
     metaObj: AstObject<R3DeclareDirectiveMetadata, TExpression>, code: string,
@@ -76,6 +82,9 @@ export function toR3DirectiveMeta<TExpression>(
 
 /**
  * Decodes the AST value for a single input to its representation as used in the metadata.
+ *
+ * 将单个输入的 AST 值解码为其在元数据中使用的表示。
+ *
  */
 function toInputMapping<TExpression>(value: AstValue<string|[string, string], TExpression>):
     string|[string, string] {
@@ -94,6 +103,9 @@ function toInputMapping<TExpression>(value: AstValue<string|[string, string], TE
 
 /**
  * Extracts the host metadata configuration from the AST metadata object.
+ *
+ * 从 AST 元数据对象中提取主机元数据配置。
+ *
  */
 function toHostMetadata<TExpression>(metaObj: AstObject<R3DeclareDirectiveMetadata, TExpression>):
     R3HostMetadata {
@@ -132,6 +144,9 @@ function toHostMetadata<TExpression>(metaObj: AstObject<R3DeclareDirectiveMetada
 
 /**
  * Extracts the metadata for a single query from an AST object.
+ *
+ * 从 AST 对象中提取单个查询的元数据。
+ *
  */
 function toQueryMetadata<TExpression>(obj: AstObject<R3DeclareQueryMetadata, TExpression>):
     R3QueryMetadata {

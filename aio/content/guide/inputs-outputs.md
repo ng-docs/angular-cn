@@ -11,6 +11,8 @@ Angular 中的一个常见模式就是在父组件和一个或多个子组件之
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+本章包含代码片段的可工作实例参阅<live-example></live-example>。
+
 </div>
 
 Consider the following hierarchy:
@@ -67,6 +69,8 @@ To use the `@Input()` decorator in a child component class, first import `Input`
 
 In this case, `@Input()` decorates the property <code class="no-auto-link">item</code>, which has a type of `string`, however, `@Input()` properties can have any type, such as `number`, `string`, `boolean`, or `object`.
 The value for `item` comes from the parent component.
+
+在这个例子中， `@Input()` 会修饰属性 <code class="no-auto-link">item</code>，它的类型为 `string`，但 `@Input()` 属性可以是任意类型，比如 `number`、`string`、`boolean` 或 `object`。`item` 的值来自父组件。
 
 Next, in the child component template, add the following:
 
@@ -192,11 +196,15 @@ The `EventEmitter` then relays the data to the parent component.
 
    | Declaration parts | Details |
    | :---------------- | :------ |
-   | Declaration parts | 详情 |
+   | 装饰器部件 | 详情 |
    | `@Output()` | A decorator function marking the property as a way for data to go from the child to the parent. |
+   | `@Output()` | 一个装饰器函数，它把该属性标记为数据从子组件进入父组件的一种途径。 |
    | `newItemEvent` | The name of the `@Output()`. |
+   | `newItemEvent` | 这个 `@Output()` 的名字。 |
    | `EventEmitter<string>` | The `@Output()`'s type. |
+   | `EventEmitter<string>` | 这个 `@Output()` 的类型。 |
    | `new EventEmitter<string>()` | Tells Angular to create a new event emitter and that the data it emits is of type string. |
+   | `new EventEmitter<string>()` | 要求 Angular 创建一个新的事件发射器，它发出的数据是 `string` 类型的。 |
 
    For more information on `EventEmitter`, see the [EventEmitter API documentation](api/core/EventEmitter).
 
@@ -292,7 +300,7 @@ The `addItem()` method takes an argument in the form of a string and then adds t
 
 Use `@Input()` and `@Output()` on the same child component as follows:
 
-可以在同一个子组件上使用 `@Input()` 和 `@Output()`，范例如下：
+可以在同一个子组件上使用 `@Input()` 和 `@Output()`，范比如下：
 
 <code-example header="src/app/app.component.html" path="inputs-outputs/src/app/app.component.html" region="together"></code-example>
 

@@ -10,15 +10,15 @@ Animations can improve your application and user experience in a number of ways:
 
 * Without animations, web page transitions can seem abrupt and jarring
 
-  没有动画，Web 页面的转场就会显得突兀、不协调。
+  没有动画，Web 页面的转场就会显得突兀、不协调
 
 * Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
 
-  运动能极大地提升用户体验，因此动画可以让用户察觉到应用对他们的操作做出了响应。
+  运动能极大地提升用户体验，因此动画可以让用户察觉到应用对他们的操作做出了响应
 
 * Good animations intuitively call the user's attention to where it is needed
 
-  良好的动画可以直观的把用户的注意力吸引到要留意的地方。
+  良好的动画可以直观的把用户的注意力吸引到要留意的地方
 
 Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow or shrink, fade, or slide off the page.
@@ -30,7 +30,7 @@ Angular's animation system is built on CSS functionality, which means you can an
 This includes positions, sizes, transforms, colors, borders, and more.
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
-Angular 的动画系统是基于 CSS 功能构建的，这意味着你可以 "动" 浏览器认为可动的任何属性。包括位置、大小、变形、颜色、边框等。W3C 在它的 [CSS Transitions（转场）](https://www.w3.org/TR/css-transitions-1/) 页中维护了一个可动属性的列表。
+Angular 的动画系统是基于 CSS 功能构建的，这意味着你可以 "动" 浏览器认为可动的任何属性。包括位置、大小、变形、颜色、边框等。W3C 在它的 [CSS Transitions（转场）](https://www.w3.org/TR/css-transitions-1) 页中维护了一个可动属性的列表。
 
 ## About this guide
 
@@ -42,9 +42,11 @@ This guide covers the basic Angular animation features to get you started on add
 
 The features described in this guide —and the more advanced features described in the related Angular animations guides— are demonstrated in an example application available as a <live-example></live-example>.
 
+本指南中描述的特性，以及相关的 Angular 动画章节中描述的更多高级特性，都在一个范例 <live-example></live-example> 中进行了演示。
+
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 The guide assumes that you're familiar with building basic Angular apps, as described in the following sections:
 
@@ -60,7 +62,7 @@ The guide assumes that you're familiar with building basic Angular apps, as desc
 
 ## Getting started
 
-## 开始工作
+## 快速上手
 
 The main Angular modules for animations are `@angular/animations` and `@angular/platform-browser`.
 When you create a new project using the CLI, these dependencies are automatically added to your project.
@@ -86,6 +88,9 @@ Import `BrowserAnimationsModule`, which introduces the animation capabilities in
 **NOTE**: <br />
 When you use the CLI to create your app, the root application module `app.module.ts` is placed in the `src/app` folder.
 
+**注意**：<br />
+当你使用 CLI 创建应用时，应用的根模块 `app.module.ts` 位于 `src/app` 目录下。
+
 </div>
 
 ### Step 2: Importing animation functions into component files
@@ -102,6 +107,9 @@ If you plan to use specific animation functions in component files, import those
 
 **NOTE**: <br />
 See a [summary of available animation functions](guide/animations#animation-api-summary) at the end of this guide.
+
+**注意**：<br />
+参阅本指南末尾的[可用动画函数汇总表](guide/animations#animation-api-summary)。
 
 </div>
 
@@ -163,6 +171,8 @@ Use Angular's [`state()`](api/animations/state) function to define different sta
 This function takes two arguments:
 A unique name like `open` or `closed` and a `style()` function.
 
+使用 Angular 的 [`state()`](api/animations/state) 函数来定义不同的状态，供每次转场结束时调用。该函数接受两个参数：一个唯一的名字，比如 `open` 或 `closed` 和一个 `style()` 函数。
+
 Use the `style()` function to define a set of styles to associate with a given state name.
 You must use [*camelCase*](guide/glossary#case-conventions) for style attributes that contain dashes, such as `backgroundColor` or wrap them in quotes, such as `'background-color'`.
 
@@ -171,6 +181,9 @@ You must use [*camelCase*](guide/glossary#case-conventions) for style attributes
 Let's see how Angular's [`state()`](api/animations/state) function works with the `style⁣­(⁠)` function to set CSS style attributes.
 In this code snippet, multiple style attributes are set at the same time for the state.
 In the `open` state, the button has a height of 200 pixels, an opacity of 1, and a yellow background color.
+
+我们来看看 Angular 的 [`state()`](api/animations/state) 函数如何与 `style()` 函数联用，来设置 CSS 样式的属性。
+在下面的代码片段中，该状态的多个样式属性都是同时设置的。在 `open` 状态中，该按钮的高度是 200 像素，透明度是 1，背景色是黄色。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="state1"></code-example>
 
@@ -262,7 +275,7 @@ For example:
 The third argument, `easing`, controls how the animation [accelerates and decelerates](https://easings.net) during its runtime.
 For example, `ease-in` causes the animation to begin slowly, and to pick up speed as it progresses.
 
-第三个参数 `easing` 控制动画在运行期间如何进行[加速和减速](http://easings.net/)。比如 `ease-in` 表示动画开始时很慢，然后逐渐加速。
+第三个参数 `easing` 控制动画在运行期间如何进行[加速和减速](http://easings.net)。比如 `ease-in` 表示动画开始时很慢，然后逐渐加速。
 
 * Wait for 100ms, run for 200ms.
   Use a deceleration curve to start out fast and slowly decelerate to a resting point:
@@ -286,6 +299,9 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 
 **NOTE**: <br />
 See the Material Design website's topic on [Natural easing curves](https://material.io/design/motion/speed.html#easing) for general information on easing curves.
+
+**注意**：<br />
+有关缓动曲线的一般信息，参阅 Material Design 网站上关于[自然缓动曲线](https://material.io/design/motion/speed.html#easing)的主题。
 
 </div>
 
@@ -312,15 +328,24 @@ This example adds a state transition from the `closed` state to the `open` state
 **NOTE**: <br />
 Some additional notes on using styles within [`state`](api/animations/state) and `transition` functions.
 
+**注意**：<br />
+有关在 [`state`](api/animations/state) 和 `transition` 函数中使用样式时有一些需要注意的地方。
+
 * Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
+
+  请用 [`state()`](api/animations/state) 来定义那些每个转场结束时的样式，这些样式在动画完成后仍会保留
 
 * Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
 
-  使用 `transition()` 来定义那些中间样式，以便在动画过程中产生运动的错觉。
+  使用 `transition()` 来定义那些中间样式，以便在动画过程中产生运动的错觉
 
 * When animations are disabled, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
 
+  当禁用了动画时，也会忽略 `transition()` 中的样式，但 [`state()`](api/animations/state) 中的样式不会。
+
 * Include multiple state pairs within the same `transition()` argument:
+
+  在同一个 `transition()` 参数中包含多个状态对：
 
   <code-example format="typescript" language="typescript">
 
@@ -355,6 +380,9 @@ The trigger describes the open and closed states, and the timings for the two tr
 **NOTE**: <br />
 Within each `trigger()` function call, an element can only be in one state at any given time.
 However, it's possible for multiple triggers to be active at once.
+
+**注意**：<br />
+在每个 `trigger()` 函数调用中，元素在任意时刻只能处于其中的一个状态。但是，元素可以在同一时刻激活多个触发器。
 
 </div>
 
@@ -398,12 +426,15 @@ Then it's up to the `openClose` code to handle the state change and kick off a s
 For elements entering or leaving a page (inserted or removed from the DOM), you can make the animations conditional.
 For example, use `*ngIf` with the animation trigger in the HTML template.
 
-对于那些进入或离开页面的元素（插入到 DOM 中或从中移除），你可以让动画变成有条件的。例如，在 HTML 模板中可以和 `*ngIf` 一起使用动画触发器。
+对于那些进入或离开页面的元素（插入到 DOM 中或从中移除），你可以让动画变成有条件的。比如，在 HTML 模板中可以和 `*ngIf` 一起使用动画触发器。
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 In the component file, set the trigger that defines the animations as the value of the `animations:` property in the `@Component()` decorator.
+
+**注意**：<br />
+在组件文件中，要把用来定义动画的触发器设置为 `@Component()` 装饰器的 `animations:` 属性的值。
 
 In the HTML template file, use the trigger name to attach the defined animations to the HTML element to be animated.
 
@@ -430,6 +461,8 @@ Here are the code files discussed in the transition example.
 ### 小结
 
 You learned to add animation to a transition between two states, using `style()` and [`state()`](api/animations/state) along with `animate()` for the timing.
+
+你已经学会了如何在两个状态之间添加简单的转场动画，只要使用 `style()` 和 [`state()`](api/animations/state)，并使用 `animate()` 来定义时序就可以了。
 
 Learn about more advanced features in Angular animations under the Animation section, beginning with advanced techniques in [transition and triggers](guide/transition-and-triggers).
 
@@ -504,7 +537,7 @@ You might also be interested in the following:
 
 Check out this [presentation](https://www.youtube.com/watch?v=rnTK9meY5us), shown at the AngularConnect conference in November 2017, and the accompanying [source code](https://github.com/matsko/animationsftw.in).
 
-到这个 [Demo](http://animationsftw.in/#/) 中查看 2017 年 11 月的 AngularConnect 大会上完整的动画及其[演示](https://www.youtube.com/watch?v=JhNo3Wvj6UQ&feature=youtu.be&t=2h47m53s)。
+到这个 [Demo](https://www.youtube.com/watch?v=rnTK9meY5us) 中查看 2017 年 11 月的 AngularConnect 大会上完整的动画及其[源码](https://github.com/matsko/animationsftw.in)。
 
 </div>
 

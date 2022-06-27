@@ -18,14 +18,19 @@ import {createDirectiveDecorator, hasConstructor, hasDirectiveDecorator, isClass
  * Ensure that the parents of directives and components that have no constructor are also decorated
  * as a `Directive`.
  *
+ * 确保没有构造函数的指令和组件的父级也被装饰为 `Directive` 。
+ *
  * Example:
+ *
+ * 示例：
  *
  * ```
  * export class BasePlain {
  *   constructor(private vcr: ViewContainerRef) {}
  * }
+ * ```
  *
- * @Directive({selector: '[blah]'})
+ * @Directive ({selector: '[blah]'})
  * export class DerivedDir extends BasePlain {}
  * ```
  *
@@ -43,12 +48,11 @@ import {createDirectiveDecorator, hasConstructor, hasDirectiveDecorator, isClass
  * The resulting code looks like:
  *
  * ```
- * @Directive()
+ * @Directive ()
  * export class BasePlain {
  *   constructor(private vcr: ViewContainerRef) {}
  * }
- *
- * @Directive({selector: '[blah]'})
+ * @Directive ({selector: '[blah]'})
  * export class DerivedDir extends BasePlain {}
  * ```
  */
@@ -92,6 +96,9 @@ export class UndecoratedParentMigration implements Migration {
 /**
  * Computes a reference to the base class, or `null` if the class has no base class or if it could
  * not be statically determined.
+ *
+ * 计算对基类的引用，如果此类没有基类或者无法静态确定，则为 `null` 。
+ *
  */
 function determineBaseClass(
     clazz: ClassDeclaration, host: MigrationHost): Reference<ClassDeclaration>|null {

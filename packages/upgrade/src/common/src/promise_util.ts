@@ -18,6 +18,9 @@ export function isThenable<T>(obj: unknown): obj is Thenable<T> {
 
 /**
  * Synchronous, promise-like object.
+ *
+ * 同步的、类似于 Promise 的对象。
+ *
  */
 export class SyncPromise<T> {
   protected value: T|undefined;

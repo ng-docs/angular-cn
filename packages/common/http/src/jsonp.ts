@@ -24,6 +24,9 @@ let nextRequestId: number = 0;
 /**
  * When a pending <script> is unsubscribed we'll move it to this document, so it won't be
  * executed.
+ *
+ * 当一个待处理<script>已退订，我们将其移动到此文档，因此它不会被执行。
+ *
  */
 let foreignDocument: Document|undefined;
 
@@ -43,8 +46,11 @@ export const JSONP_ERR_HEADERS_NOT_SUPPORTED = 'JSONP requests do not support he
 /**
  * DI token/abstract type representing a map of JSONP callbacks.
  *
+ * 表示 JSONP 回调映射的 DI 标记/抽象类型。
+ *
  * In the browser, this should always be the `window` object.
  *
+ * 在浏览器中，这应该始终是 `window` 对象。
  *
  */
 export abstract class JsonpCallbackContext {

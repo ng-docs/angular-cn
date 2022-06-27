@@ -13,6 +13,9 @@ export const ERROR_COLLECTOR_TOKEN = new InjectionToken('ErrorCollector');
 
 /**
  * A default provider for {@link PACKAGE_ROOT_URL} that maps to '/'.
+ *
+ * 映射到 '/' 的 {@link PACKAGE_ROOT_URL} 的默认提供程序。
+ *
  */
 export const DEFAULT_PACKAGE_URL_PROVIDER = {
   provide: PACKAGE_ROOT_URL,
@@ -23,11 +26,15 @@ export const COMPILER_PROVIDERS =
     <StaticProvider[]>[{provide: Compiler, useFactory: () => new Compiler()}];
 /**
  * @publicApi
- *
  * @deprecated
+ *
  * Ivy JIT mode doesn't require accessing this symbol.
  * See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes) for
  * additional context.
+ *
+ * Ivy JIT 模式不需要访问此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
+ * 更改](guide/deprecations#jit-api-changes)。
+ *
  */
 export class JitCompilerFactory implements CompilerFactory {
   private _defaultOptions: CompilerOptions[];

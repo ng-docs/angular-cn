@@ -19,7 +19,12 @@ export type WritePackageJsonChangesFn =
 /**
  * A utility object that can be used to safely update values in a `package.json` file.
  *
+ * 一个实用程序对象，可用于安全更新 `package.json` 文件中的值。
+ *
  * Example usage:
+ *
+ * 示例用法：
+ *
  * ```ts
  * const updatePackageJson = packageJsonUpdater
  *     .createUpdate()
@@ -31,12 +36,17 @@ export type WritePackageJsonChangesFn =
  *     // or
  *     // .writeChanges('/foo/package.json', inMemoryParsedJson);
  * ```
+ *
  */
 export interface PackageJsonUpdater {
   /**
    * Create a `PackageJsonUpdate` object, which provides a fluent API for batching updates to a
    * `package.json` file. (Batching the updates is useful, because it avoids unnecessary I/O
    * operations.)
+   *
+   * 创建一个 `PackageJsonUpdate` 对象，它提供了流式 API 来批处理对 `package.json` 文件的更新。
+   * （批处理更新很有用，因为它避免了不必要的 I/O 操作。）
+   *
    */
   createUpdate(): PackageJsonUpdate;
 
@@ -44,10 +54,21 @@ export interface PackageJsonUpdater {
    * Write a set of changes to the specified `package.json` file (and optionally a pre-existing,
    * in-memory representation of it).
    *
+   * 将一组更改写入指定的 `package.json` 文件（以及它的预先存在的内存中表示）。
+   *
    * @param changes The set of changes to apply.
+   *
+   * 要应用的更改集。
+   *
    * @param packageJsonPath The path to the `package.json` file that needs to be updated.
+   *
+   * 需要更新的 `package.json` 文件的路径。
+   *
    * @param parsedJson A pre-existing, in-memory representation of the `package.json` file that
    *                   needs to be updated as well.
+   *
+   * `package.json` 文件的预先存在的内存中表示，也需要更新。
+   *
    */
   writeChanges(
       changes: PackageJsonChange[], packageJsonPath: AbsoluteFsPath, parsedJson?: JsonObject): void;
@@ -57,8 +78,13 @@ export interface PackageJsonUpdater {
  * A utility class providing a fluent API for recording multiple changes to a `package.json` file
  * (and optionally its in-memory parsed representation).
  *
+ * 一个提供流式 API 的工具类，用于记录对 `package.json` 文件（以及可选的内存中解析表示）的多次更改。
+ *
  * NOTE: This class should generally not be instantiated directly; instances are implicitly created
  *       via `PackageJsonUpdater#createUpdate()`.
+ *
+ * 注：此类通常不应该直接实例化；实例是通过 `PackageJsonUpdater#createUpdate()` 隐式创建的。
+ *
  */
 export class PackageJsonUpdate {
   private changes: PackageJsonChange[] = [];
@@ -69,19 +95,37 @@ export class PackageJsonUpdate {
   /**
    * Record a change to a `package.json` property.
    *
+   * 记录对 `package.json` 属性的更改。
+   *
    * If the ancestor objects do not yet exist in the `package.json` file, they will be created. The
    * positioning of the property can also be specified. (If the property already exists, it will be
    * moved accordingly.)
    *
+   * 如果 `package.json` 文件中尚不存在祖先对象，则将创建它们。也可以指定属性的位置。
+   * （如果该属性已经存在，它将相应地移动。）
+   *
    * NOTE: Property positioning is only guaranteed to be respected in the serialized `package.json`
    *       file. Positioning will not be taken into account when updating in-memory representations.
+   *
+   * 注：仅保证在序列化的 `package.json` 文件中遵守属性定位。更新内存中表示时，不会考虑定位。
    *
    * NOTE 2: Property positioning only affects the last property in `propertyPath`. Ancestor
    *         objects' positioning will not be affected.
    *
+   * 注 2：属性定位仅影响 propertyPath 中的最后一个 `propertyPath` 。祖先对象的定位不会受到影响。
+   *
    * @param propertyPath The path of a (possibly nested) property to add/update.
+   *
+   * 要添加/更新的（可能是嵌套）属性的路径。
+   *
    * @param value The new value to set the property to.
+   *
+   * 要设置属性的新值。
+   *
    * @param position The desired position for the added/updated property.
+   *
+   * 添加/更新的属性的所需位置。
+   *
    */
   addChange(
       propertyPath: string[], value: JsonValue,
@@ -95,9 +139,17 @@ export class PackageJsonUpdate {
    * Write the recorded changes to the associated `package.json` file (and optionally a
    * pre-existing, in-memory representation of it).
    *
+   * 将记录的更改写入关联的 `package.json` 文件（以及它的预先存在的内存中表示）。
+   *
    * @param packageJsonPath The path to the `package.json` file that needs to be updated.
+   *
+   * 需要更新的 `package.json` 文件的路径。
+   *
    * @param parsedJson A pre-existing, in-memory representation of the `package.json` file that
    *                   needs to be updated as well.
+   *
+   * `package.json` 文件的预先存在的内存中表示，也需要更新。
+   *
    */
   writeChanges(packageJsonPath: AbsoluteFsPath, parsedJson?: JsonObject): void {
     this.ensureNotApplied();
@@ -122,7 +174,12 @@ export class PackageJsonUpdate {
   }
 }
 
-/** A `PackageJsonUpdater` that writes directly to the file-system. */
+/**
+ * A `PackageJsonUpdater` that writes directly to the file-system.
+ *
+ * 直接写入文件系统的 `PackageJsonUpdater` 。
+ *
+ */
 export class DirectPackageJsonUpdater implements PackageJsonUpdater {
   constructor(private fs: FileSystem) {}
 

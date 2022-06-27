@@ -18,6 +18,9 @@ import {ClusterMaster} from './master';
 /**
  * An `Executor` that processes tasks in parallel (on multiple processes) and completes
  * asynchronously.
+ *
+ * 并行（在多个进程上）处理任务并异步完成的 `Executor` 。
+ *
  */
 export class ClusterExecutor implements Executor {
   constructor(

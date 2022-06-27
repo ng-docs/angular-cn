@@ -11,8 +11,14 @@ import {global} from './global';
 /**
  * This file is used to control if the default rendering pipeline should be `ViewEngine` or `Ivy`.
  *
+ * 此文件用于控制默认渲染管道是 `ViewEngine` 还是 `Ivy` 。
+ *
  * For more information on how to run and debug tests with either Ivy or View Engine (legacy),
  * please see [BAZEL.md](./docs/BAZEL.md).
+ *
+ * 有关如何使用 Ivy 或 View
+ * Engine（旧版）运行和调试测试的更多信息，请参阅[BAZEL.md](./docs/BAZEL.md) 。
+ *
  */
 
 let _devMode: boolean = true;

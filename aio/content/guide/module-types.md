@@ -22,6 +22,8 @@ For more about NgModules, see [Organizing your app with NgModules](guide/ngmodul
 
 For the example application used in NgModules-related topics, see the <live-example name="ngmodules"></live-example>.
 
+要获得模块相关主题中使用的范例应用，参阅<live-example name="ngmodules"></live-example>。
+
 </div>
 
 ## Summary of NgModule categories
@@ -41,11 +43,17 @@ This topic provides some guidelines for the following general categories of NgMo
 | :------- | :------ |
 | 分类 | 详情 |
 | [Domain](#domain) | Is organized around a feature, business domain, or user experience. |
+| [Domain](#domain) | 围绕特性、业务领域或用户体验进行组织。 |
 | [Routed](#routed) | Is the top component of the NgModule. Acts as the destination of a [router](guide/glossary#router "Definition of router") navigation route. |
+| [Routed](#routed) | 模块的顶层组件充当[路由器](guide/glossary#router "路由器的定义")访问这部分路由时的目的地。 |
 | [Routing](#routing) | Provides the routing configuration for another NgModule. |
+| [Routing](#routing) | 路由配置模块为另一个模块提供路由配置。 |
 | [Service](#service) | Provides utility services such as data access and messaging. |
+| [Service](#service) | 服务模块提供实用服务，比如数据访问和消息传递。 |
 | [Widget](#widget) | Makes a component, directive, or pipe available to other NgModules. |
+| [Widget](#widget) | 小部件模块可以为其它模块提供某些组件、指令或管道。 |
 | [Shared](#shared) | Makes a set of components, directives, and pipes available to other NgModules. |
+| [Shared](#shared) | 共享模块可以为其它的模块提供组件，指令和管道的集合。 |
 
 The following table summarizes the key characteristics of each category.
 
@@ -55,7 +63,7 @@ The following table summarizes the key characteristics of each category.
 | :------- | :----------- | :-------- | :------ | :---------- |
 | 模块 | 可声明对象 | 提供者 | 导出 | 被谁导入 |
 | Domain | Yes | Rare | Top component | Another domain, `AppModule` |
-| 领域模块 | 是 | 罕见 | 顶级组件 | Another domain, `AppModule` |
+| 领域模块 | 是 | 罕见 | 顶级组件 | 其它领域 `AppModule` |
 | Routed | Yes | Rare | No | None |
 | 带路由的模块 | 是 | 罕见 | 否 | 无 |
 | Routing | No | Yes (Guards) | RouterModule | Another domain (for routing) |
@@ -75,6 +83,8 @@ The following table summarizes the key characteristics of each category.
 
 Use a domain NgModule to deliver a user experience dedicated to a particular feature or application domain, such as editing a customer or placing an order.
 One example is `ContactModule` in the <live-example name="ngmodules"></live-example>.
+
+使用领域模块来提供专属于特定功能或应用领域的界面，比如编辑客户或下单。例子之一是 <live-example name="ngmodules"></live-example> 中的 `ContactModule`。
 
 A domain NgModule organizes the code related to a certain function, containing all of the components, routing, and templates that make up the function.
 Your top component in the domain NgModule acts as the feature or domain's root, and is the only component you export.
@@ -121,7 +131,7 @@ Services listed in the NgModules' `provider` array would not be available becaus
 If you include providers, the lifetime of the provided services should be the same as the lifetime of the NgModule.
 Don't provide app-wide [singleton services](guide/singleton-services) in a routed NgModule or in an NgModule that the routed NgModule imports.
 
-带路由的模块很少有提供者，因为你只在需要的时候加载带路由的模块（例如通过路由导航过来时）。 `provider` 数组中列出的服务不可用，因为根注入器不可能预先知道惰性加载的模块。如果你包含了提供者，那么它们所提供的服务的生命周期应该和该模块的生命周期完全一样。不要在带路由的模块及其导入的相关模块中提供全应用范围内的[单例服务。](guide/singleton-services)。
+带路由的模块很少有提供者，因为你只在需要的时候加载带路由的模块（比如通过路由导航过来时）。 `provider` 数组中列出的服务不可用，因为根注入器不可能预先知道惰性加载的模块。如果你包含了提供者，那么它们所提供的服务的生命周期应该和该模块的生命周期完全一样。不要在带路由的模块及其导入的相关模块中提供全应用范围内的[单例服务。](guide/singleton-services)。
 
 <div class="alert is-helpful">
 
@@ -140,6 +150,8 @@ For more information about providers and lazy-loaded routed NgModules, see [Limi
 Use a routing NgModule to provide the routing configuration for a domain NgModule, thereby separating routing concerns from its companion domain NgModule.
 One example is `ContactRoutingModule` in the <live-example name="ngmodules"></live-example>, which provides the routing for its companion domain NgModule `ContactModule`.
 
+使用路由定义模块来为领域模块提供路由配置，从而将路由相关的关注点从其伴生领域模块中分离出来。例子之一是 <live-example name="ngmodules"></live-example> 中的 `ContactRoutingModule`，它为其伴生领域模块 `ContactModule` 提供路由。
+
 <div class="alert is-helpful">
 
 For an overview and details about routing, see [In-app navigation: routing to views](guide/router "In-app navigation: routing to views").
@@ -154,20 +166,20 @@ Use a routing NgModule to do the following tasks:
 
 * Define routes
 
-  定义路由。【模糊翻译】
+  定义路由
 
 * Add router configuration to the NgModule's import
 
-  把路由器配置文件添加到模块的导入表中。
+  把路由器配置文件添加到模块的导入表中
 
 * Add guard and resolver service providers to the NgModule's providers
 
-  往模块的提供者列表中添加路由守卫和解析器（resolver）提供者。
+  往模块的提供者列表中添加路由守卫和解析器（resolver）提供者
 
 The name of the routing NgModule should parallel the name of its companion NgModule, using the suffix `Routing`.
 For example, `ContactModule` in `contact.module.ts` has a routing NgModule named `ContactRoutingModule` in `contact-routing.module.ts`.
 
-路由定义模块的名字应该和其伴生模块的名字平行，但使用 `Routing` 后缀。例如， `contact.module.ts` 中的 `ContactModule` 有一个位于 `contact-routing.module.ts` 中的名为 `ContactRoutingModule` 的路由定义模块。
+路由定义模块的名字应该和其伴生模块的名字平行，但使用 `Routing` 后缀。比如， `contact.module.ts` 中的 `ContactModule` 有一个位于 `contact-routing.module.ts` 中的名为 `ContactRoutingModule` 的路由定义模块。
 
 Import a routing NgModule only into its companion NgModule.
 If the companion NgModule is the root `AppModule`, the `AppRoutingModule` adds router configuration to its imports with `RouterModule.forRoot(routes)`.
@@ -227,6 +239,8 @@ Put commonly used directives, pipes, and components into one NgModule, typically
 You can import the shared NgModule in your domain NgModules, including [lazy-loaded NgModules](guide/lazy-loading-ngmodules "Lazy-loading an NgModule").
 One example is `SharedModule` in the <live-example name="ngmodules"></live-example>, which provides the `AwesomePipe` custom pipe and `HighlightDirective` directive.
 
+把常用的指令、管道和组件放到一个模块中，通常叫做 `SharedModule`，然后在应用的其他部分只需要导入这个模块就可以了。你可以在领域模块（包括[惰性加载模块](guide/lazy-loading-ngmodules "懒惰加载一个 NgModule")）中导入共享模块。例子之一就是<live-example name="ngmodules"></live-example>中的 `SharedModule`，它提供了自定义管道 `AwesomePipe` 和 `HighlightDirective` 指令。
+
 Shared NgModules should not include providers, nor should any of its imported or re-exported NgModules include providers.
 
 共享模块不应该包含服务提供者，它所导入或重新导出的任何模块也都不应该包含提供者。
@@ -245,19 +259,19 @@ You may also be interested in the following:
 
 * For more about NgModules, see [Organizing your app with NgModules](guide/ngmodules "Organizing your app with NgModules")
 
-  关于 Angular 模块的更多信息，请参阅[使用模块组织你的应用](guide/ngmodules "使用 Angular 模块整理你的应用")。
+  关于 Angular 模块的更多信息，请参阅[使用模块组织你的应用](guide/ngmodules "使用 Angular 模块整理你的应用")
 
 * To learn more about the root NgModule, see [Launching an app with a root NgModule](guide/bootstrapping "Launching an app with a root NgModule")
 
-  要了解关于根模块的更多信息，请参阅[使用根模块启动应用](guide/bootstrapping "用 NgModule 根启动一款应用")。
+  要了解关于根模块的更多信息，请参阅[使用根模块启动应用](guide/bootstrapping "用 NgModule 根启动一款应用")
 
 * To learn about frequently used Angular NgModules and how to import them into your app, see [Frequently-used modules](guide/frequent-ngmodules "Frequently-used modules")
 
-  要了解最常使用的那些 Angular 模块，以及如何将它们导入你的应用，请参阅[常用模块](guide/frequent-ngmodules "经常使用的模块")。
+  要了解最常使用的那些 Angular 模块，以及如何将它们导入你的应用，请参阅[常用模块](guide/frequent-ngmodules "经常使用的模块")
 
 * For a complete description of the NgModule metadata properties, see [Using the NgModule metadata](guide/ngmodule-api "Using the NgModule metadata")
 
-  关于模块元数据属性的完整描述，请参阅[使用模块元数据](guide/ngmodule-api "使用 NgModule 元数据")。
+  关于模块元数据属性的完整描述，请参阅[使用模块元数据](guide/ngmodule-api "使用 NgModule 元数据")
 
 If you want to manage NgModule loading and the use of dependencies and services, see the following:
 
@@ -265,15 +279,15 @@ If you want to manage NgModule loading and the use of dependencies and services,
 
 * To learn about loading NgModules eagerly when the application starts, or lazy-loading NgModules asynchronously by the router, see [Lazy-loading feature modules](guide/lazy-loading-ngmodules)
 
-  要了解如何在应用启动时急性加载模块，或者让路由器异步加载模块，请参阅[惰性加载特性模块](guide/lazy-loading-ngmodules)。
+  要了解如何在应用启动时急性加载模块，或者让路由器异步加载模块，请参阅[惰性加载特性模块](guide/lazy-loading-ngmodules)
 
 * To understand how to provide a service or other dependency for your app, see [Providing Dependencies for an NgModule](guide/providers "Providing Dependencies for an NgModule")
 
-  要了解如何为你的应用提供服务或其它依赖，请参阅[为模块提供依赖](guide/providers "为 NgModule 提供依赖")。
+  要了解如何为你的应用提供服务或其它依赖，请参阅[为模块提供依赖](guide/providers "为 NgModule 提供依赖")
 
 * To learn how to create a singleton service to use in NgModules, see [Making a service a singleton](guide/singleton-services "Making a service a singleton")
 
-  要了解如何在模块中创建单例服务，请参阅[“使服务成为单例”](guide/singleton-services "使服务成为单例") 。
+  要了解如何在模块中创建单例服务，请参阅[“使服务成为单例”](guide/singleton-services "使服务成为单例") 
 
 <!-- links -->
 

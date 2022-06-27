@@ -54,15 +54,32 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
   /**
    * Search statements related to the given class for calls to the specified helper.
    *
+   * 搜索与给定类相关的语句以查找对指定帮助器的调用。
+   *
    * In CommonJS these helper calls can be outside the class's IIFE at the top level of the
    * source file. Searching the top level statements for helpers can be expensive, so we
    * try to get helpers from the IIFE first and only fall back on searching the top level if
    * no helpers are found.
    *
+   * 在 CommonJS 中，这些帮助器调用可以在源文件顶级类的 IIFE
+   * 之外。在顶级语句中搜索帮助器可能会很昂贵，因此我们会尝试首先从 IIFE
+   * 获取帮助器，如果没有找到帮助器，则只会退回到搜索顶级。
+   *
    * @param classSymbol the class whose helper calls we are interested in.
+   *
+   * 我们感兴趣的助手调用的类。
+   *
    * @param helperNames the names of the helpers (e.g. `__decorate`) whose calls we are interested
    * in.
-   * @returns an array of nodes of calls to the helper with the given name.
+   *
+   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate` ）。
+   *
+   * @returns
+   *
+   * an array of nodes of calls to the helper with the given name.
+   *
+   * 调用给定名称的帮助器的节点数组。
+   *
    */
   protected override getHelperCallsForClass(classSymbol: NgccClassSymbol, helperNames: string[]):
       ts.CallExpression[] {
@@ -78,13 +95,28 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
   /**
    * Find all the helper calls at the top level of a source file.
    *
+   * 在源文件的顶级查找所有帮助器调用。
+   *
    * We cache the helper calls per source file so that we don't have to keep parsing the code for
    * each class in a file.
    *
+   * 我们缓存每个源文件的帮助器调用，以便我们不必继续解析文件中每个类的代码。
+   *
    * @param sourceFile the source who may contain helper calls.
+   *
+   * 可能包含帮助器调用的源。
+   *
    * @param helperNames the names of the helpers (e.g. `__decorate`) whose calls we are interested
    * in.
-   * @returns an array of nodes of calls to the helper with the given name.
+   *
+   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate` ）。
+   *
+   * @returns
+   *
+   * an array of nodes of calls to the helper with the given name.
+   *
+   * 调用给定名称的帮助器的节点数组。
+   *
    */
   private getTopLevelHelperCalls(sourceFile: ts.SourceFile, helperNames: string[]):
       ts.CallExpression[] {
@@ -134,9 +166,9 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
       statement: WildcardReexportStatement, containingFile: ts.SourceFile): ExportDeclaration[] {
     const reexportArg = statement.expression.arguments[0];
 
-    const requireCall = isRequireCall(reexportArg) ?
-        reexportArg :
-        ts.isIdentifier(reexportArg) ? findRequireCallReference(reexportArg, this.checker) : null;
+    const requireCall = isRequireCall(reexportArg) ? reexportArg :
+        ts.isIdentifier(reexportArg) ? findRequireCallReference(reexportArg, this.checker) :
+                                       null;
     if (requireCall === null) {
       return [];
     }
@@ -200,8 +232,18 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
    * Handle the case where the identifier represents a reference to a whole CommonJS
    * module, i.e. the result of a call to `require(...)`.
    *
+   * 处理标识符表示对整个 CommonJS 模块的引用的情况，即调用 `require(...)` 的结果。
+   *
    * @param id the identifier whose declaration we are looking for.
-   * @returns a declaration if `id` refers to a CommonJS module, or `null` otherwise.
+   *
+   * 我们要查找其声明的标识符。
+   *
+   * @returns
+   *
+   * a declaration if `id` refers to a CommonJS module, or `null` otherwise.
+   *
+   * 如果 `id` 引用了 CommonJS 模块，则为声明，否则为 `null` 。
+   *
    */
   private getCommonJsModuleDeclaration(id: ts.Identifier): Declaration|null {
     const requireCall = findRequireCallReference(id, this.checker);
@@ -220,6 +262,9 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
   /**
    * If this is an IFE then try to grab the outer and inner classes otherwise fallback on the super
    * class.
+   *
+   * 如果这是 IFE，则尝试获取外部类和内部类，否则回退到超类。
+   *
    */
   protected override getDeclarationOfExpression(expression: ts.Expression): Declaration|null {
     const inner = getInnerClassDeclaration(expression);

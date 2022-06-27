@@ -33,7 +33,7 @@ export class UpgradeNg1ComponentAdapterBuilder {
   propertyMap: {[name: string]: string} = {};
   directive: IDirective|null = null;
   // TODO(issue/24571): remove '!'.
-  template !: string;
+  template!: string;
 
   constructor(public name: string) {
     const selector =
@@ -117,6 +117,9 @@ export class UpgradeNg1ComponentAdapterBuilder {
 
   /**
    * Upgrade ng1 components into Angular.
+   *
+   * 将 ng1 组件升级到 Angular。
+   *
    */
   static resolve(
       exportedComponents: {[name: string]: UpgradeNg1ComponentAdapterBuilder},

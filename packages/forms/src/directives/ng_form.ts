@@ -157,16 +157,17 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
 
   /**
    * @description
+   *
    * Tracks options for the `NgForm` instance.
    *
    * `NgForm` 实例的选项。接受下列属性：
    *
    * **updateOn**: Sets the default `updateOn` value for all child `NgModels` below it
    * unless explicitly set by a child `NgModel` using `ngModelOptions`). Defaults to 'change'.
-   * Possible values: `'change'` | `'blur'` | `'submit'`
+   * Possible values: `'change'` \| `'blur'` \| `'submit'`
    *
    * **updateOn**：为所有子级的 `NgModel` 设置 `updateOn` 的默认值（除非子 `NgModel` 通过
-   * `ngModelOptions` 显式指定了这个值）。 可能的值有：`'change'` | `'blur'` | `'submit'`.
+   * `ngModelOptions` 显式指定了这个值）。 可能的值有：`'change'` \| `'blur'` \| `'submit'`.
    *
    */
   // TODO(issue/24571): remove '!'.

@@ -43,8 +43,12 @@ const setI18nRefs: VisitNodeFn = (htmlNode, i18nNode) => {
 
 /**
  * This visitor walks over HTML parse tree and converts information stored in
- * i18n-related attributes ("i18n" and "i18n-*") into i18n meta object that is
+ * i18n-related attributes ("i18n" and "i18n-\*") into i18n meta object that is
  * stored with other element's and attribute's information.
+ *
+ * 此访问者会遍历 HTML 解析树，并将存储在 i18n 相关属性（“i18n”和“i18n-\*”）中的信息转换为 i18n
+ * 元对象，该对象与其他元素和属性的信息一起存储。
+ *
  */
 export class I18nMetaVisitor implements html.Visitor {
   // whether visited nodes contain i18n information
@@ -171,13 +175,27 @@ export class I18nMetaVisitor implements html.Visitor {
    * Parse the general form `meta` passed into extract the explicit metadata needed to create a
    * `Message`.
    *
+   * 解析传入的一般形式的 `meta` 数据，以提取创建 `Message` 所需的显式元数据。
+   *
    * There are three possibilities for the `meta` variable
    * 1) a string from an `i18n` template attribute: parse it to extract the metadata values.
    * 2) a `Message` from a previous processing pass: reuse the metadata values in the message.
    * 4) other: ignore this and just process the message metadata as normal
    *
+   * `meta` 变量有三种可能性： 1）来自 `i18n` 模板属性的字符串：解析它以提取元数据值。
+   * 2）来自前一个处理过程的 `Message` ：重用消息中的元数据值。
+   * 4）其他：忽略它，并照常处理消息元数据
+   *
    * @param meta the bucket that holds information about the message
-   * @returns the parsed metadata.
+   *
+   * 保存有关消息的信息的存储桶
+   *
+   * @returns
+   *
+   * the parsed metadata.
+   *
+   * 解析后的元数据。
+   *
    */
   private _parseMetadata(meta: string|i18n.I18nMeta): I18nMeta {
     return typeof meta === 'string'  ? parseI18nMeta(meta) :
@@ -187,6 +205,9 @@ export class I18nMetaVisitor implements html.Visitor {
 
   /**
    * Generate (or restore) message id if not specified already.
+   *
+   * 如果尚未指定，则生成（或恢复）消息 ID。
+   *
    */
   private _setMessageId(message: i18n.Message, meta: string|i18n.I18nMeta): void {
     if (!message.id) {
@@ -197,8 +218,16 @@ export class I18nMetaVisitor implements html.Visitor {
   /**
    * Update the `message` with a `legacyId` if necessary.
    *
+   * 如有必要，使用 `legacyId` 更新 `message` 。
+   *
    * @param message the message whose legacy id should be set
+   *
+   * 应该设置其旧版 ID 的消息
+   *
    * @param meta information about the message being processed
+   *
+   * 有关正在处理的消息的信息
+   *
    */
   private _setLegacyIds(message: i18n.Message, meta: string|i18n.I18nMeta): void {
     if (this.enableI18nLegacyMessageIdFormat) {
@@ -220,19 +249,41 @@ export class I18nMetaVisitor implements html.Visitor {
   }
 }
 
-/** I18n separators for metadata **/
+/**
+ * I18n separators for metadata
+ *
+ * 元数据的 I18n 分隔符
+ *
+ */
 const I18N_MEANING_SEPARATOR = '|';
 const I18N_ID_SEPARATOR = '@@';
 
 /**
  * Parses i18n metas like:
- *  - "@@id",
- *  - "description[@@id]",
- *  - "meaning|description[@@id]"
- * and returns an object with parsed output.
+ *
+ * 解析 i18n 元，例如：
+ *
+ * - "@@id",
+ *
+ * - "description[@@id]",
+ *
+ *   “描述[@@id][@@id] ”，
+ *
+ * - "meaning|description[@@id]"
+ *   and returns an object with parsed output.
+ *
+ *   “meaning|description [@@id][@@id] ” 并返回具有解析输出的对象。
  *
  * @param meta String that represents i18n meta
- * @returns Object with id, meaning and description fields
+ *
+ * 表示 i18n 元的字符串
+ *
+ * @returns
+ *
+ * Object with id, meaning and description fields
+ *
+ * 具有 id、meaning 和 description 字段的对象
+ *
  */
 export function parseI18nMeta(meta: string = ''): I18nMeta {
   let customId: string|undefined;

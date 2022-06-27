@@ -20,18 +20,30 @@ import {removeLockFile} from './util';
  * This `LockFile` implementation uses a child-process to remove the lock file when the main process
  * exits (for whatever reason).
  *
+ * 此 `LockFile` 实现使用子进程在主进程退出（无论出于何种原因）时删除锁定文件。
+ *
  * There are a few milliseconds between the child-process being forked and it registering its
  * `disconnect` event, which is responsible for tidying up the lock-file in the event that the main
  * process exits unexpectedly.
+ *
+ * 被 fork 的子进程和它注册其 `disconnect`
+ * 事件之间有几毫秒，该事件负责在主进程意外退出的事件中清理锁定文件。
  *
  * We eagerly create the unlocker child-process so that it maximizes the time before the lock-file
  * is actually written, which makes it very unlikely that the unlocker would not be ready in the
  * case that the developer hits Ctrl-C or closes the terminal within a fraction of a second of the
  * lock-file being created.
  *
+ * 我们急切地创建了解锁器子进程，以最大限度地利用实际写入锁定文件之前的时间，这使得在开发人员按
+ * Ctrl-C 或关闭终端的情况下，解锁器不太可能未就绪正在创建的锁定文件的几分之一秒。
+ *
  * The worst case scenario is that ngcc is killed too quickly and leaves behind an orphaned
  * lock-file. In which case the next ngcc run will display a helpful error message about deleting
  * the lock-file.
+ *
+ * 最糟糕的情况是 ngcc 被杀死得太快并留下一个孤立的锁文件。在这种情况下，下一次 ngcc
+ * 运行将显示有关删除 lock-file 的有用错误消息。
+ *
  */
 export class LockFileWithChildProcess implements LockFile {
   path: AbsoluteFsPath;
@@ -89,7 +101,12 @@ export class LockFileWithChildProcess implements LockFile {
   }
 }
 
-/** Gets the absolute file path to the lock file unlocker script. */
+/**
+ * Gets the absolute file path to the lock file unlocker script.
+ *
+ * 获取锁定文件解锁器脚本的绝对文件路径。
+ *
+ */
 export function getLockFileUnlockerScriptPath(fileSystem: FileSystem): AbsoluteFsPath {
   // This is an interop allowing for the unlocking script to be determined in both
   // a CommonJS module, or an ES module which does not come with `require` by default.

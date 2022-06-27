@@ -7,11 +7,13 @@ Pipes are simple functions to use in [template expressions](guide/glossary#templ
 Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
 For example, you would use a pipe to show a date as **April 15, 1988** rather than the raw string format.
 
-[管道](guide/glossary#pipe "管道的定义")用来对字符串、货币金额、日期和其他显示数据进行转换和格式化。管道是一些简单的函数，可以在[模板表达式](/guide/glossary#template-expression "模板表达式的定义")中用来接受输入值并返回一个转换后的值。例如，你可以使用一个管道把日期显示为 **1988 年 4 月 15 日**，而不是其原始字符串格式。
+[管道](guide/glossary#pipe "管道的定义")用来对字符串、货币金额、日期和其他显示数据进行转换和格式化。管道是一些简单的函数，可以在[模板表达式](guide/glossary#template-expression "模板表达式的定义")中用来接受输入值并返回一个转换后的值。比如，你可以使用一个管道把日期显示为 **1988 年 4 月 15 日**，而不是其原始字符串格式。
 
 <div class="alert is-helpful">
 
 For the sample application used in this topic, see the <live-example></live-example>.
+
+本主题中使用的范例应用，参阅<live-example></live-example>。
 
 </div>
 
@@ -22,7 +24,7 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 
 | Pipes | Details |
 | :---- | :------ |
-| Pipes | 详情 |
+| 管道 | 详情 |
 | [`DatePipe`](api/common/DatePipe) | Formats a date value according to locale rules. |
 | [`DatePipe`](api/common/DatePipe) | 根据区域设置规则格式化日期值。 |
 | [`UpperCasePipe`](api/common/UpperCasePipe) | Transforms text to all upper case. |
@@ -30,16 +32,21 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 | [`LowerCasePipe`](api/common/LowerCasePipe) | Transforms text to all lower case. |
 | [`LowerCasePipe`](api/common/LowerCasePipe) | 把文本转换成全小写形式。 |
 | [`CurrencyPipe`](api/common/CurrencyPipe) | Transforms a number to a currency string, formatted according to locale rules. |
+| [`CurrencyPipe`](api/common/CurrencyPipe) | 把数字转换成货币字符串，根据本地环境中的规则进行格式化。 |
 | [`DecimalPipe`](api/common/DecimalPipe) | Transforms a number into a string with a decimal point, formatted according to locale rules. |
+| [`DecimalPipe`](api/common/DecimalPipe) | 把数字转换成带小数点的字符串，根据本地环境中的规则进行格式化。 |
 | [`PercentPipe`](api/common/PercentPipe) | Transforms a number to a percentage string, formatted according to locale rules. |
+| [`PercentPipe`](api/common/PercentPipe) | 把数字转换成百分比字符串，根据本地环境中的规则进行格式化。 |
 
 <div class="alert is-helpful">
 
 * For a complete list of built-in pipes, see the [pipes API documentation](api/common#pipes "Pipes API reference summary").
 
-  关于内置管道的完整列表，请参阅[管道 API 文档](/api/common#pipes "管道 API 参考总结") 。
+  关于内置管道的完整列表，请参阅[管道 API 文档](api/common#pipes "管道 API 参考总结") 。
 
 * To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
+
+  要了解关于使用管道进行国际化（i18n）工作的更多信息，请参阅[根据本地环境格式化数据][AioGuideI18nCommonFormatDataLocale]。
 
 </div>
 
@@ -49,7 +56,7 @@ Create pipes to encapsulate custom transformations and use your custom pipes in 
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To use pipes you should have a basic understanding of the following:
 
@@ -74,11 +81,15 @@ To use pipes you should have a basic understanding of the following:
 To apply a pipe, use the pipe (`|`) character within a template expression as shown in the following code example, along with the *name* of the pipe, which is `date` for the built-in [`DatePipe`](api/common/DatePipe).
 The tabs in the example show the following:
 
+要应用管道，请如下所示在模板表达式中使用管道操作符（`|`），紧接着是该管道的*名字*，对于内置的 [`DatePipe`](api/common/DatePipe) 它的名字是 `date` 。这个例子中的显示如下：
+
 | Files | Details |
 | :---- | :------ |
-| 文件【模糊翻译】 | 详情 |
+| 文件 | 详情 |
 | `app.component.html` | Uses `date` in a separate template to display a birthday. |
+| `app.component.html` | 在另一个单独的模板中使用 `date` 来显示生日。 |
 | `hero-birthday1.component.ts` | Uses the same pipe as part of an in-line template in a component that also sets the birthday value. |
+| `hero-birthday1.component.ts` | 使用相同的管道作为组件内嵌模板的一部分，同时该组件也会设置生日值。 |
 
 <code-tabs>
     <code-pane header="src/app/app.component.html" region="hero-birthday-template" path="pipes/src/app/app.component.html"></code-pane>
@@ -100,16 +111,18 @@ For example, use the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") w
 The template expression `{{ amount | currency:'EUR' }}` transforms the `amount` to currency in euros.
 Follow the pipe name (`currency`) with a colon (`:`) character and the parameter value (`'EUR'`).
 
+可以用可选参数微调管道的输出。比如，你可以使用 [`CurrencyPipe`](api/common/CurrencyPipe "API 参考") 和国家代码（如 EUR）作为参数。模板表达式 `{{ amount | currency:'EUR' }}` 会把 `amount` 转换成欧元。紧跟在管道名称（ `currency` ）后面的是冒号（`:`）和参数值（`'EUR'`）。
+
 If the pipe accepts multiple parameters, separate the values with colons.
 For example, `{{ amount | currency:'EUR':'Euros '}}` adds the second parameter, the string literal `'Euros '`, to the output string.
 Use any valid template expression as a parameter, such as a string literal or a component property.
 
-如果管道能接受多个参数，就用冒号分隔这些值。例如，`{{ amount | currency:'EUR':'Euros '}}` 会把第二个参数（字符串 `'Euros '`）添加到输出字符串中。你可以使用任何有效的模板表达式作为参数，比如字符串字面量或组件的属性。
+如果管道能接受多个参数，就用冒号分隔这些值。比如，`{{ amount | currency:'EUR':'Euros '}}` 会把第二个参数（字符串 `'Euros '`）添加到输出字符串中。你可以使用任何有效的模板表达式作为参数，比如字符串字面量或组件的属性。
 
 Some pipes require at least one parameter and allow more optional parameters, such as [`SlicePipe`](api/common/SlicePipe "API reference for SlicePipe").
 For example, `{{ slice:1:5 }}` creates a new array or string containing a subset of the elements starting with element `1` and ending with element `5`.
 
-有些管道需要至少一个参数，并且允许使用更多的可选参数，比如 [`SlicePipe`](/api/common/SlicePipe "SlicePipe 的 API 参考") 。例如， `{{ slice:1:5 }}` 会创建一个新数组或字符串，它以第 `1` 个元素开头，并以第 `5` 个元素结尾。
+有些管道需要至少一个参数，并且允许使用更多的可选参数，比如 [`SlicePipe`](api/common/SlicePipe "SlicePipe 的 API 参考") 。比如， `{{ slice:1:5 }}` 会创建一个新数组或字符串，它以第 `1` 个元素开头，并以第 `5` 个元素结尾。
 
 ### Example: Formatting a date
 
@@ -188,7 +201,7 @@ Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") (the 
 Do not use hyphens in the `name`.
 For details and more examples, see [Pipe names](guide/styleguide#pipe-names "Pipe names in the Angular coding style guide").
 
-要把类标记为管道并提供配置元数据，请把 [`@Pipe`](/api/core/Pipe "Pipe 的 API 引用") [装饰器](/guide/glossary#decorator--decoration "装饰器的定义")应用到这个类上。管道类名是 [UpperCamelCase](guide/glossary#case-types "案例类型的定义")（类名的一般约定），相应的 `name` 字符串是 [camelCase](guide/glossary#case-types "案例类型的定义") 的。不要在 `name` 中使用连字符。详细信息和更多范例，请参阅[管道名称](guide/styleguide#pipe-names "Angular 编码风格指南中的管道名称") 。
+要把类标记为管道并提供配置元数据，请把 [`@Pipe`](api/core/Pipe "Pipe 的 API 引用") [装饰器](guide/glossary#decorator--decoration "装饰器的定义")应用到这个类上。管道类名是 [UpperCamelCase](guide/glossary#case-types "案例类型的定义")（类名的一般约定），相应的 `name` 字符串是 [camelCase](guide/glossary#case-types "案例类型的定义") 的。不要在 `name` 中使用连字符。详细信息和更多范例，请参阅[管道名称](guide/styleguide#pipe-names "Angular 编码风格指南中的管道名称") 。
 
 Use `name` in template expressions as you would for a built-in pipe.
 
@@ -199,6 +212,8 @@ Use `name` in template expressions as you would for a built-in pipe.
 * Include your pipe in the `declarations` field of the `NgModule` metadata in order for it to be available to a template.
   See the `app.module.ts` file in the example application (<live-example></live-example>).
   For details, see [NgModules](guide/ngmodules "NgModules introduction").
+
+  把你的管道包含在 `NgModule` 元数据的 `declarations` 字段中，以便它能用于模板。请查看范例应用中的 `app.module.ts` 文件（<live-example></live-example>）。有关详细信息，请参阅 [NgModules](guide/ngmodules "NgModules 简介") 。
 
 * Register your custom pipes.
   The [Angular CLI](cli "CLI Overview and Command Reference") [`ng generate pipe`](cli/generate#pipe "ng generate pipe in the CLI Command Reference") command registers the pipe automatically.
@@ -213,7 +228,7 @@ Use `name` in template expressions as you would for a built-in pipe.
 
 Implement the [`PipeTransform`](api/core/PipeTransform "API reference for PipeTransform") interface in your custom pipe class to perform the transformation.
 
-在自定义管道类中实现 [`PipeTransform`](/api/core/PipeTransform "PipeTransform 的 API 参考") 接口来执行转换。
+在自定义管道类中实现 [`PipeTransform`](api/core/PipeTransform "PipeTransform 的 API 参考") 接口来执行转换。
 
 Angular invokes the `transform` method with the value of a binding as the first argument, and any parameters as the second argument in list form, and returns the transformed value.
 
@@ -227,7 +242,7 @@ In a game, you might want to implement a transformation that raises a value expo
 For example, if the hero's score is 2, boosting the hero's power exponentially by 10 produces a score of 1024.
 Use a custom pipe for this transformation.
 
-在游戏中，可能希望实现一种指数级转换，以指数级增加英雄的力量。例如，如果英雄的得分是 2，那么英雄的能量会指数级增长 10 次，最终得分为 1024。你可以使用自定义管道进行这种转换。
+在游戏中，可能希望实现一种指数级转换，以指数级增加英雄的力量。比如，如果英雄的得分是 2，那么英雄的能量会指数级增长 10 次，最终得分为 1024。你可以使用自定义管道进行这种转换。
 
 The following code example shows two component definitions:
 
@@ -235,9 +250,11 @@ The following code example shows two component definitions:
 
 | Files | Details |
 | :---- | :------ |
-| 文件【模糊翻译】 | 详情 |
+| 文件 | 详情 |
 | `exponential-strength.pipe.ts` | Defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation. It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe. |
+| `exponential-strength.pipe.ts` | 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。 |
 | `power-booster.component.ts` | Demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`). |
+| `power-booster.component.ts` | 演示了如何使用该管道，指定了一个值（ `2` ）和一个 exponent 参数（ `10` ）。 |
 
 <code-tabs>
     <code-pane header="src/app/exponential-strength.pipe.ts" path="pipes/src/app/exponential-strength.pipe.ts"></code-pane>
@@ -262,6 +279,8 @@ Superpower boost: 1024
 
 To examine the behavior the `exponentialStrength` pipe in the <live-example></live-example>, change the value and optional exponent in the template.
 
+要检查 `exponentialStrength` 管道的行为，请查看<live-example></live-example>，并在模板中修改值和可选的指数参数。
+
 </div>
 
 <a id="change-detection"></a>
@@ -273,7 +292,7 @@ To examine the behavior the `exponentialStrength` pipe in the <live-example></li
 You use [data binding](guide/glossary#data-binding "Definition of data binding") with a  pipe to display values and respond to user actions.
 If the data is a primitive input value, such as `String` or `Number`, or an object reference as input, such as `Date` or `Array`, Angular executes the pipe whenever it detects a change for the input value or reference.
 
-你可以通过带有管道的[数据绑定](/guide/glossary#data-binding "数据绑定的定义")来显示值并响应用户操作。如果是原始类型的输入值，比如 `String` 或 `Number` ，或者是对象引用型的输入值，比如 `Date` 或 `Array` ，那么每当 Angular 检测到输入值或引用有变化时，就会执行该输入管道。
+你可以通过带有管道的[数据绑定](guide/glossary#data-binding "数据绑定的定义")来显示值并响应用户操作。如果是原始类型的输入值，比如 `String` 或 `Number` ，或者是对象引用型的输入值，比如 `Date` 或 `Array` ，那么每当 Angular 检测到输入值或引用有变化时，就会执行该输入管道。
 
 For example, you could change the previous custom pipe example to use two-way data binding with `ngModel` to input the amount and boost factor, as shown in the following code example.
 
@@ -289,7 +308,7 @@ Angular detects each change and immediately runs the pipe.
 This is fine for primitive input values.
 However, if you change something *inside* a composite object (such as the month of a date, an element of an array, or an object property), you need to understand how change detection works, and how to use an `impure` pipe.
 
-Angular 会检测每次变更，并立即运行该管道。对于原始输入值，这很好。但是，如果要在复合对象中更改某些*内部值*（例如日期中的月份、数组中的元素或对象中的属性），就需要了解变更检测的工作原理，以及如何使用 `impure`（非纯）管道。
+Angular 会检测每次变更，并立即运行该管道。对于原始输入值，这很好。但是，如果要在复合对象中更改某些*内部值*（比如日期中的月份、数组中的元素或对象中的属性），就需要了解变更检测的工作原理，以及如何使用 `impure`（非纯）管道。
 
 ### How change detection works
 
@@ -303,9 +322,11 @@ Angular 会在每次 DOM 事件（每次按键、鼠标移动、计时器滴答�
 
 | Files | Details |
 | :---- | :------ |
-| 文件【模糊翻译】 | 详情 |
+| 文件 | 详情 |
 | `flying-heroes.component.html (v1)` | The `*ngFor` repeater displays the hero names. |
+| `flying-heroes.component.html (v1)` | `*ngFor` 会重复显示英雄的名字。 |
 | `flying-heroes.component.ts (v1)` | Provides heroes, adds heroes into the array, and resets the array. |
+| `flying-heroes.component.ts (v1)` | 提供了一些英雄，把这些英雄添加到数组中，并重置了该数组。 |
 
 <code-tabs>
     <code-pane header="src/app/flying-heroes.component.html (v1)" path="pipes/src/app/flying-heroes.component.html" region="template-1"></code-pane>
@@ -344,7 +365,7 @@ In other words, given the same input, a pure function should always return the s
 With a pure pipe, Angular ignores changes within composite objects, such as a newly added element of an existing array, because checking a primitive value or object reference is much faster than performing a deep check for differences within objects.
 Angular can quickly determine if it can skip executing the pipe and updating the view.
 
-使用纯管道，Angular 会忽略复合对象中的变化，例如往现有数组中新增的元素，因为检查原始值或对象引用比对对象中的差异进行深度检查要快得多。Angular 可以快速判断是否可以跳过执行该管道并更新视图。
+使用纯管道，Angular 会忽略复合对象中的变化，比如往现有数组中新增的元素，因为检查原始值或对象引用比对对象中的差异进行深度检查要快得多。Angular 可以快速判断是否可以跳过执行该管道并更新视图。
 
 However, a pure pipe with an array as input might not work the way you want.
 To demonstrate this issue, change the previous example to filter the list of heroes to just those heroes who can fly.
@@ -355,11 +376,11 @@ The tabs for the example show the following:
 
 * The template (`flying-heroes.component.html (flyers)`) with the new pipe
 
-  带有新管道的模板（`flying-heroes.component.html (flyers)`）。
+  带有新管道的模板（`flying-heroes.component.html (flyers)`）
 
 * The `FlyingHeroesPipe` custom pipe implementation (`flying-heroes.pipe.ts`)
 
-  `FlyingHeroesPipe` 自定义管道实现（`flying-heroes.pipe.ts`）。
+  `FlyingHeroesPipe` 自定义管道实现（`flying-heroes.pipe.ts`）
 
 <code-tabs>
     <code-pane header="src/app/flying-heroes.component.html (flyers)" path="pipes/src/app/flying-heroes.component.html" region="template-flying-heroes"></code-pane>
@@ -411,7 +432,7 @@ To keep your component independent of HTML templates that use pipes, you can, as
 To execute a custom pipe after a change *within* a composite object, such as a change to an element of an array, you need to define your pipe as `impure` to detect impure changes.
 Angular executes an impure pipe every time it detects a change with every keystroke or mouse movement.
 
-要在复合对象*内部*进行更改后执行自定义管道（例如更改数组元素），就需要把管道定义为 `impure` 以检测非纯的变更。每当按键或鼠标移动时，Angular 都会检测到一次变更，从而执行一个非纯管道。
+要在复合对象*内部*进行更改后执行自定义管道（比如更改数组元素），就需要把管道定义为 `impure` 以检测非纯的变更。每当按键或鼠标移动时，Angular 都会检测到一次变更，从而执行一个非纯管道。
 
 <div class="alert is-important">
 
@@ -455,6 +476,8 @@ As shown in the following code, only the pipe in the template changes.
 
 To confirm that the display updates as the user adds heroes, see the <live-example></live-example>.
 
+要想确认是否在用户添加英雄时更新了显示，请参阅<live-example></live-example>。
+
 </div>
 
 <a id="async-pipe"></a>
@@ -467,11 +490,13 @@ To confirm that the display updates as the user adds heroes, see the <live-examp
 Observables are recommended for event handling, asynchronous programming, and handling multiple values.
 Observables can deliver single or multiple values of any type, either synchronously (as a function delivers a value to its caller) or asynchronously on a schedule.
 
-[可观察对象](/guide/glossary#observable "可观察对象的定义")能让你在应用的各个部分之间传递消息。建议在事件处理、异步编程以及处理多个值时使用这些可观察对象。可观察对象可以提供任意类型的单个或多个值，可以是同步的（作为一个函数为它的调用者提供一个值），也可以是异步的。
+[可观察对象](guide/glossary#observable "可观察对象的定义")能让你在应用的各个部分之间传递消息。建议在事件处理、异步编程以及处理多个值时使用这些可观察对象。可观察对象可以提供任意类型的单个或多个值，可以是同步的（作为一个函数为它的调用者提供一个值），也可以是异步的。
 
 <div class="alert is-helpful">
 
 For details and examples of observables, see the [Observables Overview](guide/observables#using-observables-to-pass-values 'Using observables to pass values"').
+
+关于可观察对象的详细信息和范例，请参阅[可观察对象概览](guide/observables#using-observables-to-pass-values "使用可观察对象传递值“")。
 
 </div>
 
@@ -479,7 +504,7 @@ Use the built-in [`AsyncPipe`](api/common/AsyncPipe "API description of AsyncPip
 Without this pipe, your component code would have to subscribe to the observable to consume its values, extract the resolved values, expose them for binding, and unsubscribe when the observable is destroyed in order to prevent memory leaks.
 `AsyncPipe` is an impure pipe that saves boilerplate code in your component to maintain the subscription and keep delivering values from that observable as they arrive.
 
-使用内置的 [`AsyncPipe`](/api/common/AsyncPipe "AsyncPipe 的 API 描述") 接受一个可观察对象作为输入，并自动订阅输入。如果没有这个管道，你的组件代码就必须订阅这个可观察对象来使用它的值，提取已解析的值、把它们公开进行绑定，并在销毁这段可观察对象时取消订阅，以防止内存泄漏。 `AsyncPipe` 是一个非纯管道，可以节省组件中的样板代码，以维护订阅，并在数据到达时持续从该可观察对象中提供值。
+使用内置的 [`AsyncPipe`](api/common/AsyncPipe "AsyncPipe 的 API 描述") 接受一个可观察对象作为输入，并自动订阅输入。如果没有这个管道，你的组件代码就必须订阅这个可观察对象来使用它的值，提取已解析的值、把它们公开进行绑定，并在销毁这段可观察对象时取消订阅，以防止内存泄漏。 `AsyncPipe` 是一个非纯管道，可以节省组件中的样板代码，以维护订阅，并在数据到达时持续从该可观察对象中提供值。
 
 The following code example binds an observable of message strings
 (`message$`) to a view with the `async` pipe.
@@ -497,7 +522,7 @@ The following code example binds an observable of message strings
 To [communicate with backend services using HTTP](guide/http "Communicating with backend services using HTTP"), the `HttpClient` service uses observables and offers the `HttpClient.get()` method to fetch data from a server.
 The asynchronous method sends an HTTP request, and returns an observable that emits the requested data for the response.
 
-为了[使用 HTTP 与后端服务进行通信](/guide/http "使用 HTTP 与后端服务进行通信")，`HttpClient` 服务使用了可观察对象，并提供了 `HttpClient.get()` 方法来从服务器获取数据。这个异步方法会发送一个 HTTP 请求，并返回一个可观察对象，它会发出请求到的响应数据。
+为了[使用 HTTP 与后端服务进行通信](guide/http "使用 HTTP 与后端服务进行通信")，`HttpClient` 服务使用了可观察对象，并提供了 `HttpClient.get()` 方法来从服务器获取数据。这个异步方法会发送一个 HTTP 请求，并返回一个可观察对象，它会发出请求到的响应数据。
 
 As shown in the previous section, use the impure `AsyncPipe` to accept an observable as input and subscribe to the input automatically.
 You can also create an impure pipe to make and cache an HTTP request.

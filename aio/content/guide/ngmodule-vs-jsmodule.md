@@ -21,7 +21,7 @@ JavaScript modules let you spread your work across multiple files.
 To learn more about JavaScript modules, see [ES6 In Depth: Modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules).
 For the module specification, see the [6th Edition of the ECMAScript standard](https://www.ecma-international.org/ecma-262/6.0/#sec-modules).
 
-要了解更多关于 JavaScript 模块的信息，参阅[深入 ES6：模块](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) 。关于模块规范的更多信息，请参阅[ECMAScript 标准第 6 版](https://www.ecma-international.org/ecma-262/6.0/#sec-modules)。
+要了解更多关于 JavaScript 模块的信息，参阅[深入 ES6：模块](https://hacks.mozilla.org/2015/08/es6-in-depth-modules) 。关于模块规范的更多信息，请参阅[ECMAScript 标准第 6 版](https://www.ecma-international.org/ecma-262/6.0/#sec-modules)。
 
 </div>
 

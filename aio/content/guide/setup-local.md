@@ -11,11 +11,13 @@ It includes information about prerequisites, installing the CLI, creating an ini
 
 <header>Try Angular without local setup</header>
 
+<header>无需本地环境，学习 Angular</header>
+
 If you are new to Angular, you might want to start with [Try it now!](start), which introduces the essentials of Angular in the context of a ready-made basic online store app for you to examine and modify.
 This standalone tutorial takes advantage of the interactive [StackBlitz](https://stackblitz.com) environment for online development.
 You don't need to set up your local environment until you're ready.
 
-如果你不熟悉 Angular，可能要从[立即尝试！](start)开始，它可以在查看和修改一个现成的基础版在线商店的上下文中介绍 Angular 的要点。这个独立的教程利用交互式的 [StackBlitz](https://stackblitz.com/) 环境进行在线开发。在你准备好这些之前，无需设置本地环境。
+如果你不熟悉 Angular，可能要从[立即尝试！](start)开始，它可以在查看和修改一个现成的基础版在线商店的上下文中介绍 Angular 的要点。这个独立的教程利用交互式的 [StackBlitz](https://stackblitz.com) 环境进行在线开发。在你准备好这些之前，无需设置本地环境。
 
 </div>
 
@@ -24,7 +26,7 @@ You don't need to set up your local environment until you're ready.
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 To use the Angular framework, you should be familiar with the following:
 
@@ -38,7 +40,7 @@ To use the Angular framework, you should be familiar with the following:
 
 Knowledge of [TypeScript](https://www.typescriptlang.org) is helpful, but not required.
 
-关于 [TypeScript](https://www.typescriptlang.org/) 的知识会很有用，但不是必须的。
+关于 [TypeScript](https://www.typescriptlang.org) 的知识会很有用，但不是必须的。
 
 To install Angular on your local system, you need the following:
 
@@ -46,8 +48,9 @@ To install Angular on your local system, you need the following:
 
 | Requirements | Details |
 | :----------- | :------ |
-| Requirements | 详情 |
+| 需求 | 详情 |
 | Node.js <a id="nodejs"></a> | Angular requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.  <div class="alert is-helpful"> For information about specific version requirements, see the `engines` key in the [package.json](https://unpkg.com/browse/@angular/core/package.json) file. </div> For more information on installing Node.js, see [nodejs.org](https://nodejs.org "Nodejs.org"). If you are unsure what version of Node.js runs on your system, run `node -v` in a terminal window. |
+| Node.js <a id="nodejs"></a> | Angular 需要 Node.js 的[活跃 LTS 版或维护期 LTS 版](https://nodejs.org/about/releases)。<div class="alert is-helpful"> 关于具体版本需求，参阅 [package.json](https://unpkg.com/browse/@angular/core/package.json) 文件中的 `engines`。 </div> 要了解如何安装 Node.js，参阅 [nodejs.org](http://nodejs.org "Nodejs.org")。如果你不确定系统中正在运行的 Node.js 版本是什么，请在终端窗口中运行 `node -v`。 |
 | npm package manager <a id="npm"></a> | Angular, the Angular CLI, and Angular applications depend on [npm packages](https://docs.npmjs.com/getting-started/what-is-npm) for many features and functions. To download and install npm packages, you need an npm package manager. This guide uses the [npm client](https://docs.npmjs.com/cli/install) command line interface, which is installed with `Node.js` by default. To check that you have the npm client installed, run `npm -v` in a terminal window. |
 | npm package manager <a id="npm"></a> | Angular、Angular CLI 以及 Angular 应用都要依赖 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)来实现很多特性和功能。要下载并安装 npm 包，你需要一个 npm 包管理器。本指南使用 [npm 客户端](https://docs.npmjs.com/cli/install)命令行界面，该界面默认安装在 `Node.js`。要检查你是否安装了 npm 客户端，请在终端窗口中运行 `npm -v` 。 |
 
@@ -78,7 +81,13 @@ npm install -g &commat;angular/cli<aio-angular-dist-tag class="pln"></aio-angula
   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
   </code-example>
 
+<p>在 Windows 客户端计算机上，默认禁用 PowerShell 脚本的执行。要允许执行 npm 全局二进制文件所需的 PowerShell 脚本，你必须设置以下内容<a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies">执行策略</a>：</p><code-example language="sh">
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+  </code-example>
+
   <p>Carefully read the message displayed after executing the command and follow the instructions. Make sure you understand the implications of setting an execution policy.</p>
+
+<p>仔细阅读执行命令后显示的消息并按照说明进行操作。确保你了解设置执行策略的含义。</p>
 
 </div>
 
@@ -157,7 +166,7 @@ to `http://localhost:4200/`.
 
 If your installation and setup was successful, you should see a page similar to the following.
 
-如果你的安装和环境搭建成功了，就会看到如下页面：。
+如果你的安装和环境搭建成功了，就会看到如下页面。
 
 <div class="lightbox">
 

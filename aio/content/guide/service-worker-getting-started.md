@@ -9,7 +9,7 @@ It then uses an example to show you a service worker in action, demonstrating lo
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 A basic understanding of the information in [Introduction to Angular service workers](guide/service-worker-intro).
 
@@ -65,7 +65,7 @@ The preceding command completes the following actions:
 
 1. Creates the service worker configuration file called [`ngsw-config.json`](guide/service-worker-config), which specifies the caching behaviors and other settings.
 
-   创建一个名叫 [`ngsw-config.json`](/guide/service-worker-config) 的 Service Worker 配置文件，它会用来指定缓存的行为以及其它设定。
+   创建一个名叫 [`ngsw-config.json`](guide/service-worker-config) 的 Service Worker 配置文件，它会用来指定缓存的行为以及其它设定。
 
    Now, build the project:
 
@@ -118,10 +118,15 @@ http-server -p 8080 -c-1 dist/&lt;project-name&gt;
 With the server running, point your browser at `http://localhost:8080`.
 Your application should load normally.
 
+在服务器运行起来之后，你可以在浏览器中访问 `<http://localhost:8080/>`。你的应用像通常一样加载。
+
 <div class="alert is-helpful">
 
 **TIP**: <br />
 When testing Angular service workers, it's a good idea to use an incognito or private window in your browser to ensure the service worker doesn't end up reading from a previous leftover state, which can cause unexpected behavior.
+
+**提示**：<br />
+当测试 Angular Service Worker 时，最好使用浏览器中的隐身或隐私窗口，以确保 Service Worker 不会从以前的残留状态中读取数据，否则可能导致意外的行为。
 
 </div>
 
@@ -129,6 +134,9 @@ When testing Angular service workers, it's a good idea to use an incognito or pr
 
 **NOTE**: <br />
 If you are not using HTTPS, the service worker will only be registered when accessing the application on `localhost`.
+
+**注意**：<br />
+如果没有使用 HTTPS，那么 Service Worker 只会在 `localhost` 上的应用中进行注册。
 
 </div>
 
@@ -192,6 +200,10 @@ Under the "Size" column, the requests state is `(ServiceWorker)`.
 This means that the resources are not being loaded from the network.
 Instead, they are being loaded from the service worker's cache.
 
+**注意**：<br />
+在 “Size” 列中，请求的状态是 `(ServiceWorker)`。
+这表示该资源不是从网络上加载的，而是从 Service Worker 的缓存中。
+
 </div>
 
 ### What's being cached?
@@ -209,11 +221,11 @@ The `ngsw-config.json` boilerplate configuration is set up to cache the specific
 
 * Build artifacts (JS and CSS bundles)
 
-  构建结果（JS 和 CSS 包）。
+  构建结果（JS 和 CSS 包）
 
 * Anything under `assets`
 
-  `assets` 下的一切。
+  `assets` 下的一切
 
 * Images and fonts directly under the configured `outputPath` (by default `./dist/<project-name>/`) or `resourcesOutputPath`.
   See [`ng build`](cli/build) for more information about these options.
@@ -338,7 +350,7 @@ You might also be interested in the following:
 
 * [Communicating with service workers](guide/service-worker-communications)
 
-  [与 Service Worker 通讯](guide/service-worker-communications)。
+  [与 Service Worker 通讯](guide/service-worker-communications)
 
 <!-- links -->
 

@@ -54,7 +54,12 @@ function canLoadFails(route: Route): Observable<LoadedRouterConfig> {
 /**
  * Returns the `UrlTree` with the redirection applied.
  *
+ * 返回应用了重定向的 `UrlTree` 。
+ *
  * Lazy modules are loaded along the way.
+ *
+ * 延迟模块会在此加载。
+ *
  */
 export function applyRedirects(
     injector: EnvironmentInjector, configLoader: RouterConfigLoader, urlSerializer: UrlSerializer,

@@ -12,7 +12,7 @@ The schematic collection can be a powerful tool for creating, modifying, and mai
 You might use schematics, for example, to generate commonly-used UI patterns or specific components, using predefined templates or layouts.
 Use schematics to enforce architectural rules and conventions, making your projects consistent and inter-operative.
 
-原理图的集合可以作为一个强大的工具，以创建、修改和维护任何软件项目，特别是当要自定义 Angular 项目以满足你自己组织的特定需求时。例如，你可以借助原理图来用预定义的模板或布局生成常用的 UI 模式或特定的组件。也可以用原理图来强制执行架构规则和约定，让你的项目保持一致性和互操作性。
+原理图的集合可以作为一个强大的工具，以创建、修改和维护任何软件项目，特别是当要自定义 Angular 项目以满足你自己组织的特定需求时。比如，你可以借助原理图来用预定义的模板或布局生成常用的 UI 模式或特定的组件。也可以用原理图来强制执行架构规则和约定，让你的项目保持一致性和互操作性。
 
 ## Schematics for the Angular CLI
 
@@ -60,6 +60,8 @@ See [Workspace Configuration](guide/workspace-config) for information about how 
 The JSON schemas for the default schematics used by the CLI to generate projects and parts of projects are collected in the package [`@schematics/angular`](https://github.com/angular/angular-cli/tree/main/packages/schematics/angular).
 The schema describes the options available to the CLI for each of the `ng generate` sub-commands, as shown in the `--help` output.
 
+CLI 中那些用来生成项目及其部件的默认原理图，其 JSON 模式收集在 [`@schematics/angular`](https://github.com/angular/angular-cli/tree/main/packages/schematics/angular) 包中。该模式描述了 CLI 中每个可用的 `ng generate` 子命令选项，如 `--help` 输出中所示。
+
 ## Developing schematics for libraries
 
 ## 编写库的原理图
@@ -70,15 +72,15 @@ As a library developer, you can create your own collections of custom schematics
 
 * An *add schematic* lets developers install your library in an Angular workspace using `ng add`
 
-  *添加（Add）原理图*允许开发人员使用 `ng add` 在 Angular 工作区中安装你的库。
+  *添加（Add）原理图*允许开发人员使用 `ng add` 在 Angular 工作区中安装你的库
 
 * *Generation schematics* can tell the `ng generate` subcommands how to modify projects, add configurations and scripts, and scaffold artifacts that are defined in your library
 
-  *生成（Generation）原理图*可以告诉 `ng generate` 子命令如何修改项目、添加配置和脚本，以及为库中定义的工件提供脚手架。
+  *生成（Generation）原理图*可以告诉 `ng generate` 子命令如何修改项目、添加配置和脚本，以及为库中定义的工件提供脚手架
 
 * An *update schematic* can tell the `ng update` command how to update your library's dependencies and adjust for breaking changes when you release a new version
 
-  *更新（Update）原理图*可以告诉 `ng update` 命令，如何更新库的依赖，并在发布新版本时调整其中的重大变更。
+  *更新（Update）原理图*可以告诉 `ng update` 命令，如何更新库的依赖，并在发布新版本时调整其中的重大变更
 
 For more details of what these look like and how to create them, see:
 
@@ -104,17 +106,17 @@ The `add` command uses your package manager to download new dependencies, and in
 For example, the [`@angular/material`](https://material.angular.io/guide/schematics) schematic tells the `add` command to install and set up Angular Material and theming, and register new starter components that can be created with `ng generate`.
 Look at this one as an example and model for your own add schematic.
 
-例如，[`@angular/material`](https://material.angular.cn/guide/schematics) 原理图会要求 `add` 命令安装并设置 Angular Material 及其主题，并注册可通过 `ng generate` 创建的新启动器组件。可以把它作为自己的 "添加原理图" 的范例。
+比如，[`@angular/material`](https://material.angular.cn/guide/schematics) 原理图会要求 `add` 命令安装并设置 Angular Material 及其主题，并注册可通过 `ng generate` 创建的新启动器组件。可以把它作为自己的 "添加原理图" 的范例。
 
 Partner and third party libraries also support the Angular CLI with add schematics.
 For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://vmware.github.io/clarity/documentation/v1.0/get-started).
 
-合作伙伴和第三方库也可以通过添加原理图来支持 Angular CLI。例如，`@ng-bootstrap/schematics` 会把 [ng-bootstrap](https://ng-bootstrap.github.io/) 添加到应用中，`@clr/angular` 会安装并设置 [VMWare 的 Clarity](https://vmware.github.io/clarity/documentation/v1.0/get-started)。
+合作伙伴和第三方库也可以通过添加原理图来支持 Angular CLI。比如，`@ng-bootstrap/schematics` 会把 [ng-bootstrap](https://ng-bootstrap.github.io) 添加到应用中，`@clr/angular` 会安装并设置 [VMWare 的 Clarity](https://vmware.github.io/clarity/documentation/v1.0/get-started)。
 
 An add schematic can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
 For example, the `@angular/pwa` schematic turns your application into a PWA by adding an application manifest and service worker.
 
-"添加原理图" 还可以通过更改配置、添加额外依赖（比如腻子脚本），或者添加程序包特有的初始化代码来修改项目。例如，`@angular/pwa` 原理图会通过添加一个应用清单（manifest）和 Service Worker。
+"添加原理图" 还可以通过更改配置、添加额外依赖（比如腻子脚本），或者添加程序包特有的初始化代码来修改项目。比如，`@angular/pwa` 原理图会通过添加一个应用清单（manifest）和 Service Worker。
 
 ### Generation schematics
 
@@ -128,7 +130,7 @@ The documented sub-commands use the default Angular generation schematics, but y
 Angular Material, for example, supplies generation schematics for the UI components that it defines.
 The following command uses one of these schematics to render an Angular Material `<mat-table>` that is pre-configured with a datasource for sorting and pagination.
 
-例如，Angular Material 为它定义的一些 UI 组件提供了生成器原理图。下面的命令会使用其中一个原理图来渲染一个 Angular Material 的 `<mat-table>` 组件，它预先配置了一个用于排序和分页的数据源。
+比如，Angular Material 为它定义的一些 UI 组件提供了生成器原理图。下面的命令会使用其中一个原理图来渲染一个 Angular Material 的 `<mat-table>` 组件，它预先配置了一个用于排序和分页的数据源。
 
 <code-example format="shell" language="shell">
 
@@ -171,7 +173,7 @@ If you pass the command a set of libraries to update (or the `--all` flag), it u
 
 If there are inconsistencies (for example, if peer dependencies cannot be matched by a simple [semver](https://semver.io) range), the command generates an error and does not change anything in the workspace.
 
-如果存在不一致（例如，如果在某个简单的 [semver](https://semver.io/) 范围内无法匹配对等依赖），那么该命令会生成一个错误，并且不会更改工作区中的任何内容。
+如果存在不一致（比如，如果在某个简单的 [semver](https://semver.io) 范围内无法匹配对等依赖），那么该命令会生成一个错误，并且不会更改工作区中的任何内容。
 
 We recommend that you do not force an update of all dependencies by default.
 Try updating specific dependencies first.
@@ -179,6 +181,8 @@ Try updating specific dependencies first.
 我们建议你不要强制更新所有的依赖项，而应该首先尝试更新特定的依赖项。
 
 For more about how the `ng update` command works, see [Update Command](https://github.com/angular/angular-cli/blob/main/docs/specifications/update.md).
+
+关于 `ng update` 命令工作原理的更多信息，请参阅“[更新命令”](https://github.com/angular/angular-cli/blob/main/docs/specifications/update.md)。
 
 </div>
 
@@ -188,7 +192,7 @@ If you create a new version of your library that introduces potential breaking c
 
 For example, suppose you want to update the Angular Material library.
 
-例如，假设你要更新 Angular Material 库。
+比如，假设你要更新 Angular Material 库。
 
 <code-example format="shell" language="shell">
 ng update &commat;angular/material

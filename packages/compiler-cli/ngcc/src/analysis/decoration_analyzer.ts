@@ -36,6 +36,9 @@ import {isWithinPackage, NOOP_DEPENDENCY_TRACKER} from './util';
 
 /**
  * Simple class that resolves and loads files directly from the filesystem.
+ *
+ * 直接从文件系统解析和加载文件的简单类。
+ *
  */
 class NgccResourceLoader implements ResourceLoader {
   constructor(private fs: ReadonlyFileSystem) {}
@@ -57,6 +60,9 @@ class NgccResourceLoader implements ResourceLoader {
 
 /**
  * This Analyzer will analyze the files that have decorated classes that need to be transformed.
+ *
+ * 此分析器将分析具有需要转换的装饰类的文件。
+ *
  */
 export class DecorationAnalyzer {
   private program = this.bundle.src.program;
@@ -159,7 +165,14 @@ export class DecorationAnalyzer {
   /**
    * Analyze a program to find all the decorated files should be transformed.
    *
-   * @returns a map of the source files to the analysis for those files.
+   * 分析程序以查找应该转换的所有装饰文件。
+   *
+   * @returns
+   *
+   * a map of the source files to the analysis for those files.
+   *
+   * 源文件到这些文件的分析的映射。
+   *
    */
   analyzeProgram(): DecorationAnalyses {
     for (const sourceFile of this.program.getSourceFiles()) {

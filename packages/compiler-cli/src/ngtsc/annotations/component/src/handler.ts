@@ -41,6 +41,9 @@ const EMPTY_ARRAY: any[] = [];
 
 /**
  * `DecoratorHandler` which handles the `@Component` annotation.
+ *
+ * 处理 `@Component` 注解的 `DecoratorHandler` 。
+ *
  */
 export class ComponentDecoratorHandler implements
     DecoratorHandler<Decorator, ComponentAnalysisData, ComponentSymbol, ComponentResolutionData> {
@@ -68,6 +71,9 @@ export class ComponentDecoratorHandler implements
    * During the asynchronous preanalyze phase, it's necessary to parse the template to extract
    * any potential <link> tags which might need to be loaded. This cache ensures that work is not
    * thrown away, and the parsed template is reused during the analyze phase.
+   *
+   * 在异步预分析阶段，有必要解析模板以提取任何潜在的<link>可能需要加载的标签。此缓存可确保不会丢弃工作，并且在分析阶段重用解析后的模板。
+   *
    */
   private preanalyzeTemplateCache = new Map<DeclarationNode, ParsedTemplateWithSource>();
   private preanalyzeStylesCache = new Map<DeclarationNode, string[]|null>();
@@ -941,7 +947,14 @@ export class ComponentDecoratorHandler implements
    * Check whether adding an import from `origin` to the source-file corresponding to `expr` would
    * create a cyclic import.
    *
-   * @returns a `Cycle` object if a cycle would be created, otherwise `null`.
+   * 检查添加从 `origin` 导入到与 `expr` 对应的源文件会创建循环导入。
+   *
+   * @returns
+   *
+   * a `Cycle` object if a cycle would be created, otherwise `null`.
+   *
+   * 如果要创建循环，则为 `Cycle` 对象，否则为 `null` 。
+   *
    */
   private _checkForCyclicImport(
       importedFile: ImportedFile, expr: Expression, origin: ts.SourceFile): Cycle|null {

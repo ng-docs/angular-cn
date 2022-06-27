@@ -22,6 +22,10 @@ const CORE_TOKENS_GLOBAL_NAME = 'coreTokens';
  * Returns a {@link DebugElement} for the given native DOM element, or
  * null if the given native element does not have an Angular view associated
  * with it.
+ *
+ * 返回给定本机 DOM 元素的 {@link DebugElement} ，如果给定的本机元素没有与之关联的 Angular
+ * 视图，则返回 null 。
+ *
  */
 export function inspectNativeElementR2(element: any): DebugNode|null {
   return ɵgetDebugNodeR2(element);

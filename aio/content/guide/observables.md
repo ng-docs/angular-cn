@@ -92,9 +92,11 @@ There is a constructor that you use to create new instances, but for illustratio
 
 | RxJS methods | Details |
 | :----------- | :------ |
-| RxJS methods | 详情 |
+| RxJS 方法 | 详情 |
 | `of(...items)` | Returns an `Observable` instance that synchronously delivers the values provided as arguments. |
+| `of(...items)` | 返回一个 `Observable` 实例，它用同步的方式把参数中提供的这些值发送出来。 |
 | `from(iterable)` | Converts its argument to an `Observable` instance. This method is commonly used to convert an array to an observable. |
+| `from(iterable)` | 把它的参数转换成一个 `Observable` 实例。该方法通常用于把一个数组转换成一个（发送多个值的）可观察对象。 |
 
 </div>
 
@@ -122,6 +124,10 @@ The `error` and `complete` handlers are optional.
 A `next()` function could receive, for instance, message strings, or event objects, numeric values, or structures, depending on context.
 As a general term, we refer to data published by an observable as a *stream*.
 Any type of value can be represented with an observable, and the values are published as a stream.
+
+**注意**：<br />
+`next()` 函数可以接受消息字符串、事件对象、数字值或各种结构，具体类型取决于上下文。
+为了更通用一点，我们把由可观察对象发布出来的数据统称为*流*。任何类型的值都可以表示为可观察对象，而这些值会被发布为一个流。
 
 </div>
 

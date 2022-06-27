@@ -17,7 +17,12 @@ import {PathMatchTypeTransform} from './transform';
 import {UpdateRecorder} from './update_recorder';
 
 
-/** Migration that adds explicit type to `Route`/`Routes` which use `patchMatch` */
+/**
+ * Migration that adds explicit type to `Route`/`Routes` which use `patchMatch`
+ *
+ * 将显式类型添加到使用 `patchMatch` 的 `Route` / `Routes` 的迁移
+ *
+ */
 export default function(): Rule {
   return async (tree: Tree) => {
     const {buildPaths, testPaths} = await getProjectTsConfigPaths(tree);
@@ -52,7 +57,12 @@ function runMigration(tree: Tree, tsconfigPath: string, basePath: string): void 
   // file in order to avoid shifted character offsets.
   updateRecorders.forEach(recorder => recorder.commitUpdate());
 
-  /** Gets the update recorder for the specified source file. */
+  /**
+   * Gets the update recorder for the specified source file.
+   *
+   * 获取指定源文件的更新记录器。
+   *
+   */
   function getUpdateRecorder(sourceFile: ts.SourceFile): UpdateRecorder {
     if (updateRecorders.has(sourceFile)) {
       return updateRecorders.get(sourceFile)!;

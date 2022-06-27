@@ -1,5 +1,7 @@
 # Adding navigation
 
+# 添加导航
+
 This guide builds on the first step of the Getting Started tutorial, [Get started with a basic Angular app](start "Get started with a basic Angular app").
 
 本指南基于入门教程的第一步：[基本 Angular 应用入门](start "开始使用基本的 Angular 应用")。
@@ -14,15 +16,15 @@ In the following sections, you'll add the following features to the application:
 
 * Type a URL in the address bar to navigate to a corresponding product page
 
-  在地址栏中键入 URL 以导航到相应的产品页面。
+  在地址栏中键入 URL 以导航到相应的产品页面
 
 * Click links on the page to navigate within your single-page application
 
-  单击页面上的链接以在单页应用中导航。
+  单击页面上的链接以在单页应用中导航
 
 * Click the browser's back and forward buttons to navigate the browser history intuitively
 
-  单击浏览器的后退和前进按钮以直观地在浏览器的历史记录中浏览。
+  单击浏览器的后退和前进按钮以直观地在浏览器的历史记录中浏览
 
 <a id="define-routes"></a>
 
@@ -67,7 +69,7 @@ This section shows you how to define a route to show individual product details.
    The final segment is variable, inserting the `id` property of the current product.
    For example, the URL for a product with an `id` of 1 would be similar to `https://getting-started-myfork.stackblitz.io/products/1`.
 
-   `RouterLink` 指令可帮助你自定义 a 元素。在这里，路由或 URL 中包含一个固定的区段 `/products`。最后一段则是变量，插入当前产品的 `id`。 例如，`id` 为 1 的产品的 URL 是 `https://getting-started-myfork.stackblitz.io/products/1`。
+   `RouterLink` 指令可帮助你自定义 a 元素。在这里，路由或 URL 中包含一个固定的区段 `/products`。最后一段则是变量，插入当前产品的 `id`。 比如，`id` 为 1 的产品的 URL 是 `https://getting-started-myfork.stackblitz.io/products/1`。
 
 1. Verify that the router works as intended by clicking the product name.
    The application should display the `ProductDetailsComponent`, which currently says "product-details works!"
@@ -91,6 +93,8 @@ This section shows you how to define a route to show individual product details.
 
 The `ProductDetailsComponent` handles the display of each product.
 The Angular Router displays components based on the browser's URL and [your defined routes](#define-routes).
+
+`ProductDetailsComponent` 会处理每个产品的显示工作。Angular 路由器会根据浏览器的 URL 和[你定义的路径](#define-routes)来显示组件。
 
 In this section, you'll use the Angular Router to combine the `products` data and route information to display the specific details for each product.
 
@@ -166,7 +170,7 @@ For more information about the Angular Router, see [Routing & Navigation](guide/
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 You have configured your application so you can view product details, each with a distinct URL.
 
@@ -174,7 +178,7 @@ You have configured your application so you can view product details, each with 
 
 To continue exploring Angular:
 
-要继续探索 Angular，你可以：
+继续探索 Angular：
 
 * Continue to [Managing Data](start/start-data "Try it: Managing Data") to add a shopping cart feature, manage cart data, and retrieve external data for shipping prices
 

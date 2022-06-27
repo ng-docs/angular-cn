@@ -16,6 +16,8 @@ Angular 的 DI 框架会在实例化某个类时为其提供依赖。可以使�
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+包含本指南中代码片段的可工作范例，参阅<live-example></live-example>。
+
 </div>
 
 ## Creating an injectable service
@@ -80,7 +82,7 @@ region="ctor-signature"></code-example>
 
 For more information, see [Providing dependencies in modules](guide/providers) and [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
-有关更多信息，请参阅[在模块中提供依赖](guide/providers)和[分层注入器](guide/hierarchical-dependency-injection)。
+有关更多信息，参阅[在模块中提供依赖](guide/providers)和[分层注入器](guide/hierarchical-dependency-injection)。
 
 <a id="service-needs-service"></a>
 
@@ -124,7 +126,7 @@ In this example, the `getHeroes()` method uses the `Logger` service by logging a
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * [Dependency providers](guide/dependency-injection-providers)
 

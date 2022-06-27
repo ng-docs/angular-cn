@@ -4,7 +4,7 @@
 
 ## What does this migration do?
 
-## 这种迁移是做什么的？
+## 此迁移有什么作用？
 
 In Angular version 8, a schematic added `static` flags to all `@ViewChild()` and `@ContentChild()` queries.
 This was the first step towards changing the default behavior.
@@ -47,11 +47,14 @@ If so, the schematic removes the flag, as it now matches the default.
 **NOTE**: <br />
 The flag is not supported in `@ViewChildren()` or `@ContentChildren()` queries, so the schematic will not check these properties.
 
+**注意**：<br />
+`@ViewChildren()` 或 `@ContentChildren()` 查询中不支持该标志，因此该原理图不会检查这些属性。
+
 </br>
 
 ## Why is this migration necessary?
 
-## 为何这次迁移必不可少？
+## 为什么此迁移是必要的？
 
 This schematic performs a code cleanup to remove `static` flags that match the default, as they are no longer necessary.
 Functionally, the code change should be a noop.
@@ -60,9 +63,11 @@ Functionally, the code change should be a noop.
 
 | Versions | Details |
 | :------- | :------ |
-| Versions | 详情 |
+| 版本 | 详情 |
 | Before version 9 | Angular figured out the static or dynamic nature of a query automatically, based on how the template was written. Looking at templates in this way, however, caused buggy and surprising behavior (see more about that in the [Static Query Migration Guide](guide/static-query-migration#what-does-this-flag-mean)). |
+| 版本 9 之前 | Angular 会根据模板的编写方式来自动判定查询应该是静态的还是动态的。然而，以这种方式处理模板会导致错误和意外行为（请参阅[静态查询迁移指南](guide/static-query-migration#what-does-this-flag-mean)中的更多内容） |
 | As of version 9 | Angular uses dynamic queries (`static: false`) by default, which simplifies queries. Developers can still explicitly set a query to `static: true` if necessary. |
+| 从版本 9 开始 | Angular 默认使用动态查询（ `static: false` ），简化了查询过程。开发人员仍然可以把查询显式设置为 `static: true`。 |
 
 <div class=" alert is-helpful">
 
@@ -76,9 +81,11 @@ The `static` option for `@ViewChild()` and `@ContentChild()` queries determines 
 
 | Queries | Details |
 | :------ | :------ |
-| Queries | 详情 |
+| 查询 | 详情 |
 | Static queries (`static: true`) | The query resolves once the view has been created, but before change detection runs. The result, though, will never be updated to reflect changes to your view, such as changes to `ngIf` and `ngFor` blocks. |
+| 静态查询 (`static: true`) | 视图刚刚被创建，还没有运行变更检测之前，此查询就会解析。但是，其结果永远不会更新，以反映对视图的更改，比如对 `ngIf` 和 `ngFor` 块的更改。 |
 | Dynamic queries (`static: false`) | The query resolves after either `ngAfterViewInit()` or `ngAfterContentInit()` for `@ViewChild()` and `@ContentChild()` respectively. The result will be updated for changes to your view, such as changes to `ngIf` and `ngFor` blocks. |
+| 动态查询 (`static: false`) | 此查询会分别在 `ngAfterViewInit()` 或 `ngAfterContentInit()` 之后进行解析。此结果将随着对视图的更改而更新，比如对 `ngIf` 和 `ngFor` 块的更改。 |
 
 For more information, see the following entries in the [Static Query Migration Guide](guide/static-query-migration):
 
@@ -104,11 +111,11 @@ In order to support applications that are still running with version 8, the safe
 
 | Library and application combination | Details |
 | :---------------------------------- | :------ |
-| Library and application combination | 详情 |
+| 库和应用的组合 | 详情 |
 | Libraries on version 9 with applications running version 8 | The schematic won't run on libraries. As long as libraries retain their `static` flags from version 8, they should work with apps on 8. |
-| Libraries on version 9 with applications running version 8 | 该原理图不会在库中运行。只要库从版本 8 开始就保留了 `static` 标志，就同样可以在 8 上运行。 |
+| 版本 9 的库和版本 8 的应用 | 该原理图不会在库中运行。只要库从版本 8 开始就保留了 `static` 标志，就同样可以在 8 上运行。 |
 | Libraries on version 8 with applications running version 9 | Libraries will have explicit flags defined. The behavior with explicit flags has not changed. |
-| Libraries on version 8 with applications running version 9 | 库中中会定义显式的标志。只要带有显式标志，其行为就不会改变。 |
+| 版本 8 的库和版本 9 的应用 | 库中中会定义显式的标志。只要带有显式标志，其行为就不会改变。 |
 
 ### What about applications using non-migrated libraries?
 

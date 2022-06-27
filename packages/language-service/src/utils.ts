@@ -116,6 +116,9 @@ function getInlineTemplateInfoAtPosition(
 
 /**
  * Retrieves the `ts.ClassDeclaration` at a location along with its template nodes.
+ *
+ * 检索某个位置的 `ts.ClassDeclaration` 及其模板节点。
+ *
  */
 export function getTemplateInfoAtPosition(
     fileName: string, position: number, compiler: NgCompiler): TemplateInfo|undefined {
@@ -134,6 +137,9 @@ export function getTemplateInfoAtPosition(
 /**
  * First, attempt to sort component declarations by file name.
  * If the files are the same, sort by start location of the declaration.
+ *
+ * 首先，尝试按文件名对组件声明进行排序。如果文件相同，请按声明的开始位置排序。
+ *
  */
 function tsDeclarationSortComparator(a: DeclarationNode, b: DeclarationNode): number {
   const aFile = a.getSourceFile().fileName;
@@ -168,6 +174,9 @@ function getFirstComponentForTemplateFile(fileName: string, compiler: NgCompiler
 
 /**
  * Given an attribute node, converts it to string form for use as a CSS selector.
+ *
+ * 给定一个属性节点，将其转换为字符串形式以用作 CSS 选择器。
+ *
  */
 function toAttributeCssSelector(attribute: t.TextAttribute|t.BoundAttribute|t.BoundEvent): string {
   let selector: string;
@@ -188,6 +197,9 @@ function getNodeName(node: t.Template|t.Element): string {
 
 /**
  * Given a template or element node, returns all attributes on the node.
+ *
+ * 给定模板或元素节点，返回节点上的所有属性。
+ *
  */
 function getAttributes(node: t.Template|
                        t.Element): Array<t.TextAttribute|t.BoundAttribute|t.BoundEvent> {
@@ -201,6 +213,9 @@ function getAttributes(node: t.Template|
 
 /**
  * Given two `Set`s, returns all items in the `left` which do not appear in the `right`.
+ *
+ * 给定两个 `Set` ，返回 `left` 没有出现在 `right` 的所有条目。
+ *
  */
 function difference<T>(left: Set<T>, right: Set<T>): Set<T> {
   const result = new Set<T>();
@@ -219,9 +234,24 @@ function difference<T>(left: Set<T>, right: Set<T>): Set<T> {
  * elimination: compare the directive matches with the tag present against the directive matches
  * without it. The difference would be the directives which match because the tag is present.
  *
+ * 给定一个元素或模板，确定哪些指令匹配，因为标签存在。例如，如果指令选择器是 `div[myAttr]`
+ * ，这将匹配 div 元素，但如果选择器只是 `[myAttr]`
+ * 则不会。我们通过消除来找到由于此标签而应用了哪些指令：将带有此标签的指令匹配项与没有它的指令匹配项进行比较。区别将是因为存在标签而匹配的指令。
+ *
  * @param element The element or template node that the attribute/tag is part of.
+ *
+ * 属性/标签所属的元素或模板节点。
+ *
  * @param directives The list of directives to match against.
- * @returns The list of directives matching the tag name via the strategy described above.
+ *
+ * 要匹配的指令列表。
+ *
+ * @returns
+ *
+ * The list of directives matching the tag name via the strategy described above.
+ *
+ * 通过上述策略与标签名称匹配的指令列表。
+ *
  */
 // TODO(atscott): Add unit tests for this and the one for attributes
 export function getDirectiveMatchesForElementTag(
@@ -247,10 +277,26 @@ export function makeElementSelector(element: t.Element|t.Template): string {
  * matches with the attribute present against the directive matches without it. The difference would
  * be the directives which match because the attribute is present.
  *
+ * 给定一个属性名称，确定哪些指令匹配，因为该属性存在。我们通过消除来找到由于此属性而应用了哪些指令：将具有存在属性的指令匹配项与没有它的指令匹配项进行比较。不同之处在于因为存在属性而匹配的指令。
+ *
  * @param name The name of the attribute
+ *
+ * 属性的名称
+ *
  * @param hostNode The node which the attribute appears on
+ *
+ * 属性出现的节点
+ *
  * @param directives The list of directives to match against.
- * @returns The list of directives matching the tag name via the strategy described above.
+ *
+ * 要匹配的指令列表。
+ *
+ * @returns
+ *
+ * The list of directives matching the tag name via the strategy described above.
+ *
+ * 通过上述策略与标签名称匹配的指令列表。
+ *
  */
 export function getDirectiveMatchesForAttribute(
     name: string, hostNode: t.Template|t.Element,
@@ -268,6 +314,9 @@ export function getDirectiveMatchesForAttribute(
 /**
  * Given a list of directives and a text to use as a selector, returns the directives which match
  * for the selector.
+ *
+ * 给定指令列表和要用作选择器的文本，返回与选择器匹配的指令。
+ *
  */
 function getDirectiveMatchesForSelector(
     directives: DirectiveSymbol[], selector: string): Set<DirectiveSymbol> {
@@ -296,6 +345,9 @@ function getDirectiveMatchesForSelector(
 /**
  * Returns a new `ts.SymbolDisplayPart` array which has the alias imports from the tcb filtered
  * out, i.e. `i0.NgForOf`.
+ *
+ * 返回一个新的 `ts.SymbolDisplayPart` 数组，该数组具有从 tcb 过滤掉的别名导入，即 `i0.NgForOf` 。
+ *
  */
 export function filterAliasImports(displayParts: ts.SymbolDisplayPart[]): ts.SymbolDisplayPart[] {
   const tcbAliasImportRegex = /i\d+/;
@@ -327,6 +379,9 @@ export function isDollarEvent(n: t.Node|e.AST): n is e.PropertyRead {
 /**
  * Returns a new array formed by applying a given callback function to each element of the array,
  * and then flattening the result by one level.
+ *
+ * 返回一个新数组，通过将给定的回调函数应用于数组的每个元素，然后将结果展平一个级别来形成。
+ *
  */
 export function flatMap<T, R>(items: T[]|readonly T[], f: (item: T) => R[] | readonly R[]): R[] {
   const results: R[] = [];
@@ -361,6 +416,9 @@ export function isWithin(position: number, span: AbsoluteSourceSpan|ParseSourceS
 /**
  * For a given location in a shim file, retrieves the corresponding file url for the template and
  * the span in the template.
+ *
+ * 对于 shim 文件中的给定位置，检索模板的对应文件 url 和模板中的跨度。
+ *
  */
 export function getTemplateLocationFromTcbLocation(
     templateTypeChecker: TemplateTypeChecker, tcbPath: AbsoluteFsPath, tcbIsShim: boolean,

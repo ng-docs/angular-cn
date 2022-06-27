@@ -55,16 +55,27 @@ interface WaitCallback {
 /**
  * Internal injection token that can used to access an instance of a Testability class.
  *
+ * 可用于访问 Testability 类的实例的内部注入标记。
+ *
  * This token acts as a bridge between the core bootstrap code and the `Testability` class. This is
  * needed to ensure that there are no direct references to the `Testability` class, so it can be
  * tree-shaken away (if not referenced). For the environments/setups when the `Testability` class
  * should be available, this token is used to add a provider that references the `Testability`
  * class. Otherwise, only this token is retained in a bundle, but the `Testability` class is not.
+ *
+ * 此标记作为核心引导代码和 `Testability` 类之间的桥梁。这是为了确保没有对 `Testability`
+ * 类的直接引用，因此可以对它进行树形摇动（如果没有引用）。对于 `Testability`
+ * 类应该可用的环境/设置，此标记用于添加引用 `Testability`
+ * 类的提供者。否则，只有此标记会保留在包中，但 `Testability` 类不会。
+ *
  */
 export const TESTABILITY = new InjectionToken<Testability>('');
 
 /**
  * Internal injection token to retrieve Testability getter class instance.
+ *
+ * 用于检索 Testability getter 类实例的内部注入标记。
+ *
  */
 export const TESTABILITY_GETTER = new InjectionToken<GetTestability>('');
 
@@ -72,13 +83,22 @@ export const TESTABILITY_GETTER = new InjectionToken<GetTestability>('');
  * The Testability service provides testing hooks that can be accessed from
  * the browser.
  *
+ * Testability 服务提供了可以从浏览器访问的测试钩子。
+ *
  * Angular applications bootstrapped using an NgModule (via `@NgModule.bootstrap` field) will also
  * instantiate Testability by default (in both development and production modes).
+ *
+ * 默认情况下，使用 NgModule （通过 `@NgModule.bootstrap` 字段）引导的 Angular 应用程序也将实例化
+ * Testability （在开发和生产模式下）。
  *
  * For applications bootstrapped using the `bootstrapApplication` function, Testability is not
  * included by default. You can include it into your applications by getting the list of necessary
  * providers using the `provideProtractorTestingSupport()` function and adding them into the
  * `options.providers` array. Example:
+ *
+ * 对于使用 `bootstrapApplication` 函数引导的应用程序，默认情况下不包括 Testability 。你可以通过使用
+ * `provideProtractorTestingSupport()` 函数获取必要的提供程序列表并将它们添加到 `options.providers`
+ * 数组中来将其包含到你的应用程序中。示例：
  *
  * ```typescript
  * import {provideProtractorTestingSupport} from '@angular/platform-browser';
@@ -294,7 +314,12 @@ export class Testability implements PublicTestability {
   }
   /**
    * Registers an application with a testability hook so that it can be tracked.
+   *
+   * 使用可测试性钩子注册应用程序，以便可以跟踪它。
+   *
    * @param token token of application, root element
+   *
+   * 应用程序的标记，根元素
    *
    * @internal
    */
@@ -304,7 +329,12 @@ export class Testability implements PublicTestability {
 
   /**
    * Unregisters an application.
+   *
+   * 注销应用程序。
+   *
    * @param token token of application, root element
+   *
+   * 应用程序的标记，根元素
    *
    * @internal
    */

@@ -1,6 +1,6 @@
 # Introduction to Angular concepts
 
-# 架构
+# Angular 概念简介
 
 Angular is a platform and framework for building single-page client applications using HTML and TypeScript.
 Angular is written in TypeScript.
@@ -56,6 +56,8 @@ See the [Angular Glossary](guide/glossary) for basic definitions of important An
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
+  要想查看本页所讲的范例程序，参阅<live-example></live-example>。
+
 </div>
 
 ## Modules
@@ -93,6 +95,8 @@ For a more detailed discussion, see [Introduction to modules](guide/architecture
 
 ## Components
 
+## 组件
+
 Every Angular application has at least one component, the *root component* that connects a component hierarchy with the page document object model (DOM).
 Each component defines a class that contains application data and logic, and is associated with an HTML *template* that defines a view to be displayed in a target environment.
 
@@ -111,6 +115,8 @@ Angular defines a number of decorators that attach specific kinds of metadata to
 
 <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841#.x5c2ndtx0">Learn more about decorators on the web.</a>
 
+   <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841#.x5c2ndtx0">到网上学习关于装饰器的更多知识。</a>
+
 </div>
 
 ### Templates, directives, and data binding
@@ -125,9 +131,11 @@ There are two types of data binding:
 
 | Data bindings | Details |
 | :------------ | :------ |
-| Data bindings | 详情 |
+| 数据绑定 | 详情 |
 | Event binding | Lets your application respond to user input in the target environment by updating your application data. |
+| 事件绑定 | 让你的应用可以通过更新应用的数据来响应目标环境下的用户输入。 |
 | Property binding | Lets you interpolate values that are computed from your application data into the HTML. |
+| 属性绑定 | 让你将从应用数据中计算出来的值插入到 HTML 中。 |
 
 Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic.
 Angular supports *two-way data binding*, meaning that changes in the DOM, such as user choices, are also reflected in your program data.
@@ -225,7 +233,7 @@ For a more detailed discussion, see [Routing and navigation](guide/router).
 
 ## What's next
 
-## 下一步是什么
+## 接下来呢？
 
 You've learned the basics about the main building blocks of an Angular application.
 The following diagram shows how these basic pieces are related.
@@ -256,7 +264,7 @@ The following diagram shows how these basic pieces are related.
 
 Each of these subjects is introduced in more detail in the following pages.
 
-这些主题的详情在下列页面中有介绍：。
+这些主题的详情在下列页面中有介绍：
 
 * [Introduction to Modules](guide/architecture-modules)
 

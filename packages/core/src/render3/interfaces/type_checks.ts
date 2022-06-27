@@ -15,7 +15,13 @@ import {FLAGS, LView, LViewFlags} from './view';
 
 /**
  * True if `value` is `LView`.
+ *
+ * 如果 `value` `LView` ，则为真。
+ *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
+ *
+ * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ *
  */
 export function isLView(value: RNode|LView|LContainer|{}|null): value is LView {
   return Array.isArray(value) && typeof value[TYPE] === 'object';
@@ -23,7 +29,13 @@ export function isLView(value: RNode|LView|LContainer|{}|null): value is LView {
 
 /**
  * True if `value` is `LContainer`.
+ *
+ * 如果 `value` `LContainer` ，则为真。
+ *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
+ *
+ * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ *
  */
 export function isLContainer(value: RNode|LView|LContainer|{}|null): value is LContainer {
   return Array.isArray(value) && value[TYPE] === true;

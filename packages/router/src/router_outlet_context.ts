@@ -23,8 +23,13 @@ export class OutletContext {
   outlet: RouterOutletContract|null = null;
   route: ActivatedRoute|null = null;
   /**
-   * @deprecated Passing a resolver to retrieve a component factory is not required and is
+   * @deprecated
+   *
+   * Passing a resolver to retrieve a component factory is not required and is
    *     deprecated since v14.
+   *
+   * 不需要传递解析器来检索组件工厂，自 v14 以来已被弃用。
+   *
    */
   resolver: ComponentFactoryResolver|null = null;
   injector: EnvironmentInjector|null = null;

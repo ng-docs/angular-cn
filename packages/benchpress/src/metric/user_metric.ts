@@ -25,6 +25,9 @@ export class UserMetric extends Metric {
 
   /**
    * Starts measuring
+   *
+   * 开始测量
+   *
    */
   override beginMeasure(): Promise<any> {
     return Promise.resolve(true);
@@ -32,6 +35,9 @@ export class UserMetric extends Metric {
 
   /**
    * Ends measuring.
+   *
+   * 结束测量。
+   *
    */
   override endMeasure(restart: boolean): Promise<{[key: string]: any}> {
     let resolve: (result: any) => void;
@@ -67,6 +73,9 @@ export class UserMetric extends Metric {
   /**
    * Describes the metrics provided by this metric implementation.
    * (e.g. units, ...)
+   *
+   * 描述此度量实现提供的度量。 （例如单位，……）
+   *
    */
   override describe(): {[key: string]: any} {
     return this._userMetrics;

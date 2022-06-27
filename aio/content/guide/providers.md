@@ -5,9 +5,11 @@
 A provider is an instruction to the [Dependency Injection](guide/dependency-injection) system on how to obtain a value for a dependency.
 Most of the time, these dependencies are services that you create and provide.
 
-提供者就是一本说明书，用来指导[依赖注入](/guide/dependency-injection)系统该如何获取某个依赖的值。 大多数情况下，这些依赖就是你要创建和提供的那些服务。
+提供者就是一本说明书，用来指导[依赖注入](guide/dependency-injection)系统该如何获取某个依赖的值。 大多数情况下，这些依赖就是你要创建和提供的那些服务。
 
 For the final sample application using the provider that this page describes, see the <live-example></live-example>.
+
+要想查看本页提到的这个带有特性模块的范例应用，参阅 <live-example></live-example>。
 
 ## Providing a service
 
@@ -121,7 +123,7 @@ The following code adds this functionality to `UserService`.
 
 With `providedIn: 'any'`, all eagerly loaded modules share a singleton instance; however, lazy loaded modules each get their own unique instance, as shown in the following diagram.
 
-通过使用 `providedIn: 'any'`，所有急性加载的模块都会共享同一个服务单例，不过，惰性加载模块各自有它们自己独有的单例。如下所示：。
+通过使用 `providedIn: 'any'`，所有急性加载的模块都会共享同一个服务单例，不过，惰性加载模块各自有它们自己独有的单例。如下所示。
 
 <div class="lightbox">
 
@@ -199,11 +201,11 @@ You may also be interested in:
 
 * [Singleton Services](guide/singleton-services), which elaborates on the concepts covered on this page
 
-  [单例服务](guide/singleton-services)详细解释了本页包含的那些概念。
+  [单例服务](guide/singleton-services)详细解释了本页包含的那些概念
 
 * [Lazy Loading Modules](guide/lazy-loading-ngmodules)
 
-  [惰性加载模块](guide/lazy-loading-ngmodules)。
+  [惰性加载模块](guide/lazy-loading-ngmodules)
 
 * [Dependency providers](guide/dependency-injection-providers)
 
@@ -211,7 +213,7 @@ You may also be interested in:
 
 * [NgModule FAQ](guide/ngmodule-faq)
 
-  [NgModule 常见问题](guide/ngmodule-faq)。
+  [NgModule 常见问题](guide/ngmodule-faq)
 
 <!-- links -->
 

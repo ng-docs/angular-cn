@@ -17,20 +17,49 @@ import {unwrapExpression} from './typescript/functions';
 import {getPropertyNameText} from './typescript/property_name';
 
 export interface ResolvedTemplate {
-  /** Class declaration that contains this template. */
+  /**
+   * Class declaration that contains this template.
+   *
+   * 包含此模板的类声明。
+   *
+   */
   container: ts.ClassDeclaration;
-  /** File content of the given template. */
+  /**
+   * File content of the given template.
+   *
+   * 给定模板的文件内容。
+   *
+   */
   content: string;
-  /** Start offset of the template content (e.g. in the inline source file) */
+  /**
+   * Start offset of the template content (e.g. in the inline source file)
+   *
+   * 模板内容的开始偏移量（例如在内联源文件中）
+   *
+   */
   start: number;
-  /** Whether the given template is inline or not. */
+  /**
+   * Whether the given template is inline or not.
+   *
+   * 给定的模板是否是内联的。
+   *
+   */
   inline: boolean;
-  /** Path to the file that contains this template. */
+  /**
+   * Path to the file that contains this template.
+   *
+   * 包含此模板的文件的路径。
+   *
+   */
   filePath: string;
   /**
    * Gets the character and line of a given position index in the template.
    * If the template is declared inline within a TypeScript source file, the line and
    * character are based on the full source file content.
+   *
+   * 获取模板中给定位置索引的字符和行。如果模板是在 TypeScript
+   * 源文件中内联声明的，则该行和字符将基于完整的源文件内容。
+   *
    */
   getCharacterAndLineOfPosition: (pos: number) => {
     character: number, line: number
@@ -40,6 +69,9 @@ export interface ResolvedTemplate {
 /**
  * Visitor that can be used to determine Angular templates referenced within given
  * TypeScript source files (inline templates or external referenced templates)
+ *
+ * 可用于确定给定 TypeScript 源文件中引用的 Angular 模板（内联模板或外部引用模板）的访问器
+ *
  */
 export class NgComponentTemplateVisitor {
   resolvedTemplates: ResolvedTemplate[] = [];

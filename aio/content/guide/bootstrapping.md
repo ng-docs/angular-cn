@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 A basic understanding of the following:
 
@@ -58,14 +58,15 @@ The `@NgModule` decorator identifies `AppModule` as an `NgModule` class.
 
 | metadata object | Details |
 | :-------------- | :------ |
-| metadata object | 详情 |
+| 元数据对象 | 详细信息 |
 | declarations | This application's lone component. |
-| 可声明对象【模糊翻译】 | This application's lone component. |
+| declarations | 该应用所拥有的组件。 |
 | imports | Import `BrowserModule` to have browser-specific services such as DOM rendering, sanitization, and location. |
+| imports | 导入 `BrowserModule` 以获取浏览器特有的服务，比如 DOM 渲染、无害化处理和位置（location）。 |
 | providers | The service providers. |
-| 提供者【模糊翻译】 | The service providers. |
+| providers | 各种服务提供者。 |
 | bootstrap | The *root* component that Angular creates and inserts into the `index.html` host web page. |
-| 启动/引导 (bootstrap) | The *root* component that Angular creates and inserts into the `index.html` host web page. |
+| bootstrap | *根*组件，Angular 创建它并插入 `index.html` 宿主页面。 |
 
 The default application created by the Angular CLI only has one component, `AppComponent`, so it is in both the `declarations` and the `bootstrap` arrays.
 
@@ -114,6 +115,8 @@ declarations: [
 A declarable can only belong to one module, so only declare it in one `@NgModule`.
 When you need it elsewhere, import the module that contains the declarable you need.
 
+每个可声明对象都只能属于一个模块，所以只能把它声明在一个 `@NgModule` 中。当你需要在其它模块中使用它时，就要在那里导入包含这个可声明对象的模块。
+
 ### Using directives with `@NgModule`
 
 ### 通过 `@NgModule` 使用指令
@@ -144,6 +147,8 @@ The following example, named `ItemDirective` is the default directive structure 
 
 The key point here is that you have to export it, so that you can import it elsewhere.
 Next, import it into the `NgModule`, in this example `app.module.ts`, with a JavaScript import statement:
+
+重点在于你要先在这里导出它才能在别处导入它。接下来，使用 JavaScript 的 `import` 语句把它导入到 `NgModule` 中（这里是 `app.module.ts`）。
 
 <code-example header="src/app/app.module.ts" path="bootstrapping/src/app/app.module.ts" region="directive-import"></code-example>
 

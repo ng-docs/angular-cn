@@ -6,12 +6,16 @@
 
 <header>Marked for archiving</header>
 
+<header>标记为存档</header>
+
 To ensure that you have the best experience possible, this topic is marked for archiving until we determine that it clearly conveys the most accurate information possible.
 
 为确保你拥有最佳的体验，本主题已标记为存档，直到我们确定其清楚地传达了最准确的信息为止。
 
 In the meantime, this topic might be helpful:
 [Event binding](guide/event-binding).
+
+同时，本主题可能会有所帮助：[事件绑定](guide/event-binding)。
 
 If you think this content should not be archived, please file a [GitHub issue](https://github.com/angular/angular/issues/new?template=3-docs-bug.md).
 
@@ -26,6 +30,8 @@ This page explains how to bind those events to component event handlers using th
 
 Run the <live-example></live-example>.
 
+运行<live-example></live-example>
+
 ## Binding to user input events
 
 ## 绑定到用户输入事件
@@ -33,6 +39,9 @@ Run the <live-example></live-example>.
 You can use [Angular event bindings](guide/event-binding) to respond to any [DOM event](https://developer.mozilla.org/docs/Web/Events).
 Many DOM events are triggered by user input.
 Binding to these events provides a way to get input from the user.
+
+你可以使用 [Angular 事件绑定](guide/event-binding)机制来响应任何 [DOM 事件](https://developer.mozilla.org/docs/Web/Events)。
+许多 DOM 事件是由用户输入触发的。绑定这些事件可以获取用户输入。
 
 To bind to a DOM event, surround the DOM event name in parentheses and assign a quoted [template statement](guide/template-statements) to it.
 
@@ -87,13 +96,21 @@ When a user presses and releases a key, the `keyup` event occurs, and Angular pr
 The properties of an `$event` object vary depending on the type of DOM event.
 For example, a mouse event includes different information than an input box editing event.
 
-`$event` 对象的属性取决于 DOM 事件的类型。例如，鼠标事件与输入框编辑事件包含了不同的信息。
+`$event` 对象的属性取决于 DOM 事件的类型。比如，鼠标事件与输入框编辑事件包含了不同的信息。
 
 All [standard DOM event objects](https://developer.mozilla.org/docs/Web/API/Event) have a `target` property, a reference to the element that raised the event.
 In this case, `target` refers to the [`<input>` element](https://developer.mozilla.org/docs/Web/API/HTMLInputElement) and `event.target.value` returns the current contents of that element.
 
+所有[标准 DOM 事件对象](https://developer.mozilla.org/docs/Web/API/Event)都有一个 `target` 属性，
+引用触发该事件的元素。
+在本例中，`target` 是[`<input>` 元素](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)，
+`event.target.value` 返回该元素的当前内容。
+
 After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character (`|`).
 The [interpolation](guide/interpolation) displays the accumulating input box changes from the `values` property.
+
+在组件的 `onKey()` 方法中，把输入框的值和分隔符 (`|`) 追加组件的 `values` 属性。
+使用[插值](guide/interpolation)来把存放累加结果的 `values` 属性回显到屏幕上。
 
 Suppose the user enters the letters "abc", and then backspaces to remove them one by one.
 Here's what the UI displays:
@@ -130,6 +147,8 @@ a &verbar; b &verbar; c &verbar; backspace &verbar; backspace &verbar; backspace
 
 ### Type the `$event`
 
+### `$event` 的类型
+
 The example above casts the `$event` as an `any` type.
 That simplifies the code at a cost.
 There is no type information that could reveal properties of the event object and prevent silly mistakes.
@@ -150,6 +169,8 @@ The `OnKey` method more clearly expresses what it expects from the template and 
 
 ### Passing `$event` is a dubious practice
 
+### 传入 `$event` 是靠不住的做法
+
 Typing the event object reveals a significant objection to passing the entire DOM event into the method:
 The component has too much awareness of the template details.
 It can't extract information without knowing more than it should about the HTML implementation.
@@ -169,6 +190,10 @@ There's another way to get the user data:
 Use Angular [**template reference variables**](guide/template-reference-variables).
 These variables provide direct access to an element from within the template.
 To declare a template reference variable, precede an identifier with a hash (or pound) character (`#`).
+
+还有另一种获取用户数据的方式：使用 Angular 的[**模板引用变量**](guide/template-reference-variables)。
+这些变量提供了从模块中直接访问元素的能力。
+在标识符前加上井号 (`#`) 就能声明一个模板引用变量。
 
 The following example uses a template reference variable to implement a keystroke loopback in a simple template.
 
@@ -199,6 +224,8 @@ Type something in the input box, and watch the display update with each keystrok
 <div class="alert is-helpful">
 
 <header>This won't work at all unless you bind to an event.</header>
+
+<header>除非你绑定一个事件，否则这将完全无法工作。</header>
 
 Angular updates the bindings (and therefore the screen) only if the app does something in response to asynchronous events, such as keystrokes.
 This example code binds the `keyup` event to the number 0, the shortest template statement possible.
@@ -261,6 +288,8 @@ The component's `value` property is updated only when the user presses *Enter*.
 
 To fix this issue, listen to both the *Enter* key and the `blur` event.
 
+下面通过同时监听输入框的回车键和 `blur` 事件来修正这个问题。
+
 <code-example header="src/app/keyup.components.ts (v4)" path="user-input/src/app/keyup.components.ts" region="key-up-component-4"></code-example>
 
 ## Put it all together
@@ -296,8 +325,11 @@ Below is the "Little Tour of Heroes" component.
 | :----------- | :------ |
 | 小结 | 详情 |
 | Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element. |
+| 使用模板变量来引用元素 | `newHero` 模板变量引用了 `<input>` 元素。你可以在 `<input>` 的任何兄弟或子级元素中引用 `newHero`。 |
 | Pass values, not elements | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`. |
+| 传递数值，而非元素 | 获取输入框的值并将*它*传给组件的 `addHero`，而不要传递 `newHero`。 |
 | Keep template statements simple | The `(blur)` event is bound to two JavaScript statements. The first statement calls `addHero`. The second statement, `newHero.value=''`, clears the input box after a new hero is added to the list. |
+| 保持模板语句简单 | `(blur)` 事件被绑定到两个 JavaScript 语句。第一句调用 `addHero`。第二句 `newHero.value=''` 在添加新英雄到列表中后清除输入框。 |
 
 ## Source code
 
@@ -317,15 +349,15 @@ Following is all the code discussed in this page.
 Angular also supports passive event listeners.
 For example, you can use the following steps to make the scroll event passive.
 
-Angular 还支持被动事件监听器。例如，你可以使用以下步骤使滚动事件变为被动监听。
+Angular 还支持被动事件监听器。比如，你可以使用以下步骤使滚动事件变为被动监听。
 
 1. Create a file `zone-flags.ts` under `src` directory.
 
-   在 `src` 目录下创建一个文件 `zone-flags.ts` 。
+   在 `src` 目录下创建一个 `zone-flags.ts` 文件。
 
 1. Add the following line into this file.
 
-   将以下行添加到此文件中。
+   往这个文件中添加如下语句。
 
    <code-example format="typescript" language="typescript">
 
@@ -335,7 +367,7 @@ Angular 还支持被动事件监听器。例如，你可以使用以下步骤使
 
 1. In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
 
-   在 `src/polyfills.ts` 文件中，在导入 zone.js 之前，先导入新创建的 `zone-flags` 。
+   在 `src/polyfills.ts` 文件中，导入 `zone.js` 之前，先导入新创建的 `zone-flags` 文件。
 
    <code-example format="typescript" language="typescript">
 
@@ -346,7 +378,7 @@ Angular 还支持被动事件监听器。例如，你可以使用以下步骤使
 
 After those steps, if you add event listeners for the `scroll` event, the listeners will be `passive`.
 
-在这些步骤之后，如果你为 `scroll` 事件添加事件侦听器，侦听器就会是 `passive` 的。
+经过这些步骤，你添加 `scroll` 事件的监听器时，它就是被动（`passive`）的。
 
 ## Summary
 

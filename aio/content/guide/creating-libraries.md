@@ -4,7 +4,7 @@
 
 This page provides a conceptual overview of how to create and publish new libraries to extend Angular functionality.
 
-对于如何创建和发布新库，以扩展 Angular 的功能，本页面提供了一个概念性的总览。
+对于如何创建和发布新库，以扩展 Angular 的功能，本页面提供了一个概念性的总览
 
 If you find that you need to solve the same problem in more than one application (or want to share your solution with other developers), you have a candidate for a library.
 A simple example might be a button that sends users to your company website, that would be included in all applications that your company builds.
@@ -13,11 +13,11 @@ A simple example might be a button that sends users to your company website, tha
 
 ## Getting started
 
-## 开始工作
+## 快速上手
 
 Use the Angular CLI to generate a new library skeleton in a new workspace with the following commands.
 
-使用 Angular CLI，用以下命令在新的工作区中生成一个新库的骨架：。
+使用 Angular CLI，用以下命令在新的工作区中生成一个新库的骨架：
 
 <code-example format="shell" language="shell">
 
@@ -31,17 +31,19 @@ ng generate library my-lib
 
 <header>Naming your library</header>
 
+<header>命名你的库</header>
+
 You should be very careful when choosing the name of your library if you want to publish it later in a public package registry such as npm.
 See [Publishing your library](guide/creating-libraries#publishing-your-library).
 
-如果你想稍后在公共包注册表（例如 npm）中发布它，则在选择库名称时应该非常小心。请参阅[发布你的库](guide/creating-libraries#publishing-your-library)。
+如果你想稍后在公共包注册表（比如 npm）中发布它，则在选择库名称时应该非常小心。参阅[发布你的库](guide/creating-libraries#publishing-your-library)。
 
 Avoid using a name that is prefixed with `ng-`, such as `ng-library`.
 The `ng-` prefix is a reserved keyword used from the Angular framework and its libraries.
 The `ngx-` prefix is preferred as a convention used to denote that the library is suitable for use with Angular.
 It is also an excellent indication to consumers of the registry to differentiate between libraries of different JavaScript frameworks.
 
-避免使用以 `ng-` 为前缀的名称，例如 `ng-library`。 `ng-` 前缀是 Angular 框架及其库中使用的保留关键字。首选 `ngx-` 前缀作为用于表示该库适合与 Angular 一起使用的约定。这也是注册表的使用者区分不同 JavaScript 框架库的优秀指示器。
+避免使用以 `ng-` 为前缀的名称，比如 `ng-library`。 `ng-` 前缀是 Angular 框架及其库中使用的保留关键字。首选 `ngx-` 前缀作为用于表示该库适合与 Angular 一起使用的约定。这也是注册表的使用者区分不同 JavaScript 框架库的优秀指示器。
 
 </div>
 
@@ -131,11 +133,11 @@ Here are some things to consider in migrating application functionality to a lib
 
 * Any observables that the components subscribe to internally should be cleaned up and disposed of during the lifecycle of those components
 
-  组件内部订阅的所有可观察对象都应该在这些组件的生命周期内进行清理和释放。
+  组件内部订阅的所有可观察对象都应该在这些组件的生命周期内进行清理和释放
 
 * Components should expose their interactions through inputs for providing context, and outputs for communicating events to other components
 
-  组件对外暴露交互方式时，应该通过输入参数来提供上下文，通过输出参数来将事件传给其它组件。
+  组件对外暴露交互方式时，应该通过输入参数来提供上下文，通过输出参数来将事件传给其它组件
 
 * Check all internal dependencies.
 
@@ -143,15 +145,15 @@ Here are some things to consider in migrating application functionality to a lib
 
   * For custom classes or interfaces used in components or service, check whether they depend on additional classes or interfaces that also need to be migrated
 
-    对于在组件或服务中使用的自定义类或接口，检查它们是否依赖于其它类或接口，它们也需要一起迁移。
+    对于在组件或服务中使用的自定义类或接口，检查它们是否依赖于其它类或接口，它们也需要一起迁移
 
   * Similarly, if your library code depends on a service, that service needs to be migrated
 
-    同样，如果你的库代码依赖于某个服务，则需要迁移该服务。
+    同样，如果你的库代码依赖于某个服务，则需要迁移该服务
 
   * If your library code or its templates depend on other libraries (such as Angular Material, for instance), you must configure your library with those dependencies
 
-    如果你的库代码或其模板依赖于其它库（比如 Angular Material ），你就必须把它们配置为该库的依赖。
+    如果你的库代码或其模板依赖于其它库（比如 Angular Material ），你就必须把它们配置为该库的依赖
 
 * Consider how you provide services to client applications.
 
@@ -162,15 +164,15 @@ Here are some things to consider in migrating application functionality to a lib
     This practice lets the compiler leave the service out of the bundle if it never gets injected into the application that imports the library.
     For more about this, see [Tree-shakable providers](guide/architecture-services#providing-services).
 
-    服务应该自己声明提供者（而不是在 NgModule 或组件中声明提供者），以便它们是*可摇树优化的* 。这样，如果服务器从未被注入到导入该库的应用中，编译器就会把该服务从该 bundle 中删除。关于这方面的更多信息，请参阅[Tree-shakable 提供者](guide/architecture-services#providing-services) 。
+    服务应该自己声明提供者（而不是在 NgModule 或组件中声明提供者），以便它们是*可摇树优化的* 。这样，如果服务器从未被注入到导入该库的应用中，编译器就会把该服务从该 bundle 中删除。关于这方面的更多信息，参阅[Tree-shakable 提供者](guide/architecture-services#providing-services) 。
 
   * If you register global service providers or share providers across multiple NgModules, use the [`forRoot()` and `forChild()` design patterns](guide/singleton-services) provided by the [RouterModule](api/router/RouterModule)
 
-    如果你在多个 NgModules 注册全局服务提供者或提供者共享，使用[`forRoot()` 和 `forChild()` 设计模式](guide/singleton-services)由提供[RouterModule](api/router/RouterModule) 。
+    如果你在多个 NgModules 注册全局服务提供者或提供者共享，使用[`forRoot()` 和 `forChild()` 设计模式](guide/singleton-services)由提供[RouterModule](api/router/RouterModule) 
 
   * If your library provides optional services that might not be used by all client applications, support proper tree-shaking for that case by using the [lightweight token design pattern](guide/lightweight-injection-tokens)
 
-    如果你的库中提供的可选服务可能并没有被所有的客户端应用所使用，那么就可以通过[轻量级令牌设计模式](guide/lightweight-injection-tokens)为这种情况支持正确的树状[结构了](guide/lightweight-injection-tokens) 。
+    如果你的库中提供的可选服务可能并没有被所有的客户端应用所使用，那么就可以通过[轻量级令牌设计模式](guide/lightweight-injection-tokens)为这种情况支持正确的树状[结构了](guide/lightweight-injection-tokens) 
 
 <a id="integrating-with-the-cli"></a>
 
@@ -184,7 +186,7 @@ This package can also include [schematics](guide/glossary#schematic) that provid
 A schematic that is packaged with a library can, for example, provide the Angular CLI with the information it needs to generate a component that configures and uses a particular feature, or set of features, defined in that library.
 One example of this is [Angular Material's navigation schematic](https://material.angular.io/guide/schematics#navigation-schematic) which configures the CDK's [BreakpointObserver](https://material.angular.io/cdk/layout/overview#breakpointobserver) and uses it with Material's [MatSideNav](https://material.angular.io/components/sidenav/overview) and [MatToolbar](https://material.angular.io/components/toolbar/overview) components.
 
-一个库通常都包含*可复用的代码* ，用于定义组件，服务，以及你刚才导入到项目中的其他 Angular 工件（管道，指令等等）。库被打包成一个 npm 包，用于发布和共享。这个包还可以包含一些[原理图](guide/glossary#schematic) ，它提供直接在项目中生成或转换代码的指令，就像 CLI 用 `ng generate component` 创建一个通用的新 `ng generate component` 。例如，用库打包的原理图可以为 Angular CLI 提供生成组件所需的信息，该组件用于配置和使用该库中定义的特定特性或一组特性。这方面的一个例子是 [Angular Material 的导航原理图](https://material.angular.cn/guide/schematics#navigation-schematic)，它用来配置 CDK 的 [`BreakpointObserver`](https://material.angular.cn/cdk/layout/overview#breakpointobserver) 并把它与 Material 的 [MatSideNav](https://material.angular.cn/components/sidenav/overview) 和 [MatToolbar](https://material.angular.cn/components/toolbar/overview) 组件一起使用。
+一个库通常都包含*可复用的代码* ，用于定义组件，服务，以及你刚才导入到项目中的其他 Angular 工件（管道，指令等等）。库被打包成一个 npm 包，用于发布和共享。这个包还可以包含一些[原理图](guide/glossary#schematic) ，它提供直接在项目中生成或转换代码的指令，就像 CLI 用 `ng generate component` 创建一个通用的新 `ng generate component` 。比如，用库打包的原理图可以为 Angular CLI 提供生成组件所需的信息，该组件用于配置和使用该库中定义的特定特性或一组特性。这方面的一个例子是 [Angular Material 的导航原理图](https://material.angular.cn/guide/schematics#navigation-schematic)，它用来配置 CDK 的 [`BreakpointObserver`](https://material.angular.cn/cdk/layout/overview#breakpointobserver) 并把它与 Material 的 [MatSideNav](https://material.angular.cn/components/sidenav/overview) 和 [MatToolbar](https://material.angular.cn/components/toolbar/overview) 组件一起使用。
 
 Create and include the following kinds of schematics:
 
@@ -207,7 +209,7 @@ For example, you could define a schematic to create a dropdown that is pre-popul
 If you want a dropdown that would contain different passed-in values each time, your library could define a schematic to create it with a given configuration.
 Developers could then use `ng generate` to configure an instance for their own application.
 
-你的库中所包含的内容取决于你的任务。例如，你可以定义一个原理图来创建一个预先填充了固定数据的下拉列表，以展示如何把它添加到一个应用中。如果你想要一个每次包含不同传入值的下拉列表，那么你的库可以定义一个原理图来用指定的配置创建它。然后，开发人员可以使用 `ng generate` 为自己的应用配置一个实例。
+你的库中所包含的内容取决于你的任务。比如，你可以定义一个原理图来创建一个预先填充了固定数据的下拉列表，以展示如何把它添加到一个应用中。如果你想要一个每次包含不同传入值的下拉列表，那么你的库可以定义一个原理图来用指定的配置创建它。然后，开发人员可以使用 `ng generate` 为自己的应用配置一个实例。
 
 Suppose you want to read a configuration file and then generate a form based on that configuration.
 If that form needs additional customization by the developer who is using your library, it might work best as a schematic.
@@ -218,7 +220,7 @@ In general, the more complex the customization, the more useful the schematic ap
 
 For more information, see [Schematics Overview](guide/schematics) and [Schematics for Libraries](guide/schematics-for-libraries).
 
-要了解更多信息，参阅 [原理图概览](guide/schematics) 和 [供库使用的原理图](guide/schematics-for-libraries)。
+欲知详情，参阅 [原理图概览](guide/schematics) 和 [供库使用的原理图](guide/schematics-for-libraries)。
 
 ## Publishing your library
 
@@ -232,7 +234,7 @@ Angular CLI uses a tool called [ng-packagr](https://github.com/ng-packagr/ng-pac
 See [Building libraries with Ivy](guide/creating-libraries#ivy-libraries) for information on the distribution formats supported by `ng-packagr` and guidance on how
 to choose the right format for your library.
 
-Angular CLI 使用一个名为 [ng-packagr](https://github.com/ng-packagr/ng-packagr/blob/master/README.md) 的工具从已编译的代码中创建可以发布到 npm 的软件包。`ng-packagr` 支持的发行格式的信息以及有关如何为库选择正确格式的指南，请参阅[使用 Ivy 构建库](guide/creating-libraries#ivy-libraries)。
+Angular CLI 使用一个名为 [ng-packagr](https://github.com/ng-packagr/ng-packagr/blob/master/README.md) 的工具从已编译的代码中创建可以发布到 npm 的软件包。`ng-packagr` 支持的发行格式的信息以及有关如何为库选择正确格式的指南，参阅[使用 Ivy 构建库](guide/creating-libraries#ivy-libraries)。
 
 You should always build libraries for distribution using the `production` configuration.
 This ensures that generated output uses the appropriate optimizations and the correct package format for npm.
@@ -341,7 +343,7 @@ To use your own library in an application:
 The build step is important if you haven't published your library as an npm package and then installed the package back into your application from npm.
 For instance, if you clone your git repository and run `npm install`, your editor shows the `my-lib` imports as missing if you haven't yet built your library.
 
-如果你没有把库发布为 npm 包，然后把它从 npm 安装到你的应用中，那么构建步骤就是必要的。例如，如果你克隆了 git 仓库并运行了 `npm install`，编辑器就会把 `my-lib` 的导入显示为缺失状态（如果你还没有构建过该库）。
+如果你没有把库发布为 npm 包，然后把它从 npm 安装到你的应用中，那么构建步骤就是必要的。比如，如果你克隆了 git 仓库并运行了 `npm install`，编辑器就会把 `my-lib` 的导入显示为缺失状态（如果你还没有构建过该库）。
 
 <div class="alert is-helpful">
 
@@ -422,9 +424,11 @@ There are two distribution formats to use when publishing a library:
 
 | Distribution formats | Details |
 | :------------------- | :------ |
-| Distribution formats | 详情 |
+| 分发格式 | 详情 |
 | Partial-Ivy (recommended) | Contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards. |
+| 部分 Ivy（推荐） | 包含可移植代码，从 v12 开始，使用任何版本的 Angular 构建的 Ivy 应用都可以使用这些可移植代码。 |
 | Full-Ivy | Contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the *exact* same version of Angular. This format is useful for environments where all library and application code is built directly from source. |
+| 完全 Ivy | 包含专用的 Angular Ivy 指令，不能保证它们可在 Angular 的不同版本中使用。这种格式要求库和应用使用*完全相同*的 Angular 版本构建。这种格式对于直接从源代码构建所有库和应用代码的环境很有用。 |
 
 For publishing to npm use the partial-Ivy format as it is stable between patch versions of Angular.
 
@@ -432,7 +436,7 @@ For publishing to npm use the partial-Ivy format as it is stable between patch v
 
 Avoid compiling libraries with full-Ivy code if you are publishing to npm because the generated Ivy instructions are not part of Angular's public API, and so might change between patch versions.
 
-如果要发布到 npm，请避免使用完全 Ivy 代码来编译库，因为生成的 Ivy 指令不属于 Angular 公共 API 的一部分，因此在补丁版本之间可能会有所不同。
+如果要发布到 npm，请避免使用完全 Ivy 的方式编译库，因为生成的 Ivy 指令不属于 Angular 公共 API 的一部分，因此在补丁版本之间可能会有所不同。
 
 ## Ensuring library version compatibility
 
@@ -442,7 +446,7 @@ The Angular version used to build an application should always be the same or gr
 For example, if you had a library using Angular version 13, the application that depends on that library should use Angular version 13 or later.
 Angular does not support using an earlier version for the application.
 
-用于构建应用的 Angular 版本应始终与用于构建其任何依赖库的 Angular 版本相同或更大。例如，如果你有一个使用 Angular 13 版的库，则依赖于该库的应用应该使用 Angular 13 版或更高版本。Angular 不支持为该应用使用早期版本。
+用于构建应用的 Angular 版本应始终与用于构建其任何依赖库的 Angular 版本相同或更大。比如，如果你有一个使用 Angular 13 版的库，则依赖于该库的应用应该使用 Angular 13 版或更高版本。Angular 不支持为该应用使用早期版本。
 
 If you intend to publish your library to npm, compile with partial-Ivy code by setting `"compilationMode": "partial"` in `tsconfig.prod.json`.
 This partial format is stable between different versions of Angular, so is safe to publish to npm.
@@ -472,7 +476,7 @@ To finish compilation, use the Angular linker.
 For applications that don't use the Angular CLI, the linker is available as a [Babel](https://babeljs.io) plugin.
 The plugin is to be imported from `@angular/compiler-cli/linker/babel`.
 
-对于不使用 Angular CLI 的应用程序，此链接器可用作 [Babel](https://babeljs.io/) 插件。该插件要从 `@angular/compiler-cli/linker/babel` 导入。
+对于不使用 Angular CLI 的应用程序，此链接器可用作 [Babel](https://babeljs.io) 插件。该插件要从 `@angular/compiler-cli/linker/babel` 导入。
 
 The Angular linker Babel plugin supports build caching, meaning that libraries only need to be processed by the linker a single time, regardless of other npm operations.
 
@@ -480,7 +484,7 @@ Angular 链接器的 Babel 插件支持构建缓存，这意味着链接器只�
 
 Example of integrating the plugin into a custom [Webpack](https://webpack.js.org) build by registering the linker as a [Babel](https://babeljs.io) plugin using [babel-loader](https://webpack.js.org/loaders/babel-loader/#options).
 
-下面的例子借助 [babel-loader](https://webpack.js.org/loaders/babel-loader/#options) 把此链接器注册为 [Babel](https://babeljs.io/) 插件，从而将此插件集成到自定义 [Webpack](https://webpack.js.org/) 构建中。
+下面的例子借助 [babel-loader](https://webpack.js.org/loaders/babel-loader/#options) 把此链接器注册为 [Babel](https://babeljs.io) 插件，从而将此插件集成到自定义 [Webpack](https://webpack.js.org) 构建中。
 
 <code-example header="webpack.config.mjs" path="angular-linker-plugin/webpack.config.mjs" region="webpack-config"></code-example>
 

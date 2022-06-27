@@ -96,6 +96,9 @@ export class TestPipe implements PipeTransform {
 
 /**
  * This Component provides the `test-comp` selector.
+ *
+ * 此组件提供了 `test-comp` 选择器。
+ *
  */
 /*BeginTestComponent*/ @Component({
   selector: 'test-comp',
@@ -112,6 +115,9 @@ export class TestComponent {
 export class TemplateReference {
   /**
    * This is the title of the `TemplateReference` Component.
+   *
+   * 这是 `TemplateReference` 组件的标题。
+   *
    */
   title = 'Tour of Heroes';
   hero: Hero = {id: 1, name: 'Windstorm'};

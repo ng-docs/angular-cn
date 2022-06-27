@@ -21,6 +21,9 @@ const XSSI_PREFIX = /^\)\]\}',?\n/;
 /**
  * Determine an appropriate URL for the response, by checking either
  * XMLHttpRequest.responseURL or the X-Request-URL header.
+ *
+ * 通过检查 XMLHttpRequest.responseURL 或 X-Request-URL 标头，为响应确定适当的 URL。
+ *
  */
 function getResponseUrl(xhr: any): string|null {
   if ('responseURL' in xhr && xhr.responseURL) {

@@ -11,15 +11,22 @@ import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
 import {Subject} from 'rxjs';
 
 /**
- * Parser from https://tools.ietf.org/html/rfc3986#appendix-B
- * ^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
+ * Parser from <https://tools.ietf.org/html/rfc3986#appendix-B>
+ * ^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?
  *  12            3  4          5       6  7        8 9
  *
- * Example: http://www.ics.uci.edu/pub/ietf/uri/#Related
+ * 来自<https://tools.ietf.org/html/rfc3986#appendix-B>的解析器 ^(( [^:/?#][^:/?#] +):)?(//(
+ * [^/?#][^/?#] *))?( [^?#][^?#]* )(\\ ?( [^#][^#] *))?(#(.* ))? 12 3 4 5 6 7 8 9
+ *
+ * Example: <http://www.ics.uci.edu/pub/ietf/uri/#Related>
+ *
+ * 示例： <http://www.ics.uci.edu/pub/ietf/uri/#Related>
  *
  * Results in:
  *
- * $1 = http:
+ * 结果：
+ *
+ * $1 = http&#x3A;
  * $2 = http
  * $3 = //www.ics.uci.edu
  * $4 = www.ics.uci.edu
@@ -28,6 +35,10 @@ import {Subject} from 'rxjs';
  * $7 = <undefined>
  * $8 = #Related
  * $9 = Related
+ *
+ * $1 = HTTP： $2 = HTTP $3 = //www.ics.uci.edu $4 = www.ics.uci.edu $5 = /pub/ietf/uri/ $6
+ * =<undefined>7 美元 =<undefined>$8 = #Relate $9 = 相关
+ *
  */
 const urlParse = /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
 

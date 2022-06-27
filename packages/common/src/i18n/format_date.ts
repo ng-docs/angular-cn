@@ -47,37 +47,31 @@ enum TranslationType {
  * Formats a date according to locale rules.
  *
  * 基于区域规则格式化日期。
- *
  * @param value The date to format, as a Date, or a number (milliseconds since UTC epoch)
  * or an [ISO date-time string](https://www.w3.org/TR/NOTE-datetime).
  *
  * 要格式化的日期，是一个日期、数字（从 UTC 时代以来的毫秒数）或 ISO 字符串
- * (https://www.w3.org/TR/NOTE-datetime)。
+ * (<https://www.w3.org/TR/NOTE-datetime>)。
  *
  * @param format The date-time components to include. See `DatePipe` for details.
  *
  * 表示要包含的日期/时间部件。欲知详情，参见 `DatePipe`。
- *
  * @param locale A locale code for the locale format rules to use.
  *
  * 一个区域代码，用来表示要使用的区域格式规则。
- *
  * @param timezone The time zone. A time zone offset from GMT (such as `'+0430'`),
  * or a standard UTC/GMT or continental US time zone abbreviation.
  * If not specified, uses host system settings.
  *
  * 时区。可以是 GMT 中的时区偏移（如 `'+0430'`），或一个标准的 UTC/GMT 或美国大陆时区的缩写。
  * 如果没有指定，就会使用宿主系统中的设定。
- *
  * @returns The formatted date string.
  *
  * 格式化之后的日期字符串。
- *
  * @see `DatePipe`
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化 (i18n) 指南](guide/i18n-overview)
- *
  * @publicApi
  */
 export function formatDate(
@@ -123,12 +117,22 @@ export function formatDate(
 /**
  * Create a new Date object with the given date value, and the time set to midnight.
  *
+ * 使用给定的日期值创建一个新的 Date 对象，并将时间设置为午夜。
+ *
  * We cannot use `new Date(year, month, date)` because it maps years between 0 and 99 to 1900-1999.
- * See: https://github.com/angular/angular/issues/40377
+ * See: <https://github.com/angular/angular/issues/40377>
+ *
+ * 我们不能使用 `new Date(year, month, date)` 因为它将 0 到 99 之间的年份映射到 1900-1999 。请参阅：
+ * <https://github.com/angular/angular/issues/40377>
  *
  * Note that this function returns a Date object whose time is midnight in the current locale's
  * timezone. In the future we might want to change this to be midnight in UTC, but this would be a
  * considerable breaking change.
+ *
+ * 请注意，此函数会返回一个 Date
+ * 对象，其时间是当前区域设置的时区中的午夜。将来，我们可能希望将其更改为 UTC
+ * 午夜，但这将是一个相当大的突破性更改。
+ *
  */
 function createDate(year: number, month: number, date: number): Date {
   // The `newDate` is set to midnight (UTC) on January 1st 1970.
@@ -459,6 +463,9 @@ function weekGetter(size: number, monthBased = false): DateFormatter {
 
 /**
  * Returns a date formatter that provides the week-numbering year for the input date.
+ *
+ * 返回一个日期格式器，该格式器为输入日期提供按周编号的年份。
+ *
  */
 function weekNumberingYearGetter(size: number, trim = false): DateFormatter {
   return function(date: Date, locale: string) {
@@ -780,18 +787,19 @@ function convertTimezoneToLocal(date: Date, timezone: string, reverse: boolean):
  * 支持的输入格式：
  *
  * - `Date`
+ *
  * - number: timestamp
  *
  *   数字：时间戳
  *
  * - string: numeric (e.g. "1234"), ISO and date strings in a format supported by
- *   [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
- *   Note: ISO strings without time return a date without timeoffset.
+ *     [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
+ *     Note: ISO strings without time return a date without timeoffset.
  *
- *   字符串：数字（如 "1234"）、ISO 格式和
- * [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
- *   所支持的日期字符串格式。
- *   注意：不带时间的 ISO 字符串会返回一个没有时区偏移量的日期。
+ *     字符串：数字（如 "1234"）、ISO 格式和
+ *   [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
+ *     所支持的日期字符串格式。
+ *     注意：不带时间的 ISO 字符串会返回一个没有时区偏移量的日期。
  *
  * Throws if unable to convert to a date.
  *

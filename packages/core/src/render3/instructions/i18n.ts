@@ -76,6 +76,9 @@ export function ɵɵi18nStart(
  * Translates a translation block marked by `i18nStart` and `i18nEnd`. It inserts the text/ICU nodes
  * into the render tree, moves the placeholder nodes and removes the deleted nodes.
  *
+ * 翻译由 `i18nStart` 和 `i18nEnd` 标记的翻译块。它将文本/ICU
+ * 节点插入渲染树，移动占位符节点并删除已删除的节点。
+ *
  * @codeGenApi
  */
 export function ɵɵi18nEnd(): void {
@@ -116,9 +119,13 @@ export function ɵɵi18n(index: number, messageIndex: number, subTemplateIndex?:
 /**
  * Marks a list of attributes as translatable.
  *
- * @param index A unique index in the static block
- * @param values
+ * 将属性列表标记为可翻译。
  *
+ * @param index A unique index in the static block
+ *
+ * 静态块中的唯一索引
+ *
+ * @param values
  * @codeGenApi
  */
 export function ɵɵi18nAttributes(index: number, attrsIndex: number): void {
@@ -133,9 +140,18 @@ export function ɵɵi18nAttributes(index: number, attrsIndex: number): void {
  * Stores the values of the bindings during each update cycle in order to determine if we need to
  * update the translated nodes.
  *
+ * 存储每个更新周期中绑定的值，以确定我们是否需要更新已转换的节点。
+ *
  * @param value The binding's value
- * @returns This function returns itself so that it may be chained
+ *
+ * 绑定的值
+ *
+ * @returns
+ *
+ * This function returns itself so that it may be chained
  * (e.g. `i18nExp(ctx.name)(ctx.title)`)
+ *
+ * 此函数返回自身，以便它可以被链接（例如 `i18nExp(ctx.name)(ctx.title)` ）
  *
  * @codeGenApi
  */
@@ -148,8 +164,12 @@ export function ɵɵi18nExp<T>(value: T): typeof ɵɵi18nExp {
 /**
  * Updates a translation block or an i18n attribute when the bindings have changed.
  *
+ * 在绑定更改时更新翻译块或 i18n 属性。
+ *
  * @param index Index of either {@link i18nStart} (translation block) or {@link i18nAttributes}
  * (i18n attribute) on which it should update the content.
+ *
+ * 应该更新内容的 {@link i18nStart} （翻译块）或 {@link i18nAttributes} （i18n 属性）的索引。
  *
  * @codeGenApi
  */
@@ -160,20 +180,45 @@ export function ɵɵi18nApply(index: number) {
 /**
  * Handles message string post-processing for internationalization.
  *
+ * 处理消息字符串的后处理以进行国际化。
+ *
  * Handles message string post-processing by transforming it from intermediate
  * format (that might contain some markers that we need to replace) to the final
  * form, consumable by i18nStart instruction. Post processing steps include:
  *
+ * 通过将消息字符串从中间格式（可能包含我们需要替换的一些标记）转换为可由 i18nStart
+ * 指令使用的最终形式来处理消息字符串的后处理。后处理步骤包括：
+ *
  * 1. Resolve all multi-value cases (like [�*1:1��#2:1�|�#4:1�|�5�])
+ *
+ *    解析所有多值情况（例如 [�\*1:1��#2:1�|�#4:1�|.5�][�*1:1��#2:1�|�#4:1�|�5�] ）
+ *
  * 2. Replace all ICU vars (like "VAR_PLURAL")
+ *
+ *    替换所有 ICU var（例如“VAR_PLURAL”）
+ *
  * 3. Replace all placeholders used inside ICUs in a form of {PLACEHOLDER}
+ *
+ *    以 {PLACEHOLDER} 的形式替换 ICU 中使用的所有占位符
+ *
  * 4. Replace all ICU references with corresponding values (like �ICU_EXP_ICU_1�)
  *    in case multiple ICUs have the same placeholder name
  *
+ *    如果多个 ICU 具有相同的占位符名称，则将所有 ICU 引用替换为相应的值（例如 “ICU_EXP_ICU_1”）
+ *
  * @param message Raw translation string for post processing
+ *
+ * 用于后处理的原始翻译字符串
+ *
  * @param replacements Set of replacements that should be applied
  *
- * @returns Transformed string that can be consumed by i18nStart instruction
+ * 应该应用的替换集
+ *
+ * @returns
+ *
+ * Transformed string that can be consumed by i18nStart instruction
+ *
+ * i18nStart 指令可以用的转换字符串
  *
  * @codeGenApi
  */

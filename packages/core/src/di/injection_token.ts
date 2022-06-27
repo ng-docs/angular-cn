@@ -20,7 +20,7 @@ import {ɵɵdefineInjectable} from './interface/defs';
  * runtime representation) such as when injecting an interface, callable type, array or
  * parameterized type.
  *
- * 每当你要注入的类型无法确定（没有运行时表示形式）时，例如在注入接口、可调用类型、数组或参数化类型时，都应使用
+ * 每当你要注入的类型无法确定（没有运行时表示形式）时，比如在注入接口、可调用类型、数组或参数化类型时，都应使用
  * `InjectionToken`。
  *
  * `InjectionToken` is parameterized on `T` which is the type of object which will be returned by
@@ -84,7 +84,13 @@ export class InjectionToken<T> {
    * @param _desc   Description for the token,
    *                used only for debugging purposes,
    *                it should but does not need to be unique
+   *
+   * 标记的描述，仅用于调试目的，它应该但不需要是唯一的
+   *
    * @param options Options for the token's usage, as described above
+   *
+   * 令牌使用的选项，如前所述
+   *
    */
   constructor(protected _desc: string, options?: {
     providedIn?: Type<any>|'root'|'platform'|'any'|null, factory: () => T

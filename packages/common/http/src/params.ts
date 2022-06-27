@@ -34,7 +34,6 @@ export interface HttpParameterCodec {
  * If you pass URL query parameters without encoding,
  * the query parameters can be misinterpreted at the receiving end.
  *
- *
  * 一个 `HttpParameterCodec`，它使用 `encodeURIComponent` 和 `decodeURIComponent` 来序列化和解析 URL
  * 参数的 key 和 value。 如果你传入未编码的查询参数，那么接收端可能会对这些参数进行错误解析。请使用
  * `HttpParameterCodec` 类对查询字符串的值进行编码和解码。
@@ -138,6 +137,9 @@ function paramParser(rawParams: string, codec: HttpParameterCodec): Map<string, 
 
 /**
  * Encode input string with standard encodeURIComponent and then un-encode specific characters.
+ *
+ * 使用标准 encodeURIComponent 对输入字符串进行编码，然后对特定字符进行解编码。
+ *
  */
 const STANDARD_ENCODING_REGEX = /%(\d[a-f0-9])/gi;
 const STANDARD_ENCODING_REPLACEMENTS: {[x: string]: string} = {
@@ -333,8 +335,17 @@ export class HttpParams {
 
   /**
    * Constructs a new body with appended values for the given parameter name.
+   *
+   * 使用给定参数名称的附加值构造一个新主体。
+   *
    * @param params parameters and values
+   *
+   * 参数和值
+   *
    * @return A new body with the new value.
+   *
+   * 具有新值的新主体。
+   *
    */
   appendAll(params: {[param: string]: string|number|boolean|ReadonlyArray<string|number|boolean>}):
       HttpParams {

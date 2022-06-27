@@ -1,5 +1,7 @@
 # Refer to locales by ID
 
+# 通过 ID 引用语言环境
+
 Angular uses the Unicode *locale identifier* (Unicode locale ID) to find the correct locale data for internationalization of text strings.
 
 Angular 使用 Unicode *语言环境标识符*（Unicode 语言环境 ID）来查找正确的语言环境数据，以实现文本字符串的国际化。
@@ -8,15 +10,23 @@ Angular 使用 Unicode *语言环境标识符*（Unicode 语言环境 ID）来�
 
 <header>Unicode locale ID</header>
 
+<header>Unicode 语言环境 ID</header>
+
 * A locale ID conforms to the [Unicode Common Locale Data Repository (CLDR) core specification][UnicodeCldrDevelopmentCoreSpecification].
   For more information about locale IDs, see [Unicode Language and Locale Identifiers][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798].
 
+  语言环境 ID 遵循 [Unicode 通用语言环境数据仓库 (CLDR) 核心规范][UnicodeCldrDevelopmentCoreSpecification]。有关语言环境 ID 的更多信息，请参阅 [Unicode 语言和语言环境标识符][UnicodeCldrDevelopmentCoreSpecificationHVgyyng33o798]。
+
 * CLDR and Angular use [BCP 47 tags][RfcEditorInfoBcp47] as the base for the locale ID
+
+  CLDR 和 Angular 以 [BCP 47 标签][RfcEditorInfoBcp47] 作为语言环境 ID 的基础。
 
 </div>
 
 A locale ID specifies the language, country, and an optional code for further variants or subdivisions.
 A locale ID consists of the language identifier, a hyphen (`-`) character, and the locale extension.
+
+语言环境 ID 指定语言、国家/地区和其他变体或细分的可选代码。语言环境 ID 由语言标识符、破折号(`-`)字符和语言环境扩展组成。
 
 <code-example>
 
@@ -55,9 +65,15 @@ For the examples in this guide, use the following languages and locales.
 
 The [Angular repository][GithubAngularAngularTreeMasterPackagesCommonLocales] includes common locales.
 
+[Angular 代码仓库][GithubAngularAngularTreeMasterPackagesCommonLocales]中包括常见的一些语言环境。
+
 <div class="callout is-helpful">
 
 For a list of language codes, see [ISO 639-2][LocStandardsIso6392].
+
+有关语言代码列表，请参阅 [ISO 639-2][LocStandardsIso6392]。
+
+<!--todo: Is this accurate.  ISO 639-2 is 3 digit.  ISO 639-1 is 2 digit.  Reference: http://www.loc.gov/standards/iso639-2/php/code_list.php -->
 
 </div>
 
@@ -79,15 +95,19 @@ To change the source locale of your project for the build, complete the followin
 
 1. Open the [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file.
 
+   打开工作空间构建配置文件 [`angular.json`][AioGuideWorkspaceConfig]。
+
 1. Change the source locale in the `sourceLocale` field.
 
    在 `sourceLocale` 字段中更改源语言环境。
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * [Format data based on locale][AioGuideI18nCommonFormatDataLocale]
+
+  [根据语言环境格式化数据][AioGuideI18nCommonFormatDataLocale]
 
 <!-- links -->
 

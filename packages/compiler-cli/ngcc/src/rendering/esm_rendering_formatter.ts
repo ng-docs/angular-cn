@@ -24,6 +24,9 @@ import {stripExtension} from './utils';
 
 /**
  * A RenderingFormatter that works with ECMAScript Module import and export statements.
+ *
+ * 与 ECMAScript 模块导入和导出语句一起使用的 RenderingFormatter。
+ *
  */
 export class EsmRenderingFormatter implements RenderingFormatter {
   protected printer = ts.createPrinter({newLine: ts.NewLineKind.LineFeed});
@@ -33,7 +36,10 @@ export class EsmRenderingFormatter implements RenderingFormatter {
       protected isCore: boolean) {}
 
   /**
-   *  Add the imports at the top of the file, after any imports that are already there.
+   * Add the imports at the top of the file, after any imports that are already there.
+   *
+   * 在文件顶部已经存在的任何导入之后添加导入。
+   *
    */
   addImports(output: MagicString, imports: Import[], sf: ts.SourceFile): void {
     if (imports.length === 0) {
@@ -48,6 +54,9 @@ export class EsmRenderingFormatter implements RenderingFormatter {
 
   /**
    * Add the exports to the end of the file.
+   *
+   * 将导出添加到文件末尾。
+   *
    */
   addExports(
       output: MagicString, entryPointBasePath: AbsoluteFsPath, exports: ExportInfo[],
@@ -73,8 +82,13 @@ export class EsmRenderingFormatter implements RenderingFormatter {
   /**
    * Add plain exports to the end of the file.
    *
+   * 将普通导出添加到文件末尾。
+   *
    * Unlike `addExports`, direct exports go directly in a .js and .d.ts file and don't get added to
    * an entrypoint.
+   *
+   * 与 `addExports` 不同，直接导出直接在 .js 和 .d.ts 文件中，不会被添加到入口点。
+   *
    */
   addDirectExports(
       output: MagicString, exports: Reexport[], importManager: ImportManager,
@@ -87,6 +101,9 @@ export class EsmRenderingFormatter implements RenderingFormatter {
 
   /**
    * Add the constants directly after the imports.
+   *
+   * 在导入之后直接添加常量。
+   *
    */
   addConstants(output: MagicString, constants: string, file: ts.SourceFile): void {
     if (constants === '') {
@@ -101,6 +118,9 @@ export class EsmRenderingFormatter implements RenderingFormatter {
 
   /**
    * Add the definitions directly after their decorated class.
+   *
+   * 在其装饰类之后直接添加定义。
+   *
    */
   addDefinitions(output: MagicString, compiledClass: CompiledClass, definitions: string): void {
     const classSymbol = this.host.getClassSymbol(compiledClass.declaration);
@@ -115,6 +135,9 @@ export class EsmRenderingFormatter implements RenderingFormatter {
 
   /**
    * Add the adjacent statements after all static properties of the class.
+   *
+   * 在类的所有静态属性之后添加相邻的语句。
+   *
    */
   addAdjacentStatements(output: MagicString, compiledClass: CompiledClass, statements: string):
       void {
@@ -128,6 +151,9 @@ export class EsmRenderingFormatter implements RenderingFormatter {
 
   /**
    * Remove static decorator properties from classes.
+   *
+   * 从类中删除静态装饰器属性。
+   *
    */
   removeDecorators(output: MagicString, decoratorsToRemove: RedundantDecoratorMap): void {
     decoratorsToRemove.forEach((nodesToRemove, containerNode) => {
@@ -176,7 +202,12 @@ export class EsmRenderingFormatter implements RenderingFormatter {
    * Add the type parameters to the appropriate functions that return `ModuleWithProviders`
    * structures.
    *
+   * 将类型参数添加到返回 `ModuleWithProviders` 结构的适当函数。
+   *
    * This function will only get called on typings files.
+   *
+   * 此函数只会在 typings 文件上调用。
+   *
    */
   addModuleWithProvidersParams(
       outputText: MagicString, moduleWithProviders: ModuleWithProvidersInfo[],
@@ -226,12 +257,25 @@ export class EsmRenderingFormatter implements RenderingFormatter {
   /**
    * Convert a `Statement` to JavaScript code in a format suitable for rendering by this formatter.
    *
+   * 将 `Statement` 转换为适合此格式化程序呈现的格式的 JavaScript 代码。
+   *
    * @param stmt The `Statement` to print.
+   *
+   * 要打印的 `Statement` 。
+   *
    * @param sourceFile A `ts.SourceFile` that provides context for the statement. See
    *     `ts.Printer#printNode()` for more info.
+   *
+   * 为语句提供上下文的 `ts.SourceFile` 。有关更多信息，请参阅 `ts.Printer#printNode()` 。
+   *
    * @param importManager The `ImportManager` to use for managing imports.
    *
+   * 用于管理导入的 `ImportManager` 。
+   *
    * @return The JavaScript code corresponding to `stmt` (in the appropriate format).
+   *
+   * 与 `stmt` 对应的 JavaScript 代码（采用适当的格式）。
+   *
    */
   printStatement(stmt: Statement, sourceFile: ts.SourceFile, importManager: ImportManager): string {
     const node = translateStatement(stmt, importManager);
@@ -252,8 +296,19 @@ export class EsmRenderingFormatter implements RenderingFormatter {
 
   /**
    * Check whether the given type is the core Angular `ModuleWithProviders` interface.
+   *
+   * 检查给定的类型是否是核心 Angular `ModuleWithProviders` 接口。
+   *
    * @param typeName The type to check.
-   * @returns true if the type is the core Angular `ModuleWithProviders` interface.
+   *
+   * 要检查的类型。
+   *
+   * @returns
+   *
+   * true if the type is the core Angular `ModuleWithProviders` interface.
+   *
+   * 如果类型是核心 Angular `ModuleWithProviders` 接口，则为 true 。
+   *
    */
   private isCoreModuleWithProvidersType(typeName: ts.EntityName|null) {
     const id =

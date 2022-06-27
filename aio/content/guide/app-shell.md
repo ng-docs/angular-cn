@@ -129,6 +129,8 @@ ng run my-app:app-shell:production
 To verify the build output, open <code class="no-auto-link">dist/my-app/browser/index.html</code>.
 Look for default text `app-shell works!` to show that the application shell route was rendered as part of the output.
 
+要验证构建输出，请打开 <code class="no-auto-link">dist/my-app/browser/index.html</code>。寻找默认的文本 `app-shell works!` 就可以验证这个应用外壳路由确实是作为输出的一部分渲染出来的。
+
 <!-- links -->
 
 <!-- external links -->

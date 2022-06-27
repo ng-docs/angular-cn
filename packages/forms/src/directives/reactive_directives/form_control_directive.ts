@@ -19,6 +19,9 @@ import {AsyncValidator, AsyncValidatorFn, Validator, ValidatorFn} from '../valid
 
 /**
  * Token to provide to turn off the ngModel warning on formControl and formControlName.
+ *
+ * 要提供以关闭 formControl 和 formControlName 上的 ngModel 警告的标记。
+ *
  */
 export const NG_MODEL_WITH_FORM_CONTROL_WARNING =
     new InjectionToken('NgModelWithFormControlWarning');

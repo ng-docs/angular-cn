@@ -9,7 +9,10 @@
 /**
  * Set of all animatable CSS properties
  *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+ * 所有可动画 CSS 属性的集
+ *
+ * @see <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties>
+ *
  */
 export const ANIMATABLE_PROP_SET = new Set([
   '-moz-outline-radius',

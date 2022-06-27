@@ -19,8 +19,14 @@ import {getEntryPointInfo, isEntryPoint, PackageJsonFormatProperties} from './en
  * Manages reading and writing a manifest file that contains a list of all the entry-points that
  * were found below a given basePath.
  *
+ * 管理读写清单文件，该文件包含在给定 basePath 下找到的所有入口点的列表。
+ *
  * This is a super-set of the entry-points that are actually processed for a given run of ngcc,
  * since some may already be processed, or excluded if they do not have the required format.
+ *
+ * 这是为给定的 ngcc
+ * 运行实际处理的入口点的超集，因为某些可能已经被处理，如果它们不具有所需的格式，则可能会被排除。
+ *
  */
 export class EntryPointManifest {
   constructor(private fs: FileSystem, private config: NgccConfiguration, private logger: Logger) {}
@@ -29,17 +35,43 @@ export class EntryPointManifest {
    * Try to get the entry-point info from a manifest file for the given `basePath` if it exists and
    * is not out of date.
    *
+   * 尝试从给定的 `basePath` 的清单文件中获取入口点信息（如果存在并且尚未过时）。
+   *
    * Reasons for the manifest to be out of date are:
    *
+   * 清单已过时的原因是：
+   *
    * * the file does not exist
+   *
+   *   该文件不存在
+   *
    * * the ngcc version has changed
+   *
+   *   ngcc 版本已更改
+   *
    * * the package lock-file (i.e. yarn.lock or package-lock.json) has changed
+   *
+   *   包 lock-file （即 spring.lock 或 package-lock.json ）已更改
+   *
    * * the project configuration has changed
+   *
+   *   项目配置已更改
+   *
    * * one or more entry-points in the manifest are not valid
    *
+   *   清单中的一个或多个入口点无效
+   *
    * @param basePath The path that would contain the entry-points and the manifest file.
-   * @returns an array of entry-point information for all entry-points found below the given
+   *
+   * 包含入口点和清单文件的路径。
+   *
+   * @returns
+   *
+   * an array of entry-point information for all entry-points found below the given
    * `basePath` or `null` if the manifest was out of date.
+   *
+   * 在给定 `basePath` 下找到的所有入口点的入口点信息数组，如果清单已过时，则为 `null` 。
+   *
    */
   readEntryPointsUsingManifest(basePath: AbsoluteFsPath): EntryPointWithDependencies[]|null {
     try {
@@ -104,12 +136,24 @@ export class EntryPointManifest {
   /**
    * Write a manifest file at the given `basePath`.
    *
+   * 在给定的 `basePath` 处写入清单文件。
+   *
    * The manifest includes the current ngcc version and hashes of the package lock-file and current
    * project config. These will be used to check whether the manifest file is out of date. See
    * `readEntryPointsUsingManifest()`.
    *
+   * 清单包括当前的 ngcc 版本以及包 lock-file
+   * 和当前项目配置的哈希。这些将用于检查清单文件是否已过时。请参阅 `readEntryPointsUsingManifest()`
+   * 。
+   *
    * @param basePath The path where the manifest file is to be written.
+   *
+   * 要写入清单文件的路径。
+   *
    * @param entryPoints A collection of entry-points to record in the manifest.
+   *
+   * 要记录在清单中的入口点的集合。
+   *
    */
   writeEntryPointManifest(basePath: AbsoluteFsPath, entryPoints: EntryPointWithDependencies[]):
       void {
@@ -171,9 +215,15 @@ export class EntryPointManifest {
  * A specialized implementation of the `EntryPointManifest` that can be used to invalidate the
  * current manifest file.
  *
+ * `EntryPointManifest` 的专门实现，可用于使当前的清单文件无效。
+ *
  * It always returns `null` from the `readEntryPointsUsingManifest()` method, which forces a new
  * manifest to be created, which will overwrite the current file when `writeEntryPointManifest()`
  * is called.
+ *
+ * 它始终从 `readEntryPointsUsingManifest()` 方法返回 `null`
+ * ，这会强制创建一个新的清单，该清单将在调用 `writeEntryPointManifest()` 时覆盖当前文件。
+ *
  */
 export class InvalidatingEntryPointManifest extends EntryPointManifest {
   override readEntryPointsUsingManifest(_basePath: AbsoluteFsPath):
@@ -192,6 +242,9 @@ export type EntryPointPaths = [
 
 /**
  * The JSON format of the manifest file that is written to disk.
+ *
+ * 写入磁盘的清单文件的 JSON 格式。
+ *
  */
 export interface EntryPointManifestFile {
   ngccVersion: string;
@@ -201,7 +254,12 @@ export interface EntryPointManifestFile {
 }
 
 
-/** The JSON format of the entrypoint properties. */
+/**
+ * The JSON format of the entrypoint properties.
+ *
+ * 入口点属性的 JSON 格式。
+ *
+ */
 export type NewEntryPointPropertiesMap = {
   [Property in PackageJsonFormatProperties as `${Property}_ivy_ngcc`]?: string;
 };

@@ -12,7 +12,12 @@ export interface Address {
   streetName: string;
 }
 
-/** The most heroic being. */
+/**
+ * The most heroic being.
+ *
+ * 最英勇的存在。
+ *
+ */
 export interface Hero {
   id: number;
   name: string;
@@ -27,7 +32,12 @@ export interface Hero {
   `
 })
 export class AppComponent {
-  /** This is the title of the `AppComponent` Component. */
+  /**
+   * This is the title of the `AppComponent` Component.
+   *
+   * 这是 `AppComponent` 组件的标题。
+   *
+   */
   title = 'Tour of Heroes';
   hero: Hero = {id: 1, name: 'Windstorm'};
   private internal: string = 'internal';

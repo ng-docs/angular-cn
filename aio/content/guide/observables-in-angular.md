@@ -52,7 +52,7 @@ Angular's `HttpClient` returns observables from HTTP method calls.
 For instance, `http.get('/api')` returns an observable.
 This provides several advantages over promise-based HTTP APIs:
 
-Angular 的 `HttpClient` 从 HTTP 方法调用中返回了可观察对象。例如，`http.get(‘/api’)` 就会返回可观察对象。相对于基于承诺（Promise）的 HTTP API，它有一系列优点：
+Angular 的 `HttpClient` 从 HTTP 方法调用中返回了可观察对象。比如，`http.get('/api')` 就会返回可观察对象。相对于基于承诺（Promise）的 HTTP API，它有一系列优点：
 
 * Observables do not mutate the server response (as can occur through chained `.then()` calls on promises).
   Instead, you can use a series of operators to transform values as needed.
@@ -61,15 +61,15 @@ Angular 的 `HttpClient` 从 HTTP 方法调用中返回了可观察对象。例�
 
 * HTTP requests are cancellable through the `unsubscribe()` method
 
-  HTTP 请求是可以通过 `unsubscribe()` 方法来取消的。
+  HTTP 请求是可以通过 `unsubscribe()` 方法来取消的
 
 * Requests can be configured to get progress event updates
 
-  请求可以进行配置，以获取进度事件的变化。
+  请求可以进行配置，以获取进度事件的变化
 
 * Failed requests can be retried easily
 
-  失败的请求很容易重试。
+  失败的请求很容易重试
 
 ## Async pipe
 
@@ -89,7 +89,7 @@ The observable continuously updates the view with the current time.
 
 ## Router
 
-## 路由器
+## 路由器 (router)
 
 [`Router.events`](api/router/Router#events) provides events as observables.
 You can use the `filter()` operator from RxJS to look for events of interest, and subscribe to them in order to make decisions based on the sequence of events in the navigation process.
@@ -109,7 +109,7 @@ Here's an example:
 
 ## Reactive forms
 
-## 响应式表单
+## 响应式表单 (reactive forms)
 
 Reactive forms have properties that use observables to monitor form control values.
 The [`FormControl`](api/forms/FormControl) properties `valueChanges` and `statusChanges` contain observables that raise change events.

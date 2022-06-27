@@ -16,7 +16,6 @@ import {makeDecorator, TypeDecorator} from '../util/decorators';
 /**
  * Type of the NgModule decorator / constructor function.
  *
- *
  * NgModule 装饰器和构造函数的类型。
  *
  * @publicApi
@@ -48,11 +47,9 @@ export interface NgModule {
    * @see [Dependency Injection guide](guide/dependency-injection)
    *
    * [依赖注入指南](guide/dependency-injection)
-   *
    * @see [NgModule guide](guide/providers)
    *
    * [NgModule 指南](guide/providers)
-   *
    * @usageNotes
    *
    * Dependencies whose providers are listed here become available for injection
@@ -92,8 +89,9 @@ export interface NgModule {
    *      return 'Hello ' + name + '!';
    *    }
    * }
+   * ```
    *
-   * @NgModule({
+   * @NgModule ({
    *   providers: [
    *     Greeter
    *   ]
@@ -141,7 +139,10 @@ export interface NgModule {
    * 下面的例子允许 CommonModule 使用 `NgFor` 指令。
    *
    * ```javascript
-   * @NgModule({
+   *
+   * ```
+   *
+   * @NgModule ({
    *   declarations: [NgFor]
    * })
    * class CommonModule {
@@ -166,7 +167,7 @@ export interface NgModule {
    * wherever `ModuleA` is imported.
    *
    * 模板可以使用来自任何导入模块中所导出的可声明对象，包括它们从别的模块导入后重新导出的。
-   * 例如，`ModuleA` 导入了 `ModuleB` 并导出了它，就会让 `ModuleB` 中的可声明对象也同样在那些导入了
+   * 比如，`ModuleA` 导入了 `ModuleB` 并导出了它，就会让 `ModuleB` 中的可声明对象也同样在那些导入了
    * `ModuleA` 的模块中可用。
    *
    * ### Example
@@ -179,13 +180,15 @@ export interface NgModule {
    * 下列例子允许 `MainModule` 使用 `CommonModule` 中导入的任意可声明对象：
    *
    * ```javascript
-   * @NgModule({
+   *
+   * ```
+   *
+   * @NgModule ({
    *   imports: [CommonModule]
    * })
    * class MainModule {
    * }
    * ```
-   *
    */
   imports?: Array<Type<any>|ModuleWithProviders<{}>|any[]>;
 
@@ -229,7 +232,10 @@ export interface NgModule {
    * 下面的例子导出了来自 `CommonModule` 的 `NgFor` 指令。
    *
    * ```javascript
-   * @NgModule({
+   *
+   * ```
+   *
+   * @NgModule ({
    *   exports: [NgFor]
    * })
    * class CommonModule {
@@ -338,19 +344,19 @@ export const NgModule: NgModuleDecorator = makeDecorator(
      * 一个装饰器，用于把当前类标记为一个 NgModule，并为之提供配置元数据。
      *
      * * The `declarations` and `entryComponents` options configure the compiler
-     * with information about what belongs to the NgModule.
+     *   with information about what belongs to the NgModule.
      *
-     *   `declarations` 和 `entryComponents` 选项告诉编译器，哪些东西是属于本 NgModule 的。
+     *     `declarations` 和 `entryComponents` 选项告诉编译器，哪些东西是属于本 NgModule 的。
      *
      * * The `providers` options configures the NgModule's injector to provide
-     * dependencies the NgModule members.
+     *   dependencies the NgModule members.
      *
-     *   `providers` 选项会配置该 NgModule 的注入器，以便为该 NgModule 的所有成员提供依赖项。
+     *     `providers` 选项会配置该 NgModule 的注入器，以便为该 NgModule 的所有成员提供依赖项。
      *
      * * The `imports` and `exports` options bring in members from other modules, and make
-     * this module's members available to others.
+     *   this module's members available to others.
      *
-     *   `imports` 选项用于从其它模块中带入成员，`exports` 选项用于把本模块的成员带给其它模块。
+     *     `imports` 选项用于从其它模块中带入成员，`exports` 选项用于把本模块的成员带给其它模块。
      *
      */
     (type: Type<any>, meta: NgModule) => compileNgModule(type, meta));

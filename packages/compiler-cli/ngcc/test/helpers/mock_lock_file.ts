@@ -10,6 +10,9 @@ import {LockFile} from '../../src/locking/lock_file';
 
 /**
  * A mock implementation of `LockFile` that just logs its calls.
+ *
+ * `LockFile` 的模拟实现，仅记录其调用。
+ *
  */
 export class MockLockFile implements LockFile {
   constructor(

@@ -32,18 +32,27 @@ export class TemplateBindingParseResult {
 
 /**
  * Represents the possible parse modes to be used as a bitmask.
+ *
+ * 表示要用作位掩码的可能的解析模式。
+ *
  */
 export const enum ParseFlags {
   None = 0,
 
   /**
    * Whether an output binding is being parsed.
+   *
+   * 是否正在解析输出绑定。
+   *
    */
   Action = 1 << 0,
 
   /**
    * Whether an assignment event is being parsed, i.e. an expression originating from
    * two-way-binding aka banana-in-a-box syntax.
+   *
+   * 是否正在解析赋值事件，即来自双向绑定的表达式，也就是 banner-in-a-box 语法。
+   *
    */
   AssignmentEvent = 1 << 1,
 }
@@ -111,27 +120,53 @@ export class Parser {
    * Parse microsyntax template expression and return a list of bindings or
    * parsing errors in case the given expression is invalid.
    *
+   * 解析微语法模板表达式，并在给定表达式无效的情况下返回绑定或解析错误列表。
+   *
    * For example,
+   *
+   * 例如，
+   *
    * ```
    *   <div *ngFor="let item of items">
    *         ^      ^ absoluteValueOffset for `templateValue`
    *         absoluteKeyOffset for `templateKey`
    * ```
+   *
    * contains three bindings:
-   * 1. ngFor -> null
-   * 2. item -> NgForOfContext.$implicit
-   * 3. ngForOf -> items
+   * 1\. ngFor -> null
+   * 2\. item -> NgForOfContext.$implicit
+   * 3\. ngForOf -> items
+   *
+   * 包含三个绑定： 1. ngFor -> null 2. item -> NgForOfContext.$implicit 3. ngForOf -> items
    *
    * This is apparent from the de-sugared template:
+   *
+   * 这从脱糖模板中可以明显看出：
+   *
    * ```
    *   <ng-template ngFor let-item [ngForOf]="items">
    * ```
    *
-   * @param templateKey name of directive, without the * prefix. For example: ngIf, ngFor
+   * @param templateKey name of directive, without the \* prefix. For example: ngIf, ngFor
+   *
+   * 指令的名称，不带 \* 前缀。例如： ngIf、ngFor
+   *
    * @param templateValue RHS of the microsyntax attribute
+   *
+   * 微语法属性的 RHS
+   *
    * @param templateUrl template filename if it's external, component filename if it's inline
+   *
+   * 如果是外部的，则为模板文件名，如果是内联的，则为组件文件名
+   *
    * @param absoluteKeyOffset start of the `templateKey`
+   *
+   * `templateKey` 的开始
+   *
    * @param absoluteValueOffset start of the `templateValue`
+   *
+   * `templateValue` 值的开始
+   *
    */
   parseTemplateBindings(
       templateKey: string, templateValue: string, templateUrl: string, absoluteKeyOffset: number,
@@ -175,6 +210,10 @@ export class Parser {
    * Similar to `parseInterpolation`, but treats the provided string as a single expression
    * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
    * This is used for parsing the switch expression in ICUs.
+   *
+   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（ `{{` 和 `}}`
+   * ）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
+   *
    */
   parseInterpolationExpression(expression: string, location: string, absoluteOffset: number):
       ASTWithSource {
@@ -202,6 +241,11 @@ export class Parser {
    * Returns `null` if there are no interpolations, otherwise a
    * `SplitInterpolation` with splits that look like
    *   <raw text> <expression> <raw text> ... <raw text> <expression> <raw text>
+   *
+   * 将文本字符串拆分为“原始”文本段和字符串中的插值表达式。如果没有插值，则返回 `null` ，否则返回
+   * `SplitInterpolation` ，其拆分看起来像<raw text><expression><raw text>...<raw
+   * text><expression><raw text>
+   *
    */
   splitInterpolation(
       input: string, location: string,
@@ -328,6 +372,9 @@ export class Parser {
   /**
    * Finds the index of the end of an interpolation expression
    * while ignoring comments and quoted content.
+   *
+   * 查找插值表达式结尾的索引，同时忽略注释和引用内容。
+   *
    */
   private _getInterpolationEndIndex(input: string, expressionEnd: string, start: number): number {
     for (const charIndex of this._forEachUnquotedChar(input, start)) {
@@ -347,8 +394,17 @@ export class Parser {
 
   /**
    * Generator used to iterate over the character indexes of a string that are outside of quotes.
+   *
+   * 用于迭代引号之外的字符串的字符索引的生成器。
+   *
    * @param input String to loop through.
+   *
+   * 要循环的字符串。
+   *
    * @param start Index within the string at which to start.
+   *
+   * 要开始的字符串中的索引。
+   *
    */
   private * _forEachUnquotedChar(input: string, start: number) {
     let currentQuote: string|null = null;
@@ -368,7 +424,12 @@ export class Parser {
   }
 }
 
-/** Describes a stateful context an expression parser is in. */
+/**
+ * Describes a stateful context an expression parser is in.
+ *
+ * 描述表达式解析器所在的有状态上下文。
+ *
+ */
 enum ParseContextFlags {
   None = 0,
   /**
@@ -377,6 +438,10 @@ enum ParseContextFlags {
    * property via the "=" operator.
    *   prop
    *        ^ possible "=" after
+   *
+   * 可写上下文是可以将值写入左值的上下文。例如，在我们看到属性访问之后，我们可能会期望通过“="
+   * 运算符对属性进行写入。 prop ^ 可能的 "=" 之后
+   *
    */
   Writable = 1,
 }
@@ -409,7 +474,12 @@ export class _ParseAST {
     return this.peek(0);
   }
 
-  /** Whether all the parser input has been processed. */
+  /**
+   * Whether all the parser input has been processed.
+   *
+   * 是否已处理所有解析器输入。
+   *
+   */
   get atEOF(): boolean {
     return this.index >= this.tokens.length;
   }
@@ -417,6 +487,9 @@ export class _ParseAST {
   /**
    * Index of the next token to be processed, or the end of the last token if all have been
    * processed.
+   *
+   * 要处理的下一个标记的索引，如果已处理全部，则为最后一个标记的结尾。
+   *
    */
   get inputIndex(): number {
     return this.atEOF ? this.currentEndIndex : this.next.index + this.offset;
@@ -425,6 +498,9 @@ export class _ParseAST {
   /**
    * End index of the last processed token, or the start of the first token if none have been
    * processed.
+   *
+   * 最后处理的标记的结束索引，如果没有被处理，则为第一个标记的开始。
+   *
    */
   get currentEndIndex(): number {
     if (this.index > 0) {
@@ -441,6 +517,9 @@ export class _ParseAST {
 
   /**
    * Returns the absolute offset of the start of the current token.
+   *
+   * 返回当前标记开始的绝对偏移量。
+   *
    */
   get currentAbsoluteOffset(): number {
     return this.absoluteOffset + this.inputIndex;
@@ -450,9 +529,17 @@ export class _ParseAST {
    * Retrieve a `ParseSpan` from `start` to the current position (or to `artificialEndIndex` if
    * provided).
    *
+   * 检索从 `start` 到当前位置的 `ParseSpan` （如果提供，则检索到 `artificialEndIndex` ）。
+   *
    * @param start Position from which the `ParseSpan` will start.
+   *
+   * `ParseSpan` 将开始的位置。
+   *
    * @param artificialEndIndex Optional ending index to be used if provided (and if greater than the
    *     natural ending index)
+   *
+   * 如果提供，则要使用的可选结尾索引（并且如果大于自然结尾索引）
+   *
    */
   span(start: number, artificialEndIndex?: number): ParseSpan {
     let endIndex = this.currentEndIndex;
@@ -490,6 +577,9 @@ export class _ParseAST {
 
   /**
    * Executes a callback in the provided context.
+   *
+   * 在提供的上下文中执行回调。
+   *
    */
   private withContext<T>(context: ParseContextFlags, cb: () => T): T {
     this.context |= context;
@@ -518,7 +608,12 @@ export class _ParseAST {
    * Consumes an expected character, otherwise emits an error about the missing expected character
    * and skips over the token stream until reaching a recoverable point.
    *
+   * 使用预期字符，否则会发出有关缺失的预期字符的错误并跳过标记流，直到达到可恢复点。
+   *
    * See `this.error` and `this.skip` for more details.
+   *
+   * 有关更多详细信息，请参阅 `this.error` 和 `this.skip` 。
+   *
    */
   expectCharacter(code: number) {
     if (this.consumeOptionalCharacter(code)) return;
@@ -1030,6 +1125,9 @@ export class _ParseAST {
   /**
    * Parses an identifier, a keyword, a string with an optional `-` in between,
    * and returns the string along with its absolute source span.
+   *
+   * 解析标识符、关键字、中间带有可选 `-` 的字符串，并返回字符串及其绝对源范围。
+   *
    */
   expectTemplateBindingKey(): TemplateBindingIdentifier {
     let result = '';
@@ -1052,22 +1150,36 @@ export class _ParseAST {
    * Parse microsyntax template expression and return a list of bindings or
    * parsing errors in case the given expression is invalid.
    *
+   * 解析微语法模板表达式，并在给定表达式无效的情况下返回绑定或解析错误列表。
+   *
    * For example,
+   *
+   * 例如，
+   *
    * ```
    *   <div *ngFor="let item of items; index as i; trackBy: func">
    * ```
+   *
    * contains five bindings:
-   * 1. ngFor -> null
-   * 2. item -> NgForOfContext.$implicit
-   * 3. ngForOf -> items
-   * 4. i -> NgForOfContext.index
-   * 5. ngForTrackBy -> func
+   * 1\. ngFor -> null
+   * 2\. item -> NgForOfContext.$implicit
+   * 3\. ngForOf -> items
+   * 4\. i -> NgForOfContext.index
+   * 5\. ngForTrackBy -> func
+   *
+   * 包含五个绑定： 1. ngFor -> null 2. item -> NgForOfContext.$implicit 3. ngForOf -> items 4. i ->
+   * NgForOfContext.index 5. ngForTrackBy -> func
    *
    * For a full description of the microsyntax grammar, see
-   * https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855
+   * <https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855>
+   *
+   * 有关微语法语法的完整描述，请参阅<https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855>
    *
    * @param templateKey name of the microsyntax directive, like ngIf, ngFor,
-   * without the *, along with its absolute span.
+   * without the \*, along with its absolute span.
+   *
+   * 微语法指令的名称，例如 ngIf、ngFor ，不带 \* ，以及其绝对跨度。
+   *
    */
   parseTemplateBindings(templateKey: TemplateBindingIdentifier): TemplateBindingParseResult {
     const bindings: TemplateBinding[] = [];
@@ -1138,6 +1250,10 @@ export class _ParseAST {
    * The bindings are: ngForOf -> items, ngForTrackBy -> func
    * There could be an optional "as" binding that follows the expression.
    * For example,
+   *
+   * 解析指令关键字，后跟强制性表达式。例如，“条目的”、“trackBy: func”。绑定是： ngForOf ->
+   * items、ngForTrackBy -> func 表达式后面可以有一个可选的“as”绑定。例如，
+   *
    * ```
    *   *ngFor="let item of items | slice:0:1 as collection".
    *                    ^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^
@@ -1146,6 +1262,9 @@ export class _ParseAST {
    *
    * @param key binding key, for example, ngFor, ngIf, ngForOf, along with its
    * absolute span.
+   *
+   * 绑定键，例如 ngFor、ngIf、ngForOf 及其绝对跨度。
+   *
    */
   private parseDirectiveKeywordBindings(key: TemplateBindingIdentifier): TemplateBinding[] {
     const bindings: TemplateBinding[] = [];
@@ -1172,12 +1291,16 @@ export class _ParseAST {
   /**
    * Return the expression AST for the bound target of a directive keyword
    * binding. For example,
+   *
+   * 返回指令关键字绑定的绑定目标的表达式 AST。例如，
+   *
    * ```
    *   *ngIf="condition | pipe"
    *          ^^^^^^^^^^^^^^^^ bound target for "ngIf"
    *   *ngFor="let item of items"
    *                       ^^^^^ bound target for "ngForOf"
    * ```
+   *
    */
   private getDirectiveBoundTarget(): ASTWithSource|null {
     if (this.next === EOF || this.peekKeywordAs() || this.peekKeywordLet()) {
@@ -1192,6 +1315,9 @@ export class _ParseAST {
   /**
    * Return the binding for a variable declared using `as`. Note that the order
    * of the key-value pair in this declaration is reversed. For example,
+   *
+   * 返回使用 `as` 声明的变量的绑定。请注意，此声明中键值对的顺序是相反的。例如，
+   *
    * ```
    *   *ngFor="let item of items; index as i"
    *                              ^^^^^    ^
@@ -1200,6 +1326,9 @@ export class _ParseAST {
    *
    * @param value name of the value in the declaration, "ngIf" in the example
    * above, along with its absolute span.
+   *
+   * 声明中值的名称，在上面的示例中为“ngIf”，以及其绝对跨度。
+   *
    */
   private parseAsBinding(value: TemplateBindingIdentifier): TemplateBinding|null {
     if (!this.peekKeywordAs()) {
@@ -1214,12 +1343,20 @@ export class _ParseAST {
 
   /**
    * Return the binding for a variable declared using `let`. For example,
+   *
+   * 返回使用 `let` 声明的变量的绑定。例如，
+   *
    * ```
    *   *ngFor="let item of items; let i=index;"
    *           ^^^^^^^^           ^^^^^^^^^^^
    * ```
+   *
    * In the first binding, `item` is bound to `NgForOfContext.$implicit`.
    * In the second binding, `i` is bound to `NgForOfContext.index`.
+   *
+   * 在第一个绑定中， `item` 绑定到 `NgForOfContext.$implicit` 。在第二个绑定中， `i` 绑定到
+   * `NgForOfContext.index` 。
+   *
    */
   private parseLetBinding(): TemplateBinding|null {
     if (!this.peekKeywordLet()) {
@@ -1239,6 +1376,9 @@ export class _ParseAST {
 
   /**
    * Consume the optional statement terminator: semicolon or comma.
+   *
+   * 使用可选的语句终止符：分号或逗号。
+   *
    */
   private consumeStatementTerminator() {
     this.consumeOptionalCharacter(chars.$SEMICOLON) || this.consumeOptionalCharacter(chars.$COMMA);
@@ -1247,6 +1387,9 @@ export class _ParseAST {
   /**
    * Records an error and skips over the token stream until reaching a recoverable point. See
    * `this.skip` for more details on token skipping.
+   *
+   * 记录错误并跳过令牌流，直到达到可恢复点。有关标记跳过的更多详细信息，请参阅 `this.skip` 。
+   *
    */
   error(message: string, index: number|null = null) {
     this.errors.push(new ParserError(message, this.input, this.locationText(index), this.location));
@@ -1261,8 +1404,17 @@ export class _ParseAST {
 
   /**
    * Records an error for an unexpected private identifier being discovered.
+   *
+   * 记录正在发现的意外私有标识符的错误。
+   *
    * @param token Token representing a private identifier.
+   *
+   * 表示私有标识符的标记。
+   *
    * @param extraMessage Optional additional message being appended to the error.
+   *
+   * 附加到错误的可选附加消息。
+   *
    */
   private _reportErrorForPrivateIdentifier(token: Token, extraMessage: string|null) {
     let errorMessage =
@@ -1276,26 +1428,59 @@ export class _ParseAST {
   /**
    * Error recovery should skip tokens until it encounters a recovery point.
    *
+   * 错误恢复应该跳过标记，直到遇到恢复点。
+   *
    * The following are treated as unconditional recovery points:
-   *   - end of input
-   *   - ';' (parseChain() is always the root production, and it expects a ';')
-   *   - '|' (since pipes may be chained and each pipe expression may be treated independently)
+   *
+   * 以下被视为无条件恢复点：
+   *
+   * - end of input
+   *
+   *   输入的结尾
+   *
+   * - ';' (parseChain() is always the root production, and it expects a ';')
+   *
+   *   ';' （parseChain() 始终是根产生式，它需要一个 ';'）
+   *
+   * - '|' (since pipes may be chained and each pipe expression may be treated independently)
+   *
+   *   '|' （因为管道可以被链接起来，并且每个管道表达式都可以独立处理）
    *
    * The following are conditional recovery points:
-   *   - ')', '}', ']' if one of calling productions is expecting one of these symbols
-   *     - This allows skip() to recover from errors such as '(a.) + 1' allowing more of the AST to
-   *       be retained (it doesn't skip any tokens as the ')' is retained because of the '(' begins
-   *       an '(' <expr> ')' production).
-   *       The recovery points of grouping symbols must be conditional as they must be skipped if
-   *       none of the calling productions are not expecting the closing token else we will never
-   *       make progress in the case of an extraneous group closing symbol (such as a stray ')').
-   *       That is, we skip a closing symbol if we are not in a grouping production.
-   *   - '=' in a `Writable` context
-   *     - In this context, we are able to recover after seeing the `=` operator, which
-   *       signals the presence of an independent rvalue expression following the `=` operator.
+   *
+   * 以下是条件恢复点：
+   *
+   * - ')', '}', ']' if one of calling productions is expecting one of these symbols
+   *
+   *   ')', '}', ']' 如果调用产生式之一期望这些符号之一
+   *
+   *   - This allows skip() to recover from errors such as '(a.) + 1' allowing more of the AST to
+   *     be retained (it doesn't skip any tokens as the ')' is retained because of the '(' begins
+   *     an '(' <expr> ')' production).
+   *     The recovery points of grouping symbols must be conditional as they must be skipped if
+   *     none of the calling productions are not expecting the closing token else we will never
+   *     make progress in the case of an extraneous group closing symbol (such as a stray ')').
+   *     That is, we skip a closing symbol if we are not in a grouping production.
+   *
+   *     这允许 skip() 从 '(a.) + 1' 等错误中恢复，允许保留更多 AST（它不会跳过任何标记，因为 ')'
+   * 是因为 '(' 开始'('<expr>')'
+   * 产生式）。分组符号的恢复点必须是有条件的，因为如果没有一个调用产生式不希望有关闭标记，则必须跳过它们，否则我们将永远不会取得进展.也就是说，如果我们不在分组产生式中，我们会跳过关闭符号。
+   *
+   * - '=' in a `Writable` context
+   *
+   *   `Writable` 上下文中的 '='
+   *
+   *   - In this context, we are able to recover after seeing the `=` operator, which
+   *     signals the presence of an independent rvalue expression following the `=` operator.
+   *
+   *     在这种情况下，我们可以在看到 `=` 运算符后恢复，这表明 `=`
+   * 运算符之后存在一个独立的右值表达式。
    *
    * If a production expects one of these token it increments the corresponding nesting count,
    * and then decrements it just prior to checking if the token is in the input.
+   *
+   * 如果一个生产式需要这些标记之一，它会增加相应的嵌套计数，然后在检查标记是否在输入中之前减少它。
+   *
    */
   private skip() {
     let n = this.next;
@@ -1324,15 +1509,29 @@ class SimpleExpressionChecker extends RecursiveAstVisitor {
 /**
  * Computes the real offset in the original template for indexes in an interpolation.
  *
+ * 计算插值中索引在原始模板中的实际偏移量。
+ *
  * Because templates can have encoded HTML entities and the input passed to the parser at this stage
  * of the compiler is the _decoded_ value, we need to compute the real offset using the original
  * encoded values in the interpolated tokens. Note that this is only a special case handling for
  * `MlParserTokenType.ENCODED_ENTITY` token types. All other interpolated tokens are expected to
  * have parts which exactly match the input string for parsing the interpolation.
  *
+ * 因为模板可以有编码的 HTML 实体，并且在编译器的这个阶段传递给解析器的输入是 _ 解码 _
+ * 后的值，所以我们需要使用插值标记中的原始编码值来计算实际偏移量。请注意，这只是
+ * `MlParserTokenType.ENCODED_ENTITY`
+ * 标记类型的特例处理。所有其他插值标记都应该具有与输入字符串完全匹配的部分，以解析插值。
+ *
  * @param interpolatedTokens The tokens for the interpolated value.
  *
- * @returns A map of index locations in the decoded template to indexes in the original template
+ * 内插值的标记。
+ *
+ * @returns
+ *
+ * A map of index locations in the decoded template to indexes in the original template
+ *
+ * 解码模板中的索引位置到原始模板中索引的映射
+ *
  */
 function getIndexMapForOriginalTemplate(interpolatedTokens: InterpolatedAttributeToken[]|
                                         InterpolatedTextToken[]): Map<number, number> {

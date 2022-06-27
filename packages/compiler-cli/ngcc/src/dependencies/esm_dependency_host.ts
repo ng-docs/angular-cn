@@ -6,12 +6,17 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import ts from 'typescript';
+
 import {AbsoluteFsPath, ReadonlyFileSystem} from '../../../src/ngtsc/file_system';
+
 import {DependencyHostBase} from './dependency_host';
 import {ModuleResolver} from './module_resolver';
 
 /**
  * Helper functions for computing dependencies.
+ *
+ * 用于计算依赖项的帮助函数。
+ *
  */
 export class EsmDependencyHost extends DependencyHostBase {
   constructor(
@@ -30,18 +35,29 @@ export class EsmDependencyHost extends DependencyHostBase {
   /**
    * Extract any import paths from imports found in the contents of this file.
    *
+   * 从此文件内容中找到的导入中提取任何导入路径。
+   *
    * This implementation uses the TypeScript scanner, which tokenizes source code,
    * to process the string. This is halfway between working with the string directly,
    * which is too difficult due to corner cases, and parsing the string into a full
    * TypeScript Abstract Syntax Tree (AST), which ends up doing more processing than
    * is needed.
    *
+   * 此实现使用对源代码进行标记化的 TypeScript
+   * 扫描器来处理字符串。这是直接使用字符串（由于极端情况而太难）和将字符串解析为完整的 TypeScript
+   * 抽象语法树（ AST ）之间的中间，后者最终会进行比需要更多的处理。
+   *
    * The scanning is not trivial because we must hold state between each token since
    * the context of the token affects how it should be scanned, and the scanner does
    * not manage this for us.
    *
+   * 扫描并非易事，因为我们必须在每个标记之间保持状态，因为标记的上下文会影响它的扫描方式，并且扫描器不会为我们管理这个。
+   *
    * Specifically, backticked strings are particularly challenging since it is possible
    * to recursively nest backticks and TypeScript expressions within each other.
+   *
+   * 具体来说，带有反引号的字符串特别具有挑战性，因为可以将反引号和 TypeScript 表达式彼此递归嵌套。
+   *
    */
   protected override extractImports(file: AbsoluteFsPath, fileContents: string): Set<string> {
     const imports = new Set<string>();
@@ -127,21 +143,39 @@ export class EsmDependencyHost extends DependencyHostBase {
   /**
    * We have found an `import` token so now try to identify the import path.
    *
+   * 我们找到了一个 `import` 标记，因此现在尝试识别导入路径。
+   *
    * This method will use the current state of `this.scanner` to extract a string literal module
    * specifier. It expects that the current state of the scanner is that an `import` token has just
    * been scanned.
    *
+   * 此方法将使用 `this.scanner`
+   * 的当前状态来提取字符串文字模块说明符。它期望扫描器的当前状态是刚刚扫描了 `import` 标记。
+   *
    * The following forms of import are matched:
    *
+   * 匹配以下形式的导入：
+   *
    * * `import "module-specifier";`
+   *
    * * `import("module-specifier")`
+   *
    * * `import defaultBinding from "module-specifier";`
+   *
    * * `import defaultBinding, * as identifier from "module-specifier";`
+   *
    * * `import defaultBinding, {...} from "module-specifier";`
+   *
    * * `import * as identifier from "module-specifier";`
+   *
    * * `import {...} from "module-specifier";`
    *
-   * @returns the import path or null if there is no import or it is not a string literal.
+   * @returns
+   *
+   * the import path or null if there is no import or it is not a string literal.
+   *
+   * 导入路径；如果没有导入或者它不是字符串文字，则为 null 。
+   *
    */
   protected extractImportPath(): string|null {
     // Check for side-effect import
@@ -190,15 +224,25 @@ export class EsmDependencyHost extends DependencyHostBase {
   /**
    * We have found an `export` token so now try to identify a re-export path.
    *
+   * 我们找到了一个 `export` 标记，因此现在尝试识别重新导出路径。
+   *
    * This method will use the current state of `this.scanner` to extract a string literal module
    * specifier. It expects that the current state of the scanner is that an `export` token has
    * just been scanned.
    *
+   * 此方法将使用 `this.scanner`
+   * 的当前状态来提取字符串文字模块说明符。它期望扫描器的当前状态是刚刚扫描了 `export` 标记。
+   *
    * There are three forms of re-export that are matched:
    *
-   * * `export * from '...';
-   * * `export * as alias from '...';
-   * * `export {...} from '...';
+   * 匹配了三种形式的再导出：
+   *
+   * * \`export \* from '...';
+   *
+   * * \`export \* as alias from '...';
+   *
+   * * \`export {...} from '...';
+   *
    */
   protected extractReexportPath(): string|null {
     // Skip the `export` keyword
@@ -262,10 +306,19 @@ export class EsmDependencyHost extends DependencyHostBase {
  * This is a performance short-circuit, which saves us from creating
  * a TypeScript AST unnecessarily.
  *
+ * 检查是否需要解析源文件以进行导入。这是一个性能短路，它使我们免于创建不必要的 TypeScript AST。
+ *
  * @param source The content of the source file to check.
  *
- * @returns false if there are definitely no import or re-export statements
+ * 要检查的源文件的内容。
+ *
+ * @returns
+ *
+ * false if there are definitely no import or re-export statements
  * in this file, true otherwise.
+ *
+ * 如果此文件中绝对没有 import 或 re-export 语句，则为 false ，否则为 true 。
+ *
  */
 export function hasImportOrReexportStatements(source: string): boolean {
   return /(?:import|export)[\s\S]+?(["'])(?:\\\1|.)+?\1/.test(source);
@@ -277,8 +330,19 @@ function findLastPossibleImportOrReexport(source: string): number {
 
 /**
  * Check whether the given statement is an import with a string literal module specifier.
+ *
+ * 检查给定的语句是否是使用字符串文字模块说明符的导入。
+ *
  * @param stmt the statement node to check.
- * @returns true if the statement is an import with a string literal module specifier.
+ *
+ * 要检查的语句节点。
+ *
+ * @returns
+ *
+ * true if the statement is an import with a string literal module specifier.
+ *
+ * 如果该语句是使用字符串文字模块说明符的导入，则为 true 。
+ *
  */
 export function isStringImportOrReexport(stmt: ts.Statement): stmt is ts.ImportDeclaration&
     {moduleSpecifier: ts.StringLiteral} {

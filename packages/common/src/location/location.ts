@@ -282,13 +282,22 @@ export class Location implements OnDestroy {
    * Navigate to a specific page from session history, identified by its relative position to the
    * current page.
    *
+   * 从会话历史记录导航到特定页面，由其与当前页面的相对位置标识。
+   *
    * @param relativePosition  Position of the target page in the history relative to the current
    *     page.
    * A negative value moves backwards, a positive value moves forwards, e.g. `location.historyGo(2)`
    * moves forward two pages and `location.historyGo(-2)` moves back two pages. When we try to go
    * beyond what's stored in the history session, we stay in the current page. Same behaviour occurs
    * when `relativePosition` equals 0.
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/History_API#Moving_to_a_specific_point_in_history
+   *
+   * 目标页面在历史记录中相对于当前页面的位置。负值会向后移动，正值会向前移动，例如
+   * `location.historyGo(2)` 会向前移动两页， `location.historyGo(-2)`
+   * 会向后移动两页。当我们尝试超越历史会话中存储的内容时，我们会停留在当前页面。当
+   * `relativePosition` 等于 0 时会发生相同的行为。
+   *
+   * @see <https://developer.mozilla.org/en-US/docs/Web/API/History_API#Moving_to_a_specific_point_in_history>
+   *
    */
   historyGo(relativePosition: number = 0): void {
     this._locationStrategy.historyGo?.(relativePosition);
@@ -304,8 +313,12 @@ export class Location implements OnDestroy {
    * @param fn The change handler function, which take a URL and a location history state.
    *
    * 更改处理器函数，接受 URL 和位置历史记录的状态。
+   * @returns
    *
-   * @returns A function that, when executed, unregisters a URL change listener.
+   * A function that, when executed, unregisters a URL change listener.
+   *
+   * 一个函数，执行时会注销 URL 更改侦听器。
+   *
    */
   onUrlChange(fn: (url: string, state: unknown) => void): VoidFunction {
     this._urlChangeListeners.push(fn);
@@ -340,20 +353,19 @@ export class Location implements OnDestroy {
    * Note: `Location.go()` does not trigger the `popState` event in the browser. Use
    * `Location.onUrlChange()` to subscribe to URL changes instead.
    *
+   * 注意： `Location.go()` 不会触发浏览器中的 `popState` 事件。改用 `Location.onUrlChange()` 来订阅
+   * URL 更改。
+   *
    * @param value Event that is triggered when the state history changes.
    *
    * 当状态历史发生变化时触发的事件
-   *
    * @param exception The exception to throw.
    *
    * 要抛出的异常。
-   *
    * @see [onpopstate](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate)
-   *
    * @returns Subscribed events.
    *
    * 已订阅的事件。
-   *
    */
   subscribe(
       onNext: (value: PopStateEvent) => void, onThrow?: ((exception: any) => void)|null,

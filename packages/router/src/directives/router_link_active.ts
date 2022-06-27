@@ -32,7 +32,7 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  * For example, the following code highlights the word "Bob" when the router
  * activates the associated route:
  *
- * 使用此指令为与活动路径关联的元素创建视觉差异。例如，以下代码会在路由器激活关联的路由时突出显示单词
+ * 使用此指令为与活动路径关联的元素创建视觉差异。比如，以下代码会在路由器激活关联的路由时突出显示单词
  * “Bob”：
  *
  * ```
@@ -48,7 +48,7 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  * You can set more than one class using a space-separated string or an array.
  * For example:
  *
- * 你可以设置一个或多个类，例如：
+ * 你可以设置一个或多个类，比如：
  *
  * ```
  * <a routerLink="/user/bob" routerLinkActive="class1 class2">Bob</a>
@@ -70,7 +70,7 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  * For example, the following checks the status without assigning any CSS classes:
  *
  * 要直接检查 `isActive` 状态，请将 `RouterLinkActive`
- * 实例分配给模板变量。例如，以下代码会在不分配任何 CSS 类的情况下检查状态：
+ * 实例分配给模板变量。比如，以下代码会在不分配任何 CSS 类的情况下检查状态：
  *
  * ```
  * <a routerLink="/user/bob" routerLinkActive #rla="routerLinkActive">
@@ -94,15 +94,19 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  * The `RouterLinkActive` directive can also be used to set the aria-current attribute
  * to provide an alternative distinction for active elements to visually impaired users.
  *
+ * `RouterLinkActive` 指令也可用于设置 aria-current 属性，以为视障用户提供活动元素的另一种区别。
+ *
  * For example, the following code adds the 'active' class to the Home Page link when it is
  * indeed active and in such case also sets its aria-current attribute to 'page':
+ *
+ * 例如，以下代码在确实处于活动状态时将 'active' 类添加到主页链接，并在这种情况下将其 aria-current
+ * 属性设置为 'page'：
  *
  * ```
  * <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home Page</a>
  * ```
  *
  * @ngModule RouterModule
- *
  * @publicApi
  */
 @Directive({
@@ -122,7 +126,11 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
   /**
    * Options to configure how to determine if the router link is active.
    *
+   * 用于配置如何确定路由器链接是否处于活动状态的选项。
+   *
    * These options are passed to the `Router.isActive()` function.
+   *
+   * 这些选项会传递给 `Router.isActive()` 函数。
    *
    * @see Router.isActive
    */
@@ -132,20 +140,29 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
   /**
    * Aria-current attribute to apply when the router link is active.
    *
-   * Possible values: `'page'` | `'step'` | `'location'` | `'date'` | `'time'` | `true` | `false`.
+   * 路由器链接处于活动状态时要应用的 Aria-current 属性。
    *
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
+   * Possible values: `'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` \| `true` \|
+   * `false`.
+   *
+   * 可能的值： `'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` \| `true` `false` 的。
+   *
+   * @see {
+   * @link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
    */
   @Input() ariaCurrentWhenActive?: 'page'|'step'|'location'|'date'|'time'|true|false;
 
   /**
-   *
    * You can use the output `isActiveChange` to get notified each time the link becomes
    * active or inactive.
+   *
+   * 你可以用输出 `isActiveChange` 来在每次链接变为活动或非活动时获取通知。
    *
    * Emits:
    * true  -> Route is active
    * false -> Route is inactive
+   *
+   * 发出： true -> 路由处于活动状态 false -> 路由处于非活动状态
    *
    * ```
    * <a
@@ -153,6 +170,7 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
    *  routerLinkActive="active-link"
    *  (isActiveChange)="this.onRouterLinkActive($event)">Bob</a>
    * ```
+   *
    */
   @Output() readonly isActiveChange: EventEmitter<boolean> = new EventEmitter();
 
@@ -252,6 +270,9 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
 
 /**
  * Use instead of `'paths' in options` to be compatible with property renaming
+ *
+ * `'paths' in options` 与属性重命名兼容
+ *
  */
 function isActiveMatchOptions(options: {exact: boolean}|
                               IsActiveMatchOptions): options is IsActiveMatchOptions {

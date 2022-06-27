@@ -7,6 +7,9 @@
  */
 /**
  * Suppress closure compiler errors about unknown 'Zone' variable
+ *
+ * 抑制关于未知“Zone”变量的闭包编译器错误
+ *
  * @fileoverview
  * @suppress {undefinedVars,globalThis,missingRequire}
  */
@@ -24,19 +27,44 @@ export const ObjectGetPrototypeOf = Object.getPrototypeOf;
 export const ObjectCreate = Object.create;
 /** Array.prototype.slice */
 export const ArraySlice = Array.prototype.slice;
-/** addEventListener string const */
+/**
+ * addEventListener string const
+ *
+ * addEventListener 字符串 const
+ *
+ */
 export const ADD_EVENT_LISTENER_STR = 'addEventListener';
-/** removeEventListener string const */
+/**
+ * removeEventListener string const
+ *
+ * removeEventListener 字符串 const
+ *
+ */
 export const REMOVE_EVENT_LISTENER_STR = 'removeEventListener';
 /** zoneSymbol addEventListener */
 export const ZONE_SYMBOL_ADD_EVENT_LISTENER = Zone.__symbol__(ADD_EVENT_LISTENER_STR);
 /** zoneSymbol removeEventListener */
 export const ZONE_SYMBOL_REMOVE_EVENT_LISTENER = Zone.__symbol__(REMOVE_EVENT_LISTENER_STR);
-/** true string const */
+/**
+ * true string const
+ *
+ * 真字符串 const
+ *
+ */
 export const TRUE_STR = 'true';
-/** false string const */
+/**
+ * false string const
+ *
+ * false 字符串 const
+ *
+ */
 export const FALSE_STR = 'false';
-/** Zone symbol prefix string const. */
+/**
+ * Zone symbol prefix string const.
+ *
+ * 区域符号前缀字符串 const。
+ *
+ */
 export const ZONE_SYMBOL_PREFIX = Zone.__symbol__('');
 
 export function wrapWithCurrentZone<T extends Function>(callback: T, source: string): T {

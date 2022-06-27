@@ -15,6 +15,9 @@ import {extractForwardRef, getDependency, wrapReference} from './util';
 
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareInjectable()` call expressions.
+ *
+ * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareInjectable()` 调用表达式。
+ *
  */
 export class PartialInjectableLinkerVersion1<TExpression> implements PartialLinker<TExpression> {
   linkPartialDeclaration(
@@ -27,6 +30,9 @@ export class PartialInjectableLinkerVersion1<TExpression> implements PartialLink
 
 /**
  * Derives the `R3InjectableMetadata` structure from the AST object.
+ *
+ * 从 AST 对象 `R3InjectableMetadata` 结构。
+ *
  */
 export function toR3InjectableMeta<TExpression>(
     metaObj: AstObject<R3DeclareInjectableMetadata, TExpression>): R3InjectableMetadata {

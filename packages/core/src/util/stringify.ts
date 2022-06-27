@@ -40,10 +40,26 @@ export function stringify(token: any): string {
 /**
  * Concatenates two strings with separator, allocating new strings only when necessary.
  *
+ * 使用分隔符连接两个字符串，仅在必要时分配新字符串。
+ *
  * @param before before string.
+ *
+ * 在字符串之前。
+ *
  * @param separator separator string.
+ *
+ * 分隔符字符串。
+ *
  * @param after after string.
- * @returns concatenated string.
+ *
+ * 在字符串之后。
+ *
+ * @returns
+ *
+ * concatenated string.
+ *
+ * 连接的字符串。
+ *
  */
 export function concatStringsWithSpace(before: string|null, after: string|null): string {
   return (before == null || before === '') ?

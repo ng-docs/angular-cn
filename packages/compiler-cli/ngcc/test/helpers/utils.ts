@@ -38,8 +38,17 @@ export function makeTestEntryPoint(
 /**
  *
  * @param format The format of the bundle.
+ *
+ * 包的格式。
+ *
  * @param files The source files to include in the bundle.
+ *
+ * 要包含在包中的源文件。
+ *
  * @param dtsFiles The typings files to include the bundle.
+ *
+ * 要包含此包的 typings 文件。
+ *
  */
 export function makeTestEntryPointBundle(
     packageName: string, format: EntryPointFormat, isCore: boolean, srcRootNames: AbsoluteFsPath[],
@@ -123,6 +132,9 @@ export function getRootFiles(testFiles: TestFile[]): AbsoluteFsPath[] {
 
 /**
  * Mock out the lockfile path resolution, which uses `require.resolve()`.
+ *
+ * 模拟使用 `require.resolve()` 的 lockfile 路径解析。
+ *
  */
 export function mockRequireResolveForLockfile() {
   const moduleConstructor: any = module.constructor;

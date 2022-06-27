@@ -22,11 +22,17 @@ export class By {
   /**
    * Match all nodes.
    *
+   * 匹配所有节点。
+   *
    * @usageNotes
    *
    * ### Example
    *
-   * {@example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
    */
   static all(): Predicate<DebugNode> {
     return () => true;
@@ -41,7 +47,11 @@ export class By {
    *
    * ### Example
    *
-   * {@example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
    */
   static css(selector: string): Predicate<DebugElement> {
     return (debugElement) => {
@@ -60,7 +70,11 @@ export class By {
    *
    * ### Example
    *
-   * {@example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
+   * ### 例子
+   *
+   * {
+   *
+   * @example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
    */
   static directive(type: Type<any>): Predicate<DebugNode> {
     return (debugNode) => debugNode.providerTokens!.indexOf(type) !== -1;

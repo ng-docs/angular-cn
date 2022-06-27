@@ -24,6 +24,9 @@ export interface LocalResolver {
 /**
  * Converts the given expression AST into an executable output AST, assuming the expression is
  * used in an action binding (e.g. an event handler).
+ *
+ * 假定表达式在操作绑定（例如事件处理程序）中使用，将给定的表达式 AST 转换为可执行的输出 AST。
+ *
  */
 export function convertActionBinding(
     localResolver: LocalResolver|null, implicitReceiver: o.Expression, action: cdAst.AST,
@@ -100,6 +103,10 @@ export class ConvertPropertyBindingResult {
  * Converts the given expression AST into an executable output AST, assuming the expression
  * is used in property binding. The expression has to be preprocessed via
  * `convertPropertyBindingBuiltins`.
+ *
+ * 假设表达式用于属性绑定，则将给定的表达式 AST 转换为可执行的输出 AST。表达式必须通过
+ * `convertPropertyBindingBuiltins` 进行预处理。
+ *
  */
 export function convertPropertyBinding(
     localResolver: LocalResolver|null, implicitReceiver: o.Expression,
@@ -125,15 +132,35 @@ export function convertPropertyBinding(
  * expression such that a list of arguments can be derived from the found values that can be used as
  * arguments to an external update instruction.
  *
+ * 给定某些表达式，例如绑定或插值表达式，以及要在其上查找值的上下文表达式，请访问给定表达式的每个切面，以解析上下文表达式中的值，以便可以从找到的值中导出参数列表，用作外部更新指令的参数。
+ *
  * @param localResolver The resolver to use to look up expressions by name appropriately
+ *
+ * 用于按名称适当地查找表达式的解析器
+ *
  * @param contextVariableExpression The expression representing the context variable used to create
  * the final argument expressions
+ *
+ * 表示用于创建最终参数表达式的上下文变量的表达式
+ *
  * @param expressionWithArgumentsToExtract The expression to visit to figure out what values need to
  * be resolved and what arguments list to build.
+ *
+ * 要访问的表达式，以找出需要解析的值以及要构建的参数列表。
+ *
  * @param bindingId A name prefix used to create temporary variable names if they're needed for the
  * arguments generated
- * @returns An array of expressions that can be passed as arguments to instruction expressions like
+ *
+ * 如果生成的参数需要它们，则用于创建临时变量名称的名称前缀
+ *
+ * @returns
+ *
+ * An array of expressions that can be passed as arguments to instruction expressions like
  * `o.importExpr(R3.propertyInterpolate).callFn(result)`
+ *
+ * 可以作为参数传递给指令表达式的表达式数组，例如
+ * `o.importExpr(R3.propertyInterpolate).callFn(result)`
+ *
  */
 export function convertUpdateArguments(
     localResolver: LocalResolver, contextVariableExpression: o.Expression,
@@ -827,13 +854,26 @@ class _AstToIrVisitor implements cdAst.AstVisitor {
   /**
    * Creates an absolute `ParseSourceSpan` from the relative `ParseSpan`.
    *
+   * 从相对 `ParseSpan` `ParseSourceSpan`
+   *
    * `ParseSpan` objects are relative to the start of the expression.
    * This method converts these to full `ParseSourceSpan` objects that
    * show where the span is within the overall source file.
    *
+   * `ParseSpan` 对象是相对于表达式的开头的。此方法将这些转换为完整的 `ParseSourceSpan`
+   * 对象，这些对象会显示跨度在整个源文件中的位置。
+   *
    * @param span the relative span to convert.
-   * @returns a `ParseSourceSpan` for the given span or null if no
+   *
+   * 要转换的相对跨度。
+   *
+   * @returns
+   *
+   * a `ParseSourceSpan` for the given span or null if no
    * `baseSourceSpan` was provided to this class.
+   *
+   * 给定 Span 的 `ParseSourceSpan` ，如果没有向此类提供 `baseSourceSpan` ，则为 null 。
+   *
    */
   private convertSourceSpan(span: cdAst.ParseSpan) {
     if (this.baseSourceSpan) {
@@ -846,7 +886,12 @@ class _AstToIrVisitor implements cdAst.AstVisitor {
     }
   }
 
-  /** Adds the name of an AST to the list of implicit receiver accesses. */
+  /**
+   * Adds the name of an AST to the list of implicit receiver accesses.
+   *
+   * 将 AST 的名称添加到隐式接收器访问列表。
+   *
+   */
   private addImplicitReceiverAccess(name: string) {
     if (this.implicitReceiverAccesses) {
       this.implicitReceiverAccesses.add(name);

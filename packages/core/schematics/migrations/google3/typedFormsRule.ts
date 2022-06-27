@@ -11,7 +11,12 @@ import ts from 'typescript';
 
 import {migrateFile} from '../typed-forms/util';
 
-/** TSLint rule for Typed Forms migration. */
+/**
+ * TSLint rule for Typed Forms migration.
+ *
+ * 用于类型化表单迁移的 TSLint 规则。
+ *
+ */
 export class Rule extends Rules.TypedRule {
   override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const typeChecker = program.getTypeChecker();

@@ -24,6 +24,9 @@ import {Task, TaskProcessingOutcome} from './tasks/api';
 
 /**
  * The function for creating the `compile()` function.
+ *
+ * 用于创建 `compile()` 函数的函数。
+ *
  */
 export function getCreateCompileFn(
     fileSystem: FileSystem, logger: Logger, fileWriter: FileWriter,

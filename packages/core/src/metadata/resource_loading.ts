@@ -7,15 +7,24 @@
  */
 
 import {Type} from '../interface/type';
+
 import {Component} from './directives';
 
 
 /**
  * Used to resolve resource URLs on `@Component` when used with JIT compilation.
  *
+ * 与 JIT 编译一起使用时，用于解析 `@Component` 上的资源 URL。
+ *
  * Example:
+ *
+ * 示例：
+ *
  * ```
- * @Component({
+ *
+ * ```
+ *
+ * @Component ({
  *   selector: 'my-comp',
  *   templateUrl: 'my-comp.html', // This requires asynchronous resolution
  * })
@@ -38,9 +47,12 @@ import {Component} from './directives';
  *
  * NOTE: In AOT the resolution happens during compilation, and so there should be no need
  * to call this method outside JIT mode.
- *
  * @param resourceResolver a function which is responsible for returning a `Promise` to the
  * contents of the resolved URL. Browser's `fetch()` method is a good default implementation.
+ *
+ * 一个函数，负责将 `Promise` 返回到已解析的 URL 的内容。浏览器的 `fetch()`
+ * 方法是一个很好的默认实现。
+ *
  */
 export function resolveComponentResources(
     resourceResolver: (url: string) => (Promise<string|{text(): Promise<string>}>)): Promise<void> {

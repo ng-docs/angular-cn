@@ -92,6 +92,9 @@ export abstract class ViewportScroller {
 
 /**
  * Manages the scroll position for a browser window.
+ *
+ * 管理浏览器窗口的滚动位置。
+ *
  */
 export class BrowserViewportScroller implements ViewportScroller {
   private offset: () => [number, number] = () => [0, 0];
@@ -100,8 +103,13 @@ export class BrowserViewportScroller implements ViewportScroller {
 
   /**
    * Configures the top offset used when scrolling to an anchor.
+   *
+   * 配置滚动到锚点时使用的顶部偏移量。
+   *
    * @param offset A position in screen coordinates (a tuple with x and y values)
    * or a function that returns the top offset position.
+   *
+   * 屏幕坐标中的位置（具有 x 和 y 值的元组）或返回顶部偏移位置的函数。
    *
    */
   setOffset(offset: [number, number]|(() => [number, number])): void {
@@ -114,7 +122,15 @@ export class BrowserViewportScroller implements ViewportScroller {
 
   /**
    * Retrieves the current scroll position.
-   * @returns The position in screen coordinates.
+   *
+   * 检索当前的滚动位置。
+   *
+   * @returns
+   *
+   * The position in screen coordinates.
+   *
+   * 屏幕坐标中的位置。
+   *
    */
   getScrollPosition(): [number, number] {
     if (this.supportsScrolling()) {
@@ -126,7 +142,13 @@ export class BrowserViewportScroller implements ViewportScroller {
 
   /**
    * Sets the scroll position.
+   *
+   * 设置滚动位置。
+   *
    * @param position The new position in screen coordinates.
+   *
+   * 屏幕坐标中的新位置。
+   *
    */
   scrollToPosition(position: [number, number]): void {
     if (this.supportsScrolling()) {
@@ -137,13 +159,21 @@ export class BrowserViewportScroller implements ViewportScroller {
   /**
    * Scrolls to an element and attempts to focus the element.
    *
+   * 滚动到一个元素并尝试聚焦该元素。
+   *
    * Note that the function name here is misleading in that the target string may be an ID for a
    * non-anchor element.
    *
+   * 请注意，这里的函数名具有误导性，因为目标字符串可能是非锚元素的 ID。
+   *
    * @param target The ID of an element or name of the anchor.
    *
-   * @see https://html.spec.whatwg.org/#the-indicated-part-of-the-document
-   * @see https://html.spec.whatwg.org/#scroll-to-fragid
+   * 元素的 ID 或锚点的名称。
+   *
+   * @see <https://html.spec.whatwg.org/#the-indicated-part-of-the-document>
+   *
+   * @see <https://html.spec.whatwg.org/#scroll-to-fragid>
+   *
    */
   scrollToAnchor(target: string): void {
     if (!this.supportsScrolling()) {
@@ -166,6 +196,9 @@ export class BrowserViewportScroller implements ViewportScroller {
 
   /**
    * Disables automatic scroll restoration provided by the browser.
+   *
+   * 禁用浏览器提供的自动滚动恢复。
+   *
    */
   setHistoryScrollRestoration(scrollRestoration: 'auto'|'manual'): void {
     if (this.supportScrollRestoration()) {
@@ -179,8 +212,14 @@ export class BrowserViewportScroller implements ViewportScroller {
   /**
    * Scrolls to an element using the native offset and the specified offset set on this scroller.
    *
+   * 使用本机偏移量和此滚动器上设置的指定偏移量滚动到一个元素。
+   *
    * The offset can be used when we know that there is a floating header and scrolling naively to an
    * element (ex: `scrollIntoView`) leaves the element hidden behind the floating header.
+   *
+   * 当我们知道有一个浮动标头并且天真滚动到一个元素（例如： `scrollIntoView`
+   * ）使该元素隐藏在浮动标头后面时，可以用此偏移量。
+   *
    */
   private scrollToElement(el: HTMLElement): void {
     const rect = el.getBoundingClientRect();
@@ -194,9 +233,15 @@ export class BrowserViewportScroller implements ViewportScroller {
    * We only support scroll restoration when we can get a hold of window.
    * This means that we do not support this behavior when running in a web worker.
    *
+   * 我们仅在可以获得窗口时支持滚动恢复。这意味着我们在 Web Worker 中运行时不支持此行为。
+   *
    * Lifting this restriction right now would require more changes in the dom adapter.
    * Since webworkers aren't widely used, we will lift it once RouterScroller is
    * battle-tested.
+   *
+   * 现在取消此限制将需要对 dom 适配器进行更多更改。由于 Webworkers 并没有被广泛使用，因此我们将在
+   * RouterScroller 经过实战测试后解除它。
+   *
    */
   private supportScrollRestoration(): boolean {
     try {
@@ -264,15 +309,24 @@ function findAnchorFromDocument(document: Document, target: string): HTMLElement
 
 /**
  * Provides an empty implementation of the viewport scroller.
+ *
+ * 提供视口滚动器的空实现。
+ *
  */
 export class NullViewportScroller implements ViewportScroller {
   /**
    * Empty implementation
+   *
+   * 空实现
+   *
    */
   setOffset(offset: [number, number]|(() => [number, number])): void {}
 
   /**
    * Empty implementation
+   *
+   * 空实现
+   *
    */
   getScrollPosition(): [number, number] {
     return [0, 0];
@@ -280,16 +334,25 @@ export class NullViewportScroller implements ViewportScroller {
 
   /**
    * Empty implementation
+   *
+   * 空实现
+   *
    */
   scrollToPosition(position: [number, number]): void {}
 
   /**
    * Empty implementation
+   *
+   * 空实现
+   *
    */
   scrollToAnchor(anchor: string): void {}
 
   /**
    * Empty implementation
+   *
+   * 空实现
+   *
    */
   setHistoryScrollRestoration(scrollRestoration: 'auto'|'manual'): void {}
 }

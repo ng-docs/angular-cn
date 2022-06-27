@@ -510,6 +510,9 @@ export const STATUS_CODE_INFO: {
 
 /**
  * get the status text from StatusCode
+ *
+ * 从 StatusCode 获取状态文本
+ *
  */
 export function getStatusText(code: number) {
   return STATUS_CODE_INFO[code + ''].text || 'Unknown Status';
@@ -517,6 +520,9 @@ export function getStatusText(code: number) {
 
 /**
  * Returns true if the Http Status Code is 200-299 (success)
+ *
+ * 如果 Http 状态代码是 200-299（成功），则返回 true
+ *
  */
 export function isSuccess(status: number): boolean {
   return status >= 200 && status < 300;

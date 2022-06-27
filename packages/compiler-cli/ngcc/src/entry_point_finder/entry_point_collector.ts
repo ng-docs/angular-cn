@@ -16,6 +16,9 @@ import {NGCC_DIRECTORY} from '../writing/new_entry_point_file_writer';
 /**
  * A class that traverses a file-tree, starting at a given path, looking for all entry-points,
  * also capturing the dependencies of each entry-point that is found.
+ *
+ * 遍历文件树的类，从给定路径开始，查找所有入口点，还捕获找到的每个入口点的依赖项。
+ *
  */
 export class EntryPointCollector {
   constructor(
@@ -26,8 +29,19 @@ export class EntryPointCollector {
    * Look for Angular packages that need to be compiled, starting at the source directory.
    * The function will recurse into directories that start with `@...`, e.g. `@angular/...`.
    *
+   * 从源目录开始寻找需要编译的 Angular 包。该函数将递归到以 `@...` 开头的目录，例如 @
+   * `@angular/...` 。
+   *
    * @param sourceDirectory An absolute path to the root directory where searching begins.
-   * @returns an array of `EntryPoint`s that were found within `sourceDirectory`.
+   *
+   * 开始搜索的根目录的绝对路径。
+   *
+   * @returns
+   *
+   * an array of `EntryPoint`s that were found within `sourceDirectory`.
+   *
+   * 在 `sourceDirectory` 中找到的 `EntryPoint` 数组。
+   *
    */
   walkDirectoryForPackages(sourceDirectory: AbsoluteFsPath): EntryPointWithDependencies[] {
     // Try to get a primary entry point from this directory
@@ -86,10 +100,24 @@ export class EntryPointCollector {
    * Search the `directory` looking for any secondary entry-points for a package, adding any that
    * are found to the `entryPoints` array.
    *
+   * 搜索 `directory` 以查找包的任何辅助入口点，将找到的任何内容添加到 `entryPoints` 数组。
+   *
    * @param entryPoints An array where we will add any entry-points found in this directory.
+   *
+   * 一个数组，我们将添加在此目录中找到的任何入口点。
+   *
    * @param packagePath The absolute path to the package that may contain entry-points.
+   *
+   * 可能包含入口点的包的绝对路径。
+   *
    * @param directory The current directory being searched.
+   *
+   * 正在搜索的当前目录。
+   *
    * @param paths The paths contained in the current `directory`.
+   *
+   * 当前 `directory` 中包含的路径。
+   *
    */
   private collectSecondaryEntryPoints(
       entryPoints: EntryPointWithDependencies[], packagePath: AbsoluteFsPath,

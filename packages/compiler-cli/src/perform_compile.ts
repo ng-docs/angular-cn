@@ -36,7 +36,12 @@ export function formatDiagnostics(
   }
 }
 
-/** Used to read configuration files. */
+/**
+ * Used to read configuration files.
+ *
+ * 用于读取配置文件。
+ *
+ */
 export type ConfigurationHost = Pick<
     ReadonlyFileSystem, 'readFile'|'exists'|'lstat'|'resolve'|'join'|'dirname'|'extname'|'pwd'>;
 

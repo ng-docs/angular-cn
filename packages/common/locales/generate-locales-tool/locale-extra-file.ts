@@ -14,6 +14,9 @@ import {stringify} from './object-stringify';
 
 /**
  * Generate the contents for the extra data file
+ *
+ * 生成额外数据文件的内容
+ *
  */
 export function generateLocaleExtra(locale: string, localeData: CldrLocaleData) {
   return `${fileHeader}
@@ -26,6 +29,9 @@ export default ${generateDayPeriodsSupplementalString(locale, localeData)};
 
 /**
  * Collect up the day period rules, and extended day period data.
+ *
+ * 收集日期间规则和延长的日期间数据。
+ *
  */
 export function generateDayPeriodsSupplementalString(locale: string, localeData: CldrLocaleData) {
   const dayPeriods = getDayPeriodsNoAmPm(localeData);

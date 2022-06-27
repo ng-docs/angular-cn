@@ -20,6 +20,10 @@ import {sendMessageToMaster} from './utils';
 /**
  * A `PackageJsonUpdater` for cluster workers that will send update changes to the master process so
  * that it can safely handle update operations on multiple processes.
+ *
+ * 供集群工作人员使用的 `PackageJsonUpdater`
+ * ，它将更新更改发送到主进程，以便它可以安全地处理多个进程上的更新操作。
+ *
  */
 export class ClusterWorkerPackageJsonUpdater implements PackageJsonUpdater {
   constructor() {
@@ -34,6 +38,9 @@ export class ClusterWorkerPackageJsonUpdater implements PackageJsonUpdater {
 
   /**
    * Apply the changes in-memory (if necessary) and send a message to the master process.
+   *
+   * 应用内存中的更改（如有必要）并向主进程发送消息。
+   *
    */
   writeChanges(
       changes: PackageJsonChange[], packageJsonPath: AbsoluteFsPath,

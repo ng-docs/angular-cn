@@ -11,6 +11,9 @@ import {DirectiveSymbol} from '../../directive';
 
 /**
  * Represents an Angular component.
+ *
+ * 表示一个 Angular 组件。
+ *
  */
 export class ComponentSymbol extends DirectiveSymbol {
   usedDirectives: SemanticReference[] = [];

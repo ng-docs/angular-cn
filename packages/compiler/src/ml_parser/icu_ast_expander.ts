@@ -16,7 +16,11 @@ const PLURAL_CASES: string[] = ['zero', 'one', 'two', 'few', 'many', 'other'];
 /**
  * Expands special forms into elements.
  *
+ * 将特殊形式扩展为元素。
+ *
  * For example,
+ *
+ * 例如，
  *
  * ```
  * { messages.length, plural,
@@ -28,6 +32,8 @@ const PLURAL_CASES: string[] = ['zero', 'one', 'two', 'few', 'many', 'other'];
  *
  * will be expanded into
  *
+ * 将扩展为
+ *
  * ```
  * <ng-container [ngPlural]="messages.length">
  *   <ng-template ngPluralCase="=0">zero</ng-template>
@@ -35,6 +41,7 @@ const PLURAL_CASES: string[] = ['zero', 'one', 'two', 'few', 'many', 'other'];
  *   <ng-template ngPluralCase="other">more than one</ng-template>
  * </ng-container>
  * ```
+ *
  */
 export function expandNodes(nodes: html.Node[]): ExpansionResult {
   const expander = new _Expander();
@@ -53,6 +60,8 @@ export class ExpansionError extends ParseError {
 
 /**
  * Expand expansion forms (plural, select) to directives
+ *
+ * 将扩展形式（复数，select）扩展为指令
  *
  * @internal
  */

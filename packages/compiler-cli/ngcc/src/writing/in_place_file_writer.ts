@@ -17,6 +17,9 @@ export const NGCC_BACKUP_EXTENSION = '.__ivy_ngcc_bak';
 /**
  * This FileWriter overwrites the transformed file, in-place, while creating
  * a back-up of the original file with an extra `.__ivy_ngcc_bak` extension.
+ *
+ * 此 FileWriter 会就地覆盖转换后的文件，同时创建具有额外 `.__ivy_ngcc_bak` 扩展名的原始文件的备份。
+ *
  */
 export class InPlaceFileWriter implements FileWriter {
   constructor(

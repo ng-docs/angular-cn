@@ -24,8 +24,17 @@ export abstract class NgLocalization {
 
 /**
  * Returns the plural category for a given value.
+ *
+ * 返回给定值的复数类别。
+ *
  * - "=value" when the case exists,
+ *
+ *   “=value” 当情况存在时，
+ *
  * - the plural category otherwise
+ *
+ *   否则是复数类别
+ *
  */
 export function getPluralCategory(
     value: number, cases: string[], ngLocalization: NgLocalization, locale?: string): string {

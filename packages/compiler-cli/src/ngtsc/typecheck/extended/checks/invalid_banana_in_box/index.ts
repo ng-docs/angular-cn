@@ -16,7 +16,10 @@ import {TemplateCheckFactory, TemplateCheckWithVisitor, TemplateContext} from '.
 /**
  * Ensures the two-way binding syntax is correct.
  * Parentheses should be inside the brackets "[()]".
- * Will return diagnostic information when "([])" is found.
+ * Will return diagnostic information when "(\[])" is found.
+ *
+ * 确保双向绑定语法正确。括号应该在括号“ [()][()] ”内。找到“(\[])”时将返回诊断信息。
+ *
  */
 class InvalidBananaInBoxCheck extends TemplateCheckWithVisitor<ErrorCode.INVALID_BANANA_IN_BOX> {
   override code = ErrorCode.INVALID_BANANA_IN_BOX as const;

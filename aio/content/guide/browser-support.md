@@ -27,7 +27,7 @@ Angular 支持大多数常用浏览器，包括下列版本：
 
 Angular's continuous integration process runs unit tests of the framework on all of these browsers for every pull request, using [Sauce Labs](https://saucelabs.com).
 
-Angular 在持续集成过程中，对每一个提交都会使用 [Sauce Labs](https://saucelabs.com/) 在上述所有浏览器上执行单元测试。
+Angular 在持续集成过程中，对每一个提交都会使用 [Sauce Labs](https://saucelabs.com) 在上述所有浏览器上执行单元测试。
 
 </div>
 
@@ -47,10 +47,16 @@ Angular 构建于 Web 平台的最新标准之上。 要支持这么多浏览器
 The suggested polyfills are the ones that run full Angular applications.
 You might need additional polyfills to support features not covered by this list.
 
+这些建议的腻子脚本是运行完整 Angular 应用所需的。
+你可能还会需要另一些的腻子脚本来支持没有出现在此列表中的哪些特性。
+
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 Polyfills cannot magically transform an old, slow browser into a modern, fast one.
+
+**注意**：<br />
+这些腻子脚本并没有神奇的魔力来把老旧、慢速的浏览器变成现代、快速的浏览器。
 
 </div>
 
@@ -63,6 +69,8 @@ Polyfills cannot magically transform an old, slow browser into a modern, fast on
 The [Angular CLI](cli) provides support for polyfills.
 If you are not using the CLI to create your projects, see [Polyfill instructions for non-CLI users](#non-cli).
 
+[Angular CLI](cli) 提供了对腻子脚本的支持。如果未使用 CLI 创建项目，参阅[针对非 CLI 用户的腻子脚本说明](#non-cli)。
+
 When you create a project with the `ng new` command, a `src/polyfills.ts` configuration file is created as part of your project folder.
 This file incorporates the mandatory and many of the optional polyfills as JavaScript `import` statements.
 
@@ -70,7 +78,7 @@ This file incorporates the mandatory and many of the optional polyfills as JavaS
 
 * The npm packages for the mandatory polyfills (such as `zone.js`) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file
 
-  使用 `ng new` 创建项目时，会自动为你安装一些强制性腻子脚本（例如 `zone.js` ），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
+  使用 `ng new` 创建项目时，会自动为你安装一些强制性腻子脚本（比如 `zone.js` ），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
 
 * If you need an *optional* polyfill, you must install its npm package, then uncomment or create the corresponding import statement in the `src/polyfills.ts` configuration file
 
@@ -84,7 +92,7 @@ This file incorporates the mandatory and many of the optional polyfills as JavaS
 
 If you are not using the CLI, add your polyfill scripts directly to the host web page (`index.html`).
 
-如果你不使用 CLI，就要直接把腻子脚本添加到宿主页（`index.html`）中，就像这样：。
+如果你不使用 CLI，就要直接把腻子脚本添加到宿主页（`index.html`）中，就像这样：
 
 For example:
 

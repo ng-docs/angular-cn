@@ -13,6 +13,9 @@ import {Validator} from '../validator';
 
 /**
  * A validator that waits for the sample to have a certain size.
+ *
+ * 等待样本具有一定大小的验证器。
+ *
  */
 @Injectable()
 export class SizeValidator extends Validator {

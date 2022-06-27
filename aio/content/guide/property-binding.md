@@ -1,5 +1,7 @@
 # Property binding
 
+# 属性绑定
+
 Property binding in Angular helps you set values for properties of HTML elements or directives.  Use property binding to do things such as toggle button functionality, set paths programmatically, and share values between components.
 
 Angular 中的属性绑定可帮助你设置 HTML 元素或指令的属性值。使用属性绑定，可以执行诸如切换按钮、以编程方式设置路径，以及在组件之间共享值之类的功能。
@@ -8,11 +10,13 @@ Angular 中的属性绑定可帮助你设置 HTML 元素或指令的属性值。
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+包含本指南中的代码片段的工作示例，请参阅<live-example></live-example>。
+
 </div>
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 * [Basics of components](guide/architecture-components)
 
@@ -52,21 +56,37 @@ To read a target element property or call one of its methods, see the API refere
 
 To bind to an element's property, enclose it in square brackets, `[]`, which identifies the property as a target property.
 
+要绑定到元素的属性，请将其放在方括号 `[]` 中，这将属性标识为 target 属性。
+
 A target property is the DOM property to which you want to assign a value.
 
+要绑定到元素的属性，请将其括在方括号 `[]` 内，该括号会将属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性。
+
 To assign a value to a target property for the image element's `src` property, type the following code:
+
+要为 image 元素的 `src` 属性的 target 属性分配值，请键入以下代码：
 
 <code-example path="property-binding/src/app/app.component.html" region="property-binding" header="src/app/app.component.html"></code-example>
 
 In most cases, the target name is the name of a property, even when it appears to be the name of an attribute.
 
+在大多数情况下，目标名称是属性名称，即使它看起来是属性名称。
+
 In this example, `src` is the name of the `<img>` element property.
+
+在大多数情况下，目标的名称就是 Property 的名称，哪怕它看起来像 Attribute 的名称。在这个例子中，`src` 就是 `<img>` 元素的 Property 名称。
 
 The brackets, `[]`, cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.
 
+方括号 `[]` 使 Angular 将等号的右侧看作动态表达式进行求值。
+
 Without the brackets, Angular treats the right-hand side as a string literal and sets the property to that static value.
 
+如果不使用方括号，Angular 就会将右侧视为字符串字面量并将此属性设置为该静态值。
+
 To assign a string to a property, type the following code:
+
+要将字符串分配给属性，请键入以下代码：
 
 <code-example path="property-binding/src/app/app.component.html" region="no-evaluation" header="src/app.component.html"></code-example>
 
@@ -80,7 +100,11 @@ Omitting the brackets renders the string `parentItem`, not the value of `parentI
 
 To bind the `src` property of an `<img>` element to a component's property, place the target, `src`, in square brackets followed by an equal sign and then the property.
 
+要将 `<img>` 的 `src` 属性绑定到组件的属性，请将目标 `src` 放在方括号中，后跟等号，然后是组件的属性。
+
 Using the property `itemImageUrl`, type the following code:
+
+使用属性 `itemImageUrl` ，键入以下代码：
 
 <code-example path="property-binding/src/app/app.component.html" region="property-binding" header="src/app/app.component.html"></code-example>
 
@@ -102,17 +126,25 @@ A common point of confusion is between the attribute, `colspan`, and the propert
 
 To use property binding using colSpan, type the following:
 
+要通过 colSpan 使用属性绑定，请键入以下内容：
+
 <code-example path="attribute-binding/src/app/app.component.html" region="colSpan" header="src/app/app.component.html"></code-example>
 
 To disable a button when the component says that it `isUnchanged`, type the following:
+
+要在组件显示 `isUnchanged` 时禁用按钮，请键入以下内容：
 
 <code-example path="property-binding/src/app/app.component.html" region="disabled-button" header="src/app/app.component.html"></code-example>
 
 To set a property of a directive, type the following:
 
+要设置指令的属性，请键入以下内容：
+
 <code-example path="property-binding/src/app/app.component.html" region="class-binding" header="src/app/app.component.html"></code-example>
 
 To set the model property of a custom component for parent and child components to communicated, type the following:
+
+要将自定义组件的模型属性设置为父组件和子组件进行通信，请键入以下内容：
 
 <code-example path="property-binding/src/app/app.component.html" region="model-property-binding" header="src/app/app.component.html"></code-example>
 
@@ -134,7 +166,7 @@ Because the value of the property `isUnchanged` is `true` in the `AppComponent`,
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 * [Property binding best practices](guide/property-binding-best-practices)
 
@@ -146,7 +178,11 @@ Because the value of the property `isUnchanged` is `true` in the `AppComponent`,
 
 * [Text Interpolation](guide/interpolation)
 
+  [文本插值](guide/interpolation)
+
 * [Class & Style Binding](guide/class-binding)
+
+  [类和样式绑定](guide/class-binding)
 
 * [Attribute Binding](guide/attribute-binding)
 

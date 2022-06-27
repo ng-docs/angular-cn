@@ -9,6 +9,8 @@
 /**
  * A token used to manipulate and access values stored in `HttpContext`.
  *
+ * 用于操作和访问存储在 `HttpContext` 中的值的标记。
+ *
  * @publicApi
  */
 export class HttpContextToken<T> {
@@ -19,11 +21,18 @@ export class HttpContextToken<T> {
  * Http context stores arbitrary user defined values and ensures type safety without
  * actually knowing the types. It is backed by a `Map` and guarantees that keys do not clash.
  *
+ * Http 上下文存储任意用户定义的值，并在不了解类型的情况下确保类型安全。它由 `Map`
+ * 支持，并保证键不会冲突。
+ *
  * This context is mutable and is shared between cloned requests unless explicitly specified.
+ *
+ * 除非显式指定，否则此上下文是可变的，并且在克隆的请求之间共享。
  *
  * @usageNotes
  *
  * ### Usage Example
+ *
+ * ### 使用示例
  *
  * ```typescript
  * // inside cache.interceptors.ts
@@ -54,10 +63,22 @@ export class HttpContext {
   /**
    * Store a value in the context. If a value is already present it will be overwritten.
    *
+   * 在上下文中存储一个值。如果一个值已经存在，它将被覆盖。
+   *
    * @param token The reference to an instance of `HttpContextToken`.
+   *
+   * 对 `HttpContextToken` 实例的引用。
+   *
    * @param value The value to store.
    *
-   * @returns A reference to itself for easy chaining.
+   * 要存储的值。
+   *
+   * @returns
+   *
+   * A reference to itself for easy chaining.
+   *
+   * 对自身的引用，以便于链接。
+   *
    */
   set<T>(token: HttpContextToken<T>, value: T): HttpContext {
     this.map.set(token, value);
@@ -67,9 +88,18 @@ export class HttpContext {
   /**
    * Retrieve the value associated with the given token.
    *
+   * 检索与给定标记关联的值。
+   *
    * @param token The reference to an instance of `HttpContextToken`.
    *
-   * @returns The stored value or default if one is defined.
+   * 对 `HttpContextToken` 实例的引用。
+   *
+   * @returns
+   *
+   * The stored value or default if one is defined.
+   *
+   * 存储的值或默认值（如果已定义）。
+   *
    */
   get<T>(token: HttpContextToken<T>): T {
     if (!this.map.has(token)) {
@@ -81,9 +111,18 @@ export class HttpContext {
   /**
    * Delete the value associated with the given token.
    *
+   * 删除与给定标记关联的值。
+   *
    * @param token The reference to an instance of `HttpContextToken`.
    *
-   * @returns A reference to itself for easy chaining.
+   * 对 `HttpContextToken` 实例的引用。
+   *
+   * @returns
+   *
+   * A reference to itself for easy chaining.
+   *
+   * 对自身的引用，以便于链接。
+   *
    */
   delete(token: HttpContextToken<unknown>): HttpContext {
     this.map.delete(token);
@@ -93,16 +132,30 @@ export class HttpContext {
   /**
    * Checks for existence of a given token.
    *
+   * 检查给定标记是否存在。
+   *
    * @param token The reference to an instance of `HttpContextToken`.
    *
-   * @returns True if the token exists, false otherwise.
+   * 对 `HttpContextToken` 实例的引用。
+   *
+   * @returns
+   *
+   * True if the token exists, false otherwise.
+   *
+   * 如果标记存在，则为 true ，否则为 false 。
+   *
    */
   has(token: HttpContextToken<unknown>): boolean {
     return this.map.has(token);
   }
 
   /**
-   * @returns a list of tokens currently stored in the context.
+   * @returns
+   *
+   * a list of tokens currently stored in the context.
+   *
+   * 当前存储在上下文中的标记列表。
+   *
    */
   keys(): IterableIterator<HttpContextToken<unknown>> {
     return this.map.keys();

@@ -10,6 +10,9 @@ import {CldrLocaleData} from './cldr-data';
 
 /**
  * Returns data for the chosen day periods
+ *
+ * 返回所选日期期间的数据
+ *
  */
 export function getDayPeriods(localeData: CldrLocaleData, dayPeriodsList: string[]): {
   format: {
@@ -44,7 +47,15 @@ export function getDayPeriods(localeData: CldrLocaleData, dayPeriodsList: string
 
 /**
  * Returns day period rules for a locale
- * @returns string[]
+ *
+ * 返回区域设置的日期间规则
+ *
+ * @returns
+ *
+ * string\[]
+ *
+ * 字符串\[]
+ *
  */
 export function getDayPeriodRules(
     localeData: CldrLocaleData,
@@ -77,6 +88,9 @@ export function getDayPeriodRules(
 
 /**
  * Returns the basic day periods (am/pm)
+ *
+ * 返回基本日期间 (am/pm)
+ *
  */
 export function getDayPeriodsAmPm(localeData: CldrLocaleData) {
   return getDayPeriods(localeData, ['am', 'pm']);
@@ -84,6 +98,9 @@ export function getDayPeriodsAmPm(localeData: CldrLocaleData) {
 
 /**
  * Returns the extra day periods (without am/pm)
+ *
+ * 返回额外的天数（不包括 am/pm）
+ *
  */
 export function getDayPeriodsNoAmPm(localeData: CldrLocaleData) {
   return getDayPeriods(localeData, [

@@ -6,12 +6,22 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-/** Mapping between legacy message IDs and their cannonical counterparts. */
+/**
+ * Mapping between legacy message IDs and their cannonical counterparts.
+ *
+ * 旧版消息 ID 与其规范对应项之间的映射。
+ *
+ */
 export type MigrationMapping = {
   [legacyId: string]: string;
 };
 
-/** Migrates the legacy message IDs within a single file. */
+/**
+ * Migrates the legacy message IDs within a single file.
+ *
+ * 迁移单个文件中的旧版消息 ID。
+ *
+ */
 export function migrateFile(sourceCode: string, mapping: MigrationMapping) {
   const legacyIds = Object.keys(mapping);
 
@@ -24,7 +34,12 @@ export function migrateFile(sourceCode: string, mapping: MigrationMapping) {
   return sourceCode;
 }
 
-/** Escapes special regex characters in a string. */
+/**
+ * Escapes special regex characters in a string.
+ *
+ * 转义字符串中的特殊正则表达式字符。
+ *
+ */
 function escapeRegExp(str: string): string {
   return str.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }

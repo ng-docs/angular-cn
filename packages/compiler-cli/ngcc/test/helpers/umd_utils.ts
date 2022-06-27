@@ -13,7 +13,13 @@ export interface AdditionalFormatOptions {
    * to be omitted altogether.
    * (This option only affects the `Rollup` format.)
    *
+   * 工厂函数中 `exports` 参数的索引（因此是各种工厂调用中的对应参数）。传递 -1 将导致完全省略
+   * `exports` 参数/参数。 （此选项仅影响 `Rollup` 格式。）
+   *
    * Defaults to `0` (i.e. `exports` being the first argument).
+   *
+   * 默认为 `0` （即 `exports` 是第一个参数）。
+   *
    */
   exportsParamIndex?: number;
 
@@ -22,7 +28,13 @@ export interface AdditionalFormatOptions {
    * the global factory call.
    * (This option only affects the `Rollup` format.)
    *
+   * 是否在全局工厂调用之前包含 `global` 变量 ( `global = global || self` ) 的初始化器。
+   * （此选项仅影响 `Rollup` 格式。）
+   *
    * Defaults to `false` (i.e. not include an initialier for `global`).
+   *
+   * 默认为 `false` （即不包含 `global` 的初始化器）。
+   *
    */
   hasGlobalInitializer?: boolean;
 
@@ -32,7 +44,12 @@ export interface AdditionalFormatOptions {
    * Unused dependencies must always follow used ones (if any). In other words, unused dependencies
    * can only appear at the end of the dependency list.
    *
+   * 工厂函数中不使用的一组依赖项（即省略工厂函数参数）。未使用的依赖项必须始终遵循已使用的依赖项（如果有）。换句话说，未使用的依赖项只能出现在依赖列表的末尾。
+   *
    * Defaults to an empty set (i.e. all dependencies are used).
+   *
+   * 默认为空集（即使用所有依赖项）。
+   *
    */
   unusedDependencies?: Set<String>;
 }

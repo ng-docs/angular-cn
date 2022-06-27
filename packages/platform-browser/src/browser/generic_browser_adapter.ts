@@ -13,6 +13,8 @@ import {ɵDomAdapter as DomAdapter} from '@angular/common';
 /**
  * Provides DOM operations in any browser environment.
  *
+ * 在任何浏览器环境中提供 DOM 操作。
+ *
  * @security Tread carefully! Interacting with the DOM directly is dangerous and
  * can introduce XSS risks.
  */

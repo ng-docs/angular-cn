@@ -35,7 +35,12 @@ export function resolveEnumValue(
   return resolved;
 }
 
-/** Determines if the result of an evaluation is a string array. */
+/**
+ * Determines if the result of an evaluation is a string array.
+ *
+ * 确定估算的结果是否是字符串数组。
+ *
+ */
 export function isStringArray(resolvedValue: ResolvedValue): resolvedValue is string[] {
   return Array.isArray(resolvedValue) && resolvedValue.every(elem => typeof elem === 'string');
 }

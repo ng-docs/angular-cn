@@ -15,6 +15,9 @@ import {isAliasImportDeclaration, loadIsReferencedAliasDeclarationPatch} from '.
 /**
  * Whether a given decorator should be treated as an Angular decorator.
  * Either it's used in @angular/core, or it's imported from there.
+ *
+ * 给定的装饰器是否应该被视为 Angular 装饰器。它可以在 @angular/core 中使用，或者是从那里导入的。
+ *
  */
 function isAngularDecorator(decorator: Decorator, isCore: boolean): boolean {
   return isCore || (decorator.import !== null && decorator.import.from === '@angular/core');
@@ -48,8 +51,13 @@ const DECORATOR_INVOCATION_JSDOC_TYPE = '!Array<{type: !Function, args: (undefin
  * Extracts the type of the decorator (the function or expression invoked), as well as all the
  * arguments passed to the decorator. Returns an AST with the form:
  *
- *     // For @decorator(arg1, arg2)
- *     { type: decorator, args: [arg1, arg2] }
+ * 提取装饰器的类型（调用的函数或表达式），以及传递给装饰器的所有参数。返回具有以下形式的 AST：
+ *
+ * ```
+ * // For @decorator(arg1, arg2)
+ * { type: decorator, args: [arg1, arg2] }
+ * ```
+ *
  */
 function extractMetadataFromSingleDecorator(
     decorator: ts.Decorator, diagnostics: ts.Diagnostic[]): ts.ObjectLiteralExpression {
@@ -93,14 +101,21 @@ function extractMetadataFromSingleDecorator(
  * createCtorParametersClassProperty creates a static 'ctorParameters' property containing
  * downleveled decorator information.
  *
+ * createCtorParametersClassProperty 会创建一个包含降级装饰器信息的静态 'ctorParameters' 属性。
+ *
  * The property contains an arrow function that returns an array of object literals of the shape:
- *     static ctorParameters = () => [{
+ *     static ctorParameters = () => \[{
  *       type: SomeClass|undefined,  // the type of the param that's decorated, if it's a value.
- *       decorators: [{
+ *       decorators: \[{
  *         type: DecoratorFn,  // the type of the decorator that's invoked.
  *         args: [ARGS],       // the arguments passed to the decorator.
  *       }]
  *     }];
+ *
+ * 该属性包含一个箭头函数，该函数会返回一个具有以下形状的对象文字的数组： static ctorParameters = ()
+ * => \[{ type: SomeClass|undefined, // 被装饰的参数的类型，如果是值。 decorator: \[{ type:
+ * DecoratorFn, // 被调用的装饰器的类型。 args: [ARGS][ARGS] , // 传递给装饰器的参数。 }] }];
+ *
  */
 function createCtorParametersClassProperty(
     diagnostics: ts.Diagnostic[],
@@ -164,10 +179,17 @@ function createCtorParametersClassProperty(
 /**
  * Returns an expression representing the (potentially) value part for the given node.
  *
+ * 返回一个表示给定节点的（可能）值部分的表达式。
+ *
  * This is a partial re-implementation of TypeScript's serializeTypeReferenceNode. This is a
- * workaround for https://github.com/Microsoft/TypeScript/issues/17516 (serializeTypeReferenceNode
+ * workaround for <https://github.com/Microsoft/TypeScript/issues/17516> (serializeTypeReferenceNode
  * not being exposed). In practice this implementation is sufficient for Angular's use of type
  * metadata.
+ *
+ * 这是 TypeScript 的 serializeTypeReferenceNode
+ * 的部分重新实现。这是<https://github.com/Microsoft/TypeScript/issues/17516>的解决方法（不会公开
+ * serializeTypeReferenceNode）。在实践中，此实现对于 Angular 使用类型元数据就足够了。
+ *
  */
 function typeReferenceToExpression(
     entityNameToExpression: (n: ts.EntityName) => ts.Expression | undefined,
@@ -217,9 +239,15 @@ function typeReferenceToExpression(
 /**
  * Checks whether a given symbol refers to a value that exists at runtime (as distinct from a type).
  *
+ * 检查给定的符号是否引用了运行时存在的值（与类型不同）。
+ *
  * Expands aliases, which is important for the case where
- *   import * as x from 'some-module';
+ *   import \* as x from 'some-module';
  * and x is now a value (the module object).
+ *
+ * 扩展别名，这对于 import \* as x from 'some-module' 的情况很重要；并且 x
+ * 现在是一个值（模块对象）。
+ *
  */
 function symbolIsRuntimeValue(typeChecker: ts.TypeChecker, symbol: ts.Symbol): boolean {
   if (symbol.flags & ts.SymbolFlags.Alias) {
@@ -231,30 +259,67 @@ function symbolIsRuntimeValue(typeChecker: ts.TypeChecker, symbol: ts.Symbol): b
   return (symbol.flags & ts.SymbolFlags.Value & ts.SymbolFlags.ConstEnumExcludes) !== 0;
 }
 
-/** ParameterDecorationInfo describes the information for a single constructor parameter. */
+/**
+ * ParameterDecorationInfo describes the information for a single constructor parameter.
+ *
+ * ParameterDecorationInfo 描述单个构造函数参数的信息。
+ *
+ */
 interface ParameterDecorationInfo {
   /**
    * The type declaration for the parameter. Only set if the type is a value (e.g. a class, not an
    * interface).
+   *
+   * 参数的类型声明。只有在类型是值（例如类，而不是接口）时才设置。
+   *
    */
   type: ts.TypeNode|null;
-  /** The list of decorators found on the parameter, null if none. */
+  /**
+   * The list of decorators found on the parameter, null if none.
+   *
+   * 在参数上找到的装饰器列表，如果没有，则为 null 。
+   *
+   */
   decorators: ts.Decorator[];
 }
 
 /**
  * Gets a transformer for downleveling Angular decorators.
+ *
+ * 获取用于下级 Angular 装饰器的转换器。
+ *
  * @param typeChecker Reference to the program's type checker.
+ *
+ * 对程序的类型检查器的引用。
+ *
  * @param host Reflection host that is used for determining decorators.
+ *
+ * 用于确定装饰器的反射主机。
+ *
  * @param diagnostics List which will be populated with diagnostics if any.
+ *
+ * 如果有，将使用诊断信息填充的列表。
+ *
  * @param isCore Whether the current TypeScript program is for the `@angular/core` package.
+ *
+ * 当前的 TypeScript 程序是否用于 `@angular/core` 包。
+ *
  * @param isClosureCompilerEnabled Whether closure annotations need to be added where needed.
+ *
+ * 是否需要在需要的地方添加闭包注解。
+ *
  * @param skipClassDecorators Whether class decorators should be skipped from downleveling.
  *   This is useful for JIT mode where class decorators should be preserved as they could rely
  *   on immediate execution. e.g. downleveling `@Injectable` means that the injectable factory
  *   is not created, and injecting the token will not work. If this decorator would not be
  *   downleveled, the `Injectable` decorator will execute immediately on file load, and
  *   Angular will generate the corresponding injectable factory.
+ *
+ * 是否应该从降级中跳过类装饰器。这对于应该保留类装饰器的 JIT
+ * 模式很有用，因为它们可以依赖于立即执行。例如， `@Injectable`
+ * 意味着不会创建可注入工厂，并且注入令牌将不起作用。如果此装饰器不会被降级，则 `Injectable`
+ * 装饰器将在文件加载时立即执行，并且 Angular 将生成相应的可注入工厂。
+ *
  */
 export function getDownlevelDecoratorsTransform(
     typeChecker: ts.TypeChecker, host: ReflectionHost, diagnostics: ts.Diagnostic[],
@@ -279,6 +344,9 @@ export function getDownlevelDecoratorsTransform(
   /**
    * Takes a list of decorator metadata object ASTs and produces an AST for a
    * static class property of an array of those metadata objects.
+   *
+   * 获取装饰器元数据对象 AST 的列表，并为这些元数据对象数组的静态类属性生成 AST。
+   *
    */
   function createDecoratorClassProperty(decoratorList: ts.ObjectLiteralExpression[]) {
     const modifier = ts.factory.createToken(ts.SyntaxKind.StaticKeyword);
@@ -301,10 +369,19 @@ export function getDownlevelDecoratorsTransform(
    * property containing type information for every property that has a
    * decorator applied.
    *
-   *     static propDecorators: {[key: string]: {type: Function, args?:
-   * any[]}[]} = { propA: [{type: MyDecorator, args: [1, 2]}, ...],
+   * createPropDecoratorsClassProperty 会创建一个静态 'propDecorators'
+   * 属性，其中包含应用了装饰器的每个属性的类型信息。
+   *
+   * ```
+   * static propDecorators: {[key: string]: {type: Function, args?:
+   * ```
+   *
+   * any\[]}\[]} = { propA: \[{type: MyDecorator, args: [1, 2]}, ...],
    *       ...
    *     };
+   *
+   * any\[]}\[]} = { propA: \[{type: MyDecorator, args: [1, 2][1, 2] }, ...], ... };
+   *
    */
   function createPropDecoratorsClassProperty(
       diagnostics: ts.Diagnostic[],
@@ -337,8 +414,13 @@ export function getDownlevelDecoratorsTransform(
     /**
      * Converts an EntityName (from a type annotation) to an expression (accessing a value).
      *
+     * 将 EntityName （从类型注解）转换为表达式（访问值）。
+     *
      * For a given qualified name, this walks depth first to find the leftmost identifier,
      * and then converts the path into a property access that can be used as expression.
+     *
+     * 对于给定的限定名，这会首先深入了解以查找最左边的标识符，然后将路径转换为可以用作表达式的属性访问。
+     *
      */
     function entityNameToExpression(name: ts.EntityName): ts.Expression|undefined {
       const symbol = typeChecker.getSymbolAtLocation(name);
@@ -387,6 +469,9 @@ export function getDownlevelDecoratorsTransform(
      * Transforms a class element. Returns a three tuple of name, transformed element, and
      * decorators found. Returns an undefined name if there are no decorators to lower on the
      * element, or the element has an exotic name.
+     *
+     * 转换类元素。返回由名称、转换后的元素和找到的装饰器组成的三元组。如果元素上没有要降低的装饰器，或者元素具有外来名称，则返回未定义的名称。
+     *
      */
     function transformClassElement(element: ts.ClassElement):
         [string|undefined, ts.ClassElement, ts.Decorator[]] {
@@ -431,6 +516,9 @@ export function getDownlevelDecoratorsTransform(
     /**
      * Transforms a constructor. Returns the transformed constructor and the list of parameter
      * information collected, consisting of decorators and optional type.
+     *
+     * 转换构造函数。返回转换后的构造函数和收集的参数信息列表，由装饰器和可选类型组成。
+     *
      */
     function transformConstructor(ctor: ts.ConstructorDeclaration):
         [ts.ConstructorDeclaration, ParameterDecorationInfo[]] {
@@ -477,10 +565,25 @@ export function getDownlevelDecoratorsTransform(
 
     /**
      * Transforms a single class declaration:
+     *
+     * 转换单个类声明：
+     *
      * - dispatches to strip decorators on members
+     *
+     *   调度以剥离成员上的装饰器
+     *
      * - converts decorators on the class to annotations
+     *
+     *   将类上的装饰器转换为注解
+     *
      * - creates a ctorParameters property
+     *
+     *   创建一个 ctorParameters 属性
+     *
      * - creates a propDecorators property
+     *
+     *   创建一个 propDecorators 属性
+     *
      */
     function transformClassDeclaration(classDecl: ts.ClassDeclaration): ts.ClassDeclaration {
       classDecl = ts.getMutableClone(classDecl);
@@ -571,6 +674,10 @@ export function getDownlevelDecoratorsTransform(
      * Transformer visitor that looks for Angular decorators and replaces them with
      * downleveled static properties. Also collects constructor type metadata for
      * class declaration that are decorated with an Angular decorator.
+     *
+     * 寻找 Angular 装饰器并用降级的静态属性替换它们的 Transformer 访问器。还收集使用 Angular
+     * 装饰器装饰的类声明的构造函数类型元数据。
+     *
      */
     function decoratorDownlevelVisitor(node: ts.Node): ts.Node {
       if (ts.isClassDeclaration(node)) {

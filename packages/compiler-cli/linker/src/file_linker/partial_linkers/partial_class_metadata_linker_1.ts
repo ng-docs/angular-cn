@@ -13,6 +13,9 @@ import {LinkedDefinition, PartialLinker} from './partial_linker';
 
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareClassMetadata()` call expressions.
+ *
+ * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareClassMetadata()` 调用表达式。
+ *
  */
 export class PartialClassMetadataLinkerVersion1<TExpression> implements PartialLinker<TExpression> {
   linkPartialDeclaration(
@@ -28,6 +31,9 @@ export class PartialClassMetadataLinkerVersion1<TExpression> implements PartialL
 
 /**
  * Derives the `R3ClassMetadata` structure from the AST object.
+ *
+ * 从 AST 对象 `R3ClassMetadata` 结构。
+ *
  */
 export function toR3ClassMetadata<TExpression>(
     metaObj: AstObject<R3DeclareClassMetadata, TExpression>): R3ClassMetadata {

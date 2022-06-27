@@ -42,6 +42,9 @@ export abstract class SingleProcessorExecutorBase {
 
 /**
  * An `Executor` that processes all tasks serially and completes synchronously.
+ *
+ * 一个顺序处理所有任务并同步完成的 `Executor` 器。
+ *
  */
 export class SingleProcessExecutorSync extends SingleProcessorExecutorBase implements Executor {
   constructor(
@@ -56,6 +59,9 @@ export class SingleProcessExecutorSync extends SingleProcessorExecutorBase imple
 
 /**
  * An `Executor` that processes all tasks serially, but still completes asynchronously.
+ *
+ * 一个按顺序处理所有任务，但仍然异步完成的 `Executor` 。
+ *
  */
 export class SingleProcessExecutorAsync extends SingleProcessorExecutorBase implements Executor {
   constructor(

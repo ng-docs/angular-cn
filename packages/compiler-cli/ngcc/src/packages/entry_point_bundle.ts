@@ -20,6 +20,9 @@ import {EntryPointFileCache, SharedFileCache} from './source_file_cache';
 /**
  * A bundle of files and paths (and TS programs) that correspond to a particular
  * format of a package entry-point.
+ *
+ * 与包入口点的特定格式对应的文件和路径（和 TS 程序）包。
+ *
  */
 export interface EntryPointBundle {
   entryPoint: EntryPoint;
@@ -38,6 +41,11 @@ export interface EntryPointBundle {
  * declarations using element access expressions into property access expressions, as otherwise ngcc
  * would not recognize these export declarations. See `adjustElementAccessExports` for more
  * information.
+ *
+ * 在处理 UMD 或 CommonJS
+ * 包时，源文本会被预处理，以将使用元素访问表达式的导出声明转换为属性访问表达式，否则 ngcc
+ * 将无法识别这些导出声明。有关更多信息，请参阅 `adjustElementAccessExports` 。
+ *
  */
 function createSourceTextProcessor(format: EntryPointFormat): (sourceText: string) => string {
   if (format === 'umd' || format === 'commonjs') {
@@ -49,19 +57,55 @@ function createSourceTextProcessor(format: EntryPointFormat): (sourceText: strin
 
 /**
  * Get an object that describes a formatted bundle for an entry-point.
+ *
+ * 获取一个描述入口点的格式化包的对象。
+ *
  * @param fs The current file-system being used.
+ *
+ * 当前正在使用的文件系统。
+ *
  * @param entryPoint The entry-point that contains the bundle.
+ *
+ * 包含包的入口点。
+ *
  * @param sharedFileCache The cache to use for source files that are shared across all entry-points.
+ *
+ * 用于在所有入口点共享的源文件的缓存。
+ *
  * @param moduleResolutionCache The module resolution cache to use.
+ *
+ * 要使用的模块解析缓存。
+ *
  * @param formatPath The path to the source files for this bundle.
+ *
+ * 此包的源文件的路径。
+ *
  * @param isCore This entry point is the Angular core package.
+ *
+ * 此入口点是 Angular 核心包。
+ *
  * @param format The underlying format of the bundle.
+ *
+ * 包的基础格式。
+ *
  * @param dtsProcessing Whether to transform the typings along with this bundle.
+ *
+ * 是否将类型与此包一起转换。
+ *
  * @param pathMappings An optional set of mappings to use when compiling files.
+ *
+ * 编译文件时要使用的可选映射集。
+ *
  * @param mirrorDtsFromSrc If true then the `dts` program will contain additional files that
  * were guessed by mapping the `src` files to `dts` files.
+ *
+ * 如果为 true，则 `dts` 程序将包含通过将 `src` 文件映射到 `dts` 文件来猜测的其他文件。
+ *
  * @param enableI18nLegacyMessageIdFormat Whether to render legacy message ids for i18n messages in
  * component templates.
+ *
+ * 是否为组件模板中的 i18n 消息呈现旧版消息 ID。
+ *
  */
 export function makeEntryPointBundle(
     fs: FileSystem, entryPoint: EntryPoint, sharedFileCache: SharedFileCache,

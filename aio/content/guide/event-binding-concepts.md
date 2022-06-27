@@ -1,5 +1,7 @@
 # How event binding works
 
+# 事件绑定的工作原理
+
 In an event binding, Angular configures an event handler for the target event.
 You can use event binding with your own custom events.
 
@@ -17,10 +19,12 @@ The template statement performs an action in response to the event.
 A common way to handle events is to pass the event object, `$event`, to the method handling the event.
 The `$event` object often contains information the method needs, such as a user's name or an image URL.
 
-处理事件的常见方法之一是把事件对象 `$event` 传给处理该事件的方法。`$event` 对象通常包含该方法所需的信息，例如用户名或图片 URL。
+处理事件的常见方法之一是把事件对象 `$event` 传给处理该事件的方法。`$event` 对象通常包含该方法所需的信息，比如用户名或图片 URL。
 
 The target event determines the shape of the `$event` object.
 If the target event is a native DOM element event, then `$event` is a [DOM event object](https://developer.mozilla.org/docs/Web/Events), with properties such as `target` and `target.value`.
+
+目标事件决定了 `$event` 对象的形态。如果目标事件是来自原生 DOM 元素的，那么 `$event` 是一个[DOM 事件对象](https://developer.mozilla.org/docs/Web/Events)，它具有 `target` 和 `target.value` 等属性。
 
 In the following example the code sets the `<input>` `value` property by binding to the `name` property.
 

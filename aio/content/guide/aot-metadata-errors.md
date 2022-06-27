@@ -4,6 +4,8 @@
 
 The following are metadata errors you may encounter, with explanations and suggested corrections.
 
+以下是你可能会遇到的元数据错误，带有解释和建议的更正。
+
 [Expression form not supported](#expression-form-not-supported) <br /> 
 [Reference to a local (non-exported) symbol](#reference-to-a-local-symbol) <br /> 
 [Only initialized variables and constants](#only-initialized-variables) <br /> 
@@ -16,6 +18,19 @@ The following are metadata errors you may encounter, with explanations and sugge
 [Unsupported enum member name](#unsupported-enum-member-name) <br /> 
 [Tagged template expressions are not supported](#tagged-template-expressions-not-supported) <br /> 
 [Symbol reference expected](#symbol-reference-expected) <br /> 
+
+[不支持此表达式格式（Expression form not supported）](#expression-form-not-supported)<br />
+[引用了局部（未导出的）符号（Reference to a local (non-exported) symbol）](#reference-to-a-local-symbol)<br />
+[只允许初始化过的变量和常量（Only initialized variables and constants）](#only-initialized-variables)<br />
+[引用了未导出的类（Reference to a non-exported class）](#reference-to-a-non-exported-class)<br />
+[引用了未导出的函数（Reference to a non-exported function）](#reference-to-a-non-exported-function)<br />
+[不支持函数调用（Function calls are not supported）](#function-calls-not-supported)<br />
+[不支持解构变量或常量（Destructured variable or constant not supported）](#destructured-variable-not-supported)<br />
+[不能解析此类型（Could not resolve type）](#could-not-resolve-type)<br />
+[期待是名字（Name expected）](#name-expected)<br />
+[不支持的枚举成员名（Unsupported enum member name）](#unsupported-enum-member-name)<br />
+[不支持带标签函数的模板表达式（Tagged template expressions are not supported）](#tagged-template-expressions-not-supported)<br />
+[期待是符号引用（Symbol reference expected）](#symbol-reference-expected)<br />
 
 <a id="expression-form-not-supported"></a>
 
@@ -171,6 +186,10 @@ The compiler needs the value of the `template` property *right now* to generate 
 The variable reference alone is insufficient.
 Prefixing the declaration with `export` merely produces a new error, "[`Only initialized variables and constants can be referenced`](#only-initialized-variables)".
 
+编译器*现在就*需要 `template` 属性的值来生成组件工厂。
+仅仅有对该变量的引用是不够的。
+给这个声明加上 `export` 前缀只会生成一个新的错误 "[`Only initialized variables and constants can be referenced`【只能引用初始化过的变量和常量】](#only-initialized-variables)"。
+
 <a id="only-initialized-variables"></a>
 
 ## Only initialized variables and constants
@@ -256,6 +275,9 @@ export class MyComponent {}
 
 *Reference to a non-exported class `<class name>`.*
 *Consider exporting the class.*
+
+*对非导出类 `<class name>` 的引用。*
+*考虑导出此类。*
 
 </div>
 
@@ -364,7 +386,7 @@ export function myStrategy() { &hellip; }
 The compiler does not currently support [function expressions or lambda functions](guide/aot-compiler#function-expression).
 For example, you cannot set a provider's `useFactory` to an anonymous function or arrow function like this.
 
-编译器当前不支持[函数表达式或 lambda 函数](guide/aot-compiler#function-expression)。例如，你不能将提供者的 `useFactory` 设置为这样的匿名函数或箭头函数。
+编译器当前不支持[函数表达式或 lambda 函数](guide/aot-compiler#function-expression)。比如，你不能将提供者的 `useFactory` 设置为这样的匿名函数或箭头函数。
 
 <code-example format="typescript" language="typescript">
 
@@ -679,6 +701,8 @@ Avoid referring to enums with complicated initializers or computed properties.
 
 The compiler encountered a JavaScript ES2015 [tagged template expression](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) such as the following.
 
+编译器遇到了 JavaScript ES2015 [带标签的模板表达式](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals)，如下所示。
+
 <code-example format="typescript" language="typescript">
 
 // ERROR
@@ -691,6 +715,8 @@ const raw = String.raw`A tagged template &dollar;{expression} string`;
 </code-example>
 
 [`String.raw()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/raw) is a *tag function* native to JavaScript ES2015.
+
+[`String.raw()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/raw)是 JavaScript ES2015 的原生*标签函数*。
 
 The AOT compiler does not support tagged template expressions; avoid them in metadata expressions.
 

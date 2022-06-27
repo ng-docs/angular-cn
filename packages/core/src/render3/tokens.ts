@@ -11,6 +11,11 @@ export interface NO_CHANGE {
   __brand__: 'NO_CHANGE';
 }
 
-/** A special value which designates that a value has not changed. */
+/**
+ * A special value which designates that a value has not changed.
+ *
+ * 一个特殊值，用于指定值未更改。
+ *
+ */
 export const NO_CHANGE: NO_CHANGE =
     (typeof ngDevMode === 'undefined' || ngDevMode) ? {__brand__: 'NO_CHANGE'} : ({} as NO_CHANGE);

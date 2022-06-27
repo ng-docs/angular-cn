@@ -478,7 +478,12 @@ export abstract class Renderer2 {
   static __NG_ELEMENT_ID__: () => Renderer2 = () => injectRenderer2();
 }
 
-/** Returns a Renderer2 (or throws when application was bootstrapped with Renderer3) */
+/**
+ * Returns a Renderer2 (or throws when application was bootstrapped with Renderer3)
+ *
+ * 返回 Renderer2 （或在应用程序使用 Renderer3 引导时抛出）
+ *
+ */
 function getOrCreateRenderer2(lView: LView): Renderer2 {
   const renderer = lView[RENDERER];
   if (ngDevMode && !isProceduralRenderer(renderer)) {
@@ -487,7 +492,12 @@ function getOrCreateRenderer2(lView: LView): Renderer2 {
   return renderer as Renderer2;
 }
 
-/** Injects a Renderer2 for the current component. */
+/**
+ * Injects a Renderer2 for the current component.
+ *
+ * 为当前组件注入 Renderer2 。
+ *
+ */
 export function injectRenderer2(): Renderer2 {
   // We need the Renderer to be based on the component that it's being injected into, however since
   // DI happens before we've entered its view, `getLView` will return the parent view instead.

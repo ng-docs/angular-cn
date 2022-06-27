@@ -10,6 +10,7 @@ import {DOCUMENT, LocationChangeEvent, LocationChangeListener, PlatformLocation,
 import {Inject, Injectable, Optional} from '@angular/core';
 import {Subject} from 'rxjs';
 import * as url from 'url';
+
 import {INITIAL_CONFIG, PlatformConfig} from './tokens';
 
 function parseUrl(urlStr: string) {
@@ -27,6 +28,9 @@ function parseUrl(urlStr: string) {
 /**
  * Server-side implementation of URL state. Implements `pathname`, `search`, and `hash`
  * but not the state stack.
+ *
+ * URL 状态的服务器端实现。实现 `pathname` 、 `search` 和 `hash` ，但不实现状态堆栈。
+ *
  */
 @Injectable()
 export class ServerPlatformLocation implements PlatformLocation {

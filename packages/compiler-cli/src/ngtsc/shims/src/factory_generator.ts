@@ -19,6 +19,9 @@ const STRIP_NG_FACTORY = /(.*)NgFactory$/;
 /**
  * Generates ts.SourceFiles which contain variable declarations for NgFactories for every exported
  * class of an input ts.SourceFile.
+ *
+ * 生成 ts.SourceFiles ，其中包含输入 ts.SourceFile 的每个导出类的 NgFactories 的变量声明。
+ *
  */
 export class FactoryGenerator implements PerFileShimGenerator, FactoryTracker {
   readonly sourceInfo = new Map<string, FactoryInfo>();
@@ -241,7 +244,10 @@ function transformFactorySourceFile(
 
 
 /**
- * Parses and returns the comment text of a \@fileoverview comment in the given source file.
+ * Parses and returns the comment text of a \\@fileoverview comment in the given source file.
+ *
+ * 解析并返回给定源文件中 \\@fileoverview 注释的注释文本。
+ *
  */
 function getFileoverviewComment(sourceFile: ts.SourceFile): string|null {
   const text = sourceFile.getFullText();
@@ -278,7 +284,13 @@ function getFileoverviewComment(sourceFile: ts.SourceFile): string|null {
  * be treated as "pure". Closure is free to tree shake this expression if its
  * result is not used.
  *
+ * 在对 `ɵnoSideEffects()` 的调用中包装给定表达式，这告诉 Closure
+ * 我们不关心此表达式的副作用，它应该被视为“纯”。如果不使用其结果，闭包可以自由对此表达式进行树形抖动。
+ *
  * Example: Takes `1 + 2` and returns `i0.ɵnoSideEffects(() => 1 + 2)`.
+ *
+ * 示例：接受 `1 + 2` 并返回 `i0.ɵnoSideEffects(() => 1 + 2)` 。
+ *
  */
 function wrapInNoSideEffects(expr: ts.Expression): ts.Expression {
   const noSideEffects = ts.factory.createPropertyAccessExpression(
@@ -309,6 +321,9 @@ function wrapInNoSideEffects(expr: ts.Expression): ts.Expression {
 /**
  * Clones and updates the initializers for a given statement to use the new
  * expression provided. Does not mutate the input statement.
+ *
+ * 克隆并更新给定语句的初始化器以使用提供的 new 表达式。不会改变输入语句。
+ *
  */
 function updateInitializers(
     stmt: ts.VariableStatement,

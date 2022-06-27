@@ -23,12 +23,21 @@ function isInternalAngularCore(path: string): boolean {
 /**
  * This factory is used to disable the built-in rename provider,
  * see `packages/language-service/README.md#override-rename-ts-plugin` for more info.
+ *
+ * 此工厂用于禁用内置的重命名提供程序，有关更多信息，请参阅
+ * `packages/language-service/README.md#override-rename-ts-plugin` 。
+ *
  */
 const factory: ts.server.PluginModuleFactory = (): ts.server.PluginModule => {
   return {
     create(info: ts.server.PluginCreateInfo): ts.LanguageService {
       const {project, languageService} = info;
-      /** A map that indicates whether Angular could be found in the file's project. */
+      /**
+       * A map that indicates whether Angular could be found in the file's project.
+       *
+       * 表明是否可以在文件的项目中找到 Angular 的映射表。
+       *
+       */
       const fileToIsInAngularProjectMap = new Map<string, boolean>();
 
       return {

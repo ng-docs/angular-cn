@@ -47,6 +47,9 @@ AngularJS 应用程序的组织方式有很多种。当你想把它们升级到 
 The [AngularJS Style Guide][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd] collects patterns and practices that have been proven to result in cleaner and more maintainable AngularJS applications.
 It contains a wealth of information about how to write and organize AngularJS code —and equally importantly— how **not** to write and organize AngularJS code.
 
+[AngularJS 风格指南][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd]收集了一些已证明能写出干净且可维护的 AngularJS 程序的模式与实践。
+它包含了很多关于如何书写和组织 AngularJS 代码的有价值信息，同样重要的是，**不应该**采用的书写和组织 AngularJS 代码的方式。
+
 Angular is a reimagined version of the best parts of AngularJS.
 In that sense, its goals are the same as the Style Guide for AngularJS:
 To preserve the good parts of AngularJS, and to avoid the bad parts.
@@ -60,9 +63,11 @@ There are a few rules in particular that will make it much easier to do *an incr
 
 | Rules | Details |
 | :---- | :------ |
-| Rules | 详情 |
+| 规则 | 详情 |
 | [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | There should be one component per file. This not only makes components easy to navigate and find, but will also allow us to migrate them between languages and frameworks one at a time. In this example application, each controller, component, service, and filter is in its own source file. |
+| [单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | 每个文件应该只放一个组件。这不仅让组件更容易浏览和查找，而且还让你能逐个迁移它们的语言和框架。在这个范例程序中，每个控制器、工厂和过滤器都位于各自的源文件中。 |
 | [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | Define similar principles on a higher level of abstraction: Different parts of the application should reside in different directories and NgModules. |
+| [按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | 在较高的抽象层定义了一些相似的原则：应用程序中的不同部分应该被分到不同的目录和 NgModule 中。 |
 
 When an application is laid out feature per feature in this way, it can also be migrated one feature at a time.
 For applications that don't already look like this, applying the rules in the AngularJS style guide is a highly recommended preparation step.
@@ -85,6 +90,13 @@ Using a module loader such as [SystemJS][GithubSystemjsSystemjs], [Webpack][Gith
 You can use the `import` and `export` features that explicitly specify what code can and will be shared between different parts of the application.
 For ES5 applications you can use CommonJS style `require` and `module.exports` features.
 In both cases, the module loader will then take care of loading all the code the application needs in the correct order.
+
+使用模块加载器，比如[SystemJS][GithubSystemjsSystemjs]、
+[Webpack][GithubWebpackMain]或[Browserify][BrowserifyMain]，
+可以让你在程序中使用 TypeScript 或 ES2015 语言内置的模块系统。
+你可以使用 `import` 和 `export` 特性来明确指定哪些代码应该以及将会被在程序的不同部分之间共享。
+对于 ES5 程序来说，可以改用 CommonJS 风格的 `require` 和 `module.exports` 特性代替。
+无是论哪种情况，模块加载器都会按正确的顺序加载程序中用到的所有代码。
 
 When moving applications into production, module loaders also make it easier to package them all up into production bundles with batteries included.
 
@@ -144,12 +156,17 @@ To be Angular compatible, an AngularJS component directive should configure thes
 
 | Attributes | Details |
 | :--------- | :------ |
-| Attributes | 详情 |
+| 属性 | 详情 |
 | `restrict: 'E'` | Components are usually used as elements. |
+| `restrict: 'E'` | 组件通常会以元素的方式使用。 |
 | `scope: {}` | An isolate scope. In Angular, components are always isolated from their surroundings, and you should do this in AngularJS too. |
+| `scope: {}` | 一个独立作用域。在 Angular 中，组件永远是从它们的环境中被隔离出来的，在 AngularJS 中也同样如此。 |
 | `bindToController: {}` | Component inputs and outputs should be bound to the controller instead of using the `$scope`. |
+| `bindToController: {}` | 组件的输入和输出应该绑定到控制器，而不是 `$scope`。 |
 | `controller` <br /> `controllerAs` | Components have their own controllers. |
+| `controller` <br /> `controllerAs` | 组件要有自己的控制器。 |
 | `template` <br /> `templateUrl` | Components have their own templates. |
+| `template` <br /> `templateUrl` | 组件要有自己的模板。 |
 
 Component directives may also use the following attributes:
 
@@ -157,9 +174,11 @@ Component directives may also use the following attributes:
 
 | Attributes | Details |
 | :--------- | :------ |
-| Attributes | 详情 |
+| 属性 | 详情 |
 | `transclude: true/{}` | If the component needs to transclude content from elsewhere. |
+| `transclude: true/{}` | 如果组件需要从其它地方透传内容，就设置它。 |
 | `require` | If the component needs to communicate with the controller of some parent component. |
+| `require` | 如果组件需要和父组件的控制器通讯，就设置它。 |
 
 Component directives **should not** use the following attributes:
 
@@ -167,10 +186,13 @@ Component directives **should not** use the following attributes:
 
 | Attributes (avoid) | Details |
 | :----------------- | :------ |
-| Attributes (avoid) | 详情 |
+| 不能使用的属性 | 详情 |
 | `compile` | This will not be supported in Angular. |
+| `compile` | Angular 不再支持它。 |
 | `replace: true` | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS. |
+| `replace: true` | Angular 永远不会用组件模板替换一个组件元素。这个特性在 AngularJS 中也同样不建议使用了。 |
 | `priority` <br /> `terminal` | While AngularJS components may use these, they are not used in Angular and it is better not to write code that relies on them. |
+| `priority` <br /> `terminal` | 虽然 AngularJS 的组件可能使用这些，但它们在 Angular 中已经没用了，并且最好不要再写依赖它们的代码。 |
 
 An AngularJS component directive that is fully aligned with the Angular architecture may look something like this:
 
@@ -180,6 +202,9 @@ AngularJS 中一个完全向 Angular 架构对齐过的组件型指令是这样�
 
 AngularJS 1.5 introduces the [component API][AngularjsDocsApiNgTypeAngularModuleComponent] that makes it easier to define component directives like these.
 It is a good idea to use this API for component directives for several reasons:
+
+AngularJS 1.5 引入了[组件 API][AngularjsDocsApiNgTypeAngularModuleComponent]，它让定义指令变得更简单了。
+为组件型指令使用这个 API 是一个好主意，因为：
 
 * It requires less boilerplate code.
 
@@ -202,6 +227,9 @@ The component directive example from above looks like this when expressed using 
 Controller lifecycle hook methods `$onInit()`, `$onDestroy()`, and `$onChanges()` are another convenient feature that AngularJS 1.5 introduces.
 They all have nearly exact [equivalents in Angular][AioGuideLifecycleHooks], so organizing component lifecycle logic around them will ease the eventual Angular upgrade process.
 
+控制器的生命周期钩子 `$onInit()`、`$onDestroy()` 和 `$onChanges()` 是 AngularJS 1.5 引入的另一些便利特性。
+它们都很像[Angular 中的等价物][AioGuideLifecycleHooks]，所以，围绕它们组织组件生命周期的逻辑在升级到 Angular 时会更容易。
+
 ## Upgrading with ngUpgrade
 
 ## 使用 ngUpgrade 升级
@@ -217,6 +245,8 @@ That means you don't have to do the upgrade work all at once, since there is a n
 The [end of life of AngularJS][AngularBlogFindingAPathForwardWithAngularjs7e186fdd4429] is December 31st, 2021.
 With this event, ngUpgrade is now in a feature complete state.
 We will continue publishing security and bug fixes for ngUpgrade at least until December 31st, 2023.
+
+由于 [AngularJS 即将停止维护][AngularBlogFindingAPathForwardWithAngularjs7e186fdd4429] ，ngUpgrade 现在处于特性开发完毕的状态。我们将会继续发布安全补丁和 BUG 修复，直到 2023-12-31。
 
 </div>
 
@@ -244,15 +274,19 @@ Dependency injection, the DOM, and change detection.
 
 #### Dependency Injection
 
+#### 依赖注入
+
 Dependency injection is front and center in both AngularJS and Angular, but there are some key differences between the two frameworks in how it actually works.
 
 无论是在 AngularJS 中还是在 Angular 中，依赖注入都位于前沿和中心的位置，但在两个框架的工作原理上，却存在着一些关键的不同之处。
 
 | AngularJS | Angular |
 | :-------- | :------ |
+| AngularJS | 角 |
 | Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
-| 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
+| 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。 <br /> 通常是类。<br />也可能是字符串。 |
 | There is exactly one injector. <br /> Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
+| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状分层注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |
 
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
@@ -356,6 +390,10 @@ This is because all Angular code runs inside something called the [Angular zone]
 Angular always knows when the code finishes, so it also knows when it should kick off change detection.
 The code itself doesn't have to call `scope.$apply()` or anything like it.
 
+在 Angular 中，事情有点不一样。虽然变更检测仍然会在每一个事件之后发生，却不再需要每次调用 `scope.$apply()` 了。
+这是因为所有 Angular 代码都运行在一个叫做 [Angular zone][AioApiCoreNgzone] 的地方。
+Angular 总是知道什么时候代码执行完了，也就知道了它什么时候应该触发变更检测。代码本身并不需要调用 `scope.$apply()` 或其它类似的东西。
+
 In the case of hybrid applications, the `UpgradeModule` bridges the AngularJS and Angular approaches.
 Here is what happens:
 
@@ -389,6 +427,10 @@ When you downgrade an Angular component and then use it from AngularJS, the inpu
 When those inputs change, the corresponding properties in the component are set.
 You can also hook into the changes by implementing the [OnChanges][AioApiCoreOnchanges] interface in the component, just like you could if it hadn't been downgraded.
 
+当你降级一个 Angular 组件，然后把它用于 AngularJS 中时，组件的输入属性就会被 AngularJS 的变更检测体系监视起来。
+当那些输入属性发生变化时，组件中相应的属性就会被设置。你也能通过实现[OnChanges][AioApiCoreOnchanges]
+接口来挂钩到这些更改，就像它未被降级时一样。
+
 Correspondingly, when you upgrade an AngularJS component and use it from Angular, all the bindings defined for `scope` (or `bindToController`) of the component directive will be hooked into Angular change detection.
 They will be treated as regular Angular inputs.
 Their values will be written to the scope (or controller) of the upgraded component when they change.
@@ -420,6 +462,8 @@ You will import `UpgradeModule` inside the NgModule, and then use it for bootstr
 
 For more information, see [NgModules][AioGuideNgmodules].
 
+要了解更多，请参阅[NgModules][AioGuideNgmodules]页。
+
 </div>
 
 ### Bootstrapping hybrid applications
@@ -442,6 +486,8 @@ Pure AngularJS applications can be automatically bootstrapped by using an `ng-ap
 But for hybrid applications, you manually bootstrap using the `UpgradeModule`.
 Therefore, it is a good preliminary step to switch AngularJS applications to use the manual JavaScript [`angular.bootstrap`][AngularjsDocsApiNgFunctionAngularBootstrap] method even before switching them to hybrid mode.
 
+单纯的 AngularJS 应用可以在 HTML 页面中使用 `ng-app` 指令进行引导，但对于混合式应用你要通过 `UpgradeModule` 模块进行手动引导。因此，在切换成混合式应用之前，最好先把 AngularJS 改写成使用 [`angular.bootstrap`][AngularjsDocsApiNgFunctionAngularBootstrap] 进行手动引导的方式。
+
 Say you have an `ng-app` driven bootstrap such as this one:
 
 比如你现在有这样一个通过 `ng-app` 进行引导的应用：
@@ -457,6 +503,9 @@ You can remove the `ng-app` and `ng-strict-di` directives from the HTML and inst
 To begin converting your AngularJS application to a hybrid, you need to load the Angular framework.
 You can see how this can be done with SystemJS by following the instructions in [Setup for Upgrading to AngularJS][AioGuideUpgradeSetup] for selectively copying code from the [QuickStart github repository][GithubAngularQuickstart].
 
+要想把 AngularJS 应用变成 Hybrid 应用，就要先加载 Angular 框架。
+根据[准备升级到 AngularJS][AioGuideUpgradeSetup] 中给出的步骤，选择性的把[快速入门 github 代码仓][GithubAngularQuickstart]中的代码复制过来。
+
 You also need to install the `@angular/upgrade` package using `npm install @angular/upgrade --save` and add a mapping for the `@angular/upgrade/static` package:
 
 你还需要用 `npm install @angular/upgrade --save` 安装 `@angular/upgrade` 包，并添加一个指向 `@angular/upgrade/static` 包的映射：
@@ -465,7 +514,7 @@ You also need to install the `@angular/upgrade` package using `npm install @angu
 
 Next, create an `app.module.ts` file and add the following `NgModule` class:
 
-接下来，创建一个 `app.module.ts` 文件，并添加如下 `NgModule` 类：
+接下来，创建一个 `app.module.ts` 文件，并添加下列 `NgModule` 类：
 
 <code-example header="app.module.ts" path="upgrade-module/src/app/ajs-a-hybrid-bootstrap/app.module.ts" region="ngmodule"></code-example>
 
@@ -477,10 +526,16 @@ It also imports `UpgradeModule` from `@angular/upgrade/static`, which exports pr
 In the constructor of the `AppModule`, use dependency injection to get a hold of the `UpgradeModule` instance, and use it to bootstrap the AngularJS application in the `AppModule.ngDoBootstrap` method.
 The `upgrade.bootstrap` method takes the exact same arguments as [angular.bootstrap][AngularjsDocsApiNgFunctionAngularBootstrap]:
 
+在 `AppModule` 的构造函数中，使用依赖注入技术获取了一个 `UpgradeModule` 实例，并用它在 `AppModule.ngDoBootstrap` 方法中启动 AngularJS 应用。
+`upgrade.bootstrap` 方法接受和 [angular.bootstrap][AngularjsDocsApiNgFunctionAngularBootstrap] 完全相同的参数。
+
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 You do not add a `bootstrap` declaration to the `@NgModule` decorator, since AngularJS will own the root template of the application.
+
+**注意**：<br />
+你不需要在 `@NgModule` 中加入 `bootstrap` 声明，因为 AngularJS 控制着该应用的根模板。
 
 </div>
 
@@ -561,6 +616,11 @@ This AngularJS is an element directive (`restrict: 'E'`) called `heroDetail`.
 An AngularJS element directive is matched based on its *name*.
 *The `selector` metadata of the downgraded Angular component is ignored*.
 
+**注意**：<br />
+它在 AngularJS 中是一个名叫 `heroDetail` 的元素型指令（`restrict: 'E'`）。
+AngularJS 的元素型指令是基于它的*名字*匹配的。
+*Angular 组件中的 `selector` 元数据，在降级后的版本中会被忽略。*
+
 </div>
 
 Most components are not quite this simple, of course.
@@ -586,6 +646,8 @@ The expressions themselves are still regular AngularJS expressions.
 <div class="callout is-important">
 
 <header>Use kebab-case for downgraded component attributes</header>
+
+<header>在降级过的组件属性中使用中线命名法</header>
 
 There is one notable exception to the rule of using Angular attribute syntax for downgraded components.
 It has to do with input or output names that consist of multiple words.
@@ -621,7 +683,7 @@ In this case it will be the `Hero` object, because that is what was passed to `t
 Since this is an AngularJS template, you can still use other AngularJS directives on the element, even though it has Angular binding attributes on it.
 For example, you can easily make multiple copies of the component using `ng-repeat`:
 
-由于这是一个 AngularJS 模板，虽然它已经有了 Angular 中绑定的属性(Attribute)，你仍可以在这个元素上使用其它 AngularJS 指令。 例如，你可以用 `ng-repeat` 简单的制作该组件的多份拷贝：
+由于这是一个 AngularJS 模板，虽然它已经有了 Angular 中绑定的属性(Attribute)，你仍可以在这个元素上使用其它 AngularJS 指令。 比如，你可以用 `ng-repeat` 简单的制作该组件的多份拷贝：
 
 <code-example path="upgrade-module/src/index-downgrade-io.html" region="userepeatedcomponent"></code-example>
 
@@ -647,6 +709,9 @@ You can *upgrade* AngularJS component directives and then use them from Angular.
 Not all kinds of AngularJS directives can be upgraded.
 The directive really has to be a *component directive*, with the characteristics [described in the preparation guide above][AioGuideUpgradeUsingComponentDirectives].
 The safest bet for ensuring compatibility is using the [component API][AngularjsDocsApiNgTypeAngularModule] introduced in AngularJS 1.5.
+
+不是所有种类的 AngularJS 指令都能升级。该指令必须是一个严格的*组件型指令*，具有[上面的准备指南中描述的][AioGuideUpgradeUsingComponentDirectives]那些特征。
+确保兼容性的最安全的方式是 AngularJS 1.5 中引入的[组件 API][AngularjsDocsApiNgTypeAngularModule]。
 
 An example of an upgradeable component is one that just has a template and a controller:
 
@@ -680,7 +745,7 @@ When you use the component from an Angular template, provide the inputs and outp
 
 | Bindings | Binding definition | Template syntax |
 | :------- | :----------------- | :-------------- |
-| Bindings | 绑定定义 | 模板语法 |
+| 绑定 | 绑定定义 | 模板语法 |
 | Attribute binding | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">` |
 | 属性绑定 | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">` |
 | Expression binding | `myOutput: '&myOutput'` | `<my-component (myOutput)="action()">` |
@@ -688,6 +753,7 @@ When you use the component from an Angular template, provide the inputs and outp
 | One-way binding | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
 | 单向绑定 | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
 | Two-way binding | `myValue: '=myValue'` | As a two-way binding: <br /> `<my-component [(myValue)]="anExpression">` <br /> Since most AngularJS two-way bindings actually only need a one-way binding in practice, `<my-component [myValue]="anExpression">` is often enough. |
+| 双向绑定 | `myValue: '=myValue'` | 用作双向绑定：`<my-component [(myValue)]="anExpression">`。<br/> 由于大多数 AngularJS 的双向绑定实际上只是单向绑定，因此通常写成 `<my-component [myValue]="anExpression">` 也够用了。 |
 
 For example, imagine a hero detail AngularJS component directive with one input and one output:
 
@@ -788,6 +854,9 @@ For example, you might have a service called `HeroesService` in AngularJS:
 
 You can upgrade the service using a Angular [factory provider][AioGuideDependencyInjectionProvidersFactoryProviders] that requests the service from the AngularJS `$injector`.
 
+你可以用 Angular 的[工厂提供者][AioGuideDependencyInjectionProvidersFactoryProviders]升级该服务，
+它从 AngularJS 的 `$injector` 请求服务。
+
 Many developers prefer to declare the factory provider in a separate `ajs-upgraded-providers.ts` file so that they are all together, making it easier to reference them, create new ones and delete them once the upgrade is over.
 
 很多开发者都喜欢在一个独立的 `ajs-upgraded-providers.ts` 中声明这个工厂提供者，以便把它们都放在一起，这样便于引用、创建新的以及在升级完毕时删除它们。
@@ -801,6 +870,10 @@ It is also recommended to export the `heroesServiceFactory` function so that Ahe
 **NOTE**: <br />
 The 'heroes' string inside the factory refers to the AngularJS `HeroesService`.
 It is common in AngularJS applications to choose a service name for the token, for example "heroes", and append the "Service" suffix to create the class name.
+
+**注意**：<br />
+这个工厂中的字符串 'heroes' 指向的是 AngularJS 的 `HeroesService`。
+AngularJS 应用中通常使用服务名作为令牌，比如 'heroes'，并为其追加 'Service' 后缀来创建其类名。
 
 </div>
 
@@ -840,7 +913,7 @@ This can be useful when you start migrating services to Angular or creating new 
 
 For example, you might have an Angular service called `Heroes`:
 
-例如，你可能有一个 Angular 的 `Heroes` 服务：
+比如，你可能有一个 Angular 的 `Heroes` 服务：
 
 <code-example header="heroes.ts" path="upgrade-module/src/app/a-to-ajs-providers/heroes.ts"></code-example>
 
@@ -876,6 +949,8 @@ This is especially true when running different frameworks in the same applicatio
 [Lazy loading][AioGuideGlossaryLazyLoading] is a technique that defers the loading of required assets and code resources until they are actually used.
 This reduces startup time and increases efficiency, especially when running different frameworks in the same application.
 
+[惰性加载][AioGuideGlossaryLazyLoading]是一项技术，它会推迟到使用时才加载所需静态资产和代码资源。这可以减少启动时间、提高效率，特别是要在同一个应用中运行不同的框架时。
+
 When migrating large applications from AngularJS to Angular using a hybrid approach, you want to migrate some of the most commonly used features first, and only use the less commonly used features if needed.
 Doing so helps you ensure that the application is still providing a seamless experience for your users while you are migrating.
 
@@ -893,6 +968,8 @@ Overall application performance is affected in cases where the user stays on Ang
 You can take steps to mitigate both bundle size and performance issues.
 By isolating your AngularJS application to a separate bundle, you can take advantage of [lazy loading][AioGuideGlossaryLazyLoading] to load, bootstrap, and render the AngularJS application only when needed.
 This strategy reduces your initial bundle size, defers any potential impact from loading both frameworks until absolutely necessary, and keeps your application running as efficiently as possible.
+
+你可以采取一些措施来缓解这些包的大小和性能问题。通过把 AngularJS 应用程序分离到一个单独的发布包中，你就可以利用[惰性加载][AioGuideGlossaryLazyLoading]技术来只在必要的时候才加载、引导和渲染这个 AngularJS 应用。这种策略减少了你的初始发布包大小，推迟了同时加载两个框架的潜在影响 —— 直到绝对必要时才加载，以便让你的应用尽可能高效地运行。
 
 The steps below show you how to do the following:
 
@@ -931,6 +1008,8 @@ You also need to provide a way to *bootstrap* the application manually after it 
 AngularJS provides a way to manually bootstrap an application using the [angular.bootstrap()][AngularjsDocsApiNgFunctionAngularBootstrap] method with a provided HTML element.
 Your AngularJS application should also expose a `bootstrap` method that bootstraps the AngularJS app.
 
+该服务使用 `import()` 方法惰性加载打包好的 AngularJS 应用。这会减少应用初始包的大小，因为你尚未加载用户目前不需要的代码。你还要提供一种方法，在加载完毕后手动*启动*它。AngularJS 提供了一种使用 [angular.bootstrap()][AngularjsDocsApiNgFunctionAngularBootstrap] 方法并传入一个 HTML 元素来手动引导应用的方法。你的 AngularJS 应用也应该公开一个用来引导 AngularJS 应用的 `bootstrap` 方法。
+
 To ensure any necessary teardown is triggered in the AngularJS app, such as removal of global listeners, you also implement a method to call the `$rootScope.destroy()` method.
 
 要确保 AngularJS 应用中的任何清理工作都触发过（比如移除全局监听器），你还可以实现一个方法来调用 `$rootScope.destroy()` 方法。
@@ -950,6 +1029,8 @@ After AngularJS is loaded and bootstrapped, listeners such as those wired up in 
 To ensure listeners are shut down when AngularJS isn't being displayed, configure an `otherwise` option with the [$routeProvider][AngularjsDocsApiNgrouteProviderRouteprovider] that renders an empty template.
 This assumes all other routes will be handled by Angular.
 
+**注意：**当 AngularJS 加载并引导完毕后，监听器（比如路由配置中的那些监听器）会继续监听路由的变化。为了确保当 AngularJS 尚未显示时先关闭监听器，请在 [$routeProvider][AngularjsDocsApiNgrouteProviderRouteprovider] 中配置一个渲染空模板 `otherwise` 选项。这里假设 Angular 将处理所有其它路由。
+
 </div>
 
 ### Create a component to render AngularJS content
@@ -965,6 +1046,8 @@ This component uses the service you create to load and bootstrap your AngularJS 
 
 When the Angular Router matches a route that uses AngularJS, the `AngularJSComponent` is rendered, and the content is rendered within the AngularJS [`ng-view`][AngularjsDocsApiNgrouteDirectiveNgview] directive.
 When the user navigates away from the route, the `$rootScope` is destroyed on the AngularJS application.
+
+当 Angular 的路由器匹配到使用 AngularJS 的路由时，会渲染 `AngularJSComponent`，并在 AngularJS 的 [`ng-view`][AngularjsDocsApiNgrouteDirectiveNgview] 指令中渲染内容。当用户导航离开本路由时，`$rootScope` 会在 AngularJS 应用中被销毁。
 
 ### Configure a custom route matcher for AngularJS routes
 
@@ -1001,6 +1084,8 @@ When your application matches a route that needs AngularJS, the AngularJS applic
 
 In AngularJS, the [$location service][AngularjsDocsApiNgServiceLocation] handles all routing configuration and navigation, encoding and decoding of URLS, redirects, and interactions with browser APIs.
 Angular uses its own underlying `Location` service for all of these tasks.
+
+在 AngularJS 中，[$location 服务][AngularjsDocsApiNgServiceLocation]会处理所有路由配置和导航工作，并对各个 URL 进行编码和解码、重定向、以及与浏览器 API 交互。Angular 在所有这些任务中都使用了自己的底层服务 `Location`。
 
 When you migrate from AngularJS to Angular you will want to move as much responsibility as possible to Angular, so that you can take advantage of new APIs.
 To help with the transition, Angular provides the `LocationUpgradeModule`.
@@ -1050,6 +1135,8 @@ LocationUpgradeModule.config({
 **NOTE**: <br />
 See the `LocationUpgradeConfig` for more configuration options available to the `LocationUpgradeModule.config()` method.
 
+**注意：**关于 `LocationUpgradeModule.config()` 方法的更多可用配置项，请参阅 `LocationUpgradeConfig`。
+
 </div>
 
 This registers a drop-in replacement for the `$location` provider in AngularJS.
@@ -1081,22 +1168,32 @@ Once you introduce the Angular Router, using the Angular Router triggers navigat
 Correctly document how to use AOT with SystemJS-based `ngUpgrade` apps (or better yet update the `ngUpgrade` examples/guides to use `@angular/cli`).
 See [https://github.com/angular/angular/issues/35989][GithubAngularAngularIssues35989].
 
+&lt;!--TODO：正确记录如何将 AOT 与基于 SystemJS 的 `ngUpgrade` 应用程序一起使用（或更好地更新 `ngUpgrade` 示例/指南以使用 `@angular/cli` ）。请参阅[https://github.com/angular/angular/issues/35989][GithubAngularAngularIssues35989] 。
+
 ## Using Ahead-of-time compilation with hybrid apps
 
-## 使用混合式应用进行预先编译
+## 将 Ahead-of-time 编译与混合应用程序一起使用
 
 You can take advantage of Ahead-of-time (AOT) compilation on hybrid apps just like on any other Angular application.
 The setup for a hybrid app is mostly the same as described in the [Ahead-of-time Compilation chapter][AioGuideAotCompiler] save for differences in `index.html` and `main-aot.ts`
 
+你可以像在任何其他 Angular 应用程序上一样在混合应用程序上利用 Ahead-of-time (AOT) 编译。混合应用程序的设置与[提前编译章节][AioGuideAotCompiler]中描述的基本相同，只是 `index.html` 和 `main-aot.ts` 有所不同
+
 The `index.html` will likely have script tags loading AngularJS files, so the `index.html` for AOT must also load those files.
 An easy way to copy them is by adding each to the `copy-dist-files.js` file.
 
+`index.html` 可能会有加载 AngularJS 文件的 script 标签，因此 AOT 的 `index.html` 也必须加载这些文件。复制它们的一种简单方法是将每个都添加到 `copy-dist-files.js` 文件中。
+
 You'll need to use the generated `AppModuleFactory`, instead of the original `AppModule` to bootstrap the hybrid app:
+
+你需要使用生成的 `AppModuleFactory` ，而不是原始的 `AppModule` 来引导混合应用程序：
 
 <code-example header="app/main-aot.ts" path="upgrade-phonecat-2-hybrid/app/main-aot.ts"></code-example>
 
 And that s all you need do to get the full benefit of AOT for Angular apps!
 \-->
+
+这就是你要充分利用 AOT for Angular 应用程序的全部优势！ -->
 
 ## PhoneCat Upgrade Tutorial
 
@@ -1106,11 +1203,21 @@ In this section, you'll learn to prepare and upgrade an application with `ngUpgr
 The example application is [Angular PhoneCat][GithubAngularAngularPhonecat] from [the original AngularJS tutorial][AngularjsDocsTutorial], which is where many of us began our Angular adventures.
 Now you'll see how to bring that application to the brave new world of Angular.
 
+在本节和下节中，你将看一个完整的例子，它使用 `upgrade` 模块准备和升级了一个应用程序。
+该应用就是来自[原 AngularJS 教程][AngularjsDocsTutorial]中的[Angular PhoneCat][GithubAngularAngularPhonecat]。
+那是我们很多人当初开始 Angular 探险之旅的地方。
+现在，你会看到如何把该应用带入 Angular 的美丽新世界。
+
 During the process you'll learn how to apply the steps outlined in the [preparation guide][AioGuideUpgradePreparation].
 You'll align the application with Angular and also start writing in TypeScript.
 
+这期间，你将学到如何在实践中应用[准备指南][AioGuideUpgradePreparation]中列出的那些重点步骤：
+你先让该应用向 Angular 看齐，然后为它引入 SystemJS 模块加载器和 TypeScript。
+
 This tutorial is based on the 1.5.x version of the `angular-phonecat` tutorial, which is preserved in the [1.5-snapshot][GithubAngularAngularPhonecatCommits15Snapshot] branch of the repository.
 To follow along, clone the [angular-phonecat][GithubAngularAngularPhonecat] repository, check out the `1.5-snapshot` branch and apply the steps as you go.
+
+本教程基于 `angular-phonecat` 教程的 1.5.x 版本，该教程保存在代码仓库的 [1.5-snapshot][GithubAngularAngularPhonecatCommits15Snapshot] 分支中。接下来，克隆 [angular-phonecat][GithubAngularAngularPhonecat] 代码仓库，check out `1.5-snapshot` 分支并应用这些步骤。
 
 In terms of project structure, this is where the work begins:
 
@@ -1250,13 +1357,25 @@ In terms of project structure, this is where the work begins:
 This is actually a pretty good starting point.
 The code uses the AngularJS 1.5 component API and the organization follows the [AngularJS Style Guide][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd], which is an important [preparation step][AioGuideUpgradeFollowTheAngularjsStyleGuide] before a successful upgrade.
 
+这确实是一个很好地起点。这些代码使用了 AngularJS 1.5 的组件 API，并遵循了 [AngularJS 风格指南][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMd]进行组织，
+在成功升级之前，这是一个很重要的[准备步骤][AioGuideUpgradeFollowTheAngularjsStyleGuide]。
+
 * Each component, service, and filter is in its own source file, as per the [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility].
+
+   每个组件、服务和过滤器都在它自己的源文件中 —— 就像[单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]所要求的。
 
 * The `core`, `phone-detail`, and `phone-list` modules are each in their own subdirectory.
   Those subdirectories contain the JavaScript code as well as the HTML templates that go with each particular feature.
   This is in line with the [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] and [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] rules.
 
+   `core`、`phone-detail` 和 `phone-list` 模块都在它们自己的子目录中。那些子目录除了包含 HTML 模板之外，还包含 JavaScript 代码，它们共同完成一个特性。
+  这是[按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure]
+  和[模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity]规则所要求的。
+
 * Unit tests are located side-by-side with application code where they are easily found, as described in the rules for [Organizing Tests][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests].
+
+   单元测试都和应用代码在一起，它们很容易找到。就像规则
+  [组织测试文件][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests]中要求的那样。
 
 ### Switching to TypeScript
 
@@ -1307,6 +1426,10 @@ npm install &commat;types/angular-material --save-dev
 
 You should also configure the TypeScript compiler with a `tsconfig.json` in the project directory as described in the [TypeScript Configuration][AioGuideTypescriptConfiguration] guide.
 The `tsconfig.json` file tells the TypeScript compiler how to turn your TypeScript files into ES5 code bundled into CommonJS modules.
+
+你还应该要往项目目录下添加一个 `tsconfig.json` 文件，
+就像在 [TypeScript 配置][AioGuideTypescriptConfiguration]中讲过的那样。
+`tsconfig.json` 文件会告诉 TypeScript 编译器如何把 TypeScript 文件转成 ES5 代码，并打包进 CommonJS 模块中。
 
 Finally, you should add some npm scripts in `package.json` to compile the TypeScript files to JavaScript (based on the `tsconfig.json` configuration file):
 
@@ -1385,6 +1508,9 @@ By annotating them accordingly TypeScript can verify you're calling their APIs w
 The [AngularJS 1.x type definitions][NpmjsPackageTypesAngular] you installed are not officially maintained by the Angular team, but are quite comprehensive.
 It is possible to make an AngularJS 1.x application fully type-annotated with the help of these definitions.
 
+你用安装的这个[AngularJS.x 类型定义文件][NpmjsPackageTypesAngular]
+并不是由 Angular 开发组维护的，但它也已经足够全面了。借助这些类型定义的帮助，它可以为 AngularJS.x 程序加上全面的类型注解。
+
 If this is something you wanted to do, it would be a good idea to enable the `noImplicitAny` configuration option in `tsconfig.json`.
 This would cause the TypeScript compiler to display a warning when there is any code that does not yet have type annotations.
 You could use it as a guide to inform us about how close you are to having a fully annotated project.
@@ -1450,16 +1576,25 @@ Having completed the preparation work, get going with the Angular upgrade of Pho
 You'll do this incrementally with the help of [ngUpgrade][AioGuideUpgradeUpgradingWithNgupgrade] that comes with Angular.
 By the time you're done, you'll be able to remove AngularJS from the project completely, but the key is to do this piece by piece without breaking the application.
 
+准备工作做完了，接下来就开始把 PhoneCat 升级到 Angular。
+你将在 Angular[升级模块][AioGuideUpgradeUpgradingWithNgupgrade]的帮助下增量式的完成此项工作。
+做完这些之后，就能把 AngularJS 从项目中完全移除了，但其中的关键是在不破坏此程序的前提下一小块一小块的完成它。
+
 <div class="alert is-important">
 
 The project also contains some animations.
 You won't upgrade them in this version of the guide.
 Turn to the [Angular animations][AioGuideAnimations] guide to learn about that.
 
+该项目还包含一些动画，在此指南的当前版本你先不升级它，请到 [Angular 动画][AioGuideAnimations]中进一步学习。
+
 </div>
 
 Install Angular into the project, along with the SystemJS module loader.
 Take a look at the results of the [upgrade setup instructions][AioGuideUpgradeSetup] and get the following configurations from there:
+
+用 SystemJS 模块加载器把 Angular 安装到项目中。
+看看[升级的准备工作][AioGuideUpgradeSetup]中的指南，并从那里获得如下配置：
 
 * Add Angular and the other new dependencies to `package.json`
 
@@ -1512,6 +1647,8 @@ You'll add the Angular polyfills and the SystemJS configuration to the end of th
 
 You also need to make a couple of adjustments to the `systemjs.config.js` file installed during [upgrade setup][AioGuideUpgradeSetup].
 
+你还需要对[升级的准备工作][AioGuideUpgradeSetup]期间安装的 `systemjs.config.js` 文件做一些调整。
+
 Point the browser to the project root when loading things through SystemJS, instead of using the `<base>` URL.
 
 在 SystemJS 加载期间为浏览器指出项目的根在哪里，而不再使用 `<base>` URL。
@@ -1523,6 +1660,8 @@ Install the `upgrade` package using `npm install @angular/upgrade --save` and ad
 <code-example header="systemjs.config.js" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="paths"></code-example>
 
 ### Creating the `AppModule`
+
+### 创建 `AppModule`
 
 Now create the root `NgModule` class called `AppModule`.
 There is already a file named `app.module.ts` that holds the AngularJS module.
@@ -1551,6 +1690,9 @@ After that, you can start converting the individual pieces to Angular.
 The application is currently bootstrapped using the AngularJS `ng-app` directive attached to the `<html>` element of the host page.
 This will no longer work in the hybrid application.
 Switch to the [ngUpgrade bootstrap][AioGuideUpgradeBootstrappingHybridApplications] method instead.
+
+本应用现在是使用宿主页面中附加到 `<html>` 元素上的 AngularJS 指令 `ng-app` 引导的。
+但在混合式应用中，不能再这么用了。你得用[ngUpgrade bootstrap][AioGuideUpgradeBootstrappingHybridApplications]方法代替。
 
 First, remove the `ng-app` attribute from `index.html`.
 Then import `UpgradeModule` in the `AppModule`, and override its `ngDoBootstrap` method:
@@ -1583,7 +1725,12 @@ That is next.
 
 <header>Why declare *angular* as *angular.IAngularStatic*?</header>
 
+<header>为何要声明 *angular* 为*angular.IAngularStatic*？</header>
+
 `@types/angular` is declared as a UMD module, and due to the way [UMD typings][GithubMicrosoftTypescriptWikiWhatsNewInTypescriptSupportForUmdModuleDefinitions] work, once you have an ES6 `import` statement in a file all UMD typed modules must also be imported using `import` statements instead of being globally available.
+
+`@types/angular` 声明为 UMD 模块，根据 [UMD 类型][GithubMicrosoftTypescriptWikiWhatsNewInTypescriptSupportForUmdModuleDefinitions]的工作方式，一旦你在文件中有一条 ES6 的 `import` 语句，所有的 UMD 类型化的模型必须都通过 `import` 语句导入，
+而是不是全局可用。
 
 AngularJS is currently loaded by a script tag in `index.html`, which means that the whole app has access to it as a global and uses the same instance of the `angular` variable.
 If you used `import * as angular from 'angular'` instead, you'd also have to load every file in the AngularJS application to use ES2015 modules in order to ensure AngularJS was being loaded correctly.
@@ -1599,9 +1746,15 @@ Instead, declare `angular` as `angular.IAngularStatic` to indicate it is a globa
 
 <header>Manually create a UMD bundle for your Angular application</header>
 
+<header>为 Angular 应用手动创建 UMD 包</header>
+
 Starting with Angular version 13, the [distribution format][GithubAngularAngularIssues38366] no longer includes UMD bundles.
 
+从 Angular 版本 13 开始，[分发格式][GithubAngularAngularIssues38366] 中不再包含 UMD 包。
+
 If your use case requires the UMD format, use [`rollup`][RollupjsMain] to manually produce a bundle from the flat ES module files.
+
+如果你的用例需要 UMD 格式，请使用 [`rollup`][RollupjsMain] 从平面 ES 模块文件手动生成包。
 
 1. Use `npm` to globally install `rollup`
 
@@ -1610,6 +1763,8 @@ If your use case requires the UMD format, use [`rollup`][RollupjsMain] to manual
    <code-example format="shell" language="shell">
 
    npm i -g rollup
+
+   npm i -g 汇总
 
    </code-example>
 
@@ -1661,6 +1816,8 @@ If your use case requires the UMD format, use [`rollup`][RollupjsMain] to manual
 The `bundle.js` file contains your UMD bundle.
 For an example on GitHub, see [UMD Angular bundle][GithubMgechevAngularUmdBundle].
 
+`bundle.js` 文件包含你的 UMD 包。有关 GitHub 上的示例，请参阅 [UMD Angular 包][GithubMgechevAngularUmdBundle]。
+
 </div>
 
 </div>
@@ -1705,6 +1862,10 @@ Replace the ngResource-based service in `phone.service.ts` with a TypeScript cla
 
 The `@Injectable` decorator will attach some dependency injection metadata to the class, letting Angular know about its dependencies.
 As described by the [Dependency Injection Guide][AioGuideDependencyInjection], this is a marker decorator you need to use for classes that have no other Angular decorators but still need to have their dependencies injected.
+
+`@Injectable` 装饰器将把一些依赖注入相关的元数据附加到该类上，让 Angular 知道它的依赖信息。
+就像在[依赖注入指南][AioGuideDependencyInjection]中描述过的那样，
+这是一个标记装饰器，你要把它用在那些没有其它 Angular 装饰器，并且自己有依赖注入的类上。
 
 In its constructor the class expects to get the `HttpClient` service.
 It will be injected to it and it is stored as a private field.
@@ -1812,9 +1973,15 @@ The search controls replace the AngularJS `$ctrl` expressions with the two-way `
 Replace the `ng-repeat` of the list with an `*ngFor` as [described in the Template Syntax page][AioGuideBuiltInDirectives].
 Replace the `ng-src` of the image tag with a binding to the native `src` property.
 
+把列表中的 `ng-repeat` 替换为 `*ngFor` 以及它的 `let var of iterable` 语法，
+该语法在[模板语法指南中讲过][AioGuideBuiltInDirectives]。
+再把 `img` 标签的 `ng-src` 替换为一个标准的 `src` 属性(property)绑定。
+
 <code-example header="app/phone-list/phone-list.template.html (phones)" path="upgrade-phonecat-2-hybrid/app/phone-list/phone-list.template.html" region="list"></code-example>
 
 #### No Angular `filter` or `orderBy` filters
+
+#### 没有 Angular `filter` 或 `orderBy` 过滤器
 
 The built-in AngularJS `filter` and `orderBy` filters do not exist in Angular, so you need to do the filtering and sorting yourself.
 
@@ -1868,6 +2035,11 @@ Unfortunately, AngularJS dependencies are not automatically available to Angular
 You must upgrade this service using a [factory provider][AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular] to make `$routeParams` an Angular injectable.
 Do that in a new file called `ajs-upgraded-providers.ts` and import it in `app.module.ts`:
 
+不幸的是，AngularJS 的依赖不会自动在 Angular 的组件中可用。
+你必须使用[工厂提供者（factory provider）][AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular]
+来把 `$routeParams` 包装成 Angular 的服务提供者。
+新建一个名叫 `ajs-upgraded-providers.ts` 的文件，并且在 `app.module.ts` 中导入它：
+
 <code-example header="app/ajs-upgraded-providers.ts" path="upgrade-phonecat-2-hybrid/app/ajs-upgraded-providers.ts"></code-example>
 
 <code-example header="app/app.module.ts ($routeParams)" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="routeparams"></code-example>
@@ -1894,13 +2066,18 @@ There are several notable changes here:
   Though Angular does have a [very similar `ngClass`][AioGuideBuiltInDirectives] as AngularJS does, its value is not magically evaluated as an expression.
   In Angular, you always specify in the template when the value of an attribute is a property expression, as opposed to a literal string.
 
+  你在 `ng-class` 周围使用了属性绑定语法。虽然 Angular 中有一个
+  和 AngularJS 中[非常相似的 `ngClass`][AioGuideBuiltInDirectives]指令，
+  但是它的值不会神奇的作为表达式进行计算。在 Angular 中，模板中的属性(Attribute)值总是被作为
+  属性(Property)表达式计算，而不是作为字符串字面量。
+
 * You've replaced `ng-repeat`s with `*ngFor`s
 
-  你把 `ng-repeat` 替换成了 `*ngFor`。
+  你把 `ng-repeat` 替换成了 `*ngFor`
 
 * You've replaced `ng-click` with an event binding for the standard `click`
 
-  你把 `ng-click` 替换成了一个到标准 `click` 事件的绑定。
+  你把 `ng-click` 替换成了一个到标准 `click` 事件的绑定
 
 * You've wrapped the whole template in an `ngIf` that causes it only to be rendered when there is a phone present.
   You need this because when the component first loads, you don't have `phone` yet and the expressions will refer to a non-existing value.
@@ -1950,6 +2127,8 @@ Now import and declare the newly created pipe and remove the filter &lt;script> 
 
 To use AOT with a hybrid app, you have to first set it up like any other Angular application, as shown in the [Ahead-of-time Compilation chapter][AioGuideAotCompiler].
 
+要在混合式应用中使用 AOT 编译，你首先要像其它 Angular 应用一样设置它，就像[AOT 编译一章][AioGuideAotCompiler]所讲的那样。
+
 Then change `main-aot.ts` to bootstrap the `AppComponentFactory` that was generated by the AOT compiler:
 
 然后修改 `main-aot.ts` 的引导代码，来引导 AOT 编译器所生成的 `AppComponentFactory`：
@@ -1991,6 +2170,8 @@ At this point, you've replaced all AngularJS application components with their A
 
 Angular has an [all-new router][AioGuideRouter].
 
+Angular 有一个[全新的路由器][AioGuideRouter]。
+
 Like all routers, it needs a place in the UI to display routed views.
 For Angular that is the `<router-outlet>` and it belongs in a *root component* at the top of the applications component tree.
 
@@ -2028,6 +2209,9 @@ A router needs configuration whether it is the AngularJS or Angular or any other
 无论在 AngularJS 还是 Angular 或其它框架中，路由器都需要进行配置。
 
 The details of Angular router configuration are best left to the [Routing documentation][AioGuideRouter] which recommends that you create a `NgModule` dedicated to router configuration (called a *Routing Module*).
+
+Angular 路由器配置的详情最好去查阅下[路由与导航][AioGuideRouter]文档。
+它建议你创建一个专们用于路由器配置的 `NgModule`（名叫*路由模块*）。
 
 <code-example header="app/app-routing.module.ts" path="upgrade-phonecat-3-final/app/app-routing.module.ts"></code-example>
 
@@ -2070,6 +2254,8 @@ You can generate data bindings for the `id` of each phone to the `routerLink` di
 
 See the [Routing][AioGuideRouter] page for details.
 
+要了解详情，请查看[路由与导航](guide/router)页。
+
 </div>
 
 #### Use route parameters
@@ -2109,6 +2295,9 @@ Switch the bootstrap method of the application from the `UpgradeModule` to the A
 <code-example header="main.ts" path="upgrade-phonecat-3-final/app/main.ts"></code-example>
 
 If you haven't already, remove all references to the `UpgradeModule` from `app.module.ts`, as well as any [factory provider][AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular] for AngularJS services, and the `app/ajs-upgraded-providers.ts` file.
+
+如果你还没有这么做，请从 `app.module.ts 删除所有 `UpgradeModule 的引用，
+  以及所有用于 AngularJS 服务的[工厂提供者（factory provider）](guide/upgrade#making-angularjs-dependencies-injectable-to-angular)和 `app/ajs-upgraded-providers.ts` 文件。
 
 Also remove any `downgradeInjectable()` or `downgradeComponent()` you find, together with the associated AngularJS factory or directive declarations.
 
@@ -2217,7 +2406,7 @@ For PhoneCat you need to make the following changes in order to make things work
 When the bootstrap method is switched from that of `UpgradeModule` to pure Angular, AngularJS ceases to exist on the page completely.
 At this point, you need to tell Protractor that it should not be looking for an AngularJS application anymore, but instead it should find *Angular apps* from the page.
 
-当引导方式从 `UpgradeModule` 切换到纯 Angular 的时，AngularJS 就从页面中完全消失了。 此时，你需要告诉 Protractor，它不用再找 AngularJS 应用了，而是从页面中查找 *Angular* 应用。 于是在 `protractor-conf.js` 中做下列修改：。
+当引导方式从 `UpgradeModule` 切换到纯 Angular 的时，AngularJS 就从页面中完全消失了。 此时，你需要告诉 Protractor，它不用再找 AngularJS 应用了，而是从页面中查找 *Angular* 应用。 于是在 `protractor-conf.js` 中做下列修改。
 
 Replace the `ng12Hybrid` previously added with the following in `protractor-conf.js`:
 

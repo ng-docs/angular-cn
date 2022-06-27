@@ -10,7 +10,12 @@ import ts from 'typescript';
 
 import {getCallDecoratorImport} from '../../utils/typescript/decorators';
 
-/** Finds and migrates all Angular decorators that pass in `entryComponents`. */
+/**
+ * Finds and migrates all Angular decorators that pass in `entryComponents`.
+ *
+ * 查找并迁移传入 `entryComponents` 的所有 Angular 装饰器。
+ *
+ */
 export function migrateEntryComponentsUsages(
     typeChecker: ts.TypeChecker, printer: ts.Printer, sourceFile: ts.SourceFile) {
   const results: {start: number, length: number, end: number, replacement: string}[] = [];

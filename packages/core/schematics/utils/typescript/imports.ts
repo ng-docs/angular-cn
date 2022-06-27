@@ -14,7 +14,12 @@ export type Import = {
   node: ts.ImportDeclaration
 };
 
-/** Gets import information about the specified identifier by using the Type checker. */
+/**
+ * Gets import information about the specified identifier by using the Type checker.
+ *
+ * 使用类型检查器获取有关指定标识符的导入信息。
+ *
+ */
 export function getImportOfIdentifier(typeChecker: ts.TypeChecker, node: ts.Identifier): Import|
     null {
   const symbol = typeChecker.getSymbolAtLocation(node);
@@ -48,6 +53,8 @@ export function getImportOfIdentifier(typeChecker: ts.TypeChecker, node: ts.Iden
  * Gets a top-level import specifier with a specific name that is imported from a particular module.
  * E.g. given a file that looks like:
  *
+ * 获取从特定模块导入的具有特定名称的顶级导入说明符。例如，给定一个类似于以下内容的文件：
+ *
  * ```
  * import { Component, Directive } from '@angular/core';
  * import { Foo } from './foo';
@@ -56,10 +63,22 @@ export function getImportOfIdentifier(typeChecker: ts.TypeChecker, node: ts.Iden
  * Calling `getImportSpecifier(sourceFile, '@angular/core', 'Directive')` will yield the node
  * referring to `Directive` in the top import.
  *
+ * 调用 `getImportSpecifier(sourceFile, '@angular/core', 'Directive')` 将产生在顶级导入中引用
+ * `Directive` 的节点。
+ *
  * @param sourceFile File in which to look for imports.
+ *
+ * 要在其中查找导入的文件。
+ *
  * @param moduleName Name of the import's module.
+ *
+ * 导入的模块的名称。
+ *
  * @param specifierName Original name of the specifier to look for. Aliases will be resolved to
  *    their original name.
+ *
+ * 要查找的说明符的原始名称。别名将被解析为其原始名称。
+ *
  */
 export function getImportSpecifier(
     sourceFile: ts.SourceFile, moduleName: string, specifierName: string): ts.ImportSpecifier|null {
@@ -82,9 +101,21 @@ export function getImportSpecifier(
 
 /**
  * Replaces an import inside a named imports node with a different one.
+ *
+ * 将命名导入节点中的导入替换为不同的导入。
+ *
  * @param node Node that contains the imports.
+ *
+ * 包含导入的节点。
+ *
  * @param existingImport Import that should be replaced.
+ *
+ * 应该替换的导入。
+ *
  * @param newImportName Import that should be inserted.
+ *
+ * 应该插入的导入。
+ *
  */
 export function replaceImport(
     node: ts.NamedImports, existingImport: string, newImportName: string) {
@@ -111,7 +142,12 @@ export function replaceImport(
 }
 
 
-/** Finds an import specifier with a particular name. */
+/**
+ * Finds an import specifier with a particular name.
+ *
+ * 查找具有特定名称的导入说明符。
+ *
+ */
 export function findImportSpecifier(
     nodes: ts.NodeArray<ts.ImportSpecifier>, specifierName: string): ts.ImportSpecifier|undefined {
   return nodes.find(element => {

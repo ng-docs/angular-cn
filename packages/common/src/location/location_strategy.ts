@@ -27,13 +27,13 @@ import {joinWithSlash, normalizeQueryParams} from './util';
  * 应用程序应使用 `Router` 或 `Location` 服务与应用程序的路由状态进行交互。
  *
  * For instance, `HashLocationStrategy` produces URLs like
- * <code class="no-auto-link">http://example.com#/foo</code>,
+ * <code class="no-auto-link"><http://example.com#/foo></code>,
  * and `PathLocationStrategy` produces
- * <code class="no-auto-link">http://example.com/foo</code> as an equivalent URL.
+ * <code class="no-auto-link"><http://example.com/foo></code> as an equivalent URL.
  *
- * 例如，`HashLocationStrategy` 会处理像 <code class="no-auto-link">http://example.com#/foo</code>
+ * 比如，`HashLocationStrategy` 会处理像 <code class="no-auto-link"><http://example.com#/foo></code>
  * 这样的 URL，而 `PathLocationStrategy` 会处理像 <code
- * class="no-auto-link">http://example.com/foo</code> 这样的等价 URL。
+ * class="no-auto-link"><http://example.com/foo></code> 这样的等价 URL。
  *
  * See these two classes for more.
  *
@@ -83,15 +83,17 @@ export function provideLocationStrategy() {
  * 框架可以在应用中的任何位置提供依赖项。
  *
  * ```typescript
- * import {Component, NgModule} from '@angular/core';
- * import {APP_BASE_HREF} from '@angular/common';
+ * import {Component, NgModule} from '
+ * ```
  *
- * @NgModule({
+ * @angular /core';
+ * import {APP_BASE_HREF} from '
+ * @angular /common';
+ * @NgModule ({
  *   providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
  * })
  * class AppModule {}
  * ```
- *
  * @publicApi
  */
 export const APP_BASE_HREF = new InjectionToken<string>('appBaseHref');
@@ -117,7 +119,7 @@ export const APP_BASE_HREF = new InjectionToken<string>('appBaseHref');
  * `example.com/my/app/foo`. To ensure all relative URIs resolve correctly,
  * the `<base href>` and/or `APP_BASE_HREF` should end with a `/`.
  *
- * 例如，如果你提供的 `APP_BASE_HREF` 是 `'/my/app/'`，并调用 `location.go('/foo')`，则浏览器的 URL
+ * 比如，如果你提供的 `APP_BASE_HREF` 是 `'/my/app/'`，并调用 `location.go('/foo')`，则浏览器的 URL
  * 将变为 `example.com/my/app/foo`。为了确保所有相对 URI 都能正确解析，`<base href>` 和/或
  * `APP_BASE_HREF` 都应该以 `/` 结尾。
  *

@@ -41,7 +41,8 @@ const __forward_ref__ = getClosureSafeProperty({__forward_ref__: getClosureSafeP
  * DI is declared, but not yet defined. It is also used when the `token` which we use when creating
  * a query is not yet defined.
  *
- * 例如，当我们需要为所声明的 DI 而引用此 `token`，但尚未定义该令牌时，将使用 `forwardRef`。当我们创建尚未定义的查询的 `token` 时，也会使用它。
+ * 比如，当我们需要为所声明的 DI 而引用此 `token`，但尚未定义该令牌时，将使用
+ * `forwardRef`。当我们创建尚未定义的查询的 `token` 时，也会使用它。
  *
  * @usageNotes
  *
@@ -84,7 +85,12 @@ export function resolveForwardRef<T>(type: T): T {
   return isForwardRef(type) ? type() : type;
 }
 
-/** Checks whether a function is wrapped by a `forwardRef`. */
+/**
+ * Checks whether a function is wrapped by a `forwardRef`.
+ *
+ * 检查函数是否被 `forwardRef` 包装。
+ *
+ */
 export function isForwardRef(fn: any): fn is() => any {
   return typeof fn === 'function' && fn.hasOwnProperty(__forward_ref__) &&
       fn.__forward_ref__ === forwardRef;

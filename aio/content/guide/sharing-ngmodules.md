@@ -32,6 +32,8 @@ export class SharedModule { }
 
 Notice the following:
 
+请注意以下事项：
+
 * It imports the `CommonModule` because the module's component needs common directives
 
   它导入了 `CommonModule`，因为该模块需要一些常用指令。
@@ -63,11 +65,11 @@ You may also be interested in the following:
 
 * [Providers](guide/providers)
 
-  [服务提供者](guide/providers)。
+  [服务提供者](guide/providers)
 
 * [Types of Feature Modules](guide/module-types)
 
-  [特性模块的分类](guide/module-types)。
+  [特性模块的分类](guide/module-types)
 
 <!-- links -->
 

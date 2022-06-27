@@ -2,6 +2,8 @@
 
 # Testing Attribute Directives
 
+# 测试属性型指令
+
 An *attribute directive* modifies the behavior of an element, component or another directive.
 Its name reflects the way the directive is applied: as an attribute on a host element.
 
@@ -10,6 +12,8 @@ Its name reflects the way the directive is applied: as an attribute on a host el
 <div class="alert is-helpful">
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -83,6 +87,8 @@ A few techniques are noteworthy:
 
 * The [`:not` pseudo-class](https://developer.mozilla.org/docs/Web/CSS/:not) in `By.css('h2:not([highlight])')` helps find `<h2>` elements that *do not* have the directive.
   `By.css('*:not([highlight])')` finds *any* element that does not have the directive.
+
+  `By.css('h2:not([highlight])')` 中的 [`:not` 伪类](https://developer.mozilla.org/docs/Web/CSS/:not)可以帮助你找到那些*没有*该指令的 `<h2>` 元素。`By.css('*:not([highlight])')` 可以找到没有该指令的*任意*元素。
 
 * `DebugElement.styles` affords access to element styles even in the absence of a real browser, thanks to the `DebugElement` abstraction.
   But feel free to exploit the `nativeElement` when that seems easier or more clear than the abstraction.

@@ -205,6 +205,10 @@ export class ExpressionTranslatorVisitor<TStatement, TExpression> implements o.E
   /**
    * Translate the tagged template literal into a call that is compatible with ES5, using the
    * imported `__makeTemplateObject` helper for ES5 formatted output.
+   *
+   * 使用导入的 `__makeTemplateObject` 帮助器进行 ES5 格式的输出，将标记的模板文字转换为与 ES5
+   * 兼容的调用。
+   *
    */
   private createES5TaggedTemplateFunctionCall(
       tagHandler: TExpression, {elements, expressions}: TemplateLiteral<TExpression>): TExpression {
@@ -385,6 +389,9 @@ export class ExpressionTranslatorVisitor<TStatement, TExpression> implements o.E
 
 /**
  * Convert a cooked-raw string object into one that can be used by the AST factories.
+ *
+ * 将 cooked-raw 字符串对象转换为 AST 工厂可以使用的对象。
+ *
  */
 function createTemplateElement(
     {cooked, raw, range}: {cooked: string, raw: string, range: o.ParseSourceSpan|null}):
@@ -394,6 +401,9 @@ function createTemplateElement(
 
 /**
  * Convert an OutputAST source-span into a range that can be used by the AST factories.
+ *
+ * 将 OutputAST source-span 转换为 AST 工厂可以使用的范围。
+ *
  */
 function createRange(span: o.ParseSourceSpan|null): SourceMapRange|null {
   if (span === null) {

@@ -9,10 +9,13 @@
 import {FactoryTarget, getCompilerFacade, JitCompilerUsage, R3DeclareComponentFacade, R3DeclareDirectiveFacade, R3DeclareFactoryFacade, R3DeclareInjectableFacade, R3DeclareInjectorFacade, R3DeclareNgModuleFacade, R3DeclarePipeFacade} from '../../compiler/compiler_facade';
 import {Type} from '../../interface/type';
 import {setClassMetadata} from '../metadata';
+
 import {angularCoreEnv} from './environment';
 
 /**
  * Compiles a partial directive declaration object into a full directive definition object.
+ *
+ * 将部分指令声明对象编译为完整指令定义对象。
  *
  * @codeGenApi
  */
@@ -25,6 +28,8 @@ export function ɵɵngDeclareDirective(decl: R3DeclareDirectiveFacade): unknown 
 
 /**
  * Evaluates the class metadata declaration.
+ *
+ * 估算类元数据声明。
  *
  * @codeGenApi
  */
@@ -40,6 +45,8 @@ export function ɵɵngDeclareClassMetadata(decl: {
 /**
  * Compiles a partial component declaration object into a full component definition object.
  *
+ * 将部分组件声明对象编译为完整组件定义对象。
+ *
  * @codeGenApi
  */
 export function ɵɵngDeclareComponent(decl: R3DeclareComponentFacade): unknown {
@@ -51,6 +58,8 @@ export function ɵɵngDeclareComponent(decl: R3DeclareComponentFacade): unknown 
 
 /**
  * Compiles a partial pipe declaration object into a full pipe definition object.
+ *
+ * 将部分管道声明对象编译为完整管道定义对象。
  *
  * @codeGenApi
  */
@@ -82,6 +91,8 @@ function getFactoryKind(target: FactoryTarget) {
 /**
  * Compiles a partial injectable declaration object into a full injectable definition object.
  *
+ * 将部分可注入声明对象编译为完整的可注入定义对象。
+ *
  * @codeGenApi
  */
 export function ɵɵngDeclareInjectable(decl: R3DeclareInjectableFacade): unknown {
@@ -99,6 +110,8 @@ export {FactoryTarget} from '../../compiler/compiler_facade';
 /**
  * Compiles a partial injector declaration object into a full injector definition object.
  *
+ * 将部分注入器声明对象编译为完整的注入器定义对象。
+ *
  * @codeGenApi
  */
 export function ɵɵngDeclareInjector(decl: R3DeclareInjectorFacade): unknown {
@@ -111,6 +124,8 @@ export function ɵɵngDeclareInjector(decl: R3DeclareInjectorFacade): unknown {
 /**
  * Compiles a partial NgModule declaration object into a full NgModule definition object.
  *
+ * 将部分 NgModule 声明对象编译为完整的 NgModule 定义对象。
+ *
  * @codeGenApi
  */
 export function ɵɵngDeclareNgModule(decl: R3DeclareNgModuleFacade): unknown {
@@ -122,6 +137,8 @@ export function ɵɵngDeclareNgModule(decl: R3DeclareNgModuleFacade): unknown {
 
 /**
  * Compiles a partial pipe declaration object into a full pipe definition object.
+ *
+ * 将部分管道声明对象编译为完整管道定义对象。
  *
  * @codeGenApi
  */

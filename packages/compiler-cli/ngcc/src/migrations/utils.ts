@@ -19,6 +19,9 @@ export function isClassDeclaration(clazz: ts.Node): clazz is ClassDeclaration<ts
 
 /**
  * Returns true if the `clazz` is decorated as a `Directive` or `Component`.
+ *
+ * 如果 `clazz` 被装饰为 `Directive` 或 `Component` ，则返回 true 。
+ *
  */
 export function hasDirectiveDecorator(host: MigrationHost, clazz: ClassDeclaration): boolean {
   const ref = new Reference(clazz);
@@ -27,6 +30,9 @@ export function hasDirectiveDecorator(host: MigrationHost, clazz: ClassDeclarati
 
 /**
  * Returns true if the `clazz` is decorated as a `Pipe`.
+ *
+ * 如果 `clazz` 被装饰为 `Pipe` ，则返回 true 。
+ *
  */
 export function hasPipeDecorator(host: MigrationHost, clazz: ClassDeclaration): boolean {
   const ref = new Reference(clazz);
@@ -35,6 +41,9 @@ export function hasPipeDecorator(host: MigrationHost, clazz: ClassDeclaration): 
 
 /**
  * Returns true if the `clazz` has its own constructor function.
+ *
+ * 如果 `clazz` 有自己的构造函数，则返回 true。
+ *
  */
 export function hasConstructor(host: MigrationHost, clazz: ClassDeclaration): boolean {
   return host.reflectionHost.getConstructorParameters(clazz) !== null;
@@ -42,6 +51,9 @@ export function hasConstructor(host: MigrationHost, clazz: ClassDeclaration): bo
 
 /**
  * Create an empty `Directive` decorator that will be associated with the `clazz`.
+ *
+ * 创建一个将与 `clazz` 关联的空 `Directive` 装饰器。
+ *
  */
 export function createDirectiveDecorator(
     clazz: ClassDeclaration,
@@ -69,6 +81,9 @@ export function createDirectiveDecorator(
 
 /**
  * Create an empty `Component` decorator that will be associated with the `clazz`.
+ *
+ * 创建一个将与 `clazz` 关联的空 `Component` 装饰器。
+ *
  */
 export function createComponentDecorator(
     clazz: ClassDeclaration,
@@ -96,6 +111,9 @@ export function createComponentDecorator(
 
 /**
  * Create an empty `Injectable` decorator that will be associated with the `clazz`.
+ *
+ * 创建一个将与 `clazz` 关联的空 `Injectable` 装饰器。
+ *
  */
 export function createInjectableDecorator(clazz: ClassDeclaration): Decorator {
   return {
@@ -118,8 +136,14 @@ const EMPTY_SF = ts.createSourceFile('(empty)', '', ts.ScriptTarget.Latest);
  * Takes a `ts.Expression` and returns the same `ts.Expression`, but with an associated
  * `ts.SourceFile`.
  *
+ * 接受 `ts.Expression` 并返回相同的 `ts.Expression` ，但具有关联的 `ts.SourceFile` 。
+ *
  * This transformation is necessary to use synthetic `ts.Expression`s with the `PartialEvaluator`,
  * and many decorator arguments are interpreted in this way.
+ *
+ * 要将合成 `ts.Expression` 与 `PartialEvaluator`
+ * 一起使用，这种转换是必要的，并且许多装饰器参数都是以这种方式解释的。
+ *
  */
 function reifySourceFile(expr: ts.Expression): ts.Expression {
   const printer = ts.createPrinter();

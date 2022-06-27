@@ -17,6 +17,9 @@ import {PlaceholderMapper, Serializer} from './serializers/serializer';
 
 /**
  * A container for message extracted from the templates.
+ *
+ * 从模板中提取的消息的容器。
+ *
  */
 export class MessageBundle {
   private _messages: i18n.Message[] = [];

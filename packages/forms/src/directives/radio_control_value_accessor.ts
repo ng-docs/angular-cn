@@ -29,6 +29,11 @@ function throwNameError() {
  * provider. Note: the `InternalFormsSharedModule` can not be used here directly, since it's
  * declared *after* the `RadioControlRegistry` class and the `providedIn` doesn't support
  * `forwardRef` logic.
+ *
+ * 仅供内部的 NgModule ，作为 `RadioControlRegistry` 树形抖动提供程序的主机。注意：
+ * `InternalFormsSharedModule` 不能在这里直接使用，因为它是在 `RadioControlRegistry`
+ * 类*之后*声明的，并且 `providedIn` 不支持 `forwardRef` 逻辑。
+ *
  */
 @NgModule()
 export class RadioControlRegistryModule {
@@ -36,7 +41,11 @@ export class RadioControlRegistryModule {
 
 /**
  * @description
+ *
  * Class used by Angular to track radio buttons. For internal use only.
+ *
+ * Angular 用来跟踪单选按钮的类。仅供内部使用。
+ *
  */
 @Injectable({providedIn: RadioControlRegistryModule})
 export class RadioControlRegistry {
@@ -44,7 +53,11 @@ export class RadioControlRegistry {
 
   /**
    * @description
+   *
    * Adds a control to the internal registry. For internal use only.
+   *
+   * 将控件添加到内部注册表。仅供内部使用。
+   *
    */
   add(control: NgControl, accessor: RadioControlValueAccessor) {
     this._accessors.push([control, accessor]);
@@ -52,7 +65,11 @@ export class RadioControlRegistry {
 
   /**
    * @description
+   *
    * Removes a control from the internal registry. For internal use only.
+   *
+   * 从内部注册表中删除控件。仅供内部使用。
+   *
    */
   remove(accessor: RadioControlValueAccessor) {
     for (let i = this._accessors.length - 1; i >= 0; --i) {
@@ -65,7 +82,11 @@ export class RadioControlRegistry {
 
   /**
    * @description
+   *
    * Selects a radio button. For internal use only.
+   *
+   * 选择一个单选按钮。仅供内部使用。
+   *
    */
   select(accessor: RadioControlValueAccessor) {
     this._accessors.forEach((c) => {
@@ -90,7 +111,8 @@ export class RadioControlRegistry {
  * changes. The value accessor is used by the `FormControlDirective`, `FormControlName`, and
  * `NgModel` directives.
  *
- * `ControlValueAccessor` 用于写入单选控件的值和监听单选控件值的更改。这个值访问器由 `FormControlDirective`、`FormControlName` 和 `NgModel` 指令使用。
+ * `ControlValueAccessor` 用于写入单选控件的值和监听单选控件值的更改。这个值访问器由
+ * `FormControlDirective`、`FormControlName` 和 `NgModel` 指令使用。
  *
  * @usageNotes
  *
@@ -102,7 +124,8 @@ export class RadioControlRegistry {
  * a reactive form, radio buttons in the same group should have the same `formControlName`.
  * Providing a `name` attribute is optional.
  *
- * 下面的示例演示了如何在响应式表单中使用单选按钮。当使用响应式表单的单选按钮时，同一组中的单选按钮应具有相同的 `formControlName` 。所提供的 `name` 属性是可选的。
+ * 下面的示例演示了如何在响应式表单中使用单选按钮。当使用响应式表单的单选按钮时，同一组中的单选按钮应具有相同的
+ * `formControlName` 。所提供的 `name` 属性是可选的。
  *
  * {@example forms/ts/reactiveRadioButtons/reactive_radio_button_example.ts region='Reactive'}
  *
@@ -136,6 +159,10 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    * Note: we declare `onChange` here (also used as host listener) as a function with no arguments
    * to override the `onChange` function (which expects 1 argument) in the parent
    * `BaseControlValueAccessor` class.
+   *
+   * 注意：我们在此将 `onChange` （也用作主机侦听器）声明为不带参数的函数，以覆盖父
+   * `BaseControlValueAccessor` 类中的 `onChange` 函数（需要 1 个参数）。
+   *
    * @nodoc
    */
   override onChange = () => {};

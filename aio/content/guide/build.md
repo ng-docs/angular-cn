@@ -14,6 +14,8 @@ This page discusses build-specific configuration options for Angular projects.
 
 You can define different named build configurations for your project, such as *staging* and *production*, with different defaults.
 
+你可以用不同的默认值来为项目定义出不同的命名配置项，比如 *stage* 和 *production*。
+
 Each named configuration can have defaults for any of the options that apply to the various [builder targets](guide/glossary#target), such as `build`, `serve`, and `test`.
 The [Angular CLI](cli) `build`, `serve`, and `test` commands can then replace files with appropriate versions for your intended target environment.
 
@@ -79,6 +81,9 @@ export const environment = {
 
 You can add target-specific configuration files, such as `environment.prod.ts`.
 The following content sets default values for the production build target:
+
+你可以添加针对特定目标的配置文件，比如 `environment.prod.ts`。
+下面的代码会设置针对生产环境构建目标的默认值：
 
 <code-example format="typescript" language="typescript">
 
@@ -275,6 +280,8 @@ The CLI lets you set size thresholds in your configuration to ensure that parts 
 
 Define your size boundaries in the CLI configuration file, `angular.json`, in a `budgets` section for each [configured environment](#app-environments).
 
+你可以在 CLI 配置文件 `angular.json` 的 `budgets` 区段为每个[所配置的环境](#app-environments)定义这些大小范围。
+
 <code-example format="json" language="json">
 
 {
@@ -297,11 +304,15 @@ Specify size values in the following formats:
 
 | Size value | Details |
 | :--------- | :------ |
-| Size value | 详情 |
+| 大小值 | 详情 |
 | `123` or `123b` | Size in bytes. |
+| `123` 或 `123b` | 大小（以字节为单位）。 |
 | `123kb` | Size in kilobytes. |
+| `123kb` | 大小（以千字节为单位）。 |
 | `123mb` | Size in megabytes. |
+| `123mb` | 大小（以 MB 为单位）。 |
 | `12%` | Percentage of size relative to baseline. (Not valid for baseline values.) |
+| `12%` | 相对于基线（baseline）大小的百分比大小。（不能用作 baseline 的值。） |
 
 When you configure a budget, the build system warns or reports an error when a given part of the application reaches or exceeds a boundary size that you set.
 
@@ -315,8 +326,9 @@ Each budget entry is a JSON object with the following properties:
 | :------- | :---- |
 | 属性 | 值 |
 | type | The type of budget. One of: <table> <thead> <tr> <th> Value </th> <th> Details </th> </tr> </thead> <tbody> <tr> <td> <code>bundle</code> </td> <td> The size of a specific bundle. </td> </tr> <tr> <td> <code>initial</code> </td> <td> The size of JavaScript needed for bootstrapping the application. Defaults to warning at 500kb and erroring at 1mb. </td> </tr> <tr> <td> <code>allScript</code> </td> <td> The size of all scripts. </td> </tr> <tr> <td> <code>all</code> </td> <td> The size of the entire application. </td> </tr> <tr> <td> <code>anyComponentStyle</code> </td> <td> This size of any one component stylesheet. Defaults to warning at 2kb and erroring at 4kb. </td> </tr> <tr> <td> <code>anyScript</code> </td> <td> The size of any one script. </td> </tr> <tr> <td> <code>any</code> </td> <td> The size of any file. </td> </tr> </tbody> </table> |
-| 类型【模糊翻译】 | The type of budget. One of: <table> <thead> <tr> <th> Value </th> <th> Details </th> </tr> </thead> <tbody> <tr> <td> <code>bundle</code> </td> <td> The size of a specific bundle. </td> </tr> <tr> <td> <code>initial</code> </td> <td> The size of JavaScript needed for bootstrapping the application. Defaults to warning at 500kb and erroring at 1mb. </td> </tr> <tr> <td> <code>allScript</code> </td> <td> The size of all scripts. </td> </tr> <tr> <td> <code>all</code> </td> <td> The size of the entire application. </td> </tr> <tr> <td> <code>anyComponentStyle</code> </td> <td> This size of any one component stylesheet. Defaults to warning at 2kb and erroring at 4kb. </td> </tr> <tr> <td> <code>anyScript</code> </td> <td> The size of any one script. </td> </tr> <tr> <td> <code>any</code> </td> <td> The size of any file. </td> </tr> </tbody> </table> |
+| type | 预算的类型。下列值之一：<table><thead><tr><th>值</th><th>详细信息</th></tr></thead><tbody><tr><td><code>包</code></td><td>特定包的大小。</td></tr><tr><td><code>初始的</code></td><td>引导应用程序所需的 JavaScript 的大小。默认为 500kb 的警告和 1mb 的错误。</td></tr><tr><td><code>allScript</code></td><td>所有脚本的大小。</td></tr><tr><td><code>全部</code></td><td>整个应用程序的大小。</td></tr><tr><td><code>anyComponentStyle</code></td><td>任何一个组件样式表的此大小。默认为 2kb 的警告和 4kb 的错误。</td></tr><tr><td><code>anyScript</code></td><td>任何一个脚本的大小。</td></tr><tr><td><code>任何</code></td><td>任何文件的大小。</td></tr></tbody></table> |
 | name | The name of the bundle (for `type=bundle`). |
+| name | 包的名称（对于 `type=bundle` ）。 |
 | baseline | The baseline size for comparison. |
 | baseline | 一个表示基准大小的绝对值，用做比例值的基数。 |
 | maximumWarning | The maximum threshold for warning relative to the baseline. |
@@ -344,6 +356,10 @@ It is recommended that you avoid depending on CommonJS modules in your Angular a
 Depending on CommonJS modules can prevent bundlers and minifiers from optimizing your application, which results in larger bundle sizes.
 Instead, it is recommended that you use [ECMAScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) in your entire application.
 For more information, see [How CommonJS is making your bundles larger](https://web.dev/commonjs-larger-bundles).
+
+建议你在 Angular 应用中避免依赖 CommonJS 模块。对 CommonJS 模块的依赖会阻止打包器和压缩器优化你的应用，这会导致更大的打包尺寸。
+建议你在整个应用中都使用 [ECMAScript 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)。
+欲知详情，参阅[为什么 CommonJS 会导致更大的打包尺寸](https://web.dev/commonjs-larger-bundles)。
 
 </div>
 
@@ -422,6 +438,9 @@ See the [browserslist repo](https://github.com/browserslist/browserslist) for mo
 Use the [proxying support](https://webpack.js.org/configuration/dev-server/#devserverproxy) in the `webpack` development server to divert certain URLs to a backend server, by passing a file to the `--proxy-config` build option.
 For example, to divert all calls for `http://localhost:4200/api` to a server running on `http://localhost:3000/api`, take the following steps.
 
+可以用 `webpack` 开发服务器中的[代理支持](https://webpack.js.org/configuration/dev-server/#devserver-proxy)来把特定的 URL 转发给后端服务器，只要传入 `--proxy-config` 选项就可以了。
+比如，要把所有到 `http://localhost:4200/api` 的调用都转给运行在 `http://localhost:3000/api` 上的服务器，可采取如下步骤。
+
 1. Create a file `proxy.conf.json` in your project's `src/` folder.
 
    在项目的 `src/` 目录下创建一个 `proxy.conf.json` 文件。
@@ -472,6 +491,9 @@ For a description of all options, see [webpack DevServer documentation](https://
 
 **NOTE**: <br />
 If you edit the proxy configuration file, you must relaunch the `ng serve` process to make your changes effective.
+
+**注意**：<br />
+如果你编辑了这个代理配置文件，就必须重启 `ng serve`，来让你的修改生效。
 
 </div>
 

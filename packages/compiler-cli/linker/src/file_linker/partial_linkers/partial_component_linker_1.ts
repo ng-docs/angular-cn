@@ -41,6 +41,9 @@ function makeDirectiveMetadata<TExpression>(
 
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareComponent()` call expressions.
+ *
+ * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareComponent()` 调用表达式。
+ *
  */
 export class PartialComponentLinkerVersion1<TStatement, TExpression> implements
     PartialLinker<TExpression> {
@@ -57,6 +60,9 @@ export class PartialComponentLinkerVersion1<TStatement, TExpression> implements
 
   /**
    * This function derives the `R3ComponentMetadata` from the provided AST object.
+   *
+   * 此函数从提供的 AST 对象派生 `R3ComponentMetadata` 。
+   *
    */
   private toR3ComponentMeta(metaObj: AstObject<R3DeclareComponentMetadata, TExpression>):
       R3ComponentMetadata<R3TemplateDependencyMetadata> {
@@ -185,6 +191,9 @@ export class PartialComponentLinkerVersion1<TStatement, TExpression> implements
 
   /**
    * Update the range to remove the start and end chars, which should be quotes around the template.
+   *
+   * 更新范围以删除开始和结束字符，它们应该是模板周围的引号。
+   *
    */
   private getTemplateInfo(templateNode: AstValue<unknown, TExpression>, isInline: boolean):
       TemplateInfo {
@@ -257,6 +266,9 @@ interface TemplateInfo {
 
 /**
  * Extract an `InterpolationConfig` from the component declaration.
+ *
+ * 从组件声明中提取 `InterpolationConfig` 。
+ *
  */
 function parseInterpolationConfig<TExpression>(
     metaObj: AstObject<R3DeclareComponentMetadata, TExpression>): InterpolationConfig {
@@ -276,6 +288,9 @@ function parseInterpolationConfig<TExpression>(
 
 /**
  * Determines the `ViewEncapsulation` mode from the AST value's symbol name.
+ *
+ * 根据 AST 值的符号名称确定 `ViewEncapsulation` 模式。
+ *
  */
 function parseEncapsulation<TExpression>(encapsulation: AstValue<ViewEncapsulation, TExpression>):
     ViewEncapsulation {
@@ -293,6 +308,9 @@ function parseEncapsulation<TExpression>(encapsulation: AstValue<ViewEncapsulati
 
 /**
  * Determines the `ChangeDetectionStrategy` from the AST value's symbol name.
+ *
+ * 根据 AST 值的符号名称确定 `ChangeDetectionStrategy` 。
+ *
  */
 function parseChangeDetectionStrategy<TExpression>(
     changeDetectionStrategy: AstValue<ChangeDetectionStrategy, TExpression>):

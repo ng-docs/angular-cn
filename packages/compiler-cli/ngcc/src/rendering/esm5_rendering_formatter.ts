@@ -18,11 +18,18 @@ import {EsmRenderingFormatter} from './esm_rendering_formatter';
 /**
  * A RenderingFormatter that works with files that use ECMAScript Module `import` and `export`
  * statements, but instead of `class` declarations it uses ES5 `function` wrappers for classes.
+ *
+ * 一种 RenderingFormatter ，可处理使用 ECMAScript 模块 `import` 和 `export` 语句的文件，但它不是
+ * `class` 声明，而是对类使用 ES5 `function` 包装器。
+ *
  */
 export class Esm5RenderingFormatter extends EsmRenderingFormatter {
   /**
    * Add the definitions, directly before the return statement, inside the IIFE of each decorated
    * class.
+   *
+   * 在每个装饰类的 IIFE 中的 return 语句之前添加定义。
+   *
    */
   override addDefinitions(output: MagicString, compiledClass: CompiledClass, definitions: string):
       void {
@@ -57,12 +64,25 @@ export class Esm5RenderingFormatter extends EsmRenderingFormatter {
   /**
    * Convert a `Statement` to JavaScript code in a format suitable for rendering by this formatter.
    *
+   * 将 `Statement` 转换为适合此格式化程序呈现的格式的 JavaScript 代码。
+   *
    * @param stmt The `Statement` to print.
+   *
+   * 要打印的 `Statement` 。
+   *
    * @param sourceFile A `ts.SourceFile` that provides context for the statement. See
    *     `ts.Printer#printNode()` for more info.
+   *
+   * 为语句提供上下文的 `ts.SourceFile` 。有关更多信息，请参阅 `ts.Printer#printNode()` 。
+   *
    * @param importManager The `ImportManager` to use for managing imports.
    *
+   * 用于管理导入的 `ImportManager` 。
+   *
    * @return The JavaScript code corresponding to `stmt` (in the appropriate format).
+   *
+   * 与 `stmt` 对应的 JavaScript 代码（采用适当的格式）。
+   *
    */
   override printStatement(stmt: Statement, sourceFile: ts.SourceFile, importManager: ImportManager):
       string {

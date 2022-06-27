@@ -14,13 +14,32 @@ import {getTView} from '../state';
 /**
  * Compute the static styling (class/style) from `TAttributes`.
  *
+ * 从 `TAttributes` 计算静态样式（类/样式）。
+ *
  * This function should be called during `firstCreatePass` only.
  *
+ * 此函数应仅在 `firstCreatePass` 期间调用。
+ *
  * @param tNode The `TNode` into which the styling information should be loaded.
+ *
+ * 应该加载样式信息的 `TNode` 。
+ *
  * @param attrs `TAttributes` containing the styling information.
+ *
+ * 包含样式信息的 `TAttributes` 。
+ *
  * @param writeToHost Where should the resulting static styles be written?
- *   - `false` Write to `TNode.stylesWithoutHost` / `TNode.classesWithoutHost`
- *   - `true` Write to `TNode.styles` / `TNode.classes`
+ *
+ * 生成的静态样式应该写在哪里？
+ *
+ * - `false` Write to `TNode.stylesWithoutHost` / `TNode.classesWithoutHost`
+ *
+ *   `false` 写入 `TNode.stylesWithoutHost` / `TNode.classesWithoutHost`
+ *
+ * - `true` Write to `TNode.styles` / `TNode.classes`
+ *
+ *   `true` 写入 `TNode.styles` / `TNode.classes`
+ *
  */
 export function computeStaticStyling(
     tNode: TNode, attrs: TAttributes|null, writeToHost: boolean): void {

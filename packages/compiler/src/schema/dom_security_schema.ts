@@ -19,7 +19,12 @@ import {SecurityContext} from '../core';
 //
 // =================================================================================================
 
-/** Map from tagName|propertyName to SecurityContext. Properties applying to all tags use '*'. */
+/**
+ * Map from tagName|propertyName to SecurityContext. Properties applying to all tags use '\*'.
+ *
+ * 从 tagName|propertyName 映射到 SecurityContext。适用于所有标签的属性都使用 '\*'。
+ *
+ */
 let _SECURITY_SCHEMA!: {[k: string]: SecurityContext};
 
 export function SECURITY_SCHEMA(): {[k: string]: SecurityContext} {

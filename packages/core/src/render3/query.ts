@@ -16,6 +16,7 @@ import {createTemplateRef, TemplateRef as ViewEngine_TemplateRef} from '../linke
 import {createContainerRef, ViewContainerRef} from '../linker/view_container_ref';
 import {assertDefined, assertIndexInRange, assertNumber, throwError} from '../util/assert';
 import {stringify} from '../util/stringify';
+
 import {assertFirstCreatePass, assertLContainer} from './assert';
 import {getNodeInjectable, locateDirectiveOrProvider} from './di';
 import {storeCleanupWithContext} from './instructions/shared';
@@ -157,15 +158,23 @@ class TQuery_ implements TQuery {
 
   /**
    * A node index on which a query was declared (-1 for view queries and ones inherited from the
-   * declaration template). We use this index (alongside with _appliesToNextNode flag) to know
+   * declaration template). We use this index (alongside with \_appliesToNextNode flag) to know
    * when to apply content queries to elements in a template.
+   *
+   * 在其上声明查询的节点索引（视图查询和从声明模板继承的查询查询为-1）。我们使用此索引（与
+   * \_appliesToNextNode 标志一起）来知道何时将内容查询应用于模板中的元素。
+   *
    */
   private _declarationNodeIndex: number;
 
   /**
    * A flag indicating if a given query still applies to nodes it is crossing. We use this flag
-   * (alongside with _declarationNodeIndex) to know when to stop applying content queries to
+   * (alongside with \_declarationNodeIndex) to know when to stop applying content queries to
    * elements in a template.
+   *
+   * 一个标志，表明给定查询是否仍适用于它正在穿过的节点。我们使用此标志（与 \_declarationNodeIndex
+   * 一起）来知道何时停止将内容查询应用于模板中的元素。
+   *
    */
   private _appliesToNextNode = true;
 
@@ -279,9 +288,22 @@ class TQuery_ implements TQuery {
  * Iterates over local names for a given node and returns directive index
  * (or -1 if a local name points to an element).
  *
+ * 迭代给定节点的本地名称并返回指令索引（如果本地名称指向元素，则返回 -1）。
+ *
  * @param tNode static data of a node to check
+ *
+ * 要检查的节点的静态数据
+ *
  * @param selector selector to match
- * @returns directive index, -1 or null if a selector didn't match any of the local names
+ *
+ * 要匹配的选择器
+ *
+ * @returns
+ *
+ * directive index, -1 or null if a selector didn't match any of the local names
+ *
+ * 指令索引，如果选择器与任何本地名称不匹配，则为 -1 或 null
+ *
  */
 function getIdxOfMatchingSelector(tNode: TNode, selector: string): number|null {
   const localNames = tNode.localNames;
@@ -340,6 +362,9 @@ function createSpecialToken(lView: LView, tNode: TNode, read: any): any {
  * A helper function that creates query results for a given view. This function is meant to do the
  * processing once and only once for a given view instance (a set of results for a given view
  * doesn't change).
+ *
+ * 为给定视图创建查询结果的帮助器函数。此函数旨在对给定的视图实例进行一次且仅一次的处理（给定视图的一组结果不会更改）。
+ *
  */
 function materializeViewResults<T>(
     tView: TView, lView: LView, tQuery: TQuery, queryIndex: number): (T|null)[] {
@@ -370,6 +395,9 @@ function materializeViewResults<T>(
 /**
  * A helper function that collects (already materialized) query results from a tree of views,
  * starting with a provided LView.
+ *
+ * 一个帮助器函数，它从视图树中收集（已经物化）查询结果，从提供的 LView 开始。
+ *
  */
 function collectQueryResults<T>(tView: TView, lView: LView, queryIndex: number, result: T[]): T[] {
   const tQuery = tView.queries!.getByIndex(queryIndex);
@@ -414,8 +442,14 @@ function collectQueryResults<T>(tView: TView, lView: LView, queryIndex: number, 
  * Refreshes a query by combining matches from all active views and removing matches from deleted
  * views.
  *
- * @returns `true` if a query got dirty during change detection or if this is a static query
+ * 通过组合所有活动视图中的匹配项并从已删除的视图中删除匹配项来刷新查询。
+ *
+ * @returns
+ *
+ * `true` if a query got dirty during change detection or if this is a static query
  * resolving in creation mode, `false` otherwise.
+ *
+ * `true` 查询在更改检测期间变脏，或者这是在创建模式下解析的静态查询，则为 true ，否则为 `false` 。
  *
  * @codeGenApi
  */
@@ -448,9 +482,19 @@ export function ɵɵqueryRefresh(queryList: QueryList<any>): boolean {
 /**
  * Creates new QueryList, stores the reference in LView and returns QueryList.
  *
+ * 创建新的 QueryList，将引用存储在 LView 中并返回 QueryList。
+ *
  * @param predicate The type for which the query will search
+ *
+ * 查询将搜索的类型
+ *
  * @param flags Flags associated with the query
+ *
+ * 与查询关联的标志
+ *
  * @param read What to save in the query
+ *
+ * 要在查询中保存的内容
  *
  * @codeGenApi
  */
@@ -471,11 +515,29 @@ export function ɵɵviewQuery<T>(
  * Registers a QueryList, associated with a content query, for later refresh (part of a view
  * refresh).
  *
+ * 注册与内容查询关联的 QueryList 以供以后刷新（视图刷新的一部分）。
+ *
  * @param directiveIndex Current directive index
+ *
+ * 当前的指令索引
+ *
  * @param predicate The type for which the query will search
+ *
+ * 查询将搜索的类型
+ *
  * @param flags Flags associated with the query
+ *
+ * 与查询关联的标志
+ *
  * @param read What to save in the query
- * @returns QueryList<T>
+ *
+ * 要在查询中保存的内容
+ *
+ * @returns
+ *
+ * QueryList<T>
+ *
+ * 查询列表<T>
  *
  * @codeGenApi
  */
@@ -498,6 +560,8 @@ export function ɵɵcontentQuery<T>(
 
 /**
  * Loads a QueryList corresponding to the current view or content query.
+ *
+ * 加载与当前视图或内容查询对应的 QueryList。
  *
  * @codeGenApi
  */

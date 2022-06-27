@@ -24,6 +24,10 @@ export interface SourceMapInfo {
 /**
  * Merge the input and output source-maps, replacing the source-map comment in the output file
  * with an appropriate source-map comment pointing to the merged source-map.
+ *
+ * 合并输入和输出 source-maps，将输出文件中的 source-map 注释替换为指向合并后的 source-map 的适当
+ * source-map 注释。
+ *
  */
 export function renderSourceAndMap(
     logger: Logger, fs: ReadonlyFileSystem, sourceFile: ts.SourceFile,

@@ -7,6 +7,7 @@
  */
 
 import {stringify} from '../util/stringify';
+
 import {resolveForwardRef} from './forward_ref';
 
 
@@ -25,13 +26,16 @@ import {resolveForwardRef} from './forward_ref';
  *
  * - a `token`.
  *
+ *   一个 `token` 。
+ *
  *   `token`。
  *
  * `Key` is used internally by {@link ReflectiveInjector} because its system-wide unique `id` allows
  * the
  * injector to store created objects in a more efficient way.
  *
- * `Key` 由 {@link ReflectiveInjector} 内部使用，因为它在系统范围内的唯一 `id` 允许注入器以更有效的方式存储所创建的对象。
+ * `Key` 由 {@link ReflectiveInjector} 内部使用，因为它在系统范围内的唯一 `id`
+ * 允许注入器以更有效的方式存储所创建的对象。
  *
  * `Key` should not be created directly. {@link ReflectiveInjector} creates keys automatically when
  * resolving
@@ -42,7 +46,6 @@ import {resolveForwardRef} from './forward_ref';
  * @deprecated No replacement
  *
  * 无替代品
- *
  * @publicApi
  */
 export class ReflectiveKey {

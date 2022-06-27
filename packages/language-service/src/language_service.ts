@@ -37,6 +37,10 @@ interface LanguageServiceConfig {
   /**
    * If true, enable `strictTemplates` in Angular compiler options regardless
    * of its value in tsconfig.json.
+   *
+   * 如果为 true，请在 Angular 编译器选项中启用 `strictTemplates` ，无论其在 tsconfig.json
+   * 中的值如何。
+   *
    */
   forceStrictTemplates?: true;
 }
@@ -395,17 +399,38 @@ export class LanguageService {
    * if the log level is verbose or higher. This method is intended to be called once per public
    * method call.
    *
+   * 提供 `NgCompiler` 的实例并跟踪 perf 结果。只有在日志级别为详细或更高时才会记录 Perf
+   * 结果。此方法旨在每个公共方法调用调用一次。
+   *
    * Here is an example of the log output.
    *
+   * 这是日志输出的示例。
+   *
    * Perf 245  [16:16:39.353] LanguageService#getQuickInfoAtPosition(): {"events":{},"phases":{
+   * "Unaccounted":379,"TtcSymbol":4},"memory":{}}
+   *
+   * Perf 245 [16:16:39.353][16:16:39.353]
+   * LanguageService#getQuickInfoAtPosition(): {"events":{},"phases":{
    * "Unaccounted":379,"TtcSymbol":4},"memory":{}}
    *
    * Passing name of caller instead of using `arguments.caller` because 'caller', 'callee', and
    * 'arguments' properties may not be accessed in strict mode.
    *
+   * 传递调用者的名称而不是使用 `arguments.caller` ，因为在严格模式下可能无法访问 'caller'、'callee'
+   * 和 'arguments' 属性。
+   *
    * @param phase the `PerfPhase` to execute the `p` callback in
+   *
+   * 要在其中执行 `p` 回调的 `PerfPhase`
+   *
    * @param p callback to be run synchronously with an instance of the `NgCompiler` as argument
+   *
+   * 以 `NgCompiler` 实例作为参数同步运行的回调
+   *
    * @return the result of running the `p` callback
+   *
+   * 运行 `p` 回调的结果
+   *
    */
   private withCompilerAndPerfTracing<T>(phase: PerfPhase, p: (compiler: NgCompiler) => T): T {
     const compiler = this.compilerFactory.getOrCreate();

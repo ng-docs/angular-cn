@@ -14,6 +14,9 @@ import {CtorParameter, TypeValueReferenceKind} from '../../../src/ngtsc/reflecti
 /**
  * Check that a given list of `CtorParameter`s has `typeValueReference`s of specific `ts.Identifier`
  * names.
+ *
+ * 检查给定的 `CtorParameter` 列表是否具有特定 `typeValueReference` 名称的 `ts.Identifier` 。
+ *
  */
 export function expectTypeValueReferencesForParameters(
     parameters: CtorParameter[], expectedParams: (string|null)[],

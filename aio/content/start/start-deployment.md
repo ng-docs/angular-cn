@@ -1,5 +1,7 @@
 # Deploying an application
 
+# 部署应用
+
 Deploying your application is the process of compiling, or building, your code and hosting the JavaScript, CSS, and HTML on a web server.
 
 部署应用是指编译或构建代码并将生成的 JavaScript、CSS 和 HTML 托管到 Web 服务器上的过程。
@@ -10,7 +12,7 @@ This section builds on the previous steps in the [Getting Started](start "Try it
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 A best practice is to run your project locally before you deploy it. To run your project locally, you need the following installed on your computer:
 
@@ -18,10 +20,12 @@ A best practice is to run your project locally before you deploy it. To run your
 
 * [Node.js](https://nodejs.org/en).
 
+  [Node.js](https://nodejs.org/en) 。
+
 * The [Angular CLI](https://cli.angular.io).
   From the terminal, install the Angular CLI globally with:
 
-  [Angular CLI](https://cli.angular.io/)。在终端上，使用以下命令全局安装 Angular CLI：
+  [Angular CLI](https://cli.angular.io)。在终端上，使用以下命令全局安装 Angular CLI：
 
   <code-example format="shell" language="shell">
 
@@ -49,6 +53,8 @@ A best practice is to run your project locally before you deploy it. To run your
 
 1. Unzip the archive and change directory to the newly created project. For example:
 
+   解包，并进入新创建的这个项目目录中。比如：
+
    <code-example format="shell" language="shell">
 
    cd angular-ynqttp
@@ -56,6 +62,8 @@ A best practice is to run your project locally before you deploy it. To run your
    </code-example>
 
 1. To download and install npm packages, use the following npm CLI command:
+
+   下载并安装 npm 包，使用如下 npm CLI 命令：
 
    <code-example format="shell" language="shell">
 
@@ -121,11 +129,11 @@ A best practice is to run your project locally before you deploy it. To run your
    Because these files are static, you can host them on any web server capable of serving files; such as `Node.js`, Java, .NET, or any backend such as [Firebase](https://firebase.google.com/docs/hosting), [Google Cloud](https://cloud.google.com/solutions/web-hosting), or [App Engine](https://cloud.google.com/appengine/docs/standard/python/getting-started/hosting-a-static-website).
    For more information, see [Building & Serving](guide/build "Building and Serving Angular Apps") and [Deployment](guide/deployment "Deployment guide").
 
-   把 `dist/my-project-name` 文件夹的内容复制到 Web 服务器。由于这些文件是静态的，因此你可以将它们托管在任何支持静态文件的 Web 服务器上。（例如 `Node.js`、Java、.NET 或任何后端（例如[Firebase](https://firebase.google.com/docs/hosting)，[Google Cloud](https://cloud.google.com/solutions/web-hosting) 或 [App Engine](https://cloud.google.com/appengine/docs/standard/python/getting-started/hosting-a-static-website)）。有关更多信息，请参阅[构建与服务](guide/build "构建与服务 Angular 应用")以及[部署](guide/deployment "部署指南")部分。
+   把 `dist/my-project-name` 文件夹的内容复制到 Web 服务器。由于这些文件是静态的，因此你可以将它们托管在任何支持静态文件的 Web 服务器上。（比如 `Node.js`、Java、.NET 或任何后端（比如[Firebase](https://firebase.google.com/docs/hosting)，[Google Cloud](https://cloud.google.com/solutions/web-hosting) 或 [App Engine](https://cloud.google.com/appengine/docs/standard/python/getting-started/hosting-a-static-website)）。有关更多信息，请参阅[构建与服务](guide/build "构建与服务 Angular 应用")以及[部署](guide/deployment "部署指南")部分。
 
 ## What's next
 
-## 下一步是什么
+## 下一步呢？
 
 In this tutorial, you've laid the foundation to explore the Angular world in areas such as mobile development, UX/UI development, and server-side rendering.
 You can go deeper by studying more of Angular's features, engaging with the vibrant community, and exploring the robust ecosystem.
@@ -142,7 +150,7 @@ For a more in-depth tutorial that leads you through building an application loca
 
 To explore Angular's foundational concepts, see the guides in the Understanding Angular section such as [Angular Components Overview](guide/component-overview) or [Template syntax](guide/template-syntax).
 
-要探索 Angular 的基础概念，请参阅“了解 Angular” 部分的指南，例如 [Angular 组件概览](guide/component-overview)或[模板语法](guide/template-syntax)。
+要探索 Angular 的基础概念，请参阅“了解 Angular” 部分的指南，比如 [Angular 组件概览](guide/component-overview)或[模板语法](guide/template-syntax)。
 
 ### Joining the community
 

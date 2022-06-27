@@ -337,6 +337,11 @@ class _TreeBuilder {
    * `endSourceSpan` is the span of the closing tag, or null if the element does
    * not have a closing tag (for example, this happens when an incomplete
    * opening tag is recovered).
+   *
+   * 关闭解析树中带有标签名 `fullName` 的最近元素。 `endSourceSpan`
+   * 是关闭标签的跨度，如果元素没有关闭标签，则为 null
+   * （例如，恢复不完整的开始标签时会发生这种情况）。
+   *
    */
   private _popElement(fullName: string, endSourceSpan: ParseSourceSpan|null): boolean {
     let unexpectedCloseTagDetected = false;
@@ -457,7 +462,12 @@ function lastOnStack(stack: any[], element: any): boolean {
 /**
  * Decode the `entity` string, which we believe is the contents of an HTML entity.
  *
+ * 解码 `entity` 字符串，我们认为它是 HTML 实体的内容。
+ *
  * If the string is not actually a valid/known entity then just return the original `match` string.
+ *
+ * 如果字符串实际上不是有效/已知实体，则仅返回原始 `match` 字符串。
+ *
  */
 function decodeEntity(match: string, entity: string): string {
   if (NAMED_ENTITIES[entity] !== undefined) {

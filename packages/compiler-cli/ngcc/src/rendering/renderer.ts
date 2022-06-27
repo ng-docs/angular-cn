@@ -26,8 +26,14 @@ import {FileToWrite, getImportRewriter, stripExtension} from './utils';
 /**
  * A base-class for rendering an `AnalyzedFile`.
  *
+ * 用于呈现 `AnalyzedFile` 的基类。
+ *
  * Package formats have output files that must be rendered differently. Concrete sub-classes must
  * implement the `addImports`, `addDefinitions` and `removeDecorators` abstract methods.
+ *
+ * 包格式具有必须以不同方式呈现的输出文件。具体的子类必须实现 `addImports` 、 `addDefinitions` 和
+ * `removeDecorators` 抽象方法。
+ *
  */
 export class Renderer {
   constructor(
@@ -54,8 +60,17 @@ export class Renderer {
 
   /**
    * Render the source code and source-map for an Analyzed file.
+   *
+   * 渲染 Analysted 文件的源代码和 source-map。
+   *
    * @param compiledFile The analyzed file to render.
+   *
+   * 要渲染的分析文件。
+   *
    * @param targetPath The absolute path where the rendered file will be written.
+   *
+   * 将写入渲染文件的绝对路径。
+   *
    */
   renderFile(
       sourceFile: ts.SourceFile, compiledFile: CompiledFile|undefined,
@@ -120,8 +135,20 @@ export class Renderer {
    * From the given list of classes, computes a map of decorators that should be removed.
    * The decorators to remove are keyed by their container node, such that we can tell if
    * we should remove the entire decorator property.
+   *
+   * 从给定的类列表中，计算应该删除的装饰器映射。要删除的装饰器由它们的容器节点作为键，以便我们可以告诉我们是否应该删除整个
+   * decorator 属性。
+   *
    * @param classes The list of classes that may have decorators to remove.
-   * @returns A map of decorators to remove, keyed by their container node.
+   *
+   * 可能要删除装饰器的类列表。
+   *
+   * @returns
+   *
+   * A map of decorators to remove, keyed by their container node.
+   *
+   * 要删除的装饰器映射，由它们的容器节点键控。
+   *
    */
   private computeDecoratorsToRemove(classes: CompiledClass[]): RedundantDecoratorMap {
     const decoratorsToRemove = new RedundantDecoratorMap();
@@ -147,11 +174,26 @@ export class Renderer {
 
   /**
    * Render the definitions as source code for the given class.
+   *
+   * 将定义呈现为给定类的源代码。
+   *
    * @param sourceFile The file containing the class to process.
+   *
+   * 包含要处理的类的文件。
+   *
    * @param clazz The class whose definitions are to be rendered.
+   *
+   * 要呈现其定义的类。
+   *
    * @param compilation The results of analyzing the class - this is used to generate the rendered
    * definitions.
+   *
+   * 分析类的结果 - 这用于生成呈现的定义。
+   *
    * @param imports An object that tracks the imports that are needed by the rendered definitions.
+   *
+   * 跟踪呈现的定义所需的导入的对象。
+   *
    */
   private renderDefinitions(
       sourceFile: ts.SourceFile, compiledClass: CompiledClass, imports: ImportManager,
@@ -166,11 +208,26 @@ export class Renderer {
 
   /**
    * Render the adjacent statements as source code for the given class.
+   *
+   * 将相邻的语句呈现为给定类的源代码。
+   *
    * @param sourceFile The file containing the class to process.
+   *
+   * 包含要处理的类的文件。
+   *
    * @param clazz The class whose statements are to be rendered.
+   *
+   * 要呈现其语句的类。
+   *
    * @param compilation The results of analyzing the class - this is used to generate the rendered
    * definitions.
+   *
+   * 分析类的结果 - 这用于生成呈现的定义。
+   *
    * @param imports An object that tracks the imports that are needed by the rendered definitions.
+   *
+   * 跟踪呈现的定义所需的导入的对象。
+   *
    */
   private renderAdjacentStatements(
       sourceFile: ts.SourceFile, compiledClass: CompiledClass, imports: ImportManager): string {
@@ -191,6 +248,9 @@ export class Renderer {
 
 /**
  * Render the constant pool as source code for the given class.
+ *
+ * 将常量池渲染为给定类的源代码。
+ *
  */
 export function renderConstantPool(
     formatter: RenderingFormatter, sourceFile: ts.SourceFile, constantPool: ConstantPool,
@@ -202,7 +262,13 @@ export function renderConstantPool(
 /**
  * Create an Angular AST statement node that contains the assignment of the
  * compiled decorator to be applied to the class.
+ *
+ * 创建一个 Angular AST 语句节点，其中包含要应用于类的已编译装饰器的分配。
+ *
  * @param analyzedClass The info about the class whose statement we want to create.
+ *
+ * 有关我们要创建其语句的类的信息。
+ *
  */
 function createAssignmentStatement(
     receiverName: ts.DeclarationName, propName: string, initializer: Expression,

@@ -1,5 +1,7 @@
 # NgModule FAQ
 
+# NgModule 常见问题解答
+
 NgModules help organize an application into cohesive blocks of functionality.
 
 NgModules 可以帮你把应用组织成一些紧密相关的代码块。
@@ -25,6 +27,8 @@ Declare them in a module if they belong to that particular module.
 
 ## What is a `declarable`?
 
+## 什么是*可声明的*？
+
 Declarables are the class types —components, directives, and pipes— that you can add to a module's `declarations` list.
 They're the only classes that you can add to `declarations`.
 
@@ -49,7 +53,7 @@ Do *not* declare the following:
 * An array of directives imported from another module.
   For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
 
-  从其它模块中导入的指令。例如，不要声明来自 `@angular/forms` 的 FORMS_DIRECTIVES，因为 `FormsModule` 已经声明过它们了。
+  从其它模块中导入的指令。比如，不要声明来自 `@angular/forms` 的 FORMS_DIRECTIVES，因为 `FormsModule` 已经声明过它们了。
 
 * Module classes.
 
@@ -240,7 +244,7 @@ Don't export the following:
   For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
   Its only purpose is to add http service providers to the application as a whole.
 
-  纯服务模块没有公开（导出）的声明。 例如，没必要重新导出 `HttpClientModule`，因为它不导出任何东西。 它唯一的用途是一起把 http 的那些服务提供者添加到应用中。
+  纯服务模块没有公开（导出）的声明。 比如，没必要重新导出 `HttpClientModule`，因为它不导出任何东西。 它唯一的用途是一起把 http 的那些服务提供者添加到应用中。
 
 ## Can I re-export classes and modules?
 
@@ -248,7 +252,7 @@ Don't export the following:
 
 Absolutely.
 
-毫无疑问！。
+毫无疑问。
 
 NgModules are a great way to selectively aggregate classes from other NgModules and re-export them in a consolidated, convenience module.
 
@@ -257,7 +261,7 @@ NgModules are a great way to selectively aggregate classes from other NgModules 
 An NgModule can re-export entire NgModules, which effectively re-exports all of their exported classes.
 Angular's own `BrowserModule` exports a couple of NgModules like this:
 
-模块可以重新导出其它模块，这会导致重新导出它们导出的所有类。 Angular 自己的 `BrowserModule` 就重新导出了一组模块，例如：
+模块可以重新导出其它模块，这会导致重新导出它们导出的所有类。 Angular 自己的 `BrowserModule` 就重新导出了一组模块，比如：
 
 <code-example format="typescript" language="typescript">
 
@@ -274,7 +278,7 @@ Pure service modules don't export [declarable](guide/bootstrapping#the-declarati
 For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
 Its only purpose is to add http service providers to the application as a whole.
 
-不要费心去导出纯服务类。 纯服务类的模块不会导出任何可供其它模块使用的[可声明类](guide/ngmodule-faq#q-declarable)。 例如，不用重新导出 `HttpClientModule`，因为它没有导出任何东西。 它唯一的用途是把那些 http 服务提供者一起添加到应用中。
+不要费心去导出纯服务类。 纯服务类的模块不会导出任何可供其它模块使用的[可声明类](guide/ngmodule-faq#q-declarable)。 比如，不用重新导出 `HttpClientModule`，因为它没有导出任何东西。 它唯一的用途是把那些 http 服务提供者一起添加到应用中。
 
 ## What is the `forRoot()` method?
 
@@ -303,6 +307,10 @@ For more information on `forRoot()` see [the `forRoot()` pattern](guide/singleto
 The `forRoot()` import can be used in a module other than `AppModule`.
 Importantly, `forRoot()` should only be called once, and the module that imports the `forRoot()` needs to be available to the root `ModuleInjector`.
 For more information, refer to the guide on [Hierarchical injectors](guide/hierarchical-dependency-injection#moduleinjector).
+
+**注意：**<br />
+`forRoot()` 导入可以用于除 `AppModule` 之外的模块中。最重要的是，`forRoot()` 只应该被调用一次，而且导入 `forRoot()` 的模块应该可以在根 `ModuleInjector` 中可用。
+欲知详情，参见[多级注入器](guide/hierarchical-dependency-injection#moduleinjector)指南。
 
 </div>
 
@@ -493,7 +501,7 @@ Thus, the lazy loading is preferable.
 Define application-wide providers by specifying `providedIn: 'root'` on its `@Injectable()` decorator (in the case of services) or at `InjectionToken` construction (in the case where tokens are provided).
 Providers that are created this way automatically are made available to the entire application and don't need to be listed in any module.
 
-通过在服务的 `@Injectable()` 装饰器中（例如服务）指定 `providedIn: 'root'` 来定义全应用级提供者，或者 `InjectionToken` 的构造器（例如提供令牌的地方），都可以定义全应用级提供者。 通过这种方式创建的服务提供者会自动在整个应用中可用，而不用把它列在任何模块中。
+通过在服务的 `@Injectable()` 装饰器中（比如服务）指定 `providedIn: 'root'` 来定义全应用级提供者，或者 `InjectionToken` 的构造器（比如提供令牌的地方），都可以定义全应用级提供者。 通过这种方式创建的服务提供者会自动在整个应用中可用，而不用把它列在任何模块中。
 
 If a provider cannot be configured in this way (perhaps because it has no sensible default value), then register application-wide providers in the root `AppModule`, not in the `AppComponent`.
 
@@ -564,7 +572,7 @@ For example, an editing component that needs a private copy of a caching service
 Then each new instance of the component gets its own cached service instance.
 The changes that editor makes in its service don't touch the instances elsewhere in the application.
 
-例如，如果英雄编辑组件需要自己私有的缓存英雄服务实例，那就应该把 `HeroService` 注册进 `HeroEditorComponent` 中。 这样，每个新的 `HeroEditorComponent` 的实例都会得到一份自己的缓存服务实例。 编辑器的改动只会作用于它自己的服务，而不会影响到应用中其它地方的英雄实例。
+比如，如果英雄编辑组件需要自己私有的缓存英雄服务实例，那就应该把 `HeroService` 注册进 `HeroEditorComponent` 中。 这样，每个新的 `HeroEditorComponent` 的实例都会得到一份自己的缓存服务实例。 编辑器的改动只会作用于它自己的服务，而不会影响到应用中其它地方的英雄实例。
 
 [Always register *application-wide* services with the root `AppModule`](guide/ngmodule-faq#q-root-component-or-module), not the root `AppComponent`.
 
@@ -679,7 +687,7 @@ You can throw an error or take other remedial action.
 Certain NgModules, such as `BrowserModule`, implement such a guard.
 Here is a custom constructor for an NgModule called `GreetingModule`.
 
-某些 NgModule（例如 `BrowserModule`）就实现了那样一个守卫。 下面是一个名叫 `GreetingModule` 的 NgModule 的 自定义构造函数。
+某些 NgModule（比如 `BrowserModule`）就实现了那样一个守卫。 下面是一个名叫 `GreetingModule` 的 NgModule 的 自定义构造函数。
 
 <code-example header="src/app/greeting/greeting.module.ts (Constructor)" path="ngmodules/src/app/greeting/greeting.module.ts" region="ctor"></code-example>
 
@@ -691,7 +699,7 @@ Here is a custom constructor for an NgModule called `GreetingModule`.
 
 An entry component is any component that Angular loads *imperatively* by type.
 
-Angular 根据组件类型*命令式*加载的组件是*入口组件*.。
+Angular 根据组件类型*命令式*加载的组件是*入口组件*。
 
 A component loaded *declaratively* by way of its selector is *not* an entry component.
 
@@ -751,7 +759,7 @@ Import the `SharedModule` in your *feature* modules, both those loaded when the 
 
 ### Feature Modules
 
-### 特性模块【模糊翻译】
+### 特性模块
 
 Feature modules are modules you create around specific application business domains, user workflows, and utility collections.
 They support your application by containing a particular feature, such as routes, services, widgets, etc.
@@ -795,6 +803,8 @@ For more information, see [JavaScript Modules vs. NgModules](guide/ngmodule-vs-j
 
 ## How does Angular find components, directives, and pipes in a template? What is a **template reference**?
 
+## Angular 如何查找模板中的组件、指令和管道？什么是 **模板引用** ？
+
 The [Angular compiler](guide/ngmodule-faq#q-angular-compiler) looks inside component templates for other components, directives, and pipes.
 When it finds one, that's a template reference.
 
@@ -835,7 +845,7 @@ The Angular compiler reads the template markup, combines it with the correspondi
 A component factory creates a pure, 100% JavaScript representation of the component that incorporates everything described in its `@Component` metadata:
 The HTML, the binding instructions, the attached styles.
 
-组件工厂为组件创建纯粹的、100% JavaScript 的表示形式，它包含了 `@Component` 元数据中描述的一切：HTML、绑定指令、附属的样式等……。
+组件工厂为组件创建纯粹的、100% JavaScript 的表示形式，它包含了 `@Component` 元数据中描述的一切：HTML、绑定指令、附属的样式等。
 
 Because directives and pipes appear in component templates, the Angular compiler incorporates them into compiled component code too.
 

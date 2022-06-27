@@ -8,23 +8,25 @@ There are new requirements for the Tour of Heroes app:
 
 * Add a *Dashboard* view
 
-  添加一个*仪表盘*视图。
+  添加一个*仪表盘*视图
 
 * Add the ability to navigate between the *Heroes* and *Dashboard* views
 
-  添加在*英雄列表*和*仪表盘*视图之间导航的能力。
+  添加在*英雄列表*和*仪表盘*视图之间导航的能力
 
 * When users click a hero name in either view, navigate to a detail view of the selected hero
 
-  无论在哪个视图中点击一个英雄，都会导航到该英雄的详情页。
+  无论在哪个视图中点击一个英雄，都会导航到该英雄的详情页
 
 * When users click a *deep link* in an email, open the detail view for a particular hero
 
-  在邮件中点击一个*深链接*，会直接打开一个特定英雄的详情视图。
+  在邮件中点击一个*深链接*，会直接打开一个特定英雄的详情视图
 
 <div class="alert is-helpful">
 
 For the sample application that this page describes, see the <live-example></live-example>.
+
+  要查看本页所讲的范例程序，参阅<live-example></live-example>。
 
 </div>
 
@@ -67,7 +69,9 @@ ng generate module app-routing --flat --module=app
 | :-------- | :------ |
 | 参数 | 详情 |
 | `--flat` | Puts the file in `src/app` instead of its own folder. |
+| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。 |
 | `--module=app` | Tells the CLI to register it in the `imports` array of the `AppModule`. |
+| `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。 |
 
 </div>
 
@@ -116,7 +120,9 @@ A typical Angular `Route` has two properties:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `path` | A string that matches the URL in the browser address bar. |
+| `path` | 用来匹配浏览器地址栏中 URL 的字符串。 |
 | `component` | The component that the router should create when navigating to this route. |
+| `component` | 导航到该路由时，路由器应该创建的组件。 |
 
 This tells the router to match that URL to `path: 'heroes'` and display the `HeroesComponent` when the URL is something like `localhost:4200/heroes`.
 
@@ -232,6 +238,10 @@ A [`routerLink` attribute](#routerlink) is set to `"/heroes"`, the string that t
 The `routerLink` is the selector for the [`RouterLink` directive](api/router/RouterLink) that turns user clicks into router navigations.
 It's another of the public directives in the `RouterModule`.
 
+[`routerLink` 属性](#routerlink)的值为 `"/heroes"`，路由器会用它来匹配出指向 `HeroesComponent` 的路由。
+`routerLink` 是 [`RouterLink` 指令](api/router/RouterLink)的选择器，它会把用户的点击转换为路由器的导航操作。
+它是 `RouterModule` 中的另一个公共指令。
+
 The browser refreshes and displays the application title and heroes link, but not the heroes list.
 
 刷新浏览器，显示出了应用的标题和指向英雄列表的链接，但并没有显示英雄列表。
@@ -244,6 +254,8 @@ The address bar updates to `/heroes` and the list of heroes appears.
 <div class="alert is-helpful">
 
 Make this and future navigation links look better by adding private CSS styles to `app.component.css` as listed in the [final code review](#appcomponent) below.
+
+从下面的 [最终代码](#appcomponent)中把私有 CSS 样式添加到 `app.component.css` 中，可以让导航链接变得更好看一点。
 
 </div>
 
@@ -293,6 +305,8 @@ The  *template* presents a grid of hero name links.
   这些链接被 `dashboard.component.css` 中的样式格式化成了一些色块。
 
 * The links don't go anywhere yet but [they will shortly](#hero-details).
+
+  这些链接还没有指向任何地方，但[很快就会了](#hero-details)。
 
 The *class* is similar to the `HeroesComponent` class.
 
@@ -425,6 +439,8 @@ Open the `HeroesComponent` template (`heroes/heroes.component.html`) and delete 
 Clicking a hero item now does nothing.
 You'll [fix that shortly](#heroes-component-links) after you enable routing to the `HeroDetailComponent`.
 
+目前，点击某个英雄条目还没有反应。不过当你启用了到 `HeroDetailComponent` 的路由之后，[很快就能修复它](#heroes-component-links)。
+
 ### Add a *hero detail* route
 
 ### 添加*英雄详情*视图
@@ -446,6 +462,8 @@ Then add a *parameterized* route to the `routes` array that matches the path pat
 <code-example header="src/app/app-routing.module.ts" path="toh-pt5/src/app/app-routing.module.ts" region="detail-route"></code-example>
 
 The colon (`:`) character in the `path` indicates that `:id` is a placeholder for a specific hero `id`.
+
+`path` 中的冒号（`:`）表示 `:id` 是一个占位符，它表示某个特定英雄的 `id`。
 
 At this point, all application routes are in place.
 
@@ -469,6 +487,8 @@ Now that the router has a route to `HeroDetailComponent`, fix the dashboard hero
 
 You're using Angular [interpolation binding](guide/interpolation) within the `*ngFor` repeater to insert the current iteration's `hero.id` into each [`routerLink`](#routerlink).
 
+你正在 `*ngFor` 复写器中使用 Angular 的[插值绑定](guide/interpolation)来把当前迭代的 `hero.id` 插入到每个 [`routerLink`](#routerlink) 中。
+
 <a id="heroes-component-links"></a>
 
 ### `HeroesComponent` hero links
@@ -483,10 +503,16 @@ The hero items in the `HeroesComponent` are `<li>` elements whose click events a
 
 Strip the `<li>` back to just its `*ngFor`, wrap the badge and name in an anchor (`<a>`) element, and add a `routerLink` attribute to the anchor that is the same as in the dashboard template
 
+清理 `<li>`，只保留它的 `*ngFor`，把徽章（`<badge>`）和名字包裹进一个 `<a>` 元素中，
+并且像仪表盘的模板中那样为这个 `<a>` 元素添加一个 `routerLink` 属性。
+
 <code-example header="src/app/heroes/heroes.component.html (list with links)" path="toh-pt5/src/app/heroes/heroes.component.html" region="list"></code-example>
 
 You'll have to fix the private stylesheet (`heroes.component.css`) to make the list look as it did before.
 Revised styles are in the [final code review](#heroescomponent) at the bottom of this guide.
+
+你还要修改私有样式表（`heroes.component.css`），让列表恢复到以前的外观。
+修改后的样式表参阅本指南底部的[最终代码](#heroescomponent)。
 
 #### Remove dead code (optional)
 
@@ -560,13 +586,16 @@ The [`HeroService`](tutorial/toh-pt4) gets hero data from the remote server and 
 The [`location`](api/common/Location) is an Angular service for interacting with the browser.
 You'll use it [later](#goback) to navigate back to the view that navigated here.
 
+[`location`](api/common/Location) 是一个 Angular 的服务，用来与浏览器打交道。
+[稍后](#goback)，你就会使用它来导航回上一个视图。
+
 ### Extract the `id` route parameter
 
 ### 从路由参数中提取 `id`
 
 In the `ngOnInit()` [lifecycle hook](guide/lifecycle-hooks#oninit) call `getHero()` and define it as follows.
 
-在 `ngOnInit()` [生命周期钩子](guide/lifecycle-hooks#oninit) 中调用 `getHero()`，代码如下：。
+在 `ngOnInit()` [生命周期钩子](guide/lifecycle-hooks#oninit) 中调用 `getHero()`，代码如下。
 
 <code-example header="src/app/hero-detail/hero-detail.component.ts" path="toh-pt5/src/app/hero-detail/hero-detail.component.ts" region="ngOnInit"></code-example>
 
@@ -605,6 +634,9 @@ Open `HeroService` and add the following `getHero()` method with the `id` after 
 
 **IMPORTANT**: <br />
 The backtick ( <code>\`</code> ) characters define a JavaScript [template literal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals) for embedding the `id`.
+
+**重要**：<br />
+反引号 ( \` ) 用于定义 JavaScript 的 [模板字符串字面量](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals)，以便嵌入 `id`。
 
 </div>
 
@@ -653,6 +685,8 @@ Add a *go back* button to the bottom of the component template and bind it to th
 Add a `goBack()` *method* to the component class that navigates backward one step in the browser's history stack
 using the `Location` service that you [injected previously](#hero-detail-ctor).
 
+在组件类中添加一个 `goBack()` 方法，利用[你以前注入的](#hero-detail-ctor) `Location` 服务在浏览器的历史栈中后退一步。
+
 <code-example header="src/app/hero-detail/hero-detail.component.ts (goBack)" path="toh-pt5/src/app/hero-detail/hero-detail.component.ts" region="goBack"></code-example>
 
 Refresh the browser and start clicking.
@@ -662,13 +696,15 @@ Users can navigate around the app, from the dashboard to hero details and back, 
 
 The details will look better when you add the private CSS styles to `hero-detail.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
 
+当你将一些私有 CSS 样式添加到 `hero-detail.component.css` 里之后，其细节看起来会更好，如下面的[“查看最终代码”](#final-code-review)标签页中所示。
+
 ## Final code review
 
 ## 查看最终代码
 
 Here are the code files discussed on this page.
 
-下面是本页所提到的源代码：。
+下面是本页所提到的源代码。
 
 <a id="approutingmodule"></a>
 <a id="appmodule"></a>
@@ -729,34 +765,34 @@ Here are the code files discussed on this page.
 
 * You added the Angular router to navigate among different components
 
-  添加了 Angular *路由器*在各个不同组件之间导航。
+  添加了 Angular *路由器*在各个不同组件之间导航
 
 * You turned the `AppComponent` into a navigation shell with `<a>` links and a `<router-outlet>`
 
-  你使用一些 `<a>` 链接和一个 `<router-outlet>` 把 `AppComponent` 转换成了一个导航用的壳组件。
+  你使用一些 `<a>` 链接和一个 `<router-outlet>` 把 `AppComponent` 转换成了一个导航用的壳组件
 
 * You configured the router in an `AppRoutingModule`
 
-  你在 `AppRoutingModule` 中配置了路由器。
+  你在 `AppRoutingModule` 中配置了路由器
 
 * You defined routes, a redirect route, and a parameterized route
 
-  你定义了一些简单路由、一个重定向路由和一个参数化路由。
+  你定义了一些简单路由、一个重定向路由和一个参数化路由
 
 * You used the `routerLink` directive in anchor elements
 
-  你在 `<a>` 元素中使用了 `routerLink` 指令。
+  你在 `<a>` 元素中使用了 `routerLink` 指令
 
 * You refactored a tightly-coupled master/detail view into a routed detail view
 
-  你把一个紧耦合的主从视图重构成了带路由的详情视图。
+  你把一个紧耦合的主从视图重构成了带路由的详情视图
 
 * You used router link parameters to navigate to the detail view of a user-selected hero
 
-  你使用路由链接参数来导航到所选英雄的详情视图。
+  你使用路由链接参数来导航到所选英雄的详情视图
 
 * You shared the `HeroService` among multiple components
 
-  在多个组件之间共享了 `HeroService` 服务。
+  在多个组件之间共享了 `HeroService` 服务
 
 @reviewed 2022-02-28

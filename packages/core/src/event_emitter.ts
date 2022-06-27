@@ -15,7 +15,8 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * synchronously or asynchronously, and register handlers for those events
  * by subscribing to an instance.
  *
- * 用在带有 `@Output` 指令的组件中，以同步或异步方式发出自定义事件，并通过订阅实例来为这些事件注册处理器。
+ * 用在带有 `@Output`
+ * 指令的组件中，以同步或异步方式发出自定义事件，并通过订阅实例来为这些事件注册处理器。
  *
  * @usageNotes
  *
@@ -23,7 +24,8 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * [RxJS `Subject`](https://rxjs.dev/api/index/class/Subject)
  * for Angular by adding the `emit()` method.
  *
- * 通过添加 `emit()` 方法来扩展 [Angular 的 RxJS `Subject`](https://rxjs.dev/api/index/class/Subject)。
+ * 通过添加 `emit()` 方法来扩展 [Angular 的 RxJS
+ * `Subject`](https://rxjs.dev/api/index/class/Subject)。
  *
  * In the following example, a component defines two output properties
  * that create event emitters. When the title is clicked, the emitter
@@ -32,7 +34,10 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * 在以下示例中，组件定义了两个创建事件发射器的输出属性。单击标题后，发射器将发出打开或关闭事件以切换当前可见性状态。
  *
  * ```html
- * @Component({
+ *
+ * ```
+ *
+ * @Component ({
  *   selector: 'zippy',
  *   template: `
  *   <div class="zippy">
@@ -43,8 +48,8 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  *  </div>`})
  * export class Zippy {
  *   visible: boolean = true;
- *   @Output() open: EventEmitter<any> = new EventEmitter();
- *   @Output() close: EventEmitter<any> = new EventEmitter();
+ * @Output () open: EventEmitter<any> = new EventEmitter();
+ * @Output () close: EventEmitter<any> = new EventEmitter();
  *
  *   toggle() {
  *     this.visible = !this.visible;
@@ -63,11 +68,9 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * ```html
  * <zippy (open)="onOpen($event)" (close)="onClose($event)"></zippy>
  * ```
- *
  * @see [Observables in Angular](guide/observables-in-angular)
  *
  * [Angular 中的可观察对象](guide/observables-in-angular)
- *
  * @publicApi
  */
 export interface EventEmitter<T> extends Subject<T> {
@@ -83,6 +86,8 @@ export interface EventEmitter<T> extends Subject<T> {
    * 创建此类的实例，该实例可以同步或异步发送事件。
    *
    * @param [isAsync=false] When true, deliver events asynchronously.
+   *
+   * 当为 true 时，异步传递事件。
    *
    */
   new(isAsync?: boolean): EventEmitter<T>;
@@ -122,11 +127,23 @@ export interface EventEmitter<T> extends Subject<T> {
       Subscription;
   /**
    * Registers handlers for events emitted by this instance.
+   *
+   * 注册此实例发出的事件的处理程序。
+   *
    * @param observerOrNext When supplied, a custom handler for emitted events, or an observer
    *     object.
+   *
+   * 提供时，为已发出事件的自定义处理程序或观察者对象。
+   *
    * @param error When supplied, a custom handler for an error notification from this emitter.
+   *
+   * 提供时，来自此发射器的错误通知的自定义处理程序。
+   *
    * @param complete When supplied, a custom handler for a completion notification from this
    *     emitter.
+   *
+   * 提供时，此发射器的完成通知的自定义处理程序。
+   *
    */
   subscribe(observerOrNext?: any, error?: any, complete?: any): Subscription;
 }

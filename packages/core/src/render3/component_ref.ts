@@ -42,6 +42,9 @@ import {RootViewRef, ViewRef} from './view_ref';
 export class ComponentFactoryResolver extends viewEngine_ComponentFactoryResolver {
   /**
    * @param ngModule The NgModuleRef to which all resolved factories are bound.
+   *
+   * 所有解析的工厂绑定到的 NgModuleRef 。
+   *
    */
   constructor(private ngModule?: viewEngine_NgModuleRef<any>) {
     super();
@@ -119,7 +122,13 @@ export class ComponentFactory<T> extends viewEngine_ComponentFactory<T> {
 
   /**
    * @param componentDef The component definition.
+   *
+   * 组件定义。
+   *
    * @param ngModule The NgModuleRef to which the factory is bound.
+   *
+   * 工厂绑定到的 NgModuleRef 。
+   *
    */
   constructor(
       private componentDef: ComponentDef<any>, private ngModule?: viewEngine_NgModuleRef<any>) {
@@ -244,7 +253,15 @@ const componentFactoryResolver: ComponentFactoryResolver = new ComponentFactoryR
  * ComponentFactoryResolver
  * already exists, retrieves the existing ComponentFactoryResolver.
  *
- * @returns The ComponentFactoryResolver instance to use
+ * 创建一个 ComponentFactoryResolver 并将其存储在注入器中。或者，如果 ComponentFactoryResolver
+ * 已经存在，则检索现有的 ComponentFactoryResolver 。
+ *
+ * @returns
+ *
+ * The ComponentFactoryResolver instance to use
+ *
+ * 要使用的 ComponentFactoryResolver 实例
+ *
  */
 export function injectComponentFactoryResolver(): viewEngine_ComponentFactoryResolver {
   return componentFactoryResolver;

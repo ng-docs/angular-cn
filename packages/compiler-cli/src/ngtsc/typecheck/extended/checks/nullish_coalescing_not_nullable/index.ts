@@ -19,6 +19,10 @@ import {TemplateCheckFactory, TemplateCheckWithVisitor, TemplateContext} from '.
  * Returns diagnostics for the cases where the operator is useless.
  * This check should only be use if `strictNullChecks` is enabled,
  * otherwise it would produce inaccurate results.
+ *
+ * 确保为 null 的合并操作的左侧是可以空的。返回操作员无用的情况的诊断信息。只有在启用
+ * `strictNullChecks` 时才使用此检查，否则会产生不准确的结果。
+ *
  */
 class NullishCoalescingNotNullableCheck extends
     TemplateCheckWithVisitor<ErrorCode.NULLISH_COALESCING_NOT_NULLABLE> {

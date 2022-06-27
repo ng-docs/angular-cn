@@ -127,6 +127,8 @@ This is known as "upgrading" and "downgrading".
 
 <header>Definitions:</header>
 
+<header>定义：</header>
+
 * *Upgrading*:
   The act of making an AngularJS asset, such as a component or service, available to the Angular part of the application.
 
@@ -147,6 +149,8 @@ In a sense, it "downgrades" an Angular module to an AngularJS module.
 依赖互联中最重要的部分之一是把两个主模块联结在一起。这就是 `downgradeModule()` 的用武之地。使用它来创建 AngularJS 模块（你可以在 AngularJS 主模块中把这个模块用作依赖项），该模块将引导你的 Angular 主模块，并启动混合式应用中的 Angular 部分。从某种意义上说，它把 NgModule "降级"成了 AngularJS 模块。
 
 There are a few things to remember, though:
+
+要记住如下几点：
 
 * You don't pass the Angular module directly to `downgradeModule()`.
   All `downgradeModule()` needs is a "recipe", for example, a factory function, to create an instance for your module.
@@ -201,7 +205,7 @@ Alternatively, you can pass a plain function, which is expected to return a prom
 The function is called with an array of extra [Providers](api/core/StaticProvider) that are expected to be available on the returned `NgModuleRef`'s [Injector](api/core/Injector).
 For example, if you are using [platformBrowser](api/platform-browser/platformBrowser) or [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic), you can pass the `extraProviders` array to them:
 
-另外，你还可以传入一个普通函数，它要返回一个解析为 [NgModuleRef](api/core/NgModuleRef)（比如你的 Angular 模块） 的 Promise。该函数接收一个额外 [Providers](api/core/StaticProvider) 的数组，这个数组可以在所返回 `NgModuleRef` 的 [Injector](api/core/Injector) 中可用。 例如，如果你在使用 [platformBrowser](api/platform-browser/platformBrowser) 或 [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic)，就可以把 `extraProviders` 数组传给它们：
+另外，你还可以传入一个普通函数，它要返回一个解析为 [NgModuleRef](api/core/NgModuleRef)（比如你的 Angular 模块） 的 Promise。该函数接收一个额外 [Providers](api/core/StaticProvider) 的数组，这个数组可以在所返回 `NgModuleRef` 的 [Injector](api/core/Injector) 中可用。 比如，如果你在使用 [platformBrowser](api/platform-browser/platformBrowser) 或 [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic)，就可以把 `extraProviders` 数组传给它们：
 
 <code-example format="typescript" language="typescript">
 
@@ -347,10 +351,15 @@ See [Upgrading from AngularJS](guide/upgrade) to learn about:
 
 * [Using Angular Components from AngularJS Code](guide/upgrade#using-angular-components-from-angularjs-code).
 
+  [从 AngularJS 代码中使用 Angular 组件](guide/upgrade#using-angular-components-from-angularjs-code).
+
   <div class="callout is-important">
 
   **NOTE**: <br />
   If you are downgrading multiple modules, you need to specify the name of the downgraded module each component belongs to, when calling `downgradeComponent()`.
+
+  **注意**：<br />
+  如果你要降级多个模块，就要在调用 `downgradeComponent()` 时为每个组件所属的降级后模块指定一个模块名。
 
   </div>
 
@@ -372,10 +381,15 @@ See [Upgrading from AngularJS](guide/upgrade) to learn about:
 
 * [Making Angular Dependencies Injectable to AngularJS](guide/upgrade#making-angular-dependencies-injectable-to-angularjs).
 
+  [让 Angular 的依赖可注入到 AngularJS 中](guide/upgrade#making-angular-dependencies-injectable-to-angularjs).
+
   <div class="callout is-important">
 
   **NOTE**: <br />
   If you are downgrading multiple modules, you need to specify the name of the downgraded module each injectable belongs to, when calling `downgradeInjectable()`.
+
+  **注意**：<br />
+  如果你正在降级多个模块，就要在调用 `downgradeInjectable()` 时为每个包含可注入对象的模块指定降级后的模块名。
 
   </div>
 

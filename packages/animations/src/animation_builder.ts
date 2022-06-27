@@ -29,10 +29,16 @@ import {AnimationPlayer} from './players/animation_player';
  * 应用通常不需要创建自己的动画播放器，但是如果需要，请按照以下步骤操作：
  *
  * 1. Use the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code> method
- * to create a programmatic animation. The method returns an `AnimationFactory` instance.
+ *    to create a programmatic animation. The method returns an `AnimationFactory` instance.
  *
- *       使用 `build()` 方法创建一个用 `animate()` 函数创建的程序性动画。该方法返回一个
- * `AnimationFactory` 实例。
+ *    使用<code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)
+ * ()</code>方法来创建程序化动画。该方法返回一个 `AnimationFactory` 实例。
+ *
+ *    ```
+ *      使用 `build()` 方法创建一个用 `animate()` 函数创建的程序性动画。该方法返回一个
+ *    ```
+ *
+ *    `AnimationFactory` 实例。
  *
  * 2. Use the factory object to create an `AnimationPlayer` and attach it to a DOM element.
  *
@@ -44,11 +50,14 @@ import {AnimationPlayer} from './players/animation_player';
  *
  * For example:
  *
- * 例如：
+ * 比如：
  *
  * ```ts
  * // import the service from BrowserAnimationsModule
- * import {AnimationBuilder} from '@angular/animations';
+ * import {AnimationBuilder} from '
+ * ```
+ *
+ * @angular /animations';
  * // require the service as a dependency
  * class MyCmp {
  *   constructor(private _builder: AnimationBuilder) {}
@@ -67,7 +76,6 @@ import {AnimationPlayer} from './players/animation_player';
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export abstract class AnimationBuilder {
@@ -104,12 +112,17 @@ export abstract class AnimationFactory {
    * the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code>
    * method that created this factory and attaches the new player a DOM element.
    *
+   * `AnimationPlayer`<code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)
+   * ()</code>创建此工厂并为新播放器附加 DOM 元素的方法。
+   *
    * @param element The DOM element to which to attach the player.
+   *
+   * 要附加播放器的 DOM 元素。
+   *
    * @param options A set of options that can include a time delay and
    * additional developer-defined parameters.
    *
    * 一组选项，可以包括延迟时间和其他由开发人员定义的参数。
-   *
    */
   abstract create(element: any, options?: AnimationOptions): AnimationPlayer;
 }

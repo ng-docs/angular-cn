@@ -6,9 +6,11 @@
 
 <header>Marked for archiving</header>
 
+<header>标记为存档</header>
+
 To ensure that you have the best experience possible, this topic is marked for archiving until we determine that it clearly conveys the most accurate information possible.
 
-为确保你拥有最佳的体验，本主题已标记为存档，直到我们确定其清楚地传达了最准确的信息为止。
+为确保你拥有最佳的体验，本主题已标记为归档，直到我们确定其清楚地传达了最准确的信息为止。
 
 In the meantime, this topic might be helpful: [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
@@ -16,7 +18,7 @@ In the meantime, this topic might be helpful: [Hierarchical injectors](guide/hie
 
 If you think this content should not be archived, please file a [GitHub issue](https://github.com/angular/angular/issues/new?template=3-docs-bug.md).
 
-如果你认为不应将此内容存档，请提交 [GitHub 问题](https://github.com/angular/angular/issues/new?template=3-docs-bug.md)。
+如果你认为不应将此内容归档，请提交 [GitHub 问题](https://github.com/angular/angular/issues/new?template=3-docs-bug.md)。
 
 </div>
 
@@ -24,7 +26,7 @@ Application components often need to share information.
 You can often use loosely coupled techniques for sharing information, such as data binding and service sharing, but sometimes it makes sense for one component to have a direct reference to another component.
 You need a direct reference, for instance, to access values or call methods on that component.
 
-应用的组件之间经常需要共享信息。你通常要用松耦合的技术来共享信息，比如数据绑定和服务共享。但是有时候让一个组件直接引用另一个组件还是很有意义的。 例如，你需要通过另一个组件的直接引用来访问其属性或调用其方法。
+应用的组件之间经常需要共享信息。你通常要用松耦合的技术来共享信息，比如数据绑定和服务共享。但是有时候让一个组件直接引用另一个组件还是很有意义的。 比如，你需要通过另一个组件的直接引用来访问其属性或调用其方法。
 
 Obtaining a component reference is a bit tricky in Angular.
 Angular components themselves do not have a tree that you can inspect or navigate programmatically.
@@ -41,7 +43,7 @@ This means that there is a [view hierarchy](guide/glossary#view-hierarchy) for e
 There is an API for navigating *down* the view hierarchy.
 Check out `Query`, `QueryList`, `ViewChildren`, and `ContentChildren` in the [API Reference](api).
 
-有一些用于在视图树中*向下*导航的 API。 请到 [API 参考手册](api/)中查看 `Query`、`QueryList`、`ViewChildren` 和 `ContentChildren`。
+有一些用于在视图树中*向下*导航的 API。 请到 [API 参考手册](api)中查看 `Query`、`QueryList`、`ViewChildren` 和 `ContentChildren`。
 
 There is no public API for acquiring a parent reference.
 However, because every component instance is added to an injector's container, you can use Angular dependency injection to reach a parent component.
@@ -78,6 +80,8 @@ In the following example, the parent `AlexComponent` has several children includ
 <code-example header="parent-finder.component.ts (CathyComponent)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="cathy"></code-example>
 
 Notice that even though the [@Optional](guide/dependency-injection-in-action#optional) qualifier is there for safety, the <live-example name="dependency-injection-in-action"></live-example> confirms that the `alex` parameter is set.
+
+注意，虽然为了安全起见我们用了 [@Optional](guide/dependency-injection-in-action#optional) 限定符，但是<live-example name="dependency-injection-in-action"></live-example>中仍然会确认 `alex` 参数是否有值。
 
 <a id="base-parent"></a>
 
@@ -118,6 +122,8 @@ This example is examining *whether a component can inject its parent via the par
 The sample's `CraigComponent` explores this question.
 [Looking back](#alex), you see that the `Alex` component *extends* (*inherits*) from a class named `Base`.
 
+这个例子中的 `CraigComponent` 体现了此问题。[往回看](#alex)，你可以看到 `Alex` 组件*扩展*（*继承*）了基类 `Base`。
+
 <code-example header="parent-finder.component.ts (Alex class signature)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-class-signature"></code-example>
 
 The `CraigComponent` tries to inject `Base` into its `alex` constructor parameter and reports if it succeeded.
@@ -129,6 +135,10 @@ The `CraigComponent` tries to inject `Base` into its `alex` constructor paramete
 Unfortunately, this doesn't work.
 The <live-example name="dependency-injection-in-action"></live-example> confirms that the `alex` parameter is null.
 *You cannot inject a parent by its base class.*
+
+不幸的是，这不行！
+<live-example name="dependency-injection-in-action"></live-example> 确认了 `alex` 参数为空。
+因此，*你不能通过父组件的基类注入它*。
 
 <a id="class-interface-parent"></a>
 
@@ -146,6 +156,8 @@ The parent must cooperate by providing an *alias* to itself in the name of a cla
 
 Recall that Angular always adds a component instance to its own injector; that's why you could inject *Alex* into *Cathy* [earlier](#known-parent).
 
+回忆一下，Angular 总是会把组件实例添加到它自己的注入器中，因此[以前](#known-parent)你才能把 *Alex* 注入到 *Cathy* 中。
+
 Write an [*alias provider*](guide/dependency-injection-in-action#useexisting) —a `provide` object literal with a `useExisting` definition— that creates an *alternative* way to inject the same component instance and add that provider to the `providers` array of the `@Component()` metadata for the `AlexComponent`.
 
 编写一个 [*别名提供者*](guide/dependency-injection-in-action#useexisting)（一个 `provide` 对象字面量，其中有一个 `useExisting` 定义），创造了另一种方式来注入同一个组件实例，并把那个提供者添加到 `AlexComponent` `@Component()` 元数据的 `providers` 数组中。
@@ -156,6 +168,9 @@ Write an [*alias provider*](guide/dependency-injection-in-action#useexisting) �
 
 [Parent](#parent-token) is the provider's class interface token.
 The [*forwardRef*](guide/dependency-injection-in-action#forwardref) breaks the circular reference you just created by having the `AlexComponent` refer to itself.
+
+[Parent](#parent-token) 是该提供者的类接口。
+[*forwardRef*](guide/dependency-injection-in-action#forwardref) 用于打破循环引用，因为在你刚才这个定义中 `AlexComponent` 引用了自身。
 
 *Carol*, the third of *Alex*'s child components, injects the parent into its `parent` parameter, the same way you've done it before.
 
@@ -177,6 +192,8 @@ Here's *Alex* and family in action.
 
 ### Find a parent in a tree with `@SkipSelf()`
 
+### 使用 `@SkipSelf()` 在树中查找父级
+
 Imagine one branch of a component hierarchy: *Alice* -> *Barry* -> *Carol*.
 Both *Alice* and *Barry* implement the `Parent` class interface.
 
@@ -196,6 +213,9 @@ Here's *Barry*.
 
 *Barry*'s `providers` array looks just like [*Alex*'s](#alex-providers).
 If you're going to keep writing [*alias providers*](guide/dependency-injection-in-action#useexisting) like this you should create a helper function.
+
+*Barry* 的 `providers` 数组看起来和 [*Alex*](#alex-providers) 的一样。
+如果你准备继续像这样编写[*别名提供者*](guide/dependency-injection-in-action#useexisting)，就应该创建一个辅助函数。
 
 For now, focus on *Barry*'s constructor.
 

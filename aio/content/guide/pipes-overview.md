@@ -1,19 +1,31 @@
 # Understanding Pipes
 
+# 了解管道
+
 Use [pipes](guide/glossary#pipe "Definition of a pipe") to transform strings, currency amounts, dates, and other data for display.
+
+使用[管道](guide/glossary#pipe "管道的定义")来转换字符串、货币金额、日期和其他数据以进行显示。
 
 ## What is a pipe
 
-Pipes are simple functions to use in [template expressions](/guide/glossary#template-expression "Definition of template expression") to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
+## 什么是管道
+
+Pipes are simple functions to use in [template expressions](guide/glossary#template-expression "Definition of template expression") to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
 For example, you would use a pipe to show a date as **April 15, 1988** rather than the raw string format.
+
+管道是在[模板表达式](guide/glossary#template-expression "模板表达式的定义")中使用的简单函数，用于接受输入值并返回转换后的值。管道很有用，因为你可以在整个应用程序中使用它们，同时每个管道只声明一次。例如，你可以用管道将日期显示为**1988 年 4 月 15 日，**而不是原始字符串格式。
 
 <div class="alert is-helpful">
 
 For the sample application used in this topic, see the <live-example></live-example>.
 
+对于本主题中使用的示例应用程序，请参阅<live-example></live-example>.
+
 </div>
 
 ## Built-in pipes
+
+## 内置管道
 
 Angular provides built-in pipes for typical data transformations, including transformations for internationalization (i18n), which use locale information to format data.
 The following are commonly used built-in pipes for data formatting:
@@ -36,9 +48,9 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 
   [`CurrencyPipe`](api/common/CurrencyPipe) ：把数字转换成货币字符串，根据本地环境中的规则进行格式化。
 
-* [`DecimalPipe`](/api/common/DecimalPipe): Transforms a number into a string with a decimal point, formatted according to locale rules.
+* [`DecimalPipe`](api/common/DecimalPipe): Transforms a number into a string with a decimal point, formatted according to locale rules.
 
-  [`DecimalPipe`](/api/common/DecimalPipe)：把数字转换成带小数点的字符串，根据本地环境中的规则进行格式化。
+  [`DecimalPipe`](api/common/DecimalPipe)：把数字转换成带小数点的字符串，根据本地环境中的规则进行格式化。
 
 * [`PercentPipe`](api/common/PercentPipe): Transforms a number to a percentage string, formatted according to locale rules.
 
@@ -46,11 +58,13 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 
 <div class="alert is-helpful">
 
-* For a complete list of built-in pipes, see the [pipes API documentation](/api/common#pipes "Pipes API reference summary").
+* For a complete list of built-in pipes, see the [pipes API documentation](api/common#pipes "Pipes API reference summary").
 
-  关于内置管道的完整列表，请参阅[管道 API 文档](/api/common#pipes "管道 API 参考总结") 。
+  关于内置管道的完整列表，请参阅[管道 API 文档](api/common#pipes "管道 API 参考总结") 。
 
 * To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
+
+  要了解有关使用管道进行国际化 (i18n) 工作的更多信息，请参阅[根据区域设置格式化数据][AioGuideI18nCommonFormatDataLocale]。
 
 </div>
 

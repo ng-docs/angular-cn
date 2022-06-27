@@ -58,6 +58,9 @@ export class Driver implements Debuggable, UpdateSource {
   /**
    * Tracks the current readiness condition under which the SW is operating. This controls
    * whether the SW attempts to respond to some or all requests.
+   *
+   * 跟踪 SW 正在运行的当前就绪条件。这控制 SW 是尝试响应部分还是所有请求。
+   *
    */
   state: DriverReadyState = DriverReadyState.NORMAL;
   private stateMessage: string = '(nominal)';
@@ -65,6 +68,9 @@ export class Driver implements Debuggable, UpdateSource {
   /**
    * Tracks whether the SW is in an initialized state or not. Before initialization,
    * it's not legal to respond to requests.
+   *
+   * 跟踪 SW 是否处于初始化状态。在初始化之前，响应请求是不合法的。
+   *
    */
   initialized: Promise<void>|null = null;
 
@@ -72,19 +78,33 @@ export class Driver implements Debuggable, UpdateSource {
    * Maps client IDs to the manifest hash of the application version being used to serve
    * them. If a client ID is not present here, it has not yet been assigned a version.
    *
+   * 将客户端 ID 映射到用于为它们提供服务的应用程序版本的清单哈希。如果此处不存在客户端
+   * ID，则尚未为它分配版本。
+   *
    * If a ManifestHash appears here, it is also present in the `versions` map below.
+   *
+   * 如果此处出现 ManifestHash，则它也出现在下面的 `versions` 映射中。
+   *
    */
   private clientVersionMap = new Map<ClientId, ManifestHash>();
 
   /**
    * Maps manifest hashes to instances of `AppVersion` for those manifests.
+   *
+   * 将清单哈希映射到这些清单的 `AppVersion` 实例。
+   *
    */
   private versions = new Map<ManifestHash, AppVersion>();
 
   /**
    * The latest version fetched from the server.
    *
+   * 从服务器获取的最新版本。
+   *
    * Valid after initialization has completed.
+   *
+   * 在初始化完成后有效。
+   *
    */
   private latestHash: ManifestHash|null = null;
 
@@ -92,12 +112,18 @@ export class Driver implements Debuggable, UpdateSource {
 
   /**
    * Whether there is a check for updates currently scheduled due to navigation.
+   *
+   * 是否检查由于导航而当前安排的更新。
+   *
    */
   private scheduledNavUpdateCheck: boolean = false;
 
   /**
    * Keep track of whether we have logged an invalid `only-if-cached` request.
    * (See `.onFetch()` for details.)
+   *
+   * 跟踪我们是否记录了无效的 `only-if-cached` 请求。 （有关详细信息，请参阅 `.onFetch()` 。）
+   *
    */
   private loggedInvalidOnlyIfCachedRequest: boolean = false;
 
@@ -106,6 +132,9 @@ export class Driver implements Debuggable, UpdateSource {
   /**
    * A scheduler which manages a queue of tasks that need to be executed when the SW is
    * not doing any other work (not processing any other requests).
+   *
+   * 一种调度程序，它管理在 SW 不做任何其他工作（不处理任何其他请求）时需要执行的任务队列。
+   *
    */
   idle: IdleScheduler;
 
@@ -178,8 +207,13 @@ export class Driver implements Debuggable, UpdateSource {
   /**
    * The handler for fetch events.
    *
+   * 获取事件的处理程序。
+   *
    * This is the transition point between the synchronous event handler and the
    * asynchronous execution that eventually resolves for respondWith() and waitUntil().
+   *
+   * 这是同步事件处理程序和最终解析为 responseWith() 和 waitUntil() 的异步执行之间的转换点。
+   *
    */
   private onFetch(event: FetchEvent): void {
     const req = event.request;
@@ -244,6 +278,9 @@ export class Driver implements Debuggable, UpdateSource {
 
   /**
    * The handler for message events.
+   *
+   * 消息事件的处理程序。
+   *
    */
   private onMessage(event: ExtendableMessageEvent): void {
     // Ignore message events when the SW is in safe mode, for now.
@@ -513,6 +550,9 @@ export class Driver implements Debuggable, UpdateSource {
 
   /**
    * Attempt to quickly reach a state where it's safe to serve responses.
+   *
+   * 尝试快速达到可以安全地提供响应的状态。
+   *
    */
   private async initialize(): Promise<void> {
     // On initialization, all of the serialized state is read out of the 'control'
@@ -650,6 +690,9 @@ export class Driver implements Debuggable, UpdateSource {
 
   /**
    * Decide which version of the manifest to use for the event.
+   *
+   * 确定要用于事件的清单版本。
+   *
    */
   private async assignVersion(event: FetchEvent): Promise<AppVersion|null> {
     // First, check whether the event has a (non empty) client ID. If it does, the version may
@@ -748,6 +791,11 @@ export class Driver implements Debuggable, UpdateSource {
    * Retrieve a copy of the latest manifest from the server.
    * Return `null` if `ignoreOfflineError` is true (default: false) and the server or client are
    * offline (detected as response status 503 (service unavailable) or 504 (gateway timeout)).
+   *
+   * 从服务器检索最新清单的副本。如果 `ignoreOfflineError` 为 true （默认值： false
+   * ）并且服务器或客户端处于脱机状态（检测为响应状态 503（服务不可用）或 504（网关超时）），则返回
+   * `null` 。
+   *
    */
   private async fetchLatestManifest(ignoreOfflineError?: false): Promise<Manifest>;
   private async fetchLatestManifest(ignoreOfflineError: true): Promise<Manifest|null>;
@@ -776,6 +824,10 @@ export class Driver implements Debuggable, UpdateSource {
    * Schedule the SW's attempt to reach a fully prefetched state for the given AppVersion
    * when the SW is not busy and has connectivity. This returns a Promise which must be
    * awaited, as under some conditions the AppVersion might be initialized immediately.
+   *
+   * 在 SW 不忙且具有连接性时，安排 SW 尝试达到给定 AppVersion
+   * 的完全预取状态。这会返回一个必须等待的 Promise，因为在某些条件下，AppVersion 可能会立即初始化。
+   *
    */
   private async scheduleInitialization(appVersion: AppVersion): Promise<void> {
     const initialize = async () => {
@@ -899,6 +951,9 @@ export class Driver implements Debuggable, UpdateSource {
 
   /**
    * Synchronize the existing state to the underlying database.
+   *
+   * 将现有状态同步到基础数据库。
+   *
    */
   private async sync(): Promise<void> {
     const table = await this.controlTable;
@@ -975,6 +1030,10 @@ export class Driver implements Debuggable, UpdateSource {
    * Delete caches that were used by older versions of `@angular/service-worker` to avoid running
    * into storage quota limitations imposed by browsers.
    * (Since at this point the SW has claimed all clients, it is safe to remove those caches.)
+   *
+   * 删除旧版 `@angular/service-worker` 使用的缓存，以避免遇到浏览器施加的存储配额限制。 （由于此时
+   * SW 已声明所有客户端，因此删除这些缓存是安全的。）
+   *
    */
   async cleanupOldSwCaches(): Promise<void> {
     // This is an exceptional case, where we need to interact with caches that would not be
@@ -989,6 +1048,9 @@ export class Driver implements Debuggable, UpdateSource {
   /**
    * Determine if a specific version of the given resource is cached anywhere within the SW,
    * and fetch it if so.
+   *
+   * 确定给定资源的特定版本是否缓存在 SW 中的任何地方，如果是则获取它。
+   *
    */
   lookupResourceWithHash(url: NormalizedUrl, hash: string): Promise<Response|null> {
     return Array

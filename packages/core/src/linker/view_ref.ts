@@ -59,7 +59,9 @@ export abstract class ViewRef extends ChangeDetectorRef {
  * other than the hosting component whose template defines it, or it can be defined
  * independently by a `TemplateRef`.
  *
- * 表示视图容器中的 Angular [视图](guide/glossary#view)。[嵌入视图](guide/glossary#view-tree)可以从在模板中定义它的宿主组件之外的组件中引用，也可以由 `TemplateRef` 进行独立定义。
+ * 表示视图容器中的 Angular
+ * [视图](guide/glossary#view)。[嵌入视图](guide/glossary#view-tree)可以从在模板中定义它的宿主组件之外的组件中引用，也可以由
+ * `TemplateRef` 进行独立定义。
  *
  * Properties of elements in a view can change, but the structure (number and order) of elements in
  * a view cannot. Change the structure of elements by inserting, moving, or
@@ -144,8 +146,14 @@ export interface InternalViewRef extends ViewRef {
 /**
  * Interface for tracking root `ViewRef`s in `ApplicationRef`.
  *
+ * 用于跟踪 `ApplicationRef` 中根 `ViewRef` 的接口。
+ *
  * NOTE: Importing `ApplicationRef` here directly creates circular dependency, which is why we have
  * a subset of the `ApplicationRef` interface `ViewRefTracker` here.
+ *
+ * 注意：在此直接导入 `ApplicationRef` 会创建循环依赖，这就是为什么我们在这里有 `ApplicationRef`
+ * 接口 `ViewRefTracker` 的子集。
+ *
  */
 export interface ViewRefTracker {
   detachView(viewRef: ViewRef): void;

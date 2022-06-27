@@ -22,7 +22,8 @@ import {HttpXsrfCookieExtractor, HttpXsrfInterceptor, HttpXsrfTokenExtractor, XS
  * An injectable `HttpHandler` that applies multiple interceptors
  * to a request before passing it to the given `HttpBackend`.
  *
- * 一个可注入的 `HttpHandler`，它可以在把请求传给指定的 `HttpBackend` 之前，使用多个拦截器对该请求进行处理。
+ * 一个可注入的 `HttpHandler`，它可以在把请求传给指定的 `HttpBackend`
+ * 之前，使用多个拦截器对该请求进行处理。
  *
  * The interceptors are loaded lazily from the injector, to allow
  * interceptors to themselves inject classes depending indirectly
@@ -77,7 +78,8 @@ export function interceptingHandler(
  * Ordinarily JSONP callbacks are stored on the `window` object, but this may not exist
  * in test environments. In that case, callbacks are stored on an anonymous object instead.
  *
- * 原始的 JSONP 回调保存在 `window` 对象上，不过测试环境下可能不存在 `window` 对象。这时，回调就会转而保存在一个匿名对象上。
+ * 原始的 JSONP 回调保存在 `window` 对象上，不过测试环境下可能不存在 `window`
+ * 对象。这时，回调就会转而保存在一个匿名对象上。
  *
  */
 export function jsonpCallbackContext(): Object {
@@ -96,7 +98,8 @@ export function jsonpCallbackContext(): Object {
  * use directly to configure XSRF protection with the correct
  * cookie and header names.
  *
- * 对于支持基于 Cookie 的 XSRF 保护系统的服务器来说，只要配置上正确的 Cookie 名和请求头的名字，就可以自动获得 XSRF 保护。
+ * 对于支持基于 Cookie 的 XSRF 保护系统的服务器来说，只要配置上正确的 Cookie
+ * 名和请求头的名字，就可以自动获得 XSRF 保护。
  *
  * If no names are supplied, the default cookie name is `XSRF-TOKEN`
  * and the default header name is `X-XSRF-TOKEN`.
@@ -166,13 +169,14 @@ export class HttpClientXsrfModule {
  * Configures the [dependency injector](guide/glossary#injector) for `HttpClient`
  * with supporting services for XSRF. Automatically imported by `HttpClientModule`.
  *
- * 为支持 XSRF 的 `HttpClient` 配置[依赖注入器](guide/glossary#injector)。它会被 `HttpClientModule` 自动导入。
+ * 为支持 XSRF 的 `HttpClient` 配置[依赖注入器](guide/glossary#injector)。它会被 `HttpClientModule`
+ * 自动导入。
  *
  * You can add interceptors to the chain behind `HttpClient` by binding them to the
  * multiprovider for built-in [DI token](guide/glossary#di-token) `HTTP_INTERCEPTORS`.
  *
- *
- * 通过把拦截器提供为内置的 [DI 令牌](guide/glossary#di-token) `HTTP_INTERCEPTORS`（允许有多个），你可以把它们添加到 `HttpClient` 调用链的后面。
+ * 通过把拦截器提供为内置的 [DI 令牌](guide/glossary#di-token)
+ * `HTTP_INTERCEPTORS`（允许有多个），你可以把它们添加到 `HttpClient` 调用链的后面。
  *
  * @publicApi
  */
@@ -216,7 +220,8 @@ export class HttpClientModule {
  * You can add interceptors to the chain behind `HttpClient` by binding them to the
  * multiprovider for built-in [DI token](guide/glossary#di-token) `HTTP_INTERCEPTORS`.
  *
- * 通过把拦截器提供为内置的 [DI 令牌](guide/glossary#di-token) `HTTP_INTERCEPTORS`（允许有多个），你可以把它们添加到 `HttpClient` 调用链的后面。
+ * 通过把拦截器提供为内置的 [DI 令牌](guide/glossary#di-token)
+ * `HTTP_INTERCEPTORS`（允许有多个），你可以把它们添加到 `HttpClient` 调用链的后面。
  *
  * @publicApi
  */

@@ -10,6 +10,9 @@ import {SortedEntryPointsInfo} from '../dependencies/dependency_resolver';
 export interface EntryPointFinder {
   /**
    * Search for Angular package entry-points.
+   *
+   * 搜索 Angular 包入口点。
+   *
    */
   findEntryPoints(): SortedEntryPointsInfo;
 }

@@ -7,14 +7,16 @@
  */
 import {getFileSystem, PathManipulation} from '@angular/compiler-cli/private/localize';
 import {ɵParsedTranslation} from '@angular/localize';
-import {NodePath, PluginObj, types as t} from '../../babel_core';
 
+import {NodePath, PluginObj, types as t} from '../../babel_core';
 import {Diagnostics} from '../../diagnostics';
 import {buildCodeFrameError, buildLocalizeReplacement, isBabelParseError, isLocalize, translate, TranslatePluginOptions, unwrapMessagePartsFromLocalizeCall, unwrapSubstitutionsFromLocalizeCall} from '../../source_file_utils';
 
 /**
  * Create a Babel plugin that can be used to do compile-time translation of `$localize` tagged
  * messages.
+ *
+ * 创建一个 Babel 插件，可用于对 `$localize` 标记消息进行编译时翻译。
  *
  * @publicApi used by CLI
  */

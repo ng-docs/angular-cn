@@ -49,8 +49,13 @@ import {getRendererFactory2} from './imported_renderer2';
 export abstract class BaseFixture {
   /**
    * Each fixture creates the following initial DOM structure:
+   *
+   * 每个夹具都会创建以下初始 DOM 结构：
+   *
    * <div fixture="mark">
+   *
    *  <div host="mark"></div>
+   *
    * </div>
    *
    * Components are bootstrapped into the <div host="mark"></div>.
@@ -58,7 +63,13 @@ export abstract class BaseFixture {
    * of its host element (for example when the root component injectes ViewContainerRef or does
    * low-level DOM manipulation).
    *
+   * 组件被引导到<div host="mark"></div>.的<div fixture="mark">是否存在根组件在其宿主元素 _ 之外 _
+   * 创建 DOM 节点的情况（例如当根组件注入 ViewContainerRef 或进行低级 DOM 操作时）。
+   *
    * The <div fixture="mark"> is _not_ attached to the document body.
+   *
+   * 的<div fixture="mark">_ 不 _ 附加到文档正文。
+   *
    */
   containerElement: HTMLElement;
   hostElement: HTMLElement;
@@ -73,6 +84,9 @@ export abstract class BaseFixture {
 
   /**
    * Current state of HTML rendered by the bootstrapped component.
+   *
+   * 引导组件呈现的 HTML 的当前状态。
+   *
    */
   get html(): string {
     return toHtml(this.hostElement as any as Element);
@@ -81,6 +95,9 @@ export abstract class BaseFixture {
   /**
    * Current state of HTML rendered by the fixture (will include HTML rendered by the bootstrapped
    * component as well as any elements outside of the component's host).
+   *
+   * 夹具呈现的 HTML 的当前状态（将包括引导组件呈现的 HTML 以及组件宿主之外的任何元素）。
+   *
    */
   get outerHtml(): string {
     return toHtml(this.containerElement as any as Element);
@@ -90,10 +107,24 @@ export abstract class BaseFixture {
 /**
  * Fixture for testing template functions in a convenient way.
  *
+ * 以便利的方式测试模板函数的夹具。
+ *
  * This fixture allows:
+ *
+ * 该夹具允许：
+ *
  * - specifying the creation block and update block as two separate functions,
+ *
+ *   将创建块和更新块指定为两个单独的函数，
+ *
  * - maintaining the template state between invocations,
+ *
+ *   在调用之间维护模板状态，
+ *
  * - access to the render `html`.
+ *
+ *   访问渲染器 `html` 。
+ *
  */
 export class TemplateFixture extends BaseFixture {
   hostView: LView;
@@ -110,8 +141,14 @@ export class TemplateFixture extends BaseFixture {
    *
    * @param createBlock Instructions which go into the creation block:
    *          `if (rf & RenderFlags.Create) { __here__ }`.
+   *
+   * 进入创建块的操作指南： `if (rf & RenderFlags.Create) { __here__ }` 。
+   *
    * @param updateBlock Optional instructions which go into the update block:
    *          `if (rf & RenderFlags.Update) { __here__ }`.
+   *
+   * 进入 update 块的可选操作指南： `if (rf & RenderFlags.Update) { __here__ }` 。
+   *
    */
   constructor({
     create = noop,
@@ -160,7 +197,12 @@ export class TemplateFixture extends BaseFixture {
   /**
    * Update the existing template
    *
+   * 更新现有模板
+   *
    * @param updateBlock Optional update block.
+   *
+   * 可选的更新块。
+   *
    */
   update(updateBlock?: () => void): void {
     renderTemplate(
@@ -178,6 +220,9 @@ export class TemplateFixture extends BaseFixture {
 
 /**
  * Fixture for testing Components in a convenient way.
+ *
+ * 以便利的方式测试组件的夹具。
+ *
  */
 export class ComponentFixture<T extends {}> extends BaseFixture {
   component: T;
@@ -271,14 +316,41 @@ export function resetDOM() {
 /**
  *
  * @param hostNode Existing node to render into.
+ *
+ * 要渲染到的现有节点。
+ *
  * @param templateFn Template function with the instructions.
+ *
+ * 带有说明的模板函数。
+ *
  * @param decls The number of nodes, local refs, and pipes in this template
+ *
+ * 此模板中的节点、本地引用和管道的数量
+ *
  * @param context to pass into the template.
+ *
+ * 传递到模板中。
+ *
  * @param providedRendererFactory renderer factory to use
+ *
+ * 要使用的渲染器工厂
+ *
  * @param host The host element node to use
+ *
+ * 要使用的主机元素节点
+ *
  * @param directives Directive defs that should be used for matching
+ *
+ * 应该用于匹配的指令 defs
+ *
  * @param pipes Pipe defs that should be used for matching
+ *
+ * 应该用于匹配的管道默认值
+ *
  * @param consts Constants associated with the template.
+ *
+ * 与模板关联的常量。
+ *
  */
 export function renderTemplate<T>(
     hostNode: RElement, templateFn: ComponentTemplate<T>, decls: number, vars: number, context: T,
@@ -318,7 +390,12 @@ export function renderTemplate<T>(
 
 
 /**
- * @deprecated use `TemplateFixture` or `ComponentFixture`
+ * @deprecated
+ *
+ * use `TemplateFixture` or `ComponentFixture`
+ *
+ * 使用 `TemplateFixture` 或 `ComponentFixture`
+ *
  */
 export function renderToHtml(
     template: ComponentTemplate<any>, ctx: any, decls: number = 0, vars: number = 0,
@@ -353,7 +430,12 @@ beforeEach(resetDOM);
 beforeEach(enableIvyInjectableFactories);
 
 /**
- * @deprecated use `TemplateFixture` or `ComponentFixture`
+ * @deprecated
+ *
+ * use `TemplateFixture` or `ComponentFixture`
+ *
+ * 使用 `TemplateFixture` 或 `ComponentFixture`
+ *
  */
 export function renderComponent<T>(type: ComponentType<T>, opts?: CreateComponentOptions): T {
   return _renderComponent(type, {
@@ -366,7 +448,12 @@ export function renderComponent<T>(type: ComponentType<T>, opts?: CreateComponen
 }
 
 /**
- * @deprecated use `TemplateFixture` or `ComponentFixture`
+ * @deprecated
+ *
+ * use `TemplateFixture` or `ComponentFixture`
+ *
+ * 使用 `TemplateFixture` 或 `ComponentFixture`
+ *
  */
 export function toHtml<T>(componentOrElement: T|RElement, keepNgReflect = false): string {
   let element: any;
@@ -434,7 +521,12 @@ export function createDirective(
   };
 }
 
-/** Gets the directive on the given node at the given index */
+/**
+ * Gets the directive on the given node at the given index
+ *
+ * 获取给定索引处给定节点上的指令
+ *
+ */
 export function getDirectiveOnNode(nodeIndex: number, dirIndex: number = 0) {
   const directives = getDirectivesAtNodeIndex(nodeIndex, getLView(), true);
   if (directives == null) {
@@ -451,9 +543,13 @@ export const text: RText = null as any as Text;
 
 
 /**
- *  Switches between Render2 version of special objects like ElementRef and the Ivy version
+ * Switches between Render2 version of special objects like ElementRef and the Ivy version
  *  of these objects. It's necessary to keep them separate so that we don't pull in fns
  *  like injectElementRef() prematurely.
+ *
+ * 在 ElementRef 等特殊对象的 Render2 版本和这些对象的 Ivy
+ * 版本之间切换。有必要将它们分开，这样我们就不会过早地引入像 injectionElementRef() 一样的 fns。
+ *
  */
 export function enableIvyInjectableFactories() {
   (ElementRef as any)[NG_ELEMENT_ID] = () => R3_ELEMENT_REF_FACTORY();

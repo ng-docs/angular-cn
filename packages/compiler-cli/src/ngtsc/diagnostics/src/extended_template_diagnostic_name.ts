@@ -10,8 +10,13 @@
  * Enum holding the name of each extended template diagnostic. The name is used as a user-meaningful
  * value for configuring the diagnostic in the project's options.
  *
+ * 包含每个扩展模板诊断的名称的枚举。该名称用作在项目选项中配置诊断的对用户有意义的值。
+ *
  * See the corresponding `ErrorCode` for documentation about each specific error.
  * packages/compiler-cli/src/ngtsc/diagnostics/src/error_code.ts
+ *
+ * 有关每个特定错误的文档，请参阅相应的 `ErrorCode` 。
+ * package/compiler-cli/src/ngtsc/diagnostics/src/error_code.ts
  *
  * @publicApi
  */

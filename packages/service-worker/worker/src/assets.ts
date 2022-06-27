@@ -19,38 +19,62 @@ import {sha1Binary} from './sha1';
 /**
  * A group of assets that are cached in a `Cache` and managed by a given policy.
  *
+ * 缓存在 `Cache` 中并由给定策略管理的一组资产。
+ *
  * Concrete classes derive from this base and specify the exact caching policy.
+ *
+ * 具体类从此基础派生并指定确切的缓存策略。
+ *
  */
 export abstract class AssetGroup {
   /**
    * A deduplication cache, to make sure the SW never makes two network requests
    * for the same resource at once. Managed by `fetchAndCacheOnce`.
+   *
+   * 重复数据删除缓存，以确保 SW 永远不会同时对同一个资源发出两个网络请求。由 `fetchAndCacheOnce`
+   * 管理。
+   *
    */
   private inFlightRequests = new Map<string, Promise<Response>>();
 
   /**
    * Normalized resource URLs.
+   *
+   * 规范化的资源 URL。
+   *
    */
   protected urls: NormalizedUrl[] = [];
 
   /**
    * Regular expression patterns.
+   *
+   * 正则表达式模式。
+   *
    */
   protected patterns: RegExp[] = [];
 
   /**
    * A Promise which resolves to the `Cache` used to back this asset group. This
    * is opened from the constructor.
+   *
+   * 解析为用于支持此资产组的 `Cache` 的 Promise。这是从构造函数打开的。
+   *
    */
   protected cache: Promise<NamedCache>;
 
   /**
    * Group name from the configuration.
+   *
+   * 配置中的组名。
+   *
    */
   readonly name: string;
 
   /**
    * Metadata associated with specific cache entries.
+   *
+   * 与特定缓存条目关联的元数据。
+   *
    */
   protected metadata: Promise<Table>;
 
@@ -97,11 +121,17 @@ export abstract class AssetGroup {
 
   /**
    * Initialize this asset group, updating from the given source if available.
+   *
+   * 初始化此资产组，如果可用，则从给定源更新。
+   *
    */
   abstract initializeFully(updateFrom?: UpdateSource): Promise<void>;
 
   /**
    * Return a list of the names of all caches used by this group.
+   *
+   * 返回此组使用的所有缓存名称的列表。
+   *
    */
   async getCacheNames(): Promise<string[]> {
     const [cache, metadata] = await Promise.all([
@@ -113,6 +143,9 @@ export abstract class AssetGroup {
 
   /**
    * Process a request for a given resource and return it, or return null if it's not available.
+   *
+   * 处理对给定资源的请求并返回它，如果不可用，则返回 null 。
+   *
    */
   async handleFetch(req: Request, _event: ExtendableEvent): Promise<Response|null> {
     const url = this.adapter.normalizeUrl(req.url);
@@ -167,6 +200,10 @@ export abstract class AssetGroup {
    * Some resources are cached without a hash, meaning that their expiration is controlled
    * by HTTP caching headers. Check whether the given request/response pair is still valid
    * per the caching headers.
+   *
+   * 某些资源是在没有哈希的情况下缓存的，这意味着它们的过期由 HTTP
+   * 缓存标头控制。根据缓存标头检查给定的请求/响应对是否仍然有效。
+   *
    */
   private async needToRevalidate(req: Request, res: Response): Promise<boolean> {
     // Three different strategies apply here:
@@ -243,6 +280,9 @@ export abstract class AssetGroup {
 
   /**
    * Fetch the complete state of a cached resource, or return null if it's not found.
+   *
+   * 获取缓存资源的完整状态，如果找不到，则返回 null 。
+   *
    */
   async fetchFromCacheOnly(url: string): Promise<CacheState|null> {
     const cache = await this.cache;
@@ -270,6 +310,9 @@ export abstract class AssetGroup {
 
   /**
    * Lookup all resources currently stored in the cache which have no associated hash.
+   *
+   * 查找当前存储在缓存中的所有没有关联哈希的资源。
+   *
    */
   async unhashedResources(): Promise<NormalizedUrl[]> {
     const cache = await this.cache;
@@ -283,6 +326,9 @@ export abstract class AssetGroup {
 
   /**
    * Fetch the given resource from the network, and cache it if able.
+   *
+   * 从网络中获取给定的资源，并在可能时将其缓存。
+   *
    */
   protected async fetchAndCacheOnce(req: Request, used: boolean = true): Promise<Response> {
     // The `inFlightRequests` map holds information about which caching operations are currently
@@ -368,6 +414,9 @@ export abstract class AssetGroup {
 
   /**
    * Load a particular asset from the network, accounting for hash validation.
+   *
+   * 从网络加载特定资产，并考虑哈希验证。
+   *
    */
   protected async cacheBustedFetchFromNetwork(req: Request): Promise<Response> {
     const url = this.adapter.normalizeUrl(req.url);
@@ -450,6 +499,9 @@ export abstract class AssetGroup {
 
   /**
    * Possibly update a resource, if it's expired and needs to be updated. A no-op otherwise.
+   *
+   * 如果资源已过期且需要更新，可能会更新资源。否则为无操作。
+   *
    */
   protected async maybeUpdate(updateFrom: UpdateSource, req: Request, cache: Cache):
       Promise<boolean> {
@@ -478,6 +530,9 @@ export abstract class AssetGroup {
 
   /**
    * Construct a cache-busting URL for a given URL.
+   *
+   * 为给定的 URL 构造一个缓存清除 URL。
+   *
    */
   private cacheBust(url: string): string {
     return url + (url.indexOf('?') === -1 ? '?' : '&') + 'ngsw-cache-bust=' + Math.random();
@@ -497,6 +552,9 @@ export abstract class AssetGroup {
 
 /**
  * An `AssetGroup` that prefetches all of its resources during initialization.
+ *
+ * 在初始化期间预取其所有资源的 `AssetGroup` 。
+ *
  */
 export class PrefetchAssetGroup extends AssetGroup {
   override async initializeFully(updateFrom?: UpdateSource): Promise<void> {

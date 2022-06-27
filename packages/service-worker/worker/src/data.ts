@@ -15,6 +15,9 @@ import {NamedCache} from './named-cache-storage';
 
 /**
  * A metadata record of how old a particular cached resource is.
+ *
+ * 特定缓存资源的年龄的元数据记录。
+ *
  */
 interface AgeRecord {
   age: number;
@@ -23,21 +26,35 @@ interface AgeRecord {
 /**
  * A node in the LRU chain for a given `DataGroup`.
  *
+ * 给定 `DataGroup` 的 LRU 链中的节点。
+ *
  * Serializable as previous/next are identified by their URL and are not references.
+ *
+ * 可序列化为上一个/下一个是由它们的 URL 标识的，而不是引用。
+ *
  */
 interface LruNode {
   /**
    * The URL tracked by this node.
+   *
+   * 此节点跟踪的 URL。
+   *
    */
   url: string;
 
   /**
    * The previous (more recent) node in the chain, or null if this is the head.
+   *
+   * 链中的前一个（最近的）节点，如果这是头，则为 null 。
+   *
    */
   previous: string|null;
 
   /**
    * The next (less recent) node in the chain, or null if this is the tail.
+   *
+   * 链中的下一个（最近的）节点，如果这是尾部，则为 null 。
+   *
    */
   next: string|null;
 }
@@ -45,26 +62,43 @@ interface LruNode {
 /**
  * Serializable state of an entire LRU chain.
  *
+ * 整个 LRU 链的可序列化状态。
+ *
  * Essentially a doubly linked list of URLs.
+ *
+ * 本质上是一个 URL 的双向链接列表。
+ *
  */
 interface LruState {
   /**
    * URL of the head node, or null if the chain is empty.
+   *
+   * 头节点的 URL，如果链为空，则为 null 。
+   *
    */
   head: string|null;
 
   /**
    * URL of the tail node, or null if the chain is empty.
+   *
+   * 尾节点的 URL，如果链为空，则为 null 。
+   *
    */
   tail: string|null;
 
   /**
    * Map of URLs to data for each URL (including next/prev pointers).
+   *
+   * URL 到每个 URL 的数据的映射（包括 next/prev 指针）。
+   *
    */
   map: {[url: string]: LruNode|undefined};
 
   /**
    * Count of the number of nodes in the chain.
+   *
+   * 链中节点数的计数。
+   *
    */
   count: number;
 }
@@ -72,6 +106,9 @@ interface LruState {
 /**
  * Manages an instance of `LruState` and moves URLs to the head of the
  * chain when requested.
+ *
+ * 管理 `LruState` 的实例，并在请求时将 URL 移动到链的头部。
+ *
  */
 class LruList {
   state: LruState;
@@ -89,6 +126,9 @@ class LruList {
 
   /**
    * The current count of URLs in the list.
+   *
+   * 列表中的当前 URL 计数。
+   *
    */
   get size(): number {
     return this.state.count;
@@ -96,6 +136,9 @@ class LruList {
 
   /**
    * Remove the tail.
+   *
+   * 去掉尾巴。
+   *
    */
   pop(): string|null {
     // If there is no tail, return null.
@@ -218,31 +261,49 @@ class LruList {
 /**
  * A group of cached resources determined by a set of URL patterns which follow a LRU policy
  * for caching.
+ *
+ * 由一组 URL 模式确定的一组缓存资源，这些 URL 模式遵循 LRU 缓存策略。
+ *
  */
 export class DataGroup {
   /**
    * Compiled regular expression set used to determine which resources fall under the purview
    * of this group.
+   *
+   * 已编译的正则表达式集，用于确定哪些资源属于本组的权限。
+   *
    */
   private readonly patterns: RegExp[];
 
   /**
    * The `Cache` instance in which resources belonging to this group are cached.
+   *
+   * 缓存属于此组的资源的 `Cache` 实例。
+   *
    */
   private readonly cache: Promise<NamedCache>;
 
   /**
    * Tracks the LRU state of resources in this cache.
+   *
+   * 跟踪此缓存中资源的 LRU 状态。
+   *
    */
   private _lru: LruList|null = null;
 
   /**
    * Database table used to store the state of the LRU cache.
+   *
+   * 用于存储 LRU 缓存状态的数据库表。
+   *
    */
   private readonly lruTable: Promise<Table>;
 
   /**
    * Database table used to store metadata for resources in the cache.
+   *
+   * 用于存储缓存中资源的元数据的数据库表。
+   *
    */
   private readonly ageTable: Promise<Table>;
 
@@ -258,6 +319,9 @@ export class DataGroup {
 
   /**
    * Lazily initialize/load the LRU chain.
+   *
+   * 延迟初始化/加载 LRU 链。
+   *
    */
   private async lru(): Promise<LruList> {
     if (this._lru === null) {
@@ -273,6 +337,9 @@ export class DataGroup {
 
   /**
    * Sync the LRU chain to non-volatile storage.
+   *
+   * 将 LRU 链同步到非易失性存储。
+   *
    */
   async syncLru(): Promise<void> {
     if (this._lru === null) {
@@ -294,6 +361,9 @@ export class DataGroup {
   /**
    * Process a fetch event and return a `Response` if the resource is covered by this group,
    * or `null` otherwise.
+   *
+   * 处理 fetch 事件，如果资源被此组覆盖，则返回 `Response` ，否则返回 `null` 。
+   *
    */
   async handleFetch(req: Request, event: ExtendableEvent): Promise<Response|null> {
     // Do nothing
@@ -517,6 +587,10 @@ export class DataGroup {
    * completes before the timeout, this logic will be run inline with the response flow.
    * If the request times out on the server, an error will be returned but the real network
    * request will still be running in the background, to be cached when it completes.
+   *
+   * 缓存来自服务器的响应的操作。这必须一次发生，以便缓存和 LRU
+   * 跟踪保持同步。如果网络请求在超时之前完成，则此逻辑将与响应流内联运行。如果请求在服务器上超时，则会返回错误，但真实的网络请求仍将在后台运行，完成时会被缓存。
+   *
    */
   private async cacheResponse(req: Request, res: Response, lru: LruList, okToCacheOpaque = false):
       Promise<void> {
@@ -555,6 +629,9 @@ export class DataGroup {
 
   /**
    * Delete all of the saved state which this group uses to track resources.
+   *
+   * 删除此组用于跟踪资源的所有已保存状态。
+   *
    */
   async cleanup(): Promise<void> {
     // Remove both the cache and the database entries which track LRU stats.
@@ -566,6 +643,9 @@ export class DataGroup {
   }
   /**
    * Return a list of the names of all caches used by this group.
+   *
+   * 返回此组使用的所有缓存名称的列表。
+   *
    */
   async getCacheNames(): Promise<string[]> {
     const [cache, ageTable, lruTable] = await Promise.all([
@@ -579,9 +659,15 @@ export class DataGroup {
   /**
    * Clear the state of the cache for a particular resource.
    *
+   * 清除特定资源的缓存状态。
+   *
    * This doesn't remove the resource from the LRU table, that is assumed to have
    * been done already. This clears the GET and HEAD versions of the request from
    * the cache itself, as well as the metadata stored in the age table.
+   *
+   * 这不会从 LRU 表中删除资源，假定这已经完成了。这会从缓存本身中清除请求的 GET 和 HEAD
+   * 版本，以及存储在 age 表中的元数据。
+   *
    */
   private async clearCacheForUrl(url: string): Promise<void> {
     const [cache, ageTable] = await Promise.all([this.cache, this.ageTable]);

@@ -14,13 +14,20 @@ import {TranslationSerializer} from './translation_serializer';
 import {consolidateMessages, hasLocation} from './utils';
 import {XmlFile} from './xml_file';
 
-/** This is the maximum number of characters that can appear in a legacy XLIFF 2.0 message id. */
+/**
+ * This is the maximum number of characters that can appear in a legacy XLIFF 2.0 message id.
+ *
+ * 这是旧版 XLIFF 2.0 消息 ID 中可以出现的最大字符数。
+ *
+ */
 const MAX_LEGACY_XLIFF_2_MESSAGE_LENGTH = 20;
 
 /**
  * A translation serializer that can write translations in XLIFF 2 format.
  *
- * https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html
+ * 一个翻译序列化器，可以以 XLIFF 2 格式编写翻译。
+ *
+ * <https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html>
  *
  * @see Xliff2TranslationParser
  * @publicApi used by CLI
@@ -167,16 +174,29 @@ export class Xliff2TranslationSerializer implements TranslationSerializer {
   /**
    * Get the id for the given `message`.
    *
+   * 获取给定 `message` 的 id。
+   *
    * If there was a custom id provided, use that.
+   *
+   * 如果提供了自定义 ID，请使用它。
    *
    * If we have requested legacy message ids, then try to return the appropriate id
    * from the list of legacy ids that were extracted.
    *
+   * 如果我们请求了旧版消息 ID，请尝试从提取的旧版 ID 列表中返回适当的 id。
+   *
    * Otherwise return the canonical message id.
+   *
+   * 否则返回规范消息 ID。
    *
    * An Xliff 2.0 legacy message id is a 64 bit number encoded as a decimal string, which will have
    * at most 20 digits, since 2^65-1 = 36,893,488,147,419,103,231. This digest is based on:
-   * https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java
+   * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
+   *
+   * Xliff 2.0 旧版消息 ID 是编码为十进制字符串的 64 位数字，最多有 20 位数字，因为 2^65-1 =
+   * 36,893,488,147,419,103,231 。本摘要基于：
+   * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
+   *
    */
   private getMessageId(message: ɵParsedMessage): string {
     return message.customId ||
@@ -190,9 +210,15 @@ export class Xliff2TranslationSerializer implements TranslationSerializer {
 /**
  * Compute the value of the `type` attribute from the `placeholder` name.
  *
+ * 根据 `placeholder` 名称计算 `type` 属性的值。
+ *
  * If the tag is not known but starts with `TAG_`, `START_TAG_` or `CLOSE_TAG_` then the type is
  * `other`. Certain formatting tags (e.g. bold, italic, etc) have type `fmt`. Line-breaks, images
  * and links are special cases.
+ *
+ * 如果标签是未知的但以 `TAG_` 、 `START_TAG_` 或 `CLOSE_TAG_` ，则类型是 `other`
+ * 。某些格式标签（例如粗体、斜体等）具有 `fmt` 类型。换行符、图像和链接是特例。
+ *
  */
 function getTypeForPlaceholder(placeholder: string): string|null {
   const tag = placeholder.replace(/^(START_|CLOSE_)/, '').replace(/_\d+$/, '');

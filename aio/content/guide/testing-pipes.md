@@ -1,5 +1,7 @@
 # Testing Pipes
 
+# 测试管道
+
 You can test [pipes](guide/pipes) without the Angular testing utilities.
 
 你可以在没有 Angular 测试工具的情况下[测试管道](guide/pipes)。
@@ -7,6 +9,8 @@ You can test [pipes](guide/pipes) without the Angular testing utilities.
 <div class="alert is-helpful">
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 

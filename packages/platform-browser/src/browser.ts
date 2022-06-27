@@ -24,11 +24,16 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
 /**
  * Set of config options available during the bootstrap operation via `bootstrapApplication` call.
  *
+ * 在引导操作期间通过 `bootstrapApplication` 调用可用的一组配置选项。
+ *
  * @publicApi
  */
 export interface ApplicationConfig {
   /**
    * List of providers that should be available to the root component and all its children.
+   *
+   * 应该可用于根组件及其所有子组件的提供者列表。
+   *
    */
   providers: Array<Provider|ImportedNgModuleProviders>;
 }
@@ -38,12 +43,22 @@ export interface ApplicationConfig {
  * application's root component. More information about standalone components can be found in [this
  * guide](guide/standalone-components).
  *
+ * 引导 Angular
+ * 应用程序的实例，并将独立组件呈现为应用程序的根组件。有关独立组件的更多信息，请参阅[本指南](guide/standalone-components)。
+ *
  * @usageNotes
+ *
  * The root component passed into this function *must* be a standalone one (should have the
  * `standalone: true` flag in the `@Component` decorator config).
  *
+ * 传递给此函数的根组件*必须*是独立的（在 `@Component` 装饰器配置中应该有 `standalone: true`
+ * 标志）。
+ *
  * ```typescript
- * @Component({
+ *
+ * ```
+ *
+ * @Component ({
  *   standalone: true,
  *   template: 'Hello world!'
  * })
@@ -80,15 +95,25 @@ export interface ApplicationConfig {
  * array, for example:
  *
  * ```typescript
- * import {provideProtractorTestingSupport} from '@angular/platform-browser';
+ * import {provideProtractorTestingSupport} from '
+ * @angular /platform-browser';
  *
  * await bootstrapApplication(RootComponent, {providers: [provideProtractorTestingSupport()]});
  * ```
- *
  * @param rootComponent A reference to a standalone component that should be rendered.
+ *
+ * 对应该呈现的独立组件的引用。
+ *
  * @param options Extra configuration for the bootstrap operation, see `ApplicationConfig` for
  *     additional info.
- * @returns A promise that returns an `ApplicationRef` instance once resolved.
+ *
+ * 引导操作的额外配置，有关其他信息，请参阅 `ApplicationConfig` 。
+ *
+ * @returns
+ *
+ * A promise that returns an `ApplicationRef` instance once resolved.
+ *
+ * 解析后返回 `ApplicationRef` 实例的 Promise。
  *
  * @publicApi
  * @developerPreview
@@ -111,8 +136,16 @@ export function bootstrapApplication(
  * needed to support testing an application with Protractor (which relies on the Testability APIs
  * to be present).
  *
- * @returns An array of providers required to setup Testability for an application and make it
+ * 返回使用 `bootstrapApplication`
+ * 函数引导的应用程序设置[Testability](api/core/Testability)所需的一组提供程序。需要这组提供者来支持使用
+ * Protractor （依赖于存在的 Testability API）测试应用程序。
+ *
+ * @returns
+ *
+ * An array of providers required to setup Testability for an application and make it
  *     available for testing using Protractor.
+ *
+ * 为应用程序设置 Testability 并使其可使用 Protractor 进行测试所需的提供者数组。
  *
  * @publicApi
  */
@@ -146,7 +179,7 @@ export const INTERNAL_BROWSER_PLATFORM_PROVIDERS: StaticProvider[] = [
  * A factory function that returns a `PlatformRef` instance associated with browser service
  * providers.
  *
- * 一个工厂函数，它返回与浏览器服务提供者关联的 `PlatformRef`实例
+ * 一个工厂函数，它返回与浏览器服务提供者关联的 `PlatformRef` 实例
  *
  * @publicApi
  */
@@ -158,6 +191,11 @@ export const platformBrowser: (extraProviders?: StaticProvider[]) => PlatformRef
  * This is needed to avoid loading `BrowserModule` providers twice. We can't rely on the
  * `BrowserModule` presence itself, since the standalone-based bootstrap just imports
  * `BrowserModule` providers without referencing the module itself.
+ *
+ * 用于表明来自 `BrowserModule` 的提供程序是否已存在于 DI 中的内部标记。这是为了避免两次加载
+ * `BrowserModule` 提供程序。我们不能依赖 `BrowserModule` 本身的存在，因为基于独立的引导程序只是导入
+ * `BrowserModule` 提供程序而不引用模块本身。
+ *
  */
 const BROWSER_MODULE_PROVIDERS_MARKER =
     new InjectionToken(NG_DEV_MODE ? 'BrowserModule Providers Marker' : '');

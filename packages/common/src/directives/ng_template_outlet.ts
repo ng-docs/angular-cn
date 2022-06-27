@@ -67,7 +67,12 @@ export class NgTemplateOutlet implements OnChanges {
    */
   @Input() public ngTemplateOutlet: TemplateRef<any>|null = null;
 
-  /** Injector to be used within the embedded view. */
+  /**
+   * Injector to be used within the embedded view.
+   *
+   * 要在嵌入式视图中使用的注入器。
+   *
+   */
   @Input() public ngTemplateOutletInjector: Injector|null = null;
 
   constructor(private _viewContainerRef: ViewContainerRef) {}

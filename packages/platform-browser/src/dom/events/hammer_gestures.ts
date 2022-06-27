@@ -15,6 +15,9 @@ import {EVENT_MANAGER_PLUGINS, EventManagerPlugin} from './event_manager';
 
 /**
  * Supported HammerJS recognizer event names.
+ *
+ * 支持的 HammerJS 识别器事件名称。
+ *
  */
 const EVENT_NAMES = {
   // pan
@@ -127,7 +130,7 @@ export class HammerGestureConfig {
    *  `{"rotate": {"enable": false}}`.
    *
    * 键名是要配置的受支持事件名称，options
-   * 对象包含一组属性，以及将套用到命名识别器事件的替代值。例如，要禁用对 Rotate 事件的识别，请指定
+   * 对象包含一组属性，以及将套用到命名识别器事件的替代值。比如，要禁用对 Rotate 事件的识别，请指定
    * `{"rotate": {"enable": false}}` 。
    *
    * Properties that are not present take the HammerJS default values.
@@ -196,6 +199,8 @@ export class HammerGestureConfig {
 
 /**
  * Event plugin that adds Hammer support to an application.
+ *
+ * 向应用程序添加 Hammer 支持的事件插件。
  *
  * @ngModule HammerModule
  */

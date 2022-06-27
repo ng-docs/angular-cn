@@ -1,5 +1,7 @@
 # NgModules
 
+# Ng 模块
+
 **NgModules** configure the injector and the compiler and help organize related things together.
 
 **NgModules** 用于配置注入器和编译器，并帮你把那些相关的东西组织在一起。
@@ -14,6 +16,9 @@ NgModule 是一个带有 `@NgModule` 装饰器的类。 `@NgModule` 的参数是
 For an example application showcasing all the techniques that NgModules related pages cover, see the <live-example></live-example>.
 For explanations on the individual techniques, visit the relevant NgModule pages under the NgModules section.
 
+要想找一个涉及本章所讲的全部技术的范例，参阅 <live-example></live-example>。
+要想得到针对单项技术的一些讲解，参阅本目录下的相关页面。
+
 ## Angular modularity
 
 ## Angular 模块化
@@ -25,7 +30,7 @@ Modules are a great way to organize an application and extend it with capabiliti
 Angular libraries are NgModules, such as `FormsModule`, `HttpClientModule`, and `RouterModule`.
 Many third-party libraries are available as NgModules such as [Material Design](https://material.angular.io), [Ionic](https://ionicframework.com), and [AngularFire2](https://github.com/angular/angularfire2).
 
-Angular 自己的库都是 NgModule，比如 `FormsModule`、`HttpClientModule` 和 `RouterModule`。 很多第三方库也是 NgModule，比如 [Material Design](https://material.angular.cn/)、 [Ionic](http://ionicframework.com/) 和 [AngularFire2](https://github.com/angular/angularfire2)。
+Angular 自己的库都是 NgModule，比如 `FormsModule`、`HttpClientModule` 和 `RouterModule`。 很多第三方库也是 NgModule，比如 [Material Design](https://material.angular.cn)、 [Ionic](http://ionicframework.com) 和 [AngularFire2](https://github.com/angular/angularfire2)。
 
 NgModules consolidate components, directives, and pipes into cohesive blocks of functionality, each focused on a feature area, application business domain, workflow, or common collection of utilities.
 
@@ -46,19 +51,19 @@ NgModule 的元数据会做这些：
 
 * Declares which components, directives, and pipes belong to the module
 
-  声明某些组件、指令和管道属于这个模块。
+  声明某些组件、指令和管道属于这个模块
 
 * Makes some of those components, directives, and pipes public so that other module's component templates can use them
 
-  公开其中的部分组件、指令和管道，以便其它模块中的组件模板中可以使用它们。
+  公开其中的部分组件、指令和管道，以便其它模块中的组件模板中可以使用它们
 
 * Imports other modules with the components, directives, and pipes that components in the current module need
 
-  导入其它带有组件、指令和管道的模块，这些模块中的元件都是本模块所需的。
+  导入其它带有组件、指令和管道的模块，这些模块中的元件都是本模块所需的
 
 * Provides services that other application components can use
 
-  提供一些供应用中的其它组件使用的服务。
+  提供一些供应用中的其它组件使用的服务
 
 Every Angular application has at least one module, the root module.
 You [bootstrap](guide/bootstrapping) that module to launch the application.
@@ -109,11 +114,11 @@ You may also be interested in the following:
 
 * [Providers](guide/providers)
 
-  [服务提供者](guide/providers)。
+  [服务提供者](guide/providers)
 
 * [Types of NgModules](guide/module-types)
 
-  [NgModule 的分类](guide/module-types).
+  [NgModule 的分类](guide/module-types)
 
 <!-- links -->
 

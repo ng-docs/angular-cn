@@ -65,6 +65,13 @@ export class ImplicitReceiver extends AST {
  * is the same as `[attr.title]="title"`.). Inheriting allows for the `this` accesses to be treated
  * the same as implicit ones, except for a couple of exceptions like `$event` and `$any`.
  * TODO: we should find a way for this class not to extend from `ImplicitReceiver` in the future.
+ *
+ * 通过 `this` 访问某些内容时的接收器（例如 `this.foo` ）。请注意，此类继承自 `ImplicitReceiver`
+ * ，因为通过 `this` 访问某些内容被视为与在 Angular 模板中隐式访问它相同（例如
+ * `[attr.title]="this.title"` 与 `[attr.title]="title"` 。）。继承允许 `this`
+ * 访问被视为与隐式访问相同，除了 `$event` 和 `$any` 等几个异常。
+ * TODO：我们应该找到一种方法让这个类将来不要从 `ImplicitReceiver` 扩展。
+ *
  */
 export class ThisReceiver extends ImplicitReceiver {
   override visit(visitor: AstVisitor, context: any = null): any {
@@ -74,6 +81,9 @@ export class ThisReceiver extends ImplicitReceiver {
 
 /**
  * Multiple expressions separated by a semicolon.
+ *
+ * 以分号分隔的多个表达式。
+ *
  */
 export class Chain extends AST {
   constructor(span: ParseSpan, sourceSpan: AbsoluteSourceSpan, public expressions: any[]) {
@@ -229,6 +239,10 @@ export class Binary extends AST {
  * For backwards compatibility reasons, `Unary` inherits from `Binary` and mimics the binary AST
  * node that was originally used. This inheritance relation can be deleted in some future major,
  * after consumers have been given a chance to fully support Unary.
+ *
+ * 出于向后兼容的原因， `Unary` 继承自 `Binary` 并模仿最初使用的二进制 AST
+ * 节点。在消费者有机会完全支持一元之后，可以在未来的某些专业中删除这种继承关系。
+ *
  */
 export class Unary extends Binary {
   // Redeclare the properties that are inherited from `Binary` as `never`, as consumers should not
@@ -239,6 +253,9 @@ export class Unary extends Binary {
 
   /**
    * Creates a unary minus expression "-x", represented as `Binary` using "0 - x".
+   *
+   * 创建一个一元减号表达式“-x”，使用“0 - x”表示为 `Binary` 。
+   *
    */
   static createMinus(span: ParseSpan, sourceSpan: AbsoluteSourceSpan, expr: AST): Unary {
     return new Unary(
@@ -247,6 +264,9 @@ export class Unary extends Binary {
 
   /**
    * Creates a unary plus expression "+x", represented as `Binary` using "x - 0".
+   *
+   * 创建一个一元加表达式“+x”，使用“x - 0”表示为 `Binary` 。
+   *
    */
   static createPlus(span: ParseSpan, sourceSpan: AbsoluteSourceSpan, expr: AST): Unary {
     return new Unary(
@@ -256,6 +276,9 @@ export class Unary extends Binary {
   /**
    * During the deprecation period this constructor is private, to avoid consumers from creating
    * a `Unary` with the fallback properties for `Binary`.
+   *
+   * 在弃用期间，此构造函数是私有的，以避免消费者创建具有 `Binary` `Unary`
+   *
    */
   private constructor(
       span: ParseSpan, sourceSpan: AbsoluteSourceSpan, public operator: string, public expr: AST,
@@ -315,6 +338,10 @@ export class SafeCall extends AST {
 /**
  * Records the absolute position of a text span in a source file, where `start` and `end` are the
  * starting and ending byte offsets, respectively, of the text span in a source file.
+ *
+ * 记录文本范围在源文件中的绝对位置，其中 `start` 和 `end`
+ * 分别是源文件中文本范围的开始和结束字节偏移量。
+ *
  */
 export class AbsoluteSourceSpan {
   constructor(public readonly start: number, public readonly end: number) {}
@@ -344,28 +371,49 @@ export class ASTWithSource extends AST {
  * TemplateBinding refers to a particular key-value pair in a microsyntax
  * expression. A few examples are:
  *
- *   |---------------------|--------------|---------|--------------|
+ * TemplateBinding 是指微语法表达式中的特定键值对。一些例子是：
+ *
+ *   \|---------------------\|--------------\|---------\|--------------\|
  *   |     expression      |     key      |  value  | binding type |
- *   |---------------------|--------------|---------|--------------|
+ *   \|---------------------\|--------------\|---------\|--------------\|
  *   | 1. let item         |    item      |  null   |   variable   |
  *   | 2. of items         |   ngForOf    |  items  |  expression  |
  *   | 3. let x = y        |      x       |    y    |   variable   |
  *   | 4. index as i       |      i       |  index  |   variable   |
  *   | 5. trackBy: func    | ngForTrackBy |   func  |  expression  |
- *   | 6. *ngIf="cond"     |     ngIf     |   cond  |  expression  |
- *   |---------------------|--------------|---------|--------------|
+ *   | 6. \*ngIf="cond"     |     ngIf     |   cond  |  expression  |
+ *   \|---------------------\|--------------\|---------\|--------------\|
+ *
+ * |---------------------|--------------|---------|-- ------------| |表达式|键|值|绑定类型|
+ * |---------------------|--------------|---------|-- ------------| | 1.让条目|条目|空 |变量| | 2.
+ * 条目| ngForOf |条目|表达式| | 3. 让 x = y | x |是 |变量| | 4. 索引为 i |我|索引 |变量| | 5.
+ * trackBy: func | ngForTrackBy |函数|表达式| | 6. \*ngIf="cond" | ngIf |条件|表达式|
+ * |---------------------|--------------|---------|-- ------------|
  *
  * (6) is a notable exception because it is a binding from the template key in
  * the LHS of a HTML attribute to the expression in the RHS. All other bindings
  * in the example above are derived solely from the RHS.
+ *
+ * (6) 是一个值得注意的异常，因为它是从 HTML 属性的 LHS 中的模板键到 RHS
+ * 中的表达式的绑定。上面的示例中的所有其他绑定都仅来自 RHS。
+ *
  */
 export type TemplateBinding = VariableBinding|ExpressionBinding;
 
 export class VariableBinding {
   /**
    * @param sourceSpan entire span of the binding.
+   *
+   * 绑定的整个跨度。
+   *
    * @param key name of the LHS along with its span.
+   *
+   * LHS 的名称及其跨度。
+   *
    * @param value optional value for the RHS along with its span.
+   *
+   * RHS 的可选值及其跨度。
+   *
    */
   constructor(
       public readonly sourceSpan: AbsoluteSourceSpan,
@@ -376,13 +424,24 @@ export class VariableBinding {
 export class ExpressionBinding {
   /**
    * @param sourceSpan entire span of the binding.
+   *
+   * 绑定的整个跨度。
+   *
    * @param key binding name, like ngForOf, ngForTrackBy, ngIf, along with its
    * span. Note that the length of the span may not be the same as
    * `key.source.length`. For example,
-   * 1. key.source = ngFor, key.span is for "ngFor"
-   * 2. key.source = ngForOf, key.span is for "of"
-   * 3. key.source = ngForTrackBy, key.span is for "trackBy"
+   * 1\. key.source = ngFor, key.span is for "ngFor"
+   * 2\. key.source = ngForOf, key.span is for "of"
+   * 3\. key.source = ngForTrackBy, key.span is for "trackBy"
+   *
+   * 绑定名称，例如 ngForOf、ngForTrackBy、ngIf 及其跨度。请注意，跨度的长度可能与
+   * `key.source.length` 。例如，1.key.source = ngFor ，key.span 是为了“ngFor” 2.key.source =
+   * ngForOf ，key.span 是为了“of” 3.key.source = ngForTrackBy ，key.span 是为了“trackBy “
+   *
    * @param value optional expression for the RHS.
+   *
+   * RHS 的可选表达式。
+   *
    */
   constructor(
       public readonly sourceSpan: AbsoluteSourceSpan,
@@ -398,6 +457,9 @@ export interface AstVisitor {
   /**
    * The `visitUnary` method is declared as optional for backwards compatibility. In an upcoming
    * major release, this method will be made required.
+   *
+   * 为了向后兼容， `visitUnary` 方法被声明为可选。在即将到来的主要版本中，将使用此方法。
+   *
    */
   visitUnary?(ast: Unary, context: any): any;
   visitBinary(ast: Binary, context: any): any;
@@ -406,6 +468,9 @@ export interface AstVisitor {
   /**
    * The `visitThisReceiver` method is declared as optional for backwards compatibility.
    * In an upcoming major release, this method will be made required.
+   *
+   * 为了向后兼容， `visitThisReceiver` 方法被声明为可选。在即将到来的主要版本中，将使用此方法。
+   *
    */
   visitThisReceiver?(ast: ThisReceiver, context: any): any;
   visitImplicitReceiver(ast: ImplicitReceiver, context: any): any;
@@ -428,8 +493,17 @@ export interface AstVisitor {
   /**
    * This function is optionally defined to allow classes that implement this
    * interface to selectively decide if the specified `ast` should be visited.
+   *
+   * 此函数是可选定义的，以允许实现此接口的类选择性地决定是否应该访问指定的 `ast` 。
+   *
    * @param ast node to visit
+   *
+   * 要访问的节点
+   *
    * @param context context that gets passed to the node and all its children
+   *
+   * 传递给节点及其所有子项的上下文
+   *
    */
   visit?(ast: AST, context?: any): any;
 }
@@ -863,6 +937,9 @@ export class ParsedEvent {
 
 /**
  * ParsedVariable represents a variable declaration in a microsyntax expression.
+ *
+ * ParsedVariable 表示微语法表达式中的变量声明。
+ *
  */
 export class ParsedVariable {
   constructor(

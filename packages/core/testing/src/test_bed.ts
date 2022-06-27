@@ -36,7 +36,7 @@ export interface TestBed {
    * `resetTestEnvironment` 。
    *
    * Test modules and platforms for individual platforms are available from
-   * '@angular/<platform_name>/testing'.
+   * '@angular/&lt;platform_name>/testing'.
    *
    * 可从 '@angular/&lt;platform_name>/testing' 获得适用于各个平台的测试模块和平台。
    *
@@ -152,7 +152,7 @@ export const getTestBed: () => TestBed = _getTestBedRender3;
  *
  * Example:
  *
- * 例如：
+ * 比如：
  *
  * ```
  * beforeEach(inject([Dependency, AClass], (dep, object) => {

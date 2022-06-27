@@ -11,12 +11,18 @@ Then, use your custom pipe in template expressions, the same way you use built-i
 
 ## 把一个类标记为一个管道
 
-To mark a class as a pipe and supply configuration metadata, apply the [`@Pipe`](/api/core/Pipe "API reference for Pipe") [decorator](/guide/glossary#decorator--decoration "Definition for decorator") to the class.
+To mark a class as a pipe and supply configuration metadata, apply the [`@Pipe`](api/core/Pipe "API reference for Pipe") [decorator](guide/glossary#decorator--decoration "Definition for decorator") to the class.
+
+要将类标记为管道并提供配置元数据，请将[`@Pipe`](api/core/Pipe "管道的 API 参考")[装饰器](guide/glossary#decorator--decoration "装饰器的定义")应用于类。
 
 Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") (the general convention for class names) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
 Do not use hyphens in the `name`.
 
+使用[UpperCamelCase](guide/glossary#case-types "案例类型的定义") （类名的一般约定）作为管道类名，并使用[camelCase](guide/glossary#case-types "案例类型的定义")作为对应的 `name` 字符串。不要在 `name` 中使用连字符。
+
 For details and more examples, see [Pipe names](guide/styleguide#pipe-names "Pipe names in the Angular coding style guide").
+
+有关详细信息和更多示例，请参阅[管道名称](guide/styleguide#pipe-names "Angular 编码风格指南中的管道名称")。
 
 Use `name` in template expressions as you would for a built-in pipe.
 
@@ -25,6 +31,8 @@ Use `name` in template expressions as you would for a built-in pipe.
 <div class="alert is-important">
 
 * Include your pipe in the `declarations` field of the `NgModule` metadata in order for it to be available to a template. See the `app.module.ts` file in the example application (<live-example></live-example>). For details, see [NgModules](guide/ngmodules "NgModules introduction").
+
+  将你的管道包含在 `NgModule` 元数据的 `declarations` 字段中，以使其可用于模板。请参阅示例应用程序中的 `app.module.ts` 文件（<live-example></live-example>）。有关详细信息，请参阅[NgModules](guide/ngmodules "NgModules 介绍") 。
 
 * Register your custom pipes. The [Angular CLI](cli "CLI Overview and Command Reference") [`ng generate pipe`](cli/generate#pipe "ng generate pipe in the CLI Command Reference") command registers the pipe automatically.
 
@@ -36,9 +44,9 @@ Use `name` in template expressions as you would for a built-in pipe.
 
 ## 使用 PipeTransform 接口
 
-Implement the [`PipeTransform`](/api/core/PipeTransform "API reference for PipeTransform") interface in your custom pipe class to perform the transformation.
+Implement the [`PipeTransform`](api/core/PipeTransform "API reference for PipeTransform") interface in your custom pipe class to perform the transformation.
 
-在自定义管道类中实现 [`PipeTransform`](/api/core/PipeTransform "PipeTransform 的 API 参考") 接口来执行转换。
+在自定义管道类中实现 [`PipeTransform`](api/core/PipeTransform "PipeTransform 的 API 参考") 接口来执行转换。
 
 Angular invokes the `transform` method with the value of a binding as the first argument, and any parameters as the second argument in list form, and returns the transformed value.
 
@@ -52,7 +60,7 @@ In a game, you might want to implement a transformation that raises a value expo
 For example, if the hero's score is 2, boosting the hero's power exponentially by 10 produces a score of 1024.
 Use a custom pipe for this transformation.
 
-在游戏中，可能希望实现一种指数级转换，以指数级增加英雄的力量。例如，如果英雄的得分是 2，那么英雄的能量会指数级增长 10 次，最终得分为 1024。你可以使用自定义管道进行这种转换。
+在游戏中，可能希望实现一种指数级转换，以指数级增加英雄的力量。比如，如果英雄的得分是 2，那么英雄的能量会指数级增长 10 次，最终得分为 1024。你可以使用自定义管道进行这种转换。
 
 The following code example shows two component definitions:
 
@@ -87,6 +95,8 @@ Superpower boost: 1024
 <div class="alert is-helpful">
 
 To examine the behavior of the `exponentialStrength` pipe in the <live-example></live-example>, change the value and optional exponent in the template.
+
+要检查 `exponentialStrength` 管道在<live-example></live-example>，更改模板中的值和可选指数。
 
 </div>
 

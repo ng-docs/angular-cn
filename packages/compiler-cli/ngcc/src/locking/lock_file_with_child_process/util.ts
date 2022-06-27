@@ -11,8 +11,14 @@ import {Logger} from '../../../../src/ngtsc/logging';
 /**
  * Remove the lock-file at the provided `lockFilePath` from the given file-system.
  *
+ * 从给定的文件系统中删除提供的 `lockFilePath` 处的锁定文件。
+ *
  * It only removes the file if the pid stored in the file matches the provided `pid`.
  * The provided `pid` is of the process that is exiting and so no longer needs to hold the lock.
+ *
+ * 只有在文件中存储的 pid 与提供的 `pid` 匹配时才会删除文件。提供的 `pid`
+ * 是正在退出的进程的，因此不再需要持有锁。
+ *
  */
 export function removeLockFile(
     fs: FileSystem, logger: Logger, lockFilePath: AbsoluteFsPath, pid: string) {

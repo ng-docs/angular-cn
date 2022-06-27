@@ -10,6 +10,8 @@ This guide explores many of the features of dependency injection (DI) in Angular
 
 See the <live-example></live-example> for a working example containing the code snippets in this guide.
 
+包含本指南中代码片段的可工作范例，参阅<live-example></live-example>。
+
 </div>
 
 <a id="multiple-service-instances"></a>
@@ -63,6 +65,8 @@ The template displays this data-bound property.
 
 Find this example in <live-example name="dependency-injection-in-action">live code</live-example> and confirm that the three `HeroBioComponent` instances have their own cached hero data.
 
+到<live-example name="dependency-injection-in-action">现场演练</live-example>中找到这个例子，确认三个 `HeroBioComponent` 实例拥有自己独立的英雄数据缓存。
+
 <div class="lightbox">
 
 <img alt="Bios" src="generated/images/guide/dependency-injection-in-action/hero-bios.png">
@@ -83,11 +87,11 @@ By default, the DI framework searches for a provider in the injector hierarchy, 
 
 * The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
 
-  第一个配置过该提供者的注入器就会把依赖（服务实例或值）提供给这个构造函数。
+  第一个配置过该提供者的注入器就会把依赖（服务实例或值）提供给这个构造函数
 
 * If no provider is found in the root injector, the DI framework throws an error
 
-  如果在根注入器中也没有找到提供者，则 DI 框架将会抛出一个错误。
+  如果在根注入器中也没有找到提供者，则 DI 框架将会抛出一个错误
 
 There are a number of options for modifying the default search behavior, using *parameter decorators* on the service-valued parameters of a class constructor.
 
@@ -112,7 +116,7 @@ You can modify Angular's search behavior with the `@Host` and `@Optional` qualif
 
 * The `@Optional` property decorator tells Angular to return null when it can't find the dependency
 
-  `@Optional` 属性装饰器告诉 Angular 当找不到依赖时就返回 null。
+  `@Optional` 属性装饰器告诉 Angular 当找不到依赖时就返回 null
 
 * The `@Host` property decorator stops the upward search at the *host component*.
   The host component is typically the component requesting the dependency.
@@ -143,7 +147,7 @@ Angular *projects*, or *transcludes*, the corresponding `HeroContactComponent` i
 
 The result is shown below, with the hero's telephone number from `HeroContactComponent` projected above the hero description.
 
-从 `HeroContactComponent` 获得的英雄电话号码，被投影到上面的英雄描述里，结果如下：。
+从 `HeroContactComponent` 获得的英雄电话号码，被投影到上面的英雄描述里，结果如下：
 
 <div class="lightbox">
 
@@ -181,7 +185,7 @@ When the property is marked as optional, Angular sets `loggerService` to null an
 
 Here's `HeroBiosAndContactsComponent` in action.
 
-下面是 `HeroBiosAndContactsComponent` 的执行结果：。
+下面是 `HeroBiosAndContactsComponent` 的执行结果：
 
 <div class="lightbox">
 
@@ -202,6 +206,8 @@ The logger logic kicks in and the hero display updates with the "!!!" marker to 
 
 If you restore the `@Host()` decorator and comment out `@Optional`, the application throws an exception when it cannot find the required logger at the host component level.
 
+如果你恢复 `@Host()` 装饰器并注释掉 `@Optional` ，应用程序在宿主组件级别找不到所需的记录器时会抛出异常。
+
 <code-example format="output" hideCopy language="shell">
 
 EXCEPTION: No provider for LoggerService! (HeroContactComponent -&gt; LoggerService)
@@ -214,6 +220,8 @@ EXCEPTION: No provider for LoggerService! (HeroContactComponent -&gt; LoggerServ
 
 Using a custom provider allows you to provide a concrete implementation for implicit dependencies, such as built-in browser APIs.
 The following example uses an `InjectionToken` to provide the [localStorage](https://developer.mozilla.org/docs/Web/API/Window/localStorage) browser API as a dependency in the `BrowserStorageService`.
+
+自定义提供者让你可以为隐式依赖提供一个具体的实现，比如内置浏览器 API。下面的例子使用 `InjectionToken` 来提供 [localStorage](https://developer.mozilla.org/docs/Web/API/Window/localStorage)，将其作为 `BrowserStorageService` 的依赖项。
 
 <code-example header="src/app/storage.service.ts" path="dependency-injection-in-action/src/app/storage.service.ts"></code-example>
 
@@ -277,7 +285,7 @@ The sample code applies the directive's `appHighlight` attribute to two `<div>` 
 
 The following image shows the effect of mousing over the `<hero-bios-and-contacts>` tag.
 
-下图显示了鼠标移到 `<hero-bios-and-contacts>` 标签上的效果：。
+下图显示了鼠标移到 `<hero-bios-and-contacts>` 标签上的效果：
 
 <div class="lightbox">
 
@@ -378,7 +386,7 @@ The alternative implementation could, for example, implement a different strateg
 
 The following code shows two examples in `HeroOfTheMonthComponent`.
 
-请看下面 `HeroOfTheMonthComponent` 里的两个例子：。
+请看下面 `HeroOfTheMonthComponent` 里的两个例子：
 
 <code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-class"></code-example>
 
@@ -430,6 +438,8 @@ Imagine that `LoggerService` had a large API, much larger than the actual three 
 You might want to shrink that API surface to just the members you actually need.
 In this example, the `MinimalLogger` [class-interface](#class-interface) reduces the API to two members:
 
+想象 `LoggerService` 有个很大的 API 接口，远超过现有的三个方法和一个属性。你可能希望把 API 接口收窄到只有两个你确实需要的成员。在这个例子中，`MinimalLogger`[*类-接口*](guide/dependency-injection-in-action#class-interface)，就这个 API 成功缩小到了只有两个成员：
+
 <code-example header="src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts"></code-example>
 
 The following example puts `MinimalLogger` to use in a simplified version of `HeroOfTheMonthComponent`.
@@ -440,7 +450,7 @@ The following example puts `MinimalLogger` to use in a simplified version of `He
 
 The `HeroOfTheMonthComponent` constructor's `logger` parameter is typed as `MinimalLogger`, so only the `logs` and `logInfo` members are visible in a TypeScript-aware editor.
 
-`HeroOfTheMonthComponent` 构造函数的 `logger` 参数是一个 `MinimalLogger` 类型，在支持 TypeScript 感知的编辑器里，只能看到它的两个成员 `logs` 和 `logInfo`：。
+`HeroOfTheMonthComponent` 构造函数的 `logger` 参数是一个 `MinimalLogger` 类型，在支持 TypeScript 感知的编辑器里，只能看到它的两个成员 `logs` 和 `logInfo`：
 
 <div class="lightbox">
 
@@ -456,7 +466,7 @@ Behind the scenes, Angular sets the `logger` parameter to the full service regis
 
 This is illustrated in the following image, which displays the logging date.
 
-在下面的图片中，显示了日志日期，可以确认这一点：。
+在下面的图片中，显示了日志日期，可以确认这一点：
 
 <div class="lightbox">
 
@@ -481,7 +491,8 @@ The `useFactory` provider key lets you create a dependency object by calling a f
 The injector provides the dependency value by invoking a factory function, that you provide as the value of the `useFactory` key.
 Notice that this form of provider has a third key, `deps`, which specifies dependencies for the `useFactory` function.
 
-注入器通过调用你用 `useFactory` 键指定的工厂函数来提供该依赖的值。 注意，提供者的这种形态还有第三个键 `deps`，它指定了供 `useFactory` 函数使用的那些依赖。
+注入器通过调用你用 `useFactory` 键指定的工厂函数来提供该依赖的值。
+注意，提供者的这种形态还有第三个键 `deps`，它指定了供 `useFactory` 函数使用的那些依赖。
 
 Use this technique to create a dependency object with a factory function whose inputs are a combination of *injected services* and *local state*.
 
@@ -507,6 +518,8 @@ The provider factory function (returned by `runnersUpFactory()`) returns the act
 * The function takes a winning `Hero` and a `HeroService` as arguments.
   Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.
 
+  该函数以获胜的 `Hero` 和 `HeroService` 作为参数。 Angular 从 `deps` 数组中的两个*令牌*标识的注入值提供这些参数。
+
 * The function returns the string of names, which Angular than injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
 
   该函数返回名字的字符串，Angular 可以把它们注入到 `HeroOfTheMonthComponent` 的 `runnersUp` 参数中。
@@ -515,6 +528,9 @@ The provider factory function (returned by `runnersUpFactory()`) returns the act
 
 The function retrieves candidate heroes from the `HeroService`, takes `2` of them to be the runners-up, and returns their concatenated names.
 Look at the <live-example name="dependency-injection-in-action"></live-example> for the full source code.
+
+该函数从 `HeroService` 中接受候选的英雄，从中取 `2` 个参加竞赛，并把他们的名字串接起来返回。
+参阅 <live-example name="dependency-injection-in-action"></live-example> 查看完整源码。
 
 </div>
 
@@ -537,7 +553,7 @@ That's the subject of the next section.
 
 ### Class interface
 
-### 类-接口【模糊翻译】
+### 类-接口
 
 The previous *Hero of the Month* example used the `MinimalLogger` class as the token for a provider of `LoggerService`.
 
@@ -556,6 +572,11 @@ In this app, however there is no class that inherits from `MinimalLogger`.
 The `LoggerService` and the `DateLoggerService` could have inherited from `MinimalLogger`, or they could have implemented it instead, in the manner of an interface.
 But they did neither.
 `MinimalLogger` is used only as a dependency injection token.
+
+你通常从一个可扩展的抽象类继承。但这个应用中*并没有*类会继承 `MinimalLogger`。`LoggerService` 和 `DateLoggerService`*本可以*从 `MinimalLogger` 中继承。
+它们也可以实现 `MinimalLogger`，而不用单独定义接口。
+但它们没有。
+`MinimalLogger` 在这里仅仅被用作一个 "依赖注入令牌"。
 
 When you use a class this way, it's called a *class interface*.
 
@@ -584,6 +605,9 @@ The `MinimalLogger` transpiles to this unoptimized, pre-minified JavaScript for 
 **NOTE**: <br />
 It doesn't have any members.
 It never grows no matter how many members you add to the class, as long as those members are typed but not implemented.
+
+**注意**：<br />
+它没有任何成员。无论你添加到类中的成员有多少，它都不会增长大小，因为这些成员只是类型而没有实现。
 
 Look again at the TypeScript `MinimalLogger` class to confirm that it has no implementation.
 
@@ -684,6 +708,10 @@ Your first instinct might have been to create an `ngOnInit` method in `SortedHer
 But Angular calls the *derived* class's `ngOnInit` *before* calling the base class's `ngOnInit` so you'd be sorting the heroes array *before they arrived*.
 That produces a nasty error.
 
+现在，请注意 `afterGetHeroes()` 方法。
+你的第一反应是在 `SortedHeroesComponent` 组件里面建一个 `ngOnInit` 方法来做排序。但是 Angular 会先调用*派生*类的 `ngOnInit`，后调用基类的 `ngOnInit`，
+所以可能在*英雄到达之前*就开始排序。这就产生了一个讨厌的错误。
+
 Overriding the base class's `afterGetHeroes()` method solves the problem.
 
 覆盖基类的 `afterGetHeroes()` 方法可以解决这个问题。
@@ -725,7 +753,7 @@ The `providers` array is a property of the `@Component()` decorator function whi
 
 Break the circularity with `forwardRef`.
 
-使用 `forwardRef` 来打破这种循环：。
+使用 `forwardRef` 来打破这种循环：
 
 <code-example header="parent-finder.component.ts (AlexComponent providers)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-providers"></code-example>
 

@@ -14,13 +14,13 @@ This styling precedence is as follows, from the most specific with the highest p
 
    | Binding type | Examples |
    | :----------- | :------- |
-   | 绑定类型【模糊翻译】 | 例子 |
+   | 绑定类型 | 例子 |
    | Property binding | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example> |
-   | Property binding | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> |
+   | 属性绑定 | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example> |
    | Map binding | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
-   | Map binding | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> |
+   | 映射绑定 | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
    | Static value | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example> |
-   | Static value | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> |
+   | 静态值 | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example> |
 
 1. Directive host bindings are less specific because you can use directives in multiple locations, so they have a lower precedence than template bindings.
 
@@ -28,13 +28,13 @@ This styling precedence is as follows, from the most specific with the highest p
 
    | Binding type | Examples |
    | :----------- | :------- |
-   | 绑定类型【模糊翻译】 | 例子 |
+   | 绑定类型 | 例子 |
    | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
-   | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> |
+   | 属性绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
    | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example> |
-   | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> |
+   | 映射绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example> |
    | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
-   | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> |
+   | 静态值 | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
 
 1. Component host bindings have the lowest precedence.
 
@@ -42,13 +42,13 @@ This styling precedence is as follows, from the most specific with the highest p
 
    | Binding type | Examples |
    | :----------- | :------- |
-   | 绑定类型【模糊翻译】 | 例子 |
+   | 绑定类型 | 例子 |
    | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example> |
-   | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> |
+   | 属性绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example> |
    | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
-   | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> |
+   | 映射绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
    | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
-   | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> |
+   | 静态值 | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
 
 ## Precedence and specificity
 
@@ -57,7 +57,7 @@ This styling precedence is as follows, from the most specific with the highest p
 In the following example, binding to a specific class, as in `[class.special]`, takes precedence over a generic `[class]` binding.
 Similarly, binding to a specific style, as in `[style.color]`, takes precedence over a generic `[style]` binding.
 
-在下面的示例中，与 `[class.special]` 对特定类的绑定优先于一般性的 `[class]` 绑定。同样，到特定样式的绑定（例如 `[style.color]` ）要优先于一般性的 `[style]` 绑定。
+在下面的示例中，与 `[class.special]` 对特定类的绑定优先于一般性的 `[class]` 绑定。同样，到特定样式的绑定（比如 `[style.color]` ）要优先于一般性的 `[style]` 绑定。
 
 <code-example header="src/app/app.component.html" path="attribute-binding/src/app/app.component.html" region="basic-specificity"></code-example>
 
@@ -92,7 +92,7 @@ In the following case, `class` and `[class]` have similar specificity, but the `
 Higher precedence styles can defer to lower precedence styles using `undefined` values.
 For example, consider the following template:
 
-通过使用 `undefined` 值，较高优先级的样式也可以让位于较低优先级的样式。例如，考虑以下模板：
+通过使用 `undefined` 值，较高优先级的样式也可以让位于较低优先级的样式。比如，考虑以下模板：
 
 <code-example header="src/app/app.component.html" path="attribute-binding/src/app/app.component.html" region="style-delegation"></code-example>
 

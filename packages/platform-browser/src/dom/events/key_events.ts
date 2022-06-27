@@ -8,10 +8,14 @@
 
 import {DOCUMENT, ɵgetDOM as getDOM} from '@angular/common';
 import {Inject, Injectable, NgZone} from '@angular/core';
+
 import {EventManagerPlugin} from './event_manager';
 
 /**
  * Defines supported modifiers for key events.
+ *
+ * 为键事件定义支持的修饰符。
+ *
  */
 const MODIFIER_KEYS = ['alt', 'control', 'meta', 'shift'];
 
@@ -61,6 +65,9 @@ const _chromeNumKeyPadMap = {
 
 /**
  * Retrieves modifiers from key-event objects.
+ *
+ * 从键事件对象中检索修饰符。
+ *
  */
 const MODIFIER_KEY_GETTERS: {[key: string]: (event: KeyboardEvent) => boolean} = {
   'alt': (event: KeyboardEvent) => event.altKey,

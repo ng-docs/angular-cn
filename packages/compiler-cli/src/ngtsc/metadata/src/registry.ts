@@ -15,6 +15,9 @@ import {hasInjectableFields} from './util';
 /**
  * A registry of directive, pipe, and module metadata for types defined in the current compilation
  * unit, which supports both reading and registering.
+ *
+ * 当前编译单元中定义的类型的指令、管道和模块元数据的注册表，支持读取和注册。
+ *
  */
 export class LocalMetadataRegistry implements MetadataRegistry, MetadataReader {
   private directives = new Map<ClassDeclaration, DirectiveMeta>();
@@ -44,6 +47,9 @@ export class LocalMetadataRegistry implements MetadataRegistry, MetadataReader {
 
 /**
  * A `MetadataRegistry` which registers metdata with multiple delegate `MetadataRegistry` instances.
+ *
+ * 一种 `MetadataRegistry` ，它向多个委托 `MetadataRegistry` 实例注册元数据。
+ *
  */
 export class CompoundMetadataRegistry implements MetadataRegistry {
   constructor(private registries: MetadataRegistry[]) {}
@@ -70,6 +76,9 @@ export class CompoundMetadataRegistry implements MetadataRegistry {
 /**
  * Registry that keeps track of classes that can be constructed via dependency injection (e.g.
  * injectables, directives, pipes).
+ *
+ * 跟踪可以通过依赖注入构建的类（例如注入器、指令、管道）的注册表。
+ *
  */
 export class InjectableClassRegistry {
   private classes = new Set<ClassDeclaration>();

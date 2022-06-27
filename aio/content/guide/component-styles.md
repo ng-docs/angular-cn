@@ -5,7 +5,7 @@
 Angular applications are styled with standard CSS.
 That means you can apply everything you know about CSS stylesheets, selectors, rules, and media queries directly to Angular applications.
 
-Angular 应用使用标准的 CSS 来设置样式。这意味着你可以把关于 CSS 的那些知识和技能直接用于 Angular 程序中，例如：样式表、选择器、规则以及媒体查询等。
+Angular 应用使用标准的 CSS 来设置样式。这意味着你可以把关于 CSS 的那些知识和技能直接用于 Angular 程序中，比如：样式表、选择器、规则以及媒体查询等。
 
 Additionally, Angular can bundle *component styles* with components, enabling a more modular design than regular stylesheets.
 
@@ -16,6 +16,8 @@ This page describes how to load and apply these component styles.
 本章将会讲解如何加载和使用这些*组件样式*。
 
 Run the <live-example></live-example> in Stackblitz and download the code from there.
+
+可以运行<live-example></live-example>，在 Stackblitz 中试用并下载本页的代码。
 
 ## Using component styles
 
@@ -35,9 +37,13 @@ Usually you give it one string, as in the following example:
 
 ## Component styling best practices
 
+## 组件样式最佳实践
+
 <div class="alert is-helpful">
 
 See [View Encapsulation](guide/view-encapsulation) for information on how Angular scopes styles to specific components.
+
+有关 Angular 如何将样式范围限定为特定组件的信息，参阅[视图封装](guide/view-encapsulation)。
 
 </div>
 
@@ -46,36 +52,64 @@ When consuming a common component, you should not override the component's style
 While Angular's default style encapsulation prevents component styles from affecting other components, global styles affect all components on the page.
 This includes `::ng-deep`, which promotes a component style to a global style.
 
+你应该将组件的样式视为该组件的私有实现细节。使用通用组件时，你不应该覆盖组件的样式，就像访问 TypeScript 类的私有成员一样。虽然 Angular 的默认样式封装可防止组件样式影响其他组件，但全局样式会影响页面上的所有组件。这包括 `::ng-deep` ，它会将组件样式提升为全局样式。
+
 ### Authoring a component to support customization
+
+### 创作组件以支持自定义
 
 As component author, you can explicitly design a component to accept customization in one of four different ways.
 
+作为组件作者，你可以用四种不同的方式之一显式设计组件以接受自定义。
+
 #### 1. Use CSS Custom Properties (recommended)
+
+#### 1.使用 CSS 自定义属性（推荐）
 
 You can define a supported customization API for your component by defining its styles with CSS Custom Properties, alternatively known as CSS Variables.
 Anyone using your component can consume this API by defining values for these properties, customizing the final appearance of the component on the rendered page.
 
+你可以通过使用 CSS 自定义属性（也称为 CSS 变量）定义其样式来为组件定义受支持的自定义 API。使用你组件的任何人都可以通过为这些属性定义值、自定义组件在渲染页面上的最终外观来使用此 API。
+
 While this requires defining a custom property for each customization point, it creates a clear API contract that works in all style encapsulation modes.
 
+虽然这需要为每个自定义点定义一个自定义属性，但它创建了一个清晰的 API 契约，可以在所有样式的封装模式下工作。
+
 #### 2. Declare global CSS with `@mixin`
+
+#### 2.使用 `@mixin` 声明全局 CSS
 
 While Angular's emulated style encapsulation prevents styles from escaping a component, it does not prevent global CSS from affecting the entire page.
 While component consumers should avoid directly overwriting the CSS internals of a component, you can offer a supported customization API via a CSS preprocessor like Sass.
 
+虽然 Angular 的模拟样式封装可防止样式从组件中逃逸，但它并不能防止全局 CSS 影响整个页面。虽然组件使用者应避免直接覆盖组件的 CSS 内部，但你可以通过 Sass 等 CSS 预处理器提供受支持的自定义 API。
+
 For example, a component may offer one or more supported mixins to customize various aspects of the component's appearance.
 While this approach uses global styles in it's implementation, it allows the component author to keep the mixins up to date with changes to the component's private DOM structure and CSS classes.
 
+比如，组件可以提供一个或多个受支持的 mixin 来自定义组件外观的各个方面。虽然这种方法在其实现中使用了全局样式，但它允许组件作者通过对组件的私有 DOM 结构和 CSS 类的更改来使 mixins 保持最新。
+
 #### 3. Customize with CSS `::part`
+
+#### 3.使用 CSS `::part` 自定义
 
 If your component uses [Shadow DOM](https://developer.mozilla.org/docs/Web/Web_Components/Using_shadow_DOM), you can apply the `part` attribute to specify elements in your component's template.
 This allows consumers of the component to author arbitrary styles targeting those specific elements with [the `::part` pseudo-element](https://developer.mozilla.org/docs/Web/CSS/::part).
 
+如果你的组件使用了 [Shadow DOM](https://developer.mozilla.org/docs/Web/Web_Components/Using_shadow_DOM) ，你可以应用 `part` 属性来指定组件模板中的元素。这允许组件的使用者使用 [`::part` 伪元素](https://developer.mozilla.org/docs/Web/CSS/::part)创作针对这些特定元素的任意样式。
+
 While this lets you limit the elements within your template that consumers can customize, it does not limit which CSS properties are customizable.
+
+虽然这允许你限制模板中消费者可以自定义的元素，但它并不能限制哪些 CSS 属性是可自定义的。
 
 #### 4. Provide a TypeScript API
 
+#### 4.提供 TypeScript API
+
 You can define a TypeScript API for customizing styles, using template bindings to update CSS classes and styles.
 This is not recommended because the additional JavaScript cost of this style API incurs far more performance cost than CSS.
+
+你可以定义一个 TypeScript API 来自定义样式，使用模板绑定来更新 CSS 类和样式。不建议这样做，因为这种样式 API 的额外 JavaScript 成本会产生比 CSS 高得多的性能成本。
 
 ## Special selectors
 
@@ -84,7 +118,7 @@ This is not recommended because the additional JavaScript cost of this style API
 Component styles have a few special *selectors* from the world of shadow DOM style scoping (described in the [CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1) page on the [W3C](https://www.w3.org) site).
 The following sections describe these selectors.
 
-组件样式中有一些从影子(Shadow) DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中） 引入的特殊*选择器*：。
+组件样式中有一些从影子(Shadow) DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中） 引入的特殊*选择器*：
 
 ### :host
 
@@ -99,7 +133,7 @@ The `:host` pseudo-class selector may be used to create styles that target the h
 Creating the following style will target the component's host element.
 Any rule applied to this selector will affect the host element and all its descendants (in this case, italicizing all contained text).
 
-下面的样式将以组件的宿主元素为目标。应用于此选择器的任何规则都将影响宿主元素及其所有后代（在这种情况下，将所有包含的文本斜体）。（译注：后代的样式源自 CSS 的样式继承特性）。
+下面的样式将以组件的宿主元素为目标。应用于此选择器的任何规则都将影响宿主元素及其所有后代（在这种情况下，将所有包含的文本斜体）。（译注：后代的样式源自 CSS 的样式继承特性）
 
 <code-example header="src/app/hero-details.component.css" path="component-styles/src/app/hero-details.component.css" region="host"></code-example>
 
@@ -121,7 +155,7 @@ In this example the host's content also becomes bold when the `active` CSS class
 The `:host` selector can also be combined with other selectors.
 Add selectors behind the `:host` to select child elements, for example using `:host h2` to target all `<h2>` elements inside a component's view.
 
-`:host` 选择器也可以与其他选择器组合使用。在 `:host` 后面添加选择器以选择子元素，例如，使用 `:host h2` 定位组件视图内的 `<h2>`。
+`:host` 选择器也可以与其他选择器组合使用。在 `:host` 后面添加选择器以选择子元素，比如，使用 `:host h2` 定位组件视图内的 `<h2>`。
 
 <div class="alert is-helpful">
 
@@ -138,7 +172,7 @@ Use `:host-context` selector for that purpose instead.
 Sometimes it's useful to apply styles to elements within a component's template based on some condition in an element that is an ancestor of the host element.
 For example, a CSS theme class could be applied to the document `<body>` element, and you want to change how your component looks based on that.
 
-有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。 例如，在文档的 `<body>` 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。
+有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。 比如，在文档的 `<body>` 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。
 
 Use the `:host-context()` pseudo-class selector, which works just like the function form of `:host()`.
 The `:host-context()` selector looks for a CSS class in any ancestor of the component host element, up to the document root.
@@ -158,6 +192,9 @@ if some *ancestor* element of the host element has the CSS class `active`.
 **NOTE**: <br />
 Only the host element and its descendants will be affected, not the ancestor with the assigned `active` class.
 
+**注意**：<br />
+只有宿主元素及其各级子节点会受到影响，不包括加上 `active` 类的这个节点的祖先。
+
 </div>
 
 ### (deprecated) `/deep/`, `>>>`, and `::ng-deep`
@@ -173,11 +210,11 @@ Any style with `::ng-deep` applied becomes a global style.
 In order to scope the specified style to the current component and all its descendants, be sure to include the `:host` selector before `::ng-deep`.
 If the `::ng-deep` combinator is used without the `:host` pseudo-class selector, the style can bleed into other components.
 
-把伪类 `::ng-deep` 应用到任何一条 CSS 规则上就会完全禁止对那条规则的视图包装。任何带有 `::ng-deep` 的样式都会变成全局样式。为了把指定的样式限定在当前组件及其下级组件中，请确保在 `::ng-deep` 之前带上 `:host` 选择器。如果 `::ng-deep` 组合器在 `:host` 伪类之外使用，该样式就会污染其它组件。
+把伪类 `::ng-deep` 应用到任何一条 CSS 规则上就会完全禁止对那条规则的视图封装。任何带有 `::ng-deep` 的样式都会变成全局样式。为了把指定的样式限定在当前组件及其下级组件中，请确保在 `::ng-deep` 之前带上 `:host` 选择器。如果 `::ng-deep` 组合器在 `:host` 伪类之外使用，该样式就会污染其它组件。
 
 The following example targets all `<h3>` elements, from the host element down through this component to all of its child elements in the DOM.
 
-这个例子以所有的 `<h3>` 元素为目标，从宿主元素到当前元素再到 DOM 中的所有子元素：。
+这个例子以所有的 `<h3>` 元素为目标，从宿主元素到当前元素再到 DOM 中的所有子元素：
 
 <code-example header="src/app/hero-details.component.css" path="component-styles/src/app/hero-details.component.css" region="deep"></code-example>
 
@@ -225,7 +262,7 @@ There are several ways to add styles to a component:
 
 * With CSS imports
 
-  通过 CSS 文件导入【模糊翻译】
+   通过 CSS 文件导入
 
 The scoping rules outlined earlier apply to each of these loading patterns.
 
@@ -373,6 +410,8 @@ See the [Styles configuration guide](guide/workspace-config#styles-and-scripts-c
 ### 非 CSS 样式文件
 
 If you're building with the CLI, you can write style files in [sass](https://sass-lang.com), or [less](https://lesscss.org), and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions (`.scss`, `.less`) as in the following example:
+
+如果使用 CLI 进行构建，那么你可以用 [sass](https://sass-lang.com) 或 [less](https://lesscss.org) 来编写样式，并使用相应的扩展名（`.scss`、`.less`）把它们指定到 `@Component.styleUrls` 元数据中。例子如下：
 
 <code-example format="typescript" language="typescript">
 

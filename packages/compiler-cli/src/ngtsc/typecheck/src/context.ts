@@ -32,66 +32,104 @@ import {generateInlineTypeCtor, requiresInlineTypeCtor} from './type_constructor
 export interface ShimTypeCheckingData {
   /**
    * Path to the shim file.
+   *
+   * shim 文件的路径。
+   *
    */
   path: AbsoluteFsPath;
 
   /**
    * Any `ts.Diagnostic`s which were produced during the generation of this shim.
    *
+   * 在此 shim 生成期间生成的任何 `ts.Diagnostic` 。
+   *
    * Some diagnostics are produced during creation time and are tracked here.
+   *
+   * 某些诊断是在创建时生成的，并在此进行跟踪。
+   *
    */
   genesisDiagnostics: TemplateDiagnostic[];
 
   /**
    * Whether any inline operations for the input file were required to generate this shim.
+   *
+   * 是否需要对输入文件的任何内联操作来生成此 shim。
+   *
    */
   hasInlines: boolean;
 
   /**
    * Map of `TemplateId` to information collected about the template during the template
    * type-checking process.
+   *
+   * TemplateId 到在模板类型检查过程中收集的有关 `TemplateId` 的信息的映射。
+   *
    */
   templates: Map<TemplateId, TemplateData>;
 }
 
 /**
  * Data tracked for each template processed by the template type-checking system.
+ *
+ * 为模板类型检查系统处理的每个模板跟踪的数据。
+ *
  */
 export interface TemplateData {
   /**
    * Template nodes for which the TCB was generated.
+   *
+   * 为其生成 TCB 的模板节点。
+   *
    */
   template: TmplAstNode[];
 
   /**
    * `BoundTarget` which was used to generate the TCB, and contains bindings for the associated
    * template nodes.
+   *
+   * `BoundTarget` ，用于生成 TCB，并包含对关联模板节点的绑定。
+   *
    */
   boundTarget: BoundTarget<TypeCheckableDirectiveMeta>;
 
   /**
    * Errors found while parsing them template, which have been converted to diagnostics.
+   *
+   * 解析它们模板时发现的错误，这些错误已转换为诊断。
+   *
    */
   templateDiagnostics: TemplateDiagnostic[];
 }
 
 /**
  * Data for an input file which is still in the process of template type-checking code generation.
+ *
+ * 仍处于模板类型检查代码生成过程的输入文件的数据。
+ *
  */
 export interface PendingFileTypeCheckingData {
   /**
    * Whether any inline code has been required by the shim yet.
+   *
+   * shim 是否需要任何内联代码。
+   *
    */
   hasInlines: boolean;
 
   /**
    * Source mapping information for mapping diagnostics from inlined type check blocks back to the
    * original template.
+   *
+   * 用于将诊断从内联类型检查块映射回原始模板的源映射信息。
+   *
    */
   sourceManager: TemplateSourceManager;
 
   /**
    * Map of in-progress shim data for shims generated from this input file.
+   *
+   * 从此输入文件生成的 shim 的正在进行的 shim 数据的映射。
+   *
    */
   shimData: Map<AbsoluteFsPath, PendingShimData>;
 }
@@ -99,22 +137,34 @@ export interface PendingFileTypeCheckingData {
 export interface PendingShimData {
   /**
    * Recorder for out-of-band diagnostics which are raised during generation.
+   *
+   * 在生成期间引发的带外诊断的记录器。
+   *
    */
   oobRecorder: OutOfBandDiagnosticRecorder;
 
   /**
    * The `DomSchemaChecker` in use for this template, which records any schema-related diagnostics.
+   *
+   * 用于此模板的 `DomSchemaChecker` ，它记录任何与模式相关的诊断。
+   *
    */
   domSchemaChecker: DomSchemaChecker;
 
   /**
    * Shim file in the process of being generated.
+   *
+   * 正在生成的 Shim 文件。
+   *
    */
   file: TypeCheckFile;
 
 
   /**
    * Map of `TemplateId` to information collected about the template as it's ingested.
+   *
+   * TemplateId 到在提取时收集的有关 `TemplateId` 的信息的映射。
+   *
    */
   templates: Map<TemplateId, TemplateData>;
 }
@@ -122,48 +172,78 @@ export interface PendingShimData {
 /**
  * Adapts the `TypeCheckContextImpl` to the larger template type-checking system.
  *
+ * 使 `TypeCheckContextImpl` 适应更大的模板类型检查系统。
+ *
  * Through this interface, a single `TypeCheckContextImpl` (which represents one "pass" of template
  * type-checking) requests information about the larger state of type-checking, as well as reports
  * back its results once finalized.
+ *
+ * 通过此接口，单个 `TypeCheckContextImpl`
+ * （代表模板类型检查的一次“通过”）请求有关较大类型检查状态的信息，并在完成后报告其结果。
+ *
  */
 export interface TypeCheckingHost {
   /**
    * Retrieve the `TemplateSourceManager` responsible for components in the given input file path.
+   *
+   * 检索负责给定输入文件路径中组件的 `TemplateSourceManager` 。
+   *
    */
   getSourceManager(sfPath: AbsoluteFsPath): TemplateSourceManager;
 
   /**
    * Whether a particular component class should be included in the current type-checking pass.
    *
+   * 特定组件类是否应包含在当前的类型检查过程中。
+   *
    * Not all components offered to the `TypeCheckContext` for checking may require processing. For
    * example, the component may have results already available from a prior pass or from a previous
    * program.
+   *
+   * 并非所有提供给 `TypeCheckContext`
+   * 进行检查的组件都可能需要处理。例如，该组件可能具有从以前的通过或从以前的程序已经可用的结果。
+   *
    */
   shouldCheckComponent(node: ts.ClassDeclaration): boolean;
 
   /**
    * Report data from a shim generated from the given input file path.
+   *
+   * 报告从给定输入文件路径生成的 shim 中的数据。
+   *
    */
   recordShimData(sfPath: AbsoluteFsPath, data: ShimTypeCheckingData): void;
 
   /**
    * Record that all of the components within the given input file path had code generated - that
    * is, coverage for the file can be considered complete.
+   *
+   * 记录给定输入文件路径中的所有组件都生成了代码 - 也就是说，文件的覆盖率可以被认为是完整的。
+   *
    */
   recordComplete(sfPath: AbsoluteFsPath): void;
 }
 
 /**
  * How a type-checking context should handle operations which would require inlining.
+ *
+ * 类型检查上下文应如何处理需要内联的操作。
+ *
  */
 export enum InliningMode {
   /**
    * Use inlining operations when required.
+   *
+   * 需要时使用内联操作。
+   *
    */
   InlineOps,
 
   /**
    * Produce diagnostics if an operation would require inlining.
+   *
+   * 如果操作需要内联，则生成诊断。
+   *
    */
   Error,
 }
@@ -171,8 +251,13 @@ export enum InliningMode {
 /**
  * A template type checking context for a program.
  *
+ * 程序的模板类型检查上下文。
+ *
  * The `TypeCheckContext` allows registration of components and their templates which need to be
  * type checked.
+ *
+ * `TypeCheckContext` 允许注册需要类型检查的组件及其模板。
+ *
  */
 export class TypeCheckContextImpl implements TypeCheckContext {
   private fileMap = new Map<AbsoluteFsPath, PendingFileTypeCheckingData>();
@@ -191,19 +276,31 @@ export class TypeCheckContextImpl implements TypeCheckContext {
   /**
    * A `Map` of `ts.SourceFile`s that the context has seen to the operations (additions of methods
    * or type-check blocks) that need to be eventually performed on that file.
+   *
+   * 上下文已经看到的 `ts.SourceFile` 到最终需要在该文件上执行的操作（添加方法或类型检查块）的 `Map`
+   * 。
+   *
    */
   private opMap = new Map<ts.SourceFile, Op[]>();
 
   /**
    * Tracks when an a particular class has a pending type constructor patching operation already
    * queued.
+   *
+   * 跟踪特定类何时具有已排队的挂起类型构造函数修补操作。
+   *
    */
   private typeCtorPending = new Set<ts.ClassDeclaration>();
 
   /**
    * Register a template to potentially be type-checked.
    *
+   * 注册要可能要进行类型检查的模板。
+   *
    * Implements `TypeCheckContext.addTemplate`.
+   *
+   * 实现 `TypeCheckContext.addTemplate` 。
+   *
    */
   addTemplate(
       ref: Reference<ClassDeclaration<ts.ClassDeclaration>>,
@@ -314,6 +411,9 @@ export class TypeCheckContextImpl implements TypeCheckContext {
 
   /**
    * Record a type constructor for the given `node` with the given `ctorMetadata`.
+   *
+   * 使用给定的 `ctorMetadata` 记录给定 `node` 的类型构造函数。
+   *
    */
   addInlineTypeCtor(
       fileData: PendingFileTypeCheckingData, sf: ts.SourceFile,
@@ -337,8 +437,14 @@ export class TypeCheckContextImpl implements TypeCheckContext {
   /**
    * Transform a `ts.SourceFile` into a version that includes type checking code.
    *
+   * 将 `ts.SourceFile` 转换为包含类型检查代码的版本。
+   *
    * If this particular `ts.SourceFile` requires changes, the text representing its new contents
    * will be returned. Otherwise, a `null` return indicates no changes were necessary.
+   *
+   * 如果此特定的 `ts.SourceFile` 需要更改，将返回表示其新内容的文本。否则， `null`
+   * 返回表明没有必要进行更改。
+   *
    */
   transform(sf: ts.SourceFile): string|null {
     // If there are no operations pending for this particular file, return `null` to indicate no
@@ -486,20 +592,32 @@ export class TypeCheckContextImpl implements TypeCheckContext {
 
 /**
  * A code generation operation that needs to happen within a given source file.
+ *
+ * 需要在给定源文件中发生的代码生成操作。
+ *
  */
 interface Op {
   /**
    * The node in the file which will have code generated for it.
+   *
+   * 文件中将为其生成代码的节点。
+   *
    */
   readonly ref: Reference<ClassDeclaration<ts.ClassDeclaration>>;
 
   /**
    * Index into the source text where the code generated by the operation should be inserted.
+   *
+   * 应在其中插入操作生成的代码的源文本的索引。
+   *
    */
   readonly splitPoint: number;
 
   /**
    * Execute the operation and return the generated code as text.
+   *
+   * 执行操作并以文本形式返回生成的代码。
+   *
    */
   execute(im: ImportManager, sf: ts.SourceFile, refEmitter: ReferenceEmitter, printer: ts.Printer):
       string;
@@ -507,6 +625,9 @@ interface Op {
 
 /**
  * A type check block operation which produces inline type check code for a particular component.
+ *
+ * 一种类型检查块操作，它为特定组件生成内联类型检查代码。
+ *
  */
 class InlineTcbOp implements Op {
   constructor(
@@ -517,6 +638,9 @@ class InlineTcbOp implements Op {
 
   /**
    * Type check blocks are inserted immediately after the end of the component class.
+   *
+   * 类型检查块会在组件类结束后立即插入。
+   *
    */
   get splitPoint(): number {
     return this.ref.node.end + 1;
@@ -538,6 +662,9 @@ class InlineTcbOp implements Op {
 
 /**
  * A type constructor operation which produces type constructor code for a particular directive.
+ *
+ * 一种类型构造函数操作，它为特定指令生成类型构造函数代码。
+ *
  */
 class TypeCtorOp implements Op {
   constructor(
@@ -546,6 +673,9 @@ class TypeCtorOp implements Op {
 
   /**
    * Type constructor operations are inserted immediately before the end of the directive class.
+   *
+   * 类型构造函数操作会紧跟在指令类的结尾之前插入。
+   *
    */
   get splitPoint(): number {
     return this.ref.node.end - 1;
@@ -560,6 +690,9 @@ class TypeCtorOp implements Op {
 
 /**
  * Compare two operations and return their split point ordering.
+ *
+ * 比较两个操作并返回它们的拆分点顺序。
+ *
  */
 function orderOps(op1: Op, op2: Op): number {
   return op1.splitPoint - op2.splitPoint;
@@ -567,6 +700,9 @@ function orderOps(op1: Op, op2: Op): number {
 
 /**
  * Split a string into chunks at any number of split points.
+ *
+ * 在任意数量的拆分点将字符串拆分为块。
+ *
  */
 function splitStringAtPoints(str: string, points: number[]): string[] {
   const splits: string[] = [];

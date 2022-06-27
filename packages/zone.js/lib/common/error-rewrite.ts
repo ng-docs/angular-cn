@@ -12,15 +12,24 @@
 
 /**
  * Extend the Error with additional fields for rewritten stack frames
+ *
+ * 使用额外的字段来扩展 Error 以用于重写的堆栈帧
+ *
  */
 interface Error {
   /**
    * Stack trace where extra frames have been removed and zone names added.
+   *
+   * 已删除额外帧并添加区域名称的堆栈跟踪。
+   *
    */
   zoneAwareStack?: string;
 
   /**
    * Original stack trace with no modifications
+   *
+   * 未经修改的原始堆栈跟踪
+   *
    */
   originalStack?: string;
 }
@@ -115,6 +124,9 @@ Zone.__load_patch('Error', (global: any, Zone: ZoneType, api: _ZonePrivate) => {
   /**
    * This is ZoneAwareError which processes the stack frame and cleans up extra frames as well as
    * adds zone information to it.
+   *
+   * 这是 ZoneAwareError ，它会处理堆栈帧并清理额外的帧以及向其添加区域信息。
+   *
    */
   function ZoneAwareError(this: unknown|typeof NativeError): Error {
     // We always have to return native error otherwise the browser console will not work.

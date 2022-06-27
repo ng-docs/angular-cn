@@ -15,8 +15,16 @@ import {DiagnosticHandlingStrategy, Diagnostics} from './diagnostics';
 /**
  * Is the given `expression` the global `$localize` identifier?
  *
+ * 给定的 `expression` 是全局 `$localize` 标识符吗？
+ *
  * @param expression The expression to check.
+ *
+ * 要检查的表达式。
+ *
  * @param localizeName The configured name of `$localize`.
+ *
+ * `$localize` 的配置名称。
+ *
  */
 export function isLocalize(
     expression: NodePath, localizeName: string): expression is NodePath<t.Identifier> {
@@ -26,8 +34,16 @@ export function isLocalize(
 /**
  * Is the given `expression` an identifier with the correct `name`?
  *
+ * 给定的 `expression` 是具有正确 `name` 的标识符吗？
+ *
  * @param expression The expression to check.
+ *
+ * 要检查的表达式。
+ *
  * @param name The name of the identifier we are looking for.
+ *
+ * 我们要查找的标识符的名称。
+ *
  */
 export function isNamedIdentifier(
     expression: NodePath, name: string): expression is NodePath<t.Identifier> {
@@ -37,7 +53,12 @@ export function isNamedIdentifier(
 /**
  * Is the given `identifier` declared globally.
  *
+ * 是全局声明的给定 `identifier` 。
+ *
  * @param identifier The identifier to check.
+ *
+ * 要检查的标识符。
+ *
  * @publicApi used by CLI
  */
 export function isGlobalIdentifier(identifier: NodePath<t.Identifier>) {
@@ -46,8 +67,17 @@ export function isGlobalIdentifier(identifier: NodePath<t.Identifier>) {
 
 /**
  * Build a translated expression to replace the call to `$localize`.
+ *
+ * 构建一个翻译后的表达式来替换对 `$localize` 的调用。
+ *
  * @param messageParts The static parts of the message.
+ *
+ * 消息的静态部分。
+ *
  * @param substitutions The expressions to substitute into the message.
+ *
+ * 要替换到消息中的表达式。
+ *
  * @publicApi used by CLI
  */
 export function buildLocalizeReplacement(
@@ -64,12 +94,23 @@ export function buildLocalizeReplacement(
 /**
  * Extract the message parts from the given `call` (to `$localize`).
  *
+ * 从给定的 `call` 中提取消息部分（到 `$localize` ）。
+ *
  * The message parts will either by the first argument to the `call` or it will be wrapped in call
  * to a helper function like `__makeTemplateObject`.
  *
+ * 消息部分将由 `call` 的第一个参数组成，或者它将被包装在对 `__makeTemplateObject`
+ * 等帮助器函数的调用中。
+ *
  * @param call The AST node of the call to process.
+ *
+ * 调用 process 的 AST 节点。
+ *
  * @param fs The file system to use when computing source-map paths. If not provided then it uses
  *     the "current" FileSystem.
+ *
+ * 计算源映射路径时要使用的文件系统。如果未提供，则使用“当前”文件系统。
+ *
  * @publicApi used by CLI
  */
 export function unwrapMessagePartsFromLocalizeCall(
@@ -160,9 +201,17 @@ export function unwrapMessagePartsFromLocalizeCall(
 /**
  * Parse the localize call expression to extract the arguments that hold the substition expressions.
  *
+ * 解析 localize 调用表达式以提取包含替换表达式的参数。
+ *
  * @param call The AST node of the call to process.
+ *
+ * 调用 process 的 AST 节点。
+ *
  * @param fs The file system to use when computing source-map paths. If not provided then it uses
  *     the "current" FileSystem.
+ *
+ * 计算源映射路径时要使用的文件系统。如果未提供，则使用“当前”文件系统。
+ *
  * @publicApi used by CLI
  */
 export function unwrapSubstitutionsFromLocalizeCall(
@@ -183,9 +232,17 @@ export function unwrapSubstitutionsFromLocalizeCall(
 /**
  * Parse the tagged template literal to extract the message parts.
  *
+ * 解析标记的模板文字以提取消息部分。
+ *
  * @param elements The elements of the template literal to process.
+ *
+ * 要处理的模板文字的元素。
+ *
  * @param fs The file system to use when computing source-map paths. If not provided then it uses
  *     the "current" FileSystem.
+ *
+ * 计算源映射路径时要使用的文件系统。如果未提供，则使用“当前”文件系统。
+ *
  * @publicApi used by CLI
  */
 export function unwrapMessagePartsFromTemplateLiteral(
@@ -207,9 +264,17 @@ export function unwrapMessagePartsFromTemplateLiteral(
 /**
  * Parse the tagged template literal to extract the interpolation expressions.
  *
+ * 解析标记的模板文字以提取插值表达式。
+ *
  * @param quasi The AST node of the template literal to process.
+ *
+ * 要处理的模板文字的 AST 节点。
+ *
  * @param fs The file system to use when computing source-map paths. If not provided then it uses
  *     the "current" FileSystem.
+ *
+ * 计算源映射路径时要使用的文件系统。如果未提供，则使用“当前”文件系统。
+ *
  * @publicApi used by CLI
  */
 export function unwrapExpressionsFromTemplateLiteral(
@@ -223,9 +288,16 @@ export function unwrapExpressionsFromTemplateLiteral(
 /**
  * Wrap the given `expression` in parentheses if it is a binary expression.
  *
+ * 如果给定表达式是二元表达式，则将给定 `expression` 放在括号中。
+ *
  * This ensures that this expression is evaluated correctly if it is embedded in another expression.
  *
+ * 这可确保如果此表达式嵌入在另一个表达式中，则可以正确估算它。
+ *
  * @param expression The expression to potentially wrap.
+ *
+ * 要可能包装的表达式。
+ *
  */
 export function wrapInParensIfNecessary(expression: t.Expression): t.Expression {
   if (t.isBinaryExpression(expression)) {
@@ -238,9 +310,17 @@ export function wrapInParensIfNecessary(expression: t.Expression): t.Expression 
 /**
  * Extract the string values from an `array` of string literals.
  *
+ * 从字符串文字 `array` 中提取字符串值。
+ *
  * @param array The array to unwrap.
+ *
+ * 要解包的数组。
+ *
  * @param fs The file system to use when computing source-map paths. If not provided then it uses
  *     the "current" FileSystem.
+ *
+ * 计算源映射路径时要使用的文件系统。如果未提供，则使用“当前”文件系统。
+ *
  */
 export function unwrapStringLiteralArray(
     array: NodePath<t.Expression>,
@@ -257,6 +337,8 @@ export function unwrapStringLiteralArray(
  * This expression is believed to be a call to a "lazy-load" template object helper function.
  * This is expected to be of the form:
  *
+ * 此表达式被认为是对“延迟加载”模板对象帮助器函数的调用。预期的形式为：
+ *
  * ```ts
  *  function _templateObject() {
  *    var e = _taggedTemplateLiteral(['cooked string', 'raw string']);
@@ -266,8 +348,18 @@ export function unwrapStringLiteralArray(
  *
  * We unwrap this to return the call to `_taggedTemplateLiteral()`.
  *
+ * 我们打开它以返回对 `_taggedTemplateLiteral()` 的调用。
+ *
  * @param call the call expression to unwrap
- * @returns the  call expression
+ *
+ * 要展开的调用表达式
+ *
+ * @returns
+ *
+ * the  call expression
+ *
+ * 调用表达式
+ *
  */
 export function unwrapLazyLoadHelperCall(call: NodePath<t.CallExpression>):
     NodePath<t.CallExpression> {
@@ -343,7 +435,12 @@ function getReturnedExpression(fn: NodePath<t.FunctionDeclaration>): NodePath<t.
 /**
  * Is the given `node` an array of literal strings?
  *
+ * 给定的 `node` 是文字字符串数组吗？
+ *
  * @param node The node to test.
+ *
+ * 要测试的节点。
+ *
  */
 export function isStringLiteralArray(node: t.Node): node is t.Expression&
     {elements: t.StringLiteral[]} {
@@ -352,13 +449,24 @@ export function isStringLiteralArray(node: t.Node): node is t.Expression&
 
 /**
  * Are all the given `nodes` expressions?
+ *
+ * 是所有给定的 `nodes` 表达式吗？
+ *
  * @param nodes The nodes to test.
+ *
+ * 要测试的节点。
+ *
  */
 export function isArrayOfExpressions(paths: NodePath<t.Node>[]): paths is NodePath<t.Expression>[] {
   return paths.every(element => element.isExpression());
 }
 
-/** Options that affect how the `makeEsXXXTranslatePlugin()` functions work. */
+/**
+ * Options that affect how the `makeEsXXXTranslatePlugin()` functions work.
+ *
+ * 影响 `makeEsXXXTranslatePlugin()` 函数工作方式的选项。
+ *
+ */
 export interface TranslatePluginOptions {
   missingTranslation?: DiagnosticHandlingStrategy;
   localizeName?: string;
@@ -367,7 +475,12 @@ export interface TranslatePluginOptions {
 /**
  * Translate the text of the given message, using the given translations.
  *
+ * 使用给定的翻译来翻译给定消息的文本。
+ *
  * Logs as warning if the translation is not available
+ *
+ * 如果翻译不可用，则记录为警告
+ *
  * @publicApi used by CLI
  */
 export function translate(

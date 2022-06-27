@@ -15,6 +15,9 @@ import {DependencyHostBase} from './dependency_host';
 
 /**
  * Helper functions for computing dependencies.
+ *
+ * 用于计算依赖项的帮助函数。
+ *
  */
 export class UmdDependencyHost extends DependencyHostBase {
   protected override canSkipFile(fileContents: string): boolean {

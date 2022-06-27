@@ -17,8 +17,16 @@ declare const $localize: {locale?: string};
 /**
  * Work out the locale from the potential global properties.
  *
+ * 从潜在的全局属性中找出语言环境。
+ *
  * * Closure Compiler: use `goog.LOCALE`.
+ *
+ *   闭包编译器：使用 `goog.LOCALE` 。
+ *
  * * Ivy enabled: use `$localize.locale`
+ *
+ *   启用 Ivy：使用 `$localize.locale`
+ *
  */
 export function getGlobalLocale(): string {
   if (typeof ngI18nClosureMode !== 'undefined' && ngI18nClosureMode &&
@@ -61,15 +69,18 @@ export function getGlobalLocale(): string {
  * ### 例子
  *
  * ```typescript
- * import { LOCALE_ID } from '@angular/core';
- * import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+ * import { LOCALE_ID } from '
+ * ```
+ *
+ * @angular /core';
+ * import { platformBrowserDynamic } from '
+ * @angular /platform-browser-dynamic';
  * import { AppModule } from './app/app.module';
  *
  * platformBrowserDynamic().bootstrapModule(AppModule, {
  *   providers: [{provide: LOCALE_ID, useValue: 'en-US' }]
  * });
  * ```
- *
  * @publicApi
  */
 export const LOCALE_ID: InjectionToken<string> = new InjectionToken('LocaleId', {
@@ -122,14 +133,16 @@ export const LOCALE_ID: InjectionToken<string> = new InjectionToken('LocaleId', 
  * ### 例子
  *
  * ```typescript
- * import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+ * import { platformBrowserDynamic } from '
+ * ```
+ *
+ * @angular /platform-browser-dynamic';
  * import { AppModule } from './app/app.module';
  *
  * platformBrowserDynamic().bootstrapModule(AppModule, {
  *   providers: [{provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }]
  * });
  * ```
- *
  * @publicApi
  */
 export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrencyCode', {
@@ -155,8 +168,12 @@ export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrency
  * ### 例子
  *
  * ```typescript
- * import { TRANSLATIONS } from '@angular/core';
- * import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+ * import { TRANSLATIONS } from '
+ * ```
+ *
+ * @angular /core';
+ * import { platformBrowserDynamic } from '
+ * @angular /platform-browser-dynamic';
  * import { AppModule } from './app/app.module';
  *
  * // content of your translation file
@@ -166,7 +183,6 @@ export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrency
  *   providers: [{provide: TRANSLATIONS, useValue: translations }]
  * });
  * ```
- *
  * @publicApi
  */
 export const TRANSLATIONS = new InjectionToken<string>('Translations');
@@ -188,15 +204,18 @@ export const TRANSLATIONS = new InjectionToken<string>('Translations');
  * ### 例子
  *
  * ```typescript
- * import { TRANSLATIONS_FORMAT } from '@angular/core';
- * import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+ * import { TRANSLATIONS_FORMAT } from '
+ * ```
+ *
+ * @angular /core';
+ * import { platformBrowserDynamic } from '
+ * @angular /platform-browser-dynamic';
  * import { AppModule } from './app/app.module';
  *
  * platformBrowserDynamic().bootstrapModule(AppModule, {
  *   providers: [{provide: TRANSLATIONS_FORMAT, useValue: 'xlf' }]
  * });
  * ```
- *
  * @publicApi
  */
 export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsFormat');
@@ -231,15 +250,18 @@ export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsForma
  * ### 例子
  *
  * ```typescript
- * import { MissingTranslationStrategy } from '@angular/core';
- * import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+ * import { MissingTranslationStrategy } from '
+ * ```
+ *
+ * @angular /core';
+ * import { platformBrowserDynamic } from '
+ * @angular /platform-browser-dynamic';
  * import { AppModule } from './app/app.module';
  *
  * platformBrowserDynamic().bootstrapModule(AppModule, {
  *   missingTranslation: MissingTranslationStrategy.Error
  * });
  * ```
- *
  * @publicApi
  */
 export enum MissingTranslationStrategy {

@@ -375,7 +375,7 @@ export abstract class AbstractControlDirective {
    *
    * For example, for the following `FormGroup`:
    *
-   * 例如，对于以下 `FormGroup`：
+   * 比如，对于以下 `FormGroup`：
    *
    * ```
    * form = new FormGroup({

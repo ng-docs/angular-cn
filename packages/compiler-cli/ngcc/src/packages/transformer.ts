@@ -45,22 +45,44 @@ export type TransformResult = {
  * A Package is stored in a directory on disk and that directory can contain one or more package
  * formats - e.g. fesm2015, UMD, etc. Additionally, each package provides typings (`.d.ts` files).
  *
+ * 包存储在磁盘上的目录中，该目录可以包含一种或多种包格式 - 例如 fesm2015、UMD
+ * 等。此外，每个包都提供了类型化（ `.d.ts` 文件）。
+ *
  * Each of these formats exposes one or more entry points, which are source files that need to be
  * parsed to identify the decorated exported classes that need to be analyzed and compiled by one or
  * more `DecoratorHandler` objects.
  *
+ * 这些格式中的每一种都会公开一个或多个入口点，这些入口点是需要解析以标识需要由一个或多个
+ * `DecoratorHandler` 对象分析和编译的装饰导出类的源文件。
+ *
  * Each entry point to a package is identified by a `package.json` which contains properties that
  * indicate what formatted bundles are accessible via this end-point.
+ *
+ * 包的每个入口点都由 `package.json`
+ * 标识，它包含一些属性，这些属性表明可以通过此端点访问哪些格式化的包。
  *
  * Each bundle is identified by a root `SourceFile` that can be parsed and analyzed to
  * identify classes that need to be transformed; and then finally rendered and written to disk.
  *
+ * 每个包都由一个根 `SourceFile` 标识，可以解析和分析以识别需要转换的类；然后最终渲染并写入磁盘。
+ *
  * Along with the source files, the corresponding source maps (either inline or external) and
  * `.d.ts` files are transformed accordingly.
  *
+ * 与源文件一起，相应的源映射（内联或外部）和 `.d.ts` 文件也会被相应地转换。
+ *
  * - Flat file packages have all the classes in a single file.
+ *
+ *   平面文件包在一个文件中包含所有类。
+ *
  * - Other packages may re-export classes from other non-entry point files.
+ *
+ *   其他包可能会从其他非入口点文件重新导出类。
+ *
  * - Some formats may contain multiple "modules" in a single file.
+ *
+ *   某些格式可能在单个文件中包含多个“模块”。
+ *
  */
 export class Transformer {
   constructor(
@@ -69,8 +91,19 @@ export class Transformer {
 
   /**
    * Transform the source (and typings) files of a bundle.
+   *
+   * 转换包的源（和类型）文件。
+   *
    * @param bundle the bundle to transform.
-   * @returns information about the files that were transformed.
+   *
+   * 要转换的包。
+   *
+   * @returns
+   *
+   * information about the files that were transformed.
+   *
+   * 有关已转换文件的信息。
+   *
    */
   transform(bundle: EntryPointBundle): TransformResult {
     const ngccReflectionHost = this.getHost(bundle);

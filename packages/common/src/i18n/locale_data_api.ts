@@ -18,10 +18,11 @@ import {CURRENCIES_EN, CurrenciesSymbols} from './currencies';
  *
  * @see `getLocaleNumberFormat()`.
  *
+ * `getLocaleNumberFormat()` 。
+ *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
- *
  * @publicApi
  */
 export enum NumberFormatStyle {
@@ -63,7 +64,8 @@ export enum Plural {
  *
  * @see [CLDR website](http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles)
  *
- * [CLDR 网站](http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles)
+ * [CLDR
+ * 网站](http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles)
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -103,14 +105,14 @@ export enum TranslationWidth {
   /**
    * Full length for `en-US`. For example: "Sunday"
    *
-   * 对 `en-US` 是全长。例如：“星期日”
+   * 对 `en-US` 是全长。比如：“星期日”
    *
    */
   Wide,
   /**
    * 2 characters for `en-US`, For example: "Su"
    *
-   * 对 `en-US` 是 2 个字符，例如：“Su”
+   * 对 `en-US` 是 2 个字符，比如：“Su”
    *
    */
   Short
@@ -134,10 +136,9 @@ export enum TranslationWidth {
  */
 export enum FormatWidth {
   /**
-   * For `en-US`, 'M/d/yy, h:mm a'`
-   * (Example: `6/15/15, 9:03 AM`)
+   * For `en-US`, 'M/d/yy, h:mm a'`(Example:`6/15/15, 9:03 AM\`)
    *
-   * 对于 `en-US`，是 'M/d/yy, h:mm a'`(例如:`6/15/15, 9:03 AM`)
+   * 对于 `en-US`，是 'M/d/yy, h:mm a'`(比如:`6/15/15, 9:03 AM\`)
    *
    */
   Short,
@@ -145,7 +146,7 @@ export enum FormatWidth {
    * For `en-US`, `'MMM d, y, h:mm:ss a'`
    * (Example: `Jun 15, 2015, 9:03:01 AM`)
    *
-   * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（例如： `Jun 15, 2015, 9:03:01 AM` ）
+   * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（比如： `Jun 15, 2015, 9:03:01 AM` ）
    *
    */
   Medium,
@@ -153,7 +154,7 @@ export enum FormatWidth {
    * For `en-US`, `'MMMM d, y, h:mm:ss a z'`
    * (Example: `June 15, 2015 at 9:03:01 AM GMT+1`)
    *
-   * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（例如： `June 15, 2015 at 9:03:01 AM GMT+1` ）
+   * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（比如： `June 15, 2015 at 9:03:01 AM GMT+1` ）
    *
    */
   Long,
@@ -161,7 +162,8 @@ export enum FormatWidth {
    * For `en-US`, `'EEEE, MMMM d, y, h:mm:ss a zzzz'`
    * (Example: `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00`)
    *
-   * 对于 `en-US`，是 `'EEEE, MMMM d, y, h:mm:ss a zzzz'`（例如：`Monday, June 15, 2015 at 9:03:01 AM GMT+01:00` ）
+   * 对于 `en-US`，是 `'EEEE, MMMM d, y, h:mm:ss a zzzz'`（比如：`Monday, June 15, 2015 at 9:03:01
+   * AM GMT+01:00` ）
    *
    */
   Full
@@ -171,7 +173,7 @@ export enum FormatWidth {
  * Symbols that can be used to replace placeholders in number patterns.
  * Examples are based on `en-US` values.
  *
- * 可用于替换数字模式中占位符的符号。例如基于 `en-US` 的值。
+ * 可用于替换数字模式中占位符的符号。比如基于 `en-US` 的值。
  *
  * @see `getLocaleNumberSymbol()`
  *
@@ -187,7 +189,7 @@ export enum NumberSymbol {
    * For `en-US`, the dot character.
    * Example: 2,345`.`67
    *
-   * 小数点分隔符。对于 `en-US`，是点字符。例如：2,345`.`67
+   * 小数点分隔符。对于 `en-US`，是点字符。比如：2,345`.`67
    *
    */
   Decimal,
@@ -196,7 +198,7 @@ export enum NumberSymbol {
    * For `en-US`, the comma character.
    * Example: 2`,`345.67
    *
-   * 分组分隔符，通常为千位。对于 `en-US`，是逗号字符。例如：2`,`345.67
+   * 分组分隔符，通常为千位。对于 `en-US`，是逗号字符。比如：2`,`345.67
    *
    */
   Group,
@@ -204,7 +206,7 @@ export enum NumberSymbol {
    * List-item separator.
    * Example: "one, two, and three"
    *
-   * 列表项分隔符。例如："one, two, and three"
+   * 列表项分隔符。比如："one, two, and three"
    *
    */
   List,
@@ -212,7 +214,7 @@ export enum NumberSymbol {
    * Sign for percentage (out of 100).
    * Example: 23.4%
    *
-   * 百分号（最大为 100）。例如：23.4％
+   * 百分号（最大为 100）。比如：23.4％
    *
    */
   PercentSign,
@@ -220,7 +222,7 @@ export enum NumberSymbol {
    * Sign for positive numbers.
    * Example: +23
    *
-   * 正数的符号。例如：+23
+   * 正数的符号。比如：+23
    *
    */
   PlusSign,
@@ -228,7 +230,7 @@ export enum NumberSymbol {
    * Sign for negative numbers.
    * Example: -23
    *
-   * 负数的符号。例如：-23
+   * 负数的符号。比如：-23
    *
    */
   MinusSign,
@@ -236,7 +238,7 @@ export enum NumberSymbol {
    * Computer notation for exponential value (n times a power of 10).
    * Example: 1.2E3
    *
-   * 指数值的计算机表示法（10 的 n 次幂）。例如：1.2E3
+   * 指数值的计算机表示法（10 的 n 次幂）。比如：1.2E3
    *
    */
   Exponential,
@@ -244,7 +246,7 @@ export enum NumberSymbol {
    * Human-readable format of exponential.
    * Example: 1.2x103
    *
-   * 可读的指数格式。例如：1.2x103
+   * 可读的指数格式。比如：1.2x103
    *
    */
   SuperscriptingExponent,
@@ -252,7 +254,7 @@ export enum NumberSymbol {
    * Sign for permille (out of 1000).
    * Example: 23.4‰
    *
-   * 千分号（最大为 1000）。例如：23.4‰
+   * 千分号（最大为 1000）。比如：23.4‰
    *
    */
   PerMille,
@@ -260,7 +262,7 @@ export enum NumberSymbol {
    * Infinity, can be used with plus and minus.
    * Example: ∞, +∞, -∞
    *
-   * 无穷大，可与正负一起使用。例如：∞，+∞，-∞
+   * 无穷大，可与正负一起使用。比如：∞，+∞，-∞
    *
    */
   Infinity,
@@ -268,7 +270,7 @@ export enum NumberSymbol {
    * Not a number.
    * Example: NaN
    *
-   * 非数字。例如：NaN
+   * 非数字。比如：NaN
    *
    */
   NaN,
@@ -276,7 +278,7 @@ export enum NumberSymbol {
    * Symbol used between time units.
    * Example: 10:52
    *
-   * 时间单位之间使用的符号。例如：10:52
+   * 时间单位之间使用的符号。比如：10:52
    *
    */
   TimeSeparator,
@@ -284,7 +286,7 @@ export enum NumberSymbol {
    * Decimal separator for currency values (fallback to `Decimal`).
    * Example: $2,345.67
    *
-   * 货币值的小数分隔符（回退为 `Decimal` ）。例如：$2,345.67
+   * 货币值的小数分隔符（回退为 `Decimal` ）。比如：$2,345.67
    *
    */
   CurrencyDecimal,
@@ -292,7 +294,7 @@ export enum NumberSymbol {
    * Group separator for currency values (fallback to `Group`).
    * Example: $2,345.67
    *
-   * 货币值的组分隔符（回退为 `Group` ）。例如：$2,345.67
+   * 货币值的组分隔符（回退为 `Group` ）。比如：$2,345.67
    *
    */
   CurrencyGroup
@@ -319,15 +321,16 @@ export enum WeekDay {
  * Retrieves the locale ID from the currently loaded locale.
  * The loaded locale could be, for example, a global one rather than a regional one.
  *
- * 从当前已加载的语言环境中检索语言环境 ID。加载的语言环境也可能是全球语言环境，而不是区域性语言环境。
+ * 从当前已加载的语言环境中检索语言环境
+ * ID。加载的语言环境也可能是全球语言环境，而不是区域性语言环境。
  *
  * @param locale A locale code, such as `fr-FR`.
  *
- * 语言环境代码，例如 `fr-FR` 。
+ * 语言环境代码，比如 `fr-FR` 。
  *
  * @returns The locale code. For example, `fr`.
  *
- * 语言环境代码。例如， `fr` 。
+ * 语言环境代码。比如， `fr` 。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -358,7 +361,7 @@ export function getLocaleId(locale: string): string {
  *
  * @returns An array of localized period strings. For example, `[AM, PM]` for `en-US`.
  *
- * 本地化的区间字符串数组。例如，`en-US` `[AM, PM]` 。
+ * 本地化的区间字符串数组。比如，`en-US` `[AM, PM]` 。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -396,7 +399,7 @@ export function getLocaleDayPeriods(
  * @returns An array of localized name strings.
  * For example,`[Sunday, Monday, ... Saturday]` for `en-US`.
  *
- * 本地化名称字符串的数组。例如，`en-US` `[Sunday, Monday, ... Saturday]` 。
+ * 本地化名称字符串的数组。比如，`en-US` `[Sunday, Monday, ... Saturday]` 。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -433,7 +436,7 @@ export function getLocaleDayNames(
  * @returns An array of localized name strings.
  * For example,  `[January, February, ...]` for `en-US`.
  *
- * 本地化名称字符串的数组，例如，对于 `en-US` 是 `[January, February, ...]`。
+ * 本地化名称字符串的数组，比如，对于 `en-US` 是 `[January, February, ...]`。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -467,7 +470,7 @@ export function getLocaleMonthNames(
  * @returns An array of localized era strings.
  * For example, `[AD, BC]` for `en-US`.
  *
- * 本地化年代字符串的数组。例如，对于 `en-US`，是 `[AD, BC]`。
+ * 本地化年代字符串的数组。比如，对于 `en-US`，是 `[AD, BC]`。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -495,7 +498,8 @@ export function getLocaleEraNames(
  * (Sunday = 0, Monday = 1, ...).
  * For example, for `fr-FR`, returns 1 to indicate that the first day is Monday.
  *
- * 工作日索引号，使用基于 0 的 `en-US` 的工作日索引（星期日= 0，星期一= 1，...）。例如，对于 `fr-FR` ，返回 1 表示第一天是星期一。
+ * 工作日索引号，使用基于 0 的 `en-US` 的工作日索引（星期日= 0，星期一= 1，...）。比如，对于 `fr-FR`
+ * ，返回 1 表示第一天是星期一。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
@@ -671,7 +675,8 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * when used to format the number 12345.678 could result in "12'345,678". That would happen if the
  * grouping separator for your language is an apostrophe, and the decimal separator is a comma.
  *
- * 数字会以类似 `#,###.00` 的模式进行格式化。例如，模式 `#,###.00` 用于格式化数字 12345.678 时可能的结果是 “12'345,678”。如果你的语言的分组分隔符是撇号，而十进制分隔符是逗号，就会是这样的。
+ * 数字会以类似 `#,###.00` 的模式进行格式化。比如，模式 `#,###.00` 用于格式化数字 12345.678
+ * 时可能的结果是 “12'345,678”。如果你的语言的分组分隔符是撇号，而十进制分隔符是逗号，就会是这样的。
  *
  * <b>Important:</b> The characters `.` `,` `0` `#` (and others below) are special placeholders
  * that stand for the decimal separator, and so on, and are NOT real characters.
@@ -679,14 +684,18 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * your language the decimal point is written with a comma. The symbols should be replaced by the
  * local equivalents, using the appropriate `NumberSymbol` for your language.
  *
- * *重要：*`.` `,` `0` `#`（以及以下的）字符是特殊的占位符，它们代表数字分隔符等，而不是真实的字符。你绝不能“翻译”这些占位符。例如，不要把 `.` 修改成 `,`，虽然在你的语言中小数点分隔符是写成逗号的。该符号会被其本地化等价物替换，也就是适合你的语言的 `NumberSymbol`。
+ * *重要：*`.` `,` `0`
+ * `#`（以及以下的）字符是特殊的占位符，它们代表数字分隔符等，而不是真实的字符。你绝不能“翻译”这些占位符。例如，不要把
+ * `.` 修改成
+ * `,`，虽然在你的语言中小数点分隔符是写成逗号的。该符号会被其本地化等价物替换，也就是适合你的语言的
+ * `NumberSymbol`。
  *
  * Here are the special characters used in number patterns:
  *
  * 以下是数字模式中使用的特殊字符：
  *
  * | Symbol | Meaning |
- * |--------|---------|
+ * | ------ | ------- |
  * | 符号 | 含义 |
  * | . | Replaced automatically by the character used for the decimal point. |
  * | . | 自动替换为用作小数点的字符。 |
@@ -697,7 +706,7 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * | # | Replaced by a digit (or nothing if there aren't enough). |
  * | # | 用数字代替（如果数字不足，则不进行任何替换）。 |
  * | ¤ | Replaced by a currency symbol, such as $ or USD. |
- * | ¤ | 替换为货币符号，例如 $ 或 USD。 |
+ * | ¤ | 替换为货币符号，比如 $ 或 USD。 |
  * | % | Marks a percent format. The % symbol may change position, but must be retained. |
  * | % | 标记百分比格式。％符号可能会更改位置，但必须保留。 |
  * | E | Marks a scientific format. The E symbol may change position, but must be retained. |
@@ -708,24 +717,19 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param type The type of numeric value to be formatted (such as `Decimal` or `Currency`.)
  *
- * 要格式化的数值类型（例如 `Decimal` 或 `Currency`）。
- *
+ * 要格式化的数值类型（比如 `Decimal` 或 `Currency`）。
  * @returns The localized format string.
  *
  * 本地化的格式字符串。
- *
  * @see `NumberFormatStyle`
  * @see [CLDR website](http://cldr.unicode.org/translation/number-patterns)
  *
  * [CLDR 官网](http://cldr.unicode.org/translation/number-patterns)
- *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化(i18n)指南](guide/i18n-overview)
- *
  * @publicApi
  */
 export function getLocaleNumberFormat(locale: string, type: NumberFormatStyle): string {
@@ -857,7 +861,8 @@ function checkFullData(data: any) {
  * first rule is applied to the first day period and so on.
  * Fall back to AM/PM when no rules are available.
  *
- * 每个预定义的一天时段都有一个规则。第一条规则适用于第一个一天时段，依此类推。如果没有可用的规则，请回退为 AM / PM。
+ * 每个预定义的一天时段都有一个规则。第一条规则适用于第一个一天时段，依此类推。如果没有可用的规则，请回退为
+ * AM / PM。
  *
  * A rule can specify a period as time range, or as a single time value.
  *
@@ -866,7 +871,8 @@ function checkFullData(data: any) {
  * This functionality is only available when you have loaded the full locale data.
  * See the ["I18n guide"](guide/i18n-common-format-data-locale).
  *
- * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n 指南”](guide/i18n-common-format-data-locale) 。
+ * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n
+ * 指南”](guide/i18n-common-format-data-locale) 。
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -902,12 +908,14 @@ export function getLocaleExtraDayPeriodRules(locale: string): (Time|[Time, Time]
  * in different languages.
  * For example, for `en-US`, periods are morning, noon, afternoon, evening, and midnight.
  *
- * 检索特定于语言环境的一天时段，该时段大致指示如何用不同的语言分解一天。例如，对于 `en-US`，这些时段为 morning、noon、afternoon、evening 和 midnight。
+ * 检索特定于语言环境的一天时段，该时段大致指示如何用不同的语言分解一天。比如，对于
+ * `en-US`，这些时段为 morning、noon、afternoon、evening 和 midnight。
  *
  * This functionality is only available when you have loaded the full locale data.
  * See the ["I18n guide"](guide/i18n-common-format-data-locale).
  *
- * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n 指南”](guide/i18n-common-format-data-locale) 。
+ * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n
+ * 指南”](guide/i18n-common-format-data-locale) 。
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -977,7 +985,8 @@ export function getLocaleDirection(locale: string): 'ltr'|'rtl' {
  * To avoid repeating the same data (as when the "format" and "standalone" forms are the same)
  * add the first value to the locale data arrays, and add other values only if they are different.
  *
- * 为避免重复相同的数据（比如当 "format" 和 "standalone" 的格式相同时），将第一个值添加到语言环境数据数组，并仅在它们不同时添加其他值。
+ * 为避免重复相同的数据（比如当 "format" 和 "standalone"
+ * 的格式相同时），将第一个值添加到语言环境数据数组，并仅在它们不同时添加其他值。
  *
  * @param data The data array to retrieve from.
  *
@@ -1020,6 +1029,9 @@ export type Time = {
 
 /**
  * Extracts the hours and minutes from a string like "15:45"
+ *
+ * 从“15:45”等字符串中提取小时和分钟
+ *
  */
 function extractTime(time: string): Time {
   const [h, m] = time.split(':');
@@ -1036,7 +1048,7 @@ function extractTime(time: string): Time {
  * For example, for the default `en-US` locale, the code `USD` can
  * be represented by the narrow symbol `$` or the wide symbol `US$`.
  *
- * 例如，对于默认 `en-US` 语言环境，代码 `USD` 可以由窄符号 `$` 或宽符号 `US$` 表示。
+ * 比如，对于默认 `en-US` 语言环境，代码 `USD` 可以由窄符号 `$` 或宽符号 `US$` 表示。
  *
  * @param code The currency code.
  *

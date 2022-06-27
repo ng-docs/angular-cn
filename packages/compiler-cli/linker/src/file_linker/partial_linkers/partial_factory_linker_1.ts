@@ -15,6 +15,9 @@ import {getDependency, parseEnum, wrapReference} from './util';
 
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareFactory()` call expressions.
+ *
+ * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareFactory()` 调用表达式。
+ *
  */
 export class PartialFactoryLinkerVersion1<TExpression> implements PartialLinker<TExpression> {
   linkPartialDeclaration(
@@ -27,6 +30,9 @@ export class PartialFactoryLinkerVersion1<TExpression> implements PartialLinker<
 
 /**
  * Derives the `R3FactoryMetadata` structure from the AST object.
+ *
+ * 从 AST 对象 `R3FactoryMetadata` 结构。
+ *
  */
 export function toR3FactoryMeta<TExpression>(
     metaObj: AstObject<R3DeclareFactoryMetadata, TExpression>): R3FactoryMetadata {

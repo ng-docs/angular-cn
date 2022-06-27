@@ -8,6 +8,8 @@ A singleton service is a service for which only one instance exists in an applic
 
 For a sample application using the app-wide singleton service that this page describes, see the <live-example name="ngmodules"></live-example> showcasing all the documented features of NgModules.
 
+本页中描述的这种全应用级单例服务的例子位于<live-example name="ngmodules"></live-example>，它示范了 NgModule 的所有已文档化的特性。
+
 ## Providing a singleton service
 
 ## 提供单例服务
@@ -18,7 +20,7 @@ There are two ways to make a service a singleton in Angular:
 
 * Set the `providedIn` property of the `@Injectable()` to `"root"`
 
-  把 `@Injectable()` 中的 `providedIn` 属性设置为 `"root"`。
+  把 `@Injectable()` 中的 `providedIn` 属性设置为 `"root"`
 
 * Include the service in the `AppModule` or in a module that is only imported by the `AppModule`
 
@@ -102,6 +104,9 @@ There are multiple ways to prevent this:
 There are two example applications where you can see this scenario; the more advanced <live-example noDownload name="ngmodules">NgModules live example</live-example>, which contains `forRoot()` and `forChild()` in the routing modules and the `GreetingModule`, and the simpler <live-example name="lazy-loading-ngmodules" noDownload>Lazy Loading live example</live-example>.
 For an introductory explanation see the [Lazy Loading Feature Modules](guide/lazy-loading-ngmodules) guide.
 
+**注意**：<br />
+有两个范例应用可以让你查看这种情况，更高级的方式参阅 <live-example noDownload name="ngmodules">NgModules 现场演练</live-example>，它在路由模块中包含 `forRoot()` 和 `forChild()`，而 `GreetingModule` 是一个比较简单的<live-example name="lazy-loading-ngmodules" noDownload>惰性加载范例</live-example>。在[惰性加载模块](guide/lazy-loading-ngmodules)中有简要的解释。
+
 </div>
 
 Use `forRoot()` to separate providers from a module so you can import that module into the root module with `providers` and child modules without `providers`.
@@ -141,6 +146,10 @@ By using the `forRoot()` method, the root application module imports `RouterModu
 If you have a module which has both providers and declarations, you *can* use this technique to separate them out and you may see this pattern in legacy applications.
 However, since Angular 6.0, the best practice for providing services is with the `@Injectable()` `providedIn` property.
 
+**注意**：<br />
+如果你的某个模块也同时有 providers 和 declarations，你也*可以*使用这种技巧来把它们分开。你可能会在某些传统应用中看到这种模式。
+不过，从 Angular 6.0 开始，提供服务的最佳实践是使用 `@Injectable()` 的 `providedIn` 属性。
+
 </div>
 
 ### How `forRoot()` works
@@ -155,11 +164,15 @@ However, since Angular 6.0, the best practice for providing services is with the
 | :--------- | :------ |
 | 属性 | 详情 |
 | `ngModule` | In this example, the `GreetingModule` class |
+| `ngModule` | 在这个例子中，就是 `GreetingModule` 类。 |
 | `providers` | The configured providers |
+| `providers` | 配置好的服务提供者 |
 
 In the <live-example name="ngmodules">live example</live-example> the root `AppModule` imports the `GreetingModule` and adds the `providers` to the `AppModule` providers.
 Specifically, Angular accumulates all imported providers before appending the items listed in `@NgModule.providers`.
 This sequence ensures that whatever you add explicitly to the `AppModule` providers takes precedence over the providers of imported modules.
+
+在这个 <live-example name="ngmodules">现场演练</live-example>中，根模块 `AppModule` 导入了 `GreetingModule`，并把它的 `providers` 添加到了 `AppModule` 的服务提供者列表中。特别是，Angular 会把所有从其它模块导入的提供者追加到本模块的 `@NgModule.providers` 中列出的提供者之前。这种顺序可以确保你在 `AppModule` 的 `providers` 中显式列出的提供者，其优先级高于导入模块中给出的提供者。
 
 The sample application imports `GreetingModule` and uses its `forRoot()` method one time, in `AppModule`.
 Registering it once like this prevents multiple instances.
@@ -186,6 +199,8 @@ Here's `forRoot()` that takes a `UserServiceConfig` object:
 Lastly, call it within the `imports` list of the `AppModule`.
 In the following snippet, other parts of the file are left out.
 For the complete file, see the <live-example name="ngmodules"></live-example>, or continue to the next section of this document.
+
+最后，在 `AppModule` 的 `imports`*列表*中调用它。在下面的代码片段中，省略了文件的另一部分。要查看完整文件，参阅 <live-example name="ngmodules"></live-example> 或继续阅读本文档的后续章节。
 
 <code-example header="src/app/app.module.ts (imports)" path="ngmodules/src/app/app.module.ts" region="import-for-root"></code-example>
 
@@ -253,15 +268,15 @@ You may also be interested in:
 
 * [Sharing Modules](guide/sharing-ngmodules), which elaborates on the concepts covered on this page
 
-  [共享模块](guide/sharing-ngmodules)解释了本页中涉及的这些概念。
+  [共享模块](guide/sharing-ngmodules)解释了本页中涉及的这些概念
 
 * [Lazy Loading Modules](guide/lazy-loading-ngmodules)
 
-  [惰性加载模块](guide/lazy-loading-ngmodules)。
+  [惰性加载模块](guide/lazy-loading-ngmodules)
 
 * [NgModule FAQ](guide/ngmodule-faq)
 
-  [NgModule 常见问题](guide/ngmodule-faq)。
+  [NgModule 常见问题](guide/ngmodule-faq)
 
 <!-- links -->
 

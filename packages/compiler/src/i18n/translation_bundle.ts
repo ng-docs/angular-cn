@@ -19,6 +19,9 @@ import {escapeXml} from './serializers/xml_helper';
 
 /**
  * A container for translated messages
+ *
+ * 已翻译消息的容器
+ *
  */
 export class TranslationBundle {
   private _i18nToHtml: I18nToHtmlVisitor;
@@ -152,9 +155,21 @@ class I18nToHtmlVisitor implements i18n.Visitor {
 
   /**
    * Convert a source message to a translated text string:
+   *
+   * 将源消息转换为翻译后的文本字符串：
+   *
    * - text nodes are replaced with their translation,
+   *
+   *   文本节点被替换为它们的翻译，
+   *
    * - placeholders are replaced with their content,
+   *
+   *   占位符被替换为它们的内容，
+   *
    * - ICU nodes are converted to ICU expressions.
+   *
+   *   ICU 节点将转换为 ICU 表达式。
+   *
    */
   private _convertToText(srcMsg: i18n.Message): string {
     const id = this._digest(srcMsg);

@@ -15,6 +15,9 @@ import {BaseTaskQueue} from './base_task_queue';
 /**
  * A `TaskQueue` implementation that assumes tasks are processed serially and each one is completed
  * before requesting the next one.
+ *
+ * 一种 `TaskQueue` 实现，它假定任务是按顺序处理的，并且每个任务都在请求下一个之前完成。
+ *
  */
 export class SerialTaskQueue extends BaseTaskQueue {
   override computeNextTask(): Task|null {

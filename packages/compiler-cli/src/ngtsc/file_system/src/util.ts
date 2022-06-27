@@ -6,12 +6,16 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import ts from 'typescript';
+
 import {AbsoluteFsPath, PathString} from './types';
 
 const TS_DTS_JS_EXTENSION = /(?:\.d)?\.ts$|\.js$/;
 
 /**
  * Convert Windows-style separators to POSIX separators.
+ *
+ * 将 Windows 风格的分隔符转换为 POSIX 分隔符。
+ *
  */
 export function normalizeSeparators(path: string): string {
   // TODO: normalize path only for OS that need it.
@@ -20,6 +24,9 @@ export function normalizeSeparators(path: string): string {
 
 /**
  * Remove a .ts, .d.ts, or .js extension from a file name.
+ *
+ * 从文件名中删除 .ts、.d.ts 或 .js 扩展名。
+ *
  */
 export function stripExtension<T extends PathString>(path: T): T {
   return path.replace(TS_DTS_JS_EXTENSION, '') as T;

@@ -59,6 +59,8 @@ CLI 会自动添加 `Component` 后缀，所以如果在编写 `first-component`
 
 &lt;header<code>&lt;base href></code></header>
 
+&lt;标头<code>&lt;base href></code></header>
+
 This guide works with a CLI-generated Angular application.
 If you are working manually, make sure that you have `<base href="/">` in the `<head>` of your index.html file.
 This assumes that the `app` folder is the application root, and uses `"/"`.
@@ -166,7 +168,7 @@ Each item in the list has a unique `id`.
 To edit an item, users click an Edit button, which opens an `EditGroceryItem` component.
 You want that component to retrieve the `id` for the grocery item so it can display the right information to the user.
 
-通常，当用户导航你的应用时，你会希望把信息从一个组件传递到另一个组件。例如，考虑一个显示杂货商品购物清单的应用。列表中的每一项都有一个唯一的 `id`。要想编辑某个项目，用户需要单击“编辑”按钮，打开一个 `EditGroceryItem` 组件。你希望该组件得到该商品的 `id`，以便它能向用户显示正确的信息。
+通常，当用户导航你的应用时，你会希望把信息从一个组件传递到另一个组件。比如，考虑一个显示杂货商品购物清单的应用。列表中的每一项都有一个唯一的 `id`。要想编辑某个项目，用户需要单击“编辑”按钮，打开一个 `EditGroceryItem` 组件。你希望该组件得到该商品的 `id`，以便它能向用户显示正确的信息。
 
 Use a route to pass this type of information to your application components.
 To do so, you use the [ActivatedRoute](api/router/ActivatedRoute) interface.
@@ -218,6 +220,9 @@ To get information from a route:
 
    **NOTE**: <br />
    The preceding example uses a variable, `name`, and assigns it the value based on the `name` parameter.
+
+   **注意**：<br />
+   前面的例子使用了一个变量 `name`，并根据 `name` 参数给它赋值。
 
    </div>
 
@@ -318,8 +323,12 @@ The one difference is that you place child routes in a `children` array within t
 
 ## Setting the page title
 
+## 设置页面标题
+
 Each page in your application should have a unique title so that they can be identified in the browser history.
 The `Router` sets the document's title using the `title` property from the `Route` config.
+
+应用程序中的每个页面都应该有一个唯一的标题，以便可以在浏览器历史记录中识别它们。 `Router` 使用 `Route` 配置中的 `title` 属性设置文档的标题。
 
 <code-example header="AppRoutingModule (excerpt)" path="router/src/app/app-routing.module.10.ts" region="page-title"></code-example>
 
@@ -327,9 +336,13 @@ The `Router` sets the document's title using the `title` property from the `Rout
 
 **NOTE**: <br /> The `title` property follows the same rules as static route `data` and dynamic values that implement `Resolve`.
 
+**注**：<br />`title` 属性遵循与实现 `Resolve` 的静态路由 `data` 和动态值相同的规则。
+
 </div>
 
 You can also provide a custom title strategy by extending the `TitleStrategy`.
+
+你还可以通过扩展 `TitleStrategy` 来提供自定义标题策略。
 
 <code-example header="AppRoutingModule (excerpt)" path="router/src/app/app-routing.module.10.ts" region="custom-page-title"></code-example>
 
@@ -369,6 +382,8 @@ After the link parameters array, which here contains `items`, add an object with
 <code-example header="RelativeTo" path="router/src/app/app.component.4.ts" region="relative-to">
 
 The `navigate()` arguments configure the router to use the current route as a basis upon which to append `items`.
+
+`navigate()` 的参数使用当前路由作为基准来配置路由器，然后在这个基准路由后追加 `items`。
 
 </code-example>
 
@@ -598,6 +613,8 @@ The following minimal `RouterLink` example builds upon a specified [default chil
 
 Review the following:
 
+查看以下内容：
+
 * The first item in the array identifies the parent route (`/crisis-center`)
 
   数组中的第一个条目标记出了父路由(`/crisis-center`)。
@@ -666,8 +683,12 @@ When the router navigates to a new component view, it updates the browser's loca
 
 当路由器导航到一个新的组件视图时，它会用该视图的 URL 来更新浏览器的当前地址以及历史。
 
-Modern HTML5 browsers support [history.pushState]\(<https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries> title="HTML5 browser history push-state"), a technique that changes a browser's location and history without triggering a server page request.
+Modern HTML5 browsers support [history.pushState](https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries "HTML5 browser history push-state"), a technique that changes a browser's location and history without triggering a server page request.
 The router can compose a "natural" URL that is indistinguishable from one that would otherwise require a page load.
+
+现代 HTML 5 浏览器支持[history.pushState](https://developer.mozilla.org/en-US/docs/Web/API/Working_with_the_History_API#adding_and_modifying_history_entries "HTML5 browser history push-state") API，
+这是一项可以改变浏览器的当前地址和历史，却又不会触发服务端页面请求的技术。
+路由器可以合成出一个“自然的”URL，它看起来和那些需要进行页面加载的 URL 没什么区别。
 
 Here's the Crisis Center URL in this "HTML5 pushState" style:
 
@@ -683,7 +704,7 @@ Older browsers send page requests to the server when the location URL changes un
 Routers can take advantage of this exception by composing in-application route URLs with hashes.
 Here's a "hash URL" that routes to the Crisis Center.
 
-老旧的浏览器在当前地址的 URL 变化时总会往服务器发送页面请求……唯一的例外规则是：当这些变化位于“#”（被称为“hash”）后面时不会发送。通过把应用内的路由 URL 拼接在 `#` 之后，路由器可以获得这条“例外规则”带来的优点。下面是到*危机中心*路由的“hash URL”：。
+老旧的浏览器在当前地址的 URL 变化时总会往服务器发送页面请求……唯一的例外规则是：当这些变化位于“#”（被称为“hash”）后面时不会发送。通过把应用内的路由 URL 拼接在 `#` 之后，路由器可以获得这条“例外规则”带来的优点。下面是到*危机中心*路由的“hash URL”。
 
 <code-example format="none" language="http">
 
@@ -699,7 +720,9 @@ The router supports both styles with two `LocationStrategy` providers:
 | :-------- | :------ |
 | 提供者 | 详情 |
 | `PathLocationStrategy` | The default "HTML5 pushState" style. |
+| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。 |
 | `HashLocationStrategy` | The "hash URL" style. |
+| `HashLocationStrategy` | “hash URL”风格。 |
 
 The `RouterModule.forRoot()` function sets the `LocationStrategy` to the `PathLocationStrategy`, which makes it the default strategy.
 You also have the option of switching to the `HashLocationStrategy` with an override during the bootstrapping process.
@@ -734,11 +757,15 @@ An application that would otherwise take ten or more seconds to start could be r
 
 This option is only available if application URLs look like normal web URLs without hash (`#`) characters in the middle.
 
+只有当应用的 URL 看起来像是标准的 Web URL，中间没有 hash（`#`）时，这个选项才能生效。
+
 ## `<base href>`
 
 The router uses the browser's [history.pushState](https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries "HTML5 browser history push-state") for navigation.
 `pushState` lets you customize in-application URL paths; for example, `localhost:4200/crisis-center`.
 The in-application URLs can be indistinguishable from server URLs.
+
+路由器使用浏览器的 [history.pushState](https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries "HTML5 browser history push-state") API 进行导航。借助 `pushState` 你自定义应用中的 URL 路径 `localhost:4200/crisis-center`，应用内的 URL 和服务器的 URL 没有区别。
 
 Modern HTML5 browsers were the first to support `pushState` which is why many people refer to these URLs as "HTML5 style" URLs.
 
@@ -749,10 +776,16 @@ Modern HTML5 browsers were the first to support `pushState` which is why many pe
 HTML5 style navigation is the router default.
 In the [LocationStrategy and browser URL styles](#browser-url-styles) section, learn why HTML5 style is preferable, how to adjust its behavior, and how to switch to the older hash (`#`) style, if necessary.
 
+路由器默认使用 HTML5 风格的导航。
+在 [LocationStrategy 与浏览器 URL 风格](#browser-url-styles)部分，你可以了解为何推荐使用 HTML5 风格的 URL，如何调整其行为，以及必要时如何切换到老式的 hash（`#`）风格。
+
 </div>
 
 You must add a [`<base href>` element](https://developer.mozilla.org/docs/Web/HTML/Element/base "base href") to the application's `index.html` for `pushState` routing to work.
 The browser uses the `<base href>` value to prefix relative URLs when referencing CSS files, scripts, and images.
+
+你必须在应用的 `index.html` 中**添加一个 [`<base href>` 元素](https://developer.mozilla.org/docs/Web/HTML/Element/base "base href")**才能让 `pushState` 路由正常工作。
+浏览器要用 `<base href>` 的值为引用 CSS、脚本和图片文件时使用的*相对* URL 添加前缀。
 
 Add the `<base>` element just after the `<head>` tag.
 If the `app` folder is the application root, as it is for this application, set the `href` value in `index.html` as shown here.
@@ -781,7 +814,11 @@ scheme    authority      path        query   fragment
 
 While the router uses the [HTML5 pushState](https://developer.mozilla.org/docs/Web/API/History_API#Adding_and_modifying_history_entries "Browser history push-state") style by default, you must configure that strategy with a `<base href>`.
 
+由于路由器默认使用 [HTML5 pushState](https://developer.mozilla.org/docs/Web/API/History_API#Adding_and_modifying_history_entries "Browser history push-state")  风格，所以你*必须*用一个 `<base href>` 来配置该策略（Strategy）。
+
 The preferred way to configure the strategy is to add a [`<base href>` element](https://developer.mozilla.org/docs/Web/HTML/Element/base "base href") tag in the `<head>` of the `index.html`.
+
+配置该策略的首选方式是往 `index.html` 的 `<head>` 中添加一个 [`<base href>` element](https://developer.mozilla.org/docs/Web/HTML/Element/base "base href")标签。
 
 <code-example header="src/index.html (base-href)" path="router/src/index.html" region="base-href"></code-example>
 
@@ -807,19 +844,23 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
    * The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
 
-   * If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
-     This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
+     `<base href>` `path` 应该以“/”结尾，因为浏览器会忽略 `path` 中最右边的“ `/` ”后面的字符
 
-     如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。 这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
+   `<base href>` 的 `path` 应该用 "/" 结尾，浏览器会忽略 `path` 中最右边的 "`/`" 后面的字符。
 
-   * If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
-     In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
+- If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
+   This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
-     如果页内链接是根 URL（高优先度 URL），则 `<base href>` 不会使用。在这种方式下，`APP_BASE_HREF` 的优先度将会导致所有由 Angular 创建的链接忽略 `<base href>`。
+   如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。 这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
 
-   * A fragment in the `<base href>` is *never* persisted
+- If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
+  In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
 
-     `<base href>` 中的片段（#后面的部分）*永远不会*被使用。
+  如果页内链接是根 URL（高优先度 URL），则 `<base href>` 不会使用。在这种方式下，`APP_BASE_HREF` 的优先度将会导致所有由 Angular 创建的链接忽略 `<base href>`。
+
+- A fragment in the `<base href>` is *never* persisted
+
+  `<base href>` 中的片段（#后面的部分）*永远不会*被使用
 
 For more complete information on how `<base href>` is used to construct target URIs, see the [RFC](https://tools.ietf.org/html/rfc3986#section-5.2.2) section on transforming references.
 

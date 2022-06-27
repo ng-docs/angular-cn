@@ -12,6 +12,9 @@ import {TestComponentRenderer} from '@angular/core/testing';
 
 /**
  * A DOM based implementation of the TestComponentRenderer.
+ *
+ * TestComponentRenderer 的基于 DOM 的实现。
+ *
  */
 @Injectable()
 export class DOMTestComponentRenderer extends TestComponentRenderer {

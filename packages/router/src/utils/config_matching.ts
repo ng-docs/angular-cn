@@ -166,6 +166,10 @@ function emptyPathMatch(
  * Determines if `route` is a path match for the `rawSegment`, `segments`, and `outlet` without
  * verifying that its children are a full match for the remainder of the `rawSegment` children as
  * well.
+ *
+ * 确定 `route` 是否是 `rawSegment` 、 `segments` 和 `outlet` 的路径匹配，而不验证其子项是否也与
+ * `rawSegment` 的其余子项完全匹配。
+ *
  */
 export function isImmediateMatch(
     route: Route, rawSegment: UrlSegmentGroup, segments: UrlSegment[], outlet: string): boolean {

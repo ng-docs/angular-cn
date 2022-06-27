@@ -27,13 +27,23 @@ function _extractId(valueString: string): string {
   return valueString.split(':')[0];
 }
 
-/** Mock interface for HTML Options */
+/**
+ * Mock interface for HTML Options
+ *
+ * HTML 选项的模拟接口
+ *
+ */
 interface HTMLOption {
   value: string;
   selected: boolean;
 }
 
-/** Mock interface for HTMLCollection */
+/**
+ * Mock interface for HTMLCollection
+ *
+ * HTMLCollection 的模拟接口
+ *
+ */
 abstract class HTMLCollection {
   // TODO(issue/24571): remove '!'.
   length!: number;

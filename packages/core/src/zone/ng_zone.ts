@@ -26,10 +26,18 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  * 更新或错误处理的异步任务的工作时优化性能。可以通过 {@link #runOutsideAngular}
  * 启动此类任务，如果需要，这些任务可以通过 {@link #run} 重新进入 Angular zone。
  *
- * <!-- TODO: add/fix links to:
- *   - docs explaining zones and the use of zones in Angular and change-detection
- *   - link to runOutsideAngular/run (throughout this file!)
- *   -->
+ * &lt;!-- TODO: add/fix links to:
+ *
+ * &lt;!-- TODO：添加/修复到：
+ *
+ * - docs explaining zones and the use of zones in Angular and change-detection
+ *
+ *   解释区域以及在 Angular 和 change-detection 中使用区域的文档
+ *
+ * - link to runOutsideAngular/run (throughout this file!)
+ *   \-->
+ *
+ *   指向 runOutsideAngular/run 的链接（在整个文件中！） -->
  *
  * @usageNotes
  *
@@ -38,10 +46,13 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  * ### 例子
  *
  * ```
- * import {Component, NgZone} from '@angular/core';
- * import {NgIf} from '@angular/common';
+ * import {Component, NgZone} from '
+ * ```
  *
- * @Component({
+ * @angular /core';
+ * import {NgIf} from '
+ * @angular /common';
+ * @Component ({
  *   selector: 'ng-zone-demo',
  *   template: `
  *     <h2>Demo: NgZone</h2>
@@ -92,7 +103,6 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export class NgZone {
@@ -205,7 +215,7 @@ export class NgZone {
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * \#runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -215,6 +225,7 @@ export class NgZone {
    * If a synchronous error happens it will be rethrown and not reported via `onError`.
    *
    * 如果发生同步错误，它将被重新抛出，并且不会通过 `onError` 报告。
+   *
    */
   run<T>(fn: (...args: any[]) => T, applyThis?: any, applyArgs?: any[]): T {
     return (this as any as NgZonePrivate)._inner.run(fn, applyThis, applyArgs);
@@ -230,7 +241,7 @@ export class NgZone {
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * \#runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -240,6 +251,7 @@ export class NgZone {
    * If a synchronous error happens it will be rethrown and not reported via `onError`.
    *
    * 如果发生同步错误，它将被重新抛出，并且不会通过 `onError` 报告。
+   *
    */
   runTask<T>(fn: (...args: any[]) => T, applyThis?: any, applyArgs?: any[], name?: string): T {
     const zone = (this as any as NgZonePrivate)._inner;
@@ -307,8 +319,14 @@ interface NgZonePrivate extends NgZone {
    * detection from within change detection leading to
    * incorrect behavior.
    *
+   * 一个标志，用于表明 NgZone 当前是否在 checkStable
+   * 中并防止重新进入。需要该标志，因为有可能从更改检测中调用更改检测导致不正确的行为。
+   *
    * For detail, please refer here,
-   * https://github.com/angular/angular/pull/40540
+   * <https://github.com/angular/angular/pull/40540>
+   *
+   * 有关详细信息，请参阅这里， <https://github.com/angular/angular/pull/40540>
+   *
    */
   isCheckStableRunning: boolean;
   isStable: boolean;
@@ -316,8 +334,11 @@ interface NgZonePrivate extends NgZone {
    * Optionally specify coalescing event change detections or not.
    * Consider the following case.
    *
-   * <div (click)="doSomething()">
-   *   <button (click)="doSomethingElse()"></button>
+   * （可选）指定或不指定合并事件更改检测。考虑以下情况。
+   *
+   * &lt;div (click)="doSomething()">
+   *   &lt;button (click)="doSomethingElse()"></button>
+   *
    * </div>
    *
    * When button is clicked, because of the event bubbling, both
@@ -325,28 +346,45 @@ interface NgZonePrivate extends NgZone {
    * triggered. We can coalesce such kind of events to trigger
    * change detection only once.
    *
+   * 单击按钮时，由于事件冒泡，将调用两个事件处理程序，并触发 2
+   * 次更改检测。我们可以合并此类事件以仅触发更改检测一次。
+   *
    * By default, this option will be false. So the events will not be
    * coalesced and the change detection will be triggered multiple times.
    * And if this option be set to true, the change detection will be
    * triggered async by scheduling it in an animation frame. So in the case above,
    * the change detection will only be trigged once.
+   *
+   * 默认情况下，此选项将是 false
+   * 。因此，事件将不会被合并，并且更改检测将被触发多次。如果此选项设置为
+   * true，则更改检测将通过在动画帧中调度来异步触发。因此在上面的情况下，更改检测将只会被触发一次。
+   *
    */
   shouldCoalesceEventChangeDetection: boolean;
   /**
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
+   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个更改检测。
+   *
    * Consider the following case.
    *
-   * for (let i = 0; i < 10; i ++) {
+   * 考虑以下情况。
+   *
+   * for (let i = 0; i &lt; 10; i ++) {
    *   ngZone.run(() => {
    *     // do something
    *   });
    * }
    *
+   * for (let i = 0; i &lt; 10; i ++) { ngZone.run(() => { // 做点什么 }); }
+   *
    * This case triggers the change detection multiple times.
    * With ngZoneRunCoalescing options, all change detections in an event loops trigger only once.
    * In addition, the change detection executes in requestAnimation.
+   *
+   * 这种情况会多次触发更改检测。使用 ngZoneRunCoalescing
+   * 选项，事件循环中的所有更改检测只会触发一次。此外，更改检测是在 requestAnimation 中执行的。
    *
    */
   shouldCoalesceRunChangeDetection: boolean;
@@ -518,6 +556,9 @@ function onLeave(zone: NgZonePrivate) {
 /**
  * Provides a noop implementation of `NgZone` which does nothing. This zone requires explicit calls
  * to framework to perform rendering.
+ *
+ * 提供了 `NgZone` 的 noop 实现，它什么都不做。此区域需要显式调用 Framework 来执行渲染。
+ *
  */
 export class NoopNgZone implements NgZone {
   readonly hasPendingMicrotasks: boolean = false;

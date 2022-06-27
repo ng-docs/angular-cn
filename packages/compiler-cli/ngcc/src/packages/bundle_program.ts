@@ -15,9 +15,15 @@ import {patchTsGetExpandoInitializer, restoreGetExpandoInitializer} from './patc
  * An entry point bundle contains one or two programs, e.g. `src` and `dts`,
  * that are compiled via TypeScript.
  *
+ * 入口点包包含一个或两个通过 TypeScript 编译的程序，例如 `src` 和 `dts` 。
+ *
  * To aid with processing the program, this interface exposes the program itself,
  * as well as path and TS file of the entry-point to the program and the r3Symbols
  * file, if appropriate.
+ *
+ * 为了帮助处理程序，此接口会公开程序本身，以及程序入口点的路径和 TS 文件以及 r3Symbols
+ * 文件（如果适当）。
+ *
  */
 export interface BundleProgram {
   program: ts.Program;
@@ -32,6 +38,9 @@ export interface BundleProgram {
 
 /**
  * Create a bundle program.
+ *
+ * 创建一个包程序。
+ *
  */
 export function makeBundleProgram(
     fs: ReadonlyFileSystem, isCore: boolean, pkg: AbsoluteFsPath, path: AbsoluteFsPath,
@@ -56,6 +65,9 @@ export function makeBundleProgram(
 
 /**
  * Search the given directory hierarchy to find the path to the `r3_symbols` file.
+ *
+ * 搜索给定的目录层次结构以查找 `r3_symbols` 文件的路径。
+ *
  */
 export function findR3SymbolsPath(
     fs: ReadonlyFileSystem, directory: AbsoluteFsPath, filename: string): AbsoluteFsPath|null {

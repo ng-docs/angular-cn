@@ -10,6 +10,8 @@ To check that your services are working as you intend, you can write tests speci
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
+  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+
 </div>
 
 Services are often the smoothest files to unit test.
@@ -77,6 +79,8 @@ Angular testing utilities make it straightforward to investigate how injected se
 
 ## Testing services with the `TestBed`
 
+## 使用 *TestBed* 测试服务
+
 Your application relies on Angular [dependency injection (DI)](guide/dependency-injection) to create services.
 When a service has a dependent service, DI finds or creates that dependent service.
 And if that dependent service has its own dependencies, DI finds-or-creates them as well.
@@ -122,6 +126,9 @@ Then inject it inside a test by calling `TestBed.inject()` with the service clas
 To help minimize breaking changes, Angular introduces a new function called `TestBed.inject()`, which you should use instead.
 For information on the removal of `TestBed.get()`, see its entry in the [Deprecations index](guide/deprecations#index).
 
+**注意**：<br />
+`TestBed.get()` 已在 Angular 9 中弃用。为了帮助减少重大变更，Angular 引入了一个名为 `TestBed.inject()` 的新函数，你可以改用它。关于删除 `TestBed.get()` 的信息，请参阅[弃用索引](guide/deprecations#index)中的条目。
+
 </div>
 
 <code-example path="testing/src/app/demo/demo.testbed.spec.ts" region="value-service-inject-it"></code-example>
@@ -152,6 +159,8 @@ The test consumes that spy in the same way it did earlier.
 
 ## Testing without `beforeEach()`
 
+## 没有 `beforeEach()` 的测试
+
 Most test suites in this guide call `beforeEach()` to set the preconditions for each `it()` test and rely on the `TestBed` to create classes and inject services.
 
 本指南中的大多数测试套件都会调用 `beforeEach()` 来为每一个 `it()` 测试设置前置条件，并依赖 `TestBed` 来创建类和注入服务。
@@ -173,7 +182,7 @@ Begin by putting re-usable, preparatory code in a *setup* function instead of `b
 The `setup()` function returns an object literal with the variables, such as `masterService`, that a test might reference.
 You don't define *semi-global* variables (for example, `let masterService: MasterService`) in the body of the `describe()`.
 
-`setup()` 函数返回一个包含测试可能引用的变量（如 `masterService`）的对象字面量。你并没有在 `describe()` 的函数体中定义*半全局*变量（例如 `let masterService: MasterService` ）。
+`setup()` 函数返回一个包含测试可能引用的变量（如 `masterService`）的对象字面量。你并没有在 `describe()` 的函数体中定义*半全局*变量（比如 `let masterService: MasterService` ）。
 
 Then each test invokes `setup()` in its first line, before continuing with steps that manipulate the test subject and assert expectations.
 
@@ -182,6 +191,8 @@ Then each test invokes `setup()` in its first line, before continuing with steps
 <code-example path="testing/src/app/demo/demo.spec.ts" region="no-before-each-test"></code-example>
 
 Notice how the test uses [*destructuring assignment*](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to extract the setup variables that it needs.
+
+请注意测试如何使用[*解构赋值*](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)来提取它需要的设置变量。
 
 <code-example path="testing/src/app/demo/demo.spec.ts" region="no-before-each-setup-call"></code-example>
 

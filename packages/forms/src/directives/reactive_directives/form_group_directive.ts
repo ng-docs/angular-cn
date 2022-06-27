@@ -91,6 +91,10 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
   /**
    * Callback that should be invoked when controls in FormGroup or FormArray collection change
    * (added or removed). This callback triggers corresponding DOM updates.
+   *
+   * 当 FormGroup 或 FormArray 集合中的控件更改（添加或删除）时应该调用的回调。此回调会触发相应的
+   * DOM 更新。
+   *
    */
   private readonly _onCollectionChange = () => this._updateDomValue();
 

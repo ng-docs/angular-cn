@@ -61,7 +61,7 @@ You will need two terminals to get the live-reload experience.
 * On the second terminal, install a web server (such as [lite-server](https://github.com/johnpapa/lite-server)), and run it against the output folder.
   For example:
 
-  在第二个终端上，安装一个 Web 服务器（比如 [lite-server](https://github.com/johnpapa/lite-server) ），然后使用输出文件夹中的内容运行它。例如：
+  在第二个终端上，安装一个 Web 服务器（比如 [lite-server](https://github.com/johnpapa/lite-server) ），然后使用输出文件夹中的内容运行它。比如：
 
   <code-example format="shell" language="shell">
 
@@ -71,7 +71,7 @@ You will need two terminals to get the live-reload experience.
 
   The server will automatically reload your browser when new files are output.
 
-  每当输出了新文件时，服务器就会自动刷新你的浏览器。
+   每当输出了新文件时，服务器就会自动刷新你的浏览器。
 
 <div class="alert is-critical">
 
@@ -98,7 +98,7 @@ You can then use the `ng deploy` command to deploy that project.
 
 For example, the following command automatically deploys a project to Firebase.
 
-例如，以下命令将项目自动部署到 Firebase。
+比如，以下命令将项目自动部署到 Firebase。
 
 <code-example format="shell" language="shell">
 
@@ -127,12 +127,17 @@ You can read more by following the links associated with the package names below
 | :------------ | :------ |
 | 部署到 | 包 |
 | [Firebase hosting](https://firebase.google.com/docs/hosting) | [`@angular/fire`](https://npmjs.org/package/@angular/fire) |
+| [Firebase 托管](https://firebase.google.com/docs/hosting) | [`@angular/fire`](https://npmjs.org/package/@angular/fire) |
 | [Azure](https://azure.microsoft.com/en-us) | [`@azure/ng-deploy`](https://npmjs.org/package/@azure/ng-deploy) |
+| [天蓝色](https://azure.microsoft.com/en-us) | [`@azure/ng-deploy`](https://npmjs.org/package/@azure/ng-deploy) |
 | [Vercel](https://vercel.com/solutions/angular) | [`vercel init angular`](https://github.com/vercel/vercel/tree/main/examples/angular) |
+| [维塞尔](https://vercel.com/solutions/angular) | [`vercel init angular`](https://github.com/vercel/vercel/tree/main/examples/angular) |
 | [Netlify](https://www.netlify.com) | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy) |
 | [GitHub pages](https://pages.github.com) | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages) |
+| [GitHub 页面](https://pages.github.com) | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages) |
 | [NPM](https://npmjs.com) | [`ngx-deploy-npm`](https://npmjs.org/package/ngx-deploy-npm) |
 | [Amazon Cloud S3](https://aws.amazon.com/s3/?nc2=h_ql_prod_st_s3) | [`@jefiozie/ngx-aws-deploy`](https://www.npmjs.com/package/@jefiozie/ngx-aws-deploy) |
+| [亚马逊云 S3](https://aws.amazon.com/s3/?nc2=h_ql_prod_st_s3) | [`@jefiozie/ngx-aws-deploy`](https://www.npmjs.com/package/@jefiozie/ngx-aws-deploy) |
 
 If you're deploying to a self-managed server or there's no builder for your favorite cloud platform, you can either create a builder that allows you to use the `ng deploy` command, or read through this guide to learn how to manually deploy your application.
 
@@ -148,7 +153,7 @@ For the simplest deployment, create a production build and copy the output direc
 
 1. Start with the production build:
 
-   使用开发环境进行构建
+    使用开发环境进行构建
 
    <code-example format="shell" language="shell">
 
@@ -163,6 +168,9 @@ For the simplest deployment, create a production build and copy the output direc
 1. Configure the server to redirect requests for missing files to `index.html`.
    Learn more about server-side redirects [below](#fallback).
 
+   配置服务器，让缺失的文件都重定向到 `index.html` 上。
+   欲知详情，参阅[稍后](#fallback)的服务端重定向部分。
+
 This is the simplest production-ready deployment of your application.
 
 这是对应用进行生产环境部署的最简方式。
@@ -175,7 +183,7 @@ This is the simplest production-ready deployment of your application.
 
 To deploy your Angular application to [GitHub Pages](https://help.github.com/articles/what-is-github-pages), complete the following steps:
 
-要将 Angular 应用程序部署到 [GitHub Pages](https://help.github.com/articles/what-is-github-pages/)，请遵循以下步骤：
+要将 Angular 应用程序部署到 [GitHub Pages](https://help.github.com/articles/what-is-github-pages)，请遵循以下步骤：
 
 1. [Create a GitHub repository](https://help.github.com/articles/create-a-repo) for your project.
 
@@ -233,6 +241,8 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
 
 1. On the GitHub project page, go to Settings and scroll down to the GitHub Pages section to configure the site to [publish from the docs folder](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
 
+   在 GitHub 项目页面上，转到 Settings 并向下滚动到 GitHub Pages 部分，以配置[要从 docs 文件夹发布](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source)的站点。
+
 1. Click Save.
 
    单击保存。
@@ -240,13 +250,13 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
 1. Click on the GitHub Pages link at the top of the GitHub Pages section to see your deployed application.
    The format of the link is `https://<user_name>.github.io/<project_name>`.
 
-   单击 GitHub Pages 区顶部的 “GitHub Pages” 链接，以查看已部署的应用程序。链接的格式为 `https://<user_name>.github.io/<project_name>/`。
+   单击 GitHub Pages 区顶部的 “GitHub Pages” 链接，以查看已部署的应用程序。链接的格式为 `https://<user_name>.github.io/<project_name>`。
 
 <div class="alert is-helpful">
 
 Check out [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages), a full featured package that does all this for you and has extra functionality.
 
-参阅 [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages)，这个包用到了全部这些特性，还提供了一些额外功能。
+ 参阅 [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages)，这个包用到了全部这些特性，还提供了一些额外功能。
 
 </div>
 
@@ -270,7 +280,8 @@ Angular applications are perfect candidates for serving with a simple static HTM
 You don't need a server-side engine to dynamically compose application pages because
 Angular does that on the client-side.
 
-Angular 应用很适合用简单的静态 HTML 服务器提供服务。 你不需要服务端引擎来动态合成应用页面，因为 Angular 会在客户端完成这件事。
+Angular 应用很适合用简单的静态 HTML 服务器提供服务。
+你不需要服务端引擎来动态合成应用页面，因为 Angular 会在客户端完成这件事。
 
 If the application uses the Angular router, you must configure the server to return the application's host page (`index.html`) when asked for a file that it does not have.
 
@@ -282,22 +293,27 @@ A routed application should support "deep links".
 A *deep link* is a URL that specifies a path to a component inside the application.
 For example, `http://www.mysite.com/heroes/42` is a *deep link* to the hero detail page that displays the hero with `id: 42`.
 
-带路由的应用应该支持“深链接”。 所谓*深链接*就是指一个 URL，它用于指定到应用内某个组件的路径。 比如，`http://www.mysite.com/heroes/42` 就是一个到英雄详情页面的*深链接*，用于显示 `id: 42` 的英雄。
+带路由的应用应该支持“深链接”。
+所谓*深链接*就是指一个 URL，它用于指定到应用内某个组件的路径。
+比如，`http://www.mysite.com/heroes/42` 就是一个到英雄详情页面的*深链接*，用于显示 `id: 42` 的英雄。
 
 There is no issue when the user navigates to that URL from within a running client.
 The Angular router interprets the URL and routes to that page and hero.
 
-当用户从运行中的客户端应用导航到这个 URL 时，这没问题。 Angular 路由器会拦截这个 URL，并且把它路由到正确的页面。
+当用户从运行中的客户端应用导航到这个 URL 时，这没问题。
+Angular 路由器会拦截这个 URL，并且把它路由到正确的页面。
 
 But clicking a link in an email, entering it in the browser address bar, or merely refreshing the browser while on the hero detail page —all of these actions are handled by the browser itself, *outside* the running application.
 The browser makes a direct request to the server for that URL, bypassing the router.
 
-但是，当从邮件中点击链接或在浏览器地址栏中输入它或仅仅在英雄详情页刷新下浏览器时，所有这些操作都是由浏览器本身处理的，在应用的控制范围之外。 浏览器会直接向服务器请求那个 URL，路由器没机会插手。
+但是，当从邮件中点击链接或在浏览器地址栏中输入它或仅仅在英雄详情页刷新下浏览器时，所有这些操作都是由浏览器本身处理的，在应用的控制范围之外。
+浏览器会直接向服务器请求那个 URL，路由器没机会插手。
 
 A static server routinely returns `index.html` when it receives a request for `http://www.mysite.com/`.
 But it rejects `http://www.mysite.com/heroes/42` and returns a `404 - Not Found` error *unless* it is configured to return `index.html` instead.
 
-静态服务器会在收到对 `http://www.mysite.com/` 的请求时返回 `index.html`，但是会拒绝对 `http://www.mysite.com/heroes/42` 的请求， 并返回一个 `404 - Not Found` 错误，除非，它被配置成了返回 `index.html`。
+静态服务器会在收到对 `http://www.mysite.com/` 的请求时返回 `index.html`，但是会拒绝对 `http://www.mysite.com/heroes/42` 的请求，
+并返回一个 `404 - Not Found` 错误，除非，它被配置成了返回 `index.html`。
 
 #### Fallback configuration examples
 
@@ -307,17 +323,25 @@ There is no single configuration that works for every server.
 The following sections describe configurations for some of the most popular servers.
 The list is by no means exhaustive, but should provide you with a good starting point.
 
-没有一种配置可以适用于所有服务器。 后面这些部分会描述对常见服务器的配置方式。 这个列表虽然不够详尽，但可以为你提供一个良好的起点。
+没有一种配置可以适用于所有服务器。
+后面这些部分会描述对常见服务器的配置方式。
+这个列表虽然不够详尽，但可以为你提供一个良好的起点。
 
 | Servers | Details |
 | :------ | :------ |
-| Servers | 详情 |
+| 服务器 | 详细信息 |
 | [Apache](https://httpd.apache.org) | Add a [rewrite rule](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) to the `.htaccess` file as shown ([ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess](https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess)): <code-example format="apache" language="apache"> RewriteEngine On &NewLine;&nbsp; &num; If an existing asset or directory is requested go to it as it is &NewLine;&nbsp; RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR] &NewLine;&nbsp; RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d &NewLine;&nbsp; RewriteRule ^ - [L] &NewLine; &NewLine;&nbsp; &num; If the requested resource doesn't exist, use index.html &NewLine;&nbsp; RewriteRule ^ /index.html </code-example> |
+| [Apache](https://httpd.apache.org) | 如图所示，向 `.htaccess` 文件添加[重写规则](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)（ [ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess](https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess) ）：<code-example format="apache" language="apache"> RewriteEngine On &NewLine;&nbsp; &num; If an existing asset or directory is requested go to it as it is &NewLine;&nbsp; RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR] &NewLine;&nbsp; RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d &NewLine;&nbsp; RewriteRule ^ - [L] &NewLine; &NewLine;&nbsp; &num; If the requested resource doesn't exist, use index.html &NewLine;&nbsp; RewriteRule ^ /index.html </code-example> |
 | [Nginx](https://nginx.org) | Use `try_files`, as described in [Front Controller Pattern Web Apps](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps), modified to serve `index.html`: <code-example format="nginx" language="nginx"> try_files &dollar;uri &dollar;uri/ /index.html; </code-example> |
+| [Nginx](https://nginx.org) | 使用 `try_files` ，如[前端控制器模式 Web 应用程序](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps)中所述，修改为提供 `index.html` ：<code-example format="nginx" language="nginx"> try_files &dollar;uri &dollar;uri/ /index.html; </code-example> |
 | [Ruby](https://www.ruby-lang.org) | Create a Ruby server using ([sinatra](http://sinatrarb.com)) with a basic Ruby file that configures the server `server.rb`: <code-example format="ruby" language="ruby"> require 'sinatra' &NewLine; &NewLine;&num; Folder structure &NewLine;&num; . &NewLine;&num; -- server.rb &NewLine;&num; -- public &NewLine;&num; &nbsp;&nbsp; &verbar;-- project-name &NewLine;&num; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &verbar;-- index.html &NewLine; &NewLine;get '/' do &NewLine;&nbsp; folderDir = settings.public_folder + '/project-name'  &num; ng build output folder &NewLine;&nbsp; send_file File.join(folderDir, 'index.html') &NewLine;end </code-example> |
+| [Ruby](https://www.ruby-lang.org) | 使用 ( [sinatra](http://sinatrarb.com) ) 和配置服务器 `server.rb` 的基本 Ruby 文件创建一个 Ruby 服务器：<code-example format="ruby" language="ruby"> require 'sinatra' &NewLine; &NewLine;&num; Folder structure &NewLine;&num; . &NewLine;&num; -- server.rb &NewLine;&num; -- public &NewLine;&num; &nbsp;&nbsp; &verbar;-- project-name &NewLine;&num; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &verbar;-- index.html &NewLine; &NewLine;get '/' do &NewLine;&nbsp; folderDir = settings.public_folder + '/project-name'  &num; ng build output folder &NewLine;&nbsp; send_file File.join(folderDir, 'index.html') &NewLine;end </code-example> |
 | [IIS](https://www.iis.net) | Add a rewrite rule to `web.config`, similar to the one shown [here](https://stackoverflow.com/a/26152011): <code-example format="xml" language="xml"> &lt;system.webServer&gt; &NewLine;&nbsp; &lt;rewrite&gt; &NewLine;&nbsp;&nbsp;&nbsp; &lt;rules&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;rule name="Angular Routes" stopProcessing="true"&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;match url=".*" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;conditions logicalGrouping="MatchAll"&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/conditions&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;action type="Rewrite" url="/index.html" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/rule&gt; &NewLine;&nbsp;&nbsp;&nbsp; &lt;/rules&gt; &NewLine;&nbsp; &lt;/rewrite&gt; &NewLine;&lt;/system.webServer&gt; </code-example> |
+| [IIS](https://www.iis.net) | 向 `web.config` 添加重写规则，类似于[此处](https://stackoverflow.com/a/26152011)显示的规则：<code-example format="xml" language="xml"> &lt;system.webServer&gt; &NewLine;&nbsp; &lt;rewrite&gt; &NewLine;&nbsp;&nbsp;&nbsp; &lt;rules&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;rule name="Angular Routes" stopProcessing="true"&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;match url=".*" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;conditions logicalGrouping="MatchAll"&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/conditions&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;action type="Rewrite" url="/index.html" /&gt; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/rule&gt; &NewLine;&nbsp;&nbsp;&nbsp; &lt;/rules&gt; &NewLine;&nbsp; &lt;/rewrite&gt; &NewLine;&lt;/system.webServer&gt; </code-example> |
 | [GitHub Pages](https://pages.github.com) | You can't [directly configure](https://github.com/isaacs/github/issues/408) the GitHub Pages server, but you can add a 404 page. Copy `index.html` into `404.html`. It will still be served as the 404 response, but the browser will process that page and load the application properly. It's also a good idea to [serve from `docs` on main](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source) and to [create a `.nojekyll` file](https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm) |
+| [GitHub 页面](https://pages.github.com) | 你不能[直接配置](https://github.com/isaacs/github/issues/408) GitHub Pages 服务器，但可以添加 404 页面。将 `index.html` 复制到 `404.html` 中。它仍将作为 404 响应提供，但浏览器将处理该页面并正确加载应用程序。 [从 main 上的 `docs` 提供服务](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source)并[创建一个 `.nojekyll` 文件](https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm)也是一个好主意 |
 | [Firebase hosting](https://firebase.google.com/docs/hosting) | Add a [rewrite rule](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites). <code-example language="json"> "rewrites": [ { &NewLine;&nbsp; "source": "**", &NewLine;&nbsp; "destination": "/index.html" &NewLine;} ] </code-example> |
+| [Firebase 托管](https://firebase.google.com/docs/hosting) | 添加[重写规则](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites)。<code-example language="json"> "rewrites": [ { &NewLine;&nbsp; "source": "**", &NewLine;&nbsp; "destination": "/index.html" &NewLine;} ] </code-example> |
 
 <a id="mime"></a>
 
@@ -326,6 +350,8 @@ The list is by no means exhaustive, but should provide you with a good starting 
 ### 为 JavaScript 资产配置正确的 MIME 类型
 
 All of your application JavaScript files must be served by the server with the [`Content-Type` header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Type) set to `text/javascript` or another [JavaScript-compatible MIME-type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript).
+
+你的所有应用程序 JavaScript 文件都必须由服务器提供出来，并将 [`Content-Type` 标头](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Type)设置为 `text/javascript` 或其他[与 JavaScript 兼容的 MIME-type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript) 。
 
 Most servers and hosting services already do this by default.
 
@@ -344,7 +370,7 @@ Failed to load module script: The server responded with a non-JavaScript MIME ty
 If this is the case, you will need to check your server configuration and reconfigure it to serve `.js` files with `Content-Type: text/javascript`.
 See your server's manual for instructions on how to do this.
 
-如果是这种情况，你将需要检查你的服务器配置并将其重新配置为使用 `Content-Type: text/javascript` 来提供 `.js` 文件。有关如何执行此操作的说明，请参阅服务器手册。
+如果是这种情况，你将需要检查你的服务器配置并将其重新配置为使用 `Content-Type: text/javascript` 来提供 `.js` 文件。有关如何执行此操作的说明，参阅服务器手册。
 
 <a id="cors"></a>
 
@@ -355,13 +381,16 @@ See your server's manual for instructions on how to do this.
 Angular developers may encounter a [*cross-origin resource sharing*](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing "Cross-origin resource sharing") error when making a service request (typically a data service request) to a server other than the application's own host server.
 Browsers forbid such requests unless the server permits them explicitly.
 
-Angular 开发者在向与该应用的宿主服务器不同域的服务器发起请求时，可能会遇到一种[*跨域资源共享（CORS）*](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing "Cross-origin resource sharing")错误。 浏览器会阻止该请求，除非得到那台服务器的明确许可。
+Angular 开发者在向与该应用的宿主服务器不同域的服务器发起请求时，可能会遇到一种<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank" title="Cross-origin resource sharing"><i>跨域资源共享（CORS）</i></a>错误。
+浏览器会阻止该请求，除非得到那台服务器的明确许可。
 
 There isn't anything the client application can do about these errors.
 The server must be configured to accept the application's requests.
 Read about how to enable CORS for specific servers at [enable-cors.org](https://enable-cors.org/server.html "Enabling CORS server").
 
-客户端应用对这种错误无能为力。 服务器必须配置成可以接受来自该应用的请求。 要了解如何对特定的服务器开启 CORS，参阅[enable-cors.org](http://enable-cors.org/server.html "Enabling CORS server")。
+客户端应用对这种错误无能为力。
+服务器必须配置成可以接受来自该应用的请求。
+要了解如何对特定的服务器开启 CORS，参阅<a href="http://enable-cors.org/server.html" target="_blank" title="Enabling CORS server">enable-cors.org</a>。
 
 <a id="optimize"></a>
 
@@ -375,14 +404,19 @@ The `production` configuration engages the following build optimization features
 
 | Features | Details |
 | :------- | :------ |
-| Features | 详情 |
+| 特性 | 详细信息 |
 | [Ahead-of-Time (AOT) Compilation](guide/aot-compiler) | Pre-compiles Angular component templates. |
+| [预先 (AOT) 编译](guide/aot-compiler) | 预编译 Angular 的组件模板。 |
 | [Production mode](#enable-prod-mode) | Deploys the production environment which enables *production mode*. |
+| [生产模式](#enable-prod-mode) | 部署到启用了*生产模式*的生产环境。 |
 | Bundling | Concatenates your many application and library files into a few bundles. |
+| 打包 | 把你的多个应用于库文件拼接到少量包（bundle）中。 |
 | Minification | Removes excess whitespace, comments, and optional tokens. |
+| 缩小 | 删除多余的空格、注释和可选令牌。 |
 | Uglification | Rewrites code to use short, cryptic variable and function names. |
+| 丑化 | 重写代码，使用简短的、不容易理解的变量名和函数名。 |
 | Dead code elimination | Removes unreferenced modules and much unused code. |
-| 消除死代码 | Removes unreferenced modules and much unused code. |
+| 死代码消除 | 删除未引用过的模块和很多未用到的代码。 |
 
 See [`ng build`](cli/build) for more about CLI build options and what they do.
 
@@ -409,7 +443,7 @@ Call `enableProdMode()` to enable production mode.
 *Production mode* improves application performance by disabling development-only safety checks and debugging utilities, such as the expression-changed-after-checked detection.
 Building your application with the production configuration automatically enables Angular's runtime production mode.
 
-*生产模式*通过禁用仅供开发用的安全检查和调试工具（例如，expression-changed-after-checked 检测）来提高应用程序性能。使用生产配置构建应用程序时会自动启用 Angular 的运行时生产模式。
+*生产模式*通过禁用仅供开发用的安全检查和调试工具（比如，expression-changed-after-checked 检测）来提高应用程序性能。使用生产配置构建应用程序时会自动启用 Angular 的运行时生产模式。
 
 <a id="lazy-loading"></a>
 
@@ -429,19 +463,27 @@ Configure the Angular Router to defer loading of all other modules (and their as
 
 <header>Don't eagerly import something from a lazy-loaded module</header>
 
+<header>不要急性（eagerly）导入来自惰性加载模块中的任何东西</header>
+
 If you mean to lazy-load a module, be careful not to import it in a file that's eagerly loaded when the application starts (such as the root `AppModule`).
 If you do that, the module will be loaded immediately.
 
-如果要惰性加载某个模块，就要小心别在应用启动时要急性加载的模块（比如根模块 `AppModule`）中导入它。 如果那么做，该模块就会立刻加载起来。
+如果要惰性加载某个模块，就要小心别在应用启动时要急性加载的模块（比如根模块 `AppModule`）中导入它。
+如果那么做，该模块就会立刻加载起来。
 
 The bundling configuration must take lazy loading into consideration.
 Because lazy-loaded modules aren't imported in JavaScript, bundlers exclude them by default.
 Bundlers don't know about the router configuration and can't create separate bundles for lazy-loaded modules.
 You would have to create these bundles manually.
 
-配置打包方式时必须考虑惰性加载。 因为默认情况下惰性加载的模块没有在 JavaScript 中导入过，因此打包器默认会排除它们。 打包器不认识路由器配置，也就不能为惰性加载的模块创建独立的包。 你必须手动创建这些包。
+配置打包方式时必须考虑惰性加载。
+因为默认情况下惰性加载的模块没有在 JavaScript 中导入过，因此打包器默认会排除它们。
+打包器不认识路由器配置，也就不能为惰性加载的模块创建独立的包。
+你必须手动创建这些包。
 
 The CLI runs the [Angular Ahead-of-Time Webpack Plugin](https://github.com/angular/angular-cli/tree/main/packages/ngtools/webpack) which automatically recognizes lazy-loaded `NgModules` and creates separate bundles for them.
+
+CLI 会运行 [Angular Ahead-of-Time Webpack 插件](https://github.com/angular/angular-cli/tree/main/packages/ngtools/webpack)，它会自动识别出惰性加载的 `NgModules`，并为它们创建独立的包。
 
 </div>
 
@@ -456,15 +498,18 @@ The cause may not be what you think it is.
 You can waste a lot of time and money optimizing something that has no tangible benefit or even makes the application slower.
 You should measure the application's actual behavior when running in the environments that are important to you.
 
-如果你对哪些东西拖慢了应用有更加清晰、精确的了解，就可以更好地决定优化什么以及如何优化。 慢的原因可能和你所想的不一样。 你可能花费了大量的时间和金钱来优化一些实际上无关紧要的东西，甚至可能让应用变得更慢。 你应该测量应用在运行环境中的实际行为，这才是最重要的。
+如果你对哪些东西拖慢了应用有更加清晰、精确的了解，就可以更好地决定优化什么以及如何优化。
+慢的原因可能和你所想的不一样。
+你可能花费了大量的时间和金钱来优化一些实际上无关紧要的东西，甚至可能让应用变得更慢。
+你应该测量应用在运行环境中的实际行为，这才是最重要的。
 
 The [Chrome DevTools Network Performance page](https://developer.chrome.com/docs/devtools/network/reference "Chrome DevTools Network Performance") is a good place to start learning about measuring performance.
 
-[Chrome DevTools 的网络和性能页](https://developer.chrome.com/docs/devtools/network/reference/ "Chrome DevTools Network Performance")是你开始学习如何测量性能的好地方。
+[Chrome DevTools 网络性能页面](https://developer.chrome.com/docs/devtools/network/reference "Chrome DevTools 网络性能")是你开始学习如何测量性能的好地方。
 
 The [WebPageTest](https://www.webpagetest.org) tool is another good choice that can also help verify that your deployment was successful.
 
-[WebPageTest](https://www.webpagetest.org/)工具是另一个不错的选择，它还能帮你验证这次部署是否成功。
+[WebPageTest](https://www.webpagetest.org)工具是另一个不错的选择，它还能帮你验证这次部署是否成功。
 
 <a id="inspect-bundle"></a>
 
@@ -478,7 +523,7 @@ The [source-map-explorer](https://github.com/danvk/source-map-explorer/blob/mast
 
 Install `source-map-explorer`:
 
-安装 `source-map-explorer`：
+安装 `source-map-explorer` ：
 
 <code-example format="shell" language="shell">
 
@@ -509,7 +554,8 @@ ls dist/project-name/*.js
 Run the explorer to generate a graphical representation of one of the bundles.
 The following example displays the graph for the *main* bundle.
 
-运行浏览器来生成其中一个包的图形化表示。 下面的例子展示了 `main` 包的图表。
+运行浏览器来生成其中一个包的图形化表示。
+下面的例子展示了 `main` 包的图表。
 
 <code-example format="shell" language="shell">
 
@@ -541,21 +587,29 @@ The HTML [`<base href="..." />`](guide/router) specifies a base path for resolvi
 For example, given the `<base href="/my/app/">`, the browser resolves a URL such as `some/place/foo.jpg` into a server request for `my/app/some/place/foo.jpg`.
 During navigation, the Angular router uses the *base href* as the base path to component, template, and module files.
 
+HTML 的 [_&lt;base href="..."/>_](guide/router) 标签指定了用于解析静态文件（如图片、脚本和样式表）相对地址的基地址。
+比如，对于 `<base href="/my/app/">`，浏览器就会把 `some/place/foo.jpg` 这样的 URL 解析成到 `my/app/some/place/foo.jpg` 的请求。
+在导航期间，Angular 路由器使用 *base href* 作为到组件模板文件和模块文件的基地址。
+
 <div class="alert is-helpful">
 
 See also the [`APP_BASE_HREF`](api/common/APP_BASE_HREF "API: APP_BASE_HREF") alternative.
+
+另一种方式参阅 [`APP_BASE_HREF`](api/common/APP_BASE_HREF "API: APP_BASE_HREF")。
 
 </div>
 
 In development, you typically start the server in the folder that holds `index.html`.
 That's the root folder and you'd add `<base href="/">` near the top of `index.html` because `/` is the root of the application.
 
-在开发期间，你通常会在存有 `index.html` 的目录下启动开发服务器。 那就是根目录，你要在 `index.html` 的顶部附近添加 `<base href="/">`，因为 `/` 就是该应用的根路径。
+在开发期间，你通常会在存有 `index.html` 的目录下启动开发服务器。
+那就是根目录，你要在 `index.html` 的顶部附近添加 `<base href="/">`，因为 `/` 就是该应用的根路径。
 
 But on the shared or production server, you might serve the application from a subfolder.
 For example, when the URL to load the application is something like `http://www.mysite.com/my/app`, the subfolder is `my/app/` and you should add `<base href="/my/app/">` to the server version of the `index.html`.
 
-但是在共享或生产服务器上，你可能会在子目录下启动服务器。 比如，当前应用的加载地址可能类似于 `http://www.mysite.com/my/app/`，这里的子目录就是 `my/app/`。所以你就要往服务端版本的 `index.html` 中添加 `<base href="/my/app/">`。
+但是在共享或生产服务器上，你可能会在子目录下启动服务器。
+比如，当前应用的加载地址可能类似于 `http://www.mysite.com/my/app`，这里的子目录就是 `my/app/`。所以你就要往服务端版本的 `index.html` 中添加 `<base href="/my/app/">`。
 
 When the `base` tag is mis-configured, the application fails to load and the browser console displays `404 - Not Found` errors for the missing files.
 Look at where it *tried* to find those files and adjust the base tag appropriately.
@@ -571,7 +625,7 @@ Look at where it *tried* to find those files and adjust the base tag appropriate
 A command line option used to specify the base path for resolving relative URLs for assets such as images, scripts, and style sheets at *compile* time.
 For example: `ng build --deploy-url /my/assets`.
 
-一个命令行选项，用于指定在*编译*时解析图片、脚本和样式表等资产（assets）的相对 URL 的基础路径。例如： `ng build --deploy-url /my/assets` 。
+一个命令行选项，用于指定在*编译*时解析图片、脚本和样式表等资产（assets）的相对 URL 的基础路径。比如： `ng build --deploy-url /my/assets` 。
 
 The effects of defining a `deploy url` and `base href` can overlap.
 
@@ -591,6 +645,8 @@ However, defining a `base href` has a few unique effects.
 
 The `base href` can also be used to define the Angular router's default base (see [`APP_BASE_HREF`](api/common/APP_BASE_HREF)).
 Users with more complicated setups may need to manually configure the `APP_BASE_HREF` token within the application (for example, application routing base is `/` but`assets/scripts/etc.` are at `/assets/`).
+
+`base href` 也可用于定义 Angular 路由器的默认基础 URL（参阅[`APP_BASE_HREF`](api/common/APP_BASE_HREF) ）。需要进行更复杂设置的用户可能需要在应用程序中手动配置 `APP_BASE_HREF` 令牌。 （比如，应用程序路由基地址是 `/`，但各种资产、脚本等都在 `/assets`/ 下）。
 
 Unlike the `base href` which can be defined in a single place, the `deploy url` needs to be hard-coded into an application at build time.
 This means specifying a `deploy url` will decrease build speed, but this is the unfortunate cost of using an option that embeds itself throughout an application.

@@ -108,11 +108,14 @@ export abstract class ComponentRef<C> {
  * @see [Dynamic Components](guide/dynamic-component-loader)
  *
  * [动态组件](guide/dynamic-component-loader)
- *
  * @publicApi
+ * @deprecated
  *
- * @deprecated Angular no longer requires Component factories. Please use other APIs where
+ * Angular no longer requires Component factories. Please use other APIs where
  *     Component class can be used directly.
+ *
+ * Angular 不再需要组件工厂。请使用可以直接使用 Component 类的其他 API。
+ *
  */
 export abstract class ComponentFactory<C> {
   /**

@@ -81,10 +81,20 @@ export interface Injectable {
   /**
    * Determines which injectors will provide the injectable.
    *
+   * 确定哪些注入器将提供可注入。
+   *
    * - `Type<any>` - associates the injectable with an `@NgModule` or other `InjectorType`,
+   *
+   *   `Type<any>` - 将可注入物与 `@NgModule` 或其他 `InjectorType` 相关联，
+   *
    * - 'null' : Equivalent to `undefined`. The injectable is not provided in any scope automatically
-   * and must be added to a `providers` array of an [@NgModule](api/core/NgModule#providers),
-   * [@Component](api/core/Directive#providers) or [@Directive](api/core/Directive#providers).
+   *   and must be added to a `providers` array of an [@NgModule](api/core/NgModule#providers),
+   *   [@Component](api/core/Directive#providers) or [@Directive](api/core/Directive#providers).
+   *
+   *   'null' ：等效于 `undefined`
+   * 。可注入物不会在任何范围内自动提供，必须添加到[@NgModule](api/core/NgModule#providers) 、
+   * [@Component](api/core/Directive#providers)或[@Directive](api/core/Directive#providers)的
+   * `providers` 数组中。
    *
    * The following options specify that this injectable should be provided in one of the following
    * injectors:
@@ -97,14 +107,23 @@ export interface Injectable {
    *   'root'：在大多数应用程序中是指应用程序级注入器。
    *
    * - 'platform' : A special singleton platform injector shared by all
-   * applications on the page.
+   *   applications on the page.
    *
-   *     'platform' ：页面上所有应用程序共享的平台注入器的特殊单例。
+   *   'platform' ：由页面上所有应用程序共享的特殊单例平台注入器。
+   *
+   *   ```
+   *   'platform' ：页面上所有应用程序共享的平台注入器的特殊单例。
+   *   ```
    *
    * - 'any' : Provides a unique instance in each lazy loaded module while all eagerly loaded
-   * modules share one instance.
+   *   modules share one instance.
    *
-   *     'any'：在每个惰性加载的模块中提供一个唯一的实例，而所有急性加载的模块共享一个实例。
+   *   'any' ：在每个延迟加载的模块中提供一个唯一实例，而所有热切加载的模块共享一个实例。
+   *
+   *   ```
+   *   'any'：在每个惰性加载的模块中提供一个唯一的实例，而所有急性加载的模块共享一个实例。
+   *   ```
+   *
    */
   providedIn?: Type<any>|'root'|'platform'|'any'|null;
 }

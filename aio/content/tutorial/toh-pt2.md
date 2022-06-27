@@ -10,6 +10,8 @@ In this page, you'll expand the Tour of Heroes application to display a list of 
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
+  要查看本页所讲的范例程序，参阅<live-example></live-example>。
+
 </div>
 
 ## Create mock heroes
@@ -63,9 +65,15 @@ Open the `HeroesComponent` template file and make the following changes:
 
 1. Below it add an HTML unordered list (`<ul>`) element.
 
+   在它下面添加一个 HTML 无序列表 ( `<ul>` ) 元素。
+
 1. Insert an `<li>` within the `<ul>`.
 
+   在 `<ul>` 中插入 `<li>` > 。
+
 1. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
+
+   在 `<ul>` 中放一个 `<li>` 元素，以显示单个 `hero` 的属性。
 
 1. Sprinkle some CSS classes for styling (you'll add the CSS styles shortly).
 
@@ -97,13 +105,18 @@ The syntax in this example is as follows:
 | :----- | :------ |
 | 语法 | 详情 |
 | `<li>` | The host element. |
+| `<li>` | 宿主元素。 |
 | `heroes` | Holds the mock heroes list from the `HeroesComponent` class, the mock heroes list. |
+| `heroes` | 来自 `HeroesComponent` 类的存放模拟（mock）英雄的列表。 |
 | `hero` | Holds the current hero object for each iteration through the list. |
+| `hero` | 保存列表每次迭代的当前 hero 对象。 |
 
 <div class="alert is-important">
 
 Don't forget the asterisk (`*`) character in front of `ngFor`.
 It's a critical part of the syntax.
+
+不要忘了 `ngFor` 前面的星号（`*`），它是该语法中的关键部分。
 
 </div>
 
@@ -115,10 +128,16 @@ After the browser refreshes, the list of heroes appears.
 
 <header>Interactive elements</header>
 
+<header>交互元素</header>
+
 **NOTE**: <br />
 Inside the `<li>` element, we've wrapped the hero's details in a `<button>` element. Later on we make the hero clickable, and it is better for accessibility purposes to use natively interactive HTML elements (e.g. `<button>`) instead of adding event listeners to non-interactive ones (e.g. `<li>`).
 
+**注**：<br />在 `<li>` 元素中，我们将英雄的详细信息包装在 `<button>` 元素中。稍后我们使 hero 可点击，并且出于可访问性的目的，最好使用本机交互式 HTML 元素（例如 `<button>` ），而不是向非交互式元素添加事件侦听器（例如 `<li>` ）。
+
 For more details on accessibility, see [Accessibility in Angular](guide/accessibility).
+
+有关可访问性的更多详细信息，请参阅[Angular](guide/accessibility)中的可访问性。
 
 </div>
 
@@ -156,12 +175,15 @@ You define private styles either inline in the `@Component.styles` array or as s
 
 When the CLI generated the `HeroesComponent`, it created an empty `heroes.component.css` stylesheet for the `HeroesComponent` and pointed to it in `@Component.styleUrls` like this.
 
-当 CLI 生成 `HeroesComponent` 时，它也同时为 `HeroesComponent` 创建了空白的 `heroes.component.css` 样式表文件，并且让 `@Component.styleUrls` 指向它，就像这样：。
+当 CLI 生成 `HeroesComponent` 时，它也同时为 `HeroesComponent` 创建了空白的 `heroes.component.css` 样式表文件，并且让 `@Component.styleUrls` 指向它，就像这样。
 
 <code-example header="src/app/heroes/heroes.component.ts (@Component)" path="toh-pt2/src/app/heroes/heroes.component.ts" region="metadata"></code-example>
 
 Open the `heroes.component.css` file and paste in the private CSS styles for the `HeroesComponent`.
 You'll find them in the [final code review](#final-code-review) at the bottom of this guide.
+
+打开 `heroes.component.css` 文件，并且把 `HeroesComponent` 的私有 CSS 样式粘贴进去。
+你可以在本指南底部的[查看最终代码](#final-code-review)中找到它们。
 
 <div class="alert is-important">
 
@@ -182,11 +204,15 @@ When the user clicks a hero in the list, the component should display the select
 
 In this section, you'll listen for the hero item click event and display/update the hero details.
 
+在本节，你将监听英雄条目的点击事件，并显示与更新英雄的详情。
+
 ### Add a click event binding
 
 ### 添加 `click` 事件绑定
 
 Add a click event binding to the `<button>` in the `<li>` like this:
+
+为 `<li>` 中的 `<button>` 上添加一个点击事件的绑定代码：
 
 <code-example header="heroes.component.html (template excerpt)" path="toh-pt2/src/app/heroes/heroes.component.1.html" region="selectedHero-click"></code-example>
 
@@ -197,6 +223,9 @@ This is an example of Angular's [event binding](guide/event-binding) syntax.
 The parentheses around `click` tell Angular to listen for the `<button>` element's `click` event.
 When the user clicks in the `<button>`, Angular executes the `onSelect(hero)` expression.
 
+`click` 外面的圆括号会让 Angular 监听这个 `<button>` 元素的 `click` 事件。
+当用户点击 `<button>` 时，Angular 就会执行表达式 `onSelect(hero)`。
+
 In the next section, define an `onSelect()` method in `HeroesComponent` to display the hero that was defined in the `*ngFor` expression.
 
 下一部分，会在 `HeroesComponent` 上定义一个 `onSelect()` 方法，用来显示 `*ngFor` 表达式所定义的那个英雄（`hero`）。
@@ -206,6 +235,9 @@ In the next section, define an `onSelect()` method in `HeroesComponent` to displ
 ### 添加 `click` 事件处理器
 
 Rename the component's `hero` property to `selectedHero` but don't assign any value to it since there is no *selected hero* when the application starts.
+
+把该组件的 `hero` 属性改名为 `selectedHero`，但不要为它赋值。
+因为应用刚刚启动时并没有*所选英雄*。
 
 Add the following `onSelect()` method, which assigns the clicked hero from the template to the component's `selectedHero`.
 
@@ -227,10 +259,14 @@ Add the following to `heroes.component.html` beneath the list section:
 
 The hero details should only be displayed when a hero is selected. When a component is created initially, there is no selected hero, so we add the `*ngIf` directive to the `<div>` that wraps the hero details, to instruct Angular to render the section only when the `selectedHero` is actually defined (after it has been selected by clicking on a hero).
 
+只有在选择英雄时才会显示英雄详细信息。最初创建组件时，没有所选的 hero ，因此我们将 `*ngIf` 指令添加到包装 hero 详细信息的 `<div>` 中，以指示 Angular 仅在实际定义 `selectedHero` 时（在它被通过点击英雄来选择）。
+
 <div class="alert is-important">
 
 Don't forget the asterisk (`*`) character in front of `ngIf`.
 It's a critical part of the syntax.
+
+不要忘了 `ngIf` 前面的星号（`*`），它是该语法中的关键部分。
 
 </div>
 
@@ -241,6 +277,8 @@ It's a critical part of the syntax.
 To help identify the selected hero, you can use the `.selected` CSS class in the [styles you added earlier](#styles).
 To apply the `.selected` class to the `<li>` when the user clicks it, use class binding.
 
+为了标出选定的英雄，你可以在[以前添加过的样式中](#styles)增加 CSS 类 `.selected`。若要把 `.selected` 类应用于此 `<li>` 上，请使用类绑定。
+
 <div class="lightbox">
 
 <img alt="Selected hero with dark background and light text that differentiates it from unselected list items" src="generated/images/guide/toh/heroes-list-selected.png">
@@ -250,7 +288,11 @@ To apply the `.selected` class to the `<li>` when the user clicks it, use class 
 Angular's [class binding](guide/class-binding) can add and remove a CSS class conditionally.
 Add `[class.some-css-class]="some-condition"` to the element you want to style.
 
+Angular 的[类绑定](guide/class-binding)可以有条件地添加和删除 CSS 类。只需将 `[class.some-css-class]="some-condition"` 添加到要设置样式的元素即可。
+
 Add the following `[class.selected]` binding to the `<button>` in the `HeroesComponent` template:
+
+在 `HeroesComponent` 模板中的 `<button>` 元素上添加 `[class.selected]` 绑定，代码如下：
 
 <code-example header="heroes.component.html (toggle the 'selected' CSS class)" path="toh-pt2/src/app/heroes/heroes.component.1.html" region="class-selected"></code-example>
 

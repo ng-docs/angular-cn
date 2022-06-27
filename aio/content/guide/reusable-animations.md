@@ -8,7 +8,7 @@ This topic provides some examples of how to create reusable animations.
 
 ## Prerequisites
 
-## 先决条件
+## 前提条件
 
 Before continuing with this topic, you should be familiar with the following:
 
@@ -29,6 +29,8 @@ Before continuing with this topic, you should be familiar with the following:
 To create a reusable animation, use the [`animation()`](api/animations/animation) function to define an animation in a separate `.ts` file and declare this animation definition as a `const` export variable.
 You can then import and reuse this animation in any of your application components using the [`useAnimation()`](api/animations/useAnimation) function.
 
+要想创建可复用的动画，请使用 [`animation()`](api/animations/animation) 方法来在独立的 `.ts` 文件中定义动画，并把该动画的定义声明为一个导出的 `const` 变量。然后你就可以在应用的组件代码中通过 [`useAnimation()`](api/animations/useAnimation) 来导入并复用它了。
+
 <code-example header="src/app/animations.ts" path="animations/src/app/animations.1.ts" region="animation-const"></code-example>
 
 In the preceding code snippet, `transitionAnimation` is made reusable by declaring it as an export variable.
@@ -39,6 +41,9 @@ In the preceding code snippet, `transitionAnimation` is made reusable by declari
 
 **NOTE**: <br />
 The `height`, `opacity`, `backgroundColor`, and `time` inputs are replaced during runtime.
+
+**注意**：<br />
+`height`、`opacity`、`backgroundColor` 和 `time` 这几个输入项会在运行期间被替换掉。
 
 </div>
 

@@ -9,7 +9,12 @@
 import {dirname, resolve} from 'path';
 import ts from 'typescript';
 
-/** Update recorder for managing imports. */
+/**
+ * Update recorder for managing imports.
+ *
+ * 用于管理导入的更新记录器。
+ *
+ */
 export interface ImportManagerUpdateRecorder {
   addNewImport(start: number, importText: string): void;
   updateExistingImport(namedBindings: ts.NamedImports, newNamedBindings: string): void;
@@ -19,16 +24,33 @@ export interface ImportManagerUpdateRecorder {
  * Import manager that can be used to add TypeScript imports to given source
  * files. The manager ensures that multiple transformations are applied properly
  * without shifted offsets and that similar existing import declarations are re-used.
+ *
+ * 可用于将 TypeScript
+ * 导入添加到给定源文件的导入管理器。管理器确保在不偏移偏移的情况下正确应用多重转换，并且重新使用类似的现有导入声明。
+ *
  */
 export class ImportManager {
-  /** Map of import declarations that need to be updated to include the given symbols. */
+  /**
+   * Map of import declarations that need to be updated to include the given symbols.
+   *
+   * 需要更新以包含给定符号的导入声明映射表。
+   *
+   */
   private updatedImports =
       new Map<ts.ImportDeclaration, {propertyName?: ts.Identifier, importName: ts.Identifier}[]>();
-  /** Map of source-files and their previously used identifier names. */
+  /**
+   * Map of source-files and their previously used identifier names.
+   *
+   * 源文件及其以前使用的标识符名称的映射。
+   *
+   */
   private usedIdentifierNames = new Map<ts.SourceFile, string[]>();
   /**
    * Array of previously resolved symbol imports. Cache can be re-used to return
    * the same identifier without checking the source-file again.
+   *
+   * 以前解析的符号导入的数组。缓存可以重用以返回相同的标识符，而无需再次检查源文件。
+   *
    */
   private importCache: {
     sourceFile: ts.SourceFile,
@@ -44,6 +66,9 @@ export class ImportManager {
   /**
    * Adds an import to the given source-file and returns the TypeScript
    * identifier that can be used to access the newly imported symbol.
+   *
+   * 添加对给定 source-file 的导入，并返回可用于访问新导入的符号的 TypeScript 标识符。
+   *
    */
   addImportToSourceFile(
       sourceFile: ts.SourceFile, symbolName: string|null, moduleName: string,
@@ -181,6 +206,9 @@ export class ImportManager {
    * Stores the collected import changes within the appropriate update recorders. The
    * updated imports can only be updated *once* per source-file because previous updates
    * could otherwise shift the source-file offsets.
+   *
+   * 将收集的导入更改存储在适当的更新记录器中。每个源文件只能更新*一次*更新的导入，因为以前的更新可能会移动源文件的偏移量。
+   *
    */
   recordChanges() {
     this.updatedImports.forEach((expressions, importDecl) => {
@@ -199,7 +227,12 @@ export class ImportManager {
     });
   }
 
-  /** Gets an unique identifier with a base name for the given source file. */
+  /**
+   * Gets an unique identifier with a base name for the given source file.
+   *
+   * 获取具有给定源文件的基本名称的唯一标识符。
+   *
+   */
   private _getUniqueIdentifier(sourceFile: ts.SourceFile, baseName: string): ts.Identifier {
     if (this.isUniqueIdentifierName(sourceFile, baseName)) {
       this._recordUsedIdentifier(sourceFile, baseName);
@@ -219,6 +252,9 @@ export class ImportManager {
   /**
    * Checks whether the specified identifier name is used within the given
    * source file.
+   *
+   * 检查给定的源文件中是否使用了指定的标识符名称。
+   *
    */
   private isUniqueIdentifierName(sourceFile: ts.SourceFile, name: string) {
     if (this.usedIdentifierNames.has(sourceFile) &&
@@ -248,6 +284,9 @@ export class ImportManager {
   /**
    * Determines the full end of a given node. By default the end position of a node is
    * before all trailing comments. This could mean that generated imports shift comments.
+   *
+   * 确定给定节点的完整结尾。默认情况下，节点的结束位置在所有尾随注释之前。这可能意味着生成的导入会转移注释。
+   *
    */
   private _getEndPositionOfNode(node: ts.Node) {
     const nodeEndPos = node.getEnd();

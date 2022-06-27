@@ -24,6 +24,8 @@ The `HeroDetailComponent` will present details of a selected hero.
 
   For the sample application that this page describes, see the <live-example></live-example>.
 
+  要查看本页所讲的范例程序，参阅<live-example></live-example>。
+
 </div>
 
 ## Make the `HeroDetailComponent`
@@ -113,6 +115,8 @@ The `hero` property
 annotated with the `@Input()` decorator,
 because the *external* `HeroesComponent` [will bind to it](#heroes-component-template) like this.
 
+`hero` 属性[必须是一个带有 `@Input()` 装饰器的输入属性](guide/inputs-outputs "Input and Output properties")，因为*外部的* `HeroesComponent` 组件[将会绑定到它](#heroes-component-template)。就像这样：
+
 <code-example path="toh-pt3/src/app/heroes/heroes.component.html" region="hero-detail-binding"></code-example>
 
 Amend the `@angular/core` import statement to include the `Input` symbol.
@@ -166,7 +170,7 @@ Add an `<app-hero-detail>` element near the bottom of the `HeroesComponent` temp
 
 Bind the `HeroesComponent.selectedHero` to the element's `hero` property like this.
 
-把 `HeroesComponent.selectedHero` 绑定到该元素的 `hero` 属性，就像这样：。
+把 `HeroesComponent.selectedHero` 绑定到该元素的 `hero` 属性，就像这样。
 
 <code-example header="heroes.component.html (HeroDetail binding)" path="toh-pt3/src/app/heroes/heroes.component.html" region="hero-detail-binding"></code-example>
 
@@ -233,7 +237,7 @@ Refactoring the original `HeroesComponent` into two components yields benefits, 
 
 Here are the code files discussed on this page.
 
-下面是本页所提到的源代码：。
+下面是本页所提到的源代码。
 
 <code-tabs>
 

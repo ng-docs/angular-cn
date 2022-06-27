@@ -19,7 +19,12 @@ import {addErrorsToBundle, addParseDiagnostic, addParseError, canParseXml, getAt
 /**
  * A translation parser that can load XTB files.
  *
- * http://cldr.unicode.org/development/development-process/design-proposals/xmb
+ * 可以加载 XTB 文件的翻译解析器。
+ *
+ * <http://cldr.unicode.org/development/development-process/design-proposals/xmb>
+ *
+ * [http://cldr.unicode.org/ development/
+ * development-process/design-proposals/xmb](http://cldr.unicode.org/development/development-process/design-proposals/xmb)
  *
  * @see XmbTranslationSerializer
  * @publicApi used by CLI
