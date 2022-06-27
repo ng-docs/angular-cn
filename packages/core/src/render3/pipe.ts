@@ -8,10 +8,11 @@
 
 import {PipeTransform} from '../change_detection/pipe_transform';
 import {setInjectImplementation} from '../di/inject_switch';
+import {RuntimeError, RuntimeErrorCode} from '../errors';
+import {Type} from '../interface/type';
 
 import {getFactoryDef} from './definition_factory';
 import {setIncludeViewProviders} from './di';
-import {RuntimeError, RuntimeErrorCode} from './error_code';
 import {store, ɵɵdirectiveInject} from './instructions/all';
 import {PipeDef, PipeDefList} from './interfaces/definition';
 import {CONTEXT, DECLARATION_COMPONENT_VIEW, HEADER_OFFSET, LView, TVIEW} from './interfaces/view';
@@ -83,7 +84,7 @@ function getPipeDef(name: string, registry: PipeDefList|null): PipeDef<any>|unde
   }
   if (ngDevMode) {
     const lView = getLView();
-    const declarationLView = lView[DECLARATION_COMPONENT_VIEW];
+    const declarationLView = lView[DECLARATION_COMPONENT_VIEW] as LView<Type<unknown>>;
     const context = declarationLView[CONTEXT];
     const component = context ? ` in the '${context.constructor.name}' component` : '';
     throw new RuntimeError(

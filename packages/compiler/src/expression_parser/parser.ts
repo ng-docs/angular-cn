@@ -8,9 +8,10 @@
 
 import * as chars from '../chars';
 import {DEFAULT_INTERPOLATION_CONFIG, InterpolationConfig} from '../ml_parser/interpolation_config';
+import {InterpolatedAttributeToken, InterpolatedTextToken, TokenType as MlParserTokenType} from '../ml_parser/tokens';
 
-import {AbsoluteSourceSpan, AST, AstVisitor, ASTWithSource, Binary, BindingPipe, Call, Chain, Conditional, EmptyExpr, ExpressionBinding, ImplicitReceiver, Interpolation, KeyedRead, KeyedWrite, LiteralArray, LiteralMap, LiteralMapKey, LiteralPrimitive, NonNullAssert, ParserError, ParseSpan, PrefixNot, PropertyRead, PropertyWrite, Quote, RecursiveAstVisitor, SafeKeyedRead, SafePropertyRead, TemplateBinding, TemplateBindingIdentifier, ThisReceiver, Unary, VariableBinding} from './ast';
-import {EOF, isIdentifier, Lexer, Token, TokenType} from './lexer';
+import {AbsoluteSourceSpan, AST, ASTWithSource, Binary, BindingPipe, Call, Chain, Conditional, EmptyExpr, ExpressionBinding, ImplicitReceiver, Interpolation, KeyedRead, KeyedWrite, LiteralArray, LiteralMap, LiteralMapKey, LiteralPrimitive, NonNullAssert, ParserError, ParseSpan, PrefixNot, PropertyRead, PropertyWrite, RecursiveAstVisitor, SafeCall, SafeKeyedRead, SafePropertyRead, TemplateBinding, TemplateBindingIdentifier, ThisReceiver, Unary, VariableBinding} from './ast';
+import {EOF, Lexer, Token, TokenType} from './lexer';
 
 export interface InterpolationPiece {
   text: string;
@@ -29,23 +30,41 @@ export class TemplateBindingParseResult {
       public errors: ParserError[]) {}
 }
 
+/**
+ * Represents the possible parse modes to be used as a bitmask.
+ */
+export const enum ParseFlags {
+  None = 0,
+
+  /**
+   * Whether an output binding is being parsed.
+   */
+  Action = 1 << 0,
+
+  /**
+   * Whether an assignment event is being parsed, i.e. an expression originating from
+   * two-way-binding aka banana-in-a-box syntax.
+   */
+  AssignmentEvent = 1 << 1,
+}
+
 export class Parser {
   private errors: ParserError[] = [];
 
   constructor(private _lexer: Lexer) {}
 
-  simpleExpressionChecker = SimpleExpressionChecker;
-
   parseAction(
-      input: string, location: string, absoluteOffset: number,
+      input: string, isAssignmentEvent: boolean, location: string, absoluteOffset: number,
       interpolationConfig: InterpolationConfig = DEFAULT_INTERPOLATION_CONFIG): ASTWithSource {
     this._checkNoInterpolation(input, location, interpolationConfig);
     const sourceToLex = this._stripComments(input);
-    const tokens = this._lexer.tokenize(this._stripComments(input));
-    const ast = new _ParseAST(
-                    input, location, absoluteOffset, tokens, sourceToLex.length, true, this.errors,
-                    input.length - sourceToLex.length)
-                    .parseChain();
+    const tokens = this._lexer.tokenize(sourceToLex);
+    let flags = ParseFlags.Action;
+    if (isAssignmentEvent) {
+      flags |= ParseFlags.AssignmentEvent;
+    }
+    const ast =
+        new _ParseAST(input, location, absoluteOffset, tokens, flags, this.errors, 0).parseChain();
     return new ASTWithSource(ast, input, location, absoluteOffset, this.errors);
   }
 
@@ -57,7 +76,7 @@ export class Parser {
   }
 
   private checkSimpleExpression(ast: AST): string[] {
-    const checker = new this.simpleExpressionChecker();
+    const checker = new SimpleExpressionChecker();
     ast.visit(checker);
     return checker.errors;
   }
@@ -81,33 +100,11 @@ export class Parser {
   private _parseBindingAst(
       input: string, location: string, absoluteOffset: number,
       interpolationConfig: InterpolationConfig): AST {
-    // Quotes expressions use 3rd-party expression language. We don't want to use
-    // our lexer or parser for that, so we check for that ahead of time.
-    const quote = this._parseQuote(input, location, absoluteOffset);
-
-    if (quote != null) {
-      return quote;
-    }
-
     this._checkNoInterpolation(input, location, interpolationConfig);
     const sourceToLex = this._stripComments(input);
     const tokens = this._lexer.tokenize(sourceToLex);
-    return new _ParseAST(
-               input, location, absoluteOffset, tokens, sourceToLex.length, false, this.errors,
-               input.length - sourceToLex.length)
+    return new _ParseAST(input, location, absoluteOffset, tokens, ParseFlags.None, this.errors, 0)
         .parseChain();
-  }
-
-  private _parseQuote(input: string|null, location: string, absoluteOffset: number): AST|null {
-    if (input == null) return null;
-    const prefixSeparatorIndex = input.indexOf(':');
-    if (prefixSeparatorIndex == -1) return null;
-    const prefix = input.substring(0, prefixSeparatorIndex).trim();
-    if (!isIdentifier(prefix)) return null;
-    const uninterpretedExpression = input.substring(prefixSeparatorIndex + 1);
-    const span = new ParseSpan(0, input.length);
-    return new Quote(
-        span, span.toAbsolute(absoluteOffset), prefix, uninterpretedExpression, location);
   }
 
   /**
@@ -141,8 +138,8 @@ export class Parser {
       absoluteValueOffset: number): TemplateBindingParseResult {
     const tokens = this._lexer.tokenize(templateValue);
     const parser = new _ParseAST(
-        templateValue, templateUrl, absoluteValueOffset, tokens, templateValue.length,
-        false /* parseAction */, this.errors, 0 /* relative offset */);
+        templateValue, templateUrl, absoluteValueOffset, tokens, ParseFlags.None, this.errors,
+        0 /* relative offset */);
     return parser.parseTemplateBindings({
       source: templateKey,
       span: new AbsoluteSourceSpan(absoluteKeyOffset, absoluteKeyOffset + templateKey.length),
@@ -151,9 +148,10 @@ export class Parser {
 
   parseInterpolation(
       input: string, location: string, absoluteOffset: number,
+      interpolatedTokens: InterpolatedAttributeToken[]|InterpolatedTextToken[]|null,
       interpolationConfig: InterpolationConfig = DEFAULT_INTERPOLATION_CONFIG): ASTWithSource|null {
     const {strings, expressions, offsets} =
-        this.splitInterpolation(input, location, interpolationConfig);
+        this.splitInterpolation(input, location, interpolatedTokens, interpolationConfig);
     if (expressions.length === 0) return null;
 
     const expressionNodes: AST[] = [];
@@ -162,10 +160,10 @@ export class Parser {
       const expressionText = expressions[i].text;
       const sourceToLex = this._stripComments(expressionText);
       const tokens = this._lexer.tokenize(sourceToLex);
-      const ast = new _ParseAST(
-                      input, location, absoluteOffset, tokens, sourceToLex.length, false,
-                      this.errors, offsets[i] + (expressionText.length - sourceToLex.length))
-                      .parseChain();
+      const ast =
+          new _ParseAST(
+              input, location, absoluteOffset, tokens, ParseFlags.None, this.errors, offsets[i])
+              .parseChain();
       expressionNodes.push(ast);
     }
 
@@ -182,10 +180,9 @@ export class Parser {
       ASTWithSource {
     const sourceToLex = this._stripComments(expression);
     const tokens = this._lexer.tokenize(sourceToLex);
-    const ast = new _ParseAST(
-                    expression, location, absoluteOffset, tokens, sourceToLex.length,
-                    /* parseAction */ false, this.errors, 0)
-                    .parseChain();
+    const ast =
+        new _ParseAST(expression, location, absoluteOffset, tokens, ParseFlags.None, this.errors, 0)
+            .parseChain();
     const strings = ['', ''];  // The prefix and suffix strings are both empty
     return this.createInterpolationAst(strings, [ast], expression, location, absoluteOffset);
   }
@@ -208,10 +205,13 @@ export class Parser {
    */
   splitInterpolation(
       input: string, location: string,
+      interpolatedTokens: InterpolatedAttributeToken[]|InterpolatedTextToken[]|null,
       interpolationConfig: InterpolationConfig = DEFAULT_INTERPOLATION_CONFIG): SplitInterpolation {
     const strings: InterpolationPiece[] = [];
     const expressions: InterpolationPiece[] = [];
     const offsets: number[] = [];
+    const inputToTemplateIndexMap =
+        interpolatedTokens ? getIndexMapForOriginalTemplate(interpolatedTokens) : null;
     let i = 0;
     let atInterpolation = false;
     let extendLastString = false;
@@ -249,7 +249,9 @@ export class Parser {
               `at column ${i} in`, location);
         }
         expressions.push({text, start: fullStart, end: fullEnd});
-        offsets.push(exprStart);
+        const startInOriginalTemplate = inputToTemplateIndexMap?.get(fullStart) ?? fullStart;
+        const offset = startInOriginalTemplate + interpStart.length;
+        offsets.push(offset);
 
         i = fullEnd;
         atInterpolation = false;
@@ -278,7 +280,7 @@ export class Parser {
 
   private _stripComments(input: string): string {
     const i = this._commentStart(input);
-    return i != null ? input.substring(0, i).trim() : input;
+    return i != null ? input.substring(0, i) : input;
   }
 
   private _commentStart(input: string): number|null {
@@ -366,10 +368,6 @@ export class Parser {
   }
 }
 
-export class IvyParser extends Parser {
-  override simpleExpressionChecker = IvySimpleExpressionChecker;
-}
-
 /** Describes a stateful context an expression parser is in. */
 enum ParseContextFlags {
   None = 0,
@@ -399,8 +397,8 @@ export class _ParseAST {
 
   constructor(
       public input: string, public location: string, public absoluteOffset: number,
-      public tokens: Token[], public inputLength: number, public parseAction: boolean,
-      private errors: ParserError[], private offset: number) {}
+      public tokens: Token[], public parseFlags: ParseFlags, private errors: ParserError[],
+      private offset: number) {}
 
   peek(offset: number): Token {
     const i = this.index + offset;
@@ -436,7 +434,7 @@ export class _ParseAST {
     // No tokens have been processed yet; return the next token's start or the length of the input
     // if there is no token.
     if (this.tokens.length === 0) {
-      return this.inputLength + this.offset;
+      return this.input.length + this.offset;
     }
     return this.next.index + this.offset;
   }
@@ -582,7 +580,7 @@ export class _ParseAST {
       exprs.push(expr);
 
       if (this.consumeOptionalCharacter(chars.$SEMICOLON)) {
-        if (!this.parseAction) {
+        if (!(this.parseFlags & ParseFlags.Action)) {
           this.error('Binding expression cannot contain chained expression');
         }
         while (this.consumeOptionalCharacter(chars.$SEMICOLON)) {
@@ -594,7 +592,7 @@ export class _ParseAST {
     if (exprs.length == 0) {
       // We have no expressions so create an empty expression that spans the entire input length
       const artificialStart = this.offset;
-      const artificialEnd = this.offset + this.inputLength;
+      const artificialEnd = this.offset + this.input.length;
       return new EmptyExpr(
           this.span(artificialStart, artificialEnd),
           this.sourceSpan(artificialStart, artificialEnd));
@@ -607,7 +605,7 @@ export class _ParseAST {
     const start = this.inputIndex;
     let result = this.parseExpression();
     if (this.consumeOptionalOperator('|')) {
-      if (this.parseAction) {
+      if (this.parseFlags & ParseFlags.Action) {
         this.error('Cannot have a pipe in an action expression');
       }
 
@@ -630,7 +628,7 @@ export class _ParseAST {
           //
           // Therefore, we push the end of the `ParseSpan` for this pipe all the way up to the
           // beginning of the next token, or until the end of input if the next token is EOF.
-          fullSpanEnd = this.next.index !== -1 ? this.next.index : this.inputLength + this.offset;
+          fullSpanEnd = this.next.index !== -1 ? this.next.index : this.input.length + this.offset;
 
           // The `nameSpan` for an empty pipe name is zero-length at the end of any whitespace
           // beyond the pipe character.
@@ -819,23 +817,19 @@ export class _ParseAST {
     let result = this.parsePrimary();
     while (true) {
       if (this.consumeOptionalCharacter(chars.$PERIOD)) {
-        result = this.parseAccessMemberOrCall(result, start, false);
-
+        result = this.parseAccessMember(result, start, false);
       } else if (this.consumeOptionalOperator('?.')) {
-        result = this.consumeOptionalCharacter(chars.$LBRACKET) ?
-            this.parseKeyedReadOrWrite(result, start, true) :
-            this.parseAccessMemberOrCall(result, start, true);
+        if (this.consumeOptionalCharacter(chars.$LPAREN)) {
+          result = this.parseCall(result, start, true);
+        } else {
+          result = this.consumeOptionalCharacter(chars.$LBRACKET) ?
+              this.parseKeyedReadOrWrite(result, start, true) :
+              this.parseAccessMember(result, start, true);
+        }
       } else if (this.consumeOptionalCharacter(chars.$LBRACKET)) {
         result = this.parseKeyedReadOrWrite(result, start, false);
       } else if (this.consumeOptionalCharacter(chars.$LPAREN)) {
-        const argumentStart = this.inputIndex;
-        this.rparensExpected++;
-        const args = this.parseCallArguments();
-        const argumentSpan =
-            this.span(argumentStart, this.inputIndex).toAbsolute(this.absoluteOffset);
-        this.rparensExpected--;
-        this.expectCharacter(chars.$RPAREN);
-        result = new Call(this.span(start), this.sourceSpan(start), result, args, argumentSpan);
+        result = this.parseCall(result, start, false);
       } else if (this.consumeOptionalOperator('!')) {
         result = new NonNullAssert(this.span(start), this.sourceSpan(start), result);
 
@@ -884,9 +878,8 @@ export class _ParseAST {
       return this.parseLiteralMap();
 
     } else if (this.next.isIdentifier()) {
-      return this.parseAccessMemberOrCall(
+      return this.parseAccessMember(
           new ImplicitReceiver(this.span(start), this.sourceSpan(start)), start, false);
-
     } else if (this.next.isNumber()) {
       const value = this.next.toNumber();
       this.advance();
@@ -955,7 +948,7 @@ export class _ParseAST {
     return new LiteralMap(this.span(start), this.sourceSpan(start), keys, values);
   }
 
-  parseAccessMemberOrCall(readReceiver: AST, start: number, isSafe: boolean): AST {
+  parseAccessMember(readReceiver: AST, start: number, isSafe: boolean): AST {
     const nameStart = this.inputIndex;
     const id = this.withContext(ParseContextFlags.Writable, () => {
       const id = this.expectIdentifierOrKeyword() ?? '';
@@ -968,7 +961,7 @@ export class _ParseAST {
     let receiver: AST;
 
     if (isSafe) {
-      if (this.consumeOptionalOperator('=')) {
+      if (this.consumeOptionalAssignment()) {
         this.error('The \'?.\' operator cannot be used in the assignment');
         receiver = new EmptyExpr(this.span(start), this.sourceSpan(start));
       } else {
@@ -976,8 +969,8 @@ export class _ParseAST {
             this.span(start), this.sourceSpan(start), nameSpan, readReceiver, id);
       }
     } else {
-      if (this.consumeOptionalOperator('=')) {
-        if (!this.parseAction) {
+      if (this.consumeOptionalAssignment()) {
+        if (!(this.parseFlags & ParseFlags.Action)) {
           this.error('Bindings cannot contain assignments');
           return new EmptyExpr(this.span(start), this.sourceSpan(start));
         }
@@ -991,20 +984,38 @@ export class _ParseAST {
       }
     }
 
-    if (this.consumeOptionalCharacter(chars.$LPAREN)) {
-      const argumentStart = this.inputIndex;
-      this.rparensExpected++;
-      const args = this.parseCallArguments();
-      const argumentSpan =
-          this.span(argumentStart, this.inputIndex).toAbsolute(this.absoluteOffset);
-      this.expectCharacter(chars.$RPAREN);
-      this.rparensExpected--;
-      const span = this.span(start);
-      const sourceSpan = this.sourceSpan(start);
-      return new Call(span, sourceSpan, receiver, args, argumentSpan);
+    return receiver;
+  }
+
+  parseCall(receiver: AST, start: number, isSafe: boolean): AST {
+    const argumentStart = this.inputIndex;
+    this.rparensExpected++;
+    const args = this.parseCallArguments();
+    const argumentSpan = this.span(argumentStart, this.inputIndex).toAbsolute(this.absoluteOffset);
+    this.expectCharacter(chars.$RPAREN);
+    this.rparensExpected--;
+    const span = this.span(start);
+    const sourceSpan = this.sourceSpan(start);
+    return isSafe ? new SafeCall(span, sourceSpan, receiver, args, argumentSpan) :
+                    new Call(span, sourceSpan, receiver, args, argumentSpan);
+  }
+
+  private consumeOptionalAssignment(): boolean {
+    // When parsing assignment events (originating from two-way-binding aka banana-in-a-box syntax),
+    // it is valid for the primary expression to be terminated by the non-null operator. This
+    // primary expression is substituted as LHS of the assignment operator to achieve
+    // two-way-binding, such that the LHS could be the non-null operator. The grammar doesn't
+    // naturally allow for this syntax, so assignment events are parsed specially.
+    if ((this.parseFlags & ParseFlags.AssignmentEvent) && this.next.isOperator('!') &&
+        this.peek(1).isOperator('=')) {
+      // First skip over the ! operator.
+      this.advance();
+      // Then skip over the = operator, to fully consume the optional assignment operator.
+      this.advance();
+      return true;
     }
 
-    return receiver;
+    return this.consumeOptionalOperator('=');
   }
 
   parseCallArguments(): BindingPipe[] {
@@ -1303,73 +1314,45 @@ export class _ParseAST {
   }
 }
 
-class SimpleExpressionChecker implements AstVisitor {
-  errors: string[] = [];
-
-  visitImplicitReceiver(ast: ImplicitReceiver, context: any) {}
-
-  visitThisReceiver(ast: ThisReceiver, context: any) {}
-
-  visitInterpolation(ast: Interpolation, context: any) {}
-
-  visitLiteralPrimitive(ast: LiteralPrimitive, context: any) {}
-
-  visitPropertyRead(ast: PropertyRead, context: any) {}
-
-  visitPropertyWrite(ast: PropertyWrite, context: any) {}
-
-  visitSafePropertyRead(ast: SafePropertyRead, context: any) {}
-
-  visitCall(ast: Call, context: any) {}
-
-  visitLiteralArray(ast: LiteralArray, context: any) {
-    this.visitAll(ast.expressions, context);
-  }
-
-  visitLiteralMap(ast: LiteralMap, context: any) {
-    this.visitAll(ast.values, context);
-  }
-
-  visitUnary(ast: Unary, context: any) {}
-
-  visitBinary(ast: Binary, context: any) {}
-
-  visitPrefixNot(ast: PrefixNot, context: any) {}
-
-  visitNonNullAssert(ast: NonNullAssert, context: any) {}
-
-  visitConditional(ast: Conditional, context: any) {}
-
-  visitPipe(ast: BindingPipe, context: any) {
-    this.errors.push('pipes');
-  }
-
-  visitKeyedRead(ast: KeyedRead, context: any) {}
-
-  visitKeyedWrite(ast: KeyedWrite, context: any) {}
-
-  visitAll(asts: any[], context: any): any[] {
-    return asts.map(node => node.visit(this, context));
-  }
-
-  visitChain(ast: Chain, context: any) {}
-
-  visitQuote(ast: Quote, context: any) {}
-
-  visitSafeKeyedRead(ast: SafeKeyedRead, context: any) {}
-}
-
-/**
- * This class implements SimpleExpressionChecker used in View Engine and performs more strict checks
- * to make sure host bindings do not contain pipes. In View Engine, having pipes in host bindings is
- * not supported as well, but in some cases (like `!(value | async)`) the error is not triggered at
- * compile time. In order to preserve View Engine behavior, more strict checks are introduced for
- * Ivy mode only.
- */
-class IvySimpleExpressionChecker extends RecursiveAstVisitor implements SimpleExpressionChecker {
+class SimpleExpressionChecker extends RecursiveAstVisitor {
   errors: string[] = [];
 
   override visitPipe() {
     this.errors.push('pipes');
   }
+}
+/**
+ * Computes the real offset in the original template for indexes in an interpolation.
+ *
+ * Because templates can have encoded HTML entities and the input passed to the parser at this stage
+ * of the compiler is the _decoded_ value, we need to compute the real offset using the original
+ * encoded values in the interpolated tokens. Note that this is only a special case handling for
+ * `MlParserTokenType.ENCODED_ENTITY` token types. All other interpolated tokens are expected to
+ * have parts which exactly match the input string for parsing the interpolation.
+ *
+ * @param interpolatedTokens The tokens for the interpolated value.
+ *
+ * @returns A map of index locations in the decoded template to indexes in the original template
+ */
+function getIndexMapForOriginalTemplate(interpolatedTokens: InterpolatedAttributeToken[]|
+                                        InterpolatedTextToken[]): Map<number, number> {
+  let offsetMap = new Map<number, number>();
+  let consumedInOriginalTemplate = 0;
+  let consumedInInput = 0;
+  let tokenIndex = 0;
+  while (tokenIndex < interpolatedTokens.length) {
+    const currentToken = interpolatedTokens[tokenIndex];
+    if (currentToken.type === MlParserTokenType.ENCODED_ENTITY) {
+      const [decoded, encoded] = currentToken.parts;
+      consumedInOriginalTemplate += encoded.length;
+      consumedInInput += decoded.length;
+    } else {
+      const lengthOfParts = currentToken.parts.reduce((sum, current) => sum + current.length, 0);
+      consumedInInput += lengthOfParts;
+      consumedInOriginalTemplate += lengthOfParts;
+    }
+    offsetMap.set(consumedInInput, consumedInOriginalTemplate);
+    tokenIndex++;
+  }
+  return offsetMap;
 }

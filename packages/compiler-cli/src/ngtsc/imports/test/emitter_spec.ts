@@ -7,13 +7,13 @@
  */
 import {ExternalExpr} from '@angular/compiler';
 import ts from 'typescript';
-import {UnifiedModulesHost} from '../../core/api';
 
+import {UnifiedModulesHost} from '../../core/api';
 import {absoluteFrom as _, basename, LogicalFileSystem} from '../../file_system';
 import {runInEachFileSystem, TestFile} from '../../file_system/testing';
 import {Declaration, TypeScriptReflectionHost} from '../../reflection';
 import {getDeclaration, makeProgram} from '../../testing';
-import {AbsoluteModuleStrategy, ImportFlags, LogicalProjectStrategy, RelativePathStrategy, UnifiedModulesStrategy} from '../src/emitter';
+import {AbsoluteModuleStrategy, ImportFlags, LogicalProjectStrategy, ReferenceEmitKind, RelativePathStrategy, UnifiedModulesStrategy} from '../src/emitter';
 import {Reference} from '../src/references';
 import {ModuleResolver} from '../src/resolver';
 
@@ -75,7 +75,7 @@ runInEachFileSystem(() => {
         resolutionContext: context.fileName,
       });
       const emitted = strategy.emit(reference, context, ImportFlags.None);
-      if (emitted === null) {
+      if (emitted === null || emitted.kind !== ReferenceEmitKind.Success) {
         return fail('Reference should be emitted');
       }
       if (!(emitted.expression instanceof ExternalExpr)) {
@@ -108,7 +108,7 @@ runInEachFileSystem(() => {
         resolutionContext: context.fileName,
       });
       const emitted = strategy.emit(reference, context, ImportFlags.None);
-      if (emitted === null) {
+      if (emitted === null || emitted.kind !== ReferenceEmitKind.Success) {
         return fail('Reference should be emitted');
       }
       if (!(emitted.expression instanceof ExternalExpr)) {
@@ -160,7 +160,7 @@ runInEachFileSystem(() => {
       const reference =
           new Reference(decl, {specifier: 'external', resolutionContext: context.fileName});
       const emitted = strategy.emit(reference, context, ImportFlags.AllowTypeImports);
-      if (emitted === null) {
+      if (emitted === null || emitted.kind !== ReferenceEmitKind.Success) {
         return fail('Reference should be emitted');
       }
       if (!(emitted.expression instanceof ExternalExpr)) {
@@ -203,8 +203,10 @@ runInEachFileSystem(() => {
       const strategy = new LogicalProjectStrategy(new TestHost(checker), logicalFs);
       const decl = getDeclaration(program, _('/index.ts'), 'Foo', ts.isClassDeclaration);
       const context = program.getSourceFile(_('/context.ts'))!;
-      const ref = strategy.emit(new Reference(decl), context);
-      expect(ref).not.toBeNull();
+      const ref = strategy.emit(new Reference(decl), context, ImportFlags.None);
+      if (ref === null || ref.kind !== ReferenceEmitKind.Success) {
+        return fail('Reference should be emitted');
+      }
 
       // Expect the prefixed name from the TestHost.
       expect((ref!.expression as ExternalExpr).value.name).toEqual('testFoo');
@@ -231,8 +233,8 @@ runInEachFileSystem(() => {
       const strategy = new LogicalProjectStrategy(new TypeScriptReflectionHost(checker), logicalFs);
       const decl = getDeclaration(program, _('/index.ts'), 'Foo', ts.isClassDeclaration);
       const context = program.getSourceFile(_('/context.ts'))!;
-      const emitted = strategy.emit(new Reference(decl), context);
-      if (emitted === null) {
+      const emitted = strategy.emit(new Reference(decl), context, ImportFlags.None);
+      if (emitted === null || emitted.kind !== ReferenceEmitKind.Success) {
         return fail('Reference should be emitted');
       }
       if (!(emitted.expression instanceof ExternalExpr)) {
@@ -241,6 +243,97 @@ runInEachFileSystem(() => {
       expect(emitted.expression.value.name).toEqual('Foo');
       expect(emitted.expression.value.moduleName).toEqual('./index');
     });
+
+    it('should never use relative imports outside of the logical filesystem for source files',
+       () => {
+         const {program, host} = makeProgram([
+           {
+             name: _('/app/context.ts'),
+             contents: `
+             export {};
+           `,
+           },
+           {
+             name: _('/foo.ts'),
+             contents: 'export declare class Foo {}',
+           }
+         ]);
+         const checker = program.getTypeChecker();
+         const logicalFs = new LogicalFileSystem([_('/app')], host);
+         const strategy =
+             new LogicalProjectStrategy(new TypeScriptReflectionHost(checker), logicalFs);
+         const decl = getDeclaration(program, _('/foo.ts'), 'Foo', ts.isClassDeclaration);
+         const context = program.getSourceFile(_('/app/context.ts'))!;
+         const emitted =
+             strategy.emit(new Reference(decl), context, ImportFlags.AllowRelativeDtsImports);
+         if (emitted === null || emitted.kind !== ReferenceEmitKind.Failed) {
+           return fail('Reference emit should have failed');
+         }
+         expect(emitted.reason)
+             .toEqual(`The file ${
+                 decl.getSourceFile().fileName} is outside of the configured 'rootDir'.`);
+       });
+
+    it('should use relative imports outside of the logical filesystem for declaration files if allowed',
+       () => {
+         const {program, host} = makeProgram([
+           {
+             name: _('/app/context.ts'),
+             contents: `
+             export {};
+           `,
+           },
+           {
+             name: _('/foo.d.ts'),
+             contents: 'export declare class Foo {}',
+           }
+         ]);
+         const checker = program.getTypeChecker();
+         const logicalFs = new LogicalFileSystem([_('/app')], host);
+         const strategy =
+             new LogicalProjectStrategy(new TypeScriptReflectionHost(checker), logicalFs);
+         const decl = getDeclaration(program, _('/foo.d.ts'), 'Foo', ts.isClassDeclaration);
+         const context = program.getSourceFile(_('/app/context.ts'))!;
+         const emitted =
+             strategy.emit(new Reference(decl), context, ImportFlags.AllowRelativeDtsImports);
+         if (emitted === null || emitted.kind !== ReferenceEmitKind.Success) {
+           return fail('Reference should be emitted');
+         }
+         if (!(emitted.expression instanceof ExternalExpr)) {
+           return fail('Reference should be emitted as ExternalExpr');
+         }
+         expect(emitted.expression.value.name).toEqual('Foo');
+         expect(emitted.expression.value.moduleName).toEqual('../foo');
+       });
+
+    it('should not use relative imports outside of the logical filesystem for declaration files if not allowed',
+       () => {
+         const {program, host} = makeProgram([
+           {
+             name: _('/app/context.ts'),
+             contents: `
+             export {};
+           `,
+           },
+           {
+             name: _('/foo.d.ts'),
+             contents: 'export declare class Foo {}',
+           }
+         ]);
+         const checker = program.getTypeChecker();
+         const logicalFs = new LogicalFileSystem([_('/app')], host);
+         const strategy =
+             new LogicalProjectStrategy(new TypeScriptReflectionHost(checker), logicalFs);
+         const decl = getDeclaration(program, _('/foo.d.ts'), 'Foo', ts.isClassDeclaration);
+         const context = program.getSourceFile(_('/app/context.ts'))!;
+         const emitted = strategy.emit(new Reference(decl), context, ImportFlags.None);
+         if (emitted === null || emitted.kind !== ReferenceEmitKind.Failed) {
+           return fail('Reference emit should have failed');
+         }
+         expect(emitted.reason)
+             .toEqual(`The file ${
+                 decl.getSourceFile().fileName} is outside of the configured 'rootDir'.`);
+       });
   });
 
   describe('RelativePathStrategy', () => {
@@ -265,7 +358,7 @@ runInEachFileSystem(() => {
       const decl = getDeclaration(program, _('/index.ts'), 'Foo', ts.isClassDeclaration);
       const context = program.getSourceFile(_('/context.ts'))!;
       const emitted = strategy.emit(new Reference(decl), context);
-      if (emitted === null) {
+      if (emitted === null || emitted.kind !== ReferenceEmitKind.Success) {
         return fail('Reference should be emitted');
       }
       if (!(emitted.expression instanceof ExternalExpr)) {

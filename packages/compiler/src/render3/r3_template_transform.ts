@@ -11,6 +11,7 @@ import * as i18n from '../i18n/i18n_ast';
 import * as html from '../ml_parser/ast';
 import {replaceNgsp} from '../ml_parser/html_whitespaces';
 import {isNgTemplate} from '../ml_parser/tags';
+import {InterpolatedAttributeToken, InterpolatedTextToken} from '../ml_parser/tokens';
 import {ParseError, ParseErrorLevel, ParseSourceSpan} from '../parse_util';
 import {isStyleUrlResolvable} from '../style_url_resolver';
 import {BindingParser} from '../template_parser/binding_parser';
@@ -186,7 +187,7 @@ class HtmlAstToIvyAst implements html.Visitor {
     const children: t.Node[] =
         html.visitAll(preparsedElement.nonBindable ? NON_BINDABLE_VISITOR : this, element.children);
 
-    let parsedElement: t.Node|undefined;
+    let parsedElement: t.Content|t.Template|t.Element|undefined;
     if (preparsedElement.type === PreparsedElementType.NG_CONTENT) {
       // `<ng-content>`
       if (element.children &&
@@ -235,13 +236,12 @@ class HtmlAstToIvyAst implements html.Visitor {
       // the wrapping template to prevent unnecessary i18n instructions from being generated. The
       // necessary i18n meta information will be extracted from child elements.
       const i18n = isTemplateElement && isI18nRootElement ? undefined : element.i18n;
+      const name = parsedElement instanceof t.Template ? null : parsedElement.name;
 
-      // TODO(pk): test for this case
       parsedElement = new t.Template(
-          (parsedElement as t.Element | t.Content).name, hoistedAttrs.attributes,
-          hoistedAttrs.inputs, hoistedAttrs.outputs, templateAttrs, [parsedElement],
-          [/* no references */], templateVariables, element.sourceSpan, element.startSourceSpan,
-          element.endSourceSpan, i18n);
+          name, hoistedAttrs.attributes, hoistedAttrs.inputs, hoistedAttrs.outputs, templateAttrs,
+          [parsedElement], [/* no references */], templateVariables, element.sourceSpan,
+          element.startSourceSpan, element.endSourceSpan, i18n);
     }
     if (isI18nRootElement) {
       this.inI18nBlock = false;
@@ -256,7 +256,7 @@ class HtmlAstToIvyAst implements html.Visitor {
   }
 
   visitText(text: html.Text): t.Node {
-    return this._visitTextWithInterpolation(text.value, text.sourceSpan, text.i18n);
+    return this._visitTextWithInterpolation(text.value, text.sourceSpan, text.tokens, text.i18n);
   }
 
   visitExpansion(expansion: html.Expansion): t.Icu|null {
@@ -289,7 +289,7 @@ class HtmlAstToIvyAst implements html.Visitor {
 
         vars[formattedKey] = new t.BoundText(ast, value.sourceSpan);
       } else {
-        placeholders[key] = this._visitTextWithInterpolation(value.text, value.sourceSpan);
+        placeholders[key] = this._visitTextWithInterpolation(value.text, value.sourceSpan, null);
       }
     });
     return new t.Icu(vars, placeholders, expansion.sourceSpan, message);
@@ -380,8 +380,8 @@ class HtmlAstToIvyAst implements html.Visitor {
         const identifier = bindParts[IDENT_KW_IDX];
         const keySpan = createKeySpan(srcSpan, bindParts[KW_ON_IDX], identifier);
         this.bindingParser.parseEvent(
-            identifier, value, srcSpan, attribute.valueSpan || srcSpan, matchableAttributes, events,
-            keySpan);
+            identifier, value, /* isAssignmentEvent */ false, srcSpan,
+            attribute.valueSpan || srcSpan, matchableAttributes, events, keySpan);
         addEvents(events, boundEvents);
       } else if (bindParts[KW_BINDON_IDX]) {
         const identifier = bindParts[IDENT_KW_IDX];
@@ -433,8 +433,8 @@ class HtmlAstToIvyAst implements html.Visitor {
       } else {
         const events: ParsedEvent[] = [];
         this.bindingParser.parseEvent(
-            identifier, value, srcSpan, attribute.valueSpan || srcSpan, matchableAttributes, events,
-            keySpan);
+            identifier, value, /* isAssignmentEvent */ false, srcSpan,
+            attribute.valueSpan || srcSpan, matchableAttributes, events, keySpan);
         addEvents(events, boundEvents);
       }
 
@@ -444,14 +444,17 @@ class HtmlAstToIvyAst implements html.Visitor {
     // No explicit binding found.
     const keySpan = createKeySpan(srcSpan, '' /* prefix */, name);
     const hasBinding = this.bindingParser.parsePropertyInterpolation(
-        name, value, srcSpan, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
+        name, value, srcSpan, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan,
+        attribute.valueTokens ?? null);
     return hasBinding;
   }
 
   private _visitTextWithInterpolation(
-      value: string, sourceSpan: ParseSourceSpan, i18n?: i18n.I18nMeta): t.Text|t.BoundText {
+      value: string, sourceSpan: ParseSourceSpan,
+      interpolatedTokens: InterpolatedAttributeToken[]|InterpolatedTextToken[]|null,
+      i18n?: i18n.I18nMeta): t.Text|t.BoundText {
     const valueNoNgsp = replaceNgsp(value);
-    const expr = this.bindingParser.parseInterpolation(valueNoNgsp, sourceSpan);
+    const expr = this.bindingParser.parseInterpolation(valueNoNgsp, sourceSpan, interpolatedTokens);
     return expr ? new t.BoundText(expr, sourceSpan, i18n) : new t.Text(valueNoNgsp, sourceSpan);
   }
 
@@ -487,8 +490,8 @@ class HtmlAstToIvyAst implements html.Visitor {
       boundEvents: t.BoundEvent[], keySpan: ParseSourceSpan) {
     const events: ParsedEvent[] = [];
     this.bindingParser.parseEvent(
-        `${name}Change`, `${expression}=$event`, sourceSpan, valueSpan || sourceSpan,
-        targetMatchableAttrs, events, keySpan);
+        `${name}Change`, `${expression} =$event`, /* isAssignmentEvent */ true, sourceSpan,
+        valueSpan || sourceSpan, targetMatchableAttrs, events, keySpan);
     addEvents(events, boundEvents);
   }
 

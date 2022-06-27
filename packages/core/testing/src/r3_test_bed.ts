@@ -24,9 +24,14 @@ import {
   ProviderToken,
   Type,
   ɵflushModuleScopingQueueAsMuchAsPossible as flushModuleScopingQueueAsMuchAsPossible,
+  ɵgetUnknownElementStrictMode as getUnknownElementStrictMode,
+  ɵgetUnknownPropertyStrictMode as getUnknownPropertyStrictMode,
   ɵRender3ComponentFactory as ComponentFactory,
   ɵRender3NgModuleRef as NgModuleRef,
   ɵresetCompiledComponents as resetCompiledComponents,
+  ɵsetAllowDuplicateNgModuleIdsForTest as setAllowDuplicateNgModuleIdsForTest,
+  ɵsetUnknownElementStrictMode as setUnknownElementStrictMode,
+  ɵsetUnknownPropertyStrictMode as setUnknownPropertyStrictMode,
   ɵstringify as stringify,
 } from '@angular/core';
 
@@ -36,7 +41,7 @@ import {ComponentFixture} from './component_fixture';
 import {MetadataOverride} from './metadata_override';
 import {R3TestBedCompiler} from './r3_test_bed_compiler';
 import {TestBed} from './test_bed';
-import {ComponentFixtureAutoDetect, ComponentFixtureNoNgZone, ModuleTeardownOptions, TEARDOWN_TESTING_MODULE_ON_DESTROY_DEFAULT, TestBedStatic, TestComponentRenderer, TestEnvironmentOptions, TestModuleMetadata} from './test_bed_common';
+import {ComponentFixtureAutoDetect, ComponentFixtureNoNgZone, ModuleTeardownOptions, TEARDOWN_TESTING_MODULE_ON_DESTROY_DEFAULT, TestBedStatic, TestComponentRenderer, TestEnvironmentOptions, TestModuleMetadata, THROW_ON_UNKNOWN_ELEMENTS_DEFAULT, THROW_ON_UNKNOWN_PROPERTIES_DEFAULT} from './test_bed_common';
 
 let _nextRootElementId = 0;
 
@@ -59,22 +64,60 @@ export class TestBedRender3 implements TestBed {
   private static _environmentTeardownOptions: ModuleTeardownOptions|undefined;
 
   /**
+   * "Error on unknown elements" option that has been configured at the environment level.
+   * Used as a fallback if no instance-level option has been provided.
+   */
+  private static _environmentErrorOnUnknownElementsOption: boolean|undefined;
+
+  /**
+   * "Error on unknown properties" option that has been configured at the environment level.
+   * Used as a fallback if no instance-level option has been provided.
+   */
+  private static _environmentErrorOnUnknownPropertiesOption: boolean|undefined;
+
+  /**
    * Teardown options that have been configured at the `TestBed` instance level.
-   * These options take precedence over the environemnt-level ones.
+   * These options take precedence over the environment-level ones.
    */
   private _instanceTeardownOptions: ModuleTeardownOptions|undefined;
+
+  /**
+   * "Error on unknown elements" option that has been configured at the `TestBed` instance level.
+   * This option takes precedence over the environment-level one.
+   */
+  private _instanceErrorOnUnknownElementsOption: boolean|undefined;
+
+  /**
+   * "Error on unknown properties" option that has been configured at the `TestBed` instance level.
+   * This option takes precedence over the environment-level one.
+   */
+  private _instanceErrorOnUnknownPropertiesOption: boolean|undefined;
+
+  /**
+   * Stores the previous "Error on unknown elements" option value,
+   * allowing to restore it in the reset testing module logic.
+   */
+  private _previousErrorOnUnknownElementsOption: boolean|undefined;
+
+  /**
+   * Stores the previous "Error on unknown properties" option value,
+   * allowing to restore it in the reset testing module logic.
+   */
+  private _previousErrorOnUnknownPropertiesOption: boolean|undefined;
 
   /**
    * Initialize the environment for testing with a compiler factory, a PlatformRef, and an
    * angular module. These are common to every test in the suite.
    *
-   * 使用编译器工厂、PlatformRef 和 angular 模块来初始化测试环境。这些对于套件中的每个测试都是公共的。
+   * 使用编译器工厂、PlatformRef 和 angular
+   * 模块来初始化测试环境。这些对于套件中的每个测试都是公共的。
    *
    * This may only be called once, to set up the common providers for the current test
    * suite on the current platform. If you absolutely need to change the providers,
    * first use `resetTestEnvironment`.
    *
-   * 这只能调用一次，以在当前平台上为当前测试套件设置公用提供者。如果你必须要更改提供者，请首先使用 `resetTestEnvironment` 。
+   * 这只能调用一次，以在当前平台上为当前测试套件设置公用提供者。如果你必须要更改提供者，请首先使用
+   * `resetTestEnvironment` 。
    *
    * Test modules and platforms for individual platforms are available from
    * '@angular/<platform_name>/testing'.
@@ -85,9 +128,9 @@ export class TestBedRender3 implements TestBed {
    */
   static initTestEnvironment(
       ngModule: Type<any>|Type<any>[], platform: PlatformRef,
-      summariesOrOptions?: TestEnvironmentOptions|(() => any[])): TestBed {
+      options?: TestEnvironmentOptions): TestBed {
     const testBed = _getTestBedRender3();
-    testBed.initTestEnvironment(ngModule, platform, summariesOrOptions);
+    testBed.initTestEnvironment(ngModule, platform, options);
     return testBed;
   }
 
@@ -226,13 +269,15 @@ export class TestBedRender3 implements TestBed {
    * Initialize the environment for testing with a compiler factory, a PlatformRef, and an
    * angular module. These are common to every test in the suite.
    *
-   * 使用编译器工厂、PlatformRef 和 angular 模块来初始化测试环境。这些对于套件中的每个测试都是公共的。
+   * 使用编译器工厂、PlatformRef 和 angular
+   * 模块来初始化测试环境。这些对于套件中的每个测试都是公共的。
    *
    * This may only be called once, to set up the common providers for the current test
    * suite on the current platform. If you absolutely need to change the providers,
    * first use `resetTestEnvironment`.
    *
-   * 这只能调用一次，以在当前平台上为当前测试套件设置公用提供者。如果你必须要更改提供者，请首先使用 `resetTestEnvironment` 。
+   * 这只能调用一次，以在当前平台上为当前测试套件设置公用提供者。如果你必须要更改提供者，请首先使用
+   * `resetTestEnvironment` 。
    *
    * Test modules and platforms for individual platforms are available from
    * '@angular/<platform_name>/testing'.
@@ -243,19 +288,26 @@ export class TestBedRender3 implements TestBed {
    */
   initTestEnvironment(
       ngModule: Type<any>|Type<any>[], platform: PlatformRef,
-      summariesOrOptions?: TestEnvironmentOptions|(() => any[])): void {
+      options?: TestEnvironmentOptions): void {
     if (this.platform || this.ngModule) {
       throw new Error('Cannot set base providers because it has already been called');
     }
 
-    // If `summariesOrOptions` is a function, it means that it's
-    // an AOT summaries factory which Ivy doesn't support.
-    TestBedRender3._environmentTeardownOptions =
-        typeof summariesOrOptions === 'function' ? undefined : summariesOrOptions?.teardown;
+    TestBedRender3._environmentTeardownOptions = options?.teardown;
+
+    TestBedRender3._environmentErrorOnUnknownElementsOption = options?.errorOnUnknownElements;
+
+    TestBedRender3._environmentErrorOnUnknownPropertiesOption = options?.errorOnUnknownProperties;
 
     this.platform = platform;
     this.ngModule = ngModule;
     this._compiler = new R3TestBedCompiler(this.platform, this.ngModule);
+
+    // TestBed does not have an API which can reliably detect the start of a test, and thus could be
+    // used to track the state of the NgModule registry and reset it correctly. Instead, when we
+    // know we're in a testing scenario, we disable the check for duplicate NgModule registration
+    // completely.
+    setAllowDuplicateNgModuleIdsForTest(true);
   }
 
   /**
@@ -271,6 +323,7 @@ export class TestBedRender3 implements TestBed {
     this.platform = null!;
     this.ngModule = null!;
     TestBedRender3._environmentTeardownOptions = undefined;
+    setAllowDuplicateNgModuleIdsForTest(false);
   }
 
   resetTestingModule(): void {
@@ -280,6 +333,12 @@ export class TestBedRender3 implements TestBed {
       this.compiler.restoreOriginalState();
     }
     this._compiler = new R3TestBedCompiler(this.platform, this.ngModule);
+    // Restore the previous value of the "error on unknown elements" option
+    setUnknownElementStrictMode(
+        this._previousErrorOnUnknownElementsOption ?? THROW_ON_UNKNOWN_ELEMENTS_DEFAULT);
+    // Restore the previous value of the "error on unknown properties" option
+    setUnknownPropertyStrictMode(
+        this._previousErrorOnUnknownPropertiesOption ?? THROW_ON_UNKNOWN_PROPERTIES_DEFAULT);
 
     // We have to chain a couple of try/finally blocks, because each step can
     // throw errors and we don't want it to interrupt the next step and we also
@@ -294,6 +353,8 @@ export class TestBedRender3 implements TestBed {
       } finally {
         this._testModuleRef = null;
         this._instanceTeardownOptions = undefined;
+        this._instanceErrorOnUnknownElementsOption = undefined;
+        this._instanceErrorOnUnknownPropertiesOption = undefined;
       }
     }
   }
@@ -310,9 +371,24 @@ export class TestBedRender3 implements TestBed {
 
   configureTestingModule(moduleDef: TestModuleMetadata): void {
     this.assertNotInstantiated('R3TestBed.configureTestingModule', 'configure the test module');
-    // Always re-assign the teardown options, even if they're undefined.
-    // This ensures that we don't carry the options between tests.
+
+    // Trigger module scoping queue flush before executing other TestBed operations in a test.
+    // This is needed for the first test invocation to ensure that globally declared modules have
+    // their components scoped properly. See the `checkGlobalCompilationFinished` function
+    // description for additional info.
+    this.checkGlobalCompilationFinished();
+
+    // Always re-assign the options, even if they're undefined.
+    // This ensures that we don't carry them between tests.
     this._instanceTeardownOptions = moduleDef.teardown;
+    this._instanceErrorOnUnknownElementsOption = moduleDef.errorOnUnknownElements;
+    this._instanceErrorOnUnknownPropertiesOption = moduleDef.errorOnUnknownProperties;
+    // Store the current value of the strict mode option,
+    // so we can restore it later
+    this._previousErrorOnUnknownElementsOption = getUnknownElementStrictMode();
+    setUnknownElementStrictMode(this.shouldThrowErrorOnUnknownElements());
+    this._previousErrorOnUnknownPropertiesOption = getUnknownPropertyStrictMode();
+    setUnknownPropertyStrictMode(this.shouldThrowErrorOnUnknownProperties());
     this.compiler.configureTestingModule(moduleDef);
   }
 
@@ -326,7 +402,7 @@ export class TestBedRender3 implements TestBed {
     if (token as unknown === TestBedRender3) {
       return this as any;
     }
-    const UNDEFINED = {};
+    const UNDEFINED = {} as unknown as T;
     const result = this.testModuleRef.injector.get(token, UNDEFINED, flags);
     return result === UNDEFINED ? this.compiler.injector.get(token, notFoundValue, flags) as any :
                                   result;
@@ -391,8 +467,7 @@ export class TestBedRender3 implements TestBed {
     const componentDef = (type as any).ɵcmp;
 
     if (!componentDef) {
-      throw new Error(
-          `It looks like '${stringify(type)}' has not been IVY compiled - it has no 'ɵcmp' field`);
+      throw new Error(`It looks like '${stringify(type)}' has not been compiled.`);
     }
 
     // TODO: Don't cast as `InjectionToken<boolean>`, proper type is boolean[]
@@ -485,7 +560,7 @@ export class TestBedRender3 implements TestBed {
     }
   }
 
-  shouldRethrowTeardownErrors() {
+  shouldRethrowTeardownErrors(): boolean {
     const instanceOptions = this._instanceTeardownOptions;
     const environmentOptions = TestBedRender3._environmentTeardownOptions;
 
@@ -497,6 +572,20 @@ export class TestBedRender3 implements TestBed {
     // Otherwise use the configured behavior or default to rethrowing.
     return instanceOptions?.rethrowErrors ?? environmentOptions?.rethrowErrors ??
         this.shouldTearDownTestingModule();
+  }
+
+  shouldThrowErrorOnUnknownElements(): boolean {
+    // Check if a configuration has been provided to throw when an unknown element is found
+    return this._instanceErrorOnUnknownElementsOption ??
+        TestBedRender3._environmentErrorOnUnknownElementsOption ??
+        THROW_ON_UNKNOWN_ELEMENTS_DEFAULT;
+  }
+
+  shouldThrowErrorOnUnknownProperties(): boolean {
+    // Check if a configuration has been provided to throw when an unknown property is found
+    return this._instanceErrorOnUnknownPropertiesOption ??
+        TestBedRender3._environmentErrorOnUnknownPropertiesOption ??
+        THROW_ON_UNKNOWN_PROPERTIES_DEFAULT;
   }
 
   shouldTearDownTestingModule(): boolean {

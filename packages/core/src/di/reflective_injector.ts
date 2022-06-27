@@ -427,7 +427,7 @@ export class ReflectiveInjector_ implements ReflectiveInjector {
     try {
       deps =
           ResolvedReflectiveFactory.dependencies.map(dep => this._getByReflectiveDependency(dep));
-    } catch (e) {
+    } catch (e: any) {
       if (e.addKey) {
         e.addKey(this, provider.key);
       }
@@ -438,7 +438,7 @@ export class ReflectiveInjector_ implements ReflectiveInjector {
     try {
       obj = factory(...deps);
     } catch (e) {
-      throw instantiationError(this, e, e.stack, provider.key);
+      throw instantiationError(this, e, (e as Error).stack, provider.key);
     }
 
     return obj;

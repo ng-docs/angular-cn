@@ -83,7 +83,8 @@ export abstract class ViewportScroller {
    * See also [window.history.scrollRestoration
    * info](https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration).
    *
-   * 禁用浏览器提供的自动滚动恢复功能。另请参见 [window.history.scrollRestoration 信息](https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration)。
+   * 禁用浏览器提供的自动滚动恢复功能。另请参见 [window.history.scrollRestoration
+   * 信息](https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration)。
    *
    */
   abstract setHistoryScrollRestoration(scrollRestoration: 'auto'|'manual'): void;
@@ -155,7 +156,11 @@ export class BrowserViewportScroller implements ViewportScroller {
       this.scrollToElement(elSelected);
       // After scrolling to the element, the spec dictates that we follow the focus steps for the
       // target. Rather than following the robust steps, simply attempt focus.
-      this.attemptFocus(elSelected);
+      //
+      // @see https://html.spec.whatwg.org/#get-the-focusable-area
+      // @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
+      // @see https://html.spec.whatwg.org/#focusable-area
+      elSelected.focus();
     }
   }
 
@@ -183,21 +188,6 @@ export class BrowserViewportScroller implements ViewportScroller {
     const top = rect.top + this.window.pageYOffset;
     const offset = this.offset();
     this.window.scrollTo(left - offset[0], top - offset[1]);
-  }
-
-  /**
-   * Calls `focus` on the `focusTarget` and returns `true` if the element was focused successfully.
-   *
-   * If `false`, further steps may be necessary to determine a valid substitute to be focused
-   * instead.
-   *
-   * @see https://html.spec.whatwg.org/#get-the-focusable-area
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
-   * @see https://html.spec.whatwg.org/#focusable-area
-   */
-  private attemptFocus(focusTarget: HTMLElement): boolean {
-    focusTarget.focus();
-    return this.document.activeElement === focusTarget;
   }
 
   /**

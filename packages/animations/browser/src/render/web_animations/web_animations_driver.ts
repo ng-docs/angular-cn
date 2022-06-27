@@ -5,22 +5,31 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {AnimationPlayer, ɵStyleData} from '@angular/animations';
+import {AnimationPlayer, ɵStyleDataMap} from '@angular/animations';
 
-import {allowPreviousPlayerStylesMerge, balancePreviousStylesIntoKeyframes, copyStyles} from '../../util';
+import {allowPreviousPlayerStylesMerge, balancePreviousStylesIntoKeyframes, camelCaseToDashCase, copyStyles, normalizeKeyframes} from '../../util';
 import {AnimationDriver} from '../animation_driver';
-import {CssKeyframesDriver} from '../css_keyframes/css_keyframes_driver';
-import {containsElement, invokeQuery, isBrowser, validateStyleProperty} from '../shared';
+import {containsElement, getParentElement, invokeQuery, validateStyleProperty, validateWebAnimatableStyleProperty} from '../shared';
 import {packageNonAnimatableStyles} from '../special_cased_styles';
 
 import {WebAnimationsPlayer} from './web_animations_player';
 
 export class WebAnimationsDriver implements AnimationDriver {
-  private _isNativeImpl = /\{\s*\[native\s+code\]\s*\}/.test(getElementAnimateFn().toString());
-  private _cssKeyframesDriver = new CssKeyframesDriver();
-
   validateStyleProperty(prop: string): boolean {
-    return validateStyleProperty(prop);
+    // Perform actual validation in dev mode only, in prod mode this check is a noop.
+    if (typeof ngDevMode === 'undefined' || ngDevMode) {
+      return validateStyleProperty(prop);
+    }
+    return true;
+  }
+
+  validateAnimatableStyleProperty(prop: string): boolean {
+    // Perform actual validation in dev mode only, in prod mode this check is a noop.
+    if (typeof ngDevMode === 'undefined' || ngDevMode) {
+      const cssProp = camelCaseToDashCase(prop);
+      return validateWebAnimatableStyleProperty(cssProp);
+    }
+    return true;
   }
 
   matchesElement(_element: any, _selector: string): boolean {
@@ -32,6 +41,10 @@ export class WebAnimationsDriver implements AnimationDriver {
     return containsElement(elm1, elm2);
   }
 
+  getParentElement(element: unknown): unknown {
+    return getParentElement(element);
+  }
+
   query(element: any, selector: string, multi: boolean): any[] {
     return invokeQuery(element, selector, multi);
   }
@@ -40,19 +53,9 @@ export class WebAnimationsDriver implements AnimationDriver {
     return (window.getComputedStyle(element) as any)[prop] as string;
   }
 
-  overrideWebAnimationsSupport(supported: boolean) {
-    this._isNativeImpl = supported;
-  }
-
   animate(
-      element: any, keyframes: ɵStyleData[], duration: number, delay: number, easing: string,
-      previousPlayers: AnimationPlayer[] = [], scrubberAccessRequested?: boolean): AnimationPlayer {
-    const useKeyframes = !scrubberAccessRequested && !this._isNativeImpl;
-    if (useKeyframes) {
-      return this._cssKeyframesDriver.animate(
-          element, keyframes, duration, delay, easing, previousPlayers);
-    }
-
+      element: any, keyframes: Array<Map<string, string|number>>, duration: number, delay: number,
+      easing: string, previousPlayers: AnimationPlayer[] = []): AnimationPlayer {
     const fill = delay == 0 ? 'both' : 'forwards';
     const playerOptions: {[key: string]: string|number} = {duration, delay, fill};
     // we check for this to avoid having a null|undefined value be present
@@ -61,28 +64,18 @@ export class WebAnimationsDriver implements AnimationDriver {
       playerOptions['easing'] = easing;
     }
 
-    const previousStyles: {[key: string]: any} = {};
+    const previousStyles: ɵStyleDataMap = new Map();
     const previousWebAnimationPlayers = <WebAnimationsPlayer[]>previousPlayers.filter(
         player => player instanceof WebAnimationsPlayer);
-
     if (allowPreviousPlayerStylesMerge(duration, delay)) {
       previousWebAnimationPlayers.forEach(player => {
-        let styles = player.currentSnapshot;
-        Object.keys(styles).forEach(prop => previousStyles[prop] = styles[prop]);
+        player.currentSnapshot.forEach((val, prop) => previousStyles.set(prop, val));
       });
     }
 
-    keyframes = keyframes.map(styles => copyStyles(styles, false));
-    keyframes = balancePreviousStylesIntoKeyframes(element, keyframes, previousStyles);
-    const specialStyles = packageNonAnimatableStyles(element, keyframes);
-    return new WebAnimationsPlayer(element, keyframes, playerOptions, specialStyles);
+    let _keyframes = normalizeKeyframes(keyframes).map(styles => copyStyles(styles));
+    _keyframes = balancePreviousStylesIntoKeyframes(element, _keyframes, previousStyles);
+    const specialStyles = packageNonAnimatableStyles(element, _keyframes);
+    return new WebAnimationsPlayer(element, _keyframes, playerOptions, specialStyles);
   }
-}
-
-export function supportsWebAnimations() {
-  return typeof getElementAnimateFn() === 'function';
-}
-
-function getElementAnimateFn(): any {
-  return (isBrowser() && (<any>Element).prototype['animate']) || {};
 }

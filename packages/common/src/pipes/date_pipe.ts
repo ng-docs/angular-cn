@@ -7,7 +7,9 @@
  */
 
 import {Inject, InjectionToken, LOCALE_ID, Optional, Pipe, PipeTransform} from '@angular/core';
+
 import {formatDate} from '../i18n/format_date';
+
 import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
 
 /**
@@ -210,7 +212,8 @@ export class DatePipe implements PipeTransform {
    * @param value The date expression: a `Date` object,  a number
    * (milliseconds since UTC epoch), or an ISO string (https://www.w3.org/TR/NOTE-datetime).
    *
-   * 日期表达式：`Date` 对象、数字（从 UTC 时代以来的毫秒数）或一个 ISO 字符串 (https://www.w3.org/TR/NOTE-datetime)。
+   * 日期表达式：`Date` 对象、数字（从 UTC 时代以来的毫秒数）或一个 ISO 字符串
+   * (https://www.w3.org/TR/NOTE-datetime)。
    *
    * @param format The date/time components to include, using predefined options or a
    * custom format string.
@@ -221,7 +224,8 @@ export class DatePipe implements PipeTransform {
    * timezone abbreviation. When not supplied, either the value of the `DATE_PIPE_DEFAULT_TIMEZONE`
    * injection token is used or the end-user's local system timezone.
    *
-   * 一个时区偏移（比如 `'+0430'`）或标准的 UTC/GMT 或美国大陆时区的缩写。默认为最终用户机器上的本地系统时区。
+   * 一个时区偏移（比如 `'+0430'`）或标准的 UTC/GMT
+   * 或美国大陆时区的缩写。默认为最终用户机器上的本地系统时区。
    *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
@@ -250,7 +254,7 @@ export class DatePipe implements PipeTransform {
       return formatDate(
           value, format, locale || this.locale, timezone ?? this.defaultTimezone ?? undefined);
     } catch (error) {
-      throw invalidPipeArgumentError(DatePipe, error.message);
+      throw invalidPipeArgumentError(DatePipe, (error as Error).message);
     }
   }
 }

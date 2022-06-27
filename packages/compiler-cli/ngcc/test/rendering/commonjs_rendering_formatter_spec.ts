@@ -161,8 +161,8 @@ exports.D = D;
         renderer.addImports(
             output,
             [
-              {specifier: '@angular/core', qualifier: ts.createIdentifier('i0')},
-              {specifier: '@angular/common', qualifier: ts.createIdentifier('i1')}
+              {specifier: '@angular/core', qualifier: ts.factory.createIdentifier('i0')},
+              {specifier: '@angular/common', qualifier: ts.factory.createIdentifier('i1')}
             ],
             sourceFile);
         expect(output.toString()).toContain(`/* A copyright notice */
@@ -242,7 +242,8 @@ var A = (function() {`);
         const output = new MagicString(PROGRAM.contents);
         renderer.addConstants(output, 'var x = 3;', file);
         renderer.addImports(
-            output, [{specifier: '@angular/core', qualifier: ts.createIdentifier('i0')}], file);
+            output, [{specifier: '@angular/core', qualifier: ts.factory.createIdentifier('i0')}],
+            file);
         expect(output.toString()).toContain(`
 var core = require('@angular/core');
 var i0 = require('@angular/core');
@@ -469,9 +470,9 @@ SOME DEFINITION TEXT
       it('should transpile code to ES5', () => {
         const {renderer, sourceFile, importManager} = setup(PROGRAM);
 
-        const stmt1 = new DeclareVarStmt('foo', new LiteralExpr(42), null, [StmtModifier.Static]);
+        const stmt1 = new DeclareVarStmt('foo', new LiteralExpr(42), null, StmtModifier.Static);
         const stmt2 = new DeclareVarStmt('bar', new LiteralExpr(true));
-        const stmt3 = new DeclareVarStmt('baz', new LiteralExpr('qux'), undefined, []);
+        const stmt3 = new DeclareVarStmt('baz', new LiteralExpr('qux'));
 
         expect(renderer.printStatement(stmt1, sourceFile, importManager)).toBe('var foo = 42;');
         expect(renderer.printStatement(stmt2, sourceFile, importManager)).toBe('var bar = true;');

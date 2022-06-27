@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ComponentFactoryResolver, ComponentRef} from '@angular/core';
+import {ComponentFactoryResolver, ComponentRef, EnvironmentInjector} from '@angular/core';
 
 import {RouterOutletContract} from './directives/router_outlet';
 import {ActivatedRoute} from './router_state';
@@ -22,7 +22,12 @@ import {ActivatedRoute} from './router_state';
 export class OutletContext {
   outlet: RouterOutletContract|null = null;
   route: ActivatedRoute|null = null;
+  /**
+   * @deprecated Passing a resolver to retrieve a component factory is not required and is
+   *     deprecated since v14.
+   */
   resolver: ComponentFactoryResolver|null = null;
+  injector: EnvironmentInjector|null = null;
   children = new ChildrenOutletContexts();
   attachRef: ComponentRef<any>|null = null;
 }
@@ -55,7 +60,8 @@ export class ChildrenOutletContexts {
    * We need to keep the context as the outlet could be destroyed inside a NgIf and might be
    * re-created later.
    *
-   * `RouterOutlet` 指令被销毁时调用。我们需要保留上下文，因为此出口可能在 NgIf 内部被销毁，并可能在以后重新创建。
+   * `RouterOutlet` 指令被销毁时调用。我们需要保留上下文，因为此出口可能在 NgIf
+   * 内部被销毁，并可能在以后重新创建。
    *
    */
   onChildOutletDestroyed(childName: string): void {

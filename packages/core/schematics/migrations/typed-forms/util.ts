@@ -9,46 +9,95 @@
 import ts from 'typescript';
 
 import {getImportSpecifier} from '../../utils/typescript/imports';
-import {isReferenceToImport} from '../../utils/typescript/symbol';
 
-export const controlClassNames = ['AbstractControl', 'FormArray', 'FormControl', 'FormGroup'];
-export const builderMethodNames = ['control', 'group', 'array'];
-export const anySymbolName = 'AnyForUntypedForms';
+export const classes = new Set(['FormArray', 'FormBuilder', 'FormControl', 'FormGroup']);
+export const formControl = 'FormControl';
+export const untypedPrefix = 'Untyped';
+export const forms = '@angular/forms';
 
 export interface MigratableNode {
-  node: ts.Expression;
-  generic: string;
+  node: ts.Node;
+  importName: string;
 }
 
-export function getControlClassImports(sourceFile: ts.SourceFile) {
-  return controlClassNames.map(cclass => getImportSpecifier(sourceFile, '@angular/forms', cclass))
-      .filter(v => v != null);
-}
+export type rewriteFn = (startPos: number, origLength: number, text: string) => void;
 
-export function getFormBuilderImport(sourceFile: ts.SourceFile) {
-  return getImportSpecifier(sourceFile, '@angular/forms', 'FormBuilder');
-}
+export function migrateFile(
+    sourceFile: ts.SourceFile, typeChecker: ts.TypeChecker, rewrite: rewriteFn) {
+  const imports = getImports(sourceFile);
 
-export function getAnyImport(sourceFile: ts.SourceFile) {
-  return getImportSpecifier(sourceFile, '@angular/forms', anySymbolName);
-}
+  // If no relevant classes are imported, we can exit early.
+  if (imports.length === 0) return;
 
-export function findControlClassUsages(
-    sourceFile: ts.SourceFile, typeChecker: ts.TypeChecker,
-    importSpecifier: ts.ImportSpecifier|null): MigratableNode[] {
-  if (importSpecifier === null) return [];
-  let generic = `<${anySymbolName}>`;
-  if (importSpecifier.name.getText() === 'FormArray' ||
-      importSpecifier.propertyName?.getText() === 'FormArray') {
-    generic = `<${anySymbolName}[]>`;
+  // For each control class, migrate all of its uses.
+  for (let i = imports.length; i >= 0; i--) {
+    const imp = imports[i];
+    const usages = getUsages(sourceFile, typeChecker, imp);
+    if (usages.length === 0) {
+      // Since there are no usages of this class we need to migrate it, we should completely
+      // skip it for the subsequent migration steps.
+      imports.splice(i, 1);
+    }
+    for (const usage of usages) {
+      const newName = getUntypedVersionOfImportOrName(usage.importName);
+      if (newName === null) {
+        // This should never happen.
+        console.error(
+            `Typed forms migration error: unknown replacement for usage ${usage.node.getText()}`);
+        continue;
+      }
+      rewrite(usage.node.getStart(), usage.node.getWidth(), newName);
+    }
   }
+
+  // For each imported control class, migrate to the corresponding uptyped import.
+  for (const imp of imports) {
+    const untypedClass = getUntypedVersionOfImportOrName(imp.getText());
+    if (untypedClass === null) {
+      // This should never happen.
+      console.error(
+          `Typed forms migration error: unknown untyped version of import ${imp.getText()}`);
+      continue;
+    }
+    if (getImportSpecifier(sourceFile, forms, untypedClass)) {
+      // In order to make the migration idempotent, we must check whether the untyped version of the
+      // class is already present. If present, immediately continue.
+      continue;
+    }
+    rewrite(imp.getStart(), imp.getWidth(), untypedClass);
+  }
+}
+
+function getImports(sourceFile: ts.SourceFile): ts.ImportSpecifier[] {
+  let imports: ts.ImportSpecifier[] = [];
+  for (const cc of classes) {
+    const specifier = getImportSpecifier(sourceFile, forms, cc);
+    if (!specifier) continue;
+    imports.push(specifier);
+  }
+  return imports;
+}
+
+function getUntypedVersionOfImportOrName(name: string): string|null {
+  for (const cc of classes) {
+    if (name.includes(cc)) {
+      return `${untypedPrefix}${cc}`;
+    }
+  }
+  return null;
+}
+
+function getUsages(
+    sourceFile: ts.SourceFile, typeChecker: ts.TypeChecker,
+    importSpecifier: ts.ImportSpecifier): MigratableNode[] {
   const usages: MigratableNode[] = [];
   const visitNode = (node: ts.Node) => {
-    // Look for a `new` expression with no type arguments which references an import we care about:
-    // `new FormControl()`
-    if (ts.isNewExpression(node) && !node.typeArguments &&
-        isReferenceToImport(typeChecker, node.expression, importSpecifier)) {
-      usages.push({node: node.expression, generic});
+    if (ts.isImportSpecifier(node)) {
+      // Skip this node and all of its children; imports are a special case.
+      return;
+    }
+    if (ts.isIdentifier(node) && isUsageOfFormsImport(typeChecker, node, importSpecifier)) {
+      usages.push({node, importName: importSpecifier.getText()});
     }
     ts.forEachChild(node, visitNode);
   };
@@ -56,25 +105,36 @@ export function findControlClassUsages(
   return usages;
 }
 
-export function findFormBuilderCalls(
-    sourceFile: ts.SourceFile, typeChecker: ts.TypeChecker,
-    importSpecifier: ts.ImportSpecifier|null): MigratableNode[] {
-  if (!importSpecifier) return [];
-  const usages = new Array<MigratableNode>();
-  ts.forEachChild(sourceFile, function visitNode(node: ts.Node) {
-    // Look for calls that look like `foo.<method to migrate>`.
-    if (ts.isCallExpression(node) && !node.typeArguments &&
-        ts.isPropertyAccessExpression(node.expression) && ts.isIdentifier(node.expression.name) &&
-        builderMethodNames.includes(node.expression.name.text)) {
-      const generic =
-          node.expression.name.text === 'array' ? `<${anySymbolName}[]>` : `<${anySymbolName}>`;
-      // Check whether the type of the object on which the function is called refers to the
-      // provided import.
-      if (isReferenceToImport(typeChecker, node.expression.expression, importSpecifier)) {
-        usages.push({node: node.expression, generic});
-      }
-    }
-    ts.forEachChild(node, visitNode);
-  });
-  return usages;
+function isUsageOfFormsImport(
+    typeChecker: ts.TypeChecker, node: ts.Identifier,
+    importSpecifier: ts.ImportSpecifier): boolean {
+  const symbol = typeChecker.getSymbolAtLocation(node);
+
+  // We check symbol.declarations because we actually care about the name at the declaration site,
+  // not the usage site. These could be different in the case of overriden constructors.
+  if (!symbol || symbol.declarations === undefined || !symbol.declarations.length) return false;
+
+  const decl = symbol.declarations[0];
+  if (!ts.isImportSpecifier(decl)) return false;
+
+  // As per `typescript/imports.ts`, we must walk up the tree to find the enclosing import
+  // declaration. For reasons specific to the TS AST, this is always 3 levels up from an import
+  // specifier node.
+  const importDecl = decl.parent.parent.parent;
+  if (!ts.isStringLiteral(importDecl.moduleSpecifier)) return false;
+
+  const importName = typeChecker.getTypeAtLocation(importSpecifier)?.getSymbol()?.getName();
+  if (!importName) return false;
+
+  // Handles aliased imports: e.g. "import {Component as myComp} from ...";
+  const declName = decl.propertyName ? decl.propertyName.text : decl.name.text;
+
+  if (importName === declName) return true;
+
+  // In the case of FormControl's overridden exported constructor, the value name and declaration
+  // name are not exactly the same. For our purposes, it's enough to check whether the latter is a
+  // substring of the former.
+  if (declName === formControl && importName.includes(declName)) return true;
+
+  return false;
 }

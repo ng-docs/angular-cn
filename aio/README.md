@@ -1,8 +1,8 @@
 # Angular documentation project (https://angular.io)
 
-Everything in this folder is part of the documentation project. This includes
+Everything in this folder is part of the documentation project. This includes:
 
-* the web site for displaying the documentation
+* the web site for displaying the documentation.
 * the dgeni configuration for converting source files to rendered files that can be viewed in the web site.
 * the tooling for setting up examples for development; and generating live-example and zip files from the examples.
 

@@ -7,7 +7,8 @@
  */
 
 import {InjectFlags, InjectionToken, INJECTOR, Injector, Optional, ɵɵdefineInjectable, ɵɵdefineInjector, ɵɵinject} from '@angular/core';
-import {createInjector, R3Injector} from '@angular/core/src/di/r3_injector';
+import {createInjector} from '@angular/core/src/di/create_injector';
+import {R3Injector} from '@angular/core/src/di/r3_injector';
 import {expect} from '@angular/platform-browser/testing/src/matchers';
 
 describe('InjectorDef-based createInjector()', () => {
@@ -447,13 +448,14 @@ describe('InjectorDef-based createInjector()', () => {
 
   it('does not allow injection after destroy', () => {
     (injector as R3Injector).destroy();
-    expect(() => injector.get(DeepService)).toThrowError('Injector has already been destroyed.');
+    expect(() => injector.get(DeepService))
+        .toThrowError('NG0205: Injector has already been destroyed.');
   });
 
   it('does not allow double destroy', () => {
     (injector as R3Injector).destroy();
     expect(() => (injector as R3Injector).destroy())
-        .toThrowError('Injector has already been destroyed.');
+        .toThrowError('NG0205: Injector has already been destroyed.');
   });
 
   it('should not crash when importing something that has no ɵinj', () => {
@@ -490,7 +492,7 @@ describe('InjectorDef-based createInjector()', () => {
         static ɵinj = ɵɵdefineInjector({providers: [MissingArgumentType]});
       }
       expect(() => createInjector(ErrorModule).get(MissingArgumentType))
-          .toThrowError('Can\'t resolve all parameters for MissingArgumentType: (?).');
+          .toThrowError('NG0204: Can\'t resolve all parameters for MissingArgumentType: (?).');
     });
   });
 });

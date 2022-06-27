@@ -5,10 +5,13 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {AnimationEvent, AnimationPlayer, AUTO_STYLE, NoopAnimationPlayer, ɵAnimationGroupPlayer, ɵPRE_STYLE as PRE_STYLE, ɵStyleData} from '@angular/animations';
+import {AnimationEvent, AnimationPlayer, AUTO_STYLE, NoopAnimationPlayer, ɵAnimationGroupPlayer, ɵPRE_STYLE as PRE_STYLE, ɵStyleDataMap} from '@angular/animations';
 
 import {AnimationStyleNormalizer} from '../../src/dsl/style_normalization/animation_style_normalizer';
 import {AnimationDriver} from '../../src/render/animation_driver';
+import {animationFailed} from '../error_helpers';
+
+import {ANIMATABLE_PROP_SET} from './web_animations/animatable_props_set';
 
 // We don't include ambient node types here since @angular/animations/browser
 // is meant to target the browser so technically it should not depend on node
@@ -41,28 +44,28 @@ export function optimizeGroupPlayer(players: AnimationPlayer[]): AnimationPlayer
 
 export function normalizeKeyframes(
     driver: AnimationDriver, normalizer: AnimationStyleNormalizer, element: any,
-    keyframes: ɵStyleData[], preStyles: ɵStyleData = {},
-    postStyles: ɵStyleData = {}): ɵStyleData[] {
-  const errors: string[] = [];
-  const normalizedKeyframes: ɵStyleData[] = [];
+    keyframes: Array<ɵStyleDataMap>, preStyles: ɵStyleDataMap = new Map(),
+    postStyles: ɵStyleDataMap = new Map()): Array<ɵStyleDataMap> {
+  const errors: Error[] = [];
+  const normalizedKeyframes: Array<ɵStyleDataMap> = [];
   let previousOffset = -1;
-  let previousKeyframe: ɵStyleData|null = null;
+  let previousKeyframe: ɵStyleDataMap|null = null;
   keyframes.forEach(kf => {
-    const offset = kf['offset'] as number;
+    const offset = kf.get('offset') as number;
     const isSameOffset = offset == previousOffset;
-    const normalizedKeyframe: ɵStyleData = (isSameOffset && previousKeyframe) || {};
-    Object.keys(kf).forEach(prop => {
+    const normalizedKeyframe: ɵStyleDataMap = (isSameOffset && previousKeyframe) || new Map();
+    kf.forEach((val, prop) => {
       let normalizedProp = prop;
-      let normalizedValue = kf[prop];
+      let normalizedValue = val;
       if (prop !== 'offset') {
         normalizedProp = normalizer.normalizePropertyName(normalizedProp, errors);
         switch (normalizedValue) {
           case PRE_STYLE:
-            normalizedValue = preStyles[prop];
+            normalizedValue = preStyles.get(prop)!;
             break;
 
           case AUTO_STYLE:
-            normalizedValue = postStyles[prop];
+            normalizedValue = postStyles.get(prop)!;
             break;
 
           default:
@@ -71,7 +74,7 @@ export function normalizeKeyframes(
             break;
         }
       }
-      normalizedKeyframe[normalizedProp] = normalizedValue;
+      normalizedKeyframe.set(normalizedProp, normalizedValue);
     });
     if (!isSameOffset) {
       normalizedKeyframes.push(normalizedKeyframe);
@@ -80,9 +83,7 @@ export function normalizeKeyframes(
     previousOffset = offset;
   });
   if (errors.length) {
-    const LINE_START = '\n - ';
-    throw new Error(
-        `Unable to animate due to the following errors:${LINE_START}${errors.join(LINE_START)}`);
+    throw animationFailed(errors);
   }
 
   return normalizedKeyframes;
@@ -124,19 +125,10 @@ export function makeAnimationEvent(
   return {element, triggerName, fromState, toState, phaseName, totalTime, disabled: !!disabled};
 }
 
-export function getOrSetAsInMap(
-    map: Map<any, any>|{[key: string]: any}, key: any, defaultValue: any) {
-  let value: any;
-  if (map instanceof Map) {
-    value = map.get(key);
-    if (!value) {
-      map.set(key, value = defaultValue);
-    }
-  } else {
-    value = map[key];
-    if (!value) {
-      value = map[key] = defaultValue;
-    }
+export function getOrSetDefaultValue<T, V>(map: Map<T, V>, key: T, defaultValue: V) {
+  let value = map.get(key);
+  if (!value) {
+    map.set(key, value = defaultValue);
   }
   return value;
 }
@@ -144,7 +136,7 @@ export function getOrSetAsInMap(
 export function parseTimelineCommand(command: string): [string, string] {
   const separatorPos = command.indexOf(':');
   const id = command.substring(1, separatorPos);
-  const action = command.substr(separatorPos + 1);
+  const action = command.slice(separatorPos + 1);
   return [id, action];
 }
 
@@ -153,6 +145,15 @@ let _query: (element: any, selector: string, multi: boolean) => any[] =
     (element: any, selector: string, multi: boolean) => {
       return [];
     };
+let _documentElement: unknown|null = null;
+
+export function getParentElement(element: any): unknown|null {
+  const parent = element.parentNode || element.host;  // consider host to support shadow DOM
+  if (parent === _documentElement) {
+    return null;
+  }
+  return parent;
+}
 
 // Define utility methods for browsers and platform-server(domino) where Element
 // and utility methods exist.
@@ -161,38 +162,26 @@ if (_isNode || typeof Element !== 'undefined') {
   if (!isBrowser()) {
     _contains = (elm1, elm2) => elm1.contains(elm2);
   } else {
+    // Read the document element in an IIFE that's been marked pure to avoid a top-level property
+    // read that may prevent tree-shaking.
+    _documentElement = /* @__PURE__ */ (() => document.documentElement)();
     _contains = (elm1, elm2) => {
-      while (elm2 && elm2 !== document.documentElement) {
+      while (elm2) {
         if (elm2 === elm1) {
           return true;
         }
-        elm2 = elm2.parentNode || elm2.host;  // consider host to support shadow DOM
+        elm2 = getParentElement(elm2);
       }
       return false;
     };
   }
 
   _query = (element: any, selector: string, multi: boolean): any[] => {
-    let results: any[] = [];
     if (multi) {
-      // DO NOT REFACTOR TO USE SPREAD SYNTAX.
-      // For element queries that return sufficiently large NodeList objects,
-      // using spread syntax to populate the results array causes a RangeError
-      // due to the call stack limit being reached. `Array.from` can not be used
-      // as well, since NodeList is not iterable in IE 11, see
-      // https://developer.mozilla.org/en-US/docs/Web/API/NodeList
-      // More info is available in #38551.
-      const elems = element.querySelectorAll(selector);
-      for (let i = 0; i < elems.length; i++) {
-        results.push(elems[i]);
-      }
-    } else {
-      const elm = element.querySelector(selector);
-      if (elm) {
-        results.push(elm);
-      }
+      return Array.from(element.querySelectorAll(selector));
     }
-    return results;
+    const elem = element.querySelector(selector);
+    return elem ? [elem] : [];
   };
 }
 
@@ -214,12 +203,16 @@ export function validateStyleProperty(prop: string): boolean {
   if (_CACHED_BODY!.style && !containsVendorPrefix(prop)) {
     result = prop in _CACHED_BODY!.style;
     if (!result && _IS_WEBKIT) {
-      const camelProp = 'Webkit' + prop.charAt(0).toUpperCase() + prop.substr(1);
+      const camelProp = 'Webkit' + prop.charAt(0).toUpperCase() + prop.slice(1);
       result = camelProp in _CACHED_BODY!.style;
     }
   }
 
   return result;
+}
+
+export function validateWebAnimatableStyleProperty(prop: string): boolean {
+  return ANIMATABLE_PROP_SET.has(prop);
 }
 
 export function getBodyNode(): any|null {
@@ -232,11 +225,11 @@ export function getBodyNode(): any|null {
 export const containsElement = _contains;
 export const invokeQuery = _query;
 
-export function hypenatePropsObject(object: {[key: string]: any}): {[key: string]: any} {
-  const newObj: {[key: string]: any} = {};
-  Object.keys(object).forEach(prop => {
+export function hypenatePropsKeys(original: ɵStyleDataMap): ɵStyleDataMap {
+  const newMap: ɵStyleDataMap = new Map();
+  original.forEach((val, prop) => {
     const newProp = prop.replace(/([a-z])([A-Z])/g, '$1-$2');
-    newObj[newProp] = object[prop];
+    newMap.set(newProp, val);
   });
-  return newObj;
+  return newMap;
 }

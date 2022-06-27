@@ -35,8 +35,9 @@ export interface HttpParameterCodec {
  * the query parameters can be misinterpreted at the receiving end.
  *
  *
- * 一个 `HttpParameterCodec`，它使用 `encodeURIComponent` 和 `decodeURIComponent` 来序列化和解析 URL 参数的 key 和 value。
- * 如果你传入未编码的查询参数，那么接收端可能会对这些参数进行错误解析。请使用 `HttpParameterCodec` 类对查询字符串的值进行编码和解码。
+ * 一个 `HttpParameterCodec`，它使用 `encodeURIComponent` 和 `decodeURIComponent` 来序列化和解析 URL
+ * 参数的 key 和 value。 如果你传入未编码的查询参数，那么接收端可能会对这些参数进行错误解析。请使用
+ * `HttpParameterCodec` 类对查询字符串的值进行编码和解码。
  *
  * @publicApi
  */
@@ -145,7 +146,6 @@ const STANDARD_ENCODING_REPLACEMENTS: {[x: string]: string} = {
   '24': '$',
   '2C': ',',
   '3B': ';',
-  '2B': '+',
   '3D': '=',
   '3F': '?',
   '2F': '/',
@@ -182,13 +182,15 @@ export interface HttpParamsOptions {
    */
   fromString?: string;
 
-  /** Object map of the HTTP parameters. Mutually exclusive with `fromString`.
+  /**
+   * Object map of the HTTP parameters. Mutually exclusive with `fromString`.
    *
    * HTTP 参数的对象映射表。与 `fromString` 互斥。
    */
   fromObject?: {[param: string]: string|number|boolean|ReadonlyArray<string|number|boolean>};
 
-  /** Encoding codec used to parse and serialize the parameters.
+  /**
+   * Encoding codec used to parse and serialize the parameters.
    *
    * 用来解析和序列化参数的编解码器。
    */
@@ -199,7 +201,8 @@ export interface HttpParamsOptions {
  * An HTTP request/response body that represents serialized parameters,
  * per the MIME type `application/x-www-form-urlencoded`.
  *
- * HTTP 请求体/响应体，用来表示序列化参数，它们的 MIME 类型都是 `application/x-www-form-urlencoded`。
+ * HTTP 请求体/响应体，用来表示序列化参数，它们的 MIME 类型都是
+ * `application/x-www-form-urlencoded`。
  *
  * This class is immutable; all mutation operations return a new instance.
  *
@@ -224,7 +227,9 @@ export class HttpParams {
       this.map = new Map<string, string[]>();
       Object.keys(options.fromObject).forEach(key => {
         const value = (options.fromObject as any)[key];
-        this.map!.set(key, Array.isArray(value) ? value : [value]);
+        // convert the values to strings
+        const values = Array.isArray(value) ? value.map(valueToString) : [valueToString(value)];
+        this.map!.set(key, values);
       });
     } else {
       this.map = null;
@@ -384,7 +389,8 @@ export class HttpParams {
    * @return A new body with the given value removed, or with all values
    * removed if no value is specified.
    *
-   * 构造一个新的 `body`，如果指定了 `value`，则移除具有指定 `value` 和指定 `param` 的条目；如果没有指定 `value`，则移除指定 `param` 对应的所有值。
+   * 构造一个新的 `body`，如果指定了 `value`，则移除具有指定 `value` 和指定 `param`
+   * 的条目；如果没有指定 `value`，则移除指定 `param` 对应的所有值。
    */
   delete(param: string, value?: string|number|boolean): HttpParams {
     return this.clone({param, value, op: 'd'});

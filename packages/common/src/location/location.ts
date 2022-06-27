@@ -6,10 +6,10 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {EventEmitter, Injectable, ɵɵinject} from '@angular/core';
+import {EventEmitter, Injectable, OnDestroy, ɵɵinject} from '@angular/core';
 import {SubscriptionLike} from 'rxjs';
+
 import {LocationStrategy} from './location_strategy';
-import {PlatformLocation} from './platform_location';
 import {joinWithSlash, normalizeQueryParams, stripTrailingSlash} from './util';
 
 /** @publicApi */
@@ -30,7 +30,8 @@ export interface PopStateEvent {
  * Depending on the `LocationStrategy` used, `Location` persists
  * to the URL's path or the URL's hash segment.
  *
- * 这取决于使用了哪个 {@link LocationStrategy}，`Location` 可能会使用 URL 的路径进行持久化，也可能使用 URL 的哈希片段（`#`）进行持久化。
+ * 这取决于使用了哪个 {@link LocationStrategy}，`Location` 可能会使用 URL
+ * 的路径进行持久化，也可能使用 URL 的哈希片段（`#`）进行持久化。
  *
  * @usageNotes
  *
@@ -38,7 +39,8 @@ export interface PopStateEvent {
  * `Location` only if you need to interact with or create normalized URLs outside of
  * routing.
  *
- * 最好使用 {@link Router#navigate} 服务来触发路由变更。只有当你要在路由体系之外创建规范化 URL 或与之交互时才会用到 `Location`。
+ * 最好使用 {@link Router#navigate} 服务来触发路由变更。只有当你要在路由体系之外创建规范化 URL
+ * 或与之交互时才会用到 `Location`。
  *
  * `Location` is responsible for normalizing the URL against the application's base href.
  * A normalized URL is absolute from the URL host, includes the application's base href, and has no
@@ -73,26 +75,23 @@ export interface PopStateEvent {
   // See #23917
   useFactory: createLocation,
 })
-export class Location {
+export class Location implements OnDestroy {
   /** @internal */
   _subject: EventEmitter<any> = new EventEmitter();
   /** @internal */
   _baseHref: string;
   /** @internal */
-  _platformStrategy: LocationStrategy;
-  /** @internal */
-  _platformLocation: PlatformLocation;
+  _locationStrategy: LocationStrategy;
   /** @internal */
   _urlChangeListeners: ((url: string, state: unknown) => void)[] = [];
   /** @internal */
-  _urlChangeSubscription?: SubscriptionLike;
+  _urlChangeSubscription: SubscriptionLike|null = null;
 
-  constructor(platformStrategy: LocationStrategy, platformLocation: PlatformLocation) {
-    this._platformStrategy = platformStrategy;
-    const browserBaseHref = this._platformStrategy.getBaseHref();
-    this._platformLocation = platformLocation;
+  constructor(locationStrategy: LocationStrategy) {
+    this._locationStrategy = locationStrategy;
+    const browserBaseHref = this._locationStrategy.getBaseHref();
     this._baseHref = stripTrailingSlash(_stripIndexHtml(browserBaseHref));
-    this._platformStrategy.onPopState((ev) => {
+    this._locationStrategy.onPopState((ev) => {
       this._subject.emit({
         'url': this.path(true),
         'pop': true,
@@ -100,6 +99,12 @@ export class Location {
         'type': ev.type,
       });
     });
+  }
+
+  /** @nodoc */
+  ngOnDestroy(): void {
+    this._urlChangeSubscription?.unsubscribe();
+    this._urlChangeListeners = [];
   }
 
   /**
@@ -119,7 +124,7 @@ export class Location {
   // TODO: vsavkin. Remove the boolean flag and always include hash once the deprecated router is
   // removed.
   path(includeHash: boolean = false): string {
-    return this.normalize(this._platformStrategy.path(includeHash));
+    return this.normalize(this._locationStrategy.path(includeHash));
   }
 
   /**
@@ -133,7 +138,7 @@ export class Location {
    *
    */
   getState(): unknown {
-    return this._platformLocation.getState();
+    return this._locationStrategy.getState();
   }
 
   /**
@@ -183,7 +188,9 @@ export class Location {
    * before normalizing. Adds a hash if `HashLocationStrategy` is
    * in use, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
    *
-   * 标准化外部 URL 路径。如果给定的 URL 并非以斜杠（ `'/'` ）开头，就会在规范化之前添加一个。如果使用 `HashLocationStrategy` 则添加哈希；如果使用 `PathLocationStrategy` 则添加 `APP_BASE_HREF`。
+   * 标准化外部 URL 路径。如果给定的 URL 并非以斜杠（ `'/'`
+   * ）开头，就会在规范化之前添加一个。如果使用 `HashLocationStrategy` 则添加哈希；如果使用
+   * `PathLocationStrategy` 则添加 `APP_BASE_HREF`。
    *
    * @param url String representing a URL.
    *
@@ -198,7 +205,7 @@ export class Location {
     if (url && url[0] !== '/') {
       url = '/' + url;
     }
-    return this._platformStrategy.prepareExternalUrl(url);
+    return this._locationStrategy.prepareExternalUrl(url);
   }
 
   // TODO: rename this method to pushState
@@ -206,7 +213,8 @@ export class Location {
    * Changes the browser's URL to a normalized version of a given URL, and pushes a
    * new item onto the platform's history.
    *
-   * 把浏览器的 URL 修改为指定 URL 的标准化版本，并往所属平台（如浏览器）的历史堆栈中追加一个新条目。
+   * 把浏览器的 URL 修改为指定 URL
+   * 的标准化版本，并往所属平台（如浏览器）的历史堆栈中追加一个新条目。
    *
    * @param path  URL path to normalize.
    *
@@ -222,7 +230,7 @@ export class Location {
    *
    */
   go(path: string, query: string = '', state: any = null): void {
-    this._platformStrategy.pushState(state, '', path, query);
+    this._locationStrategy.pushState(state, '', path, query);
     this._notifyUrlChangeListeners(
         this.prepareExternalUrl(path + normalizeQueryParams(query)), state);
   }
@@ -247,7 +255,7 @@ export class Location {
    *
    */
   replaceState(path: string, query: string = '', state: any = null): void {
-    this._platformStrategy.replaceState(state, '', path, query);
+    this._locationStrategy.replaceState(state, '', path, query);
     this._notifyUrlChangeListeners(
         this.prepareExternalUrl(path + normalizeQueryParams(query)), state);
   }
@@ -258,7 +266,7 @@ export class Location {
    * 在所属平台（如浏览器）的历史堆栈中前进一步。
    */
   forward(): void {
-    this._platformStrategy.forward();
+    this._locationStrategy.forward();
   }
 
   /**
@@ -267,7 +275,7 @@ export class Location {
    * 在所属平台（如浏览器）的历史堆栈中后退一步。
    */
   back(): void {
-    this._platformStrategy.back();
+    this._locationStrategy.back();
   }
 
   /**
@@ -283,21 +291,23 @@ export class Location {
    * @see https://developer.mozilla.org/en-US/docs/Web/API/History_API#Moving_to_a_specific_point_in_history
    */
   historyGo(relativePosition: number = 0): void {
-    this._platformStrategy.historyGo?.(relativePosition);
+    this._locationStrategy.historyGo?.(relativePosition);
   }
 
   /**
    * Registers a URL change listener. Use to catch updates performed by the Angular
    * framework that are not detectible through "popstate" or "hashchange" events.
    *
-   * 注册 URL 更改监听器。被 Angular 框架用于捕获那些无法通过 “popstate” 或 “hashchange” 事件检测到的更新。
+   * 注册 URL 更改监听器。被 Angular 框架用于捕获那些无法通过 “popstate” 或 “hashchange”
+   * 事件检测到的更新。
    *
    * @param fn The change handler function, which take a URL and a location history state.
    *
    * 更改处理器函数，接受 URL 和位置历史记录的状态。
    *
+   * @returns A function that, when executed, unregisters a URL change listener.
    */
-  onUrlChange(fn: (url: string, state: unknown) => void) {
+  onUrlChange(fn: (url: string, state: unknown) => void): VoidFunction {
     this._urlChangeListeners.push(fn);
 
     if (!this._urlChangeSubscription) {
@@ -305,6 +315,16 @@ export class Location {
         this._notifyUrlChangeListeners(v.url, v.state);
       });
     }
+
+    return () => {
+      const fnIndex = this._urlChangeListeners.indexOf(fn);
+      this._urlChangeListeners.splice(fnIndex, 1);
+
+      if (this._urlChangeListeners.length === 0) {
+        this._urlChangeSubscription?.unsubscribe();
+        this._urlChangeSubscription = null;
+      }
+    };
   }
 
   /** @internal */
@@ -383,7 +403,8 @@ export class Location {
    * line as `/` characters and removes the trailing slash if one exists.
    *
    * 如果 url 具有结尾斜杠，则移除它，否则原样返回。
-   * 该方法会查找第一个 `#`、`?` 之前的结尾 `/` 字符，之后的则不管。如果 url 中没有 `#`、`?`，则替换行尾的。
+   * 该方法会查找第一个 `#`、`?` 之前的结尾 `/` 字符，之后的则不管。如果 url 中没有
+   * `#`、`?`，则替换行尾的。
    *
    * @param url URL string.
    *
@@ -398,7 +419,7 @@ export class Location {
 }
 
 export function createLocation() {
-  return new Location(ɵɵinject(LocationStrategy as any), ɵɵinject(PlatformLocation as any));
+  return new Location(ɵɵinject(LocationStrategy as any));
 }
 
 function _stripBaseHref(baseHref: string, url: string): string {

@@ -8,7 +8,7 @@ export const heroDetail = {
   template: `
     <h2>{{$ctrl.hero.name}} details!</h2>
     <div><label>id: </label>{{$ctrl.hero.id}}</div>
-    <button ng-click="$ctrl.onDelete()">Delete</button>
+    <button type="button" ng-click="$ctrl.onDelete()">Delete</button>
   `,
   controller: function HeroDetailController() {
     this.onDelete = () => {
@@ -24,6 +24,7 @@ import { UpgradeComponent } from '@angular/upgrade/static';
 import { Hero } from '../hero';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'hero-detail'
 })
 export class HeroDetailDirective extends UpgradeComponent {

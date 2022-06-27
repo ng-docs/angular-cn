@@ -148,12 +148,14 @@ function formatNumberToLocaleString(
  * currency code, such as `USD` for the US dollar and `EUR` for the euro.
  * Used to determine the number of digits in the decimal part.
  *
- * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) 货币代码，例如 `USD` 表示美元，`EUR` 表示欧元。用于确定小数部分的位数。
+ * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) 货币代码，例如 `USD` 表示美元，`EUR`
+ * 表示欧元。用于确定小数部分的位数。
  *
  * @param digitsInfo Decimal representation options, specified by a string in the following format:
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
- * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}` 。欲知详情，请参见 `DecimalPipe`。
+ * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`
+ * 。欲知详情，请参见 `DecimalPipe`。
  *
  * @returns The formatted currency value.
  *
@@ -208,7 +210,8 @@ export function formatCurrency(
  * @param digitsInfo Decimal representation options, specified by a string in the following format:
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
- * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`。欲知详情，请参见 `DecimalPipe`。
+ * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`。欲知详情，请参见
+ * `DecimalPipe`。
  *
  * @returns The formatted percentage value.
  *
@@ -252,7 +255,8 @@ export function formatPercent(value: number, locale: string, digitsInfo?: string
  * @param digitsInfo Decimal representation options, specified by a string in the following format:
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
- * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}` 。欲知详情，请参见 `DecimalPipe`。
+ * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`
+ * 。欲知详情，请参见 `DecimalPipe`。
  *
  * @returns The formatted text string.
  *
@@ -316,7 +320,7 @@ function parseNumberFormat(format: string, minusSign = '-'): ParsedNumberFormat 
       ],
         integer = positiveParts[0], fraction = positiveParts[1] || '';
 
-  p.posPre = integer.substr(0, integer.indexOf(DIGIT_CHAR));
+  p.posPre = integer.substring(0, integer.indexOf(DIGIT_CHAR));
 
   for (let i = 0; i < fraction.length; i++) {
     const ch = fraction.charAt(i);
@@ -337,8 +341,8 @@ function parseNumberFormat(format: string, minusSign = '-'): ParsedNumberFormat 
     const trunkLen = positive.length - p.posPre.length - p.posSuf.length,
           pos = negative.indexOf(DIGIT_CHAR);
 
-    p.negPre = negative.substr(0, pos).replace(/'/g, '');
-    p.negSuf = negative.substr(pos + trunkLen).replace(/'/g, '');
+    p.negPre = negative.substring(0, pos).replace(/'/g, '');
+    p.negSuf = negative.slice(pos + trunkLen).replace(/'/g, '');
   } else {
     p.negPre = minusSign + p.posPre;
     p.negSuf = p.posSuf;

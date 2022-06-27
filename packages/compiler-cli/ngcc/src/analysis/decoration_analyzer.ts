@@ -90,7 +90,8 @@ export class DecorationAnalyzer {
   dtsModuleScopeResolver =
       new MetadataDtsModuleScopeResolver(this.dtsMetaReader, this.aliasingHost);
   scopeRegistry = new LocalModuleScopeRegistry(
-      this.metaRegistry, this.dtsModuleScopeResolver, this.refEmitter, this.aliasingHost);
+      this.metaRegistry, this.fullMetaReader, this.dtsModuleScopeResolver, this.refEmitter,
+      this.aliasingHost);
   fullRegistry = new CompoundMetadataRegistry([this.metaRegistry, this.scopeRegistry]);
   evaluator =
       new PartialEvaluator(this.reflectionHost, this.typeChecker, /* dependencyTracker */ null);
@@ -101,9 +102,9 @@ export class DecorationAnalyzer {
   handlers: DecoratorHandler<unknown, unknown, SemanticSymbol|null, unknown>[] = [
     new ComponentDecoratorHandler(
         this.reflectionHost, this.evaluator, this.fullRegistry, this.fullMetaReader,
-        this.scopeRegistry, this.scopeRegistry, this.typeCheckScopeRegistry, new ResourceRegistry(),
-        this.isCore, this.resourceManager, this.rootDirs,
-        !!this.compilerOptions.preserveWhitespaces,
+        this.scopeRegistry, this.dtsModuleScopeResolver, this.scopeRegistry,
+        this.typeCheckScopeRegistry, new ResourceRegistry(), this.isCore, this.resourceManager,
+        this.rootDirs, !!this.compilerOptions.preserveWhitespaces,
         /* i18nUseExternalIds */ true, this.bundle.enableI18nLegacyMessageIdFormat,
         /* usePoisonedData */ false,
         /* i18nNormalizeLineEndingsInICUs */ false, this.moduleResolver, this.cycleAnalyzer,
@@ -140,7 +141,7 @@ export class DecorationAnalyzer {
         this.reflectionHost, this.evaluator, this.fullMetaReader, this.fullRegistry,
         this.scopeRegistry, this.referencesRegistry, this.isCore, this.refEmitter,
         /* factoryTracker */ null, !!this.compilerOptions.annotateForClosureCompiler,
-        this.injectableRegistry, NOOP_PERF_RECORDER),
+        /* onlyPublishPublicTypings */ false, this.injectableRegistry, NOOP_PERF_RECORDER),
   ];
   compiler = new NgccTraitCompiler(this.handlers, this.reflectionHost);
   migrations: Migration[] = [

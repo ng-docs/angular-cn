@@ -25,7 +25,7 @@ export class AdBannerComponent implements OnInit, OnDestroy {
   @ViewChild(AdDirective, {static: true}) adHost!: AdDirective;
   interval: number|undefined;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadComponent();
     this.getAds();
   }

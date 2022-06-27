@@ -25,13 +25,15 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  * to specify one or more CSS classes to add to the element when the linked route
  * is active.
  *
- * 跟踪元素上的链接路由当前是否处于活动状态，并允许你指定一个或多个 CSS 类，以便在链接路由处于活动状态时添加到该元素。
+ * 跟踪元素上的链接路由当前是否处于活动状态，并允许你指定一个或多个 CSS
+ * 类，以便在链接路由处于活动状态时添加到该元素。
  *
  * Use this directive to create a visual distinction for elements associated with an active route.
  * For example, the following code highlights the word "Bob" when the router
  * activates the associated route:
  *
- * 使用此指令为与活动路径关联的元素创建视觉差异。例如，以下代码会在路由器激活关联的路由时突出显示单词 “Bob”：
+ * 使用此指令为与活动路径关联的元素创建视觉差异。例如，以下代码会在路由器激活关联的路由时突出显示单词
+ * “Bob”：
  *
  * ```
  * <a routerLink="/user/bob" routerLinkActive="active-link">Bob</a>
@@ -55,7 +57,8 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  *
  * To add the classes only when the URL matches the link exactly, add the option `exact: true`:
  *
- * 你可以通过传入 `exact: true` 来配置 RouterLinkActive。这样，只有当 url 和此链接精确匹配时才会添加这些类。
+ * 你可以通过传入 `exact: true` 来配置 RouterLinkActive。这样，只有当 url
+ * 和此链接精确匹配时才会添加这些类。
  *
  * ```
  * <a routerLink="/user/bob" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
@@ -66,7 +69,8 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  * instance to a template variable.
  * For example, the following checks the status without assigning any CSS classes:
  *
- * 要直接检查 `isActive` 状态，请将 `RouterLinkActive` 实例分配给模板变量。例如，以下代码会在不分配任何 CSS 类的情况下检查状态：
+ * 要直接检查 `isActive` 状态，请将 `RouterLinkActive`
+ * 实例分配给模板变量。例如，以下代码会在不分配任何 CSS 类的情况下检查状态：
  *
  * ```
  * <a routerLink="/user/bob" routerLinkActive #rla="routerLinkActive">
@@ -85,6 +89,16 @@ import {RouterLink, RouterLinkWithHref} from './router_link';
  *   <a routerLink="/user/jim">Jim</a>
  *   <a routerLink="/user/bob">Bob</a>
  * </div>
+ * ```
+ *
+ * The `RouterLinkActive` directive can also be used to set the aria-current attribute
+ * to provide an alternative distinction for active elements to visually impaired users.
+ *
+ * For example, the following code adds the 'active' class to the Home Page link when it is
+ * indeed active and in such case also sets its aria-current attribute to 'page':
+ *
+ * ```
+ * <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home Page</a>
  * ```
  *
  * @ngModule RouterModule
@@ -113,6 +127,16 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
    * @see Router.isActive
    */
   @Input() routerLinkActiveOptions: {exact: boolean}|IsActiveMatchOptions = {exact: false};
+
+
+  /**
+   * Aria-current attribute to apply when the router link is active.
+   *
+   * Possible values: `'page'` | `'step'` | `'location'` | `'date'` | `'time'` | `true` | `false`.
+   *
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
+   */
+  @Input() ariaCurrentWhenActive?: 'page'|'step'|'location'|'date'|'time'|true|false;
 
   /**
    *
@@ -195,6 +219,12 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
             this.renderer.removeClass(this.element.nativeElement, c);
           }
         });
+        if (hasActiveLinks && this.ariaCurrentWhenActive !== undefined) {
+          this.renderer.setAttribute(
+              this.element.nativeElement, 'aria-current', this.ariaCurrentWhenActive.toString());
+        } else {
+          this.renderer.removeAttribute(this.element.nativeElement, 'aria-current');
+        }
 
         // Emit on isActiveChange after classes are updated
         this.isActiveChange.emit(hasActiveLinks);

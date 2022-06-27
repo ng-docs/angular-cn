@@ -49,7 +49,10 @@ export function unescapeHtml(text: string): string {
  *
  * @publicApi
  */
-export type StateKey<T> = string&{__not_a_string: never};
+export type StateKey<T> = string&{
+  __not_a_string: never,
+  __value_type?: T,
+};
 
 /**
  * Create a `StateKey<T>` that can be used to store value of type T with `TransferState`.
@@ -82,20 +85,23 @@ export function makeStateKey<T = void>(key: string): StateKey<T> {
  * `TransferState` will be available as an injectable token. To use it import
  * `ServerTransferStateModule` on the server and `BrowserTransferStateModule` on the client.
  *
- * `TransferState` 将作为可注入令牌提供。要使用它，请在服务器上导入 `ServerTransferStateModule`，并在客户端上导入 `BrowserTransferStateModule`。
+ * `TransferState` 将作为可注入令牌提供。要使用它，请在服务器上导入
+ * `ServerTransferStateModule`，并在客户端上导入 `BrowserTransferStateModule`。
  *
  * The values in the store are serialized/deserialized using JSON.stringify/JSON.parse. So only
  * boolean, number, string, null and non-class objects will be serialized and deserialized in a
  * non-lossy manner.
  *
- * 这里会使用 JSON.stringify/JSON.parse 对存储中的值进行序列化/反序列化。因此，仅布尔、数字、字符串、null 和非类对象能以无损的方式进行序列化和反序列化。
+ * 这里会使用 JSON.stringify/JSON.parse
+ * 对存储中的值进行序列化/反序列化。因此，仅布尔、数字、字符串、null
+ * 和非类对象能以无损的方式进行序列化和反序列化。
  *
  * @publicApi
  */
 @Injectable()
 export class TransferState {
-  private store: {[k: string]: {}|undefined} = {};
-  private onSerializeCallbacks: {[k: string]: () => {} | undefined} = {};
+  private store: {[k: string]: unknown|undefined} = {};
+  private onSerializeCallbacks: {[k: string]: () => unknown | undefined} = {};
 
   /** @internal */
   static init(initState: {}) {

@@ -8,6 +8,7 @@
 
 import {Type} from '../../interface/type';
 import {getClosureSafeProperty} from '../../util/property';
+
 import {ClassProvider, ConstructorProvider, ExistingProvider, FactoryProvider, StaticClassProvider, ValueProvider} from './provider';
 
 
@@ -20,13 +21,15 @@ import {ClassProvider, ConstructorProvider, ExistingProvider, FactoryProvider, S
  * At a minimum, this includes a `factory` which defines how to create the given type `T`, possibly
  * requesting injection of other types if necessary.
  *
- * 至少，这要包括一个 `factory` ，该工厂定义如何创建给定类型 `T` ，如有必要，可能会请求注入其他类型。
+ * 至少，这要包括一个 `factory` ，该工厂定义如何创建给定类型 `T`
+ ，如有必要，可能会请求注入其他类型。
  *
  * Optionally, a `providedIn` parameter specifies that the given type belongs to a particular
  * `Injector`, `NgModule`, or a special scope (e.g. `'root'`). A value of `null` indicates
  * that the injectable does not belong to any scope.
  *
- * 可选的参数 `providedIn` 规定给定的类型属于某个特定的 `InjectorDef`、`NgModule` 还是一个特殊的范围（例如 `'root'`）。如果值为 `null` 表示可注入对象不属于任何范围。
+ * 可选的参数 `providedIn` 规定给定的类型属于某个特定的 `InjectorDef`、`NgModule`
+ 还是一个特殊的范围（例如 `'root'`）。如果值为 `null` 表示可注入对象不属于任何范围。
  *
  * @codeGenApi
  * @publicApi The ViewEngine compiler emits code with this type for injectables. This code is
@@ -57,7 +60,7 @@ export interface ɵɵInjectableDeclaration<T> {
    *   `null` ，不属于任何注入器。必须在注入器的 `providers` 列表中显式列出。
    *
    */
-  providedIn: InjectorType<any>|'root'|'platform'|'any'|null;
+  providedIn: InjectorType<any>|'root'|'platform'|'any'|'environment'|null;
 
   /**
    * The token to which this definition belongs.
@@ -115,9 +118,10 @@ export interface ɵɵInjectorDef<T> {
  * 具有 `InjectableDef` 静态字段的 `Type`
  *
  * `InjectableType`s contain their own Dependency Injection metadata and are usable in an
- * `InjectorDef`-based `StaticInjector.
+ * `InjectorDef`-based `StaticInjector`.
  *
- * `InjectableDefType` 包含其自己的依赖注入元数据，并且可在基于 `InjectorDef` 的 `StaticInjector` 中使用。
+ * `InjectableDefType` 包含其自己的依赖注入元数据，并且可在基于 `InjectorDef` 的 `StaticInjector`
+ * 中使用。
  *
  * @publicApi
  */
@@ -184,19 +188,22 @@ export interface InjectorTypeWithProviders<T> {
  *   with an `@NgModule` or other `InjectorType`, or by specifying that this injectable should be
  *   provided in the `'root'` injector, which will be the application-level injector in most apps.
  *
- *   `providedIn` 决定哪些注入器应该包含此可注入对象：或者将其与 `@NgModule` 关联，或者将其与其他 `InjectorType` 关联，或者指定应该在 `'root'` 注入器（对大多数应用来说这是全应用级注入器）中提供它。
+ *   `providedIn` 决定哪些注入器应该包含此可注入对象：或者将其与 `@NgModule` 关联，或者将其与其他
+ * `InjectorType` 关联，或者指定应该在 `'root'`
+ * 注入器（对大多数应用来说这是全应用级注入器）中提供它。
  *
  * * `factory` gives the zero argument function which will create an instance of the injectable.
  *   The factory can call `inject` to access the `Injector` and request injection of dependencies.
  *
- *   `factory` 是一个零参数函数，该函数将创建可注入的实例。工厂可以调用 `inject` 来访问 `Injector` 并请求注入依赖项。
+ *   `factory` 是一个零参数函数，该函数将创建可注入的实例。工厂可以调用 `inject` 来访问 `Injector`
+ * 并请求注入依赖项。
  *
  * @codeGenApi
  * @publicApi This instruction has been emitted by ViewEngine for some time and is deployed to npm.
  */
 export function ɵɵdefineInjectable<T>(opts: {
   token: unknown,
-  providedIn?: Type<any>|'root'|'platform'|'any'|null, factory: () => T,
+  providedIn?: Type<any>|'root'|'platform'|'any'|'environment'|null, factory: () => T,
 }): unknown {
   return {
     token: opts.token,
@@ -210,7 +217,8 @@ export function ɵɵdefineInjectable<T>(opts: {
  * @deprecated in v8, delete after v10. This API should be used only by generated code, and that
  * code should now use ɵɵdefineInjectable instead.
  *
- * 在 v8 中弃用，在 v10 之后删除。此 API 仅应由生成的代码使用，并且该代码现在应改用 ɵɵdefineInjectable。
+ * 在 v8 中弃用，在 v10 之后删除。此 API 仅应由生成的代码使用，并且该代码现在应改用
+ * ɵɵdefineInjectable。
  *
  * @publicApi
  */

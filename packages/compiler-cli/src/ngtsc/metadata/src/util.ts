@@ -44,6 +44,21 @@ export function extractReferencesFromType(
   });
 }
 
+export function readBooleanType(type: ts.TypeNode): boolean|null {
+  if (!ts.isLiteralTypeNode(type)) {
+    return null;
+  }
+
+  switch (type.literal.kind) {
+    case ts.SyntaxKind.TrueKeyword:
+      return true;
+    case ts.SyntaxKind.FalseKeyword:
+      return false;
+    default:
+      return null;
+  }
+}
+
 export function readStringType(type: ts.TypeNode): string|null {
   if (!ts.isLiteralTypeNode(type) || !ts.isStringLiteral(type.literal)) {
     return null;
@@ -221,7 +236,7 @@ function afterUnderscore(str: string): string {
   if (pos === -1) {
     throw new Error(`Expected '${str}' to contain '_'`);
   }
-  return str.substr(pos + 1);
+  return str.slice(pos + 1);
 }
 
 /** Returns whether a class declaration has the necessary class fields to make it injectable. */

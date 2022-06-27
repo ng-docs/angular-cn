@@ -3,7 +3,7 @@
 Note: this doc is for developing Angular, it is _not_ public
 documentation for building an Angular application with Bazel.
 
-The Bazel build tool (http://bazel.build) provides fast, reliable
+The Bazel build tool (https://bazel.build) provides fast, reliable
 incremental builds. We plan to migrate Angular's build scripts to
 Bazel.
 
@@ -48,9 +48,18 @@ new as of May 2017 and not very stable yet.
 
 ## Testing Angular
 
-- Test package in node: `yarn bazel test packages/core/test:test`
-- Test package in karma: `yarn bazel test packages/core/test:test_web`
-- Test all packages: `yarn bazel test packages/...`
+- Test package in node: `yarn test packages/core/test:test`
+- Test package in karma: `yarn test packages/core/test:test_web`
+- Test all packages: `yarn test packages/...`
+
+**Note**: The ellipsis in the last command above are not meant to be substituted by a package name, but
+are used by Bazel as a wildcard to execute all tests in the specified path. To execute all the tests for a
+single package, the commands are (exemplary):
+- `yarn test //packages/core/...` for all tests, or
+- `yarn test //packages/core/test:test` for a particular test suite.
+
+**Note**: The first test run will be much slower than future runs. This is because future runs will
+benefit from Bazel's capability to do incremental builds.
 
 You can use [ibazel] to get a "watch mode" that continuously
 keeps the outputs up-to-date as you save sources.
@@ -105,7 +114,7 @@ Apple+Shift+D on Mac) and click on the green play icon next to the configuration
 
 ### Debugging a Karma Test
 
-- Run test: `yarn bazel run packages/core/test:test_web_chromium` or `yarn bazel run packages/core/test:test_web_firefox`
+- Run test: `yarn bazel run packages/core/test:test_web_debug` (any `karma_web_test_suite` target has a `_debug` target)
 - Open any browser at: [http://localhost:9876/debug.html](http://localhost:9876/debug.html)
 - Open the browser's DevTools to debug the tests (after, for example, having focused on specific tests via `fit` and/or `fdescribe` or having added `debugger` statements in them)
 
@@ -274,7 +283,7 @@ e.g: `yarn bazel test packages/core/test/bundling/forms:symbol_test`
 #### mkdir missing
 If you see the following error::
 ```
- 
+
 ERROR: An error occurred during the fetch of repository 'npm':
    Traceback (most recent call last):
         File "C:/users/anusername/_bazel_anusername/idexbm2i/external/build_bazel_rules_nodejs/internal/npm_install/npm_install.bzl", line 618, column 15, in _yarn_install_impl
@@ -286,7 +295,7 @@ Error in fail: mkdir -p _ failed:
 ```
 The `msys64` library and associated tools (like `mkdir`) are required to build Angular.
 
-Make sure you have `C:\msys64\usr\bin` in the "system" `PATH` rather than the "user" `PATH`. 
+Make sure you have `C:\msys64\usr\bin` in the "system" `PATH` rather than the "user" `PATH`.
 
 After that, a `git clean -xfd`, `yarn`, and `node scripts\build\build-packages-dist.js` should resolve this issue.
 

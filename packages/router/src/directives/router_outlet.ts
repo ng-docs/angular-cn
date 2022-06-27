@@ -6,8 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Attribute, ChangeDetectorRef, ComponentFactoryResolver, ComponentRef, Directive, EventEmitter, Injector, OnDestroy, OnInit, Output, ViewContainerRef,} from '@angular/core';
-import {Data} from '../config';
+import {Attribute, ChangeDetectorRef, ComponentFactoryResolver, ComponentRef, Directive, EnvironmentInjector, EventEmitter, Injector, OnDestroy, OnInit, Output, ViewContainerRef,} from '@angular/core';
+
+import {Data} from '../models';
 import {ChildrenOutletContexts} from '../router_outlet_context';
 import {ActivatedRoute} from '../router_state';
 import {PRIMARY_OUTLET} from '../shared';
@@ -48,6 +49,13 @@ export interface RouterOutletContract {
 
   /**
    * Called by the `Router` when the outlet should activate (create a component).
+   */
+  activateWith(activatedRoute: ActivatedRoute, environmnetInjector: EnvironmentInjector|null): void;
+  /**
+   * Called by the `Router` when the outlet should activate (create a component).
+   *
+   * @deprecated Passing a resolver to retrieve a component factory is not required and is
+   *     deprecated since v14.
    */
   activateWith(activatedRoute: ActivatedRoute, resolver: ComponentFactoryResolver|null): void;
 
@@ -105,7 +113,8 @@ export interface RouterOutletContract {
  * Each outlet can have a unique name, determined by the optional `name` attribute.
  * The name cannot be set or changed dynamically. If not set, default value is "primary".
  *
- * 每个出口可以具有唯一的名称，该 `name` 由可选的 name 属性确定。该名称不能动态设置或更改。如果未设置，则默认值为 “primary”。
+ * 每个出口可以具有唯一的名称，该 `name` 由可选的 name
+ * 属性确定。该名称不能动态设置或更改。如果未设置，则默认值为 “primary”。
  *
  * ```
  * <router-outlet></router-outlet>
@@ -130,7 +139,8 @@ export interface RouterOutletContract {
  * The URL for a secondary route uses the following syntax to specify both the primary and secondary
  * routes at the same time:
  *
- * 路由器在导航树中跟踪每个命名出口的单独分支，并在 URL 中生成该树的表示形式。辅助路由的 URL 使用以下语法同时指定主要路由和辅助路由：
+ * 路由器在导航树中跟踪每个命名出口的单独分支，并在 URL 中生成该树的表示形式。辅助路由的 URL
+ * 使用以下语法同时指定主要路由和辅助路由：
  *
  * `http://base-path/primary-route-path(outlet-name:route-path)`
  *
@@ -182,8 +192,8 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
 
   constructor(
       private parentContexts: ChildrenOutletContexts, private location: ViewContainerRef,
-      private resolver: ComponentFactoryResolver, @Attribute('name') name: string,
-      private changeDetector: ChangeDetectorRef) {
+      @Attribute('name') name: string, private changeDetector: ChangeDetectorRef,
+      private environmentInjector: EnvironmentInjector) {
     this.name = name || PRIMARY_OUTLET;
     parentContexts.onChildOutletCreated(this.name, this);
   }
@@ -205,7 +215,7 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
           this.attach(context.attachRef, context.route);
         } else {
           // otherwise the component defined in the configuration is created
-          this.activateWith(context.route, context.resolver || null);
+          this.activateWith(context.route, context.injector);
         }
       }
     }
@@ -273,18 +283,27 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
     }
   }
 
-  activateWith(activatedRoute: ActivatedRoute, resolver: ComponentFactoryResolver|null) {
+  activateWith(
+      activatedRoute: ActivatedRoute,
+      resolverOrInjector?: ComponentFactoryResolver|EnvironmentInjector|null) {
     if (this.isActivated) {
       throw new Error('Cannot activate an already activated outlet');
     }
     this._activatedRoute = activatedRoute;
+    const location = this.location;
     const snapshot = activatedRoute._futureSnapshot;
-    const component = <any>snapshot.routeConfig!.component;
-    resolver = resolver || this.resolver;
-    const factory = resolver.resolveComponentFactory(component);
+    const component = snapshot.component!;
     const childContexts = this.parentContexts.getOrCreateContext(this.name).children;
-    const injector = new OutletInjector(activatedRoute, childContexts, this.location.injector);
-    this.activated = this.location.createComponent(factory, this.location.length, injector);
+    const injector = new OutletInjector(activatedRoute, childContexts, location.injector);
+
+    if (resolverOrInjector && isComponentFactoryResolver(resolverOrInjector)) {
+      const factory = resolverOrInjector.resolveComponentFactory(component);
+      this.activated = location.createComponent(factory, location.length, injector);
+    } else {
+      const environmentInjector = resolverOrInjector ?? this.environmentInjector;
+      this.activated = location.createComponent(
+          component, {index: location.length, injector, environmentInjector});
+    }
     // Calling `markForCheck` to make sure we will run the change detection when the
     // `RouterOutlet` is inside a `ChangeDetectionStrategy.OnPush` component.
     this.changeDetector.markForCheck();
@@ -308,4 +327,8 @@ class OutletInjector implements Injector {
 
     return this.parent.get(token, notFoundValue);
   }
+}
+
+function isComponentFactoryResolver(item: any): item is ComponentFactoryResolver {
+  return !!item.resolveComponentFactory;
 }

@@ -1,1584 +1,281 @@
 # AngularJS to Angular concepts: Quick reference
 
-# 关于 AngularJS 与 Angular 概念的快速参考
+*Angular* is the name for the Angular of today and tomorrow.
 
-<a id="top"></a>
-
-_Angular_ is the name for the Angular of today and tomorrow.
-_AngularJS_ is the name for all v1.x versions of Angular.
-
-*Angular* 这个名字专指现在和未来的 Angular 版本，而 *AngularJS* 专指 Angular 的所有 v1.x 版本。
+*AngularJS* is the name for all v1.x versions of Angular.
 
 This guide helps you transition from AngularJS to Angular
 by mapping AngularJS syntax to the equivalent Angular syntax.
 
-本章提供了一个快速的参考指南，指出一些常用的 AngularJS 语法及其在 Angular 中的等价物。
-
 **See the Angular syntax in this <live-example name="ajs-quick-reference"></live-example>**.
 
-**参阅 <live-example name="ajs-quick-reference"></live-example> 以学习 Angular 语法**
-
 ## Template basics
-
-## 模板基础
 
 Templates are the user-facing part of an Angular application and are written in HTML.
 The following table lists some of the key AngularJS template features with their equivalent Angular template syntax.
 
-模板是 Angular 应用中的门面部分，它是用 HTML 写的。下表中是一些 AngularJS 中的关键模板特性及其在 Angular 中的等价语法。
+### Bindings/interpolation → Bindings/interpolation
 
-<table width="100%">
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Bindings/interpolation</header> <code-example hideCopy format="html" language="html"> Your favorite hero is: {{vm.favoriteHero}} </code-example> In AngularJS, an expression in curly braces denotes one-way binding. This binds the value of the element to a property in the controller associated with this template. <br /> When using the `controller as` syntax, the binding is prefixed with the controller alias (`vm` or `$ctrl`) because you have to be specific about the source of the binding. | <header>Bindings/interpolation</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="interpolation"></code-example> In Angular, a template expression in curly braces still denotes one-way binding. This binds the value of the element to a property of the component. The context of the binding is implied and is always the associated component, so it needs no reference variable. <br /> For more information, see the [Interpolation][AioGuideInterpolation] guide. |
 
-  <col width="50%">
+### Filters → Pipes
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Filters</header> <code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.title &verbar; uppercase}} &NewLine; &lt;/td&gt; </code-example> To filter output in AngularJS templates, use the pipe (<code>&verbar;</code>) character and one or more filters. <br /> This example filters the `title` property to uppercase. | <header>Pipes</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="uppercase"></code-example> In Angular you use similar syntax with the pipe (<code>&verbar;</code>) character to filter output, but now you call them **pipes**. Many (but not all) of the built-in filters from AngularJS are built-in pipes in Angular. <br /> For more information, see [Filters/pipes][AioGuideAjsQuickReferenceFiltersPipes]. |
 
-  <col width="50%">
+### Local variables → Input variables
 
-  </col>
-
-  <tr>
-
-    <th>
-
-      AngularJS
-
-    </th>
-
-    <th>
-
-      Angular
-
-    </th>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Bindings/interpolation
-
-      ### 绑定/插值
-
-      <code-example hideCopy>
-        Your favorite hero is: {{vm.favoriteHero}}
-      </code-example>
-
-      In AngularJS, an expression in curly braces denotes one-way binding.
-      This binds the value of the element to a property in the controller
-      associated with this template.
-
-      在 AngularJS 中，花括号中的表达式代表单向绑定。
-      它把元素的值绑定到了与模板相关控制器的属性上。
-
-      When using the `controller as` syntax,
-      the binding is prefixed with the controller alias (`vm` or `$ctrl`) because you
-      have to be specific about the source of the binding.
-
-      当使用 `controller as` 语法时，该绑定需要用控制器的别名(`vm`)为前缀，这是因为你不得不通过它来指定绑定源。
-
-    </td>
-
-    <td>
-
-      ### Bindings/interpolation
-
-      ### 绑定/插值
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="interpolation"></code-example>
-
-      In Angular, a template expression in curly braces still denotes one-way binding.
-      This binds the value of the element to a property of the component.
-      The context of the binding is implied and is always the
-      associated component, so it needs no reference variable.
-
-      在 Angular 中，花括号中的模板表达式同样代表单向绑定。
-      它把元素的值绑定到了组件的属性上。
-      它绑定的上下文变量是隐式的，并且总是关联到组件。
-      所以，它不需要一个引用变量。
-
-      For more information, see the [Interpolation](guide/interpolation) guide.
-
-      要了解更多，请参阅[插值](guide/interpolation)部分。
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Filters
-
-      ### 过滤器
-
-      <code-example hideCopy>
-        &lt;td>{{movie.title | uppercase}}&lt;/td>
-      </code-example>
-
-      To filter output in AngularJS templates, use the pipe character (|) and one or more filters.
-
-      要在 AngularJS 中过滤输出，使用管道字符(|)以及一个或多个过滤器。
-
-      This example filters the `title` property to uppercase.
-
-      这个例子中把 `title` 属性过滤成了大写形式。
-
-    </td>
-
-    <td>
-
-      ### Pipes
-
-      ### 管道
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="uppercase"></code-example>
-
-      In Angular you use similar syntax with the pipe (|) character to filter output, but now you call them **pipes**.
-      Many (but not all) of the built-in filters from AngularJS are
-      built-in pipes in Angular.
-
-      在 Angular 中，你使用类似的语法 —— 用管道字符(|)来过滤输出，但是现在直接把它叫做**管道**了。
-      很多(但不是所有)AngularJS 中的内置过滤器也成了 Angular 中的内置管道。
-
-      For more information, see [Filters/pipes](guide/ajs-quick-reference#filters-pipes) below.
-
-      请参阅下面[过滤器/管道](guide/ajs-quick-reference#filters-pipes)了解更多信息。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Local variables
-
-      ### 局部变量
-
-      <code-example hideCopy format="">
-        &lt;tr ng-repeat="movie in vm.movies">
-          &lt;td>{{movie.title}}&lt;/td>
-        &lt;/tr>
-      </code-example>
-
-      Here, `movie` is a user-defined local variable.
-
-      这里的 `movie` 是一个用户定义的局部变量
-
-    </td>
-
-    <td>
-
-      ### Input variables
-
-      ### 输入变量
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="local"></code-example>
-
-      Angular has true template input variables that are explicitly defined using the `let` keyword.
-
-      Angular 有了真正的模板输入变量，它需要使用 `let` 关键字进行明确定义。
-
-      For more information, see the [Structural directive shorthand](guide/structural-directives#shorthand) section of [Structural Directives](guide/structural-directives).
-
-      要了解更多信息，请参阅[结构型指令](guide/structural-directives)中的[结构型指令的简写形式](guide/structural-directives#shorthand)部分。
-    </td>
-
-  </tr>
-
-</table>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Local variables</header> <code-example hideCopy format="html" language="html"> &lt;tr ng-repeat="movie in vm.movies"&gt; &NewLine;&nbsp; &lt;td&gt; &NewLine;&nbsp;&nbsp;&nbsp; {{movie.title}} &NewLine;&nbsp; &lt;/td&gt; &NewLine;&lt;/tr&gt; </code-example> Here, `movie` is a user-defined local variable. | <header>Input variables</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="local"></code-example> Angular has true template input variables that are explicitly defined using the `let` keyword. <br /> For more information, see the [Structural directive shorthand][AioGuideStructuralDirectivesStructuralDirectiveShorthand] section of [Structural Directives][AioGuideStructuralDirectives]. |
 
 ## Template directives
 
-## 模板指令
-
 AngularJS provides more than seventy built-in directives for templates.
-Many of them aren't needed in Angular because of its more capable and expressive binding system.
+Many of them are not needed in Angular because of its more capable and expressive binding system.
 The following are some of the key AngularJS built-in directives and their equivalents in Angular.
 
-AngularJS 为模板提供了七十多个内置指令。
-在 Angular 中，它们很多都已经不需要了，因为 Angular 有了一个更加强大、快捷的绑定系统。
-下面是一些 AngularJS 中的关键指令及其在 Angular 中的等价物。
+### `ng-app` → Bootstrapping
 
-<table width="100%">
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-app</code></header> <code-example hideCopy format="html" language="html"> &lt;body ng-app="movieHunter"&gt; </code-example> The application startup process is called **bootstrapping**. <br /> Although you can bootstrap an AngularJS application in code, many applications bootstrap declaratively with the `ng-app` directive, giving it the name of the module (`movieHunter`) of the application. | <header>Bootstrapping</header> <code-example header="main.ts" format="typescript" hideCopy language="typescript" path="ajs-quick-reference/src/main.ts"></code-example> <code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts" header="app.module.ts"></code-example> Angular does not have a bootstrap directive. To launch the application in code, explicitly bootstrap the root module (`AppModule`) of the application in `main.ts` and the root component (`AppComponent`) of the application in `app.module.ts`. |
 
-  <col width="50%">
+### `ng-class` → `ngClass`
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-class</code></header> <code-example hideCopy format="html" language="html"> &lt;div ng-class="{active: isActive}"&gt; &NewLine; &lt;div ng-class="{active: isActive, shazam: isImportant}"&gt; </code-example> In AngularJS, the `ng-class` directive includes/excludes CSS classes based on an expression. That expression is often a key-value control object with each key of the object defined as a CSS class name, and each value defined as a template expression that evaluates to a Boolean value. <br /> In the first example, the `active` class is applied to the element if `isActive` is true. <br /> You can specify multiple classes, as shown in the second example. | <header><code>ngClass</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="ngClass"></code-example> In Angular, the `ngClass` directive works similarly. It includes/excludes CSS classes based on an expression. <br /> In the first example, the `active` class is applied to the element if `isActive` is true. <br /> You can specify multiple classes, as shown in the second example. <br /> Angular also has **class binding**, which is a good way to add or remove a single class, as shown in the third example. <br /> For more information see [Attribute, class, and style bindings][AioGuideAttributeBinding] page. |
 
-  <col width="50%">
+### `ng-click` → Bind to the `click` event
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-click</code></header> <code-example hideCopy format="html" language="html"> &lt;button ng-click="vm.toggleImage()"&gt; &NewLine; &lt;button ng-click="vm.toggleImage(&dollar;event)"&gt; </code-example> In AngularJS, the `ng-click` directive allows you to specify custom behavior when an element is clicked. <br /> In the first example, when the user clicks the button, the `toggleImage()` method in the controller referenced by the `vm` `controller as` alias is executed. <br /> The second example demonstrates passing in the `$event` object, which provides details about the event to the controller. | <header>Bind to the <code>click</code> event</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="event-binding"></code-example> AngularJS event-based directives do not exist in Angular. Rather, define one-way binding from the template view to the component using **event binding**. <br /> For event binding, define the name of the target event within parenthesis and specify a template statement, in quotes, to the right of the equals. Angular then sets up an event handler for the target event. When the event is raised, the handler executes the template statement. <br /> In the first example, when a user clicks the button, the `toggleImage()` method in the associated component is executed. <br /> The second example demonstrates passing in the `$event` object, which provides details about the event to the component. <br /> For a list of DOM events, see [Event reference][MdnDocsWebEvents]. <br /> For more information, see the [Event binding][AioGuideEventBinding] page. |
 
-  <tr>
+### `ng-controller` → Component decorator
 
-    <th>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-controller</code></header> <code-example hideCopy format="html" language="html"> &lt;div ng-controller="MovieListCtrl as vm"&gt; </code-example> In AngularJS, the `ng-controller` directive attaches a controller to the view. Using the `ng-controller` (or defining the controller as part of the routing) ties the view to the controller code associated with that view. | <header>Component decorator</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="component"></code-example> In Angular, the template no longer specifies its associated controller. Rather, the component specifies its associated template as part of the component class decorator. <br /> For more information, see [Architecture Overview][AioGuideArchitectureComponents]. |
 
-      AngularJS
+### `ng-hide` → Bind to the `hidden` property
 
-    </th>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-hide</code></header> In AngularJS, the `ng-hide` directive shows or hides the associated HTML element based on an expression. For more information, see [ng-show][AioGuideAjsQuickReferenceTemplateDirectives]. | <header>Bind to the <code>hidden</code> property</header> In Angular, you use property binding; there is no built-in *hide* directive. For more information, see [ng-show][AioGuideAjsQuickReferenceTemplateDirectives]. |
 
-    <th>
+### `ng-href` → Bind to the `href` property
 
-      Angular
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-href</code></header> <code-example hideCopy format="html" language="html"> &lt;a ng-href="{{ angularDocsUrl }}"&gt; &NewLine; &nbsp; Angular Docs &NewLine; &lt;/a&gt; </code-example> The `ng-href` directive allows AngularJS to preprocess the `href` property so that it can replace the binding expression with the appropriate URL before the browser fetches from that URL. <br /> In AngularJS, the `ng-href` is often used to activate a route as part of navigation. <br /> <code-example hideCopy format="html" language="html"> &lt;a ng-href="#{{ moviesHash }}"&gt; &NewLine;&nbsp; Movies &NewLine;&lt;/a&gt; </code-example> Routing is handled differently in Angular. | <header>Bind to the <code>href</code> property</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="href"></code-example> Angular uses property binding; there is no built-in *href* directive. Place the `href` property of the element in square brackets and set it to a quoted template expression. For more information see the [Property binding][AioGuidePropertyBinding] page. In Angular, `href` is no longer used for routing. Routing uses `routerLink`, as shown in the following example. <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="router-link"></code-example> For more information on routing, see [Defining a basic route][AioGuideRouterDefiningABasicRoute] in the [Routing & Navigation][AioGuideRouter] page. |
 
-    </th>
+### `ng-if` → `*ngIf`
 
-  </tr>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-if</code></header> <code-example hideCopy format="html" language="html"> &lt;table ng-if="movies.length"&gt; </code-example> In AngularJS, the `ng-if` directive removes or recreates a portion of the DOM, based on an expression. If the expression is false, the element is removed from the DOM. <br /> In this example, the `<table>` element is removed from the DOM unless the `movies` array has a length greater than zero. | <header><code>\*ngIf</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngIf"></code-example> The `*ngIf` directive in Angular works the same as the `ng-if` directive in AngularJS. It removes or recreates a portion of the DOM based on an expression. <br /> In this example, the `<table>` element is removed from the DOM unless the `movies` array has a length. <br /> The (`*`) before `ngIf` is required in this example. For more information, see [Structural Directives][AioGuideStructuralDirectives]. |
 
-  <tr style=top>
+### `ng-model` → `ngModel`
 
-    <td>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-model</code></header> <code-example hideCopy format="html" language="html"> &lt;input ng-model="vm.favoriteHero" /&gt; </code-example> In AngularJS, the `ng-model` directive binds a form control to a property in the controller associated with the template. This provides **two-way binding**, whereby any change made to the value in the view is synchronized with the model, and any change to the model is synchronized with the value in the view. | <header><code>ngModel</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngModel"></code-example> In Angular, **two-way binding** is indicatedr5t by `[()]`, descriptively referred to as a "banana in a box". This syntax is a shortcut for defining both property binding (from the component to the view) and event binding (from the view to the component), thereby providing two-way binding. <br /> For more information on two-way binding with `ngModel`, see the [Displaying and updating properties with `ngModel`][AioGuideBuiltInDirectivesDisplayingAndUpdatingPropertiesWithNgmodel] section of [Built-in directives][AioGuideBuiltInDirectives]. |
 
-      ### ng-app
+### `ng-repeat` → `*ngFor`
 
-      <code-example hideCopy>
-        &lt;body ng-app="movieHunter">
-      </code-example>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-repeat</code></header> <code-example hideCopy format="html" language="html"> &lt;tr ng-repeat="movie in vm.movies"&gt; </code-example> In AngularJS, the `ng-repeat` directive repeats the associated DOM element for each item in the specified collection. <br /> In this example, the table row (`<tr>`) element repeats for each movie object in the collection of movies. | <header><code>\*ngFor</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngFor"></code-example> The `*ngFor` directive in Angular is similar to the `ng-repeat` directive in AngularJS. It repeats the associated DOM element for each item in the specified collection. More accurately, it turns the defined element (`<tr>` in this example) and its contents into a template and uses that template to instantiate a view for each item in the list. <br /> Notice the other syntax differences: The (`*`) before `ngFor` is required; the `let` keyword identifies `movie` as an input variable; the list preposition is `of`, not `in`. <br /> For more information, see [Structural Directives][AioGuideStructuralDirectives]. |
 
-      The application startup process is called **bootstrapping**.
+### `ng-show` → Bind to the `hidden` property
 
-      应用的启动过程被称为**引导**。
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-show</code></header> <code-example hideCopy format="html" language="html"> &lt;h3 ng-show="vm.favoriteHero"&gt; &NewLine; &nbsp; Your favorite hero is: {{vm.favoriteHero}} &NewLine; &lt;/h3&gt; </code-example> In AngularJS, the `ng-show` directive shows or hides the associated DOM element, based on an expression. <br /> In this example, the `<div>` element is shown if the `favoriteHero` variable is truthy. | <header>Bind to the <code>hidden</code> property</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="hidden"></code-example> Angular uses property binding; there is no built-in *show* directive. For hiding and showing elements, bind to the HTML `hidden` property. <br /> To conditionally display an element, place the `hidden` property of the element in square brackets and set it to a quoted template expression that evaluates to the *opposite* of *show*. <br /> In this example, the `<div>` element is hidden if the `favoriteHero` variable is not truthy. <br /> For more information on property binding, see the [Property binding][AioGuidePropertyBinding] page. |
 
-      Although you can bootstrap an AngularJS application in code,
-      many applications bootstrap declaratively with the `ng-app` directive,
-      giving it the name of the application's module (`movieHunter`).
+### `ng-src` → Bind to the `src` property
 
-      虽然可以从代码中引导 Angular 应用，
-      但很多应用都是通过 `ng-app` 指令进行声明式引导的，只要给它一个应用模块的名字(`movieHunter`)就可以了。
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-src</code></header> <code-example hideCopy format="html" language="html"> &lt;img ng-src="{{movie.imageurl}}"&gt; </code-example> The `ng-src` directive allows AngularJS to preprocess the `src` property so that it can replace the binding expression with the appropriate URL before the browser fetches from that URL. | <header>Bind to the <code>src</code> property</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="src"></code-example> Angular uses property binding; there is no built-in *src* directive. Place the `src` property in square brackets and set it to a quoted template expression. <br /> For more information on property binding, see the [Property binding][AioGuidePropertyBinding] page. |
 
-    </td>
+### `ng-style` → `ngStyle`
 
-    <td>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-style</code></header> <code-example hideCopy format="html" language="html"> &lt;div ng-style="{color: colorPreference}"&gt; </code-example> In AngularJS, the `ng-style` directive sets a CSS style on an HTML element based on an expression. That expression is often a key-value control object with each key of the object defined as a CSS property, and each value defined as an expression that evaluates to a value appropriate for the style. <br /> In the example, the `color` style is set to the current value of the `colorPreference` variable. | <header><code>ngStyle</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="ngStyle"></code-example> In Angular, the `ngStyle` directive works similarly. It sets a CSS style on an HTML element based on an expression. <br /> In the first example, the `color` style is set to the current value of the `colorPreference` variable. <br /> Angular also has **style binding**, which is good way to set a single style. This is shown in the second example. <br /> For more information on style binding, see the [Style binding][AioGuideAttributeBindingBindingToTheStyleAttribute] section of the [Attribute binding][AioGuideAttributeBinding] page. <br /> For more information on the `ngStyle` directive, see the [NgStyle][AioGuideBuiltInDirectivesSettingInlineStylesWithNgstyle] section of the [Built-in directives][AioGuideBuiltInDirectives] page. |
 
-      ### Bootstrapping
+### `ng-switch` → `ngSwitch`
 
-      ### 引导
-
-      <code-example hideCopy path="ajs-quick-reference/src/main.ts" header="main.ts"></code-example>
-      <br>
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts" header="app.module.ts"></code-example>
-
-      Angular doesn't have a bootstrap directive.
-      To launch the application in code, explicitly bootstrap the application's root module (`AppModule`)
-      in `main.ts`
-      and the application's root component (`AppComponent`) in `app.module.ts`.
-
-      Angular 没有引导指令。
-      总是要通过显式调用一个 `bootstrap` 函数，并传入应用模块的名字(`AppComponent`)来启动应用。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-class
-
-      <code-example hideCopy format="">
-        &lt;div ng-class="{active: isActive}">
-        &lt;div ng-class="{active: isActive,
-                           shazam: isImportant}">
-      </code-example>
-
-      In AngularJS, the `ng-class` directive includes/excludes CSS classes
-      based on an expression. That expression is often a key-value control object with each
-      key of the object defined as a CSS class name, and each value defined as a template expression
-      that evaluates to a Boolean value.
-
-      在 AngularJS 中，`ng-class` 指令会基于一个表达式来包含/排除某些 CSS 类。该表达式通常是一个“键-值”型的控制对象，
-      对象中的每一个键代表一个 CSS 类名，每一个值定义为一个返回布尔值的模板表达式。
-
-      In the first example, the `active` class is applied to the element if `isActive` is true.
-
-      在第一个例子中，如果 `isActive` 为真，则 `active` 类被应用到那个元素上。
-
-      You can specify multiple classes, as shown in the second example.
-
-      就像第二个例子中所展示的那样，可以同时指定多个类。
-
-    </td>
-
-    <td>
-
-      ### ngClass
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="ngClass"></code-example>
-
-      In Angular, the `ngClass` directive works similarly.
-      It includes/excludes CSS classes based on an expression.
-
-      在 Angular 中，`ngClass` 指令用类似的方式工作。
-      它根据一个表达式包含/排除某些 CSS 类。
-
-      In the first example, the `active` class is applied to the element if `isActive` is true.
-
-      在第一个例子中，如果 `isActive` 为真，则 `active` 类被应用到那个元素上。
-
-      You can specify multiple classes, as shown in the second example.
-
-      就像第二个例子中所展示的那样，可以同时指定多个类。
-
-      Angular also has **class binding**, which is a good way to add or remove a single class,
-      as shown in the third example.
-
-      Angular 还有**类绑定**，它是单独添加或移除一个类的好办法 —— 就像第三个例子中展示的。
-
-      For more information see [Attribute, class, and style bindings](guide/attribute-binding) page.
-
-      要了解更多信息，参阅[属性（Attribute）绑定、类绑定和样式绑定](guide/attribute-binding)部分。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-click
-
-      <code-example hideCopy format="">
-        &lt;button ng-click="vm.toggleImage()">
-        &lt;button ng-click="vm.toggleImage($event)">
-      </code-example>
-
-      In AngularJS, the `ng-click` directive allows you to specify custom behavior when an element is clicked.
-
-      在 AngularJS 中，`ng-click` 指令指定当元素被点击时的自定义行为。
-
-      In the first example, when the user clicks the button, the `toggleImage()` method in the controller referenced by the `vm` `controller as` alias is executed.
-
-      在第一个例子中，如果用户点击了这个按钮，那么控制器的 `toggleImage()` 方法就会被执行，这个控制器是被 `controller as` 中指定的 `vm` 别名所引用的。
-
-      The second example demonstrates passing in the `$event` object, which provides details about the event
-      to the controller.
-
-      第二个例子演示了传入 `$event` 对象，它提供了事件的详情，并被传到控制器。
-
-    </td>
-
-    <td>
-
-      ### Bind to the `click` event
-
-      ### 绑定到 `click` 事件
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="event-binding"></code-example>
-
-      AngularJS event-based directives do not exist in Angular.
-      Rather, define one-way binding from the template view to the component using **event binding**.
-
-      AngularJS 基于事件的指令在 Angular 中已经不存在了。
-      不过，可以使用**事件绑定**来定义从模板视图到组件的单向数据绑定。
-
-      For event binding, define the name of the target event within parenthesis and
-      specify a template statement, in quotes, to the right of the equals. Angular then
-      sets up an event handler for the target event. When the event is raised, the handler
-      executes the template statement.
-
-      要使用事件绑定，把目标事件的名字放在圆括号中，并且使用等号右侧引号中的模板语句对它赋值。
-      然后 Angular 为这个目标时间设置事件处理器。当事件被触发时，这个处理器就会执行模板语句。
-
-      In the first example, when a user clicks the button, the `toggleImage()` method in the associated component is executed.
-
-      在第一个例子中，当用户点击此按钮时，相关组件中的 `toggleImage()` 方法就被执行了。
-
-      The second example demonstrates passing in the `$event` object, which provides details about the event
-      to the component.
-
-      第二个例子演示了如何传入 `$event` 对象，它为组件提供了此事件的详情。
-
-      For a list of DOM events, see: https://developer.mozilla.org/en-US/docs/Web/Events.
-
-      要查看 DOM 事件的列表，请参阅[网络事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
-
-      For more information, see the [Event binding](guide/event-binding) page.
-
-      要了解更多，请参阅[事件绑定](guide/event-binding)页。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-controller
-
-      <code-example hideCopy format="">
-        &lt;div ng-controller="MovieListCtrl as vm">
-      </code-example>
-
-      In AngularJS, the `ng-controller` directive attaches a controller to the view.
-      Using the `ng-controller` (or defining the controller as part of the routing) ties the
-      view to the controller code associated with that view.
-
-      在 AngularJS 中，`ng-controller` 指令把控制器附加到视图上。
-      使用 `ng-controller`(或把控制器定义为路由的一部分)把视图及其控制器的代码联系在一起。
-
-    </td>
-
-    <td>
-
-      ### Component decorator
-
-      ### 组件装饰器
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="component"></code-example>
-
-      In Angular, the template no longer specifies its associated controller.
-      Rather, the component specifies its associated template as part of the component class decorator.
-
-      在 Angular 中，模板不用再指定它相关的控制器。
-      反过来，组件会在组件类的装饰器中指定与它相关的模板。
-
-      For more information, see [Architecture Overview](guide/architecture#components).
-
-      要了解更多，请参阅[架构概览](guide/architecture#components)。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-hide
-
-      In AngularJS, the `ng-hide` directive shows or hides the associated HTML element based on
-      an expression. For more information, see [ng-show](guide/ajs-quick-reference#ng-show).
-
-      在 AngularJS 中，`ng-hide` 指令会基于一个表达式显示或隐藏相关的 HTML 元素。
-      参阅[ng-show](guide/ajs-quick-reference#ng-show)了解更多。
-
-    </td>
-
-    <td>
-
-      ### Bind to the `hidden` property
-
-      ### 绑定到 `hidden` 属性
-
-      In Angular, you use property binding; there is no built-in *hide* directive.
-      For more information, see [ng-show](guide/ajs-quick-reference#ng-show).
-
-      在 Angular 中，并没有一个内置的 *hide* 指令，可以改用属性绑定。
-      参阅[ng-show](guide/ajs-quick-reference#ng-show)了解更多。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-href
-
-      <code-example hideCopy format="">
-        &lt;a ng-href="{{ angularDocsUrl }}">Angular Docs&lt;/a>
-      </code-example>
-
-      The `ng-href` directive allows AngularJS to preprocess the `href` property so that it
-      can replace the binding expression with the appropriate URL before the browser
-      fetches from that URL.
-
-      `ng-href` 指令允许 AngularJS 对 `href` 属性进行预处理，以便它能在浏览器获取那个 URL 之前，使用一个返回适当 URL 的绑定表达式替换它。
-
-      In AngularJS, the `ng-href` is often used to activate a route as part of navigation.
-
-      在 AngularJS 中，`ng-href` 通常用来作为导航的一部分，激活一个路由。
-
-      <code-example hideCopy format="">
-        &lt;a ng-href="#{{ moviesHash }}">Movies&lt;/a>
-      </code-example>
-
-      Routing is handled differently in Angular.
-
-      路由在 Angular 中的处理方式不同。
-
-    </td>
-
-    <td>
-
-      ### Bind to the `href` property
-
-      ### 绑定到 `href` 属性
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="href"></code-example>
-
-      Angular uses property binding; there is no built-in *href* directive.
-      Place the element's `href` property in square brackets and set it to a quoted template expression.
-
-      在 Angular 中，并没有内置的 *href* 指令，改用属性绑定。
-      把元素的 `href` 属性放在方括号中，并把它设成一个引号中的模板表达式。
-
-      For more information see the [Property binding](guide/property-binding) page.
-
-      欲知详情，参阅[属性绑定](guide/property-binding)页。
-
-      In Angular, `href` is no longer used for routing. Routing uses `routerLink`, as shown in the following example.
-
-      在 Angular 中，`href` 不再用作路由，而是改用第三个例子中所展示的 `routerLink` 指令。
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="router-link"></code-example>
-
-      For more information on routing, see [Defining a basic route](guide/router#basic-route)
-      in the [Routing & Navigation](guide/router) page.
-
-      要了解关于路由的更多信息，请参阅[路由与导航](guide/router)的[定义基础路由](guide/router#basic-route)部分。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-if
-
-      <code-example hideCopy format="">
-        &lt;table ng-if="movies.length">
-      </code-example>
-
-      In AngularJS, the `ng-if` directive removes or recreates a portion of the DOM,
-      based on an expression. If the expression is false, the element is removed from the DOM.
-
-      在 AngularJS 中，`ng-if` 指令会根据一个表达式来移除或重建 DOM 中的一部分。如果表达式为假，元素就会被从 DOM 中移除。
-
-      In this example, the `<table>` element is removed from the DOM unless the `movies` array has a length greater than zero.
-
-      在这个例子中，除非 `movies` 数组的长度大于 0，否则 `<table>` 元素就会被从 DOM 中移除。
-
-    </td>
-
-    <td>
-
-      ### *ngIf
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngIf"></code-example>
-
-      The `*ngIf` directive in Angular works the same as the `ng-if` directive in AngularJS. It removes
-      or recreates a portion of the DOM based on an expression.
-
-      Angular 中的 `*ngIf` 指令与 AngularJS 中的 `ng-if` 指令一样，
-      它根据表达式的值移除或重建 DOM 中的一部分。
-
-      In this example, the `<table>` element is removed from the DOM unless the `movies` array has a length.
-
-      在这个例子中，除非 `movies` 数组的长度大于 0，否则 `<table>` 元素就会被从 DOM 中移除。
-
-      The (*) before `ngIf` is required in this example.
-      For more information, see [Structural Directives](guide/structural-directives).
-
-      在这个例子中 `ngIf` 前的星号(*)是必须的。
-      要了解更多信息，参阅[结构型指令](guide/structural-directives)。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-model
-
-      <code-example hideCopy format="">
-        &lt;input ng-model="vm.favoriteHero"/>
-      </code-example>
-
-      In AngularJS, the `ng-model` directive binds a form control to a property in the controller associated with the template.
-      This provides **two-way binding**, whereby any change made to the value in the view is synchronized with the model, and any change to the model is synchronized with the value in the view.
-
-      在 AngularJS 中，`ng-model` 指令把一个表单控件绑定到了模板相关控制器的一个属性上。
-      这提供了**双向绑定**功能，因此，任何对视图中值的改动，都会同步到模型中，对模型的改动，也会同步到视图中。
-
-    </td>
-
-    <td>
-
-      ### ngModel
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngModel"></code-example>
-
-      In Angular, **two-way binding** is denoted by `[()]`, descriptively referred to as a "banana in a box". This syntax is a shortcut for defining both property binding (from the component to the view)
-      and event binding (from the view to the component), thereby providing two-way binding.
-
-      在 Angular 中，**双向绑定**使用[()]标记出来，它被形象的比作“盒子中的香蕉”。
-      这种语法是一个简写形式，用来同时定义一个属性绑定(从组件到视图)和一个事件绑定(从视图到组件)，就成了双向绑定。
-
-      For more information on two-way binding with `ngModel`, see the [NgModel&mdash;Two-way binding to
-      form elements with `[(ngModel)]`](../guide/built-in-directives#ngModel)
-      section of the [Built-in directives](guide/built-in-directives) page.
-
-      要了解使用 ngModel 进行双向绑定的更多知识，参阅[内置指令](guide/built-in-directives)中的`[(ngModel)]`](../guide/built-in-directives#ngModel)部分。
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-repeat
-
-      <code-example hideCopy format="">
-        &lt;tr ng-repeat="movie in vm.movies">
-      </code-example>
-
-      In AngularJS, the `ng-repeat` directive repeats the associated DOM element
-      for each item in the specified collection.
-
-      在 AngularJS 中，`ng-repeat` 指令会为指定集合中的每一个条目重复渲染相关的 DOM 元素。
-
-      In this example, the table row (`<tr>`) element repeats for each movie object in the collection of movies.
-
-      在这个例子中，对 `movies` 集合中的每一个 `movie` 对象重复渲染了这个表格行元素(`<tr>`)。
-
-    </td>
-
-    <td>
-
-      ### *ngFor
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngFor"></code-example>
-
-      The `*ngFor` directive in Angular is similar to the `ng-repeat` directive in AngularJS. It repeats
-      the associated DOM element for each item in the specified collection.
-      More accurately, it turns the defined element (`<tr>` in this example) and its contents into a template and
-      uses that template to instantiate a view for each item in the list.
-
-      Angular 中的 `*ngFor` 指令类似于 AngularJS 中的 `ng-repeat` 指令。
-      它为指定集合中的每一个条目重复渲染了相关的 DOM 元素。
-      更准确的说，它把被界定出来的元素(这个例子中是 `<tr>`)及其内容转成了一个模板，并使用那个模板来为列表中的每一个条目实例化一个视图。
-
-      Notice the other syntax differences:
-      The (*) before `ngFor` is required;
-      the `let` keyword identifies `movie` as an input variable;
-      the list preposition is `of`, not `in`.
-
-      请注意其它语法上的差异：
-      在 `ngFor` 前面的星号(*)是必须的；`let` 关键字把 `movie` 标记成一个输入变量；列表中使用的介词是 `of`，而不再是 `in`。
-
-      For more information, see [Structural Directives](guide/structural-directives).
-
-      要了解更多信息，参阅[结构型指令](guide/structural-directives)。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-show
-
-      <code-example hideCopy format="">
-        &lt;h3 ng-show="vm.favoriteHero">
-          Your favorite hero is: {{vm.favoriteHero}}
-        &lt;/h3>
-      </code-example>
-
-      In AngularJS, the `ng-show` directive shows or hides the associated DOM element, based on
-      an expression.
-
-      在 AngularJS 中，`ng-show` 指令根据一个表达式来显示或隐藏相关的 DOM 元素。
-
-      In this example, the `<div>` element is shown if the `favoriteHero` variable is truthy.
-
-      在这个例子中，如果 `favoriteHero` 变量为真，`<div>` 元素就会显示出来。
-
-    </td>
-
-    <td>
-
-      ### Bind to the `hidden` property
-
-      ### 绑定到 `hidden` 属性
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="hidden"></code-example>
-
-      Angular uses property binding; there is no built-in *show* directive.
-      For hiding and showing elements, bind to the HTML `hidden` property.
-
-      在 Angular 中，并没有内置的 *show* 指令，可以改用属性绑定。
-      要隐藏或显示一个元素，绑定到它的 `hidden` 属性就可以了。
-
-      To conditionally display an element, place the element's `hidden` property in square brackets and
-      set it to a quoted template expression that evaluates to the *opposite* of *show*.
-
-      要想有条件的显示一个元素，就把该元素的 `hidden` 属性放到一个方括号里，并且把它设置为引号中的模板表达式，它的结果应该是与*显示*时*相反*的值。
-
-      In this example, the `<div>` element is hidden if the `favoriteHero` variable is not truthy.
-
-      在这个例子中，如果 `favoriteHero` 变量不是真值，`<div>` 元素就会被隐藏。
-
-      For more information on property binding, see the [Property binding](guide/property-binding) page.
-
-      要了解属性绑定的更多知识，参阅[属性绑定](guide/property-binding)页。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-src
-
-      <code-example hideCopy format="">
-        &lt;img ng-src="{{movie.imageurl}}">
-      </code-example>
-
-      The `ng-src` directive allows AngularJS to preprocess the `src` property so that it
-      can replace the binding expression with the appropriate URL before the browser
-      fetches from that URL.
-
-      `ng-src` 指令允许 AngularJS 对 `src` 属性进行预处理，以便它能够在浏览器获取此 URL 之前，用一个返回适当 URL 的绑定表达式替换它。
-
-    </td>
-
-    <td>
-
-      ### Bind to the `src` property
-
-      ### 绑定到 `src` 属性
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="src"></code-example>
-
-      Angular uses property binding; there is no built-in *src* directive.
-      Place the `src` property in square brackets and set it to a quoted template expression.
-
-      在 Angular 中，并没有一个内置的 *src* 指令，可以使用属性绑定。
-      把 `src` 属性放到方括号中，并且把它设为一个引号中的绑定表达式。
-
-      For more information on property binding, see the [Property binding](guide/property-binding) page.
-
-      要了解关于属性绑定的更多知识，参阅[属性绑定](guide/property-binding)页。
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-style
-
-      <code-example hideCopy format="">
-        &lt;div ng-style="{color: colorPreference}">
-      </code-example>
-
-      In AngularJS, the `ng-style` directive sets a CSS style on an HTML element
-      based on an expression. That expression is often a key-value control object with each
-      key of the object defined as a CSS property, and each value defined as an expression
-      that evaluates to a value appropriate for the style.
-
-      在 AngularJS 中，`ng-style` 指令根据一个绑定表达式设置一个 HTML 元素的 CSS 样式。
-      该表达式通常是一个“键-值”形式的控制对象，对象的每个键都是一个 CSS 属性，每个值都是一个能计算为此样式的合适值的表达式。
-
-      In the example, the `color` style is set to the current value of the `colorPreference` variable.
-
-      在这个例子中，`color` 样式被设置为 `colorPreference` 变量的当前值。
-
-    </td>
-
-    <td>
-
-      ### ngStyle
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="ngStyle"></code-example>
-
-      In Angular, the `ngStyle` directive works similarly. It sets a CSS style on an HTML element based on an expression.
-
-      在 Angular 中，`ngStyle` 指令的工作方式与此类似。它根据一个表达式设置 HTML 元素上的 CSS 样式。
-
-      In the first example, the `color` style is set to the current value of the `colorPreference` variable.
-
-      在第一个例子中，`color` 样式被设置成了 `colorPreference` 变量的当前值。
-
-      Angular also has **style binding**, which is good way to set a single style. This is shown in the second example.
-
-      Angular 还有**样式绑定**语法，它是单独设置一个样式的好方法。它展示在第二个例子中。
-
-      For more information on style binding, see the [Style binding](guide/attribute-binding#style-binding) section of the
-      [Attribute binding](guide/attribute-binding) page.
-
-      要了解关于样式绑定的更多知识，参阅[属性绑定](guide/attribute-binding)中的[样式绑定](guide/attribute-binding#style-binding)部分。
-
-      For more information on the `ngStyle` directive, see the [NgStyle](guide/built-in-directives#ngstyle)
-      section of the [Built-in directives](guide/built-in-directives) page.
-
-      要了解关于 `ngStyle` 指令的更多知识，参阅[内置指令](guide/built-in-directives)中的[NgStyle](guide/built-in-directives#ngstyle)部分。
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### ng-switch
-
-      <code-example hideCopy format="">
-        &lt;div ng-switch="vm.favoriteHero &&
-                        vm.checkMovieHero(vm.favoriteHero)">
-            &lt;div ng-switch-when="true">
-              Excellent choice!
-            &lt;/div>
-            &lt;div ng-switch-when="false">
-              No movie, sorry!
-            &lt;/div>
-            &lt;div ng-switch-default>
-              Please enter your favorite hero.
-            &lt;/div>
-        &lt;/div>
-      </code-example>
-
-      In AngularJS, the `ng-switch` directive swaps the contents of
-      an element by selecting one of the templates based on the current value of an expression.
-
-      在 AngularJS 中，`ng-switch` 指令根据一个表达式的当前值把元素的内容替换成几个模板之一。
-
-      In this example, if `favoriteHero` is not set, the template displays "Please enter ...".
-      If `favoriteHero` is set, it checks the movie hero by calling a controller method.
-      If that method returns `true`, the template displays "Excellent choice!".
-      If that methods returns `false`, the template displays "No movie, sorry!".
-
-      在这个例子中，如果 `favoriteHero` 没有设置，则模板显示“Please enter ...”。
-      如果 `favoriteHero` 设置过，它就会通过调用一个控制其方法来检查它是否电影里的英雄。
-      如果该方法返回 `true`，模板就会显示“Excellent choice!”。
-      如果该方法返回 `false`，该模板就会显示“No movie, sorry!”。
-
-    </td>
-
-    <td>
-
-      ### ngSwitch
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngSwitch"></code-example>
-
-      In Angular, the `ngSwitch` directive works similarly.
-      It displays an element whose `*ngSwitchCase` matches the current `ngSwitch` expression value.
-
-      在 Angular 中，`ngSwitch` 指令的工作方式与此类似。
-      它会显示那个与 `ngSwitch` 表达式的当前值匹配的那个 `*ngSwitchCase` 所在的元素。
-
-      In this example, if `favoriteHero` is not set, the `ngSwitch` value is `null`
-      and `*ngSwitchDefault` displays, "Please enter ...".
-      If `favoriteHero` is set, the application checks the movie hero by calling a component method.
-      If that method returns `true`, the application selects `*ngSwitchCase="true"` and displays: "Excellent choice!"
-      If that methods returns `false`, the application selects `*ngSwitchCase="false"` and displays: "No movie, sorry!"
-
-      在这个例子中，如果 `favoriteHero` 没有设置，则 `ngSwitch` 的值是 `null`，
-      `*ngSwitchDefault` 中会显示 “Please enter ...”。
-      如果设置了 `favoriteHero`，应用就会通过调用一个组件方法来检查电影英雄。
-      如果该方法返回 `true`，就会显示 “Excellent choice!”。
-      如果该方法返回 `false`，就会显示 “No movie, sorry!”。
-
-      The (*) before `ngSwitchCase` and `ngSwitchDefault` is required in this example.
-
-      在这个例子中，`ngSwitchCase` 和 `ngSwitchDefault` 前面的星号(*)是必须的。
-
-      For more information, see [The NgSwitch directives](guide/built-in-directives#ngSwitch)
-      section of the [Built-in directives](guide/built-in-directives) page.
-
-      要了解更多信息，参阅[内置指令](guide/built-in-directives)中的[NgSwitch 指令](guide/built-in-directives#ngSwitch)部分。
-    </td>
-
-  </tr>
-
-</table>
-
-<a id="filters-pipes"></a>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>ng-switch</code></header> <code-example hideCopy format="html" language="html"> &lt;div ng-switch="vm.favoriteHero &amp;&amp; vm.checkMovieHero(vm.favoriteHero)"&gt; &NewLine; &nbsp; &lt;div ng-switch-when="true"&gt; &NewLine; &nbsp; &nbsp; Excellent choice. &NewLine; &nbsp; &lt;/div&gt; &NewLine; &nbsp; &lt;div ng-switch-when="false"&gt; &NewLine; &nbsp; &nbsp; No movie, sorry. &NewLine; &nbsp; &lt;/div&gt; &NewLine; &nbsp; &lt;div ng-switch-default&gt; &NewLine; &nbsp; &nbsp; Please enter your favorite hero. &NewLine; &nbsp; &lt;/div&gt; &NewLine; &lt;/div&gt; </code-example> In AngularJS, the `ng-switch` directive swaps the contents of an element by selecting one of the templates based on the current value of an expression. <br /> In this example, if `favoriteHero` is not set, the template displays "Please enter …". If `favoriteHero` is set, it checks the movie hero by calling a controller method. If that method returns `true`, the template displays "Excellent choice!". If that methods returns `false`, the template displays "No movie, sorry!". | <header><code>ngSwitch</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="ngSwitch"></code-example> In Angular, the `ngSwitch` directive works similarly. It displays an element whose `*ngSwitchCase` matches the current `ngSwitch` expression value. <br /> In this example, if `favoriteHero` is not set, the `ngSwitch` value is `null` and `*ngSwitchDefault` displays, "Please enter …". If `favoriteHero` is set, the application checks the movie hero by calling a component method. If that method returns `true`, the application selects `*ngSwitchCase="true"` and displays: "Excellent choice!" If that methods returns `false`, the application selects `*ngSwitchCase="false"` and displays: "No movie, sorry!" <br /> The (`*`) before `ngSwitchCase` and `ngSwitchDefault` is required in this example. <br /> For more information, see [The NgSwitch directives][AioGuideBuiltInDirectivesSwitchingCasesWithNgswitch] section of the [Built-in directives][AioGuideBuiltInDirectives] page. |
 
 ## Filters/pipes
 
-## 过滤器/管道
-
 Angular **pipes** provide formatting and transformation for data in the template, similar to AngularJS **filters**.
 Many of the built-in filters in AngularJS have corresponding pipes in Angular.
-For more information on pipes, see [Pipes](guide/pipes).
+For more information on pipes, see [Pipes][AioGuidePipes].
 
-Angular 中的**管道**为模板提供了格式化和数据转换功能，类似于 AngularJS 中的**过滤器**。
-AngularJS 中的很多内置过滤器在 Angular 中都有对应的管道。
-要了解管道的更多信息，参阅[Pipes](guide/pipes)。
+### `currency` → `currency`
 
-<table width="100%">
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>currency</code></header> <code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.price &verbar; currency}} &NewLine; &lt;/td&gt; </code-example> Formats a number as currency. | <header><code>currency</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="currency"></code-example> The Angular `currency` pipe is similar although some of the parameters have changed. |
 
-  <col width="50%">
+### `date` → `date`
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>date</code></header> <code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.releaseDate &verbar; date}} &NewLine; &lt;/td&gt; </code-example> Formats a date to a string based on the requested format. | <header><code>date</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="date"></code-example> The Angular `date` pipe is similar. |
 
-  <col width="50%">
+### `filter` → none
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>filter</code></header> <code-example hideCopy format="html" language="html"> &lt;tr ng-repeat="movie in movieList &verbar; filter: {title:listFilter}"&gt; </code-example> Selects a subset of items from the defined collection, based on the filter criteria. | <header>none</header> For performance reasons, no comparable pipe exists in Angular. Do all your filtering in the component. If you need the same filtering code in several templates, consider building a custom pipe. |
 
-  <tr>
+### `json` → `json`
 
-    <th>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>json</code></header> <code-example hideCopy format="html" language="html"> &lt;pre&gt; &NewLine; &nbsp; {{movie &verbar; json}} &NewLine; &lt;/pre&gt; </code-example> Converts a JavaScript object into a JSON string. This is useful for debugging. | <header><code>json</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="json"></code-example> The Angular [`json`][AioApiCommonJsonpipe] pipe does the same thing. |
 
-      AngularJS
+### `limitTo` → `slice`
 
-    </th>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>limitTo</code></header> <code-example hideCopy format="html" language="html"> &lt;tr ng-repeat="movie in movieList &verbar; limitTo:2:0"&gt; </code-example> Selects up to the first parameter (2) number of items from the collection starting (optionally) at the beginning index (0). | <header><code>slice</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="slice"></code-example> The `SlicePipe` does the same thing but the *order of the parameters is reversed*, in keeping with the JavaScript `Slice` method. The first parameter is the starting index; the second is the limit. As in AngularJS, coding this operation within the component instead could improve performance. |
 
-    <th>
+### `lowercase` → `lowercase`
 
-      Angular
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>lowercase</code></header> <code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.title &verbar; lowercase}} &NewLine; &lt;/td&gt; </code-example> Converts the string to lowercase. | <header><code>lowercase</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="lowercase"></code-example> The Angular `lowercase` pipe does the same thing. |
 
-    </th>
+### `number` → `number`
 
-  </tr>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>number</code></header> <code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.starRating &verbar; number}} &NewLine; &lt;/td&gt; </code-example> Formats a number as text. | <header><code>number</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="number"></code-example> The Angular [`number`][AioApiCommonDecimalpipe] pipe is similar. It provides more functionality when defining the decimal places, as shown in the second example above. <br /> Angular also has a `percent` pipe, which formats a number as a local percentage as shown in the third example. |
 
-  <tr style=top>
+### `orderBy` → none
 
-    <td>
-
-      ### currency
-
-      <code-example hideCopy>
-        &lt;td>{{movie.price | currency}}&lt;/td>
-      </code-example>
-
-      Formats a number as currency.
-
-      把一个数字格式化成货币。
-
-    </td>
-
-    <td>
-
-      ### currency
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="currency"></code-example>
-
-      The Angular `currency` pipe is similar although some of the parameters have changed.
-
-      Angular 的 `currency` 管道和 1 中很相似，只是有些参数变化了。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### date
-
-      <code-example hideCopy>
-        &lt;td>{{movie.releaseDate | date}}&lt;/td>
-      </code-example>
-
-      Formats a date to a string based on the requested format.
-
-      基于要求的格式把日期格式化成字符串。
-
-    </td>
-
-    <td>
-
-      ### date
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="date"></code-example>
-
-      The Angular `date` pipe is similar.
-
-      Angular 的 `date` 管道和它很相似。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### filter
-
-      <code-example hideCopy>
-        &lt;tr ng-repeat="movie in movieList | filter: {title:listFilter}">
-      </code-example>
-
-      Selects a subset of items from the defined collection, based on the filter criteria.
-
-      根据过滤条件从指定的集合中选取出一个子集。
-
-    </td>
-
-    <td>
-
-      ### none
-
-      ### 没了
-
-      For performance reasons, no comparable pipe exists in Angular. Do all your filtering in the component. If you need the same filtering code in several templates, consider building a custom pipe.
-
-      在 Angular 中，出于性能的考虑，并没有一个类似的管道。
-      过滤逻辑应该在组件中用代码实现。
-      如果它将被复用在几个模板中，可以考虑构建一个自定义管道。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### json
-
-      <code-example hideCopy>
-        &lt;pre>{{movie | json}}&lt;/pre>
-      </code-example>
-
-      Converts a JavaScript object into a JSON string. This is useful for debugging.
-
-      把一个 JavaScript 对象转换成一个 JSON 字符串。这对调试很有用。
-
-    </td>
-
-    <td>
-
-      ### json
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="json"></code-example>
-
-      The Angular [`json`](api/common/JsonPipe) pipe does the same thing.
-
-      Angular 的 [`json`](api/common/JsonPipe) 管道做完全相同的事。
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### limitTo
-
-      <code-example hideCopy>
-        &lt;tr ng-repeat="movie in movieList | limitTo:2:0">
-      </code-example>
-
-      Selects up to the first parameter (2) number of items from the collection
-      starting (optionally) at the beginning index (0).
-
-      从集合中选择从(第二参数指定的)起始索引号(0)开始的最多(第一参数指定的)条目数(2)个条目。
-
-    </td>
-
-    <td>
-
-      ### slice
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="slice"></code-example>
-
-      The `SlicePipe` does the same thing but the *order of the parameters is reversed*, in keeping
-      with the JavaScript `Slice` method.
-      The first parameter is the starting index; the second is the limit.
-      As in AngularJS, coding this operation within the component instead could improve performance.
-
-      `SlicePipe` 做同样的事，但是*两个参数的顺序是相反的*，以便于 JavaScript 中的 `slice` 方法保持一致。
-      第一个参数是起始索引号，第二个参数是限制的数量。
-      和 AngularJS 中一样，如果们改用组件中的代码实现此操作，性能将会提升。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### lowercase
-
-      <code-example hideCopy>
-        &lt;td>{{movie.title | lowercase}}&lt;/td>
-      </code-example>
-
-      Converts the string to lowercase.
-
-      把该字符串转成小写形式。
-
-    </td>
-
-    <td>
-
-      ### lowercase
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="lowercase"></code-example>
-
-      The Angular `lowercase` pipe does the same thing.
-
-      Angular 的 `lowercase` 管道和 1 中的功能完全相同。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### number
-
-      <code-example hideCopy>
-        &lt;td>{{movie.starRating | number}}&lt;/td>
-      </code-example>
-
-      Formats a number as text.
-
-      把数字格式化为文本。
-
-    </td>
-
-    <td>
-
-      ### number
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="number"></code-example>
-
-      The Angular [`number`](api/common/DecimalPipe) pipe is similar.
-      It provides more functionality when defining
-      the decimal places, as shown in the second example above.
-
-      Angular 的 [`number`](api/common/DecimalPipe) 管道很相似。
-      但在指定小数点位置时，它提供了更多的功能，如第二个范例所示。
-
-      Angular also has a `percent` pipe, which formats a number as a local percentage
-      as shown in the third example.
-
-      Angular 还有一个 `percent` 管道，它把一个数组格式化为本地化的(local)百分比格式，如第三个范例所示。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### orderBy
-
-      <code-example hideCopy>
-        &lt;tr ng-repeat="movie in movieList | orderBy : 'title'">
-      </code-example>
-
-      Displays the collection in the order specified by the expression.
-      In this example, the movie title orders the `movieList`.
-
-      使用表达式中所指定的方式对集合进行排序。
-      在这个例子中，`movieList` 被根据 movie 的 title 排序了。
-
-    </td>
-
-    <td>
-
-      ### none
-
-      ### 没了
-
-      For performance reasons, no comparable pipe exists in Angular.
-      Instead, use component code to order or sort results. If you need the same ordering or sorting code in several templates, consider building a custom pipe.
-
-      在 Angular 中，出于性能的考虑，并没有一个类似的管道。
-      排序逻辑应该在组件中用代码实现。
-      如果它将被复用在几个模板中，可以考虑构建一个自定义管道。
-
-    </td>
-
-  </tr>
-
-</table>
-
-<a id="controllers-components"></a>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>orderBy</code></header> <code-example hideCopy format="html" language="html"> &lt;tr ng-repeat="movie in movieList &verbar; orderBy : 'title'"&gt; </code-example> Displays the collection in the order specified by the expression. In this example, the movie title orders the `movieList`. | <header>none</header> For performance reasons, no comparable pipe exists in Angular. Instead, use component code to order or sort results. If you need the same ordering or sorting code in several templates, consider building a custom pipe. |
 
 ## Modules/controllers/components
 
-## 模块/控制器/组件
-
 In both AngularJS and Angular, modules help you organize your application into cohesive blocks of functionality.
-
-无论在 AngularJS 还是 Angular 中，“模块”都会帮你把应用拆分成一些内聚的功能块。
 
 In AngularJS, you write the code that provides the model and the methods for the view in a **controller**.
 In Angular, you build a **component**.
 
-在 AngularJS 中，你要在**控制器**中写代码，来为视图提供模型和方法。
-在 Angular 中，你要创建**组件**。
-
 Because much AngularJS code is in JavaScript, JavaScript code is shown in the AngularJS column.
 The Angular code is shown using TypeScript.
 
-因为很多 AngularJS 的代码是用 JavaScript 写的，所以在 AngularJS 列显示的是 JavaScript 代码，而 Angular 列显示的是 TypeScript 代码。
+### IIFE → none
 
-<table width="100%">
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>IIFE</header> <code-example hideCopy format="typescript" language="typescript"> ( &NewLine;&nbsp; function () { &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; }() &NewLine;); </code-example> In AngularJS, an immediately invoked function expression (or IIFE) around controller code keeps it out of the global namespace. | <header>none</header> This is a nonissue in Angular because ES 2015 modules handle the namespacing for you. <br /> For more information on modules, see the [Modules][AioGuideArchitectureModules] section of the [Architecture Overview][AioGuideArchitecture]. |
 
-  <col width="50%">
+### Angular modules → `NgModules`
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Angular modules</header> <code-example hideCopy format="typescript" language="typescript"> angular .module( &NewLine;&nbsp; "movieHunter", &NewLine;&nbsp; [ &NewLine;&nbsp;&nbsp;&nbsp; "ngRoute" &NewLine;&nbsp; ] &NewLine;); </code-example> In AngularJS, an Angular module keeps track of controllers, services, and other code. The second argument defines the list of other modules that this module depends upon. | <header><code>NgModules</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts"></code-example> NgModules, defined with the `NgModule` decorator, serve the same purpose: <ul> <li>`imports`: specifies the list of other modules that this module depends upon</li> <li>`declaration`: keeps track of your components, pipes, and directives.</li> </ul> For more information on modules, see [NgModules][AioGuideNgmodules]. |
 
-  <col width="50%">
+### Controller registration → Component decorator
 
-  </col>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Controller registration</header> <code-example hideCopy format="typescript" language="typescript"> angular .module( &NewLine;&nbsp; "movieHunter" &NewLine;) .controller( &NewLine;&nbsp; "MovieListCtrl", &NewLine;&nbsp; [ &NewLine;&nbsp;&nbsp;&nbsp; "movieService", &NewLine;&nbsp;&nbsp;&nbsp; MovieListCtrl &NewLine;&nbsp; ] &NewLine;); </code-example> AngularJS has code in each controller that looks up an appropriate Angular module and registers the controller with that module. <br /> The first argument is the controller name. The second argument defines the string names of all dependencies injected into this controller, and a reference to the controller function. | <header>Component decorator</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="component"></code-example> Angular adds a decorator to the component class to provide any required metadata. The `@Component` decorator declares that the class is a component and provides metadata about that component such as its selector (or tag) and its template. <br /> This is how you associate a template with logic, which is defined in the component class. <br /> For more information, see the [Components][AioGuideArchitectureComponents] section of the [Architecture Overview][AioGuideArchitecture] page. |
 
-  <tr>
+### Controller function → Component class
 
-    <th>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Controller function</header> <code-example hideCopy format="typescript" language="typescript"> function MovieListCtrl(movieService) { &NewLine; } </code-example> In AngularJS, you write the code for the model and methods in a controller function. | <header>Component class</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="class"></code-example> In Angular, you create a component class to contain the data model and control methods. Use the TypeScript <code>export</code> keyword to export the class so that the functionality can be imported into NgModules. <br /> For more information, see the [Components][AioGuideArchitectureComponents] section of the [Architecture Overview][AioGuideArchitecture] page. |
 
-      AngularJS
+### Dependency injection → Dependency injection
 
-    </th>
-
-    <th>
-
-      Angular
-
-    </th>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### IIFE
-
-      <code-example hideCopy>
-        (function () {
-          ...
-        }());
-      </code-example>
-
-      In AngularJS, an immediately invoked function expression (or IIFE) around controller code
-      keeps it out of the global namespace.
-
-      在 AngularJS 中，用立即调用的函数表达式(IIFE)来包裹控制器代码可以让控制器代码不会污染全局命名空间。
-
-    </td>
-
-    <td>
-
-      ### none
-
-      ### 没了
-
-      This is a nonissue in Angular because ES 2015 modules
-      handle the namespacing for you.
-
-      在 Angular 中不用担心这个问题，因为使用 ES 2015 的模块，模块会替你处理命名空间问题。
-
-      For more information on modules, see the [Modules](guide/architecture#modules) section of the
-      [Architecture Overview](guide/architecture).
-
-      要了解关于模块的更多信息，参阅[架构概览](guide/architecture)中的[模块](guide/architecture#modules)部分。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Angular modules
-
-      ### Angular 模块
-
-      <code-example hideCopy>
-        angular.module("movieHunter", ["ngRoute"]);
-      </code-example>
-
-      In AngularJS, an Angular module keeps track of controllers, services, and other code.
-      The second argument defines the list of other modules that this module depends upon.
-
-      在 AngularJS 中，Angular 模块用来对控制器、服务和其它代码进行跟踪。第二个参数定义该模块依赖的其它模块列表。
-
-    </td>
-
-    <td>
-
-      ### NgModules
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts"></code-example>
-
-      NgModules, defined with the `NgModule` decorator, serve the same purpose:
-
-      Angular 的模块用 `NgModule` 装饰器进行定义，有如下用途：
-
-      * `imports`: specifies the list of other modules that this module depends upon
-
-         `imports`: 指定当前模块依赖的其它模块列表
-
-      * `declaration`: keeps track of your components, pipes, and directives.
-
-         `declaration`: 用于记录组件、管道和指令。
-
-      For more information on modules, see [NgModules](guide/ngmodules).
-
-      要了解关于模块的更多知识，参阅[NgModules](guide/ngmodules)。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Controller registration
-
-      ### 控制器注册
-
-      <code-example hideCopy>
-        angular
-          .module("movieHunter")
-          .controller("MovieListCtrl",
-                      ["movieService",
-                       MovieListCtrl]);
-      </code-example>
-
-      AngularJS has code in each controller that looks up an appropriate Angular module
-      and registers the controller with that module.
-
-      在 AngularJS 中，在每个控制器中都有一些代码，用于找到合适的 Angular 模块并把该控制器注册进去。
-
-      The first argument is the controller name. The second argument defines the string names of
-      all dependencies injected into this controller, and a reference to the controller function.
-
-      第一个参数是控制器的名称，第二个参数定义了所有将注入到该控制器的依赖的字符串名称，以及一个到控制器函数的引用。
-
-    </td>
-
-    <td>
-
-      ### Component decorator
-
-      ### 组件装饰器
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="component"></code-example>
-
-      Angular adds a decorator to the component class to provide any required metadata.
-      The `@Component` decorator declares that the class is a component and provides metadata about
-      that component such as its selector (or tag) and its template.
-
-      Angular 会往组件类上添加了一个装饰器，以提供所需的任何元数据。
-      `@Component` 装饰器把该类声明为组件，并提供了关于该组件的元数据，比如它的选择器(或标签)和模板。
-
-      This is how you associate a template with logic, which is defined in the component class.
-
-      这就是把模板关联到代码的方式，它定义在组件类中。
-
-      For more information, see the [Components](guide/architecture#components)
-      section of the [Architecture Overview](guide/architecture) page.
-
-      要了解关于组件的更多信息，参阅[架构概览](guide/architecture)中的[组件](guide/architecture#components)部分。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Controller function
-
-      ### 控制器函数
-
-      <code-example hideCopy>
-        function MovieListCtrl(movieService) {
-        }
-      </code-example>
-
-      In AngularJS, you write the code for the model and methods in a controller function.
-
-      在 AngularJS 中，你在控制器函数中编写模型和方法的代码。
-
-    </td>
-
-    <td>
-
-      ### Component class
-
-      ### 组件类
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="class"></code-example>
-
-      In Angular, you create a component class to contain the data model and control methods. Use the TypeScript <code>export</code> keyword to export the class so that the functionality can be imported into NgModules.
-
-      在 Angular 中，你将创建一个组件类来容纳数据模型和控制方法。使用 TypeScript 的 <code> export</code> 关键字导出该类，以便可以将此功能导入 NgModules 中。
-
-      For more information, see the [Components](guide/architecture#components)
-      section of the [Architecture Overview](guide/architecture) page.
-
-      要了解关于组件的更多信息，参阅[架构概览](guide/architecture)中的[组件](guide/architecture#components)部分。
-
-    </td>
-
-  </tr>
-
-  <tr style=top>
-
-    <td>
-
-      ### Dependency injection
-
-      ### 依赖注入
-
-      <code-example hideCopy>
-        MovieListCtrl.$inject = ['MovieService'];
-        function MovieListCtrl(movieService) {
-        }
-      </code-example>
-
-      In AngularJS, you pass in any dependencies as controller function arguments.
-      This example injects a `MovieService`.
-
-      在 AngularJS 中，你把所有依赖都作为控制器函数的参数。
-      这个例子注入了一个 `MovieService`。
-
-      To guard against minification problems, tell Angular explicitly
-      that it should inject an instance of the `MovieService` in the first parameter.
-
-      为了防止在最小化时出现问题，第一个参数明确告诉 Angular 它应该注入一个 `MovieService` 的实例。
-
-    </td>
-
-    <td>
-
-      ### Dependency injection
-
-      ### 依赖注入
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="di"></code-example>
-
-      In Angular, you pass in dependencies as arguments to the component class constructor.
-      This example injects a `MovieService`.
-      The first parameter's TypeScript type tells Angular what to inject, even after minification.
-
-      在 Angular 中，你要把依赖作为组件构造函数的参数传入。
-      这个例子注入了一个 `MovieService`。
-      即使在最小化之后，第一个参数的 TypeScript 类型也会告诉 Angular 它该注入什么。
-
-      For more information, see the [Dependency injection](guide/architecture#dependency-injection)
-      section of the [Architecture Overview](guide/architecture).
-
-      要了解关于依赖注入的更多信息，参阅[架构概览](guide/architecture)中的[依赖注入](guide/architecture#dependency-injection)部分。
-
-    </td>
-
-  </tr>
-
-</table>
-
-<a id="style-sheets"></a>
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header>Dependency injection</header> <code-example hideCopy format="typescript" language="typescript"> MovieListCtrl.&dollar;inject = [ &NewLine;&nbsp; 'MovieService' &NewLine;]; &NewLine;function MovieListCtrl(movieService) { &NewLine;} </code-example> In AngularJS, you pass in any dependencies as controller function arguments. This example injects a `MovieService`. <br /> To guard against minification problems, tell Angular explicitly that it should inject an instance of the `MovieService` in the first parameter. | <header>Dependency injection</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="di"></code-example> In Angular, you pass in dependencies as arguments to the component class constructor. This example injects a `MovieService`. The TypeScript type of the first parameter tells Angular what to inject, even after minification. <br /> For more information, see the [Dependency injection][AioGuideArchitectureServicesAndDependencyInjection] section of the [Architecture Overview][AioGuideArchitecture]. |
 
 ## Style sheets
 
-## 样式表
-
 Style sheets give your application a nice look.
 In AngularJS, you specify the style sheets for your entire application.
-As the application grows over time, the styles for the many parts of the application
-merge, which can cause unexpected results.
-In Angular, you can still define style sheets for your entire application. But now you can
-also encapsulate a style sheet within a specific component.
+As the application grows over time, the styles for the many parts of the application merge, which can cause unexpected results.
+In Angular, you can still define style sheets for your entire application.
+But now you can also encapsulate a style sheet within a specific component.
 
-样式表让你的应用程序看起来更漂亮。
-在 AngularJS 中，你要为整个应用程序指定样式表。
-随着应用程序的不断成长，为各个部分指定的样式会被合并，导致无法预计的后果。
-在 Angular 中，你仍然要为整个应用程序定义样式，不过现在也可以把样式表封装在特定的组件中。
+### `Link` tag → `styles` configuration or `styleUrls`
 
-<table width="100%">
+| AngularJS | Angular |
+| :-------- | :------ |
+| <header><code>Link</code> tag</header> <code-example hideCopy format="html" language="html"> &lt;link href="styles.css" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rel="stylesheet" /&gt; </code-example> AngularJS, uses a `link` tag in the head section of the `index.html` file to define the styles for the application. | <header><code>styles</code> configuration</header> <code-example hideCopy path="ajs-quick-reference/.angular-cli.1.json" region="styles"></code-example> With the Angular CLI, you can configure your global styles in the `angular.json` file. You can rename the extension to `.scss` to use sass. <br /><br /> <header><code>styleUrls</code></header> In Angular, you can use the `styles` or `styleUrls` property of the `@Component` metadata to define a style sheet for a particular component. <br /> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="style-url"></code-example> This allows you to set appropriate styles for individual components that will not leak into other parts of the application. |
 
-  <col width="50%">
+<!-- links -->
 
-  </col>
+[AioApiCommonDecimalpipe]: api/common/DecimalPipe "DecimalPipe | @angular/common - API | Angular"
 
-  <col width="50%">
+[AioApiCommonJsonpipe]: api/common/JsonPipe "JsonPipe | @angular/common - API | Angular"
 
-  </col>
+[AioGuideAjsQuickReferenceFiltersPipes]: guide/ajs-quick-reference#filterspipes "Filters/pipes - AngularJS to Angular concepts: Quick reference | Angular"
 
-  <tr>
+[AioGuideAjsQuickReferenceTemplateDirectives]: guide/ajs-quick-reference#template-directives "Template directives - AngularJS to Angular concepts: Quick reference | Angular"
 
-    <th>
+[AioGuideArchitecture]: guide/architecture "Introduction to Angular concepts | Angular"
 
-      AngularJS
+[AioGuideArchitectureComponents]: guide/architecture#components "Components - Introduction to Angular concepts | Angular"
 
-    </th>
+[AioGuideArchitectureModules]: guide/architecture#modules "Modules - Introduction to Angular concepts | Angular"
 
-    <th>
+[AioGuideArchitectureServicesAndDependencyInjection]: guide/architecture#services-and-dependency-injection "Services and dependency injection - Introduction to Angular concepts | Angular"
 
-      Angular
+[AioGuideAttributeBinding]: guide/attribute-binding "Attribute, class, and style bindings | Angular"
 
-    </th>
+[AioGuideAttributeBindingBindingToTheStyleAttribute]: guide/class-binding "Class and style binding | Angular"
 
-  </tr>
+[AioGuideBuiltInDirectives]: guide/built-in-directives "Built-in directives | Angular"
 
-  <tr style=top>
+[AioGuideBuiltInDirectivesDisplayingAndUpdatingPropertiesWithNgmodel]: guide/built-in-directives#displaying-and-updating-properties-with-ngmodel "Displaying and updating properties with ngModel - Built-in directives | Angular"
 
-    <td>
+[AioGuideBuiltInDirectivesSettingInlineStylesWithNgstyle]: guide/built-in-directives#setting-inline-styles-with-ngstyle "Setting inline styles with NgStyle - Built-in directives | Angular"
 
-      ### Link tag
+[AioGuideBuiltInDirectivesSwitchingCasesWithNgswitch]: guide/built-in-directives#switching-cases-with-ngswitch "Switching cases with NgSwitch - Built-in directives | Angular"
 
-      ### Link 标签
+[AioGuideEventBinding]: guide/event-binding "Event binding | Angular"
 
-      <code-example hideCopy>
-        &lt;link href="styles.css" rel="stylesheet" />
-      </code-example>
+[AioGuideInterpolation]: guide/interpolation "Text interpolation | Angular"
 
-      AngularJS, uses a `link` tag in the head section of the `index.html` file
-      to define the styles for the application.
+[AioGuideNgmodules]: guide/ngmodules "NgModules | Angular"
 
-      AngularJS 在 `index.html` 的 `head` 区使用 `link` 标签来为应用程序定义样式。
+[AioGuidePipes]: guide/pipes "Transforming Data Using Pipes | Angular"
 
-    </td>
+[AioGuidePropertyBinding]: guide/property-binding "Property binding | Angular"
 
-    <td>
+[AioGuideRouter]: guide/router "Common Routing Tasks | Angular"
 
-      ### Styles configuration
+[AioGuideRouterDefiningABasicRoute]: guide/router#defining-a-basic-route "Defining a basic route - Common Routing Tasks | Angular"
 
-      ### 样式配置
+[AioGuideStructuralDirectives]: guide/structural-directives "Writing structural directives | Angular"
 
-      <code-example hideCopy path="ajs-quick-reference/.angular-cli.1.json" region="styles"></code-example>
+[AioGuideStructuralDirectivesStructuralDirectiveShorthand]: guide/structural-directives#structural-directive-shorthand "Structural directive shorthand - Writing structural directives | Angular"
 
-      With the Angular CLI, you can configure your global styles in the `angular.json` file.
-      You can rename the extension to `.scss` to use sass.
+<!-- external links -->
 
-      使用 Angular CLI，你可以在 `angular.json` 文件中配置全局样式。
-      也可以把扩展名改为 `.scss` 来使用 sass。
+[MdnDocsWebEvents]: https://developer.mozilla.org/docs/Web/Events "Event reference | MDN"
 
-      ### StyleUrls
+<!-- end links -->
 
-      In Angular, you can use the `styles` or `styleUrls` property of the `@Component` metadata to define
-      a style sheet for a particular component.
-
-      在 Angular 中，你可以在 `@Component` 的元数据中使用 `styles` 或 `styleUrls` 属性来为一个特定的组件定义样式表。
-
-      <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="style-url"></code-example>
-
-      This allows you to set appropriate styles for individual components that won’t leak into
-      other parts of the application.
-
-      这让你可以为各个组件设置合适的样式，而不用担心它泄漏到程序中的其它部分。
-
-    </td>
-
-  </tr>
-
-</table>
+@reviewed 2022-02-28

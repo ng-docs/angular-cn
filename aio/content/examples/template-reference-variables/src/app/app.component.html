@@ -11,7 +11,7 @@
   <!-- lots of other elements -->
 
   <!-- phone refers to the input element; pass its `value` to an event handler -->
-  <button (click)="callPhone(phone.value)">Call</button>
+  <button type="button" (click)="callPhone(phone.value)">Call</button>
   <!-- #enddocregion ref-phone -->
 </div>
 
@@ -21,6 +21,7 @@
   <h2>Template reference variable with disabled button</h2>
   <p>btn refers to the button element.</p>
   <button
+    type="button"
     #btn
     disabled
     [innerHTML]="'disabled by attribute: ' + btn.disabled"
@@ -96,7 +97,5 @@ value of the input will have no effect. -->
 
 See the console output to see that when you declare the variable on an <code>ng-template</code>, the variable refers to a <code>TemplateRef</code> instance, which represents the template.
 
-<!-- #docregion template-ref -->
 <ng-template #ref3></ng-template>
-<button (click)="log(ref3)">Log type of #ref</button>
-<!-- #enddocregion template-ref -->
+<button type="button" (click)="log(ref3)">Log type of #ref</button>

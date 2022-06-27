@@ -7,13 +7,48 @@
  */
 
 import {InjectionToken} from '../di/injection_token';
+import {inject} from '../di/injector_compatibility';
+import {InjectFlags} from '../di/interface/injector';
+
+import {DEFAULT_LOCALE_ID, USD_CURRENCY_CODE} from './localization';
+
+declare const $localize: {locale?: string};
+
+/**
+ * Work out the locale from the potential global properties.
+ *
+ * * Closure Compiler: use `goog.LOCALE`.
+ * * Ivy enabled: use `$localize.locale`
+ */
+export function getGlobalLocale(): string {
+  if (typeof ngI18nClosureMode !== 'undefined' && ngI18nClosureMode &&
+      typeof goog !== 'undefined' && goog.LOCALE !== 'en') {
+    // * The default `goog.LOCALE` value is `en`, while Angular used `en-US`.
+    // * In order to preserve backwards compatibility, we use Angular default value over
+    //   Closure Compiler's one.
+    return goog.LOCALE;
+  } else {
+    // KEEP `typeof $localize !== 'undefined' && $localize.locale` IN SYNC WITH THE LOCALIZE
+    // COMPILE-TIME INLINER.
+    //
+    // * During compile time inlining of translations the expression will be replaced
+    //   with a string literal that is the current locale. Other forms of this expression are not
+    //   guaranteed to be replaced.
+    //
+    // * During runtime translation evaluation, the developer is required to set `$localize.locale`
+    //   if required, or just to provide their own `LOCALE_ID` provider.
+    return (typeof $localize !== 'undefined' && $localize.locale) || DEFAULT_LOCALE_ID;
+  }
+}
 
 /**
  * Provide this token to set the locale of your application.
  * It is used for i18n extraction, by i18n pipes (DatePipe, I18nPluralPipe, CurrencyPipe,
  * DecimalPipe and PercentPipe) and by ICU expressions.
  *
- * 提供此令牌以设置应用程序的语言环境。它通过 i18n 管道（DatePipe、I18nPluralPipe、CurrencyPipe、DecimalPipe 和 PercentPipe）和 ICU 表达式用于 i18n 提取。
+ * 提供此令牌以设置应用程序的语言环境。它通过 i18n
+ * 管道（DatePipe、I18nPluralPipe、CurrencyPipe、DecimalPipe 和 PercentPipe）和 ICU 表达式用于 i18n
+ * 提取。
  *
  * See the [i18n guide](guide/i18n-common-locale-id) for more information.
  *
@@ -37,14 +72,19 @@ import {InjectionToken} from '../di/injection_token';
  *
  * @publicApi
  */
-export const LOCALE_ID = new InjectionToken<string>('LocaleId');
+export const LOCALE_ID: InjectionToken<string> = new InjectionToken('LocaleId', {
+  providedIn: 'root',
+  factory: () =>
+      inject(LOCALE_ID, InjectFlags.Optional | InjectFlags.SkipSelf) || getGlobalLocale(),
+});
 
 /**
  * Provide this token to set the default currency code your application uses for
  * CurrencyPipe when there is no currency code passed into it. This is only used by
  * CurrencyPipe and has no relation to locale currency. Defaults to USD if not configured.
  *
- * 如果没有传递任何货币代码，请提供此令牌来设置你的应用程序用于 CurrencyPipe 的默认货币代码。仅由 CurrencyPipe 使用，与语言环境的货币无关。如果未配置，则默认为 USD。
+ * 如果没有传递任何货币代码，请提供此令牌来设置你的应用程序用于 CurrencyPipe 的默认货币代码。仅由
+ * CurrencyPipe 使用，与语言环境的货币无关。如果未配置，则默认为 USD。
  *
  * See the [i18n guide](guide/i18n-common-locale-id) for more information.
  *
@@ -92,13 +132,17 @@ export const LOCALE_ID = new InjectionToken<string>('LocaleId');
  *
  * @publicApi
  */
-export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrencyCode');
+export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrencyCode', {
+  providedIn: 'root',
+  factory: () => USD_CURRENCY_CODE,
+});
 
 /**
  * Use this token at bootstrap to provide the content of your translation file (`xtb`,
  * `xlf` or `xlf2`) when you want to translate your application in another language.
  *
- * 当你想用另一种语言翻译应用程序时，可以在引导程序中使用此令牌来提供翻译文件的内容（ `xtb`、`xlf` 或 `xlf2`）
+ * 当你想用另一种语言翻译应用程序时，可以在引导程序中使用此令牌来提供翻译文件的内容（ `xtb`、`xlf`
+ * 或 `xlf2`）
  *
  * See the [i18n guide](guide/i18n-common-merge) for more information.
  *
@@ -161,7 +205,8 @@ export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsForma
  * Use this enum at bootstrap as an option of `bootstrapModule` to define the strategy
  * that the compiler should use in case of missing translations:
  *
- * 在系统启动时使用此枚举作为 `bootstrapModule` 的一个选项来定义策略，编译器应该在缺少翻译的情况下使用：
+ * 在系统启动时使用此枚举作为 `bootstrapModule`
+ * 的一个选项来定义策略，编译器应该在缺少翻译的情况下使用：
  *
  * - Error: throw if you have missing translations.
  *

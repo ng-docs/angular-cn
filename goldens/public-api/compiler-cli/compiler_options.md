@@ -8,6 +8,24 @@
 export interface BazelAndG3Options {
     annotateForClosureCompiler?: boolean;
     generateDeepReexports?: boolean;
+    onlyPublishPublicTypingsForNgModules?: boolean;
+}
+
+// @public
+export enum DiagnosticCategoryLabel {
+    Error = "error",
+    Suppress = "suppress",
+    Warning = "warning"
+}
+
+// @public
+export interface DiagnosticOptions {
+    extendedDiagnostics?: {
+        defaultCategory?: DiagnosticCategoryLabel;
+        checks?: {
+            [Name in ExtendedTemplateDiagnosticName]?: DiagnosticCategoryLabel;
+        };
+    };
 }
 
 // @public

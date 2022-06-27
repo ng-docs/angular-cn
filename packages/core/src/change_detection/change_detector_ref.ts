@@ -149,9 +149,9 @@ export abstract class ChangeDetectorRef {
    * 检查变更检测器及其子检测器，如果检测到任何更改，则抛出异常。
    *
    * Use in development mode to verify that running change detection doesn't introduce
-   * other changes.
+   * other changes. Calling it in production mode is a noop.
    *
-   * 在开发模式下可用来验证正在运行的变更检测器是否引入了其它变更。
+   * 在开发模式下可用来验证正在运行的变更检测器是否引入了其它变更。在生产模式下调用它时没有任何效果。
    */
   abstract checkNoChanges(): void;
 

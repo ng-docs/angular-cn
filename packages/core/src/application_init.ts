@@ -7,6 +7,7 @@
  */
 
 import {Observable} from 'rxjs';
+
 import {Inject, Injectable, InjectionToken, Optional} from './di';
 import {isObservable, isPromise} from './util/lang';
 import {noop} from './util/noop';
@@ -22,14 +23,16 @@ import {noop} from './util/noop';
  * app initialization. If any of these functions returns a Promise or an Observable, initialization
  * does not complete until the Promise is resolved or the Observable is completed.
  *
- * 所提供的函数是在应用程序启动时注入的，并在应用程序初始化期间执行。如果这些函数中的任何一个返回 Promise，则直到 Promise 被解析之前，初始化都不会完成。
+ * 所提供的函数是在应用程序启动时注入的，并在应用程序初始化期间执行。如果这些函数中的任何一个返回
+ * Promise，则直到 Promise 被解析之前，初始化都不会完成。
  *
  * You can, for example, create a factory function that loads language data
  * or an external configuration, and provide that function to the `APP_INITIALIZER` token.
  * The function is executed during the application bootstrap process,
  * and the needed data is available on startup.
  *
- * 例如，你可以创建一个工厂函数来加载语言数据或外部配置，并将该函数提供给 `APP_INITIALIZER` 令牌。该功能在应用程序引导过程中执行，并且所需的数据在启动时可用。
+ * 例如，你可以创建一个工厂函数来加载语言数据或外部配置，并将该函数提供给 `APP_INITIALIZER`
+ * 令牌。该功能在应用程序引导过程中执行，并且所需的数据在启动时可用。
  *
  * @see `ApplicationInitStatus`
  *
@@ -99,7 +102,7 @@ export const APP_INITIALIZER =
  *
  * @publicApi
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ApplicationInitStatus {
   private resolve = noop;
   private reject = noop;

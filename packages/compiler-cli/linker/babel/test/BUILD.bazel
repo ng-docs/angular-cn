@@ -13,6 +13,7 @@ ts_library(
         "//packages/compiler",
         "//packages/compiler-cli/linker",
         "//packages/compiler-cli/linker/babel",
+        "//packages/compiler-cli/private",
         "//packages/compiler-cli/src/ngtsc/file_system/testing",
         "//packages/compiler-cli/src/ngtsc/logging/testing",
         "//packages/compiler-cli/src/ngtsc/translator",
@@ -29,7 +30,7 @@ ts_library(
 
 jasmine_node_test(
     name = "test",
-    bootstrap = ["//tools/testing:node_no_angular_es5"],
+    bootstrap = ["//tools/testing:node_no_angular_es2015"],
     deps = [
         ":test_lib",
     ],

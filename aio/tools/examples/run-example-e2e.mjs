@@ -38,7 +38,7 @@ const IGNORED_EXAMPLES = [];
  *
  *  --exclude to exclude example app subdir names
  *    Can be used multiple times to exclude multiple patterns.
- *    NOTE: `--exclude` is always cosidered after `--filter`.
+ *    NOTE: `--exclude` is always considered after `--filter`.
  *    e.g. --exclude=bar  // Exclude all example apps with 'bar' in their folder names.
  *
  *  --setup to run yarn install, copy boilerplate and update webdriver
@@ -417,6 +417,7 @@ function getE2eSpecsFor(basePath, specFile, filter) {
   return globby(e2eSpecGlob, {cwd: basePath, nodir: true})
       .then(
           paths => paths.filter(file => !IGNORED_EXAMPLES.some(ignored => file.startsWith(ignored)))
+                       .sort()
                        .map(file => path.join(basePath, file)));
 }
 

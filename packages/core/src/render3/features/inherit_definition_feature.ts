@@ -6,6 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {RuntimeError, RuntimeErrorCode} from '../../errors';
 import {Type, Writable} from '../../interface/type';
 import {EMPTY_ARRAY, EMPTY_OBJ} from '../../util/empty';
 import {fillProperties} from '../../util/property';
@@ -13,6 +14,7 @@ import {ComponentDef, ContentQueriesFunction, DirectiveDef, DirectiveDefFeature,
 import {TAttributes} from '../interfaces/node';
 import {isComponentDef} from '../interfaces/type_checks';
 import {mergeHostAttrs} from '../util/attrs_utils';
+import {stringifyForError} from '../util/stringify_utils';
 
 export function getSuperType(type: Type<any>): Type<any>&
     {ɵcmp?: ComponentDef<any>, ɵdir?: DirectiveDef<any>} {
@@ -39,7 +41,12 @@ export function ɵɵInheritDefinitionFeature(definition: DirectiveDef<any>|Compo
       superDef = superType.ɵcmp || superType.ɵdir;
     } else {
       if (superType.ɵcmp) {
-        throw new Error('Directives cannot inherit Components');
+        const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
+            `Directives cannot inherit Components. Directive ${
+                stringifyForError(definition.type)} is attempting to extend component ${
+                stringifyForError(superType)}` :
+            '';
+        throw new RuntimeError(RuntimeErrorCode.INVALID_INHERITANCE, errorMessage);
       }
       // Don't use getComponentDef/getDirectiveDef. This logic relies on inheritance.
       superDef = superType.ɵdir;

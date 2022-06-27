@@ -50,11 +50,11 @@ export interface IsActiveMatchOptions {
    * - `'exact'`: all segments in each `UrlTree` must match.
    * - `'subset'`: a `UrlTree` will be determined to be active if it
    * is a subtree of the active route. That is, the active route may contain extra
-   * segments, but must at least have all the segements of the `UrlTree` in question.
+   * segments, but must at least have all the segments of the `UrlTree` in question.
    */
   paths: 'exact'|'subset';
   /**
-   * - 'exact'`: indicates that the `UrlTree` fragments must be equal.
+   * - `'exact'`: indicates that the `UrlTree` fragments must be equal.
    * - `'ignored'`: the fragments will not be compared when determining if a
    * `UrlTree` is active.
    */
@@ -240,11 +240,13 @@ export class UrlSegmentGroup {
   /** @internal */
   _segmentIndexShift?: number;
   /**
-   * The parent node in the url tree
+   * @internal
    *
-   * 网址树中的父节点
-   *
+   * Used only in dev mode to detect if application relies on `relativeLinkResolution: 'legacy'`
+   * Should be removed in when `relativeLinkResolution` is removed.
    */
+  _segmentIndexShiftCorrected?: number;
+  /** The parent node in the url tree */
   parent: UrlSegmentGroup|null = null;
 
   constructor(
@@ -754,7 +756,7 @@ class UrlParser {
 
       let outletName: string = undefined!;
       if (path.indexOf(':') > -1) {
-        outletName = path.substr(0, path.indexOf(':'));
+        outletName = path.slice(0, path.indexOf(':'));
         this.capture(outletName);
         this.capture(':');
       } else if (allowPrimary) {
@@ -788,4 +790,46 @@ class UrlParser {
       throw new Error(`Expected "${str}".`);
     }
   }
+}
+
+export function createRoot(rootCandidate: UrlSegmentGroup) {
+  return rootCandidate.segments.length > 0 ?
+      new UrlSegmentGroup([], {[PRIMARY_OUTLET]: rootCandidate}) :
+      rootCandidate;
+}
+
+/**
+ * Recursively merges primary segment children into their parents and also drops empty children
+ * (those which have no segments and no children themselves). The latter prevents serializing a
+ * group into something like `/a(aux:)`, where `aux` is an empty child segment.
+ */
+export function squashSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGroup {
+  const newChildren = {} as any;
+  for (const childOutlet of Object.keys(segmentGroup.children)) {
+    const child = segmentGroup.children[childOutlet];
+    const childCandidate = squashSegmentGroup(child);
+    // don't add empty children
+    if (childCandidate.segments.length > 0 || childCandidate.hasChildren()) {
+      newChildren[childOutlet] = childCandidate;
+    }
+  }
+  const s = new UrlSegmentGroup(segmentGroup.segments, newChildren);
+  return mergeTrivialChildren(s);
+}
+
+/**
+ * When possible, merges the primary outlet child into the parent `UrlSegmentGroup`.
+ *
+ * When a segment group has only one child which is a primary outlet, merges that child into the
+ * parent. That is, the child segment group's segments are merged into the `s` and the child's
+ * children become the children of `s`. Think of this like a 'squash', merging the child segment
+ * group into the parent.
+ */
+function mergeTrivialChildren(s: UrlSegmentGroup): UrlSegmentGroup {
+  if (s.numberOfChildren === 1 && s.children[PRIMARY_OUTLET]) {
+    const c = s.children[PRIMARY_OUTLET];
+    return new UrlSegmentGroup(s.segments.concat(c.segments), c.children);
+  }
+
+  return s;
 }

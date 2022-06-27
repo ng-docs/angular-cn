@@ -4,7 +4,7 @@
   <h1>Property Binding with Angular</h1>
   <h2>Binding the src property of an image:</h2>
   <!-- #docregion property-binding -->
-  <img [src]="itemImageUrl">
+  <img alt="item" [src]="itemImageUrl">
   <!-- #enddocregion property-binding -->
   <hr />
 
@@ -20,7 +20,7 @@
   <h2>Button disabled state bound to isUnchanged property:</h2>
   <!-- #docregion disabled-button -->
   <!-- Bind button disabled state to `isUnchanged` property -->
-  <button [disabled]="isUnchanged">Disabled Button</button>
+  <button type="button" [disabled]="isUnchanged">Disabled Button</button>
   <!-- #enddocregion disabled-button -->
   <hr />
 
@@ -46,27 +46,21 @@
   <hr />
 
   <h2>Property binding and interpolation</h2>
-  <!-- #docregion property-binding-interpolation -->
-  <p><img src="{{itemImageUrl}}"> is the <i>interpolated</i> image.</p>
-  <p><img [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
+  <p><img alt="Interpolated item" src="{{itemImageUrl}}"> is the <i>interpolated</i> image.</p>
+  <p><img alt="Property Bound item" [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
 
   <p><span>"{{interpolationTitle}}" is the <i>interpolated</i> title.</span></p>
   <p>"<span [innerHTML]="propertyTitle"></span>" is the <i>property bound</i> title.</p>
-  <!-- #enddocregion property-binding-interpolation -->
 
   <hr />
 
   <h2>Malicious content</h2>
 
-<!-- #docregion malicious-interpolated -->
   <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
-<!-- #enddocregion malicious-interpolated -->
 
-<!-- #docregion malicious-content -->
   <!--
   Angular generates a warning for the following line as it sanitizes them
   WARNING: sanitizing HTML stripped some content (see https://g.co/ng/security#xss).
  -->
   <p>"<span [innerHTML]="evilTitle"></span>" is the <i>property bound</i> evil title.</p>
-<!-- #enddocregion malicious-content -->
 </div>

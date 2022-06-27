@@ -11,11 +11,16 @@ import {forkJoin, from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {AsyncValidator, AsyncValidatorFn, ValidationErrors, Validator, ValidatorFn} from './directives/validators';
-import {AbstractControl} from './model';
+import {AbstractControl} from './model/abstract_model';
 
 function isEmptyInputValue(value: any): boolean {
-  // we don't check for string here so it also works with arrays
-  return value == null || value.length === 0;
+  /**
+   * Check if the object is a string or array before evaluating the length attribute.
+   * This avoids falsely rejecting objects that contain a custom length attribute.
+   * For example, the object {id: 1, length: 0, width: 0} should not be returned as empty.
+   */
+  return value == null ||
+      ((typeof value === 'string' || Array.isArray(value)) && value.length === 0);
 }
 
 function hasValidLength(value: any): boolean {
@@ -251,7 +256,7 @@ export class Validators {
    * ### 验证字段值为真
    *
    * ```typescript
-   * const control = new FormControl('', Validators.requiredTrue);
+   * const control = new FormControl('some value', Validators.requiredTrue);
    *
    * console.log(control.errors); // {required: true}
    * ```

@@ -1399,6 +1399,69 @@ runInEachFileSystem(() => {
               'ɵngcc0.ɵɵsetNgModuleScope(FooModule, { declarations: function () { return [exports.FooDirective]; } });');
     });
 
+    it('should support inline UMD/CommonJS exports declarations using an element access as export',
+       () => {
+         // Setup an Angular entry-point in UMD module format that uses element access syntax for
+         // export declarations, as a bundler like Rollup may have generated.
+         loadTestFiles([
+           {
+             name: _('/node_modules/test-package/package.json'),
+             contents: '{"name": "test-package", "main": "./index.js", "typings": "./index.d.ts"}'
+           },
+           {
+             name: _('/node_modules/test-package/index.js'),
+             contents: `
+          (function (global, factory) {
+            typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
+            typeof define === 'function' && define.amd ? define('test', ['exports', 'core'], factory) :
+            (factory(global.test, global.core));
+          }(this, (function (exports, core) { 'use strict';
+            exports['FooModule'] = /** @class */ (function () {
+              function FooModule() {}
+              FooModule = __decorate([
+                  core.NgModule({declarations: exports.declarations})
+              ], FooModule);
+              return FooModule;
+            }());
+
+            exports['declarations'] = [exports['FooDirective']];
+
+            exports['FooDirective'] = /** @class */ (function () {
+              function FooDirective() {}
+              FooDirective = __decorate([
+                core.Directive({selector: '[foo]'})
+              ], FooDirective);
+              return FooDirective;
+            }());
+          })));
+          `
+           },
+           {
+             name: _('/node_modules/test-package/index.d.ts'),
+             contents: `
+          export declare class FooModule { }
+          export declare class FooDirective { }
+          `
+           },
+           {name: _('/node_modules/test-package/index.metadata.json'), contents: 'DUMMY DATA'},
+         ]);
+
+         expect(() => mainNgcc({
+                  basePath: '/node_modules',
+                  targetEntryPointPath: 'test-package',
+                  propertiesToConsider: ['main'],
+                }))
+             .not.toThrow();
+
+         const processedFile = fs.readFile(_('/node_modules/test-package/index.js'));
+         expect(processedFile)
+             .toContain(
+                 'FooModule.ɵmod = /*@__PURE__*/ ɵngcc0.ɵɵdefineNgModule({ type: FooModule });');
+         expect(processedFile)
+             .toContain(
+                 'ɵngcc0.ɵɵsetNgModuleScope(FooModule, { declarations: function () { return [exports.FooDirective]; } });');
+       });
+
     it('should not be able to evaluate code in external packages when no .d.ts files are present',
        () => {
          loadTestFiles([
@@ -1524,7 +1587,7 @@ runInEachFileSystem(() => {
              propertiesToConsider: ['esm2015', 'esm5'],
            });
            fail('should have thrown');
-         } catch (e) {
+         } catch (e: any) {
            expect(e.message).toContain(
                'Failed to compile entry-point test-package (`esm2015` as esm2015) due to compilation errors:');
            expect(e.message).toContain('NG1010');
@@ -2826,7 +2889,7 @@ runInEachFileSystem(() => {
                propertiesToConsider: ['es2015']
              });
              fail('should have thrown');
-           } catch (e) {
+           } catch (e: any) {
              expect(e.message).toContain(
                  'Failed to compile entry-point fatal-error (`es2015` as esm2015) due to compilation errors:');
              expect(e.message).toContain('NG2001');
@@ -3370,7 +3433,7 @@ runInEachFileSystem(() => {
            const dtsContents = fs.readFile(_(`/node_modules/test-package/index.d.ts`));
            expect(dtsContents)
                .toContain(
-                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir, "[base]", ["base1", "base2"], {}, {}, never>;');
+                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir, "[base]", ["base1", "base2"], {}, {}, never, never, false>;');
          });
 
       it('should generate a component definition with CopyDefinitionFeature for an undecorated child component',
@@ -3448,7 +3511,7 @@ runInEachFileSystem(() => {
            const dtsContents = fs.readFile(_(`/node_modules/test-package/index.d.ts`));
            expect(dtsContents)
                .toContain(
-                   'static ɵcmp: ɵngcc0.ɵɵComponentDeclaration<DerivedCmp, "[base]", never, {}, {}, never, never>;');
+                   'static ɵcmp: ɵngcc0.ɵɵComponentDeclaration<DerivedCmp, "[base]", never, {}, {}, never, never, false>;');
          });
 
       it('should generate directive definitions with CopyDefinitionFeature for undecorated child directives in a long inheritance chain',
@@ -3526,13 +3589,13 @@ runInEachFileSystem(() => {
            const dtsContents = fs.readFile(_(`/node_modules/test-package/index.d.ts`));
            expect(dtsContents)
                .toContain(
-                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir1, "[base]", never, {}, {}, never>;');
+                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir1, "[base]", never, {}, {}, never, never, false>;');
            expect(dtsContents)
                .toContain(
-                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir2, "[base]", never, {}, {}, never>;');
+                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir2, "[base]", never, {}, {}, never, never, false>;');
            expect(dtsContents)
                .toContain(
-                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir3, "[base]", never, {}, {}, never>;');
+                   'static ɵdir: ɵngcc0.ɵɵDirectiveDeclaration<DerivedDir3, "[base]", never, {}, {}, never, never, false>;');
          });
     });
 

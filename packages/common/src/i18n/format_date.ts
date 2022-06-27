@@ -9,7 +9,7 @@
 import {FormatWidth, FormStyle, getLocaleDateFormat, getLocaleDateTimeFormat, getLocaleDayNames, getLocaleDayPeriods, getLocaleEraNames, getLocaleExtraDayPeriodRules, getLocaleExtraDayPeriods, getLocaleId, getLocaleMonthNames, getLocaleNumberSymbol, getLocaleTimeFormat, NumberSymbol, Time, TranslationWidth} from './locale_data_api';
 
 export const ISO8601_DATE_REGEX =
-    /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\d\d)(?:\.(\d+))?)?)?(Z|([+-])(\d\d):?(\d\d))?)?$/;
+    /^(\d{4,})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\d\d)(?:\.(\d+))?)?)?(Z|([+-])(\d\d):?(\d\d))?)?$/;
 //    1        2       3         4          5          6          7          8  9     10      11
 const NAMED_FORMATS: {[localeId: string]: {[format: string]: string}} = {};
 const DATE_FORMATS_SPLIT =
@@ -51,7 +51,8 @@ enum TranslationType {
  * @param value The date to format, as a Date, or a number (milliseconds since UTC epoch)
  * or an [ISO date-time string](https://www.w3.org/TR/NOTE-datetime).
  *
- * 要格式化的日期，是一个日期、数字（从 UTC 时代以来的毫秒数）或 ISO 字符串 (https://www.w3.org/TR/NOTE-datetime)。
+ * 要格式化的日期，是一个日期、数字（从 UTC 时代以来的毫秒数）或 ISO 字符串
+ * (https://www.w3.org/TR/NOTE-datetime)。
  *
  * @param format The date-time components to include. See `DatePipe` for details.
  *
@@ -111,9 +112,9 @@ export function formatDate(
   let text = '';
   parts.forEach(value => {
     const dateFormatter = getDateFormatter(value);
-    text += dateFormatter ?
-        dateFormatter(date, locale, dateTimezoneOffset) :
-        value === '\'\'' ? '\'' : value.replace(/(^'|'$)/g, '').replace(/''/g, '\'');
+    text += dateFormatter ? dateFormatter(date, locale, dateTimezoneOffset) :
+        value === '\'\''  ? '\'' :
+                            value.replace(/(^'|'$)/g, '').replace(/''/g, '\'');
   });
 
   return text;
@@ -241,14 +242,14 @@ function padNumber(
     strNum = '0' + strNum;
   }
   if (trim) {
-    strNum = strNum.substr(strNum.length - digits);
+    strNum = strNum.slice(strNum.length - digits);
   }
   return neg + strNum;
 }
 
 function formatFractionalSeconds(milliseconds: number, digits: number): string {
   const strMs = padNumber(milliseconds, 3);
-  return strMs.substr(0, digits);
+  return strMs.substring(0, digits);
 }
 
 /**
@@ -787,7 +788,8 @@ function convertTimezoneToLocal(date: Date, timezone: string, reverse: boolean):
  *   [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
  *   Note: ISO strings without time return a date without timeoffset.
  *
- *   字符串：数字（如 "1234"）、ISO 格式和 [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
+ *   字符串：数字（如 "1234"）、ISO 格式和
+ * [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
  *   所支持的日期字符串格式。
  *   注意：不带时间的 ISO 字符串会返回一个没有时区偏移量的日期。
  *

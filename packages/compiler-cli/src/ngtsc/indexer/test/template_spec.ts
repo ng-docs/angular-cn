@@ -6,9 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {BoundTarget} from '@angular/compiler';
+
 import {AbsoluteSourceSpan, AttributeIdentifier, ElementIdentifier, IdentifierKind, ReferenceIdentifier, TemplateNodeIdentifier, TopLevelIdentifier, VariableIdentifier} from '..';
 import {runInEachFileSystem} from '../../file_system/testing';
-import {getTemplateIdentifiers} from '../src/template';
+import {ComponentMeta} from '../src/context';
+import {getTemplateIdentifiers as getTemplateIdentifiersAndErrors} from '../src/template';
+
 import * as util from './util';
 
 function bind(template: string) {
@@ -18,8 +22,80 @@ function bind(template: string) {
   });
 }
 
+function getTemplateIdentifiers(boundTemplate: BoundTarget<ComponentMeta>) {
+  return getTemplateIdentifiersAndErrors(boundTemplate).identifiers;
+}
+
 runInEachFileSystem(() => {
   describe('getTemplateIdentifiers', () => {
+    it('should handle svg elements', () => {
+      const template = '<svg></svg>';
+      const refs = getTemplateIdentifiers(bind(template));
+
+      const [ref] = Array.from(refs);
+      expect(ref).toEqual({
+        kind: IdentifierKind.Element,
+        name: 'svg',
+        span: new AbsoluteSourceSpan(1, 4),
+        usedDirectives: new Set(),
+        attributes: new Set(),
+      });
+    });
+
+    it('should handle svg elements on templates', () => {
+      const template = '<svg *ngIf="true"></svg>';
+      const refs = getTemplateIdentifiers(bind(template));
+
+      const [ref] = Array.from(refs);
+      expect(ref).toEqual({
+        kind: IdentifierKind.Template,
+        name: 'svg',
+        span: new AbsoluteSourceSpan(1, 4),
+        usedDirectives: new Set(),
+        attributes: new Set(),
+      });
+    });
+
+    it('should handle comments in interpolations', () => {
+      const template = '{{foo // comment}}';
+      const refs = getTemplateIdentifiers(bind(template));
+
+      const [ref] = Array.from(refs);
+      expect(ref).toEqual({
+        name: 'foo',
+        kind: IdentifierKind.Property,
+        span: new AbsoluteSourceSpan(2, 5),
+        target: null,
+      });
+    });
+
+    it('should handle whitespace and comments in interpolations', () => {
+      const template = '{{   foo // comment   }}';
+      const refs = getTemplateIdentifiers(bind(template));
+
+      const [ref] = Array.from(refs);
+      expect(ref).toEqual({
+        name: 'foo',
+        kind: IdentifierKind.Property,
+        span: new AbsoluteSourceSpan(5, 8),
+        target: null,
+      });
+    });
+
+    it('works when structural directives are on templates', () => {
+      const template = '<ng-template *ngIf="true">';
+      const refs = getTemplateIdentifiers(bind(template));
+
+      const [ref] = Array.from(refs);
+      expect(ref).toEqual({
+        kind: IdentifierKind.Template,
+        name: 'ng-template',
+        span: new AbsoluteSourceSpan(1, 12),
+        usedDirectives: new Set(),
+        attributes: new Set(),
+      });
+    });
+
     it('should generate nothing in empty template', () => {
       const template = '';
       const refs = getTemplateIdentifiers(bind(template));
@@ -85,6 +161,20 @@ runInEachFileSystem(() => {
           name: 'foo',
           kind: IdentifierKind.Property,
           span: new AbsoluteSourceSpan(2, 5),
+          target: null,
+        });
+      });
+
+      it('should discover component properties read using "this" as a receiver', () => {
+        const template = '{{this.foo}}';
+        const refs = getTemplateIdentifiers(bind(template));
+        expect(refs.size).toBe(1);
+
+        const [ref] = Array.from(refs);
+        expect(ref).toEqual({
+          name: 'foo',
+          kind: IdentifierKind.Property,
+          span: new AbsoluteSourceSpan(7, 10),
           target: null,
         });
       });
@@ -798,6 +888,27 @@ runInEachFileSystem(() => {
           selector: ':not(never-selector)',
         }
       ]));
+    });
+
+    it('should handle interpolations in attributes, preceded by HTML entity', () => {
+      const template = `<img src="&nbsp;{{foo}}" />`;
+      const refs = getTemplateIdentifiers(bind(template));
+
+      expect(Array.from(refs)).toEqual([
+        {
+          kind: IdentifierKind.Element,
+          name: 'img',
+          span: new AbsoluteSourceSpan(1, 4),
+          usedDirectives: new Set(),
+          attributes: new Set(),
+        },
+        {
+          kind: IdentifierKind.Property,
+          name: 'foo',
+          span: new AbsoluteSourceSpan(18, 21),
+          target: null,
+        }
+      ]);
     });
   });
 });

@@ -7,7 +7,7 @@
  */
 import ts from 'typescript';
 
-import {absoluteFrom, dirname, isLocalRelativePath, relative, resolve, toRelativeImport} from './helpers';
+import {absoluteFromSourceFile, dirname, isLocalRelativePath, relative, resolve, toRelativeImport} from './helpers';
 import {AbsoluteFsPath, BrandedPath, PathSegment} from './types';
 import {stripExtension} from './util';
 
@@ -73,7 +73,7 @@ export class LogicalFileSystem {
    * `logicalPathOfFile(absoluteFromSourceFile(sf))`.
    */
   logicalPathOfSf(sf: ts.SourceFile): LogicalProjectPath|null {
-    return this.logicalPathOfFile(absoluteFrom(sf.fileName));
+    return this.logicalPathOfFile(absoluteFromSourceFile(sf));
   }
 
   /**
@@ -83,9 +83,9 @@ export class LogicalFileSystem {
    * of the TS project's root directories.
    */
   logicalPathOfFile(physicalFile: AbsoluteFsPath): LogicalProjectPath|null {
-    const canonicalFilePath =
-        this.compilerHost.getCanonicalFileName(physicalFile) as AbsoluteFsPath;
-    if (!this.cache.has(canonicalFilePath)) {
+    if (!this.cache.has(physicalFile)) {
+      const canonicalFilePath =
+          this.compilerHost.getCanonicalFileName(physicalFile) as AbsoluteFsPath;
       let logicalFile: LogicalProjectPath|null = null;
       for (let i = 0; i < this.rootDirs.length; i++) {
         const rootDir = this.rootDirs[i];
@@ -102,14 +102,14 @@ export class LogicalFileSystem {
           }
         }
       }
-      this.cache.set(canonicalFilePath, logicalFile);
+      this.cache.set(physicalFile, logicalFile);
     }
-    return this.cache.get(canonicalFilePath)!;
+    return this.cache.get(physicalFile)!;
   }
 
   private createLogicalProjectPath(file: AbsoluteFsPath, rootDir: AbsoluteFsPath):
       LogicalProjectPath {
-    const logicalPath = stripExtension(file.substr(rootDir.length));
+    const logicalPath = stripExtension(file.slice(rootDir.length));
     return (logicalPath.startsWith('/') ? logicalPath : '/' + logicalPath) as LogicalProjectPath;
   }
 }

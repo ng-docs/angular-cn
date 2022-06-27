@@ -14,8 +14,8 @@ class Hero {
   // Get hero from s formatted as '<id> <name>'.
   static fromString(s: string): Hero {
     return new Hero(
-      +s.substr(0, s.indexOf(' ')),
-      s.substr(s.indexOf(' ') + 1),
+      +s.substring(0, s.indexOf(' ')),
+      s.slice(s.indexOf(' ') + 1),
     );
   }
 
@@ -26,8 +26,8 @@ class Hero {
     // Get name from the h2
     const name = await detail.element(by.css('h2')).getText();
     return new Hero(
-      +id.substr(id.indexOf(' ') + 1),
-      name.substr(0, name.lastIndexOf(' '))
+      +id.slice(id.indexOf(' ') + 1),
+      name.substring(0, name.lastIndexOf(' '))
     );
   }
 }
@@ -54,7 +54,7 @@ function initialPageTests() {
 
   it('has the right number of heroes', async () => {
     const page = getPageElts();
-    expect(await page.heroes.count()).toEqual(10);
+    expect(await page.heroes.count()).toEqual(9);
   });
 
   it('has no selected hero and no hero details', async () => {
@@ -74,7 +74,7 @@ function selectHeroTests() {
   it(`has selected ${targetHero.name}`, async () => {
     const page = getPageElts();
     const expectedText = `${targetHero.id} ${targetHero.name}`;
-    expect(await page.selected.getText()).toBe(expectedText);
+    expect((await page.selected.getText()).replace('\n', ' ')).toBe(expectedText);
   });
 
   it('shows selected hero details', async () => {
@@ -106,7 +106,7 @@ function updateHeroTests() {
 
   it(`shows updated hero name in list`, async () => {
     const page = getPageElts();
-    const hero = Hero.fromString(await page.selected.getText());
+    const hero = Hero.fromString((await page.selected.getText()).replace('\n', ' '));
     const newName = targetHero.name + nameSuffix;
     expect(hero.id).toEqual(targetHero.id);
     expect(hero.name).toEqual(newName);
@@ -127,8 +127,8 @@ async function expectHeading(hLevel: number, expectedText: string): Promise<void
 
 function getPageElts() {
   return {
-    heroes: element.all(by.css('app-root li')),
-    selected: element(by.css('app-root li.selected')),
+    heroes: element.all(by.css('app-root li button')),
+    selected: element(by.css('app-root li button.selected')),
     heroDetail: element(by.css('app-root > div, app-root > app-heroes > app-hero-detail > div'))
   };
 }

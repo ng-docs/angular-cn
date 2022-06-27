@@ -12,11 +12,10 @@ import {IterableDifferFactory, IterableDiffers} from './differs/iterable_differs
 import {KeyValueDifferFactory, KeyValueDiffers} from './differs/keyvalue_differs';
 
 export {SimpleChange, SimpleChanges} from '../interface/simple_change';
-export {devModeEqual} from './change_detection_util';
+export {devModeEqual} from '../util/comparison';
 export {ChangeDetectorRef} from './change_detector_ref';
 export {ChangeDetectionStrategy, ChangeDetectorStatus, isDefaultChangeDetectionStrategy} from './constants';
-export {DefaultIterableDifferFactory} from './differs/default_iterable_differ';
-export {DefaultIterableDiffer} from './differs/default_iterable_differ';
+export {DefaultIterableDiffer, DefaultIterableDifferFactory} from './differs/default_iterable_differ';
 export {DefaultKeyValueDifferFactory} from './differs/default_keyvalue_differ';
 export {IterableChangeRecord, IterableChanges, IterableDiffer, IterableDifferFactory, IterableDiffers, NgIterable, TrackByFunction} from './differs/iterable_differs';
 export {KeyValueChangeRecord, KeyValueChanges, KeyValueDiffer, KeyValueDifferFactory, KeyValueDiffers} from './differs/keyvalue_differs';

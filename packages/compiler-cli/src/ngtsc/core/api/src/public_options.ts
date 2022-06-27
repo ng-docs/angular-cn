@@ -6,6 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {ExtendedTemplateDiagnosticName} from '../../../../ngtsc/diagnostics';
+
 /**
  * Options supported by the legacy View Engine compiler, which are still consumed by the Angular Ivy
  * compiler for backwards compatibility.
@@ -259,6 +261,46 @@ export interface StrictTemplateOptions {
 }
 
 /**
+ * A label referring to a `ts.DiagnosticCategory` or `'suppress'`, meaning the associated diagnostic
+ * should not be displayed at all.
+ *
+ * @publicApi
+ */
+export enum DiagnosticCategoryLabel {
+  /** Treat the diagnostic as a warning, don't fail the compilation. */
+  Warning = 'warning',
+
+  /** Treat the diagnostic as a hard error, fail the compilation. */
+  Error = 'error',
+
+  /** Ignore the diagnostic altogether. */
+  Suppress = 'suppress',
+}
+
+/**
+ * Options which control how diagnostics are emitted from the compiler.
+ *
+ * @publicApi
+ */
+export interface DiagnosticOptions {
+  /** Options which control how diagnostics are emitted from the compiler. */
+  extendedDiagnostics?: {
+    /**
+     * The category to use for configurable diagnostics which are not overridden by `checks`. Uses
+     * `warning` by default.
+     */
+    defaultCategory?: DiagnosticCategoryLabel;
+
+    /**
+     * A map of each extended template diagnostic's name to its category. This can be expanded in
+     * the future with more information for each check or for additional diagnostics not part of the
+     * extended template diagnostics system.
+     */
+    checks?: {[Name in ExtendedTemplateDiagnosticName]?: DiagnosticCategoryLabel};
+  };
+}
+
+/**
  * Options which control behavior useful for "monorepo" build cases using Bazel (such as the
  * internal Google monorepo, g3).
  *
@@ -295,6 +337,17 @@ export interface BazelAndG3Options {
    * support these future imports.
    */
   generateDeepReexports?: boolean;
+
+  /**
+   * The `.d.ts` file for NgModules contain type pointers to their declarations, imports, and
+   * exports. Without this flag, the generated type definition will include
+   * components/directives/pipes/NgModules that are declared or imported locally in the NgModule and
+   * not necessarily exported to consumers.
+   *
+   * With this flag set, the type definition generated in the `.d.ts` for an NgModule will be
+   * filtered to only list those types which are publicly exported by the NgModule.
+   */
+  onlyPublishPublicTypingsForNgModules?: boolean;
 
   /**
    * Insert JSDoc type annotations needed by Closure Compiler

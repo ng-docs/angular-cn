@@ -8,7 +8,6 @@
 
 import {AsyncPipe, ɵgetDOM as getDOM} from '@angular/common';
 import {ChangeDetectorRef, EventEmitter} from '@angular/core';
-import {browserDetection} from '@angular/platform-browser/testing/src/browser_util';
 import {Subscribable, Unsubscribable} from 'rxjs';
 
 {
@@ -144,7 +143,7 @@ import {Subscribable, Unsubscribable} from 'rxjs';
       let promise: Promise<any>;
       let ref: any;
       // adds longer timers for passing tests in IE
-      const timer = (getDOM() && browserDetection.isIE) ? 50 : 10;
+      const timer = 10;
 
       beforeEach(() => {
         promise = new Promise((res, rej) => {
@@ -221,6 +220,18 @@ import {Subscribable, Unsubscribable} from 'rxjs';
             setTimeout(() => {
               expect(pipe.transform(promise)).toEqual(message);
               pipe.ngOnDestroy();
+              expect(pipe.transform(promise)).toBe(null);
+              done();
+            }, timer);
+          });
+
+          it('should ignore signals after the pipe has been destroyed', done => {
+            pipe.transform(promise);
+            expect(pipe.transform(promise)).toBe(null);
+            pipe.ngOnDestroy();
+            resolve(message);
+
+            setTimeout(() => {
               expect(pipe.transform(promise)).toBe(null);
               done();
             }, timer);

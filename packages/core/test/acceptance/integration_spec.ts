@@ -11,7 +11,11 @@ import {MockAnimationDriver, MockAnimationPlayer} from '@angular/animations/brow
 import {CommonModule} from '@angular/common';
 import {Component, ContentChild, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, NgModule, OnInit, Output, Pipe, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef} from '@angular/core';
 import {Inject} from '@angular/core/src/di';
-import {TVIEW} from '@angular/core/src/render3/interfaces/view';
+import {readPatchedLView} from '@angular/core/src/render3/context_discovery';
+import {LContainer} from '@angular/core/src/render3/interfaces/container';
+import {getLViewById} from '@angular/core/src/render3/interfaces/lview_tracking';
+import {isLView} from '@angular/core/src/render3/interfaces/type_checks';
+import {ID, LView, PARENT, TVIEW} from '@angular/core/src/render3/interfaces/view';
 import {getLView} from '@angular/core/src/render3/state';
 import {ngDevModeResetPerfCounters} from '@angular/core/src/util/ng_dev_mode';
 import {fakeAsync, flushMicrotasks, TestBed} from '@angular/core/testing';
@@ -1974,6 +1978,59 @@ describe('acceptance integration tests', () => {
     expect(content).toContain(`<span title="Your last name is unknown">`);
   });
 
+  it('should handle safe keyed reads inside templates', () => {
+    @Component({
+      template: `
+        <span [title]="'Your last name is ' + (person.getLastName?.() ?? 'unknown')">
+          Hello, {{ person.getName?.() }}!
+          You are a Balrog: {{ person.getSpecies?.()?.()?.()?.()?.() || 'unknown' }}
+        </span>
+      `
+    })
+    class App {
+      person: {
+        getName: () => string,
+        getLastName?: () => string,
+        getSpecies?: () => () => () => () => () => string,
+      } = {getName: () => 'Bilbo'};
+    }
+
+    TestBed.configureTestingModule({declarations: [App]});
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const content = fixture.nativeElement.innerHTML;
+
+    expect(content).toContain('Hello, Bilbo!');
+    expect(content).toContain('You are a Balrog: unknown');
+    expect(content).toContain(`<span title="Your last name is unknown">`);
+  });
+
+  it('should not invoke safe calls more times than plain calls', () => {
+    const returnValue = () => () => () => () => 'hi';
+    let plainCalls = 0;
+    let safeCalls = 0;
+
+    @Component({template: `{{ safe?.()?.()?.()?.()?.() }} {{ plain()()()()() }}`})
+    class App {
+      plain() {
+        plainCalls++;
+        return returnValue;
+      }
+
+      safe() {
+        safeCalls++;
+        return returnValue;
+      }
+    }
+
+    TestBed.configureTestingModule({declarations: [App]});
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+
+    expect(safeCalls).toBeGreaterThan(0);
+    expect(safeCalls).toBe(plainCalls);
+  });
+
   it('should handle nullish coalescing inside host bindings', () => {
     const logs: string[] = [];
 
@@ -2141,6 +2198,110 @@ describe('acceptance integration tests', () => {
     expect(fixture.nativeElement.textContent).toContain('Hello, Penelope!');
     expect(log).toEqual(['getConfig(showTitle)', 'person.getName(false)']);
     log.length = 0;
+  });
+
+  it('should remove child LView from the registry when the root view is destroyed', () => {
+    @Component({template: '<child></child>'})
+    class App {
+    }
+
+    @Component({selector: 'child', template: '<grand-child></grand-child>'})
+    class Child {
+    }
+
+    @Component({selector: 'grand-child', template: ''})
+    class GrandChild {
+    }
+
+    TestBed.configureTestingModule({declarations: [App, Child, GrandChild]});
+    const fixture = TestBed.createComponent(App);
+    const grandChild = fixture.debugElement.query(By.directive(GrandChild)).componentInstance;
+    fixture.detectChanges();
+    const leafLView = readPatchedLView(grandChild)!;
+    const lViewIds: number[] = [];
+    let current: LView|LContainer|null = leafLView;
+
+    while (current) {
+      isLView(current) && lViewIds.push(current[ID]);
+      current = current[PARENT];
+    }
+
+    // We expect 3 views: `GrandChild`, `Child` and `App`.
+    expect(lViewIds).toEqual([leafLView[ID], leafLView[ID] - 1, leafLView[ID] - 2]);
+    expect(lViewIds.every(id => getLViewById(id) !== null)).toBe(true);
+
+    fixture.destroy();
+
+    // Expect all 3 views to be removed from the registry once the root is destroyed.
+    expect(lViewIds.map(getLViewById)).toEqual([null, null, null]);
+  });
+
+  it('should handle content inside <template> elements', () => {
+    @Component({template: '<template><strong>Hello</strong><em>World</em></template>'})
+    class App {
+    }
+
+    TestBed.configureTestingModule({declarations: [App]});
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+
+    const template: HTMLTemplateElement = fixture.nativeElement.querySelector('template');
+    // `content` won't exist in browsers that don't support `template`.
+    const root = template.content || template;
+
+    expect(root.childNodes.length).toBe(2);
+    expect(root.childNodes[0].textContent).toBe('Hello');
+    expect((root.childNodes[0] as HTMLElement).tagName).toBe('STRONG');
+    expect(root.childNodes[1].textContent).toBe('World');
+    expect((root.childNodes[1] as HTMLElement).tagName).toBe('EM');
+  });
+
+  it('should be able to insert and remove elements inside <template>', () => {
+    @Component({template: '<template><strong *ngIf="render">Hello</strong></template>'})
+    class App {
+      render = true;
+    }
+
+    TestBed.configureTestingModule({declarations: [App], imports: [CommonModule]});
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+
+    const template: HTMLTemplateElement = fixture.nativeElement.querySelector('template');
+    // `content` won't exist in browsers that don't support `template`.
+    const root = template.content || template;
+
+    expect(root.querySelector('strong')).toBeTruthy();
+
+    fixture.componentInstance.render = false;
+    fixture.detectChanges();
+    expect(root.querySelector('strong')).toBeFalsy();
+
+    fixture.componentInstance.render = true;
+    fixture.detectChanges();
+    expect(root.querySelector('strong')).toBeTruthy();
+  });
+
+  it('should handle data binding inside <template> elements', () => {
+    @Component({template: '<template><strong>Hello {{name}}</strong></template>'})
+    class App {
+      name = 'Bilbo';
+    }
+
+    TestBed.configureTestingModule({declarations: [App]});
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+
+    const template: HTMLTemplateElement = fixture.nativeElement.querySelector('template');
+    // `content` won't exist in browsers that don't support `template`.
+    const root = template.content || template;
+    const strong = root.querySelector('strong')!;
+
+    expect(strong.textContent).toBe('Hello Bilbo');
+
+    fixture.componentInstance.name = 'Frodo';
+    fixture.detectChanges();
+
+    expect(strong.textContent).toBe('Hello Frodo');
   });
 
   describe('tView.firstUpdatePass', () => {
@@ -2396,7 +2557,6 @@ describe('acceptance integration tests', () => {
          const fixture = TestBed.createComponent(Cmp);
          fixture.detectChanges();
          completeAnimations();
-
          const comp = fixture.componentInstance;
          expect(comp.log).toEqual([
            'root',   // insertion of the inner-comp content

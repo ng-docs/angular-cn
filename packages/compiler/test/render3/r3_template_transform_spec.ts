@@ -9,6 +9,7 @@
 import {BindingType} from '../../src/expression_parser/ast';
 import * as t from '../../src/render3/r3_ast';
 import {unparse} from '../expression_parser/utils/unparser';
+
 import {parseR3 as parse} from './view/util';
 
 
@@ -272,6 +273,18 @@ describe('R3 template transform', () => {
       ]);
     });
 
+    it('should support <ng-template> with structural directive', () => {
+      expectFromHtml('<ng-template *ngIf="true"></ng-template>').toEqual([
+        ['Template'],
+        ['BoundAttribute', 0, 'ngIf', 'true'],
+        ['Template'],
+      ]);
+      const res = parse('<ng-template *ngIf="true"></ng-template>', {ignoreError: false});
+      expect((res.nodes[0] as t.Template).tagName).toEqual(null);
+      expect(((res.nodes[0] as t.Template).children[0] as t.Template).tagName)
+          .toEqual('ng-template');
+    });
+
     it('should support reference via #...', () => {
       expectFromHtml('<ng-template #a></ng-template>').toEqual([
         ['Template'],
@@ -406,6 +419,22 @@ describe('R3 template transform', () => {
         ['BoundAttribute', BindingType.Property, 'prop', 'v'],
         ['BoundEvent', 'propChange', null, 'v = $event'],
       ]);
+    });
+
+    it('should parse bound events and properties via [(...)] with non-null operator', () => {
+      expectFromHtml('<div [(prop)]="v!"></div>').toEqual([
+        ['Element', 'div'],
+        ['BoundAttribute', BindingType.Property, 'prop', 'v!'],
+        ['BoundEvent', 'propChange', null, 'v = $event'],
+      ]);
+    });
+
+    it('should report an error for assignments into non-null asserted expressions', () => {
+      // TODO(joost): this syntax is allowed in TypeScript. Consider changing the grammar to
+      //  allow this syntax, or improve the error message.
+      // See https://github.com/angular/angular/pull/37809
+      expect(() => parse('<div (prop)="v! = $event"></div>'))
+          .toThrowError(/Unexpected token '=' at column 4/);
     });
 
     it('should report missing property names in bindon- syntax', () => {

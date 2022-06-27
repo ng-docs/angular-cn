@@ -13,7 +13,8 @@ import {AnimationPlayer} from './players/animation_player';
  * Angular component or directive.
  * Provided by the `BrowserAnimationsModule` or `NoopAnimationsModule`.
  *
- * 一种可注入服务，可在 Angular 组件或指令中以编程的方式生成动画序列。由 `BrowserAnimationsModule` 或 `NoopAnimationsModule` 提供。
+ * 一种可注入服务，可在 Angular 组件或指令中以编程的方式生成动画序列。由 `BrowserAnimationsModule`
+ * 或 `NoopAnimationsModule` 提供。
  *
  * @usageNotes
  *
@@ -27,10 +28,11 @@ import {AnimationPlayer} from './players/animation_player';
  *
  * 应用通常不需要创建自己的动画播放器，但是如果需要，请按照以下步骤操作：
  *
- * 1. Use the `build()` method to create a programmatic animation using the
- * `animate()` function. The method returns an `AnimationFactory` instance.
+ * 1. Use the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code> method
+ * to create a programmatic animation. The method returns an `AnimationFactory` instance.
  *
- *       使用 `build()` 方法创建一个用 `animate()` 函数创建的程序性动画。该方法返回一个 `AnimationFactory` 实例。
+ *       使用 `build()` 方法创建一个用 `animate()` 函数创建的程序性动画。该方法返回一个
+ * `AnimationFactory` 实例。
  *
  * 2. Use the factory object to create an `AnimationPlayer` and attach it to a DOM element.
  *
@@ -88,7 +90,9 @@ export abstract class AnimationBuilder {
 }
 
 /**
- * A factory object returned from the `AnimationBuilder`.`build()` method.
+ * A factory object returned from the
+ * <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code>
+ * method.
  *
  * 从 `AnimationBuilder`.`build()` 方法返回的工厂对象。。
  *
@@ -97,15 +101,10 @@ export abstract class AnimationBuilder {
 export abstract class AnimationFactory {
   /**
    * Creates an `AnimationPlayer` instance for the reusable animation defined by
-   * the `AnimationBuilder`.`build()` method that created this factory.
-   * Attaches the new player a DOM element.
+   * the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code>
+   * method that created this factory and attaches the new player a DOM element.
    *
-   * 创建一个 `AnimationPlayer` 实例，是由 `AnimationBuilder`.`build()` 方法定义的可复用动画。把这个新的播放器实例附加到一个 DOM 元素上。
-   *
-   * @param element The DOM element to which to attach the animation.
-   *
-   * 要将动画附加到的 DOM 元素。
-   *
+   * @param element The DOM element to which to attach the player.
    * @param options A set of options that can include a time delay and
    * additional developer-defined parameters.
    *

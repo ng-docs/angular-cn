@@ -29,7 +29,8 @@ export class ParseLocation {
       const ch = source.charCodeAt(offset);
       if (ch == chars.$LF) {
         line--;
-        const priorLine = source.substr(0, offset - 1).lastIndexOf(String.fromCharCode(chars.$LF));
+        const priorLine =
+            source.substring(0, offset - 1).lastIndexOf(String.fromCharCode(chars.$LF));
         col = priorLine > 0 ? offset - priorLine : offset;
       } else {
         col--;
@@ -168,24 +169,6 @@ export function r3JitTypeSourceSpan(
   const sourceFile = new ParseSourceFile('', sourceFileName);
   return new ParseSourceSpan(
       new ParseLocation(sourceFile, -1, -1, -1), new ParseLocation(sourceFile, -1, -1, -1));
-}
-
-export function syntaxError(msg: string, parseErrors?: ParseError[]): Error {
-  const error = Error(msg);
-  (error as any)[ERROR_SYNTAX_ERROR] = true;
-  if (parseErrors) (error as any)[ERROR_PARSE_ERRORS] = parseErrors;
-  return error;
-}
-
-const ERROR_SYNTAX_ERROR = 'ngSyntaxError';
-const ERROR_PARSE_ERRORS = 'ngParseErrors';
-
-export function isSyntaxError(error: Error): boolean {
-  return (error as any)[ERROR_SYNTAX_ERROR];
-}
-
-export function getParseErrors(error: Error): ParseError[] {
-  return (error as any)[ERROR_PARSE_ERRORS] || [];
 }
 
 let _anonymousTypeIndex = 0;

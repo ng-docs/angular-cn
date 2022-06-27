@@ -59,6 +59,7 @@ function getPipeMetadata(type: Type<any>, meta: Pipe): R3PipeMetadataFacade {
     type: type,
     name: type.name,
     pipeName: meta.name,
-    pure: meta.pure !== undefined ? meta.pure : true
+    pure: meta.pure !== undefined ? meta.pure : true,
+    isStandalone: !!meta.standalone,
   };
 }

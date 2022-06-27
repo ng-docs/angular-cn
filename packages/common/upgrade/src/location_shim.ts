@@ -295,7 +295,8 @@ export class $locationShim {
    * This function emulates the $browser.state() function from AngularJS. It will cause
    * history.state to be cached unless changed with deep equality check.
    *
-   * 此函数模拟 AngularJS 中的 $browser.state() 函数。除非使用深度相等性检查进行更改，否则它将导致 history.state 被缓存。
+   * 此函数模拟 AngularJS 中的 $browser.state() 函数。除非使用深度相等性检查进行更改，否则它将导致
+   * history.state 被缓存。
    *
    */
   private browserState(): unknown {
@@ -304,7 +305,7 @@ export class $locationShim {
 
   private stripBaseUrl(base: string, url: string) {
     if (url.startsWith(base)) {
-      return url.substr(base.length);
+      return url.slice(base.length);
     }
     return undefined;
   }
@@ -347,13 +348,16 @@ export class $locationShim {
    * `$locationChangeSuccess` events which fire when AngularJS updates its internally-referenced
    * version of the browser URL.
    *
-   * 注册对 URL 更改的监听器。该 API 用于捕获 AngularJS 框架执行的更新。`$locationChangeStart` 和 `$locationChangeSuccess` 事件的子集，这些事件在 AngularJS 更新其内部引用的浏览器 URL 版本时触发。
+   * 注册对 URL 更改的监听器。该 API 用于捕获 AngularJS 框架执行的更新。`$locationChangeStart` 和
+   * `$locationChangeSuccess` 事件的子集，这些事件在 AngularJS 更新其内部引用的浏览器 URL
+   * 版本时触发。
    *
    * It's possible for `$locationChange` events to happen, but for the browser URL
    * (window.location) to remain unchanged. This `onChange` callback will fire only when AngularJS
    * actually updates the browser URL (window.location).
    *
-   * `$locationChange` 事件有可能发生，但浏览器的 URL（window.location）保持不变。仅当 AngularJS 实际上更新浏览器 URL（window.location）时，才会触发此 `onChange`
+   * `$locationChange` 事件有可能发生，但浏览器的 URL（window.location）保持不变。仅当 AngularJS
+   * 实际上更新浏览器 URL（window.location）时，才会触发此 `onChange`
    *
    * @param fn The callback function that is triggered for the listener when the URL changes.
    *
@@ -377,7 +381,7 @@ export class $locationShim {
       try {
         fn(url, state, oldUrl, oldState);
       } catch (e) {
-        err(e);
+        err(e as Error);
       }
     });
   }
@@ -467,7 +471,7 @@ export class $locationShim {
 
   private composeUrls() {
     this.$$url = this.urlCodec.normalize(this.$$path, this.$$search, this.$$hash);
-    this.$$absUrl = this.getServerBase() + this.$$url.substr(1);  // remove '/' from front of URL
+    this.$$absUrl = this.getServerBase() + this.$$url.slice(1);  // remove '/' from front of URL
     this.updateBrowser = true;
   }
 
@@ -476,7 +480,8 @@ export class $locationShim {
    * rules specified in
    * [RFC 3986](https://tools.ietf.org/html/rfc3986).
    *
-   * 检索完整的 URL 表示形式，其中包含根据 [RFC 3986 中](https://tools.ietf.org/html/rfc3986) 指定的规则编码过的所有段。
+   * 检索完整的 URL 表示形式，其中包含根据 [RFC 3986 中](https://tools.ietf.org/html/rfc3986)
+   * 指定的规则编码过的所有段。
    *
    * ```js
    * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
@@ -544,7 +549,8 @@ export class $locationShim {
    * In contrast to the non-AngularJS version `location.host` which returns `hostname:port`, this
    * returns the `hostname` portion only.
    *
-   * 与非 AngularJS 版本不同，其 `location.host` 会返回 `hostname:port` ，而这里会返回 `hostname` 部分。
+   * 与非 AngularJS 版本不同，其 `location.host` 会返回 `hostname:port` ，而这里会返回 `hostname`
+   * 部分。
    *
    * ```js
    * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
@@ -755,13 +761,16 @@ export class $locationShim {
    * Change the history state object when called with one parameter and return `$location`.
    * The state object is later passed to `pushState` or `replaceState`.
    *
-   * 使用一个参数调用时将更改历史状态对象，并返回 `$location` 。状态对象随后传递给 `pushState` 或 `replaceState` 。
+   * 使用一个参数调用时将更改历史状态对象，并返回 `$location` 。状态对象随后传递给 `pushState` 或
+   * `replaceState` 。
    *
    * This method is supported only in HTML5 mode and only in browsers supporting
    * the HTML5 History API methods such as `pushState` and `replaceState`. If you need to support
    * older browsers (like Android < 4.0), don't use this method.
    *
-   * 仅在 HTML5 模式下以及在支持 HTML5 History API 方法（例如 `pushState` 和 `replaceState`）的浏览器中才支持此方法。如果你需要支持较旧的浏览器（例如 Android &lt;4.0），请不要使用此方法。
+   * 仅在 HTML5 模式下以及在支持 HTML5 History API 方法（例如 `pushState` 和
+   * `replaceState`）的浏览器中才支持此方法。如果你需要支持较旧的浏览器（例如 Android
+   * &lt;4.0），请不要使用此方法。
    */
   state(): unknown;
   state(state: unknown): this;
@@ -779,7 +788,8 @@ export class $locationShim {
  * The factory function used to create an instance of the `$locationShim` in Angular,
  * and provides an API-compatiable `$locationProvider` for AngularJS.
  *
- * Angular 中用于创建 `$locationShim` 实例的工厂函数，并为 AngularJS 提供与 API 兼容的 `$locationProvider`。
+ * Angular 中用于创建 `$locationShim` 实例的工厂函数，并为 AngularJS 提供与 API 兼容的
+ * `$locationProvider`。
  *
  * @publicApi
  */
@@ -805,7 +815,8 @@ export class $locationShimProvider {
    * Stub method used to keep API compatible with AngularJS. This setting is configured through
    * the LocationUpgradeModule's `config` method in your Angular app.
    *
-   * 用于使 API 与 AngularJS 兼容的存根方法。此设置是通过 Angular 应用中 LocationUpgradeModule 的 `config` 方法配置的。
+   * 用于使 API 与 AngularJS 兼容的存根方法。此设置是通过 Angular 应用中 LocationUpgradeModule 的
+   * `config` 方法配置的。
    *
    */
   hashPrefix(prefix?: string) {
@@ -816,7 +827,8 @@ export class $locationShimProvider {
    * Stub method used to keep API compatible with AngularJS. This setting is configured through
    * the LocationUpgradeModule's `config` method in your Angular app.
    *
-   * 用于使 API 与 AngularJS 兼容的存根方法。此设置是通过 Angular 应用中 LocationUpgradeModule 的 `config` 方法配置的。
+   * 用于使 API 与 AngularJS 兼容的存根方法。此设置是通过 Angular 应用中 LocationUpgradeModule 的
+   * `config` 方法配置的。
    *
    */
   html5Mode(mode?: any) {

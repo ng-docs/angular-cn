@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Route, UrlMatchResult} from './config';
+import {Route, UrlMatchResult} from './models';
 import {UrlSegment, UrlSegmentGroup} from './url_tree';
 
 
@@ -38,7 +38,8 @@ export type Params = {
  * The map supports retrieving a single value with `get()`
  * or multiple values with `getAll()`.
  *
- * 提供访问特定于路由的必需和可选参数的映射表。该映射表支持使用 `get()` 检索单个值或使用 `getAll()` 检索多个值。
+ * 提供访问特定于路由的必需和可选参数的映射表。该映射表支持使用 `get()` 检索单个值或使用 `getAll()`
+ * 检索多个值。
  *
  * @see [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
  *

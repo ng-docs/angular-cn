@@ -6,8 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Routes} from '../src/config';
 import {createRouterState} from '../src/create_router_state';
+import {Routes} from '../src/models';
 import {recognize} from '../src/recognize';
 import {DefaultRouteReuseStrategy} from '../src/route_reuse_strategy';
 import {ActivatedRoute, advanceActivatedRoute, createEmptyState, RouterState, RouterStateSnapshot} from '../src/router_state';
@@ -93,7 +93,7 @@ describe('create router state', () => {
   });
 
   it('should not retrieve routes when `shouldAttach` is always false', () => {
-    const config = [
+    const config: Routes = [
       {path: 'a', component: ComponentA}, {path: 'b', component: ComponentB, outlet: 'left'},
       {path: 'c', component: ComponentC, outlet: 'left'}
     ];
@@ -107,7 +107,7 @@ describe('create router state', () => {
   });
 
   it('should consistently represent future and current state', () => {
-    const config = [
+    const config: Routes = [
       {path: '', pathMatch: 'full', component: ComponentA},
       {path: 'product/:id', component: ComponentB}
     ];

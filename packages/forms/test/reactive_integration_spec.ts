@@ -9,7 +9,7 @@
 import {ɵgetDOM as getDOM} from '@angular/common';
 import {Component, Directive, forwardRef, Input, NgModule, OnDestroy, Type} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {AbstractControl, AsyncValidator, AsyncValidatorFn, COMPOSITION_BUFFER_MODE, ControlValueAccessor, DefaultValueAccessor, FormArray, FormControl, FormControlDirective, FormControlName, FormGroup, FormGroupDirective, FormsModule, MaxValidator, MinLengthValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validator, Validators} from '@angular/forms';
+import {AbstractControl, AsyncValidator, AsyncValidatorFn, COMPOSITION_BUFFER_MODE, ControlValueAccessor, DefaultValueAccessor, FormArray, FormBuilder, FormControl, FormControlDirective, FormControlName, FormGroup, FormGroupDirective, FormsModule, MaxValidator, MinLengthValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validator, Validators} from '@angular/forms';
 import {By} from '@angular/platform-browser/src/dom/debug/by';
 import {dispatchEvent, sortedClassList} from '@angular/platform-browser/testing/src/browser_util';
 import {merge, NEVER, of, Subscription, timer} from 'rxjs';
@@ -307,6 +307,42 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
 
         inputs = fixture.debugElement.queryAll(By.css('input'));
         expect(inputs[2]).not.toBeDefined();
+      });
+
+      it('should sync the disabled state if it changes right after a group is re-bound', () => {
+        @Component({
+          template: `
+            <form [formGroup]="form">
+              <input formControlName="input">
+            </form>
+          `
+        })
+        class App {
+          form: FormGroup;
+
+          constructor(private _fb: FormBuilder) {
+            this.form = this._getForm();
+          }
+
+          private _getForm() {
+            return this._fb.group({'input': 'value'});
+          }
+
+          recreateAndDisable() {
+            this.form = this._getForm();
+            this.form.disable();
+          }
+        }
+
+        const fixture = initTest(App);
+        fixture.detectChanges();
+
+        const input = fixture.nativeElement.querySelector('input');
+        expect(input.disabled).toBe(false);
+
+        fixture.componentInstance.recreateAndDisable();
+        fixture.detectChanges();
+        expect(input.disabled).toBe(true);
       });
 
       describe('nested control rebinding', () => {
@@ -2268,6 +2304,21 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
 
         expect(checkbox.nativeElement.checked).toBe(true);
         expect(control.hasError('required')).toEqual(false);
+
+        checkbox.nativeElement.required = false;
+        dispatchEvent(checkbox.nativeElement, 'change');
+        fixture.detectChanges();
+
+        expect(checkbox.nativeElement.checked).toBe(true);
+        expect(control.hasError('required')).toEqual(false);
+
+        checkbox.nativeElement.checked = false;
+        checkbox.nativeElement.required = true;
+        dispatchEvent(checkbox.nativeElement, 'change');
+        fixture.detectChanges();
+
+        expect(checkbox.nativeElement.checked).toBe(false);
+        expect(control.hasError('required')).toEqual(true);
       });
 
       // Note: this scenario goes against validator function rules were `null` is the only
@@ -3443,7 +3494,7 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
         const inputNativeEl = inputEl.nativeElement;
         expect(inputNativeEl.value).toEqual('oldValue');
 
-        inputEl.triggerEventHandler('compositionstart', null);
+        inputEl.triggerEventHandler('compositionstart');
 
         inputNativeEl.value = 'updatedValue';
         dispatchEvent(inputNativeEl, 'input');
@@ -3474,7 +3525,7 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
         const inputNativeEl = inputEl.nativeElement;
         expect(inputNativeEl.value).toEqual('oldValue');
 
-        inputEl.triggerEventHandler('compositionstart', null);
+        inputEl.triggerEventHandler('compositionstart');
 
         inputNativeEl.value = 'updatedValue';
         dispatchEvent(inputNativeEl, 'input');
@@ -3502,7 +3553,7 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
         const inputNativeEl = inputEl.nativeElement;
         expect(inputNativeEl.value).toEqual('oldValue');
 
-        inputEl.triggerEventHandler('compositionstart', null);
+        inputEl.triggerEventHandler('compositionstart');
 
         inputNativeEl.value = 'updatedValue';
         dispatchEvent(inputNativeEl, 'input');

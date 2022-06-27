@@ -8,15 +8,14 @@
 
 import '../util/ng_dev_mode';
 
+import {RuntimeError, RuntimeErrorCode} from '../errors';
 import {Type} from '../interface/type';
-import {getClosureSafeProperty} from '../util/property';
 import {stringify} from '../util/stringify';
 
 import {resolveForwardRef} from './forward_ref';
 import {getInjectImplementation, injectRootLimpMode} from './inject_switch';
 import {Injector} from './injector';
 import {DecoratorFlags, InjectFlags, InternalInjectFlags} from './interface/injector';
-import {ValueProvider} from './interface/provider';
 import {ProviderToken} from './provider_token';
 
 
@@ -35,9 +34,6 @@ const NG_TOKEN_PATH = 'ngTokenPath';
 const NEW_LINE = /\n/gm;
 const NO_NEW_LINE = 'ɵ';
 export const SOURCE = '__source';
-
-export const USE_VALUE =
-    getClosureSafeProperty<ValueProvider>({provide: String, useValue: getClosureSafeProperty});
 
 /**
  * Current injector value used by `inject`.
@@ -58,7 +54,10 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags?: InjectFla
 export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFlags.Default): T|
     null {
   if (_currentInjector === undefined) {
-    throw new Error(`inject() must be called from an injection context`);
+    const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
+        `inject() must be called from an injection context (a constructor, a factory function or a field initializer)` :
+        '';
+    throw new RuntimeError(RuntimeErrorCode.MISSING_INJECTION_CONTEXT, errorMessage);
   } else if (_currentInjector === null) {
     return injectRootLimpMode(token, undefined, flags);
   } else {
@@ -67,14 +66,9 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFla
 }
 
 /**
- * Generated instruction: Injects a token from the currently active injector.
+ * Generated instruction: injects a token from the currently active injector.
  *
  * 生成的方式：从当前活动的注入器注入令牌。
- *
- * Must be used in the context of a factory function such as one defined for an
- * `InjectionToken`. Throws an error if not called from such a context.
- *
- * 必须在工厂函数的上下文中使用，比如为 `InjectionToken` 定义的函数。如果未从这样的上下文中调用，则会引发错误。
  *
  * (Additional documentation moved to `inject`, as it is the public API, and an alias for this
  * instruction)
@@ -119,46 +113,96 @@ Please check that 1) the type for the parameter at index ${
 }
 
 /**
+ * @param token A token that represents a dependency that should be injected.
+ * @returns the injected value if operation is successful, `null` otherwise.
+ * @throws if called outside of a supported context.
+ *
+ * @publicApi
+ */
+export function inject<T>(token: ProviderToken<T>): T;
+/**
+ * @param token A token that represents a dependency that should be injected.
+ * @param flags Control how injection is executed. The flags correspond to injection strategies that
+ *     can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and `@Optional`.
+ * @returns the injected value if operation is successful, `null` otherwise.
+ * @throws if called outside of a supported context.
+ *
+ * @publicApi
+ */
+export function inject<T>(token: ProviderToken<T>, flags?: InjectFlags): T|null;
+/**
  * Injects a token from the currently active injector.
+ * `inject` is only supported during instantiation of a dependency by the DI system. It can be used
+ * during:
+ * - Construction (via the `constructor`) of a class being instantiated by the DI system, such
+ * as an `@Injectable` or `@Component`.
+ * - In the initializer for fields of such classes.
+ * - In the factory function specified for `useFactory` of a `Provider` or an `@Injectable`.
+ * - In the `factory` function specified for an `InjectionToken`.
  *
- * 从当前活动的注入器中注入令牌。
- *
- * Must be used in the context of a factory function such as one defined for an
- * `InjectionToken`. Throws an error if not called from such a context.
- *
- * 必须在工厂函数的上下文中使用，比如为 `InjectionToken` 定义的函数。如果未从这样的上下文中调用，则会引发错误。
- *
- * Within such a factory function, using this function to request injection of a dependency
- * is faster and more type-safe than providing an additional array of dependencies
- * (as has been common with `useFactory` providers).
- *
- * 在这样的工厂函数中，使用此函数来请求注入依赖项比提供额外的依赖项数组（在 `useFactory` 提供者中这很常见）要更快且类型安全性更高。
- *
- * @param token The injection token for the dependency to be injected.
- *
- * 用于注入依赖项的注入令牌。
- *
+ * @param token A token that represents a dependency that should be injected.
  * @param flags Optional flags that control how injection is executed.
  * The flags correspond to injection strategies that can be specified with
  * parameter decorators `@Host`, `@Self`, `@SkipSef`, and `@Optional`.
  *
- * 控制执行注入方式的可选标志。这些标志对应于可以使用参数装饰器 `@Host`、`@Self`、`@SkipSef` 和 `@Optional` 指定的注入策略。
+ * 控制执行注入方式的可选标志。这些标志对应于可以使用参数装饰器 `@Host`、`@Self`、`@SkipSef` 和
+ * `@Optional` 指定的注入策略。
  *
- * @returns the injected value if injection is successful, `null` otherwise.
+ * @returns the injected value if operation is successful, `null` otherwise.
+ * @throws if called outside of a supported context.
  *
  * 如果注入成功，则为 true，否则为 null。
  *
  * @usageNotes
+ * In practice the `inject()` calls are allowed in a constructor, a constructor parameter and a
+ * field initializer:
  *
- * ### Example
+ * ```typescript
+ * @Injectable({providedIn: 'root'})
+ * export class Car {
+ *   radio: Radio|undefined;
+ *   // OK: field initializer
+ *   spareTyre = inject(Tyre);
  *
- * ### 例子
+ *   constructor() {
+ *     // OK: constructor body
+ *     this.radio = inject(Radio);
+ *   }
+ * }
+ * ```
  *
- * {@example core/di/ts/injector_spec.ts region='ShakableInjectionToken'}
+ * It is also legal to call `inject` from a provider's factory:
+ *
+ * ```typescript
+ * providers: [
+ *   {provide: Car, useFactory: () => {
+ *     // OK: a class factory
+ *     const engine = inject(Engine);
+ *     return new Car(engine);
+ *   }}
+ * ]
+ * ```
+ *
+ * Calls to the `inject()` function outside of the class creation context will result in error. Most
+ * notably, calls to `inject()` are disallowed after a class instance was created, in methods
+ * (including lifecycle hooks):
+ *
+ * ```typescript
+ * @Component({ ... })
+ * export class CarComponent {
+ *   ngOnInit() {
+ *     // ERROR: too late, the component instance was already created
+ *     const engine = inject(Engine);
+ *     engine.start();
+ *   }
+ * }
+ * ```
  *
  * @publicApi
  */
-export const inject = ɵɵinject;
+export function inject<T>(token: ProviderToken<T>, flags = InjectFlags.Default): T|null {
+  return ɵɵinject(token, flags);
+}
 
 export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
   const args: any[] = [];
@@ -166,7 +210,10 @@ export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
     const arg = resolveForwardRef(types[i]);
     if (Array.isArray(arg)) {
       if (arg.length === 0) {
-        throw new Error('Arguments array must have arguments.');
+        const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
+            'Arguments array must have arguments.' :
+            '';
+        throw new RuntimeError(RuntimeErrorCode.INVALID_DIFFER_INPUT, errorMessage);
       }
       let type: Type<any>|undefined = undefined;
       let flags: InjectFlags = InjectFlags.Default;
@@ -233,7 +280,7 @@ export function catchInjectorError(
 
 export function formatError(
     text: string, obj: any, injectorErrorName: string, source: string|null = null): string {
-  text = text && text.charAt(0) === '\n' && text.charAt(1) == NO_NEW_LINE ? text.substr(2) : text;
+  text = text && text.charAt(0) === '\n' && text.charAt(1) == NO_NEW_LINE ? text.slice(2) : text;
   let context = stringify(obj);
   if (Array.isArray(obj)) {
     context = obj.map(stringify).join(' -> ');

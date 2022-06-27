@@ -11,11 +11,6 @@ import {dirname, join} from 'path';
 import * as shx from 'shelljs';
 import {Configuration, Linter} from 'tslint';
 
-const anySymbolName = 'AnyForUntypedForms';
-
-// Tests disabled, as the migration is currently disabled in package.json.
-/*
-
 describe('Google3 typedForms TSLint rule', () => {
   const rulesDirectory = dirname(require.resolve('../../migrations/google3/typedFormsRule'));
 
@@ -27,32 +22,15 @@ describe('Google3 typedForms TSLint rule', () => {
 
     // We need to declare the Angular symbols we're testing for, otherwise type checking won't work.
     writeFile('testing.d.ts', `
-        export type ${anySymbolName} = any;
-        export declare class FormControl {}
-        export declare class FormGroup {}
-        export declare class FormArray {}
-        export declare class AbstractControl {}
-        export declare class FormBuilder {
-          constructor();
-          control(
-            formState: any, validatorOrOpts?: any,
-            asyncValidator?: any): FormControl;
-          group(
-            controlsConfig: {[key: string]: any},
-            options?: any,
-            ): FormGroup;
-          group(
-            controlsConfig: {[key: string]: any},
-            options: {[key: string]: any},
-            ): FormGroup;
-          group(
-            controlsConfig: {[key: string]: any},
-            options: any): FormGroup;
-          array(
-            controlsConfig: any[],
-            validatorOrOpts?: any,
-            asyncValidator?: any): FormArray;
-        }
+      export declare class FormControl {}
+      export declare class FormGroup {}
+      export declare class FormArray {}
+      export declare class AbstractControl {}
+      export declare class FormBuilder {}
+      export declare class UntypedFormControl {}
+      export declare class UntypedFormGroup {}
+      export declare class UntypedFormArray {}
+      export declare class UntypedFormBuilder {}
      `);
 
     writeFile('tsconfig.json', JSON.stringify({
@@ -88,39 +66,27 @@ describe('Google3 typedForms TSLint rule', () => {
     return readFileSync(join(tmpDir, fileName), 'utf8');
   }
 
-  it('should migrate a complete example', () => {
+  // This is just a sanity check for the TSLint configuration; see test/typed_forms_spec.ts for the
+  // full test suite.
+  it('should migrate a simple example', () => {
     writeFile('/index.ts', `
       import { Component } from '@angular/core';
-      import { AbstractControl, FormArray, FormBuilder, FormControl as FC, FormGroup } from
-'@angular/forms';
+      import { AbstractControl, FormArray, FormBuilder, FormControl as FC, FormGroup, UntypedFormGroup } from '@angular/forms';
 
       @Component({template: ''})
       export class MyComponent {
-        private _control = new FC(42);
-        private _group = new FormGroup({});
+        private _control: FC = new FC(42);
+        private _group: FormGroup = new FormGroup({});
         private _array = new FormArray([]);
-
-        private fb = new FormBuilder();
-
-        build() {
-          const c = this.fb.control(42);
-          const g = this.fb.group({one: this.fb.control('')});
-          const a = this.fb.array([42]);
-          const fc2 = new FC(0);
-        }
       }
     `);
 
     const linter = runTSLint(true);
-
-    [`import { ${
-         anySymbolName}, AbstractControl, FormArray, FormBuilder, FormControl as FC, FormGroup }
-from '@angular/forms';`, `private _control = new FC<${anySymbolName}>(42)`, `private _group = new
-FormGroup<${anySymbolName}>({})`, `private _array = new FormArray<${anySymbolName}[]>([])`, `const
-fc2 = new FC<${anySymbolName}>(0)`, `const c = this.fb.control<${anySymbolName}>(42)`, `const g =
-this.fb.group<${anySymbolName}>({one: this.fb.control<${anySymbolName}>('')})`, `const a =
-this.fb.array<${anySymbolName}[]>([42])`] .forEach(t => expect(getFile(`/index.ts`)).toContain(t));
+    const cases = [
+      `private _control: UntypedFormControl = new UntypedFormControl(42);`,
+      `private _group: UntypedFormGroup = new UntypedFormGroup({});`,
+      `private _array = new UntypedFormArray([]);`,
+    ];
+    cases.forEach(t => expect(getFile(`/index.ts`)).toContain(t));
   });
 });
-
-*/

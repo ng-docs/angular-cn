@@ -1,26 +1,27 @@
-import {ReleaseConfig} from '@angular/dev-infra-private/ng-dev/release/config';
+import {ReleaseConfig} from '@angular/dev-infra-private/ng-dev';
 import {join} from 'path';
 
 /** Configuration for the `ng-dev release` command. */
 export const release: ReleaseConfig = {
   publishRegistry: 'https://wombat-dressing-room.appspot.com',
+  representativeNpmPackage: '@angular/core',
   npmPackages: [
-    '@angular/animations',
-    '@angular/bazel',
-    '@angular/common',
-    '@angular/compiler',
-    '@angular/compiler-cli',
-    '@angular/core',
-    '@angular/elements',
-    '@angular/forms',
-    '@angular/language-service',
-    '@angular/localize',
-    '@angular/platform-browser',
-    '@angular/platform-browser-dynamic',
-    '@angular/platform-server',
-    '@angular/router',
-    '@angular/service-worker',
-    '@angular/upgrade',
+    {name: '@angular/animations'},
+    {name: '@angular/bazel'},
+    {name: '@angular/common'},
+    {name: '@angular/compiler'},
+    {name: '@angular/compiler-cli'},
+    {name: '@angular/core'},
+    {name: '@angular/elements'},
+    {name: '@angular/forms'},
+    {name: '@angular/language-service'},
+    {name: '@angular/localize'},
+    {name: '@angular/platform-browser'},
+    {name: '@angular/platform-browser-dynamic'},
+    {name: '@angular/platform-server'},
+    {name: '@angular/router'},
+    {name: '@angular/service-worker'},
+    {name: '@angular/upgrade'},
   ],
   buildPackages: async () => {
     // The buildTargetPackages function is loaded at runtime as the loading the script causes an
@@ -29,7 +30,7 @@ export const release: ReleaseConfig = {
     return buildTargetPackages('dist/release-output', false, 'Release', /* isRelease */ true);
   },
   releaseNotes: {
-    hiddenScopes: ['aio', 'dev-infra', 'docs-infra', 'zone.js'],
+    hiddenScopes: ['aio', 'dev-infra', 'docs-infra', 'zone.js', 'devtools'],
   },
   releasePrLabels: ['comp: build & ci', 'action: merge', 'PullApprove: disable'],
 };

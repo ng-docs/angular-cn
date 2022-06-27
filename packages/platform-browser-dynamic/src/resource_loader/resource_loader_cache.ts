@@ -21,6 +21,9 @@ import {ɵglobal as global} from '@angular/core';
  * 模板缓存需要通过单独的机制构建并加载到 `window.$templateCache` 中。
  *
  * @publicApi
+ *
+ * @deprecated This was previously necessary in some cases to test AOT-compiled components with View
+ *     Engine, but is no longer since Ivy.
  */
 export class CachedResourceLoader extends ResourceLoader {
   private _cache: {[url: string]: string};

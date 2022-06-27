@@ -5,8 +5,11 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {ɵStyleData} from '@angular/animations';
+
+import {ɵStyleDataMap} from '@angular/animations';
+
 import {AnimationEngineInstruction, AnimationTransitionInstructionType} from '../render/animation_engine_instruction';
+
 import {AnimationTimelineInstruction} from './animation_timeline_instruction';
 
 export interface AnimationTransitionInstruction extends AnimationEngineInstruction {
@@ -14,24 +17,23 @@ export interface AnimationTransitionInstruction extends AnimationEngineInstructi
   triggerName: string;
   isRemovalTransition: boolean;
   fromState: string;
-  fromStyles: ɵStyleData;
+  fromStyles: ɵStyleDataMap;
   toState: string;
-  toStyles: ɵStyleData;
+  toStyles: ɵStyleDataMap;
   timelines: AnimationTimelineInstruction[];
   queriedElements: any[];
-  preStyleProps: Map<any, {[prop: string]: boolean}>;
-  postStyleProps: Map<any, {[prop: string]: boolean}>;
+  preStyleProps: Map<any, Set<string>>;
+  postStyleProps: Map<any, Set<string>>;
   totalTime: number;
-  errors?: any[];
+  errors?: Error[];
 }
 
 export function createTransitionInstruction(
     element: any, triggerName: string, fromState: string, toState: string,
-    isRemovalTransition: boolean, fromStyles: ɵStyleData, toStyles: ɵStyleData,
+    isRemovalTransition: boolean, fromStyles: ɵStyleDataMap, toStyles: ɵStyleDataMap,
     timelines: AnimationTimelineInstruction[], queriedElements: any[],
-    preStyleProps: Map<any, {[prop: string]: boolean}>,
-    postStyleProps: Map<any, {[prop: string]: boolean}>, totalTime: number,
-    errors?: any[]): AnimationTransitionInstruction {
+    preStyleProps: Map<any, Set<string>>, postStyleProps: Map<any, Set<string>>, totalTime: number,
+    errors?: Error[]): AnimationTransitionInstruction {
   return {
     type: AnimationTransitionInstructionType.TransitionAnimation,
     element,

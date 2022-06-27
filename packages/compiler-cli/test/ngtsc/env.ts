@@ -22,6 +22,12 @@ import {DeclarationNode} from '../../src/ngtsc/reflection';
 import {NgtscTestCompilerHost} from '../../src/ngtsc/testing';
 import {setWrapHostForTest} from '../../src/transformers/compiler_host';
 
+type TsConfigOptionsValue =
+    string|boolean|number|null|TsConfigOptionsValue[]|{[key: string]: TsConfigOptionsValue};
+type TsConfigOptions = {
+  [key: string]: TsConfigOptionsValue;
+};
+
 /**
  * Manages a temporary testing directory structure and environment for testing ngtsc by feeding it
  * TypeScript code.
@@ -64,11 +70,11 @@ export class NgtscTestEnvironment {
         "baseUrl": ".",
         "allowJs": true,
         "declaration": true,
-        "target": "es5",
+        "target": "es2015",
         "newLine": "lf",
         "module": "es2015",
         "moduleResolution": "node",
-        "lib": ["es6", "dom"],
+        "lib": ["es2015", "dom"],
         "typeRoots": ["node_modules/@types"]
       },
       "angularCompilerOptions": {
@@ -156,7 +162,7 @@ export class NgtscTestEnvironment {
     const writtenFiles = new Set<string>();
     this.multiCompileHostExt.getFilesWrittenSinceLastFlush().forEach(rawFile => {
       if (rawFile.startsWith(this.outDir)) {
-        writtenFiles.add(rawFile.substr(this.outDir.length));
+        writtenFiles.add(rawFile.slice(this.outDir.length));
       }
     });
     return writtenFiles;
@@ -185,9 +191,7 @@ export class NgtscTestEnvironment {
     }
   }
 
-  tsconfig(
-      extraOpts: {[key: string]: string|boolean|null} = {}, extraRootDirs?: string[],
-      files?: string[]): void {
+  tsconfig(extraOpts: TsConfigOptions = {}, extraRootDirs?: string[], files?: string[]): void {
     const tsconfig: {[key: string]: any} = {
       extends: './tsconfig-base.json',
       angularCompilerOptions: {...extraOpts, enableIvy: true},
@@ -311,7 +315,7 @@ class FileNameToModuleNameHost extends AugmentedCompilerHost {
     return moduleNames.map(moduleName => {
       if (moduleName.startsWith(ROOT_PREFIX)) {
         // Strip the artificially added root prefix.
-        moduleName = '/' + moduleName.substr(ROOT_PREFIX.length);
+        moduleName = '/' + moduleName.slice(ROOT_PREFIX.length);
       }
 
       return ts

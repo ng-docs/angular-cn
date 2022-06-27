@@ -1,5 +1,5 @@
 // For more examples:
-//   https://github.com/angular/angular/blob/master/modules/@angular/router/test/integration.spec.ts
+//   https://github.com/angular/angular/blob/main/packages/router/test/integration.spec.ts
 
 import { waitForAsync, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
@@ -170,11 +170,15 @@ class Page {
 }
 
 function expectPathToBe(path: string, expectationFailOutput?: any) {
-  expect(location.path()).toEqual(path, expectationFailOutput || 'location.path()');
+  expect(location.path())
+  .withContext(expectationFailOutput || 'location.path()')
+  .toEqual(path);
 }
 
 function expectElementOf(type: Type<any>): any {
   const el = fixture.debugElement.query(By.directive(type));
-  expect(el).toBeTruthy('expected an element for ' + type.name);
+  expect(el)
+    .withContext(`expected an element for ${type.name}`)
+    .toBeTruthy();
   return el;
 }

@@ -210,7 +210,7 @@ export class TypeCheckContextImpl implements TypeCheckContext {
       binder: R3TargetBinder<TypeCheckableDirectiveMeta>, template: TmplAstNode[],
       pipes: Map<string, Reference<ClassDeclaration<ts.ClassDeclaration>>>,
       schemas: SchemaMetadata[], sourceMapping: TemplateSourceMapping, file: ParseSourceFile,
-      parseErrors: ParseError[]|null): void {
+      parseErrors: ParseError[]|null, isStandalone: boolean): void {
     if (!this.host.shouldCheckComponent(ref.node)) {
       return;
     }
@@ -235,7 +235,7 @@ export class TypeCheckContextImpl implements TypeCheckContext {
         const dirRef = dir.ref as Reference<ClassDeclaration<ts.ClassDeclaration>>;
         const dirNode = dirRef.node;
 
-        if (!dir.isGeneric || !requiresInlineTypeCtor(dirNode, this.reflector)) {
+        if (!dir.isGeneric || !requiresInlineTypeCtor(dirNode, this.reflector, shimData.file)) {
           // inlining not required
           continue;
         }
@@ -263,7 +263,8 @@ export class TypeCheckContextImpl implements TypeCheckContext {
       templateDiagnostics,
     });
 
-    const inliningRequirement = requiresInlineTypeCheckBlock(ref.node, pipes, this.reflector);
+    const inliningRequirement =
+        requiresInlineTypeCheckBlock(ref.node, shimData.file, pipes, this.reflector);
 
     // If inlining is not supported, but is required for either the TCB or one of its directive
     // dependencies, then exit here with an error.
@@ -285,6 +286,7 @@ export class TypeCheckContextImpl implements TypeCheckContext {
       boundTarget,
       pipes,
       schemas,
+      isStandalone
     };
     this.perf.eventCount(PerfEvent.GenerateTcb);
     if (inliningRequirement !== TcbInliningRequirement.None &&
@@ -523,7 +525,7 @@ class InlineTcbOp implements Op {
   execute(im: ImportManager, sf: ts.SourceFile, refEmitter: ReferenceEmitter, printer: ts.Printer):
       string {
     const env = new Environment(this.config, im, refEmitter, this.reflector, sf);
-    const fnName = ts.createIdentifier(`_tcb_${this.ref.node.pos}`);
+    const fnName = ts.factory.createIdentifier(`_tcb_${this.ref.node.pos}`);
 
     // Inline TCBs should copy any generic type parameter nodes directly, as the TCB code is inlined
     // into the class in a context where that will always be legal.

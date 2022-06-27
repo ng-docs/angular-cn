@@ -8,48 +8,55 @@
   <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
 </div>
 
-<mat-toolbar color="primary" class="app-toolbar no-print" [class.transitioning]="isTransitioning">
-  <mat-toolbar-row class="notification-container">
-    <aio-notification notificationId="survey-october-2021" expirationDate="2021-12-04" [dismissOnContentClick]="true" (dismissed)="notificationDismissed()">
-      <a href="https://goo.gle/angular-survey-2021" target="_blank">
-        <mat-icon class="icon" svgIcon="insert_comment" aria-label="Announcement"></mat-icon>
-        <span class="message"><b>填写这份《一分钟调查》</b>，帮我们（开发组）做得更好！</span>
-        <span class="action-button">去填写</span>
+<header>
+  <mat-toolbar #appToolbar color="primary" class="app-toolbar no-print" [class.transitioning]="isTransitioning">
+    <mat-toolbar-row class="notification-container">
+      <aio-notification notificationId="survey-october-2021" expirationDate="2021-12-04" [dismissOnContentClick]="true" (dismissed)="notificationDismissed()">
+        <a href="https://goo.gle/angular-survey-2021" target="_blank">
+          <mat-icon class="icon" svgIcon="insert_comment" aria-label="Announcement"></mat-icon>
+          <span class="message"><b>填写这份《一分钟调查》</b>，帮我们（开发组）做得更好！</span>
+          <span class="action-button">去填写</span>
+        </a>
+      </aio-notification>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <button mat-button class="hamburger" [class.no-animations]="disableAnimations" (click)="sidenav.toggle()" title="Docs menu">
+        <mat-icon svgIcon="menu"></mat-icon>
+      </button>
+      <a class="nav-link home" href="/" [ngSwitch]="showTopMenu">
+        <img *ngSwitchCase="true" src="assets/images/logos/angular/logo-nav@2x.png" width="150" height="40" title="Home" alt="Home">
+        <img *ngSwitchDefault src="assets/images/logos/angular/shield-large.svg" width="37" height="40" title="Home" alt="Home">
       </a>
-    </aio-notification>
-  </mat-toolbar-row>
-  <mat-toolbar-row>
-    <button mat-button class="hamburger" [class.no-animations]="disableAnimations" (click)="sidenav.toggle()" title="Docs menu">
-      <mat-icon svgIcon="menu"></mat-icon>
-    </button>
-    <a class="nav-link home" href="/" [ngSwitch]="showTopMenu">
-      <img *ngSwitchCase="true" src="assets/images/logos/angular/logo-nav@2x.png" width="150" height="40" title="Home" alt="Home">
-      <img *ngSwitchDefault src="assets/images/logos/angular/shield-large.svg" width="37" height="40" title="Home" alt="Home">
-    </a>
-    <aio-top-menu *ngIf="showTopMenu" [nodes]="topMenuNodes" [currentNode]="currentNodes?.TopBar"></aio-top-menu>
-    <aio-search-box class="search-container" #searchBox (onSearch)="doSearch($event)" (onFocus)="doSearch($event)"></aio-search-box>
-    <aio-theme-toggle></aio-theme-toggle>
-    <div class="toolbar-external-icons-container">
-      <a mat-icon-button href="https://twitter.com/angular" title="Twitter" aria-label="Angular on twitter">
-        <mat-icon svgIcon="logos:twitter"></mat-icon>
-      </a>
-      <a mat-icon-button href="https://github.com/angular/angular" title="GitHub" aria-label="Angular on github">
-        <mat-icon svgIcon="logos:github"></mat-icon>
-      </a>
-      <a mat-icon-button href="https://youtube.com/angular" title="YouTube" aria-label="Angular on YouTube">
-        <mat-icon svgIcon="logos:youtube"></mat-icon>
-      </a>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+      <aio-top-menu *ngIf="showTopMenu" [nodes]="topMenuNodes" [currentNode]="currentNodes?.TopBar"></aio-top-menu>
+      <aio-search-box class="search-container" #searchBox (onSearch)="doSearch($event)" (onFocus)="doSearch($event, true)"></aio-search-box>
+      <aio-theme-toggle #themeToggle></aio-theme-toggle>
+      <div #externalIcons class="toolbar-external-icons-container">
+        <a mat-icon-button href="https://twitter.com/angular" title="Twitter" aria-label="Angular on twitter">
+          <mat-icon svgIcon="logos:twitter"></mat-icon>
+        </a>
+        <a mat-icon-button href="https://github.com/angular/angular" title="GitHub" aria-label="Angular on github">
+          <mat-icon svgIcon="logos:github"></mat-icon>
+        </a>
+        <a mat-icon-button href="https://youtube.com/angular" title="YouTube" aria-label="Angular on YouTube">
+          <mat-icon svgIcon="logos:youtube"></mat-icon>
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
 
-<aio-search-results #searchResultsView *ngIf="showSearchResults" [searchResults]="searchResults | async" (resultSelected)="hideSearchResults()"></aio-search-results>
+<aio-search-results *ngIf="showSearchResults"
+  #searchResultsView
+  [searchResults]="searchResults | async"
+  (resultSelected)="hideSearchResults()"
+  (closeButtonClick)="hideSearchResults()">
+</aio-search-results>
 
-<mat-sidenav-container class="sidenav-container" [class.no-animations]="disableAnimations" [class.has-floating-toc]="hasFloatingToc" role="main">
+<mat-sidenav-container class="sidenav-container" [class.no-animations]="disableAnimations" [class.has-floating-toc]="hasFloatingToc">
 
   <mat-sidenav [ngClass]="{'collapsed': !dockSideNav}" #sidenav class="sidenav" [mode]="mode" [opened]="isOpened" (openedChange)="updateHostClasses()">
-    <aio-nav-menu *ngIf="!showTopMenu" [nodes]="topMenuNarrowNodes" [currentNode]="currentNodes?.TopBarNarrow" [isWide]="dockSideNav"></aio-nav-menu>
-    <aio-nav-menu [nodes]="sideNavNodes" [currentNode]="currentNodes?.SideNav" [isWide]="dockSideNav"></aio-nav-menu>
+    <aio-nav-menu *ngIf="!showTopMenu" [nodes]="topMenuNarrowNodes" [currentNode]="currentNodes?.TopBarNarrow" [isWide]="dockSideNav" navLabel="primary"></aio-nav-menu>
+    <aio-nav-menu [nodes]="sideNavNodes" [currentNode]="currentNodes?.SideNav" [isWide]="dockSideNav" navLabel="guides and docs"></aio-nav-menu>
 
     <div class="doc-version">
       <aio-select (change)="onDocVersionChange($event.index)" [options]="docVersions" [selected]="currentDocVersion"></aio-select>
@@ -58,7 +65,7 @@
 
   <section class="sidenav-content-container">
 
-    <main class="sidenav-content" [id]="pageId" role="main">
+    <main class="sidenav-content" [id]="pageId">
       <div id="main-content" tabindex="-1"></div>
       <aio-mode-banner [mode]="deployment.mode" [version]="versionInfo"></aio-mode-banner>
       <aio-doc-viewer [class.no-animations]="disableAnimations" [doc]="currentDocument" (docReady)="onDocReady()" (docRemoved)="onDocRemoved()" (docInserted)="onDocInserted()" (docRendered)="onDocRendered()">

@@ -22,7 +22,9 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  * Angular. Such tasks can be kicked off via {@link #runOutsideAngular} and if needed, these tasks
  * can reenter the Angular zone via {@link #run}.
  *
- * 此服务最常见的用途是在启动包含一个或多个不需要 Angular 处理的 UI 更新或错误处理的异步任务的工作时优化性能。可以通过 {@link #runOutsideAngular} 启动此类任务，如果需要，这些任务可以通过 {@link #run} 重新进入 Angular zone。
+ * 此服务最常见的用途是在启动包含一个或多个不需要 Angular 处理的 UI
+ * 更新或错误处理的异步任务的工作时优化性能。可以通过 {@link #runOutsideAngular}
+ * 启动此类任务，如果需要，这些任务可以通过 {@link #run} 重新进入 Angular zone。
  *
  * <!-- TODO: add/fix links to:
  *   - docs explaining zones and the use of zones in Angular and change-detection
@@ -118,7 +120,8 @@ export class NgZone {
    * This is a hint for Angular to do change detection, which may enqueue more microtasks.
    * For this reason this event can fire multiple times per VM Turn.
    *
-   * 在当前的 VM Turn 中没有更多微任务排队时通知。这是 Angular 进行变更检测的提示，它可能会排队更多的微任务。因此，此事件可在每次 VM 周期中触发多次。
+   * 在当前的 VM Turn 中没有更多微任务排队时通知。这是 Angular
+   * 进行变更检测的提示，它可能会排队更多的微任务。因此，此事件可在每次 VM 周期中触发多次。
    *
    */
   readonly onMicrotaskEmpty: EventEmitter<any> = new EventEmitter(false);
@@ -128,7 +131,8 @@ export class NgZone {
    * implies we are about to relinquish VM turn.
    * This event gets called just once.
    *
-   * 在最后一个 `onMicrotaskEmpty` 已运行并且没有更多微任务时通知，这意味着我们将放弃 VM 周期。该事件只会被调用一次。
+   * 在最后一个 `onMicrotaskEmpty` 已运行并且没有更多微任务时通知，这意味着我们将放弃 VM
+   * 周期。该事件只会被调用一次。
    *
    */
   readonly onStable: EventEmitter<any> = new EventEmitter(false);
@@ -175,7 +179,8 @@ export class NgZone {
   }
 
   static isInAngularZone(): boolean {
-    return Zone.current.get('isAngularZone') === true;
+    // Zone needs to be checked, because this method might be called even when NoopNgZone is used.
+    return typeof Zone !== 'undefined' && Zone.current.get('isAngularZone') === true;
   }
 
   static assertInAngularZone(): void {
@@ -199,7 +204,8 @@ export class NgZone {
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
-   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
+   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -223,7 +229,8 @@ export class NgZone {
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
-   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
+   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -265,7 +272,8 @@ export class NgZone {
    * work that
    * doesn't trigger Angular change-detection or is subject to Angular's error handling.
    *
-   * 通过 {@link #runOutsideAngular} 运行函数可让你离开 Angular 的 Zone 并执行不会触发 Angular 变更检测或受 Angular 错误处理控制的工作。
+   * 通过 {@link #runOutsideAngular} 运行函数可让你离开 Angular 的 Zone 并执行不会触发 Angular
+   * 变更检测或受 Angular 错误处理控制的工作。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * outside of the Angular zone.

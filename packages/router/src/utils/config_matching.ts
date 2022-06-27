@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Route} from '../config';
+import {Route} from '../models';
 import {defaultUrlMatcher, PRIMARY_OUTLET} from '../shared';
 import {UrlSegment, UrlSegmentGroup} from '../url_tree';
 
@@ -16,7 +16,7 @@ import {getOutlet} from './config';
 export interface MatchResult {
   matched: boolean;
   consumedSegments: UrlSegment[];
-  lastChild: number;
+  remainingSegments: UrlSegment[];
   parameters: {[k: string]: string};
   positionalParamSegments: {[k: string]: UrlSegment};
 }
@@ -24,7 +24,7 @@ export interface MatchResult {
 const noMatch: MatchResult = {
   matched: false,
   consumedSegments: [],
-  lastChild: 0,
+  remainingSegments: [],
   parameters: {},
   positionalParamSegments: {}
 };
@@ -39,7 +39,7 @@ export function match(
     return {
       matched: true,
       consumedSegments: [],
-      lastChild: 0,
+      remainingSegments: segments,
       parameters: {},
       positionalParamSegments: {}
     };
@@ -60,7 +60,7 @@ export function match(
   return {
     matched: true,
     consumedSegments: res.consumed,
-    lastChild: res.consumed.length,
+    remainingSegments: segments.slice(res.consumed.length),
     // TODO(atscott): investigate combining parameters and positionalParamSegments
     parameters,
     positionalParamSegments: res.posParams ?? {}
@@ -111,6 +111,9 @@ function addEmptyPathsToChildrenIfNeeded(
       s._sourceSegment = segmentGroup;
       if (relativeLinkResolution === 'legacy') {
         s._segmentIndexShift = segmentGroup.segments.length;
+        if (typeof ngDevMode === 'undefined' || !!ngDevMode) {
+          s._segmentIndexShiftCorrected = consumedSegments.length;
+        }
       } else {
         s._segmentIndexShift = consumedSegments.length;
       }

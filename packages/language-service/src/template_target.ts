@@ -93,7 +93,7 @@ export interface RawExpression {
  */
 export interface CallExpressionInArgContext {
   kind: TargetNodeKind.CallExpressionInArgContext;
-  node: e.Call;
+  node: e.Call|e.SafeCall;
 }
 
 /**
@@ -184,7 +184,8 @@ export function getTargetAtPosition(template: t.Node[], position: number): Templ
 
   // Given the candidate node, determine the full targeted context.
   let nodeInContext: TargetContext;
-  if (candidate instanceof e.Call && isWithin(position, candidate.argumentSpan)) {
+  if ((candidate instanceof e.Call || candidate instanceof e.SafeCall) &&
+      isWithin(position, candidate.argumentSpan)) {
     nodeInContext = {
       kind: TargetNodeKind.CallExpressionInArgContext,
       node: candidate,
@@ -335,6 +336,15 @@ class TemplateTargetVisitor implements t.Visitor {
   visitElementOrTemplate(element: t.Template|t.Element) {
     this.visitAll(element.attributes);
     this.visitAll(element.inputs);
+    // We allow the path to contain both the `t.BoundAttribute` and `t.BoundEvent` for two-way
+    // bindings but do not want the path to contain both the `t.BoundAttribute` with its
+    // children when the position is in the value span because we would then logically create a path
+    // that also contains the `PropertyWrite` from the `t.BoundEvent`. This early return condition
+    // ensures we target just `t.BoundAttribute` for this case and exclude `t.BoundEvent` children.
+    if (this.path[this.path.length - 1] !== element &&
+        !(this.path[this.path.length - 1] instanceof t.BoundAttribute)) {
+      return;
+    }
     this.visitAll(element.outputs);
     if (element instanceof t.Template) {
       this.visitAll(element.templateAttrs);
@@ -370,8 +380,10 @@ class TemplateTargetVisitor implements t.Visitor {
   }
 
   visitBoundAttribute(attribute: t.BoundAttribute) {
-    const visitor = new ExpressionVisitor(this.position);
-    visitor.visit(attribute.value, this.path);
+    if (attribute.valueSpan !== undefined) {
+      const visitor = new ExpressionVisitor(this.position);
+      visitor.visit(attribute.value, this.path);
+    }
   }
 
   visitBoundEvent(event: t.BoundEvent) {

@@ -14,14 +14,12 @@ function MyComponent_li_1_li_4_Template(rf, ctx) {
 
 function MyComponent_li_1_Template(rf, ctx) {
   if (rf & 1) {
-    $r3$.ɵɵelementStart(0, "li");
-    $r3$.ɵɵelementStart(1, "div");
+    $r3$.ɵɵelementStart(0, "li")(1, "div");
     $r3$.ɵɵtext(2);
     $r3$.ɵɵelementEnd();
     $r3$.ɵɵelementStart(3, "ul");
     $r3$.ɵɵtemplate(4, MyComponent_li_1_li_4_Template, 2, 2, "li", 0);
-    $r3$.ɵɵelementEnd();
-    $r3$.ɵɵelementEnd();
+    $r3$.ɵɵelementEnd()();
   }
   if (rf & 2) {
     const $item$ = ctx.$implicit;
@@ -50,6 +48,6 @@ MyComponent.ɵcmp = /*@__PURE__*/ $r3$.ɵɵdefineComponent({
       $r3$.ɵɵproperty("forOf", ctx.items);
     }
   },
-  directives: function () { return [ForOfDirective]; },
+  dependencies: function () { return [ForOfDirective]; },
   encapsulation: 2
 });

@@ -13,6 +13,7 @@ import {compileComponent, compileDirective} from '../render3/jit/directive';
 import {compilePipe} from '../render3/jit/pipe';
 import {makeDecorator, makePropDecorator, TypeDecorator} from '../util/decorators';
 
+import {SchemaMetadata} from './schema';
 import {ViewEncapsulation} from './view';
 
 
@@ -63,28 +64,52 @@ export interface DirectiveDecorator {
    *
    * ### Declaring directives
    *
-   * ### 声明指令
+   * In order to make a directive available to other components in your application, you should do
+   * one of the following:
+   *  - either mark the directive as [standalone](guide/standalone-components),
+   *  - or declare it in an NgModule by adding it to the `declarations` and `exports` fields.
    *
-   * Directives are [declarables](guide/glossary#declarable).
-   * They must be declared by an NgModule
-   * in order to be usable in an app.
+   * ** Marking a directive as standalone **
    *
-   * 指令是[可声明对象](guide/glossary#declarable)。
-   * 它们必须在 NgModule 中声明之后，才能用在应用中。
-   *
-   * A directive must belong to exactly one NgModule. Do not re-declare
-   * a directive imported from another module.
-   * List the directive class in the `declarations` field of an NgModule.
-   *
-   * 指令应当且只能属于一个 NgModule。不要重新声明那些从其它模块中导入的指令。
-   * 请把该指令类列在 NgModule 的 `declarations` 字段中。
+   * You can add the `standalone: true` flag to the Directive decorator metadata to declare it as
+   * [standalone](guide/standalone-components):
    *
    * ```ts
-   * declarations: [
-   *  AppComponent,
-   *  MyDirective
-   * ],
+   * @Directive({
+   *   standalone: true,
+   *   selector: 'my-directive',
+   * })
+   * class MyDirective {}
    * ```
+   *
+   * When marking a directive as standalone, please make sure that the directive is not already
+   * declared in an NgModule.
+   *
+   *
+   * ** Declaring a directive in an NgModule **
+   *
+   * Another approach is to declare a directive in an NgModule:
+   *
+   * ```ts
+   * @Directive({
+   *   selector: 'my-directive',
+   * })
+   * class MyDirective {}
+   *
+   * @NgModule({
+   *   declarations: [MyDirective, SomeComponent],
+   *   exports: [MyDirective], // making it available outside of this module
+   * })
+   * class SomeNgModule {}
+   * ```
+   *
+   * When declaring a directive in an NgModule, please make sure that:
+   *  - the directive is declared in exactly one NgModule.
+   *  - the directive is not standalone.
+   *  - you do not re-declare a directive imported from another module.
+   *  - the directive is included into the `exports` field as well if you want this directive to be
+   *    accessible for components outside of the NgModule.
+   *
    *
    * @Annotation
    */
@@ -398,6 +423,18 @@ export interface Directive {
    *
    */
   jit?: true;
+
+  /**
+   * Angular directives marked as `standalone` do not need to be declared in an NgModule. Such
+   * directives don't depend on any "intermediate context" of an NgModule (ex. configured
+   * providers).
+   *
+   * More information about standalone components, directives and pipes can be found in [this
+   * guide](guide/standalone-components).
+   *
+   * @developerPreview
+   */
+  standalone?: boolean;
 }
 
 /**
@@ -674,7 +711,7 @@ export interface Component extends Directive {
 
   /**
    * One or more animation `trigger()` calls, containing
-   * `state()` and `transition()` definitions.
+   * [`state()`](api/animations/state) and `transition()` definitions.
    * See the [Animations guide](/guide/animations) and animations API documentation.
    *
    * 一个或多个动画 `trigger()` 调用，包含一些 `state()` 和 `transition()` 定义。
@@ -750,6 +787,45 @@ export interface Component extends Directive {
    * `false`，除非通过编译器选项改写了它。
    */
   preserveWhitespaces?: boolean;
+
+  /**
+   * Angular components marked as `standalone` do not need to be declared in an NgModule. Such
+   * components directly manage their own template dependencies (components, directives and pipes
+   * used in a template) via the imports property.
+   *
+   * More information about standalone components, directives and pipes can be found in [this
+   * guide](guide/standalone-components).
+   *
+   * @developerPreview
+   */
+  standalone?: boolean;
+
+  /**
+   * The imports property specifies the standalone component's template dependencies — those
+   * directives, components, and pipes that can be used within its template. Standalone components
+   * can import other standalone components, directives and pipes as well as existing NgModules.
+   *
+   * This property is only available for standalone components - specifying it for components
+   * declared in an NgModule generates a compilation error.
+   *
+   * More information about standalone components, directives and pipes can be found in [this
+   * guide](guide/standalone-components).
+   *
+   * @developerPreview
+   */
+  imports?: (Type<any>|any[])[];
+
+  /**
+   * The set of schemas that declare elements to be allowed in a standalone component. Elements and
+   * properties that are neither Angular components nor directives must be declared in a schema.
+   *
+   * This property is only available for standalone components - specifying it for components
+   * declared in an NgModule generates a compilation error.
+   *
+   * More information about standalone components, directives and pipes can be found in [this
+   * guide](guide/standalone-components).
+   */
+  schemas?: SchemaMetadata[];
 }
 
 /**
@@ -850,6 +926,15 @@ export interface Pipe {
    * 即使其参数没有发生任何变化。
    */
   pure?: boolean;
+
+  /**
+   * Angular pipes marked as `standalone` do not need to be declared in an NgModule. Such
+   * pipes don't depend on any "intermediate context" of an NgModule (ex. configured providers).
+   *
+   * More information about standalone components, directives and pipes can be found in [this
+   * guide](guide/standalone-components).
+   */
+  standalone?: boolean;
 }
 
 /**
@@ -1161,7 +1246,7 @@ export interface HostListener {
  *   @HostListener('click', ['$event.target'])
  *   onClick(btn) {
  *     console.log('button', btn, 'number of clicks:', this.numberOfClicks++);
- *  }
+ *   }
  * }
  *
  * @Component({
@@ -1172,19 +1257,20 @@ export interface HostListener {
  *
  * ```
  *
- * The following example registers another DOM event handler that listens for key-press events.
+ * The following example registers another DOM event handler that listens for `Enter` key-press
+ * events on the global `window`.
  * ``` ts
  * import { HostListener, Component } from "@angular/core";
  *
  * @Component({
  *   selector: 'app',
- *   template: `<h1>Hello, you have pressed keys {{counter}} number of times!</h1> Press any key to
- * increment the counter.
+ *   template: `<h1>Hello, you have pressed enter {{counter}} number of times!</h1> Press enter key
+ * to increment the counter.
  *   <button (click)="resetCounter()">Reset Counter</button>`
  * })
  * class AppComponent {
  *   counter = 0;
- *   @HostListener('window:keydown', ['$event'])
+ *   @HostListener('window:keydown.enter', ['$event'])
  *   handleKeyDown(event: KeyboardEvent) {
  *     this.counter++;
  *   }
@@ -1193,6 +1279,14 @@ export interface HostListener {
  *   }
  * }
  * ```
+ * The list of valid key names for `keydown` and `keyup` events
+ * can be found here:
+ * https://www.w3.org/TR/DOM-Level-3-Events-key/#named-key-attribute-values
+ *
+ * Note that keys can also be combined, e.g. `@HostListener('keydown.shift.a')`.
+ *
+ * The global target names that can be used to prefix an event name are
+ * `document:`, `window:` and `body:`.
  *
  * @Annotation
  * @publicApi

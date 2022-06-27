@@ -9,6 +9,10 @@ ts_library(
     ]),
     deps = [
         "//packages/compiler",
+        "//packages/compiler-cli/src/ngtsc/annotations/common",
+        "//packages/compiler-cli/src/ngtsc/annotations/component",
+        "//packages/compiler-cli/src/ngtsc/annotations/directive",
+        "//packages/compiler-cli/src/ngtsc/annotations/ng_module",
         "//packages/compiler-cli/src/ngtsc/cycles",
         "//packages/compiler-cli/src/ngtsc/diagnostics",
         "//packages/compiler-cli/src/ngtsc/file_system",
