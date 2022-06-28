@@ -48,7 +48,7 @@ const PH_REGEXP = /�(\/?[#*]\d+):?\d*�/gi;
  *
  * Angular Dart 介绍了 &ngsp;作为不可移动空间的占位符，请参阅：
  * <https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32>在
- * Angular Dart &ngsp; 中被转换为 0xE500 PUA （私人使用区域） unicode
+ * Angular Dart &ngsp; 中被转换为 0xE500 PUA（私人使用区域）unicode
  * 字符，后来被空格替换。我们在这里重新实现了同一个想法，因为翻译可能包含这个特殊字符。
  *
  */
@@ -90,7 +90,7 @@ function replaceNgsp(value: string): string {
  * @param subTemplateIndex Index into the sub template of message translation. (ie in case of
  *     `ngIf`) (-1 otherwise)
  *
- * 对消息翻译的子模板的索引。 （即在 `ngIf` 的情况下）（否则为-1）
+ * 对消息翻译的子模板的索引。（即在 `ngIf` 的情况下）（否则为-1）
  *
  */
 export function i18nStartFirstCreatePass(
@@ -201,7 +201,7 @@ export function i18nStartFirstCreatePass(
  *
  * @param isICU true if a `Comment` node for ICU (instead of `Text`) node should be created.
  *
- * 如果要创建 ICU 的 `Comment` 节点（而不是 `Text` ）节点，则为 true 。
+ * 如果要创建 ICU 的 `Comment` 节点（而不是 `Text`）节点，则为 true 。
  *
  */
 function createTNodeAndAddOpCode(
@@ -478,7 +478,7 @@ function countBindings(opCodes: I18nUpdateOpCodes): number {
  * 每个索引都表示位掩码上的单个位。因为 bit-mask 只有 32 位，所以我们让第 32 位共享所有高于 32
  * 的绑定的所有掩码。由于很少有超过 32
  * 的绑定，因此很少会被命中。遇到这种极端情况的缺点是我们将比必要的更频繁地执行绑定代码。
- * （绩效处罚）
+ *（绩效处罚）
  *
  */
 function toMaskBit(bindingIndex: number): number {
@@ -584,7 +584,7 @@ export function getTranslationForTemplate(message: string, subTemplateIndex: num
  *
  * - `tView.data[anchorIdx]` points to the `TIcuContainerNode` if ICU is root (`null` otherwise)
  *
- *   如果 ICU 是根，则 `tView.data[anchorIdx]` 指向 `TIcuContainerNode` （否则为 `null` ）
+ *   如果 ICU 是根，则 `tView.data[anchorIdx]` 指向 `TIcuContainerNode`（否则为 `null`）
  *
  */
 export function icuStart(
@@ -686,7 +686,7 @@ export function parseICUBlock(pattern: string): IcuExpression {
  *
  * @param pattern (sub)Pattern to be broken.
  *
- * （子）要打破的模式。
+ *（子）要打破的模式。
  *
  * @returns
  *

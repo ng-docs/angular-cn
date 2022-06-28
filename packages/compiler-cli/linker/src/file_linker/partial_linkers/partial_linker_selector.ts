@@ -50,7 +50,7 @@ export interface LinkerRange<TExpression> {
  * internally based on the `version` property of the declaration.)
  *
  * 部分链接器的每个集合都将包含一个版本范围，该范围将与部分声明的 `minVersion` 匹配。
- * （此外，部分链接器可以根据声明的 `version` 属性在内部修改其行为。）
+ *（此外，部分链接器可以根据声明的 `version` 属性在内部修改其行为。）
  *
  * Versions should be sorted in ascending order. The most recent partial-linker will be used as the
  * fallback linker if none of the other version ranges match. For example:
@@ -143,7 +143,7 @@ export function createLinkerMap<TStatement, TExpression>(
  * boundaries.)
  *
  * 请注意，任何“预发布”版本都会从范围中删除。因此，如果 `minVersion` 是 `11.1.0-next.1`
- * ，那么这将匹配 `11.1.0-next.2` 以及 `12.0.0-next.1` 。 （这与标准 semver
+ * ，那么这将匹配 `11.1.0-next.2` 以及 `12.0.0-next.1` 。（这与标准 semver
  * 范围检查不同，其中预发布版本不会跨越完整版本边界。）
  *
  */

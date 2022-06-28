@@ -14,7 +14,7 @@
  *
  * @see `@NgModule`, `CUSTOM_ELEMENTS_SCHEMA`, `NO_ERRORS_SCHEMA`
  *
- * `@NgModule` ， `CUSTOM_ELEMENTS_SCHEMA` ， `NO_ERRORS_SCHEMA`
+ * `@NgModule` ，`CUSTOM_ELEMENTS_SCHEMA` ，`NO_ERRORS_SCHEMA`
  *
  * @param name The name of a defined schema.
  *

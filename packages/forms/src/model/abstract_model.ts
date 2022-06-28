@@ -320,7 +320,7 @@ export type ɵValue<T extends AbstractControl|undefined> =
  * You may also wish to use {@link ɵValue}, which will have `undefined` in group keys (which can be
  * disabled).
  *
- * 你可能还希望使用 {@link ɵValue} ，它在组键中将有 `undefined` （可以禁用）。
+ * 你可能还希望使用 {@link ɵValue} ，它在组键中将有 `undefined`（可以禁用）。
  *
  * @usageNotes
  *
@@ -344,12 +344,9 @@ export type ɵValue<T extends AbstractControl|undefined> =
  *
  * The resulting type is `{address: string}`. (Note the absence of `undefined`.)
  *
- * 结果类型是 `{address: string}` 。 （请注意不存在 `undefined` 。）
+ * 结果类型是 `{address: string}` 。（请注意不存在 `undefined` 。）
  *
- *  \*\*Internal: not for public use.
- *
- * \*\*内部：不供公众使用。
- *
+ *  **Internal: not for public use.**
  */
 export type ɵRawValue<T extends AbstractControl|undefined> = T extends AbstractControl<any, any>?
     (T['setValue'] extends((v: infer R) => void) ? R : never) :
@@ -442,7 +439,7 @@ export type ɵGetProperty<T, K> =
 /**
  * This is the base class for `FormControl`, `FormGroup`, and `FormArray`.
  *
- * 这是 `FormControl` 、 `FormGroup` 和 `FormArray` 的基类。
+ * 这是 `FormControl`、`FormGroup` 和 `FormArray` 的基类。
  *
  * It provides some of the shared behavior that all controls and groups of controls have, like
  * running validators, calculating status, and resetting state. It also defines the properties
@@ -450,7 +447,7 @@ export type ɵGetProperty<T, K> =
  * instantiated directly.
  *
  * 它提供了所有控件和控件组都具有的一些共享行为，例如运行验证器、计算状态和重置状态。它还定义了在所有子类之间共享的属性，例如
- * `value` 、 `valid` 和 `dirty` 。它不应该直接实例化。
+ * `value`、`valid` 和 `dirty` 。它不应该直接实例化。
  *
  * The first type parameter TValue represents the value type of the control (`control.value`).
  * The optional type parameter TRawValue  represents the raw value type (`control.getRawValue()`).
@@ -532,7 +529,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * - while calling the setter on the `validator` field (e.g. `control.validator = validatorFn`)
    *
-   *   在调用 `validator` 字段上的设置器时（例如 `control.validator = validatorFn` ）
+   *   在调用 `validator` 字段上的设置器时（例如 `control.validator = validatorFn`）
    *
    * @internal
    */
@@ -554,7 +551,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * - while calling the setter on the `asyncValidator` field (e.g. `control.asyncValidator =
    *   asyncValidatorFn`)
    *
-   *   在调用 `asyncValidator` 字段上的设置器时（例如 `control.asyncValidator = asyncValidatorFn` ）
+   *   在调用 `asyncValidator` 字段上的设置器时（例如 `control.asyncValidator = asyncValidatorFn`）
    *
    * @internal
    */
@@ -673,8 +670,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当其 `status` 为 `VALID` 时，控件是 `valid` 的。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    * @returns
    *
    * True if the control has passed all of its validation tests,
@@ -692,8 +689,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当 `status` 为 `INVALID` 时，控件 `invalid` 。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    * @returns
    *
    * True if this control has failed one or more of its validation checks,
@@ -711,8 +708,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当 `status` 为 `PENDING` 时，控件处于 `pending` 状态。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    * @returns
    *
    * True if this control is in the process of conducting a validation check,
@@ -736,8 +733,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 禁用的控件免于验证检查，并且不包含在其祖先控件的汇总值中。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    * @returns
    *
    * True if the control is disabled, false otherwise.
@@ -761,8 +758,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 如果控件具有“DISABLED”以外的任何状态，则为 true ，如果状态是“DISABLED”，则为 false 。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    */
   get enabled(): boolean {
     return this.status !== DISABLED;
@@ -859,8 +856,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 每次重新计算控件的验证 `status` 时都会发出事件的多播 observable。
    *
    * @see `FormControlStatus`
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    */
   public readonly statusChanges!: Observable<FormControlStatus>;
 
@@ -1246,8 +1243,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 控件在执行异步验证时处于挂起状态。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see { @link AbstractControl.status}
+   *
    * @param opts Configuration options that determine how the control propagates changes and
    * emits events after marking is applied.
    *
@@ -1263,7 +1260,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   observable emits an event with the latest status the control is marked pending.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或未提供（默认）时， `statusChanges`
+   *   `emitEvent` ：当为 true 或未提供（默认）时，`statusChanges`
    * 可观察到的会发出一个事件，该事件具有该控件被标记为挂起的最新状态。当 false 时，不会发出事件。
    *
    */
@@ -1289,8 +1286,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 如果控件有子项，则所有子项也被禁用。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @param opts Configuration options that determine how the control propagates
    * changes and emits events after the control is disabled.
    *
@@ -1307,7 +1303,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   observables emit events with the latest status and value when the control is disabled.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象在禁用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -1343,8 +1339,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 默认情况下，如果控件有子项，则启用所有子项。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @param opts Configure options that control how the control propagates changes and
    * emits events when marked as untouched
    *
@@ -1361,7 +1356,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   observables emit events with the latest status and value when the control is enabled.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象在启用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -1464,7 +1459,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   observables emit events with the latest status and value when the control is updated.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在控件更新时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -1570,7 +1565,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * This signature for get supports strings and `const` arrays (`.get(['foo', 'bar'] as const)`).
    *
-   * get 的此签名支持字符串和 `const` 数组（ `.get(['foo', 'bar'] as const)` ）。
+   * get 的此签名支持字符串和 `const` 数组（`.get(['foo', 'bar'] as const)`）。
    *
    */
   get<P extends string|(readonly(string|number)[])>(path: P):

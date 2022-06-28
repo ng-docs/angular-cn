@@ -40,7 +40,7 @@ This tutorial shows you how to build a form from scratch, using a simplified sam
 
 Run or download the example app: <live-example></live-example>.
 
-  运行或下载范例应用：<live-example></live-example>。
+运行或下载范例应用：<live-example></live-example>。
 
 </div>
 
@@ -110,11 +110,11 @@ Template-driven forms rely on directives defined in the `FormsModule`.
 | :--------- | :------ |
 | 指令 | 详细信息 |
 | `NgModel` | Reconciles value changes in the attached form element with changes in the data model, allowing you to respond to user input with input validation and error handling. |
-| `NgModel` | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。 |
+| `NgModel` | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。|
 | `NgForm` | Creates a top-level `FormGroup` instance and binds it to a `<form>` element to track aggregated form value and validation status. As soon as you import `FormsModule`, this directive becomes active by default on all `<form>` tags. You don't need to add a special selector. |
-| `NgForm` | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。 |
+| `NgForm` | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。|
 | `NgModelGroup` | Creates and binds a `FormGroup` instance to a DOM element. |
-| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。 |
+| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。|
 
 ### The sample application
 
@@ -282,7 +282,7 @@ You can recreate the sample application from the code provided here, or you can 
 1. The sample form uses some style classes from [Twitter Bootstrap](https://getbootstrap.com/css): `container`, `form-group`, `form-control`, and `btn`.
    To use these styles, the application's style sheet imports the library.
 
-   范例表单使用的是 [Twitter Bootstrap 中的](https://getbootstrap.com/css)一些样式类： `container`，`form-group`，`form-control` 和 `btn`。要使用这些样式，就要在该应用的样式表中导入该库。
+   范例表单使用的是 [Twitter Bootstrap 中的](https://getbootstrap.com/css)一些样式类：`container`，`form-group`，`form-control` 和 `btn`。要使用这些样式，就要在该应用的样式表中导入该库。
 
    <code-example header="src/styles.css" path="forms/src/styles.1.css"></code-example>
 
@@ -431,7 +431,7 @@ Any unique value will do, but using a descriptive name is helpful.
      This is used by the `<label>` element's `for` attribute to match the label to its input control.
      This is a [standard HTML feature](https://developer.mozilla.org/docs/Web/HTML/Element/label).
 
-     注意，每个 `<input>` 元素都有一个 `id` 属性。`<label>` 元素的 `for` 属性用它来把标签匹配到输入控件。这是一个[标准的 HTML 特性](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)。
+     注意，每个 `<input>` 元素都有一个 `id` 属性。`<label>` 元素的 `for` 属性用它来把标签匹配到输入控件。这是一个[标准的 HTML 特性](https://developer.mozilla.org/docs/Web/HTML/Element/label)。
 
    * Each `<input>` element also has the required `name` property that Angular uses to register the control with the form.
 
@@ -469,11 +469,11 @@ Angular sets special CSS classes on the control element to reflect the state, as
 | :----- | :------------ | :------------- |
 | 状态 | 为 true 时的类名 | 为 false 时的类名 |
 | The control has been visited. | `ng-touched` | `ng-untouched` |
-| 该控件已被访问过。 | `ng-touched` | `ng-untouched` |
+| 该控件已被访问过。| `ng-touched` | `ng-untouched` |
 | The control's value has changed. | `ng-dirty` | `ng-pristine` |
-| 控件的值已被更改。 | `ng-dirty` | `ng-pristine` |
+| 控件的值已被更改。| `ng-dirty` | `ng-pristine` |
 | The control's value is valid. | `ng-valid` | `ng-invalid` |
-| 控件的值是有效的。 | `ng-valid` | `ng-invalid` |
+| 控件的值是有效的。| `ng-valid` | `ng-invalid` |
 
 Additionally, Angular applies the `ng-submitted` class to `<form>` elements upon submission.
 This class does *not* apply to inner controls.
@@ -614,7 +614,7 @@ To define and show an error message when appropriate, take the following steps.
    The template reference variable (`#name`) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property.
    This property tells Angular how to link a reference variable to a directive.
 
-   模板引用变量（ `#name` ）设置为 `"ngModel"`，因为 "ngModel" 是 [`NgModel.exportAs`](api/core/Directive#exportAs) 属性的值。这个属性告诉 Angular 如何把引用变量和指令链接起来。
+   模板引用变量（`#name`）设置为 `"ngModel"`，因为 "ngModel" 是 [`NgModel.exportAs`](api/core/Directive#exportAs) 属性的值。这个属性告诉 Angular 如何把引用变量和指令链接起来。
 
    </div>
 
@@ -787,7 +787,7 @@ To show a response to form submission, you can hide the data entry area and disp
 
    This `<div>`, which shows a read-only hero with interpolation bindings, appears only while the component is in the submitted state.
 
-   这个 `<div>` （用于显示带插值绑定的只读英雄）只在组件处于已提交状态时才会出现。
+   这个 `<div>`（用于显示带插值绑定的只读英雄）只在组件处于已提交状态时才会出现。
 
    The alternative display includes an *Edit* button whose click event is bound to an expression that clears the `submitted` flag.
 

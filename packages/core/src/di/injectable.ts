@@ -118,7 +118,7 @@ export interface Injectable {
    * - 'any' : Provides a unique instance in each lazy loaded module while all eagerly loaded
    *   modules share one instance.
    *
-   *   'any' ：在每个延迟加载的模块中提供一个唯一实例，而所有热切加载的模块共享一个实例。
+   *   'any' ：在每个惰性加载的模块中提供一个唯一实例，而所有热切加载的模块共享一个实例。
    *
    *   ```
    *   'any'：在每个惰性加载的模块中提供一个唯一的实例，而所有急性加载的模块共享一个实例。

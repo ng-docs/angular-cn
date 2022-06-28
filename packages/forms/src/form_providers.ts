@@ -76,7 +76,7 @@ export class ReactiveFormsModule {
    * * `warnOnNgModelWithFormControl` Configures when to emit a warning when an `ngModel`
    *   binding is used with reactive form directives.
    *
-   *     `warnOnNgModelWithFormControl` 配置了当 `ngModel`
+   *   `warnOnNgModelWithFormControl` 配置了当 `ngModel`
    * 绑定与响应式表单指令一起使用时，发出警告的时机。
    *
    */

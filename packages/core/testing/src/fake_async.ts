@@ -57,8 +57,7 @@ export function resetFakeAsyncZone(): void {
  *
  * ### 例子
  *
- * {
- * @example core/testing/ts/fake_async.ts region='basic'}
+ * {@example core/testing/ts/fake_async.ts region='basic'}
  * @returns The function wrapped to be executed in the `fakeAsync` zone.
  * Any arguments passed when calling this returned function will be passed through to the `fn`
  * function in the parameters when it is called.
@@ -116,9 +115,7 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  *
  * ### 例子
  *
- * {
- *
- * @example core/testing/ts/fake_async.ts region='basic'}
+ * {@example core/testing/ts/fake_async.ts region='basic'}
  *
  * The following example includes a nested timeout (new macroTask), and
  * the `tickOptions` parameter is allowed to default. In this case,

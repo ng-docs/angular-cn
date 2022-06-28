@@ -27,9 +27,9 @@ import {joinWithSlash, normalizeQueryParams} from './util';
  * 应用程序应使用 `Router` 或 `Location` 服务与应用程序的路由状态进行交互。
  *
  * For instance, `HashLocationStrategy` produces URLs like
- * <code class="no-auto-link"><http://example.com#/foo></code>,
+ * <code class="no-auto-link">http://example.com#/foo</code>,
  * and `PathLocationStrategy` produces
- * <code class="no-auto-link"><http://example.com/foo></code> as an equivalent URL.
+ * <code class="no-auto-link">http://example.com/foo</code> as an equivalent URL.
  *
  * 比如，`HashLocationStrategy` 会处理像 <code class="no-auto-link"><http://example.com#/foo></code>
  * 这样的 URL，而 `PathLocationStrategy` 会处理像 <code
@@ -83,17 +83,15 @@ export function provideLocationStrategy() {
  * 框架可以在应用中的任何位置提供依赖项。
  *
  * ```typescript
- * import {Component, NgModule} from '
- * ```
+ * import {Component, NgModule} from '@angular/core';
+ * import {APP_BASE_HREF} from '@angular/common';
  *
- * @angular /core';
- * import {APP_BASE_HREF} from '
- * @angular /common';
  * @NgModule ({
  *   providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
  * })
  * class AppModule {}
  * ```
+ *
  * @publicApi
  */
 export const APP_BASE_HREF = new InjectionToken<string>('appBaseHref');

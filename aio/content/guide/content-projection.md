@@ -10,7 +10,7 @@ This topic describes how to use content projection to create flexible, reusable 
 
 To view or download the example code used in this topic, see the <live-example></live-example>.
 
-要查看或下载本主题中用到的示例代码，请参见<live-example></live-example> 。
+要查看或下载本主题中用到的示例代码，请参见<live-example></live-example>。
 
 </div>
 
@@ -27,11 +27,11 @@ The following sections describe common implementations of content projection in 
 | :----------------- | :------ |
 | 内容投影 | 详情 |
 | [Single-slot content projection](#single-slot) | With this type of content projection, a component accepts content from a single source. |
-| [单槽内容投影](#single-slot) | 使用这种类型的内容投影，组件可以从单一来源接受内容。 |
+| [单槽内容投影](#single-slot) | 使用这种类型的内容投影，组件可以从单一来源接受内容。|
 | [Multi-slot content projection](#multi-slot) | In this scenario, a component accepts content from multiple sources. |
-| [多槽内容投影](#multi-slot) | 在这种情况下，组件可以从多个来源接受内容。 |
+| [多槽内容投影](#multi-slot) | 在这种情况下，组件可以从多个来源接受内容。|
 | [Conditional content projection](#conditional) | Components that use conditional content projection render content only when specific conditions are met. |
-| [条件内容投影](#conditional) | 使用条件内容投影的组件仅在满足特定条件时才渲染内容。 |
+| [条件内容投影](#conditional) | 使用条件内容投影的组件仅在满足特定条件时才渲染内容。|
 
 <a id="single-slot"></a>
 
@@ -50,7 +50,7 @@ To create a component that uses single-slot content projection:
 
 1. [Create a component](guide/component-overview#creating-a-component).
 
-   [创建一个组件](guide/component-overview)。
+   [创建一个组件](guide/component-overview#creating-a-component)。
 
 1. In the template for your component, add an `<ng-content>` element where you want the projected content to appear.
 
@@ -107,7 +107,7 @@ To create a component that uses multi-slot content projection:
 1. Add a `select` attribute to the `<ng-content>` elements.
    Angular supports [selectors](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) for any combination of tag name, attribute, CSS class, and the `:not` pseudo-class.
 
-   将 `select` 属性添加到 `<ng-content>` 元素。 Angular 使用的[选择器](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors)支持标签名、属性、CSS 类和 `:not` 伪类的任意组合。
+   将 `select` 属性添加到 `<ng-content>` 元素上。Angular 使用的[选择器](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors)支持标签名、属性、CSS 类和 `:not` 伪类的任意组合。
 
    For example, the following component uses two  `<ng-content>` elements.
 
@@ -266,7 +266,7 @@ This example uses an `<ng-container>` attribute to simulate projecting a compone
 
 The `ng-container` element is a logical construct that is used to group other DOM elements; however, the `ng-container` itself is not rendered in the DOM tree.
 
-`ng-container` 元素是一个逻辑结构，可用于对其他 DOM 元素进行分组；但是，`ng-container` 本身未在 DOM 树中渲染。
+`ng-container` 元素是一个逻辑结构，可用于对其他 DOM 元素进行分组；但是，`ng-container` 本身不会在 DOM 树中渲染。
 
 </div>
 

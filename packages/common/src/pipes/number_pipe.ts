@@ -25,6 +25,7 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * 根据数字选项和区域设置规则格式化值。区域设置确定组的大小和分隔符、小数点字符和其他特定于区域设置的配置。
  *
  * @see `formatNumber()`
+ *
  * @usageNotes
  *
  * ### digitsInfo
@@ -153,6 +154,7 @@ export class DecimalPipe implements PipeTransform {
  * 将数字转换为百分比字符串，根据确定组大小和分隔符、小数点字符和其他特定于区域设置的配置的区域设置规则进行格式化。
  *
  * @see `formatPercent()`
+ *
  * @usageNotes
  *
  * The following code shows how the pipe transforms numbers
@@ -231,9 +233,7 @@ export class PercentPipe implements PipeTransform {
  *
  * 将数字转换为货币字符串，根据确定组大小和分隔符、小数点字符和其他特定于区域设置的配置的区域设置规则进行格式化。
  *
- * {
- *
- * @a currency-code-deprecation}
+ * {@a currency-code-deprecation}
  * <div class="alert is-helpful">
  *
  * **Deprecation notice:**
@@ -295,7 +295,7 @@ export class CurrencyPipe implements PipeTransform {
    * such as `USD` for the US dollar and `EUR` for the euro. The default currency code can be
    * configured using the `DEFAULT_CURRENCY_CODE` injection token.
    *
-   * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)货币代码，例如 `USD` 代表美元， `EUR`
+   * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)货币代码，例如 `USD` 代表美元，`EUR`
    * 代表欧元。可以用 `DEFAULT_CURRENCY_CODE` 注入令牌配置默认货币代码。
    *
    * @param display The format for the currency indicator. One of the following:
@@ -304,11 +304,11 @@ export class CurrencyPipe implements PipeTransform {
    *
    * - `code`: Show the code (such as `USD`).
    *
-   *   `code` ：显示代码（例如 `USD` ）。
+   *   `code` ：显示代码（例如 `USD`）。
    *
    * - `symbol`(default): Show the symbol (such as `$`).
    *
-   *   `symbol` （默认）：显示符号（例如 `$` ）。
+   *   `symbol`（默认）：显示符号（例如 `$`）。
    *
    * - `symbol-narrow`: Use the narrow symbol for locales that have two symbols for their
    *   currency.
@@ -325,7 +325,7 @@ export class CurrencyPipe implements PipeTransform {
    *
    * - Boolean (marked deprecated in v5): `true` for symbol and false for `code`.
    *
-   *   布尔值（在 v5 中标记为已弃用）： symbol 为 `true` ， `code` 为 false 。
+   *   布尔值（在 v5 中标记为已弃用）： symbol 为 `true` ，`code` 为 false 。
    *
    * @param digitsInfo Decimal representation options, specified by a string
    * in the following format:<br>

@@ -18,7 +18,7 @@ import {ERROR_DETAILS_PAGE_BASE_URL} from './error_details_base_url';
  * angular.io. This extra annotation is needed to avoid introducing a separate set to store
  * error codes which have guides, which might leak into runtime code.
  *
- * 注：减号表示特定代码在 angular.io
+ * 注意：减号表示特定代码在 angular.io
  * 上有详细指南。需要这个额外的注解，以避免引入一个单独的集来存储具有指南的错误代码，这可能会泄漏到运行时代码中。
  *
  * Full list of available error guides can be found at <https://angular.io/errors>.
@@ -101,7 +101,7 @@ export const enum RuntimeErrorCode {
  * `message` argument becomes `false`, thus we account for it in the typings and the runtime logic.
  *
  * 注意： `message` 参数在开发模式下（定义 `ngDevMode`
- * 时）包含作为字符串的描述性错误消息。在生产模式下（在 tree-shaking 通过之后）， `message` 参数变为
+ * 时）包含作为字符串的描述性错误消息。在生产模式下（在 tree-shaking 通过之后），`message` 参数变为
  * `false` ，因此我们在分型和运行时逻辑中考虑了它。
  *
  */

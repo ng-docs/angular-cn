@@ -20,7 +20,7 @@ import {FLAGS, LView, LViewFlags} from './view';
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
- * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ * `RNode`、`LView`、`LContainer` 的包装值
  *
  */
 export function isLView(value: RNode|LView|LContainer|{}|null): value is LView {
@@ -34,7 +34,7 @@ export function isLView(value: RNode|LView|LContainer|{}|null): value is LView {
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
- * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ * `RNode`、`LView`、`LContainer` 的包装值
  *
  */
 export function isLContainer(value: RNode|LView|LContainer|{}|null): value is LContainer {

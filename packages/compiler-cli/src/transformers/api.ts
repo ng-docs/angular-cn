@@ -213,7 +213,7 @@ export interface Program {
    *
    * Angular structural information is required to produce the program.
    *
-   * 生成程序需要角度结构信息。
+   * 生成程序需要 Angular 结构信息。
    *
    */
   getTsProgram(): ts.Program;
@@ -266,7 +266,7 @@ export interface Program {
    *
    * Angular structural information is required to produce these diagnostics.
    *
-   * 生成这些诊断需要角度结构信息。
+   * 生成这些诊断需要 Angular 结构信息。
    *
    */
   getNgStructuralDiagnostics(cancellationToken?: ts.CancellationToken):
@@ -290,7 +290,7 @@ export interface Program {
    *
    * Angular structural information is required to produce these diagnostics.
    *
-   * 生成这些诊断需要角度结构信息。
+   * 生成这些诊断需要 Angular 结构信息。
    *
    */
   getNgSemanticDiagnostics(fileName?: string, cancellationToken?: ts.CancellationToken):
@@ -304,7 +304,7 @@ export interface Program {
    *
    * 异步加载 Angular 结构信息。如果不调用此方法，则会同步加载 Angular 结构信息，包括引用的 HTML 和
    * CSS 文件。如果提供的 Angular 编译器主机从 `loadResource()` 返回一个
-   * Promise，则将生成诊断错误消息，或者， `getTsProgram()` 或 `emit` 来抛出。
+   * Promise，则将生成诊断错误消息，或者，`getTsProgram()` 或 `emit` 来抛出。
    *
    */
   loadNgStructureAsync(): Promise<void>;

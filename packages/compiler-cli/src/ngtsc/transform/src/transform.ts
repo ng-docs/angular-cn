@@ -223,7 +223,7 @@ class IvyTransformationVisitor extends Visitor {
    * This will remove decorators from class elements (getters, setters, properties, methods) as well
    * as parameters of constructors.
    *
-   * 这将从类元素（ getter、setter、属性、方法）以及构造函数的参数中删除装饰器。
+   * 这将从类元素（getter、setter、属性、方法）以及构造函数的参数中删除装饰器。
    *
    */
   private _stripAngularDecorators<T extends ts.Node>(node: T): T {

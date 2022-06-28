@@ -127,7 +127,7 @@ export type ResolveData = {
  * or
  * `() => import('...').then(mod => mod.ROUTES)`
  *
- * 为解析延迟加载的路由集合而调用的函数。必须是以下形式的箭头函数： `() => import('...').then(mod =>
+ * 为解析惰性加载的路由集合而调用的函数。必须是以下形式的箭头函数： `() => import('...').then(mod =>
  * mod.MODULE)` 或 `() => import('...').then(mod => mod.ROUTES)`
  *
  * For example:
@@ -473,20 +473,20 @@ export type RunGuardsAndResolvers =
  *
  * ### Lazy Loading
  *
- * ### 延迟加载
+ * ### 惰性加载
  *
  * Lazy loading speeds up application load time by splitting the application
  * into multiple bundles and loading them on demand.
  * To use lazy loading, provide the `loadChildren` property in the `Route` object,
  * instead of the `children` property.
  *
- * 延迟加载通过将应用程序拆分为多个包并按需加载它们来加快应用程序加载时间。要使用延迟加载，请在
+ * 惰性加载通过将应用程序拆分为多个包并按需加载它们来加快应用程序加载时间。要使用惰性加载，请在
  * `Route` 对象中提供 `loadChildren` 属性，而不是 `children` 属性。
  *
  * Given the following example route, the router will lazy load
  * the associated module on demand using the browser native import system.
  *
- * 对于以下示例路由，路由器将使用浏览器本机导入系统按需延迟加载关联的模块。
+ * 对于以下示例路由，路由器将使用浏览器本机导入系统按需惰性加载关联的模块。
  *
  * ```
  * [{
@@ -569,7 +569,7 @@ export interface Route {
   /**
    * An object specifying a lazy-loaded component.
    *
-   * 指定延迟加载组件的对象。
+   * 指定惰性加载组件的对象。
    *
    */
   loadComponent?: () => Type<unknown>| Observable<Type<unknown>>| Promise<Type<unknown>>;
@@ -673,7 +673,7 @@ export interface Route {
   /**
    * An object specifying lazy-loaded child routes.
    *
-   * 指定延迟加载的子路由的对象。
+   * 指定惰性加载的子路由的对象。
    *
    */
   loadChildren?: LoadChildren;
@@ -708,7 +708,7 @@ export interface Route {
    *
    * `Router` 将为此 `Route` 创建一个新的 `EnvironmentInjector` ，并将其用于此 `Route` 及其
    * `children` 。如果此路由还有一个返回 `NgModuleRef` 的 `loadChildren`
-   * 函数，则此注入器将被用作延迟加载模块的父级。
+   * 函数，则此注入器将被用作惰性加载模块的父级。
    *
    */
   providers?: Array<Provider|ImportedNgModuleProviders>;
@@ -770,7 +770,6 @@ export interface LoadedRouterConfig {
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanActivateTeam implements CanActivate {
@@ -860,7 +859,6 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanActivateTeam implements CanActivateChild {
@@ -969,8 +967,6 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  *
  * ```
  *
- * ```
- *
  * @Injectable ()
  * class CanDeactivateTeam implements CanDeactivate<TeamComponent> {
  *   constructor(private permissions: Permissions, private currentUser: UserToken) {}
@@ -1052,8 +1048,6 @@ export type CanDeactivateFn<T> =
  * needed to activate the requested route.
  *
  * 以下示例实现了一个 `resolve()` 方法，该方法会检索激活所请求的路由所需的数据。
- *
- * ```
  *
  * ```
  *
@@ -1196,7 +1190,6 @@ export interface Resolve<T> {
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanLoadTeamSection implements CanLoad {

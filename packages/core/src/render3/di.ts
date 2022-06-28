@@ -54,8 +54,6 @@ import {stringifyForError} from './util/stringify_utils';
  *
  * ```
  *
- * ```
- *
  * @Injectable ()
  * class MyService {
  *   constructor(public value: String) {}
@@ -348,8 +346,6 @@ export function diPublicInInjector(
  *
  * ```
  *
- * ```
- *
  * @Component (...)
  * class MyComponent {
  *   constructor(
@@ -497,7 +493,7 @@ function lookupTokenUsingModuleInjector<T>(
  * filter. `-1` is reserved for injecting `Injector` (implemented by `NodeInjector`)
  *
  * 此函数使用包含布隆过滤器的 id 的 `__NG_ELEMENT_ID__` 来修补 `token` 。 `-1` 保留用于注入
- * `Injector` （由 `NodeInjector` 实现）
+ * `Injector`（由 `NodeInjector` 实现）
  *
  * @param tNode The Node where the search for the injector should start
  *

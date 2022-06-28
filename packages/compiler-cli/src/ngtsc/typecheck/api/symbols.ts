@@ -290,7 +290,7 @@ export interface ReferenceSymbol {
    * The node in the `TemplateAst` where the symbol is declared. That is, node for the `#ref` or
    * `#ref="exportAs"`.
    *
-   * `TemplateAst` 中声明符号的节点。也就是说， `#ref` 或 `#ref="exportAs"` 的节点。
+   * `TemplateAst` 中声明符号的节点。也就是说，`#ref` 或 `#ref="exportAs"` 的节点。
    *
    */
   declaration: TmplAstReference;
@@ -477,7 +477,7 @@ export interface DirectiveSymbol extends DirectiveInScope {
  * location.
  *
  * 元素或模板上属性的表示。这些绑定当前没有经过类型检查（请参阅 `checkTypeOfDomBindings`
- * ），因此它们不会有 `ts.Type` 、 `ts.Symbol` 或 shim 位置。
+ *），因此它们不会有 `ts.Type`、`ts.Symbol` 或 shim 位置。
  *
  */
 export interface DomBindingSymbol {

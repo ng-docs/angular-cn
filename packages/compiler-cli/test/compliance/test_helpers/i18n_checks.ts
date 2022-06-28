@@ -67,7 +67,7 @@ function extractTranslations(source: string): Set<string[]> {
 /**
  * Extract placeholder names (of the form `{$PLACEHOLDER}`) from the `msg`.
  *
- * 从 `msg` 中提取占位符名称（格式 `{$PLACEHOLDER}` ）。
+ * 从 `msg` 中提取占位符名称（格式 `{$PLACEHOLDER}`）。
  *
  * @param msg The text of the message to parse.
  *
@@ -83,7 +83,7 @@ function extractPlaceholdersFromMsg(msg: string): Set<string> {
  * Extract the placeholder names (of the form `"PLACEHOLDER": "XXX"`) from the body of the argument
  * provided as `args`.
  *
- * 从作为 `args` 提供的参数主体中提取占位符名称（格式为 `"PLACEHOLDER": "XXX"` ）。
+ * 从作为 `args` 提供的参数主体中提取占位符名称（格式为 `"PLACEHOLDER": "XXX"`）。
  *
  * @param args The body of an object literal containing placeholder info.
  *

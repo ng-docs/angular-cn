@@ -69,7 +69,7 @@ export function getBinding(lView: LView, bindingIndex: number): any {
  * `true` if the bindings has changed. (Throws if binding has changed during
  *          `CheckNoChangesMode`)
  *
- * 如果绑定已更改，则为 `true` 。 （如果在 `CheckNoChangesMode` 期间绑定已更改，则抛出）
+ * 如果绑定已更改，则为 `true` 。（如果在 `CheckNoChangesMode` 期间绑定已更改，则抛出）
  *
  */
 export function bindingUpdated(lView: LView, bindingIndex: number, value: any): boolean {

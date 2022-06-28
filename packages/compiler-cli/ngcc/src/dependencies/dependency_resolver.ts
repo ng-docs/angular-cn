@@ -59,7 +59,7 @@ export interface InvalidEntryPoint {
  * For example, the `rxjs` package does not contain any Angular decorators that need to be
  * compiled and so this can be safely ignored by ngcc.
  *
- * 例如， `rxjs` 包不包含任何需要编译的 Angular 装饰器，因此这可以被 ngcc 安全地忽略。
+ * 例如，`rxjs` 包不包含任何需要编译的 Angular 装饰器，因此这可以被 ngcc 安全地忽略。
  *
  */
 export interface IgnoredDependency {

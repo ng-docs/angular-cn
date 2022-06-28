@@ -209,7 +209,7 @@ This section guides you through adding radio buttons to bind your color choice t
 
 1. In `highlight.directive.ts`, revise `onMouseEnter` method so that it first tries to highlight with `appHighlight` and falls back to `red` if `appHighlight` is `undefined`.
 
-   在 `highlight.directive.ts` 中，修改 `onMouseEnter` 方法，让它首先尝试使用 `appHighlight` 进行高亮显示，如果 `appHighlight` 是 `undefined` ，则回退为 `red` 。
+   在 `highlight.directive.ts` 中，修改 `onMouseEnter` 方法，让它首先尝试使用 `appHighlight` 进行高亮显示，如果 `appHighlight` 是 `undefined`，则回退为 `red`。
 
    <code-example header="src/app/highlight.directive.ts (mouse-enter)" path="attribute-directives/src/app/highlight.directive.3.ts" region="mouse-enter"></code-example>
 

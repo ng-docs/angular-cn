@@ -19,15 +19,15 @@ This topic uses the following pictographs.
 | :------------ | :---------- |
 | html 实体 | 象形文字 |
 | <code>🌺</code> | red hibiscus (`🌺`) |
-| <code>🌺</code> | 红芙蓉（ `🌺` ） |
+| <code>🌺</code> | 红芙蓉（`🌺`）|
 | <code>🌻</code> | sunflower (`🌻`) |
 | <code>🌻</code> | 向日葵 ( `🌻` ) |
 | <code>🌼</code> | yellow flower (`🌼`) |
-| <code>🌼</code> | 黄色花（ `🌼` ） |
+| <code>🌼</code> | 黄色花（`🌼`）|
 | <code>🌿</code> | fern (`🌿`) |
 | <code>🌿</code> | 蕨类 ( `🌿` ) |
 | <code>🍁</code> | maple leaf (`🍁`) |
-| <code>🍁</code> | 枫叶（ `🍁` ） |
+| <code>🍁</code> | 枫叶（`🍁`）|
 | <code>🐳</code> | whale (`🐳`) |
 | <code>🐳</code> | 鲸鱼 ( `🐳` ) |
 | <code>🐶</code> | dog (`🐶`) |
@@ -49,9 +49,9 @@ Angular 中有两个注入器层次结构：
 | :------------------- | :------ |
 | 注入器层次结构 | 详细信息 |
 | `ModuleInjector` hierarchy | Configure a `ModuleInjector` in this hierarchy using an `@NgModule()` or `@Injectable()` annotation. |
-| `ModuleInjector` 层次结构 | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector` 。 |
+| `ModuleInjector` 层次结构 | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。|
 | `ElementInjector` hierarchy | Created implicitly at each DOM element. An `ElementInjector` is empty by default unless you configure it in the `providers` property on `@Directive()` or `@Component()`. |
-| `ElementInjector` 层次结构 | 在每个 DOM 元素上隐式创建。默认情况下， `ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。 |
+| `ElementInjector` 层次结构 | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。|
 
 <a id="register-providers-injectable"></a>
 
@@ -305,11 +305,7 @@ Resolution modifiers fall into three categories:
 
 * What to do if Angular doesn't find what you're looking for, that is `@Optional()`
 
-  如果 Angular 找不到你要查找的内容（即 `@Optional()`
-
-  ```
   如果 Angular 找不到你要的东西该怎么办，用 `@Optional()`
-  ```
 
 * Where to start looking, that is `@SkipSelf()`
 
@@ -344,7 +340,7 @@ In the following example, the service, `OptionalService`, isn't provided in the 
 
 Use `@Self()` so that Angular will only look at the `ElementInjector` for the current component or directive.
 
-使用 `@Self()` 让 Angular 仅查看当前组件或指令的 `ElementInjector` 。
+使用 `@Self()` 让 Angular 仅查看当前组件或指令的 `ElementInjector`。
 
 A good use case for `@Self()` is to inject a service but only if it is available on the current host element.
 To avoid errors in this situation, combine `@Self()` with `@Optional()`.
@@ -491,7 +487,7 @@ Understanding the idea of the `<#VIEW>` demarcation is especially significant wh
 How you provide services using a `@Component()` (or `@Directive()`) decorator determines their visibility.
 The following sections demonstrate `providers` and `viewProviders` along with ways to modify service visibility with `@SkipSelf()` and `@Host()`.
 
-你如何通过 `@Component()` （或 `@Directive()` ）装饰器提供服务决定了它们的可见性。以下各节演示了 `providers` 和 `viewProviders` 以及使用 `@SkipSelf()` 和 `@Host()` 修改服务可见性的方法。
+你如何通过 `@Component()`（或 `@Directive()`）装饰器提供服务决定了它们的可见性。以下各节演示了 `providers` 和 `viewProviders` 以及使用 `@SkipSelf()` 和 `@Host()` 修改服务可见性的方法。
 
 A component class can provide services in two ways:
 
@@ -521,11 +517,11 @@ In the logical tree, you'll see `@Provide`, `@Inject`, and `@NgModule`, which ar
 | :------------------------ | :------ |
 | Angular 服务属性 | 详细信息 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | Demonstrates that if `Token` is injected at this location in the logical tree its value would be `Value`. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | 演示如果 `Token` 在逻辑树中的此位置注入，其值将是 `Value` 。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | 演示如果 `Token` 在逻辑树中的此位置注入，其值将是 `Value`。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | Demonstrates that there is a declaration of `Token` provider with value `Value` at this location in the logical tree. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | 演示在逻辑树中的此位置有一个值为 `Value` 的 `Token` provider 声明。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | 演示在逻辑树中的此位置有一个值为 `Value` 的 `Token` provider 声明。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | Demonstrates that a fallback `NgModule` injector should be used at this location. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | 演示应该在此位置使用后备 `NgModule` 注入器。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | 演示应该在此位置使用后备 `NgModule` 注入器。|
 
 </div>
 
@@ -603,7 +599,7 @@ Emoji from FlowerService: &#x1F33A;
 
 In the logical tree, this would be represented as follows:
 
-在逻辑树中，这可以表示成如下形式：
+在逻辑树中，可以把它表示成这样：
 
 <code-example format="html" language="html">
 
@@ -633,7 +629,7 @@ The resolution of the token happens in two phases:
 
 1. If the token is not found, the injector looks for the closest parent `@NgModule()` to delegate the request to.
 
-     如果未找到令牌，则注入程序将寻找最接近的父 `@NgModule()` 委派该请求。
+    如果未找到令牌，则注入程序将寻找最接近的父 `@NgModule()` 委派该请求。
 
 In the example case, the constraints are:
 
@@ -655,7 +651,7 @@ In the example case, the constraints are:
 
 1. The `AppModule` acts as the fallback injector when the injection token can't be found in the `ElementInjector`s.
 
-     当在 `ElementInjector` 中找不到注入令牌时，就用 `AppModule` 充当后备注入器。
+    当在 `ElementInjector` 中找不到注入令牌时，就用 `AppModule` 充当后备注入器。
 
 ### Using the `providers` array
 
@@ -1006,7 +1002,7 @@ If you now add `@Host()` (in addition to the `@SkipSelf()`) to the `@Inject` of 
 This is because `@Host()` limits the upper bound of the search to the `<#VIEW>`.
 Here's the idea in the logical tree:
 
-如果现在将 `@Host()`（以及 `@SkipSelf()` ）添加到了 `FlowerService` 的 `@Inject`，其结果将为 `null`。这是因为 `@Host()` 将搜索的上限限制为 `<#VIEW>`。这是在逻辑树中的情况：
+如果现在将 `@Host()`（以及 `@SkipSelf()`）添加到了 `FlowerService` 的 `@Inject`，其结果将为 `null`。这是因为 `@Host()` 将搜索的上限限制为 `<#VIEW>`。这是在逻辑树中的情况：
 
 <code-example format="html" language="html">
 

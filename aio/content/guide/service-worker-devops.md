@@ -5,7 +5,7 @@
 This page is a reference for deploying and supporting production applications that use the Angular service worker.
 It explains how the Angular service worker fits into the larger production environment, the service worker's behavior under various conditions, and available resources and fail-safes.
 
-本页讲的是如何使用 Angular Service Worker 发布和支持生产环境下的应用。 它解释了 Angular Service Worker 如何满足大规模生产环境的需求、Service Worker 在多种条件下有哪些行为以及有哪些可用的资源和故障保护机制。
+本页讲的是如何使用 Angular Service Worker 发布和支持生产环境下的应用。它解释了 Angular Service Worker 如何满足大规模生产环境的需求、Service Worker 在多种条件下有哪些行为以及有哪些可用的资源和故障保护机制。
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ Conceptually, imagine the Angular service worker as a forward cache or a CDN edg
 The service worker's job is to satisfy requests made by the Angular application for resources or data from a local cache, without needing to wait for the network.
 Like any cache, it has rules for how content is expired and updated.
 
-从概念上说，你可以把 Angular Service Worker 想象成一个转发式缓存或装在最终用户浏览器中的 CDN 边缘。 Service Worker 的工作是从本地缓存中满足 Angular 应用对资源或数据的请求，而不用等待网络。 和所有缓存一样，它有一些规则来决定内容该如何过期或更新。
+从概念上说，你可以把 Angular Service Worker 想象成一个转发式缓存或装在最终用户浏览器中的 CDN 边缘。Service Worker 的工作是从本地缓存中满足 Angular 应用对资源或数据的请求，而不用等待网络。和所有缓存一样，它有一些规则来决定内容该如何过期或更新。
 
 <a id="versions"></a>
 
@@ -41,7 +41,7 @@ This is true even if only a single file is updated.
 At any given time, the service worker might have multiple versions of the application in its cache and it might be serving them simultaneously.
 For more information, see the [App tabs](guide/service-worker-devops#tabs) section below.
 
-在 Angular Service Worker 的语境下，“版本”是指用来表示 Angular 应用的某一次构建成果的一组资源。 当应用的一个新的构建发布时，Service Worker 就把它看做此应用的一个新版本。 就算只修改了一个文件，也同样如此。 在任何一个给定的时间，Service Worker 可能会在它的缓存中拥有此应用的多个版本，这几个版本也都能用于提供服务。 要了解更多，参阅稍后的 [App 选项卡](guide/service-worker-devops#tabs)。
+在 Angular Service Worker 的语境下，“版本”是指用来表示 Angular 应用的某一次构建成果的一组资源。当应用的一个新的构建发布时，Service Worker 就把它看做此应用的一个新版本。就算只修改了一个文件，也同样如此。在任何一个给定的时间，Service Worker 可能会在它的缓存中拥有此应用的多个版本，这几个版本也都能用于提供服务。要了解更多，参阅稍后的 [App 选项卡](guide/service-worker-devops#tabs)。
 
 To preserve application integrity, the Angular service worker groups all files into a version together.
 The files grouped into a version usually include HTML, JS, and CSS files.
@@ -51,19 +51,19 @@ Any time this version of `index.html` is served, the corresponding `bundle.js` m
 For example, assume that the `startApp()` function is renamed to `runApp()` in both files.
 In this scenario, it is not valid to serve the old `index.html`, which calls `startApp()`, along with the new bundle, which defines `runApp()`.
 
-要保持应用的整体性，Angular Service Worker 会用所有的文件共同组成一个版本。 组成版本的这些文件通常包括 HTML、JS 和 CSS 文件。把这些文件分成一组是至关重要的，因为它们会互相引用，并且依赖于一些特定内容。 比如，`index.html` 文件可能有个引用 `bundle.js` 的 `<script>` 标签，它可能会试图从这个脚本中调用一个 `startApp()` 函数。 任何时候，只要这个版本的 `index.html` 被提供了，与它对应的 `bundle.js` 也必须同时提供。 这种情况下，使用调用了 `startApp()` 的老的 `index.html` 并同时使用定义了 `runApp()` 的新 bundle 就是无效的。
+要保持应用的整体性，Angular Service Worker 会用所有的文件共同组成一个版本。组成版本的这些文件通常包括 HTML、JS 和 CSS 文件。把这些文件分成一组是至关重要的，因为它们会互相引用，并且依赖于一些特定内容。比如，`index.html` 文件可能有个引用 `bundle.js` 的 `<script>` 标签，它可能会试图从这个脚本中调用一个 `startApp()` 函数。任何时候，只要这个版本的 `index.html` 被提供了，与它对应的 `bundle.js` 也必须同时提供。这种情况下，使用调用了 `startApp()` 的老的 `index.html` 并同时使用定义了 `runApp()` 的新 bundle 就是无效的。
 
 This file integrity is especially important when lazy loading modules.
 A JS bundle might reference many lazy chunks, and the filenames of the lazy chunks are unique to the particular build of the application.
 If a running application at version `X` attempts to load a lazy chunk, but the server has already updated to version `X + 1`, the lazy loading operation will fail.
 
-当使用惰性加载模块时，文件的整体性就显得格外重要。 某个 JS 包可能引用很多惰性块，而这些惰性块的文件名在应用的每次特定的构建中都是唯一的。 如果运行应用的 `X` 版本视图加载一个惰性块，但该块的服务器已经升级到了 `X + 1` 版本，这次惰性加载操作就会失败。
+当使用惰性加载模块时，文件的整体性就显得格外重要。某个 JS 包可能引用很多惰性块，而这些惰性块的文件名在应用的每次特定的构建中都是唯一的。如果运行应用的 `X` 版本视图加载一个惰性块，但该块的服务器已经升级到了 `X + 1` 版本，这次惰性加载操作就会失败。
 
 The version identifier of the application is determined by the contents of all resources, and it changes if any of them change.
 In practice, the version is determined by the contents of the `ngsw.json` file, which includes hashes for all known content.
 If any of the cached files change, the file's hash will change in `ngsw.json`, causing the Angular service worker to treat the active set of files as a new version.
 
-本应用的版本标识符由其所有资源的内容决定，如果它们中的任何一个发生了变化，则版本标识符也随之改变。 实际上，版本是由 `ngsw.json` 文件的内容决定的，包含了所有已知内容的哈希值。 如果任何一个被缓存的文件发生了变化，则该文件的哈希也将在 `ngsw.json` 中随之变化，从而导致 Angular Service Worker 将这个活动文件的集合视为一个新版本。
+本应用的版本标识符由其所有资源的内容决定，如果它们中的任何一个发生了变化，则版本标识符也随之改变。实际上，版本是由 `ngsw.json` 文件的内容决定的，包含了所有已知内容的哈希值。如果任何一个被缓存的文件发生了变化，则该文件的哈希也将在 `ngsw.json` 中随之变化，从而导致 Angular Service Worker 将这个活动文件的集合视为一个新版本。
 
 <div class="alert is-helpful">
 
@@ -84,7 +84,7 @@ With the versioning behavior of the Angular service worker, an application serve
 Every time the user opens or refreshes the application, the Angular service worker checks for updates to the application by looking for updates to the `ngsw.json` manifest.
 If an update is found, it is downloaded and cached automatically, and will be served the next time the application is loaded.
 
-每当用户打开或刷新应用程序时，Angular Service Worker 都会通过查看清单（manifest）文件 “ngsw.json” 的更新来检查该应用程序的更新。 如果它找到了更新，就会自动下载并缓存这个版本，并在下次加载应用程序时提供。
+每当用户打开或刷新应用程序时，Angular Service Worker 都会通过查看清单（manifest）文件 “ngsw.json” 的更新来检查该应用程序的更新。如果它找到了更新，就会自动下载并缓存这个版本，并在下次加载应用程序时提供。
 
 ### Resource integrity
 
@@ -95,18 +95,18 @@ In a normal HTTP cache, a hard refresh or cache expiration limits the negative e
 A service worker ignores such constraints and effectively long caches the entire application.
 Consequently, it is essential that the service worker gets the correct content.
 
-长周期缓存的潜在副作用之一就是可能无意中缓存了无效的资源。 在普通的 HTTP 缓存中，硬刷新或缓存过期限制了缓存这种无效文件导致的负面影响。 而 Service Worker 会忽略这样的约束，事实上会对整个应用程序进行长期缓存。 因此，让 Service Worker 获得正确的内容就显得至关重要。
+长周期缓存的潜在副作用之一就是可能无意中缓存了无效的资源。在普通的 HTTP 缓存中，硬刷新或缓存过期限制了缓存这种无效文件导致的负面影响。而 Service Worker 会忽略这样的约束，事实上会对整个应用程序进行长期缓存。因此，让 Service Worker 获得正确的内容就显得至关重要。
 
 To ensure resource integrity, the Angular service worker validates the hashes of all resources for which it has a hash.
 Typically for an application created with the [Angular CLI](cli), this is everything in the `dist` directory covered by the user's `src/ngsw-config.json` configuration.
 
-为了确保资源的整体性，Angular Service Worker 会验证所有带哈希的资源的哈希值。 通常，对于 [Angular CLI](cli) 应用程序，用户的 `src/ngsw-config.json` 配置文件中会涵盖 `dist` 目录下的所有内容。
+为了确保资源的整体性，Angular Service Worker 会验证所有带哈希的资源的哈希值。通常，对于 [Angular CLI](cli) 应用程序，用户的 `src/ngsw-config.json` 配置文件中会涵盖 `dist` 目录下的所有内容。
 
 If a particular file fails validation, the Angular service worker attempts to re-fetch the content using a "cache-busting" URL parameter to eliminate the effects of browser or intermediate caching.
 If that content also fails validation, the service worker considers the entire version of the application to be invalid and it stops serving the application.
 If necessary, the service worker enters a safe mode where requests fall back on the network, opting not to use its cache if the risk of serving invalid, broken, or outdated content is high.
 
-如果某个特定的文件未能通过验证，Angular Service Worker 就会尝试用 “cache-busting” URL 为参数重新获取内容，以消除浏览器或中间缓存的影响。 如果该内容也未能通过验证，则 Service Worker 会认为该应用的整个版本都无效，并停止用它提供服务。 如有必要，Service Worker 会进入安全模式，这些请求将退化为直接访问网络。 如果服务无效、损坏或内容过期的风险很高，则会选择不使用缓存。
+如果某个特定的文件未能通过验证，Angular Service Worker 就会尝试用 “cache-busting” URL 为参数重新获取内容，以消除浏览器或中间缓存的影响。如果该内容也未能通过验证，则 Service Worker 会认为该应用的整个版本都无效，并停止用它提供服务。如有必要，Service Worker 会进入安全模式，这些请求将退化为直接访问网络。如果服务无效、损坏或内容过期的风险很高，则会选择不使用缓存。
 
 Hash mismatches can occur for a variety of reasons:
 
@@ -123,7 +123,7 @@ Hash mismatches can occur for a variety of reasons:
 * Errors during the build process could result in updated resources without `ngsw.json` being updated.
   The reverse could also happen resulting in an updated `ngsw.json` without updated resources.
 
-  构建过程中的错误可能会导致更新了资源，却没有更新 `ngsw.json`。 反之，也可能发生没有更新资源，却更新了 `ngsw.json` 的情况。
+  构建过程中的错误可能会导致更新了资源，却没有更新 `ngsw.json`。反之，也可能发生没有更新资源，却更新了 `ngsw.json` 的情况。
 
 #### Unhashed content
 
@@ -132,13 +132,13 @@ Hash mismatches can occur for a variety of reasons:
 The only resources that have hashes in the `ngsw.json` manifest are resources that were present in the `dist` directory at the time the manifest was built.
 Other resources, especially those loaded from CDNs, have content that is unknown at build time or are updated more frequently than the application is deployed.
 
-`ngsw.json` 清单中唯一带哈希值的资源就是构建清单时 `dist` 目录中的资源。 而其它资源，特别是从 CDN 加载的资源，其内容在构建时是未知的，或者会比应用程序部署得更频繁。
+`ngsw.json` 清单中唯一带哈希值的资源就是构建清单时 `dist` 目录中的资源。而其它资源，特别是从 CDN 加载的资源，其内容在构建时是未知的，或者会比应用程序部署得更频繁。
 
 If the Angular service worker does not have a hash to validate a given resource, it still caches its contents but it honors the HTTP caching headers by using a policy of "stale while revalidate".
 That is, when HTTP caching headers for a cached resource indicate that the resource has expired, the Angular service worker continues to serve the content and it attempts to refresh the resource in the background.
 This way, broken unhashed resources do not remain in the cache beyond their configured lifetimes.
 
-如果 Angular Service Worker 没有哈希可以验证给定的资源，它仍然会缓存它的内容，但会使用 “重新验证时失效” 的策略来承认 HTTP 缓存头。 也就是说，当被缓存资源的 HTTP 缓存头指出该资源已过期时，Angular Service Worker 将继续提供内容，并尝试在后台刷新资源。 这样，那些被破坏的非哈希资源留在缓存中的时间就不会超出为它配置的生命周期。
+如果 Angular Service Worker 没有哈希可以验证给定的资源，它仍然会缓存它的内容，但会使用 “重新验证时失效” 的策略来承认 HTTP 缓存头。也就是说，当被缓存资源的 HTTP 缓存头指出该资源已过期时，Angular Service Worker 将继续提供内容，并尝试在后台刷新资源。这样，那些被破坏的非哈希资源留在缓存中的时间就不会超出为它配置的生命周期。
 
 <a id="tabs"></a>
 
@@ -155,7 +155,7 @@ The Angular service worker provides a guarantee: a running application will cont
 If another instance of the application is opened in a new web browser tab, then the most current version of the app is served.
 As a result, that new tab can be running a different version of the application than the original tab.
 
-Angular Service Worker 会保证：正在运行的应用程序会继续运行和当前应用相同的版本。 而如果在新的 Web 浏览器选项卡中打开了该应用的另一个实例，则会提供该应用的最新版本。 因此，这个新标签可以和原始标签同时运行不同版本的应用。
+Angular Service Worker 会保证：正在运行的应用程序会继续运行和当前应用相同的版本。而如果在新的 Web 浏览器选项卡中打开了该应用的另一个实例，则会提供该应用的最新版本。因此，这个新标签可以和原始标签同时运行不同版本的应用。
 
 <div class="alert is-important">
 
@@ -186,7 +186,7 @@ Angular Service Worker 为什么可能会更改运行中的应用的版本有几
 
 The Angular service worker is aware of which versions are in use at any given moment and it cleans up versions when no tab is using them.
 
-Angular Service Worker 能知道在任何指定的时刻正在使用哪些版本， 并清除那些没有被任何选项卡使用的版本。
+Angular Service Worker 能知道在任何指定的时刻正在使用哪些版本，并清除那些没有被任何选项卡使用的版本。
 
 Other reasons the Angular service worker might change the version of a running application are normal events:
 
@@ -207,7 +207,7 @@ Other reasons the Angular service worker might change the version of a running a
 The Angular service worker is a small script that runs in web browsers.
 From time to time, the service worker will be updated with bug fixes and feature improvements.
 
-Angular Service Worker 是一个运行在 Web 浏览器中的小脚本。 有时，这个 Service Worker 也可能会需要更新，以修复错误和增强特性。
+Angular Service Worker 是一个运行在 Web 浏览器中的小脚本。有时，这个 Service Worker 也可能会需要更新，以修复错误和增强特性。
 
 The Angular service worker is downloaded when the application is first opened and when the application is accessed after a period of inactivity.
 If the service worker has changed, the service worker will be updated in the background.
@@ -219,7 +219,7 @@ normally.
 However, occasionally a bugfix or feature in the Angular service worker requires the invalidation of old caches.
 In this case, the application will be refreshed transparently from the network.
 
-Angular Service Worker 的大部分更新对应用程序来说都是透明的 - 旧缓存仍然有效，其内容仍然能正常使用。 但是，在 Angular Service Worker 中可能偶尔会有错误修复或新功能，需要让旧的缓存失效。 这时，应用程序就从会网络上透明地进行刷新。
+Angular Service Worker 的大部分更新对应用程序来说都是透明的 - 旧缓存仍然有效，其内容仍然能正常使用。但是，在 Angular Service Worker 中可能偶尔会有错误修复或新功能，需要让旧的缓存失效。这时，应用程序就从会网络上透明地进行刷新。
 
 ### Bypassing the service worker
 
@@ -242,7 +242,7 @@ To bypass the service worker, set `ngsw-bypass` as a request header, or as a que
 Occasionally, it might be necessary to examine the Angular service worker in a running state to investigate issues or to ensure that it is operating as designed.
 Browsers provide built-in tools for debugging service workers and the Angular service worker itself includes useful debugging features.
 
-偶尔，可能会需要检查运行中的 Angular Service Worker，以调查问题或确保它在按设计运行。 浏览器提供了用于调试 Service Worker 的内置工具，而且 Angular Service Worker 本身也包含了一些有用的调试功能。
+偶尔，可能会需要检查运行中的 Angular Service Worker，以调查问题或确保它在按设计运行。浏览器提供了用于调试 Service Worker 的内置工具，而且 Angular Service Worker 本身也包含了一些有用的调试功能。
 
 ### Locating and analyzing debugging information
 
@@ -252,7 +252,7 @@ The Angular service worker exposes debugging information under the `ngsw/` virtu
 Currently, the single exposed URL is `ngsw/state`.
 Here is an example of this debug page's contents:
 
-Angular Service Worker 会在虚拟目录 `ngsw/` 下暴露出调试信息。 目前，它暴露的唯一的 URL 是 `ngsw/state`。 下面是这个调试页面中的一段范例内容：
+Angular Service Worker 会在虚拟目录 `ngsw/` 下暴露出调试信息。目前，它暴露的唯一的 URL 是 `ngsw/state`。下面是这个调试页面中的一段范例内容：
 
 <code-example format="output" hideCopy language="shell">
 
@@ -303,9 +303,9 @@ There are two possible degraded states:
 | :-------------- | :------ |
 | 降级状态 | 详情 |
 | `EXISTING_CLIENTS_ONLY` | The service worker does not have a clean copy of the latest known version of the application. Older cached versions are safe to use, so existing tabs continue to run from cache, but new loads of the application will be served from the network. The service worker will try to recover from this state when a new version of the application is detected and installed (that is, when a new `ngsw.json` is available). |
-| `EXISTING_CLIENTS_ONLY` | 这个 Service Worker 没有该应用的最新已知版本的干净副本。较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，但新的应用将从网络上加载。 |
+| `EXISTING_CLIENTS_ONLY` | 这个 Service Worker 没有该应用的最新已知版本的干净副本。较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，但新的应用将从网络上加载。|
 | `SAFE_MODE` | The service worker cannot guarantee the safety of using cached data. Either an unexpected error occurred or all cached versions are invalid. All traffic will be served from the network, running as little service worker code as possible. |
-| `SAFE_MODE` | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。 |
+| `SAFE_MODE` | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。|
 
 In both cases, the parenthetical annotation provides the
 error that caused the service worker to enter the degraded state.
@@ -400,13 +400,13 @@ The Idle Task Queue is the queue of all pending tasks that happen in the backgro
 If there are any tasks in the queue, they are listed with a description.
 In this example, the service worker has one such task scheduled, a post-initialization operation involving an update check and cleanup of stale caches.
 
-空闲任务队列是 Service Worker 中所有在后台发生的未决任务的队列。 如果这个队列中存在任何任务，则列出它们的描述。 在这个例子中，Service Worker 安排的任务是一个用于更新检查和清除过期缓存的后期初始化操作。
+空闲任务队列是 Service Worker 中所有在后台发生的未决任务的队列。如果这个队列中存在任何任务，则列出它们的描述。在这个例子中，Service Worker 安排的任务是一个用于更新检查和清除过期缓存的后期初始化操作。
 
 The last update tick/run counters give the time since specific events happened related to the idle queue.
 The "Last update run" counter shows the last time idle tasks were actually executed.
 "Last update tick" shows the time since the last event after which the queue might be processed.
 
-最后的 tick/run 计数器给出了与特定事件发生有关的空闲队列中的时间。 “Last update run” 计数器显示的是上次执行空闲任务的时间。 “Last update tick” 显示的是自上次事件以来可能要处理的队列的时间。
+最后的 tick/run 计数器给出了与特定事件发生有关的空闲队列中的时间。“Last update run” 计数器显示的是上次执行空闲任务的时间。“Last update tick” 显示的是自上次事件以来可能要处理的队列的时间。
 
 #### Debug log
 
@@ -429,12 +429,12 @@ Errors that occur within the service worker will be logged here.
 Browsers such as Chrome provide developer tools for interacting with service workers.
 Such tools can be powerful when used properly, but there are a few things to keep in mind.
 
-Chrome 等浏览器提供了能与 Service Worker 交互的开发者工具。 这些工具在使用得当时非常强大，但也要牢记一些事情。
+Chrome 等浏览器提供了能与 Service Worker 交互的开发者工具。这些工具在使用得当时非常强大，但也要牢记一些事情。
 
 * When using developer tools, the service worker is kept running in the background and never restarts.
   This can cause behavior with Dev Tools open to differ from behavior a user might experience.
 
-  使用开发人员工具时，Service Worker 将继续在后台运行，并且不会重新启动。 这可能会导致开着 Dev Tools 时的行为与用户实际遇到的行为不一样。
+  使用开发人员工具时，Service Worker 将继续在后台运行，并且不会重新启动。这可能会导致开着 Dev Tools 时的行为与用户实际遇到的行为不一样。
 
 * If you look in the Cache Storage viewer, the cache is frequently out of date.
   Right click the Cache Storage title and refresh the caches.
@@ -452,7 +452,7 @@ Chrome 等浏览器提供了能与 Service Worker 交互的开发者工具。 �
 Like any complex system, bugs or broken configurations can cause the Angular service worker to act in unforeseen ways.
 While its design attempts to minimize the impact of such problems, the Angular service worker contains several failsafe mechanisms in case an administrator ever needs to deactivate the service worker quickly.
 
-像任何复杂的系统一样，错误或损坏的配置可能会导致 Angular Service Worker 以不可预知的方式工作。 虽然它在设计时就尝试将此类问题的影响降至最低，但是，如果管理员需要快速停用 Service Worker， Angular Service Worker 也包含多种故障保护机制。
+像任何复杂的系统一样，错误或损坏的配置可能会导致 Angular Service Worker 以不可预知的方式工作。虽然它在设计时就尝试将此类问题的影响降至最低，但是，如果管理员需要快速停用 Service Worker，Angular Service Worker 也包含多种故障保护机制。
 
 ### Fail-safe
 
@@ -461,7 +461,7 @@ While its design attempts to minimize the impact of such problems, the Angular s
 To deactivate the service worker, remove or rename the `ngsw.json` file.
 When the service worker's request for `ngsw.json` returns a `404`, then the service worker removes all of its caches and de-registers itself, essentially self-destructing.
 
-要停用 Service Worker，请删除或重命名 `ngsw.json` 文件。 当 Service Worker 对 `ngsw.json` 的请求返回 `404` 时，Service Worker 就会删除它的所有缓存并注销自己，本质上就是自毁。
+要停用 Service Worker，请删除或重命名 `ngsw.json` 文件。当 Service Worker 对 `ngsw.json` 的请求返回 `404` 时，Service Worker 就会删除它的所有缓存并注销自己，本质上就是自毁。
 
 ### Safety Worker
 
@@ -470,7 +470,7 @@ When the service worker's request for `ngsw.json` returns a `404`, then the serv
 Also included in the `@angular/service-worker` NPM package is a small script `safety-worker.js`, which when loaded will unregister itself from the browser and remove the service worker caches.
 This script can be used as a last resort to get rid of unwanted service workers already installed on client pages.
 
-`@angular/service-worker` NPM 包中还包含一个小脚本 `safety-worker.js`，当它被加载时就会把它自己从浏览器中注销，并移除此 Service Worker 的缓存。 这个脚本可以作为终极武器来摆脱那些已经安装在客户端页面上的不想要的 Service Worker。
+`@angular/service-worker` NPM 包中还包含一个小脚本 `safety-worker.js`，当它被加载时就会把它自己从浏览器中注销，并移除此 Service Worker 的缓存。这个脚本可以作为终极武器来摆脱那些已经安装在客户端页面上的不想要的 Service Worker。
 
 <div class="alert is-important">
 
@@ -511,7 +511,7 @@ If you setup a redirect from the old location (for example `example.com`) to the
 Also, the redirect won't even trigger for users who are loading the site entirely from Service Worker.
 The old worker (registered at `example.com`) tries to update and sends requests to the old location `example.com` which get redirected to the new location `www.example.com` and create the error `The script resource is behind a redirect, which is disallowed`.
 
-如果你不得不更改应用的位置，就可能会出现问题。如果你设置了从旧位置（比如 `example.com` ）到新位置（比如 `www.example.com`）的重定向，则 Service Worker 将停止工作。 同样，对于完全从 Service Worker 加载该网站的用户，甚至都不会触发重定向。老的 Worker（注册在 `example.com`）会尝试更新并将请求发送到原来的位置 `example.com`，该位置重定向到新位置 `www.example.com` 就会导致错误 `The script resource is behind a redirect, which is disallowed`。
+如果你不得不更改应用的位置，就可能会出现问题。如果你设置了从旧位置（比如 `example.com`）到新位置（比如 `www.example.com`）的重定向，则 Service Worker 将停止工作。同样，对于完全从 Service Worker 加载该网站的用户，甚至都不会触发重定向。老的 Worker（注册在 `example.com`）会尝试更新并将请求发送到原来的位置 `example.com`，该位置重定向到新位置 `www.example.com` 就会导致错误 `The script resource is behind a redirect, which is disallowed`。
 
 To remedy this, you might need to deactivate the old worker using one of the above techniques ([Fail-safe](#fail-safe) or [Safety Worker](#safety-worker)).
 

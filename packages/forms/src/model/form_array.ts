@@ -44,7 +44,7 @@ export type ɵFormArrayRawValue<T extends AbstractControl<any>> =
  * Tracks the value and validity state of an array of `FormControl`,
  * `FormGroup` or `FormArray` instances.
  *
- * 跟踪 `FormControl` 、 `FormGroup` 或 `FormArray` 实例的数组的值和有效状态。
+ * 跟踪 `FormControl`、`FormGroup` 或 `FormArray` 实例的数组的值和有效状态。
  *
  * A `FormArray` aggregates the values of each child `FormControl` into an array.
  * It calculates its status by reducing the status values of its children. For example, if one of
@@ -63,7 +63,7 @@ export type ɵFormArrayRawValue<T extends AbstractControl<any>> =
  * `FormArray` is one of the four fundamental building blocks used to define forms in Angular,
  * along with `FormControl`, `FormGroup`, and `FormRecord`.
  *
- * `FormArray` 是用于在 Angular 中定义表单的四个基本构建块之一，与 `FormControl` 、 `FormGroup` 和
+ * `FormArray` 是用于在 Angular 中定义表单的四个基本构建块之一，与 `FormControl`、`FormGroup` 和
  * `FormRecord` 。
  *
  * @usageNotes
@@ -132,9 +132,9 @@ export type ɵFormArrayRawValue<T extends AbstractControl<any>> =
  * the `FormArray` directly, as that result in strange and unexpected behavior such
  * as broken change detection.
  *
- * 要更改数组中的控件，请使用 `FormArray` 本身中的 `push` 、 `insert` 、 `removeAt` 或 `clear`
+ * 要更改数组中的控件，请使用 `FormArray` 本身中的 `push`、`insert`、`removeAt` 或 `clear`
  * 方法。这些方法可确保在表单的层次结构中正确跟踪控件。不要修改用于直接实例化 `FormArray` 的
- * `AbstractControl` 数组，因为这会导致奇怪和意外的行为，例如破损的更改检测。
+ * `AbstractControl` 数组，因为这会导致奇怪和意外的行为，例如破损的变更检测。
  *
  * @publicApi
  */
@@ -193,7 +193,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * undefined. This behavior is the same as `Array.at(index)`.
    *
    * 要检索控件的数组中的索引。如果 `index` 为负数，它将从后面回绕，如果 index 为大大负数（小于
-   * `-length` ），则结果是未定义的。此行为与 `Array.at(index)` 相同。
+   * `-length`），则结果是未定义的。此行为与 `Array.at(index)` 相同。
    *
    */
   at(index: number): ɵTypedOrUntyped<TControl, TControl, AbstractControl<any>> {
@@ -218,7 +218,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   inserted. When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象在插入控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -239,7 +239,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * This behavior is the same as `Array.splice(index, 0, control)`.
    *
    * 要插入控件的数组中的索引。如果 `index` 为负数，则从后面环绕。如果 `index` 为很大的负数（小于
-   * `-length` ），则添加到数组。此行为与 `Array.splice(index, 0, control)` 相同。
+   * `-length`），则添加到数组。此行为与 `Array.splice(index, 0, control)` 相同。
    *
    * @param control Form control to be inserted
    *
@@ -254,7 +254,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   inserted. When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象在插入控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -275,7 +275,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *     element. This behavior is the same as `Array.splice(index, 1)`.
    *
    * 要删除控件的数组中的索引。如果 `index` 为负数，则从后面环绕。如果 `index` 为大大负数（小于
-   * `-length` ），则删除第一个元素。此行为与 `Array.splice(index, 1)` 相同。
+   * `-length`），则删除第一个元素。此行为与 `Array.splice(index, 1)` 相同。
    *
    * @param options Specifies whether this FormArray instance should emit events after a
    *     control is removed.
@@ -286,7 +286,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   removed. When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -311,7 +311,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *     element. This behavior is the same as `Array.splice(index, 1, control)`.
    *
    * 要替换控件的数组中的索引。如果 `index` 为负数，则从后面环绕。如果 `index` 为很大的负数（小于
-   * `-length` ），则替换第一个元素。此行为与 `Array.splice(index, 1, control)` 相同。
+   * `-length`），则替换第一个元素。此行为与 `Array.splice(index, 1, control)` 相同。
    *
    * @param control The `AbstractControl` control to replace the existing control
    *
@@ -326,7 +326,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   replaced with a new one. When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时， `statusChanges` 和
+   *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时，`statusChanges` 和
    * `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -408,7 +408,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
    * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
@@ -473,7 +473,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   value is updated. When false, no events are emitted. The configuration options are passed to
    *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
    * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
@@ -561,7 +561,7 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
    * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。

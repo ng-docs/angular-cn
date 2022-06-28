@@ -746,7 +746,7 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  *
  * - return `null` if parent container is disconnected (we have no parent.)
  *
- *   如果父容器已断开连接，则返回 `null` （我们没有父容器。）
+ *   如果父容器已断开连接，则返回 `null`（我们没有父容器。）
  *
  * @param tView: Current `TView`.
  * @param tNode: `TNode` for which we wish to retrieve `RElement` (or `null` if host element is
@@ -756,7 +756,7 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  *
  * `null` if the `RElement` can't be determined at this time (no parent / projection)
  *
- * 如果此时无法确定 `RElement` （无父/投影），则为 `null`
+ * 如果此时无法确定 `RElement`（无父/投影），则为 `null`
  *
  */
 export function getClosestRElement(tView: TView, tNode: TNode|null, lView: LView): RElement|null {
@@ -901,7 +901,7 @@ export function nativeNextSibling(renderer: Renderer3, node: RNode): RNode|null 
  *
  * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
  *
- * 当前 `TNode` （我们要插入到 DOM 中的节点）
+ * 当前 `TNode`（我们要插入到 DOM 中的节点）
  *
  * @param lView current `LView`
  *
@@ -918,7 +918,7 @@ function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView:
  * Find a node in front of which `currentTNode` should be inserted. (Does not take i18n into
  * account)
  *
- * 查找应该在其前面插入 `currentTNode` 的节点。 （不考虑 i18n ）
+ * 查找应该在其前面插入 `currentTNode` 的节点。（不考虑 i18n）
  *
  * This method determines the `RNode` in front of which we should insert the `currentRNode`. This
  * does not take `TNode.insertBeforeIndex` into account.
@@ -932,7 +932,7 @@ function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView:
  *
  * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
  *
- * 当前 `TNode` （我们要插入到 DOM 中的节点）
+ * 当前 `TNode`（我们要插入到 DOM 中的节点）
  *
  * @param lView current `LView`
  *
@@ -1352,7 +1352,7 @@ function applyProjectionRecursive(
  * `applyContainer` performs an operation on the container and its views as specified by
  * `action` (insert, detach, destroy)
  *
- * `applyContainer` 对容器及其视图执行操作指定的 `action` （插入、分离、销毁）
+ * `applyContainer` 对容器及其视图执行操作指定的 `action`（插入、分离、销毁）
  *
  * Inserting a Container is complicated by the fact that the container may have Views which
  * themselves have containers or projections.
@@ -1416,7 +1416,7 @@ function applyContainer(
  *
  * @param isClassBased `true` if it should be written to `class` (`false` to write to `style`)
  *
- * 如果应该写入 `class` ，则为 `true` （写入 `style` 为 `false` ）
+ * 如果应该写入 `class` ，则为 `true`（写入 `style` 为 `false`）
  *
  * @param rNode The Node to write to.
  *

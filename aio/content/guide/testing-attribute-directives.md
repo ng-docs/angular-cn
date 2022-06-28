@@ -24,7 +24,7 @@ If you'd like to experiment with the application that this guide describes, <liv
 The sample application's `HighlightDirective` sets the background color of an element based on either a data bound color or a default color (lightgray).
 It also sets a custom property of the element (`customProperty`) to `true` for no reason other than to show that it can.
 
-本范例应用的 `HighlightDirective` 会根据数据绑定中的颜色或默认颜色（浅灰）来设置元素的背景色。它还会把该元素的自定义属性（`customProperty`）设置为 `true` ，当然这除了示范本技术之外别无它用。
+本范例应用的 `HighlightDirective` 会根据数据绑定中的颜色或默认颜色（浅灰）来设置元素的背景色。它还会把该元素的自定义属性（`customProperty`）设置为 `true`，当然这除了示范本技术之外别无它用。
 
 <code-example header="app/shared/highlight.directive.ts" path="testing/src/app/shared/highlight.directive.ts"></code-example>
 

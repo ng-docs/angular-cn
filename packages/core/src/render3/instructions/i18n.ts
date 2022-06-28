@@ -151,7 +151,7 @@ export function ɵɵi18nAttributes(index: number, attrsIndex: number): void {
  * This function returns itself so that it may be chained
  * (e.g. `i18nExp(ctx.name)(ctx.title)`)
  *
- * 此函数返回自身，以便它可以被链接（例如 `i18nExp(ctx.name)(ctx.title)` ）
+ * 此函数返回自身，以便它可以被链接（例如 `i18nExp(ctx.name)(ctx.title)`）
  *
  * @codeGenApi
  */
@@ -169,7 +169,7 @@ export function ɵɵi18nExp<T>(value: T): typeof ɵɵi18nExp {
  * @param index Index of either {@link i18nStart} (translation block) or {@link i18nAttributes}
  * (i18n attribute) on which it should update the content.
  *
- * 应该更新内容的 {@link i18nStart} （翻译块）或 {@link i18nAttributes} （i18n 属性）的索引。
+ * 应该更新内容的 {@link i18nStart}（翻译块）或 {@link i18nAttributes}（i18n 属性）的索引。
  *
  * @codeGenApi
  */
@@ -191,7 +191,7 @@ export function ɵɵi18nApply(index: number) {
  *
  * 1. Resolve all multi-value cases (like [�*1:1��#2:1�|�#4:1�|�5�])
  *
- *    解析所有多值情况（例如 [�\*1:1��#2:1�|�#4:1�|.5�][�*1:1��#2:1�|�#4:1�|�5�] ）
+ *    解析所有多值情况（例如 [�\*1:1��#2:1�|�#4:1�|.5�][�*1:1��#2:1�|�#4:1�|�5�]）
  *
  * 2. Replace all ICU vars (like "VAR_PLURAL")
  *

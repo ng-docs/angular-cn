@@ -1,0 +1,30 @@
+{
+  "name": "completion",
+  "command": "ng completion",
+  "shortDescription": "Set up Angular CLI autocompletion for your terminal.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/completion/long-description.md",
+  "longDescription": "Setting up autocompletion configures your terminal, so pressing the `<TAB>` key while in the middle\nof typing will display various commands and options available to you. This makes it very easy to\ndiscover and use CLI commands without lots of memorization.\n\n![A demo of Angular CLI autocompletion in a terminal. The user types several partial `ng` commands,\nusing autocompletion to finish several arguments and list contextual options.\n](generated/images/guide/cli/completion.gif)\n\n## Automated setup\n\nThe CLI should prompt and ask to set up autocompletion for you the first time you use it (v14+).\nSimply answer \"Yes\" and the CLI will take care of the rest.\n\n```\n$ ng serve\n? Would you like to enable autocompletion? This will set up your terminal so pressing TAB while typing Angular CLI commands will show possible options and autocomplete arguments. (Enabling autocompletion will modify configuration files in your home directory.) Yes\nAppended `source <(ng completion script)` to `/home/my-username/.bashrc`. Restart your terminal or run:\n\nsource <(ng completion script)\n\nto autocomplete `ng` commands.\n\n# Serve output...\n```\n\nIf you already refused the prompt, it won't ask again. But you can run `ng completion` to\ndo the same thing automatically.\n\nThis modifies your terminal environment to load Angular CLI autocompletion, but can't update your\ncurrent terminal session. Either restart it or run `source <(ng completion script)` directly to\nenable autocompletion in your current session.\n\nTest it out by typing `ng ser<TAB>` and it should autocomplete to `ng serve`. Ambiguous arguments\nwill show all possible options and their documentation, such as `ng generate <TAB>`.\n\n## Manual setup\n\nSome users may have highly customized terminal setups, possibly with configuration files checked\ninto source control with an opinionated structure. `ng completion` only ever appends Angular's setup\nto an existing configuration file for your current shell, or creates one if none exists. If you want\nmore control over exactly where this configuration lives, you can manually set it up by having your\nshell run at startup:\n\n```bash\nsource <(ng completion script)\n```\n\nThis is equivalent to what `ng completion` will automatically set up, and gives power users more\nflexibility in their environments when desired.\n\n## Platform support\n\nAngular CLI supports autocompletion for the Bash and Zsh shells on MacOS and Linux operating\nsystems.\n\nWindows does not support autocompletion in native shells, such as Cmd and Powershell. However,\nthe Angular CLI supports Git Bash and\n[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/) using Bash or Zsh.\n\n## Global install\n\nAutocompletion works by configuring your terminal to invoke the Angular CLI on startup to load the\nsetup script. This means the terminal must be able to find and execute the Angular CLI, typically\nthrough a global install that places the binary on the user's `$PATH`. If you get\n`command not found: ng`, make sure the CLI is installed globally which you can do with the `-g`\nflag:\n\n```bash\nnpm install -g @angular/cli\n```\n",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    }
+  ],
+  "subcommands": [
+    {
+      "name": "script",
+      "command": "script",
+      "shortDescription": "Generate a bash and zsh real-time type-ahead autocompletion script.",
+      "options": [],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "生成 bash 和 zsh 的自动完成脚本。"
+    }
+  ],
+  "shortDescriptionCn": "为你的终端设置 Angular CLI 自动完成。",
+  "longDescriptionCn": "设置自动完成会配置你的终端程序，这样一来在键入过程中按 `<TAB>` 键将显示供你使用的各种命令和选项。这使得发现和使用 CLI 命令变得非常容易，而无需太多记忆。\n\n<img src=\"generated/images/guide/cli/completion.gif\" alt=\"终端中 Angular CLI 自动完成的演示。用户键入几个部分“ng”命令，使用自动完成来完成几个参数并列出上下文选项。\" />\n\n## 自动设置\n\nCLI 应该在你第一次使用它（v14+）时提示并要求你设置自动完成。只需回答 “Yes”，CLI 就会完成其余的工作。\n\n```\n $ ng serve ? Would you like to enable autocompletion? This will set up your terminal so pressing TAB while typing Angular CLI commands will show possible options and autocomplete arguments. (Enabling autocompletion will modify configuration files in your home directory.) Yes Appended `source <(ng completion script)` to `/home/my-username/.bashrc`. Restart your terminal or run: source <(ng completion script) to autocomplete `ng` commands. # Serve output...\n```\n\n如果你已经拒绝了提示，则不会再次询问。但你可以运行`ng completion`来自动做同样的事情。\n\n这会修改你的终端环境以加载 Angular CLI 的自动完成功能，但这不会更新你当前的终端会话。重新启动它或直接运行 `source <(ng completion script)` 以便在当前会话中启用自动完成。\n\n通过键入`ng ser<TAB>`来测试它，它应该自动完成为`ng serve` 。模棱两可的参数将显示所有可能的选项及其文档，例如`ng generate <TAB>` 。\n\n## 手动设置\n\n某些用户可能有高度自定义的终端设置，可能是配置文件使用开箱即用的结构，并已提交到源代码控制中。`ng completion`只会将 Angular 的设置附加到你当前 shell 的现有配置文件中，如果不存在，则创建一个。如果你想更好地控制此配置的确切位置，可以让 shell 在启动时运行来手动设置它：\n\n```bash\n source <(ng completion script)\n```\n\n这相当于 `ng completion` 将自动设置的内容，并在需要时为高级用户在其环境中提供更大的灵活性。\n\n## 平台支持\n\nAngular CLI 支持 MacOS 和 Linux 操作系统上的 Bash 和 Zsh shell 的自动完成。\n\nWindows 不支持在本机 shell 中使用自动完成，例如 Cmd 和 Powershell。但是，Angular CLI 支持通过 Git Bash 和[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/en-us/windows/wsl/)来使用 Bash 或 Zsh。\n\n## 全局安装\n\n自动完成的工作方式是把你的终端配置为在启动时调用 Angular CLI 以加载设置脚本。这意味着终端必须能够查找并执行 Angular CLI，通常通过将二进制文件放在用户的`$PATH`上的全局安装来实现。如果你收到`command not found: ng` ，请确保 CLI 是全局安装的，你可以用`-g`标志来完成：\n\n```bash\n npm install -g @angular/cli\n```"
+}

@@ -52,10 +52,8 @@ export interface DirectiveDecorator {
    * 要想定义一个指令，请为该类加上此装饰器，并提供元数据。
    *
    * ```ts
-   * import {Directive} from '
-   * ```
+   * import {Directive} from '@angular/core';
    *
-   * @angular /core';
    * @Directive ({
    *   selector: 'my-directive',
    * })
@@ -97,6 +95,7 @@ export interface DirectiveDecorator {
    *   selector: 'my-directive',
    * })
    * class MyDirective {}
+   *
    * @NgModule ({
    *   declarations: [MyDirective, SomeComponent],
    *   exports: [MyDirective], // making it available outside of this module
@@ -110,6 +109,8 @@ export interface DirectiveDecorator {
    *  - you do not re-declare a directive imported from another module.
    *  - the directive is included into the `exports` field as well if you want this directive to be
    *    accessible for components outside of the NgModule.
+   *
+   *
    * @Annotation
    */
   (obj?: Directive): TypeDecorator;
@@ -217,9 +218,6 @@ export interface Directive {
    * 下面的例子创建了一个带有两个可绑定属性的组件。
    *
    * ```typescript
-   *
-   * ```
-   *
    * @Component ({
    *   selector: 'bank-account',
    *   inputs: ['bankName', 'id: account-id'],
@@ -233,6 +231,7 @@ export interface Directive {
    *   id: string;
    * }
    * ```
+   *
    */
   inputs?: string[];
 
@@ -262,9 +261,6 @@ export interface Directive {
    * @usageNotes
    *
    * ```typescript
-   *
-   * ```
-   *
    * @Component ({
    *   selector: 'child-dir',
    *   outputs: [ 'bankNameChange' ]
@@ -273,6 +269,7 @@ export interface Directive {
    * class ChildDir {
    *  bankNameChange: EventEmitter<string> = new EventEmitter<string>();
    * }
+   *
    * @Component ({
    *   selector: 'main',
    *   template: `
@@ -287,6 +284,7 @@ export interface Directive {
    *   }
    * }
    * ```
+   *
    */
   outputs?: string[];
 
@@ -307,15 +305,13 @@ export interface Directive {
    * @usageNotes
    *
    * ```ts
-   *
-   * ```
-   *
    * @Directive ({
    *   selector: 'child-dir',
    *   exportAs: 'child'
    * })
    * class ChildDir {
    * }
+   *
    * @Component ({
    *   selector: 'main',
    *   template: `<child-dir #c="child"></child-dir>`
@@ -323,6 +319,7 @@ export interface Directive {
    * class MainComponent {
    * }
    * ```
+   *
    */
   exportAs?: string;
 
@@ -344,9 +341,6 @@ export interface Directive {
    * 下面的范例展示了如何定义这些查询以及到生命周期钩子中的哪个步骤才会有结果：
    *
    * ```ts
-   *
-   * ```
-   *
    * @Component ({
    *   selector: 'someDir',
    *   queries: {
@@ -368,6 +362,7 @@ export interface Directive {
    *   }
    * }
    * ```
+   *
    * @Annotation
    */
   queries?: {[key: string]: any};
@@ -402,15 +397,15 @@ export interface Directive {
    *   To listen to global events, add the target to the event name.
    *   The target can be `window`, `document` or `body`.
    *
-   *     它的 key 就是该指令想要监听的 DOM 事件。
-   *     要想监听全局事件，请把要监听的目标添加到事件名的前面。
-   *     这个目标可以是 `window`、`document` 或 `body`。
+   *   它的 key 就是该指令想要监听的 DOM 事件。
+   *   要想监听全局事件，请把要监听的目标添加到事件名的前面。
+   *   这个目标可以是 `window`、`document` 或 `body`。
    *
    * - The value is the statement to execute when the event occurs. If the
    *   statement evaluates to `false`, then `preventDefault` is applied on the DOM
    *   event. A handler method can refer to the `$event` local variable.
    *
-   *     它的 value 就是当该事件发生时要执行的语句。如果该语句返回 `false`，那么就会调用这个 DOM
+   *   它的 value 就是当该事件发生时要执行的语句。如果该语句返回 `false`，那么就会调用这个 DOM
    *   事件的 `preventDefault` 函数。 这个语句中可以引用局部变量 `$event` 来获取事件数据。
    *
    */
@@ -513,6 +508,7 @@ export interface ComponentDecorator {
    *
    * <code-example path="core/ts/metadata/directives.ts" region="component-input"></code-example>
    *
+   *
    * ### Setting component outputs
    *
    * ### 设置组件的输出属性
@@ -522,9 +518,7 @@ export interface ComponentDecorator {
    *
    * 下面的例子展示了两个事件发生器，它们定时发出事件。一个每隔一秒发出一个输出事件，另一个则隔五秒。
    *
-   * {
-   *
-   * @example core/ts/metadata/directives.ts region='component-output-interval'}
+   * {@example core/ts/metadata/directives.ts region='component-output-interval'}
    *
    * ### Injecting a class with a view provider
    *
@@ -541,6 +535,7 @@ export interface ComponentDecorator {
    *      return 'Hello ' + name + '!';
    *    }
    * }
+   *
    * @Directive ({
    *   selector: 'needs-greeter'
    * })
@@ -551,6 +546,7 @@ export interface ComponentDecorator {
    *     this.greeter = greeter;
    *   }
    * }
+   *
    * @Component ({
    *   selector: 'greet',
    *   viewProviders: [
@@ -624,6 +620,7 @@ export interface ComponentDecorator {
    *
    * To preserve sequences of whitespace characters, use the
    * `ngPreserveWhitespaces` attribute.
+   *
    * @Annotation
    */
   (obj: Component): TypeDecorator;
@@ -1011,9 +1008,6 @@ export interface InputDecorator {
    * 下面的例子创建了一个带有两个输入属性的组件，其中一个还指定了绑定名。
    *
    * ```typescript
-   *
-   * ```
-   *
    * @Component ({
    *   selector: 'bank-account',
    *   template: `
@@ -1031,6 +1025,7 @@ export interface InputDecorator {
    *   // this property is not bound, and is not automatically updated by Angular
    *   normalizedBankName: string;
    * }
+   *
    * @Component ({
    *   selector: 'app',
    *   template: `
@@ -1039,6 +1034,7 @@ export interface InputDecorator {
    * })
    * class App {}
    * ```
+   *
    * @see [Input and Output properties](guide/inputs-outputs)
    *
    * [输入和输出属性](guide/inputs-outputs)
@@ -1162,15 +1158,13 @@ export interface HostBindingDecorator {
    * 下面的例子创建了一个指令，它会对具有 `ngModel` 指令的 DOM 元素设置 `valid` 和 `invalid` 属性。
    *
    * ```typescript
-   *
-   * ```
-   *
    * @Directive ({selector: '[ngModel]'})
    * class NgModelStatus {
    *   constructor(public control: NgModel) {}
    * @HostBinding ('class.valid') get valid() { return this.control.valid; }
    * @HostBinding ('class.invalid') get invalid() { return this.control.invalid; }
    * }
+   *
    * @Component ({
    *   selector: 'app',
    *   template: `<input [(ngModel)]="prop">`,
@@ -1179,6 +1173,7 @@ export interface HostBindingDecorator {
    *   prop;
    * }
    * ```
+   *
    */
   (hostPropertyName?: string): any;
   new(hostPropertyName?: string): any;
@@ -1281,17 +1276,16 @@ export interface HostListener {
  * 下面的例子声明了一个指令，它会为按钮附加一个 `click` 监听器，并统计点击次数。
  *
  * ```ts
- *
- * ```
- *
  * @Directive ({selector: 'button[counting]'})
  * class CountClicks {
  *   numberOfClicks = 0;
+ *
  * @HostListener ('click', ['$event.target'])
  *   onClick(btn) {
  *     console.log('button', btn, 'number of clicks:', this.numberOfClicks++);
  *   }
  * }
+ *
  * @Component ({
  *   selector: 'app',
  *   template: '<button counting>Increment</button>',
@@ -1303,8 +1297,8 @@ export interface HostListener {
  * The following example registers another DOM event handler that listens for `Enter` key-press
  * events on the global `window`.
  * ``` ts
- * import { HostListener, Component } from "
- * @angular /core";
+ * import { HostListener, Component } from "@angular/core";
+ *
  * @Component ({
  *   selector: 'app',
  *   template: `<h1>Hello, you have pressed enter {{counter}} number of times!</h1> Press enter key
@@ -1330,6 +1324,7 @@ export interface HostListener {
  *
  * The global target names that can be used to prefix an event name are
  * `document:`, `window:` and `body:`.
+ *
  * @Annotation
  * @publicApi
  */

@@ -32,7 +32,7 @@ export interface ImportRewriter {
    * Optionally rewrite a reference to an imported symbol, changing either the binding prefix or the
    * symbol name itself.
    *
-   * （可选）重写对导入符号的引用，更改绑定前缀或符号名称本身。
+   *（可选）重写对导入符号的引用，更改绑定前缀或符号名称本身。
    *
    */
   rewriteSymbol(symbol: string, specifier: string): string;
@@ -40,7 +40,7 @@ export interface ImportRewriter {
   /**
    * Optionally rewrite the given module specifier in the context of a given file.
    *
-   * （可选）在给定文件的上下文中重写给定的模块说明符。
+   *（可选）在给定文件的上下文中重写给定的模块说明符。
    *
    */
   rewriteSpecifier(specifier: string, inContextOfFile: string): string;

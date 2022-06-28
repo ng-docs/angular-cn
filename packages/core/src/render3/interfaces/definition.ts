@@ -140,7 +140,7 @@ export interface DirectiveDef<T> {
    *
    * 将输入的缩小属性名称映射到它们的公共 API
    * 名称的字典，这些名称是它们的别名（如果有）或它们的原始未缩小属性名称（如 `@Input('alias')
-   * propertyName: any;` ）。
+   * propertyName: any;`）。
    *
    */
   readonly inputs: {[P in keyof T]: string};
@@ -163,7 +163,7 @@ export interface DirectiveDef<T> {
    *
    * 将输出的缩小属性名称映射到它们的公共 API
    * 名称的字典，这些名称是它们的别名（如果有）或它们的原始未缩小属性名称（如 `@Output('alias')
-   * propertyName: any;` ）。
+   * propertyName: any;`）。
    *
    */
   readonly outputs: {[P in keyof T]: string};
@@ -223,22 +223,22 @@ export interface DirectiveDef<T> {
    *   // static attributes (like `title`, `name`, `id`...)
    *   attr1, value1, attr2, value,
    *
-   * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...） attr1, value1, attr2, value,
+   * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...）attr1, value1, attr2, value,
    *
    *   // a single namespace value (like `x:id`)
    *   NAMESPACE_MARKER, namespaceUri1, name1, value1,
    *
-   * // 单个命名空间值（例如 `x:id` ） NAMESPACE_MARKER, namespaceUri1, name1, value1,
+   * // 单个命名空间值（例如 `x:id`）NAMESPACE_MARKER, namespaceUri1, name1, value1,
    *
    *   // another single namespace value (like `x:name`)
    *   NAMESPACE_MARKER, namespaceUri2, name2, value2,
    *
-   * // 另一个单个命名空间值（例如 `x:name` ） NAMESPACE_MARKER, namespaceUri2, name2, value2,
+   * // 另一个单个命名空间值（例如 `x:name`）NAMESPACE_MARKER, namespaceUri2, name2, value2,
    *
    *   // a series of CSS classes that will be applied to the element (no spaces)
    *   CLASSES_MARKER, class1, class2, class3,
    *
-   * // 将应用于元素的一系列 CSS 类（无空格） CLASSES_MARKER, class1, class2, class3,
+   * // 将应用于元素的一系列 CSS 类（无空格）CLASSES_MARKER, class1, class2, class3,
    *
    *   // a series of CSS styles (property + value) that will be applied to the element
    *   STYLES_MARKER, prop1, value1, prop2, value2
@@ -429,7 +429,7 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    *
    * - `Emulated` (default): Emulate native scoping of styles.
    *
-   *   `Emulated` （默认）：模拟样式的本机范围。
+   *   `Emulated`（默认）：模拟样式的本机范围。
    *
    * - `Native`: Use the native encapsulation mechanism of the renderer.
    *

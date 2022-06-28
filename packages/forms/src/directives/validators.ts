@@ -81,9 +81,6 @@ export type ValidationErrors = {
  * 下面的例子实现了 `Validator` 接口，以便用一个自定义的错误键来创建验证器指令。
  *
  * ```typescript
- *
- * ```
- *
  * @Directive ({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
@@ -94,6 +91,7 @@ export type ValidationErrors = {
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export interface Validator {
@@ -153,8 +151,8 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * Marking it `internal` (vs `protected`), so that this flag can be used in host bindings of
    * directive classes that extend this base class.
    *
-   * 将其标记为 `internal` （ vs `protected`
-   * ），以便此标志可以在扩展此基类的指令类的主机绑定中使用。
+   * 将其标记为 `internal`（vs `protected`
+   *），以便此标志可以在扩展此基类的指令类的主机绑定中使用。
    *
    * @internal
    */
@@ -167,8 +165,8 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * `[required]='false'`).
    *
    * 与指令选择器属性匹配的输入的名称（例如 `minlength` 的 `MinLengthDirective`
-   * ）。具有给定名称的输入可能包含配置信息（例如 `minlength='10'`
-   * ）或表明是否应启用验证器的标志（例如 `[required]='false'` ）。
+   *）。具有给定名称的输入可能包含配置信息（例如 `minlength='10'`
+   *）或表明是否应启用验证器的标志（例如 `[required]='false'`）。
    *
    * @internal
    */
@@ -227,7 +225,7 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * function with the logic specific to a particular validator directive.
    *
    * 根据输入确定此验证器是否应该处于活动状态。基类实现会检查输入是否已定义（如果值不同于 `null` 和
-   * `undefined` ）。扩展此基类的验证器类可以用特定于特定验证器指令的逻辑覆盖此函数。
+   * `undefined`）。扩展此基类的验证器类可以用特定于特定验证器指令的逻辑覆盖此函数。
    *
    */
   enabled(input: unknown): boolean {
@@ -253,7 +251,7 @@ export const MAX_VALIDATOR: StaticProvider = {
  * A directive which installs the {@link MaxValidator} for any `formControlName`,
  * `formControl`, or control with `ngModel` that also has a `max` attribute.
  *
- * 一个指令，它为任何 `formControlName` 、 `formControl` 或使用也具有 `max` 属性的 `ngModel`
+ * 一个指令，它为任何 `formControlName`、`formControl` 或使用也具有 `max` 属性的 `ngModel`
  * 的控件安装 {@link MaxValidator} 。
  *
  * @see [Form Validation](guide/form-validation)
@@ -321,7 +319,7 @@ export const MIN_VALIDATOR: StaticProvider = {
  * A directive which installs the {@link MinValidator} for any `formControlName`,
  * `formControl`, or control with `ngModel` that also has a `min` attribute.
  *
- * 一个指令，它为任何 `formControlName` 、 `formControl` 或使用也具有 `min` 属性的 `ngModel`
+ * 一个指令，它为任何 `formControlName`、`formControl` 或使用也具有 `min` 属性的 `ngModel`
  * 的控件安装 {@link MinValidator} 。
  *
  * @see [Form Validation](guide/form-validation)
@@ -389,7 +387,6 @@ export class MinValidator extends AbstractValidatorDirective {
  *
  * ```typescript
  * import { of } from 'rxjs';
- * ```
  *
  * @Directive ({
  *   selector: '[customAsyncValidator]',
@@ -402,6 +399,7 @@ export class MinValidator extends AbstractValidatorDirective {
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export interface AsyncValidator extends Validator {

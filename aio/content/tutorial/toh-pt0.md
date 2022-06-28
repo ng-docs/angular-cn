@@ -5,7 +5,7 @@
 You begin by creating an initial application using the Angular CLI.
 Throughout this tutorial, you'll modify and extend that starter application to create the Tour of Heroes application.
 
-首先，使用 Angular CLI 来创建最初的应用程序。 在本教程中，你将修改并扩展这个入门级的应用程序，以创建出《英雄之旅》应用。
+首先，使用 Angular CLI 来创建最初的应用程序。在本教程中，你将修改并扩展这个入门级的应用程序，以创建出《英雄之旅》应用。
 
 In this part of the tutorial, you'll do the following:
 
@@ -31,7 +31,7 @@ In this part of the tutorial, you'll do the following:
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
-  要查看本页所讲的范例程序，请参阅<live-example></live-example>。
+要查看本页所讲的范例程序，请参阅<live-example></live-example>。
 
 </div>
 
@@ -52,7 +52,7 @@ A workspace contains the files for one or more [projects](guide/glossary#project
 A project is the set of files that comprise an application or a library.
 For this tutorial, you will create a new workspace.
 
-Angular 的[工作区](guide/glossary#workspace)就是你开发应用所在的上下文环境。一个工作区包含一个或多个[项目](guide/glossary#project)所需的文件。 每个项目都是一组由应用、库或端到端（e2e）测试组成的文件集合。 在本教程中，你将创建一个新的工作区。
+Angular 的[工作区](guide/glossary#workspace)就是你开发应用所在的上下文环境。一个工作区包含一个或多个[项目](guide/glossary#project)所需的文件。每个项目都是一组由应用、库或端到端（e2e）测试组成的文件集合。在本教程中，你将创建一个新的工作区。
 
 To create a new workspace and an initial application project:
 
@@ -142,12 +142,12 @@ You should see the application running in your browser.
 The page you see is the *application shell*.
 The shell is controlled by an Angular **component** named `AppComponent`.
 
-你所看到的这个页面就是*应用的外壳*。 这个外壳是被一个名叫 `AppComponent` 的 Angular 组件控制的。
+你所看到的这个页面就是*应用的外壳*。这个外壳是被一个名叫 `AppComponent` 的 Angular 组件控制的。
 
 *Components* are the fundamental building blocks of Angular applications.
 They display data on the screen, listen for user input, and take action based on that input.
 
-*组件*是 Angular 应用中的基本构造块。 它们在屏幕上显示数据，监听用户输入，并且根据这些输入执行相应的动作。
+*组件*是 Angular 应用中的基本构造块。它们在屏幕上显示数据，监听用户输入，并且根据这些输入执行相应的动作。
 
 ## Make changes to the application
 
@@ -165,11 +165,11 @@ You'll find the implementation of the shell `AppComponent` distributed over thre
 | :---- | :------ |
 | 文件 | 详情 |
 | `app.component.ts` | The component class code, written in TypeScript. |
-| `app.component.ts` | 组件的类代码，这是用 TypeScript 写的。 |
+| `app.component.ts` | 组件的类代码，这是用 TypeScript 写的。|
 | `app.component.html` | The component template, written in HTML. |
-| `app.component.html` | 组件的模板，这是用 HTML 写的。 |
+| `app.component.html` | 组件的模板，这是用 HTML 写的。|
 | `app.component.css` | The component's private CSS styles. |
-| `app.component.css` | 组件的私有 CSS 样式。 |
+| `app.component.css` | 组件的私有 CSS 样式。|
 
 ### Change the application title
 
@@ -177,7 +177,7 @@ You'll find the implementation of the shell `AppComponent` distributed over thre
 
 Open the component class file (`app.component.ts`) and change the value of the `title` property to 'Tour of Heroes'.
 
-打开组件的类文件 (`app.component.ts`)，并把 `title` 属性的值修改为 'Tour of Heroes' （英雄之旅）。
+打开组件的类文件 (`app.component.ts`)，并把 `title` 属性的值修改为 'Tour of Heroes'（英雄之旅）。
 
 <code-example header="app.component.ts (class title property)" path="toh-pt0/src/app/app.component.ts" region="set-title"></code-example>
 
@@ -191,7 +191,7 @@ Replace it with the following line of HTML.
 The double curly braces are Angular's *interpolation binding* syntax.
 This interpolation binding presents the component's `title` property value inside the HTML header tag.
 
-双花括号语法是 Angular 的*插值绑定*语法。 这个插值绑定的意思是把组件的 `title` 属性的值绑定到 HTML 中的 `h1` 标记中。
+双花括号语法是 Angular 的*插值绑定*语法。这个插值绑定的意思是把组件的 `title` 属性的值绑定到 HTML 中的 `h1` 标记中。
 
 The browser refreshes and displays the new application title.
 
@@ -207,7 +207,7 @@ Most apps strive for a consistent look across the application.
 The CLI generated an empty `styles.css` for this purpose.
 Put your application-wide styles there.
 
-大多数应用都会努力让整个应用保持一致的外观。 因此，CLI 会生成一个空白的 `styles.css` 文件。 你可以把全应用级别的样式放进去。
+大多数应用都会努力让整个应用保持一致的外观。因此，CLI 会生成一个空白的 `styles.css` 文件。你可以把全应用级别的样式放进去。
 
 Open `src/styles.css` and add the code below to the file.
 

@@ -22,7 +22,7 @@ const NG_TEMPLATE_SELECTOR = 'ng-template';
 /**
  * Search the `TAttributes` to see if it contains `cssClassToMatch` (case insensitive)
  *
- * 搜索 `TAttributes` 以查看它是否包含 `cssClassToMatch` （不区分大小写）
+ * 搜索 `TAttributes` 以查看它是否包含 `cssClassToMatch`（不区分大小写）
  *
  * @param attrs `TAttributes` to search through.
  *
@@ -70,7 +70,7 @@ function isCssClassMatching(
 /**
  * Checks whether the `tNode` represents an inline template (e.g. `*ngFor`).
  *
- * 检查 `tNode` 是否表示内联模板（例如 `*ngFor` ）。
+ * 检查 `tNode` 是否表示内联模板（例如 `*ngFor`）。
  *
  * @param tNode current TNode
  *
@@ -102,7 +102,7 @@ export function isInlineTemplate(tNode: TNode): boolean {
  * - in the "projection" mode, we use a tag name potentially extracted from the \* syntax processing
  *   (applicable to TNodeType.Container only).
  *
- *   在“投影”模式下，我们使用可能从 \* 语法处理中提取的标签名称（仅适用于 TNodeType.Container ）。
+ *   在“投影”模式下，我们使用可能从 \* 语法处理中提取的标签名称（仅适用于 TNodeType.Container）。
  *
  */
 function hasTagAndTypeMatch(
@@ -282,8 +282,8 @@ function isPositive(mode: SelectorFlags): boolean {
  * @param isInlineTemplate true if the node being matched is an inline template (e.g. `*ngFor`)
  * rather than a manually expanded template node (e.g `<ng-template>`).
  *
- * 如果要匹配的节点是内联模板（例如 `*ngFor` ）而不是手动扩展的模板节点（例如 `<ng-template>`
- * ），则为 true 。
+ * 如果要匹配的节点是内联模板（例如 `*ngFor`）而不是手动扩展的模板节点（例如 `<ng-template>`
+ *），则为 true 。
  *
  * @param isProjectionMode true if we are matching against content projection otherwise we are
  * matching against directives.

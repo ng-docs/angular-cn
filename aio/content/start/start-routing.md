@@ -69,7 +69,7 @@ This section shows you how to define a route to show individual product details.
    The final segment is variable, inserting the `id` property of the current product.
    For example, the URL for a product with an `id` of 1 would be similar to `https://getting-started-myfork.stackblitz.io/products/1`.
 
-   `RouterLink` 指令可帮助你自定义 a 元素。在这里，路由或 URL 中包含一个固定的区段 `/products`。最后一段则是变量，插入当前产品的 `id`。 比如，`id` 为 1 的产品的 URL 是 `https://getting-started-myfork.stackblitz.io/products/1`。
+   `RouterLink` 指令可帮助你自定义 a 元素。在这里，路由或 URL 中包含一个固定的区段 `/products`。最后一段则是变量，插入当前产品的 `id`。比如，`id` 为 1 的产品的 URL 是 `https://getting-started-myfork.stackblitz.io/products/1`。
 
 1. Verify that the router works as intended by clicking the product name.
    The application should display the `ProductDetailsComponent`, which currently says "product-details works!"
@@ -126,7 +126,7 @@ In this section, you'll use the Angular Router to combine the `products` data an
    By injecting `ActivatedRoute`, you are configuring the component to use a service.
    The [Managing Data](start/start-data "Try it: Managing Data") step covers services in more detail.
 
-   通过注入 `ActivatedRoute`，你可以配置此组件以使用服务。 [管理数据](start/start-data "尝试一下：管理数据")那一步将更详细地介绍服务。
+   通过注入 `ActivatedRoute`，你可以配置此组件以使用服务。[管理数据](start/start-data "尝试一下：管理数据")那一步将更详细地介绍服务。
 
 1. In the `ngOnInit()` method, extract the `productId` from the route parameters and find the corresponding product in the `products` array.
 
@@ -139,7 +139,7 @@ In this section, you'll use the Angular Router to combine the `products` data an
    The URL that matches the route provides the `productId` .
    Angular uses the `productId` to display the details for each unique product.
 
-   路由参数与你在此路由中定义的路径变量相对应。要访问路由参数，我们使用 `route.snapshot` ，它是一个 `ActivatedRouteSnapshot`，其中包含有关该特定时刻的活动路由信息。与此路由匹配的 URL 提供了 `productId`。Angular 会使用 `productId` 来显示每个唯一产品的详情。
+   路由参数与你在此路由中定义的路径变量相对应。要访问路由参数，我们使用 `route.snapshot`，它是一个 `ActivatedRouteSnapshot`，其中包含有关该特定时刻的活动路由信息。与此路由匹配的 URL 提供了 `productId`。Angular 会使用 `productId` 来显示每个唯一产品的详情。
 
 1. Update the `ProductDetailsComponent` template to display product details with an `*ngIf`.
    If a product exists, the `<div>` renders with a name, price, and description.
@@ -152,7 +152,7 @@ In this section, you'll use the Angular Router to combine the `products` data an
    A pipe is a way you can transform data in your HTML template.
    For more information about Angular pipes, see [Pipes](guide/pipes "Pipes").
 
-   `<h4>{{ product.price | currency }}</h4>` 这一行，使用 `currency` 管道将 `product.price` 从数字转换为货币字符串。管道是一种可以在 HTML 模板中转换数据的方式。有关 Angular 管道的更多信息，请参见[管道](guide/pipes "管道") 。
+   `<h4>{{ product.price | currency }}</h4>` 这一行，使用 `currency` 管道将 `product.price` 从数字转换为货币字符串。管道是一种可以在 HTML 模板中转换数据的方式。有关 Angular 管道的更多信息，请参见[管道](guide/pipes "管道")。
 
 When users click on a name in the product list, the router navigates them to the distinct URL for the product, shows the `ProductDetailsComponent`, and displays the product details.
 
@@ -166,7 +166,7 @@ When users click on a name in the product list, the router navigates them to the
 
 For more information about the Angular Router, see [Routing & Navigation](guide/router "Routing & Navigation guide").
 
-有关 Angular 路由器的更多信息，请参见[路由与导航](guide/router "路由与导航指南") 。
+有关 Angular 路由器的更多信息，请参见[路由与导航](guide/router "路由与导航指南")。
 
 ## What's next
 

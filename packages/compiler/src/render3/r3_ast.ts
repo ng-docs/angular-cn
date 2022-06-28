@@ -56,7 +56,7 @@ export class BoundText implements Node {
  * `valueSpan` may not be present in cases where there is no value `<div a></div>`.
  * `keySpan` may also not be present for synthetic attributes from ICU expansions.
  *
- * 在不存在值 `<div a></div>` 的情况下，可能不存在 `valueSpan` 。对于 ICU 扩展的合成属性， `keySpan`
+ * 在不存在值 `<div a></div>` 的情况下，可能不存在 `valueSpan` 。对于 ICU 扩展的合成属性，`keySpan`
  * 也可能不存在。
  *
  */

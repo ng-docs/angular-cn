@@ -95,7 +95,7 @@ The observable continuously updates the view with the current time.
 You can use the `filter()` operator from RxJS to look for events of interest, and subscribe to them in order to make decisions based on the sequence of events in the navigation process.
 Here's an example:
 
-[`Router.events`](api/router/Router#events) 以可观察对象的形式提供了其事件。 你可以使用 RxJS 中的 `filter()` 操作符来找到感兴趣的事件，并且订阅它们，以便根据浏览过程中产生的事件序列作出决定。 例子如下：
+[`Router.events`](api/router/Router#events) 以可观察对象的形式提供了其事件。你可以使用 RxJS 中的 `filter()` 操作符来找到感兴趣的事件，并且订阅它们，以便根据浏览过程中产生的事件序列作出决定。例子如下：
 
 <code-example header="Router events" path="observables-in-angular/src/main.ts" region="router"></code-example>
 
@@ -116,7 +116,7 @@ The [`FormControl`](api/forms/FormControl) properties `valueChanges` and `status
 Subscribing to an observable form-control property is a way of triggering application logic within the component class.
 For example:
 
-响应式表单具有一些属性，它们使用可观察对象来监听表单控件的值。 [`FormControl`](api/forms/FormControl) 的 `valueChanges` 属性和 `statusChanges` 属性包含了会发出变更事件的可观察对象。订阅可观察的表单控件属性是在组件类中触发应用逻辑的途径之一。比如：
+响应式表单具有一些属性，它们使用可观察对象来监听表单控件的值。[`FormControl`](api/forms/FormControl) 的 `valueChanges` 属性和 `statusChanges` 属性包含了会发出变更事件的可观察对象。订阅可观察的表单控件属性是在组件类中触发应用逻辑的途径之一。比如：
 
 <code-example header="Reactive forms" path="observables-in-angular/src/main.ts" region="forms"></code-example>
 

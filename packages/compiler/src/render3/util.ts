@@ -120,7 +120,7 @@ export interface MaybeForwardRefExpression<T extends o.Expression = o.Expression
    * evaluated. Instead it must be wrapped in a function closure that will be evaluated lazily to
    * allow the definition of the expression to be evaluated first.
    *
-   * 否则， `expression` 会被包装在对 `forwardRef()`
+   * 否则，`expression` 会被包装在对 `forwardRef()`
    * 的调用中，并且不能被热切估算。相反，它必须包装在一个将延迟估算的函数闭包中，以允许首先估算表达式的定义。
    *
    * In full AOT compilation it can be safe to unwrap the `forwardRef()` call up front if the

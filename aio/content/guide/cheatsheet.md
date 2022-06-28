@@ -2,249 +2,198 @@
 
 <h1 class="no-toc">Cheat Sheet</h1>
 
-<h1 class="no-toc">备忘单</h1>
+<h1 class="no-toc">速查表</h1>
 
 | Bootstrapping | Details |
 | :------------ | :------ |
 | 引导 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { platformBrowserDynamic } from '&commat;angular/platform-browser-dynamic'; </code-example> | Import `platformBrowserDynamic` from `@angular/platform-browser-dynamic`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { platformBrowserDynamic } from '&commat;angular/platform-browser-dynamic'; </code-example> | 从 `@angular/platform-browser-dynamic` 导入 `platformBrowserDynamic` 。 |
-|  | Import `platformBrowserDynamic` from `@angular/platform-browser-dynamic`. |
-|  | 从 `@angular/platform-browser-dynamic` 导入 `platformBrowserDynamic` 。 |
 | <code-example format="typescript" hideCopy language="typescript"> platformBrowserDynamic().bootstrapModule(AppModule); </code-example> | Bootstraps the application, using the root component from the specified `NgModule`. |
-|  | 用 `NgModule` 中指定的根组件进行启动。 |
+| <code-example format="typescript" hideCopy language="typescript"> platformBrowserDynamic().bootstrapModule(AppModule); </code-example> | 用 `NgModule` 中指定的根组件进行启动。|
 
 | NgModules | Details |
 | :-------- | :------ |
 | NgModules | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { NgModule } from '&commat;angular/core'; </code-example> | Import `NgModule` from `@angular/core`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { NgModule } from '&commat;angular/core'; </code-example> | 从 `@angular/core` 导入 `NgModule` 。 |
-|  | Import `NgModule` from `@angular/core`. |
-|  | 从 `@angular/core` 导入 `NgModule` 。 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &NewLine;&nbsp; declarations: &hellip;, &NewLine;&nbsp; imports: &hellip;, &NewLine;&nbsp; exports: &hellip;, &NewLine;&nbsp; providers: &hellip;, &NewLine;&nbsp; bootstrap: &hellip; &NewLine;}) &NewLine;class MyModule {} </code-example> | Defines a module that contains components, directives, pipes, and providers. |
-|  | 定义一个模块，其中可以包含组件、指令、管道和服务提供者。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &NewLine;&nbsp; declarations: &hellip;, &NewLine;&nbsp; imports: &hellip;, &NewLine;&nbsp; exports: &hellip;, &NewLine;&nbsp; providers: &hellip;, &NewLine;&nbsp; bootstrap: &hellip; &NewLine;}) &NewLine;class MyModule {} </code-example> | 定义一个模块，其中可以包含组件、指令、管道和服务提供者。|
 | <code-example format="typescript" hideCopy language="typescript"> declarations: [ &NewLine;&nbsp; MyRedComponent, &NewLine;&nbsp; MyBlueComponent, &NewLine;&nbsp; MyDatePipe &NewLine;] </code-example> | List of components, directives, and pipes that belong to this module. |
-|  | 属于当前模块的组件、指令和管道的列表。 |
+| <code-example format="typescript" hideCopy language="typescript"> declarations: [ &NewLine;&nbsp; MyRedComponent, &NewLine;&nbsp; MyBlueComponent, &NewLine;&nbsp; MyDatePipe &NewLine;] </code-example> | 属于当前模块的组件、指令和管道的列表。|
 | <code-example format="typescript" hideCopy language="typescript"> imports: [ &NewLine;&nbsp; BrowserModule, &NewLine;&nbsp; SomeOtherModule &NewLine;] </code-example> | List of modules to import into this module. Everything from the imported modules is available to `declarations` of this module. |
-|  | 本模块所导入的模块列表。 |
+| <code-example format="typescript" hideCopy language="typescript"> imports: [ &NewLine;&nbsp; BrowserModule, &NewLine;&nbsp; SomeOtherModule &NewLine;] </code-example> | 本模块所导入的模块列表。|
 | <code-example format="typescript" hideCopy language="typescript"> exports: [ &NewLine;&nbsp; MyRedComponent, &NewLine;&nbsp; MyDatePipe &NewLine;] </code-example> | List of components, directives, and pipes visible to modules that import this module. |
-|  | 那些导入了本模块的模块所能看到的组件、指令和管道的列表。 |
+| <code-example format="typescript" hideCopy language="typescript"> exports: [ &NewLine;&nbsp; MyRedComponent, &NewLine;&nbsp; MyDatePipe &NewLine;] </code-example> | 那些导入了本模块的模块所能看到的组件、指令和管道的列表。|
 | <code-example format="typescript" hideCopy language="typescript"> providers: [ &NewLine;&nbsp; MyService, &NewLine;&nbsp; { provide: &hellip; } &NewLine;] </code-example> | List of dependency injection providers visible both to the contents of this module and to importers of this module. |
-|  | 依赖注入提供者的列表，本模块以及本模块导入的所有模块中的内容都可以看见它们。 |
+| <code-example format="typescript" hideCopy language="typescript"> providers: [ &NewLine;&nbsp; MyService, &NewLine;&nbsp; { provide: &hellip; } &NewLine;] </code-example> | 依赖注入提供者的列表，本模块以及本模块导入的所有模块中的内容都可以看见它们。|
 | <code-example format="typescript" hideCopy language="typescript"> bootstrap: [MyAppComponent] </code-example> | List of components to bootstrap when this module is bootstrapped. |
-|  | 当本模块启动时，随之启动的组件列表。 |
+| <code-example format="typescript" hideCopy language="typescript"> bootstrap: [MyAppComponent] </code-example> | 当本模块启动时，随之启动的组件列表。|
 
 | Template syntax | Details |
 | :-------------- | :------ |
 | 模板语法 | 详情 |
 | <code-example format="html" hideCopy language="html"> &lt;input [value]="firstName"&gt; </code-example> | Binds property `value` to the result of expression `firstName`. |
-|  | 把 `value` 属性绑定到表达式 `firstName`。 |
+| <code-example format="html" hideCopy language="html"> &lt;input [value]="firstName"&gt; </code-example> | 把 `value` 属性绑定到表达式 `firstName`。|
 | <code-example format="html" hideCopy language="html"> &lt;div [attr.role]="myAriaRole"&gt; </code-example> | Binds attribute `role` to the result of expression `myAriaRole`. |
-|  | 把属性（Attribute）`role` 绑定到表达式 `myAriaRole` 的结果。 |
+| <code-example format="html" hideCopy language="html"> &lt;div [attr.role]="myAriaRole"&gt; </code-example> | 把属性（Attribute）`role` 绑定到表达式 `myAriaRole` 的结果。|
 | <code-example format="html" hideCopy language="html"> &lt;div [class.extra-sparkle]="isDelightful"&gt; </code-example> | Binds the presence of the CSS class `extra-sparkle` on the element to the truthiness of the expression `isDelightful`. |
-|  | 根据 `isDelightful` 表达式的结果是否为真，决定 CSS 类 `extra-sparkle` 是否出现在当前元素上。 |
+| <code-example format="html" hideCopy language="html"> &lt;div [class.extra-sparkle]="isDelightful"&gt; </code-example> | 根据 `isDelightful` 表达式的结果是否为真，决定 CSS 类 `extra-sparkle` 是否出现在当前元素上。|
 | <code-example format="html" hideCopy language="html"> &lt;div [style.width.px]="mySize"&gt; </code-example> | Binds style property `width` to the result of expression `mySize` in pixels. Units are optional. |
-|  | 把 CSS 样式属性 `width` 的 px（像素）值绑定到表达式 `mySize` 的结果。单位是可选的。 |
+| <code-example format="html" hideCopy language="html"> &lt;div [style.width.px]="mySize"&gt; </code-example> | 把 CSS 样式属性 `width` 的 px（像素）值绑定到表达式 `mySize` 的结果。单位是可选的。|
 | <code-example format="html" hideCopy language="html"> &lt;button (click)="readRainbow(&dollar;event)"&gt; </code-example> | Calls method `readRainbow` when a click event is triggered on this button element (or its children) and passes in the event object. |
-|  | 当这个按钮元素（及其子元素）上的 click 事件触发时，调用方法 `readRainbow`，并把这个事件对象作为参数传进去。 |
+| <code-example format="html" hideCopy language="html"> &lt;button (click)="readRainbow(&dollar;event)"&gt; </code-example> | 当这个按钮元素（及其子元素）上的 click 事件触发时，调用方法 `readRainbow`，并把这个事件对象作为参数传进去。|
 | <code-example format="html" hideCopy language="html"> &lt;div title="Hello {{ponyName}}"&gt; </code-example> | Binds a property to an interpolated string, for example, "Hello Seabiscuit". Equivalent to: <code-example format="html" hideCopy language="html"> &lt;div [title]="'Hello ' + ponyName"&gt; </code-example> |
 | <code-example format="html" hideCopy language="html"> &lt;div title="Hello {{ponyName}}"&gt; </code-example> | 将属性绑定到插值字符串，比如“Hello Seabiscuit”。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;div [title]="'Hello ' + ponyName"></code-example> |
-|  | Binds a property to an interpolated string, for example, "Hello Seabiscuit". Equivalent to: <code-example format="html" hideCopy language="html"> &lt;div [title]="'Hello ' + ponyName"&gt; </code-example> |
-|  | 将属性绑定到插值字符串，比如“Hello Seabiscuit”。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;div [title]="'Hello ' + ponyName"></code-example> |
 | <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Hello {{ponyName}} &NewLine;&lt;/p&gt; </code-example> | Binds text content to an interpolated string, for example, "Hello Seabiscuit". |
-| <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Hello {{ponyName}} &NewLine;&lt;/p&gt; </code-example> | 把文本内容绑定到插值字符串（如"Hello Seabiscuit"）。 |
+| <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Hello {{ponyName}} &NewLine;&lt;/p&gt; </code-example> | 把文本内容绑定到插值字符串（如"Hello Seabiscuit"）。|
 | <code-example format="html" hideCopy language="html"> &lt;my-cmp [(title)]="name"&gt; </code-example> | Sets up two-way data binding. Equivalent to: <code-example format="html" hideCopy language="html"> &lt;my-cmp [title]="name" (titleChange)="name=&dollar;event"&gt; </code-example> |
-| <code-example format="html" hideCopy language="html"> &lt;my-cmp [(title)]="name"&gt; </code-example> | 设置双向数据绑定。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;my-cmp [title]="name" (titleChange)="name=$event"></code-example> |
-|  | Sets up two-way data binding. Equivalent to: <code-example format="html" hideCopy language="html"> &lt;my-cmp [title]="name" (titleChange)="name=&dollar;event"&gt; </code-example> |
-|  | 设置双向数据绑定。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;my-cmp [title]="name" (titleChange)="name=$event"></code-example> |
+| <code-example format="html" hideCopy language="html"> &lt;my-cmp [(title)]="name"&gt; </code-example> | 建立双向数据绑定。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;my-cmp [title]="name" (titleChange)="name=$event"></code-example> |
 | <code-example format="html" hideCopy language="html"> &lt;video &num;movieplayer &hellip;&gt;&lt;/video&gt; &NewLine;&lt;button (click)="movieplayer.play()"&gt; &NewLine;&nbsp; Play &NewLine;&lt;/button&gt; </code-example> | Creates a local variable `movieplayer` that provides access to the `video` element instance in data-binding and event-binding expressions in the current template. |
-|  | 创建一个局部变量 `movieplayer`，支持在当前模板的数据绑定和事件绑定表达式中访问 `video` 元素的实例。 |
+| <code-example format="html" hideCopy language="html"> &lt;video &num;movieplayer &hellip;&gt;&lt;/video&gt; &NewLine;&lt;button (click)="movieplayer.play()"&gt; &NewLine;&nbsp; Play &NewLine;&lt;/button&gt; </code-example> | 创建一个局部变量 `movieplayer`，支持在当前模板的数据绑定和事件绑定表达式中访问 `video` 元素的实例。|
 | <code-example format="html" hideCopy language="html"> &lt;p &ast;myUnless="myExpression"&gt; &NewLine;&nbsp; &hellip; &NewLine;&lt;/p&gt; </code-example> | The asterisk (`*`) character turns the current element into an embedded template. Equivalent to: <code-example format="html" hideCopy language="html"> &lt;ng-template [myUnless]="myExpression"&gt; &NewLine;&nbsp; &lt;p&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/p&gt; &NewLine;&lt;/ng-template&gt; </code-example> |
 | <code-example format="html" hideCopy language="html"> &lt;p &ast;myUnless="myExpression"&gt; &NewLine;&nbsp; &hellip; &NewLine;&lt;/p&gt; </code-example> | 星号 ( `*` ) 字符将当前元素转换为嵌入式模板。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;ng-template [myUnless]="myExpression"> &#x3C;p> … &#x3C;/p> &#x3C;/ng-template></code-example> |
-|  | The asterisk (`*`) character turns the current element into an embedded template. Equivalent to: <code-example format="html" hideCopy language="html"> &lt;ng-template [myUnless]="myExpression"&gt; &NewLine;&nbsp; &lt;p&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/p&gt; &NewLine;&lt;/ng-template&gt; </code-example> |
-|  | 星号 ( `*` ) 字符将当前元素转换为嵌入式模板。等效于：<code-example format="html" hidecopy="" language="html">&#x3C;ng-template [myUnless]="myExpression"> &#x3C;p> … &#x3C;/p> &#x3C;/ng-template></code-example> |
 | <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Card No.: {{cardNumber &verbar; myCardNumberFormatter}} &NewLine;&lt;/p&gt; </code-example> | Transforms the current value of expression `cardNumber` using the pipe called `myCardNumberFormatter`. |
-|  | 使用名为 `myCardNumberFormatter` 的管道转换表达式 `cardNumber` 的当前值。 |
+| <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Card No.: {{cardNumber &verbar; myCardNumberFormatter}} &NewLine;&lt;/p&gt; </code-example> | 使用名为 `myCardNumberFormatter` 的管道转换表达式 `cardNumber` 的当前值。|
 | <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Employer: {{employer?.companyName}} &NewLine;&lt;/p&gt; </code-example> | The safe navigation operator (`?`) means that the `employer` field is optional and if `undefined`, the rest of the expression should be ignored. |
-|  | 安全导航操作符（`?`）表示 `employer` 字段是可选的，如果它是 `undefined`，那么表达式其余的部分就会被忽略，并返回 `undefined`。 |
+| <code-example format="html" hideCopy language="html"> &lt;p&gt; &NewLine;&nbsp; Employer: {{employer?.companyName}} &NewLine;&lt;/p&gt; </code-example> | 安全导航操作符（`?`）表示 `employer` 字段是可选的，如果它是 `undefined`，那么表达式其余的部分就会被忽略，并返回 `undefined`。|
 | <code-example format="html" hideCopy language="html"> &lt;svg:rect x="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="100" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height="100"/&gt; </code-example> | An SVG snippet template needs an `svg:` prefix on its root element to disambiguate the SVG element from an HTML component. |
-|  | 模板中的 SVG 片段需要给它的根元素加上 `svg:` 前缀，以便把 SVG 元素和 HTML 元素区分开。 |
+| <code-example format="html" hideCopy language="html"> &lt;svg:rect x="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="100" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height="100"/&gt; </code-example> | 模板中的 SVG 片段需要给它的根元素加上 `svg:` 前缀，以便把 SVG 元素和 HTML 元素区分开。|
 | <code-example format="html" hideCopy language="html"> &lt;svg&gt; &NewLine;&nbsp; &lt;rect x="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="100" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height="100"/&gt; &NewLine;&lt;/svg&gt; </code-example> | An `<svg>` root element is detected as an SVG element automatically, without the prefix. |
-|  | 以 `<svg>` 作为根元素时会自动识别为 SVG 元素，不需要前缀。 |
+| <code-example format="html" hideCopy language="html"> &lt;svg&gt; &NewLine;&nbsp; &lt;rect x="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y="0" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="100" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height="100"/&gt; &NewLine;&lt;/svg&gt; </code-example> | 以 `<svg>` 作为根元素时会自动识别为 SVG 元素，不需要前缀。|
 
 | Built-in directives | Details |
 | :------------------ | :------ |
-| Built-in directives | 详情 |
+| 内置指令 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { CommonModule } from '&commat;angular/common'; </code-example> | Import `CommonModule` from `@angular/common`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { CommonModule } from '&commat;angular/common'; </code-example> | 从 `@angular/common` 导入 `CommonModule` 。 |
-|  | Import `CommonModule` from `@angular/common`. |
-|  | 从 `@angular/common` 导入 `CommonModule` 。 |
 | <code-example format="html" hideCopy language="html"> &lt;section &ast;ngIf="showSection"&gt; </code-example> | Removes or recreates a portion of the DOM tree based on the `showSection` expression. |
-|  | 根据 `showSection` 表达式的结果，移除或重新创建 DOM 树的一部分。 |
+| <code-example format="html" hideCopy language="html"> &lt;section &ast;ngIf="showSection"&gt; </code-example> | 根据 `showSection` 表达式的结果，移除或重新创建 DOM 树的一部分。|
 | <code-example format="html" hideCopy language="html"> &lt;li &ast;ngFor="let item of list"&gt; </code-example> | Turns the `li` element and its contents into a template, and uses that to instantiate a view for each item in list. |
-| <code-example format="html" hideCopy language="html"> &lt;li &ast;ngFor="let item of list"&gt; </code-example> | 将 `li` 元素及其内容转换为模板，并用它来实例化列表中的每个条目的视图。 |
-|  | Turns the `li` element and its contents into a template, and uses that to instantiate a view for each item in list. |
-|  | 将 `li` 元素及其内容转换为模板，并用它来实例化列表中的每个条目的视图。 |
+| <code-example format="html" hideCopy language="html"> &lt;li &ast;ngFor="let item of list"&gt; </code-example> | 将 `li` 元素及其内容转换为模板，并用它来实例化列表中的每个条目的视图。|
 | <code-example format="html" hideCopy language="html"> &lt;div [ngSwitch]="conditionExpression"&gt;&NewLine;&nbsp; &lt;ng-template [ngSwitchCase]="case1Exp"&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt;&NewLine;&nbsp; &lt;ng-template ngSwitchCase="case2LiteralString"&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt;&NewLine;&nbsp; &lt;ng-template ngSwitchDefault&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt; &NewLine;&lt;/div&gt; </code-example> | Conditionally swaps the contents of the `div` by selecting one of the embedded templates based on the current value of `conditionExpression`. |
-| <code-example format="html" hideCopy language="html"> &lt;div [ngSwitch]="conditionExpression"&gt;&NewLine;&nbsp; &lt;ng-template [ngSwitchCase]="case1Exp"&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt;&NewLine;&nbsp; &lt;ng-template ngSwitchCase="case2LiteralString"&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt;&NewLine;&nbsp; &lt;ng-template ngSwitchDefault&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt; &NewLine;&lt;/div&gt; </code-example> | 通过根据 `conditionExpression` 的当前值选择嵌入式模板之一，有条件地交换 `div` 的内容。 |
-|  | Conditionally swaps the contents of the `div` by selecting one of the embedded templates based on the current value of `conditionExpression`. |
-|  | 通过根据 `conditionExpression` 的当前值选择嵌入式模板之一，有条件地交换 `div` 的内容。 |
+| <code-example format="html" hideCopy language="html"> &lt;div [ngSwitch]="conditionExpression"&gt;&NewLine;&nbsp; &lt;ng-template [ngSwitchCase]="case1Exp"&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt;&NewLine;&nbsp; &lt;ng-template ngSwitchCase="case2LiteralString"&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt;&NewLine;&nbsp; &lt;ng-template ngSwitchDefault&gt; &NewLine;&nbsp;&nbsp;&nbsp; &hellip; &NewLine;&nbsp; &lt;/ng-template&gt; &NewLine;&lt;/div&gt; </code-example> | 通过根据 `conditionExpression` 的当前值选择嵌入式模板之一，有条件地交换 `div` 的内容。|
 | <code-example format="html" hideCopy language="html"> &lt;div [ngClass]="{'active': isActive, &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'disabled': isDisabled}"&gt; </code-example> | Binds the presence of CSS classes on the element to the truthiness of the associated map values. The right-hand expression should return `{class-name: true/false}` map. |
-| <code-example format="html" hideCopy language="html"> &lt;div [ngClass]="{'active': isActive, &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'disabled': isDisabled}"&gt; </code-example> | 将元素上存在的 CSS 类绑定到关联的映射值的真实性。右侧的表达式应返回 `{class-name: true/false}` 映射表。 |
-|  | Binds the presence of CSS classes on the element to the truthiness of the associated map values. The right-hand expression should return `{class-name: true/false}` map. |
-|  | 将元素上存在的 CSS 类绑定到关联的映射值的真实性。右侧的表达式应返回 `{class-name: true/false}` 映射表。 |
+| <code-example format="html" hideCopy language="html"> &lt;div [ngClass]="{'active': isActive, &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'disabled': isDisabled}"&gt; </code-example> | 将元素上存在的 CSS 类绑定到关联的映射值的真实性。右侧的表达式应返回 `{class-name: true/false}` 映射表。|
 | <code-example format="html" hideCopy language="html"> &lt;div [ngStyle]="{'property': 'value'}"&gt; &NewLine;&lt;div [ngStyle]="dynamicStyles()"&gt; </code-example> | Allows you to assign styles to an HTML element using CSS. You can use CSS directly, as in the first example, or you can call a method from the component. |
-|  | 允许你使用 CSS 为 HTML 元素指定样式。你可以像第一个例子那样直接使用 CSS，也可以调用组件中的方法。 |
+| <code-example format="html" hideCopy language="html"> &lt;div [ngStyle]="{'property': 'value'}"&gt; &NewLine;&lt;div [ngStyle]="dynamicStyles()"&gt; </code-example> | 允许你使用 CSS 为 HTML 元素指定样式。你可以像第一个例子那样直接使用 CSS，也可以调用组件中的方法。|
 
 | Forms | Details |
 | :---- | :------ |
 | 表单 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { FormsModule } from '&commat;angular/forms'; </code-example> | Import `FormsModule` from `@angular/forms`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { FormsModule } from '&commat;angular/forms'; </code-example> | 从 `@angular/forms` 导入 `FormsModule` 。 |
-|  | Import `FormsModule` from `@angular/forms`. |
-|  | 从 `@angular/forms` 导入 `FormsModule` 。 |
 | <code-example format="html" hideCopy language="html"> &lt;input [(ngModel)]="userName"&gt; </code-example> | Provides two-way data-binding, parsing, and validation for form controls. |
-|  | 为表单控件提供双向数据绑定、解析和验证功能。 |
+| <code-example format="html" hideCopy language="html"> &lt;input [(ngModel)]="userName"&gt; </code-example> | 为表单控件提供双向数据绑定、解析和验证功能。|
 
 | Class decorators | Details |
 | :--------------- | :------ |
 | 类装饰器 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { Directive, &hellip; } from '&commat;angular/core'; </code-example> | Import `Directive, &hellip;` from `@angular/core';`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { Directive, &hellip; } from '&commat;angular/core'; </code-example> | 导入 `Directive, &hellip;` 来自 `@angular/core';` . |
-|  | Import `Directive, &hellip;` from `@angular/core';`. |
-|  | 导入 `Directive, &hellip;` 来自 `@angular/core';` . |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Component({&hellip;}) &NewLine;class MyComponent() {} </code-example> | Declares that a class is a component and provides metadata about the component. |
-|  | 声明一个类是组件，并提供该组件的元数据。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({&hellip;}) &NewLine;class MyComponent() {} </code-example> | 声明一个类是组件，并提供该组件的元数据。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({&hellip;}) &NewLine;class MyDirective() {} </code-example> | Declares that a class is a directive and provides metadata about the directive. |
-|  | 声明一个类是指令，并提供该指令的元数据。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({&hellip;}) &NewLine;class MyDirective() {} </code-example> | 声明一个类是指令，并提供该指令的元数据。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({&hellip;}) &NewLine;class MyPipe() {} </code-example> | Declares that a class is a pipe and provides metadata about the pipe. |
-|  | 声明一个类是管道，并提供该管道的元数据。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({&hellip;}) &NewLine;class MyPipe() {} </code-example> | 声明一个类是管道，并提供该管道的元数据。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;class MyService() {} </code-example> | Declares that a class can be provided and injected by other classes. Without this decorator, the compiler won't generate enough metadata to allow the class to be created properly when it's injected somewhere. |
-|  | 声明某个类可以注册为提供者，并能被另一个类注入。如果没有该装饰器，编译器就不会生成足够的元数据，当它被注入到别处时，就无法正常创建该类。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;class MyService() {} </code-example> | 声明某个类可以注册为提供者，并能被另一个类注入。如果没有该装饰器，编译器就不会生成足够的元数据，当它被注入到别处时，就无法正常创建该类。|
 
 | Directive configuration | Details |
 | :---------------------- | :------ |
 | 指令配置项 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &NewLine;&nbsp; property1: value1, &NewLine;&nbsp; &hellip; &NewLine;}) </code-example> | Add `property1` property with `value1` value to Directive. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &NewLine;&nbsp; property1: value1, &NewLine;&nbsp; &hellip; &NewLine;}) </code-example> | 将具有 `value1` 值的 `property1` 属性添加到指令。 |
-|  | Add `property1` property with `value1` value to Directive. |
-|  | 将具有 `value1` 值的 `property1` 属性添加到指令。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &NewLine;&nbsp; property1: value1, &NewLine;&nbsp; &hellip; &NewLine;}) </code-example> | 将具有 `value1` 值的 `property1` 属性添加到指令。|
 | <code-example format="typescript" hideCopy language="typescript"> selector: '.cool-button:not(a)' </code-example> | Specifies a CSS selector that identifies this directive within a template. Supported selectors include `element`, `[attribute]`, `.class`, and `:not()`. <br /> Does not support parent-child relationship selectors. |
-| <code-example format="typescript" hideCopy language="typescript"> selector: '.cool-button:not(a)' </code-example> | 指定一个 CSS 选择器，该选择器在模板中标识此指令。支持的选择器包括 `element` 、 `[attribute]` 、 `.class` 和 `:not()` 。<br />不支持父子关系选择器。 |
-|  | Specifies a CSS selector that identifies this directive within a template. Supported selectors include `element`, `[attribute]`, `.class`, and `:not()`. <br /> Does not support parent-child relationship selectors. |
-|  | 指定一个 CSS 选择器，该选择器在模板中标识此指令。支持的选择器包括 `element` 、 `[attribute]` 、 `.class` 和 `:not()` 。<br />不支持父子关系选择器。 |
+| <code-example format="typescript" hideCopy language="typescript"> selector: '.cool-button:not(a)' </code-example> | 指定一个 CSS 选择器，该选择器在模板中标识此指令。支持的选择器包括 `element` 、 `[attribute]` 、 `.class` 和 `:not()`。<br />不支持父子关系选择器。|
 | <code-example format="typescript" hideCopy language="typescript"> providers: [ &NewLine;&nbsp; MyService, &NewLine;&nbsp; { provide: &hellip; } &NewLine;] </code-example> | List of dependency injection providers for this directive and its children. |
-|  | 该指令及其子指令的依赖注入提供者列表。 |
+| <code-example format="typescript" hideCopy language="typescript"> providers: [ &NewLine;&nbsp; MyService, &NewLine;&nbsp; { provide: &hellip; } &NewLine;] </code-example> | 该指令及其子指令的依赖注入提供者列表。|
 
 | Component configuration <br /> `@Component` extends `@Directive`, so the `@Directive` configuration applies to components as well | Details |
 | :-------------------------------------------------------------------------------------------------------------------------------- | :------ |
-| Component configuration <br /> `@Component` extends `@Directive`, so the `@Directive` configuration applies to components as well | 详情 |
+| 组件配置 <br /> `@Component` 扩展了 `@Directive`, 所以 `@Directive` 的配置也同样适用于组件 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> moduleId: module.id </code-example> | If set, the `templateUrl` and `styleUrl` are resolved relative to the component. |
-|  | 如果设置了，那么 `templateUrl` 和 `styleUrl` 的路径就会相对于当前组件进行解析。 |
+| <code-example format="typescript" hideCopy language="typescript"> moduleId: module.id </code-example> | 如果设置了，那么 `templateUrl` 和 `styleUrl` 的路径就会相对于当前组件进行解析。|
 | <code-example format="typescript" hideCopy language="typescript"> viewProviders: [MyService, { provide: &hellip; }] </code-example> | List of dependency injection providers scoped to this component's view. |
-|  | 依赖注入提供者列表，但它们的范围被限定为当前组件的视图。 |
+| <code-example format="typescript" hideCopy language="typescript"> viewProviders: [MyService, { provide: &hellip; }] </code-example> | 依赖注入提供者列表，但它们的范围被限定为当前组件的视图。|
 | <code-example format="typescript" hideCopy language="typescript"> template: 'Hello {{name}}' &NewLine;templateUrl: 'my-component.html' </code-example> | Inline template or external template URL of the component's view. |
-|  | 当前组件视图的内联模板或外部模板的 URL。 |
+| <code-example format="typescript" hideCopy language="typescript"> template: 'Hello {{name}}' &NewLine;templateUrl: 'my-component.html' </code-example> | 当前组件视图的内联模板或外部模板的 URL。|
 | <code-example format="typescript" hideCopy language="typescript"> styles: ['.primary {color: red}'] &NewLine;styleUrls: ['my-component.css'] </code-example> | List of inline CSS styles or external stylesheet URLs for styling the component's view. |
-|  | 用于为当前组件的视图提供样式的内联 CSS 或外部样式表 URL 的列表。 |
+| <code-example format="typescript" hideCopy language="typescript"> styles: ['.primary {color: red}'] &NewLine;styleUrls: ['my-component.css'] </code-example> | 用于为当前组件的视图提供样式的内联 CSS 或外部样式表 URL 的列表。|
 
 | Class field decorators for directives and components | Details |
 | :--------------------------------------------------- | :------ |
 | 给指令和组件使用的类属性配置项 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { Input, &hellip; } from '&commat;angular/core'; </code-example> | Import `Input, ...` from `@angular/core`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { Input, &hellip; } from '&commat;angular/core'; </code-example> | 导入 `Input, ...` 从 `@angular/core` 。 |
-|  | Import `Input, ...` from `@angular/core`. |
-|  | 导入 `Input, ...` 从 `@angular/core` 。 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Input() myProperty; </code-example> | Declares an input property that you can update using property binding (example: `&lt;my-cmp [myProperty]="someExpression"&gt;`). |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Input() myProperty; </code-example> | 声明一个你可以用属性绑定来更新的输入属性（比如： `&lt;my-cmp [myProperty]="someExpression"&gt;` ）。 |
-|  | Declares an input property that you can update using property binding (example: `&lt;my-cmp [myProperty]="someExpression"&gt;`). |
-|  | 声明一个你可以用属性绑定来更新的输入属性（比如： `&lt;my-cmp [myProperty]="someExpression"&gt;` ）。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Input() myProperty; </code-example> | 声明一个你可以用属性绑定来更新的输入属性（比如：`&lt;my-cmp [myProperty]="someExpression"&gt;`）。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Output() myEvent = new EventEmitter(); </code-example> | Declares an output property that fires events that you can subscribe to with an event binding (example: `&lt;my-cmp (myEvent)="doSomething()"&gt;`). |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Output() myEvent = new EventEmitter(); </code-example> | 声明一个输出属性，该属性会触发你可以用事件绑定订阅的事件（比如： `&lt;my-cmp (myEvent)="doSomething()"&gt;` ）。 |
-|  | Declares an output property that fires events that you can subscribe to with an event binding (example: `&lt;my-cmp (myEvent)="doSomething()"&gt;`). |
-|  | 声明一个输出属性，该属性会触发你可以用事件绑定订阅的事件（比如： `&lt;my-cmp (myEvent)="doSomething()"&gt;` ）。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Output() myEvent = new EventEmitter(); </code-example> | 声明一个输出属性，该属性会触发你可以用事件绑定订阅的事件（比如：`&lt;my-cmp (myEvent)="doSomething()"&gt;`）。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;HostBinding('class.valid') isValid; </code-example> | Binds a host element property (here, the CSS class `valid`) to a directive/component property (`isValid`). |
-|  | 把宿主元素的一个属性（这里是 CSS 类 `valid`）绑定到指令或组件上的 `isValid` 属性。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;HostBinding('class.valid') isValid; </code-example> | 把宿主元素的一个属性（这里是 CSS 类 `valid`）绑定到指令或组件上的 `isValid` 属性。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;HostListener('click', ['&dollar;event']) onClick(e) {&hellip;} </code-example> | Subscribes to a host element event (`click`) with a directive/component method (`onClick`), optionally passing an argument (`$event`). |
-|  | 用指令或组件上的 `onClick` 方法订阅宿主元素上的 `click` 事件，并从中获取 `$event` 参数（可选）。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;HostListener('click', ['&dollar;event']) onClick(e) {&hellip;} </code-example> | 用指令或组件上的 `onClick` 方法订阅宿主元素上的 `click` 事件，并从中获取 `$event` 参数（可选）。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;ContentChild(myPredicate) myChildComponent; </code-example> | Binds the first result of the component content query (`myPredicate`) to a property (`myChildComponent`) of the class. |
-|  | 把组件内容查询（`myPredicate`）的第一个结果绑定到该类的 `myChildComponent` 属性上。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;ContentChild(myPredicate) myChildComponent; </code-example> | 把组件内容查询（`myPredicate`）的第一个结果绑定到该类的 `myChildComponent` 属性上。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;ContentChildren(myPredicate) myChildComponents; </code-example> | Binds the results of the component content query (`myPredicate`) to a property (`myChildComponents`) of the class. |
-|  | 把组件内容查询（`myPredicate`）的全部结果绑定到该类的 `myChildComponents` 属性上。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;ContentChildren(myPredicate) myChildComponents; </code-example> | 把组件内容查询（`myPredicate`）的全部结果绑定到该类的 `myChildComponents` 属性上。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;ViewChild(myPredicate) myChildComponent; </code-example> | Binds the first result of the component view query (`myPredicate`) to a property (`myChildComponent`) of the class. Not available for directives. |
-|  | 把组件视图查询（`myPredicate`）的第一个结果绑定到该类的 `myChildComponent` 属性上。对指令无效。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;ViewChild(myPredicate) myChildComponent; </code-example> | 把组件视图查询（`myPredicate`）的第一个结果绑定到该类的 `myChildComponent` 属性上。对指令无效。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;ViewChildren(myPredicate) myChildComponents; </code-example> | Binds the results of the component view query (`myPredicate`) to a property (`myChildComponents`) of the class. Not available for directives. |
-|  | 把组件视图查询（`myPredicate`）的全部结果绑定到该类的 `myChildComponents` 属性上。对指令无效。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;ViewChildren(myPredicate) myChildComponents; </code-example> | 把组件视图查询（`myPredicate`）的全部结果绑定到该类的 `myChildComponents` 属性上。对指令无效。|
 
 | Directive and component change detection and lifecycle hooks (implemented as class methods) | Details |
 | :------------------------------------------------------------------------------------------ | :------ |
-| Directive and component change detection and lifecycle hooks (implemented as class methods) | 详情 |
+| 指令和组件的变更检测与生命周期钩子（实现为类的方法）| 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> constructor(myService: MyService, &hellip;) { &hellip; } </code-example> | Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here. |
-|  | 在任何其它生命周期钩子之前调用。可以用它来注入依赖项，但不要在这里做正事。 |
+| <code-example format="typescript" hideCopy language="typescript"> constructor(myService: MyService, &hellip;) { &hellip; } </code-example> | 在任何其它生命周期钩子之前调用。可以用它来注入依赖项，但不要在这里做正事。|
 | <code-example format="typescript" hideCopy language="typescript"> ngOnChanges(changeRecord) { &hellip; } </code-example> | Called after every change to input properties and before processing content or child views. |
-|  | 每当输入属性发生变化时就会调用，但位于处理内容（`ng-content`）或子视图之前。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngOnChanges(changeRecord) { &hellip; } </code-example> | 每当输入属性发生变化时就会调用，但位于处理内容（`ng-content`）或子视图之前。|
 | <code-example format="typescript" hideCopy language="typescript"> ngOnInit() { &hellip; } </code-example> | Called after the constructor, initializing input properties, and the first call to `ngOnChanges`. |
-|  | 在调用完构造函数、初始化完所有输入属性并首次调用过 `ngOnChanges` 之后调用。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngOnInit() { &hellip; } </code-example> | 在调用完构造函数、初始化完所有输入属性并首次调用过 `ngOnChanges` 之后调用。|
 | <code-example format="typescript" hideCopy language="typescript"> ngDoCheck() { &hellip; } </code-example> | Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check. |
-|  | 每当对组件或指令的输入属性进行变更检测时就会调用。可以用它来扩展变更检测逻辑，执行自定义的检测逻辑。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngDoCheck() { &hellip; } </code-example> | 每当对组件或指令的输入属性进行变更检测时就会调用。可以用它来扩展变更检测逻辑，执行自定义的检测逻辑。|
 | <code-example format="typescript" hideCopy language="typescript"> ngAfterContentInit() { &hellip; } </code-example> | Called after `ngOnInit` when the component's or directive's content has been initialized. |
-|  | `ngOnInit` 完成之后，当组件或指令的内容（`ng-content`）已经初始化完毕时调用。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngAfterContentInit() { &hellip; } </code-example> | `ngOnInit` 完成之后，当组件或指令的内容（`ng-content`）已经初始化完毕时调用。|
 | <code-example format="typescript" hideCopy language="typescript"> ngAfterContentChecked() { &hellip; } </code-example> | Called after every check of the component's or directive's content. |
-|  | 每当组件或指令的内容（`ng-content`）做变更检测时调用。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngAfterContentChecked() { &hellip; } </code-example> | 每当组件或指令的内容（`ng-content`）做变更检测时调用。|
 | <code-example format="typescript" hideCopy language="typescript"> ngAfterViewInit() { &hellip; } </code-example> | Called after `ngAfterContentInit` when the component's views and child views / the view that a directive is in has been initialized. |
-|  | 当 `ngAfterContentInit` 完毕，并且组件的视图及其子视图或指令所属的视图已经初始化完毕时调用。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngAfterViewInit() { &hellip; } </code-example> | 当 `ngAfterContentInit` 完毕，并且组件的视图及其子视图或指令所属的视图已经初始化完毕时调用。|
 | <code-example format="typescript" hideCopy language="typescript"> ngAfterViewChecked() { &hellip; } </code-example> | Called after every check of the component's views and child views / the view that a directive is in. |
-|  | 当组件的视图及其子视图或指令所属的视图每次执行变更检测时调用。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngAfterViewChecked() { &hellip; } </code-example> | 当组件的视图及其子视图或指令所属的视图每次执行变更检测时调用。|
 | <code-example format="typescript" hideCopy language="typescript"> ngOnDestroy() { &hellip; } </code-example> | Called once, before the instance is destroyed. |
-|  | 只在实例被销毁前调用一次。 |
+| <code-example format="typescript" hideCopy language="typescript"> ngOnDestroy() { &hellip; } </code-example> | 只在实例被销毁前调用一次。|
 
 | Dependency injection configuration | Details |
 | :--------------------------------- | :------ |
 | 依赖注入配置项 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> { provide: MyService, useClass: MyMockService } </code-example> | Sets or overrides the provider for `MyService` to the `MyMockService` class. |
-|  | 把 `MyService` 的服务提供者设置或改写为 `MyMockService` 类。 |
+| <code-example format="typescript" hideCopy language="typescript"> { provide: MyService, useClass: MyMockService } </code-example> | 把 `MyService` 的服务提供者设置或改写为 `MyMockService` 类。|
 | <code-example format="typescript" hideCopy language="typescript"> { provide: MyService, useFactory: myFactory } </code-example> | Sets or overrides the provider for `MyService` to the `myFactory` factory function. |
-|  | 把 `MyService` 的服务提供者设置或改写为 `myFactory` 工厂函数。 |
+| <code-example format="typescript" hideCopy language="typescript"> { provide: MyService, useFactory: myFactory } </code-example> | 把 `MyService` 的服务提供者设置或改写为 `myFactory` 工厂函数。|
 | <code-example format="typescript" hideCopy language="typescript"> { provide: MyValue, useValue: 41 } </code-example> | Sets or overrides the provider for `MyValue` to the value `41`. |
-|  | 把 `MyValue` 的服务提供者改写为一个特定的值 `41`。 |
+| <code-example format="typescript" hideCopy language="typescript"> { provide: MyValue, useValue: 41 } </code-example> | 把 `MyValue` 的服务提供者改写为一个特定的值 `41`。|
 
 | Routing and navigation | Details |
 | :--------------------- | :------ |
 | 路由与导航 | 详情 |
 | <code-example format="typescript" hideCopy language="typescript"> import { Routes, RouterModule, &hellip; } from '&commat;angular/router'; </code-example> | Import `Routes, RouterModule, ...` from `@angular/router`. |
-| <code-example format="typescript" hideCopy language="typescript"> import { Routes, RouterModule, &hellip; } from '&commat;angular/router'; </code-example> | 从 `@angular/router` 导入 `Routes, RouterModule, ...` 。 |
-|  | Import `Routes, RouterModule, ...` from `@angular/router`. |
-|  | 从 `@angular/router` 导入 `Routes, RouterModule, ...` 。 |
 | <code-example format="typescript" hideCopy language="typescript"> const routes: Routes = [ &NewLine;&nbsp; { path: '', component: HomeComponent }, &NewLine;&nbsp; { path: 'path/:routeParam', component: MyComponent }, &NewLine;&nbsp; { path: 'staticPath', component: &hellip; }, &NewLine;&nbsp; { path: '**', component: &hellip; }, &NewLine;&nbsp; { path: 'oldPath', redirectTo: '/staticPath' }, &NewLine;&nbsp; { path: &hellip;, component: &hellip;, data: { message: 'Custom' } } &NewLine;]); &NewLine; &NewLine;const routing = RouterModule.forRoot(routes); </code-example> | Configures routes for the application. Supports static, parameterized, redirect, and wildcard routes. Also supports custom route data and resolve. |
-|  | 为该应用配置路由。支持静态、参数化、重定向和通配符路由。也支持自定义路由数据和解析（resolve）函数。 |
+| <code-example format="typescript" hideCopy language="typescript"> const routes: Routes = [ &NewLine;&nbsp; { path: '', component: HomeComponent }, &NewLine;&nbsp; { path: 'path/:routeParam', component: MyComponent }, &NewLine;&nbsp; { path: 'staticPath', component: &hellip; }, &NewLine;&nbsp; { path: '**', component: &hellip; }, &NewLine;&nbsp; { path: 'oldPath', redirectTo:b '/staticPath' }, &NewLine;&nbsp; { path: &hellip;, component: &hellip;, data: { message: 'Custom' } } &NewLine;]); &NewLine; &NewLine;const routing = RouterModule.forRoot(routes); </code-example> | 为该应用配置路由。支持静态、参数化、重定向和通配符路由。也支持自定义路由数据和解析（resolve）函数。|
 | <code-example format="html" hideCopy language="html"> &lt;router-outlet&gt;&lt;/router-outlet&gt; &NewLine;&lt;router-outlet name="aux"&gt;&lt;/router-outlet&gt; </code-example> | Marks the location to load the component of the active route. |
-|  | 标记出一个位置，用来加载活动路由的组件。 |
+| <code-example format="html" hideCopy language="html"> &lt;router-outlet&gt;&lt;/router-outlet&gt; &NewLine;&lt;router-outlet name="aux"&gt;&lt;/router-outlet&gt; </code-example> | 标记出一个位置，用来加载活动路由的组件。|
 | <code-example format="html" hideCopy language="html"> &lt;a routerLink="/path"&gt; &NewLine;&lt;a [routerLink]="[ '/path', routeParam ]"&gt; &NewLine;&lt;a [routerLink]="[ '/path', { matrixParam: 'value' } ]"&gt; &NewLine;&lt;a [routerLink]="[ '/path' ]" [queryParams]="{ page: 1 }"&gt; &NewLine;&lt;a [routerLink]="[ '/path' ]" fragment="anchor"&gt; </code-example> | Creates a link to a different view based on a route instruction consisting of a route path, required and optional parameters, query parameters, and a fragment. To navigate to a root route, use the `/` prefix; for a child route, use the `./`prefix; for a sibling or parent, use the `../` prefix. |
-|  | 使用路由体系创建一个到其它视图的链接。路由体系由路由路径、必要参数、可选参数、查询参数和文档片段组成。要导航到根路由，请使用 `/` 前缀；要导航到子路由，使用 `./` 前缀；要导航到兄弟路由或父级路由，使用 `../` 前缀。 |
+| <code-example format="html" hideCopy language="html"> &lt;a routerLink="/path"&gt; &NewLine;&lt;a [routerLink]="[ '/path', routeParam ]"&gt; &NewLine;&lt;a [routerLink]="[ '/path', { matrixParam: 'value' } ]"&gt; &NewLine;&lt;a [routerLink]="[ '/path' ]" [queryParams]="{ page: 1 }"&gt; &NewLine;&lt;a [routerLink]="[ '/path' ]" fragment="anchor"&gt; </code-example> | 使用路由体系创建一个到其它视图的链接。路由体系由路由路径、必要参数、可选参数、查询参数和文档片段组成。要导航到根路由，请使用 `/` 前缀；要导航到子路由，使用 `./` 前缀；要导航到兄弟路由或父级路由，使用 `../` 前缀。|
 | <code-example format="html" hideCopy language="html"> &lt;a [routerLink]="[ '/path' ]" routerLinkActive="active"&gt; </code-example> | The provided classes are added to the element when the `routerLink` becomes the current active route. |
-|  | 当 `routerLink` 指向的路由变成活动路由时，为当前元素添加一些类（比如这里的 `active`）。 |
+| <code-example format="html" hideCopy language="html"> &lt;a [routerLink]="[ '/path' ]" routerLinkActive="active"&gt; </code-example> | 当 `routerLink` 指向的路由变成活动路由时，为当前元素添加一些类（比如这里的 `active`）。|
 | <code-example format="html" hideCopy language="html"> &lt;a [routerLink]="[ '/path' ]" routerLinkActive="active" ariaCurrentWhenActive="page"&gt; </code-example> | The provided classes and `aria-current` attribute are added to the element when the `routerLink` becomes the current active route. |
-| <code-example format="html" hideCopy language="html"> &lt;a [routerLink]="[ '/path' ]" routerLinkActive="active" ariaCurrentWhenActive="page"&gt; </code-example> | 当 `routerLink` 成为当前的活动路由时，提供的类和 `aria-current` 属性会添加到元素。 |
-|  | The provided classes and `aria-current` attribute are added to the element when the `routerLink` becomes the current active route. |
-|  | 当 `routerLink` 成为当前的活动路由时，提供的类和 `aria-current` 属性会添加到元素。 |
+| <code-example format="html" hideCopy language="html"> &lt;a [routerLink]="[ '/path' ]" routerLinkActive="active" ariaCurrentWhenActive="page"&gt; </code-example> | 当 `routerLink` 成为当前的活动路由时，提供的类和 `aria-current` 属性会添加到元素。|
 | <code-example format="typescript" hideCopy language="typescript"> class CanActivateGuard implements CanActivate { &NewLine;&nbsp; canActivate( &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canActivate: [CanActivateGuard] } </code-example> | An interface for defining a class that the router should call first to determine if it should activate this component. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class CanActivateGuard implements CanActivate { &NewLine;&nbsp; canActivate( &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canActivate: [CanActivateGuard] } </code-example> | 一个接口，用于定义路由器应该首先调用的类，以确定它是否应该激活此组件。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
-|  | An interface for defining a class that the router should call first to determine if it should activate this component. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
-|  | 一个接口，用于定义路由器应该首先调用的类，以确定它是否应该激活此组件。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class CanDeactivateGuard implements CanDeactivate&lt;T&gt; { &NewLine;&nbsp; canDeactivate( &NewLine;&nbsp;&nbsp;&nbsp; component: T, &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canDeactivate: [CanDeactivateGuard] } </code-example> | An interface for defining a class that the router should call first to determine if it should deactivate this component after a navigation. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class CanDeactivateGuard implements CanDeactivate&lt;T&gt; { &NewLine;&nbsp; canDeactivate( &NewLine;&nbsp;&nbsp;&nbsp; component: T, &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canDeactivate: [CanDeactivateGuard] } </code-example> | 一个接口，用于定义路由器应该首先调用的类，以确定它是否应该在导航后停用此组件。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
-|  | An interface for defining a class that the router should call first to determine if it should deactivate this component after a navigation. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
-|  | 一个接口，用于定义路由器应该首先调用的类，以确定它是否应该在导航后停用此组件。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class CanActivateChildGuard implements CanActivateChild { &NewLine;&nbsp; canActivateChild( &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canActivateChild: [CanActivateGuard], children: &hellip; } </code-example> | An interface for defining a class that the router should call first to determine if it should activate the child route. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class CanActivateChildGuard implements CanActivateChild { &NewLine;&nbsp; canActivateChild( &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canActivateChild: [CanActivateGuard], children: &hellip; } </code-example> | 一个接口，用于定义路由器应该首先调用的类，以确定它是否应该激活子路由。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
-|  | An interface for defining a class that the router should call first to determine if it should activate the child route. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
-|  | 一个接口，用于定义路由器应该首先调用的类，以确定它是否应该激活子路由。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class ResolveGuard implements Resolve&lt;T&gt; { &NewLine;&nbsp; resolve( &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;any&gt;&verbar;Promise&lt;any&gt;&verbar;any { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, resolve: [ResolveGuard] } </code-example> | An interface for defining a class that the router should call first to resolve route data before rendering the route. Should return a value or an Observable/Promise that resolves to a value. |
-|  | 用来定义类的接口。路由器会在渲染该路由之前，首先调用它来解析路由数据。应该返回一个值或能解析成值的 `Observable/Promise`。 |
+| <code-example format="typescript" hideCopy language="typescript"> class ResolveGuard implements Resolve&lt;T&gt; { &NewLine;&nbsp; resolve( &NewLine;&nbsp;&nbsp;&nbsp; route: ActivatedRouteSnapshot, &NewLine;&nbsp;&nbsp;&nbsp; state: RouterStateSnapshot &NewLine;&nbsp; ): Observable&lt;any&gt;&verbar;Promise&lt;any&gt;&verbar;any { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, resolve: [ResolveGuard] } </code-example> | 用来定义类的接口。路由器会在渲染该路由之前，首先调用它来解析路由数据。应该返回一个值或能解析成值的 `Observable/Promise`。|
 | <code-example format="typescript" hideCopy language="typescript"> class CanLoadGuard implements CanLoad { &NewLine;&nbsp; canLoad( &NewLine;&nbsp;&nbsp;&nbsp; route: Route &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canLoad: [CanLoadGuard], loadChildren: &hellip; } </code-example> | An interface for defining a class that the router should call first to check if the lazy loaded module should be loaded. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
 | <code-example format="typescript" hideCopy language="typescript"> class CanLoadGuard implements CanLoad { &NewLine;&nbsp; canLoad( &NewLine;&nbsp;&nbsp;&nbsp; route: Route &NewLine;&nbsp; ): Observable&lt;boolean&verbar;UrlTree&gt;&verbar;Promise&lt;boolean&verbar;UrlTree&gt;&verbar;boolean&verbar;UrlTree { &hellip; } &NewLine;} &NewLine; &NewLine;{ path: &hellip;, canLoad: [CanLoadGuard], loadChildren: &hellip; } </code-example> | 一个接口，用于定义路由器应该首先调用的类以检查是否应该加载惰性加载的模块。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
-|  | An interface for defining a class that the router should call first to check if the lazy loaded module should be loaded. Should return a <code>boolean&verbar;UrlTree</code> or an Observable/Promise that resolves to a <code>boolean&verbar;UrlTree</code>. |
-|  | 一个接口，用于定义路由器应该首先调用的类以检查是否应该加载惰性加载的模块。应该返回一个<code>boolean&verbar;UrlTree</code>或解析为<code>boolean&verbar;UrlTree</code>. |
 
 </div>
 

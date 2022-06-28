@@ -85,7 +85,7 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFla
  * (Additional documentation moved to `inject`, as it is the public API, and an alias for this
  * instruction)
  *
- * （其他文档移到了 `inject` ，因为它是公共 API，并且是此指令的别名）
+ *（其他文档移到了 `inject` ，因为它是公共 API，并且是此指令的别名）
  *
  * @see inject
  *
@@ -157,7 +157,7 @@ export function inject<T>(token: ProviderToken<T>): T;
  * @param flags Control how injection is executed. The flags correspond to injection strategies that
  *     can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and `@Optional`.
  *
- * 控制注入的执行方式。这些标志对应于可以用参数装饰器 `@Host` 、 `@Self` 、 `@SkipSelf` 和
+ * 控制注入的执行方式。这些标志对应于可以用参数装饰器 `@Host`、`@Self`、`@SkipSelf` 和
  * `@Optional` 指定的注入策略。
  *
  * @returns
@@ -183,7 +183,7 @@ export function inject<T>(token: ProviderToken<T>, flags?: InjectFlags): T|null;
  * - Construction (via the `constructor`) of a class being instantiated by the DI system, such
  *   as an `@Injectable` or `@Component`.
  *
- *   由 DI 系统实例化的类的构造（通过 `constructor` ），例如 `@Injectable` 或 `@Component` 。
+ *   由 DI 系统实例化的类的构造（通过 `constructor`），例如 `@Injectable` 或 `@Component` 。
  *
  * - In the initializer for fields of such classes.
  *
@@ -224,8 +224,6 @@ export function inject<T>(token: ProviderToken<T>, flags?: InjectFlags): T|null;
  * 在实践中，构造函数、构造函数参数和字段初始化器中允许进行 `inject()` 调用：
  *
  * ```typescript
- *
- * ```
  *
  * @Injectable ({providedIn: 'root'})
  * export class Car {
@@ -317,8 +315,8 @@ export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
  * instance.
  *
  * 使用 Monkey-patching 将给定的 InjectFlag 附加到给定的装饰器。由于 DI 装饰器可以在 provider `deps`
- * 数组（当使用 `useFactory` 配置提供程序时）而无需初始化（例如 `Host` ）和作为实例（例如 `new
- * Host()` ）中使用，我们附加标志以使其同时作为静态属性和作为装饰器实例上的字段。
+ * 数组（当使用 `useFactory` 配置提供程序时）而无需初始化（例如 `Host`）和作为实例（例如 `new
+ * Host()`）中使用，我们附加标志以使其同时作为静态属性和作为装饰器实例上的字段。
  *
  * @param decorator Provided DI decorator.
  *

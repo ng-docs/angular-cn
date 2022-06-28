@@ -253,58 +253,80 @@
               "tooltip": "Introductory guide to statements in templates that respond to events that components, directives, or elements raise."
             },
             {
+              "titleCn": "绑定",
               "title": "Binding",
+              "tooltipCn": "用绑定连接模板和组件。",
               "tooltip": "A binding connects a template and a component.",
               "children": [
                 {
                   "url": "guide/binding-overview",
+                  "titleCn": "了解绑定",
                   "title": "Understanding binding",
+                  "tooltipCn": "绑定的介绍性指南。",
                   "tooltip": "Introductory guide to binding."
                 },
                 {
                   "url": "guide/attribute-binding",
+                  "titleCn": "属性绑定",
                   "title": "Attribute binding",
+                  "tooltipCn": "了解如何使用属性绑定。",
                   "tooltip": "Learn how to use attribute binding."
                 },
                 {
                   "url": "guide/class-binding",
+                  "titleCn": "类和样式绑定",
                   "title": "Class and style binding",
+                  "tooltipCn": "了解如何使用类和样式绑定。",
                   "tooltip": "Learn how to use class and style binding."
                 },
                 {
                   "url": "guide/event-binding",
+                  "titleCn": "事件绑定",
                   "title": "Event binding",
+                  "tooltipCn": "了解如何使用事件绑定。",
                   "tooltip": "Learn how to use to event binding."
                 },
                 {
                   "url": "guide/property-binding",
+                  "titleCn": "属性绑定",
                   "title": "Property binding",
+                  "tooltipCn": "了解如何使用属性绑定。",
                   "tooltip": "Learn how to use property binding."
                 },
                 {
                   "url": "guide/two-way-binding",
+                  "titleCn": "双向绑定",
                   "title": "Two-way binding",
+                  "tooltipCn": "了解如何在类和模板之间共享数据。",
                   "tooltip": "Learn how to share data between a class and a template."
                 }
               ]
             },
             {
+              "titleCn": "管道",
               "title": "Pipes",
+              "tooltipCn": "管道会转换模板中显示的值。",
               "tooltip": "Pipes transform displayed values within a template.",
               "children": [
                 {
                   "url": "guide/pipes-overview",
+                  "titleCn": "了解管道",
                   "title": "Understanding pipes",
+                  "tooltipCn": "管道介绍性指南。",
                   "tooltip": "Introductory guide to pipes."
                 },
                 {
                   "url": "guide/pipe-template",
+                  "titleCn": "在模板中使用管道",
                   "title": "Using a pipe in a template",
+                  "tooltipCn": "了解如何在模板中使用管道。",
                   "tooltip": "Learn how to use a pipe in a template."
                 },
                 {
                   "url": "guide/pipes-transform-data",
+                  "titleCn": "使用参数和链式管道转换数据",
                   "title": "Transforming data with parameters and chained pipes",
+                  "tooltipCn": "了解如何使用管道转换数据。",
                   "tooltip": "Learn how to use a pipe transform data."
                 }
               ]
@@ -397,25 +419,35 @@
           "children": [
             {
               "url": "guide/change-detection",
+              "titleCn": "概览",
               "title": "Overview",
+              "tooltipCn": "介绍 Angular 变更检测的基础知识",
               "tooltip": "Introduces the basics of Angular's change detection"
             },
             {
               "url": "guide/change-detection-zone-pollution",
+              "titleCn": "区域 (Zone) 污染",
               "title": "Zone Pollution",
+              "tooltipCn": "解释 Zone.js 的工作原理以及可能会减慢应用程序速度的常见陷阱",
               "tooltip": "Explains how Zone.js works and what are the common pitfalls that can slow an application down"
             },
             {
               "url": "guide/change-detection-slow-computations",
+              "titleCn": "慢速计算",
               "title": "Slow Computations",
+              "tooltipCn": "了解如何通过发现和优化慢速计算来使你的应用程序更快",
               "tooltip": "Learn how to make your application faster by discovering and optimizing slow calculations"
             },
             {
               "url": "guide/change-detection-skipping-subtrees",
+              "titleCn": "跳过组件子树",
               "title": "Skipping Component Subtrees",
+              "tooltipCn": "了解如何使用 OnPush 变更检测策略跳过组件子树中的变更检测",
               "tooltip": "Learn how to skip change detection in component subtrees using OnPush change detection strategy"
             }
-          ]
+          ],
+          "titleCn": "变更检测",
+          "tooltipCn": "了解 Angular 如何根据数据变更来更新视图，以及如何让你的应用程序保持快速"
         },
         {
           "titleCn": "路由与导航",
@@ -490,7 +522,9 @@
             {
               "url": "guide/typed-forms",
               "title": "Strictly Typed Reactive Forms In Depth",
-              "tooltip": "A deep-dive into the reactive forms types."
+              "tooltip": "A deep-dive into the reactive forms types.",
+              "titleCn": "深度严格类型的响应式表单",
+              "tooltipCn": "深入了解响应式表单类型。"
             },
             {
               "url": "guide/form-validation",
@@ -636,7 +670,9 @@
                 {
                   "url": "guide/i18n-common-prepare",
                   "title": "Prepare component for translation",
-                  "tooltip": "Prepare component for translation"
+                  "tooltip": "Prepare component for translation",
+                  "titleCn": "准备要翻译的组件",
+                  "tooltipCn": "准备要翻译的组件"
                 },
                 {
                   "url": "guide/i18n-common-translation-files",
@@ -1117,9 +1153,13 @@
         {
           "url": "guide/standalone-components",
           "title": "Standalone components",
-          "tooltip": "Standalone components, directives and pipes"
+          "tooltip": "Standalone components, directives and pipes",
+          "titleCn": "独立组件",
+          "tooltipCn": "独立组件、指令和管道"
         }
-      ]
+      ],
+      "titleCn": "特性预览",
+      "tooltipCn": "Angular 预览特性和 API"
     },
     {
       "title": "Release Information",
@@ -1149,9 +1189,9 @@
         },
         {
           "url": "guide/update-to-latest-version",
-          "titleCn": "升级到版本 13",
+          "titleCn": "升级到最新版",
           "title": "Update to Version 13",
-          "tooltipCn": "支持将你的应用升级到版本 13",
+          "tooltipCn": "支持将你的应用升级到最新版本",
           "tooltip": "Support to update your application to version 13"
         },
         {
@@ -1197,7 +1237,8 @@
             }
           ]
         }
-      ]
+      ],
+      "titleCn": "版本发布信息"
     },
     {
       "titleCn": "参考手册",
@@ -1528,9 +1569,13 @@
             {
               "url": "extended-diagnostics",
               "title": "Extended Diagnostics Overview",
-              "tooltip": "Overview of extended diagnostics, what they are, and how to configure them."
+              "tooltip": "Overview of extended diagnostics, what they are, and how to configure them.",
+              "titleCn": "扩展诊断概览",
+              "tooltipCn": "扩展诊断、它们是什么以及如何配置它们的概览。"
             }
-          ]
+          ],
+          "titleCn": "扩展诊断参考手册",
+          "tooltipCn": "Angular 编译器可以发出的扩展诊断的详细信息"
         },
         {
           "titleCn": "示例应用",

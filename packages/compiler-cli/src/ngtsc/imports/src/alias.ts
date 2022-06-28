@@ -33,8 +33,8 @@ const CHARS_TO_ESCAPE = /[^a-zA-Z0-9/_]/g;
  * from '@angular/common' as well.
  *
  * 给定 NgModule 的导入（例如 `CommonModule`
- * ），编译器必须在特定模板中使用此模块导出的指令和管道（例如 `NgIf`
- * ）时生成对此的导入。在其默认配置中，如果编译器无法直接从同一个项目中的另一个文件导入组件，它将尝试从导入模块的相同（绝对）路径导入组件。因此，在上面的示例中，如果
+ *），编译器必须在特定模板中使用此模块导出的指令和管道（例如 `NgIf`
+ *）时生成对此的导入。在其默认配置中，如果编译器无法直接从同一个项目中的另一个文件导入组件，它将尝试从导入模块的相同（绝对）路径导入组件。因此，在上面的示例中，如果
  * `CommonModule` 是从 '@angular/common' 导入的，则编译器将尝试从 '@angular/common' 导入 `NgIf` 。
  *
  * The aliasing system interacts with the above logic in two distinct ways.
@@ -57,7 +57,7 @@ const CHARS_TO_ESCAPE = /[^a-zA-Z0-9/_]/g;
  *
  * 2)
  * 它可用于获取指令或管道的替代导入表达式，而不是正常逻辑将应用的导入。使用的别名取决于为指令/管道获得的
- * `Reference` 的出处，这通常是它如何进入模板范围的属性（例如，来自哪个 NgModule ）。
+ * `Reference` 的出处，这通常是它如何进入模板范围的属性（例如，来自哪个 NgModule）。
  *
  * See the README.md for more information on how aliasing works within the compiler.
  *
@@ -116,7 +116,7 @@ export interface AliasingHost {
    * Determine an `Expression` by which `decl` should be imported from `via` using an alias export
    * (which should have been previously created when compiling `via`).
    *
-   * 使用别名 export （应该以前在编译 `via` `via` 创建）确定应该从中导入 `decl` 的 `Expression` 。
+   * 使用别名 export（应该以前在编译 `via` `via` 创建）确定应该从中导入 `decl` 的 `Expression` 。
    *
    * `getAliasIn` can return `null`, in which case no alias is needed to import `decl` from `via`
    * (and the normal import rules should be used).
@@ -290,7 +290,7 @@ export class PrivateExportAliasingHost implements AliasingHost {
    *
    * Thus, `getAliasIn` always returns `null`.
    *
-   * 因此， `getAliasIn` 始终返回 `null` 。
+   * 因此，`getAliasIn` 始终返回 `null` 。
    *
    */
   getAliasIn(): null {

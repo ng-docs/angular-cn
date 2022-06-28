@@ -56,25 +56,25 @@ To read a target element property or call one of its methods, see the API refere
 
 To bind to an element's property, enclose it in square brackets, `[]`, which identifies the property as a target property.
 
-要绑定到元素的属性，请将其放在方括号 `[]` 中，这将属性标识为 target 属性。
+要绑定到元素的属性，请将其放在方括号 `[]` 中，这会将此属性标识为目标属性。
 
 A target property is the DOM property to which you want to assign a value.
 
-要绑定到元素的属性，请将其括在方括号 `[]` 内，该括号会将属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性。
+要绑定到元素的属性 ，请将其括在方括号 `[]` 内，这会将此属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性 。
 
 To assign a value to a target property for the image element's `src` property, type the following code:
 
-要为 image 元素的 `src` 属性的 target 属性分配值，请键入以下代码：
+要为 image 元素的目标属性（`src`）赋值，请键入以下代码：
 
 <code-example path="property-binding/src/app/app.component.html" region="property-binding" header="src/app/app.component.html"></code-example>
 
 In most cases, the target name is the name of a property, even when it appears to be the name of an attribute.
 
-在大多数情况下，目标名称是属性名称，即使它看起来是属性名称。
+在大多数情况下，目标名称是 Property（属性）名称，即使它看起来是 Attribute（属性）名称。
 
 In this example, `src` is the name of the `<img>` element property.
 
-在大多数情况下，目标的名称就是 Property 的名称，哪怕它看起来像 Attribute 的名称。在这个例子中，`src` 就是 `<img>` 元素的 Property 名称。
+在这个例子中，`src` 就是 `<img>` 元素的 Property 名称。
 
 The brackets, `[]`, cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.
 
@@ -86,7 +86,7 @@ Without the brackets, Angular treats the right-hand side as a string literal and
 
 To assign a string to a property, type the following code:
 
-要将字符串分配给属性，请键入以下代码：
+要将字符串赋值给属性，请键入以下代码：
 
 <code-example path="property-binding/src/app/app.component.html" region="no-evaluation" header="src/app.component.html"></code-example>
 
@@ -104,7 +104,7 @@ To bind the `src` property of an `<img>` element to a component's property, plac
 
 Using the property `itemImageUrl`, type the following code:
 
-使用属性 `itemImageUrl` ，键入以下代码：
+使用属性 `itemImageUrl`，键入以下代码：
 
 <code-example path="property-binding/src/app/app.component.html" region="property-binding" header="src/app/app.component.html"></code-example>
 

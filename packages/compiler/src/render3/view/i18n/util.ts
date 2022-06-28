@@ -145,7 +145,7 @@ export function assembleBoundTextPlaceholders(
  * The placeholder names are converted from "internal" format (e.g. `START_TAG_DIV_1`) to "external"
  * format (e.g. `startTagDiv_1`).
  *
- * 占位符名称会从“内部”格式（例如 `START_TAG_DIV_1` ）转换为“外部”格式（例如 `startTagDiv_1` ）。
+ * 占位符名称会从“内部”格式（例如 `START_TAG_DIV_1`）转换为“外部”格式（例如 `startTagDiv_1`）。
  *
  * @param params A map of placeholder names to expressions.
  *

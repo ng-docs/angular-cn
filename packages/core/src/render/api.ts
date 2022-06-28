@@ -481,7 +481,7 @@ export abstract class Renderer2 {
 /**
  * Returns a Renderer2 (or throws when application was bootstrapped with Renderer3)
  *
- * 返回 Renderer2 （或在应用程序使用 Renderer3 引导时抛出）
+ * 返回 Renderer2（或在应用程序使用 Renderer3 引导时抛出）
  *
  */
 function getOrCreateRenderer2(lView: LView): Renderer2 {

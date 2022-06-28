@@ -39,7 +39,7 @@ export interface I18nRemoveOpCodes extends Array<number> {
  * OpCodes are efficient operations which can be applied to the DOM to update it. (For example to
  * update to a new ICU case requires that we clean up previous elements and create new ones.)
  *
- * OpCodes 是高效的操作，可以应用于 DOM 以更新它。 （例如，要更新到新的 ICU
+ * OpCodes 是高效的操作，可以应用于 DOM 以更新它。（例如，要更新到新的 ICU
  * 病例，需要我们清理以前的元素并创建新元素。）
  *
  * OpCodes contain three parts:
@@ -48,7 +48,7 @@ export interface I18nRemoveOpCodes extends Array<number> {
  *  3) The instruction to execute. (i)
  *
  * OpCodes 包含三部分： 1）父节点索引偏移量。 (p) 2) 参考节点索引偏移量。 (r) 3) 要执行的指令。
- * （一）
+ *（一）
  *
  * pppp pppp pppp pppp rrrr rrrr rrrr riii
  * 3322 2222 2222 1111 1111 1110 0000 0000
@@ -279,7 +279,7 @@ export interface I18nDebug {
  * of a pair of `number` and `string` pairs which encode the operations for the creation of the
  * translated block.
  *
- * 此数组创建一系列 `Text` 和 `Comment` （作为 ICU 锚）的 DOM 元素。它由一对 `number` 和 `string`
+ * 此数组创建一系列 `Text` 和 `Comment`（作为 ICU 锚）的 DOM 元素。它由一对 `number` 和 `string`
  * 对组成，它们对创建翻译块的操作进行编码。
  *
  * The number is shifted and encoded according to `I18nCreateOpCode`
@@ -363,7 +363,7 @@ export enum I18nCreateOpCode {
  * higher.) The OpCodes then compare its own change mask against the expression change mask to
  * determine if the OpCodes should execute.
  *
- * 基本思想是 `i18nExp` OpCodes 捕获表达式更改并更新更改掩码位。 （表达式 1 的位 1，表达式 2 的位 2
+ * 基本思想是 `i18nExp` OpCodes 捕获表达式更改并更新更改掩码位。（表达式 1 的位 1，表达式 2 的位 2
  * 等……，表达式 32 及更高版本的位 32 。）然后，OpCodes
  * 将其自己的更改掩码与表达式更改掩码进行比较，以确定 OpCodes 是否应该执行。
  *
@@ -371,8 +371,8 @@ export enum I18nCreateOpCode {
  * the code still works, but with lower efficiency. (it is unlikely that a translation would have
  * more than 32 bindings.)
  *
- * 注：第 32 位是特殊的，因为它表示 32nd 或更高。这样，如果我们有超过 32
- * 个绑定，代码仍然可以工作，但效率较低。 （翻译不太可能有超过 32 个绑定。）
+ * 注意：第 32 位是特殊的，因为它表示 32nd 或更高。这样，如果我们有超过 32
+ * 个绑定，代码仍然可以工作，但效率较低。（翻译不太可能有超过 32 个绑定。）
  *
  * These OpCodes can be used by both the i18n block as well as ICU sub-block.
  *
@@ -464,7 +464,7 @@ export interface TI18n {
    *
    * NOTE: The ICU anchors are filled in with ICU Update OpCode.
    *
-   * 注： ICU 锚点使用 ICU Update OpCode 填充。
+   * 注意： ICU 锚点使用 ICU Update OpCode 填充。
    *
    */
   create: I18nCreateOpCodes;
@@ -473,7 +473,7 @@ export interface TI18n {
    * A set of OpCodes which will be executed on each change detection to determine if any changes to
    * DOM are required.
    *
-   * 一组 OpCodes，将在每次更改检测时执行，以确定是否需要对 DOM 进行任何更改。
+   * 一组 OpCodes，将在每次变更检测时执行，以确定是否需要对 DOM 进行任何更改。
    *
    */
   update: I18nUpdateOpCodes;
@@ -524,7 +524,7 @@ export interface TIcu {
    *   `>=0` A currently selected case index.
    *
    * 如果存储的值为： `null` ：未选择当前案例。 `<0` ：一个标志，这意味着 ICU 刚刚切换，并且无论
-   * `mask` 如何，都必须执行 `icuUpdate` 。 （执行后，标志被清除） `>=0` 当前选择的案例索引。
+   * `mask` 如何，都必须执行 `icuUpdate` 。（执行后，标志被清除）`>=0` 当前选择的案例索引。
    *
    */
   currentCaseLViewIndex: number;

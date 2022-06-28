@@ -28,8 +28,6 @@ Before writing tests for your Angular app, you should have a basic understanding
 
 * [Angular CLI](cli)
 
-  [角度 CLI](cli)
-
 The testing documentation offers tips and techniques for unit and integration testing Angular applications through a sample application created with the [Angular CLI](cli).
 This sample application is much like the one in the [*Tour of Heroes* tutorial](tutorial).
 
@@ -39,7 +37,7 @@ This sample application is much like the one in the [*Tour of Heroes* tutorial](
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
-  如果你要试用本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+如果你要试用本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -56,7 +54,7 @@ Angular CLI 会下载并安装试用 [Jasmine 测试框架](https://jasmine.gith
 The project you create with the CLI is immediately ready to test.
 Just run the [`ng test`](cli/test) CLI command:
 
-你使用 CLI 创建的项目是可以立即用于测试的。 运行 CLI 命令 [`ng test`](cli/test) 即可：
+你使用 CLI 创建的项目是可以立即用于测试的。运行 CLI 命令 [`ng test`](cli/test) 即可：
 
 <code-example format="shell" language="shell">
 
@@ -102,7 +100,7 @@ A Chrome browser also opens and displays the test output in the "Jasmine HTML Re
 Most people find this browser output easier to read than the console log.
 Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group ("test suite").
 
-大多数人都会觉得浏览器中的报告比控制台中的日志更容易阅读。 可以点击某一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
+大多数人都会觉得浏览器中的报告比控制台中的日志更容易阅读。可以点击某一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
 
 Meanwhile, the `ng test` command is watching for changes.
 
@@ -111,7 +109,7 @@ Meanwhile, the `ng test` command is watching for changes.
 To see this in action, make a small change to `app.component.ts` and save.
 The tests run again, the browser refreshes, and the new test results appear.
 
-要查看它的实际效果，就对 `app.component.ts` 做一个小修改，并保存它。 这些测试就会重新运行，浏览器也会刷新，然后新的测试结果就出现了。
+要查看它的实际效果，就对 `app.component.ts` 做一个小修改，并保存它。这些测试就会重新运行，浏览器也会刷新，然后新的测试结果就出现了。
 
 ## Configuration
 
@@ -129,7 +127,7 @@ the `test.ts` files in the `src/` folder.
 The `karma.conf.js` file is a partial Karma configuration file.
 The CLI constructs the full runtime configuration in memory, based on application structure specified in the `angular.json` file, supplemented by `karma.conf.js`.
 
-`karma.conf.js` 文件是 karma 配置文件的一部分。 CLI 会基于 `angular.json` 文件中指定的项目结构和 `karma.conf.js` 文件，来在内存中构建出完整的运行时配置。
+`karma.conf.js` 文件是 karma 配置文件的一部分。CLI 会基于 `angular.json` 文件中指定的项目结构和 `karma.conf.js` 文件，来在内存中构建出完整的运行时配置。
 
 Search the web for more details about Jasmine and Karma configuration.
 
@@ -142,7 +140,7 @@ Search the web for more details about Jasmine and Karma configuration.
 You can also unit test an Angular application with other testing libraries and test runners.
 Each library and runner has its own distinctive installation procedures, configuration, and syntax.
 
-你还可以使用其它的测试库和测试运行器来对 Angular 应用进行单元测试。 每个库和运行器都有自己特有的安装过程、配置项和语法。
+你还可以使用其它的测试库和测试运行器来对 Angular 应用进行单元测试。每个库和运行器都有自己特有的安装过程、配置项和语法。
 
 Search the web to learn more.
 
@@ -171,7 +169,7 @@ The test file extension **must be `.spec.ts`** so that tooling can identify it a
 The `app.component.ts` and `app.component.spec.ts` files are siblings in the same folder.
 The root file names (`app.component`) are the same for both files.
 
-`app.component.ts` 和 `app.component.spec.ts` 文件位于同一个文件夹中，而且相邻。 其根文件名部分（`app.component`）都是一样的。
+`app.component.ts` 和 `app.component.spec.ts` 文件位于同一个文件夹中，而且相邻。其根文件名部分（`app.component`）都是一样的。
 
 Adopt these two conventions in your own projects for *every kind* of test file.
 
@@ -239,14 +237,14 @@ next to their corresponding helper files.
 One of the best ways to keep your project bug-free is through a test suite, but you might forget to run tests all the time.
 Continuous integration (CI) servers let you set up your project repository so that your tests run on every commit and pull request.
 
-避免项目出 BUG 的最佳方式之一，就是使用测试套件。但是很容易忘了一直运行它。 持续集成（CI）服务器让你可以配置项目的代码仓库，以便每次提交和收到 Pull Request 时就会运行你的测试。
+避免项目出 BUG 的最佳方式之一，就是使用测试套件。但是很容易忘了一直运行它。持续集成（CI）服务器让你可以配置项目的代码仓库，以便每次提交和收到 Pull Request 时就会运行你的测试。
 
 There are paid CI services like Circle CI and Travis CI, and you can also host your own for free using Jenkins and others.
 Although Circle CI and Travis CI are paid services, they are provided free for open source projects.
 You can create a public project on GitHub and add these services without paying.
 Contributions to the Angular repository are automatically run through a whole suite of Circle CI tests.
 
-已经有一些像 Circle CI 和 Travis CI 这样的付费 CI 服务器，你还可以使用 Jenkins 或其它软件来搭建你自己的免费 CI 服务器。 虽然 Circle CI 和 Travis CI 是收费服务，但是它们也会为开源项目提供免费服务。 你可以在 GitHub 上创建公开项目，并免费享受这些服务。 当你为 Angular 仓库贡献代码时，就会自动用 Circle CI 和 Travis CI 运行整个测试套件。
+已经有一些像 Circle CI 和 Travis CI 这样的付费 CI 服务器，你还可以使用 Jenkins 或其它软件来搭建你自己的免费 CI 服务器。虽然 Circle CI 和 Travis CI 是收费服务，但是它们也会为开源项目提供免费服务。你可以在 GitHub 上创建公开项目，并免费享受这些服务。当你为 Angular 仓库贡献代码时，就会自动用 Circle CI 和 Travis CI 运行整个测试套件。
 
 This article explains how to configure your project to run Circle CI and Travis CI, and also update your test configuration to be able to run tests in the Chrome browser in either environment.
 
@@ -288,8 +286,7 @@ This article explains how to configure your project to run Circle CI and Travis 
    This configuration caches `node_modules/` and uses [`npm run`](https://docs.npmjs.com/cli/run-script) to run CLI commands, because `@angular/cli` is not installed globally.
    The double hyphen (`--`) characters is needed to pass arguments into the `npm` script.
 
-   该配置会缓存 `node_modules/` 并使用 [`npm run`](https://docs.npmjs.com/cli/run-script) 来运行 CLI 命令，因为 `@angular/cli` 并没有装到全局。
-   要把参数传给 `npm` 脚本，这个单独的双中线（`--`）是必须的。
+   该配置会缓存 `node_modules/` 并使用 [`npm run`](https://docs.npmjs.com/cli/run-script) 来运行 CLI 命令，因为 `@angular/cli` 并没有装到全局。要把参数传给 `npm` 脚本，这个单独的双中线（`--`）是必须的。
 
 1. Commit your changes and push them to your repository.
 
@@ -344,8 +341,7 @@ This article explains how to configure your project to run Circle CI and Travis 
 1. [Sign up for Travis CI](https://travis-ci.org/auth) and [add your project](https://travis-ci.org/profile).
    You'll need to push a new commit to trigger a build.
 
-   [注册 Travis CI](https://travis-ci.org/auth) 并[添加你的项目](https://travis-ci.org/profile)。
-   你需要推送一个新的提交，以触发构建。
+   [注册 Travis CI](https://travis-ci.org/auth) 并[添加你的项目](https://travis-ci.org/profile)。 你需要推送一个新的提交，以触发构建。
 
    * Learn more about Travis CI testing from [Travis CI documentation](https://docs.travis-ci.com).
 
@@ -530,21 +526,21 @@ After you've set up your application for testing, you might find the following t
 | :-- | :------ |
 |  | 详情 |
 | [Code coverage](guide/testing-code-coverage) | How much of your app your tests are covering and how to specify required amounts. |
-| [代码覆盖](guide/testing-code-coverage) | 找出你的测试覆盖了多少应用，以及如何指定所需的数量。 |
+| [代码覆盖](guide/testing-code-coverage) | 找出你的测试覆盖了多少应用，以及如何指定所需的数量。|
 | [Testing services](guide/testing-services) | How to test the services your application uses. |
-| [测试服务](guide/testing-services) | 如何测试应用中所用的服务。 |
+| [测试服务](guide/testing-services) | 如何测试应用中所用的服务。|
 | [Basics of testing components](guide/testing-components-basics) | Basics of testing Angular components. |
-| [测试组件的基础知识](guide/testing-components-basics) | 测试 Angular 组件的基础知识。 |
+| [测试组件的基础知识](guide/testing-components-basics) | 测试 Angular 组件的基础知识。|
 | [Component testing scenarios](guide/testing-components-scenarios) | Various kinds of component testing scenarios and use cases. |
-| \[组件测试场景(guide/testing-components-scenarios) | 了解各种组件测试场景和用例。 |
+| [组件测试场景(guide/testing-components-scenarios) | 了解各种组件测试场景和用例。|
 | [Testing attribute directives](guide/testing-attribute-directives) | How to test your attribute directives. |
-| [测试属性型指令](guide/testing-attribute-directives) | 如何测试你的属性型指令。 |
+| [测试属性型指令](guide/testing-attribute-directives) | 如何测试你的属性型指令。|
 | [Testing pipes](guide/testing-pipes) | How to test pipes. |
-| [测试管道](guide/testing-pipes) | 如何测试管道。 |
+| [测试管道](guide/testing-pipes) | 如何测试管道。|
 | [Debugging tests](guide/test-debugging) | Common testing bugs. |
-| [调试测试代码](guide/test-debugging) | 发现测试代码的常见 BUG。 |
+| [调试测试代码](guide/test-debugging) | 发现测试代码的常见 BUG。|
 | [Testing utility APIs](guide/testing-utility-apis) | Angular testing features. |
-| [测试实用工具 API](guide/testing-utility-apis) | Angular 的测试特性。 |
+| [测试实用工具 API](guide/testing-utility-apis) | Angular 的测试特性。|
 
 <!-- links -->
 

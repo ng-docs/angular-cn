@@ -79,7 +79,7 @@ export type Trait<D, A, S extends SemanticSymbol|null, R> = PendingTrait<D, A, S
  * The value side of `Trait` exposes a helper to create a `Trait` in a pending state (by delegating
  * to `TraitImpl`).
  *
- * `Trait` 的值侧公开了一个帮助器，以创建处于挂起状态的 `Trait` （通过委托给 `TraitImpl` ）。
+ * `Trait` 的值侧公开了一个帮助器，以创建处于挂起状态的 `Trait`（通过委托给 `TraitImpl`）。
  *
  */
 export const Trait = {
@@ -119,7 +119,7 @@ export interface TraitBase<D, A, S extends SemanticSymbol|null, R> {
    * The detection result (of `handler.detect`) which indicated that this trait applied to the
    * class.
    *
-   * （ `handler.detect` 的）检测结果，表明此特性适用于类。
+   *（`handler.detect` 的）检测结果，表明此特性适用于类。
    *
    * This is mainly used to cache the detection between pre-analysis and analysis.
    *
@@ -340,7 +340,7 @@ class TraitImpl<D, A, S extends SemanticSymbol|null, R> {
    * interface is retained after calling one of its transition methods, it will allow for illegal
    * transitions to take place. Hence, this assertion provides a little extra runtime protection.
    *
-   * 如果使用正确， `Trait`
+   * 如果使用正确，`Trait`
    * 类型和转换方法可以防止发生非法转换。但是，如果在调用其转换方法之一之后保留对使用前一个接口键入的
    * `TraitImpl` 实例的引用，它将允许发生非法转换。因此，此断言提供了一些额外的运行时保护。
    *

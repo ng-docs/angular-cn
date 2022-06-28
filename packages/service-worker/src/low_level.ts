@@ -16,8 +16,7 @@ export const ERR_SW_NOT_SUPPORTED = 'Service workers are disabled or not support
  *
  * 有新版本的应用程序可用时发出的事件。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @deprecated
  *
  * This event is only emitted by the deprecated {@link SwUpdate#available}.
@@ -40,14 +39,13 @@ export interface UpdateAvailableEvent {
  *
  * 下载并激活新版本的应用程序时发出的事件。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @deprecated
  *
  * This event is only emitted by the deprecated {@link SwUpdate#activated}.
  * Use the return value of {@link SwUpdate#activateUpdate} instead.
  *
- * 此事件仅由已过时的 {@link SwUpdate#activate} 发出。改用 {@link SwUpdate#activateUpdate}
+ * 此事件仅由已过时的 {@link SwUpdate#activated} 发出。改用 {@link SwUpdate#activateUpdate}
  * 的返回值。
  *
  * @publicApi
@@ -64,8 +62,7 @@ export interface UpdateActivatedEvent {
  *
  * 当服务工作人员检查了服务器上应用程序的版本并且没有找到尚未下载的新版本时发出的事件。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface NoNewVersionDetectedEvent {
@@ -79,8 +76,7 @@ export interface NoNewVersionDetectedEvent {
  *
  * 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出的事件。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface VersionDetectedEvent {
@@ -94,8 +90,7 @@ export interface VersionDetectedEvent {
  *
  * 新版本安装失败时发出的事件。它可用于日志/监控目的。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface VersionInstallationFailedEvent {
@@ -109,8 +104,7 @@ export interface VersionInstallationFailedEvent {
  *
  * 有新版本的应用程序可用时发出的事件。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface VersionReadyEvent {
@@ -147,8 +141,7 @@ export type VersionEvent =
  * 例如，服务工作者可能无法从缓存或服务器中检索所需的资源。如果将新版本部署到服务器并且浏览器已部分清除
  * Service Worker 缓存（删除了以前应用程序版本的某些文件，但不是全部），可能会发生这种情况。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 export interface UnrecoverableStateEvent {

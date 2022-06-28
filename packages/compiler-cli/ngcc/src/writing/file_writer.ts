@@ -36,7 +36,7 @@ export interface FileWriter {
    *     may be written at the same or a different location, depending on the `FileWriter`
    *     implementation.)
    *
-   * 转换后文件的原始路径。 （转换后的文件可以写在相同或不同的位置，具体取决于 `FileWriter` 实现。）
+   * 转换后文件的原始路径。（转换后的文件可以写在相同或不同的位置，具体取决于 `FileWriter` 实现。）
    *
    * @param formatProperties The format-properties pointing to the entry-point.
    *

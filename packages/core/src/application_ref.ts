@@ -199,8 +199,8 @@ export function runPlatformInitializers(injector: Injector): void {
  * internally and supply the necessary providers during the bootstrap, while exposing
  * platform-specific APIs as a part of their public API.
  *
- * 平台（例如 `platform-browser`
- * ）可能需要不同的应用程序集和平台提供程序才能使应用程序正常运行。因此，平台可以在内部使用此函数，并在引导期间提供必要的提供者，同时将特定于平台的
+ * 平台（例如
+ * `platform-browser`）可能需要不同的应用程序集和平台提供程序才能使应用程序正常运行。因此，平台可以在内部使用此函数，并在引导期间提供必要的提供者，同时将特定于平台的
  * API 作为其公共 API 的一部分进行公开。
  *
  * @returns
@@ -386,7 +386,7 @@ export interface BootstrapOptions {
   /**
    * Optionally specify which `NgZone` should be used.
    *
-   * （可选）指定应该使用哪个 `NgZone` 。
+   *（可选）指定应该使用哪个 `NgZone` 。
    *
    * - Provide your own `NgZone` instance.
    *
@@ -407,11 +407,10 @@ export interface BootstrapOptions {
    * Optionally specify coalescing event change detections or not.
    * Consider the following case.
    *
-   * （可选）指定或不指定合并事件更改检测。考虑以下情况。
+   *（可选）指定或不指定合并事件变更检测。考虑以下情况。
    *
-   * &lt;div (click)="doSomething()">
-   *   &lt;button (click)="doSomethingElse()"></button>
-   *
+   * <div (click)="doSomething()">
+   *   <button (click)="doSomethingElse()"></button>
    * </div>
    *
    * When button is clicked, because of the event bubbling, both
@@ -420,7 +419,7 @@ export interface BootstrapOptions {
    * change detection only once.
    *
    * 单击按钮时，由于事件冒泡，将调用两个事件处理程序，并触发 2
-   * 次更改检测。我们可以合并此类事件以仅触发更改检测一次。
+   * 次变更检测。我们可以合并此类事件以仅触发变更检测一次。
    *
    * By default, this option will be false. So the events will not be
    * coalesced and the change detection will be triggered multiple times.
@@ -429,8 +428,8 @@ export interface BootstrapOptions {
    * the change detection will only be triggered once.
    *
    * 默认情况下，此选项将是 false
-   * 。因此，事件将不会被合并，并且更改检测将被触发多次。如果此选项设置为
-   * true，则更改检测将通过调度动画帧来异步触发。因此在上面的情况下，更改检测将只会触发一次。
+   * 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为
+   * true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
    *
    */
   ngZoneEventCoalescing?: boolean;
@@ -439,13 +438,13 @@ export interface BootstrapOptions {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
-   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个更改检测。
+   *（可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
    *
    * Consider the following case.
    *
    * 考虑以下情况。
    *
-   * for (let i = 0; i &lt; 10; i ++) {
+   * for (let i = 0; i < 10; i ++) {
    *   ngZone.run(() => {
    *     // do something
    *   });
@@ -457,8 +456,8 @@ export interface BootstrapOptions {
    * With ngZoneRunCoalescing options, all change detections in an event loop trigger only once.
    * In addition, the change detection executes in requestAnimation.
    *
-   * 这种情况会多次触发更改检测。使用 ngZoneRunCoalescing
-   * 选项，事件循环中的所有更改检测只会触发一次。此外，更改检测是在 requestAnimation 中执行的。
+   * 这种情况会多次触发变更检测。使用 ngZoneRunCoalescing
+   * 选项，事件循环中的所有变更检测只会触发一次。此外，变更检测是在 requestAnimation 中执行的。
    *
    */
   ngZoneRunCoalescing?: boolean;
@@ -561,9 +560,6 @@ export class PlatformRef {
    * ### 简单的例子
    *
    * ```typescript
-   *
-   * ```
-   *
    * @NgModule ({
    *   imports: [BrowserModule]
    * })
@@ -571,6 +567,7 @@ export class PlatformRef {
    *
    * let moduleRef = platformBrowser().bootstrapModule(MyModule);
    * ```
+   *
    */
   bootstrapModule<M>(
       moduleType: Type<M>,
@@ -939,7 +936,7 @@ export class ApplicationRef {
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
-   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动更改检测。可以用 `rootSelectorOrNode`
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动变更检测。可以用 `rootSelectorOrNode`
    * 参数提供目标 DOM 元素。
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
@@ -966,22 +963,18 @@ export class ApplicationRef {
    * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的
    * `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
    *
-   * {
-   *
-   * @example core/ts/platform/platform.ts region='componentSelector'}
+   * {@example core/ts/platform/platform.ts region='componentSelector'}
    *
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
    * In the following example, we are providing a CSS selector to match the target element.
    *
-   * {
-   * @example core/ts/platform/platform.ts region='cssSelector'}
+   * {@example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
-   * {
-   * @example core/ts/platform/platform.ts region='domNode'}
+   * {@example core/ts/platform/platform.ts region='domNode'}
    */
   bootstrap<C>(component: Type<C>, rootSelectorOrNode?: string|any): ComponentRef<C>;
 
@@ -1001,7 +994,7 @@ export class ApplicationRef {
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
-   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动更改检测。可以用 `rootSelectorOrNode`
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动变更检测。可以用 `rootSelectorOrNode`
    * 参数提供目标 DOM 元素。
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
@@ -1028,9 +1021,7 @@ export class ApplicationRef {
    * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的
    * `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
    *
-   * {
-   *
-   * @example core/ts/platform/platform.ts region='componentSelector'}
+   * {@example core/ts/platform/platform.ts region='componentSelector'}
    *
    * 将新的根组件引导到应用程序时，Angular 将指定的应用程序组件安装到由 componentType 的选择器标识的
    * DOM 元素上，并启动自动变更检测以完成组件的初始化。
@@ -1040,13 +1031,11 @@ export class ApplicationRef {
    *
    * In the following example, we are providing a CSS selector to match the target element.
    *
-   * {
-   * @example core/ts/platform/platform.ts region='cssSelector'}
+   * {@example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
-   * {
-   * @example core/ts/platform/platform.ts region='domNode'}
+   * {@example core/ts/platform/platform.ts region='domNode'}
    * @deprecated
    *
    * Passing Component factories as the `Application.bootstrap` function argument is
@@ -1074,14 +1063,14 @@ export class ApplicationRef {
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
-   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动更改检测。可以用 `rootSelectorOrNode`
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动变更检测。可以用 `rootSelectorOrNode`
    * 参数提供目标 DOM 元素。
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
    * (first matched element is used).
    *
-   * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
+   *（可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
    *
    * ### Example
    *
@@ -1100,22 +1089,18 @@ export class ApplicationRef {
    * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的
    * `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
    *
-   * {
-   *
-   * @example core/ts/platform/platform.ts region='componentSelector'}
+   * {@example core/ts/platform/platform.ts region='componentSelector'}
    *
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
    * In the following example, we are providing a CSS selector to match the target element.
    *
-   * {
-   * @example core/ts/platform/platform.ts region='cssSelector'}
+   * {@example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
-   * {
-   * @example core/ts/platform/platform.ts region='domNode'}
+   * {@example core/ts/platform/platform.ts region='domNode'}
    */
   bootstrap<C>(componentOrFactory: ComponentFactory<C>|Type<C>, rootSelectorOrNode?: string|any):
       ComponentRef<C> {

@@ -227,8 +227,6 @@ export class KeyValueDiffers {
    *
    * ```
    *
-   * ```
-   *
    * @Component ({
    *   viewProviders: [
    *     KeyValueDiffers.extend([new ImmutableMapDiffer()])

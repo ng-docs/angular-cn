@@ -50,8 +50,6 @@ function symbolIterator<T>(this: QueryList<T>): Iterator<T> {
  *
  * ```typescript
  *
- * ```
- *
  * @Component ({...})
  * class Container {
  * @ViewChildren (Item) items:QueryList<Item>;
@@ -85,7 +83,7 @@ export class QueryList<T> implements Iterable<T> {
    *     the same result)
    *
    * `QueryList.changes` 是否仅在发生实际更改时才触发。或者如果它应该在重新计算查询时触发。
-   * （重新计算可以解决相同的结果）
+   *（重新计算可以解决相同的结果）
    *
    */
   constructor(private _emitDistinctChangesOnly: boolean = false) {
@@ -267,7 +265,7 @@ export class QueryList<T> implements Iterable<T> {
 /**
  * Internal set of APIs used by the framework. (not to be made public)
  *
- * 框架使用的内部 API 集。 （不公开）
+ * 框架使用的内部 API 集。（不公开）
  *
  */
 interface QueryListInternal<T> extends QueryList<T> {

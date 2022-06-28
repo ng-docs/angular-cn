@@ -102,7 +102,7 @@ export function generateTypeCtorDeclarationFn(
  * impossible.
  *
  * 当正在创建的类型具有有界泛型类型，这使得编写声明的类型构造函数（通过
- * `generateTypeCtorDeclarationFn` ）变得困难或不可能时，使用内联类型构造函数。
+ * `generateTypeCtorDeclarationFn`）变得困难或不可能时，使用内联类型构造函数。
  *
  * @param node the `ClassDeclaration<ts.ClassDeclaration>` for which a type constructor will be
  * generated.
@@ -267,7 +267,7 @@ export function requiresInlineTypeCtor(
  * then inference for `T` fails (it cannot be inferred from `T[] = any`). In this case, `T` takes
  * the type `{}`, and so `_t2` is inferred as `NgFor<{}>`. This is obviously wrong.
  *
- * 然后对 `T` 的推断失败（不能从 `T[] = any` 推断）。在这种情况下， `T` 采用 `{}` 类型，因此 `_t2`
+ * 然后对 `T` 的推断失败（不能从 `T[] = any` 推断）。在这种情况下，`T` 采用 `{}` 类型，因此 `_t2`
  * 被推断为 `NgFor<{}>` 。这显然是错误的。
  *
  * Adding a default type to the generic declaration in the constructor solves this problem, as the

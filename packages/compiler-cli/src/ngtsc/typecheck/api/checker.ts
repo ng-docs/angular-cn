@@ -193,7 +193,7 @@ export interface TemplateTypeChecker {
    * literal), retrieve a `TcbLocation` that can be used to perform autocompletion at that point in
    * the node, if such a location exists.
    *
-   * 对于给定的节点表示 `LiteralPrimitive` （ `TextAttribute` 表示字符串文字），请检索一个
+   * 对于给定的节点表示 `LiteralPrimitive`（`TextAttribute` 表示字符串文字），请检索一个
    * `TcbLocation` ，如果存在，请检索可用于在节点中的该点执行自动完成的 TcbLocation 。
    *
    */
@@ -223,7 +223,7 @@ export interface TemplateTypeChecker {
    * the DOM schema.
    *
    * 检索潜在模板元素标签的 `Map` ，到声明它们的 `DirectiveInScope`
-   * （如果标签来自指令/组件），如果标签来自 DOM 模式，则为 `null` 。
+   *（如果标签来自指令/组件），如果标签来自 DOM 模式，则为 `null` 。
    *
    */
   getPotentialElementTags(component: ts.ClassDeclaration): Map<string, DirectiveInScope|null>;

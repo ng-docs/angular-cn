@@ -35,7 +35,7 @@ The `<parent-component>` serves as the context for the `<child-component>`.
 `@Input()` lets a parent component update data in the child component.
 Conversely, `@Output()` lets the child send data to a parent component.
 
-`@Input()` 和 `@Output()` 为子组件提供了一种与其父组件通信的方法。 `@Input()` 允许父组件更新子组件中的数据。相反，`@Output()` 允许子组件向父组件发送数据。
+`@Input()` 和 `@Output()` 为子组件提供了一种与其父组件通信的方法。`@Input()` 允许父组件更新子组件中的数据。相反，`@Output()` 允许子组件向父组件发送数据。
 
 <a id="input"></a>
 
@@ -70,7 +70,7 @@ To use the `@Input()` decorator in a child component class, first import `Input`
 In this case, `@Input()` decorates the property <code class="no-auto-link">item</code>, which has a type of `string`, however, `@Input()` properties can have any type, such as `number`, `string`, `boolean`, or `object`.
 The value for `item` comes from the parent component.
 
-在这个例子中， `@Input()` 会修饰属性 <code class="no-auto-link">item</code>，它的类型为 `string`，但 `@Input()` 属性可以是任意类型，比如 `number`、`string`、`boolean` 或 `object`。`item` 的值来自父组件。
+在这个例子中，`@Input()` 会修饰属性 <code class="no-auto-link">item</code>，它的类型为 `string`，但 `@Input()` 属性可以是任意类型，比如 `number`、`string`、`boolean` 或 `object`。`item` 的值来自父组件。
 
 Next, in the child component template, add the following:
 
@@ -85,7 +85,7 @@ Next, in the child component template, add the following:
 The next step is to bind the property in the parent component's template.
 In this example, the parent component template is `app.component.html`.
 
-下一步是在父组件的模板中绑定该属性。在这个例子中，父组件模板是 `app.component.html` 。
+下一步是在父组件的模板中绑定该属性。在这个例子中，父组件模板是 `app.component.html`。
 
 1. Use the child's selector, here `<app-item-detail>`, as a directive within the parent component template.
 
@@ -105,7 +105,7 @@ In this example, the parent component template is `app.component.html`.
 
 With `@Input()`, Angular passes the value for `currentItem` to the child so that `item` renders as `Television`.
 
-通过 `@Input()`，Angular 把 `currentItem` 的值传给子组件，以便 `item` 渲染为 `Television` 。
+通过 `@Input()`，Angular 把 `currentItem` 的值传给子组件，以便 `item` 渲染为 `Television`。
 
 The following diagram shows this structure:
 
@@ -129,7 +129,7 @@ The binding source, the part to the right of the equal sign, is the data that th
 To watch for changes on an `@Input()` property, use `OnChanges`, one of Angular's [lifecycle hooks](guide/lifecycle-hooks).
 See the [`OnChanges`](guide/lifecycle-hooks#onchanges) section of the [Lifecycle Hooks](guide/lifecycle-hooks) guide for more details and examples.
 
-要想监视 `@Input()` 属性的变化，可以用 Angular 的[生命周期钩子](guide/lifecycle-hooks)`OnChanges` 。更多详情和范例，请参阅[生命周期钩子](guide/lifecycle-hooks) 一章的 [`OnChanges`](guide/lifecycle-hooks#onchanges)部分。
+要想监视 `@Input()` 属性的变化，可以用 Angular 的[生命周期钩子](guide/lifecycle-hooks)`OnChanges`。更多详情和范例，请参阅[生命周期钩子](guide/lifecycle-hooks) 一章的 [`OnChanges`](guide/lifecycle-hooks#onchanges)部分。
 
 <a id="output"></a>
 
@@ -154,7 +154,7 @@ The `@Output()` decorator in a child component or directive lets data flow from 
 The child component uses the `@Output()` property to raise an event to notify the parent of the change.
 To raise an event, an `@Output()` must have the type of `EventEmitter`, which is a class in `@angular/core` that you use to emit custom events.
 
-子组件使用 `@Output()` 属性来引发事件，以通知父组件这一变化。为了引发事件， `@Output()` 必须是 `EventEmitter` 类型，它是 `@angular/core` 中用来发出自定义事件的类。
+子组件使用 `@Output()` 属性来引发事件，以通知父组件这一变化。为了引发事件，`@Output()` 必须是 `EventEmitter` 类型，它是 `@angular/core` 中用来发出自定义事件的类。
 
 The following example shows how to set up an `@Output()` in a child component that pushes data from an HTML `<input>` to an array in the parent component.
 
@@ -162,7 +162,7 @@ The following example shows how to set up an `@Output()` in a child component th
 
 To use `@Output()`, you must configure the parent and child.
 
-要使用 `@Output()` ，就必须配置父组件和子组件。
+要使用 `@Output()`，就必须配置父组件和子组件。
 
 ### Configuring the child component
 
@@ -171,7 +171,7 @@ To use `@Output()`, you must configure the parent and child.
 The following example features an `<input>` where a user can enter a value and click a `<button>` that raises an event.
 The `EventEmitter` then relays the data to the parent component.
 
-下面的例子中有一个 `<input>` ，用户可以输入一个值，然后点击一个引发事件 `<button>` 然后， `EventEmitter` 数据中继到父组件。
+下面的例子中有一个 `<input>`，用户可以输入一个值，然后点击一个引发事件 `<button>` 然后，`EventEmitter` 数据中继到父组件。
 
 1. Import `Output` and `EventEmitter` in the child component class:
 
@@ -186,7 +186,7 @@ The `EventEmitter` then relays the data to the parent component.
 1. In the component class, decorate a property with `@Output()`.
    The following example `newItemEvent` `@Output()` has a type of `EventEmitter`, which means it's an event.
 
-   在组件类中，用 `@Output()` 装饰一个属性。下面的例子中 `newItemEvent` 这个 `@Output()` 的类型为 `EventEmitter` ，这意味着它是一个事件。
+   在组件类中，用 `@Output()` 装饰一个属性。下面的例子中 `newItemEvent` 这个 `@Output()` 的类型为 `EventEmitter`，这意味着它是一个事件。
 
    <code-example header="src/app/item-output/item-output.component.ts" path="inputs-outputs/src/app/item-output/item-output.component.ts" region="item-output"></code-example>
 
@@ -198,13 +198,13 @@ The `EventEmitter` then relays the data to the parent component.
    | :---------------- | :------ |
    | 装饰器部件 | 详情 |
    | `@Output()` | A decorator function marking the property as a way for data to go from the child to the parent. |
-   | `@Output()` | 一个装饰器函数，它把该属性标记为数据从子组件进入父组件的一种途径。 |
+   | `@Output()` | 一个装饰器函数，它把该属性标记为数据从子组件进入父组件的一种途径。|
    | `newItemEvent` | The name of the `@Output()`. |
-   | `newItemEvent` | 这个 `@Output()` 的名字。 |
+   | `newItemEvent` | 这个 `@Output()` 的名字。|
    | `EventEmitter<string>` | The `@Output()`'s type. |
-   | `EventEmitter<string>` | 这个 `@Output()` 的类型。 |
+   | `EventEmitter<string>` | 这个 `@Output()` 的类型。|
    | `new EventEmitter<string>()` | Tells Angular to create a new event emitter and that the data it emits is of type string. |
-   | `new EventEmitter<string>()` | 要求 Angular 创建一个新的事件发射器，它发出的数据是 `string` 类型的。 |
+   | `new EventEmitter<string>()` | 要求 Angular 创建一个新的事件发射器，它发出的数据是 `string` 类型的。|
 
    For more information on `EventEmitter`, see the [EventEmitter API documentation](api/core/EventEmitter).
 
@@ -228,7 +228,7 @@ The child's template has two controls.
 The first is an HTML `<input>` with a [template reference variable](guide/template-reference-variables), `#newItem`, where the user types in an item name.
 The `value` property of the `#newItem` variable stores what the user types into the `<input>`.
 
-子组件的模板有两个控件。第一个是带有[模板引用变量](guide/template-reference-variables) `#newItem` 的 `<input>`，用户可在其中输入条目名称。 `#newItem` 变量的 `value` 属性存储了用户输入到 `<input>` 中的值。
+子组件的模板有两个控件。第一个是带有[模板引用变量](guide/template-reference-variables) `#newItem` 的 `<input>`，用户可在其中输入条目名称。`#newItem` 变量的 `value` 属性存储了用户输入到 `<input>` 中的值。
 
 <code-example header="src/app/item-output/item-output.component.html" path="inputs-outputs/src/app/item-output/item-output.component.html" region="child-output"></code-example>
 
@@ -300,14 +300,14 @@ The `addItem()` method takes an argument in the form of a string and then adds t
 
 Use `@Input()` and `@Output()` on the same child component as follows:
 
-可以在同一个子组件上使用 `@Input()` 和 `@Output()`，范比如下：
+可以在同一个子组件上使用 `@Input()` 和 `@Output()`，范例如下：
 
 <code-example header="src/app/app.component.html" path="inputs-outputs/src/app/app.component.html" region="together"></code-example>
 
 The target, `item`, which is an `@Input()` property in the child component class, receives its value from the parent's property, `currentItem`.
 When you click delete, the child component raises an event, `deleteRequest`, which is the argument for the parent's `crossOffItem()` method.
 
-目标 `item` 是子组件类中的一个 `@Input()` 属性，它会从父组件的 `currentItem` 属性中获取它的值。当你单击“删除”时，子组件就会引发一个事件 `deleteRequest` ，它会作为父组件中 `crossOffItem()` 方法的参数。
+目标 `item` 是子组件类中的一个 `@Input()` 属性，它会从父组件的 `currentItem` 属性中获取它的值。当你单击“删除”时，子组件就会引发一个事件 `deleteRequest`，它会作为父组件中 `crossOffItem()` 方法的参数。
 
 The following diagram shows the different parts of the `@Input()` and `@Output()` on the `<app-input-output>` child component.
 

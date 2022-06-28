@@ -111,7 +111,7 @@ export interface ComponentScopeReader {
   /**
    * Get the `RemoteScope` required for this component, if any.
    *
-   * 获取此组件所需的 `RemoteScope` （如果有）。
+   * 获取此组件所需的 `RemoteScope`（如果有）。
    *
    * If the component requires remote scoping, then retrieve the directives/pipes registered for
    * that component. If remote scoping is not required (the common case), returns `null`.

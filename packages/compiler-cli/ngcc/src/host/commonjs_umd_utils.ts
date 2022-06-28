@@ -45,7 +45,7 @@ export interface ExportDeclaration {
  * `require('...')` call).
  *
  * 在所有情况下，我们只关心 `firstArg` ，它是 re-export 调用表达式的第一个参数，可以是
- * `require('...')` 调用或标识符（通过 `require('...')` 初始化） `require('...')` 调用)。
+ * `require('...')` 调用或标识符（通过 `require('...')` 初始化）`require('...')` 调用)。
  *
  */
 export interface WildcardReexportStatement extends ts.ExpressionStatement {

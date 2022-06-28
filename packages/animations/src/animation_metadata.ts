@@ -18,7 +18,7 @@ export interface ɵStyleData {
 /**
  * Represents a set of CSS styles for use in an animation style as a Map.
  *
- * 表示要在动画风格中使用的一组 CSS 样式，作为 Map 。
+ * 表示要在动画风格中使用的一组 CSS 样式，作为 Map。
  *
  */
 export type ɵStyleDataMap = Map<string, string|number>;
@@ -39,7 +39,7 @@ export declare type AnimateTimings = {
    * The default unit is milliseconds.
    *
    * 此动画步骤的完整持续时间。包括一个数字和一个可选的时间单位，比如 "1s" 表示一秒 或 "10ms" 表示
-   * 10 毫秒。 默认的单位是毫秒。
+   * 10 毫秒。默认的单位是毫秒。
    */
   duration: number,
   /**
@@ -702,10 +702,7 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * 此动画的值应该是一个由状态声明和转场声明组成的数组。
  *
  * ```typescript
- *
- * ```
- *
- * @Component ({
+ * @Component({
  *   selector: "my-component",
  *   templateUrl: "my-component-tpl.html",
  *   animations: [
@@ -729,8 +726,7 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  *
  * ```html
  * <!-- somewhere inside of my-component-tpl.html -->
- * <div [
- * @myAnimationTrigger ]="myStatusExp">...</div>
+ * <div [@myAnimationTrigger]="myStatusExp">...</div>
  * ```
  *
  * ### Using an inline function
@@ -745,11 +741,12 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * ```typescript
  * // this method is run each time the `myAnimationTrigger` trigger value changes.
  * function myInlineMatcherFn(fromState: string, toState: string, element: any, params: {[key:
- *  string]: any}): boolean {
+ string]: any}): boolean {
  *   // notice that `element` and `params` are also available here
  *   return toState == 'yes-please-animate';
  * }
- * @Component ({
+ *
+ * @Component({
  *   selector: 'my-component',
  *   templateUrl: 'my-component-tpl.html',
  *   animations: [
@@ -783,13 +780,11 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * 下面的例子展示了如何使用此特性：
  *
  * ```typescript
- * @Component ({
+ * @Component({
  *   selector: 'my-component',
  *   template: `
- *     <div [
- * @ .disabled]="isDisabled">
- *       <div [
- * @childAnimation ]="exp"></div>
+ *     <div [@.disabled]="isDisabled">
+ *       <div [@childAnimation]="exp"></div>
  *     </div>
  *   `,
  *   animations: [
@@ -822,15 +817,14 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * 也就是说，只要你把 Angular 根组件上放一个 `@.disabled` 的宿主绑定即可。
  *
  * ```typescript
- * import {Component, HostBinding} from '
- * @angular /core';
- * @Component ({
+ * import {Component, HostBinding} from '@angular/core';
+ *
+ * @Component({
  *   selector: 'app-component',
  *   templateUrl: 'app.component.html',
  * })
  * class AppComponent {
- * @HostBinding ('
- * @ .disabled')
+ *   @HostBinding('@.disabled')
  *   public animationsDisabled = true;
  * }
  * ```
@@ -880,15 +874,15 @@ export function trigger(name: string, definitions: AnimationMetadata[]): Animati
  *   such as "1s" or "10ms" for one second and 10 milliseconds, respectively.
  *   The default unit is milliseconds.
  *
- *      持续时间和延迟都用一个动画和一个可选的时间单位来表示，比如 "1s" 代表一秒，"10ms"
- * 代表十毫秒。 默认单位是毫秒。
+ *   持续时间和延迟都用一个动画和一个可选的时间单位来表示，比如 "1s" 代表一秒，"10ms"
+ * 代表十毫秒。默认单位是毫秒。
  *
  * - The easing value controls how the animation accelerates and decelerates
  *   during its runtime. Value is one of  `ease`, `ease-in`, `ease-out`,
  *   `ease-in-out`, or a `cubic-bezier()` function call.
  *   If not supplied, no easing is applied.
  *
- *      缓动效果的值控制该动画在运行期间如何加速和减速。它的取值是 `ease`、`ease-in`、`ease-out`、
+ *   缓动效果的值控制该动画在运行期间如何加速和减速。它的取值是 `ease`、`ease-in`、`ease-out`、
  *   `ease-in-out` 之一或一个 `cubic-bezier()` 函数调用。
  *   如果未提供，则没有缓动效果。
  *
@@ -1166,6 +1160,7 @@ export function sequence(
  * style({ height: 0 }),
  * animate("1s", style({ height: "*" }))
  * ```
+ *
  * @publicApi
  */
 export function style(tokens: '*'|{[key: string]: string | number}|
@@ -1196,7 +1191,7 @@ export function style(tokens: '*'|{[key: string]: string | number}|
  *   to be used as the fallback when the state that is being animated is not declared
  *   within the trigger.
  *
- *      `*`（星号）表示默认状态。当触发器中未声明要设置的动画状态时，就会把该名称所关联的样式用作回退（fallback）值。
+ *   `*`（星号）表示默认状态。当触发器中未声明要设置的动画状态时，就会把该名称所关联的样式用作回退（fallback）值。
  *
  * @param styles A set of CSS styles associated with this state, created using the
  * `style()` function.
@@ -1339,24 +1334,24 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *   具有特定语法的字符串
  *
  * - or a function that compares the previous and current state (value of the expression bound to
- *   the element's trigger) and returns `true` if the transition should occur or `false` otherwise
+ *     the element's trigger) and returns `true` if the transition should occur or `false` otherwise
  *
- *   或一个比较前一个状态和当前状态（绑定到元素触发器的表达式的值）的函数，如果应该发生转换，则返回
- * `true` ，否则返回 `false`
+ *     或一个比较前一个状态和当前状态（绑定到元素触发器的表达式的值）的函数，如果应该发生转换，则返回
+ *   `true`，否则返回 `false`
  *
  * The string format can be:
  *
  * 字符串格式可以是：
  *
  * - `fromState => toState`, which indicates that the transition's animations should occur then the
- *   expression bound to the trigger's element goes from `fromState` to `toState`
+ *     expression bound to the trigger's element goes from `fromState` to `toState`
  *
- *   `fromState => toState` ，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
- * 到 `toState`
+ *     `fromState => toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
+ *   到 `toState`
  *
- *   _Example:_
+ *     _Example:_
  *
- *   _ 示例：_
+ *     _ 示例：_
  *
  *   ```typescript
  *     transition('open => closed', animate('.5s ease-out', style({ height: 0 }) ))
@@ -1365,8 +1360,8 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `fromState <=> toState`, which indicates that the transition's animations should occur then
  *   the expression bound to the trigger's element goes from `fromState` to `toState` or vice versa
  *
- *   `fromState <=> toState` ，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
- * 变为 `toState` ，反之亦然
+ *   `fromState <=> toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
+ * 变为 `toState`，反之亦然
  *
  *   _Example:_
  *
@@ -1379,45 +1374,48 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `:enter`/`:leave`, which indicates that the transition's animations should occur when the
  *   element enters or exists the DOM
  *
- *   `:enter` / `:leave` ，这表明转换的动画应该在元素进入或存在 DOM 时发生
- *
- * ````typescript
- * transition(':enter', [
- *          style({ opacity: 0 }),
- *          animate('500ms', style({ opacity: 1 }))
- *        ])
- *      ```
- *
- *  - `:increment`/`:decrement`, which indicates that the transition's animations should occur when
- *    the numerical expression bound to the trigger's element has increased in value or decreased
- *
  *    _Example:_
- *      ```typescript
- *        transition(':increment', query('
- * ````
  *
- * @counter ', animateChild()))
- *      ```
+ *   ```typescript
+ *     transition(':enter', [
+ *       style({ opacity: 0 }),
+ *       animate('500ms', style({ opacity: 1 }))
+ *     ])
+ *   ```
  *
- *  - a sequence of any of the above divided by commas, which indicates that transition's animations
- *    should occur whenever one of the state change expressions matches
+ * - `:increment`/`:decrement`, which indicates that the transition's animations should occur when
+ *   the numerical expression bound to the trigger's element has increased in value or decreased
  *
- *    _Example:_
- *      ```typescript
- *        transition(':increment, * => enabled, :enter', animate('1s ease', keyframes([
- *          style({ transform: 'scale(1)', offset: 0}),
- *          style({ transform: 'scale(1.1)', offset: 0.7}),
- *          style({ transform: 'scale(1)', offset: 1})
- *        ]))),
- *      ```
+ *   _Example:_
+ *
+ *   ```typescript
+ *     transition(':increment', query('@counter', animateChild()))
+ *   ```
+ *
+ * - a sequence of any of the above divided by commas, which indicates that transition's animations
+ *   should occur whenever one of the state change expressions matches
+ *
+ *   _Example:_
+ *
+ *   ```typescript
+ *     transition(':increment, * => enabled, :enter', animate('1s ease', keyframes([
+ *       style({ transform: 'scale(1)', offset: 0}),
+ *       style({ transform: 'scale(1.1)', offset: 0.7}),
+ *       style({ transform: 'scale(1)', offset: 1})
+ *     ]))),
+ *   ```
  *
  * Also note that in such context:
- *  - `void` can be used to indicate the absence of the element
- *  - asterisks can be used as wildcards that match any state
- *  - (as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
- *    equivalent to `:leave`)
- *  - `true` and `false` also match expression values of `1` and `0` respectively (but do not match
- *    _truthy_ and _falsy_ values)
+ *
+ * - `void` can be used to indicate the absence of the element
+ *
+ * - asterisks can be used as wildcards that match any state
+ *
+ * - (as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
+ *   equivalent to `:leave`)
+ *
+ * - `true` and `false` also match expression values of `1` and `0` respectively (but do not match
+ *   _truthy_ and _falsy_ values)
  *
  * <div class="alert is-helpful">
  *
@@ -1445,12 +1443,13 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *
  * ### Usage Examples
  *
- *  - Transition animations applied based on
+ * ### 使用范例
+ *
+ * - Transition animations applied based on
  *    the trigger's expression value
  *
  *   ```HTML
- *   <div [
- * @myAnimationTrigger ]="myStatusExp">
+ *   <div [@myAnimationTrigger]="myStatusExp">
  *    ...
  *   </div>
  *   ```
@@ -1463,30 +1462,30 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *   ])
  *   ```
  *
- *  - Transition animations applied based on custom logic dependent
- *    on the trigger's expression value and provided parameters
+ * - Transition animations applied based on custom logic dependent
+ *   on the trigger's expression value and provided parameters
  *
- *    ```HTML
- *    <div [
- * @myAnimationTrigger ]="{
- *     value: stepName,
- *     params: { target: currentTarget }
- *    }">
- *     ...
- *    </div>
- *    ```
+ *   ```HTML
+ *   <div [@myAnimationTrigger]="{
+ *    value: stepName,
+ *    params: { target: currentTarget }
+ *   }">
+ *    ...
+ *   </div>
+ *   ```
  *
- *    ```typescript
- *    trigger("myAnimationTrigger", [
- *      ..., // states
- *      transition(
- *        (fromState, toState, _element, params) =>
- *          ['firststep', 'laststep'].includes(fromState.toLowerCase())
- *          && toState === params?.['target'],
- *        animate('1s')
- *      )
- *    ])
- *    ```
+ *   ```typescript
+ *   trigger("myAnimationTrigger", [
+ *     ..., // states
+ *     transition(
+ *       (fromState, toState, _element, params) =>
+ *         ['firststep', 'laststep'].includes(fromState.toLowerCase())
+ *         && toState === params?.['target'],
+ *       animate('1s')
+ *     )
+ *   ])
+ *   ```
+ *
  * @publicApi
  */
 export function transition(
@@ -1647,11 +1646,11 @@ export function useAnimation(
  * 要查询的元素或包含特定于 Angular 的特性的一组元素，使用以下一个或多个标记指定。
  *
  * - `query(":enter")` or `query(":leave")` : Query for newly inserted/removed elements (not
- *    all elements can be queried via these tokens, see
- *    [Entering and Leaving Elements](#entering-and-leaving-elements))
+ *      all elements can be queried via these tokens, see
+ *      [Entering and Leaving Elements](#entering-and-leaving-elements))
  *
- *   `query(":enter")` 或 `query(":leave")`
- * ：查询新插入/删除的元素（并非所有元素都可以通过这些标记查询，请参阅[进入和离开元素](#entering-and-leaving-elements)）
+ *     `query(":enter")` 或 `query(":leave")`
+ *   ：查询新插入/删除的元素（并非所有元素都可以通过这些标记查询，请参阅[进入和离开元素](#entering-and-leaving-elements)）
  *
  * - `query(":animating")` : Query all currently animating elements.
  *
@@ -1692,10 +1691,7 @@ export function useAnimation(
  * 多个令牌可以合并成复合查询选择器。比如：
  *
  * ```typescript
- *  query(':self, .record:enter, .record:leave,
- * ```
- *
- * @subTrigger ', [...])
+ *  query(':self, .record:enter, .record:leave, @subTrigger', [...])
  * ```
  *
  * The `query()` function collects multiple elements and works internally by using
@@ -1733,8 +1729,10 @@ export function useAnimation(
  *
  * The only elements Angular assumes can enter/leave based on their own logic (thus the only
  * ones that can be queried via the `:enter` and `:leave` tokens) are:
- *  - Those inserted dynamically (via `ViewContainerRef`)
- *  - Those that have a structural directive (which, under the hood, are a subset of the above ones)
+ *
+ * - Those inserted dynamically (via `ViewContainerRef`)
+ *
+ * - Those that have a structural directive (which, under the hood, are a subset of the above ones)
  *
  * <div class="alert is-helpful">
  *
@@ -1762,11 +1760,10 @@ export function useAnimation(
  * 下面的例子查询内部元素，并用 `animateChild()` 来独立控制它们的动画。
  *
  * ```typescript
- * @Component ({
+ * @Component({
  *   selector: 'inner',
  *   template: `
- *     <div [
- * @queryAnimation ]="exp">
+ *     <div [@queryAnimation]="exp">
  *       <h1>Title</h1>
  *       <div class="content">
  *         Blah blah blah
@@ -1795,6 +1792,7 @@ export function useAnimation(
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export function query(
@@ -1839,10 +1837,7 @@ export function query(
  * <!-- list.component.html -->
  * <button (click)="toggle()">Show / Hide Items</button>
  * <hr />
- * <div [
- * ```
- *
- * @listAnimation ]="items.length">
+ * <div [@listAnimation]="items.length">
  *   <div *ngFor="let item of items">
  *     {{ item }}
  *   </div>
@@ -1854,8 +1849,7 @@ export function query(
  * 下面是组件代码：
  *
  * ```typescript
- * import {trigger, transition, style, animate, query, stagger} from '
- * @angular /animations';
+ * import {trigger, transition, style, animate, query, stagger} from '@angular/animations';
  * @Component ({
  *   templateUrl: 'list.component.html',
  *   animations: [
@@ -1902,6 +1896,7 @@ export function query(
  *   ])
  * ])
  * ```
+ *
  * @publicApi
  */
 export function stagger(timings: string|number, animation: AnimationMetadata|AnimationMetadata[]):

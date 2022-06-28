@@ -39,7 +39,7 @@ export interface TemplateTarget {
    * The `t.Template` which contains the found node or expression (or `null` if in the root
    * template).
    *
-   * 包含找到的节点或表达式的 `t.Template` （如果在根模板中，则为 `null` ）。
+   * 包含找到的节点或表达式的 `t.Template`（如果在根模板中，则为 `null`）。
    *
    */
   template: t.Template|null;
@@ -63,7 +63,7 @@ export interface TemplateTarget {
  * as well as a body, and a given position definitively points to one or the other. `TargetNode`
  * captures the node itself, as well as this additional contextual disambiguation.
  *
- * 某些节点有多个内部上下文。例如， `t.Element`
+ * 某些节点有多个内部上下文。例如，`t.Element`
  * 节点既有标签名称也有主体，并且给定的位置最终指向了两者。 `TargetNode`
  * 捕获节点本身，以及这种额外的上下文消歧。
  *
@@ -156,7 +156,7 @@ export interface RawTemplateNode {
  * A `t.Element` (or `t.Template`) element node that's targeted, where the given position is within
  * the tag name.
  *
- * 目标的 `t.Element` （或 `t.Template` ）元素节点，其中的给定位置在标签名称中。
+ * 目标的 `t.Element`（或 `t.Template`）元素节点，其中的给定位置在标签名称中。
  *
  */
 export interface ElementInTagContext {
@@ -168,7 +168,7 @@ export interface ElementInTagContext {
  * A `t.Element` (or `t.Template`) element node that's targeted, where the given position is within
  * the element body.
  *
- * 目标的 `t.Element` （或 `t.Template` ）元素节点，其中的给定位置在元素体中。
+ * 目标的 `t.Element`（或 `t.Template`）元素节点，其中的给定位置在元素体中。
  *
  */
 export interface ElementInBodyContext {

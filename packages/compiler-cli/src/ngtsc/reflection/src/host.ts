@@ -39,13 +39,13 @@ export interface BaseDecorator {
    */
   identifier: DecoratorIdentifier|null;
 
-/**
- * `Import` by which the decorator was brought into the module in which it was invoked, or `null`
- * if the decorator was declared in the same module and not imported.
- *
- * 将装饰器带入调用它的模块的 `Import` ，如果装饰器是在同一个模块中声明且未导入的，则为 `null` 。
- *
- */
+  /**
+   * `Import` by which the decorator was brought into the module in which it was invoked, or `null`
+   * if the decorator was declared in the same module and not imported.
+   *
+   * 将装饰器带入调用它的模块的 `Import` ，如果装饰器是在同一个模块中声明且未导入的，则为 `null` 。
+   *
+   */
   import: Import|null;
 
   /**
@@ -119,7 +119,7 @@ export const Decorator = {
  * a namespaced property access (e.g. `core.Decorator`).
  *
  * 装饰器可以通过简单的标识符（例如 `Decorator`
- * ）来标识，或者在某些情况下，可以用命名空间属性访问（例如 `core.Decorator` ）来标识。
+ *）来标识，或者在某些情况下，可以用命名空间属性访问（例如 `core.Decorator`）来标识。
  *
  */
 export type DecoratorIdentifier = ts.Identifier|NamespacedIdentifier;
@@ -151,7 +151,7 @@ export function isDecoratorIdentifier(exp: ts.Expression): exp is DecoratorIdent
  *   `let Foo = Foo1 = class Foo {}`).
  *
  *   在 ES2015 代码中，它们通常使用 `class`
- * 关键字定义，但它们也可以是变量声明，被初始化为类表达式（例如 `let Foo = Foo1 = class Foo {}` ）。
+ * 关键字定义，但它们也可以是变量声明，被初始化为类表达式（例如 `let Foo = Foo1 = class Foo {}`）。
  *
  * - In ES5 code, they are typically defined as variable declarations being assigned the return
  *   value of an IIFE. The actual "class" is implemented as a constructor function inside the IIFE,
@@ -395,7 +395,7 @@ export interface ImportedTypeValueReference {
    * If present, represents the symbol names that are referenced from the top-level import.
    * When `null` or empty, the `importedName` itself is the symbol being referenced.
    *
-   * 如果存在，则表示从顶级导入引用的符号名称。当 `null` 或为空时， `importedName`
+   * 如果存在，则表示从顶级导入引用的符号名称。当 `null` 或为空时，`importedName`
    * 本身是被引用的符号。
    *
    */
@@ -558,7 +558,7 @@ export interface CtorParameter {
    * Some parameters don't have a simple string name (for example, parameters which are destructured
    * into multiple variables). In these cases, `name` can be `null`.
    *
-   * 某些参数没有简单的字符串名称（例如，被解构为多个变量的参数）。在这些情况下， `name` 可以是
+   * 某些参数没有简单的字符串名称（例如，被解构为多个变量的参数）。在这些情况下，`name` 可以是
    * `null` 。
    *
    */
@@ -644,7 +644,7 @@ export interface FunctionDefinition {
    * indicate which helper this function represents.
    *
    * 函数体的语句（如果存在），如果不存在主体或函数被标识为表示 tslib 帮助器函数，则为 null
-   * ，在这种情况下， `helper` 将表明此函数表示哪个帮助器。
+   * ，在这种情况下，`helper` 将表明此函数表示哪个帮助器。
    *
    * This list may have been filtered to exclude statements which perform parameter default value
    * initialization.
@@ -774,7 +774,7 @@ export interface Import {
    *
    * This could either be an absolute module name (@angular/core for example) or a relative path.
    *
-   * 这可以是绝对模块名称（例如 @angular/core ）或相对路径。
+   * 这可以是绝对模块名称（例如 @angular/core）或相对路径。
    *
    */
   from: string;
@@ -832,7 +832,7 @@ export type DeclarationNode = ts.Declaration|ts.Expression;
  * information about this.
  *
  * 声明的类型 - 其节点是具体的 (ts.Declaration) 还是内联的 (ts.Expression)。有关此的更多信息，请参阅
- * `ConcreteDeclaration` 、 `InlineDeclaration` 和 `DeclarationNode` 。
+ * `ConcreteDeclaration`、`InlineDeclaration` 和 `DeclarationNode` 。
  *
  */
 export const enum DeclarationKind {
@@ -887,7 +887,7 @@ export interface BaseDeclaration<T extends DeclarationNode> {
  * Returns true if the `decl` is a `ConcreteDeclaration` (ie. that its `node` property is a
  * `ts.Declaration`).
  *
- * 如果 `decl` 是 `ConcreteDeclaration` （即其 `node` 属性是 `ts.Declaration` ），则返回 true 。
+ * 如果 `decl` 是 `ConcreteDeclaration`（即其 `node` 属性是 `ts.Declaration`），则返回 true 。
  *
  */
 export function isConcreteDeclaration(decl: Declaration): decl is ConcreteDeclaration {
@@ -902,7 +902,7 @@ export interface ConcreteDeclaration<T extends ts.Declaration = ts.Declaration> 
    * Optionally represents a special identity of the declaration, or `null` if the declaration
    * does not have a special identity.
    *
-   * （可选）表示声明的特殊标识，如果声明没有特殊标识，则为 `null` 。
+   *（可选）表示声明的特殊标识，如果声明没有特殊标识，则为 `null` 。
    *
    */
   identity: SpecialDeclarationIdentity|null;
@@ -938,7 +938,7 @@ export interface DownleveledEnum {
  * associated with `VAR` in that case, only an expression.
  *
  * 当 `export const VAR = ...;` 时，这可能会发生在某些降级中（a `ts.Declaration`
- * ）被转换为赋值语句（例如 `exports.VAR = ...;` ）。在这种情况下，没有与 `VAR` 关联的
+ *）被转换为赋值语句（例如 `exports.VAR = ...;`）。在这种情况下，没有与 `VAR` 关联的
  * `ts.Declaration` ，只有一个表达式。
  *
  */
@@ -974,7 +974,7 @@ export type Declaration<T extends ts.Declaration = ts.Declaration> =
  * information already available (that is, nodes that come from a `ts.Program` that has been
  * type-checked, and are not synthetically created).
  *
- * `ReflectionHost` 上的所有操作都需要使用带有绑定信息的 TypeScript `ts.Node` （即，来自
+ * `ReflectionHost` 上的所有操作都需要使用带有绑定信息的 TypeScript `ts.Node`（即，来自
  * `ts.Program` 的节点已经过类型检查，并且不是综合创建的）。
  *
  */
@@ -1187,7 +1187,7 @@ export interface ReflectionHost {
    * @param node a TypeScript `ts.Node` representing the module (for example a `ts.SourceFile`) for
    * which to collect exports.
    *
-   * 一个 TypeScript `ts.Node` ，表示要收集导出的模块（例如 `ts.SourceFile` ）。
+   * 一个 TypeScript `ts.Node` ，表示要收集导出的模块（例如 `ts.SourceFile`）。
    *
    * @returns
    *

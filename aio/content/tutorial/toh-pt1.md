@@ -5,13 +5,13 @@
 The application now has a basic title.
 Next you will create a new component to display hero information and place that component in the application shell.
 
-应用程序现在有了基本的标题。 接下来你要创建一个新的组件来显示英雄信息并且把这个组件放到应用程序的外壳里去。
+应用程序现在有了基本的标题。接下来你要创建一个新的组件来显示英雄信息并且把这个组件放到应用程序的外壳里去。
 
 <div class="alert is-helpful">
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
-  要查看本页所讲的范例程序，参阅<live-example></live-example>。
+要查看本页所讲的范例程序，参阅<live-example></live-example>。
 
 </div>
 
@@ -57,9 +57,9 @@ CLI 自动生成了三个元数据属性：
 | `selector` | The component's CSS element selector. |
 | `selector` | 组件的 CSS 元素选择器 |
 | `templateUrl` | The location of the component's template file. |
-| `templateUrl` | 组件模板文件的位置。 |
+| `templateUrl` | 组件模板文件的位置。|
 | `styleUrls` | The location of the component's private CSS styles. |
-| `styleUrls` | 组件私有 CSS 样式表文件的位置。 |
+| `styleUrls` | 组件私有 CSS 样式表文件的位置。|
 
 <a id="selector"></a>
 
@@ -141,7 +141,7 @@ Return to the `HeroesComponent` class and import the `Hero` interface.
 Refactor the component's `hero` property to be of type `Hero`.
 Initialize it with an `id` of `1` and the name `Windstorm`.
 
-把组件的 `hero` 属性的类型重构为 `Hero`。 然后以 `1` 为 `id`、以 “Windstorm” 为名字初始化它。
+把组件的 `hero` 属性的类型重构为 `Hero`。然后以 `1` 为 `id`、以 “Windstorm” 为名字初始化它。
 
 The revised `HeroesComponent` class file should look like this:
 
@@ -183,12 +183,12 @@ The browser refreshes and now the hero's name is displayed in capital letters.
 
 The word `uppercase` in the interpolation binding, right after the pipe (<code>\|</code>) character, activates the built-in `UppercasePipe`.
 
-绑定表达式中的 `uppercase` 位于管道操作符（ `|` ）的右边，用来调用内置管道 `UppercasePipe`。
+绑定表达式中的 `uppercase` 位于管道操作符（`|`）的右边，用来调用内置管道 `UppercasePipe`。
 
 [Pipes](guide/pipes) are a good way to format strings, currency amounts, dates and other display data.
 Angular ships with several built-in pipes and you can create your own.
 
-[管道](guide/pipes) 是格式化字符串、金额、日期和其它显示数据的好办法。 Angular 发布了一些内置管道，而且你还可以创建自己的管道。
+[管道](guide/pipes) 是格式化字符串、金额、日期和其它显示数据的好办法。Angular 发布了一些内置管道，而且你还可以创建自己的管道。
 
 ## Edit the hero
 
@@ -201,7 +201,7 @@ Users should be able to edit the hero name in an `<input>` textbox.
 The textbox should both *display* the hero's `name` property and *update* that property as the user types.
 That means data flows from the component class *out to the screen* and from the screen *back to the class*.
 
-当用户输入时，这个输入框应该能同时*显示*和*修改*英雄的 `name` 属性。 也就是说，数据流从组件类**流出到屏幕**，并且从屏幕**流回到组件类**。
+当用户输入时，这个输入框应该能同时*显示*和*修改*英雄的 `name` 属性。也就是说，数据流从组件类**流出到屏幕**，并且从屏幕**流回到组件类**。
 
 To automate that data flow, setup a two-way data binding between the `<input>` form element and the `hero.name` property.
 
@@ -259,12 +259,12 @@ It belongs to the optional `FormsModule` and you must *opt-in* to using it.
 Angular needs to know how the pieces of your application fit together and what other files and libraries the application requires.
 This information is called *metadata*.
 
-Angular 需要知道如何把应用程序的各个部分组合到一起，以及该应用需要哪些其它文件和库。 这些信息被称为*元数据（metadata）*。
+Angular 需要知道如何把应用程序的各个部分组合到一起，以及该应用需要哪些其它文件和库。这些信息被称为*元数据（metadata）*。
 
 Some of the metadata is in the `@Component` decorators that you added to your component classes.
 Other critical metadata is in [`@NgModule`](guide/ngmodules) decorators.
 
-有些元数据位于 `@Component` 装饰器中，你会把它加到组件类上。 另一些关键性的元数据位于 [`@NgModule`](guide/ngmodules) 装饰器中。
+有些元数据位于 `@Component` 装饰器中，你会把它加到组件类上。另一些关键性的元数据位于 [`@NgModule`](guide/ngmodules) 装饰器中。
 
 The most important `@NgModule` decorator annotates the top-level **AppModule** class.
 
@@ -273,7 +273,7 @@ The most important `@NgModule` decorator annotates the top-level **AppModule** c
 The Angular CLI generated an `AppModule` class in `src/app/app.module.ts` when it created the project.
 This is where you *opt-in* to the `FormsModule`.
 
-Angular CLI 在创建项目的时候就在 `src/app/app.module.ts` 中生成了一个 `AppModule` 类。 这里也就是你要添加 `FormsModule` 的地方。
+Angular CLI 在创建项目的时候就在 `src/app/app.module.ts` 中生成了一个 `AppModule` 类。这里也就是你要添加 `FormsModule` 的地方。
 
 ### Import `FormsModule`
 

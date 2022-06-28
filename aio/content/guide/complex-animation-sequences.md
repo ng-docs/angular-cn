@@ -32,13 +32,13 @@ The functions that control complex animation sequences are:
 | :-------- | :------ |
 | 函数 | 详情 |
 | `query()` | Finds one or more inner HTML elements. |
-| `query()` | 用于查找一个或多个内部 HTML 元素。 |
+| `query()` | 用于查找一个或多个内部 HTML 元素。|
 | `stagger()` | Applies a cascading delay to animations for multiple elements. |
-| `stagger()` | 用于为多元素动画应用级联延迟。 |
+| `stagger()` | 用于为多元素动画应用级联延迟。|
 | [`group()`](api/animations/group) | Runs multiple animation steps in parallel. |
-| [`group()`](api/animations/group) | 用于并行执行多个动画步骤。 |
+| [`group()`](api/animations/group) | 用于并行执行多个动画步骤。|
 | `sequence()` | Runs animation steps one after another. |
-| `sequence()` | 用于逐个顺序执行多个动画步骤。 |
+| `sequence()` | 用于逐个顺序执行多个动画步骤。|
 
 <a id="complex-sequence"></a>
 
@@ -54,9 +54,9 @@ Most complex animations rely on the `query()` function to find child elements an
 | :------- | :------ |
 | 例子 | 详情 |
 | `query()` followed by `animate()` | Used to query simple HTML elements and directly apply animations to them. |
-| `query()` 后跟 `animate()` | 用于查询简单的 HTML 元素并直接对它们应用动画。 |
+| `query()` 后跟 `animate()` | 用于查询简单的 HTML 元素并直接对它们应用动画。|
 | `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation (which would be otherwise be blocked by the current/parent element's animation). |
-| `query()` 后跟 `animateChild()` | 用于查询子元素，这些元素本身就应用了动画元数据并触发这样的动画（否则将被当前/父元素的动画阻止）。 |
+| `query()` 后跟 `animateChild()` | 用于查询子元素，这些元素本身就应用了动画元数据并触发这样的动画（否则将被当前/父元素的动画阻止）。|
 
 The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Angular-specific tokens:
 
@@ -66,13 +66,13 @@ The first argument of `query()` is a [css selector](https://developer.mozilla.or
 | :----- | :------ |
 | 标记 | 详情 |
 | `:enter` <br /> `:leave` | For entering/leaving elements. |
-| `:enter`<br />`:leave` | 用于进入/离开元素。 |
+| `:enter`<br />`:leave` | 用于进入/离开元素。|
 | `:animating` | For elements currently animating. |
-| `:animating` | 对于当前正在播放动画的元素。 |
+| `:animating` | 对于当前正在播放动画的元素。|
 | `@*` <br /> `@triggerName` | For elements with any—or a specific—trigger. |
-| `@*`<br />`@triggerName` | 对于具有任何（或特定）触发器的元素。 |
+| `@*` <br /> `@triggerName` | 对于具有任何（或特定）触发器的元素。|
 | `:self` | The animating element itself. |
-| `:self` | 动画元素本身。 |
+| `:self` | 动画元素本身。|
 
 <div class="callout is-helpful">
 
@@ -82,7 +82,7 @@ The first argument of `query()` is a [css selector](https://developer.mozilla.or
 
 Not all child elements are actually considered as entering/leaving; this can, at times, be counterintuitive and confusing. Please see the [query api docs](api/animations/query#entering-and-leaving-elements) for more information.
 
-并非所有子元素实际上都被认为是进入/离开；有时，这可能是违反直觉和令人困惑的。有关更多信息，参阅[查询 api 文档](api/animations/query#entering-and-leaving-elements)。
+并非所有子元素都会实际上被认为是进入/离开；有时，这可能是违反直觉和令人困惑的。有关更多信息，参阅 [query api 的文档](api/animations/query#entering-and-leaving-elements)。
 
 You can also see an illustration of this in the animations live example (introduced in the animations [introduction section](guide/animations#about-this-guide)) under the Querying tab.
 
@@ -96,7 +96,7 @@ You can also see an illustration of this in the animations live example (introdu
 
 After having queried child elements via `query()`, the `stagger()` function lets you define a timing gap between each queried item that is animated and thus animates elements with a delay between them.
 
-通过 `query()` 查询子元素后， `stagger()` 函数允许你定义每个查询的动画项之间的时间间隙，从而为元素之间延迟设置动画。
+通过 `query()` 查询子元素后，`stagger()` 函数允许你定义每个查询的动画项之间的时间间隙，从而为元素之间延迟设置动画。
 
 The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list (of heroes) adding each in sequence, with a slight delay, from top to bottom.
 
@@ -228,14 +228,14 @@ For each change:
 
 ## Animating the items of a reordering list
 
-## 为重新排序列表的条目设置动画
+## 在重新排序列表的条目时设置动画
 
 Although Angular animates correctly `*ngFor` list items out of the box, it will not be able to do so if their ordering changes.
 This is because it will lose track of which element is which, resulting in broken animations.
 The only way to help Angular keep track of such elements is by assigning a `TrackByFunction` to the `NgForOf` directive.
 This makes sure that Angular always knows which element is which, thus allowing it to apply the correct animations to the correct elements all the time.
 
-尽管 Angular 开箱即用的支持 `*ngFor` 列表项动画，但如果它们的顺序变化了，它将无法这样做。因为它将忘记哪个元素是哪个元素，从而导致这些动画被破坏。帮助 Angular 跟踪此类元素的唯一方法是将 `TrackByFunction` 分配给 `NgForOf` 指令。这可确保 Angular 始终知道哪个元素是哪个，从而允许它始终将正确的动画应用于正确的元素。
+尽管 Angular 开箱即用的支持 `*ngFor` 列表项动画，但如果只是它们的顺序变化了，就无法支持。因为 Angular 会忘记哪个元素是哪个元素，从而导致这些动画被破坏。帮助 Angular 跟踪此类元素的唯一方法是将 `TrackByFunction` 分配给 `NgForOf` 指令。这可确保 Angular 始终知道哪个元素是哪个，从而允许它始终将正确的动画应用于正确的元素。
 
 <div class="alert is-important">
 
@@ -243,7 +243,7 @@ This makes sure that Angular always knows which element is which, thus allowing 
 If you need to animate the items of an `*ngFor` list and there is a possibility that the order of such items will change during runtime, always use a `TrackByFunction`.
 
 **重要**：<br />
-如果你需要为 `*ngFor` 列表的条目设置动画，并且此类条目的顺序有可能在运行时更改，请始终使用 `TrackByFunction` 。
+如果你需要为 `*ngFor` 列表的条目设置动画，并且此类条目的顺序有可能在运行时更改，请始终使用 `TrackByFunction`。
 
 </div>
 

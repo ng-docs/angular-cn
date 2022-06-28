@@ -200,7 +200,7 @@ export class Esm5ReflectionHost extends Esm2015ReflectionHost {
    *
    * @return The passed in `Declaration` (potentially enhanced with a `KnownDeclaration`).
    *
-   * 传入的 `Declaration` （可能使用 `KnownDeclaration` 增强）。
+   * 传入的 `Declaration`（可能使用 `KnownDeclaration` 增强）。
    *
    */
   override detectKnownDeclaration<T extends Declaration>(decl: T): T {

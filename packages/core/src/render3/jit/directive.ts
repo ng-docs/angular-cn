@@ -330,7 +330,7 @@ function hasSelectorScope<T>(component: Type<T>): component is Type<T>&
  * In the event that compilation is not immediate, `compileDirective` will return a `Promise` which
  * will resolve when compilation completes and the directive becomes usable.
  *
- * 如果编译不是立即的， `compileDirective` 将返回一个 `Promise`
+ * 如果编译不是立即的，`compileDirective` 将返回一个 `Promise`
  * ，它将在编译完成并且指令变得可用时解析。
  *
  */
@@ -402,7 +402,7 @@ export function extendsDirectlyFromObject(type: Type<any>): boolean {
  * Extract the `R3DirectiveMetadata` for a particular directive (either a `Directive` or a
  * `Component`).
  *
- * 提取特定指令（ `Directive` 或 `Component` ）的 `R3DirectiveMetadata` 。
+ * 提取特定指令（`Directive` 或 `Component`）的 `R3DirectiveMetadata` 。
  *
  */
 export function directiveMetadata(type: Type<any>, metadata: Directive): R3DirectiveMetadataFacade {

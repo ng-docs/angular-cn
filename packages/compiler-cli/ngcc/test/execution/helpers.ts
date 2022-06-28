@@ -28,7 +28,7 @@ import {EntryPoint, EntryPointJsonProperty} from '../../src/packages/entry_point
  * `computeTaskDependencies()`
  * 实现依赖于这样一个事实，即任务的排序方式使得任务只能依赖于靠前的任务（即依赖项在任务列表中始终位于依赖项之前）。要保留此属性，你需要确保
  * entry-points 仅依赖于索引较低的 entry-points。在定义 `entryPointDeps` 时要考虑到这一点。
- * （否则，将导致错误。）
+ *（否则，将导致错误。）
  *
  * @param entryPointCount The number of different entry-points to mock.
  *
@@ -46,7 +46,7 @@ import {EntryPoint, EntryPointJsonProperty} from '../../src/packages/entry_point
  *                       `entryPointDeps` would be `{2: [0, 1]}`.
  *
  * 将入口点映射到其依赖项的对象。键是入口点索引，值是与键对应的入口点所依赖的入口点索引数组。例如，如果
- * entry-point #2 依赖于 entry-points #0 和 #1， `entryPointDeps` 将是 `{2: [0, 1]}` 。
+ * entry-point #2 依赖于 entry-points #0 和 #1，`entryPointDeps` 将是 `{2: [0, 1]}` 。
  *
  * @return An object with the following properties:
  *         \- `tasks`: The (partially ordered) list of generated mock tasks.

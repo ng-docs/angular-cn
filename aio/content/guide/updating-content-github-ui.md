@@ -46,7 +46,7 @@ Using the GitHub user interface for updates is recommended only for small change
    Keep the description under 100 characters.
    For example:
 
-   在屏幕底部，使用更改的描述更新**Commit changes**框。使用格式 `docs: <short-description-of-change>` ，其中 `<short-description-of-change>` 简要描述你的更改。将描述保持在 100 个字符以下。例如：
+   在屏幕底部，使用更改的描述更新**Commit changes**框。使用格式 `docs: <short-description-of-change>`，其中 `<short-description-of-change>` 简要描述你的更改。将描述保持在 100 个字符以下。例如：
 
    <code-example format="github" language="markdown">
 
@@ -65,11 +65,11 @@ Using the GitHub user interface for updates is recommended only for small change
 1. Fill out the form in the Pull Request screen.
    At a minimum, put an `x` in the **Docs have been added / updated** option and the **Documentation content changes** option.
 
-   在 Pull Request 屏幕中填写表格。至少，在“**文档已添加/更新**”选项和“**文档内容更改**”选项中放一个 `x` 。
+   在 Pull Request 屏幕中填写表格。至少，在“**文档已添加/更新**”选项和“**文档内容更改**”选项中放一个 `x`。
 
 1. Click **Create pull request**.
 
-   单击**创建 Pull Request** 。
+   单击**创建 Pull Request**。
 
 At this point, your pull request is added to a list of current requests, which the documentation team reviews weekly.
 

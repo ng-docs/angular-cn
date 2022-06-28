@@ -100,7 +100,7 @@ __ngRendererSplitNamespace(nameAndNamespace: any) {
 When implementing these helper functions, the schematic ensures that they're only declared once per file and that their names are unique enough that there's a small chance of colliding with pre-existing functions in your code.
 The schematic also keeps their parameter types as `any` so that it doesn't have to insert extra logic that ensures that their values have the correct type.
 
-当实现了这些辅助函数时，此原理图会确保它们在每个文件中都只声明一次，并且它们的名字是唯一的，因此和你的代码中已经存在的函数几乎不可能冲突。该原理图还会把它们的参数类型设为 `any`， 使其不必插入额外的逻辑就能确保它们的值有正确的类型。
+当实现了这些辅助函数时，此原理图会确保它们在每个文件中都只声明一次，并且它们的名字是唯一的，因此和你的代码中已经存在的函数几乎不可能冲突。该原理图还会把它们的参数类型设为 `any`，使其不必插入额外的逻辑就能确保它们的值有正确的类型。
 
 ### I'm a library author. Should I run this migration?
 
@@ -122,7 +122,6 @@ The following table shows all methods that the migration maps from `Renderer` to
 
 | Renderer | Renderer2 |
 | :------- | :-------- |
-| 渲染器 | 渲染器 2 |
 | `listen(renderElement, name, callback)` | `listen(renderElement, name, callback)` |
 | `setElementProperty(renderElement, propertyName, propertyValue)` | `setProperty(renderElement, propertyName, propertyValue)` |
 | `setText(renderNode, text)` | `setValue(renderNode, text)` |
@@ -139,7 +138,7 @@ The following table shows all methods that the migration maps from `Renderer` to
 | `detachView(viewRootNodes)` | `for (let i = 0; i < viewRootNodes.length; i++) {const node = viewRootNodes[i]; const parentElement = parentNode(node); removeChild(parentElement, node);}` |
 | `destroyView(hostElement, viewAllNodes)` | `for (let i = 0; i < viewAllNodes.length; i++) { destroyNode(viewAllNodes[i]); }` |
 | `setBindingDebugInfo()` | This function is a noop in `Renderer2`. |
-| `setBindingDebugInfo()` | 该函数在 `Renderer2` 中无用。 |
+| `setBindingDebugInfo()` | 该函数在 `Renderer2` 中无用。|
 | `createViewRoot(hostElement)` | Should be replaced with a reference to `hostElement` |
 | `createViewRoot(hostElement)` | 应该替换成到 `hostElement` 的引用 |
 | `invokeElementMethod(renderElement, methodName, args?)` | `(renderElement as any)[methodName].apply(renderElement, args);` |

@@ -1,0 +1,75 @@
+{
+  "name": "extract-i18n",
+  "command": "ng extract-i18n [project]",
+  "shortDescription": "Extracts i18n messages from source code.",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "browser-target",
+      "type": "string",
+      "description": "A browser builder target to extract i18n messages in the format of `project:target[:configuration]`. You can also pass in more than one configuration name as a comma-separated list. Example: `project:target:production,staging`.",
+      "descriptionCn": "一个浏览器构建器目标，用来以 `project:target[:configuration]` 格式提取 i18n 消息。你还可以传入逗号分隔的多个配置名称列表。例如：`project:target:production,staging`。"
+    },
+    {
+      "name": "configuration",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
+      "descriptionCn": "逗号分隔列表形式的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分中指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+    },
+    {
+      "name": "format",
+      "type": "string",
+      "default": "xlf",
+      "enum": [
+        "xmb",
+        "xlf",
+        "xlif",
+        "xliff",
+        "xlf2",
+        "xliff2",
+        "json",
+        "arb",
+        "legacy-migrate"
+      ],
+      "description": "Output format for the generated file.",
+      "descriptionCn": "要生成文件的输出格式。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "out-file",
+      "type": "string",
+      "description": "Name of the file to output.",
+      "descriptionCn": "要输出的文件名。"
+    },
+    {
+      "name": "output-path",
+      "type": "string",
+      "description": "Path where output will be placed.",
+      "descriptionCn": "要放置输出结果的路径。"
+    },
+    {
+      "name": "progress",
+      "type": "boolean",
+      "default": true,
+      "description": "Log progress to the console.",
+      "descriptionCn": "将进度记录到控制台。"
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "positional": 0,
+      "descriptionCn": "要构建的项目名。可以是应用或库。"
+    }
+  ],
+  "shortDescriptionCn": "从源码中提取 i18n 消息。"
+}

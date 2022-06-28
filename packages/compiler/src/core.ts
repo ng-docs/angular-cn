@@ -86,7 +86,7 @@ export const enum InjectFlags {
    * Specifies that an injector should retrieve a dependency from any injector until reaching the
    * host element of the current component. (Only used with Element Injector)
    *
-   * 指定注入器应该从任何注入器检索依赖项，直到到达当前组件的宿主元素。 （仅与 Element Injector
+   * 指定注入器应该从任何注入器检索依赖项，直到到达当前组件的宿主元素。（仅与 Element Injector
    * 一起使用）
    *
    */

@@ -39,10 +39,7 @@ import {Tree, TreeNode} from './utils/tree';
  * 以下片段显示了组件如何获取当前状态的根节点以建立其自己的路由树：
  *
  * ```
- *
- * ```
- *
- * @Component ({templateUrl:'template.html'})
+ * @Component({templateUrl:'template.html'})
  * class MyComponent {
  *   constructor(router: Router) {
  *     const state: RouterState = router.routerState;
@@ -53,10 +50,12 @@ import {Tree, TreeNode} from './utils/tree';
  *   }
  * }
  * ```
+ *
  * @see `ActivatedRoute`
  * @see [Getting route information](guide/router#getting-route-information)
  *
  * [获取路由信息](guide/router#getting-route-information)
+ *
  * @publicApi
  */
 export class RouterState extends Tree<ActivatedRoute> {
@@ -116,18 +115,16 @@ export function createEmptyStateSnapshot(
  * on shallow equality. For example, changing deeply nested properties in resolved `data` will not
  * cause the `ActivatedRoute.data` `Observable` to emit a new value.
  *
- * 注：此类中的 observable 仅当当前值和以前的值基于浅等式而不同时，才会发出。例如，更改解析 `data`
+ * 注意：此类中的 observable 仅当当前值和以前的值基于浅等式而不同时，才会发出。例如，更改解析 `data`
  * 中的深层嵌套属性不会导致 `ActivatedRoute.data` `Observable` 发出新值。
  *
  * {@example router/activated-route/module.ts region="activated-route"
  *     header="activated-route.component.ts"}
  *
- * {@example router/activate-route/module.ts region="activate-route"
- * header="activate-route.component.ts"}
- *
  * @see [Getting route information](guide/router#getting-route-information)
  *
  * [获取路由信息](guide/router#getting-route-information)
+ *
  * @publicApi
  */
 export class ActivatedRoute {
@@ -179,15 +176,15 @@ export class ActivatedRoute {
        */
       public data: Observable<Data>,
       /**
-       * The outlet name of the route. It's a constant
+       * The outlet name of the route, a constant.
        *
-       * 本路由对应的出口名，是个常量
+       * 本路由对应的出口名，是个常量。
        */
       public outlet: string,
       /**
-       * The component of the route. It's a constant
+       * The component of the route, a constant.
        *
-       * 本路由对应的组件，是个常量
+       * 本路由对应的组件，是个常量。
        */
       public component: Type<any>|null, futureSnapshot: ActivatedRouteSnapshot) {
     this._futureSnapshot = futureSnapshot;
@@ -357,10 +354,7 @@ function flattenInherited(pathFromRoot: ActivatedRouteSnapshot[]): Inherited {
  * 以下示例使用在创建时从根节点的快照中提取的路由信息来初始化组件。
  *
  * ```
- *
- * ```
- *
- * @Component ({templateUrl:'./my-component.html'})
+ * @Component({templateUrl:'./my-component.html'})
  * class MyComponent {
  *   constructor(route: ActivatedRoute) {
  *     const id: string = route.snapshot.params.id;
@@ -555,10 +549,7 @@ export class ActivatedRouteSnapshot {
  * 以下示例演示了如何使用创建时根节点状态快照中的信息初始化组件。
  *
  * ```
- *
- * ```
- *
- * @Component ({templateUrl:'template.html'})
+ * @Component({templateUrl:'template.html'})
  * class MyComponent {
  *   constructor(router: Router) {
  *     const state: RouterState = router.routerState;
@@ -570,6 +561,7 @@ export class ActivatedRouteSnapshot {
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export class RouterStateSnapshot extends Tree<ActivatedRouteSnapshot> {

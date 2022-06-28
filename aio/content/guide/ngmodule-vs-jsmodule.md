@@ -5,7 +5,7 @@
 JavaScript modules and NgModules can help you modularize your code, but they are very different.
 Angular applications rely on both kinds of modules.
 
-JavaScript 模块和 NgModule 都可以帮你模块化你的代码，但它们却有着本质性的不同。 Angular 应用同时依赖这两种模块。
+JavaScript 模块和 NgModule 都可以帮你模块化你的代码，但它们却有着本质性的不同。Angular 应用同时依赖这两种模块。
 
 ## JavaScript modules: Files containing code
 
@@ -14,14 +14,14 @@ JavaScript 模块和 NgModule 都可以帮你模块化你的代码，但它们�
 A [JavaScript module](https://javascript.info/modules "JavaScript.Info - Modules") is an individual file with JavaScript code, usually containing a class or a library of functions for a specific purpose within your application.
 JavaScript modules let you spread your work across multiple files.
 
-[JavaScript 模块](https://javascript.info/modules "JavaScript.Info  - 模块")是一个带有 JavaScript 代码的单独文件，它通常包含一个应用中特定用途的类或函数库。 JavaScript 模块让你可以跨多个文件进行工作。
+[JavaScript 模块](https://javascript.info/modules "JavaScript.Info  - 模块")是一个带有 JavaScript 代码的单独文件，它通常包含一个应用中特定用途的类或函数库。JavaScript 模块让你可以跨多个文件进行工作。
 
 <div class="alert is-helpful">
 
 To learn more about JavaScript modules, see [ES6 In Depth: Modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules).
 For the module specification, see the [6th Edition of the ECMAScript standard](https://www.ecma-international.org/ecma-262/6.0/#sec-modules).
 
-要了解更多关于 JavaScript 模块的信息，参阅[深入 ES6：模块](https://hacks.mozilla.org/2015/08/es6-in-depth-modules) 。关于模块规范的更多信息，请参阅[ECMAScript 标准第 6 版](https://www.ecma-international.org/ecma-262/6.0/#sec-modules)。
+要了解更多关于 JavaScript 模块的信息，参阅[深入 ES6：模块](https://hacks.mozilla.org/2015/08/es6-in-depth-modules)。关于模块规范的更多信息，请参阅[ECMAScript 标准第 6 版](https://www.ecma-international.org/ecma-262/6.0/#sec-modules)。
 
 </div>
 
@@ -64,7 +64,7 @@ An [NgModule](guide/glossary#ngmodule "Definition of NgModule") is a class marke
 NgModules are specific to Angular.
 While classes with an `@NgModule` decorator are by convention kept in their own files, they differ from JavaScript modules because they include this metadata.
 
-[NgModule](guide/glossary#ngmodule "NgModule 的定义") 是带有 `@NgModule` 装饰器标记的类，它带有一个描述该应用里这个特定部分要如何与其他部分配合使用的元数据对象。 NgModule 是 Angular 特有的。虽然带有 `@NgModule` 装饰器的类一般也保存在单独的文件中，但它们与 JavaScript 模块的不同，因为它们包含这种元数据。
+[NgModule](guide/glossary#ngmodule "NgModule 的定义") 是带有 `@NgModule` 装饰器标记的类，它带有一个描述该应用里这个特定部分要如何与其他部分配合使用的元数据对象。NgModule 是 Angular 特有的。虽然带有 `@NgModule` 装饰器的类一般也保存在单独的文件中，但它们与 JavaScript 模块的不同，因为它们包含这种元数据。
 
 The `@NgModule` metadata plays an important role in guiding the Angular compilation process that converts the application code you write into highly performant JavaScript code.
 The metadata describes how to compile a component's template and how to create an [injector](guide/glossary#injector "Definition of injector") at runtime.
@@ -80,7 +80,7 @@ An NgModule can export only the declarable classes it owns or imports from other
 It doesn't declare or export any other kind of class.
 Declarables are the only classes that matter to the Angular compilation process.
 
-不要把所有类都作为 JavaScript 模块定义在一个巨型文件中，而应该在 `@NgModule.declarations` 列表中声明哪些组件、指令和管道属于这个 NgModule。这些类叫做[可声明对象](guide/glossary#declarable "可声明的定义") 。NgModule 只能导出它自己拥有的可声明对象类或从其他 NgModule 中导入的类。它不会声明或导出任何其他类型的类。对 Angular 编译过程来说，可声明对象是唯一值得关注的类。
+不要把所有类都作为 JavaScript 模块定义在一个巨型文件中，而应该在 `@NgModule.declarations` 列表中声明哪些组件、指令和管道属于这个 NgModule。这些类叫做[可声明对象](guide/glossary#declarable "可声明的定义")。NgModule 只能导出它自己拥有的可声明对象类或从其他 NgModule 中导入的类。它不会声明或导出任何其他类型的类。对 Angular 编译过程来说，可声明对象是唯一值得关注的类。
 
 For a complete description of the NgModule metadata properties, see [Using the NgModule metadata](guide/ngmodule-api "Using the NgModule metadata").
 
@@ -109,7 +109,7 @@ It then configures the `@NgModule` with the following arrays:
 * `imports`: Other NgModules you are using, so that you can use their declarables.
   The newly generated root NgModule imports [`BrowserModule`](api/platform-browser/BrowserModule "BrowserModule NgModule") in order to use browser-specific services such as [DOM](https://www.w3.org/TR/DOM-Level-2-Core/introduction.html "Definition of Document Object Model") rendering, sanitization, and location.
 
-  `imports` ：你要用的其他 NgModule，这样你才可以使用它们的可声明对象。新生成的根模块会导入[`BrowserModule`](api/platform-browser/BrowserModule "BrowserModule NgModule") ，以便使用特定于浏览器的服务，比如 [DOM](https://www.w3.org/TR/DOM-Level-2-Core/introduction.html "文档对象模型的定义") 渲染、无害化处理和定位。
+  `imports` ：你要用的其他 NgModule，这样你才可以使用它们的可声明对象。新生成的根模块会导入[`BrowserModule`](api/platform-browser/BrowserModule "BrowserModule NgModule")，以便使用特定于浏览器的服务，比如 [DOM](https://www.w3.org/TR/DOM-Level-2-Core/introduction.html "文档对象模型的定义") 渲染、无害化处理和定位。
 
 * `providers`: Providers of services that components in other NgModules can use.
   There are no providers in a newly generated root NgModule.
@@ -119,7 +119,7 @@ It then configures the `@NgModule` with the following arrays:
 * `bootstrap`: The [entry component](guide/entry-components "Specifying an entry component") that Angular creates and inserts into the `index.html` host web page, thereby bootstrapping the application.
   This entry component, `AppComponent`, appears in both the `declarations` and the `bootstrap` arrays.
 
-  `bootstrap` ： [Angular 创建的入口组件](guide/entry-components "指定一个入口组件")，Angular 会创建它，并把它插入到宿主页面 `index.html` 中，从而引导该应用。这个入口组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
+  `bootstrap` ：[Angular 创建的入口组件](guide/entry-components "指定一个入口组件")，Angular 会创建它，并把它插入到宿主页面 `index.html` 中，从而引导该应用。这个入口组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
 
 ## Next steps
 

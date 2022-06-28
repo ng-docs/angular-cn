@@ -91,9 +91,6 @@ export interface UrlCreationOptions {
    * 下面的 `go()` 函数会把目标 URI 解释为相对于已激活路由 `child` 的，从而导航到 `list` 路由。
    *
    * ```
-   *
-   * ```
-   *
    * @Component ({...})
    *  class ChildComponent {
    *    constructor(private router: Router, private route: ActivatedRoute) {}
@@ -106,6 +103,7 @@ export interface UrlCreationOptions {
    *
    * A value of `null` or `undefined` indicates that the navigation commands should be applied
    * relative to the root.
+   *
    */
   relativeTo?: ActivatedRoute|null;
 
@@ -341,33 +339,33 @@ export type RestoredState = {
  *   *id* ：当前导航的唯一标识符。
  *
  * * *initialUrl* : The target URL passed into the `Router#navigateByUrl()` call before navigation.
- *   This is the value before the router has parsed or applied redirects to it.
+ *     This is the value before the router has parsed or applied redirects to it.
  *
- *   *initialUrl* ：在导航之前传递给 `Router#navigateByUrl()` 调用的目标
- * URL。这是路由器解析或应用重定向之前的值。
+ *     *initialUrl* ：在导航之前传递给 `Router#navigateByUrl()` 调用的目标
+ *   URL。这是路由器解析或应用重定向之前的值。
  *
  *   ```
  *   *initialUrl*：在导航前传给 `Router#navigateByUrl()` 调用的目标
  *   ```
  *
- *   URL。这是路由器解析或对其应用重定向之前的值。
+ *     URL。这是路由器解析或对其应用重定向之前的值。
  *
  * * *extractedUrl* : The initial target URL after being parsed with `UrlSerializer.extract()`.
  *
  *   *extractedUrl*：使用 `UrlSerializer.extract()` 解析后的初始目标 URL。
  *
  * * *finalUrl* : The extracted URL after redirects have been applied.
- *   This URL may not be available immediately, therefore this property can be `undefined`.
- *   It is guaranteed to be set after the `RoutesRecognized` event fires.
+ *     This URL may not be available immediately, therefore this property can be `undefined`.
+ *     It is guaranteed to be set after the `RoutesRecognized` event fires.
  *
- *   *finalUrl* ：应用重定向后提取的 URL。此 URL 可能无法立即使用，因此此属性可以是 `undefined`
- * 。保证在 `RoutesRecognized` 事件触发之后设置。
+ *     *finalUrl* ：应用重定向后提取的 URL。此 URL 可能无法立即使用，因此此属性可以是 `undefined`
+ *   。保证在 `RoutesRecognized` 事件触发之后设置。
  *
  *   ```
  *   *finalUrl*：应用重定向之后提取的 URL。该 URL 可能不会立即可用，因此该属性也可以是
  *   ```
  *
- *   `undefined`。在 `RoutesRecognized` 事件触发后进行设置。
+ *     `undefined`。在 `RoutesRecognized` 事件触发后进行设置。
  *
  * * *trigger* : Identifies how this navigation was triggered.
  *   \-- 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
@@ -389,17 +387,17 @@ export type RestoredState = {
  *   ```
  *
  * * *previousNavigation* : The previously successful `Navigation` object. Only one previous
- *   navigation is available, therefore this previous `Navigation` object has a `null` value for its
- *   own `previousNavigation`.
+ *     navigation is available, therefore this previous `Navigation` object has a `null` value for
+ * its own `previousNavigation`.
  *
- *   *previousNavigation* ：以前成功的 `Navigation` 对象。只有一个以前的导航可用，因此这
- * `previousNavigation` 的 `Navigation` 对象的 nextNavigation 有一个 `null` 值。
+ *     *previousNavigation* ：以前成功的 `Navigation` 对象。只有一个以前的导航可用，因此这
+ *   `previousNavigation` 的 `Navigation` 对象的 nextNavigation 有一个 `null` 值。
  *
  *   ```
  *   *previousNavigation*：先前成功的 `Navigation` 对象。只有一个先前的导航可用，因此该先前的
  *   ```
  *
- *   `Navigation` 对象自己的 `previousNavigation` 值为 `null`。
+ *     `Navigation` 对象自己的 `previousNavigation` 值为 `null`。
  *
  * @publicApi
  */
@@ -572,8 +570,8 @@ export class Router {
    * `UrlHandlingStrategy`). That is, after we find the route config tree that we're going to
    * activate, run guards, and are just about to activate the route, we set the currentUrlTree.
    *
-   * 表示 `Router` 配置为处理的激活的 `UrlTree` （通过 `UrlHandlingStrategy`
-   * ）。也就是说，在我们找到要激活的路由配置树、运行警卫并即将激活路由之后，我们设置 currentUrlTree
+   * 表示 `Router` 配置为处理的激活的 `UrlTree`（通过 `UrlHandlingStrategy`
+   *）。也就是说，在我们找到要激活的路由配置树、运行警卫并即将激活路由之后，我们设置 currentUrlTree
    * 。
    *
    * This should match the `browserUrlTree` when a navigation succeeds. If the
@@ -587,18 +585,25 @@ export class Router {
   /**
    * Meant to represent the entire browser url after a successful navigation. In the life of a
    * navigation transition:
-   * 1\. The rawUrl represents the full URL that's being navigated to
-   * 2\. We apply redirects, which might only apply to _part_ of the URL (due to
+   *
+   * 旨在表示成功导航后的整个浏览器 url。在导航转换的生命周期中：
+   *
+   * 1. The rawUrl represents the full URL that's being navigated to
+   *
+   *    rawUrl 表示被导航到的完整 URL
+   *
+   * 2. We apply redirects, which might only apply to _part_ of the URL (due to
    * `UrlHandlingStrategy`).
-   * 3\. Right before activation (because we assume activation will succeed), we update the
+   *
+   *    我们应用重定向，这可能仅适用于 URL 的 _ 一部分 _（由于 `UrlHandlingStrategy`）。
+   *
+   * 3. Right before activation (because we assume activation will succeed), we update the
    * rawUrlTree to be a combination of the urlAfterRedirects (again, this might only apply to part
    * of the initial url) and the rawUrl of the transition (which was the original navigation url in
    * its full form).
    *
-   * 旨在表示成功导航后的整个浏览器 url。在导航转换的生命周期中： 1.rawUrl 表示被导航到的完整
-   * URL 2.我们应用重定向，这可能仅适用于 URL 的 _ 一部分 _（由于 `UrlHandlingStrategy`
-   * ）。 3.在激活之前（因为我们假设激活会成功），我们将 rawUrlTree 更新为 urlAfterRedirects
-   * （同样，这可能仅适用于初始 url 的一部分）和转换的 rawUrl （这是原始的完整形式的导航 url）。
+   *    在激活之前（因为我们假设激活会成功），我们将 rawUrlTree 更新为 urlAfterRedirects
+   *（同样，这可能仅适用于初始 url 的一部分）和转换的 rawUrl（这是原始的完整形式的导航 url）。
    *
    */
   private rawUrlTree: UrlTree;
@@ -609,7 +614,7 @@ export class Router {
    * `browserUrlTree` _may not_ reflect the actual browser URL for two reasons:
    *
    * 旨在表示 `Router` 设置要处理的浏览器 url 部分（通过 `UrlHandlingStrategy`
-   * ）。此值会在更新浏览器 url 后立即更新（或通过 `skipLocationChange` 跳过浏览器 url
+   *）。此值会在更新浏览器 url 后立即更新（或通过 `skipLocationChange` 跳过浏览器 url
    * 更新）。因此，请注意 `browserUrlTree`_ 可能无法 _ 反映实际的浏览器 URL，原因有两个：
    *
    * 1. `UrlHandlingStrategy` only handles part of the URL
@@ -624,7 +629,7 @@ export class Router {
    * current route, either before guards with `urlUpdateStrategy === 'eager'` or right before
    * activation with `'deferred'`.
    *
-   * 因此，重申一下， `browserUrlTree` 仅代表路由器对当前路由的内部理解，无论是在使用
+   * 因此，重申一下，`browserUrlTree` 仅代表路由器对当前路由的内部理解，无论是在使用
    * `urlUpdateStrategy === 'eager'` 保护之前或使用 `'deferred'` 激活之前。
    *
    * This should match the `currentUrlTree` when the navigation succeeds.
@@ -1684,16 +1689,16 @@ export class Router {
    * 改用 `IsActiveMatchOptions` 。
    *
    * - The equivalent `IsActiveMatchOptions` for `true` is
-   *   `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}`.
+   *     `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}`.
    *
-   *   `true` 的等效 `IsActiveMatchOptions` 是 `{paths: 'exact', queryParams: 'exact', fragment:
-   * 'ignored', matrixParams: 'ignored'}` 。
+   *     `true` 的等效 `IsActiveMatchOptions` 是 `{paths: 'exact', queryParams: 'exact', fragment:
+   *   'ignored', matrixParams: 'ignored'}` 。
    *
    * - The equivalent for `false` is
-   *   `{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}`.
+   *     `{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}`.
    *
-   *   `false` 的等价物是 `{paths: 'subset', queryParams: 'subset', fragment: 'ignored',
-   * matrixParams: 'ignored'}` 。
+   *     `false` 的等价物是 `{paths: 'subset', queryParams: 'subset', fragment: 'ignored',
+   *   matrixParams: 'ignored'}` 。
    *
    */
   isActive(url: string|UrlTree, exact: boolean): boolean;

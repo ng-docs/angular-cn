@@ -471,7 +471,7 @@ export class ProcessedNgccPackageConfig implements Omit<RawNgccPackageConfig, 'e
  * configuration for a package is returned.
  *
  * 获取包的配置（通过 `getConfig()`
- * ）时，调用者应提供相关包的版本（如果可用）。如果未提供，则返回包的第一个可用配置。
+ *）时，调用者应提供相关包的版本（如果可用）。如果未提供，则返回包的第一个可用配置。
  *
  */
 export class NgccConfiguration {

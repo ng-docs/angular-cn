@@ -159,7 +159,7 @@ export type SingleProvider = TypeProvider|ValueProvider|ClassProvider|Constructo
  * The logic visits an `InjectorType`, an `InjectorTypeWithProviders`, or a standalone
  * `ComponentType`, and all of its transitive providers and collects providers.
  *
- * 该逻辑会访问 `InjectorType` 、 `InjectorTypeWithProviders` 或独立 `ComponentType`
+ * 该逻辑会访问 `InjectorType`、`InjectorTypeWithProviders` 或独立 `ComponentType`
  * ，以及其所有可传递提供者和集合提供者。
  *
  * If an `InjectorTypeWithProviders` that declares providers besides the type is specified,
@@ -169,7 +169,7 @@ export type SingleProvider = TypeProvider|ValueProvider|ClassProvider|Constructo
  *
  * 如果指定了除了类型之外还声明提供者的 `InjectorTypeWithProviders`
  * ，则函数将返回“true”以表明需要处理此类型定义的提供者。这允许我们在处理注入器定义的所有导入之后处理注入器类型的提供者。
- * （遵循视图引擎语义：请参阅 FW-1349 ）
+ *（遵循视图引擎语义：请参阅 FW-1349）
  *
  */
 export function walkProviderTree(

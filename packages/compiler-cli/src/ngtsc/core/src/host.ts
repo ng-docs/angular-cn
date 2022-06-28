@@ -134,7 +134,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    * Available after this host is used to create a `ts.Program` (which causes all the files in the
    * program to be enumerated).
    *
-   * 在此主机用于创建 `ts.Program` （这会导致程序中的所有文件被枚举）之后可用。
+   * 在此主机用于创建 `ts.Program`（这会导致程序中的所有文件被枚举）之后可用。
    *
    */
   get ignoreForEmit(): Set<ts.SourceFile> {

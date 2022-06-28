@@ -16,7 +16,7 @@ import {ClassDeclaration} from '../../reflection';
  * to the file which was resolved by evaluating the `ts.Expression` (generally, a relative or
  * absolute string path to the resource).
  *
- * 表示组件的资源，并包含通过估算 `ts.Expression` （通常是资源的相对或绝对字符串路径）解析的文件的
+ * 表示组件的资源，并包含通过估算 `ts.Expression`（通常是资源的相对或绝对字符串路径）解析的文件的
  * `AbsoluteFsPath` 。
  *
  * If the resource is inline, the `path` will be `null`.

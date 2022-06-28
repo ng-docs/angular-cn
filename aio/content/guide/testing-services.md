@@ -10,7 +10,7 @@ To check that your services are working as you intend, you can write tests speci
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
-  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -40,7 +40,7 @@ The `MasterService` is a simple example:
 
 `MasterService` delegates its only method, `getValue`, to the injected `ValueService`.
 
-`MasterService` 只把它唯一的方法 `getValue` 委托给了所注入的 `ValueService` 。
+`MasterService` 只把它唯一的方法 `getValue` 委托给了所注入的 `ValueService`。
 
 Here are several ways to test it.
 
@@ -75,7 +75,7 @@ These standard testing techniques are great for unit testing services in isolati
 However, you almost always inject services into application classes using Angular dependency injection and you should have tests that reflect that usage pattern.
 Angular testing utilities make it straightforward to investigate how injected services behave.
 
-但是，你几乎总是使用 Angular 依赖注入机制来将服务注入到应用类中，你应该有一些测试来体现这种使用模式。 Angular 测试实用工具可以让你轻松调查这些注入服务的行为。
+但是，你几乎总是使用 Angular 依赖注入机制来将服务注入到应用类中，你应该有一些测试来体现这种使用模式。Angular 测试实用工具可以让你轻松调查这些注入服务的行为。
 
 ## Testing services with the `TestBed`
 
@@ -103,7 +103,7 @@ As a service *tester*, you must at least think about the first level of service 
 The `TestBed` is the most important of the Angular testing utilities.
 The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [@NgModule](guide/ngmodules).
 
-`TestBed` 是 Angular 测试实用工具中最重要的。 `TestBed` 创建了一个动态构造的 Angular *测试*模块，用来模拟一个 Angular 的 [@NgModule](guide/ngmodules) 。
+`TestBed` 是 Angular 测试实用工具中最重要的。`TestBed` 创建了一个动态构造的 Angular *测试*模块，用来模拟一个 Angular 的 [@NgModule](guide/ngmodules)。
 
 The `TestBed.configureTestingModule()` method takes a metadata object that can have most of the properties of an [@NgModule](guide/ngmodules).
 
@@ -175,14 +175,14 @@ Here's how you might rewrite one of the `MasterService` tests in that style.
 
 Begin by putting re-usable, preparatory code in a *setup* function instead of `beforeEach()`.
 
-首先，在 *setup* 函数中放入可供复用的预备代码，而不用 `beforeEach()` 。
+首先，在 *setup* 函数中放入可供复用的预备代码，而不用 `beforeEach()`。
 
 <code-example header="app/demo/demo.spec.ts (setup)" path="testing/src/app/demo/demo.spec.ts" region="no-before-each-setup"></code-example>
 
 The `setup()` function returns an object literal with the variables, such as `masterService`, that a test might reference.
 You don't define *semi-global* variables (for example, `let masterService: MasterService`) in the body of the `describe()`.
 
-`setup()` 函数返回一个包含测试可能引用的变量（如 `masterService`）的对象字面量。你并没有在 `describe()` 的函数体中定义*半全局*变量（比如 `let masterService: MasterService` ）。
+`setup()` 函数返回一个包含测试可能引用的变量（如 `masterService`）的对象字面量。你并没有在 `describe()` 的函数体中定义*半全局*变量（比如 `let masterService: MasterService`）。
 
 Then each test invokes `setup()` in its first line, before continuing with steps that manipulate the test subject and assert expectations.
 
@@ -223,13 +223,13 @@ You can test a data service with an injected `HttpClient` spy as you would test 
 The `HeroService` methods return `Observables`.
 You must *subscribe* to an observable to (a) cause it to execute and (b) assert that the method succeeds or fails.
 
-`HeroService` 方法会返回 `Observables` 。你必须*订阅*一个可观察对象（a）让它执行，（b）断言该方法成功或失败。
+`HeroService` 方法会返回 `Observables`。你必须*订阅*一个可观察对象（a）让它执行，（b）断言该方法成功或失败。
 
 The `subscribe()` method takes a success (`next`) and fail (`error`) callback.
 Make sure you provide *both* callbacks so that you capture errors.
 Neglecting to do so produces an asynchronous uncaught observable error that the test runner will likely attribute to a completely different test.
 
-`subscribe()` 方法会接受成功（ `next` ）和失败（ `error` ）回调。确保你会同时提供*这两个*回调函数，以便捕获错误。如果不这样做就会产生一个异步的、没有被捕获的可观察对象的错误，测试运行器可能会把它归因于一个完全不相关的测试。
+`subscribe()` 方法会接受成功（`next`）和失败（`error`）回调。确保你会同时提供*这两个*回调函数，以便捕获错误。如果不这样做就会产生一个异步的、没有被捕获的可观察对象的错误，测试运行器可能会把它归因于一个完全不相关的测试。
 
 </div>
 

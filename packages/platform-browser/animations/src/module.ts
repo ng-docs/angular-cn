@@ -61,8 +61,6 @@ export class BrowserAnimationsModule {
    *
    * ```
    *
-   * ```
-   *
    * @NgModule ({
    *   imports: [BrowserAnimationsModule.withConfig(config)]
    * })

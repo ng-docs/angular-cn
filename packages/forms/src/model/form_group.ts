@@ -78,7 +78,7 @@ export type ɵOptionalKeys<T> = {
  * `FormGroup` is one of the four fundamental building blocks used to define forms in Angular,
  * along with `FormControl`, `FormArray`, and `FormRecord`.
  *
- * `FormGroup` 是用于在 Angular 中定义表单的四个基本构建块之一，与 `FormControl` 、 `FormArray` 和
+ * `FormGroup` 是用于在 Angular 中定义表单的四个基本构建块之一，与 `FormControl`、`FormArray` 和
  * `FormRecord` 。
  *
  * When instantiating a `FormGroup`, pass in a collection of child controls as the first
@@ -126,7 +126,7 @@ export type ɵOptionalKeys<T> = {
  * If you have controls that are optional (i.e. they can be removed, you can use the `?` in the
  * type):
  *
- * 如果你有可选的控件（即它们可以被删除，你可以在类型中使用 `?` ）：
+ * 如果你有可选的控件（即它们可以被删除，你可以在类型中使用 `?`）：
  *
  * ```
  * const form = new FormGroup<{
@@ -212,7 +212,7 @@ export type ɵOptionalKeys<T> = {
  * Notice that `c.value.one` has type `string|null|undefined`. This is because calling `c.reset({})`
  * without providing the optional key `one` will cause it to become `null`.
  *
- * 请注意， `c.value.one` 的类型为 `string|null|undefined` 。这是因为在不提供可选键 `one`
+ * 请注意，`c.value.one` 的类型为 `string|null|undefined` 。这是因为在不提供可选键 `one`
  * 的情况下调用 `c.reset({})` 将导致它变为 `null` 。
  *
  * @publicApi
@@ -324,7 +324,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   added. When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象在添加控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -373,7 +373,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   removed. When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -412,7 +412,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   replaced with a new one. When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时， `statusChanges` 和
+   *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时，`statusChanges` 和
    * `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -512,7 +512,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   observables emit events with the latest status and value when the control value is updated.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -576,7 +576,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * value is updated. When false, no events are emitted. The configuration options are passed to
    *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
    * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。
@@ -641,7 +641,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
    * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} 方法。

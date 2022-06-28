@@ -133,11 +133,12 @@ export class Parser {
    * ```
    *
    * contains three bindings:
-   * 1\. ngFor -> null
-   * 2\. item -> NgForOfContext.$implicit
-   * 3\. ngForOf -> items
    *
-   * 包含三个绑定： 1. ngFor -> null 2. item -> NgForOfContext.$implicit 3. ngForOf -> items
+   * 包含三个绑定：
+   *
+   * 1. ngFor -> null
+   * 2. item -> NgForOfContext.$implicit
+   * 3. ngForOf -> items
    *
    * This is apparent from the de-sugared template:
    *
@@ -150,23 +151,18 @@ export class Parser {
    * @param templateKey name of directive, without the \* prefix. For example: ngIf, ngFor
    *
    * 指令的名称，不带 \* 前缀。例如： ngIf、ngFor
-   *
    * @param templateValue RHS of the microsyntax attribute
    *
    * 微语法属性的 RHS
-   *
    * @param templateUrl template filename if it's external, component filename if it's inline
    *
    * 如果是外部的，则为模板文件名，如果是内联的，则为组件文件名
-   *
    * @param absoluteKeyOffset start of the `templateKey`
    *
    * `templateKey` 的开始
-   *
    * @param absoluteValueOffset start of the `templateValue`
    *
    * `templateValue` 值的开始
-   *
    */
   parseTemplateBindings(
       templateKey: string, templateValue: string, templateUrl: string, absoluteKeyOffset: number,
@@ -211,8 +207,8 @@ export class Parser {
    * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
    * This is used for parsing the switch expression in ICUs.
    *
-   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（ `{{` 和 `}}`
-   * ）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
+   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`
+   *）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
    *
    */
   parseInterpolationExpression(expression: string, location: string, absoluteOffset: number):
@@ -529,7 +525,7 @@ export class _ParseAST {
    * Retrieve a `ParseSpan` from `start` to the current position (or to `artificialEndIndex` if
    * provided).
    *
-   * 检索从 `start` 到当前位置的 `ParseSpan` （如果提供，则检索到 `artificialEndIndex` ）。
+   * 检索从 `start` 到当前位置的 `ParseSpan`（如果提供，则检索到 `artificialEndIndex`）。
    *
    * @param start Position from which the `ParseSpan` will start.
    *
@@ -1161,14 +1157,14 @@ export class _ParseAST {
    * ```
    *
    * contains five bindings:
-   * 1\. ngFor -> null
-   * 2\. item -> NgForOfContext.$implicit
-   * 3\. ngForOf -> items
-   * 4\. i -> NgForOfContext.index
-   * 5\. ngForTrackBy -> func
    *
-   * 包含五个绑定： 1. ngFor -> null 2. item -> NgForOfContext.$implicit 3. ngForOf -> items 4. i ->
-   * NgForOfContext.index 5. ngForTrackBy -> func
+   * 包含五个绑定：
+   *
+   * 1. ngFor -> null
+   * 2. item -> NgForOfContext.$implicit
+   * 3. ngForOf -> items
+   * 4. i -> NgForOfContext.index
+   * 5. ngForTrackBy -> func
    *
    * For a full description of the microsyntax grammar, see
    * <https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855>
@@ -1179,7 +1175,6 @@ export class _ParseAST {
    * without the \*, along with its absolute span.
    *
    * 微语法指令的名称，例如 ngIf、ngFor ，不带 \* ，以及其绝对跨度。
-   *
    */
   parseTemplateBindings(templateKey: TemplateBindingIdentifier): TemplateBindingParseResult {
     const bindings: TemplateBinding[] = [];
@@ -1354,7 +1349,7 @@ export class _ParseAST {
    * In the first binding, `item` is bound to `NgForOfContext.$implicit`.
    * In the second binding, `i` is bound to `NgForOfContext.index`.
    *
-   * 在第一个绑定中， `item` 绑定到 `NgForOfContext.$implicit` 。在第二个绑定中， `i` 绑定到
+   * 在第一个绑定中，`item` 绑定到 `NgForOfContext.$implicit` 。在第二个绑定中，`i` 绑定到
    * `NgForOfContext.index` 。
    *
    */
@@ -1440,11 +1435,11 @@ export class _ParseAST {
    *
    * - ';' (parseChain() is always the root production, and it expects a ';')
    *
-   *   ';' （parseChain() 始终是根产生式，它需要一个 ';'）
+   *   ';'（parseChain() 始终是根产生式，它需要一个 ';'）
    *
    * - '|' (since pipes may be chained and each pipe expression may be treated independently)
    *
-   *   '|' （因为管道可以被链接起来，并且每个管道表达式都可以独立处理）
+   *   '|'（因为管道可以被链接起来，并且每个管道表达式都可以独立处理）
    *
    * The following are conditional recovery points:
    *
@@ -1452,19 +1447,14 @@ export class _ParseAST {
    *
    * - ')', '}', ']' if one of calling productions is expecting one of these symbols
    *
-   *   ')', '}', ']' 如果调用产生式之一期望这些符号之一
+   *     ')', '}', ']' 如果调用产生式之一期望这些符号之一
    *
-   *   - This allows skip() to recover from errors such as '(a.) + 1' allowing more of the AST to
-   *     be retained (it doesn't skip any tokens as the ')' is retained because of the '(' begins
-   *     an '(' <expr> ')' production).
-   *     The recovery points of grouping symbols must be conditional as they must be skipped if
-   *     none of the calling productions are not expecting the closing token else we will never
-   *     make progress in the case of an extraneous group closing symbol (such as a stray ')').
-   *     That is, we skip a closing symbol if we are not in a grouping production.
-   *
-   *     这允许 skip() 从 '(a.) + 1' 等错误中恢复，允许保留更多 AST（它不会跳过任何标记，因为 ')'
-   * 是因为 '(' 开始'('<expr>')'
-   * 产生式）。分组符号的恢复点必须是有条件的，因为如果没有一个调用产生式不希望有关闭标记，则必须跳过它们，否则我们将永远不会取得进展.也就是说，如果我们不在分组产生式中，我们会跳过关闭符号。
+   *   - This allows skip() to recover from errors such as '(a.) + 1' allowing more of the AST to be
+   * retained (it doesn't skip any tokens as the ')' is retained because of the '(' begins an '('
+   * <expr> ')' production). The recovery points of grouping symbols must be conditional as they
+   * must be skipped if none of the calling productions are not expecting the closing token else we
+   * will never make progress in the case of an extraneous group closing symbol (such as a stray
+   * ')'). That is, we skip a closing symbol if we are not in a grouping production.
    *
    * - '=' in a `Writable` context
    *

@@ -83,7 +83,7 @@ export abstract class BackendService {
    *
    * HTTP 覆盖：如果注入的 inMemDbService 定义了一个 HTTP 方法（小写），则请求将被转发到该方法，就像
    * `inMemDbService.get(requestInfo)` 一样，它必须返回此 HTTP 库的响应类型的 Observable 或
-   * null|undefined （这意味着“继续处理”）。
+   * null|undefined（这意味着“继续处理”）。
    *
    */
   protected handleRequest(req: RequestCore): Observable<any> {
@@ -198,7 +198,7 @@ export abstract class BackendService {
   /**
    * Get a method from the `InMemoryDbService` (if it exists), bound to that service
    *
-   * 从 `InMemoryDbService` （如果存在）获取绑定到该服务的方法
+   * 从 `InMemoryDbService`（如果存在）获取绑定到该服务的方法
    *
    */
   protected bind<T extends Function>(methodName: string) {
@@ -250,7 +250,7 @@ export abstract class BackendService {
    * When the last segment of the `apiBase` path is "commands",
    * the `collectionName` is the command.
    *
-   * 当 `apiBase` 路径的最后一段是“commands”时， `collectionName` 是命令。
+   * 当 `apiBase` 路径的最后一段是“commands”时，`collectionName` 是命令。
    *
    * Example URLs:
    *   commands/resetdb (POST) // Reset the "database" to its original state
@@ -350,7 +350,7 @@ export abstract class BackendService {
    *
    * @param withDelay - if true (default), add simulated latency delay from configuration
    *
-   *   如果为 true （默认），则从配置中添加模拟的延迟延迟
+   *   如果为 true（默认），则从配置中添加模拟的延迟延迟
    *
    */
   protected createResponse$(resOptionsFactory: () => ResponseOptions, withDelay = true):
@@ -607,7 +607,7 @@ export abstract class BackendService {
    * Parses the request URL into a `ParsedRequestUrl` object.
    * Parsing depends upon certain values of `config`: `apiBase`, `host`, and `urlRoot`.
    *
-   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值： `apiBase` 、 `host`
+   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值： `apiBase`、`host`
    * 和 `urlRoot` 。
    *
    * Configuring the `apiBase` yields the most interesting changes to `parseRequestUrl` behavior:

@@ -8,19 +8,19 @@
   <aio-toc class="embedded"></aio-toc>
 
   <div class="cli-body">
-    {$ doc.shortDescription | marked $}
+    {$ doc.shortDescriptionCn | marked $}
     {$ cli.renderSyntax(doc) $}
 
-    {% if doc.longDescription.length %}
+    {% if doc.longDescriptionCn.length %}
     <h2 class="no-anchor">
         {$ github.githubLinks(doc.longDescriptionDoc, cliVersionInfo) $}
         说明
     </h2>
-    {$ doc.longDescription | marked $}
+    {$ doc.longDescriptionCn | marked $}
     {% endif%}
 
     {% if doc.subcommands.length %}
-    <p>This command has the following <a href="#{$ doc.name $}-commands">commands</a>:<p>
+    <p>本命令具有下列 <a href="#{$ doc.name $}-commands">子命令</a>：<p>
     <ul>
       {% for subcommand in doc.subcommands %}
       <li><a class="code-anchor" href="#{$ subcommand.name $}-command">{$ subcommand.name $}</a></li>

@@ -71,7 +71,7 @@ export abstract class SemanticSymbol {
    * Note: `previousSymbol` is obtained from the most recently succeeded compilation. Symbols of
    * failed compilations are never provided.
    *
-   * 注： `previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
+   * 注意： `previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
    *
    * @param previousSymbol The symbol from a prior compilation.
    *
@@ -120,7 +120,7 @@ export abstract class SemanticSymbol {
    * Note: `previousSymbol` is obtained from the most recently succeeded compilation. Symbols of
    * failed compilations are never provided.
    *
-   * 注： `previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
+   * 注意： `previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
    *
    * @param previousSymbol The symbol from a prior compilation.
    *

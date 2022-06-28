@@ -55,7 +55,7 @@ export function envIsSupported(): boolean {
  * @param relativeTo The base URL to resolve `url` relative to.
  *     (This is usually the ServiceWorker's origin or registration scope).
  *
- * 要解析 `url` 的相对基础 URL。 （这通常是 ServiceWorker 的来源或注册范围）。
+ * 要解析 `url` 的相对基础 URL。（这通常是 ServiceWorker 的来源或注册范围）。
  *
  * @return A normalized representation of the URL.
  *
@@ -72,7 +72,7 @@ export function normalizeUrl(url: string, relativeTo: string): NormalizedUrl {
 /**
  * Parse a URL into its different parts, such as `origin`, `path` and `search`.
  *
- * 将 URL 解析为其不同的部分，例如 `origin` 、 `path` 和 `search` 。
+ * 将 URL 解析为其不同的部分，例如 `origin`、`path` 和 `search` 。
  *
  */
 export function parseUrl(

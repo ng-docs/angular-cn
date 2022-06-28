@@ -72,7 +72,7 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
    * @param helperNames the names of the helpers (e.g. `__decorate`) whose calls we are interested
    * in.
    *
-   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate` ）。
+   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate`）。
    *
    * @returns
    *
@@ -109,7 +109,7 @@ export class CommonJsReflectionHost extends Esm5ReflectionHost {
    * @param helperNames the names of the helpers (e.g. `__decorate`) whose calls we are interested
    * in.
    *
-   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate` ）。
+   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate`）。
    *
    * @returns
    *

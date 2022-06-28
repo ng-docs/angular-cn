@@ -246,7 +246,7 @@ export class MyComponent {}
 The compiler cannot wait until runtime to get the template information.
 It must statically derive the value of the `someTemplate` variable from the source code so that it can generate the component factory, which includes instructions for building the element based on the template.
 
-编译器不能等到运行时才得到该模板的信息。 它必须从源码中静态获得这个 `someTemplate` 变量的值，以便生成组件工厂，组件工厂中需要包含根据这个模板来生成元素的代码。
+编译器不能等到运行时才得到该模板的信息。它必须从源码中静态获得这个 `someTemplate` 变量的值，以便生成组件工厂，组件工厂中需要包含根据这个模板来生成元素的代码。
 
 To correct this error, provide the initial value of the variable in an initializer clause *on the same line*.
 
@@ -513,7 +513,7 @@ import { configuration } from './configuration';
 This can happen if you refer to an ambient type.
 For example, the `Window` type is an ambient type declared in the global `.d.ts` file.
 
-这通常会发生在你引用环境类型时。 比如，`Window` 类型就是在全局 `.d.ts` 文件中声明的环境类型。
+这通常会发生在你引用环境类型时。比如，`Window` 类型就是在全局 `.d.ts` 文件中声明的环境类型。
 
 You'll get an error if you reference it in the component constructor, which the compiler must statically analyze.
 
@@ -532,7 +532,7 @@ export class MyComponent {
 TypeScript understands ambient types so you don't import them.
 The Angular compiler does not understand a type that you neglect to export or import.
 
-TypeScript 能理解这些环境类型，所以你不用导入它们。 但 Angular 编译器不理解你没有导入或导出过的类型。
+TypeScript 能理解这些环境类型，所以你不用导入它们。但 Angular 编译器不理解你没有导入或导出过的类型。
 
 In this case, the compiler doesn't understand how to inject something with the `Window` token.
 

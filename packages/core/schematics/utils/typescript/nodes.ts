@@ -78,7 +78,7 @@ export function isNullCheck(node: ts.Node): boolean {
 /**
  * Checks whether a property access is safe (e.g. `foo.parent?.value`).
  *
- * 检查属性访问是否安全（例如 `foo.parent?.value` ）。
+ * 检查属性访问是否安全（例如 `foo.parent?.value`）。
  *
  */
 export function isSafeAccess(node: ts.Node): boolean {

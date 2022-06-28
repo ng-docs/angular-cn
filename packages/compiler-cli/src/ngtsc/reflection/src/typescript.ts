@@ -680,7 +680,7 @@ function getQualifiedNameRoot(qualifiedName: ts.QualifiedName): ts.Identifier|nu
 /**
  * Compute the left most identifier in a property access chain. E.g. the `a` of `a.b.c.d`.
  *
- * 计算属性访问链中最左边的标识符。例如， `abcd` 的 `a` 。
+ * 计算属性访问链中最左边的标识符。例如，`abcd` 的 `a` 。
  *
  * @param propertyAccess The starting property access expression from which we want to compute
  * the left most identifier.
@@ -736,8 +736,8 @@ const LocalExportedDeclarations = Symbol('LocalExportedDeclarations');
  * A `ts.SourceFile` expando which includes a cached `Set` of local `ts.Declaration`s that are
  * exported either directly (`export class ...`) or indirectly (via `export {...}`).
  *
- * 一个 `ts.SourceFile` expando，包含一个本地的 `ts.Declaration` 的缓存 `Set` ，可以直接（ `export
- * class ...` ）或间接（通过 `export {...}` ）导出。
+ * 一个 `ts.SourceFile` expando，包含一个本地的 `ts.Declaration` 的缓存 `Set` ，可以直接（`export
+ * class ...`）或间接（通过 `export {...}`）导出。
  *
  * This cache does not cause memory leaks as:
  *

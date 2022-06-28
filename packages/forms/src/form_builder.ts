@@ -50,7 +50,7 @@ export type ControlConfig<T> = [T|FormControlState<T>, (ValidatorFn|(ValidatorFn
  * Element returns the appropriate corresponding model class, given the container T.
  * The flag N, if not never, makes the resulting `FormControl` have N in its type.
  *
- * FormBuilder 接受各种容器形状的值以及原始值。在给定容器 T 的情况下，Element 会返回适当的对应模型类。标志 N （如果不是永远）会使结果 `FormControl` 的类型具有 N 。
+ * FormBuilder 接受各种容器形状的值以及原始值。在给定容器 T 的情况下，Element 会返回适当的对应模型类。标志 N（如果不是永远）会使结果 `FormControl` 的类型具有 N 。
  *
  */
 export type ɵElement<T, N extends null> =
@@ -292,7 +292,7 @@ export class FormBuilder {
    *
    * When passing an `options` argument, the `asyncValidator` argument has no effect.
    *
-   * 传递 `options` 参数时， `asyncValidator` 参数无效。
+   * 传递 `options` 参数时，`asyncValidator` 参数无效。
    *
    */
   control<T>(
@@ -445,7 +445,7 @@ export abstract class NonNullableFormBuilder {
    * that already-constructed controls will not be altered.
    *
    * 类似于 `FormBuilder#group` ，只是任何隐式构造的 `FormControl` 都将是不可空的（即它将
-   * `nonNullable` 设置为 true ）。请注意，已经构建的控件不会被更改。
+   * `nonNullable` 设置为 true）。请注意，已经构建的控件不会被更改。
    *
    */
   abstract group<T extends {}>(
@@ -459,7 +459,7 @@ export abstract class NonNullableFormBuilder {
    * that already-constructed controls will not be altered.
    *
    * 类似于 `FormBuilder#array` ，只是任何隐式构造的 `FormControl` 都将是不可为空的（即它将
-   * `nonNullable` 设置为 true ）。请注意，已经构建的控件不会被更改。
+   * `nonNullable` 设置为 true）。请注意，已经构建的控件不会被更改。
    *
    */
   abstract array<T>(

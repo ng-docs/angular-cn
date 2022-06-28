@@ -133,7 +133,7 @@ export abstract class TemplateCheckWithVisitor<Code extends ErrorCode> implement
 /**
  * Visits all nodes in a template (TmplAstNode and AST) and calls `visitNode` for each one.
  *
- * 访问模板中的所有节点（ TmplAstNode 和 AST）并为每个节点调用 `visitNode` 。
+ * 访问模板中的所有节点（TmplAstNode 和 AST）并为每个节点调用 `visitNode` 。
  *
  */
 class TemplateVisitor<Code extends ErrorCode> extends RecursiveAstVisitor implements

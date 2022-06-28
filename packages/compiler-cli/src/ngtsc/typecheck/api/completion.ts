@@ -21,7 +21,7 @@ export type Completion = ReferenceCompletion|VariableCompletion;
 /**
  * Discriminant of an autocompletion source (a `Completion`).
  *
- * 自动完成源（ `Completion` ）的判别式。
+ * 自动完成源（`Completion`）的判别式。
  *
  */
 

@@ -278,7 +278,7 @@ For more information, see [Template reference variables](guide/template-referenc
 Demonstrates `<ngcontainer>`.
 For more information, see the [ng-container section](guide/built-in-directives#ngcontainer) of [Built-in directives](guide/structural-directives) .
 
-演示了 `<ngcontainer>` 。欲知详情，参阅[内置指令](guide/structural-directives)中的 [ng-container 部分](guide/built-in-directives#ngcontainer)。
+演示了 `<ngcontainer>`。欲知详情，参阅[内置指令](guide/structural-directives)中的 [ng-container 部分](guide/built-in-directives#ngcontainer)。
 
 ### Pipes
 
@@ -562,11 +562,7 @@ For more information, see [Building dynamic forms](guide/dynamic-form).
 
 ## NgModules
 
-## Ng 模块
-
 ### NgModules
-
-### Ng 模块
 
 <live-example name="ngmodules"></live-example>
 
@@ -685,7 +681,7 @@ For more information, see [Testing](guide/testing).
 
 ### AngularJS to Angular concepts: Quick reference
 
-### AngularJS 到 Angular 的概念变迁：快速参考
+### 关于 AngularJS 与 Angular 概念的快速参考
 
 <live-example name="ajs-quick-reference"></live-example>
 

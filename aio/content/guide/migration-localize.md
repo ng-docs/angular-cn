@@ -41,7 +41,7 @@ The symbol is loaded by importing the `@angular/localize/init` module, which has
 
 ## Why is this migration necessary?
 
-## 为何这次迁移是必须的？
+## 为何这次迁移必不可少？
 
 Prior to Angular version 9, Angular's internationalization (i18n) system inlined translated messages into the compiled output as part of this template compilation.
 This approach required running the template compiler once per target locale, often leading to slow production build times.

@@ -56,7 +56,7 @@ export interface LocalNgModuleData {
  * The `LocalModuleScopeRegistry` is also capable of producing `ts.Diagnostic` errors when Angular
  * semantics are violated.
  *
- * 当违反 Angular 语义时， `LocalModuleScopeRegistry` 也能产生 `ts.Diagnostic` 错误。
+ * 当违反 Angular 语义时，`LocalModuleScopeRegistry` 也能产生 `ts.Diagnostic` 错误。
  *
  */
 export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScopeReader {
@@ -176,7 +176,7 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * If `node` is declared in more than one NgModule (duplicate declaration), then get the
    * `DeclarationData` for each offending declaration.
    *
-   * 如果 `node` 在多个 NgModule （重复声明）中声明，则获取每个有问题的声明的 `DeclarationData` 。
+   * 如果 `node` 在多个 NgModule（重复声明）中声明，则获取每个有问题的声明的 `DeclarationData` 。
    *
    * Ordinarily a class is only declared in one NgModule, in which case this function returns
    * `null`.

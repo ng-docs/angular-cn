@@ -126,8 +126,6 @@ export function renderModule<T>(
  *
  * ```typescript
  *
- * ```
- *
  * @Component ({
  *   standalone: true,
  *   template: 'Hello world!'

@@ -67,7 +67,7 @@ export function ɵɵlistener(
 /**
  * Registers a synthetic host listener (e.g. `(@foo.start)`) on a component or directive.
  *
- * 在组件或指令上注册合成主机侦听器（例如 `(@foo.start)` ）。
+ * 在组件或指令上注册合成主机侦听器（例如 `(@foo.start)`）。
  *
  * This instruction is for compatibility purposes and is designed to ensure that a
  * synthetic host listener (e.g. `@HostListener('@foo.start')`) properly gets rendered
@@ -77,7 +77,7 @@ export function ɵɵlistener(
  * animation triggers are defined).
  *
  * 本操作指南是出于兼容性目的，旨在确保合成主机侦听器（例如 `@HostListener('@foo.start')`
- * ）在组件的渲染器中正确呈现。通常，所有主机侦听器都使用父组件的渲染器进行估算，但是，对于动画 @triggers
+ *）在组件的渲染器中正确呈现。通常，所有主机侦听器都使用父组件的渲染器进行估算，但是，对于动画 @triggers
  * ，它们需要使用子组件的渲染器进行估算（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `listener`. This instruction

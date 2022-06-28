@@ -62,7 +62,7 @@ export class AngularTestingModule {
  * In the following code snippet, `HeroesService` is an Angular service that depends upon an
  * AngularJS service, `titleCase`.
  *
- * 在以下代码片段中， `HeroesService` 是一项依赖于 AngularJS 服务 `titleCase` 的 Angular 服务。
+ * 在以下代码片段中，`HeroesService` 是一项依赖于 AngularJS 服务 `titleCase` 的 Angular 服务。
  *
  * <code-example path="upgrade/static/ts/full/module.spec.ts" region="angular-spec"></code-example>
  *

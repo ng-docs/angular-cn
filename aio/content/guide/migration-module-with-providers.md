@@ -63,7 +63,7 @@ In the rare case that the schematic can't determine the type of `ModuleWithProvi
 
 ## Why is this migration necessary?
 
-## 为何这项迁移是必要的？
+## 为何这次迁移必不可少？
 
 `ModuleWithProviders` has had the generic type since Angular version 7, but it has been optional.
 This has compiled because the `metadata.json` files contained all the metadata.
@@ -83,7 +83,7 @@ A future version of Angular will remove the default generic type, making an expl
 
 Yes, any time your code references the `ModuleWithProviders` type, it should have a generic type that matches the actual `NgModule` that is returned (for example, `ModuleWithProviders<MyModule>`).
 
-是的，任何时候，当你的代码引用了 `ModuleWithProviders` 类型，都要有一个与其返回的实际 `NgModule` 相匹配的泛型类型（比如，`ModuleWithProviders<MyModule>` ）。
+是的，任何时候，当你的代码引用了 `ModuleWithProviders` 类型，都要有一个与其返回的实际 `NgModule` 相匹配的泛型类型（比如，`ModuleWithProviders<MyModule>`）。
 
 ## What should I do if the schematic prints a TODO comment?
 
@@ -109,7 +109,7 @@ Libraries should add the generic type to any usages of the `ModuleWithProviders`
 
 The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
 
-[Angular 兼容性编译器](guide/glossary#ngcc) （ `ngcc` ）会自动转换所有未迁移的库来生成合适的代码。
+[Angular 兼容性编译器](guide/glossary#ngcc)（`ngcc`）会自动转换所有未迁移的库来生成合适的代码。
 
 <!-- links -->
 

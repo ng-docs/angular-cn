@@ -149,7 +149,7 @@ export class IcuPlaceholder implements Node {
   /**
    * Used to capture a message computed from a previous processing pass (see `setI18nRefs()`).
    *
-   * 用于捕获从上一个处理过程计算的消息（请参阅 `setI18nRefs()` ）。
+   * 用于捕获从上一个处理过程计算的消息（请参阅 `setI18nRefs()`）。
    *
    */
   previousMessage?: Message;

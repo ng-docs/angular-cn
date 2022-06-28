@@ -179,11 +179,11 @@ You may also be interested in the following:
 
 * [Providers](guide/providers)
 
-  [提供者](guide/providers)
+  [服务提供者](guide/providers)。
 
 * [NgModules FAQ](guide/ngmodule-faq)
 
-  [NgModules 常见问题解答](guide/ngmodule-faq)
+  [NgModule 常见问题](guide/ngmodule-faq).
 
 <!-- links -->
 

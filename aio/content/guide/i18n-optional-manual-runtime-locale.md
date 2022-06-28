@@ -21,11 +21,11 @@ To manually set the runtime locale of an application to one other than the autom
 
 1. Set the [`LOCALE_ID`][AioApiCoreLocaleId] token.
 
-   设置 [ `LOCALE_ID` ][AioApiCoreLocaleId] 令牌。
+   设置 [`LOCALE_ID`][AioApiCoreLocaleId] 令牌。
 
 The following example sets the value of `LOCALE_ID` to `fr` for French.
 
-以下示例将 `LOCALE_ID` 的值设置为法语的 `fr` 。
+以下示例将 `LOCALE_ID` 的值设置为法语的 `fr`。
 
 <code-example header="src/app/app.module.ts" path="i18n/doc-files/app.module.ts" region="locale-id"></code-example>
 

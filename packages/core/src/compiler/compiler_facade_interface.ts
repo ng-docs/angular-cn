@@ -19,11 +19,11 @@
  *
  * - packages/compiler/src/compiler_facade_interface.ts          (main)
  *
- *   package/compiler/src/compiler_facade_interface.ts （主）
+ *   package/compiler/src/compiler_facade_interface.ts（主）
  *
  * - packages/core/src/compiler/compiler_facade_interface.ts     (replica)
  *
- *   package/core/src/compiler/compiler_facade_interface.ts （副本）
+ *   package/core/src/compiler/compiler_facade_interface.ts（副本）
  *
  * Please ensure that the two files are in sync using this command:
  *

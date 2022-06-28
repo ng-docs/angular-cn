@@ -44,7 +44,7 @@ export interface Task extends JsonObject {
    * processed as part of the task.
    *
    * 任务完成后应标记为已处理的所有格式属性（包括 `task.formatProperty`
-   * ）的列表，因为它们指向了将作为任务的一部分处理的 format-path 。
+   *）的列表，因为它们指向了将作为任务的一部分处理的 format-path 。
    *
    */
   formatPropertiesToMarkAsProcessed: EntryPointJsonProperty[];
@@ -173,7 +173,7 @@ export const enum TaskProcessingOutcome {
  * (This allows different implementations to impose different constraints on when a task's
  * processing can start.)
  *
- * （这允许不同的实现对任务处理的开始时间施加不同的约束。）
+ *（这允许不同的实现对任务处理的开始时间施加不同的约束。）
  *
  */
 export interface TaskQueue {
@@ -193,7 +193,7 @@ export interface TaskQueue {
    * This implicitly marks the task as in-progress.
    * (This information is used to determine whether all tasks have been completed.)
    *
-   * 这会隐式将任务标记为进行中。 （此信息用于确定是否所有任务都已完成。）
+   * 这会隐式将任务标记为进行中。（此信息用于确定是否所有任务都已完成。）
    *
    * @return The next task available for processing or `null`, if no task can be processed at the
    *         moment (including if there are no more unprocessed tasks).
@@ -211,7 +211,7 @@ export interface TaskQueue {
    * This removes the task from the internal list of in-progress tasks.
    * (This information is used to determine whether all tasks have been completed.)
    *
-   * 这会从内部进行中任务的列表中删除任务。 （此信息用于确定是否所有任务都已完成。）
+   * 这会从内部进行中任务的列表中删除任务。（此信息用于确定是否所有任务都已完成。）
    *
    * @param task The task to mark as completed.
    *

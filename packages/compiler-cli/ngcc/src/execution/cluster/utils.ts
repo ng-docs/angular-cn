@@ -64,7 +64,7 @@ export class Deferred<T> {
  * Send a message to the cluster master.
  * (This function should be invoked from cluster workers only.)
  *
- * 向集群主控发送消息。 （此函数应该仅从集群工作人员调用。）
+ * 向集群主控发送消息。（此函数应该仅从集群工作人员调用。）
  *
  * @param msg The message to send to the cluster master.
  *
@@ -94,7 +94,7 @@ export const sendMessageToMaster = (msg: MessageFromWorker): Promise<void> => {
  * Send a message to a cluster worker.
  * (This function should be invoked from the cluster master only.)
  *
- * 向集群工作程序发送消息。 （此函数应该仅从集群主控器调用。）
+ * 向集群工作程序发送消息。（此函数应该仅从集群主控器调用。）
  *
  * @param workerId The ID of the recipient worker.
  *

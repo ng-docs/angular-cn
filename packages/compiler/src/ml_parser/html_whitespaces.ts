@@ -33,7 +33,7 @@ function hasPreserveWhitespacesAttr(attrs: html.Attribute[]): boolean {
  *
  * Angular Dart 介绍了 &ngsp;作为不可移动空间的占位符，请参阅：
  * <https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32>在
- * Angular Dart &ngsp; 中被转换为 0xE500 PUA （私人使用区域） unicode
+ * Angular Dart &ngsp; 中被转换为 0xE500 PUA（私人使用区域）unicode
  * 字符，后来被空格替换。我们在这里重新实现了同一个想法。
  *
  */

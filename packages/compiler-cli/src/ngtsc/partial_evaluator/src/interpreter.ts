@@ -89,7 +89,7 @@ interface Context {
    * A file name representing the context in which the current `absoluteModuleName`, if any, was
    * resolved.
    *
-   * 表示当前 `absoluteModuleName` （如果有）的上下文的文件名。
+   * 表示当前 `absoluteModuleName`（如果有）的上下文的文件名。
    *
    */
   resolutionContext: string;

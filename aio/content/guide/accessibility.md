@@ -20,7 +20,7 @@ This page discusses best practices for designing Angular applications that work 
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
-  本页所描述的范例程序，参阅<live-example></live-example>。
+本页中所讲的范例程序，参阅<live-example></live-example>。
 
 </div>
 
@@ -66,7 +66,7 @@ Static ARIA attributes require no extra syntax.
 
 By convention, HTML attributes use lowercase names (`tabindex`), while properties use camelCase names (`tabIndex`).
 
-按照约定，HTML 属性（Attribute）使用小写名称（ `tabindex` ），而 Property 使用 camelCase 名称（ `tabIndex` ）。
+按照约定，HTML 属性（Attribute）使用小写名称（`tabindex`），而 Property 使用 camelCase 名称（`tabIndex`）。
 
 See the [Binding syntax](guide/binding-syntax#html-attribute-vs-dom-property) guide for more background on the difference between attributes and properties.
 
@@ -194,19 +194,19 @@ You should avoid situations where focus returns to the `body` element after a ro
 
 ### Active links identification
 
-### 活动链接识别
+### 活动链接标识
 
 CSS classes applied to active `RouterLink` elements (usually via `RouterLinkActive`) provide a visual indication regarding as to which link is currently active. Such indication doesn't apply to blind or visually impaired users, in order to provide such information the `aria-current` attribute should be applied to the element as well (for more information see [MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
 
-用在活动 `RouterLink` 元素上的 CSS 类（一般通过 `RouterLinkActive` 来指定）提供了有关哪个链接正处于活动状态的视觉指示。此类指示不适用于盲人或视障用户，为了提供此类信息，还要将 `aria-current` 属性应用于此元素（有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) ）。
+用在活跃 `RouterLink` 元素上的 CSS 类（一般通过 `RouterLinkActive` 来指定）提供了有关哪个链接正处于活跃状态的视觉指示。此类指示不适用于盲人或视障用户，为了提供此类信息，还要将 `aria-current` 属性应用于此元素（有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)）。
 
 The `RouterLinkActive` directive provides the `ariaCurrentWhenActive` input which sets the `aria-current` to a specified value when the link becomes active.
 
-`RouterLinkActive` 指令提供了 `ariaCurrentWhenActive` 输入，该输入在链接变为活动状态时将 `aria-current` 设置为指定的值。
+`RouterLinkActive` 指令提供了 `ariaCurrentWhenActive` 输入属性，该输入属性会在链接变为活跃状态时将 `aria-current` 设置为指定的值。
 
 The following example shows how to apply the `active-page` class to active links as well as setting their `aria-current` attribute to `"page"` when they are active:
 
-以下示例展示了如何将 `active-page` 类应用于活动链接，以及如何在它们处于活动状态时将它们的 `aria-current` 属性设置为 `"page"` ：
+以下示例展示了如何将 `active-page` 类应用于活跃链接，以及如何在它们处于活跃状态时将它们的 `aria-current` 属性设置为 `"page"` ：
 
 ```html
     <nav>

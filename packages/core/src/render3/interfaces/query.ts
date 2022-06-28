@@ -58,7 +58,7 @@ export const enum QueryFlags {
    *
    * NOTE: Backwards compatibility with ViewEngine.
    *
-   * 注：与 ViewEngine 的向后兼容。
+   * 注意：与 ViewEngine 的向后兼容。
    *
    */
   isStatic = 0b0010,
@@ -68,7 +68,7 @@ export const enum QueryFlags {
    * behavior where the change was fired whenever the query was recomputed, even if the recomputed
    * query resulted in the same list.)
    *
-   * 如果仅在计算了对查询的实际更改时， `QueryList` 应该触发 change
+   * 如果仅在计算了对查询的实际更改时，`QueryList` 应该触发 change
    * 事件（与旧行为相比，每当重新计算查询时都会触发更改，即使重新计算的查询产生了同一个列表。）
    *
    */
@@ -144,8 +144,8 @@ export interface TQuery {
    * - \-1 - indicates that we need to read a default value based on the node type (TemplateRef for
    *   ng-template and ElementRef for other elements);
    *
-   *   \-1 - 表明我们需要根据节点类型读取默认值（ ng-template 为 TemplateRef ，其他元素为 ElementRef
-   * ）；
+   *   \-1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef ，其他元素为 ElementRef
+   *）；
    *
    * - a positive number - index of an injectable to be read from the element injector.
    *
@@ -373,7 +373,7 @@ export interface LQueries {
    * `LQuery` objects (and associated `QueryList`) are marked as dirty.
    *
    * 将嵌入式视图插入容器时调用的方法。因此，所有受影响的 `LQuery` 对象（以及关联的 `QueryList`
-   * ）都被标记为脏。
+   *）都被标记为脏。
    *
    * @param tView
    */
@@ -384,7 +384,7 @@ export interface LQueries {
    * `LQuery` objects (and associated `QueryList`) are marked as dirty.
    *
    * 嵌入式视图与容器分离时调用的方法。因此，所有受影响的 `LQuery` 对象（以及关联的 `QueryList`
-   * ）都被标记为脏。
+   *）都被标记为脏。
    *
    * @param tView
    */

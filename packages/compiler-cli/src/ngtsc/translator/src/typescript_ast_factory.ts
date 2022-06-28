@@ -22,8 +22,8 @@ enum PureAnnotation {
    * (jsdoc) enabled comment. Thus, the actual comment text for Closure must include the `*` that
    * turns a `/*` comment into a `/**` comment, as well as surrounding whitespace.
    *
-   * Closure 的纯度注解是 `@pureOrBreakMyCode` ，但这需要在启用语义（ jsdoc
-   * ）的注释中。因此，Closure 的实际注释文本必须包含将 `/*` `*` 转换为 `/**` 注释的 \*
+   * Closure 的纯度注解是 `@pureOrBreakMyCode` ，但这需要在启用语义（jsdoc
+   *）的注释中。因此，Closure 的实际注释文本必须包含将 `/*` `*` 转换为 `/**` 注释的 \*
    * 以及周围的空格。
    *
    */

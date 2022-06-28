@@ -224,15 +224,15 @@ Angular 使用大小写约定来区分多种名字，详见[风格指南中的 "
 | :-- | :------ | :------ |
 |  | 详细信息 | 例子 |
 | camelCase | Symbols, properties, methods, pipe names, non-component directive selectors, constants. <br /> Standard or lower camel case uses lowercase on the first letter of the item. | `selectedHero` |
-| 小驼峰形式（camelCase） | 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。 | `selectedHero` |
+| 小驼峰形式（camelCase）| 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。| `selectedHero` |
 | UpperCamelCase <br /> PascalCase | Class names, including classes that define components, interfaces, NgModules, directives, and pipes. <br /> Upper camel case uses uppercase on the first letter of the item. | `HeroListComponent` |
-| 大驼峰形式<br />Pascal 形式 | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。 | `HeroListComponent` |
+| 大驼峰形式<br />Pascal 形式 | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。| `HeroListComponent` |
 | dash-case <br /> kebab-case | Descriptive part of file names, component selectors. | `app-hero-list` |
-| 中线形式（dash-case）<br />烤串形式（kebab-case） | 文件名中的描述部分，组件的选择器。 | `app-hero-list` |
+| 中线形式（dash-case）<br />烤串形式（kebab-case）| 文件名中的描述部分，组件的选择器。| `app-hero-list` |
 | underscore_case <br /> snake_case | Not typically used in Angular. <br /> Snake case uses words connected with underscores. | `convert_link_mode` |
-| 下划线形式（underscore_case）<br />蛇形形式（snake_case） | 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。 | `convert_link_mode` |
+| 下划线形式（underscore_case）<br />蛇形形式（snake_case）| 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。| `convert_link_mode` |
 | UPPER_UNDERSCORE_CASE <br /> UPPER_SNAKE_CASE <br /> SCREAMING_SNAKE_CASE | Traditional for constants. <br /> This case is acceptable, but camelCase is preferred. <br /> Upper snake case uses words in all capital letters connected with underscores. | `FIX_ME` |
-| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE） | 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。 | `FIX_ME` |
+| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE）| 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。| `FIX_ME` |
 
 ## change detection
 
@@ -326,7 +326,7 @@ CLI 支持开发周期中的所有阶段，比如构建、测试、打包和部�
 
 See also [Schematics CLI][AioGuideGlossarySchematicsCli].
 
-参阅[Schematics CLI][AioGuideGlossarySchematicsCli] 。
+参阅[Schematics CLI][AioGuideGlossarySchematicsCli]。
 
 ## component
 
@@ -563,7 +563,7 @@ Angular 提供了一些以 `ng` 为前缀的内置指令。你也可以创建新
 **UpperCamelCase**, such as `NgIf`, refers to a directive class.
 You can use **UpperCamelCase** when describing properties and directive behavior.
 
-**UpperCamelCase**（比如 `NgIf` ）用于引用指令类。在描述属性和指令行为时，使用 **UpperCamelCase**。
+**UpperCamelCase**（比如 `NgIf`）用于引用指令类。在描述属性和指令行为时，使用 **UpperCamelCase**。
 
 **lowerCamelCase**, such as `ngIf` refers to the attribute name of a directive.
 You can use **lowerCamelCase** when describing how to apply the directive to an element in the HTML template.
@@ -786,8 +786,8 @@ Ivy 是 Angular 当前[编译和渲染管道][AngularBlogAPlanForVersion80AndIvy
 To learn more, see [ECMAScript][AioGuideGlossaryEcmascript].
 To learn more, see also [TypeScript][AioGuideGlossaryTypescript].
 
-欲知详情，参阅 [ECMAScript][AioGuideGlossaryEcmascript] 。
-欲知详情，另见 [TypeScript][AioGuideGlossaryTypescript] 。
+欲知详情，参阅 [ECMAScript][AioGuideGlossaryEcmascript]。
+欲知详情，另见 [TypeScript][AioGuideGlossaryTypescript]。
 
 <a id="jit"></a>
 
@@ -870,21 +870,21 @@ Angular 会按以下顺序调用钩子方法：
 | :-- | :---------- | :------ |
 |  | 钩子方法 | 详细信息 |
 | 1 | `ngOnChanges` | When an [input][AioGuideGlossaryInput] or [output][AioGuideGlossaryOutput] binding value changes. |
-| 1 | `ngOnChanges` | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。 |
+| 1 | `ngOnChanges` | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。|
 | 2 | `ngOnInit` | After the first `ngOnChanges`. |
-| 2 | `ngOnInit` | 在第一个 `ngOnChanges` 之后。 |
+| 2 | `ngOnInit` | 在第一个 `ngOnChanges` 之后。|
 | 3 | `ngDoCheck` | Developer's custom change detection. |
-| 3 | `ngDoCheck` | 开发人员的自定义变更检测。 |
+| 3 | `ngDoCheck` | 开发人员的自定义变更检测。|
 | 4 | `ngAfterContentInit` | After component content initialized. |
-| 4 | `ngAfterContentInit` | 组件内容初始化后。 |
+| 4 | `ngAfterContentInit` | 组件内容初始化后。|
 | 5 | `ngAfterContentChecked` | After every check of component content. |
-| 5 | `ngAfterContentChecked` | 在每次检查组件内容之后。 |
+| 5 | `ngAfterContentChecked` | 在每次检查组件内容之后。|
 | 6 | `ngAfterViewInit` | After the views of a component are initialized. |
-| 6 | `ngAfterViewInit` | 在组件的视图被初始化之后。 |
+| 6 | `ngAfterViewInit` | 在组件的视图被初始化之后。|
 | 7 | `ngAfterViewChecked` | After every check of the views of a component. |
-| 7 | `ngAfterViewChecked` | 在每次检查组件视图之后。 |
+| 7 | `ngAfterViewChecked` | 在每次检查组件视图之后。|
 | 8 | `ngOnDestroy` | Just before the directive is destroyed. |
-| 8 | `ngOnDestroy` | 就在指令被销毁之前。 |
+| 8 | `ngOnDestroy` | 就在指令被销毁之前。|
 
 To learn more, see [Lifecycle Hooks][AioGuideLifecycleHooks].
 
@@ -1581,8 +1581,6 @@ Schematic [规则][AioGuideGlossaryRule]以一个 `tree` 对象作为输入，�
 
 ## TypeScript
 
-## 打字稿
-
 A programming language based on JavaScript that is notable for its optional typing system.
 TypeScript provides compile-time type checking and strong tooling support
 The type checking and tooling support include code completion, refactoring, inline documentation, and intelligent search.
@@ -1620,7 +1618,7 @@ A parent component can easily change values in its child components because the 
 A failure could occur, however, if a child component tries to change a value in its parent during change detection (inverting the expected data flow), because the parent component has already been rendered.
 In development mode, Angular throws the `ExpressionChangedAfterItHasBeenCheckedError` error if your application attempts to do this, rather than silently failing to render the new value.
 
-在实践中，这意味着 Angular 中的数据会在变更检测过程中向下流动。父组件可以很容易地改变子组件中的值，因为父组件是先检查的。但是，如果子组件在更改检测期间（反转预期的数据流）尝试更改其父组件中的值，则可能会导致错误，因为父组件已经渲染过了。在开发模式下，如果你的应用尝试这样做，Angular 会抛出 `ExpressionChangedAfterItHasBeenCheckedError` 错误，而不是沉默地渲染新值。
+在实践中，这意味着 Angular 中的数据会在变更检测过程中向下流动。父组件可以很容易地改变子组件中的值，因为父组件是先检查的。但是，如果子组件在变更检测期间（反转预期的数据流）尝试更改其父组件中的值，则可能会导致错误，因为父组件已经渲染过了。在开发模式下，如果你的应用尝试这样做，Angular 会抛出 `ExpressionChangedAfterItHasBeenCheckedError` 错误，而不是沉默地渲染新值。
 
 To avoid this error, a [lifecycle hook][AioGuideLifecycleHooks] method that seeks to make such a change should trigger a new change detection run.
 The new run follows the same direction as before, but succeeds in picking up the new value.
@@ -1681,6 +1679,8 @@ It has since been replaced by [Ivy][AioGuideGlossaryIvy] and is no longer in use
 View Engine was deprecated in version 9 and removed in version 13.
 
 Angular 曾经用过的编译和渲染管道。它已被 [Ivy][AioGuideGlossaryIvy] 取代，不再使用了。View Engine 在版本 9 中已弃用，并在版本 13 中删除。
+
+<a id="view-tree"></a>
 
 ## view hierarchy
 

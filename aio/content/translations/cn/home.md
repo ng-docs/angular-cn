@@ -55,7 +55,7 @@ angular.cn 社区的开发者朋友们，大家好！
 
 On behalf of Google Developer Relations China team, we warmly welcome you here!  We are very glad to see the partnership and collaboration with the Angular developer community in China, and we hope that through the partnership with the developer friends at the Angular.CN community, our collaborations will be increased in the future.
 
-我谨代表谷歌公司开发技术推广部(Developer Relations)中国团队热烈欢迎你！ 我们非常高兴和中国的 Angular 开发者社区在这里的合作，也希望通过这个合作和 Angular.CN 社区的开发者朋友们扩大未来更多的合作和分享。
+我谨代表谷歌公司开发技术推广部(Developer Relations)中国团队热烈欢迎你！我们非常高兴和中国的 Angular 开发者社区在这里的合作，也希望通过这个合作和 Angular.CN 社区的开发者朋友们扩大未来更多的合作和分享。
 
 This Chinese Angular website, represents a great idea and model for collaboration. It not only has the Angular resources and updates that are the results of Google investment, but also the results from many Chinese localizations done by the many volunteers here for the larger developer users out there. These localized resources from the efforts from these volunteers, will help more developers in China to learn and adopt Angular technologies. We very much appreciated these contributions and the efforts in sharing. It is this kind of spirit and practices that resulted in the vibrant Internet we have today. We salute to all these volunteers, and at Google we will continue our support to open source technologies and communities as we have been doing.
 

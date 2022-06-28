@@ -109,7 +109,7 @@ export interface DomSchemaChecker {
  * Checks non-Angular elements and properties against the `DomElementSchemaRegistry`, a schema
  * maintained by the Angular team via extraction from a browser IDL.
  *
- * 根据 DomElementSchemaRegistry 检查非 Angular 元素和属性， `DomElementSchemaRegistry` 是由 Angular
+ * 根据 DomElementSchemaRegistry 检查非 Angular 元素和属性，`DomElementSchemaRegistry` 是由 Angular
  * 团队通过从浏览器 IDL 中提取来维护的模式。
  *
  */

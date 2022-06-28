@@ -49,8 +49,6 @@ function hasValidLength(value: any): boolean {
  *
  * ```typescript
  *
- * ```
- *
  * @Directive ({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
@@ -84,8 +82,6 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  * 以下示例实现了 `AsyncValidator` 接口，以创建使用自定义错误键的异步验证器指令。
  *
  * ```typescript
- *
- * ```
  *
  * @Directive ({
  *   selector: '[customAsyncValidator]',
@@ -133,7 +129,7 @@ export const NG_ASYNC_VALIDATORS =
  * - A `label` consists of one or more of the allowed characters (alphanumeric, dashes (`-`) and
  *   periods (`.`)).
  *
- *   `label` 由一个或多个允许的字符（字母数字、破折号 ( `-` ) 和句点 ( `.` ) ）组成。
+ *   `label` 由一个或多个允许的字符（字母数字、破折号 ( `-` ) 和句点 ( `.` )）组成。
  *
  * - A `label` cannot begin or end with a dash (`-`) or a period (`.`).
  *
@@ -351,7 +347,7 @@ export class Validators {
    *
    * - Disallow `local-part` (the part before the `@` symbol) to begin or end with a period (`.`).
    *
-   *   禁止 `local-part`（`@` 符号前面的部分）以句点（ `.` ）开头或结尾。
+   *   禁止 `local-part`（`@` 符号前面的部分）以句点（`.`）开头或结尾。
    *
    * - Disallow `local-part` to be longer than 64 characters.
    *
@@ -830,8 +826,8 @@ function compose(validators: (ValidatorFn|null|undefined)[]|null): ValidatorFn|n
  * normalizes the list (converts everything to `ValidatorFn`) and merges them into a single
  * validator function.
  *
- * 接受具有不同可能形状的验证器列表（ `Validator` 和 `ValidatorFn`
- * ），对列表进行规范化（将所有内容转换为 `ValidatorFn` ）并将它们合并到一个验证器函数中。
+ * 接受具有不同可能形状的验证器列表（`Validator` 和 `ValidatorFn`
+ *），对列表进行规范化（将所有内容转换为 `ValidatorFn`）并将它们合并到一个验证器函数中。
  *
  */
 export function composeValidators(validators: Array<Validator|ValidatorFn>): ValidatorFn|null {
@@ -862,8 +858,8 @@ function composeAsync(validators: (AsyncValidatorFn|null)[]): AsyncValidatorFn|n
  * `AsyncValidatorFn`), normalizes the list (converts everything to `AsyncValidatorFn`) and merges
  * them into a single validator function.
  *
- * 接受具有不同可能形状的异步验证器列表（ `AsyncValidator` 和 `AsyncValidatorFn`
- * ），对该列表进行规范化（将所有内容转换为 `AsyncValidatorFn` ）并将它们合并到一个验证器函数中。
+ * 接受具有不同可能形状的异步验证器列表（`AsyncValidator` 和 `AsyncValidatorFn`
+ *），对该列表进行规范化（将所有内容转换为 `AsyncValidatorFn`）并将它们合并到一个验证器函数中。
  *
  */
 export function composeAsyncValidators(validators: Array<AsyncValidator|AsyncValidatorFn>):

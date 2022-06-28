@@ -26,7 +26,7 @@ export type TStylingKey = TStylingKeyPrimitive|TStylingStatic;
  * The primitive portion (`TStylingStatic` removed) of the value stored in the `TData` which is
  * needed to re-concatenate the styling.
  *
- * 存储在 `TData` 中的值的原始部分（ `TStylingStatic` 已删除），需要重新连接样式。
+ * 存储在 `TData` 中的值的原始部分（`TStylingStatic` 已删除），需要重新连接样式。
  *
  * - `string`: Stores the property name. Used with `ɵɵstyleProp`/`ɵɵclassProp` instruction.
  *
@@ -55,8 +55,8 @@ export type TStylingKeyPrimitive = string|null|false;
  * `TStylingKey` (stored at location 1). In other words this wraps the `TStylingKey` such that the
  * `""` contains the wrapped value.
  *
- * `TStylingStatic` 只是 `KeyValueArray` ，其中的键 `""` （存储在位置 0）包含 `TStylingKey`
- * （存储在位置 1）。换句话说，这会包装 `TStylingKey` ，以便 `""` 包含包装后的值。
+ * `TStylingStatic` 只是 `KeyValueArray` ，其中的键 `""`（存储在位置 0）包含 `TStylingKey`
+ *（存储在位置 1）。换句话说，这会包装 `TStylingKey` ，以便 `""` 包含包装后的值。
  *
  * When instructions are resolving styling they may need to look forward or backwards in the linked
  * list to resolve the value. For this reason we have to make sure that he linked list also contains
@@ -67,7 +67,7 @@ export type TStylingKeyPrimitive = string|null|false;
  *
  * 当操作指南解析样式时，它们可能需要在链表中向前或向后查找以解析值。出于这个原因，我们必须确保他的链表还包含静态值。但是，该列表中每个样式说明只有一项空间。出于这个原因，我们将静态值作为
  * `TStylingKey` 的一部分存储在这里。这意味着查找值时的解析函数需要首先查看绑定值，而不是
- * `TStylingKey` （如果存在）。
+ * `TStylingKey`（如果存在）。
  *
  * Imagine we have:
  *
@@ -179,7 +179,7 @@ export interface TStylingStatic extends KeyValueArray<any> {}
  *
  * NOTE: `0` has special significance and represents `null` as in no additional pointer.
  *
- * 注： `0` 具有特殊意义，并且表示 `null` ，因为没有额外的指针。
+ * 注意： `0` 具有特殊意义，并且表示 `null` ，因为没有额外的指针。
  *
  */
 export interface TStylingRange {
@@ -213,8 +213,8 @@ export const enum StylingRange {
    * necessary to defer the value to `map.width`. (Because `width` overwrites `map.width`.)
    *
    * 如果以前的绑定包含可能导致重复的绑定，则设置此位。例如： `<div [style]="map"
-   * [style.width]="width">` ， `width` 绑定将有以前的重复集。这意味着，如果 `width` 绑定变为 `null`
-   * ，则有必要将值延迟为 `map.width` 。 （因为 `width` 会覆盖 `map.width` 。）
+   * [style.width]="width">` ，`width` 绑定将有以前的重复集。这意味着，如果 `width` 绑定变为 `null`
+   * ，则有必要将值延迟为 `map.width` 。（因为 `width` 会覆盖 `map.width` 。）
    *
    */
   PREV_DUPLICATE = 0x02,
@@ -226,8 +226,8 @@ export const enum StylingRange {
    * is necessary to defer the value to `width`. (Because `width` overwrites `map.width`.)
    *
    * 如果下一个绑定包含可能导致重复的绑定，则此位设置为。例如： `<div [style]="map"
-   * [style.width]="width">` ， `map` 绑定将有下一个重复集。这意味着，如果 `map.width` 绑定变得不为
-   * `null` ，则有必要将值延迟为 `width` 。 （因为 `width` 会覆盖 `map.width` 。）
+   * [style.width]="width">` ，`map` 绑定将有下一个重复集。这意味着，如果 `map.width` 绑定变得不为
+   * `null` ，则有必要将值延迟为 `width` 。（因为 `width` 会覆盖 `map.width` 。）
    *
    */
   NEXT_DUPLICATE = 0x01,

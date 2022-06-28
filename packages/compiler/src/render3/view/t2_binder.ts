@@ -242,7 +242,7 @@ class DirectiveBinder<DirectiveT extends DirectiveMeta> implements Visitor {
   /**
    * Process a template (list of `Node`s) and perform directive matching against each node.
    *
-   * 处理模板（ `Node` 列表）并对每个节点执行指令匹配。
+   * 处理模板（`Node` 列表）并对每个节点执行指令匹配。
    *
    * @param template the list of template `Node`s to match (recursively).
    *
@@ -262,8 +262,8 @@ class DirectiveBinder<DirectiveT extends DirectiveMeta> implements Visitor {
    * template node.
    *
    * 三个包含模板中指令信息的映射表：列出在每个节点上匹配的指令的 `directives`
-   * 映射表、表明哪些指令声明了哪些绑定（输入、输出等）的 `bindings` 映射表以及解析 #references （
-   * `Reference` ）的 `references` 映射表 s) 在模板中到命名的指令或模板节点。
+   * 映射表、表明哪些指令声明了哪些绑定（输入、输出等）的 `bindings` 映射表以及解析 #references（
+   * `Reference`）的 `references` 映射表 s) 在模板中到命名的指令或模板节点。
    *
    */
   static apply<DirectiveT extends DirectiveMeta>(
@@ -442,7 +442,7 @@ class TemplateBinder extends RecursiveAstVisitor implements Visitor {
    *
    * 三个包含有关模板的 `symbols` 数据的映射： `expressions` ，将表达式中的特殊 `AST`
    * 节点解释为指向模板中声明的引用或变量，将这些变量和引用映射到声明它们的嵌套 `Template`
-   * （如果有）和 `nestingLevel` 每个 `Template` 都有一个整数嵌套级别（模板在 `Template`
+   *（如果有）和 `nestingLevel` 每个 `Template` 都有一个整数嵌套级别（模板在 `Template`
    * 结构中的深度是多少），从 1 开始。
    *
    */

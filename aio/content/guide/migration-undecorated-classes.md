@@ -4,7 +4,7 @@
 
 ## What does this migration do?
 
-## 这个迁移是做什么的？
+## 这种迁移是做什么的？
 
 This migration adds an empty `@Directive()` decorator to undecorated
 base classes that:
@@ -151,7 +151,7 @@ class Dir extends Base {
 
 ## Why is this migration necessary?
 
-## 为何此迁移是必要的？
+## 为何这次迁移必不可少？
 
 ### Migrating classes that use DI
 
@@ -286,7 +286,7 @@ You can either add `@Directive()` with a selector or move the Angular-specific f
 
 The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
 
-[Angular 兼容性编译器](guide/glossary#ngcc) （ `ngcc` ）应该会自动转换所有未迁移的库来生成合适的代码。
+[Angular 兼容性编译器](guide/glossary#ngcc)（`ngcc`）应该会自动转换所有未迁移的库来生成合适的代码。
 
 <!-- links -->
 

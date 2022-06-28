@@ -13,12 +13,12 @@ Then, use your custom pipe in template expressions, the same way you use built-i
 
 To mark a class as a pipe and supply configuration metadata, apply the [`@Pipe`](api/core/Pipe "API reference for Pipe") [decorator](guide/glossary#decorator--decoration "Definition for decorator") to the class.
 
-要将类标记为管道并提供配置元数据，请将[`@Pipe`](api/core/Pipe "管道的 API 参考")[装饰器](guide/glossary#decorator--decoration "装饰器的定义")应用于类。
+要将类标记为管道并提供配置元数据，请将[`@Pipe`](api/core/Pipe "管道的 API 参考")[装饰器](guide/glossary#decorator--decoration "装饰器的定义")添加到此类上。
 
 Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") (the general convention for class names) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
 Do not use hyphens in the `name`.
 
-使用[UpperCamelCase](guide/glossary#case-types "案例类型的定义") （类名的一般约定）作为管道类名，并使用[camelCase](guide/glossary#case-types "案例类型的定义")作为对应的 `name` 字符串。不要在 `name` 中使用连字符。
+使用[UpperCamelCase](guide/glossary#case-types "案例类型的定义")（类名的一般约定）作为管道类名，并使用[camelCase](guide/glossary#case-types "案例类型的定义")作为对应的 `name` 字符串。不要在 `name` 中使用连字符。
 
 For details and more examples, see [Pipe names](guide/styleguide#pipe-names "Pipe names in the Angular coding style guide").
 
@@ -32,7 +32,7 @@ Use `name` in template expressions as you would for a built-in pipe.
 
 * Include your pipe in the `declarations` field of the `NgModule` metadata in order for it to be available to a template. See the `app.module.ts` file in the example application (<live-example></live-example>). For details, see [NgModules](guide/ngmodules "NgModules introduction").
 
-  将你的管道包含在 `NgModule` 元数据的 `declarations` 字段中，以使其可用于模板。请参阅示例应用程序中的 `app.module.ts` 文件（<live-example></live-example>）。有关详细信息，请参阅[NgModules](guide/ngmodules "NgModules 介绍") 。
+  将你的管道包含在 `NgModule` 元数据的 `declarations` 字段中，以使其可用于模板。请参阅示例应用程序中的 `app.module.ts` 文件（<live-example></live-example>）。有关详细信息，请参阅[NgModules](guide/ngmodules "NgModules 介绍")。
 
 * Register your custom pipes. The [Angular CLI](cli "CLI Overview and Command Reference") [`ng generate pipe`](cli/generate#pipe "ng generate pipe in the CLI Command Reference") command registers the pipe automatically.
 
@@ -73,7 +73,7 @@ The following code example shows two component definitions:
 
 * The `power-booster.component.ts` component demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`).
 
-  `power-booster.component.ts` 组件演示了如何使用该管道，指定了一个值（ `2` ）和一个 exponent 参数（ `10` ）。
+  `power-booster.component.ts` 组件演示了如何使用该管道，指定了一个值（`2`）和一个 exponent 参数（`10`）。
 
 <code-tabs>
     <code-pane header="src/app/exponential-strength.pipe.ts" path="pipes/src/app/exponential-strength.pipe.ts"></code-pane>
@@ -96,7 +96,7 @@ Superpower boost: 1024
 
 To examine the behavior of the `exponentialStrength` pipe in the <live-example></live-example>, change the value and optional exponent in the template.
 
-要检查 `exponentialStrength` 管道在<live-example></live-example>，更改模板中的值和可选指数。
+可以到<live-example></live-example>中体验 `exponentialStrength` 管道的行为，可以更改模板中的值和可选的指数值。
 
 </div>
 

@@ -384,7 +384,7 @@ interface ModuleExports {
  * which maps back to the original directive, an error is thrown.
  *
  * 该策略的一部分就是查看目标入口点并识别目标声明的导出名称，因为它可能与声明的名称不同（例如，指令可能被声明为
- * FooDirImpl ，但导出为 FooDir ）。如果找不到映射回原始指令的导出，则会抛出错误。
+ * FooDirImpl ，但导出为 FooDir）。如果找不到映射回原始指令的导出，则会抛出错误。
  *
  */
 export class AbsoluteModuleStrategy implements ReferenceEmitStrategy {

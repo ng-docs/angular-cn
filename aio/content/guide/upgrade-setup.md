@@ -29,7 +29,7 @@ In particular, the QuickStart live-coding example shows just the AppComponent fi
 This guide describes how to develop locally on your own machine.
 Setting up a new project on your machine is quick and easy with the [QuickStart seed on github](https://github.com/angular/quickstart "Install the github QuickStart repo").
 
-本指南讲的是如何在你自己的机器上进行本地化开发。 利用 [github 上的**《快速上手》种子**](https://github.com/angular/quickstart "安装 github 《快速上手》库")在你的电脑上搭建一个新项目是很快很容易的。
+本指南讲的是如何在你自己的机器上进行本地化开发。利用 [github 上的**《快速上手》种子**](https://github.com/angular/quickstart "安装 github 《快速上手》库")在你的电脑上搭建一个新项目是很快很容易的。
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ npm install
 
 You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance (***including all git-related artifacts*** such as the `.git` folder and `.gitignore`).
 
-你可以快速删除一些涉及到测试和维护快速开始版本库的 *非必需* 文件 （***包括所有 git 相关的文件***如 `.git` 文件夹和 `.gitignore`！）。
+你可以快速删除一些涉及到测试和维护快速开始版本库的 *非必需* 文件（***包括所有 git 相关的文件***如 `.git` 文件夹和 `.gitignore`！）。
 
 <div class="alert is-important">
 
@@ -109,8 +109,6 @@ rm non-essential-files.osx.txt
 
 ### Windows
 
-### 窗户
-
 <code-example format="shell" language="shell">
 
 for /f %i in (non-essential-files.txt) do del %i /F /S /Q
@@ -129,7 +127,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
 1. Remove the obsolete `@angular/http` package (both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`).
 
-   删除过时的 `@angular/http` 包（全都来自 `package.json > dependencies` 和 `src/systemjs.config.js > SystemJS.config() > map` ）。
+   删除过时的 `@angular/http` 包（全都来自 `package.json > dependencies` 和 `src/systemjs.config.js > SystemJS.config() > map`）。
 
 1. Install the latest versions of the Angular framework packages by running:
 
@@ -167,25 +165,25 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
    为了能正确加载最新的 Angular 框架包（ES2015 格式），请替换 `src/systemjs.config.js` 中的相关条目：
 
-   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="angular-paths"></code-example>
+   <code-example format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="angular-paths"></code-example>
 
 1. In order to be able to load the latest RxJS package correctly, replace the relevant entries in `src/systemjs.config.js`:
 
    为了能够正确加载最新的 RxJS 包，请替换 `src/systemjs.config.js` 中的相关条目：
 
-   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="rxjs-paths"></code-example>
+   <code-example format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="rxjs-paths"></code-example>
 
 1. In order to be able to load the `tslib` package (which is required for files transpiled by TypeScript), add the following entry to `src/systemjs.config.js`:
 
    为了能够加载 `tslib` 包（这是由 TypeScript 转译后的文件所必需的），请将以下条目添加到 `src/systemjs.config.js` ：
 
-   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="tslib-paths"></code-example>
+   <code-example format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="tslib-paths"></code-example>
 
 1. In order for SystemJS to be able to load the ES2015 Angular files correctly, add the following entries to `src/systemjs.config.js`:
 
    为了使 SystemJS 能够正确加载 ES2015 Angular 文件，请将以下条目添加到 `src/systemjs.config.js` ：
 
-   <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="plugin-babel"></code-example>
+   <code-example format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="plugin-babel"></code-example>
 
 1. Finally, in order to prevent TypeScript typecheck errors for dependencies, add the following entry to `src/tsconfig.json`:
 
@@ -216,7 +214,7 @@ Once built, the application will be automatically opened in a new browser tab an
 The **QuickStart seed** provides a basic QuickStart playground application and other files necessary for local development.
 Consequently, there are many files in the project folder on your machine, most of which you can [learn about later](guide/file-structure).
 
-**《快速上手》种子** 提供了一个基本的《快速上手》游乐场应用，以及进行本地开发的其它必要文件。 所以，你电脑里的项目目录中有*更多文件*，其中的大部分你都会[在稍后学到](guide/file-structure)。
+**《快速上手》种子** 提供了一个基本的《快速上手》游乐场应用，以及进行本地开发的其它必要文件。所以，你电脑里的项目目录中有*更多文件*，其中的大部分你都会[在稍后学到](guide/file-structure)。
 
 <div class="alert is-helpful">
 
@@ -273,7 +271,7 @@ They include configuration files and external dependencies.
 Files inside `src/` "belong" to your application.
 Add new Typescript, HTML and CSS files inside the `src/` directory, most of them inside `src/app`, unless told to do otherwise.
 
-`src/` 目录下的文件才“属于”你的 app。 除非明确指出，否则教程中添加的 TypeScript，HTML 和 CSS 文件都在 `src/` 目录下， 大多数在 `src/app` 目录中。
+`src/` 目录下的文件才“属于”你的 app。除非明确指出，否则教程中添加的 TypeScript，HTML 和 CSS 文件都在 `src/` 目录下，大多数在 `src/app` 目录中。
 
 The following are all in `src/`
 
@@ -283,11 +281,11 @@ The following are all in `src/`
 | :--- | :------ |
 | 文件 | 用途 |
 | app/app.component.ts | Defines the same `AppComponent` as the one in the QuickStart playground. It is the **root** component of what will become a tree of nested components as the application evolves. |
-| app/app.component.ts | 定义与《快速上手》游乐场同样的 `AppComponent`。 它是**根**组件，随着应用的演变，它将变成一颗嵌套组件树。 |
+| app/app.component.ts | 定义与《快速上手》游乐场同样的 `AppComponent`。它是**根**组件，随着应用的演变，它将变成一颗嵌套组件树。|
 | app/app.module.ts | Defines `AppModule`, the  [root module](guide/bootstrapping "AppModule: the root module") that tells Angular how to assemble the application. When initially created, it declares only the `AppComponent`. Over time, you add more components to declare. |
-| app/app.module.ts | 定义 `AppModule`，[根模块](guide/bootstrapping "AppModule: 根模块")为 Angular 描述如何组装应用。 目前，它只声明了 `AppComponent`。 不久，它将声明更多组件。 |
+| app/app.module.ts | 定义 `AppModule`，[根模块](guide/bootstrapping "AppModule: 根模块")为 Angular 描述如何组装应用。目前，它只声明了 `AppComponent`。不久，它将声明更多组件。|
 | main.ts | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module (`AppModule`) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
-| main.ts | 使[即时 (JIT) 编译器](guide/glossary#jit)用编译应用并且在浏览器中[启动](guide/bootstrapping "启动应用")并运行应用。 对于大多数项目的开发，这都是合理的选择。而且它是在像 Stackblitz 这样的*在线编程*环境中运行例子的唯一选择。 你将在本文档中学习其它编译和开发选择。 |
+| main.ts | 使[即时 (JIT) 编译器](guide/glossary#jit)用编译应用并且在浏览器中[启动](guide/bootstrapping "启动应用")并运行应用。对于大多数项目的开发，这都是合理的选择。而且它是在像 Stackblitz 这样的*在线编程*环境中运行例子的唯一选择。你将在本文档中学习其它编译和开发选择。|
 
 ## Appendix: Test using `fakeAsync()/waitForAsync()`
 

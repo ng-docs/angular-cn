@@ -4,7 +4,7 @@
 
 In an Angular template, a binding creates a live connection between a part of the UI created from a template (a DOM element, directive, or component) and the model (the component instance to which the template belongs). This connection can be used to synchronize the view with the model, to notify the model when an event or user action takes place in the view, or both. Angular's [Change Detection](guide/change-detection) algorithm is responsible for keeping the view and the model in sync.
 
-在 Angular 模板中，绑定会在从模板创建的一部分 UI（DOM 元素、指令或组件）与模型（模板所属的组件实例）之间创建实时连接。此连接可用于将视图与模型同步、在视图中发生事件或用户操作时通知模型，或两者兼而有之。 Angular 的[变更检测](guide/change-detection)算法负责保持视图和模型的同步。
+在 Angular 模板中，绑定会在从模板创建的一部分 UI（DOM 元素、指令或组件）与模型（模板所属的组件实例）之间创建实时连接。此连接可用于将视图与模型同步、在视图中发生事件或用户操作时通知模型，或两者兼而有之。Angular 的[变更检测](guide/change-detection)算法负责保持视图和模型的同步。
 
 Examples of binding include:
 
@@ -109,7 +109,7 @@ This next example features a template reference variable, `#customerInput`.
 
 Template expressions cannot refer to anything in the global namespace, except `undefined`.  They can't refer to `window` or `document`.  Additionally, they can't call `console.log()` or `Math.max()` and are restricted to referencing members of the expression context.
 
-模板表达式不能引用全局命名空间中的任何东西，除了 `undefined` 。他们不能引用 `window` 或 `document` 。此外，它们不能调用 `console.log()` 或 `Math.max()` ，并且只能引用表达式上下文的成员。
+模板表达式不能引用全局命名空间中的任何东西，除了 `undefined`。他们不能引用 `window` 或 `document`。此外，它们不能调用 `console.log()` 或 `Math.max()`，并且只能引用表达式上下文的成员。
 
 </div>
 
@@ -187,19 +187,19 @@ According to Angular's [unidirectional data flow model](guide/glossary#unidirect
 
 根据 Angular 的[单向数据流模型](guide/glossary#unidirectional-data-flow)，除了目标属性的值之外，模板表达式不应更改任何应用状态。读取组件值不应更改其他显示值。该视图应在整个渲染过程中保持稳定。
 
-  <div class="callout is-important">
+<div class="callout is-important">
 
-```
 <header>Idempotent expressions reduce side effects</header>
-```
+
+<header>用幂等表达式减少副作用</header>
 
 An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.  In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
 
-[幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。 用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
+[幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
 
 Dependent values should not change during a single turn of the event loop.  If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.  If the expression returns an object, including an `array`, it returns the same object *reference* if you call it twice consecutively.
 
-在单独的一次事件循环中，被依赖的值不应该改变。 如果幂等的表达式返回一个字符串或数字，如果连续调用它两次，会返回相同的字符串或数字。 如果幂等的表达式返回一个对象（包括 `Date` 或 `Array`），如果连续调用它两次，会返回同一个对象的*引用*。
+在单独的一次事件循环中，被依赖的值不应该改变。如果幂等的表达式返回一个字符串或数字，如果连续调用它两次，会返回相同的字符串或数字。如果幂等的表达式返回一个对象（包括 `Date` 或 `Array`），如果连续调用它两次，会返回同一个对象的*引用*。
 
   </div>
 

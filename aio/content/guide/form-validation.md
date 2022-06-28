@@ -49,7 +49,7 @@ Run the <live-example></live-example>.
 To add validation to a template-driven form, you add the same validation attributes as you would with [native HTML form validation](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5/Constraint_validation).
 Angular uses directives to match these attributes with validator functions in the framework.
 
-为了往模板驱动表单中添加验证机制，你要添加一些验证属性，就像[原生的 HTML 表单验证器](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5/Constraint_validation)。
+为了往模板驱动表单中添加验证机制，你要添加一些验证属性，就像[原生的 HTML 表单验证器](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5/Constraint_validation)一样。
 Angular 会用指令来匹配这些具有验证功能的指令。
 
 Every time the value of a form control changes, Angular runs validation and generates either a list of validation errors that results in an `INVALID` status, or null, which results in a VALID status.
@@ -72,7 +72,7 @@ Notice the following features illustrated by the example.
   It also carries a custom validator directive, `forbiddenName`.
   For more information, see the [Custom validators](#custom-validators) section.
 
-   `<input>` 元素带有一些 HTML 验证属性：`required` 和 `minlength`。它还带有一个自定义的验证器指令 `forbiddenName`。欲知详情，参阅[自定义验证器](guide/form-validation#custom-validators)一节。
+  `<input>` 元素带有一些 HTML 验证属性：`required` 和 `minlength`。它还带有一个自定义的验证器指令 `forbiddenName`。欲知详情，参阅[自定义验证器](guide/form-validation#custom-validators)一节。
 
 * `#name="ngModel"` exports `NgModel` into a local variable called `name`.
   `NgModel` mirrors many of the properties of its underlying `FormControl` instance, so you can use this in the template to check for control states such as `valid` and `dirty`.
@@ -131,9 +131,9 @@ Validator functions can be either synchronous or asynchronous.
 | :------------- | :------ |
 | 验证器类型 | 详细信息 |
 | Sync validators | Synchronous functions that take a control instance and immediately return either a set of validation errors or `null`. Pass these in as the second argument when you instantiate a `FormControl`. |
-| 同步验证器 | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。 |
+| 同步验证器 | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。|
 | Async validators | Asynchronous functions that take a control instance and return a Promise or Observable that later emits a set of validation errors or `null`. Pass these in as the third argument when you instantiate a `FormControl`. |
-| 异步验证器 | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。 |
+| 异步验证器 | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。|
 
 For performance reasons, Angular only runs async validators if all sync validators pass.
 Each must complete before errors are set.
@@ -375,7 +375,7 @@ Notice that the `name` and `alterEgo` are sibling controls.
 To evaluate both controls in a single custom validator, you must perform the validation in a common ancestor control: the `FormGroup`.
 You query the `FormGroup` for its child controls so that you can compare their values.
 
-注意，`name` 和 `alterEgo` 是兄弟控件。要想在单个自定义验证器中计算这两个控件，你就必须在它们共同的祖先控件中执行验证： `FormGroup`。你可以在 `FormGroup` 中查询它的子控件，从而让你能比较它们的值。
+注意，`name` 和 `alterEgo` 是兄弟控件。要想在单个自定义验证器中计算这两个控件，你就必须在它们共同的祖先控件中执行验证：`FormGroup`。你可以在 `FormGroup` 中查询它的子控件，从而让你能比较它们的值。
 
 To add a validator to the `FormGroup`, pass the new validator in as the second argument on creation.
 
@@ -563,7 +563,7 @@ In the following example, the `validate` function of `UniqueAlterEgoValidator` i
 The value of `asyncValidators` can be either a single async validator function, or an array of functions.
 To learn more about `FormControl` options, see the [AbstractControlOptions](api/forms/AbstractControlOptions) API reference.
 
-在以下示例中， `UniqueAlterEgoValidator` 的 `validate` 函数通过将其传递给控件的 `asyncValidators` 选项并将其绑定到注入到 `HeroFormReactiveComponent` 中的 `UniqueAlterEgoValidator` 实例来应用于 `alterEgoControl` 。 `asyncValidators` 的值可以是单个异步验证器函数，也可以是函数数组。要了解有关 `FormControl` 选项的更多信息，参阅[AbstractControlOptions](api/forms/AbstractControlOptions) API 参考。
+在以下示例中，`UniqueAlterEgoValidator` 的 `validate` 函数将其传递给控件的 `asyncValidators` 选项并将其绑定到注入到 `HeroFormReactiveComponent` 中的 `UniqueAlterEgoValidator` 实例，最终将其应用于 `alterEgoControl`。`asyncValidators` 的值可以是单个异步验证器函数，也可以是函数数组。要了解有关 `FormControl` 选项的更多信息，参阅[AbstractControlOptions](api/forms/AbstractControlOptions) API 参考。
 
 <code-example path="form-validation/src/app/reactive/hero-form-reactive.component.2.ts" region="async-validator-usage"></code-example>
 

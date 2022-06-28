@@ -49,7 +49,7 @@ function assertSameOrNotExisting(id: string, type: Type<any>|null, incoming: Typ
  * megamorphic read, and in JIT there's a chicken-and-egg problem where the NgModule may not be
  * fully resolved when it's registered.
  *
- * 这是作为 NgModule 编译的副作用生成的。请注意， `id` 是显式传入的，而不是从 NgModule
+ * 这是作为 NgModule 编译的副作用生成的。请注意，`id` 是显式传入的，而不是从 NgModule
  * 定义中读取的。这有两个原因：它避免了大态读取，并且在 JIT 中存在一个先有鸡还是先有蛋的问题，即
  * NgModule 在注册时可能无法完全解决。
  *

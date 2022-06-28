@@ -25,18 +25,25 @@ let upgradeCount: number = 0;
  * 使用 `UpgradeAdapter` 允许 AngularJS 和 Angular 在单个应用程序中共存。
  *
  * The `UpgradeAdapter` allows:
- * 1\. creation of Angular component from AngularJS component directive
+ *
+ * `UpgradeAdapter` 允许：
+ *
+ * 1. creation of Angular component from AngularJS component directive
  *    (See [UpgradeAdapter#upgradeNg1Component()])
- * 2\. creation of AngularJS directive from Angular component.
+ *
+ *    从 AngularJS 组件指令创建 Angular
+ * 组件（请参阅[UpgradeAdapter#upgradeNg1Component()][UpgradeAdapter#upgradeNg1Component()]）
+ *
+ * 2. creation of AngularJS directive from Angular component.
  *    (See [UpgradeAdapter#downgradeNg2Component()])
- * 3\. Bootstrapping of a hybrid Angular application which contains both of the frameworks
+ *
+ *    从 Angular 组件创建 AngularJS
+ * 指令。（请参阅[UpgradeAdapter#downgradeNg2Component()][UpgradeAdapter#downgradeNg2Component()]
+ *
+ * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
  *    coexisting in a single application.
  *
- * `UpgradeAdapter` 允许： 1.从 AngularJS 组件指令创建 Angular
- * 组件（请参阅[UpgradeAdapter#upgradeNg1Component()][UpgradeAdapter#upgradeNg1Component()] ）2.从
- * Angular 组件创建 AngularJS 指令。
- * （请参阅[UpgradeAdapter#downgradeNg2Component()][UpgradeAdapter#downgradeNg2Component()] ） 3.
- * 混合 Angular 应用程序的引导，该应用程序包含在单个应用程序中共存的两个框架。
+ *    混合 Angular 应用程序的引导，该应用程序包含在单个应用程序中共存的两个框架。
  *
  * @usageNotes
  *
@@ -116,7 +123,7 @@ let upgradeCount: number = 0;
  *      template: 'ng1[Hello {{title}}!](<span ng-transclude></span>)'
  *   };
  * });
- * ```
+ *
  *
  * @Component ({
  *   selector: 'ng2-comp',
@@ -126,6 +133,7 @@ let upgradeCount: number = 0;
  * })
  * class Ng2Component {
  * }
+ *
  * @NgModule ({
  *   declarations: [Ng2Component, adapter.upgradeNg1Component('ng1Hello')],
  *   imports: [BrowserModule]
@@ -216,11 +224,7 @@ export class UpgradeAdapter {
    * Angular 组件，而不是声明应该如何解释属性。
    *
    * 3. `ng-model` is controlled by AngularJS and communicates with the downgraded Angular component
-   *    by way of the `ControlValueAccessor` interface from
-   *
-   *    `ng-model` 由 `ControlValueAccessor` 控制，并通过来自
-   *
-   * @angular /forms. Only components that
+   *    by way of the `ControlValueAccessor` interface from @angular/forms. Only components that
    *    implement this interface are eligible.
    *
    * ### Supported Features
@@ -239,6 +243,7 @@ export class UpgradeAdapter {
    * const adapter = new UpgradeAdapter(forwardRef(() => MyNg2Module));
    * const module = angular.module('myExample', []);
    * module.directive('greet', adapter.downgradeNg2Component(Greeter));
+   *
    * @Component ({
    *   selector: 'greet',
    *   template: '{{salutation}} {{name}}! - <ng-content></ng-content>'
@@ -247,6 +252,7 @@ export class UpgradeAdapter {
    * @Input () salutation: string;
    * @Input () name: string;
    * }
+   *
    * @NgModule ({
    *   declarations: [Greeter],
    *   imports: [BrowserModule]
@@ -333,7 +339,7 @@ export class UpgradeAdapter {
    *
    *   - `controller`: supported. (NOTE: injection of `$attrs` and `$transclude` is not supported.)
    *
-   *     `controller` ：支持。 （注意：不支持注入 `$attrs` 和 `$transclude` 。）
+   *     `controller` ：支持。（注意：不支持注入 `$attrs` 和 `$transclude` 。）
    *
    *   - `controllerAs`: supported.
    *
@@ -345,7 +351,7 @@ export class UpgradeAdapter {
    *
    *   - `link`: supported. (NOTE: only pre-link function is supported.)
    *
-   *     `link` ：支持。 （注意：仅支持预链接功能。）
+   *     `link` ：支持。（注意：仅支持预链接功能。）
    *
    *   - `name`: supported.
    *
@@ -403,7 +409,6 @@ export class UpgradeAdapter {
    * });
    *
    * module.directive('ng2', adapter.downgradeNg2Component(Ng2Component));
-   * ```
    *
    * @Component ({
    *   selector: 'ng2',
@@ -474,6 +479,7 @@ export class UpgradeAdapter {
    *     done();
    *   })
    * });
+   *
    * ```
    *
    * @param modules any AngularJS modules that the upgrade module should depend upon
@@ -533,7 +539,7 @@ export class UpgradeAdapter {
    *      template: 'ng1[Hello {{title}}!](<span ng-transclude></span>)'
    *   };
    * });
-   * ```
+   *
    *
    * @Component ({
    *   selector: 'ng2',
@@ -542,6 +548,7 @@ export class UpgradeAdapter {
    * })
    * class Ng2 {
    * }
+   *
    * @NgModule ({
    *   declarations: [Ng2, adapter.upgradeNg1Component('ng1')],
    *   imports: [BrowserModule]
@@ -606,12 +613,10 @@ export class UpgradeAdapter {
    * ```
    * class Login { ... }
    * class Server { ... }
-   * ```
    *
    * @Injectable ()
    * class Example {
-   *   constructor(
-   * @Inject ('server') server, login: Login) {
+   *   constructor(@Inject('server') server, login: Login) {
    *     ...
    *   }
    * }
@@ -662,8 +667,8 @@ export class UpgradeAdapter {
    * adapter.bootstrap(document.body, ['myExample']).ready((ref) => {
    *   const example: Example = ref.ng1Injector.get('example');
    * });
-   * ```
    *
+   * ```
    */
   downgradeNg2Provider(token: any): Function {
     return downgradeInjectable(token);
@@ -699,7 +704,6 @@ export class UpgradeAdapter {
    * const upgradeAdapter = new UpgradeAdapter(MyNg2Module);
    * upgradeAdapter.declareNg1Module(['heroApp']);
    * ```
-   *
    */
   private declareNg1Module(modules: string[] = []): IModule {
     const delayApplyExps: Function[] = [];

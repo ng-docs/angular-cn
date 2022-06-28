@@ -6,7 +6,7 @@
 
 <header>Marked for archiving</header>
 
-<header>标记为存档</header>
+<header>已标记为归档</header>
 
 To ensure that you have the best experience possible, this topic is marked for archiving until we determine that it clearly conveys the most accurate information possible.
 
@@ -26,29 +26,29 @@ Application components often need to share information.
 You can often use loosely coupled techniques for sharing information, such as data binding and service sharing, but sometimes it makes sense for one component to have a direct reference to another component.
 You need a direct reference, for instance, to access values or call methods on that component.
 
-应用的组件之间经常需要共享信息。你通常要用松耦合的技术来共享信息，比如数据绑定和服务共享。但是有时候让一个组件直接引用另一个组件还是很有意义的。 比如，你需要通过另一个组件的直接引用来访问其属性或调用其方法。
+应用的组件之间经常需要共享信息。你通常要用松耦合的技术来共享信息，比如数据绑定和服务共享。但是有时候让一个组件直接引用另一个组件还是很有意义的。比如，你需要通过另一个组件的直接引用来访问其属性或调用其方法。
 
 Obtaining a component reference is a bit tricky in Angular.
 Angular components themselves do not have a tree that you can inspect or navigate programmatically.
 The parent-child relationship is indirect, established through the components' [view objects](guide/glossary#view).
 
-在 Angular 中获取组件引用略微有些棘手。 Angular 组件本身并没有一棵可以用编程方式检查或浏览的树。 其父子关系是通过组件的[视图对象](guide/glossary#view)间接建立的。
+在 Angular 中获取组件引用略微有些棘手。Angular 组件本身并没有一棵可以用编程方式检查或浏览的树。其父子关系是通过组件的[视图对象](guide/glossary#view)间接建立的。
 
 Each component has a *host view*, and can have additional *embedded views*.
 An embedded view in component A is the host view of component B, which can in turn have embedded view.
 This means that there is a [view hierarchy](guide/glossary#view-hierarchy) for each component, of which that component's host view is the root.
 
-每个组件都有一个*宿主视图*和一些*内嵌视图*。 组件 A 的内嵌视图可以是组件 B 的宿主视图，而组件 B 还可以有它自己的内嵌视图。 这意味着每个组件都有一棵以该组件的宿主视图为根节点的[视图树](guide/glossary#view-hierarchy)。
+每个组件都有一个*宿主视图*和一些*内嵌视图*。组件 A 的内嵌视图可以是组件 B 的宿主视图，而组件 B 还可以有它自己的内嵌视图。这意味着每个组件都有一棵以该组件的宿主视图为根节点的[视图树](guide/glossary#view-hierarchy)。
 
 There is an API for navigating *down* the view hierarchy.
 Check out `Query`, `QueryList`, `ViewChildren`, and `ContentChildren` in the [API Reference](api).
 
-有一些用于在视图树中*向下*导航的 API。 请到 [API 参考手册](api)中查看 `Query`、`QueryList`、`ViewChildren` 和 `ContentChildren`。
+有一些用于在视图树中*向下*导航的 API。请到 [API 参考手册](api)中查看 `Query`、`QueryList`、`ViewChildren` 和 `ContentChildren`。
 
 There is no public API for acquiring a parent reference.
 However, because every component instance is added to an injector's container, you can use Angular dependency injection to reach a parent component.
 
-不存在用于获取父引用的公共 API。 不过，由于每个组件的实例都会添加到注入器的容器中，因此你可以通过 Angular 的依赖注入来访问父组件。
+不存在用于获取父引用的公共 API。不过，由于每个组件的实例都会添加到注入器的容器中，因此你可以通过 Angular 的依赖注入来访问父组件。
 
 This section describes some techniques for doing that.
 
@@ -97,7 +97,7 @@ A re-usable component might be a child of multiple components.
 Imagine a component for rendering breaking news about a financial instrument.
 For business reasons, this news component makes frequent calls directly into its parent instrument as changing market data streams by.
 
-可复用组件可能是多个组件的子组件。想象一个用于渲染相关金融工具的突发新闻的组件。 出于商业原因，当市场上的数据流发生变化时，这些新组件会频繁调用其父组件。
+可复用组件可能是多个组件的子组件。想象一个用于渲染相关金融工具的突发新闻的组件。出于商业原因，当市场上的数据流发生变化时，这些新组件会频繁调用其父组件。
 
 The app probably defines more than a dozen financial instrument components.
 If you're lucky, they all implement the same base class whose API your `NewsComponent` understands.
@@ -110,14 +110,14 @@ Looking for components that implement an interface would be better.
 That's not possible because TypeScript interfaces disappear from the transpiled JavaScript, which doesn't support interfaces.
 There's no artifact to look for.
 
-如果能查找实现了某个接口的组件当然更好。 但那是不可能的。因为 TypeScript 接口在转译后的 JavaScript 中不存在，而 JavaScript 不支持接口。 因此，找无可找。
+如果能查找实现了某个接口的组件当然更好。但那是不可能的。因为 TypeScript 接口在转译后的 JavaScript 中不存在，而 JavaScript 不支持接口。因此，找无可找。
 
 </div>
 
 This isn't necessarily good design.
 This example is examining *whether a component can inject its parent via the parent's base class*.
 
-这个设计并不怎么好。 该例子是为了验证*组件是否能通过其父组件的基类来注入父组件*。
+这个设计并不怎么好。该例子是为了验证*组件是否能通过其父组件的基类来注入父组件*。
 
 The sample's `CraigComponent` explores this question.
 [Looking back](#alex), you see that the `Alex` component *extends* (*inherits*) from a class named `Base`.
@@ -197,13 +197,13 @@ Here's *Alex* and family in action.
 Imagine one branch of a component hierarchy: *Alice* -> *Barry* -> *Carol*.
 Both *Alice* and *Barry* implement the `Parent` class interface.
 
-想象一下组件树的一个分支：*Alice* -> *Barry* -> *Carol*。 无论 *Alice* 还是 *Barry* 都实现了类接口 `Parent`。
+想象一下组件树的一个分支：*Alice* -> *Barry* -> *Carol*。无论 *Alice* 还是 *Barry* 都实现了类接口 `Parent`。
 
 *Barry* is the problem.
 He needs to reach his parent, *Alice*, and also be a parent to *Carol*.
 That means he must both *inject* the `Parent` class interface to get *Alice* and *provide* a `Parent` to satisfy *Carol*.
 
-*Barry* 很为难。他需要访问他的母亲 *Alice*，同时他自己还是 *Carol* 的父亲。 这意味着他必须同时*注入* `Parent` 类接口来找到 *Alice*，同时还要*提供*一个 `Parent` 来满足 *Carol* 的要求。
+*Barry* 很为难。他需要访问他的母亲 *Alice*，同时他自己还是 *Carol* 的父亲。这意味着他必须同时*注入* `Parent` 类接口来找到 *Alice*，同时还要*提供*一个 `Parent` 来满足 *Carol* 的要求。
 
 Here's *Barry*.
 
@@ -278,7 +278,7 @@ The `Parent` class interface defines a `name` property with a type declaration b
 The `name` property is the only member of a parent component that a child component can call.
 Such a narrow interface helps decouple the child component class from its parent components.
 
-`Parent` 类接口定义了一个带类型的 `name` 属性，但没有实现它。 这个 `name` 属性是父组件中唯一可供子组件调用的成员。 这样的窄化接口帮助把子组件从它的父组件中解耦出来。
+`Parent` 类接口定义了一个带类型的 `name` 属性，但没有实现它。这个 `name` 属性是父组件中唯一可供子组件调用的成员。这样的窄化接口帮助把子组件从它的父组件中解耦出来。
 
 A component that could serve as a parent *should* implement the class interface as the `AliceComponent` does.
 
@@ -291,7 +291,7 @@ But it's not technically necessary.
 Although `AlexComponent` has a `name` property, as required by its `Base` class,
 its class signature doesn't mention `Parent`.
 
-这样做可以增加代码的清晰度，但在技术上并不是必要的。 虽然 `AlexComponent` 像 `Base` 类所要求的一样具有 `name` 属性，但它的类签名中并没有提及 `Parent`。
+这样做可以增加代码的清晰度，但在技术上并不是必要的。虽然 `AlexComponent` 像 `Base` 类所要求的一样具有 `name` 属性，但它的类签名中并没有提及 `Parent`。
 
 <code-example header="parent-finder.component.ts (AlexComponent class signature)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-class-signature"></code-example>
 
@@ -300,7 +300,7 @@ its class signature doesn't mention `Parent`.
 `AlexComponent` *should* implement `Parent` as a matter of proper style.
 It doesn't in this example *only* to demonstrate that the code will compile and run without the interface.
 
-`AlexComponent` *应该*实现 `Parent` 才是一种正确的风格。 这个例子中之所以没这样做，*只是*为了证明即使没有声明接口，代码也可以编译和运行。
+`AlexComponent` *应该*实现 `Parent` 才是一种正确的风格。这个例子中之所以没这样做，*只是*为了证明即使没有声明接口，代码也可以编译和运行。
 
 </div>
 

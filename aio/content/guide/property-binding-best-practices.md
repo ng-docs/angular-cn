@@ -33,7 +33,7 @@ If you had an expression that changed the value of something else that you were 
 Angular might or might not display the changed value.
 If Angular does detect the change, it throws an error.
 
-如果你的表达式改变了你所绑定的其它东西的值，那么这种更改就会产生副作用。 Angular 可能显示也可能不显示更改后的值。如果 Angular 确实检测到了这个变化，就会抛出一个错误。
+如果你的表达式改变了你所绑定的其它东西的值，那么这种更改就会产生副作用。Angular 可能显示也可能不显示更改后的值。如果 Angular 确实检测到了这个变化，就会抛出一个错误。
 
 As a best practice, use only properties and methods that return values.
 
@@ -80,7 +80,7 @@ If `parentItem` were some other type, you would need to specify `childItem`  `@I
 
 In this example, `ItemListComponent` is a child component of `AppComponent` and the `items` property expects an array of objects.
 
-在这个例子中， `ItemListComponent` 是 `AppComponent` 的子组件，其 `items` 属性需要一个对象数组。
+在这个例子中，`ItemListComponent` 是 `AppComponent` 的子组件，其 `items` 属性需要一个对象数组。
 
 <code-example header="src/app/app.component.html" path="property-binding/src/app/app.component.html" region="pass-object"></code-example>
 

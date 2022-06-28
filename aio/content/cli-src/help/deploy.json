@@ -1,0 +1,35 @@
+{
+  "name": "deploy",
+  "command": "ng deploy [project]",
+  "shortDescription": "Invokes the deploy builder for a specified project or for the default project in the workspace.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/deploy/long-description.md",
+  "longDescription": "The command takes an optional project name, as specified in the `projects` section of the `angular.json` workspace configuration file.\nWhen a project name is not supplied, executes the `deploy` builder for the default project.\n\nTo use the `ng deploy` command, use `ng add` to add a package that implements deployment capabilities to your favorite platform.\nAdding the package automatically updates your workspace configuration, adding a deployment\n[CLI builder](guide/cli-builder).\nFor example:\n\n```json\n\"projects\": {\n  \"my-project\": {\n    ...\n    \"architect\": {\n      ...\n      \"deploy\": {\n        \"builder\": \"@angular/fire:deploy\",\n        \"options\": {}\n      }\n    }\n  }\n}\n```\n",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "configuration",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
+      "descriptionCn": "逗号分隔列表格式的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分中指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "positional": 0,
+      "descriptionCn": "要构建的项目名。可以是应用或库。"
+    }
+  ],
+  "shortDescriptionCn": "为指定的项目或默认项目，执行部署构建器。",
+  "longDescriptionCn": "该命令采用可选的项目名称，在 `angular.json` 工作区配置文件的 `projects` 部分中指定。当未提供项目名称时，默认为项目执行 `deploy` 构建器。\n\n要使用 `ng deploy` 命令，请使用 `ng add` 将实现部署特性的包添加到你喜欢的平台。添加包会自动更新你的工作区配置，添加部署 [CLI 构建器](guide/cli-builder)。例如：\n\n```json\n \"projects\": { \"my-project\": { ... \"architect\": { ... \"deploy\": { \"builder\": \"@angular/fire:deploy\", \"options\": {} } } } }\n```"
+}

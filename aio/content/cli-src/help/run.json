@@ -1,0 +1,26 @@
+{
+  "name": "run",
+  "command": "ng run <target>",
+  "shortDescription": "Runs an Architect target with an optional custom builder configuration defined in your project.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/run/long-description.md",
+  "longDescription": "Architect is the tool that the CLI uses to perform complex tasks such as compilation, according to provided configurations.\nThe CLI commands run Architect targets such as `build`, `serve`, `test`, and `lint`.\nEach named target has a default configuration, specified by an \"options\" object,\nand an optional set of named alternate configurations in the \"configurations\" object.\n\nFor example, the \"serve\" target for a newly generated app has a predefined\nalternate configuration named \"production\".\n\nYou can define new targets and their configuration options in the \"architect\" section\nof the `angular.json` file.\nIf you do so, you can run them from the command line using the `ng run` command.\nExecute the command using the following format.\n\n```\nng run project:target[:configuration]\n```\n",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "target",
+      "type": "string",
+      "description": "The Architect target to run.",
+      "positional": 0,
+      "descriptionCn": "要运行的建筑师目标。"
+    }
+  ],
+  "shortDescriptionCn": "在你的项目中运行一个带有自定义构建器配置的建筑师目标（Architect target）。",
+  "longDescriptionCn": "Architect 是 CLI 根据提供的配置用于执行复杂任务（例如编译）的工具。 CLI 命令会运行 Architect 目标，例如`build`、`serve`、`test` 和 `lint` 。每个命名目标都有一个默认配置，由`options` 对象指定，以及 `configurations` 对象中的一组可选的命名备用配置。\n\n例如，新生成的应用程序的 `serve` 目标有一个名为 `production` 的预定义替代配置。\n\n你可以在 `angular.json` `文件的 architect` 部分中定义新目标及其配置选项。如果这样做，你可以用 `ng run` 命令从命令行运行它们。使用以下格式执行命令。\n\n```\n ng run project:target[:configuration]\n```"
+}

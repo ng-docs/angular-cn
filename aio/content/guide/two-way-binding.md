@@ -43,9 +43,9 @@ Two-way binding combines property binding with event binding:
 | :------- | :------ |
 | 绑定 | 详情 |
 | [Property binding](guide/property-binding) | Sets a specific element property. |
-| [属性绑定](guide/property-binding) | 设置特定的元素属性。 |
+| [属性绑定](guide/property-binding) | 设置特定的元素属性。|
 | [Event binding](guide/event-binding) | Listens for an element change event. |
-| [事件绑定](guide/event-binding) | 侦听元素更改事件。 |
+| [事件绑定](guide/event-binding) | 侦听元素更改事件。|
 
 ## Adding two-way data binding
 
@@ -65,18 +65,18 @@ Angular 的双向绑定语法是方括号和圆括号的组合 `[()]`。`[]` 进
 For two-way data binding to work, the `@Output()` property must use the pattern, `inputChange`, where `input` is the name of the `@Input()` property.
 For example, if the `@Input()` property is `size`, the `@Output()` property must be `sizeChange`.
 
-为了使双向数据绑定有效，`@Output()` 属性的名字必须遵循 `inputChange` 模式，其中 `input` 是相应 `@Input()` 属性的名字。比如，如果 `@Input()` 属性为 `size` ，则 `@Output()` 属性必须为 `sizeChange` 。
+为了使双向数据绑定有效，`@Output()` 属性的名字必须遵循 `inputChange` 模式，其中 `input` 是相应 `@Input()` 属性的名字。比如，如果 `@Input()` 属性为 `size`，则 `@Output()` 属性必须为 `sizeChange`。
 
 The following `sizerComponent` has a `size` value property and a `sizeChange` event.
 The `size` property is an `@Input()`, so data can flow into the `sizerComponent`.
 The `sizeChange` event is an `@Output()`, which lets data flow out of the `sizerComponent` to the parent component.
 
-后面的 `sizerComponent` 具有值属性 `size` 和事件属性 `sizeChange`。 `size` 属性是 `@Input()`，因此数据可以流入 `sizerComponent` 。 `sizeChange` 事件是一个 `@Output()` ，它允许数据从 `sizerComponent` 流出到父组件。
+后面的 `sizerComponent` 具有值属性 `size` 和事件属性 `sizeChange`。`size` 属性是 `@Input()`，因此数据可以流入 `sizerComponent`。`sizeChange` 事件是一个 `@Output()`，它允许数据从 `sizerComponent` 流出到父组件。
 
 Next, there are two methods, `dec()` to decrease the font size and `inc()` to increase the font size.
 These two methods use `resize()` to change the value of the `size` property within min/max value constraints, and to emit an event that conveys the new `size` value.
 
-接下来，有两个方法， `dec()` 用于减小字体大小， `inc()` 用于增大字体大小。这两种方法使用 `resize()` 在最小/最大值的约束内更改 `size` 属性的值，并发出带有新 `size` 值的事件。
+接下来，有两个方法，`dec()` 用于减小字体大小，`inc()` 用于增大字体大小。这两种方法使用 `resize()` 在最小/最大值的约束内更改 `size` 属性的值，并发出带有新 `size` 值的事件。
 
 <code-example header="src/app/sizer.component.ts" path="two-way-binding/src/app/sizer/sizer.component.ts" region="sizer-component"></code-example>
 
@@ -84,13 +84,13 @@ The `sizerComponent` template has two buttons that each bind the click event to 
 When the user clicks one of the buttons, the `sizerComponent` calls the corresponding method.
 Both methods, `inc()` and `dec()`, call the `resize()` method with a `+1` or `-1`, which in turn raises the `sizeChange` event with the new size value.
 
-`sizerComponent` 模板有两个按钮，分别将 click 事件绑定到 `inc()` 和 `dec()` 方法。当用户单击按钮之一时， `sizerComponent` 调用相应的方法。 `inc()` 和 `dec()` 这两个方法分别使用 `+1` 或 `-1` 调用 `resize()` 方法，它使用新的 size 值引发 `sizeChange` 事件。
+`sizerComponent` 模板有两个按钮，分别将 click 事件绑定到 `inc()` 和 `dec()` 方法。当用户单击按钮之一时，`sizerComponent` 调用相应的方法。`inc()` 和 `dec()` 这两个方法分别使用 `+1` 或 `-1` 调用 `resize()` 方法，它使用新的 size 值引发 `sizeChange` 事件。
 
 <code-example header="src/app/sizer.component.html" path="two-way-binding/src/app/sizer/sizer.component.html"></code-example>
 
 In the `AppComponent` template, `fontSizePx` is two-way bound to the `SizerComponent`.
 
-在 `AppComponent` 模板中， `fontSizePx` 被双向绑定到 `SizerComponent` 。
+在 `AppComponent` 模板中，`fontSizePx` 被双向绑定到 `SizerComponent`。
 
 <code-example header="src/app/app.component.html" path="two-way-binding/src/app/app.component.html" region="two-way-1"></code-example>
 
@@ -121,12 +121,12 @@ Angular assigns the `$event` value to the `AppComponent.fontSizePx` when the use
 
 <header>Two-way binding in forms</header>
 
-  <header>表单中的双向绑定</header>
+<header>表单中的双向绑定</header>
 
 Because no built-in HTML element follows the `x` value and `xChange` event pattern, two-way binding with form elements requires `NgModel`.
 For more information on how to use two-way binding in forms, see Angular [NgModel](guide/built-in-directives#ngModel).
 
-因为没有任何原生 HTML 元素遵循了 `x` 值和 `xChange` 事件的命名模式，所以与表单元素进行双向绑定需要使用 `NgModel`。关于如何在表单中使用双向绑定的更多信息，请参见 Angular [NgModel](guide/built-in-directives#ngModel) 。
+因为没有任何原生 HTML 元素遵循了 `x` 值和 `xChange` 事件的命名模式，所以与表单元素进行双向绑定需要使用 `NgModel`。关于如何在表单中使用双向绑定的更多信息，请参见 Angular [NgModel](guide/built-in-directives#ngModel)。
 
 </div>
 

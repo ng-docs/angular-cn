@@ -10,7 +10,7 @@ You can test [pipes](guide/pipes) without the Angular testing utilities.
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
-  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -22,12 +22,12 @@ A pipe class has one method, `transform`, that manipulates the input value into 
 The `transform` implementation rarely interacts with the DOM.
 Most pipes have no dependence on Angular other than the `@Pipe` metadata and an interface.
 
-这个管道类有一个方法 `transform` ，它把输入值变成一个转换后的输出值。 `transform` 的实现很少会与 DOM 交互。除了 `@Pipe` 元数据和一个接口之外，大多数管道都不依赖于 Angular。
+这个管道类有一个方法 `transform`，它把输入值变成一个转换后的输出值。`transform` 的实现很少会与 DOM 交互。除了 `@Pipe` 元数据和一个接口之外，大多数管道都不依赖于 Angular。
 
 Consider a `TitleCasePipe` that capitalizes the first letter of each word.
 Here's an implementation with a regular expression.
 
-考虑一个 `TitleCasePipe` ，它会把每个单词的第一个字母大写。这里是通过正则表达式实现的。
+考虑一个 `TitleCasePipe`，它会把每个单词的第一个字母大写。这里是通过正则表达式实现的。
 
 <code-example header="app/shared/title-case.pipe.ts" path="testing/src/app/shared/title-case.pipe.ts"></code-example>
 

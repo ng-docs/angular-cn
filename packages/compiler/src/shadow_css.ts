@@ -607,7 +607,7 @@ class SafeSelector {
    * Replaces all of the substrings that match a regex within a
    * special string (e.g. `__ph-0__`, `__ph-1__`, etc).
    *
-   * 替换特殊字符串中与正则表达式匹配的所有子字符串（例如 `__ph-0__` 0\_\_ 、 `__ph-1__` 等）。
+   * 替换特殊字符串中与正则表达式匹配的所有子字符串（例如 `__ph-0__` 0\_\_、`__ph-1__` 等）。
    *
    */
   private _escapeRegexMatches(content: string, pattern: RegExp): string {

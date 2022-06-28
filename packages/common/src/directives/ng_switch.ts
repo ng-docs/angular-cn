@@ -76,7 +76,7 @@ export class SwitchView {
  * Within the container, `*ngSwitchCase` statements specify the match expressions
  * as attributes. Include `*ngSwitchDefault` as the final case.
  *
- * 在容器内， `*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault`
+ * 在容器内，`*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault`
  * 作为最后一种情况。
  *
  * ```
@@ -201,7 +201,7 @@ export class NgSwitch {
  * Within a switch container, `*ngSwitchCase` statements specify the match expressions
  * as attributes. Include `*ngSwitchDefault` as the final case.
  *
- * 在开关容器中， `*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault`
+ * 在开关容器中，`*ngSwitchCase` 语句将匹配表达式指定为属性。包括用 `*ngSwitchDefault`
  * 作为最后一种情况。
  *
  * ```

@@ -1,5 +1,5 @@
-import {Component, ElementRef, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 import {ElementsLoader} from 'app/custom-elements/elements-loader';
 import {DocumentContents, FETCHING_ERROR_ID, FILE_NOT_FOUND_ID} from 'app/documents/document.service';
 import {Logger} from 'app/shared/logger.service';

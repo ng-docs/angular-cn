@@ -13,7 +13,7 @@ This tutorial introduces you to the essentials of Angular by walking you through
 To help you get started right away, this tutorial uses a ready-made application that you can examine and modify interactively on [StackBlitz](https://stackblitz.com) —without having to [set up a local work environment](guide/setup-local "Setup guide").
 StackBlitz is a browser-based development environment where you can create, save, and share projects using a variety of technologies.
 
-为了帮助你更好地起步，本教程提供了一个已完成的应用，你可以在 [Stackblitz](https://stackblitz.com) 上试验及互动，而不用[建立本地开发环境](guide/setup-local "Setup guide")。 StackBlitz 是一个基于浏览器的开发环境，你可以在其中使用各种技术来创建、保存和共享项目。
+为了帮助你更好地起步，本教程提供了一个已完成的应用，你可以在 [Stackblitz](https://stackblitz.com) 上试验及互动，而不用[建立本地开发环境](guide/setup-local "Setup guide")。StackBlitz 是一个基于浏览器的开发环境，你可以在其中使用各种技术来创建、保存和共享项目。
 
 ## Prerequisites
 
@@ -25,13 +25,9 @@ To get the most out of this tutorial you should already have a basic understandi
 
 * [HTML](https://developer.mozilla.org/docs/Learn/HTML "Learning HTML: Guides and tutorials")
 
-  [HTML](https://developer.mozilla.org/docs/Learn/HTML "学习 HTML：指南和教程")
-
 * [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript "JavaScript")
 
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language")
-
-  [打字稿](https://www.typescriptlang.org/ "TypeScript 语言")
 
 <a id="components"></a>
 
@@ -52,11 +48,11 @@ A component consists of three things:
 | :-- | :------ |
 |  | 详情 |
 | A component class | Handles data and functionality. |
-| 组件类 | 处理数据和功能。 |
+| 组件类 | 处理数据和功能。|
 | An HTML template | Determines the UI. |
-| HTML 模板 | 决定 UI。 |
+| HTML 模板 | 决定 UI。|
 | Component-specific styles | Define the look and feel. |
-| 组件专属样式 | 定义外观和感觉。 |
+| 组件专属样式 | 定义外观和感觉。|
 
 This guide demonstrates building an application with the following components.
 
@@ -66,13 +62,13 @@ This guide demonstrates building an application with the following components.
 | :--------- | :------ |
 | 组件 | 详情 |
 | `<app-root>` | The first component to load and the container for the other components. |
-| `<app-root>` | 第一个加载的组件，并且是其他组件的容器。 |
+| `<app-root>` | 第一个加载的组件，并且是其他组件的容器。|
 | `<app-top-bar>` | The store name and checkout button. |
-| `<app-top-bar>` | 商店名称和结帐按钮。 |
+| `<app-top-bar>` | 商店名称和结帐按钮。|
 | `<app-product-list>` | The product list. |
-| `<app-product-list>` | 产品列表。 |
+| `<app-product-list>` | 产品列表。|
 | `<app-product-alerts>` | A component that contains the application's alerts. |
-| `<app-product-alerts>` | 包含应用中各种通知的组件。 |
+| `<app-product-alerts>` | 包含应用中各种通知的组件。|
 
 <div class="lightbox">
 
@@ -82,7 +78,7 @@ This guide demonstrates building an application with the following components.
 
 For more information about components, see [Introduction to Components](guide/architecture-components "Introduction to Components and Templates").
 
-有关组件的更多信息，请参见[组件简介](guide/architecture-components "组件和模板简介") 。
+有关组件的更多信息，请参见[组件简介](guide/architecture-components "组件和模板简介")。
 
 <a id="new-project"></a>
 
@@ -93,7 +89,7 @@ For more information about components, see [Introduction to Components](guide/ar
 To create the sample project, generate the <live-example name="getting-started-v0" noDownload>ready-made sample project in StackBlitz</live-example>.
 To save your work:
 
-要创建范例项目，请<live-example name="getting-started-v0" noDownload>在 StackBlitz 中生成一个预置的范例项目</live-example> 。要保存你的工作，请执行以下操作：
+要创建范例项目，请<live-example name="getting-started-v0" noDownload>在 StackBlitz 中生成一个预置的范例项目</live-example>。要保存你的工作，请执行以下操作：
 
 1. Log into StackBlitz.
 
@@ -351,7 +347,7 @@ This section walks you through creating a child component, `ProductAlertsCompone
 1. In the `ProductAlertsComponent` class definition, define a property named `product` with an `@Input()` decorator.
    The `@Input()` decorator indicates that the property value passes in from the component's parent, `ProductListComponent`.
 
-   在 `ProductAlertsComponent` 类定义中，使用 `@Input()` 装饰器定义一个名为 `product` 的属性。 `@Input()` 装饰器指出此属性值要从本组件的父组件 `ProductListComponent` 中传入。
+   在 `ProductAlertsComponent` 类定义中，使用 `@Input()` 装饰器定义一个名为 `product` 的属性。`@Input()` 装饰器指出此属性值要从本组件的父组件 `ProductListComponent` 中传入。
 
    <code-example header="src/app/product-alerts/product-alerts.component.ts" path="getting-started/src/app/product-alerts/product-alerts.component.1.ts" region="input-decorator"></code-example>
 
@@ -402,7 +398,7 @@ The `ProductAlertsComponent` needs to emit an event when the user clicks **Notif
 In new components, the Angular Generator includes an empty `constructor()`, the `OnInit` interface, and the `ngOnInit()` method.
 Since these steps don't use them, the following code examples omit them for brevity.
 
-在新建组件时，Angular 生成器会包含一个空的 `constructor()`、`OnInit` 接口和 `ngOnInit()` 方法。 由于这些步骤不会使用它们，下列范例代码中都省略了它们，以求简洁。
+在新建组件时，Angular 生成器会包含一个空的 `constructor()`、`OnInit` 接口和 `ngOnInit()` 方法。由于这些步骤不会使用它们，下列范例代码中都省略了它们，以求简洁。
 
 </div>
 

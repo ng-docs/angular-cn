@@ -164,7 +164,7 @@ export abstract class Expression {
    * Calculates whether this expression produces the same value as the given expression.
    * Note: We don't check Types nor ParseSourceSpans nor function arguments.
    *
-   * 计算此表达式是否生成与给定表达式相同的值。注意：我们不检查 Types 、 ParseSourceSpans
+   * 计算此表达式是否生成与给定表达式相同的值。注意：我们不检查 Types、ParseSourceSpans
    * 或函数参数。
    *
    */
@@ -516,7 +516,7 @@ export class PlaceholderPiece {
    *
    * @param text the name of this placeholder (e.g. `PH_1`).
    *
-   * 此占位符的名称（例如 `PH_1` ）。
+   * 此占位符的名称（例如 `PH_1`）。
    *
    * @param sourceSpan the location of this placeholder in its localized message the source code.
    *
@@ -1044,7 +1044,7 @@ export abstract class Statement {
    * Calculates whether this statement produces the same value as the given statement.
    * Note: We don't check Types nor ParseSourceSpans nor function arguments.
    *
-   * 计算此语句是否生成与给定语句相同的值。注意：我们不检查 Types 、 ParseSourceSpans 或函数参数。
+   * 计算此语句是否生成与给定语句相同的值。注意：我们不检查 Types、ParseSourceSpans 或函数参数。
    *
    */
   abstract isEquivalent(stmt: Statement): boolean;

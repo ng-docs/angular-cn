@@ -71,7 +71,7 @@ export interface FormControlOptions extends AbstractControlOptions {
  * implements most of the base functionality for accessing the value, validation status,
  * user interactions and events.
  *
- * 这是 Angular 表单的四个基本构建块之一，与 `FormGroup` 、 `FormArray` 和 `FormRecord` 。它扩展了
+ * 这是 Angular 表单的四个基本构建块之一，与 `FormGroup`、`FormArray` 和 `FormRecord` 。它扩展了
  * `AbstractControl` 类，该类实现了用于访问值、验证状态、用户交互和事件的大多数基础特性。
  *
  * `FormControl` takes a single generic argument, which describes the type of its value. This
@@ -220,7 +220,7 @@ export interface FormControlOptions extends AbstractControlOptions {
  * If you wish to always reset the control to its initial value (instead of null),
  * you can pass the `nonNullable` option:
  *
- * 如果你希望始终将控件重置为其初始值（而不是 null ），可以传递 `nonNullable` 选项：
+ * 如果你希望始终将控件重置为其初始值（而不是 null），可以传递 `nonNullable` 选项：
  *
  * ```
  * const control = new FormControl('Nancy', {nonNullable: true});
@@ -304,7 +304,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   observables emit events with the latest status and value when the control value is updated.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    * * `emitModelToViewChange`: When true or not supplied  (the default), each change triggers an
@@ -396,7 +396,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   observables emit events with the latest status and value when the control is reset.
    *   When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` 和 `valueChanges`
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    * 可观察对象会在控件重置时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -550,7 +550,7 @@ export interface ɵFormControlCtor {
    *
    * When passing an `options` argument, the `asyncValidator` argument has no effect.
    *
-   * 传递 `options` 参数时， `asyncValidator` 参数无效。
+   * 传递 `options` 参数时，`asyncValidator` 参数无效。
    *
    */
   new<T = any>(

@@ -26,18 +26,10 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  * 更新或错误处理的异步任务的工作时优化性能。可以通过 {@link #runOutsideAngular}
  * 启动此类任务，如果需要，这些任务可以通过 {@link #run} 重新进入 Angular zone。
  *
- * &lt;!-- TODO: add/fix links to:
- *
- * &lt;!-- TODO：添加/修复到：
- *
+ * <!-- TODO: add/fix links to:
  * - docs explaining zones and the use of zones in Angular and change-detection
- *
- *   解释区域以及在 Angular 和 change-detection 中使用区域的文档
- *
  * - link to runOutsideAngular/run (throughout this file!)
- *   \-->
- *
- *   指向 runOutsideAngular/run 的链接（在整个文件中！） -->
+ *   -->
  *
  * @usageNotes
  *
@@ -46,12 +38,9 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  * ### 例子
  *
  * ```
- * import {Component, NgZone} from '
- * ```
+ * import {Component, NgZone} from '@angular/core';
+ * import {NgIf} from '@angular/common';
  *
- * @angular /core';
- * import {NgIf} from '
- * @angular /common';
  * @Component ({
  *   selector: 'ng-zone-demo',
  *   template: `
@@ -103,6 +92,7 @@ import {getNativeRequestAnimationFrame} from '../util/raf';
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export class NgZone {
@@ -215,7 +205,7 @@ export class NgZone {
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * \#runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -241,7 +231,7 @@ export class NgZone {
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * \#runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -320,12 +310,12 @@ interface NgZonePrivate extends NgZone {
    * incorrect behavior.
    *
    * 一个标志，用于表明 NgZone 当前是否在 checkStable
-   * 中并防止重新进入。需要该标志，因为有可能从更改检测中调用更改检测导致不正确的行为。
+   * 中并防止重新进入。需要该标志，因为有可能从变更检测中调用变更检测导致不正确的行为。
    *
    * For detail, please refer here,
    * <https://github.com/angular/angular/pull/40540>
    *
-   * 有关详细信息，请参阅这里， <https://github.com/angular/angular/pull/40540>
+   * 有关详细信息，请参阅这里，<https://github.com/angular/angular/pull/40540>
    *
    */
   isCheckStableRunning: boolean;
@@ -334,10 +324,10 @@ interface NgZonePrivate extends NgZone {
    * Optionally specify coalescing event change detections or not.
    * Consider the following case.
    *
-   * （可选）指定或不指定合并事件更改检测。考虑以下情况。
+   *（可选）指定或不指定合并事件变更检测。考虑以下情况。
    *
-   * &lt;div (click)="doSomething()">
-   *   &lt;button (click)="doSomethingElse()"></button>
+   * <div (click)="doSomething()">
+   *   <button (click)="doSomethingElse()"></button>
    *
    * </div>
    *
@@ -347,7 +337,7 @@ interface NgZonePrivate extends NgZone {
    * change detection only once.
    *
    * 单击按钮时，由于事件冒泡，将调用两个事件处理程序，并触发 2
-   * 次更改检测。我们可以合并此类事件以仅触发更改检测一次。
+   * 次变更检测。我们可以合并此类事件以仅触发变更检测一次。
    *
    * By default, this option will be false. So the events will not be
    * coalesced and the change detection will be triggered multiple times.
@@ -356,8 +346,8 @@ interface NgZonePrivate extends NgZone {
    * the change detection will only be trigged once.
    *
    * 默认情况下，此选项将是 false
-   * 。因此，事件将不会被合并，并且更改检测将被触发多次。如果此选项设置为
-   * true，则更改检测将通过在动画帧中调度来异步触发。因此在上面的情况下，更改检测将只会被触发一次。
+   * 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为
+   * true，则变更检测将通过在动画帧中调度来异步触发。因此在上面的情况下，变更检测将只会被触发一次。
    *
    */
   shouldCoalesceEventChangeDetection: boolean;
@@ -365,7 +355,7 @@ interface NgZonePrivate extends NgZone {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
-   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个更改检测。
+   *（可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
    *
    * Consider the following case.
    *
@@ -383,8 +373,8 @@ interface NgZonePrivate extends NgZone {
    * With ngZoneRunCoalescing options, all change detections in an event loops trigger only once.
    * In addition, the change detection executes in requestAnimation.
    *
-   * 这种情况会多次触发更改检测。使用 ngZoneRunCoalescing
-   * 选项，事件循环中的所有更改检测只会触发一次。此外，更改检测是在 requestAnimation 中执行的。
+   * 这种情况会多次触发变更检测。使用 ngZoneRunCoalescing
+   * 选项，事件循环中的所有变更检测只会触发一次。此外，变更检测是在 requestAnimation 中执行的。
    *
    */
   shouldCoalesceRunChangeDetection: boolean;

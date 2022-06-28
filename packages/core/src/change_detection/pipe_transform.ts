@@ -19,7 +19,7 @@
  *
  * In the following example, `TruncatePipe` returns the shortened value with an added ellipses.
  *
- * 在以下示例中， `TruncatePipe` 会返回添加了省略号的缩短值。
+ * 在以下示例中，`TruncatePipe` 会返回添加了省略号的缩短值。
  *
  * <code-example path="core/ts/pipes/simple_truncate.ts" header="simple_truncate.ts"></code-example>
  *
@@ -31,7 +31,7 @@
  * In the following example, `TruncatePipe` takes parameters that sets the truncated length and the
  * string to append with.
  *
- * 在以下示例中， `TruncatePipe` 接受设置截断长度的参数和要附加的字符串。
+ * 在以下示例中，`TruncatePipe` 接受设置截断长度的参数和要附加的字符串。
  *
  * <code-example path="core/ts/pipes/truncate.ts" header="truncate.ts"></code-example>
  *

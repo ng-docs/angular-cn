@@ -1,6 +1,6 @@
 # Work with translation files
 
-# 处理翻译文件
+# 使用翻译文件
 
 After you prepare a component for translation, use the [`extract-i18n`][AioCliExtractI18n] [Angular CLI][AioCliMain] command to extract the marked text in the component into a *source language* file.
 
@@ -284,17 +284,17 @@ The following actions describe the translation process for French.
 
    打开 `messages.fr.xlf` 并找到第一个 `<trans-unit>` 元素。这是一个*翻译单元*，也称为*文本节点*，表示之前用 `i18n` 属性标记的 `<h1>` 问候标签的翻译。
 
-   <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello-before"></code-example>
+   <code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello-before"></code-example>
 
    The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
 
-   `id="introductionHeader"` 是[自定义 ID][AioGuideI18nOptionalManageMarkedText] ，但没有源 HTML 中所需的 `@@` 前缀。
+   `id="introductionHeader"` 是[自定义 ID][AioGuideI18nOptionalManageMarkedText]，但没有源 HTML 中所需的 `@@` 前缀。
 
 1. Duplicate the `<source>... </source>` element in the text node, rename it to `target`, and then replace the content with the French text.
 
-   复制文本节点中的 `<source>...</source>` 元素，将其重命名为 `target` ，然后将内容替换为法语文本。
+   复制文本节点中的 `<source>...</source>` 元素，将其重命名为 `target`，然后将内容替换为法语文本。
 
-   <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;, after translation)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello"></code-example>
+   <code-example header="src/locale/messages.fr.xlf (trans-unit, after translation)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-hello"></code-example>
 
    In a more complex translation, the information and context in the [description and meaning elements][AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings] help you choose the right words for translation.
 
@@ -305,7 +305,7 @@ The following actions describe the translation process for French.
 
    翻译其他文本节点。以下示例显示了翻译方式。
 
-   <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-other-nodes"></code-example>
+   <code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-other-nodes"></code-example>
 
    <div class="alert is-important">
 
@@ -314,7 +314,7 @@ The following actions describe the translation process for French.
    If you change either the text or the meaning, then the `id` attribute changes.
    For more about managing text updates and IDs, see [custom IDs][AioGuideI18nOptionalManageMarkedText].
 
-    不要更改这些翻译单元的 ID。每个 `id` 属性由 Angular 生成，它取决于组件文本的内容和所指定的含义。如果你更改了文本或含义，则 `id` 属性就会更改。有关管理文本更新和 ID 的更多信息，请参阅 [自定义 ID][AioGuideI18nOptionalManageMarkedText]。
+   不要更改这些翻译单元的 ID。每个 `id` 属性由 Angular 生成，它取决于组件文本的内容和所指定的含义。如果你更改了文本或含义，则 `id` 属性就会更改。有关管理文本更新和 ID 的更多信息，请参阅 [自定义 ID][AioGuideI18nOptionalManageMarkedText]。
 
    </div>
 
@@ -340,7 +340,7 @@ For language plural rules, see [CLDR plural rules][GithubUnicodeOrgCldrStagingCh
 
 To translate a `plural`, translate the ICU format match values.
 
-要翻译 `plural` ，就要翻译 ICU 格式的匹配值。
+要翻译 `plural`，就要翻译 ICU 格式的匹配值。
 
 * `just now`
 
@@ -352,7 +352,7 @@ The following example displays the way to translate.
 
 以下示例显示了翻译方式。
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-plural"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-plural"></code-example>
 
 ## Translate alternate expressions
 
@@ -375,9 +375,9 @@ The following example displays a `select` ICU expression in the component templa
 In this example, Angular extracts the expression into two translation units.
 The first contains the text outside of the `select` clause, and uses a placeholder for `select` (`<x id="ICU">`):
 
-在这个例子中，Angular 将表达式提取到两个翻译单元中。第一个包含 `select` 子句之外的文本，并为 `select` 使用占位符（ `<x id="ICU">` ）：
+在这个例子中，Angular 将表达式提取到两个翻译单元中。第一个包含 `select` 子句之外的文本，并为 `select` 使用占位符（`<x id="ICU">`）：
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-select-1"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-select-1"></code-example>
 
 <div class="alert is-important">
 
@@ -392,13 +392,13 @@ The following example displays the second translation unit that contains the `se
 
 以下示例显示包含 `select` 子句的第二个翻译单元。
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-select-2"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-select-2"></code-example>
 
 The following example displays both translation units after translation is complete.
 
 以下示例显示了翻译完的两个翻译单元。
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-select"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translated-select"></code-example>
 
 ## Translate nested expressions
 
@@ -407,7 +407,7 @@ The following example displays both translation units after translation is compl
 Angular treats a nested expression in the same manner as an alternate expression.
 Angular extracts the expression into two translation units.
 
-Angular 按照与替代表达式相同的方式处理嵌套表达式。 Angular 会将表达式提取到两个翻译单元中。
+Angular 按照与替代表达式相同的方式处理嵌套表达式。Angular 会将表达式提取到两个翻译单元中。
 
 ### Nested `plural` example
 
@@ -417,19 +417,19 @@ The following example displays the first translation unit that contains the text
 
 以下示例显示包含嵌套表达式之外的文本的第一个翻译单元。
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-nested-1"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-nested-1"></code-example>
 
 The following example displays the second translation unit that contains the complete nested expression.
 
 以下示例展示了包含完整嵌套表达式的第二个翻译单元。
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-nested-2"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-nested-2"></code-example>
 
 The following example displays both translation units after translating.
 
 以下示例会在翻译后显示两个翻译单元。
 
-<code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-nested"></code-example>
+<code-example header="src/locale/messages.fr.xlf (trans-unit)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-nested"></code-example>
 
 ## What's next
 

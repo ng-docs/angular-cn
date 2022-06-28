@@ -47,7 +47,7 @@ import {UrlTree} from '../url_tree';
  * Multiple static segments can be merged into one term and combined with dynamic segments.
  * For example, `['/team/11/user', userName, {details: true}]`
  *
- * 多个静态段可以合并为一个词，并与动态段组合。比如， `['/team/11/user', userName, {details: true}]`
+ * 多个静态段可以合并为一个词，并与动态段组合。比如，`['/team/11/user', userName, {details: true}]`
  *
  * The input that you provide to the link is treated as a delta to the current URL.
  * For instance, suppose the current URL is `/user/(box//aux:team)`.
@@ -260,10 +260,8 @@ export class RouterLink implements OnChanges {
    * } 。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
    * `undefined` 值将使用 `routerLink` 默认值。
    *
-   * @see {
-   * @link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
-   * @see {
-   * @link Router#createUrlTree Router#createUrlTree}
+   * @see {@link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
+   * @see {@link Router#createUrlTree Router#createUrlTree}
    */
   @Input() relativeTo?: ActivatedRoute|null;
 
@@ -323,8 +321,7 @@ export class RouterLink implements OnChanges {
    *
    *   **null | undefined** ：空命令数组的简写，即 `[]`
    *
-   * @see {
-   * @link Router#createUrlTree Router#createUrlTree}
+   * @see {@link Router#createUrlTree Router#createUrlTree}
    */
   @Input()
   set routerLink(commands: any[]|string|null|undefined) {
@@ -475,10 +472,8 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    * } 。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
    * `undefined` 值将使用 `routerLink` 默认值。
    *
-   * @see {
-   * @link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
-   * @see {
-   * @link Router#createUrlTree Router#createUrlTree}
+   * @see {@link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
+   * @see {@link Router#createUrlTree Router#createUrlTree}
    */
   @Input() relativeTo?: ActivatedRoute|null;
 
@@ -520,8 +515,7 @@ export class RouterLinkWithHref implements OnChanges, OnDestroy {
    *
    *   **null | undefined** ：空命令数组的简写，即 `[]`
    *
-   * @see {
-   * @link Router#createUrlTree Router#createUrlTree}
+   * @see {@link Router#createUrlTree Router#createUrlTree}
    */
   @Input()
   set routerLink(commands: any[]|string|null|undefined) {

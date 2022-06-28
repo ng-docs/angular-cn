@@ -104,7 +104,7 @@ export class TestRequest {
   /**
    * Resolve the request by returning an `ErrorEvent` (e.g. simulating a network failure).
    *
-   * 通过返回 `ErrorEvent` （比如，模拟网络故障）来解决请求。
+   * 通过返回 `ErrorEvent`（比如，模拟网络故障）来解决请求。
    *
    * @deprecated
    *

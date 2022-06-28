@@ -17,7 +17,7 @@ See the <live-example name="template-syntax">Template syntax</live-example> for 
 
 In the following example, the template statement `deleteHero()` appears in quotes to the right of the equals sign `=` character as in `(event)="statement"`.
 
-在以下示例中，模板语句 `deleteHero()` 出现在 `=` 号右侧的引号中，`(event)="statement"` 。
+在以下示例中，模板语句 `deleteHero()` 出现在 `=` 号右侧的引号中，`(event)="statement"`。
 
 <code-example header="src/app/app.component.html" path="template-syntax/src/app/app.component.html" region="context-component-statement"></code-example>
 
@@ -89,13 +89,13 @@ The statement context may also refer to properties of the template's own context
 In the following example, the component's event handling method, `onSave()` takes the template's own `$event` object as an argument.
 On the next two lines, the `deleteHero()` method takes a [template input variable](guide/structural-directives#shorthand), `hero`, and `onSubmit()` takes a [template reference variable](guide/template-reference-variables), `#heroForm`.
 
-语句上下文还可以引用模板自身的上下文属性。在下面的示例中，组件的事件处理方法 `onSave()` 将模板自己的 `$event` 对象用作参数。在接下来的两行中， `deleteHero()` 方法接收了[模板输入变量](guide/structural-directives#shorthand) `hero` 作为参数，而 `onSubmit()` 接收了[模板引用变量](guide/template-reference-variables) `#heroForm` 作为参数。
+语句上下文还可以引用模板自身的上下文属性。在下面的示例中，组件的事件处理方法 `onSave()` 将模板自己的 `$event` 对象用作参数。在接下来的两行中，`deleteHero()` 方法接收了[模板输入变量](guide/structural-directives#shorthand) `hero` 作为参数，而 `onSubmit()` 接收了[模板引用变量](guide/template-reference-variables) `#heroForm` 作为参数。
 
 <code-example header="src/app/app.component.html" path="template-syntax/src/app/app.component.html" region="context-var-statement"></code-example>
 
 In this example, the context of the `$event` object, `hero`, and `#heroForm` is the template.
 
-在这个例子中， `$event` 对象、`hero` 和 `#heroForm` 的上下文都是其模板。
+在这个例子中，`$event` 对象、`hero` 和 `#heroForm` 的上下文都是其模板。
 
 Template context names take precedence over component context names.
 In the preceding `deleteHero(hero)`, the `hero` is the template input variable, not the component's `hero` property.
@@ -110,9 +110,9 @@ In the preceding `deleteHero(hero)`, the `hero` is the template input variable, 
 | :-------- | :------ |
 | 实践 | 详情 |
 | Conciseness | Use method calls or basic property assignments to keep template statements minimal. |
-| 简明 | 使用方法调用或基本属性赋值，来让模板语句保持最小化。 |
+| 简明 | 使用方法调用或基本属性赋值，来让模板语句保持最小化。|
 | Work within the context | The context of a template statement can be the component class instance or the template. Because of this, template statements cannot refer to anything in the global namespace such as `window` or `document`. For example, template statements can't call `console.log()` or `Math.max()`. |
-| 在上下文中工作 | 模板语句的上下文可以是组件类实例或模板。因此，模板语句无法引用全局名称空间中的任何内容，比如 `window` 或 `document`。比如，模板语句不能调用 `console.log()` 或 `Math.max()` 。 |
+| 在上下文中工作 | 模板语句的上下文可以是组件类实例或模板。因此，模板语句无法引用全局名称空间中的任何内容，比如 `window` 或 `document`。比如，模板语句不能调用 `console.log()` 或 `Math.max()`。|
 
 <!-- links -->
 

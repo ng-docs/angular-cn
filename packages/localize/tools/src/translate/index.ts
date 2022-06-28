@@ -46,7 +46,7 @@ export interface TranslateFilesOptions {
    * Each element is either an absolute path to the translation file, or an array of absolute paths
    * to translation files, for that locale.
    *
-   * 对于每个要翻译的区域设置， `translationFilePaths`
+   * 对于每个要翻译的区域设置，`translationFilePaths`
    * 中应该有一个元素。对于该区域设置，每个元素都是翻译文件的绝对路径，或者是翻译文件的绝对路径数组。
    *
    * If the element contains more than one translation file, then the translations are merged.

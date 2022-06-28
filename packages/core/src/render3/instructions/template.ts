@@ -50,7 +50,7 @@ function templateFirstCreatePass(
 /**
  * Creates an LContainer for an ng-template (dynamically-inserted view), e.g.
  *
- * 为 ng-template （动态插入的视图）创建一个 LContainer，例如
+ * 为 ng-template（动态插入的视图）创建一个 LContainer，例如
  *
  * &lt;ng-template #foo>
  *

@@ -39,7 +39,7 @@ let moduleUid = 0;
  * specific routes and only instantiate the Angular modules if/when the user visits one of these
  * routes.
  *
- * 它允许延迟加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
+ * 它允许惰性加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
  * 应用程序，将 Angular 用于特定路由，并且只有在/当用户访问这些路由之一时才实例化 Angular 模块。
  *
  * The Angular module will be bootstrapped once (when requested for the first time) and the same
@@ -49,7 +49,7 @@ let moduleUid = 0;
  *
  * `downgradeModule()` requires either an `NgModuleFactory`, `NgModule` class or a function:
  *
- * `downgradeModule()` 需要 `NgModuleFactory` 、 `NgModule` 类或函数：
+ * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
  *   using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
@@ -80,12 +80,11 @@ let moduleUid = 0;
  * `downgradeModule()` 会返回创建的 AngularJS 包装器模块的名称。你可以用它在主 AngularJS
  * 模块中声明依赖项。
  *
- * {
- *
- * @example upgrade/static/ts/lite/module.ts region="basic-how-to"}
+ * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
  *
  * For more details on how to use `downgradeModule()` see
  * [Upgrading for Performance](guide/upgrade-performance).
+ *
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
@@ -113,20 +112,20 @@ let moduleUid = 0;
  * Besides their different API, there are two important internal differences between
  * `downgradeModule()` and `UpgradeModule` that affect the behavior of hybrid applications:
  *
- * 除了它们不同的 API 之外， `downgradeModule()` 和 `UpgradeModule`
+ * 除了它们不同的 API 之外，`downgradeModule()` 和 `UpgradeModule`
  * 之间还有两个重要的内部区别会影响混合应用程序的行为：
  *
  * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main AngularJS module
  *    inside the {@link NgZone Angular zone}.
  *
- *    与 `UpgradeModule` 不同， `downgradeModule()` 不会引导 {@link NgZone Angular zone} 中的主
+ *    与 `UpgradeModule` 不同，`downgradeModule()` 不会引导 {@link NgZone Angular zone} 中的主
  * AngularJS 模块。
  *
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
  *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
  *    detected in the Angular part of the application.
  *
- *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时， `downgradeModule()`
+ *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
  * 不会自动运行[$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
@@ -134,7 +133,7 @@ let moduleUid = 0;
  * This will inevitably result in more change detection runs than necessary.
  *
  * 这意味着使用 `UpgradeModule`
- * 的应用程序将更频繁地运行更改检测，以确保这两个框架都得到有关可能的更改的正确通知。这将不可避免地导致比必要的变更检测运行更多。
+ * 的应用程序将更频繁地运行变更检测，以确保这两个框架都得到有关可能的更改的正确通知。这将不可避免地导致比必要的变更检测运行更多。
  *
  * `downgradeModule()`, on the other side, does not try to tie the two change detection systems as
  * tightly, restricting the explicit change detection runs only to cases where it knows it is
@@ -142,8 +141,8 @@ let moduleUid = 0;
  * especially in change-detection-heavy applications, but leaves it up to the developer to manually
  * notify each framework as needed.
  *
- * 另一方面， `downgradeModule()`
- * 不会尝试将两个更改检测系统紧密联系起来，而是将显式更改检测限制仅在它知道有必要的情况下运行（例如，当降级组件的输入更改时）。这提高了性能，尤其是在需要更改检测的应用程序中，但让开发人员根据需要手动通知每个框架。
+ * 另一方面，`downgradeModule()`
+ * 不会尝试将两个变更检测系统紧密联系起来，而是将显式变更检测限制仅在它知道有必要的情况下运行（例如，当降级组件的输入更改时）。这提高了性能，尤其是在需要变更检测的应用程序中，但让开发人员根据需要手动通知每个框架。
  *
  * For a more detailed discussion of the differences and their implications, see
  * [Upgrading for Performance](guide/upgrade-performance).
@@ -157,12 +156,12 @@ let moduleUid = 0;
  *   [$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest).
  *
  * 你可以用[scope.$apply(…)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply)或[$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)手动触发
- * AngularJS 中运行的更改检测。
+ * AngularJS 中运行的变更检测。
  *
  *   You can manually trigger a change detection run in Angular using {@link NgZone#run
  *   ngZone.run(...)}.
  *
- * 你可以用 {@link NgZone#run ngZone.run(…)} 手动触发 Angular 中运行的更改检测。
+ * 你可以用 {@link NgZone#run ngZone.run(…)} 手动触发 Angular 中运行的变更检测。
  *
  * </div>
  *
@@ -192,7 +191,7 @@ let moduleUid = 0;
  *   `platformBrowserDynamic`).
  *
  *   如果你希望在所有降级模块之间共享某些注入器，可以在创建 `PlatformRef` 时将它们作为
- * `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic` ）。
+ * `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
  *
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
  *   {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
@@ -206,11 +205,10 @@ let moduleUid = 0;
  * PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
  * 引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
  * 中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
- * ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
+ *）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
  *
- *   {
+ *   { @example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  *
- * @example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  * @publicApi
  */
 export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
@@ -235,7 +233,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * specific routes and only instantiate the Angular modules if/when the user visits one of these
  * routes.
  *
- * 它允许延迟加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
+ * 它允许惰性加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
  * 应用程序，将 Angular 用于特定路由，并且只有在/当用户访问这些路由之一时才实例化 Angular 模块。
  *
  * The Angular module will be bootstrapped once (when requested for the first time) and the same
@@ -245,7 +243,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *
  * `downgradeModule()` requires either an `NgModuleFactory`, `NgModule` class or a function:
  *
- * `downgradeModule()` 需要 `NgModuleFactory` 、 `NgModule` 类或函数：
+ * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
  *   using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
@@ -276,12 +274,11 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * `downgradeModule()` 会返回创建的 AngularJS 包装器模块的名称。你可以用它在主 AngularJS
  * 模块中声明依赖项。
  *
- * {
- *
- * @example upgrade/static/ts/lite/module.ts region="basic-how-to"}
+ * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
  *
  * For more details on how to use `downgradeModule()` see
  * [Upgrading for Performance](guide/upgrade-performance).
+ *
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
@@ -309,20 +306,20 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * Besides their different API, there are two important internal differences between
  * `downgradeModule()` and `UpgradeModule` that affect the behavior of hybrid applications:
  *
- * 除了它们不同的 API 之外， `downgradeModule()` 和 `UpgradeModule`
+ * 除了它们不同的 API 之外，`downgradeModule()` 和 `UpgradeModule`
  * 之间还有两个重要的内部区别会影响混合应用程序的行为：
  *
  * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main AngularJS module
  *    inside the {@link NgZone Angular zone}.
  *
- *    与 `UpgradeModule` 不同， `downgradeModule()` 不会引导 {@link NgZone Angular zone} 中的主
+ *    与 `UpgradeModule` 不同，`downgradeModule()` 不会引导 {@link NgZone Angular zone} 中的主
  * AngularJS 模块。
  *
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
  *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
  *    detected in the Angular part of the application.
  *
- *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时， `downgradeModule()`
+ *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
  * 不会自动运行[$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
@@ -330,7 +327,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * This will inevitably result in more change detection runs than necessary.
  *
  * 这意味着使用 `UpgradeModule`
- * 的应用程序将更频繁地运行更改检测，以确保这两个框架都得到有关可能的更改的正确通知。这将不可避免地导致比必要的变更检测运行更多。
+ * 的应用程序将更频繁地运行变更检测，以确保这两个框架都得到有关可能的更改的正确通知。这将不可避免地导致比必要的变更检测运行更多。
  *
  * `downgradeModule()`, on the other side, does not try to tie the two change detection systems as
  * tightly, restricting the explicit change detection runs only to cases where it knows it is
@@ -338,8 +335,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * especially in change-detection-heavy applications, but leaves it up to the developer to manually
  * notify each framework as needed.
  *
- * 另一方面， `downgradeModule()`
- * 不会尝试将两个更改检测系统紧密联系起来，而是将显式更改检测限制仅在它知道有必要的情况下运行（例如，当降级组件的输入更改时）。这提高了性能，尤其是在需要更改检测的应用程序中，但让开发人员根据需要手动通知每个框架。
+ * 另一方面，`downgradeModule()`
+ * 不会尝试将两个变更检测系统紧密联系起来，而是将显式变更检测限制仅在它知道有必要的情况下运行（例如，当降级组件的输入更改时）。这提高了性能，尤其是在需要变更检测的应用程序中，但让开发人员根据需要手动通知每个框架。
  *
  * For a more detailed discussion of the differences and their implications, see
  * [Upgrading for Performance](guide/upgrade-performance).
@@ -353,12 +350,12 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   [$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest).
  *
  * 你可以用[scope.$apply(…)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply)或[$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)手动触发
- * AngularJS 中运行的更改检测。
+ * AngularJS 中运行的变更检测。
  *
  *   You can manually trigger a change detection run in Angular using {@link NgZone#run
  *   ngZone.run(...)}.
  *
- * 你可以用 {@link NgZone#run ngZone.run(…)} 手动触发 Angular 中运行的更改检测。
+ * 你可以用 {@link NgZone#run ngZone.run(…)} 手动触发 Angular 中运行的变更检测。
  *
  * </div>
  *
@@ -388,7 +385,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   `platformBrowserDynamic`).
  *
  *   如果你希望在所有降级模块之间共享某些注入器，可以在创建 `PlatformRef` 时将它们作为
- * `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic` ）。
+ * `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
  *
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
  *   {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
@@ -402,11 +399,10 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
  * 引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
  * 中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
- * ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
+ *）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
  *
- *   {
+ *   { @example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  *
- * @example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  * @publicApi
  * @deprecated
  *
@@ -437,7 +433,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * specific routes and only instantiate the Angular modules if/when the user visits one of these
  * routes.
  *
- * 它允许延迟加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
+ * 它允许惰性加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
  * 应用程序，将 Angular 用于特定路由，并且只有在/当用户访问这些路由之一时才实例化 Angular 模块。
  *
  * The Angular module will be bootstrapped once (when requested for the first time) and the same
@@ -447,7 +443,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *
  * `downgradeModule()` requires either an `NgModuleFactory`, `NgModule` class or a function:
  *
- * `downgradeModule()` 需要 `NgModuleFactory` 、 `NgModule` 类或函数：
+ * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
  *   using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
@@ -478,9 +474,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * `downgradeModule()` 会返回创建的 AngularJS 包装器模块的名称。你可以用它在主 AngularJS
  * 模块中声明依赖项。
  *
- * {
- *
- * @example upgrade/static/ts/lite/module.ts region="basic-how-to"}
+ * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
  *
  * For more details on how to use `downgradeModule()` see
  * [Upgrading for Performance](guide/upgrade-performance).
@@ -511,20 +505,20 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * Besides their different API, there are two important internal differences between
  * `downgradeModule()` and `UpgradeModule` that affect the behavior of hybrid applications:
  *
- * 除了它们不同的 API 之外， `downgradeModule()` 和 `UpgradeModule`
+ * 除了它们不同的 API 之外，`downgradeModule()` 和 `UpgradeModule`
  * 之间还有两个重要的内部区别会影响混合应用程序的行为：
  *
  * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main AngularJS module
  *    inside the {@link NgZone Angular zone}.
  *
- *    与 `UpgradeModule` 不同， `downgradeModule()` 不会引导 {@link NgZone Angular zone} 中的主
+ *    与 `UpgradeModule` 不同，`downgradeModule()` 不会引导 {@link NgZone Angular zone} 中的主
  * AngularJS 模块。
  *
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
  *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
  *    detected in the Angular part of the application.
  *
- *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时， `downgradeModule()`
+ *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
  * 不会自动运行[$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
@@ -532,7 +526,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * This will inevitably result in more change detection runs than necessary.
  *
  * 这意味着使用 `UpgradeModule`
- * 的应用程序将更频繁地运行更改检测，以确保这两个框架都得到有关可能的更改的正确通知。这将不可避免地导致比必要的变更检测运行更多。
+ * 的应用程序将更频繁地运行变更检测，以确保这两个框架都得到有关可能的更改的正确通知。这将不可避免地导致比必要的变更检测运行更多。
  *
  * `downgradeModule()`, on the other side, does not try to tie the two change detection systems as
  * tightly, restricting the explicit change detection runs only to cases where it knows it is
@@ -540,8 +534,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * especially in change-detection-heavy applications, but leaves it up to the developer to manually
  * notify each framework as needed.
  *
- * 另一方面， `downgradeModule()`
- * 不会尝试将两个更改检测系统紧密联系起来，而是将显式更改检测限制仅在它知道有必要的情况下运行（例如，当降级组件的输入更改时）。这提高了性能，尤其是在需要大量更改检测的应用程序中，但让开发人员根据需要手动通知每个框架。
+ * 另一方面，`downgradeModule()`
+ * 不会尝试将两个变更检测系统紧密联系起来，而是将显式变更检测限制仅在它知道有必要的情况下运行（例如，当降级组件的输入更改时）。这提高了性能，尤其是在需要大量变更检测的应用程序中，但让开发人员根据需要手动通知每个框架。
  *
  * For a more detailed discussion of the differences and their implications, see
  * [Upgrading for Performance](guide/upgrade-performance).
@@ -555,12 +549,12 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   [$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest).
  *
  * 你可以用[scope.$apply(…)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply)或[$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)手动触发
- * AngularJS 中运行的更改检测。
+ * AngularJS 中运行的变更检测。
  *
  *   You can manually trigger a change detection run in Angular using {@link NgZone#run
  *   ngZone.run(...)}.
  *
- * 你可以用 {@link NgZone#run ngZone.run(…)} 手动触发 Angular 中运行的更改检测。
+ * 你可以用 {@link NgZone#run ngZone.run(…)} 手动触发 Angular 中运行的变更检测。
  *
  * </div>
  *
@@ -590,7 +584,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   `platformBrowserDynamic`).
  *
  *   如果你希望在所有降级模块之间共享某些注入器，可以在创建 `PlatformRef` 时将它们作为
- * `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic` ）。
+ * `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
  *
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
  *   {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
@@ -604,11 +598,10 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
  * 引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
  * 中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
- * ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
+ *）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
  *
- *   {
+ *   {@example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  *
- * @example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  * @publicApi
  */
 export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|NgModuleFactory<T>|(

@@ -34,7 +34,7 @@ import {NgccReflectionHost} from '../host/ngcc_host';
  *
  * 请注意，底层程序可以是多种不同的格式，例如 ES2015、ES5、UMD、CommonJS 等。这意味着 `Migration`
  * 的作者不应该尝试直接导航和操作 AST 节点。相反，传递给 `Migration` 的 `MigrationHost`
- * 接口提供对应该使用的 `MetadataReader` 、 `ReflectionHost` 和 `PartialEvaluator` 接口的访问。
+ * 接口提供对应该使用的 `MetadataReader`、`ReflectionHost` 和 `PartialEvaluator` 接口的访问。
  *
  */
 export interface Migration {

@@ -1,0 +1,18 @@
+{
+  "name": "version",
+  "command": "ng version",
+  "shortDescription": "Outputs Angular CLI version.",
+  "aliases": [
+    "v"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    }
+  ],
+  "shortDescriptionCn": "输出 Angular CLI 的版本。"
+}

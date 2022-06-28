@@ -146,7 +146,7 @@ export enum FormatWidth {
    * For `en-US`, `'MMM d, y, h:mm:ss a'`
    * (Example: `Jun 15, 2015, 9:03:01 AM`)
    *
-   * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（比如： `Jun 15, 2015, 9:03:01 AM` ）
+   * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（比如： `Jun 15, 2015, 9:03:01 AM`）
    *
    */
   Medium,
@@ -154,7 +154,7 @@ export enum FormatWidth {
    * For `en-US`, `'MMMM d, y, h:mm:ss a z'`
    * (Example: `June 15, 2015 at 9:03:01 AM GMT+1`)
    *
-   * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（比如： `June 15, 2015 at 9:03:01 AM GMT+1` ）
+   * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（比如： `June 15, 2015 at 9:03:01 AM GMT+1`）
    *
    */
   Long,
@@ -163,7 +163,7 @@ export enum FormatWidth {
    * (Example: `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00`)
    *
    * 对于 `en-US`，是 `'EEEE, MMMM d, y, h:mm:ss a zzzz'`（比如：`Monday, June 15, 2015 at 9:03:01
-   * AM GMT+01:00` ）
+   * AM GMT+01:00`）
    *
    */
   Full
@@ -286,7 +286,7 @@ export enum NumberSymbol {
    * Decimal separator for currency values (fallback to `Decimal`).
    * Example: $2,345.67
    *
-   * 货币值的小数分隔符（回退为 `Decimal` ）。比如：$2,345.67
+   * 货币值的小数分隔符（回退为 `Decimal`）。比如：$2,345.67
    *
    */
   CurrencyDecimal,
@@ -294,7 +294,7 @@ export enum NumberSymbol {
    * Group separator for currency values (fallback to `Group`).
    * Example: $2,345.67
    *
-   * 货币值的组分隔符（回退为 `Group` ）。比如：$2,345.67
+   * 货币值的组分隔符（回退为 `Group`）。比如：$2,345.67
    *
    */
   CurrencyGroup
@@ -330,7 +330,7 @@ export enum WeekDay {
  *
  * @returns The locale code. For example, `fr`.
  *
- * 语言环境代码。比如， `fr` 。
+ * 语言环境代码。比如，`fr` 。
  *
  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
  *

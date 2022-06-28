@@ -57,7 +57,7 @@ export class UmdRenderingFormatter extends Esm5RenderingFormatter {
    *
    * (See that the `z` import is not being used by the factory function.)
    *
-   * （请参阅工厂函数没有使用 `z` 导入。）
+   *（请参阅工厂函数没有使用 `z` 导入。）
    *
    */
   override addImports(output: MagicString, imports: Import[], file: ts.SourceFile): void {

@@ -32,7 +32,7 @@
  * Angular does this for us in each of the standard platforms (`Browser`, `Server`, and `WebWorker`)
  * by calling `setDocument()` when providing the `DOCUMENT` token.
  *
- * Angular 在每个标准平台（ `Browser` 、 `Server` 和 `WebWorker` ）中通过在提供 `DOCUMENT`
+ * Angular 在每个标准平台（`Browser`、`Server` 和 `WebWorker`）中通过在提供 `DOCUMENT`
  * 标记时调用 `setDocument()` 来为我们完成此操作。
  *
  */

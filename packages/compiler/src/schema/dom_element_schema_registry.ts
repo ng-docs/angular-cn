@@ -43,13 +43,13 @@ const OBJECT = 'object';
  * has identical properties.
  *
  * `element_inheritance` 可以进一步细分为 `element1,element2,...^parentElement` 。在这里，各个元素用
- * `,` （逗号）分隔。列表中的每个元素都具有相同的属性。
+ * `,`（逗号）分隔。列表中的每个元素都具有相同的属性。
  *
  * An `element` may inherit additional properties from `parentElement` If no `^parentElement` is
  * specified then `""` (blank) element is assumed.
  *
  * `element` 可以从 `parentElement` 继承其他属性如果没有指定 `^parentElement` ，则假定为 `""`
- * （空白）元素。
+ *（空白）元素。
  *
  * NOTE: The blank element inherits from root `[Element]` element, the super element of all
  * elements.
@@ -67,11 +67,11 @@ const OBJECT = 'object';
  * Each element has a set of properties separated by `,` (commas). Each property can be prefixed
  * by a special character designating its type:
  *
- * 每个元素都有一组用 `,` （逗号）分隔的属性。每个属性都可以以指定其类型的特殊字符为前缀：
+ * 每个元素都有一组用 `,`（逗号）分隔的属性。每个属性都可以以指定其类型的特殊字符为前缀：
  *
  * - (no prefix): property is a string.
  *
- *   （无前缀）：属性是一个字符串。
+ *  （无前缀）：属性是一个字符串。
  *
  * - `*`: property represents an event.
  *
@@ -102,7 +102,7 @@ const OBJECT = 'object';
  * NOTE: This schema is auto extracted from `schema_extractor.ts` located in the test folder,
  *       see dom_element_schema_registry_spec.ts
  *
- * 注：我们尚不支持查询类型或事件。注意：此模式是从位于 test 文件夹中的 `schema_extractor.ts`
+ * 注意：我们尚不支持查询类型或事件。注意：此模式是从位于 test 文件夹中的 `schema_extractor.ts`
  * 中自动提取的，请参阅 dom_element_schema_registry_spec.ts
  *
  */

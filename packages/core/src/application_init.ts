@@ -35,6 +35,7 @@ import {noop} from './util/noop';
  * 令牌。该功能在应用程序引导过程中执行，并且所需的数据在启动时可用。
  *
  * @see `ApplicationInitStatus`
+ *
  * @usageNotes
  *
  * The following example illustrates how to configure a multi-provider using `APP_INITIALIZER` token
@@ -49,7 +50,6 @@ import {noop} from './util/noop';
  *      resolve();
  *    });
  *  }
- * ```
  *
  * @NgModule ({
  *   imports: [BrowserModule],
@@ -76,6 +76,7 @@ import {noop} from './util/noop';
  *        tap(user => { ... })
  *     );
  *  }
+ *
  * @NgModule ({
  *    imports: [BrowserModule, HttpClientModule],
  *    declarations: [AppComponent],
@@ -89,6 +90,7 @@ import {noop} from './util/noop';
  *  })
  *  export class AppModule {}
  * ```
+ *
  * @publicApi
  */
 export const APP_INITIALIZER =

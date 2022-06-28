@@ -16,7 +16,7 @@ Angular Service Worker 支持显示推送通知和处理通知点击事件。
 When using the Angular service worker, push notification interactions are handled using the `SwPush` service.
 To learn more about the browser APIs involved see [Push API](https://developer.mozilla.org/docs/Web/API/Push_API) and [Using the Notifications API](https://developer.mozilla.org/docs/Web/API/Notifications_API/Using_the_Notifications_API).
 
-使用 Angular Service Worker 时，推送通知交互是使用 `SwPush` 服务处理的。要了解有关所涉及的浏览器 API 的更多信息，请参阅[推送 API](https://developer.mozilla.org/docs/Web/API/Push_API)和[使用通知 API](https://developer.mozilla.org/docs/Web/API/Notifications_API/Using_the_Notifications_API) 。
+使用 Angular Service Worker 时，推送通知交互是使用 `SwPush` 服务处理的。要了解有关所涉及的浏览器 API 的更多信息，请参阅[推送 API](https://developer.mozilla.org/docs/Web/API/Push_API)和[使用通知 API](https://developer.mozilla.org/docs/Web/API/Notifications_API/Using_the_Notifications_API)。
 
 </div>
 
@@ -56,7 +56,7 @@ Open Devtools -> Application -> Service Workers and use the `Push` input to send
 
 The default behavior for the `notificationclick` event is to close the notification and notify `SwPush.notificationClicks`.
 
-`notificationclick` 点击事件的默认行为是关闭通知并通知 `SwPush.notificationClicks` 。
+`notificationclick` 点击事件的默认行为是关闭通知并通知 `SwPush.notificationClicks`。
 
 You can specify an additional operation to be executed on `notificationclick` by adding an `onActionClick` property to the `data` object, and providing a `default` entry.
 This is especially useful for when there are no open clients when a notification is clicked.
@@ -90,17 +90,17 @@ Angular Service Worker 支持以下操作：
 | :--------- | :------ |
 | 操作 | 详情 |
 | `openWindow` | Opens a new tab at the specified URL, which is resolved relative to the service worker scope. |
-| `openWindow` | 在指定的 URL 处打开一个新选项卡，该选项卡相对于 Service Worker 范围进行解析。 |
+| `openWindow` | 在指定的 URL 处打开一个新选项卡，该选项卡相对于 Service Worker 范围进行解析。|
 | `focusLastFocusedOrOpen` | Focuses the last focused client. If there is no client open, then it opens a new tab at the specified URL, which is resolved relative to the service worker scope. |
-| `focusLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端。如果没有客户端打开，则它会在指定的 URL 处打开一个新选项卡，该选项卡是相对于 Service Worker 范围解析的。 |
+| `focusLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端。如果没有客户端打开，则它会在指定的 URL 处打开一个新选项卡，该选项卡是相对于 Service Worker 范围解析的。|
 | `navigateLastFocusedOrOpen` | Focuses the last focused client and navigates it to the specified URL, which is resolved relative to the service worker scope. If there is no client open, then it opens a new tab at the specified URL. |
-| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL，该 URL 相对于 Service Worker 范围进行解析。如果没有打开的客户端，则它会在指定的 URL 处打开一个新选项卡。 |
+| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL，该 URL 相对于 Service Worker 范围进行解析。如果没有打开的客户端，则它会在指定的 URL 处打开一个新选项卡。|
 
 <div class="alert is-important">
 
 If an `onActionClick` item does not define a `url`, then the service worker's registration scope is used.
 
-如果 `onActionClick` 项未定义 `url` ，则使用 Service Worker 的注册范围。
+如果 `onActionClick` 项未定义 `url`，则使用 Service Worker 的注册范围。
 
 </div>
 
@@ -149,7 +149,7 @@ In addition, using the `onActionClick` property on the `data` object, you can ti
 
 If an action does not have a corresponding `onActionClick` entry, then the notification is closed and `SwPush.notificationClicks` is notified on existing clients.
 
-如果操作没有相应的 `onActionClick` 条目，则通知将关闭并在现有客户端上通知 `SwPush.notificationClicks` 。
+如果操作没有相应的 `onActionClick` 条目，则通知将关闭并在现有客户端上通知 `SwPush.notificationClicks`。
 
 </div>
 

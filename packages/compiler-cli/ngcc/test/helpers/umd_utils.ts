@@ -14,11 +14,11 @@ export interface AdditionalFormatOptions {
    * (This option only affects the `Rollup` format.)
    *
    * 工厂函数中 `exports` 参数的索引（因此是各种工厂调用中的对应参数）。传递 -1 将导致完全省略
-   * `exports` 参数/参数。 （此选项仅影响 `Rollup` 格式。）
+   * `exports` 参数/参数。（此选项仅影响 `Rollup` 格式。）
    *
    * Defaults to `0` (i.e. `exports` being the first argument).
    *
-   * 默认为 `0` （即 `exports` 是第一个参数）。
+   * 默认为 `0`（即 `exports` 是第一个参数）。
    *
    */
   exportsParamIndex?: number;
@@ -29,11 +29,11 @@ export interface AdditionalFormatOptions {
    * (This option only affects the `Rollup` format.)
    *
    * 是否在全局工厂调用之前包含 `global` 变量 ( `global = global || self` ) 的初始化器。
-   * （此选项仅影响 `Rollup` 格式。）
+   *（此选项仅影响 `Rollup` 格式。）
    *
    * Defaults to `false` (i.e. not include an initialier for `global`).
    *
-   * 默认为 `false` （即不包含 `global` 的初始化器）。
+   * 默认为 `false`（即不包含 `global` 的初始化器）。
    *
    */
   hasGlobalInitializer?: boolean;

@@ -118,9 +118,6 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    * ### 例子
    *
    * ```typescript
-   *
-   * ```
-   *
    * @Component ({
    *   selector: 'app-root',
    *   template: `Number of ticks: {{numberOfTicks}}`
@@ -146,15 +143,15 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
   /**
    * Detaches the view from the change detection tree.
    *
-   * 将视图从更改检测树中分离。
+   * 将视图从变更检测树中分离。
    *
    * Detached views will not be checked during change detection runs until they are
    * re-attached, even if they are dirty. `detach` can be used in combination with
    * {@link ChangeDetectorRef#detectChanges detectChanges} to implement local change
    * detection checks.
    *
-   * 在重新连接之前，在更改检测运行期间不会检查分离的视图，即使它们是脏的。 `detach` 可以与 {@link
-   * ChangeDetectorRef#detectChangesdetectChanges} 结合使用来实现本地更改检测检查。
+   * 在重新连接之前，在变更检测运行期间不会检查分离的视图，即使它们是脏的。 `detach` 可以与 {@link
+   * ChangeDetectorRef#detectChangesdetectChanges} 结合使用来实现本地变更检测检查。
    *
    * <!-- TODO: Add a link to a chapter on detach/reattach/local digest -->
    *
@@ -180,7 +177,6 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *     return [1,2,3,4,5];
    *   }
    * }
-   * ```
    *
    * @Component ({
    *   selector: 'giant-list',
@@ -196,6 +192,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *     }, 5000);
    *   }
    * }
+   *
    * @Component ({
    *   selector: 'app',
    *   providers: [DataProvider],
@@ -214,7 +211,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
   /**
    * Re-attaches a view to the change detection tree.
    *
-   * 将视图重新附加到更改检测树。
+   * 将视图重新附加到变更检测树。
    *
    * This can be used to re-attach views that were previously detached from the tree
    * using {@link ChangeDetectorRef#detach detach}. Views are attached to the tree by default.
@@ -235,7 +232,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    * is set to false.
    *
    * 以下示例创建一个显示 `live` 数据的组件。当组件的 live 属性设置为 false
-   * 时，组件将其更改检测器与主更改检测器树分离。
+   * 时，组件将其变更检测器与主变更检测器树分离。
    *
    * ```typescript
    * class DataProvider {
@@ -247,7 +244,6 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *     }, 500);
    *   }
    * }
-   * ```
    *
    * @Component ({
    *   selector: 'live-data',
@@ -265,6 +261,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *     }
    *   }
    * }
+   *
    * @Component ({
    *   selector: 'app-root',
    *   providers: [DataProvider],
@@ -290,7 +287,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    * This can also be used in combination with {@link ChangeDetectorRef#detach detach} to implement
    * local change detection checks.
    *
-   * 这也可以与 {@link ChangeDetectorRef#detach detach} 结合使用来实现本地更改检测检查。
+   * 这也可以与 {@link ChangeDetectorRef#detach detach} 结合使用来实现本地变更检测检查。
    *
    * <!-- TODO: Add a link to a chapter on detach/reattach/local digest -->
    *
@@ -311,7 +308,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    * We can do that by detaching the component's change detector and doing a local change detection
    * check every five seconds.
    *
-   * 我们可以通过分离组件的更改检测器并每五秒进行一次本地更改检测检查来实现。
+   * 我们可以通过分离组件的变更检测器并每五秒进行一次本地变更检测检查来实现。
    *
    * See {@link ChangeDetectorRef#detach detach} for more information.
    *
@@ -325,12 +322,12 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
   /**
    * Checks the change detector and its children, and throws if any changes are detected.
    *
-   * 检查更改检测器及其子项，如果检测到任何更改，则抛出。
+   * 检查变更检测器及其子项，如果检测到任何更改，则抛出。
    *
    * This is used in development mode to verify that running change detection doesn't
    * introduce other changes.
    *
-   * 这在开发模式下用于验证正在运行的更改检测不会引入其他更改。
+   * 这在开发模式下用于验证正在运行的变更检测不会引入其他更改。
    *
    */
   checkNoChanges(): void {

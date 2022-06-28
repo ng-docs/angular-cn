@@ -1,0 +1,91 @@
+{
+  "name": "analytics",
+  "command": "ng analytics",
+  "shortDescription": "Configures the gathering of Angular CLI usage metrics. See https://angular.io/cli/usage-analytics-gathering",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    }
+  ],
+  "subcommands": [
+    {
+      "name": "disable",
+      "command": "disable",
+      "shortDescription": "Disables analytics gathering and reporting for the user.",
+      "options": [
+        {
+          "name": "global",
+          "type": "boolean",
+          "aliases": [
+            "g"
+          ],
+          "default": false,
+          "description": "Configure analytics gathering and reporting globally in the caller's home directory.",
+          "descriptionCn": "在调用者的主目录中全局配置分析收集和报告。"
+        }
+      ],
+      "aliases": [
+        "off"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "为用户禁用分析收集和报告。"
+    },
+    {
+      "name": "enable",
+      "command": "enable",
+      "shortDescription": "Enables analytics gathering and reporting for the user.",
+      "options": [
+        {
+          "name": "global",
+          "type": "boolean",
+          "aliases": [
+            "g"
+          ],
+          "default": false,
+          "description": "Configure analytics gathering and reporting globally in the caller's home directory.",
+          "descriptionCn": "在调用者的主目录中全局配置分析收集和报告。"
+        }
+      ],
+      "aliases": [
+        "on"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "为用户启用分析收集和报告。"
+    },
+    {
+      "name": "info",
+      "command": "info",
+      "shortDescription": "Prints analytics gathering and reporting configuration in the console.",
+      "options": [],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "在控制台中打印分析收集和报告配置。"
+    },
+    {
+      "name": "prompt",
+      "command": "prompt",
+      "shortDescription": "Prompts the user to set the analytics gathering status interactively.",
+      "options": [
+        {
+          "name": "global",
+          "type": "boolean",
+          "aliases": [
+            "g"
+          ],
+          "default": false,
+          "description": "Configure analytics gathering and reporting globally in the caller's home directory.",
+          "descriptionCn": "在调用者的主目录中全局配置分析收集和报告。"
+        }
+      ],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "交互式提示用户设置分析收集状态。"
+    }
+  ],
+  "shortDescriptionCn": "配置 Angular CLI 使用情况度量的收集策略。参见 [https://angular.cn/cli/usage-analytics-gathering。](https://angular.cn/cli/usage-analytics-gathering%E3%80%82)"
+}

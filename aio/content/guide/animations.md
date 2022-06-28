@@ -24,7 +24,7 @@ Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow or shrink, fade, or slide off the page.
 These changes can occur simultaneously or sequentially.You can control the timing of each transformation.
 
-典型的动画会涉及多种随时间变化的转换。HTML 元素可以移动、变换颜色、增加或缩小、隐藏或从页面中滑出。 这些变化可以同时发生或顺序发生。你可以控制每次转换的持续时间。
+典型的动画会涉及多种随时间变化的转换。HTML 元素可以移动、变换颜色、增加或缩小、隐藏或从页面中滑出。这些变化可以同时发生或顺序发生。你可以控制每次转换的持续时间。
 
 Angular's animation system is built on CSS functionality, which means you can animate any property that the browser considers animatable.
 This includes positions, sizes, transforms, colors, borders, and more.
@@ -120,7 +120,7 @@ See a [summary of available animation functions](guide/animations#animation-api-
 In the component file, add a metadata property called `animations:` within the `@Component()` decorator.
 You put the trigger that defines an animation within the `animations` metadata property.
 
-在组件的 `@Component()` 装饰器中，添加一个名叫 `animations:` 的元数据属性。 你可以把用来定义动画的触发器放进 `animations` 元数据属性中。
+在组件的 `@Component()` 装饰器中，添加一个名叫 `animations:` 的元数据属性。你可以把用来定义动画的触发器放进 `animations` 元数据属性中。
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="decorator"></code-example>
 
@@ -133,13 +133,13 @@ For example, you can specify that a button displays either **Open** or **Closed*
 When the button is in the `open` state, it's visible and yellow.
 When it's the `closed` state, it's translucent and blue.
 
-我们来做一个简单的转场动作，它把单个 HTML 元素从一个状态变成另一个状态。 比如，你可以指定按钮根据用户的最后一个动作显示成**Open**或**Closed**状态。当按钮处于 `open` 状态时，它是可见的，并且是黄色的。当它处于 `closed` 状态时，它是透明的，并且是蓝色的。
+我们来做一个简单的转场动作，它把单个 HTML 元素从一个状态变成另一个状态。比如，你可以指定按钮根据用户的最后一个动作显示成**Open**或**Closed**状态。当按钮处于 `open` 状态时，它是可见的，并且是黄色的。当它处于 `closed` 状态时，它是透明的，并且是蓝色的。
 
 In HTML, these attributes are set using ordinary CSS styles such as color and opacity.
 In Angular, use the `style()` function to specify a set of CSS styles for use with animations.
 Collect a set of styles in an animation state, and give the state a name, such as `open` or `closed`.
 
-在 HTML 中，这些属性都使用普通的 CSS 样式，比如颜色（color）和透明度（opacity）。在 Angular 中，使用 `style()` 函数来指定一组用作动画的 CSS 样式。 可以为动画状态指定一组样式，并为该状态指定一个名字，比如 `open` 或 `closed`。
+在 HTML 中，这些属性都使用普通的 CSS 样式，比如颜色（color）和透明度（opacity）。在 Angular 中，使用 `style()` 函数来指定一组用作动画的 CSS 样式。可以为动画状态指定一组样式，并为该状态指定一个名字，比如 `open` 或 `closed`。
 
 <div class="alert is-helpful">
 
@@ -212,7 +212,7 @@ Use the `animate()` function to define the length, delay, and easing of a transi
 Use the `animate()` function to define the `keyframes()` function for multi-step animations.
 These definitions are placed in the second argument of the `animate()` function.
 
-使用 `animate()` 函数来定义长度、延迟和缓动效果，并指定一个样式函数，以定义转场过程中的样式。 可以用 `animate()` 函数来为多步动画定义 `keyframes()` 函数。这些定义放在 `animate()` 函数的第二个参数中。
+使用 `animate()` 函数来定义长度、延迟和缓动效果，并指定一个样式函数，以定义转场过程中的样式。可以用 `animate()` 函数来为多步动画定义 `keyframes()` 函数。这些定义放在 `animate()` 函数的第二个参数中。
 
 #### Animation metadata: duration, delay, and easing
 
@@ -329,7 +329,7 @@ This example adds a state transition from the `closed` state to the `open` state
 Some additional notes on using styles within [`state`](api/animations/state) and `transition` functions.
 
 **注意**：<br />
-有关在 [`state`](api/animations/state) 和 `transition` 函数中使用样式时有一些需要注意的地方。
+在 [`state`](api/animations/state) 和 `transition` 函数中使用样式时有一些需要注意的地方。
 
 * Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
 
@@ -483,31 +483,31 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | :------------ | :----------- |
 | 函数名 | 用途 |
 | `trigger()` | Kicks off the animation and serves as a container for all other animation function calls. HTML template binds to `triggerName`. Use the first argument to declare a unique trigger name. Uses array syntax. |
-| `trigger()` | 开始动画，并充当所有其它动画函数的容器。HTML 模板可以绑定到 `triggerName`。使用第一个参数来声明唯一的触发器名称。要使用数组语法。 |
+| `trigger()` | 开始动画，并充当所有其它动画函数的容器。HTML 模板可以绑定到 `triggerName`。使用第一个参数来声明唯一的触发器名称。要使用数组语法。|
 | `style()` | Defines one or more CSS styles to use in animations. Controls the visual appearance of HTML elements during animations. Uses object syntax. |
-| `style()` | 定义一个或多个要用于动画中的 CSS 样式。用于在动画期间控制 HTML 元素的视觉外观。要使用对象语法。 |
+| `style()` | 定义一个或多个要用于动画中的 CSS 样式。用于在动画期间控制 HTML 元素的视觉外观。要使用对象语法。|
 | [`state()`](api/animations/state) | Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions. |
-| [`state()`](api/animations/state) | 创建一组有名字的 CSS 样式，它会在成功转换到指定的状态时应用到元素上。该状态可以在其它动画函数中通过名字进行引用。 |
+| [`state()`](api/animations/state) | 创建一组有名字的 CSS 样式，它会在成功转换到指定的状态时应用到元素上。该状态可以在其它动画函数中通过名字进行引用。|
 | `animate()` | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within. |
-| `animate()` | 指定转场的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。 |
+| `animate()` | 指定转场的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。|
 | `transition()` | Defines the animation sequence between two named states. Uses array syntax. |
-| `transition()` | 定义两个命名状态之间的动画序列。使用数组语法。 |
+| `transition()` | 定义两个命名状态之间的动画序列。使用数组语法。|
 | `keyframes()` | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax. |
-| `keyframes()` | 允许以特定的时间间隔对样式进行顺序更改。用于 `animate()` 中。每个 `keyframe()` 中都可以包含多个 `style()` 调用。使用数组语法。 |
+| `keyframes()` | 允许以特定的时间间隔对样式进行顺序更改。用于 `animate()` 中。每个 `keyframe()` 中都可以包含多个 `style()` 调用。使用数组语法。|
 | [`group()`](api/animations/group) | Specifies a group of animation steps (*inner animations*) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`. |
-| [`group()`](api/animations/group) | 指定要并行运行的一组动画步骤（*内部动画*）。 该动画只有当所有内部动画步骤都完成之后才会继续。用于 `sequence()` 或 `transition()` 中。 |
+| [`group()`](api/animations/group) | 指定要并行运行的一组动画步骤（*内部动画*）。该动画只有当所有内部动画步骤都完成之后才会继续。用于 `sequence()` 或 `transition()` 中。|
 | `query()` | Finds one or more inner HTML elements within the current element. |
-| `query()` | 找出当前元素中的一个或多个内部 HTML 元素。 |
+| `query()` | 找出当前元素中的一个或多个内部 HTML 元素。|
 | `sequence()` | Specifies a list of animation steps that are run sequentially, one by one. |
-| `sequence()` | 指定一个动画步骤列表，它们会逐个顺序执行。 |
+| `sequence()` | 指定一个动画步骤列表，它们会逐个顺序执行。|
 | `stagger()` | Staggers the starting time for animations for multiple elements. |
-| `stagger()` | 交错安排多元素动画的开始时间。 |
+| `stagger()` | 交错安排多元素动画的开始时间。|
 | `animation()` | Produces a reusable animation that can be invoked from elsewhere. Used together with `useAnimation()`. |
-| `animation()` | 生成可在其它地方调用的可复用动画。与 `useAnimation()` 一起使用。 |
+| `animation()` | 生成可在其它地方调用的可复用动画。与 `useAnimation()` 一起使用。|
 | `useAnimation()` | Activates a reusable animation. Used with `animation()`. |
-| `useAnimation()` | 激活一个可复用动画。和 `animation()` 一起使用。 |
+| `useAnimation()` | 激活一个可复用动画。和 `animation()` 一起使用。|
 | `animateChild()` | Allows animations on child components to be run within the same timeframe as the parent. |
-| `animateChild()` | 允许子组件上的动画和父组件在同一个时间范围（timeframe）内执行。 |
+| `animateChild()` | 允许子组件上的动画和父组件在同一个时间范围（timeframe）内执行。|
 
 ## More on Angular animations
 
@@ -537,7 +537,7 @@ You might also be interested in the following:
 
 Check out this [presentation](https://www.youtube.com/watch?v=rnTK9meY5us), shown at the AngularConnect conference in November 2017, and the accompanying [source code](https://github.com/matsko/animationsftw.in).
 
-到这个 [Demo](https://www.youtube.com/watch?v=rnTK9meY5us) 中查看 2017 年 11 月的 AngularConnect 大会上完整的动画及其[源码](https://github.com/matsko/animationsftw.in)。
+到这个[演讲](https://www.youtube.com/watch?v=rnTK9meY5us)中查看 2017 年 11 月的 AngularConnect 大会上完整的动画及其[源码](https://github.com/matsko/animationsftw.in)。
 
 </div>
 

@@ -26,7 +26,7 @@ There are new requirements for the Tour of Heroes app:
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
-  要查看本页所讲的范例程序，参阅<live-example></live-example>。
+要查看本页所讲的范例程序，参阅<live-example></live-example>。
 
 </div>
 
@@ -69,9 +69,9 @@ ng generate module app-routing --flat --module=app
 | :-------- | :------ |
 | 参数 | 详情 |
 | `--flat` | Puts the file in `src/app` instead of its own folder. |
-| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。 |
+| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。|
 | `--module=app` | Tells the CLI to register it in the `imports` array of the `AppModule`. |
-| `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。 |
+| `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。|
 
 </div>
 
@@ -104,7 +104,7 @@ The following sections explain the rest of the `AppRoutingModule` in more detail
 The next part of the file is where you configure your routes.
 *Routes* tell the Router which view to display when a user clicks a link or pastes a URL into the browser address bar.
 
-该文件的下一部分是你的路由配置。 *Routes* 告诉路由器，当用户单击链接或将 URL 粘贴进浏览器地址栏时要显示哪个视图。
+该文件的下一部分是你的路由配置。*Routes* 告诉路由器，当用户单击链接或将 URL 粘贴进浏览器地址栏时要显示哪个视图。
 
 Since `app-routing.module.ts` already imports `HeroesComponent`, you can use it in the `routes` array:
 
@@ -120,13 +120,13 @@ A typical Angular `Route` has two properties:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `path` | A string that matches the URL in the browser address bar. |
-| `path` | 用来匹配浏览器地址栏中 URL 的字符串。 |
+| `path` | 用来匹配浏览器地址栏中 URL 的字符串。|
 | `component` | The component that the router should create when navigating to this route. |
-| `component` | 导航到该路由时，路由器应该创建的组件。 |
+| `component` | 导航到该路由时，路由器应该创建的组件。|
 
 This tells the router to match that URL to `path: 'heroes'` and display the `HeroesComponent` when the URL is something like `localhost:4200/heroes`.
 
-这会告诉路由器把该 URL 与 `path：'heroes'` 匹配。 如果网址类似于 `localhost:4200/heroes` 就显示 `HeroesComponent`。
+这会告诉路由器把该 URL 与 `path：'heroes'` 匹配。如果网址类似于 `localhost:4200/heroes` 就显示 `HeroesComponent`。
 
 ### `RouterModule.forRoot()`
 
@@ -145,7 +145,7 @@ The following line adds the `RouterModule` to the `AppRoutingModule` `imports` a
 The method is called `forRoot()` because you configure the router at the application's root level.
 The `forRoot()` method supplies the service providers and directives needed for routing, and performs the initial navigation based on the current browser URL.
 
-这个方法之所以叫 `forRoot()`，是因为你要在应用的顶层配置这个路由器。 `forRoot()` 方法会提供路由所需的服务提供者和指令，还会基于浏览器的当前 URL 执行首次导航。
+这个方法之所以叫 `forRoot()`，是因为你要在应用的顶层配置这个路由器。`forRoot()` 方法会提供路由所需的服务提供者和指令，还会基于浏览器的当前 URL 执行首次导航。
 
 </div>
 
@@ -179,7 +179,7 @@ The `RouterOutlet` is one of the router directives that became available to the 
 The `ng generate` command you ran at the start of this tutorial added this import because of the `--module=app` flag.
 If you manually created `app-routing.module.ts` or used a tool other than the CLI to do so, you'll need to import `AppRoutingModule` into `app.module.ts` and add it to the `imports` array of the `NgModule`.
 
-能在 `AppComponent` 中使用 `RouterOutlet`，是因为 `AppModule` 导入了 `AppRoutingModule`，而 `AppRoutingModule` 中导出了 `RouterModule`。 在本教程开始时你运行的那个 `ng generate` 命令添加了这个导入，是因为 `--module=app` 标志。如果你手动创建 `app-routing.module.ts` 或使用了 CLI 之外的工具，你就要把 `AppRoutingModule` 导入到 `app.module.ts` 中，并且把它添加到 `NgModule` 的 `imports` 数组中。
+能在 `AppComponent` 中使用 `RouterOutlet`，是因为 `AppModule` 导入了 `AppRoutingModule`，而 `AppRoutingModule` 中导出了 `RouterModule`。在本教程开始时你运行的那个 `ng generate` 命令添加了这个导入，是因为 `--module=app` 标志。如果你手动创建 `app-routing.module.ts` 或使用了 CLI 之外的工具，你就要把 `AppRoutingModule` 导入到 `app.module.ts` 中，并且把它添加到 `NgModule` 的 `imports` 数组中。
 
 </div>
 
@@ -205,7 +205,7 @@ Look at the browser's address bar.
 The URL ends in `/`.
 The route path to `HeroesComponent` is `/heroes`.
 
-看看浏览器的地址栏。 URL 是以 `/` 结尾的。 而到 `HeroesComponent` 的路由路径是 `/heroes`。
+看看浏览器的地址栏。URL 是以 `/` 结尾的。而到 `HeroesComponent` 的路由路径是 `/heroes`。
 
 Append `/heroes` to the URL in the browser address bar.
 You should see the familiar heroes master/detail view.
@@ -230,7 +230,7 @@ Ideally, users should be able to click a link to navigate rather than pasting a 
 Add a `<nav>` element and, within that, an anchor element that, when clicked, triggers navigation to the `HeroesComponent`.
 The revised `AppComponent` template looks like this:
 
-添加一个 `<nav>` 元素，并在其中放一个链接 `<a>` 元素，当点击它时，就会触发一个到 `HeroesComponent` 的导航。 修改过的 `AppComponent` 模板如下：
+添加一个 `<nav>` 元素，并在其中放一个链接 `<a>` 元素，当点击它时，就会触发一个到 `HeroesComponent` 的导航。修改过的 `AppComponent` 模板如下：
 
 <code-example header="src/app/app.component.html (heroes RouterLink)" path="toh-pt5/src/app/app.component.html" region="heroes"></code-example>
 
@@ -358,7 +358,7 @@ When the application starts, the browser's address bar points to the web site's 
 That doesn't match any existing route so the router doesn't navigate anywhere.
 The space below the `<router-outlet>` is blank.
 
-当应用启动时，浏览器的地址栏指向了网站的根路径。 它没有匹配到任何现存路由，因此路由器也不会导航到任何地方。 `<router-outlet>` 下方是空白的。
+当应用启动时，浏览器的地址栏指向了网站的根路径。它没有匹配到任何现存路由，因此路由器也不会导航到任何地方。`<router-outlet>` 下方是空白的。
 
 To make the application navigate to the dashboard automatically, add the following route to the `routes` array.
 
@@ -401,7 +401,7 @@ After the browser refreshes you can navigate freely between the two views by cli
 The `HeroDetailComponent` displays details of a selected hero.
 At the moment the `HeroDetailComponent` is only visible at the bottom of the `HeroesComponent`
 
-`HeroDetailComponent` 可以显示所选英雄的详情。 此刻，`HeroDetailComponent` 只能在 `HeroesComponent` 的底部看到。
+`HeroDetailComponent` 可以显示所选英雄的详情。此刻，`HeroDetailComponent` 只能在 `HeroesComponent` 的底部看到。
 
 The user should be able to get to these details in three ways.
 
@@ -430,7 +430,7 @@ In this section, you'll enable navigation to the `HeroDetailComponent` and liber
 When the user clicks a hero item in the `HeroesComponent`, the application should navigate to the `HeroDetailComponent`, replacing the heroes list view with the hero detail view.
 The heroes list view should no longer show hero details as it does now.
 
-当用户在 `HeroesComponent` 中点击某个英雄条目时，应用应该能导航到 `HeroDetailComponent`，从英雄列表视图切换到英雄详情视图。 英雄列表视图将不再显示，而英雄详情视图要显示出来。
+当用户在 `HeroesComponent` 中点击某个英雄条目时，应用应该能导航到 `HeroDetailComponent`，从英雄列表视图切换到英雄详情视图。英雄列表视图将不再显示，而英雄详情视图要显示出来。
 
 Open the `HeroesComponent` template (`heroes/heroes.component.html`) and delete the `<app-hero-detail>` element from the bottom.
 
@@ -481,7 +481,7 @@ The `DashboardComponent` hero links do nothing at the moment.
 
 Now that the router has a route to `HeroDetailComponent`, fix the dashboard hero links to navigate using the *parameterized* dashboard route.
 
-路由器已经有一个指向 `HeroDetailComponent` 的路由了， 修改仪表盘中的英雄连接，让它们通过参数化的英雄详情路由进行导航。
+路由器已经有一个指向 `HeroDetailComponent` 的路由了，修改仪表盘中的英雄连接，让它们通过参数化的英雄详情路由进行导航。
 
 <code-example header="src/app/dashboard/dashboard.component.html (hero links)" path="toh-pt5/src/app/dashboard/dashboard.component.html" region="click"></code-example>
 
@@ -525,7 +525,7 @@ While the `HeroesComponent` class still works, the `onSelect()` method and `sele
 It's nice to tidy up and you'll be grateful to yourself later.
 Here's the class after pruning away the dead code.
 
-最好清理掉它们，将来你会体会到这么做的好处。 下面是删除了死代码之后的类。
+最好清理掉它们，将来你会体会到这么做的好处。下面是删除了死代码之后的类。
 
 <code-example header="src/app/heroes/heroes.component.ts (cleaned up)" path="toh-pt5/src/app/heroes/heroes.component.ts" region="class"></code-example>
 
@@ -540,12 +540,12 @@ Previously, the parent `HeroesComponent` set the `HeroDetailComponent.hero` prop
 `HeroesComponent` doesn't do that anymore.
 Now the router creates the `HeroDetailComponent` in response to a URL such as `~/detail/11`.
 
-`HeroesComponent` 已经不会再那么做了。 现在，当路由器会在响应形如 `~/detail/11` 的 URL 时创建 `HeroDetailComponent`。
+`HeroesComponent` 已经不会再那么做了。现在，当路由器会在响应形如 `~/detail/11` 的 URL 时创建 `HeroDetailComponent`。
 
 The `HeroDetailComponent` needs a new way to obtain the hero-to-display.
 This section explains the following:
 
-`HeroDetailComponent` 需要从一种新的途径获取*要显示的英雄*。 本节会讲解如下操作：
+`HeroDetailComponent` 需要从一种新的途径获取*要显示的英雄*。本节会讲解如下操作：
 
 * Get the route that created it
 
@@ -577,7 +577,7 @@ The [`ActivatedRoute`](api/router/ActivatedRoute) holds information about the ro
 This component is interested in the route's parameters extracted from the URL.
 The "id" parameter is the `id` of the hero to display.
 
-[`ActivatedRoute`](api/router/ActivatedRoute) 保存着到这个 `HeroDetailComponent` 实例的路由信息。 这个组件对从 URL 中提取的路由参数感兴趣。 其中的 `id` 参数就是要显示的英雄的 `id`。
+[`ActivatedRoute`](api/router/ActivatedRoute) 保存着到这个 `HeroDetailComponent` 实例的路由信息。这个组件对从 URL 中提取的路由参数感兴趣。其中的 `id` 参数就是要显示的英雄的 `id`。
 
 The [`HeroService`](tutorial/toh-pt4) gets hero data from the remote server and this component will use it to get the hero-to-display.
 
@@ -606,19 +606,19 @@ The `route.snapshot` is a static image of the route information shortly after th
 The `paramMap` is a dictionary of route parameter values extracted from the URL.
 The `"id"` key returns the `id` of the hero to fetch.
 
-`paramMap` 是一个从 URL 中提取的路由参数值的字典。 `"id"` 对应的值就是要获取的英雄的 `id`。
+`paramMap` 是一个从 URL 中提取的路由参数值的字典。`"id"` 对应的值就是要获取的英雄的 `id`。
 
 Route parameters are always strings.
 The JavaScript `Number` function converts the string to a number,
 which is what a hero `id` should be.
 
-路由参数总会是字符串。 JavaScript 的 `Number` 函数会把字符串转换成数字，英雄的 `id` 就是数字类型。
+路由参数总会是字符串。JavaScript 的 `Number` 函数会把字符串转换成数字，英雄的 `id` 就是数字类型。
 
 The browser refreshes and the application crashes with a compiler error.
 `HeroService` doesn't have a `getHero()` method.
 Add it now.
 
-刷新浏览器，应用挂了。出现一个编译错误，因为 `HeroService` 没有一个名叫 `getHero()` 的方法。 这就添加它。
+刷新浏览器，应用挂了。出现一个编译错误，因为 `HeroService` 没有一个名叫 `getHero()` 的方法。这就添加它。
 
 ### Add `HeroService.getHero()`
 
@@ -643,7 +643,7 @@ The backtick ( <code>\`</code> ) characters define a JavaScript [template litera
 Like [`getHeroes()`](tutorial/toh-pt4#observable-heroservice), `getHero()` has an asynchronous signature.
 It returns a *mock hero* as an `Observable`, using the RxJS `of()` function.
 
-像 [`getHeroes()`](tutorial/toh-pt4#observable-heroservice) 一样，`getHero()` 也有一个异步函数签名。 它用 RxJS 的 `of()` 函数返回一个 `Observable` 形式的*模拟英雄数据*。
+像 [`getHeroes()`](tutorial/toh-pt4#observable-heroservice) 一样，`getHero()` 也有一个异步函数签名。它用 RxJS 的 `of()` 函数返回一个 `Observable` 形式的*模拟英雄数据*。
 
 You'll be able to re-implement `getHero()` as a real `Http` request without having to change the `HeroDetailComponent` that calls it.
 
@@ -656,7 +656,7 @@ You'll be able to re-implement `getHero()` as a real `Http` request without havi
 The browser refreshes and the application is working again.
 You can click a hero in the dashboard or in the heroes list and navigate to that hero's detail view.
 
-刷新浏览器，应用又恢复正常了。 你可以在仪表盘或英雄列表中点击一个英雄来导航到该英雄的详情视图。
+刷新浏览器，应用又恢复正常了。你可以在仪表盘或英雄列表中点击一个英雄来导航到该英雄的详情视图。
 
 If you paste `localhost:4200/detail/11` in the browser address bar, the router navigates to the detail view for the hero with `id: 11`, "Dr Nice".
 
@@ -692,7 +692,7 @@ using the `Location` service that you [injected previously](#hero-detail-ctor).
 Refresh the browser and start clicking.
 Users can navigate around the app, from the dashboard to hero details and back, from heroes list to the mini detail to the hero details and back to the heroes again.
 
-刷新浏览器，并开始点击。 用户能在应用中导航：从仪表盘到英雄详情再回来，从英雄列表到 mini 版英雄详情到英雄详情，再回到英雄列表。
+刷新浏览器，并开始点击。用户能在应用中导航：从仪表盘到英雄详情再回来，从英雄列表到 mini 版英雄详情到英雄详情，再回到英雄列表。
 
 The details will look better when you add the private CSS styles to `hero-detail.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
 

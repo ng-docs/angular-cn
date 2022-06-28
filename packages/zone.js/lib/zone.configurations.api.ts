@@ -26,7 +26,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches the `Node.js` `EventEmitter` APIs to make asynchronous
    * callbacks of those APIs in the same zone when scheduled.
    *
-   * 默认情况下， `zone.js` `Node.js` `EventEmitter` API 进行修补，以按计划在同一个区域中对这些 API
+   * 默认情况下，`zone.js` `Node.js` `EventEmitter` API 进行修补，以按计划在同一个区域中对这些 API
    * 进行异步回调。
    *
    * Consider the following example:
@@ -53,7 +53,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `EventEmitter` APIs and the above code
    * outputs 'an event occurred <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_EventEmitter = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_EventEmitter = true` ，`zone.js` 不会对
    * `EventEmitter` API 进行猴子补丁，并且上面的代码会输出 'an event occurred<root>'。
    *
    */
@@ -67,7 +67,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches `Node.js` `fs` APIs to make asynchronous callbacks of
    * those APIs in the same zone when scheduled.
    *
-   * 默认情况下， `zone.js` 修补 `Node.js` `fs` API，以在调度时在同一个区域中对这些 API
+   * 默认情况下，`zone.js` 修补 `Node.js` `fs` API，以在调度时在同一个区域中对这些 API
    * 进行异步回调。
    *
    * Consider the following example:
@@ -91,7 +91,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `fs` API and the above code
    * outputs 'get stats occurred <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_fs = true` ， `zone.js` 不会对 `fs` API
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_fs = true` ，`zone.js` 不会对 `fs` API
    * 进行猴子补丁，并且上面的代码输出 'get statsured<root>'。
    *
    */
@@ -105,7 +105,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches the `Node.js` `timer` APIs to make asynchronous
    * callbacks of those APIs in the same zone when scheduled.
    *
-   * 默认情况下， `zone.js` 修补 `Node.js` `timer` API，以按计划在同一个区域中对这些 API
+   * 默认情况下，`zone.js` 修补 `Node.js` `timer` API，以按计划在同一个区域中对这些 API
    * 进行异步回调。
    *
    * Consider the following example:
@@ -128,7 +128,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `timer` APIs and the above code
    * outputs 'timeout <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_timers = true` ， `zone.js` 不会对 `timer` API
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_timers = true` ，`zone.js` 不会对 `timer` API
    * 进行猴子补丁，并且上面的代码输出 'timeout<root>'。
    *
    */
@@ -142,7 +142,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches the `Node.js` `process.nextTick()` API to make the
    * callback in the same zone when calling `process.nextTick()`.
    *
-   * 默认情况下， `zone.js` 修补 `Node.js` `process.nextTick()` API，以在调用 `process.nextTick()`
+   * 默认情况下，`zone.js` 修补 `Node.js` `process.nextTick()` API，以在调用 `process.nextTick()`
    * 时在同一个区域中进行回调。
    *
    * Consider the following example:
@@ -165,7 +165,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `process.nextTick()` API and the above code
    * outputs 'nextTick <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_nextTick = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_nextTick = true` ，`zone.js` 不会对
    * `process.nextTick()` API 进行猴子补丁，并且上面的代码输出 'nextTick<root>'。
    *
    */
@@ -179,7 +179,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches the `Node.js` `crypto` APIs to make asynchronous callbacks
    * of those APIs in the same zone when called.
    *
-   * 默认情况下， `zone.js` 修补 `Node.js` `crypto` API，以在调用时在同一个区域中对这些 API
+   * 默认情况下，`zone.js` 修补 `Node.js` `crypto` API，以在调用时在同一个区域中对这些 API
    * 进行异步回调。
    *
    * Consider the following example:
@@ -204,7 +204,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `crypto` API and the above code
    * outputs 'crypto <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_crypto = true` ， `zone.js` 不会对 `crypto` API
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_crypto = true` ，`zone.js` 不会对 `crypto` API
    * 进行猴子补丁，并且上面的代码会输出 'crypto<root>'。
    *
    */
@@ -225,7 +225,7 @@ interface ZoneGlobalConfigurations {
    * `Object.defineProperty()` and `Object.create()` to try to ensure PropertyDescriptor parameter's
    * configurable property to be true. This patch is only needed in some old mobile browsers.
    *
-   * 在旧版浏览器中， `zone.js` 的默认行为是对 `Object.defineProperty()` 和 `Object.create()`
+   * 在旧版浏览器中，`zone.js` 的默认行为是对 `Object.defineProperty()` 和 `Object.create()`
    * 进行猴子补丁，以尝试确保 PropertyDescriptor 参数的可配置属性为
    * true。只有在某些旧的移动浏览器中需要此补丁。
    *
@@ -233,7 +233,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `Object.defineProperty()` API and does not
    * modify desc.configurable to true.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_defineProperty = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_defineProperty = true` ，`zone.js` 不会对
    * `Object.defineProperty()` API 进行猴子补丁，并且不会将 desc.configurable 修改为 true。
    *
    */
@@ -253,7 +253,7 @@ interface ZoneGlobalConfigurations {
    * `registerElement()` API to make asynchronous callbacks of the API in the same zone when
    * `registerElement()` is called.
    *
-   * 在旧版浏览器中， `zone.js` 的默认行为是对 `registerElement()` API 进行猴子修补，以在调用
+   * 在旧版浏览器中，`zone.js` 的默认行为是对 `registerElement()` API 进行猴子修补，以在调用
    * `registerElement()` 时在同一个区域中对 API 进行异步回调。
    *
    * Consider the following example:
@@ -290,7 +290,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch `registerElement()` API and the above code
    * outputs '<root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_registerElement = true` ， `zone.js`
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_registerElement = true` ，`zone.js`
    * 不会猴子补丁 `registerElement()` API 并且上面的代码输出 '<root>'。
    *
    */
@@ -311,8 +311,8 @@ interface ZoneGlobalConfigurations {
    * as `HtmlDivElement`). The callback of the `addEventListener()` will be in the same zone when
    * the `addEventListener()` is called.
    *
-   * 在某些旧版浏览器中， `EventTarget` 不可用，因此 `zone.js` 不能直接猴子修补 `EventTarget`
-   * 。相反， `zone.js` 修补所有已知的 HTML 元素的原型（例如 `HtmlDivElement` ）。调用
+   * 在某些旧版浏览器中，`EventTarget` 不可用，因此 `zone.js` 不能直接猴子修补 `EventTarget`
+   * 。相反，`zone.js` 修补所有已知的 HTML 元素的原型（例如 `HtmlDivElement`）。调用
    * `addEventListener()` `addEventListener()` 回调将在同一个区域中。
    *
    * Consider the following example:
@@ -349,7 +349,7 @@ interface ZoneGlobalConfigurations {
    * APIs (`setTimeout()`/`setInterval()`/`setImmediate()`) to make asynchronous callbacks of those
    * APIs in the same zone when scheduled.
    *
-   * 默认情况下， `zone.js` 修补浏览器计时器 API ( `setTimeout()` / `setInterval()` /
+   * 默认情况下，`zone.js` 修补浏览器计时器 API ( `setTimeout()` / `setInterval()` /
    * `setImmediate()` ) 以在调度时在同一个区域中对这些 API 进行异步回调。
    *
    * Consider the following example:
@@ -372,7 +372,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch `timer` API and the above code
    * outputs 'timeout <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_timers = true` ， `zone.js` 不会猴子修补
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_timers = true` ，`zone.js` 不会猴子修补
    * `timer` API，并且上面的代码输出 'timeout<root>'。
    *
    */
@@ -387,7 +387,7 @@ interface ZoneGlobalConfigurations {
    * to make the asynchronous callback of the `requestAnimationFrame()` in the same zone when
    * scheduled.
    *
-   * 默认情况下， `zone.js` 修补浏览器 `requestAnimationFrame()` API，以按计划在同一个区域中进行
+   * 默认情况下，`zone.js` 修补浏览器 `requestAnimationFrame()` API，以按计划在同一个区域中进行
    * `requestAnimationFrame()` 的异步回调。
    *
    * Consider the following example:
@@ -410,7 +410,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `requestAnimationFrame()` API and the above code
    * outputs 'raf <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_requestAnimationFrame = true` ， `zone.js`
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_requestAnimationFrame = true` ，`zone.js`
    * 不会对 `requestAnimationFrame()` API 进行修补，并且上面的代码输出 'raf<root>'。
    *
    */
@@ -426,7 +426,7 @@ interface ZoneGlobalConfigurations {
    * `queueMicrotask()`. And also the callback is running as `microTask` like
    * `Promise.prototype.then()`.
    *
-   * 默认情况下， `zone.js` 修补浏览器的 `queueMicrotask()` API 以确保 `queueMicrotask()`
+   * 默认情况下，`zone.js` 修补浏览器的 `queueMicrotask()` API 以确保 `queueMicrotask()`
    * 回调在与调用 `queueMicrotask()` 所用的区域相同的区域中调用。并且回调作为 `microTask` 运行，例如
    * `Promise.prototype.then()` 。
    *
@@ -449,7 +449,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch the `queueMicrotask()` API and the above code
    * output will change to: 'queueMicrotask() callback is invoked in the zone <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_queueMicrotask = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_queueMicrotask = true` ，`zone.js` 不会对
    * `queueMicrotask()` API 进行猴子修补，并且上面的代码输出将更改为： 'queueMicrotask()
    * 回调是在区域中调用的<root>'。
    *
@@ -459,7 +459,7 @@ interface ZoneGlobalConfigurations {
   /**
    * Disable the monkey patch of the browser blocking APIs(`alert()`/`prompt()`/`confirm()`).
    *
-   * 禁用浏览器阻塞 API 的猴子补丁（ `alert()` / `prompt()` / `confirm()` ）。
+   * 禁用浏览器阻塞 API 的猴子补丁（`alert()` / `prompt()` / `confirm()`）。
    *
    */
   __Zone_disable_blocking?: boolean;
@@ -472,7 +472,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches EventTarget APIs. The callbacks of the
    * `addEventListener()` run in the same zone when the `addEventListener()` is called.
    *
-   * 默认情况下， `zone.js` 猴子修补 EventTarget API。调用 `addEventListener()` 时，
+   * 默认情况下，`zone.js` 猴子修补 EventTarget API。调用 `addEventListener()` 时，
    * `addEventListener()` 的回调在同一个区域中运行。
    *
    * Consider the following example:
@@ -493,7 +493,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch EventTarget API and the above code
    * outputs 'clicked <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_EventTarget = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_EventTarget = true` ，`zone.js` 不会对
    * EventTarget API 进行猴子补丁，并且上面的代码输出 'clicked<root>'。
    *
    */
@@ -526,12 +526,12 @@ interface ZoneGlobalConfigurations {
   /**
    * Disable the monkey patch of the browser onProperty APIs(such as onclick).
    *
-   * 禁用浏览器 onProperty API 的猴子补丁（例如 onclick ）。
+   * 禁用浏览器 onProperty API 的猴子补丁（例如 onclick）。
    *
    * By default, `zone.js` monkey patches onXXX properties (such as onclick). The callbacks of onXXX
    * properties run in the same zone when the onXXX properties is set.
    *
-   * 默认情况下， `zone.js` 猴子会修补 onXXX 属性（例如 onclick ）。设置 onXXX 属性时，onXXX
+   * 默认情况下，`zone.js` 猴子会修补 onXXX 属性（例如 onclick）。设置 onXXX 属性时，onXXX
    * 属性的回调在同一个区域中运行。
    *
    * Consider the following example:
@@ -552,7 +552,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch onXXX properties and the above code
    * outputs 'clicked <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_on_property = true` ， `zone.js` 不会猴子修补
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_on_property = true` ，`zone.js` 不会猴子修补
    * onXXX 属性，并且上面的代码输出 'clicked<root>'。
    *
    */
@@ -566,7 +566,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches `customElements` APIs to make callbacks run in the
    * same zone when the `customElements.define()` is called.
    *
-   * 默认情况下， `zone.js` 猴子会修补 `customElements` API，以使回调在调用
+   * 默认情况下，`zone.js` 猴子会修补 `customElements` API，以使回调在调用
    * `customElements.define()` 时在同一个区域中运行。
    *
    * Consider the following example:
@@ -597,7 +597,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch `customElements` APIs and the above code
    * runs inside <root> zone.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_customElements = true` ， `zone.js`
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_customElements = true` ，`zone.js`
    * 不会猴子修补 `customElements` API，并且上面的代码在里面运行<root>区。
    *
    */
@@ -611,7 +611,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches `XMLHttpRequest` APIs to make XMLHttpRequest act
    * as macroTask.
    *
-   * 默认情况下， `zone.js` 修补 `XMLHttpRequest` API 以使 XMLHttpRequest 充当宏任务。
+   * 默认情况下，`zone.js` 修补 `XMLHttpRequest` API 以使 XMLHttpRequest 充当宏任务。
    *
    * Consider the following example:
    *
@@ -636,14 +636,14 @@ interface ZoneGlobalConfigurations {
    * In this example, the instance of XMLHttpRequest runs in the zone and acts as a macroTask. The
    * output is 'task is scheduled macroTask, XMLHttpRequest.send, zone'.
    *
-   * 在此示例中， XMLHttpRequest
+   * 在此示例中，XMLHttpRequest
    * 的实例在区域中运行，并作为宏任务。输出是“任务是调度的宏任务，XMLHttpRequest.send，区域”。
    *
    * If you set `__Zone_disable_XHR = true` before importing `zone.js`,
    * `zone.js` does not monkey patch `XMLHttpRequest` APIs and the above onScheduleTask callback
    * will not be called.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_XHR = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_XHR = true` ，`zone.js` 不会对
    * `XMLHttpRequest` API 进行猴子补丁，并且不会调用上面的 onScheduleTask 回调。
    *
    */
@@ -657,7 +657,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches geolocation APIs to make callbacks run in the same zone
    * when those APIs are called.
    *
-   * 默认情况下， `zone.js` 修补地理定位 API，以使回调在调用这些 API 时在同一个区域中运行。
+   * 默认情况下，`zone.js` 修补地理定位 API，以使回调在调用这些 API 时在同一个区域中运行。
    *
    * Consider the following examples:
    *
@@ -681,7 +681,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch geolocation APIs and the above code
    * outputs 'getCurrentPosition <root>'.
    *
-   * 如果在导入 `zone.js` 之前设置你 `__Zone_disable_geolocation = true` ， `zone.js`
+   * 如果在导入 `zone.js` 之前设置你 `__Zone_disable_geolocation = true` ，`zone.js`
    * 不会猴子修补地理定位 API，并且上面的代码输出 'getCurrentPosition<root>'。
    *
    */
@@ -695,7 +695,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches `canvas` APIs to make callbacks run in the same zone when
    * those APIs are called.
    *
-   * 默认情况下， `zone.js` 猴子会修补 `canvas` API，以使这些 API 被调用时回调在同一个区域中运行。
+   * 默认情况下，`zone.js` 猴子会修补 `canvas` API，以使这些 API 被调用时回调在同一个区域中运行。
    *
    * Consider the following example:
    *
@@ -718,7 +718,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch `canvas` APIs and the above code
    * outputs 'canvas.toBlob <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_canvas = true` ， `zone.js` 不会猴子修补
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_canvas = true` ，`zone.js` 不会猴子修补
    * `canvas` API，并且上面的代码输出 'canvas.toBlob<root>'。
    *
    */
@@ -732,7 +732,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches `Promise` APIs to make the `then()/catch()` callbacks in
    * the same zone when those callbacks are called.
    *
-   * 默认情况下， `zone.js` 修补 `Promise` API，以在调用 `then()/catch()`
+   * 默认情况下，`zone.js` 修补 `Promise` API，以在调用 `then()/catch()`
    * 回调时在同一个区域中进行这些回调。
    *
    * Consider the following examples:
@@ -756,7 +756,7 @@ interface ZoneGlobalConfigurations {
    * `zone.js` does not monkey patch `Promise` APIs and the above code
    * outputs 'promise then callback <root>'.
    *
-   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_ZoneAwarePromise = true` ， `zone.js` 不会对
+   * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_ZoneAwarePromise = true` ，`zone.js` 不会对
    * `Promise` API 进行猴子补丁，并且上面的代码输出 'promise then callback<root>'。
    *
    */
@@ -770,7 +770,7 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` monkey patches EventTarget.addEventListener(). The event listener
    * callback runs in the same zone when the addEventListener() is called.
    *
-   * 默认情况下， `zone.js` 猴子修补 EventTarget.addEventListener() 。调用 addEventListener()
+   * 默认情况下，`zone.js` 猴子修补 EventTarget.addEventListener() 。调用 addEventListener()
    * 时，事件侦听器回调在同一个区域中运行。
    *
    * Sometimes, you don't want all of the event names used in this patched version because it
@@ -823,14 +823,14 @@ interface ZoneGlobalConfigurations {
    * By default, `zone.js` wraps the uncaught promise rejection in a new `Error` object
    * which contains additional information such as a value of the rejection and a stack trace.
    *
-   * 默认情况下， `zone.js` 未捕获的 Promise 拒绝包装在一个新的 `Error`
+   * 默认情况下，`zone.js` 未捕获的 Promise 拒绝包装在一个新的 `Error`
    * 对象中，该对象包含其他信息，例如拒绝的值和堆栈跟踪。
    *
    * If you set `__zone_symbol__DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION = true;` before
    * importing `zone.js`, `zone.js` will not wrap the uncaught promise rejection.
    *
    * 如果你设置 `__zone_symbol__DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION = true;` 在导入
-   * `zone.js` 之前， `zone.js` 不会包装未捕获的 Promise 拒绝。
+   * `zone.js` 之前，`zone.js` 不会包装未捕获的 Promise 拒绝。
    *
    */
   __zone_symbol__DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION?: boolean;
@@ -857,7 +857,7 @@ interface ZoneTestConfigurations {
    * In the `zone-testing.js` bundle, by default, `zone-testing.js` monkey patches Jasmine APIs
    * to make Jasmine APIs run in specified zone.
    *
-   * 默认情况下，在 `zone-testing.js` 包中， `zone-testing.js` 猴子修补 Jasmine API 以使 Jasmine API
+   * 默认情况下，在 `zone-testing.js` 包中，`zone-testing.js` 猴子修补 Jasmine API 以使 Jasmine API
    * 在指定区域中运行。
    *
    * 1. Make the `describe()`/`xdescribe()`/`fdescribe()` methods run in the syncTestZone.
@@ -872,7 +872,7 @@ interface ZoneTestConfigurations {
    *
    * With this patch, `async()`/`fakeAsync()` can work with the Jasmine runner.
    *
-   * 使用此补丁， `async()` / `fakeAsync()` 可以与 Jasmine 运行器一起使用。
+   * 使用此补丁，`async()` / `fakeAsync()` 可以与 Jasmine 运行器一起使用。
    *
    * If you set `__Zone_disable_jasmine = true` before importing `zone-testing.js`,
    * `zone-testing.js` does not monkey patch the jasmine APIs and the `async()`/`fakeAsync()` cannot
@@ -893,7 +893,7 @@ interface ZoneTestConfigurations {
    * In the `zone-testing.js` bundle, by default, `zone-testing.js` monkey patches the Mocha APIs
    * to make Mocha APIs run in the specified zone.
    *
-   * 默认情况下，在 `zone-testing.js` 包中， `zone-testing.js` Monkey 修补 Mocha API 以使 Mocha API
+   * 默认情况下，在 `zone-testing.js` 包中，`zone-testing.js` Monkey 修补 Mocha API 以使 Mocha API
    * 在指定的区域中运行。
    *
    * 1. Make the `describe()`/`xdescribe()`/`fdescribe()` methods run in the syncTestZone.
@@ -908,7 +908,7 @@ interface ZoneTestConfigurations {
    *
    * With this patch, `async()`/`fakeAsync()` can work with the Mocha runner.
    *
-   * 使用此补丁， `async()` / `fakeAsync()` 可以与 Mocha 运行器一起使用。
+   * 使用此补丁，`async()` / `fakeAsync()` 可以与 Mocha 运行器一起使用。
    *
    * If you set `__Zone_disable_mocha = true` before importing `zone-testing.js`,
    * `zone-testing.js` does not monkey patch the Mocha APIs and the `async()/`fakeAsync()\` can not
@@ -928,7 +928,7 @@ interface ZoneTestConfigurations {
    * In the `zone-testing.js` bundle, by default, `zone-testing.js` monkey patches Jest APIs
    * to make Jest APIs run in the specified zone.
    *
-   * 默认情况下，在 `zone-testing.js` 包中， `zone-testing.js` 猴子修补 Jest API 以使 Jest API
+   * 默认情况下，在 `zone-testing.js` 包中，`zone-testing.js` 猴子修补 Jest API 以使 Jest API
    * 在指定的区域中运行。
    *
    * 1. Make the `describe()`/`xdescribe()`/`fdescribe()` methods run in the syncTestZone.
@@ -943,7 +943,7 @@ interface ZoneTestConfigurations {
    *
    * With this patch, `async()`/`fakeAsync()` can work with the Jest runner.
    *
-   * 使用此补丁， `async()` / `fakeAsync()` 可以与 Jest 运行器一起使用。
+   * 使用此补丁，`async()` / `fakeAsync()` 可以与 Jest 运行器一起使用。
    *
    * If you set `__Zone_disable_jest = true` before importing `zone-testing.js`,
    * `zone-testing.js` does not monkey patch the jest APIs and `async()`/`fakeAsync()` cannot
@@ -963,7 +963,7 @@ interface ZoneTestConfigurations {
    * By default, `zone-testing.js` monkey patches the `jasmine.clock()` API,
    * so the `jasmine.clock()` can work with the `fakeAsync()/tick()` API.
    *
-   * 默认情况下， `zone-testing.js` 猴子会修补 `jasmine.clock()` API，因此 `jasmine.clock()` 可以与
+   * 默认情况下，`zone-testing.js` 猴子会修补 `jasmine.clock()` API，因此 `jasmine.clock()` 可以与
    * `fakeAsync()/tick()` API 一起使用。
    *
    * Consider the following example:
@@ -989,7 +989,7 @@ interface ZoneTestConfigurations {
    *
    * In the `fakeAsync()` method, `jasmine.clock().tick()` works just like `tick()`.
    *
-   * 在 `fakeAsync()` 方法中， `jasmine.clock().tick()` 的工作方式与 `tick()` 一样。
+   * 在 `fakeAsync()` 方法中，`jasmine.clock().tick()` 的工作方式与 `tick()` 一样。
    *
    * If you set `__zone_symbol__fakeAsyncDisablePatchingClock = true` before importing
    * `zone-testing.js`,`zone-testing.js` does not monkey patch the `jasmine.clock()` APIs and the
@@ -1079,8 +1079,8 @@ interface ZoneTestConfigurations {
    * default, if some promises remain unresolved, `AsyncTestZone` does not wait and reports that it
    * received an unexpected result.
    *
-   * 在 `async()` 测试中， `AsyncTestZone` 会等待所有异步任务完成。默认情况下，如果某些 Promise
-   * 仍未解决， `AsyncTestZone` 不会等待并报告它收到了意外的结果。
+   * 在 `async()` 测试中，`AsyncTestZone` 会等待所有异步任务完成。默认情况下，如果某些 Promise
+   * 仍未解决，`AsyncTestZone` 不会等待并报告它收到了意外的结果。
    *
    * Consider the following example:
    *
@@ -1148,13 +1148,13 @@ interface ZoneRuntimeConfigurations {
    * By default, if an uncaught Promise error occurs, `zone.js` outputs the
    * error to the console by calling `console.error()`.
    *
-   * 默认情况下，如果发生未捕获的 Promise 错误， `zone.js` 会通过调用 `console.error()`
+   * 默认情况下，如果发生未捕获的 Promise 错误，`zone.js` 会通过调用 `console.error()`
    * 将错误输出到控制台。
    *
    * If you set `__zone_symbol__ignoreConsoleErrorUncaughtError = true`, `zone.js` does not output
    * the uncaught error to `console.error()`.
    *
-   * 如果你设置 `__zone_symbol__ignoreConsoleErrorUncaughtError = true` ， `zone.js`
+   * 如果你设置 `__zone_symbol__ignoreConsoleErrorUncaughtError = true` ，`zone.js`
    * 不会将未捕获的错误输出到 `console.error()` 。
    *
    */

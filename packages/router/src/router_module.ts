@@ -96,12 +96,12 @@ export function routerNgProbeToken() {
  * * The `forRoot()` method creates an `NgModule` that contains all the directives, the given
  *   routes, and the `Router` service itself.
  *
- *     `forRoot()` 方法会创建一个 `NgModule`，其中包含所有指令、给定的路由以及 `Router` 服务本身。
+ *   `forRoot()` 方法会创建一个 `NgModule`，其中包含所有指令、给定的路由以及 `Router` 服务本身。
  *
  * * The `forChild()` method creates an `NgModule` that contains all the directives and the given
  *   routes, but does not include the `Router` service.
  *
- *     `forChild()` 方法会创建一个 `NgModule`，其中包含所有指令和给定的路由，但不包括 `Router`
+ *   `forChild()` 方法会创建一个 `NgModule`，其中包含所有指令和给定的路由，但不包括 `Router`
  * 服务。
  *
  * @see [Routing and Navigation guide](guide/router) for an
@@ -130,14 +130,12 @@ export class RouterModule {
    * 在根目录下注册 NgModule 时，请按以下方式导入：
    *
    * ```
-   *
-   * ```
-   *
    * @NgModule ({
    *   imports: [RouterModule.forRoot(ROUTES)]
    * })
    * class MyNgModule {}
    * ```
+   *
    * @param routes An array of `Route` objects that define the navigation paths for the application.
    *
    * `Route` 对象的数组，这些对象定义应用程序的导航路径。
@@ -191,14 +189,12 @@ export class RouterModule {
    * NgModule：
    *
    * ```
-   *
-   * ```
-   *
    * @NgModule ({
    *   imports: [RouterModule.forChild(ROUTES)]
    * })
    * class MyNgModule {}
    * ```
+   *
    * @param routes An array of `Route` objects that define the navigation paths for the submodule.
    *
    * `Route` 对象的数组，它们定义了子模块的导航路径。
@@ -244,15 +240,13 @@ export function provideForRootGuard(router: Router): any {
  * @usageNotes
  *
  * ```
- *
- * ```
- *
  * @NgModule ({
  *   imports: [RouterModule.forChild(ROUTES)],
  *   providers: [provideRoutes(EXTRA_ROUTES)]
  * })
  * class MyNgModule {}
  * ```
+ *
  * @publicApi
  */
 export function provideRoutes(routes: Routes): any {
@@ -481,7 +475,7 @@ export interface ExtraOptions {
    * `a;foo=bar/b`.
    *
    * 请注意，在处理矩阵参数时，“parent”是指父 `Route` 配置，并不一定意味着“左侧的 URL 段”。当
-   * `Route` `path` 包含多个段时，矩阵参数必须出现在最后一个段上。例如， `{path: 'a/b', component:
+   * `Route` `path` 包含多个段时，矩阵参数必须出现在最后一个段上。例如，`{path: 'a/b', component:
    * MyComp}` 矩阵参数应该显示为 `a/b;foo=bar` 而不是 `a;foo=bar/b` 。
    *
    */

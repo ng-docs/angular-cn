@@ -17,13 +17,13 @@ For example, they can query a local cache and deliver a cached response if one i
 Proxying isn't limited to requests made through programmatic APIs, such as `fetch`; it also includes resources referenced in HTML and even the initial request to `index.html`.
 Service worker-based caching is thus completely programmable and doesn't rely on server-specified caching headers.
 
-Service Worker 的功能就像一个网络代理。它们会拦截所有由应用发出的 HTTP 请求，并选择如何给出响应。 比如，它们可以查询局部缓存，如果有缓存的响应数据，就用它做出响应。 这种代理行为不会局限于通过程序调用 API（比如 `fetch`）发起的请求，还包括 HTML 中对资源的引用，甚至对 `index.html` 的首次请求。 基于 Service Worker 的缓存是完全可编程的，并且不依赖于服务端指定的那些控制缓存策略的头。
+Service Worker 的功能就像一个网络代理。它们会拦截所有由应用发出的 HTTP 请求，并选择如何给出响应。比如，它们可以查询局部缓存，如果有缓存的响应数据，就用它做出响应。这种代理行为不会局限于通过程序调用 API（比如 `fetch`）发起的请求，还包括 HTML 中对资源的引用，甚至对 `index.html` 的首次请求。基于 Service Worker 的缓存是完全可编程的，并且不依赖于服务端指定的那些控制缓存策略的头。
 
 Unlike the other scripts that make up an application, such as the Angular application bundle, the service worker is preserved after the user closes the tab.
 The next time that browser loads the application, the service worker loads first, and can intercept every request for resources to load the application.
 If the service worker is designed to do so, it can *completely satisfy the loading of the application, without the need for the network*.
 
-不像应用中的其它脚本（如 Angular 的应用包），Service Worker 在用户关闭浏览器页标签时仍然会被保留。 下次浏览器加载本应用时，Service Worker 会首先加载，然后拦截加载本应用时的对每一项资源的请求。 如果这个 Service Worker 就是为此而设计的，它就能*完全满足应用加载时的需求，而不需要依赖网络*。
+不像应用中的其它脚本（如 Angular 的应用包），Service Worker 在用户关闭浏览器页标签时仍然会被保留。下次浏览器加载本应用时，Service Worker 会首先加载，然后拦截加载本应用时的对每一项资源的请求。如果这个 Service Worker 就是为此而设计的，它就能*完全满足应用加载时的需求，而不需要依赖网络*。
 
 Even across a fast reliable network, round-trip delays can introduce significant latency when loading the application.
 Using a service worker to reduce dependency on the network can significantly improve the user experience.
@@ -38,7 +38,7 @@ Angular applications, as single-page applications, are in a prime position to be
 Starting with version 5.0.0, Angular ships with a service worker implementation.
 Angular developers can take advantage of this service worker and benefit from the increased reliability and performance it provides, without needing to code against low-level APIs.
 
-作为单页面应用，Angular 应用可以受益于 Service Worker 的优势。 从 Angular v5.0.0 开始，Angular 提供了一份 Service Worker 的实现。 Angular 开发人员可以利用 Service Worker，并受益于其增强的可靠性和性能，而无需再针对底层 API 写代码。
+作为单页面应用，Angular 应用可以受益于 Service Worker 的优势。从 Angular v5.0.0 开始，Angular 提供了一份 Service Worker 的实现。Angular 开发人员可以利用 Service Worker，并受益于其增强的可靠性和性能，而无需再针对底层 API 写代码。
 
 Angular's service worker is designed to optimize the end user experience of using an application over a slow or unreliable network connection, while also minimizing the risks of serving outdated content.
 
@@ -87,7 +87,7 @@ Installing the Angular service worker is as straightforward as including an `NgM
 In addition to registering the Angular service worker with the browser, this also makes a few services available for injection which interact with the service worker and can be used to control it.
 For example, an application can ask to be notified when a new update becomes available, or an application can ask the service worker to check the server for available updates.
 
-安装 Angular 的 Service Worker 就像引入一个 `NgModule` 一样简单。 除了使用浏览器注册 Angular 的 Service Worker 之外，还要制作一些可供注入的服务，它们可以与 Service Worker 交互，并控制它。 比如，应用可以要求当新的更新已经就绪时通知自己，或要求 Service Worker 检查服务器，看是否有可用的更新。
+安装 Angular 的 Service Worker 就像引入一个 `NgModule` 一样简单。除了使用浏览器注册 Angular 的 Service Worker 之外，还要制作一些可供注入的服务，它们可以与 Service Worker 交互，并控制它。比如，应用可以要求当新的更新已经就绪时通知自己，或要求 Service Worker 检查服务器，看是否有可用的更新。
 
 ## Prerequisites
 
@@ -115,7 +115,7 @@ To benefit from the Angular service worker, your application must run in a web b
 Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser (Android version) and Samsung Internet.
 Browsers like IE and Opera Mini do not support service workers.
 
-要从 Angular Service Worker 中受益，你的应用必须在支持 Service Worker 的 Web 浏览器中运行。 当前，最新版本的 Chrome，Firefox，Edge，Safari，Opera，UC 浏览器（Android 版）和 Samsung Internet 支持 Service Worker。而 IE 和 Opera Mini 等浏览器不支持 Service Worker。
+要从 Angular Service Worker 中受益，你的应用必须在支持 Service Worker 的 Web 浏览器中运行。当前，最新版本的 Chrome，Firefox，Edge，Safari，Opera，UC 浏览器（Android 版）和 Samsung Internet 支持 Service Worker。而 IE 和 Opera Mini 等浏览器不支持 Service Worker。
 
 If the user is accessing your application with a browser that does not support service workers, the service worker is not registered and related behavior such as offline cache management and push notifications does not happen.
 More specifically:

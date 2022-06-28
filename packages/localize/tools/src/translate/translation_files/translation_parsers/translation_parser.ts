@@ -62,7 +62,7 @@ export interface ParsedTranslationBundle {
  * parsing. This allows the parser to do significant work to determine if the file can be parsed
  * without duplicating the work when it comes to actually parsing the file.
  *
- * `canParse()` 方法可以返回一个提示， `parse()`
+ * `canParse()` 方法可以返回一个提示，`parse()`
  * 方法可以用该提示来加快解析速度。这允许解析器做大量工作来确定在实际解析文件时是否可以在不重复工作的情况下解析文件。
  *
  * Example usage:

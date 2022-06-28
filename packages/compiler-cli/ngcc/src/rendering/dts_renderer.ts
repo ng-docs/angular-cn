@@ -66,7 +66,7 @@ export interface DtsClassInfo {
  * Package formats have output files that must be rendered differently. Concrete sub-classes must
  * implement the `addImports`, `addDefinitions` and `removeDecorators` abstract methods.
  *
- * 包格式具有必须以不同方式呈现的输出文件。具体的子类必须实现 `addImports` 、 `addDefinitions` 和
+ * 包格式具有必须以不同方式呈现的输出文件。具体的子类必须实现 `addImports`、`addDefinitions` 和
  * `removeDecorators` 抽象方法。
  *
  */

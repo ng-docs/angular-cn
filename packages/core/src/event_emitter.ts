@@ -34,9 +34,6 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * 在以下示例中，组件定义了两个创建事件发射器的输出属性。单击标题后，发射器将发出打开或关闭事件以切换当前可见性状态。
  *
  * ```html
- *
- * ```
- *
  * @Component ({
  *   selector: 'zippy',
  *   template: `
@@ -68,6 +65,7 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * ```html
  * <zippy (open)="onOpen($event)" (close)="onClose($event)"></zippy>
  * ```
+ *
  * @see [Observables in Angular](guide/observables-in-angular)
  *
  * [Angular 中的可观察对象](guide/observables-in-angular)

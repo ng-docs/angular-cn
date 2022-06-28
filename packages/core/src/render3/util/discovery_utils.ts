@@ -332,7 +332,7 @@ export interface DirectiveDebugMetadata {
  *
  * - changeDetection
  *
- *   更改检测
+ *   变更检测
  *
  * @publicApi
  */
@@ -513,7 +513,7 @@ export interface Listener {
  * (e.g. through `addEventListener`).
  *
  * 检索与 DOM 元素关联的事件监听器的列表。该列表包含宿主监听器，但不包含在 Angular
- * 上下文之外定义的事件监听器（比如，通过 `addEventListener` ）。
+ * 上下文之外定义的事件监听器（比如，通过 `addEventListener`）。
  *
  * @usageNotes
  *
@@ -649,7 +649,7 @@ export function getDebugNode(element: Element): DebugNode|null {
  * NOTE: `LView` is a private and should not be leaked outside.
  *       Don't export this method to `ng.*` on window.
  *
- * 注： `LView` 是私有的，不应泄漏到外面。不要将此方法导出到 window.org 上的 `ng.*` 。
+ * 注意： `LView` 是私有的，不应泄漏到外面。不要将此方法导出到 window.org 上的 `ng.*` 。
  *
  * @param target DOM element or component instance for which to retrieve the LView.
  *

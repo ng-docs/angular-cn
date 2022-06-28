@@ -122,7 +122,7 @@ export class Driver implements Debuggable, UpdateSource {
    * Keep track of whether we have logged an invalid `only-if-cached` request.
    * (See `.onFetch()` for details.)
    *
-   * 跟踪我们是否记录了无效的 `only-if-cached` 请求。 （有关详细信息，请参阅 `.onFetch()` 。）
+   * 跟踪我们是否记录了无效的 `only-if-cached` 请求。（有关详细信息，请参阅 `.onFetch()` 。）
    *
    */
   private loggedInvalidOnlyIfCachedRequest: boolean = false;
@@ -792,8 +792,8 @@ export class Driver implements Debuggable, UpdateSource {
    * Return `null` if `ignoreOfflineError` is true (default: false) and the server or client are
    * offline (detected as response status 503 (service unavailable) or 504 (gateway timeout)).
    *
-   * 从服务器检索最新清单的副本。如果 `ignoreOfflineError` 为 true （默认值： false
-   * ）并且服务器或客户端处于脱机状态（检测为响应状态 503（服务不可用）或 504（网关超时）），则返回
+   * 从服务器检索最新清单的副本。如果 `ignoreOfflineError` 为 true（默认值： false
+   *）并且服务器或客户端处于脱机状态（检测为响应状态 503（服务不可用）或 504（网关超时）），则返回
    * `null` 。
    *
    */
@@ -1031,7 +1031,7 @@ export class Driver implements Debuggable, UpdateSource {
    * into storage quota limitations imposed by browsers.
    * (Since at this point the SW has claimed all clients, it is safe to remove those caches.)
    *
-   * 删除旧版 `@angular/service-worker` 使用的缓存，以避免遇到浏览器施加的存储配额限制。 （由于此时
+   * 删除旧版 `@angular/service-worker` 使用的缓存，以避免遇到浏览器施加的存储配额限制。（由于此时
    * SW 已声明所有客户端，因此删除这些缓存是安全的。）
    *
    */

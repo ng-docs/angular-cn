@@ -5,7 +5,7 @@
 Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications.
 Angular DevTools supports Angular v12 and later.
 
-Angular DevTools 是一个浏览器扩展，为 Angular 应用程序提供调试和剖析功能。 Angular DevTools 支持 Angular v12 及更高版本。
+Angular DevTools 是一个浏览器扩展，为 Angular 应用程序提供调试和剖析功能。Angular DevTools 支持 Angular v12 及更高版本。
 
 <div class="video-container">
 
@@ -29,15 +29,15 @@ After installing Angular DevTools, find the extension under the Angular tab in y
 
 When you open the extension, you'll see two additional tabs:
 
-打开扩展程序时，你会看到两个额外的选项卡：
+打开扩展程序时，你还会看到另外两个选项卡：
 
 | Tabs | Details |
 | :--- | :------ |
 | 选项卡 | 详细信息 |
 | [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state. |
-| [组件](#components) | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。 |
+| [组件](#components) | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。|
 | [Profiler](#profiler) | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
-| [环境配置器](#profiler) | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。 |
+| [环境配置器](#profiler) | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。|
 
 <div class="lightbox">
 
@@ -107,7 +107,7 @@ When you select a component or a directive instance, Angular DevTools presents a
 Click the individual components or directives in the component explorer to select them and preview their properties.
 Angular DevTools displays their properties and metadata on the right-hand side of the component tree.
 
-单击组件浏览器中的各个组件或指令，以选择它们并预览其属性。 Angular DevTools 在组件树的右侧显示其属性和元数据。
+单击组件浏览器中的各个组件或指令，以选择它们并预览其属性。Angular DevTools 在组件树的右侧显示其属性和元数据。
 
 Navigate in the component tree using the mouse or the following keyboard shortcuts:
 
@@ -125,7 +125,7 @@ To look up a component or directive by name use the search box above the compone
 To navigate to the next search match, press `Enter`.
 To navigate to the previous search match, press `Shift + Enter`.
 
-要通过名称查找组件或指令，请使用组件树上方的搜索框。要导航至下一个搜索匹配项，请按 `Enter`。要导航至上一个搜索匹配项，请按 `Shift + Enter` 。
+要通过名称查找组件或指令，请使用组件树上方的搜索框。要导航至下一个搜索匹配项，请按 `Enter`。要导航至上一个搜索匹配项，请按 `Shift + Enter`。
 
 <div class="lightbox">
 
@@ -140,7 +140,7 @@ To navigate to the previous search match, press `Shift + Enter`.
 To go to the host element of a particular component or directive, find it in the component explorer and double-click it.
 Browsers' DevTools opens the Elements tab in Chrome or the Inspector one in Firefox, and selects the associated DOM node.
 
-要转到特定组件或指令的宿主元素，请在组件浏览器中找到它，然后双击它。 浏览器的 DevTools 将在 Chrome 或 Firefox 的审查器中打开 “Elements” 选项卡，然后选择关联的 DOM 节点。
+要转到特定组件或指令的宿主元素，请在组件浏览器中找到它，然后双击它。浏览器的 DevTools 将在 Chrome 或 Firefox 的审查器中打开 “Elements” 选项卡，然后选择关联的 DOM 节点。
 
 ### Navigate to source
 
@@ -197,7 +197,7 @@ Similar to browsers' DevTools, you can inspect the page to select a particular c
 Click the ***Inspect element*** icon at the top left corner within Angular DevTools and hover over a DOM element on the page.
 The extension recognizes the associated directives and/or components and lets you select the corresponding element in the Component tree.
 
-与浏览器的 DevTools 相似，你可以检查页面以选择特定的组件或指令。单击 DevTools 中左上角的 ***Inspect element（审查元素）***图标，然后将鼠标悬停在页面上的 DOM 元素上。 该扩展可以识别关联的指令和/或组件，并允许你在组件树中选择相应的元素。
+与浏览器的 DevTools 相似，你可以检查页面以选择特定的组件或指令。单击 DevTools 中左上角的 ***Inspect element（审查元素）***图标，然后将鼠标悬停在页面上的 DOM 元素上。该扩展可以识别关联的指令和/或组件，并允许你在组件树中选择相应的元素。
 
 <div class="lightbox">
 
@@ -265,7 +265,7 @@ When you select a bar, DevTools renders a bar chart with all the components and 
 Earlier on the change detection timeline, you can find how much time Angular spent in this cycle.
 Angular DevTools attempts to estimate the frame drop at this point to indicate when the execution of your application might impact the user experience.
 
-在变更检测时间轴前面，你可以发现 Angular 在此周期中花费了多少时间。 Angular DevTools 会试图估算出掉帧情况，以指示应用程序的执行何时可能会影响用户体验。
+在变更检测时间轴前面，你可以发现 Angular 在此周期中花费了多少时间。Angular DevTools 会试图估算出掉帧情况，以指示应用程序的执行何时可能会影响用户体验。
 
 Angular DevTools also indicates what triggered the change detection (that is, the change detection's source).
 
@@ -312,7 +312,7 @@ For example, if during one change detection cycle at a specific position in the 
 Each tile is colored depending on how much time Angular spent there.
 DevTools determines the intensity of the color by the time spent relative to the tile where we've spent the most time in change detection.
 
-每个图块的颜色取决于 Angular 在这里花费了多少时间。 DevTools 通过相对于我们花费最多时间进行变更检测的图块所花费的时间来确定颜色的深浅。
+每个图块的颜色取决于 Angular 在这里花费了多少时间。DevTools 通过相对于我们花费最多时间进行变更检测的图块所花费的时间来确定颜色的深浅。
 
 When you click on a certain tile, you'll see details about it in the panel on the right.
 Double-clicking the tile zooms it in so you can preview the nested children.

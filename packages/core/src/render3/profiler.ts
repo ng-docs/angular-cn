@@ -104,7 +104,7 @@ let profilerCallback: Profiler|null = null;
  * Sets the callback function which will be invoked before and after performing certain actions at
  * runtime (for example, before and after running change detection).
  *
- * 设置将在运行时执行某些操作（例如，运行更改检测之前和之后）之前和之后调用的回调函数。
+ * 设置将在运行时执行某些操作（例如，运行变更检测之前和之后）之前和之后调用的回调函数。
  *
  * Warning: this function is *INTERNAL* and should not be relied upon in application's code.
  * The contract of the function might be changed in any release and/or the function can be removed

@@ -22,7 +22,7 @@ In this tutorial, you'll add the following data persistence features with help f
 
 For the sample application that this page describes, see the <live-example></live-example>.
 
-  要查看本页所讲的范例程序，参阅<live-example></live-example>。
+要查看本页所讲的范例程序，参阅<live-example></live-example>。
 
 </div>
 
@@ -157,7 +157,7 @@ Notice that you keep injecting the `MessageService` but since you'll call it so 
 Define the `heroesUrl` of the form `:base/:collectionName` with the address of the heroes resource on the server.
 Here `base` is the resource to which requests are made, and `collectionName` is the heroes data object in the `in-memory-data-service.ts`.
 
-把服务器上英雄数据资源的访问地址 `heroesURL` 定义为 `:base/:collectionName` 的形式。 这里的 `base` 是要请求的资源，而 `collectionName` 是 `in-memory-data-service.ts` 中的英雄数据对象。
+把服务器上英雄数据资源的访问地址 `heroesURL` 定义为 `:base/:collectionName` 的形式。这里的 `base` 是要请求的资源，而 `collectionName` 是 `in-memory-data-service.ts` 中的英雄数据对象。
 
 <code-example path="toh-pt6/src/app/hero.service.ts" header="src/app/hero.service.ts" region="heroesUrl" ></code-example>
 
@@ -203,7 +203,7 @@ HTTP 是一个请求/响应式协议。你发起请求，它返回单个的响�
 In general, an observable *can* return multiple values over time.
 An observable from `HttpClient` always emits a single value and then completes, never to emit again.
 
-通常，`Observable` *可以*在一段时间内返回多个值。 但来自 `HttpClient` 的 `Observable` 总是发出一个值，然后结束，再也不会发出其它值。
+通常，`Observable` *可以*在一段时间内返回多个值。但来自 `HttpClient` 的 `Observable` 总是发出一个值，然后结束，再也不会发出其它值。
 
 This particular `HttpClient.get()` call returns an `Observable<Hero[]>`; that is, "*an observable of hero arrays*".
 In practice, it will only return a single hero array.
@@ -217,19 +217,19 @@ In practice, it will only return a single hero array.
 `HttpClient.get()` returns the body of the response as an untyped JSON object by default.
 Applying the optional type specifier, `<Hero[]>` , adds TypeScript capabilities, which reduce errors during compile time.
 
-`HttpClient.get()` 默认情况下把响应体当做无类型的 JSON 对象进行返回。 如果指定了可选的模板类型 `<Hero[]>`，就会给返回你一个类型化的对象。
+`HttpClient.get()` 默认情况下把响应体当做无类型的 JSON 对象进行返回。如果指定了可选的模板类型 `<Hero[]>`，就会给返回你一个类型化的对象。
 
 The server's data API determines the shape of the JSON data.
 The *Tour of Heroes* data API returns the hero data as an array.
 
-服务器的数据 API 决定了 JSON 数据的具体形态。 *英雄之旅*的数据 API 会把英雄数据作为一个数组进行返回。
+服务器的数据 API 决定了 JSON 数据的具体形态。*英雄之旅*的数据 API 会把英雄数据作为一个数组进行返回。
 
 <div class="alert is-helpful">
 
 Other APIs may bury the data that you want within an object.
 You might have to dig that data out by processing the `Observable` result with the RxJS `map()` operator.
 
-其它 API 可能在返回对象中深埋着你想要的数据。 你可能要借助 RxJS 的 `map()` 操作符对 `Observable` 的结果进行处理，以便把这些数据挖掘出来。
+其它 API 可能在返回对象中深埋着你想要的数据。你可能要借助 RxJS 的 `map()` 操作符对 `Observable` 的结果进行处理，以便把这些数据挖掘出来。
 
 Although not discussed here, there's an example of `map()` in the `getHeroNo404()` method included in the sample source code.
 
@@ -244,7 +244,7 @@ Although not discussed here, there's an example of `map()` in the `getHeroNo404(
 Things go wrong, especially when you're getting data from a remote server.
 The `HeroService.getHeroes()` method should catch errors and do something appropriate.
 
-凡事皆会出错，特别是当你从远端服务器获取数据的时候。 `HeroService.getHeroes()` 方法应该捕获错误，并做适当的处理。
+凡事皆会出错，特别是当你从远端服务器获取数据的时候。`HeroService.getHeroes()` 方法应该捕获错误，并做适当的处理。
 
 To catch errors, you **"pipe" the observable** result from `http.get()` through an RxJS `catchError()` operator.
 
@@ -265,7 +265,7 @@ Now extend the observable result with the `pipe()` method and give it a `catchEr
 The `catchError()` operator intercepts an **`Observable` that failed**.
 The operator then passes the error to the error handling function.
 
-`catchError()` 操作符会拦截**失败的 `Observable`**。 它把错误对象传给*错误处理器*，*错误处理器*会处理这个错误。
+`catchError()` 操作符会拦截**失败的 `Observable`**。它把错误对象传给*错误处理器*，*错误处理器*会处理这个错误。
 
 The following `handleError()` method reports the error and then returns an innocuous result so that the application keeps working.
 
@@ -302,7 +302,7 @@ The `HeroService` methods will **tap** into the flow of observable values and se
 They'll do that with the RxJS `tap()` operator, which looks at the observable values, does something with those values, and passes them along.
 The `tap()` call back doesn't touch the values themselves.
 
-它们可以使用 RxJS 的 `tap()` 操作符来实现，该操作符会查看 Observable 中的值，使用那些值做一些事情，并且把它们传出来。 这种 `tap()` 回调不会改变这些值本身。
+它们可以使用 RxJS 的 `tap()` 操作符来实现，该操作符会查看 Observable 中的值，使用那些值做一些事情，并且把它们传出来。这种 `tap()` 回调不会改变这些值本身。
 
 Here is the final version of `getHeroes()` with the `tap()` that logs the operation.
 
@@ -353,7 +353,7 @@ Edit a hero's name in the hero detail view.
 As you type, the hero name updates the heading at the top of the page.
 But when you click the "go back button", the changes are lost.
 
-在*英雄详情*视图中编辑英雄的名字。 随着输入，英雄的名字也跟着在页面顶部的标题区更新了。 但是当你点击“后退”按钮时，这些修改都丢失了。
+在*英雄详情*视图中编辑英雄的名字。随着输入，英雄的名字也跟着在页面顶部的标题区更新了。但是当你点击“后退”按钮时，这些修改都丢失了。
 
 If you want changes to persist, you must write them back to the server.
 
@@ -378,7 +378,7 @@ In the `HeroDetail` component class, add the following `save()` method, which pe
 The overall structure of the `updateHero()` method is similar to that of `getHeroes()`, but it uses `http.put()` to persist the changed hero on the server.
 Add the following to the `HeroService`.
 
-`updateHero()` 的总体结构和 `getHeroes()` 很相似，但它会使用 `http.put()` 来把修改后的英雄保存到服务器上。 把下列代码添加进 `HeroService`。
+`updateHero()` 的总体结构和 `getHeroes()` 很相似，但它会使用 `http.put()` 来把修改后的英雄保存到服务器上。把下列代码添加进 `HeroService`。
 
 <code-example header="src/app/hero.service.ts (update)" path="toh-pt6/src/app/hero.service.ts" region="updateHero"></code-example>
 
@@ -407,7 +407,7 @@ The heroes web API expects a special header in HTTP save requests.
 That header is in the `httpOptions` constant defined in the `HeroService`.
 Add the following to the `HeroService` class.
 
-英雄 Web API 期待在保存时的请求中有一个特殊的头。 这个头是在 `HeroService` 的 `httpOptions` 常量中定义的。
+英雄 Web API 期待在保存时的请求中有一个特殊的头。这个头是在 `HeroService` 的 `httpOptions` 常量中定义的。
 
 <code-example header="src/app/hero.service.ts" path="toh-pt6/src/app/hero.service.ts" region="http-options"></code-example>
 
@@ -415,7 +415,7 @@ Refresh the browser, change a hero name and save your change.
 The `save()` method in `HeroDetailComponent` navigates to the previous view.
 The hero now appears in the list with the changed name.
 
-刷新浏览器，修改英雄名，保存这些修改。在 `HeroDetailComponent` 的 `save()` 方法中导航到前一个视图。 现在，改名后的英雄已经显示在列表中了。
+刷新浏览器，修改英雄名，保存这些修改。在 `HeroDetailComponent` 的 `save()` 方法中导航到前一个视图。现在，改名后的英雄已经显示在列表中了。
 
 ## Add a new hero
 
@@ -503,7 +503,7 @@ Add the `delete()` handler to the component class.
 Although the component delegates hero deletion to the `HeroService`, it remains responsible for updating its own list of heroes.
 The component's `delete()` method immediately removes the *hero-to-delete* from that list, anticipating that the `HeroService` will succeed on the server.
 
-虽然这个组件把删除英雄的逻辑委托给了 `HeroService`，但仍保留了更新它自己的英雄列表的职责。 组件的 `delete()` 方法会在 `HeroService` 对服务器的操作成功之前，先从列表中移除*要删除的英雄*。
+虽然这个组件把删除英雄的逻辑委托给了 `HeroService`，但仍保留了更新它自己的英雄列表的职责。组件的 `delete()` 方法会在 `HeroService` 对服务器的操作成功之前，先从列表中移除*要删除的英雄*。
 
 There's really nothing for the component to do with the `Observable` returned by `heroService.deleteHero()` **but it must subscribe anyway**.
 
@@ -514,7 +514,7 @@ There's really nothing for the component to do with the `Observable` returned by
 If you neglect to `subscribe()`, the service will not send the delete request to the server.
 As a rule, an `Observable` *does nothing* until something subscribes.
 
-如果你忘了调用 `subscribe()`，本服务将不会把这个删除请求发送给服务器。 作为一条通用的规则，`Observable` 在有人订阅之前*什么都不会做*。
+如果你忘了调用 `subscribe()`，本服务将不会把这个删除请求发送给服务器。作为一条通用的规则，`Observable` 在有人订阅之前*什么都不会做*。
 
 Confirm this for yourself by temporarily removing the `subscribe()`, clicking "Dashboard", then clicking "Heroes".
 You'll see the full list of heroes again.
@@ -565,7 +565,7 @@ You will add a heroes search feature to the Dashboard.
 As the user types a name into a search box, you'll make repeated HTTP requests for heroes filtered by that name.
 Your goal is to issue only as many requests as necessary.
 
-你将往*仪表盘*中加入*英雄搜索*特性。 当用户在搜索框中输入名字时，你会不断发送根据名字过滤英雄的 HTTP 请求。 你的目标是仅仅发出尽可能少的必要请求。
+你将往*仪表盘*中加入*英雄搜索*特性。当用户在搜索框中输入名字时，你会不断发送根据名字过滤英雄的 HTTP 请求。你的目标是仅仅发出尽可能少的必要请求。
 
 #### `HeroService.searchHeroes()`
 
@@ -578,7 +578,7 @@ Start by adding a `searchHeroes()` method to the `HeroService`.
 The method returns immediately with an empty array if there is no search term.
 The rest of it closely resembles `getHeroes()`, the only significant difference being the URL, which includes a query string with the search term.
 
-如果没有搜索词，该方法立即返回一个空数组。 剩下的部分和 `getHeroes()` 很像。 唯一的不同点是 URL，它包含了一个由搜索词组成的查询字符串。
+如果没有搜索词，该方法立即返回一个空数组。剩下的部分和 `getHeroes()` 很像。唯一的不同点是 URL，它包含了一个由搜索词组成的查询字符串。
 
 ### Add search to the Dashboard
 
@@ -682,7 +682,7 @@ The `searchTerms` property is an RxJS `Subject`.
 A `Subject` is both a source of observable values and an `Observable` itself.
 You can subscribe to a `Subject` as you would any `Observable`.
 
-`Subject` 既是可观察对象的数据源，本身也是 `Observable`。 你可以像订阅任何 `Observable` 一样订阅 `Subject`。
+`Subject` 既是可观察对象的数据源，本身也是 `Observable`。你可以像订阅任何 `Observable` 一样订阅 `Subject`。
 
 You can also push values into that `Observable` by calling its `next(value)` method as the `search()` method does.
 
@@ -697,7 +697,7 @@ The event binding to the textbox's `input` event calls the `search()` method.
 Every time the user types in the textbox, the binding calls `search()` with the textbox value, a "search term".
 The `searchTerms` becomes an `Observable` emitting a steady stream of search terms.
 
-每当用户在文本框中输入时，这个事件绑定就会使用文本框的值（搜索词）调用 `search()` 函数。 `searchTerms` 变成了一个能发出搜索词的稳定的流。
+每当用户在文本框中输入时，这个事件绑定就会使用文本框的值（搜索词）调用 `search()` 函数。`searchTerms` 变成了一个能发出搜索词的稳定的流。
 
 <a id="search-pipe"></a>
 
@@ -711,7 +711,7 @@ Passing a new search term directly to the `searchHeroes()` after every user keys
 
 Instead, the `ngOnInit()` method pipes the `searchTerms` observable through a sequence of RxJS operators that reduce the number of calls to the `searchHeroes()`, ultimately returning an observable of timely hero search results (each a `Hero[]`).
 
-应该怎么做呢？`ngOnInit()` 往 `searchTerms` 这个可观察对象的处理管道中加入了一系列 RxJS 操作符，用以缩减对 `searchHeroes()` 的调用次数，并最终返回一个可及时给出英雄搜索结果的可观察对象（每次都是 `Hero[]` ）。
+应该怎么做呢？`ngOnInit()` 往 `searchTerms` 这个可观察对象的处理管道中加入了一系列 RxJS 操作符，用以缩减对 `searchHeroes()` 的调用次数，并最终返回一个可及时给出英雄搜索结果的可观察对象（每次都是 `Hero[]`）。
 
 Here's a closer look at the code.
 
@@ -726,7 +726,7 @@ Each operator works as follows:
 * `debounceTime(300)` waits until the flow of new string events pauses for 300 milliseconds before passing along the latest string.
   You'll never make requests more frequently than 300ms.
 
-  在传出最终字符串之前，`debounceTime(300)` 将会等待，直到新增字符串的事件暂停了 300 毫秒。 你实际发起请求的间隔永远不会小于 300ms。
+  在传出最终字符串之前，`debounceTime(300)` 将会等待，直到新增字符串的事件暂停了 300 毫秒。你实际发起请求的间隔永远不会小于 300ms。
 
 * `distinctUntilChanged()` ensures that a request is sent only if the filter text changed.
 
@@ -735,19 +735,19 @@ Each operator works as follows:
 * `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`.
   It cancels and discards previous search observables, returning only the latest search service observable.
 
-  `switchMap()` 会为每个从 `debounce()` 和 `distinctUntilChanged()` 中通过的搜索词调用搜索服务。 它会取消并丢弃以前的搜索可观察对象，只保留最近的。
+  `switchMap()` 会为每个从 `debounce()` 和 `distinctUntilChanged()` 中通过的搜索词调用搜索服务。它会取消并丢弃以前的搜索可观察对象，只保留最近的。
 
 <div class="alert is-helpful">
 
 With the [switchMap operator](https://www.learnrxjs.io/learn-rxjs/operators/transformation/switchmap), every qualifying key event can trigger an `HttpClient.get()` method call.
 Even with a 300ms pause between requests, you could have multiple HTTP requests in flight and they may not return in the order sent.
 
-借助 [switchMap 操作符](http://www.learnrxjs.io/operators/transformation/switchmap.html)， 每个有效的按键事件都会触发一次 `HttpClient.get()` 方法调用。 即使在每个请求之间都有至少 300ms 的间隔，仍然可能会同时存在多个尚未返回的 HTTP 请求。
+借助 [switchMap 操作符](http://www.learnrxjs.io/operators/transformation/switchmap.html)，每个有效的按键事件都会触发一次 `HttpClient.get()` 方法调用。即使在每个请求之间都有至少 300ms 的间隔，仍然可能会同时存在多个尚未返回的 HTTP 请求。
 
 `switchMap()` preserves the original request order while returning only the observable from the most recent HTTP method call.
 Results from prior calls are canceled and discarded.
 
-`switchMap()` 会记住原始的请求顺序，只会返回最近一次 HTTP 方法调用的结果。 以前的那些请求都会被取消和舍弃。
+`switchMap()` 会记住原始的请求顺序，只会返回最近一次 HTTP 方法调用的结果。以前的那些请求都会被取消和舍弃。
 
 <div class="alert is-helpful">
 
@@ -879,6 +879,6 @@ You're at the end of your journey, and you've accomplished a lot.
 This concludes the "Tour of Heroes" tutorial.
 You're ready to learn more about Angular development in the fundamentals section, starting with the [Architecture](guide/architecture "Architecture") guide.
 
-《英雄之旅》教程结束了。 如果你准备开始学习 Angular 开发的原理，请开始 [架构](guide/architecture "Architecture") 一章。
+《英雄之旅》教程结束了。如果你准备开始学习 Angular 开发的原理，请开始 [架构](guide/architecture "Architecture") 一章。
 
 @reviewed 2022-02-28

@@ -20,8 +20,6 @@ A best practice is to run your project locally before you deploy it. To run your
 
 * [Node.js](https://nodejs.org/en).
 
-  [Node.js](https://nodejs.org/en) 。
-
 * The [Angular CLI](https://cli.angular.io).
   From the terminal, install the Angular CLI globally with:
 
@@ -146,7 +144,7 @@ You can go deeper by studying more of Angular's features, engaging with the vibr
 
 For a more in-depth tutorial that leads you through building an application locally and exploring many of Angular's most popular features, see [Tour of Heroes](tutorial).
 
-一份更深入的教程可以指导你在本地构建应用并探索 Angular 许多最受欢迎的功能，请参阅[《英雄之旅》](tutorial) 。
+一份更深入的教程可以指导你在本地构建应用并探索 Angular 许多最受欢迎的功能，请参阅[《英雄之旅》](tutorial)。
 
 To explore Angular's foundational concepts, see the guides in the Understanding Angular section such as [Angular Components Overview](guide/component-overview) or [Template syntax](guide/template-syntax).
 
@@ -170,7 +168,7 @@ Keep current by following the [Angular blog](https://blog.angular.io/ "Angular b
 
 To support your UX/UI development, see [Angular Material](https://material.angular.io/ "Angular Material web site").
 
-要支持你的 UX/UI 开发，请参阅 [Angular Material](https://material.angular.cn/ "Angular Material 网站") 。
+要支持你的 UX/UI 开发，请参阅 [Angular Material](https://material.angular.cn/ "Angular Material 网站")。
 
 The Angular community also has an extensive [network of third-party tools and libraries](resources "Angular resources list").
 

@@ -100,7 +100,7 @@ The `pipe()` function is also a method on the RxJS `Observable`, so you use this
 RxJS provides many operators, but only a handful are used frequently.
 For a list of operators and usage samples, visit the [RxJS API Documentation](https://rxjs.dev/api).
 
-RxJS 提供了很多操作符，不过只有少数是常用的。 下面是一个常用操作符的列表和用法范例，参阅 [RxJS API 文档](https://rxjs.dev/api)。
+RxJS 提供了很多操作符，不过只有少数是常用的。下面是一个常用操作符的列表和用法范例，参阅 [RxJS API 文档](https://rxjs.dev/api)。
 
 <div class="alert is-helpful">
 

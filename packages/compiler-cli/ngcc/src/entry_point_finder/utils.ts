@@ -166,7 +166,7 @@ export function trackDuration<T = void>(task: () => T extends Promise<unknown>? 
  * one of the base paths.)
  *
  * 例如：给定 `['a/b/c', 'a/b/x', 'a/b', 'd/e', 'd/f']` 我们最终将得到 `['a/b', 'd/e', 'd/f]` 。
- * （请注意，即使 `d/e` 和 `d/f` 共享一个基本目录，我们也不会得到 `d` ，因为 `d`
+ *（请注意，即使 `d/e` 和 `d/f` 共享一个基本目录，我们也不会得到 `d` ，因为 `d`
  * 不是基本路径之一。）
  *
  */

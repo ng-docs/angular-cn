@@ -266,7 +266,7 @@ function findViaNativeElement(lView: LView, target: RElement): number {
 /**
  * Locates the next tNode (child, sibling or parent).
  *
- * 定位下一个 tNode （子级、同级或父级）。
+ * 定位下一个 tNode（子级、同级或父级）。
  *
  */
 function traverseNextElement(tNode: TNode): TNode|null {

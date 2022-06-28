@@ -141,15 +141,15 @@ interface BoundStylingEntry {
  *
  * - Static style/class attributes (style="..." and class="...")
  *
- *   静态样式/类属性（ style="..." 和 class="..." ）
+ *   静态样式/类属性（style="..." 和 class="..."）
  *
  * - Dynamic style/class map bindings ([style]="map" and [class]="map|string")
  *
- *   动态样式/类映射绑定（ [style][style] ="map" 和[class][class] ="map|string"）
+ *   动态样式/类映射绑定（[style][style] ="map" 和[class][class] ="map|string"）
  *
  * - Dynamic style/class property bindings ([style.prop]="exp" and [class.name]="exp")
  *
- *   动态样式/类属性绑定（ [style.prop][style.prop] ="exp" 和[class.name][class.name] ="exp"）
+ *   动态样式/类属性绑定（[style.prop][style.prop] ="exp" 和[class.name][class.name] ="exp"）
  *
  * Due to the complex relationship of all of these cases, the instructions generated
  * for these attributes/properties/bindings must be done so in the correct order. The
@@ -186,7 +186,7 @@ export class StylingBuilder {
    * Whether or not there are any styling bindings present
    *  (i.e. `[style]`, `[class]`, `[style.prop]` or `[class.name]`)
    *
-   * 是否存在任何样式绑定（即 `[style]` 、 `[class]` 、 `[style.prop]` 或 `[class.name]` ）
+   * 是否存在任何样式绑定（即 `[style]`、`[class]`、`[style.prop]` 或 `[class.name]`）
    *
    */
   public hasBindings = false;
@@ -232,7 +232,7 @@ export class StylingBuilder {
    * that `width=0` and `height=1`)
    *
    * 表示模板中每个样式绑定的位置（例如 `<div [style.width]="w" [style.height]="h">` 意味着
-   * `width=0` 和 `height=1` ）
+   * `width=0` 和 `height=1`）
    *
    */
   private _stylesIndex = new Map<string, number>();
@@ -243,7 +243,7 @@ export class StylingBuilder {
    * that `big=0` and `hidden=1`)
    *
    * 表示模板中每个类绑定的位置（例如 `<div [class.big]="b" [class.hidden]="h">` 意味着 `big=0` 和
-   * `hidden=1` ）
+   * `hidden=1`）
    *
    */
   private _classesIndex = new Map<string, number>();
@@ -365,7 +365,7 @@ export class StylingBuilder {
    *
    * @param value the style string (e.g. `width:100px; height:200px;`)
    *
-   * 样式字符串（例如 `width:100px; height:200px;` ）
+   * 样式字符串（例如 `width:100px; height:200px;`）
    *
    */
   registerStyleAttr(value: string) {
@@ -380,7 +380,7 @@ export class StylingBuilder {
    *
    * @param value the className string (e.g. `disabled gold zoom`)
    *
-   * className 字符串（例如 `disabled gold zoom` ）
+   * className 字符串（例如 `disabled gold zoom`）
    *
    */
   registerClassAttr(value: string) {

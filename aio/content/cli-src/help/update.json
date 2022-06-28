@@ -1,0 +1,97 @@
+{
+  "name": "update",
+  "command": "ng update [packages..]",
+  "shortDescription": "Updates your workspace and its dependencies. See https://update.angular.io/.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/update/long-description.md",
+  "longDescription": "Perform a basic update to the current stable release of the core framework and CLI by running the following command.\n\n```\nng update @angular/cli @angular/core\n```\n\nTo update to the next beta or pre-release version, use the `--next` option.\n\nTo update from one major version to another, use the format\n\n```\nng update @angular/cli@^<major_version> @angular/core@^<major_version>\n```\n\nWe recommend that you always update to the latest patch version, as it contains fixes we released since the initial major release.\nFor example, use the following command to take the latest 10.x.x version and use that to update.\n\n```\nng update @angular/cli@^10 @angular/core@^10\n```\n\nFor detailed information and guidance on updating your application, see the interactive [Angular Update Guide](https://update.angular.io/).\n",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "allow-dirty",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow updating when the repository contains modified or untracked files.",
+      "descriptionCn": "是否允许本仓库包含已修改或未跟踪的文件时进行更新。"
+    },
+    {
+      "name": "create-commits",
+      "type": "boolean",
+      "aliases": [
+        "C"
+      ],
+      "default": false,
+      "description": "Create source control commits for updates and migrations.",
+      "descriptionCn": "为升级和迁移的过程，在源码控制中创建一些提交。"
+    },
+    {
+      "name": "force",
+      "type": "boolean",
+      "default": false,
+      "description": "Ignore peer dependency version mismatches. Passes the '--force' flag to the package manager when installing packages.",
+      "descriptionCn": "忽略对等依赖版本不匹配的情况。安装包时，将 `--force` 标志传递给包管理器。"
+    },
+    {
+      "name": "from",
+      "type": "string",
+      "description": "Version from which to migrate from. Only available with a single package being updated, and only with 'migrate-only'.",
+      "descriptionCn": "要从中迁移的版本。仅适用于要更新的单个包，并且仅适用于 `migrate-only` 。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "migrate-only",
+      "type": "boolean",
+      "description": "Only perform a migration, do not update the installed version.",
+      "descriptionCn": "只执行迁移，而不更新已安装的版本。"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the migration to run. Only available with a single package being updated, and only with 'migrate-only' option.",
+      "descriptionCn": "要运行的迁移的名称。仅适用于要更新的单个包，并且仅使用 `migrate-only` 选项。"
+    },
+    {
+      "name": "next",
+      "type": "boolean",
+      "default": false,
+      "description": "Use the prerelease version, including beta and RCs.",
+      "descriptionCn": "使用与发布版本，包括 beta 和 RC。"
+    },
+    {
+      "name": "packages",
+      "type": "array",
+      "default": [],
+      "description": "The names of package(s) to update.",
+      "positional": 0,
+      "descriptionCn": "要更新的包名（可以有多个）。"
+    },
+    {
+      "name": "packages",
+      "type": "string",
+      "default": [],
+      "description": "The names of package(s) to update.",
+      "positional": 0,
+      "descriptionCn": "要更新的包名（可以有多个）。"
+    },
+    {
+      "name": "to",
+      "type": "string",
+      "description": "Version up to which to apply migrations. Only available with a single package being updated, and only with 'migrate-only' option. Requires 'from' to be specified. Default to the installed version detected.",
+      "descriptionCn": "要应用迁移的版本。仅适用于要更新的单个包，并且仅使用 `migrate-only` 选项。需要指定 `from`。默认为检测到的已安装版本。"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "default": false,
+      "description": "Display additional details about internal operations during execution.",
+      "descriptionCn": "在执行期间显示内部操作的详细信息。"
+    }
+  ],
+  "shortDescriptionCn": "更新你的工作区及其依赖项。请参阅<https://update.angular.io/> 。",
+  "longDescriptionCn": "通过运行以下命令，对核心框架和 CLI 的当前稳定版本执行基本更新。\n\n```\n ng update @angular/cli @angular/core\n```\n\n要更新到下一个 Beta 版或预发行版本，请使用`--next`选项。\n\n要从一个主要版本更新到另一个，请使用以下格式\n\n```\nng update @angular/cli@^<major_version> @angular/core@^<major_version>\n```\n\n我们建议你始终更新到最新的补丁版本，因为它包含我们自初始主要版本以来发布的修复。例如，使用以下命令获取最新的 10.xx 版本并用它进行更新。\n\n```\n ng update @angular/cli@^10 @angular/core@^10\n```\n\n有关更新应用程序的详细信息和指导，请参阅交互式[Angular 更新指南](https://update.angular.io/)。"
+}

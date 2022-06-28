@@ -47,7 +47,7 @@ To better explain the condition under which token retention occurs, consider a l
 
 In a likely implementation, the `<lib-card>` component uses `@ContentChild()` or `@ContentChildren()` to obtain `<lib-header>` and `<lib-body>`, as in the following.
 
-在一个可能的实现中， `<lib-card>` 组件使用 `@ContentChild()` 或者 `@ContentChildren()` 来获取 `<lib-header>` 和 `<lib-body>` ，如下所示。
+在一个可能的实现中，`<lib-card>` 组件使用 `@ContentChild()` 或者 `@ContentChildren()` 来获取 `<lib-header>` 和 `<lib-body>`，如下所示。
 
 <code-example format="typescript" language="typescript">
 
@@ -82,11 +82,11 @@ This is because `LibCardComponent` actually contains two references to the `LibH
 
 * One of these reference is in the *type position*-- that is, it specifies `LibHeaderComponent` as a type: `header: LibHeaderComponent;`.
 
-  其中一个引用位于*类型位置上* - 即，它把 `LibHeaderComponent` 用作了类型： `header: LibHeaderComponent;` 。
+  其中一个引用位于*类型位置上* - 即，它把 `LibHeaderComponent` 用作了类型：`header: LibHeaderComponent;`。
 
 * The other reference is in the *value position*-- that is, LibHeaderComponent is the value of the `@ContentChild()` parameter decorator: `@ContentChild(LibHeaderComponent)`.
 
-  另一个引用位于*值的位置* - 即，LibHeaderComponent 是 `@ContentChild()` 参数装饰器的值： `@ContentChild(LibHeaderComponent)` 。
+  另一个引用位于*值的位置* - 即，LibHeaderComponent 是 `@ContentChild()` 参数装饰器的值：`@ContentChild(LibHeaderComponent)`。
 
 The compiler handles token references in these positions differently.
 
@@ -141,7 +141,7 @@ Although tokens used only as type specifiers are removed when converted to JavaS
 These effectively change `constructor(@Optional() other: OtherComponent)` to `constructor(@Optional() @Inject(OtherComponent) other)`.
 The token is now in a value position, and causes the tree shaker to retain the reference.
 
-虽然转换为 JavaScript 时只会删除那些只用作类型说明符的令牌，但在运行时依赖注入需要所有这些令牌。这些工作把 `constructor(@Optional() other: OtherComponent)` 改成了 `constructor(@Optional() @Inject(OtherComponent) other)` 。该令牌现在处于值的位置，并使该摇树优化器保留该引用。
+虽然转换为 JavaScript 时只会删除那些只用作类型说明符的令牌，但在运行时依赖注入需要所有这些令牌。这些工作把 `constructor(@Optional() other: OtherComponent)` 改成了 `constructor(@Optional() @Inject(OtherComponent) other)`。该令牌现在处于值的位置，并使该摇树优化器保留该引用。
 
 <div class="alert is helpful">
 
@@ -192,7 +192,7 @@ This lets full tree shaking of `LibHeaderComponent` take place.
 The `LibHeaderToken` is retained, but it is only a class declaration, with no concrete implementation.
 It is small and does not materially impact the application size when retained after compilation.
 
-在这个例子中， `LibCardComponent` 的实现里，`LibHeaderComponent` 既不会出现在类型的位置也不会出现在值的位置。这样就可以让 `LibHeaderComponent` 完全被摇树优化掉。`LibHeaderToken` 被留下了，但它只是一个类声明，没有具体的实现。它很小，并且在编译后保留时对应用程序的大小没有实质影响。
+在这个例子中，`LibCardComponent` 的实现里，`LibHeaderComponent` 既不会出现在类型的位置也不会出现在值的位置。这样就可以让 `LibHeaderComponent` 完全被摇树优化掉。`LibHeaderToken` 被留下了，但它只是一个类声明，没有具体的实现。它很小，并且在编译后保留时对应用程序的大小没有实质影响。
 
 Instead, `LibHeaderComponent` itself implements the abstract `LibHeaderToken` class.
 You can safely use that token as the provider in the component definition, allowing Angular to correctly inject the concrete type.
@@ -233,7 +233,7 @@ This lets the parent communicate with the child (if it is present) in a type-saf
 For example, the `LibCardComponent` now queries `LibHeaderToken` rather than `LibHeaderComponent`.
 The following example shows how the pattern lets `LibCardComponent` communicate with the `LibHeaderComponent` without actually referring to `LibHeaderComponent`.
 
-比如，`LibCardComponent` 现在要查询 `LibHeaderToken` 而不是 `LibHeaderComponent` 。这个例子展示了该模式如何让 `LibCardComponent` 与 `LibHeaderComponent` 通信，却不用实际引用 `LibHeaderComponent` 。
+比如，`LibCardComponent` 现在要查询 `LibHeaderToken` 而不是 `LibHeaderComponent`。这个例子展示了该模式如何让 `LibCardComponent` 与 `LibHeaderComponent` 通信，却不用实际引用 `LibHeaderComponent`。
 
 <code-example format="typescript" language="typescript">
 

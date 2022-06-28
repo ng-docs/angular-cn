@@ -4,6 +4,8 @@
 
 Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.
 
+Angular 是一个应用设计框架与开发平台，旨在创建高效而精致的单页面应用。
+
 These Angular docs help you learn and use the Angular framework and development platform, from your first application to optimizing complex single-page apps for enterprises.
 Tutorials and guides include downloadable examples to accelerate your projects.
 

@@ -45,7 +45,7 @@ export class EsmDependencyHost extends DependencyHostBase {
    *
    * 此实现使用对源代码进行标记化的 TypeScript
    * 扫描器来处理字符串。这是直接使用字符串（由于极端情况而太难）和将字符串解析为完整的 TypeScript
-   * 抽象语法树（ AST ）之间的中间，后者最终会进行比需要更多的处理。
+   * 抽象语法树（AST）之间的中间，后者最终会进行比需要更多的处理。
    *
    * The scanning is not trivial because we must hold state between each token since
    * the context of the token affects how it should be scanned, and the scanner does

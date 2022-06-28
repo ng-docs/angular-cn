@@ -19,7 +19,7 @@ import {FileUpdate, MaybeSourceFileWithOriginalFile, NgOriginalFile, ProgramDriv
  * `getSourceFile`, `fileExists` and `writeFile` which are implemented in `TypeCheckProgramHost`.
  *
  * 将 `ts.CompilerHost` 的所有方法委托给委托，但在 `TypeCheckProgramHost` 中实现的 `getSourceFile`
- * 、 `fileExists` 和 `writeFile` 除外。
+ *、`fileExists` 和 `writeFile` 除外。
  *
  * If a new method is added to `ts.CompilerHost` which is not delegated, a type error will be
  * generated for this class.
@@ -90,7 +90,7 @@ class UpdatedProgramHost extends DelegatingCompilerHost {
    * `UpdatedProgramHost` 用于创建新的 `ts.Program` 。尽管这个新程序是基于前一个程序的，但
    * TypeScript
    * 仍将从根文件启动并枚举要包含在新程序中的所有源文件。这意味着，就像在原始程序的创建期间一样，这些源文件必须使用对每个文件
-   * shim 的引用进行标记，以便加载这些 shim，然后进行清理。因此， `UpdatedProgramHost` 有自己的
+   * shim 的引用进行标记，以便加载这些 shim，然后进行清理。因此，`UpdatedProgramHost` 有自己的
    * `ShimReferenceTagger` 来执行此功能。
    *
    */

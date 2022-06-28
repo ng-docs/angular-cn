@@ -9,7 +9,7 @@ At the moment, the `HeroesComponent` displays both the list of heroes and the se
 Keeping all features in one component as the application grows will not be maintainable.
 You'll want to split up large components into smaller sub-components, each focused on a specific task or workflow.
 
-把所有特性都放在同一个组件中，将会使应用“长大”后变得不可维护。 你要把大型组件拆分成小一点的子组件，每个子组件都要集中精力处理某个特定的任务或工作流。
+把所有特性都放在同一个组件中，将会使应用“长大”后变得不可维护。你要把大型组件拆分成小一点的子组件，每个子组件都要集中精力处理某个特定的任务或工作流。
 
 In this page, you'll take the first step in that direction by moving the hero details into a separate, reusable `HeroDetailComponent`.
 
@@ -18,7 +18,7 @@ In this page, you'll take the first step in that direction by moving the hero de
 The `HeroesComponent` will only present the list of heroes.
 The `HeroDetailComponent` will present details of a selected hero.
 
-`HeroesComponent` 将仅仅用来表示英雄列表。 `HeroDetailComponent` 将用来表示所选英雄的详情。
+`HeroesComponent` 将仅仅用来表示英雄列表。`HeroDetailComponent` 将用来表示所选英雄的详情。
 
 <div class="alert is-helpful">
 
@@ -86,7 +86,7 @@ The pasted HTML refers to a `selectedHero`.
 The new `HeroDetailComponent` can present *any* hero, not just a selected hero.
 So replace "selectedHero" with "hero" everywhere in the template.
 
-所粘贴的 HTML 引用了 `selectedHero`。 新的 `HeroDetailComponent` 可以展示*任意*英雄，而不仅仅所选的。因此还要把模板中的所有 `selectedHero` 替换为 `hero`。
+所粘贴的 HTML 引用了 `selectedHero`。新的 `HeroDetailComponent` 可以展示*任意*英雄，而不仅仅所选的。因此还要把模板中的所有 `selectedHero` 替换为 `hero`。
 
 When you're done, the `HeroDetailComponent` template should look like this:
 
@@ -135,7 +135,7 @@ That's the only change you should make to the `HeroDetailComponent` class.
 There are no more properties. There's no presentation logic.
 This component only receives a hero object through its `hero` property and displays it.
 
-这就是你要对 `HeroDetailComponent` 类做的唯一一项修改。 没有其它属性，也没有展示逻辑。这个组件所做的只是通过 `hero` 属性接收一个英雄对象，并显示它。
+这就是你要对 `HeroDetailComponent` 类做的唯一一项修改。没有其它属性，也没有展示逻辑。这个组件所做的只是通过 `hero` 属性接收一个英雄对象，并显示它。
 
 ## Show the `HeroDetailComponent`
 
@@ -151,7 +151,7 @@ The parent `HeroesComponent` will control the child `HeroDetailComponent`
 by sending it a new hero to display whenever
 the user selects a hero from the list.
 
-这两个组件将会具有父子关系。 当用户从列表中选择了某个英雄时，父组件 `HeroesComponent` 将通过把要显示的新英雄发送给子组件 `HeroDetailComponent`，来控制子组件。
+这两个组件将会具有父子关系。当用户从列表中选择了某个英雄时，父组件 `HeroesComponent` 将通过把要显示的新英雄发送给子组件 `HeroDetailComponent`，来控制子组件。
 
 You won't change the `HeroesComponent` *class* but you will change its *template*.
 
@@ -166,7 +166,7 @@ You won't change the `HeroesComponent` *class* but you will change its *template
 The `HeroDetailComponent` selector is `'app-hero-detail'`.
 Add an `<app-hero-detail>` element near the bottom of the `HeroesComponent` template, where the hero detail view used to be.
 
-`HeroDetailComponent` 的选择器是 `'app-hero-detail'`。 把 `<app-hero-detail>` 添加到 `HeroesComponent` 模板的底部，以便把英雄详情的视图显示到那里。
+`HeroDetailComponent` 的选择器是 `'app-hero-detail'`。把 `<app-hero-detail>` 添加到 `HeroesComponent` 模板的底部，以便把英雄详情的视图显示到那里。
 
 Bind the `HeroesComponent.selectedHero` to the element's `hero` property like this.
 
@@ -187,7 +187,7 @@ Now when the user clicks a hero in the list, the `selectedHero` changes.
 When the `selectedHero` changes, the *property binding* updates `hero`
 and the `HeroDetailComponent` displays the new hero.
 
-现在，当用户在列表中点击某个英雄时，`selectedHero` 就改变了。 当 `selectedHero` 改变时，*属性绑定*会修改 `HeroDetailComponent` 的 `hero` 属性，`HeroDetailComponent` 就会显示这个新的英雄。
+现在，当用户在列表中点击某个英雄时，`selectedHero` 就改变了。当 `selectedHero` 改变时，*属性绑定*会修改 `HeroDetailComponent` 的 `hero` 属性，`HeroDetailComponent` 就会显示这个新的英雄。
 
 The revised `HeroesComponent` template should look like this:
 
@@ -208,7 +208,7 @@ As [before](tutorial/toh-pt2), whenever a user clicks on a hero name,
 the hero detail appears below the hero list.
 Now the `HeroDetailComponent` is presenting those details instead of the `HeroesComponent`.
 
-像[以前](tutorial/toh-pt2)一样，一旦用户点击了一个英雄的名字，该英雄的详情就显示在了英雄列表下方。 现在，`HeroDetailComponent` 负责显示那些详情，而不再是 `HeroesComponent`。
+像[以前](tutorial/toh-pt2)一样，一旦用户点击了一个英雄的名字，该英雄的详情就显示在了英雄列表下方。现在，`HeroDetailComponent` 负责显示那些详情，而不再是 `HeroesComponent`。
 
 Refactoring the original `HeroesComponent` into two components yields benefits, both now and in the future:
 

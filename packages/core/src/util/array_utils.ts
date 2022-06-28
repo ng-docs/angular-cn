@@ -135,7 +135,7 @@ export function newArray<T>(size: number, value?: T): T[] {
  *
  * <https://jsperf.com/fast-array-splice> (About 20x faster)
  *
- * <https://jsperf.com/fast-array-splice> （快约 20 倍）
+ * <https://jsperf.com/fast-array-splice>（快约 20 倍）
  *
  * @param array Array to splice
  *
@@ -256,7 +256,7 @@ export function arrayInsert2(array: any[], index: number, value1: any, value2: a
  *
  * NOTE:
  *
- * 注：
+ * 注意：
  *
  * - Duplicates are not allowed, and are ignored.
  *
@@ -298,7 +298,7 @@ export function arrayInsertSorted(array: string[], value: string): number {
  *
  * NOTE:
  *
- * 注：
+ * 注意：
  *
  * - This uses binary search algorithm for fast removals.
  *
@@ -325,7 +325,7 @@ export function arrayInsertSorted(array: string[], value: string): number {
  * - negative index if value not found. (`~index` to get the value where it should have been
  *   inserted)
  *
- *   如果找不到值，则为负索引。 （ `~index` 来获取它应该插入的值）
+ *   如果找不到值，则为负索引。（`~index` 来获取它应该插入的值）
  *
  */
 export function arrayRemoveSorted(array: string[], value: string): number {
@@ -344,7 +344,7 @@ export function arrayRemoveSorted(array: string[], value: string): number {
  *
  * NOTE:
  *
- * 注：
+ * 注意：
  *
  * - This uses binary search algorithm for fast removals.
  *
@@ -371,7 +371,7 @@ export function arrayRemoveSorted(array: string[], value: string): number {
  * - negative index if value not found. (`~index` to get the value where it should have been
  *   located)
  *
- *   如果找不到值，则为负索引。 （ `~index` 来获取它应该位于的值）
+ *   如果找不到值，则为负索引。（`~index` 来获取它应该位于的值）
  *
  */
 export function arrayIndexOfSorted(array: string[], value: string): number {
@@ -398,7 +398,7 @@ export function arrayIndexOfSorted(array: string[], value: string): number {
  *
  * See: `keyValueArraySet`, `keyValueArrayGet`, `keyValueArrayIndexOf`, `keyValueArrayDelete`.
  *
- * 请参阅： `keyValueArraySet` 、 `keyValueArrayGet` 、 `keyValueArrayIndexOf` 、
+ * 请参阅： `keyValueArraySet`、`keyValueArrayGet`、`keyValueArrayIndexOf` 、
  * `keyValueArrayDelete` 。
  *
  */
@@ -446,7 +446,7 @@ export function keyValueArraySet<V>(
 /**
  * Retrieve a `value` for a `key` (on `undefined` if not found.)
  *
- * 检索 `key` 的 `value` （如果找不到，则在 `undefined` 上。）
+ * 检索 `key` 的 `value`（如果找不到，则在 `undefined` 上。）
  *
  * @param keyValueArray to search.
  *
@@ -496,7 +496,7 @@ export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string
  * - negative index if key not found. (`~index` (even) to get the index where it should have
  *   been inserted.)
  *
- *   如果找不到键，则为负索引。 （ `~index` (even) 来获取应该插入它的索引。）
+ *   如果找不到键，则为负索引。（`~index` (even) 来获取应该插入它的索引。）
  *
  */
 export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: string): number {
@@ -506,7 +506,7 @@ export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: st
 /**
  * Delete a `key` (and `value`) from the `KeyValueArray`.
  *
- * 从 `KeyValueArray` 中删除 `key` （和 `value` ）。
+ * 从 `KeyValueArray` 中删除 `key`（和 `value`）。
  *
  * @param keyValueArray to modify.
  *
@@ -529,7 +529,7 @@ export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: st
  * - negative index if key not found. (`~index` (even) to get the index where it should have
  *   been.)
  *
- *   如果找不到键，则为负索引。 （ `~index` (even) 来获取它应该在的位置。）
+ *   如果找不到键，则为负索引。（`~index` (even) 来获取它应该在的位置。）
  *
  */
 export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: string): number {
@@ -549,7 +549,7 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  *
  * NOTE:
  *
- * 注：
+ * 注意：
  *
  * - This uses binary search algorithm for fast removals.
  *
@@ -589,7 +589,7 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  * - negative index if value not found. (`~index` to get the value where it should have been
  *   inserted)
  *
- *   如果找不到值，则为负索引。 （ `~index` 来获取它应该插入的值）
+ *   如果找不到值，则为负索引。（`~index` 来获取它应该插入的值）
  *
  */
 function _arrayIndexOfSorted(array: string[], value: string, shift: number): number {

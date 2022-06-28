@@ -1,0 +1,41 @@
+{
+  "name": "doc",
+  "command": "ng doc <keyword>",
+  "shortDescription": "Opens the official Angular documentation (angular.io) in a browser, and searches for a given keyword.",
+  "aliases": [
+    "d"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "keyword",
+      "type": "string",
+      "description": "The keyword to search for, as provided in the search bar in angular.io.",
+      "positional": 0,
+      "descriptionCn": "要搜索的关键字，和 angular.cn 搜索框中提供的关键字是一样的。"
+    },
+    {
+      "name": "search",
+      "type": "boolean",
+      "aliases": [
+        "s"
+      ],
+      "default": false,
+      "description": "Search all of angular.io. Otherwise, searches only API reference documentation.",
+      "descriptionCn": "搜索整个 angular.cn。否则只搜索 API 参考手册。"
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "description": "Contains the version of Angular to use for the documentation. If not provided, the command uses your current Angular core version.",
+      "descriptionCn": "要用到的 Angular 版本。如果未提供，则使用你的当前 Angular 核心版本。"
+    }
+  ],
+  "shortDescriptionCn": "在浏览器中打开 Angular 官方文档中文版 (angular.cn)，并搜索给定的关键字。"
+}

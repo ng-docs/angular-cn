@@ -1,0 +1,61 @@
+{
+  "name": "cache",
+  "command": "ng cache",
+  "shortDescription": "Configure persistent disk cache and retrieve cache statistics.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/cache/long-description.md",
+  "longDescription": "Angular CLI saves a number of cachable operations on disk by default.\n\nWhen you re-run the same build, the build system restores the state of the previous build and re-uses previously performed operations, which decreases the time taken to build and test your applications and libraries.\n\nTo amend the default cache settings, add the `cli.cache` object to your [Workspace Configuration](guide/workspace-config).\nThe object goes under `cli.cache` at the top level of the file, outside the `projects` sections.\n\n```jsonc\n{\n  \"$schema\": \"./node_modules/@angular/cli/lib/config/schema.json\",\n  \"version\": 1,\n  \"cli\": {\n    \"cache\": {\n      // ...\n    }\n  },\n  \"projects\": {}\n}\n```\n\nFor more information, see [cache options](guide/workspace-config#cache-options).\n\n### Cache environments\n\nBy default, disk cache is only enabled for local environments. The value of environment can be one of the following:\n\n- `all` - allows disk cache on all machines.\n- `local` - allows disk cache only on development machines.\n- `ci` - allows disk cache only on continuous integration (Ci) systems.\n\nTo change the environment setting to `all`, run the following command:\n\n```bash\nng config cli.cache.environment all\n```\n\nFor more information, see `environment` in [cache options](guide/workspace-config#cache-options).\n\n<div class=\"alert is-helpful\">\n\nThe Angular CLI checks for the presence and value of the `CI` environment variable to determine in which environment it is running.\n\n</div>\n\n### Cache path\n\nBy default, `.angular/cache` is used as a base directory to store cache results.\n\nTo change this path to `.cache/ng`, run the following command:\n\n```bash\nng config cli.cache.path \".cache/ng\"\n```\n",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    }
+  ],
+  "subcommands": [
+    {
+      "name": "clean",
+      "command": "clean",
+      "shortDescription": "Deletes persistent disk cache from disk.",
+      "options": [],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "从磁盘中删除永久性磁盘缓存。"
+    },
+    {
+      "name": "disable",
+      "command": "disable",
+      "shortDescription": "Disables persistent disk cache for all projects in the workspace.",
+      "options": [],
+      "aliases": [
+        "off"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "为工作区中的所有项目禁用永久性磁盘缓存。"
+    },
+    {
+      "name": "enable",
+      "command": "enable",
+      "shortDescription": "Enables disk cache for all projects in the workspace.",
+      "options": [],
+      "aliases": [
+        "on"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "为工作区中的所有项目启用磁盘缓存。"
+    },
+    {
+      "name": "info",
+      "command": "info",
+      "shortDescription": "Prints persistent disk cache configuration and statistics in the console.",
+      "options": [],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "在控制台中打印永久性磁盘缓存配置和统计信息。"
+    }
+  ],
+  "shortDescriptionCn": "配置永久性磁盘缓存并检索缓存统计信息。",
+  "longDescriptionCn": "默认情况下，Angular CLI 会在磁盘上保存许多可缓存操作。\n\n当你重新运行同一个构建时，构建系统会恢复以前构建的状态并重用以前已执行的操作，这会减少构建和测试应用程序和库所需的时间。\n\n要修改默认缓存设置，请将 `cli.cache` 对象添加到你的[工作区配置](guide/workspace-config)中。该对象位于文件顶层的 `cli.cache` 下，在 `projects` 部分之外。\n\n```jsonc\n { \"$schema\": \"./node_modules/@angular/cli/lib/config/schema.json\", \"version\": 1, \"cli\": { \"cache\": { // ... } }, \"projects\": {} }\n```\n\n有关更多信息，请参阅[缓存选项](guide/workspace-config#cache-options)。\n\n### 缓存环境\n\n默认情况下，仅为本地环境启用磁盘缓存。 Environment 的值可以是以下之一：\n\n- `all` - 允许在所有机器上进行磁盘缓存。\n\n- `local` - 仅允许在开发机器上进行磁盘缓存。\n\n- `ci` - 仅允许在持续集成 (Ci) 系统上进行磁盘缓存。\n\n\n要将环境设置更改为`all` ，请运行以下命令：\n\n```bash\n ng config cli.cache.environment all\n```\n\n有关更多信息，请参阅[缓存选项](guide/workspace-config#cache-options)中的`environment` 。\n\n<div class=\"alert is-helpful\">\n\nAngular CLI 会检查 `CI` 环境变量的存在和值，以确定它正在哪个环境中运行。\n\n</div>\n\n### 缓存路径\n\n默认情况下，`.angular/cache`被用作存储缓存结果的基础目录。\n\n要将此路径更改为`.cache/ng` ，请运行以下命令：\n\n```bash\n ng config cli.cache.path \".cache/ng\"\n```"
+}

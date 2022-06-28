@@ -18,7 +18,7 @@ import {getTView} from '../state';
 /**
  * NOTE: The word `styling` is used interchangeably as style or class styling.
  *
- * 注： `styling` 一词可与样式或类样式互换使用。
+ * 注意： `styling` 一词可与样式或类样式互换使用。
  *
  * This file contains code to link styling instructions together so that they can be replayed in
  * priority order. The file exists because Ivy styling instruction execution order does not match
@@ -31,8 +31,6 @@ import {getTView} from '../state';
  * Assume we are dealing with the following code:
  *
  * 假设我们正在处理以下代码：
- *
- * ```
  *
  * ```
  *
@@ -195,11 +193,11 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  *
  * - if `isHost === false` (we are template) then insertion is at tail of `TStylingRange`
  *
- *   如果 `isHost === false` （我们是模板），则插入在 `TStylingRange` 的尾部
+ *   如果 `isHost === false`（我们是模板），则插入在 `TStylingRange` 的尾部
  *
  * - if `isHost === true` (we are host binding) then insertion is at head of `TStylingRange`
  *
- *   如果 `isHost === true` （我们是主机绑定），则插入在 `TStylingRange` 的头部
+ *   如果 `isHost === true`（我们是主机绑定），则插入在 `TStylingRange` 的头部
  *
  * @param tData The `TData` to insert into.
  *
@@ -220,12 +218,12 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  * @param isHostBinding `true` if the insertion is for a `hostBinding`. (insertion is in front of
  *               template.)
  *
- * `true` 插入是针对 `hostBinding` 的，则为 true 。 （插入在模板前面。）
+ * `true` 插入是针对 `hostBinding` 的，则为 true 。（插入在模板前面。）
  *
  * @param isClassBinding True if the associated `tStylingKey` as a `class` styling.
  *                       `tNode.classBindings` should be used (or `tNode.styleBindings` otherwise.)
  *
- * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings` （或否则使用
+ * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings`（或否则使用
  * `tNode.styleBindings` 。）
  *
  */
@@ -342,7 +340,7 @@ export function insertTStylingBinding(
  * @param isClassBinding True if the associated `tStylingKey` as a `class` styling.
  *                       `tNode.classBindings` should be used (or `tNode.styleBindings` otherwise.)
  *
- * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings` （或否则使用
+ * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings`（或否则使用
  * `tNode.styleBindings` 。）
  *
  */
@@ -437,7 +435,7 @@ function markDuplicateOfResidualStyling(
  * NOTE: Once `[style]` (Map) is added into the system all things are mapped as duplicates.
  * NOTE: We use `style` as example, but same logic is applied to `class`es as well.
  *
- * 注意：一旦 `[style]` （Map）添加到系统中，所有东西都被映射为副本。注意：我们使用 `style`
+ * 注意：一旦 `[style]`（Map）添加到系统中，所有东西都被映射为副本。注意：我们使用 `style`
  * 作为示例，但相同的逻辑也适用于 `class` es。
  *
  * @param tData `TData` where the linked list is stored.
@@ -457,7 +455,7 @@ function markDuplicateOfResidualStyling(
  *        \- `true` for previous (lower priority);
  *        \- `false` for next (higher priority).
  *
- * 方向。 - 上一个为 `true` （优先级较低）； - 下一个为 `false` （更高优先级）。
+ * 方向。 - 上一个为 `true`（优先级较低）； - 下一个为 `false`（更高优先级）。
  *
  */
 function markDuplicates(

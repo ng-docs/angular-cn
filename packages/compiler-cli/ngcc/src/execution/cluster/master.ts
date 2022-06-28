@@ -154,7 +154,7 @@ export class ClusterMaster {
   /**
    * Handle a worker's exiting. (Might be intentional or not.)
    *
-   * 处理 Worker 的退出。 （可能是故意的，也可能不是。）
+   * 处理 Worker 的退出。（可能是故意的，也可能不是。）
    *
    */
   private onWorkerExit(worker: cluster.Worker, code: number|null, signal: string|null): void {

@@ -55,7 +55,7 @@ v14 - v17
 
 | Area | API or Feature | May be removed in |
 | :--- | :------------- | :---------------- |
-| 特性区 | API 或特性 | 将移除于 |
+| 特性区 | API 或特性 | 可能移除于 |
 | `@angular/common` | [`ReflectiveInjector`](#reflectiveinjector) | <!--  v8 --> v11 |
 | `@angular/common` | [`CurrencyPipe` - `DEFAULT_CURRENCY_CODE`](api/common/CurrencyPipe#currency-code-deprecation) | <!--  v9 --> v11 |
 | `@angular/common` | [`NgComponentOutlet.ngComponentOutletNgModuleFactory`](#common) | <!-- v14 --> v17 |
@@ -140,155 +140,137 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### @angular/common
 
-### 角度/通用
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`CurrencyPipe` - `DEFAULT_CURRENCY_CODE`](api/common/CurrencyPipe#currency-code-deprecation) | `{provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}` | v9 | From v11 the default code will be extracted from the locale data given by `LOCALE_ID`, rather than `USD`. |
-| [`CurrencyPipe` - `DEFAULT_CURRENCY_CODE`](api/common/CurrencyPipe#currency-code-deprecation) | `{provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}` | v9 | 从 v11 开始，默认代码将从 `LOCALE_ID` 给出的语言环境数据中提取，而不是 `USD` 。 |
+| [`CurrencyPipe` - `DEFAULT_CURRENCY_CODE`](api/common/CurrencyPipe#currency-code-deprecation) | `{provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}` | v9 | 从 v11 开始，默认代码将从 `LOCALE_ID` 给出的语言环境数据中提取，而不是 `USD`。|
 | [`NgComponentOutlet.ngComponentOutletNgModuleFactory`](api/common/NgComponentOutlet) | `NgComponentOutlet.ngComponentOutletNgModule` | v14 | Use the `ngComponentOutletNgModule` input instead. This input doesn't require resolving NgModule factory. |
-| [`NgComponentOutlet.ngComponentOutletNgModuleFactory`](api/common/NgComponentOutlet) | `NgComponentOutlet.ngComponentOutletNgModule` | v14 | 改用 `ngComponentOutletNgModule` 输入。此输入不需要解析 NgModule 工厂。 |
+| [`NgComponentOutlet.ngComponentOutletNgModuleFactory`](api/common/NgComponentOutlet) | `NgComponentOutlet.ngComponentOutletNgModule` | v14 | 改用 `ngComponentOutletNgModule` 输入。此输入不需要解析 NgModule 工厂。|
 
 <a id="common-http"></a>
 
 ### @angular/common/http
 
-### 角度/通用/http
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`XhrFactory`](api/common/http/XhrFactory) | `XhrFactory` in `@angular/common` | v12 | The `XhrFactory` has moved from `@angular/common/http` to `@angular/common`. |
-| [`XhrFactory`](api/common/http/XhrFactory) | `@angular/common` 中的 `XhrFactory` | v12 | `XhrFactory` 已从 `@angular/common/http` 移到了 `@angular/common` 。 |
+| [`XhrFactory`](api/common/http/XhrFactory) | `@angular/common` 中的 `XhrFactory` | v12 | `XhrFactory` 已从 `@angular/common/http` 移到了 `@angular/common`。|
 
 <a id="core"></a>
 
 ### @angular/core
 
-### 角度/核心
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`DefaultIterableDiffer`](api/core/DefaultIterableDiffer) | n/a | v4 | Not part of public API. |
-| [`DefaultIterableDiffer`](api/core/DefaultIterableDiffer) | 不适用 | v4 | 不属于公共 API。 |
+| [`DefaultIterableDiffer`](api/core/DefaultIterableDiffer) | 不适用 | v4 | 不再是公共 API。|
 | [`ReflectiveInjector`](api/core/ReflectiveInjector) | [`Injector.create()`](api/core/Injector#create) | v5 | See [`ReflectiveInjector`](#reflectiveinjector) |
 | [`ReflectiveInjector`](api/core/ReflectiveInjector) | [`Injector.create()`](api/core/Injector#create) | v5 | 参阅[`ReflectiveInjector`](#reflectiveinjector) |
 | [`ReflectiveKey`](api/core/ReflectiveKey) | none | v5 | none |
-| [`ReflectiveKey`](api/core/ReflectiveKey) | 无 | v5 | 无 |
+| [`ReflectiveKey`](api/core/ReflectiveKey) | 没了 | v5 | 没了 |
 | [`defineInjectable`](api/core/defineInjectable) | `ɵɵdefineInjectable` | v8 | Used only in generated code. No source code should depend on this API. |
-| [`defineInjectable`](api/core/defineInjectable) | `ɵɵdefineInjectable` | v8 | 仅在生成的代码中使用。任何源代码都不应依赖此 API。 |
+| [`defineInjectable`](api/core/defineInjectable) | `ɵɵdefineInjectable` | v8 | 仅在生成的代码中使用。任何源代码都不应依赖此 API。|
 | [`entryComponents`](api/core/NgModule#entryComponents) | none | v9 | See [`entryComponents`](#entryComponents) |
-| [`entryComponents`](api/core/NgModule#entryComponents) | 无 | v9 | 参阅[`entryComponents`](#entryComponents) |
+| [`entryComponents`](api/core/NgModule#entryComponents) | 没了 | v9 | 参见 [`entryComponents`](#entryComponents) |
 | [`ANALYZE_FOR_ENTRY_COMPONENTS`](api/core/ANALYZE_FOR_ENTRY_COMPONENTS) | none | v9 | See [`ANALYZE_FOR_ENTRY_COMPONENTS`](#entryComponents) |
-| [`ANALYZE_FOR_ENTRY_COMPONENTS`](api/core/ANALYZE_FOR_ENTRY_COMPONENTS) | 无 | v9 | 参阅[`ANALYZE_FOR_ENTRY_COMPONENTS`](#entryComponents) |
+| [`ANALYZE_FOR_ENTRY_COMPONENTS`](api/core/ANALYZE_FOR_ENTRY_COMPONENTS) | 没了 | v9 | 参见 [`ANALYZE_FOR_ENTRY_COMPONENTS`](#entryComponents) |
 | [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v11 | The [`async`](api/core/testing/async) function from `@angular/core/testing` has been renamed to `waitForAsync` in order to avoid confusion with the native JavaScript `async` syntax. The existing function is deprecated and will be removed in a future version. |
-| [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v11 | `@angular/core/testing` 中的[`async`](api/core/testing/async)函数已重命名为 `waitForAsync` ，以避免与原生 JavaScript `async` 语法混淆。现有的函数已被弃用，将在未来的版本中删除。 |
+| [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v11 | 来自 `@angular/core/testing` 的[`async`](api/core/testing/async)函数已重命名为 `waitForAsync` 以避免与原生 JavaScript `async` 语法混淆。现有特性已弃用，将在未来版本中删除。|
 | [`getModuleFactory`](api/core/getModuleFactory) | [`getNgModuleById`](api/core/getNgModuleById) | v13 | Ivy allows working with NgModule classes directly, without retrieving corresponding factories. |
-| [`getModuleFactory`](api/core/getModuleFactory) | [`getNgModuleById`](api/core/getNgModuleById) | v13 | Ivy 允许直接使用 NgModule 类，而无需检索相应的工厂。 |
+| [`getModuleFactory`](api/core/getModuleFactory) | [`getNgModuleById`](api/core/getNgModuleById) | v13 | Ivy 允许直接使用 NgModule 类，而无需检索相应的工厂。|
 | `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly` | none (was part of [issue #40091](https://github.com/angular/angular/issues/40091)) |  | This is a temporary flag introduced as part of bugfix of [issue #40091](https://github.com/angular/angular/issues/40091) and will be removed. |
-| `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly` | 无（是[问题 #40091](https://github.com/angular/angular/issues/40091)的一部分） |  | 这是一个临时标志，作为[问题 #40091](https://github.com/angular/angular/issues/40091)的错误修复的一部分引入，将被删除。 |
+| `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly` | 无（是[问题 #40091](https://github.com/angular/angular/issues/40091)的一部分）|  | 这是作为[问题 #40091](https://github.com/angular/angular/issues/40091)的错误修复的一部分引入的临时标志，将被删除。|
 | Factory-based signature of [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap) | Type-based signature of [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap) | v13 | With Ivy, there is no need to resolve Component factory and Component Type can be provided directly. |
-| [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)的基于工厂的签名 | [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)的基于类型的签名 | v13 | 使用 Ivy，无需解析 Component 工厂，并且可以直接提供 Component Type。 |
+| [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)的基于工厂的签名 | [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)的基于类型的签名 | v13 | 有了 ivy，不需要解析 Component factory，直接提供 Component Type 即可。|
 | [`PlatformRef.bootstrapModuleFactory`](api/core/PlatformRef#bootstrapModuleFactory) | [`PlatformRef.bootstrapModule`](api/core/PlatformRef#bootstrapModule) | v13 | With Ivy, there is no need to resolve NgModule factory and NgModule Type can be provided directly. |
-| [`PlatformRef.bootstrapModuleFactory`](api/core/PlatformRef#bootstrapModuleFactory) | [`PlatformRef.bootstrapModule`](api/core/PlatformRef#bootstrapModule) | v13 | 使用 Ivy，无需解析 NgModule 工厂，并且可以直接提供 NgModule Type。 |
+| [`PlatformRef.bootstrapModuleFactory`](api/core/PlatformRef#bootstrapModuleFactory) | [`PlatformRef.bootstrapModule`](api/core/PlatformRef#bootstrapModule) | v13 | 有了 ivy，就不需要解析 NgModule factory，直接提供 NgModule Type 即可。|
 | [`ModuleWithComponentFactories`](api/core/ModuleWithComponentFactories) | none | v13 | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
-| [`ModuleWithComponentFactories`](api/core/ModuleWithComponentFactories) | 无 | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。 |
+| [`ModuleWithComponentFactories`](api/core/ModuleWithComponentFactories) | 没了 | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。|
 | [`Compiler`](api/core/Compiler) | none | v13 | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
-| [`Compiler`](api/core/Compiler) | 无 | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。 |
+| [`Compiler`](api/core/Compiler) | 没了 | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。|
 | [`CompilerFactory`](api/core/CompilerFactory) | none | v13 | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
-| [`CompilerFactory`](api/core/CompilerFactory) | 无 | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。 |
+| [`CompilerFactory`](api/core/CompilerFactory) | 没了 | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。|
 | [`NgModuleFactory`](api/core/NgModuleFactory) | Use non-factory based framework APIs like [PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule) and [createNgModuleRef](api/core/createNgModuleRef) | v13 | Ivy JIT mode doesn't require accessing this symbol. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
-| [`NgModuleFactory`](api/core/NgModuleFactory) | 使用不基于工厂的框架 API，比如[PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule)和[createNgModuleRef](api/core/createNgModuleRef) | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。 |
+| [`NgModuleFactory`](api/core/NgModuleFactory) | 使用基于非工厂的框架 API，比如[PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule)和[createNgModuleRef](api/core/createNgModuleRef) | v13 | Ivy JIT 模式不需要访问此符号。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。|
 | [Factory-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | [Type-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | v13 | Angular no longer requires component factories to dynamically create components. Use different signature of the `createComponent` method, which allows passing Component class directly. |
-| [`ViewContainerRef.createComponent` 的基于工厂的签名](api/core/ViewContainerRef#createComponent) | [`ViewContainerRef.createComponent` 的基于类型的签名](api/core/ViewContainerRef#createComponent) | v13 | Angular 不再需要组件工厂动态创建组件。使用 `createComponent` 方法的不同签名，该方法允许直接传递 Component 类。 |
+| [`ViewContainerRef.createComponent` 的基于工厂的签名](api/core/ViewContainerRef#createComponent) | [`ViewContainerRef.createComponent` 的基于类型的签名](api/core/ViewContainerRef#createComponent) | v13 | Angular 不再需要组件工厂动态创建组件。使用 `createComponent` 方法的不同签名，该方法允许直接传递 Component 类。|
 | [`ComponentFactory`](api/core/ComponentFactory) | Use non-factory based framework APIs. | v13 | Since Ivy, Component factories are not required. Angular provides other APIs where Component classes can be used directly. |
-| [`ComponentFactory`](api/core/ComponentFactory) | 使用不基于工厂的框架 API。 | v13 | 从 Ivy 开始，就不需要组件工厂。 Angular 提供了其他可以直接使用组件类的 API。 |
+| [`ComponentFactory`](api/core/ComponentFactory) | 使用不基于工厂的框架 API。| v13 | 从 Ivy 开始，就不需要组件工厂。Angular 提供了其他可以直接使用组件类的 API。|
 | [`ComponentFactoryResolver`](api/core/ComponentFactoryResolver) | Use non-factory based framework APIs. | v13 | Since Ivy, Component factories are not required, thus there is no need to resolve them. |
-| [`ComponentFactoryResolver`](api/core/ComponentFactoryResolver) | 使用不基于工厂的框架 API。 | v13 | 由于 Ivy，不需要组件工厂，因此无需解析它们。 |
+| [`ComponentFactoryResolver`](api/core/ComponentFactoryResolver) | 使用不基于工厂的框架 API。| v13 | 由于 Ivy，不需要组件工厂，因此无需解析它们。|
 | [`CompilerOptions.useJit and CompilerOptions.missingTranslation config options`](api/core/CompilerOptions) | none | v13 | Since Ivy, those config options are unused, passing them has no effect. |
-| [`CompilerOptions.useJit and CompilerOptions.missingTranslation config options`](api/core/CompilerOptions) | 无 | v13 | 由于 Ivy ，这些配置选项未使用，传递它们是没有效果的。 |
+| [`CompilerOptions.useJit and CompilerOptions.missingTranslation config options`](api/core/CompilerOptions) | 没了 | v13 | 由于 Ivy，这些配置选项未使用，传递它们是没有效果的。|
 
 <a id="testing"></a>
 
 ### @angular/core/testing
 
-### 角度/核心/测试
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`TestBed.get`](api/core/testing/TestBed#get) | [`TestBed.inject`](api/core/testing/TestBed#inject) | v9 | Same behavior, but type safe. |
-| [`TestBed.get`](api/core/testing/TestBed#get) | [`TestBed.inject`](api/core/testing/TestBed#inject) | v9 | 相同的行为，但类型安全。 |
+| [`TestBed.get`](api/core/testing/TestBed#get) | [`TestBed.inject`](api/core/testing/TestBed#inject) | v9 | 行为没变，但类型安全。|
 | [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v10 | Same behavior, but rename to avoid confusion. |
-| [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v10 | 相同的行为，但重命名以避免混淆。 |
+| [`async`](api/core/testing/async) | [`waitForAsync`](api/core/testing/waitForAsync) | v10 | 行为相同，只是改名以免混淆。|
 
 <a id="router"></a>
 
 ### @angular/router
 
-### 角度/路由器
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`resolver` argument in `RouterOutletContract.activateWith`](api/router/RouterOutletContract#activatewith) | No replacement needed | v14 | Component factories are not required to create an instance of a component dynamically. Passing a factory resolver via `resolver` argument is no longer needed. |
-| [`RouterOutletContract.activateWith` 中的 `resolver` 参数](api/router/RouterOutletContract#activatewith) | 无需更换 | v14 | 组件工厂不需要动态创建组件的实例。不再需要通过 `resolver` 参数传递工厂解析器。 |
+| [`RouterOutletContract.activateWith` 中的 `resolver` 参数](api/router/RouterOutletContract#activatewith) | 无需更换 | v14 | 组件工厂不需要动态创建组件的实例。不再需要通过 `resolver` 参数传递工厂解析器。|
 | [`resolver` field of the `OutletContext` class](api/router/OutletContext#resolver) | No replacement needed | v14 | Component factories are not required to create an instance of a component dynamically. Passing a factory resolver via `resolver` class field is no longer needed. |
-| [`OutletContext` 类的 `resolver` 字段](api/router/OutletContext#resolver) | 无需更换 | v14 | 组件工厂不需要动态创建组件的实例。不再需要通过 `resolver` 类字段传递工厂解析器。 |
+| [`OutletContext` 类的 `resolver` 字段](api/router/OutletContext#resolver) | 无需更换 | v14 | 组件工厂不需要动态创建组件的实例。不再需要通过 `resolver` 类字段传递工厂解析器。|
 
 <a id="platform-browser-dynamic"></a>
 
 ### @angular/platform-browser-dynamic
 
-### 角度/平台浏览器动态
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | none | v13 | This symbol is no longer necessary. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
-| [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | 无 | v13 | 此符号不再需要。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。 |
+| [`JitCompilerFactory`](api/platform-browser-dynamic/JitCompilerFactory) | 没了 | v13 | 此符号不再需要。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。|
 | [`RESOURCE_CACHE_PROVIDER`](api/platform-browser-dynamic/RESOURCE_CACHE_PROVIDER) | none | v13 | This was previously necessary in some cases to test AOT-compiled components with View Engine, but is no longer since Ivy. |
-| [`RESOURCE_CACHE_PROVIDER`](api/platform-browser-dynamic/RESOURCE_CACHE_PROVIDER) | 无 | v13 | 以前，在某些情况下，要使用 View Engine 测试 AOT 编译的组件，这是必要的，但从 Ivy 开始就不再是这样了。 |
+| [`RESOURCE_CACHE_PROVIDER`](api/platform-browser-dynamic/RESOURCE_CACHE_PROVIDER) | 没了 | v13 | 以前，在某些情况下，要使用 View Engine 测试 AOT 编译的组件，这是必要的，但从 Ivy 开始就不再是这样了。|
 
 <a id="platform-server"></a>
 
 ### @angular/platform-server
 
-### 角度/平台服务器
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`renderModuleFactory`](api/platform-server/renderModuleFactory) | [`renderModule`](api/platform-server/renderModule) | v13 | This symbol is no longer necessary. See [JIT API changes due to ViewEngine deprecation](#jit-api-changes) for additional context. |
-| [`renderModuleFactory`](api/platform-server/renderModuleFactory) | [`renderModule`](api/platform-server/renderModule) | v13 | 此符号不再需要。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。 |
+| [`renderModuleFactory`](api/platform-server/renderModuleFactory) | [`renderModule`](api/platform-server/renderModule) | v13 | 此符号不再需要。有关其他上下文，参阅[由于 ViewEngine 弃用导致的 JIT API 更改](#jit-api-changes)。|
 
 <a id="forms"></a>
 
 ### @angular/forms
 
-### 角度/形式
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`ngModel` with reactive forms](#ngmodel-reactive) | [`FormControlDirective`](api/forms/FormControlDirective) | v6 | none |
-| [与响应式表单一起使用的 `ngModel`](#ngmodel-reactive) | [`FormControlDirective`](api/forms/FormControlDirective) | v6 | 无 |
+| [与响应式表单一起使用的 `ngModel`](#ngmodel-reactive) | [`FormControlDirective`](api/forms/FormControlDirective) | v6 | 没了 |
 | [`FormBuilder.group` legacy options parameter](api/forms/FormBuilder#group) | [`AbstractControlOptions` parameter value](api/forms/AbstractControlOptions) | v11 | none |
-| [`FormBuilder.group` 旧版 options 参数](api/forms/FormBuilder#group) | [`AbstractControlOptions` 参数值](api/forms/AbstractControlOptions) | v11 | 无 |
+| [`FormBuilder.group` 旧版 options 参数](api/forms/FormBuilder#group) | [`AbstractControlOptions` 参数值](api/forms/AbstractControlOptions) | v11 | 没了 |
 
 <a id="service-worker"></a>
 
 ### @angular/service-worker
 
-### 角度/服务工作者
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`SwUpdate#activated`](api/service-worker/SwUpdate#activated) | [`SwUpdate#activateUpdate()` return value](api/service-worker/SwUpdate#activateUpdate) | v13 | The return value of `SwUpdate#activateUpdate()` indicates whether an update was successfully activated. |
-| [`SwUpdate#activated`](api/service-worker/SwUpdate#activated) | [`SwUpdate#activateUpdate()` 返回值](api/service-worker/SwUpdate#activateUpdate) | v13 | `SwUpdate#activateUpdate()` 的返回值表明更新是否已成功激活。 |
+| [`SwUpdate#activated`](api/service-worker/SwUpdate#activated) | [`SwUpdate#activateUpdate()` 的返回值](api/service-worker/SwUpdate#activateUpdate) | v13 | `SwUpdate#activateUpdate()` 的返回值指示更新是否成功激活。|
 | [`SwUpdate#available`](api/service-worker/SwUpdate#available) | [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) | v13 | The behavior of `SwUpdate#available` can be rebuilt by filtering for `VersionReadyEvent` events on [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) |
 | [`SwUpdate#available`](api/service-worker/SwUpdate#available) | [`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates) | v13 | 可以通过过滤[`SwUpdate#versionUpdates`](api/service-worker/SwUpdate#versionUpdates)上的 `VersionReadyEvent` 事件来重建 `SwUpdate#available` 的行为 |
 
@@ -296,29 +278,25 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### @angular/upgrade
 
-### 角度/升级
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [All entry points](api/upgrade) | [`@angular/upgrade/static`](api/upgrade/static) | v5 | See [Upgrading from AngularJS](guide/upgrade). |
-| [所有入口点](api/upgrade) | [`@angular/upgrade/static`](api/upgrade/static) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。 |
+| [所有入口点](api/upgrade) | [`@angular/upgrade/static`](api/upgrade/static) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。|
 
 <a id="upgrade-static"></a>
 
 ### @angular/upgrade/static
 
-### 角度/升级/静态
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 更换 | 已宣布弃用 | 详细信息 |
 | [`getAngularLib`](api/upgrade/static/getAngularLib) | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal) | v5 | See [Upgrading from AngularJS](guide/upgrade). |
-| [`getAngularLib`](api/upgrade/static/getAngularLib) | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。 |
+| [`getAngularLib`](api/upgrade/static/getAngularLib) | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。|
 | [`setAngularLib`](api/upgrade/static/setAngularLib) | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal) | v5 | See [Upgrading from AngularJS](guide/upgrade). |
-| [`setAngularLib`](api/upgrade/static/setAngularLib) | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。 |
+| [`setAngularLib`](api/upgrade/static/setAngularLib) | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal) | v5 | 参阅[从 AngularJS 升级](guide/upgrade)。|
 | [Factory-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | [NgModule-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | v13 | The `downgradeModule` supports more ergonomic NgModule-based API (versus NgModule factory based API). |
-| [`downgradeModule` 的基于工厂的签名](api/upgrade/static/downgradeModule) | [`downgradeModule` 的基于 NgModule 的签名](api/upgrade/static/downgradeModule) | v13 | `downgradeModule` 支持更符合人体工程学的基于 NgModule 的 API（与基于 NgModule 工厂的 API 相比）。 |
+| [`downgradeModule` 的基于工厂的签名](api/upgrade/static/downgradeModule) | [`downgradeModule` 的基于 NgModule 的签名](api/upgrade/static/downgradeModule) | v13 | `downgradeModule` 支持更符合人体工程学的基于 NgModule 的 API（与基于 NgModule 工厂的 API 相比）。|
 
 <a id="deprecated-features"></a>
 
@@ -365,11 +343,11 @@ The shadow-dom-piercing descendant combinator is deprecated and support is being
 As such, in v4 we deprecated support in Angular for all three of `/deep/`, `>>>`, and `::ng-deep`.
 Until removal, `::ng-deep` is preferred for broader compatibility with the tools.
 
-这类 shadow-dom-piercing 后代组合器已弃用，并且正在[从主要浏览器和工具](https://developers.google.com/web/updates/2017/10/remove-shadow-piercing)中删除支持。因此，在 v4 中，我们弃用了 Angular 对 `/deep/` 、 `>>>` 和 `::ng-deep` 三个的支持。在正式移除之前， `::ng-deep` 是首选，因为它与工具具有更广泛的兼容性。
+这类 shadow-dom-piercing 后代组合器已弃用，并且正在[从主要浏览器和工具](https://developers.google.com/web/updates/2017/10/remove-shadow-piercing)中删除支持。因此，在 v4 中，我们弃用了 Angular 对 `/deep/` 、 `>>>` 和 `::ng-deep` 三个的支持。在正式移除之前，`::ng-deep` 是首选，因为它与工具具有更广泛的兼容性。
 
 For more information, see [/deep/, >>>, and ::ng-deep](guide/component-styles#deprecated-deep--and-ng-deep "Component Styles guide, Deprecated deep and ngdeep") in the Component Styles guide.
 
-有关更多信息，参阅组件样式指南中的[/deep/、>>> 和 ::ng-deep](guide/component-styles#deprecated-deep--and-ng-deep "组件样式指南，已弃用 deep 和 ngdeep") 。
+有关更多信息，参阅组件样式指南中的[/deep/、>>> 和 ::ng-deep](guide/component-styles#deprecated-deep--and-ng-deep "组件样式指南，已弃用 deep 和 ngdeep")。
 
 <a id="bind-syntax"></a>
 
@@ -442,7 +420,7 @@ It allows getting and setting a value and intercepting value events, but some of
 In addition, this pattern mixes template-driven and reactive forms strategies, which prevents taking advantage of the full benefits of either strategy.
 Setting the value in the template violates the template-agnostic principles behind reactive forms, whereas adding a `FormControl`/`FormGroup` layer in the class removes the convenience of defining forms in the template.
 
-另外，该模式混用了模板驱动和响应式这两种表单策略，这会妨碍我们获取任何一种策略的全部优点。 在模板中设置值的方式，也违反了响应式表单所遵循的“模板无关”原则；反之，在类中添加 `FormControl`/`FormGroup` 层也破坏了“在模板中定义表单”的约定。
+另外，该模式混用了模板驱动和响应式这两种表单策略，这会妨碍我们获取任何一种策略的全部优点。在模板中设置值的方式，也违反了响应式表单所遵循的“模板无关”原则；反之，在类中添加 `FormControl`/`FormGroup` 层也破坏了“在模板中定义表单”的约定。
 
 To update your code before support is removed, you'll want to decide whether to stick with reactive form directives (and get/set values using reactive forms patterns) or switch to template-driven directives.
 
@@ -474,13 +452,11 @@ You can choose to silence this warning by configuring `ReactiveFormsModule` at i
 Alternatively, you can choose to surface a separate warning for each instance of this pattern with a configuration value of `"always"`.
 This may help to track down where in the code the pattern is being used as the code is being updated.
 
-或者，你可以选择为该模式的每个实例显示一个单独的警告，配置值为 `"always"` 。这可能有助于在更新代码时跟踪代码中使用模式的位置。
+或者，你可以选择为该模式的每个实例显示一个单独的警告，配置值为 `"always"`。这可能有助于在更新代码时跟踪代码中使用模式的位置。
 
 <a id="reflectiveinjector"></a>
 
 ### ReflectiveInjector
-
-### 反射式注入器
 
 In version 5, Angular replaced the `ReflectiveInjector` with the `StaticInjector`.
 The injector no longer requires the Reflect polyfill, reducing application size for most developers.
@@ -544,7 +520,7 @@ In version 8, the string syntax for the [`loadChildren`](api/router/LoadChildren
 **Version 8 update**: When you update to version 8, the [`ng update`](cli/update) command performs the transformation automatically.
 Prior to version 7, the `import()` syntax only works in JIT mode (with view engine).
 
-**版本 8 更新**：当你更新到版本 8 时， [`ng update`](cli/update) 命令会自动执行转换。在版本 7 之前， `import()` 语法仅适用于 JIT 模式（使用视图引擎）。
+**版本 8 更新**：当你更新到版本 8 时，[`ng update`](cli/update) 命令会自动执行转换。在版本 7 之前，`import()` 语法仅适用于 JIT 模式（使用视图引擎）。
 
 </div>
 
@@ -556,7 +532,7 @@ You can find the complete list of allowed syntax constructs [here](https://githu
 These restrictions will be relaxed with the release of Ivy since it'll no longer use `NgFactories`.
 
 **声明语法**：<br />
-遵循路由声明语法 `loadChildren: () => import('...').then(m => m.ModuleName)` 很重要，这样 `ngc` 才能发现惰性加载的模块和关联的 `NgModule` 。你可以在[此处](https://github.com/angular/angular-cli/blob/a491b09800b493fe01301387fa9a025f7c7d4808/packages/ngtools/webpack/src/transformers/import_factory.ts#L104-L113)找到允许的语法结构的完整列表。这些限制将随着 Ivy 的发布而放宽，因为它将不再使用 `NgFactories` 。
+遵循路由声明语法 `loadChildren: () => import('...').then(m => m.ModuleName)` 很重要，这样 `ngc` 才能发现惰性加载的模块和关联的 `NgModule`。你可以在[此处](https://github.com/angular/angular-cli/blob/a491b09800b493fe01301387fa9a025f7c7d4808/packages/ngtools/webpack/src/transformers/import_factory.ts#L104-L113)找到允许的语法结构的完整列表。这些限制将随着 Ivy 的发布而放宽，因为它将不再使用 `NgFactories`。
 
 </div>
 
@@ -574,7 +550,7 @@ The need for this polyfill was removed in Angular version 8.0 ([see #14473](http
 Because the polyfill can be depended on by 3rd-party libraries, instead of removing it from all Angular projects, we are deprecating the requirement for this polyfill as of version 8.0.
 This should give library authors and application developers sufficient time to evaluate if they need the polyfill, and perform any refactoring necessary to remove the dependency on it.
 
-在 Angular 8.0 版（[见#14473](https://github.com/angular/angular-cli/pull/14473) ）中移除了对这个腻子脚本的需求，这将使得大多数 Angular 应用程序不再需要此腻子脚本。因为此腻子脚本可能被第三方库依赖，因此不能从所有 Angular 项目中删除它，我们从 8.0 版本开始弃用对这个腻子脚本的要求。这样可以给库作者和应用程序开发人员足够的时间来评估他们是否需要此腻子脚本，并执行任何必要的重构以消除对它的依赖。
+在 Angular 8.0 版（[见#14473](https://github.com/angular/angular-cli/pull/14473)）中移除了对这个腻子脚本的需求，这将使得大多数 Angular 应用程序不再需要此腻子脚本。因为此腻子脚本可能被第三方库依赖，因此不能从所有 Angular 项目中删除它，我们从 8.0 版本开始弃用对这个腻子脚本的要求。这样可以给库作者和应用程序开发人员足够的时间来评估他们是否需要此腻子脚本，并执行任何必要的重构以消除对它的依赖。
 
 In a typical Angular project, the polyfill is not used in production builds, so removing it should not impact production applications.
 The goal behind this removal is overall simplification of the build setup and decrease in the number of external dependencies.
@@ -619,7 +595,7 @@ properties and add fallback logic as in the following example:
 In the following example, the two-way binding means that `optionName`
 should be written when the `valueChange` event fires.
 
-在以下示例中，双向绑定意味着应在 `valueChange` 事件触发时写入 `optionName` 。
+在以下示例中，双向绑定意味着应在 `valueChange` 事件触发时写入 `optionName`。
 
 <code-example path="deprecation-guide/src/app/app.component.1.html" region="two-way-template-deprecated"></code-example>
 
@@ -645,7 +621,7 @@ These two properties have subtle differences, so switching to `textContent` unde
 For this reason, we are deprecating this behavior.
 Going forward, users should explicitly bind to `textContent` when using Domino.
 
-这两个属性有细微的差别，因此在幕后切换到 `textContent` 可能会让用户感到惊讶。出于这个原因，我们弃用了这种行为。展望未来，用户应该在使用 Domino 时显式绑定到 `textContent` 。
+这两个属性有细微的差别，因此在幕后切换到 `textContent` 可能会让用户感到惊讶。出于这个原因，我们弃用了这种行为。展望未来，用户应该在使用 Domino 时显式绑定到 `textContent`。
 
 <a id="wtf-apis"></a>
 
@@ -667,7 +643,7 @@ Previously, the `entryComponents` array in the `NgModule` definition was used to
 With Ivy, this isn't a requirement anymore and the `entryComponents` array can be removed from existing module declarations.
 The same applies to the `ANALYZE_FOR_ENTRY_COMPONENTS` injection token.
 
-以前， `NgModule` 定义中的 `entryComponents` 数组用于告诉编译器将动态创建和插入哪些组件。使用 Ivy 后，这不再是必需的，并且可以从现有模块声明中删除 `entryComponents` 数组。这同样适用于 `ANALYZE_FOR_ENTRY_COMPONENTS` 注入令牌。
+以前，`NgModule` 定义中的 `entryComponents` 数组用于告诉编译器将动态创建和插入哪些组件。使用 Ivy 后，这不再是必需的，并且可以从现有模块声明中删除 `entryComponents` 数组。这同样适用于 `ANALYZE_FOR_ENTRY_COMPONENTS` 注入令牌。
 
 <div class="alert is-helpful">
 
@@ -690,7 +666,7 @@ This type represents an `NgModule` along with additional providers.
 Angular version 9 deprecates use of `ModuleWithProviders` without an explicitly generic type, where the generic type refers to the type of the `NgModule`.
 In a future version of Angular, the generic will no longer be optional.
 
-一些 Angular 库，比如 `@angular/router` 和 `@ngrx/store` ，实现的 API 返回名为 ModuleWithProviders 的类型（通常使用名为 `ModuleWithProviders` `forRoot()` 的方法）。这种类型代表一个 `NgModule` 以及其他提供者。 Angular 版本 9 已弃用没有明确泛型类型的 `NgModule` `ModuleWithProviders` 类型。在 Angular 的未来版本中，泛型将不再是可选的。
+一些 Angular 库，比如 `@angular/router` 和 `@ngrx/store`，实现的 API 返回名为 ModuleWithProviders 的类型（通常使用名为 `ModuleWithProviders` `forRoot()` 的方法）。这种类型代表一个 `NgModule` 以及其他提供者。Angular 版本 9 已弃用没有明确泛型类型的 `NgModule` `ModuleWithProviders` 类型。在 Angular 的未来版本中，泛型将不再是可选的。
 
 If you're using the CLI, `ng update` should [migrate your code automatically](guide/migration-module-with-providers).
 If you're not using the CLI, you can add any missing generic types to your application manually.
@@ -710,30 +686,27 @@ For example:
 
 <code-example path="deprecation-guide/src/app/app.module.ts" language="typescript" region="ModuleWithProvidersGeneric"></code-example>
 
-&lt;!--
+<!--
 
 ### Internet Explorer 11
-
-### 互联网浏览器 11
 
 Angular support for Microsoft's Internet Explorer 11 (IE11) is deprecated and will be removed in Angular v13.
 Ending IE11 support allows Angular to take advantage of web platform APIs present only in evergreen browsers, resulting in better APIs for developers and more capabilities for application users.
 An additional motivation behind this removal is the drop in global usage of IE11 to just ~1% (as of March 2021).
 For full rationale and discussion behind this deprecation, see [RFC: Internet Explorer 11 support deprecation and removal](https://github.com/angular/angular/issues/41840).
 
-对 Microsoft 的 Internet Explorer 11 (IE11) 的 Angular 支持已被弃用，将在 Angular v13 中删除。终止 IE11 支持允许 Angular 利用仅存在于常绿浏览器中的 Web 平台 API，为开发人员提供更好的 API，为应用程序用户提供更多特性。此次删除背后的另一个动机是 IE11 的全球使用量下降到仅 ~1%（截至 2021 年 3 月）。有关此弃用背后的完整理由和讨论，请参阅[RFC： Internet Explorer 11 支持弃用和删除](https://github.com/angular/angular/issues/41840)。
+Angular 对 Microsoft 的 Internet Explorer 11 (IE11) 的支持已被弃用，将在 Angular v13 中删除。终止 IE11 支持允许 Angular 利用仅存在于常绿浏览器中的 Web 平台 API，为开发人员提供更好的 API，为应用程序用户提供更多特性。此次删除背后的另一个动机是 IE11 的全球使用量下降到仅 ~1%（截至 2021 年 3 月）。有关此弃用背后的完整理由和讨论，请参阅[RFC：Internet Explorer 11 支持弃用和删除](https://github.com/angular/angular/issues/41840)。
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 IE11 will be supported in Angular v12 LTS releases through November 2022.
 
-**注**：<br />在 2022 年 11 月之前，Angular v12 LTS 版本将支持 IE11。
+**注意**：<br />
+在 2022 年 11 月之前，Angular v12 LTS 版本将支持 IE11。
 
 </div>
-\-->
-
-</div>-->
+-->
 
 <a id="input-setter-coercion"></a>
 
@@ -811,7 +784,7 @@ With Ivy, JIT compilation takes place implicitly if the Component, NgModule, etc
 Those special providers were made available in Ivy for backwards-compatibility with ViewEngine to make the transition to Ivy smoother.
 Since ViewEngine is deprecated and will soon be removed, those symbols are now deprecated as well.
 
-在 ViewEngine 中， [JIT 编译](https://angular.io/guide/glossary#jit)需要在应用程序中注入特殊的提供者（如 `Compiler`、`CompilerFactory` 等）并调用相应的方法。使用 Ivy，如果 Component、NgModule 等尚未进行 [AOT 编译](https://angular.io/guide/glossary#aot) ，则 JIT 编译会隐式进行。这些特殊的提供者在 Ivy 中仍然可用，以便与 ViewEngine 向后兼容，从而使向 Ivy 的过渡更加顺畅。由于 ViewEngine 已被弃用并将很快被删除，因此这些符号现在也已被弃用。
+在 ViewEngine 中，[JIT 编译](https://angular.io/guide/glossary#jit)需要在应用程序中注入特殊的提供者（如 `Compiler`、`CompilerFactory` 等）并调用相应的方法。使用 Ivy，如果 Component、NgModule 等尚未进行 [AOT 编译](https://angular.io/guide/glossary#aot)，则 JIT 编译会隐式进行。这些特殊的提供者在 Ivy 中仍然可用，以便与 ViewEngine 向后兼容，从而使向 Ivy 的过渡更加顺畅。由于 ViewEngine 已被弃用并将很快被删除，因此这些符号现在也已被弃用。
 
 <div class="alert is-important">
 
@@ -833,13 +806,13 @@ See [RFC: Exploration of use-cases for Angular JIT compilation mode](https://git
 Angular provides utilities for testing `HttpClient`.
 The `TestRequest` class from `@angular/common/http/testing` mocks HTTP request objects for use with `HttpTestingController`.
 
-Angular 提供了一些用于测试 `HttpClient` 的实用工具。 `@angular/common/http/testing` 中的 `TestRequest` 类会模拟 HTTP 请求对象以与 `HttpTestingController` 一起使用。
+Angular 提供了一些用于测试 `HttpClient` 的实用工具。`@angular/common/http/testing` 中的 `TestRequest` 类会模拟 HTTP 请求对象以与 `HttpTestingController` 一起使用。
 
 `TestRequest` provides an API for simulating an HTTP response with an error.
 In earlier versions of Angular, this API accepted objects of type `ErrorEvent`, which does not match the type of error event that browsers return natively.
 If you use `ErrorEvent` with `TestRequest`, you should switch to `ProgressEvent`.
 
-`TestRequest` 提供了一个 API 来模拟带有错误的 HTTP 响应。在早期版本的 Angular 中，此 API 接受 `ErrorEvent` 类型的对象，这与浏览器本机返回的错误事件类型不匹配。如果你要将 `ErrorEvent` 与 `TestRequest` 一起使用，就应该切换到 `ProgressEvent` 。
+`TestRequest` 提供了一个 API 来模拟带有错误的 HTTP 响应。在早期版本的 Angular 中，此 API 接受 `ErrorEvent` 类型的对象，这与浏览器本机返回的错误事件类型不匹配。如果你要将 `ErrorEvent` 与 `TestRequest` 一起使用，就应该切换到 `ProgressEvent`。
 
 Here is an example using a `ProgressEvent`:
 
@@ -866,33 +839,27 @@ This section contains a complete list all of the currently deprecated CLI flags.
 
 ### @angular/cli
 
-### 角度/cli
-
 | API/Option | May be removed in | Details |
 | :--------- | :---------------- | :------ |
 | API/选项 | 可能会在 | 详细信息 |
 | `--prod` | <!--v12--> v14 | Use `--configuration production` instead. |
-| `--prod` | <!--v12--> v14 | 改用 `--configuration production` 方式。 |
+| `--prod` | <!--v12--> v14 | 改用 `--configuration production` 方式。|
 | `ng update --all` | <!--v11--> v14 | No longer has an effect. |
-| `ng update --all` | <!--v11--> v14 | 不再有效果。 |
+| `ng update --all` | <!--v11--> v14 | 已经不起作用了。|
 
 ### @angular-devkit/build-angular
-
-### 角度-devkit/构建-角度
 
 | API/Option | May be removed in | Details |
 | :--------- | :---------------- | :------ |
 | API/选项 | 可能会在 | 详细信息 |
 | `deployUrl` | <!--v13--> v15 | Use `baseHref` option, `APP_BASE_HREF` DI token or a combination of both instead. For more information, see [the deploy url](guide/deployment#the-deploy-url). |
-| `deployUrl` | <!--v13--> v15 | 使用 `baseHref` 选项、 `APP_BASE_HREF` DI 令牌或两者的组合。有关更多信息，参阅[部署 url](guide/deployment#the-deploy-url) 。 |
+| `deployUrl` | <!--v13--> v15 | 使用 `baseHref` 选项、 `APP_BASE_HREF` DI 令牌或两者的组合。有关更多信息，参阅[部署 url](guide/deployment#the-deploy-url)。|
 | `showCircularDependencies` | <!--v12--> v14 | The recommended method to detect circular dependencies in project code is to use either a lint rule or other external tooling. |
-| `showCircularDependencies` | <!--v12--> v14 | 在项目代码中检测循环依赖的推荐方法是使用 lint 规则或其他外部工具。 |
+| `showCircularDependencies` | <!--v12--> v14 | 在项目代码中检测循环依赖的推荐方法是使用 lint 规则或其他外部工具。|
 | Protractor builder | <!--v12--> v14 | Deprecate as part of the Protractor deprecation. |
-| Protractor 构建器 | <!--v12--> v14 | 作为 Protractor 弃用的一部分而弃用。 |
+| Protractor 构建器 | <!--v12--> v14 | 作为 Protractor 弃用的一部分而弃用。|
 
 ### @angular-devkit/build-optimizer
-
-### 角度开发工具包/构建优化器
 
 The entire NPM package is deprecated.
 It has always been experimental (never hit `1.0.0`) and has
@@ -900,7 +867,7 @@ been an internal package for the Angular CLI.
 All the relevant functionality has been moved to
 `@angular-devkit/build-angular`
 
-整个 NPM 包已弃用。它一直是实验性的（从未达到 `1.0.0` ）并且一直是 Angular CLI 的内部包。所有相关特性都已移至 `@angular-devkit/build-angular` 
+整个 NPM 包已弃用。它一直是实验性的（从未达到 `1.0.0`）并且一直是 Angular CLI 的内部包。所有相关特性都已移至 `@angular-devkit/build-angular` 
 
 <a id="removed"></a>
 
@@ -910,16 +877,16 @@ All the relevant functionality has been moved to
 
 The following APIs have been removed starting with version 11.0.0\*:
 
-从版本 11.0.0\* 开始，已删除以下 API：
+从 11.0.0\*开始，已经移除了以下 API：
 
 | Package | API | Replacement | Details |
 | :------ | :-- | :---------- | :------ |
-| 包 | API | 替代品 | 详细信息 |
+| 包 | API | 替代品 | 详情 |
 | `@angular/router` | `preserveQueryParams` | [`queryParamsHandling`](api/router/UrlCreationOptions#queryParamsHandling) |  |
 
 \* To see APIs removed in version 10, check out this guide on the [version 10 docs site](https://v10.angular.io/guide/deprecations#removed).
 
-\* 要查看版本 10 中删除的 API，请查看[版本 10 文档站点](https://v10.angular.io/guide/deprecations#removed)上的本指南。
+\* 要查看版本 10 中移除的 API，请查看 [版本 10 文档站点](https://v10.angular.cn/guide/deprecations#removed)上的本指南。
 
 <a id="style-sanitization"></a>
 
@@ -942,7 +909,7 @@ The string syntax has been replaced with dynamic import statements.
 The `DeprecatedLoadChildren` type was removed from `@angular/router`.
 Find more information about the replacement in the [`LoadChildrenCallback` documentation](api/router/LoadChildrenCallback).
 
-不能再用 `loadChildren` 字符串语法来配置惰性路由。字符串语法已替换为动态导入语句。 `DeprecatedLoadChildren` 类型已从 `@angular/router` 中删除。在 [`LoadChildrenCallback` 文档](api/router/LoadChildrenCallback)中查找有关本替换的更多信息。
+不能再用 `loadChildren` 字符串语法来配置惰性路由。字符串语法已替换为动态导入语句。`DeprecatedLoadChildren` 类型已从 `@angular/router` 中删除。在 [`LoadChildrenCallback` 文档](api/router/LoadChildrenCallback)中查找有关本替换的更多信息。
 
 The supporting classes `NgModuleFactoryLoader`, `SystemJsNgModuleLoader` and `SystemJsNgModuleLoaderConfig` classes were removed from `@angular/core`, as well as `SpyNgModuleFactoryLoader` from `@angular/router`.
 
@@ -957,7 +924,7 @@ It was commonly used with the `async` pipe in the case where the `Observable` pr
 
 Given that this use case is relatively rare and special handling impacted application performance, the `WrappedValue` API has been removed in Angular 13.
 
-鉴于此用例相对罕见，并且特殊处理会影响应用程序性能，因此 `WrappedValue` API 已在 Angular 13 中删除。
+鉴于此用例相对较少且特殊处理会影响应用程序性能，`WrappedValue` API 已在 Angular 13 中删除。
 
 If you rely on the behavior that the same object instance should cause change detection, you have two options:
 

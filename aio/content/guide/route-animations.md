@@ -244,8 +244,6 @@ The animation code does the following after styling the views:
 
    使用[`group()`](api/animations/group)函数使内部动画并行运行。
 
-使用 [`group()`](api/animations/group) 函数来并行运行内部动画。
-
 1. Within the [`group()`](api/animations/group) function:
 
    在 [`group()`](api/animations/group) 函数中：

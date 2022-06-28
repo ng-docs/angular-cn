@@ -189,7 +189,7 @@ function getOptions(
  * This allows us to simulate, more reliably, files that have `\r\n` line-endings.
  * (See `test_cases/r3_view_compiler_i18n/line_ending_normalization/template.html`.)
  *
- * 这允许我们更可靠地模拟具有 `\r\n` 行结尾的文件。 （请参阅
+ * 这允许我们更可靠地模拟具有 `\r\n` 行结尾的文件。（请参阅
  * `test_cases/r3_view_compiler_i18n/line_ending_normalization/template.html` 。）
  *
  */

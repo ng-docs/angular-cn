@@ -86,7 +86,7 @@ export interface PerFileShimGenerator {
  * didn't end up being NgModules, by tracking the ones which are.
  *
  * .ngfactory 文件的生成时，源文件中每个定义的类都有一个符号，无论源文件中的类是否是 NgModules
- * （因为在生成工厂文件时还不知道）。 `FactoryTracker` 支持通过跟踪最终不是 NgModules
+ *（因为在生成工厂文件时还不知道）。 `FactoryTracker` 支持通过跟踪最终不是 NgModules
  * 的工厂符号来删除它们。
  *
  */

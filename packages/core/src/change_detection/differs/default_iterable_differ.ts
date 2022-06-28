@@ -331,7 +331,7 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
   /**
    * This check is only needed if an array contains duplicates. (Short circuit of nothing dirty)
    *
-   * 仅当数组包含重复项时才需要进行此检查。 （不脏时跳过）
+   * 仅当数组包含重复项时才需要进行此检查。（不脏时跳过）
    *
    * Use case: `[a, a]` => `[b, a, a]`
    *

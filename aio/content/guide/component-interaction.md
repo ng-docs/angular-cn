@@ -10,7 +10,7 @@ This cookbook contains recipes for common component communication scenarios in w
 
 <a id="toc"></a>
 
-&lt;!--
+<!--
 
 # Contents
 
@@ -36,7 +36,7 @@ This cookbook contains recipes for common component communication scenarios in w
 
   [通过服务进行父子通讯](guide/component-interaction#bidirectional-service)
 
-\-->
+-->
 
 **See the <live-example name="component-interaction"></live-example>**.
 
@@ -76,7 +76,7 @@ The running application displays three heroes:
 
 ### Test it for Pass data from parent to child with input binding
 
-### 测试它以使用输入绑定将数据从父级传递给子级
+### 测试它，以了解如何借助输入绑定将数据从父级传递给子级
 
 E2E test that all children were instantiated and displayed as expected:
 
@@ -118,7 +118,7 @@ Here's the `NameParentComponent` demonstrating name variations including a name 
 
 ### Test it for Intercept input property changes with a setter
 
-### 使用设置器测试它以拦截输入属性更改
+### 测试它，以了解如何使用设置器拦截输入属性更改
 
 E2E tests of input property setter with empty and non-empty names:
 
@@ -176,7 +176,7 @@ Here's the output of a button-pushing sequence:
 
 ### Test it for Intercept input property changes with `ngOnChanges()`
 
-### 使用 `ngOnChanges()` 测试它的 Intercept 输入属性更改
+### 测试它，以了解如何使用 `ngOnChanges()` 来拦截输入属性更改
 
 Test that ***both*** input properties are set initially and that button clicks trigger the expected `ngOnChanges` calls and values:
 
@@ -227,7 +227,7 @@ The framework passes the event argument —represented by `$event`— to the han
 
 ### Test it for Parent listens for child event
 
-### 测试它的父级监听子事件
+### 测试它，以了解如何用父级监听子级的事件
 
 Test that clicking the *Agree* and *Disagree* buttons update the appropriate counters:
 
@@ -290,7 +290,7 @@ Here, the parent and child are working together.
 
 ### Test it for Parent interacts with child using *local variable*
 
-### 测试它的父级使用*局部变量*与其子级交互
+### 测试它，以了解父级如何使用*局部变量*与其子级交互
 
 Test that the seconds displayed in the parent template match the seconds displayed in the child's status message.
 Test also that clicking the *Stop* button pauses the countdown timer:
@@ -329,7 +329,7 @@ The following example illustrates this technique with the same [Countdown Timer]
 Neither its appearance nor its behavior changes.
 The child [CountdownTimerComponent](guide/component-interaction#countdown-timer-example) is the same as well.
 
-下面的例子用与[倒计时](guide/component-interaction#countdown-timer-example)相同的范例来解释这种技术。 它的外观或行为没有变化。子组件[CountdownTimerComponent](guide/component-interaction#countdown-timer-example)也和原来一样。
+下面的例子用与[倒计时](guide/component-interaction#countdown-timer-example)相同的范例来解释这种技术。它的外观或行为没有变化。子组件[CountdownTimerComponent](guide/component-interaction#countdown-timer-example)也和原来一样。
 
 <div class="alert is-helpful">
 
@@ -384,7 +384,7 @@ Use `setTimeout()` to wait one tick and then revise the `seconds()` method so th
 
 ### Test it for Parent calls an `@ViewChild()`
 
-### 测试它的父级调用 `@ViewChild()`
+### 测试它，以了解父级如何调用 `@ViewChild()`
 
 Use [the same countdown timer tests](guide/component-interaction#countdown-tests) as before.
 
@@ -435,7 +435,7 @@ This is a memory-leak guard step.
 There is no actual risk in this application because the lifetime of a `AstronautComponent` is the same as the lifetime of the application itself.
 That *would not* always be true in a more complex application.
 
-注意，这个例子保存了 `subscription` 变量，并在 `AstronautComponent` 被销毁时调用 `unsubscribe()` 退订。 这是一个用于防止内存泄漏的保护措施。实际上，在这个应用程序中并没有这个风险，因为 `AstronautComponent` 的生命期和应用程序的生命期一样长。但在更复杂的应用程序环境中就不一定了。
+注意，这个例子保存了 `subscription` 变量，并在 `AstronautComponent` 被销毁时调用 `unsubscribe()` 退订。这是一个用于防止内存泄漏的保护措施。实际上，在这个应用程序中并没有这个风险，因为 `AstronautComponent` 的生命期和应用程序的生命期一样长。但在更复杂的应用程序环境中就不一定了。
 
 You don't add this guard to the `MissionControlComponent` because, as the parent,
 it controls the lifetime of the `MissionService`.
@@ -456,7 +456,7 @@ The *History* log demonstrates that messages travel in both directions between t
 
 ### Test it for Parent and children communicate using a service
 
-### 测试它的父级和子级使用服务进行通信
+### 测试它，以了解父级和子级如何使用服务进行通信
 
 Tests click buttons of both the parent `MissionControlComponent` and the `AstronautComponent` children and verify that the history meets expectations:
 

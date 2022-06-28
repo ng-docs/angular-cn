@@ -239,7 +239,7 @@ export class AstObject<T extends object, TExpression> {
    * `AstValue`) to the generic type (`T`) via the `mapper` function.
    *
    * 将 AstObject 转换为原始 JavaScript 对象，通过 `mapper` 函数将每个属性值（作为 `AstValue`
-   * ）映射到泛型类型 ( `T` )。
+   *）映射到泛型类型 ( `T` )。
    *
    */
   toLiteral<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>) => V): Record<string, V> {
@@ -255,7 +255,7 @@ export class AstObject<T extends object, TExpression> {
    * `AstValue`) to the generic type (`T`) via the `mapper` function.
    *
    * 将 AstObject 转换为 JavaScript Map，通过 `mapper` 函数将每个属性值（作为 `AstValue`
-   * ）映射到泛型类型 ( `T` )。
+   *）映射到泛型类型 ( `T` )。
    *
    */
   toMap<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>) => V): Map<string, V> {

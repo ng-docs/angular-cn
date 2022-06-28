@@ -15,7 +15,7 @@
  * by calling `resolve()`. These two steps are separated because sometimes the
  * resolved URL to the resource is needed as well as its contents.
  *
- * 请注意， `preload()` 和 `load()` 接受一个 `resolvedUrl` ，可以通过调用 `resolve()`
+ * 请注意，`preload()` 和 `load()` 接受一个 `resolvedUrl` ，可以通过调用 `resolve()`
  * 来找到它。这两个步骤是分开的，因为有时需要资源的解析 URL 及其内容。
  *
  */

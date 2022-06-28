@@ -21,8 +21,8 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  * function returns a promise (or is `async`) then the teardown is delayed until that `Promise`
  * is resolved.
  *
- * 此函数旨在与 `async await` 和 `Promise` 一起使用。如果包装的函数返回 Promise （或者是 `async`
- * ），则拆卸会延迟，直到该 `Promise` 被解析。
+ * 此函数旨在与 `async await` 和 `Promise` 一起使用。如果包装的函数返回 Promise（或者是 `async`
+ *），则拆卸会延迟，直到该 `Promise` 被解析。
  *
  * On `node` this function detects if `document` is present and if not it will create one by
  * loading `domino` and installing it.

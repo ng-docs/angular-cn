@@ -143,7 +143,7 @@ export class BigIntForMultiplication {
    * Computes the value for `num * b`, where `num` is a JS number and `b` is a big integer. The
    * value for `b` is represented by a storage model that is optimized for this computation.
    *
-   * 计算 `num * b` 的值，其中 `num` 是 JS 数字， `b` 是一个大整数。 `b`
+   * 计算 `num * b` 的值，其中 `num` 是 JS 数字，`b` 是一个大整数。 `b`
    * 的值由为此计算优化的存储模型表示。
    *
    * This operation is implemented in N(log2(num)) by continuous halving of the number, where the

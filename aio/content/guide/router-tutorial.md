@@ -74,8 +74,6 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
-  [角度 CLI](cli)
-
 You might find the [Tour of Heroes tutorial](tutorial) helpful, but it is not required.
 
 你可能会发现[《英雄之旅》教程](tutorial)很有用，但这不是必需的。
@@ -87,7 +85,7 @@ You might find the [Tour of Heroes tutorial](tutorial) helpful, but it is not re
 Using the Angular CLI, create a new application, *angular-router-sample*.
 This application will have two components: *crisis-list* and *heroes-list*.
 
-使用 Angular CLI，创建一个新的应用*angular-router-sample*。这个应用程序有两个组件： *crisis-list*和*heroes-list*。
+使用 Angular CLI，创建一个新的应用*angular-router-sample*。这个应用程序有两个组件：*crisis-list*和*heroes-list*。
 
 1. Create a new Angular project, *angular-router-sample*.
 
@@ -354,7 +352,7 @@ In this tutorial, that CSS class is `activebutton`, but you could use any class 
 
 Note that we are also specifying a value for the `routerLinkActive`'s `ariaCurrentWhenActive`. This makes sure that visually impaired users (which may not perceive the different styling being applied) can also identify the active button. For more information see the Accessibility Best Practices [Active links identification section](guide/accessibility#active-links-identification).
 
-请注意，我们还为 `routerLinkActive` 的 `ariaCurrentWhenActive` 指定了一个值。这可确保视障用户（他们可能无法感知正在应用的不同样式）也可以识别活动按钮。有关更多信息，请参阅可访问性最佳实践[活动链接标识部分](guide/accessibility#active-links-identification)。
+请注意，我们还为 `routerLinkActive` 的 `ariaCurrentWhenActive` 指定了一个值。这可确保视障用户（他们可能无法感知正在应用的不同样式）也可以识别活动按钮。有关更多信息，请参阅无障碍性最佳实践[活动链接标识部分](guide/accessibility#active-links-identification)。
 
 ## Adding a redirect
 
@@ -383,9 +381,9 @@ In this step of the tutorial, you add a route that redirects the user to display
    | :--------- | :------ |
    | 属性 | 详情 |
    | `redirectTo` | This property instructs Angular to redirect from an empty path to the `heroes-list` path. |
-   | `redirectTo` | 这个属性指示 Angular 从空路径重定向到 `heroes-list` 路径。 |
+   | `redirectTo` | 这个属性指示 Angular 从空路径重定向到 `heroes-list` 路径。|
    | `pathMatch` | This property instructs Angular on how much of the URL to match. For this tutorial, you should set this property to `full`. This strategy is recommended when you have an empty string for a path. For more information about this property, see the [Route API documentation](api/router/Route). |
-   | `pathMatch` | 这个属性指示 Angular 要如何匹配 URL。对于本教程，你应该把这个属性设置为 `full`。当路径为空字符串时，建议使用此策略。关于此属性的更多信息，请参阅 [Route API 文档](/api/router/Route)。 |
+   | `pathMatch` | 这个属性指示 Angular 要如何匹配 URL。对于本教程，你应该把这个属性设置为 `full`。当路径为空字符串时，建议使用此策略。关于此属性的更多信息，请参阅 [Route API 文档](/api/router/Route)。|
 
 Now when you open your application, it displays the `heroes-list` component by default.
 

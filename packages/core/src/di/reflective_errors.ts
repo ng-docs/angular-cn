@@ -175,7 +175,7 @@ export function instantiationError(
  * Thrown when an object other then {@link Provider} (or `Type`) is passed to {@link Injector}
  * creation.
  *
- * 当将 {@link Provider} （或 `Type` ）以外的对象传递给 {@link Injector} 创建时抛出。
+ * 当将 {@link Provider}（或 `Type`）以外的对象传递给 {@link Injector} 创建时抛出。
  *
  * @usageNotes
  *
