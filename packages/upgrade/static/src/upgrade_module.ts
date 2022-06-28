@@ -38,7 +38,7 @@ import {NgAdapterInjector} from './util';
  *
  * Specifically, the classes and functions in the `upgrade/static` module allow the following:
  *
- * 具体来说， `upgrade/static` 模块中的类和函数允许以下内容：
+ * 具体来说，`upgrade/static` 模块中的类和函数允许以下内容：
  *
  * 1. Creation of an Angular directive that wraps and exposes an AngularJS component so
  *    that it can be used in an Angular template. See `UpgradeComponent`.
@@ -73,10 +73,7 @@ import {NgAdapterInjector} from './util';
  * @usageNotes
  *
  * ```ts
- * import {UpgradeModule} from '
- * ```
- *
- * @angular /upgrade/static';
+ * import {UpgradeModule} from '@angular/upgrade/static';
  * ```
  *
  * See also the {@link UpgradeModule#examples examples} below.
@@ -138,23 +135,19 @@ import {NgAdapterInjector} from './util';
  *
  * Import the `UpgradeModule` into your top level {@link NgModule Angular `NgModule`}.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region='ng2-module'}
+ * {@example upgrade/static/ts/full/module.ts region='ng2-module'}
  *
  * Then inject `UpgradeModule` into your Angular `NgModule` and use it to bootstrap the top level
  * [AngularJS module](https://docs.angularjs.org/api/ng/type/angular.Module) in the
  * `ngDoBootstrap()` method.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region='bootstrap-ng1'}
+ * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng1'}
  *
  * Finally, kick off the whole process, by bootstrapping your top level Angular `NgModule`.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
+ * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
  *
- * {
- * @a upgrading-an-angular-1-service}
+ * {@a upgrading-an-angular-1-service}
  * ### Upgrading an AngularJS service
  *
  * There is no specific API for upgrading an AngularJS service. Instead you should just follow the
@@ -162,20 +155,17 @@ import {NgAdapterInjector} from './util';
  *
  * Let's say you have an AngularJS service:
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="ng1-text-formatter-service"}
+ * {@example upgrade/static/ts/full/module.ts region="ng1-text-formatter-service"}
  *
  * Then you should define an Angular provider to be included in your `NgModule` `providers`
  * property.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="upgrade-ng1-service"}
+ * {@example upgrade/static/ts/full/module.ts region="upgrade-ng1-service"}
  *
  * Then you can use the "upgraded" AngularJS service by injecting it into an Angular component
  * or service.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="use-ng1-upgraded-service"}
+ * {@example upgrade/static/ts/full/module.ts region="use-ng1-upgraded-service"}
  * @publicApi
  */
 @NgModule({providers: [angular1Providers]})

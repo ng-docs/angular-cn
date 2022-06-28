@@ -54,13 +54,13 @@ The `versionUpdates` is an `Observable` property of `SwUpdate` and emits four ev
 | :---------- | :------ |
 | 事件类型 | 详情 |
 | `VersionDetectedEvent` | Emitted when the service worker has detected a new version of the app on the server and is about to start downloading it. |
-| `VersionDetectedEvent` | 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出。 |
+| `VersionDetectedEvent` | 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出。|
 | `NoNewVersionDetectedEvent` | Emitted when the service worker has checked the version of the app on the server and did not find a new version. |
-| `NoNewVersionDetectedEvent` | 当 Service Worker 检查了服务器上应用程序的版本并且没有找到新版本时发出。 |
+| `NoNewVersionDetectedEvent` | 当 Service Worker 检查了服务器上应用程序的版本并且没有找到新版本时发出。|
 | `VersionReadyEvent` | Emitted when a new version of the app is available to be activated by clients. It may be used to notify the user of an available update or prompt them to refresh the page. |
-| `VersionReadyEvent` | 当有新版本的应用程序可供客户端激活时发出。它可用于通知用户可用的更新或提示他们刷新页面。 |
+| `VersionReadyEvent` | 当有新版本的应用程序可供客户端激活时发出。它可用于通知用户可用的更新或提示他们刷新页面。|
 | `VersionInstallationFailedEvent` | Emitted when the installation of a new version failed. It may be used for logging/monitoring purposes. |
-| `VersionInstallationFailedEvent` | 在新版本安装失败时发出。它可用于日志/监控目的。 |
+| `VersionInstallationFailedEvent` | 在新版本安装失败时发出。它可用于日志/监控目的。|
 
 <code-example header="log-update.service.ts" path="service-worker-getting-started/src/app/log-update.service.ts" region="sw-update"></code-example>
 
@@ -72,7 +72,7 @@ It's possible to ask the service worker to check if any updates have been deploy
 The service worker checks for updates during initialization and on each navigation request —that is, when the user navigates from a different address to your application.
 However, you might choose to manually check for updates if you have a site that changes frequently or want updates to happen on a schedule.
 
-可以要求 Service Worker 检查是否有任何更新已经发布到了服务器上。 Service Worker 会在初始化和每次导航请求（也就是用户导航到应用中的另一个地址）时检查更新。 不过，如果你的站点更新非常频繁，或者需要按计划进行更新，你可能会选择手动检查更新。
+可以要求 Service Worker 检查是否有任何更新已经发布到了服务器上。Service Worker 会在初始化和每次导航请求（也就是用户导航到应用中的另一个地址）时检查更新。不过，如果你的站点更新非常频繁，或者需要按计划进行更新，你可能会选择手动检查更新。
 
 Do this with the `checkForUpdate()` method:
 
@@ -83,7 +83,7 @@ Do this with the `checkForUpdate()` method:
 This method returns a `Promise<boolean>` which indicates if an update is available for activation.
 The check might fail, which will cause a rejection of the `Promise`.
 
-该方法返回一个用来表示检查更新已经成功完成的 `Promise<boolean>`。 这种检查可能会失败，它会导致此 `Promise` 被拒绝（reject）。
+该方法返回一个用来表示检查更新已经成功完成的 `Promise<boolean>`。这种检查可能会失败，它会导致此 `Promise` 被拒绝（reject）。
 
 <div class="alert is-important">
 
@@ -106,7 +106,7 @@ Check the [isStable](api/core/ApplicationRef#isStable) documentation for more in
 Avoid that delay by waiting for the application to stabilize first, before starting to poll for updates, as shown in the preceding example.
 Alternatively, you might want to define a different [registration strategy](api/service-worker/SwRegistrationOptions#registrationStrategy) for the ServiceWorker.
 
-可以通过在开始轮询更新之前先等应用达到稳定态来消除这种延迟，如上述例子所示。 另外，你还可以为 ServiceWorker 定义不一样的 [注册策略](api/service-worker/SwRegistrationOptions#registrationStrategy)。
+可以通过在开始轮询更新之前先等应用达到稳定态来消除这种延迟，如上述例子所示。另外，你还可以为 ServiceWorker 定义不一样的 [注册策略](api/service-worker/SwRegistrationOptions#registrationStrategy)。
 
 </div>
 
@@ -125,7 +125,7 @@ If the current tab needs to be updated to the latest application version immedia
 Calling `activateUpdate()` without reloading the page could break lazy-loading in a currently running app, especially if the lazy-loaded chunks use filenames with hashes, which change every version.
 Therefore, it is recommended to reload the page once the promise returned by `activateUpdate()` is resolved.
 
-如果调用 `activateUpdate()` 而不刷新页面，可能会破坏正在运行的应用中的惰性加载模块，特别是如果惰性加载的模块文件名中使用了哈希时，就会改变每一个版本。 所以，建议每当 `activateUpdate()` 返回的 Promise 被解析时，都刷新一次页面。
+如果调用 `activateUpdate()` 而不刷新页面，可能会破坏正在运行的应用中的惰性加载模块，特别是如果惰性加载的模块文件名中使用了哈希时，就会改变每一个版本。所以，建议每当 `activateUpdate()` 返回的 Promise 被解析时，都刷新一次页面。
 
 </div>
 
@@ -144,7 +144,7 @@ For example, imagine the following scenario:
 * A user opens the application for the first time and the service worker caches the latest version of the application.
   Assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
 
-  用户首次打开该应用，Service Worker 会缓存该应用的最新版本。假设应用要缓存的资源包括 `index.html`、`main.<main-hash-1>.js` 和 `lazy-chunk.<lazy-hash-1>.js` 。
+  用户首次打开该应用，Service Worker 会缓存该应用的最新版本。假设应用要缓存的资源包括 `index.html`、`main.<main-hash-1>.js` 和 `lazy-chunk.<lazy-hash-1>.js`。
 
 * The user closes the application and does not open it for a while.
 
@@ -177,11 +177,11 @@ For example, imagine the following scenario:
 * The user opens the application again.
   The service worker serves the latest version known to it at this point, namely the old version (`index.html` and `main.<main-hash-1>.js`).
 
-  用户再次打开本应用。此时，Service Worker 将提供它所知的最新版本，当然，实际上对我们是旧版本（ `index.html` 和 `main.<main-hash-1>.js` ）。
+  用户再次打开本应用。此时，Service Worker 将提供它所知的最新版本，当然，实际上对我们是旧版本（`index.html` 和 `main.<main-hash-1>.js`）。
 
 * At some later point, the application requests the lazy bundle, `lazy-chunk.<lazy-hash-1>.js`.
 
-  在稍后的某个时刻，该应用程序请求惰性捆绑包 `lazy-chunk.<lazy-hash-1>.js` 。
+  在稍后的某个时刻，该应用程序请求惰性捆绑包 `lazy-chunk.<lazy-hash-1>.js`。
 
 * The service worker is unable to find the asset in the cache (remember that the browser evicted it).
   Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).

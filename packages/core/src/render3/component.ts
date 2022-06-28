@@ -111,7 +111,7 @@ export interface CreateComponentOptions {
   /**
    * A function which is used to schedule change detection work in the future.
    *
-   * 用于安排将来更改检测工作的函数。
+   * 用于安排将来变更检测工作的函数。
    *
    * When marking components as dirty, it is necessary to schedule the work of
    * change detection in the future. This is done to coalesce multiple
@@ -160,7 +160,7 @@ export const NULL_INJECTOR: Injector = {
  * and object lifetime, use {@link ViewContainer#createComponent}.
  *
  * 使用此函数将组件引导到 DOM
- * 树。此函数的每次调用都将创建一个单独的组件、注入器以及更改检测周期和生命周期的树。要将新组件动态插入现有树，以使其共享相同的注入、更改检测和对象生命周期，请使用 {@link
+ * 树。此函数的每次调用都将创建一个单独的组件、注入器以及变更检测周期和生命周期的树。要将新组件动态插入现有树，以使其共享相同的注入、变更检测和对象生命周期，请使用 {@link
  * ViewContainer#createComponent} 。
  *
  * @param componentType Component to bootstrap
@@ -398,7 +398,7 @@ export function LifecycleHooksFeature(component: any, def: ComponentDef<any>): v
  * associated with the `component`'s render tree and waiting until the scheduler
  * flushes. If nothing is scheduled, the function returns a resolved promise.
  *
- * 此函数返回一个 `Promise` ，它在执行组件的更改检测时会被解析。这是通过查找与 `component`
+ * 此函数返回一个 `Promise` ，它在执行组件的变更检测时会被解析。这是通过查找与 `component`
  * 的渲染树关联的调度程序并等到调度程序刷新来确定的。如果没有任何计划，则该函数会返回已解析的
  * Promise。
  *

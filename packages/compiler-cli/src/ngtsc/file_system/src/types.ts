@@ -65,7 +65,7 @@ export interface PathManipulation {
    * `relative('c:/a/b', 'd:/a/c')` would be \`d:/a/c'.
    *
    * 在可以有多个文件树的文件系统中，返回的路径实际上可能不是“相对的”（即 `PathSegment`
-   * ）。例如，Windows 可以有多个驱动器： `relative('c:/a/b', 'd:/a/c')` 将是 \`d:/a/c'。
+   *）。例如，Windows 可以有多个驱动器： `relative('c:/a/b', 'd:/a/c')` 将是 \`d:/a/c'。
    *
    */
   relative<T extends PathString>(from: T, to: T): PathSegment|AbsoluteFsPath;

@@ -22,7 +22,7 @@ Schematics are part of the Angular ecosystem.
 The [Angular CLI](guide/glossary#cli)  uses schematics to apply transforms to a web-app project.
 You can modify these schematics, and define new ones to do things like update your code to fix breaking changes in a dependency, for example, or to add a new configuration option or framework to an existing project.
 
-原理图是 Angular 生态系统的一部分。[Angular CLI](guide/glossary#cli) 使用原理图对 Web 应用项目进行转换。 你可以修改这些原理图，并定义新的原理图，比如更新代码以修复依赖中的重大变更，或者把新的配置项或框架添加到现有的项目中。
+原理图是 Angular 生态系统的一部分。[Angular CLI](guide/glossary#cli) 使用原理图对 Web 应用项目进行转换。你可以修改这些原理图，并定义新的原理图，比如更新代码以修复依赖中的重大变更，或者把新的配置项或框架添加到现有的项目中。
 
 Schematics that are included in the `@schematics/angular` collection are run by default by the commands `ng generate` and `ng add`.
 The package contains named schematics that configure the options that are available to the CLI for `ng generate` sub-commands, such as `ng generate component` and `ng generate service`.
@@ -125,7 +125,7 @@ For example, the `@angular/pwa` schematic turns your application into a PWA by a
 Generation schematics are instructions for the `ng generate` command.
 The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic (in place of a sub-command) to generate an artifact defined in your library.
 
-生成器原理图是 `ng generate` 的操作指令。 那些已经有文档的子命令会使用默认的 Angular 生成器原理图，但你可以在子命令中指定另一个原理图来生成你的库中定义的那些工件。
+生成器原理图是 `ng generate` 的操作指令。那些已经有文档的子命令会使用默认的 Angular 生成器原理图，但你可以在子命令中指定另一个原理图来生成你的库中定义的那些工件。
 
 Angular Material, for example, supplies generation schematics for the UI components that it defines.
 The following command uses one of these schematics to render an Angular Material `<mat-table>` that is pre-configured with a datasource for sorting and pagination.

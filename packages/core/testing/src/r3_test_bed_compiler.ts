@@ -663,8 +663,8 @@ export class R3TestBedCompiler {
    * an NgModule). If there is a def in a set already, don't override it, since
    * an original one should be restored at the end of a test.
    *
-   * 在应用覆盖之前保留原始的 def（例如 ɵmod、ɵinj 等）。注：一个类可能有多个定义（例如： NgModule
-   * 的情况下的 ɵmod 和 ɵinj ）。如果集中已经有了
+   * 在应用覆盖之前保留原始的 def（例如 ɵmod、ɵinj 等）。注意：一个类可能有多个定义（例如： NgModule
+   * 的情况下的 ɵmod 和 ɵinj）。如果集中已经有了
    * def，请不要覆盖它，因为应该在测试结束时恢复原始的。
    *
    */
@@ -691,7 +691,7 @@ export class R3TestBedCompiler {
    * `TestBed.compileComponents`), so that component defs are in sync with the resolution queue.
    *
    * 清除当前的组件解析队列，但存储队列的状态，以便我们以后可以恢复它。在我们尝试编译组件（通过
-   * `TestBed.compileComponents` ）之前，需要清除队列，以便组件定义与解析队列同步。
+   * `TestBed.compileComponents`）之前，需要清除队列，以便组件定义与解析队列同步。
    *
    */
   private clearComponentResolutionQueue() {

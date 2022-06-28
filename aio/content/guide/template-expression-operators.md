@@ -39,11 +39,11 @@ See the <live-example></live-example> for a working example containing the code 
 
 ## The non-null assertion operator (`!`)
 
-## 非空断言运算符（ `!` ）
+## 非空断言运算符（`!`）
 
 When you use TypeScript's `--strictNullChecks` flag, you can prevent the type checker from throwing an error with Angular's non-null assertion operator, `!`.
 
-使用 TypeScript 的 `--strictNullChecks` 标志时，可以防止类型检查器使用 Angular 的非空断言运算符 `!` 。
+使用 TypeScript 的 `--strictNullChecks` 标志时，可以防止类型检查器使用 Angular 的非空断言运算符 `!`。
 
 The Angular non-null assertion operator causes the TypeScript type checker to suspend strict `null` and `undefined` checks for a specific property expression.
 
@@ -59,7 +59,7 @@ Often, you want to make sure that any property bindings aren't `null` or `undefi
 However, there are situations in which such states are acceptable.
 For those situations, you can use Angular's non-null assertion operator to prevent TypeScript from reporting that a property is `null` or `undefined`.
 
-通常，你要确保任何属性绑定都不为 `null` 或 `undefined` 。但是，在某些情况下，这种状态是可以接受的。对于这些情况，可以使用 Angular 的非空断言运算符来防止 TypeScript 报告某个属性为 `null` 或 `undefined`。
+通常，你要确保任何属性绑定都不为 `null` 或 `undefined`。但是，在某些情况下，这种状态是可以接受的。对于这些情况，可以使用 Angular 的非空断言运算符来防止 TypeScript 报告某个属性为 `null` 或 `undefined`。
 
 The non-null assertion operator, `!`, is optional unless you turn on strict null checks.
 

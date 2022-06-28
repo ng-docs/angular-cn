@@ -227,7 +227,7 @@ function extractInjectableMetadata(
  * needs to be unwrapped. This function will do that unwrapping and set a flag on the returned
  * object to indicate whether the value needed unwrapping.
  *
- * `useValue` 、 `useExisting` 和 `useClass` 属性可能包含在需要解包的 `ForwardRef`
+ * `useValue`、`useExisting` 和 `useClass` 属性可能包含在需要解包的 `ForwardRef`
  * 中。此函数将执行此展开，并在返回的对象上设置一个标志以表明该值是否需要展开。
  *
  */

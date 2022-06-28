@@ -1,0 +1,994 @@
+{
+  "name": "generate",
+  "command": "ng generate <schematic>",
+  "shortDescription": "Generates and/or modifies files based on a schematic.",
+  "aliases": [
+    "g"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "defaults",
+      "type": "boolean",
+      "default": false,
+      "description": "Disable interactive input prompts for options with a default.",
+      "descriptionCn": "对有默认值的选项禁用交互式输入提示。"
+    },
+    {
+      "name": "dry-run",
+      "type": "boolean",
+      "default": false,
+      "description": "Run through and reports activity without writing out results.",
+      "descriptionCn": "运行一遍并汇报其活动轨迹，但不真的写入任何结果。"
+    },
+    {
+      "name": "force",
+      "type": "boolean",
+      "default": false,
+      "description": "Force overwriting of existing files.",
+      "descriptionCn": "强制覆盖现存文件。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "interactive",
+      "type": "boolean",
+      "default": true,
+      "description": "Enable interactive input prompts.",
+      "descriptionCn": "启用交互式输入提示。"
+    },
+    {
+      "name": "schematic",
+      "type": "string",
+      "description": "The [collection:schematic] to run.",
+      "positional": 0,
+      "descriptionCn": "要运行的 [collection:schematic] 。"
+    }
+  ],
+  "subcommands": [
+    {
+      "name": "app-shell",
+      "command": "app-shell",
+      "shortDescription": "Generates an application shell for running a server-side version of an app.",
+      "options": [
+        {
+          "name": "app-dir",
+          "type": "string",
+          "default": "app",
+          "description": "The name of the application directory.",
+          "descriptionCn": "应用程序目录的名称。"
+        },
+        {
+          "name": "app-id",
+          "type": "string",
+          "default": "serverApp",
+          "description": "The application ID to use in withServerTransition().",
+          "descriptionCn": "要在 withServerTransition() 中使用的应用程序 ID。"
+        },
+        {
+          "name": "main",
+          "type": "string",
+          "default": "main.server.ts",
+          "description": "The name of the main entry-point file.",
+          "descriptionCn": "主入口点文件的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the related client app.",
+          "descriptionCn": "相关客户端应用的名称。"
+        },
+        {
+          "name": "root-module-class-name",
+          "type": "string",
+          "default": "AppServerModule",
+          "description": "The name of the root module class.",
+          "descriptionCn": "根模块类的名称。"
+        },
+        {
+          "name": "root-module-file-name",
+          "type": "string",
+          "default": "app.server.module.ts",
+          "description": "The name of the root module file",
+          "descriptionCn": "根模块文件的名称"
+        },
+        {
+          "name": "route",
+          "type": "string",
+          "default": "shell",
+          "description": "Route path used to produce the application shell.",
+          "descriptionCn": "用于生成应用程序 shell 的路由路径。"
+        }
+      ],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "生成用于运行应用程序的服务器端版本的应用程序 shell。"
+    },
+    {
+      "name": "application",
+      "command": "application [name]",
+      "shortDescription": "Generates a new basic application definition in the \"projects\" subfolder of the workspace.",
+      "options": [
+        {
+          "name": "inline-style",
+          "type": "boolean",
+          "aliases": [
+            "s"
+          ],
+          "description": "Include styles inline in the root component.ts file. Only CSS styles can be included inline. Default is false, meaning that an external styles file is created and referenced in the root component.ts file.",
+          "descriptionCn": "在根 component.ts 文件中包含内联样式。内联只能包含 CSS 样式。默认值为 false，这意味着将在根 component.ts 文件中创建并引用外部样式文件。"
+        },
+        {
+          "name": "inline-template",
+          "type": "boolean",
+          "aliases": [
+            "t"
+          ],
+          "description": "Include template inline in the root component.ts file. Default is false, meaning that an external template file is created and referenced in the root component.ts file. ",
+          "descriptionCn": "在根 component.ts 文件中包含内联模板。默认值为 false，这意味着在根 component.ts 文件中创建并引用了一个外部模板文件。"
+        },
+        {
+          "name": "minimal",
+          "type": "boolean",
+          "default": false,
+          "description": "Create a bare-bones project without any testing frameworks. (Use for learning purposes only.)",
+          "descriptionCn": "创建一个没有任何测试框架的极简项目。（仅用于学习目的。）"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the new app.",
+          "positional": 0,
+          "descriptionCn": "新应用的名称。"
+        },
+        {
+          "name": "prefix",
+          "type": "string",
+          "aliases": [
+            "p"
+          ],
+          "default": "app",
+          "description": "A prefix to apply to generated selectors.",
+          "descriptionCn": "用于生成选择器的前缀。"
+        },
+        {
+          "name": "routing",
+          "type": "boolean",
+          "default": false,
+          "description": "Create a routing NgModule.",
+          "descriptionCn": "创建一个路由 NgModule。"
+        },
+        {
+          "name": "skip-install",
+          "type": "boolean",
+          "default": false,
+          "description": "Skip installing dependency packages.",
+          "descriptionCn": "跳过安装依赖包。"
+        },
+        {
+          "name": "skip-package-json",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not add dependencies to the \"package.json\" file.",
+          "descriptionCn": "不要将依赖项添加到 “package.json” 文件中。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "aliases": [
+            "S"
+          ],
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the application.",
+          "descriptionCn": "不要为应用程序创建 “spec.ts” 测试文件。"
+        },
+        {
+          "name": "strict",
+          "type": "boolean",
+          "default": true,
+          "description": "Creates an application with stricter bundle budgets settings.",
+          "descriptionCn": "创建具有更严格的捆绑包预算设置的应用程序。"
+        },
+        {
+          "name": "style",
+          "type": "string",
+          "default": "css",
+          "enum": [
+            "css",
+            "scss",
+            "sass",
+            "less"
+          ],
+          "description": "The file extension or preprocessor to use for style files.",
+          "descriptionCn": "用于样式文件的扩展名/预处理器。"
+        },
+        {
+          "name": "view-encapsulation",
+          "type": "string",
+          "enum": [
+            "Emulated",
+            "None",
+            "ShadowDom"
+          ],
+          "description": "The view encapsulation strategy to use in the new application.",
+          "descriptionCn": "在新应用程序中要使用的视图封装策略。"
+        }
+      ],
+      "aliases": [
+        "app"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在工作区的 `projects` 子文件夹中生成新的基本应用程序定义。"
+    },
+    {
+      "name": "class",
+      "command": "class [name]",
+      "shortDescription": "Creates a new, generic class definition in the given or default project.",
+      "options": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the new class.",
+          "positional": 0,
+          "descriptionCn": "新类的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new class.",
+          "descriptionCn": "不要为新类创建 “spec.ts” 测试文件。"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
+          "descriptionCn": "将开发人员定义的类型添加到文件名中，格式为 “name.type.ts”。"
+        }
+      ],
+      "aliases": [
+        "cl"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用类定义。"
+    },
+    {
+      "name": "component",
+      "command": "component [name]",
+      "shortDescription": "Creates a new, generic component definition in the given or default project.",
+      "options": [
+        {
+          "name": "change-detection",
+          "type": "string",
+          "aliases": [
+            "c"
+          ],
+          "default": "Default",
+          "enum": [
+            "Default",
+            "OnPush"
+          ],
+          "description": "The change detection strategy to use in the new component.",
+          "descriptionCn": "在新组件中使用的变更检测策略。"
+        },
+        {
+          "name": "display-block",
+          "type": "boolean",
+          "aliases": [
+            "b"
+          ],
+          "default": false,
+          "description": "Specifies if the style will contain `:host { display: block; }`.",
+          "descriptionCn": "指定是否要在样式中包含 `:host { display: block; }` 。"
+        },
+        {
+          "name": "export",
+          "type": "boolean",
+          "default": false,
+          "description": "The declaring NgModule exports this component.",
+          "descriptionCn": "将从声明模块中导出此组件。"
+        },
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": false,
+          "description": "Create the new files at the top level of the current project.",
+          "descriptionCn": "在当前项目的顶层创建新文件。"
+        },
+        {
+          "name": "inline-style",
+          "type": "boolean",
+          "aliases": [
+            "s"
+          ],
+          "default": false,
+          "description": "Include styles inline in the component.ts file. Only CSS styles can be included inline. By default, an external styles file is created and referenced in the component.ts file.",
+          "descriptionCn": "在 component.ts 文件中包含内联样式。只能内联 CSS 样式。默认情况下，将创建一个外部样式文件，并在 component.ts 文件中对其进行引用。"
+        },
+        {
+          "name": "inline-template",
+          "type": "boolean",
+          "aliases": [
+            "t"
+          ],
+          "default": false,
+          "description": "Include template inline in the component.ts file. By default, an external template file is created and referenced in the component.ts file.",
+          "descriptionCn": "在 component.ts 文件中包含内联模板。默认情况下，将创建一个外部模板文件，并在 component.ts 文件中对其进行引用。"
+        },
+        {
+          "name": "module",
+          "type": "string",
+          "aliases": [
+            "m"
+          ],
+          "description": "The declaring NgModule.",
+          "descriptionCn": "指定其声明模块。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the component.",
+          "positional": 0,
+          "descriptionCn": "组件的名称。"
+        },
+        {
+          "name": "prefix",
+          "type": "string",
+          "aliases": [
+            "p"
+          ],
+          "description": "The prefix to apply to the generated component selector.",
+          "descriptionCn": "用于生成组件选择器的前缀。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "selector",
+          "type": "string",
+          "description": "The HTML selector to use for this component.",
+          "descriptionCn": "用于此组件的 HTML 选择器。"
+        },
+        {
+          "name": "skip-import",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not import this component into the owning NgModule.",
+          "descriptionCn": "不要将此组件导入所属的 NgModule 中。"
+        },
+        {
+          "name": "skip-selector",
+          "type": "boolean",
+          "default": false,
+          "description": "Specifies if the component should have a selector or not.",
+          "descriptionCn": "指定组件是否应具有选择器。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new component.",
+          "descriptionCn": "不要为新组件创建 “spec.ts” 测试文件。"
+        },
+        {
+          "name": "standalone",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the generated component is standalone.",
+          "descriptionCn": "生成的组件是否是独立组件。"
+        },
+        {
+          "name": "style",
+          "type": "string",
+          "default": "css",
+          "enum": [
+            "css",
+            "scss",
+            "sass",
+            "less",
+            "none"
+          ],
+          "description": "The file extension or preprocessor to use for style files, or 'none' to skip generating the style file.",
+          "descriptionCn": "用于样式文件的文件扩展名或预处理器，或“none”以跳过生成样式文件。"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "Component",
+          "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
+          "descriptionCn": "将开发人员定义的类型添加到文件名中，格式为 “name.type.ts”。"
+        },
+        {
+          "name": "view-encapsulation",
+          "type": "string",
+          "aliases": [
+            "v"
+          ],
+          "enum": [
+            "Emulated",
+            "None",
+            "ShadowDom"
+          ],
+          "description": "The view encapsulation strategy to use in the new component.",
+          "descriptionCn": "在新组件中使用的视图封装策略。"
+        }
+      ],
+      "aliases": [
+        "c"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建新的通用组件定义。"
+    },
+    {
+      "name": "directive",
+      "command": "directive [name]",
+      "shortDescription": "Creates a new, generic directive definition in the given or default project.",
+      "options": [
+        {
+          "name": "export",
+          "type": "boolean",
+          "default": false,
+          "description": "The declaring NgModule exports this directive.",
+          "descriptionCn": "将从声明模块中导出此指令。"
+        },
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": true,
+          "description": "When true (the default), creates the new files at the top level of the current project.",
+          "descriptionCn": "如果为 true（默认值），则在当前项目的顶层创建新文件。"
+        },
+        {
+          "name": "module",
+          "type": "string",
+          "aliases": [
+            "m"
+          ],
+          "description": "The declaring NgModule.",
+          "descriptionCn": "指定其声明模块。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the new directive.",
+          "positional": 0,
+          "descriptionCn": "新指令的名称。"
+        },
+        {
+          "name": "prefix",
+          "type": "string",
+          "aliases": [
+            "p"
+          ],
+          "description": "A prefix to apply to generated selectors.",
+          "descriptionCn": "用于生成选择器的前缀。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "selector",
+          "type": "string",
+          "description": "The HTML selector to use for this directive.",
+          "descriptionCn": "用于此指令的 HTML 选择器。"
+        },
+        {
+          "name": "skip-import",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not import this directive into the owning NgModule.",
+          "descriptionCn": "不要将此指令导入到所属的 NgModule 中。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new class.",
+          "descriptionCn": "不要为新类创建 “spec.ts” 测试文件。"
+        },
+        {
+          "name": "standalone",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the generated directive is standalone.",
+          "descriptionCn": "生成的指令是否是独立指令。"
+        }
+      ],
+      "aliases": [
+        "d"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用指令定义。"
+    },
+    {
+      "name": "enum",
+      "command": "enum [name]",
+      "shortDescription": "Generates a new, generic enum definition for the given or default project.",
+      "options": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the enum.",
+          "positional": 0,
+          "descriptionCn": "枚举的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project in which to create the enum. Default is the configured default project for the workspace.",
+          "descriptionCn": "要在其中创建枚举的项目的名称。默认是工作区已配置的默认项目。"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
+          "descriptionCn": "将开发人员定义的类型添加到文件名中，格式为 “name.type.ts”。"
+        }
+      ],
+      "aliases": [
+        "e"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "为给定或默认项目生成新的通用枚举定义。"
+    },
+    {
+      "name": "guard",
+      "command": "guard [name]",
+      "shortDescription": "Generates a new, generic route guard definition in the given or default project.",
+      "options": [
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": true,
+          "description": "When true (the default), creates the new files at the top level of the current project.",
+          "descriptionCn": "如果为 true（默认值），则在当前项目的顶层创建新文件。"
+        },
+        {
+          "name": "implements",
+          "type": "array",
+          "description": "Specifies which interfaces to implement.",
+          "descriptionCn": "指定要实现的接口。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the new route guard.",
+          "positional": 0,
+          "descriptionCn": "新路由守卫的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new guard.",
+          "descriptionCn": "不要为新守卫创建 “spec.ts” 测试文件。"
+        }
+      ],
+      "aliases": [
+        "g"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中生成新的通用路由守卫定义。"
+    },
+    {
+      "name": "interceptor",
+      "command": "interceptor [name]",
+      "shortDescription": "Creates a new, generic interceptor definition in the given or default project.",
+      "options": [
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": true,
+          "description": "When true (the default), creates files at the top level of the project.",
+          "descriptionCn": "如果为 true（默认值），则在项目的顶层创建文件。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the interceptor.",
+          "positional": 0,
+          "descriptionCn": "拦截器的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new interceptor.",
+          "descriptionCn": "不要为新的拦截器创建 “spec.ts” 测试文件。"
+        }
+      ],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用拦截器定义。"
+    },
+    {
+      "name": "interface",
+      "command": "interface [name] [type]",
+      "shortDescription": "Creates a new, generic interface definition in the given or default project.",
+      "options": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the interface.",
+          "positional": 0,
+          "descriptionCn": "接口名称。"
+        },
+        {
+          "name": "prefix",
+          "type": "string",
+          "description": "A prefix to apply to generated selectors.",
+          "descriptionCn": "用于生成选择器的前缀。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
+          "positional": 1,
+          "descriptionCn": "将开发人员定义的类型添加到文件名中，格式为 “name.type.ts”。"
+        }
+      ],
+      "aliases": [
+        "i"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用接口定义。"
+    },
+    {
+      "name": "library",
+      "command": "library [name]",
+      "shortDescription": "Creates a new, generic library project in the current workspace.",
+      "options": [
+        {
+          "name": "entry-file",
+          "type": "string",
+          "default": "public-api",
+          "description": "The path at which to create the library's public API file, relative to the workspace root.",
+          "descriptionCn": "要创建的库公共 API 文件的路径。是相对于工作区根目录的。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the library.",
+          "positional": 0,
+          "descriptionCn": "库的名称。"
+        },
+        {
+          "name": "prefix",
+          "type": "string",
+          "aliases": [
+            "p"
+          ],
+          "default": "lib",
+          "description": "A prefix to apply to generated selectors.",
+          "descriptionCn": "用于生成选择器的前缀。"
+        },
+        {
+          "name": "skip-install",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not install dependency packages.",
+          "descriptionCn": "不要安装依赖包。"
+        },
+        {
+          "name": "skip-package-json",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not add dependencies to the \"package.json\" file. ",
+          "descriptionCn": "不要将依赖项添加到 “package.json” 文件中。"
+        },
+        {
+          "name": "skip-ts-config",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not update \"tsconfig.json\" to add a path mapping for the new library. The path mapping is needed to use the library in an app, but can be disabled here to simplify development.",
+          "descriptionCn": "不要更新 “tsconfig.json” 来为新库添加路径映射。在应用中使用该库需要做路径映射，但是可以在此处将其禁用以简化开发。"
+        }
+      ],
+      "aliases": [
+        "lib"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在当前工作空间中创建一个新的通用库项目。"
+    },
+    {
+      "name": "module",
+      "command": "module [name]",
+      "shortDescription": "Creates a new, generic NgModule definition in the given or default project.",
+      "options": [
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": false,
+          "description": "Create the new files at the top level of the current project root. ",
+          "descriptionCn": "在当前项目根目录的顶层创建新文件。"
+        },
+        {
+          "name": "module",
+          "type": "string",
+          "aliases": [
+            "m"
+          ],
+          "description": "The declaring NgModule.",
+          "descriptionCn": "指定其声明模块。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the NgModule.",
+          "positional": 0,
+          "descriptionCn": "NgModule 的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "route",
+          "type": "string",
+          "description": "The route path for a lazy-loaded module. When supplied, creates a component in the new module, and adds the route to that component in the `Routes` array declared in the module provided in the `--module` option.",
+          "descriptionCn": "惰性加载模块的路由路径。提供后，将在新模块中创建一个组件，并将其路由添加到由 `--module` 选项指定的模块中声明的 `Routes` 数组中。"
+        },
+        {
+          "name": "routing",
+          "type": "boolean",
+          "default": false,
+          "description": "Create a routing module.",
+          "descriptionCn": "创建一个路由模块。"
+        },
+        {
+          "name": "routing-scope",
+          "type": "string",
+          "default": "Child",
+          "enum": [
+            "Child",
+            "Root"
+          ],
+          "description": "The scope for the new routing module.",
+          "descriptionCn": "新路由模块的范围。"
+        }
+      ],
+      "aliases": [
+        "m"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用 NgModule 定义。"
+    },
+    {
+      "name": "pipe",
+      "command": "pipe [name]",
+      "shortDescription": "Creates a new, generic pipe definition in the given or default project.",
+      "options": [
+        {
+          "name": "export",
+          "type": "boolean",
+          "default": false,
+          "description": "The declaring NgModule exports this pipe.",
+          "descriptionCn": "将从声明模块中导出此管道。"
+        },
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": true,
+          "description": "When true (the default) creates files at the top level of the project.",
+          "descriptionCn": "如果为 true（默认值），则在项目的顶层创建文件。"
+        },
+        {
+          "name": "module",
+          "type": "string",
+          "aliases": [
+            "m"
+          ],
+          "description": "The declaring NgModule.",
+          "descriptionCn": "指定其声明模块。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the pipe.",
+          "positional": 0,
+          "descriptionCn": "管道的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "skip-import",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not import this pipe into the owning NgModule.",
+          "descriptionCn": "不要将此管道导入到所属的 NgModule 中。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new pipe.",
+          "descriptionCn": "不要为新管道创建 “spec.ts” 测试文件。"
+        },
+        {
+          "name": "standalone",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the generated pipe is standalone.",
+          "descriptionCn": "生成的管道是否是独立管道。"
+        }
+      ],
+      "aliases": [
+        "p"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用管道定义。"
+    },
+    {
+      "name": "resolver",
+      "command": "resolver [name]",
+      "shortDescription": "Generates a new, generic resolver definition in the given or default project.",
+      "options": [
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": true,
+          "description": "When true (the default), creates the new files at the top level of the current project.",
+          "descriptionCn": "如果为 true（默认值），则在当前项目的顶层创建新文件。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the new resolver.",
+          "positional": 0,
+          "descriptionCn": "新解析器的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new resolver.",
+          "descriptionCn": "不要为新的解析器创建 “spec.ts” 测试文件。"
+        }
+      ],
+      "aliases": [
+        "r"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中生成新的通用解析程序定义。"
+    },
+    {
+      "name": "service",
+      "command": "service [name]",
+      "shortDescription": "Creates a new, generic service definition in the given or default project.",
+      "options": [
+        {
+          "name": "flat",
+          "type": "boolean",
+          "default": true,
+          "description": "When true (the default), creates files at the top level of the project.",
+          "descriptionCn": "如果为 true（默认值），则在项目的顶层创建文件。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the service.",
+          "positional": 0,
+          "descriptionCn": "服务的名称。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "skip-tests",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not create \"spec.ts\" test files for the new service.",
+          "descriptionCn": "不要为新服务创建 “spec.ts” 测试文件。"
+        }
+      ],
+      "aliases": [
+        "s"
+      ],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建新的通用服务定义。"
+    },
+    {
+      "name": "service-worker",
+      "command": "service-worker",
+      "shortDescription": "Pass this schematic to the \"run\" command to create a service worker",
+      "options": [
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "default": "build",
+          "description": "The target to apply service worker to.",
+          "descriptionCn": "要把 Service Worker 应用到的目标。"
+        }
+      ],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "将此原理图传递给 “run” 命令以创建 Service Worker"
+    },
+    {
+      "name": "web-worker",
+      "command": "web-worker [name]",
+      "shortDescription": "Creates a new, generic web worker definition in the given or default project.",
+      "options": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the worker.",
+          "positional": 0,
+          "descriptionCn": "此 Web Worker 的名字。"
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
+        },
+        {
+          "name": "snippet",
+          "type": "boolean",
+          "default": true,
+          "description": "Add a worker creation snippet in a sibling file of the same name.",
+          "descriptionCn": "在同名的同级文件中添加一个创建 Web Worker 的片段。"
+        }
+      ],
+      "aliases": [],
+      "deprecated": false,
+      "shortDescriptionCn": "在给定或默认项目中创建一个新的通用 Web Worker 定义。"
+    }
+  ],
+  "shortDescriptionCn": "基于某个原理图生成和/或修改文件。"
+}

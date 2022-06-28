@@ -16,13 +16,13 @@ Libraries are published as [npm packages][AioGuideNpmPackages], usually together
 To integrate reusable library code into an application, you need to install the package and import the provided functionality in the location you use it.
 For most published Angular libraries, use the `ng add <lib_name>` Angular CLI command.
 
-这些库都是作为 [npm 包][AioGuideNpmPackages]发布的，它们通常都带有一些与 Angular CLI 集成好的 schematic。要把可复用的库代码集成到应用中，你需要安装该软件包并在使用时导入它提供的功能。对于大多数已发布的 Angular 库，你可以使用 Angular CLI 的 `ng add <lib_name>` 命令。
+这些库都是作为 [npm 包][AioGuideNpmPackages]发布的，它们通常都带有一些与 Angular CLI 集成好的原理图。要把可复用的库代码集成到应用中，你需要安装该软件包并在使用时导入它提供的功能。对于大多数已发布的 Angular 库，你可以使用 Angular CLI 的 `ng add <lib_name>` 命令。
 
 The `ng add` Angular CLI command uses a package manager to install the library package and invokes schematics that are included in the package to other scaffolding within the project code.
 Examples of package managers include [npm][NpmjsMain] or [yarn][YarnpkgMain].
 Additional scaffolding within the project code includes import statements, fonts, and themes.
 
-Angular CLI 的 `ng add` 命令使用包管理器来安装库包，并调用该包中的 schematic 在项目代码中的添加脚手架。这些包管理器包括 [npm][NpmjsMain] 或 [yarn][YarnpkgMain]。项目代码中的额外脚手架包括 import 语句、fonts 和 themes。
+Angular CLI 的 `ng add` 命令使用包管理器来安装库包，并调用该包中的原理图在项目代码中的添加脚手架。这些包管理器包括 [npm][NpmjsMain] 或 [yarn][YarnpkgMain]。项目代码中的额外脚手架包括 import 语句、fonts 和 themes。
 
 A published library typically provides a `README` file or other documentation on how to add that library to your application.
 For an example, see the [Angular Material][AngularMaterialMain] documentation.

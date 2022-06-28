@@ -44,7 +44,7 @@ declare const $localize: LocalizeFn&{TRANSLATIONS: Record<MessageId, ParsedTrans
  * Loading new translations later in the application life-cycle will not change the translated text
  * of messages that have already been translated.
  *
- * 请注意， `$localize`
+ * 请注意，`$localize`
  * 消息只会在第一次遇到标记字符串时处理一次，并且在不刷新浏览器的情况下不提供动态语言更改。在应用程序生命周期的后期加载新翻译不会更改已翻译消息的翻译文本。
  *
  * The message IDs and translations are in the same format as that rendered to "simple JSON"

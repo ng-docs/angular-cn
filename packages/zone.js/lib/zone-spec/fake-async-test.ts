@@ -744,7 +744,7 @@ Zone.__load_patch('fakeasync', (global: any, Zone: ZoneType, api: _ZonePrivate) 
    *
    * - timers are synchronous, `tick()` simulates the asynchronous passage of time.
    *
-   *   定时器是同步的， `tick()` 模拟时间的异步流逝。
+   *   定时器是同步的，`tick()` 模拟时间的异步流逝。
    *
    * If there are any pending timers at the end of the function, an exception will be thrown.
    *

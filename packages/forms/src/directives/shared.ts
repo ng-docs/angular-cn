@@ -30,7 +30,7 @@ export function controlPath(name: string|null, parent: ControlContainer): string
  * Links a Form control and a Form directive by setting up callbacks (such as `onChange`) on both
  * instances. This function is typically invoked when form directive is being initialized.
  *
- * 通过在两个实例上设置回调（例如 `onChange` ）来链接 Form 控件和 Form 指令。此函数通常在初始化 form
+ * 通过在两个实例上设置回调（例如 `onChange`）来链接 Form 控件和 Form 指令。此函数通常在初始化 form
  * 指令时调用。
  *
  * @param control Form control instance that should be linked.

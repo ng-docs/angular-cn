@@ -89,9 +89,10 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * [Structural Directives](guide/structural-directives#one-per-element).
  *
  * 使用简写语法时，Angular
- * 在[一个元素上只允许有一个结构型指令](guide/built-in-directives#one-per-element)。比如，如果要根据条件进行迭代，请将
+ * 在[一个元素上只允许有一个结构型指令](guide/structural-directives#one-per-element)。比如，如果要根据条件进行迭代，请将
  * `*ngIf` 放在 `*ngFor`
- * 元素的容器元素上。欲知详情，请参见[《结构型指令》](guide/built-in-directives#one-per-element) 。
+ * 元素的容器元素上。欲知详情，请参见[《结构型指令》](guide/structural-directives#one-per-element)
+ * 。
  *
  * @usageNotes
  *
@@ -122,7 +123,7 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  *   more complex then a property access, for example when using the async pipe (`userStreams |
  *   async`).
  *
- *     `ngForOf:
+ *   `ngForOf:
  *   NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用
  * `async` 管道时（`userStreams | async`）。
  *
@@ -189,7 +190,7 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * elements were deleted and all new elements inserted).
  *
  * 即使数据没有变化，迭代器中的元素标识符也可能会发生变化。比如，如果迭代器处理的目标是通过 RPC
- * 从服务器取来的， 而 RPC
+ * 从服务器取来的，而 RPC
  * 又重新执行了一次。那么即使数据没有变化，第二次的响应体还是会生成一些具有不同标识符的对象。Angular
  * 将会清除整个 DOM，
  * 并重建它（就仿佛把所有老的元素都删除，并插入所有新元素）。这是很昂贵的操作，应该尽力避免。
@@ -232,7 +233,7 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
    * identity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
    * as the key.
    *
-   * 如果未提供自定义 `TrackByFunction` ， `NgForOf`
+   * 如果未提供自定义 `TrackByFunction` ，`NgForOf`
    * 将使用条目的[对象标识](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)作为键。
    *
    * `NgForOf` uses the computed key to associate items in an iterable with DOM elements

@@ -33,7 +33,7 @@ export const scheduler = {
    * Schedule a callback to be called before the next render.
    * (If `window.requestAnimationFrame()` is not available, use `scheduler.schedule()` instead.)
    *
-   * 安排要在下一次渲染之前调用的回调。 （如果 `window.requestAnimationFrame()` 不可用，请改用
+   * 安排要在下一次渲染之前调用的回调。（如果 `window.requestAnimationFrame()` 不可用，请改用
    * `scheduler.schedule()` 。）
    *
    * Returns a function that when executed will cancel the scheduled function.
@@ -106,7 +106,7 @@ let _matches: (this: any, selector: string) => boolean;
  * NOTE: this is duplicated from @angular/upgrade, and can
  * be consolidated in the future
  *
- * 检查 `Element` 是否与 CSS 选择器匹配。注：这是从 @angular/upgrade 复制的，并且可以在将来合并
+ * 检查 `Element` 是否与 CSS 选择器匹配。注意：这是从 @angular/upgrade 复制的，并且可以在将来合并
  *
  */
 export function matchesSelector(el: any, selector: string): boolean {

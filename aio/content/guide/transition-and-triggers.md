@@ -162,7 +162,7 @@ In the preceding code, you applied the `void` state when the HTML element isn't 
 `:enter` and `:leave` are aliases for the `void => *` and `* => void` transitions.
 These aliases are used by several animation functions.
 
-`:enter` 和 `:leave` 分别是 `void => *` 和 `* => void` 的别名。 这些别名供多个动画函数使用。
+`:enter` 和 `:leave` 分别是 `void => *` 和 `* => void` 的别名。这些别名供多个动画函数使用。
 
 <code-example hideCopy language="typescript">
 
@@ -174,7 +174,7 @@ transition ( ':leave', [ &hellip; ] );  // alias for * =&gt; void
 It's harder to target an element that is entering a view because it isn't in the DOM yet.
 So, use the aliases `:enter` and `:leave` to target HTML elements that are inserted or removed from a view.
 
-定位进入视图的元素更难，因为它不在 DOM 中。 因此，使用别名 `:enter` 和 `:leave` 来定位要从视图中插入或删除的 HTML 元素。
+定位进入视图的元素更难，因为它不在 DOM 中。因此，使用别名 `:enter` 和 `:leave` 来定位要从视图中插入或删除的 HTML 元素。
 
 ### Use of \*ngIf and \*ngFor with :enter and :leave
 
@@ -190,14 +190,15 @@ The `:enter` transition runs when any `*ngIf` or `*ngFor` views are placed on th
 Entering/leaving behaviors can sometime be confusing.
 As a rule of thumb consider that any element being added to the DOM by Angular passes via the `:enter` transition, but only elements being directly removed from the DOM by Angular pass via the `:leave` transition (For example, an element's view is removed from the DOM because its parent is being removed from the DOM or the app's route has changed, then the element will not pass via the `:leave` transition).
 
-**注**：<br />进入/离开行为有时会令人困惑。作为经验法则，考虑到 Angular 添加到 DOM 的任何元素都会通过 `:enter` 转换传递，但只有通过 Angular 直接从 DOM 删除的元素会通过 `:leave` 转换传递（例如，元素的视图是从 DOM，因为其父级正在从 DOM 中删除或应用程序的路由已更改，则元素将不会通过 `:leave` 转换）。
+**注意**：<br />
+进入/离开行为有时会令人困惑。作为经验法则，考虑到 Angular 添加到 DOM 的任何元素都会通过 `:enter` 转换传递，但只有通过 Angular 直接从 DOM 删除的元素会通过 `:leave` 转换传递（例如，元素的视图是从 DOM，因为其父级正在从 DOM 中删除或应用程序的路由已更改，则元素将不会通过 `:leave` 转换）。
 
 </div>
 
 This example has a special trigger for the enter and leave animation called `myInsertRemoveTrigger`.
 The HTML template contains the following code.
 
-本例子中有一个名叫 `myInsertRemoveTrigger` 的触发器，来表示进入和离开动画。 其 HTML 模板包含下列代码。
+本例子中有一个名叫 `myInsertRemoveTrigger` 的触发器，来表示进入和离开动画。其 HTML 模板包含下列代码。
 
 <code-example header="src/app/insert-remove.component.html" path="animations/src/app/insert-remove.component.html" region="insert-remove"></code-example>
 
@@ -209,7 +210,7 @@ In the component file, the `:enter` transition sets an initial opacity of 0, and
 
 Note that this example doesn't need to use [`state()`](api/animations/state).
 
-请注意，此示例不需要使用[`state()`](api/animations/state) 。
+请注意，此示例不需要使用[`state()`](api/animations/state)。
 
 ## :increment and :decrement in transitions
 

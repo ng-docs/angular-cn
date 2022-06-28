@@ -46,8 +46,6 @@ const UNDEFINED = {};
  *
  * ```typescript
  *
- * ```
- *
  * @Injectable ()
  * class Engine {
  * }
@@ -89,8 +87,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
-   * ```
    *
    * @Injectable ()
    * class Engine {
@@ -135,8 +131,6 @@ export abstract class ReflectiveInjector implements Injector {
    *
    * ```typescript
    *
-   * ```
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -170,8 +164,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
-   * ```
    *
    * @Injectable ()
    * class Engine {
@@ -287,8 +279,6 @@ export abstract class ReflectiveInjector implements Injector {
    *
    * ```typescript
    *
-   * ```
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -322,8 +312,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
-   * ```
    *
    * @Injectable ()
    * class Engine {

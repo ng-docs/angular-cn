@@ -436,7 +436,7 @@ export function parseMappings(
  * Return a map from original source-files (referenced in the `mappings`) to arrays of
  * segment-markers sorted by their order in their source file.
  *
- * 返回从原始 source-files （在 `mappings` 中引用）到按源文件中的顺序排序的段标记数组的映射。
+ * 返回从原始 source-files（在 `mappings` 中引用）到按源文件中的顺序排序的段标记数组的映射。
  *
  */
 export function extractOriginalSegments(mappings: Mapping[]): Map<SourceFile, SegmentMarker[]> {

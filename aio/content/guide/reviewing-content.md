@@ -28,7 +28,7 @@ All of the task-based guides, tutorials, and conceptual topics that you find on 
 When present, this tag is followed by the date representing when a given topic was reviewed for accuracy and completeness.
 On the published topic, this reviewed information appears at the bottom of the topic; for example, `Last reviewed on` followed by the day of the week, month, day, and year.
 
-你在 Angular.io 上找到的所有基于任务的指南、教程和概念主题都支持 `@reviewed` 标签。当存在时，此标签后是表示给定主题的准确性和完整性审查的日期。在已发布的主题上，此经过审核的信息出现在主题的底部；例如， `Last reviewed on` 的时间是星期、月、日和年。
+你在 Angular.io 上找到的所有基于任务的指南、教程和概念主题都支持 `@reviewed` 标签。当存在时，此标签后是表示给定主题的准确性和完整性审查的日期。在已发布的主题上，此经过审核的信息出现在主题的底部；例如，`Last reviewed on` 的时间是星期、月、日和年。
 
 <div class="lightbox">
 
@@ -63,7 +63,7 @@ You can also review any topic that you like.
    Example:
    `@reviewed 2021-03-23`
 
-   如果该主题没有最后审查日期，欢迎你将其添加到该主题。要添加日期，请使用 `YYYY-MM-DD` 日期格式。示例： `@reviewed 2021-03-23`
+   如果该主题没有最后审查日期，欢迎你将其添加到该主题。要添加日期，请使用 `YYYY-MM-DD` 日期格式。示例：`@reviewed 2021-03-23`
 
 1. Read through the topic.
 
@@ -71,7 +71,7 @@ You can also review any topic that you like.
 
 1. If the topic requires an update, either [file an issue](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue) that describes the update required, or [create a pull request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr) with the update.
 
-   如果主题需要更新，请[提交描述所需更新的问题](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue)，或[创建使用更新的 Pull Request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr) 。
+   如果主题需要更新，请[提交描述所需更新的问题](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue)，或[创建使用更新的 Pull Request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr)。
 
 1. Update the `@reviewed` tag, either through the [GitHub user interface](guide/updating-content-github-ui) or through Angular's [standard pull request process](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr).
 

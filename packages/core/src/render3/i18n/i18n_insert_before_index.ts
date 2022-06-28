@@ -28,7 +28,7 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  *
  * 要记住的事情： 1.所有 i18n 文本节点都被编码为 `TNodeType.Element` ，并且由 `ɵɵi18nStart`
  * 指令立即创建。 2.所有 `TNodeType.Placeholder` `TNodes` 都是稍后将由 `ɵɵelementStart`
- * 指令创建的元素。 3. `ɵɵelementStart` 指令将按 `TNode` `TNode.index` （因此可以保证在较大的索引
+ * 指令创建的元素。 3. `ɵɵelementStart` 指令将按 `TNode` `TNode.index`（因此可以保证在较大的索引
  * `TNode` 之前创建）
  *
  * We use the above three invariants to determine `TNode.insertBeforeIndex`.
@@ -50,10 +50,10 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  *        previous to see if we can update its `insertBeforeTNode`)
  *
  * 规则 1： `TNode.insertBeforeIndex = null` if `TNode.next === null`
- * （初始条件，因为我们不知道之后是否会插入更多 `TNode` 。）规则 2：如果 `previousTNode` 是在插入
+ *（初始条件，因为我们不知道之后是否会插入更多 `TNode` 。）规则 2：如果 `previousTNode` 是在插入
  * `previousTNode.insertBeforeNode = tNode.index` 之后创建，则 `tNode`
- * `previousTNode.insertBeforeNode = tNode.index` （因此，当添加新的 `tNode`
- * 时，我们会检查上一个以查看是否可以更新其 `insertBeforeTNode` ）
+ * `previousTNode.insertBeforeNode = tNode.index`（因此，当添加新的 `tNode`
+ * 时，我们会检查上一个以查看是否可以更新其 `insertBeforeTNode`）
  *
  * See `TNode.insertBeforeIndex` for more context.
  *
@@ -62,7 +62,7 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  * @param previousTNodes A list of previous TNodes so that we can easily traverse `TNode`s in
  *     reverse order. (If `TNode` would have `previous` this would not be necessary.)
  *
- * 以前的 TNode 的列表，以便我们可以轻松地以相反的顺序遍历 `TNode` 。 （如果 `TNode` 有 `previous`
+ * 以前的 TNode 的列表，以便我们可以轻松地以相反的顺序遍历 `TNode` 。（如果 `TNode` 有 `previous`
  * 的，则没有必要。）
  *
  * @param newTNode A TNode to add to the `previousTNodes` list.

@@ -6,7 +6,7 @@ Looking for an opinionated guide to Angular syntax, conventions, and application
 Step right in.
 This style guide presents preferred conventions and, as importantly, explains why.
 
-如果你正在寻找关于 Angular 语法、约定和应用组织结构的官方指南，那你就来对了。 本风格指南介绍了提倡的约定，更重要的是，解释了为什么。
+如果你正在寻找关于 Angular 语法、约定和应用组织结构的官方指南，那你就来对了。本风格指南介绍了提倡的约定，更重要的是，解释了为什么。
 
 <a id="toc"></a>
 
@@ -29,7 +29,7 @@ The wording of each guideline indicates how strong the recommendation is.
 Guidelines that literally should always be followed are extremely rare.
 On the other hand, you need a really unusual case for breaking a *Do* guideline.
 
-**坚持**意味着总是应该遵循的约定。 说*"总是"*可能显得有点绝对，应该*"总是"*遵循的指导原则非常少，不过，只有遇到极不寻常的情况才能打破*坚持*的原则。
+**坚持**意味着总是应该遵循的约定。说*"总是"*可能显得有点绝对，应该*"总是"*遵循的指导原则非常少，不过，只有遇到极不寻常的情况才能打破*坚持*的原则。
 
 </div>
 
@@ -39,7 +39,7 @@ On the other hand, you need a really unusual case for breaking a *Do* guideline.
 If you fully understand the meaning behind the guideline and have a good reason to deviate, then do so.
 Aim to be consistent.
 
-**考虑**表示通常应该遵循的指导原则。 如果你能完全理解指导原则背后的含义，并且有很好的理由违反它，那就改吧。但要注意保持一致。
+**考虑**表示通常应该遵循的指导原则。如果你能完全理解指导原则背后的含义，并且有很好的理由违反它，那就改吧。但要注意保持一致。
 
 </div>
 
@@ -58,8 +58,7 @@ Code examples to *avoid* have an unmistakable red header.
 Gives reasons for following the previous recommendations.
 
 **为何**？<br />
-<br />
-会给出随后的建议的理由。
+之所以会给出那些建议的原因。
 
 </div>
 
@@ -372,7 +371,7 @@ A recommended pattern is `feature.type.ts`.
 **Do** use conventional type names including `.service`, `.component`, `.pipe`, `.module`, and `.directive`.
 Invent additional type names if you must but take care not to create too many.
 
-**坚持**使用惯用的后缀来描述类型，包括 `*.service`、`*.component`、`*.pipe`、`.module`、`.directive`。 必要时可以创建更多类型名，但必须注意，不要创建太多。
+**坚持**使用惯用的后缀来描述类型，包括 `*.service`、`*.component`、`*.pipe`、`.module`、`.directive`。必要时可以创建更多类型名，但必须注意，不要创建太多。
 
 </div>
 
@@ -523,7 +522,7 @@ and reference assets of different types.
 **Do** suffix a service class name with `Service`.
 For example, something that gets data or heroes should be called a `DataService` or a `HeroService`.
 
-**坚持**为服务的类名加上 `Service` 后缀。 比如，获取数据或英雄列表的服务应该命名为 `DataService` 或 `HeroService`。
+**坚持**为服务的类名加上 `Service` 后缀。比如，获取数据或英雄列表的服务应该命名为 `DataService` 或 `HeroService`。
 
 A few terms are unambiguously services.
 They typically indicate agency by ending in "-er".
@@ -531,7 +530,7 @@ You may prefer to name a service that logs messages `Logger` rather than `Logger
 Decide if this exception is agreeable in your project.
 As always, strive for consistency.
 
-有些词汇显然就是服务，比如那些以“-er”后缀结尾的。比如把记日志的服务命名为 `Logger` 就比 `LoggerService` 更好些。需要在你的项目中决定这种特例是否可以接受。 但无论如何，都要尽量保持一致。
+有些词汇显然就是服务，比如那些以“-er”后缀结尾的。比如把记日志的服务命名为 `Logger` 就比 `LoggerService` 更好些。需要在你的项目中决定这种特例是否可以接受。但无论如何，都要尽量保持一致。
 
 </div>
 
@@ -701,7 +700,7 @@ Keeps the element names consistent with the specification for [Custom Elements](
 **Do** use a custom prefix for a component selector.
 For example, the prefix `toh` represents **T**our **o**f **H**eroes and the prefix `admin` represents an admin feature area.
 
-**坚持**为组件选择器添加自定义前缀。 比如，`toh` 前缀表示 **T**our **o**f **H**eroes（英雄之旅），而前缀 `admin` 表示管理特性区。
+**坚持**为组件选择器添加自定义前缀。比如，`toh` 前缀表示 **T**our **o**f **H**eroes（英雄之旅），而前缀 `admin` 表示管理特性区。
 
 </div>
 
@@ -875,7 +874,7 @@ Directives are easily identified.
 The pipe class name should use [UpperCamelCase](guide/glossary#case-types) (the general convention for class names), and the corresponding `name` string should use *lowerCamelCase*.
 The `name` string cannot use hyphens ("dash-case" or "kebab-case").
 
-**坚持**为所有管道使用一致的命名约定，用它们的特性来命名。 管道类名应该使用 [UpperCamelCase](guide/glossary#case-types)（类名的通用约定），而相应的 `name` 字符串应该使用 *lowerCamelCase*。 `name` 字符串中不应该使用中线（“中线格式”或“烤串格式”）。
+**坚持**为所有管道使用一致的命名约定，用它们的特性来命名。管道类名应该使用 [UpperCamelCase](guide/glossary#case-types)（类名的通用约定），而相应的 `name` 字符串应该使用 *lowerCamelCase*。`name` 字符串中不应该使用中线（“中线格式”或“烤串格式”）。
 
 </div>
 
@@ -1127,7 +1126,7 @@ Start small but keep in mind where the application is heading.
 All of the application's code goes in a folder named `src`.
 All feature areas are in their own folder, with their own NgModule.
 
-所有应用程序的源代码都放到名叫 `src` 的目录里。 所有特性区都在自己的文件夹中，带有它们自己的 NgModule。
+所有应用程序的源代码都放到名叫 `src` 的目录里。所有特性区都在自己的文件夹中，带有它们自己的 NgModule。
 
 All content is one asset per file.
 Each component, service, and pipe is in its own file.
@@ -1135,7 +1134,7 @@ All third party vendor scripts are stored in another folder and not in the `src`
 You didn't write them and you don't want them cluttering `src`.
 Use the naming conventions for files in this guide.
 
-所有内容都遵循每个文件一个特性的原则。每个组件、服务和管道都在自己的文件里。 所有第三方程序包保存到其它目录里，而不是 `src` 目录。 你不会修改它们，所以不希望它们弄乱你的应用程序。 使用本指南介绍的文件命名约定。
+所有内容都遵循每个文件一个特性的原则。每个组件、服务和管道都在自己的文件里。所有第三方程序包保存到其它目录里，而不是 `src` 目录。你不会修改它们，所以不希望它们弄乱你的应用程序。使用本指南介绍的文件命名约定。
 
 [Back to top](#toc)
 
@@ -1269,7 +1268,7 @@ Longer file names are far better than *short-but-obscure* abbreviated names.
 It may be advantageous to deviate from the *one-thing-per-file* rule when you have a set of small, closely-related features that are better discovered and understood in a single file than as multiple files.
 Be wary of this loophole.
 
-当你有一组小型、紧密相关的特性时，违反*一物一文件*的规则可能会更好， 这种情况下单一文件可能会比多个文件更容易发现和理解。注意这个例外。
+当你有一组小型、紧密相关的特性时，违反*一物一文件*的规则可能会更好，这种情况下单一文件可能会比多个文件更容易发现和理解。注意这个例外。
 
 </div>
 
@@ -1323,12 +1322,12 @@ A flat structure is easy to scan.
 On the other hand, [psychologists believe](https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two) that humans start to struggle when the number of adjacent interesting things exceeds nine.
 So when a folder has ten or more files, it may be time to create subfolders.
 
-另一方面，[心理学家们相信](https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two)， 当关注的事物超过 9 个时，人类就会开始感到吃力。 所以，当一个文件夹中的文件有 10 个或更多个文件时，可能就是创建子目录的时候了。
+另一方面，[心理学家们相信](https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two)，当关注的事物超过 9 个时，人类就会开始感到吃力。所以，当一个文件夹中的文件有 10 个或更多个文件时，可能就是创建子目录的时候了。
 
 Base your decision on your comfort level.
 Use a flatter structure until there is an obvious value to creating a new folder.
 
-还是根据你自己的舒适度而定吧。 除非创建新文件夹能有显著的价值，否则尽量使用扁平结构。
+还是根据你自己的舒适度而定吧。除非创建新文件夹能有显著的价值，否则尽量使用扁平结构。
 
 </div>
 
@@ -1607,7 +1606,7 @@ While components in dedicated folders are widely preferred, another option for s
 This adds up to four files to the existing folder, but also reduces the folder nesting.
 Whatever you choose, be consistent.
 
-把组件放在专用目录中的方式广受欢迎，对于小型应用，还可以保持组件扁平化（而不是放在专用目录中）。 这样会把四个文件放在现有目录中，也会减少目录的嵌套。无论你如何选择，请保持一致。
+把组件放在专用目录中的方式广受欢迎，对于小型应用，还可以保持组件扁平化（而不是放在专用目录中）。这样会把四个文件放在现有目录中，也会减少目录的嵌套。无论你如何选择，请保持一致。
 
 </div>
 
@@ -1918,7 +1917,7 @@ There are exceptions, however.
 For example, in the sample code that follows, notice that the `SharedModule` provides `FilterTextService`.
 This is acceptable here because the service is stateless;that is, the consumers of the service aren't impacted by new instances.
 
-**考虑** *不要*在共享模块中提供服务。服务通常是单例的，应该在整个应用或一个特定的特性模块中只有一份。 不过也有例外，比如，在下面的范例代码中，注意 `SharedModule` 提供了 `FilterTextService`。这里可以这么做，因为该服务是无状态的，也就是说，该服务的消费者不会受到这些新实例的影响。
+**考虑** *不要*在共享模块中提供服务。服务通常是单例的，应该在整个应用或一个特定的特性模块中只有一份。不过也有例外，比如，在下面的范例代码中，注意 `SharedModule` 提供了 `FilterTextService`。这里可以这么做，因为该服务是无状态的，也就是说，该服务的消费者不会受到这些新实例的影响。
 
 </div>
 
@@ -2080,7 +2079,7 @@ A distinct application feature or workflow may be *lazy loaded* or *loaded on de
 **Do** put the contents of lazy loaded features in a *lazy loaded folder*.
 A typical *lazy loaded folder* contains a *routing component*, its child components, and their related assets and modules.
 
-**坚持**把惰性加载特性下的内容放进*惰性加载目录*中。 典型的*惰性加载目录*包含*路由组件*及其子组件以及与它们有关的那些资产和模块。
+**坚持**把惰性加载特性下的内容放进*惰性加载目录*中。典型的*惰性加载目录*包含*路由组件*及其子组件以及与它们有关的那些资产和模块。
 
 </div>
 
@@ -2219,7 +2218,7 @@ There are a few cases where you give a component an attribute, such as when you 
 For example, [Material Design](https://material.angular.io/components/button/overview) uses this technique with `<button mat-button>`.
 However, you wouldn't use this technique on a custom element.
 
-少数情况下，你要为组件使用属性选择器，比如你要加强某个内置元素时。 比如，[Material Design 组件库](https://material.angular.cn/components/button/overview)就会对 `<button mat-button>` 使用这项技术。不过，你不应该在自定义组件上使用这项技术。
+少数情况下，你要为组件使用属性选择器，比如你要加强某个内置元素时。比如，[Material Design 组件库](https://material.angular.cn/components/button/overview)就会对 `<button mat-button>` 使用这项技术。不过，你不应该在自定义组件上使用这项技术。
 
 </div>
 

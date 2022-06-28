@@ -31,7 +31,7 @@ export const NGCC_PROPERTY_EXTENSION = '_ivy_ngcc';
  * If there are transformed typings files in this bundle, they are updated in-place (see the
  * `InPlaceFileWriter`).
  *
- * 如果此包中存在转换后的类型文件，它们会就地更新（请参阅 `InPlaceFileWriter` ）。
+ * 如果此包中存在转换后的类型文件，它们会就地更新（请参阅 `InPlaceFileWriter`）。
  *
  */
 export class NewEntryPointFileWriter extends InPlaceFileWriter {

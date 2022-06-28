@@ -43,17 +43,14 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *
  * 假设你有一个名为 `ng2Heroes` 的 Angular 组件，需要在 AngularJS 模板中提供。
  *
- * {
- *
- * @example upgrade/static/ts/full/module.ts region="ng2-heroes"}
+ * {@example upgrade/static/ts/full/module.ts region="ng2-heroes"}
  *
  * We must create an AngularJS [directive](https://docs.angularjs.org/guide/directive)
  * that will make this Angular component available inside AngularJS templates.
  * The `downgradeComponent()` function returns a factory function that we
  * can use to define the AngularJS directive that wraps the "downgraded" component.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="ng2-heroes-wrapper"}
+ * {@example upgrade/static/ts/full/module.ts region="ng2-heroes-wrapper"}
  *
  * For more details and examples on downgrading Angular components to AngularJS components please
  * visit the [Upgrade guide](guide/upgrade#using-angular-components-from-angularjs-code).
@@ -84,8 +81,8 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *
  *   `propagateDigest?: boolean` :
  * 是否在每个[$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)上对组件执行 {@link
- * ChangeDetectorRef#detectChanges 更改检测}。如果设置为 `false`
- * ，当任何组件的输入更改时，仍将执行更改检测。 （默认：true）
+ * ChangeDetectorRef#detectChanges 变更检测}。如果设置为 `false`
+ * ，当任何组件的输入更改时，仍将执行变更检测。（默认：true）
  *
  * @returns
  *

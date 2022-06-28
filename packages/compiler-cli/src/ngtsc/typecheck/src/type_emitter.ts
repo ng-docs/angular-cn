@@ -41,7 +41,7 @@ const INELIGIBLE: INELIGIBLE = {} as INELIGIBLE;
  * function returns false, then using the `TypeEmitter` should not be attempted as it is known to
  * fail.
  *
- * 如果此函数返回 true， `TypeEmitter` 应该能够成功。反之亦然，如果此函数返回 false ，则不应尝试使用
+ * 如果此函数返回 true，`TypeEmitter` 应该能够成功。反之亦然，如果此函数返回 false ，则不应尝试使用
  * `TypeEmitter` ，因为已知它会失败。
  *
  */

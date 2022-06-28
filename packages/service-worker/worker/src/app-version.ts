@@ -349,7 +349,7 @@ export class AppVersion implements UpdateSource {
   /**
    * Check whether a request accepts `text/html` (based on the `Accept` header).
    *
-   * 检查请求是否接受 `text/html` （基于 `Accept` 标头）。
+   * 检查请求是否接受 `text/html`（基于 `Accept` 标头）。
    *
    */
   private acceptsTextHtml(req: Request): boolean {

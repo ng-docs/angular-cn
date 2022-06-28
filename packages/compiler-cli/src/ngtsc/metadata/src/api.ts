@@ -31,7 +31,7 @@ export interface NgModuleMeta {
   /**
    * The raw `ts.Expression` which gave rise to `declarations`, if one exists.
    *
-   * 产生 `declarations` 的原始 `ts.Expression` （如果存在）。
+   * 产生 `declarations` 的原始 `ts.Expression`（如果存在）。
    *
    * If this is `null`, then either no declarations exist, or no expression was available (likely
    * because the module came from a .d.ts file).
@@ -44,7 +44,7 @@ export interface NgModuleMeta {
   /**
    * The raw `ts.Expression` which gave rise to `imports`, if one exists.
    *
-   * 产生 `imports` 的原始 `ts.Expression` （如果存在）。
+   * 产生 `imports` 的原始 `ts.Expression`（如果存在）。
    *
    * If this is `null`, then either no imports exist, or no expression was available (likely
    * because the module came from a .d.ts file).
@@ -57,7 +57,7 @@ export interface NgModuleMeta {
   /**
    * The raw `ts.Expression` which gave rise to `exports`, if one exists.
    *
-   * 导致 `exports` 的原始 `ts.Expression` （如果存在）。
+   * 导致 `exports` 的原始 `ts.Expression`（如果存在）。
    *
    * If this is `null`, then either no exports exist, or no expression was available (likely
    * because the module came from a .d.ts file).
@@ -108,7 +108,7 @@ export interface DirectiveTypeCheckMeta {
    * The set of input fields which map to `readonly`, `private`, or `protected` members in the
    * Directive's class.
    *
-   * 映射到 Directive 类中的 `readonly` 、 `private` 或 `protected` 成员的输入字段集。
+   * 映射到 Directive 类中的 `readonly`、`private` 或 `protected` 成员的输入字段集。
    *
    */
   restrictedInputFields: Set<ClassPropertyName>;
@@ -192,7 +192,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   /**
    * A `Reference` to the base class for the directive, if one was detected.
    *
-   * 对指令的基类的 `Reference` （如果检测到）。
+   * 对指令的基类的 `Reference`（如果检测到）。
    *
    * A value of `'dynamic'` indicates that while the analyzer detected that this directive extends
    * another type, it could not statically determine the base class.
@@ -214,7 +214,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   /**
    * Whether the directive is likely a structural directive (injects `TemplateRef`).
    *
-   * 该指令是否可能是结构指令（注入 `TemplateRef` ）。
+   * 该指令是否可能是结构指令（注入 `TemplateRef`）。
    *
    */
   isStructural: boolean;

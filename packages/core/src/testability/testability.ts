@@ -88,8 +88,8 @@ export const TESTABILITY_GETTER = new InjectionToken<GetTestability>('');
  * Angular applications bootstrapped using an NgModule (via `@NgModule.bootstrap` field) will also
  * instantiate Testability by default (in both development and production modes).
  *
- * 默认情况下，使用 NgModule （通过 `@NgModule.bootstrap` 字段）引导的 Angular 应用程序也将实例化
- * Testability （在开发和生产模式下）。
+ * 默认情况下，使用 NgModule（通过 `@NgModule.bootstrap` 字段）引导的 Angular 应用程序也将实例化
+ * Testability（在开发和生产模式下）。
  *
  * For applications bootstrapped using the `bootstrapApplication` function, Testability is not
  * included by default. You can include it into your applications by getting the list of necessary

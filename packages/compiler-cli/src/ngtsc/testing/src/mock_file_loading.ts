@@ -26,7 +26,7 @@ export function loadTestFiles(files: TestFile[]) {
 /**
  * A folder that is lazily loaded upon first access and then cached.
  *
- * 在首次访问时延迟加载然后缓存的文件夹。
+ * 在首次访问时惰性加载然后缓存的文件夹。
  *
  */
 class CachedFolder {
@@ -121,8 +121,8 @@ function loadAngularFolder(): Folder {
  * file-system (via `FileSystem`).
  *
  * 请注意，此函数包含 `FileSystem` 调用和 NodeJS `fs`
- * 调用的混合。这是因为该函数是“真实”文件系统（通过 `fs` ）和“模拟”文件系统（通过 `FileSystem`
- * ）之间的桥梁。
+ * 调用的混合。这是因为该函数是“真实”文件系统（通过 `fs`）和“模拟”文件系统（通过 `FileSystem`
+ *）之间的桥梁。
  *
  * @param fs the file-system where the directory is to be loaded.
  *

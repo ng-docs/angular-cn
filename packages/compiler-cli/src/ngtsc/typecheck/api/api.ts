@@ -219,7 +219,7 @@ export interface TypeCheckingConfig {
    * without a value, so with this flag set to `true`, an error would be reported. If set to
    * `false`, text attributes will never report an error.
    *
-   * 例如，在包含 `<input matInput disabled>` 的模板中， `disabled` 属性最终会被 `matInput` 指令作为
+   * 例如，在包含 `<input matInput disabled>` 的模板中，`disabled` 属性最终会被 `matInput` 指令作为
    * `boolean`
    * 类型的输入使用。在运行时，输入将设置为属性的字符串值，对于没有值的属性，这是一个空字符串，因此在此标志设置为
    * `true` 的情况下，将报告错误。如果设置为 `false` ，则文本属性将永远不会报告错误。
@@ -342,7 +342,7 @@ export interface TypeCheckingConfig {
    *
    * TCB 中生成的语句针对性能和生成诊断进行了优化。这些优化可能会导致生成的 TCB 不具有
    * `TemplateTypeChecker` 检索 `Symbol` 所需的所有信息。例如，作为一种优化，TCB
-   * 将不会为没有引用、输入或输出的指令生成变量声明语句。但是， `TemplateTypeChecker`
+   * 将不会为没有引用、输入或输出的指令生成变量声明语句。但是，`TemplateTypeChecker`
    * 始终需要存在这些语句，以便为指令提供 `ts.Symbol` 和 `ts.Type` 。
    *
    * When set to `false`, enables TCB optimizations for template diagnostics.

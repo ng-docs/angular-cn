@@ -624,8 +624,8 @@ export function ɵɵstyleMapInterpolate8(
  * a string prefix and ending with a string suffix.
  * (e.g. `['prefix', value0, '; key2: ', value1, '; key2: ', value2, ..., value99, 'suffix']`)
  *
- * 值和这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。 （例如 `['prefix', value0, ';
- * key2: ', value1, '; key2: ', value2, ..., value99, 'suffix']` ）
+ * 值和这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。（例如 `['prefix', value0, ';
+ * key2: ', value1, '; key2: ', value2, ..., value99, 'suffix']`）
  *
  * @codeGenApi
  */

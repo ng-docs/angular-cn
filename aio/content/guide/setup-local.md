@@ -49,10 +49,10 @@ To install Angular on your local system, you need the following:
 | Requirements | Details |
 | :----------- | :------ |
 | 需求 | 详情 |
-| Node.js <a id="nodejs"></a> | Angular requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.  <div class="alert is-helpful"> For information about specific version requirements, see the `engines` key in the [package.json](https://unpkg.com/browse/@angular/core/package.json) file. </div> For more information on installing Node.js, see [nodejs.org](https://nodejs.org "Nodejs.org"). If you are unsure what version of Node.js runs on your system, run `node -v` in a terminal window. |
-| Node.js <a id="nodejs"></a> | Angular 需要 Node.js 的[活跃 LTS 版或维护期 LTS 版](https://nodejs.org/about/releases)。<div class="alert is-helpful"> 关于具体版本需求，参阅 [package.json](https://unpkg.com/browse/@angular/core/package.json) 文件中的 `engines`。 </div> 要了解如何安装 Node.js，参阅 [nodejs.org](http://nodejs.org "Nodejs.org")。如果你不确定系统中正在运行的 Node.js 版本是什么，请在终端窗口中运行 `node -v`。 |
+| Node.js <a id="nodejs"></a> | Angular requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js. <div class="alert is-helpful"> For information about specific version requirements, see the `engines` key in the [package.json](https://unpkg.com/browse/@angular/core/package.json) file. </div> For more information on installing Node.js, see [nodejs.org](https://nodejs.org "Nodejs.org"). If you are unsure what version of Node.js runs on your system, run `node -v` in a terminal window. |
+| Node.js <a id="nodejs"></a> | Angular 需要 Node.js 的[活跃 LTS 版或维护期 LTS 版](https://nodejs.org/about/releases)。<div class="alert is-helpful"> 关于具体版本需求，参阅 [package.json](https://unpkg.com/browse/@angular/core/package.json) 文件中的 `engines`。</div> 要了解如何安装 Node.js，参阅 [nodejs.org](http://nodejs.org "Nodejs.org")。如果你不确定系统中正在运行的 Node.js 版本是什么，请在终端窗口中运行 `node -v`。|
 | npm package manager <a id="npm"></a> | Angular, the Angular CLI, and Angular applications depend on [npm packages](https://docs.npmjs.com/getting-started/what-is-npm) for many features and functions. To download and install npm packages, you need an npm package manager. This guide uses the [npm client](https://docs.npmjs.com/cli/install) command line interface, which is installed with `Node.js` by default. To check that you have the npm client installed, run `npm -v` in a terminal window. |
-| npm package manager <a id="npm"></a> | Angular、Angular CLI 以及 Angular 应用都要依赖 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)来实现很多特性和功能。要下载并安装 npm 包，你需要一个 npm 包管理器。本指南使用 [npm 客户端](https://docs.npmjs.com/cli/install)命令行界面，该界面默认安装在 `Node.js`。要检查你是否安装了 npm 客户端，请在终端窗口中运行 `npm -v` 。 |
+| npm 包管理器 <a id="npm"></a> | Angular、Angular CLI 以及 Angular 应用都要依赖 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)来实现很多特性和功能。要下载并安装 npm 包，你需要一个 npm 包管理器。本指南使用 [npm 客户端](https://docs.npmjs.com/cli/install)命令行界面，该界面默认安装在 `Node.js`。要检查你是否安装了 npm 客户端，请在终端窗口中运行 `npm -v`。|
 
 <a id="install-cli"></a>
 
@@ -76,18 +76,17 @@ npm install -g &commat;angular/cli<aio-angular-dist-tag class="pln"></aio-angula
 
 <div class="alert is-helpful">
 
-  <p>On Windows client computers, the execution of PowerShell scripts is disabled by default. To allow the execution of PowerShell scripts, which is needed for npm global binaries, you must set the following <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies">execution policy</a>:</p>
+  On Windows client computers, the execution of PowerShell scripts is disabled by default. To allow the execution of PowerShell scripts, which is needed for npm global binaries, you must set the following <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies">execution policy</a>:
+
+  在 Windows 客户端计算机上，默认禁用 PowerShell 脚本的执行。要允许执行 npm 全局二进制文件所需的 PowerShell 脚本，你必须设置以下内容<a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies">执行策略
+
   <code-example language="sh">
   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
   </code-example>
 
-<p>在 Windows 客户端计算机上，默认禁用 PowerShell 脚本的执行。要允许执行 npm 全局二进制文件所需的 PowerShell 脚本，你必须设置以下内容<a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies">执行策略</a>：</p><code-example language="sh">
-  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-  </code-example>
+  Carefully read the message displayed after executing the command and follow the instructions. Make sure you understand the implications of setting an execution policy.
 
-  <p>Carefully read the message displayed after executing the command and follow the instructions. Make sure you understand the implications of setting an execution policy.</p>
-
-<p>仔细阅读执行命令后显示的消息并按照说明进行操作。确保你了解设置执行策略的含义。</p>
+  仔细阅读执行命令后显示的消息并按照说明进行操作。确保你了解设置执行策略的含义。
 
 </div>
 

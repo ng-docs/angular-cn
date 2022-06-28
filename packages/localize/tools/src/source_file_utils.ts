@@ -94,7 +94,7 @@ export function buildLocalizeReplacement(
 /**
  * Extract the message parts from the given `call` (to `$localize`).
  *
- * 从给定的 `call` 中提取消息部分（到 `$localize` ）。
+ * 从给定的 `call` 中提取消息部分（到 `$localize`）。
  *
  * The message parts will either by the first argument to the `call` or it will be wrapped in call
  * to a helper function like `__makeTemplateObject`.
@@ -337,7 +337,7 @@ export function unwrapStringLiteralArray(
  * This expression is believed to be a call to a "lazy-load" template object helper function.
  * This is expected to be of the form:
  *
- * 此表达式被认为是对“延迟加载”模板对象帮助器函数的调用。预期的形式为：
+ * 此表达式被认为是对“惰性加载”模板对象帮助器函数的调用。预期的形式为：
  *
  * ```ts
  *  function _templateObject() {

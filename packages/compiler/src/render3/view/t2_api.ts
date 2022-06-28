@@ -179,7 +179,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
    * For a given template node (either an `Element` or a `Template`), get the set of directives
    * which matched the node, if any.
    *
-   * 对于给定的模板节点（ `Element` 或 `Template` ），获取与该节点匹配的指令集（如果有）。
+   * 对于给定的模板节点（`Element` 或 `Template`），获取与该节点匹配的指令集（如果有）。
    *
    */
   getDirectivesOfNode(node: Element|Template): DirectiveT[]|null;
@@ -188,7 +188,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
    * For a given `Reference`, get the reference's target - either an `Element`, a `Template`, or
    * a directive on a particular node.
    *
-   * 对于给定的 `Reference` ，获取引用的目标 - `Element` 、 `Template` 或特定节点上的指令。
+   * 对于给定的 `Reference` ，获取引用的目标 - `Element`、`Template` 或特定节点上的指令。
    *
    */
   getReferenceTarget(ref: Reference): {directive: DirectiveT, node: Element|Template}|Element
@@ -257,7 +257,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
    * Get all `Reference`s and `Variables` visible within the given `Template` (or at the top level,
    * if `null` is passed).
    *
-   * 获取给定 `Template` 中的所有 `Reference` 和 `Variables` （或在顶级，如果传递了 `null` ）。
+   * 获取给定 `Template` 中的所有 `Reference` 和 `Variables`（或在顶级，如果传递了 `null`）。
    *
    */
   getEntitiesInTemplateScope(template: Template|null): ReadonlySet<Reference|Variable>;

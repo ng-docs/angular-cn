@@ -50,7 +50,7 @@ interface ExpressionIdentifier extends TemplateIdentifier {
    * ReferenceIdentifier or VariableIdentifier in the template that this identifier targets, if
    * any. If the target is `null`, it points to a declaration on the component class.
    *
-   * 此标识符所针对的模板中的 ReferenceIdentifier 或 VariableIdentifier （如果有）。如果目标是
+   * 此标识符所针对的模板中的 ReferenceIdentifier 或 VariableIdentifier（如果有）。如果目标是
    * `null` ，则指向组件类上的声明。
    *
    */

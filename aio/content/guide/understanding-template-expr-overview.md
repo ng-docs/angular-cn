@@ -68,7 +68,7 @@ In the following snippet, the expression `recommended` and the expression `itemI
 
 An expression can also refer to properties of the _template's_ context such as a [template input variable](guide/structural-directives#shorthand) or a [template reference variable](guide/template-reference-variables).
 
-表达式还可以引用 _ 模板上下文的 _ 属性，例如[模板输入变量](guide/structural-directives#shorthand)或[模板引用变量](guide/template-reference-variables)。
+表达式还可以引用*模板上下文*的属性，例如[模板输入变量](guide/structural-directives#shorthand)或[模板引用变量](guide/template-reference-variables)。
 
 The following example uses a template input variable of `customer`.
 
@@ -88,7 +88,7 @@ Template expressions cannot refer to anything in the global namespace, except `u
 They can't refer to `window` or `document`.
 Additionally, they can't call `console.log()` or `Math.max()` and they are restricted to referencing members of the expression context.
 
-模板表达式不能引用全局命名空间中的任何东西，比如 `window` 或 `document`。它们也不能调用 `console.log` 或 `Math.max`。 它们只能引用表达式上下文中的成员。
+模板表达式不能引用全局命名空间中的任何东西，比如 `window` 或 `document`。它们也不能调用 `console.log` 或 `Math.max`。它们只能引用表达式上下文中的成员。
 
 </div>
 
@@ -175,18 +175,18 @@ When using template expressions, follow these best practices:
 
     <header>Idempotent expressions reduce side effects</header>
 
-  <header>幂等表达式减少副作用</header>
+    <header>幂等表达式减少副作用</header>
 
     An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
     In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
 
-  [幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。 用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
+  [幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
 
     Dependent values should not change during a single turn of the event loop.
     If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.
     If the expression returns an object, including an `array`, it returns the same object *reference* if you call it twice consecutively.
 
-  在单独的一次事件循环中，被依赖的值不应该改变。 如果幂等的表达式返回一个字符串或数字，如果连续调用它两次，会返回相同的字符串或数字。 如果幂等的表达式返回一个对象（包括 `Date` 或 `Array`），如果连续调用它两次，会返回同一个对象的*引用*。
+  在单独的一次事件循环中，被依赖的值不应该改变。如果幂等的表达式返回一个字符串或数字，如果连续调用它两次，会返回相同的字符串或数字。如果幂等的表达式返回一个对象（包括 `Date` 或 `Array`），如果连续调用它两次，会返回同一个对象的*引用*。
 
   </div>
 

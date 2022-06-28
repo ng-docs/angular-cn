@@ -22,7 +22,7 @@ import {FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, PARENT, PREORDER_HOOK_FLA
  * in same location in `LView`. This is because we don't want to pre-allocate space for it
  * because the storage is sparse. This file contains utilities for dealing with such data types.
  *
- * 出于效率原因，我们通常将几种不同的数据类型（ `RNode` 、 `LView` 、 `LContainer` ）放在 `LView`
+ * 出于效率原因，我们通常将几种不同的数据类型（`RNode`、`LView`、`LContainer`）放在 `LView`
  * 的同一个位置。这是因为我们不想为它预分配空间，因为存储是稀疏的。此文件包含用于处理此类数据类型的工具。
  *
  * How do we know what is stored at a given location in `LView`.
@@ -31,7 +31,7 @@ import {FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, PARENT, PREORDER_HOOK_FLA
  *
  * - `Array.isArray(value) === false` => `RNode` (The normal storage value)
  *
- *   `Array.isArray(value) === false` => `RNode` （正常存储值）
+ *   `Array.isArray(value) === false` => `RNode`（正常存储值）
  *
  * - `Array.isArray(value) === true` => then the `value[0]` represents the wrapped value.
  *
@@ -62,7 +62,7 @@ import {FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, PARENT, PREORDER_HOOK_FLA
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
- * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ * `RNode`、`LView`、`LContainer` 的包装值
  *
  */
 export function unwrapRNode(value: RNode|LView|LContainer): RNode {
@@ -79,7 +79,7 @@ export function unwrapRNode(value: RNode|LView|LContainer): RNode {
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
- * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ * `RNode`、`LView`、`LContainer` 的包装值
  *
  */
 export function unwrapLView(value: RNode|LView|LContainer): LView|null {
@@ -99,7 +99,7 @@ export function unwrapLView(value: RNode|LView|LContainer): LView|null {
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
- * `RNode` 、 `LView` 、 `LContainer` 的包装值
+ * `RNode`、`LView`、`LContainer` 的包装值
  *
  */
 export function unwrapLContainer(value: RNode|LView|LContainer): LContainer|null {
@@ -210,7 +210,7 @@ export function isCreationMode(view: LView): boolean {
 /**
  * Returns a boolean for whether the view is attached to the change detection tree.
  *
- * 返回视图是否附加到更改检测树的布尔值。
+ * 返回视图是否附加到变更检测树的布尔值。
  *
  * Note: This determines whether a view should be checked, not whether it's inserted
  * into a container. For that, you'll want `viewAttachedToContainer` below.

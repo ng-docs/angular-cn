@@ -152,8 +152,6 @@ export interface StaticClassProvider extends StaticClassSansProvider {
  *
  * ```ts
  *
- * ```
- *
  * @Injectable (SomeModule, {deps: []})
  * class MyService {}
  * ```
@@ -224,7 +222,7 @@ export interface ExistingSansProvider {
   /**
    * Existing `token` to return. (Equivalent to `injector.get(useExisting)`)
    *
-   * 返回现有的 `token`。 （等效于 `injector.get(useExisting)` ）
+   * 返回现有的 `token`。（等效于 `injector.get(useExisting)`）
    *
    */
   useExisting: any;
@@ -381,8 +379,7 @@ export type StaticProvider =
  *
  * @usageNotes
  *
- * {
- * @example core/di/ts/provider_spec.ts region='TypeProvider'}
+ * {@example core/di/ts/provider_spec.ts region='TypeProvider'}
  * @publicApi
  */
 export interface TypeProvider extends Type<any> {}

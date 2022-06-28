@@ -117,7 +117,7 @@ import {ERR_SW_NOT_SUPPORTED, NgswCommChannel, PushEvent} from './low_level';
  *
  * @see [Angular Push Notifications](https://blog.angular-university.io/angular-push-notifications/)
  *
- * [角度推送通知](https://blog.angular-university.io/angular-push-notifications/)
+ * [ Angular 推送通知](https://blog.angular-university.io/angular-push-notifications/)
  *
  * @see [MDN: Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
  *
@@ -156,7 +156,7 @@ export class SwPush {
    * [NotificationOptions](https://notifications.spec.whatwg.org/#dictdef-notificationoptions)
    * object that also includes the `title` of the [Notification][Mozilla Notification] object.
    *
-   * 请注意， `notification` 属性**不**包含[Notification][Mozilla
+   * 请注意，`notification` 属性**不**包含[Notification][Mozilla
    * Notification]对象，而是包含一个[NotificationOptions](https://notifications.spec.whatwg.org/#dictdef-notificationoptions)对象，该对象还包含[Notification][Mozilla
    * Notification]对象的 `title` 。
    *

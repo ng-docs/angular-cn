@@ -15,7 +15,7 @@
  * It is up to the caller to do this - e.g. only call `createTaggedTemplate()` or pass
  * `let`\|`const` to `createVariableDeclaration()` if the final JS will allow it.
  *
- * 请注意， `AstFactory` 不对正在生成的目标语言做任何假设。这取决于调用者 - 例如仅调用
+ * 请注意，`AstFactory` 不对正在生成的目标语言做任何假设。这取决于调用者 - 例如仅调用
  * `createTaggedTemplate()` 或通过 `let` |如果最终的 JS 允许，则 `const` 为
  * `createVariableDeclaration()` 。
  *
@@ -40,7 +40,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a literal array expresion (e.g. `[expr1, expr2]`).
    *
-   * 创建一个文字数组表达式（例如 `[expr1, expr2]` ）。
+   * 创建一个文字数组表达式（例如 `[expr1, expr2]`）。
    *
    * @param elements a collection of the expressions to appear in each array slot.
    *
@@ -52,7 +52,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create an assignment expression (e.g. `lhsExpr = rhsExpr`).
    *
-   * 创建一个赋值表达式（例如 `lhsExpr = rhsExpr` ）。
+   * 创建一个赋值表达式（例如 `lhsExpr = rhsExpr`）。
    *
    * @param target an expression that evaluates to the left side of the assignment.
    *
@@ -68,7 +68,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a binary expression (e.g. `lhs && rhs`).
    *
-   * 创建一个二进制表达式（例如 `lhs && rhs` ）。
+   * 创建一个二进制表达式（例如 `lhs && rhs`）。
    *
    * @param leftOperand an expression that will appear on the left of the operator.
    *
@@ -89,7 +89,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a block of statements (e.g. `{ stmt1; stmt2; }`).
    *
-   * 创建一个语句块（例如 `{ stmt1; stmt2; }` ）。
+   * 创建一个语句块（例如 `{ stmt1; stmt2; }`）。
    *
    * @param body an array of statements to be wrapped in a block.
    *
@@ -121,7 +121,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a ternary expression (e.g. `testExpr ? trueExpr : falseExpr`).
    *
-   * 创建一个三元表达式（例如 `testExpr ? trueExpr : falseExpr` ）。
+   * 创建一个三元表达式（例如 `testExpr ? trueExpr : falseExpr`）。
    *
    * @param condition an expression that will be tested for truthiness.
    *
@@ -143,7 +143,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create an element access (e.g. `obj[expr]`).
    *
-   * 创建元素访问（例如 `obj[expr]` ）。
+   * 创建元素访问（例如 `obj[expr]`）。
    *
    * @param expression an expression that evaluates to the object to be accessed.
    *
@@ -159,7 +159,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a statement that is simply executing the given `expression` (e.g. `x = 10;`).
    *
-   * 创建一个仅执行给定 `expression` 的语句（例如 `x = 10;` ）。
+   * 创建一个仅执行给定 `expression` 的语句（例如 `x = 10;`）。
    *
    * @param expression the expression to be converted to a statement.
    *
@@ -171,7 +171,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a statement that declares a function (e.g. `function foo(param1, param2) { stmt; }`).
    *
-   * 创建一个声明函数的语句（例如 `function foo(param1, param2) { stmt; }` ）。
+   * 创建一个声明函数的语句（例如 `function foo(param1, param2) { stmt; }`）。
    *
    * @param functionName the name of the function.
    *
@@ -193,7 +193,7 @@ export interface AstFactory<TStatement, TExpression> {
    * Create an expression that represents a function
    * (e.g. `function foo(param1, param2) { stmt; }`).
    *
-   * 创建一个表示函数的表达式（例如 `function foo(param1, param2) { stmt; }` ）。
+   * 创建一个表示函数的表达式（例如 `function foo(param1, param2) { stmt; }`）。
    *
    * @param functionName the name of the function.
    *
@@ -226,7 +226,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create an if statement (e.g. `if (testExpr) { trueStmt; } else { falseStmt; }`).
    *
-   * 创建一个 if 语句（例如 `if (testExpr) { trueStmt; } else { falseStmt; }` ）。
+   * 创建一个 if 语句（例如 `if (testExpr) { trueStmt; } else { falseStmt; }`）。
    *
    * @param condition an expression that will be tested for truthiness.
    *
@@ -250,7 +250,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a simple literal (e.g. `"string"`, `123`, `false`, etc).
    *
-   * 创建一个简单的文字（例如 `"string"` 、 `123` 、 `false` 等）。
+   * 创建一个简单的文字（例如 `"string"`、`123`、`false` 等）。
    *
    * @param value the value of the literal.
    *
@@ -278,7 +278,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a literal object expression (e.g. `{ prop1: expr1, prop2: expr2 }`).
    *
-   * 创建一个文字对象表达式（例如 `{ prop1: expr1, prop2: expr2 }` ）。
+   * 创建一个文字对象表达式（例如 `{ prop1: expr1, prop2: expr2 }`）。
    *
    * @param properties the properties (key and value) to appear in the object.
    *
@@ -302,7 +302,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a property access (e.g. `obj.prop`).
    *
-   * 创建属性访问（例如 `obj.prop` ）。
+   * 创建属性访问（例如 `obj.prop`）。
    *
    * @param expression an expression that evaluates to the object to be accessed.
    *
@@ -318,7 +318,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a return statement (e.g `return expr;`).
    *
-   * 创建一个 return 语句（例如 `return expr;` ）。
+   * 创建一个 return 语句（例如 `return expr;`）。
    *
    * @param expression the expression to be returned.
    *
@@ -351,7 +351,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a throw statement (e.g. `throw expr;`).
    *
-   * 创建一个 throw 语句（例如 `throw expr;` ）。
+   * 创建一个 throw 语句（例如 `throw expr;`）。
    *
    * @param expression the expression to be thrown.
    *
@@ -363,7 +363,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create an expression that extracts the type of an expression (e.g. `typeof expr`).
    *
-   * 创建一个提取表达式类型的表达式（例如 `typeof expr` ）。
+   * 创建一个提取表达式类型的表达式（例如 `typeof expr`）。
    *
    * @param expression the expression whose type we want.
    *
@@ -375,11 +375,11 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Prefix the `operand` with the given `operator` (e.g. `-expr`).
    *
-   * 使用给定的 `operator` （例如 `-expr` ）为 `operand` 添加前缀。
+   * 使用给定的 `operator`（例如 `-expr`）为 `operand` 添加前缀。
    *
    * @param operator the text of the operator to apply (e.g. `+`, `-` or `!`).
    *
-   * 要应用的运算符的文本（例如 `+` 、 `-` 或 `!` ）。
+   * 要应用的运算符的文本（例如 `+`、`-` 或 `!`）。
    *
    * @param operand the expression that the operator applies to.
    *
@@ -403,7 +403,7 @@ export interface AstFactory<TStatement, TExpression> {
    *
    * @param type whether this variable should be declared as `var`, `let` or `const`.
    *
-   * 此变量是应该声明为 `var` 、 `let` 或 `const` 。
+   * 此变量是应该声明为 `var`、`let` 或 `const` 。
    *
    */
   createVariableDeclaration(

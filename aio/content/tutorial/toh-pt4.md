@@ -26,7 +26,7 @@ For the sample application that this page describes, see the <live-example></liv
 Components shouldn't fetch or save data directly and they certainly shouldn't knowingly present fake data.
 They should focus on presenting data and delegate data access to a service.
 
-组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
+组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
 
 In this tutorial, you'll create a `HeroService` that all application classes can use to get heroes.
 Instead of creating that service with the [`new` keyword](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/new), you'll rely on Angular [*dependency injection*](guide/dependency-injection) to inject it into the `HeroesComponent` constructor.
@@ -37,7 +37,7 @@ Instead of creating that service with the [`new` keyword](https://developer.mozi
 Services are a great way to share information among classes that *don't know each other*.
 You'll create a `MessageService` and inject it in two places.
 
-服务是在多个“互相不知道”的类之间共享信息的好办法。 你将创建一个 `MessageService`，并且把它注入到两个地方。
+服务是在多个“互相不知道”的类之间共享信息的好办法。你将创建一个 `MessageService`，并且把它注入到两个地方。
 
 * Inject in `HeroService`, which uses the service to send a message
 
@@ -94,7 +94,7 @@ The `HeroService` could get hero data from anywhere —a web service, local stor
 Removing data access from components means you can change your mind about the implementation anytime, without touching any components.
 They don't know how the service works.
 
-从组件中移除数据访问逻辑，意味着将来任何时候你都可以改变目前的实现方式，而不用改动任何组件。 这些组件不需要了解该服务的内部实现。
+从组件中移除数据访问逻辑，意味着将来任何时候你都可以改变目前的实现方式，而不用改动任何组件。这些组件不需要了解该服务的内部实现。
 
 The implementation in *this* tutorial will continue to deliver *mock heroes*.
 
@@ -116,7 +116,7 @@ Add a `getHeroes` method to return the *mock heroes*.
 
 ## Provide the `HeroService`
 
-## 提供（provide） `HeroService`
+## 提供（provide）`HeroService`
 
 You must make the `HeroService` available to the dependency injection system before Angular can *inject* it into the `HeroesComponent` by registering a *provider*.
 A provider is something that can create or deliver a service; in this case, it instantiates the `HeroService` class to provide the service.
@@ -142,14 +142,14 @@ By default, the Angular CLI command `ng generate service` registers a provider w
 When you provide the service at the root level, Angular creates a single, shared instance of `HeroService` and injects into any class that asks for it.
 Registering the provider in the `@Injectable` metadata also allows Angular to optimize an application by removing the service if it turns out not to be used after all.
 
-当你在顶层提供该服务时，Angular 就会为 `HeroService` 创建一个单一的、共享的实例，并把它注入到任何想要它的类上。 在 `@Injectable` 元数据中注册该提供者，还能允许 Angular 通过移除那些完全没有用过的服务来进行优化。
+当你在顶层提供该服务时，Angular 就会为 `HeroService` 创建一个单一的、共享的实例，并把它注入到任何想要它的类上。在 `@Injectable` 元数据中注册该提供者，还能允许 Angular 通过移除那些完全没有用过的服务来进行优化。
 
 <div class="alert is-helpful">
 
 To learn more about providers, see the [Providers section](guide/providers).
 To learn more about injectors, see the [Dependency Injection guide](guide/dependency-injection).
 
-要了解关于提供者的更多知识，参阅[提供者部分](guide/providers)。 要了解关于注入器的更多知识，参阅[依赖注入指南](guide/dependency-injection)。
+要了解关于提供者的更多知识，参阅[提供者部分](guide/providers)。要了解关于注入器的更多知识，参阅[依赖注入指南](guide/dependency-injection)。
 
 </div>
 
@@ -177,7 +177,7 @@ Open the `HeroesComponent` class file.
 Delete the `HEROES` import, because you won't need that anymore.
 Import the `HeroService` instead.
 
-删除 `HEROES` 的导入语句，因为你以后不会再用它了。 转而导入 `HeroService`。
+删除 `HEROES` 的导入语句，因为你以后不会再用它了。转而导入 `HeroService`。
 
 <code-example header="src/app/heroes/heroes.component.ts (import HeroService)" path="toh-pt4/src/app/heroes/heroes.component.ts" region="hero-service-import"></code-example>
 
@@ -231,7 +231,7 @@ Reserve the constructor for minimal initialization such as wiring constructor pa
 The constructor shouldn't *do anything*.
 It certainly shouldn't call a function that makes HTTP requests to a remote server as a *real* data service would.
 
-让构造函数保持简单，只做最小化的初始化操作，比如把构造函数的参数赋值给属性。 构造函数不应该*做任何事*。 它当然不应该调用某个函数来向远端服务（比如真实的数据服务）发起 HTTP 请求。
+让构造函数保持简单，只做最小化的初始化操作，比如把构造函数的参数赋值给属性。构造函数不应该*做任何事*。它当然不应该调用某个函数来向远端服务（比如真实的数据服务）发起 HTTP 请求。
 
 Instead, call `getHeroes()` inside the [*ngOnInit lifecycle hook*](guide/lifecycle-hooks) and let Angular call `ngOnInit()` at an appropriate time *after* constructing a `HeroesComponent` instance.
 
@@ -245,7 +245,7 @@ Instead, call `getHeroes()` inside the [*ngOnInit lifecycle hook*](guide/lifecyc
 
 After the browser refreshes, the application should run as before, showing a list of heroes and a hero detail view when you click on a hero name.
 
-刷新浏览器，该应用仍运行的一如既往。 显示英雄列表，并且当你点击某个英雄的名字时显示出英雄详情视图。
+刷新浏览器，该应用仍运行的一如既往。显示英雄列表，并且当你点击某个英雄的名字时显示出英雄详情视图。
 
 ## Observable data
 
@@ -254,7 +254,7 @@ After the browser refreshes, the application should run as before, showing a lis
 The `HeroService.getHeroes()` method has a *synchronous signature*, which implies that the `HeroService` can fetch heroes synchronously.
 The `HeroesComponent` consumes the `getHeroes()` result as if heroes could be fetched synchronously.
 
-`HeroService.getHeroes()` 的函数签名是*同步的*，它所隐含的假设是 `HeroService` 总是能同步获取英雄列表数据。 而 `HeroesComponent` 也同样假设能同步取到 `getHeroes()` 的结果。
+`HeroService.getHeroes()` 的函数签名是*同步的*，它所隐含的假设是 `HeroService` 总是能同步获取英雄列表数据。而 `HeroesComponent` 也同样假设能同步取到 `getHeroes()` 的结果。
 
 <code-example header="src/app/heroes/heroes.component.ts" path="toh-pt4/src/app/heroes/heroes.component.1.ts" region="get-heroes"></code-example>
 
@@ -262,13 +262,13 @@ This will not work in a real application.
 You're getting away with it now because the service currently returns *mock heroes*.
 But soon the application will fetch heroes from a remote server, which is an inherently *asynchronous* operation.
 
-这在真实的应用中几乎是不可能的。 现在能这么做，只是因为目前该服务返回的是*模拟数据*。 不过很快，该应用就要从远端服务器获取英雄数据了，而那天生就是*异步*操作。
+这在真实的应用中几乎是不可能的。现在能这么做，只是因为目前该服务返回的是*模拟数据*。不过很快，该应用就要从远端服务器获取英雄数据了，而那天生就是*异步*操作。
 
 The `HeroService` must wait for the server to respond,
 `getHeroes()` cannot return immediately with hero data,
 and the browser will not block while the service waits.
 
-`HeroService` 必须等服务器给出响应， 而 `getHeroes()` 不能立即返回英雄数据， 浏览器也不会在该服务等待期间停止响应。
+`HeroService` 必须等服务器给出响应，而 `getHeroes()` 不能立即返回英雄数据，浏览器也不会在该服务等待期间停止响应。
 
 `HeroService.getHeroes()` must have an *asynchronous signature* of some kind.
 
@@ -289,7 +289,7 @@ In this tutorial, `HeroService.getHeroes()` will return an `Observable` because 
 In a [later tutorial on HTTP](tutorial/toh-pt6), you'll learn that Angular's `HttpClient` methods return RxJS `Observable`s.
 In this tutorial, you'll simulate getting data from the server with the RxJS `of()` function.
 
-在[稍后的 HTTP 教程](tutorial/toh-pt6)中，你就会知道 Angular `HttpClient` 的方法会返回 RxJS 的 `Observable`。 这节课，你将使用 RxJS 的 `of()` 函数来模拟从服务器返回数据。
+在[稍后的 HTTP 教程](tutorial/toh-pt6)中，你就会知道 Angular `HttpClient` 的方法会返回 RxJS 的 `Observable`。这节课，你将使用 RxJS 的 `of()` 函数来模拟从服务器返回数据。
 
 Open the `HeroService` file and import the `Observable` and `of` symbols from RxJS.
 
@@ -322,7 +322,7 @@ In the [HTTP tutorial](tutorial/toh-pt6), you'll call `HttpClient.get<Hero[]>()`
 The `HeroService.getHeroes` method used to return a `Hero[]`.
 Now it returns an `Observable<Hero[]>`.
 
-`HeroService.getHeroes` 方法之前返回一个 `Hero[]`， 现在它返回的是 `Observable<Hero[]>`。
+`HeroService.getHeroes` 方法之前返回一个 `Hero[]`，现在它返回的是 `Observable<Hero[]>`。
 
 You'll have to adjust to that difference in `HeroesComponent`.
 
@@ -344,7 +344,7 @@ Find the `getHeroes` method and replace it with the following code (shown side-b
 The previous version assigns an array of heroes to the component's `heroes` property.
 The assignment occurs *synchronously*, as if the server could return heroes instantly or the browser could freeze the UI while it waited for the server's response.
 
-上一个版本把英雄的数组赋值给了该组件的 `heroes` 属性。 这种赋值是*同步*的，这里包含的假设是服务器能立即返回英雄数组或者浏览器能在等待服务器响应时冻结界面。
+上一个版本把英雄的数组赋值给了该组件的 `heroes` 属性。这种赋值是*同步*的，这里包含的假设是服务器能立即返回英雄数组或者浏览器能在等待服务器响应时冻结界面。
 
 That *won't work* when the `HeroService` is actually making requests of a remote server.
 
@@ -354,7 +354,7 @@ The new version waits for the `Observable` to emit the array of heroes —which 
 The `subscribe()` method passes the emitted array to the callback,
 which sets the component's `heroes` property.
 
-新的版本等待 `Observable` 发出这个英雄数组，这可能立即发生，也可能会在几分钟之后。 然后，`subscribe()` 方法把这个英雄数组传给这个回调函数，该函数把英雄数组赋值给组件的 `heroes` 属性。
+新的版本等待 `Observable` 发出这个英雄数组，这可能立即发生，也可能会在几分钟之后。然后，`subscribe()` 方法把这个英雄数组传给这个回调函数，该函数把英雄数组赋值给组件的 `heroes` 属性。
 
 This asynchronous approach *will work* when the `HeroService` requests heroes from the server.
 
@@ -452,7 +452,7 @@ In `HeroService`, import the `MessageService`.
 Modify the constructor with a parameter that declares a private `messageService` property.
 Angular will inject the singleton `MessageService` into that property when it creates the `HeroService`.
 
-修改这个构造函数，添加一个私有的 `messageService` 属性参数。 Angular 将会在创建 `HeroService` 时把 `MessageService` 的单例注入到这个属性中。
+修改这个构造函数，添加一个私有的 `messageService` 属性参数。Angular 将会在创建 `HeroService` 时把 `MessageService` 的单例注入到这个属性中。
 
 <code-example header="src/app/hero.service.ts" path="toh-pt4/src/app/hero.service.ts" region="ctor"></code-example>
 
@@ -461,7 +461,7 @@ Angular will inject the singleton `MessageService` into that property when it cr
 This is a typical "*service-in-service*" scenario:
 You inject the `MessageService` into the `HeroService` which is injected into the `HeroesComponent`.
 
-这是一个典型的“服务中的服务”场景： 你把 `MessageService` 注入到了 `HeroService` 中，而 `HeroService` 又被注入到了 `HeroesComponent` 中。
+这是一个典型的“服务中的服务”场景：你把 `MessageService` 注入到了 `HeroService` 中，而 `HeroService` 又被注入到了 `HeroesComponent` 中。
 
 </div>
 
@@ -481,7 +481,7 @@ Modify the `getHeroes()` method to send a message when the heroes are fetched.
 
 The `MessagesComponent` should display all messages, including the message sent by the `HeroService` when it fetches heroes.
 
-`MessagesComponent` 可以显示所有消息， 包括当 `HeroService` 获取到英雄数据时发送的那条。
+`MessagesComponent` 可以显示所有消息，包括当 `HeroService` 获取到英雄数据时发送的那条。
 
 Open `MessagesComponent` and import the `MessageService`.
 
@@ -492,7 +492,7 @@ Open `MessagesComponent` and import the `MessageService`.
 Modify the constructor with a parameter that declares a **public** `messageService` property.
 Angular will inject the singleton `MessageService` into that property when it creates the `MessagesComponent`.
 
-修改构造函数，添加一个 **public** 的 `messageService` 属性。 Angular 将会在创建 `MessagesComponent` 的实例时 把 `MessageService` 的实例注入到这个属性中。
+修改构造函数，添加一个 **public** 的 `messageService` 属性。Angular 将会在创建 `MessagesComponent` 的实例时 把 `MessageService` 的实例注入到这个属性中。
 
 <code-example header="src/app/messages/messages.component.ts" path="toh-pt4/src/app/messages/messages.component.ts" region="ctor"></code-example>
 
@@ -526,11 +526,11 @@ This template binds directly to the component's `messageService`.
 | :-- | :------ |
 |  | 详情 |
 | `*ngIf` | Only displays the messages area if there are messages to show. |
-| `*ngIf` | 只有在有消息时才会显示消息区。 |
+| `*ngIf` | 只有在有消息时才会显示消息区。|
 | `*ngFor` | Presents the list of messages in repeated `<div>` elements. |
-| `*ngFor` | 在一系列 `<div>` 元素中展示消息列表。 |
+| `*ngFor` | 在一系列 `<div>` 元素中展示消息列表。|
 | Angular [event binding](guide/event-binding) | Binds the button's click event to `MessageService.clear()`. |
-| Angular [事件绑定](guide/event-binding) | 把按钮的 `click` 事件绑定到了 `MessageService.clear()`。 |
+| Angular [事件绑定](guide/event-binding) | 把按钮的 `click` 事件绑定到了 `MessageService.clear()`。|
 
 The messages will look better when you add the private CSS styles to `messages.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
 
@@ -551,7 +551,7 @@ Refresh the browser to see the list of heroes, and scroll to the bottom to see t
 Each time you click a hero, a new message appears to record the selection.
 Use the **Clear messages** button to clear the message history.
 
-刷新浏览器，页面显示出了英雄列表。 滚动到底部，就会在消息区看到来自 `HeroService` 的消息。 点击 **Clear messages** 按钮，消息区不见了。
+刷新浏览器，页面显示出了英雄列表。滚动到底部，就会在消息区看到来自 `HeroService` 的消息。点击 **Clear messages** 按钮，消息区不见了。
 
 <a id="final-code-review"></a>
 

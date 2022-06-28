@@ -152,7 +152,7 @@ function expandForwardRef(arg: ts.Expression): ts.Expression|null {
  * the resolved expression, if the original expression was a forwardRef(), or `null`
  *     otherwise.
  *
- * 解析的表达式（如果原始表达式是 forwardRef() ），否则为 `null` 。
+ * 解析的表达式（如果原始表达式是 forwardRef()），否则为 `null` 。
  *
  */
 export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHost): ts.Expression|
@@ -189,7 +189,7 @@ export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHo
  * @param ref a Reference to the declaration of the function being called (which might be
  * forwardRef)
  *
- * 对被调用函数声明的引用（可能是 forwardRef ）
+ * 对被调用函数声明的引用（可能是 forwardRef）
  *
  * @param args the arguments to the invocation of the forwardRef expression
  *

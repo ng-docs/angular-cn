@@ -39,7 +39,7 @@ export abstract class NgModuleRef<T> {
    * [`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent)
    * does **not** require resolving component factory: component class can be used directly.
    *
-   * 注：从 v13
+   * 注意：从 v13
    * 开始，通过[`ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent)创建动态组件**不需要**解析组件工厂：组件类可以直接使用。
    *
    * @deprecated
@@ -98,7 +98,7 @@ export interface InternalNgModuleRef<T> extends NgModuleRef<T> {
  * 模式下不再需要。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
  * 更改](guide/deprecations#jit-api-changes)。 Angular 提供了直接接受 NgModule 类的
  * API（例如[PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule)和[createNgModuleRef](api/core/createNgModuleRef)
- * ），请考虑切换到这些 API，而不是使用基于工厂的 API。
+ *），请考虑切换到这些 API，而不是使用基于工厂的 API。
  *
  */
 export abstract class NgModuleFactory<T> {

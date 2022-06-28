@@ -1,7 +1,5 @@
 # NgModules
 
-# Ng 模块
-
 **NgModules** configure the injector and the compiler and help organize related things together.
 
 **NgModules** 用于配置注入器和编译器，并帮你把那些相关的东西组织在一起。
@@ -11,7 +9,7 @@ An NgModule is a class marked by the `@NgModule` decorator.
 It identifies the module's own components, directives, and pipes, making some of them public, through the `exports` property, so that external components can use them.
 `@NgModule` can also add service providers to the application dependency injectors.
 
-NgModule 是一个带有 `@NgModule` 装饰器的类。 `@NgModule` 的参数是一个元数据对象，用于描述如何编译组件的模板，以及如何在运行时创建注入器。 它会标出该模块自己的组件、指令和管道，通过 `exports` 属性公开其中的一部分，以便外部组件使用它们。 `NgModule` 还能把一些服务提供者添加到应用的依赖注入器中。
+NgModule 是一个带有 `@NgModule` 装饰器的类。`@NgModule` 的参数是一个元数据对象，用于描述如何编译组件的模板，以及如何在运行时创建注入器。它会标出该模块自己的组件、指令和管道，通过 `exports` 属性公开其中的一部分，以便外部组件使用它们。`NgModule` 还能把一些服务提供者添加到应用的依赖注入器中。
 
 For an example application showcasing all the techniques that NgModules related pages cover, see the <live-example></live-example>.
 For explanations on the individual techniques, visit the relevant NgModule pages under the NgModules section.
@@ -30,7 +28,7 @@ Modules are a great way to organize an application and extend it with capabiliti
 Angular libraries are NgModules, such as `FormsModule`, `HttpClientModule`, and `RouterModule`.
 Many third-party libraries are available as NgModules such as [Material Design](https://material.angular.io), [Ionic](https://ionicframework.com), and [AngularFire2](https://github.com/angular/angularfire2).
 
-Angular 自己的库都是 NgModule，比如 `FormsModule`、`HttpClientModule` 和 `RouterModule`。 很多第三方库也是 NgModule，比如 [Material Design](https://material.angular.cn)、 [Ionic](http://ionicframework.com) 和 [AngularFire2](https://github.com/angular/angularfire2)。
+Angular 自己的库都是 NgModule，比如 `FormsModule`、`HttpClientModule` 和 `RouterModule`。很多第三方库也是 NgModule，比如 [Material Design](https://material.angular.cn)、 [Ionic](http://ionicframework.com) 和 [AngularFire2](https://github.com/angular/angularfire2)。
 
 NgModules consolidate components, directives, and pipes into cohesive blocks of functionality, each focused on a feature area, application business domain, workflow, or common collection of utilities.
 
@@ -39,7 +37,7 @@ NgModule 把组件、指令和管道打包成内聚的功能块，每个模块�
 Modules can also add services to the application.
 Such services might be internally developed, like something you'd develop yourself or come from outside sources, such as the Angular router and HTTP client.
 
-模块还可以把服务加到应用中。 这些服务可能是内部开发的（比如你自己写的），或者来自外部的（比如 Angular 的路由和 HTTP 客户端）。
+模块还可以把服务加到应用中。这些服务可能是内部开发的（比如你自己写的），或者来自外部的（比如 Angular 的路由和 HTTP 客户端）。
 
 Modules can be loaded eagerly when the application starts or lazy loaded asynchronously by the router.
 
@@ -68,13 +66,13 @@ NgModule 的元数据会做这些：
 Every Angular application has at least one module, the root module.
 You [bootstrap](guide/bootstrapping) that module to launch the application.
 
-每个 Angular 应用都至少有一个模块，也就是根模块。 你可以[引导](guide/bootstrapping)那个模块，以启动该应用。
+每个 Angular 应用都至少有一个模块，也就是根模块。你可以[引导](guide/bootstrapping)那个模块，以启动该应用。
 
 The root module is all you need in an application with few components.
 As the application grows, you refactor the root module into [feature modules](guide/feature-modules) that represent collections of related functionality.
 You then import these modules into the root module.
 
-对于那些只有少量组件的简单应用，根模块就是你所需的一切。 随着应用的成长，你要把这个根模块重构成一些[特性模块](guide/feature-modules)，它们代表一组密切相关的功能集。 然后你再把这些模块导入到根模块中。
+对于那些只有少量组件的简单应用，根模块就是你所需的一切。随着应用的成长，你要把这个根模块重构成一些[特性模块](guide/feature-modules)，它们代表一组密切相关的功能集。然后你再把这些模块导入到根模块中。
 
 ## The basic NgModule
 
@@ -94,7 +92,7 @@ At the top are the import statements.
 The next section is where you configure the `@NgModule` by stating what components and directives belong to it (`declarations`) as well as which other modules it uses (`imports`).
 For more information on the structure of an `@NgModule`, be sure to read [Bootstrapping](guide/bootstrapping).
 
-文件的顶部是一些导入语句。接下来是你配置 `NgModule` 的地方，用于规定哪些组件和指令属于它（`declarations`），以及它使用了哪些其它模块（`imports`）。 如果要进一步了解 `@NgModule` 的结构，参阅[引导](guide/bootstrapping)。
+文件的顶部是一些导入语句。接下来是你配置 `NgModule` 的地方，用于规定哪些组件和指令属于它（`declarations`），以及它使用了哪些其它模块（`imports`）。如果要进一步了解 `@NgModule` 的结构，参阅[引导](guide/bootstrapping)。
 
 ## More on NgModules
 

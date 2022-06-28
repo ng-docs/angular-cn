@@ -75,7 +75,7 @@ Though you may see it coded this way, using the `providedIn` property of the `@I
 Generally, you'll only need `providedIn` for providing services and `forRoot()`/`forChild()` for routing.
 However, understanding how `forRoot()` works to make sure a service is a singleton will inform your development at a deeper level.
 
-通常，你只需要用 `providedIn` 提供服务，用 `forRoot()`/`forChild()` 提供路由即可。 不过，理解 `forRoot()` 为何能够确保服务只有单个实例，可以让你学会更深层次的开发知识。
+通常，你只需要用 `providedIn` 提供服务，用 `forRoot()`/`forChild()` 提供路由即可。不过，理解 `forRoot()` 为何能够确保服务只有单个实例，可以让你学会更深层次的开发知识。
 
 If a module defines both providers and declarations (components, directives, pipes), then loading the module in multiple feature modules would duplicate the registration of the service.
 This could result in multiple service instances and the service would no longer behave as a singleton.
@@ -164,7 +164,7 @@ However, since Angular 6.0, the best practice for providing services is with the
 | :--------- | :------ |
 | 属性 | 详情 |
 | `ngModule` | In this example, the `GreetingModule` class |
-| `ngModule` | 在这个例子中，就是 `GreetingModule` 类。 |
+| `ngModule` | 在这个例子中，就是 `GreetingModule` 类。|
 | `providers` | The configured providers |
 | `providers` | 配置好的服务提供者 |
 
@@ -219,7 +219,7 @@ Remember to import `GreetingModule` as a Javascript import at the top of the fil
 Only the root `AppModule` should import the `GreetingModule`.
 If a lazy-loaded module imports it too, the application can generate [multiple instances](guide/ngmodule-faq#q-why-bad) of a service.
 
-只有根模块 `AppModule` 才能导入 `GreetingModule`。如果一个惰性加载模块也导入了它， 该应用就会为服务生成[多个实例](guide/ngmodule-faq#q-why-bad)。
+只有根模块 `AppModule` 才能导入 `GreetingModule`。如果一个惰性加载模块也导入了它，该应用就会为服务生成[多个实例](guide/ngmodule-faq#q-why-bad)。
 
 To guard against a lazy loaded module re-importing `GreetingModule`, add the following `GreetingModule` constructor.
 
@@ -230,13 +230,13 @@ To guard against a lazy loaded module re-importing `GreetingModule`, add the fol
 The constructor tells Angular to inject the `GreetingModule` into itself.
 The injection would be circular if Angular looked for `GreetingModule` in the *current* injector, but the `@SkipSelf()` decorator means "look for `GreetingModule` in an ancestor injector, above me in the injector hierarchy."
 
-该构造函数要求 Angular 把 `GreetingModule` 注入它自己。 如果 Angular 在*当前*注入器中查找 `GreetingModule`，这次注入就会导致死循环，但是 `@SkipSelf()` 装饰器的意思是 "在注入器树中层次高于我的祖先注入器中查找 `GreetingModule`。"
+该构造函数要求 Angular 把 `GreetingModule` 注入它自己。如果 Angular 在*当前*注入器中查找 `GreetingModule`，这次注入就会导致死循环，但是 `@SkipSelf()` 装饰器的意思是 "在注入器树中层次高于我的祖先注入器中查找 `GreetingModule`。"
 
 By default, the injector throws an error when it can't find a requested provider.
 The `@Optional()` decorator means not finding the service is OK.
 The injector returns `null`, the `parentModule` parameter is null, and the constructor concludes uneventfully.
 
-默认情况下，当注入器找不到想找的提供者时，会抛出一个错误。 但 `@Optional()` 装饰器表示找不到该服务也无所谓。 于是注入器会返回 `null`，`parentModule` 参数也就被赋成了空值，而构造函数没有任何异常。
+默认情况下，当注入器找不到想找的提供者时，会抛出一个错误。但 `@Optional()` 装饰器表示找不到该服务也无所谓。于是注入器会返回 `null`，`parentModule` 参数也就被赋成了空值，而构造函数没有任何异常。
 
 It's a different story if you improperly import `GreetingModule` into a lazy loaded module such as `CustomersModule`.
 
@@ -247,7 +247,7 @@ Angular creates a lazy loaded module with its own injector, a child of the root 
 Of course it finds the instance imported by the root `AppModule`.
 Now `parentModule` exists and the constructor throws the error.
 
-Angular 创建惰性加载模块时会给它一个自己的注入器，它是根注入器的*子注入器*。 `@SkipSelf()` 让 Angular 在其父注入器中查找 `GreetingModule`，这次，它的父注入器是根注入器（而上次的父注入器是空）。 当然，这次它找到了由根模块 `AppModule` 导入的实例。 该构造函数检测到存在 `parentModule`，于是抛出一个错误。
+Angular 创建惰性加载模块时会给它一个自己的注入器，它是根注入器的*子注入器*。`@SkipSelf()` 让 Angular 在其父注入器中查找 `GreetingModule`，这次，它的父注入器是根注入器（而上次的父注入器是空）。当然，这次它找到了由根模块 `AppModule` 导入的实例。该构造函数检测到存在 `parentModule`，于是抛出一个错误。
 
 Here are the two files in their entirety for reference:
 

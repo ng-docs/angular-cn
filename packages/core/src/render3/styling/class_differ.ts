@@ -17,7 +17,7 @@ import {CharCode} from '../../util/char_code';
  *
  * `classIndexOf('AB A', 'A', 0)` will be 3 (not 0 since `AB!==A`)
  *
- * `classIndexOf('AB A', 'A', 0)` 将是 3 （不是 0，因为 `AB!==A` ）
+ * `classIndexOf('AB A', 'A', 0)` 将是 3（不是 0，因为 `AB!==A`）
  *
  * @param className A string containing classes (whitespace separated)
  *

@@ -34,7 +34,7 @@ export interface JsonObject {
  * [Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set).)
  *
  * 有关更多详细信息，请参阅[PartiallyOrderedSet](https://en.wikipedia.org/wiki/Partially_ordered_set)
- * 。 （在这里避免使用术语“set”，以避免与 JavaScript
+ * 。（在这里避免使用术语“set”，以避免与 JavaScript
  * 的[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)混淆。）
  *
  * NOTE: A plain `Array<T>` is not assignable to a `PartiallyOrderedList<T>`, but a
@@ -96,7 +96,7 @@ export function hasNameIdentifier(declaration: ts.Node): declaration is Declarat
  * Relative paths start with `/`, `./` or `../` (or the Windows equivalents); or are simply `.` or
  * `..`.
  *
- * 相对路径以 `/` 、 `./` 或 `../` （或 Windows 等效项）开头；或者只是 `.` 或 `..`
+ * 相对路径以 `/`、`./` 或 `../`（或 Windows 等效项）开头；或者只是 `.` 或 `..`
  *
  */
 export function isRelativePath(path: string): boolean {
@@ -271,7 +271,7 @@ export function loadJson<T extends JsonObject = JsonObject>(
  * @param primaryPackageJson The parsed JSON of the primary `package.json` (or `null` if it failed
  *     to be loaded).
  *
- * 主要 `package.json` 的解析后的 JSON（如果加载失败，则为 `null` ）。
+ * 主要 `package.json` 的解析后的 JSON（如果加载失败，则为 `null`）。
  *
  * @param packagePath The absolute path to the containing npm package.
  *
@@ -320,10 +320,10 @@ export function loadSecondaryEntryPointInfoForApfV14(
  * exports (see references below). This function verifies that a value read from the top-level
  * `exports` field or a subpath is of type `Object` (and not `string` or `string[]`).
  *
- * 在 `package.json` 文件中， `exports` 字段可以是 `Object | string | string[]` 类型 `Object |
+ * 在 `package.json` 文件中，`exports` 字段可以是 `Object | string | string[]` 类型 `Object |
  * string | string[]` ，但 APF v14+
  * 对每个入口点使用具有子路径导出的对象，这又是条件导出（请参阅下面的参考资料）。此函数会验证从顶级
- * `exports` 字段或子路径读取的值是 `Object` 类型（而不是 `string` 或 `string[]` ）。
+ * `exports` 字段或子路径读取的值是 `Object` 类型（而不是 `string` 或 `string[]`）。
  *
  * References:
  *
@@ -347,7 +347,7 @@ export function loadSecondaryEntryPointInfoForApfV14(
  *
  * True if the value is an `Object` (and not an `Array`).
  *
- * 如果值为 `Object` （而不是 `Array` ），则为 True 。
+ * 如果值为 `Object`（而不是 `Array`），则为 True 。
  *
  */
 function isExportObject(thing: JsonValue): thing is JsonObject {

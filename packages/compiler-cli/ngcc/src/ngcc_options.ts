@@ -113,7 +113,7 @@ export interface SyncNgccOptions {
    * Paths mapping configuration (`paths` and `baseUrl`), as found in `ts.CompilerOptions`.
    * These are used to resolve paths to locally built Angular libraries.
    *
-   * 路径映射配置（ `paths` 和 `baseUrl` ），在 `ts.CompilerOptions` 中找到。这些用于解析本地构建的
+   * 路径映射配置（`paths` 和 `baseUrl`），在 `ts.CompilerOptions` 中找到。这些用于解析本地构建的
    * Angular 库的路径。
    *
    * Note that `pathMappings` specified here take precedence over any `pathMappings` loaded from a
@@ -140,7 +140,7 @@ export interface SyncNgccOptions {
    *
    * Default: `false` (i.e. run synchronously)
    *
-   * 默认： `false` （即同步运行）
+   * 默认： `false`（即同步运行）
    *
    */
   async?: false;
@@ -197,7 +197,7 @@ export interface SyncNgccOptions {
    *
    * Default: `false` (i.e. the manifest will be used if available)
    *
-   * 默认： `false` （即，如果可用，将使用清单）
+   * 默认： `false`（即，如果可用，将使用清单）
    *
    */
   invalidateEntryPointManifest?: boolean;
@@ -207,7 +207,7 @@ export interface SyncNgccOptions {
    * will be used to configure module resolution with things like path mappings, if not specified
    * explicitly via the `pathMappings` property to `mainNgcc`.
    *
-   * TS 配置文件（例如 `tsconfig.json` ）或包含文件的目录的绝对路径，如果未通过 `mainNgcc` 的
+   * TS 配置文件（例如 `tsconfig.json`）或包含文件的目录的绝对路径，如果未通过 `mainNgcc` 的
    * `pathMappings` 属性显式指定，则将用于使用路径映射等配置模块解析。
    *
    * If `undefined`, ngcc will attempt to load a `tsconfig.json` file from the directory above the

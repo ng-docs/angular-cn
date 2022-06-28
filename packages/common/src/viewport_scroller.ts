@@ -218,7 +218,7 @@ export class BrowserViewportScroller implements ViewportScroller {
    * element (ex: `scrollIntoView`) leaves the element hidden behind the floating header.
    *
    * 当我们知道有一个浮动标头并且天真滚动到一个元素（例如： `scrollIntoView`
-   * ）使该元素隐藏在浮动标头后面时，可以用此偏移量。
+   *）使该元素隐藏在浮动标头后面时，可以用此偏移量。
    *
    */
   private scrollToElement(el: HTMLElement): void {

@@ -51,7 +51,7 @@ export interface ProcessTaskMessage extends JsonObject {
  * NOTE: To avoid the communication overhead, the task is not included in the message. Instead, the
  *       master is responsible for keeping a mapping of workers to their currently assigned tasks.
  *
- * 注：为避免通信开销，该任务不包含在消息中。相反，master 负责保留 Worker
+ * 注意：为避免通信开销，该任务不包含在消息中。相反，master 负责保留 Worker
  * 到它们当前分配的任务的映射。
  *
  */

@@ -97,8 +97,8 @@ export const enum TNodeType {
    * a `Placeholder` `TNode`. This allows the i18n to structurally link the `TNode`s together
    * without knowing any information about the future nodes which will be at that location.
    *
-   * I18n 翻译块是在它们包含的元素节点之前创建的。 （I18n 块可以跨越许多元素。）因为 i18n `TNode`
-   * （表示文本）是首先创建的，它们通常可能需要指向尚未创建的元素 `TNode`
+   * I18n 翻译块是在它们包含的元素节点之前创建的。（I18n 块可以跨越许多元素。）因为 i18n `TNode`
+   *（表示文本）是首先创建的，它们通常可能需要指向尚未创建的元素 `TNode`
    * 。在这种情况下，我们创建一个 `Placeholder` `TNode` 。这允许 i18n 在结构 `TNode`
    * 链接在一起，而不知道有关将在该位置的未来节点的任何信息。
    *
@@ -108,7 +108,7 @@ export const enum TNodeType {
    *
    * 在 `firstCreatePass` 当 element 指令执行时，它将尝试在该位置创建一个 `TNode`
    * 。看到那里已经有一个 `Placeholder` `TNode` ，告诉系统它应该重用现有的 `TNode`
-   * （而不是创建新的），并更新缺失的信息。
+   *（而不是创建新的），并更新缺失的信息。
    *
    */
   Placeholder = 0b1000000,
@@ -264,7 +264,7 @@ export const enum AttributeMarker {
    * NOTE: This is implicit as it is the type when no marker is present in array. We indicate that
    * it should not be present at runtime by the negative number.
    *
-   * 注：这是隐式的，因为它是数组中不存在标记时的类型。我们表明它不应该在运行时出现负数。
+   * 注意：这是隐式的，因为它是数组中不存在标记时的类型。我们表明它不应该在运行时出现负数。
    *
    */
   ImplicitAttributes = -1,
@@ -604,10 +604,10 @@ export interface TNode {
    * itself in front of `!` but also to insert the `World` (created by `ɵɵi18nStart`) into
    * `<span>` itself.
    *
-   * 在上面的示例中， `ɵɵi18nStart` 指令可以创建 `Hello` 、 `World` 和 `!` 文本节点。它还可以插入
+   * 在上面的示例中，`ɵɵi18nStart` 指令可以创建 `Hello`、`World` 和 `!` 文本节点。它还可以插入
    * `Hello` 和 `!` text 节点作为 `<div>` 的子项，但它无法插入 `World` ，因为 `<span>`
-   * 节点尚未创建。在这种情况下， `<span>` `TNode` 将有一个数组，该数组将指导 `<span>`
-   * 不仅将自己插入到 `!` 还要将 `World` （由 `ɵɵi18nStart` 创建）插入 `<span>` 本身。
+   * 节点尚未创建。在这种情况下，`<span>` `TNode` 将有一个数组，该数组将指导 `<span>`
+   * 不仅将自己插入到 `!` 还要将 `World`（由 `ɵɵi18nStart` 创建）插入 `<span>` 本身。
    *
    * Pseudo code:
    *
@@ -649,7 +649,7 @@ export interface TNode {
    *
    * 因为 `ɵɵi18nStart` 会在创建节点之前执行，因此在 TView.firstCreatePass 上
    * `TView.firstCreatePass` `ɵɵi18nStart` 设置 `insertBeforeIndex` 值，因为尚未创建对应的 `TNode`
-   * 。出于这个原因， `ɵɵi18nStart` 会在该位置创建一个 `TNodeType.Placeholder` `TNode`
+   * 。出于这个原因，`ɵɵi18nStart` 会在该位置创建一个 `TNodeType.Placeholder` `TNode`
    * 。有关更多信息，请参阅 `TNodeType.Placeholder` 。
    *
    */
@@ -688,7 +688,7 @@ export interface TNode {
    *
    * NOTE: The first directive is always component (if present).
    *
-   * 注意：第一个指令始终是 component （如果存在）。
+   * 注意：第一个指令始终是 component（如果存在）。
    *
    */
   directiveStart: number;
@@ -703,7 +703,7 @@ export interface TNode {
    * `LFrame.bindingRootIndex` before `HostBindingFunction` is executed.
    *
    * `directiveStart-directiveEnd` 范围后面的区域用于分配 `HostBindingFunction` `vars`
-   * （如果没有绑定，则为 null ）。因此， `directiveEnd` 用于在执行 `LFrame.bindingRootIndex`
+   *（如果没有绑定，则为 null）。因此，`directiveEnd` 用于在执行 `LFrame.bindingRootIndex`
    * 之前设置 `HostBindingFunction` 。
    *
    */
@@ -872,7 +872,7 @@ export interface TNode {
    * for directive index in a view (or `-1` if there is no associated directive).
    *
    * 给定的元素可能有不同的本地名称，这些名称可以与指令相关联。我们将本地名称存储在偶数索引处，而奇数索引是为视图中的指令索引保留的（如果没有关联的指令，则为
-   * `-1` ）。
+   * `-1`）。
    *
    * Some examples:
    *
@@ -982,7 +982,7 @@ export interface TNode {
    * For embedded view nodes, the child will be in their child view.
    *
    * 对于组件节点，子节点将始终是 ContentChild
-   * （在同一个视图中）。对于嵌入式视图节点，子项将在他们的子视图中。
+   *（在同一个视图中）。对于嵌入式视图节点，子项将在他们的子视图中。
    *
    */
   child: TNode|null;
@@ -1072,8 +1072,8 @@ export interface TNode {
    *     because the same component (`<child>`) can be used in multiple locations (`c1`, `c2`) and
    *   as a result have different set of nodes to project.
    *
-   *   我们使用主机（ `c1` , `c2` ）而不是 `<ng-content>` （ `cont1` ）存储 `projection`
-   * ，因为同一个组件（ `<child>` ）可以在多个位置（ `c1` , `c2` ）使用，因此有不同的要投影的节点。
+   *   我们使用主机（`c1` , `c2`）而不是 `<ng-content>`（`cont1`）存储 `projection`
+   * ，因为同一个组件（`<child>`）可以在多个位置（`c1` , `c2`）使用，因此有不同的要投影的节点。
    *
    * - without `projection` it would be difficult to efficiently traverse nodes to be projected.
    *
@@ -1118,13 +1118,13 @@ export interface TNode {
    *
    * - There are one or more initial `style`s on an element (e.g. `<div style="width:200px;">`)
    *
-   *   元素上有一个或多个初始 `style` （例如 `<div style="width:200px;">` ）
+   *   元素上有一个或多个初始 `style`（例如 `<div style="width:200px;">`）
    *
    * - There are one or more initial `style`s on a directive/component host
    *   (e.g. `@Directive({host: {style: "width:200px;" } }`)
    *
-   *   指令/组件主机上有一个或多个初始 `style` （例如 `@Directive({host: {style: "width:200px;" } }`
-   * ）
+   *   指令/组件主机上有一个或多个初始 `style`（例如 `@Directive({host: {style: "width:200px;" } }`
+   *）
    *
    */
   styles: string|null;
@@ -1143,7 +1143,7 @@ export interface TNode {
    * would have to concatenate the attributes on every template pass. Instead, we process once on
    * first create pass and store here.
    *
-   * 当元素上有一个或多个初始 `style` 时填充（例如 `<div style="width:200px;">` ）必须与
+   * 当元素上有一个或多个初始 `style` 时填充（例如 `<div style="width:200px;">`）必须与
    * `tNode.styles` 分开存储，以便利设置会影响 `style` 属性的指令输入。如果我们将 `tNode.styles`
    * 原样用于阴影输入，我们会将主机样式作为“输入”反馈到指令中。如果我们使用 `tNode.attrs`
    * ，我们将不得不连接每个模板传递上的属性。相反，我们在第一次创建传递时处理一次并在此存储。
@@ -1199,12 +1199,12 @@ export interface TNode {
    *
    * - There are one or more initial classes on an element (e.g. `<div class="one two three">`)
    *
-   *   元素上有一个或多个初始类（例如 `<div class="one two three">` ）
+   *   元素上有一个或多个初始类（例如 `<div class="one two three">`）
    *
    * - There are one or more initial classes on an directive/component host
    *   (e.g. `@Directive({host: {class: "SOME_CLASS" } }`)
    *
-   *   指令/组件主机上有一个或多个初始类（例如 `@Directive({host: {class: "SOME_CLASS" } }` ）
+   *   指令/组件主机上有一个或多个初始类（例如 `@Directive({host: {class: "SOME_CLASS" } }`）
    *
    */
   classes: string|null;
@@ -1222,7 +1222,7 @@ export interface TNode {
    * `tNode.attrs`, we would have to concatenate the attributes on every template pass. Instead,
    * we process once on first create pass and store here.
    *
-   * 当元素上有一个或多个初始类时填充（例如 `<div class="SOME_CLASS">` ）必须与 `tNode.classes`
+   * 当元素上有一个或多个初始类时填充（例如 `<div class="SOME_CLASS">`）必须与 `tNode.classes`
    * 分开存储，以便利设置隐藏 `class` 属性的指令输入。如果我们按原样使用 `tNode.classes`
    * 作为阴影输入，我们会将主机类作为“输入”反馈到指令中。如果我们使用 `tNode.attrs`
    * ，我们将不得不连接每个模板传递上的属性。相反，我们在第一次创建传递时处理一次并在此存储。
@@ -1360,7 +1360,7 @@ export interface TElementNode extends TNode {
    * or a component without projection, it will be null.
    *
    * 如果这是带有投影的组件 TNode，则这将是投影 TNode 或本机节点的数组（有关更多信息，请参阅
-   * TNode.projection ）。如果它是常规元素节点或没有投影的组件，则为 null 。
+   * TNode.projection）。如果它是常规元素节点或没有投影的组件，则为 null 。
    *
    */
   projection: (TNode|RNode[])[]|null;
@@ -1515,7 +1515,7 @@ export interface TProjectionNode extends TNode {
   /**
    * Index of the projection node. (See TNode.projection for more info.)
    *
-   * 投影节点的索引。 （有关更多信息，请参阅 TNode.projection 。）
+   * 投影节点的索引。（有关更多信息，请参阅 TNode.projection 。）
    *
    */
   projection: number;
@@ -1663,8 +1663,6 @@ export type LocalRefExtractor = (tNode: TNodeWithLocalRefs, currentView: LView) 
  *
  * ```
  *
- * ```
- *
  * @Directive ({
  * })
  * class MyDirective {
@@ -1693,8 +1691,6 @@ export function hasClassInput(tNode: TNode) {
  * and
  *
  * 和
- *
- * ```
  *
  * ```
  *

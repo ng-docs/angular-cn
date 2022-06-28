@@ -55,15 +55,12 @@ class Bindings {
  *
  * 假设你有一个名为 `ng1Hero` 的 AngularJS 组件，需要在 Angular 模板中使用。
  *
- * {
- *
- * @example upgrade/static/ts/full/module.ts region="ng1-hero"}
+ * {@example upgrade/static/ts/full/module.ts region="ng1-hero"}
  *
  * We must create a `Directive` that will make this AngularJS component
  * available inside Angular templates.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
+ * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
  *
  * In this example you can see that we must derive from the `UpgradeComponent`
  * base class but also provide an {@link Directive `@Directive`} decorator. This is

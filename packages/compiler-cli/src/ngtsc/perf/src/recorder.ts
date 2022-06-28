@@ -136,7 +136,7 @@ export class ActivePerfRecorder implements PerfRecorder {
  * the current compilation. This is true for most compiler classes as resource-only changes reuse
  * the same `NgCompiler` for a new compilation.
  *
- * 当需要 `PerfRecorder` 的编译器类可以比当前编译寿命长时， `DelegatingPerfRecorder`
+ * 当需要 `PerfRecorder` 的编译器类可以比当前编译寿命长时，`DelegatingPerfRecorder`
  * 会很有用。对于大多数编译器类来说都是如此，因为仅资源的更改会重用同一个 `NgCompiler`
  * 进行新的编译。
  *

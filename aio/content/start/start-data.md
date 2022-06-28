@@ -6,7 +6,7 @@ This guide builds on the second step of the [Getting started with a basic Angula
 At this stage of development, the store application has a product catalog with two views: a product list and product details.
 Users can click on a product name from the list to see details in a new view, with a distinct URL, or route.
 
-本章基于[以一个基本 Angular 应用快速上手](start)的第二步 —— [添加导航](start/start-routing "Adding navigation")。 在此开发阶段，本商店应用具有一个包含两个视图的商品名录：商品列表和商品详情。用户点击清单中的某个商品名称，就会在新视图中看到具有专门的 URL 或路由的详情页。
+本章基于[以一个基本 Angular 应用快速上手](start)的第二步 —— [添加导航](start/start-routing "Adding navigation")。在此开发阶段，本商店应用具有一个包含两个视图的商品名录：商品列表和商品详情。用户点击清单中的某个商品名称，就会在新视图中看到具有专门的 URL 或路由的详情页。
 
 This step of the tutorial guides you through creating a shopping cart in the following phases:
 
@@ -41,7 +41,7 @@ Currently, users can view product information, and the application can simulate 
 The next step is to build a way for users to add products to a cart.
 This section walks you through adding a **Buy** button and setting up a cart service to store information about products in the cart.
 
-下一步是为用户提供一种把产品添加到购物车中的方法。 本章节将带领你添加一个 **Buy** 按钮并且建立一个购物车服务以保存购物车中的产品信息。
+下一步是为用户提供一种把产品添加到购物车中的方法。本章节将带领你添加一个 **Buy** 按钮并且建立一个购物车服务以保存购物车中的产品信息。
 
 <a id="generate-cart-service"></a>
 
@@ -51,7 +51,7 @@ This section walks you through adding a **Buy** button and setting up a cart ser
 
 This section walks you through creating the `CartService` that tracks products added to shopping cart.
 
-本节将引导你创建用于跟踪添加到购物车的产品的 `CartService` 。
+本节将引导你创建用于跟踪添加到购物车的产品的 `CartService`。
 
 1. In the terminal generate a new `cart` service by running the following command:
 
@@ -134,7 +134,7 @@ This section walks you through using the `CartService` to add a product to the c
 1. In `product-details.component.html`, add a button with the label **Buy**, and bind the `click()` event to the `addToCart()` method.
    This code updates the product details template with a **Buy** button that adds the current product to the cart.
 
-   在 `product-details.component.html` 中，添加一个带有 **Buy** 标签的按钮，并且把其 `click()` 事件绑定到 `addToCart()` 方法上。 这段代码会为产品详情模板添加一个 **Buy** 按钮，并把当前产品添加到购物车中。
+   在 `product-details.component.html` 中，添加一个带有 **Buy** 标签的按钮，并且把其 `click()` 事件绑定到 `addToCart()` 方法上。这段代码会为产品详情模板添加一个 **Buy** 按钮，并把当前产品添加到购物车中。
 
    <code-example header="src/app/product-details/product-details.component.html" path="getting-started/src/app/product-details/product-details.component.html"></code-example>
 
@@ -201,7 +201,7 @@ For customers to see their cart, you can create the cart view in two steps:
    StackBlitz also generates an `ngOnInit()` by default in components.
    You can ignore the `CartComponent` `ngOnInit()` for this tutorial.
 
-   StackBlitz 还在组件中默认生成一个 `ngOnInit()` 。对于本教程，你可以忽略 `CartComponent` 的 `ngOnInit()` 。
+   StackBlitz 还在组件中默认生成一个 `ngOnInit()`。对于本教程，你可以忽略 `CartComponent` 的 `ngOnInit()`。
 
 1. Notice that the newly created `CartComponent` is added to the module's `declarations` in `app.module.ts`.
 
@@ -211,14 +211,14 @@ For customers to see their cart, you can create the cart view in two steps:
 
 1. Still in `app.module.ts`, add a route for the component `CartComponent`, with a `path` of `cart`.
 
-   打开 `app.module.ts`，为组件 `CartComponent` 添加一个路由，其路由为 `cart` 。
+   打开 `app.module.ts`，为组件 `CartComponent` 添加一个路由，其路由为 `cart`。
 
    <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="cart-route"></code-example>
 
 1. Update the **Checkout** button so that it routes to the `/cart` URL.
    In `top-bar.component.html`, add a `routerLink` directive pointing to `/cart`.
 
-   修改 "Checkout" 按钮，以便让它路由到 `/cart`。 在 `top-bar.component.html` 中添加一个指向 `/cart` 的 `routerLink` 指令。
+   修改 "Checkout" 按钮，以便让它路由到 `/cart`。在 `top-bar.component.html` 中添加一个指向 `/cart` 的 `routerLink` 指令。
 
    <code-example header="src/app/top-bar/top-bar.component.html" path="getting-started/src/app/top-bar/top-bar.component.html" region="cart-route"></code-example>
 
@@ -312,7 +312,7 @@ Servers often return data in the form of a stream.
 Streams are useful because they make it easy to transform the returned data and make modifications to the way you request that data.
 Angular `HttpClient` is a built-in way to fetch data from external APIs and provide them to your application as a stream.
 
-服务器通常采用流的形式返回数据。 流是很有用的，因为它们可以很容易地转换返回的数据，也可以修改你请求数据的方式。 Angular 的 HTTP 客户端（ `HttpClient` ）是一种内置的方式，可以从外部 API 中获取数据，并以流的形式提供给你的应用。
+服务器通常采用流的形式返回数据。流是很有用的，因为它们可以很容易地转换返回的数据，也可以修改你请求数据的方式。Angular 的 HTTP 客户端（`HttpClient`）是一种内置的方式，可以从外部 API 中获取数据，并以流的形式提供给你的应用。
 
 This section shows you how to use `HttpClient` to retrieve shipping prices from an external file.
 
@@ -341,7 +341,7 @@ Angular 的 `HttpClientModule` 中注册了在整个应用中使用 `HttpClient`
    As there are a number of other imports, this code snippet omits them for brevity.
    Be sure to leave the existing imports in place.
 
-   在 `app.module.ts` 的顶部从 `@angular/common/http` 包中导入 `HttpClientModule` 以及其它导入项。 由于有很多其它导入项，因此这里的代码片段省略它们，以保持简洁。请确保现有的导入都还在原地。
+   在 `app.module.ts` 的顶部从 `@angular/common/http` 包中导入 `HttpClientModule` 以及其它导入项。由于有很多其它导入项，因此这里的代码片段省略它们，以保持简洁。请确保现有的导入都还在原地。
 
    <code-example header="src/app/app.module.ts" path="getting-started/src/app/app.module.ts" region="http-client-module-import"></code-example>
 
@@ -423,7 +423,7 @@ Now that you've configured your application to retrieve shipping data, you can c
    There's no link to the new shipping component yet, but you can see its template in the preview pane by entering the URL its route specifies.
    The URL has the pattern: `https://angular-ynqttp--4200.local.webcontainer.io/shipping` where the `angular-ynqttp--4200.local.webcontainer.io` part may be different for your StackBlitz project.
 
-   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping` ，其中的 gets-started.stackblitz.io 部分可能与你的 StackBlitz 项目不同。
+   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping`，其中的 gets-started.stackblitz.io 部分可能与你的 StackBlitz 项目不同。
 
 ### Configuring the `ShippingComponent` to use `CartService`
 

@@ -5,7 +5,7 @@
 A provider is an instruction to the [Dependency Injection](guide/dependency-injection) system on how to obtain a value for a dependency.
 Most of the time, these dependencies are services that you create and provide.
 
-提供者就是一本说明书，用来指导[依赖注入](guide/dependency-injection)系统该如何获取某个依赖的值。 大多数情况下，这些依赖就是你要创建和提供的那些服务。
+提供者就是一本说明书，用来指导[依赖注入](guide/dependency-injection)系统该如何获取某个依赖的值。大多数情况下，这些依赖就是你要创建和提供的那些服务。
 
 For the final sample application using the provider that this page describes, see the <live-example></live-example>.
 
@@ -49,7 +49,7 @@ In this case, `providedIn: 'root'` specifies that Angular should provide the ser
 When you add a service provider to the root application injector, it's available throughout the application.
 Additionally, these providers are also available to all the classes in the application as long they have the lookup token.
 
-当你把服务提供者添加到应用的根注入器中时，它就在整个应用程序中可用了。 另外，这些服务提供者也同样对整个应用中的类是可用的 —— 只要它们有供查找用的服务令牌。
+当你把服务提供者添加到应用的根注入器中时，它就在整个应用程序中可用了。另外，这些服务提供者也同样对整个应用中的类是可用的 —— 只要它们有供查找用的服务令牌。
 
 You should always provide your service in the root injector unless there is a case where you want the service to be available only if the consumer imports a particular `@NgModule`.
 
@@ -141,7 +141,7 @@ This method is helpful when you want to eagerly load a module that needs a servi
 Providing a service in the component limits the service only to that component and its descendants.
 Other components in the same module can't access it.
 
-另一种限定提供者作用域的方式是把要限定的服务添加到组件的 `providers` 数组中。组件中的提供者和 NgModule 中的提供者是彼此独立的。 当你要急性加载一个自带了全部所需服务的模块时，这种方式是有帮助的。 在组件中提供服务，会限定该服务只能在该组件及其子组件中有效，而同一模块中的其它组件不能访问它。
+另一种限定提供者作用域的方式是把要限定的服务添加到组件的 `providers` 数组中。组件中的提供者和 NgModule 中的提供者是彼此独立的。当你要急性加载一个自带了全部所需服务的模块时，这种方式是有帮助的。在组件中提供服务，会限定该服务只能在该组件及其子组件中有效，而同一模块中的其它组件不能访问它。
 
 <code-example header="src/app/app.component.ts" path="providers/src/app/app.component.ts" region="component-providers"></code-example>
 
@@ -163,7 +163,7 @@ Register a provider with a component when you must limit a service instance to a
 For example, a user editing component, `UserEditorComponent`, that needs a private copy of a caching `UserService` should register the `UserService` with the `UserEditorComponent`.
 Then each new instance of the `UserEditorComponent` gets its own cached service instance.
 
-当你必须把一个服务实例的作用域限定到组件及其组件树中时，可以使用组件注册一个服务提供者。 比如，用户编辑组件 `UserEditorComponent`，它需要一个缓存 `UserService` 实例，那就应该把 `UserService` 注册进 `UserEditorComponent` 中。 然后，每个 `UserEditorComponent` 的实例都会获取它自己的缓存服务实例。
+当你必须把一个服务实例的作用域限定到组件及其组件树中时，可以使用组件注册一个服务提供者。比如，用户编辑组件 `UserEditorComponent`，它需要一个缓存 `UserService` 实例，那就应该把 `UserService` 注册进 `UserEditorComponent` 中。然后，每个 `UserEditorComponent` 的实例都会获取它自己的缓存服务实例。
 
 <a id="singleton-services"></a>
 <a id="component-child-injectors"></a>

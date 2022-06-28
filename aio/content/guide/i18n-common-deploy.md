@@ -5,7 +5,7 @@
 If `myapp` is the directory that contains the distributable files of your project, you typically make different versions available for different locales in locale directories.
 For example, your French version is located in the `myapp/fr` directory and the Spanish version is located in the `myapp/es` directory.
 
-如果 `myapp` 是包含项目可分发文件的目录，你通常会在语言环境目录中为不同的语言环境提供不同的版本，比如法语版的 `myapp/fr` 和西班牙语版的 `myapp/es` 。
+如果 `myapp` 是包含项目可分发文件的目录，你通常会在语言环境目录中为不同的语言环境提供不同的版本，比如法语版的 `myapp/fr` 和西班牙语版的 `myapp/es`。
 
 The HTML `base` tag with the `href` attribute specifies the base URI, or URL, for relative links.
 If you set the `"localize"` option in [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file to `true` or to an array of locale IDs, the CLI adjusts the base `href` for each version of the application.
@@ -13,13 +13,13 @@ To adjust the base `href` for each version of the application, the CLI adds the 
 Specify the `"baseHref"` for each locale in your [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file.
 The following example displays `"baseHref"` set to an empty string.
 
-带有 `href` 属性的 HTML `base` 标签指定了相对链接的基本 URI 或 URL。如果你将工作空间构建配置文件 [`angular.json`][AioGuideWorkspaceConfig] 中的 `"localize"` 选项设置为 `true` 或语言环境 ID 数组，CLI 会为应用程序的每个版本调整 base `href` 。要为应用程序的每个版本调整 base `href` ，CLI 会将语言环境添加到配置的 `"baseHref"` 中。在工作区配置文件 [`angular.json`][AioGuideWorkspaceConfig] 中为每个语言环境指定 `"baseHref"` 。以下示例展示了设置为空字符串的 `"baseHref"` 。
+带有 `href` 属性的 HTML `base` 标签指定了相对链接的基本 URI 或 URL。如果你将工作空间构建配置文件 [`angular.json`][AioGuideWorkspaceConfig] 中的 `"localize"` 选项设置为 `true` 或语言环境 ID 数组，CLI 会为应用程序的每个版本调整 base `href`。要为应用程序的每个版本调整 base `href`，CLI 会将语言环境添加到配置的 `"baseHref"` 中。在工作区配置文件 [`angular.json`][AioGuideWorkspaceConfig] 中为每个语言环境指定 `"baseHref"`。以下示例展示了设置为空字符串的 `"baseHref"`。
 
 <code-example header="angular.json" path="i18n/angular.json" region="i18n-baseHref"></code-example>
 
 Also, to declare the base `href` at compile time, use the CLI `--baseHref` option with [`ng build`][AioCliBuild].
 
-此外，要在编译时声明 base `href` ，请将在 CLI 中使用带有 `--baseHref` 选项的 [ `ng build` ][AioCliBuild]。
+此外，要在编译时声明 base `href`，请将在 CLI 中使用带有 `--baseHref` 选项的 [ `ng build` ][AioCliBuild]。
 
 ## Configure a server
 

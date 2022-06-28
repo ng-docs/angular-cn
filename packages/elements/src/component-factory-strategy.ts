@@ -342,7 +342,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Marks the component view for check, if necessary.
    * (NOTE: This is required when the `ChangeDetectionStrategy` is set to `OnPush`.)
    *
-   * 如有必要，将组件视图标记为要检查。 （注意：当把 `ChangeDetectionStrategy` 设为 `OnPush`
+   * 如有必要，将组件视图标记为要检查。（注意：当把 `ChangeDetectionStrategy` 设为 `OnPush`
    * 时，这是必需的。）
    *
    */
@@ -419,7 +419,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Runs in the angular zone, if present.
    *
-   * 在 Angular Zone （如果存在）中运行。
+   * 在 Angular Zone（如果存在）中运行。
    *
    */
   private runInZone(fn: () => unknown) {

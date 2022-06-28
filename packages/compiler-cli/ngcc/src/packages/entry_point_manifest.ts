@@ -51,7 +51,7 @@ export class EntryPointManifest {
    *
    * * the package lock-file (i.e. yarn.lock or package-lock.json) has changed
    *
-   *   包 lock-file （即 spring.lock 或 package-lock.json ）已更改
+   *   包 lock-file（即 spring.lock 或 package-lock.json）已更改
    *
    * * the project configuration has changed
    *

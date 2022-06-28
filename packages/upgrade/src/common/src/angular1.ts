@@ -295,7 +295,7 @@ export function getAngularLib(): any {
  *
  * Used when AngularJS is loaded lazily, and not available on `window`.
  *
- * 当延迟加载 AngularJS 时使用，并且在 `window` 上不可用。
+ * 当惰性加载 AngularJS 时使用，并且在 `window` 上不可用。
  *
  * @publicApi
  */

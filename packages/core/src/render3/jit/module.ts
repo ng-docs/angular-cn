@@ -118,7 +118,7 @@ export function compileNgModule(moduleType: Type<any>, ngModule: NgModule = {}):
 /**
  * Compiles and adds the `ɵmod`, `ɵfac` and `ɵinj` properties to the module class.
  *
- * 编译 `ɵmod` 、 `ɵfac` 和 `ɵinj` 属性并将其添加到模块类。
+ * 编译 `ɵmod`、`ɵfac` 和 `ɵinj` 属性并将其添加到模块类。
  *
  * It's possible to compile a module via this API which will allow duplicate declarations in its
  * root.
@@ -541,7 +541,7 @@ export function patchComponentDefWithScope<C>(
  * Compute the pair of transitive scopes (compilation scope and exported scope) for a given type
  * (eaither a NgModule or a standalone component / directive / pipe).
  *
- * 计算给定类型（ NgModule 或独立组件/指令/管道）的一对可传递范围（编译范围和导出范围）。
+ * 计算给定类型（NgModule 或独立组件/指令/管道）的一对可传递范围（编译范围和导出范围）。
  *
  */
 export function transitiveScopesFor<T>(type: Type<T>): NgModuleTransitiveScopes {

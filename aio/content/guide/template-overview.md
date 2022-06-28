@@ -56,49 +56,69 @@ You might also be interested in the following:
 
 <div class="card-container">
     <a href="guide/interpolation" class="docs-card" title="Interpolation">
-
-```
     <section>Interpolation</section>
+    <section>插值</section>
     <p>Learn how to use interpolation and expressions in HTML.</p>
+    <p>学习如何在 HTML 中使用插值和表达式。</p>
     <p class="card-footer">Interpolation</p>
+    <p class="card-footer">插值</p>
 </a>
 <a href="guide/property-binding" class="docs-card" title="Property binding">
     <section>Property binding</section>
+    <section>属性（Property）绑定</section>
     <p>Set properties of target elements or directive @Input() decorators.</p>
+    <p>设置目标元素或指令中带有 @Input() 装饰器的属性（Property） @Input()。</p>
     <p class="card-footer">Property binding</p>
+    <p class="card-footer">属性（Property）绑定</p>
 </a>
 <a href="guide/attribute-binding" class="docs-card" title="Attribute binding">
     <section>Attribute binding</section>
+    <section>属性（Attribute）绑定</section>
     <p>Set the value of attributes.</p>
+    <p>设置属性（Attribute）的值。</p>
     <p class="card-footer">Attribute binding</p>
+    <p class="card-footer">属性（Attribute）绑定</p>
 </a>
 <a href="guide/class-binding" class="docs-card" title="Class and style binding">
     <section>Class and style binding</section>
+    <section>类和样式绑定</section>
     <p>Set the value of class and style.</p>
+    <p>设置类和样式的值。</p>
     <p class="card-footer">Class and style binding</p>
+    <p class="card-footer">类和样式绑定</p>
 </a>
 <a href="guide/event-binding" class="docs-card" title="Event binding">
     <section>Event binding</section>
+    <section>事件绑定</section>
     <p>Listen for events and your HTML.</p>
+    <p>监听 HTML 事件。</p>
     <p class="card-footer">Event binding</p>
+    <p class="card-footer">事件绑定</p>
 </a>
 <a href="guide/template-reference-variables" class="docs-card" title="Template reference variables">
     <section>Template reference variables</section>
+    <section>模板引用变量</section>
     <p>Use special variables to reference a DOM element within a template.</p>
+    <p>在模板中使用特殊变量引用某个 DOM 元素。</p>
     <p class="card-footer">Template reference variables</p>
+    <p class="card-footer">模板引用变量</p>
 </a>
 <a href="guide/built-in-directives" class="docs-card" title="Built-in directives">
     <section>Built-in directives</section>
+    <section>内置指令</section>
     <p>Listen to and modify the behavior and layout of HTML.</p>
+    <p>监听并修改 HTML 的行为和布局。</p>
     <p class="card-footer">Built-in directives</p>
+    <p class="card-footer">内置指令</p>
 </a>
 <a href="guide/inputs-outputs" class="docs-card" title="Inputs and Outputs">
     <section>Inputs and Outputs</section>
+    <section>输入属性与输出属性</section>
     <p>Share data between the parent context and child directives or components.</p>
+    <p>在父级上下文和子指令、子组件之间共享数据。</p>
     <p class="card-footer">Inputs and Outputs</p>
+    <p class="card-footer">输入属性与输出属性</p>
 </a>
-```
-
 </div>
 
 @reviewed 2022-05-11

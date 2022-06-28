@@ -158,7 +158,7 @@ export function assertParentView(lView: LView|null, errMessage?: string) {
  * This is a basic sanity check that the `injectorIndex` seems to point to what looks like a
  * NodeInjector data structure.
  *
- * 这是一个基本的完整性检查， `injectorIndex` 似乎指向了看起来像 NodeInjector 数据结构的东西。
+ * 这是一个基本的完整性检查，`injectorIndex` 似乎指向了看起来像 NodeInjector 数据结构的东西。
  *
  * @param lView `LView` which should be checked.
  *

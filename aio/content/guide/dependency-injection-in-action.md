@@ -29,7 +29,7 @@ You need a separate instance of the service for each component.
 Each service has its own work-state, isolated from the service-and-state of a different component.
 This is called *sandboxing* because each service and component instance has its own sandbox to play in.
 
-一个用来保存其伴生组件的实例状态的服务就是个好例子。 每个组件都需要该服务的单独实例。 每个服务有自己的工作状态，与其它组件的服务和状态隔离。这叫做*沙箱化*，因为每个服务和组件实例都在自己的沙箱里运行。
+一个用来保存其伴生组件的实例状态的服务就是个好例子。每个组件都需要该服务的单独实例。每个服务有自己的工作状态，与其它组件的服务和状态隔离。这叫做*沙箱化*，因为每个服务和组件实例都在自己的沙箱里运行。
 
 <a id="hero-bios-component"></a>
 
@@ -83,7 +83,7 @@ When a class requires a dependency, that dependency is added to the constructor 
 When Angular needs to instantiate the class, it calls upon the DI framework to supply the dependency.
 By default, the DI framework searches for a provider in the injector hierarchy, starting at the component's local injector, and if necessary bubbling up through the injector tree until it reaches the root injector.
 
-当类需要某个依赖项时，该依赖项就会作为参数添加到类的构造函数中。 当 Angular 需要实例化该类时，就会调用 DI 框架来提供该依赖。 默认情况下，DI 框架会在注入器树中查找一个提供者，从该组件的局部注入器开始，如果需要，则沿着注入器树向上冒泡，直到根注入器。
+当类需要某个依赖项时，该依赖项就会作为参数添加到类的构造函数中。当 Angular 需要实例化该类时，就会调用 DI 框架来提供该依赖。默认情况下，DI 框架会在注入器树中查找一个提供者，从该组件的局部注入器开始，如果需要，则沿着注入器树向上冒泡，直到根注入器。
 
 * The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
 
@@ -107,12 +107,12 @@ Dependencies can be registered at any level in the component hierarchy.
 When a component requests a dependency, Angular starts with that component's injector and walks up the injector tree until it finds the first suitable provider.
 Angular throws an error if it can't find the dependency during that walk.
 
-依赖可以注册在组件树的任何层级上。 当组件请求某个依赖时，Angular 会从该组件的注入器找起，沿着注入器树向上，直到找到了第一个满足要求的提供者。如果没找到依赖，Angular 就会抛出一个错误。
+依赖可以注册在组件树的任何层级上。当组件请求某个依赖时，Angular 会从该组件的注入器找起，沿着注入器树向上，直到找到了第一个满足要求的提供者。如果没找到依赖，Angular 就会抛出一个错误。
 
 In some cases, you need to limit the search or accommodate a missing dependency.
 You can modify Angular's search behavior with the `@Host` and `@Optional` qualifying decorators on a service-valued parameter of the component's constructor.
 
-某些情况下，你需要限制搜索，或容忍依赖项的缺失。 你可以使用组件构造函数参数上的 `@Host` 和 `@Optional` 这两个限定装饰器来修改 Angular 的搜索行为。
+某些情况下，你需要限制搜索，或容忍依赖项的缺失。你可以使用组件构造函数参数上的 `@Host` 和 `@Optional` 这两个限定装饰器来修改 Angular 的搜索行为。
 
 * The `@Optional` property decorator tells Angular to return null when it can't find the dependency
 
@@ -123,7 +123,7 @@ You can modify Angular's search behavior with the `@Host` and `@Optional` qualif
   However, when this component is projected into a *parent* component, that parent component becomes the host.
   The following example covers this second case.
 
-  `@Host` 属性装饰器会禁止在*宿主组件*以上的搜索。宿主组件通常就是请求该依赖的那个组件。 不过，当该组件投影进某个*父*组件时，那个父组件就会变成宿主。下面的例子中介绍了第二种情况。
+  `@Host` 属性装饰器会禁止在*宿主组件*以上的搜索。宿主组件通常就是请求该依赖的那个组件。不过，当该组件投影进某个*父*组件时，那个父组件就会变成宿主。下面的例子中介绍了第二种情况。
 
 These decorators can be used individually or together, as shown in the example.
 This `HeroBiosAndContactsComponent` is a revision of `HeroBiosComponent` which you looked at [above](guide/dependency-injection-in-action#hero-bios-component).
@@ -141,7 +141,7 @@ Focus on the template:
 Now there's a new `<hero-contact>` element between the `<hero-bio>` tags.
 Angular *projects*, or *transcludes*, the corresponding `HeroContactComponent` into the `HeroBioComponent` view, placing it in the `<ng-content>` slot of the `HeroBioComponent` template.
 
-在 `<hero-bio>` 标签中是一个新的 `<hero-contact>` 元素。Angular 就会把相应的 `HeroContactComponent`*投影*(*transclude*)进 `HeroBioComponent` 的视图里， 将它放在 `HeroBioComponent` 模板的 `<ng-content>` 标签槽里。
+在 `<hero-bio>` 标签中是一个新的 `<hero-contact>` 元素。Angular 就会把相应的 `HeroContactComponent`*投影*(*transclude*)进 `HeroBioComponent` 的视图里，将它放在 `HeroBioComponent` 模板的 `<ng-content>` 标签槽里。
 
 <code-example header="src/app/hero-bio.component.ts (template)" path="dependency-injection-in-action/src/app/hero-bio.component.ts" region="template"></code-example>
 
@@ -176,7 +176,7 @@ A second `@Host()` function decorates the `loggerService` constructor property.
 The only `LoggerService` instance in the application is provided at the `AppComponent` level.
 The host `HeroBioComponent` doesn't have its own `LoggerService` provider.
 
-另一个 `@Host()` 函数是构造函数属性 `loggerService` 的装饰器。 在本应用程序中只有一个在 `AppComponent` 级提供的 `LoggerService` 实例。 该宿主 `HeroBioComponent` 没有自己的 `LoggerService` 提供者。
+另一个 `@Host()` 函数是构造函数属性 `loggerService` 的装饰器。在本应用程序中只有一个在 `AppComponent` 级提供的 `LoggerService` 实例。该宿主 `HeroBioComponent` 没有自己的 `LoggerService` 提供者。
 
 Angular throws an error if you haven't also decorated the property with `@Optional()`.
 When the property is marked as optional, Angular sets `loggerService` to null and the rest of the component adapts.
@@ -206,7 +206,7 @@ The logger logic kicks in and the hero display updates with the "!!!" marker to 
 
 If you restore the `@Host()` decorator and comment out `@Optional`, the application throws an exception when it cannot find the required logger at the host component level.
 
-如果你恢复 `@Host()` 装饰器并注释掉 `@Optional` ，应用程序在宿主组件级别找不到所需的记录器时会抛出异常。
+如果你恢复 `@Host()` 装饰器并注释掉 `@Optional`，应用程序在宿主组件级别找不到所需的记录器时会抛出异常。
 
 <code-example format="output" hideCopy language="shell">
 
@@ -249,7 +249,7 @@ Using the `@Self` decorator, the injector only looks at the component's injector
 The `@SkipSelf` decorator allows you to skip the local injector and look up in the hierarchy to find a provider that satisfies this dependency.
 The `sessionStorageService` instance interacts with the `BrowserStorageService` using the `sessionStorage` browser API, while the `localStorageService` skips the local injector and uses the root `BrowserStorageService` that uses the `localStorage` browser API.
 
-使用 `@Self` 装饰器时，注入器只在该组件的注入器中查找提供者。`@SkipSelf` 装饰器可以让你跳过局部注入器，并在注入器树中向上查找，以发现哪个提供者满足该依赖。 `sessionStorageService` 实例使用浏览器的 `sessionStorage` 来跟 `BrowserStorageService` 打交道，而 `localStorageService` 跳过了局部注入器，使用根注入器提供的 `BrowserStorageService`，它使用浏览器的 `localStorage` API。
+使用 `@Self` 装饰器时，注入器只在该组件的注入器中查找提供者。`@SkipSelf` 装饰器可以让你跳过局部注入器，并在注入器树中向上查找，以发现哪个提供者满足该依赖。`sessionStorageService` 实例使用浏览器的 `sessionStorage` 来跟 `BrowserStorageService` 打交道，而 `localStorageService` 跳过了局部注入器，使用根注入器提供的 `BrowserStorageService`，它使用浏览器的 `localStorage` API。
 
 <a id="component-element"></a>
 
@@ -304,7 +304,7 @@ You learned about some other methods in [Dependency Providers](guide/dependency-
 The following `HeroOfTheMonthComponent` example demonstrates many of the alternatives and why you need them.
 It's visually simple: a few properties and the logs produced by a logger.
 
-用于实例化类的默认方法不一定总适合用来创建依赖。你可以到[依赖提供者](guide/dependency-injection-providers)部分查看其它方法。 `HeroOfTheMonthComponent` 例子示范了一些替代方案，展示了为什么需要它们。 它看起来很简单：一些属性和一些由 logger 生成的日志。
+用于实例化类的默认方法不一定总适合用来创建依赖。你可以到[依赖提供者](guide/dependency-injection-providers)部分查看其它方法。`HeroOfTheMonthComponent` 例子示范了一些替代方案，展示了为什么需要它们。它看起来很简单：一些属性和一些由 logger 生成的日志。
 
 <div class="lightbox">
 
@@ -315,7 +315,7 @@ It's visually simple: a few properties and the logs produced by a logger.
 The code behind it customizes how and where the DI framework provides dependencies.
 The use cases illustrate different ways to use the [*provide* object literal](guide/dependency-injection-providers#provide) to associate a definition object with a DI token.
 
-它背后的代码定制了 DI 框架提供依赖项的方法和位置。 这个例子阐明了通过[*提供*对象字面量](guide/dependency-injection-providers#provide)来把对象的定义和 DI 令牌关联起来的另一种方式。
+它背后的代码定制了 DI 框架提供依赖项的方法和位置。这个例子阐明了通过[*提供*对象字面量](guide/dependency-injection-providers#provide)来把对象的定义和 DI 令牌关联起来的另一种方式。
 
 <code-example header="hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="hero-of-the-month"></code-example>
 
@@ -334,7 +334,7 @@ The `useValue` key lets you associate a fixed value with a DI token.
 Use this technique to provide *runtime configuration constants* such as website base addresses and feature flags.
 You can also use a value provider in a unit test to provide mock data in place of a production data service.
 
-`useValue` 键让你可以为 DI 令牌关联一个固定的值。 使用该技巧来进行*运行期常量设置*，比如网站的基础地址和功能标志等。 你也可以在单元测试中使用*值提供者*，来用一个 Mock 数据来代替一个生产环境下的数据服务。
+`useValue` 键让你可以为 DI 令牌关联一个固定的值。使用该技巧来进行*运行期常量设置*，比如网站的基础地址和功能标志等。你也可以在单元测试中使用*值提供者*，来用一个 Mock 数据来代替一个生产环境下的数据服务。
 
 The `HeroOfTheMonthComponent` example has two value providers.
 
@@ -350,7 +350,7 @@ The `HeroOfTheMonthComponent` example has two value providers.
 * The second specifies a literal string resource to use for the `TITLE` token.
   The `TITLE` provider token is *not* a class, but is instead a special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by an `InjectionToken` instance.
 
-  第二处为 `TITLE` 令牌指定了一个字符串字面量资源。 `TITLE` 提供者的令牌*不是一个类*，而是一个特别的提供者查询键，名叫[InjectionToken](guide/dependency-injection-in-action#injection-token)，表示一个 `InjectionToken` 实例。
+  第二处为 `TITLE` 令牌指定了一个字符串字面量资源。`TITLE` 提供者的令牌*不是一个类*，而是一个特别的提供者查询键，名叫[InjectionToken](guide/dependency-injection-in-action#injection-token)，表示一个 `InjectionToken` 实例。
 
 You can use an injection token for any kind of provider but it's particularly helpful when the dependency is a simple value like a string, a number, or a function.
 
@@ -361,7 +361,7 @@ The title string literal is immediately available.
 The `someHero` variable in this example was set earlier in the file as shown below.
 You can't use a variable whose value will be defined later.
 
-一个*值-提供者*的值必须在指定之前定义。 比如标题字符串就是立即可用的。 该例中的 `someHero` 变量是以前在如下的文件中定义的。 你不能使用那些要等以后才能定义其值的变量。
+一个*值-提供者*的值必须在指定之前定义。比如标题字符串就是立即可用的。该例中的 `someHero` 变量是以前在如下的文件中定义的。你不能使用那些要等以后才能定义其值的变量。
 
 <code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="some-hero"></code-example>
 
@@ -393,7 +393,7 @@ The following code shows two examples in `HeroOfTheMonthComponent`.
 The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created (`HeroService`) is also the provider's dependency injection token.
 The short form is generally preferred; this long form makes the details explicit.
 
-第一个提供者是*展开了语法糖的*，是一个典型情况的展开。一般来说，被新建的类(`HeroService`)同时也是该提供者的注入令牌。 通常都选用缩写形式，完整形式可以让细节更明确。
+第一个提供者是*展开了语法糖的*，是一个典型情况的展开。一般来说，被新建的类(`HeroService`)同时也是该提供者的注入令牌。通常都选用缩写形式，完整形式可以让细节更明确。
 
 The second provider substitutes `DateLoggerService` for `LoggerService`.
 `LoggerService` is already registered at the `AppComponent` level.
@@ -501,13 +501,13 @@ Use this technique to create a dependency object with a factory function whose i
 The dependency object (returned by the factory function) is typically a class instance, but can be other things as well.
 In this example, the dependency object is a string of the names of the runners up to the "Hero of the Month" contest.
 
-这个依赖对象（由工厂函数返回的）通常是一个类实例，不过也可以是任何其它东西。 在这个例子中，依赖对象是一个表示 "月度英雄" 参赛者名称的字符串。
+这个依赖对象（由工厂函数返回的）通常是一个类实例，不过也可以是任何其它东西。在这个例子中，依赖对象是一个表示 "月度英雄" 参赛者名称的字符串。
 
 In the example, the local state is the number `2`, the number of runners up that the component should show.
 The state value is passed as an argument to `runnersUpFactory()`.
 The `runnersUpFactory()` returns the *provider factory function*, which can use both the passed-in state value and the injected services `Hero` and `HeroService`.
 
-在这个例子中，局部状态是数字 `2`，也就是组件应该显示的参赛者数量。 该状态的值传给了 `runnersUpFactory()` 作为参数。 `runnersUpFactory()` 返回了*提供者的工厂函数*，它可以使用传入的状态值和注入的服务 `Hero` 和 `HeroService`。
+在这个例子中，局部状态是数字 `2`，也就是组件应该显示的参赛者数量。该状态的值传给了 `runnersUpFactory()` 作为参数。`runnersUpFactory()` 返回了*提供者的工厂函数*，它可以使用传入的状态值和注入的服务 `Hero` 和 `HeroService`。
 
 <code-example header="runners-up.ts (excerpt)" path="dependency-injection-in-action/src/app/runners-up.ts" region="factory-synopsis"></code-example>
 
@@ -518,7 +518,7 @@ The provider factory function (returned by `runnersUpFactory()`) returns the act
 * The function takes a winning `Hero` and a `HeroService` as arguments.
   Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.
 
-  该函数以获胜的 `Hero` 和 `HeroService` 作为参数。 Angular 从 `deps` 数组中的两个*令牌*标识的注入值提供这些参数。
+  该函数以获胜的 `Hero` 和 `HeroService` 作为参数。Angular 从 `deps` 数组中的两个*令牌*标识的注入值提供这些参数。
 
 * The function returns the string of names, which Angular than injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
 
@@ -598,7 +598,7 @@ Using a class as an interface gives you the characteristics of an interface in a
 To minimize memory cost, however, the class should have *no implementation*.
 The `MinimalLogger` transpiles to this unoptimized, pre-minified JavaScript for a constructor function.
 
-用类作为接口可以让你获得真实 JavaScript 对象中的接口的特性。 但是，为了最小化内存开销，该类应该是*没有实现*的。 对于构造函数，`MinimalLogger` 会转译成未优化过的、预先最小化过的 JavaScript。
+用类作为接口可以让你获得真实 JavaScript 对象中的接口的特性。但是，为了最小化内存开销，该类应该是*没有实现*的。对于构造函数，`MinimalLogger` 会转译成未优化过的、预先最小化过的 JavaScript。
 
 <code-example header="dependency-injection-in-action/src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts" region="minimal-logger-transpiled"></code-example>
 
@@ -646,7 +646,7 @@ You created the `TITLE` token like this:
 The type parameter, while optional, conveys the dependency's type to developers and tooling.
 The token description is another developer aid.
 
-类型参数，虽然是可选的，但可以向开发者和开发工具传达类型信息。 而且这个令牌的描述信息也可以为开发者提供帮助。
+类型参数，虽然是可选的，但可以向开发者和开发工具传达类型信息。而且这个令牌的描述信息也可以为开发者提供帮助。
 
 <a id="di-inheritance"></a>
 
@@ -686,7 +686,7 @@ Constructors should do little more than initialize variables.
 This rule makes the component safe to construct under test without fear that it will do something dramatic like talk to the server.
 That's why you call the `HeroService` from within the `ngOnInit` rather than the constructor.
 
-构造函数应该只用来初始化变量。 这条规则让组件在测试环境中可以放心地构造组件，以免在构造它们时，无意中做出一些非常戏剧化的动作(比如与服务器进行会话)。 这就是为什么你要在 `ngOnInit` 里面调用 `HeroService`，而不是在构造函数中。
+构造函数应该只用来初始化变量。这条规则让组件在测试环境中可以放心地构造组件，以免在构造它们时，无意中做出一些非常戏剧化的动作(比如与服务器进行会话)。这就是为什么你要在 `ngOnInit` 里面调用 `HeroService`，而不是在构造函数中。
 
 </div>
 
@@ -694,7 +694,7 @@ Users want to see the heroes in alphabetical order.
 Rather than modify the original component, sub-class it and create a `SortedHeroesComponent` that sorts the heroes before presenting them.
 The `SortedHeroesComponent` lets the base class fetch the heroes.
 
-用户希望看到英雄按字母顺序排序。与其修改原始的组件，不如派生它，新建 `SortedHeroesComponent`，以便展示英雄之前进行排序。 `SortedHeroesComponent` 让基类来获取英雄。
+用户希望看到英雄按字母顺序排序。与其修改原始的组件，不如派生它，新建 `SortedHeroesComponent`，以便展示英雄之前进行排序。`SortedHeroesComponent` 让基类来获取英雄。
 
 Unfortunately, Angular cannot inject the `HeroService` directly into the base class.
 You must provide the `HeroService` again for *this* component, then pass it down to the base class inside the constructor.
@@ -736,7 +736,7 @@ But sometimes circular references are unavoidable.
 You're in a bind when class 'A' refers to class 'B' and 'B' refers to 'A'.
 One of them has to be defined first.
 
-这通常不是一个问题，特别是当你遵循*一个文件一个类*规则的时候。 但是有时候循环引用可能不能避免。当一个类*A 引用类 B*，同时'B'引用'A'的时候，你就陷入困境了：它们中间的某一个必须要先定义。
+这通常不是一个问题，特别是当你遵循*一个文件一个类*规则的时候。但是有时候循环引用可能不能避免。当一个类*A 引用类 B*，同时'B'引用'A'的时候，你就陷入困境了：它们中间的某一个必须要先定义。
 
 The Angular `forwardRef()` function creates an *indirect* reference that Angular can resolve later.
 
@@ -749,7 +749,7 @@ The *Parent Finder* sample is full of circular class references that are impossi
 You face this dilemma when a class makes *a reference to itself* as does `AlexComponent` in its `providers` array.
 The `providers` array is a property of the `@Component()` decorator function which must appear *above* the class definition.
 
-当一个类*需要引用自身*的时候，你面临同样的困境，就像在 `AlexComponent` 的 `provdiers` 数组中遇到的困境一样。 该 `providers` 数组是一个 `@Component()` 装饰器函数的一个属性，它必须在类定义*之前*出现。
+当一个类*需要引用自身*的时候，你面临同样的困境，就像在 `AlexComponent` 的 `provdiers` 数组中遇到的困境一样。该 `providers` 数组是一个 `@Component()` 装饰器函数的一个属性，它必须在类定义*之前*出现。
 
 Break the circularity with `forwardRef`.
 

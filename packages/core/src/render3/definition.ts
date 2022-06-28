@@ -207,22 +207,22 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
    *   // static attributes (like `title`, `name`, `id`...)
    *   attr1, value1, attr2, value,
    *
-   * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...） attr1, value1, attr2, value,
+   * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...）attr1, value1, attr2, value,
    *
    *   // a single namespace value (like `x:id`)
    *   NAMESPACE_MARKER, namespaceUri1, name1, value1,
    *
-   * // 单个命名空间值（例如 `x:id` ） NAMESPACE_MARKER, namespaceUri1, name1, value1,
+   * // 单个命名空间值（例如 `x:id`）NAMESPACE_MARKER, namespaceUri1, name1, value1,
    *
    *   // another single namespace value (like `x:name`)
    *   NAMESPACE_MARKER, namespaceUri2, name2, value2,
    *
-   * // 另一个单个命名空间值（例如 `x:name` ） NAMESPACE_MARKER, namespaceUri2, name2, value2,
+   * // 另一个单个命名空间值（例如 `x:name`）NAMESPACE_MARKER, namespaceUri2, name2, value2,
    *
    *   // a series of CSS classes that will be applied to the element (no spaces)
    *   CLASSES_MARKER, class1, class2, class3,
    *
-   * // 将应用于元素的一系列 CSS 类（无空格） CLASSES_MARKER, class1, class2, class3,
+   * // 将应用于元素的一系列 CSS 类（无空格）CLASSES_MARKER, class1, class2, class3,
    *
    *   // a series of CSS styles (property + value) that will be applied to the element
    *   STYLES_MARKER, prop1, value1, prop2, value2
@@ -336,7 +336,7 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
    * execution is different as compared to all other instructions (after change detection hooks but
    * before view hooks).
    *
-   * 与查询相关的指令需要被提取到特定函数，因为执行时间与所有其他指令（更改检测钩子之后但视图钩子之前）不同。
+   * 与查询相关的指令需要被提取到特定函数，因为执行时间与所有其他指令（变更检测钩子之后但视图钩子之前）不同。
    *
    */
   viewQuery?: ViewQueriesFunction<T>| null;
@@ -386,7 +386,7 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
    * The strategy that the default change detector uses to detect changes.
    * When set, takes effect the next time change detection is triggered.
    *
-   * 默认更改检测器用于检测更改的策略。设置时，会在下次触发更改检测时生效。
+   * 默认变更检测器用于检测更改的策略。设置时，会在下次触发变更检测时生效。
    *
    */
   changeDetection?: ChangeDetectionStrategy;
@@ -891,22 +891,22 @@ export const ɵɵdefineDirective =
        *   // static attributes (like `title`, `name`, `id`...)
        *   attr1, value1, attr2, value,
        *
-       * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...） attr1, value1, attr2, value,
+       * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...）attr1, value1, attr2, value,
        *
        *   // a single namespace value (like `x:id`)
        *   NAMESPACE_MARKER, namespaceUri1, name1, value1,
        *
-       * // 单个命名空间值（例如 `x:id` ） NAMESPACE_MARKER, namespaceUri1, name1, value1,
+       * // 单个命名空间值（例如 `x:id`）NAMESPACE_MARKER, namespaceUri1, name1, value1,
        *
        *   // another single namespace value (like `x:name`)
        *   NAMESPACE_MARKER, namespaceUri2, name2, value2,
        *
-       * // 另一个单个命名空间值（例如 `x:name` ） NAMESPACE_MARKER, namespaceUri2, name2, value2,
+       * // 另一个单个命名空间值（例如 `x:name`）NAMESPACE_MARKER, namespaceUri2, name2, value2,
        *
        *   // a series of CSS classes that will be applied to the element (no spaces)
        *   CLASSES_MARKER, class1, class2, class3,
        *
-       * // 将应用于元素的一系列 CSS 类（无空格） CLASSES_MARKER, class1, class2, class3,
+       * // 将应用于元素的一系列 CSS 类（无空格）CLASSES_MARKER, class1, class2, class3,
        *
        *   // a series of CSS styles (property + value) that will be applied to the element
        *   STYLES_MARKER, prop1, value1, prop2, value2

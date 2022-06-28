@@ -81,7 +81,7 @@ export interface TranslateFn {
  * You can optionally specify one or more of `meaning`, `description` and `id` for a localized
  * string by pre-pending it with a colon delimited block of the form:
  *
- * 你可以选择为本地化字符串指定 `meaning` 、 `description` 和 `id`
+ * 你可以选择为本地化字符串指定 `meaning`、`description` 和 `id`
  * 中的一个或多个，方法是在其前面使用以下形式的冒号分隔块：
  *
  * ```ts
@@ -208,7 +208,7 @@ export interface TranslateFn {
  *
  * the translated string, with the `messageParts` and `expressions` interleaved together.
  *
- * 翻译后的字符串， `messageParts` 和 `expressions` 交错在一起。
+ * 翻译后的字符串，`messageParts` 和 `expressions` 交错在一起。
  *
  * @globalApi
  * @publicApi
@@ -233,7 +233,7 @@ const BLOCK_MARKER = ':';
 /**
  * Strip a delimited "block" from the start of the `messagePart`, if it is found.
  *
- * 如果找到， `messagePart` 的开头删除一个分隔的“块”。
+ * 如果找到，`messagePart` 的开头删除一个分隔的“块”。
  *
  * If a marker character (:) actually appears in the content at the start of a tagged string or
  * after a substitution expression, where a block has not been provided the character must be

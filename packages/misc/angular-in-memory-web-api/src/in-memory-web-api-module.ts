@@ -58,8 +58,8 @@ export class InMemoryWebApiModule {
    * Same as `forRoot`.
    * This is a feel-good method so you can follow the Angular style guide for lazy-loaded modules.
    *
-   * 在延迟加载的特性模块中启用和配置内存 Web api。与 `forRoot`
-   * 相同。这是一种感觉良好的方法，因此你可以按照延迟加载模块的 Angular 风格指南进行操作。
+   * 在惰性加载的特性模块中启用和配置内存 Web api。与 `forRoot`
+   * 相同。这是一种感觉良好的方法，因此你可以按照惰性加载模块的 Angular 风格指南进行操作。
    *
    */
   static forFeature(dbCreator: Type<InMemoryDbService>, options?: InMemoryBackendConfigArgs):

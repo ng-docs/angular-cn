@@ -258,7 +258,7 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * NOTE: Some of the fields are optional which means that this class has two hidden classes.
  *
- * 注：某些字段是可选的，这意味着此类有两个隐藏类。
+ * 注意：某些字段是可选的，这意味着此类有两个隐藏类。
  *
  * - One without `multi` support (most common)
  *
@@ -407,10 +407,10 @@ export class NodeInjectorFactory {
    *
    * 在内容注入的情况下，我们必须返回 `['all']` ，但在视图注入的情况下必须返回 \[' `['all',
    * 'viewOnly']` 。我们还必须确保共享实例（在我们的示例中为 `all`
-   * ）在内容和视图注入中是完全相同的实例。 （我们必须确保我们不会双重实例化。）因此，
+   *）在内容和视图注入中是完全相同的实例。（我们必须确保我们不会双重实例化。）因此，
    * `viewProvides` `Factory` 有一个指向影子 sources 工厂的指针，以便它可以实例化 `provides`
-   * `providers` （ `['all']` ），然后使用 `viewProviders` （ `['all'] + ['viewOnly'] = ['all',
-   * 'viewOnly']` ）。
+   * `providers`（`['all']`），然后使用 `viewProviders`（`['all'] + ['viewOnly'] = ['all',
+   * 'viewOnly']`）。
    *
    */
   providerFactory?: NodeInjectorFactory|null;

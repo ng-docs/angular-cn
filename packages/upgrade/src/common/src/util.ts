@@ -207,7 +207,7 @@ function supportsNgModel(component: any) {
  * Glue the AngularJS `NgModelController` (if it exists) to the component
  * (if it implements the needed subset of the `ControlValueAccessor` interface).
  *
- * 将 AngularJS `NgModelController` （如果存在）粘合到组件（如果它实现了所需的
+ * 将 AngularJS `NgModelController`（如果存在）粘合到组件（如果它实现了所需的
  * `ControlValueAccessor` 接口的子集）。
  *
  */

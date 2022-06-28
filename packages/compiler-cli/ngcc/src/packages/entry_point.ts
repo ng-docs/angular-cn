@@ -33,7 +33,7 @@ export interface EntryPoint extends JsonObject {
   /**
    * The name of the entry-point (e.g. `@angular/core` or `@angular/common/http`).
    *
-   * 入口点的名称（例如 `@angular/core` 或 `@angular/common/http` ）。
+   * 入口点的名称（例如 `@angular/core` 或 `@angular/common/http`）。
    *
    */
   name: string;
@@ -48,7 +48,7 @@ export interface EntryPoint extends JsonObject {
    * The name of the package that contains this entry-point (e.g. `@angular/core` or
    * `@angular/common`).
    *
-   * 包含此入口点的包名（例如 `@angular/core` 或 `@angular/common` ）。
+   * 包含此入口点的包名（例如 `@angular/core` 或 `@angular/common`）。
    *
    */
   packageName: string;
@@ -379,7 +379,7 @@ export function getEntryPointFormat(
  * @param primaryPackageJson The parsed JSON of the primary `package.json` (or `null` if it failed
  *     to be loaded).
  *
- * 主要 `package.json` 的解析后的 JSON（如果加载失败，则为 `null` ）。
+ * 主要 `package.json` 的解析后的 JSON（如果加载失败，则为 `null`）。
  *
  * @returns
  *
@@ -516,11 +516,11 @@ function guessTypingsFromPackageJson(
  *
  * @param packagePackageJson the parsed `package.json` of the package (if available).
  *
- * 包的解析后的 `package.json` （如果可用）。
+ * 包的解析后的 `package.json`（如果可用）。
  *
  * @param entryPointPackageJson the parsed `package.json` of an entry-point (if available).
  *
- * 入口点的解析后的 `package.json` （如果可用）。
+ * 入口点的解析后的 `package.json`（如果可用）。
  *
  * @returns
  *

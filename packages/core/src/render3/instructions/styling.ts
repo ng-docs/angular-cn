@@ -40,7 +40,7 @@ import {setDirectiveInputsWhichShadowsStyling} from './property';
  * present from when the element was created with `styling`).
  *
  * 如果 style 值为 falsy，则将其从元素中删除（或分配不同的值，具体取决于是否使用 `styleMap`
- * 在元素上放置了任何样式或使用 Style 创建元素时存在的任何静态 `styling` ）。
+ * 在元素上放置了任何样式或使用 Style 创建元素时存在的任何静态 `styling`）。
  *
  * Note that the styling element is updated as part of `stylingApply`.
  *
@@ -52,7 +52,7 @@ import {setDirectiveInputsWhichShadowsStyling} from './property';
  *
  * @param value New value to write (`null` or an empty string to remove).
  *
- * 要写入的新值（ `null` 或要删除的空字符串）。
+ * 要写入的新值（`null` 或要删除的空字符串）。
  *
  * @param suffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
@@ -240,11 +240,11 @@ export function classStringParser(keyValueArray: KeyValueArray<any>, text: strin
  *
  * @param suffix suffix for the property (e.g. `em` or `px`)
  *
- * 属性的后缀（例如 `em` 或 `px` ）
+ * 属性的后缀（例如 `em` 或 `px`）
  *
  * @param isClassBased `true` if `class` change (`false` if `style`)
  *
- * 如果 `class` 更改，则为 `true` （如果 `style` 则为 `false` ）
+ * 如果 `class` 更改，则为 `true`（如果 `style` 则为 `false`）
  *
  */
 export function checkStylingProperty(
@@ -275,13 +275,13 @@ export function checkStylingProperty(
  * @param keyValueArraySet (See `keyValueArraySet` in "util/array_utils") Gets passed in as a
  *        function so that `style` can be processed. This is done for tree shaking purposes.
  *
- * （请参阅“util/array_utils”中的 `keyValueArraySet` ）作为函数传入，以便可以处理 `style`
+ *（请参阅“util/array_utils”中的 `keyValueArraySet`）作为函数传入，以便可以处理 `style`
  * 。这样做是为了摇树的目的。
  *
  * @param stringParser Parser used to parse `value` if `string`. (Passed in as `style` and `class`
  *        have different parsers.)
  *
- * 解析器用于解析 `string` 的 `value` 。 （作为 `style` 传入，并且 `class` 有不同的解析器。）
+ * 解析器用于解析 `string` 的 `value` 。（作为 `style` 传入，并且 `class` 有不同的解析器。）
  *
  * @param value bound value from application
  *
@@ -289,7 +289,7 @@ export function checkStylingProperty(
  *
  * @param isClassBased `true` if `class` change (`false` if `style`)
  *
- * 如果 `class` 更改，则为 `true` （如果 `style` 则为 `false` ）
+ * 如果 `class` 更改，则为 `true`（如果 `style` 则为 `false`）
  *
  */
 export function checkStylingMap(
@@ -381,7 +381,7 @@ function isInHostBindings(tView: TView, bindingIndex: number): boolean {
  *
  * @param isClassBased `true` if `class` change (`false` if `style`)
  *
- * 如果 `class` 更改，则为 `true` （如果 `style` 则为 `false` ）
+ * 如果 `class` 更改，则为 `true`（如果 `style` 则为 `false`）
  *
  */
 function stylingFirstUpdatePass(
@@ -438,7 +438,7 @@ function stylingFirstUpdatePass(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  */
 export function wrapInStaticStylingKey(
@@ -528,11 +528,11 @@ export function wrapInStaticStylingKey(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  * @return `TStylingKey` if found or `undefined` if not found.
  *
- * 如果找到， `TStylingKey` ，如果找不到，则为 `undefined` 。
+ * 如果找到，`TStylingKey` ，如果找不到，则为 `undefined` 。
  *
  */
 function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: boolean): TStylingKey|
@@ -554,7 +554,7 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
  * However, they execute after the template styling instructions. This means that they get inserted
  * in front of the template styling instructions.
  *
- * 从逻辑上讲， `hostBindings`
+ * 从逻辑上讲，`hostBindings`
  * 样式说明的优先级低于模板的优先级。但是，它们会在模板样式说明之后执行。这意味着它们会被插入到模板样式说明的前面。
  *
  * If we have a template styling instruction and a new `hostBindings` styling instruction is
@@ -614,7 +614,7 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  * @param tStylingKey New `TStylingKey` which is replacing the old one.
  *
@@ -651,7 +651,7 @@ function setTemplateHeadTStylingKey(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  */
 function collectResidual(tData: TData, tNode: TNode, isClassBased: boolean): KeyValueArray<any>|
@@ -678,12 +678,12 @@ function collectResidual(tData: TData, tNode: TNode, isClassBased: boolean): Key
  *
  * (This is opposite of residual styling.)
  *
- * （这与残留样式相反。）
+ *（这与残留样式相反。）
  *
  * @param hostDirectiveDef `DirectiveDef` for which we want to collect lower priority static
  *        styling. (Or `null` if template styling)
  *
- * 我们要为其收集较低优先级的静态样式的 `DirectiveDef` 。 （如果是模板样式，则为 `null` ）
+ * 我们要为其收集较低优先级的静态样式的 `DirectiveDef` 。（如果是模板样式，则为 `null`）
  *
  * @param tData `TData` where the linked list is stored.
  *
@@ -699,7 +699,7 @@ function collectResidual(tData: TData, tNode: TNode, isClassBased: boolean): Key
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  */
 function collectStylingFromDirectives(
@@ -746,7 +746,7 @@ function collectStylingFromDirectives(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  */
 function collectStylingFromTAttrs(
@@ -783,9 +783,9 @@ function collectStylingFromTAttrs(
  * where
  * even indexes contain keys and odd indexes contain values for those keys).
  *
- * 此函数接受用户输入，可以是 `string` 、 Object 文字或 iterable
+ * 此函数接受用户输入，可以是 `string`、Object 文字或 iterable
  * ，并将其转换为一致的表示。它的输出是 `KeyValueArray`
- * （这是一个数组，其中偶数索引包含键，奇数索引包含这些键的值）。
+ *（这是一个数组，其中偶数索引包含键，奇数索引包含这些键的值）。
  *
  * The advantage of converting to `KeyValueArray` is that we can perform diff in an input
  * independent
@@ -793,7 +793,7 @@ function collectStylingFromTAttrs(
  * (ie we can compare `foo bar` to \`['bar', 'baz'] and determine a set of changes which need to be
  * applied)
  *
- * 转换为 `KeyValueArray` 的优势是我们可以以与输入无关的方式执行 diff。 （即我们可以将 `foo bar` 与
+ * 转换为 `KeyValueArray` 的优势是我们可以以与输入无关的方式执行 diff。（即我们可以将 `foo bar` 与
  * \` ['bar', 'baz']['bar', 'baz']进行比较，并确定需要应用的一组更改）
  *
  * The fact that `KeyValueArray` is sorted is very important because it allows us to compute the
@@ -813,7 +813,7 @@ function collectStylingFromTAttrs(
  *        function so that `style` can be processed. This is done
  *        for tree shaking purposes.
  *
- * （请参阅“util/array_utils”中的 `keyValueArraySet` ）作为函数传入，以便可以处理 `style`
+ *（请参阅“util/array_utils”中的 `keyValueArraySet`）作为函数传入，以便可以处理 `style`
  * 。这样做是为了摇树的目的。
  *
  * @param stringParser The parser is passed in so that it will be tree shakable. See
@@ -920,7 +920,7 @@ export function styleKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: st
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  * @param bindingIndex Binding index of the binding.
  *
@@ -991,7 +991,7 @@ function updateStylingMap(
  * the DOM write, or if the value goes to `undefined` a lower priority overwrite may be consulted.)
  *
  * 此函数接受 `prop` 并将 DOM 更新为该值。该函数会考虑绑定值以及绑定优先级来确定应该将哪个值写入
- * DOM。 （例如，可以确定有较高优先级的覆盖会阻止 DOM 写入，或者如果值变为 `undefined`
+ * DOM。（例如，可以确定有较高优先级的覆盖会阻止 DOM 写入，或者如果值变为 `undefined`
  * ，则可以咨询较低优先级的覆盖。）
  *
  * @param tView Associated `TView.data` contains the linked list of binding priorities.
@@ -1020,7 +1020,7 @@ function updateStylingMap(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  * @param bindingIndex Binding index of the binding.
  *
@@ -1079,14 +1079,14 @@ function updateStyling(
  *
  *   如果有较低优先级的绑定并且我们要更改为 `undefined` 例如 `<div [style]="{color:exp1}"
  * [style.color]="exp2">` 将 `exp2` 更改为 `undefined` 要求我们检查 `exp1`
- * （和静态值）并将其作为新值。
+ *（和静态值）并将其作为新值。
  *
  * NOTE: The styling stores two values.
  * 1\. The raw value which came from the application is stored at `index + 0` location. (This value
  *    is used for dirty checking).
  * 2\. The normalized value is stored at `index + 1`.
  *
- * 注：此样式存储两个值。 1.来自应用程序的原始值存储在 `index + 0` 位置。 （此值用于脏检查）。 2.
+ * 注意：此样式存储两个值。 1.来自应用程序的原始值存储在 `index + 0` 位置。（此值用于脏检查）。 2.
  * 归一化值存储在 `index + 1` 处。
  *
  * @param tData `TData` used for traversing the priority.
@@ -1122,7 +1122,7 @@ function updateStyling(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  */
 function findStylingValue(
@@ -1237,7 +1237,7 @@ function normalizeSuffix(value: any, suffix: string|undefined|null): string|null
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true` （如果是 `style` ，则为 `false` ）
+ * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
  *
  */
 export function hasStylingInputShadow(tNode: TNode, isClassBased: boolean) {

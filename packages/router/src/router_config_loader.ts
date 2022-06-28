@@ -30,7 +30,7 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
  * `RouterModule.forChild()`, `provideRoutes`, or `Router.resetConfig()`.
  *
  * 我们建议在几乎所有情况下使用更高级的 API，例如 `RouterModule.forRoot()` 、
- * `RouterModule.forChild()` 、 `provideRoutes` 或 `Router.resetConfig()` 。
+ * `RouterModule.forChild()`、`provideRoutes` 或 `Router.resetConfig()` 。
  *
  * @publicApi
  */

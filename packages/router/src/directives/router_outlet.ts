@@ -102,7 +102,7 @@ export interface RouterOutletContract {
    * When a `RouteReuseStrategy` indicates that an `ActivatedRoute` should be removed but stored for
    * later re-use rather than destroyed, the `Router` will call `detach` instead.
    *
-   * 当 `RouteReuseStrategy` 表明应该删除 `ActivatedRoute` 但存储以供以后重用而不是销毁时， `Router`
+   * 当 `RouteReuseStrategy` 表明应该删除 `ActivatedRoute` 但存储以供以后重用而不是销毁时，`Router`
    * 将改为调用 `detach` 。
    *
    */

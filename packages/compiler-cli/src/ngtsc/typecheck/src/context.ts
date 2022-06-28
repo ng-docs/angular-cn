@@ -179,7 +179,7 @@ export interface PendingShimData {
  * back its results once finalized.
  *
  * 通过此接口，单个 `TypeCheckContextImpl`
- * （代表模板类型检查的一次“通过”）请求有关较大类型检查状态的信息，并在完成后报告其结果。
+ *（代表模板类型检查的一次“通过”）请求有关较大类型检查状态的信息，并在完成后报告其结果。
  *
  */
 export interface TypeCheckingHost {
@@ -442,7 +442,7 @@ export class TypeCheckContextImpl implements TypeCheckContext {
    * If this particular `ts.SourceFile` requires changes, the text representing its new contents
    * will be returned. Otherwise, a `null` return indicates no changes were necessary.
    *
-   * 如果此特定的 `ts.SourceFile` 需要更改，将返回表示其新内容的文本。否则， `null`
+   * 如果此特定的 `ts.SourceFile` 需要更改，将返回表示其新内容的文本。否则，`null`
    * 返回表明没有必要进行更改。
    *
    */

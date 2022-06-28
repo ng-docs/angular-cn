@@ -1,0 +1,143 @@
+{
+  "name": "test",
+  "command": "ng test [project]",
+  "shortDescription": "Runs unit tests in a project.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/test/long-description.md",
+  "longDescription": "Takes the name of the project, as specified in the `projects` section of the `angular.json` workspace configuration file.\nWhen a project name is not supplied, it will execute for all projects.\n",
+  "aliases": [
+    "t"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "browsers",
+      "type": "string",
+      "description": "Override which browsers tests are run against.",
+      "descriptionCn": "覆盖要针对哪些浏览器运行测试。"
+    },
+    {
+      "name": "code-coverage",
+      "type": "boolean",
+      "default": false,
+      "description": "Output a code coverage report.",
+      "descriptionCn": "输出代码覆盖率报告。"
+    },
+    {
+      "name": "code-coverage-exclude",
+      "type": "array",
+      "description": "Globs to exclude from code coverage.",
+      "descriptionCn": "排除在代码覆盖范围之外的 glob。"
+    },
+    {
+      "name": "configuration",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
+      "descriptionCn": "逗号分隔列表格式的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分中指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "include",
+      "type": "array",
+      "description": "Globs of files to include, relative to workspace or project root. \nThere are 2 special cases:\n - when a path to directory is provided, all spec files ending \".spec.@(ts|tsx)\" will be included\n - when a path to a file is provided, and a matching spec file exists it will be included instead.",
+      "descriptionCn": "要包含的文件 glob，相对于工作区或项目根。有 2 种特殊情况：\n\n- 当提供了目录的路径时，将包含所有以 `.spec.@(ts|tsx)` 结尾的测试规约文件\n\n- 当提供了文件的路径并且存在匹配的测试规约文件时，它将被包含在内。"
+    },
+    {
+      "name": "inline-style-language",
+      "type": "string",
+      "default": "css",
+      "enum": [
+        "css",
+        "less",
+        "sass",
+        "scss"
+      ],
+      "description": "The stylesheet language to use for the application's inline component styles.",
+      "descriptionCn": "用于应用程序的内联组件样式的样式表语言。"
+    },
+    {
+      "name": "karma-config",
+      "type": "string",
+      "description": "The name of the Karma configuration file.",
+      "descriptionCn": "Karma 配置文件的名称。"
+    },
+    {
+      "name": "main",
+      "type": "string",
+      "description": "The name of the main entry-point file.",
+      "descriptionCn": "主入口点文件的名称。"
+    },
+    {
+      "name": "poll",
+      "type": "number",
+      "description": "Enable and define the file watching poll time period in milliseconds.",
+      "descriptionCn": "启用并定义文件监视的轮询间隔（以毫秒为单位）。"
+    },
+    {
+      "name": "polyfills",
+      "type": "string",
+      "description": "The name of the polyfills file.",
+      "descriptionCn": "polyfills 文件的名称。"
+    },
+    {
+      "name": "preserve-symlinks",
+      "type": "boolean",
+      "description": "Do not use the real path when resolving modules. If unset then will default to `true` if NodeJS option --preserve-symlinks is set.",
+      "descriptionCn": "当解析模块时，不要使用真实路径。如果未设置，则如果 NodeJS 启用了 --preserve-symlinks 选项，就默认为 `true`。"
+    },
+    {
+      "name": "progress",
+      "type": "boolean",
+      "default": true,
+      "description": "Log progress to the console while building.",
+      "descriptionCn": "在构建时将进度记录到控制台。"
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "positional": 0,
+      "descriptionCn": "要构建的项目名。可以是应用或库。"
+    },
+    {
+      "name": "reporters",
+      "type": "array",
+      "description": "Karma reporters to use. Directly passed to the karma runner.",
+      "descriptionCn": "要使用的 Karma 汇报器。直接传给 Karma 运行器。"
+    },
+    {
+      "name": "source-map",
+      "type": "boolean",
+      "default": true,
+      "description": "Output source maps for scripts and styles. For more information, see https://angular.io/guide/workspace-config#source-map-configuration.",
+      "descriptionCn": "输出脚本和样式的源码映射信息。欲知详情，请参阅<https://angular.cn/guide/workspace-config#source-map-configuration>。"
+    },
+    {
+      "name": "ts-config",
+      "type": "string",
+      "description": "The name of the TypeScript configuration file.",
+      "descriptionCn": "TypeScript 配置文件的名称。"
+    },
+    {
+      "name": "watch",
+      "type": "boolean",
+      "description": "Run build when files change.",
+      "descriptionCn": "当文件更改时自动构建。"
+    },
+    {
+      "name": "web-worker-ts-config",
+      "type": "string",
+      "description": "TypeScript configuration for Web Worker modules.",
+      "descriptionCn": "Web Worker 模块的 TypeScript 配置。"
+    }
+  ],
+  "shortDescriptionCn": "运行某个项目中的单元测试。",
+  "longDescriptionCn": "获取在工作空间配置文件 `angular.json` 的 `projects` 部分指定的项目名称。如果未提供项目名称，它将对所有项目执行。"
+}

@@ -70,7 +70,7 @@ export interface ComponentAnalysisData {
   /**
    * `styleUrls` extracted from the decorator, if present.
    *
-   * 从装饰器中提取的 `styleUrls` （如果存在）。
+   * 从装饰器中提取的 `styleUrls`（如果存在）。
    *
    */
   styleUrls: StyleUrlMeta[]|null;

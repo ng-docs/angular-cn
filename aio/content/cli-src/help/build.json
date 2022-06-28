@@ -1,0 +1,289 @@
+{
+  "name": "build",
+  "command": "ng build [project]",
+  "shortDescription": "Compiles an Angular application or library into an output directory named dist/ at the given output path.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/build/long-description.md",
+  "longDescription": "The command can be used to build a project of type \"application\" or \"library\".\nWhen used to build a library, a different builder is invoked, and only the `ts-config`, `configuration`, and `watch` options are applied.\nAll other options apply only to building applications.\n\nThe application builder uses the [webpack](https://webpack.js.org/) build tool, with default configuration options specified in the workspace configuration file (`angular.json`) or with a named alternative configuration.\nA \"development\" configuration is created by default when you use the CLI to create the project, and you can use that configuration by specifying the `--configuration development`.\n\nThe configuration options generally correspond to the command options.\nYou can override individual configuration defaults by specifying the corresponding options on the command line.\nThe command can accept option names given in either dash-case or camelCase.\nNote that in the configuration file, you must specify names in camelCase.\n\nSome additional options can only be set through the configuration file,\neither by direct editing or with the `ng config` command.\nThese include `assets`, `styles`, and `scripts` objects that provide runtime-global resources to include in the project.\nResources in CSS, such as images and fonts, are automatically written and fingerprinted at the root of the output folder.\n\nFor further details, see [Workspace Configuration](guide/workspace-config).\n",
+  "aliases": [
+    "b"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "allowed-common-js-dependencies",
+      "type": "array",
+      "description": "A list of CommonJS packages that are allowed to be used without a build time warning.",
+      "descriptionCn": "允许在没有构建期警告的前提下使用的 CommonJS 软件包列表。"
+    },
+    {
+      "name": "aot",
+      "type": "boolean",
+      "default": true,
+      "description": "Build using Ahead of Time compilation.",
+      "descriptionCn": "使用预先编译模式进行构建。"
+    },
+    {
+      "name": "base-href",
+      "type": "string",
+      "description": "Base url for the application being built.",
+      "descriptionCn": "正在构建的应用程序的 base URL。"
+    },
+    {
+      "name": "build-optimizer",
+      "type": "boolean",
+      "default": true,
+      "description": "Enables advanced build optimizations when using the 'aot' option.",
+      "descriptionCn": "使用 'aot' 选项时启用高级构建优化。"
+    },
+    {
+      "name": "common-chunk",
+      "type": "boolean",
+      "default": true,
+      "description": "Generate a seperate bundle containing code used across multiple bundles.",
+      "descriptionCn": "生成一个单独的捆绑包，其中包含跨多个捆绑包使用的代码。"
+    },
+    {
+      "name": "configuration",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
+      "descriptionCn": "以逗号分隔列表形式表示的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+    },
+    {
+      "name": "cross-origin",
+      "type": "string",
+      "default": "none",
+      "enum": [
+        "none",
+        "anonymous",
+        "use-credentials"
+      ],
+      "description": "Define the crossorigin attribute setting of elements that provide CORS support.",
+      "descriptionCn": "定义提供 CORS 支持的元素的 crossorigin 属性设置。"
+    },
+    {
+      "name": "delete-output-path",
+      "type": "boolean",
+      "default": true,
+      "description": "Delete the output path before building.",
+      "descriptionCn": "在构建之前，删除输出路径。"
+    },
+    {
+      "name": "deploy-url",
+      "type": "string",
+      "deprecated": "Use \"baseHref\" option, \"APP_BASE_HREF\" DI token or a combination of both instead. For more information, see https://angular.io/guide/deployment#the-deploy-url.",
+      "description": "URL where files will be deployed.",
+      "descriptionCn": "文件将部署到的 URL。"
+    },
+    {
+      "name": "extract-licenses",
+      "type": "boolean",
+      "default": true,
+      "description": "Extract all licenses in a separate file.",
+      "descriptionCn": "将所有许可证（license）提取到一个单独的文件中。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "i18n-duplicate-translation",
+      "type": "string",
+      "default": "warning",
+      "enum": [
+        "warning",
+        "error",
+        "ignore"
+      ],
+      "description": "How to handle duplicate translations for i18n.",
+      "descriptionCn": "如何处理 i18n 的重复翻译。"
+    },
+    {
+      "name": "i18n-missing-translation",
+      "type": "string",
+      "default": "warning",
+      "enum": [
+        "warning",
+        "error",
+        "ignore"
+      ],
+      "description": "How to handle missing translations for i18n.",
+      "descriptionCn": "i18n 要如何处理缺失翻译。"
+    },
+    {
+      "name": "index",
+      "type": "string",
+      "description": "Configures the generation of the application's HTML index.",
+      "descriptionCn": "配置应用程序的 index.html 的生成方式。"
+    },
+    {
+      "name": "inline-style-language",
+      "type": "string",
+      "default": "css",
+      "enum": [
+        "css",
+        "less",
+        "sass",
+        "scss"
+      ],
+      "description": "The stylesheet language to use for the application's inline component styles.",
+      "descriptionCn": "用于应用程序的内联组件样式的样式表语言。"
+    },
+    {
+      "name": "localize",
+      "type": "boolean",
+      "description": "Translate the bundles in one or more locales.",
+      "descriptionCn": "在一个或多个语言环境下翻译这些包。"
+    },
+    {
+      "name": "main",
+      "type": "string",
+      "description": "The full path for the main entry point to the app, relative to the current workspace.",
+      "descriptionCn": "应用程序主入口点的完整路径。是相对于当前工作空间的。"
+    },
+    {
+      "name": "named-chunks",
+      "type": "boolean",
+      "default": false,
+      "description": "Use file name for lazy loaded chunks.",
+      "descriptionCn": "对于惰性加载的块，使用文件名进行命名。"
+    },
+    {
+      "name": "ngsw-config-path",
+      "type": "string",
+      "description": "Path to ngsw-config.json.",
+      "descriptionCn": "ngsw-config.json 的路径。"
+    },
+    {
+      "name": "optimization",
+      "type": "boolean",
+      "default": true,
+      "description": "Enables optimization of the build output. Including minification of scripts and styles, tree-shaking, dead-code elimination, inlining of critical CSS and fonts inlining. For more information, see https://angular.io/guide/workspace-config#optimization-configuration.",
+      "descriptionCn": "启用构建输出的优化。包括脚本和样式的最小化、摇树优化、消除死代码、内联关键 CSS 和内联字体等。欲知详情，请参阅<https://angular.cn/guide/workspace-config#optimization-configuration>。"
+    },
+    {
+      "name": "output-hashing",
+      "type": "string",
+      "default": "none",
+      "enum": [
+        "none",
+        "all",
+        "media",
+        "bundles"
+      ],
+      "description": "Define the output filename cache-busting hashing mode.",
+      "descriptionCn": "定义输出文件名的缓存无效哈希（cache-busting hashing）的模式。"
+    },
+    {
+      "name": "output-path",
+      "type": "string",
+      "description": "The full path for the new output directory, relative to the current workspace.\nBy default, writes output to a folder named dist/ in the current project.",
+      "descriptionCn": "新输出目录的完整路径，是相对于当前工作空间的。默认情况下，会将输出写入当前项目中名为 dist/ 的文件夹。"
+    },
+    {
+      "name": "poll",
+      "type": "number",
+      "description": "Enable and define the file watching poll time period in milliseconds.",
+      "descriptionCn": "启用并定义文件监视的轮询间隔（以毫秒为单位）。"
+    },
+    {
+      "name": "polyfills",
+      "type": "string",
+      "description": "The full path for the polyfills file, relative to the current workspace.",
+      "descriptionCn": "polyfills 文件的完整路径。是相对于当前工作空间的。"
+    },
+    {
+      "name": "preserve-symlinks",
+      "type": "boolean",
+      "description": "Do not use the real path when resolving modules. If unset then will default to `true` if NodeJS option --preserve-symlinks is set.",
+      "descriptionCn": "当解析模块时，不要使用真实路径。如果未设置，则如果 NodeJS 启用了 --preserve-symlinks 选项，就默认为 `true`。"
+    },
+    {
+      "name": "progress",
+      "type": "boolean",
+      "default": true,
+      "description": "Log progress to the console while building.",
+      "descriptionCn": "在构建时将进度记录到控制台。"
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "positional": 0,
+      "descriptionCn": "要构建的项目名。可以是应用或库。"
+    },
+    {
+      "name": "resources-output-path",
+      "type": "string",
+      "description": "The path where style resources will be placed, relative to outputPath.",
+      "descriptionCn": "放置样式资源的路径，是相对于 outputPath 的。"
+    },
+    {
+      "name": "service-worker",
+      "type": "boolean",
+      "default": false,
+      "description": "Generates a service worker config for production builds.",
+      "descriptionCn": "在生产环境构建中生成 Service Worker 配置。"
+    },
+    {
+      "name": "source-map",
+      "type": "boolean",
+      "default": false,
+      "description": "Output source maps for scripts and styles. For more information, see https://angular.io/guide/workspace-config#source-map-configuration.",
+      "descriptionCn": "输出脚本和样式的源码映射信息。欲知详情，请参阅<https://angular.cn/guide/workspace-config#source-map-configuration>。"
+    },
+    {
+      "name": "stats-json",
+      "type": "boolean",
+      "default": false,
+      "description": "Generates a 'stats.json' file which can be analyzed using tools such as 'webpack-bundle-analyzer'.",
+      "descriptionCn": "生成一个 “stats.json” 文件，可以使用 “webpack-bundle-analyzer” 之类的工具进行分析。"
+    },
+    {
+      "name": "subresource-integrity",
+      "type": "boolean",
+      "default": false,
+      "description": "Enables the use of subresource integrity validation.",
+      "descriptionCn": "启用子资源完整性验证。"
+    },
+    {
+      "name": "ts-config",
+      "type": "string",
+      "description": "The full path for the TypeScript configuration file, relative to the current workspace.",
+      "descriptionCn": "TypeScript 配置文件相对于当前工作空间的完整路径。"
+    },
+    {
+      "name": "vendor-chunk",
+      "type": "boolean",
+      "default": false,
+      "description": "Generate a seperate bundle containing only vendor libraries. This option should only used for development.",
+      "descriptionCn": "生成仅包含供应商库的单独捆绑包。此选项只能用于开发阶段。"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "default": false,
+      "description": "Adds more details to output logging.",
+      "descriptionCn": "将更多详细信息添加到输出日志记录。"
+    },
+    {
+      "name": "watch",
+      "type": "boolean",
+      "default": false,
+      "description": "Run build when files change.",
+      "descriptionCn": "当文件更改时自动构建。"
+    },
+    {
+      "name": "web-worker-ts-config",
+      "type": "string",
+      "description": "TypeScript configuration for Web Worker modules.",
+      "descriptionCn": "Web Worker 模块的 TypeScript 配置。"
+    }
+  ],
+  "shortDescriptionCn": "将 Angular 应用程序或库编译到给定输出路径处名为 dist/ 的输出目录中。",
+  "longDescriptionCn": "该命令可用于构建“应用程序”或“库”类型的项目。当用于构建库时，会调用不同的构建器，并且仅应用`ts-config`、`configuration`和`watch`选项。所有其他选项仅适用于构建应用程序。\n\n应用程序构建器使用 [Webpack](https://webpack.js.org/) 构建工具，可以在工作区配置文件 ( `angular.json` ) 中指定默认配置选项或使用命名的替代配置。默认情况下，当你使用 CLI 创建项目时会创建一个`development` 配置，你可以通过指定 `--configuration development` 来使用该配置。\n\n配置选项通常对应于命令选项。你可以通过在命令行中指定相应的选项来覆盖单个配置默认值。该命令可以接受以 dash-case 或 camelCase 给出的选项名称。请注意，在配置文件中，你必须以 camelCase 指定名称。\n\n某些附加选项只能通过配置文件设置，可以通过直接编辑或使用`ng config`命令来完成。其中包括 `assets`、`styles` 和 `scripts` 对象，它们提供了要包含在项目中的运行时全局资源。 CSS 中的资源，例如图像和字体，会在输出文件夹的根目录自动写入并添加指纹。\n\n有关更多详细信息，请参阅[工作区配置](guide/workspace-config)。"
+}

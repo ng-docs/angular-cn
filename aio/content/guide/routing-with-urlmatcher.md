@@ -15,7 +15,7 @@ This matcher looks for a Twitter handle in the URL.
 
 For a working example of the final version of this tutorial, see the <live-example></live-example>.
 
-有关本教程最终版本的工作示例，请参阅<live-example></live-example> 。
+有关本教程最终版本的工作示例，请参阅<live-example></live-example>。
 
 ## Objectives
 
@@ -41,24 +41,22 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
-  [角度 CLI](cli)
-
 If you are unfamiliar with how Angular's router works, review [Using Angular routes in a single-page application](guide/router-tutorial).
 
 如果你不熟悉 Angular 路由器的工作原理，请阅读[在单页应用程序中使用 Angular 路由](guide/router-tutorial)。
 
 ## Create a sample application
 
-## 创建示例应用程序
+## 创建一个范例应用
 
 Using the Angular CLI, create a new application, *angular-custom-route-match*.
 In addition to the default Angular application framework, you will also create a *profile* component.
 
-使用 Angular CLI，创建一个新应用程序 *angular-custom-route-match* 。除了默认的 Angular 应用程序框架之外，还将创建一个 *profile* 组件。
+使用 Angular CLI，创建一个新应用程序 *angular-custom-route-match*。除了默认的 Angular 应用程序框架之外，还将创建一个 *profile* 组件。
 
 1. Create a new Angular project, *angular-custom-route-match*.
 
-   创建一个新的 Angular 项目 *angular-custom-route-match* 。
+   创建一个新的 Angular 项目 *angular-custom-route-match*。
 
    <code-example format="shell" language="shell">
 
@@ -68,7 +66,7 @@ In addition to the default Angular application framework, you will also create a
 
    When prompted with `Would you like to add Angular routing?`, select `Y`.
 
-   当提示 `Would you like to add Angular routing?` 时，选择 `Y` 。
+   当提示 `Would you like to add Angular routing?` 时，选择 `Y`。
 
    When prompted with `Which stylesheet format would you like to use?`, select `CSS`.
 
@@ -84,7 +82,7 @@ In addition to the default Angular application framework, you will also create a
 
 1. Create a component, *profile*.
 
-   创建一个组件 *profile* 。
+   创建一个组件 *profile*。
 
    <code-example format="shell" language="shell">
 
@@ -225,7 +223,7 @@ With your code in place, you can now test your custom URL matcher.
 
    You should see a single web page, consisting of a sentence that reads `Navigate to my profile`.
 
-   你会看到一个网页，其中包含一个句子，内容为 `Navigate to my profile` 。
+   你会看到一个网页，其中包含一个句子，内容为 `Navigate to my profile`。
 
 1. Click the **my profile** hyperlink.
 
@@ -256,7 +254,7 @@ To learn more about the Angular Router, see the following topics:
 
 This content is based on [Custom Route Matching with the Angular Router](https://medium.com/@brandontroberts/custom-route-matching-with-the-angular-router-fbdd48665483), by [Brandon Roberts](https://twitter.com/brandontroberts).
 
-此内容基于 [Brandon Roberts](https://twitter.com/brandontroberts) 的[为 Angular Router 使用自定义路由匹配](https://medium.com/@brandontroberts/custom-route-matching-with-the-angular-router-fbdd48665483) 。
+此内容基于 [Brandon Roberts](https://twitter.com/brandontroberts) 的[为 Angular Router 使用自定义路由匹配](https://medium.com/@brandontroberts/custom-route-matching-with-the-angular-router-fbdd48665483)。
 
 </div>
 

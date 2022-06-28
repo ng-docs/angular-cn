@@ -587,7 +587,7 @@ function main(args: string[]): void {
   /**
    * Whether the package explicitly sets any of the format properties (like `main`).
    *
-   * 包是否显式设置任何格式属性（例如 `main` ）。
+   * 包是否显式设置任何格式属性（例如 `main`）。
    *
    */
   function hasExplicitFormatProperties(parsedPackage: Readonly<PackageJson>): boolean {

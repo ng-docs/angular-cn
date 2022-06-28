@@ -88,7 +88,7 @@ Angular 根据你所声明的变量的位置给模板变量赋值：
 
 * If the variable specifies a name on the right-hand side, such as `#var="ngModel"`, the variable refers to the directive or component on the element with a matching `exportAs` name.
 
-  如果该变量在右侧指定了一个名字，比如 `#var="ngModel"` ，那么该变量就会引用所在元素上具有这个 `exportAs` 名字的指令或组件。
+  如果该变量在右侧指定了一个名字，比如 `#var="ngModel"`，那么该变量就会引用所在元素上具有这个 `exportAs` 名字的指令或组件。
 
   <!-- What does the second half of this mean?^^ Can we explain this more fully? Could I see a working example? -kw -->
 
@@ -100,7 +100,7 @@ In most cases, Angular sets the template variable's value to the element on whic
 In the previous example, `phone` refers to the phone number `<input>`.
 The button's click handler passes the `<input>` value to the component's `callPhone()` method.
 
-在大多数情况下，Angular 会把模板变量的值设置为它所在的元素。在前面的例子中， `phone` 引用的是电话号码 `<input>` 。该按钮的 click 处理程序会把这个 `<input>` 的值传给该组件的 `callPhone()` 方法。
+在大多数情况下，Angular 会把模板变量的值设置为它所在的元素。在前面的例子中，`phone` 引用的是电话号码 `<input>`。该按钮的 click 处理程序会把这个 `<input>` 的值传给该组件的 `callPhone()` 方法。
 
 The `NgForm` directive demonstrates getting a reference to a different value by referencing a directive's `exportAs` name.
 In the following example, the template variable, `itemForm`, appears three times separated by HTML.
@@ -153,7 +153,7 @@ In the following example, changing the text in the `<input>` changes the value i
 
 In this case, the `*ngIf` on `<span>` creates a new template scope, which includes the `ref1` variable from its parent scope.
 
-在这种情况下， `<span>` 上的 `*ngIf` 会创建一个新的模板范围，其中包括其父范围中的 `ref1` 变量。
+在这种情况下，`<span>` 上的 `*ngIf` 会创建一个新的模板范围，其中包括其父范围中的 `ref1` 变量。
 
 However, accessing a template variable from a child scope in the parent template doesn't work:
 
@@ -166,7 +166,7 @@ However, accessing a template variable from a child scope in the parent template
 
 Here, `ref2` is declared in the child scope created by `*ngIf`, and is not accessible from the parent template.
 
-在这里， `ref2` 是在 `*ngIf` 创建的子范围中声明的，并且无法从父模板访问。
+在这里，`ref2` 是在 `*ngIf` 创建的子范围中声明的，并且无法从父模板访问。
 
 {@a template-input-variable}
 
@@ -178,7 +178,7 @@ Here, `ref2` is declared in the child scope created by `*ngIf`, and is not acces
 
 A _template input variable_ is a variable with a value that is set when an instance of that template is created. See: [Writing structural directives](https://angular.io/guide/structural-directives)
 
-_ 模板输入变量 _ 是一个具有在创建该模板实例时设置的值的变量。请参阅：[编写结构指令](https://angular.io/guide/structural-directives)
+*模板输入变量*是一个具有在创建该模板实例时设置的值的变量。请参阅：[编写结构指令](https://angular.io/guide/structural-directives)
 
 Template input variables can be seen in action in the long-form usage of `NgFor`:
 
@@ -202,7 +202,7 @@ When an `<ng-template>` is instantiated, multiple named values can be passed whi
 
 `NgFor` for example also provides access to the `index` of each hero in the array:
 
-例如， `NgFor` 还提供了对数组中每个英雄的 `index` 的访问：
+例如，`NgFor` 还提供了对数组中每个英雄的 `index` 的访问：
 
 ```html
 <ul>

@@ -10,7 +10,7 @@ A normal Angular application executes in the *browser*, rendering pages in the D
 Angular Universal executes on the *server*, generating *static* application pages that later get bootstrapped on the client.
 This means that the application generally renders more quickly, giving users a chance to view the application layout before it becomes fully interactive.
 
-标准的 Angular 应用会运行在*浏览器*中，它会在 DOM 中渲染页面，以响应用户的操作。 而**Angular Universal** 会在*服务端*运行，生成一些*静态*的应用页面，稍后再通过客户端进行启动。 这意味着该应用的渲染通常会更快，让用户可以在应用变得完全可交互之前，先查看应用的布局。
+标准的 Angular 应用会运行在*浏览器*中，它会在 DOM 中渲染页面，以响应用户的操作。而**Angular Universal** 会在*服务端*运行，生成一些*静态*的应用页面，稍后再通过客户端进行启动。这意味着该应用的渲染通常会更快，让用户可以在应用变得完全可交互之前，先查看应用的布局。
 
 For a more detailed look at different techniques and concepts surrounding SSR, check out this [article](https://developers.google.com/web/updates/2019/02/rendering-on-the-web).
 
@@ -26,7 +26,7 @@ The CLI schematic `@nguniversal/express-engine` performs the required steps, as 
 Angular Universal requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.
 See the `engines` property in the [package.json](https://unpkg.com/browse/@angular/platform-server/package.json) file to learn about the currently supported versions.
 
-Angular Universal 需要[活跃 LTS 或 维护中 LTS](https://nodejs.org/about/releases)版本的 Node.js。 参见 [package.json](https://unpkg.com/browse/@angular/platform-server/package.json) 文件中的 `engines` 属性，以了解当前支持的版本。
+Angular Universal 需要[活跃 LTS 或 维护中 LTS](https://nodejs.org/about/releases)版本的 Node.js。参见 [package.json](https://unpkg.com/browse/@angular/platform-server/package.json) 文件中的 `engines` 属性，以了解当前支持的版本。
 
 </div>
 
@@ -218,13 +218,12 @@ There are three main reasons to create a Universal version of your application.
 Google, Bing, Facebook, Twitter, and other social media sites rely on web crawlers to index your application content and make that content searchable on the web.
 These web crawlers might be unable to navigate and index your highly interactive Angular application as a human user could do.
 
-Google、Bing、Facebook、Twitter 和其它社交媒体网站都依赖网络爬虫去索引你的应用内容，并且让它的内容可以通过网络搜索到。
-这些网络爬虫可能不会像人类那样导航到你的具有高度交互性的 Angular 应用，并为其建立索引。
+Google、Bing、Facebook、Twitter 和其它社交媒体网站都依赖网络爬虫去索引你的应用内容，并且让它的内容可以通过网络搜索到。 这些网络爬虫可能不会像人类那样导航到你的具有高度交互性的 Angular 应用，并为其建立索引。
 
 Angular Universal can generate a static version of your application that is easily searchable, linkable, and navigable without JavaScript.
 Universal also makes a site preview available because each URL returns a fully rendered page.
 
-Angular Universal 可以为你生成应用的静态版本，它易搜索、可链接，浏览时也不必借助 JavaScript。 它也让站点可以被预览，因为每个 URL 返回的都是一个完全渲染好的页面。
+Angular Universal 可以为你生成应用的静态版本，它易搜索、可链接，浏览时也不必借助 JavaScript。它也让站点可以被预览，因为每个 URL 返回的都是一个完全渲染好的页面。
 
 <a id="no-javascript"></a>
 
@@ -236,7 +235,7 @@ Some devices don't support JavaScript or execute JavaScript so poorly that the u
 For these cases, you might require a server-rendered, no-JavaScript version of the application.
 This version, however limited, might be the only practical alternative for people who otherwise couldn't use the application at all.
 
-有些设备不支持 JavaScript 或 JavaScript 执行得很差，导致用户体验不可接受。 对于这些情况，你可能会需要该应用的服务端渲染的、无 JavaScript 的版本。 虽然有一些限制，不过这个版本可能是那些完全没办法使用该应用的人的唯一选择。
+有些设备不支持 JavaScript 或 JavaScript 执行得很差，导致用户体验不可接受。对于这些情况，你可能会需要该应用的服务端渲染的、无 JavaScript 的版本。虽然有一些限制，不过这个版本可能是那些完全没办法使用该应用的人的唯一选择。
 
 <a id="startup-performance"></a>
 
@@ -248,19 +247,19 @@ Displaying the first page quickly can be critical for user engagement.
 Pages that load faster perform better, [even with changes as small as 100ms](https://web.dev/shopping-for-speed-on-ebay).
 Your application might have to launch faster to engage these users before they decide to do something else.
 
-快速显示第一页对于吸引用户是至关重要的。 加载速度更快的页面效果更好，即使其差异只有 100 毫秒也是如此（<https://web.dev/shopping-for-speed-on-ebay/>）。 你的应用要启动得更快一点，以便在用户决定做别的事情之前吸引他们的注意力。
+快速显示第一页对于吸引用户是至关重要的。加载速度更快的页面效果更好，即使其差异只有 100 毫秒也是如此（<https://web.dev/shopping-for-speed-on-ebay/>）。你的应用要启动得更快一点，以便在用户决定做别的事情之前吸引他们的注意力。
 
 With Angular Universal, you can generate landing pages for the application that look like the complete application.
 The pages are pure HTML, and can display even if JavaScript is disabled.
 The pages don't handle browser events, but they *do* support navigation through the site using [`routerLink`](guide/router-reference#router-link).
 
-使用 Angular Universal，你可以为应用生成“着陆页”，它们看起来就和完整的应用一样。 这些着陆页是纯 HTML，并且即使 JavaScript 被禁用了也能显示。 这些页面不会处理浏览器事件，不过它们*可以*用 `[routerLink](guide/router-reference#router-link)` 在这个网站中导航。
+使用 Angular Universal，你可以为应用生成“着陆页”，它们看起来就和完整的应用一样。这些着陆页是纯 HTML，并且即使 JavaScript 被禁用了也能显示。这些页面不会处理浏览器事件，不过它们*可以*用 `[routerLink](guide/router-reference#router-link)` 在这个网站中导航。
 
 In practice, you'll serve a static version of the landing page to hold the user's attention.
 At the same time, you'll load the full Angular application behind it.
 The user perceives near-instant performance from the landing page and gets the full interactive experience after the full application loads.
 
-在实践中，你可能要使用一个着陆页的静态版本来保持用户的注意力。 同时，你也会在幕后加载完整的 Angular 应用。 用户会觉得着陆页几乎是立即出现的，而当完整的应用加载完之后，又可以获得完整的交互体验。
+在实践中，你可能要使用一个着陆页的静态版本来保持用户的注意力。同时，你也会在幕后加载完整的 Angular 应用。用户会觉得着陆页几乎是立即出现的，而当完整的应用加载完之后，又可以获得完整的交互体验。
 
 <a id="how-does-it-work"></a>
 
@@ -272,8 +271,7 @@ A Universal web server responds to application page requests with static HTML re
 The server receives and responds to HTTP requests from clients (usually browsers), and serves static assets such as scripts, CSS, and images.
 It might respond to data requests, either directly or as a proxy to a separate data server.
 
-Universal Web 服务器使用 [Universal 模板引擎](#universal-engine)渲染出的静态 HTML 来响应对应用页面的请求。
-服务器接收并响应来自客户端（通常是浏览器）的 HTTP 请求，并回复静态文件，如脚本、CSS 和图片。
+Universal Web 服务器使用 [Universal 模板引擎](#universal-engine)渲染出的静态 HTML 来响应对应用页面的请求。 服务器接收并响应来自客户端（通常是浏览器）的 HTTP 请求，并回复静态文件，如脚本、CSS 和图片。
 它可以直接响应数据请求，也可以作为独立数据服务器的代理进行响应。
 
 The sample web server for this guide is based on the popular [Express](https://expressjs.com) framework.
@@ -287,8 +285,7 @@ The sample web server for this guide is based on the popular [Express](https://e
 The principles and decision points discussed here apply to any web server technology.
 
 **注意**：<br />
-**任何一种** Web 服务器技术都可以作为 Universal 应用的服务器，只要它能调用 Universal 的 `renderModule()` 函数。
-  这里所讨论的这些原则和决策点也适用于任何 Web 服务器技术。
+**任何一种** Web 服务器技术都可以作为 Universal 应用的服务器，只要它能调用 Universal 的 `renderModule()` 函数。 这里所讨论的这些原则和决策点也适用于任何 Web 服务器技术。
 
 </div>
 
@@ -305,14 +302,12 @@ Under the hood, this calls Universal's `renderModule()` function, while providin
 The `renderModule()` function takes as inputs a *template* HTML page (usually `index.html`), an Angular *module* containing components, and a *route* that determines which components to display.
 The route comes from the client's request to the server.
 
-`renderModule()` 函数接受一个*模板* HTML 页面（通常是 `index.html`）、一个包含组件的 Angular *模块*和一个用于决定该显示哪些组件的*路由*作为输入。
-该路由从客户端的请求中传给服务器。
+`renderModule()` 函数接受一个*模板* HTML 页面（通常是 `index.html`）、一个包含组件的 Angular *模块*和一个用于决定该显示哪些组件的*路由*作为输入。 该路由从客户端的请求中传给服务器。
 
 Each request results in the appropriate view for the requested route.
 The `renderModule()` function renders the view within the `<app>` tag of the template, creating a finished HTML page for the client.
 
-每次请求都会给出所请求路由的一个适当的视图。
-`renderModule()` 在模板中的 `<app>` 标记中渲染出这个视图，并为客户端创建一个完成的 HTML 页面。
+每次请求都会给出所请求路由的一个适当的视图。`renderModule()` 在模板中的 `<app>` 标记中渲染出这个视图，并为客户端创建一个完成的 HTML 页面。
 
 Finally, the server returns the rendered page to the client.
 
@@ -333,13 +328,13 @@ For example, server-side applications can't reference browser-only global object
 Angular provides some injectable abstractions over these objects, such as [`Location`](api/common/Location) or [`DOCUMENT`](api/common/DOCUMENT); it might substitute adequately for these APIs.
 If Angular doesn't provide it, it's possible to write new abstractions that delegate to the browser APIs while in the browser and to an alternative implementation while on the server (also known as shimming).
 
-Angular 提供了一些这些对象的可注入的抽象层，比如 [`Location`](api/common/Location) 或 [`DOCUMENT`](api/common/DOCUMENT)，它可以作为你所调用的 API 的等效替身。 如果 Angular 没有提供它，你也可以写一个自己的抽象层，当在浏览器中运行时，就把它委托给浏览器 API，当它在服务器中运行时，就提供一个符合要求的代用实现（也叫垫片 - shimming）。
+Angular 提供了一些这些对象的可注入的抽象层，比如 [`Location`](api/common/Location) 或 [`DOCUMENT`](api/common/DOCUMENT)，它可以作为你所调用的 API 的等效替身。如果 Angular 没有提供它，你也可以写一个自己的抽象层，当在浏览器中运行时，就把它委托给浏览器 API，当它在服务器中运行时，就提供一个符合要求的代用实现（也叫垫片 - shimming）。
 
 Similarly, without mouse or keyboard events, a server-side application can't rely on a user clicking a button to show a component.
 The application must determine what to render based solely on the incoming client request.
 This is a good argument for making the application [routable](guide/router).
 
-同样，由于没有鼠标或键盘事件，因此 Universal 应用也不能依赖于用户点击某个按钮来显示某个组件。 Universal 应用必须仅仅根据客户端过来的请求决定要渲染的内容。 把该应用做成[可路由的](guide/router)，就是一种好方案。
+同样，由于没有鼠标或键盘事件，因此 Universal 应用也不能依赖于用户点击某个按钮来显示某个组件。Universal 应用必须仅仅根据客户端过来的请求决定要渲染的内容。把该应用做成[可路由的](guide/router)，就是一种好方案。
 
 <a id="universal-engine"></a>
 
@@ -356,21 +351,21 @@ The important bit in the `server.ts` file is the `ngExpressEngine()` function.
 The `ngExpressEngine()` function is a wrapper around Universal's `renderModule()` function which turns a client's requests into server-rendered HTML pages.
 It accepts an object with the following properties:
 
-`ngExpressEngine()` 是对 Universal 的 `renderModule()` 函数的封装。它会把客户端请求转换成服务端渲染的 HTML 页面。 它接受一个具有下列属性的对象：
+`ngExpressEngine()` 是对 Universal 的 `renderModule()` 函数的封装。它会把客户端请求转换成服务端渲染的 HTML 页面。它接受一个具有下列属性的对象：
 
 | Properties | Details |
 | :--------- | :------ |
 | 属性 | 详情 |
 | `bootstrap` | The root `NgModule` or `NgModule` factory to use for bootstrapping the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
-| `bootstrap` | 在服务器上渲染时用于引导应用程序的根 `NgModule` 或 `NgModule` 工厂。对于这个范例应用，它是 `AppServerModule`。它是 Universal 服务端渲染器和 Angular 应用之间的桥梁。 |
+| `bootstrap` | 在服务器上渲染时用于引导应用程序的根 `NgModule` 或 `NgModule` 工厂。对于这个范例应用，它是 `AppServerModule`。它是 Universal 服务端渲染器和 Angular 应用之间的桥梁。|
 | `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance. |
-| `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。 |
+| `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。|
 
 The `ngExpressEngine()` function returns a `Promise` callback that resolves to the rendered page.
 It's up to the engine to decide what to do with that page.
 This engine's `Promise` callback returns the rendered page to the web server, which then forwards it to the client in the HTTP response.
 
-`ngExpressEngine()` 函数返回了一个会解析成渲染好的页面的*承诺（Promise）*。 接下来你的引擎要决定拿这个页面做点什么。 在*这个引擎*的 `Promise` 回调函数中，把渲染好的页面返回给了 Web 服务器，然后服务器通过 HTTP 响应把它转发给了客户端。
+`ngExpressEngine()` 函数返回了一个会解析成渲染好的页面的*承诺（Promise）*。接下来你的引擎要决定拿这个页面做点什么。在*这个引擎*的 `Promise` 回调函数中，把渲染好的页面返回给了 Web 服务器，然后服务器通过 HTTP 响应把它转发给了客户端。
 
 <div class="alert is-helpful">
 
@@ -407,13 +402,13 @@ It's not as simple as intercepting a request to the root address `/`.
 The browser could ask for one of the application routes such as `/dashboard`, `/heroes`, or `/detail:12`.
 In fact, if the application were only rendered by the server, *every* application link clicked would arrive at the server as a navigation URL intended for the router.
 
-这可不像拦截对根路径 `/` 的请求那么简单。 浏览器可以请求应用中的任何一个路由地址，比如 `/dashboard`、`/heroes` 或 `/detail:12`。 事实上，如果应用*只*会通过服务器渲染，那么应用中点击的*任何一个*链接都会发到服务器，就像导航时的地址会发到路由器一样。
+这可不像拦截对根路径 `/` 的请求那么简单。浏览器可以请求应用中的任何一个路由地址，比如 `/dashboard`、`/heroes` 或 `/detail:12`。事实上，如果应用*只*会通过服务器渲染，那么应用中点击的*任何一个*链接都会发到服务器，就像导航时的地址会发到路由器一样。
 
 Fortunately, application routes have something in common: their URLs lack file extensions.
 (Data requests also lack extensions but they can be recognized because they always begin with `/api`.)
 All static asset requests have a file extension (such as `main.js` or `/node_modules/zone.js/bundles/zone.umd.js`).
 
-幸运的是，应用的路由具有一些共同特征：它们的 URL 一般不带文件扩展名。 （数据请求也可能缺少扩展名，但是它们很容易识别出来，因为它们总是以 `/api` 开头，所有的静态资源的请求都会带有一个扩展名，比如 `main.js` 或 `/node_modules/zone.js/dist/zone.js`）。
+幸运的是，应用的路由具有一些共同特征：它们的 URL 一般不带文件扩展名。（数据请求也可能缺少扩展名，但是它们很容易识别出来，因为它们总是以 `/api` 开头，所有的静态资源的请求都会带有一个扩展名，比如 `main.js` 或 `/node_modules/zone.js/dist/zone.js`）。
 
 Because you use routing, you can recognize the three types of requests and handle them differently.
 
@@ -423,16 +418,16 @@ Because you use routing, you can recognize the three types of requests and handl
 | :-------------------- | :------ |
 | 路由请求类型 | 详情 |
 | Data request | Request URL that begins `/api`. |
-| 数据请求 | 请求的 URL 用 `/api` 开头。 |
+| 数据请求 | 请求的 URL 用 `/api` 开头。|
 | App navigation | Request URL with no file extension. |
-| 应用导航 | 请求的 URL 不带扩展名。 |
+| 应用导航 | 请求的 URL 不带扩展名。|
 | Static asset | All other requests. |
-| 静态资产 | 所有其它请求。 |
+| 静态资产 | 所有其它请求。|
 
 A Node.js Express server is a pipeline of middleware that filters and processes requests one after the other.
 You configure the Node.js Express server pipeline with calls to `server.get()` like this one for data requests.
 
-Node.js Express 服务器是一系列中间件构成的管道，它会挨个对 URL 请求进行过滤和处理。 你可以调用 `app.get()` 来配置 Express 服务器的管道，就像下面这个数据请求一样。
+Node.js Express 服务器是一系列中间件构成的管道，它会挨个对 URL 请求进行过滤和处理。你可以调用 `app.get()` 来配置 Express 服务器的管道，就像下面这个数据请求一样。
 
 <code-example header="server.ts (data URL)" path="universal/server.ts" region="data-request"></code-example>
 
@@ -447,7 +442,7 @@ This sample server doesn't handle data requests.
 The tutorial's "in-memory web API" module, a demo and development tool, intercepts all HTTP calls and simulates the behavior of a remote data server.
 In practice, you would remove that module and register your web API middleware on the server here.
 
-本教程的“内存 Web API” 模块（一个演示及开发工具）拦截了所有 HTTP 调用，并且模拟了远端数据服务器的行为。 在实践中，你应该移除这个模块，并且在服务器上注册你的 Web API 中间件。
+本教程的“内存 Web API” 模块（一个演示及开发工具）拦截了所有 HTTP 调用，并且模拟了远端数据服务器的行为。在实践中，你应该移除这个模块，并且在服务器上注册你的 Web API 中间件。
 
 </div>
 
@@ -485,7 +480,7 @@ These services send requests to *relative* URLs such as `api/heroes`.
 In a server-side rendered app, HTTP URLs must be *absolute* (for example, `https://my-server.com/api/heroes`).
 This means that the URLs must be somehow converted to absolute when running on the server and be left relative when running in the browser.
 
-本教程的 `HeroService` 和 `HeroSearchService` 都委托 Angular 的 `HttpClient` 模块来获取应用数据。这些服务会向 `api/heroes` 之类的*相对* URL 发送请求。在服务端渲染的应用中，HTTP URL 必须是*绝对的*（比如，`https://my-server.com/api/heroes` ）。这意味着当在服务器上运行时，URL 必须以某种方式转换为绝对 URL，而在浏览器中运行时，它们是相对 URL。
+本教程的 `HeroService` 和 `HeroSearchService` 都委托 Angular 的 `HttpClient` 模块来获取应用数据。这些服务会向 `api/heroes` 之类的*相对* URL 发送请求。在服务端渲染的应用中，HTTP URL 必须是*绝对的*（比如，`https://my-server.com/api/heroes`）。这意味着当在服务器上运行时，URL 必须以某种方式转换为绝对 URL，而在浏览器中运行时，它们是相对 URL。
 
 If you are using one of the `@nguniversal/*-engine` packages (such as `@nguniversal/express-engine`), this is taken care for you automatically.
 You don't need to do anything to make relative URLs work on the server.
@@ -515,13 +510,13 @@ Now, on every HTTP request made as part of rendering the application on the serv
 | :------ | :------ |
 | 脚本 | 详情 |
 | <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | Similar to [`ng serve`](cli/serve), which offers live reload during development, but uses server-side rendering. The application runs in watch mode and refreshes the browser after every change. This command is slower than the actual `ng serve` command. |
-| <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | 此命令类似于 [`ng serve`](cli/serve) ，它在开发期间提供实时重新加载，但使用服务器端渲染。该应用程序以监视模式运行并在每次更改后刷新浏览器。这个命令要比实际的 `ng serve` 命令慢。 |
+| <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | 此命令类似于 [`ng serve`](cli/serve)，它在开发期间提供实时重新加载，但使用服务器端渲染。该应用程序以监视模式运行并在每次更改后刷新浏览器。这个命令要比实际的 `ng serve` 命令慢。|
 | <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | Builds both the server script and the application in production mode. Use this command when you want to build the project for deployment. |
-| <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | 此命令会在生产模式下构建服务器脚本和应用程序。当你要构建用于部署的项目时，请使用此命令。 |
+| <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | 此命令会在生产模式下构建服务器脚本和应用程序。当你要构建用于部署的项目时，请使用此命令。|
 | <code-example format="shell" language="shell"> npm run serve:ssr </code-example> | Starts the server script for serving the application locally with server-side rendering. It uses the build artifacts created by `ng run build:ssr`, so make sure you have run that command as well. <div class="alert is-helpful"> **NOTE**: <br /> `serve:ssr` is not intended to be used to serve your application in production, but only for testing the server-side rendered application locally. </div> |
 | <code-example format="shell" language="shell"> npm run serve:ssr </code-example> | 此命令启动服务器脚本，用于通过服务器端渲染在本地为应用程序提供服务。它使用由 `ng run build:ssr` 创建的构建工件，因此请确保你也运行了该命令。<div class="alert is-helpful">**注意**：<br />`serve:ssr` 不能用于在生产环境为你的应用程序提供服务，而仅用于在本地测试服务器端渲染的应用程序。</div> |
 | <code-example format="shell" language="shell"> npm run prerender </code-example> | Used to prerender an application's pages. Read more about prerendering [here](guide/prerendering). |
-| <code-example format="shell" language="shell"> npm run prerender </code-example> | 此脚本可用于预先渲染应用程序的页面。[在此处](guide/prerendering)阅读有关预先渲染的更多信息。 |
+| <code-example format="shell" language="shell"> npm run prerender </code-example> | 此脚本可用于预先渲染应用程序的页面。[在此处](guide/prerendering)阅读有关预先渲染的更多信息。|
 
 <!-- links -->
 

@@ -61,7 +61,7 @@ const routes: Routes = [
 Also be sure to remove the `ItemsModule` from the `AppModule`.
 For step-by-step instructions on lazy loading modules, continue with the following sections of this page.
 
-还要确保从 `AppModule` 中移除了 `ItemsModule`。 想要一个关于惰性加载模块的分步操作指南，请继续查看本页的后续章节。
+还要确保从 `AppModule` 中移除了 `ItemsModule`。想要一个关于惰性加载模块的分步操作指南，请继续查看本页的后续章节。
 
 <a id="step-by-step"></a>
 
@@ -101,14 +101,14 @@ ng new customer-app --routing
 This creates an application called `customer-app` and the `--routing` flag generates a file called `app-routing.module.ts`, which is one of the files you need for setting up lazy loading for your feature module.
 Navigate into the project by issuing the command `cd customer-app`.
 
-这会创建一个名叫 `customer-app` 的应用，而 `--routing` 标识生成了一个名叫 `app-routing.module.ts` 的文件，它是你建立惰性加载的特性模块时所必须的。 输入命令 `cd customer-app` 进入该项目。
+这会创建一个名叫 `customer-app` 的应用，而 `--routing` 标识生成了一个名叫 `app-routing.module.ts` 的文件，它是你建立惰性加载的特性模块时所必须的。输入命令 `cd customer-app` 进入该项目。
 
 <div class="alert is-helpful">
 
 The `--routing` option requires Angular/CLI version 8.1 or higher.
 See [Keeping Up to Date](guide/updating).
 
-`--routing` 选项需要 Angular/CLI 8.1 或更高版本。 请参阅[保持最新](guide/updating)。
+`--routing` 选项需要 Angular/CLI 8.1 或更高版本。请参阅[保持最新](guide/updating)。
 
 </div>
 
@@ -120,7 +120,7 @@ Next, you'll need a feature module with a component to route to.
 To make one, enter the following command in the terminal, where `customers` is the name of the feature module.
 The path for loading the `customers` feature modules is also `customers` because it is specified with the `--route` option:
 
-接下来，你将需要一个包含路由的目标组件的特性模块。 要创建它，在终端中输入如下命令，其中 `customers` 是特性模块的名称。加载 `customers` 特性模块的路径也是 `customers`，因为它是通过 `--route` 选项指定的：
+接下来，你将需要一个包含路由的目标组件的特性模块。要创建它，在终端中输入如下命令，其中 `customers` 是特性模块的名称。加载 `customers` 特性模块的路径也是 `customers`，因为它是通过 `--route` 选项指定的：
 
 <code-example format="shell" language="shell">
 
@@ -136,14 +136,14 @@ The command automatically declares the `CustomersComponent` and imports `Custome
 Because the new module is meant to be lazy-loaded, the command does NOT add a reference to the new feature module in the application's root module file, `app.module.ts`.
 Instead, it adds the declared route, `customers` to the `routes` array declared in the module provided as the `--module` option.
 
-因为这个新模块想要惰性加载，所以该命令不会在应用的根模块 `app.module.ts` 中添加对新特性模块的引用。 相反，它将声明的路由 `customers` 添加到以 `--module` 选项指定的模块中声明的 `routes` 数组中。
+因为这个新模块想要惰性加载，所以该命令不会在应用的根模块 `app.module.ts` 中添加对新特性模块的引用。相反，它将声明的路由 `customers` 添加到以 `--module` 选项指定的模块中声明的 `routes` 数组中。
 
 <code-example header="src/app/app-routing.module.ts" path="lazy-loading-ngmodules/src/app/app-routing.module.ts" region="routes-customers"></code-example>
 
 Notice that the lazy-loading syntax uses `loadChildren` followed by a function that uses the browser's built-in `import('...')` syntax for dynamic imports.
 The import path is the relative path to the module.
 
-注意，惰性加载语法使用 `loadChildren`，其后是一个使用浏览器内置的 `import('...')` 语法进行动态导入的函数。 其导入路径是到当前模块的相对路径。
+注意，惰性加载语法使用 `loadChildren`，其后是一个使用浏览器内置的 `import('...')` 语法进行动态导入的函数。其导入路径是到当前模块的相对路径。
 
 <div class="callout is-helpful">
 
@@ -179,7 +179,7 @@ ng generate module orders --route orders --module app.module
 This creates a new folder called `orders` containing the `OrdersModule` and `OrdersRoutingModule`, along with the new `OrdersComponent` source files.
 The `orders` route, specified with the `--route` option, is added to the `routes` array inside the `app-routing.module.ts` file, using the lazy-loading syntax.
 
-这将创建一个名为 `orders` 的新文件夹，其中包含 `OrdersModule` 和 `OrdersRoutingModule` 以及新的 `OrdersComponent` 源文件。 使用 `--route` 选项指定的 `orders` 路由，用惰性加载语法添加到了 `app-routing.module.ts` 文件内的 `routes` 数组中。
+这将创建一个名为 `orders` 的新文件夹，其中包含 `OrdersModule` 和 `OrdersRoutingModule` 以及新的 `OrdersComponent` 源文件。使用 `--route` 选项指定的 `orders` 路由，用惰性加载语法添加到了 `app-routing.module.ts` 文件内的 `routes` 数组中。
 
 <code-example header="src/app/app-routing.module.ts" path="lazy-loading-ngmodules/src/app/app-routing.module.ts" region="routes-customers-orders"></code-example>
 
@@ -190,7 +190,7 @@ The `orders` route, specified with the `--route` option, is added to the `routes
 Though you can type the URL into the address bar, a navigation UI is straightforward for the user and more common.
 Replace the default placeholder markup in `app.component.html` with a custom nav, so you can navigate to your modules in the browser:
 
-虽然你也可以在地址栏中输入 URL，不过导航 UI 会更好用，也更常见。 把 `app.component.html` 中的占位脚本替换成一个自定义的导航，以便你在浏览器中能在模块之间导航。
+虽然你也可以在地址栏中输入 URL，不过导航 UI 会更好用，也更常见。把 `app.component.html` 中的占位脚本替换成一个自定义的导航，以便你在浏览器中能在模块之间导航。
 
 <code-example header="app.component.html" path="lazy-loading-ngmodules/src/app/app.component.html" region="app-component-template" header="src/app/app.component.html"></code-example>
 
@@ -228,7 +228,7 @@ The CLI automatically added each feature module to the routes map at the applica
 Finish this off by adding the default route.
 In the `app-routing.module.ts` file, update the `routes` array with the following:
 
-CLI 会将每个特性模块自动添加到应用级的路由映射表中。 通过添加默认路由来最终完成这些步骤。 在 `app-routing.module.ts` 文件中，使用如下命令更新 `routes` 数组：
+CLI 会将每个特性模块自动添加到应用级的路由映射表中。通过添加默认路由来最终完成这些步骤。在 `app-routing.module.ts` 文件中，使用如下命令更新 `routes` 数组：
 
 <code-example header="src/app/app-routing.module.ts" path="lazy-loading-ngmodules/src/app/app-routing.module.ts" id="app-routing.module.ts" region="const-routes"></code-example>
 
@@ -236,7 +236,7 @@ The first two paths are the routes to the `CustomersModule` and the `OrdersModul
 The final entry defines a default route.
 The empty path matches everything that doesn't match an earlier path.
 
-前两个路径是到 `CustomersModule` 和 `OrdersModule` 的路由。 最后一个条目则定义了默认路由。空路径匹配所有不匹配先前路径的内容。
+前两个路径是到 `CustomersModule` 和 `OrdersModule` 的路由。最后一个条目则定义了默认路由。空路径匹配所有不匹配先前路径的内容。
 
 ### Inside the feature module
 
@@ -284,7 +284,7 @@ The other feature module's routing module is configured similarly.
 You can check to see that a module is indeed being lazy loaded with the Chrome developer tools.
 In Chrome, open the developer tools by pressing `Cmd+Option+i` on a Mac or `Ctrl+Shift+j` on a PC and go to the Network Tab.
 
-你可以使用 Chrome 开发者工具来确认一下这些模块真的是惰性加载的。 在 Chrome 中，按 `Cmd+Option+i`（Mac）或 `Ctrl+Shift+j`（PC），并选中 `Network` 页标签。
+你可以使用 Chrome 开发者工具来确认一下这些模块真的是惰性加载的。在 Chrome 中，按 `Cmd+Option+i`（Mac）或 `Ctrl+Shift+j`（PC），并选中 `Network` 页标签。
 
 <div class="lightbox">
 
@@ -316,7 +316,7 @@ To see it again, or to test after working in the project, clear everything out b
 
 Then reload with `Cmd+r` or `Ctrl+r`, depending on your platform.
 
-然后，使用 `Cmd+r`（Mac） 或 `Ctrl+r`（PC） 重新加载页面。
+然后，使用 `Cmd+r`（Mac）或 `Ctrl+r`（PC）重新加载页面。
 
 ## `forRoot()` and `forChild()`
 
@@ -327,7 +327,7 @@ This lets Angular know that the `AppRoutingModule` is a routing module and `forR
 It configures all the routes you pass to it, gives you access to the router directives, and registers the `Router` service.
 Use `forRoot()` only once in the application, inside the `AppRoutingModule`.
 
-你可能已经注意到了，CLI 会把 `RouterModule.forRoot(routes)` 添加到 `AppRoutingModule` 的 `imports` 数组中。 这会让 Angular 知道 `AppRoutingModule` 是一个路由模块，而 `forRoot()` 表示这是一个根路由模块。 它会配置你传入的所有路由、让你能访问路由器指令并注册 `Router`。 `forRoot()` 在应用中只应该使用一次，也就是这个 `AppRoutingModule` 中。
+你可能已经注意到了，CLI 会把 `RouterModule.forRoot(routes)` 添加到 `AppRoutingModule` 的 `imports` 数组中。这会让 Angular 知道 `AppRoutingModule` 是一个路由模块，而 `forRoot()` 表示这是一个根路由模块。它会配置你传入的所有路由、让你能访问路由器指令并注册 `Router`。`forRoot()` 在应用中只应该使用一次，也就是这个 `AppRoutingModule` 中。
 
 The CLI also adds `RouterModule.forChild(routes)` to feature routing modules.
 This way, Angular knows that the route list is only responsible for providing additional routes and is intended for feature modules.
@@ -340,7 +340,7 @@ The `forChild()` method has no injector configuration.
 It uses directives such as `RouterOutlet` and `RouterLink`.
 For more information, see the [`forRoot()` pattern](guide/singleton-services#forRoot) section of the [Singleton Services](guide/singleton-services) guide.
 
-`forRoot()` 方法为路由器管理*全局性的*注入器配置。 `forChild()` 方法中没有注入器配置，只有像 `RouterOutlet` 和 `RouterLink` 这样的指令。 欲知详情，参阅[单例服务](guide/singleton-services)章的 [`forRoot()` 模式](guide/singleton-services#forRoot)小节。
+`forRoot()` 方法为路由器管理*全局性的*注入器配置。`forChild()` 方法中没有注入器配置，只有像 `RouterOutlet` 和 `RouterLink` 这样的指令。欲知详情，参阅[单例服务](guide/singleton-services)章的 [`forRoot()` 模式](guide/singleton-services#forRoot)小节。
 
 <a id="preloading"></a>
 

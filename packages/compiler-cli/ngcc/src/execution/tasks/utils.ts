@@ -33,7 +33,7 @@ export const stringifyTask = (task: Task): string =>
  * * A and B have the same entry-point _and_ B is generating the typings for that entry-point
  *   (i.e. has `processDts: true`).
  *
- *   A 和 B 具有相同的入口点\_，并且\_B 正在为该入口点生成类型（即具有 `processDts: true` ）。
+ *   A 和 B 具有相同的入口点\_，并且\_B 正在为该入口点生成类型（即具有 `processDts: true`）。
  *
  * * A's entry-point depends on B's entry-point _and_ B is also generating typings.
  *

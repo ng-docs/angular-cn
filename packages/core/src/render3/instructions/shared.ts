@@ -58,7 +58,7 @@ let shouldThrowErrorOnUnknownProperty = false;
  * instead of just logging the error.
  * (for AOT-compiled ones this check happens at build time).
  *
- * 为 JIT 编译的组件设置严格模式，以在未知属性上抛出错误，而不仅仅是记录错误。 （对于 AOT
+ * 为 JIT 编译的组件设置严格模式，以在未知属性上抛出错误，而不仅仅是记录错误。（对于 AOT
  * 编译的，此检查发生在构建时）。
  *
  */
@@ -329,11 +329,11 @@ export function createTNodeAtIndex(
  * be too slow for production mode and also it relies on the constructor function being available.
  *
  * 警告：这是一个**仅限 dev-mode**的函数（因此应始终由 `ngDevMode`
- * ），**不得**在生产包中使用。该函数会进行超态读取，这对于生产模式来说可能太慢了，并且它依赖于可用的构造函数。
+ *），**不得**在生产包中使用。该函数会进行超态读取，这对于生产模式来说可能太慢了，并且它依赖于可用的构造函数。
  *
  * Gets a reference to the host component def (where a current component is declared).
  *
- * 获取对主机组件 def （声明当前组件的位置）的引用。
+ * 获取对主机组件 def（声明当前组件的位置）的引用。
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
@@ -358,7 +358,7 @@ function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|null {
  * be too slow for production mode.
  *
  * 警告：这是一个**仅限 dev-mode**的函数（因此应始终由 `ngDevMode`
- * ），**不得**在生产包中使用。该函数会进行大态读取，这对于生产模式来说可能太慢了。
+ *），**不得**在生产包中使用。该函数会进行大态读取，这对于生产模式来说可能太慢了。
  *
  * Checks if the current component is declared inside of a standalone component template.
  *
@@ -383,7 +383,7 @@ export function isHostComponentStandalone(lView: LView): boolean {
  * be too slow for production mode.
  *
  * 警告：这是一个**仅限 dev-mode**的函数（因此应始终由 `ngDevMode`
- * ），**不得**在生产包中使用。该函数会进行大态读取，这对于生产模式来说可能太慢了。
+ *），**不得**在生产包中使用。该函数会进行大态读取，这对于生产模式来说可能太慢了。
  *
  * Constructs a string describing the location of the host component template. The function is used
  * in dev mode to produce error messages.
@@ -408,7 +408,7 @@ export function getTemplateLocationDetails(lView: LView): string {
  * i18nApply()), we need to adjust the blueprint for future
  * template passes.
  *
- * 在创建视图蓝图后动态创建元素时（例如通过 i18nApply() ），我们需要为未来的模板传递调整蓝图。
+ * 在创建视图蓝图后动态创建元素时（例如通过 i18nApply()），我们需要为未来的模板传递调整蓝图。
  *
  * @param tView `TView` associated with `LView`
  *
@@ -1045,8 +1045,8 @@ export function locateHostElement(
  * This function can also be used to store instance specific cleanup fns. In that case the `context`
  * is `null` and the function is store in `LView` (rather than it `TView`).
  *
- * 此函数也可用于存储特定于实例的清理 fns。在这种情况下， `context` 为 `null` ，并且函数存储在
- * `LView` （而不是 `TView` ）中。
+ * 此函数也可用于存储特定于实例的清理 fns。在这种情况下，`context` 为 `null` ，并且函数存储在
+ * `LView`（而不是 `TView`）中。
  *
  */
 export function storeCleanupWithContext(
@@ -1075,7 +1075,7 @@ export function storeCleanupWithContext(
  *
  * @param tView `TView` to which this `TNode` belongs (used only in `ngDevMode`)
  *
- * 此 `TView` 所属的 `TNode` （仅在 `ngDevMode` 中使用）
+ * 此 `TView` 所属的 `TNode`（仅在 `ngDevMode` 中使用）
  *
  * @param tParent Parent `TNode`
  *
@@ -1288,7 +1288,7 @@ function initializeInputAndOutputAliases(tView: TView, tNode: TNode): void {
  * object lookup) for performance reasons - the series of `if` checks seems to be the fastest way of
  * mapping property names. Do NOT change without benchmarking.
  *
- * 性能说明：出于性能原因，此函数被编写为一系列 if 检查（而不是例如属性对象查找） - 这一系列 `if`
+ * 性能说明：出于性能原因，此函数被编写为一系列 if 检查（而不是例如属性对象查找）- 这一系列 `if`
  * 检查似乎是映射属性名称的最快方式。未经基准测试，请勿更改。
  *
  * Note: this mapping has to be kept in sync with the equally named mapping in the template
@@ -2495,7 +2495,7 @@ export function addToViewTree<T extends LView|LContainer>(lView: LView, lViewOrL
  * an additional time to get the root view and schedule a tick on it.
  *
  * 返回根视图，因为它是将视图树标记为脏的副产品，并且可以被使用 markViewDirty()
- * 的方法用来轻松安排更改检测。否则，此类方法将需要再次向上遍历视图树以获取根视图并在其上安排一个刻度。
+ * 的方法用来轻松安排变更检测。否则，此类方法将需要再次向上遍历视图树以获取根视图并在其上安排一个刻度。
  *
  * @param lView The starting LView to mark dirty
  *
@@ -2526,20 +2526,20 @@ export function markViewDirty(lView: LView): LView|null {
 /**
  * Used to schedule change detection on the whole application.
  *
- * 用于安排对整个应用程序的更改检测。
+ * 用于安排对整个应用程序的变更检测。
  *
  * Unlike `tick`, `scheduleTick` coalesces multiple calls into one change detection run.
  * It is usually called indirectly by calling `markDirty` when the view needs to be
  * re-rendered.
  *
- * 与 `tick` 不同， `scheduleTick`
- * 多个调用合并到一个更改检测运行中。当需要重新渲染视图时，通常通过调用 `markDirty` 来间接调用它。
+ * 与 `tick` 不同，`scheduleTick`
+ * 多个调用合并到一个变更检测运行中。当需要重新渲染视图时，通常通过调用 `markDirty` 来间接调用它。
  *
  * Typically `scheduleTick` uses `requestAnimationFrame` to coalesce multiple
  * `scheduleTick` requests. The scheduling function can be overridden in
  * `renderComponent`'s `scheduler` option.
  *
- * 通常， `scheduleTick` 使用 `requestAnimationFrame` 来合并多个 `scheduleTick` 请求。调度函数可以在
+ * 通常，`scheduleTick` 使用 `requestAnimationFrame` 来合并多个 `scheduleTick` 请求。调度函数可以在
  * `renderComponent` 的 `scheduler` 选项中被覆盖。
  *
  */
@@ -2599,11 +2599,11 @@ export function detectChangesInternal<T>(tView: TView, lView: LView, context: T)
 /**
  * Synchronously perform change detection on a root view and its components.
  *
- * 对根视图及其组件同步执行更改检测。
+ * 对根视图及其组件同步执行变更检测。
  *
  * @param lView The view which the change detection should be performed on.
  *
- * 应该在其上执行更改检测的视图。
+ * 应该在其上执行变更检测的视图。
  *
  */
 export function detectChangesInRootView(lView: LView): void {
@@ -2623,16 +2623,16 @@ export function checkNoChangesInternal<T>(tView: TView, view: LView, context: T)
  * Checks the change detector on a root view and its components, and throws if any changes are
  * detected.
  *
- * 检查根视图及其组件上的更改检测器，如果检测到任何更改，则抛出。
+ * 检查根视图及其组件上的变更检测器，如果检测到任何更改，则抛出。
  *
  * This is used in development mode to verify that running change detection doesn't
  * introduce other changes.
  *
- * 这在开发模式下用于验证正在运行的更改检测不会引入其他更改。
+ * 这在开发模式下用于验证正在运行的变更检测不会引入其他更改。
  *
  * @param lView The view which the change detection should be checked on.
  *
- * 应该检查更改检测的视图。
+ * 应该检查变更检测的视图。
  *
  */
 export function checkNoChangesInRootView(lView: LView): void {
@@ -2679,7 +2679,7 @@ function executeViewQueryFn<T>(
  * following format:
  *
  * 给定的属性元数据会保存在 `TView.data` 中绑定的索引处（换句话说，属性绑定元数据将存储在
- * `TView.data` 中与 LView 中的绑定值相同的索引 `LView` ）。元数据表示为具有以下格式的
+ * `TView.data` 中与 LView 中的绑定值相同的索引 `LView`）。元数据表示为具有以下格式的
  * `INTERPOLATION_DELIMITER` 分隔字符串：
  *
  * - `propertyName` for bound properties;

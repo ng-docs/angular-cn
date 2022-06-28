@@ -107,7 +107,7 @@ export interface ɵɵInjectableDeclaration<T> {
  *
  * NOTE: This is a private type and should not be exported
  *
- * 注：这是一种私有类型，不应导出
+ * 注意：这是一种私有类型，不应导出
  *
  * @codeGenApi
  */
@@ -177,7 +177,7 @@ export interface InjectorType<T> extends Type<T> {
  *
  * NOTE: This is a private type and should not be exported
  *
- * 注：这是一种私有类型，不应导出
+ * 注意：这是一种私有类型，不应导出
  *
  */
 export interface InjectorTypeWithProviders<T> {
@@ -261,7 +261,7 @@ export const defineInjectable = ɵɵdefineInjectable;
  *   type must be an `InjectableType`).
  *
  *   `providers` ：要添加到注入器的可选提供者数组。每个提供者必须有一个工厂或指向具有 `ɵprov`
- * 静态属性的类型（类型必须是 `InjectableType` ）。
+ * 静态属性的类型（类型必须是 `InjectableType`）。
  *
  * * `imports`: an optional array of imports of other `InjectorType`s or `InjectorTypeWithModule`s
  *   whose providers will also be added to the injector. Locally provided types will override
@@ -284,7 +284,7 @@ export function ɵɵdefineInjector(options: {providers?: any[], imports?: any[]}
  *
  * @param type A type which may have its own (non-inherited) `ɵprov`.
  *
- * 可能有自己的（非继承的） `ɵprov` 的类型。
+ * 可能有自己的（非继承的）`ɵprov` 的类型。
  *
  */
 export function getInjectableDef<T>(type: any): ɵɵInjectableDeclaration<T>|null {

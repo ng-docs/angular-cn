@@ -238,7 +238,7 @@ export function extractQueryMetadata(
   /**
    * Whether or not this query should collect only static results (see view/api.ts)
    *
-   * 此查询是否应该仅收集静态结果（请参阅 view/api.ts ）
+   * 此查询是否应该仅收集静态结果（请参阅 view/api.ts）
    *
    */
   let isStatic: boolean = false;
@@ -540,7 +540,7 @@ function parseFieldToPropertyMapping(
  * Parse property decorators (e.g. `Input` or `Output`) and return the correctly shaped metadata
  * object.
  *
- * 解析属性装饰器（例如 `Input` 或 `Output` ）并返回形状正确的元数据对象。
+ * 解析属性装饰器（例如 `Input` 或 `Output`）并返回形状正确的元数据对象。
  *
  */
 function parseDecoratedFields(

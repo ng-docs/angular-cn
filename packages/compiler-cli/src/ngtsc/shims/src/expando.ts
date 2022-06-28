@@ -143,7 +143,7 @@ export function isFileShimSourceFile(sf: ts.SourceFile): sf is NgFileShimSourceF
 /**
  * Check whether `sf` is a shim `ts.SourceFile` (either a per-file shim or a top-level shim).
  *
- * 检查 `sf` 是否是 shim `ts.SourceFile` （每个文件的 shim 或顶级 shim）。
+ * 检查 `sf` 是否是 shim `ts.SourceFile`（每个文件的 shim 或顶级 shim）。
  *
  */
 export function isShim(sf: ts.SourceFile): boolean {
@@ -213,7 +213,7 @@ export function untagTsFile(sf: ts.SourceFile): void {
  * Apply the previously tagged `referencedFiles` to the given `ts.SourceFile`, if it was previously
  * tagged.
  *
- * 将以前标记的 `referencedFiles` 应用于给定的 `ts.SourceFile` （如果以前被标记）。
+ * 将以前标记的 `referencedFiles` 应用于给定的 `ts.SourceFile`（如果以前被标记）。
  *
  */
 export function retagTsFile(sf: ts.SourceFile): void {

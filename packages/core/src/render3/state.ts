@@ -197,7 +197,7 @@ interface LFrame {
    * into the DOM. The translation does not carry information about deleted elements. Therefor the
    * only way to know that an element is deleted is that it was not pre-declared in the translation.
    *
-   * 需要这些信息，因为当我们在 i18n 块中时，所有元素都必须在翻译中预先声明。 （即 `Hello
+   * 需要这些信息，因为当我们在 i18n 块中时，所有元素都必须在翻译中预先声明。（即 `Hello
    * �#2�World�/#2�!` 在 `�#2�` 位置预声明元素。）这会在位置 `2` 分配 `TNodeType.Placeholder`
    * 元素。如果翻译器从翻译中删除 `�#2�` ”，则运行时还必须确保 `2` 处的元素不会插入到 DOM
    * 中。翻译不包含有关已删除元素的信息。因此，知道一个元素被删除的唯一方法是它没有在翻译中预先声明。
@@ -207,7 +207,7 @@ interface LFrame {
    * element still gets instantiated along with all of its behavior [directives])
    *
    * 此标志通过确保没有预声明 ( `TNodeType.Placeholder` ) 创建的元素不会插入到 DOM 渲染树来工作。
-   * （这确实意味着该元素仍然与其所有行为[指令][directives]一起被实例化）
+   *（这确实意味着该元素仍然与其所有行为[指令][directives]一起被实例化）
    *
    */
   inI18n: boolean;
@@ -226,7 +226,7 @@ interface LFrame {
  * PERF NOTE: Turns out that writing to a true global variable is slower than
  * having an intermediate object with properties.
  *
- * PERF 注：事实证明，写入真正的全局变量比具有具有属性的中间对象慢。
+ * PERF 注意：事实证明，写入真正的全局变量比具有具有属性的中间对象慢。
  *
  */
 interface InstructionState {
@@ -288,7 +288,7 @@ const instructionState: InstructionState = {
  * The `checkNoChanges` function is invoked only in ngDevMode=true and verifies that no unintended
  * changes exist in the change detector or its children.
  *
- * `checkNoChanges` 函数仅在 ngDevMode=true 时调用，并验证更改检测器或其子项中不存在意外更改。
+ * `checkNoChanges` 函数仅在 ngDevMode=true 时调用，并验证变更检测器或其子项中不存在意外更改。
  *
  */
 let _isInCheckNoChangesMode = false;
@@ -674,7 +674,7 @@ function getDeclarationTNode(lView: LView): TNode|null {
  *     \- If `false` than this call failed and we should NOT call `leaveDI`
  *
  * `true` 我们已成功输入与 `tNode` 关联的 DI（或者如果 `flags` 具有 `SkipSelf` ，则使用声明的
- * `TNode` ），则为 true 。无法输入 DI 意味着无法找到关联 `NodeInjector` ，我们应该改用
+ * `TNode`），则为 true 。无法输入 DI 意味着无法找到关联 `NodeInjector` ，我们应该改用
  * `ModuleInjector` 。 - 如果为 `true` 比此调用失败，我们 `false` `leaveDI` 调用 `leaveDI`
  *
  */
@@ -825,7 +825,7 @@ function createLFrame(parent: LFrame|null): LFrame {
  * NOTE: This function is reexported as `leaveDI`. However `leaveDI` has return type of `void` where
  * as `leaveViewLight` has `LFrame`. This is so that `leaveViewLight` can be used in `leaveView`.
  *
- * 注：此函数被重新导出为 `leaveDI` 。但是， `leaveDI` 的返回类型为 `void` ，而 `leaveViewLight`
+ * 注意：此函数被重新导出为 `leaveDI` 。但是，`leaveDI` 的返回类型为 `void` ，而 `leaveViewLight`
  * 具有 `LFrame` 。这是为了让 `leaveViewLight` 可以在 `leaveView` 中使用。
  *
  */
@@ -926,7 +926,7 @@ export function getSelectedIndex() {
  * (Note that if an "exit function" was set earlier (via `setElementExitFn()`) then that will be
  * run if and when the provided `index` value is different from the current selected index value.)
  *
- * （请注意，如果较早设置了“退出函数”（通过 `setElementExitFn()` ），那么如果提供的 `index`
+ *（请注意，如果较早设置了“退出函数”（通过 `setElementExitFn()`），那么如果提供的 `index`
  * 值与当前所选的索引值不同，它将运行。）
  *
  */

@@ -24,7 +24,7 @@ As background for this guide, you should already be familiar with [Angular React
 
 With Angular reactive forms, you explicitly specify a *form model*. As a simple example, consider this basic user login form:
 
-使用 Angular 响应式表单，你可以显式指定*表单 model* 。作为一个简单的例子，考虑这个基本的用户登录表单：
+使用 Angular 响应式表单，你可以显式指定*表单 model*。作为一个简单的例子，考虑这个基本的用户登录表单：
 
 ```ts
 const login = new FormGroup({
@@ -39,7 +39,7 @@ Angular 提供了许多 API 来与此 `FormGroup` 交互。例如，你可以调
 
 In previous Angular versions, most of these APIs included `any` somewhere in their types, and interacting with the structure of the controls, or the values themselves, was not type-safe. For example: you could write the following invalid code:
 
-在以前的 Angular 版本中，这些 API 中的大多数都在其类型中的某处包含 `any` ，并且与控件结构或值本身的交互不是类型安全的。例如：你可以编写以下无效代码：
+在以前的 Angular 版本中，这些 API 中的大多数都在其类型中的某处包含 `any`，并且与控件结构或值本身的交互不是类型安全的。例如：你可以编写以下无效代码：
 
 ```ts
 const emailDomain = login.value.email.domain;
@@ -94,7 +94,7 @@ const email = new FormControl('angularrox@gmail.com');
 
 This control will be automatically inferred to have the type `FormControl<string|null>`. TypeScript will automatically enforce this type throughout the [`FormControl` API](api/forms/FormControl), such as `email.value`, `email.valueChanges`, `email.setValue(...)`, etc.
 
-此控件将被自动推断为 `FormControl<string|null>` 类型。 TypeScript 会在整个[`FormControl` API](api/forms/FormControl)中自动强制执行此类型，例如 `email.value` 、 `email.valueChanges` 、 `email.setValue(...)` 等。
+此控件将被自动推断为 `FormControl<string|null>` 类型。TypeScript 会在整个[`FormControl` API](api/forms/FormControl)中自动强制执行此类型，例如 `email.value` 、 `email.valueChanges` 、 `email.setValue(...)` 等。
 
 ### Nullability
 
@@ -130,7 +130,7 @@ To reiterate, this option affects the runtime behavior of your form when `.reset
 
 It is possible to specify the type, instead of relying on inference. Consider a control that is initialized to `null`. Because the initial value is `null`, TypeScript will infer `FormControl<null>`, which is narrower than we want.
 
-可以指定类型，而不是依赖推理。考虑一个初始化为 `null` 的控件。因为初始值为 `null` ，所以 TypeScript 将推断 `FormControl<null>` ，这比我们想要的要窄。
+可以指定类型，而不是依赖推理。考虑一个初始化为 `null` 的控件。因为初始值为 `null`，所以 TypeScript 将推断 `FormControl<null>`，这比我们想要的要窄。
 
 ```ts
 const email = new FormControl(null);
@@ -150,11 +150,11 @@ email.setValue('angularrox@gmail.com');
 
 ## `FormArray`: Dynamic, Homogenous Collections
 
-## `FormArray` ：动态的同质集合
+## `FormArray` ：动态的、同质的集合
 
 A `FormArray` contains an open-ended list of controls. The type parameter corresponds to the type of each inner control:
 
-`FormArray` 包含一个开放式控件列表。 type 参数对应于每个内部控件的类型：
+`FormArray` 包含一个开放式控件列表。type 参数对应于每个内部控件的类型：
 
 ```ts
 const names = new FormArray([new FormControl('Alex')]);
@@ -163,11 +163,11 @@ names.push(new FormControl('Jess'));
 
 This `FormArray` will have the inner controls type `FormControl<string|null>`.
 
-此 `FormArray` 将具有内部控件类型 `FormControl<string|null>` 。
+此 `FormArray` 将具有内部控件类型 `FormControl<string|null>`。
 
 If you want to have multiple different element types inside the array, you must use `UntypedFormArray`, because TypeScript cannot infer which element type will occur at which position.
 
-如果你想在数组中有多个不同的元素类型，则必须使用 `UntypedFormArray` ，因为 TypeScript 无法推断哪种元素类型将出现在哪个位置。
+如果你想在数组中有多个不同的元素类型，则必须使用 `UntypedFormArray`，因为 TypeScript 无法推断哪种元素类型将出现在哪个位置。
 
 <a id="form-group-record"></a>
 
@@ -200,15 +200,15 @@ On any `FormGroup`, it is [possible to disable controls](api/forms/FormGroup). A
 
 As a consequence, the type of `login.value` is `Partial<{email: string, password: string}>`. The `Partial` in this type means that each member might be undefined.
 
-因此， `login.value` 的类型是 `Partial<{email: string, password: string}>` 。这种类型的 `Partial` 意味着每个成员可能是未定义的。
+因此，`login.value` 的类型是 `Partial<{email: string, password: string}>`。这种类型的 `Partial` 意味着每个成员可能是未定义的。
 
 More specifically, the type of `login.value.email` is `string|undefined`, and TypeScript will enforce that you handle the possibly `undefined` value (if you have `strictNullChecks` enabled).
 
-更具体地说， `login.value.email` 的类型是 `string|undefined` ，TypeScript 将强制你处理可能 `undefined` 的值（如果你启用了 `strictNullChecks` ）。
+更具体地说，`login.value.email` 的类型是 `string|undefined`，TypeScript 将强制你处理可能 `undefined` 的值（如果你启用了 `strictNullChecks`）。
 
 If you want to access the value *including* disabled controls, and thus bypass possible `undefined` fields, you can use `login.getRawValue()`.
 
-如果你想访问*包括*禁用控件的值，从而绕过可能的 `undefined` 字段，可以用 `login.getRawValue()` 。
+如果你想访问*包括*禁用控件的值，从而绕过可能的 `undefined` 字段，可以用 `login.getRawValue()`。
 
 ### Optional Controls and Dynamic Groups
 
@@ -234,13 +234,13 @@ login.removeControl('password');
 
 In this form, we explicitly specify the type, which allows us to make the `password` control optional. TypeScript will enforce that only optional controls can be added or removed.
 
-在这种形式中，我们显式指定类型，这允许我们将 `password` 控制设置为可选。 TypeScript 将强制要求只能添加或删除可选控件。
+在这种形式中，我们显式指定类型，这允许我们将 `password` 控制设置为可选。TypeScript 将强制要求只能添加或删除可选控件。
 
 ### `FormRecord`
 
 Some `FormGroup` usages do not fit the above pattern because the keys are not known ahead of time. The `FormRecord` class is designed for that case:
 
-某些 `FormGroup` 的用法不符合上述模式，因为键是无法提前知道的。 `FormRecord` 类就是为这种情况设计的：
+某些 `FormGroup` 的用法不符合上述模式，因为键是无法提前知道的。`FormRecord` 类就是为这种情况设计的：
 
 ```ts
 const addresses = new FormRecord<FormControl<string|null>>({});
@@ -249,11 +249,11 @@ addresses.addControl('Andrew', new FormControl('2340 Folsom St'));
 
 Any control of type `string|null` can be added to this `FormRecord`.
 
-任何 `string|null` 类型的控件都可以添加到此 `FormRecord` 。
+任何 `string|null` 类型的控件都可以添加到此 `FormRecord`。
 
 If you need a `FormGroup` that is both dynamic (open-ended) and heterogenous (the controls are different types), no improved type safety is possible, and you should use `UntypedFormGroup`.
 
-如果你需要一个动态（开放式）和异构（控件是不同类型）的 `FormGroup` ，则无法提高类型安全，你应该使用 `UntypedFormGroup` 。
+如果你需要一个动态（开放式）和异构（控件是不同类型）的 `FormGroup`，则无法提高类型安全，你应该使用 `UntypedFormGroup`。
 
 ## `FormBuilder` and `NonNullableFormBuilder`
 
@@ -265,7 +265,7 @@ The `FormBuilder` class has been upgraded to support the new types as well, in t
 
 Additionally, an additional builder is available: `NonNullableFormBuilder`. This type is shorthand for specifying `{nonNullable: true}` on every control, and can eliminate significant boilerplate from large non-nullable forms. You can access it using the `nonNullable` property on a `FormBuilder`:
 
-此外，还提供了一个额外的构建器： `NonNullableFormBuilder` 。这种类型是在每个控件上指定 `{nonNullable: true}` 的简写，并且可以从大型不可为空形式中消除重要的样板。你可以用 `FormBuilder` 上的 `nonNullable` 属性访问它：
+此外，还提供了一个额外的构建器：`NonNullableFormBuilder`。这种类型是在每个控件上指定 `{nonNullable: true}` 的简写，并且可以从大型不可为空形式中消除重要的样板。你可以用 `FormBuilder` 上的 `nonNullable` 属性访问它：
 
 ```ts
 const fb = new FormBuilder();
@@ -277,7 +277,7 @@ const login = fb.nonNullable.group({
 
 On the above example, both inner controls will be non-nullable (i.e. `nonNullable` will be set).
 
-在上面的示例中，两个内部控件都将不可为空（即将设置 `nonNullable` ）。
+在上面的示例中，两个内部控件都将不可为空（即将设置 `nonNullable`）。
 
 You can also inject it using the name `NonNullableFormBuilder`.
 

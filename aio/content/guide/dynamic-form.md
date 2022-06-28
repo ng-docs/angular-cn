@@ -132,7 +132,7 @@ When you create the form template in the next step, you instantiate these specif
 | :----------- | :------ |
 | 控制类型 | 详细信息 |
 | `TextboxQuestion` control type | Presents a question and lets users enter input. <code-example header="src/app/question-textbox.ts" path="dynamic-form/src/app/question-textbox.ts"></code-example> The `TextboxQuestion` control type is represented in a form template using an `<input>` element. The `type` attribute of the element is defined based on the `type` field specified in the `options` argument (for example `text`, `email`, `url`). |
-| `TextboxQuestion` 控件类型 | 表示问题并让用户输入。<code-example header="src/app/question-textbox.ts" path="dynamic-form/src/app/question-textbox.ts"></code-example>  `TextboxQuestion` 控件类型将使用 `<input>` 元素表示在表单模板中。该元素的 `type` 属性将根据 `options` 参数中指定的 `type` 字段定义（比如 `text`，`email`，`url` ）。 |
+| `TextboxQuestion` 控件类型 | 表示问题并让用户输入。<code-example header="src/app/question-textbox.ts" path="dynamic-form/src/app/question-textbox.ts"></code-example>  `TextboxQuestion` 控件类型将使用 `<input>` 元素表示在表单模板中。该元素的 `type` 属性将根据 `options` 参数中指定的 `type` 字段定义（比如 `text`，`email`，`url`）。|
 | `DropdownQuestion` control type | Presents a list of choices in a select box. <code-example header="src/app/question-dropdown.ts" path="dynamic-form/src/app/question-dropdown.ts"></code-example> |
 | `DropdownQuestion` 控件类型 | 表示在选择框中的一个选项列表。<code-example header="src/app/question-dropdown.ts" path="dynamic-form/src/app/question-dropdown.ts"></code-example> |
 
@@ -264,9 +264,9 @@ The following figure shows the final form.
 | :---- | :------ |
 | 步骤 | 详细信息 |
 | Different types of forms and control collection | This tutorial shows how to build a questionaire, which is just one kind of dynamic form. The example uses `FormGroup` to collect a set of controls. For an example of a different type of dynamic form, see the section [Creating dynamic forms](guide/reactive-forms#creating-dynamic-forms "Create dynamic forms with arrays") in the Reactive Forms guide. That example also shows how to use `FormArray` instead of `FormGroup` to collect a set of controls. |
-| 不同类型的表单和控件集合 | 本教程展示了如何构建一个问卷，它只是一种动态表单。这个例子使用 `FormGroup` 来收集一组控件。关于不同类型动态表单的范例，参阅在响应式表单中的[创建动态表单](guide/reactive-forms#creating-dynamic-forms "用数组创建动态表单")一节。那个例子还展示了如何使用 `FormArray` 而不是 `FormGroup` 来收集一组控件。 |
+| 不同类型的表单和控件集合 | 本教程展示了如何构建一个问卷，它只是一种动态表单。这个例子使用 `FormGroup` 来收集一组控件。关于不同类型动态表单的范例，参阅在响应式表单中的[创建动态表单](guide/reactive-forms#creating-dynamic-forms "用数组创建动态表单")一节。那个例子还展示了如何使用 `FormArray` 而不是 `FormGroup` 来收集一组控件。|
 | Validating user input | The section [Validating form input](guide/reactive-forms#validating-form-input "Basic input validation") introduces the basics of how input validation works in reactive forms. <br /> The [Form validation guide](guide/form-validation "Form validation guide") covers the topic in more depth. |
-| 验证用户输入 | [验证表单输入](guide/reactive-forms#validating-form-input "基本输入验证")部分介绍了如何在响应式表单中进行输入验证的基础知识。<br />[表单验证指南](guide/form-validation "表单验证指南")更深入地介绍了该主题。 |
+| 验证用户输入 | [验证表单输入](guide/reactive-forms#validating-form-input "基本输入验证")部分介绍了如何在响应式表单中进行输入验证的基础知识。<br />[表单验证指南](guide/form-validation "表单验证指南")更深入地介绍了该主题。|
 
 <!-- links -->
 

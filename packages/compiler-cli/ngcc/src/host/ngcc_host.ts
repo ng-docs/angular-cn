@@ -162,7 +162,7 @@ export interface NgccReflectionHost extends ReflectionHost {
    *
    * @return The passed in `Declaration` (potentially enhanced with a `KnownDeclaration`).
    *
-   * 传入的 `Declaration` （可能使用 `KnownDeclaration` 增强）。
+   * 传入的 `Declaration`（可能使用 `KnownDeclaration` 增强）。
    *
    */
   detectKnownDeclaration<T extends Declaration>(decl: T): T;

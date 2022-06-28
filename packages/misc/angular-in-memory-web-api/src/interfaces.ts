@@ -77,7 +77,7 @@ export abstract class InMemoryBackendConfigArgs {
   /**
    * false (default) if search match should be case insensitive
    *
-   * false （默认）如果搜索匹配应该不区分大小写
+   * false（默认）如果搜索匹配应该不区分大小写
    *
    */
   caseSensitiveSearch?: boolean;
@@ -85,7 +85,7 @@ export abstract class InMemoryBackendConfigArgs {
    * false (default) put content directly inside the response body.
    * true: encapsulate content in a `data` property inside the response body, `{ data: ... }`.
    *
-   * false （默认）将内容直接放在响应正文中。 true ：将内容封装在响应正文中的 `data` 属性中 `{ data:
+   * false（默认）将内容直接放在响应正文中。 true ：将内容封装在响应正文中的 `data` 属性中 `{ data:
    * ... }` 。
    *
    */
@@ -100,7 +100,7 @@ export abstract class InMemoryBackendConfigArgs {
   /**
    * false (default) should 204 when object-to-delete not found; true: 404
    *
-   * false （默认）当找不到 object-to-delete 时应该为 204；真： 404
+   * false（默认）当找不到 object-to-delete 时应该为 204；真： 404
    *
    */
   delete404?: boolean;
@@ -114,35 +114,35 @@ export abstract class InMemoryBackendConfigArgs {
   /**
    * false (default) should pass unrecognized request URL through to original backend; true: 404
    *
-   * false （默认）应该将无法识别的请求 URL 传递到原始后端；真： 404
+   * false（默认）应该将无法识别的请求 URL 传递到原始后端；真： 404
    *
    */
   passThruUnknownUrl?: boolean;
   /**
    * true (default) should NOT return the item (204) after a POST. false: return the item (200).
    *
-   * true （默认）不应该在 POST 之后返回条目 (204)。 false ：返回条目 (200)。
+   * true（默认）不应该在 POST 之后返回条目 (204)。 false ：返回条目 (200)。
    *
    */
   post204?: boolean;
   /**
    * false (default) should NOT update existing item with POST. false: OK to update.
    *
-   * false （默认）不应使用 POST 更新现有项。 false：可以更新。
+   * false（默认）不应使用 POST 更新现有项。 false：可以更新。
    *
    */
   post409?: boolean;
   /**
    * true (default) should NOT return the item (204) after a POST. false: return the item (200).
    *
-   * true （默认）不应该在 POST 之后返回条目 (204)。 false ：返回条目 (200)。
+   * true（默认）不应该在 POST 之后返回条目 (204)。 false ：返回条目 (200)。
    *
    */
   put204?: boolean;
   /**
    * false (default) if item not found, create as new item; false: should 404.
    *
-   * false （默认）如果找不到条目，则创建为新条目； false：应该 404。
+   * false（默认）如果找不到条目，则创建为新条目； false：应该 404。
    *
    */
   put404?: boolean;
@@ -321,7 +321,7 @@ export interface RequestInfoUtilities {
    *
    * @param withDelay - if true (default), add simulated latency delay from configuration
    *
-   *   如果为 true （默认），则从配置中添加模拟的延迟延迟
+   *   如果为 true（默认），则从配置中添加模拟的延迟延迟
    *
    */
   createResponse$: (resOptionsFactory: () => ResponseOptions) => Observable<any>;
@@ -388,7 +388,7 @@ export interface RequestInfoUtilities {
    * Parses the request URL into a `ParsedRequestUrl` object.
    * Parsing depends upon certain values of `config`: `apiBase`, `host`, and `urlRoot`.
    *
-   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值： `apiBase` 、 `host`
+   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值： `apiBase`、`host`
    * 和 `urlRoot` 。
    *
    */

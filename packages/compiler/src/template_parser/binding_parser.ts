@@ -122,8 +122,8 @@ export class BindingParser {
    * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
    * This is used for parsing the switch expression in ICUs.
    *
-   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（ `{{` 和 `}}`
-   * ）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
+   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`
+   *）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
    *
    */
   parseInterpolationExpression(expression: string, sourceSpan: ParseSourceSpan): ASTWithSource {

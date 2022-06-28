@@ -396,8 +396,8 @@ function getDateTranslation(
  * extended = +04:30)
  *
  * 返回一个日期格式化器，它会根据宽度把日期和偏移转换成 ISO8601 或 GMT 格式的时区
- * （如 short = +0430, short:GMT = GMT+4, long = GMT+04:30,
- * extended = +04:30 ）。
+ *（如 short = +0430, short:GMT = GMT+4, long = GMT+04:30,
+ * extended = +04:30）。
  */
 function timeZoneGetter(width: ZoneWidth): DateFormatter {
   return function(date: Date, locale: string, offset: number) {

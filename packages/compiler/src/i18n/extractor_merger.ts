@@ -53,11 +53,16 @@ enum _VisitorMode {
 
 /**
  * This Visitor is used:
- * 1\. to extract all the translatable strings from an html AST (see `extract()`),
- * 2\. to replace the translatable strings with the actual translations (see `merge()`)
  *
- * 此访问器用于：1.从 html AST 中提取所有可翻译字符串（请参阅 `extract()` ），2.
- * 用实际的翻译替换可翻译字符串（请参阅 `merge()` ）
+ * 此访问器用于：
+ *
+ * 1. to extract all the translatable strings from an html AST (see `extract()`),
+ *
+ *    从 html AST 中提取所有可翻译字符串（请参阅 `extract()`）
+ *
+ * 2. to replace the translatable strings with the actual translations (see `merge()`)
+ *
+ *    用实际的翻译替换可翻译字符串（请参阅 `merge()`）
  *
  * @internal
  */
@@ -516,7 +521,7 @@ class _Visitor implements html.Visitor {
    * In this case the last message is discarded as it contains less information (the AST is
    * otherwise identical).
    *
-   * 在这种情况下，最后一条消息被丢弃，因为它包含的信息较少（ AST 在其他方面是相同的）。
+   * 在这种情况下，最后一条消息被丢弃，因为它包含的信息较少（AST 在其他方面是相同的）。
    *
    * Note that we should still keep messages extracted from attributes inside the section (ie in the
    * ICU message here)

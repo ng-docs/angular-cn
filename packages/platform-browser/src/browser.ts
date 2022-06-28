@@ -56,8 +56,6 @@ export interface ApplicationConfig {
  *
  * ```typescript
  *
- * ```
- *
  * @Component ({
  *   standalone: true,
  *   template: 'Hello world!'
@@ -138,7 +136,7 @@ export function bootstrapApplication(
  *
  * 返回使用 `bootstrapApplication`
  * 函数引导的应用程序设置[Testability](api/core/Testability)所需的一组提供程序。需要这组提供者来支持使用
- * Protractor （依赖于存在的 Testability API）测试应用程序。
+ * Protractor（依赖于存在的 Testability API）测试应用程序。
  *
  * @returns
  *

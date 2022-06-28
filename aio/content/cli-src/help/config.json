@@ -1,0 +1,43 @@
+{
+  "name": "config",
+  "command": "ng config [json-path] [value]",
+  "shortDescription": "Retrieves or sets Angular configuration values in the angular.json file for the workspace.",
+  "longDescriptionRelativePath": "@angular/cli/src/commands/config/long-description.md",
+  "longDescription": "A workspace has a single CLI configuration file, `angular.json`, at the top level.\nThe `projects` object contains a configuration object for each project in the workspace.\n\nYou can edit the configuration directly in a code editor,\nor indirectly on the command line using this command.\n\nThe configurable property names match command option names,\nexcept that in the configuration file, all names must use camelCase,\nwhile on the command line options can be given dash-case.\n\nFor further details, see [Workspace Configuration](guide/workspace-config).\n\nFor configuration of CLI usage analytics, see [Gathering an Viewing CLI Usage Analytics](cli/usage-analytics-gathering).\n",
+  "aliases": [],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "global",
+      "type": "boolean",
+      "aliases": [
+        "g"
+      ],
+      "default": false,
+      "description": "Access the global configuration in the caller's home directory.",
+      "descriptionCn": "访问此调用者 home 目录下的全局配置。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "json-path",
+      "type": "string",
+      "description": "The configuration key to set or query, in JSON path format. For example: \"a[3].foo.bar[2]\". If no new value is provided, returns the current value of this key.",
+      "positional": 0,
+      "descriptionCn": "要设置或查询的配置键，采用 JSON 路径格式。例如：`a[3].foo.bar[2]`。如果没有提供新值，则返回此键的当前值。"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "If provided, a new value for the given configuration key.",
+      "positional": 1,
+      "descriptionCn": "如果提供，则为指定配置键的新值。"
+    }
+  ],
+  "shortDescriptionCn": "从本工作空间的 angular.json 文件中获取或设置 Angular 的配置值。",
+  "longDescriptionCn": "工作区在顶层有一个 CLI 配置文件`angular.json`。`projects`对象包含工作区中每个项目的配置对象。\n\n你可以在代码编辑器中直接编辑配置，也可以用此命令在命令行上间接编辑。\n\n可配置的属性名称与命令选项名称匹配，只是在配置文件中，所有名称都必须使用 camelCase，而在命令行选项上可以用 dash-case 。\n\n有关更多详细信息，请参阅[工作区配置](guide/workspace-config)。\n\n有关 CLI 使用情况分析的配置，请参阅[收集查看 CLI 使用情况分析](cli/usage-analytics-gathering)。"
+}

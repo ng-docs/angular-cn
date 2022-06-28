@@ -39,7 +39,7 @@ This guide describes how and when Angular renders the HTML based on the data fro
 
 ### Detecting changes with plain JavaScript
 
-### 使用普通（Plain） JavaScript 检测更改
+### 使用普通（Plain）JavaScript 检测更改
 
 To clarify how changes are detected and values updated, consider the following code written in plain JavaScript.
 
@@ -141,7 +141,7 @@ Typically, updates occur for one of the following reasons:
 1. Event listener.
    The DOM event listener can update the data in an Angular component and also trigger change detection, as in the following example.
 
-   事件监听器。 DOM 事件侦听器可以更新 Angular 组件中的数据，还可以触发变更检测，如下例所示。
+   事件监听器。DOM 事件侦听器可以更新 Angular 组件中的数据，还可以触发变更检测，如下例所示。
 
    <code-example header="src/app/click-me.component.ts" path="user-input/src/app/click-me.component.ts" region="click-me-component"></code-example>
 
@@ -176,7 +176,7 @@ Typically, updates occur for one of the following reasons:
    You can also update the data in the callback function of a `macroTask` such as `setTimeout()`.
    For example:
 
-   宏任务，比如 `setTimeout()` 或 `setInterval()` 。你还可以在诸如 `setTimeout()` `macroTask` 的回调函数中更新数据。比如：
+   宏任务，比如 `setTimeout()` 或 `setInterval()`。你还可以在诸如 `setTimeout()` `macroTask` 的回调函数中更新数据。比如：
 
    <code-example format="typescript" language="typescript">
 
@@ -226,7 +226,7 @@ Typically, updates occur for one of the following reasons:
    In addition to `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously.
    Some examples include `WebSocket.onmessage()` and `Canvas.toBlob()`.
 
-   其他异步操作。除了 `addEventListener()` ， `setTimeout()` 和 `Promise.then()` ，还有其他一些操作可以异步更新数据。比如 `WebSocket.onmessage()` 和 `Canvas.toBlob()` 。
+   其他异步操作。除了 `addEventListener()`，`setTimeout()` 和 `Promise.then()`，还有其他一些操作可以异步更新数据。比如 `WebSocket.onmessage()` 和 `Canvas.toBlob()`。
 
    The preceding list contains most common scenarios in which the application might change the data.
    Angular runs change detection whenever it detects that data could have changed.
@@ -274,7 +274,7 @@ Thus, you can lose the context in asynchronous operations.
 A zone provides a new zone context other than `this`, the zone context that persists across asynchronous operations.
 In the following example, the new zone context is called `zoneThis`.
 
-Zone 提供了不同于 `this` 的新的 Zone 上下文，该 Zone 上下文在异步操作中保持不变。在下例中，新的 Zone 上下文称为 `zoneThis` 。
+Zone 提供了不同于 `this` 的新的 Zone 上下文，该 Zone 上下文在异步操作中保持不变。在下例中，新的 Zone 上下文称为 `zoneThis`。
 
 <code-example format="javascript" language="javascript">
 
@@ -361,13 +361,13 @@ These hooks trigger under the following circumstances:
 | :---- | :------ |
 | 钩子 | 详情 |
 | `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`. |
-| `onScheduleTask` | 在计划新的异步任务时触发，比如调用 `setTimeout()` 时。 |
+| `onScheduleTask` | 在计划新的异步任务时触发，比如调用 `setTimeout()` 时。|
 | `onInvokeTask` | Triggers when an asynchronous task is about to execute, such as when the callback of `setTimeout()` is about to execute. |
-| `onInvokeTask` | 在异步任务即将执行时触发，比如 `setTimeout()` 的回调即将执行时。 |
+| `onInvokeTask` | 在异步任务即将执行时触发，比如 `setTimeout()` 的回调即将执行时。|
 | `onHasTask` | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
-| `onHasTask` | 当 Zone 内的一种任务的状态从稳定变为不稳定或从不稳定变为稳定时触发。状态“稳定”表示该 Zone 内没有任务，而“不稳定”表示在该 Zone 中计划了新任务。 |
+| `onHasTask` | 当 Zone 内的一种任务的状态从稳定变为不稳定或从不稳定变为稳定时触发。状态“稳定”表示该 Zone 内没有任务，而“不稳定”表示在该 Zone 中计划了新任务。|
 | `onInvoke` | Triggers when a synchronous function is going to execute in the zone. |
-| `onInvoke` | 将在 Zone 中执行同步函数时触发。 |
+| `onInvoke` | 将在 Zone 中执行同步函数时触发。|
 
 With these hooks, `Zone` can monitor the status of all synchronous and asynchronous operations inside a zone.
 
@@ -427,7 +427,7 @@ This service creates a zone named `angular` to automatically trigger change dete
 For the full list, see the [Zone Module document](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md).
 Therefore in those asynchronous APIs, you don't need to trigger change detection manually.
 
-`Zone` 处理大多数异步 API，比如 `setTimeout()`、`Promise.then()` 和 `addEventListener()` 。有关完整列表，请参见 [Zone 模块的文档](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md)。因此，在这些异步 API 中，你无需手动触发变更检测。
+`Zone` 处理大多数异步 API，比如 `setTimeout()`、`Promise.then()` 和 `addEventListener()`。有关完整列表，请参见 [Zone 模块的文档](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md)。因此，在这些异步 API 中，你无需手动触发变更检测。
 
 There are still some third party APIs that Zone does not handle.
 In those cases, the `NgZone` service provides a [`run()`](api/core/NgZone#run) method that allows you to execute a function inside the Angular zone.
@@ -457,7 +457,7 @@ By default, all asynchronous operations are inside the Angular zone, which trigg
 Another common case is when you don't want to trigger change detection.
 In that situation, you can use another `NgZone` method: [`runOutsideAngular()`](api/core/NgZone#runoutsideangular).
 
-默认情况下，所有异步操作都在 Angular Zone 内，这会自动触发变更检测。另一个常见的情况是你不想触发变更检测。在这种情况下，你可以使用另一个 `NgZone` 方法：[`runOutsideAngular()`](api/core/NgZone#runoutsideangular) 。
+默认情况下，所有异步操作都在 Angular Zone 内，这会自动触发变更检测。另一个常见的情况是你不想触发变更检测。在这种情况下，你可以使用另一个 `NgZone` 方法：[`runOutsideAngular()`](api/core/NgZone#runoutsideangular)。
 
 <code-example format="typescript" language="typescript">
 

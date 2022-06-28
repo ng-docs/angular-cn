@@ -449,7 +449,7 @@ function collectQueryResults<T>(tView: TView, lView: LView, queryIndex: number, 
  * `true` if a query got dirty during change detection or if this is a static query
  * resolving in creation mode, `false` otherwise.
  *
- * `true` 查询在更改检测期间变脏，或者这是在创建模式下解析的静态查询，则为 true ，否则为 `false` 。
+ * `true` 查询在变更检测期间变脏，或者这是在创建模式下解析的静态查询，则为 true ，否则为 `false` 。
  *
  * @codeGenApi
  */

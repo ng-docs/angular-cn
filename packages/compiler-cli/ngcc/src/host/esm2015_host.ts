@@ -173,7 +173,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    * Here, the intermediate `MyClass_1` assignment is optional. In the above example, the
    * `class MyClass {}` node is returned as declaration of `MyClass`.
    *
-   * 在这里，中间的 `MyClass_1` 分配是可选的。在上面的示例中， `class MyClass {}` 节点作为 `MyClass`
+   * 在这里，中间的 `MyClass_1` 分配是可选的。在上面的示例中，`class MyClass {}` 节点作为 `MyClass`
    * 的声明返回。
    *
    * @param declaration the declaration node whose symbol we are finding.
@@ -681,7 +681,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    *
    * @return The passed in `Declaration` (potentially enhanced with a `KnownDeclaration`).
    *
-   * 传入的 `Declaration` （可能使用 `KnownDeclaration` 增强）。
+   * 传入的 `Declaration`（可能使用 `KnownDeclaration` 增强）。
    *
    */
   detectKnownDeclaration<T extends Declaration>(decl: T): T {
@@ -1602,7 +1602,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    *   2\. a decorated parameter, corresponding with `__param` calls from `tslib`, or
    *   3\. the type information of parameters, corresponding with `__metadata` call from `tslib`
    *
-   * 可以看到，有对常规装饰器（ `Directive` ）的调用和对 TypeScript 插入的 `tslib`
+   * 可以看到，有对常规装饰器（`Directive`）的调用和对 TypeScript 插入的 `tslib`
    * 函数的调用。因此，此函数将调用分类为 1. 像上面的 `Directive` 这样的真实装饰器，或 2.
    * 装饰参数，对应于来自 `tslib` 的 `__param` 调用，或 3. 参数的类型信息，对应于来自 `tslib` 的
    * `__metadata` 调用
@@ -2228,7 +2228,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    * @param helperNames the names of the helpers (e.g. `__decorate`) whose calls we are interested
    * in.
    *
-   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate` ）。
+   * 我们感兴趣的调用的帮助器的名称（例如 `__decorate`）。
    *
    * @returns
    *
@@ -2614,7 +2614,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    *
    * An `EnumMember` if the statement is according to the expected syntax, null otherwise.
    *
-   * 如果语句符合预期的语法， `EnumMember` ，否则为 null 。
+   * 如果语句符合预期的语法，`EnumMember` ，否则为 null 。
    *
    */
   protected reflectEnumMember(enumName: ts.Identifier, statement: ts.Statement): EnumMember|null {

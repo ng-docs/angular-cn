@@ -45,7 +45,7 @@ export interface PackageJsonUpdater {
    * operations.)
    *
    * 创建一个 `PackageJsonUpdate` 对象，它提供了流式 API 来批处理对 `package.json` 文件的更新。
-   * （批处理更新很有用，因为它避免了不必要的 I/O 操作。）
+   *（批处理更新很有用，因为它避免了不必要的 I/O 操作。）
    *
    */
   createUpdate(): PackageJsonUpdate;
@@ -83,7 +83,7 @@ export interface PackageJsonUpdater {
  * NOTE: This class should generally not be instantiated directly; instances are implicitly created
  *       via `PackageJsonUpdater#createUpdate()`.
  *
- * 注：此类通常不应该直接实例化；实例是通过 `PackageJsonUpdater#createUpdate()` 隐式创建的。
+ * 注意：此类通常不应该直接实例化；实例是通过 `PackageJsonUpdater#createUpdate()` 隐式创建的。
  *
  */
 export class PackageJsonUpdate {
@@ -102,12 +102,12 @@ export class PackageJsonUpdate {
    * moved accordingly.)
    *
    * 如果 `package.json` 文件中尚不存在祖先对象，则将创建它们。也可以指定属性的位置。
-   * （如果该属性已经存在，它将相应地移动。）
+   *（如果该属性已经存在，它将相应地移动。）
    *
    * NOTE: Property positioning is only guaranteed to be respected in the serialized `package.json`
    *       file. Positioning will not be taken into account when updating in-memory representations.
    *
-   * 注：仅保证在序列化的 `package.json` 文件中遵守属性定位。更新内存中表示时，不会考虑定位。
+   * 注意：仅保证在序列化的 `package.json` 文件中遵守属性定位。更新内存中表示时，不会考虑定位。
    *
    * NOTE 2: Property positioning only affects the last property in `propertyPath`. Ancestor
    *         objects' positioning will not be affected.

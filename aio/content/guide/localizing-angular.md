@@ -35,7 +35,7 @@ To have a localized version of Angular documentation listed on [angular.io](http
 Nomination, in this instance, means that the GDE knows who you are and can vouch for your capabilities.
 An Angular GDE can nominate someone by contacting the Angular team, providing your name, contact information, and the language to which you are localizing.
 
-在这种情况下，提名意味着 GDE 知道你是谁，并且可以保证你的能力。 Angular GDE 可以通过联系 Angular 团队、提供你的姓名、联系信息和你要本地化的语言来提名某人。
+在这种情况下，提名意味着 GDE 知道你是谁，并且可以保证你的能力。Angular GDE 可以通过联系 Angular 团队、提供你的姓名、联系信息和你要本地化的语言来提名某人。
 
 ## What to localize
 
@@ -131,7 +131,7 @@ Individuals and teams that localize Angular documentation assume responsibility 
 The Angular team does not host localized content.
 The Angular team is also not responsible for providing domain names.
 
-将 Angular 文档本地化的个人和团队负责托管他们的本地化网站。 Angular 团队不托管本地化内容。 Angular 团队也不负责提供域名。
+将 Angular 文档本地化的个人和团队负责托管他们的本地化网站。Angular 团队不托管本地化内容。Angular 团队也不负责提供域名。
 
 ## Awareness
 

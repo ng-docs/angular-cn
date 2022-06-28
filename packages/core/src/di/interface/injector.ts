@@ -82,7 +82,7 @@ export enum InjectFlags {
  * Keep this enum in sync with `InjectFlags` enum above.
  *
  * 此枚举是上面的 `InjectFlags` 枚举的精确副本，但区别在于这是一个 const
- * 枚举，因此实际的枚举值将在生成的代码中内联。删除 ViewEngine 时， `InjectFlags` 枚举可以变成 const
+ * 枚举，因此实际的枚举值将在生成的代码中内联。删除 ViewEngine 时，`InjectFlags` 枚举可以变成 const
  * 枚举（请参阅上面的 `InjectFlags` 枚举中的 TODO）。内联的好处是我们可以在顶层使用这些标志而不影响
  * tree-shaking（有关更多信息，请参阅“no-toplevel-property-access” tslint 规则）。保持此枚举与上面的
  * `InjectFlags` 枚举同步。
@@ -101,7 +101,7 @@ export const enum InternalInjectFlags {
    * Specifies that an injector should retrieve a dependency from any injector until reaching the
    * host element of the current component. (Only used with Element Injector)
    *
-   * 指定注入器应该从任何注入器检索依赖项，直到到达当前组件的宿主元素。 （仅与 Element Injector
+   * 指定注入器应该从任何注入器检索依赖项，直到到达当前组件的宿主元素。（仅与 Element Injector
    * 一起使用）
    *
    */

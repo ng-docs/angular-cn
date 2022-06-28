@@ -217,7 +217,7 @@ The following parameters provide context and additional information to reduce co
 | Custom ID | Provide a custom identifier |
 | 自定义 ID | 提供自定义标识符 |
 | Description | Provide additional information or context |
-| 描述(Description) | 提供额外的信息或背景 |
+| 说明 | 提供额外的信息或背景 |
 | Meaning | Provide the meaning or intent of the text within the specific context |
 | 含义(Meaning) | 提供文本在特定上下文中的含义或意图 |
 
@@ -258,7 +258,7 @@ The following example shows the value of the [`$localize`][AioApiLocalizeInitLoc
 The translator may also need to know the meaning or intent of the text message within this particular application context, in order to translate it the same way as other text with the same meaning.
 Start the `i18n` attribute value with the *meaning* and separate it from the *description* with the `|` character: `{meaning}|{description}`.
 
-翻译者可能还需要了解该特定应用上下文中此文本消息的含义或意图，以便以与具有相同含义的其他文本相同的方式对其进行翻译。把*含义*放在 `i18n` 属性值的最前面，并用 `|` 字符将其与*描述*分开：`{meaning}|{description}` 。
+翻译者可能还需要了解该特定应用上下文中此文本消息的含义或意图，以便以与具有相同含义的其他文本相同的方式对其进行翻译。把*含义*放在 `i18n` 属性值的最前面，并用 `|` 字符将其与*描述*分开：`{meaning}|{description}`。
 
 #### `h1` example
 
@@ -292,22 +292,16 @@ The following code example shows the value of the [`$localize`][AioApiLocalizeIn
 
 <div class="callout is-helpful">
 
-<header>
-<a name="how-meanings-control-text-extraction-and-merges"></a> How meanings control text extraction and merges
+<a name="how-meanings-control-text-extraction-and-merges"></a>
 
-<header><a name="how-meanings-control-text-extraction-and-merges"></a>含义如何控制文本提取和合并
+<header>How meanings control text extraction and merges</header>
 
-</header>
-
-<header>
-<a name="how-meanings-control-text-extraction-and-merges"></a> 含义（meaning）是如何控制文本提取与合并的
-
-</header>
+<header>含义（meaning）是如何控制文本提取与合并的</header>
 
 The Angular extraction tool generates a translation unit entry for each `i18n` attribute in a template.
 The Angular extraction tool assigns each translation unit a unique ID based on the *meaning* and *description*.
 
-Angular 提取工具会为模板中的每个 `i18n` 属性生成一个翻译单元条目。 Angular 提取工具会根据*含义*和*描述*为每个翻译单元分配一个唯一的 ID。
+Angular 提取工具会为模板中的每个 `i18n` 属性生成一个翻译单元条目。Angular 提取工具会根据*含义*和*描述*为每个翻译单元分配一个唯一的 ID。
 
 <div class="alert is-helpful">
 
@@ -473,7 +467,7 @@ The default locale (`en-US`) uses a very simple `plural()` function that doesn't
 Another locale with a simple `plural()` function is `es`.
 The following code example shows the [en-US `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] function.
 
-许多语言环境不支持某些复数类别。默认语言环境 (`en-US`) 使用一个非常简单的 `plural()` 函数，该函数不支持 `few` 复数类别。另一个具有简单 `plural()` 函数的语言环境是 `es` 。以下代码示例显示了 [en-US 多重 `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] 函数。
+许多语言环境不支持某些复数类别。默认语言环境 (`en-US`) 使用一个非常简单的 `plural()` 函数，该函数不支持 `few` 复数类别。另一个具有简单 `plural()` 函数的语言环境是 `es`。以下代码示例显示了 [en-US 多重 `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] 函数。
 
 <code-example path="i18n/doc-files/locale_plural_function.ts" class="no-box" hideCopy></code-example>
 
@@ -535,19 +529,19 @@ Review the following details in the previous code example.
 | :--------- | :------ |
 | 参数 | 详情 |
 | `minutes` | The first parameter specifies the component property is `minutes` and determines the number of minutes. |
-| `minutes` | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。 |
+| `minutes` | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。|
 | `plural` | The second parameter specifies the ICU clause is `plural`. |
-| `plural` | 第二个参数指定 ICU 子句是 `plural`。 |
+| `plural` | 第二个参数指定 ICU 子句是 `plural`。|
 | `=0 {just now}` | For zero minutes, the pluralization category is `=0`. The value is `just now`. |
-| `=0 {just now}` | 对于零分钟，复数类别是 `=0`。其值是 `just now`。 |
+| `=0 {just now}` | 对于零分钟，复数类别是 `=0`。其值是 `just now`。|
 | `=1 {one minute}` | For one minute, the pluralization category is `=1`. The value is `one minute`. |
-| `=1 {one minute}` | 对于一分钟，复数类别是 `=1` 。该值为 `one minute`。 |
+| `=1 {one minute}` | 对于一分钟，复数类别是 `=1`。该值为 `one minute`。|
 | `other {{{minutes}} minutes ago}` | For any unmatched cardinality, the default pluralization category is `other`. The value is `{{minutes}} minutes ago`. |
-| `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。 |
+| `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。|
 
 `{{minutes}}` is an [interpolation][AioGuideGlossaryInterpolation].
 
-其中 `{{minutes}}` 是一个[插值][AioGuideGlossaryInterpolation]。
+`{{minutes}}` 是一个[插值][AioGuideGlossaryInterpolation]。
 
 ### Mark alternates and nested expressions
 

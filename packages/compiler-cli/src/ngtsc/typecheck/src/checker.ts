@@ -55,7 +55,7 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
    * `ts.Program` changes, the `TemplateTypeCheckerImpl` as a whole is destroyed and replaced.
    *
    * 每当组件的模板或 `ts.Program` 更改时都必须失效。模板更改的无效是在此 `TemplateTypeCheckerImpl`
-   * 实例中执行的。当 `ts.Program` 更改时， `TemplateTypeCheckerImpl` 作为一个整体被销毁和替换。
+   * 实例中执行的。当 `ts.Program` 更改时，`TemplateTypeCheckerImpl` 作为一个整体被销毁和替换。
    *
    */
   private completionCache = new Map<ts.ClassDeclaration, CompletionEngine>();
@@ -69,7 +69,7 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
    * `ts.Program` changes, the `TemplateTypeCheckerImpl` as a whole is destroyed and replaced.
    *
    * 每当组件的模板或 `ts.Program` 更改时都必须失效。模板更改的无效是在此 `TemplateTypeCheckerImpl`
-   * 实例中执行的。当 `ts.Program` 更改时， `TemplateTypeCheckerImpl` 作为一个整体被销毁和替换。
+   * 实例中执行的。当 `ts.Program` 更改时，`TemplateTypeCheckerImpl` 作为一个整体被销毁和替换。
    *
    */
   private symbolBuilderCache = new Map<ts.ClassDeclaration, SymbolBuilder>();
@@ -93,7 +93,7 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
    * Stores potential element tags for each component (a union of DOM tags as well as directive
    * tags).
    *
-   * 存储每个组件的潜在元素标签（ DOM 标签以及指令标签的联合）。
+   * 存储每个组件的潜在元素标签（DOM 标签以及指令标签的联合）。
    *
    * Unlike other caches, the scope of a component is not affected by its template. It will be
    * destroyed when the `ts.Program` changes and the `TemplateTypeCheckerImpl` as a whole is

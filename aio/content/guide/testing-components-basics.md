@@ -147,7 +147,7 @@ None of the preceding *class-only* tests can answer key questions about how the 
 
 * Is the hero name displayed as expected (such as uppercase)?
 
-  英雄名字是否按预期显示的（也就是大写字母）？
+  英雄名字是否按预期显示的（比如大写字母）？
 
 * Is the welcome message displayed by the template of `WelcomeComponent`?
 
@@ -259,7 +259,7 @@ After configuring `TestBed`, you call its `createComponent()` method.
 
 Do not re-configure `TestBed` after calling `createComponent`.
 
-调用 `createComponent` 后不能再重新配置 `TestBed` 。
+调用 `createComponent` 后不能再重新配置 `TestBed`。
 
 The `createComponent` method freezes the current `TestBed` definition, closing it to further configuration.
 
@@ -268,7 +268,7 @@ The `createComponent` method freezes the current `TestBed` definition, closing i
 You cannot call any more `TestBed` configuration methods, not `configureTestingModule()`, nor `get()`, nor any of the `override...` methods.
 If you try, `TestBed` throws an error.
 
-你不能再调用任何 `TestBed` 配置方法， 无论是 `configureTestingModule()`、`get()` 还是 `override...` 方法都不行。如果你这样做，`TestBed` 会抛出一个错误。
+你不能再调用任何 `TestBed` 配置方法，无论是 `configureTestingModule()`、`get()` 还是 `override...` 方法都不行。如果你这样做，`TestBed` 会抛出一个错误。
 
 </div>
 
@@ -321,7 +321,7 @@ The tests in this guide are designed to run in a browser so a `nativeElement` va
 
 Knowing that it is an `HTMLElement` of some sort, use the standard HTML `querySelector` to dive deeper into the element tree.
 
-知道了它是某种 `HTMLElement` ，就可以用标准的 HTML `querySelector` 深入了解元素树。
+知道了它是某种 `HTMLElement`，就可以用标准的 HTML `querySelector` 深入了解元素树。
 
 Here's another test that calls `HTMLElement.querySelector` to get the paragraph element and look for the banner text:
 
@@ -358,11 +358,11 @@ Angular relies on the `DebugElement` abstraction to work safely across *all supp
 Instead of creating an HTML element tree, Angular creates a `DebugElement` tree that wraps the *native elements* for the runtime platform.
 The `nativeElement` property unwraps the `DebugElement` and returns the platform-specific element object.
 
-Angular 依靠 `DebugElement` 抽象来在其支持的*所有平台上*安全地工作。 Angular 不会创建 HTML 元素树，而会创建一个 `DebugElement` 树来封装运行时平台上的*原生元素*。`nativeElement` 属性会解包 `DebugElement` 并返回特定于平台的元素对象。
+Angular 依靠 `DebugElement` 抽象来在其支持的*所有平台上*安全地工作。Angular 不会创建 HTML 元素树，而会创建一个 `DebugElement` 树来封装运行时平台上的*原生元素*。`nativeElement` 属性会解包 `DebugElement` 并返回特定于平台的元素对象。
 
 Because the sample tests for this guide are designed to run only in a browser, a `nativeElement` in these tests is always an `HTMLElement` whose familiar methods and properties you can explore within a test.
 
-由于本指南的范例测试只能在浏览器中运行，因此 `nativeElement` 在这些测试中始终是 `HTMLElement` ，你可以在测试中探索熟悉的方法和属性。
+由于本指南的范例测试只能在浏览器中运行，因此 `nativeElement` 在这些测试中始终是 `HTMLElement`，你可以在测试中探索熟悉的方法和属性。
 
 Here's the previous test, re-implemented with `fixture.debugElement.nativeElement`:
 

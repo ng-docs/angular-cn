@@ -73,7 +73,7 @@ const COPY_COMPONENT_FIELDS: Exclude<keyof ComponentDef<unknown>, keyof Directiv
  * The `ɵɵCopyDefinitionFeature` then copies any needed fields from the parent class' definition,
  * including things like the component template function.
  *
- * 然后， `ɵɵCopyDefinitionFeature` 会从父类的定义中复制任何需要的字段，包括组件模板函数之类的东西。
+ * 然后，`ɵɵCopyDefinitionFeature` 会从父类的定义中复制任何需要的字段，包括组件模板函数之类的东西。
  *
  * @param definition The definition of a child class which inherits from a parent class with its
  * own definition.

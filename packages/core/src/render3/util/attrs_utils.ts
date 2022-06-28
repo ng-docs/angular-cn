@@ -140,7 +140,7 @@ export function setUpAttributes(renderer: Renderer3, native: RElement, attrs: TA
  *
  * true if the marker is a "name-only" marker (e.g. `Bindings`, `Template` or `I18n`).
  *
- * 如果标记是“仅名称”标记（例如 `Bindings` 、 `Template` 或 `I18n` ），则为 true 。
+ * 如果标记是“仅名称”标记（例如 `Bindings`、`Template` 或 `I18n`），则为 true 。
  *
  */
 export function isNameOnlyAttributeMarker(marker: string|AttributeMarker|CssSelector) {

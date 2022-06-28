@@ -30,7 +30,7 @@ import {HttpEvent, HttpResponse} from './response';
  * A single overload version of the method handles each response type.
  * The value of `responseType` cannot be a union, as the combined signature could imply.
  *
- * 请注意， `responseType`*选项*的值是一个
+ * 请注意，`responseType`*选项*的值是一个
  * String，用于标识响应的单个数据类型。该方法的单个重载版本会处理每种响应类型。 `responseType`
  * 的值不能是联合，因为组合签名可能暗示。
  *
@@ -74,7 +74,7 @@ function addBody<T>(
  * A single overload version of the method handles each response type.
  * The value of `responseType` cannot be a union, as the combined signature could imply.
  *
- * 请注意， `responseType`
+ * 请注意，`responseType`
  * *选项*的值是一个字符串，用于标识此响应的单一数据类型。该方法的各个重载版本处理每种响应类型。正如组合签名所暗示的那样
  * `responseType` 的值不能为联合类型。
  *

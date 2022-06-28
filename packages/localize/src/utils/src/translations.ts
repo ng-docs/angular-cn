@@ -43,7 +43,7 @@ export function isMissingTranslationError(e: any): e is MissingTranslationError 
  * Translate the text of the `$localize` tagged-string (i.e. `messageParts` and
  * `substitutions`) using the given `translations`.
  *
- * 使用给定的 `translations` `$localize` 标记字符串的文本（即 `messageParts` 和 `substitutions` ）。
+ * 使用给定的 `translations` `$localize` 标记字符串的文本（即 `messageParts` 和 `substitutions`）。
  *
  * The tagged-string is parsed to extract its `messageId` which is used to find an appropriate
  * `ParsedTranslation`. If this doesn't match and there are legacy ids then try matching a

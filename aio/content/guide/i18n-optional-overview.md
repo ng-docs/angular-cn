@@ -36,43 +36,30 @@ To prepare your project for translations, you should have a basic understanding 
 ## 学习可选的 Angular 国际化实践
 
 <div class="card-container">
-    <a href="guide/i18n-optional-manual-runtime-locale" class="docs-card" title="Set the runtime locale manually">
-
-```
-<section>Set the runtime locale manually</section>
+  <a href="guide/i18n-optional-manual-runtime-locale" class="docs-card" title="Set the runtime locale manually">
+    <section>Set the runtime locale manually</section>
     <section>手动设置运行时语言环境</section>
-<p>Learn how to change the runtime locale for your project</p>
+    <p>Learn how to change the runtime locale for your project</p>
     <p>学习如何为项目修改运行时语言环境</p>
-<p class="card-footer">Set the runtime locale manually</p>
+    <p class="card-footer">Set the runtime locale manually</p>
     <p class="card-footer">手动设置运行时语言环境</p>
-```
-
-</a>
-<a href="guide/i18n-optional-import-global-variants" class="docs-card" title="Import global variants of the locale data">
-
-```
-<section>Import global variants of the locale data</section>
+  </a>
+  <a href="guide/i18n-optional-import-global-variants" class="docs-card" title="Import global variants of the locale data">
+    <section>Import global variants of the locale data</section>
     <section>导入语言环境数据的全局变体</section>
-<p>Learn how to import locale data for language variants</p>
+    <p>Learn how to import locale data for language variants</p>
     <p>学习如何为语言变体导入语言环境数据</p>
-<p class="card-footer">Import global variants of the locale data</p>
+    <p class="card-footer">Import global variants of the locale data</p>
     <p class="card-footer">导入语言环境数据的全局变体</p>
-```
-
-</a>
-<a href="guide/i18n-optional-manage-marked-text" class="docs-card" title="Manage marked text with custom IDs">
-
-```
-<section>Manage marked text with custom IDs</section>
+  </a>
+  <a href="guide/i18n-optional-manage-marked-text" class="docs-card" title="Manage marked text with custom IDs">
+    <section>Manage marked text with custom IDs</section>
     <section>管理带有自定义 ID 的已标记文本</section>
-<p>Learn how to implement custom IDs to help you manage your marked text</p>
+    <p>Learn how to implement custom IDs to help you manage your marked text</p>
     <p>学习如何实现自定义 ID，以帮助你管理已标记文本</p>
-<p class="card-footer">Manage marked text with custom IDs</p>
+    <p class="card-footer">Manage marked text with custom IDs</p>
     <p class="card-footer">管理带有自定义 ID 的已标记文本</p>
-```
-
-</a>
-
+  </a>
 </div>
 
 <!-- links -->

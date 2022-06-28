@@ -25,7 +25,7 @@ import {DOCUMENT} from '../dom_tokens';
  * one suitable for use with server-side rendering.
  *
  * `PlatformLocation` 封装了对 DOM API 的所有调用，这可以让路由器与平台无关。这意味着我们可以为
- * Angular 支持的不同平台提供 `PlatformLocation` 的不同实现。比如， `@angular/platform-browser`
+ * Angular 支持的不同平台提供 `PlatformLocation` 的不同实现。比如，`@angular/platform-browser`
  * 提供了特定于浏览器环境的实现，而 `@angular/platform-server`
  * 提供了适合与服务器端渲染一起使用的实现。
  *

@@ -95,7 +95,7 @@ By default, this command creates the following:
 
 * A CSS file, `<component-name>.component.css`
 
-  一个 CSS 文件， `<component-name>.component.css`
+  一个 CSS 文件，`<component-name>.component.css`
 
 * A testing specification file, `<component-name>.component.spec.ts`
 
@@ -133,7 +133,7 @@ To create a new component manually:
 
 1. Create a new file, `<component-name>.component.ts`.
 
-   创建一个新文件 `<component-name>.component.ts` 。
+   创建一个新文件 `<component-name>.component.ts`。
 
 1. At the top of the file, add the following import statement.
 
@@ -189,7 +189,7 @@ Every component requires a CSS *selector*. A selector instructs Angular to insta
 For example, consider a component `hello-world.component.ts` that defines its selector as `app-hello-world`.
 This selector instructs Angular to instantiate this component any time the tag `<app-hello-world>` appears in a template.
 
-每个组件都需要一个 CSS *选择器*。选择器会告诉 Angular：当在模板 HTML 中找到相应的标签时，就把该组件实例化在那里。比如，考虑一个组件 `hello-world.component.ts` ，它的选择器定义为 `app-hello-world` 。 当 `<app-hello-world>` 出现在模板中时，这个选择器就会让 Angular 实例化该组件。
+每个组件都需要一个 CSS *选择器*。选择器会告诉 Angular：当在模板 HTML 中找到相应的标签时，就把该组件实例化在那里。比如，考虑一个组件 `hello-world.component.ts`，它的选择器定义为 `app-hello-world`。当 `<app-hello-world>` 出现在模板中时，这个选择器就会让 Angular 实例化该组件。
 
 Specify a component's selector by adding a `selector` statement to the `@Component` decorator.
 
@@ -221,7 +221,7 @@ To define a template within the component, add a `template` property to the `@Co
 If you want your template to span multiple lines, use backticks (<code>\`</code>).
 For example:
 
-如果你想让模板跨越多行，可以使用反引号（ `` ` `` ）。比如：
+如果你想让模板跨越多行，可以使用反引号（<code>\`</code>）。比如：
 
 <code-example path="component-overview/src/app/component-overview/component-overview.component.2.ts" region="templatebacktick"></code-example>
 

@@ -30,7 +30,7 @@ For example, features are released in the next minor after they are complete, or
 
 In the process of making Angular simpler, we are working on introducing APIs that allow developers to initialize applications, instantiate components, and use the router without NgModules. Angular v14 introduces developer preview of the APIs for standalone components, directives, and pipes. In the next few quarters we'll collect feedback from developers and finalize the project making the APIs stable. As the next step we will work on improving use cases such as `TestBed`, Angular elements, etc.
 
-在使 Angular 更简单的过程中，我们正在努力引入 API，允许开发人员初始化应用程序、实例化组件，以及在不使用 NgModules 的情况下使用路由器。 Angular v14 引入了独立组件、指令和管道的 API 的开发人员预览。在接下来的几个季度，我们将收集开发人员的反馈，并完成使 API 稳定的项目。作为下一步，我们将努力改进用例，例如 `TestBed` 、Angular 元素等。
+在使 Angular 更简单的过程中，我们正在努力引入 API，允许开发人员初始化应用程序、实例化组件，以及在不使用 NgModules 的情况下使用路由器。Angular v14 引入了独立组件、指令和管道的 API 的开发人员预览。在接下来的几个季度，我们将收集开发人员的反馈，并完成使 API 稳定的项目。作为下一步，我们将努力改进用例，例如 `TestBed` 、Angular 元素等。
 
 ### Improve image performance
 
@@ -99,7 +99,7 @@ We are working on new CDK primitives to facilitate creating custom components ba
 The Angular team is incorporating these primitives into Angular Material.
 Using MDC Web aligns Angular Material more closely with the Material Design specification, expand accessibility, improve component quality, and improve the velocity of our team.
 
-[MDC Web](https://material.io/develop/web)是由 Google Material Design 团队创建的一个库，它为构建 Material Design 组件提供了可重用的原语。 Angular 团队正在将这些原语合并到 Angular Material 中。使用 MDC Web 可以使 Angular Material 与 Material Design 规范更紧密地保持一致，扩展可访问性，提高组件质量，并提高我们团队的速度。
+[MDC Web](https://material.io/develop/web)是由 Google Material Design 团队创建的一个库，它为构建 Material Design 组件提供了可重用的原语。Angular 团队正在将这些原语合并到 Angular Material 中。使用 MDC Web 可以使 Angular Material 与 Material Design 规范更紧密地保持一致，扩展无障碍性，提高组件质量，并提高我们团队的速度。
 
 ### Angular component accessibility
 
@@ -107,7 +107,7 @@ Using MDC Web aligns Angular Material more closely with the Material Design spec
 
 We are evaluating components in Angular Material against accessibility standards such as WCAG and working to fix any issues that arise from this process.
 
-我们正在根据 WCAG 等可访问性标准评估 Angular Material 中的组件，并努力解决此过程中出现的任何问题。
+我们正在根据 WCAG 等无障碍性标准评估 Angular Material 中的组件，并努力解决此过程中出现的任何问题。
 
 ### Documentation refactoring
 
@@ -194,16 +194,12 @@ As part of this project we'd like to implement mixed orientation support for the
 <details class="completed-details" open="true">
 
   <summary>
-
-```
-<h2>Completed</h2>
-<span class="actions">
-  <span class="action-expand">Show all</span>
-  <span class="action-collapse">Hide all</span>
-  <i class="material-icons expand">expand_more</i>
-</span>
-```
-
+    <h2>Completed</h2>
+    <span class="actions">
+      <span class="action-expand">Show all</span>
+      <span class="action-collapse">Hide all</span>
+      <i class="material-icons expand">expand_more</i>
+    </span>
   </summary>
 
   <div class="details-content">
@@ -232,7 +228,7 @@ Develop and publish an in-depth guide on change detection.
 Develop content for performance profiling of Angular applications.
 Cover how change detection interacts with Zone.js and explain when it gets triggered, how to profile its duration, as well as common practices for performance optimization.
 
-开发并发布有关变更检测的深入指南。开发用于 Angular 应用程序性能分析的内容。介绍更改检测如何与 Zone.js 交互，并解释它何时被触发、如何分析其持续时间以及性能优化的常见实践。
+开发并发布有关变更检测的深入指南。开发用于 Angular 应用程序性能分析的内容。介绍变更检测如何与 Zone.js 交互，并解释它何时被触发、如何分析其持续时间以及性能优化的常见实践。
 
 ### Rollout strict typings for `@angular/forms`
 
@@ -325,7 +321,7 @@ To ensure we provide a future-proof e2e testing strategy, we want to evaluate th
 As first steps of the effort, we shared an [RFC](https://github.com/angular/protractor/issues/5502) and worked with partners to ensure smooth integration between the Angular CLI and state of the art tooling for e2e testing.
 As the next step, we need to finalize the recommendations and compile a list of resources for the transition.
 
-为确保我们提供面向未来的 e2e 测试策略，我们希望评估 Protractor 的状态、社区创新、e2e 最佳实践，并探索新的机会。作为努力的第一步，我们共享了一个[RFC](https://github.com/angular/protractor/issues/5502) ，并与合作伙伴合作，以确保 Angular CLI 与用于 e2e 测试的最先进工具之间的顺利集成。下一步，我们需要最终确定建议并为过渡编译资源列表。
+为确保我们提供面向未来的 e2e 测试策略，我们希望评估 Protractor 的状态、社区创新、e2e 最佳实践，并探索新的机会。作为努力的第一步，我们共享了一个[RFC](https://github.com/angular/protractor/issues/5502)，并与合作伙伴合作，以确保 Angular CLI 与用于 e2e 测试的最先进工具之间的顺利集成。下一步，我们需要最终确定建议并为过渡编译资源列表。
 
 ### Angular libraries use Ivy
 
@@ -339,7 +335,7 @@ Earlier in 2020, we shared an [RFC](https://github.com/angular/angular/issues/38
 After invaluable feedback from the community, we developed a design of the project.
 We are now investing in the development of Ivy library distribution, including an update of the library package format to use Ivy compilation, unblock the deprecation of the View Engine library format, and [ngcc](guide/glossary#ngcc).
 
-在 2020 年初，我们共享了一个用于 Ivy 库分发的[RFC](https://github.com/angular/angular/issues/38366) 。在来自社区的宝贵反馈之后，我们开发了该项目的设计。我们现在正在投资开发 Ivy 库发行版，包括更新库包格式以使用 Ivy 编译、取消阻止 View Engine 库格式的弃用以及[ngcc](guide/glossary#ngcc) 。
+在 2020 年初，我们共享了一个用于 Ivy 库分发的[RFC](https://github.com/angular/angular/issues/38366)。在来自社区的宝贵反馈之后，我们开发了该项目的设计。我们现在正在投资开发 Ivy 库发行版，包括更新库包格式以使用 Ivy 编译、取消阻止 View Engine 库格式的弃用以及[ngcc](guide/glossary#ngcc)。
 
 ### Improve test times and debugging with automatic test environment tear down
 
@@ -404,7 +400,7 @@ This project aims to help developers understand the component structure and the 
 We want to consolidate release management tooling between the multiple GitHub repositories for Angular ([angular/angular](https://github.com/angular/angular), [angular/angular-cli](https://github.com/angular/angular-cli), and [angular/components](https://github.com/angular/components)).
 This effort lets us reuse infrastructure, unify and simplify processes, and improve the reliability of our release process.
 
-我们希望在 Angular 的多个 GitHub 存储库（ [angular/angular](https://github.com/angular/angular) 、 [angular/angular-cli](https://github.com/angular/angular-cli)和[angular/components](https://github.com/angular/components) ）之间整合发布管理工具。这项工作让我们可以复用基础设施，统一和简化流程，并提高我们发布流程的可靠性。
+我们希望在 Angular 的多个 GitHub 存储库（[angular/angular](https://github.com/angular/angular) 、 [angular/angular-cli](https://github.com/angular/angular-cli)和[angular/components](https://github.com/angular/components)）之间整合发布管理工具。这项工作让我们可以复用基础设施，统一和简化流程，并提高我们发布流程的可靠性。
 
 ### Higher developer consistency with commit message standardization
 
@@ -416,7 +412,7 @@ This effort lets us reuse infrastructure, unify and simplify processes, and impr
 
 We want to unify commit message requirements and conformance across Angular repositories ([angular/angular](https://github.com/angular/angular), [angular/components](https://github.com/angular/components), and [angular/angular-cli](https://github.com/angular/angular-cli)) to bring consistency to our development process and reuse infrastructure tooling.
 
-我们希望统一跨 Angular 存储库（ [angular/angular](https://github.com/angular/angular) 、 [angular/components](https://github.com/angular/components) 、 [angular/angular-cli](https://github.com/angular/angular-cli) ）的提交消息要求和一致性，以便为我们的开发过程带来一致性并复用基础设施工具。
+我们希望统一跨 Angular 存储库（[angular/angular](https://github.com/angular/angular) 、 [angular/components](https://github.com/angular/components) 、 [angular/angular-cli](https://github.com/angular/angular-cli)）的提交消息要求和一致性，以便为我们的开发过程带来一致性并复用基础设施工具。
 
 ### Transition the Angular language service to Ivy
 

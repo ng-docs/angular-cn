@@ -166,7 +166,7 @@ function isNotEmptyElement(e: ts.Expression|ts.SpreadElement|
  * Return true if the expression is not a spread element of an array literal.
  * For example in `[x, ...rest]` the `...rest` expression is a spread element.
  *
- * 如果表达式不是数组文字的扩展元素，则返回 true。例如，在 `[x, ...rest]` 中， `...rest`
+ * 如果表达式不是数组文字的扩展元素，则返回 true。例如，在 `[x, ...rest]` 中，`...rest`
  * 表达式是扩展元素。
  *
  */

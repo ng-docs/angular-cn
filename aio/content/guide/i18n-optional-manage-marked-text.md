@@ -1,6 +1,6 @@
 # Manage marked text with custom IDs
 
-# 使用自定义 ID 管理标记文本
+# 管理带有自定义 ID 的已标记文本
 
 The Angular extractor generates a file with a translation unit entry each of the following instances.
 

@@ -5,7 +5,7 @@
 This document describes the Angular Package Format (APF).
 APF is an Angular specific specification for the structure and format of npm packages that is used by all first-party Angular packages (`@angular/core`, `@angular/material`, etc.) and most third-party Angular libraries.
 
-本文档描述了 Angular 包格式 (APF)。 APF 是针对 npm 包结构和格式的 Angular 专用规范，所有第一方 Angular 包（ `@angular/core` 、 `@angular/material` 等）和大多数第三方 Angular 库都使用了该规范。
+本文档描述了 Angular 包格式 (APF)。APF 是针对 npm 包结构和格式的 Angular 专用规范，所有第一方 Angular 包（`@angular/core` 、 `@angular/material` 等）和大多数第三方 Angular 库都使用了该规范。
 
 APF enables a package to work seamlessly under most common scenarios that use Angular.
 Packages that use APF are compatible with the tooling offered by the Angular team as well as wider JavaScript ecosystem.
@@ -38,7 +38,7 @@ The Angular distribution format supports all of the commonly used development to
 Developers can rely on Angular CLI and [ng-packagr](https://github.com/ng-packagr/ng-packagr) (a build tool Angular CLI uses) to produce packages in the Angular package format.
 See the [Creating Libraries](guide/creating-libraries) guide for more details.
 
-开发人员可以依靠 Angular CLI 和 [ng-packagr](https://github.com/ng-packagr/ng-packagr) （Angular CLI 使用的构建工具）来生成 APF 格式的包。有关更多详细信息，参阅[创建库](guide/creating-libraries)指南。
+开发人员可以依靠 Angular CLI 和 [ng-packagr](https://github.com/ng-packagr/ng-packagr)（Angular CLI 使用的构建工具）来生成 APF 格式的包。有关更多详细信息，参阅[创建库](guide/creating-libraries)指南。
 
 ## File layout
 
@@ -132,23 +132,23 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 | :---- | :------ |
 | 文件 | 用途 |
 | `README.md` | Package README, used by npmjs web UI. |
-| `README.md` | 包 README，由 npmjs web UI 使用。 |
+| `README.md` | 包 README，由 npmjs web UI 使用。|
 | `package.json` | Primary `package.json`, describing the package itself as well as all available entrypoints and code formats. This file contains the "exports" mapping used by runtimes and tools to perform module resolution. |
-| `package.json` | 主要的 `package.json` ，描述包本身以及所有可用的入口点和代码格式。此文件包含供运行时使用的 `"exports"` 映射和一些用于执行模块解析的工具。 |
+| `package.json` | 主要的 `package.json`，描述包本身以及所有可用的入口点和代码格式。此文件包含供运行时使用的 `"exports"` 映射和一些用于执行模块解析的工具。|
 | `index.d.ts` | Bundled `.d.ts` for the primary entrypoint `@angular/core`. |
-| `index.d.ts` | 主入口点 `@angular/core` 捆绑的 `.d.ts` 。 |
+| `index.d.ts` | 主入口点 `@angular/core` 捆绑的 `.d.ts`。|
 | `esm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs` | Tree of `@angular/core` sources in unflattened ES2020 format. |
-| `esm2020/`<br />─ `core.mjs`<br />── `index.mjs`<br />── `public_api.mjs` | 未展平的 ES2020 格式的 `@angular/core` 源代码树。 |
+| `esm2020/`<br />─ `core.mjs`<br />─ `index.mjs`<br />─ `public_api.mjs` | 未展平的 ES2020 格式的 `@angular/core` 源代码树。|
 | `esm2020/testing/` | Tree of the `@angular/core/testing` entrypoint in unflattened ES2020 format. |
-| `esm2020/testing/` | 未扁平化的 ES2020 格式的 `@angular/core/testing` 入口点的树。 |
+| `esm2020/testing/` | 未扁平化的 ES2020 格式的 `@angular/core/testing` 入口点的树。|
 | `fesm2015/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in a flattened (FESM) ES2015 format, along with sourcemaps. |
-| `fesm2015/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2015 格式的所有入口点的代码，以及源码映射。 |
+| `fesm2015/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2015 格式的所有入口点的代码，以及源码映射。|
 | `fesm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2020 format, along with sourcemaps. |
-| `fesm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2020 格式的所有入口点的代码，以及源码映射。 |
+| `fesm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2020 格式的所有入口点的代码，以及源码映射。|
 | `testing/` | Directory representing the "testing" entrypoint. |
-| `testing/` | 代表 `testing` 入口点的目录。 |
+| `testing/` | 代表 `testing` 入口点的目录。|
 | `testing/index.d.ts` | Bundled `.d.ts` for the `@angular/core/testing` entrypoint. |
-| `testing/index.d.ts` | 为 `@angular/core/testing` 入口点打包的 `.d.ts` 。 |
+| `testing/index.d.ts` | 为 `@angular/core/testing` 入口点打包的 `.d.ts`。|
 
 ## `package.json`
 
@@ -167,7 +167,7 @@ The primary `package.json` contains important package metadata, including the fo
 * It contains [keys](#legacy-resolution-keys) which define the available source code formats of the primary `@angular/core` entrypoint, for tools which do not understand `"exports"`.
   These keys are considered deprecated, and will be removed as the support for `"exports"` rolls out across the ecosystem.
 
-  它包含定义主入口点 `@angular/core` 的可用源代码格式的 [key](#legacy-resolution-keys)，供不理解 `"exports"` 的工具使用。这些键已弃用，随着对 `"exports"` 的支持在整个生态系统中逐步退出，这些键将被删除。
+  它包含定义主入口点 `@angular/core` 的可用源码格式的[一些键](#legacy-resolution-keys)，供不理解 `"exports"` 的工具使用。这些键已弃用，随着对 `"exports"` 的支持在整个生态系统中逐步退出，这些键将被删除。
 
 * It declares whether the package contains [side-effects](#side-effects)
 
@@ -237,13 +237,13 @@ For each entrypoint, the available formats are:
 | :------ | :------ |
 | 格式 | 详情 |
 | Typings (`.d.ts` files) | `.d.ts` files are used by TypeScript when depending on a given package. |
-| 类型定义（ `.d.ts` 文件） | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。 |
+| 类型定义（`.d.ts` 文件）| TypeScript 在依赖于给定包时使用 `.d.ts` 文件。|
 | `es2020` | ES2020 code flattened into a single source file. |
-| `es2020` | 已展平为单个源文件的 ES2020 代码。 |
+| `es2020` | 已展平为单个源文件的 ES2020 代码。|
 | `es2015` | ES2015 code flattened into a single source file. |
-| `es2015` | 已展平为单个源文件的 ES2015 代码。 |
+| `es2015` | 已展平为单个源文件的 ES2015 代码。|
 | `esm2020` | ES2020 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
-| `esm2020` | 未展平的源文件中的 ES2020 代码（包含此格式用于试验 - 有关详细信息，参阅[此默认值讨论](#note-about-the-defaults-in-packagejson)）。 |
+| `esm2020` | 未展平的源文件中的 ES2020 代码（包含此格式用于试验 - 有关详细信息，参阅[此默认值讨论](#note-about-the-defaults-in-packagejson)）。|
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 The remaining 2 keys control the default behavior of tooling:
@@ -278,7 +278,7 @@ For more information, see [Managing assets in a library](guide/creating-librarie
 In addition to `"exports"`, the top-level `package.json` also defines legacy module resolution keys for resolvers that don't support `"exports"`.
 For `@angular/core` these are:
 
-除了 `"exports"` 之外，顶级 `package.json` 还为不支持 `"exports"` 的解析器定义了旧模块解析键。对于 `@angular/core` ，这些是：
+除了 `"exports"` 之外，顶级 `package.json` 还为不支持 `"exports"` 的解析器定义了旧模块解析键。对于 `@angular/core`，这些是：
 
 <code-example language="javascript">
 
@@ -335,11 +335,11 @@ Most Angular packages should not depend on top-level side effects, and thus shou
 Packages in the Angular Package Format contain one primary entrypoint and zero or more secondary entrypoints (for example, `@angular/common/http`).
 Entrypoints serve several functions.
 
-APF 中的包，包含一个主要入口点和零到多个次要入口点（比如 `@angular/common/http` ）。入口点有多种功能。
+APF 中的包，包含一个主要入口点和零到多个次要入口点（比如 `@angular/common/http`）。入口点有多种功能。
 
 1. They define the module specifiers from which users import code (for example, `@angular/core` and `@angular/core/testing`).
 
-   它们定义了用户要从中导入代码的模块说明符（比如， `@angular/core` 和 `@angular/core/testing` ）。
+   它们定义了用户要从中导入代码的模块说明符（比如，`@angular/core` 和 `@angular/core/testing`）。
 
    Users typically perceive these entrypoints as distinct groups of symbols, with different purposes or functionality.
 
@@ -444,7 +444,7 @@ The Angular Package Format specifies that code be published in "flattened" ES mo
 This significantly reduces the build time of Angular applications as well as download and parse time of the final application bundle.
 Please check out the excellent post ["The cost of small modules"](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules) by Nolan Lawson.
 
-APF 指定代码要以“扁平化”的 ES 模块格式发布。这显著减少了 Angular 应用程序的构建时间以及最终应用程序包的下载和解析时间。请查看 Nolan Lawson 发表的优秀文章[“小模块的成本”](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules) 。
+APF 指定代码要以“扁平化”的 ES 模块格式发布。这显著减少了 Angular 应用程序的构建时间以及最终应用程序包的下载和解析时间。请查看 Nolan Lawson 发表的优秀文章[“小模块的成本”](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules)。
 
 The Angular compiler has support for generating index ES module files that can then be used to generate flattened modules using tools like Rollup, resulting in a file format we call Flattened ES Module or FESM.
 
@@ -485,7 +485,7 @@ To generate a flattened ES Module index file, use the following configuration op
 
 Once the index file (for example, `my-ui-lib.js`) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
 
-一旦索引文件（比如 `my-ui-lib.js` ）由 ngc 生成，打包器和优化器（如 Rollup）就可用于生成扁平化的 ESM 文件。
+一旦 ngc 生成了索引文件（比如 `my-ui-lib.js`），打包器和优化器（如 Rollup）就可用于生成扁平化的 ESM 文件。
 
 #### Note about the defaults in package.json
 
@@ -497,7 +497,7 @@ This is why `"module"` and `"es2020"` package.json entries still point to fesm f
 We are investigating this issue and expect that we'll switch the `"module"` and `"es2020"` package.json entry points to unflattened files when the size regression issue is resolved.
 The APF currently includes unflattened ESM2020 code for the purpose of validating such a future change.
 
-从 webpack v4 开始，对于 webpack 用户来说，ES 模块优化的扁平化应该不是必需的，其实理论上我们应该能够在不扁平化 webpack 中的模块的情况下获得更好的代码拆分。在实践中，当使用非扁平化模块作为 webpack v4 的输入时，我们仍然会看到大小增加了。这就是为什么 package.json 中的 `"module"` 和 `"es2020"` 条目仍然指向 fesm 文件的原因。我们正在调查此问题，并希望在解决大小回归问题后将 package.json 中的 `"module"` 和 `"es2020"` 入口点切换到未扁平化的文件。 APF 目前包含未扁平化的 ESM2020 代码，目的是验证此类未来的更改。
+从 webpack v4 开始，对于 webpack 用户来说，ES 模块优化的扁平化应该不是必需的，其实理论上我们应该能够在不扁平化 webpack 中的模块的情况下获得更好的代码拆分。在实践中，当使用非扁平化模块作为 webpack v4 的输入时，我们仍然会看到大小增加了。这就是为什么 package.json 中的 `"module"` 和 `"es2020"` 条目仍然指向 fesm 文件的原因。我们正在调查此问题，并希望在解决大小回归问题后将 package.json 中的 `"module"` 和 `"es2020"` 入口点切换到未扁平化的文件。APF 目前包含未扁平化的 ESM2020 代码，目的是验证此类未来的更改。
 
 ### "sideEffects" flag
 
@@ -514,7 +514,7 @@ The end result of these optimizations should be smaller bundle size and better c
 This optimization can break your code if it contains non-local side-effects - this is however not common in Angular applications and it's usually a sign of bad design.
 Our recommendation is for all packages to claim the side-effect free status by setting the `sideEffects` property to `false`, and that developers follow the [Angular Style Guide](https://angular.io/guide/styleguide) which naturally results in code without non-local side-effects.
 
-诸如 Webpack 之类的构建工具支持一个标志，该标志允许 package 声明它们不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。我们的建议是让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](https://angular.io/guide/styleguide)，这自然会导致代码没有非本地副作用。
+诸如 Webpack 之类的构建工具支持一个标志，该标志允许包声明它们并不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。我们的建议是让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](https://angular.io/guide/styleguide)，这自然会导致代码没有非本地副作用。
 
 More info: [webpack docs on side-effects](https://github.com/webpack/webpack/tree/master/examples/side-effects)
 
@@ -527,7 +527,7 @@ More info: [webpack docs on side-effects](https://github.com/webpack/webpack/tre
 ES2020 Language level is now the default language level that is consumed by Angular CLI and other tooling.
 The Angular CLI will downlevel the bundle to a language level that is supported by all targeted browsers at application build time.
 
-ES2020 语言级别现在是 Angular CLI 和其他工具使用的默认语言级别。 Angular CLI 会将捆绑包降级到所有目标浏览器在应用程序构建时都支持的语言级别。
+ES2020 语言级别现在是 Angular CLI 和其他工具使用的默认语言级别。Angular CLI 会将捆绑包降级到所有目标浏览器在应用程序构建时都支持的语言级别。
 
 ### d.ts bundling / type definition flattening
 
@@ -580,7 +580,7 @@ The smallest set of files that are published to NPM and installed together, for 
 This package includes a manifest called package.json, compiled source code, typescript definition files, source maps, metadata, etc.
 The package is installed with `npm install @angular/core`.
 
-发布到 NPM 并一起安装的最小文件集，比如 `@angular/core` 。该包中包含一个名为 package.json 的清单、编译后的源代码、TypeScript 定义文件、源码映射、元数据等。该包是通过 `npm install @angular/core` 安装的。
+发布到 NPM 并一起安装的最小文件集，比如 `@angular/core`。该包中包含一个名为 package.json 的清单、编译后的源代码、TypeScript 定义文件、源码映射、元数据等。该包是通过 `npm install @angular/core` 安装的。
 
 #### Symbol
 
@@ -602,8 +602,6 @@ ECMAScript 模块的缩写。包含导入和导出符号的语句的文件。这
 
 #### ESM
 
-#### 无害环境管理
-
 Short for ECMAScript Modules (see above).
 
 ECMAScript 模块的缩写（见上文）。
@@ -621,7 +619,7 @@ Flattened ES Modules 的缩写，由一种文件格式组成，该文件格式�
 The identifier of a module used in the import statements (for example, `@angular/core`).
 The ID often maps directly to a path on the filesystem, but this is not always the case due to various module resolution strategies.
 
-导入语句中使用的模块的标识符（比如 `@angular/core` ）。此 ID 通常直接映射到文件系统上的路径，但由于有各种模块解析策略，情况也并非总是如此。
+导入语句中使用的模块的标识符（比如 `@angular/core`）。此 ID 通常直接映射到文件系统上的路径，但由于有各种模块解析策略，情况也并非总是如此。
 
 #### Module Specifier
 
@@ -638,7 +636,7 @@ A module identifier (see above).
 Algorithm used to convert Module IDs to paths on the filesystem.
 Node.js has one that is well specified and widely used, TypeScript supports several module resolution strategies, [Closure Compiler](https://developers.google.com/closure/compiler) has yet another strategy.
 
-用于将模块 ID 转换为文件系统路径的算法。 Node.js 就有一个良好定义且广泛使用的，TypeScript 支持多种模块解析策略， [Closure Compiler](https://developers.google.com/closure/compiler) 还有另一种策略。
+用于将模块 ID 转换为文件系统路径的算法。Node.js 就有一个良好定义且广泛使用的，TypeScript 支持多种模块解析策略，[Closure Compiler](https://developers.google.com/closure/compiler) 还有另一种策略。
 
 #### Module Format
 
@@ -660,7 +658,7 @@ Bundles are a browser-specific workaround that reduce network strain that would 
 Node.js typically doesn't use bundles.
 Common bundle formats are UMD and System.register.
 
-单个 JS 文件形式的工件，由构建工具（比如 [Webpack](https://webpack.js.org)或[Rollup](https://rollupjs.org/) ）生成，其中包含源自一个或多个模块的符号。捆绑包是一种特定于浏览器的解决方案，可减少浏览器开始下载数百甚至数万个文件时可能造成的网络压力。 Node.js 通常不使用捆绑包。常见的捆绑包格式是 UMD 和 System.register。
+单个 JS 文件形式的工件，由构建工具（比如 [Webpack](https://webpack.js.org)或[Rollup](https://rollupjs.org/)）生成，其中包含源自一个或多个模块的符号。捆绑包是一种浏览器专用的解决方案，可减少浏览器开始下载数百甚至数万个文件时可能造成的网络压力。Node.js 通常不使用捆绑包。常见的捆绑包格式是 UMD 和 System.register。
 
 #### Language Level
 
@@ -681,7 +679,7 @@ An example is `@angular/core` or `@angular/core/testing`.
 Both entry points exist in the `@angular/core` package, but they export different symbols.
 A package can have many entry points.
 
-旨在由用户导入的模块。它由唯一的模块 ID 引用，并导出该模块 ID 引用的公共 API。一个例子是 `@angular/core` 或 `@angular/core/testing` 。 `@angular/core` 包中存在两个入口点，但它们导出不同的符号。一个包可以有许多入口点。
+旨在由用户导入的模块。它由唯一的模块 ID 引用，并导出该模块 ID 引用的公共 API。一个例子是 `@angular/core` 或 `@angular/core/testing`。`@angular/core` 包中存在两个入口点，但它们导出不同的符号。一个包可以有许多入口点。
 
 #### Deep Import
 
@@ -699,7 +697,7 @@ These module IDs are usually considered to be private APIs that can change over 
 An import coming from an entry point.
 The available top-level imports are what define the public API and are exposed in "@angular/name" modules, such as `@angular/core` or `@angular/common`.
 
-来自入口点的导入。可用的顶级导入定义了公共 API，并在“@angular/name”模块中公开，比如 `@angular/core` 或 `@angular/common` 。
+来自入口点的导入。可用的顶级导入定义了公共 API，并在“@angular/name”模块中公开，比如 `@angular/core` 或 `@angular/common`。
 
 #### Tree-shaking
 

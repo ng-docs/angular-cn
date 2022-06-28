@@ -5,7 +5,7 @@
 The Angular Language Service provides code editors with a way to get completions, errors, hints, and navigation inside Angular templates.
 It works with external templates in separate HTML files, and also with in-line templates.
 
-Angular 语言服务为代码编辑器提供了一种在 Angular 模板中获取自动补全、错误、提示和导航的方法。 它支持位于独立 HTML 文件中的外部模板以及内联模板。
+Angular 语言服务为代码编辑器提供了一种在 Angular 模板中获取自动补全、错误、提示和导航的方法。它支持位于独立 HTML 文件中的外部模板以及内联模板。
 
 ## Configuring compiler options for the Angular Language Service
 
@@ -117,8 +117,6 @@ Angular 语言服务目前在[Visual Studio Code](https://code.visualstudio.com)
 
 ### Visual Studio Code
 
-### Visual Studio 代码
-
 In [Visual Studio Code](https://code.visualstudio.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
 Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext".
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
@@ -144,8 +142,6 @@ Microsoft 在 Angular 团队的帮助下维护和发布了 Visual Studio 与 Ang
 
 ### WebStorm
 
-### 网络风暴
-
 In [WebStorm](https://www.jetbrains.com/webstorm), enable the plugin [Angular and AngularJS](https://plugins.jetbrains.com/plugin/6971-angular-and-angularjs).
 
 在 [WebStorm](https://www.jetbrains.com/webstorm) 中，启用 [Angular 与 AngularJS](https://plugins.jetbrains.com/plugin/6971-angular-and-angularjs) 插件。
@@ -156,12 +152,10 @@ Since WebStorm 2019.1, the `@angular/language-service` is not required anymore a
 
 ### Sublime Text
 
-### 崇高文本
-
 In [Sublime Text](https://www.sublimetext.com), the Language Service supports only in-line templates when installed as a plug-in.
 You need a custom Sublime plug-in (or modifications to the current plug-in) for completions in HTML files.
 
-在 [Sublime Text](https://www.sublimetext.com) 中，当安装为插件时，语言服务仅支持内联模板。 你需要自定义 Sublime 插件（或修改当前插件），来实现 HTML 文件中的自动补齐。
+在 [Sublime Text](https://www.sublimetext.com) 中，当安装为插件时，语言服务仅支持内联模板。你需要自定义 Sublime 插件（或修改当前插件），来实现 HTML 文件中的自动补齐。
 
 To use the Language Service for in-line templates, you must first add an extension to allow TypeScript, then install the Angular Language Service plug-in.
 Starting with TypeScript 2.3, TypeScript has a plug-in model that the language service can use.
@@ -241,7 +235,7 @@ The HTML AST can only tell the compiler that there is some text with the charact
 That's when the template parser produces an expression AST, which resides within the template AST.
 The Angular Language Services then looks at `data.---` within its context, asks the TypeScript Language Service what the members of `data` are, and returns the list of possibilities.
 
-如果你要进行插值，则需要更多的精力。如果你在 `div` 有 `{{data.---}}` 的插值，并且在 `data.---` 之后需要自动补全列表，则编译器无法使用 HTML AST 查找答案。HTML AST 只能告诉编译器某些文本带有字符 “`{{data.---}}`”。 那时模板解析器会生成一个表达式 AST，该表达式位于模板 AST 中。然后，Angular 语言服务会在其上下文中查找 `data.---`，询问 TypeScript 语言服务 `data` 的成员是什么，并返回可能性列表。
+如果你要进行插值，则需要更多的精力。如果你在 `div` 有 `{{data.---}}` 的插值，并且在 `data.---` 之后需要自动补全列表，则编译器无法使用 HTML AST 查找答案。HTML AST 只能告诉编译器某些文本带有字符 “`{{data.---}}`”。那时模板解析器会生成一个表达式 AST，该表达式位于模板 AST 中。然后，Angular 语言服务会在其上下文中查找 `data.---`，询问 TypeScript 语言服务 `data` 的成员是什么，并返回可能性列表。
 
 ## More information
 

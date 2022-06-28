@@ -25,7 +25,7 @@ It's ready for you to try; but it might change before it is stable.
 
 Components, directives, and pipes can now be marked as `standalone: true`. Angular classes marked as standalone do not need to be declared in an `NgModule` (the Angular compiler will report an error if you try).
 
-组件、指令和管道现在可以标记为 `standalone: true` 。标记为独立的 Angular 类不需要在 `NgModule` 中声明（如果你尝试，Angular 编译器会报告错误）。
+组件、指令和管道现在可以标记为 `standalone: true`。标记为独立的 Angular 类不需要在 `NgModule` 中声明（如果你尝试，Angular 编译器会报告错误）。
 
 Standalone components specify their dependencies directly instead of getting them through `NgModule`s. For example, if `PhotoGalleryComponent` is a standalone component, it can directly import another standalone component `ImageGridComponent`:
 
@@ -87,7 +87,7 @@ Standalone components can also be imported into existing NgModules-based context
 
 You can import a standalone component (or directive, or pipe) just like you would an `NgModule` - using `NgModule.imports`:
 
-你可以像导入 `NgModule` 一样导入独立组件（或指令或管道） - 使用 `NgModule.imports` ：
+你可以像导入 `NgModule` 一样导入独立组件（或指令或管道）- 使用 `NgModule.imports` ：
 
 ```ts
 @NgModule({
@@ -149,19 +149,19 @@ bootstrapApplication(PhotoAppComponent, {
 
 ## Routing and lazy-loading
 
-## 路由和延迟加载
+## 路由和惰性加载
 
 The router APIs were updated and simplified to take advantage of the standalone components: an `NgModule` is no longer required in many common, lazy-loading scenarios.
 
-路由器 API 进行了更新和简化，以利用独立组件的优势：在许多常见的延迟加载场景中不再需要 `NgModule` 。
+路由器 API 进行了更新和简化，以利用独立组件的优势：在许多常见的惰性加载场景中不再需要 `NgModule`。
 
 ### Lazy loading a standalone component
 
-### 延迟加载独立组件
+### 惰性加载独立组件
 
 Any route can lazily load its routed, standalone component by using `loadComponent`:
 
-任何路由都可以用 `loadComponent` 延迟加载其路由的独立组件：
+任何路由都可以用 `loadComponent` 惰性加载其路由到的独立组件：
 
 ```ts
 export const ROUTES: Route[] = [
@@ -176,11 +176,11 @@ This works as long as the loaded component is standalone.
 
 ### Lazy loading many routes at once
 
-### 延迟一次加载许多路由
+### 一次惰性加载多个路由
 
 The `loadChildren` operation now supports loading a new set of child `Route`s without needing to write a lazy loaded `NgModule` that imports `RouterModule.forChild` to declare the routes. This works when every route loaded this way is using a standalone component.
 
-`loadChildren` 操作现在支持加载一组新的子 `Route` ，而无需编写延迟加载的 `NgModule` 来导入 `RouterModule.forChild` 来声明路由。当以这种方式加载的每个路由都使用独立组件时，这会起作用。
+`loadChildren` 操作现在支持加载一组新的子 `Route`，而无需编写惰性加载的 `NgModule` 来导入 `RouterModule.forChild` 来声明路由。当以这种方式加载的每个路由都使用独立组件时，这会起作用。
 
 ```ts
 // In the main application:
@@ -203,11 +203,11 @@ export const ADMIN_ROUTES: Route[] = [
 
 The lazy loading API for `NgModule`s (`loadChildren`) creates a new "module" injector when it loads the lazily loaded children of a route. This feature was often useful to provide services only to a subset of routes in the application. For example, if all routes under `/admin` were scoped using a `loadChildren` boundary, then admin-only services could be provided only to those routes. Doing this required using the `loadChildren` API, even if lazy loading of the routes in question was unnecessary.
 
-`NgModule` 的延迟加载 API ( `loadChildren` ) 在加载路由的延迟加载的子项时会创建一个新的“模块”注入器。此特性通常可用于仅向应用程序中的一部分路由提供服务。例如，如果 `/admin` 下的所有路由都使用 `loadChildren` 边界来限定范围，则可以仅向这些路由提供仅限管理的服务。执行此操作需要使用 `loadChildren` API，即使延迟加载有问题的路由不是必要的。
+`NgModule` 的惰性加载 API ( `loadChildren` ) 在加载路由的惰性加载的子项时会创建一个新的“模块”注入器。此特性通常可用于仅向应用程序中的一部分路由提供服务。例如，如果 `/admin` 下的所有路由都使用 `loadChildren` 边界来限定范围，则可以仅向这些路由提供仅限管理的服务。执行此操作需要使用 `loadChildren` API，即使惰性加载有问题的路由不是必要的。
 
 The Router now supports explicitly specifying additional `providers` on a `Route`, which allows this same scoping without the need for either lazy loading or `NgModule`s. For example, scoped services within an `/admin` route structure would look like:
 
-路由器现在支持在 `Route` 上显式指定其他 `providers` ，这允许相同的范围限定，而无需延迟加载或 `NgModule` 。例如， `/admin` 路由结构中的范围服务将类似于：
+路由器现在支持在 `Route` 上显式指定其他 `providers`，这允许相同的范围限定，而无需惰性加载或 `NgModule`。例如，`/admin` 路由结构中的范围服务将类似于：
 
 ```ts
 export const ROUTES: Route[] = [
@@ -229,7 +229,7 @@ export const ROUTES: Route[] = [
 
 It's also possible to combine `providers` with `loadChildren` of additional routing configuration, to achieve the same effect of lazy loading an `NgModule` with additional routes and route-level providers. This example configures the same providers/child routes as above, but behind a lazy loaded boundary:
 
-也可以将 `providers` 与额外路由配置的 `loadChildren` 结合使用，以实现与延迟加载带有额外路由和路由级提供程序的 `NgModule` 相同的效果。此示例配置与上面相同的提供者/子路由，但在延迟加载边界之后：
+也可以将 `providers` 与额外路由配置的 `loadChildren` 结合使用，以实现与惰性加载带有额外路由和路由级服务提供者的 `NgModule` 相同的效果。此示例配置与上面相同的提供者/子路由，但在惰性加载边界之后：
 
 ```ts
 // Main application:
@@ -256,7 +256,7 @@ export const ADMIN_ROUTES: Route[] = [{
 
 Note the use of an empty-path route to host `providers` that are shared among all the child routes.
 
-请注意使用了到所有子路由共享的主机 `providers` 的空路径路由。
+请注意这里使用了空路径路由来定义供所有子路由共享的宿主 `providers`。
 
 ## Advanced topics
 
@@ -268,7 +268,7 @@ This section goes into more details that are relevant only to more advanced usag
 
 ### Standalone components for library authors
 
-### 库作者的独立组件
+### 针对库作者的独立组件
 
 Standalone components, directives, and pipes can be exported from `NgModule`s that import them:
 
@@ -284,7 +284,7 @@ export class CarouselModule {}
 
 This pattern is useful for Angular libraries that publish a set of cooperating directives. In the above example, both the `ImageCarouselComponent` and `ImageSlideComponent` need to be present in a template to build up one logical "carousel widget". 
 
-此模式对于发布一组合作指令的 Angular 库很有用。在上面的示例中， `ImageCarouselComponent` 和 `ImageSlideComponent` 需要出现在模板中，以构建一个逻辑上的“轮播小部件”。
+此模式对于发布一组合作指令的 Angular 库很有用。在上面的示例中，`ImageCarouselComponent` 和 `ImageSlideComponent` 需要出现在模板中，以构建一个逻辑上的“轮播小部件”。
 
 As an alternative to publishing a `NgModule`, library authors might want to export an array of cooperating directives:
 
@@ -296,7 +296,7 @@ export CAROUSEL_DIRECTIVES = [ImageCarouselComponent, ImageSlideComponent] as co
 
 Such an array could be imported by applications using `NgModule`s and added to the `@NgModule.imports`. Please note the presence of the TypeScript’s `as const` construct: it gives Angular compiler additional information required for proper compilation and is a recommended practice (as it makes the exported array immutable from the TypeScript point of view).
 
-这样的数组可以由使用 `NgModule` 的应用程序导入并添加到 `@NgModule.imports` 。请注意 TypeScript 的 `as const` 构造的存在：它为 Angular 编译器提供了正确编译所需的额外信息，并且是一种推荐的实践（因为它使导出的数组从 TypeScript 的角度来看不可变）。
+这样的数组可以由使用 `NgModule` 的应用程序导入并添加到 `@NgModule.imports`。请注意 TypeScript 的 `as const` 构造的存在：它为 Angular 编译器提供了正确编译所需的额外信息，并且是一种推荐的实践（因为它使导出的数组从 TypeScript 的角度来看是不可变的）。
 
 ### Dependency injection and injectors hierarchy
 
@@ -308,7 +308,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 * **module injector** with providers configured in `@NgModule.providers` or `@Injectable({providedIn: "..."})`. Those application-wide providers are visible to all components in as well as to other services configured in a module injector.
 
-  具有在 `@NgModule.providers` 或 `@Injectable({providedIn: "..."})` 中配置的提供程序的**模块注入器**。这些应用程序范围的提供程序对模块注入器中配置的所有组件以及其他服务可见。
+  具有在 `@NgModule.providers` 或 `@Injectable({providedIn: "..."})` 中配置的服务提供者的**模块注入器**。这些应用程序范围的提供者对模块注入器中配置的所有组件以及其他服务可见。
 
 * **node injectors** configured in `@Directive.providers` / `@Component.providers` or `@Component.viewProviders`. Those providers are visible to a given component and all its children only.
 
@@ -320,7 +320,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers (for example, [HttpClient](https://angular.io/api/common/http/HttpClient)). In the standalone application (one created with `bootstrapApplication`), “module” providers can be configured during the bootstrap process, in the `providers` option: 
 
-使 `NgModule` 可选将需要使用应用程序范围的提供程序（例如[HttpClient](https://angular.io/api/common/http/HttpClient) ）配置“模块”注入器的新方法。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供程序：
+使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](https://angular.io/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供程序：
 
 ```ts
 bootstrapApplication(PhotoAppComponent, {
@@ -342,15 +342,15 @@ Environment injectors can be configured using one of the following:
 
 * `@NgModule.providers` (in applications bootstrapping through an `NgModule`);
 
-  `@NgModule.providers` （在通过 `NgModule` 引导的应用程序中）；
+  `@NgModule.providers`（在通过 `NgModule` 引导的应用程序中）；
 
 * `@Injectable({provideIn: "..."})`(in both the NgModule-based as well as “standalone” applications);
 
-  `@Injectable({provideIn: "..."})` （在基于 NgModule 以及“独立”应用程序中）；
+  `@Injectable({provideIn: "..."})`（在基于 NgModule 以及“独立”应用程序中）；
 
 * `providers` option in the `bootstrapApplication` call (in fully “standalone” applications);
 
-  `bootstrapApplication` 调用中的 `providers` 选项（在完全“独立”应用程序中）；
+  `bootstrapApplication` 调用中的 `providers` 选项（在完全“独立”的应用程序中）；
 
 * `providers` field in a `Route` configuration.
 
@@ -384,7 +384,7 @@ createEnvironmentInjector([
 
 #### Standalone injectors
 
-#### 独立进样器
+#### 独立注入器
 
 In reality, the dependency injectors hierarchy is slightly more elaborate in applications using standalone components. Let’s consider the following example:
 
@@ -393,26 +393,26 @@ In reality, the dependency injectors hierarchy is slightly more elaborate in app
 ```ts
 // an existing "datepicker" component with an NgModule
 @Component({
-&nbsp; &nbsp; &nbsp; &nbsp; selector: 'datepicker',
-&nbsp; &nbsp; &nbsp; &nbsp; template: '...',
+        selector: 'datepicker',
+        template: '...',
 })
 class DatePickerComponent {
   constructor(private calendar: CalendarService) {}
 }
 
 @NgModule({
-&nbsp; &nbsp; &nbsp; &nbsp; declarations: [DatePickerComponent],
-&nbsp; &nbsp; &nbsp; &nbsp; exports: [DatePickerComponent]
-&nbsp; &nbsp; &nbsp; &nbsp; providers: [CalendarService],
+        declarations: [DatePickerComponent],
+        exports: [DatePickerComponent]
+        providers: [CalendarService],
 })
 class DatePickerModule {
 }
 
 @Component({
-&nbsp; &nbsp; &nbsp; &nbsp; selector: 'date-modal',
-&nbsp; &nbsp; &nbsp; &nbsp; template: '<datepicker></datepicker>',
-&nbsp; &nbsp; &nbsp; &nbsp; standalone: true,
-&nbsp; &nbsp; &nbsp; &nbsp; imports: [DatePickerModule]
+        selector: 'date-modal',
+        template: '<datepicker></datepicker>',
+        standalone: true,
+        imports: [DatePickerModule]
 })
 class DateModalComponent {
 }
@@ -420,7 +420,7 @@ class DateModalComponent {
 
 In the above example, the component `DateModalComponent` is standalone - it can be consumed directly and has no NgModule which needs to be imported in order to use it. However, `DateModalComponent` has a dependency, the `DatePickerComponent,` which is imported via its NgModule (the `DatePickerModule`). This NgModule may declare providers (in this case: `CalendarService`) which are required for the `DatePickerComponent` to function correctly.
 
-在上面的示例中，组件 `DateModalComponent` 是独立的 - 它可以直接使用，并且没有需要导入才能使用它的 NgModule 。但是， `DateModalComponent` 有一个依赖项 `DatePickerComponent,` 它是通过其 NgModule （ `DatePickerModule` ）导入的。此 NgModule 可以声明 `DatePickerComponent` 正常运行所需的提供者（在本例中为： `CalendarService` ）。
+在上面的示例中，组件 `DateModalComponent` 是独立的 - 它可以直接使用，并且没有需要导入才能使用它的 NgModule。但是，`DateModalComponent` 有一个依赖项 `DatePickerComponent`，它是通过其 NgModule（`DatePickerModule`）导入的。此 NgModule 可以声明 `DatePickerComponent` 正常运行所需的提供者（在本例中为：`CalendarService`）。
 
 When Angular creates a standalone component, it needs to know that the current injector has all of the necessary services for the standalone component's dependencies, including those based on NgModules. To guarantee that, in some cases Angular will create a new "standalone injector" as a child of the current environment injector. Today, this happens for all bootstrapped standalone components: it will be a child of the root environment injector. The same rule applies to the dynamically created (for example, by the router or the `ViewContainerRef` API) standalone components. 
 

@@ -89,8 +89,8 @@ export enum TcbGenericContextBehavior {
  * to sufficiently understand a template).
  *
  * 作为为组件生成 TCB 的副作用，也可以为生成期间识别的模板中的问题直接生成 `ts.Diagnostic`
- * 。这些问题记录在 `domSchemaChecker` （检查 DOM 元素和绑定的使用情况）以及 `oobRecorder`
- * （当类型检查代码生成器无法充分理解模板时记录错误）中。
+ * 。这些问题记录在 `domSchemaChecker`（检查 DOM 元素和绑定的使用情况）以及 `oobRecorder`
+ *（当类型检查代码生成器无法充分理解模板时记录错误）中。
  *
  * @param env an `Environment` into which type-checking code will be generated.
  *
@@ -657,7 +657,7 @@ class TcbGenericDirectiveTypeWithAnyParamsOp extends TcbDirectiveTypeOpBase {
  * 进行更流式查找。在大多数情况下，这不是必需的。也就是说，可以在不使用此操作的情况下使用
  * `BoundTarget` 收集符号的信息。但是，对于 ng-template 引用，我们将需要此引用变量，不仅要提供在
  * shim 文件中的位置，还要将变量范围缩小为正确的 `TemplateRef<T>` 类型，而不是 `TemplateRef<any>`
- * （此工作仍然是 TODO）。
+ *（此工作仍然是 TODO）。
  *
  * Executing this operation returns a reference to the directive instance variable with its inferred
  * type.
@@ -956,7 +956,7 @@ class TcbDirectiveInputsOp extends TcbOp {
  * input expressions. This infers the widest possible supertype for the directive, which is used to
  * resolve any recursive references required to infer the real type.
  *
- * 在这种情况下， `TcbDirectiveCtorCircularFallbackOp`
+ * 在这种情况下，`TcbDirectiveCtorCircularFallbackOp`
  * 将指令类型的第二个推断添加到类型检查块，这一次调用指令的类型构造函数而不使用任何输入表达式。这会推断出指令的最广泛的超类型，该超类型用于解析推断真实类型所需的任何递归引用。
  *
  */
@@ -991,7 +991,7 @@ class TcbDirectiveCtorCircularFallbackOp extends TcbOp {
  * elements and property bindings and accumulates synthetic `ts.Diagnostic`s out-of-band. These are
  * later merged with the diagnostics generated from the TCB.
  *
- * 不会通过 TCB 代码生成检查 DOM 模式。相反， `DomSchemaChecker`
+ * 不会通过 TCB 代码生成检查 DOM 模式。相反，`DomSchemaChecker`
  * 摄取元素和属性绑定，并带外累积合成的 `ts.Diagnostic` 。这些稍后会与从 TCB 生成的诊断合并。
  *
  * For convenience, the TCB iteration of the template is used to drive the `DomSchemaChecker` via
@@ -1324,7 +1324,7 @@ class TcbComponentContextCompletionOp extends TcbOp {
  * the least narrow type for whatever it's assigned to.
  *
  * 每当 `TcbOp` 具有循环依赖项时，都会返回此值。该表达式是 null 值的非 null 断言（在 TypeScript
- * 中，为表达式 `null!` ）。这种构造将推断它分配给的任何内容的最小窄类型。
+ * 中，为表达式 `null!`）。这种构造将推断它分配给的任何内容的最小窄类型。
  *
  */
 const INFER_TYPE_FOR_CIRCULAR_OP_EXPR = ts.factory.createNonNullExpression(ts.factory.createNull());
@@ -1500,7 +1500,7 @@ class Scope {
    * @param parent the `Scope` of the parent template (if any) or `null` if this is the root
    * `Scope`.
    *
-   * 父模板的 `Scope` （如果有），如果这是根 `Scope` ，则为 `null` 。
+   * 父模板的 `Scope`（如果有），如果这是根 `Scope` ，则为 `null` 。
    *
    * @param templateOrNodes either a `TmplAstTemplate` representing the template for which to
    * calculate the `Scope`, or a list of nodes if no outer template object is available.
@@ -2308,9 +2308,9 @@ const enum EventParamType {
  * parameter will have an explicit `any` type, effectively disabling strict type checking of event
  * bindings. Alternatively, an explicit type can be passed for the `$event` parameter.
  *
- * 当 `eventType` 设置为 `Infer` 时， `$event`
+ * 当 `eventType` 设置为 `Infer` 时，`$event`
  * 参数将没有显式类型。这允许创建的处理程序函数根据其使用方式推断其 `$event`
- * 参数的类型，以启用对事件绑定的严格类型检查。当设置为 `Any` 时， `$event` 参数将具有显式 `any`
+ * 参数的类型，以启用对事件绑定的严格类型检查。当设置为 `Any` 时，`$event` 参数将具有显式 `any`
  * 类型，有效禁用事件绑定的严格类型检查。或者，可以为 `$event` 参数传递显式类型。
  *
  */

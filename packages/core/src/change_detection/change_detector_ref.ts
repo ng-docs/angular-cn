@@ -177,7 +177,7 @@ export abstract class ChangeDetectorRef {
 /**
  * Returns a ChangeDetectorRef (a.k.a. a ViewRef)
  *
- * 返回 ChangeDetectorRef （又名 ViewRef）
+ * 返回 ChangeDetectorRef（又名 ViewRef）
  *
  */
 export function injectChangeDetectorRef(flags: InjectFlags): ChangeDetectorRef {
@@ -189,7 +189,7 @@ export function injectChangeDetectorRef(flags: InjectFlags): ChangeDetectorRef {
 /**
  * Creates a ViewRef and stores it on the injector as ChangeDetectorRef (public alias).
  *
- * 创建一个 ViewRef 并将其作为 ChangeDetectorRef （公共别名）存储在注入器中。
+ * 创建一个 ViewRef 并将其作为 ChangeDetectorRef（公共别名）存储在注入器中。
  *
  * @param tNode The node that is requesting a ChangeDetectorRef
  *

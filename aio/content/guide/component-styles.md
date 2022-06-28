@@ -31,7 +31,7 @@ One way to do this is to set the `styles` property in the component metadata.
 The `styles` property takes an array of strings that contain CSS code.
 Usually you give it one string, as in the following example:
 
-实现方式之一，是在组件的元数据中设置 `styles` 属性。 `styles` 属性可以接受一个包含 CSS 代码的字符串数组。 通常你只给它一个字符串就行了，如同下例：
+实现方式之一，是在组件的元数据中设置 `styles` 属性。`styles` 属性可以接受一个包含 CSS 代码的字符串数组。通常你只给它一个字符串就行了，如同下例：
 
 <code-example header="src/app/hero-app.component.ts" path="component-styles/src/app/hero-app.component.ts"></code-example>
 
@@ -52,11 +52,11 @@ When consuming a common component, you should not override the component's style
 While Angular's default style encapsulation prevents component styles from affecting other components, global styles affect all components on the page.
 This includes `::ng-deep`, which promotes a component style to a global style.
 
-你应该将组件的样式视为该组件的私有实现细节。使用通用组件时，你不应该覆盖组件的样式，就像访问 TypeScript 类的私有成员一样。虽然 Angular 的默认样式封装可防止组件样式影响其他组件，但全局样式会影响页面上的所有组件。这包括 `::ng-deep` ，它会将组件样式提升为全局样式。
+你应该将组件的样式视为该组件的私有实现细节。使用通用组件时，你不应该覆盖组件的样式，就像访问 TypeScript 类的私有成员一样。虽然 Angular 的默认样式封装可防止组件样式影响其他组件，但全局样式会影响页面上的所有组件。这包括 `::ng-deep`，它会将组件样式提升为全局样式。
 
 ### Authoring a component to support customization
 
-### 创作组件以支持自定义
+### 创作支持自定义样式的组件
 
 As component author, you can explicitly design a component to accept customization in one of four different ways.
 
@@ -64,7 +64,7 @@ As component author, you can explicitly design a component to accept customizati
 
 #### 1. Use CSS Custom Properties (recommended)
 
-#### 1.使用 CSS 自定义属性（推荐）
+#### 1. 使用 CSS 自定义属性（推荐）
 
 You can define a supported customization API for your component by defining its styles with CSS Custom Properties, alternatively known as CSS Variables.
 Anyone using your component can consume this API by defining values for these properties, customizing the final appearance of the component on the rendered page.
@@ -96,7 +96,7 @@ While this approach uses global styles in it's implementation, it allows the com
 If your component uses [Shadow DOM](https://developer.mozilla.org/docs/Web/Web_Components/Using_shadow_DOM), you can apply the `part` attribute to specify elements in your component's template.
 This allows consumers of the component to author arbitrary styles targeting those specific elements with [the `::part` pseudo-element](https://developer.mozilla.org/docs/Web/CSS/::part).
 
-如果你的组件使用了 [Shadow DOM](https://developer.mozilla.org/docs/Web/Web_Components/Using_shadow_DOM) ，你可以应用 `part` 属性来指定组件模板中的元素。这允许组件的使用者使用 [`::part` 伪元素](https://developer.mozilla.org/docs/Web/CSS/::part)创作针对这些特定元素的任意样式。
+如果你的组件使用了 [Shadow DOM](https://developer.mozilla.org/docs/Web/Web_Components/Using_shadow_DOM)，你可以应用 `part` 属性来指定组件模板中的元素。这允许组件的使用者使用 [`::part` 伪元素](https://developer.mozilla.org/docs/Web/CSS/::part)创作针对这些特定元素的任意样式。
 
 While this lets you limit the elements within your template that consumers can customize, it does not limit which CSS properties are customizable.
 
@@ -118,7 +118,7 @@ This is not recommended because the additional JavaScript cost of this style API
 Component styles have a few special *selectors* from the world of shadow DOM style scoping (described in the [CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1) page on the [W3C](https://www.w3.org) site).
 The following sections describe these selectors.
 
-组件样式中有一些从影子(Shadow) DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中） 引入的特殊*选择器*：
+组件样式中有一些从影子(Shadow) DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中）引入的特殊*选择器*：
 
 ### :host
 
@@ -140,7 +140,7 @@ Any rule applied to this selector will affect the host element and all its desce
 The `:host` selector only targets the host element of a component.
 Any styles within the `:host` block of a child component will *not* affect parent components.
 
-`:host` 选择是是把宿主元素作为目标的*唯一*方式。除此之外，你将没办法指定它， 因为宿主不是组件自身模板的一部分，而是父组件模板的一部分。
+`:host` 选择是是把宿主元素作为目标的*唯一*方式。除此之外，你将没办法指定它，因为宿主不是组件自身模板的一部分，而是父组件模板的一部分。
 
 Use the *function form* to apply host styles conditionally by including another selector inside parentheses after `:host`.
 
@@ -172,13 +172,13 @@ Use `:host-context` selector for that purpose instead.
 Sometimes it's useful to apply styles to elements within a component's template based on some condition in an element that is an ancestor of the host element.
 For example, a CSS theme class could be applied to the document `<body>` element, and you want to change how your component looks based on that.
 
-有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。 比如，在文档的 `<body>` 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。
+有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。比如，在文档的 `<body>` 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。
 
 Use the `:host-context()` pseudo-class selector, which works just like the function form of `:host()`.
 The `:host-context()` selector looks for a CSS class in any ancestor of the component host element, up to the document root.
 The `:host-context()` selector is only useful when combined with another selector.
 
-这时可以使用 `:host-context()` 伪类选择器。它也以类似 `:host()` 形式使用。它在当前组件宿主元素的*祖先节点*中查找 CSS 类， 直到文档的根节点为止。它只能与其它选择器组合使用。
+这时可以使用 `:host-context()` 伪类选择器。它也以类似 `:host()` 形式使用。它在当前组件宿主元素的*祖先节点*中查找 CSS 类，直到文档的根节点为止。它只能与其它选择器组合使用。
 
 The following example italicizes all text inside a component, but only
 if some *ancestor* element of the host element has the CSS class `active`.
@@ -228,7 +228,7 @@ Use `/deep/`, `>>>`, and `::ng-deep` only with *emulated* view encapsulation.
 Emulated is the default and most commonly used view encapsulation.
 For more information, see the [View Encapsulation](guide/view-encapsulation) section.
 
-`/deep/` 和 `>>>` 选择器只能被用在**仿真 (emulated)**模式下。 这种方式是默认值，也是用得最多的方式。 更多信息，见[控制视图封装模式](guide/view-encapsulation)一节。
+`/deep/` 和 `>>>` 选择器只能被用在**仿真 (emulated)**模式下。这种方式是默认值，也是用得最多的方式。更多信息，见[控制视图封装模式](guide/view-encapsulation)一节。
 
 </div>
 
@@ -238,7 +238,7 @@ The shadow-piercing descendant combinator is deprecated and [support is being re
 As such we plan to drop support in Angular (for all 3 of `/deep/`, `>>>`, and `::ng-deep`).
 Until then `::ng-deep` should be preferred for a broader compatibility with the tools.
 
-CSS 标准中用于 "刺穿 Shadow DOM" 的组合器已经被弃用，并将[这个特性从主流浏览器和工具中移除](https://www.chromestatus.com/features/6750456638341120)。 因此，我们也将在 Angular 中移除对它们的支持（包括 `/deep/`、`>>>` 和 `::ng-deep`）。 目前，建议先统一使用 `::ng-deep`，以便兼容将来的工具。
+CSS 标准中用于 "刺穿 Shadow DOM" 的组合器已经被弃用，并将[这个特性从主流浏览器和工具中移除](https://www.chromestatus.com/features/6750456638341120)。因此，我们也将在 Angular 中移除对它们的支持（包括 `/deep/`、`>>>` 和 `::ng-deep`）。目前，建议先统一使用 `::ng-deep`，以便兼容将来的工具。
 
 </div>
 
@@ -288,7 +288,7 @@ Reminder:
 These styles apply *only to this component*.
 They are *not inherited* by any components nested within the template nor by any content projected into the component.
 
-注意：这些样式**只对当前组件生效**。 它们**既不会作用于模板中嵌入的任何组件**，也不会作用于投影进来的组件（如 `ng-content` ）。
+注意：这些样式**只对当前组件生效**。它们**既不会作用于模板中嵌入的任何组件**，也不会作用于投影进来的组件（如 `ng-content`）。
 
 </div>
 
@@ -320,7 +320,7 @@ Load styles from external CSS files by adding a `styleUrls` property to a compon
 Reminder: the styles in the style file apply *only to this component*.
 They are *not inherited* by any components nested within the template nor by any content projected into the component.
 
-注意：这些样式**只对当前组件生效**。 它们**既不会作用于模板中嵌入的任何组件**，也不会作用于投影进来的组件（如 `ng-content` ）。
+注意：这些样式**只对当前组件生效**。它们**既不会作用于模板中嵌入的任何组件**，也不会作用于投影进来的组件（如 `ng-content`）。
 
 </div>
 
@@ -431,7 +431,7 @@ CLI 的构建过程会运行相关的预处理器。
 When generating a component file with `ng generate component`, the CLI emits an empty CSS styles file (`.css`) by default.
 Configure the CLI to default to your preferred CSS preprocessor as explained in the [Workspace configuration guide](guide/workspace-config#generation-schematics).
 
-当使用 `ng generate component` 命令生成组件文件时，CLI 会默认生成一个空白的 CSS 样式文件（`.css`）。 你可以配置 CLI，让它默认使用你喜欢的 CSS 预处理器，参阅[工作区配置指南](guide/workspace-config#generation-schematics)中的解释。
+当使用 `ng generate component` 命令生成组件文件时，CLI 会默认生成一个空白的 CSS 样式文件（`.css`）。你可以配置 CLI，让它默认使用你喜欢的 CSS 预处理器，参阅[工作区配置指南](guide/workspace-config#generation-schematics)中的解释。
 
 <!-- links -->
 

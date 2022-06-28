@@ -24,7 +24,7 @@ import {LinkerPluginOptions} from './linker_plugin_options';
  * The plugin delegates most of its work to a generic `FileLinker` for each file (`t.Program` in
  * Babel) that is visited.
  *
- * 该插件将其大部分工作委托给每个访问的文件（ Babel 中的 `t.Program` ）的通用 `FileLinker` 。
+ * 该插件将其大部分工作委托给每个访问的文件（Babel 中的 `t.Program`）的通用 `FileLinker` 。
  *
  */
 export function createEs2015LinkerPlugin({fileSystem, logger, ...options}: LinkerPluginOptions):
@@ -38,7 +38,7 @@ export function createEs2015LinkerPlugin({fileSystem, logger, ...options}: Linke
         /**
          * Create a new `FileLinker` as we enter each file (`t.Program` in Babel).
          *
-         * 当我们输入每个文件（ Babel 中的 `t.Program` ）时，创建一个新的 `FileLinker` 。
+         * 当我们输入每个文件（Babel 中的 `t.Program`）时，创建一个新的 `FileLinker` 。
          *
          */
         enter(path: NodePath<t.Program>): void {

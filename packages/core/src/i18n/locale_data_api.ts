@@ -212,7 +212,7 @@ export const enum ExtraLocaleDataIndex {
 /**
  * Index of each value in currency data (used to describe CURRENCIES_EN in currencies.ts)
  *
- * 货币数据中每个值的索引（用于在 currency.ts 中描述 CURRENCIES_EN ）
+ * 货币数据中每个值的索引（用于在 currency.ts 中描述 CURRENCIES_EN）
  *
  */
 export const enum CurrencyIndex {

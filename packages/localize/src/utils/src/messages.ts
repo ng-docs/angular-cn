@@ -297,18 +297,18 @@ export function parseMessage(
 /**
  * Parse the given message part (`cooked` + `raw`) to extract the message metadata from the text.
  *
- * 解析给定的消息部分（ `cooked` + `raw` ）以从文本中提取消息元数据。
+ * 解析给定的消息部分（`cooked` + `raw`）以从文本中提取消息元数据。
  *
  * If the message part has a metadata block this function will extract the `meaning`,
  * `description`, `customId` and `legacyId` (if provided) from the block. These metadata properties
  * are serialized in the string delimited by `|`, `@@` and `␟` respectively.
  *
- * 如果消息部分有一个元数据块，此函数将从块中提取 `meaning` 、 `description` 、 `customId` 和
- * `legacyId` （如果提供）。这些元数据属性在由 `|` 分隔的字符串中序列化、 `@@` 和 `␟` 。
+ * 如果消息部分有一个元数据块，此函数将从块中提取 `meaning`、`description`、`customId` 和
+ * `legacyId`（如果提供）。这些元数据属性在由 `|` 分隔的字符串中序列化、 `@@` 和 `␟` 。
  *
  * (Note that `␟` is the `LEGACY_ID_INDICATOR` - see `constants.ts`.)
  *
- * （请注意， `␟` 是 `LEGACY_ID_INDICATOR` - 请参阅 `constants.ts` 。）
+ *（请注意，`␟` 是 `LEGACY_ID_INDICATOR` - 请参阅 `constants.ts` 。）
  *
  * For example:
  *
@@ -363,13 +363,13 @@ export function parseMetadata(cooked: string, raw: string): MessageMetadata {
  * Parse the given message part (`cooked` + `raw`) to extract any placeholder metadata from the
  * text.
  *
- * 解析给定的消息部分（ `cooked` + `raw` ）以从文本中提取任何占位符元数据。
+ * 解析给定的消息部分（`cooked` + `raw`）以从文本中提取任何占位符元数据。
  *
  * If the message part has a metadata block this function will extract the `placeholderName` and
  * `associatedMessageId` (if provided) from the block.
  *
  * 如果消息部分有一个元数据块，则此函数将从块中提取 `placeholderName` 和 `associatedMessageId`
- * （如果提供）。
+ *（如果提供）。
  *
  * These metadata properties are serialized in the string delimited by `@@`.
  *
@@ -396,7 +396,7 @@ export function parseMetadata(cooked: string, raw: string): MessageMetadata {
  * A object containing the metadata (`placeholderName` and `associatedMesssageId`) of the
  *     preceding placeholder, along with the static text that follows.
  *
- * 包含前面占位符的元数据（ `placeholderName` 和 `associatedMesssageId` ）以及后面的静态文本的对象。
+ * 包含前面占位符的元数据（`placeholderName` 和 `associatedMesssageId`）以及后面的静态文本的对象。
  *
  */
 export function parsePlaceholder(cooked: string, raw: string):
@@ -414,7 +414,7 @@ export function parsePlaceholder(cooked: string, raw: string):
  * Split a message part (`cooked` + `raw`) into an optional delimited "block" off the front and the
  * rest of the text of the message part.
  *
- * 将消息部分（ `cooked` + `raw` ）拆分为前面的可选分隔“块”和消息部分的其余文本。
+ * 将消息部分（`cooked` + `raw`）拆分为前面的可选分隔“块”和消息部分的其余文本。
  *
  * Blocks appear at the start of message parts. They are delimited by a colon `:` character at the
  * start and end of the block.

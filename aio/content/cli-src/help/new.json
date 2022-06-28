@@ -1,0 +1,199 @@
+{
+  "name": "new",
+  "command": "ng new [name]",
+  "shortDescription": "Creates a new Angular workspace.",
+  "aliases": [
+    "n"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "collection",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "A collection of schematics to use in generating the initial application.",
+      "descriptionCn": "用来生成初始应用的一组原理图。"
+    },
+    {
+      "name": "commit",
+      "type": "boolean",
+      "default": true,
+      "description": "Initial git repository commit information.",
+      "descriptionCn": "初始 git 仓库提交信息。"
+    },
+    {
+      "name": "create-application",
+      "type": "boolean",
+      "default": true,
+      "description": "Create a new initial application project in the 'src' folder of the new workspace. When false, creates an empty workspace with no initial application. You can then use the generate application command so that all applications are created in the projects folder.",
+      "descriptionCn": "在新工作区的 “src” 文件夹中创建一个新的初始应用程序项目。如果为 false，则会创建一个没有初始应用程序的空工作空间。然后，你可以使用 generate application 命令，以便让所有应用程序都创建在自己的项目文件夹中。"
+    },
+    {
+      "name": "defaults",
+      "type": "boolean",
+      "default": false,
+      "description": "Disable interactive input prompts for options with a default.",
+      "descriptionCn": "对有默认值的选项禁用交互式输入提示。"
+    },
+    {
+      "name": "directory",
+      "type": "string",
+      "description": "The directory name to create the workspace in.",
+      "descriptionCn": "要在其中创建工作空间的目录名称。"
+    },
+    {
+      "name": "dry-run",
+      "type": "boolean",
+      "default": false,
+      "description": "Run through and reports activity without writing out results.",
+      "descriptionCn": "运行一遍并汇报其活动轨迹，但不真的写入任何结果。"
+    },
+    {
+      "name": "force",
+      "type": "boolean",
+      "default": false,
+      "description": "Force overwriting of existing files.",
+      "descriptionCn": "强制覆盖现存文件。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "inline-style",
+      "type": "boolean",
+      "aliases": [
+        "s"
+      ],
+      "description": "Include styles inline in the component TS file. By default, an external styles file is created and referenced in the component TypeScript file.",
+      "descriptionCn": "在组件 TS 文件中包含内联样式。默认情况下，将创建一个外部样式文件，并在组件 TypeScript 文件中对其进行引用。"
+    },
+    {
+      "name": "inline-template",
+      "type": "boolean",
+      "aliases": [
+        "t"
+      ],
+      "description": "Include template inline in the component TS file. By default, an external template file is created and referenced in the component TypeScript file.",
+      "descriptionCn": "在组件 TS 文件中包含内联模板。默认情况下，将创建一个外部模板文件，并在组件 TypeScript 文件中对其进行引用。"
+    },
+    {
+      "name": "interactive",
+      "type": "boolean",
+      "default": true,
+      "description": "Enable interactive input prompts.",
+      "descriptionCn": "启用交互式输入提示。"
+    },
+    {
+      "name": "minimal",
+      "type": "boolean",
+      "default": false,
+      "description": "Create a workspace without any testing frameworks. (Use for learning purposes only.)",
+      "descriptionCn": "创建没有任何测试框架的工作空间。（仅用于学习目的。）"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the new workspace and initial project.",
+      "positional": 0,
+      "descriptionCn": "新工作空间和初始项目的名称。"
+    },
+    {
+      "name": "new-project-root",
+      "type": "string",
+      "default": "projects",
+      "description": "The path where new projects will be created, relative to the new workspace root.",
+      "descriptionCn": "要创建的新项目的路径。是相对于新工作空间根目录的。"
+    },
+    {
+      "name": "package-manager",
+      "type": "string",
+      "enum": [
+        "npm",
+        "yarn",
+        "pnpm",
+        "cnpm"
+      ],
+      "description": "The package manager used to install dependencies.",
+      "descriptionCn": "用于安装依赖项的包管理器。"
+    },
+    {
+      "name": "prefix",
+      "type": "string",
+      "aliases": [
+        "p"
+      ],
+      "default": "app",
+      "description": "The prefix to apply to generated selectors for the initial project.",
+      "descriptionCn": "适用于初始项目的生成选择器的前缀。"
+    },
+    {
+      "name": "routing",
+      "type": "boolean",
+      "description": "Generate a routing module for the initial project.",
+      "descriptionCn": "为初始项目生成一个路由模块。"
+    },
+    {
+      "name": "skip-git",
+      "type": "boolean",
+      "aliases": [
+        "g"
+      ],
+      "default": false,
+      "description": "Do not initialize a git repository.",
+      "descriptionCn": "不要初始化 git 仓库。"
+    },
+    {
+      "name": "skip-install",
+      "type": "boolean",
+      "default": false,
+      "description": "Do not install dependency packages.",
+      "descriptionCn": "不要安装依赖包。"
+    },
+    {
+      "name": "skip-tests",
+      "type": "boolean",
+      "aliases": [
+        "S"
+      ],
+      "default": false,
+      "description": "Do not generate \"spec.ts\" test files for the new project.",
+      "descriptionCn": "不要为新项目生成 “spec.ts” 测试文件。"
+    },
+    {
+      "name": "strict",
+      "type": "boolean",
+      "default": true,
+      "description": "Creates a workspace with stricter type checking and stricter bundle budgets settings. This setting helps improve maintainability and catch bugs ahead of time. For more information, see https://angular.io/guide/strict-mode",
+      "descriptionCn": "创建带有更严格类型检查和更严格捆绑包预算设置的工作空间。此设置有助于提升可维护性，并预先捕获 BUG。欲知详情，参见 <https://angular.cn/guide/strict-mode>"
+    },
+    {
+      "name": "style",
+      "type": "string",
+      "enum": [
+        "css",
+        "scss",
+        "sass",
+        "less"
+      ],
+      "description": "The file extension or preprocessor to use for style files.",
+      "descriptionCn": "用于样式文件的扩展名/预处理器。"
+    },
+    {
+      "name": "view-encapsulation",
+      "type": "string",
+      "enum": [
+        "Emulated",
+        "None",
+        "ShadowDom"
+      ],
+      "description": "The view encapsulation strategy to use in the initial project.",
+      "descriptionCn": "用在初始项目中的视图封装策略。"
+    }
+  ],
+  "shortDescriptionCn": "创建一个新的 Angular 工作区。"
+}

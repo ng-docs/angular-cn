@@ -40,7 +40,7 @@ Targeting such a wide range of browsers is challenging because they do not suppo
 You compensate by loading polyfill scripts ("polyfills") for the browsers that you must support.
 See instructions on how to include polyfills into your project below.
 
-Angular 构建于 Web 平台的最新标准之上。 要支持这么多浏览器是一个不小的挑战，因为它们不支持现代浏览器的所有特性。 你可以通过加载腻子脚本("polyfills")来为想要支持的浏览器弥补这些特性。 下面讲解了如何将腻子脚本包含到你的项目中。
+Angular 构建于 Web 平台的最新标准之上。要支持这么多浏览器是一个不小的挑战，因为它们不支持现代浏览器的所有特性。你可以通过加载腻子脚本("polyfills")来为想要支持的浏览器弥补这些特性。下面讲解了如何将腻子脚本包含到你的项目中。
 
 <div class="alert is-important">
 
@@ -78,7 +78,7 @@ This file incorporates the mandatory and many of the optional polyfills as JavaS
 
 * The npm packages for the mandatory polyfills (such as `zone.js`) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file
 
-  使用 `ng new` 创建项目时，会自动为你安装一些强制性腻子脚本（比如 `zone.js` ），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
+  使用 `ng new` 创建项目时，会自动为你安装一些强制性腻子脚本（比如 `zone.js`），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
 
 * If you need an *optional* polyfill, you must install its npm package, then uncomment or create the corresponding import statement in the `src/polyfills.ts` configuration file
 

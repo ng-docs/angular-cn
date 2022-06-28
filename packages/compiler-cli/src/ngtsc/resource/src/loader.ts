@@ -261,7 +261,7 @@ export class AdapterResourceLoader implements ResourceLoader {
          * again.
          *
          * 如果用户指定的 styleUrl 指向了*.scss，但 Sass 编译器是在 Angular
-         * 之前运行的，则资源可能已生成为*.css。只需再次尝试此分辨率。
+         * 之前运行的，则资源可能已生成为*.css。只需再次尝试此解析。
          *
          */
         const cssFallbackUrl = candidate.replace(CSS_PREPROCESSOR_EXT, '.css');

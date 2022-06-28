@@ -206,7 +206,7 @@ export interface R3DeclareComponentMetadata extends R3DeclareDirectiveMetadata {
    * Whether the template was inline (using `template`) or external (using `templateUrl`).
    * Defaults to false.
    *
-   * 模板是内联的（使用 `template` ）还是外部的（使用 `templateUrl` ）。默认为 false。
+   * 模板是内联的（使用 `template`）还是外部的（使用 `templateUrl`）。默认为 false。
    *
    */
   isInline?: boolean;
@@ -445,7 +445,7 @@ export interface R3DeclareQueryMetadata {
    * available in the ngOnInit hook.
    *
    * 如果 static 为
-   * true，则查询的结果将在创建节点之后、更改检测运行之前在组件上设置。这意味着任何依赖更改检测运行的结果（例如*ngIf
+   * true，则查询的结果将在创建节点之后、变更检测运行之前在组件上设置。这意味着任何依赖变更检测运行的结果（例如*ngIf
    * 或*ngFor 视图中的结果）都不会被收集。查询结果在 ngOnInit 钩子中提供。
    *
    * If static is false, the query's results will be set on the component after change detection
@@ -453,7 +453,7 @@ export interface R3DeclareQueryMetadata {
    * the results will not be available in the ngOnInit hook (only in the ngAfterContentInit for
    * content hooks and ngAfterViewInit for view hooks).
    *
-   * 如果 static 为 false，则查询的结果将在更改检测运行后在组件上设置。这意味着查询结果可以包含*ngIf
+   * 如果 static 为 false，则查询的结果将在变更检测运行后在组件上设置。这意味着查询结果可以包含*ngIf
    * 或*ngFor 视图中的节点，但结果将在 ngOnInit 钩子中不可用（仅在 ngAfterContentInit
    * 中用于内容钩子，在 ngAfterViewInit 中用于视图钩子）。
    *
@@ -808,7 +808,7 @@ export interface R3DeclareClassMetadata extends R3PartialDeclaration {
    * Optionally specifies the constructor parameters, their types and the Angular decorators of each
    * parameter. This property is omitted if the class does not have a constructor.
    *
-   * （可选）指定构造函数参数、它们的类型和每个参数的 Angular
+   *（可选）指定构造函数参数、它们的类型和每个参数的 Angular
    * 装饰器。如果类没有构造函数，则忽略此属性。
    *
    */
@@ -818,7 +818,7 @@ export interface R3DeclareClassMetadata extends R3PartialDeclaration {
    * Optionally specifies the Angular decorators applied to the class properties. This property is
    * omitted if no properties have any decorators.
    *
-   * （可选）指定应用于类属性的 Angular 装饰器。如果没有属性有任何装饰器，则忽略此属性。
+   *（可选）指定应用于类属性的 Angular 装饰器。如果没有属性有任何装饰器，则忽略此属性。
    *
    */
   propDecorators?: o.Expression;

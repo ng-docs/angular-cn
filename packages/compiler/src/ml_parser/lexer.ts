@@ -96,7 +96,7 @@ export interface TokenizeOptions {
    * The line continuation (`\` followed by a newline) should be removed from a token
    * but the new line should increment the current line for source mapping.
    *
-   * 应该从标记中删除行继续（ `\` 后跟换行符），但新行应该增加当前行以进行源映射。
+   * 应该从标记中删除行继续（`\` 后跟换行符），但新行应该增加当前行以进行源映射。
    *
    */
   escapedString?: boolean;
@@ -105,8 +105,8 @@ export interface TokenizeOptions {
    * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
    * expressions.
    *
-   * 如果此文本存储在外部模板中（例如通过 `templateUrl` ），那么我们需要决定在处理 ICU
-   * 表达式时是否对行尾进行规范化（从 `\r\n` 到 `\n` ）。
+   * 如果此文本存储在外部模板中（例如通过 `templateUrl`），那么我们需要决定在处理 ICU
+   * 表达式时是否对行尾进行规范化（从 `\r\n` 到 `\n`）。
    *
    * If `true` then we will normalize ICU expression line endings.
    * The default is `false`, but this will be switched in a future major release.

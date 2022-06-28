@@ -60,7 +60,7 @@ export type GetTcbResponse = {
    * When the cursor position is over a source for which there is no generated
    * code, `selections` is empty.
    *
-   * 当光标位置在没有生成代码的源上时， `selections` 为空。
+   * 当光标位置在没有生成代码的源上时，`selections` 为空。
    *
    */
   selections: ts.TextSpan[],

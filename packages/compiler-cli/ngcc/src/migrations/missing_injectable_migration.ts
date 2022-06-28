@@ -22,7 +22,7 @@ import {createInjectableDecorator, isClassDeclaration} from './utils';
  * are present.
  *
  * 确保在 `NgModule.providers` 或 `Directive.providers` / `Component.viewProviders` 中作为 Angular
- * 服务提供的类使用 `@Injectable` 、 `@Directive` 、 `@Component` 或 `@Pipe` 装饰器之一装饰，当添加
+ * 服务提供的类使用 `@Injectable`、`@Directive`、`@Component` 或 `@Pipe` 装饰器之一装饰，当添加
  * `@Injectable()` 装饰器时一个都不存在。
  *
  * At least one decorator is now mandatory, as otherwise the compiler would not compile an

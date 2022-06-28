@@ -126,7 +126,7 @@ function logInvalidEntryPoints(logger: Logger, invalidEntryPoints: InvalidEntryP
  *   corresponding format-paths. NOTE: Only one property per format-path needs to be processed.
  *
  *   `propertiesToProcess` ：存在且需要处理的属性的（有序）列表，基于提供的 `propertiesToConsider`
- * 、 `package.json` 中的属性及其对应的 format-paths 。注：每个 format-path 只需要处理一个属性。
+ *、`package.json` 中的属性及其对应的 format-paths 。注意：每个 format-path 只需要处理一个属性。
  *
  * - `equivalentPropertiesMap`: A mapping from each property in `propertiesToProcess` to the list of
  *   other format properties in `package.json` that need to be marked as processed as soon as the

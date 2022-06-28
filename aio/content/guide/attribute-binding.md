@@ -76,7 +76,7 @@ To use attribute binding with the `<td>` attribute `colspan`
 
 1. Specify the `colspan` attribute by using the following syntax: `[attr.colspan]`.
 
-   使用以下语法指定 `colspan`：`[attr.colspan]` 。
+   使用以下语法指定 `colspan`：`[attr.colspan]`。
 
 1. Set `[attr.colspan]` equal to an expression.
 
@@ -101,7 +101,7 @@ Sometimes there are differences between the name of property and an attribute.
 `colspan` is an attribute of `<tr>`, while `colSpan`  with a capital "S" is a property.
 When using attribute binding, use `colspan` with a lowercase "s".
 
-`colspan` 是 `<tr>` 的 Attibute，而带有大写 "S" 的 `colSpan` 是 Property。使用 Attribute 绑定时，请使用带有小写“s”的 `colspan` 。
+`colspan` 是 `<tr>` 的 Attibute，而带有大写 "S" 的 `colSpan` 是 Property。使用 Attribute 绑定时，请使用带有小写“s”的 `colspan`。
 
 For more information on how to bind to the `colSpan` property, see the [`colspan` and `colSpan`](guide/property-binding#colspan) section of [Property Binding](guide/property-binding).
 

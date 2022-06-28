@@ -71,7 +71,7 @@ One of `static fields` (the default) or `decorators`.
   TypeScript emits calls to the `__decorate` helper.
   Use `--emitDecoratorMetadata` for runtime reflection.
 
-  `decorators` 值会将装饰器保留在原处，这将使编译速度更快。TypeScript 会生成对辅助器 `__decorate` 的调用。使用 `--emitDecoratorMetadata` 进行运行时反射。
+  `decorators` 值会将装饰器保留在原处，这将使编译速度更快。TypeScript 会生成对辅助器 `__decorate` 的调用。使用 `--emitDecoratorMetadata` 以支持运行时反射。
 
   <div class="alert is-helpful">
 
@@ -79,7 +79,7 @@ One of `static fields` (the default) or `decorators`.
   That the resulting code will not properly tree-shake.
 
   **注意**：<br />
-  生成的代码将无法被正确地摇树优化。
+  这样生成的代码将无法被正确地摇树优化。
 
   </div>
 
@@ -101,13 +101,13 @@ The following modes are available:
 | :---- | :------ |
 | 模式 | 详情 |
 | `'full'` | Generates fully AOT-compiled code according to the version of Angular that is currently being used. |
-| `'full'` | 根据当前使用的 Angular 版本生成完全 AOT 编译的代码。 |
+| `'full'` | 根据当前使用的 Angular 版本生成完全 AOT 编译的代码。|
 | `'partial'` | Generates code in a stable, but intermediate form suitable for a published library. |
-| `'partial'` | 生成稳定的中间代码，适用于已发布的库。 |
+| `'partial'` | 生成稳定的中间代码，适用于已发布的库。|
 
 The default value is `'full'`.
 
-默认值为 `'full'` 。
+默认值为 `'full'`。
 
 ### `disableExpressionLowering`
 
@@ -138,7 +138,7 @@ See [Mark text for translations][AioGuideI18nCommonPrepareMarkTextInComponentTem
 Set this option to `false` unless your project relies upon translations that were previously generated using legacy IDs.
 Default is `true`.
 
-除非你的项目依赖先前已用旧版 ID 生成的翻译，否则请将此选项设置为 `false`。默认值为 `true` 。
+除非你的项目依赖先前已用旧版 ID 生成的翻译，否则请将此选项设置为 `false`。默认值为 `true`。
 
 The pre-Ivy message extraction tooling generated a variety of legacy formats for extracted message IDs.
 These message formats have a number of issues, such as whitespace handling and reliance upon information inside the original HTML of a template.
@@ -365,7 +365,7 @@ The `ngc` command is just a wrapper around TypeScript's `tsc` compiler command a
 
 In addition to the configuration file, you can also use [`tsc` command line options](https://www.typescriptlang.org/docs/handbook/compiler-options.html) to configure `ngc`.
 
-除了配置文件，你还可以使用一些 [`tsc` 命令行选项](https://www.typescriptlang.org/docs/handbook/compiler-options.html)来配置 `ngc` 。
+除了配置文件，你还可以使用一些 [`tsc` 命令行选项](https://www.typescriptlang.org/docs/handbook/compiler-options.html)来配置 `ngc`。
 
 <!-- links -->
 

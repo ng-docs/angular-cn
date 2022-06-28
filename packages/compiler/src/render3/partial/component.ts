@@ -51,7 +51,7 @@ export interface DeclareComponentTemplateInfo {
   /**
    * Whether the template was inline (using `template`) or external (using `templateUrl`).
    *
-   * 模板是内联的（使用 `template` ）还是外部的（使用 `templateUrl` ）。
+   * 模板是内联的（使用 `template`）还是外部的（使用 `templateUrl`）。
    *
    */
   isInline: boolean;

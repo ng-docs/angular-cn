@@ -333,7 +333,7 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
   /**
    * Get completions for a property expression in a global context (e.g. `{{y|}}`).
    *
-   * 在全局上下文中获取属性表达式的自动完成（例如 `{{y|}}` ）。
+   * 在全局上下文中获取属性表达式的自动完成（例如 `{{y|}}`）。
    *
    */
   private getGlobalPropertyExpressionCompletion(
@@ -414,7 +414,7 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
    * Get the details of a specific completion for a property expression in a global context (e.g.
    * `{{y|}}`).
    *
-   * 获取全局上下文中属性表达式的特定自动完成的详细信息（例如 `{{y|}}` ）。
+   * 获取全局上下文中属性表达式的特定自动完成的详细信息（例如 `{{y|}}`）。
    *
    */
   private getGlobalPropertyExpressionCompletionDetails(
@@ -461,7 +461,7 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
    * (e.g.
    * `{{y|}}`).
    *
-   * 获取全局上下文中属性表达式的特定自动完成的 `ts.Symbol` （例如 `{{y|}}` ）。
+   * 获取全局上下文中属性表达式的特定自动完成的 `ts.Symbol`（例如 `{{y|}}`）。
    *
    */
   private getGlobalPropertyExpressionCompletionSymbol(
@@ -911,7 +911,7 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
    * From the AST node of the cursor position, include completion of string literals, number
    * literals, `true`, `false`, `null`, and `undefined`.
    *
-   * 从光标位置的 AST 节点，包括字符串文字、数字文字、 `true` 、 `false` 、 `null` 和 `undefined`
+   * 从光标位置的 AST 节点，包括字符串文字、数字文字、 `true`、`false`、`null` 和 `undefined`
    * 的自动完成。
    *
    */

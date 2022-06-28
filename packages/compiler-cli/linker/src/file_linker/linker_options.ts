@@ -30,7 +30,7 @@ export interface LinkerOptions {
    * Specifically, in JIT mode, NgModule definitions must describe the `declarations`, `imports`,
    * `exports`, etc, which are otherwise not needed.
    *
-   * 具体来说，在 JIT 模式下，NgModule 定义必须描述 `declarations` 、 `imports` 、 `exports`
+   * 具体来说，在 JIT 模式下，NgModule 定义必须描述 `declarations`、`imports`、`exports`
    * 等，否则就不需要这些。
    *
    */

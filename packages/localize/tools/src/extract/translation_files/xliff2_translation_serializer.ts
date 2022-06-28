@@ -216,7 +216,7 @@ export class Xliff2TranslationSerializer implements TranslationSerializer {
  * `other`. Certain formatting tags (e.g. bold, italic, etc) have type `fmt`. Line-breaks, images
  * and links are special cases.
  *
- * 如果标签是未知的但以 `TAG_` 、 `START_TAG_` 或 `CLOSE_TAG_` ，则类型是 `other`
+ * 如果标签是未知的但以 `TAG_`、`START_TAG_` 或 `CLOSE_TAG_` ，则类型是 `other`
  * 。某些格式标签（例如粗体、斜体等）具有 `fmt` 类型。换行符、图像和链接是特例。
  *
  */

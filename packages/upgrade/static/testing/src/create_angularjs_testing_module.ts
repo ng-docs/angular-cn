@@ -54,7 +54,7 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * In the following code snippet, `heroesService` is a downgraded Angular service that we are
  * accessing from AngularJS.
  *
- * 在以下代码片段中， `heroesService` 是我们从 AngularJS 访问的降级 Angular 服务。
+ * 在以下代码片段中，`heroesService` 是我们从 AngularJS 访问的降级 Angular 服务。
  *
  * <code-example path="upgrade/static/ts/full/module.spec.ts"
  * region="angularjs-spec"></code-example>

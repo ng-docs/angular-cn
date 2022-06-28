@@ -119,7 +119,7 @@ export class Adapter<T extends CacheStorage = CacheStorage> {
   /**
    * Parse a URL into its different parts, such as `origin`, `path` and `search`.
    *
-   * 将 URL 解析为其不同的部分，例如 `origin` 、 `path` 和 `search` 。
+   * 将 URL 解析为其不同的部分，例如 `origin`、`path` 和 `search` 。
    *
    */
   parseUrl(url: string, relativeTo?: string): {origin: string, path: string, search: string} {

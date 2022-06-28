@@ -37,7 +37,7 @@ export abstract class SwRegistrationOptions {
    * `SwUpdate`) will attempt to communicate and interact with it.
    *
    * ServiceWorker 是否将被注册，并且相关服务（例如 `SwPush` 和 `SwUpdate`
-   * ）将尝试与它进行通信和交互。
+   *）将尝试与它进行通信和交互。
    *
    * Default: true
    *

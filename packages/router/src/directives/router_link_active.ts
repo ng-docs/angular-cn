@@ -147,8 +147,7 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
    *
    * 可能的值： `'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` \| `true` `false` 的。
    *
-   * @see {
-   * @link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
    */
   @Input() ariaCurrentWhenActive?: 'page'|'step'|'location'|'date'|'time'|true|false;
 

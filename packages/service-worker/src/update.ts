@@ -20,8 +20,7 @@ import {ERR_SW_NOT_SUPPORTED, NgswCommChannel, UnrecoverableStateEvent, UpdateAc
  *
  * 订阅来自 Service Worker 的更新通知、触发更新检查以及强制激活更新。
  *
- * @see {
- * @link guide/service-worker-communications Service worker communication guide}
+ * @see {@link guide/service-worker-communications Service worker communication guide}
  * @publicApi
  */
 @Injectable()

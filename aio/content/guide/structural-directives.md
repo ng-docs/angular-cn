@@ -32,7 +32,7 @@ For the example application that this page describes, see the <live-example name
 When structural directives are applied they generally are prefixed by an asterisk, `*`,  such as `*ngIf`. This convention is shorthand that Angular interprets and converts into a longer form.
 Angular transforms the asterisk in front of a structural directive into an `<ng-template>` that surrounds the host element and its descendants.
 
-应用结构指令时，它们通常以星号 `*` 为前缀，例如 `*ngIf` 。本约定是 Angular 解释并转换为更长形式的速记。 Angular 会将结构指令前面的星号转换为围绕宿主元素及其后代的 `<ng-template>` 。
+应用结构指令时，它们通常以星号 `*` 为前缀，例如 `*ngIf`。本约定是 Angular 解释并转换为更长形式的速记。Angular 会将结构指令前面的星号转换为围绕宿主元素及其后代的 `<ng-template>`。
 
 For example, let's take the following code which uses an `*ngIf` to displays the hero's name if `hero` exists:
 
@@ -42,7 +42,7 @@ For example, let's take the following code which uses an `*ngIf` to displays the
 
 Angular creates an `<ng-template>` element and applies the `*ngIf` directive onto it where it becomes a property binding in square brackets, `[ngIf]`. The rest of the `<div>`, including its class attribute, is then moved inside the `<ng-template>`:
 
-Angular 创建一个 `<ng-template>` 元素，并将 `*ngIf` 指令应用于它，在那里它成为方括号中的属性绑定 `[ngIf]` 。然后， `<div>` 的其余部分（包括其 class 属性）会在 `<ng-template>` 中移动：
+Angular 创建一个 `<ng-template>` 元素，并将 `*ngIf` 指令应用于它，在那里它成为方括号中的属性绑定 `[ngIf]`。然后，`<div>` 的其余部分（包括其 class 属性）会在 `<ng-template>` 中移动：
 
 <code-example path="structural-directives/src/app/app.component.html" header="src/app/app.component.html (ngif-template)" region="ngif-template"></code-example>
 
@@ -65,7 +65,7 @@ All other bindings and attributes on the element apply to the `<div>` element wi
 Other modifiers on the host element, in addition to the `ngFor` string, remain in place as the element moves inside the `<ng-template>`.
 In this example, the `[class.odd]="odd"` stays on the `<div>`.
 
-在这里，与 `ngFor` 结构指令相关的所有内容都被移动到 `<ng-template>` 。元素上的所有其他绑定和属性都适用于 `<ng-template>` 中的 `<div>` 元素。当元素在 `<ng-template>` 中移动时，宿主元素上的其他修饰符（除了 `ngFor` 字符串）会保持在原位。在此示例中， `[class.odd]="odd"` 保留在 `<div>` 上。
+在这里，与 `ngFor` 结构指令相关的所有内容都被移动到 `<ng-template>`。元素上的所有其他绑定和属性都适用于 `<ng-template>` 中的 `<div>` 元素。当元素在 `<ng-template>` 中移动时，宿主元素上的其他修饰符（除了 `ngFor` 字符串）会保持在原位。在此示例中，`[class.odd]="odd"` 保留在 `<div>` 上。
 
 The `let` keyword declares a template input variable that you can reference within the template.
 The input variables in this example are `hero`, `i`, and `odd`.
@@ -73,12 +73,12 @@ The parser translates `let hero`, `let i`, and `let odd` into variables named `l
 The `let-i` and `let-odd` variables become `let i=index` and `let odd=odd`.
 Angular sets `i` and `odd` to the current value of the context's `index` and `odd` properties.
 
-`let` 关键字会声明一个模板输入变量，你可以在模板中引用该变量。在这个例子中，是 `hero`、`i` 和 `odd`。解析器将 `let hero`、`let i` 和 `let odd` 转换为名为 `let-hero`、`let-i` 和 `let-odd` 的变量。 `let-i` 和 `let-odd` 变量变为 `let i=index` 和 `let odd=odd` 。 Angular 会将 `i` 和 `odd` 设置为上下文中 `index` 和 `odd` 属性的当前值。
+`let` 关键字会声明一个模板输入变量，你可以在模板中引用该变量。在这个例子中，是 `hero`、`i` 和 `odd`。解析器将 `let hero`、`let i` 和 `let odd` 转换为名为 `let-hero`、`let-i` 和 `let-odd` 的变量。`let-i` 和 `let-odd` 变量变为 `let i=index` 和 `let odd=odd`。Angular 会将 `i` 和 `odd` 设置为上下文中 `index` 和 `odd` 属性的当前值。
 
 The parser applies PascalCase to all directives and prefixes them with the directive's attribute name, such as ngFor.
 For example, the `ngFor` input properties, `of` and `trackBy`, map to `ngForOf` and `ngForTrackBy`.
 
-解析器将 PascalCase 应用于所有指令，并以指令的属性名称为前缀，例如 ngFor 。例如， `ngFor` 输入属性 `of` 和 `trackBy` 映射到 `ngForOf` 和 `ngForTrackBy` 。
+解析器将 PascalCase 应用于所有指令，并以指令的属性名称为前缀，例如 ngFor。例如，`ngFor` 输入属性 `of` 和 `trackBy` 映射到 `ngForOf` 和 `ngForTrackBy`。
 
 As the `NgFor` directive loops through the list, it sets and resets properties of its own context object.
 These properties can include, but aren't limited to, `index`, `odd`, and a special property
@@ -88,7 +88,7 @@ named `$implicit`.
 
 Angular sets `let-hero` to the value of the context's `$implicit` property, which `NgFor` has initialized with the hero for the current iteration.
 
-Angular 会将 `let-hero` 设置为上下文的 `$implicit` 属性的值， `NgFor` 已经将其初始化为当前正在迭代的英雄。
+Angular 会将 `let-hero` 设置为上下文的 `$implicit` 属性的值，`NgFor` 已经将其初始化为当前正在迭代的英雄。
 
 For more information, see the [NgFor API](api/common/NgForOf "API: NgFor") and [NgForOf API](api/common/NgForOf) documentation.
 
@@ -127,12 +127,12 @@ When two directives lay claim to the same host element, which one should take pr
 Which should go first, the `NgIf` or the `NgFor`? Can the `NgIf` cancel the effect of the `NgFor`?
 If so (and it seems like it should be so), how should Angular generalize the ability to cancel for other structural directives?
 
-哪个应该先走， `NgIf` 或 `NgFor` ？ `NgIf` 可以取消 `NgFor` 的效果吗？如果是这样（看起来应该是这样），Angular 应该如何概括其他结构指令的取消能力？
+哪个应该先走，`NgIf` 或 `NgFor` ？ `NgIf` 可以取消 `NgFor` 的效果吗？如果是这样（看起来应该是这样），Angular 应该如何概括其他结构指令的取消能力？
 
 There are no easy answers to these questions. Prohibiting multiple structural directives makes them moot.
 There's an easy solution for this use case: put the `*ngIf` on a container element that wraps the `*ngFor` element. One or both elements can be an `<ng-container>` so that no extra DOM elements are generated.
 
-这些问题没有简单的答案。禁止多个结构指令使它们没有实际意义。这个用例有一个简单的解决方案：将 `*ngIf` 放在包装 `*ngFor` 元素的容器元素上。一个或两个元素可以是 `<ng-container>` ，以便不会生成额外的 DOM 元素。
+这些问题没有简单的答案。禁止多个结构指令使它们没有实际意义。这个用例有一个简单的解决方案：将 `*ngIf` 放在包装 `*ngFor` 元素的容器元素上。一个或两个元素可以是 `<ng-container>`，以便不会生成额外的 DOM 元素。
 
 <a id="unless"></a>
 
@@ -145,12 +145,12 @@ The `UnlessDirective` does the opposite of `NgIf`, and `condition` values can be
 `NgIf` displays the template content when the condition is `true`.
 `UnlessDirective` displays the content when the condition is `false`.
 
-本节将指导你创建 `UnlessDirective` 以及如何设置 `condition` 值。 `UnlessDirective` 与 `NgIf` 相反，并且 `condition` 值可以设置为 `true` 或 `false` 。 `NgIf` 为 `true` 时显示模板内容；而 `UnlessDirective` 在这个条件为 `false` 时显示内容。
+本节将指导你创建 `UnlessDirective` 以及如何设置 `condition` 值。`UnlessDirective` 与 `NgIf` 相反，并且 `condition` 值可以设置为 `true` 或 `false`。`NgIf` 为 `true` 时显示模板内容；而 `UnlessDirective` 在这个条件为 `false` 时显示内容。
 
 Following is the `UnlessDirective` selector, `appUnless`, applied to the paragraph element.
 When `condition` is `false`, the browser displays the sentence.
 
-以下是应用于 p 元素的 `UnlessDirective` 选择器 `appUnless` 当 `condition` 为 `false` ，浏览器将显示该句子。
+以下是应用于 p 元素的 `UnlessDirective` 选择器 `appUnless` 当 `condition` 为 `false`，浏览器将显示该句子。
 
 <code-example header="src/app/app.component.html (appUnless-1)" path="structural-directives/src/app/app.component.html" region="appUnless-1"></code-example>
 
@@ -218,18 +218,18 @@ The complete directive is as follows:
 
 In this section, you'll update your application to test the `UnlessDirective`.
 
-在本节中，你将更新你的应用程序，以测试 `UnlessDirective` 。
+在本节中，你将更新你的应用程序，以测试 `UnlessDirective`。
 
 1. Add a `condition` set to `false` in the `AppComponent`.
 
-   添加一个 `condition` 设置为 `false` 的 `AppComponent` 。
+   添加一个 `condition` 设置为 `false` 的 `AppComponent`。
 
    <code-example header="src/app/app.component.ts (excerpt)" path="structural-directives/src/app/app.component.ts" region="condition"></code-example>
 
 1. Update the template to use the directive.
    Here, `*appUnless` is on two `<p>` tags with opposite `condition` values, one `true` and one `false`.
 
-   更新模板以使用指令。这里，`*appUnless` 位于两个具有相反 `condition` 的 `<p>` 标记上，一个为 `true` ，一个为 `false` 。
+   更新模板以使用指令。这里，`*appUnless` 位于两个具有相反 `condition` 的 `<p>` 标记上，一个为 `true`，一个为 `false`。
 
    <code-example header="src/app/app.component.html (appUnless)" path="structural-directives/src/app/app.component.html" region="appUnless"></code-example>
 
@@ -307,7 +307,7 @@ Angular 会将结构型指令的简写形式转换为普通的绑定语法，如
 | `prefix` and naked `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
 | `prefix` 和裸 `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
 | `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **NOTE**: <br /> The `prefix` is added to the `key` </div> |
-| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> |
+| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **注意**: <br /> `prefix` 被加到了 `key` 上</div> |
 | `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> |
 | `let` | <code-example format="typescript" hideCopy language="typescript"> let-local="export" </code-example> |
 
@@ -411,7 +411,7 @@ export class AppComponent {
 In this example, the `LoadingState<T>` type permits either of two states, `Loaded<T>` or `Loading`.
 The expression used as the directive's `state` input is of the umbrella type `LoadingState`, as it's unknown what the loading state is at that point.
 
-在这个例子中， `LoadingState<T>` 类型允许两个状态之一， `Loaded<T>` 或 `Loading` 。用作指令的 `state` 输入的表达式是宽泛的伞形类型 `LoadingState`，因为还不知道此时的加载状态是什么。
+在这个例子中，`LoadingState<T>` 类型允许两个状态之一，`Loaded<T>` 或 `Loading`。用作指令的 `state` 输入的表达式是宽泛的伞形类型 `LoadingState`，因为还不知道此时的加载状态是什么。
 
 The `IfLoadedDirective` definition declares the static field `ngTemplateGuard_state`, which expresses the narrowing behavior.
 Within the `AppComponent` template, the `*ifLoaded` structural directive should render this template only when `state` is actually `Loaded<Person>`.

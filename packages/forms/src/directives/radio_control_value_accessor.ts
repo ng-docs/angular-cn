@@ -160,7 +160,7 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    * to override the `onChange` function (which expects 1 argument) in the parent
    * `BaseControlValueAccessor` class.
    *
-   * 注意：我们在此将 `onChange` （也用作主机侦听器）声明为不带参数的函数，以覆盖父
+   * 注意：我们在此将 `onChange`（也用作主机侦听器）声明为不带参数的函数，以覆盖父
    * `BaseControlValueAccessor` 类中的 `onChange` 函数（需要 1 个参数）。
    *
    * @nodoc

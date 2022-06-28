@@ -71,7 +71,7 @@ Though classes provide many dependency values, the expanded `provide` object let
 The class provider syntax is a shorthand expression that expands into a provider configuration, defined by the [`Provider` interface](api/core/Provider).
 The following example is the class provider syntax for providing a `Logger` class in the `providers` array.
 
-类提供者的语法实际上是一种简写形式，它会扩展成一个由 [`Provider` 接口](api/core/Provider)定义的提供者配置对象。 下面的代码片段展示了 `providers` 中给出的类会如何扩展成完整的提供者配置对象。
+类提供者的语法实际上是一种简写形式，它会扩展成一个由 [`Provider` 接口](api/core/Provider)定义的提供者配置对象。下面的代码片段展示了 `providers` 中给出的类会如何扩展成完整的提供者配置对象。
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="providers-logger"></code-example>
 
@@ -87,14 +87,14 @@ The expanded provider configuration is an object literal with two properties:
 
 * The `provide` property holds the [token](#token) that serves as the key for both locating a dependency value and configuring the injector.
 
-    `provide` 属性存有[令牌](#token)，它作为一个 key，在定位依赖值和配置注入器时使用。
+  `provide` 属性存有[令牌](#token)，它作为一个 key，在定位依赖值和配置注入器时使用。
 
 * The second property is a provider definition object, which tells the injector how to create the dependency value.
   The provider-definition key can be `useClass`, as in the example.
   It can also be `useExisting`, `useValue`, or `useFactory`.
   Each of these keys provides a different type of dependency, as discussed in the following section.
 
-  第二个属性是一个提供者定义对象，它告诉注入器要如何创建依赖值。 提供者定义对象中的 key 可以是 `useClass` —— 就像这个例子中一样。 也可以是 `useExisting`、`useValue` 或 `useFactory`。 每一个 key 都用于提供一种不同类型的依赖，我们稍后会讨论。
+  第二个属性是一个提供者定义对象，它告诉注入器要如何创建依赖值。提供者定义对象中的 key 可以是 `useClass` —— 就像这个例子中一样。也可以是 `useExisting`、`useValue` 或 `useFactory`。每一个 key 都用于提供一种不同类型的依赖，我们稍后会讨论。
 
 <a id="class-provider"></a>
 
@@ -124,7 +124,7 @@ If the alternative class providers have their own dependencies, specify both pro
 In this example, `EvenBetterLogger` displays the user name in the log message.
 This logger gets the user from an injected `UserService` instance.
 
-在这个例子中，`EvenBetterLogger` 会在日志信息里显示用户名。 这个 logger 要从注入的 `UserService` 实例中来获取该用户。
+在这个例子中，`EvenBetterLogger` 会在日志信息里显示用户名。这个 logger 要从注入的 `UserService` 实例中来获取该用户。
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="EvenBetterLogger"></code-example>
 
@@ -145,7 +145,7 @@ To alias a class provider, specify the alias and the class provider in the `prov
 In the following example, the injector injects the singleton instance of `NewLogger` when the component asks for either the new or the old logger.
 In this way, `OldLogger` is an alias for `NewLogger`.
 
-在下面的例子中，当组件请求新的或旧的记录器时，注入器都会注入一个 `NewLogger` 的实例。 通过这种方式，`OldLogger` 就成了 `NewLogger` 的别名。
+在下面的例子中，当组件请求新的或旧的记录器时，注入器都会注入一个 `NewLogger` 的实例。通过这种方式，`OldLogger` 就成了 `NewLogger` 的别名。
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="providers-6b"></code-example>
 
@@ -206,7 +206,7 @@ Next, to use `provideParent()` with a different parent type, provide a second ar
 To inject an object, configure the injector with the `useValue` option.
 The following provider object uses the `useValue` key to associate the variable with the `Logger` token.
 
-要注入一个对象，可以用 `useValue` 选项来配置注入器。 下面的提供者定义对象使用 `useValue` 作为 key 来把该变量与 `Logger` 令牌关联起来。
+要注入一个对象，可以用 `useValue` 选项来配置注入器。下面的提供者定义对象使用 `useValue` 作为 key 来把该变量与 `Logger` 令牌关联起来。
 
 <code-example path="dependency-injection/src/app/providers.component.ts" region="providers-7"></code-example>
 
@@ -244,7 +244,7 @@ To provide and inject the configuration object, specify the object in the `@NgMo
 Define and use an `InjectionToken` object for choosing a provider token for non-class dependencies.
 The following example defines a token, `APP_CONFIG` of the type `InjectionToken`.
 
-可以定义和使用一个 `InjectionToken` 对象来为非类的依赖选择一个提供者令牌。下列例子定义了一个类型为 `InjectionToken` 的 `APP_CONFIG` 。
+可以定义和使用一个 `InjectionToken` 对象来为非类的依赖选择一个提供者令牌。下列例子定义了一个类型为 `InjectionToken` 的 `APP_CONFIG`。
 
 <code-example header="src/app/app.config.ts" path="dependency-injection/src/app/app.config.ts" region="token"></code-example>
 
@@ -330,7 +330,7 @@ You inject both `Logger` and `UserService` into the factory provider so the inje
   The `Logger` and `UserService` classes serve as tokens for their own class providers.
   The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
 
-  `deps` 属性是一个[提供者令牌](#token)数组。 `Logger` 和 `UserService` 类都是自己类提供者的令牌。该注入器解析了这些令牌，并把相应的服务注入到 `heroServiceFactory` 工厂函数的参数中。
+  `deps` 属性是一个[提供者令牌](#token)数组。`Logger` 和 `UserService` 类都是自己类提供者的令牌。该注入器解析了这些令牌，并把相应的服务注入到 `heroServiceFactory` 工厂函数的参数中。
 
 Capturing the factory provider in the exported variable, `heroServiceProvider`, makes the factory provider reusable.
 

@@ -57,9 +57,7 @@ CLI 会自动添加 `Component` 后缀，所以如果在编写 `first-component`
 
 <div class="alert is-helpful">
 
-&lt;header<code>&lt;base href></code></header>
-
-&lt;标头<code>&lt;base href></code></header>
+<header><code>&lt;base href&gt;</code></header>
 
 This guide works with a CLI-generated Angular application.
 If you are working manually, make sure that you have `<base href="/">` in the `<head>` of your index.html file.
@@ -287,7 +285,7 @@ In this example, the third route is a redirect so that the router defaults to th
 Notice that this redirect precedes the wildcard route.
 Here, `path: ''` means to use the initial relative URL (`''`).
 
-在这个例子中，第三个路由是重定向路由，所以路由器会默认跳到 `first-component` 路由。注意，这个重定向路由位于通配符路由之前。这里的 `path: ''` 表示使用初始的相对 URL（ `''` ）。
+在这个例子中，第三个路由是重定向路由，所以路由器会默认跳到 `first-component` 路由。注意，这个重定向路由位于通配符路由之前。这里的 `path: ''` 表示使用初始的相对 URL（`''`）。
 
 For more details on `pathMatch` see [Spotlight on `pathMatch`](guide/router-tutorial-toh#pathmatch).
 
@@ -328,7 +326,7 @@ The one difference is that you place child routes in a `children` array within t
 Each page in your application should have a unique title so that they can be identified in the browser history.
 The `Router` sets the document's title using the `title` property from the `Route` config.
 
-应用程序中的每个页面都应该有一个唯一的标题，以便可以在浏览器历史记录中识别它们。 `Router` 使用 `Route` 配置中的 `title` 属性设置文档的标题。
+应用程序中的每个页面都应该有一个唯一的标题，以便可以在浏览器历史记录中识别它们。`Router` 使用 `Route` 配置中的 `title` 属性设置文档的标题。
 
 <code-example header="AppRoutingModule (excerpt)" path="router/src/app/app-routing.module.10.ts" region="page-title"></code-example>
 
@@ -336,7 +334,8 @@ The `Router` sets the document's title using the `title` property from the `Rout
 
 **NOTE**: <br /> The `title` property follows the same rules as static route `data` and dynamic values that implement `Resolve`.
 
-**注**：<br />`title` 属性遵循与实现 `Resolve` 的静态路由 `data` 和动态值相同的规则。
+**注意**：<br />
+`title` 属性遵循与实现 `Resolve` 的静态路由 `data` 和动态值相同的规则。
 
 </div>
 
@@ -491,7 +490,7 @@ gotoItems(hero: Hero) {
 You can configure your routes to lazy load modules, which means that Angular only loads modules as needed, rather than loading all modules when the application launches.
 Additionally, preload parts of your application in the background to improve the user experience.
 
-你可以配置路由定义来实现惰性加载模块，这意味着 Angular 只会在需要时才加载这些模块，而不是在应用启动时就加载全部。 另外，你可以在后台预加载一些应用部件来改善用户体验。
+你可以配置路由定义来实现惰性加载模块，这意味着 Angular 只会在需要时才加载这些模块，而不是在应用启动时就加载全部。另外，你可以在后台预加载一些应用部件来改善用户体验。
 
 For more information on lazy loading and preloading see the dedicated guide [Lazy loading NgModules](guide/lazy-loading-ngmodules).
 
@@ -670,7 +669,7 @@ You could also redefine the `AppComponent` template with Crisis Center routes ex
 In summary, you can write applications with one, two or more levels of routing.
 The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, (required) router parameters, and (optional) route parameter objects.
 
-总之，你可以用一级、两级或多级路由来写应用程序。 链接参数数组提供了用来表示任意深度路由的链接参数数组以及任意合法的路由参数序列、必须的路由器参数以及可选的路由参数对象。
+总之，你可以用一级、两级或多级路由来写应用程序。链接参数数组提供了用来表示任意深度路由的链接参数数组以及任意合法的路由参数序列、必须的路由器参数以及可选的路由参数对象。
 
 <a id="browser-url-styles"></a>
 <a id="location-strategy"></a>
@@ -720,14 +719,14 @@ The router supports both styles with two `LocationStrategy` providers:
 | :-------- | :------ |
 | 提供者 | 详情 |
 | `PathLocationStrategy` | The default "HTML5 pushState" style. |
-| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。 |
+| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。|
 | `HashLocationStrategy` | The "hash URL" style. |
-| `HashLocationStrategy` | “hash URL”风格。 |
+| `HashLocationStrategy` | “hash URL”风格。|
 
 The `RouterModule.forRoot()` function sets the `LocationStrategy` to the `PathLocationStrategy`, which makes it the default strategy.
 You also have the option of switching to the `HashLocationStrategy` with an override during the bootstrapping process.
 
-`RouterModule.forRoot()` 函数把 `LocationStrategy` 设置成了 `PathLocationStrategy`，使其成为了默认策略。 你还可以在启动过程中改写（override）它，来切换到 `HashLocationStrategy` 风格。
+`RouterModule.forRoot()` 函数把 `LocationStrategy` 设置成了 `PathLocationStrategy`，使其成为了默认策略。你还可以在启动过程中改写（override）它，来切换到 `HashLocationStrategy` 风格。
 
 <div class="alert is-helpful">
 
@@ -844,23 +843,21 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
    * The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
 
-     `<base href>` `path` 应该以“/”结尾，因为浏览器会忽略 `path` 中最右边的“ `/` ”后面的字符
+      `<base href>` `path` 应该以“/”结尾，因为浏览器会忽略 `path` 中最右边的“ `/` ”后面的字符
 
-   `<base href>` 的 `path` 应该用 "/" 结尾，浏览器会忽略 `path` 中最右边的 "`/`" 后面的字符。
-
-- If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
+   * If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
    This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
-   如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。 这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
+     如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
 
-- If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
+   * If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
   In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
 
-  如果页内链接是根 URL（高优先度 URL），则 `<base href>` 不会使用。在这种方式下，`APP_BASE_HREF` 的优先度将会导致所有由 Angular 创建的链接忽略 `<base href>`。
+     如果页内链接是根 URL（高优先度 URL），则 `<base href>` 不会使用。在这种方式下，`APP_BASE_HREF` 的优先度将会导致所有由 Angular 创建的链接忽略 `<base href>`。
 
-- A fragment in the `<base href>` is *never* persisted
+   * A fragment in the `<base href>` is *never* persisted
 
-  `<base href>` 中的片段（#后面的部分）*永远不会*被使用
+     `<base href>` 中的片段（#后面的部分）*永远不会*被使用
 
 For more complete information on how `<base href>` is used to construct target URIs, see the [RFC](https://tools.ietf.org/html/rfc3986#section-5.2.2) section on transforming references.
 

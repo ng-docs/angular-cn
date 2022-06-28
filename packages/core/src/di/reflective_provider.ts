@@ -157,7 +157,7 @@ function resolveReflectiveFactory(provider: NormalizedProvider): ResolvedReflect
  * `Injector` internally only uses `ResolvedProvider`, `Provider` contains convenience provider
  * syntax.
  *
- * `Injector` 在内部仅使用 `ResolvedProvider` ， `Provider` 包含便利提供者语法。
+ * `Injector` 在内部仅使用 `ResolvedProvider` ，`Provider` 包含便利提供者语法。
  *
  */
 function resolveReflectiveProvider(provider: NormalizedProvider): ResolvedReflectiveProvider {

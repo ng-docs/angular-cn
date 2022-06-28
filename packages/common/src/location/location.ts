@@ -188,8 +188,8 @@ export class Location implements OnDestroy {
    * before normalizing. Adds a hash if `HashLocationStrategy` is
    * in use, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
    *
-   * 标准化外部 URL 路径。如果给定的 URL 并非以斜杠（ `'/'`
-   * ）开头，就会在规范化之前添加一个。如果使用 `HashLocationStrategy` 则添加哈希；如果使用
+   * 标准化外部 URL 路径。如果给定的 URL 并非以斜杠（`'/'`
+   *）开头，就会在规范化之前添加一个。如果使用 `HashLocationStrategy` 则添加哈希；如果使用
    * `PathLocationStrategy` 则添加 `APP_BASE_HREF`。
    *
    * @param url String representing a URL.
@@ -292,7 +292,7 @@ export class Location implements OnDestroy {
    * when `relativePosition` equals 0.
    *
    * 目标页面在历史记录中相对于当前页面的位置。负值会向后移动，正值会向前移动，例如
-   * `location.historyGo(2)` 会向前移动两页， `location.historyGo(-2)`
+   * `location.historyGo(2)` 会向前移动两页，`location.historyGo(-2)`
    * 会向后移动两页。当我们尝试超越历史会话中存储的内容时，我们会停留在当前页面。当
    * `relativePosition` 等于 0 时会发生相同的行为。
    *

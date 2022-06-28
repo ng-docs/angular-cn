@@ -219,7 +219,7 @@ export class TemplateDefinitionBuilder implements t.Visitor<void>, LocalResolver
    * This scope contains local variables declared in the update mode block of the template.
    * (e.g. refs and context vars in bindings)
    *
-   * 此范围包含在模板的 update mode 块中声明的局部变量。 （例如绑定中的 refs 和 context vars）
+   * 此范围包含在模板的 update mode 块中声明的局部变量。（例如绑定中的 refs 和 context vars）
    *
    */
   private _bindingScope: BindingScope;
@@ -1287,7 +1287,7 @@ export class TemplateDefinitionBuilder implements t.Visitor<void>, LocalResolver
    * are many different types of attributes, the array needs to be constructed in a
    * special way so that `elementStart` can properly evaluate them.
    *
-   * 此函数的目的是正确构造一个传递给 `elementStart` （或只是 `element` ）函数的 properties
+   * 此函数的目的是正确构造一个传递给 `elementStart`（或只是 `element`）函数的 properties
    * 数组。因为有许多不同类型的属性，所以数组需要以特殊的方式构造，以便 `elementStart`
    * 可以正确地估算它们。
    *
@@ -2181,7 +2181,7 @@ export interface ParseTemplateOptions {
    * The line continuation (`\` followed by a newline) should be removed from a token
    * but the new line should increment the current line for source mapping.
    *
-   * 应该从标记中删除行继续（ `\` 后跟换行符），但新行应该增加当前行以进行源映射。
+   * 应该从标记中删除行继续（`\` 后跟换行符），但新行应该增加当前行以进行源映射。
    *
    */
   escapedString?: boolean;
@@ -2219,8 +2219,8 @@ export interface ParseTemplateOptions {
    * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
    * expressions.
    *
-   * 如果此文本存储在外部模板中（例如通过 `templateUrl` ），那么我们需要决定在处理 ICU
-   * 表达式时是否对行尾进行规范化（从 `\r\n` 到 `\n` ）。
+   * 如果此文本存储在外部模板中（例如通过 `templateUrl`），那么我们需要决定在处理 ICU
+   * 表达式时是否对行尾进行规范化（从 `\r\n` 到 `\n`）。
    *
    * If `true` then we will normalize ICU expression line endings.
    * The default is `false`, but this will be switched in a future major release.
@@ -2509,7 +2509,7 @@ const NG_I18N_CLOSURE_MODE = 'ngI18nClosureMode';
  * @param params Object mapping placeholder names to their values (e.g.
  * `{ "interpolation": "\uFFFD0\uFFFD" }`).
  *
- * 对象将占位符名称映射到它们的值（例如 `{ "interpolation": "\uFFFD0\uFFFD" }` ）。
+ * 对象将占位符名称映射到它们的值（例如 `{ "interpolation": "\uFFFD0\uFFFD" }`）。
  *
  * @param transformFn Optional transformation function that will be applied to the translation (e.g.
  * post-processing).

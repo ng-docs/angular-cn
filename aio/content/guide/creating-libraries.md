@@ -9,7 +9,7 @@ This page provides a conceptual overview of how to create and publish new librar
 If you find that you need to solve the same problem in more than one application (or want to share your solution with other developers), you have a candidate for a library.
 A simple example might be a button that sends users to your company website, that would be included in all applications that your company builds.
 
-如果你发现自己要在多个应用中解决同样的问题（或者要把你的解决方案分享给其它开发者），你就有了一个潜在的库。 简单的例子就是一个用来把用户带到你公司网站上的按钮，该按钮会包含在你公司构建的所有应用中。
+如果你发现自己要在多个应用中解决同样的问题（或者要把你的解决方案分享给其它开发者），你就有了一个潜在的库。简单的例子就是一个用来把用户带到你公司网站上的按钮，该按钮会包含在你公司构建的所有应用中。
 
 ## Getting started
 
@@ -43,7 +43,7 @@ The `ng-` prefix is a reserved keyword used from the Angular framework and its l
 The `ngx-` prefix is preferred as a convention used to denote that the library is suitable for use with Angular.
 It is also an excellent indication to consumers of the registry to differentiate between libraries of different JavaScript frameworks.
 
-避免使用以 `ng-` 为前缀的名称，比如 `ng-library`。 `ng-` 前缀是 Angular 框架及其库中使用的保留关键字。首选 `ngx-` 前缀作为用于表示该库适合与 Angular 一起使用的约定。这也是注册表的使用者区分不同 JavaScript 框架库的优秀指示器。
+避免使用以 `ng-` 为前缀的名称，比如 `ng-library`。`ng-` 前缀是 Angular 框架及其库中使用的保留关键字。首选 `ngx-` 前缀作为用于表示该库适合与 Angular 一起使用的约定。这也是注册表的使用者区分不同 JavaScript 框架库的优秀指示器。
 
 </div>
 
@@ -153,7 +153,7 @@ Here are some things to consider in migrating application functionality to a lib
 
   * If your library code or its templates depend on other libraries (such as Angular Material, for instance), you must configure your library with those dependencies
 
-    如果你的库代码或其模板依赖于其它库（比如 Angular Material ），你就必须把它们配置为该库的依赖
+    如果你的库代码或其模板依赖于其它库（比如 Angular Material），你就必须把它们配置为该库的依赖
 
 * Consider how you provide services to client applications.
 
@@ -164,7 +164,7 @@ Here are some things to consider in migrating application functionality to a lib
     This practice lets the compiler leave the service out of the bundle if it never gets injected into the application that imports the library.
     For more about this, see [Tree-shakable providers](guide/architecture-services#providing-services).
 
-    服务应该自己声明提供者（而不是在 NgModule 或组件中声明提供者），以便它们是*可摇树优化的* 。这样，如果服务器从未被注入到导入该库的应用中，编译器就会把该服务从该 bundle 中删除。关于这方面的更多信息，参阅[Tree-shakable 提供者](guide/architecture-services#providing-services) 。
+    服务应该自己声明提供者（而不是在 NgModule 或组件中声明提供者），以便它们是*可摇树优化的*。这样，如果服务器从未被注入到导入该库的应用中，编译器就会把该服务从该 bundle 中删除。关于这方面的更多信息，参阅[Tree-shakable 提供者](guide/architecture-services#providing-services)。
 
   * If you register global service providers or share providers across multiple NgModules, use the [`forRoot()` and `forChild()` design patterns](guide/singleton-services) provided by the [RouterModule](api/router/RouterModule)
 
@@ -186,7 +186,7 @@ This package can also include [schematics](guide/glossary#schematic) that provid
 A schematic that is packaged with a library can, for example, provide the Angular CLI with the information it needs to generate a component that configures and uses a particular feature, or set of features, defined in that library.
 One example of this is [Angular Material's navigation schematic](https://material.angular.io/guide/schematics#navigation-schematic) which configures the CDK's [BreakpointObserver](https://material.angular.io/cdk/layout/overview#breakpointobserver) and uses it with Material's [MatSideNav](https://material.angular.io/components/sidenav/overview) and [MatToolbar](https://material.angular.io/components/toolbar/overview) components.
 
-一个库通常都包含*可复用的代码* ，用于定义组件，服务，以及你刚才导入到项目中的其他 Angular 工件（管道，指令等等）。库被打包成一个 npm 包，用于发布和共享。这个包还可以包含一些[原理图](guide/glossary#schematic) ，它提供直接在项目中生成或转换代码的指令，就像 CLI 用 `ng generate component` 创建一个通用的新 `ng generate component` 。比如，用库打包的原理图可以为 Angular CLI 提供生成组件所需的信息，该组件用于配置和使用该库中定义的特定特性或一组特性。这方面的一个例子是 [Angular Material 的导航原理图](https://material.angular.cn/guide/schematics#navigation-schematic)，它用来配置 CDK 的 [`BreakpointObserver`](https://material.angular.cn/cdk/layout/overview#breakpointobserver) 并把它与 Material 的 [MatSideNav](https://material.angular.cn/components/sidenav/overview) 和 [MatToolbar](https://material.angular.cn/components/toolbar/overview) 组件一起使用。
+一个库通常都包含*可复用的代码*，用于定义组件，服务，以及你刚才导入到项目中的其他 Angular 工件（管道，指令等等）。库被打包成一个 npm 包，用于发布和共享。这个包还可以包含一些[原理图](guide/glossary#schematic)，它提供直接在项目中生成或转换代码的指令，就像 CLI 用 `ng generate component` 创建一个通用的新 `ng generate component`。比如，用库打包的原理图可以为 Angular CLI 提供生成组件所需的信息，该组件用于配置和使用该库中定义的特定特性或一组特性。这方面的一个例子是 [Angular Material 的导航原理图](https://material.angular.cn/guide/schematics#navigation-schematic)，它用来配置 CDK 的 [`BreakpointObserver`](https://material.angular.cn/cdk/layout/overview#breakpointobserver) 并把它与 Material 的 [MatSideNav](https://material.angular.cn/components/sidenav/overview) 和 [MatToolbar](https://material.angular.cn/components/toolbar/overview) 组件一起使用。
 
 Create and include the following kinds of schematics:
 
@@ -403,12 +403,12 @@ CLI 的 `build` 命令为库使用与应用不同的构建器，并调用不同�
 The two build systems support different things, and even where they support the same things, they do those things differently.
 This means that the TypeScript source can result in different JavaScript code in a built library than it would in a built application.
 
-这两种构建体系支持不同的东西，即使它们支持相同的东西，它们的执行方式也不同。 这意味着同一套 TypeScript 源码在生成库时生成的 JavaScript 代码可能与生成应用时生成的 JavaScript 代码也不同。
+这两种构建体系支持不同的东西，即使它们支持相同的东西，它们的执行方式也不同。这意味着同一套 TypeScript 源码在生成库时生成的 JavaScript 代码可能与生成应用时生成的 JavaScript 代码也不同。
 
 For this reason, an application that depends on a library should only use TypeScript path mappings that point to the *built library*.
 TypeScript path mappings should *not* point to the library source `.ts` files.
 
-因此，依赖于库的应用应该只使用指向*内置库*的 TypeScript 路径映射。 TypeScript 的路径映射*不应该*指向库的 `.ts` 源文件。
+因此，依赖于库的应用应该只使用指向*内置库*的 TypeScript 路径映射。TypeScript 的路径映射*不应该*指向库的 `.ts` 源文件。
 
 </div>
 
@@ -426,9 +426,9 @@ There are two distribution formats to use when publishing a library:
 | :------------------- | :------ |
 | 分发格式 | 详情 |
 | Partial-Ivy (recommended) | Contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards. |
-| 部分 Ivy（推荐） | 包含可移植代码，从 v12 开始，使用任何版本的 Angular 构建的 Ivy 应用都可以使用这些可移植代码。 |
+| 部分 Ivy（推荐）| 包含可移植代码，从 v12 开始，使用任何版本的 Angular 构建的 Ivy 应用都可以使用这些可移植代码。|
 | Full-Ivy | Contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the *exact* same version of Angular. This format is useful for environments where all library and application code is built directly from source. |
-| 完全 Ivy | 包含专用的 Angular Ivy 指令，不能保证它们可在 Angular 的不同版本中使用。这种格式要求库和应用使用*完全相同*的 Angular 版本构建。这种格式对于直接从源代码构建所有库和应用代码的环境很有用。 |
+| 完全 Ivy | 包含专用的 Angular Ivy 指令，不能保证它们可在 Angular 的不同版本中使用。这种格式要求库和应用使用*完全相同*的 Angular 版本构建。这种格式对于直接从源代码构建所有库和应用代码的环境很有用。|
 
 For publishing to npm use the partial-Ivy format as it is stable between patch versions of Angular.
 

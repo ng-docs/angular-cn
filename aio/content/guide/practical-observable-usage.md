@@ -50,7 +50,7 @@ Exponential backoff is a technique in which you retry an API after failure, maki
 This can be quite complex to implement with promises and other methods of tracking AJAX calls.
 With observables, it is very easy:
 
-指数化退避是一种失败后重试 API 的技巧，它会在每次连续的失败之后让重试时间逐渐变长，超过最大重试次数之后就会彻底放弃。 如果使用承诺和其它跟踪 AJAX 调用的方法会非常复杂，而使用可观察对象，这非常简单：
+指数化退避是一种失败后重试 API 的技巧，它会在每次连续的失败之后让重试时间逐渐变长，超过最大重试次数之后就会彻底放弃。如果使用承诺和其它跟踪 AJAX 调用的方法会非常复杂，而使用可观察对象，这非常简单：
 
 <code-example header="Exponential backoff" path="practical-observable-usage/src/backoff.ts"></code-example>
 

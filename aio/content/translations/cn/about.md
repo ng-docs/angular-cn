@@ -4,7 +4,7 @@
 本文档的两位译者汪志成和叶志敏是多年的好友。这次利用业余时间联手翻译，就是因为看好 Angular 的前景，希望帮助大家在这项技术上能跟国外同步前进。
 
 ### 汪志成（雪狼）
-《AngularJS 深度剖析与最佳实践》的作者之一，ThoughtWorks 高级咨询师，现任 GDE（ Google 开发者专家）。崇尚“简单、专业、分享”。他从 1998 年开始做商业软件开发，拥有超过 20 年的从业经验，至今仍热衷于编程。
+《AngularJS 深度剖析与最佳实践》的作者之一，ThoughtWorks 高级咨询师，现任 GDE（Google 开发者专家）。崇尚“简单、专业、分享”。他从 1998 年开始做商业软件开发，拥有超过 20 年的从业经验，至今仍热衷于编程。
 
 虽然一直在做编程工作，不过他最热衷的却是国学，特别是儒学与诗词。孟子曰：“得天下英才而教育之，三乐也”，愿践行之。
 
@@ -45,32 +45,32 @@ Angular 和 Grails 开发高校[教务管理系统](http://www.github.com/jwgl)�
 - Hantsy (来自 Github )
 - iloveyo123u1 (来自 Github )
 - 123（来自 Angular 中文社区）
-- keyiis（来自 Github ）
-- wudingli（来自 Github ）
-- dreamapplehappy（来自 Github ）
-- bang88（来自 Github ）
-- gogobook（来自 Github ）
-- pshadow（来自 Github ）
-- Hongbo-Miao（来自 Github ）
+- keyiis（来自 Github）
+- wudingli（来自 Github）
+- dreamapplehappy（来自 Github）
+- bang88（来自 Github）
+- gogobook（来自 Github）
+- pshadow（来自 Github）
+- Hongbo-Miao（来自 Github）
 - Kinogam（来自 Angular 中文社区）
-- dreamapplehappy（来自 Github ）
-- cunshuifengyun（来自 Github ）
+- dreamapplehappy（来自 Github）
+- cunshuifengyun（来自 Github）
 - 机器人（来自 Angular 中文社区）
-- edtim8（来自 Github ）
-- kapr1k0rn（来自 Github ）
-- Lion6868（来自 Github ）
+- edtim8（来自 Github）
+- kapr1k0rn（来自 Github）
+- Lion6868（来自 Github）
 - 阿泽（来自 Angular 中文社区）
-- Aruis（来自 Github ）
-- Elderry（来自 Github ）
+- Aruis（来自 Github）
+- Elderry（来自 Github）
 - smilesun（来自 Angular 中文社区）
-- xlf531533465（来自 Github ）
-- vaanxy（来自 Github ）
+- xlf531533465（来自 Github）
+- vaanxy（来自 Github）
 - 贵池（来自 Angular 中文社区）
-- zhibinr（来自 Github ）
-- jin-xinchen（来自 Github ）
-- looding（来自 Github ）
-- linyang4（来自 Github ）
-- bluewaitor（来自 Github ）
+- zhibinr（来自 Github）
+- jin-xinchen（来自 Github）
+- looding（来自 Github）
+- linyang4（来自 Github）
+- bluewaitor（来自 Github）
 - zhouchangsheng（来自 Github）
 - wxchenxueqi（来自 Github）
 - VelChen（来自 Github）
@@ -123,4 +123,4 @@ Angular 和 Grails 开发高校[教务管理系统](http://www.github.com/jwgl)�
 
 - **格茸扎西（破狼）**
 
-  AngularJS 中文社区系列 QQ 群的群主，从严清手里接下 QQ 群并长期维护。他还与译者之一的汪志成（雪狼）合著过一本书《 AngularJS 深度剖析与最佳实践》，这本书的成功让我们看到了中文社区对 Angular 的热情支持，最终激发了我们翻译 Angular 官网的行动。我们还共同完成了对国外新书 ng-book2（中译本《Angular 权威教程》） 的翻译工作。
+  AngularJS 中文社区系列 QQ 群的群主，从严清手里接下 QQ 群并长期维护。他还与译者之一的汪志成（雪狼）合著过一本书《 AngularJS 深度剖析与最佳实践》，这本书的成功让我们看到了中文社区对 Angular 的热情支持，最终激发了我们翻译 Angular 官网的行动。我们还共同完成了对国外新书 ng-book2（中译本《Angular 权威教程》）的翻译工作。

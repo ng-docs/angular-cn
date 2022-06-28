@@ -33,7 +33,7 @@ let shouldThrowErrorOnUnknownElement = false;
  * instead of just logging the error.
  * (for AOT-compiled ones this check happens at build time).
  *
- * 为 JIT 编译的组件设置严格模式，以在未知元素上抛出错误，而不仅仅是记录错误。 （对于 AOT
+ * 为 JIT 编译的组件设置严格模式，以在未知元素上抛出错误，而不仅仅是记录错误。（对于 AOT
  * 编译的，此检查发生在构建时）。
  *
  */

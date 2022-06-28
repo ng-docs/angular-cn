@@ -43,14 +43,14 @@
  *
  * 5. (Intercept blocking methods)
  *
- *    （拦截阻塞方法）
+ *   （拦截阻塞方法）
  *
  * A zone by itself does not do anything, instead it relies on some other code to route existing
  * platform API through it. (The zone library ships with code which monkey patches all of the
  * browsers's asynchronous API and redirects them through the zone for interception.)
  *
  * 区域本身不做任何事情，而是依赖一些其他代码来通过它路由现有的平台 API。
- * （区域库附带的代码可以用猴子修补所有浏览器的异步 API 并将它们重定向通过区域以进行拦截。）
+ *（区域库附带的代码可以用猴子修补所有浏览器的异步 API 并将它们重定向通过区域以进行拦截。）
  *
  * In its simplest form a zone allows one to intercept the scheduling and calling of asynchronous
  * operations, and execute additional code before as well as after the asynchronous task. The rules
@@ -97,7 +97,7 @@
  * asynchronous operations.
  *
  * 示例：假设浏览器页面由应用程序代码以及第三方广告代码组成。
- * （这两个代码库是独立的，由不同的彼此不了解的开发人员开发。）应用程序代码可能对进行全局错误处理感兴趣，因此它配置
+ *（这两个代码库是独立的，由不同的彼此不了解的开发人员开发。）应用程序代码可能对进行全局错误处理感兴趣，因此它配置
  * `app` 区域以将所有错误发送到服务器进行分析，然后执行应用 `app`
  * 区域中的应用程序。广告代码对同一个错误处理感兴趣，但它需要将错误发送给不同的第三方。因此它使用不同的错误处理程序创建了
  * `ads`
@@ -124,7 +124,7 @@
  *
  * 除了包装回调以恢复区域之外，所有导致稍后安排工作的操作都被路由通过当前区域，该区域可以通过在
  * wrapCallback 之前或之后添加工作以及使用不同的方式来拦截它们请求。
- * （可用于单元测试或跟踪请求）。在某些情况下，例如 `setTimeout` ，wrapCallback
+ *（可用于单元测试或跟踪请求）。在某些情况下，例如 `setTimeout` ，wrapCallback
  * 的包装和调度是在同一个 wrapCallback 中完成的，但还有其他示例，例如 `Promises` ，其中的 `then`
  * wrapCallback 被包装，但 `then` 的执行是由 `Promise` 调度 `resolve` 工作触发的。
  *
@@ -171,8 +171,8 @@
  * variants.
  *
  * [MacroTask][MacroTask] s 表示将在一段时间后完成的工作。
- * （有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括： `setTimeout` 、 `setImmediate`
- * 、 `setInterval` 、 `requestAnimationFrame` 以及所有浏览器特定的变体。
+ *（有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括： `setTimeout`、`setImmediate`
+ *、`setInterval`、`requestAnimationFrame` 以及所有浏览器特定的变体。
  *
  * ### [EventTask]
  *
@@ -871,14 +871,14 @@ interface ZoneSpec {
  *
  * 需要 ZoneDelegate
  * ，因为子区域不能简单地调用父区域上的方法。例如，子区域换行不能只调用父区域换行。这样做将创建一个绑定到父区域的回调。我们感兴趣的是在回调绑定到任何区域之前拦截回调。此外，我们还需要将
- * targetZone （接收到原始请求的区域）传递给委托。
+ * targetZone（接收到原始请求的区域）传递给委托。
  *
  *  The ZoneDelegate methods mirror those of Zone with an addition of extra targetZone argument in
  *  the method signature. (The original Zone which received the request.) Some methods are renamed
  *  to prevent confusion, because they have slightly different semantics and arguments.
  *
  * ZoneDelegate 方法镜像了 Zone 的方法，只是在方法签名中添加了额外的 targetZone 参数。
- * （收到请求的原始 Zone。）某些方法被重命名以防止混淆，因为它们的语义和参数略有不同。
+ *（收到请求的原始 Zone。）某些方法被重命名以防止混淆，因为它们的语义和参数略有不同。
  *
  * - `wrap` => `intercept`: The `wrap` method delegates to `intercept`. The `wrap` method returns
  *    a callback which will run in a given zone, where as intercept allows wrapping the callback
@@ -912,7 +912,7 @@ interface ZoneSpec {
  *   Note: The ZoneDelegate treats ZoneSpec as class. This allows the ZoneSpec to use its `this` to
  *   store internal state.
  *
- *   注： ZoneDelegate 将 ZoneSpec 视为类。这允许 ZoneSpec 使用其 `this` 来存储内部状态。
+ *   注意： ZoneDelegate 将 ZoneSpec 视为类。这允许 ZoneSpec 使用其 `this` 来存储内部状态。
  *
  */
 interface ZoneDelegate {
@@ -935,7 +935,7 @@ type HasTaskState = {
 /**
  * Task type: `microTask`, `macroTask`, `eventTask`.
  *
- * 任务类型： `microTask` 、 `macroTask` 、 `eventTask` 。
+ * 任务类型： `microTask`、`macroTask`、`eventTask` 。
  *
  */
 type TaskType = 'microTask'|'macroTask'|'eventTask';
@@ -943,7 +943,7 @@ type TaskType = 'microTask'|'macroTask'|'eventTask';
 /**
  * Task type: `notScheduled`, `scheduling`, `scheduled`, `running`, `canceling`, 'unknown'.
  *
- * 任务类型： `notScheduled` 、 `scheduling` 、 `scheduled` 、 `running` 、 `canceling` 、
+ * 任务类型： `notScheduled`、`scheduling`、`scheduled`、`running`、`canceling` 、
  * 'unknown'。
  *
  */
@@ -1018,7 +1018,7 @@ interface Task {
   /**
    * Task type: `microTask`, `macroTask`, `eventTask`.
    *
-   * 任务类型： `microTask` 、 `macroTask` 、 `eventTask` 。
+   * 任务类型： `microTask`、`macroTask`、`eventTask` 。
    *
    */
   type: TaskType;
@@ -1026,7 +1026,7 @@ interface Task {
   /**
    * Task state: `notScheduled`, `scheduling`, `scheduled`, `running`, `canceling`, `unknown`.
    *
-   * 任务状态： `notScheduled` 、 `scheduling` 、已 `scheduled` 、 `running` 、正在 `canceling` 、
+   * 任务状态： `notScheduled`、`scheduling` 、已 `scheduled`、`running` 、正在 `canceling` 、
    * `unknown` 。
    *
    */

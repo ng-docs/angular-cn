@@ -44,8 +44,8 @@ export type ExtendedCompilerHostMethods =
  * which is relied upon by `NgCompiler`. A consumer of `NgCompiler` can therefore use the
  * `NgCompilerHost` or implement `NgCompilerAdapter` itself.
  *
- * `NgCompilerAdapter` 是 ts.CompilerHost 的 `NgCompilerHost` 实现的子集， `ts.CompilerHost` 依赖于
- * `NgCompiler` 。因此， `NgCompiler` 的使用者可以使用 `NgCompilerHost` 或实现 `NgCompilerAdapter`
+ * `NgCompilerAdapter` 是 ts.CompilerHost 的 `NgCompilerHost` 实现的子集，`ts.CompilerHost` 依赖于
+ * `NgCompiler` 。因此，`NgCompiler` 的使用者可以使用 `NgCompilerHost` 或实现 `NgCompilerAdapter`
  * 本身。
  *
  */

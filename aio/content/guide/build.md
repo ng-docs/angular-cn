@@ -19,7 +19,7 @@ You can define different named build configurations for your project, such as *s
 Each named configuration can have defaults for any of the options that apply to the various [builder targets](guide/glossary#target), such as `build`, `serve`, and `test`.
 The [Angular CLI](cli) `build`, `serve`, and `test` commands can then replace files with appropriate versions for your intended target environment.
 
-每个命名配置项都可以具有某些选项的默认值，并应用于各种[构建目标](guide/glossary#target)，比如 `build`、`serve` 和 `test`。 [Angular CLI](cli) 的 `build`、`serve` 和 `test` 命令可以为不同的目标环境，把文件替换成合适的版本。
+每个命名配置项都可以具有某些选项的默认值，并应用于各种[构建目标](guide/glossary#target)，比如 `build`、`serve` 和 `test`。[Angular CLI](cli) 的 `build`、`serve` 和 `test` 命令可以为不同的目标环境，把文件替换成合适的版本。
 
 ### Configure environment-specific defaults
 
@@ -28,7 +28,7 @@ The [Angular CLI](cli) `build`, `serve`, and `test` commands can then replace fi
 A project's `src/environments/` folder contains the base configuration file, `environment.ts`, which provides a default environment.
 You can add override defaults for additional environments, such as production and staging, in target-specific configuration files.
 
-项目的 `src/environments/` 文件夹包含基础配置文件 `environment.ts`，它提供了一个默认环境。 你可以在针对特定目标的配置文件中，为其它环境（比如生产和预生产）覆盖这些默认值。
+项目的 `src/environments/` 文件夹包含基础配置文件 `environment.ts`，它提供了一个默认环境。你可以在针对特定目标的配置文件中，为其它环境（比如生产和预生产）覆盖这些默认值。
 
 For example:
 
@@ -68,7 +68,7 @@ The `build` command uses this as the build target when no environment is specifi
 You can add further variables, either as additional properties on the environment object, or as separate objects.
 For example, the following adds a default for a variable to the default environment:
 
-当没有指定环境时，`build` 命令就会用它作为构建目标。 你可以添加其它变量，可以用该环境对象附加属性的形式，也可以用独立对象的形式。 比如：以下内容将会把一个变量添加到默认环境中：
+当没有指定环境时，`build` 命令就会用它作为构建目标。你可以添加其它变量，可以用该环境对象附加属性的形式，也可以用独立对象的形式。比如：以下内容将会把一个变量添加到默认环境中：
 
 <code-example format="typescript" language="typescript">
 
@@ -181,13 +181,13 @@ export class AppComponent {
 The main CLI configuration file, `angular.json`, contains a `fileReplacements` section in the configuration for each build target, which lets you replace any file in the TypeScript program with a target-specific version of that file.
 This is useful for including target-specific code or variables in a build that targets a specific environment, such as production or staging.
 
-CLI 的主配置文件 `angular.json` 中的每个构建目标下都包含了一个 `fileReplacements` 区段。这能让你把 TypeScript 程序中的任何文件替换为针对特定目标的版本。 当构建目标需要包含针对特定环境（比如生产或预生产）的代码或变量时，这非常有用。
+CLI 的主配置文件 `angular.json` 中的每个构建目标下都包含了一个 `fileReplacements` 区段。这能让你把 TypeScript 程序中的任何文件替换为针对特定目标的版本。当构建目标需要包含针对特定环境（比如生产或预生产）的代码或变量时，这非常有用。
 
 By default no files are replaced.
 You can add file replacements for specific build targets.
 For example:
 
-默认情况下不会替换任何文件。 你可以为特定的构建目标添加文件替换规则。比如：
+默认情况下不会替换任何文件。你可以为特定的构建目标添加文件替换规则。比如：
 
 <code-example format="json" language="json">
 
@@ -231,7 +231,7 @@ To add a staging environment, create a copy of `src/environments/environment.ts`
 You can add more configuration options to this target environment as well.
 Any option that your build supports can be overridden in a build target configuration.
 
-你还可以往目标环境中添加更多配置项。 你的构建目标支持的任何选项都可以在构建目标配置中进行覆盖。
+你还可以往目标环境中添加更多配置项。你的构建目标支持的任何选项都可以在构建目标配置中进行覆盖。
 
 To build using the staging configuration, run the following command:
 
@@ -276,7 +276,7 @@ You can also configure the `serve` command to use the targeted build configurati
 As applications grow in functionality, they also grow in size.
 The CLI lets you set size thresholds in your configuration to ensure that parts of your application stay within size boundaries that you define.
 
-当应用的功能不断增长时，其文件大小也会同步增长。 CLI 允许你通过配置项来限制文件大小，以确保应用的各个部分都处于你定义的大小范围内。
+当应用的功能不断增长时，其文件大小也会同步增长。CLI 允许你通过配置项来限制文件大小，以确保应用的各个部分都处于你定义的大小范围内。
 
 Define your size boundaries in the CLI configuration file, `angular.json`, in a `budgets` section for each [configured environment](#app-environments).
 
@@ -300,19 +300,19 @@ You can specify size budgets for the entire app, and for particular parts.
 Each budget entry configures a budget of a given type.
 Specify size values in the following formats:
 
-你可以为整个应用指定大小范围，也可以为特定部分。 每个条目会为一种特定的类型配置大小范围。 用下列各式来指定大小的值：
+你可以为整个应用指定大小范围，也可以为特定部分。每个条目会为一种特定的类型配置大小范围。用下列各式来指定大小的值：
 
 | Size value | Details |
 | :--------- | :------ |
 | 大小值 | 详情 |
 | `123` or `123b` | Size in bytes. |
-| `123` 或 `123b` | 大小（以字节为单位）。 |
+| `123` 或 `123b` | 大小（以字节为单位）。|
 | `123kb` | Size in kilobytes. |
-| `123kb` | 大小（以千字节为单位）。 |
+| `123kb` | 大小（以千字节为单位）。|
 | `123mb` | Size in megabytes. |
-| `123mb` | 大小（以 MB 为单位）。 |
+| `123mb` | 大小（以 MB 为单位）。|
 | `12%` | Percentage of size relative to baseline. (Not valid for baseline values.) |
-| `12%` | 相对于基线（baseline）大小的百分比大小。（不能用作 baseline 的值。） |
+| `12%` | 相对于基线（baseline）大小的百分比大小。（不能用作 baseline 的值。）|
 
 When you configure a budget, the build system warns or reports an error when a given part of the application reaches or exceeds a boundary size that you set.
 
@@ -325,24 +325,23 @@ Each budget entry is a JSON object with the following properties:
 | Property | Value |
 | :------- | :---- |
 | 属性 | 值 |
-| type | The type of budget. One of: <table> <thead> <tr> <th> Value </th> <th> Details </th> </tr> </thead> <tbody> <tr> <td> <code>bundle</code> </td> <td> The size of a specific bundle. </td> </tr> <tr> <td> <code>initial</code> </td> <td> The size of JavaScript needed for bootstrapping the application. Defaults to warning at 500kb and erroring at 1mb. </td> </tr> <tr> <td> <code>allScript</code> </td> <td> The size of all scripts. </td> </tr> <tr> <td> <code>all</code> </td> <td> The size of the entire application. </td> </tr> <tr> <td> <code>anyComponentStyle</code> </td> <td> This size of any one component stylesheet. Defaults to warning at 2kb and erroring at 4kb. </td> </tr> <tr> <td> <code>anyScript</code> </td> <td> The size of any one script. </td> </tr> <tr> <td> <code>any</code> </td> <td> The size of any file. </td> </tr> </tbody> </table> |
 | type | 预算的类型。下列值之一：<table><thead><tr><th>值</th><th>详细信息</th></tr></thead><tbody><tr><td><code>包</code></td><td>特定包的大小。</td></tr><tr><td><code>初始的</code></td><td>引导应用程序所需的 JavaScript 的大小。默认为 500kb 的警告和 1mb 的错误。</td></tr><tr><td><code>allScript</code></td><td>所有脚本的大小。</td></tr><tr><td><code>全部</code></td><td>整个应用程序的大小。</td></tr><tr><td><code>anyComponentStyle</code></td><td>任何一个组件样式表的此大小。默认为 2kb 的警告和 4kb 的错误。</td></tr><tr><td><code>anyScript</code></td><td>任何一个脚本的大小。</td></tr><tr><td><code>任何</code></td><td>任何文件的大小。</td></tr></tbody></table> |
 | name | The name of the bundle (for `type=bundle`). |
-| name | 包的名称（对于 `type=bundle` ）。 |
+| name | 包的名称（对于 `type=bundle`）。|
 | baseline | The baseline size for comparison. |
-| baseline | 一个表示基准大小的绝对值，用做比例值的基数。 |
+| baseline | 一个表示基准大小的绝对值，用做比例值的基数。|
 | maximumWarning | The maximum threshold for warning relative to the baseline. |
-| maximumWarning | 当大小超过基线的这个阈值百分比时给出警告。 |
+| maximumWarning | 当大小超过基线的这个阈值百分比时给出警告。|
 | maximumError | The maximum threshold for error relative to the baseline. |
-| maximumError | 当大小超过基线的这个阈值百分比时报错。 |
+| maximumError | 当大小超过基线的这个阈值百分比时报错。|
 | minimumWarning | The minimum threshold for warning relative to the baseline. |
-| minimumWarning | 当大小小于基线的这个阈值百分比时给出警告。 |
+| minimumWarning | 当大小小于基线的这个阈值百分比时给出警告。|
 | minimumError | The minimum threshold for error relative to the baseline. |
-| minimumError | 当大小小于基线的这个阈值百分比时报错。 |
+| minimumError | 当大小小于基线的这个阈值百分比时报错。|
 | warning | The threshold for warning relative to the baseline (min & max). |
-| warning | 当大小达到或小于基线的这个阈值百分比时都给出警告。 |
+| warning | 当大小达到或小于基线的这个阈值百分比时都给出警告。|
 | error | The threshold for error relative to the baseline (min & max). |
-| error | 当大小达到或小于基线的这个阈值百分比时都报错。 |
+| error | 当大小达到或小于基线的这个阈值百分比时都报错。|
 
 <a id="commonjs "></a>
 
@@ -358,7 +357,7 @@ Instead, it is recommended that you use [ECMAScript modules](https://developer.m
 For more information, see [How CommonJS is making your bundles larger](https://web.dev/commonjs-larger-bundles).
 
 建议你在 Angular 应用中避免依赖 CommonJS 模块。对 CommonJS 模块的依赖会阻止打包器和压缩器优化你的应用，这会导致更大的打包尺寸。
-建议你在整个应用中都使用 [ECMAScript 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)。
+建议你在整个应用中都使用 [ECMAScript 模块](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import)。
 欲知详情，参阅[为什么 CommonJS 会导致更大的打包尺寸](https://web.dev/commonjs-larger-bundles)。
 
 </div>
@@ -366,7 +365,7 @@ For more information, see [How CommonJS is making your bundles larger](https://w
 The Angular CLI outputs warnings if it detects that your browser application depends on CommonJS modules.
 To disable these warnings, add the CommonJS module name to `allowedCommonJsDependencies` option in the `build` options located in `angular.json` file.
 
-如果 Angular CLI 检测到你的浏览器端应用依赖了 CommonJS 模块，就会发出警告。 要禁用这些警告，你可以把这些 CommonJS 模块的名字添加到 `angular.json` 文件的 `build` 区的 `allowedCommonJsDependencies` 选项中。
+如果 Angular CLI 检测到你的浏览器端应用依赖了 CommonJS 模块，就会发出警告。要禁用这些警告，你可以把这些 CommonJS 模块的名字添加到 `angular.json` 文件的 `build` 区的 `allowedCommonJsDependencies` 选项中。
 
 <code-example language="json">
 
@@ -392,13 +391,13 @@ To disable these warnings, add the CommonJS module name to `allowedCommonJsDepen
 The CLI uses [Autoprefixer](https://github.com/postcss/autoprefixer) to ensure compatibility with different browser and browser versions.
 You might find it necessary to target specific browsers or exclude certain browser versions from your build.
 
-CLI 使用 [Autoprefixer](https://github.com/postcss/autoprefixer) 来确保对不同浏览器及其版本的兼容性。 你会发现当你要从构建中针对特定的目标浏览器或排除指定的浏览器版本时，这是很有必要的。
+CLI 使用 [Autoprefixer](https://github.com/postcss/autoprefixer) 来确保对不同浏览器及其版本的兼容性。你会发现当你要从构建中针对特定的目标浏览器或排除指定的浏览器版本时，这是很有必要的。
 
 Internally, Autoprefixer relies on a library called [Browserslist](https://github.com/browserslist/browserslist) to figure out which browsers to support with prefixing.
 Browserlist looks for configuration options in a `browserslist` property of the package configuration file, or in a configuration file named `.browserslistrc`.
 Autoprefixer looks for the `browserslist` configuration when it prefixes your CSS.
 
-在内部 Autoprefixer 依赖一个名叫 [Browserslist](https://github.com/browserslist/browserslist) 的库来指出需要为哪些浏览器加前缀。 Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.browserslistrc` 的配置文件中来配置这些选项。 当 Autoprefixer 为你的 CSS 加前缀时，就会查阅 Browserlist 的配置。
+在内部 Autoprefixer 依赖一个名叫 [Browserslist](https://github.com/browserslist/browserslist) 的库来指出需要为哪些浏览器加前缀。Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.browserslistrc` 的配置文件中来配置这些选项。当 Autoprefixer 为你的 CSS 加前缀时，就会查阅 Browserlist 的配置。
 
 * Tell Autoprefixer what browsers to target by adding a browserslist property to the package configuration file, `package.json`:
 
@@ -485,7 +484,7 @@ For example, to divert all calls for `http://localhost:4200/api` to a server run
 Edit the proxy configuration file to add configuration options; following are some examples.
 For a description of all options, see [webpack DevServer documentation](https://webpack.js.org/configuration/dev-server/#devserverproxy).
 
-可以编辑这个代理配置文件，以添加配置项，下面是一些例子。 要查看所有选项的详细说明，参阅 [webpack DevServer 文档](https://webpack.js.org/configuration/dev-server/#devserver-proxy)。
+可以编辑这个代理配置文件，以添加配置项，下面是一些例子。要查看所有选项的详细说明，参阅 [webpack DevServer 文档](https://webpack.js.org/configuration/dev-server/#devserver-proxy)。
 
 <div class="alert is-helpful">
 
@@ -504,7 +503,7 @@ If you edit the proxy configuration file, you must relaunch the `ng serve` proce
 The `pathRewrite` proxy configuration option lets you rewrite the URL path at run time.
 For example, specify the following `pathRewrite` value to the proxy configuration to remove "api" from the end of a path.
 
-`pathRewrite` 代理配置项能让你在运行时重写 URL 路径。 比如，可以在代理配置中指定如下的 `pathRewrite` 值，以移除路径末尾的 "api" 部分。
+`pathRewrite` 代理配置项能让你在运行时重写 URL 路径。比如，可以在代理配置中指定如下的 `pathRewrite` 值，以移除路径末尾的 "api" 部分。
 
 <code-example format="json" language="json">
 
@@ -651,7 +650,7 @@ module.exports = PROXY_CONFIG;
 If you work behind a corporate proxy, the backend cannot directly proxy calls to any URL outside your local network.
 In this case, you can configure the backend proxy to redirect calls through your corporate proxy using an agent:
 
-如果你在某个公司代理之后，此后端就无法直接代理到局域网之外的任何 URL。 这种情况下，你可以把这个后端代理配置为，借助 agent 通过你的公司代理转发此调用：
+如果你在某个公司代理之后，此后端就无法直接代理到局域网之外的任何 URL。这种情况下，你可以把这个后端代理配置为，借助 agent 通过你的公司代理转发此调用：
 
 <code-example format="shell" language="shell">
 

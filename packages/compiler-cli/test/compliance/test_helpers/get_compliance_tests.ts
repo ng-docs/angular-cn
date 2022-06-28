@@ -302,14 +302,14 @@ export interface ComplianceTest {
   /**
    * If set to `true`, then focus on this test (equivalent to jasmine's 'fit()\`).
    *
-   * 如果设置为 `true` ，则专注于此测试（等效于 jasmine 的 'fit()\` ）。
+   * 如果设置为 `true` ，则专注于此测试（等效于 jasmine 的 'fit()\`）。
    *
    */
   focusTest?: boolean;
   /**
    * If set to `true`, then exclude this test (equivalent to jasmine's 'xit()\`).
    *
-   * 如果设置为 `true` ，则排除此测试（等效于 jasmine 的 'xit()\` ）。
+   * 如果设置为 `true` ，则排除此测试（等效于 jasmine 的 'xit()\`）。
    *
    */
   excludeTest?: boolean;

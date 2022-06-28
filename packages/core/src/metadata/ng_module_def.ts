@@ -52,7 +52,7 @@ export interface NgModuleTransitiveScopes {
  * never create the object directly since the shape of this object
  * can change between versions.
  *
- * 注：始终使用 `ɵɵdefineNgModule`
+ * 注意：始终使用 `ɵɵdefineNgModule`
  * 函数来创建此对象，切勿直接创建对象，因为此对象的形状可以在版本之间更改。
  *
  */

@@ -1,0 +1,147 @@
+{
+  "name": "serve",
+  "command": "ng serve [project]",
+  "shortDescription": "Builds and serves your application, rebuilding on file changes.",
+  "aliases": [
+    "s"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "allowed-hosts",
+      "type": "array",
+      "description": "List of hosts that are allowed to access the dev server.",
+      "descriptionCn": "允许访问开发服务器的主机列表。"
+    },
+    {
+      "name": "browser-target",
+      "type": "string",
+      "description": "A browser builder target to serve in the format of `project:target[:configuration]`. You can also pass in more than one configuration name as a comma-separated list. Example: `project:target:production,staging`.",
+      "descriptionCn": "一个浏览器构建器目标，用来以 `project:target[:configuration]` 的格式启动开发服务器。你还可以传入逗号分隔的多个配置名称列表。例如：`project:target:production,staging`。"
+    },
+    {
+      "name": "configuration",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
+      "descriptionCn": "逗号分隔列表格式的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分中指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+    },
+    {
+      "name": "disable-host-check",
+      "type": "boolean",
+      "default": false,
+      "description": "Don't verify connected clients are part of allowed hosts.",
+      "descriptionCn": "不要验证连接的客户端是否属于允许的主机。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "hmr",
+      "type": "boolean",
+      "default": false,
+      "description": "Enable hot module replacement.",
+      "descriptionCn": "启用模块热替换。"
+    },
+    {
+      "name": "host",
+      "type": "string",
+      "default": "localhost",
+      "description": "Host to listen on.",
+      "descriptionCn": "要监听的主机。"
+    },
+    {
+      "name": "live-reload",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to reload the page on change, using live-reload.",
+      "descriptionCn": "是否要利用实时重载在更改时刷新页面。"
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "aliases": [
+        "o"
+      ],
+      "default": false,
+      "description": "Opens the url in default browser.",
+      "descriptionCn": "在默认浏览器中打开此 URL。"
+    },
+    {
+      "name": "poll",
+      "type": "number",
+      "description": "Enable and define the file watching poll time period in milliseconds.",
+      "descriptionCn": "启用并定义文件监视的轮询间隔（以毫秒为单位）。"
+    },
+    {
+      "name": "port",
+      "type": "number",
+      "default": 4200,
+      "description": "Port to listen on.",
+      "descriptionCn": "要监听的端口。"
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "positional": 0,
+      "descriptionCn": "要构建的项目名。可以是应用或库。"
+    },
+    {
+      "name": "proxy-config",
+      "type": "string",
+      "description": "Proxy configuration file. For more information, see https://angular.io/guide/build#proxying-to-a-backend-server.",
+      "descriptionCn": "代理配置文件。有关更多信息，请参阅<https://angular.io/guide/build#proxying-to-a-backend-server> 。"
+    },
+    {
+      "name": "public-host",
+      "type": "string",
+      "description": "The URL that the browser client (or live-reload client, if enabled) should use to connect to the development server. Use for a complex dev server setup, such as one with reverse proxies.",
+      "descriptionCn": "浏览器客户端（或实时重载客户端，如果启用）用于连接开发服务器的 URL。用于复杂的开发服务器设置，例如带有反向代理的服务器。"
+    },
+    {
+      "name": "serve-path",
+      "type": "string",
+      "description": "The pathname where the application will be served.",
+      "descriptionCn": "将启动应用服务器的路径名。"
+    },
+    {
+      "name": "ssl",
+      "type": "boolean",
+      "default": false,
+      "description": "Serve using HTTPS.",
+      "descriptionCn": "用 HTTPS 方式提供服务。"
+    },
+    {
+      "name": "ssl-cert",
+      "type": "string",
+      "description": "SSL certificate to use for serving HTTPS.",
+      "descriptionCn": "用于提供 HTTPS 服务的 SSL 证书。"
+    },
+    {
+      "name": "ssl-key",
+      "type": "string",
+      "description": "SSL key to use for serving HTTPS.",
+      "descriptionCn": "用于提供 HTTPS 服务的 SSL 密钥。"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "description": "Adds more details to output logging.",
+      "descriptionCn": "将更多详细信息添加到输出日志记录。"
+    },
+    {
+      "name": "watch",
+      "type": "boolean",
+      "default": true,
+      "description": "Rebuild on change.",
+      "descriptionCn": "在更改时重建。"
+    }
+  ],
+  "shortDescriptionCn": "构建你的应用并启动开发服务器，当有文件变化时就重新构建。"
+}

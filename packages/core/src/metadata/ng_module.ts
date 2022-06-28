@@ -89,7 +89,6 @@ export interface NgModule {
    *      return 'Hello ' + name + '!';
    *    }
    * }
-   * ```
    *
    * @NgModule ({
    *   providers: [
@@ -139,9 +138,6 @@ export interface NgModule {
    * 下面的例子允许 CommonModule 使用 `NgFor` 指令。
    *
    * ```javascript
-   *
-   * ```
-   *
    * @NgModule ({
    *   declarations: [NgFor]
    * })
@@ -180,15 +176,13 @@ export interface NgModule {
    * 下列例子允许 `MainModule` 使用 `CommonModule` 中导入的任意可声明对象：
    *
    * ```javascript
-   *
-   * ```
-   *
    * @NgModule ({
    *   imports: [CommonModule]
    * })
    * class MainModule {
    * }
    * ```
+   *
    */
   imports?: Array<Type<any>|ModuleWithProviders<{}>|any[]>;
 
@@ -232,9 +226,6 @@ export interface NgModule {
    * 下面的例子导出了来自 `CommonModule` 的 `NgFor` 指令。
    *
    * ```javascript
-   *
-   * ```
-   *
    * @NgModule ({
    *   exports: [NgFor]
    * })
@@ -274,7 +265,7 @@ export interface NgModule {
    * application.)
    *
    * 从 9.0.0 开始。使用 Ivy，不再需要此属性。
-   * （如果你在构建库，可能需要保留这些，因为它可能被 View Engine 应用所消费。）
+   *（如果你在构建库，可能需要保留这些，因为它可能被 View Engine 应用所消费。）
    *
    */
   entryComponents?: Array<Type<any>|any[]>;

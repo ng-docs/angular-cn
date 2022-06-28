@@ -40,7 +40,7 @@ import {elementPropertyInternal, loadComponentRenderer, storePropertyBindingMeta
  * This function returns itself so that it may be chained
  * (e.g. `property('name', ctx.name)('title', ctx.title)`)
  *
- * 此函数返回自己，以便它可以被链接（例如 `property('name', ctx.name)('title', ctx.title)` ）
+ * 此函数返回自己，以便它可以被链接（例如 `property('name', ctx.name)('title', ctx.title)`）
  *
  * @codeGenApi
  */
@@ -61,7 +61,7 @@ export function ɵɵhostProperty<T>(
 /**
  * Updates a synthetic host binding (e.g. `[@foo]`) on a component or directive.
  *
- * 更新组件或指令上的合成主机绑定（例如 `[@foo]` ）。
+ * 更新组件或指令上的合成主机绑定（例如 `[@foo]`）。
  *
  * This instruction is for compatibility purposes and is designed to ensure that a
  * synthetic host binding (e.g. `@HostBinding('@foo')`) properly gets rendered in
@@ -71,7 +71,7 @@ export function ɵɵhostProperty<T>(
  * triggers are defined).
  *
  * 本操作指南是出于兼容性目的，旨在确保合成主机绑定（例如 `@HostBinding('@foo')`
- * ）在组件的渲染器中正确呈现。通常，所有主机绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
+ *）在组件的渲染器中正确呈现。通常，所有主机绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
  * ，它们需要使用子组件的渲染器进行估算（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `elementProperty`. This instruction

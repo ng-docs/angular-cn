@@ -40,7 +40,7 @@ import {DiagnosticCategoryLabel, NgCompilerAdapter, NgCompilerOptions} from '../
  * the `NgCompiler` (for example, by calling `getDiagnostics`).
  *
  * 有关编译的状态信息，仅在从 `NgCompiler` 请求某些数据时才会生成（例如，通过调用 `getDiagnostics`
- * ）。
+ *）。
  *
  */
 interface LazyCompilationState {
@@ -124,7 +124,7 @@ export interface IncrementalResourceCompilationTicket {
  * Angular compiler. They abstract the starting state of compilation and allow `NgCompiler` to be
  * managed independently of any incremental compilation lifecycle.
  *
- * `CompilationTicket` 用于初始化（或更新） `NgCompiler` 实例，这是 Angular
+ * `CompilationTicket` 用于初始化（或更新）`NgCompiler` 实例，这是 Angular
  * 编译器的核心。它们抽象了编译的启动状态，并允许 `NgCompiler` 独立于任何增量编译生命周期进行管理。
  *
  */
@@ -255,7 +255,7 @@ export function resourceChangeTicket(compiler: NgCompiler, modifiedResourceFiles
  * `NgCompiler` is lazy, and does not perform any of the work of the compilation until one of its
  * output methods (e.g. `getDiagnostics`) is called.
  *
- * `NgCompiler` 是延迟的，在调用其输出方法之一（例如 `getDiagnostics` ）之前不会执行任何编译工作。
+ * `NgCompiler` 是延迟的，在调用其输出方法之一（例如 `getDiagnostics`）之前不会执行任何编译工作。
  *
  * See the README.md for more information.
  *
@@ -332,7 +332,7 @@ export class NgCompiler {
    * incrementally reuses state from a previous compilation, or it may represent a fresh
    * compilation entirely.
    *
-   * 根据编译请求的性质， `NgCompiler`
+   * 根据编译请求的性质，`NgCompiler`
    * 实例可以从以前的编译中重用并使用任何更改进行更新，它可能是一个新实例，可以增量地重用以前编译中的状态，或者它可能完全代表一个新的编译。
    *
    */
@@ -686,7 +686,7 @@ export class NgCompiler {
    *
    * 通常，每当 `getDiagnostics` 或 `prepareEmit`
    * 时，此操作都会延迟发生。但是，某些消费者可能希望允许分析的异步阶段，其中的资源（例如
-   * `styleUrls` ）会被异步解析。在这些情况下，必须首先调用 `analyzeAsync` ，并在调用 `NgCompiler`
+   * `styleUrls`）会被异步解析。在这些情况下，必须首先调用 `analyzeAsync` ，并在调用 `NgCompiler`
    * 的任何其他 API 之前等待其 `Promise` 。
    *
    */

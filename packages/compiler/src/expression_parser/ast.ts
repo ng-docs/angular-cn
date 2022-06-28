@@ -66,7 +66,7 @@ export class ImplicitReceiver extends AST {
  * the same as implicit ones, except for a couple of exceptions like `$event` and `$any`.
  * TODO: we should find a way for this class not to extend from `ImplicitReceiver` in the future.
  *
- * 通过 `this` 访问某些内容时的接收器（例如 `this.foo` ）。请注意，此类继承自 `ImplicitReceiver`
+ * 通过 `this` 访问某些内容时的接收器（例如 `this.foo`）。请注意，此类继承自 `ImplicitReceiver`
  * ，因为通过 `this` 访问某些内容被视为与在 Angular 模板中隐式访问它相同（例如
  * `[attr.title]="this.title"` 与 `[attr.title]="title"` 。）。继承允许 `this`
  * 访问被视为与隐式访问相同，除了 `$event` 和 `$any` 等几个异常。
@@ -240,7 +240,7 @@ export class Binary extends AST {
  * node that was originally used. This inheritance relation can be deleted in some future major,
  * after consumers have been given a chance to fully support Unary.
  *
- * 出于向后兼容的原因， `Unary` 继承自 `Binary` 并模仿最初使用的二进制 AST
+ * 出于向后兼容的原因，`Unary` 继承自 `Binary` 并模仿最初使用的二进制 AST
  * 节点。在消费者有机会完全支持一元之后，可以在未来的某些专业中删除这种继承关系。
  *
  */
@@ -426,22 +426,28 @@ export class ExpressionBinding {
    * @param sourceSpan entire span of the binding.
    *
    * 绑定的整个跨度。
-   *
    * @param key binding name, like ngForOf, ngForTrackBy, ngIf, along with its
    * span. Note that the length of the span may not be the same as
    * `key.source.length`. For example,
-   * 1\. key.source = ngFor, key.span is for "ngFor"
-   * 2\. key.source = ngForOf, key.span is for "of"
-   * 3\. key.source = ngForTrackBy, key.span is for "trackBy"
    *
    * 绑定名称，例如 ngForOf、ngForTrackBy、ngIf 及其跨度。请注意，跨度的长度可能与
-   * `key.source.length` 。例如，1.key.source = ngFor ，key.span 是为了“ngFor” 2.key.source =
-   * ngForOf ，key.span 是为了“of” 3.key.source = ngForTrackBy ，key.span 是为了“trackBy “
+   * `key.source.length` 相同。例如
+   *
+   * 1. key.source = ngFor, key.span is for "ngFor"
+   *
+   *    key.source = ngFor, key.span 是供 "ngFor" 使用的
+   *
+   * 2. key.source = ngForOf, key.span is for "of"
+   *
+   *    key.source = ngForOf, key.span 是供 "of" 使用的
+   *
+   * 3. key.source = ngForTrackBy, key.span is for "trackBy"
+   *
+   *    key.source = ngForTrackBy, key.span 是供 "trackBy" 使用的
    *
    * @param value optional expression for the RHS.
    *
    * RHS 的可选表达式。
-   *
    */
   constructor(
       public readonly sourceSpan: AbsoluteSourceSpan,
@@ -458,7 +464,7 @@ export interface AstVisitor {
    * The `visitUnary` method is declared as optional for backwards compatibility. In an upcoming
    * major release, this method will be made required.
    *
-   * 为了向后兼容， `visitUnary` 方法被声明为可选。在即将到来的主要版本中，将使用此方法。
+   * 为了向后兼容，`visitUnary` 方法被声明为可选。在即将到来的主要版本中，将使用此方法。
    *
    */
   visitUnary?(ast: Unary, context: any): any;
@@ -469,7 +475,7 @@ export interface AstVisitor {
    * The `visitThisReceiver` method is declared as optional for backwards compatibility.
    * In an upcoming major release, this method will be made required.
    *
-   * 为了向后兼容， `visitThisReceiver` 方法被声明为可选。在即将到来的主要版本中，将使用此方法。
+   * 为了向后兼容，`visitThisReceiver` 方法被声明为可选。在即将到来的主要版本中，将使用此方法。
    *
    */
   visitThisReceiver?(ast: ThisReceiver, context: any): any;

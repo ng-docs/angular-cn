@@ -43,17 +43,17 @@ This topic provides some guidelines for the following general categories of NgMo
 | :------- | :------ |
 | 分类 | 详情 |
 | [Domain](#domain) | Is organized around a feature, business domain, or user experience. |
-| [Domain](#domain) | 围绕特性、业务领域或用户体验进行组织。 |
+| [Domain](#domain) | 围绕特性、业务领域或用户体验进行组织。|
 | [Routed](#routed) | Is the top component of the NgModule. Acts as the destination of a [router](guide/glossary#router "Definition of router") navigation route. |
-| [Routed](#routed) | 模块的顶层组件充当[路由器](guide/glossary#router "路由器的定义")访问这部分路由时的目的地。 |
+| [Routed](#routed) | 模块的顶层组件充当[路由器](guide/glossary#router "路由器的定义")访问这部分路由时的目的地。|
 | [Routing](#routing) | Provides the routing configuration for another NgModule. |
-| [Routing](#routing) | 路由配置模块为另一个模块提供路由配置。 |
+| [Routing](#routing) | 路由配置模块为另一个模块提供路由配置。|
 | [Service](#service) | Provides utility services such as data access and messaging. |
-| [Service](#service) | 服务模块提供实用服务，比如数据访问和消息传递。 |
+| [Service](#service) | 服务模块提供实用服务，比如数据访问和消息传递。|
 | [Widget](#widget) | Makes a component, directive, or pipe available to other NgModules. |
-| [Widget](#widget) | 小部件模块可以为其它模块提供某些组件、指令或管道。 |
+| [Widget](#widget) | 小部件模块可以为其它模块提供某些组件、指令或管道。|
 | [Shared](#shared) | Makes a set of components, directives, and pipes available to other NgModules. |
-| [Shared](#shared) | 共享模块可以为其它的模块提供组件，指令和管道的集合。 |
+| [Shared](#shared) | 共享模块可以为其它的模块提供组件，指令和管道的集合。|
 
 The following table summarizes the key characteristics of each category.
 
@@ -67,7 +67,7 @@ The following table summarizes the key characteristics of each category.
 | Routed | Yes | Rare | No | None |
 | 带路由的模块 | 是 | 罕见 | 否 | 无 |
 | Routing | No | Yes (Guards) | RouterModule | Another domain (for routing) |
-| 路由 | 否 | 是 (路由守卫) | RouterModule | 其它领域模块（为获取路由定义） |
+| 路由 | 否 | 是 (路由守卫) | RouterModule | 其它领域模块（为获取路由定义）|
 | Service | No | Yes | No | `AppModule` |
 | 服务模块 | 否 | 是 | 否 | `AppModule` |
 | Widget | Yes | Rare | Yes | Another domain |
@@ -106,7 +106,7 @@ If you do, the lifetime of the provided services should be the same as the lifet
 
 For more information about lifecycles, see [Hooking into the component lifecycle](guide/lifecycle-hooks "Hooking into the component lifecycle").
 
-关于生命周期的详细信息，请参阅[“组件生命周期钩子”](guide/lifecycle-hooks "进入组件的生命周期") 。
+关于生命周期的详细信息，请参阅[“组件生命周期钩子”](guide/lifecycle-hooks "进入组件的生命周期")。
 
 </div>
 
@@ -131,7 +131,7 @@ Services listed in the NgModules' `provider` array would not be available becaus
 If you include providers, the lifetime of the provided services should be the same as the lifetime of the NgModule.
 Don't provide app-wide [singleton services](guide/singleton-services) in a routed NgModule or in an NgModule that the routed NgModule imports.
 
-带路由的模块很少有提供者，因为你只在需要的时候加载带路由的模块（比如通过路由导航过来时）。 `provider` 数组中列出的服务不可用，因为根注入器不可能预先知道惰性加载的模块。如果你包含了提供者，那么它们所提供的服务的生命周期应该和该模块的生命周期完全一样。不要在带路由的模块及其导入的相关模块中提供全应用范围内的[单例服务。](guide/singleton-services)。
+带路由的模块很少有提供者，因为你只在需要的时候加载带路由的模块（比如通过路由导航过来时）。`provider` 数组中列出的服务不可用，因为根注入器不可能预先知道惰性加载的模块。如果你包含了提供者，那么它们所提供的服务的生命周期应该和该模块的生命周期完全一样。不要在带路由的模块及其导入的相关模块中提供全应用范围内的[单例服务。](guide/singleton-services)。
 
 <div class="alert is-helpful">
 
@@ -179,17 +179,17 @@ Use a routing NgModule to do the following tasks:
 The name of the routing NgModule should parallel the name of its companion NgModule, using the suffix `Routing`.
 For example, `ContactModule` in `contact.module.ts` has a routing NgModule named `ContactRoutingModule` in `contact-routing.module.ts`.
 
-路由定义模块的名字应该和其伴生模块的名字平行，但使用 `Routing` 后缀。比如， `contact.module.ts` 中的 `ContactModule` 有一个位于 `contact-routing.module.ts` 中的名为 `ContactRoutingModule` 的路由定义模块。
+路由定义模块的名字应该和其伴生模块的名字平行，但使用 `Routing` 后缀。比如，`contact.module.ts` 中的 `ContactModule` 有一个位于 `contact-routing.module.ts` 中的名为 `ContactRoutingModule` 的路由定义模块。
 
 Import a routing NgModule only into its companion NgModule.
 If the companion NgModule is the root `AppModule`, the `AppRoutingModule` adds router configuration to its imports with `RouterModule.forRoot(routes)`.
 All other routing NgModules are children that import `RouterModule.forChild(routes)`.
 
-路由定义模块只能导入它的伴生模块中。如果伴生模块是根模块 `AppModule` ，那么 `AppRoutingModule` 就会通过其导入表中的 `RouterModule.forRoot(routes)` 来添加路由器配置。所有其他的子路由定义模块都会导入 `RouterModule.forChild(routes)`。
+路由定义模块只能导入它的伴生模块中。如果伴生模块是根模块 `AppModule`，那么 `AppRoutingModule` 就会通过其导入表中的 `RouterModule.forRoot(routes)` 来添加路由器配置。所有其他的子路由定义模块都会导入 `RouterModule.forChild(routes)`。
 
 In your routing NgModule, re-export the `RouterModule` as a convenience so that components of the companion NgModule have access to router directives such as `RouterLink` and `RouterOutlet`.
 
-在路由定义模块中，要重新导出 `RouterModule`，以便其伴生模块中的组件可以访问路由器指令，比如 `RouterLink` 和 `RouterOutlet` 。
+在路由定义模块中，要重新导出 `RouterModule`，以便其伴生模块中的组件可以访问路由器指令，比如 `RouterLink` 和 `RouterOutlet`。
 
 Don't use declarations in a routing NgModule.
 Components, directives, and pipes are the responsibility of the companion domain NgModule, not the routing NgModule.
@@ -206,7 +206,7 @@ Use a service NgModule to provide a utility service such as data access or messa
 Ideal service NgModules consist entirely of providers and have no declarations.
 Angular's `HttpClientModule` is a good example of a service NgModule.
 
-使用服务模块来提供实用工具服务，比如数据访问或消息传递。理想的服务模块完全由提供者组成，没有可声明对象。 Angular 的 `HttpClientModule` 是服务模块的一个典范。
+使用服务模块来提供实用工具服务，比如数据访问或消息传递。理想的服务模块完全由提供者组成，没有可声明对象。Angular 的 `HttpClientModule` 是服务模块的一个典范。
 
 Use only the root `AppModule` to import service NgModules.
 
@@ -247,7 +247,7 @@ Shared NgModules should not include providers, nor should any of its imported or
 
 To learn how to use shared modules to organize and streamline your code, see [Sharing NgModules in an app](guide/sharing-ngmodules "Sharing NgModules in an app").
 
-要了解如何使用共享模块来组织和简化代码，请参阅[在应用中使用共享模块](guide/sharing-ngmodules "在应用中共享 NgModules") 。
+要了解如何使用共享模块来组织和简化代码，请参阅[在应用中使用共享模块](guide/sharing-ngmodules "在应用中共享 NgModules")。
 
 ## Next steps
 

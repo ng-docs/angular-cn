@@ -18,7 +18,7 @@ export interface IPropertySpyHelpers<T, P extends keyof T> {
    * (This is useful in case one needs to make assertions against property reads.)
    *
    * 用于对属性进行 `get` 操作（即读取当前属性值）的 `jasmine.Spy` 。
-   * （如果需要对属性读取进行断言，这会很有用。）
+   *（如果需要对属性读取进行断言，这会很有用。）
    *
    */
   getSpy: jasmine.Spy;
@@ -28,7 +28,7 @@ export interface IPropertySpyHelpers<T, P extends keyof T> {
    * (This is useful in case one needs to make assertions against property writes.)
    *
    * 用于对属性进行 `set` 操作（即设置新属性值）的 `jasmine.Spy` 。
-   * （如果需要对属性写入进行断言，这会很有用。）
+   *（如果需要对属性写入进行断言，这会很有用。）
    *
    */
   setSpy: jasmine.Spy;
@@ -70,7 +70,7 @@ export interface IPropertySpyHelpers<T, P extends keyof T> {
  * (via `afterEach()`).
  *
  * 从本质上，这是 `spyProperty()` 的包装器，它额外负责在每次测试之前安装间谍（通过 `beforeEach()`
- * ）并在每次测试之后卸载它们（通过 `afterEach()` ）。
+ *）并在每次测试之后卸载它们（通过 `afterEach()`）。
  *
  * Example usage:
  *
@@ -130,7 +130,7 @@ export const mockProperty =
  *
  * 注意：与 `jasmine` 的间谍实用程序不同，spie
  * 不会自动安装/卸载，因此调用者要负责手动处理它（根据需要调用 `installSpies()` / `uninstallSpies()`
- * ）。
+ *）。
  *
  * @param ctx The object whose property needs to be spied on.
  *

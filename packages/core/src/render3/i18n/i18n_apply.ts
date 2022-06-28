@@ -327,7 +327,7 @@ export function applyMutableOpCodes(
  * @param changeMask Each bit corresponds to a `ɵɵi18nExp` (Counting backwards from
  *     `bindingsStartIndex`)
  *
- * 每个位对应一个 `ɵɵi18nExp` （从 `bindingsStartIndex` 倒数）
+ * 每个位对应一个 `ɵɵi18nExp`（从 `bindingsStartIndex` 倒数）
  *
  */
 export function applyUpdateOpCodes(

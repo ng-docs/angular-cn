@@ -112,7 +112,7 @@ export interface DomAttributeCompletion {
    * (`[propertyName]=""`).
    *
    * 此属性是否也是 DOM 属性。请注意，这必须是 `true` ，因为我们只想在有 Angular 语法（
-   * `[propertyName]=""` ）关联的 Angular 语法时提供 DOM 属性。
+   * `[propertyName]=""`）关联的 Angular 语法时提供 DOM 属性。
    *
    */
   isAlsoProperty: true;
@@ -487,7 +487,7 @@ function buildSnippet(insertSnippet: true|undefined, text: string): string|undef
  * This sort priority is based on the ASCII table. Other than `space`, the `!` is the first
  * printable character in the ASCII ordering.
  *
- * 此排序优先级基于 ASCII 表。除了 `space` ， `!` 是 ASCII 顺序中的第一个可打印字符。
+ * 此排序优先级基于 ASCII 表。除了 `space` ，`!` 是 ASCII 顺序中的第一个可打印字符。
  *
  */
 enum AsciiSortPriority {
@@ -511,7 +511,7 @@ enum AsciiSortPriority {
  *
  * 生成的自动完成类型取决于当前上下文是否是属性上下文。例如，在 `<element attr|>`
  * 上完成将生成两个结果： `attribute` 和 `[attribute]` -
- * 可以生成静态属性，也可以生成属性绑定。但是， `<element [attr|]>` 不是属性上下文，因此只会生成
+ * 可以生成静态属性，也可以生成属性绑定。但是，`<element [attr|]>` 不是属性上下文，因此只会生成
  * property 自动完成 `attribute` 。请注意，此自动完成没有 `[]`
  * 属性绑定糖，因为它隐式存在于属性绑定上下文中（我们已经在 `[attr|]` 表达式中完成）。
  *
@@ -520,7 +520,7 @@ enum AsciiSortPriority {
  * `insertText` is `(myOutput)="$0"`.
  *
  * 如果 `insertSnippet` 为 `true` ，则在某些情况下，自动完成条目应该包含属性或事件绑定糖。例如 `<div
- * (my¦) />` ， `replacementSpan` 是 `(my)` ， `insertText` 是 `(myOutput)="$0"` 。
+ * (my¦) />` ，`replacementSpan` 是 `(my)` ，`insertText` 是 `(myOutput)="$0"` 。
  *
  */
 export function addAttributeCompletionEntries(

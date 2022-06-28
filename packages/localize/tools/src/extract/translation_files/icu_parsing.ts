@@ -31,7 +31,7 @@
  * In this ICU, `INTERPOLATION` and `INTERPOLATION_1` are actually placeholders that will be
  * replaced with dynamic content at runtime.
  *
- * 在这个 ICU 中， `INTERPOLATION` 和 `INTERPOLATION_1` 实际上是占位符，将在运行时被替换为动态内容。
+ * 在这个 ICU 中，`INTERPOLATION` 和 `INTERPOLATION_1` 实际上是占位符，将在运行时被替换为动态内容。
  *
  * Such placeholders are identifiable as text wrapped in curly braces, within an ICU case
  * expression.
@@ -167,7 +167,7 @@ class IcuPieces {
    * Even values are static strings (e.g. 0, 2, 4, etc)
    * Odd values are placeholder names (e.g. 1, 3, 5, etc)
    *
-   * 偶数值是静态字符串（例如 0、2、4 等） 奇数值是占位符名称（例如 1、3、5 等）
+   * 偶数值是静态字符串（例如 0、2、4 等）奇数值是占位符名称（例如 1、3、5 等）
    *
    */
   toArray(): string[] {

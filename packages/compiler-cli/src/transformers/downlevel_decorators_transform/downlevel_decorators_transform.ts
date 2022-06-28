@@ -316,7 +316,7 @@ interface ParameterDecorationInfo {
  *   Angular will generate the corresponding injectable factory.
  *
  * 是否应该从降级中跳过类装饰器。这对于应该保留类装饰器的 JIT
- * 模式很有用，因为它们可以依赖于立即执行。例如， `@Injectable`
+ * 模式很有用，因为它们可以依赖于立即执行。例如，`@Injectable`
  * 意味着不会创建可注入工厂，并且注入令牌将不起作用。如果此装饰器不会被降级，则 `Injectable`
  * 装饰器将在文件加载时立即执行，并且 Angular 将生成相应的可注入工厂。
  *
@@ -414,7 +414,7 @@ export function getDownlevelDecoratorsTransform(
     /**
      * Converts an EntityName (from a type annotation) to an expression (accessing a value).
      *
-     * 将 EntityName （从类型注解）转换为表达式（访问值）。
+     * 将 EntityName（从类型注解）转换为表达式（访问值）。
      *
      * For a given qualified name, this walks depth first to find the leftmost identifier,
      * and then converts the path into a property access that can be used as expression.

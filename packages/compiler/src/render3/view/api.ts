@@ -345,7 +345,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
    * unique in certain contexts (such as g3).
    *
    * 将包含此模板生成的代码的 .ts
-   * 文件的路径，相对于编译根。这将用于生成在某些上下文中需要全局唯一的标识符（例如 g3 ）。
+   * 文件的路径，相对于编译根。这将用于生成在某些上下文中需要全局唯一的标识符（例如 g3）。
    *
    */
   relativeContextFilePath: string;
@@ -362,7 +362,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
   /**
    * Overrides the default interpolation start and end delimiters ({{ and }}).
    *
-   * 覆盖默认的插值开始和结束分隔符（ {{ 和 }} ）。
+   * 覆盖默认的插值开始和结束分隔符（{{ 和 }}）。
    *
    */
   interpolation: InterpolationConfig;
@@ -516,7 +516,7 @@ export interface R3QueryMetadata {
    * behavior where the change was fired whenever the query was recomputed, even if the recomputed
    * query resulted in the same list.)
    *
-   * 如果仅在计算了对查询的实际更改时， `QueryList` 应该触发 change
+   * 如果仅在计算了对查询的实际更改时，`QueryList` 应该触发 change
    * 事件（与旧行为相比，每当重新计算查询时都会触发更改，即使重新计算的查询产生了同一个列表。）
    *
    */
@@ -542,7 +542,7 @@ export interface R3QueryMetadata {
    * available in the ngOnInit hook.
    *
    * 如果 static 为
-   * true，则查询的结果将在创建节点之后、更改检测运行之前在组件上设置。这意味着任何依赖更改检测运行的结果（例如*ngIf
+   * true，则查询的结果将在创建节点之后、变更检测运行之前在组件上设置。这意味着任何依赖变更检测运行的结果（例如*ngIf
    * 或*ngFor 视图中的结果）都不会被收集。查询结果在 ngOnInit 钩子中提供。
    *
    * If static is false, the query's results will be set on the component after change detection
@@ -550,7 +550,7 @@ export interface R3QueryMetadata {
    * the results will not be available in the ngOnInit hook (only in the ngAfterContentInit for
    * content hooks and ngAfterViewInit for view hooks).
    *
-   * 如果 static 为 false，则查询的结果将在更改检测运行后在组件上设置。这意味着查询结果可以包含*ngIf
+   * 如果 static 为 false，则查询的结果将在变更检测运行后在组件上设置。这意味着查询结果可以包含*ngIf
    * 或*ngFor 视图中的节点，但结果将在 ngOnInit 钩子中不可用（仅在 ngAfterContentInit
    * 中用于内容钩子，在 ngAfterViewInit 中用于视图钩子）。
    *

@@ -111,7 +111,7 @@ view and the most heroic heroes:
 
 You can click the two links above the dashboard ("Dashboard" and "Heroes") to navigate between this Dashboard view and a Heroes view.
 
-仪表盘顶部中有两个链接：“Dashboard（仪表盘）”和“Heroes（英雄列表）”。 你将点击它们在“仪表盘”和“英雄列表”视图之间导航。
+仪表盘顶部中有两个链接：“Dashboard（仪表盘）”和“Heroes（英雄列表）”。你将点击它们在“仪表盘”和“英雄列表”视图之间导航。
 
 If you click the dashboard hero "Magneta," the router opens a "Hero Details" view where you can change the hero's name.
 
@@ -127,7 +127,7 @@ Clicking the "Back" button returns you to the Dashboard.
 Links at the top take you to either of the main views.
 If you click "Heroes," the application displays the "Heroes" master list view.
 
-点击“Back（后退）”按钮将返回到“Dashboard（仪表盘）”。 顶部的链接可以把你带到任何一个主视图。 如果你点击“Heroes（英雄列表）”链接，应用将把你带到“英雄”列表主视图。
+点击“Back（后退）”按钮将返回到“Dashboard（仪表盘）”。顶部的链接可以把你带到任何一个主视图。如果你点击“Heroes（英雄列表）”链接，应用将把你带到“英雄”列表主视图。
 
 <div class="lightbox">
 

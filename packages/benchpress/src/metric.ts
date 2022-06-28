@@ -40,7 +40,7 @@ export abstract class Metric {
    * Describes the metrics provided by this metric implementation.
    * (e.g. units, ...)
    *
-   * 描述此度量实现提供的度量。 （例如单位，……）
+   * 描述此度量实现提供的度量。（例如单位，……）
    *
    */
   describe(): {[key: string]: string} {

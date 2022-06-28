@@ -13,17 +13,11 @@
  * 在开始或完成阶段调用已捕获动画的回调时，将此类的实例作为事件参数返回。
  *
  * ```typescript
- *
- * ```
- *
- * @Component ({
+ * @Component({
  *   host: {
- *     '[
- * @myAnimationTrigger ]': 'someExpression',
- *     '(
- * @myAnimationTrigger .start)': 'captureStartEvent($event)',
- *     '(
- * @myAnimationTrigger .done)': 'captureDoneEvent($event)',
+ *     '[@myAnimationTrigger]': 'someExpression',
+ *     '(@myAnimationTrigger.start)': 'captureStartEvent($event)',
+ *     '(@myAnimationTrigger.done)': 'captureDoneEvent($event)',
  *   },
  *   animations: [
  *     trigger("myAnimationTrigger", [
@@ -42,6 +36,7 @@
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export interface AnimationEvent {

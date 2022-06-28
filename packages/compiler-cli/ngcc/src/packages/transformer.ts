@@ -46,7 +46,7 @@ export type TransformResult = {
  * formats - e.g. fesm2015, UMD, etc. Additionally, each package provides typings (`.d.ts` files).
  *
  * 包存储在磁盘上的目录中，该目录可以包含一种或多种包格式 - 例如 fesm2015、UMD
- * 等。此外，每个包都提供了类型化（ `.d.ts` 文件）。
+ * 等。此外，每个包都提供了类型化（`.d.ts` 文件）。
  *
  * Each of these formats exposes one or more entry points, which are source files that need to be
  * parsed to identify the decorated exported classes that need to be analyzed and compiled by one or

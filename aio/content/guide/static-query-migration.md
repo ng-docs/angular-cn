@@ -94,7 +94,7 @@ For more information on how to choose, see the [next question](#how-do-i-choose)
 In the official API docs, we have always recommended retrieving query results in [`ngAfterViewInit` for view queries](api/core/ViewChild#description) and [`ngAfterContentInit` for content queries](api/core/ContentChild#description).
 This is because by the time those lifecycle hooks run, change detection has completed for the relevant nodes and we can guarantee that we have collected all the possible query results.
 
-在官方 API 文档中，我们建议对于[视图查询](api/core/ViewChild#description) 总是在 `ngAfterViewInit` 中获取查询结果，对于[内容查询](api/core/ContentChild#description) 总是在 `ngAfterContentInit` 中获取查询结果。 这是因为当这些生命周期钩子运行时，相关节点的变更检测已完成，我们可以确信收集到了所有可能的查询结果。
+在官方 API 文档中，我们建议对于[视图查询](api/core/ViewChild#description) 总是在 `ngAfterViewInit` 中获取查询结果，对于[内容查询](api/core/ContentChild#description) 总是在 `ngAfterContentInit` 中获取查询结果。这是因为当这些生命周期钩子运行时，相关节点的变更检测已完成，我们可以确信收集到了所有可能的查询结果。
 
 Most applications will want to use `{static: false}` for the same reason.
 This setting will ensure query matches that are dependent on binding resolution (for example, results inside instances of `*ngIf` or `*ngFor`) will be found by the query.
@@ -160,9 +160,9 @@ This classification determined when query results would become available to user
 | :------ | :------ |
 | 查询 | 详情 |
 | Static queries | The result could be determined statically because the result didn't depend on runtime values like bindings. Results from queries classified as static were available before change detection ran for that view (accessible in `ngOnInit`). |
-| Static queries | 查询结果是可以静态确定的，因为其结果并不依赖运行期间的值（比如数据绑定）。静态查询的结果在该视图运行变更检测之前就是可用的（可以在 `ngOnInit` 访问）。 |
+| 静态查询 | 查询结果是可以静态确定的，因为其结果并不依赖运行期间的值（比如数据绑定）。静态查询的结果在该视图运行变更检测之前就是可用的（可以在 `ngOnInit` 访问）。|
 | Dynamic queries | the result could not be determined statically because the result depended on runtime values (bindings). Results from queries classified as dynamic were not available until after change detection ran for that view (accessible in `ngAfterContentInit` for content queries or `ngAfterViewInit` for view queries). |
-| 动态查询 | 查询结果是无法静态确定的，因为其结果取决于运行期间的值（比如数据绑定）。动态查询的结果在运行该视图的变更检测之前是不可用的（只能在 `ngAfterContentInit` 中访问内容查询或在 `ngAfterViewInit` 中访问视图查询）。 |
+| 动态查询 | 查询结果是无法静态确定的，因为其结果取决于运行期间的值（比如数据绑定）。动态查询的结果在运行该视图的变更检测之前是不可用的（只能在 `ngAfterContentInit` 中访问内容查询或在 `ngAfterViewInit` 中访问视图查询）。|
 
 For example, let's say we have a component, `Comp`.
 Inside it, we have this query:
@@ -243,7 +243,7 @@ In version 9, we plan to simplify the behavior so all queries resolve after chan
 The location of query matches in the template cannot affect when the query result will become available and suddenly break your code, and the default behavior is always the same.
 This makes the logic more consistent and predictable for users.
 
-在版本 9 中，我们准备简化这种行为：默认情况下，每当运行变更检测之后，都会解析所有查询。 模板中查询的位置不会再影响查询结果何时可用，也不会突然破坏你的代码，其默认行为总是一样的。这样，这种逻辑对于用户来说就更加一致、更加可预测。
+在版本 9 中，我们准备简化这种行为：默认情况下，每当运行变更检测之后，都会解析所有查询。模板中查询的位置不会再影响查询结果何时可用，也不会突然破坏你的代码，其默认行为总是一样的。这样，这种逻辑对于用户来说就更加一致、更加可预测。
 
 That said, if an application does need query results earlier (for example, the query result is needed to create an embedded view), it's possible to add the `{static: true}` flag to explicitly ask for static resolution.
 With this flag, users can indicate that they only care about results that are statically available and the query results will be populated before `ngOnInit`.

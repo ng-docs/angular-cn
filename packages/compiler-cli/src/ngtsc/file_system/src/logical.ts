@@ -148,7 +148,7 @@ export class LogicalFileSystem {
  * Is the `path` a descendant of the `base`?
  * E.g. `foo/bar/zee` is within `foo/bar` but not within `foo/car`.
  *
- * `path` 是 `base` 的后代吗？例如， `foo/bar/zee` 在 `foo/bar` 内，但不在 `foo/car` 内。
+ * `path` 是 `base` 的后代吗？例如，`foo/bar/zee` 在 `foo/bar` 内，但不在 `foo/car` 内。
  *
  */
 function isWithinBasePath(base: AbsoluteFsPath, path: AbsoluteFsPath): boolean {

@@ -90,7 +90,7 @@ export function registerPreOrderHooks(
  * NOTE: This does not set up `onChanges`, `onInit` or `doCheck`, those are set up
  * separately at `elementStart`.
  *
- * 注意：这不会设置 `onChanges` 、 `onInit` 或 `doCheck` ，它们是在 `elementStart` 处单独设置的。
+ * 注意：这不会设置 `onChanges`、`onInit` 或 `doCheck` ，它们是在 `elementStart` 处单独设置的。
  *
  * @param tView The current TView
  *
@@ -157,8 +157,8 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  *    \[[onInit1, onInit2], [afterContentInit1], [afterViewInit1, afterViewInit2, afterViewInit3]]
  *    They are are stored as flags in LView[FLAGS].
  *
- *    初始化钩子（ ngOnInit、ngAfterContentInit、ngAfterViewInit
- * ）都必须在许多更改检测周期中执行一次，并且只能执行一次。即使某些钩子抛出，或者某些递归触发更改检测周期，也必须是真的。为了解决这个问题，需要跟踪这些初始化钩子的执行状态。这是通过在视图中存储和维护标志来完成的： {@link
+ *    初始化钩子（ngOnInit、ngAfterContentInit、ngAfterViewInit
+ *）都必须在许多变更检测周期中执行一次，并且只能执行一次。即使某些钩子抛出，或者某些递归触发变更检测周期，也必须是真的。为了解决这个问题，需要跟踪这些初始化钩子的执行状态。这是通过在视图中存储和维护标志来完成的： {@link
  * InitPhaseState} 和该阶段中的索引。它们可以被视为以下结构中的游标： \[ [onInit1, onInit2][onInit1,
  * onInit2] , [afterContentInit1][afterContentInit1] , [afterViewInit1, afterViewInit2,
  * afterViewInit3][afterViewInit1, afterViewInit2, afterViewInit3] ]它们作为标志存储在 LView
@@ -189,7 +189,7 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  * executed once. This is a light version of executeInitAndCheckPreOrderHooks where we can skip read
  * / write of the init-hooks related flags.
  *
- * 在给定所有初始化钩子都执行一次的视图的情况下，执行预购检查钩子（ OnChanges、DoChanges ）。这是
+ * 在给定所有初始化钩子都执行一次的视图的情况下，执行预购检查钩子（OnChanges、DoChanges）。这是
  * executeInitAndCheckPreOrderHooks 的轻型版本，我们可以在其中跳过与 init-hooks 相关的标志的读/写。
  *
  * @param lView The LView where hooks are defined

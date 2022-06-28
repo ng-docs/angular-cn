@@ -55,7 +55,7 @@ You update the `beforeEach` to find that element with a standard HTML `querySele
 For your first test you'd like to see that the screen displays the default `title`.
 Your instinct is to write a test that immediately inspects the `<h1>` like this:
 
-对于你的第一个测试，你希望屏幕上显示默认的 `title` 。你的直觉就是编写一个能立即检查 `<h1>` 的测试，就像这样：
+对于你的第一个测试，你希望屏幕上显示默认的 `title`。你的直觉就是编写一个能立即检查 `<h1>` 的测试，就像这样：
 
 <code-example path="testing/src/app/banner/banner.component.spec.ts" region="expect-h1-default-v1"></code-example>
 
@@ -88,7 +88,7 @@ The `TestBed.createComponent` does *not* trigger change detection; a fact confir
 You must tell the `TestBed` to perform data binding by calling `fixture.detectChanges()`.
 Only then does the `<h1>` have the expected title.
 
-你必须通过调用 `fixture.detectChanges()` 来告诉 `TestBed` 执行数据绑定。只有这样， `<h1>` 才能拥有预期的标题。
+你必须通过调用 `fixture.detectChanges()` 来告诉 `TestBed` 执行数据绑定。只有这样，`<h1>` 才能拥有预期的标题。
 
 <code-example path="testing/src/app/banner/banner.component.spec.ts" region="expect-h1-default"></code-example>
 
@@ -143,14 +143,14 @@ The `ComponentFixtureAutoDetect` service responds to *asynchronous activities* s
 But a direct, synchronous update of the component property is invisible.
 The test must call `fixture.detectChanges()` manually to trigger another cycle of change detection.
 
-第二个和第三个测试则揭示了一个重要的限制。该 Angular 测试环境*不*知道测试改变了组件的 `title`。 `ComponentFixtureAutoDetect` 服务会响应*异步活动，*比如 Promise、定时器和 DOM 事件。但却看不见对组件属性的直接同步更新。该测试必须用 `fixture.detectChanges()` 来触发另一个变更检测周期。
+第二个和第三个测试则揭示了一个重要的限制。该 Angular 测试环境*不*知道测试改变了组件的 `title`。`ComponentFixtureAutoDetect` 服务会响应*异步活动，*比如 Promise、定时器和 DOM 事件。但却看不见对组件属性的直接同步更新。该测试必须用 `fixture.detectChanges()` 来触发另一个变更检测周期。
 
 <div class="alert is-helpful">
 
 Rather than wonder when the test fixture will or won't perform change detection, the samples in this guide *always call* `detectChanges()` *explicitly*.
 There is no harm in calling `detectChanges()` more often than is strictly necessary.
 
-本指南中的范例总是会*显式*调用 `detectChanges()` ，而不用困惑于测试夹具何时会或不会执行变更检测。更频繁的调用 `detectChanges()` 毫无危害，没必要只在非常必要时才调用它。
+本指南中的范例总是会*显式*调用 `detectChanges()`，而不用困惑于测试夹具何时会或不会执行变更检测。更频繁的调用 `detectChanges()` 毫无危害，没必要只在非常必要时才调用它。
 
 </div>
 
@@ -173,7 +173,7 @@ Angular doesn't know that you set the input element's `value` property.
 It won't read that property until you raise the element's `input` event by calling `dispatchEvent()`.
 *Then* you call `detectChanges()`.
 
-Angular 并不知道你为 input 设置过 `value` 属性。在通过调用 `dispatchEvent()` 分发 `input` 事件之前，它不会读取该属性。*紧接着*你就调用了 `detectChanges()` 。
+Angular 并不知道你为 input 设置过 `value` 属性。在通过调用 `dispatchEvent()` 分发 `input` 事件之前，它不会读取该属性。*紧接着*你就调用了 `detectChanges()`。
 
 The following example demonstrates the proper sequence.
 
@@ -252,7 +252,7 @@ This time, in addition to declaring the *component-under-test*,
 the configuration adds a `UserService` provider to the `providers` list.
 But not the real `UserService`.
 
-这次，除了声明*被测组件外*，该配置还在 `providers` 列表中加入了 `UserService` 提供者。但它不是真正的 `UserService` 。
+这次，除了声明*被测组件外*，该配置还在 `providers` 列表中加入了 `UserService` 提供者。但它不是真正的 `UserService`。
 
 <a id="service-test-doubles"></a>
 
@@ -314,7 +314,7 @@ But it only works when Angular injects the component with the service instance i
 
 In this test suite, the *only* provider of `UserService` is the root testing module, so it is safe to call `TestBed.inject()` as follows:
 
-在下面这个测试套件中， `UserService`*唯一的*提供者是根测试模块，因此可以安全地调用 `TestBed.inject()` ，如下所示：
+在下面这个测试套件中，`UserService`*唯一的*提供者是根测试模块，因此可以安全地调用 `TestBed.inject()`，如下所示：
 
 <code-example header="TestBed injector" path="testing/src/app/welcome/welcome.component.spec.ts" region="inject-from-testbed" ></code-example>
 
@@ -334,7 +334,7 @@ For a use case in which `TestBed.inject()` does not work, see the [*Override com
 
 Here's the complete `beforeEach()`, using `TestBed.inject()`:
 
-这里是完成的 `beforeEach()` ，它使用了 `TestBed.inject()` ：
+这里是完成的 `beforeEach()`，它使用了 `TestBed.inject()` ：
 
 <code-example header="app/welcome/welcome.component.spec.ts" path="testing/src/app/welcome/welcome.component.spec.ts" region="setup"></code-example>
 
@@ -354,7 +354,7 @@ The second parameter to the Jasmine matcher (for example, `'expected name'`) is 
 If the expectation fails, Jasmine appends this label to the expectation failure message.
 In a spec with multiple expectations, it can help clarify what went wrong and which expectation failed.
 
-Jasmine 匹配器的第二个参数（比如 `'expected name'` ）是一个可选的失败标签。如果此期望失败，Jasmine 就会把这个标签贴到期望失败的消息中。在具有多个期望的测试规约中，它可以帮我们澄清出现了什么问题以及都有哪些期望失败了。
+Jasmine 匹配器的第二个参数（比如 `'expected name'`）是一个可选的失败标签。如果此期望失败，Jasmine 就会把这个标签贴到期望失败的消息中。在具有多个期望的测试规约中，它可以帮我们澄清出现了什么问题以及都有哪些期望失败了。
 
 </div>
 
@@ -373,7 +373,7 @@ The third test checks that the component displays the proper message when there 
 In this sample, the `AboutComponent` template hosts a `TwainComponent`.
 The `TwainComponent` displays Mark Twain quotes.
 
-在这个例子中，`AboutComponent` 模板托管了一个 `TwainComponent` 。`TwainComponent` 会显示马克·吐温的名言。
+在这个例子中，`AboutComponent` 模板托管了一个 `TwainComponent`。`TwainComponent` 会显示马克·吐温的名言。
 
 <code-example header="app/twain/twain.component.ts (template)" path="testing/src/app/twain/twain.component.ts" region="template" ></code-example>
 
@@ -383,13 +383,14 @@ The `TwainComponent` displays Mark Twain quotes.
 The value of the component's `quote` property passes through an `AsyncPipe`.
 That means the property returns either a `Promise` or an `Observable`.
 
-**注**：<br />组件的 `quote` 属性的值通过 `AsyncPipe` 传递。这意味着该属性会返回 `Promise` 或 `Observable` 。
+**注意**：<br />
+组件的 `quote` 属性的值通过 `AsyncPipe` 传递。这意味着该属性会返回 `Promise` 或 `Observable`。
 
 </div>
 
 In this example, the `TwainComponent.getQuote()` method tells you that the `quote` property returns an `Observable`.
 
-在这个例子中， `TwainComponent.getQuote()` 方法告诉你 `quote` 属性会返回一个 `Observable` 。
+在这个例子中，`TwainComponent.getQuote()` 方法告诉你 `quote` 属性会返回一个 `Observable`。
 
 <code-example header="app/twain/twain.component.ts (getQuote)" path="testing/src/app/twain/twain.component.ts" region="get-quote"></code-example>
 
@@ -401,7 +402,7 @@ The component starts the returned `Observable` with a placeholder value (`'...'`
 The `catchError` intercepts service errors, prepares an error message, and returns the placeholder value on the success channel.
 It must wait a tick to set the `errorMessage` in order to avoid updating that message twice in the same change detection cycle.
 
-`catchError` 会拦截服务错误，准备一条错误信息，并在流的成功通道上返回占位值。它必须等一拍（tick）才能设置 `errorMessage`，以免在同一个更改检测周期内更新此消息两次。
+`catchError` 会拦截服务错误，准备一条错误信息，并在流的成功通道上返回占位值。它必须等一拍（tick）才能设置 `errorMessage`，以免在同一个变更检测周期内更新此消息两次。
 
 These are all features you'll want to test.
 
@@ -451,7 +452,7 @@ A key advantage of a synchronous `Observable` is that you can often turn asynchr
 
 Because the spy result returns synchronously, the `getQuote()` method updates the message on screen immediately *after* the first change detection cycle during which Angular calls `ngOnInit`.
 
-当间谍的结果同步返回时， `getQuote()` 方法会在第一个更改检测周期（Angular 在这里调用 `ngOnInit`）*后*立即更新屏幕上的消息。
+当间谍的结果同步返回时，`getQuote()` 方法会在第一个变更检测周期（Angular 在这里调用 `ngOnInit`）*后*立即更新屏幕上的消息。
 
 You're not so lucky when testing the error path.
 Although the service spy will return an error synchronously, the component method calls `setTimeout()`.
@@ -482,7 +483,8 @@ The following test confirms the expected behavior when the service returns an `E
 **NOTE**: <br />
 The `it()` function receives an argument of the following form.
 
-**注**：<br />`it()` 函数会接收以下形式的参数。
+**注意**：<br />
+`it()` 函数会接收以下形式的参数。
 
 </div>
 
@@ -496,14 +498,14 @@ The `fakeAsync()` function enables a linear coding style by running the test bod
 The test body appears to be synchronous.
 There is no nested syntax (like a `Promise.then()`) to disrupt the flow of control.
 
-通过在一个特殊的 `fakeAsync test zone`（译注：Zone.js 的一个特例） 中运行测试体，`fakeAsync()` 函数可以启用线性编码风格。这个测试体看上去是同步的。没有像 `Promise.then()` 这样的嵌套语法来破坏控制流。
+通过在一个特殊的 `fakeAsync test zone`（译注：Zone.js 的一个特例）中运行测试体，`fakeAsync()` 函数可以启用线性编码风格。这个测试体看上去是同步的。没有像 `Promise.then()` 这样的嵌套语法来破坏控制流。
 
 <div class="alert is-helpful">
 
 Limitation: The `fakeAsync()` function won't work if the test body makes an `XMLHttpRequest` (XHR) call.
 XHR calls within a test are rare, but if you need to call XHR, see the [`waitForAsync()`](#waitForAsync) section.
 
-限制：如果测试体要进行 `XMLHttpRequest` （XHR）调用，则 `fakeAsync()` 函数无效。很少会需要在测试中进行 XHR 调用，但如果你确实要这么做，请参阅 [`waitForAsync()`](#waitForAsync) 部分。
+限制：如果测试体要进行 `XMLHttpRequest`（XHR）调用，则 `fakeAsync()` 函数无效。很少会需要在测试中进行 XHR 调用，但如果你确实要这么做，请参阅 [`waitForAsync()`](#waitForAsync) 部分。
 
 </div>
 
@@ -520,13 +522,13 @@ You do have to call [tick()](api/core/testing/tick) to advance the (virtual) clo
 Calling [tick()](api/core/testing/tick) simulates the passage of time until all pending asynchronous activities finish.
 In this case, it waits for the error handler's `setTimeout()`.
 
-调用 [tick()](api/core/testing/tick) 时会在所有挂起的异步活动完成之前模拟时间的流逝。在这种情况下，它会等待错误处理程序中的 `setTimeout()` 。
+调用 [tick()](api/core/testing/tick) 时会在所有挂起的异步活动完成之前模拟时间的流逝。在这种情况下，它会等待错误处理程序中的 `setTimeout()`。
 
 The [tick()](api/core/testing/tick) function accepts milliseconds and tickOptions as parameters, the millisecond (defaults to 0 if not provided) parameter represents how much the virtual clock advances.
 For example, if you have a `setTimeout(fn, 100)` in a `fakeAsync()` test, you need to use `tick(100)` to trigger the fn callback.
 The tickOptions is an optional parameter with a property called `processNewMacroTasksSynchronously` (defaults to true) that represents whether to invoke new generated macro tasks when ticking.
 
-[tick()](api/core/testing/tick) 函数接受毫秒数(milliseconds) 和 tick 选项(tickOptions) 作为参数，毫秒数（默认值为 0）参数表示虚拟时钟要前进多少。比如，如果你在 `fakeAsync()` 测试中有一个 `setTimeout(fn, 100)`，你就需要使用 `tick(100)` 来触发其 fn 回调。 tickOptions 是一个可选参数，它带有一个名为 `processNewMacroTasksSynchronously` 的属性（默认为 true），表示在 tick 时是否要调用新生成的宏任务。
+[tick()](api/core/testing/tick) 函数接受毫秒数(milliseconds) 和 tick 选项(tickOptions) 作为参数，毫秒数（默认值为 0）参数表示虚拟时钟要前进多少。比如，如果你在 `fakeAsync()` 测试中有一个 `setTimeout(fn, 100)`，你就需要使用 `tick(100)` 来触发其 fn 回调。tickOptions 是一个可选参数，它带有一个名为 `processNewMacroTasksSynchronously` 的属性（默认为 true），表示在 tick 时是否要调用新生成的宏任务。
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick"></code-example>
 
@@ -536,8 +538,6 @@ It's a companion to `fakeAsync()` and you can only call it within a `fakeAsync()
 [tick()](api/core/testing/tick) 函数是你用 `TestBed` 导入的 Angular 测试工具函数之一。它是 `fakeAsync()` 的伴生工具，你只能在 `fakeAsync()` 测试体内调用它。
 
 #### tickOptions
-
-#### 滴答选项
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-sync"></code-example>
 
@@ -569,7 +569,7 @@ Jasmine also provides a `clock` feature to mock dates.
 Angular automatically runs tests that are run after `jasmine.clock().install()` is called inside a `fakeAsync()` method until `jasmine.clock().uninstall()` is called.
 `fakeAsync()` is not needed and throws an error if nested.
 
-Jasmine 还为模拟日期提供了 `clock` 特性。而 Angular 会在 `jasmine.clock().install()` 于 `fakeAsync()` 方法内调用时自动运行这些测试。直到调用了 `jasmine.clock().uninstall()` 为止。 `fakeAsync()` 不是必须的，如果嵌套它就抛出错误。
+Jasmine 还为模拟日期提供了 `clock` 特性。而 Angular 会在 `jasmine.clock().install()` 于 `fakeAsync()` 方法内调用时自动运行这些测试。直到调用了 `jasmine.clock().uninstall()` 为止。`fakeAsync()` 不是必须的，如果嵌套它就抛出错误。
 
 By default, this feature is disabled.
 To enable it, set a global flag before importing `zone-testing`.
@@ -619,7 +619,7 @@ By default, `fakeAsync()` supports the following macro tasks.
 
 If you run other macro tasks such as `HTMLCanvasElement.toBlob()`, an *"Unknown macroTask scheduled in fake async test"* error is thrown.
 
-如果你运行其他宏任务，比如 `HTMLCanvasElement.toBlob()` ，就会抛出 *"Unknown macroTask scheduled in fake async test"* 错误。
+如果你运行其他宏任务，比如 `HTMLCanvasElement.toBlob()`，就会抛出 *"Unknown macroTask scheduled in fake async test"* 错误。
 
 <code-tabs>
     <code-pane header="src/app/shared/canvas.component.spec.ts (failing)" path="testing/src/app/shared/canvas.component.spec.ts" region="without-toBlob-macrotask"></code-pane>
@@ -719,7 +719,7 @@ The first quote hasn't arrived yet.
 To flush the first quote from the observable, you call [tick()](api/core/testing/tick).
 Then call `detectChanges()` to tell Angular to update the screen.
 
-要清除可观察对象中的第一句名言，你可以调用 [tick()](api/core/testing/tick) 。然后调用 `detectChanges()` 来告诉 Angular 更新屏幕。
+要清除可观察对象中的第一句名言，你可以调用 [tick()](api/core/testing/tick)。然后调用 `detectChanges()` 来告诉 Angular 更新屏幕。
 
 Then you can assert that the quote element displays the expected text.
 
@@ -762,7 +762,7 @@ When using an `intervalTimer()` such as `setInterval()` in `waitForAsync()`, rem
 The test must wait for the `getQuote()` observable to emit the next quote.
 Instead of calling [tick()](api/core/testing/tick), it calls `fixture.whenStable()`.
 
-测试必须等待 `getQuote()` 可观察对象发出下一句名言。它并没有调用 [tick()](api/core/testing/tick)，而是调用了 `fixture.whenStable()` 。
+测试必须等待 `getQuote()` 可观察对象发出下一句名言。它并没有调用 [tick()](api/core/testing/tick)，而是调用了 `fixture.whenStable()`。
 
 The `fixture.whenStable()` returns a promise that resolves when the JavaScript engine's task queue becomes empty.
 In this example, the task queue becomes empty when the observable emits the first quote.
@@ -776,8 +776,6 @@ The test resumes within the promise callback, which calls `detectChanges()` to u
 <a id="jasmine-done"></a>
 
 #### Jasmine `done()`
-
-#### 茉莉花 `done()`
 
 While the `waitForAsync()` and `fakeAsync()` functions greatly simplify Angular asynchronous testing, you can still fall back to the traditional technique and pass `it` a function that takes a [`done` callback](https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support).
 
@@ -861,13 +859,13 @@ Notice that the Jasmine test is synchronous.
 There's no `fakeAsync()`.
 Marble testing uses a test scheduler to simulate the passage of time in a synchronous test.
 
-注意，这个 Jasmine 测试是同步的。没有 `fakeAsync()`。 弹珠测试使用测试调度程序（scheduler）来模拟同步测试中的时间流逝。
+注意，这个 Jasmine 测试是同步的。没有 `fakeAsync()`。弹珠测试使用测试调度程序（scheduler）来模拟同步测试中的时间流逝。
 
 The beauty of marble testing is in the visual definition of the observable streams.
 This test defines a [*cold* observable](#cold-observable) that waits three [frames](#marble-frame) (`---`), emits a value (`x`), and completes (`|`).
 In the second argument you map the value marker (`x`) to the emitted value (`testQuote`).
 
-弹珠测试的美妙之处在于对可观察对象流的视觉定义。这个测试定义了一个[*冷*可观察对象](#cold-observable)，它等待三[帧](#marble-frame)（ `---` ），发出一个值（ `x` ），并完成（ `|` ）。在第二个参数中，你把值标记（ `x` ）映射到了发出的值（ `testQuote` ）。
+弹珠测试的美妙之处在于对可观察对象流的视觉定义。这个测试定义了一个[*冷*可观察对象](#cold-observable)，它等待三[帧](#marble-frame)（`---`），发出一个值（`x`），并完成（`|`）。在第二个参数中，你把值标记（`x`）映射到了发出的值（`testQuote`）。
 
 <code-example path="testing/src/app/twain/twain.component.marbles.spec.ts" region="test-quote-marbles"></code-example>
 
@@ -920,7 +918,7 @@ The second argument is null because the observable never emits a value.
 A *marble frame* is a virtual unit of testing time.
 Each symbol (`-`, `x`, `|`, `#`) marks the passing of one frame.
 
-*弹珠帧*是测试时间线上的虚拟单位。每个符号（ `-` ， `x` ， `|` ， `#` ）都表示经过了一帧。
+*弹珠帧*是测试时间线上的虚拟单位。每个符号（`-`，`x`，`|`，`#`）都表示经过了一帧。
 
 <a id="cold-observable"></a>
 
@@ -933,7 +931,7 @@ All [*HttpClient*](guide/http) methods return cold observables.
 A *hot* observable is already producing values *before* you subscribe to it.
 The [`Router.events`](api/router/Router#events) observable, which reports router activity, is a *hot* observable.
 
-而*热*可观察对象在订阅它*之前*就已经在生成了这些值。用来报告路由器活动的 [`Router.events`](api/router/Router#events) 可观察对象就是一种*热*可观察对象。
+而*热的*可观察对象在订阅它*之前*就已经在生成了这些值。用来报告路由器活动的 [`Router.events`](api/router/Router#events) 可观察对象就是一种*热*可观察对象。
 
 RxJS marble testing is a rich subject, beyond the scope of this guide.
 Learn about it on the web, starting with the [official documentation](https://rxjs.dev/guide/testing/marble-testing).
@@ -1007,7 +1005,7 @@ The `DashboardComponent` depends on the Angular router and the `HeroService`.
 You'd probably have to replace them both with test doubles, which is a lot of work.
 The router seems particularly challenging.
 
-`DashboardComponent` 依赖于 Angular 的路由器和 `HeroService` 。你可能不得不用测试替身来代替它们，这有很多工作。路由器看上去特别有挑战性。
+`DashboardComponent` 依赖于 Angular 的路由器和 `HeroService`。你可能不得不用测试替身来代替它们，这有很多工作。路由器看上去特别有挑战性。
 
 <div class="alert is-helpful">
 
@@ -1019,7 +1017,7 @@ The [following discussion](#routing-component) covers testing components that re
 
 The immediate goal is to test the `DashboardHeroComponent`, not the `DashboardComponent`, so, try the second and third options.
 
-当前的目标是测试 `DashboardHeroComponent` ，而不是 `DashboardComponent` ，所以试试第二个和第三个选项。
+当前的目标是测试 `DashboardHeroComponent`，而不是 `DashboardComponent`，所以试试第二个和第三个选项。
 
 <a id="dashboard-standalone"></a>
 
@@ -1035,7 +1033,7 @@ Here's the meat of the spec file setup.
 
 Notice how the setup code assigns a test hero (`expectedHero`) to the component's `hero` property, emulating the way the `DashboardComponent` would set it using the property binding in its repeater.
 
-注意这些设置代码如何把一个测试英雄（ `expectedHero` ）赋值给组件的 `hero` 属性的，它模仿了 `DashboardComponent` 在其复写器中通过属性绑定来设置它的方式。
+注意这些设置代码如何把一个测试英雄（`expectedHero`）赋值给组件的 `hero` 属性的，它模仿了 `DashboardComponent` 在其复写器中通过属性绑定来设置它的方式。
 
 The following test verifies that the hero name is propagated to the template using a binding.
 
@@ -1068,7 +1066,7 @@ Clicking the hero should raise a `selected` event that the host component (`Dash
 The component's `selected` property returns an `EventEmitter`, which looks like an RxJS synchronous `Observable` to consumers.
 The test subscribes to it *explicitly* just as the host component does *implicitly*.
 
-该组件的 `selected` 属性给消费者返回了一个 `EventEmitter`，它看起来像是 RxJS 的同步 `Observable`。 该测试只有在宿主组件*隐式*触发时才需要*显式*订阅它。
+该组件的 `selected` 属性给消费者返回了一个 `EventEmitter`，它看起来像是 RxJS 的同步 `Observable`。该测试只有在宿主组件*隐式*触发时才需要*显式*订阅它。
 
 If the component behaves as expected, clicking the hero's element should tell the component's `selected` property to emit the `hero` object.
 
@@ -1090,12 +1088,12 @@ It has Angular properties and methods that abstract interaction with the native 
 This test calls the `DebugElement.triggerEventHandler` with the "click" event name.
 The "click" event binding responds by calling `DashboardHeroComponent.click()`.
 
-它有一些用于抽象与原生元素交互的 Angular 属性和方法。 这个测试会使用事件名称 `click` 来调用 `DebugElement.triggerEventHandler`。 `click` 的事件绑定到了 `DashboardHeroComponent.click()`。
+它有一些用于抽象与原生元素交互的 Angular 属性和方法。这个测试会使用事件名称 `click` 来调用 `DebugElement.triggerEventHandler`。`click` 的事件绑定到了 `DashboardHeroComponent.click()`。
 
 The Angular `DebugElement.triggerEventHandler` can raise *any data-bound event* by its *event name*.
 The second parameter is the event object passed to the handler.
 
-Angular 的 `DebugElement.triggerEventHandler` 可以用**事件的名字**触发**任何数据绑定事件**。 第二个参数是传给事件处理器的事件对象。
+Angular 的 `DebugElement.triggerEventHandler` 可以用**事件的名字**触发**任何数据绑定事件**。第二个参数是传给事件处理器的事件对象。
 
 The test triggered a "click" event.
 
@@ -1113,7 +1111,7 @@ Other handlers are less forgiving.
 For example, the `RouterLink` directive expects an object with a `button` property that identifies which mouse button (if any) was pressed during the click.
 The `RouterLink` directive throws an error if the event object is missing.
 
-其它处理器的要求比较严格。比如，`RouterLink` 指令期望一个带有 `button` 属性的对象，该属性用于指出点击时按下的是哪个鼠标按钮。 如果不给出这个事件对象，`RouterLink` 指令就会抛出一个错误。
+其它处理器的要求比较严格。比如，`RouterLink` 指令期望一个带有 `button` 属性的对象，该属性用于指出点击时按下的是哪个鼠标按钮。如果不给出这个事件对象，`RouterLink` 指令就会抛出一个错误。
 
 </div>
 
@@ -1147,9 +1145,7 @@ The first parameter is the *element-to-click*.
 If you want, pass a custom event object as the second parameter.
 The default is a (partial) [left-button mouse event object](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) accepted by many handlers including the `RouterLink` directive.
 
-第一个参数是**用来点击的元素**。如果你愿意，可以将自定义的事件对象传给第二个参数。
-默认的是（局部的）[鼠标左键事件对象](https://developer.mozilla.org/docs/Web/API/MouseEvent/button)，
-它被许多事件处理器接受，包括 `RouterLink` 指令。
+第一个参数是**用来点击的元素**。如果你愿意，可以将自定义的事件对象传给第二个参数。 默认的是（局部的）[鼠标左键事件对象](https://developer.mozilla.org/docs/Web/API/MouseEvent/button)，它被许多事件处理器接受，包括 `RouterLink` 指令。
 
 <div class="alert is-important">
 
@@ -1158,7 +1154,7 @@ It's a function defined in *this guide's sample code*.
 All of the sample tests use it.
 If you like it, add it to your own collection of helpers.
 
-`click()` 辅助函数**不是**Angular 测试工具之一。 它是在**本章的例子代码**中定义的函数方法，被所有测试例子所用。 如果你喜欢它，将它添加到你自己的辅助函数集。
+`click()` 辅助函数**不是**Angular 测试工具之一。它是在**本章的例子代码**中定义的函数方法，被所有测试例子所用。如果你喜欢它，将它添加到你自己的辅助函数集。
 
 </div>
 
@@ -1177,12 +1173,12 @@ Here's the previous test, rewritten using the click helper.
 The previous tests played the role of the host `DashboardComponent` themselves.
 But does the `DashboardHeroComponent` work correctly when properly data-bound to a host component?
 
-前面的这些测试都是自己扮演宿主元素 `DashboardComponent` 的角色。 但是当 `DashboardHeroComponent` 真的绑定到某个宿主元素时还能正常工作吗？
+前面的这些测试都是自己扮演宿主元素 `DashboardComponent` 的角色。但是当 `DashboardHeroComponent` 真的绑定到某个宿主元素时还能正常工作吗？
 
 You could test with the actual `DashboardComponent`.
 But doing so could require a lot of setup, especially when its template features an `*ngFor` repeater, other components, layout HTML, additional bindings, a constructor that injects multiple services, and it starts interacting with those services right away.
 
-固然，你也可以测试真实的 `DashboardComponent`。 但要想这么做需要做很多准备工作，特别是它的模板中使用了某些特性，如 `*ngFor`、 其它组件、布局 HTML、附加绑定、注入了多个服务的构造函数、如何用正确的方式与那些服务交互等。
+固然，你也可以测试真实的 `DashboardComponent`。但要想这么做需要做很多准备工作，特别是它的模板中使用了某些特性，如 `*ngFor`、 其它组件、布局 HTML、附加绑定、注入了多个服务的构造函数、如何用正确的方式与那些服务交互等。
 
 Imagine the effort to disable these distractions, just to prove a point that can be made satisfactorily with a *test host* like this one:
 
@@ -1197,7 +1193,7 @@ This test host binds to `DashboardHeroComponent` as the `DashboardComponent` wou
 The test host sets the component's `hero` input property with its test hero.
 It binds the component's `selected` event with its `onSelected` handler, which records the emitted hero in its `selectedHero` property.
 
-这个测试宿主使用其测试用的英雄设置了组件的输入属性 `hero`。 它使用 `onSelected` 事件处理器绑定了组件的 `selected` 事件，其中把事件中发出的英雄记录到了 `selectedHero` 属性中。
+这个测试宿主使用其测试用的英雄设置了组件的输入属性 `hero`。它使用 `onSelected` 事件处理器绑定了组件的 `selected` 事件，其中把事件中发出的英雄记录到了 `selectedHero` 属性中。
 
 Later, the tests will be able to check `selectedHero` to verify that the `DashboardHeroComponent.selected` event emitted the expected hero.
 
@@ -1232,7 +1228,7 @@ The `createComponent` returns a `fixture` that holds an instance of `TestHostCom
 Creating the `TestHostComponent` has the side-effect of creating a `DashboardHeroComponent` because the latter appears within the template of the former.
 The query for the hero element (`heroEl`) still finds it in the test DOM, albeit at greater depth in the element tree than before.
 
-当然，创建 `TestHostComponent` 有创建 `DashboardHeroComponent` 的副作用，因为后者出现在前者的模板中。 英雄元素（`heroEl`)的查询语句仍然可以在测试 DOM 中找到它，尽管元素树比以前更深。
+当然，创建 `TestHostComponent` 有创建 `DashboardHeroComponent` 的副作用，因为后者出现在前者的模板中。英雄元素（`heroEl`)的查询语句仍然可以在测试 DOM 中找到它，尽管元素树比以前更深。
 
 The tests themselves are almost identical to the stand-alone version:
 
@@ -1254,12 +1250,12 @@ It confirms that the selected `DashboardHeroComponent` hero really does find its
 A *routing component* is a component that tells the `Router` to navigate to another component.
 The `DashboardComponent` is a *routing component* because the user can navigate to the `HeroDetailComponent` by clicking on one of the *hero buttons* on the dashboard.
 
-所谓*路由组件*就是指会要求 `Router` 导航到其它组件的组件。 `DashboardComponent` 就是一个*路由组件*，因为用户可以通过点击仪表盘中的某个*英雄按钮*来导航到 `HeroDetailComponent`。
+所谓*路由组件*就是指会要求 `Router` 导航到其它组件的组件。`DashboardComponent` 就是一个*路由组件*，因为用户可以通过点击仪表盘中的某个*英雄按钮*来导航到 `HeroDetailComponent`。
 
 Routing is pretty complicated.
 Testing the `DashboardComponent` seemed daunting in part because it involves the `Router`, which it injects together with the `HeroService`.
 
-路由确实很复杂。 测试 `DashboardComponent` 看上去有点令人生畏，因为它牵扯到和 `HeroService` 一起注入进来的 `Router`。
+路由确实很复杂。测试 `DashboardComponent` 看上去有点令人生畏，因为它牵扯到和 `HeroService` 一起注入进来的 `Router`。
 
 <code-example header="app/dashboard/dashboard.component.ts (constructor)" path="testing/src/app/dashboard/dashboard.component.ts" region="ctor"></code-example>
 
@@ -1279,7 +1275,7 @@ Fortunately, not in this case because the `DashboardComponent` isn't doing much 
 This is often the case with *routing components*.
 As a rule you test the component, not the router, and care only if the component navigates with the right address under the given conditions.
 
-这是*路由组件*中的通例。 一般来说，你应该测试组件而不是路由器，应该只关心组件有没有根据给定的条件导航到正确的地址。
+这是*路由组件*中的通例。一般来说，你应该测试组件而不是路由器，应该只关心组件有没有根据给定的条件导航到正确的地址。
 
 Providing a router spy for *this component* test suite happens to be as easy as providing a `HeroService` spy.
 
@@ -1303,17 +1299,17 @@ A *routed component* is the destination of a `Router` navigation.
 It can be trickier to test, especially when the route to the component *includes parameters*.
 The `HeroDetailComponent` is a *routed component* that is the destination of such a route.
 
-*路由目标组件*是指 `Router` 导航到的目标。 它测试起来可能很复杂，特别是当路由到的这个组件*包含参数*的时候。 `HeroDetailComponent` 就是一个*路由目标组件*，它是某个路由定义指向的目标。
+*路由目标组件*是指 `Router` 导航到的目标。它测试起来可能很复杂，特别是当路由到的这个组件*包含参数*的时候。`HeroDetailComponent` 就是一个*路由目标组件*，它是某个路由定义指向的目标。
 
 When a user clicks a *Dashboard* hero, the `DashboardComponent` tells the `Router` to navigate to `heroes/:id`.
 The `:id` is a route parameter whose value is the `id` of the hero to edit.
 
-当用户点击*仪表盘*中的英雄时，`DashboardComponent` 会要求 `Router` 导航到 `heroes/:id`。 `:id` 是一个路由参数，它的值就是所要编辑的英雄的 `id`。
+当用户点击*仪表盘*中的英雄时，`DashboardComponent` 会要求 `Router` 导航到 `heroes/:id`。`:id` 是一个路由参数，它的值就是所要编辑的英雄的 `id`。
 
 The `Router` matches that URL to a route to the `HeroDetailComponent`.
 It creates an `ActivatedRoute` object with the routing information and injects it into a new instance of the `HeroDetailComponent`.
 
-该 `Router` 会根据那个 URL 匹配到一个指向 `HeroDetailComponent` 的路由。 它会创建一个带有路由信息的 `ActivatedRoute` 对象，并把它注入到一个 `HeroDetailComponent` 的新实例中。
+该 `Router` 会根据那个 URL 匹配到一个指向 `HeroDetailComponent` 的路由。它会创建一个带有路由信息的 `ActivatedRoute` 对象，并把它注入到一个 `HeroDetailComponent` 的新实例中。
 
 Here's the `HeroDetailComponent` constructor:
 
@@ -1324,12 +1320,12 @@ Here's the `HeroDetailComponent` constructor:
 The `HeroDetail` component needs the `id` parameter so it can fetch the corresponding hero using the `HeroDetailService`.
 The component has to get the `id` from the `ActivatedRoute.paramMap` property which is an `Observable`.
 
-`HeroDetailComponent` 组件需要一个 `id` 参数，以便通过 `HeroDetailService` 获取相应的英雄。 该组件只能从 `ActivatedRoute.paramMap` 属性中获取这个 `id`，这个属性是一个 `Observable`。
+`HeroDetailComponent` 组件需要一个 `id` 参数，以便通过 `HeroDetailService` 获取相应的英雄。该组件只能从 `ActivatedRoute.paramMap` 属性中获取这个 `id`，这个属性是一个 `Observable`。
 
 It can't just reference the `id` property of the `ActivatedRoute.paramMap`.
 The component has to *subscribe* to the `ActivatedRoute.paramMap` observable and be prepared for the `id` to change during its lifetime.
 
-它不能仅仅引用 `ActivatedRoute.paramMap` 的 `id` 属性。 该组件不得不*订阅* `ActivatedRoute.paramMap` 这个可观察对象，要做好它在生命周期中随时会发生变化的准备。
+它不能仅仅引用 `ActivatedRoute.paramMap` 的 `id` 属性。该组件不得不*订阅* `ActivatedRoute.paramMap` 这个可观察对象，要做好它在生命周期中随时会发生变化的准备。
 
 <code-example header="app/hero/hero-detail.component.ts (ngOnInit)" path="testing/src/app/hero/hero-detail.component.ts" region="ng-on-init"></code-example>
 
@@ -1380,7 +1376,7 @@ The following `ActivatedRouteStub` class serves as a test double for `ActivatedR
 Consider placing such helpers in a `testing` folder sibling to the `app` folder.
 This sample puts `ActivatedRouteStub` in `testing/activated-route-stub.ts`.
 
-考虑把这类辅助函数放进一个紧邻 `app` 文件夹的 `testing` 文件夹。 这个例子把 `ActivatedRouteStub` 放在了 `testing/activated-route-stub.ts` 中。
+考虑把这类辅助函数放进一个紧邻 `app` 文件夹的 `testing` 文件夹。这个例子把 `ActivatedRouteStub` 放在了 `testing/activated-route-stub.ts` 中。
 
 <div class="alert is-helpful">
 
@@ -1407,7 +1403,7 @@ Here's a test demonstrating the component's behavior when the observed `id` refe
 In the following section, the `createComponent()` method and `page` object are discussed.
 Rely on your intuition for now.
 
-稍后会对 `createComponent()` 方法和 `page` 对象进行讨论。 不过目前，你只要凭直觉来理解就行了。
+稍后会对 `createComponent()` 方法和 `page` 对象进行讨论。不过目前，你只要凭直觉来理解就行了。
 
 </div>
 
@@ -1428,13 +1424,13 @@ This test expects the component to try to navigate to the `HeroListComponent`.
 While this application doesn't have a route to the `HeroDetailComponent` that omits the `id` parameter, it might add such a route someday.
 The component should do something reasonable when there is no `id`.
 
-虽然本应用没有在缺少 `id` 参数的时候，继续导航到 `HeroDetailComponent` 的路由，但是，将来它可能会添加这样的路由。 当没有 `id` 时，该组件应该作出合理的反应。
+虽然本应用没有在缺少 `id` 参数的时候，继续导航到 `HeroDetailComponent` 的路由，但是，将来它可能会添加这样的路由。当没有 `id` 时，该组件应该作出合理的反应。
 
 In this implementation, the component should create and display a new hero.
 New heroes have `id=0` and a blank `name`.
 This test confirms that the component behaves as expected:
 
-在本例中，组件应该创建和显示新英雄。 新英雄的 `id` 为零，`name` 为空。本测试程序确认组件是按照预期的这样做的：
+在本例中，组件应该创建和显示新英雄。新英雄的 `id` 为零，`name` 为空。本测试程序确认组件是按照预期的这样做的：
 
 <code-example header="app/hero/hero-detail.component.spec.ts (no id)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="route-no-id" ></code-example>
 
@@ -1487,7 +1483,7 @@ That's too much effort just to answer a few simple questions about links.
 This section describes two techniques for minimizing the setup.
 Use them, alone or in combination, to stay focused on testing the primary component.
 
-本节会讲减少此类准备工作的两项技术。 单独使用或组合使用它们，可以让这些测试聚焦于要测试的主要组件上。
+本节会讲减少此类准备工作的两项技术。单独使用或组合使用它们，可以让这些测试聚焦于要测试的主要组件上。
 
 <a id="stub-component"></a>
 
@@ -1545,7 +1541,7 @@ The compiler recognizes the `<app-root>` element and the `routerLink` attribute 
 But the compiler won't throw an error when it encounters `<app-banner>`, `<app-welcome>`, or `<router-outlet>`.
 It simply renders them as empty tags and the browser ignores them.
 
-但编译器在遇到 `<app-banner>`、`<app-welcome>` 或 `<router-outlet>` 时不会报错。 它只会把它们渲染成空白标签，而浏览器会忽略这些标签。
+但编译器在遇到 `<app-banner>`、`<app-welcome>` 或 `<router-outlet>` 时不会报错。它只会把它们渲染成空白标签，而浏览器会忽略这些标签。
 
 You no longer need the stub components.
 
@@ -1566,12 +1562,12 @@ The `NO_ERRORS_SCHEMA` approach is the easier of the two but don't overuse it.
 The `NO_ERRORS_SCHEMA` also prevents the compiler from telling you about the missing components and attributes that you omitted inadvertently or misspelled.
 You could waste hours chasing phantom bugs that the compiler would have caught in an instant.
 
-`NO_ERRORS_SCHEMA` 还会阻止编译器告诉你因为的疏忽或拼写错误而缺失的组件和属性。 你如果人工找出这些 bug 可能要浪费几个小时，但编译器可以立即捕获它们。
+`NO_ERRORS_SCHEMA` 还会阻止编译器告诉你因为的疏忽或拼写错误而缺失的组件和属性。你如果人工找出这些 bug 可能要浪费几个小时，但编译器可以立即捕获它们。
 
 The *stub component* approach has another advantage.
 While the stubs in *this* example were empty, you could give them stripped-down templates and classes if your tests need to interact with them in some way.
 
-*桩组件*方式还有其它优点。 虽然*这个*例子中的桩是空的，但你如果想要和它们用某种形式互动，也可以给它们一些裁剪过的模板和类。
+*桩组件*方式还有其它优点。虽然*这个*例子中的桩是空的，但你如果想要和它们用某种形式互动，也可以给它们一些裁剪过的模板和类。
 
 In practice you will combine the two techniques in the same setup, as seen in this example.
 
@@ -1592,7 +1588,7 @@ Angular 编译器会为 `<app-banner>` 元素创建 `BannerComponentStub`，并�
 The real `RouterLinkDirective` is quite complicated and entangled with other components and directives of the `RouterModule`.
 It requires challenging setup to mock and use in tests.
 
-真实的 `RouterLinkDirective` 太复杂了，而且与 `RouterModule` 中的其它组件和指令有着千丝万缕的联系。 要在准备阶段 Mock 它以及在测试中使用它具有一定的挑战性。
+真实的 `RouterLinkDirective` 太复杂了，而且与 `RouterModule` 中的其它组件和指令有着千丝万缕的联系。要在准备阶段 Mock 它以及在测试中使用它具有一定的挑战性。
 
 The `RouterLinkDirectiveStub` in this sample code replaces the real directive with an alternative version designed to validate the kind of anchor tag wiring seen in the `AppComponent` template.
 
@@ -1611,7 +1607,7 @@ The `HostListener` wires the click event of the host element (the `<a>` anchor e
 Clicking the anchor should trigger the `onClick()` method, which sets the stub's telltale `navigatedTo` property.
 Tests inspect `navigatedTo` to confirm that clicking the anchor sets the expected route definition.
 
-点击这个链接应该触发 `onClick()` 方法，其中会设置该桩指令中的警示器属性 `navigatedTo`。 测试中检查 `navigatedTo` 以确认点击该链接确实如预期的那样根据路由定义设置了该属性。
+点击这个链接应该触发 `onClick()` 方法，其中会设置该桩指令中的警示器属性 `navigatedTo`。测试中检查 `navigatedTo` 以确认点击该链接确实如预期的那样根据路由定义设置了该属性。
 
 <div class="alert is-helpful">
 
@@ -1670,13 +1666,13 @@ The "click" test *in this example* is misleading.
 It tests the `RouterLinkDirectiveStub` rather than the *component*.
 This is a common failing of directive stubs.
 
-其实*这个例子中*的“click”测试误入歧途了。 它测试的重点其实是 `RouterLinkDirectiveStub`，而不是该组件。 这是写桩指令时常见的错误。
+其实*这个例子中*的“click”测试误入歧途了。它测试的重点其实是 `RouterLinkDirectiveStub`，而不是该组件。这是写桩指令时常见的错误。
 
 It has a legitimate purpose in this guide.
 It demonstrates how to find a `RouterLink` element, click it, and inspect a result, without engaging the full router machinery.
 This is a skill you might need to test a more sophisticated component, one that changes the display, re-calculates parameters, or re-arranges navigation options when the user clicks the link.
 
-在本章中，它有存在的必要。 它演示了如何在不涉及完整路由器机制的情况下，如何找到 `RouterLink` 元素、点击它并检查结果。 要测试更复杂的组件，你可能需要具备这样的能力，能改变视图和重新计算参数，或者当用户点击链接时，有能力重新安排导航选项。
+在本章中，它有存在的必要。它演示了如何在不涉及完整路由器机制的情况下，如何找到 `RouterLink` 元素、点击它并检查结果。要测试更复杂的组件，你可能需要具备这样的能力，能改变视图和重新计算参数，或者当用户点击链接时，有能力重新安排导航选项。
 
 </div>
 
@@ -1689,7 +1685,7 @@ This is a skill you might need to test a more sophisticated component, one that 
 Stubbed `RouterLink` tests can confirm that a component with links and an outlet is setup properly, that the component has the links it should have, and that they are all pointing in the expected direction.
 These tests do not concern whether the application will succeed in navigating to the target component when the user clicks a link.
 
-用 `RouterLink` 的桩指令进行测试可以确认带有链接和 outlet 的组件的设置的正确性，确认组件有应该有的链接，确认它们都指向了正确的方向。 这些测试程序不关心用户点击链接时，也不关心应用是否会成功的导航到目标组件。
+用 `RouterLink` 的桩指令进行测试可以确认带有链接和 outlet 的组件的设置的正确性，确认组件有应该有的链接，确认它们都指向了正确的方向。这些测试程序不关心用户点击链接时，也不关心应用是否会成功的导航到目标组件。
 
 Stubbing the RouterLink and RouterOutlet is the best option for such limited testing goals.
 Relying on the real router would make them brittle.
@@ -1697,7 +1693,7 @@ They could fail for reasons unrelated to the component.
 For example, a navigation guard could prevent an unauthorized user from visiting the `HeroListComponent`.
 That's not the fault of the `AppComponent` and no change to that component could cure the failed test.
 
-对于这些有限的测试目标，使用 RouterLink 桩指令和 RouterOutlet 桩组件 是最佳选择。 依靠真正的路由器会让它们很脆弱。 它们可能因为与组件无关的原因而失败。 比如，一个导航守卫可能防止没有授权的用户访问 `HeroListComponent`。 这并不是 `AppComponent` 的过错，并且无论该组件怎么改变都无法修复这个失败的测试程序。
+对于这些有限的测试目标，使用 RouterLink 桩指令和 RouterOutlet 桩组件 是最佳选择。依靠真正的路由器会让它们很脆弱。它们可能因为与组件无关的原因而失败。比如，一个导航守卫可能防止没有授权的用户访问 `HeroListComponent`。这并不是 `AppComponent` 的过错，并且无论该组件怎么改变都无法修复这个失败的测试程序。
 
 A *different* battery of tests can explore whether the application navigates as expected in the presence of conditions that influence guards such as whether the user is authenticated and authorized.
 
@@ -1785,8 +1781,7 @@ A `createComponent` method creates a `page` object and fills in the blanks once 
 The [`HeroDetailComponent` tests](#tests-w-test-double) in an earlier section demonstrate how `createComponent` and `page` keep the tests short and *on message*.
 There are no distractions: no waiting for promises to resolve and no searching the DOM for element values to compare.
 
-前面小节中的 [`HeroDetailComponent` 测试](#tests-w-test-double)示范了如何 `createComponent`，而 `page` 让这些测试保持简短而富有表达力。
-而且还不用分心：不用等待承诺被解析，不必在 DOM 中找出元素的值才能进行比较。
+前面小节中的 [`HeroDetailComponent` 测试](#tests-w-test-double)示范了如何 `createComponent`，而 `page` 让这些测试保持简短而富有表达力。 而且还不用分心：不用等待承诺被解析，不必在 DOM 中找出元素的值才能进行比较。
 
 Here are a few more `HeroDetailComponent` tests to reinforce the point.
 
@@ -1835,12 +1830,12 @@ The test fails when the `TestBed` tries to create the component.
 Recall that the application hasn't been compiled.
 So when you call `createComponent()`, the `TestBed` compiles implicitly.
 
-回想一下，这个应用从未编译过。 所以当你调用 `createComponent()` 的时候，`TestBed` 就会进行隐式编译。
+回想一下，这个应用从未编译过。所以当你调用 `createComponent()` 的时候，`TestBed` 就会进行隐式编译。
 
 That's not a problem when the source code is in memory.
 But the `BannerComponent` requires external files that the compiler must read from the file system, an inherently *asynchronous* operation.
 
-当它的源码都在内存中的时候，这样做没问题。 不过 `BannerComponent` 需要一些外部文件，编译时必须从文件系统中读取它，而这是一个天生的*异步*操作。
+当它的源码都在内存中的时候，这样做没问题。不过 `BannerComponent` 需要一些外部文件，编译时必须从文件系统中读取它，而这是一个天生的*异步*操作。
 
 If the `TestBed` were allowed to continue, the tests would run and fail mysteriously before the compiler could finished.
 
@@ -1902,7 +1897,7 @@ In this example, the `BannerComponent` is the only component to compile.
 Other examples configure the testing module with multiple components and might import application modules that hold yet more components.
 Any of them could require external files.
 
-在这个例子中，`BannerComponent` 是仅有的待编译组件。 其它例子中可能会使用多个组件来配置测试模块，并且可能引入某些具有其它组件的应用模块。 它们中的任何一个都可能需要外部文件。
+在这个例子中，`BannerComponent` 是仅有的待编译组件。其它例子中可能会使用多个组件来配置测试模块，并且可能引入某些具有其它组件的应用模块。它们中的任何一个都可能需要外部文件。
 
 The `TestBed.compileComponents` method asynchronously compiles all components configured in the testing module.
 
@@ -1920,7 +1915,7 @@ Calling `compileComponents()` closes the current `TestBed` instance to further c
 You cannot call any more `TestBed` configuration methods, not `configureTestingModule()` nor any of the `override...` methods.
 The `TestBed` throws an error if you try.
 
-调用 `compileComponents()` 会关闭当前的 `TestBed` 实例，不再允许进行配置。 你不能再调用任何 `TestBed` 中的配置方法，既不能调 `configureTestingModule()`，也不能调用任何 `override...` 方法。如果你试图这么做，`TestBed` 就会抛出错误。
+调用 `compileComponents()` 会关闭当前的 `TestBed` 实例，不再允许进行配置。你不能再调用任何 `TestBed` 中的配置方法，既不能调 `configureTestingModule()`，也不能调用任何 `override...` 方法。如果你试图这么做，`TestBed` 就会抛出错误。
 
 Make `compileComponents()` the last step before calling `TestBed.createComponent()`.
 
@@ -1932,7 +1927,7 @@ Make `compileComponents()` the last step before calling `TestBed.createComponent
 
 The second, synchronous `beforeEach()` contains the remaining setup steps, which include creating the component and querying for elements to inspect.
 
-第二个同步 `beforeEach()` 的例子包含剩下的准备步骤， 包括创建组件和查询那些要检查的元素。
+第二个同步 `beforeEach()` 的例子包含剩下的准备步骤，包括创建组件和查询那些要检查的元素。
 
 <code-example header="app/banner/banner-external.component.spec.ts (synchronous beforeEach)" path="testing/src/app/banner/banner-external.component.spec.ts" region="sync-before-each"></code-example>
 
@@ -1986,7 +1981,7 @@ The `DashboardComponent` is simple.
 It needs no help.
 But more complex components often depend on other components, directives, pipes, and providers and these must be added to the testing module too.
 
-`DashbaordComponent` 非常简单。它不需要帮助。 但是更加复杂的组件通常依赖其它组件、指令、管道和提供者， 所以这些必须也被添加到测试模块中。
+`DashbaordComponent` 非常简单。它不需要帮助。但是更加复杂的组件通常依赖其它组件、指令、管道和提供者，所以这些必须也被添加到测试模块中。
 
 Fortunately, the `TestBed.configureTestingModule` parameter parallels the metadata passed to the `@NgModule` decorator which means you can also specify `providers` and `imports`.
 
@@ -1995,7 +1990,7 @@ Fortunately, the `TestBed.configureTestingModule` parameter parallels the metada
 The `HeroDetailComponent` requires a lot of help despite its small size and simple construction.
 In addition to the support it receives from the default testing module `CommonModule`, it needs:
 
-虽然 `HeroDetailComponent` 很小，结构也很简单，但是它需要很多帮助。 除了从默认测试模块 `CommonModule` 中获得的支持，它还需要：
+虽然 `HeroDetailComponent` 很小，结构也很简单，但是它需要很多帮助。除了从默认测试模块 `CommonModule` 中获得的支持，它还需要：
 
 * `NgModel` and friends in the `FormsModule` to enable two-way data binding
 
@@ -2058,7 +2053,7 @@ It's a bit tighter and smaller, with fewer import statements (not shown).
 The `HeroDetailComponent` is part of the `HeroModule` [Feature Module](guide/feature-modules) that aggregates more of the interdependent pieces including the `SharedModule`.
 Try a test configuration that imports the `HeroModule` like this one:
 
-`HeroDetailComponent` 是 `HeroModule` 这个[特性模块](guide/feature-modules)的一部分，它聚合了更多相互依赖的片段，包括 `SharedModule`。 试试下面这个导入了 `HeroModule` 的测试配置：
+`HeroDetailComponent` 是 `HeroModule` 这个[特性模块](guide/feature-modules)的一部分，它聚合了更多相互依赖的片段，包括 `SharedModule`。试试下面这个导入了 `HeroModule` 的测试配置：
 
 <code-example header="app/hero/hero-detail.component.spec.ts (HeroModule setup)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="setup-hero-module"></code-example>
 
@@ -2096,12 +2091,12 @@ It's not possible to stub the component's `HeroDetailService` in the `providers`
 Those are providers for the *testing module*, not the component.
 They prepare the dependency injector at the *fixture level*.
 
-在 `TestBed.configureTestingModule` 的 `providers` 中 stub 伪造组件的 `HeroDetailService` 是不可行的。 这些是**测试模块**的提供者，而非组件的。组件级别的提供者应该在**fixture 级别**的依赖注入器中进行准备。
+在 `TestBed.configureTestingModule` 的 `providers` 中 stub 伪造组件的 `HeroDetailService` 是不可行的。这些是**测试模块**的提供者，而非组件的。组件级别的提供者应该在**fixture 级别**的依赖注入器中进行准备。
 
 Angular creates the component with its *own* injector, which is a *child* of the fixture injector.
 It registers the component's providers (the `HeroDetailService` in this case) with the child injector.
 
-Angular 会使用自己的注入器来创建这些组件，这个注入器是夹具的注入器的子注入器。 它使用这个子注入器注册了该组件服务提供者（这里是 `HeroDetailService` ）。
+Angular 会使用自己的注入器来创建这些组件，这个注入器是夹具的注入器的子注入器。它使用这个子注入器注册了该组件服务提供者（这里是 `HeroDetailService`）。
 
 A test cannot get to child injector services from the fixture injector.
 And `TestBed.configureTestingModule` can't configure them either.
@@ -2117,7 +2112,7 @@ Angular 始终都在创建真实 `HeroDetailService` 的实例。
 These tests could fail or timeout if the `HeroDetailService` made its own XHR calls to a remote server.
 There might not be a remote server to call.
 
-如果 `HeroDetailService` 向远程服务器发出自己的 XHR 请求，这些测试可能会失败或者超时。 这个远程服务器可能根本不存在。
+如果 `HeroDetailService` 向远程服务器发出自己的 XHR 请求，这些测试可能会失败或者超时。这个远程服务器可能根本不存在。
 
 Fortunately, the `HeroDetailService` delegates responsibility for remote data access to an injected `HeroService`.
 
@@ -2162,7 +2157,7 @@ Focus on the `overrideComponent` method.
 It takes two arguments: the component type to override (`HeroDetailComponent`) and an override metadata object.
 The [override metadata object](guide/testing-utility-apis#metadata-override-object) is a generic defined as follows:
 
-它接受两个参数：要改写的组件类型（`HeroDetailComponent`），以及用于改写的元数据对象。 [用于改写的元数据对象](guide/testing-utility-apis#metadata-override-object)是一个泛型，其定义如下：
+它接受两个参数：要改写的组件类型（`HeroDetailComponent`），以及用于改写的元数据对象。[用于改写的元数据对象](guide/testing-utility-apis#metadata-override-object)是一个泛型，其定义如下：
 
 <code-example language="javascript">
 
@@ -2177,7 +2172,7 @@ type MetadataOverride&lt;T&gt; = {
 A metadata override object can either add-and-remove elements in metadata properties or completely reset those properties.
 This example resets the component's `providers` metadata.
 
-元数据重载对象可以添加和删除元数据属性的项目，也可以彻底重设这些属性。 这个例子重新设置了组件的 `providers` 元数据。
+元数据重载对象可以添加和删除元数据属性的项目，也可以彻底重设这些属性。这个例子重新设置了组件的 `providers` 元数据。
 
 The type parameter, `T`, is the kind of metadata you'd pass to the `@Component` decorator:
 
@@ -2206,12 +2201,12 @@ This example completely replaces the component's `providers` array with a new ar
 The `HeroDetailServiceSpy` is a stubbed version of the real `HeroDetailService` that fakes all necessary features of that service.
 It neither injects nor delegates to the lower level `HeroService` so there's no need to provide a test double for that.
 
-`HeroDetailServiceSpy` 是实际 `HeroDetailService` 服务的桩版本，它伪造了该服务的所有必要特性。 但它既不需要注入也不会委托给低层的 `HeroService` 服务，因此不用为 `HeroService` 提供测试替身。
+`HeroDetailServiceSpy` 是实际 `HeroDetailService` 服务的桩版本，它伪造了该服务的所有必要特性。但它既不需要注入也不会委托给低层的 `HeroService` 服务，因此不用为 `HeroService` 提供测试替身。
 
 The related `HeroDetailComponent` tests will assert that methods of the `HeroDetailService` were called by spying on the service methods.
 Accordingly, the stub implements its methods as spies:
 
-通过对该服务的方法进行刺探，`HeroDetailComponent` 的关联测试将会对 `HeroDetailService` 是否被调用过进行断言。 因此，这个桩类会把它的方法实现为刺探方法：
+通过对该服务的方法进行刺探，`HeroDetailComponent` 的关联测试将会对 `HeroDetailService` 是否被调用过进行断言。因此，这个桩类会把它的方法实现为刺探方法：
 
 <code-example header="app/hero/hero-detail.component.spec.ts (HeroDetailServiceSpy)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="hds-spy"></code-example>
 
@@ -2236,7 +2231,7 @@ Now the tests can control the component's hero directly by manipulating the spy-
 The `TestBed.overrideComponent` method can be called multiple times for the same or different components.
 The `TestBed` offers similar `overrideDirective`, `overrideModule`, and `overridePipe` methods for digging into and replacing parts of these other classes.
 
-`TestBed.overrideComponent` 方法可以在相同或不同的组件中被反复调用。 `TestBed` 还提供了类似的 `overrideDirective`、`overrideModule` 和 `overridePipe` 方法，用来深入并重载这些其它类的部件。
+`TestBed.overrideComponent` 方法可以在相同或不同的组件中被反复调用。`TestBed` 还提供了类似的 `overrideDirective`、`overrideModule` 和 `overridePipe` 方法，用来深入并重载这些其它类的部件。
 
 Explore the options and combinations on your own.
 

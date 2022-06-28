@@ -37,7 +37,7 @@ export const TYPE = 1;
  * Flag to signify that this `LContainer` may have transplanted views which need to be change
  * detected. (see: `LView[DECLARATION_COMPONENT_VIEW])`.
  *
- * 标志以表明此 `LContainer` 可能已经移植了需要检测更改的视图。 （请参阅：
+ * 标志以表明此 `LContainer` 可能已经移植了需要检测更改的视图。（请参阅：
  * `LView[DECLARATION_COMPONENT_VIEW])` 。
  *
  * This flag, once set, is never unset for the `LContainer`. This means that when unset we can skip
@@ -118,7 +118,7 @@ export interface LContainer extends Array<any> {
    * Flag to signify that this `LContainer` may have transplanted views which need to be change
    * detected. (see: `LView[DECLARATION_COMPONENT_VIEW])`.
    *
-   * 标志以表明此 `LContainer` 可能已经移植了需要检测更改的视图。 （请参阅：
+   * 标志以表明此 `LContainer` 可能已经移植了需要检测更改的视图。（请参阅：
    * `LView[DECLARATION_COMPONENT_VIEW])` 。
    *
    * This flag, once set, is never unset for the `LContainer`.
@@ -152,7 +152,7 @@ export interface LContainer extends Array<any> {
    * change detection we should still descend to find those children to refresh, even if the parents
    * are not `Dirty`/`CheckAlways`.
    *
-   * 需要刷新或有后代本身需要刷新但未将其祖先标记为“脏”的直接移植视图的数量。这告诉我们，在更改检测期间，我们仍然应该下降以查找这些要刷新的子项，即使父项不是
+   * 需要刷新或有后代本身需要刷新但未将其祖先标记为“脏”的直接移植视图的数量。这告诉我们，在变更检测期间，我们仍然应该下降以查找这些要刷新的子项，即使父项不是
    * `Dirty` / `CheckAlways` 。
    *
    */

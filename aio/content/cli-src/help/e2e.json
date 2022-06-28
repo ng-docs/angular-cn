@@ -1,0 +1,34 @@
+{
+  "name": "e2e",
+  "command": "ng e2e [project]",
+  "shortDescription": "Builds and serves an Angular application, then runs end-to-end tests.",
+  "aliases": [
+    "e"
+  ],
+  "deprecated": false,
+  "options": [
+    {
+      "name": "configuration",
+      "type": "string",
+      "aliases": [
+        "c"
+      ],
+      "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
+      "descriptionCn": "逗号分隔列表形式的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分中指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+    },
+    {
+      "name": "help",
+      "type": "boolean",
+      "description": "Shows a help message for this command in the console.",
+      "descriptionCn": "在控制台显示关于本命令的帮助信息。"
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "positional": 0,
+      "descriptionCn": "要构建的项目名。可以是应用或库。"
+    }
+  ],
+  "shortDescriptionCn": "构建一个 Angular 应用并启动开发服务器，然后运行端到端测试。"
+}

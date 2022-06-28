@@ -168,7 +168,7 @@ export class ModuleResolver {
    * it is marked as a "deep-import".
    *
    * 如果找到了一个文件夹，但该路径不被视为入口点（请参阅 `isEntryPoint()`
-   * ），则将其标记为“deep-import”。
+   *），则将其标记为“deep-import”。
    *
    */
   private resolveAsEntryPoint(moduleName: string, fromPath: AbsoluteFsPath): ResolvedModule|null {

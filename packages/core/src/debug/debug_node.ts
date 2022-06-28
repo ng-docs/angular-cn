@@ -115,7 +115,7 @@ export class DebugNode {
    * Dictionary of objects associated with template local variables (e.g. #foo), keyed by the local
    * variable name.
    *
-   * 与模板局部变量（例如 #foo ）关联的对象字典，以局部变量名作为键。
+   * 与模板局部变量（例如 #foo）关联的对象字典，以局部变量名作为键。
    *
    */
   get references(): {[key: string]: any} {
@@ -195,15 +195,15 @@ export class DebugElement extends DebugNode {
    *
    * - Regular property bindings (e.g. `[id]="id"`)
    *
-   *   常规属性绑定（例如 `[id]="id"` ）
+   *   常规属性绑定（例如 `[id]="id"`）
    *
    * - Host property bindings (e.g. `host: { '[id]': "id" }`)
    *
-   *   主机属性绑定（例如 `host: { '[id]': "id" }` ）
+   *   主机属性绑定（例如 `host: { '[id]': "id" }`）
    *
    * - Interpolated property bindings (e.g. \`id="{{ value }}")
    *
-   *   插值属性绑定（例如 \`id="{{ value }}" ）
+   *   插值属性绑定（例如 \`id="{{ value }}"）
    *
    *   It does not include:
    *
@@ -211,11 +211,11 @@ export class DebugElement extends DebugNode {
    *
    * - input property bindings (e.g. `[myCustomInput]="value"`)
    *
-   *   输入属性绑定（例如 `[myCustomInput]="value"` ）
+   *   输入属性绑定（例如 `[myCustomInput]="value"`）
    *
    * - attribute bindings (e.g. `[attr.role]="menu"`)
    *
-   *   属性绑定（例如 `[attr.role]="menu"` ）
+   *   属性绑定（例如 `[attr.role]="menu"`）
    *
    */
   get properties(): {[key: string]: any;} {

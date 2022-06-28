@@ -93,7 +93,7 @@ function isFormData(value: any): value is FormData {
  *
  * In some execution environments URLSearchParams is not defined.
  *
- * 在某些执行环境中， URLSearchParams 未定义。
+ * 在某些执行环境中，URLSearchParams 未定义。
  *
  */
 function isUrlSearchParams(value: any): value is URLSearchParams {

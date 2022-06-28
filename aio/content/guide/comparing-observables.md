@@ -6,7 +6,7 @@ You can often use observables instead of promises to deliver values asynchronous
 Similarly, observables can take the place of event handlers.
 Finally, because observables deliver multiple values, you can use them where you might otherwise build and operate on arrays.
 
-你可以经常使用可观察对象（Observable）而不是承诺（Promise）来异步传递值。 类似的，可观察对象也可以取代事件处理器的位置。最后，由于可观察对象传递多个值，所以你可以在任何可能构建和操作数组的地方使用可观察对象。
+你可以经常使用可观察对象（Observable）而不是承诺（Promise）来异步传递值。类似的，可观察对象也可以取代事件处理器的位置。最后，由于可观察对象传递多个值，所以你可以在任何可能构建和操作数组的地方使用可观察对象。
 
 Observables behave somewhat differently from the alternative techniques in each of these situations, but offer some significant advantages.
 Here are detailed comparisons of the differences.
@@ -128,13 +128,13 @@ The following code snippets illustrate how the same kind of operation is defined
 | :-------- | :--------- | :------ |
 | 操作 | 可观察对象 | 承诺 |
 | Creation | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
-| 创造 | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
+| 创建 | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
 | Transform | <code-example format="typescript" hideCopy language="typescript"> obs.pipe(map((value) => value \* 2));</pre> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example> |
 | 转换 | <code-example format="typescript" hideCopy language="typescript">obs.pipe(map((value) => value \* 2));</pre> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example> |
 | Subscribe | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example> |
 | 订阅 | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example> |
 | Unsubscribe | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | Implied by promise resolution. |
-| 退订 | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | 由 promise 解析所暗示。 |
+| 取消订阅 | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | 承诺被解析时隐式完成。|
 
 ## Observables compared to events API
 
@@ -181,7 +181,7 @@ In the following examples, <code>→</code> implies asynchronous value delivery.
 | :----- | :--------- | :---- |
 | 值 | 可观察对象 | 数组 |
 | Given | <code-example format="typescript" hideCopy language="typescript"> obs: &rarr;1&rarr;2&rarr;3&rarr;5&rarr;7 </code-example> <code-example format="typescript" hideCopy language="typescript"> obsB: &rarr;'a'&rarr;'b'&rarr;'c' </code-example> | <code-example format="typescript" hideCopy language="typescript"> arr: [1, 2, 3, 5, 7] </code-example> <code-example format="typescript" hideCopy language="typescript"> arrB: ['a', 'b', 'c'] </code-example> |
-| 给定 | <code-example format="typescript" hideCopy language="typescript"> obs: &rarr;1&rarr;2&rarr;3&rarr;5&rarr;7 </code-example> | <code-example format="typescript" hideCopy language="typescript"> arr: [1, 2, 3, 5, 7] </code-example> |
+| 给出值 | <code-example format="typescript" hideCopy language="typescript"> obs: &rarr;1&rarr;2&rarr;3&rarr;5&rarr;7 </code-example> | <code-example format="typescript" hideCopy language="typescript"> arr: [1, 2, 3, 5, 7] </code-example> |
 | `concat()` | <code-example format="typescript" hideCopy language="typescript"> concat(obs, obsB) </code-example> <code-example format="typescript" hideCopy language="typescript"> &rarr;1&rarr;2&rarr;3&rarr;5&rarr;7&rarr;'a'&rarr;'b'&rarr;'c' </code-example> | <code-example format="typescript" hideCopy language="typescript"> arr.concat(arrB) </code-example> <code-example format="typescript" hideCopy language="typescript"> [1,2,3,5,7,'a','b','c'] </code-example> |
 | `concat()` | <code-example format="typescript" hideCopy language="typescript"> concat(obs, obsB) </code-example> | <code-example format="typescript" hideCopy language="typescript"> arr.concat(arrB) </code-example> |
 | `filter()` | <code-example format="typescript" hideCopy language="typescript"> obs.pipe(filter((v) =&gt; v&gt;3)) </code-example> <code-example format="typescript" hideCopy language="typescript"> &rarr;5&rarr;7 </code-example> | <code-example format="typescript" hideCopy language="typescript"> arr.filter((v) =&gt; v&gt;3) </code-example> <code-example format="typescript" hideCopy language="typescript"> [5, 7] </code-example> |

@@ -32,13 +32,13 @@ import {getOriginalError} from './util/errors';
  *     // do something with the exception
  *   }
  * }
- * ```
  *
  * @NgModule ({
  *   providers: [{provide: ErrorHandler, useClass: MyErrorHandler}]
  * })
  * class MyModule {}
  * ```
+ *
  * @publicApi
  */
 export class ErrorHandler {

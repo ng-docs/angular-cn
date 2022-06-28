@@ -4,11 +4,11 @@
 
 **Zone.js** is a signaling mechanism that Angular uses to detect when an application state might have changed. It captures asynchronous operations like `setTimeout`, network requests, and event listeners. Angular schedules change detection based on signals from Zone.js
 
-**Zone.js**是一种信号机制，Angular 用它来检测应用程序状态何时可能已更改。它捕获异步操作，比如 `setTimeout` 、网络请求和事件侦听器。 Angular 会根据来自 Zone.js 的信号安排变更检测
+**Zone.js**是一种信号机制，Angular 用它来检测应用程序状态何时可能已更改。它捕获异步操作，比如 `setTimeout`、网络请求和事件侦听器。Angular 会根据来自 Zone.js 的信号安排变更检测
 
 There are cases in which scheduled [tasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks) or [microtasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks) don’t make any changes in the data model, which makes running change detection unnecessary. Common examples are:
 
-在某些情况下，计划的[任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks)或[微任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks)不会对数据模型进行任何更改，这使得运行变更检测变得不必要。常见的例子是：
+在某些情况下，某些已安排的[任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks)或[微任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks)不会对数据模型进行任何更改，这使得运行变更检测变得不必要。常见的例子是：
 
 * `requestAnimationFrame`, `setTimeout` or `setInterval`
 
@@ -28,7 +28,7 @@ This section covers how to identify such conditions, and how to run code outside
 
 You can detect unnecessary change detection calls using Angular DevTools. Often they appear as consecutive bars in the profiler’s timeline with source `setTimeout`, `setInterval`, `requestAnimationFrame`, or an event handler. When you have limited calls within your application of these APIs, the change detection invocation is usually caused by a third-party library.
 
-你可以用 Angular DevTools 检测不必要的变更检测调用。它们通常在分析器的时间线中显示为连续的条形，其源为 `setTimeout` 、 `setInterval` 、 `requestAnimationFrame` 或事件处理程序。当你在应用程序中对这些 API 的调用有限时，变更检测调用通常是由第三方库引起的。
+你可以用 Angular DevTools 检测不必要的变更检测调用。它们通常在分析器的时间线中显示为连续的条形，其源为 `setTimeout`、`setInterval`、`requestAnimationFrame` 或事件处理程序。当你在应用程序中对这些 API 的调用有限时，变更检测调用通常是由第三方库引起的。
 
 <div class="lightbox">
   <img alt="Angular DevTools profiler preview showing Zone pollution" src="generated/images/guide/change-detection/zone-pollution.png">

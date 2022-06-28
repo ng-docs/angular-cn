@@ -99,7 +99,7 @@ Use any HTTP server.
 The following example uses the [http-server](https://www.npmjs.com/package/http-server) package from npm.
 To reduce the possibility of conflicts and avoid serving stale content, test on a dedicated port and disable caching.
 
-由于 `ng serve` 对 Service Worker 无效，所以必须用一个独立的 HTTP 服务器在本地测试你的项目。 可以用任何 HTTP 服务器。下面这个例子使用来自 npm 中的 [http-server](https://www.npmjs.com/package/http-server) 包。 为了减小端口冲突的可能性，我们在一个专用端口上进行测试。
+由于 `ng serve` 对 Service Worker 无效，所以必须用一个独立的 HTTP 服务器在本地测试你的项目。可以用任何 HTTP 服务器。下面这个例子使用来自 npm 中的 [http-server](https://www.npmjs.com/package/http-server) 包。为了减小端口冲突的可能性，我们在一个专用端口上进行测试。
 
 To serve the directory containing your web files with `http-server`, run the following command:
 
@@ -154,7 +154,7 @@ In Chrome:
 
 1. Select **Tools** > **Developer Tools** (from the Chrome menu located at the top right corner).
 
-   选择 **Tools** > **Developer Tools** （从右上角的 Chrome 菜单）。
+   选择 **Tools** > **Developer Tools**（从右上角的 Chrome 菜单）。
 
 1. Go to the **Network tab**.
 
@@ -213,7 +213,7 @@ Instead, they are being loaded from the service worker's cache.
 Notice that all of the files the browser needs to render this application are cached.
 The `ngsw-config.json` boilerplate configuration is set up to cache the specific resources used by the CLI:
 
-注意，浏览器要渲染的所有这些文件都被缓存了。 `ngsw-config.json` 样板文件被配置成了要缓存 CLI 用到的那些文件：
+注意，浏览器要渲染的所有这些文件都被缓存了。`ngsw-config.json` 样板文件被配置成了要缓存 CLI 用到的那些文件：
 
 * `index.html`
 
@@ -230,7 +230,7 @@ The `ngsw-config.json` boilerplate configuration is set up to cache the specific
 * Images and fonts directly under the configured `outputPath` (by default `./dist/<project-name>/`) or `resourcesOutputPath`.
   See [`ng build`](cli/build) for more information about these options.
 
-  图片和字体直接位于所配置的 `outputPath` (默认为 `./dist/<project-name>/`) 或 `resourcesOutputPath` 下。 关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
+  图片和字体直接位于所配置的 `outputPath` (默认为 `./dist/<project-name>/`) 或 `resourcesOutputPath` 下。关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
 
 <div class="alert is-important">
 

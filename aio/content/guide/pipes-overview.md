@@ -60,7 +60,7 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 
 * For a complete list of built-in pipes, see the [pipes API documentation](api/common#pipes "Pipes API reference summary").
 
-  关于内置管道的完整列表，请参阅[管道 API 文档](api/common#pipes "管道 API 参考总结") 。
+  关于内置管道的完整列表，请参阅[管道 API 文档](api/common#pipes "管道 API 参考总结")。
 
 * To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
 

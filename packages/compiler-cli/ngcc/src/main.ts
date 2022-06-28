@@ -44,7 +44,7 @@ import {DirectPackageJsonUpdater, PackageJsonUpdater} from './writing/package_js
 /**
  * This is the main entry-point into ngcc (aNGular Compatibility Compiler).
  *
- * 这是 ngcc （aNGular 兼容编译器）的主要入口点。
+ * 这是 ngcc（aNGular 兼容编译器）的主要入口点。
  *
  * You can call this function to process one or more npm packages, to ensure
  * that they are compatible with the ivy compiler (ngtsc).

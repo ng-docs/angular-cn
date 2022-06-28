@@ -22,9 +22,7 @@ To create a single class binding, type the following:
 
 要创建单个类绑定，请键入以下内容：
 
-[class.sale]="onSale"
-
-[class.sale][class.sale] ="onSale"
+`[class.sale]="onSale"`
 
 Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy—with the exception of `undefined`. See [styling delegation](guide/style-precedence#styling-delegation) for more information.
 
@@ -99,11 +97,11 @@ To create a single style binding, use the prefix `style` followed by a dot and t
 
 For example, set the ‘width’ style, type the following:  `[style.width]="width"`
 
-比如，设置 'width' 样式，键入以下内容： `[style.width]="width"`
+比如，设置 'width' 样式，键入以下内容：`[style.width]="width"`
 
 Angular sets the property to the value of the bound expression, which is usually a string. Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
 
-Angular 将该属性设置为绑定表达式的值，这通常是一个字符串。 （可选）你可以添加单位扩展名，比如 `em` 或 `%` ，这需要数字类型。
+Angular 将该属性设置为绑定表达式的值，这通常是一个字符串。（可选）你可以添加单位扩展名，比如 `em` 或 `%`，这需要数字类型。
 
 1. To write a style in dash-case, type the following:
 
@@ -123,7 +121,7 @@ Angular 将该属性设置为绑定表达式的值，这通常是一个字符串
 
 To toggle multiple styles, bind to the `[style]` attribute—for example, `[style]="styleExpression"`. The `styleExpression` can be one of:
 
-要切换多个样式，请绑定到 `[style]` Attribute，比如 `[style]="styleExpression"` 。`styleExpression` 可以是如下格式之一：
+要切换多个样式，请绑定到 `[style]` Attribute，比如 `[style]="styleExpression"`。`styleExpression` 可以是如下格式之一：
 
 * A string list of styles such as `"width: 100px; height: 100px; background-color: cornflowerblue;"`.
 

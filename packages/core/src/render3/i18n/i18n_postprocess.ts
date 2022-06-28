@@ -35,7 +35,7 @@ type PostprocessPlaceholder = [number, boolean, string];
  *
  * 1. Resolve all multi-value cases (like [�*1:1��#2:1�|�#4:1�|�5�])
  *
- *    解析所有多值情况（例如 [�\*1:1��#2:1�|�#4:1�|.5�][�*1:1��#2:1�|�#4:1�|�5�] ）
+ *    解析所有多值情况（例如 [�\*1:1��#2:1�|�#4:1�|.5�][�*1:1��#2:1�|�#4:1�|�5�]）
  *
  * 2. Replace all ICU vars (like "VAR_PLURAL")
  *
@@ -80,7 +80,7 @@ export function i18nPostprocess(
    * front of �#6�. The post processing step restores the right order by keeping track of the
    * template id stack and looks for placeholders that belong to the currently active template.
    *
-   * 注：由于我们处理嵌套模板 (BFS) 的方式，多值占位符通常按模板分组，例如：
+   * 注意：由于我们处理嵌套模板 (BFS) 的方式，多值占位符通常按模板分组，例如：
    * [“#5�|。#6。|�#1:1。|。#3:2。][�#5�|�#6�|�#1:1�|�#3:2�]其中 “#5” 和 “#6” 属于根模板，“#1:1”
    * 属于索引为 1 的嵌套模板，而“#1:2” - 索引为 3
    * 的嵌套模板。但是在真实模板中，顺序可能是不同：即“#1:1”和/或“#3:2”可能会在“#6”前面。后处理步骤通过跟踪模板

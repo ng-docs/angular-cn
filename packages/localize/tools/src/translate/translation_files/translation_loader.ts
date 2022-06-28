@@ -41,7 +41,7 @@ export class TranslationLoader {
    * For example, if the files are `[app.xlf, lib-1.xlf, lib-2.xlif]` then a message that appears in
    * `app.xlf` will override the same message in `lib-1.xlf` or `lib-2.xlf`.
    *
-   * 对于每个要翻译的区域设置， `translationFilePaths`
+   * 对于每个要翻译的区域设置，`translationFilePaths`
    * 中都有一个元素。每个元素都是该区域设置的翻译文件的绝对路径数组。如果数组包含多个翻译文件，则会合并这些翻译。如果
    * `duplicateTranslation` 属性允许，当多个翻译具有相同的消息 id
    * 时，会使用数组中靠前的翻译文件中的消息。例如，如果文件是 `[app.xlf, lib-1.xlf, lib-2.xlif]`

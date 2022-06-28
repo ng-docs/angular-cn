@@ -27,7 +27,7 @@ With Angular, you're taking advantage of a platform that can scale from single-d
 Angular is designed to make updating as straightforward as possible, so take advantage of the latest developments with a minimum of effort.
 Best of all, the Angular ecosystem consists of a diverse group of over 1.7 million developers, library authors, and content creators.
 
-借助 Angular，无论单人项目还是企业级应用，你都能获得平台带来的优势。 Angular 的设计目标之一就是让更新更容易，因此你可以用最小的成本升级到最新的 Angular 版本。最重要的是，Angular 的生态系统由包括 170 万名开发人员、库作者和内容创作者在内的多元团队构成。
+借助 Angular，无论单人项目还是企业级应用，你都能获得平台带来的优势。Angular 的设计目标之一就是让更新更容易，因此你可以用最小的成本升级到最新的 Angular 版本。最重要的是，Angular 的生态系统由包括 170 万名开发人员、库作者和内容创作者在内的多元团队构成。
 
 <div class="alert is-helpful">
 
@@ -176,7 +176,7 @@ The most popular directives in Angular are `*ngIf` and `*ngFor`.
 Use directives to perform a variety of tasks, such as dynamically modifying the DOM structure.
 And create your own custom directives to create great user experiences.
 
-可以用[指令](guide/built-in-directives)来为模板添加额外功能。 Angular 中最常用的指令是 `*ngIf` 和 `*ngFor` 。你可以使用指令执行各种任务，比如动态修改 DOM 结构。你还可以用自定义指令来创建出色的用户体验。
+可以用[指令](guide/built-in-directives)来为模板添加额外功能。Angular 中最常用的指令是 `*ngIf` 和 `*ngFor`。你可以使用指令执行各种任务，比如动态修改 DOM 结构。你还可以用自定义指令来创建出色的用户体验。
 
 The following code is an example of the `*ngIf` directive.
 
@@ -233,8 +233,6 @@ For more information about dependency injection and Angular, see the [Dependency
 
 ## Angular CLI
 
-## 角度 CLI
-
 The Angular CLI is the fastest, straightforward, and recommended way to develop Angular applications.
 The Angular CLI makes a number of tasks trouble-free.
 Here are some examples:
@@ -245,15 +243,15 @@ Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。An
 | :------ | :------ |
 | 命令 | 详情 |
 | [ng build](cli/build) | Compiles an Angular app into an output directory. |
-| [ng build](cli/build) | 把 Angular 应用编译到一个输出目录中。 |
+| [ng build](cli/build) | 把 Angular 应用编译到一个输出目录中。|
 | [ng serve](cli/serve) | Builds and serves your application, rebuilding on file changes. |
-| [ng serve](cli/serve) | 构建你的应用并启动开发服务器，当有文件变化时就重新构建。 |
+| [ng serve](cli/serve) | 构建你的应用并启动开发服务器，当有文件变化时就重新构建。|
 | [ng generate](cli/generate) | Generates or modifies files based on a schematic. |
-| [ng generate](cli/generate) | 基于原理图（schematic）生成或修改某些文件。 |
+| [ng generate](cli/generate) | 基于原理图（schematic）生成或修改某些文件。|
 | [ng test](cli/test) | Runs unit tests on a given project. |
-| [ng test](cli/test) | 在指定的项目上运行单元测试。 |
+| [ng test](cli/test) | 在指定的项目上运行单元测试。|
 | [ng e2e](cli/e2e) | Builds and serves an Angular application, then runs end-to-end tests. |
-| [ng e2e](cli/e2e) | 构建一个 Angular 应用并启动开发服务器，然后运行端到端测试。 |
+| [ng e2e](cli/e2e) | 构建一个 Angular 应用并启动开发服务器，然后运行端到端测试。|
 
 You'll find the Angular CLI a valuable tool for building out your applications.
 
@@ -283,17 +281,17 @@ Some of the libraries available to you include:
 | :------ | :------ |
 | 库 | 详情 |
 | [Angular Router](guide/router) | Advanced client-side navigation and routing based on Angular components. Supports lazy-loading, nested routes, custom path matching, and more. |
-| [Angular 路由器](guide/router) | 高级的客户侧导航功能与基于 Angular 组件的路由机制。支持惰性加载、嵌套路由、自定义路径匹配规则等。 |
+| [Angular 路由器](guide/router) | 高级的客户侧导航功能与基于 Angular 组件的路由机制。支持惰性加载、嵌套路由、自定义路径匹配规则等。|
 | [Angular Forms](guide/forms-overview) | Uniform system for form participation and validation. |
-| [Angular 表单](guide/forms-overview) | 统一的表单填报与验证体系。 |
+| [Angular 表单](guide/forms-overview) | 统一的表单填报与验证体系。|
 | [Angular HttpClient](guide/http) | Robust HTTP client that can power more advanced client-server communication. |
-| [Angular HttpClient](guide/http) | 健壮的 HTTP 客户端库，它可以支持更高级的客户端-服务器通讯。 |
+| [Angular HttpClient](guide/http) | 健壮的 HTTP 客户端库，它可以支持更高级的客户端-服务器通讯。|
 | [Angular Animations](guide/animations) | Rich system for driving animations based on application state. |
-| [Angular 动画](guide/animations) | 丰富的动画体系，用于驱动基于应用状态的动画。 |
+| [Angular 动画](guide/animations) | 丰富的动画体系，用于驱动基于应用状态的动画。|
 | [Angular PWA](guide/service-worker-intro) | Tools for building Progressive Web Applications (PWAs) including a service worker and Web app manifest. |
-| [Angular PWA](guide/service-worker-intro) | 一些用于构建渐进式 Web 应用（PWA）的工具，包括 Service Worker 和 Web 应用清单（Manifest）。 |
+| [Angular PWA](guide/service-worker-intro) | 一些用于构建渐进式 Web 应用（PWA）的工具，包括 Service Worker 和 Web 应用清单（Manifest）。|
 | [Angular Schematics](guide/schematics) | Automated scaffolding, refactoring, and update tools that simplify development at large scale. |
-| [Angular 原理图](guide/schematics) | 一些搭建脚手架、重构和升级的自动化工具。用于简化大规模应用的开发。 |
+| [Angular 原理图](guide/schematics) | 一些搭建脚手架、重构和升级的自动化工具。用于简化大规模应用的开发。|
 
 These libraries expand your application's functionality while also letting you focus more on the features that make your application unique.
 Add these libraries knowing that they're designed to integrate seamlessly into and update simultaneously with the Angular framework.

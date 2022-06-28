@@ -89,7 +89,7 @@ interface Record<T> {
  * An `Injector` that's part of the environment injector hierarchy, which exists outside of the
  * component tree.
  *
- * 创建一个新的 `Injector`， 它是使用 `InjectorType<any>` 的 `defType` 配置的。
+ * 创建一个新的 `Injector`，它是使用 `InjectorType<any>` 的 `defType` 配置的。
  *
  * @developerPreview
  */

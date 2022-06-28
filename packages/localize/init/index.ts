@@ -34,7 +34,7 @@ declare global {
    * You can optionally specify one or more of `meaning`, `description` and `id` for a localized
    * string by pre-pending it with a colon delimited block of the form:
    *
-   * 你可以选择为本地化字符串指定 `meaning` 、 `description` 和 `id`
+   * 你可以选择为本地化字符串指定 `meaning`、`description` 和 `id`
    * 中的一个或多个，方法是在其前面使用以下形式的冒号分隔块：
    *
    * ```ts
@@ -161,7 +161,7 @@ declare global {
    *
    * the translated string, with the `messageParts` and `expressions` interleaved together.
    *
-   * 翻译后的字符串， `messageParts` 和 `expressions` 交错在一起。
+   * 翻译后的字符串，`messageParts` 和 `expressions` 交错在一起。
    *
    */
   const $localize: LocalizeFn;

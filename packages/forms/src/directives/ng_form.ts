@@ -74,7 +74,7 @@ const resolvedPromise = (() => Promise.resolve(null))();
  *
  * 在模板驱动表单中，所有 `<form>` 标签都会自动应用上 `NgForm` 指令。
  * 如果你只想导入 `FormsModule` 而不想把它应用于某些表单中，比如，要想使用 HTML5 验证，你可以添加
- * `ngNoForm` 属性， 这样标签就不会在 `<form>` 上创建 `NgForm` 指令了。 在响应式表单中，则不需要用
+ * `ngNoForm` 属性，这样标签就不会在 `<form>` 上创建 `NgForm` 指令了。 在响应式表单中，则不需要用
  * `ngNoForm`，因为 `NgForm` 指令不会自动应用到 `<form>` 标签上，你只要别主动添加 `formGroup`
  * 指令就可以了。
  *

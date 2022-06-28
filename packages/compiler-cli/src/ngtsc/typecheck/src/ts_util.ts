@@ -26,9 +26,9 @@ const PARSED_TS_VERSION = parseFloat(ts.versionMajorMinor);
  * equivalent to `foo !== (bar as any)`, which is not what was intended. Thus,
  * `ts.BinaryExpression`s need to be wrapped in parentheses before casting.
  *
- * 例如， `foo.bar()` 是 `ts.CallExpression` ，并且可以用 `foo.bar() as any` `any` 但是， `foo !==
+ * 例如，`foo.bar()` 是 `ts.CallExpression` ，并且可以用 `foo.bar() as any` `any` 但是，`foo !==
  * bar` 是 `ts.BinaryExpression` ，并尝试在不带括号的情况下进行转换，会将表达式 `foo !== bar as any`
- * 。这在语义上等效于 `foo !== (bar as any)` ，这不是预期的。因此， `ts.BinaryExpression`
+ * 。这在语义上等效于 `foo !== (bar as any)` ，这不是预期的。因此，`ts.BinaryExpression`
  * 需要在强制转换之前用括号括起来。
  *
  */
@@ -121,7 +121,7 @@ export function tsDeclareVariable(id: ts.Identifier, type: ts.TypeNode): ts.Vari
  * For example: `typeof MatInput.ngAcceptInputType_value`, where MatInput is `typeName` and `value`
  * is the `coercedInputName`.
  *
- * 例如： `typeof MatInput.ngAcceptInputType_value` ，其中 MatInput 是 `typeName` ， `value` 是
+ * 例如： `typeof MatInput.ngAcceptInputType_value` ，其中 MatInput 是 `typeName` ，`value` 是
  * `coercedInputName` 。
  *
  * @param typeName The `EntityName` of the Directive where the static coerced input is defined.

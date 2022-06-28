@@ -94,7 +94,7 @@ export interface LegacyNgcOptions {
    * 文件的位置创建一个平面模块索引 .d.ts 和 .js。例如，如果一个库使用 `public_api.ts`
    * 文件作为模块的库索引，则 `tsconfig.json` `files` 字段将是 `["public_api.ts"]` 。然后可以将
    * `flatModuleOutFile` 选项设置为例如 `"index.js"` ，它会生成 `index.d.ts` 和
-   * `index.metadata.json` 文件。库的 `package.json` 的 `module` 字段将是 `"index.js"` ， `typings`
+   * `index.metadata.json` 文件。库的 `package.json` 的 `module` 字段将是 `"index.js"` ，`typings`
    * 字段将是 `"index.d.ts"` 。
    *
    */
@@ -105,7 +105,7 @@ export interface LegacyNgcOptions {
    * will use this module name when importing symbols from the flat module. This is only
    * meaningful when `flatModuleOutFile` is also supplied. It is otherwise ignored.
    *
-   * 用于导入平面模块的首选模块 ID。从平面模块导入符号时， `ngc`
+   * 用于导入平面模块的首选模块 ID。从平面模块导入符号时，`ngc`
    * 生成的引用将使用此模块名称。这仅在同时提供了 `flatModuleOutFile` 时才有意义。否则被忽略。
    *
    */
@@ -301,7 +301,7 @@ export interface StrictTemplateOptions {
    * without a value, so with this flag set to `true`, an error would be reported. If set to
    * `false`, text attributes will never report an error.
    *
-   * 例如，在包含 `<input matInput disabled>` 的模板中， `disabled` 属性最终会被 `matInput` 指令作为
+   * 例如，在包含 `<input matInput disabled>` 的模板中，`disabled` 属性最终会被 `matInput` 指令作为
    * `boolean`
    * 类型的输入使用。在运行时，输入将设置为属性的字符串值，对于没有值的属性，这是一个空字符串，因此在此标志设置为
    * `true` 的情况下，将报告错误。如果设置为 `false` ，则文本属性将永远不会报告错误。
@@ -659,8 +659,8 @@ export interface I18nOptions {
    * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
    * expressions.
    *
-   * 如果模板存储在外部文件中（例如通过 `templateUrl` ），那么我们需要在处理 ICU
-   * 表达式时决定是否对行结尾进行规范化（从 `\r\n` 到 `\n` ）。
+   * 如果模板存储在外部文件中（例如通过 `templateUrl`），那么我们需要在处理 ICU
+   * 表达式时决定是否对行结尾进行规范化（从 `\r\n` 到 `\n`）。
    *
    * Ideally we would always normalize, but for backward compatibility this flag allows the template
    * parser to avoid normalizing line endings in ICU expressions.

@@ -42,26 +42,21 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  * 首先确保要降级的服务在将作为升级应用程序的一部分的 `NgModule` 中提供。例如，假设我们已经定义
  * `HeroesService`
  *
- * {
- *
- * @example upgrade/static/ts/full/module.ts region="ng2-heroes-service"}
+ * {@example upgrade/static/ts/full/module.ts region="ng2-heroes-service"}
  *
  * and that we have included this in our upgrade app `NgModule`
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="ng2-module"}
+ * {@example upgrade/static/ts/full/module.ts region="ng2-module"}
  *
  * Now we can register the `downgradeInjectable` factory function for the service
  * on an AngularJS module.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="downgrade-ng2-heroes-service"}
+ * {@example upgrade/static/ts/full/module.ts region="downgrade-ng2-heroes-service"}
  *
  * Inside an AngularJS component's controller we can get hold of the
  * downgraded service via the name we gave when downgrading.
  *
- * {
- * @example upgrade/static/ts/full/module.ts region="example-app"}
+ * {@example upgrade/static/ts/full/module.ts region="example-app"}
  *
  * <div class="alert is-important">
  *

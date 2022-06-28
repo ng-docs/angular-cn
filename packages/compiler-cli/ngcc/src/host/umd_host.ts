@@ -603,7 +603,7 @@ function getUmdWrapper(statement: ts.Statement):
  * For more info on the distinction between CommonJS and CommonJS2 see
  * <https://github.com/webpack/webpack/issues/1114>.
  *
- * 注：有关 CommonJS 和 CommonJS2
+ * 注意：有关 CommonJS 和 CommonJS2
  * 之间区别的更多信息，请参阅<https://github.com/webpack/webpack/issues/1114> 。
  *
  * The supported format for the UMD wrapper function body is a single statement which is either a
@@ -611,7 +611,7 @@ function getUmdWrapper(statement: ts.Statement):
  * `ts.IfStatement` (typically emitted by Webpack). For example:
  *
  * UMD 包装器函数体的支持格式是单个语句，它可以是 `ts.ConditionalExpression`
- * （即使用三元运算符）（通常由 Rollup 发出）或 `ts.IfStatement` （通常由 Webpack 发出）。例如：
+ *（即使用三元运算符）（通常由 Rollup 发出）或 `ts.IfStatement`（通常由 Webpack 发出）。例如：
  *
  * ```js
  * // Using a conditional expression:

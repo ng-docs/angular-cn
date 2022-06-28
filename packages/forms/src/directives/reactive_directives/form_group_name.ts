@@ -147,7 +147,7 @@ export const formArrayNameProvider: any = {
  * This directive is designed to be used with a parent `FormGroupDirective` (selector:
  * `[formGroup]`).
  *
- * 此指令旨在与父 `FormGroupDirective`（选择器为 `[formGroup]` ）一起使用。
+ * 此指令旨在与父 `FormGroupDirective`（选择器为 `[formGroup]`）一起使用。
  *
  * It accepts the string name of the nested `FormArray` you want to link, and
  * will look for a `FormArray` registered with that name in the parent

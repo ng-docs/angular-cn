@@ -54,7 +54,7 @@ export interface PlayerFactoryBuildFn {
  * Used as a reference to build a player from a styling template binding
  * (`[style]` and `[class]`).
  *
- * 用作从样式模板绑定（ `[style]` 和 `[class]` ）构建播放器的引用。
+ * 用作从样式模板绑定（`[style]` 和 `[class]`）构建播放器的引用。
  *
  * The `fn` function will be called once any styling-related changes are
  * evaluated on an element and is expected to return a player that will
@@ -66,7 +66,7 @@ export interface PlayerFactoryBuildFn {
  * `[style]`, `[style.prop]`, `[class]` and `[class.name]` template bindings
  * all accept a `PlayerFactory` as input and this player factories.
  *
- * `[style]` 、 `[style.prop]` 、 `[class]` 和 `[class.name]` 模板绑定都接受 `PlayerFactory`
+ * `[style]`、`[style.prop]`、`[class]` 和 `[class.name]` 模板绑定都接受 `PlayerFactory`
  * 作为输入，并且接受此播放器工厂。
  *
  */
@@ -129,7 +129,7 @@ export interface PlayerHandler {
   /**
    * Designed to kick off the player at the end of change detection
    *
-   * 旨在在更改检测结束时启动播放器
+   * 旨在在变更检测结束时启动播放器
    *
    */
   flushPlayers(): void;

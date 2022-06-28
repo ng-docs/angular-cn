@@ -4,7 +4,7 @@
 
 ## What does this migration do?
 
-## 此迁移有什么用？
+## 这种迁移是做什么的？
 
 If you have any libraries within your workspace, this migration will convert `tslib` peer dependencies to direct dependencies for the libraries.
 TypeScript uses the `tslib` package to provide common helper functions used in compiled TypeScript code.
@@ -52,7 +52,7 @@ After:
 
 ## Why is this migration necessary?
 
-## 为什么此迁移是必要的？
+## 为何这次迁移必不可少？
 
 The [`tslib`](https://github.com/Microsoft/tslib) is a runtime library for Typescript.
 The version of this library is bound to the version of the TypeScript compiler used to compile a library.
@@ -65,7 +65,7 @@ As of TypeScript 3.9 (used by Angular v10), `tslib` version of 2.x is required t
 However, older libraries built with previous version of TypeScript and already published to npm might need `tslib` 1.x.
 This migration makes it possible for code depending on incompatible versions of the `tslib` runtime library to remain interoperable.
 
-从 TypeScript 3.9（由 Angular v10 使用）开始，需要 `tslib` 版本 2.x 来构建新的应用程序。但是，使用以前的 TypeScript 版本构建并已发布到 npm 的较早的库可能需要 `tslib` 。这种迁移使依赖于 `tslib` 运行时库的某个不兼容版本的代码可以保持互操作性。
+从 TypeScript 3.9（由 Angular v10 使用）开始，需要 `tslib` 版本 2.x 来构建新的应用程序。但是，使用以前的 TypeScript 版本构建并已发布到 npm 的较早的库可能需要 `tslib`。这种迁移使依赖于 `tslib` 运行时库的某个不兼容版本的代码可以保持互操作性。
 
 ## Do I still need `tslib` as a dependency in my workspace `package.json`?
 

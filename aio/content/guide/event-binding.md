@@ -20,11 +20,11 @@ See the <live-example></live-example> for a working example containing the code 
 
 * [Basics of components](guide/architecture-components)
 
-  [组件的基础知识](guide/architecture-components)
+  [组件基础](guide/architecture-components)
 
 * [Basics of templates](guide/glossary#template)
 
-  [模板的基础知识](guide/glossary#template)
+  [模板基础](guide/glossary#template)
 
 * [Binding syntax](guide/binding-syntax)
 
@@ -45,7 +45,7 @@ This syntax consists of a target event name within parentheses to the left of an
 
 Create the following example; the target event name is `click` and the template statement is `onSave()`.
 
-创建以下示例；目标事件名是 `click` ，模板语句是 `onSave()` 。
+创建以下示例；目标事件名是 `click`，模板语句是 `onSave()`。
 
 <code-example language="html" header="Event binding syntax">
 &lt;button (click)="onSave()"&gt;Save&lt;/button&gt;
@@ -70,7 +70,7 @@ To determine an event target, Angular checks if the name of the target event mat
 
 Create the following example: (Angular checks to see if `myClick` is an event on the custom `ClickDirective`)
 
-创建以下示例：（ Angular 会检查 `myClick` 是否是自定义 `ClickDirective` 上的事件）
+创建以下示例：（Angular 会检查 `myClick` 是否是自定义 `ClickDirective` 上的事件）
 
 <code-example path="event-binding/src/app/app.component.html" region="custom-directive" header="src/app/app.component.html"></code-example>
 
@@ -92,7 +92,7 @@ Angular 还支持被动事件侦听器。比如，使用以下步骤使滚动事
 
 1. Create a file `zone-flags.ts` under `src` directory.
 
-   在 `src` 目录下创建一个文件 `zone-flags.ts` 。
+   在 `src` 目录下创建一个文件 `zone-flags.ts`。
 
 2. Add the following line into this file.
 
@@ -100,7 +100,7 @@ Angular 还支持被动事件侦听器。比如，使用以下步骤使滚动事
 
 3. In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
 
-   在 `src/polyfills.ts` 文件中，在导入 zone.js 之前，先导入新创建的 `zone-flags` 。
+   在 `src/polyfills.ts` 文件中，在导入 zone.js 之前，先导入新创建的 `zone-flags`。
 
 ```
 import './zone-flags';
@@ -109,7 +109,7 @@ import 'zone.js';  // Included with Angular CLI.
 
 After those steps, if you add event listeners for the `scroll` event, the listeners will be `passive`.
 
-在这些步骤之后，如果你为 `scroll` 事件添加事件侦听器，则侦听器将是 `passive` 的。
+在这些步骤之后，如果你为 `scroll` 事件添加事件侦听器，侦听器就会是 `passive` 的。
 
 ## What's next
 
@@ -117,11 +117,11 @@ After those steps, if you add event listeners for the `scroll` event, the listen
 
 * For more information on how event binding works, see [How event binding works](guide/event-binding-concepts).
 
-  有关事件绑定[如何工作的更多信息，参阅事件绑定的工作方式](guide/event-binding-concepts)。
+  关于事件绑定工作原理的更多信息，请参阅[事件绑定工作原理](guide/event-binding-concepts)。
 
 * [Property binding](guide/property-binding)
 
-  [属性绑定](guide/property-binding)
+  [property 绑定](guide/property-binding)
 
 * [Text interpolation](guide/interpolation)
 

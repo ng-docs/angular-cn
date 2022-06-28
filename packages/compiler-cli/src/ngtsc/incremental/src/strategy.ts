@@ -22,7 +22,7 @@ export interface IncrementalBuildStrategy {
   /**
    * Determine the Angular `IncrementalDriver` for the given `ts.Program`, if one is available.
    *
-   * 确定给定 `ts.Program` 的 Angular `IncrementalDriver` （如果有）。
+   * 确定给定 `ts.Program` 的 Angular `IncrementalDriver`（如果有）。
    *
    */
   getIncrementalState(program: ts.Program): IncrementalState|null;

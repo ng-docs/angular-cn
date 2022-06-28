@@ -57,7 +57,7 @@ This styling precedence is as follows, from the most specific with the highest p
 In the following example, binding to a specific class, as in `[class.special]`, takes precedence over a generic `[class]` binding.
 Similarly, binding to a specific style, as in `[style.color]`, takes precedence over a generic `[style]` binding.
 
-在下面的示例中，与 `[class.special]` 对特定类的绑定优先于一般性的 `[class]` 绑定。同样，到特定样式的绑定（比如 `[style.color]` ）要优先于一般性的 `[style]` 绑定。
+在下面的示例中，与 `[class.special]` 对特定类的绑定优先于一般性的 `[class]` 绑定。同样，到特定样式的绑定（比如 `[style.color]`）要优先于一般性的 `[style]` 绑定。
 
 <code-example header="src/app/app.component.html" path="attribute-binding/src/app/app.component.html" region="basic-specificity"></code-example>
 
@@ -104,7 +104,7 @@ Imagine that the `dirWithHostBinding` directive and the `comp-with-host-binding`
 
 If `dirWithHostBinding` sets its binding to `undefined`, the `width` property falls back to the value of the `comp-with-host-binding` host binding.
 
-如果 `dirWithHostBinding` 将其绑定设置为 `undefined` ，则 `width` 属性将回退到 `comp-with-host-binding` 宿主绑定的值。
+如果 `dirWithHostBinding` 将其绑定设置为 `undefined`，则 `width` 属性将回退到 `comp-with-host-binding` 宿主绑定的值。
 
 <code-example format="typescript" header="dirWithHostBinding directive" language="typescript">
 

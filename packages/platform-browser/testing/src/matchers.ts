@@ -37,9 +37,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toBePromise'}
+   * {@example testing/ts/matchers.ts region='toBePromise'}
    */
   toBePromise(): boolean;
 
@@ -54,9 +52,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toBeAnInstanceOf'}
+   * {@example testing/ts/matchers.ts region='toBeAnInstanceOf'}
    */
   toBeAnInstanceOf(expected: any): boolean;
 
@@ -71,9 +67,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toHaveText'}
+   * {@example testing/ts/matchers.ts region='toHaveText'}
    */
   toHaveText(expected: string): boolean;
 
@@ -88,9 +82,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toHaveCssClass'}
+   * {@example testing/ts/matchers.ts region='toHaveCssClass'}
    */
   toHaveCssClass(expected: string): boolean;
 
@@ -105,9 +97,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toHaveCssStyle'}
+   * {@example testing/ts/matchers.ts region='toHaveCssStyle'}
    */
   toHaveCssStyle(expected: {[k: string]: string}|string): boolean;
 
@@ -122,9 +112,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toImplement'}
+   * {@example testing/ts/matchers.ts region='toImplement'}
    */
   toImplement(expected: any): boolean;
 
@@ -139,9 +127,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
    *
    * ### 例子
    *
-   * {
-   *
-   * @example testing/ts/matchers.ts region='toContainError'}
+   * {@example testing/ts/matchers.ts region='toContainError'}
    */
   toContainError(expected: any): boolean;
 
