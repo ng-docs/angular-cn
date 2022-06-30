@@ -26,17 +26,17 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 | :---- | :------ |
 | 管道 | 详情 |
 | [`DatePipe`](api/common/DatePipe) | Formats a date value according to locale rules. |
-| [`DatePipe`](api/common/DatePipe) | 根据区域设置规则格式化日期值。|
+| [`DatePipe`](api/common/DatePipe) | 根据区域设置规则格式化日期值。 |
 | [`UpperCasePipe`](api/common/UpperCasePipe) | Transforms text to all upper case. |
-| [`UpperCasePipe`](api/common/UpperCasePipe) | 把文本转换成全大写形式。|
+| [`UpperCasePipe`](api/common/UpperCasePipe) | 把文本转换成全大写形式。 |
 | [`LowerCasePipe`](api/common/LowerCasePipe) | Transforms text to all lower case. |
-| [`LowerCasePipe`](api/common/LowerCasePipe) | 把文本转换成全小写形式。|
+| [`LowerCasePipe`](api/common/LowerCasePipe) | 把文本转换成全小写形式。 |
 | [`CurrencyPipe`](api/common/CurrencyPipe) | Transforms a number to a currency string, formatted according to locale rules. |
-| [`CurrencyPipe`](api/common/CurrencyPipe) | 把数字转换成货币字符串，根据语言环境中的规则进行格式化。|
+| [`CurrencyPipe`](api/common/CurrencyPipe) | 把数字转换成货币字符串，根据语言环境中的规则进行格式化。 |
 | [`DecimalPipe`](api/common/DecimalPipe) | Transforms a number into a string with a decimal point, formatted according to locale rules. |
-| [`DecimalPipe`](api/common/DecimalPipe) | 把数字转换成带小数点的字符串，根据语言环境中的规则进行格式化。|
+| [`DecimalPipe`](api/common/DecimalPipe) | 把数字转换成带小数点的字符串，根据语言环境中的规则进行格式化。 |
 | [`PercentPipe`](api/common/PercentPipe) | Transforms a number to a percentage string, formatted according to locale rules. |
-| [`PercentPipe`](api/common/PercentPipe) | 把数字转换成百分比字符串，根据语言环境中的规则进行格式化。|
+| [`PercentPipe`](api/common/PercentPipe) | 把数字转换成百分比字符串，根据语言环境中的规则进行格式化。 |
 
 <div class="alert is-helpful">
 
@@ -87,9 +87,9 @@ The tabs in the example show the following:
 | :---- | :------ |
 | 文件 | 详情 |
 | `app.component.html` | Uses `date` in a separate template to display a birthday. |
-| `app.component.html` | 在另一个单独的模板中使用 `date` 来显示生日。|
+| `app.component.html` | 在另一个单独的模板中使用 `date` 来显示生日。 |
 | `hero-birthday1.component.ts` | Uses the same pipe as part of an in-line template in a component that also sets the birthday value. |
-| `hero-birthday1.component.ts` | 使用相同的管道作为组件内嵌模板的一部分，同时该组件也会设置生日值。|
+| `hero-birthday1.component.ts` | 使用相同的管道作为组件内嵌模板的一部分，同时该组件也会设置生日值。 |
 
 <code-tabs>
     <code-pane header="src/app/app.component.html" region="hero-birthday-template" path="pipes/src/app/app.component.html"></code-pane>
@@ -252,9 +252,9 @@ The following code example shows two component definitions:
 | :---- | :------ |
 | 文件 | 详情 |
 | `exponential-strength.pipe.ts` | Defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation. It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe. |
-| `exponential-strength.pipe.ts` | 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。|
+| `exponential-strength.pipe.ts` | 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。 |
 | `power-booster.component.ts` | Demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`). |
-| `power-booster.component.ts` | 演示了如何使用该管道，指定了一个值（`2`）和一个 exponent 参数（`10`）。|
+| `power-booster.component.ts` | 演示了如何使用该管道，指定了一个值（`2`）和一个 exponent 参数（`10`）。 |
 
 <code-tabs>
     <code-pane header="src/app/exponential-strength.pipe.ts" path="pipes/src/app/exponential-strength.pipe.ts"></code-pane>
@@ -324,9 +324,9 @@ Angular 会在每次 DOM 事件（每次按键、鼠标移动、计时器滴答�
 | :---- | :------ |
 | 文件 | 详情 |
 | `flying-heroes.component.html (v1)` | The `*ngFor` repeater displays the hero names. |
-| `flying-heroes.component.html (v1)` | `*ngFor` 会重复显示英雄的名字。|
+| `flying-heroes.component.html (v1)` | `*ngFor` 会重复显示英雄的名字。 |
 | `flying-heroes.component.ts (v1)` | Provides heroes, adds heroes into the array, and resets the array. |
-| `flying-heroes.component.ts (v1)` | 提供了一些英雄，把这些英雄添加到数组中，并重置了该数组。|
+| `flying-heroes.component.ts (v1)` | 提供了一些英雄，把这些英雄添加到数组中，并重置了该数组。 |
 
 <code-tabs>
     <code-pane header="src/app/flying-heroes.component.html (v1)" path="pipes/src/app/flying-heroes.component.html" region="template-1"></code-pane>

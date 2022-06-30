@@ -35,9 +35,9 @@ When you open the extension, you'll see two additional tabs:
 | :--- | :------ |
 | 选项卡 | 详细信息 |
 | [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state. |
-| [组件](#components) | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。|
+| [组件](#components) | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。 |
 | [Profiler](#profiler) | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
-| [环境配置器](#profiler) | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。|
+| [环境配置器](#profiler) | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。 |
 
 <div class="lightbox">
 

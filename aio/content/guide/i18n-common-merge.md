@@ -78,7 +78,7 @@ The following sub-options identify the source language and tell the compiler whe
 | :-------- | :------ |
 | 子选项 | 详情 |
 | `sourceLocale` | The locale you use within the application source code (`en-US` by default) |
-| `sourceLocale` | 你在应用程序源代码中使用的语言环境（默认为 `en-US`）|
+| `sourceLocale` | 你在应用程序源代码中使用的语言环境（默认为 `en-US`） |
 | `locales` | A map of locale identifiers to translation files |
 | `locales` | 语言环境标识符到翻译文件的映射表 |
 

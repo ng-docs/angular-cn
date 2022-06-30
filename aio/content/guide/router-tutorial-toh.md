@@ -58,7 +58,7 @@ Along the way, it highlights key features of the router such as:
 
 * Lazy loading an `NgModule`
 
-  惰性加载 `NgModule` 
+  惰性加载 `NgModule`
 
 * The `CanLoad` guard (check before loading feature module assets)
 
@@ -1260,13 +1260,13 @@ It provides methods to handle parameter access for both route parameters (`param
 | :----- | :------ |
 | 成员 | 详情 |
 | `has(name)` | Returns `true` if the parameter name is in the map of parameters. |
-| `has(name)` | 如果参数名位于参数列表中，就返回 `true`。|
+| `has(name)` | 如果参数名位于参数列表中，就返回 `true`。 |
 | `get(name)` | Returns the parameter name value (a `string`) if present, or `null` if the parameter name is not in the map. Returns the *first* element if the parameter value is actually an array of values. |
-| `get(name)` | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。|
+| `get(name)` | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。 |
 | `getAll(name)` | Returns a `string array` of the parameter name value if found, or an empty `array` if the parameter name value is not in the map. Use `getAll` when a single parameter could have multiple values. |
-| `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。|
+| `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。 |
 | `keys` | Returns a `string array` of all parameter names in the map. |
-| `keys` | 返回这个 map 中的所有参数名组成的字符串数组。|
+| `keys` | 返回这个 map 中的所有参数名组成的字符串数组。 |
 
 <a id="reuse"></a>
 
@@ -2140,9 +2140,9 @@ The router supports directory-like syntax in a *link parameters list* to help gu
 | :-------------------- | :------ |
 | 目录式语法 | 详情 |
 | `./` <br /> `no leading slash` | Relative to the current level. |
-| `./` <br /> ` 无前导斜线 ` | 形式是相对于当前级别的。|
+| `./` <br /> `无前导斜线` | 形式是相对于当前级别的。 |
 | `../` | Up one level in the route path. |
-| `../` | 回到当前路由路径的上一级。|
+| `../` | 回到当前路由路径的上一级。 |
 
 You can combine relative navigation syntax with an ancestor path.
 If you must navigate to a sibling route, you could use the `../<sibling>` convention to go up
@@ -2508,7 +2508,7 @@ A guard's return value controls the router's behavior:
 | `true` | The navigation process continues |
 | `true` | 导航过程会继续 |
 | `false` | The navigation process stops and the user stays put |
-| `false` | 导航过程就会终止，且用户留在原地。|
+| `false` | 导航过程就会终止，且用户留在原地。 |
 | `UrlTree` | The current navigation cancels and a new navigation is initiated to the `UrlTree` returned |
 | `UrlTree` | 取消当前导航，并开始导航到所返回的 `UrlTree` |
 
@@ -3497,9 +3497,9 @@ The `Router` offers two preloading strategies:
 | :--------- | :------ |
 | 策略 | 详情 |
 | No preloading | The default. Lazy loaded feature areas are still loaded on-demand. |
-| 不预加载 | 这是默认值。惰性加载的特性区仍然会按需加载。|
+| 不预加载 | 这是默认值。惰性加载的特性区仍然会按需加载。 |
 | Preloading | All lazy loaded feature areas are preloaded. |
-| 预加载 | 预加载所有惰性加载的特性区。|
+| 预加载 | 预加载所有惰性加载的特性区。 |
 
 The router either never preloads, or preloads every lazy loaded module.
 The `Router` also supports [custom preloading strategies](#custom-preloading) for fine control over which modules to preload and when.

@@ -526,9 +526,9 @@ The method takes a resource URL and two additional parameters:
 | :-------- | :------ |
 | 参数 | 详情 |
 | body | The data to POST in the body of the request. |
-| body | 要在请求正文中 POST 的数据。|
+| body | 要在请求正文中 POST 的数据。 |
 | options | An object containing method options which, in this case, [specify required headers](#adding-headers). |
-| options | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。|
+| options | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。 |
 
 The example catches errors as [described above](#error-details).
 
@@ -1332,11 +1332,11 @@ Rather than forward every `searchText` value directly to the injected `PackageSe
 | :------------- | :------ |
 | RxJS 操作符 | 详情 |
 | `debounceTime(500)`⁠ | Wait for the user to stop typing (1/2 second in this case). |
-| `debounceTime(500)`⁠ | 等待用户停止输入（本例中为 1/2 秒）。|
+| `debounceTime(500)`⁠ | 等待用户停止输入（本例中为 1/2 秒）。 |
 | `distinctUntilChanged()` | Wait until the search text changes. |
-| `distinctUntilChanged()` | 等待搜索文本发生变化。|
+| `distinctUntilChanged()` | 等待搜索文本发生变化。 |
 | `switchMap()`⁠ | Send the search request to the service. |
-| `switchMap()`⁠ | 将搜索请求发送到服务。|
+| `switchMap()`⁠ | 将搜索请求发送到服务。 |
 
 The code sets `packages$` to this re-composed `Observable` of search results.
 The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe) and displays search results as they arrive.

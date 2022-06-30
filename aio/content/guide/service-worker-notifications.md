@@ -90,11 +90,11 @@ Angular Service Worker 支持以下操作：
 | :--------- | :------ |
 | 操作 | 详情 |
 | `openWindow` | Opens a new tab at the specified URL, which is resolved relative to the service worker scope. |
-| `openWindow` | 在指定的 URL 处打开一个新选项卡，该选项卡相对于 Service Worker 范围进行解析。|
+| `openWindow` | 在指定的 URL 处打开一个新选项卡，该选项卡相对于 Service Worker 范围进行解析。 |
 | `focusLastFocusedOrOpen` | Focuses the last focused client. If there is no client open, then it opens a new tab at the specified URL, which is resolved relative to the service worker scope. |
-| `focusLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端。如果没有客户端打开，则它会在指定的 URL 处打开一个新选项卡，该选项卡是相对于 Service Worker 范围解析的。|
+| `focusLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端。如果没有客户端打开，则它会在指定的 URL 处打开一个新选项卡，该选项卡是相对于 Service Worker 范围解析的。 |
 | `navigateLastFocusedOrOpen` | Focuses the last focused client and navigates it to the specified URL, which is resolved relative to the service worker scope. If there is no client open, then it opens a new tab at the specified URL. |
-| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL，该 URL 相对于 Service Worker 范围进行解析。如果没有打开的客户端，则它会在指定的 URL 处打开一个新选项卡。|
+| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL，该 URL 相对于 Service Worker 范围进行解析。如果没有打开的客户端，则它会在指定的 URL 处打开一个新选项卡。 |
 
 <div class="alert is-important">
 

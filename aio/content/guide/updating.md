@@ -120,7 +120,7 @@ It also describes supported update paths.
 * Release details:
   [Angular change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
 
-   发布详情：[Angular 变更记录](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
+  发布详情：[Angular 变更记录](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log")
 
 * Update instructions:
   [Angular Update Guide](https://update.angular.io/ "Angular Update Guide")

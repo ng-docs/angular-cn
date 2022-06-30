@@ -54,13 +54,13 @@ The `versionUpdates` is an `Observable` property of `SwUpdate` and emits four ev
 | :---------- | :------ |
 | 事件类型 | 详情 |
 | `VersionDetectedEvent` | Emitted when the service worker has detected a new version of the app on the server and is about to start downloading it. |
-| `VersionDetectedEvent` | 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出。|
+| `VersionDetectedEvent` | 当 Service Worker 在服务器上检测到应用程序的新版本并即将开始下载时发出。 |
 | `NoNewVersionDetectedEvent` | Emitted when the service worker has checked the version of the app on the server and did not find a new version. |
-| `NoNewVersionDetectedEvent` | 当 Service Worker 检查了服务器上应用程序的版本并且没有找到新版本时发出。|
+| `NoNewVersionDetectedEvent` | 当 Service Worker 检查了服务器上应用程序的版本并且没有找到新版本时发出。 |
 | `VersionReadyEvent` | Emitted when a new version of the app is available to be activated by clients. It may be used to notify the user of an available update or prompt them to refresh the page. |
-| `VersionReadyEvent` | 当有新版本的应用程序可供客户端激活时发出。它可用于通知用户可用的更新或提示他们刷新页面。|
+| `VersionReadyEvent` | 当有新版本的应用程序可供客户端激活时发出。它可用于通知用户可用的更新或提示他们刷新页面。 |
 | `VersionInstallationFailedEvent` | Emitted when the installation of a new version failed. It may be used for logging/monitoring purposes. |
-| `VersionInstallationFailedEvent` | 在新版本安装失败时发出。它可用于日志/监控目的。|
+| `VersionInstallationFailedEvent` | 在新版本安装失败时发出。它可用于日志/监控目的。 |
 
 <code-example header="log-update.service.ts" path="service-worker-getting-started/src/app/log-update.service.ts" region="sw-update"></code-example>
 

@@ -35,17 +35,17 @@ When you add prerendering to your application, the following build options are a
 | :------ | :------ |
 | 选项 | 详情 |
 | `browserTarget` | Specify the target to build. |
-| `browserTarget` | 指定要构建的目标。|
+| `browserTarget` | 指定要构建的目标。 |
 | `serverTarget` | Specify the Server target to use for prerendering the application. |
-| `serverTarget` | 指定用于预先渲染的应用程序的服务器目标。|
+| `serverTarget` | 指定用于预先渲染的应用程序的服务器目标。 |
 | `routes` | Define an array of additional routes to prerender. |
-| `routes` | 定义要预先渲染的额外路由数组。|
+| `routes` | 定义要预先渲染的额外路由数组。 |
 | `guessRoutes` | Whether builder should extract routes and guess which paths to render.Defaults to `true`. |
-| `guessRoutes` | 构建器是否应该提取路由并猜测要渲染的路径。默认为 `true`。|
+| `guessRoutes` | 构建器是否应该提取路由并猜测要渲染的路径。默认为 `true`。 |
 | `routesFile` | Specify a file that contains a list of all routes to prerender, separated by newlines. This option is useful if you have a large number of routes. |
-| `routesFile` | 指定一个文件，其中包含要预先渲染的所有路由的列表，以换行符分隔。如果你有大量路由，则此选项很有用。|
+| `routesFile` | 指定一个文件，其中包含要预先渲染的所有路由的列表，以换行符分隔。如果你有大量路由，则此选项很有用。 |
 | `numProcesses` | Specify the number of CPUs to be used while running the prerendering command. |
-| `numProcesses` | 指定在运行预先渲染命令时要使用的 CPU 数量。|
+| `numProcesses` | 指定在运行预先渲染命令时要使用的 CPU 数量。 |
 
 ### Prerendering dynamic routes
 

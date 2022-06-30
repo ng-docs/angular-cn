@@ -71,7 +71,7 @@ You will need two terminals to get the live-reload experience.
 
   The server will automatically reload your browser when new files are output.
 
-   每当输出了新文件时，服务器就会自动刷新你的浏览器。
+  每当输出了新文件时，服务器就会自动刷新你的浏览器。
 
 <div class="alert is-critical">
 
@@ -150,7 +150,7 @@ For the simplest deployment, create a production build and copy the output direc
 
 1. Start with the production build:
 
-    使用开发环境进行构建
+   使用开发环境进行构建
 
    <code-example format="shell" language="shell">
 
@@ -403,17 +403,17 @@ The `production` configuration engages the following build optimization features
 | :------- | :------ |
 | 特性 | 详细信息 |
 | [Ahead-of-Time (AOT) Compilation](guide/aot-compiler) | Pre-compiles Angular component templates. |
-| [预先 (AOT) 编译](guide/aot-compiler) | 预编译 Angular 的组件模板。|
+| [预先 (AOT) 编译](guide/aot-compiler) | 预编译 Angular 的组件模板。 |
 | [Production mode](#enable-prod-mode) | Deploys the production environment which enables *production mode*. |
-| [生产模式](#enable-prod-mode) | 部署到启用了*生产模式*的生产环境。|
+| [生产模式](#enable-prod-mode) | 部署到启用了*生产模式*的生产环境。 |
 | Bundling | Concatenates your many application and library files into a few bundles. |
-| 打包 | 把你的多个应用于库文件拼接到少量包（bundle）中。|
+| 打包 | 把你的多个应用于库文件拼接到少量包（bundle）中。 |
 | Minification | Removes excess whitespace, comments, and optional tokens. |
-| 缩小 | 删除多余的空格、注释和可选令牌。|
+| 缩小 | 删除多余的空格、注释和可选令牌。 |
 | Uglification | Rewrites code to use short, cryptic variable and function names. |
-| 丑化 | 重写代码，使用简短的、不容易理解的变量名和函数名。|
+| 丑化 | 重写代码，使用简短的、不容易理解的变量名和函数名。 |
 | Dead code elimination | Removes unreferenced modules and much unused code. |
-| 死代码消除 | 删除未引用过的模块和很多未用到的代码。|
+| 死代码消除 | 删除未引用过的模块和很多未用到的代码。 |
 
 See [`ng build`](cli/build) for more about CLI build options and what they do.
 

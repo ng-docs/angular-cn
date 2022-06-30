@@ -41,11 +41,11 @@ Angular 文档的类别包括：
 | :------------------------------- | :------ |
 | Angular 文档类别 | 详细信息 |
 | [Guides](docs) | Much of what's in the [documentation section of angular.io](docs). Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example. These include [Getting Started](start), [Tour of Heroes](tutorial), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/http). Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown"). |
-| [指南](docs) | [angular.io 文档部分中的大部分内容](docs)。指南会引导读者一步步完成任务以展示概念，并且通常伴随着一个工作示例。其中包括[入门](start)、[英雄之旅](tutorial)以及有关[Forms](guide/forms-overview) 、[依赖注入](guide/dependency-injection)和[HttpClient](guide/http)的页面。社区的贡献成员和 Angular 团队成员在[Markdown](https://daringfireball.net/projects/markdown/syntax "降价")中维护本文档。|
+| [指南](docs) | [angular.io 文档部分中的大部分内容](docs)。指南会引导读者一步步完成任务以展示概念，并且通常伴随着一个工作示例。其中包括[入门](start)、[英雄之旅](tutorial)以及有关[Forms](guide/forms-overview) 、[依赖注入](guide/dependency-injection)和[HttpClient](guide/http)的页面。社区的贡献成员和 Angular 团队成员在[Markdown](https://daringfireball.net/projects/markdown/syntax "降价")中维护本文档。 |
 | [API documentation](api) | Reference documents for the [Angular Application Programming Interface, or API](api). These are more succinct than guides and serve as a reference for Angular features. They are especially helpful for people already acquainted with Angular concepts. The [angular.io](https://angular.io) infrastructure generates these documents from source code and comments that contributors edit. |
-| [API 文档](api) | [Angular 应用程序编程接口或 API](api)的参考文档。这些比指南更简洁，可作为 Angular 特性的参考。它们对于已经熟悉 Angular 概念的人特别有帮助。[angular.io](https://angular.io)基础设施从源代码和贡献者编辑的注释生成这些文档。|
+| [API 文档](api) | [Angular 应用程序编程接口或 API](api)的参考文档。这些比指南更简洁，可作为 Angular 特性的参考。它们对于已经熟悉 Angular 概念的人特别有帮助。[angular.io](https://angular.io)基础设施从源代码和贡献者编辑的注释生成这些文档。 |
 | [CLI documentation](cli) | The [angular.io](https://angular.io) infrastructure generates these documents from CLI source code. |
-| [CLI 文档](cli) | [angular.io](https://angular.io)基础设施从 CLI 源代码生成这些文档。|
+| [CLI 文档](cli) | [angular.io](https://angular.io)基础设施从 CLI 源代码生成这些文档。 |
 
 ## Markdown and HTML
 
@@ -105,7 +105,7 @@ Begin the title with the Markdown hash (`#`) character, which renders as an `<h1
 | A document can have only one `<h1>` | Title text should be in *Sentence case*, which means the first word is capitalized and all other words are lower case. Technical terms that are always capitalized, like "Angular", are the exception. <code-example format="html" language="html"> &num; Deprecation policy in Angular </code-example> |
 | 一个文档只能有一个 `<h1>` | 标题文本应该是*Sentence case*，这意味着第一个单词是大写的，所有其他单词都是小写的。始终大写的技术术语，比如“Angular”，是个例外。<code-example format="html" language="html"># Angular 中的弃用策略</code-example> |
 | Always follow the title with at least one blank line | The corresponding text in the left nav is in *Title Case*, which means that you use capital letters to start the first words and all principal words. Use lower case letters for secondary words such as "in", "of", and "the". You can also shorten the nav title to fit in the column. |
-| 始终在标题后面至少有一个空行 | 左侧导航中的相应文本在*Title Case*中，这意味着你可以用大写字母来开头第一个单词和所有主要单词。对“in”、“of”和“the”等次要词使用小写字母。你还可以缩短导航标题以适合列。|
+| 始终在标题后面至少有一个空行 | 左侧导航中的相应文本在*Title Case*中，这意味着你可以用大写字母来开头第一个单词和所有主要单词。对“in”、“of”和“the”等次要词使用小写字母。你还可以缩短导航标题以适合列。 |
 
 ## Sections
 
@@ -293,15 +293,15 @@ A navigation node has the following properties:
 | :--------- | :------ |
 | 属性 | 详细信息 |
 | `url` | The URL of the guide page, which is an item node only. |
-| `url` | 指南页面的 URL，仅是 item 节点。|
+| `url` | 指南页面的 URL，仅是 item 节点。 |
 | `title` | The text displayed in the side nav. |
-| `title` | 侧面导航中显示的文本。|
+| `title` | 侧面导航中显示的文本。 |
 | `tooltip` | Text that appears when the reader hovers over the navigation link. |
-| `tooltip` | 当阅读器将鼠标悬停在导航链接上时出现的文本。|
+| `tooltip` | 当阅读器将鼠标悬停在导航链接上时出现的文本。 |
 | `children` | An array of child nodes, which is a header node only. |
-| `children` | 子节点数组，仅是标头节点。|
+| `children` | 子节点数组，仅是标头节点。 |
 | `hidden` | Defined and set `true` if this is a guide page that should not be displayed in the navigation panel. |
-| `hidden` | 如果这是不应该在导航面板中显示的指南页面，则已定义并设置为 `true`。|
+| `hidden` | 如果这是不应该在导航面板中显示的指南页面，则已定义并设置为 `true`。 |
 
 <div class="alert is-critical">
 
@@ -598,19 +598,19 @@ Specify the `<code-example>` output with the following attributes:
 | :--------- | :------ |
 | 属性 | 详细信息 |
 | `path` | The path to the file in the `content/examples` folder. |
-| `path` | `content/examples` 文件夹中文件的路径。|
+| `path` | `content/examples` 文件夹中文件的路径。 |
 | `header` | The header of the code listing. This is the title of the code snippet and can include the path and extra information such as whether the snippet is an excerpt. |
-| `header` | 代码列表的标头。这是代码段的标题，可以包含路径和额外的信息，比如代码段是否是摘录。|
+| `header` | 代码列表的标头。这是代码段的标题，可以包含路径和额外的信息，比如代码段是否是摘录。 |
 | `region` | Displays the source file fragment with that region name; regions are identified by `#docregion` markup in the source file. See [Displaying a code snippet](#region "Displaying a code snippet"). |
-| `region` | 显示具有该区域名称的源文件片段；区域由源文件中的 `#docregion` 标注标识。参阅[显示代码段](#region "显示代码段")。|
+| `region` | 显示具有该区域名称的源文件片段；区域由源文件中的 `#docregion` 标注标识。参阅[显示代码段](#region "显示代码段")。 |
 | `linenums` | Value may be `true`, `false`, or a `number`. The default is `false`, which means that the browser displays no line numbers. The `number` option starts line numbering at the given value. For example, `linenums=4` sets the starting line number to 4. |
-| `linenums` | 值可以是 `true` 、 `false` 或 `number`。默认值为 `false`，这意味着浏览器不显示行号。`number` 选项从给定值开始行号。比如，`linenums=4` 将起始行号设置为 4。|
+| `linenums` | 值可以是 `true` 、 `false` 或 `number`。默认值为 `false`，这意味着浏览器不显示行号。`number` 选项从给定值开始行号。比如，`linenums=4` 将起始行号设置为 4。 |
 | `class` | Code snippets can be styled with the CSS classes `no-box` and `avoid`. |
-| `class` | 代码片段可以用 CSS 类 `no-box` 和 `avoid` 来设置样式。|
+| `class` | 代码片段可以用 CSS 类 `no-box` 和 `avoid` 来设置样式。 |
 | `hideCopy` | Hides the copy button. |
-| `hideCopy` | 隐藏复制按钮。|
+| `hideCopy` | 隐藏复制按钮。 |
 | `language` | The source code language such as `javascript`, `html`, `css`, `typescript`, `json`, or `shell`. This attribute only applies to hard-coded examples. |
-| `language` | 源代码语言，比如 `javascript` 、 `html` 、 `css` 、 `typescript` 、 `json` 或 `shell`。此属性仅适用于硬编码示例。|
+| `language` | 源代码语言，比如 `javascript` 、 `html` 、 `css` 、 `typescript` 、 `json` 或 `shell`。此属性仅适用于硬编码示例。 |
 
 ### Displaying bad code
 
@@ -699,7 +699,7 @@ Each tab displays code using a `code-pane`.
 | `header` | What displays in the header of a tab |
 | `header` | 选项卡标题中显示的内容 |
 | `linenums` | Overrides the `linenums` property at the `code-tabs` level for this particular pane. The value can be `true`, `false`, or a number indicating the starting line number. The default is `false`. |
-| `linenums` | 覆盖此特定窗格的 `code-tabs` 级别的 `linenums` 属性。该值可以是 `true` 、 `false` 或指示起始行号的数字。默认值为 `false`。|
+| `linenums` | 覆盖此特定窗格的 `code-tabs` 级别的 `linenums` 属性。该值可以是 `true` 、 `false` 或指示起始行号的数字。默认值为 `false`。 |
 
 The following example displays multiple code tabs, each with its own header.
 It demonstrates showing line numbers in `<code-tabs>` and `<code-pane>`.

@@ -325,11 +325,11 @@ Below is the "Little Tour of Heroes" component.
 | :----------- | :------ |
 | 小结 | 详情 |
 | Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element. |
-| 使用模板变量来引用元素 | `newHero` 模板变量引用了 `<input>` 元素。你可以在 `<input>` 的任何兄弟或子级元素中引用 `newHero`。|
+| 使用模板变量来引用元素 | `newHero` 模板变量引用了 `<input>` 元素。你可以在 `<input>` 的任何兄弟或子级元素中引用 `newHero`。 |
 | Pass values, not elements | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`. |
-| 传递数值，而非元素 | 获取输入框的值并将*它*传给组件的 `addHero`，而不要传递 `newHero`。|
+| 传递数值，而非元素 | 获取输入框的值并将*它*传给组件的 `addHero`，而不要传递 `newHero`。 |
 | Keep template statements simple | The `(blur)` event is bound to two JavaScript statements. The first statement calls `addHero`. The second statement, `newHero.value=''`, clears the input box after a new hero is added to the list. |
-| 保持模板语句简单 | `(blur)` 事件被绑定到两个 JavaScript 语句。第一句调用 `addHero`。第二句 `newHero.value=''` 在添加新英雄到列表中后清除输入框。|
+| 保持模板语句简单 | `(blur)` 事件被绑定到两个 JavaScript 语句。第一句调用 `addHero`。第二句 `newHero.value=''` 在添加新英雄到列表中后清除输入框。 |
 
 ## Source code
 
@@ -392,7 +392,7 @@ These techniques are useful for small-scale demonstrations, but they quickly bec
 Two-way data binding is a more elegant and compact way to move values between data entry fields and model properties.
 The [`Forms`](guide/forms-overview) page explains how to write two-way bindings with `NgModel`.
 
-这些技术对小规模演示很实用，但是在处理大量用户输入时，很容易变得累赘和笨拙。要在数据录入字段和模型属性之间传递数据，双向数据绑定是更加优雅和简洁的方式。下一章 ` 表单 ` 解释了如何用 `NgModel` 来进行双向绑定。
+这些技术对小规模演示很实用，但是在处理大量用户输入时，很容易变得累赘和笨拙。要在数据录入字段和模型属性之间传递数据，双向数据绑定是更加优雅和简洁的方式。下一章 `表单` 解释了如何用 `NgModel` 来进行双向绑定。
 
 <!-- links -->
 

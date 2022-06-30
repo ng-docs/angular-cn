@@ -164,7 +164,7 @@ However, since Angular 6.0, the best practice for providing services is with the
 | :--------- | :------ |
 | 属性 | 详情 |
 | `ngModule` | In this example, the `GreetingModule` class |
-| `ngModule` | 在这个例子中，就是 `GreetingModule` 类。|
+| `ngModule` | 在这个例子中，就是 `GreetingModule` 类。 |
 | `providers` | The configured providers |
 | `providers` | 配置好的服务提供者 |
 

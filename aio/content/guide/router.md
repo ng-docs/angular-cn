@@ -57,7 +57,7 @@ CLI 会自动添加 `Component` 后缀，所以如果在编写 `first-component`
 
 <div class="alert is-helpful">
 
-<header><code>&lt;base href&gt;</code></header>
+<header><code>&lt;base href></code></header>
 
 This guide works with a CLI-generated Angular application.
 If you are working manually, make sure that you have `<base href="/">` in the `<head>` of your index.html file.
@@ -719,9 +719,9 @@ The router supports both styles with two `LocationStrategy` providers:
 | :-------- | :------ |
 | 提供者 | 详情 |
 | `PathLocationStrategy` | The default "HTML5 pushState" style. |
-| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。|
+| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。 |
 | `HashLocationStrategy` | The "hash URL" style. |
-| `HashLocationStrategy` | “hash URL”风格。|
+| `HashLocationStrategy` | “hash URL”风格。 |
 
 The `RouterModule.forRoot()` function sets the `LocationStrategy` to the `PathLocationStrategy`, which makes it the default strategy.
 You also have the option of switching to the `HashLocationStrategy` with an override during the bootstrapping process.
@@ -841,21 +841,21 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
    对所有 Web 资源（CSS、图片、脚本和模板 HTML 文件）使用根 URL（高优先度 URL）。
 
-   * The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
+   - The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
 
-      `<base href>` `path` 应该以“/”结尾，因为浏览器会忽略 `path` 中最右边的“ `/` ”后面的字符
+     `<base href>` `path` 应该以“/”结尾，因为浏览器会忽略 `path` 中最右边的“ `/` ”后面的字符
 
-   * If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
-   This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
+   - If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
+     This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
      如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
 
-   * If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
-  In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
+   - If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
+     In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
 
      如果页内链接是根 URL（高优先度 URL），则 `<base href>` 不会使用。在这种方式下，`APP_BASE_HREF` 的优先度将会导致所有由 Angular 创建的链接忽略 `<base href>`。
 
-   * A fragment in the `<base href>` is *never* persisted
+   - A fragment in the `<base href>` is *never* persisted
 
      `<base href>` 中的片段（#后面的部分）*永远不会*被使用
 

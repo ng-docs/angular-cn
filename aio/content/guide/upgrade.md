@@ -65,9 +65,9 @@ There are a few rules in particular that will make it much easier to do *an incr
 | :---- | :------ |
 | 规则 | 详情 |
 | [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | There should be one component per file. This not only makes components easy to navigate and find, but will also allow us to migrate them between languages and frameworks one at a time. In this example application, each controller, component, service, and filter is in its own source file. |
-| [单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | 每个文件应该只放一个组件。这不仅让组件更容易浏览和查找，而且还让你能逐个迁移它们的语言和框架。在这个范例程序中，每个控制器、工厂和过滤器都位于各自的源文件中。|
+| [单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | 每个文件应该只放一个组件。这不仅让组件更容易浏览和查找，而且还让你能逐个迁移它们的语言和框架。在这个范例程序中，每个控制器、工厂和过滤器都位于各自的源文件中。 |
 | [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | Define similar principles on a higher level of abstraction: Different parts of the application should reside in different directories and NgModules. |
-| [按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | 在较高的抽象层定义了一些相似的原则：应用程序中的不同部分应该被分到不同的目录和 NgModule 中。|
+| [按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | 在较高的抽象层定义了一些相似的原则：应用程序中的不同部分应该被分到不同的目录和 NgModule 中。 |
 
 When an application is laid out feature per feature in this way, it can also be migrated one feature at a time.
 For applications that don't already look like this, applying the rules in the AngularJS style guide is a highly recommended preparation step.
@@ -158,15 +158,15 @@ To be Angular compatible, an AngularJS component directive should configure thes
 | :--------- | :------ |
 | 属性 | 详情 |
 | `restrict: 'E'` | Components are usually used as elements. |
-| `restrict: 'E'` | 组件通常会以元素的方式使用。|
+| `restrict: 'E'` | 组件通常会以元素的方式使用。 |
 | `scope: {}` | An isolate scope. In Angular, components are always isolated from their surroundings, and you should do this in AngularJS too. |
-| `scope: {}` | 一个独立作用域。在 Angular 中，组件永远是从它们的环境中被隔离出来的，在 AngularJS 中也同样如此。|
+| `scope: {}` | 一个独立作用域。在 Angular 中，组件永远是从它们的环境中被隔离出来的，在 AngularJS 中也同样如此。 |
 | `bindToController: {}` | Component inputs and outputs should be bound to the controller instead of using the `$scope`. |
-| `bindToController: {}` | 组件的输入和输出应该绑定到控制器，而不是 `$scope`。|
+| `bindToController: {}` | 组件的输入和输出应该绑定到控制器，而不是 `$scope`。 |
 | `controller` <br /> `controllerAs` | Components have their own controllers. |
-| `controller` <br /> `controllerAs` | 组件要有自己的控制器。|
+| `controller` <br /> `controllerAs` | 组件要有自己的控制器。 |
 | `template` <br /> `templateUrl` | Components have their own templates. |
-| `template` <br /> `templateUrl` | 组件要有自己的模板。|
+| `template` <br /> `templateUrl` | 组件要有自己的模板。 |
 
 Component directives may also use the following attributes:
 
@@ -176,9 +176,9 @@ Component directives may also use the following attributes:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `transclude: true/{}` | If the component needs to transclude content from elsewhere. |
-| `transclude: true/{}` | 如果组件需要从其它地方透传内容，就设置它。|
+| `transclude: true/{}` | 如果组件需要从其它地方透传内容，就设置它。 |
 | `require` | If the component needs to communicate with the controller of some parent component. |
-| `require` | 如果组件需要和父组件的控制器通讯，就设置它。|
+| `require` | 如果组件需要和父组件的控制器通讯，就设置它。 |
 
 Component directives **should not** use the following attributes:
 
@@ -188,11 +188,11 @@ Component directives **should not** use the following attributes:
 | :----------------- | :------ |
 | 不能使用的属性 | 详情 |
 | `compile` | This will not be supported in Angular. |
-| `compile` | Angular 不再支持它。|
+| `compile` | Angular 不再支持它。 |
 | `replace: true` | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS. |
-| `replace: true` | Angular 永远不会用组件模板替换一个组件元素。这个特性在 AngularJS 中也同样不建议使用了。|
+| `replace: true` | Angular 永远不会用组件模板替换一个组件元素。这个特性在 AngularJS 中也同样不建议使用了。 |
 | `priority` <br /> `terminal` | While AngularJS components may use these, they are not used in Angular and it is better not to write code that relies on them. |
-| `priority` <br /> `terminal` | 虽然 AngularJS 的组件可能使用这些，但它们在 Angular 中已经没用了，并且最好不要再写依赖它们的代码。|
+| `priority` <br /> `terminal` | 虽然 AngularJS 的组件可能使用这些，但它们在 Angular 中已经没用了，并且最好不要再写依赖它们的代码。 |
 
 An AngularJS component directive that is fully aligned with the Angular architecture may look something like this:
 
@@ -284,9 +284,9 @@ Dependency injection is front and center in both AngularJS and Angular, but ther
 | :-------- | :------ |
 | AngularJS | 角 |
 | Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
-| 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。| 令牌[可以有不同的类型][AioGuideDependencyInjection]。<br /> 通常是类。<br />也可能是字符串。|
+| 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。<br /> 通常是类。<br />也可能是字符串。 |
 | There is exactly one injector. <br /> Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
-| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。| 这是一个[树状分层注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。|
+| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状分层注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |
 
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
@@ -753,7 +753,7 @@ When you use the component from an Angular template, provide the inputs and outp
 | One-way binding | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
 | 单向绑定 | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
 | Two-way binding | `myValue: '=myValue'` | As a two-way binding: <br /> `<my-component [(myValue)]="anExpression">` <br /> Since most AngularJS two-way bindings actually only need a one-way binding in practice, `<my-component [myValue]="anExpression">` is often enough. |
-| 双向绑定 | `myValue: '=myValue'` | 用作双向绑定：`<my-component [(myValue)]="anExpression">`。<br/> 由于大多数 AngularJS 的双向绑定实际上只是单向绑定，因此通常写成 `<my-component [myValue]="anExpression">` 也够用了。|
+| 双向绑定 | `myValue: '=myValue'` | 用作双向绑定：`<my-component [(myValue)]="anExpression">`。<br/> 由于大多数 AngularJS 的双向绑定实际上只是单向绑定，因此通常写成 `<my-component [myValue]="anExpression">` 也够用了。 |
 
 For example, imagine a hero detail AngularJS component directive with one input and one output:
 
@@ -1362,19 +1362,19 @@ The code uses the AngularJS 1.5 component API and the organization follows the [
 
 * Each component, service, and filter is in its own source file, as per the [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility].
 
-   每个组件、服务和过滤器都在它自己的源文件中 —— 就像[单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]所要求的。
+  每个组件、服务和过滤器都在它自己的源文件中 —— 就像[单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]所要求的。
 
 * The `core`, `phone-detail`, and `phone-list` modules are each in their own subdirectory.
   Those subdirectories contain the JavaScript code as well as the HTML templates that go with each particular feature.
   This is in line with the [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] and [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] rules.
 
-   `core`、`phone-detail` 和 `phone-list` 模块都在它们自己的子目录中。那些子目录除了包含 HTML 模板之外，还包含 JavaScript 代码，它们共同完成一个特性。
+  `core`、`phone-detail` 和 `phone-list` 模块都在它们自己的子目录中。那些子目录除了包含 HTML 模板之外，还包含 JavaScript 代码，它们共同完成一个特性。
   这是[按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure]
   和[模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity]规则所要求的。
 
 * Unit tests are located side-by-side with application code where they are easily found, as described in the rules for [Organizing Tests][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests].
 
-   单元测试都和应用代码在一起，它们很容易找到。就像规则
+  单元测试都和应用代码在一起，它们很容易找到。就像规则
   [组织测试文件][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdOrganizingTests]中要求的那样。
 
 ### Switching to TypeScript
@@ -2296,7 +2296,7 @@ Switch the bootstrap method of the application from the `UpgradeModule` to the A
 
 If you haven't already, remove all references to the `UpgradeModule` from `app.module.ts`, as well as any [factory provider][AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular] for AngularJS services, and the `app/ajs-upgraded-providers.ts` file.
 
-如果你还没有这么做，请从 `app.module.ts 删除所有 `UpgradeModule 的引用，
+如果你还没有这么做，请从 `app.module.ts 删除所有`UpgradeModule 的引用，
   以及所有用于 AngularJS 服务的[工厂提供者（factory provider）](guide/upgrade#making-angularjs-dependencies-injectable-to-angular)和 `app/ajs-upgraded-providers.ts` 文件。
 
 Also remove any `downgradeInjectable()` or `downgradeComponent()` you find, together with the associated AngularJS factory or directive declarations.

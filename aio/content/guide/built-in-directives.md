@@ -24,11 +24,11 @@ Angular 指令的不同类型如下：
 | :-------------- | :------ |
 | 指令类型 | 详情 |
 | [Components](guide/component-overview) | Used with a template. This type of directive is the most common directive type. |
-| [组件](guide/component-overview) | 带有模板的指令。这种指令类型是最常见的指令类型。|
+| [组件](guide/component-overview) | 带有模板的指令。这种指令类型是最常见的指令类型。 |
 | [Attribute directives](guide/built-in-directives#built-in-attribute-directives) | Change the appearance or behavior of an element, component, or another directive. |
-| [属性型指令](guide/built-in-directives#built-in-attribute-directives) | 更改元素、组件或其他指令的外观或行为的指令。|
+| [属性型指令](guide/built-in-directives#built-in-attribute-directives) | 更改元素、组件或其他指令的外观或行为的指令。 |
 | [Structural directives](guide/built-in-directives#built-in-structural-directives) | Change the DOM layout by adding and removing DOM elements. |
-| [结构型指令](guide/built-in-directives#built-in-structural-directives) | 通过添加和删除 DOM 元素来更改 DOM 布局。|
+| [结构型指令](guide/built-in-directives#built-in-structural-directives) | 通过添加和删除 DOM 元素来更改 DOM 布局。 |
 
 This guide covers built-in [attribute directives](guide/built-in-directives#built-in-attribute-directives) and [structural directives](guide/built-in-directives#built-in-structural-directives).
 
@@ -53,11 +53,11 @@ The most common attribute directives are as follows:
 | :---------------- | :------ |
 | 通用指令 | 详情 |
 | [`NgClass`](guide/built-in-directives#ngClass) | Adds and removes a set of CSS classes. |
-| [`NgClass`](guide/built-in-directives#ngClass) | 添加和删除一组 CSS 类。|
+| [`NgClass`](guide/built-in-directives#ngClass) | 添加和删除一组 CSS 类。 |
 | [`NgStyle`](guide/built-in-directives#ngstyle) | Adds and removes a set of HTML styles. |
-| [`NgStyle`](guide/built-in-directives#ngstyle) | 添加和删除一组 HTML 样式。|
+| [`NgStyle`](guide/built-in-directives#ngstyle) | 添加和删除一组 HTML 样式。 |
 | [`NgModel`](guide/built-in-directives#ngModel) | Adds two-way data binding to an HTML form element. |
-| [`NgModel`](guide/built-in-directives#ngModel) | 将双向数据绑定添加到 HTML 表单元素。|
+| [`NgModel`](guide/built-in-directives#ngModel) | 将双向数据绑定添加到 HTML 表单元素。 |
 
 <div class="alert is-helpful">
 
@@ -247,11 +247,11 @@ This section introduces the most common built-in structural directives:
 | :------------------------------------ | :------ |
 | 常见的内置结构型指令 | 详情 |
 | [`NgIf`](guide/built-in-directives#ngIf) | Conditionally creates or disposes of subviews from the template. |
-| [`NgIf`](guide/built-in-directives#ngIf) | 有条件地从模板创建或销毁子视图。|
+| [`NgIf`](guide/built-in-directives#ngIf) | 有条件地从模板创建或销毁子视图。 |
 | [`NgFor`](guide/built-in-directives#ngFor) | Repeat a node for each item in a list. |
-| [`NgFor`](guide/built-in-directives#ngFor) | 为列表中的每个条目重复渲染一个节点。|
+| [`NgFor`](guide/built-in-directives#ngFor) | 为列表中的每个条目重复渲染一个节点。 |
 | [`NgSwitch`](guide/built-in-directives#ngSwitch) | A set of directives that switch among alternative views. |
-| [`NgSwitch`](guide/built-in-directives#ngSwitch) | 一组在备用视图之间切换的指令。|
+| [`NgSwitch`](guide/built-in-directives#ngSwitch) | 一组在备用视图之间切换的指令。 |
 
 For more information, see [Structural Directives](guide/structural-directives).
 
@@ -535,11 +535,11 @@ Angular puts only the selected element into the DOM.
 | :-------------------- | :------ |
 | `NgSwitch` 指令 | 详情 |
 | `NgSwitch` | An attribute directive that changes the behavior of its companion directives. |
-| `NgSwitch` | 一个属性型指令，会更改其伴生指令的行为。|
+| `NgSwitch` | 一个属性型指令，会更改其伴生指令的行为。 |
 | `NgSwitchCase` | Structural directive that adds its element to the DOM when its bound value equals the switch value and removes its bound value when it doesn't equal the switch value. |
-| `NgSwitchCase` | 当其绑定值等于开关值时将其元素添加到 DOM 中，而在其不等于开关值时将其绑定值移除。|
+| `NgSwitchCase` | 当其绑定值等于开关值时将其元素添加到 DOM 中，而在其不等于开关值时将其绑定值移除。 |
 | `NgSwitchDefault` | Structural directive that adds its element to the DOM when there is no selected `NgSwitchCase`. |
-| `NgSwitchDefault` | 当没有选中的 `NgSwitchCase` 时，将其宿主元素添加到 DOM 中。|
+| `NgSwitchDefault` | 当没有选中的 `NgSwitchCase` 时，将其宿主元素添加到 DOM 中。 |
 
 1. On an element, such as a `<div>`, add `[ngSwitch]` bound to an expression that returns the switch value, such as `feature`.
    Though the `feature` value in this example is a string, the switch value can be of any type.

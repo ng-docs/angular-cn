@@ -132,23 +132,23 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 | :---- | :------ |
 | 文件 | 用途 |
 | `README.md` | Package README, used by npmjs web UI. |
-| `README.md` | 包 README，由 npmjs web UI 使用。|
+| `README.md` | 包 README，由 npmjs web UI 使用。 |
 | `package.json` | Primary `package.json`, describing the package itself as well as all available entrypoints and code formats. This file contains the "exports" mapping used by runtimes and tools to perform module resolution. |
-| `package.json` | 主要的 `package.json`，描述包本身以及所有可用的入口点和代码格式。此文件包含供运行时使用的 `"exports"` 映射和一些用于执行模块解析的工具。|
+| `package.json` | 主要的 `package.json`，描述包本身以及所有可用的入口点和代码格式。此文件包含供运行时使用的 `"exports"` 映射和一些用于执行模块解析的工具。 |
 | `index.d.ts` | Bundled `.d.ts` for the primary entrypoint `@angular/core`. |
-| `index.d.ts` | 主入口点 `@angular/core` 捆绑的 `.d.ts`。|
+| `index.d.ts` | 主入口点 `@angular/core` 捆绑的 `.d.ts`。 |
 | `esm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs` | Tree of `@angular/core` sources in unflattened ES2020 format. |
-| `esm2020/`<br />─ `core.mjs`<br />─ `index.mjs`<br />─ `public_api.mjs` | 未展平的 ES2020 格式的 `@angular/core` 源代码树。|
+| `esm2020/`<br />─ `core.mjs`<br />─ `index.mjs`<br />─ `public_api.mjs` | 未展平的 ES2020 格式的 `@angular/core` 源代码树。 |
 | `esm2020/testing/` | Tree of the `@angular/core/testing` entrypoint in unflattened ES2020 format. |
-| `esm2020/testing/` | 未扁平化的 ES2020 格式的 `@angular/core/testing` 入口点的树。|
+| `esm2020/testing/` | 未扁平化的 ES2020 格式的 `@angular/core/testing` 入口点的树。 |
 | `fesm2015/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in a flattened (FESM) ES2015 format, along with sourcemaps. |
-| `fesm2015/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2015 格式的所有入口点的代码，以及源码映射。|
+| `fesm2015/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2015 格式的所有入口点的代码，以及源码映射。 |
 | `fesm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2020 format, along with sourcemaps. |
-| `fesm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2020 格式的所有入口点的代码，以及源码映射。|
+| `fesm2020/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 (FESM) ES2020 格式的所有入口点的代码，以及源码映射。 |
 | `testing/` | Directory representing the "testing" entrypoint. |
-| `testing/` | 代表 `testing` 入口点的目录。|
+| `testing/` | 代表 `testing` 入口点的目录。 |
 | `testing/index.d.ts` | Bundled `.d.ts` for the `@angular/core/testing` entrypoint. |
-| `testing/index.d.ts` | 为 `@angular/core/testing` 入口点打包的 `.d.ts`。|
+| `testing/index.d.ts` | 为 `@angular/core/testing` 入口点打包的 `.d.ts`。 |
 
 ## `package.json`
 
@@ -237,13 +237,13 @@ For each entrypoint, the available formats are:
 | :------ | :------ |
 | 格式 | 详情 |
 | Typings (`.d.ts` files) | `.d.ts` files are used by TypeScript when depending on a given package. |
-| 类型定义（`.d.ts` 文件）| TypeScript 在依赖于给定包时使用 `.d.ts` 文件。|
+| 类型定义（`.d.ts` 文件） | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。 |
 | `es2020` | ES2020 code flattened into a single source file. |
-| `es2020` | 已展平为单个源文件的 ES2020 代码。|
+| `es2020` | 已展平为单个源文件的 ES2020 代码。 |
 | `es2015` | ES2015 code flattened into a single source file. |
-| `es2015` | 已展平为单个源文件的 ES2015 代码。|
+| `es2015` | 已展平为单个源文件的 ES2015 代码。 |
 | `esm2020` | ES2020 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
-| `esm2020` | 未展平的源文件中的 ES2020 代码（包含此格式用于试验 - 有关详细信息，参阅[此默认值讨论](#note-about-the-defaults-in-packagejson)）。|
+| `esm2020` | 未展平的源文件中的 ES2020 代码（包含此格式用于试验 - 有关详细信息，参阅[此默认值讨论](#note-about-the-defaults-in-packagejson)）。 |
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 The remaining 2 keys control the default behavior of tooling:

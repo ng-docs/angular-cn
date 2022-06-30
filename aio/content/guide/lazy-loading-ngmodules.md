@@ -306,7 +306,7 @@ A chunk should appear for Orders and for Customers but only appears once for eac
 
 To see it again, or to test after working in the project, clear everything out by clicking the circle with a line through it in the upper left of the Network Tab:
 
-要想再次查看它或测试本项目后面的行为，只要点击 Network 页左上放的 ` 清除 ` 图标即可。
+要想再次查看它或测试本项目后面的行为，只要点击 Network 页左上放的 `清除` 图标即可。
 
 <div class="lightbox">
 

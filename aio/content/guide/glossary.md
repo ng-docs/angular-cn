@@ -224,15 +224,15 @@ Angular 使用大小写约定来区分多种名字，详见[风格指南中的 "
 | :-- | :------ | :------ |
 |  | 详细信息 | 例子 |
 | camelCase | Symbols, properties, methods, pipe names, non-component directive selectors, constants. <br /> Standard or lower camel case uses lowercase on the first letter of the item. | `selectedHero` |
-| 小驼峰形式（camelCase）| 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。| `selectedHero` |
+| 小驼峰形式（camelCase） | 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。 | `selectedHero` |
 | UpperCamelCase <br /> PascalCase | Class names, including classes that define components, interfaces, NgModules, directives, and pipes. <br /> Upper camel case uses uppercase on the first letter of the item. | `HeroListComponent` |
-| 大驼峰形式<br />Pascal 形式 | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。| `HeroListComponent` |
+| 大驼峰形式<br />Pascal 形式 | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。 | `HeroListComponent` |
 | dash-case <br /> kebab-case | Descriptive part of file names, component selectors. | `app-hero-list` |
-| 中线形式（dash-case）<br />烤串形式（kebab-case）| 文件名中的描述部分，组件的选择器。| `app-hero-list` |
+| 中线形式（dash-case）<br />烤串形式（kebab-case） | 文件名中的描述部分，组件的选择器。 | `app-hero-list` |
 | underscore_case <br /> snake_case | Not typically used in Angular. <br /> Snake case uses words connected with underscores. | `convert_link_mode` |
-| 下划线形式（underscore_case）<br />蛇形形式（snake_case）| 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。| `convert_link_mode` |
+| 下划线形式（underscore_case）<br />蛇形形式（snake_case） | 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。 | `convert_link_mode` |
 | UPPER_UNDERSCORE_CASE <br /> UPPER_SNAKE_CASE <br /> SCREAMING_SNAKE_CASE | Traditional for constants. <br /> This case is acceptable, but camelCase is preferred. <br /> Upper snake case uses words in all capital letters connected with underscores. | `FIX_ME` |
-| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE）| 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。| `FIX_ME` |
+| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE） | 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。 | `FIX_ME` |
 
 ## change detection
 
@@ -415,27 +415,27 @@ Read about the following forms of binding of the [Template Syntax][AioGuideTempl
 
 * [Interpolation][AioGuideInterpolation]
 
-   [插值][AioGuideInterpolation]
+  [插值][AioGuideInterpolation]
 
 * [Property binding][AioGuidePropertyBinding]
 
-   [property 绑定][AioGuidePropertyBinding]
+  [property 绑定][AioGuidePropertyBinding]
 
 * [Event binding][AioGuideEventBinding]
 
-   [事件绑定][AioGuideEventBinding]
+  [事件绑定][AioGuideEventBinding]
 
 * [Attribute binding][AioGuideAttributeBinding]
 
-   [attribute 绑定][AioGuideAttributeBinding]
+  [attribute 绑定][AioGuideAttributeBinding]
 
 * [Class and style binding][AioGuideAttributeBindingBindingToTheClassAttribute]
 
-   [CSS 类绑定与样式绑定][AioGuideAttributeBindingBindingToTheClassAttribute]
+  [CSS 类绑定与样式绑定][AioGuideAttributeBindingBindingToTheClassAttribute]
 
 * [Two-way data binding with ngModel][AioGuideBuiltInDirectivesDisplayingAndUpdatingPropertiesWithNgmodel]
 
-   [基于 ngModel 的双向数据绑定][AioGuideBuiltInDirectivesDisplayingAndUpdatingPropertiesWithNgmodel]
+  [基于 ngModel 的双向数据绑定][AioGuideBuiltInDirectivesDisplayingAndUpdatingPropertiesWithNgmodel]
 
 ## declarable
 
@@ -453,12 +453,12 @@ Do not declare the following:
 
 * A class that is already declared in another NgModule
 
-   已经在其它 NgModule 中声明过的类
+  已经在其它 NgModule 中声明过的类
 
 * An array of directives imported from another package.
   For example, do not declare `FORMS_DIRECTIVES` from `@angular/forms`
 
-   从其它包中导入的指令数组。比如，不要再次声明来自 `@angular/forms` 中的 `FORMS_DIRECTIVES`
+  从其它包中导入的指令数组。比如，不要再次声明来自 `@angular/forms` 中的 `FORMS_DIRECTIVES`
 
 * NgModule classes
 
@@ -540,16 +540,16 @@ There are three categories of directive:
 * [Components][AioGuideGlossaryComponent] use `@Component()` to associate a template with a class.
   `@Component()` is an extension of `@Directive()`.
 
-   [组件][AioGuideGlossaryComponent]使用 `@Component()` 为某个类关联一个模板。
+  [组件][AioGuideGlossaryComponent]使用 `@Component()` 为某个类关联一个模板。
   `@Component()` 是对 `@Directive()` 的扩展。
 
 * [Attribute directives][AioGuideGlossaryAttributeDirective] modify behavior and appearance of page elements.
 
-   [属性型指令][AioGuideGlossaryAttributeDirective]修改页面元素的行为和外观。
+  [属性型指令][AioGuideGlossaryAttributeDirective]修改页面元素的行为和外观。
 
 * [Structural directives][AioGuideGlossaryStructuralDirective] modify the structure of the DOM.
 
-   [结构型指令][AioGuideGlossaryStructuralDirective]修改 DOM 的结构。
+  [结构型指令][AioGuideGlossaryStructuralDirective]修改 DOM 的结构。
 
 Angular supplies a number of built-in directives that begin with the `ng` prefix.
 You can also create new directives to implement your own functionality.
@@ -724,15 +724,15 @@ Angular [依赖注入系统][AioGuideGlossaryDependencyInjectionDi]中可以在�
 
 * An injector provides a singleton instance of a dependency, and can inject this same instance in multiple components.
 
-   注入器会提供依赖的一个单例，并把这个单例对象注入到多个组件中。
+  注入器会提供依赖的一个单例，并把这个单例对象注入到多个组件中。
 
 * A hierarchy of injectors at the NgModule and component level can provide different instances of a dependency to their own components and child components.
 
-   模块和组件级别的注入器树可以为它们拥有的组件及其子组件提供同一个依赖的不同实例。
+  模块和组件级别的注入器树可以为它们拥有的组件及其子组件提供同一个依赖的不同实例。
 
 * You can configure injectors with different providers that can provide different implementations of the same dependency.
 
-   你可以为同一个依赖使用不同的提供者来配置这些注入器，这些提供者可以为同一个依赖提供不同的实现。
+  你可以为同一个依赖使用不同的提供者来配置这些注入器，这些提供者可以为同一个依赖提供不同的实现。
 
 Learn more about the injector hierarchy in [Hierarchical Dependency Injectors][AioGuideHierarchicalDependencyInjection].
 
@@ -841,7 +841,7 @@ To add re-usable Angular functionality to non-Angular web applications, use Angu
 
 * Application developers can use the [Angular CLI][AioGuideGlossaryCommandLineInterfaceCli] to `add` a published library for use with an application in the same [workspace][AioGuideGlossaryWorkspace].
 
-   应用开发者可以使用 [CLI][AioGuideGlossaryCommandLineInterfaceCli] 来把一个已发布的库 `add` 进这个应用所在的[工作区][AioGuideGlossaryWorkspace]。
+  应用开发者可以使用 [CLI][AioGuideGlossaryCommandLineInterfaceCli] 来把一个已发布的库 `add` 进这个应用所在的[工作区][AioGuideGlossaryWorkspace]。
 
 See also [schematic][AioGuideGlossarySchematic].
 
@@ -868,21 +868,21 @@ Angular 会按以下顺序调用钩子方法：
 | :-- | :---------- | :------ |
 |  | 钩子方法 | 详细信息 |
 | 1 | `ngOnChanges` | When an [input][AioGuideGlossaryInput] or [output][AioGuideGlossaryOutput] binding value changes. |
-| 1 | `ngOnChanges` | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。|
+| 1 | `ngOnChanges` | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。 |
 | 2 | `ngOnInit` | After the first `ngOnChanges`. |
-| 2 | `ngOnInit` | 在第一个 `ngOnChanges` 之后。|
+| 2 | `ngOnInit` | 在第一个 `ngOnChanges` 之后。 |
 | 3 | `ngDoCheck` | Developer's custom change detection. |
-| 3 | `ngDoCheck` | 开发人员的自定义变更检测。|
+| 3 | `ngDoCheck` | 开发人员的自定义变更检测。 |
 | 4 | `ngAfterContentInit` | After component content initialized. |
-| 4 | `ngAfterContentInit` | 组件内容初始化后。|
+| 4 | `ngAfterContentInit` | 组件内容初始化后。 |
 | 5 | `ngAfterContentChecked` | After every check of component content. |
-| 5 | `ngAfterContentChecked` | 在每次检查组件内容之后。|
+| 5 | `ngAfterContentChecked` | 在每次检查组件内容之后。 |
 | 6 | `ngAfterViewInit` | After the views of a component are initialized. |
-| 6 | `ngAfterViewInit` | 在组件的视图被初始化之后。|
+| 6 | `ngAfterViewInit` | 在组件的视图被初始化之后。 |
 | 7 | `ngAfterViewChecked` | After every check of the views of a component. |
-| 7 | `ngAfterViewChecked` | 在每次检查组件视图之后。|
+| 7 | `ngAfterViewChecked` | 在每次检查组件视图之后。 |
 | 8 | `ngOnDestroy` | Just before the directive is destroyed. |
-| 8 | `ngOnDestroy` | 就在指令被销毁之前。|
+| 8 | `ngOnDestroy` | 就在指令被销毁之前。 |
 
 To learn more, see [Lifecycle Hooks][AioGuideLifecycleHooks].
 
@@ -1150,15 +1150,15 @@ When using reactive forms:
 
 * Each control is explicitly created in the component class by creating a `FormControl` instance manually or with `FormBuilder`.
 
-   在组件类中，使用 `new FormControl()` 或者 `FormBuilder` 显性地创建每个控件。
+  在组件类中，使用 `new FormControl()` 或者 `FormBuilder` 显性地创建每个控件。
 
 * The template input elements do *not* use `ngModel`.
 
-   模板中的 `input` 元素**不**使用 `ngModel`。
+  模板中的 `input` 元素**不**使用 `ngModel`。
 
 * The associated Angular directives are prefixed with `form`, such as `formControl`, `formGroup`, and `formControlName`.
 
-   相关联的 Angular 指令全部以 `Form` 开头，比如 `FormGroup()`、`FormControl()` 和 `FormControlName()`。
+  相关联的 Angular 指令全部以 `Form` 开头，比如 `FormGroup()`、`FormControl()` 和 `FormControlName()`。
 
 The alternative is a template-driven form.
 For an introduction and comparison of both forms approaches, see [Introduction to Angular Forms][AioGuideFormsOverview].
@@ -1392,7 +1392,7 @@ The `subscribe()` method takes an [observer][AioGuideGlossaryObserver] JavaScrip
 
 * The `next` notification sends a value such as a number, a string, or an object.
 
-   `next`（下一个）通知会发送一个值，比如数字、字符串、对象。
+  `next`（下一个）通知会发送一个值，比如数字、字符串、对象。
 
 * The `error` notification sends a JavaScript Error or exception.
 
@@ -1475,19 +1475,19 @@ When using template-driven forms:
 * The "source of truth" is the template.
   The validation is defined using attributes on the individual input elements.
 
-   模板是“事实之源”。使用属性 (attribute) 在单个输入元素上定义验证规则。
+  模板是“事实之源”。使用属性 (attribute) 在单个输入元素上定义验证规则。
 
 * [Two-way binding][AioGuideGlossaryDataBinding] with `ngModel` keeps the component model synchronized with the user's entry into the input elements.
 
-   使用 `ngModel` 进行[双向绑定][AioGuideGlossaryDataBinding]，保持组件模型和用户输入之间的同步。
+  使用 `ngModel` 进行[双向绑定][AioGuideGlossaryDataBinding]，保持组件模型和用户输入之间的同步。
 
 * Behind the scenes, Angular creates a new control for each input element, provided you have set up a `name` attribute and two-way binding for each input.
 
-   在幕后，Angular 为每个带有 `name` 属性和双向绑定的输入元素创建了一个新的控件。
+  在幕后，Angular 为每个带有 `name` 属性和双向绑定的输入元素创建了一个新的控件。
 
 * The associated Angular directives are prefixed with `ng` such as `ngForm`, `ngModel`, and `ngModelGroup`.
 
-   相关的 Angular 指令都带有 `ng` 前缀，比如 `ngForm`、`ngModel` 和 `ngModelGroup`。
+  相关的 Angular 指令都带有 `ng` 前缀，比如 `ngForm`、`ngModel` 和 `ngModelGroup`。
 
 The alternative is a reactive form.
 For an introduction and comparison of both forms approaches, see [Introduction to Angular Forms][AioGuideFormsOverview].

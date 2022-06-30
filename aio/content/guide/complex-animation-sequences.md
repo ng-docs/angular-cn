@@ -32,13 +32,13 @@ The functions that control complex animation sequences are:
 | :-------- | :------ |
 | 函数 | 详情 |
 | `query()` | Finds one or more inner HTML elements. |
-| `query()` | 用于查找一个或多个内部 HTML 元素。|
+| `query()` | 用于查找一个或多个内部 HTML 元素。 |
 | `stagger()` | Applies a cascading delay to animations for multiple elements. |
-| `stagger()` | 用于为多元素动画应用级联延迟。|
+| `stagger()` | 用于为多元素动画应用级联延迟。 |
 | [`group()`](api/animations/group) | Runs multiple animation steps in parallel. |
-| [`group()`](api/animations/group) | 用于并行执行多个动画步骤。|
+| [`group()`](api/animations/group) | 用于并行执行多个动画步骤。 |
 | `sequence()` | Runs animation steps one after another. |
-| `sequence()` | 用于逐个顺序执行多个动画步骤。|
+| `sequence()` | 用于逐个顺序执行多个动画步骤。 |
 
 <a id="complex-sequence"></a>
 
@@ -54,9 +54,9 @@ Most complex animations rely on the `query()` function to find child elements an
 | :------- | :------ |
 | 例子 | 详情 |
 | `query()` followed by `animate()` | Used to query simple HTML elements and directly apply animations to them. |
-| `query()` 后跟 `animate()` | 用于查询简单的 HTML 元素并直接对它们应用动画。|
+| `query()` 后跟 `animate()` | 用于查询简单的 HTML 元素并直接对它们应用动画。 |
 | `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation (which would be otherwise be blocked by the current/parent element's animation). |
-| `query()` 后跟 `animateChild()` | 用于查询子元素，这些元素本身就应用了动画元数据并触发这样的动画（否则将被当前/父元素的动画阻止）。|
+| `query()` 后跟 `animateChild()` | 用于查询子元素，这些元素本身就应用了动画元数据并触发这样的动画（否则将被当前/父元素的动画阻止）。 |
 
 The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Angular-specific tokens:
 
@@ -66,13 +66,13 @@ The first argument of `query()` is a [css selector](https://developer.mozilla.or
 | :----- | :------ |
 | 标记 | 详情 |
 | `:enter` <br /> `:leave` | For entering/leaving elements. |
-| `:enter`<br />`:leave` | 用于进入/离开元素。|
+| `:enter`<br />`:leave` | 用于进入/离开元素。 |
 | `:animating` | For elements currently animating. |
-| `:animating` | 对于当前正在播放动画的元素。|
+| `:animating` | 对于当前正在播放动画的元素。 |
 | `@*` <br /> `@triggerName` | For elements with any—or a specific—trigger. |
-| `@*` <br /> `@triggerName` | 对于具有任何（或特定）触发器的元素。|
+| `@*` <br /> `@triggerName` | 对于具有任何（或特定）触发器的元素。 |
 | `:self` | The animating element itself. |
-| `:self` | 动画元素本身。|
+| `:self` | 动画元素本身。 |
 
 <div class="callout is-helpful">
 

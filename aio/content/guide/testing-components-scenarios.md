@@ -1740,7 +1740,7 @@ Tests that exercise the component need …
 
 * A reference to the title text
 
-   一个对标题文本的引用
+  一个对标题文本的引用
 
 * A reference to the name input box to inspect and set it
 

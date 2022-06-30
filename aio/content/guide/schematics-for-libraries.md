@@ -159,9 +159,9 @@ To tell the library how to build the schematics, add a `tsconfig.schematics.json
    | :------ | :------ |
    | 选项 | 详情 |
    | `rootDir` | Specifies that your `schematics` folder contains the input files to be compiled. |
-   | `rootDir` | 指出在你的 `schematics/` 文件夹中包含要编译的输入文件。|
+   | `rootDir` | 指出在你的 `schematics/` 文件夹中包含要编译的输入文件。 |
    | `outDir` | Maps to the library's output folder. By default, this is the `dist/my-lib` folder at the root of your workspace. |
-   | `outDir` | 映射到了库的输出目录下。默认情况下，这是工作区根目录下的 `dist/my-lib` 文件夹。|
+   | `outDir` | 映射到了库的输出目录下。默认情况下，这是工作区根目录下的 `dist/my-lib` 文件夹。 |
 
 1. To make sure your schematics source files get compiled into the library bundle, add the following scripts to the `package.json` file in your library project's root folder (`projects/my-lib`).
 
@@ -264,11 +264,11 @@ When you add a schematic to the collection, you have to point to it in the colle
    | :------ | :------ |
    | 选项 | 详情 |
    | name | The name you want to provide for the created service. |
-   | name | 你要为创建的这个服务指定的名称。|
+   | name | 你要为创建的这个服务指定的名称。 |
    | path | Overrides the path provided to the schematic. The default path value is based on the current working directory. |
-   | path | 覆盖为原理图提供的路径。默认情况下，路径是基于当前工作目录的。|
+   | path | 覆盖为原理图提供的路径。默认情况下，路径是基于当前工作目录的。 |
    | project | Provides a specific project to run the schematic on. In the schematic, you can provide a default if the option is not provided by the user. |
-   | project | 提供一个具体项目来运行原理图。在原理图中，如果用户没有给出该选项，你可以提供一个默认值。|
+   | project | 提供一个具体项目来运行原理图。在原理图中，如果用户没有给出该选项，你可以提供一个默认值。 |
 
 ### Add template files
 
@@ -432,17 +432,17 @@ Use the templating to generate any custom files required for your schematic.
    | :------ | :------ |
    | 方法 | 详情 |
    | `apply()` | Applies multiple rules to a source and returns the transformed source. It takes 2 arguments, a source and an array of rules. |
-   | `apply()` | 将多个规则应用于源并返回转换后的源。它需要 2 个参数、一个源和一个规则数组。|
+   | `apply()` | 将多个规则应用于源并返回转换后的源。它需要 2 个参数、一个源和一个规则数组。 |
    | `url()` | Reads source files from your filesystem, relative to the schematic. |
-   | `url()` | 相对于原理图，从文件系统中读取源文件。|
+   | `url()` | 相对于原理图，从文件系统中读取源文件。 |
    | `applyTemplates()` | Receives an argument of methods and properties you want make available to the schematic template and the schematic filenames. It returns a `Rule`. This is where you define the `classify()` and `dasherize()` methods, and the `name` property. |
-   | `applyTemplates()` | 接收你希望使其可用于原理图模板和原理图文件名的方法和属性的参数。它返回一个 `Rule`。这是你定义 `classify()` 和 `dasherize()` 方法以及 `name` 属性的地方。|
+   | `applyTemplates()` | 接收你希望使其可用于原理图模板和原理图文件名的方法和属性的参数。它返回一个 `Rule`。这是你定义 `classify()` 和 `dasherize()` 方法以及 `name` 属性的地方。 |
    | `classify()` | Takes a value and returns the value in title case. For example, if the provided name is `my service`, it is returned as `MyService`. |
-   | `classify()` | 接受一个值并以标题大小写形式返回值。例如，如果提供的名称是 `my service`，它会作为 `MyService` 返回。|
+   | `classify()` | 接受一个值并以标题大小写形式返回值。例如，如果提供的名称是 `my service`，它会作为 `MyService` 返回。 |
    | `dasherize()` | Takes a value and returns the value in dashed and lowercase. For example, if the provided name is MyService, it is returned as `my-service`. |
-   | `dasherize()` | 接受一个值并以虚线和小写形式返回值。例如，如果提供的名称是 MyService，则它将作为 `my-service` 返回。|
+   | `dasherize()` | 接受一个值并以虚线和小写形式返回值。例如，如果提供的名称是 MyService，则它将作为 `my-service` 返回。 |
    | `move()` | Moves the provided source files to their destination when the schematic is applied. |
-   | `move()` | 应用原理图时，将提供的源文件移动到它们的目标。|
+   | `move()` | 应用原理图时，将提供的源文件移动到它们的目标。 |
 
 1. Finally, the rule factory must return a rule.
 

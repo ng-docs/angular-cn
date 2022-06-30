@@ -21,9 +21,9 @@ that are important to Angular developers, including details about the following 
 | :---- | :------ |
 | 文件 | 详情 |
 | [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript compiler configuration. |
-| [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript 编译器配置。|
+| [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript 编译器配置。 |
 | [typings](guide/typescript-configuration#typings) | TypesScript declaration files. |
-| [typings](guide/typescript-configuration#typings) | TypesScript 类型声明文件。|
+| [typings](guide/typescript-configuration#typings) | TypesScript 类型声明文件。 |
 
 <a id="tsconfig"></a>
 

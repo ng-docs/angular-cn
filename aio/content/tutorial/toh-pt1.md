@@ -57,9 +57,9 @@ CLI 自动生成了三个元数据属性：
 | `selector` | The component's CSS element selector. |
 | `selector` | 组件的 CSS 元素选择器 |
 | `templateUrl` | The location of the component's template file. |
-| `templateUrl` | 组件模板文件的位置。|
+| `templateUrl` | 组件模板文件的位置。 |
 | `styleUrls` | The location of the component's private CSS styles. |
-| `styleUrls` | 组件私有 CSS 样式表文件的位置。|
+| `styleUrls` | 组件私有 CSS 样式表文件的位置。 |
 
 <a id="selector"></a>
 

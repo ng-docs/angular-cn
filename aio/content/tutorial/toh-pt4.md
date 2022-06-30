@@ -526,11 +526,11 @@ This template binds directly to the component's `messageService`.
 | :-- | :------ |
 |  | 详情 |
 | `*ngIf` | Only displays the messages area if there are messages to show. |
-| `*ngIf` | 只有在有消息时才会显示消息区。|
+| `*ngIf` | 只有在有消息时才会显示消息区。 |
 | `*ngFor` | Presents the list of messages in repeated `<div>` elements. |
-| `*ngFor` | 在一系列 `<div>` 元素中展示消息列表。|
+| `*ngFor` | 在一系列 `<div>` 元素中展示消息列表。 |
 | Angular [event binding](guide/event-binding) | Binds the button's click event to `MessageService.clear()`. |
-| Angular [事件绑定](guide/event-binding) | 把按钮的 `click` 事件绑定到了 `MessageService.clear()`。|
+| Angular [事件绑定](guide/event-binding) | 把按钮的 `click` 事件绑定到了 `MessageService.clear()`。 |
 
 The messages will look better when you add the private CSS styles to `messages.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
 

@@ -246,25 +246,25 @@ Unless otherwise commented, each following option is set to the value for `stric
 | :-------------- | :----- |
 | 严格标志 | 影响 |
 | `strictInputTypes` | Whether the assignability of a binding expression to the `@Input()` field is checked. Also affects the inference of directive generic types. |
-| `strictInputTypes` | 是否检查绑定表达式对 \`@Input()\` 字段的可赋值性。也会影响指令泛型类型的推断。|
+| `strictInputTypes` | 是否检查绑定表达式对 \`@Input()\` 字段的可赋值性。也会影响指令泛型类型的推断。 |
 | `strictInputAccessModifiers` | Whether access modifiers such as `private`/`protected`/`readonly` are honored when assigning a binding expression to an `@Input()`. If disabled, the access modifiers of the `@Input` are ignored; only the type is checked. This option is `false` by default, even with `strictTemplates` set to `true`. |
-| `strictInputAccessModifiers` | 在把绑定表达式赋值给 \`@Input()\` 时，是否检查像 \`private\`/\`protected\`/\`readonly\` 这样的访问修饰符。如果禁用，则 \`@Input\` 上的访问修饰符会被忽略，只进行类型检查。本选项默认为 \`false\`，即使当 \`strictTemplates\` 为 \`true\` 时也一样。|
+| `strictInputAccessModifiers` | 在把绑定表达式赋值给 \`@Input()\` 时，是否检查像 \`private\`/\`protected\`/\`readonly\` 这样的访问修饰符。如果禁用，则 \`@Input\` 上的访问修饰符会被忽略，只进行类型检查。本选项默认为 \`false\`，即使当 \`strictTemplates\` 为 \`true\` 时也一样。 |
 | `strictNullInputTypes` | Whether `strictNullChecks` is honored when checking `@Input()` bindings (per `strictInputTypes`). Turning this off can be useful when using a library that was not built with `strictNullChecks` in mind. |
-| `strictNullInputTypes` | 检查 \`@Input()\` 绑定时是否要 \`strictNullChecks\`（对于每个 \`strictInputTypes\`）。当使用的库不是基于 \`strictNullChecks\` 构建的时，将其关闭会很有帮助。|
+| `strictNullInputTypes` | 检查 \`@Input()\` 绑定时是否要 \`strictNullChecks\`（对于每个 \`strictInputTypes\`）。当使用的库不是基于 \`strictNullChecks\` 构建的时，将其关闭会很有帮助。 |
 | `strictAttributeTypes` | Whether to check `@Input()` bindings that are made using text attributes. For example, <code-example format="html" hideCopy language="html"> &lt;input matInput disabled="true"&gt; </code-example> (setting the `disabled` property to the string `'true'`) vs <code-example format="html" hideCopy language="html"> &lt;input matInput [disabled]="true"&gt; </code-example> (setting the `disabled` property to the boolean `true`). |
-| `strictAttributeTypes` | 是否检查使用文本属性进行的 `@Input()` 绑定。例如，<code-example format="html" hideCopy language="html"> &lt;input matInput disabled="true"&gt; </code-example>（将 `disabled` 属性设置为字符串 `'true'`）vs<code-example format="html" hideCopy language="html"> &lt;input matInput [disabled]="true"&gt; </code-example>（将 `disabled` 属性设置为布尔值 `true`）。|
+| `strictAttributeTypes` | 是否检查使用文本属性进行的 `@Input()` 绑定。例如，<code-example format="html" hideCopy language="html"> &lt;input matInput disabled="true"&gt; </code-example>（将 `disabled` 属性设置为字符串 `'true'`）vs<code-example format="html" hideCopy language="html"> &lt;input matInput [disabled]="true"&gt; </code-example>（将 `disabled` 属性设置为布尔值 `true`）。 |
 | `strictSafeNavigationTypes` | Whether the return type of safe navigation operations (for example, `user?.name` will be correctly inferred based on the type of `user`). If disabled, `user?.name` will be of type `any`. |
-| `strictSafeNavigationTypes` | 是否根据 \`user\` 的类型正确推断出安全导航操作的返回类型（比如 \`user?.name\`）。如果禁用，则 \`user?.name\` 的类型为 \`any\`。|
+| `strictSafeNavigationTypes` | 是否根据 \`user\` 的类型正确推断出安全导航操作的返回类型（比如 \`user?.name\`）。如果禁用，则 \`user?.name\` 的类型为 \`any\`。 |
 | `strictDomLocalRefTypes` | Whether local references to DOM elements will have the correct type. If disabled `ref` will be of type `any` for `<input #ref>`. |
-| `strictDomLocalRefTypes` | 对 DOM 元素的本地引用是否将具有正确的类型。如果禁用，对于 \`\` 来说 \`ref\` 会是 \`any\` 类型的。|
+| `strictDomLocalRefTypes` | 对 DOM 元素的本地引用是否将具有正确的类型。如果禁用，对于 \`\` 来说 \`ref\` 会是 \`any\` 类型的。 |
 | `strictOutputEventTypes` | Whether `$event` will have the correct type for event bindings to component/directive an `@Output()`, or to animation events. If disabled, it will be `any`. |
-| `strictOutputEventTypes` | 对于绑定到组件/指令 \`@Output()\` 或动画事件的事件绑定，\`$event\` 是否具有正确的类型。如果禁用，它将为 \`any\`。|
+| `strictOutputEventTypes` | 对于绑定到组件/指令 \`@Output()\` 或动画事件的事件绑定，\`$event\` 是否具有正确的类型。如果禁用，它将为 \`any\`。 |
 | `strictDomEventTypes` | Whether `$event` will have the correct type for event bindings to DOM events. If disabled, it will be `any`. |
-| `strictDomEventTypes` | 对于与 DOM 事件的事件绑定，\`$event\` 是否具有正确的类型。如果禁用，它将为 \`any\`。|
+| `strictDomEventTypes` | 对于与 DOM 事件的事件绑定，\`$event\` 是否具有正确的类型。如果禁用，它将为 \`any\`。 |
 | `strictContextGenerics` | Whether the type parameters of generic components will be inferred correctly (including any generic bounds). If disabled, any type parameters will be `any`. |
-| `strictContextGenerics` | 泛型组件的类型参数是否应该被正确推断（包括泛型上界和下界）. 如果禁用它，所有的类型参数都会被当做 \`any\`。|
+| `strictContextGenerics` | 泛型组件的类型参数是否应该被正确推断（包括泛型上界和下界）. 如果禁用它，所有的类型参数都会被当做 \`any\`。 |
 | `strictLiteralTypes` | Whether object and array literals declared in the template will have their type inferred. If disabled, the type of such literals will be `any`. This flag is `true` when *either* `fullTemplateTypeCheck` or `strictTemplates` is set to `true`. |
-| `strictLiteralTypes` | 是否要推断模板中声明的对象和数组字面量的类型。如果禁用，则此类文字的类型就是 \`any\`。当 \`fullTemplateTypeCheck\` 或 \`strictTemplates\` 为 \`true\` 时，此标志为 \`true\`。|
+| `strictLiteralTypes` | 是否要推断模板中声明的对象和数组字面量的类型。如果禁用，则此类文字的类型就是 \`any\`。当 \`fullTemplateTypeCheck\` 或 \`strictTemplates\` 为 \`true\` 时，此标志为 \`true\`。 |
 
 If you still have issues after troubleshooting with these flags, fall back to full mode by disabling `strictTemplates`.
 

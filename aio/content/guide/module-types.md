@@ -43,17 +43,17 @@ This topic provides some guidelines for the following general categories of NgMo
 | :------- | :------ |
 | 分类 | 详情 |
 | [Domain](#domain) | Is organized around a feature, business domain, or user experience. |
-| [Domain](#domain) | 围绕特性、业务领域或用户体验进行组织。|
+| [Domain](#domain) | 围绕特性、业务领域或用户体验进行组织。 |
 | [Routed](#routed) | Is the top component of the NgModule. Acts as the destination of a [router](guide/glossary#router "Definition of router") navigation route. |
-| [Routed](#routed) | 模块的顶层组件充当[路由器](guide/glossary#router "路由器的定义")访问这部分路由时的目的地。|
+| [Routed](#routed) | 模块的顶层组件充当[路由器](guide/glossary#router "路由器的定义")访问这部分路由时的目的地。 |
 | [Routing](#routing) | Provides the routing configuration for another NgModule. |
-| [Routing](#routing) | 路由配置模块为另一个模块提供路由配置。|
+| [Routing](#routing) | 路由配置模块为另一个模块提供路由配置。 |
 | [Service](#service) | Provides utility services such as data access and messaging. |
-| [Service](#service) | 服务模块提供实用服务，比如数据访问和消息传递。|
+| [Service](#service) | 服务模块提供实用服务，比如数据访问和消息传递。 |
 | [Widget](#widget) | Makes a component, directive, or pipe available to other NgModules. |
-| [Widget](#widget) | 小部件模块可以为其它模块提供某些组件、指令或管道。|
+| [Widget](#widget) | 小部件模块可以为其它模块提供某些组件、指令或管道。 |
 | [Shared](#shared) | Makes a set of components, directives, and pipes available to other NgModules. |
-| [Shared](#shared) | 共享模块可以为其它的模块提供组件，指令和管道的集合。|
+| [Shared](#shared) | 共享模块可以为其它的模块提供组件，指令和管道的集合。 |
 
 The following table summarizes the key characteristics of each category.
 
@@ -67,7 +67,7 @@ The following table summarizes the key characteristics of each category.
 | Routed | Yes | Rare | No | None |
 | 带路由的模块 | 是 | 罕见 | 否 | 无 |
 | Routing | No | Yes (Guards) | RouterModule | Another domain (for routing) |
-| 路由 | 否 | 是 (路由守卫) | RouterModule | 其它领域模块（为获取路由定义）|
+| 路由 | 否 | 是 (路由守卫) | RouterModule | 其它领域模块（为获取路由定义） |
 | Service | No | Yes | No | `AppModule` |
 | 服务模块 | 否 | 是 | 否 | `AppModule` |
 | Widget | Yes | Rare | Yes | Another domain |
@@ -287,7 +287,7 @@ If you want to manage NgModule loading and the use of dependencies and services,
 
 * To learn how to create a singleton service to use in NgModules, see [Making a service a singleton](guide/singleton-services "Making a service a singleton")
 
-  要了解如何在模块中创建单例服务，请参阅[“使服务成为单例”](guide/singleton-services "使服务成为单例") 
+  要了解如何在模块中创建单例服务，请参阅[“使服务成为单例”](guide/singleton-services "使服务成为单例")
 
 <!-- links -->
 

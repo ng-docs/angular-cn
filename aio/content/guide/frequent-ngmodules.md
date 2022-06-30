@@ -14,17 +14,17 @@ Angular 应用至少需要一个充当根模块使用的模块。
 | :------- | :------------- | :------------- |
 | 模块 | 导入自 | 为何用它 |
 | `BrowserModule` | `@angular/platform-browser` | To run your application in a browser. |
-| `BrowserModule` | `@angular/platform-browser` | 在浏览器中运行应用。|
+| `BrowserModule` | `@angular/platform-browser` | 在浏览器中运行应用。 |
 | `CommonModule` | `@angular/common` | To use `NgIf` and `NgFor`. |
-| `CommonModule` | `@angular/common` | 使用 `NgIf` 和 `NgFor`。|
+| `CommonModule` | `@angular/common` | 使用 `NgIf` 和 `NgFor`。 |
 | `FormsModule` | `@angular/forms` | To build template driven forms (includes `NgModel`). |
-| `FormsModule` | `@angular/forms` | 构建模板驱动表单（包括 `NgModel`）。|
+| `FormsModule` | `@angular/forms` | 构建模板驱动表单（包括 `NgModel`）。 |
 | `ReactiveFormsModule` | `@angular/forms` | To build reactive forms. |
-| `ReactiveFormsModule` | `@angular/forms` | 构建响应式表单。|
+| `ReactiveFormsModule` | `@angular/forms` | 构建响应式表单。 |
 | `RouterModule` | `@angular/router` | To use `RouterLink`, `.forRoot()`, and `.forChild()`. |
-| `RouterModule` | `@angular/router` | 使用 `RouterLink` 、 `.forRoot()` 和 `.forChild()`。|
+| `RouterModule` | `@angular/router` | 使用 `RouterLink` 、 `.forRoot()` 和 `.forChild()`。 |
 | `HttpClientModule` | `@angular/common/http` | To communicate with a server using the HTTP protocol. |
-| `HttpClientModule` | `@angular/common/http` | 使用 HTTP 协议与服务器通信。|
+| `HttpClientModule` | `@angular/common/http` | 使用 HTTP 协议与服务器通信。 |
 
 ## Importing modules
 
