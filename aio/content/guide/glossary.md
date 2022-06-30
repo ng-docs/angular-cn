@@ -43,7 +43,7 @@ This glossary lists the most prominent terms and a few less familiar ones with u
 
 ## ahead-of-time (AOT) compilation
 
-## 预 (ahead-of-time, AOT) 编译
+## 预先 (ahead-of-time, AOT) 编译
 
 The Angular ahead-of-time (AOT) compiler converts Angular HTML and TypeScript code into efficient JavaScript code during the build phase, before the browser downloads and runs that code.
 This is the best compilation mode for production environments, with decreased load time and increased performance compared to [just-in-time (JIT) compilation][AioGuideGlossaryJustInTimeJitCompilation].
@@ -773,8 +773,6 @@ Read more in the [Interpolation][AioGuideInterpolation] guide.
 在[插值][AioGuideInterpolation]指南中阅读更多内容。
 
 ## Ivy
-
-## 常春藤
 
 Ivy is the historical code name for the current [compilation and rendering pipeline][AngularBlogAPlanForVersion80AndIvyB3318dfc19f7] in Angular.
 It is now the only supported engine, so everything uses Ivy.
