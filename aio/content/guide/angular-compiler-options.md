@@ -101,9 +101,9 @@ The following modes are available:
 | :---- | :------ |
 | 模式 | 详情 |
 | `'full'` | Generates fully AOT-compiled code according to the version of Angular that is currently being used. |
-| `'full'` | 根据当前使用的 Angular 版本生成完全 AOT 编译的代码。|
+| `'full'` | 根据当前使用的 Angular 版本生成完全 AOT 编译的代码。 |
 | `'partial'` | Generates code in a stable, but intermediate form suitable for a published library. |
-| `'partial'` | 生成稳定的中间代码，适用于已发布的库。|
+| `'partial'` | 生成稳定的中间代码，适用于已发布的库。 |
 
 The default value is `'full'`.
 

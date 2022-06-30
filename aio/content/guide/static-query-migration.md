@@ -160,9 +160,9 @@ This classification determined when query results would become available to user
 | :------ | :------ |
 | 查询 | 详情 |
 | Static queries | The result could be determined statically because the result didn't depend on runtime values like bindings. Results from queries classified as static were available before change detection ran for that view (accessible in `ngOnInit`). |
-| 静态查询 | 查询结果是可以静态确定的，因为其结果并不依赖运行期间的值（比如数据绑定）。静态查询的结果在该视图运行变更检测之前就是可用的（可以在 `ngOnInit` 访问）。|
+| 静态查询 | 查询结果是可以静态确定的，因为其结果并不依赖运行期间的值（比如数据绑定）。静态查询的结果在该视图运行变更检测之前就是可用的（可以在 `ngOnInit` 访问）。 |
 | Dynamic queries | the result could not be determined statically because the result depended on runtime values (bindings). Results from queries classified as dynamic were not available until after change detection ran for that view (accessible in `ngAfterContentInit` for content queries or `ngAfterViewInit` for view queries). |
-| 动态查询 | 查询结果是无法静态确定的，因为其结果取决于运行期间的值（比如数据绑定）。动态查询的结果在运行该视图的变更检测之前是不可用的（只能在 `ngAfterContentInit` 中访问内容查询或在 `ngAfterViewInit` 中访问视图查询）。|
+| 动态查询 | 查询结果是无法静态确定的，因为其结果取决于运行期间的值（比如数据绑定）。动态查询的结果在运行该视图的变更检测之前是不可用的（只能在 `ngAfterContentInit` 中访问内容查询或在 `ngAfterViewInit` 中访问视图查询）。 |
 
 For example, let's say we have a component, `Comp`.
 Inside it, we have this query:

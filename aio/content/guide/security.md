@@ -45,11 +45,11 @@ For more information about how Google handles security issues, see [Google's sec
 | :-------- | :------ |
 | 实践 | 详情 |
 | Keep current with the latest Angular library releases | We regularly update the Angular libraries, and these updates might fix security defects discovered in previous versions. Check the Angular [change log](https://github.com/angular/angular/blob/main/CHANGELOG.md) for security-related updates. |
-| 及时把 Angular 包更新到最新版本 | 我们会频繁的更新 Angular 库，这些更新可能会修复之前版本中发现的安全漏洞。查看 Angular 的[更新记录](https://github.com/angular/angular/blob/main/CHANGELOG.md)，了解与安全有关的更新。|
+| 及时把 Angular 包更新到最新版本 | 我们会频繁的更新 Angular 库，这些更新可能会修复之前版本中发现的安全漏洞。查看 Angular 的[更新记录](https://github.com/angular/angular/blob/main/CHANGELOG.md)，了解与安全有关的更新。 |
 | Don't modify your copy of Angular | Private, customized versions of Angular tend to fall behind the current version and might not include important security fixes and enhancements. Instead, share your Angular improvements with the community and make a pull request. |
 | 不要修改你的 Angular 副本 | 私有的、定制版的 Angular 往往跟不上最新版本，这可能导致你忽略重要的安全修复与增强。反之，应该在社区共享你对 Angular 所做的改进并创建 Pull Request。. |
 | Avoid Angular APIs marked in the documentation as "*Security Risk*" | For more information, see the [Trusting safe values](guide/security#bypass-security-apis) section of this page. |
-| 避免使用本文档中带“[*安全风险*](guide/security#bypass-security-apis)”标记的 Angular API | 要了解更多信息，请参阅本章的[信任那些安全的值](guide/security#bypass-security-apis)部分。|
+| 避免使用本文档中带“[*安全风险*](guide/security#bypass-security-apis)”标记的 Angular API | 要了解更多信息，请参阅本章的[信任那些安全的值](guide/security#bypass-security-apis)部分。 |
 
 </div>
 
@@ -114,13 +114,13 @@ Angular 定义了四个安全环境 - HTML，样式，URL，和资源 URL：
 | :---------------- | :------ |
 | 安全上下文 | 详情 |
 | HTML | Used when interpreting a value as HTML, for example, when binding to `innerHtml`. |
-| HTML | 值需要被解释为 HTML 时使用，比如当绑定到 `innerHTML` 时。|
+| HTML | 值需要被解释为 HTML 时使用，比如当绑定到 `innerHTML` 时。 |
 | Style | Used when binding CSS into the `style` property. |
-| 样式 | 值需要作为 CSS 绑定到 `style` 属性时使用。|
+| 样式 | 值需要作为 CSS 绑定到 `style` 属性时使用。 |
 | URL | Used for URL properties, such as `<a href>`. |
-| URL | 值需要被用作 URL 属性时使用，比如 `<a href>`。|
+| URL | 值需要被用作 URL 属性时使用，比如 `<a href>`。 |
 | Resource URL | A URL that is loaded and executed as code, for example, in `<script src>`. |
-| 资源 URL | 值需要作为代码进行加载并执行，比如 `<script src>` 中的 URL。|
+| 资源 URL | 值需要作为代码进行加载并执行，比如 `<script src>` 中的 URL。 |
 
 Angular sanitizes untrusted values for HTML, styles, and URLs; sanitizing resource URLs isn't possible because they contain arbitrary code.
 In development mode, Angular prints a console warning when it has to change a value during sanitization.
@@ -262,9 +262,9 @@ default-src 'self'; style-src 'self' 'unsafe-inline';
 | :------- | :------ |
 | 区段 | 详情 |
 | `default-src 'self';` | Allows the page to load all its required resources from the same origin. |
-| `default-src 'self';` | 允许此页面加载所有来自同源的资源。|
+| `default-src 'self';` | 允许此页面加载所有来自同源的资源。 |
 | `style-src 'self' 'unsafe-inline';` | Allows the page to load global styles from the same origin (`'self'`) and enables components to load their styles (`'unsafe-inline'` - see [`angular/angular#6361`](https://github.com/angular/angular/issues/6361)). |
-| `style-src 'self' 'unsafe-inline';` | 允许此页面加载来自同源的全局样式(`'self'`)，并允许组件加载它们的样式(`'unsafe-inline'` - 参见 [`angular/angular#6361`](https://github.com/angular/angular/issues/6361))。|
+| `style-src 'self' 'unsafe-inline';` | 允许此页面加载来自同源的全局样式(`'self'`)，并允许组件加载它们的样式(`'unsafe-inline'` - 参见 [`angular/angular#6361`](https://github.com/angular/angular/issues/6361))。 |
 
 Angular itself requires only these settings to function correctly.
 As your project grows, however, you may need to expand your CSP settings beyond this minimum to accommodate additional features specific to your application.
@@ -301,11 +301,11 @@ To enforce Trusted Types for your application, you must configure your applicati
 | :------- | :----- |
 | 策略 | 详情 |
 | `angular` | This policy is used in security-reviewed code that is internal to Angular, and is required for Angular to function when Trusted Types are enforced. Any inline template values or content sanitized by Angular is treated as safe by this policy. |
-| `angular` | 此策略用于 Angular 内部经过安全审查的代码，并且当强制执行可信类型时，Angular 需要此策略才能正常运行。任何由 Angular 清理的内联模板值或内容都被此政策视为安全的。|
+| `angular` | 此策略用于 Angular 内部经过安全审查的代码，并且当强制执行可信类型时，Angular 需要此策略才能正常运行。任何由 Angular 清理的内联模板值或内容都被此政策视为安全的。 |
 | `angular#unsafe-bypass` | This policy is used for applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypass security, such as `bypassSecurityTrustHtml`. Any application that uses these methods must enable this policy. |
-| `angular#unsafe-bypass` | 此策略用于要使用 Angular 的 [DomSanitizer](api/platform-browser/DomSanitizer) 的各个方法来绕过安全性的应用程序，比如 `bypassSecurityTrustHtml`。任何使用了这些方法的应用程序都必须启用此策略。|
+| `angular#unsafe-bypass` | 此策略用于要使用 Angular 的 [DomSanitizer](api/platform-browser/DomSanitizer) 的各个方法来绕过安全性的应用程序，比如 `bypassSecurityTrustHtml`。任何使用了这些方法的应用程序都必须启用此策略。 |
 | `angular#unsafe-jit` | This policy is used by the [JIT compiler](api/core/Compiler). You must enable this policy if your application interacts directly with the JIT compiler or is running in JIT mode using the [platform browser dynamic](api/platform-browser-dynamic/platformBrowserDynamic). |
-| `angular#unsafe-jit` | [JIT 编译器](api/core/Compiler)使用此策略。如果你的应用程序直接与 JIT 编译器交互或使用 [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic) 在 JIT 模式下运行，则必须启用此策略。|
+| `angular#unsafe-jit` | [JIT 编译器](api/core/Compiler)使用此策略。如果你的应用程序直接与 JIT 编译器交互或使用 [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic) 在 JIT 模式下运行，则必须启用此策略。 |
 
 You should configure the HTTP headers for Trusted Types in the following locations:
 

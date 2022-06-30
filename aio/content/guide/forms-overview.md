@@ -53,9 +53,9 @@ Each approach offers different advantages.
 | :---- | :------ |
 | 表单 | 详情 |
 | Reactive forms | Provide direct, explicit access to the underlying forms object model. Compared to template-driven forms, they are more robust: they're more scalable, reusable, and testable. If forms are a key part of your application, or you're already using reactive patterns for building your application, use reactive forms. |
-| 响应式表单 | 提供对底层表单对象模型直接、显式的访问。它们与模板驱动表单相比，更加健壮：它们的可扩展性、可复用性和可测试性都更高。如果表单是你的应用程序的关键部分，或者你已经在使用响应式表单来构建应用，那就使用响应式表单。|
+| 响应式表单 | 提供对底层表单对象模型直接、显式的访问。它们与模板驱动表单相比，更加健壮：它们的可扩展性、可复用性和可测试性都更高。如果表单是你的应用程序的关键部分，或者你已经在使用响应式表单来构建应用，那就使用响应式表单。 |
 | Template-driven forms | Rely on directives in the template to create and manipulate the underlying object model. They are useful for adding a simple form to an app, such as an email list signup form. They're straightforward to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, template-driven forms could be a good fit. |
-| 模板驱动表单 | 依赖**模板中的**指令来创建和操作底层的对象模型。它们对于向应用添加一个简单的表单非常有用，比如电子邮件列表注册表单。它们很容易添加到应用中，但在扩展性方面不如响应式表单。如果你有可以只在模板中管理的非常基本的表单需求和逻辑，那么模板驱动表单就很合适。|
+| 模板驱动表单 | 依赖**模板中的**指令来创建和操作底层的对象模型。它们对于向应用添加一个简单的表单非常有用，比如电子邮件列表注册表单。它们很容易添加到应用中，但在扩展性方面不如响应式表单。如果你有可以只在模板中管理的非常基本的表单需求和逻辑，那么模板驱动表单就很合适。 |
 
 ### Key differences
 
@@ -122,11 +122,11 @@ Both reactive and template-driven forms are built on the following base classes.
 | :----------- | :------ |
 | 基类 | 详情 |
 | `FormControl` | Tracks the value and validation status of an individual form control. |
-| `FormControl` | 追踪单个表单控件的值和验证状态。|
+| `FormControl` | 追踪单个表单控件的值和验证状态。 |
 | `FormGroup` | Tracks the same values and status for a collection of form controls. |
-| `FormGroup` | 追踪一个表单控件组的值和状态。|
+| `FormGroup` | 追踪一个表单控件组的值和状态。 |
 | `FormArray` | Tracks the same values and status for an array of form controls. |
-| `FormArray` | 追踪表单控件数组的值和状态。|
+| `FormArray` | 追踪表单控件数组的值和状态。 |
 | `ControlValueAccessor` | Creates a bridge between Angular `FormControl` instances and built-in DOM elements. |
 | `ControlValueAccessor` | 在 Angular 的 `FormControl` 实例和内置 DOM 元素之间创建一个桥梁 |
 
@@ -389,9 +389,9 @@ The change-tracking method plays a role in the efficiency of your application.
 | :---- | :------ |
 | 表格 | 详细信息 |
 | Reactive forms | Keep the data model pure by providing it as an immutable data structure. Each time a change is triggered on the data model, the `FormControl` instance returns a new data model rather than updating the existing data model. This gives you the ability to track unique changes to the data model through the control's observable. Change detection is more efficient because it only needs to update on unique changes. Because data updates follow reactive patterns, you can integrate with observable operators to transform data. |
-| 响应式表单 | 通过以不可变的数据结构提供数据模型，来保持数据模型的纯粹性。每当在数据模型上触发更改时，`FormControl` 实例都会返回一个新的数据模型，而不会更新现有的数据模型。这使你能够通过该控件的可观察对象跟踪对数据模型的唯一更改。这让变更检测更有效率，因为它只需在唯一性更改（译注：也就是对象引用发生变化）时进行更新。由于数据更新遵循响应式模式，因此你可以把它和可观察对象的各种运算符集成起来以转换数据。|
+| 响应式表单 | 通过以不可变的数据结构提供数据模型，来保持数据模型的纯粹性。每当在数据模型上触发更改时，`FormControl` 实例都会返回一个新的数据模型，而不会更新现有的数据模型。这使你能够通过该控件的可观察对象跟踪对数据模型的唯一更改。这让变更检测更有效率，因为它只需在唯一性更改（译注：也就是对象引用发生变化）时进行更新。由于数据更新遵循响应式模式，因此你可以把它和可观察对象的各种运算符集成起来以转换数据。 |
 | Template-driven forms | Rely on mutability with two-way data binding to update the data model in the component as changes are made in the template. Because there are no unique changes to track on the data model when using two-way data binding, change detection is less efficient at determining when updates are required. |
-| 模板驱动表单 | 依赖于可变性和双向数据绑定，可以在模板中做出更改时更新组件中的数据模型。由于使用双向数据绑定时没有用来对数据模型进行跟踪的唯一性更改，因此变更检测在需要确定何时更新时效率较低。|
+| 模板驱动表单 | 依赖于可变性和双向数据绑定，可以在模板中做出更改时更新组件中的数据模型。由于使用双向数据绑定时没有用来对数据模型进行跟踪的唯一性更改，因此变更检测在需要确定何时更新时效率较低。 |
 
 The difference is demonstrated in the previous examples that use the favorite-color input element.
 

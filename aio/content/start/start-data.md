@@ -262,7 +262,7 @@ This section shows you how to use the cart service to display the products in th
    This code sets the items using the `CartService` `getItems()` method.
    You defined this method [when you created `cart.service.ts`](#generate-cart-service).
 
-    这段代码使用 `CartService` 的 `getItems()` 方法来设置条目。你以前在[创建 `cart.service.ts`](#generate-cart-service) 时定义过此方法。
+   这段代码使用 `CartService` 的 `getItems()` 方法来设置条目。你以前在[创建 `cart.service.ts`](#generate-cart-service) 时定义过此方法。
 
 1. Update the cart template with a header, and use a `<div>` with an `*ngFor` to display each of the cart items with its name and price.
 

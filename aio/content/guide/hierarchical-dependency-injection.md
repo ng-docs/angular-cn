@@ -19,15 +19,15 @@ This topic uses the following pictographs.
 | :------------ | :---------- |
 | html 实体 | 象形文字 |
 | <code>🌺</code> | red hibiscus (`🌺`) |
-| <code>🌺</code> | 红芙蓉（`🌺`）|
+| <code>🌺</code> | 红芙蓉（`🌺`） |
 | <code>🌻</code> | sunflower (`🌻`) |
 | <code>🌻</code> | 向日葵 ( `🌻` ) |
 | <code>🌼</code> | yellow flower (`🌼`) |
-| <code>🌼</code> | 黄色花（`🌼`）|
+| <code>🌼</code> | 黄色花（`🌼`） |
 | <code>🌿</code> | fern (`🌿`) |
 | <code>🌿</code> | 蕨类 ( `🌿` ) |
 | <code>🍁</code> | maple leaf (`🍁`) |
-| <code>🍁</code> | 枫叶（`🍁`）|
+| <code>🍁</code> | 枫叶（`🍁`） |
 | <code>🐳</code> | whale (`🐳`) |
 | <code>🐳</code> | 鲸鱼 ( `🐳` ) |
 | <code>🐶</code> | dog (`🐶`) |
@@ -49,9 +49,9 @@ Angular 中有两个注入器层次结构：
 | :------------------- | :------ |
 | 注入器层次结构 | 详细信息 |
 | `ModuleInjector` hierarchy | Configure a `ModuleInjector` in this hierarchy using an `@NgModule()` or `@Injectable()` annotation. |
-| `ModuleInjector` 层次结构 | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。|
+| `ModuleInjector` 层次结构 | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。 |
 | `ElementInjector` hierarchy | Created implicitly at each DOM element. An `ElementInjector` is empty by default unless you configure it in the `providers` property on `@Directive()` or `@Component()`. |
-| `ElementInjector` 层次结构 | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。|
+| `ElementInjector` 层次结构 | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。 |
 
 <a id="register-providers-injectable"></a>
 
@@ -63,7 +63,7 @@ The `ModuleInjector` can be configured in one of two ways:
 
 * Using the `@Injectable()` `providedIn` property to refer to `@NgModule()`, or `root`
 
-    使用 `@Injectable()` 的 `providedIn` 属性引用 `@NgModule()` 或 `root`
+  使用 `@Injectable()` 的 `providedIn` 属性引用 `@NgModule()` 或 `root`
 
 * Using the `@NgModule()` `providers` array
 
@@ -309,11 +309,11 @@ Resolution modifiers fall into three categories:
 
 * Where to start looking, that is `@SkipSelf()`
 
-   从哪里开始寻找，用 `@SkipSelf()`
+  从哪里开始寻找，用 `@SkipSelf()`
 
 * Where to stop looking, `@Host()` and `@Self()`
 
-   到哪里停止寻找，用 `@Host()` 和 `@Self()`
+  到哪里停止寻找，用 `@Host()` 和 `@Self()`
 
 By default, Angular always starts at the current `Injector` and keeps searching all the way up.
 Modifiers allow you to change the starting (self) or ending location.
@@ -517,11 +517,11 @@ In the logical tree, you'll see `@Provide`, `@Inject`, and `@NgModule`, which ar
 | :------------------------ | :------ |
 | Angular 服务属性 | 详细信息 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | Demonstrates that if `Token` is injected at this location in the logical tree its value would be `Value`. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | 演示如果 `Token` 在逻辑树中的此位置注入，其值将是 `Value`。|
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | 演示如果 `Token` 在逻辑树中的此位置注入，其值将是 `Value`。 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | Demonstrates that there is a declaration of `Token` provider with value `Value` at this location in the logical tree. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | 演示在逻辑树中的此位置有一个值为 `Value` 的 `Token` provider 声明。|
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | 演示在逻辑树中的此位置有一个值为 `Value` 的 `Token` provider 声明。 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | Demonstrates that a fallback `NgModule` injector should be used at this location. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | 演示应该在此位置使用后备 `NgModule` 注入器。|
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | 演示应该在此位置使用后备 `NgModule` 注入器。 |
 
 </div>
 
@@ -625,11 +625,11 @@ The resolution of the token happens in two phases:
    The injector begins with the starting location and looks for the token at each level in the logical tree.
    If the token is found it is returned.
 
-      注入器确定逻辑树中搜索的开始位置和结束位置。注入程序从起始位置开始，并在逻辑树的每个级别上查找令牌。如果找到令牌，则将其返回。
+   注入器确定逻辑树中搜索的开始位置和结束位置。注入程序从起始位置开始，并在逻辑树的每个级别上查找令牌。如果找到令牌，则将其返回。
 
 1. If the token is not found, the injector looks for the closest parent `@NgModule()` to delegate the request to.
 
-    如果未找到令牌，则注入程序将寻找最接近的父 `@NgModule()` 委派该请求。
+   如果未找到令牌，则注入程序将寻找最接近的父 `@NgModule()` 委派该请求。
 
 In the example case, the constraints are:
 
@@ -651,7 +651,7 @@ In the example case, the constraints are:
 
 1. The `AppModule` acts as the fallback injector when the injection token can't be found in the `ElementInjector`s.
 
-    当在 `ElementInjector` 中找不到注入令牌时，就用 `AppModule` 充当后备注入器。
+   当在 `ElementInjector` 中找不到注入令牌时，就用 `AppModule` 充当后备注入器。
 
 ### Using the `providers` array
 
@@ -1277,15 +1277,15 @@ Each tax return component has the following characteristics:
 
 * Is its own tax return editing session
 
-   属于它自己的报税单会话
+  属于它自己的报税单会话
 
 * Can change a tax return without affecting a return in another component
 
-   可以修改一个报税单，而不会影响另一个组件中的申报单
+  可以修改一个报税单，而不会影响另一个组件中的申报单
 
 * Has the ability to save the changes to its tax return or cancel them
 
-   能把所做的修改保存到它的报税单中，或者放弃它们
+  能把所做的修改保存到它的报税单中，或者放弃它们
 
 <div class="lightbox">
 

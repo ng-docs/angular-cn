@@ -208,29 +208,29 @@ It has a great deal of useful information including:
 | :------- | :------ |
 | 属性 | 详情 |
 | `url` | An `Observable` of the route path(s), represented as an array of strings for each part of the route path. |
-| `url` | 一个路由路径的 `Observable`，是一个由路由路径的各个部分组成的字符串数组。|
+| `url` | 一个路由路径的 `Observable`，是一个由路由路径的各个部分组成的字符串数组。 |
 | `data` | An `Observable` that contains the `data` object provided for the route. Also contains any resolved values from the [resolve guard](guide/router-tutorial-toh#resolve-guard). |
-| `data` | 包含提供给当前路由的 `data` 对象的 `Observable`。也包含任何由[解析守卫](guide/router-tutorial-toh#resolve-guard)解析出的值。|
+| `data` | 包含提供给当前路由的 `data` 对象的 `Observable`。也包含任何由[解析守卫](guide/router-tutorial-toh#resolve-guard)解析出的值。 |
 | `params` | An `Observable` that contains the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route. |
-| `params` | `Observable` 可以包含此路由的必选和[可选参数](guide/router-tutorial-toh#optional-route-parameters)。|
+| `params` | `Observable` 可以包含此路由的必选和[可选参数](guide/router-tutorial-toh#optional-route-parameters)。 |
 | `paramMap` | An `Observable` that contains a [map](api/router/ParamMap) of the required and [optional parameters](guide/router-tutorial-toh#optional-route-parameters) specific to the route. The map supports retrieving single and multiple values from the same parameter. |
-| `paramMap` | 一个包含该路由的必要参数和[可选参数](guide/router-tutorial-toh#optional-route-parameters) [map](api/router/ParamMap) 的 `Observable`。这个 map 支持从同一个参数中获得单个或多个值。|
+| `paramMap` | 一个包含该路由的必要参数和[可选参数](guide/router-tutorial-toh#optional-route-parameters) [map](api/router/ParamMap) 的 `Observable`。这个 map 支持从同一个参数中获得单个或多个值。 |
 | `queryParamMap` | An `Observable` that contains a [map](api/router/ParamMap) of the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes. The map supports retrieving single and multiple values from the query parameter. |
-| `queryParamMap` | 一个包含适用于所有路由的[查询参数](guide/router-tutorial-toh#query-parameters) [map](api/router/ParamMap) 的 `Observable`。这个 map 支持从同一个查询参数中获得单个或多个值。|
+| `queryParamMap` | 一个包含适用于所有路由的[查询参数](guide/router-tutorial-toh#query-parameters) [map](api/router/ParamMap) 的 `Observable`。这个 map 支持从同一个查询参数中获得单个或多个值。 |
 | `queryParams` | An `Observable` that contains the [query parameters](guide/router-tutorial-toh#query-parameters) available to all routes. |
-| `queryParams` | `Observable` 可以包含对所有路由都可用的[查询参数](guide/router-tutorial-toh#query-parameters)。|
+| `queryParams` | `Observable` 可以包含对所有路由都可用的[查询参数](guide/router-tutorial-toh#query-parameters)。 |
 | `fragment` | An `Observable` of the URL [fragment](guide/router-tutorial-toh#fragment) available to all routes. |
-| `fragment` | 一个适用于所有路由的 URL [片段](guide/router-tutorial-toh#fragment)的 `Observable`。|
+| `fragment` | 一个适用于所有路由的 URL [片段](guide/router-tutorial-toh#fragment)的 `Observable`。 |
 | `outlet` | The name of the `RouterOutlet` used to render the route. For an unnamed outlet, the outlet name is primary. |
-| `outlet` | 用来渲染该路由的 `RouterOutlet` 的名字。对于无名出口，这个出口的名字是 `primary`。|
+| `outlet` | 用来渲染该路由的 `RouterOutlet` 的名字。对于无名出口，这个出口的名字是 `primary`。 |
 | `routeConfig` | The route configuration used for the route that contains the origin path. |
-| `routeConfig` | 包含原始路径的那个路由的配置信息。|
+| `routeConfig` | 包含原始路径的那个路由的配置信息。 |
 | `parent` | The route's parent `ActivatedRoute` when this route is a [child route](guide/router-tutorial-toh#child-routing-component). |
-| `parent` | 当该路由是[子路由](guide/router-tutorial-toh#child-routing-component)时，表示该路由的父级 `ActivatedRoute`。|
+| `parent` | 当该路由是[子路由](guide/router-tutorial-toh#child-routing-component)时，表示该路由的父级 `ActivatedRoute`。 |
 | `firstChild` | Contains the first `ActivatedRoute` in the list of this route's child routes. |
-| `firstChild` | 包含该路由的子路由列表中的第一个 `ActivatedRoute`。|
+| `firstChild` | 包含该路由的子路由列表中的第一个 `ActivatedRoute`。 |
 | `children` | Contains all the [child routes](guide/router-tutorial-toh#child-routing-component) activated under the current route. |
-| `children` | 包含当前路由下所有激活的[子路由](guide/router-tutorial-toh#child-routing-component)。|
+| `children` | 包含当前路由下所有激活的[子路由](guide/router-tutorial-toh#child-routing-component)。 |
 
 ## Router events
 
@@ -245,37 +245,37 @@ These events range from when the navigation starts and ends to many points in be
 | :----------- | :------ |
 | 路由事件 | 详情 |
 | [`NavigationStart`](api/router/NavigationStart) | Triggered when navigation starts. |
-| [`NavigationStart`](api/router/NavigationStart) | 开始导航时触发。|
+| [`NavigationStart`](api/router/NavigationStart) | 开始导航时触发。 |
 | [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | Triggered before the `Router` [lazy loads](guide/router-tutorial-toh#asynchronous-routing) a route configuration. |
-| [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | 路由器[惰性加载](guide/router-tutorial-toh#asynchronous-routing)某个路由配置之前触发。|
+| [`RouteConfigLoadStart`](api/router/RouteConfigLoadStart) | 路由器[惰性加载](guide/router-tutorial-toh#asynchronous-routing)某个路由配置之前触发。 |
 | [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd) | Triggered after a route has been lazy loaded. |
-| [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd) | 某个路由惰性加载完毕后触发。|
+| [`RouteConfigLoadEnd`](api/router/RouteConfigLoadEnd) | 某个路由惰性加载完毕后触发。 |
 | [`RoutesRecognized`](api/router/RoutesRecognized) | Triggered when the Router parses the URL and the routes are recognized. |
-| [`RoutesRecognized`](api/router/RoutesRecognized) | 路由器解析完 URL，并且识别出路由时触发。|
+| [`RoutesRecognized`](api/router/RoutesRecognized) | 路由器解析完 URL，并且识别出路由时触发。 |
 | [`GuardsCheckStart`](api/router/GuardsCheckStart) | Triggered when the Router begins the Guards phase of routing. |
-| [`GuardsCheckStart`](api/router/GuardsCheckStart) | 路由器开始执行路由守卫时触发。|
+| [`GuardsCheckStart`](api/router/GuardsCheckStart) | 路由器开始执行路由守卫时触发。 |
 | [`ChildActivationStart`](api/router/ChildActivationStart) | Triggered when the Router begins activating a route's children. |
-| [`ChildActivationStart`](api/router/ChildActivationStart) | 路由器开始激活某个路由的子路由时触发。|
+| [`ChildActivationStart`](api/router/ChildActivationStart) | 路由器开始激活某个路由的子路由时触发。 |
 | [`ActivationStart`](api/router/ActivationStart) | Triggered when the Router begins activating a route. |
-| [`ActivationStart`](api/router/ActivationStart) | 路由器开始激活某个路由时触发。|
+| [`ActivationStart`](api/router/ActivationStart) | 路由器开始激活某个路由时触发。 |
 | [`GuardsCheckEnd`](api/router/GuardsCheckEnd) | Triggered when the Router finishes the Guards phase of routing successfully. |
-| [`GuardsCheckEnd`](api/router/GuardsCheckEnd) | 路由器完全完成了路由守卫阶段时触发。|
+| [`GuardsCheckEnd`](api/router/GuardsCheckEnd) | 路由器完全完成了路由守卫阶段时触发。 |
 | [`ResolveStart`](api/router/ResolveStart) | Triggered when the Router begins the Resolve phase of routing. |
-| [`ResolveStart`](api/router/ResolveStart) | 路由器开始路由解析（Resolve）阶段时触发。|
+| [`ResolveStart`](api/router/ResolveStart) | 路由器开始路由解析（Resolve）阶段时触发。 |
 | [`ResolveEnd`](api/router/ResolveEnd) | Triggered when the Router finishes the Resolve phase of routing successfully. |
-| [`ResolveEnd`](api/router/ResolveEnd) | 路由器成功完成了路由解析（Resolve）阶段时触发。|
+| [`ResolveEnd`](api/router/ResolveEnd) | 路由器成功完成了路由解析（Resolve）阶段时触发。 |
 | [`ChildActivationEnd`](api/router/ChildActivationEnd) | Triggered when the Router finishes activating a route's children. |
-| [`ChildActivationEnd`](api/router/ChildActivationEnd) | 路由器激活完某个路由的子路由时触发。|
+| [`ChildActivationEnd`](api/router/ChildActivationEnd) | 路由器激活完某个路由的子路由时触发。 |
 | [`ActivationEnd`](api/router/ActivationEnd) | Triggered when the Router finishes activating a route. |
-| [`ActivationEnd`](api/router/ActivationEnd) | 路由器正在激活某个路由时触发。|
+| [`ActivationEnd`](api/router/ActivationEnd) | 路由器正在激活某个路由时触发。 |
 | [`NavigationEnd`](api/router/NavigationEnd) | Triggered when navigation ends successfully. |
-| [`NavigationEnd`](api/router/NavigationEnd) | 导航成功结束时触发。|
+| [`NavigationEnd`](api/router/NavigationEnd) | 导航成功结束时触发。 |
 | [`NavigationCancel`](api/router/NavigationCancel) | Triggered when navigation is canceled. This can happen when a [Route Guard](guide/router-tutorial-toh#guards) returns false during navigation, or redirects by returning a `UrlTree`. |
-| [`NavigationCancel`](api/router/NavigationCancel) | 导航被取消时触发。这可能是因为在导航期间某个[路由守卫](guide/router-tutorial-toh#guards)返回了 false 或通过返回 `UrlTree` 而进行了重定向。|
+| [`NavigationCancel`](api/router/NavigationCancel) | 导航被取消时触发。这可能是因为在导航期间某个[路由守卫](guide/router-tutorial-toh#guards)返回了 false 或通过返回 `UrlTree` 而进行了重定向。 |
 | [`NavigationError`](api/router/NavigationError) | Triggered when navigation fails due to an unexpected error. |
-| [`NavigationError`](api/router/NavigationError) | 当导航因为非预期的错误而失败时触发。|
+| [`NavigationError`](api/router/NavigationError) | 当导航因为非预期的错误而失败时触发。 |
 | [`Scroll`](api/router/Scroll) | Represents a scrolling event. |
-| [`Scroll`](api/router/Scroll) | 表示一个滚动事件。|
+| [`Scroll`](api/router/Scroll) | 表示一个滚动事件。 |
 
 When you enable the `enableTracing` option, Angular logs these events to the console.
 For an example of filtering router navigation events, see the [router section](guide/observables-in-angular#router) of the [Observables in Angular](guide/observables-in-angular) guide.
@@ -294,27 +294,27 @@ Here are the key `Router` terms and their meanings:
 | :---------- | :------ |
 | 路由器部件 | 详情 |
 | `Router` | Displays the application component for the active URL. Manages navigation from one component to the next. |
-| `Router` | 为活动 URL 显示应用中的组件。管理从一个组件到另一个的导航。|
+| `Router` | 为活动 URL 显示应用中的组件。管理从一个组件到另一个的导航。 |
 | `RouterModule` | A separate NgModule that provides the necessary service providers and directives for navigating through application views. |
-| `RouterModule` | 一个单独的 NgModule，它提供了一些必要的服务提供者和一些用于在应用视图间导航的指令。|
+| `RouterModule` | 一个单独的 NgModule，它提供了一些必要的服务提供者和一些用于在应用视图间导航的指令。 |
 | `Routes` | Defines an array of Routes, each mapping a URL path to a component. |
-| `Routes` | 定义一个路由数组，每一个条目都会把一个 URL 路径映射到组件。|
+| `Routes` | 定义一个路由数组，每一个条目都会把一个 URL 路径映射到组件。 |
 | `Route` | Defines how the router should navigate to a component based on a URL pattern. Most routes consist of a path and a component type. |
-| `Route` | 定义路由器如何基于一个 URL 模式导航到某个组件。大部分路由都由一个路径和一个组件类组成。|
+| `Route` | 定义路由器如何基于一个 URL 模式导航到某个组件。大部分路由都由一个路径和一个组件类组成。 |
 | `RouterOutlet` | The directive (`<router-outlet>`) that marks where the router displays a view. |
-| `RouterOutlet` | 该指令 (`<router-outlet>`) 用于指出路由器应该把视图显示在哪里。|
+| `RouterOutlet` | 该指令 (`<router-outlet>`) 用于指出路由器应该把视图显示在哪里。 |
 | `RouterLink` | The directive for binding a clickable HTML element to a route. Clicking an element with a `routerLink` directive that is bound to a *string* or a *link parameters array* triggers a navigation. |
-| `RouterLink` | 用于将可点击的 HTML 元素绑定到某个路由的指令。单击带有 `routerLink` 指令且绑定到*字符串*或*链接参数数组*的元素，将触发导航。|
+| `RouterLink` | 用于将可点击的 HTML 元素绑定到某个路由的指令。单击带有 `routerLink` 指令且绑定到*字符串*或*链接参数数组*的元素，将触发导航。 |
 | `RouterLinkActive` | The directive for adding/removing classes from an HTML element when an associated `routerLink` contained on or inside the element becomes active/inactive. It can also set the `aria-current` of an active link for better accessibility. |
-| `RouterLinkActive` | 当包含在元素上或内部的关联 `routerLink` 变为活动/非活动状态时，用于从 HTML 元素添加/删除类的指令。它还可以设置活动链接的 `aria-current` 以获得更好的无障碍性。|
+| `RouterLinkActive` | 当包含在元素上或内部的关联 `routerLink` 变为活动/非活动状态时，用于从 HTML 元素添加/删除类的指令。它还可以设置活动链接的 `aria-current` 以获得更好的无障碍性。 |
 | `ActivatedRoute` | A service that is provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query params, and the global fragment. |
-| `ActivatedRoute` | 一个提供给每个路由组件的服务，其中包含当前路由专属的信息，比如路由参数、静态数据、解析数据、全局查询参数和全局片段。|
+| `ActivatedRoute` | 一个提供给每个路由组件的服务，其中包含当前路由专属的信息，比如路由参数、静态数据、解析数据、全局查询参数和全局片段。 |
 | `RouterState` | The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree. |
-| `RouterState` | 路由器的当前状态，包括一棵当前激活路由的树以及遍历这棵路由树的便捷方法。|
+| `RouterState` | 路由器的当前状态，包括一棵当前激活路由的树以及遍历这棵路由树的便捷方法。 |
 | Link parameters array | An array that the router interprets as a routing instruction. You can bind that array to a `RouterLink` or pass the array as an argument to the `Router.navigate` method. |
-| 链接参数数组 | 一个由路由器将其解释为路由指南的数组。你可以将该数组绑定到 `RouterLink` 或将该数组作为参数传给 `Router.navigate` 方法。|
+| 链接参数数组 | 一个由路由器将其解释为路由指南的数组。你可以将该数组绑定到 `RouterLink` 或将该数组作为参数传给 `Router.navigate` 方法。 |
 | Routing component | An Angular component with a `RouterOutlet` that displays views based on router navigations. |
-| 路由组件 | 一个带有 `RouterOutlet` 的 Angular 组件，可基于路由器的导航来显示视图。|
+| 路由组件 | 一个带有 `RouterOutlet` 的 Angular 组件，可基于路由器的导航来显示视图。 |
 
 <!-- links -->
 

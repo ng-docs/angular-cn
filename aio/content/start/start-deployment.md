@@ -84,7 +84,7 @@ A best practice is to run your project locally before you deploy it. To run your
 
    要在浏览器中查看你的应用，请访问 <http://localhost:4200/>。如果默认端口 4200 不可用，则可以使用端口标志指定另一个端口，如下所示：
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
    ng serve --port 4201
 

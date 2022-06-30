@@ -18,17 +18,17 @@ This process helps ensure that intentional changes to the options are kept in pl
 | TypeScript 配置文件 | 属性变更 | 现有值 | 新值 |
 | `<workspace base>/tsconfig.json` | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `browser`  builder options (`ng build` for applications) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 `browser` 构建器选项中使用（用于应用程序的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
+| 在 `browser` 构建器选项中使用（用于应用程序的 `ng build`） | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `ng-packagr` builder options (`ng build` for libraries) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 `ng-packagr` 构建器选项中使用（用于库的 `ng build`）| `"module"` | `"esnext"` | `"es2020"` |
+| 在 `ng-packagr` 构建器选项中使用（用于库的 `ng build`） | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `karma` builder options (`ng test` for applications) | `"module"` | `"esnext"` | `"es2020"` |
-| 在 `karma` 器选项中使用（用于应用程序的 `ng test`）| `"module"` | `"esnext"` | `"es2020"` |
+| 在 `karma` 器选项中使用（用于应用程序的 `ng test`） | `"module"` | `"esnext"` | `"es2020"` |
 | Used in `server` builder options (universal) | `"module"` | `"commonjs"` | *removed* |
-| 在 `server` 构建器选项中使用（通用）| `"module"` | `"commonjs"` | *已移除* |
+| 在 `server` 构建器选项中使用（通用） | `"module"` | `"commonjs"` | *已移除* |
 | Used in `server` builder options (universal) | `"target"` | *any* | `"es2016"` |
-| 在 `server` 构建器选项中使用（通用）| `"target"` | *任何* | `"es2016"` |
+| 在 `server` 构建器选项中使用（通用） | `"target"` | *任何* | `"es2016"` |
 | Used in `protractor` builder options (`ng e2e` for applications) | `"target"` | `"es5"` | `"es2018"` |
-| 在 `protractor` 构建器选项中使用（用于应用程序的 `ng e2e`）| `"target"` | `"es5"` | `"es2018"` |
+| 在 `protractor` 构建器选项中使用（用于应用程序的 `ng e2e`） | `"target"` | `"es5"` | `"es2018"` |
 
 ## Why is this migration necessary?
 

@@ -71,17 +71,17 @@ For example, your `myBuilder` folder could contain the following files.
 | :---- | :------ |
 | 文件 | 用途 |
 | `src/my-builder.ts` | Main source file for the builder definition. |
-| `src/my-builder.ts` | 这个构建器定义的主要源码。|
+| `src/my-builder.ts` | 这个构建器定义的主要源码。 |
 | `src/my-builder.spec.ts` | Source file for tests. |
-| `src/my-builder.spec.ts` | 测试的源码。|
+| `src/my-builder.spec.ts` | 测试的源码。 |
 | `src/schema.json` | Definition of builder input options. |
-| `src/schema.json` | 构建器输入选项的定义。|
+| `src/schema.json` | 构建器输入选项的定义。 |
 | `builders.json` | Builders definition. |
-| `builders.json` | 测试配置。|
+| `builders.json` | 测试配置。 |
 | `package.json` | Dependencies. See <https://docs.npmjs.com/files/package.json>. |
-| `package.json` | 依赖包。参阅 <https://docs.npmjs.com/files/package.json>。|
+| `package.json` | 依赖包。参阅 <https://docs.npmjs.com/files/package.json>。 |
 | `tsconfig.json` | [TypeScript configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html). |
-| `tsconfig.json` | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。|
+| `tsconfig.json` | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。 |
 
 Publish the builder to `npm` (see [Publishing your Library](guide/creating-libraries#publishing-your-library)).
 If you publish it as `&commat;example/my-builder`, install it using the following command.
@@ -350,11 +350,11 @@ project:target[:configuration]
 | :-- | :------ |
 |  | 详情 |
 | project | The name of the Angular CLI project that the target is associated with. |
-| 项目（project）| 与此目标关联的 Angular CLI 项目的名称。|
+| 项目（project） | 与此目标关联的 Angular CLI 项目的名称。 |
 | target | A named builder configuration from the `architect` section of the `angular.json` file. |
-| 目标 | `angular.json` 文件 `architect` 下的指定构建器配置。|
+| 目标 | `angular.json` 文件 `architect` 下的指定构建器配置。 |
 | configuration | (optional) The name of a specific configuration override for the given target, as defined in the `angular.json` file. |
-| 配置（configuration）|（可选）用于覆盖指定目标的具体配置名称，如 `angular.json` 文件中的定义。|
+| 配置（configuration） | （可选）用于覆盖指定目标的具体配置名称，如 `angular.json` 文件中的定义。 |
 
 If your builder calls another builder, it might need to read a passed target string.
 Parse this string into an object by using the `targetFromTargetString()` utility function from `@angular-devkit/architect`.
@@ -636,11 +636,11 @@ In general, if your builder is watching an external event, you should separate y
 | :----- | :------ |
 | 阶段 | 详情 |
 | Running | For example, webpack compiles. This ends when webpack finishes and your builder emits a `BuilderOutput` object. |
-| 运行 | 比如 webpack 编译。这会在 webpack 完成并且你的构建器发出 `BuilderOutput` 对象时结束。|
+| 运行 | 比如 webpack 编译。这会在 webpack 完成并且你的构建器发出 `BuilderOutput` 对象时结束。 |
 | Watching | Between two runs, watch an external event stream. For example, webpack watches the file system for any changes. This ends when webpack restarts building, and `context.reportRunning()` is called. This goes back to step 1. |
-| 监视 | 在两次运行之间监视外部事件流。比如，webpack 会监视文件系统是否发生了任何变化。这会在 webpack 重启构建时结束，并调用 `context.reportRunning()`。这样就会再回到第 1 步。|
+| 监视 | 在两次运行之间监视外部事件流。比如，webpack 会监视文件系统是否发生了任何变化。这会在 webpack 重启构建时结束，并调用 `context.reportRunning()`。这样就会再回到第 1 步。 |
 | Completion | Either the task is fully completed (for example, webpack was supposed to run a number of times), or the builder run was stopped (using `BuilderRun.stop()`). Your teardown logic is executed, and Architect unsubscribes from your builder's Observable. |
-| 完成 | 任务完全完成（比如，webpack 应运行多次），或者构建器停止运行（使用 `BuilderRun.stop()`）。你的退出逻辑被调用了，建筑师也从你的构建器的 Observable 中取消了订阅。|
+| 完成 | 任务完全完成（比如，webpack 应运行多次），或者构建器停止运行（使用 `BuilderRun.stop()`）。你的退出逻辑被调用了，建筑师也从你的构建器的 Observable 中取消了订阅。 |
 
 ## Summary
 

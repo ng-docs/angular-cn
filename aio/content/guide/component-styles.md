@@ -262,7 +262,7 @@ There are several ways to add styles to a component:
 
 * With CSS imports
 
-   通过 CSS 文件导入
+  通过 CSS 文件导入
 
 The scoping rules outlined earlier apply to each of these loading patterns.
 

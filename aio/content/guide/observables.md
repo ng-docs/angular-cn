@@ -63,11 +63,11 @@ It is an object that defines callback methods to handle the three types of notif
 | :---------------- | :------ |
 | 通知类型 | 详情 |
 | `next` | Required. A handler for each delivered value. Called zero or more times after execution starts. |
-| `next` | 必要。用来处理每个送达值。在开始执行后可能执行零次或多次。|
+| `next` | 必要。用来处理每个送达值。在开始执行后可能执行零次或多次。 |
 | `error` | Optional. A handler for an error notification. An error halts execution of the observable instance. |
-| `error` | 可选。用来处理错误通知。错误会中断这个可观察对象实例的执行过程。|
+| `error` | 可选。用来处理错误通知。错误会中断这个可观察对象实例的执行过程。 |
 | `complete` | Optional. A handler for the execution-complete notification. Delayed values can continue to be delivered to the next handler after execution is complete. |
-| `complete` | 可选。用来处理执行完毕（complete）通知。当执行完毕后，这些值就会继续传给下一个处理器。|
+| `complete` | 可选。用来处理执行完毕（complete）通知。当执行完毕后，这些值就会继续传给下一个处理器。 |
 
 An observer object can define any combination of these handlers.
 If you don't supply a handler for a notification type, the observer ignores notifications of that type.
@@ -94,9 +94,9 @@ There is a constructor that you use to create new instances, but for illustratio
 | :----------- | :------ |
 | RxJS 方法 | 详情 |
 | `of(...items)` | Returns an `Observable` instance that synchronously delivers the values provided as arguments. |
-| `of(...items)` | 返回一个 `Observable` 实例，它用同步的方式把参数中提供的这些值发送出来。|
+| `of(...items)` | 返回一个 `Observable` 实例，它用同步的方式把参数中提供的这些值发送出来。 |
 | `from(iterable)` | Converts its argument to an `Observable` instance. This method is commonly used to convert an array to an observable. |
-| `from(iterable)` | 把它的参数转换成一个 `Observable` 实例。该方法通常用于把一个数组转换成一个（发送多个值的）可观察对象。|
+| `from(iterable)` | 把它的参数转换成一个 `Observable` 实例。该方法通常用于把一个数组转换成一个（发送多个值的）可观察对象。 |
 
 </div>
 

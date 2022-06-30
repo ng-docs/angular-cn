@@ -69,9 +69,9 @@ ng generate module app-routing --flat --module=app
 | :-------- | :------ |
 | 参数 | 详情 |
 | `--flat` | Puts the file in `src/app` instead of its own folder. |
-| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。|
+| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。 |
 | `--module=app` | Tells the CLI to register it in the `imports` array of the `AppModule`. |
-| `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。|
+| `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。 |
 
 </div>
 
@@ -120,9 +120,9 @@ A typical Angular `Route` has two properties:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `path` | A string that matches the URL in the browser address bar. |
-| `path` | 用来匹配浏览器地址栏中 URL 的字符串。|
+| `path` | 用来匹配浏览器地址栏中 URL 的字符串。 |
 | `component` | The component that the router should create when navigating to this route. |
-| `component` | 导航到该路由时，路由器应该创建的组件。|
+| `component` | 导航到该路由时，路由器应该创建的组件。 |
 
 This tells the router to match that URL to `path: 'heroes'` and display the `HeroesComponent` when the URL is something like `localhost:4200/heroes`.
 

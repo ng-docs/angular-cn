@@ -134,7 +134,7 @@ The following code snippets illustrate how the same kind of operation is defined
 | Subscribe | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example> |
 | 订阅 | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example> |
 | Unsubscribe | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | Implied by promise resolution. |
-| 取消订阅 | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | 承诺被解析时隐式完成。|
+| 取消订阅 | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | 承诺被解析时隐式完成。 |
 
 ## Observables compared to events API
 

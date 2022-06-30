@@ -110,9 +110,9 @@ In the preceding `deleteHero(hero)`, the `hero` is the template input variable, 
 | :-------- | :------ |
 | 实践 | 详情 |
 | Conciseness | Use method calls or basic property assignments to keep template statements minimal. |
-| 简明 | 使用方法调用或基本属性赋值，来让模板语句保持最小化。|
+| 简明 | 使用方法调用或基本属性赋值，来让模板语句保持最小化。 |
 | Work within the context | The context of a template statement can be the component class instance or the template. Because of this, template statements cannot refer to anything in the global namespace such as `window` or `document`. For example, template statements can't call `console.log()` or `Math.max()`. |
-| 在上下文中工作 | 模板语句的上下文可以是组件类实例或模板。因此，模板语句无法引用全局名称空间中的任何内容，比如 `window` 或 `document`。比如，模板语句不能调用 `console.log()` 或 `Math.max()`。|
+| 在上下文中工作 | 模板语句的上下文可以是组件类实例或模板。因此，模板语句无法引用全局名称空间中的任何内容，比如 `window` 或 `document`。比如，模板语句不能调用 `console.log()` 或 `Math.max()`。 |
 
 <!-- links -->
 

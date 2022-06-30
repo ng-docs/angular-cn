@@ -303,9 +303,9 @@ There are two possible degraded states:
 | :-------------- | :------ |
 | 降级状态 | 详情 |
 | `EXISTING_CLIENTS_ONLY` | The service worker does not have a clean copy of the latest known version of the application. Older cached versions are safe to use, so existing tabs continue to run from cache, but new loads of the application will be served from the network. The service worker will try to recover from this state when a new version of the application is detected and installed (that is, when a new `ngsw.json` is available). |
-| `EXISTING_CLIENTS_ONLY` | 这个 Service Worker 没有该应用的最新已知版本的干净副本。较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，但新的应用将从网络上加载。|
+| `EXISTING_CLIENTS_ONLY` | 这个 Service Worker 没有该应用的最新已知版本的干净副本。较旧的缓存版本可以被安全的使用，所以现有的选项卡将继续使用较旧的版本运行本应用，但新的应用将从网络上加载。 |
 | `SAFE_MODE` | The service worker cannot guarantee the safety of using cached data. Either an unexpected error occurred or all cached versions are invalid. All traffic will be served from the network, running as little service worker code as possible. |
-| `SAFE_MODE` | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。|
+| `SAFE_MODE` | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。 |
 
 In both cases, the parenthetical annotation provides the
 error that caused the service worker to enter the degraded state.

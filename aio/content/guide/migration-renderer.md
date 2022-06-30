@@ -138,7 +138,7 @@ The following table shows all methods that the migration maps from `Renderer` to
 | `detachView(viewRootNodes)` | `for (let i = 0; i < viewRootNodes.length; i++) {const node = viewRootNodes[i]; const parentElement = parentNode(node); removeChild(parentElement, node);}` |
 | `destroyView(hostElement, viewAllNodes)` | `for (let i = 0; i < viewAllNodes.length; i++) { destroyNode(viewAllNodes[i]); }` |
 | `setBindingDebugInfo()` | This function is a noop in `Renderer2`. |
-| `setBindingDebugInfo()` | 该函数在 `Renderer2` 中无用。|
+| `setBindingDebugInfo()` | 该函数在 `Renderer2` 中无用。 |
 | `createViewRoot(hostElement)` | Should be replaced with a reference to `hostElement` |
 | `createViewRoot(hostElement)` | 应该替换成到 `hostElement` 的引用 |
 | `invokeElementMethod(renderElement, methodName, args?)` | `(renderElement as any)[methodName].apply(renderElement, args);` |

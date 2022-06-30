@@ -78,7 +78,7 @@ Notice the following features illustrated by the example.
   `NgModel` mirrors many of the properties of its underlying `FormControl` instance, so you can use this in the template to check for control states such as `valid` and `dirty`.
   For a full list of control properties, see the [AbstractControl](api/forms/AbstractControl) API reference.
 
-   `#name="ngModel"` 把 `NgModel` 导出成了一个名叫 `name` 的局部变量。`NgModel` 把自己控制的 `FormControl` 实例的属性映射出去，让你能在模板中检查控件的状态，比如 `valid` 和 `dirty`。要了解完整的控件属性，参阅 API 参考手册中的[AbstractControl](api/forms/AbstractControl)。
+  `#name="ngModel"` 把 `NgModel` 导出成了一个名叫 `name` 的局部变量。`NgModel` 把自己控制的 `FormControl` 实例的属性映射出去，让你能在模板中检查控件的状态，比如 `valid` 和 `dirty`。要了解完整的控件属性，参阅 API 参考手册中的[AbstractControl](api/forms/AbstractControl)。
 
   * The `*ngIf` on the `<div>` element reveals a set of nested message `divs` but only if the `name` is invalid and the control is either `dirty` or `touched`.
 
@@ -131,9 +131,9 @@ Validator functions can be either synchronous or asynchronous.
 | :------------- | :------ |
 | 验证器类型 | 详细信息 |
 | Sync validators | Synchronous functions that take a control instance and immediately return either a set of validation errors or `null`. Pass these in as the second argument when you instantiate a `FormControl`. |
-| 同步验证器 | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。|
+| 同步验证器 | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。 |
 | Async validators | Asynchronous functions that take a control instance and return a Promise or Observable that later emits a set of validation errors or `null`. Pass these in as the third argument when you instantiate a `FormControl`. |
-| 异步验证器 | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。|
+| 异步验证器 | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。 |
 
 For performance reasons, Angular only runs async validators if all sync validators pass.
 Each must complete before errors are set.
@@ -317,7 +317,7 @@ Angular 会自动把很多控件属性作为 CSS 类映射到控件所在的元�
 
 * `.ng-submitted` (enclosing form element only)
 
-    `.ng-submitted` (只对 form 元素添加)
+  `.ng-submitted` (只对 form 元素添加)
 
 In the following example, the hero form uses the `.ng-valid` and `.ng-invalid` classes to
 set the color of each form control's border.

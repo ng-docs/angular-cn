@@ -20,9 +20,9 @@ Choose from the following modes:
 | `ViewEncapsulation.ShadowDom` | Angular uses the browser's built-in [Shadow DOM API](https://developer.mozilla.org/docs/Web/Web_Components/Shadow_DOM) to enclose the component's view inside a ShadowRoot (used as the component's host element) and apply the provided styles in an isolated manner. <div class="alert is-important"> `ViewEncapsulation.ShadowDom` only works on browsers that have built-in support for the shadow DOM (see [Can I use - Shadow DOM v1](https://caniuse.com/shadowdomv1)). Not all browsers support it, which is why the `ViewEncapsulation.Emulated` is the recommended and default mode. </div> |
 | `ViewEncapsulation.ShadowDom` | Angular 使用浏览器内置的 [Shadow DOM API](https://developer.mozilla.org/docs/Web/Web_Components/Shadow_DOM) 将组件的视图包含在 ShadowRoot（用作组件的宿主元素）中，并以隔离的方式应用所提供的样式。<div class="alert is-important"> `ViewEncapsulation.ShadowDom` 仅适用于内置支持 shadow DOM 的浏览器（请参阅 [Can I use - Shadow DOM v1](https://caniuse.com/shadowdomv1)）。并非所有浏览器都支持它，这就是为什么 `ViewEncapsulation.Emulated` 是推荐和默认模式的原因。</div> |
 | `ViewEncapsulation.Emulated` | Angular modifies the component's CSS selectors so that they are only applied to the component's view and do not affect other elements in the application (*emulating* Shadow DOM behavior). For more details, see [Inspecting generated CSS](guide/view-encapsulation#inspect-generated-css). |
-| `ViewEncapsulation.Emulated` | Angular 会修改组件的 CSS 选择器，使它们只应用于组件的视图，不影响应用程序中的其他元素（*模拟 *Shadow DOM 行为）。有关更多详细信息，请参阅[查看生成的 CSS](guide/view-encapsulation#inspect-generated-css)。|
+| `ViewEncapsulation.Emulated` | Angular 会修改组件的 CSS 选择器，使它们只应用于组件的视图，不影响应用程序中的其他元素（*模拟 *Shadow DOM 行为）。有关更多详细信息，请参阅[查看生成的 CSS](guide/view-encapsulation#inspect-generated-css)。 |
 | `ViewEncapsulation.None` | Angular does not apply any sort of view encapsulation meaning that any styles specified for the component are actually globally applied and can affect any HTML element present within the application. This mode is essentially the same as including the styles into the HTML itself. |
-| `ViewEncapsulation.None` | Angular 不应用任何形式的视图封装，这意味着为组件指定的任何样式实际上都是全局应用的，并且可以影响应用程序中存在的任何 HTML 元素。这种模式本质上与将样式包含在 HTML 本身中是一样的。|
+| `ViewEncapsulation.None` | Angular 不应用任何形式的视图封装，这意味着为组件指定的任何样式实际上都是全局应用的，并且可以影响应用程序中存在的任何 HTML 元素。这种模式本质上与将样式包含在 HTML 本身中是一样的。 |
 
 <a id="inspect-generated-css"></a>
 
@@ -57,9 +57,9 @@ There are two kinds of such attributes:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `_nghost` | Are added to elements that enclose a component's view and that would be ShadowRoots in a native Shadow DOM encapsulation. This is typically the case for components' host elements. |
-| `_nghost` | 被添加到包裹组件视图的元素中，这将是本机 Shadow DOM 封装中的 ShadowRoots。组件的宿主元素通常就是这种情况。|
+| `_nghost` | 被添加到包裹组件视图的元素中，这将是本机 Shadow DOM 封装中的 ShadowRoots。组件的宿主元素通常就是这种情况。 |
 | `_ngcontent` | Are added to child element within a component's view, those are used to match the elements with their respective emulated ShadowRoots (host elements with a matching `_nghost` attribute). |
-| `_ngcontent` | 被添加到组件视图中的子元素上，这些属性用于将元素与其各自模拟的 ShadowRoots（具有匹配 `_nghost` 属性的宿主元素）相匹配。|
+| `_ngcontent` | 被添加到组件视图中的子元素上，这些属性用于将元素与其各自模拟的 ShadowRoots（具有匹配 `_nghost` 属性的宿主元素）相匹配。 |
 
 The exact values of these attributes are a private implementation detail of Angular.
 They are automatically generated and you should never refer to them in application code.
@@ -105,11 +105,11 @@ If it is really needed you should be aware of how the styles of components using
 | :---- | :------ |
 | 模式 | 详情 |
 | `ViewEncapsulation.Emulated` | The styles of components are added to the `<head>` of the document, making them available throughout the application, but their selectors only affect elements within their respective components' templates. |
-| `ViewEncapsulation.Emulated` | 组件的样式会添加到文档的 `<head>` 中，使它们在整个应用程序中可用，但它们的选择器只会影响它们各自组件模板中的元素。|
+| `ViewEncapsulation.Emulated` | 组件的样式会添加到文档的 `<head>` 中，使它们在整个应用程序中可用，但它们的选择器只会影响它们各自组件模板中的元素。 |
 | `ViewEncapsulation.None` | The styles of components are added to the `<head>` of the document, making them available throughout the application, so are completely global and affect any matching elements within the document. |
-| `ViewEncapsulation.None` | 组件的样式会添加到文档的 `<head>` 中，使它们在整个应用程序中可用，因此是完全全局的，会影响文档中的任何匹配元素。|
+| `ViewEncapsulation.None` | 组件的样式会添加到文档的 `<head>` 中，使它们在整个应用程序中可用，因此是完全全局的，会影响文档中的任何匹配元素。 |
 | `ViewEncapsulation.ShadowDom` | The styles of components are only added to the shadow DOM host, ensuring that they only affect elements within their respective components' views. |
-| `ViewEncapsulation.ShadowDom` | 组件样式仅添加到 shadow DOM 宿主中，确保它们仅影响各自组件视图中的元素。|
+| `ViewEncapsulation.ShadowDom` | 组件样式仅添加到 shadow DOM 宿主中，确保它们仅影响各自组件视图中的元素。 |
 
 <div class="alert is-helpful">
 

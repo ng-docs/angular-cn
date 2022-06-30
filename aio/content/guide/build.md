@@ -306,13 +306,13 @@ Specify size values in the following formats:
 | :--------- | :------ |
 | 大小值 | 详情 |
 | `123` or `123b` | Size in bytes. |
-| `123` 或 `123b` | 大小（以字节为单位）。|
+| `123` 或 `123b` | 大小（以字节为单位）。 |
 | `123kb` | Size in kilobytes. |
-| `123kb` | 大小（以千字节为单位）。|
+| `123kb` | 大小（以千字节为单位）。 |
 | `123mb` | Size in megabytes. |
-| `123mb` | 大小（以 MB 为单位）。|
+| `123mb` | 大小（以 MB 为单位）。 |
 | `12%` | Percentage of size relative to baseline. (Not valid for baseline values.) |
-| `12%` | 相对于基线（baseline）大小的百分比大小。（不能用作 baseline 的值。）|
+| `12%` | 相对于基线（baseline）大小的百分比大小。（不能用作 baseline 的值。） |
 
 When you configure a budget, the build system warns or reports an error when a given part of the application reaches or exceeds a boundary size that you set.
 
@@ -327,21 +327,21 @@ Each budget entry is a JSON object with the following properties:
 | 属性 | 值 |
 | type | 预算的类型。下列值之一：<table><thead><tr><th>值</th><th>详细信息</th></tr></thead><tbody><tr><td><code>包</code></td><td>特定包的大小。</td></tr><tr><td><code>初始的</code></td><td>引导应用程序所需的 JavaScript 的大小。默认为 500kb 的警告和 1mb 的错误。</td></tr><tr><td><code>allScript</code></td><td>所有脚本的大小。</td></tr><tr><td><code>全部</code></td><td>整个应用程序的大小。</td></tr><tr><td><code>anyComponentStyle</code></td><td>任何一个组件样式表的此大小。默认为 2kb 的警告和 4kb 的错误。</td></tr><tr><td><code>anyScript</code></td><td>任何一个脚本的大小。</td></tr><tr><td><code>任何</code></td><td>任何文件的大小。</td></tr></tbody></table> |
 | name | The name of the bundle (for `type=bundle`). |
-| name | 包的名称（对于 `type=bundle`）。|
+| name | 包的名称（对于 `type=bundle`）。 |
 | baseline | The baseline size for comparison. |
-| baseline | 一个表示基准大小的绝对值，用做比例值的基数。|
+| baseline | 一个表示基准大小的绝对值，用做比例值的基数。 |
 | maximumWarning | The maximum threshold for warning relative to the baseline. |
-| maximumWarning | 当大小超过基线的这个阈值百分比时给出警告。|
+| maximumWarning | 当大小超过基线的这个阈值百分比时给出警告。 |
 | maximumError | The maximum threshold for error relative to the baseline. |
-| maximumError | 当大小超过基线的这个阈值百分比时报错。|
+| maximumError | 当大小超过基线的这个阈值百分比时报错。 |
 | minimumWarning | The minimum threshold for warning relative to the baseline. |
-| minimumWarning | 当大小小于基线的这个阈值百分比时给出警告。|
+| minimumWarning | 当大小小于基线的这个阈值百分比时给出警告。 |
 | minimumError | The minimum threshold for error relative to the baseline. |
-| minimumError | 当大小小于基线的这个阈值百分比时报错。|
+| minimumError | 当大小小于基线的这个阈值百分比时报错。 |
 | warning | The threshold for warning relative to the baseline (min & max). |
-| warning | 当大小达到或小于基线的这个阈值百分比时都给出警告。|
+| warning | 当大小达到或小于基线的这个阈值百分比时都给出警告。 |
 | error | The threshold for error relative to the baseline (min & max). |
-| error | 当大小达到或小于基线的这个阈值百分比时都报错。|
+| error | 当大小达到或小于基线的这个阈值百分比时都报错。 |
 
 <a id="commonjs "></a>
 

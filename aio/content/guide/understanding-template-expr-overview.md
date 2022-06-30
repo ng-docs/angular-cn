@@ -173,16 +173,16 @@ When using template expressions, follow these best practices:
 
   <div class="callout is-important">
 
-    <header>Idempotent expressions reduce side effects</header>
+  <header>Idempotent expressions reduce side effects</header>
 
-    <header>幂等表达式减少副作用</header>
+  <header>幂等表达式减少副作用</header>
 
-    An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
+  An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
     In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
 
   [幂等](https://en.wikipedia.org/wiki/Idempotence)的表达式是最理想的，因为它没有副作用，并且可以提高 Angular 的变更检测性能。用 Angular 术语来说，幂等表达式总会返回*完全相同的东西*，除非其依赖值之一发生了变化。
 
-    Dependent values should not change during a single turn of the event loop.
+  Dependent values should not change during a single turn of the event loop.
     If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.
     If the expression returns an object, including an `array`, it returns the same object *reference* if you call it twice consecutively.
 

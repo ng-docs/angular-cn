@@ -357,9 +357,9 @@ It accepts an object with the following properties:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `bootstrap` | The root `NgModule` or `NgModule` factory to use for bootstrapping the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
-| `bootstrap` | 在服务器上渲染时用于引导应用程序的根 `NgModule` 或 `NgModule` 工厂。对于这个范例应用，它是 `AppServerModule`。它是 Universal 服务端渲染器和 Angular 应用之间的桥梁。|
+| `bootstrap` | 在服务器上渲染时用于引导应用程序的根 `NgModule` 或 `NgModule` 工厂。对于这个范例应用，它是 `AppServerModule`。它是 Universal 服务端渲染器和 Angular 应用之间的桥梁。 |
 | `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance. |
-| `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。|
+| `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。 |
 
 The `ngExpressEngine()` function returns a `Promise` callback that resolves to the rendered page.
 It's up to the engine to decide what to do with that page.
@@ -418,11 +418,11 @@ Because you use routing, you can recognize the three types of requests and handl
 | :-------------------- | :------ |
 | 路由请求类型 | 详情 |
 | Data request | Request URL that begins `/api`. |
-| 数据请求 | 请求的 URL 用 `/api` 开头。|
+| 数据请求 | 请求的 URL 用 `/api` 开头。 |
 | App navigation | Request URL with no file extension. |
-| 应用导航 | 请求的 URL 不带扩展名。|
+| 应用导航 | 请求的 URL 不带扩展名。 |
 | Static asset | All other requests. |
-| 静态资产 | 所有其它请求。|
+| 静态资产 | 所有其它请求。 |
 
 A Node.js Express server is a pipeline of middleware that filters and processes requests one after the other.
 You configure the Node.js Express server pipeline with calls to `server.get()` like this one for data requests.
@@ -510,13 +510,13 @@ Now, on every HTTP request made as part of rendering the application on the serv
 | :------ | :------ |
 | 脚本 | 详情 |
 | <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | Similar to [`ng serve`](cli/serve), which offers live reload during development, but uses server-side rendering. The application runs in watch mode and refreshes the browser after every change. This command is slower than the actual `ng serve` command. |
-| <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | 此命令类似于 [`ng serve`](cli/serve)，它在开发期间提供实时重新加载，但使用服务器端渲染。该应用程序以监视模式运行并在每次更改后刷新浏览器。这个命令要比实际的 `ng serve` 命令慢。|
+| <code-example format="shell" language="shell"> npm run dev:ssr </code-example> | 此命令类似于 [`ng serve`](cli/serve)，它在开发期间提供实时重新加载，但使用服务器端渲染。该应用程序以监视模式运行并在每次更改后刷新浏览器。这个命令要比实际的 `ng serve` 命令慢。 |
 | <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | Builds both the server script and the application in production mode. Use this command when you want to build the project for deployment. |
-| <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | 此命令会在生产模式下构建服务器脚本和应用程序。当你要构建用于部署的项目时，请使用此命令。|
+| <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | 此命令会在生产模式下构建服务器脚本和应用程序。当你要构建用于部署的项目时，请使用此命令。 |
 | <code-example format="shell" language="shell"> npm run serve:ssr </code-example> | Starts the server script for serving the application locally with server-side rendering. It uses the build artifacts created by `ng run build:ssr`, so make sure you have run that command as well. <div class="alert is-helpful"> **NOTE**: <br /> `serve:ssr` is not intended to be used to serve your application in production, but only for testing the server-side rendered application locally. </div> |
 | <code-example format="shell" language="shell"> npm run serve:ssr </code-example> | 此命令启动服务器脚本，用于通过服务器端渲染在本地为应用程序提供服务。它使用由 `ng run build:ssr` 创建的构建工件，因此请确保你也运行了该命令。<div class="alert is-helpful">**注意**：<br />`serve:ssr` 不能用于在生产环境为你的应用程序提供服务，而仅用于在本地测试服务器端渲染的应用程序。</div> |
 | <code-example format="shell" language="shell"> npm run prerender </code-example> | Used to prerender an application's pages. Read more about prerendering [here](guide/prerendering). |
-| <code-example format="shell" language="shell"> npm run prerender </code-example> | 此脚本可用于预先渲染应用程序的页面。[在此处](guide/prerendering)阅读有关预先渲染的更多信息。|
+| <code-example format="shell" language="shell"> npm run prerender </code-example> | 此脚本可用于预先渲染应用程序的页面。[在此处](guide/prerendering)阅读有关预先渲染的更多信息。 |
 
 <!-- links -->
 

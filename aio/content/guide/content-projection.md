@@ -27,11 +27,11 @@ The following sections describe common implementations of content projection in 
 | :----------------- | :------ |
 | 内容投影 | 详情 |
 | [Single-slot content projection](#single-slot) | With this type of content projection, a component accepts content from a single source. |
-| [单槽内容投影](#single-slot) | 使用这种类型的内容投影，组件可以从单一来源接受内容。|
+| [单槽内容投影](#single-slot) | 使用这种类型的内容投影，组件可以从单一来源接受内容。 |
 | [Multi-slot content projection](#multi-slot) | In this scenario, a component accepts content from multiple sources. |
-| [多槽内容投影](#multi-slot) | 在这种情况下，组件可以从多个来源接受内容。|
+| [多槽内容投影](#multi-slot) | 在这种情况下，组件可以从多个来源接受内容。 |
 | [Conditional content projection](#conditional) | Components that use conditional content projection render content only when specific conditions are met. |
-| [条件内容投影](#conditional) | 使用条件内容投影的组件仅在满足特定条件时才渲染内容。|
+| [条件内容投影](#conditional) | 使用条件内容投影的组件仅在满足特定条件时才渲染内容。 |
 
 <a id="single-slot"></a>
 

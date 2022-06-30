@@ -110,11 +110,11 @@ Template-driven forms rely on directives defined in the `FormsModule`.
 | :--------- | :------ |
 | 指令 | 详细信息 |
 | `NgModel` | Reconciles value changes in the attached form element with changes in the data model, allowing you to respond to user input with input validation and error handling. |
-| `NgModel` | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。|
+| `NgModel` | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。 |
 | `NgForm` | Creates a top-level `FormGroup` instance and binds it to a `<form>` element to track aggregated form value and validation status. As soon as you import `FormsModule`, this directive becomes active by default on all `<form>` tags. You don't need to add a special selector. |
-| `NgForm` | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。|
+| `NgForm` | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。 |
 | `NgModelGroup` | Creates and binds a `FormGroup` instance to a DOM element. |
-| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。|
+| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。 |
 
 ### The sample application
 
@@ -169,7 +169,7 @@ In the course of this tutorial, you bind a sample form to data and handle user i
 
    * Include required infrastructure such as the `FormsModule`
 
-     包括必需的基础设施，比如 `FormsModule` 
+     包括必需的基础设施，比如 `FormsModule`
 
 1. Bind form controls to data properties using the `ngModel` directive and two-way data-binding syntax.
 
@@ -377,18 +377,18 @@ To get access to the `NgForm` and the overall form status, declare a [template r
 
 1. Start typing in the **Name** input box.
 
-    开始在 **Name** 输入框中输入。
+   开始在 **Name** 输入框中输入。
 
-     As you add and delete characters, you can see them appear and disappear from the data model.
+   As you add and delete characters, you can see them appear and disappear from the data model.
      For example:
 
-    在添加和删除字符时，你可以看到它们从数据模型中出现和消失。比如：
+   在添加和删除字符时，你可以看到它们从数据模型中出现和消失。比如：
 
-     <div class="lightbox">
+   <div class="lightbox">
 
-     <img alt="ngModel in action" src="generated/images/guide/forms/ng-model-in-action.png">
+   <img alt="ngModel in action" src="generated/images/guide/forms/ng-model-in-action.png">
 
-     </div>
+   </div>
 
    The diagnostic line that shows interpolated values demonstrates that values are really flowing from the input box to the model and back again.
 
@@ -469,11 +469,11 @@ Angular sets special CSS classes on the control element to reflect the state, as
 | :----- | :------------ | :------------- |
 | 状态 | 为 true 时的类名 | 为 false 时的类名 |
 | The control has been visited. | `ng-touched` | `ng-untouched` |
-| 该控件已被访问过。| `ng-touched` | `ng-untouched` |
+| 该控件已被访问过。 | `ng-touched` | `ng-untouched` |
 | The control's value has changed. | `ng-dirty` | `ng-pristine` |
-| 控件的值已被更改。| `ng-dirty` | `ng-pristine` |
+| 控件的值已被更改。 | `ng-dirty` | `ng-pristine` |
 | The control's value is valid. | `ng-valid` | `ng-invalid` |
-| 控件的值是有效的。| `ng-valid` | `ng-invalid` |
+| 控件的值是有效的。 | `ng-valid` | `ng-invalid` |
 
 Additionally, Angular applies the `ng-submitted` class to `<form>` elements upon submission.
 This class does *not* apply to inner controls.
@@ -624,7 +624,7 @@ To define and show an error message when appropriate, take the following steps.
 
 1. Show or hide the error message by binding properties of the `name` control to the message `<div>` element's `hidden` property.
 
-      通过把 `name` 控件的属性绑定到 `<div>` 元素的 `hidden` 属性来显示或隐藏错误信息。
+   通过把 `name` 控件的属性绑定到 `<div>` 元素的 `hidden` 属性来显示或隐藏错误信息。
 
    <code-example header="src/app/hero-form/hero-form.component.html (hidden-error-msg)" path="forms/src/app/hero-form/hero-form.component.html" region="hidden-error-msg"></code-example>
 

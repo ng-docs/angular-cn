@@ -34,15 +34,15 @@ Here are some reasons you might want to use AOT.
 | :------ | :------ |
 | 原因 | 详情 |
 | Faster rendering | With AOT, the browser downloads a pre-compiled version of the application. The browser loads executable code so it can render the application immediately, without waiting to compile the application first. |
-| 更快的渲染方式 | 使用 AOT，浏览器会下载应用程序的预编译版本。浏览器加载可执行代码，以便立即渲染应用程序，而无需等待先编译应用程序。|
+| 更快的渲染方式 | 使用 AOT，浏览器会下载应用程序的预编译版本。浏览器加载可执行代码，以便立即渲染应用程序，而无需等待先编译应用程序。 |
 | Fewer asynchronous requests | The compiler *inlines* external HTML templates and CSS style sheets within the application JavaScript, eliminating separate ajax requests for those source files. |
-| 更少的异步请求 | 编译器在应用程序 JavaScript 中*内联*外部 HTML 模板和 CSS 样式表，消除对这些源文件的单个 ajax 请求。|
+| 更少的异步请求 | 编译器在应用程序 JavaScript 中*内联*外部 HTML 模板和 CSS 样式表，消除对这些源文件的单个 ajax 请求。 |
 | Smaller Angular framework download size | There's no need to download the Angular compiler if the application is already compiled. The compiler is roughly half of Angular itself, so omitting it dramatically reduces the application payload. |
-| 更小的 Angular 框架下载大小 | 如果应用程序已被编译，则无需下载 Angular 编译器。编译器大约是 Angular 本身的一半，因此省略它会大大减少应用程序的体积。|
+| 更小的 Angular 框架下载大小 | 如果应用程序已被编译，则无需下载 Angular 编译器。编译器大约是 Angular 本身的一半，因此省略它会大大减少应用程序的体积。 |
 | Detect template errors earlier | The AOT compiler detects and reports template binding errors during the build step before users can see them. |
-| 及早检测模板错误 | AOT 编译器会在用户看到之前在构建步骤中检测并报告模板绑定错误。|
+| 及早检测模板错误 | AOT 编译器会在用户看到之前在构建步骤中检测并报告模板绑定错误。 |
 | Better security | AOT compiles HTML templates and components into JavaScript files long before they are served to the client. With no templates to read and no risky client-side HTML or JavaScript evaluation, there are fewer opportunities for injection attacks. |
-| 更好的安全性 | AOT 会在 HTML 模板和组件提供给客户端之前就将它们编译为 JavaScript 文件。由于没有要读取的模板，也没有危险的客户端 HTML 或 JavaScript 求值，因此注入攻击的机会更少。|
+| 更好的安全性 | AOT 会在 HTML 模板和组件提供给客户端之前就将它们编译为 JavaScript 文件。由于没有要读取的模板，也没有危险的客户端 HTML 或 JavaScript 求值，因此注入攻击的机会更少。 |
 
 <a id="overview"></a>
 
@@ -58,9 +58,9 @@ Angular 提供了两种方式来编译你的应用：
 | :-------------- | :------ |
 | Angular 编译方式 | 详情 |
 | Just-in-Time (JIT) | Compiles your application in the browser at runtime. This was the default until Angular 8. |
-| 即时 (JIT) | 当运行时在浏览器中编译你的应用程序。在 Angular 8 之前，这是默认值。|
+| 即时 (JIT) | 当运行时在浏览器中编译你的应用程序。在 Angular 8 之前，这是默认值。 |
 | Ahead-of-Time (AOT) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
-| 预先 (AOT) | 在构建时编译你的应用程序和库。这是从 Angular 9 开始的默认值。|
+| 预先 (AOT) | 在构建时编译你的应用程序和库。这是从 Angular 9 开始的默认值。 |
 
 When you run the [`ng build`](cli/build) (build only) or [`ng serve`](cli/serve) (build and serve locally) CLI commands, the type of compilation (JIT or AOT) depends on the value of the `aot` property in your build configuration specified in `angular.json`.
 By default, `aot` is set to `true` for new CLI applications.
@@ -115,11 +115,11 @@ AOT 编译分为三个阶段。
 | :-- | :---- | :------ |
 |  | 阶段 | 详情 |
 | 1 | code analysis | In this phase, the TypeScript compiler and *AOT collector* create a representation of the source. The collector does not attempt to interpret the metadata it collects. It represents the metadata as best it can and records errors when it detects a metadata syntax violation. |
-| 1 | 代码分析 | 在此阶段，TypeScript 编译器和*AOT 收集器*会创建源代码的表示。收集器不会尝试解释它收集的元数据。它会尽可能地表示元数据，并在检测到元数据语法违规时记录错误。|
+| 1 | 代码分析 | 在此阶段，TypeScript 编译器和*AOT 收集器*会创建源代码的表示。收集器不会尝试解释它收集的元数据。它会尽可能地表示元数据，并在检测到元数据语法违规时记录错误。 |
 | 2 | code generation | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation. |
-| 2 | 代码生成 | 在此阶段，编译器的 `StaticReflector` 会解释在阶段 1 收集的元数据，对元数据执行额外的验证，如果检测到违反元数据限制，则会抛出错误。|
+| 2 | 代码生成 | 在此阶段，编译器的 `StaticReflector` 会解释在阶段 1 收集的元数据，对元数据执行额外的验证，如果检测到违反元数据限制，则会抛出错误。 |
 | 3 | template type checking | In this optional phase, the Angular *template compiler* uses the TypeScript compiler to validate the binding expressions in templates. You can enable this phase explicitly by setting the `fullTemplateTypeCheck` configuration option; see [Angular compiler options](guide/angular-compiler-options). |
-| 3 | 模板类型检查 | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `fullTemplateTypeCheck` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。|
+| 3 | 模板类型检查 | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `fullTemplateTypeCheck` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。 |
 
 ### Metadata restrictions
 
@@ -131,11 +131,11 @@ You write metadata in a *subset* of TypeScript that must conform to the followin
 
 * Limit [expression syntax](#expression-syntax) to the supported subset of JavaScript
 
-   [表达式语法](#expression-syntax)只支持 JavaScript 的一个有限的子集
+  [表达式语法](#expression-syntax)只支持 JavaScript 的一个有限的子集
 
 * Only reference exported symbols after [code folding](#code-folding)
 
-   只能引用[代码收缩](#code-folding)后导出的符号
+  只能引用[代码收缩](#code-folding)后导出的符号
 
 * Only call [functions supported](#supported-functions) by the compiler
 
@@ -512,11 +512,11 @@ The compiler can only create instances of certain classes, supports only core de
 | :-------------- | :------ |
 | 编译器动作 | 详情 |
 | New instances | The compiler only allows metadata that create instances of the class `InjectionToken` from `@angular/core`. |
-| 新建实例 | 编译器只允许创建来自 `@angular/core` 的 `InjectionToken` 类创建实例。|
+| 新建实例 | 编译器只允许创建来自 `@angular/core` 的 `InjectionToken` 类创建实例。 |
 | Supported decorators | The compiler only supports metadata for the [Angular decorators in the `@angular/core` module](api/core#decorators). |
-| 支持的装饰器 | 编译器只支持来自 [`@angular/core` 模块](api/core#decorators)的 Angular 装饰器的元数据。|
+| 支持的装饰器 | 编译器只支持来自 [`@angular/core` 模块](api/core#decorators)的 Angular 装饰器的元数据。 |
 | Function calls | Factory functions must be exported, named functions. The AOT compiler does not support lambda expressions ("arrow functions") for factory functions. |
-| 函数调用 | 工厂函数必须导出为命名函数。AOT 编译器不支持用 Lambda 表达式（箭头函数）充当工厂函数。|
+| 函数调用 | 工厂函数必须导出为命名函数。AOT 编译器不支持用 Lambda 表达式（箭头函数）充当工厂函数。 |
 
 <a id="function-calls"></a>
 

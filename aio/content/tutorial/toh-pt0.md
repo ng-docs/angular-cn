@@ -165,11 +165,11 @@ You'll find the implementation of the shell `AppComponent` distributed over thre
 | :---- | :------ |
 | 文件 | 详情 |
 | `app.component.ts` | The component class code, written in TypeScript. |
-| `app.component.ts` | 组件的类代码，这是用 TypeScript 写的。|
+| `app.component.ts` | 组件的类代码，这是用 TypeScript 写的。 |
 | `app.component.html` | The component template, written in HTML. |
-| `app.component.html` | 组件的模板，这是用 HTML 写的。|
+| `app.component.html` | 组件的模板，这是用 HTML 写的。 |
 | `app.component.css` | The component's private CSS styles. |
-| `app.component.css` | 组件的私有 CSS 样式。|
+| `app.component.css` | 组件的私有 CSS 样式。 |
 
 ### Change the application title
 

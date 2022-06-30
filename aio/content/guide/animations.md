@@ -483,31 +483,31 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | :------------ | :----------- |
 | 函数名 | 用途 |
 | `trigger()` | Kicks off the animation and serves as a container for all other animation function calls. HTML template binds to `triggerName`. Use the first argument to declare a unique trigger name. Uses array syntax. |
-| `trigger()` | 开始动画，并充当所有其它动画函数的容器。HTML 模板可以绑定到 `triggerName`。使用第一个参数来声明唯一的触发器名称。要使用数组语法。|
+| `trigger()` | 开始动画，并充当所有其它动画函数的容器。HTML 模板可以绑定到 `triggerName`。使用第一个参数来声明唯一的触发器名称。要使用数组语法。 |
 | `style()` | Defines one or more CSS styles to use in animations. Controls the visual appearance of HTML elements during animations. Uses object syntax. |
-| `style()` | 定义一个或多个要用于动画中的 CSS 样式。用于在动画期间控制 HTML 元素的视觉外观。要使用对象语法。|
+| `style()` | 定义一个或多个要用于动画中的 CSS 样式。用于在动画期间控制 HTML 元素的视觉外观。要使用对象语法。 |
 | [`state()`](api/animations/state) | Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions. |
-| [`state()`](api/animations/state) | 创建一组有名字的 CSS 样式，它会在成功转换到指定的状态时应用到元素上。该状态可以在其它动画函数中通过名字进行引用。|
+| [`state()`](api/animations/state) | 创建一组有名字的 CSS 样式，它会在成功转换到指定的状态时应用到元素上。该状态可以在其它动画函数中通过名字进行引用。 |
 | `animate()` | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within. |
-| `animate()` | 指定转场的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。|
+| `animate()` | 指定转场的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。 |
 | `transition()` | Defines the animation sequence between two named states. Uses array syntax. |
-| `transition()` | 定义两个命名状态之间的动画序列。使用数组语法。|
+| `transition()` | 定义两个命名状态之间的动画序列。使用数组语法。 |
 | `keyframes()` | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax. |
-| `keyframes()` | 允许以特定的时间间隔对样式进行顺序更改。用于 `animate()` 中。每个 `keyframe()` 中都可以包含多个 `style()` 调用。使用数组语法。|
+| `keyframes()` | 允许以特定的时间间隔对样式进行顺序更改。用于 `animate()` 中。每个 `keyframe()` 中都可以包含多个 `style()` 调用。使用数组语法。 |
 | [`group()`](api/animations/group) | Specifies a group of animation steps (*inner animations*) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`. |
-| [`group()`](api/animations/group) | 指定要并行运行的一组动画步骤（*内部动画*）。该动画只有当所有内部动画步骤都完成之后才会继续。用于 `sequence()` 或 `transition()` 中。|
+| [`group()`](api/animations/group) | 指定要并行运行的一组动画步骤（*内部动画*）。该动画只有当所有内部动画步骤都完成之后才会继续。用于 `sequence()` 或 `transition()` 中。 |
 | `query()` | Finds one or more inner HTML elements within the current element. |
-| `query()` | 找出当前元素中的一个或多个内部 HTML 元素。|
+| `query()` | 找出当前元素中的一个或多个内部 HTML 元素。 |
 | `sequence()` | Specifies a list of animation steps that are run sequentially, one by one. |
-| `sequence()` | 指定一个动画步骤列表，它们会逐个顺序执行。|
+| `sequence()` | 指定一个动画步骤列表，它们会逐个顺序执行。 |
 | `stagger()` | Staggers the starting time for animations for multiple elements. |
-| `stagger()` | 交错安排多元素动画的开始时间。|
+| `stagger()` | 交错安排多元素动画的开始时间。 |
 | `animation()` | Produces a reusable animation that can be invoked from elsewhere. Used together with `useAnimation()`. |
-| `animation()` | 生成可在其它地方调用的可复用动画。与 `useAnimation()` 一起使用。|
+| `animation()` | 生成可在其它地方调用的可复用动画。与 `useAnimation()` 一起使用。 |
 | `useAnimation()` | Activates a reusable animation. Used with `animation()`. |
-| `useAnimation()` | 激活一个可复用动画。和 `animation()` 一起使用。|
+| `useAnimation()` | 激活一个可复用动画。和 `animation()` 一起使用。 |
 | `animateChild()` | Allows animations on child components to be run within the same timeframe as the parent. |
-| `animateChild()` | 允许子组件上的动画和父组件在同一个时间范围（timeframe）内执行。|
+| `animateChild()` | 允许子组件上的动画和父组件在同一个时间范围（timeframe）内执行。 |
 
 ## More on Angular animations
 

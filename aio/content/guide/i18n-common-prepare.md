@@ -529,15 +529,15 @@ Review the following details in the previous code example.
 | :--------- | :------ |
 | 参数 | 详情 |
 | `minutes` | The first parameter specifies the component property is `minutes` and determines the number of minutes. |
-| `minutes` | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。|
+| `minutes` | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。 |
 | `plural` | The second parameter specifies the ICU clause is `plural`. |
-| `plural` | 第二个参数指定 ICU 子句是 `plural`。|
+| `plural` | 第二个参数指定 ICU 子句是 `plural`。 |
 | `=0 {just now}` | For zero minutes, the pluralization category is `=0`. The value is `just now`. |
-| `=0 {just now}` | 对于零分钟，复数类别是 `=0`。其值是 `just now`。|
+| `=0 {just now}` | 对于零分钟，复数类别是 `=0`。其值是 `just now`。 |
 | `=1 {one minute}` | For one minute, the pluralization category is `=1`. The value is `one minute`. |
-| `=1 {one minute}` | 对于一分钟，复数类别是 `=1`。该值为 `one minute`。|
+| `=1 {one minute}` | 对于一分钟，复数类别是 `=1`。该值为 `one minute`。 |
 | `other {{{minutes}} minutes ago}` | For any unmatched cardinality, the default pluralization category is `other`. The value is `{{minutes}} minutes ago`. |
-| `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。|
+| `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。 |
 
 `{{minutes}}` is an [interpolation][AioGuideGlossaryInterpolation].
 

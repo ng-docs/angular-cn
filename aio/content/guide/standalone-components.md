@@ -393,26 +393,26 @@ In reality, the dependency injectors hierarchy is slightly more elaborate in app
 ```ts
 // an existing "datepicker" component with an NgModule
 @Component({
-        selector: 'datepicker',
-        template: '...',
+  selector: 'datepicker',
+  template: '...',
 })
 class DatePickerComponent {
   constructor(private calendar: CalendarService) {}
 }
 
 @NgModule({
-        declarations: [DatePickerComponent],
-        exports: [DatePickerComponent]
-        providers: [CalendarService],
+  declarations: [DatePickerComponent],
+  exports: [DatePickerComponent]
+  providers: [CalendarService],
 })
 class DatePickerModule {
 }
 
 @Component({
-        selector: 'date-modal',
-        template: '<datepicker></datepicker>',
-        standalone: true,
-        imports: [DatePickerModule]
+  selector: 'date-modal',
+  template: '<datepicker></datepicker>',
+  standalone: true,
+  imports: [DatePickerModule]
 })
 class DateModalComponent {
 }
