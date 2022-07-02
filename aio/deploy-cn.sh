@@ -12,7 +12,7 @@ yarn build
 
 cd ./release/prebuilt
 
-git pull
+git pull -r
 
 cp -r ../../dist/* .
 
