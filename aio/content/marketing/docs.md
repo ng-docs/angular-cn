@@ -25,7 +25,7 @@ Tutorials and guides include downloadable examples to accelerate your projects.
     <section>Getting started</section>
     <section>开始工作</section>
     <p>Examine and work with a small ready-made Angular app, without any setup.</p>
-    <p>无需设置，试用一个现成的小型 Angular 应用</p>
+    <p>无需搭建环境，试用一个现成的小型 Angular 应用</p>
     <p class="card-footer">Try it now</p>
     <p class="card-footer">立即试用</p>
   </a>
@@ -39,11 +39,11 @@ Tutorials and guides include downloadable examples to accelerate your projects.
   </a>
   <a href="guide/setup-local" class="docs-card" title="Angular Local Environment Setup">
     <section>Set up your environment</section>
-    <section>设置环境</section>
+    <section>搭建环境</section>
     <p>Set up your local environment for development with the Angular CLI.</p>
     <p>使用 Angular CLI 搭建本地开发环境。</p>
     <p class="card-footer">Local setup</p>
-    <p class="card-footer">本地设置</p>
+    <p class="card-footer">本地搭建</p>
   </a>
   <a href="tutorial" class="docs-card" title="Work through a full tutorial">
     <section>Hello World</section>
