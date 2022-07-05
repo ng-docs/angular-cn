@@ -10,7 +10,7 @@ cd $(dirname $0)
 
 yarn build
 
-cd ./release/prebuilt
+cd ./release/latest.angular.live
 
 git pull -r
 
