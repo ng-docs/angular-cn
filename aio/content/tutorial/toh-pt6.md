@@ -629,7 +629,7 @@ Add private CSS styles to `hero-search.component.css` as listed in the [final co
 
 As the user types in the search box, an input event binding calls the component's `search()` method with the new search box value.
 
-当用户在搜索框中输入时，一个 *keyup* 事件绑定会调用该组件的 `search()` 方法，并传入新的搜索框的值。
+当用户在搜索框中输入时，一个 `input` 事件绑定会调用该组件的 `search()` 方法，并传入新的搜索框的值。
 
 <a id="asyncpipe"></a>
 
