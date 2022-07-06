@@ -1193,7 +1193,7 @@ The routing *path* and a *route parameter* that specifies the `id` of the select
 
 The router composes the destination URL from the array like this: `localhost:4200/hero/15`.
 
-路由器从该数组中组合出了目标 URL：`localhost:3000/hero/15`。
+路由器从该数组中组合出了目标 URL：`localhost:4200/hero/15`。
 
 The router extracts the route parameter (`id:15`) from the URL and supplies it to the `HeroDetailComponent` using the `ActivatedRoute` service.
 
