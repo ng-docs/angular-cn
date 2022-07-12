@@ -252,7 +252,7 @@ The remaining 2 keys control the default behavior of tooling:
 
 * `"node"` selects flattened ES2015 code when the package is loaded in Node.
 
-  `"node"` 在 Node.js 中加载包时选择扁平化的 ES2015 代码。
+  `"node"` 在 Node 中加载包时选择扁平化的 ES2015 代码。
 
   This format is used due to the requirements of `zone.js`, which does not support native `async`/`await` ES2017 syntax.
   Therefore, Node is instructed to use ES2015 code, where `async`/`await` structures have been downleveled into Promises.
@@ -335,7 +335,7 @@ Most Angular packages should not depend on top-level side effects, and thus shou
 Packages in the Angular Package Format contain one primary entrypoint and zero or more secondary entrypoints (for example, `@angular/common/http`).
 Entrypoints serve several functions.
 
-APF 中的包，包含一个主要入口点和零到多个次要入口点（比如 `@angular/common/http`）。入口点有多种功能。
+APF 格式的包，包含一个主要入口点和零到多个次要入口点（比如 `@angular/common/http`）。入口点有多种功能。
 
 1. They define the module specifiers from which users import code (for example, `@angular/core` and `@angular/core/testing`).
 

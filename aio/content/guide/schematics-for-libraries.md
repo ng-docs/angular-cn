@@ -107,7 +107,7 @@ If you need to, do additional setup when your package is installed, such as gene
 
 Use the `save` option of `ng-add` to configure if the library should be added to the `dependencies`, the `devDependencies`, or not saved at all in the project's `package.json` configuration file.
 
-如果该库应该添加到 `dependencies` 中、`devDepedencies` 中，或者不用保存到项目的 `package.json` 配置文件中，请使用 `ng-add` 的 `save` 选项进行配置
+如果该库应该添加到 `dependencies` 中、`devDependencies` 中，或者不用保存到项目的 `package.json` 配置文件中，请使用 `ng-add` 的 `save` 选项进行配置
 
 <code-example header="projects/my-lib/package.json (ng-add Reference)" path="schematics-for-libraries/projects/my-lib/package.json" region="ng-add"></code-example>
 

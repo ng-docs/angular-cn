@@ -201,7 +201,7 @@ Add a private `heroService` parameter of type `HeroService` to the constructor.
 
 The parameter simultaneously defines a private `heroService` property and identifies it as a `HeroService` injection site.
 
-这个参数同时做了两件事：1. 声明了一个私有 `heroService` 属性，2. 把它标记为一个 `HeroService` 的注入点。
+这个参数声明了一个私有 `heroService` 属性，同时把它标记为一个 `HeroService` 的注入点。
 
 When Angular creates a `HeroesComponent`, the [Dependency Injection](guide/dependency-injection) system sets the `heroService` parameter to the singleton instance of `HeroService`.
 

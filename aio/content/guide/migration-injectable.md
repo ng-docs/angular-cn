@@ -136,7 +136,7 @@ This is not the case in Ivy where such providers will be interpreted as if `useC
 This means that these providers will behave differently when updating to version 9 and above.
 To ensure that the provider behaves the same as before, the DI value should be explicitly set to `undefined`.
 
-那些使用这个模式的服务提供者会把其行为看作 [DI 令牌][DI_TOKEN] 为 `MyService`，其值为 `undefined`。但在 Ivy 的情况下并非如此，这些提供者会被解释为指定了 `useClass: MyService`。这意味着当升级到版本 9 或更高版本时，这些提供者的行为会有所不同。为了保证提供者的行为和以前一样，DI 的值应该显式设置为 `undefined`。
+那些使用这个模式的服务提供者会把其行为看作 [DI 令牌][AioGuideGlossaryDiToken] 为 `MyService`，其值为 `undefined`。但在 Ivy 的情况下并非如此，这些提供者会被解释为指定了 `useClass: MyService`。这意味着当升级到版本 9 或更高版本时，这些提供者的行为会有所不同。为了保证提供者的行为和以前一样，DI 的值应该显式设置为 `undefined`。
 
 ### When should I be adding `@Injectable()` decorators to classes?
 

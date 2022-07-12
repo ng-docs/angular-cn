@@ -110,7 +110,7 @@ The schematic also keeps their parameter types as `any` so that it doesn't have 
 **Otherwise, the libraries won't work with applications built with version 9.**
 
 **库的作者肯定要做这种迁移来远离 `Renderer`。**
-**否则，这些库将不再适用于用 Angular 9 构建的应用。**
+**否则，这些库将不再适用于用版本 9 构建的应用。**
 
 ### Full list of method migrations
 

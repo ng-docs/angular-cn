@@ -108,7 +108,7 @@ A value that's harmless in CSS is potentially dangerous in a URL.
 
 Angular defines the following security contexts:
 
-Angular 定义了四个安全环境 - HTML，样式，URL，和资源 URL：
+Angular 定义了四个安全环境：
 
 | Security contexts | Details |
 | :---------------- | :------ |
@@ -174,8 +174,7 @@ For cases where this is unavoidable, use the built-in Angular sanitization funct
 Sanitize untrusted values with the [DomSanitizer.sanitize](api/platform-browser/DomSanitizer#sanitize) method and the appropriate `SecurityContext`.
 That function also accepts values that were marked as trusted using the `bypassSecurityTrust`… functions, and will not sanitize them, as [described below](#bypass-security-apis).
 
-浏览器内置的 DOM API 不会自动针对安全漏洞进行防护。比如，`document`（它可以通过 `ElementRef` 访问）以及其它第三方 API 都可能包含不安全的方法。
-要避免直接与 DOM 交互，只要可能，就尽量使用 Angular 模板。
+在无法避免的情况下，使用内置的 Angular 无害化处理函数。使用 [DomSanitizer.sanitize](api/platform-browser/DomSanitizer#sanitize) 方法以及适当的 `SecurityContext` 来对不可信的值进行无害化处理。此函数也可以接受使用 `bypassSecurityTrust` 函数标为可信的值，而且不会对它们进行无害化处理，就像[稍后讲的那样](#bypass-security-apis)。
 
 <a id="bypass-security-apis"></a>
 
@@ -419,7 +418,7 @@ Angular 内置了一些支持来防范两个常见的 HTTP 漏洞：跨站请求
 
 In a cross-site request forgery (CSRF or XSRF), an attacker tricks the user into visiting a different web page (such as `evil.com`) with malignant code that secretly sends a malicious request to the application's web server (such as `example-bank.com`).
 
-在跨站请求伪造（XSRF 或 CSFR）中，攻击者欺骗用户，让他们访问一个假冒页面(比如 `evil.com`)，该页面带有恶意代码，秘密的向你的应用程序服务器发送恶意请求(比如 `example-bank.com`)。
+在跨站请求伪造（XSRF 或 CSRF）中，攻击者欺骗用户，让他们访问一个假冒页面(比如 `evil.com`)，该页面带有恶意代码，秘密的向你的应用程序服务器发送恶意请求(比如 `example-bank.com`)。
 
 Assume the user is logged into the application at `example-bank.com`.
 The user opens an email and clicks a link to `evil.com`, which opens in a new tab.
@@ -462,7 +461,7 @@ Angular 的 `HttpClient` 对这项技术的客户端部分提供了内置的支�
 For information about CSRF at the Open Web Application Security Project (OWASP), see [Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf) and [Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
 The Stanford University paper [Robust Defenses for Cross-Site Request Forgery](https://seclab.stanford.edu/websec/csrf/csrf.pdf) is a rich source of detail.
 
-可到 "开放式 Web 应用程序安全项目 (OWASP) " 深入了解 CSRF，参阅[Cross-Site Request Forgery (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29) 和[Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://www.owasp.org/index.php/CSRF_Prevention_Cheat_Sheet)。这个斯坦福大学论文 [Robust Defenses for Cross-Site Request Forgery](https://seclab.stanford.edu/websec/csrf/csrf.pdf) 有详尽的细节。
+可到 "开放式 Web 应用程序安全项目 (OWASP) " 深入了解 CSRF，参阅[Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf) 和[Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)。这个斯坦福大学论文 [Robust Defenses for Cross-Site Request Forgery](https://seclab.stanford.edu/websec/csrf/csrf.pdf) 有详尽的细节。
 
 See also Dave Smith's [talk on XSRF at AngularConnect 2016](https://www.youtube.com/watch?v=9inczw6qtpY "Cross Site Request Funkery Securing Your Angular Apps From Evil Doers").
 

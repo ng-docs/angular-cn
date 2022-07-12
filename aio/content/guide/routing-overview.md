@@ -14,7 +14,7 @@ The **`Router`** enables navigation by interpreting a browser URL as an instruct
 
 To explore a sample app featuring the router's primary features, see the <live-example name="router"></live-example>.
 
-要浏览具有主要路由器功能的示例应用，请参阅<live-example stackblitz="router"></live-example>。
+要浏览具有主要路由器功能的示例应用，请参阅<live-example name="router"></live-example>。
 
 ## Prerequisites
 

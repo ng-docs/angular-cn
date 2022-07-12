@@ -68,12 +68,12 @@ To check your application's version of Angular: From within your project directo
 The most recent stable released version of Angular appears in the [Angular documentation](docs "Angular documentation") at the bottom of the left side navigation.
 For example, `stable (v13.0.3)`.
 
-在 [Angular 文档站](https://angular.cn/docs "Angular documentation")左侧导航栏的底部可以看到 Angular 最新的稳定版版本号。比如 `stable (v13.0.3)`。
+在 [Angular 文档站](docs "Angular documentation")左侧导航栏的底部可以看到 Angular 最新的稳定版版本号。比如 `stable (v13.0.3)`。
 
 You can also find the most current version of Angular by using the CLI command [`ng update`](cli/update).
 By default, [`ng update`](cli/update)(without additional arguments) lists the updates that are available to you.
 
-你还可以使用 [CLI 命令 `ng update`](https://github.com/angular/angular-cli/wiki/update "Angular CLI update documentation") 发现 Angular 的最新版本。默认情况下，[`ng update`](cli/update)（不带其它参数）会列出你可用的所有更新。
+你还可以使用 [CLI 命令 `ng update`](cli/update) 发现 Angular 的最新版本。默认情况下，[`ng update`](cli/update)（不带其它参数）会列出你可用的所有更新。
 
 <a id="updating"></a>
 

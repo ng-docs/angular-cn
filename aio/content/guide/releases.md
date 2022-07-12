@@ -55,7 +55,7 @@ The version number is incremented based on the level of change included in the r
 | Major release | Contains significant new features, some but minimal developer assistance is expected during the update. When updating to a new major release, you might need to run update scripts, refactor code, run additional tests, and learn new APIs. |
 | 主版本 | 包含重要的新特性，其中的部分特性在升级时会需要由开发人员提供少量的协助才能完成。当升级到新的主版本时，你可能需要运行升级脚本、重构代码、运行其它测试以及学习新的 API。 |
 | Minor release | Contains new smaller features. Minor releases are fully backward-compatible; no developer assistance is expected during update, but you can optionally modify your applications and libraries to begin using new APIs, features, and capabilities that were added in the release. We update peer dependencies in minor versions by expanding the supported versions, but we do not require projects to update these dependencies. |
-| 小版本 | 包含新的小型特性。小版本是完全向后兼容的，在升级期间，不需要开发人员提供协助，但是你可以（可选的）修改你的应用和库，来使用本次发布中新增的 API、特性和能力。我们会扩展库的对等依赖（peer dependency）中的小版本号范围来更新库同级，但并不需要你的项目也更新那些依赖。 |
+| 小版本 | 包含新的小型特性。小版本是完全向后兼容的，在升级期间，不需要开发人员提供协助，但是你可以（可选的）修改你的应用和库，来使用本次发布中新增的 API、特性和能力。我们会扩展库的对等依赖（peer dependencies）中的小版本号范围来更新库同级，但并不需要你的项目也更新那些依赖。 |
 | Patch release | Low risk, bug fix release. No developer assistance is expected during update. |
 | 补丁版本 | 风险最低的、修 BUG 的版本。在升级期间完全不需要开发人员的协助。 |
 
@@ -82,7 +82,7 @@ You can `ng update` to any version of Angular, provided that the following crite
 
 * The version you want to update *to* is supported.
 
-  CLI 支持你要更新*到*的版本。
+  你要更新*到*的版本是受支持的。
 
 * The version you want to update *from* is within one major version of the version you want to
   upgrade to.

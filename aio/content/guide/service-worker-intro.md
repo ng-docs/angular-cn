@@ -38,7 +38,7 @@ Angular applications, as single-page applications, are in a prime position to be
 Starting with version 5.0.0, Angular ships with a service worker implementation.
 Angular developers can take advantage of this service worker and benefit from the increased reliability and performance it provides, without needing to code against low-level APIs.
 
-作为单页面应用，Angular 应用可以受益于 Service Worker 的优势。从 Angular v5.0.0 开始，Angular 提供了一份 Service Worker 的实现。Angular 开发人员可以利用 Service Worker，并受益于其增强的可靠性和性能，而无需再针对底层 API 写代码。
+作为单页面应用，Angular 应用可以受益于 Service Worker 的优势。从版本 5.0.0 开始，Angular 提供了一份 Service Worker 的实现。Angular 开发人员可以利用 Service Worker，并受益于其增强的可靠性和性能，而无需再针对底层 API 写代码。
 
 Angular's service worker is designed to optimize the end user experience of using an application over a slow or unreliable network connection, while also minimizing the risks of serving outdated content.
 
@@ -179,7 +179,7 @@ For more information about service workers in general, see [Service Workers: an 
 
 For more information about browser support, see the [browser support](https://developers.google.com/web/fundamentals/primers/service-workers/#browser_support) section of [Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers), Jake Archibald's [Is Serviceworker ready?](https://jakearchibald.github.io/isserviceworkerready), and [Can I Use](https://caniuse.com/serviceworkers).
 
-要了解关于浏览器支持度的更多信息，参阅 [Service Worker 简介](https://developers.google.com/web/fundamentals/primers/service-workers) 中的[浏览器支持](https://developers.google.com/web/fundamentals/primers/service-workers/#browser_support)部分、Jake Archibald 写的[Serviceworker 好了吗？](https://jakearchibald.github.io/isserviceworkerready)和 [Can I Use](http://caniuse.com/#feat=serviceworkers)。
+要了解关于浏览器支持度的更多信息，参阅 [Service Worker 简介](https://developers.google.com/web/fundamentals/primers/service-workers) 中的[浏览器支持](https://developers.google.com/web/fundamentals/primers/service-workers/#browser_support)部分、Jake Archibald 写的[Serviceworker 好了吗？](https://jakearchibald.github.io/isserviceworkerready)和 [Can I Use](https://caniuse.com/serviceworkers)。
 
 For additional recommendations and examples, see:
 
@@ -199,7 +199,7 @@ For additional recommendations and examples, see:
 
 To begin using Angular service workers, see [Getting Started with service workers](guide/service-worker-getting-started).
 
-要开始使用 Angular Serivce Worker，参阅 [Service Worker 快速上手](guide/service-worker-getting-started)。
+要开始使用 Angular service Worker，参阅 [Service Worker 快速上手](guide/service-worker-getting-started)。
 
 <!-- links -->
 

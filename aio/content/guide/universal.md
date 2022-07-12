@@ -334,7 +334,7 @@ Similarly, without mouse or keyboard events, a server-side application can't rel
 The application must determine what to render based solely on the incoming client request.
 This is a good argument for making the application [routable](guide/router).
 
-同样，由于没有鼠标或键盘事件，因此 Universal 应用也不能依赖于用户点击某个按钮来显示某个组件。Universal 应用必须仅仅根据客户端过来的请求决定要渲染的内容。把该应用做成[可路由的](guide/router)，就是一种好方案。
+同样，由于没有鼠标或键盘事件，因此服务端应用也不能依赖于用户点击某个按钮来显示某个组件。此应用必须仅仅根据客户端过来的请求决定要渲染的内容。把该应用做成[可路由的](guide/router)，就是一种好方案。
 
 <a id="universal-engine"></a>
 
@@ -408,7 +408,7 @@ Fortunately, application routes have something in common: their URLs lack file e
 (Data requests also lack extensions but they can be recognized because they always begin with `/api`.)
 All static asset requests have a file extension (such as `main.js` or `/node_modules/zone.js/bundles/zone.umd.js`).
 
-幸运的是，应用的路由具有一些共同特征：它们的 URL 一般不带文件扩展名。（数据请求也可能缺少扩展名，但是它们很容易识别出来，因为它们总是以 `/api` 开头，所有的静态资源的请求都会带有一个扩展名，比如 `main.js` 或 `/node_modules/zone.js/dist/zone.js`）。
+幸运的是，应用的路由具有一些共同特征：它们的 URL 一般不带文件扩展名。（数据请求也可能缺少扩展名，但是它们很容易识别出来，因为它们总是以 `/api` 开头，所有的静态资源的请求都会带有一个扩展名，比如 `main.js` 或 `/node_modules/zone.js/bundles/zone.umd.js`）。
 
 Because you use routing, you can recognize the three types of requests and handle them differently.
 
@@ -427,7 +427,7 @@ Because you use routing, you can recognize the three types of requests and handl
 A Node.js Express server is a pipeline of middleware that filters and processes requests one after the other.
 You configure the Node.js Express server pipeline with calls to `server.get()` like this one for data requests.
 
-Node.js Express 服务器是一系列中间件构成的管道，它会挨个对 URL 请求进行过滤和处理。你可以调用 `app.get()` 来配置 Express 服务器的管道，就像下面这个数据请求一样。
+Node.js Express 服务器是一系列中间件构成的管道，它会挨个对这些请求进行过滤和处理。你可以调用 `server.get()` 来配置 Express 服务器的管道，就像下面这个数据请求一样。
 
 <code-example header="server.ts (data URL)" path="universal/server.ts" region="data-request"></code-example>
 

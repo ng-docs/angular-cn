@@ -150,7 +150,7 @@ Reactive forms have methods to change a control's value programmatically, which 
 A form control instance provides a `setValue()` method that updates the value of the form control and validates the structure of the value provided against the control's structure.
 For example, when retrieving form data from a backend API or service, use the `setValue()` method to update the control to its new value, replacing the old value entirely.
 
-响应式表单还有一些方法可以用编程的方式修改控件的值，它让你可以灵活的修改控件的值而不需要借助用户交互。`FormControl` 提供了一个 `setValue()` 方法，它会修改这个表单控件的值，并且验证与控件结构相对应的值的结构。比如，当从后端 API 或服务接收到了表单数据时，可以通过 `setValue()` 方法来把原来的值替换为新的值。
+响应式表单还有一些方法可以用编程的方式修改控件的值，它让你可以灵活的修改控件的值而不需要借助用户交互。`FormControl` 实例提供了一个 `setValue()` 方法，它会修改这个表单控件的值，并且验证与控件结构相对应的值的结构。比如，当从后端 API 或服务接收到了表单数据时，可以通过 `setValue()` 方法来把原来的值替换为新的值。
 
 The following example adds a method to the component class to update the value of the control to *Nancy* using the `setValue()` method.
 
@@ -297,7 +297,7 @@ A name and address are typical examples of such nested groups, and are used in t
 When updating the value for a form group instance that contains multiple controls, you might only want to update parts of the model.
 This section covers how to update specific parts of a form control data model.
 
-当修改包含多个 `FormGroup` 实例的值时，你可能只希望更新模型中的一部分，而不是完全替换掉。这一节会讲解该如何更新 `AbstractControl` 模型中的一部分。
+当修改包含多个 `FormGroup` 实例的值时，你可能只希望更新模型中的一部分，而不是完全替换掉。这一节会讲解该如何更新表单控件数据模型模型中的一部分。
 
 There are two ways to update the model value:
 
@@ -309,7 +309,7 @@ There are two ways to update the model value:
 | `setValue()` | Set a new value for an individual control. The `setValue()` method strictly adheres to the structure of the form group and replaces the entire value for the control. |
 | `setValue()` | 使用 `setValue()` 方法来为单个控件设置新值。`setValue()` 方法会严格遵循表单组的结构，并整体性替换控件的值。 |
 | `patchValue()` | Replace any properties defined in the object that have changed in the form model. |
-| `patchValue()` | 使用 `patchValue()` 方法可以用对象中所定义的任何属性为表单模型进行替换。 |
+| `patchValue()` | 用此对象中定义的任意属性对表单模型进行替换。 |
 
 The strict checks of the `setValue()` method help catch nesting errors in complex forms, while `patchValue()` fails silently on those errors.
 
@@ -361,7 +361,7 @@ Use the following steps to take advantage of this service.
 
 The following examples show how to refactor the `ProfileEditor` component to use the form builder service to create form control and form group instances.
 
-下面的例子展示了如何重构 `ProfileEditor` 组件，用 `FormBuilder` 来代替手工创建这些 `FormControl` 和 `FormGroup` 实例。
+下面的例子展示了如何重构 `ProfileEditor` 组件，用 `FormBuilder` 服务来代替手工创建这些 `FormControl` 和 `FormGroup` 实例。
 
 | Action | Details |
 | :----- | :------ |

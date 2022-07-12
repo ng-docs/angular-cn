@@ -85,7 +85,7 @@ Directives *do not* support namespaces.
 
 Angular creates an instance of the `HighlightDirective` class and injects a reference to the `<p>` element into the directive's constructor, which sets the `<p>` element's background style to yellow.
 
-Angualr 会创建 `HighlightDirective` 类的实例，并将 `<p>` 元素的引用注入到该指令的构造函数中，它会将 `<p>` 元素的背景样式设置为黄色。
+Angular 会创建 `HighlightDirective` 类的实例，并将 `<p>` 元素的引用注入到该指令的构造函数中，它会将 `<p>` 元素的背景样式设置为黄色。
 
 <a id="respond-to-user"></a>
 

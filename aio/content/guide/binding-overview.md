@@ -199,7 +199,7 @@ An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of
 
 Dependent values should not change during a single turn of the event loop.  If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.  If the expression returns an object, including an `array`, it returns the same object *reference* if you call it twice consecutively.
 
-在单独的一次事件循环中，被依赖的值不应该改变。如果幂等的表达式返回一个字符串或数字，如果连续调用它两次，会返回相同的字符串或数字。如果幂等的表达式返回一个对象（包括 `Date` 或 `Array`），如果连续调用它两次，会返回同一个对象的*引用*。
+在单独的一次事件循环中，被依赖的值不应该改变。如果幂等的表达式返回一个字符串或数字，如果连续调用它两次，会返回相同的字符串或数字。如果幂等的表达式返回一个对象（也包括 `Array`），如果连续调用它两次，会返回同一个对象的*引用*。
 
   </div>
 

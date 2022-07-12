@@ -31,7 +31,7 @@ Before learning template syntax, you should be familiar with the following:
 Angular extends the HTML syntax in your templates with additional functionality.  
 For example, Angular’s data binding syntax helps to set Document Object Model (DOM) properties dynamically.
 
-Angular 使用额外的特性扩展了模板中的 HTML 语法。<br />例如，Angular 的数据绑定语法有助于动态设置文档对象模型 (DOM) 属性。
+Angular 使用额外的特性扩展了模板中的 HTML 语法。例如，Angular 的数据绑定语法有助于动态设置文档对象模型 (DOM) 属性。
 
 Almost all HTML syntax is valid template syntax.  However, because an Angular template is only a fragment of the UI, it does not include elements such as `<html>`, `<body>`, or `<base>`.
 

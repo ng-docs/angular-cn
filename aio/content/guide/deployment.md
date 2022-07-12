@@ -184,7 +184,7 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
 
 1. [Create a GitHub repository](https://help.github.com/articles/create-a-repo) for your project.
 
-   为你的项目[创建一个 GitHub Pages 仓库](https://help.github.com/articles/what-is-github-pages/)。
+   为你的项目[创建一个 GitHub Pages 仓库](https://help.github.com/articles/create-a-repo)。
 
 1. Configure `git` in your local project by adding a remote that specifies the GitHub repository you created in previous step.
    GitHub provides these commands when you create the repository so that you can copy and paste them at your command prompt.
@@ -378,7 +378,7 @@ See your server's manual for instructions on how to do this.
 Angular developers may encounter a [*cross-origin resource sharing*](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing "Cross-origin resource sharing") error when making a service request (typically a data service request) to a server other than the application's own host server.
 Browsers forbid such requests unless the server permits them explicitly.
 
-Angular 开发者在向与该应用的宿主服务器不同域的服务器发起请求时，可能会遇到一种<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank" title="Cross-origin resource sharing"><i>跨域资源共享（CORS）</i></a>错误。
+Angular 开发者在向与该应用的宿主服务器不同域的服务器发起请求时，可能会遇到一种[*跨域资源共享*](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing "Cross-origin resource sharing")错误。
 浏览器会阻止该请求，除非得到那台服务器的明确许可。
 
 There isn't anything the client application can do about these errors.
@@ -387,7 +387,7 @@ Read about how to enable CORS for specific servers at [enable-cors.org](https://
 
 客户端应用对这种错误无能为力。
 服务器必须配置成可以接受来自该应用的请求。
-要了解如何对特定的服务器开启 CORS，参阅<a href="http://enable-cors.org/server.html" target="_blank" title="Enabling CORS server">enable-cors.org</a>。
+要了解如何对特定的服务器开启 CORS，参阅 [enable-cors.org](https://enable-cors.org/server.html "Enabling CORS server")。
 
 <a id="optimize"></a>
 
@@ -584,7 +584,7 @@ The HTML [`<base href="..." />`](guide/router) specifies a base path for resolvi
 For example, given the `<base href="/my/app/">`, the browser resolves a URL such as `some/place/foo.jpg` into a server request for `my/app/some/place/foo.jpg`.
 During navigation, the Angular router uses the *base href* as the base path to component, template, and module files.
 
-HTML 的 [_&lt;base href="..."/>_](guide/router) 标签指定了用于解析静态文件（如图片、脚本和样式表）相对地址的基地址。
+HTML 的 [`<base href="..." />`](guide/router) 标签指定了用于解析静态文件（如图片、脚本和样式表）相对地址的基地址。
 比如，对于 `<base href="/my/app/">`，浏览器就会把 `some/place/foo.jpg` 这样的 URL 解析成到 `my/app/some/place/foo.jpg` 的请求。
 在导航期间，Angular 路由器使用 *base href* 作为到组件模板文件和模块文件的基地址。
 
@@ -643,7 +643,7 @@ However, defining a `base href` has a few unique effects.
 The `base href` can also be used to define the Angular router's default base (see [`APP_BASE_HREF`](api/common/APP_BASE_HREF)).
 Users with more complicated setups may need to manually configure the `APP_BASE_HREF` token within the application (for example, application routing base is `/` but`assets/scripts/etc.` are at `/assets/`).
 
-`base href` 也可用于定义 Angular 路由器的默认基础 URL（参阅[`APP_BASE_HREF`](api/common/APP_BASE_HREF)）。需要进行更复杂设置的用户可能需要在应用程序中手动配置 `APP_BASE_HREF` 令牌。（比如，应用程序路由基地址是 `/`，但各种资产、脚本等都在 `/assets/` 下）。
+`base href` 也可用于定义 Angular 路由器的默认基地址（参阅[`APP_BASE_HREF`](api/common/APP_BASE_HREF)）。需要进行更复杂设置的用户可能需要在应用程序中手动配置 `APP_BASE_HREF` 令牌。（比如，应用程序路由基地址是 `/`，但各种资产、脚本等都在 `/assets/` 下）。
 
 Unlike the `base href` which can be defined in a single place, the `deploy url` needs to be hard-coded into an application at build time.
 This means specifying a `deploy url` will decrease build speed, but this is the unfortunate cost of using an option that embeds itself throughout an application.

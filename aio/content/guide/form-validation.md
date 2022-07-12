@@ -72,7 +72,7 @@ Notice the following features illustrated by the example.
   It also carries a custom validator directive, `forbiddenName`.
   For more information, see the [Custom validators](#custom-validators) section.
 
-  `<input>` 元素带有一些 HTML 验证属性：`required` 和 `minlength`。它还带有一个自定义的验证器指令 `forbiddenName`。欲知详情，参阅[自定义验证器](guide/form-validation#custom-validators)一节。
+  `<input>` 元素带有一些 HTML 验证属性：`required` 和 `minlength`。它还带有一个自定义的验证器指令 `forbiddenName`。欲知详情，参阅[自定义验证器](#custom-validators)一节。
 
 * `#name="ngModel"` exports `NgModel` into a local variable called `name`.
   `NgModel` mirrors many of the properties of its underlying `FormControl` instance, so you can use this in the template to check for control states such as `valid` and `dirty`.

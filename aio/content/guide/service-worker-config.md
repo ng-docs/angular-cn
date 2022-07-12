@@ -207,7 +207,7 @@ The `installMode` can be either of two values:
 | `prefetch` | Tells the Angular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline. |
 | `prefetch` | 要求 Angular Service Worker 在缓存当前版本的应用时要获取每一个列出的资源。这是个带宽密集型的模式，但可以确保这些资源在请求时可用，即使浏览器正处于离线状态。 |
 | `lazy` | Does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
-| `lazy` | `lazy` 不会预先缓存任何资源。相反，Angular Service Worker 只会缓存它收到请求的资源。这是一种按需缓存模式。永远不会请求的资源也永远不会被缓存。这对于像为不同分辨率提供的图片之类的资源很有用，那样 Service Worker 就只会为特定的屏幕和设备方向缓存正确的资源。 |
+| `lazy` | 不会预先缓存任何资源。相反，Angular Service Worker 只会缓存它收到请求的资源。这是一种按需缓存模式。永远不会请求的资源也永远不会被缓存。这对于像为不同分辨率提供的图片之类的资源很有用，那样 Service Worker 就只会为特定的屏幕和设备方向缓存正确的资源。 |
 
 Defaults to `prefetch`.
 
@@ -362,7 +362,7 @@ API 有时可能会以不向后兼容的方式更改格式。新版本的应用�
 
 `version` is an integer field and defaults to `1`.
 
-`version` 是个整型字段，默认为 `0`。
+`version` 是个整型字段，默认为 `1`。
 
 ### `cacheConfig`
 
@@ -443,7 +443,7 @@ Angular Service Worker 可以使用两种缓存策略之一来获取数据资源
 | `performance` | The default, optimizes for responses that are as fast as possible. If a resource exists in the cache, the cached version is used, and no network request is made. This allows for some staleness, depending on the `maxAge`, in exchange for better performance. This is suitable for resources that don't change often; for example, user avatar images. |
 | `performance` | `performance`，默认值，为尽快给出响应而优化。如果缓存中存在某个资源，则使用这个缓存版本，而不再发起网络请求。它允许资源有一定的陈旧性（取决于 `maxAge`）以换取更好的性能。适用于那些不经常改变的资源，比如用户头像。 |
 | `freshness` | Optimizes for currency of data, preferentially fetching requested data from the network. Only if the network times out, according to `timeout`, does the request fall back to the cache. This is useful for resources that change frequently; for example, account balances. |
-| `freshness` | `freshness` 为数据的即时性而优化，优先从网络获取请求的数据。只有当网络超时时，请求才会根据 `timeout` 的设置回退到缓存中。这对于那些频繁变化的资源很有用，比如账户余额。 |
+| `freshness` | 为数据的即时性而优化，优先从网络获取请求的数据。只有当网络超时时，请求才会根据 `timeout` 的设置回退到缓存中。这对于那些频繁变化的资源很有用，比如账户余额。 |
 
 <div class="alert is-helpful">
 

@@ -330,7 +330,7 @@ When you use the CLI command `ng new --strict`, it is set to `true` in the gener
 
 When `true`, enables [strict template type checking](guide/template-typecheck#strict-mode).
 
-如果为 `true`，则在 Angular 9 中启用[严格的模板类型检查](guide/template-typecheck#strict-mode)。
+如果为 `true`，则启用[严格的模板类型检查](guide/template-typecheck#strict-mode)。
 
 Additional strictness flags allow you to enable and disable specific types of strict template type checking.
 See [troubleshooting template errors](guide/template-typecheck#troubleshooting-template-errors).

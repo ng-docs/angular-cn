@@ -222,7 +222,7 @@ Angular defines default builders for use with specific CLI commands, or with the
 The JSON schemas that define the options and defaults for each of these default builders are collected in the [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/builders.json) package.
 The schemas configure options for the following builders.
 
-Angular 定义了用于特定 CLI 命令或常规 `ng run` 命令的默认构建器。为每个默认构建器定义选项和默认值的 JSON 模式收集在 [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/main/packages/angular/cli/lib/config/schema.json) 包中。这些架构为以下构建器配置选项。
+Angular 定义了用于特定 CLI 命令或常规 `ng run` 命令的默认构建器。为每个默认构建器定义选项和默认值的 JSON 模式收集在 [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/builders.json) 包中。这些架构为以下构建器配置选项。
 
 * [app-shell](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/src/builders/app-shell/schema.json)
 
@@ -330,7 +330,7 @@ It has the following top-level properties.
 | `builder` | The npm package for the build tool used to create this target. The default builder for an application (`ng build myApp`) is `@angular-devkit/build-angular:browser`, which uses the [webpack](https://webpack.js.org) package bundler. <div class="alert is-helpful"> **NOTE**: A different builder is used for building a library (`ng build myLib`). </div> |
 | `builder` | 用于构建此目标的构建工具的 npm 包。默认为 `@angular-devkit/build-angular:browser`，它使用的是 [webpack](https://webpack.js.org) 打包器。<div class="alert is-helpful">**注意**：当构建库（`ng build myLib`）时使用了不同的构建器。</div> |
 | `options` | This section contains default build target options, used when no named alternative configuration is specified. See the [Default build targets](#default-build-targets) section. |
-| `options` | 本节包含构建选项的默认值，当没有指定命名的备用配置时使用。参阅[默认构建选项](#build-props)。 |
+| `options` | 本节包含构建选项的默认值，当没有指定命名的备用配置时使用。参阅[默认构建选项](#default-build-targets)。 |
 | `configurations` | This section defines and names alternative configurations for different intended destinations. It contains a section for each named configuration, which sets the default options for that intended environment. See the [Alternate build configurations](#build-configs) section. |
 | `configurations` | 本节定义并命名针对不同目标的备用配置。它为每个命名配置都包含一节，用于设置该目标环境的默认选项。参阅[备用的构建配置](#build-configs)。 |
 
@@ -583,7 +583,7 @@ You can mix simple and complex file references for styles and scripts.
 
 In Sass you can make use of the `includePaths` functionality for both component and global styles, which allows you to add extra base paths that will be checked for imports.
 
-在 Sass 和 Stylus 中，你可以同时使用组件样式和全局样式的 `includePaths` 功能，从而可以添加将用来检查导入的额外基本路径。
+在 Sass 中，你可以同时使用组件样式和全局样式的 `includePaths` 功能，从而可以添加将用来检查导入的额外基本路径。
 
 To add paths, use the `stylePreprocessorOptions` option:
 

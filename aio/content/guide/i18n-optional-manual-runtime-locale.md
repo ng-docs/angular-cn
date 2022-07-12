@@ -17,7 +17,7 @@ To manually set the runtime locale of an application to one other than the autom
 
 1. Search for the Unicode locale ID in the language-locale combination in the [`@angular/common/locales/`][UnpkgBrowseAngularCommonLocales] directory.
 
-   在 [Angular 代码仓][GithubAngularAngularTreeMasterPackagesCommonLocales] 中的 language-locale 环境组合中搜索 Unicode 语言环境 ID。
+   在 [`@angular/common/locales/`][UnpkgBrowseAngularCommonLocales] 目录的 language-locale 环境组合中搜索 Unicode 语言环境 ID。
 
 1. Set the [`LOCALE_ID`][AioApiCoreLocaleId] token.
 

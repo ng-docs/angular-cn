@@ -313,7 +313,7 @@ This topic is intended to give you a brief overview of what Angular is, the adva
 To see Angular in action, see our [Getting Started](start) tutorial.
 This tutorial uses [stackblitz.com](https://stackblitz.com), for you to explore a working example of Angular without any installation requirements.
 
-要实际使用 Angular，请参阅我们的[入门](https://angular.cn/start)教程。本教程使用 [stackblitz.com](https://stackblitz.com)，因此你可以浏览 Angular 的可工作范例，而不必先做任何安装工作。
+要实际使用 Angular，请参阅我们的[入门](start)教程。本教程使用 [stackblitz.com](https://stackblitz.com)，因此你可以浏览 Angular 的可工作范例，而不必先做任何安装工作。
 
 To explore Angular's capabilities further, we recommend reading through the sections, Understanding Angular and Developer Guides.
 

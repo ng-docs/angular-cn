@@ -165,7 +165,7 @@ AOT 编译中的错误通常是由于元数据不符合编译器的要求而发�
 You can provide options in the [TypeScript configuration file](guide/typescript-configuration) that controls the compilation process.
 See [Angular compiler options](guide/angular-compiler-options) for a complete list of available options.
 
-你可以在 `tsconfig.json` [TypeScript 配置文件](guide/typescript-configuration)中提供控制编译过程的选项。关于可用选项的完整列表，参阅 [Angular 编译器](guide/angular-compiler-options)选项。
+你可以在 [TypeScript 配置文件](guide/typescript-configuration)中提供控制编译过程的选项。关于可用选项的完整列表，参阅 [Angular 编译器](guide/angular-compiler-options)选项。
 
 ## Phase 1: Code analysis
 
@@ -742,7 +742,7 @@ Using `*ngIf` allows the TypeScript compiler to infer that the `person` used in 
 
 For more information about input type narrowing, see [Improving template type checking for custom directives](guide/structural-directives#directive-type-checks).
 
-关于输入类型窄化的更多信息，参阅 [Input setter 的强制类型转换](guide/template-typecheck#input-setter-coercion)和[为自定义指令强化模板类型检查](guide/structural-directives#directive-type-checks)。
+关于输入类型窄化的更多信息，参阅[为自定义指令强化模板类型检查](guide/structural-directives#directive-type-checks)。
 
 ### Non-null type assertion operator
 

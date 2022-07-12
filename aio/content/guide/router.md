@@ -861,8 +861,6 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
 For more complete information on how `<base href>` is used to construct target URIs, see the [RFC](https://tools.ietf.org/html/rfc3986#section-5.2.2) section on transforming references.
 
-对所有 Web 资源使用绝对地址：CSS、图片、脚本、模板 HTML。
-
 <a id="hashlocationstrategy"></a>
 
 ### `HashLocationStrategy`
