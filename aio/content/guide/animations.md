@@ -189,7 +189,7 @@ In the `open` state, the button has a height of 200 pixels, an opacity of 1, and
 
 In the following `closed` state, the button has a height of 100 pixels, an opacity of 0.8, and a background color of blue.
 
-在下面这个 `closed` 状态中，按钮的高度是 100 像素，透明度是 0.5，背景色是绿色。
+在下面这个 `closed` 状态中，按钮的高度是 100 像素，透明度是 0.8，背景色是蓝色。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="state2"></code-example>
 

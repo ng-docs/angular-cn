@@ -115,7 +115,7 @@ This most commonly applies to `<button>` and `<a>`, but can be used with many ot
 You can see examples of this pattern in Angular Material:
 [`MatButton`](https://github.com/angular/components/blob/50d3f29b6dc717b512dbd0234ce76f4ab7e9762a/src/material/button/button.ts#L67-L69), [`MatTabNav`](https://github.com/angular/components/blob/50d3f29b6dc717b512dbd0234ce76f4ab7e9762a/src/material/tabs/tab-nav-bar/tab-nav-bar.ts#L139), and [`MatTable`](https://github.com/angular/components/blob/50d3f29b6dc717b512dbd0234ce76f4ab7e9762a/src/material/table/table.ts#L22).
 
-你可以在 Angular Material 中看到此模式的范例：[`MatButton`](https://github.com/angular/components/blob/master/src/material/button/button.ts#L66-L68)，[`MatTabNav`](https://github.com/angular/components/blob/master/src/material/tabs/tab-nav-bar/tab-nav-bar.ts#L67)，[`MatTable`](https://github.com/angular/components/blob/master/src/material/table/table.ts#L17)。
+你可以在 Angular Material 中看到此模式的范例：[`MatButton`](https://github.com/angular/components/blob/50d3f29b6dc717b512dbd0234ce76f4ab7e9762a/src/material/button/button.ts#L67-L69)，[`MatTabNav`](https://github.com/angular/components/blob/50d3f29b6dc717b512dbd0234ce76f4ab7e9762a/src/material/tabs/tab-nav-bar/tab-nav-bar.ts#L139)，[`MatTable`](https://github.com/angular/components/blob/50d3f29b6dc717b512dbd0234ce76f4ab7e9762a/src/material/table/table.ts#L22)。
 
 ### Using containers for native elements
 

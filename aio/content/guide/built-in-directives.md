@@ -159,7 +159,7 @@ To do this, the full example calls `setCurrentStyles()` initially with `ngOnInit
 However, these steps are not necessary to implement `ngStyle` on its own.
 See the <live-example></live-example> `app.component.ts` and `app.component.html` for this optional implementation.
 
-在这个例子中，Angular 会在初始化以及发生更改的情况下应用这些类。完整的示例会在 `ngOnInit()` 中进行初始化以及通过单击按钮更改相关属性时调用 `setCurrentClasses()`。这些步骤对于实现 `ngClass` 不是必需的。有关更多信息，请参见<live-example></live-example>中的 `app.component.ts` 和 `app.component.html`。
+在这个例子中，Angular 会在初始化以及发生更改的情况下应用这些类。完整的示例会在 `ngOnInit()` 中进行初始化以及通过单击按钮更改相关属性时调用 `setCurrentStyles()`。不过，这些步骤对于实现 `ngStyle` 不是必需的。有关更多信息，请参见<live-example></live-example>中的 `app.component.ts` 和 `app.component.html`。
 
 <a id="ngModel"></a>
 

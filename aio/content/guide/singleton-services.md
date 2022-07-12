@@ -240,7 +240,7 @@ The injector returns `null`, the `parentModule` parameter is null, and the const
 
 It's a different story if you improperly import `GreetingModule` into a lazy loaded module such as `CustomersModule`.
 
-但如果你把 `GreetingModule` 导入到像 `CustomerModule` 这样的惰性加载模块中，事情就不一样了。
+但如果你把 `GreetingModule` 导入到像 `CustomersModule` 这样的惰性加载模块中，事情就不一样了。
 
 Angular creates a lazy loaded module with its own injector, a child of the root injector.
 `@SkipSelf()` causes Angular to look for a `GreetingModule` in the parent injector, which this time is the root injector.

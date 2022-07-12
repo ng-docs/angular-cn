@@ -40,7 +40,7 @@ They're the only classes that you can add to `declarations`.
 
 Add only [declarable](guide/bootstrapping#the-declarations-array) classes to an NgModule's `declarations` list.
 
-只有[可声明的](guide/ngmodule-faq#q-declarable)类才能加到模块的 `declarations` 列表中。
+只有[可声明的](guide/bootstrapping#the-declarations-array)类才能加到模块的 `declarations` 列表中。
 
 Do *not* declare the following:
 
@@ -74,7 +74,7 @@ Do *not* declare the following:
 `AppComponent` is often listed in both `declarations` and `bootstrap`.
 You might see the same component listed in `declarations` and `exports`.
 
-`AppComponent` 经常被同时列在 `declarations` 和 `bootstrap` 中。另外你还可能看到 `HeroComponent` 被同时列在 `declarations` 和 `exports` 中。
+`AppComponent` 经常同时列在 `declarations` 和 `bootstrap` 中。另外你还可能看到它同时列在 `declarations` 和 `exports` 中。
 
 While that seems redundant, these properties have different functions.
 Membership in one list doesn't imply membership in another list.
@@ -121,7 +121,7 @@ The "x" class isn't visible to other modules until you add it to the `exports` l
 Import NgModules whose public (exported) [declarable classes](guide/bootstrapping#the-declarations-array)
 you need to reference in this module's component templates.
 
-导入你需要在当前模块的组件模板中使用的那些公开的（被导出的）[可声明类](guide/ngmodule-faq#q-declarable)。
+导入你需要在当前模块的组件模板中使用的那些公开的（被导出的）[可声明类](guide/bootstrapping#the-declarations-array)。
 
 This always means importing `CommonModule` from `@angular/common` for access to
 the Angular directives such as `NgIf` and `NgFor`.
@@ -205,7 +205,7 @@ Export [declarable](guide/bootstrapping#the-declarations-array) classes that com
 These are your *public* classes.
 If you don't export a declarable class, it stays *private*, visible only to other components declared in this NgModule.
 
-导出那些*其它模块*希望在自己的模板中引用的[可声明类](guide/ngmodule-faq#q-declarable)。这些也是你的*公共*类。如果你不导出某个类，它就是*私有的*，只对当前模块中声明的其它组件可见。
+导出那些*其它模块*希望在自己的模板中引用的[可声明类](guide/bootstrapping#the-declarations-array)。这些也是你的*公共*类。如果你不导出某个类，它就是*私有的*，只对当前模块中声明的其它组件可见。
 
 You *can* export any declarable class —components, directives, and pipes— whether
 it's declared in this NgModule or in an imported NgModule.
@@ -278,7 +278,7 @@ Pure service modules don't export [declarable](guide/bootstrapping#the-declarati
 For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
 Its only purpose is to add http service providers to the application as a whole.
 
-不要费心去导出纯服务类。纯服务类的模块不会导出任何可供其它模块使用的[可声明类](guide/ngmodule-faq#q-declarable)。比如，不用重新导出 `HttpClientModule`，因为它没有导出任何东西。它唯一的用途是把那些 http 服务提供者一起添加到应用中。
+不要费心去导出纯服务类。纯服务类的模块不会导出任何可供其它模块使用的[可声明类](guide/bootstrapping#the-declarations-array)。比如，不用重新导出 `HttpClientModule`，因为它没有导出任何东西。它唯一的用途是把那些 http 服务提供者一起添加到应用中。
 
 ## What is the `forRoot()` method?
 
@@ -572,7 +572,7 @@ For example, an editing component that needs a private copy of a caching service
 Then each new instance of the component gets its own cached service instance.
 The changes that editor makes in its service don't touch the instances elsewhere in the application.
 
-比如，如果英雄编辑组件需要自己私有的缓存英雄服务实例，那就应该把 `HeroService` 注册进 `HeroEditorComponent` 中。这样，每个新的 `HeroEditorComponent` 的实例都会得到一份自己的缓存服务实例。编辑器的改动只会作用于它自己的服务，而不会影响到应用中其它地方的英雄实例。
+比如，如果英雄编辑组件需要自己私有的缓存英雄服务实例，那就应该在本组件中注册此服务。这样，本组件的每个新实例都会得到一份自己的缓存服务实例。编辑器的改动只会作用于它自己的服务，而不会影响到应用中其它地方的英雄实例。
 
 [Always register *application-wide* services with the root `AppModule`](guide/ngmodule-faq#q-root-component-or-module), not the root `AppComponent`.
 
@@ -609,13 +609,13 @@ Now consider a lazy loaded module that also provides a service called `UserServi
 When the router lazy loads a module, it creates a child injector and registers the `UserService` provider with that child injector.
 The child injector is *not* the root injector.
 
-当路由器准备惰性加载 `HeroModule` 的时候，它会创建一个子注入器，并且把 `UserService` 的提供者注册到那个子注入器中。子注入器和根注入器是*不同*的。
+当路由器准备惰性加载某个模块的时候，它会创建一个子注入器，并且把 `UserService` 的提供者注册到那个子注入器中。子注入器和根注入器是*不同*的。
 
 When Angular creates a lazy component for that module and injects `UserService`, it finds a `UserService` provider in the lazy module's *child injector*
 and creates a *new* instance of the `UserService`.
 This is an entirely different `UserService` instance than the app-wide singleton version that Angular injected in one of the eagerly loaded components.
 
-当 Angular 创建一个惰性加载的 `HeroComponent` 时，它必须注入一个 `UserService`。这次，它会从惰性加载模块的*子注入器*中查找 `UserService` 的提供者，并用它创建一个 `UserService` 的新实例。这个 `UserService` 实例与 Angular 在主动加载的组件中注入的那个全应用级单例对象截然不同。
+当 Angular 创建一个惰性加载的组件并注入 `UserService` 时。这次，它会从此惰性加载模块的*子注入器*中查找 `UserService` 的提供者，并用它创建一个 `UserService` 的新实例。这个 `UserService` 实例与 Angular 在急性加载的组件中注入的那个全应用级单例对象截然不同。
 
 This scenario causes your application to create a new instance every time, instead of using the singleton.
 
@@ -812,7 +812,7 @@ When it finds one, that's a template reference.
 
 The Angular compiler finds a component or directive in a template when it can match the *selector* of that component or directive to some HTML in that template.
 
-Angular 编译器通过在一个模板的 HTML 中匹配组件或指令的**选择器（selector）**，来查找组件或指令。
+Angular 编译器通过在模板中匹配组件或指令的**选择器（selector）**，来查找组件或指令。
 
 The compiler finds a pipe if the pipe's *name* appears within the pipe syntax of the template HTML.
 
@@ -820,7 +820,7 @@ The compiler finds a pipe if the pipe's *name* appears within the pipe syntax of
 
 Angular only matches selectors and pipe names for classes that are declared by this module or exported by a module that this module imports.
 
-Angular 只查询两种组件、指令或管道：1）那些在当前模块中声明过的，以及 2）那些被当前模块导入的模块所导出的。
+Angular 只会在当前模块中声明过的那些类或被当前模块导入的模块所导出的那些类中匹配这些选择器和管道名。
 
 <a id="q-angular-compiler"></a>
 

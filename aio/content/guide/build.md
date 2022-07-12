@@ -14,7 +14,7 @@ This page discusses build-specific configuration options for Angular projects.
 
 You can define different named build configurations for your project, such as *staging* and *production*, with different defaults.
 
-你可以用不同的默认值来为项目定义出不同的命名配置项，比如 *stage* 和 *production*。
+你可以用不同的默认值来为项目定义出不同的命名配置项，比如 *staging* 和 *production*。
 
 Each named configuration can have defaults for any of the options that apply to the various [builder targets](guide/glossary#target), such as `build`, `serve`, and `test`.
 The [Angular CLI](cli) `build`, `serve`, and `test` commands can then replace files with appropriate versions for your intended target environment.
@@ -397,7 +397,7 @@ Internally, Autoprefixer relies on a library called [Browserslist](https://githu
 Browserlist looks for configuration options in a `browserslist` property of the package configuration file, or in a configuration file named `.browserslistrc`.
 Autoprefixer looks for the `browserslist` configuration when it prefixes your CSS.
 
-在内部 Autoprefixer 依赖一个名叫 [Browserslist](https://github.com/browserslist/browserslist) 的库来指出需要为哪些浏览器加前缀。Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.browserslistrc` 的配置文件中来配置这些选项。当 Autoprefixer 为你的 CSS 加前缀时，就会查阅 Browserlist 的配置。
+在内部，Autoprefixer 依赖一个名叫 [Browserslist](https://github.com/browserslist/browserslist) 的库来指出需要为哪些浏览器加前缀。Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.browserslistrc` 的配置文件中来配置这些选项。当 Autoprefixer 为你的 CSS 加前缀时，就会查阅 Browserlist 的配置。
 
 * Tell Autoprefixer what browsers to target by adding a browserslist property to the package configuration file, `package.json`:
 

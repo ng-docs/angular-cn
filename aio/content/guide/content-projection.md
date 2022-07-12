@@ -194,7 +194,7 @@ The following steps demonstrate a typical implementation of conditional content 
    The preceding example creates a custom directive, `appExampleZippyContent`, as an API to mark the `<ng-template>` for the component's content.
    With the `TemplateRef`, the component can render the referenced content by using either the `ngTemplateOutlet` directive, or with the `ViewContainerRef` method `createEmbeddedView()`.
 
-   这个 `<ng-template>` 元素定义了一个组件可以根据其自身逻辑渲染的内容块。组件可以使用 [`@ContentChild`](api/core/ContentChild) 或 [`@ContentChildren`](api/core/ContentChildren) 装饰器获得对此模板内容的引用（即 [`TemplateRef`](api/core/TemplateRef)）。前面的示例创建了一个自定义指令 `appExampleZippyContent` 作为 API，以将 `<ng-template>` 标记为组件内容。借助这个 `TemplateRef`，组件可以使用 [`ngTemplateOutlet`](api/common/NgTemplateOutlet)指令或[`ViewContainerRef.createEmbeddedView()`](api/core/ViewContainerRef#createembeddedview)方法来渲染所引用的内容。
+   这个 `<ng-template>` 元素定义了一个组件可以根据其自身逻辑渲染的内容块。组件可以使用 `@ContentChild` 或 `@ContentChildren` 装饰器获得对此模板内容的引用（即 `TemplateRef`）。前面的示例创建了一个自定义指令 `appExampleZippyContent` 作为 API，以将 `<ng-template>` 标记为组件内容。借助这个 `TemplateRef`，组件可以使用 `ngTemplateOutlet` 指令或 `ViewContainerRef` 的 `createEmbeddedView()` 方法来渲染所引用的内容。
 
 1. [Create an attribute directive](guide/attribute-directives#building-an-attribute-directive) with a selector that matches the custom attribute for your template.
    In this directive, inject a `TemplateRef` instance.

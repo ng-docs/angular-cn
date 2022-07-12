@@ -126,7 +126,7 @@ Strict mode is only available if using Ivy.
 
 In addition to the full mode behavior, Angular does the following:
 
-除了完全模式的行为之外，Angular 版本 9 还会：
+除了完全模式的行为之外，Angular 还会：
 
 * Verifies that component/directive bindings are assignable to their `@Input()`s
 
@@ -272,7 +272,7 @@ If you still have issues after troubleshooting with these flags, fall back to fu
 
 If that doesn't work, an option of last resort is to turn off full mode entirely with `fullTemplateTypeCheck: false`.
 
-如果这不起作用，则最后一种选择是完全关闭 full 模式，并使用 `fullTemplateTypeCheck: false`，因为在这种情况下，我们已经做了一些特殊的努力来使 Angular 9 向后兼容。
+如果这不起作用，则最后一种选择是完全关闭 full 模式，并使用 `fullTemplateTypeCheck: false`。
 
 A type-checking error that you cannot resolve with any of the recommended methods can be the result of a bug in the template type-checker itself.
 If you get errors that require falling back to basic mode, it is likely to be such a bug.
@@ -407,7 +407,7 @@ Additionally, it is possible to provide type hints that are specific to the temp
 See [Improving template type checking for custom directives](guide/structural-directives#directive-type-checks), and [Input setter coercion](#input-setter-coercion).
 
 作为库作者，你可以采取多种措施为用户提供最佳体验。首先，启用 `strictNullChecks` 并在输入的类型中包括 `null`（如果适用），可以与消费者沟通，看他们是否可以提供可空的值。
-此外，可以提供特定模板类型检查器的类型提示，请参阅本指南的[为自定义指令改进模板类型检查](guide/structural-directives#directive-type-checks)和[输入设置器强制转型](guide/template-typecheck#input-setter-coercion)部分。
+此外，可以提供特定模板类型检查器的类型提示，请参阅本指南的[为自定义指令改进模板类型检查](guide/structural-directives#directive-type-checks)和[输入设置器强制转型](#input-setter-coercion)部分。
 
 <a id="input-setter-coercion"></a>
 
@@ -543,7 +543,7 @@ Care should be taken that if an `ngAcceptInputType_` override is present for a g
 Disable checking of a binding expression by surrounding the expression in a call to the [`$any()` cast pseudo-function](guide/template-expression-operators).
 The compiler treats it as a cast to the `any` type just like in TypeScript when a `<any>` or `as any` cast is used.
 
-可以通过把绑定表达式包含在[类型转换伪函数 `$any()`](guide/template-syntax) 中来禁用类型检查。编译器会像在 TypeScript 中使用 `<any>` 或 `as any` 进行类型转换一样对待它。
+可以通过把绑定表达式包含在[类型转换伪函数 `$any()`](guide/template-expression-operators) 中来禁用类型检查。编译器会像在 TypeScript 中使用 `<any>` 或 `as any` 进行类型转换一样对待它。
 
 In the following example, casting `person` to the `any` type suppresses the error `Property addresss does not exist`.
 

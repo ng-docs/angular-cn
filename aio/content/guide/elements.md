@@ -153,7 +153,7 @@ Component properties and logic maps directly into HTML attributes and the browse
 
 For more information, see Web Component documentation for [Creating custom events](https://developer.mozilla.org/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events).
 
-要了解更多，参阅 Web Components 的文档：[Creating custom events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events)。
+要了解更多，参阅 Web Component 的文档：[Creating custom events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events)。
 
 <a id="browser-support"></a>
 
@@ -214,7 +214,7 @@ The following Popup Service example application defines a component that you can
 | `popup.service.ts` | Creates an injectable service that provides two different ways to invoke the `PopupComponent`; as a dynamic component, or as a custom element Notice how much more setup is required for the dynamic-loading method. |
 | `popup.service.ts` | 创建了一个可注入的服务，它提供了两种方式来执行 `PopupComponent`：作为动态组件或作为自定义元素。注意动态组件的方式需要更多的代码来做搭建工作。 |
 | `app.module.ts` | Adds the `PopupComponent` in the module's `declarations` list. |
-| `app.module.ts` | 把 `PopupComponent` 添加到模块的 `entryComponents` 列表中 |
+| `app.module.ts` | 把 `PopupComponent` 添加到模块的 `declarations` 列表中 |
 | `app.component.ts` | Defines the application's root component, which uses the `PopupService` to add the pop-up to the DOM at run time. When the application runs, the root component's constructor converts `PopupComponent` to a custom element. |
 | `app.component.ts` | 定义了该应用的根组件，它借助 `PopupService` 在运行时把这个弹窗添加到 DOM 中。在应用运行期间，根组件的构造函数会把 `PopupComponent` 转换成自定义元素。 |
 

@@ -568,7 +568,7 @@ While the `ngDoCheck()` hook can detect when the hero's `name` has changed, it i
 This hook is called with enormous frequency —after *every* change detection cycle no matter where the change occurred.
 It's called over twenty times in this example before the user can do anything.
 
-虽然 `ngDoCheck()` 钩子可以检测出英雄的 `name` 何时发生了变化，但却非常昂贵。无论变化发生在何处，*每个*变化检测周期*都会*以很大的频率调用这个钩子。在用户可以执行任何操作之前，本例中已经调用了 20 多次。
+虽然 `ngDoCheck()` 钩子可以检测出英雄的 `name` 何时发生了变化，但却非常昂贵。无论变化发生在何处，*每个*变化检测周期*都会*以很大的频率调用这个钩子。在用户可以执行任何操作之前，本例中已经调用了二十多次。
 
 Most of these initial checks are triggered by Angular's first rendering of *unrelated data elsewhere on the page*.
 Just moving the cursor into another `<input>` triggers a call.

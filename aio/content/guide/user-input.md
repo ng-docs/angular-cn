@@ -284,7 +284,7 @@ Here's how it works.
 In the previous example, the current state of the input box is lost if the user mouses away and clicks elsewhere on the page without first pressing *Enter*.
 The component's `value` property is updated only when the user presses *Enter*.
 
-前上例中，如果用户没有先按回车键，而是移开了鼠标，点击了页面中其它地方，输入框的当前值就会丢失。只有当用户按下了回车键候，组件的 `values` 属性才能更新。
+前上例中，如果用户没有先按回车键，而是移开了鼠标，点击了页面中其它地方，输入框的当前值就会丢失。只有当用户按下了回车键候，组件的 `value` 属性才能更新。
 
 To fix this issue, listen to both the *Enter* key and the `blur` event.
 

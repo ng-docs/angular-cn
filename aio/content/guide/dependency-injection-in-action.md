@@ -438,7 +438,7 @@ Imagine that `LoggerService` had a large API, much larger than the actual three 
 You might want to shrink that API surface to just the members you actually need.
 In this example, the `MinimalLogger` [class-interface](#class-interface) reduces the API to two members:
 
-想象 `LoggerService` 有个很大的 API 接口，远超过现有的三个方法和一个属性。你可能希望把 API 接口收窄到只有两个你确实需要的成员。在这个例子中，`MinimalLogger`[*类-接口*](guide/dependency-injection-in-action#class-interface)，就这个 API 成功缩小到了只有两个成员：
+想象 `LoggerService` 有个很大的 API 接口，远超过现有的三个方法和一个属性。你可能希望把 API 接口收窄到只有两个你确实需要的成员。在这个例子中，`MinimalLogger`[*类-接口*](#class-interface)，就这个 API 成功缩小到了只有两个成员：
 
 <code-example header="src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts"></code-example>
 
@@ -749,7 +749,7 @@ The *Parent Finder* sample is full of circular class references that are impossi
 You face this dilemma when a class makes *a reference to itself* as does `AlexComponent` in its `providers` array.
 The `providers` array is a property of the `@Component()` decorator function which must appear *above* the class definition.
 
-当一个类*需要引用自身*的时候，你面临同样的困境，就像在 `AlexComponent` 的 `provdiers` 数组中遇到的困境一样。该 `providers` 数组是一个 `@Component()` 装饰器函数的一个属性，它必须在类定义*之前*出现。
+当一个类*需要引用自身*的时候，你面临同样的困境，就像在 `AlexComponent` 的 `providers` 数组中遇到的困境一样。该 `providers` 数组是一个 `@Component()` 装饰器函数的一个属性，它必须在类定义*之前*出现。
 
 Break the circularity with `forwardRef`.
 

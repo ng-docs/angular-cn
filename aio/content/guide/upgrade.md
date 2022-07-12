@@ -291,7 +291,7 @@ Dependency injection is front and center in both AngularJS and Angular, but ther
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
 
-就算有这么多不同点，也并不妨碍你在依赖注入时进行互操作。`UpgradeModule` 解决了这些差异，并让它们无缝的对接：
+就算有这么多不同点，也并不妨碍你在依赖注入时进行互操作。`upgrade/static` 解决了这些差异，并让它们无缝的对接：
 
 * You can make AngularJS services available for injection to Angular code by *upgrading* them.
   The same singleton instance of each service is shared between the frameworks.
@@ -320,7 +320,7 @@ In the DOM of a hybrid ngUpgrade application are components and directives from 
 These components communicate with each other by using the input and output bindings of their respective frameworks, which ngUpgrade bridges together.
 They may also communicate through shared injected dependencies, as described above.
 
-在混合式应用中，同时存在来自 AngularJS 和 Angular 中组件和指令的 DOM。这些组件通过它们各自框架中的输入和输出绑定来互相通讯，它们由 `UpgradeModule` 桥接在一起。它们也能通过共享被注入的依赖彼此通讯，就像前面所说的那样。
+在混合式应用中，同时存在来自 AngularJS 和 Angular 中组件和指令的 DOM。这些组件通过它们各自框架中的输入和输出绑定来互相通讯，它们由 ngUpgrade 桥接在一起。它们也能通过共享被注入的依赖彼此通讯，就像前面所说的那样。
 
 The key thing to understand about a hybrid application is that every element in the DOM is owned by exactly one of the two frameworks.
 The other framework ignores it.
@@ -704,7 +704,7 @@ To start with higher-level components and work your way down.
 This too can be done using the `upgrade/static`.
 You can *upgrade* AngularJS component directives and then use them from Angular.
 
-现在，你已经能在 Angular 中写一个组件，并把它用于 AngularJS 代码中了。当你从低级组件开始移植，并往上走时，这非常有用。但在另外一些情况下，从相反的方向进行移植会更加方便：从高级组件开始，然后往下走。这也同样能用 `UpgradeModule` 完成。你可以*升级*AngularJS 组件型指令，然后从 Angular 中用它们。
+现在，你已经能在 Angular 中写一个组件，并把它用于 AngularJS 代码中了。当你从低级组件开始移植，并往上走时，这非常有用。但在另外一些情况下，从相反的方向进行移植会更加方便：从高级组件开始，然后往下走。这也同样能用 `upgrade/static` 完成。你可以*升级*AngularJS 组件型指令，然后从 Angular 中用它们。
 
 Not all kinds of AngularJS directives can be upgraded.
 The directive really has to be a *component directive*, with the characteristics [described in the preparation guide above][AioGuideUpgradeUsingComponentDirectives].
@@ -784,7 +784,7 @@ This is also possible.
 While there is no such thing as transclusion in Angular, there is a very similar concept called *content projection*.
 `upgrade/static` is able to make these two features interoperate.
 
-如果你在 AngularJS 模板中使用降级后的 Angular 组件时，可能会需要把模板中的一些内容投影进那个组件。这也是可能的，虽然在 Angular 中并没有透传(transclude)这样的东西，但它有一个非常相似的概念，叫做*内容投影*。`UpgradeModule` 也能让这两个特性实现互操作。
+如果你在 AngularJS 模板中使用降级后的 Angular 组件时，可能会需要把模板中的一些内容投影进那个组件。这也是可能的，虽然在 Angular 中并没有透传(transclude)这样的东西，但它有一个非常相似的概念，叫做*内容投影*。`upgrade/static` 也能让这两个特性实现互操作。
 
 Angular components that support content projection make use of an `<ng-content>` tag within them.
 Here is an example of such a component:
@@ -1211,8 +1211,8 @@ Now you'll see how to bring that application to the brave new world of Angular.
 During the process you'll learn how to apply the steps outlined in the [preparation guide][AioGuideUpgradePreparation].
 You'll align the application with Angular and also start writing in TypeScript.
 
-这期间，你将学到如何在实践中应用[准备指南][AioGuideUpgradePreparation]中列出的那些重点步骤：
-你先让该应用向 Angular 看齐，然后为它引入 SystemJS 模块加载器和 TypeScript。
+这期间，你将学到如何在实践中应用[准备指南][AioGuideUpgradePreparation]中列出的那些重点步骤。
+你要先让该应用向 Angular 看齐，并开始写 TypeScript。
 
 This tutorial is based on the 1.5.x version of the `angular-phonecat` tutorial, which is preserved in the [1.5-snapshot][GithubAngularAngularPhonecatCommits15Snapshot] branch of the repository.
 To follow along, clone the [angular-phonecat][GithubAngularAngularPhonecat] repository, check out the `1.5-snapshot` branch and apply the steps as you go.
@@ -1668,7 +1668,7 @@ There is already a file named `app.module.ts` that holds the AngularJS module.
 Rename it to `app.module.ajs.ts` and update the corresponding script name in the `index.html` as well.
 The file contents remain:
 
-现在，创建一个名叫 `AppModule` 的根 `NgModule` 类。这里已经有了一个名叫 `app.module.ts` 的文件，其中存放着 AngularJS 的模块。把它改名为 `app.module.ng1.ts`，同时也要在 `index.html` 中修改对应的脚本名。文件的内容保留：
+现在，创建一个名叫 `AppModule` 的根 `NgModule` 类。这里已经有了一个名叫 `app.module.ts` 的文件，其中存放着 AngularJS 的模块。把它改名为 `app.module.ajs.ts`，同时也要在 `index.html` 中修改对应的脚本名。文件的内容保留：
 
 <code-example header="app.module.ajs.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ajs.ts"></code-example>
 
@@ -1829,7 +1829,7 @@ For an example on GitHub, see [UMD Angular bundle][GithubMgechevAngularUmdBundle
 The first piece you'll port over to Angular is the `Phone` service, which resides in `app/core/phone/phone.service.ts` and makes it possible for components to load phone information from the server.
 Right now it is implemented with ngResource and you're using it for two things:
 
-你要移植到 Angular 的第一个片段是 `Phone` 工厂(位于 `app/js/core/phones.factory.ts`)，并且让它能帮助控制器从服务器上加载电话信息。目前，它是用 `ngResource` 实现的，你用它做两件事：
+你要移植到 Angular 的第一个片段是 `Phone` 工厂(位于 `app/core/phone/phone.service.ts`)，并且让它能帮助控制器从服务器上加载电话信息。目前，它是用 `ngResource` 实现的，你用它做两件事：
 
 * For loading the list of all phones into the phone list component
 
@@ -1856,7 +1856,7 @@ Re-open the `app.module.ts` file, import and add `HttpClientModule` to the `impo
 Now you're ready to upgrade the Phone service itself.
 Replace the ngResource-based service in `phone.service.ts` with a TypeScript class decorated as `@Injectable`:
 
-现在，你已经准备好了升级 `Phones` 服务本身。你将为 `phone.service.ts` 文件中基于 ngResource 的服务加上 `@Injectable` 装饰器：
+现在，你已经准备好了升级 `Phone` 服务本身。你将为 `phone.service.ts` 文件中基于 ngResource 的服务加上 `@Injectable` 装饰器：
 
 <code-example header="app/core/phone/phone.service.ts (skeleton)" path="upgrade-phonecat-2-hybrid/app/core/phone/phone.service.ts" region="classdef"></code-example>
 
@@ -1917,7 +1917,7 @@ Simultaneously with the AngularJS to Angular upgrade you're also migrating code 
 At this point, you can switch the two components to use the new service instead of the old one.
 While you `$inject` it as the downgraded `phone` factory, it is really an instance of the `Phone` class and you annotate its type accordingly:
 
-这时，你可以把两个控制器从使用老的服务切换成使用新的。你像降级过的 `phones` 工厂一样 `$inject` 它，但它实际上是一个 `Phones` 类的实例，并且你可以据此注解它的类型：
+这时，你可以把两个控制器从使用老的服务切换成使用新的。你像降级过的 `phone` 工厂一样 `$inject` 它，但它实际上是一个 `Phone` 类的实例，并且你可以据此注解它的类型：
 
 <code-example header="app/phone-list/phone-list.component.ts" path="upgrade-phonecat-2-hybrid/app/phone-list/phone-list.component.ajs.ts"></code-example>
 
@@ -1973,8 +1973,8 @@ The search controls replace the AngularJS `$ctrl` expressions with the two-way `
 Replace the `ng-repeat` of the list with an `*ngFor` as [described in the Template Syntax page][AioGuideBuiltInDirectives].
 Replace the `ng-src` of the image tag with a binding to the native `src` property.
 
-把列表中的 `ng-repeat` 替换为 `*ngFor` 以及它的 `let var of iterable` 语法，
-该语法在[模板语法指南中讲过][AioGuideBuiltInDirectives]。
+把列表中的 `ng-repeat` 替换为 `*ngFor`，
+就像[模板语法指南][AioGuideBuiltInDirectives]中所讲的那样。
 再把 `img` 标签的 `ng-src` 替换为一个标准的 `src` 属性(property)绑定。
 
 <code-example header="app/phone-list/phone-list.template.html (phones)" path="upgrade-phonecat-2-hybrid/app/phone-list/phone-list.template.html" region="list"></code-example>
@@ -2007,7 +2007,7 @@ The `as angular.IDirectiveFactory` cast tells the TypeScript compiler that the r
 The new `PhoneListComponent` uses the Angular `ngModel` directive, located in the `FormsModule`.
 Add the `FormsModule` to `NgModule` imports and declare the new `PhoneListComponent` since you downgraded it:
 
-新的 `PhoneListComponent` 使用 Angular 的 `ngModel` 指令，它位于 `FormsModule` 中。把 `FormsModule` 添加到 `NgModule` 的 `imports` 中，并声明新的 `PhoneListComponent` 组件，最后，把降级的结果添加到 `entryComponents` 中：
+新的 `PhoneListComponent` 使用 Angular 的 `ngModel` 指令，它位于 `FormsModule` 中。把 `FormsModule` 添加到 `NgModule` 的 `imports` 中，并声明新的 `PhoneListComponent` 组件，因为你降级了它：
 
 <code-example header="app.module.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phonelist"></code-example>
 
@@ -2024,7 +2024,7 @@ Now set the remaining `phone-detail.component.ts` as follows:
 This is similar to the phone list component.
 The new wrinkle is the `RouteParams` type annotation that identifies the `routeParams` dependency.
 
-这和电话列表组件很相似。这里的窍门在于 `@Inject` 装饰器，它标记出了 `$routeParams` 依赖。
+这和电话列表组件很相似。这里的窍门在于 `RouteParams` 类型装饰器，它标记出了 `routeParams` 依赖项。
 
 The AngularJS injector has an AngularJS router dependency called `$routeParams`, which was injected into `PhoneDetails` when it was still an AngularJS controller.
 You intend to inject it into the new `PhoneDetailsComponent`.
@@ -2088,7 +2088,7 @@ There are several notable changes here:
 
 Add `PhoneDetailComponent` component to the `NgModule` *declarations*:
 
-把 `PhoneDetailComponent` 组件添加到 `NgModule` 的 *declarations* 和 *entryComponents* 中：
+把 `PhoneDetailComponent` 组件添加到 `NgModule` 的 *declarations* 中：
 
 <code-example header="app.module.ts" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="phonedetail"></code-example>
 
@@ -2187,7 +2187,7 @@ Create a new `app.component.ts` file with the following `AppComponent` class:
 It has a template that only includes the `<router-outlet>`.
 This component just renders the contents of the active route and nothing else.
 
-它有一个很简单的模板，只包含 Angular 路由的 `<router-outlet>`。该组件只负责渲染活动路由的内容，此外啥也不干。
+它有一个很简单的模板，只包含 `<router-outlet>`。该组件只负责渲染活动路由的内容，此外啥也不干。
 
 The selector tells Angular to plug this root component into the `<phonecat-app>` element on the host web page when the application launches.
 
@@ -2290,7 +2290,7 @@ There is no need for that anymore.
 
 Switch the bootstrap method of the application from the `UpgradeModule` to the Angular way.
 
-把应用的引导（`bootstrap`）方法从 `UpgradeAdapter` 的改为 Angular 的。
+把应用的引导（`bootstrap`）方式从 `UpgradeModule` 的改为 Angular 的。
 
 <code-example header="main.ts" path="upgrade-phonecat-3-final/app/main.ts"></code-example>
 
@@ -2301,7 +2301,7 @@ If you haven't already, remove all references to the `UpgradeModule` from `app.m
 
 Also remove any `downgradeInjectable()` or `downgradeComponent()` you find, together with the associated AngularJS factory or directive declarations.
 
-还要删除所有的 `downgradeInjectable()` 或 `downgradeComponent()` 以及与 AngularJS 相关的工厂或指令声明。因为你不再需要降级任何组件了，也不再需要把它们列在 `entryComponents` 中。
+还要删除所有的 `downgradeInjectable()` 或 `downgradeComponent()` 以及与 AngularJS 相关的工厂或指令声明。
 
 <code-example header="app.module.ts" path="upgrade-phonecat-3-final/app/app.module.ts"></code-example>
 
@@ -2338,7 +2338,7 @@ npm uninstall &commat;types/angular &commat;types/angular-animate &commat;types/
 Finally, from `index.html`, remove all references to AngularJS scripts and jQuery.
 When you're done, this is what it should look like:
 
-最后，从 `index.html` 和 `karma.conf.js` 中，移除所有对 AngularJS 和 jQuery 脚本的引用。当这些全部做完时，`index.html` 应该是这样的：
+最后，从 `index.html` 中，移除所有对 AngularJS 和 jQuery 脚本的引用。当这些全部做完时，`index.html` 应该是这样的：
 
 <code-example header="index.html" path="upgrade-phonecat-3-final/index.html" region="full"></code-example>
 
@@ -2406,7 +2406,7 @@ For PhoneCat you need to make the following changes in order to make things work
 When the bootstrap method is switched from that of `UpgradeModule` to pure Angular, AngularJS ceases to exist on the page completely.
 At this point, you need to tell Protractor that it should not be looking for an AngularJS application anymore, but instead it should find *Angular apps* from the page.
 
-当引导方式从 `UpgradeModule` 切换到纯 Angular 的时，AngularJS 就从页面中完全消失了。此时，你需要告诉 Protractor，它不用再找 AngularJS 应用了，而是从页面中查找 *Angular* 应用。于是在 `protractor-conf.js` 中做下列修改。
+当引导方式从 `UpgradeModule` 切换到纯 Angular 的时，AngularJS 就从页面中完全消失了。此时，你需要告诉 Protractor，它不用再找 AngularJS 应用了，而是从页面中查找 *Angular* 应用。
 
 Replace the `ng12Hybrid` previously added with the following in `protractor-conf.js`:
 

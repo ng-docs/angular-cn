@@ -540,7 +540,7 @@ You need to update the `angular.json` file to add a target for this builder to t
 
 To run our builder with the new target's default configuration, use the following CLI command.
 
-要想使用这个新目标的默认配置运行我们的构建器，请在 Linux shell 中使用以下 CLI 命令。
+要想使用这个新目标的默认配置运行我们的构建器，请使用以下 CLI 命令。
 
 <code-example format="shell" language="shell">
 
@@ -579,7 +579,7 @@ Use integration testing for your builder, so that you can use the Architect sche
 * In the builder source directory, you have created a new test file `my-builder.spec.ts`.
   The code creates new instances of `JsonSchemaRegistry` (for schema validation), `TestingArchitectHost` (an in-memory implementation of `ArchitectHost`), and `Architect`.
 
-  在构建器的源码目录下，你创建了一个新的测试文件 `index.spec.ts`。该代码创建了 `JsonSchemaRegistry`（用于模式验证）、`TestingArchitectHost`（对 `ArchitectHost` 的内存实现）和 `Architect` 的新实例。
+  在构建器的源码目录下，你创建了一个新的测试文件 `my-builder.spec.ts`。该代码创建了 `JsonSchemaRegistry`（用于模式验证）、`TestingArchitectHost`（对 `ArchitectHost` 的内存实现）和 `Architect` 的新实例。
 
 * We've added a `builders.json` file next to the builder's `package.json` file, and modified the package file to point to it.
 

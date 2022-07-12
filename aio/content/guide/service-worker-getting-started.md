@@ -150,7 +150,7 @@ To simulate a network issue, disable network interaction for your application.
 
 In Chrome:
 
-要想模拟网络出问题的情况，可以为你的应用禁用网络交互。在 Chrome 中：
+在 Chrome 中：
 
 1. Select **Tools** > **Developer Tools** (from the Chrome menu located at the top right corner).
 

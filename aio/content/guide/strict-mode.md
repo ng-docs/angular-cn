@@ -18,7 +18,7 @@ Specifically, strict mode affects newly generated applications in the following 
 * Enables [`strict` mode in TypeScript](https://www.typescriptlang.org/tsconfig#strict), as well as other strictness flags recommended by the TypeScript team.
   Specifically, `forceConsistentCasingInFileNames`, `noImplicitReturns`, and `noFallthroughCasesInSwitch`.
 
-  [在 TypeScript 中启用 `strict` 模式](https://www.staging-typescript.org/tsconfig#strict)，以及 TypeScript 团队建议的其他严格性标志。具体而言，包括 `forceConsistentCasingInFileNames`、`noImplicitReturns`、`noFallthroughCasesInSwitch`。
+  [在 TypeScript 中启用 `strict` 模式](https://www.typescriptlang.org/tsconfig#strict)，以及 TypeScript 团队建议的其他严格性标志。具体而言，包括 `forceConsistentCasingInFileNames`、`noImplicitReturns`、`noFallthroughCasesInSwitch`。
 
 * Turns on strict Angular compiler flags [`strictTemplates`](guide/angular-compiler-options#stricttemplates), [`strictInjectionParameters`](guide/angular-compiler-options#strictinjectionparameters), and [`strictInputAccessModifiers`](guide/template-typecheck#troubleshooting-template-errors).
 

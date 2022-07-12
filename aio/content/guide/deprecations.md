@@ -461,7 +461,7 @@ This may help to track down where in the code the pattern is being used as the c
 In version 5, Angular replaced the `ReflectiveInjector` with the `StaticInjector`.
 The injector no longer requires the Reflect polyfill, reducing application size for most developers.
 
-在 v5 中，Angular 用 `StaticInjector` 代替了 `ReflectiveInjector`。该注入器不再需要 Reflect 的腻子脚本，对大部分开发人员来说都显著减小了应用的体积。
+在版本 5 中，Angular 用 `StaticInjector` 代替了 `ReflectiveInjector`。该注入器不再需要 Reflect 的腻子脚本，对大部分开发人员来说都显著减小了应用的体积。
 
 **Before**:
 

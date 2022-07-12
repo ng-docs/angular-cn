@@ -73,7 +73,7 @@ Open the `HeroesComponent` template file and make the following changes:
 
 1. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
 
-   在 `<ul>` 中放一个 `<li>` 元素，以显示单个 `hero` 的属性。
+   在 `<li>` 中放一个 `<button>` 元素，以便在 `<span>` 元素中显示单个 `hero` 的属性。
 
 1. Sprinkle some CSS classes for styling (you'll add the CSS styles shortly).
 

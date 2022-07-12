@@ -891,7 +891,7 @@ These four bindings demonstrate the difference between `providers` and `viewProv
 Since the dog (<code>🐶</code>) is declared inside the `<#VIEW>`, it isn't visible to the projected content.
 Instead, the projected content sees the whale (<code>🐳</code>).
 
-这四个绑定说明了 `providers` 和 `viewProviders` 之间的区别。由于🐶（小狗）在&lt;#VIEW>中声明，因此投影内容不可见。投影的内容中会看到🐳（鲸鱼）。
+这四个绑定说明了 `providers` 和 `viewProviders` 之间的区别。由于🐶（小狗）在 `<#VIEW>` 中声明，因此投影内容不可见。投影的内容中会看到🐳（鲸鱼）。
 
 The next section though, where `InspectorComponent` is a child component of `ChildComponent`, `InspectorComponent` is inside the `<#VIEW>`, so when it asks for the `AnimalService`, it sees the dog (<code>🐶</code>).
 

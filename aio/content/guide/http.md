@@ -450,7 +450,7 @@ Two types of errors can occur.
 * Something could go wrong on the client-side such as a network error that prevents the request from completing successfully or an exception thrown in an RxJS operator.
   These errors have `status` set to `0` and the `error` property contains a `ProgressEvent` object, whose `type` might provide further information.
 
-  客户端也可能出现问题，比如网络错误会让请求无法成功完成，或者 RxJS 操作符也会抛出异常。这些错误会产生 JavaScript 的 `ErrorEvent` 对象。这些错误的 `status` 为 `0`，并且其 `error` 属性包含一个 `ProgressEvent` 对象，此对象的 `type` 属性可以提供更详细的信息。
+  客户端也可能出现问题，比如网络错误会让请求无法成功完成，或者 RxJS 操作符也会抛出异常。这些错误的 `status` 为 `0`，并且其 `error` 属性包含一个 `ProgressEvent` 对象，此对象的 `type` 属性可以提供更详细的信息。
 
 `HttpClient` captures both kinds of errors in its `HttpErrorResponse`.
 Inspect that response to identify the error's cause.
@@ -1146,7 +1146,7 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 * The `isCacheable()` function determines if the request is cacheable.
   In this sample, only GET requests to the package search API are cacheable.
 
-  `isCacheable()` 函数用于决定该请求是否允许缓存。在这个例子中，只有发到 npm 包搜索 API 的 GET 请求才是可以缓存的。
+  `isCacheable()` 函数用于决定该请求是否允许缓存。在这个例子中，只有发到包搜索 API 的 GET 请求才是可以缓存的。
 
 * If the request is not cacheable, the interceptor forwards the request to the next handler in the chain
 
@@ -1195,7 +1195,7 @@ An interceptor can change this to an observable that emits [multiple values](gui
 
 The following revised version of the `CachingInterceptor` optionally returns an observable that immediately emits the cached response, sends the request on to the package search API, and emits again later with the updated search results.
 
-修改后的 `CachingInterceptor` 版本可以返回一个立即发出所缓存响应的可观察对象，然后把请求发送到 NPM 的 Web API，然后把修改过的搜索结果重新发出一次。
+修改后的 `CachingInterceptor` 版本可以返回一个立即发出所缓存响应的可观察对象，然后把请求发送到包搜索 API，然后把修改过的搜索结果重新发出一次。
 
 <code-example path="http/src/app/http-interceptors/caching-interceptor.ts" region="intercept-refresh"></code-example>
 
@@ -1294,7 +1294,7 @@ This technique is known as debouncing.
 Consider the following template, which lets a user enter a search term to find a package by name.
 When the user enters a name in a search-box, the `PackageSearchComponent` sends a search request for a package with that name to the package search API.
 
-考虑下面这个模板，它让用户输入一个搜索词来按名字查找 npm 包。当用户在搜索框中输入名字时，`PackageSearchComponent` 就会把这个根据名字搜索包的请求发给 npm web API。
+考虑下面这个模板，它让用户输入一个搜索词来按名字查找包。当用户在搜索框中输入名字时，`PackageSearchComponent` 就会把这个根据名字搜索包的请求发给包搜索 API。
 
 <code-example header="app/package-search/package-search.component.html (search)" path="http/src/app/package-search/package-search.component.html" region="search"></code-example>
 
@@ -1315,7 +1315,7 @@ In the `getValue()` method, the target is cast to an `HTMLInputElement` to let t
 
 The following snippet implements debouncing for this input using RxJS operators.
 
-这里，`keyup` 事件绑定会把每次按键都发送给组件的 `search()` 方法。下面的代码片段使用 RxJS 的操作符为这个输入实现了防抖。
+下面的代码片段使用 RxJS 的操作符为这个输入实现了防抖。
 
 <code-example header="app/package-search/package-search.component.ts (excerpt)" path="http/src/app/package-search/package-search.component.ts" region="debounce"></code-example>
 
@@ -1422,7 +1422,7 @@ Failing to do so renders Angular's default protection ineffective.
 
 If your backend service uses different names for the XSRF token cookie or header, use `HttpClientXsrfModule.withOptions()` to override the defaults.
 
-如果你的后端服务中对 XSRF 令牌的 cookie 或 头使用了不一样的名字，就要使用 `HttpClientXsrfModule.withConfig()` 来覆盖掉默认值。
+如果你的后端服务中对 XSRF 令牌的 cookie 或头使用了不一样的名字，就要使用 `HttpClientXsrfModule.withOptions()` 来覆盖掉默认值。
 
 <code-example path="http/src/app/app.module.ts" region="xsrf"></code-example>
 
@@ -1465,7 +1465,7 @@ There are also tests of an application data service that call `HttpClient` in `s
 
 To begin testing calls to `HttpClient`, import the `HttpClientTestingModule` and the mocking controller, `HttpTestingController`, along with the other symbols your tests require.
 
-要开始测试那些通过 `HttpClient` 发起的请求，就要导入 `HttpClientTestingModule` 模块，并把它加到你的 `TestBed` 设置里去，代码如下。
+要开始测试那些通过 `HttpClient` 发起的请求，就要导入 `HttpClientTestingModule` 模块和模拟控制器（`HttpTestingController`）以及你测试所需的其他符号。
 
 <code-example header="app/testing/http-client.spec.ts (imports)" path="http/src/testing/http-client.spec.ts" region="imports"></code-example>
 
@@ -1481,7 +1481,7 @@ Now requests made in the course of your tests hit the testing backend instead of
 
 This setup also calls `TestBed.inject()` to inject the `HttpClient` service and the mocking controller so they can be referenced during the tests.
 
-这种设置还会调用 `TestBed.inject()`，来获取注入的 `HttpClient` 服务和模拟对象的控制器 `HttpTestingController`，以便在测试期间引用它们。
+这种设置还会调用 `TestBed.inject()`，来获取注入的 `HttpClient` 服务和模拟控制器，以便在测试期间引用它们。
 
 ### Expecting and answering requests
 

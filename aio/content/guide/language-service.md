@@ -251,7 +251,7 @@ The Angular Language Services then looks at `data.---` within its context, asks 
 
 * See also [Chuck Jazdzewski's presentation](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) on the Angular Language Service from [ng-conf](https://www.ng-conf.org) 2017
 
-  另请参阅 [ng-conf](https://www.ng-conf.org) 2017 上 [Chuck Jazdzewski](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s) 关于 Angular 语言服务的 [演讲](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s)
+  另请参阅 [ng-conf](https://www.ng-conf.org) 2017 上 Chuck Jazdzewski 关于 Angular 语言服务的 [演讲](https://www.youtube.com/watch?v=ez3R0Gi4z5A&t=368s)
 
 <!-- links -->
 

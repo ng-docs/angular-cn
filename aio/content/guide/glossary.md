@@ -260,7 +260,7 @@ If you set the `OnPush` change-detection strategy, the change detector runs only
 This typically improves performance.
 To learn more, see [Optimize the change detection in Angular][WebDevFasterAngularChangeDetection].
 
-如果设置了 `OnPush`（“CheckOnce”）变更检测策略，则变更检测器仅在[显式调用][AioApiCoreChangedetectorref]它或由 `@Input` 引用的变化或触发事件处理程序时运行。这通常可以提高性能。欲知详情，参阅[优化 Angular 的变更检测][WebDevFasterAngularChangeDetection]。
+如果设置了 `OnPush` 变更检测策略，则变更检测器仅在[显式调用][AioApiCoreChangedetectorref]它或由 `@Input` 引用的变化或触发事件处理程序时运行。这通常可以提高性能。欲知详情，参阅[优化 Angular 的变更检测][WebDevFasterAngularChangeDetection]。
 
 <a id="decorator"></a>
 
@@ -482,7 +482,7 @@ A decorator is also referenced as an *annotation*.
 TypeScript adds support for decorators.
 
 一个函数，用来修饰紧随其后的类或属性定义。
-装饰器（也叫注解）是 JavaScript 的一种语言[特性][GithubTC39ProposalDecorators]，是一项位于阶段 2（stage 2）的试验特性。
+装饰器（也叫注解）是一种处于阶段 3（stage 3）的试验性 [JavaScript 语言特性][GithubTC39ProposalDecorators]。
 
 Angular defines decorators that attach metadata to classes or properties so that it knows what those classes or properties mean and how they should work.
 
@@ -1150,7 +1150,7 @@ When using reactive forms:
 
 * Each control is explicitly created in the component class by creating a `FormControl` instance manually or with `FormBuilder`.
 
-  在组件类中，使用 `new FormControl()` 或者 `FormBuilder` 显性地创建每个控件。
+  在组件类中，通过创建 `FormControl` 实例或使用 `FormBuilder` 显性地创建每个控件。
 
 * The template input elements do *not* use `ngModel`.
 
@@ -1271,7 +1271,7 @@ Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] 使用原理图来生成�
 * [Library][AioGuideGlossaryLibrary] developers can create schematics that enable the Angular CLI to add and update their published libraries, and to generate artifacts the library defines.
   Add these schematics to the npm package that you use to publish and share your library.
 
-  公共库的开发者可以创建原理图，来让 CLI 生成他们自己的发布的库。欲知详情，参阅 [devkit 文档][AioGuideGlossaryLibrary]。
+  公共[库][AioGuideGlossaryLibrary]的开发者可以创建原理图，来让 Angular CLI 添加或升级他们自己的发布的库，还可以生成此库中定义的工件。请把这些原理图添加到要用来发布和共享本库的 npm 包中。
 
 To learn more, see [Schematics][AioGuideSchematics].
 To learn more, see also [Integrating Libraries with the CLI][AioGuideCreatingLibrariesIntegratingWithTheCliUsingCodeGenerationSchematics].
@@ -1440,7 +1440,7 @@ You can then run the target using the [`ng run`][AioCliRun] Angular [CLI][AioGui
 
 Code that defines how to render the [view][AioGuideGlossaryView] of a component.
 
-用来定义要如何在 HTML 中渲染组件[视图][AioGuideGlossaryView]的代码。
+用来定义要如何渲染组件[视图][AioGuideGlossaryView]的代码。
 
 A template combines straight HTML with Angular [data-binding][AioGuideGlossaryDataBinding] syntax, [directives][AioGuideGlossaryDirective], and [template expressions][AioGuideGlossaryTemplateExpression] (logical constructs).
 The Angular elements insert or calculate values that modify the HTML elements before the page is displayed.

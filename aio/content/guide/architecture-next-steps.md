@@ -9,7 +9,7 @@ about the features and tools that can help you develop and deliver Angular appli
 
 * Work through the [Tour of Heroes](tutorial) tutorial to get a feel for how to fit the basic building blocks together to create a well-designed application.
 
-  参考“[英雄之旅”](tutorial/index)教程，了解如何将这些基本构建块放在一起，来创建设计精良的应用。
+  参考“[英雄之旅”](tutorial)教程，了解如何将这些基本构建块放在一起，来创建设计精良的应用。
 
 * Check out the [Glossary](guide/glossary) to understand Angular-specific terms and usage.
 

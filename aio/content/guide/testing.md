@@ -479,7 +479,7 @@ We'll be using [Headless Chrome](https://developers.google.com/web/updates/2017/
 
 * In the Karma configuration file, `karma.conf.js`, add a custom launcher called ChromeHeadlessCI below browsers:
 
-  在 Karma 配置文件 `karma.conf.js` 中，浏览器的紧下方，添加自定义的启动器，名叫 ChromeNoSandbox。
+  在 Karma 配置文件 `karma.conf.js` 中，浏览器的紧下方，添加自定义的启动器，名叫 ChromeHeadlessCI。
 
   <code-example format="javascript" language="javascript">
 

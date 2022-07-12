@@ -60,7 +60,7 @@ For details about configuration inheritance, see the [Configuration inheritance 
 
 The initial `tsconfig.json` for an Angular workspace typically looks like the following example.
 
-Angular 工作区的初始 `tsconfig.base.json` 通常是这样的。
+Angular 工作区的初始 `tsconfig.json` 通常是这样的。
 
 <code-example lang="json" header="tsconfig.json" linenums="false">
 {

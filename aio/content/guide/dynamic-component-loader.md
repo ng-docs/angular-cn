@@ -12,7 +12,7 @@ Component templates are not always fixed.
 An application might need to load new components at runtime.
 This cookbook shows you how to add components dynamically.
 
-组件的模板不会永远是固定的。应用可能会需要在运行期间加载一些新的组件。这本烹饪书为你展示如何使用 `ComponentFactoryResolver` 来动态添加组件。
+组件的模板不会永远是固定的。应用可能会需要在运行期间加载一些新的组件。这本烹饪书为你展示如何动态添加组件。
 
 See the <live-example name="dynamic-component-loader"></live-example> of the code in this cookbook.
 

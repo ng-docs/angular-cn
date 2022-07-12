@@ -1981,7 +1981,7 @@ The `DashboardComponent` is simple.
 It needs no help.
 But more complex components often depend on other components, directives, pipes, and providers and these must be added to the testing module too.
 
-`DashbaordComponent` 非常简单。它不需要帮助。但是更加复杂的组件通常依赖其它组件、指令、管道和提供者，所以这些必须也被添加到测试模块中。
+`DashboardComponent` 非常简单。它不需要帮助。但是更加复杂的组件通常依赖其它组件、指令、管道和提供者，所以这些必须也被添加到测试模块中。
 
 Fortunately, the `TestBed.configureTestingModule` parameter parallels the metadata passed to the `@NgModule` decorator which means you can also specify `providers` and `imports`.
 

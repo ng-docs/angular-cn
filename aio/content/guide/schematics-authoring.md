@@ -394,7 +394,7 @@ The command creates a new project folder (the root folder for the collection) an
 Go to the collection folder, install your npm dependencies, and open your new collection in your favorite editor to see the generated files.
 For example, if you are using VS Code:
 
-转到 collection 文件夹，安装你的 npm 依赖，然后在常用的编辑器中打开这个新集合，看看所生成的文件。比如，如果你正在使用 VSCode：
+转到 collection 文件夹，安装你的 npm 依赖，然后在常用的编辑器中打开这个新集合，看看所生成的文件。比如，如果你正在使用 VS Code：
 
 <code-example format="shell" language="shell">
 

@@ -104,7 +104,7 @@ The following example demonstrates how to use the `query()` and `stagger()` func
 
 * Use `query()` to look for an element entering the page that meets certain criteria
 
-  用 `query()` 查阅正在进入或离开页面的任意元素。该查询会找出那些符合某种匹配 CSS 选择器的元素
+  用 `query()` 查阅正在进入或离开页面的任意元素。该查询会找出那些符合某种特定标准的元素
 
 * For each of these elements, use `style()` to set the same initial style for the element.
   Make it transparent and use `transform` to move it out of position so that it can slide into place.

@@ -761,12 +761,12 @@ ng generate module app-routing --module app --flat
 Import the `CrisisListComponent`, `HeroListComponent`, and `PageNotFoundComponent` symbols like you did in the `app.module.ts`.
 Then move the `Router` imports and routing configuration, including `RouterModule.forRoot()`, into this routing module.
 
-导入 `CrisisListComponent`、`HeroListComponent` 和 `PageNotFoundCompponent` 组件，就像 `app.module.ts` 中那样。然后把 `Router` 的导入语句和路由配置以及 `RouterModule.forRoot()` 移入这个路由模块中。
+导入 `CrisisListComponent`、`HeroListComponent` 和 `PageNotFoundComponent` 组件，就像 `app.module.ts` 中那样。然后把 `Router` 的导入语句和路由配置以及 `RouterModule.forRoot()` 移入这个路由模块中。
 
 Re-export the Angular `RouterModule` by adding it to the module `exports` array.
 By re-exporting the `RouterModule` here, the components declared in `AppModule` have access to router directives such as `RouterLink` and `RouterOutlet`.
 
-把 Angular 的 `RouterModule` 添加到该模块的 `exports` 数组中，以便再次导出它。通过再次导出 `RouterModule`，当在 `AppModule` 中导入了 `AppRoutingModule` 之后，那些声明在 `AppModule` 中的组件就可以访问路由指令了，比如 `RouterLink` 和 `RouterOutlet`。
+把 Angular 的 `RouterModule` 添加到该模块的 `exports` 数组中，以便再次导出它。通过再次导出 `RouterModule`，那些声明在 `AppModule` 中的组件就可以访问路由指令了，比如 `RouterLink` 和 `RouterOutlet`。
 
 After these steps, the file should look like this.
 
@@ -1207,7 +1207,7 @@ The router extracts the route parameter (`id:15`) from the URL and supplies it t
 
 Import the `Router`, `ActivatedRoute`, and `ParamMap` tokens from the router package.
 
-从路由器（`router`）包中导入 `Router`、`ActivatedRoute` 和 `Params` 类。
+从路由器（`router`）包中导入 `Router`、`ActivatedRoute` 和 `ParamMap` 令牌。
 
 <code-example header="src/app/heroes/hero-detail/hero-detail.component.ts (activated route)" path="router/src/app/heroes/hero-detail/hero-detail.component.1.ts" region="imports"></code-example>
 
@@ -1405,7 +1405,7 @@ Optional information can also include other forms such as:
 
 * Loosely structured search criteria; for example, `name='wind*'`
 
-  结构松散的搜索条件。比如 `name='wind_'`。
+  结构松散的搜索条件。比如 `name='wind*'`。
 
 * Multiple values; for example, `after='12/31/2015' & before='1/1/2017'` —in no particular order— `before='1/1/2017' & after='12/31/2015'` — in a variety of formats— `during='currentYear'`
 
@@ -1564,7 +1564,7 @@ Update the template with a [class binding](guide/class-binding).
 The binding adds the `selected` CSS class when the comparison returns `true` and removes it when `false`.
 Look for it within the repeated `<li>` tag as shown here:
 
-用 [CSS 类绑定](guide/class-binding)更新模板，把它绑定到 `isSelected` 方法上。
+用 [CSS 类绑定](guide/class-binding)更新模板。
 如果该方法返回 `true`，此绑定就会添加 CSS 类 `selected`，否则就移除它。
 在 `<li>` 标记中找到它，就像这样：
 
@@ -1660,7 +1660,7 @@ This example uses a variable of `routerOutlet`.
 
 The `@routeAnimation` property is bound to the `getAnimationData()` which returns the animation property from the `data` provided by the primary route. The `animation` property matches the `transition` names you used in the `slideInAnimation` defined in `animations.ts`.
 
-`@routeAnimation` 属性使用所提供的 `routerOutlet` 引用来绑定到 `getAnimationData()`，它会根据主路由所提供的 `data` 对象返回动画的属性。`animation` 属性会根据你在 `animations.ts` 中定义 `slideInAnimation` 时使用的 `transition` 名称进行匹配。
+`@routeAnimation` 属性绑定到了 `getAnimationData()`，它会根据主路由所提供的 `data` 对象返回 `animation` 属性。`animation` 属性会根据你在 `animations.ts` 中定义 `slideInAnimation` 时使用的 `transition` 名称进行匹配。
 
 <code-example header="src/app/app.component.ts (router outlet)" path="router/src/app/app.component.2.ts" region="function-binding"></code-example>
 
@@ -2009,7 +2009,7 @@ This time, you define child routes within the parent `crisis-center` route.
 Notice that the parent `crisis-center` route has a `children` property with a single route containing the `CrisisListComponent`.
 The `CrisisListComponent` route also has a `children` array with two routes.
 
-注意，父路由 `crisis-center` 有一个 `children` 属性，它有一个包含 `CrisisListComponent` 的路由。`CrisisListModule` 路由还有一个带两个路由的 `children` 数组。
+注意，父路由 `crisis-center` 有一个 `children` 属性，它有一个包含 `CrisisListComponent` 的路由。`CrisisListComponent` 路由还有一个带两个路由的 `children` 数组。
 
 These two routes navigate to the crisis center child components,
 `CrisisCenterHomeComponent` and `CrisisDetailComponent`, respectively.
@@ -2453,7 +2453,7 @@ Like the array bound to the *Contact* `RouterLink` in the `AppComponent`, this o
 The `outlets` property value is another object with outlet names for keys.
 The only named outlet is `'popup'`.
 
-就像在 `AppComponent` 中绑定到的 _Contact_ `RouterLink` 一样，它也包含了一个带 `outlets` 属性的对象。
+就像在 `AppComponent` 中绑定到的 *Contact* `RouterLink` 一样，它也包含了一个带 `outlets` 属性的对象。
 `outlets` 属性的值是另一个对象，该对象用一些出口名称作为属性名。
 唯一的命名出口是 `'popup'`。
 
@@ -2822,7 +2822,7 @@ Make the `AuthGuard` mimic authentication.
 The `AuthGuard` should call an application service that can login a user and retain information about the current user.
 Generate a new `AuthService` in the `auth` folder:
 
-`AuthGuard` 可以调用应用中的一项服务，该服务能让用户登录，并且保存当前用户的信息。在 `admin` 目录下生成一个新的 `AuthService`：
+`AuthGuard` 可以调用应用中的一项服务，该服务能让用户登录，并且保存当前用户的信息。在 `auth` 目录下生成一个新的 `AuthService`：
 
 <code-example format="shell" language="shell">
 
@@ -2873,7 +2873,7 @@ The `ActivatedRouteSnapshot` contains the *future* route that will be activated 
 If the user is not logged in, you store the attempted URL the user came from using the `RouterStateSnapshot.url` and tell the router to redirect to a login page —a page you haven't created yet.
 Returning a `UrlTree` tells the `Router` to cancel the current navigation and schedule a new one to redirect the user.
 
-如果用户还没有登录，你就会用 `RouterStateSnapshot.url` 保存用户来自的 URL 并让路由器跳转到登录页（你尚未创建该页）。这间接导致路由器自动中止了这次导航，`checkLogin()` 返回 `false` 并不是必须的，但这样可以更清楚的表达意图。
+如果用户还没有登录，你就会用 `RouterStateSnapshot.url` 保存用户来自的 URL 并让路由器跳转到登录页（你尚未创建该页）。返回 `UrlTree` 会告诉路由器取消这次导航，并把用户重定向到一个新地址。
 
 <a id="add-login-component"></a>
 
@@ -3278,7 +3278,7 @@ Query parameters and fragments are also available through the `ActivatedRoute` s
 Like route parameters, the query parameters and fragments are provided as an `Observable`.
 The updated Crisis Admin component feeds the `Observable` directly into the template using the `AsyncPipe`.
 
-查询参数和片段可通过 `Router` 服务的 `routerState` 属性使用。和路由参数类似，全局查询参数和片段也是 `Observable` 对象。在修改过的英雄管理组件中，你将借助 `AsyncPipe` 直接把 `Observable` 传给模板。
+查询参数和片段可通过 `ActivatedRoute` 服务来使用。和路由参数类似，全局查询参数和片段也是 `Observable` 对象。在修改过的英雄管理组件中，你将借助 `AsyncPipe` 直接把 `Observable` 传给模板。
 
 Now, you can click on the Admin button, which takes you to the Login page with the provided `queryParamMap` and `fragment`.
 After you click the login button, notice that you have been redirected to the `Admin Dashboard` page with the query parameters and fragment still intact in the address bar.

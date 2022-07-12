@@ -66,7 +66,7 @@ You use the Angular CLI to create projects, generate application and library cod
 
 To install the Angular CLI, open a terminal window and run the following command:
 
-要使用 `npm` 命令安装 CLI，请打开终端/控制台窗口，输入如下命令：
+要安装 Angular CLI，请打开终端/控制台窗口，并运行如下命令：
 
 <code-example format="shell" language="shell">
 

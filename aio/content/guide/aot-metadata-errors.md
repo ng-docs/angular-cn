@@ -115,7 +115,7 @@ export class MyComponent {}
 
 The compiler generates the component factory, which includes the `useValue` provider code, in a separate module. *That* factory module can't reach back to *this* source module to access the local (non-exported) `foo` variable.
 
-编译器会在单独的模块中生成这个 `userValue` 提供者的代码。*那个*工厂模块不能访问*这个*源码模块，无法访问这个（未导出的）`foo` 变量。
+编译器会生成这个组件工厂，其中包含 `useValue` 提供者的代码。*那个*工厂模块不能访问*这个*源码模块，无法访问这个（未导出的）`foo` 变量。
 
 You could fix the problem by initializing `foo`.
 

@@ -106,7 +106,7 @@ To add a new dependency, use the [`ng add`](cli/add) command.
 The following Angular packages are included as dependencies in the default `package.json` file for a new Angular workspace.
 For a complete list of Angular packages, see the [API reference](api?type=package).
 
-新 Angular 工作区的 `package.json` 文件中默认包含下列 Angular 包。要了解 Angular 包的完整列表，参阅 [API 参考手册](http://angular.cn/api?type=package)。
+新 Angular 工作区的 `package.json` 文件中默认包含下列 Angular 包。要了解 Angular 包的完整列表，参阅 [API 参考手册](api?type=package)。
 
 | Package name | Details |
 | :----------- | :------ |

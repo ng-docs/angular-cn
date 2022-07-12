@@ -157,7 +157,7 @@ Next, `AppRoutingModule` exports `RouterModule` so it will be available througho
 
 ## Add `RouterOutlet`
 
-## 添加路由出口 `RouterOutlet`
+## 添加 `RouterOutlet`
 
 Open the `AppComponent` template and replace the `<app-heroes>` element with a `<router-outlet>` element.
 

@@ -377,7 +377,7 @@ The next step is to inject the `HttpClient` service into your service so your ap
 
 To get shipping data, from `shipping.json`, You can use the `HttpClient` `get()` method.
 
-要从 `shapping.json` 中得到商品数据, 你可以使用 `HttpClient` `get()` 方法。
+要从 `shipping.json` 中得到商品数据, 你可以使用 `HttpClient` `get()` 方法。
 
 1. In `cart.service.ts`, below the `clearCart()` method, define a new `getShippingPrices()` method that uses the `HttpClient` `get()` method.
 
@@ -409,7 +409,7 @@ Now that you've configured your application to retrieve shipping data, you can c
 
    This command will generate the `shipping.component.ts` file and it associated template and styles files.
 
-   右键单击 `app` 文件夹，选择 **Angular Generator** 和 **Component** 来生成一个名为 `shipping` 的新组件。
+   该命令会生成 `shipping.component.ts` 文件及其关联的模板和样式文件。
 
    <code-example header="src/app/shipping/shipping.component.ts" path="getting-started/src/app/shipping/shipping.component.1.ts"></code-example>
 
@@ -423,7 +423,7 @@ Now that you've configured your application to retrieve shipping data, you can c
    There's no link to the new shipping component yet, but you can see its template in the preview pane by entering the URL its route specifies.
    The URL has the pattern: `https://angular-ynqttp--4200.local.webcontainer.io/shipping` where the `angular-ynqttp--4200.local.webcontainer.io` part may be different for your StackBlitz project.
 
-   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping`，其中的 gets-started.stackblitz.io 部分可能与你的 StackBlitz 项目不同。
+   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping` ，其 `angular-ynqttp--4200.local.webcontainer.io` 部分可能与你的 StackBlitz 项目有所不同。
 
 ### Configuring the `ShippingComponent` to use `CartService`
 
@@ -431,7 +431,7 @@ Now that you've configured your application to retrieve shipping data, you can c
 
 This section guides you through modifying the `ShippingComponent` to retrieve shipping data via HTTP from the `shipping.json` file.
 
-这个章节将指导你修改 `ShappingComponent` 以通过 HTTP 从 `shipping.json` 文件中提取商品数据。
+这个章节将指导你修改 `ShippingComponent` 以通过 HTTP 从 `shipping.json` 文件中提取商品数据。
 
 1. In `shipping.component.ts`, import `CartService`.
 
