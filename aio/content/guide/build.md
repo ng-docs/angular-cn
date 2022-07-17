@@ -325,7 +325,7 @@ Each budget entry is a JSON object with the following properties:
 | Property | Value |
 | :------- | :---- |
 | 属性 | 值 |
-| type | 预算的类型。下列值之一：<table><thead><tr><th>值</th><th>详细信息</th></tr></thead><tbody><tr><td><code>包</code></td><td>特定包的大小。</td></tr><tr><td><code>初始的</code></td><td>引导应用程序所需的 JavaScript 的大小。默认为 500kb 的警告和 1mb 的错误。</td></tr><tr><td><code>allScript</code></td><td>所有脚本的大小。</td></tr><tr><td><code>全部</code></td><td>整个应用程序的大小。</td></tr><tr><td><code>anyComponentStyle</code></td><td>任何一个组件样式表的此大小。默认为 2kb 的警告和 4kb 的错误。</td></tr><tr><td><code>anyScript</code></td><td>任何一个脚本的大小。</td></tr><tr><td><code>任何</code></td><td>任何文件的大小。</td></tr></tbody></table> |
+| type | 预算的类型。下列值之一：<table><thead><tr><th>值</th><th>详细信息</th></tr></thead><tbody><tr><td><code>bundle</code></td><td>特定包的大小。</td></tr><tr><td><code>initial</code></td><td>引导应用程序所需的 JavaScript 的大小。默认为 500kb 的警告和 1mb 的错误。</td></tr><tr><td><code>allScript</code></td><td>所有脚本的大小。</td></tr><tr><td><code>all</code></td><td>整个应用程序的大小。</td></tr><tr><td><code>anyComponentStyle</code></td><td>任何一个组件样式表的此大小。默认为 2kb 的警告和 4kb 的错误。</td></tr><tr><td><code>anyScript</code></td><td>任何一个脚本的大小。</td></tr><tr><td><code>any</code></td><td>任何文件的大小。</td></tr></tbody></table> |
 | name | The name of the bundle (for `type=bundle`). |
 | name | 包的名称（对于 `type=bundle`）。 |
 | baseline | The baseline size for comparison. |
