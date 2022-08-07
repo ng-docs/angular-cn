@@ -1695,6 +1695,13 @@
       "url": "https://material.angular.cn"
     },
     {
+      "titleCn": "RxJS 中文版",
+      "title": "RxJS 中文版",
+      "tooltipCn": "RxJS 中文文档",
+      "tooltip": "RxJS 中文文档",
+      "url": "https://rxjs.tech"
+    },
+    {
       "titleCn": "ng-zorro 组件库",
       "title": "ng-zorro 组件库",
       "tooltipCn": "Ant Design 的 Angular 实现，服务于企业级后台产品。",
