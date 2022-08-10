@@ -10,11 +10,15 @@ body:
     id: affected-url
     attributes:
       label: 出错的文档地址
+    validations:
+      required: true
 
   - type: textarea
     id: current-text
     attributes:
       label: 英文文本和目前的文本
+    validations:
+      required: true
 
   - type: textarea
     id: matter

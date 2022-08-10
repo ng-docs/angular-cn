@@ -9,8 +9,12 @@ body:
       options:
         - 中国大陆
         - 其他国家/地区
+    validations:
+      required: true
 
   - type: textarea
     id: matter
     attributes:
       label: "出现了什么问题？请附抓图或 ping 等工具的检查结果"
+    validations:
+      required: true
