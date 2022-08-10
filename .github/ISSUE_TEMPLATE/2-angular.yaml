@@ -1,0 +1,16 @@
+name: '网站访问问题'
+description: '报告网站访问方面的问题'
+
+body:
+  - type: dropdown
+    id: location
+    attributes:
+      label: "您是从哪里访问的？"
+      options:
+        - 中国大陆
+        - 其他国家/地区
+
+  - type: textarea
+    id: matter
+    attributes:
+      label: "出现了什么问题？请附抓图或 ping 等工具的检查结果"

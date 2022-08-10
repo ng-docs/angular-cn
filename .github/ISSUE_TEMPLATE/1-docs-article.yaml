@@ -1,0 +1,37 @@
+name: '文档翻译问题'
+description: '报告文档中文翻译方面的问题'
+
+body:
+  - type: markdown
+    attributes:
+      value: '请先访问 https://angular.io/ 下的同一地址，验证英文官网的范例是否有同样的问题，如果有，请到 https://github.com/angular/angular/issues 提交。否则在此继续提交。'
+
+  - type: input
+    id: affected-url
+    attributes:
+      label: 出错的文档地址
+
+  - type: textarea
+    id: current-text
+    attributes:
+      label: 英文文本和目前的文本
+
+  - type: textarea
+    id: matter
+    attributes:
+      label: 您认为这种译法有什么问题？
+
+  - type: textarea
+    id: expected-text
+    attributes:
+      label: 您希望把它翻译成什么样？
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 简单介绍这样翻译的理由
+
+  - type: textarea
+    id: other
+    attributes:
+      label: 其它留言（如果有）
