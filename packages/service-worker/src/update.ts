@@ -145,7 +145,7 @@ export class SwUpdate {
    *
    * a promise that
    *
-   * 一个承诺
+   * 一个 Promise
    *
    * - resolves to `true` if a new version was found and is ready to be activated.
    *
@@ -178,7 +178,7 @@ export class SwUpdate {
    *
    * a promise that
    *
-   * 一个承诺
+   * 一个 Promise
    *
    * - resolves to `true` if an update was activated successfully
    *

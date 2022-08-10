@@ -80,7 +80,7 @@ export function ɵgetUnknownPropertyStrictMode() {
  * A permanent marker promise which signifies that the current CD tree is
  * clean.
  *
- * 一个永久标记承诺，表明当前的 CD 树是干净的。
+ * 一个永久标记 Promise ，表明当前的 CD 树是干净的。
  *
  */
 const _CLEAN_PROMISE = (() => Promise.resolve(null))();

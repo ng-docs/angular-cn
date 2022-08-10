@@ -1934,7 +1934,7 @@ In any case, what you've achieved is a migration of a service to Angular without
 You could use the `toPromise` method of `Observable` to turn those observables into promises in the service.
 In many cases that reduce the number of changes to the component controllers.
 
-你也能使用 `Observable` 的 `toPromise` 方法来在服务中把这些可观察对象转变成承诺，以进一步减小组件控制器中需要修改的代码量。
+你也能使用 `Observable` 的 `toPromise` 方法来在服务中把这些可观察对象转变成 Promise ，以进一步减小组件控制器中需要修改的代码量。
 
 </div>
 

@@ -57,7 +57,7 @@ Angular 的 `HttpClient` 从 HTTP 方法调用中返回了可观察对象。比�
 * Observables do not mutate the server response (as can occur through chained `.then()` calls on promises).
   Instead, you can use a series of operators to transform values as needed.
 
-  可观察对象不会修改服务器的响应（和在承诺上串联起来的 `.then()` 调用一样）。反之，你可以使用一系列操作符来按需转换这些值。
+  可观察对象不会修改服务器的响应（和在 Promise 上串联起来的 `.then()` 调用一样）。反之，你可以使用一系列操作符来按需转换这些值。
 
 * HTTP requests are cancellable through the `unsubscribe()` method
 
@@ -78,7 +78,7 @@ Angular 的 `HttpClient` 从 HTTP 方法调用中返回了可观察对象。比�
 The [AsyncPipe](api/common/AsyncPipe) subscribes to an observable or promise and returns the latest value it has emitted.
 When a new value is emitted, the pipe marks the component to be checked for changes.
 
-[AsyncPipe](api/common/AsyncPipe) 会订阅一个可观察对象或承诺，并返回其发出的最后一个值。当发出新值时，该管道就会把这个组件标记为需要进行变更检查的（译注：因此可能导致刷新界面）。
+[AsyncPipe](api/common/AsyncPipe) 会订阅一个可观察对象或 Promise ，并返回其发出的最后一个值。当发出新值时，该管道就会把这个组件标记为需要进行变更检查的（译注：因此可能导致刷新界面）。
 
 The following example binds the `time` observable to the component's view.
 The observable continuously updates the view with the current time.

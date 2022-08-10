@@ -1781,7 +1781,7 @@ A `createComponent` method creates a `page` object and fills in the blanks once 
 The [`HeroDetailComponent` tests](#tests-w-test-double) in an earlier section demonstrate how `createComponent` and `page` keep the tests short and *on message*.
 There are no distractions: no waiting for promises to resolve and no searching the DOM for element values to compare.
 
-前面小节中的 [`HeroDetailComponent` 测试](#tests-w-test-double)示范了如何 `createComponent`，而 `page` 让这些测试保持简短而富有表达力。 而且还不用分心：不用等待承诺被解析，不必在 DOM 中找出元素的值才能进行比较。
+前面小节中的 [`HeroDetailComponent` 测试](#tests-w-test-double)示范了如何 `createComponent`，而 `page` 让这些测试保持简短而富有表达力。 而且还不用分心：不用等待 Promise 被解析，不必在 DOM 中找出元素的值才能进行比较。
 
 Here are a few more `HeroDetailComponent` tests to reinforce the point.
 
@@ -1945,7 +1945,7 @@ You can consolidate the two `beforeEach()` functions into a single, async `befor
 
 The `compileComponents()` method returns a promise so you can perform the synchronous setup tasks *after* compilation by moving the synchronous code after the `await` keyword, where the promise has been resolved.
 
-`compileComponents()` 方法返回一个承诺，所以你可以通过把同步代码移到 `await` 关键字后面，在那里，这个 Promise 已经解析了。
+`compileComponents()` 方法返回一个 Promise ，所以你可以通过把同步代码移到 `await` 关键字后面，在那里，这个 Promise 已经解析了。
 
 <code-example header="app/banner/banner-external.component.spec.ts (one beforeEach)" path="testing/src/app/banner/banner-external.component.spec.ts" region="one-before-each"></code-example>
 

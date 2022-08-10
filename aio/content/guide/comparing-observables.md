@@ -15,36 +15,36 @@ Here are detailed comparisons of the differences.
 
 ## Observables compared to promises
 
-## 可观察对象 vs. 承诺
+## 可观察对象 vs. 承诺（Promise）
 
 Observables are often compared to promises.
 Here are some key differences:
 
-可观察对象经常拿来和承诺进行对比。有一些关键的不同点：
+可观察对象经常拿来和 Promise 进行对比。有一些关键的不同点：
 
 * Observables are declarative; computation does not start until subscription.
   Promises execute immediately on creation.
   This makes observables useful for defining recipes that can be run whenever you need the result.
 
-  可观察对象是声明式的，在被订阅之前，它不会开始执行。承诺是在创建时就立即执行的。这让可观察对象可用于定义那些应该按需执行的菜谱。
+  可观察对象是声明式的，在被订阅之前，它不会开始执行。Promise 是在创建时就立即执行的。这让可观察对象可用于定义那些应该按需执行的菜谱。
 
 * Observables provide many values.
   Promises provide one.
   This makes observables useful for getting multiple values over time.
 
-  可观察对象能提供多个值。承诺只提供一个。这让可观察对象可用于随着时间的推移获取多个值。
+  可观察对象能提供多个值。Promise 只提供一个。这让可观察对象可用于随着时间的推移获取多个值。
 
 * Observables differentiate between chaining and subscription.
   Promises only have `.then()` clauses.
   This makes observables useful for creating complex transformation recipes to be used by other part of the system, without causing the work to be executed.
 
-  可观察对象会区分串联处理和订阅语句。承诺只有 `.then()` 语句。这让可观察对象可用于创建供系统的其它部分使用而不希望立即执行的复杂菜谱。
+  可观察对象会区分串联处理和订阅语句。Promise 只有 `.then()` 语句。这让可观察对象可用于创建供系统的其它部分使用而不希望立即执行的复杂菜谱。
 
 * Observables `subscribe()` is responsible for handling errors.
   Promises push errors to the child promises.
   This makes observables useful for centralized and predictable error handling.
 
-  可观察对象的 `subscribe()` 会负责处理错误。承诺会把错误推送给它的子承诺。这让可观察对象可用于进行集中式、可预测的错误处理。
+  可观察对象的 `subscribe()` 会负责处理错误。Promise 会把错误推送给它的子 Promise 。这让可观察对象可用于进行集中式、可预测的错误处理。
 
 ### Creation and subscription
 
@@ -64,7 +64,7 @@ Here are some key differences:
   There is no way to restart work.
   All `then` clauses (subscriptions) share the same computation.
 
-  承诺会立即执行，并且只执行一次。当承诺创建时，会立即计算出结果。没有办法重新做一次。所有的 `then` 语句（订阅）都会共享同一次计算。
+  Promise 会立即执行，并且只执行一次。当 Promise 创建时，会立即计算出结果。没有办法重新做一次。所有的 `then` 语句（订阅）都会共享同一次计算。
 
   <code-example header="src/promises.ts (promise)" path="comparing-observables/src/promises.ts" region="promise"></code-example>
 
@@ -81,7 +81,7 @@ Here are some key differences:
 
 * Promises do not differentiate between the last `.then` clauses (equivalent to subscription) and intermediate `.then` clauses (equivalent to map).
 
-  承诺并不区分最后的 `.then()` 语句（等价于订阅）和中间的 `.then()` 语句（等价于映射）。
+  Promise 并不区分最后的 `.then()` 语句（等价于订阅）和中间的 `.then()` 语句（等价于映射）。
 
   <code-example header="src/promises.ts (chain)" path="comparing-observables/src/promises.ts" region="chain"></code-example>
 
@@ -98,7 +98,7 @@ Here are some key differences:
 
 * Promises are not cancellable.
 
-  承诺是不可取消的。
+  Promise 是不可取消的。
 
 ### Error handling
 
@@ -112,7 +112,7 @@ Here are some key differences:
 
 * Promises push errors to the child promises.
 
-  承诺会把错误推给其子承诺。
+  Promise 会把错误推给其子 Promise 。
 
   <code-example header="src/promises.ts (error)" path="comparing-observables/src/promises.ts" region="error"></code-example>
 
@@ -122,11 +122,11 @@ Here are some key differences:
 
 The following code snippets illustrate how the same kind of operation is defined using observables and promises.
 
-下列代码片段揭示了同样的操作要如何分别使用可观察对象和承诺进行实现。
+下列代码片段揭示了同样的操作要如何分别使用可观察对象和 Promise 进行实现。
 
 | Operation | Observable | Promise |
 | :-------- | :--------- | :------ |
-| 操作 | 可观察对象 | 承诺 |
+| 操作 | 可观察对象 | Promise  |
 | Creation | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
 | 创建 | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
 | Transform | <code-example format="typescript" hideCopy language="typescript"> obs.pipe(map((value) => value \* 2));</pre> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example> |
@@ -134,7 +134,7 @@ The following code snippets illustrate how the same kind of operation is defined
 | Subscribe | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example> |
 | 订阅 | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example> |
 | Unsubscribe | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | Implied by promise resolution. |
-| 取消订阅 | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | 承诺被解析时隐式完成。 |
+| 取消订阅 | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example> | Promise 被解析时隐式完成。 |
 
 ## Observables compared to events API
 

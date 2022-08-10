@@ -1750,7 +1750,7 @@ To learn more, see [Workspace and Project File Structure][AioGuideFileStructure]
 An execution context for a set of asynchronous tasks.
 Useful for debugging, profiling, and testing applications that include asynchronous operations such as event processing, promises, and runs to remote servers.
 
-一组异步任务的执行上下文。它对于调试、性能分析和测试那些包含了异步操作（如事件处理、承诺、远程服务器调用等）的应用是非常有用的。
+一组异步任务的执行上下文。它对于调试、性能分析和测试那些包含了异步操作（如事件处理、 Promise 、远程服务器调用等）的应用是非常有用的。
 
 An Angular application runs in a zone where it can respond to asynchronous events by checking for data changes and updating the information it displays by resolving [data bindings][AioGuideGlossaryDataBinding].
 
