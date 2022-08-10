@@ -106,7 +106,7 @@ export interface ResourceHost {
    *
    * A promise of either the transformed resource data or null if no transformation occurs.
    *
-   * 转换后的资源数据的承诺，如果不发生转换，则为 null 。
+   * 转换后的资源数据的 Promise ，如果不发生转换，则为 null 。
    *
    */
   transformResource?

@@ -139,7 +139,7 @@ Although an unsupported browser ignores service worker caching, it still reports
 For example, calling `SwUpdate.checkForUpdate()` returns rejected promises.
 To avoid such an error, check whether the Angular service worker is enabled using `SwUpdate.isEnabled`.
 
-强烈建议你确保即使在浏览器中没有 Service Worker 支持的情况下，你的应用也可以正常运行。尽管不受支持的浏览器会忽略 Service Worker 缓存，但如果应用程序尝试与 Service Worker 进行交互，它将仍然会报告错误。比如，调用 `SwUpdate.checkForUpdate()` 将返回被拒绝的承诺。为避免此类错误，你可以使用 `SwUpdate.isEnabled()` 检查是否启用了 Angular Service Worker。
+强烈建议你确保即使在浏览器中没有 Service Worker 支持的情况下，你的应用也可以正常运行。尽管不受支持的浏览器会忽略 Service Worker 缓存，但如果应用程序尝试与 Service Worker 进行交互，它将仍然会报告错误。比如，调用 `SwUpdate.checkForUpdate()` 将返回被拒绝的 Promise 。为避免此类错误，你可以使用 `SwUpdate.isEnabled()` 检查是否启用了 Angular Service Worker。
 
 To learn more about other browsers that are service worker ready, see the [Can I Use](https://caniuse.com/#feat=serviceworkers) page and [MDN docs](https://developer.mozilla.org/docs/Web/API/Service_Worker_API).
 

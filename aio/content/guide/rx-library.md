@@ -42,7 +42,7 @@ RxJS offers a number of functions that can be used to create new observables.
 These functions can simplify the process of creating observables from things such as events, timers, and promises.
 For example:
 
-RxJS 提供了一些用来创建可观察对象的函数。这些函数可以简化根据某些东西创建可观察对象的过程，比如事件、定时器、承诺等等。比如：
+RxJS 提供了一些用来创建可观察对象的函数。这些函数可以简化根据某些东西创建可观察对象的过程，比如事件、定时器、 Promise 等等。比如：
 
 <code-example header="Create an observable from a promise" path="rx-library/src/simple-creation.1.ts" region="promise"></code-example>
 

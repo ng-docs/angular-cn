@@ -818,7 +818,7 @@ interface ZoneGlobalConfigurations {
   /**
    * Disable wrapping uncaught promise rejection.
    *
-   * 禁用包装未捕获的承诺拒绝。
+   * 禁用包装未捕获的 Promise 拒绝。
    *
    * By default, `zone.js` wraps the uncaught promise rejection in a new `Error` object
    * which contains additional information such as a value of the rejection and a stack trace.
@@ -1073,7 +1073,7 @@ interface ZoneTestConfigurations {
   /**
    * Enable waiting for the unresolved promise in the `async()` test.
    *
-   * 在 `async()` 测试中启用等待未解决的承诺。
+   * 在 `async()` 测试中启用等待未解决的 Promise 。
    *
    * In the `async()` test, `AsyncTestZone` waits for all the asynchronous tasks to finish. By
    * default, if some promises remain unresolved, `AsyncTestZone` does not wait and reports that it
@@ -1108,7 +1108,7 @@ interface ZoneTestConfigurations {
    * times out, because `async()` will wait for the unresolved promise.
    *
    * 如果你设置 `__zone_symbol__supportWaitUnResolvedChainedPromise = true` ，则上述情况会超时，因为
-   * `async()` 将等待未解决的承诺。
+   * `async()` 将等待未解决的 Promise 。
    *
    */
   __zone_symbol__supportWaitUnResolvedChainedPromise?: boolean;
