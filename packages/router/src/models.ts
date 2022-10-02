@@ -534,10 +534,10 @@ export interface Route {
    * but does not match when there are no children as in `{path: 'team/:id', component: Team}`.
    *
    * 默认情况下，路由器会从左侧检查 URL 元素以查看 URL
-   * 是否与给定路径匹配，并在存在配置匹配时停止。重要的是，URL
-   * 的每个段仍然必须有配置匹配。例如，如果路由的子项之一与段“user”匹配，则“/team/11/user”与前缀“team/:id”匹配。也就是说，URL
-   * '/team/11/user' 与配置 `{path: 'team/:id', children: [{path: ':user', component: User}]}`
-   * 匹配，但当有 `{path: 'team/:id', component: Team}` 中没有子项。
+   * 是否与给定路径匹配，并在匹配上某个配置时停止。重要的是，URL
+   * 的每个段仍然必须与某个配置匹配。例如，如果路由的子项（children）之一与段“user”匹配，则认为“/team/11/user”与前缀“team/:id”匹配。也就是说，URL
+   * '/team/11/user' 可以匹配 `{path: 'team/:id', children: [{path: ':user', component: User}]}`
+   * 配置项， 但当 `{path: 'team/:id', component: Team}` 中没有子项（children 属性）时则不匹配。
    *
    * The path-match strategy 'full' matches against the entire URL.
    * It is important to do this when redirecting empty-path routes.
