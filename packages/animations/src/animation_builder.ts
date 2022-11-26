@@ -29,10 +29,10 @@ import {AnimationPlayer} from './players/animation_player';
  * 应用通常不需要创建自己的动画播放器，但是如果需要，请按照以下步骤操作：
  *
  * 1. Use the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code> method
- * to create a programmatic animation. The method returns an `AnimationFactory` instance.
+ *    to create a programmatic animation. The method returns an `AnimationFactory` instance.
  *
  *    使用<code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)
- *    ()</code>方法来创建程序化动画。该方法返回一个 `AnimationFactory` 实例。
+ *       ()</code>方法来创建程序化动画。该方法返回一个 `AnimationFactory` 实例。
  *
  * 2. Use the factory object to create an `AnimationPlayer` and attach it to a DOM element.
  *

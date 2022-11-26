@@ -236,7 +236,7 @@ The `fullTemplateTypeCheck` option has been deprecated in Angular 13 in favor of
 
 ### `generateCodeForLibraries`
 
-When `true`, creates factory files \(`.ngfactory.js` and `.ngstyle.js`\) for `.d.ts` files with a corresponding `.metadata.json` file. The default value is `true`.
+When `true`, creates factory files (`.ngfactory.js` and `.ngstyle.js`) for `.d.ts` files with a corresponding `.metadata.json` file. The default value is `true`.
 
 如果为 `true`，就会为 `.d.ts` 和相应的 `.metadata.json` 创建工厂文件（`.ngfactory.js` 和 `.ngstyle.js`）。默认值为 `true`。
 

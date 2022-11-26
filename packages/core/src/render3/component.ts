@@ -58,20 +58,23 @@ import {assertComponentDef} from './errors';
  * // to include the component view into change detection cycles.
  * applicationRef.attachView(componentRef.hostView);
  * ```
- *
  * @param component Component class reference.
  * @param options Set of options to use:
- *  * `environmentInjector`: An `EnvironmentInjector` instance to be used for the component, see
- * additional info about it at https://angular.io/guide/standalone-components#environment-injectors.
- *  * `hostElement` (optional): A DOM node that should act as a host node for the component. If not
- * provided, Angular creates one based on the tag name used in the component selector (and falls
- * back to using `div` if selector doesn't have tag name info).
- *  * `elementInjector` (optional): An `ElementInjector` instance, see additional info about it at
- * https://angular.io/guide/hierarchical-dependency-injection#elementinjector.
- *  * `projectableNodes` (optional): A list of DOM nodes that should be projected through
- *                      [`<ng-content>`](api/core/ng-content) of the new component instance.
- * @returns ComponentRef instance that represents a given Component.
  *
+ * - `environmentInjector`: An `EnvironmentInjector` instance to be used for the component, see
+ *   additional info about it at <https://angular.io/guide/standalone-components#environment-injectors>.
+ *
+ * - `hostElement` (optional): A DOM node that should act as a host node for the component. If not
+ *   provided, Angular creates one based on the tag name used in the component selector (and falls
+ *   back to using `div` if selector doesn't have tag name info).
+ *
+ * - `elementInjector` (optional): An `ElementInjector` instance, see additional info about it at
+ *   <https://angular.io/guide/hierarchical-dependency-injection#elementinjector>.
+ *
+ * - `projectableNodes` (optional): A list of DOM nodes that should be projected through
+ *                     [`<ng-content>`](api/core/ng-content) of the new component instance.
+ *
+ * @returns ComponentRef instance that represents a given Component.
  * @publicApi
  */
 export function createComponent<C>(component: Type<C>, options: {

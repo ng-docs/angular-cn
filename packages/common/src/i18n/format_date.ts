@@ -796,7 +796,7 @@ function convertTimezoneToLocal(date: Date, timezone: string, reverse: boolean):
  *     [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
  *     Note: ISO strings without time return a date without timeoffset.
  *
- *     字符串：数字（如 "1234"）、ISO 格式和
+ *   字符串：数字（如 "1234"）、ISO 格式和
  *   [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
  *     所支持的日期字符串格式。
  *     注意：不带时间的 ISO 字符串会返回一个没有时区偏移量的日期。

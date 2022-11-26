@@ -83,10 +83,10 @@ export function routerNgProbeToken() {
  *   `forRoot()` 方法会创建一个 `NgModule`，其中包含所有指令、给定的路由以及 `Router` 服务本身。
  *
  * * The `forChild()` method creates an `NgModule` that contains all the directives and the given
- *   routes, but does not include the `Router` service.
+ *     routes, but does not include the `Router` service.
  *
  *   `forChild()` 方法会创建一个 `NgModule`，其中包含所有指令和给定的路由，但不包括 `Router`
- * 服务。
+ *   服务。
  *
  * @see [Routing and Navigation guide](guide/router) for an
  * overview of how the `Router` service should be used.

@@ -39,10 +39,11 @@ export class FormsModule {
   /**
    * @description
    * Provides options for configuring the forms module.
-   *
    * @param opts An object of configuration options
+   *
    * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
-   * correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   *   correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   *
    */
   static withConfig(opts: {
     callSetDisabledState?: SetDisabledStateOption,
@@ -94,9 +95,11 @@ export class ReactiveFormsModule {
    * 一个配置选项对象
    *
    * * `warnOnNgModelWithFormControl` Configures when to emit a warning when an `ngModel`
-   * binding is used with reactive form directives.
+   *   binding is used with reactive form directives.
+   *
    * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
-   * correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   *   correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   *
    */
   static withConfig(opts: {
                     /**

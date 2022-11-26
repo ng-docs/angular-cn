@@ -752,11 +752,11 @@ export class HttpClient {
    *   ```
    *
    * - An `observe` value of response returns an observable of `HttpResponse<T>`,
-   *   where the `T` parameter depends on the `responseType` and any optionally provided type
-   *   parameter.
+   *     where the `T` parameter depends on the `responseType` and any optionally provided type
+   *     parameter.
    *
    *   response 的 `observe` 值会返回 `HttpResponse<T>` 的 observable，其中 `T` 参数取决于
-   * `responseType` 和任何可选提供的类型参数。
+   *   `responseType` 和任何可选提供的类型参数。
    *
    *   ```
    *   响应对象的 `observe` 值返回 `HttpResponse<T>` 的可观察对象，其中 `T` 参数取决于

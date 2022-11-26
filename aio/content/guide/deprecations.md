@@ -245,8 +245,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### @angular/router
 
-### Angular 路由器【模糊翻译】
-
 | API | Replacement | Deprecation announced | Details |
 | :-- | :---------- | :-------------------- | :------ |
 | API | 替代品 | 已宣布弃用 | 详情 |

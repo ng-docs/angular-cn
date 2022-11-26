@@ -226,13 +226,13 @@ export class KeyValueDiffers {
    * KeyValueDiffer}可用的全部步骤。
    *
    * ```
-   *
    * @Component ({
    *   viewProviders: [
    *     KeyValueDiffers.extend([new ImmutableMapDiffer()])
    *   ]
    * })
    * ```
+   *
    */
   static extend<S>(factories: KeyValueDifferFactory[]): StaticProvider {
     return {

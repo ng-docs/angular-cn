@@ -26,6 +26,7 @@ type HostDirectiveConfig = Type<unknown>|{
  * directive matching.
  *
  * For example:
+ *
  * ```ts
  * class ComponentWithHostDirective {
  *   static ɵcmp = defineComponent({

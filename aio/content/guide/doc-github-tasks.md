@@ -1,6 +1,7 @@
 # Common GitHub tasks to edit angular.io
 
 <!-- markdownLint-disable MD001 -->
+
 <!-- markdownLint-disable MD033 -->
 
 These are some of the common `git` tasks that you perform while editing Angular documentation.
@@ -21,10 +22,13 @@ Remember to replace `personal` with your GitHub username in the commands and exa
 
 </div>
 
-*   The procedures assume that your working directories are in a single `workspace` directory such that
-    *   The local `working` directory of the upstream repo, `angular/angular` is in the `angular` subdirectory of the `angular` subdirectory of the `workspace` directory
-    *   The local `working` directory of the origin repo, `personal/angular` is in the `angular` subdirectory of the `personal` subdirectory of the `workspace` directory
-*   The procedures assume that you are starting from your `workspace` directory
+* The procedures assume that your working directories are in a single `workspace` directory such that
+
+  * The local `working` directory of the upstream repo, `angular/angular` is in the `angular` subdirectory of the `angular` subdirectory of the `workspace` directory
+
+  * The local `working` directory of the origin repo, `personal/angular` is in the `angular` subdirectory of the `personal` subdirectory of the `workspace` directory
+
+* The procedures assume that you are starting from your `workspace` directory
 
 ## Update your clone of the upstream repo
 
@@ -44,29 +48,29 @@ The circled number correspond to the procedure step.
 
 #### To update your clone of the upstream repo
 
-1.  From your `workspace` directory, navigate to the `working` directory of the upstream repo.
+1. From your `workspace` directory, navigate to the `working` directory of the upstream repo.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd angular/angular
+   cd angular/angular
 
-    </code-example>
+   </code-example>
 
-1.  Check out the `main` branch.
+1. Check out the `main` branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git checkout main
+   git checkout main
 
-    </code-example>
+   </code-example>
 
-1.  Update the `main` branch in the `working` directory on your local computer with any changes in the upstream `angular/angular` repo.
+1. Update the `main` branch in the `working` directory on your local computer with any changes in the upstream `angular/angular` repo.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git pull
+   git pull
 
-    </code-example>
+   </code-example>
 
 The `main` branch of the clone on your local computer and the upstream repo on `github.com` are now in sync.
 Now would be a good time to update your fork as well.
@@ -89,38 +93,38 @@ The circled numbers correspond to procedure steps.
 
 #### To update your fork with the upstream repo
 
-1.  From your workspace directory, navigate to your working directory.
+1. From your workspace directory, navigate to your working directory.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd personal/angular
+   cd personal/angular
 
-    </code-example>
+   </code-example>
 
-1.  Check out the `main` branch.
+1. Check out the `main` branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git checkout main
+   git checkout main
 
-    </code-example>
+   </code-example>
 
-1.  Update the `main` branch in the `working` directory on your local computer from the upstream `angular/angular` repo.
+1. Update the `main` branch in the `working` directory on your local computer from the upstream `angular/angular` repo.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git fetch upstream
-    git merge upstream/main
+   git fetch upstream
+   git merge upstream/main
 
-    </code-example>
+   </code-example>
 
-1.  Update your `personal/angular` repo on `github.com` with the latest from the upstream `angular/angular` repo.
+1. Update your `personal/angular` repo on `github.com` with the latest from the upstream `angular/angular` repo.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git push
+   git push
 
-    </code-example>
+   </code-example>
 
 The `main` branch on your local computer and your *origin* repo on `github.com` are now in sync.
 They have been updated with any changes to the upstream `angular/angular` repo that were made since the last time you updated your fork.
@@ -129,16 +133,19 @@ They have been updated with any changes to the upstream `angular/angular` repo t
 
 Almost all your editing on the Angular documentation is done:
 
-*   In the clone of your fork of `angular/angular`, not in your clone of `angular/angular`
-*   In a `working` or `feature` branch made from the `main` branch
+* In the clone of your fork of `angular/angular`, not in your clone of `angular/angular`
+
+* In a `working` or `feature` branch made from the `main` branch
 
 If this isn't clear, see [More about branches](#more-about-branches).
 
 Before you start editing the Angular documentation, you want to:
 
-1.  [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
-1.  [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
-1.  Create a working branch from the `main` branch.
+1. [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
+
+1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
+
+1. Create a working branch from the `main` branch.
 
 A working branch gives you a way to keep track of the changes that you make to the Angular documentation.
 You also need a separate branch to submit those changes in a pull request.
@@ -154,45 +161,47 @@ You can confirm your current branch by running `git status` from your `working` 
 
 #### To create a `working` branch for editing
 
-1.  [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
-1.  [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
-1.  From your `workspace` directory, navigate to your `working` directory.
+1. [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
 
-    <code-example format="shell" language="shell">
+1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
 
-    cd personal/angular
+1. From your `workspace` directory, navigate to your `working` directory.
 
-    </code-example>
+   <code-example format="shell" language="shell">
 
-1.  Check out the `main` branch.
+   cd personal/angular
 
-    <code-example format="shell" language="shell">
+   </code-example>
 
-    git checkout main
+1. Check out the `main` branch.
 
-    </code-example>
+   <code-example format="shell" language="shell">
 
-1.  Create your new branch.
-    Replace `new-branch` with the name of your new branch.
+   git checkout main
 
-    Name the branch something that relates to your editing task, for example, if you are resolving `issue #12345`, you might name the branch, `issue-12345`.
-    If you are improving error messages, you might name it, `error-message-improvements`.
-    A branch name can have alphanumeric characters, hyphens, underscores, and slashes, but it can't have any spaces or other special characters.
+   </code-example>
 
-    <code-example format="shell" language="shell">
+1. Create your new branch.
+   Replace `new-branch` with the name of your new branch.
 
-    git checkout -b new-branch
+   Name the branch something that relates to your editing task, for example, if you are resolving `issue #12345`, you might name the branch, `issue-12345`.
+   If you are improving error messages, you might name it, `error-message-improvements`.
+   A branch name can have alphanumeric characters, hyphens, underscores, and slashes, but it can't have any spaces or other special characters.
 
-    </code-example>
+   <code-example format="shell" language="shell">
 
-1.  Push the new branch to your repo on `github.com` so you have a copy of it in the cloud.
-    Remember to replace `new-branch` with the name of your new branch.
+   git checkout -b new-branch
 
-    <code-example format="shell" language="shell">
+   </code-example>
 
-    git push --set-upstream origin new-branch
+1. Push the new branch to your repo on `github.com` so you have a copy of it in the cloud.
+   Remember to replace `new-branch` with the name of your new branch.
 
-    </code-example>
+   <code-example format="shell" language="shell">
+
+   git push --set-upstream origin new-branch
+
+   </code-example>
 
 ## Save your changes
 
@@ -203,28 +212,28 @@ As you make changes to files in the working directory of your fork of the Angula
 
 * **Made but not saved**
 
-    This is the state of your changes as you edit a file in your integrated development environment \(IDE\).
+  This is the state of your changes as you edit a file in your integrated development environment (IDE).
     This is the state of your changes as you're making them in your IDE.
 
 * **Saved but not committed**
 
-    After you save changes to a file from the IDE, they are saved to your local computer.
+  After you save changes to a file from the IDE, they are saved to your local computer.
     While the changes have been saved, they have not been recorded as a change by `git`, the version control software.
     Your files are typically in this state as you review your work in progress.
 
 * **Committed but not pushed**
 
-    After you commit your changes to `git`, your changes are recorded as a *commit* on your local computer, but they are not saved in the cloud.
+  After you commit your changes to `git`, your changes are recorded as a *commit* on your local computer, but they are not saved in the cloud.
     This is the state of your files when you've reached a milestone and save your progress locally.
 
 * **Committed and pushed**
 
-    After you push your commits to your personal repo in `github.com`, your changes have been recorded by `git` and saved to the cloud. They are not yet part of the `angular/angular` repo.
+  After you push your commits to your personal repo in `github.com`, your changes have been recorded by `git` and saved to the cloud. They are not yet part of the `angular/angular` repo.
     This is the state your files need to be in before you can open a pull request for it to become part of the `angular/angular` repo.
 
 * **Merged into Angular**
 
-    After your pull request is approved and merged, the changes you made are now part of the `angular/angular` repo.
+  After your pull request is approved and merged, the changes you made are now part of the `angular/angular` repo.
 
 ### Save your changes to your local computer
 
@@ -237,56 +246,56 @@ Follow this procedure after you save changes on your local computer and you are 
 
 #### To commit your changes on your local computer
 
-1.  From your workspace directory, navigate to your working directory.
+1. From your workspace directory, navigate to your working directory.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd personal/angular
+   cd personal/angular
 
-    </code-example>
+   </code-example>
 
-1.  Confirm you are using the correct branch.
-    If you aren't in the correct branch, run `git checkout branch-name` to select the correct branch.
+1. Confirm you are using the correct branch.
+   If you aren't in the correct branch, run `git checkout branch-name` to select the correct branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git status
+   git status
 
-    </code-example>
+   </code-example>
 
-1.  Review the list of files to add to the commit is correct.
+1. Review the list of files to add to the commit is correct.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git status
+   git status
 
-    </code-example>
+   </code-example>
 
-1.  Add the files you want to commit.
+1. Add the files you want to commit.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git add filename
+   git add filename
 
-    </code-example>
+   </code-example>
 
-    You can add multiple files in a single command by using wildcard characters in the filename parameter.
-    You can also add all changed files that are already being tracked by `git` to the commit by using `--all` option as this example shows.
+   You can add multiple files in a single command by using wildcard characters in the filename parameter.
+   You can also add all changed files that are already being tracked by `git` to the commit by using `--all` option as this example shows.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git add --all
+   git add --all
 
-    </code-example>
+   </code-example>
 
-1.  Commit the changes to the local computer.
-    Replace `detailed-commit-comment` with a specific comment that describes the changes you made.
+1. Commit the changes to the local computer.
+   Replace `detailed-commit-comment` with a specific comment that describes the changes you made.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git commit -m 'docs: detailed-commit-comment'
+   git commit -m 'docs: detailed-commit-comment'
 
-    </code-example>
+   </code-example>
 
 ### Push your changes to your GitHub account in the cloud
 
@@ -294,52 +303,52 @@ After you have committed changes to your local computer, this procedure saves yo
 
 #### To push your changes to your GitHub account in the cloud
 
-1.  From your `workspace` directory, navigate to your `working` directory.
+1. From your `workspace` directory, navigate to your `working` directory.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd personal/angular
+   cd personal/angular
 
-    </code-example>
+   </code-example>
 
-1.  Confirm you are using the correct branch.
-    If you aren't in the correct branch, run `git checkout branch-name` to select the correct branch.
+1. Confirm you are using the correct branch.
+   If you aren't in the correct branch, run `git checkout branch-name` to select the correct branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git status
+   git status
 
-    </code-example>
+   </code-example>
 
-1.  Push the commits on your local computer to your account on GitHub in the cloud.
+1. Push the commits on your local computer to your account on GitHub in the cloud.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git push
+   git push
 
-    </code-example>
+   </code-example>
 
-    If this is the first time you've pushed commits from the branch, you can see a message such as this.
+   If this is the first time you've pushed commits from the branch, you can see a message such as this.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    fatal: The current branch my-new-branch has no upstream branch.
-    To push the current branch and set the remote as upstream, use
+   fatal: The current branch my-new-branch has no upstream branch.
+   To push the current branch and set the remote as upstream, use
 
-        git push --set-upstream origin my-new-branch
+       git push --set-upstream origin my-new-branch
 
-    To have this happen automatically for branches without a tracking
-    upstream, see 'push.autoSetupRemote' in 'git help config'.
+   To have this happen automatically for branches without a tracking
+   upstream, see 'push.autoSetupRemote' in 'git help config'.
 
-    </code-example>
+   </code-example>
 
-    If you get this message, copy the command that the message provides and run it as shown here:
+   If you get this message, copy the command that the message provides and run it as shown here:
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git push --set-upstream origin my-new-branch
+   git push --set-upstream origin my-new-branch
 
-    </code-example>
+   </code-example>
 
 ### Open pull requests to merge a change into `angular/angular`
 
@@ -355,42 +364,44 @@ Either way, the procedure to update your branch is the same.
 
 #### To keep your branch up-to-date
 
-1.  [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
-1.  [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
-1.  From your workspace directory, navigate to your working directory.
+1. [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
 
-    <code-example format="shell" language="shell">
+1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
 
-    cd personal/angular
+1. From your workspace directory, navigate to your working directory.
 
-    </code-example>
+   <code-example format="shell" language="shell">
 
-1.  Confirm that you are using the correct branch.
-    If you aren't in the correct branch, run `git checkout branch-name` to select the correct branch.
+   cd personal/angular
 
-    <code-example format="shell" language="shell">
+   </code-example>
 
-    git status
+1. Confirm that you are using the correct branch.
+   If you aren't in the correct branch, run `git checkout branch-name` to select the correct branch.
 
-    </code-example>
+   <code-example format="shell" language="shell">
 
-    If you have any un-commited changes, [Commit your changes on your local computer](#commit-your-changes-on-your-local-computer) before you continue.
+   git status
 
-1.  Rebase your branch to add the changes in your branch to the current content in the `main` branch.
+   </code-example>
 
-    <code-example format="shell" language="shell">
+   If you have any un-commited changes, [Commit your changes on your local computer](#commit-your-changes-on-your-local-computer) before you continue.
 
-    git rebase main
+1. Rebase your branch to add the changes in your branch to the current content in the `main` branch.
 
-    </code-example>
+   <code-example format="shell" language="shell">
 
-1.  Update the branch in your repo in the cloud.
+   git rebase main
 
-    <code-example format="shell" language="shell">
+   </code-example>
 
-    git push --force-with-lease
+1. Update the branch in your repo in the cloud.
 
-    </code-example>
+   <code-example format="shell" language="shell">
+
+   git push --force-with-lease
+
+   </code-example>
 
 ## More about branches
 

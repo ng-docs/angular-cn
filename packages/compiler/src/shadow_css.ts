@@ -262,13 +262,13 @@ export class ShadowCss {
    *   }
    * }
    * ```
+   *
    * and as a side effect it adds "box-animation" to the `unscopedKeyframesSet` set
    *
    * @param cssRule the css rule to process.
    * @param scopeSelector the component's scope selector.
    * @param unscopedKeyframesSet the set of unscoped keyframes names (which can be
    * modified as a side effect)
-   *
    * @returns the css rule modified with the scoped keyframes name.
    */
   private _scopeLocalKeyframeDeclarations(
@@ -311,14 +311,18 @@ export class ShadowCss {
    * animation declaration (with possibly multiple animation definitions)
    *
    * The regular expression can be divided in three parts
-   *  - (^|\s+)
-   *    simply captures how many (if any) leading whitespaces are present
-   *  - (?:(?:(['"])((?:\\\\|\\\2|(?!\2).)+)\2)|(-?[A-Za-z][\w\-]*))
-   *    captures two different possible keyframes, ones which are quoted or ones which are valid css
-   * idents (custom properties excluded)
-   *  - (?=[,\s;]|$)
-   *    simply matches the end of the possible keyframe, valid endings are: a comma, a space, a
-   * semicolon or the end of the string
+   *
+   * - (^|\\s+)
+   *   simply captures how many (if any) leading whitespaces are present
+   *
+   * - (?:(?:(['"])((?:\\\\\|\\\\2|(?!\\2).)+)\\2)|(-?[A-Za-z][\w\-]\*))
+   *      captures two different possible keyframes, ones which are quoted or ones which are valid css
+   *   idents (custom properties excluded)
+   *
+   * - (?=[,\s;]|$)
+   *      simply matches the end of the possible keyframe, valid endings are: a comma, a space, a
+   *   semicolon or the end of the string
+   *
    */
   private _animationDeclarationKeyframesRe =
       /(^|\s+)(?:(?:(['"])((?:\\\\|\\\2|(?!\2).)+)\2)|(-?[A-Za-z][\w\-]*))(?=[,\s]|$)/g;

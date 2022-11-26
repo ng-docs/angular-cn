@@ -23,8 +23,8 @@ import {ProviderToken} from './provider_token';
  * By default, it is `injectInjectorOnly`, which makes it `Injector`-only aware. It can be changed
  * to `directiveInject`, which brings in the `NodeInjector` system of ivy. It is designed this
  * way for two reasons:
- *  1\. `Injector` should not depend on ivy logic.
- *  2\. To maintain tree shake-ability we don't want to bring in unnecessary code.
+ *  1. `Injector` should not depend on ivy logic.
+ *  2. To maintain tree shake-ability we don't want to bring in unnecessary code.
  *
  * 默认情况下，它是 `injectInjectorOnly` ，这使得它可以感知 `Injector` 。它可以更改为
  * `directiveInject` ，它会引入 ivy 的 `NodeInjector` 系统。它是这样设计的，有两个原因： 1.

@@ -78,37 +78,37 @@ export abstract class SwRegistrationOptions {
    * 的注册时间进行更多控制（例如，可能会有长时间运行的超时或轮询间隔，以防止应用程序稳定）。可用的选项是：
    *
    * - `registerWhenStable:<timeout>`: Register as soon as the application stabilizes (no pending
-   *     micro-/macro-tasks) but no later than `<timeout>` milliseconds. If the app hasn't
-   *     stabilized after `<timeout>` milliseconds (for example, due to a recurrent asynchronous
-   *     task), the ServiceWorker will be registered anyway.
-   *     If `<timeout>` is omitted, the ServiceWorker will only be registered once the app
-   *     stabilizes.
+   *       micro-/macro-tasks) but no later than `<timeout>` milliseconds. If the app hasn't
+   *       stabilized after `<timeout>` milliseconds (for example, due to a recurrent asynchronous
+   *       task), the ServiceWorker will be registered anyway.
+   *       If `<timeout>` is omitted, the ServiceWorker will only be registered once the app
+   *       stabilizes.
    *
    *   `registerWhenStable:<timeout>` ：一旦应用程序稳定（没有挂起的微/宏任务）后注册，但不迟于
-   * `<timeout>` 毫秒。如果应用程序在 `<timeout>` 毫秒后尚未稳定（例如，由于经常出现的异步任务），则
-   * ServiceWorker 无论如何都会被注册。如果省略 `<timeout>` ，则 ServiceWorker
-   * 将仅在应用稳定后才会注册。
+   *   `<timeout>` 毫秒。如果应用程序在 `<timeout>` 毫秒后尚未稳定（例如，由于经常出现的异步任务），则
+   *   ServiceWorker 无论如何都会被注册。如果省略 `<timeout>` ，则 ServiceWorker
+   *   将仅在应用稳定后才会注册。
    *
    * - `registerImmediately`: Register immediately.
    *
    *   `registerImmediately` ：立即注册。
    *
    * - `registerWithDelay:<timeout>`: Register with a delay of `<timeout>` milliseconds. For
-   *     example, use `registerWithDelay:5000` to register the ServiceWorker after 5 seconds. If
-   *     `<timeout>` is omitted, is defaults to `0`, which will register the ServiceWorker as soon
-   *     as possible but still asynchronously, once all pending micro-tasks are completed.
+   *       example, use `registerWithDelay:5000` to register the ServiceWorker after 5 seconds. If
+   *       `<timeout>` is omitted, is defaults to `0`, which will register the ServiceWorker as soon
+   *       as possible but still asynchronously, once all pending micro-tasks are completed.
    *
    *   `registerWithDelay:<timeout>` ：使用 `<timeout>` 毫秒的延迟进行注册。例如，使用
-   * `registerWithDelay:5000` 在 5 秒后注册 ServiceWorker。如果省略 `<timeout>` ，则默认为 `0`
-   * ，一旦所有挂起的微任务完成，它将尽快注册 ServiceWorker，但仍然是异步的。
+   *   `registerWithDelay:5000` 在 5 秒后注册 ServiceWorker。如果省略 `<timeout>` ，则默认为 `0`
+   *   ，一旦所有挂起的微任务完成，它将尽快注册 ServiceWorker，但仍然是异步的。
    *
    * - An [Observable](guide/observables) factory function: A function that returns an `Observable`.
-   *     The function will be used at runtime to obtain and subscribe to the `Observable` and the
-   *     ServiceWorker will be registered as soon as the first value is emitted.
+   *       The function will be used at runtime to obtain and subscribe to the `Observable` and the
+   *       ServiceWorker will be registered as soon as the first value is emitted.
    *
    *   [Observable](guide/observables)工厂函数：返回 `Observable`
-   * 的函数。该函数将在运行时用于获取和订阅 `Observable` ，并且一旦发出第一个值，ServiceWorker
-   * 就会被注册。
+   *   的函数。该函数将在运行时用于获取和订阅 `Observable` ，并且一旦发出第一个值，ServiceWorker
+   *   就会被注册。
    *
    * Default: 'registerWhenStable:30000'
    *

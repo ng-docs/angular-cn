@@ -27,9 +27,9 @@ import {joinWithSlash, normalizeQueryParams} from './util';
  * 应用程序应使用 `Router` 或 `Location` 服务与应用程序的路由状态进行交互。
  *
  * For instance, `HashLocationStrategy` produces URLs like
- * <code class="no-auto-link">http://example.com#/foo</code>,
+ * <code class="no-auto-link"><http://example.com#/foo></code>,
  * and `PathLocationStrategy` produces
- * <code class="no-auto-link">http://example.com/foo</code> as an equivalent URL.
+ * <code class="no-auto-link"><http://example.com/foo></code> as an equivalent URL.
  *
  * 比如，`HashLocationStrategy` 会处理像 <code class="no-auto-link"><http://example.com#/foo></code>
  * 这样的 URL，而 `PathLocationStrategy` 会处理像 <code

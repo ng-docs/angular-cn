@@ -45,13 +45,13 @@ A component consists of three things:
 一个组件由三部分组成：
 
 | Component Part | Details |
-| :-- | :------ |
+| :------------- | :------ |
 |  | 详情 |
 | A component class | Handles data and functionality |
 | 组件类 | 处理数据和功能。 |
 | An HTML template | Determines the UI |
 | HTML 模板 | 决定 UI。 |
-| Component-specific styles | Define the look and feel       |
+| Component-specific styles | Define the look and feel |
 | 组件专属样式 | 定义外观和感觉。 |
 
 This guide demonstrates building an application with the following components:
@@ -67,7 +67,7 @@ This guide demonstrates building an application with the following components:
 | `<app-top-bar>` | 商店名称和结帐按钮。 |
 | `<app-product-list>` | The product list |
 | `<app-product-list>` | 产品列表。 |
-| `<app-product-alerts>` | A component that contains the application's alerts                     |
+| `<app-product-alerts>` | A component that contains the application's alerts |
 | `<app-product-alerts>` | 包含应用中各种通知的组件。 |
 
 <div class="lightbox">

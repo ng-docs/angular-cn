@@ -18,12 +18,12 @@ import {AbsoluteFsPath, ReadonlyFileSystem} from '../../../src/ngtsc/file_system
  * 调用中处理所有入口点。特别是，以下文件通过此缓存在所有入口点之间共享：
  *
  * 1. Default library files such as `lib.dom.d.ts` and `lib.es5.d.ts`. These files don't change
- *    and some are very large, so parsing is expensive. Therefore, the parsed `ts.SourceFile`s for
- *    the default library files are cached.
+ *       and some are very large, so parsing is expensive. Therefore, the parsed `ts.SourceFile`s for
+ *       the default library files are cached.
  *
  *    默认库文件，例如 `lib.dom.d.ts` 和 `lib.es5.d.ts`
- * 。这些文件不会更改，并且有些非常大，因此解析成本很高。因此，会缓存默认库文件的解析后的
- * `ts.SourceFile` 。
+ *    。这些文件不会更改，并且有些非常大，因此解析成本很高。因此，会缓存默认库文件的解析后的
+ *    `ts.SourceFile` 。
  *
  * 2. The typings of @angular scoped packages. The typing files for @angular packages are typically
  *    used in the entry-points that ngcc processes, so benefit from a single source file cache.

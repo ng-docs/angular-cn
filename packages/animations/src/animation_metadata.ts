@@ -871,11 +871,11 @@ export function trigger(name: string, definitions: AnimationMetadata[]): Animati
  * 为父动画设置 `AnimateTimings`。它的字符串格式为 "持续时间 [延迟][缓动效果]"。
  *
  * - Duration and delay are expressed as a number and optional time unit,
- *   such as "1s" or "10ms" for one second and 10 milliseconds, respectively.
- *   The default unit is milliseconds.
+ *     such as "1s" or "10ms" for one second and 10 milliseconds, respectively.
+ *     The default unit is milliseconds.
  *
  *   持续时间和延迟都用一个动画和一个可选的时间单位来表示，比如 "1s" 代表一秒，"10ms"
- * 代表十毫秒。默认单位是毫秒。
+ *   代表十毫秒。默认单位是毫秒。
  *
  * - The easing value controls how the animation accelerates and decelerates
  *   during its runtime. Value is one of  `ease`, `ease-in`, `ease-out`,
@@ -948,7 +948,7 @@ export function trigger(name: string, definitions: AnimationMetadata[]): Animati
  * - `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")` : Duration is 5000 milliseconds, delay is 10
  *   milliseconds, easing according to a bezier curve.
  *
- *     `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")`：持续 5000 毫秒，延迟 10 毫秒，基于一条
+ *   `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")`：持续 5000 毫秒，延迟 10 毫秒，基于一条
  *   Bezier 曲线进行缓动。
  *
  * **Style examples**
@@ -996,12 +996,12 @@ export function animate(
  * - When steps are defined by `style()` or `animate()`
  *   function calls, each call within the group is executed instantly.
  *
- *     当步骤由 `style()` 或 `animate()` 的函数调用定义时，组中的每个调用都会立即执行。
+ *   当步骤由 `style()` 或 `animate()` 的函数调用定义时，组中的每个调用都会立即执行。
  *
  * - To specify offset styles to be applied at a later time, define steps with
  *   `keyframes()`, or use `animate()` calls with a delay value.
  *
- *     要指定供带有延迟的偏移样式，请使用 `keyframes()` 调用来定义步骤；如果要指定延迟的时长，则改用
+ *   要指定供带有延迟的偏移样式，请使用 `keyframes()` 调用来定义步骤；如果要指定延迟的时长，则改用
  *   `animate()` 调用。
  *
  * For example:
@@ -1126,7 +1126,7 @@ export function sequence(
  * - An asterisk (\*), to use auto-styling, where styles are derived from the element
  *   being animated and applied to the animation when it starts.
  *
- *     一个星号（`*`），表示自动样式，其样式值会在应用此样式的时刻从目标元素中取得，并用作动画参数。
+ *   一个星号（`*`），表示自动样式，其样式值会在应用此样式的时刻从目标元素中取得，并用作动画参数。
  *
  * Auto-styling can be used to define a state that depends on layout or other
  * environmental factors.
@@ -1160,7 +1160,6 @@ export function sequence(
  * style({ height: 0 }),
  * animate("1s", style({ height: "*" }))
  * ```
- *
  * @publicApi
  */
 export function style(tokens: '*'|{[key: string]: string | number}|
@@ -1184,7 +1183,7 @@ export function style(tokens: '*'|{[key: string]: string | number}|
  *   the element is detached from the application. For example, when an `ngIf` evaluates
  *   to false, the state of the associated element is void.
  *
- *     `void` 你可以使用该名称关联一些样式，用于定义当该元素从应用中移除时的样式。比如，当 `ngIf`
+ *   `void` 你可以使用该名称关联一些样式，用于定义当该元素从应用中移除时的样式。比如，当 `ngIf`
  *   的值为 `false` 时，相关元素的状态就是 `void`。
  *
  * - `*` (asterisk) Indicates the default state. You can associate styles with this name
@@ -1305,16 +1304,13 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * animation transition should occur (see [State Change Expression](#state-change-expression)).
  *
  * 具有特定格式的字符串或指定动画转换何时发生的函数（请参阅[状态更改表达式](#state-change-expression)）。
- *
  * @param steps One or more animation objects that represent the animation's instructions.
  *
  * 表示动画操作指南的一个或多个动画对象。
- *
  * @param options An options object that can be used to specify a delay for the animation or provide
  * custom parameters for it.
  *
  * 一个选项对象，可用于指定动画的延迟或为其提供自定义参数。
- *
  * @returns An object that encapsulates the transition data.
  *
  * 一个封装了转场数据的对象。
@@ -1336,7 +1332,7 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - or a function that compares the previous and current state (value of the expression bound to
  *     the element's trigger) and returns `true` if the transition should occur or `false` otherwise
  *
- *     或一个比较前一个状态和当前状态（绑定到元素触发器的表达式的值）的函数，如果应该发生转换，则返回
+ *   或一个比较前一个状态和当前状态（绑定到元素触发器的表达式的值）的函数，如果应该发生转换，则返回
  *   `true`，否则返回 `false`
  *
  * The string format can be:
@@ -1346,22 +1342,22 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `fromState => toState`, which indicates that the transition's animations should occur then the
  *     expression bound to the trigger's element goes from `fromState` to `toState`
  *
- *     `fromState => toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
+ *   `fromState => toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
  *   到 `toState`
  *
- *     _Example:_
+ *   _Example:_
  *
- *     _ 示例：_
+ *   _ 示例：_
  *
  *   ```typescript
  *     transition('open => closed', animate('.5s ease-out', style({ height: 0 }) ))
  *   ```
  *
  * - `fromState <=> toState`, which indicates that the transition's animations should occur then
- *   the expression bound to the trigger's element goes from `fromState` to `toState` or vice versa
+ *     the expression bound to the trigger's element goes from `fromState` to `toState` or vice versa
  *
  *   `fromState <=> toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
- * 变为 `toState`，反之亦然
+ *   变为 `toState`，反之亦然
  *
  *   _Example:_
  *
@@ -1374,7 +1370,7 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `:enter`/`:leave`, which indicates that the transition's animations should occur when the
  *   element enters or exists the DOM
  *
- *    _Example:_
+ *   _Example:_
  *
  *   ```typescript
  *     transition(':enter', [
@@ -1428,7 +1424,6 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *  a chance to be executed, the only way that such transition can occur is if the element
  *  is exiting the DOM on its own).
  *
- *
  * </div>
  *
  * ### Animating to a Final State
@@ -1439,7 +1434,6 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * with no `style` data, that step is automatically considered the final animation arc,
  * for the element to reach the final state, in such case Angular automatically adds or removes
  * CSS styles to ensure that the element is in the correct final state.
- *
  *
  * ### Usage Examples
  *
@@ -1649,7 +1643,7 @@ export function useAnimation(
  *      all elements can be queried via these tokens, see
  *      [Entering and Leaving Elements](#entering-and-leaving-elements))
  *
- *     `query(":enter")` 或 `query(":leave")`
+ *   `query(":enter")` 或 `query(":leave")`
  *   ：查询新插入/删除的元素（并非所有元素都可以通过这些标记查询，请参阅[进入和离开元素](#entering-and-leaving-elements)）
  *
  * - `query(":animating")` : Query all currently animating elements.
@@ -1792,7 +1786,6 @@ export function useAnimation(
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export function query(

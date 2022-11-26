@@ -5,6 +5,7 @@
 This tutorial shows you how to:
 
 * Expand the Tour of Heroes application to display a list of heroes.
+
 * Allow users to select a hero and display the hero's details.
 
 <div class="alert is-helpful">
@@ -51,11 +52,21 @@ In `HeroesComponent` class, define a component property called `heroes` to expos
 
 Open the `HeroesComponent` template file and make the following changes:
 
-1.  Add an `<h2>` at the top.
-2.  Below the `<h2>`, add a `<ul>` element.
-3.  In the `<ul>` element, insert an `<li>`.
-4.  Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
-5.  Add CSS classes to style the component.
+打开 `HeroesComponent` 的模板文件，并做如下修改：
+
+1. Add an `<h2>` at the top.
+
+   在顶部添加 `<h2>`，。
+
+2. Below the `<h2>`, add a `<ul>` element.
+
+3. In the `<ul>` element, insert an `<li>`.
+
+4. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
+
+   在 `<li>` 中放一个 `<button>` 元素，以便在 `<span>` 元素中显示单个 `hero` 的属性。
+
+5. Add CSS classes to style the component.
 
 to look like this:
 

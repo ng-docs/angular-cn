@@ -102,7 +102,6 @@ The following configuration properties are a set of options that customize the A
 | `warnings` | Control Angular CLI specific console warnings. | [Warnings options](#warnings-options) |
 | `warnings` | 控制 Angular CLI 特定的控制台警告。 | [警告选项](#warnings-options) |
 
-
 ### Cache options
 
 ### 缓存选项
@@ -350,7 +349,7 @@ Angular CLI 具有两种构建配置：`production` 和 `development`。默认�
 
   删除注释和无效代码
 
-*   Rewriting code to use short, mangled names, also known as minification
+* Rewriting code to use short, mangled names, also known as minification
 
   重写代码，以使用简短、混乱的名称，也叫最小化
 
@@ -453,7 +452,7 @@ An asset specification object can have the following fields.
 | `glob` | 一个 [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) 它使用 `input` 作为基准目录。 |
 | `input` | A path relative to the workspace root. |
 | `input` | 相对于工作区根目录的路径。 |
-| `output` | A path relative to `outDir` \(default is `dist/project-name`\). Because of the security implications, the Angular CLI never writes files outside of the project output path. |
+| `output` | A path relative to `outDir` (default is `dist/project-name`). Because of the security implications, the Angular CLI never writes files outside of the project output path. |
 | `output` | 相对于 `outDir` 的路径（默认为 `dist/project-name`）。为了杜绝安全隐患，Angular CLI 永远不会在项目输出路径之外写文件。 |
 | `ignore` | A list of globs to exclude. |
 | `ignore` | 要排除的 glob 列表。 |

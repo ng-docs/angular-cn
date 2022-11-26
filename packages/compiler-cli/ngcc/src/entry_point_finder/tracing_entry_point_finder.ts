@@ -31,18 +31,18 @@ import {getBasePaths} from './utils';
  * 此类有两个具体实现。
  *
  * * `TargetEntryPointFinder` - is given a single entry-point as the initial entry-point. This can
- *   be used in the synchronous CLI integration where the build tool has identified an external
- *   import to one of the source files being built.
+ *     be used in the synchronous CLI integration where the build tool has identified an external
+ *     import to one of the source files being built.
  *
  *   `TargetEntryPointFinder` - 被给予单个入口点作为初始入口点。这可用于同步 CLI
- * 集成，其中构建工具已识别到对正在构建的源文件之一的外部导入。
+ *   集成，其中构建工具已识别到对正在构建的源文件之一的外部导入。
  *
  * * `ProgramBasedEntryPointFinder` - computes the initial entry-points from the source files
- *   computed from a `tsconfig.json` file. This can be used in the asynchronous CLI integration
- *   where the `tsconfig.json` to be used to do the build is known.
+ *     computed from a `tsconfig.json` file. This can be used in the asynchronous CLI integration
+ *     where the `tsconfig.json` to be used to do the build is known.
  *
  *   `ProgramBasedEntryPointFinder` - 根据从 `tsconfig.json`
- * 文件计算的源文件计算初始入口点。这可以用在已知用于进行构建的 `tsconfig.json` 的异步 CLI 集成中。
+ *   文件计算的源文件计算初始入口点。这可以用在已知用于进行构建的 `tsconfig.json` 的异步 CLI 集成中。
  *
  */
 export abstract class TracingEntryPointFinder implements EntryPointFinder {

@@ -3,7 +3,7 @@
 This guide goes into depth on special transition states such as the `*` wildcard and `void`. It shows how these special states are used for elements entering and leaving a view.
 This section also explores multiple animation triggers, animation callbacks, and sequence-based animation using keyframes.
 
-本章将深入讲解特殊的转场状态，如 `*`通配符和 `void`，并说明这些特殊状态如何作用于进入或离开视图的元素。本节还探讨了多重触发器、动画回调，以及使用关键帧技术的序列动画。
+本章将深入讲解特殊的转场状态，如 `*` 通配符和 `void`，并说明这些特殊状态如何作用于进入或离开视图的元素。本节还探讨了多重触发器、动画回调，以及使用关键帧技术的序列动画。
 
 ## Predefined states and wildcard matching
 
@@ -149,7 +149,7 @@ In the preceding code, you applied the `void` state when the HTML element isn't 
 
 <a id="enter-leave-view"></a>
 
-## Aliases :enter and :leave 
+## Aliases :enter and :leave
 
 ## :enter 和 :leave 别名
 
@@ -301,8 +301,11 @@ A selective child animations can still be run on a disabled parent in one of the
 选择性的子动画仍然可以用如下方式之一在已禁用的父元素上运行：
 
 * A parent animation can use the [`query()`](api/animations/query) function to collect inner elements located in disabled areas of the HTML template.
-  Those elements can still animate.
-<!-- vale on --> 
+    Those elements can still animate.
+
+  父动画可以使用 [`query()`](api/animations/query) 函数来收集 HTML 模板中位于禁止动画区域内部的元素。这些元素仍然可以播放动画。
+
+  <!-- vale on -->
 
   父动画可以使用 [`query()`](api/animations/query) 函数来收集 HTML 模板中位于禁止动画区域内部的元素。这些元素仍然可以播放动画。
 

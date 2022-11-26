@@ -1,10 +1,15 @@
 # Update Angular to v15
 
 <!-- NOTE to writers: When creating the topic for the next version,                               -->
+
 <!--   remember to update the redirect link in angular/aio/firebase.json                          -->
+
 <!-- To update the redirect link in angular/aio/firebase.json:                                    -->
+
 <!--   1. Search for the entry in firebase.json with "source": "guide/update-to-latest-version"   -->
+
 <!--   2,  Update the destination value to refer to the new guide's URL                           -->
+
 <!--                                                                                              -->
 
 This topic provides information about updating your Angular applications to Angular version 15.
@@ -13,9 +18,11 @@ For a summary of this information and the step-by-step procedure to update your 
 
 The information in the [Angular Update Guide](https://update.angular.io) and this topic is summarized from these change logs:
 
-*  [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-*  [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
-*  [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
+* [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+
+* [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
+
+* [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
 
 Information about updating Angular applications to v14 is archived at [Update to version 14](/guide/update-to-version-14).
 
@@ -70,7 +77,7 @@ These are the aspects of Angular that behave differently in v15 and that might r
 
 #### Angular v15 supports node.js versions: 14.20.x, 16.13.x and 18.10.x
 
-In v15, Angular no longer supports node.js versions 14.\[15-19\].x or 16.\[10-12\].x. [PR #47730](https://github.com/angular/angular/pull/47730)
+In v15, Angular no longer supports node.js versions 14.\[15-19].x or 16.\[10-12].x. [PR #47730](https://github.com/angular/angular/pull/47730)
 
 <a id="v15-bc-02"></a>
 
@@ -104,9 +111,11 @@ This change can break any TypeScript or JavaScript code that use the names of `@
 
 To accommodate this breaking change, you can:
 
-*  Change the component's view encapsulation to `None` or `ShadowDom`.
-*  Define `@keyframes` rules in global stylesheets, such as `styles.css`.
-*  Define `@keyframes` rules in your own code.
+* Change the component's view encapsulation to `None` or `ShadowDom`.
+
+* Define `@keyframes` rules in global stylesheets, such as `styles.css`.
+
+* Define `@keyframes` rules in your own code.
 
 <a id="v15-bc-05"></a>
 
@@ -116,8 +125,9 @@ When a class inherits its constructor from a base class, the compiler can report
 
 This can happen:
 
-*  When the base class is missing an Angular decorator such as `@Injectable()` or `@Directive()`
-*  When the constructor contains parameters that do not have an associated token ,such as primitive types like `string`.
+* When the base class is missing an Angular decorator such as `@Injectable()` or `@Directive()`
+
+* When the constructor contains parameters that do not have an associated token ,such as primitive types like `string`.
 
 These situations used to behave unexpectedly at runtime. For example, a class might be constructed without any of its constructor parameters.
 In v15, this is reported as a compilation error.
@@ -125,6 +135,7 @@ In v15, this is reported as a compilation error.
 New errors reported because of this change can be resolved by either:
 
 * Decorating the base class from which the constructor is inherited.
+
 * Adding an explicit constructor to the class for which the error is reported.
 
 <a id="v15-bc-06"></a>
@@ -200,12 +211,13 @@ They are still available in v15, but they can be removed in future versions as A
 To maintain the reliability of your Angular application, review these notes and update your application as soon as practicable.
 
 | Removed | Replacement | Details |
-| :--- | :--- |:--- |
+| :------ | :---------- | :------ |
+| 已移除 | 替代品 | 详情 |
 | <a id="v15-dp-01"></a>[`DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE) | [`DATE_PIPE_DEFAULT_OPTIONS`](api/common/DATE_PIPE_DEFAULT_OPTIONS) | The `timezone` field in `DATE_PIPE_DEFAULT_OPTIONS` defines the time zone.<br>[PR #43611](https://github.com/angular/angular/pull/43611) |
 | <a id="v15-dp-02"></a>[`Injector.get()`](api/core/Injector#get) with the `InjectFlags` parameter | [`Injector.get()`](api/core/Injector#get) with the `InjectOptions` object | [PR #41592](https://github.com/angular/angular/pull/41592) |
-| <a id="v15-dp-03"></a>[`TestBed.inject()`](api/core/testing/TestBed#inject) with the `InjectFlags` parameter | [`TestBed.inject()`](api/core/testing/TestBed#inject) with the `InjectOptions` object.| [PR #46761](https://github.com/angular/angular/pull/46761) |
-| <a id="v15-dp-04"></a>`providedIn: NgModule` for [`@Injectable`](api/core/Injectable) and [`InjectionToken`](api/core/InjectionToken)<br><a id="v15-dp-05"></a>`providedIn: 'any'` for an `@Injectable` or `InjectionToken` | See Details | `providedIn: NgModule` was intended to be a tree-shakable alternative to `NgModule` providers. It does not have wide usage and is often used incorrectly in cases where `providedIn: 'root'` would be preferred. If providers must be scoped to a specific [`NgModule`](api/core/NgModule), use `NgModule.providers` instead. [PR #47616](https://github.com/angular/angular/pull/47616)|
-| <a id="v15-dp-06"></a>[`RouterLinkWithHref`](api/router/RouterLinkWithHref) directive | [`RouterLink`](api/router/RouterLink) directive | The `RouterLink` directive contains the code from the `RouterLinkWithHref` directive to handle elements with `href` attributes. [PR #47630](https://github.com/angular/angular/pull/47630), [PR #47599](https://github.com/angular/angular/pull/47599)|
+| <a id="v15-dp-03"></a>[`TestBed.inject()`](api/core/testing/TestBed#inject) with the `InjectFlags` parameter | [`TestBed.inject()`](api/core/testing/TestBed#inject) with the `InjectOptions` object. | [PR #46761](https://github.com/angular/angular/pull/46761) |
+| <a id="v15-dp-04"></a>`providedIn: NgModule` for [`@Injectable`](api/core/Injectable) and [`InjectionToken`](api/core/InjectionToken)<br><a id="v15-dp-05"></a>`providedIn: 'any'` for an `@Injectable` or `InjectionToken` | See Details | `providedIn: NgModule` was intended to be a tree-shakable alternative to `NgModule` providers. It does not have wide usage and is often used incorrectly in cases where `providedIn: 'root'` would be preferred. If providers must be scoped to a specific [`NgModule`](api/core/NgModule), use `NgModule.providers` instead. [PR #47616](https://github.com/angular/angular/pull/47616) |
+| <a id="v15-dp-06"></a>[`RouterLinkWithHref`](api/router/RouterLinkWithHref) directive | [`RouterLink`](api/router/RouterLink) directive | The `RouterLink` directive contains the code from the `RouterLinkWithHref` directive to handle elements with `href` attributes. [PR #47630](https://github.com/angular/angular/pull/47630), [PR #47599](https://github.com/angular/angular/pull/47599) |
 
 For information about deprecations in Material components v15, see [Migrating to MDC-based Angular Material Components](https://material.angular.io/guide/mdc-migration).
 

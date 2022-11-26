@@ -46,9 +46,11 @@ As a best practice, use only properties and methods that return values.
 A template expression should result in the type of value that the target property expects.
 For example, return:
 
-*   a `string`, if the target property expects a string
-*   a `number`, if it expects a number
-*   an `object`, if it expects an object.
+* a `string`, if the target property expects a string
+
+* a `number`, if it expects a number
+
+* an `object`, if it expects an object.
 
 模板表达式应该求值为目标属性所期望的值类型。比如，如果目标属性需要一个字符串，就返回一个字符串；如果需要一个数字，就返回一个数字；如果需要一个对象，就返回一个对象。
 

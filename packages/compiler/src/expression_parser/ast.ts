@@ -384,12 +384,6 @@ export class ASTWithSource extends AST {
  *   | 6. \*ngIf="cond"     |     ngIf     |   cond  |  expression  |
  *   \|---------------------\|--------------\|---------\|--------------\|
  *
- * |---------------------|--------------|---------|-- ------------| |表达式|键|值|绑定类型|
- * |---------------------|--------------|---------|-- ------------| | 1.让条目|条目|空 |变量| | 2.
- * 条目| ngForOf |条目|表达式| | 3. 让 x = y | x |是 |变量| | 4. 索引为 i |我|索引 |变量| | 5.
- * trackBy: func | ngForTrackBy |函数|表达式| | 6. \*ngIf="cond" | ngIf |条件|表达式|
- * |---------------------|--------------|---------|-- ------------|
- *
  * (6) is a notable exception because it is a binding from the template key in
  * the LHS of a HTML attribute to the expression in the RHS. All other bindings
  * in the example above are derived solely from the RHS.

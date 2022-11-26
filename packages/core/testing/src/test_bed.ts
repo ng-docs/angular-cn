@@ -239,7 +239,7 @@ export class TestBedImpl implements TestBed {
    * first use `resetTestEnvironment`.
    *
    * Test modules and platforms for individual platforms are available from
-   * '@angular/<platform_name>/testing'.
+   * '@angular/&lt;platform_name>/testing'.
    *
    * @publicApi
    */
@@ -396,7 +396,7 @@ export class TestBedImpl implements TestBed {
    * first use `resetTestEnvironment`.
    *
    * Test modules and platforms for individual platforms are available from
-   * '@angular/<platform_name>/testing'.
+   * '@angular/&lt;platform_name>/testing'.
    *
    * @publicApi
    */

@@ -29,7 +29,7 @@ In the following example, the `HeroListComponent` class includes:
 
 * A `heroes` property that holds an array of heroes.
 
-  一个 `heroes` 属性，内含英雄数组。 
+  一个 `heroes` 属性，内含英雄数组。
 
 * A `selectedHero` property that holds the last hero selected by the user.
 
@@ -158,14 +158,14 @@ The template-syntax elements tell Angular how to render the HTML to the screen, 
 
   `{{hero.name}}`、`(click)` 和 `[hero]` 把程序数据绑定到及绑定回 DOM，以响应用户的输入。更多内容参阅稍后的[数据绑定](#data-binding)部分。
 
-*   The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
-    The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
+* The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
+  The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
 
-    此例子中的 `<app-hero-detail>` 元素标签代表一个新组件 `HeroDetailComponent`。`HeroDetailComponent` 定义了由 `HeroListComponent` 所渲染的 DOM 结构中的 `hero-detail` 部分。
+  此例子中的 `<app-hero-detail>` 元素标签代表一个新组件 `HeroDetailComponent`。`HeroDetailComponent` 定义了由 `HeroListComponent` 所渲染的 DOM 结构中的 `hero-detail` 部分。
 
-    Notice how these custom components mix with native HTML.
+  Notice how these custom components mix with native HTML.
 
-    注意这些自定义组件是如何与原生 HTML 元素混用的。
+  注意这些自定义组件是如何与原生 HTML 元素混用的。
 
 ### Data binding
 

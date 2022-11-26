@@ -208,18 +208,18 @@ export interface ContentChildrenDecorator {
    * * **descendants** - If `true` include all descendants of the element. If `false` then only
    *   query direct children of the element.
    *
-   *     **后代** - 包含所有后代时为 true，否则仅包括直接子代。
+   *   **后代** - 包含所有后代时为 true，否则仅包括直接子代。
    *
    * * **emitDistinctChangesOnly** - The `QueryList#changes` observable will emit new values only
-   *   if the QueryList result has changed. When `false` the `changes` observable might emit even
-   *   if the QueryList has not changed.
-   *   ** Note: \*** This config option is **deprecated**, it will be permanently set to `true` and
-   *   removed in future versions of Angular.
+   *     if the QueryList result has changed. When `false` the `changes` observable might emit even
+   *     if the QueryList has not changed.
+   *     ** Note: \*** This config option is **deprecated**, it will be permanently set to `true` and
+   *     removed in future versions of Angular.
    *
    *   **emitDistinctChangesOnly** -仅当 QueryList 结果发生更改时，`QueryList#changes` observable
-   * 才会发出新值。当 `false` 时，即使 QueryList 没有 `changes` ，observable
-   * 也可能会发出更改。**注意：\***此配置选项已**过时**，它将被永久设置为 `true` 并在未来版本的
-   * Angular 中删除。
+   *   才会发出新值。当 `false` 时，即使 QueryList 没有 `changes` ，observable
+   *   也可能会发出更改。**注意：\***此配置选项已**过时**，它将被永久设置为 `true` 并在未来版本的
+   *   Angular 中删除。
    *
    * * **read** - Used to read a different token from the queried elements.
    *
@@ -234,16 +234,16 @@ export interface ContentChildrenDecorator {
    *   任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
    * - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *   with `@ContentChildren('cmp')`)
+   *     with `@ContentChildren('cmp')`)
    *
    *   字符串形式的模板引用变量（例如，使用 `@ContentChildren('cmp')` 查询 `<my-component
-   * #cmp></my-component>`）
+   *   #cmp></my-component>`）
    *
    * - Any provider defined in the child component tree of the current component (e.g.
-   *   `@ContentChildren(SomeService) someService: SomeService`)
+   *     `@ContentChildren(SomeService) someService: SomeService`)
    *
    *   在当前组件的子组件树中定义的任何提供者（例如 `@ContentChildren(SomeService) someService:
-   * SomeService`）
+   *   SomeService`）
    *
    * - Any provider defined through a string token (e.g. `@ContentChildren('someToken')
    *   someTokenVal: any`)
@@ -251,10 +251,10 @@ export interface ContentChildrenDecorator {
    *   通过字符串标记定义的任何提供程序（例如 `@ContentChildren('someToken') someTokenVal: any`）
    *
    * - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with
-   *   `@ContentChildren(TemplateRef) template;`)
+   *     `@ContentChildren(TemplateRef) template;`)
    *
    *   `TemplateRef`（例如使用 `@ContentChildren(TemplateRef) template;` 查询
-   * `<ng-template></ng-template>` ；）
+   *   `<ng-template></ng-template>` ；）
    *
    * In addition, multiple string selectors can be separated with a comma (e.g.
    * `@ContentChildren('cmp1,cmp2')`)
@@ -288,15 +288,16 @@ export interface ContentChildrenDecorator {
    *
    * 这里是如何使用 `ContentChildren` 装饰器的简单演示。
    *
-   * {@example core/di/ts/contentChildren/content_children_howto.ts region='HowTo'}
+   * {
+   * @example core/di/ts/contentChildren/content_children_howto.ts region='HowTo'}
    *
    * ### Tab-pane example
    *
    * Here is a slightly more realistic example that shows how `ContentChildren` decorators
    * can be used to implement a tab pane component.
    *
-   * {@example core/di/ts/contentChildren/content_children_example.ts region='Component'}
-   *
+   * {
+   * @example core/di/ts/contentChildren/content_children_example.ts region='Component'}
    * @Annotation
    */
   (selector: ProviderToken<unknown>|Function|string, opts?: {
@@ -377,16 +378,17 @@ export interface ContentChildDecorator {
    *   **selector** - 要查询的指令类型或名称。
    *
    * * **descendants** - If `true` (default) include all descendants of the element. If `false` then
-   * only query direct children of the element.
+   *   only query direct children of the element.
+   *
    * * **read** - Used to read a different token from the queried element.
    *
    *   **read** - 用于从查询到的元素读取不同的令牌。
    *
    * * **static** - True to resolve query results before change detection runs,
-   *   false to resolve after change detection. Defaults to false.
+   *     false to resolve after change detection. Defaults to false.
    *
    *   **static** - 如果为 true，则在变更检测运行之前解析查询结果，如果为
-   * false，则在变更检测之后解析。默认为 false。
+   *   false，则在变更检测之后解析。默认为 false。
    *
    *   The following selectors are supported.
    *
@@ -397,16 +399,22 @@ export interface ContentChildDecorator {
    *     任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
    *   - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *     with `@ContentChild('cmp')`)
+   *         with `@ContentChild('cmp')`)
    *
+   *     ```
    *     字符串形式的模板引用变量（例如，使用 `@ContentChild('cmp')` 查询 `<my-component
-   * #cmp></my-component>`）
+   *     ```
+   *
+   *     \#cmp></my-component>\`）
    *
    *   - Any provider defined in the child component tree of the current component (e.g.
-   *     `@ContentChild(SomeService) someService: SomeService`)
+   *         `@ContentChild(SomeService) someService: SomeService`)
    *
+   *     ```
    *     在当前组件的子组件树中定义的任何提供者（例如 `@ContentChild(SomeService) someService:
-   * SomeService`）
+   *     ```
+   *
+   *     SomeService\`）
    *
    *   - Any provider defined through a string token (e.g. `@ContentChild('someToken') someTokenVal:
    *     any`)
@@ -414,10 +422,13 @@ export interface ContentChildDecorator {
    *     通过字符串标记定义的任何提供程序（例如 `@ContentChild('someToken') someTokenVal: any`）
    *
    *   - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ContentChild(TemplateRef)
-   *     template;`)
+   *         template;`)
    *
+   *     ```
    *     `TemplateRef`（例如使用 `@ContentChild(TemplateRef) template;` 查询
-   * `<ng-template></ng-template>` ；）
+   *     ```
+   *
+   *     `<ng-template></ng-template>` ；）
    *
    * The following values are supported by `read`:
    *
@@ -442,12 +453,13 @@ export interface ContentChildDecorator {
    *
    * @usageNotes
    *
-   * {@example core/di/ts/contentChild/content_child_howto.ts region='HowTo'}
+   * {
+   * @example core/di/ts/contentChild/content_child_howto.ts region='HowTo'}
    *
    * ### Example
    *
-   * {@example core/di/ts/contentChild/content_child_example.ts region='Component'}
-   *
+   * {
+   * @example core/di/ts/contentChild/content_child_example.ts region='Component'}
    * @Annotation
    */
   (selector: ProviderToken<unknown>|Function|string,
@@ -524,12 +536,15 @@ export interface ViewChildrenDecorator {
    *   **read** - 用于从查询元素中读取不同的标记。
    *
    * * **emitDistinctChangesOnly** - The `QueryList#changes` observable will emit new values only
-   *     if the QueryList result has changed. When `false` the `changes` observable might emit even
-   *     if the QueryList has not changed.
-   *     ** Note: \*** This config option is **deprecated**, it will be permanently set to `true`
-   * and removed in future versions of Angular.
+   *       if the QueryList result has changed. When `false` the `changes` observable might emit even
+   *       if the QueryList has not changed.
+   *       ** Note: \*** This config option is **deprecated**, it will be permanently set to `true`
+   *   and removed in future versions of Angular.
    *
-   *     **read** - 用于从查询的元素中读取不同的令牌。
+   *   ```
+   *   **read** - 用于从查询的元素中读取不同的令牌。
+   *   ```
+   *
    *   The following selectors are supported.
    *
    *   - Any class with the `@Component` or `@Directive` decorator
@@ -537,16 +552,22 @@ export interface ViewChildrenDecorator {
    *     任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
    *   - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *     with `@ViewChildren('cmp')`)
+   *         with `@ViewChildren('cmp')`)
    *
+   *     ```
    *     作为字符串的模板引用变量（例如，使用 `@ViewChildren('cmp')` 查询 `<my-component
-   * #cmp></my-component>`）
+   *     ```
+   *
+   *     \#cmp></my-component>\`）
    *
    *   - Any provider defined in the child component tree of the current component (e.g.
-   *     `@ViewChildren(SomeService) someService!: SomeService`)
+   *         `@ViewChildren(SomeService) someService!: SomeService`)
    *
+   *     ```
    *     在当前组件的子组件树中定义的任何提供者（例如 `@ViewChildren(SomeService) someService!:
-   * SomeService`）
+   *     ```
+   *
+   *     SomeService\`）
    *
    *   - Any provider defined through a string token (e.g. `@ViewChildren('someToken')
    *     someTokenVal!: any`)
@@ -554,10 +575,13 @@ export interface ViewChildrenDecorator {
    *     通过字符串标记定义的任何提供程序（例如 `@ViewChildren('someToken') someTokenVal!: any`）
    *
    *   - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ViewChildren(TemplateRef)
-   *     template;`)
+   *         template;`)
    *
+   *     ```
    *     `TemplateRef`（例如使用 `@ViewChildren(TemplateRef) template;` 查询
-   * `<ng-template></ng-template>` ；）
+   *     ```
+   *
+   *     `<ng-template></ng-template>` ；）
    *
    * In addition, multiple string selectors can be separated with a comma (e.g.
    * `@ViewChildren('cmp1,cmp2')`)
@@ -587,12 +611,13 @@ export interface ViewChildrenDecorator {
    *
    * @usageNotes
    *
-   * {@example core/di/ts/viewChildren/view_children_howto.ts region='HowTo'}
+   * {
+   * @example core/di/ts/viewChildren/view_children_howto.ts region='HowTo'}
    *
    * ### Another example
    *
-   * {@example core/di/ts/viewChildren/view_children_example.ts region='Component'}
-   *
+   * {
+   * @example core/di/ts/viewChildren/view_children_example.ts region='Component'}
    * @Annotation
    */
   (selector: ProviderToken<unknown>|Function|string,
@@ -670,10 +695,10 @@ export interface ViewChildDecorator {
    *   **read** - 从查询到的元素中读取另一个令牌。
    *
    * * **static** - True to resolve query results before change detection runs,
-   *   false to resolve after change detection. Defaults to false.
+   *     false to resolve after change detection. Defaults to false.
    *
    *   **static** - 如果为 true，则在变更检测运行之前解析查询结果，如果为
-   * false，则在变更检测之后解析。默认为 false。
+   *   false，则在变更检测之后解析。默认为 false。
    *
    * The following selectors are supported.
    *
@@ -684,16 +709,16 @@ export interface ViewChildDecorator {
    *   任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
    * - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *   with `@ViewChild('cmp')`)
+   *     with `@ViewChild('cmp')`)
    *
    *   字符串形式的模板引用变量（比如可以使用 `@ViewChild('cmp')` 来查询 `<my-component
-   * #cmp></my-component>`
+   *   #cmp></my-component>`
    *
    * - Any provider defined in the child component tree of the current component (e.g.
-   *   `@ViewChild(SomeService) someService: SomeService`)
+   *     `@ViewChild(SomeService) someService: SomeService`)
    *
    *   组件树中任何当前组件的子组件所定义的提供者（比如 `@ViewChild(SomeService) someService:
-   * SomeService`）
+   *   SomeService`）
    *
    * - Any provider defined through a string token (e.g. `@ViewChild('someToken') someTokenVal:
    *   any`)
@@ -701,10 +726,10 @@ export interface ViewChildDecorator {
    *   任何通过字符串令牌定义的提供者（比如 `@ViewChild('someToken') someTokenVal: any\`）
    *
    * - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ViewChild(TemplateRef)
-   *   template;`)
+   *     template;`)
    *
    *   `TemplateRef`（比如可以用 `@ViewChild(TemplateRef) template;` 来查询
-   * `<ng-template></ng-template>`）
+   *   `<ng-template></ng-template>`）
    *
    * The following values are supported by `read`:
    *
@@ -729,14 +754,15 @@ export interface ViewChildDecorator {
    *
    * @usageNotes
    *
-   * {@example core/di/ts/viewChild/view_child_example.ts region='Component'}
+   * {
+   * @example core/di/ts/viewChild/view_child_example.ts region='Component'}
    *
    * ### Example 2
    *
    * ### 例子
    *
-   * {@example core/di/ts/viewChild/view_child_howto.ts region='HowTo'}
-   *
+   * {
+   * @example core/di/ts/viewChild/view_child_howto.ts region='HowTo'}
    * @Annotation
    */
   (selector: ProviderToken<unknown>|Function|string, opts?: {read?: any, static?: boolean}): any;

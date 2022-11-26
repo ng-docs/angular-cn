@@ -202,7 +202,6 @@ export abstract class ViewContainerRef {
    * @param componentType Component Type to use.
    *
    * 要使用的组件类型。
-   *
    * @param options An object that contains extra parameters:
    *
    * 包含额外参数的对象：
@@ -217,33 +216,32 @@ export abstract class ViewContainerRef {
    *   注入器：用作新组件的父级的注入器。
    *
    * - ngModuleRef: an NgModuleRef of the component's NgModule, you should almost always provide
-   *                this to ensure that all expected providers are available for the component
-   *                instantiation.
+   *                  this to ensure that all expected providers are available for the component
+   *                  instantiation.
    *
    *   ngModuleRef ：组件的 NgModule 的 NgModuleRef
-   * ，你几乎应该始终提供它以确保所有预期的提供程序都可用于组件实例化。
+   *   ，你几乎应该始终提供它以确保所有预期的提供程序都可用于组件实例化。
    *
    * - environmentInjector: an EnvironmentInjector which will provide the component's environment.
-   *                you should almost always provide this to ensure that all expected providers
-   *                are available for the component instantiation. This option is intended to
-   *                replace the `ngModuleRef` parameter.
+   *                  you should almost always provide this to ensure that all expected providers
+   *                  are available for the component instantiation. This option is intended to
+   *                  replace the `ngModuleRef` parameter.
    *
    *   EnvironmentInjector ：一个 EnvironmentInjector
-   * ，它将提供组件的环境。你几乎应该始终提供此内容，以确保所有预期的提供者都可用于组件实例化。此选项旨在替换
-   * `ngModuleRef` 参数。
+   *   ，它将提供组件的环境。你几乎应该始终提供此内容，以确保所有预期的提供者都可用于组件实例化。此选项旨在替换
+   *   `ngModuleRef` 参数。
    *
    * - projectableNodes: list of DOM nodes that should be projected through
-   *                     [`<ng-content>`](api/core/ng-content) of the new component instance.
+   *                       [`<ng-content>`](api/core/ng-content) of the new component instance.
    *
    *   projectableNodes：应该通过新组件实例的[`<ng-content>`](api/core/ng-content)投影的 DOM
-   * 节点列表。
+   *   节点列表。
    *
    * @returns
    *
    * The new `ComponentRef` which contains the component instance and the host view.
    *
    * 包含组件实例和宿主视图的新 `ComponentRef` 。
-   *
    */
   abstract createComponent<C>(componentType: Type<C>, options?: {
     index?: number,

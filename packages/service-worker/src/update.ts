@@ -175,11 +175,17 @@ export class SwUpdate {
    *
    * </div>
    *
-   * @returns a promise that
-   *  - resolves to `true` if an update was activated successfully
-   *  - resolves to `false` if no update was available (for example, the client was already on the
-   *    latest version).
-   *  - rejects if any error occurs
+   * @returns
+   *
+   * a promise that
+   *
+   * - resolves to `true` if an update was activated successfully
+   *
+   * - resolves to `false` if no update was available (for example, the client was already on the
+   *   latest version).
+   *
+   * - rejects if any error occurs
+   *
    */
   activateUpdate(): Promise<boolean> {
     if (!this.sw.isEnabled) {

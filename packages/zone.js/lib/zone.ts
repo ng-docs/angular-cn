@@ -43,14 +43,14 @@
  *
  * 5. (Intercept blocking methods)
  *
- *   （拦截阻塞方法）
+ *    （拦截阻塞方法）
  *
  * A zone by itself does not do anything, instead it relies on some other code to route existing
  * platform API through it. (The zone library ships with code which monkey patches all of the
  * browsers's asynchronous API and redirects them through the zone for interception.)
  *
  * 区域本身不做任何事情，而是依赖一些其他代码来通过它路由现有的平台 API。
- *（区域库附带的代码可以用猴子修补所有浏览器的异步 API 并将它们重定向通过区域以进行拦截。）
+ * （区域库附带的代码可以用猴子修补所有浏览器的异步 API 并将它们重定向通过区域以进行拦截。）
  *
  * In its simplest form a zone allows one to intercept the scheduling and calling of asynchronous
  * operations, and execute additional code before as well as after the asynchronous task. The rules
@@ -97,7 +97,7 @@
  * asynchronous operations.
  *
  * 示例：假设浏览器页面由应用程序代码以及第三方广告代码组成。
- *（这两个代码库是独立的，由不同的彼此不了解的开发人员开发。）应用程序代码可能对进行全局错误处理感兴趣，因此它配置
+ * （这两个代码库是独立的，由不同的彼此不了解的开发人员开发。）应用程序代码可能对进行全局错误处理感兴趣，因此它配置
  * `app` 区域以将所有错误发送到服务器进行分析，然后执行应用 `app`
  * 区域中的应用程序。广告代码对同一个错误处理感兴趣，但它需要将错误发送给不同的第三方。因此它使用不同的错误处理程序创建了
  * `ads`
@@ -124,7 +124,7 @@
  *
  * 除了包装回调以恢复区域之外，所有导致稍后安排工作的操作都被路由通过当前区域，该区域可以通过在
  * wrapCallback 之前或之后添加工作以及使用不同的方式来拦截它们请求。
- *（可用于单元测试或跟踪请求）。在某些情况下，例如 `setTimeout` ，wrapCallback
+ * （可用于单元测试或跟踪请求）。在某些情况下，例如 `setTimeout` ，wrapCallback
  * 的包装和调度是在同一个 wrapCallback 中完成的，但还有其他示例，例如 `Promises` ，其中的 `then`
  * wrapCallback 被包装，但 `then` 的执行是由 `Promise` 调度 `resolve` 工作触发的。
  *
@@ -138,10 +138,10 @@
  *    [MicroTask][MicroTask]用于在当前任务之后立即工作。这是不可取消的，可以保证正好运行一次并立即运行。
  *
  * 2. [MacroTask] used for doing work later. Such as `setTimeout`. This is typically cancelable
- *    which is guaranteed to execute at least once after some well understood delay.
+ *       which is guaranteed to execute at least once after some well understood delay.
  *
  *    [MacroTask][MacroTask]用于以后做工作。例如 `setTimeout`
- * 。这通常是可取消的，它可以保证在一些众所周知的延迟之后至少执行一次。
+ *    。这通常是可取消的，它可以保证在一些众所周知的延迟之后至少执行一次。
  *
  * 3. [EventTask] used for listening on some future event. This may execute zero or more times, with
  *    an unknown delay.
@@ -171,8 +171,8 @@
  * variants.
  *
  * [MacroTask][MacroTask] s 表示将在一段时间后完成的工作。
- *（有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括： `setTimeout`、`setImmediate`
- *、`setInterval`、`requestAnimationFrame` 以及所有浏览器特定的变体。
+ * （有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括： `setTimeout`、`setImmediate`
+ * 、`setInterval`、`requestAnimationFrame` 以及所有浏览器特定的变体。
  *
  * ### [EventTask]
  *
@@ -325,14 +325,12 @@ interface Zone {
    * @param callback the function which will be wrapped in the zone.
    *
    * 将被包装在区域中的函数。
-   *
    * @param source A unique debug location of the API being wrapped.
    *
    * 被包装的 API 的唯一调试位置。
-   *
    * @returns
    *
-   * {function(): *} A function which will invoke the `callback` through [Zone.runGuarded].
+   * {function(): \*} A function which will invoke the `callback` through [Zone.runGuarded].
    *
    * 一个将通过[Zone.runGuarded][Zone.runGuarded]调用 `callback` 的函数。
    *
@@ -878,39 +876,39 @@ interface ZoneSpec {
  *  to prevent confusion, because they have slightly different semantics and arguments.
  *
  * ZoneDelegate 方法镜像了 Zone 的方法，只是在方法签名中添加了额外的 targetZone 参数。
- *（收到请求的原始 Zone。）某些方法被重命名以防止混淆，因为它们的语义和参数略有不同。
+ * （收到请求的原始 Zone。）某些方法被重命名以防止混淆，因为它们的语义和参数略有不同。
  *
  * - `wrap` => `intercept`: The `wrap` method delegates to `intercept`. The `wrap` method returns
- *    a callback which will run in a given zone, where as intercept allows wrapping the callback
- *    so that additional code can be run before and after, but does not associate the callback
- *    with the zone.
+ *      a callback which will run in a given zone, where as intercept allows wrapping the callback
+ *      so that additional code can be run before and after, but does not associate the callback
+ *      with the zone.
  *
  *   `wrap` => `intercept` ： `wrap` 方法委托给 `intercept` 。 `wrap`
- * 方法返回一个将在给定区域中运行的回调，其中的 intercept
- * 允许包装回调，以便可以在前后运行其他代码，但不会将回调与区域关联起来。
+ *   方法返回一个将在给定区域中运行的回调，其中的 intercept
+ *   允许包装回调，以便可以在前后运行其他代码，但不会将回调与区域关联起来。
  *
  * - `run` => `invoke`: The `run` method delegates to `invoke` to perform the actual execution of
- *      the callback. The `run` method switches to new zone; saves and restores the `Zone.current`;
- *      and optionally performs error handling. The invoke is not responsible for error handling,
- *      or zone management.
+ *        the callback. The `run` method switches to new zone; saves and restores the `Zone.current`;
+ *        and optionally performs error handling. The invoke is not responsible for error handling,
+ *        or zone management.
  *
  *   `run` => `invoke` ： `run` 方法委托给 `invoke` 以执行回调的实际执行。 `run`
- * 方法会切换到新区域；保存并恢复 `Zone.current`
- * ;并可选地执行错误处理。调用不负责错误处理或区域管理。
+ *   方法会切换到新区域；保存并恢复 `Zone.current`
+ *   ;并可选地执行错误处理。调用不负责错误处理或区域管理。
  *
  *   Not every method is usually overwritten in the child zone, for this reason the ZoneDelegate
- *   stores the closest zone which overwrites this behavior along with the closest ZoneSpec.
+ *     stores the closest zone which overwrites this behavior along with the closest ZoneSpec.
  *
  *   并非每个方法通常在子区域中被覆盖，因此 ZoneDelegate 存储最近的区域以及最近的 ZoneSpec
- * 会覆盖此行为。
+ *   会覆盖此行为。
  *
  *   NOTE: We have tried to make this API analogous to Event bubbling with target and current
- *   properties.
+ *     properties.
  *
  *   注意：我们已尝试使此 API 类似于使用 target 和 current 属性的事件冒泡。
  *
  *   Note: The ZoneDelegate treats ZoneSpec as class. This allows the ZoneSpec to use its `this` to
- *   store internal state.
+ *     store internal state.
  *
  *   注意： ZoneDelegate 将 ZoneSpec 视为类。这允许 ZoneSpec 使用其 `this` 来存储内部状态。
  *
@@ -995,18 +993,18 @@ interface TaskData {
  * [MacroTask][MacroTask]队列和[EventTask][EventTask]集。
  *
  * - [MicroTask] queue represents a set of tasks which are executing right after the current stack
- *   frame becomes clean and before a VM yield. All [MicroTask]s execute in order of insertion
- *   before VM yield and the next [MacroTask] is executed.
+ *     frame becomes clean and before a VM yield. All [MicroTask]s execute in order of insertion
+ *     before VM yield and the next [MacroTask] is executed.
  *
  *   [MicroTask][MicroTask]队列表示一组任务，这些任务正在当前堆栈帧变得干净之后、VM
- * 屈服之前执行。所有[MicroTask 都会][MicroTask]按在 VM yield
- * 之前的插入顺序执行，并执行下一个[MacroTask][MacroTask] 。
+ *   屈服之前执行。所有[MicroTask 都会][MicroTask]按在 VM yield
+ *   之前的插入顺序执行，并执行下一个[MacroTask][MacroTask] 。
  *
  * - [MacroTask] queue represents a set of tasks which are executed one at a time after each VM
- *   yield. The queue is ordered by time, and insertions can happen in any location.
+ *     yield. The queue is ordered by time, and insertions can happen in any location.
  *
  *   [MacroTask][MacroTask]队列表示一组任务，这些任务在每个 VM
- * 屈服之后一次执行一个。队列按时间排序，并且插入可以发生在任何位置。
+ *   屈服之后一次执行一个。队列按时间排序，并且插入可以发生在任何位置。
  *
  * - [EventTask] is a set of tasks which can at any time be inserted to the end of the [MacroTask]
  *   queue. This happens when the event fires.

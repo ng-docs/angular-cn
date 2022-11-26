@@ -206,14 +206,14 @@ export interface InjectorTypeWithProviders<T> {
  *     with an `@NgModule` or other `InjectorType`, or by specifying that this injectable should be
  *     provided in the `'root'` injector, which will be the application-level injector in most apps.
  *
- *     `providedIn` 决定哪些注入器应该包含此可注入对象：或者将其与 `@NgModule` 关联，或者将其与其他
+ *   `providedIn` 决定哪些注入器应该包含此可注入对象：或者将其与 `@NgModule` 关联，或者将其与其他
  *   `InjectorType` 关联，或者指定应该在 `'root'`
  *   注入器（对大多数应用来说这是全应用级注入器）中提供它。
  *
  * * `factory` gives the zero argument function which will create an instance of the injectable.
  *     The factory can call `inject` to access the `Injector` and request injection of dependencies.
  *
- *     `factory` 是一个零参数函数，该函数将创建可注入的实例。工厂可以调用 `inject` 来访问 `Injector`
+ *   `factory` 是一个零参数函数，该函数将创建可注入的实例。工厂可以调用 `inject` 来访问 `Injector`
  *   并请求注入依赖项。
  *
  * @codeGenApi
@@ -257,18 +257,18 @@ export const defineInjectable = ɵɵdefineInjectable;
  * 选项：
  *
  * * `providers`: an optional array of providers to add to the injector. Each provider must
- *   either have a factory or point to a type which has a `ɵprov` static property (the
- *   type must be an `InjectableType`).
+ *     either have a factory or point to a type which has a `ɵprov` static property (the
+ *     type must be an `InjectableType`).
  *
  *   `providers` ：要添加到注入器的可选提供者数组。每个提供者必须有一个工厂或指向具有 `ɵprov`
- * 静态属性的类型（类型必须是 `InjectableType`）。
+ *   静态属性的类型（类型必须是 `InjectableType`）。
  *
  * * `imports`: an optional array of imports of other `InjectorType`s or `InjectorTypeWithModule`s
- *   whose providers will also be added to the injector. Locally provided types will override
- *   providers from imports.
+ *     whose providers will also be added to the injector. Locally provided types will override
+ *     providers from imports.
  *
  *   `imports` ：其他 `InjectorType` 或 `InjectorTypeWithModule`
- * 的导入的可选数组，其提供者也将被添加到注入器。本地提供的类型将覆盖导入中的提供者。
+ *   的导入的可选数组，其提供者也将被添加到注入器。本地提供的类型将覆盖导入中的提供者。
  *
  * @codeGenApi
  */

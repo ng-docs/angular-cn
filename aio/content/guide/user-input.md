@@ -196,7 +196,7 @@ The next section shows how to use template reference variables to address this p
 There's another way to get the user data:
 use Angular [**template reference variables**](guide/template-reference-variables).
 These variables provide direct access to an element from within the template.
-To declare a template reference variable, precede an identifier with a hash/pound character \(`#`\).
+To declare a template reference variable, precede an identifier with a hash/pound character (`#`).
 
 还有另一种获取用户数据的方式：使用 Angular 的[**模板引用变量**](guide/template-reference-variables)。
 这些变量提供了从模块中直接访问元素的能力。
@@ -399,7 +399,7 @@ These techniques are useful for small-scale demonstrations, but they quickly bec
 Two-way data binding is a more elegant and compact way to move values between data entry fields and model properties.
 The [`Forms`](guide/forms-overview) page explains how to write two-way bindings with `NgModel`.
 
-这些技术对小规模演示很实用，但是在处理大量用户输入时，很容易变得累赘和笨拙。要在数据录入字段和模型属性之间传递数据，双向数据绑定是更加优雅和简洁的方式。下一章 `表单` 解释了如何用 `NgModel` 来进行双向绑定。
+这些技术对小规模演示很实用，但是在处理大量用户输入时，很容易变得累赘和笨拙。要在数据录入字段和模型属性之间传递数据，双向数据绑定是更加优雅和简洁的方式。下一章 ` 表单 ` 解释了如何用 `NgModel` 来进行双向绑定。
 
 <!-- links -->
 

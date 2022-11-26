@@ -110,21 +110,27 @@ export interface UrlCreationOptions {
   /**
    * How to handle query parameters in the router link for the next navigation.
    * One of:
+   *
    * * `preserve` : Preserve current parameters.
+   *
    * * `merge` : Merge new with current parameters.
    *
    * The "preserve" option discards any new query params:
+   *
    * ```
    * // from /view1?page=1 to/view2?page=1
    * this.router.navigate(['/view2'], { queryParams: { page: 2 },  queryParamsHandling: "preserve"
    * });
    * ```
+   *
    * The "merge" option appends new query params to the params from the current URL:
+   *
    * ```
    * // from /view1?page=1 to/view2?page=1&otherKey=2
    * this.router.navigate(['/view2'], { queryParams: { otherKey: 2 },  queryParamsHandling: "merge"
    * });
    * ```
+   *
    * In case of a key collision between current parameters and those in the `queryParams` object,
    * the new value is used.
    *
@@ -175,21 +181,27 @@ export type RestoredState = {
  * [Router.getCurrentNavigation() method](api/router/Router#getcurrentnavigation) .
  *
  * * *id* : The unique identifier of the current navigation.
+ *
  * * *initialUrl* : The target URL passed into the `Router#navigateByUrl()` call before navigation.
- * This is the value before the router has parsed or applied redirects to it.
+ *   This is the value before the router has parsed or applied redirects to it.
+ *
  * * *extractedUrl* : The initial target URL after being parsed with `UrlSerializer.extract()`.
+ *
  * * *finalUrl* : The extracted URL after redirects have been applied.
- * This URL may not be available immediately, therefore this property can be `undefined`.
- * It is guaranteed to be set after the `RoutesRecognized` event fires.
+ *   This URL may not be available immediately, therefore this property can be `undefined`.
+ *   It is guaranteed to be set after the `RoutesRecognized` event fires.
+ *
  * * *trigger* : Identifies how this navigation was triggered.
- * -- 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
- * -- 'popstate'--Triggered by a popstate event.
- * -- 'hashchange'--Triggered by a hashchange event.
+ *   \-- 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
+ *   \-- 'popstate'--Triggered by a popstate event.
+ *   \-- 'hashchange'--Triggered by a hashchange event.
+ *
  * * *extras* : A `NavigationExtras` options object that controlled the strategy used for this
- * navigation.
+ *   navigation.
+ *
  * * *previousNavigation* : The previously successful `Navigation` object. Only one previous
- * navigation is available, therefore this previous `Navigation` object has a `null` value for its
- * own `previousNavigation`.
+ *   navigation is available, therefore this previous `Navigation` object has a `null` value for its
+ *   own `previousNavigation`.
  *
  * @publicApi
  */
@@ -217,8 +229,11 @@ export interface Navigation {
    * Identifies how this navigation was triggered.
    *
    * * 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
+   *
    * * 'popstate'--Triggered by a popstate event.
+   *
    * * 'hashchange'--Triggered by a hashchange event.
+   *
    */
   trigger: 'imperative'|'popstate'|'hashchange';
   /**

@@ -93,17 +93,17 @@ declare global {
    * There are three scenarios:
    *
    * * **compile-time inlining**: the `$localize` tag is transformed at compile time by a
-   * transpiler, removing the tag and replacing the template literal string with a translated
-   * literal string from a collection of translations provided to the transpilation tool.
+   *   transpiler, removing the tag and replacing the template literal string with a translated
+   *   literal string from a collection of translations provided to the transpilation tool.
    *
    * * **run-time evaluation**: the `$localize` tag is a run-time function that replaces and
-   * reorders the parts (static strings and expressions) of the template literal string with strings
-   * from a collection of translations loaded at run-time.
+   *   reorders the parts (static strings and expressions) of the template literal string with strings
+   *   from a collection of translations loaded at run-time.
    *
    * * **pass-through evaluation**: the `$localize` tag is a run-time function that simply evaluates
-   * the original template literal string without applying any translations to the parts. This
-   * version is used during development or where there is no need to translate the localized
-   * template literals.
+   *   the original template literal string without applying any translations to the parts. This
+   *   version is used during development or where there is no need to translate the localized
+   *   template literals.
    *
    * @param messageParts a collection of the static parts of the template string.
    * @param expressions a collection of the values of each placeholder in the template string.

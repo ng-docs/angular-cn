@@ -137,7 +137,9 @@ export class Parser {
    * 包含三个绑定：
    *
    * 1. ngFor -> null
+   *
    * 2. item -> NgForOfContext.$implicit
+   *
    * 3. ngForOf -> items
    *
    * This is apparent from the de-sugared template:
@@ -1169,9 +1171,13 @@ export class _ParseAST {
    * 包含五个绑定：
    *
    * 1. ngFor -> null
+   *
    * 2. item -> NgForOfContext.$implicit
+   *
    * 3. ngForOf -> items
+   *
    * 4. i -> NgForOfContext.index
+   *
    * 5. ngForTrackBy -> func
    *
    * For a full description of the microsyntax grammar, see
@@ -1455,24 +1461,23 @@ export class _ParseAST {
    *
    * - ')', '}', ']' if one of calling productions is expecting one of these symbols
    *
-   *     ')', '}', ']' 如果调用产生式之一期望这些符号之一
+   *   ')', '}', ']' 如果调用产生式之一期望这些符号之一
    *
    *   - This allows skip() to recover from errors such as '(a.) + 1' allowing more of the AST to be
-   * retained (it doesn't skip any tokens as the ')' is retained because of the '(' begins an '('
-   * <expr> ')' production). The recovery points of grouping symbols must be conditional as they
-   * must be skipped if none of the calling productions are not expecting the closing token else we
-   * will never make progress in the case of an extraneous group closing symbol (such as a stray
-   * ')'). That is, we skip a closing symbol if we are not in a grouping production.
+   *     retained (it doesn't skip any tokens as the ')' is retained because of the '(' begins an '('
+   *     <expr> ')' production). The recovery points of grouping symbols must be conditional as they
+   *     must be skipped if none of the calling productions are not expecting the closing token else we
+   *     will never make progress in the case of an extraneous group closing symbol (such as a stray
+   *     ')'). That is, we skip a closing symbol if we are not in a grouping production.
    *
    * - '=' in a `Writable` context
    *
    *   `Writable` 上下文中的 '='
    *
    *   - In this context, we are able to recover after seeing the `=` operator, which
-   *     signals the presence of an independent rvalue expression following the `=` operator.
+   *         signals the presence of an independent rvalue expression following the `=` operator.
    *
-   *     在这种情况下，我们可以在看到 `=` 运算符后恢复，这表明 `=`
-   * 运算符之后存在一个独立的右值表达式。
+   *     在这种情况下，我们可以在看到 `=` 运算符后恢复，这表明 `=` 运算符之后存在一个独立的右值表达式。
    *
    * If a production expects one of these token it increments the corresponding nesting count,
    * and then decrements it just prior to checking if the token is in the input.

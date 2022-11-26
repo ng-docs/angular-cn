@@ -285,7 +285,6 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * @param value The new value for the control.
    *
    * 控件的新值。
-   *
    * @param options Configuration options that determine how the control propagates changes
    * and emits events when the value changes.
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
@@ -300,26 +299,26 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control value is updated.
-   *   When false, no events are emitted.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control value is updated.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    * * `emitModelToViewChange`: When true or not supplied  (the default), each change triggers an
-   *   `onChange` event to
-   *   update the view.
+   *     `onChange` event to
+   *     update the view.
    *
    *   `emitModelToViewChange` ：当为 true 或未提供（默认）时，每次更改都会触发 `onChange`
-   * 事件以更新视图。
+   *   事件以更新视图。
    *
    * * `emitViewToModelChange`: When true or not supplied (the default), each change triggers an
-   *   `ngModelChange`
-   *   event to update the model.
+   *     `ngModelChange`
+   *     event to update the model.
    *
    *   `emitViewToModelChange` ：当为 true 或未提供（默认）时，每次更改都会触发 `ngModelChange`
-   * 事件以更新模型。
+   *   事件以更新模型。
    *
    */
   setValue(value: TValue, options?: {
@@ -380,7 +379,6 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * or an object that defines the initial value and disabled state.
    *
    * 使用初始值或定义初始值和禁用状态的对象重置控件。
-   *
    * @param options Configuration options that determine how the control propagates changes
    * and emits events after the value changes.
    *
@@ -392,12 +390,12 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control is reset.
-   *   When false, no events are emitted.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control is reset.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在控件重置时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象会在控件重置时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   reset(formState?: TValue|FormControlState<TValue>, options?: {

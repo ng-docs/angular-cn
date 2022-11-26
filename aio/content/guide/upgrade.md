@@ -282,7 +282,6 @@ Dependency injection is front and center in both AngularJS and Angular, but ther
 
 | AngularJS | Angular |
 | :-------- | :------ |
-| AngularJS | 角 |
 | Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
 | 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。<br /> 通常是类。<br />也可能是字符串。 |
 | There is exactly one injector. <br /> Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
@@ -2296,7 +2295,7 @@ Switch the bootstrap method of the application from the `UpgradeModule` to the A
 
 If you haven't already, remove all references to the `UpgradeModule` from `app.module.ts`, as well as any [factory provider][AioGuideUpgradeMakingAngularjsDependenciesInjectableToAngular] for AngularJS services, and the `app/ajs-upgraded-providers.ts` file.
 
-如果你还没有这么做，请从 `app.module.ts 删除所有`UpgradeModule 的引用，
+如果你还没有这么做，请从 `app.module.ts 删除所有 `UpgradeModule 的引用，
   以及所有用于 AngularJS 服务的[工厂提供者（factory provider）](guide/upgrade#making-angularjs-dependencies-injectable-to-angular)和 `app/ajs-upgraded-providers.ts` 文件。
 
 Also remove any `downgradeInjectable()` or `downgradeComponent()` you find, together with the associated AngularJS factory or directive declarations.
@@ -2531,6 +2530,7 @@ And for the phone list component, a few adjustments to the router make the `Rout
 [AioGuideBuiltInDirectives]: guide/built-in-directives "Built-in directives | Angular"
 
 [AioGuideDependencyInjection]: guide/dependency-injection "Dependency injection in Angular | Angular"
+
 [AioGuideGlossaryLazyLoading]: guide/glossary#lazy-loading "lazy loading - Glossary | Angular"
 
 [AioGuideHierarchicalDependencyInjection]: guide/hierarchical-dependency-injection "Hierarchical injectors | Angular"

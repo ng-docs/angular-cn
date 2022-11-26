@@ -9,37 +9,56 @@ Even if you don't find any problems, seeing that a document has been reviewed re
 This topic describes how you can review and update the Angular documentation to help keep it up to date.
 
 <!-- markdownLint-disable MD001 -->
+
 <!-- markdownLint-disable MD033 -->
 
 #### To review a topic in angular.io
 
 Perform these steps in a browser.
 
-1.  [Find a topic to review](#find-topics-to-review) by:
-    1.  Finding a topic with a **Last reviewed** date that is six months or more in the past.
-    1.  Finding a topic that has no **Last reviewed** date.
-    1.  Finding a topic that you've read recently.
-1.  Review the topic for errors or inaccuracies.
-1.  Complete the review.
-    1.  If the topic looks good:
-        1.  [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
-        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to publish the new reviewed date.
+1. [Find a topic to review](#find-topics-to-review) by:
 
-    1.  If you find an error that you don't feel comfortable fixing:
-        1.  [Open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
-        1.  [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
-        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to publish the new reviewed date.
+   1. Finding a topic with a **Last reviewed** date that is six months or more in the past.
 
-    1.  If you find an error that needs only a minor change:
-        1.  [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
-        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to fix the error and save the new reviewed date.
+   1. Finding a topic that has no **Last reviewed** date.
 
-    1.  If you find an error that needs major changes:
-        1.  Address the error:
-            1.  [Make a major change](guide/contributors-guide-overview#make-a-major-change), if you're comfortable, or
-            1.  [Open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
-        1.  Whether you fix the error or open a new issue, [update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
-        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to save the new reviewed date.
+   1. Finding a topic that you've read recently.
+
+1. Review the topic for errors or inaccuracies.
+
+1. Complete the review.
+
+   1. If the topic looks good:
+
+      1. [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+
+      1. [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to publish the new reviewed date.
+
+   1. If you find an error that you don't feel comfortable fixing:
+
+      1. [Open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
+
+      1. [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+
+      1. [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to publish the new reviewed date.
+
+   1. If you find an error that needs only a minor change:
+
+      1. [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+
+      1. [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to fix the error and save the new reviewed date.
+
+   1. If you find an error that needs major changes:
+
+      1. Address the error:
+
+         1. [Make a major change](guide/contributors-guide-overview#make-a-major-change), if you're comfortable, or
+
+         1. [Open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
+
+      1. Whether you fix the error or open a new issue, [update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+
+      1. [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to save the new reviewed date.
 
 ## Find topics to review
 
@@ -85,15 +104,19 @@ This is an example of an `@reviewed` tag at the end of the topic's source code a
 The date is formatted as `YYYY-MM-DD` where:
 
 * `YYYY` is the current year
+
 * `MM` is the two-digit number of the current month with a leading zero if the month is 01 (January) through 09 (September)
+
 * `DD` is the two-digit number of the current day of the month with a leading zero if the day is 01-09.
 
 For example:
 
-| Review date | `@reviewed` tag | Resulting text displayed in the docs
-|:--- |:--- |:---
-| January 12, 2023 | `@reviewed 2023-01-12` | *Last reviewed on Thu Jan 12, 2023*
-| November 3, 2022 | `@reviewed 2022-11-03` | *Last reviewed on Fri Nov 03, 2022*
+比如：
+
+| Review date | `@reviewed` tag | Resulting text displayed in the docs |
+| :---------- | :-------------- | :----------------------------------- |
+| January 12, 2023 | `@reviewed 2023-01-12` | *Last reviewed on Thu Jan 12, 2023* |
+| November 3, 2022 | `@reviewed 2022-11-03` | *Last reviewed on Fri Nov 03, 2022* |
 
 ## Reviewing and updating a topic
 

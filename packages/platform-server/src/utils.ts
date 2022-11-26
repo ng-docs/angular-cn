@@ -124,8 +124,11 @@ export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');
 
 /**
  * Sanitizes provided server context:
+ *
  * - removes all characters other than a-z, A-Z, 0-9 and `-`
+ *
  * - returns `other` if nothing is provided or the string is empty after sanitization
+ *
  */
 function sanitizeServerContext(serverContext: string): string {
   const context = serverContext.replace(/[^a-zA-Z0-9\-]/g, '');
@@ -137,10 +140,13 @@ function sanitizeServerContext(serverContext: string): string {
  *
  * @param moduleType A reference to an NgModule that should be used for bootstrap.
  * @param options Additional configuration for the render operation:
- *  - `document` - the document of the page to render, either as an HTML string or
- *                 as a reference to the `document` instance.
- *  - `url` - the URL for the current render request.
- *  - `extraProviders` - set of platform level providers for the current render request.
+ *
+ * - `document` - the document of the page to render, either as an HTML string or
+ *                as a reference to the `document` instance.
+ *
+ * - `url` - the URL for the current render request.
+ *
+ * - `extraProviders` - set of platform level providers for the current render request.
  *
  * @publicApi
  */
@@ -166,7 +172,6 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  * 标志）。
  *
  * ```typescript
- *
  * @Component ({
  *   standalone: true,
  *   template: 'Hello world!'
@@ -175,22 +180,26 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  *
  * const output: string = await renderApplication(RootComponent, {appId: 'server-app'});
  * ```
+ *
  * @param rootComponent A reference to a Standalone Component that should be rendered.
  *
  * 对应该呈现的独立组件的引用。
- *
  * @param options Additional configuration for the render operation:
- *  - `appId` - a string identifier of this application. The appId is used to prefix all
- *              server-generated stylings and state keys of the application in TransferState
- *              use-cases.
- *  - `document` - the document of the page to render, either as an HTML string or
- *                 as a reference to the `document` instance.
- *  - `url` - the URL for the current render request.
- *  - `providers` - set of application level providers for the current render request.
- *  - `platformProviders` - the platform level providers for the current render request.
+ *
+ * - `appId` - a string identifier of this application. The appId is used to prefix all
+ *             server-generated stylings and state keys of the application in TransferState
+ *             use-cases.
+ *
+ * - `document` - the document of the page to render, either as an HTML string or
+ *                as a reference to the `document` instance.
+ *
+ * - `url` - the URL for the current render request.
+ *
+ * - `providers` - set of application level providers for the current render request.
+ *
+ * - `platformProviders` - the platform level providers for the current render request.
  *
  * @returns A Promise, that returns serialized (to a string) rendered page, once resolved.
- *
  * @publicApi
  * @developerPreview
  */
@@ -219,10 +228,13 @@ export function renderApplication<T>(rootComponent: Type<T>, options: {
  * @param moduleFactory An instance of the {@link NgModuleFactory} that should be used for
  *     bootstrap.
  * @param options Additional configuration for the render operation:
- *  - `document` - the document of the page to render, either as an HTML string or
- *                 as a reference to the `document` instance.
- *  - `url` - the URL for the current render request.
- *  - `extraProviders` - set of platform level providers for the current render request.
+ *
+ * - `document` - the document of the page to render, either as an HTML string or
+ *                as a reference to the `document` instance.
+ *
+ * - `url` - the URL for the current render request.
+ *
+ * - `extraProviders` - set of platform level providers for the current render request.
  *
  * @publicApi
  * @deprecated
@@ -231,7 +243,6 @@ export function renderApplication<T>(rootComponent: Type<T>, options: {
  * Use {@link renderModule} API instead.
  *
  * 从 Angular v13 开始，不再需要此符号。改用 {@link renderModule} API。
- *
  */
 export function renderModuleFactory<T>(moduleFactory: NgModuleFactory<T>, options: {
   document?: string,

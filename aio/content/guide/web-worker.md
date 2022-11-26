@@ -3,7 +3,7 @@
 # 用 Web Worker 处理后台进程
 
 [Web workers](https://developer.mozilla.org/docs/Web/API/Web_Workers_API) lets you run CPU-intensive computations in a background thread, freeing the main thread to update the user interface.
-Application's performing a lot of computations, like generating Computer-Aided Design \(CAD\) drawings or doing heavy geometric calculations, can use web workers to increase performance.
+Application's performing a lot of computations, like generating Computer-Aided Design (CAD) drawings or doing heavy geometric calculations, can use web workers to increase performance.
 
 [Web Worker](https://developer.mozilla.org/docs/Web/API/Web_Workers_API)允许你在后台线程中运行 CPU 密集型计算，解放主线程以更新用户界面。如果你发现你的应用会进行很多计算，比如生成 CAD 图纸或进行繁重的几何计算，那么使用 Web Worker 可以帮助你提高应用的性能。
 

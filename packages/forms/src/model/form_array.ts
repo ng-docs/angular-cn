@@ -208,18 +208,17 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * @param control Form control to be inserted
    *
    * 要插入的表单控件
-   *
    * @param options Specifies whether this FormArray instance should emit events after a new
    *     control is added.
    *
    * 指定此 FormArray 实例是否应在添加新控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   inserted. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     inserted. When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象在插入控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象在插入控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   push(control: TControl, options: {emitEvent?: boolean} = {}): void {
@@ -240,22 +239,20 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *
    * 要插入控件的数组中的索引。如果 `index` 为负数，则从后面环绕。如果 `index` 为很大的负数（小于
    * `-length`），则添加到数组。此行为与 `Array.splice(index, 0, control)` 相同。
-   *
    * @param control Form control to be inserted
    *
    * 要插入的表单控件
-   *
    * @param options Specifies whether this FormArray instance should emit events after a new
    *     control is inserted.
    *
    * 指定此 FormArray 实例是否应在插入新控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   inserted. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     inserted. When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象在插入控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象在插入控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   insert(index: number, control: TControl, options: {emitEvent?: boolean} = {}): void {
@@ -276,18 +273,17 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *
    * 要删除控件的数组中的索引。如果 `index` 为负数，则从后面环绕。如果 `index` 为大大负数（小于
    * `-length`），则删除第一个元素。此行为与 `Array.splice(index, 1)` 相同。
-   *
    * @param options Specifies whether this FormArray instance should emit events after a
    *     control is removed.
    *
    * 指定此 FormArray 实例是否应在删除控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   removed. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     removed. When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   removeAt(index: number, options: {emitEvent?: boolean} = {}): void {
@@ -312,22 +308,20 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *
    * 要替换控件的数组中的索引。如果 `index` 为负数，则从后面环绕。如果 `index` 为很大的负数（小于
    * `-length`），则替换第一个元素。此行为与 `Array.splice(index, 1, control)` 相同。
-   *
    * @param control The `AbstractControl` control to replace the existing control
    *
    * 替换现有控件的 `AbstractControl` 控件
-   *
    * @param options Specifies whether this FormArray instance should emit events after an
    *     existing control is replaced with a new one.
    *
    * 指定在将现有控件替换为新控件后此 FormArray 实例是否应发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   replaced with a new one. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     replaced with a new one. When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时，`statusChanges` 和
-   * `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   setControl(index: number, control: TControl, options: {emitEvent?: boolean} = {}): void {
@@ -386,11 +380,9 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * arr.setValue(['Nancy', 'Drew']);
    * console.log(arr.value);   // ['Nancy', 'Drew']
    * ```
-   *
    * @param value Array of values for the controls
    *
    * 控件的值数组
-   *
    * @param options Configure options that determine how the control propagates changes and
    * emits events after the value changes
    *
@@ -402,16 +394,16 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control value is updated.
-   *   When false, no events are emitted.
-   *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
-   *   updateValueAndValidity} method.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control value is updated.
+   *     When false, no events are emitted.
+   *     The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
+   *     updateValueAndValidity} method.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
-   * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
-   * updateValueAndValidity} 方法。
+   *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    */
   override setValue(value: ɵFormArrayRawValue<TControl>, options: {
@@ -453,11 +445,9 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * arr.patchValue(['Nancy']);
    * console.log(arr.value);   // ['Nancy', null]
    * ```
-   *
    * @param value Array of latest values for the controls
    *
    * 控件的最新值数组
-   *
    * @param options Configure options that determine how the control propagates changes and
    * emits events after the value changes
    *
@@ -469,14 +459,14 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control
-   *   value is updated. When false, no events are emitted. The configuration options are passed to
-   *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
+   *     `valueChanges` observables emit events with the latest status and value when the control
+   *     value is updated. When false, no events are emitted. The configuration options are passed to
+   *     the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
-   * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
-   * updateValueAndValidity} 方法。
+   *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    */
   override patchValue(value: ɵFormArrayValue<TControl>, options: {
@@ -539,11 +529,9 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * console.log(arr.value);  // ['last']
    * console.log(arr.at(0).status);  // 'DISABLED'
    * ```
-   *
    * @param value Array of values for the controls
    *
    * 控件的值数组
-   *
    * @param options Configure options that determine how the control propagates changes and
    * emits events after the value changes
    *
@@ -555,16 +543,16 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control is reset.
-   *   When false, no events are emitted.
-   *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
-   *   updateValueAndValidity} method.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control is reset.
+   *     When false, no events are emitted.
+   *     The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
+   *     updateValueAndValidity} method.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
-   * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
-   * updateValueAndValidity} 方法。
+   *   可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    */
   override reset(value: ɵTypedOrUntyped<TControl, ɵFormArrayValue<TControl>, any> = [], options: {
@@ -604,12 +592,12 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    * 指定此 FormArray 实例是否应在删除所有控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when all controls
-   *   in this FormArray instance are removed. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when all controls
+   *     in this FormArray instance are removed. When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或未提供（默认）时，当删除此 FormArray 实例中的所有控件时，
-   * `statusChanges` 和 `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false
-   * 时，不会发出事件。
+   *   `statusChanges` 和 `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。
    *
    * @usageNotes
    *
@@ -642,7 +630,6 @@ export class FormArray<TControl extends AbstractControl<any> = any> extends Abst
    *    arr.removeAt(0);
    * }
    * ```
-   *
    */
   clear(options: {emitEvent?: boolean} = {}): void {
     if (this.controls.length < 1) return;

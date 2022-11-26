@@ -252,10 +252,11 @@ export class MockPlatformLocation implements PlatformLocation {
    * The most easiest thing to do in our mock is synchronous and that happens to match
    * Firefox and Chrome, at least somewhat closely
    *
-   * https://github.com/WICG/navigation-api#watching-for-navigations
-   * https://docs.google.com/document/d/1Pdve-DJ1JCGilj9Yqf5HxRJyBKSel5owgOvUJqTauwU/edit#heading=h.3ye4v71wsz94
+   * <https://github.com/WICG/navigation-api#watching-for-navigations>
+   * <https://docs.google.com/document/d/1Pdve-DJ1JCGilj9Yqf5HxRJyBKSel5owgOvUJqTauwU/edit#heading=h.3ye4v71wsz94>
    * popstate is always sent before hashchange:
-   * https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event#when_popstate_is_sent
+   * <https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event#when_popstate_is_sent>
+   *
    */
   private emitEvents(oldHash: string, oldUrl: string) {
     this.popStateSubject.next(

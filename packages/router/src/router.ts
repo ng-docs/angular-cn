@@ -159,17 +159,17 @@ export class Router {
    *    rawUrl 表示被导航到的完整 URL
    *
    * 2. We apply redirects, which might only apply to _part_ of the URL (due to
-   * `UrlHandlingStrategy`).
+   *    `UrlHandlingStrategy`).
    *
    *    我们应用重定向，这可能仅适用于 URL 的 _ 一部分 _（由于 `UrlHandlingStrategy`）。
    *
    * 3. Right before activation (because we assume activation will succeed), we update the
-   * rawUrlTree to be a combination of the urlAfterRedirects (again, this might only apply to part
-   * of the initial url) and the rawUrl of the transition (which was the original navigation url in
-   * its full form).
+   *    rawUrlTree to be a combination of the urlAfterRedirects (again, this might only apply to part
+   *    of the initial url) and the rawUrl of the transition (which was the original navigation url in
+   *    its full form).
    *
    *    在激活之前（因为我们假设激活会成功），我们将 rawUrlTree 更新为 urlAfterRedirects
-   *（同样，这可能仅适用于初始 url 的一部分）和转换的 rawUrl（这是原始的完整形式的导航 url）。
+   *    （同样，这可能仅适用于初始 url 的一部分）和转换的 rawUrl（这是原始的完整形式的导航 url）。
    *
    * @internal
    *
@@ -186,7 +186,6 @@ export class Router {
    * updates the `rawUrlTree` with the assumption that the navigation was caused by the location
    * change listener due to a URL update by the AngularJS router. In this case, we still need to
    * know what the browser's URL is for future navigations.
-   *
    */
   rawUrlTree: UrlTree;
   /**
@@ -382,12 +381,12 @@ export class Router {
    * - `'emptyOnly'` : Inherit parent parameters, data, and resolved data
    *   for path-less or component-less routes.
    *
-   *     `'emptyOnly'`：让无路径或无组件的路由继承父级的参数、数据和解析到的数据。
+   *   `'emptyOnly'`：让无路径或无组件的路由继承父级的参数、数据和解析到的数据。
    *
    * - `'always'` : Inherit parent parameters, data, and resolved data
    *   for all child routes.
    *
-   *     `'always'`：让所有子路由都继承父级的参数、数据和解析到的数据。
+   *   `'always'`：让所有子路由都继承父级的参数、数据和解析到的数据。
    *
    */
   paramsInheritanceStrategy: 'emptyOnly'|'always' = 'emptyOnly';
@@ -884,13 +883,13 @@ export class Router {
    * - The equivalent `IsActiveMatchOptions` for `true` is
    *     `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}`.
    *
-   *     `true` 的等效 `IsActiveMatchOptions` 是 `{paths: 'exact', queryParams: 'exact', fragment:
+   *   `true` 的等效 `IsActiveMatchOptions` 是 `{paths: 'exact', queryParams: 'exact', fragment:
    *   'ignored', matrixParams: 'ignored'}` 。
    *
    * - The equivalent for `false` is
    *     `{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}`.
    *
-   *     `false` 的等价物是 `{paths: 'subset', queryParams: 'subset', fragment: 'ignored',
+   *   `false` 的等价物是 `{paths: 'subset', queryParams: 'subset', fragment: 'ignored',
    *   matrixParams: 'ignored'}` 。
    *
    */

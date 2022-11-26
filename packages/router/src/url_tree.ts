@@ -42,10 +42,10 @@ export interface IsActiveMatchOptions {
    *   `'exact'` ：要求匹配的段也具有精确的矩阵参数匹配。
    *
    * - `'subset'`: The matching segments in the router's active `UrlTree` may contain
-   *   extra matrix parameters, but those that exist in the `UrlTree` in question must match.
+   *     extra matrix parameters, but those that exist in the `UrlTree` in question must match.
    *
    *   `'subset'` ：路由器的活动 `UrlTree` 中的匹配段可能包含额外的矩阵参数，但相关 `UrlTree`
-   * 中存在的那些必须匹配。
+   *   中存在的那些必须匹配。
    *
    * - `'ignored'`: When comparing `UrlTree`s, matrix params will be ignored.
    *
@@ -63,10 +63,10 @@ export interface IsActiveMatchOptions {
    *   `'exact'` ：查询参数必须完全匹配。
    *
    * - `'subset'`: the active `UrlTree` may contain extra parameters,
-   *   but must match the key and value of any that exist in the `UrlTree` in question.
+   *     but must match the key and value of any that exist in the `UrlTree` in question.
    *
    *   `'subset'` ：活动的 `UrlTree` 可能包含额外的参数，但必须与相关 `UrlTree`
-   * 中存在的任何参数的键和值匹配。
+   *   中存在的任何参数的键和值匹配。
    *
    * - `'ignored'`: When comparing `UrlTree`s, query params will be ignored.
    *
@@ -84,12 +84,12 @@ export interface IsActiveMatchOptions {
    *   `'exact'` ：每个 `UrlTree` 中的所有段都必须匹配。
    *
    * - `'subset'`: a `UrlTree` will be determined to be active if it
-   *   is a subtree of the active route. That is, the active route may contain extra
-   *   segments, but must at least have all the segments of the `UrlTree` in question.
+   *     is a subtree of the active route. That is, the active route may contain extra
+   *     segments, but must at least have all the segments of the `UrlTree` in question.
    *
    *   `'subset'` ：如果 `UrlTree`
-   * 是活动路由的子树，则将其确定为活动状态。也就是说，活动路由可能包含额外的段，但必须至少具有相关的
-   * `UrlTree` 的所有段。
+   *   是活动路由的子树，则将其确定为活动状态。也就是说，活动路由可能包含额外的段，但必须至少具有相关的
+   *   `UrlTree` 的所有段。
    *
    */
   paths: 'exact'|'subset';
@@ -222,7 +222,6 @@ function matrixParamsMatch(
  * ### 例子
  *
  * ```
- *
  * @Component ({templateUrl:'template.html'})
  * class MyComponent {
  *   constructor(router: Router) {
@@ -237,6 +236,7 @@ function matrixParamsMatch(
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export class UrlTree {
@@ -360,7 +360,6 @@ export class UrlSegmentGroup {
  * ### 例子
  *
  * ```
- *
  * @Component ({templateUrl:'template.html'})
  * class MyComponent {
  *   constructor(router: Router) {
@@ -372,6 +371,7 @@ export class UrlSegmentGroup {
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export class UrlSegment {

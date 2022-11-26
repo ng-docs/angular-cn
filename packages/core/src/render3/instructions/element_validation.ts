@@ -60,9 +60,13 @@ export function ɵgetUnknownPropertyStrictMode() {
  * ones this check happens at build time).
  *
  * The element is considered known if either:
+ *
  * - it's a known HTML element
+ *
  * - it's a known custom element
+ *
  * - the element matches any directive
+ *
  * - the element is allowed by one of the schemas
  *
  * @param element Element to validate
@@ -126,8 +130,11 @@ export function validateElementIsKnown(
  * ones this check happens at build time).
  *
  * The property is considered known if either:
+ *
  * - it's a known property of the element
+ *
  * - the element is allowed by one of the schemas
+ *
  * - the property is used for animations
  *
  * @param element Element to validate

@@ -499,6 +499,7 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
  * 有关更多详细信息，请参阅[此说明](https://hackmd.io/Odw80D0pR6yfsOjg_7XCJg?view)。
  *
  * @codeGenApi
+ *
  */
 export function ɵɵsetComponentScope(
     type: ComponentType<any>, directives: Type<any>[]|(() => Type<any>[]),
@@ -521,6 +522,7 @@ function nonNull<T>(value: T|null): value is T {
 
 /**
  * @codeGenApi
+ *
  */
 export function ɵɵdefineNgModule<T>(def: {
   /**
@@ -609,6 +611,7 @@ export function ɵɵdefineNgModule<T>(def: {
  * 以从包中对其进行树形抖动，从而允许所有引用的声明也有资格进行树形抖动。
  *
  * @codeGenApi
+ *
  */
 export function ɵɵsetNgModuleScope(type: any, scope: {
   /**
@@ -665,43 +668,47 @@ export function ɵɵsetNgModuleScope(type: any, scope: {
  * @Input ('publicName2')
  *   declaredPropName2: number;
  * }
- * ```
  *
+ * ```
  * will be serialized as
- *
  * ```
+ *
  * {
  *   propName1: 'propName1',
  *   declaredPropName2: ['publicName2', 'declaredPropName2'],
  * }
- * ```
  *
+ * ```
  * which is than translated by the minifier as:
- *
  * ```
+ *
  * {
  *   minifiedPropName1: 'propName1',
  *   minifiedPropName2: ['publicName2', 'declaredPropName2'],
  * }
- * ```
  *
+ * ```
  * becomes: (public name => minifiedName)
- *
  * ```
+ *
  * {
  *  'propName1': 'minifiedPropName1',
  *  'publicName2': 'minifiedPropName2',
  * }
- * ```
  *
+ * ```
  * Optionally the function can take `secondary` which will result in: (public name => declared name)
- *
  * ```
+ *
  * {
  *  'propName1': 'propName1',
  *  'publicName2': 'declaredPropName2',
  * }
+ *
  * ```
+ *
+ * ```
+ *
  */
 function invertObject<T>(
     obj?: {[P in keyof T]?: string|[string, string]},

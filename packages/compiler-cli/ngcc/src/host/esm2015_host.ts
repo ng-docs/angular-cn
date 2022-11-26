@@ -1599,9 +1599,9 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    * it can be seen that there are calls to regular decorators (the `Directive`) and calls into
    * `tslib` functions which have been inserted by TypeScript. Therefore, this function classifies
    * a call to correspond with
-   *   1\. a real decorator like `Directive` above, or
-   *   2\. a decorated parameter, corresponding with `__param` calls from `tslib`, or
-   *   3\. the type information of parameters, corresponding with `__metadata` call from `tslib`
+   *   1. a real decorator like `Directive` above, or
+   *   2. a decorated parameter, corresponding with `__param` calls from `tslib`, or
+   *   3. the type information of parameters, corresponding with `__metadata` call from `tslib`
    *
    * 可以看到，有对常规装饰器（`Directive`）的调用和对 TypeScript 插入的 `tslib`
    * 函数的调用。因此，此函数将调用分类为 1. 像上面的 `Directive` 这样的真实装饰器，或 2.
@@ -1611,7 +1611,6 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    * @param expression the expression that needs to be reflected into a `DecorateHelperEntry`
    *
    * 需要反映到 `DecorateHelperEntry` 中的表达式
-   *
    * @returns
    *
    * an object that indicates which of the three categories the call represents, together
@@ -1619,7 +1618,6 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    *
    * 一个对象，指示调用代表三个类别中的哪一个，以及调用的反射信息，如果调用不是有效的 decorate
    * 调用，则为 null 。
-   *
    */
   protected reflectDecorateHelperEntry(expression: ts.Expression): DecorateHelperEntry|null {
     // We only care about those elements that are actual calls

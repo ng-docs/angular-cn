@@ -1,13 +1,18 @@
 # Create a new project
 
+# 应用的外壳
+
 Use the `ng new` command to start creating your **Tour of Heroes** application.
 
 This tutorial:
 
-1.  Sets up your environment.
-2.  Creates a new workspace and initial application project.
-3.  Serves the application.
-4.  Makes changes to the new application.
+1. Sets up your environment.
+
+2. Creates a new workspace and initial application project.
+
+3. Serves the application.
+
+4. Makes changes to the new application.
 
 <div class="alert is-helpful">
 
@@ -44,7 +49,7 @@ To create a new workspace and an initial project:
 
    确保你现在没有位于 Angular 工作区的文件夹中。比如，如果你之前已经创建过 "快速上手" 工作区，请回到其父目录中。
 
-2.  Run `ng new` followed by the application name as shown here:
+2. Run `ng new` followed by the application name as shown here:
 
    使用此应用名称运行 CLI 命令 `ng new`，如下所示：
 
@@ -54,7 +59,7 @@ To create a new workspace and an initial project:
 
    </code-example>
 
-3.  `ng new` prompts you for information about features to include in the initial  project.
+3. `ng new` prompts you for information about features to include in the initial  project.
    Accept the defaults by pressing the Enter or Return key.
 
 `ng new` 命令会提示你输入要在初始应用项目中包含哪些特性，请按 Enter 或 Return 键接受其默认值。
@@ -64,9 +69,11 @@ This can take a few minutes.
 
 `ng new` also creates the following workspace and starter project files:
 
-*   A new workspace, with a root directory named `angular-tour-of-heroes`
-*   An initial skeleton application project in the `src/app` subdirectory
-*   Related configuration files
+* A new workspace, with a root directory named `angular-tour-of-heroes`
+
+* An initial skeleton application project in the `src/app` subdirectory
+
+* Related configuration files
 
   相关的配置文件。
 

@@ -51,7 +51,6 @@ function hasValidLength(value: any): boolean {
  * true` 选项。
  *
  * ```typescript
- *
  * @Directive ({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
@@ -62,6 +61,7 @@ function hasValidLength(value: any): boolean {
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgValidators');
@@ -85,7 +85,6 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  * 以下示例实现了 `AsyncValidator` 接口，以创建使用自定义错误键的异步验证器指令。
  *
  * ```typescript
- *
  * @Directive ({
  *   selector: '[customAsyncValidator]',
  *   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: CustomAsyncValidatorDirective, multi:
@@ -97,6 +96,7 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export const NG_ASYNC_VALIDATORS =
@@ -421,10 +421,7 @@ export class Validators {
    * `minlength` property if the validation check fails, otherwise `null`.
    *
    * 如果验证失败，则此验证器函数返回一个带有 `minlength` 属性的映射表（map），否则为 `null`。
-   *
-   *
    * @see `updateValueAndValidity()`
-   *
    */
   static minLength(minLength: number): ValidatorFn {
     return minLengthValidator(minLength);

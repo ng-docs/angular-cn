@@ -13,12 +13,21 @@ Debug specs in the browser in the same way that you debug an application.
 1. Reveal the Karma browser window.
    See [Set up testing](guide/testing#set-up-testing) if you need help with this step.
 
-1.  Click the **DEBUG** button to open a new browser tab and re-run the tests.
-2.  Open the browser's **Developer Tools**. On Windows, press `Ctrl-Shift-I`. On macOS, press `Command-Option-I`.
-3.  Pick the **Sources** section.
-4.  Press `Control/Command-P`, and then start typing the name of your test file to open it.
-5.  Set a breakpoint in the test.
-6.  Refresh the browser, and notice how it stops at the breakpoint.
+   打开 Karma 的浏览器窗口。如果需要帮助，请参阅[“设置测试”](guide/testing#set-up-testing)。
+
+1. Click the **DEBUG** button to open a new browser tab and re-run the tests.
+
+2. Open the browser's **Developer Tools**. On Windows, press `Ctrl-Shift-I`. On macOS, press `Command-Option-I`.
+
+3. Pick the **Sources** section.
+
+4. Press `Control/Command-P`, and then start typing the name of your test file to open it.
+
+5. Set a breakpoint in the test.
+
+   在测试中设置一个断点。
+
+6. Refresh the browser, and notice how it stops at the breakpoint.
 
    刷新浏览器，它会在这个断点处停下来。
 

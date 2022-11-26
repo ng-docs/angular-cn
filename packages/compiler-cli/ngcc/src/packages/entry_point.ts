@@ -496,10 +496,10 @@ function guessTypingsFromPackageJson(
  * 查找或推断包的名称和版本。
  *
  * - The name is computed based on the `name` property of the package's or the entry-point's
- *   `package.json` file (if available) or inferred from the package's path.
+ *     `package.json` file (if available) or inferred from the package's path.
  *
  *   该名称是根据包的 `name` 属性或入口点的 `package.json`
- * 文件（如果可用）计算的，或从包的路径推断出来的。
+ *   文件（如果可用）计算的，或从包的路径推断出来的。
  *
  * - The version is read off of the `version` property of the package's `package.json` file (if
  *   available).
@@ -509,25 +509,20 @@ function guessTypingsFromPackageJson(
  * @param fs The file-system to use for processing `packagePath`.
  *
  * 用于处理 `packagePath` 的文件系统。
- *
  * @param packagePath the absolute path to the package.
  *
  * 包的绝对路径。
- *
  * @param packagePackageJson the parsed `package.json` of the package (if available).
  *
  * 包的解析后的 `package.json`（如果可用）。
- *
  * @param entryPointPackageJson the parsed `package.json` of an entry-point (if available).
  *
  * 入口点的解析后的 `package.json`（如果可用）。
- *
  * @returns
  *
  * the computed name and version of the package.
  *
  * 包的计算名称和版本。
- *
  */
 function getPackageNameAndVersion(
     fs: PathManipulation, packagePath: AbsoluteFsPath,

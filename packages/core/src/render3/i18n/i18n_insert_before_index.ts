@@ -19,11 +19,11 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  * `TNode`
  *
  * Things to keep in mind:
- * 1\. All i18n text nodes are encoded as `TNodeType.Element` and are created eagerly by the
+ * 1. All i18n text nodes are encoded as `TNodeType.Element` and are created eagerly by the
  *    `ɵɵi18nStart` instruction.
- * 2\. All `TNodeType.Placeholder` `TNodes` are elements which will be created later by
+ * 2. All `TNodeType.Placeholder` `TNodes` are elements which will be created later by
  *    `ɵɵelementStart` instruction.
- * 3\. `ɵɵelementStart` instruction will create `TNode`s in the ascending `TNode.index` order. (So a
+ * 3. `ɵɵelementStart` instruction will create `TNode`s in the ascending `TNode.index` order. (So a
  *    smaller index `TNode` is guaranteed to be created before a larger one)
  *
  * 要记住的事情： 1.所有 i18n 文本节点都被编码为 `TNodeType.Element` ，并且由 `ɵɵi18nStart`
@@ -50,7 +50,7 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  *        previous to see if we can update its `insertBeforeTNode`)
  *
  * 规则 1： `TNode.insertBeforeIndex = null` if `TNode.next === null`
- *（初始条件，因为我们不知道之后是否会插入更多 `TNode` 。）规则 2：如果 `previousTNode` 是在插入
+ * （初始条件，因为我们不知道之后是否会插入更多 `TNode` 。）规则 2：如果 `previousTNode` 是在插入
  * `previousTNode.insertBeforeNode = tNode.index` 之后创建，则 `tNode`
  * `previousTNode.insertBeforeNode = tNode.index`（因此，当添加新的 `tNode`
  * 时，我们会检查上一个以查看是否可以更新其 `insertBeforeTNode`）
@@ -64,11 +64,9 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  *
  * 以前的 TNode 的列表，以便我们可以轻松地以相反的顺序遍历 `TNode` 。（如果 `TNode` 有 `previous`
  * 的，则没有必要。）
- *
  * @param newTNode A TNode to add to the `previousTNodes` list.
  *
  * 要添加到 `previousTNodes` 列表的 TNode。
- *
  */
 export function addTNodeAndUpdateInsertBeforeIndex(previousTNodes: TNode[], newTNode: TNode) {
   // Start with Rule1

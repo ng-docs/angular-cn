@@ -6,7 +6,7 @@
 
 <header>Getting Started</header>
 
-<header>快速上手 - Stackblitz</header>
+<header>快速上手</header>
 
 In this tutorial, you build your own Angular application from the start.
 This is a good way to experience a typical development process as you learn Angular application-design concepts, tools, and terminology.
@@ -28,6 +28,7 @@ You can edit the application in StackBlitz and see the results in real time.
 This *Tour of Heroes* tutorial provides an introduction to the fundamentals of Angular and shows you how to:
 
 * Set up your local Angular development environment.
+
 * Use the [Angular CLI](cli "CLI command reference") to develop an application
 
 这个*“英雄之旅”*教程向你展示了如何使用 [Angular CLI 工具](cli "CLI 命令参考：")搭建本地开发环境并开发应用，还对 [Angular CLI 工具](cli "CLI 命令参考：") 的基础知识进行了介绍。
@@ -38,21 +39,46 @@ The application has many of the features that you'd expect to find in any data-d
 The finished application:
 
 * Gets a list of heroes
+
 * Displays the heroes in a list
+
 * Edits a selected hero's details
+
 * Navigates between different views of heroic data
 
 This tutorial helps you gain confidence that Angular can do whatever you need it to do by showing you how to:
 
-*   Use Angular [directives](guide/glossary#directive "Directives definition") to show and hide elements and display lists of hero data.
-*   Create Angular [components](guide/glossary#component "Components definition") to display hero details and show an array of heroes.
-*   Use one-way [data binding](guide/glossary#data-binding "Data binding definition") for read-only data.
-*   Add editable fields to update a model with two-way data binding.
-*   Bind component methods to user events, like keystrokes and clicks.
-*   Enable users to select a hero from a list and edit that hero in the details view.
-*   Format data with [pipes](guide/glossary#pipe "Pipe definition").
-*   Create a shared [service](guide/glossary#service "Service definition") to assemble the heroes.
-*   Use [routing](guide/glossary#router "Router definition") to navigate among different views and their components.
+* Use Angular [directives](guide/glossary#directive "Directives definition") to show and hide elements and display lists of hero data.
+
+* Create Angular [components](guide/glossary#component "Components definition") to display hero details and show an array of heroes.
+
+  创建 Angular [组件](guide/glossary#component "Components definition")以显示英雄的详情，并显示一个英雄数组。
+
+* Use one-way [data binding](guide/glossary#data-binding "Data binding definition") for read-only data.
+
+  为只读数据使用单向[数据绑定](guide/glossary#data-binding "Data binding definition")。
+
+* Add editable fields to update a model with two-way data binding.
+
+  添加可编辑字段，使用双向数据绑定来更新模型。
+
+* Bind component methods to user events, like keystrokes and clicks.
+
+  把组件中的方法绑定到用户事件上，比如按键和点击。
+
+* Enable users to select a hero from a list and edit that hero in the details view.
+
+* Format data with [pipes](guide/glossary#pipe "Pipe definition").
+
+  使用[管道](guide/glossary#pipe "Pipe definition")来格式化数据。
+
+* Create a shared [service](guide/glossary#service "Service definition") to assemble the heroes.
+
+  创建共享的[服务](guide/glossary#service "Service definition")来管理这些英雄。
+
+* Use [routing](guide/glossary#router "Router definition") to navigate among different views and their components.
+
+  使用[路由](guide/glossary#router "Router definition")在不同的视图及其组件之间导航。
 
 <div class="callout is-helpful">
 

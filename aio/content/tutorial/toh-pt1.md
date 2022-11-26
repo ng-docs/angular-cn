@@ -181,7 +181,7 @@ The browser refreshes and now the hero's name is displayed in capital letters.
 
 浏览器刷新了。现在，英雄的名字显示成了大写字母。
 
-The word `uppercase` in the interpolation binding after the pipe <code>&verbar;</code> character, activates the built-in `UppercasePipe`.
+The word `uppercase` in the interpolation binding after the pipe <code>\|</code> character, activates the built-in `UppercasePipe`.
 
 绑定表达式中的 `uppercase` 位于管道操作符 `|` 的右边，用来调用内置管道 `UppercasePipe`。
 
