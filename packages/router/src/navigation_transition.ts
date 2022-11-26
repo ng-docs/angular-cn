@@ -41,9 +41,19 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
  * Supply an object containing any of these properties to a `Router` navigation function to
  * control how the target URL should be constructed.
  *
+ * 修改 `Router` URL 的选项。将包含这些属性中的任何一个的对象提供给 `Router` 导航函数，以控制目标 URL 的构建方式。
+ *
  * @see [Router.navigate() method](api/router/Router#navigate)
+ *
+ * [Router.navigate() 方法](api/router/Router#navigate)
+ *
  * @see [Router.createUrlTree() method](api/router/Router#createurltree)
+ *
+ * [Router.createUrlTree() 方法](api/router/Router#createurltree)
+ *
  * @see [Routing and Navigation guide](guide/router)
+ *
+ * [路由和导航指南](guide/router)
  *
  * @publicApi
  */
@@ -51,8 +61,12 @@ export interface UrlCreationOptions {
   /**
    * Specifies a root URI to use for relative navigation.
    *
+   * 指定要用于相对导航的根 URI。
+   *
    * For example, consider the following route configuration where the parent route
    * has two children.
+   *
+   * 例如，考虑以下路由配置，其中的父路由有两个子项。
    *
    * ```
    * [{
@@ -71,6 +85,8 @@ export interface UrlCreationOptions {
    * The following `go()` function navigates to the `list` route by
    * interpreting the destination URI as relative to the activated `child`  route
    *
+   * 以下 `go()` 函数通过将目标 URI 解释为相对于激活的 `child` 由来导航到 `list` 路由
+   *
    * ```
    *  @Component({...})
    *  class ChildComponent {
@@ -84,26 +100,35 @@ export interface UrlCreationOptions {
    *
    * A value of `null` or `undefined` indicates that the navigation commands should be applied
    * relative to the root.
+   *
+   * 值为 `null` 或 `undefined` 表明导航命令应该相对于根应用。
+   *
    */
   relativeTo?: ActivatedRoute|null;
 
   /**
    * Sets query parameters to the URL.
    *
+   * 将查询参数设置为 URL。
+   *
    * ```
    * // Navigate to /results?page=1
    * this.router.navigate(['/results'], { queryParams: { page: 1 } });
    * ```
+   *
    */
   queryParams?: Params|null;
 
   /**
    * Sets the hash fragment for the URL.
    *
+   * 设置 URL 的哈希片段。
+   *
    * ```
    * // Navigate to /results#top
    * this.router.navigate(['/results'], { fragment: 'top' });
    * ```
+   *
    */
   fragment?: string;
 
@@ -111,11 +136,19 @@ export interface UrlCreationOptions {
    * How to handle query parameters in the router link for the next navigation.
    * One of:
    *
+   * 如何处理路由器链接中的查询参数以进行下一次导航。之一：
+   *
    * * `preserve` : Preserve current parameters.
+   *
+   *   `preserve` ：保留当前参数。
    *
    * * `merge` : Merge new with current parameters.
    *
+   *   `merge` ：将新参数与当前参数合并。
+   *
    * The "preserve" option discards any new query params:
+   *
+   * “preserve” 选项会丢弃任何新的查询参数：
    *
    * ```
    * // from /view1?page=1 to/view2?page=1
@@ -124,6 +157,8 @@ export interface UrlCreationOptions {
    * ```
    *
    * The "merge" option appends new query params to the params from the current URL:
+   *
+   * “merge” 选项将新的查询参数附加到当前 URL 的参数：
    *
    * ```
    * // from /view1?page=1 to/view2?page=1&otherKey=2
@@ -134,16 +169,21 @@ export interface UrlCreationOptions {
    * In case of a key collision between current parameters and those in the `queryParams` object,
    * the new value is used.
    *
+   * 如果当前参数与 `queryParams` 对象中的参数之间发生键冲突，则使用新值。
+   *
    */
   queryParamsHandling?: QueryParamsHandling|null;
 
   /**
    * When true, preserves the URL fragment for the next navigation
    *
+   * 当为 true 时，为下一个导航保留 URL 片段
+   *
    * ```
    * // Preserve fragment from /results#top to /view#top
    * this.router.navigate(['/view'], { preserveFragment: true });
    * ```
+   *
    */
   preserveFragment?: boolean;
 }
@@ -155,12 +195,28 @@ export interface UrlCreationOptions {
  * Supply an object containing any of these properties to a `Router` navigation function to
  * control how the target URL should be constructed or interpreted.
  *
+ * 修改 `Router` 导航策略的选项。将包含这些属性中的任何一个的对象提供给 `Router` 导航函数，以控制目标 URL 的构建或解释方式。
+ *
  * @see [Router.navigate() method](api/router/Router#navigate)
+ *
+ * [Router.navigate() 方法](api/router/Router#navigate)
+ *
  * @see [Router.navigateByUrl() method](api/router/Router#navigatebyurl)
+ *
+ * [Router.navigateByUrl() 方法](api/router/Router#navigatebyurl)
+ *
  * @see [Router.createUrlTree() method](api/router/Router#createurltree)
+ *
+ * [Router.createUrlTree() 方法](api/router/Router#createurltree)
+ *
  * @see [Routing and Navigation guide](guide/router)
+ *
+ * [路由和导航指南](guide/router)
+ *
  * @see UrlCreationOptions
  * @see NavigationBehaviorOptions
+ *
+ * 导航行为选项
  *
  * @publicApi
  */
@@ -180,71 +236,113 @@ export type RestoredState = {
  * Retrieve the most recent navigation object with the
  * [Router.getCurrentNavigation() method](api/router/Router#getcurrentnavigation) .
  *
+ * 有关导航操作的信息。使用[Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
+ *
  * * *id* : The unique identifier of the current navigation.
+ *
+ *   *id* ：当前导航的唯一标识符。
  *
  * * *initialUrl* : The target URL passed into the `Router#navigateByUrl()` call before navigation.
  *   This is the value before the router has parsed or applied redirects to it.
  *
+ *   *initialUrl* ：在导航之前传递给 `Router#navigateByUrl()` 调用的目标 URL。这是路由器解析或应用重定向之前的值。
+ *
  * * *extractedUrl* : The initial target URL after being parsed with `UrlSerializer.extract()`.
+ *
+ *   *extractUrl* ：使用 `UrlSerializer.extract()` 解析后的初始目标 URL。
  *
  * * *finalUrl* : The extracted URL after redirects have been applied.
  *   This URL may not be available immediately, therefore this property can be `undefined`.
  *   It is guaranteed to be set after the `RoutesRecognized` event fires.
+ *
+ *   *finalUrl* ：应用重定向后提取的 URL。此 URL 可能无法立即使用，因此此属性可以是 `undefined` 。保证在 `RoutesRecognized` 事件触发之后设置。
  *
  * * *trigger* : Identifies how this navigation was triggered.
  *   \-- 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
  *   \-- 'popstate'--Triggered by a popstate event.
  *   \-- 'hashchange'--Triggered by a hashchange event.
  *
+ *   *trigger* ：标识此导航的触发方式。 -- “命令式”--由 `router.navigateByUrl` 或 `router.navigate` 触发。 -- “popstate”--由 popstate 事件触发。 -- 'hashchange'--由 hashchange 事件触发。
+ *
  * * *extras* : A `NavigationExtras` options object that controlled the strategy used for this
  *   navigation.
+ *
+ *   *extras* ：控制此导航使用的策略的 `NavigationExtras` 选项对象。
  *
  * * *previousNavigation* : The previously successful `Navigation` object. Only one previous
  *   navigation is available, therefore this previous `Navigation` object has a `null` value for its
  *   own `previousNavigation`.
+ *
+ *   *previousNavigation* ：以前成功的 `Navigation` 对象。只有一个以前的导航可用，因此这 `previousNavigation` 的 `Navigation` 对象的 `null` 。
  *
  * @publicApi
  */
 export interface Navigation {
   /**
    * The unique identifier of the current navigation.
+   *
+   * 当前导航的唯一标识符。
+   *
    */
   id: number;
   /**
    * The target URL passed into the `Router#navigateByUrl()` call before navigation. This is
    * the value before the router has parsed or applied redirects to it.
+   *
+   * 在导航之前传递给 `Router#navigateByUrl()` 调用的目标 URL。这是路由器解析或应用重定向之前的值。
+   *
    */
   initialUrl: UrlTree;
   /**
    * The initial target URL after being parsed with `UrlHandlingStrategy.extract()`.
+   *
+   * 使用 `UrlHandlingStrategy.extract()` 解析后的初始目标 URL。
+   *
    */
   extractedUrl: UrlTree;
   /**
    * The extracted URL after redirects have been applied.
    * This URL may not be available immediately, therefore this property can be `undefined`.
    * It is guaranteed to be set after the `RoutesRecognized` event fires.
+   *
+   * 应用重定向后提取的 URL。此 URL 可能无法立即使用，因此此属性可以是 `undefined` 。保证在 `RoutesRecognized` 事件触发之后设置。
+   *
    */
   finalUrl?: UrlTree;
   /**
    * Identifies how this navigation was triggered.
    *
+   * 标识此导航的触发方式。
+   *
    * * 'imperative'--Triggered by `router.navigateByUrl` or `router.navigate`.
+   *
+   *   “命令式” - 由 `router.navigateByUrl` 或 `router.navigate` 触发。
    *
    * * 'popstate'--Triggered by a popstate event.
    *
+   *   “popstate”--由 popstate 事件触发。
+   *
    * * 'hashchange'--Triggered by a hashchange event.
+   *
+   *   “hashchange”--由 hashchange 事件触发。
    *
    */
   trigger: 'imperative'|'popstate'|'hashchange';
   /**
    * Options that controlled the strategy used for this navigation.
    * See `NavigationExtras`.
+   *
+   * 控制此导航使用的策略的选项。请参阅 `NavigationExtras` 。
+   *
    */
   extras: NavigationExtras;
   /**
    * The previously successful `Navigation` object. Only one previous navigation
    * is available, therefore this previous `Navigation` object has a `null` value
    * for its own `previousNavigation`.
+   *
+   * 以前成功的 `Navigation` 对象。只有一个以前的导航可用，因此这 `previousNavigation` 的 `Navigation` 对象的 `null` 。
+   *
    */
   previousNavigation: Navigation|null;
 }
@@ -275,6 +373,9 @@ export interface NavigationTransition {
  * Router. This interface should be whittled down with future refactors. For example, we do not need
  * to get `UrlSerializer` from the Router. We can instead inject it in `NavigationTransitions`
  * directly.
+ *
+ * 转换所需的 Router 中的接口。用于避免对 Router 的循环依赖。这个接口应该通过未来的重构来减少。例如，我们不需要从 Router 获取 `UrlSerializer` 。我们也可以直接将它注入 `NavigationTransitions` 中。
+ *
  */
 interface InternalRouterInterface {
   events: Observable<Event>;

@@ -57,7 +57,7 @@ This tutorial sample mimics communication with a remote data server by using the
 
 After installing the module, the application makes requests to and receive responses from the `HttpClient`. The application doesn't know that the *In-memory Web API* is intercepting those requests, applying them to an in-memory data store, and returning simulated responses.
 
-安装完这个模块之后，应用将会通过 `HttpClient` 来发起请求和接收响应，而不用在乎实际上是这个内存 Web API 在拦截这些请求、操作一个内存数据库，并且给出仿真的响应。
+安装完这个模块之后，应用将会通过 `HttpClient` 来发起请求和接收响应。本应用不在乎实际上是这个内存 Web API 在拦截这些请求、操作一个内存数据库，并且给出仿真的响应。
 
 By using the In-memory Web API, you won't have to set up a server to learn about `HttpClient`.
 
@@ -124,7 +124,8 @@ Replace the default contents of `in-memory-data.service.ts` with the following:
 The `in-memory-data.service.ts` file takes over the function of `mock-heroes.ts`.
 Don't delete `mock-heroes.ts` yet. You still need it for a few more steps of this tutorial.
 
-`in-memory-data.service.ts` 文件已代替了 `mock-heroes.ts` 文件，现在后者可以安全的删除了。
+`in-memory-data.service.ts` 文件已代替了 `mock-heroes.ts` 文件。
+先不要删除 `mock-heroes.ts`。本教程后面还有几步需要用到它。
 
 After the server is ready, detach the In-memory Web API so the application's requests can go through to the server.
 
@@ -494,7 +495,7 @@ The HTML for the list of heroes should look like this:
 
 To position the delete button at the far right of the hero entry, add some CSS from the [final review code](#heroescomponent) to the `heroes.component.css`.
 
-要把删除按钮定位在每个英雄条目的最右边，就要往 `heroes.component.css` 中添加一些 CSS。你可以在下方的 [最终代码](#heroescomponent) 中找到这些 CSS。
+要把删除按钮定位在每个英雄条目的最右边，就要从[最终代码](#heroescomponent) 中往 `heroes.component.css` 中添加一些 CSS。
 
 Add the `delete()` handler to the component class.
 
@@ -539,13 +540,19 @@ Notice the following key points:
 
 Refresh the browser and try the new delete capability.
 
+刷新浏览器并尝试新的删除特性。
+
 <div class="alert is-important">
 
 If you neglect to `subscribe()`, the service can't send the delete request to the server.
 As a rule, an `Observable` *does nothing* until something subscribes.
 
+如果你忘了 `subscribe()`，此服务就不会向服务器发送删除请求。作为一条规则 `Observable` 在被订阅前**不会做任何事**。
+
 Confirm this for yourself by temporarily removing the `subscribe()`, clicking **Dashboard**, then clicking **Heroes**.
 This shows the full list of heroes again.
+
+你可以通过暂时移除 `subscribe()` 来确认这一点，点击 **Dashboard**，然后点击 **Heroes**。这里应该始终展示着英雄列表。
 
 </div>
 

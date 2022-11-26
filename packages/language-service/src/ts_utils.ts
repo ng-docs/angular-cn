@@ -34,6 +34,9 @@ export interface FindOptions<T extends ts.Node> {
 
 /**
  * Finds TypeScript nodes descending from the provided root which match the given filter.
+ *
+ * 查找从提供的根降序且与给定过滤器匹配的 TypeScript 节点。
+ *
  */
 export function findAllMatchingNodes<T extends ts.Node>(root: ts.Node, opts: FindOptions<T>): T[] {
   const matches: T[] = [];
@@ -49,6 +52,9 @@ export function findAllMatchingNodes<T extends ts.Node>(root: ts.Node, opts: Fin
 
 /**
  * Finds TypeScript nodes descending from the provided root which match the given filter.
+ *
+ * 查找从提供的根降序且与给定过滤器匹配的 TypeScript 节点。
+ *
  */
 export function findFirstMatchingNode<T extends ts.Node>(root: ts.Node, opts: FindOptions<T>): T|
     null {
@@ -159,6 +165,9 @@ export function collectMemberMethods(
 
 /**
  * Given an existing array literal expression, update it by pushing a new expression.
+ *
+ * 给定一个现有的数组文字表达式，通过推送新表达式来更新它。
+ *
  */
 export function addElementToArrayLiteral(
     arr: ts.ArrayLiteralExpression, elem: ts.Expression): ts.ArrayLiteralExpression {
@@ -168,6 +177,9 @@ export function addElementToArrayLiteral(
 /**
  * Given an ObjectLiteralExpression node, extract and return the PropertyAssignment corresponding to
  * the given key. `null` if no such key exists.
+ *
+ * 给定一个 ObjectLiteralExpression 节点，提取并返回与给定键对应的 PropertyAssignment。如果不存在这样的键，则为 `null` 。
+ *
  */
 export function objectPropertyAssignmentForKey(
     obj: ts.ObjectLiteralExpression, key: string): ts.PropertyAssignment|null {
@@ -179,6 +191,9 @@ export function objectPropertyAssignmentForKey(
 /**
  * Given an ObjectLiteralExpression node, create or update the specified key, using the provided
  * callback to generate the new value (possibly based on an old value).
+ *
+ * 给定一个 ObjectLiteralExpression 节点，创建或更新指定的键，使用提供的回调生成新值（可能基于旧值）。
+ *
  */
 export function updateObjectValueForKey(
     obj: ts.ObjectLiteralExpression, key: string,
@@ -197,6 +212,9 @@ export function updateObjectValueForKey(
  * Ensure the array contains the provided identifier.
  * Returns the array, either updated or newly created.
  * If no update is needed, returns `null`.
+ *
+ * 创建一个新的 ArrayLiteralExpression ，或接受现有的。确保数组包含提供的标识符。返回已更新或新创建的数组。如果不需要更新，则返回 `null` 。
+ *
  */
 export function ensureArrayWithIdentifier(
     identifier: ts.Identifier, arr?: ts.ArrayLiteralExpression): ts.ArrayLiteralExpression|null {
@@ -233,6 +251,9 @@ export function moduleSpecifierPointsToFile(
  * Determine whether this an import of the given `propertyName` from a particular module
  * specifier already exists. If so, return the local name for that import, which might be an
  * alias.
+ *
+ * 确定这是否存在从特定模块说明符的给定 `propertyName` 的导入。如果是这样，请返回该导入的本地名称，这可能是别名。
+ *
  */
 export function hasImport(
     tsChecker: ts.TypeChecker, importDeclarations: ts.ImportDeclaration[], propName: string,
@@ -253,6 +274,9 @@ function nameInExportScope(importSpecifier: ts.ImportSpecifier): string {
 /**
  * Determine whether this import declaration already contains an import of the given
  * `propertyName`, and if so, the name it can be referred to with in the local scope.
+ *
+ * 确定此导入声明是否已包含对给定 `propertyName` 的导入，如果是，则可以在本地范围内引用它的名称。
+ *
  */
 function importHas(importDecl: ts.ImportDeclaration, propName: string): string|null {
   const bindings = importDecl.importClause?.namedBindings;
@@ -279,6 +303,9 @@ function importHas(importDecl: ts.ImportDeclaration, propName: string): string|n
  * Given an unqualified name, determine whether an existing import is already using this name in
  * the current scope.
  * TODO: It would be better to check if *any* symbol uses this name in the current scope.
+ *
+ * 给定一个不合格的名称，确定现有的导入是否已在当前范围中使用此名称。 TODO：最好检查当前范围内是否有*任何*符号使用此名称。
+ *
  */
 function importCollisionExists(importDeclaration: ts.ImportDeclaration[], name: string): boolean {
   const bindings = importDeclaration.map(declaration => declaration.importClause?.namedBindings);
@@ -292,6 +319,9 @@ function importCollisionExists(importDeclaration: ts.ImportDeclaration[], name: 
 /**
  * Generator function that yields an infinite sequence of alternative aliases for a given symbol
  * name.
+ *
+ * 为给定符号名称生成无限序列的替代别名的生成器函数。
+ *
  */
 function* suggestAlternativeSymbolNames(name: string): Iterator<string> {
   for (let i = 1; true; i++) {
@@ -302,6 +332,9 @@ function* suggestAlternativeSymbolNames(name: string): Iterator<string> {
 /**
  * Transform the given import name into an alias that does not collide with any other import
  * symbol.
+ *
+ * 将给定的导入名称转换为不与任何其他导入符号冲突的别名。
+ *
  */
 export function nonCollidingImportName(
     importDeclarations: ts.ImportDeclaration[], name: string): string {
@@ -315,12 +348,16 @@ export function nonCollidingImportName(
 /**
  * Generate a new import. Follows the format:
  *
+ * 生成新的导入。遵循以下格式：
+ *
  * ```
  * import {exportedSpecifierName as localName} from 'rawModuleSpecifier';
  * ```
  *
  * If `exportedSpecifierName` is null, or is equal to `name`, then the qualified import alias will
  * be omitted.
+ *
+ * 如果 `exportedSpecifierName` 为 null 或等于 `name` ，则限定的导入别名将被忽略。
  *
  */
 export function generateImport(
@@ -344,6 +381,9 @@ export function generateImport(
  * Update an existing named import with a new member.
  * If `exportedSpecifierName` is null, or is equal to `name`, then the qualified import alias will
  * be omitted.
+ *
+ * 使用新成员更新现有的命名导入。如果 `exportedSpecifierName` 为 null 或等于 `name` ，则限定的导入别名将被忽略。
+ *
  */
 export function updateImport(
     imp: ts.NamedImports, localName: string, exportedSpecifierName: string|null): ts.NamedImports {
@@ -360,6 +400,9 @@ let printer: ts.Printer|null = null;
 
 /**
  * Get a ts.Printer for printing AST nodes, reusing the previous Printer if already created.
+ *
+ * 获取 ts.Printer 用于打印 AST 节点，如果已经创建，则重用以前的打印机。
+ *
  */
 function getOrCreatePrinter(): ts.Printer {
   if (printer === null) {
@@ -371,6 +414,9 @@ function getOrCreatePrinter(): ts.Printer {
 /**
  * Print a given TypeScript node into a string. Used to serialize entirely synthetic generated AST,
  * which will not have `.text` or `.fullText` set.
+ *
+ * 将给定的 TypeScript 节点打印为字符串。用于序列化完全合成生成的 AST，它不会设置 `.text` 或 `.fullText` 。
+ *
  */
 export function printNode(node: ts.Node, sourceFile: ts.SourceFile): string {
   return getOrCreatePrinter().printNode(ts.EmitHint.Unspecified, node, sourceFile);

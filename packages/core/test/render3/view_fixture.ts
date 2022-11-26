@@ -47,7 +47,7 @@ export class ViewFixture {
   /**
    * DOM element which acts as a host to the `LView`.
    *
-   * 作为 `LView` 的主机的 DOM 元素。
+   * 作为 `LView` 的宿主的 DOM 元素。
    *
    */
   host: HTMLElement;
@@ -116,7 +116,12 @@ export class ViewFixture {
    * Invokes an update block function, which can either be provided during
    * the `ViewFixture` initialization or as an argument.
    *
+   * 调用更新块函数，该函数可以在 `ViewFixture` 初始化期间提供或作为参数提供。
+   *
    * @param updateFn An update block function to invoke.
+   *
+   * 要调用的更新块函数。
+   *
    */
   update(updateFn?: () => void) {
     updateFn ||= this.updateFn;

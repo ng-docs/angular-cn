@@ -255,7 +255,11 @@ Any control of type `string|null` can be added to this `FormRecord`.
 
 If you need a `FormGroup` that is both dynamic (open-ended) and heterogeneous (the controls are different types), no improved type safety is possible, and you should use `UntypedFormGroup`.
 
+如果你需要一个动态（开放式）和异构（控件是不同类型）的 `FormGroup` ，则无法提升为类型安全的，这时你应该使用 `UntypedFormGroup` 。
+
 A `FormRecord` can also be built with the `FormBuilder`:
+
+`FormRecord` 也可以用 `FormBuilder` 构建：
 
 ```ts
 const addresses = fb.record({'Andrew': '2340 Folsom St'});

@@ -62,7 +62,11 @@ const UNDEFINED = {};
  * Notice, we don't use the `new` operator because we explicitly want to have the `Injector`
  * resolve all of the object's dependencies automatically.
  *
+ * 请注意，我们不使用 `new` 运算符，因为我们显式希望让 `Injector` 自动解析所有对象的依赖项。
+ *
  * TODO: delete in v14.
+ *
+ * TODO：在 v14 中删除。
  *
  * @deprecated from v5 - slow and brings in a lot of code, Use `Injector.create` instead.
  *

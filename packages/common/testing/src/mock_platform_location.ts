@@ -252,10 +252,14 @@ export class MockPlatformLocation implements PlatformLocation {
    * The most easiest thing to do in our mock is synchronous and that happens to match
    * Firefox and Chrome, at least somewhat closely
    *
+   * 浏览器在触发事件和执行状态更新时不一致在我们的模拟中最简单的事情是同步的，这恰好与 Firefox 和 Chrome 匹配，至少在某种程度上很接近
+   *
    * <https://github.com/WICG/navigation-api#watching-for-navigations>
    * <https://docs.google.com/document/d/1Pdve-DJ1JCGilj9Yqf5HxRJyBKSel5owgOvUJqTauwU/edit#heading=h.3ye4v71wsz94>
    * popstate is always sent before hashchange:
    * <https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event#when_popstate_is_sent>
+   *
+   * <https://github.com/WICG/navigation-api#watching-for-navigations> <https://docs.google.com/document/d/1Pdve-DJ1JCGilj9Yqf5HxRJyBKSel5owgOvUJqTauwU/edit#heading=h.3ye4v71wsz94> popstate 始终在 hashchange 之前发送： <https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event#when_popstate_is_sent>
    *
    */
   private emitEvents(oldHash: string, oldUrl: string) {

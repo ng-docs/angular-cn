@@ -47,7 +47,7 @@ export const JSONP_ERR_HEADERS_NOT_SUPPORTED = 'JSONP requests do not support he
 /**
  * DI token/abstract type representing a map of JSONP callbacks.
  *
- * 表示 JSONP 回调映射的 DI 标记/抽象类型。
+ * 表示 JSONP 回调映射的 DI 令牌/抽象类型。
  *
  * In the browser, this should always be the `window` object.
  *
@@ -61,9 +61,12 @@ export abstract class JsonpCallbackContext {
 /**
  * Factory function that determines where to store JSONP callbacks.
  *
+ * 确定在哪里存储 JSONP 回调的工厂函数。
+ *
  * Ordinarily JSONP callbacks are stored on the `window` object, but this may not exist
  * in test environments. In that case, callbacks are stored on an anonymous object instead.
  *
+ * 通常，JSONP 回调存储在 `window` 对象上，但这在测试环境中可能不存在。在这种情况下，回调会存储在匿名对象上。
  *
  */
 export function jsonpCallbackContext(): Object {
@@ -270,6 +273,9 @@ export class JsonpClientBackend implements HttpBackend {
 
 /**
  * Identifies requests with the method JSONP and shifts them to the `JsonpClientBackend`.
+ *
+ * 使用 JSONP 方法识别请求并将它们转移到 `JsonpClientBackend` 。
+ *
  */
 export function jsonpInterceptorFn(
     req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {

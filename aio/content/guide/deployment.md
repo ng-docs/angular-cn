@@ -409,7 +409,7 @@ The `production` configuration engages the following build optimization features
 | Bundling | Concatenates your many application and library files into a few bundles. |
 | 打包 | 把你的多个应用于库文件拼接到少量包（bundle）中。 |
 | Minification | Removes excess whitespace, comments, and optional tokens. |
-| 缩小 | 删除多余的空格、注释和可选令牌。 |
+| 缩小 | 删除多余的空格、注释和可选标记。 |
 | Uglification | Rewrites code to use short, cryptic variable and function names. |
 | 丑化 | 重写代码，使用简短的、不容易理解的变量名和函数名。 |
 | Dead code elimination | Removes unreferenced modules and much unused code. |

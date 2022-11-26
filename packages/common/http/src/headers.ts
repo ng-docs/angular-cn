@@ -336,6 +336,9 @@ export class HttpHeaders {
  * Verifies that the headers object has the right shape: the values
  * must be either strings or arrays. Throws an error if an invalid
  * header value is present.
+ *
+ * 验证标头对象是否具有正确的形状：值必须是字符串或数组。如果存在无效的标头值，则抛出错误。
+ *
  */
 function assertValidHeaders(headers: Record<string, unknown>):
     asserts headers is Record<string, string|string[]> {

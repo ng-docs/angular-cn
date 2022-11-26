@@ -4,21 +4,33 @@
 
 Use the `ng new` command to start creating your **Tour of Heroes** application.
 
+使用 `ng new` 命令开始创建你的**英雄之旅**应用。
+
 This tutorial:
+
+本教程：
 
 1. Sets up your environment.
 
+   建立你的开发环境。
+
 2. Creates a new workspace and initial application project.
+
+   创建一个新的工作区和初始应用项目。
 
 3. Serves the application.
 
+   启动开发服务器。
+
 4. Makes changes to the new application.
+
+   对新应用进行更改。
 
 <div class="alert is-helpful">
 
 To view the application's code, see the <live-example></live-example>.
 
-要查看本页所讲的范例程序，请参阅<live-example></live-example>。
+要查看此应用的代码，请参阅<live-example></live-example>。
 
 </div>
 
@@ -38,7 +50,7 @@ You develop applications in the context of an Angular [workspace](guide/glossary
 A *workspace* contains the files for one or more [projects](guide/glossary#project).
 A *project* is the set of files that make up an application or a library.
 
-Angular 的[工作区](guide/glossary#workspace)就是你开发应用所在的上下文环境。一个工作区包含一个或多个[项目](guide/glossary#project)所需的文件。每个项目都是一组由应用、库或端到端（e2e）测试组成的文件集合。在本教程中，你将创建一个新的工作区。
+Angular 的[工作区](guide/glossary#workspace)就是你开发应用所在的上下文环境。一个工作区包含一个或多个[项目](guide/glossary#project)所需的文件。每个项目都是一组由应用、库或端到端（e2e）测试组成的文件集合。
 
 To create a new workspace and an initial project:
 
@@ -51,7 +63,7 @@ To create a new workspace and an initial project:
 
 2. Run `ng new` followed by the application name as shown here:
 
-   使用此应用名称运行 CLI 命令 `ng new`，如下所示：
+   使用此应用名称运行 `ng new`，如下所示：
 
    <code-example format="shell" language="shell">
 
@@ -62,16 +74,26 @@ To create a new workspace and an initial project:
 3. `ng new` prompts you for information about features to include in the initial  project.
    Accept the defaults by pressing the Enter or Return key.
 
+   `ng new` 会提示你有关要包含在初始项目中的特性的信息。按 Enter 或 Return 键接受默认值。
+
 `ng new` 命令会提示你输入要在初始应用项目中包含哪些特性，请按 Enter 或 Return 键接受其默认值。
 
 `ng new` installs the necessary `npm` packages and other dependencies that Angular requires.
 This can take a few minutes.
 
+`ng new` 会安装 Angular 所需的必要 `npm` 包和其它依赖项。这可能需要几分钟。
+
 `ng new` also creates the following workspace and starter project files:
+
+它还会创建下列工作区和初始项目的文件：
 
 * A new workspace, with a root directory named `angular-tour-of-heroes`
 
+  新的工作区，其根目录名叫 `angular-tour-of-heroes`。
+
 * An initial skeleton application project in the `src/app` subdirectory
+
+  一个最初的骨架应用项目，位于 `src/app` 子目录下。
 
 * Related configuration files
 
@@ -138,9 +160,10 @@ They display data on the screen, listen for user input, and take action based on
 Open the project in your favorite editor or IDE. Navigate to the `src/app` directory to edit the starter application.
 
 用你最喜欢的编辑器或 IDE 打开这个项目，并访问 `src/app` 目录，来对这个起始应用做一些修改。
+
 In the IDE, locate these files, which make up the `AppComponent` that you just created:
 
-你会在这里看到 `AppComponent` 壳的三个实现文件：
+在 IDE 中，定位这些文件，它们组成了你刚刚创建的 `AppComponent`：
 
 | Files | Details |
 | :---- | :------ |
@@ -157,9 +180,15 @@ In the IDE, locate these files, which make up the `AppComponent` that you just c
 When you ran `ng new`, Angular created test specifications for your new application.
 Unfortunately, making these changes breaks your newly created specifications.
 
+当你运行 `ng new` 时，Angular 会为你的新应用创建一些测试规约。不幸的是，做这些修改会破坏这些新创建的测试规约。
+
 That won't be a problem because Angular testing is outside the scope of this tutorial and won't be used.
 
+这不是大问题，因为 Angular 测试是本教程范围之外的，并且不会用到。
+
 To learn more about testing with Angular, see [Testing](guide/testing).
+
+要学习如何用 Angular 做测试，参见[测试](guide/testing)。
 
 </div>
 
@@ -199,7 +228,7 @@ Most apps strive for a consistent look across the application.
 `ng new` created an empty `styles.css` for this purpose.
 Put your application-wide styles there.
 
-大多数应用都会努力让整个应用保持一致的外观。因此，CLI 会生成一个空白的 `styles.css` 文件。你可以把全应用级别的样式放进去。
+大多数应用都会努力让整个应用保持一致的外观。`ng new` 会生成一个空白的 `styles.css` 文件。你可以把全应用级别的样式放进去。
 
 Open `src/styles.css` and add the code below to the file.
 
@@ -227,7 +256,7 @@ Here are the code files discussed on this page.
 
 * You created the initial application structure using `ng new`.
 
-  你使用 Angular CLI 创建了初始的应用结构
+  你使用 `ng new` 创建了初始的应用结构
 
 * You learned that Angular components display data
 

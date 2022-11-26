@@ -17,7 +17,7 @@ import {noop} from './util/noop';
  * A [DI token](guide/glossary#di-token "DI token definition") that you can use to provide
  * one or more initialization functions.
  *
- * 可用于提供一个或多个初始化功能的 [DI 令牌。](guide/glossary#di-token "DI 令牌定义")
+ * 可用于提供一个或多个初始化功能的 [DI 令牌](guide/glossary#di-token "DI 令牌定义")。
  *
  * The provided functions are injected at application startup and executed during
  * app initialization. If any of these functions returns a Promise or an Observable, initialization
@@ -35,13 +35,12 @@ import {noop} from './util/noop';
  * 令牌。该功能在应用程序引导过程中执行，并且所需的数据在启动时可用。
  *
  * @see `ApplicationInitStatus`
- *
  * @usageNotes
  *
  * The following example illustrates how to configure a multi-provider using `APP_INITIALIZER` token
  * and a function returning a promise.
  *
- * 以下示例展示了如何使用 `APP_INITIALIZER` 标记和返回 Promise 的函数配置多提供者。
+ * 以下示例展示了如何使用 `APP_INITIALIZER` 令牌和返回 Promise 的函数配置多提供者。
  *
  * ```
  *  function initializeApp(): Promise<any> {
@@ -68,6 +67,8 @@ import {noop} from './util/noop';
  * returning an observable, see an example below. Note: the `HttpClient` in this example is used for
  * demo purposes to illustrate how the factory function can work with other providers available
  * through DI.
+ *
+ * 也可以用 `APP_INITIALIZER` 令牌和返回 observable 的函数来配置多提供者，请参阅下面的示例。注：此示例中的 `HttpClient` 用于演示目的，以说明工厂函数如何与通过 DI 获得的其他提供程序一起使用。
  *
  * ```
  *  function initializeAppFactory(httpClient: HttpClient): () => Observable<any> {

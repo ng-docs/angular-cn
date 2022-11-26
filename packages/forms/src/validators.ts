@@ -403,6 +403,8 @@ export class Validators {
    *
    * @usageNotes
    *
+   * 用法说明
+   *
    * ### Validate that the field has a minimum of 3 characters
    *
    * ### 验证该字段至少有 3 个字符

@@ -4,6 +4,8 @@
 
 This topic describes the properties of the service worker configuration file.
 
+本主题介绍了 Service Worker 配置文件的属性。
+
 ## Prerequisites
 
 ## 前提条件
@@ -13,6 +15,8 @@ A basic understanding of the following:
 对下列知识有基本的了解：
 
 * [Service worker overview](https://developer.chrome.com/docs/workbox/service-worker-overview/)
+
+  [Service Worker 概览](https://developer.chrome.com/docs/workbox/service-worker-overview/)
 
 * [Service Worker in Production](guide/service-worker-devops)
 
@@ -105,6 +109,8 @@ Example patterns:
 
 ## Service worker configuration properties
 
+## Service Worker 配置属性
+
 The following sections describe each property of the configuration file.
 
 下面讲讲配置文件中的每个属性。
@@ -137,6 +143,8 @@ As not all such external URLs might be known at build time, URL patterns can be 
 <div class="alert is-important">
 
   For the service worker to handle resources that are loaded from different origins, make sure that [CORS][MozillaDeveloperDocsWebHttpCors] is correctly configured on each origin's server.
+
+  对于要处理不同来源资源的 Service Worker，请确保每个源服务器都正确配置了 [CORS][MozillaDeveloperDocsWebHttpCors]。
 
 </div>
 
@@ -200,6 +208,8 @@ interface AssetGroup {
 </code-example>
 
 Each `AssetGroup` is defined by the following asset group properties.
+
+每个 `AssetGroup` 都由以下资产组属性定义。
 
 #### `name`
 
@@ -343,6 +353,8 @@ export interface DataGroup {
 
 Each `DataGroup` is defined by the following data group properties.
 
+每个 `DataGroup` 都由以下数据组属性定义。
+
 #### `name`
 
 Similar to `assetGroups`, every data group has a `name` which uniquely identifies it.
@@ -400,6 +412,8 @@ Open-ended caches can grow in unbounded ways and eventually exceed storage quota
 ##### `maxAge`
 
 **Required**
+
+**必要**
 
 The `maxAge` parameter indicates how long responses are allowed to remain in the cache before being considered invalid and evicted.
 `maxAge` is a duration string, using the following unit suffixes:
@@ -476,12 +490,23 @@ To use this strategy set `strategy` to `freshness` and `timeout` to `0u` in `cac
 
 This essentially does the following:
 
+本质上说，它会做如下工作：
+
 1.  Try to fetch from the network first.
+
+    首先尝试从网络上获取。
+
 2.  If the network request does not complete immediately, that is after a timeout of 0&nbsp;ms, ignore the cache age and fall back to the cached value.
+
+    如果网络请求没有立刻完成（也就是 0 ms 内），就忽略缓存有效期，并用缓存的值做为后备。
+
 3.  Once the network request completes, update the cache for future requests.
+
+    一旦网络请求完成，就更新缓存，以供将来的请求使用。
+
 4.  If the resource does not exist in the cache, wait for the network request anyway.
 
-   如果指定的资源在缓存中不存在，总是等待网络请求。
+    如果指定的资源在缓存中不存在，总是等待网络请求。
 
 </div>
 
@@ -499,9 +524,9 @@ If not specified, the default value depends on the data group's configured strat
 | :--------- | :------ |
 | 策略 | 详情 |
 | Groups with the `freshness` strategy | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
-| 使用 `freshness` 策略的组 | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
+| 使用 `freshness` 策略的组 | 默认值为 `true`，Service Worker 会缓存不透明响应。这些组每次都会重新请求数据，只有在脱机或在慢速网络上时才会回到缓存响应。因此，服务工作者是否缓存错误响应是无关紧要的。 |
 | Groups with the `performance` strategy | The default value is `false` and the service worker doesn't cache opaque responses. These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
-| 具有 `performance` 策略的组 | The default value is `false` and the service worker doesn't cache opaque responses. These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
+| 具有 `performance` 策略的组 | 默认值为 `false`，Service Worker 不缓存不透明响应）。这些组将继续返回缓存响应，直到 `maxAge` 过期，即使错误是由于临时网络或服务器问题造成的。因此，服务工作者缓存错误响应将是有问题的。 |
 
 <div class="callout is-important">
 
@@ -540,7 +565,11 @@ This optional section enables you to specify a custom list of URLs that will be 
 The ServiceWorker redirects navigation requests that don't match any `asset` or `data` group to the specified [index file](#index-file).
 A request is considered to be a navigation request if:
 
+对于没有匹配上任何 `asset` 或 `data` 组的导航请求，ServiceWorker 会把它们重定向到指定的[索引文件](#index-file)。下列请求将会视为导航请求：
+
 * Its [method](https://developer.mozilla.org/docs/Web/API/Request/method) is `GET`
+
+  它的[方法](https://developer.mozilla.org/docs/Web/API/Request/method)是 `GET`
 
 * Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
 
@@ -551,6 +580,8 @@ A request is considered to be a navigation request if:
   它接受 `text/html` 响应（根据 `Accept` 头的值决定）
 
 * Its URL matches the following criteria:
+
+  其 URL 符合以下条件：
 
   * The URL must not contain a file extension (that is, a `.`) in the last path segment
 
@@ -574,6 +605,8 @@ To configure whether navigation requests are sent through to the network or not,
 
 While these default criteria are fine in most cases, it is sometimes desirable to configure different rules.
 For example, you might want to ignore specific routes, such as those that are not part of the Angular app, and pass them through to the server.
+
+虽然这些默认条件在大多数情况下都挺好用，不过有时还是要配置一些不同的规则。比如，你可能希望忽略一些特定的路由（它们可能不是 Angular 应用的一部分），而是把它们透传给服务器。
 
 This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that are matched at runtime.
 It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.

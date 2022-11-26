@@ -9,7 +9,7 @@
 /**
  * A token used to manipulate and access values stored in `HttpContext`.
  *
- * 用于操作和访问存储在 `HttpContext` 中的值的标记。
+ * 用于操作和访问存储在 `HttpContext` 中的值的令牌。
  *
  * @publicApi
  */
@@ -88,7 +88,7 @@ export class HttpContext {
   /**
    * Retrieve the value associated with the given token.
    *
-   * 检索与给定标记关联的值。
+   * 检索与给定令牌关联的值。
    *
    * @param token The reference to an instance of `HttpContextToken`.
    *
@@ -111,7 +111,7 @@ export class HttpContext {
   /**
    * Delete the value associated with the given token.
    *
-   * 删除与给定标记关联的值。
+   * 删除与给定令牌关联的值。
    *
    * @param token The reference to an instance of `HttpContextToken`.
    *
@@ -132,7 +132,7 @@ export class HttpContext {
   /**
    * Checks for existence of a given token.
    *
-   * 检查给定标记是否存在。
+   * 检查给定令牌是否存在。
    *
    * @param token The reference to an instance of `HttpContextToken`.
    *
@@ -142,7 +142,7 @@ export class HttpContext {
    *
    * True if the token exists, false otherwise.
    *
-   * 如果标记存在，则为 true ，否则为 false 。
+   * 如果令牌存在，则为 true ，否则为 false 。
    *
    */
   has(token: HttpContextToken<unknown>): boolean {
@@ -154,7 +154,7 @@ export class HttpContext {
    *
    * a list of tokens currently stored in the context.
    *
-   * 当前存储在上下文中的标记列表。
+   * 当前存储在上下文中的令牌列表。
    *
    */
   keys(): IterableIterator<HttpContextToken<unknown>> {

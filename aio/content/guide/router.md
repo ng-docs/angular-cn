@@ -335,7 +335,7 @@ The `Router` sets the document's title using the `title` property from the `Rout
 **NOTE**: <br /> The `title` property follows the same rules as static route `data` and dynamic values that implement `ResolveFn`.
 
 **注意**：<br />
-`title` 属性遵循与实现 `Resolve` 的静态路由 `data` 和动态值相同的规则。
+`title` 属性遵循与实现 `ResolveFn` 的静态路由 `data` 和动态值相同的规则。
 
 </div>
 
@@ -536,7 +536,7 @@ ng generate guard your-guard
 In your guard function, implement the guard you want to use.
 The following example uses `canActivate` to guard the route.
 
-请在守卫类里实现你要用到的守卫。下面的例子使用 `CanActivate` 来保护该路由。
+请在守卫函数里实现你要用到的守卫。下面的例子使用 `canActivate` 来保护该路由。
 
 <code-example header="guard (excerpt)">
 
@@ -734,7 +734,7 @@ You also have the option of switching to the `HashLocationStrategy` with an over
 
 For more information on providers and the bootstrap process, see [Dependency Injection](guide/dependency-injection-providers).
 
-关于提供程序和引导过程的更多信息，请参阅[依赖注入](guide/dependency-injection#bootstrap)。
+关于提供者和引导过程的更多信息，请参阅[依赖注入](guide/dependency-injection-providers)。
 
 </div>
 
@@ -862,6 +862,8 @@ Those developers can still use HTML5 URLs by taking the following two steps:
      `<base href>` 中的片段（#后面的部分）*永远不会*被使用
 
 For more complete information on how `<base href>` is used to construct target URIs, see the [RFC](https://tools.ietf.org/html/rfc3986#section-5.2.2) section on transforming references.
+
+有关如何使用 `<base href>` 构建目标 URI 的更完整信息，请参阅 [RFC](https://tools.ietf.org/html/rfc3986#section-5.2.2)有关转换引用的部分。
 
 <a id="hashlocationstrategy"></a>
 

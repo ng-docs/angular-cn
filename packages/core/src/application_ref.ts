@@ -52,7 +52,7 @@ let _platformInjector: Injector|null = null;
  * Internal token to indicate whether having multiple bootstrapped platform should be allowed (only
  * one bootstrapped platform is allowed by default). This token helps to support SSR scenarios.
  *
- * 用于表明是否允许有多个引导平台的内部标记（默认仅允许一个引导平台）。此令牌有助于支持 SSR 场景。
+ * 用于表明是否允许有多个引导平台的内部令牌（默认仅允许一个引导平台）。此令牌有助于支持 SSR 场景。
  *
  */
 export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultipleToken');
@@ -63,7 +63,7 @@ export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultip
  * `PlatformRef` class (i.e. register the callback via `PlatformRef.onDestroy`), thus making the
  * entire class tree-shakeable.
  *
- * 允许注册应该在 `PlatformRef.destroy` 操作期间调用的额外回调的内部标记。需要此标记来避免对
+ * 允许注册应该在 `PlatformRef.destroy` 操作期间调用的额外回调的内部令牌。需要此令牌来避免对
  * `PlatformRef` 类的直接引用（即通过 `PlatformRef.onDestroy` 注册回调），从而使整个类可树形抖动。
  *
  */
@@ -332,7 +332,7 @@ export function createPlatformFactory(
 /**
  * Checks that there is currently a platform that contains the given token as a provider.
  *
- * 检查当前是否存在以给定令牌为提供者的平台。
+ * 检查当前是否存在以给定标记为提供者的平台。
  *
  * @publicApi
  */
@@ -396,6 +396,8 @@ export function getPlatform(): PlatformRef|null {
 
 /**
  * Provides additional options to the bootstrapping process.
+ *
+ * 为引导过程提供其他选项。
  *
  * @publicApi
  */
@@ -874,6 +876,9 @@ export class ApplicationRef {
 
   /**
    * The `EnvironmentInjector` used to create this application.
+   *
+   * 用于创建此应用程序的 `EnvironmentInjector` 。
+   *
    */
   get injector(): EnvironmentInjector {
     return this._injector;

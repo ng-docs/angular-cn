@@ -64,17 +64,29 @@ export interface DirectiveDecorator {
    *
    * ### Declaring directives
    *
+   * ### 声明指令
+   *
    * In order to make a directive available to other components in your application, you should do
    * one of the following:
    *
+   * 为了使指令可用于你应用程序中的其他组件，你应该执行以下操作之一：
+   *
    * - either mark the directive as [standalone](guide/standalone-components),
+   *
+   *   要么将指令标记为[Standalone](guide/standalone-components) ，
    *
    * - or declare it in an NgModule by adding it to the `declarations` and `exports` fields.
    *
+   *   或者通过将其添加到 `declarations` 和 `exports` 字段来在 NgModule 中声明它。
+   *
    * ** Marking a directive as standalone **
+   *
+   * **将指令标记为独立**
    *
    * You can add the `standalone: true` flag to the Directive decorator metadata to declare it as
    * [standalone](guide/standalone-components):
+   *
+   * 你可以将 `standalone: true` 标志添加到 Directive 装饰器元数据中，以将其声明为[Standalone](guide/standalone-components) ：
    *
    * ```ts
    * @Directive ({
@@ -87,9 +99,15 @@ export interface DirectiveDecorator {
    * When marking a directive as standalone, please make sure that the directive is not already
    * declared in an NgModule.
    *
+   * 将指令标记为独立时，请确保该指令尚未在 NgModule 中声明。
+   *
    * ** Declaring a directive in an NgModule **
    *
+   * **在 NgModule 中声明指令**
+   *
    * Another approach is to declare a directive in an NgModule:
+   *
+   * 另一种方法是在 NgModule 中声明一个指令：
    *
    * ```ts
    * @Directive ({
@@ -106,14 +124,24 @@ export interface DirectiveDecorator {
    *
    * When declaring a directive in an NgModule, please make sure that:
    *
+   * 在 NgModule 中声明指令时，请确保：
+   *
    * - the directive is declared in exactly one NgModule.
+   *
+   *   该指令正好在一个 NgModule 中声明。
    *
    * - the directive is not standalone.
    *
+   *   该指令不是独立的。
+   *
    * - you do not re-declare a directive imported from another module.
+   *
+   *   你不会重新声明从另一个模块导入的指令。
    *
    * - the directive is included into the `exports` field as well if you want this directive to be
    *   accessible for components outside of the NgModule.
+   *
+   *   如果你希望 `exports` 之外的组件可以访问此指令，则该指令也包含在 export 字段中。
    *
    * @Annotation
    */
@@ -450,10 +478,15 @@ export interface Directive {
    * By default, none of the inputs or outputs of the host directives will be available on the host,
    * unless they are specified in the `inputs` or `outputs` properties.
    *
+   * 指令匹配时应该应用于宿主的独立指令。默认情况下，host 指令的任何输入或输出在宿主上都不可用，除非它们在 `inputs` 或 `outputs` 属性中指定。
+   *
    * You can additionally alias inputs and outputs by putting a colon and the alias after the
    * original input or output name. For example, if a directive applied via `hostDirectives`
    * defines an input named `menuDisabled`, you can alias this to `disabled` by adding
    * `'menuDisabled: disabled'` as an entry to `inputs`.
+   *
+   * 你可以通过在原始输入或输出名称后面放一个冒号和别名来为输入和输出额外别名。例如，如果通过 `hostDirectives` 应用的指令定义了一个名为 `menuDisabled` 的 `inputs` ，你可以通过将 `'menuDisabled: disabled'` `disabled` 条目添加到 sources 来将其别名为 enabled 。
+   *
    */
   hostDirectives?: (Type<unknown>|{
     directive: Type<unknown>,
@@ -1314,6 +1347,8 @@ export interface HostListener {
  *
  * The following example registers another DOM event handler that listens for `Enter` key-press
  * events on the global `window`.
+ *
+ * 以下示例注册了另一个 DOM 事件处理程序，它会侦听全局 `window` 上的 `Enter` 按键事件。
  *
  * ```ts
  * import { HostListener, Component } from "

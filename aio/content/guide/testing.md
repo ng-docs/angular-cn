@@ -20,7 +20,7 @@ Before writing tests for your Angular application, you should have a basic under
 
 * [Angular fundamentals](guide/architecture)
 
-  Angular 的基本原理
+  [Angular 的基本原理](guide/architecture)
 
 * [JavaScript](https://javascript.info/)
 
@@ -86,7 +86,11 @@ TOTAL: 3 SUCCESS
 
 The last line of the log shows that Karma ran three tests that all passed.
 
+日志的最后一行显示 Karma 运行了三个测试，这些测试都通过了。
+
 The test output is displayed in the browser using [Karma Jasmine HTML Reporter](https://github.com/dfederm/karma-jasmine-html-reporter).
+
+测试输出使用 [Karma Jasmine HTML Reporter](https://github.com/dfederm/karma-jasmine-html-reporter) 显示在浏览器中。
 
 <div class="lightbox">
 
@@ -96,7 +100,7 @@ The test output is displayed in the browser using [Karma Jasmine HTML Reporter](
 
 Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group ("test suite").
 
-大多数人都会觉得浏览器中的报告比控制台中的日志更容易阅读。可以点击某一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
+可以点击某一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
 
 Meanwhile, the `ng test` command is watching for changes.
 
@@ -113,9 +117,15 @@ The tests run again, the browser refreshes, and the new test results appear.
 
 The Angular CLI takes care of Jasmine and Karma configuration for you. It constructs the full configuration in memory, based on options specified in the `angular.json` file.
 
+Angular CLI 会为你处理 Jasmine 和 Karma 配置。它根据 `angular.json` 文件中指定的选项在内存中构建完整配置。
+
 If you require to fine-tune Karma, follow the below steps:
 
+如果你需要微调 Karma，请按照以下步骤操作：
+
 1. Create a `karma.conf.js` in the root folder of the project.
+
+   在项目的根文件夹中创建一个 `karma.conf.js` 。
 
    <code-example format="javascript" language="javascript" header="karma.conf.js">
 
@@ -165,6 +175,8 @@ If you require to fine-tune Karma, follow the below steps:
 
 1. In the `angular.json`, use the [`karmaConfig`](cli/test) option to configure the Karma builder to use the created configuration file.
 
+   在 `angular.json` 中，使用 [`karmaConfig`](cli/test) 选项将 Karma 构建器配置为使用创建的配置文件。
+
    <code-example format="jsonc" language="jsonc">
 
    "test": {
@@ -182,6 +194,8 @@ If you require to fine-tune Karma, follow the below steps:
 <div class="alert is-helpful">
 
 Read more about Karma configuration in the [Karma configuration guide](http://karma-runner.github.io/6.4/config/configuration-file.html).
+
+要了解更多关于 Karma 配置的信息，参见 [Karma 配置指南](http://karma-runner.github.io/6.4/config/configuration-file.html)。
 
 </div>
 
@@ -280,11 +294,15 @@ next to their corresponding helper files.
 
 One of the best ways to keep your project bug-free is through a test suite, but you might forget to run tests all the time.
 
+保持项目无错误的最佳方法之一是通过测试套件，但你可能会忘记一直运行测试。
+
 Continuous integration (CI) servers let you set up your project repository so that your tests run on every commit and pull request.
 
 避免项目出 BUG 的最佳方式之一，就是使用测试套件。但是很容易忘了一直运行它。持续集成（CI）服务器让你可以配置项目的代码仓库，以便每次提交和收到 Pull Request 时就会运行你的测试。
 
 To test your Angular CLI application in Continuous integration (CI) run the following command:
+
+要在持续集成 (CI) 中测试你的 Angular CLI 应用程序，请运行以下命令：
 
 <code-example format="shell" language="shell">
 

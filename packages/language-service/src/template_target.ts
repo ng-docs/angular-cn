@@ -347,6 +347,9 @@ function findFirstMatchingNodeForSourceSpan(
 
 /**
  * A tcb nodes for the template at a given position, include the tcb node of the template.
+ *
+ * 给定位置的模板的 tcb 节点，包括模板的 tcb 节点。
+ *
  */
 interface TcbNodesInfoForTemplate {
   componentTcbNode: tss.Node;
@@ -355,6 +358,8 @@ interface TcbNodesInfoForTemplate {
 
 /**
  * Return the nodes in `TCB` of the node at the specified cursor `position`.
+ *
+ * 返回指定光标 `position` 处节点的 `TCB` 中的节点。
  *
  */
 export function getTcbNodesOfTemplateAtPosition(

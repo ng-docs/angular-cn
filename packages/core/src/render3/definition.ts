@@ -92,7 +92,7 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
    * Used to calculate the length of this component's LView array, so we
    * can pre-fill the array and set the host binding start index.
    *
-   * 用于计算此组件的 LView 数组的长度，因此我们可以预填充数组并设置主机绑定开始索引。
+   * 用于计算此组件的 LView 数组的长度，因此我们可以预填充数组并设置宿主绑定开始索引。
    *
    */
   vars: number;
@@ -174,7 +174,7 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
   /**
    * Function executed by the parent template to allow child directive to apply host bindings.
    *
-   * 由父模板执行以允许子指令应用主机绑定的函数。
+   * 由父模板执行以允许子指令应用宿主绑定的函数。
    *
    */
   hostBindings?: HostBindingsFunction<T>;
@@ -187,7 +187,7 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
    * Used to calculate the length of the component's LView array, so we
    * can pre-fill the array and set the host binding start index.
    *
-   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置主机绑定开始索引。
+   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置宿主绑定开始索引。
    *
    */
   hostVars?: number;
@@ -500,6 +500,8 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
  *
  * @codeGenApi
  *
+ * 代码 GenApi
+ *
  */
 export function ɵɵsetComponentScope(
     type: ComponentType<any>, directives: Type<any>[]|(() => Type<any>[]),
@@ -522,6 +524,8 @@ function nonNull<T>(value: T|null): value is T {
 
 /**
  * @codeGenApi
+ *
+ * 代码 GenApi
  *
  */
 export function ɵɵdefineNgModule<T>(def: {
@@ -612,6 +616,8 @@ export function ɵɵdefineNgModule<T>(def: {
  *
  * @codeGenApi
  *
+ * 代码 GenApi
+ *
  */
 export function ɵɵsetNgModuleScope(type: any, scope: {
   /**
@@ -668,6 +674,8 @@ export function ɵɵsetNgModuleScope(type: any, scope: {
  * @Input ('publicName2')
  *   declaredPropName2: number;
  * }
+ *
+ * 输入 ()propName1 ：字符串； @Input ('publicName2') 声明的 PropName2: 数字; }
  *
  * ```
  * will be serialized as
@@ -861,7 +869,7 @@ export const ɵɵdefineDirective =
       /**
        * Function executed by the parent template to allow child directive to apply host bindings.
        *
-       * 由父模板执行以允许子指令应用主机绑定的函数。
+       * 由父模板执行以允许子指令应用宿主绑定的函数。
        *
        */
       hostBindings?: HostBindingsFunction<T>;
@@ -874,7 +882,7 @@ export const ɵɵdefineDirective =
        * Used to calculate the length of the component's LView array, so we
        * can pre-fill the array and set the host binding start index.
        *
-       * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置主机绑定开始索引。
+       * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置宿主绑定开始索引。
        *
        */
       hostVars?: number;

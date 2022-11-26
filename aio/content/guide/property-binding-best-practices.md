@@ -4,7 +4,7 @@
 
 By following a few guidelines, you can use property binding in a way that helps you reduce bugs and keep your code readable.
 
-通过遵循一些指导原则，你可以使用属性绑定来帮助你最大限度地减少错误并让代码保持可读性。
+通过遵循一些指导原则，你可以使用属性绑定来帮助你减少错误并让代码保持可读性。
 
 <div class="alert is-helpful">
 
@@ -46,11 +46,19 @@ As a best practice, use only properties and methods that return values.
 A template expression should result in the type of value that the target property expects.
 For example, return:
 
+模板表达式应该求值为目标属性所期望的值类型。例如，返回：
+
 * a `string`, if the target property expects a string
+
+  一个 `string` ，如果目标属性需要一个字符串
 
 * a `number`, if it expects a number
 
+  一个 `number` ，如果目标属性需要一个数字
+
 * an `object`, if it expects an object.
+
+  一个 `object` ，如果目标属性需要一个对象。
 
 模板表达式应该求值为目标属性所期望的值类型。比如，如果目标属性需要一个字符串，就返回一个字符串；如果需要一个数字，就返回一个数字；如果需要一个对象，就返回一个对象。
 

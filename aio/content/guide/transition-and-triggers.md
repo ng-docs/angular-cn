@@ -1,5 +1,7 @@
 # Animation transitions and triggers
 
+# 动画转场和触发器
+
 This guide goes into depth on special transition states such as the `*` wildcard and `void`. It shows how these special states are used for elements entering and leaving a view.
 This section also explores multiple animation triggers, animation callbacks, and sequence-based animation using keyframes.
 
@@ -57,7 +59,7 @@ In the two-state button example, the wildcard isn't that useful because there ar
 In general, use wildcard states when an element has multiple potential states that it can change to.
 If the button can change from `open` to either `closed` or something like `inProgress`, using a wildcard state could reduce the amount of coding needed.
 
-在这个双态按钮的例子中，通配符不是很有用，因为只有两种可能的状态：`open` 和 `closed`。一般而言，当一个特定状态下的元素可能变更为多个潜在状态时，通配符状态会更好用。如果我们的按钮可以从 `open` 变成 `closed` 或类似 `inProgress` 的状态，则可以使用通配符状态来减少所需的编码量。
+在这个双态按钮的例子中，通配符不是很有用，因为只有两种可能的状态：`open` 和 `closed`。一般而言，当一个元素可能变更为多个潜在状态时，通配符状态会更好用。如果我们的按钮可以从 `open` 变成 `closed` 或类似 `inProgress` 的状态，则可以使用通配符状态来减少所需的编码量。
 
 <div class="lightbox">
 
@@ -307,8 +309,6 @@ A selective child animations can still be run on a disabled parent in one of the
 
   <!-- vale on -->
 
-  父动画可以使用 [`query()`](api/animations/query) 函数来收集 HTML 模板中位于禁止动画区域内部的元素。这些元素仍然可以播放动画。
-
 * A child animation can be queried by a parent and then later animated with the `animateChild()` function
 
   子动画可以被父动画查询，并且稍后使用 `animateChild()` 来播放它。
@@ -354,7 +354,7 @@ In this example, the trigger `openClose` appears as follows.
 A potential use for animation callbacks could be to cover for a slow API call, such as a database lookup.
 For example, an **InProgress** button can be set up to have its own looping animation while the backend system operation finishes.
 
-动画回调的潜在用途之一，是用来覆盖比较慢的 API 调用，比如查阅数据库。比如，你可以建立一个 **InProgress** 按钮，让它拥有自己的循环动画。当后端系统操作完成时，它会播放脉动效果或其它一些视觉动作。
+动画回调的潜在用途之一，是用来覆盖比较慢的 API 调用，比如查阅数据库。比如，可以建立一个 **InProgress** 按钮，让它拥有自己的循环动画，直到后端系统操作完成。
 
 Another animation can be called when the current animation finishes.
 For example, the button goes from the `inProgress` state to the `closed` state when the API call is completed.
@@ -363,7 +363,7 @@ For example, the button goes from the `inProgress` state to the `closed` state w
 
 An animation can influence an end user to *perceive* the operation as faster, even when it is not.
 
-动画可以影响最终用户，让他*觉得*操作更快 —— 虽然并没有。因此，简单的动画是保持用户满意的一种经济有效的手段，而不必寻求提高服务器调用的速度或被迫补救那些你无法控制的情况，比如不可靠的网络连接。
+动画可以影响最终用户，让他*觉得*操作更快 —— 虽然并没有。
 
 Callbacks can serve as a debugging tool, for example in conjunction with `console.warn()` to view the application's progress in a browser's Developer JavaScript Console.
 The following code snippet creates console log output for the original example, a button with the two states of `open` and `closed`.
@@ -519,7 +519,7 @@ These properties are often challenging to animate using CSS.
 
 In these cases, you can use a special wildcard `*` property value under `style()`. The value of that particular style property is computed at runtime and then plugged into the animation.
 
-这些情况下，你可以在 `style()` 中指定通配符 `*` 属性，以便在运行期间计算该属性的值，然后把它插入到动画中。
+这些情况下，你可以在 `style()` 中指定通配符 `*` 属性。该属性的值是在运行期间计算的，然后把它插入到动画中。
 
 The following example has a trigger called `shrinkOut`, used when an HTML element leaves the page.
 The animation takes whatever height the element has before it leaves, and animates from that height to zero.

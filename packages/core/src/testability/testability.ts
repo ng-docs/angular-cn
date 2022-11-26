@@ -385,7 +385,7 @@ export class TestabilityRegistry {
    *
    * @param token token of application, root element
    *
-   * 应用令牌，根元素
+   * 应用的令牌，根元素
    *
    * @param testability Testability hook
    *
@@ -403,7 +403,7 @@ export class TestabilityRegistry {
    *
    * @param token token of application, root element
    *
-   * 应用令牌，根元素
+   * 应用的令牌，根元素
    *
    */
   unregisterApplication(token: any) {

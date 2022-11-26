@@ -166,11 +166,11 @@ export function validateConstructorDependencies(
 /**
  * Creates a fatal error with diagnostic for an invalid injection token.
  *
- * 使用无效注入标记的诊断创建致命错误。
+ * 使用无效注入令牌的诊断创建致命错误。
  *
  * @param clazz The class for which the injection token was unavailable.
  *
- * 注入标记不可用的类。
+ * 注入令牌不可用的类。
  *
  * @param error The reason why no valid injection token is available.
  *

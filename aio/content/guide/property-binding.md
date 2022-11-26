@@ -104,7 +104,7 @@ Omitting the brackets renders the string `parentItem`, not the value of `parentI
 
 To bind the `src` property of an `<img>` element to a component's property, place `src` in square brackets followed by an equal sign and then the property.
 
-要将 `<img>` 的 `src` 属性绑定到组件的属性，请将目标 `src` 放在方括号中，后跟等号，然后是组件的属性。
+要将 `<img>` 的 `src` 属性绑定到组件的属性，请将 `src` 放在方括号中，后跟等号，然后是组件的属性。
 
 Using the property `itemImageUrl`, type the following code:
 
@@ -130,13 +130,13 @@ A common point of confusion is between the attribute, `colspan`, and the propert
 
 To use property binding using `colSpan`, type the following:
 
-要通过 colSpan 使用属性绑定，请键入以下内容：
+要通过 `colSpan` 使用属性绑定，请键入以下内容：
 
 <code-example path="attribute-binding/src/app/app.component.html" region="colSpan" header="src/app/app.component.html"></code-example>
 
 To disable a button while the component's `isUnchanged` property is `true`, type the following:
 
-要在组件显示 `isUnchanged` 时禁用按钮，请键入以下内容：
+要在组件的 `isUnchanged` 属性为 `true` 时禁用按钮，请键入以下内容：
 
 <code-example path="property-binding/src/app/app.component.html" region="disabled-button" header="src/app/app.component.html"></code-example>
 
@@ -148,21 +148,21 @@ To set a property of a directive, type the following:
 
 To set the model property of a custom component for parent and child components to communicate with each other, type the following:
 
-要将自定义组件的模型属性设置为父组件和子组件进行通信，请键入以下内容：
+要将自定义组件的模型属性设置为供父组件和子组件互相通信的，请键入以下内容：
 
 <code-example path="property-binding/src/app/app.component.html" region="model-property-binding" header="src/app/app.component.html"></code-example>
 
 ## Toggling button features
 
-<!-- vale Angular.Google_WordListSuggestions = NO -->
-
 ## 切换按钮功能
+
+<!-- vale Angular.Google_WordListSuggestions = NO -->
 
 To use a Boolean value to disable a button's features, bind the `disabled` DOM attribute to a Boolean property in the class.
 
-<!-- vale Angular.Google_WordListSuggestions = YES -->
+要使用布尔值来禁用某个按钮的特性，请将 DOM 属性 `disabled` 绑定到此类中的某个 Boolean 型属性。
 
-若要根据布尔值禁用按钮的功能，请将 DOM 的 `disabled` Property 设置为类中的源属性（可能为 `true` 或 `false`）。
+<!-- vale Angular.Google_WordListSuggestions = YES -->
 
 <code-example path="property-binding/src/app/app.component.html" region="disabled-button" header="src/app/app.component.html"></code-example>
 

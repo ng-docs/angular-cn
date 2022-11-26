@@ -400,15 +400,15 @@ Internally, the Angular CLI uses the below `browserslist` configuration which ma
   <code-example format="none" language="text">
   last 1 Chrome version
   last 1 Firefox version
-    last 2 Edge major versions
-    last 2 Safari major versions
+  last 2 Edge major versions
+  last 2 Safari major versions
   last 2 iOS major versions
   Firefox ESR
   </code-example>
 
 To override the internal configuration, add a new file named `.browserslistrc`, to the project directory, that specifies the browsers you want to support:
 
-  或者你也可以在项目目录下添加一个新文件 `.browserslistrc`，用于指定你要支持哪些浏览器：
+要想覆盖此内部配置，请在项目目录下添加一个新文件 `.browserslistrc`，用于指定你要支持哪些浏览器：
 
   <code-example format="none" language="text">
 
@@ -419,13 +419,16 @@ To override the internal configuration, add a new file named `.browserslistrc`, 
 
 See the [browserslist repository](https://github.com/browserslist/browserslist) for more examples of how to target specific browsers and versions.
 
+有关如何以特定浏览器和版本为目标的更多示例，请参阅[browserslist 存储库](https://github.com/browserslist/browserslist)。
+
 <div class="alert is-helpful">
 
 Use [browsersl.ist](https://browsersl.ist) to display compatible browsers for a `browserslist` query.
 
+使用 [browsersl.ist](https://browsersl.ist) 来显示 `browserslist` 查询都兼容哪些浏览器。
+
 </div>
 
-参阅 [browserslist 的代码库](https://github.com/browserslist/browserslist)以得到如何指定浏览器及其版本的更多例子。
 
 <a id="proxy"></a>
 

@@ -59,6 +59,9 @@ export abstract class Injector {
    * method: consider dropping the `InjectFlags` part in one of the major versions.
    * It can **not** be done in minor/patch, since it's breaking for custom injectors
    * that only implement the old `InjectorFlags` interface.
+   *
+   * 关于 `options?: InjectOptions|InjectFlags` 覆盖 `get` 方法：考虑将 `InjectFlags` 部分放在主要版本之一中。它**不能**在次要/补丁中完成，因为它对于仅实现旧的 `InjectorFlags` 接口的自定义注入器来说是中断的。
+   *
    */
 
   /**
@@ -80,23 +83,61 @@ export abstract class Injector {
   }): T;
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue: null|undefined, options: InjectOptions): T
       |null;
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, options?: InjectOptions|InjectFlags):
       T;
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
-   * @deprecated use object-based flags (`InjectOptions`) instead.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
+   * @deprecated
+   *
+   * use object-based flags (`InjectOptions`) instead.
+   *
+   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**

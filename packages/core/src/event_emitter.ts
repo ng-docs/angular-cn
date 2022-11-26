@@ -62,6 +62,8 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * Access the event object with the `$event` argument passed to the output event
  * handler:
  *
+ * 使用传递给输出事件处理程序的 `$event` 参数访问事件对象：
+ *
  * ```html
  * <zippy (open)="onOpen($event)" (close)="onClose($event)"></zippy>
  * ```

@@ -44,6 +44,8 @@ import {Component} from './directives';
  * NOTE: In AOT the resolution happens during compilation, and so there should be no need
  * to call this method outside JIT mode.
  *
+ * 注意：在 AOT 中，解析发生在编译期间，因此应该没有必要在 JIT 模式之外调用此方法。
+ *
  * @param resourceResolver a function which is responsible for returning a `Promise` to the
  * contents of the resolved URL. Browser's `fetch()` method is a good default implementation.
  *

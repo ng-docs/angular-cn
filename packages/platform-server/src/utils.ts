@@ -34,6 +34,9 @@ function _getPlatform(
 /**
  * Adds the `ng-server-context` attribute to host elements of all bootstrapped components
  * within a given application.
+ *
+ * 将 `ng-server-context` 属性添加到给定应用程序中所有引导组件的宿主元素。
+ *
  */
 function appendServerContextInfo(serverContext: string, applicationRef: ApplicationRef) {
   applicationRef.components.forEach(componentRef => {
@@ -112,6 +115,9 @@ the server-rendered app can be properly bootstrapped into a client app.`);
 
 /**
  * Specifies the value that should be used if no server context value has been provided.
+ *
+ * 指定在没有提供服务器上下文值的情况下应该使用的值。
+ *
  */
 const DEFAULT_SERVER_CONTEXT = 'other';
 
@@ -119,15 +125,24 @@ const DEFAULT_SERVER_CONTEXT = 'other';
  * An internal token that allows providing extra information about the server context
  * (e.g. whether SSR or SSG was used). The value is a string and characters other
  * than [a-zA-Z0-9\-] are removed. See the default value in `DEFAULT_SERVER_CONTEXT` const.
+ *
+ * 一个内部标记，允许提供有关服务器上下文的额外信息（例如，是使用 SSR 还是 SSG）。该值是一个字符串，并删除[a-zA-Z0-9-][a-zA-Z0-9\-]以外的字符。请参阅 `DEFAULT_SERVER_CONTEXT` const 中的默认值。
+ *
  */
 export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');
 
 /**
  * Sanitizes provided server context:
  *
+ * 清理提供的服务器上下文：
+ *
  * - removes all characters other than a-z, A-Z, 0-9 and `-`
  *
+ *   删除 az、AZ、0-9 和 `-` 之外的所有字符
+ *
  * - returns `other` if nothing is provided or the string is empty after sanitization
+ *
+ *   如果未提供任何内容或清理后字符串为空，则返回 `other`
  *
  */
 function sanitizeServerContext(serverContext: string): string {
@@ -138,15 +153,28 @@ function sanitizeServerContext(serverContext: string): string {
 /**
  * Bootstraps an application using provided NgModule and serializes the page content to string.
  *
+ * 使用提供的 NgModule 引导应用程序，并将页面内容序列化为字符串。
+ *
  * @param moduleType A reference to an NgModule that should be used for bootstrap.
+ *
+ * 对应该用于引导的 NgModule 的引用。
+ *
  * @param options Additional configuration for the render operation:
+ *
+ * 渲染操作的附加配置：
  *
  * - `document` - the document of the page to render, either as an HTML string or
  *                as a reference to the `document` instance.
  *
+ *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *
  * - `url` - the URL for the current render request.
  *
+ *   `url` - 当前呈现请求的 URL。
+ *
  * - `extraProviders` - set of platform level providers for the current render request.
+ *
+ *   `extraProviders` - 当前渲染请求的平台级提供程序集。
  *
  * @publicApi
  */
@@ -186,20 +214,37 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  * 对应该呈现的独立组件的引用。
  * @param options Additional configuration for the render operation:
  *
+ * 渲染操作的附加配置：
+ *
  * - `appId` - a string identifier of this application. The appId is used to prefix all
  *             server-generated stylings and state keys of the application in TransferState
  *             use-cases.
  *
+ *   `appId` - 此应用程序的字符串标识符。 appId 用于在 TransferState 用例中作为应用程序的所有服务器生成的样式和状态键的前缀。
+ *
  * - `document` - the document of the page to render, either as an HTML string or
  *                as a reference to the `document` instance.
  *
+ *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *
  * - `url` - the URL for the current render request.
+ *
+ *   `url` - 当前呈现请求的 URL。
  *
  * - `providers` - set of application level providers for the current render request.
  *
+ *   `providers` - 当前渲染请求的应用程序级提供程序集。
+ *
  * - `platformProviders` - the platform level providers for the current render request.
  *
- * @returns A Promise, that returns serialized (to a string) rendered page, once resolved.
+ *   `platformProviders` - 当前渲染请求的平台级提供程序。
+ *
+ * @returns
+ *
+ * A Promise, that returns serialized (to a string) rendered page, once resolved.
+ *
+ * 一个 Promise，一旦解析，就会返回序列化（到字符串）呈现的页面。
+ *
  * @publicApi
  * @developerPreview
  */
@@ -225,16 +270,29 @@ export function renderApplication<T>(rootComponent: Type<T>, options: {
  * Bootstraps an application using provided {@link NgModuleFactory} and serializes the page content
  * to string.
  *
+ * 使用提供的 {@link NgModuleFactory} 引导应用程序，并将页面内容序列化为字符串。
+ *
  * @param moduleFactory An instance of the {@link NgModuleFactory} that should be used for
  *     bootstrap.
+ *
+ * 应该用于引导的 {@link NgModuleFactory} 的实例。
+ *
  * @param options Additional configuration for the render operation:
+ *
+ * 渲染操作的附加配置：
  *
  * - `document` - the document of the page to render, either as an HTML string or
  *                as a reference to the `document` instance.
  *
+ *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *
  * - `url` - the URL for the current render request.
  *
+ *   `url` - 当前呈现请求的 URL。
+ *
  * - `extraProviders` - set of platform level providers for the current render request.
+ *
+ *   `extraProviders` - 当前渲染请求的平台级提供程序集。
  *
  * @publicApi
  * @deprecated

@@ -16,11 +16,11 @@ If you are confident that a part of the application is not affected by a state c
 
 ## Using `OnPush`
 
-## 使用 OnPush
+## 使用 `OnPush`
 
 OnPush change detection instructs Angular to run change detection for a component subtree **only** when:
 
-OnPush 变更检测会指示 Angular 仅在以下情况下为组件子树自动运行变更检测：
+OnPush 变更检测会指示 Angular 仅在以下情况下为组件子树运行变更检测：
 
 * The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `==`
 
@@ -28,7 +28,7 @@ OnPush 变更检测会指示 Angular 仅在以下情况下为组件子树自动�
 
 * Angular handles an event _(for example using event binding, output binding, or `@HostListener` )_ in the subtree's root component or any of its children whether they are using OnPush change detection or not.
 
-  Angular 处理使用了 OnPush 变更检测策略的组件中的事件时
+  Angular 在本子树的根组件或它的任何子组件（而不管其是否使用 OnPush 变更检测方式）中处理使用 OnPush 变更检测策略的组件中的事件（比如事件绑定、输出绑定或 `@HostListener`）时
 
 You can set the change detection strategy of a component to `OnPush` in the `@Component` decorator:
 

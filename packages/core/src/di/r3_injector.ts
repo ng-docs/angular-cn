@@ -114,22 +114,60 @@ export abstract class EnvironmentInjector implements Injector {
   }): T;
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue: null|undefined, options: InjectOptions): T
       |null;
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, options?: InjectOptions): T;
   /**
    * Retrieves an instance from the injector based on the provided token.
-   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 根据提供的标记从注入器中检索实例。
+   *
+   * @returns
+   *
+   * The instance from the injector if defined, otherwise the `notFoundValue`.
+   *
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
-   * @deprecated use object-based flags (`InjectOptions`) instead.
+   *
+   * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
+   *
+   * @deprecated
+   *
+   * use object-based flags (`InjectOptions`) instead.
+   *
+   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**
@@ -146,12 +184,24 @@ export abstract class EnvironmentInjector implements Injector {
   /**
    * Runs the given function in the context of this `EnvironmentInjector`.
    *
+   * 在此 `EnvironmentInjector` 的上下文中运行给定的函数。
+   *
    * Within the function's stack frame, `inject` can be used to inject dependencies from this
    * injector. Note that `inject` is only usable synchronously, and cannot be used in any
    * asynchronous callbacks or after any `await` points.
    *
+   * 在函数的堆栈框架中， `inject` 可用于从此注入器注入依赖项。请注意， `inject` 仅可同步使用，不能在任何异步回调或任何 `await` 点之后使用。
+   *
    * @param fn the closure to be run in the context of this injector
-   * @returns the return value of the function, if any
+   *
+   * 要在此注入器的上下文中运行的闭包
+   *
+   * @returns
+   *
+   * the return value of the function, if any
+   *
+   * 函数的返回值（如果有）
+   *
    */
   abstract runInContext<ReturnT>(fn: () => ReturnT): ReturnT;
 

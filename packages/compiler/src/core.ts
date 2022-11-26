@@ -108,14 +108,14 @@ export const enum InjectFlags {
   /**
    * Inject `defaultValue` instead if token not found.
    *
-   * 如果找不到标记，则注入 `defaultValue` 。
+   * 如果找不到令牌，则注入 `defaultValue` 。
    *
    */
   Optional = 1 << 3,
   /**
    * This token is being injected into a pipe.
    *
-   * 此标记正在被注入管道。
+   * 此令牌正在被注入管道。
    *
    * @internal
    */

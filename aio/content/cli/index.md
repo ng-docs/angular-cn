@@ -179,7 +179,11 @@ If neither option is supplied, the flag remains in its default state, as listed 
 
 ### Array options
 
+### 数组选项
+
 Array options can be provided in two forms: `--option value1 value2` or `--option value1 --option value2`.
+
+数组选项可以用两种形式提供： `--option value1 value2` 或 `--option value1 --option value2` 。
 
 ### Relative paths
 

@@ -80,7 +80,7 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
   /**
    * Information about host bindings present on the component.
    *
-   * 有关组件上存在的主机绑定的信息。
+   * 有关组件上存在的宿主绑定的信息。
    *
    */
   host?: {
@@ -699,7 +699,7 @@ export interface R3DeclareInjectableMetadata extends R3PartialDeclaration {
    * If provided, an expression that evaluates to a token of another injectable that this injectable
    * aliases.
    *
-   * 如果提供了一个表达式，则计算结果为此可注入别名的另一个可注入的标记。
+   * 如果提供了一个表达式，则计算结果为此可注入别名的另一个可注入的令牌。
    *
    */
   useExisting?: o.Expression;
@@ -733,7 +733,7 @@ export interface R3DeclareDependencyMetadata {
    * An expression representing the token or value to be injected, or `null` if the dependency is
    * not valid.
    *
-   * 表示要注入的标记或值的表达式，如果依赖项无效，则为 `null` 。
+   * 表示要注入的令牌或值的表达式，如果依赖项无效，则为 `null` 。
    *
    * If this dependency is due to the `@Attribute()` decorator, then this is an expression
    * evaluating to the name of the attribute.

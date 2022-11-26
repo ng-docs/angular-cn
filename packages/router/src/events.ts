@@ -203,23 +203,37 @@ export class NavigationEnd extends RouterEvent {
  * A code for the `NavigationCancel` event of the `Router` to indicate the
  * reason a navigation failed.
  *
+ * `Router` 的 `NavigationCancel` 事件的代码，用于表明导航失败的原因。
+ *
  * @publicApi
  */
 export const enum NavigationCancellationCode {
   /**
    * A navigation failed because a guard returned a `UrlTree` to redirect.
+   *
+   * 导航失败，因为守卫返回了要重定向的 `UrlTree` 。
+   *
    */
   Redirect,
   /**
    * A navigation failed because a more recent navigation started.
+   *
+   * 导航失败，因为启动了更新的导航。
+   *
    */
   SupersededByNewNavigation,
   /**
    * A navigation failed because one of the resolvers completed without emiting a value.
+   *
+   * 导航失败，因为其中一个解析器在未发出值的情况下完成。
+   *
    */
   NoDataFromResolver,
   /**
    * A navigation failed because a guard returned `false`.
+   *
+   * 导航失败，因为守卫返回 `false` 。
+   *
    */
   GuardRejected,
 }

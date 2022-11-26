@@ -47,6 +47,8 @@ export class I18nPluralPipe implements PipeTransform {
    * @param pluralMap an object that mimics the ICU format, see
    * <https://unicode-org.github.io/icu/userguide/format_parse/messages/>.
    *
+   * 模仿 ICU 格式的对象，请参阅<https://unicode-org.github.io/icu/userguide/format_parse/messages/> 。
+   *
    * @param locale a `string` defining the locale to use (uses the current {@link LOCALE_ID} by
    * default).
    *

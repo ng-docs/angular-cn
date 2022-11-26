@@ -295,7 +295,7 @@ For `@angular/core` these are:
 
 As shown in the preceding code snippet, a module resolver can use these keys to load a specific code format.
 
-如上，模块解析器可以用这些键来加载特定的代码格式。
+如前述代码片段所示，模块解析器可以用这些键来加载特定的代码格式。
 
 <div class="alert is-helpful">
 
@@ -343,7 +343,7 @@ APF 格式的包，包含一个主要入口点和零到多个次要入口点（�
 
    Users typically perceive these entrypoints as distinct groups of symbols, with different purposes or capability.
 
-   用户通常将这些入口点视为具有不同用途或功能的不同符号组。
+   用户通常将这些入口点视为具有不同用途或能力的不同符号组。
 
    Specific entrypoints might only be used for special purposes, such as testing.
    Such APIs can be separated out from the primary entrypoint to reduce the chance of them being used accidentally or incorrectly.
@@ -357,7 +357,7 @@ APF 格式的包，包含一个主要入口点和零到多个次要入口点（�
    Many modern build tools are only capable of "code splitting" (aka lazy loading) at the ES Module level.
    The Angular Package Format uses primarily a single "flat" ES Module per entry point. This means that most build tooling is not able to split code with a single entry point into multiple output chunks.
 
-   许多现代构建工具只能在 ES 模块级别进行“代码拆分”（又名惰性加载）。由于 APF 主要为每个入口点使用一个“扁平” ES 模块，这意味着大多数构建工具无法将单个入口点中的代码拆分为多个输出块。
+   许多现代构建工具只能在 ES 模块级别进行“代码拆分”（又名惰性加载）。APF 主要为每个入口点使用一个“扁平” ES 模块。这意味着大多数构建工具无法将单个入口点中的代码拆分为多个输出块。
 
 The general rule for APF packages is to use entrypoints for the smallest sets of logically connected code possible.
 For example, the Angular Material package publishes each logical component or set of components as a separate entrypoint - one for Button, one for Tabs, etc.
@@ -385,11 +385,11 @@ Secondary entrypoints can be resolved via the `"exports"` field of the `package.
 
 The README file in the Markdown format that is used to display description of a package on npm and GitHub.
 
-markdown 格式的自述文件，用于在 npm 和 github 上显示包的描述。
+Markdown 格式的 README 文件，用于在 npm 和 GitHub 上显示包的描述。
 
 Example README content of `@angular/core` package:
 
-`@angular/core` 包的示例自述内容：
+`@angular/core` 包的示例 README 内容：
 
 <code-example language="html">
 
@@ -413,7 +413,7 @@ APF 格式的库必须以“部分编译”模式发布。这是 `ngc` 的一种
 
 To partially compile Angular code, use the `compilationMode` flag in the `angularCompilerOptions` property of your `tsconfig.json`:
 
-要部分编译 Angular 代码，请在 `tsconfig.json` 中的 `"angularCompilerOptions"` 中使用 `"compilationMode"` 标志：
+要部分编译 Angular 代码，请在 `tsconfig.json` 中的 `"angularCompilerOptions"` 属性中使用 `"compilationMode"` 标志：
 
 <code-example language="javascript">
 
@@ -450,7 +450,7 @@ APF 指定代码要以“扁平化”的 ES 模块格式发布。这显著减少
 
 The Angular compiler can generate index ES module files. Tools like Rollup can use these files to generate flattened modules in a *Flattened ES Module* (FESM) file format.
 
-Angular 编译器支持生成索引 ES 模块文件，然后可以让这些文件借助 Rollup 等工具生成扁平化模块，从而生成我们称为扁平化 ES 模块或 FESM 的文件格式。
+Angular 编译器可以生成索引 ES 模块文件。像 Rollup 这样的工具可以用这些文件以扁平化 ES 模块（FESM）文件格式生成扁平化模块。
 
 FESM is a file format created by flattening all ES Modules accessible from an entrypoint into a single ES Module.
 It's formed by following all imports from a package and copying that code into a single file while preserving all public ES exports and removing all private imports.
@@ -499,7 +499,7 @@ This is why `module` and `es2020` package.json entries still point to FESM files
 This issue is being investigated. It is expected to switch the `module` and `es2020` package.json entry points to unflattened files after the size regression issue is resolved.
 The APF currently includes unflattened ESM2020 code for the purpose of validating such a future change.
 
-从 webpack v4 开始，对于 webpack 用户来说，ES 模块优化的扁平化应该不是必需的，其实理论上我们应该能够在不扁平化 webpack 中的模块的情况下获得更好的代码拆分。在实践中，当使用非扁平化模块作为 webpack v4 的输入时，我们仍然会看到大小增加了。这就是为什么 package.json 中的 `"module"` 和 `"es2020"` 条目仍然指向 fesm 文件的原因。我们正在调查此问题，并希望在解决大小回归问题后将 package.json 中的 `"module"` 和 `"es2020"` 入口点切换到未扁平化的文件。APF 目前包含未扁平化的 ESM2020 代码，目的是验证此类未来的更改。
+从 webpack v4 开始，对于 webpack 用户来说，ES 模块优化的扁平化应该不是必需的。其实我们也能在不扁平化 webpack 中的模块的情况下获得更好的代码拆分。在实践中，当使用非扁平化模块作为 webpack v4 的输入时，仍然会看到大小增加了。这就是为什么 package.json 中的 `"module"` 和 `"es2020"` 条目仍然指向 fesm 文件的原因。我们正在调查此问题，并希望在解决大小回归问题后将 package.json 中的 `"module"` 和 `"es2020"` 入口点切换到未扁平化的文件。APF 目前包含未扁平化的 ESM2020 代码，目的是验证此类未来的更改。
 
 ### "sideEffects" flag
 
@@ -516,7 +516,7 @@ The end result of these optimizations should be smaller bundle size and better c
 This optimization can break your code if it contains non-local side-effects - this is however not common in Angular applications and it's usually a sign of bad design.
 The recommendation is for all packages to claim the side-effect free status by setting the `sideEffects` property to `false`, and that developers follow the [Angular Style Guide](https://angular.io/guide/styleguide) which naturally results in code without non-local side-effects.
 
-诸如 Webpack 之类的构建工具支持一个标志，该标志允许包声明它们并不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。我们的建议是让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](https://angular.io/guide/styleguide)，这自然会导致代码没有非本地副作用。
+诸如 Webpack 之类的构建工具支持一个标志，该标志允许包声明它们并不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。建议让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](https://angular.io/guide/styleguide)，这自然会导致代码没有非本地副作用。
 
 More info: [webpack docs on side effects](https://github.com/webpack/webpack/tree/master/examples/side-effects)
 
@@ -537,7 +537,7 @@ ES2020 语言级别现在是 Angular CLI 和其他工具使用的默认语言级
 
 As of APF v8 it is now preferred to run [API Extractor](https://api-extractor.com), to bundle TypeScript definitions so that the entire API appears in a single file.
 
-从 APF v8 开始，我们现在更喜欢运行 [API Extractor](https://api-extractor.com) 来打包 TypeScript 定义，以便整个 API 都出现在单个文件中。
+从 APF v8 开始，更建议运行 [API Extractor](https://api-extractor.com) 来打包 TypeScript 定义，以便让全部 API 都出现在单个文件中。
 
 In prior APF versions each entry point would have a `src` directory next to the .d.ts entry point and this directory contained individual d.ts files matching the structure of the original source code.
 While this distribution format is still allowed and supported, it is highly discouraged because it confuses tools like IDEs that then offer incorrect autocompletion, and allows users to depend on deep-import paths which are typically not considered to be public API of a library or a package.
@@ -551,7 +551,7 @@ While this distribution format is still allowed and supported, it is highly disc
 As of APF v10, it is recommended to add tslib as a direct dependency of your primary entry-point.
 This is because the tslib version is tied to the TypeScript version used to compile your library.
 
-从 APF v10 开始，我们建议添加 tslib 作为主要入口点的直接依赖项。这是因为 tslib 版本与用来编译库的 TypeScript 版本相关联。
+从 APF v10 开始，建议添加 tslib 作为主要入口点的直接依赖项。这是因为 tslib 版本与用来编译库的 TypeScript 版本相关联。
 
 ## Examples
 
@@ -572,7 +572,7 @@ This is because the tslib version is tied to the TypeScript version used to comp
 The following terms are used throughout this document intentionally.
 In this section are the definitions of all of them to provide additional clarity.
 
-本文档中特意使用了以下术语。在本节中，我们定义所有这些以便更清晰。
+本文档中特意使用了以下术语。在本节中会定义所有这些以便更清晰。
 
 #### Package
 

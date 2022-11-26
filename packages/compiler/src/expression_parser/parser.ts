@@ -140,7 +140,11 @@ export class Parser {
    *
    * 2. item -> NgForOfContext.$implicit
    *
+   *    项 -> NgForOfContext.$implicit
+   *
    * 3. ngForOf -> items
+   *
+   *    ngForOf -> 条目
    *
    * This is apparent from the de-sugared template:
    *
@@ -1174,7 +1178,11 @@ export class _ParseAST {
    *
    * 2. item -> NgForOfContext.$implicit
    *
+   *    项 -> NgForOfContext.$implicit
+   *
    * 3. ngForOf -> items
+   *
+   *    ngForOf -> 条目
    *
    * 4. i -> NgForOfContext.index
    *
@@ -1397,7 +1405,7 @@ export class _ParseAST {
    * Records an error and skips over the token stream until reaching a recoverable point. See
    * `this.skip` for more details on token skipping.
    *
-   * 记录错误并跳过令牌流，直到达到可恢复点。有关标记跳过的更多详细信息，请参阅 `this.skip` 。
+   * 记录错误并跳过标记流，直到达到可恢复点。有关标记跳过的更多详细信息，请参阅 `this.skip` 。
    *
    */
   error(message: string, index: number|null = null) {
@@ -1469,6 +1477,8 @@ export class _ParseAST {
    *     must be skipped if none of the calling productions are not expecting the closing token else we
    *     will never make progress in the case of an extraneous group closing symbol (such as a stray
    *     ')'). That is, we skip a closing symbol if we are not in a grouping production.
+   *
+   *     这允许 skip() 从 '(a.) + 1' 等错误中恢复，允许保留更多 AST（它不会跳过任何标记，因为 ')' 是因为 '(' 开始'('<expr>')' 产生式）。分组符号的恢复点必须是有条件的，因为如果没有一个调用产生式不希望有关闭标记，则必须跳过它们，否则我们将永远不会取得进展.也就是说，如果我们不在分组产生式中，我们会跳过关闭符号。
    *
    * - '=' in a `Writable` context
    *

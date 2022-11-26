@@ -30,7 +30,7 @@ You can identify heavy computations with Angular DevTools’ profiler. In the pe
 
 For example, in the preceding screenshot, the second recorded change detection cycle is selected. Angular spent over 573 ms on this cycle, with the most time spent in the `EmployeeListComponent`. In the details panel, you can see that Angular spent over 297 ms evaluating the template of the `EmployeeListComponent`.
 
-比如，在上面的屏幕截图中，我们选择了分析器启动后的第二个变更检测周期，其中 Angular 花费了超过 573 毫秒。Angular 大部分时间都花在 `EmployeeListComponent` 上。在详细信息面板中，我们可以看到我们花了超过 297 毫秒的时间来估算 `EmployeeListComponent` 的模板。
+比如，在上面的屏幕截图中，选择了所记录的第二个变更检测周期，其中 Angular 在这个周期花费了超过 573 毫秒，大部分时间都花在了 `EmployeeListComponent` 上。在详细信息面板中，你可以看到 Angular 花了超过 297 毫秒的时间来估算 `EmployeeListComponent` 的模板。
 
 ## Optimizing slow computations
 
@@ -42,7 +42,7 @@ Here are several techniques to remove slow computations:
 
 * **Optimizing the underlying algorithm**. This is the recommended approach. If you can speed up the algorithm that is causing the problem, you can speed up the entire change detection mechanism.
 
-  **优化底层算法**。这是推荐的方法；如果你可以加快导致问题的算法的速度，则可以加快整个变更检测机制。
+  **优化底层算法**。这是推荐的方法。如果你可以加快导致问题的算法的速度，则可以加快整个变更检测机制。
 
 * **Caching using pure pipes**. You can move the heavy computation to a pure [pipe](https://angular.io/guide/pipes). Angular reevaluates a pure pipe only if it detects that its inputs have changed, compared to the previous time Angular called it.
 
@@ -54,7 +54,7 @@ Here are several techniques to remove slow computations:
 
 * **Avoid repaints/reflows in lifecycle hooks**. Certain [operations](https://web.dev/avoid-large-complex-layouts-and-layout-thrashing/) cause the browser to either synchronously recalculate the layout of the page or re-render it. Since reflows and repaints are generally slow, you want to avoid performing them in every change detection cycle.
 
-  **避免在生命周期钩子中触发重绘/回流**。某些[操作](https://web.dev/avoid-large-complex-layouts-and-layout-thrashing/)会导致浏览器同步重新计算页面布局或重新渲染它。由于回流和重绘通常很慢，因此我们希望避免在每个变更检测周期中都执行它们。
+  **避免在生命周期钩子中触发重绘/回流**。某些[操作](https://web.dev/avoid-large-complex-layouts-and-layout-thrashing/)会导致浏览器同步重新计算页面布局或重新渲染它。由于回流和重绘通常很慢，因此你要避免在每个变更检测周期中都执行它们。
 
 Pure pipes and memoization have different trade-offs. Pure pipes are an Angular built-in concept compared to memoization, which is a general software engineering practice for caching function results. The memory overhead of memoization could be significant if you invoke the heavy computation frequently with different arguments.
 

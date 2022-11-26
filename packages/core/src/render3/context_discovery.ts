@@ -349,8 +349,10 @@ function findViaDirective(lView: LView, directiveInstance: {}): number {
  * @param nodeIndex The node index
  *
  * 节点索引
- *
  * @param lView The target view data
+ *
+ * 目标视图数据
+ *
  */
 export function getDirectivesAtNodeIndex(nodeIndex: number, lView: LView): any[]|null {
   const tNode = lView[TVIEW].data[nodeIndex] as TNode;

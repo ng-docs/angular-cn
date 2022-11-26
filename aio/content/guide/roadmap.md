@@ -4,6 +4,8 @@
 
 <p class="roadmap-last-updated">Last updated: 2022-11-05</p>
 
+<p class="roadmap-last-updated">最后更新： 2022-11-05</p>
+
 Angular receives a large number of feature requests, both from inside Google and from the broader open-source community.
 At the same time, our list of projects contains plenty of maintenance tasks, code refactorings, and potential performance improvements.
 We bring together representatives from developer relations, product management, and engineering to prioritize this list.
@@ -24,17 +26,27 @@ For example, features are released in the next minor after they are complete, or
 
 ### Explore hydration and server-side rendering usability improvements
 
-### 探索水化和服务器端渲染可用性的改进
+### 探索水化（hydration）和服务器端渲染可用性的改进
 
 As the first step of this project we will implement non-destructive hydration. This technique will allow us to reuse the server-side rendered DOM and rather than rerendering it only attach event listeners and create data structures required by the Angular runtime. As the next step, we are going to further explore the dynamically evolving space of partial hydration and resumability. Each of the approaches has their trade-offs and we'd like to make an informed decision what's the most optimal long-term solution for Angular.
 
+作为该项目的第一步，我们将实现无损水化。这项技术将允许我们复用服务器端渲染好的 DOM，而不是重新渲染它，仅会附加事件侦听器并创建 Angular 运行时所需的数据结构。下一步，我们将进一步探索部分水化和可恢复的动态演化空间。每种方法都有它们的权衡，我们希望做出明智的决定，什么是 Angular 的最佳长期解决方案。
+
 ### Improve runtime performance and make Zone.js optional
+
+### 提高运行时性能并使 Zone.js 可选
 
 As part of this effort we are revisiting Angular's reactivity model to make Zone.js optional and improve runtime performance. By default Angular runs change detection globally, traversing the entire component tree. We're exploring options to run change detection only in affected components. This way, we simplify the framework, improve debugging, and reduce application bundle size. Additionally, this lets us take advantage of built-in async/await syntax, which currently Zone.js does not support.
 
+作为这项工作的一部分，我们正在重新评估 Angular 的响应式模型，以使 Zone.js 可选并提高运行时性能。默认情况下，Angular 会全局运行变更检测，遍历整个组件树。我们正在探索仅在受影响的组件中运行变更检测的选项。通过这种方式，我们简化了框架、改进了调试并减少了应用程序包的大小。此外，这让我们可以利用当前 Zone.js 不支持的内置 async/await 语法。
+
 ### Improve documentation and schematics for standalone components
 
+### 改进独立组件的文档和原理图
+
 We are working on developing an `ng new` collection for applications bootstrapped with a standalone component. Additionally, we are filling the documentation gaps of the simplified standalone component APIs.
+
+我们正在努力为使用独立组件引导的应用程序开发一个 `ng new` 集合。此外，我们正在填补简化的独立组件 API 的文档空白。
 
 ### Introduce dependency injection debugging APIs
 
@@ -42,11 +54,15 @@ We are working on developing an `ng new` collection for applications bootstrappe
 
 To improve the debugging utilities of Angular and Angular DevTools, we'll work on APIs that provide access the dependency injection runtime. As part of the project we'll expose debugging methods that allow us to explore the injector hierarchy and the dependencies across their associated providers.
 
-为了改进 Angular 和 Angular DevTools 的调试工具，我们将使用提供依赖注入运行时访问的 API。作为项目的一部分，我们将公开调试方法，这些方法允许我们探索注入器层次结构以及跨关联提供程序的依赖项。
+为了改进 Angular 和 Angular DevTools 的调试工具，我们将使用提供依赖注入运行时访问的 API。作为项目的一部分，我们将公开调试方法，这些方法允许我们探索注入器层次结构以及跨关联提供者的依赖项。
 
 ### Streamline standalone imports with Language Service
 
+### 使用 Language Service 简化独立导入
+
 As part of this initiative we are going to implement automatic import of template dependencies for standalone components. Additionally, to enable smaller application bundles the language service will propose automatic removal of unused imports.
+
+作为该计划的一部分，我们将实现独立组件的模板依赖项的自动导入。此外，为了启用更小的应用程序包，语言服务将建议自动删除未使用的导入。
 
 ### Investigate modern bundles
 
@@ -55,11 +71,15 @@ As part of this initiative we are going to implement automatic import of templat
 To improve development experience by speeding up build times, we plan to explore options to improve JavaScript bundles created by Angular CLI.
 As part of the project experiment with [esbuild](https://esbuild.github.io) and other open source solutions, compare them with the state-of-the-art tooling in Angular CLI, and report the findings. In Angular v15 we have experimental esbuild support in `ng build` and `ng build --watch`. We'll continue iterating on the solution until we're confident to release it as stable.
 
+为了通过加快构建时间来改善开发体验，我们计划探索一些选项来改进 Angular CLI 创建的 JavaScript 包。作为使用[esbuild](https://esbuild.github.io)和其他开源解决方案的项目试验的一部分，将它们与 Angular CLI 中的最先进工具进行比较，并报告结果。在 Angular v15 中，我们在 `ng build` 和 `ng build --watch` 中提供了实验性 esbuild 支持。我们将继续迭代解决方案，直到我们有信心将其发布为稳定。
+
 ### New CDK primitives
 
 ### 新的 CDK 原语
 
 We are working on new CDK primitives to facilitate creating custom components based on the WAI-ARIA design patterns for [Combobox](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). Angular v14 introduced stable [menu and dialog primitives](https://material.angular.io/cdk/categories) as part of this project and in v15 [Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox).
+
+我们正在开发新的 CDK 原语，以促进基于[Combobox](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox)的 WAI-ARIA 设计模式创建自定义组件。作为本项目的一部分和 v15 [Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) ，Angular v14 引入了稳定的[菜单和对话框原语](https://material.angular.io/cdk/categories)。
 
 ### Angular component accessibility
 
@@ -83,13 +103,23 @@ Ensure all existing documentation fits into a consistent set of content types. U
 
 For the past couple of quarters we understood and defined the problem space. We are going to follow up with a series of blog posts on best practices when developing applications at scale.
 
+在过去的几个季度中，我们了解并定义了问题空间。我们将继续发布一系列关于大规模开发应用程序时最佳实践的博客文章。
+
 ### Update getting started tutorial
+
+### 更新入门教程
 
 We're working on updating the Angular getting started experience with standalone components. As part of this initiative, we'd like to create a new textual and video tutorials.
 
+我们正在努力更新使用独立组件的 Angular 入门体验。作为此计划的一部分，我们想创建一个新的文本和视频教程。
+
 ### Improvements in the image directive
 
+### image 指令的改进
+
 We released the Angular [image directive](https://developer.chrome.com/blog/angular-image-directive/) as stable in v15. We introduced a new fill mode feature that enables images to fit within their parent container rather than having explicit dimensions. Currently, this feature is in [developer preview](https://angular.io/guide/releases#developer-preview). Next we'll be working on collecting feedback from developers before we promote fill mode as stable.
+
+我们在 v15 中发布了稳定的 Angular[镜像指令](https://developer.chrome.com/blog/angular-image-directive/)。我们介绍了一个新的填充模式特性，该特性使图像能够适合它们的父容器，而不是具有显式尺寸。目前，此特性处于[开发者预览版](https://angular.io/guide/releases#developer-preview)。接下来，我们将努力在将填充模式提升为稳定之前收集开发人员的反馈。
 
 ## Future
 
@@ -97,11 +127,19 @@ We released the Angular [image directive](https://developer.chrome.com/blog/angu
 
 ### Token-based theming APIs
 
+### 基于令牌的主题 API
+
 To provide better customization of our Angular material components and enable Material 3 capabilities, we'll be collaborating with Google's Material Design team on defining token-based theming APIs.
+
+为了更好地自定义我们的 Angular 材质组件并启用 Material 3 特性，我们将与 Google 的 Material Design 团队合作定义基于令牌的主题 API。
 
 ### Modernize Angular's unit testing experience
 
+### 使 Angular 的单元测试体验现代化
+
 In v12 we revisited the Angular end-to-end testing experience by replacing Protractor with modern alternatives such as Cypress, Nightwatch, and Webdriver.io. Next we'd like to tackle `ng test` to modernize Angular's unit testing experience.
+
+在 v12 中，我们重新访问了 Angular 端到端测试体验，将 Protractor 替换为现代替代方案，例如 Cypress、Nightwatch 和 Webdriver.io。接下来，我们想解决 `ng test` 以使 Angular 的单元测试体验现代化。
 
 ### Revamp performance dashboards to detect regressions
 

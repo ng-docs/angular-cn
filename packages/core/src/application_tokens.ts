@@ -110,7 +110,7 @@ export const PACKAGE_ROOT_URL = new InjectionToken<string>('Application Packages
  * A [DI token](guide/glossary#di-token "DI token definition") that indicates which animations
  * module has been loaded.
  *
- * 一个[DI 标记](guide/glossary#di-token "DI 标记定义")，表明已加载了哪个动画模块。
+ * 一个[DI 令牌](guide/glossary#di-token "DI 令牌定义")，表明已加载了哪个动画模块。
  *
  * @publicApi
  */

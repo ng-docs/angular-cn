@@ -4,7 +4,7 @@
 
 When you use [ahead-of-time compilation (AOT)](guide/aot-compiler), you can control how your application is compiled by specifying *template* compiler options in the [TypeScript configuration file](guide/typescript-configuration).
 
-使用 [AoT 编译](guide/aot-compiler) 时，可以通过在 [TypeScript 配置文件中](guide/typescript-configuration)指定*模板*编译器选项来控制如何编译应用程序。
+使用 [预先（AoT）编译](guide/aot-compiler) 时，可以通过在 [TypeScript 配置文件中](guide/typescript-configuration)指定*模板*编译器选项来控制如何编译应用程序。
 
 The template options object, `angularCompilerOptions`, is a sibling to the `compilerOptions` object that supplies standard options to the TypeScript compiler.
 
@@ -53,7 +53,7 @@ Default is `false`.
 Used by the Bazel build rules to simplify how Bazel rules track file dependencies.
 Do not use this option outside of the Bazel rules.
 
-如果为 `true`，则生成所有可能的文件 —— 即使它们为空。默认值为 `false`。Bazel 的构建规则使用它来简化 Bazel 规则跟踪文件依赖性的方式。不要在 Bazel 规则之外使用此选项。
+如果为 `true`，则创建所有可能的文件 —— 即使它们为空。默认值为 `false`。Bazel 的构建规则使用它来简化 Bazel 规则跟踪文件依赖性的方式。不要在 Bazel 规则之外使用此选项。
 
 ### `annotationsAs`
 
@@ -137,22 +137,22 @@ Default is `false`.
 Instructs the Angular template compiler to create legacy ids for messages that are tagged in templates by the `i18n` attribute.
 See [Mark text for translations][AioGuideI18nCommonPrepareMarkTextInComponentTemplate] for more information about marking messages for localization.
 
-指示 Angular 模板编译器为模板中用 `i18n` 属性标出的消息生成旧版 ID。关于为本地化而对消息进行标记的更多信息，参阅[标记要翻译的文本][AioGuideI18nCommonPrepareMarkTextInComponentTemplate]
+指示 Angular 模板编译器为模板中用 `i18n` 属性标出的消息创建旧版 ID。关于为本地化而对消息进行标记的更多信息，参阅[标记要翻译的文本][AioGuideI18nCommonPrepareMarkTextInComponentTemplate]
 
 Set this option to `false` unless your project relies upon translations that were created earlier using legacy IDs.
 Default is `true`.
 
-除非你的项目依赖先前已用旧版 ID 生成的翻译，否则请将此选项设置为 `false`。默认值为 `true`。
+除非你的项目依赖先前已用旧版 ID 创建的翻译，否则请将此选项设置为 `false`。默认值为 `true`。
 
 The pre-Ivy message extraction tooling created a variety of legacy formats for extracted message IDs.
 These message formats have some issues, such as whitespace handling and reliance upon information inside the original HTML of a template.
 
-Ivy 之前版本的消息提取工具为所提取的消息 id 生成了多种旧格式。这些消息格式存在许多问题，比如对空白字符的处理和对模板原始 HTML 内部信息的依赖。
+Ivy 之前版本的消息提取工具为所提取的消息 id 创建了多种旧格式。这些消息格式存在一些问题，比如对空白字符的处理和对模板原始 HTML 内部信息的依赖。
 
 The new message format is more resilient to whitespace changes, is the same across all translation file formats, and can be created directly from calls to `$localize`.
 This allows `$localize` messages in application code to use the same ID as identical `i18n` messages in component templates.
 
-新的消息格式对空白字符的改动更宽容，在所有翻译文件格式中都相同，并且可以直接通过调用 `$localize` 生成。这允许应用程序代码中的 `$localize` 消息使用与组件模板中 `i18n` 消息完全相同的 id。
+新的消息格式对空白字符的改动更宽容，在所有翻译文件格式中都相同，并且可以直接通过调用 `$localize` 来创建。这允许应用程序代码中的 `$localize` 消息使用与组件模板中 `i18n` 消息完全相同的 id。
 
 ### `enableResourceInlining`
 
@@ -166,7 +166,7 @@ When enabled, the `.js` output of `ngc` does not include any lazy-loaded templat
 
 For library projects created with the Angular CLI, the development configuration default is `true`.
 
-对于使用 CLI 生成的库项目，dev 配置下默认为 `true`。
+对于使用 Angular CLI 创建的库项目，dev 配置下默认为 `true`。
 
 <a id="enablelegacytemplate"></a>
 
@@ -184,7 +184,7 @@ The module ID to use for importing a flat module (when `flatModuleOutFile` is `t
 References created by the template compiler use this module name when importing symbols from the flat module.
 Ignored if `flatModuleOutFile` is `false`.
 
-用于导入扁平模块的模块 ID（当 `flatModuleOutFile` 为 `true` 时）。从扁平模块中导入符号时，模板编译器生成的引用将使用该模块的名称。如果 `flatModuleOutFile` 为 `false` 则忽略。
+用于导入扁平模块的模块 ID（当 `flatModuleOutFile` 为 `true` 时）。从扁平模块中导入符号时，模板编译器创建的引用将使用该模块的名称。如果 `flatModuleOutFile` 为 `false` 则忽略。
 
 ### `flatModuleOutFile`
 
@@ -192,12 +192,12 @@ When `true`, generates a flat module index of the given filename and the corresp
 Use to create flat modules that are packaged similarly to `@angular/core` and `@angular/common`.
 When this option is used, the `package.json` for the library should refer to the created flat module index instead of the library index file.
 
-为 `true` 时，将生成指定文件名和相应扁平模块元数据的扁平模块索引。用于创建像 `@angular/core` 和 `@angular/common` 这样打包的扁平模块。使用此选项时，库的 `package.json` 应引用生成的扁平模块索引而不是库的索引文件。
+为 `true` 时，将生成指定文件名和相应扁平模块元数据的扁平模块索引。用于创建像 `@angular/core` 和 `@angular/common` 这样打包的扁平模块。使用此选项时，库的 `package.json` 应引用所创建的扁平模块索引而不是库的索引文件。
 
 Produces only one `.metadata.json` file, which contains all the metadata necessary for symbols exported from the library index.
 In the created `.ngfactory.js` files, the flat module index is used to import symbols. Symbols that include both the public API from the library index as well as shrouded internal symbols.
 
-它只会生成一个 `.metadata.json` 文件，该文件包含从库索引中导出的符号所需的全部元数据。在生成的 `.ngfactory.js` 文件中，扁平模块索引用于导入符号，这些符号既包括库索引中的公共 API，也包括缩进的内部符号。
+它只会生成一个 `.metadata.json` 文件，该文件包含从库索引中导出的符号所需的全部元数据。在创建的 `.ngfactory.js` 文件中，扁平模块索引用于导入符号，这些符号既包括库索引中的公共 API，也包括缩进的内部符号。
 
 By default the `.ts` file supplied in the `files` field is assumed to be the library index.
 If more than one `.ts` file is specified, `libraryIndex` is used to select the file to use.
@@ -220,11 +220,11 @@ The `module` field of the library's `package.json` would be `"index.js"` and the
 When `true`, the recommended value, enables the [binding expression validation](guide/aot-compiler#binding-expression-validation) phase of the template compiler. This phase uses TypeScript to verify binding expressions.
 For more information, see [Template type checking](guide/template-typecheck).
 
-为 `true`（推荐）时，会启用模板编译器的[绑定表达式验证](guide/aot-compiler#binding-expression-validation)阶段，该阶段使用 TypeScript 来验证绑定表达式。欲知详情，参阅[模板类型检查](guide/template-typecheck)。
+为 `true`（推荐）时，会启用模板编译器的[绑定表达式验证](guide/aot-compiler#binding-expression-validation)阶段。该阶段会使用 TypeScript 来验证绑定表达式。欲知详情，参阅[模板类型检查](guide/template-typecheck)。
 
 Default is `false`, but when you use the Angular CLI command `ng new --strict`, it is set to `true` in the new project's configuration.
 
-默认值为 `false`，但是当你使用 CLI 命令 `ng new --strict` 时，默认生成的项目配置中会将其设置为 `true`。
+默认值为 `false`，但是当你使用 Angular CLI 命令 `ng new --strict` 时，默认生成的项目配置中会将其设置为 `true`。
 
 <div class="alert is-important">
 
@@ -272,7 +272,7 @@ Set to `true` if you are using TypeScript's `--outFile` option, because the meta
 The Angular community does not recommend using `--outFile` with Angular.
 Use a bundler, such as [webpack](https://webpack.js.org), instead.
 
-如果要使用 TypeScript 的 `--outFile` 选项，则设置为 `true`，因为元数据文件对于这种 TypeScript 输出风格无效。但是，我们不建议将 `--outFile` 和 Angular 一起使用。请使用打包程序，比如 [webpack](https://webpack.js.org)。
+如果要使用 TypeScript 的 `--outFile` 选项，则设置为 `true`，因为元数据文件对于这种 TypeScript 输出风格无效。但是，Angular 社区不建议将 `--outFile` 和 Angular 一起使用。请使用打包程序，比如 [webpack](https://webpack.js.org)。
 
 ### `skipTemplateCodegen`
 
@@ -287,7 +287,7 @@ Can be used to instruct the template compiler to produce `.metadata.json` files 
 
 For library projects created with the Angular CLI, the development configuration default is `true`.
 
-对于使用 CLI 生成的库项目，dev 配置默认为 `true`。
+对于使用 Angular CLI 创建的库项目，dev 配置默认为 `true`。
 
 ### `strictMetadataEmit`
 
@@ -308,16 +308,16 @@ The template compiler reports these errors if the metadata is used to determine 
 The metadata collector cannot predict the symbols that are designed for use in an annotation. It preemptively includes error nodes in the metadata for the exported symbols.
 The template compiler can then use the error nodes to report an error if these symbols are used.
 
-`.metadata.json` 文件即使包含错误也是有效的。如果这些元数据用来确定注解的内容，则模板编译器会报告这些错误。元数据收集器无法预测哪些符号是为了在注解中使用而设计，因此它会先在元数据中为导出的符号中包含错误节点。然后，如果使用了这些符号，则模板编译器可以使用这些错误节点来报告错误。
+`.metadata.json` 文件即使包含错误也是有效的。如果这些元数据用来确定注解的内容，则模板编译器会报告这些错误。元数据收集器无法预测哪些符号是为了在注解中使用而设计的。它会先在元数据中为导出的符号中包含错误节点。然后，如果使用了这些符号，则模板编译器可以使用这些错误节点来报告错误。
 
 If the client of a library intends to use a symbol in an annotation, the template compiler does not normally report this. It gets reported after the client actually uses the symbol.
 This option allows detection of these errors during the build phase of the library and is used, for example, in producing Angular libraries themselves.
 
-如果库的客户代码打算在注解中使用某个符号，则模板编译器通常不会在客户方用到该符号之前就报错。此选项允许你在库的构建阶段就检测到这些错误，比如用于生成 Angular 库本身时。
+如果库的客户代码打算在注解中使用某个符号，则模板编译器通常不会直接报错。而是在客户方实际用到该符号之后才报错。此选项允许你在库的构建阶段就检测到这些错误，比如用于生成 Angular 库本身时。
 
 For library projects created with the Angular CLI, the development configuration default is `true`.
 
-对于使用 CLI 生成的库项目，dev 配置中默认为 `true`。
+对于使用 Angular CLI 创建的库项目，dev 配置中默认为 `true`。
 
 ### `strictInjectionParameters`
 
@@ -345,7 +345,7 @@ See [troubleshooting template errors](guide/template-typecheck#troubleshooting-t
 
 When you use the Angular CLI command `ng new --strict`, it is set to `true` in the new project's configuration.
 
-当你使用 CLI 命令 `ng new --strict` 时，默认生成的项目配置中将其设置为 `true`。
+当你使用 Angular CLI 命令 `ng new --strict` 时，默认生成的项目配置中将其设置为 `true`。
 
 ### `trace`
 

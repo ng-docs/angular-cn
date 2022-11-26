@@ -1370,7 +1370,11 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `:enter`/`:leave`, which indicates that the transition's animations should occur when the
  *   element enters or exists the DOM
  *
+ *   `:enter` / `:leave` ，这表明转换的动画应该在元素进入或存在 DOM 时发生
+ *
  *   _Example:_
+ *
+ *   _ 示例：_
  *
  *   ```typescript
  *     transition(':enter', [
@@ -1382,7 +1386,11 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `:increment`/`:decrement`, which indicates that the transition's animations should occur when
  *   the numerical expression bound to the trigger's element has increased in value or decreased
  *
+ *   `:increment` / `:decrement` ，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
+ *
  *   _Example:_
+ *
+ *   _ 示例：_
  *
  *   ```typescript
  *     transition(':increment', query('@counter', animateChild()))
@@ -1391,7 +1399,11 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - a sequence of any of the above divided by commas, which indicates that transition's animations
  *   should occur whenever one of the state change expressions matches
  *
+ *   上述任何一项的序列除以逗号，这表明只要状态更改表达式之一匹配，就应该发生转换的动画
+ *
  *   _Example:_
+ *
+ *   _ 示例：_
  *
  *   ```typescript
  *     transition(':increment, * => enabled, :enter', animate('1s ease', keyframes([
@@ -1403,15 +1415,25 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *
  * Also note that in such context:
  *
+ * 另请注意，在这种情况下：
+ *
  * - `void` can be used to indicate the absence of the element
  *
+ *   `void` 可用于表明此元素的不存在
+ *
  * - asterisks can be used as wildcards that match any state
+ *
+ *   星号可以作为匹配任何状态的通配符
  *
  * - (as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
  *   equivalent to `:leave`)
  *
+ *   （由于上述原因， `void => *` 等效于 `:enter` ，并且 `* => void` 等效于 `:leave` ）
+ *
  * - `true` and `false` also match expression values of `1` and `0` respectively (but do not match
  *   _truthy_ and _falsy_ values)
+ *
+ *   `true` 和 `false` 也分别匹配表达式值 `1` 和 `0` （但不匹配 _truthy_ 和 _falsy_ 值）
  *
  * <div class="alert is-helpful">
  *
@@ -1435,12 +1457,16 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * for the element to reach the final state, in such case Angular automatically adds or removes
  * CSS styles to ensure that the element is in the correct final state.
  *
+ * 如果转换中的最后一步是对使用不带 `style` 数据的计时值的 `animate()` 的调用，则该步骤会自动被认为是最终动画弧，以使元素达到最终状态，在这种情况下，Angular 会自动添加或删除 CSS 样式以确保元素处于正确的最终状态。
+ *
  * ### Usage Examples
  *
  * ### 使用范例
  *
  * - Transition animations applied based on
  *    the trigger's expression value
+ *
+ *   根据触发器的表达式值应用的过渡动画
  *
  *   ```HTML
  *   <div [@myAnimationTrigger]="myStatusExp">
@@ -1458,6 +1484,8 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *
  * - Transition animations applied based on custom logic dependent
  *   on the trigger's expression value and provided parameters
+ *
+ *   根据自定义逻辑应用的过渡动画，具体取决于触发器的表达式值和提供的参数
  *
  *   ```HTML
  *   <div [@myAnimationTrigger]="{
@@ -1661,7 +1689,6 @@ export function useAnimation(
  * - `query(":self")` : Include the current element into the animation sequence.
  *
  *   `query(":self")`：把当前元素包含到动画序列中。
- *
  * @param animation One or more animation steps to apply to the queried element or elements.
  * An array is treated as an animation sequence.
  *
@@ -1682,7 +1709,7 @@ export function useAnimation(
  *
  * Tokens can be merged into a combined query selector string. For example:
  *
- * 多个令牌可以合并成复合查询选择器。比如：
+ * 多个标记可以合并成复合查询选择器。比如：
  *
  * ```typescript
  *  query(':self, .record:enter, .record:leave, @subTrigger', [...])
@@ -1716,17 +1743,27 @@ export function useAnimation(
  *
  * ### Entering and Leaving Elements
  *
+ * ### 进入和离开元素
+ *
  * Not all elements can be queried via the `:enter` and `:leave` tokens, the only ones
  * that can are those that Angular assumes can enter/leave based on their own logic
  * (if their insertion/removal is simply a consequence of that of their parent they
  * should be queried via a different token in their parent's `:enter`/`:leave` transitions).
  *
+ * 并非所有元素都可以通过 `:enter` 和 `:leave` 标记查询，唯一可以是 Angular 假定可以根据自己的逻辑进入/离开的元素（如果它们的插入/删除只是它们父级的结果，他们应该通过其父级的 `:enter` / `:leave` 转换中的不同标记来查询）。
+ *
  * The only elements Angular assumes can enter/leave based on their own logic (thus the only
  * ones that can be queried via the `:enter` and `:leave` tokens) are:
  *
+ * Angular 假定可以根据自己的逻辑进入/离开的唯一元素（因此可以通过 `:enter` 和 `:leave` 标记查询的唯一元素）是：
+ *
  * - Those inserted dynamically (via `ViewContainerRef`)
  *
+ *   动态插入的（通过 `ViewContainerRef` ）
+ *
  * - Those that have a structural directive (which, under the hood, are a subset of the above ones)
+ *
+ *   那些具有结构指令的（在引擎盖下是上述指令的子集）
  *
  * <div class="alert is-helpful">
  *
@@ -1786,6 +1823,7 @@ export function useAnimation(
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export function query(

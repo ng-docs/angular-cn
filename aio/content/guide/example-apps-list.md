@@ -477,7 +477,7 @@ For more information, see [Providing dependencies in modules](guide/providers).
 Demonstrates Angular injector trees and resolution modifiers.
 For more information, see [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
-演示了 Angular 的注入器树和解析修饰器。欲知详情，参阅[分层注入器](guide/hierarchical-dependency-injection)。
+演示了 Angular 的注入器树和解析修饰器。欲知详情，参阅[多级注入器](guide/hierarchical-dependency-injection)。
 
 ### Dependency injection with `providers` and `viewProviders`
 
@@ -488,7 +488,7 @@ For more information, see [Hierarchical injectors](guide/hierarchical-dependency
 Demonstrates how `providers` and `viewproviders` affect dependency injection.
 For more information, see the [Providing services in `@Component()`](guide/hierarchical-dependency-injection#providing-services-in-component) section of [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
-演示了 `providers` 和 `viewproviders` 如何影响依赖注入。欲知详情，参阅[分层注入器](guide/hierarchical-dependency-injection)中的[在 `@Component()` 中提供服务](guide/hierarchical-dependency-injection#providing-services-in-component)部分。
+演示了 `providers` 和 `viewproviders` 如何影响依赖注入。欲知详情，参阅[多级注入器](guide/hierarchical-dependency-injection)中的[在 `@Component()` 中提供服务](guide/hierarchical-dependency-injection#providing-services-in-component)部分。
 
 ### Resolution modifiers and dependency injection
 
@@ -499,7 +499,7 @@ For more information, see the [Providing services in `@Component()`](guide/hiera
 Demonstrates Angular's resolution modifiers, such as `@Self()`.
 For more information, see the [Modifying service visibility](guide/hierarchical-dependency-injection#modifying-service-visibility) section of [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
-演示了 Angular 的解析修饰器，比如 `@Self()`。关于详细信息，参阅“[分层注入器”](guide/hierarchical-dependency-injection)中的[“修改服务可见性”](guide/hierarchical-dependency-injection#modifying-service-visibility)部分。
+演示了 Angular 的解析修饰器，比如 `@Self()`。关于详细信息，参阅“[多级注入器”](guide/hierarchical-dependency-injection)中的[“修改服务可见性”](guide/hierarchical-dependency-injection#modifying-service-visibility)部分。
 
 ## Forms
 

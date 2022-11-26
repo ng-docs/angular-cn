@@ -330,7 +330,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create a tagged template literal string. E.g.
    *
-   * 创建标记模板文字字符串。例如
+   * 创建令牌模板文字字符串。例如
    *
    * ```
    * tag`str1${expr1}str2${expr2}str3`

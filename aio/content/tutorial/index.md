@@ -11,44 +11,64 @@
 In this tutorial, you build your own Angular application from the start.
 This is a good way to experience a typical development process as you learn Angular application-design concepts, tools, and terminology.
 
-在本教程中，你将从头开始构建自己的应用，体验典型的开发过程。这里还有一些对基本的应用设计概念、工具和术语的介绍。
+在本教程中，你将从头开始构建自己的应用。这是一种体验典型开发过程的好方式你讲学到 Angular 应用设计的概念、工具和术语。
 
 If you're new to Angular, try the [**Try it now**](start) quick-start application first.
 **Try it now** is based on a ready-made  partially completed project.
 You can edit the application in StackBlitz and see the results in real time.
 
-如果你对 Angular 还不熟悉，你可能要先[**试一试**](start) 快速上手应用。它基于一个现成的、已部分完成的项目，你可以在 StacBlitz 的交互式开发环境中检查和修改，你还可以在那里实时查看结果。
+如果你对 Angular 还不熟悉，可以先[**试一试**](start) 快速上手应用。**现在就试试**这个现成的、已部分完成的项目。你可以在 StacBlitz 编辑此应用，并实时查看结果。
 
 **Try it now** covers the same major topics &mdash;components, template syntax, routing, services, and accessing data using HTTP&mdash; in a condensed format, following best practices.
 
-“试一试”教程遵循最佳实践，以简明的格式，涵盖了与其相同的主要话题 - 组件、模板语法、路由、服务，以及通过 HTTP 访问数据。
+**“试一试”**教程遵循最佳实践，以简明的格式，涵盖了与其相同的主要话题 - 组件、模板语法、路由、服务，以及通过 HTTP 访问数据。
 
 </div>
 
 This *Tour of Heroes* tutorial provides an introduction to the fundamentals of Angular and shows you how to:
 
+本*英雄之旅*教程提供了对 Angular 基础知识的介绍，并向你展示如何：
+
 * Set up your local Angular development environment.
+
+  建立你本地的 Angular 开发环境。
 
 * Use the [Angular CLI](cli "CLI command reference") to develop an application
 
-这个*“英雄之旅”*教程向你展示了如何使用 [Angular CLI 工具](cli "CLI 命令参考：")搭建本地开发环境并开发应用，还对 [Angular CLI 工具](cli "CLI 命令参考：") 的基础知识进行了介绍。
+  使用 [Angular CLI](cli "CLI 命令参考")开发应用程序
 
 The *Tour of Heroes* application that you build helps a staffing agency manage its stable of heroes.
 The application has many of the features that you'd expect to find in any data-driven application.
 
+你建立的*英雄之旅*应用可以帮助人力资源管理局管理好自己的英雄。该应用具有许多在任何数据驱动的应用中都可能出现的功能。
+
 The finished application:
+
+完成的应用程序能：
 
 * Gets a list of heroes
 
+  获取英雄列表
+
 * Displays the heroes in a list
+
+  显示列表中的英雄
 
 * Edits a selected hero's details
 
+  编辑所选英雄的详细信息
+
 * Navigates between different views of heroic data
+
+  在英雄数据的不同视图之间导航
 
 This tutorial helps you gain confidence that Angular can do whatever you need it to do by showing you how to:
 
+本教程通过向你展示如何：
+
 * Use Angular [directives](guide/glossary#directive "Directives definition") to show and hide elements and display lists of hero data.
+
+  使用 Angular [指令](guide/glossary#directive "指令定义")来显示和隐藏元素以及显示英雄数据列表。
 
 * Create Angular [components](guide/glossary#component "Components definition") to display hero details and show an array of heroes.
 
@@ -67,6 +87,8 @@ This tutorial helps you gain confidence that Angular can do whatever you need it
   把组件中的方法绑定到用户事件上，比如按键和点击。
 
 * Enable users to select a hero from a list and edit that hero in the details view.
+
+  允许用户从列表中选择一个英雄并在详细信息视图中编辑该英雄。
 
 * Format data with [pipes](guide/glossary#pipe "Pipe definition").
 
@@ -108,6 +130,8 @@ Here's an image of where this tutorial leads, showing the Dashboard view and the
 </div>
 
 You can click the **Dashboard** and **Heroes** links in the dashboard to navigate between the views.
+
+你可以单击仪表板中的**Dashboard**和**Heroes**链接在视图之间导航。
 
 If you click the dashboard hero "Magneta," the router opens a "Hero Details" view where you can change the hero's name.
 

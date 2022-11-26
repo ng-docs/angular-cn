@@ -23,6 +23,9 @@ export const PRIMARY_OUTLET = 'primary';
  * A private symbol used to store the value of `Route.title` inside the `Route.data` if it is a
  * static string or `Route.resolve` if anything else. This allows us to reuse the existing route
  * data/resolvers to support the title feature without new instrumentation in the `Router` pipeline.
+ *
+ * 一个私有符号，用于将 `Route.title` 的值存储在 `Route.data` 中（如果是静态字符串），或者 `Route.resolve` 如果是其他）。这允许我们重用现有的路由数据/解析器来支持标题特性，而无需在 `Router` 管道中进行新的检测。
+ *
  */
 export const RouteTitleKey = Symbol('RouteTitle');
 
@@ -168,16 +171,35 @@ export function convertToParamMap(params: Params): ParamMap {
 /**
  * Matches the route configuration (`route`) against the actual URL (`segments`).
  *
+ * 将路由配置 ( `route` ) 与实际 URL ( `segments` ) 匹配。
+ *
  * When no matcher is defined on a `Route`, this is the matcher used by the Router by default.
  *
+ * 当 `Route` 上没有定义匹配器时，这是 Router 默认使用的匹配器。
+ *
  * @param segments The remaining unmatched segments in the current navigation
+ *
+ * 当前导航中剩余的不匹配段
+ *
  * @param segmentGroup The current segment group being matched
+ *
+ * 正在匹配的当前段组
+ *
  * @param route The `Route` to match against.
+ *
+ * 要匹配的 `Route` 。
  *
  * @see UrlMatchResult
  * @see Route
  *
- * @returns The resulting match information or `null` if the `route` should not match.
+ * 路线
+ *
+ * @returns
+ *
+ * The resulting match information or `null` if the `route` should not match.
+ *
+ * 结果的匹配信息，如果 `route` 不应该匹配，则为 `null` 。
+ *
  * @publicApi
  */
 export function defaultUrlMatcher(

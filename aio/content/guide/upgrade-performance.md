@@ -271,7 +271,7 @@ Unlike `UpgradeModule`—which requires some extra steps— `downgradeModule()` 
 In order to start using any `upgrade/static` APIs, you still need to load the Angular framework as you would in a normal Angular application.
 You can see how this can be done with SystemJS by following the instructions in the [Upgrade Setup](guide/upgrade-setup "Setup for Upgrading from AngularJS") guide, selectively copying code from the [QuickStart GitHub repository](https://github.com/angular/quickstart).
 
-要开始使用任何 `upgrade/static` API，你仍然要像在普通 Angular 应用中一样加载 Angular 框架。要想用 SystemJS 做到这一点，你可以遵循[升级的准备工作](guide/upgrade-setup "Setup for Upgrading from AngularJS")中的指导，有选择的从[快速上手项目的 Github 仓库](https://github.com/angular/quickstart)中复制代码。
+要开始使用任何 `upgrade/static` API，你仍然要像在普通 Angular 应用中一样加载 Angular 框架。要想用 SystemJS 做到这一点，你可以遵循[升级的准备工作](guide/upgrade-setup "Setup for Upgrading from AngularJS")中的指导，有选择的从[快速上手项目的 GitHub 仓库](https://github.com/angular/quickstart)中复制代码。
 
 You also need to install the `@angular/upgrade` package using `npm install @angular/upgrade --save` and add a mapping for the `@angular/upgrade/static` package:
 

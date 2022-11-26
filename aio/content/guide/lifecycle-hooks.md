@@ -71,7 +71,7 @@ Angular 会按以下顺序执行钩子方法。可以用它来执行以下类型
 | :---------- | :------ | :----- |
 | 钩子方法 | 用途 | 时机 |
 | `ngOnChanges()` | Respond when Angular sets or resets data-bound input properties. The method receives a `SimpleChanges` object of current and previous property values. <br /> <div class="alert is-helpful"> **NOTE**: <br /> This happens frequently, so any operation you perform here impacts performance significantly. </div> See details in [Using change detection hooks](#onchanges) in this document. | Called before `ngOnInit()` (if the component has bound inputs) and whenever one or more data-bound input properties change. <br /> <div class="alert is-helpful"> **NOTE**: <br /> If your component has no inputs or you use it without providing any inputs, the framework will not call `ngOnChanges()`. </div> |
-| `ngOnChanges()` | 当 Angular 设置或重新设置数据绑定的输入属性时响应。该方法接受当前和上一属性值的 `SimpleChanges` 对象<br /><div class="alert is-helpful">**注意**：<br />这发生的非常频繁，所以你在这里执行的任何操作都会显著影响性能。</div>欲知详情，参阅本文档的[使用变更检测钩子](#onchanges)。 | 如果组件绑定过输入属性，那么在 `ngOnInit()` 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。<br /><div class="alert is-helpful">**注意**：<br />如果你的组件没有输入属性，或者你使用它时没有提供任何输入属性，那么框架就不会调用 `ngOnChanges()`。</div> |
+| `ngOnChanges()` | 当 Angular 设置或重新设置数据绑定的输入属性时响应。该方法接受当前和上一属性值的 `SimpleChanges` 对象<br /><div class="alert is-helpful">**注意**：<br />这发生得比较频繁，所以你在这里执行的任何操作都会显著影响性能。</div>欲知详情，参阅本文档的[使用变更检测钩子](#onchanges)。 | 如果组件绑定过输入属性，那么在 `ngOnInit()` 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。<br /><div class="alert is-helpful">**注意**：<br />如果你的组件没有输入属性，或者你使用它时没有提供任何输入属性，那么框架就不会调用 `ngOnChanges()`。</div> |
 | `ngOnInit()` | Initialize the directive or component after Angular first displays the data-bound properties and sets the directive or component's input properties. See details in [Initializing a component or directive](#oninit) in this document. | Called once, after the first `ngOnChanges()`. `ngOnInit()` is still called even when `ngOnChanges()` is not (which is the case when there are no template-bound inputs). |
 | `ngOnInit()` | 在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。欲知详情，参阅本文档中的[初始化组件或指令](#oninit)。 | 在第一轮 `ngOnChanges()` 完成之后调用，只调用**一次**。而且即使没有调用过 `ngOnChanges()`，也仍然会调用 `ngOnInit()`（比如当模板中没有绑定任何输入属性时）。 |
 | `ngDoCheck()` | Detect and act upon changes that Angular can't or won't detect on its own. See details and example in [Defining custom change detection](#docheck) in this document. | Called immediately after `ngOnChanges()` on every change detection run, and immediately after `ngOnInit()` on the first run. |
@@ -260,7 +260,7 @@ A spy directive like this can provide insight into a DOM object that you cannot 
 You can't access the implementation of a built-in `<div>`, or modify a third party component.
 You do have the option to watch these elements with a directive.
 
-像这样的间谍指令可以深入了解你无法直接修改的 DOM 对象。你无法触及内置 `<div>` 的实现，也无法修改第三方组件，但是可以用指令来监视这些元素。
+像这样的间谍指令可以深入了解你无法直接修改的 DOM 对象。你无法触及内置 `<div>` 的实现，也无法修改第三方组件。但你有了一个选项来用指令监视这些元素。
 
 The directive defines `ngOnInit()` and `ngOnDestroy()` hooks
 that log messages to the parent using an injected `LoggerService`.

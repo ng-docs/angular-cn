@@ -185,6 +185,9 @@ export class RouterModule {
 /**
  * For internal use by `RouterModule` only. Note that this differs from `withInMemoryRouterScroller`
  * because it reads from the `ExtraOptions` which should not be used in the standalone world.
+ *
+ * 仅供 `RouterModule` 内部使用。请注意，这与 `withInMemoryRouterScroller` 不同，因为它是从不应该在独立世界中使用的 `ExtraOptions` 中读取的。
+ *
  */
 export function provideRouterScroller(): Provider {
   return {

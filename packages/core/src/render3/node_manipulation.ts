@@ -719,7 +719,7 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  *
  * 如果 `TNode` 是 `TNodeType.Element` => 在 `LView[tNode.index]` 位置返回 `RElement` 。如果 `TNode`
  * 是 `TNodeType.ElementContainer|IcuContain` => 返回父级（递归）。如果 `TNode` 为 `null`
- * ，则返回主机 `RElement` ：
+ * ，则返回宿主 `RElement` ：
  *
  * - return `null` if projection
  *
@@ -1093,7 +1093,7 @@ export function getBeforeNodeForView(viewIndexInContainer: number, lContainer: L
  *
  * @param isHostElement A flag indicating if a node to be removed is a host of a component.
  *
- * 指示要删除的节点是否是组件的主机的标志。
+ * 指示要删除的节点是否是组件的宿主的标志。
  *
  */
 export function nativeRemoveNode(renderer: Renderer, rNode: RNode, isHostElement?: boolean): void {
@@ -1496,7 +1496,12 @@ export function writeDirectClass(renderer: Renderer, element: RElement, newValue
   ngDevMode && ngDevMode.rendererSetClassName++;
 }
 
-/** Sets up the static DOM attributes on an `RNode`. */
+/**
+ * Sets up the static DOM attributes on an `RNode`.
+ *
+ * 在 `RNode` 上设置静态 DOM 属性。
+ *
+ */
 export function setupStaticAttributes(renderer: Renderer, element: RElement, tNode: TNode) {
   const {mergedAttrs, classes, styles} = tNode;
 

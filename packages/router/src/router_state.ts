@@ -141,7 +141,12 @@ export class ActivatedRoute {
   /** @internal */
   _queryParamMap!: Observable<ParamMap>;
 
-  /** An Observable of the resolved route title */
+  /**
+   * An Observable of the resolved route title
+   *
+   * 已解析路由标题的 Observable
+   *
+   */
   readonly title: Observable<string|undefined> =
       this.data?.pipe(map((d: Data) => d[RouteTitleKey])) ?? of(undefined);
 
@@ -393,7 +398,12 @@ export class ActivatedRouteSnapshot {
   // TODO(issue/24571): remove '!'.
   _queryParamMap!: ParamMap;
 
-  /** The resolved route title */
+  /**
+   * The resolved route title
+   *
+   * 解析的路由标题
+   *
+   */
   get title(): string|undefined {
     // Note: This _must_ be a getter because the data is mutated in the resolvers. Title will not be
     // available at the time of class instantiation.

@@ -5,7 +5,7 @@
 Angular provides the following built-in data transformation [pipes][AioGuideGlossaryPipe].
 The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to format data based on rules of each locale.
 
-Angular 提供了以下内置的数据转换[管道][AioGuideGlossaryPipe]。数据转换管道会使用 [`LOCALE_ID`][AioApiCoreLocaleId] 标记来根据每个语言环境的规则来格式化数据。
+Angular 提供了以下内置的数据转换[管道][AioGuideGlossaryPipe]。数据转换管道会使用 [`LOCALE_ID`][AioApiCoreLocaleId] 令牌来根据每个语言环境的规则来格式化数据。
 
 | Data transformation pipe | Details |
 | :----------------------- | :------ |
@@ -41,7 +41,7 @@ To display the current date in the format for the current locale, use the follow
 
 Add the `locale` parameter to the pipe to override the current value of `LOCALE_ID` token.
 
-将 `locale` 参数添加到此管道以覆盖 `LOCALE_ID` 标记的当前值。
+将 `locale` 参数添加到此管道以覆盖 `LOCALE_ID` 令牌的当前值。
 
 To force the currency to use American English (`en-US`), use the following format for the `CurrencyPipe`
 
@@ -61,7 +61,7 @@ To force the currency to use American English (`en-US`), use the following forma
 The locale specified for the `CurrencyPipe` overrides the global `LOCALE_ID` token of your application.
 
 **注意**：<br />
-为 `CurrencyPipe` 指定的语音环境设置会覆盖应用程序的全局 `LOCALE_ID` 标记。
+为 `CurrencyPipe` 指定的语音环境设置会覆盖应用程序的全局 `LOCALE_ID` 令牌。
 
 </div>
 

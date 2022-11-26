@@ -71,13 +71,13 @@ ng generate module app-routing --flat --module=app
 | `--flat` | Puts the file in `src/app` instead of its own directory. |
 | `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。 |
 | `--module=app` | Tells `ng generate` to register it in the `imports` array of the `AppModule`. |
-| `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。 |
+| `--module=app` | 告诉 `ng generate` 把它注册到 `AppModule` 的 `imports` 数组中。 |
 
 </div>
 
 The file that `ng generate` creates looks like this:
 
-生成的文件是这样的：
+`ng generate` 创建的文件是这样的：
 
 <code-example header="src/app/app-routing.module.ts (generated)" path="toh-pt5/src/app/app-routing.module.0.ts"></code-example>
 
@@ -181,7 +181,7 @@ The `RouterOutlet` is one of the router directives that became available to the 
 The `ng generate` command you ran at the start of this tutorial added this import because of the `--module=app` flag.
 If you didn't use the `ng generate` command to create `app-routing.module.ts`, import `AppRoutingModule` into `app.module.ts` and add it to the `imports` array of the `NgModule`.
 
-能在 `AppComponent` 中使用 `RouterOutlet`，是因为 `AppModule` 导入了 `AppRoutingModule`，而 `AppRoutingModule` 中导出了 `RouterModule`。在本教程开始时你运行的那个 `ng generate` 命令添加了这个导入，是因为 `--module=app` 标志。如果你手动创建 `app-routing.module.ts` 或使用了 CLI 之外的工具，你就要把 `AppRoutingModule` 导入到 `app.module.ts` 中，并且把它添加到 `NgModule` 的 `imports` 数组中。
+能在 `AppComponent` 中使用 `RouterOutlet`，是因为 `AppModule` 导入了 `AppRoutingModule`，而 `AppRoutingModule` 中导出了 `RouterModule`。在本教程开始时你运行的那个 `ng generate` 命令添加了这个导入，是因为 `--module=app` 标志。如果你没有使用 `ng generate` 命令来创建 `app-routing.module.ts`，就要把 `AppRoutingModule` 导入到 `app.module.ts` 中，并且把它添加到 `NgModule` 的 `imports` 数组中。
 
 </div>
 
@@ -268,7 +268,7 @@ Make this and future navigation links look better by adding private CSS styles t
 Routing makes more sense when your application has more than one view, yet
 the *Tour of Heroes* application has only the heroes view.
 
-当有多个视图时，路由会更有价值。不过目前还只有一个英雄列表视图。
+当你的的应用有多个视图时，路由会更有价值。不过目前的《英雄之旅》应用还只有一个英雄列表视图。
 
 To add a `DashboardComponent`, run `ng generate` as shown here:
 
@@ -308,7 +308,7 @@ The  *template* presents a grid of hero name links.
 
 * The links don't go anywhere yet.
 
-  这些链接还没有指向任何地方，但[很快就会了](#hero-details)。
+  这些链接还没有指向任何地方。
 
 The *class* is like the `HeroesComponent` class.
 
@@ -529,7 +529,7 @@ While the `HeroesComponent` class still works, the `onSelect()` method and `sele
 It's nice to tidy things up for your future self.
 Here's the class after pruning away the dead code.
 
-最好清理掉它们，将来你会体会到这么做的好处。下面是删除了死代码之后的类。
+为了将来更好维护，你最好清理掉它们。下面是删除了死代码之后的类。
 
 <code-example header="src/app/heroes/heroes.component.ts (cleaned up)" path="toh-pt5/src/app/heroes/heroes.component.ts" region="class"></code-example>
 
@@ -651,6 +651,8 @@ It returns a *mock hero* as an `Observable`, using the RxJS `of()` function.
 
 You can rewrite `getHero()` as a real `Http` request without having to change the `HeroDetailComponent` that calls it.
 
+你可以将 `getHero()` 重写为真实的 `Http` 请求，而无需更改调用它的 `HeroDetailComponent` 。
+
 <!-- markdownlint-disable MD024 -->
 
 你将来可以用一个真实的 `Http` 请求来重新实现 `getHero()`，而不用修改调用了它的 `HeroDetailComponent`。
@@ -666,6 +668,8 @@ You can click a hero in the dashboard or in the heroes list and navigate to that
 
 If you paste `localhost:4200/detail/12` in the browser address bar, the router navigates to the detail view for the hero with `id: 12`, **Dr Nice**.
 
+如果你在浏览器地址栏中粘贴 `localhost:4200/detail/12` ，路由器会导航到 `id: 12` 的英雄, **Dr Nice**的详细视图。
+
 <!-- markdownlint-enable MD024 -->
 
 如果你在浏览器的地址栏中粘贴了 `localhost:4200/detail/11`，路由器也会导航到 `id: 11` 的英雄（"Dr. Nice"）的详情视图。
@@ -678,7 +682,7 @@ If you paste `localhost:4200/detail/12` in the browser address bar, the router n
 
 By clicking the browser's back button, you can go back to the previous page. This could be the hero list or dashboard view, depending upon which sent you to the detail view.
 
-通过点击浏览器的后退按钮，你可以回到英雄列表或仪表盘视图，这取决于你从哪里进入的详情视图。
+通过点击浏览器的后退按钮，你可以回到前一页。它可能是英雄列表或仪表盘视图，这取决于你从哪里进入的详情视图。
 
 It would be nice to have a button on the `HeroDetail` view that can do that.
 

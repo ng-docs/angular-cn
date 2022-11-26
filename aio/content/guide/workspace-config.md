@@ -80,7 +80,7 @@ For more information, see [Workspace and project file structure](guide/file-stru
 
 ## Angular CLI configuration options
 
-## CLI 配置选项
+## Angular CLI 配置选项
 
 The following configuration properties are a set of options that customize the Angular CLI.
 
@@ -179,13 +179,13 @@ Angular 生成器的[原理图](guide/glossary#schematic)是一组用来修改�
 The JSON schemas for the default schematics used by the Angular CLI to create projects and parts of projects are collected in the package [`@schematics/angular`](https://github.com/angular/angular-cli/blob/main/packages/schematics/angular/application/schema.json).
 The schema describes the options available to the Angular CLI for each of the `ng generate` sub-commands, as shown in the `--help` output.
 
-供 CLI 生成项目及其部件的默认原理图的 JSON 模式（schema）位于 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/main/packages/schematics/angular/application/schema.json) 包中。
-这个模式描述了 CLI `ng generate` 子命令的每个选项，它们会显示在 `--help` 的输出中。
+供 Angular CLI 生成项目及其部件的默认原理图的 JSON 模式（schema）位于 [`@schematics/angular`](https://github.com/angular/angular-cli/blob/main/packages/schematics/angular/application/schema.json) 包中。
+这个模式描述了 Angular CLI `ng generate` 子命令的每个选项，它们会显示在 `--help` 的输出中。
 
 The fields given in the schema correspond to the allowed argument values and defaults for the Angular CLI sub-command options.
 You can update your workspace schema file to set a different default for a sub-command option.
 
-这个模式中的每个字段都对应于 CLI 子命令选项的参数取值范围和默认值。你可以修改此命名空间的模式文件，来为某个子命令选项指定另外的默认值。
+这个模式中的每个字段都对应于 Angular CLI 子命令选项的参数取值范围和默认值。你可以修改此命名空间的模式文件，来为某个子命令选项指定另外的默认值。
 
 <a id="architect"></a>
 
@@ -198,7 +198,7 @@ Architect is a shell that runs a specified [builder](guide/glossary#builder) to 
 You can define and configure new builders and targets to extend the Angular CLI.
 See [Angular CLI Builders](guide/cli-builder).
 
-建筑师（Architect）是 CLI 用来执行复杂任务（比如编译和测试运行）的工具。Architect 是一个根据[目标](guide/glossary#target)配置运行指定的[构建器](guide/glossary#builder)以完成指定任务的外壳。你可以定义和配置新的构建器和目标以扩展 CLI。请参阅 [Angular CLI 构建器](guide/cli-builder)。
+建筑师（Architect）是 Angular CLI 用来执行复杂任务（比如编译和测试运行）的工具。Architect 是一个根据[目标](guide/glossary#target)配置运行指定的[构建器](guide/glossary#builder)以完成指定任务的外壳。你可以定义和配置新的构建器和目标以扩展 Angular CLI。请参阅 [Angular CLI 构建器](guide/cli-builder)。
 
 <a id="default-build-targets"></a>
 
@@ -210,7 +210,7 @@ Angular defines default builders for use with specific commands, or with the gen
 The JSON schemas that define the options and defaults for each of these default builders are collected in the [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/builders.json) package.
 The schemas configure options for the following builders.
 
-Angular 定义了用于特定 CLI 命令或常规 `ng run` 命令的默认构建器。为每个默认构建器定义选项和默认值的 JSON 模式收集在 [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/builders.json) 包中。这些架构为以下构建器配置选项。
+Angular 定义了用于特定命令或常规 `ng run` 命令的默认构建器。为每个默认构建器定义选项和默认值的 JSON 模式收集在 [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/builders.json) 包中。这些架构为以下构建器配置选项。
 
 <!-- vale Angular.Google_WordListWarnings = NO -->
 
@@ -248,7 +248,7 @@ The `architect` section of `angular.json` contains a set of Architect targets.
 Many of the targets correspond to the Angular CLI commands that run them.
 Some extra predefined targets can be run using the `ng run` command, and you can define your own targets.
 
-`angular.json` 的 `architect` 部分包含一组建筑目标。很多目标都对应于运行它们的 CLI 命令。使用 `ng run` 命令可以运行一些额外的预定义目标，并可以定义自己的目标。
+`angular.json` 的 `architect` 部分包含一组建筑目标。很多目标都对应于运行它们的 Angular CLI 命令。使用 `ng run` 命令可以运行一些额外的预定义目标，并可以定义自己的目标。
 
 Each target object specifies the `builder` for that target, which is the npm package for the tool that Architect runs.
 Each target also has an `options` section that configures default options for the target, and a `configurations` section that names and specifies alternative configurations for the target.
@@ -293,7 +293,7 @@ See the example in [Build target](#build-target) below.
 
 In general, the options for which you can configure defaults correspond to the command options listed in the [Angular CLI reference page](cli) for each command.
 
-一般来说，可以为 [CLI 参考手册中](cli)列出的每个命令配置相应的默认值。
+一般来说，可以为 [Angular CLI 参考手册中](cli)列出的每个命令配置相应的默认值。
 
 <div class="alert is-helpful">
 
@@ -762,7 +762,7 @@ The example below shows how to toggle one or more values to configure the source
 When using hidden source maps, source maps are not referenced in the bundle.
 These are useful if you only want source maps to map error stack traces in error reporting tools. Hidden source maps don't expose your source maps in the browser developer tools.
 
-使用隐藏式源码映射时，捆绑包中不会引用源码映射。如果你只希望在错误报告工具中通过源码映射映射错误堆栈跟踪，而又不想在浏览器开发工具中公开源码映射，则这些选项很有用。
+使用隐藏式源码映射时，捆绑包中不会引用源码映射。如果你只希望在错误报告工具中通过源码映射映射错误堆栈跟踪时会很有用。隐藏源码映射就不会在浏览器开发工具中暴露你的源码映射。
 
 </div>
 
