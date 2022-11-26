@@ -30,9 +30,6 @@
     "name": "CIRCULAR"
   },
   {
-    "name": "CLEAN_PROMISE"
-  },
-  {
     "name": "COMPONENT_REGEX"
   },
   {
@@ -58,9 +55,6 @@
   },
   {
     "name": "ConnectableSubscriber"
-  },
-  {
-    "name": "DOCUMENT"
   },
   {
     "name": "DOCUMENT2"
@@ -225,13 +219,13 @@
     "name": "Observable"
   },
   {
+    "name": "PLATFORM_DESTROY_LISTENERS"
+  },
+  {
     "name": "PLATFORM_ID"
   },
   {
     "name": "PLATFORM_INITIALIZER"
-  },
-  {
-    "name": "PLATFORM_ON_DESTROY"
   },
   {
     "name": "R3Injector"
@@ -318,9 +312,6 @@
     "name": "__forward_ref__"
   },
   {
-    "name": "_chromeNumKeyPadMap"
-  },
-  {
     "name": "_currentInjector"
   },
   {
@@ -342,10 +333,10 @@
     "name": "_randomChar"
   },
   {
-    "name": "componentDefCount"
+    "name": "_wrapInTimeout"
   },
   {
-    "name": "_wrapInTimeout"
+    "name": "addPropertyAlias"
   },
   {
     "name": "allocExpando"
@@ -393,13 +384,22 @@
     "name": "collectNativeNodes"
   },
   {
+    "name": "componentDefCount"
+  },
+  {
     "name": "concatStringsWithSpace"
   },
   {
     "name": "config"
   },
   {
+    "name": "configureViewWithDirective"
+  },
+  {
     "name": "connectableObservableDescriptor"
+  },
+  {
+    "name": "convertToBitFlags"
   },
   {
     "name": "createElementRef"
@@ -420,9 +420,6 @@
     "name": "createNodeInjector"
   },
   {
-    "name": "createRootComponentView"
-  },
-  {
     "name": "createTView"
   },
   {
@@ -432,13 +429,16 @@
     "name": "deepForEach"
   },
   {
-    "name": "defaultScheduler"
+    "name": "deepForEachProvider"
   },
   {
     "name": "detachMovedView"
   },
   {
-    "name": "domRendererFactory3"
+    "name": "detectChangesInternal"
+  },
+  {
+    "name": "diPublicInInjector"
   },
   {
     "name": "empty"
@@ -478,6 +478,12 @@
   },
   {
     "name": "forwardRef"
+  },
+  {
+    "name": "generateInitialInputs"
+  },
+  {
+    "name": "generatePropertyAliases"
   },
   {
     "name": "getClosureSafeProperty"
@@ -541,6 +547,9 @@
   },
   {
     "name": "getOrCreateInjectable"
+  },
+  {
+    "name": "getOrCreateNodeInjectorForNode"
   },
   {
     "name": "getOrCreateTNode"
@@ -624,6 +633,9 @@
     "name": "invertObject"
   },
   {
+    "name": "invokeHostBindingsInCreationMode"
+  },
+  {
     "name": "isArray"
   },
   {
@@ -633,10 +645,13 @@
     "name": "isComponentDef"
   },
   {
+    "name": "isEnvironmentProviders"
+  },
+  {
     "name": "isFunction"
   },
   {
-    "name": "isImportedNgModuleProviders"
+    "name": "isInlineTemplate"
   },
   {
     "name": "isLContainer"
@@ -651,9 +666,6 @@
     "name": "isPositive"
   },
   {
-    "name": "isProceduralRenderer"
-  },
-  {
     "name": "isPromise"
   },
   {
@@ -661,9 +673,6 @@
   },
   {
     "name": "isTemplateNode"
-  },
-  {
-    "name": "isTemplateNode2"
   },
   {
     "name": "isTypeProvider"
@@ -694,6 +703,12 @@
   },
   {
     "name": "maybeWrapInNotSelector"
+  },
+  {
+    "name": "mergeHostAttribute"
+  },
+  {
+    "name": "mergeHostAttrs"
   },
   {
     "name": "mergeMap"
@@ -738,9 +753,6 @@
     "name": "promise"
   },
   {
-    "name": "readPatchedLView"
-  },
-  {
     "name": "refCount"
   },
   {
@@ -754,9 +766,6 @@
   },
   {
     "name": "refreshView"
-  },
-  {
-    "name": "registerHostBindingOpCodes"
   },
   {
     "name": "rememberChangeHistoryAndInvokeOnChangesHook"
@@ -774,9 +783,6 @@
     "name": "renderComponent"
   },
   {
-    "name": "renderComponentOrTemplate"
-  },
-  {
     "name": "renderView"
   },
   {
@@ -789,6 +795,9 @@
     "name": "rxSubscriber"
   },
   {
+    "name": "saveNameToExportMap"
+  },
+  {
     "name": "scheduleArray"
   },
   {
@@ -796,6 +805,9 @@
   },
   {
     "name": "setBindingRootForHostBindings"
+  },
+  {
+    "name": "setCurrentDirectiveIndex"
   },
   {
     "name": "setCurrentInjector"

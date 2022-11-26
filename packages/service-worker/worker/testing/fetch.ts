@@ -100,7 +100,7 @@ export class MockRequest extends MockBody implements Request {
   readonly isHistoryNavigation: boolean = false;
   readonly isReloadNavigation: boolean = false;
   readonly cache: RequestCache = 'default';
-  readonly credentials: RequestCredentials = 'omit';
+  readonly credentials: RequestCredentials = 'same-origin';
   readonly destination: RequestDestination = 'document';
   readonly headers: Headers = new MockHeaders();
   readonly integrity: string = '';
@@ -115,7 +115,7 @@ export class MockRequest extends MockBody implements Request {
   url: string;
 
   constructor(input: string|Request, init: RequestInit = {}) {
-    super(init !== undefined ? (init.body as (string | null)) || null : null);
+    super((init.body as string | null) ?? null);
     if (typeof input !== 'string') {
       throw 'Not implemented';
     }

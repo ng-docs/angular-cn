@@ -6,6 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {Inject, InjectionToken, ɵRuntimeError as RuntimeError} from '@angular/core';
+
+import {RuntimeErrorCode} from '../errors';
 import {AbstractControl} from '../model/abstract_model';
 import {FormArray} from '../model/form_array';
 import {FormControl} from '../model/form_control';
@@ -21,6 +24,30 @@ import {NgControl} from './ng_control';
 import {FormArrayName} from './reactive_directives/form_group_name';
 import {ngModelWarning} from './reactive_errors';
 import {AsyncValidatorFn, Validator, ValidatorFn} from './validators';
+
+/**
+ * Token to provide to allow SetDisabledState to always be called when a CVA is added, regardless of
+ * whether the control is disabled or enabled.
+ *
+ * @see `FormsModule.withConfig`
+ */
+export const CALL_SET_DISABLED_STATE = new InjectionToken(
+    'CallSetDisabledState', {providedIn: 'root', factory: () => setDisabledStateDefault});
+
+/**
+ * The type for CALL_SET_DISABLED_STATE. If `always`, then ControlValueAccessor will always call
+ * `setDisabledState` when attached, which is the most correct behavior. Otherwise, it will only be
+ * called when disabled, which is the legacy behavior for compatibility.
+ *
+ * @publicApi
+ * @see `FormsModule.withConfig`
+ */
+export type SetDisabledStateOption = 'whenDisabledForLegacyCode'|'always';
+
+/**
+ * Whether to use the fixed setDisabledState behavior by default.
+ */
+export const setDisabledStateDefault: SetDisabledStateOption = 'always';
 
 export function controlPath(name: string|null, parent: ControlContainer): string[] {
   return [...parent.path!, name!];
@@ -42,18 +69,23 @@ export function controlPath(name: string|null, parent: ControlContainer): string
  * 应该与给定控件链接的指令。
  *
  */
-export function setUpControl(control: FormControl, dir: NgControl): void {
+export function setUpControl(
+    control: FormControl, dir: NgControl,
+    callSetDisabledState: SetDisabledStateOption = setDisabledStateDefault): void {
   if (typeof ngDevMode === 'undefined' || ngDevMode) {
     if (!control) _throwError(dir, 'Cannot find control with');
-    if (!dir.valueAccessor) _throwError(dir, 'No value accessor for form control with');
+    if (!dir.valueAccessor) _throwMissingValueAccessorError(dir);
   }
 
   setUpValidators(control, dir);
 
   dir.valueAccessor!.writeValue(control.value);
 
-  if (control.disabled) {
-    dir.valueAccessor!.setDisabledState?.(true);
+  // The legacy behavior only calls the CVA's `setDisabledState` if the control is disabled.
+  // If the `callSetDisabledState` option is set to `always`, then this bug is fixed and
+  // the method is always called.
+  if (control.disabled || callSetDisabledState === 'always') {
+    dir.valueAccessor!.setDisabledState?.(control.disabled);
   }
 
   setUpViewChangePipeline(control, dir);
@@ -365,11 +397,18 @@ function _describeControlLocation(dir: AbstractControlDirective): string {
   return 'unspecified name attribute';
 }
 
+function _throwMissingValueAccessorError(dir: AbstractControlDirective) {
+  const loc = _describeControlLocation(dir);
+  throw new RuntimeError(
+      RuntimeErrorCode.NG_MISSING_VALUE_ACCESSOR, `No value accessor for form control ${loc}.`);
+}
+
 function _throwInvalidValueAccessorError(dir: AbstractControlDirective) {
   const loc = _describeControlLocation(dir);
-  throw new Error(
+  throw new RuntimeError(
+      RuntimeErrorCode.NG_VALUE_ACCESSOR_NOT_PROVIDED,
       `Value accessor was not provided as an array for form control with ${loc}. ` +
-      `Check that the \`NG_VALUE_ACCESSOR\` token is configured as a \`multi: true\` provider.`);
+          `Check that the \`NG_VALUE_ACCESSOR\` token is configured as a \`multi: true\` provider.`);
 }
 
 export function isPropertyUpdated(changes: {[key: string]: any}, viewModel: any): boolean {

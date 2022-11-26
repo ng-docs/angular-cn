@@ -1,23 +1,10 @@
 # Getting started with standalone components
 
-# 独立组件入门
-
-In v14 and higher, **standalone components** provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for `NgModule`s. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.
-
-在 v14 及更高版本中，**独立组件**提供了一种简化的方式来构建 Angular 应用程序。独立组件、指令和管道旨在通过减少对 `NgModule` 的需求来简化创作体验。现有应用程序可以选择性地以增量方式采用新的独立风格，而无需任何重大更改。
-
-<div class="alert is-important">
-
-The standalone component feature is available for developer preview. 
-It's ready for you to try; but it might change before it is stable.
-
-独立组件特性可用于开发人员预览。它已准备好供你尝试；但它可能会在稳定之前发生变化。
-
-</div>
+**Standalone components** provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for `NgModule`s. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.
 
 ## Creating standalone components
 
-## 创建独立组件
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x5PZwb4XurU" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### The `standalone` flag and component `imports`
 
@@ -131,7 +118,7 @@ bootstrapApplication(PhotoAppComponent, {
 });
 ```
 
-The standalone bootstrap operation is based on explicitly configuring a list of `Provider`s for dependency injection. However, existing libraries may rely on `NgModule`s for configuring DI. For example, Angular’s router uses the `RouterModule.forRoot()` helper to set up routing in an application. You can use these existing `NgModule`s in `bootstrapApplication` via the `importProvidersFrom` utility:
+The standalone bootstrap operation is based on explicitly configuring a list of `Provider`s for dependency injection. In Angular, `provide`-prefixed functions can be used to configure different systems without needing to import NgModules. For example, `provideRouter` is used in place of `RouterModule.forRoot` to configure the router:
 
 独立的引导操作基于显式配置 `Provider` 列表以进行依赖注入。但是，现有的库可能依赖 `NgModule` 来配置 DI。例如，Angular 的路由器使用 `RouterModule.forRoot()` 帮助器在应用程序中设置路由。你可以通过 `importProvidersFrom` 实用程序在 `bootstrapApplication` 中使用这些现有的 `NgModule` ：
 
@@ -139,10 +126,23 @@ The standalone bootstrap operation is based on explicitly configuring a list of 
 bootstrapApplication(PhotoAppComponent, {
   providers: [
     {provide: BACKEND_URL, useValue: 'https://photoapp.looknongmodules.com/api'},
-    importProvidersFrom(
-      RouterModule.forRoot([/* app routes */]),
-    ),
+    provideRouter([/* app routes */]),
     // ...
+  ]
+});
+```
+
+Many third party libraries have also been updated to support this `provide`-function configuration pattern. If a library only offers an NgModule API for its DI configuration, you can use the `importProvidersFrom` utility to still use it with `bootstrapApplication` and other standalone contexts:
+
+```ts
+import {LibraryModule} from 'ngmodule-based-library';
+
+bootstrapApplication(PhotoAppComponent, {
+  providers: [
+    {provide: BACKEND_URL, useValue: 'https://photoapp.looknongmodules.com/api'},
+    importProvidersFrom(
+      LibraryModule.forRoot()
+    ),
   ]
 });
 ```
@@ -197,6 +197,25 @@ export const ADMIN_ROUTES: Route[] = [
 ];
 ```
 
+### Lazy loading and default exports
+
+When using `loadChildren` and `loadComponent`, the router understands and automatically unwraps dynamic `import()` calls with `default` exports. You can take advantage of this to skip the `.then()` for such lazy loading operations.
+
+```ts
+// In the main application:
+export const ROUTES: Route[] = [
+  {path: 'admin', loadChildren: () => import('./admin/routes')},
+  // ...
+];
+
+// In admin/routes.ts:
+export default [
+  {path: 'home', component: AdminHomeComponent},
+  {path: 'users', component: AdminUsersComponent},
+  // ...
+] as Route[];
+```
+
 ### Providing services to a subset of routes
 
 ### 为路由的子集提供服务
@@ -218,8 +237,8 @@ export const ROUTES: Route[] = [
       {provide: ADMIN_API_KEY, useValue: '12345'},
     ],
     children: [
-      path: 'users', component: AdminUsersComponent,
-      path: 'teams', component: AdminTeamsComponent,
+      {path: 'users', component: AdminUsersComponent},
+      {path: 'teams', component: AdminTeamsComponent},
     ],
   },
   // ... other application routes that don't
@@ -258,6 +277,8 @@ Note the use of an empty-path route to host `providers` that are shared among al
 
 请注意这里使用了空路径路由来定义供所有子路由共享的宿主 `providers`。
 
+`importProvidersFrom` can be used to import existing NgModule-based DI configuration into route `providers` as well.
+
 ## Advanced topics
 
 ## 高级主题
@@ -291,7 +312,7 @@ As an alternative to publishing a `NgModule`, library authors might want to expo
 作为发布 `NgModule` 的替代方案，库作者可能希望导出一个合作指令数组：
 
 ```ts
-export CAROUSEL_DIRECTIVES = [ImageCarouselComponent, ImageSlideComponent] as const;
+export const CAROUSEL_DIRECTIVES = [ImageCarouselComponent, ImageSlideComponent] as const;
 ```
 
 Such an array could be imported by applications using `NgModule`s and added to the `@NgModule.imports`. Please note the presence of the TypeScript’s `as const` construct: it gives Angular compiler additional information required for proper compilation and is a recommended practice (as it makes the exported array immutable from the TypeScript point of view).
@@ -344,7 +365,7 @@ Environment injectors can be configured using one of the following:
 
   `@NgModule.providers`（在通过 `NgModule` 引导的应用程序中）；
 
-* `@Injectable({provideIn: "..."})`(in both the NgModule-based as well as “standalone” applications);
+* `@Injectable({provideIn: "..."})`(in both the NgModule-based and the “standalone” applications);
 
   `@Injectable({provideIn: "..."})`（在基于 NgModule 以及“独立”应用程序中）；
 

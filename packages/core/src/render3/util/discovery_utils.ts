@@ -15,13 +15,11 @@ import {discoverLocalRefs, getComponentAtNodeIndex, getDirectivesAtNodeIndex, ge
 import {getComponentDef, getDirectiveDef} from '../definition';
 import {NodeInjector} from '../di';
 import {buildDebugNode} from '../instructions/lview_debug';
-import {LContext} from '../interfaces/context';
 import {DirectiveDef} from '../interfaces/definition';
 import {TElementNode, TNode, TNodeProviderIndexes} from '../interfaces/node';
 import {isLView} from '../interfaces/type_checks';
-import {CLEANUP, CONTEXT, DebugNode, FLAGS, LView, LViewFlags, RootContext, T_HOST, TVIEW, TViewType} from '../interfaces/view';
+import {CLEANUP, CONTEXT, DebugNode, FLAGS, LView, LViewFlags, T_HOST, TVIEW, TViewType} from '../interfaces/view';
 
-import {stringifyForError} from './stringify_utils';
 import {getLViewParent, getRootContext} from './view_traversal_utils';
 import {getTNode, unwrapRNode} from './view_utils';
 
@@ -105,7 +103,7 @@ export function getComponent<T>(element: Element): T|null {
  * @publicApi
  * @globalApi ng
  */
-export function getContext<T extends({} | RootContext)>(element: Element): T|null {
+export function getContext<T extends {}>(element: Element): T|null {
   assertDomElement(element);
   const context = getLContext(element)!;
   const lView = context ? context.lView : null;
@@ -169,7 +167,7 @@ export function getOwningComponent<T>(elementOrDir: Element|{}): T|null {
  */
 export function getRootComponents(elementOrDir: Element|{}): {}[] {
   const lView = readPatchedLView<{}>(elementOrDir);
-  return lView !== null ? [...getRootContext(lView).components as unknown as {}[]] : [];
+  return lView !== null ? [getRootContext(lView)] : [];
 }
 
 /**
@@ -288,7 +286,7 @@ export function getDirectives(node: Node): {}[] {
     return [];
   }
   if (context.directives === undefined) {
-    context.directives = getDirectivesAtNodeIndex(nodeIndex, lView, false);
+    context.directives = getDirectivesAtNodeIndex(nodeIndex, lView);
   }
 
   // The `directives` in this case are a named array called `LComponentView`. Clone the

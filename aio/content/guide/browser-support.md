@@ -50,6 +50,8 @@ You might need additional polyfills to support features not covered by this list
 这些建议的腻子脚本是运行完整 Angular 应用所需的。
 你可能还会需要另一些的腻子脚本来支持没有出现在此列表中的哪些特性。
 
+</div>
+
 <div class="alert is-helpful">
 
 **NOTE**: <br />
@@ -57,8 +59,6 @@ Polyfills cannot magically transform an old, slow browser into a modern, fast on
 
 **注意**：<br />
 这些腻子脚本并没有神奇的魔力来把老旧、慢速的浏览器变成现代、快速的浏览器。
-
-</div>
 
 </div>
 
@@ -71,18 +71,31 @@ If you are not using the CLI to create your projects, see [Polyfill instructions
 
 [Angular CLI](cli) 提供了对腻子脚本的支持。如果未使用 CLI 创建项目，参阅[针对非 CLI 用户的腻子脚本说明](#non-cli)。
 
-When you create a project with the `ng new` command, a `src/polyfills.ts` configuration file is created as part of your project folder.
-This file incorporates the mandatory and many of the optional polyfills as JavaScript `import` statements.
+The `polyfills` options of the [browser](cli/build) and [test](cli/test) builder can be a full path for a file \(Example: `src/polyfills.ts`\) or,
+relative to the current workspace or module specifier \(Example: `zone.js`\).
 
-使用 `ng new` 命令创建项目时，会在项目文件夹中创建一个 `src/polyfills.ts` 配置文件。该文件包含许多强制性和可选腻子脚本的 JavaScript `import` 语句。
+[browser](cli/build) 和 [test](cli/test) 构建器的 `polyfills` 选项可以是到一个文件的完整路径（比如 `src/polyfills.ts`）或相对于当前工作空间或模块的标识符（比如 `zone.js`）。
 
-* The npm packages for the mandatory polyfills (such as `zone.js`) are installed automatically for you when you create your project with `ng new`, and their corresponding `import` statements are already enabled in the `src/polyfills.ts` configuration file
+If you create a TypeScript file, make sure to include it in the `files` property of your `tsconfig` file.
 
-  使用 `ng new` 创建项目时，会自动为你安装一些强制性腻子脚本（比如 `zone.js`），并且它对应的 `import` 语句已在 `src/polyfills.ts` 配置文件中启用。
+如果你创建了某个 TypeScript 文件，请确保 `tsconfig` 文件的 `files` 属性中包含了它。
 
-* If you need an *optional* polyfill, you must install its npm package, then uncomment or create the corresponding import statement in the `src/polyfills.ts` configuration file
+<code-example language="jsonc" syntax="jsonc">
 
-  如果你需要一个**可选的**填充库，就必须安装它们的 npm 包，然后在 `src/polyfills.ts` 文件中反注释或创建一个对应的导入语句。
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    ...
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ]
+  ...
+}
+
+</code-example>
+
 
 <a id="non-cli"></a>
 
@@ -129,4 +142,4 @@ For example:
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-11-04

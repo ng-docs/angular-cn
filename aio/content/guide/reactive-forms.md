@@ -494,6 +494,10 @@ For complete syntax details, see the API reference documentation for the [Forms 
 | `FormArray` | 管理一些 `AbstractControl` 实例数组的值和有效性状态。 |
 | `FormBuilder` | An injectable service that provides factory methods for creating control instances. |
 | `FormBuilder` | 一个可注入的服务，提供一些用于提供创建控件实例的工厂方法。 |
+| `FormRecord` | Tracks the value and validity state of a collection of `FormControl` instances, each of which has the same value type. |
+| `FormRecord` | 跟踪 `FormControl` 实例集合的值和有效状态，每个实例都具有相同的值类型。 |
+
+</table>
 
 #### Directives
 

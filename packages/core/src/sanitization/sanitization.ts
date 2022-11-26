@@ -6,6 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {XSS_SECURITY_URL} from '../error_details_base_url';
 import {RuntimeError, RuntimeErrorCode} from '../errors';
 import {getDocument} from '../render3/interfaces/document';
 import {SANITIZER} from '../render3/interfaces/view';
@@ -167,10 +168,9 @@ export function ɵɵsanitizeResourceUrl(unsafeResourceUrl: any): TrustedScriptUR
   if (allowSanitizationBypassAndThrow(unsafeResourceUrl, BypassType.ResourceUrl)) {
     return trustedScriptURLFromStringBypass(unwrapSafeValue(unsafeResourceUrl));
   }
-  const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
-      'unsafe value used in a resource URL context (see https://g.co/ng/security#xss)' :
-      '';
-  throw new RuntimeError(RuntimeErrorCode.UNSAFE_VALUE_IN_RESOURCE_URL, errorMessage);
+  throw new RuntimeError(
+      RuntimeErrorCode.UNSAFE_VALUE_IN_RESOURCE_URL,
+      ngDevMode && `unsafe value used in a resource URL context (see ${XSS_SECURITY_URL})`);
 }
 
 /**
@@ -206,10 +206,9 @@ export function ɵɵsanitizeScript(unsafeScript: any): TrustedScript|string {
   if (allowSanitizationBypassAndThrow(unsafeScript, BypassType.Script)) {
     return trustedScriptFromStringBypass(unwrapSafeValue(unsafeScript));
   }
-  const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
-      'unsafe value used in a script context' :
-      '';
-  throw new RuntimeError(RuntimeErrorCode.UNSAFE_VALUE_IN_SCRIPT, errorMessage);
+  throw new RuntimeError(
+      RuntimeErrorCode.UNSAFE_VALUE_IN_SCRIPT,
+      ngDevMode && 'unsafe value used in a script context');
 }
 
 /**

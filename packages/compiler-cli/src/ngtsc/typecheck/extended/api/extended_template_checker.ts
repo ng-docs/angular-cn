@@ -11,7 +11,7 @@ import ts from 'typescript';
 import {TemplateDiagnostic} from '../../api';
 
 /**
- * Interface to generate extended template diangostics from the component tempaltes.
+ * Interface to generate extended template diagnostics from the component templates.
  *
  * 从组件 tempalte 生成扩展模板诊断的接口。
  *

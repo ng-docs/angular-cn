@@ -4,7 +4,7 @@
 
 The web is used by a wide variety of people, including those who have visual or motor impairments.
 A variety of assistive technologies are available that make it much easier for these groups to interact with web-based software applications.
-In addition, designing an application to be more accessible generally improves the user experience for all users.
+Also, designing an application to be more accessible generally improves the user experience for all users.
 
 Web 会被各种各样的人使用，包括有视觉或运动障碍的人。有多种辅助技术能使这些人更轻松地和基于 Web 的软件应用进行交互。另外，将应用设计得更易于访问通常也能改善所有用户的体验。
 
@@ -28,12 +28,12 @@ For the sample application that this page describes, see the <live-example></liv
 
 ## 无障碍属性（Attribute）
 
-Building accessible web experience often involves setting [ARIA attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
+Building accessible web experience often involves setting [Accessible Rich Internet Applications \(ARIA\) attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
 Use [attribute binding](guide/attribute-binding) template syntax to control the values of accessibility-related attributes.
 
 建立无障碍的 Web 体验通常会涉及设置 [ARIA 属性（Attribute）](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) 以提供可能会丢失的语义。使用 [Attribute 绑定](guide/attribute-binding)模板语法来控制与无障碍性相关的属性（Attribute）值。
 
-When binding to ARIA attributes in Angular, you must use the `attr.` prefix, as the ARIA specification depends specifically on HTML attributes rather than properties of DOM elements.
+When binding to ARIA attributes in Angular, you must use the `attr.` prefix. The ARIA specification depends specifically on HTML attributes rather than properties of DOM elements.
 
 在 Angular 中绑定 ARIA 属性（Attribute）时，必须使用 `attr.` 前缀，因为 ARIA 规范针对的是 HTML 属性（Attribute），而不是 DOM 元素的属性（Property）。
 
@@ -102,7 +102,7 @@ For full details of these and other tools, see the [Angular CDK accessibility ov
 
 ### 增强原生元素
 
-Native HTML elements capture a number of standard interaction patterns that are important to accessibility.
+Native HTML elements capture several standard interaction patterns that are important to accessibility.
 When authoring Angular components, you should re-use these native elements directly when possible, rather than re-implementing well-supported behaviors.
 
 原生 HTML 元素捕获了许多对无障碍性很重要的标准交互模式。在制作 Angular 组件时，应尽可能直接复用这些原生元素，而不是重新实现已获良好支持的行为。
@@ -122,8 +122,8 @@ You can see examples of this pattern in Angular Material:
 ### 将容器用于原生元素
 
 Sometimes using the appropriate native element requires a container element.
-For example, the native `<input>` element cannot have children, so any custom text entry components need to wrap an `<input>` with additional elements.
-While you might just include the `<input>` in your custom component's template, this makes it impossible for users of the component to set arbitrary properties and attributes to the input element.
+For example, the native `<input>` element cannot have children, so any custom text entry components need to wrap an `<input>` with extra elements.
+By just including `<input>` in your custom component's template, it's impossible for your component's users  to set arbitrary properties and attributes to the `<input>` element.
 Instead, create a container component that uses content projection to include the native control in the component's API.
 
 有时要使用的原生元素需要一个容器元素。比如，原生 `<input>` 元素不能有子元素，因此任何自定义的文本输入组件都需要用其它元素来包装 `<input>`。尽管你可能只在自定义组件的模板中包含 `<input>`，但这将使该组件的用户无法为 `input` 元素设置任意 Property 和 Attribute。相反，你可以创建一个使用内容投影的容器组件，以将原生控件包含在组件的 API 中。
@@ -186,7 +186,7 @@ router.events.pipe(filter(e =&gt; e instanceof NavigationEnd)).subscribe(() =&gt
 
 </code-example>
 
-In a real application, the element that receives focus will depend on your specific application structure and layout.
+In a real application, the element that receives focus depends on your specific application structure and layout.
 The focused element should put users in a position to immediately move into the main content that has just been routed into view.
 You should avoid situations where focus returns to the `body` element after a route change.
 
@@ -196,7 +196,10 @@ You should avoid situations where focus returns to the `body` element after a ro
 
 ### 活动链接标识
 
-CSS classes applied to active `RouterLink` elements (usually via `RouterLinkActive`) provide a visual indication regarding as to which link is currently active. Such indication doesn't apply to blind or visually impaired users, in order to provide such information the `aria-current` attribute should be applied to the element as well (for more information see [MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
+CSS classes applied to active `RouterLink` elements, such as `RouterLinkActive`, provide a visual cue to identify the active link.
+Unfortunately, a visual cue doesn't help blind or visually impaired users.
+Applying the `aria-current` attribute to the element can help identify the active link.
+For more information, see [Mozilla Developer Network \(MDN\) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
 
 用在活跃 `RouterLink` 元素上的 CSS 类（一般通过 `RouterLinkActive` 来指定）提供了有关哪个链接正处于活跃状态的视觉指示。此类指示不适用于盲人或视障用户，为了提供此类信息，还要将 `aria-current` 属性应用于此元素（有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)）。
 
@@ -228,7 +231,9 @@ The following example shows how to apply the `active-page` class to active links
     </nav>
 ```
 
-## Additional resources
+<!-- vale Angular.Angular_Spelling = NO -->
+
+## More information
 
 ## 额外资源
 
@@ -268,17 +273,23 @@ The following example shows how to apply the `active-page` class to active links
 
   [Angular ESLint](https://github.com/angular-eslint/angular-eslint#functionality)提供了整理(linting)规则，可以帮助你确保你的代码符合无障碍性标准。
 
+<!-- vale Angular.Angular_Spelling = YES -->
+
 Books
 
 图书
 
-* "A Web for Everyone: Designing Accessible User Experiences", Sarah Horton and Whitney Quesenbery
+<!-- vale Angular.Google_Quotes = NO -->
+
+* "A Web for Everyone: Designing Accessible User Experiences," Sarah Horton and Whitney Quesenbery
 
   “适合所有人的网络：设计无障碍的用户体验”，莎拉·霍顿和惠特尼·奎森伯里
 
-* "Inclusive Design Patterns", Heydon Pickering
+* "Inclusive Design Patterns," Heydon Pickering
 
   “包容性设计模式”，Heydon Pickering
+
+<!-- vale Angular.Google_Quotes = YES -->
 
 <!-- links -->
 

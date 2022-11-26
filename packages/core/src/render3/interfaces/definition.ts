@@ -13,9 +13,9 @@ import {SchemaMetadata} from '../../metadata/schema';
 import {ViewEncapsulation} from '../../metadata/view';
 import {FactoryFn} from '../definition_factory';
 
-import {TAttributes, TConstantsOrFactory} from './node';
+import {TAttributes, TConstantsOrFactory, TContainerNode, TElementContainerNode, TElementNode} from './node';
 import {CssSelectorList} from './projection';
-import {TView} from './view';
+import {LView, TView} from './view';
 
 
 /**
@@ -315,6 +315,22 @@ export interface DirectiveDef<T> {
    *
    */
   readonly features: DirectiveDefFeature[]|null;
+
+  /**
+   * Function that will add the host directives to the list of matches during directive matching.
+   * Patched onto the definition by the `HostDirectivesFeature`.
+   * @param currentDef Definition that has been matched.
+   * @param matchedDefs List of all matches for a specified node. Will be mutated to include the
+   * host directives.
+   * @param hostDirectiveDefs Mapping of directive definitions to their host directive
+   * configuration. Host directives will be added to the map as they're being matched to the node.
+   */
+  findHostDirectiveDefs:
+      ((currentDef: DirectiveDef<unknown>, matchedDefs: DirectiveDef<unknown>[],
+        hostDirectiveDefs: HostDirectiveDefs) => void)|null;
+
+  /** Additional directives to be applied whenever the directive has been matched. */
+  hostDirectives: HostDirectiveDef[]|null;
 
   setInput:
       (<U extends T>(
@@ -632,6 +648,33 @@ export interface DirectiveDefFeature {
    */
   ngInherit?: true;
 }
+
+/** Runtime information used to configure a host directive. */
+export interface HostDirectiveDef<T = unknown> {
+  /** Class representing the host directive. */
+  directive: Type<T>;
+
+  /** Directive inputs that have been exposed. */
+  inputs: HostDirectiveBindingMap;
+
+  /** Directive outputs that have been exposed. */
+  outputs: HostDirectiveBindingMap;
+}
+
+/**
+ * Mapping between the public aliases of directive bindings and the underlying inputs/outputs that
+ * they represent. Also serves as an allowlist of the inputs/outputs from the host directive that
+ * the author has decided to expose.
+ */
+export type HostDirectiveBindingMap = {
+  [publicName: string]: string
+};
+
+/**
+ * Mapping between a directive that was used as a host directive
+ * and the configuration that was used to define it as such.
+ */
+export type HostDirectiveDefs = Map<DirectiveDef<unknown>, HostDirectiveDef>;
 
 export interface ComponentDefFeature {
   <T>(componentDef: ComponentDef<T>): void;

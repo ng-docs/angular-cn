@@ -13,7 +13,7 @@ Such tests require creating the component's host element in the browser DOM, as 
 这些测试需要在浏览器 DOM 中创建该组件的宿主元素，就像 Angular 所做的那样，然后检查组件类与 DOM 的交互是否如模板中描述的那样工作。
 
 The Angular `TestBed` facilitates this kind of testing as you'll see in the following sections.
-But in many cases, *testing the component class alone*, without DOM involvement, can validate much of the component's behavior in an straightforward, more obvious way.
+But in many cases, *testing the component class alone*, without DOM involvement, can validate much of the component's behavior in a straightforward, more obvious way.
 
 Angular 的 `TestBed` 可以帮你做这种测试，正如你将在下面的章节中看到的那样。但是，在很多情况下，*单独测试组件类*（不需要 DOM 的参与），就能以更简单，更明显的方式验证组件的大部分行为。
 
@@ -432,7 +432,7 @@ When you're filtering by CSS selector and only testing properties of a browser's
 
 当你使用 CSS 选择器进行过滤并且只测试浏览器*原生元素*的属性时，用 `By.css` 方法可能会有点过度。
 
-It's often straightforward and more clear to filter with a standard `HTMLElement` method such as `querySelector()` or `querySelectorAll()`.
+It's often more straightforward and clear to filter with a standard `HTMLElement` method such as `querySelector()` or `querySelectorAll()`.
 
 用 `HTMLElement` 方法（比如 `querySelector()` 或 `querySelectorAll()`）进行过滤通常更简单，更清晰。
 

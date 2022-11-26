@@ -15,9 +15,9 @@ function checkInSubFolder(subFolder: string, testFn: Function) {
 }
 
 describe('Zone.js npm_package', () => {
-  beforeEach(
-      () => {shx.cd(
-          path.dirname(require.resolve('angular/packages/zone.js/npm_package/package.json')))});
+  beforeEach(() => {
+    shx.cd(path.dirname(require.resolve('angular/packages/zone.js/npm_package/package.json')));
+  });
   describe('misc root files', () => {
     describe('README.md', () => {
       it('should have a README.md file with basic info', () => {
@@ -111,7 +111,6 @@ describe('Zone.js npm_package', () => {
         });
       });
     });
-
 
     describe('plugins folder check', () => {
       it('should contain all plugin folders in ./plugins', () => {

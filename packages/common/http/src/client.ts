@@ -360,8 +360,8 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a request which interprets the body as a JSON object and returns the full event
-   * stream.
+   * Constructs a request which interprets the body as a JavaScript object and returns the full
+   * event stream.
    *
    * 构造一个请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
    *
@@ -395,8 +395,8 @@ export class HttpClient {
   }): Observable<HttpEvent<any>>;
 
   /**
-   * Constructs a request which interprets the body as a JSON object and returns the full event
-   * stream.
+   * Constructs a request which interprets the body as a JavaScript object and returns the full
+   * event stream.
    *
    * 构造一个请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
    *
@@ -528,7 +528,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a request which interprets the body as a JSON object and returns the full
+   * Constructs a request which interprets the body as a JavaScript object and returns the full
    * `HttpResponse`.
    *
    * 构造一个请求，它将请求体解释为 JSON 对象，并返回完整 `HTTPResponse`。
@@ -563,7 +563,7 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs a request which interprets the body as a JSON object and returns
+   * Constructs a request which interprets the body as a JavaScript object and returns
    * the full `HttpResponse` with the response body in the requested type.
    *
    * 构造一个请求，它将请求体解释为 JSON 对象，并返回带有请求主体类型 `HTTPResponse`
@@ -597,8 +597,8 @@ export class HttpClient {
   }): Observable<HttpResponse<R>>;
 
   /**
-   * Constructs a request which interprets the body as a JSON object and returns the full
-   * `HttpResponse` as a JSON object.
+   * Constructs a request which interprets the body as a JavaScript object and returns the full
+   * `HttpResponse` as a JavaScript object.
    *
    * 构造一个请求，它将请求体解释为 JSON 对象，并返回完整的 `HTTPResponse`。
    *
@@ -632,7 +632,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs a request which interprets the body as a JSON object
+   * Constructs a request which interprets the body as a JavaScript object
    * with the response body of the requested type.
    *
    * 构造一个请求，它将请求体解释为 JSON 对象，并返回所请求类型的响应体。
@@ -1070,7 +1070,7 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a `DELETE` request that interprets the body as a JSON object
+   * Constructs a `DELETE` request that interprets the body as JSON
    * and returns the full event stream.
    *
    * 构造一个 `DELETE` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -1101,7 +1101,7 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs a `DELETE`request that interprets the body as a JSON object
+   * Constructs a `DELETE`request that interprets the body as JSON
    * and returns the full event stream.
    *
    * 构造一个 `DELETE` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -1219,7 +1219,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a `DELETE` request the interprets the body as a JSON object and returns
+   * Constructs a `DELETE` request the interprets the body as a JavaScript object and returns
    * the full `HttpResponse`.
    *
    * 构造一个 `DELETE` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -1249,7 +1249,7 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs a `DELETE` request that interprets the body as a JSON object
+   * Constructs a `DELETE` request that interprets the body as JSON
    * and returns the full `HttpResponse`.
    *
    * 构造一个 `DELETE` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -1279,8 +1279,8 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs a `DELETE` request that interprets the body as a JSON object and
-   * returns the response body as a JSON object.
+   * Constructs a `DELETE` request that interprets the body as JSON and
+   * returns the response body as an object parsed from JSON.
    *
    * 构造一个 `DELETE` 请求，它将请求体解释为 JSON 对象，并且返回 JSON 对象格式的响应体。
    *
@@ -1310,7 +1310,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs a DELETE request that interprets the body as a JSON object and returns
+   * Constructs a DELETE request that interprets the body as JSON and returns
    * the response in a given type.
    *
    * 构造一个 `DELETE` 请求，它将请求体解释为 JSON 对象，并且返回给定类型的响应。
@@ -1545,7 +1545,7 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a `GET` request that interprets the body as a JSON object
+   * Constructs a `GET` request that interprets the body as JSON
    * and returns the full event stream.
    *
    * 构造一个 `GET` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -1574,8 +1574,8 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs a `GET` request that interprets the body as a JSON object and returns the full event
-   * stream.
+   * Constructs a `GET` request that interprets the body as JSON and returns the full
+   * event stream.
    *
    * 构造一个 `GET` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
    *
@@ -1690,7 +1690,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a `GET` request that interprets the body as a JSON object and
+   * Constructs a `GET` request that interprets the body as JSON and
    * returns the full `HttpResponse`.
    *
    * 构造一个 `GET` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -1720,7 +1720,7 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs a `GET` request that interprets the body as a JSON object and
+   * Constructs a `GET` request that interprets the body as JSON and
    * returns the full `HttpResponse`.
    *
    * 构造一个 `GET` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -1750,8 +1750,8 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs a `GET` request that interprets the body as a JSON object and
-   * returns the response body as a JSON object.
+   * Constructs a `GET` request that interprets the body as JSON and
+   * returns the response body as an object parsed from JSON.
    *
    * 构造一个 `GET` 请求，它将请求体解释为 JSON 对象，并且返回 JSON 对象格式的响应体。
    *
@@ -1763,7 +1763,7 @@ export class HttpClient {
    *
    * 与请求一起发送的 HTTP 选项。
    *
-   * @return An `Observable` of the response body as a JSON object.
+   * @return An `Observable` of the response body as a JavaScript object.
    *
    * 响应体的 `Observable` 作为 JSON 对象。
    *
@@ -1780,7 +1780,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs a `GET` request that interprets the body as a JSON object and returns
+   * Constructs a `GET` request that interprets the body as JSON and returns
    * the response body in a given type.
    *
    * 构造一个 `GET` 请求，它将请求体解释为 JSON 对象，并且返回给定类型的响应体。
@@ -2008,7 +2008,7 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a `HEAD` request that interprets the body as a JSON object
+   * Constructs a `HEAD` request that interprets the body as JSON
    * and returns the full HTTP event stream.
    *
    * 构造一个 `HEAD` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -2038,7 +2038,7 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs a `HEAD` request that interprets the body as a JSON object and
+   * Constructs a `HEAD` request that interprets the body as JSON and
    * returns the full event stream.
    *
    * 构造一个 `HEAD` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -2155,7 +2155,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a `HEAD` request that interprets the body as a JSON object and
+   * Constructs a `HEAD` request that interprets the body as JSON and
    * returns the full `HttpResponse`.
    *
    * 构造一个 `HEAD` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -2185,7 +2185,7 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs a `HEAD` request that interprets the body as a JSON object
+   * Constructs a `HEAD` request that interprets the body as JSON
    * and returns the full `HttpResponse`.
    *
    * 构造一个 `HEAD` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -2215,8 +2215,9 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs a `HEAD` request that interprets the body as a JSON object and
-   * returns the response body as a JSON object.
+
+   * Constructs a `HEAD` request that interprets the body as JSON and
+   * returns the response body as an object parsed from JSON.
    *
    * 构造一个 `HEAD` 请求，它将请求体解释为 JSON 对象，并且返回 JSON 对象格式的响应体。
    *
@@ -2228,7 +2229,7 @@ export class HttpClient {
    *
    * 与请求一起发送的 HTTP 选项。
    *
-   * @return An `Observable` of the response, with the response body as a JSON object.
+   * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
    * 响应对象的 `Observable` ，其响应体为 JSON 对象。
    *
@@ -2245,7 +2246,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs a `HEAD` request that interprets the body as a JSON object and returns
+   * Constructs a `HEAD` request that interprets the body as JSON and returns
    * the response in a given type.
    *
    * 构造一个 `HEAD` 请求，它将请求体解释为 JSON 对象，并且返回给定类型的响应。
@@ -2561,7 +2562,7 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs an `OPTIONS` request that interprets the body as a JSON object
+   * Constructs an `OPTIONS` request that interprets the body as JSON
    * and returns the full event stream.
    *
    * 构造一个 `OPTIONS` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -2591,7 +2592,7 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs an `OPTIONS` request that interprets the body as a JSON object and
+   * Constructs an `OPTIONS` request that interprets the body as JSON and
    * returns the full event stream.
    *
    * 构造一个 `OPTIONS` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -2708,7 +2709,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs an `OPTIONS` request that interprets the body as a JSON object
+   * Constructs an `OPTIONS` request that interprets the body as JSON
    * and returns the full `HttpResponse`.
    *
    * 构造一个 `OPTIONS` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -2738,7 +2739,7 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs an `OPTIONS` request that interprets the body as a JSON object and
+   * Constructs an `OPTIONS` request that interprets the body as JSON and
    * returns the full `HttpResponse`.
    *
    * 构造一个 `OPTIONS` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -2768,8 +2769,9 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs an `OPTIONS` request that interprets the body as a JSON object and returns the
-   * response body as a JSON object.
+
+   * Constructs an `OPTIONS` request that interprets the body as JSON and returns the
+   * response body as an object parsed from JSON.
    *
    * 构造一个 `OPTIONS` 请求，它将请求体解释为 JSON 对象，并且返回 JSON 对象格式的响应体。
    *
@@ -2781,7 +2783,7 @@ export class HttpClient {
    *
    * HTTP 选项。
    *
-   * @return An `Observable` of the response, with the response body as a JSON object.
+   * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
    * 响应对象的 `Observable` ，其响应体为 JSON 对象。
    *
@@ -2798,7 +2800,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs an `OPTIONS` request that interprets the body as a JSON object and returns the
+   * Constructs an `OPTIONS` request that interprets the body as JSON and returns the
    * response in a given type.
    *
    * 构造一个 `OPTIONS` 请求，它将请求体解释为 JSON 对象，并且返回给定类型的响应。
@@ -3052,7 +3054,7 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a `PATCH` request that interprets the body as a JSON object
+   * Constructs a `PATCH` request that interprets the body as JSON
    * and returns the full event stream.
    *
    * 构造一个 `PATCH` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -3086,7 +3088,7 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs a `PATCH` request that interprets the body as a JSON object
+   * Constructs a `PATCH` request that interprets the body as JSON
    * and returns the full event stream.
    *
    * 构造一个 `PATCH` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -3219,7 +3221,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a `PATCH` request that interprets the body as a JSON object
+   * Constructs a `PATCH` request that interprets the body as JSON
    * and returns the full `HttpResponse`.
    *
    * 构造一个 `PATCH` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -3253,7 +3255,7 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs a `PATCH` request that interprets the body as a JSON object
+   * Constructs a `PATCH` request that interprets the body as JSON
    * and returns the full `HttpResponse`.
    *
    * 构造一个 `PATCH` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -3287,8 +3289,9 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs a `PATCH` request that interprets the body as a JSON object and
-   * returns the response body as a JSON object.
+
+   * Constructs a `PATCH` request that interprets the body as JSON and
+   * returns the response body as an object parsed from JSON.
    *
    * 构造一个 `PATCH` 请求，它将请求体解释为 JSON 对象，并且返回 JSON 对象格式的响应体。
    *
@@ -3304,7 +3307,7 @@ export class HttpClient {
    *
    * HTTP 选项。
    *
-   * @return An `Observable` of the response, with the response body as a JSON object.
+   * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
    * 响应对象的 `Observable` ，其响应体为 JSON 对象。
    *
@@ -3321,7 +3324,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs a `PATCH` request that interprets the body as a JSON object
+   * Constructs a `PATCH` request that interprets the body as JSON
    * and returns the response in a given type.
    *
    * 构造一个 `PATCH` 请求，它将请求体解释为 JSON 对象，并且返回给定类型的响应。
@@ -3575,8 +3578,8 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a POST request that interprets the body as a JSON object and returns the full event
-   * stream.
+   * Constructs a POST request that interprets the body as JSON and returns the full
+   * event stream.
    *
    * 构造一个 `POST` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
    *
@@ -3609,8 +3612,8 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs a POST request that interprets the body as a JSON object and returns the full event
-   * stream.
+   * Constructs a POST request that interprets the body as JSON and returns the full
+   * event stream.
    *
    * 构造一个 `POST` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
    *
@@ -3742,7 +3745,7 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a `POST` request that interprets the body as a JSON object
+   * Constructs a `POST` request that interprets the body as JSON
    * and returns the full `HttpResponse`.
    *
    * 构造一个 `POST` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
@@ -3776,8 +3779,8 @@ export class HttpClient {
   }): Observable<HttpResponse<Object>>;
 
   /**
-   * Constructs a `POST` request that interprets the body as a JSON object and returns the full
-   * `HttpResponse`.
+   * Constructs a `POST` request that interprets the body as JSON and returns the
+   * full `HttpResponse`.
    *
    * 构造一个 `POST` 请求，它将请求体解释为 JSON 对象，并且返回完整的 `HttpResponse`。
    *
@@ -3810,8 +3813,8 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs a `POST` request that interprets the body as a
-   * JSON object and returns the response body as a JSON object.
+   * Constructs a `POST` request that interprets the body as JSON
+   * and returns the response body as an object parsed from JSON.
    *
    * 构造一个 `POST` 请求，它将请求体解释为 JSON 对象，并且返回 JSON 对象格式的响应体。
    *
@@ -3827,7 +3830,7 @@ export class HttpClient {
    *
    * HTTP 选项
    *
-   * @return An `Observable` of the response, with the response body as a JSON object.
+   * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
    * 响应对象的 `Observable` ，其响应体为 JSON 对象。
    *
@@ -3844,7 +3847,7 @@ export class HttpClient {
   }): Observable<Object>;
 
   /**
-   * Constructs a `POST` request that interprets the body as a JSON object
+   * Constructs a `POST` request that interprets the body as JSON
    * and returns an observable of the response.
    *
    * 构造一个 `POST` 请求，它将请求体解释为 JSON 对象，并且返回响应对象的 `Observable`。
@@ -4100,8 +4103,8 @@ export class HttpClient {
   }): Observable<HttpEvent<string>>;
 
   /**
-   * Constructs a `PUT` request that interprets the body as a JSON object and returns the full event
-   * stream.
+   * Constructs a `PUT` request that interprets the body as JSON and returns the full
+   * event stream.
    *
    * 构造一个 `PUT` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
    *
@@ -4134,7 +4137,7 @@ export class HttpClient {
   }): Observable<HttpEvent<Object>>;
 
   /**
-   * Constructs a `PUT` request that interprets the body as a JSON object and returns the
+   * Constructs a `PUT` request that interprets the body as JSON and returns the
    * full event stream.
    *
    * 构造一个 `PUT` 请求，它将请求体解释为 JSON 对象，并且返回完整的 HTTP 事件流。
@@ -4267,8 +4270,8 @@ export class HttpClient {
   }): Observable<HttpResponse<string>>;
 
   /**
-   * Constructs a `PUT` request that interprets the body as a JSON object and returns the full HTTP
-   * response.
+   * Constructs a `PUT` request that interprets the body as JSON and returns the full
+   * HTTP response.
    *
    * 构造一个 `PUT` 请求，它将请求体解释为 JSON 对象，并返回完整的 `HttpResponse`。
    *
@@ -4332,8 +4335,8 @@ export class HttpClient {
   }): Observable<HttpResponse<T>>;
 
   /**
-   * Constructs a `PUT` request that interprets the body as a JSON object
-   * and returns an observable of JSON object.
+   * Constructs a `PUT` request that interprets the body as JSON
+   * and returns an observable of JavaScript object.
    *
    * 构造一个 `PUT` 请求，它将请求体解释为 JSON 对象，并返回 JSON 对象的 `Observable`。
    *
@@ -4349,7 +4352,7 @@ export class HttpClient {
    *
    * HTTP 选项
    *
-   * @return An `Observable` of the response as a JSON object.
+   * @return An `Observable` of the response as a JavaScript object.
    *
    * JSON 格式的响应对象的 `Observable`
    *

@@ -9,23 +9,21 @@ It should do something specific and do it well.
 *服务*是一个广义的概念，它包括应用所需的任何值、函数或特性。狭义的服务是一个明确定义了用途的类。它应该做一些具体的事，并做好。
 
 Angular distinguishes components from services to increase modularity and reusability.
-By separating a component's view-related functionality from other kinds of processing, you can make your component classes lean and efficient.
 
 Angular 把组件和服务区分开，以提高模块性和复用性。通过把组件中和视图有关的功能与其它类型的处理分离开，你可以让组件类更加精简、高效。
 
-Ideally, a component's job is to enable the user experience and nothing more.
-A component should present properties and methods for data binding, in order to mediate between the view (rendered by the template) and the application logic (which often includes some notion of a *model*).
+Ideally, a component's job is to enable only the user experience.
+A component should present properties and methods for data binding to mediate between the view and the application logic. The view is what the template renders and the application logic is what includes the notion of a *model*.
 
-理想情况下，组件的工作只管用户体验，而不用顾及其它。它应该提供用于数据绑定的属性和方法，以便作为视图（由模板渲染）和应用逻辑（通常包含一些*模型*的概念）的中介者。
+理想情况下，组件的工作只管用户体验，而不用顾及其它。它应该提供用于数据绑定的属性和方法，以便作为视图和应用逻辑的中介者。视图就是模板所渲染的东西，而程序逻辑就是用于承载模型概念的东西。
 
-A component can delegate certain tasks to services, such as fetching data from the server, validating user input, or logging directly to the console.
-By defining such processing tasks in an *injectable service class*, you make those tasks available to any component.
+A component should use services for tasks that don't involve the view or application logic. Services are good for tasks such as fetching data from the server, validating user input, or logging directly to the console. By defining such processing tasks in an *injectable service class*, you make those tasks available to any component.
 You can also make your application more adaptable by injecting different providers of the same kind of service, as appropriate in different circumstances.
 
 组件应该把诸如从服务器获取数据、验证用户输入或直接往控制台中写日志等工作委托给各种服务。通过把各种处理任务定义到可注入的服务类中，你可以让它被任何组件使用。通过在不同的环境中注入同一种服务的不同提供者，你还可以让你的应用更具适应性。
 
 Angular doesn't *enforce* these principles.
-Angular does help you *follow* these principles by making it easy to factor your application logic into services and make those services available to components through *dependency injection*.
+Instead, Angular helps you *follow* these principles by making it easy to factor your application logic into services. In Angular, *dependency injection* makes those services available to components.
 
 Angular 不会*强迫*你遵循这些原则。Angular 只会通过*依赖注入*来帮你更容易地将应用逻辑分解为服务，并让这些服务可用于各个组件中。
 
@@ -57,15 +55,16 @@ That service in turn might depend on the `HttpClient` service to fetch heroes as
 
 </div>
 
-DI is wired into the Angular framework and used everywhere to provide new components with the services or other things they need.
-Components consume services; that is, you can *inject* a service into a component, giving the component access to that service class.
+Dependency injection (DI) is the part of the Angular framework that provides components with access to services and other resources.
+Angular provides the ability for you to *inject* a service into a component to give that component access to the service.
 
 DI 被融入 Angular 框架中，用于在任何地方给新建的组件提供服务或所需的其它东西。组件是服务的消费者，也就是说，你可以把一个服务*注入*到组件中，让组件类得以访问该服务类。
 
-To define a class as a service in Angular, use the `@Injectable()` decorator to provide the metadata that allows Angular to inject it into a component as a *dependency*.
-Similarly, use the `@Injectable()` decorator to indicate that a component or other class (such as another service, a pipe, or an NgModule) *has* a dependency.
+The `@Injectable()` decorator defines a class as a service in Angular and allows Angular to inject it into a component as a *dependency*.
+Likewise, the `@Injectable()` decorator indicates that a component, class, pipe, or NgModule *has* a dependency on a service.
 
-在 Angular 中，要把一个类定义为服务，就要用 `@Injectable()` 装饰器来提供元数据，以便让 Angular 可以把它作为*依赖*注入到组件中。同样，也要使用 `@Injectable()` 装饰器来表明一个组件或其它类（比如另一个服务、管道或 NgModule）*拥有*一个依赖。
+`@Injectable()` 装饰器把一个类定义为 ANgular 中的服务，并且允许 Angular 把它作为*依赖*注入到组件中。
+类似的，`@Injectable()` 装饰器会标记出某个组件、类、管道或 NgModule 具有对某个服务的依赖。
 
 * The *injector* is the main mechanism.
   Angular creates an application-wide injector for you during the bootstrap process, and additional injectors as needed.

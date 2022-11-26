@@ -537,7 +537,7 @@ export function getLocaleWeekEndRange(locale: string): [WeekDay, WeekDay] {
 }
 
 /**
- * Retrieves a localized date-value formating string.
+ * Retrieves a localized date-value formatting string.
  *
  * 检索本地化的日期-值格式字符串。
  *
@@ -549,7 +549,7 @@ export function getLocaleWeekEndRange(locale: string): [WeekDay, WeekDay] {
  *
  * 格式类型。
  *
- * @returns The localized formating string.
+ * @returns The localized formatting string.
  *
  * 本地化的格式字符串。
  *

@@ -84,7 +84,7 @@ For example, your `myBuilder` folder could contain the following files.
 | `tsconfig.json` | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。 |
 
 Publish the builder to `npm` (see [Publishing your Library](guide/creating-libraries#publishing-your-library)).
-If you publish it as `&commat;example/my-builder`, install it using the following command.
+If you publish it as `@example/my-builder`, install it using the following command.
 
 将此构建器发布到 `npm`（参阅[发布你的库](guide/creating-libraries#publishing-your-library)）。如果你将其发布为 `&commat;example/my-builder`，请使用以下命令安装它。
 
@@ -624,7 +624,7 @@ Architect can support watch mode, but there are some things to look out for.
   这个构建器应该总是在每次执行后发出一个 `BuilderOutput` 对象。一旦它被执行，就会进入一个由外部事件触发的监视模式。如果一个事件导致它重启，那么此构建器应该执行 `context.reportRunning()` 函数来告诉建筑师再次运行它。如果调度器还计划了另一次运行，就会阻止建筑师停掉这个构建器。
 
 When your builder calls `BuilderRun.stop()` to exit watch mode, Architect unsubscribes from the builder's Observable and calls the builder's teardown logic to clean up.
-(This behavior also allows for long running builds to be stopped and cleaned up.)
+(This behavior also allows for long-running builds to be stopped and cleaned up.)
 
 当你的构建器通过调用 `BuilderRun.stop()` 来退出监视模式时，建筑师会从构建器的 Observable 中取消订阅，并调用构建器的退出逻辑进行清理。（这种行为也允许停止和清理运行时间过长的构建。）
 

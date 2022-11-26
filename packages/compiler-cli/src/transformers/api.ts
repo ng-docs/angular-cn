@@ -136,7 +136,7 @@ export interface CompilerHost extends ts.CompilerHost, ExtendedTsCompilerHost {
    * 将文件名转换为应该存储在摘要文件中的表示。这还必须包括更改后缀。例如 `some_file.ts` ->
    * `some_file.d.ts`
    *
-   * @param referringSrcFileName the soure file that refers to fileName
+   * @param referringSrcFileName the source file that refers to fileName
    *
    * 引用 fileName 的源文件
    *
@@ -144,7 +144,7 @@ export interface CompilerHost extends ts.CompilerHost, ExtendedTsCompilerHost {
   toSummaryFileName?(fileName: string, referringSrcFileName: string): string;
   /**
    * Converts a fileName that was processed by `toSummaryFileName` back into a real fileName
-   * given the fileName of the library that is referrig to it.
+   * given the fileName of the library that is referring to it.
    *
    * 给定引用它的库的文件名，将 `toSummaryFileName` 处理的文件名转换回真实的文件名。
    *
@@ -192,17 +192,26 @@ export interface TsEmitArguments {
   customTransformers?: ts.CustomTransformers;
 }
 
-export interface TsEmitCallback {
-  (args: TsEmitArguments): ts.EmitResult;
+export interface TsEmitCallback<T extends ts.EmitResult> {
+  (args: TsEmitArguments): T;
 }
-export interface TsMergeEmitResultsCallback {
-  (results: ts.EmitResult[]): ts.EmitResult;
+export interface TsMergeEmitResultsCallback<T extends ts.EmitResult> {
+  (results: T[]): T;
 }
 
 export interface LazyRoute {
   route: string;
   module: {name: string, filePath: string};
   referencedModule: {name: string, filePath: string};
+}
+
+export interface EmitOptions<CbEmitRes extends ts.EmitResult> {
+  emitFlags?: EmitFlags;
+  forceEmit?: boolean;
+  cancellationToken?: ts.CancellationToken;
+  customTransformers?: CustomTransformers;
+  emitCallback?: TsEmitCallback<CbEmitRes>;
+  mergeEmitResultsCallback?: TsMergeEmitResultsCallback<CbEmitRes>;
 }
 
 export interface Program {
@@ -327,14 +336,7 @@ export interface Program {
    * 发出文件需要 Angular 结构信息。
    *
    */
-  emit({emitFlags, cancellationToken, customTransformers, emitCallback, mergeEmitResultsCallback}?:
-           {
-             emitFlags?: EmitFlags,
-             cancellationToken?: ts.CancellationToken,
-             customTransformers?: CustomTransformers,
-             emitCallback?: TsEmitCallback,
-             mergeEmitResultsCallback?: TsMergeEmitResultsCallback
-           }): ts.EmitResult;
+  emit<CbEmitRes extends ts.EmitResult>(opts?: EmitOptions<CbEmitRes>|undefined): ts.EmitResult;
 
   /**
    * @internal

@@ -545,7 +545,7 @@ The compiler treats it as a cast to the `any` type just like in TypeScript when 
 
 可以通过把绑定表达式包含在[类型转换伪函数 `$any()`](guide/template-expression-operators) 中来禁用类型检查。编译器会像在 TypeScript 中使用 `<any>` 或 `as any` 进行类型转换一样对待它。
 
-In the following example, casting `person` to the `any` type suppresses the error `Property addresss does not exist`.
+In the following example, casting `person` to the `any` type suppresses the error `Property address does not exist`.
 
 在以下范例中，将 `person` 强制转换为 `any` 类型可以压制错误 `Property address does not exist`。
 
@@ -553,7 +553,7 @@ In the following example, casting `person` to the `any` type suppresses the erro
 
 &commat;Component({
   selector: 'my-component',
-  template: '{{&dollar;any(person).addresss.street}}'
+  template: '{{&dollar;any(person).address.street}}'
 })
 class MyComponent {
   person?: Person;

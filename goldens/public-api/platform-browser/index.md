@@ -8,9 +8,9 @@ import { ApplicationRef } from '@angular/core';
 import { ComponentRef } from '@angular/core';
 import { DebugElement } from '@angular/core';
 import { DebugNode } from '@angular/core';
+import { EnvironmentProviders } from '@angular/core';
 import * as i0 from '@angular/core';
 import * as i1 from '@angular/common';
-import { ImportedNgModuleProviders } from '@angular/core';
 import { InjectionToken } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { NgZone } from '@angular/core';
@@ -25,7 +25,7 @@ import { Version } from '@angular/core';
 
 // @public
 export interface ApplicationConfig {
-    providers: Array<Provider | ImportedNgModuleProviders>;
+    providers: Array<Provider | EnvironmentProviders>;
 }
 
 // @public
@@ -45,7 +45,7 @@ export class BrowserModule {
     static ɵmod: i0.ɵɵNgModuleDeclaration<BrowserModule, never, never, [typeof i1.CommonModule, typeof i0.ApplicationModule]>;
 }
 
-// @public
+// @public @deprecated
 export class BrowserTransferStateModule {
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<BrowserTransferStateModule, never>;
@@ -61,6 +61,9 @@ export class By {
     static css(selector: string): Predicate<DebugElement>;
     static directive(type: Type<any>): Predicate<DebugNode>;
 }
+
+// @public
+export function createApplication(options?: ApplicationConfig): Promise<ApplicationRef>;
 
 // @public
 export function disableDebugTools(): void;
@@ -225,6 +228,7 @@ export class Title {
 export class TransferState {
     get<T>(key: StateKey<T>, defaultValue: T): T;
     hasKey<T>(key: StateKey<T>): boolean;
+    get isEmpty(): boolean;
     onSerialize<T>(key: StateKey<T>, callback: () => T): void;
     remove<T>(key: StateKey<T>): void;
     set<T>(key: StateKey<T>, value: T): void;

@@ -32,8 +32,10 @@ const dist =
         .addFile('/qux.txt', 'this is qux')
         .addFile('/quux.txt', 'this is quux')
         .addFile('/quuux.txt', 'this is quuux')
+        .addFile('/redirect-target.txt', 'this was a redirect')
         .addFile('/lazy/unchanged1.txt', 'this is unchanged (1)')
         .addFile('/lazy/unchanged2.txt', 'this is unchanged (2)')
+        .addFile('/lazy/redirect-target.txt', 'this was a redirect too')
         .addUnhashedFile('/unhashed/a.txt', 'this is unhashed', {'Cache-Control': 'max-age=10'})
         .addUnhashedFile('/unhashed/b.txt', 'this is unhashed b', {'Cache-Control': 'no-cache'})
         .addUnhashedFile('/api/foo', 'this is api foo', {'Cache-Control': 'no-cache'})
@@ -48,6 +50,7 @@ const distUpdate =
         .addFile('/qux.txt', 'this is qux v2')
         .addFile('/quux.txt', 'this is quux v2')
         .addFile('/quuux.txt', 'this is quuux v2')
+        .addFile('/redirect-target.txt', 'this was a redirect')
         .addFile('/lazy/unchanged1.txt', 'this is unchanged (1)')
         .addFile('/lazy/unchanged2.txt', 'this is unchanged (2)')
         .addUnhashedFile('/unhashed/a.txt', 'this is unhashed v2', {'Cache-Control': 'max-age=10'})
@@ -159,6 +162,7 @@ const manifest: Manifest = {
       urls: [
         '/baz.txt',
         '/qux.txt',
+        '/lazy/redirected.txt',
       ],
       patterns: [],
       cacheQueryOptions: {ignoreVary: true},
@@ -265,23 +269,22 @@ const manifestUpdate: Manifest = {
   hashTable: tmpHashTableForFs(distUpdate),
 };
 
-const serverBuilderBase =
-    new MockServerStateBuilder()
-        .withStaticFiles(dist)
-        .withRedirect('/redirected.txt', '/redirect-target.txt', 'this was a redirect')
-        .withError('/error.txt');
+const serverBuilderBase = new MockServerStateBuilder()
+                              .withStaticFiles(dist)
+                              .withRedirect('/redirected.txt', '/redirect-target.txt')
+                              .withRedirect('/lazy/redirected.txt', '/lazy/redirect-target.txt')
+                              .withError('/error.txt');
 
 const server = serverBuilderBase.withManifest(manifest).build();
 
 const serverRollback =
     serverBuilderBase.withManifest({...manifest, timestamp: manifest.timestamp + 1}).build();
 
-const serverUpdate =
-    new MockServerStateBuilder()
-        .withStaticFiles(distUpdate)
-        .withManifest(manifestUpdate)
-        .withRedirect('/redirected.txt', '/redirect-target.txt', 'this was a redirect')
-        .build();
+const serverUpdate = new MockServerStateBuilder()
+                         .withStaticFiles(distUpdate)
+                         .withManifest(manifestUpdate)
+                         .withRedirect('/redirected.txt', '/redirect-target.txt')
+                         .build();
 
 const brokenServer =
     new MockServerStateBuilder().withStaticFiles(brokenFs).withManifest(brokenManifest).build();
@@ -1035,6 +1038,55 @@ describe('Driver', () => {
         });
       });
 
+      describe('`sendRequest` operation', () => {
+        it('sends a GET request to the specified URL', async () => {
+          // Initialize the SW.
+          expect(await makeRequest(scope, '/foo.txt')).toBe('this is foo');
+          await driver.initialized;
+          server.clearRequests();
+
+          // Trigger a `notificationlick` event.
+          const url = '/some/url';
+          await scope.handleClick(
+              {
+                title: 'Test notification',
+                body: 'This is a test notifiction.',
+                data: {
+                  onActionClick: {
+                    foo: {operation: 'sendRequest', url},
+                  },
+                },
+              },
+              'foo');
+
+          // Expect request to the server.
+          server.assertSawRequestFor('/some/url');
+        });
+
+        it('falls back to sending a request to `/` when no URL is specified', async () => {
+          // Initialize the SW.
+          expect(await makeRequest(scope, '/foo.txt')).toBe('this is foo');
+          await driver.initialized;
+          server.clearRequests();
+
+          // Trigger a `notificationlick` event.
+          await scope.handleClick(
+              {
+                title: 'Test notification',
+                body: 'This is a test notifiction.',
+                data: {
+                  onActionClick: {
+                    bar: {operation: 'sendRequest'},
+                  },
+                },
+              },
+              'bar');
+
+          // Expect request to the server.
+          server.assertSawRequestFor('/');
+        });
+      });
+
       describe('No matching onActionClick field', () => {
         it('no client interaction', async () => {
           expect(await makeRequest(scope, '/foo.txt')).toEqual('this is foo');
@@ -1529,6 +1581,71 @@ describe('Driver', () => {
     });
   });
 
+  describe('request metadata', () => {
+    it('passes headers through to the server', async () => {
+      // Request a lazy-cached asset (so that it is fetched from the network) and provide headers.
+      const reqInit = {
+        headers: {SomeHeader: 'SomeValue'},
+      };
+      expect(await makeRequest(scope, '/baz.txt', undefined, reqInit)).toBe('this is baz');
+
+      // Verify that the headers were passed through to the network.
+      const [bazReq] = server.getRequestsFor('/baz.txt');
+      expect(bazReq.headers.get('SomeHeader')).toBe('SomeValue');
+    });
+
+    it('does not pass non-allowed metadata through to the server', async () => {
+      // Request a lazy-cached asset (so that it is fetched from the network) and provide some
+      // metadata.
+      const reqInit = {
+        credentials: 'include',
+        mode: 'same-origin',
+        unknownOption: 'UNKNOWN',
+      };
+      expect(await makeRequest(scope, '/baz.txt', undefined, reqInit)).toBe('this is baz');
+
+      // Verify that the metadata were not passed through to the network.
+      const [bazReq] = server.getRequestsFor('/baz.txt');
+      expect(bazReq.credentials).toBe('same-origin');  // The default value.
+      expect(bazReq.mode).toBe('cors');                // The default value.
+      expect((bazReq as any).unknownOption).toBeUndefined();
+    });
+
+    describe('for redirect requests', () => {
+      it('passes headers through to the server', async () => {
+        // Request a redirected, lazy-cached asset (so that it is fetched from the network) and
+        // provide headers.
+        const reqInit = {
+          headers: {SomeHeader: 'SomeValue'},
+        };
+        expect(await makeRequest(scope, '/lazy/redirected.txt', undefined, reqInit))
+            .toBe('this was a redirect too');
+
+        // Verify that the headers were passed through to the network.
+        const [redirectReq] = server.getRequestsFor('/lazy/redirect-target.txt');
+        expect(redirectReq.headers.get('SomeHeader')).toBe('SomeValue');
+      });
+
+      it('does not pass non-allowed metadata through to the server', async () => {
+        // Request a redirected, lazy-cached asset (so that it is fetched from the network) and
+        // provide some metadata.
+        const reqInit = {
+          credentials: 'include',
+          mode: 'same-origin',
+          unknownOption: 'UNKNOWN',
+        };
+        expect(await makeRequest(scope, '/lazy/redirected.txt', undefined, reqInit))
+            .toBe('this was a redirect too');
+
+        // Verify that the metadata were not passed through to the network.
+        const [redirectReq] = server.getRequestsFor('/lazy/redirect-target.txt');
+        expect(redirectReq.credentials).toBe('same-origin');  // The default value.
+        expect(redirectReq.mode).toBe('cors');                // The default value.
+        expect((redirectReq as any).unknownOption).toBeUndefined();
+      });
+    });
+  });
+
   describe('unhashed requests', () => {
     beforeEach(async () => {
       expect(await makeRequest(scope, '/foo.txt')).toEqual('this is foo');
@@ -1653,6 +1770,14 @@ describe('Driver', () => {
     it('redirects to index on a request to the scope URL', async () => {
       expect(await navRequest('http://localhost/')).toEqual('this is foo');
       server.assertNoOtherRequests();
+    });
+
+    it('does not redirect to index on a non-GET request', async () => {
+      expect(await navRequest('/baz', {method: 'POST'})).toBeNull();
+      server.assertSawRequestFor('/baz');
+
+      expect(await navRequest('/qux', {method: 'PUT'})).toBeNull();
+      server.assertSawRequestFor('/qux');
     });
 
     it('does not redirect to index on a non-navigation request', async () => {

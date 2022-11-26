@@ -68,6 +68,32 @@ describe('Form Builder', () => {
     expect(g.controls['login'].value).toEqual('some value');
   });
 
+  describe('should create control records', () => {
+    it('from simple values', () => {
+      const a = b.record({a: 'one', b: 'two'});
+      expect(a.value).toEqual({a: 'one', b: 'two'});
+    });
+
+    it('from boxed values', () => {
+      const a = b.record({a: 'one', b: {value: 'two', disabled: true}});
+      expect(a.value).toEqual({a: 'one'});
+      a.get('b')?.enable();
+      expect(a.value).toEqual({a: 'one', b: 'two'});
+    });
+
+    it('from an array', () => {
+      const a = b.record({a: ['one']});
+      expect(a.value).toEqual({a: 'one'});
+    });
+
+    it('from controls whose form state is a primitive value', () => {
+      const record = b.record({'login': b.control('some value', syncValidator, asyncValidator)});
+
+      expect(record.controls['login'].value).toEqual('some value');
+      expect(record.controls['login'].validator).toBe(syncValidator);
+      expect(record.controls['login'].asyncValidator).toBe(asyncValidator);
+    });
+  });
   it('should create homogenous control arrays', () => {
     const a = b.array(['one', 'two', 'three']);
     expect(a.value).toEqual(['one', 'two', 'three']);
@@ -154,6 +180,29 @@ describe('Form Builder', () => {
 
     expect(g.validator).toBe(syncValidator);
     expect(g.asyncValidator).toBe(asyncValidator);
+  });
+
+  it('should create groups with null options', () => {
+    const g = b.group({'login': 'some value'}, null);
+
+    expect(g.validator).toBe(null);
+    expect(g.asyncValidator).toBe(null);
+  });
+
+  it('should create groups with shorthand parameters and with right typings', () => {
+    const form = b.group({
+      shorthand: [3, Validators.required],
+      shorthand2: [5, {validators: Validators.required}],
+    });
+
+    expect((form.get('shorthand')?.value)).toEqual(3);
+    expect(((form.get('shorthand2')!.value ?? 0) + 0)).toEqual(5);
+
+
+    const form2 = b.group({
+      shorthand2: [5, {updateOn: 'blur'}],
+    });
+    expect(((form2.get('shorthand2')!.value ?? 0) + 0)).toEqual(5);
   });
 
   it('should create control arrays', () => {

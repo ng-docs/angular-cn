@@ -2,7 +2,7 @@
 
 # 属性绑定
 
-Property binding in Angular helps you set values for properties of HTML elements or directives.  Use property binding to do things such as toggle button functionality, set paths programmatically, and share values between components.
+Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.
 
 Angular 中的属性绑定可帮助你设置 HTML 元素或指令的属性值。使用属性绑定，可以执行诸如切换按钮、以编程方式设置路径，以及在组件之间共享值之类的功能。
 
@@ -76,9 +76,13 @@ In this example, `src` is the name of the `<img>` element property.
 
 在这个例子中，`src` 就是 `<img>` 元素的 Property 名称。
 
+<!-- vale Angular.Google_WordListSuggestions = NO -->
+
 The brackets, `[]`, cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.
 
 方括号 `[]` 使 Angular 将等号的右侧看作动态表达式进行求值。
+
+<!-- vale Angular.Google_WordListSuggestions = NO -->
 
 Without the brackets, Angular treats the right-hand side as a string literal and sets the property to that static value.
 
@@ -98,7 +102,7 @@ Omitting the brackets renders the string `parentItem`, not the value of `parentI
 
 ## 将元素的属性设置为组件属性的值
 
-To bind the `src` property of an `<img>` element to a component's property, place the target, `src`, in square brackets followed by an equal sign and then the property.
+To bind the `src` property of an `<img>` element to a component's property, place `src` in square brackets followed by an equal sign and then the property.
 
 要将 `<img>` 的 `src` 属性绑定到组件的属性，请将目标 `src` 放在方括号中，后跟等号，然后是组件的属性。
 
@@ -124,13 +128,13 @@ A common point of confusion is between the attribute, `colspan`, and the propert
 
 最容易混淆的地方是 `colspan` 这个 Attribute 和 `colSpan` 这个 Property。请注意，这两个名称只有一个字母的大小写不同。
 
-To use property binding using colSpan, type the following:
+To use property binding using `colSpan`, type the following:
 
 要通过 colSpan 使用属性绑定，请键入以下内容：
 
 <code-example path="attribute-binding/src/app/app.component.html" region="colSpan" header="src/app/app.component.html"></code-example>
 
-To disable a button when the component says that it `isUnchanged`, type the following:
+To disable a button while the component's `isUnchanged` property is `true`, type the following:
 
 要在组件显示 `isUnchanged` 时禁用按钮，请键入以下内容：
 
@@ -142,17 +146,21 @@ To set a property of a directive, type the following:
 
 <code-example path="property-binding/src/app/app.component.html" region="class-binding" header="src/app/app.component.html"></code-example>
 
-To set the model property of a custom component for parent and child components to communicated, type the following:
+To set the model property of a custom component for parent and child components to communicate with each other, type the following:
 
 要将自定义组件的模型属性设置为父组件和子组件进行通信，请键入以下内容：
 
 <code-example path="property-binding/src/app/app.component.html" region="model-property-binding" header="src/app/app.component.html"></code-example>
 
-## Toggling button functionality
+## Toggling button features
+
+<!-- vale Angular.Google_WordListSuggestions = NO -->
 
 ## 切换按钮功能
 
-To disable a button's functionality depending on a Boolean value, bind the DOM `disabled` property to a property in the class that is `true` or `false`.
+To use a Boolean value to disable a button's features, bind the `disabled` DOM attribute to a Boolean property in the class.
+
+<!-- vale Angular.Google_WordListSuggestions = YES -->
 
 若要根据布尔值禁用按钮的功能，请将 DOM 的 `disabled` Property 设置为类中的源属性（可能为 `true` 或 `false`）。
 

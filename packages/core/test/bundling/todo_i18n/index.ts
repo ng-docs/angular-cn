@@ -7,9 +7,9 @@
  */
 import '@angular/core/test/bundling/util/src/reflect_metadata';
 
-import {CommonModule} from '@angular/common';
-import {Component, Injectable, NgModule, ViewEncapsulation, ɵmarkDirty as markDirty, ɵrenderComponent as renderComponent, ɵwhenRendered as whenRendered} from '@angular/core';
+import {Component, Injectable, NgModule, ViewEncapsulation, ɵdetectChanges as detectChanges} from '@angular/core';
 import {loadTranslations} from '@angular/localize';
+import {BrowserModule, platformBrowser} from '@angular/platform-browser';
 
 import {translations} from './translations';
 
@@ -136,7 +136,7 @@ class ToDoAppComponent {
 
   cancelEditingTodo(todo: Todo) {
     todo.editing = false;
-    markDirty(this);
+    detectChanges(this);
   }
 
   finishUpdatingTodo(todo: Todo, editedTitle: string) {
@@ -152,22 +152,22 @@ class ToDoAppComponent {
 
   editTodo(todo: Todo) {
     todo.editing = true;
-    markDirty(this);
+    detectChanges(this);
   }
 
   removeCompleted() {
     this.todoStore.removeCompleted();
-    markDirty(this);
+    detectChanges(this);
   }
 
   toggleCompletion(todo: Todo) {
     this.todoStore.toggleCompletion(todo);
-    markDirty(this);
+    detectChanges(this);
   }
 
   remove(todo: Todo) {
     this.todoStore.remove(todo);
-    markDirty(this);
+    detectChanges(this);
   }
 
   addTodo() {
@@ -175,33 +175,33 @@ class ToDoAppComponent {
       this.todoStore.add(this.newTodoText);
       this.newTodoText = '';
     }
-    markDirty(this);
+    detectChanges(this);
   }
 
   toggleAllTodos(checked: boolean) {
     this.todoStore.setAllTo(checked);
-    markDirty(this);
+    detectChanges(this);
   }
 
   updateEditedTodoValue(todo: Todo, value: string) {
     todo.title = value;
-    markDirty(this);
+    detectChanges(this);
   }
 
   updateNewTodoValue(value: string) {
     this.newTodoText = value;
-    markDirty(this);
+    detectChanges(this);
   }
 }
 
-@NgModule({declarations: [ToDoAppComponent], imports: [CommonModule]})
+@NgModule({
+  declarations: [ToDoAppComponent],
+  imports: [BrowserModule],
+  bootstrap: [ToDoAppComponent],
+})
 class ToDoAppModule {
 }
 
 loadTranslations(translations);
-renderComponent(ToDoAppComponent);
 
-// This bundle includes `@angular/core` within it which means that the test asserting
-// against it will load a different core bundle. These symbols are exposed so that they
-// can interact with the correct `@angular/core` instance.
-module.exports = {whenRendered};
+(window as any).appReady = platformBrowser().bootstrapModule(ToDoAppModule, {ngZone: 'noop'});

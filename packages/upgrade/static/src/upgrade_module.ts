@@ -118,11 +118,11 @@ import {NgAdapterInjector} from './util';
  * This class is an `NgModule`, which you import to provide AngularJS core services,
  * and has an instance method used to bootstrap the hybrid upgrade application.
  *
- * * Core AngularJS services
+ * * Core AngularJS services<br />
  *   Importing this `NgModule` will add providers for the core
  *   [AngularJS services](https://docs.angularjs.org/api/ng/service) to the root injector.
  *
- * * Bootstrap
+ * * Bootstrap<br />
  *   The runtime instance of this class contains a {@link UpgradeModule#bootstrap `bootstrap()`}
  *   method, which you use to bootstrap the top level AngularJS module onto an element in the
  *   DOM for the hybrid upgrade app.
@@ -216,9 +216,12 @@ export class UpgradeModule {
    *
    * 可选的额外 AngularJS 引导配置
    *
+   * @return The value returned by
+   *     [angular.bootstrap()](https://docs.angularjs.org/api/ng/function/angular.bootstrap).
    */
   bootstrap(
-      element: Element, modules: string[] = [], config?: any /*angular.IAngularBootstrapConfig*/) {
+      element: Element, modules: string[] = [], config?: any /*angular.IAngularBootstrapConfig*/):
+      any /*ReturnType<typeof angular.bootstrap>*/ {
     const INIT_MODULE_NAME = UPGRADE_MODULE_NAME + '.init';
 
     // Create an ng1 module to bootstrap
@@ -349,9 +352,7 @@ export class UpgradeModule {
     windowAngular.resumeBootstrap = undefined;
 
     // Bootstrap the AngularJS application inside our zone
-    this.ngZone.run(() => {
-      bootstrap(element, [upgradeModule.name], config);
-    });
+    const returnValue = this.ngZone.run(() => bootstrap(element, [upgradeModule.name], config));
 
     // Patch resumeBootstrap() to run inside the ngZone
     if (windowAngular.resumeBootstrap) {
@@ -363,5 +364,7 @@ export class UpgradeModule {
         return ngZone.run(() => windowAngular.resumeBootstrap.apply(this, args));
       };
     }
+
+    return returnValue;
   }
 }

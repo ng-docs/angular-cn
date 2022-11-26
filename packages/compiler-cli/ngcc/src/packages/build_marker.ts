@@ -56,7 +56,7 @@ export function cleanPackageJson(packageJson: EntryPointPackageJson): boolean {
       }
     }
 
-    // Also remove the prebulish script if we modified it
+    // Also remove the prepublish script if we modified it
     const scripts = packageJson.scripts;
     if (scripts !== undefined && scripts.prepublishOnly) {
       delete scripts.prepublishOnly;

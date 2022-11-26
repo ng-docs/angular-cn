@@ -51,7 +51,7 @@ TypeScript 和 Angular 提供了很多选项，可以用来配置类型检查功
 
 <div class="alert is-helpful">
 
-For more information TypeScript configuration files, see the official [TypeScript wiki](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
+For more information TypeScript configuration files, see the official [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
 For details about configuration inheritance, see the [Configuration inheritance with extends](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) section.
 
 要了解 TypeScript 配置文件的详情，请参阅官方提供的 [TypeScript wiki](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。要了解配置继承的详情，参阅[使用 extends 进行配置继承](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends)部分。
@@ -62,27 +62,7 @@ The initial `tsconfig.json` for an Angular workspace typically looks like the fo
 
 Angular 工作区的初始 `tsconfig.json` 通常是这样的。
 
-<code-example lang="json" header="tsconfig.json" linenums="false">
-{
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
-  }
-}
-</code-example>
+<code-example header="tsconfig.json" path="getting-started/tsconfig.0.json"></code-example>
 
 <a id="noImplicitAny"></a>
 
@@ -165,23 +145,12 @@ Angular packages include them already.
 
 </div>
 
-### `lib.d.ts`
+### `lib`
 
-TypeScript includes a special declaration file called `lib.d.ts`.
-This file contains the ambient declarations for various common JavaScript constructs present in JavaScript runtimes and the DOM.
+TypeScript includes a default set of declaration files.
+These files contain the ambient declarations for various common JavaScript constructs present in JavaScript runtimes and the DOM.
 
-TypeScript 带有一个特殊的声明文件，名为 `lib.d.ts`。该文件包含了 JavaScript 运行库和 DOM 的各种常用 JavaScript 环境声明。
-
-Based on the `--target`, TypeScript adds *additional* ambient declarations like `Promise` if the target is `es6`.
-
-基于 `--target`，TypeScript 添加*额外*的环境声明，比如如果目标为 `es6` 时将添加 `Promise`。
-
-By default, the target is `es2015`.
-If you are targeting `es5`, you still have newer type declarations due to the list of declaration files included:
-
-默认情况下，目标是 `es2015`。如果你把目标改为 `es5`，那么由于包含了声明文件列表，你仍然拥有较新的类型声明：
-
-<code-example header="tsconfig.json (lib excerpt)" path="getting-started/tsconfig.0.json" region="lib"></code-example>
+For more information, see [lib](https://www.typescriptlang.org/tsconfig#lib) in the TypeScript guide.
 
 ### Installable typings files
 
@@ -215,7 +184,8 @@ For instance, to install typings for `chai` you run `npm install @types/chai --s
 
 ### `target`
 
-By default, the target is `es2017`, which is supported in modern browsers.
+By default, the target is `ES2022`. To control ECMA syntax use the [Browserslist](https://github.com/browserslist/browserslist) configuration file.
+For more information, see the [configuring browser compatibility](/guide/build#configuring-browser-compatibility) guide.
 
 默认情况下，编译目标是 `es2017`，只有现代浏览器才支持它。
 
@@ -225,4 +195,4 @@ By default, the target is `es2017`, which is supported in modern browsers.
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-10-24

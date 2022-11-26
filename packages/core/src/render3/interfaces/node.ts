@@ -155,60 +155,28 @@ export const enum TNodeFlags {
    */
   isDirectiveHost = 0x1,
 
-  /**
-   * Bit #2 - This bit is set if the node is a host for a component.
-   *
-   * 位 #2 - 如果节点是组件的主机，则设置此位。
-   *
-   * Setting this bit implies that the `isDirectiveHost` bit is set as well.
-   *
-   * 设置此位意味着也设置了 `isDirectiveHost` 位。
-   *
-   */
-  isComponentHost = 0x2,
+  /** Bit #2 - This bit is set if the node has been projected */
+  isProjected = 0x2,
+
+  /** Bit #3 - This bit is set if any directive on this node has content queries */
+  hasContentQuery = 0x4,
+
+  /** Bit #4 - This bit is set if the node has any "class" inputs */
+  hasClassInput = 0x8,
 
   /**
-   * Bit #3 - This bit is set if the node has been projected
-   *
-   * 位 #3 - 如果已投影节点，则设置此位
-   *
-   */
-  isProjected = 0x4,
-
-  /**
-   * Bit #4 - This bit is set if any directive on this node has content queries
-   *
-   * 位 #4 - 如果此节点上的任何指令有内容查询，则设置此位
-   *
-   */
-  hasContentQuery = 0x8,
-
-  /**
-   * Bit #5 - This bit is set if the node has any "class" inputs
+   * Bit #5 - This bit is set if the node has any "style" inputs
    *
    * 位 #5 - 如果节点有任何“类”输入，则设置此位
    *
    */
-  hasClassInput = 0x10,
+  hasStyleInput = 0x10,
+
+  /** Bit #6 This bit is set if the node has been detached by i18n */
+  isDetached = 0x20,
 
   /**
-   * Bit #6 - This bit is set if the node has any "style" inputs
-   *
-   * 位 #6 -如果节点有任何“style”输入，则设置此位
-   *
-   */
-  hasStyleInput = 0x20,
-
-  /**
-   * Bit #7 This bit is set if the node has been detached by i18n
-   *
-   * 位 #7 如果节点已被 i18n 分离，则设置此位
-   *
-   */
-  isDetached = 0x40,
-
-  /**
-   * Bit #8 - This bit is set if the node has directives with host bindings.
+   * Bit #7 - This bit is set if the node has directives with host bindings.
    *
    * 位 #8 - 如果节点有带有主机绑定的指令，则设置此位。
    *
@@ -218,7 +186,7 @@ export const enum TNodeFlags {
    * 此标志允许我们保护主机绑定逻辑，并仅在实际上具有使用主机绑定的指令的节点上调用它。
    *
    */
-  hasHostBindings = 0x80,
+  hasHostBindings = 0x40,
 }
 
 /**
@@ -681,16 +649,7 @@ export interface TNode {
    */
   injectorIndex: number;
 
-  /**
-   * Stores starting index of the directives.
-   *
-   * 存储指令的起始索引。
-   *
-   * NOTE: The first directive is always component (if present).
-   *
-   * 注意：第一个指令始终是 component（如果存在）。
-   *
-   */
+  /** Stores starting index of the directives. */
   directiveStart: number;
 
   /**
@@ -708,6 +667,13 @@ export interface TNode {
    *
    */
   directiveEnd: number;
+
+  /**
+   * Offset from the `directiveStart` at which the component (one at most) of the node is stored.
+   * Set to -1 if no components have been applied to the node. Component index can be found using
+   * `directiveStart + componentOffset`.
+   */
+  componentOffset: number;
 
   /**
    * Stores the last directive which had a styling instruction.

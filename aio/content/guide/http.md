@@ -13,19 +13,11 @@ HTTP 客户端服务提供了以下主要功能。
 
 * The ability to request [typed response objects](#typed-response)
 
-  请求[类型化响应对象](#typed-response)的能力
-
 * Streamlined [error handling](#error-handling)
-
-  简化的[错误处理](#error-handling)
 
 * [Testability](#testing-requests) features
 
-  [可测试](#testing-requests)性特性
-
 * Request and response [interception](#intercepting-requests-and-responses)
-
-  请求和响应[拦截](#intercepting-requests-and-responses)
 
 ## Prerequisites
 
@@ -43,9 +35,7 @@ Before working with the `HttpClientModule`, you should have a basic understandin
 
   HTTP 协议的用法
 
-* Angular app-design fundamentals, as described in [Angular Concepts](guide/architecture)
-
-  Angular 的应用设计基础，就像[Angular 基本概念](guide/architecture)中描述的那样
+* Angular application-design fundamentals, as described in [Angular Concepts](guide/architecture)
 
 * Observable techniques and operators.
   See the [Observables](guide/observables) guide.
@@ -81,17 +71,11 @@ These `ConfigService` imports are typical.
 
 You can run the <live-example></live-example> that accompanies this guide.
 
-你可以运行本指南附带的<live-example></live-example>。
-
 The sample app does not require a data server.
 It relies on the [Angular *in-memory-web-api*](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api), which replaces the *HttpClient* module's `HttpBackend`.
 The replacement service simulates the behavior of a REST-like backend.
 
-该范例应用不需要数据服务器。它依赖于 [Angular *in-memory-web-api*](https://github.com/angular/angular/tree/master/packages/misc/angular-in-memory-web-api)，它替代了 *HttpClient* 模块中的 `HttpBackend`。这个替代服务会模拟 REST 式的后端的行为。
-
 Look at the `AppModule` *imports* to see how it is configured.
-
-看一下 `AppModule` 的这些*导入*，看看它的配置方式。
 
 </div>
 
@@ -139,11 +123,7 @@ Important options include the *observe* and *responseType* properties.
 Use the `options` object to configure various other aspects of an outgoing request.
 In [Adding headers](#adding-headers), for example, the service set the default headers using the `headers` option property.
 
-可以用 `options` 对象来配置传出请求的各个方面。比如，在[Adding headers 中](#adding-headers)，该服务使用 `headers` 选项属性设置默认头。
-
 Use the `params` property to configure a request with [HTTP URL parameters](#url-params), and the `reportProgress` option to [listen for progress events](#report-progress) when transferring large amounts of data.
-
-使用 `params` 属性可以配置带[HTTP URL 参数](#url-params)的请求，“ `reportProgress` 选项可以在传输大量数据时[监听进度事件](#report-progress)。
 
 </div>
 
@@ -185,6 +165,49 @@ It copies the data fields into the component's `config` object, which is data-bo
 
 <code-example header="app/config/config.component.ts (showConfig v.1)" path="http/src/app/config/config.component.ts" region="v1"></code-example>
 
+<a id="always-subscribe"></a>
+
+### Starting the request
+
+For all `HttpClient` methods, the method doesn't begin its HTTP request until you call `subscribe()` on the observable the method returns.
+
+This is true for *all* `HttpClient` *methods*.
+
+<div class="alert is-helpful">
+
+You should always unsubscribe from an observable when a component is destroyed.
+
+</div>
+
+All observables returned from `HttpClient` methods are *cold* by design.
+Execution of the HTTP request is *deferred*, letting you extend the observable with additional operations such as  `tap` and `catchError` before anything actually happens.
+
+`HttpClient` 的所有方法返回的可观察对象都设计为*冷的*。HTTP 请求的执行都是*延期执行的*，让你可以用 `tap` 和 `catchError` 这样的操作符来在实际执行 HTTP 请求之前，先对这个可观察对象进行扩展。
+
+Calling `subscribe()` triggers execution of the observable and causes `HttpClient` to compose and send the HTTP request to the server.
+
+Think of these observables as *blueprints* for actual HTTP requests.
+
+可以把这些可观察对象看做实际 HTTP 请求的*蓝图*。
+
+<div class="alert is-helpful">
+
+In fact, each `subscribe()` initiates a separate, independent execution of the observable.
+Subscribing twice results in two HTTP requests.
+
+<code-example format="javascript" language="javascript">
+
+const req = http.get&lt;Heroes&gt;('/api/heroes');
+// 0 requests made - .subscribe() not called.
+req.subscribe();
+// 1 request made.
+req.subscribe();
+// 2 requests made.
+
+</code-example>
+
+</div>
+
 <a id="typed-response"></a>
 
 ### Requesting a typed response
@@ -201,8 +224,6 @@ Specifying the response type acts as a type assertion at compile time.
 Specifying the response type is a declaration to TypeScript that it should treat your response as being of the given type.
 This is a build-time check and doesn't guarantee that the server actually responds with an object of this type.
 It is up to the server to ensure that the type specified by the server API is returned.
-
-指定响应类型是在向 TypeScript 声明，它应该把你的响应对象当做给定类型来使用。这是一种构建期检查，它并不能保证服务器会实际给出这种类型的响应对象。该服务器需要自己确保返回服务器 API 中指定的类型。
 
 </div>
 
@@ -223,8 +244,6 @@ Next, specify that interface as the `HttpClient.get()` call's type parameter in 
 
 When you pass an interface as a type parameter to the `HttpClient.get()` method, use the [RxJS `map` operator](guide/rx-library#operators) to transform the response data as needed by the UI.
 You can then pass the transformed data to the [async pipe](api/common/AsyncPipe).
-
-当把接口作为类型参数传给 `HttpClient.get()` 方法时，可以使用[RxJS `map` 操作符](guide/rx-library#operators)来根据 UI 的需求转换响应数据。然后，把转换后的数据传给[异步管道](api/common/AsyncPipe)。
 
 </div>
 
@@ -254,11 +273,7 @@ For example, the following `subscribe` callback receives `data` as an Object, an
 
 <header><code>observe</code> and <code>response</code> types</header>
 
-<header><code>observe</code> 和 <code>response</code> 的类型</header>
-
 The types of the `observe` and `response` options are *string unions*, rather than plain strings.
-
-`observe` 和 `response` 选项的类型是*字符串的联合类型*，而不是普通的字符串。
 
 <code-example format="typescript" language="typescript">
 
@@ -274,8 +289,6 @@ options: {
 
 This can cause confusion.
 For example:
-
-这会引起混乱。比如：
 
 <code-example format="typescript" language="typescript">
 
@@ -294,11 +307,7 @@ In the second case, TypeScript infers the type of `options` to be `{responseType
 The type is too wide to pass to `HttpClient.get` which is expecting the type of `responseType` to be one of the *specific* strings.
 `HttpClient` is typed explicitly this way so that the compiler can report the correct return type based on the options you provided.
 
-在第二种情况下，TypeScript 会把 `options` 的类型推断为 `{responseType: string}`。该类型的 `HttpClient.get` 太宽泛，无法传给 `HttpClient.get`，它希望 `responseType` 的类型是*特定的*字符串之一。而 `HttpClient` 就是以这种方式显式输入的，因此编译器可以根据你提供的选项报告正确的返回类型。
-
 Use `as const` to let TypeScript know that you really do mean to use a constant string type:
-
-使用 `as const`，可以让 TypeScript 知道你并不是真的要使用字面字符串类型：
 
 <code-example format="typescript" language="typescript">
 
@@ -397,9 +406,7 @@ In this next example, a `DownloaderService` method reads a text file from the se
 
 这里的 `HttpClient.get()` 返回字符串而不是默认的 JSON 对象，因为它的 `responseType` 选项是 `'text'`。
 
-The RxJS `tap` operator (as in "wiretap") lets the code inspect both success and error values passing through the observable without disturbing them.
-
-RxJS 的 `tap` 操作符（如“窃听”中所述）使代码可以检查通过可观察对象的成功值和错误值，而不会干扰它们。
+The RxJS `tap` operator lets the code inspect both success and error values passing through the observable without disturbing them.
 
 A `download()` method in the `DownloaderComponent` initiates the request by subscribing to the service method.
 
@@ -423,8 +430,6 @@ The same service that performs your server transactions should also perform erro
 
 When an error occurs, you can obtain details of what failed in order to inform your user.
 In some cases, you might also automatically [retry the request](#retry).
-
-发生错误时，你可以获取失败的详细信息，以便通知你的用户。在某些情况下，你也可以自动[重试该请求](#retry)。
 
 <a id="error-details"></a>
 
@@ -458,8 +463,6 @@ Inspect that response to identify the error's cause.
 `HttpClient` 在其 `HttpErrorResponse` 中会捕获两种错误。可以检查这个响应是否存在错误。
 
 The following example defines an error handler in the previously defined [ConfigService](#config-service "ConfigService defined").
-
-下面的例子在之前定义的 [ConfigService](#config-service "ConfigService 已定义") 中定义了一个错误处理程序。
 
 <code-example header="app/config/config.service.ts (handleError)" path="http/src/app/config/config.service.ts" region="handleError"></code-example>
 
@@ -528,11 +531,9 @@ The method takes a resource URL and two additional parameters:
 | body | The data to POST in the body of the request. |
 | body | 要在请求正文中 POST 的数据。 |
 | options | An object containing method options which, in this case, [specify required headers](#adding-headers). |
-| options | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。 |
+| 选项【模糊翻译】 | An object containing method options which, in this case, [specify required headers](#adding-headers). |
 
 The example catches errors as [described above](#error-details).
-
-这个例子捕获了[前面所讲的](#error-details)错误。
 
 The `HeroesComponent` initiates the actual POST operation by subscribing to the `Observable` returned by this service method.
 
@@ -571,63 +572,9 @@ Calling the `subscribe()` method *executes* the observable, which is what initia
 You must call `subscribe()` or nothing happens.
 Just calling `HeroesService.deleteHero()` does not initiate the DELETE request.
 
-你必须调用 `subscribe()`，否则什么都不会发生。仅仅调用 `HeroesService.deleteHero()` 是不会发起 DELETE 请求的。
-
 </div>
 
 <code-example path="http/src/app/heroes/heroes.component.ts" region="delete-hero-no-subscribe"></code-example>
-
-<a id="always-subscribe"></a>
-
-**Always *subscribe*.**
-
-**别忘了*订阅*！**
-
-An `HttpClient` method does not begin its HTTP request until you call `subscribe()` on the observable returned by that method.
-This is true for *all* `HttpClient` *methods*.
-
-在调用方法返回的可观察对象的 `subscribe()` 方法之前，`HttpClient` 方法不会发起 HTTP 请求。这适用于 `HttpClient` 的*所有方法*。
-
-<div class="alert is-helpful">
-
-The [`AsyncPipe`](api/common/AsyncPipe) subscribes (and unsubscribes) for you automatically.
-
-[`AsyncPipe`](api/common/AsyncPipe) 会自动为你订阅（以及取消订阅）。
-
-</div>
-
-All observables returned from `HttpClient` methods are *cold* by design.
-Execution of the HTTP request is *deferred*, letting you extend the observable with additional operations such as  `tap` and `catchError` before anything actually happens.
-
-`HttpClient` 的所有方法返回的可观察对象都设计为*冷的*。HTTP 请求的执行都是*延期执行的*，让你可以用 `tap` 和 `catchError` 这样的操作符来在实际执行 HTTP 请求之前，先对这个可观察对象进行扩展。
-
-Calling `subscribe(&hellip;)` triggers execution of the observable and causes `HttpClient` to compose and send the HTTP request to the server.
-
-调用 `subscribe(&hellip;)` 会触发这个可观察对象的执行，并导致 `HttpClient` 组合并把 HTTP 请求发给服务器。
-
-Think of these observables as *blueprints* for actual HTTP requests.
-
-可以把这些可观察对象看做实际 HTTP 请求的*蓝图*。
-
-<div class="alert is-helpful">
-
-In fact, each `subscribe()` initiates a separate, independent execution of the observable.
-Subscribing twice results in two HTTP requests.
-
-实际上，每个 `subscribe()` 都会初始化此可观察对象的一次单独的、独立的执行。订阅两次就会导致发起两个 HTTP 请求。
-
-<code-example format="javascript" language="javascript">
-
-const req = http.get&lt;Heroes&gt;('/api/heroes');
-// 0 requests made - .subscribe() not called.
-req.subscribe();
-// 1 request made.
-req.subscribe();
-// 2 requests made.
-
-</code-example>
-
-</div>
 
 ### Making a PUT request
 
@@ -641,8 +588,6 @@ The following `HeroesService` example, like the POST example, replaces a resourc
 <code-example header="app/heroes/heroes.service.ts (updateHero)" path="http/src/app/heroes/heroes.service.ts" region="updateHero"></code-example>
 
 As for any of the HTTP methods that return an observable, the caller, `HeroesComponent.update()` [must `subscribe()`](#always-subscribe "Why you must always subscribe.") to the observable returned from the `HttpClient.put()` in order to initiate the request.
-
-对于所有返回可观察对象的 HTTP 方法，调用者（`HeroesComponent.update()`）[必须 `subscribe()`](#always-subscribe "为什么你要订阅？") 从 `HttpClient.put()` 返回的可观察对象，才会真的发起请求。
 
 ### Adding and updating headers
 
@@ -764,9 +709,7 @@ In this sense, each interceptor is fully capable of handling the request entirel
 
 `intercept` 方法会把请求转换成一个最终返回 HTTP 响应体的 `Observable`。在这个场景中，每个拦截器都完全能自己处理这个请求。
 
-Most interceptors inspect the request on the way in and forward the (perhaps altered) request to the `handle()` method of the `next` object which implements the [`HttpHandler`](api/common/http/HttpHandler) interface.
-
-大多数拦截器拦截都会在传入时检查请求，然后把（可能被修改过的）请求转发给 `next` 对象的 `handle()` 方法，而 `next` 对象实现了 [`HttpHandler`](api/common/http/HttpHandler) 接口。
+Most interceptors inspect the request on the way in and forward the potentially altered request to the `handle()` method of the `next` object which implements the [`HttpHandler`](api/common/http/HttpHandler) interface.
 
 <code-example format="javascript" language="javascript">
 
@@ -778,9 +721,6 @@ export abstract class HttpHandler {
 
 Like `intercept()`, the `handle()` method transforms an HTTP request into an `Observable` of [`HttpEvents`](#interceptor-events) which ultimately include the server's response.
 The `intercept()` method could inspect that observable and alter it before returning it to the caller.
-
-像 `intercept()` 一样，`handle()` 方法也会把 HTTP 请求转换成 [`HttpEvents`](#interceptor-events) 组成的 `Observable`，它最终包含的是来自服务器的响应。
-`intercept()` 函数可以检查这个可观察对象，并在把它返回给调用者之前修改它。
 
 This `no-op` interceptor calls `next.handle()` with the original request and returns the observable without doing a thing.
 
@@ -798,9 +738,6 @@ The final `next` in the chain is the `HttpClient` backend handler that sends the
 Most interceptors call `next.handle()` so that the request flows through to the next interceptor and, eventually, the backend handler.
 An interceptor *could* skip calling `next.handle()`, short-circuit the chain, and [return its own `Observable`](#caching) with an artificial server response.
 
-大多数的拦截器都会调用 `next.handle()`，以便这个请求流能走到下一个拦截器，并最终传给后端处理器。
-拦截器也*可以*不调用 `next.handle()`，使这个链路短路，并返回一个带有人工构造出来的服务器响应的 [自己的 `Observable`](#caching)。
-
 This is a common middleware pattern found in frameworks such as Express.js.
 
 这是一种常见的中间件模式，在像 Express.js 这样的框架中也会找到它。
@@ -814,12 +751,12 @@ Like other services, you must provide the interceptor class before the app can u
 
 这个 `NoopInterceptor` 就是一个由 Angular [依赖注入 (DI)](guide/dependency-injection)系统管理的服务。像其它服务一样，你也必须先提供这个拦截器类，应用才能使用它。
 
-Because interceptors are (optional) dependencies of the `HttpClient` service, you must provide them in the same injector (or a parent of the injector) that provides `HttpClient`.
+Because interceptors are optional dependencies of the `HttpClient` service, you must provide them in the same injector or a parent of the injector that provides `HttpClient`.
 Interceptors provided *after* DI creates the `HttpClient` are ignored.
 
 由于拦截器是 `HttpClient` 服务的（可选）依赖，所以你必须在提供 `HttpClient` 的同一个（或其各级父注入器）注入器中提供这些拦截器。那些在 DI 创建完 `HttpClient` *之后*再提供的拦截器将会被忽略。
 
-This app provides `HttpClient` in the app's root injector, as a side-effect of importing the `HttpClientModule` in `AppModule`.
+This app provides `HttpClient` in the app's root injector, as a side effect of importing the `HttpClientModule` in `AppModule`.
 You should provide interceptors in `AppModule` as well.
 
 由于在 `AppModule` 中导入了 `HttpClientModule`，导致本应用在其根注入器中提供了 `HttpClient`。所以你也同样要在 `AppModule` 中提供这些拦截器。
@@ -833,15 +770,11 @@ After importing the `HTTP_INTERCEPTORS` injection token from `@angular/common/ht
 Notice the `multi: true` option.
 This required setting tells Angular that `HTTP_INTERCEPTORS` is a token for a *multiprovider* that injects an array of values, rather than a single value.
 
-注意 `multi: true` 选项。
-这个必须的选项会告诉 Angular `HTTP_INTERCEPTORS` 是一个*多重提供者*的令牌，表示它会注入一个多值的数组，而不是单一的值。
+注意 `multi: true` 选项。 这个必须的选项会告诉 Angular `HTTP_INTERCEPTORS` 是一个*多重提供者*的令牌，表示它会注入一个多值的数组，而不是单一的值。
 
 You *could* add this provider directly to the providers array of the `AppModule`.
 However, it's rather verbose and there's a good chance that you'll create more interceptors and provide them in the same way.
 You must also pay [close attention to the order](#interceptor-order) in which you provide these interceptors.
-
-你*也可以*直接把这个提供者添加到 `AppModule` 中的提供者数组中，不过那样会非常啰嗦。况且，你将来还会用这种方式创建更多的拦截器并提供它们。
-你还要[特别注意提供这些拦截器的顺序](#interceptor-order)。
 
 Consider creating a "barrel" file that gathers all the interceptor providers into an `httpInterceptorProviders` array, starting with this first one, the `NoopInterceptor`.
 
@@ -862,8 +795,6 @@ As you create new interceptors, add them to the `httpInterceptorProviders` array
 <div class="alert is-helpful">
 
 There are many more interceptors in the complete sample code.
-
-在完整版的范例代码中还有更多的拦截器。
 
 </div>
 
@@ -889,8 +820,6 @@ Angular 会按你提供拦截器的顺序应用它们。比如，考虑一个场
 <div class="alert is-helpful">
 
 The last interceptor in the process is always the `HttpBackend` that handles communication with the server.
-
-该过程中的最后一个拦截器始终是处理与服务器通信的 `HttpBackend` 服务。
 
 </div>
 
@@ -925,18 +854,11 @@ An app might retry a request several times before it succeeds, which means that 
 If an interceptor could modify the original request object, the re-tried operation would start from the modified request rather than the original.
 Immutability ensures that interceptors see the same request for each try.
 
-虽然拦截器有能力改变请求和响应，但 `HttpRequest` 和 `HttpResponse` 实例的属性却是只读（`readonly`）的，
-因此让它们基本上是不可变的。
-
-有充足的理由把它们做成不可变对象：应用可能会重试发送很多次请求之后才能成功，这就意味着这个拦截器链表可能会多次重复处理同一个请求。
-如果拦截器可以修改原始的请求对象，那么重试阶段的操作就会从修改过的请求开始，而不是原始请求。
-而这种不可变性，可以确保这些拦截器在每次重试时看到的都是同样的原始请求。
+有充足的理由把它们做成不可变对象：应用可能会重试发送很多次请求之后才能成功，这就意味着这个拦截器链表可能会多次重复处理同一个请求。 如果拦截器可以修改原始的请求对象，那么重试阶段的操作就会从修改过的请求开始，而不是原始请求。 而这种不可变性，可以确保这些拦截器在每次重试时看到的都是同样的原始请求。
 
 <div class="alert is-helpful">
 
 Your interceptor should return every event without modification unless it has a compelling reason to do otherwise.
-
-你的拦截器应该在没有任何修改的情况下返回每一个事件，除非它有令人信服的理由去做。
 
 </div>
 
@@ -1007,9 +929,6 @@ To do this, set the cloned request body to `null`.
 
 **TIP**: <br />
 If you set the cloned request body to `undefined`, Angular assumes you intend to leave the body as is.
-
-**提示**：<br />
-如果你把克隆后的请求体设为 `undefined`，那么 Angular 会认为你想让请求体保持原样。
 
 </div>
 
@@ -1083,9 +1002,7 @@ with the injected `MessageService`.
 <code-example header="app/http-interceptors/logging-interceptor.ts)" path="http/src/app/http-interceptors/logging-interceptor.ts" region="excerpt"></code-example>
 
 The RxJS `tap` operator captures whether the request succeeded or failed.
-The RxJS `finalize` operator is called when the response observable either errors or completes (which it must), and reports the outcome to the `MessageService`.
-
-RxJS 的 `tap` 操作符会捕获请求成功了还是失败了。RxJS 的 `finalize` 操作符无论在响应成功还是失败时都会调用（这是必须的），然后把结果汇报给 `MessageService`。
+The RxJS `finalize` operator is called when the response observable either returns an error or completes and reports the outcome to the `MessageService`.
 
 Neither `tap` nor `finalize` touch the values of the observable stream returned to the caller.
 
@@ -1152,7 +1069,7 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 
   如果该请求是不可缓存的，该拦截器会把该请求转发给链表中的下一个处理器
 
-* If a cacheable request is found in the cache, the interceptor returns an `of()` *observable* with the cached response, by-passing the `next` handler (and all other interceptors downstream)
+* If a cacheable request is found in the cache, the interceptor returns an `of()` *observable* with the cached response, by-passing the `next` handler and all other interceptors downstream
 
   如果可缓存的请求在缓存中找到了，该拦截器就会通过 `of()` 函数返回一个已缓存的响应体的*可观察对象*，然后绕过 `next` 处理器（以及所有其它下游拦截器）
 
@@ -1170,15 +1087,9 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 Notice how `sendRequest()` intercepts the response on its way back to the application.
 This method pipes the response through the `tap()` operator, whose callback adds the response to the cache.
 
-注意 `sendRequest()` 是如何在返回应用程序的过程中拦截响应的。该方法通过 `tap()` 操作符来管理响应对象，该操作符的回调函数会把该响应对象添加到缓存中。
-
 The original response continues untouched back up through the chain of interceptors to the application caller.
 
-然后，原始的响应会通过这些拦截器链，原封不动的回到服务器的调用者那里。
-
 Data services, such as `PackageSearchService`, are unaware that some of their `HttpClient` requests actually return cached responses.
-
-数据服务，比如 `PackageSearchService`，并不知道它们收到的某些 `HttpClient` 请求实际上是从缓存的请求中返回来的。
 
 </div>
 
@@ -1203,30 +1114,23 @@ The following revised version of the `CachingInterceptor` optionally returns an 
 
 The *cache-then-refresh* option is triggered by the presence of a custom `x-refresh` header.
 
-*cache-then-refresh* 选项是由一个自定义的 `x-refresh` 请求头触发的。
-
 A checkbox on the `PackageSearchComponent` toggles a `withRefresh` flag, which is one of the arguments to `PackageSearchService.search()`.
 That `search()` method creates the custom `x-refresh` header and adds it to the request before calling `HttpClient.get()`.
-
-`PackageSearchComponent` 中的一个检查框会切换 `withRefresh` 标识，它是 `PackageSearchService.search()` 的参数之一。`search()` 方法创建了自定义的 `x-refresh` 头，并在调用 `HttpClient.get()` 前把它添加到请求里。
 
 </div>
 
 The revised `CachingInterceptor` sets up a server request whether there's a cached value or not, using the same `sendRequest()` method described [above](#send-request).
 The `results$` observable makes the request when subscribed.
 
-修改后的 `CachingInterceptor` 会发起一个服务器请求，而不管有没有缓存的值。
-就像 [前面](#send-request) 的 `sendRequest()` 方法一样进行订阅。
-在订阅 `results$` 可观察对象时，就会发起这个请求。
-
 * If there's no cached value, the interceptor returns `results$`.
 
   如果没有缓存值，拦截器直接返回 `results$`。
 
-* If there is a cached value, the code *pipes* the cached response onto `results$`, producing a recomposed observable that emits twice, the cached response first (and immediately), followed later by the response from the server.
-  Subscribers see a sequence of two responses.
+* If there is a cached value, the code *pipes* the cached response onto `results$`. This produces a recomposed observable that emits two responses, so subscribers will see a sequence of these two responses:
 
-  如果有缓存的值，这些代码就会把缓存的响应加入到 `result$` 的*管道*中，使用重组后的可观察对象进行处理，并发出两次。先立即发出一次缓存的响应体，然后发出来自服务器的响应。订阅者将会看到一个包含这两个响应的序列。
+- The cached response that's emitted immediately
+
+- The response from the server, that's emitted later
 
 <a id="report-progress"></a>
 
@@ -1251,18 +1155,11 @@ To make a request with progress events enabled, create an instance of `HttpReque
 **TIP**: <br />
 Every progress event triggers change detection, so only turn them on if you need to report progress in the UI.
 
-**提示**：<br />
-每个进度事件都会触发变更检测，所以只有当需要在 UI 上报告进度时，你才应该开启它们。
-
 When using [`HttpClient.request()`](api/common/http/HttpClient#request) with an HTTP method, configure the method with [`observe: 'events'`](api/common/http/HttpClient#request) to see all events, including the progress of transfers.
-
-当 [`HttpClient.request()`](api/common/http/HttpClient#request) 和 HTTP 方法一起使用时，可以用 [`observe: 'events'`](api/common/http/HttpClient#request) 来查看所有事件，包括传输的进度。
 
 </div>
 
 Next, pass this request object to the `HttpClient.request()` method, which returns an `Observable` of `HttpEvents` (the same events processed by [interceptors](#interceptor-events)).
-
-接下来，把这个请求对象传给 `HttpClient.request()` 方法，该方法返回一个 `HttpEvents` 的 `Observable`（与 [拦截器](#interceptor-events) 部分处理过的事件相同）。
 
 <code-example header="app/uploader/uploader.service.ts (upload body)" path="http/src/app/uploader/uploader.service.ts" region="upload-body"></code-example>
 
@@ -1276,8 +1173,6 @@ The `getEventMessage` method interprets each type of `HttpEvent` in the event st
 
 The sample app for this guide doesn't have a server that accepts uploaded files.
 The `UploadInterceptor` in `app/http-interceptors/upload-interceptor.ts` intercepts and short-circuits upload requests by returning an observable of simulated events.
-
-本指南中的范例应用中没有用来接受上传文件的服务器。`app/http-interceptors/upload-interceptor.ts` 的 `UploadInterceptor` 通过返回一个模拟这些事件的可观察对象来拦截和短路上传请求。
 
 </div>
 
@@ -1307,8 +1202,6 @@ Here, the `keyup` event binding sends every keystroke to the component's `search
 The type of `$event.target` is only `EventTarget` in the template.
 In the `getValue()` method, the target is cast to an `HTMLInputElement` to let type-safe have access to its `value` property.
 
-`$event.target` 的类型在模板中只是 `EventTarget`，而在 `getValue()` 方法中，目标会转换成 `HTMLInputElement` 类型，以允许对它的 `value` 属性进行类型安全的访问。
-
 <code-example path="http/src/app/package-search/package-search.component.ts" region="getValue"></code-example>
 
 </div>
@@ -1331,8 +1224,7 @@ Rather than forward every `searchText` value directly to the injected `PackageSe
 | RxJS operators | Details |
 | :------------- | :------ |
 | RxJS 操作符 | 详情 |
-| `debounceTime(500)`⁠ | Wait for the user to stop typing (1/2 second in this case). |
-| `debounceTime(500)`⁠ | 等待用户停止输入（本例中为 1/2 秒）。 |
+| `debounceTime(500)`⁠ | Wait for the user to stop typing, which is 1/2 second in this case. |
 | `distinctUntilChanged()` | Wait until the search text changes. |
 | `distinctUntilChanged()` | 等待搜索文本发生变化。 |
 | `switchMap()`⁠ | Send the search request to the service. |
@@ -1347,8 +1239,6 @@ The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe
 
 See [Using interceptors to request multiple values](#cache-refresh) for more about the `withRefresh` option.
 
-关于 `withRefresh` 选项的更多信息，请参阅[使用拦截器来请求多个值](#cache-refresh)。
-
 </div>
 
 ### Using the `switchMap()` operator
@@ -1357,25 +1247,18 @@ See [Using interceptors to request multiple values](#cache-refresh) for more abo
 
 The `switchMap()` operator takes a function argument that returns an `Observable`.
 In the example, `PackageSearchService.search` returns an `Observable`, as other data service methods do.
-If a previous search request is still in-flight (as when the network connection is poor), the operator cancels that request and sends a new one.
-
-`switchMap()` 操作符接受一个返回 `Observable` 的函数型参数。在这个例子中，`PackageSearchService.search` 像其它数据服务方法那样返回一个 `Observable`。如果先前的搜索请求仍在*进行中*（如网络连接不良），它将取消该请求并发送新的请求。
+If a previous search request is still in-flight, such as when the network connection is poor, the operator cancels that request and sends a new one.
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 `switchMap()` returns service responses in their original request order, even if the server returns them out of order.
 
-**注意**：<br />
-`switchMap()` 会按照原始的请求顺序返回这些服务的响应，而不用关心服务器实际上是以乱序返回的它们。
-
 </div>
 
 <div class="alert is-helpful">
 
 If you think you'll reuse this debouncing logic, consider moving it to a utility function or into the `PackageSearchService` itself.
-
-如果你觉得将来会复用这些防抖逻辑，可以把它移到单独的工具函数中，或者移到 `PackageSearchService` 中。
 
 </div>
 
@@ -1411,8 +1294,6 @@ To prevent collisions in environments where multiple Angular apps share the same
 *`HttpClient` supports only the client half of the XSRF protection scheme.*
 Your backend service must be configured to set the cookie for your page, and to verify that the header is present on all eligible requests.
 Failing to do so renders Angular's default protection ineffective.
-
-*`HttpClient` 支持的只是 XSRF 防护方案的客户端这一半。* 你的后端服务必须配置为给页面设置 cookie，并且要验证请求头，以确保全都是合法的请求。如果不这么做，就会导致 Angular 的默认防护措施失效。
 
 </div>
 
@@ -1450,12 +1331,8 @@ At the end, tests can verify that the app made no unexpected requests.
 
 You can run <live-example stackblitz="specs">these sample tests</live-example> in a live coding environment.
 
-你可以到在线编程环境中运行<live-example stackblitz="specs">这些范例测试</live-example>。
-
 The tests described in this guide are in `src/testing/http-client.spec.ts`.
 There are also tests of an application data service that call `HttpClient` in `src/app/heroes/heroes.service.spec.ts`.
-
-本章所讲的这些测试位于 `src/testing/http-client.spec.ts` 中。在 `src/app/heroes/heroes.service.spec.ts` 中还有一些测试，用于测试那些调用了 `HttpClient` 的数据服务。
 
 </div>
 
@@ -1542,7 +1419,7 @@ Call `request.flush()` with an error message, as seen in the following example.
 
 Alternatively, call `request.error()` with a `ProgressEvent`.
 
-另外，还可以用 `ProgressEvent` 来调用 `request.error()`.
+另外，还可以用 `ProgressEvent` 来调用 `request.error()`.。
 
 <code-example path="http/src/testing/http-client.spec.ts" region="network-error"></code-example>
 

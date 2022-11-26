@@ -376,6 +376,8 @@ export interface ContentChildDecorator {
    *
    *   **selector** - 要查询的指令类型或名称。
    *
+   * * **descendants** - If `true` (default) include all descendants of the element. If `false` then
+   * only query direct children of the element.
    * * **read** - Used to read a different token from the queried element.
    *
    *   **read** - 用于从查询到的元素读取不同的令牌。
@@ -448,9 +450,10 @@ export interface ContentChildDecorator {
    *
    * @Annotation
    */
-  (selector: ProviderToken<unknown>|Function|string, opts?: {read?: any, static?: boolean}): any;
+  (selector: ProviderToken<unknown>|Function|string,
+   opts?: {descendants?: boolean, read?: any, static?: boolean}): any;
   new(selector: ProviderToken<unknown>|Function|string,
-      opts?: {read?: any, static?: boolean}): ContentChild;
+      opts?: {descendants?: boolean, read?: any, static?: boolean}): ContentChild;
 }
 
 /**

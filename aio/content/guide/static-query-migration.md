@@ -307,7 +307,7 @@ If your goal is to make your library compatible with Angular versions 7 and 8, y
 
 但是，如果你把你的库更新到 Angular 8，并希望利用新的第 8 版 API，或者你想要新版依赖项（比如 Typescript 或 RxJS），你的库就会变得与 Angular 7 的应用不兼容。如果你的目标是同时与 Angular 7 和 8 兼容，那你就不应该更新你的库，只有 `package.json` 中的 `peerDependencies` 除外。
 
-In general, the most efficient plan is for libraries to adopt a 6 month major version schedule and bump the major version after each Angular update.
+In general, the most efficient plan is for libraries to adopt a 6-month major version schedule and bump the major version after each Angular update.
 That way, libraries stay in the same release cadence as Angular.
 
 一般来说，最有效的计划是让库采用 6 个月的主版本计划，并在每次 Angular 升级之后适配主版本。这样，库就可以和 Angular 保持同样的发布节奏了。

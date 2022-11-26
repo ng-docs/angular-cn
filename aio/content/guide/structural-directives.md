@@ -6,11 +6,11 @@ This guide is about structural directives and provides conceptual information on
 
 本指南是关于结构指令的，并提供了有关此类指令的工作方式、Angular 如何解释它们的速记语法以及如何添加模板保护属性以捕获模板类型错误的概念信息。
 
-Structural directives are directives which change the DOM layout by adding and removing DOM element.
+Structural directives are directives which change the DOM layout by adding and removing DOM elements.
 
 结构指令是通过添加和删除 DOM 元素来更改 DOM 布局的指令。
 
-Angular provides a set of built-in structural directives (such as `NgIf`, `NgFor`, `NgSwitch` and others) which are commonly used in all Angular projects. For more information see [Built-in directives](guide/built-in-directives).
+Angular provides a set of built-in structural directives (such as `NgIf`, `NgForOf`, `NgSwitch` and others) which are commonly used in all Angular projects. For more information see [Built-in directives](guide/built-in-directives).
 
 Angular 提供了一组内置的结构指令（例如 `NgIf` 、 `NgFor` 、 `NgSwitch` 等），在所有 Angular 项目中通用。有关更多信息，请参阅[内置指令](guide/built-in-directives)。
 
@@ -385,37 +385,29 @@ For example, consider the following structural directive that takes the result o
 
 比如，考虑以下结构型指令，该指令以模板表达式的结果作为输入：
 
-<code-example format="typescript" header="IfLoadedDirective" language="typescript">
-
-export type Loaded&lt;T&gt; = { type: 'loaded', data: T };
-export type Loading = { type: 'loading' };
-export type LoadingState&lt;T&gt; = Loaded&lt;T&gt; | Loading;
-export class IfLoadedDirective&lt;T&gt; {
-    &commat;Input('ifLoaded') set state(state: LoadingState&lt;T&gt;) {}
-    static ngTemplateGuard_state&lt;T&gt;(dir: IfLoadedDirective&lt;T&gt;, expr: LoadingState&lt;T&gt;): expr is Loaded&lt;T&gt; { return true; };
-}
-
-export interface Person {
-  name: string;
-}
-
-&commat;Component({
-  template: `&lt;div *ifLoaded="state">{{ state.data }}&lt;/div>`,
-})
-export class AppComponent {
-  state: LoadingState&lt;Person&gt;;
-}
-
-</code-example>
+<code-tabs linenums="true">
+  <code-pane
+    header="src/app/if-loaded.directive.ts"
+    path="structural-directives/src/app/if-loaded.directive.ts">
+  </code-pane>
+  <code-pane
+    header="src/app/loading-state.ts"
+    path="structural-directives/src/app/loading-state.ts">
+  </code-pane>
+  <code-pane
+    header="src/app/hero.component.ts"
+    path="structural-directives/src/app/hero.component.ts">
+  </code-pane>
+</code-tabs>
 
 In this example, the `LoadingState<T>` type permits either of two states, `Loaded<T>` or `Loading`.
-The expression used as the directive's `state` input is of the umbrella type `LoadingState`, as it's unknown what the loading state is at that point.
+The expression used as the directive's `state` input (aliased as `appIfLoaded`) is of the umbrella type `LoadingState`, as it's unknown what the loading state is at that point.
 
 在这个例子中，`LoadingState<T>` 类型允许两个状态之一，`Loaded<T>` 或 `Loading`。用作指令的 `state` 输入的表达式是宽泛的伞形类型 `LoadingState`，因为还不知道此时的加载状态是什么。
 
-The `IfLoadedDirective` definition declares the static field `ngTemplateGuard_state`, which expresses the narrowing behavior.
-Within the `AppComponent` template, the `*ifLoaded` structural directive should render this template only when `state` is actually `Loaded<Person>`.
-The type guard lets the type checker infer that the acceptable type of `state` within the template is a `Loaded<T>`, and further infer that `T` must be an instance of `Person`.
+The `IfLoadedDirective` definition declares the static field `ngTemplateGuard_appIfLoaded`, which expresses the narrowing behavior.
+Within the `AppComponent` template, the `*appIfLoaded` structural directive should render this template only when `state` is actually `Loaded<Hero>`.
+The type guard lets the type checker infer that the acceptable type of `state` within the template is a `Loaded<T>`, and further infer that `T` must be an instance of `Hero`.
 
 `IfLoadedDirective` 定义声明了静态字段 `ngTemplateGuard_state`，以表示其窄化行为。在 `AppComponent` 模板中，`*ifLoaded` 结构型指令只有当实际的 `state` 是 `Loaded<Person>` 类型时，才会渲染该模板。类型守护允许类型检查器推断出模板中可接受的 `state` 类型是 `Loaded<T>`，并进一步推断出 `T` 必须是一个 `Person` 的实例。
 
@@ -430,20 +422,17 @@ The following snippet shows an example of such a function.
 
 如果你的结构型指令要为实例化的模板提供一个上下文，可以通过提供静态的 `ngTemplateContextGuard` 函数在模板中给它提供合适的类型。下面的代码片段展示了该函数的一个例子。
 
-<code-example format="typescript" header="myDirective.ts" language="typescript">
-
-&commat;Directive({&hellip;})
-export class ExampleDirective {
-    // Make sure the template checker knows the type of the context with which the
-    // template of this directive will be rendered
-    static ngTemplateContextGuard(
-      dir: ExampleDirective, ctx: unknown
-    ): ctx is ExampleContext { return true; };
-
-    // &hellip;
-}
-
-</code-example>
+<code-tabs linenums="true">
+  <code-pane
+    header="src/app/trigonometry.directive.ts"
+    path="structural-directives/src/app/trigonometry.directive.ts">
+  </code-pane>
+  <code-pane
+    header="src/app/app.component.html (appTrigonometry)"
+    path="structural-directives/src/app/app.component.html"
+    region="appTrigonometry">
+  </code-pane>
+</code-tabs>
 
 <!-- links -->
 

@@ -356,16 +356,16 @@ export type ɵRawValue<T extends AbstractControl|undefined> = T extends Abstract
 // clang-format off
 
 /**
- * Tokenize splits a string literal S by a delimeter D.
+ * Tokenize splits a string literal S by a delimiter D.
  *
  * 标记化会通过分隔符 D 拆分字符串文字 S。
  *
  */
 export type ɵTokenize<S extends string, D extends string> =
-    string extends S ? string[] : /* S must be a literal */
-                      S extends `${infer T}${D}${infer U}` ? [T, ...ɵTokenize<U, D>] :
-                      [S] /* Base case */
-    ;
+  string extends S ? string[] : /* S must be a literal */
+    S extends `${infer T}${D}${infer U}` ? [T, ...ɵTokenize<U, D>] :
+      [S] /* Base case */
+  ;
 
 /**
  * CoerceStrArrToNumArr accepts an array of strings, and converts any numeric string to a number.
@@ -374,8 +374,8 @@ export type ɵTokenize<S extends string, D extends string> =
  *
  */
 export type ɵCoerceStrArrToNumArr<S> =
-    // Extract the head of the array.
-    S extends [infer Head, ...infer Tail] ?
+// Extract the head of the array.
+  S extends [infer Head, ...infer Tail] ?
     // Using a template literal type, coerce the head to `number` if possible.
     // Then, recurse on the tail.
     Head extends `${number}` ?
@@ -390,17 +390,17 @@ export type ɵCoerceStrArrToNumArr<S> =
  *
  */
 export type ɵNavigate<T, K extends(Array<string|number>)> =
-    T extends object ? /* T must be indexable (object or array) */
+  T extends object ? /* T must be indexable (object or array) */
     (K extends [infer Head, ...infer Tail] ? /* Split K into head and tail */
-        (Head extends keyof T ? /* head(K) must index T */
-              (Tail extends(string|number)[] ? /* tail(K) must be an array */
-              [] extends Tail ? T[Head] : /* base case: K can be split, but Tail is empty */
-                  (ɵNavigate<T[Head], Tail>) /* explore T[head(K)] by tail(K) */ :
-              any) /* tail(K) was not an array, give up */ :
-              never) /* head(K) does not index T, give up */ :
-        any) /* K cannot be split, give up */ :
+      (Head extends keyof T ? /* head(K) must index T */
+        (Tail extends(string|number)[] ? /* tail(K) must be an array */
+          [] extends Tail ? T[Head] : /* base case: K can be split, but Tail is empty */
+            (ɵNavigate<T[Head], Tail>) /* explore T[head(K)] by tail(K) */ :
+          any) /* tail(K) was not an array, give up */ :
+        never) /* head(K) does not index T, give up */ :
+      any) /* K cannot be split, give up */ :
     any /* T is not indexable, give up */
-    ;
+  ;
 
 /**
  * ɵWriteable removes readonly from all keys.
@@ -502,7 +502,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _composedValidatorFn: ValidatorFn|null;
+  private _composedValidatorFn!: ValidatorFn|null;
 
   /**
    * Contains the result of merging asynchronous validators into a single validator function
@@ -512,7 +512,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _composedAsyncValidatorFn: AsyncValidatorFn|null;
+  private _composedAsyncValidatorFn!: AsyncValidatorFn|null;
 
   /**
    * Synchronous validators as they were provided:
@@ -533,7 +533,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _rawValidators: ValidatorFn|ValidatorFn[]|null;
+  private _rawValidators!: ValidatorFn|ValidatorFn[]|null;
 
   /**
    * Asynchronous validators as they were provided:
@@ -555,7 +555,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _rawAsyncValidators: AsyncValidatorFn|AsyncValidatorFn[]|null;
+  private _rawAsyncValidators!: AsyncValidatorFn|AsyncValidatorFn[]|null;
 
   /**
    * The current value of the control.
@@ -602,10 +602,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   constructor(
       validators: ValidatorFn|ValidatorFn[]|null,
       asyncValidators: AsyncValidatorFn|AsyncValidatorFn[]|null) {
-    this._rawValidators = validators;
-    this._rawAsyncValidators = asyncValidators;
-    this._composedValidatorFn = coerceToValidator(this._rawValidators);
-    this._composedAsyncValidatorFn = coerceToAsyncValidator(this._rawAsyncValidators);
+    this._assignValidators(validators);
+    this._assignAsyncValidators(asyncValidators);
   }
 
   /**
@@ -893,8 +891,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    */
   setValidators(validators: ValidatorFn|ValidatorFn[]|null): void {
-    this._rawValidators = validators;
-    this._composedValidatorFn = coerceToValidator(validators);
+    this._assignValidators(validators);
   }
 
   /**
@@ -915,8 +912,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    */
   setAsyncValidators(validators: AsyncValidatorFn|AsyncValidatorFn[]|null): void {
-    this._rawAsyncValidators = validators;
-    this._composedAsyncValidatorFn = coerceToAsyncValidator(validators);
+    this._assignAsyncValidators(validators);
   }
 
   /**
@@ -977,6 +973,24 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 从此控件中删除同步验证器，而不影响其他验证器。验证器会按函数引用进行比较；你必须传递对与最初设置的验证器函数完全相同的验证器函数的引用。如果找不到提供的验证器，则将其忽略。
    *
+   * @usageNotes
+   *
+   * ### Reference to a ValidatorFn
+   *
+   * ```
+   * // Reference to the RequiredValidator
+   * const ctrl = new FormControl<string | null>('', Validators.required);
+   * ctrl.removeValidators(Validators.required);
+   *
+   * // Reference to anonymous function inside MinValidator
+   * const minValidator = Validators.min(3);
+   * const ctrl = new FormControl<string | null>('', minValidator);
+   * expect(ctrl.hasValidator(minValidator)).toEqual(true)
+   * expect(ctrl.hasValidator(Validators.min(3))).toEqual(false)
+   *
+   * ctrl.removeValidators(minValidator);
+   * ```
+   *
    * When you add or remove a validator at run time, you must call
    * `updateValueAndValidity()` for the new validation to take effect.
    *
@@ -1018,6 +1032,22 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * validator must be a reference to the exact same function that was provided.
    *
    * 检查此控件上是否存在同步验证器函数。提供的验证器必须是对所提供的完全相同函数的引用。
+   *
+   * @usageNotes
+   *
+   * ### Reference to a ValidatorFn
+   *
+   * ```
+   * // Reference to the RequiredValidator
+   * const ctrl = new FormControl<number | null>(0, Validators.required);
+   * expect(ctrl.hasValidator(Validators.required)).toEqual(true)
+   *
+   * // Reference to anonymous function inside MinValidator
+   * const minValidator = Validators.min(3);
+   * const ctrl = new FormControl<number | null>(0, minValidator);
+   * expect(ctrl.hasValidator(minValidator)).toEqual(true)
+   * expect(ctrl.hasValidator(Validators.min(3))).toEqual(false)
+   * ```
    *
    * @param validator The validator to check for presence. Compared by function reference.
    *
@@ -1532,6 +1562,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 调用 `setErrors` 还会更新父控件的有效性。
    *
+   * @param opts Configuration options that determine how the control propagates
+   * changes and emits events after the control errors are set.
+   * * `emitEvent`: When true or not supplied (the default), the `statusChanges`
+   * observable emits an event after the errors are set.
+   *
    * @usageNotes
    *
    * ### Manually set the errors for a control
@@ -1889,5 +1924,25 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /** @internal */
   _find(name: string|number): AbstractControl|null {
     return null;
+  }
+
+  /**
+   * Internal implementation of the `setValidators` method. Needs to be separated out into a
+   * different method, because it is called in the constructor and it can break cases where
+   * a control is extended.
+   */
+  private _assignValidators(validators: ValidatorFn|ValidatorFn[]|null): void {
+    this._rawValidators = Array.isArray(validators) ? validators.slice() : validators;
+    this._composedValidatorFn = coerceToValidator(this._rawValidators);
+  }
+
+  /**
+   * Internal implementation of the `setAsyncValidators` method. Needs to be separated out into a
+   * different method, because it is called in the constructor and it can break cases where
+   * a control is extended.
+   */
+  private _assignAsyncValidators(validators: AsyncValidatorFn|AsyncValidatorFn[]|null): void {
+    this._rawAsyncValidators = Array.isArray(validators) ? validators.slice() : validators;
+    this._composedAsyncValidatorFn = coerceToAsyncValidator(this._rawAsyncValidators);
   }
 }

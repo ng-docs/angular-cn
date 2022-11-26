@@ -307,7 +307,7 @@ If a library lists `@angular/core` in `dependencies` instead of `peerDependencie
 
 ## 在应用中使用你自己的库
 
-You don't have to publish your library to the npm package manager to use it the same workspace, but you do have to build it first.
+You don't have to publish your library to the npm package manager to use it in the same workspace, but you do have to build it first.
 
 如果要在同一个工作空间中使用某个库，你不必把它发布到 npm 包管理器，但你还是得先构建它。
 

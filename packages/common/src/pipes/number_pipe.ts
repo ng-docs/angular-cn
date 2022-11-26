@@ -104,7 +104,10 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  *
  * @publicApi
  */
-@Pipe({name: 'number'})
+@Pipe({
+  name: 'number',
+  standalone: true,
+})
 export class DecimalPipe implements PipeTransform {
   constructor(@Inject(LOCALE_ID) private _locale: string) {}
 
@@ -168,7 +171,10 @@ export class DecimalPipe implements PipeTransform {
  *
  * @publicApi
  */
-@Pipe({name: 'percent'})
+@Pipe({
+  name: 'percent',
+  standalone: true,
+})
 export class PercentPipe implements PipeTransform {
   constructor(@Inject(LOCALE_ID) private _locale: string) {}
 
@@ -267,7 +273,10 @@ export class PercentPipe implements PipeTransform {
  *
  * @publicApi
  */
-@Pipe({name: 'currency'})
+@Pipe({
+  name: 'currency',
+  standalone: true,
+})
 export class CurrencyPipe implements PipeTransform {
   constructor(
       @Inject(LOCALE_ID) private _locale: string,

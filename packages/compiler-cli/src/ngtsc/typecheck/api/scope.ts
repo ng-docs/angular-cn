@@ -8,16 +8,37 @@
 
 import ts from 'typescript';
 
+import {EmittedReference, Reference} from '../../imports';
 import {ClassDeclaration} from '../../reflection';
 import {SymbolWithValueDeclaration} from '../../util/src/typescript';
 
 /**
- * Metadata on a directive which is available in the scope of a template.
+ * A PotentialImport for some Angular trait has a TypeScript module specifier, which can be
+ * relative, as well as an identifier name.
+ */
+export interface PotentialImport {
+  kind: PotentialImportKind;
+  moduleSpecifier: string;
+  symbolName: string;
+}
+
+/**
+ * Which kind of Angular Trait the import targets.
  *
  * 模板范围内可用的指令上的元数据。
  *
  */
-export interface DirectiveInScope {
+export enum PotentialImportKind {
+  NgModule,
+  Standalone,
+}
+
+/**
+ * Metadata on a directive which is available in a template.
+ */
+export interface PotentialDirective {
+  ref: Reference<ClassDeclaration>;
+
   /**
    * The `ts.Symbol` for the directive class.
    *
@@ -40,7 +61,7 @@ export interface DirectiveInScope {
    * 指令或组件的选择器。
    *
    */
-  selector: string;
+  selector: string|null;
 
   /**
    * `true` if this directive is a component.
@@ -57,15 +78,20 @@ export interface DirectiveInScope {
    *
    */
   isStructural: boolean;
+
+  /**
+   * Whether or not this directive is in scope.
+   */
+  isInScope: boolean;
 }
 
 /**
- * Metadata for a pipe which is available in the scope of a template.
+ * Metadata for a pipe which is available in a template.
  *
  * 在模板范围内可用的管道元数据。
  *
  */
-export interface PipeInScope {
+export interface PotentialPipe {
   /**
    * The `ts.Symbol` for the pipe class.
    *
@@ -81,4 +107,9 @@ export interface PipeInScope {
    *
    */
   name: string;
+
+  /**
+   * Whether or not this pipe is in scope.
+   */
+  isInScope: boolean;
 }

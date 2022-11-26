@@ -6,7 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, DoCheck, EmbeddedViewRef, Input, IterableChangeRecord, IterableChanges, IterableDiffer, IterableDiffers, NgIterable, TemplateRef, TrackByFunction, ViewContainerRef} from '@angular/core';
+import {Directive, DoCheck, EmbeddedViewRef, Input, IterableChangeRecord, IterableChanges, IterableDiffer, IterableDiffers, NgIterable, TemplateRef, TrackByFunction, ViewContainerRef, ɵRuntimeError as RuntimeError} from '@angular/core';
+
+import {RuntimeErrorCode} from '../errors';
+
+const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
 
 /**
  * @publicApi
@@ -85,7 +89,7 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * on an element](guide/structural-directives#one-per-element).
  * If you want to iterate conditionally, for example,
  * put the `*ngIf` on a container element that wraps the `*ngFor` element.
- * For futher discussion, see
+ * For further discussion, see
  * [Structural Directives](guide/structural-directives#one-per-element).
  *
  * 使用简写语法时，Angular
@@ -210,7 +214,10 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * @ngModule CommonModule
  * @publicApi
  */
-@Directive({selector: '[ngFor][ngForOf]'})
+@Directive({
+  selector: '[ngFor][ngForOf]',
+  standalone: true,
+})
 export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCheck {
   /**
    * The value of the iterable expression, which can be used as a
@@ -255,7 +262,7 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
    */
   @Input()
   set ngForTrackBy(fn: TrackByFunction<T>) {
-    if ((typeof ngDevMode === 'undefined' || ngDevMode) && fn != null && typeof fn !== 'function') {
+    if (NG_DEV_MODE && fn != null && typeof fn !== 'function') {
       // TODO(vicb): use a log service once there is a public one available
       if (<any>console && <any>console.warn) {
         console.warn(
@@ -313,14 +320,18 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
       // React on ngForOf changes only once all inputs have been initialized
       const value = this._ngForOf;
       if (!this._differ && value) {
-        if (typeof ngDevMode === 'undefined' || ngDevMode) {
+        if (NG_DEV_MODE) {
           try {
             // CAUTION: this logic is duplicated for production mode below, as the try-catch
             // is only present in development builds.
             this._differ = this._differs.find(value).create(this.ngForTrackBy);
           } catch {
-            throw new Error(`Cannot find a differ supporting object '${value}' of type '${
-                getTypeName(value)}'. NgFor only supports binding to Iterables such as Arrays.`);
+            let errorMessage = `Cannot find a differ supporting object '${value}' of type '` +
+                `${getTypeName(value)}'. NgFor only supports binding to Iterables, such as Arrays.`;
+            if (typeof value === 'object') {
+              errorMessage += ' Did you mean to use the keyvalue pipe?';
+            }
+            throw new RuntimeError(RuntimeErrorCode.NG_FOR_MISSING_DIFFER, errorMessage);
           }
         } else {
           // CAUTION: this logic is duplicated for development mode above, as the try-catch
@@ -388,6 +399,11 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
     return true;
   }
 }
+
+// Also export the `NgForOf` class as `NgFor` to improve the DX for
+// cases when the directive is used as standalone, so the class name
+// matches the CSS selector (*ngFor).
+export {NgForOf as NgFor};
 
 function applyViewChange<T>(
     view: EmbeddedViewRef<NgForOfContext<T>>, record: IterableChangeRecord<T>) {

@@ -319,7 +319,7 @@ export function getRenameTextAndSpanAtPosition(
 }
 
 /**
- * Retrives the `PipeMeta` or `DirectiveMeta` of the given `ts.Node`'s parent class.
+ * Retrieves the `PipeMeta` or `DirectiveMeta` of the given `ts.Node`'s parent class.
  *
  * 检索给定 `ts.Node` 父类的 `PipeMeta` 或 `DirectiveMeta` 。
  *

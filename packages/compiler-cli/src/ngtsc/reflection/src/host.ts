@@ -1100,7 +1100,7 @@ export interface ReflectionHost {
    *
    * 确定标识符是否是从另一个模块导入的，并返回描述其来源的 `Import` 元数据。
    *
-   * @param id a TypeScript `ts.Identifer` to reflect.
+   * @param id a TypeScript `ts.Identifier` to reflect.
    *
    * 要反映的 TypeScript `ts.Identifer` 。
    *

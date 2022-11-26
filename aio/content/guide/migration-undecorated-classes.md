@@ -88,7 +88,7 @@ class BaseMenu {}
 
 &commat;Component({
   selector: 'base-menu',
-  template: '&lt;div&gt;&lt;/div*gt;'
+  template: '&lt;div&gt;&lt;/div&gt;'
 })
 export class SettingsMenu extends BaseMenu {}
 

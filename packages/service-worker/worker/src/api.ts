@@ -18,7 +18,7 @@ export enum UpdateCacheStatus {
  *
  * 一个 `string` ，表示已相对于源（通常是 ServiceWorker 的）规范化的 URL。
  *
- * If the URL is relative to the origin, then it is representated by the path part only. Otherwise,
+ * If the URL is relative to the origin, then it is represented by the path part only. Otherwise,
  * the full URL is used.
  *
  * 如果 URL 是相对于原点的，则它仅由路径部分表示。否则，使用完整的 URL。

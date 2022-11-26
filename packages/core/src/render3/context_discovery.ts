@@ -78,7 +78,7 @@ export function getLContext(target: any): LContext|null {
         if (nodeIndex == -1) {
           throw new Error('The provided directive was not found in the application');
         }
-        directives = getDirectivesAtNodeIndex(nodeIndex, lView, false);
+        directives = getDirectivesAtNodeIndex(nodeIndex, lView);
       } else {
         nodeIndex = findViaNativeElement(lView, target as RElement);
         if (nodeIndex == -1) {
@@ -340,8 +340,9 @@ function findViaDirective(lView: LView, directiveInstance: {}): number {
 }
 
 /**
- * Returns a list of directives extracted from the given view based on the
- * provided list of directive index values.
+ * Returns a list of directives applied to a node at a specific index. The list includes
+ * directives matched by selector and any host directives, but it excludes components.
+ * Use `getComponentAtNodeIndex` to find the component applied to a node.
  *
  * 根据提供的指令索引值列表，返回从给定视图中提取的指令列表。
  *
@@ -350,28 +351,24 @@ function findViaDirective(lView: LView, directiveInstance: {}): number {
  * 节点索引
  *
  * @param lView The target view data
- *
- * 目标视图数据
- *
- * @param includeComponents Whether or not to include components in returned directives
- *
- * 是否在返回的指令中包含组件
- *
  */
-export function getDirectivesAtNodeIndex(
-    nodeIndex: number, lView: LView, includeComponents: boolean): any[]|null {
+export function getDirectivesAtNodeIndex(nodeIndex: number, lView: LView): any[]|null {
   const tNode = lView[TVIEW].data[nodeIndex] as TNode;
-  let directiveStartIndex = tNode.directiveStart;
-  if (directiveStartIndex == 0) return EMPTY_ARRAY;
-  const directiveEndIndex = tNode.directiveEnd;
-  if (!includeComponents && tNode.flags & TNodeFlags.isComponentHost) directiveStartIndex++;
-  return lView.slice(directiveStartIndex, directiveEndIndex);
+  if (tNode.directiveStart === 0) return EMPTY_ARRAY;
+  const results: any[] = [];
+  for (let i = tNode.directiveStart; i < tNode.directiveEnd; i++) {
+    const directiveInstance = lView[i];
+    if (!isComponentInstance(directiveInstance)) {
+      results.push(directiveInstance);
+    }
+  }
+  return results;
 }
 
 export function getComponentAtNodeIndex(nodeIndex: number, lView: LView): {}|null {
   const tNode = lView[TVIEW].data[nodeIndex] as TNode;
-  let directiveStartIndex = tNode.directiveStart;
-  return tNode.flags & TNodeFlags.isComponentHost ? lView[directiveStartIndex] : null;
+  const {directiveStart, componentOffset} = tNode;
+  return componentOffset > -1 ? lView[directiveStart + componentOffset] : null;
 }
 
 /**

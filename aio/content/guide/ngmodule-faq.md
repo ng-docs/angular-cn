@@ -107,7 +107,7 @@ This error often means that you haven't declared the directive "x" or haven't im
 
 <div class="alert is-helpful">
 
-Perhaps you declared "x" in an application sub-module but forgot to export it.
+Perhaps you declared "x" in an application submodule but forgot to export it.
 The "x" class isn't visible to other modules until you add it to the `exports` list.
 
 如果“x”其实不是属性，或者是组件的私有属性（比如它不带 `@Input` 或 `@Output` 装饰器），那么你也同样会遇到这个错误。
@@ -655,7 +655,7 @@ Once an injector starts creating and delivering services, its provider list is f
 
 归根结底，这来自于 Angular 依赖注入系统的一个基本特征：在注入器还没有被第一次使用之前，可以不断为其添加提供者。一旦注入器已经创建和开始交付服务，它的提供者列表就被冻结了，不再接受新的提供者。
 
-When an applications starts, Angular first configures the root injector with the providers of all eagerly loaded NgModules *before* creating its first component and injecting any of the provided services.
+When an application starts, Angular first configures the root injector with the providers of all eagerly loaded NgModules *before* creating its first component and injecting any of the provided services.
 Once the application begins, the application root injector is closed to new providers.
 
 当应用启动时，Angular 会首先使用所有主动加载模块中的提供者来配置根注入器，这发生在它创建第一个组件以及注入任何服务之前。一旦应用开始工作，应用的根注入器就不再接受新的提供者了。

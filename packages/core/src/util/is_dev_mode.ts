@@ -9,37 +9,18 @@
 import {global} from './global';
 
 /**
- * This file is used to control if the default rendering pipeline should be `ViewEngine` or `Ivy`.
+ * Returns whether Angular is in development mode.
  *
- * 此文件用于控制默认渲染管道是 `ViewEngine` 还是 `Ivy` 。
- *
- * For more information on how to run and debug tests with either Ivy or View Engine (legacy),
- * please see [BAZEL.md](./docs/BAZEL.md).
- *
- * 有关如何使用 Ivy 或 View
- * Engine（旧版）运行和调试测试的更多信息，请参阅[BAZEL.md](./docs/BAZEL.md) 。
- *
- */
-
-let _devMode: boolean = true;
-let _runModeLocked: boolean = false;
-
-
-/**
- * Returns whether Angular is in development mode. After called once,
- * the value is locked and won't change any more.
- *
- * 返回 Angular 是否处于开发模式。调用一次后，该值将被锁定，并且将不再更改。
- *
- * By default, this is true, unless a user calls `enableProdMode` before calling this.
+ * By default, this is true, unless `enableProdMode` is invoked prior to calling this method or the
+ * application is built using the Angular CLI with the `optimization` option.
+ * @see {@link cli/build ng build}
  *
  * 默认情况下，这是正确的，除非用户在调用它之前调用 `enableProdMode`
  *
  * @publicApi
  */
 export function isDevMode(): boolean {
-  _runModeLocked = true;
-  return _devMode;
+  return typeof ngDevMode === 'undefined' || !!ngDevMode;
 }
 
 /**
@@ -54,18 +35,16 @@ export function isDevMode(): boolean {
  *
  * 一个重要的断言，它禁用了对变更检测不会导致对任何绑定的（也称为单向数据流）额外更改的验证。
  *
+ * Using this method is discouraged as the Angular CLI will set production mode when using the
+ * `optimization` option.
+ * @see {@link cli/build ng build}
+ *
  * @publicApi
  */
 export function enableProdMode(): void {
-  if (_runModeLocked) {
-    throw new Error('Cannot enable prod mode after platform setup.');
-  }
-
   // The below check is there so when ngDevMode is set via terser
   // `global['ngDevMode'] = false;` is also dropped.
-  if (typeof ngDevMode === undefined || !!ngDevMode) {
+  if (typeof ngDevMode === 'undefined' || ngDevMode) {
     global['ngDevMode'] = false;
   }
-
-  _devMode = false;
 }

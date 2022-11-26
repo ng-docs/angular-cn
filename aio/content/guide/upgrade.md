@@ -35,8 +35,8 @@ The `upgrade` module in Angular has been designed to make incremental upgrading 
 ## 准备工作
 
 There are many ways to structure AngularJS applications.
-When you begin to upgrade these applications to Angular, some will turn out to be much more easy to work with than others.
-There are a few key techniques and patterns that you can apply to future proof applications even before you begin the migration.
+When you begin to upgrade these applications to Angular, some will turn out to be much easier to work with than others.
+There are a few key techniques and patterns that you can apply to future-proof applications even before you begin the migration.
 
 AngularJS 应用程序的组织方式有很多种。当你想把它们升级到 Angular 的时候，有些做起来会比其它的更容易些。即使在开始升级之前，也有一些关键的技术和模式可以让你将来升级时更轻松。
 
@@ -501,7 +501,7 @@ You can remove the `ng-app` and `ng-strict-di` directives from the HTML and inst
 <code-example header="app.module.ts" path="upgrade-module/src/app/ajs-bootstrap/app.module.ts" region="bootstrap"></code-example>
 
 To begin converting your AngularJS application to a hybrid, you need to load the Angular framework.
-You can see how this can be done with SystemJS by following the instructions in [Setup for Upgrading to AngularJS][AioGuideUpgradeSetup] for selectively copying code from the [QuickStart github repository][GithubAngularQuickstart].
+You can see how this can be done with SystemJS by following the instructions in [Setup for Upgrading to AngularJS][AioGuideUpgradeSetup] for selectively copying code from the [QuickStart GitHub repository][GithubAngularQuickstart].
 
 要想把 AngularJS 应用变成 Hybrid 应用，就要先加载 Angular 框架。
 根据[准备升级到 AngularJS][AioGuideUpgradeSetup] 中给出的步骤，选择性的把[快速入门 github 代码仓][GithubAngularQuickstart]中的代码复制过来。
@@ -583,7 +583,7 @@ The result is an AngularJS *directive*, which you can then register in the Angul
 <div class="alert is-helpful">
 
 By default, Angular change detection will also run on the component for everyAngularJS `$digest` cycle.
-If you want to only have change detection run when the inputs change, you can set `propagateDigest` to `false` when calling`downgradeComponent()`.
+If you want to only have change detection run when the inputs change, you can set `propagateDigest` to `false` when calling `downgradeComponent()`.
 
 默认情况下，Angular 变更检测也会在 AngularJS 的每个 `$digest` 周期中运行。如果你希望只在输入属性发生变化时才运行变更检测，可以在调用 `downgradeComponent()` 时把 `propagateDigest` 设置为 `false`。
 
@@ -597,7 +597,7 @@ Because `HeroDetailComponent` is an Angular component, you must also add it to t
 
 <div class="alert is-helpful">
 
-All Angular components, directives and pipes must be declared in an NgModule.
+All Angular components, directives, and pipes must be declared in an NgModule.
 
 所有 Angular 组件、指令和管道都必须声明在 NgModule 中。
 
@@ -852,7 +852,7 @@ For example, you might have a service called `HeroesService` in AngularJS:
 
 <code-example header="heroes.service.ts" path="upgrade-module/src/app/ajs-to-a-providers/heroes.service.ts"></code-example>
 
-You can upgrade the service using a Angular [factory provider][AioGuideDependencyInjectionProvidersFactoryProviders] that requests the service from the AngularJS `$injector`.
+You can upgrade the service using an Angular [factory provider][AioGuideDependencyInjectionProvidersFactoryProviders] that requests the service from the AngularJS `$injector`.
 
 你可以用 Angular 的[工厂提供者][AioGuideDependencyInjectionProvidersFactoryProviders]升级该服务，
 它从 AngularJS 的 `$injector` 请求服务。
@@ -1721,7 +1721,7 @@ That is next.
 
 现在，你同时运行着 AngularJS 和 Angular。漂亮！不过你还没有运行什么实际的 Angular 组件，这就是接下来要做的。
 
-<div class="alert is-helpful">
+<div class="callout is-helpful">
 
 <header>Why declare *angular* as *angular.IAngularStatic*?</header>
 
@@ -1742,7 +1742,7 @@ Instead, declare `angular` as `angular.IAngularStatic` to indicate it is a globa
 
 这需要相当多的努力，通常也不值得去做，特别是当你正在朝着 Angular 前进时。但如果你把 `angular` 声明为 `angular.IAngularStatic`，指明它是一个全局变量，仍然可以获得全面的类型支持。
 
-<div class="alert is-important">
+<div class="callout is-important">
 
 <header>Manually create a UMD bundle for your Angular application</header>
 
@@ -2531,9 +2531,6 @@ And for the phone list component, a few adjustments to the router make the `Rout
 [AioGuideBuiltInDirectives]: guide/built-in-directives "Built-in directives | Angular"
 
 [AioGuideDependencyInjection]: guide/dependency-injection "Dependency injection in Angular | Angular"
-
-[AioGuideDependencyInjectionProvidersFactoryProviders]: guide/dependency-injection-providers#factory-providers "Using factory providers - Dependency providers | Angular"
-
 [AioGuideGlossaryLazyLoading]: guide/glossary#lazy-loading "lazy loading - Glossary | Angular"
 
 [AioGuideHierarchicalDependencyInjection]: guide/hierarchical-dependency-injection "Hierarchical injectors | Angular"

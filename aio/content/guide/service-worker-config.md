@@ -2,6 +2,8 @@
 
 # Service Worker 配置
 
+This topic describes the properties of the service worker configuration file.
+
 ## Prerequisites
 
 ## 前提条件
@@ -10,7 +12,8 @@ A basic understanding of the following:
 
 对下列知识有基本的了解：
 
-* [Service Worker in Production](guide/service-worker-devops)
+* [Service worker overview](https://developer.chrome.com/docs/workbox/service-worker-overview/)
+*   [Service Worker in Production](guide/service-worker-devops)
 
   [生产环境下的 Service Worker](guide/service-worker-devops)。
 
@@ -99,11 +102,13 @@ Example patterns:
 | `!/**/*.map` | Exclude all sourcemaps |
 | `!/**/*.map` | 排除所有源映射 |
 
+## Service worker configuration properties
+
 The following sections describe each property of the configuration file.
 
 下面讲讲配置文件中的每个属性。
 
-## `appData`
+### `appData`
 
 This section enables you to pass any data you want that describes this particular version of the application.
 The `SwUpdate` service includes that data in the update notifications.
@@ -113,20 +118,26 @@ Many applications use this section to provide additional information for the dis
 
 <a id="index-file"></a>
 
-## `index`
+### `index`
 
 Specifies the file that serves as the index page to satisfy navigation requests.
 Usually this is `/index.html`.
 
 指定用来充当索引页的文件以满足导航请求。通常是 `/index.html`。
 
-## `assetGroups`
+### `assetGroups`
 
 *Assets* are resources that are part of the application version that update along with the application.
 They can include resources loaded from the page's origin as well as third-party resources loaded from CDNs and other external URLs.
 As not all such external URLs might be known at build time, URL patterns can be matched.
 
 *资产（Assets）*是与应用一起更新的应用版本的一部分。它们可以包含从页面的同源地址加载的资源以及从 CDN 和其它外部 URL 加载的第三方资源。由于在构建时可能没法提前知道所有这些外部 URL，因此也可以指定 URL 的模式。
+
+<div class="alert is-important">
+
+  For the service worker to handle resources that are loaded from different origins, make sure that [CORS][MozillaDeveloperDocsWebHttpCors] is correctly configured on each origin's server.
+
+</div>
 
 This field contains an array of asset groups, each of which defines a set of asset resources and the policy by which they are cached.
 
@@ -187,14 +198,16 @@ interface AssetGroup {
 
 </code-example>
 
-### `name`
+Each `AssetGroup` is defined by the following asset group properties.
+
+#### `name`
 
 A `name` is mandatory.
 It identifies this particular group of assets between versions of the configuration.
 
 `name` 是强制性的。它用来标识该配置文件版本中这个特定的资产组。
 
-### `installMode`
+#### `installMode`
 
 The `installMode` determines how these resources are initially cached.
 The `installMode` can be either of two values:
@@ -213,7 +226,7 @@ Defaults to `prefetch`.
 
 默认为 `prefetch`。
 
-### `updateMode`
+#### `updateMode`
 
 For resources already in the cache, the `updateMode` determines the caching behavior when a new version of the application is discovered.
 Any resources in the group that have changed since the previous version are updated in accordance with `updateMode`.
@@ -235,7 +248,7 @@ Defaults to the value `installMode` is set to.
 
 其默认值为 `installMode` 的值。
 
-### `resources`
+#### `resources`
 
 This section describes the resources to cache, broken up into the following groups:
 
@@ -249,7 +262,7 @@ This section describes the resources to cache, broken up into the following grou
 | `urls` | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)* |
 | `urls` | 包括要在运行时进行匹配的 URL 和 URL 模式。这些资源不是直接获取的，也没有内容散列，但它们会根据 HTTP 标头进行缓存。 这对于像 Google Fonts 服务这样的 CDN 非常有用。<br> **（不支持 glob 的逆模式，`?` 将会按字面匹配；也就是说它不会匹配除了 `?` 之外的任何字符。）** |
 
-### `cacheQueryOptions`
+#### `cacheQueryOptions`
 
 These options are used to modify the matching behavior of requests.
 They are passed to the browsers `Cache#match` function.
@@ -264,7 +277,7 @@ Currently, only the following options are supported:
 | `ignoreSearch` | Ignore query parameters. Defaults to `false`. |
 | `ignoreSearch` | 忽略查询参数。默认为 `false`。 |
 
-## `dataGroups`
+### `dataGroups`
 
 Unlike asset resources, data requests are not versioned along with the application.
 They're cached according to manually-configured policies that are more useful for situations such as API requests and other data dependencies.
@@ -327,13 +340,15 @@ export interface DataGroup {
 
 </code-example>
 
-### `name`
+Each `DataGroup` is defined by the following data group properties.
+
+#### `name`
 
 Similar to `assetGroups`, every data group has a `name` which uniquely identifies it.
 
 和 `assetGroups` 下类似，每个数据组也都有一个 `name`，用作它的唯一标识。
 
-### `urls`
+#### `urls`
 
 A list of URL patterns.
 URLs that match these patterns are cached according to this data group's policy.
@@ -349,7 +364,7 @@ Only non-mutating requests (GET and HEAD) are cached.
 
   `?` 只做字面匹配，也就是说，它*只*能匹配 `?` 字符。
 
-### `version`
+#### `version`
 
 Occasionally APIs change formats in a way that is not backward-compatible.
 A new version of the application might not be compatible with the old API format and thus might not be compatible with existing cached resources from that API.
@@ -364,22 +379,28 @@ API 有时可能会以不向后兼容的方式更改格式。新版本的应用�
 
 `version` 是个整型字段，默认为 `1`。
 
-### `cacheConfig`
+#### `cacheConfig`
 
-This section defines the policy by which matching requests are cached.
+The following properties define the policy by which matching requests are cached.
 
 本节定义了对匹配上的请求进行缓存时的策略。
 
-#### `maxSize`
+##### `maxSize`
 
-(required) The maximum number of entries, or responses, in the cache.
+**Required**
+
+**必要**
+
+The maximum number of entries, or responses, in the cache.
 Open-ended caches can grow in unbounded ways and eventually exceed storage quotas, calling for eviction.
 
-（必需）缓存的最大条目数或响应数。开放式缓存可以无限增长，并最终超过存储配额，建议适时清理。
+缓存的最大条目数或响应数。开放式缓存可以无限增长，并最终超过存储配额，建议适时清理。
 
-#### `maxAge`
+##### `maxAge`
 
-(required) The `maxAge` parameter indicates how long responses are allowed to remain in the cache before being considered invalid and evicted.
+**Required**
+
+The `maxAge` parameter indicates how long responses are allowed to remain in the cache before being considered invalid and evicted.
 `maxAge` is a duration string, using the following unit suffixes:
 
 （必需）`maxAge` 参数表示在响应因失效而要清除之前允许在缓存中留存的时间。`maxAge` 是一个表示持续时间的字符串，可使用以下单位作为后缀：
@@ -402,7 +423,7 @@ For example, the string `3d12h` caches content for up to three and a half days.
 
 比如，字符串 `3d12h` 规定此内容最多缓存三天半。
 
-#### `timeout`
+##### `timeout`
 
 This duration string specifies the network timeout.
 The network timeout is how long the Angular service worker waits for the network to respond before using a cached response, if configured to do so.
@@ -431,7 +452,7 @@ For example, the string `5s30u` translates to five seconds and 30 milliseconds o
 
 比如，字符串 `5s30u` 将会被翻译成 5 秒零 30 毫秒的网络超时。
 
-#### `strategy`
+##### `strategy`
 
 The Angular service worker can use either of two caching strategies for data resources.
 
@@ -447,34 +468,23 @@ Angular Service Worker 可以使用两种缓存策略之一来获取数据资源
 
 <div class="alert is-helpful">
 
-You can also emulate a third strategy, [staleWhileRevalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate), which returns cached data (if available), but also fetches fresh data from the network in the background for next time.
+You can also emulate a third strategy, [staleWhileRevalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate), which returns cached data if it is available, but also fetches fresh data from the network in the background for next time.
 To use this strategy set `strategy` to `freshness` and `timeout` to `0u` in `cacheConfig`.
 
 你还可以模拟第三种策略 [staleWhileRevalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate)，它会返回缓存的数据（如果可用），但是也会在后台从网络上获取新数据，以供下次使用。要使用本策略，请在 `cacheConfig` 中把 `strategy` 设置为 `freshness`，并且把 `timeout` 设置为 `0u`。
 
 This essentially does the following:
 
-本质上说，它会做如下工作：
-
-1. Try to fetch from the network first.
-
-   首先尝试从网络上获取。
-
-1. If the network request does not complete after 0ms (that is, immediately), fall back to the cache (ignoring cache age).
-
-   如果网络请求没有在 0ms 内（也就是立刻）完成，就用缓存做为后备（忽略缓存有效期）。
-
-1. Once the network request completes, update the cache for future requests.
-
-   一旦网络请求完成，就更新缓存，以供将来的请求使用。
-
-1. If the resource does not exist in the cache, wait for the network request anyway.
+1.  Try to fetch from the network first.
+2.  If the network request does not complete immediately, that is after a timeout of 0&nbsp;ms, ignore the cache age and fall back to the cached value.
+3.  Once the network request completes, update the cache for future requests.
+4.  If the resource does not exist in the cache, wait for the network request anyway.
 
    如果指定的资源在缓存中不存在，总是等待网络请求。
 
 </div>
 
-#### `cacheOpaqueResponses`
+##### `cacheOpaqueResponses`
 
 Whether the Angular service worker should cache opaque responses or not.
 
@@ -482,15 +492,10 @@ Angular 服务工作者是否应该缓存不透明的响应。
 
 If not specified, the default value depends on the data group's configured strategy:
 
-如果未指定，则默认值取决于数据组的配置策略：
-
-| Strategies | Details |
-| :--------- | :------ |
-| Strategies | 详情 |
-| Groups with the `freshness` strategy | The default value is `true` (cache opaque responses). These groups will request the data anew every time, only falling back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
-| 使用 `freshness` 策略的组 | 默认值为 `true`（缓存不透明响应）。这些组每次都会重新请求数据，只有在脱机或在慢速网络上时才会回到缓存响应。因此，服务工作者是否缓存错误响应是无关紧要的。 |
-| Groups with the `performance` strategy | The default value is `false` (do not cache opaque responses). These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
-| 具有 `performance` 策略的组 | 默认值为 `false`（不缓存不透明响应）。这些组将继续返回缓存响应，直到 `maxAge` 过期，即使错误是由于临时网络或服务器问题造成的。因此，服务工作者缓存错误响应将是有问题的。 |
+| Strategies                             | Details |
+|:---                                    |:---     |
+| Groups with the `freshness` strategy   | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response.                                    |
+| Groups with the `performance` strategy | The default value is `false` and the service worker doesn't cache opaque responses. These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
 
 <div class="callout is-important">
 
@@ -510,50 +515,31 @@ If you are not able to implement CORS —for example, if you don't control the o
 
 </div>
 
-### `cacheQueryOptions`
+#### `cacheQueryOptions`
 
 See [assetGroups](#assetgroups) for details.
 
 详情参阅 [assetGroups](#assetgroups)。
 
-## `navigationUrls`
+### `navigationUrls`
 
 This optional section enables you to specify a custom list of URLs that will be redirected to the index file.
 
 这个可选节让你可以指定一个自定义的 URL 列表，它们都会被重定向到索引文件。
 
-### Handling navigation requests
+#### Handling navigation requests
 
 ### 处理导航请求
 
 The ServiceWorker redirects navigation requests that don't match any `asset` or `data` group to the specified [index file](#index-file).
 A request is considered to be a navigation request if:
 
-对于没有匹配上任何 `asset` 或 `data` 组的导航请求，ServiceWorker 会把它们重定向到指定的[索引文件](#index-file)。下列请求将会视为导航请求：
-
-* Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
-
-  它的[模式](https://developer.mozilla.org/docs/Web/API/Request/mode)是 `navigation`
-
-* It accepts a `text/html` response (as determined by the value of the `Accept` header)
-
-  它接受 `text/html` 响应（根据 `Accept` 头的值决定）
-
-* Its URL matches certain criteria (see the following)
-
-  它的 URL 符合特定的条件（稍后讲）
-
-By default, these criteria are:
-
-默认情况下，这些条件是：
-
-* The URL must not contain a file extension (that is, a `.`) in the last path segment
-
-  URL 的最后一段路径中不能包含文件扩展名（比如 `.`）
-
-* The URL must not contain `__`
-
-  URL 中不能包含 `__`
+*   Its [method](https://developer.mozilla.org/docs/Web/API/Request/method) is `GET`
+*   Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
+*   It accepts a `text/html` response as determined by the value of the `Accept` header
+*   Its URL matches the following criteria:
+    *   The URL must not contain a file extension \(that is, a `.`\) in the last path segment
+    *   The URL must not contain `__`
 
 <div class="alert is-helpful">
 
@@ -563,14 +549,12 @@ To configure whether navigation requests are sent through to the network or not,
 
 </div>
 
-### Matching navigation request URLs
+#### Matching navigation request URLs
 
 ### 匹配导航请求的 URL
 
 While these default criteria are fine in most cases, it is sometimes desirable to configure different rules.
-For example, you might want to ignore specific routes (that are not part of the Angular app) and pass them through to the server.
-
-虽然这些默认条件在大多数情况下都挺好用，不过有时还是要配置一些不同的规则。比如，你可能希望忽略一些特定的路由（它们可能不是 Angular 应用的一部分），而是把它们透传给服务器。
+For example, you might want to ignore specific routes, such as those that are not part of the Angular app, and pass them through to the server.
 
 This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that are matched at runtime.
 It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.
@@ -600,7 +584,7 @@ If the field is omitted, it defaults to:
 
 <a id="navigation-request-strategy"></a>
 
-## `navigationRequestStrategy`
+### `navigationRequestStrategy`
 
 This optional property enables you to configure how the service worker handles navigation requests:
 
@@ -619,8 +603,8 @@ This optional property enables you to configure how the service worker handles n
 | 可能的值 | 详情 |
 | `'performance'` | The default setting. Serves the specified [index file](#index-file), which is typically cached. |
 | `'performance'` | 默认设置。提供指定的[索引文件](#index-file)，它通常会被缓存。 |
-| `'freshness'` | Passes the requests through to the network and falls back to the `performance` behavior when offline. This value is useful when the server redirects the navigation requests elsewhere using an HTTP redirect (3xx status code). Reasons for using this value include: <ul> <li> Redirecting to an authentication website when authentication is not handled by the application </li> <li> Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign </li> <li> Redirecting to a different website, such as a server-status page, while a page is temporarily down </li> </ul> |
-| `'freshness'` | 将请求透传到网络，并在脱机时回退到 `performance` 模式。当服务器在用 HTTP 重定向（3xx 状态代码）将导航请求重定向到其他位置时，此值很有用。使用此值的原因包括：<ul> <li> 当应用尚未处理身份验证时，重定向到身份验证网站。</li> <li> 重定向特定的 URL，以免在网站重新设计后破坏现有的链接/书签。</li> <li>  当页面暂时关闭时，重定向到其他网站，比如服务器状态页。</li> </ul> |
+| `'freshness'` | Passes the requests through to the network and falls back to the `performance` behavior when offline. This value is useful when the server redirects the navigation requests elsewhere using a `3xx` HTTP redirect status code. Reasons for using this value include: <ul> <li> Redirecting to an authentication website when authentication is not handled by the application </li> <li> Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign </li> <li> Redirecting to a different website, such as a server-status page, while a page is temporarily down </li> </ul> |
+| `'freshness'` | 将请求透传到网络，并在脱机时回退到 `performance` 模式。当服务器在用 HTTP 重定向状态码 `3xx` 将导航请求重定向到其他位置时，此值很有用。使用此值的原因包括：<ul> <li> 当应用尚未处理身份验证时，重定向到身份验证网站。</li> <li> 重定向特定的 URL，以免在网站重新设计后破坏现有的链接/书签。</li> <li>  当页面暂时关闭时，重定向到其他网站，比如服务器状态页。</li> </ul> |
 
 <div class="alert is-important">
 
@@ -638,6 +622,8 @@ It is recommended that you use the default performance strategy whenever possibl
 [GoogleDeveloperWebUpdates201503IntroductionToFetchResponseTypes]: https://developers.google.com/web/updates/2015/03/introduction-to-fetch#response_types
 
 [WhatwgFetchSpecConceptFilteredResponseOpaque]: https://fetch.spec.whatwg.org#concept-filtered-response-opaque
+
+[MozillaDeveloperDocsWebHttpCors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
 <!-- end links -->
 

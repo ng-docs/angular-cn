@@ -16,7 +16,7 @@ import {FatalLinkerError} from './fatal_linker_error';
  * 一个类，用于在从 Angular 输出 AST 转换为要渲染的 AST 时生成导入，例如 Babel。
  *
  * Note that, in the linker, there can only be imports from `@angular/core` and that these imports
- * must be achieved by property access on an `ng` namespace identifer, which is passed in via the
+ * must be achieved by property access on an `ng` namespace identifier, which is passed in via the
  * constructor.
  *
  * 请注意，在链接器中，只能从 `@angular/core` 导入，并且这些导入必须通过对 `ng`

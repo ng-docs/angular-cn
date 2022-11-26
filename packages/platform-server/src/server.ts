@@ -22,6 +22,7 @@ import {ServerEventManagerPlugin} from './server_events';
 import {ServerRendererFactory2} from './server_renderer';
 import {ServerStylesHost} from './styles_host';
 import {INITIAL_CONFIG, PlatformConfig} from './tokens';
+import {TRANSFER_STATE_SERIALIZATION_PROVIDERS} from './transfer_state';
 
 export const INTERNAL_SERVER_PLATFORM_PROVIDERS: StaticProvider[] = [
   {provide: DOCUMENT, useFactory: _document, deps: [Injector]},
@@ -70,6 +71,7 @@ export const SERVER_RENDER_PROVIDERS: Provider[] = [
   exports: [BrowserModule],
   imports: [HttpClientModule, NoopAnimationsModule],
   providers: [
+    TRANSFER_STATE_SERIALIZATION_PROVIDERS,
     SERVER_RENDER_PROVIDERS,
     SERVER_HTTP_PROVIDERS,
     {provide: Testability, useValue: null},  // Keep for backwards-compatibility.
@@ -81,9 +83,14 @@ export class ServerModule {
 }
 
 function _document(injector: Injector) {
-  let config: PlatformConfig|null = injector.get(INITIAL_CONFIG, null);
-  const document = config && config.document ? parseDocument(config.document, config.url) :
-                                               getDOM().createHtmlDocument();
+  const config: PlatformConfig|null = injector.get(INITIAL_CONFIG, null);
+  let document: Document;
+  if (config && config.document) {
+    document = typeof config.document === 'string' ? parseDocument(config.document, config.url) :
+                                                     config.document;
+  } else {
+    document = getDOM().createHtmlDocument();
+  }
   // Tell ivy about the global document
   ɵsetDocument(document);
   return document;

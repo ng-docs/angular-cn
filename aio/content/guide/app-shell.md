@@ -19,7 +19,7 @@ Learn more in [The App Shell Model](https://developers.google.com/web/fundamenta
 
 ## 第 1 步：准备本应用
 
-Do this with the following CLI command:
+Do this with the following Angular CLI command:
 
 可以用下列 CLI 命令来执行本操作：
 
@@ -33,11 +33,11 @@ For an existing application, you have to manually add the `RouterModule` and def
 
 对于既有应用，你必须手动添加 `RouterModule` 并在应用中定义 `<router-outlet>`。
 
-## Step 2: Create the app shell
+## Step 2: Create the application shell
 
 ## 第 2 步：创建应用外壳
 
-Use the CLI to automatically create the application shell.
+Use the Angular CLI to automatically create the application shell.
 
 使用 CLI 自动创建一个应用外壳。
 
@@ -102,11 +102,11 @@ After running this command you can see that the `angular.json` configuration fil
 
 </code-example>
 
-## Step 3: Verify the app is built with the shell content
+## Step 3: Verify the application is built with the shell content
 
 ## 第 3 步：验证该应用是使用应用外壳的内容构建的
 
-Use the CLI to build the `app-shell` target.
+Use the Angular CLI to build the `app-shell` target.
 
 使用 CLI 构建目标 `app-shell`。
 

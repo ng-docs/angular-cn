@@ -7,7 +7,7 @@
  */
 
 import {ɵgetDOM as getDOM} from '@angular/common';
-import {Component, Directive, forwardRef, Input, NgModule, OnDestroy, Type} from '@angular/core';
+import {Component, Directive, ElementRef, forwardRef, Input, NgModule, OnDestroy, Type, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {AbstractControl, AsyncValidator, AsyncValidatorFn, COMPOSITION_BUFFER_MODE, ControlValueAccessor, DefaultValueAccessor, FormArray, FormBuilder, FormControl, FormControlDirective, FormControlName, FormGroup, FormGroupDirective, FormsModule, MaxValidator, MinLengthValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validator, Validators} from '@angular/forms';
 import {By} from '@angular/platform-browser/src/dom/debug/by';
@@ -2114,6 +2114,20 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
           expect(passwordControl.value).toEqual('Carson', 'Expected value to change on submit.');
           expect(passwordControl.valid).toBe(true, 'Expected validation to run on submit.');
         });
+
+        it('should not prevent the default action on forms with method="dialog"', fakeAsync(() => {
+             if (typeof HTMLDialogElement === 'undefined') {
+               return;
+             }
+
+             const fixture = initTest(NativeDialogForm);
+             fixture.detectChanges();
+             tick();
+             const event = dispatchEvent(fixture.componentInstance.form.nativeElement, 'submit');
+             fixture.detectChanges();
+
+             expect(event.defaultPrevented).toBe(false);
+           }));
       });
     });
 
@@ -5079,7 +5093,9 @@ const ValueAccessorB = createControlValueAccessor('[cva-b]');
         const fixture = initTest(NoCVAComponent);
         expect(() => {
           fixture.detectChanges();
-        }).toThrowError('No value accessor for form control with name: \'control\'');
+        })
+            .toThrowError(
+                `NG01203: No value accessor for form control name: 'control'. Find more at https://angular.io/errors/NG01203`);
 
         // Making sure that cleanup between tests doesn't cause any issues
         // for not fully initialized controls.
@@ -5436,4 +5452,18 @@ class MinMaxFormControlComp {
   form!: FormGroup;
   min: number|string = 1;
   max: number|string = 10;
+}
+
+@Component({
+  template: `
+    <dialog open>
+      <form #form method="dialog" [formGroup]="formGroup">
+        <button>Submit</button>
+      </form>
+    </dialog>
+  `
+})
+class NativeDialogForm {
+  @ViewChild('form') form!: ElementRef<HTMLFormElement>;
+  formGroup = new FormGroup({});
 }

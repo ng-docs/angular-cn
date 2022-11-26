@@ -313,7 +313,7 @@ It's visually simple: a few properties and the logs produced by a logger.
 </div>
 
 The code behind it customizes how and where the DI framework provides dependencies.
-The use cases illustrate different ways to use the [*provide* object literal](guide/dependency-injection-providers#provide) to associate a definition object with a DI token.
+The use cases illustrate different ways to use the *provide* object literal to associate a definition object with a DI token.
 
 它背后的代码定制了 DI 框架提供依赖项的方法和位置。这个例子阐明了通过[*提供*对象字面量](guide/dependency-injection-providers#provide)来把对象的定义和 DI 令牌关联起来的另一种方式。
 
@@ -499,11 +499,11 @@ Use this technique to create a dependency object with a factory function whose i
 使用这项技术，可以用包含了一些***依赖服务和本地状态***输入的工厂函数来***建立一个依赖对象***。
 
 The dependency object (returned by the factory function) is typically a class instance, but can be other things as well.
-In this example, the dependency object is a string of the names of the runners up to the "Hero of the Month" contest.
+In this example, the dependency object is a string of the names of the runners-up to the "Hero of the Month" contest.
 
 这个依赖对象（由工厂函数返回的）通常是一个类实例，不过也可以是任何其它东西。在这个例子中，依赖对象是一个表示 "月度英雄" 参赛者名称的字符串。
 
-In the example, the local state is the number `2`, the number of runners up that the component should show.
+In the example, the local state is the number `2`, the number of runners-up that the component should show.
 The state value is passed as an argument to `runnersUpFactory()`.
 The `runnersUpFactory()` returns the *provider factory function*, which can use both the passed-in state value and the injected services `Hero` and `HeroService`.
 
@@ -582,8 +582,10 @@ When you use a class this way, it's called a *class interface*.
 
 当你通过这种方式使用类时，它称作*类接口*。
 
-As mentioned in [DI Providers](guide/dependency-injection-providers#di-and-interfaces), an interface is not a valid DI token because it is a TypeScript artifact that doesn't exist at run time.
-Use this abstract class interface to get the strong typing of an interface, and also use it as a provider token in the way you would a normal class.
+As mentioned in [Configuring dependency providers](guide/dependency-injection-providers),
+an interface is not a valid DI token because it is a TypeScript artifact that doesn't exist at run time.
+Use this abstract class interface to get the strong typing of an interface,
+and also use it as a provider token in the way you would a normal class.
 
 就像 [DI 提供者](guide/dependency-injection-providers#di-and-interfaces)中提到的那样，接口不是有效的 DI 令牌，因为它是 TypeScript 自己用的，在运行期间不存在。使用这种抽象类接口不但可以获得像接口一样的强类型，而且可以像普通类一样把它用作提供者令牌。
 
@@ -621,7 +623,7 @@ Look again at the TypeScript `MinimalLogger` class to confirm that it has no imp
 
 ### 'InjectionToken' 对象
 
-Dependency objects can be simple values like dates, numbers and strings, or shapeless objects like arrays and functions.
+Dependency objects can be simple values like dates, numbers, and strings, or shapeless objects like arrays and functions.
 
 依赖对象可以是一个简单的值，比如日期，数字和字符串，或者一个无形的对象，比如数组和函数。
 
@@ -691,7 +693,7 @@ That's why you call the `HeroService` from within the `ngOnInit` rather than the
 </div>
 
 Users want to see the heroes in alphabetical order.
-Rather than modify the original component, sub-class it and create a `SortedHeroesComponent` that sorts the heroes before presenting them.
+Rather than modify the original component, subclass it and create a `SortedHeroesComponent` that sorts the heroes before presenting them.
 The `SortedHeroesComponent` lets the base class fetch the heroes.
 
 用户希望看到英雄按字母顺序排序。与其修改原始的组件，不如派生它，新建 `SortedHeroesComponent`，以便展示英雄之前进行排序。`SortedHeroesComponent` 让基类来获取英雄。

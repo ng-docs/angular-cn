@@ -155,7 +155,7 @@ Conversely, `customer` in the `<h1>` doesn't include Ebony or Chiho because the 
 
 ## 表达式最佳实践
 
-When using template a expression, follow these best practices:
+When using a template expression, follow these best practices:
 
 使用模板表达式时，请遵循以下最佳实践：
 
@@ -171,7 +171,7 @@ Use property names or method calls whenever possible.  Keep application and busi
 
   **快速执行**
 
-Angular executes a template expression after every [change detection](guide/glossary#change-detection) cycle.  Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses and mouse moves.
+Angular executes a template expression after every [change detection](guide/glossary#change-detection) cycle.  Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses, and mouse moves.
 
 Angular 会在每个[变更检测](guide/glossary#change-detection)周期之后执行一个模板表达式。许多异步活动会触发变更检测周期，比如 promise 解析、HTTP 结果、计时器事件、按键和鼠标移动。
 

@@ -6,88 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Injectable, Injector, ModuleWithProviders, NgModule} from '@angular/core';
-import {Observable} from 'rxjs';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 
-import {HttpBackend, HttpHandler} from './backend';
-import {HttpClient} from './client';
-import {HTTP_INTERCEPTORS, HttpInterceptor, HttpInterceptorHandler, NoopInterceptor} from './interceptor';
-import {JsonpCallbackContext, JsonpClientBackend, JsonpInterceptor} from './jsonp';
-import {HttpRequest} from './request';
-import {HttpEvent} from './response';
-import {HttpXhrBackend} from './xhr';
-import {HttpXsrfCookieExtractor, HttpXsrfInterceptor, HttpXsrfTokenExtractor, XSRF_COOKIE_NAME, XSRF_HEADER_NAME} from './xsrf';
-
-/**
- * An injectable `HttpHandler` that applies multiple interceptors
- * to a request before passing it to the given `HttpBackend`.
- *
- * 一个可注入的 `HttpHandler`，它可以在把请求传给指定的 `HttpBackend`
- * 之前，使用多个拦截器对该请求进行处理。
- *
- * The interceptors are loaded lazily from the injector, to allow
- * interceptors to themselves inject classes depending indirectly
- * on `HttpInterceptingHandler` itself.
- *
- * 这些拦截器是由注入器惰性加载起来的，以便让这些拦截器可以把其它类作为依赖注入进来，
- * 还可以让它们间接注入 `HttpInterceptingHandler` 自己。
- *
- * @see `HttpInterceptor`
- */
-@Injectable()
-export class HttpInterceptingHandler implements HttpHandler {
-  private chain: HttpHandler|null = null;
-
-  constructor(private backend: HttpBackend, private injector: Injector) {}
-
-  handle(req: HttpRequest<any>): Observable<HttpEvent<any>> {
-    if (this.chain === null) {
-      const interceptors = this.injector.get(HTTP_INTERCEPTORS, []);
-      this.chain = interceptors.reduceRight(
-          (next, interceptor) => new HttpInterceptorHandler(next, interceptor), this.backend);
-    }
-    return this.chain.handle(req);
-  }
-}
-
-/**
- * Constructs an `HttpHandler` that applies interceptors
- * to a request before passing it to the given `HttpBackend`.
- *
- * 构造一个 `HttpHandler`，它会在把请求传给指定的 `HttpBackend` 之前，先对该请求应用各个拦截器。
- *
- * Use as a factory function within `HttpClientModule`.
- *
- * 在 `HttpClientModule` 中用作工厂函数。
- *
- */
-export function interceptingHandler(
-    backend: HttpBackend, interceptors: HttpInterceptor[]|null = []): HttpHandler {
-  if (!interceptors) {
-    return backend;
-  }
-  return interceptors.reduceRight(
-      (next, interceptor) => new HttpInterceptorHandler(next, interceptor), backend);
-}
-
-/**
- * Factory function that determines where to store JSONP callbacks.
- *
- * 一个工厂函数，用来决定在哪里保存 JSONP 回调。
- *
- * Ordinarily JSONP callbacks are stored on the `window` object, but this may not exist
- * in test environments. In that case, callbacks are stored on an anonymous object instead.
- *
- * 原始的 JSONP 回调保存在 `window` 对象上，不过测试环境下可能不存在 `window`
- * 对象。这时，回调就会转而保存在一个匿名对象上。
- *
- */
-export function jsonpCallbackContext(): Object {
-  if (typeof window === 'object') {
-    return window;
-  }
-  return {};
-}
+import {HTTP_INTERCEPTORS} from './interceptor';
+import {provideHttpClient, withInterceptorsFromDi, withJsonpSupport, withNoXsrfProtection, withXsrfConfiguration} from './provider';
+import {HttpXsrfCookieExtractor, HttpXsrfInterceptor, HttpXsrfTokenExtractor, XSRF_DEFAULT_COOKIE_NAME, XSRF_DEFAULT_HEADER_NAME, XSRF_ENABLED} from './xsrf';
 
 /**
  * Configures XSRF protection support for outgoing requests.
@@ -113,8 +36,11 @@ export function jsonpCallbackContext(): Object {
     HttpXsrfInterceptor,
     {provide: HTTP_INTERCEPTORS, useExisting: HttpXsrfInterceptor, multi: true},
     {provide: HttpXsrfTokenExtractor, useClass: HttpXsrfCookieExtractor},
-    {provide: XSRF_COOKIE_NAME, useValue: 'XSRF-TOKEN'},
-    {provide: XSRF_HEADER_NAME, useValue: 'X-XSRF-TOKEN'},
+    withXsrfConfiguration({
+      cookieName: XSRF_DEFAULT_COOKIE_NAME,
+      headerName: XSRF_DEFAULT_HEADER_NAME,
+    }).ɵproviders,
+    {provide: XSRF_ENABLED, useValue: true},
   ],
 })
 export class HttpClientXsrfModule {
@@ -127,7 +53,7 @@ export class HttpClientXsrfModule {
     return {
       ngModule: HttpClientXsrfModule,
       providers: [
-        {provide: HttpXsrfInterceptor, useClass: NoopInterceptor},
+        withNoXsrfProtection().ɵproviders,
       ],
     };
   }
@@ -157,10 +83,7 @@ export class HttpClientXsrfModule {
   } = {}): ModuleWithProviders<HttpClientXsrfModule> {
     return {
       ngModule: HttpClientXsrfModule,
-      providers: [
-        options.cookieName ? {provide: XSRF_COOKIE_NAME, useValue: options.cookieName} : [],
-        options.headerName ? {provide: XSRF_HEADER_NAME, useValue: options.headerName} : [],
-      ],
+      providers: withXsrfConfiguration(options).ɵproviders,
     };
   }
 }
@@ -182,27 +105,19 @@ export class HttpClientXsrfModule {
  */
 @NgModule({
   /**
-   * Optional configuration for XSRF protection.
-   *
-   * 可选的 XSRF 保护的配置项。
-   */
-  imports: [
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'XSRF-TOKEN',
-      headerName: 'X-XSRF-TOKEN',
-    }),
-  ],
-  /**
    * Configures the [dependency injector](guide/glossary#injector) where it is imported
    * with supporting services for HTTP communications.
    *
    * 配置[依赖注入器](guide/glossary#injector)，其中导入了用于支持 HTTP通讯的服务。
    */
   providers: [
-    HttpClient,
-    {provide: HttpHandler, useClass: HttpInterceptingHandler},
-    HttpXhrBackend,
-    {provide: HttpBackend, useExisting: HttpXhrBackend},
+    provideHttpClient(
+        withInterceptorsFromDi(),
+        withXsrfConfiguration({
+          cookieName: XSRF_DEFAULT_COOKIE_NAME,
+          headerName: XSRF_DEFAULT_HEADER_NAME,
+        }),
+        ),
   ],
 })
 export class HttpClientModule {
@@ -217,19 +132,11 @@ export class HttpClientModule {
  * 为支持 JSONP 的 `HttpClient` 配置[依赖注入器](guide/glossary#injector)。
  * 如果没有该模块，Jsonp 请求就会被发送到后端，然后被后端拒绝。
  *
- * You can add interceptors to the chain behind `HttpClient` by binding them to the
- * multiprovider for built-in [DI token](guide/glossary#di-token) `HTTP_INTERCEPTORS`.
- *
- * 通过把拦截器提供为内置的 [DI 令牌](guide/glossary#di-token)
- * `HTTP_INTERCEPTORS`（允许有多个），你可以把它们添加到 `HttpClient` 调用链的后面。
- *
  * @publicApi
  */
 @NgModule({
   providers: [
-    JsonpClientBackend,
-    {provide: JsonpCallbackContext, useFactory: jsonpCallbackContext},
-    {provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true},
+    withJsonpSupport().ɵproviders,
   ],
 })
 export class HttpClientJsonpModule {

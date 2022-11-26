@@ -625,7 +625,7 @@ describe('downlevel decorator transform', () => {
        export class MyDir {
          constructor(@Inject('$state') param: angular.IState,
                      @Inject('$overlay') other: IOverlay,
-                     @Inject('$default') default: TypeFromDefaultImport,
+                     @Inject('$default') fromDefaultImport: TypeFromDefaultImport,
                      @Inject('$keyCodes') keyCodes: KeyCodes) {}
        }
      `);
@@ -649,10 +649,10 @@ describe('downlevel decorator transform', () => {
     const stripAllDecoratorsTransform: ts.TransformerFactory<ts.SourceFile> = context => {
       return (sourceFile: ts.SourceFile) => {
         const visitNode = (node: ts.Node): ts.Node => {
-          if (ts.isClassDeclaration(node) || ts.isClassElement(node)) {
-            const cloned = ts.getMutableClone(node);
-            (cloned.decorators as undefined) = undefined;
-            return cloned;
+          if (ts.isClassDeclaration(node)) {
+            return ts.factory.createClassDeclaration(
+                ts.getModifiers(node), node.name, node.typeParameters, node.heritageClauses,
+                node.members);
           }
           return ts.visitEachChild(node, visitNode, context);
         };

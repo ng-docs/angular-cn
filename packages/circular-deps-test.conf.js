@@ -14,7 +14,8 @@ module.exports = {
   glob : `./**/*.ts`,
   // Command that will be displayed if the golden needs to be updated.
   approveCommand : 'yarn ts-circular-deps:approve',
-  resolveModule : resolveModule
+  resolveModule : resolveModule,
+  ignoreTypeOnlyChecks : true,
 };
 
 /**

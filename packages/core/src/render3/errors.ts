@@ -23,13 +23,8 @@ import {stringifyForError} from './util/stringify_utils';
  *
  */
 export function assertStandaloneComponentType(type: Type<unknown>) {
-  const componentDef = getComponentDef(type);
-  if (!componentDef) {
-    throw new RuntimeError(
-        RuntimeErrorCode.MISSING_GENERATED_DEF,
-        `The ${stringifyForError(type)} is not an Angular component, ` +
-            `make sure it has the \`@Component\` decorator.`);
-  }
+  assertComponentDef(type);
+  const componentDef = getComponentDef(type)!;
   if (!componentDef.standalone) {
     throw new RuntimeError(
         RuntimeErrorCode.TYPE_IS_NOT_STANDALONE,
@@ -40,12 +35,17 @@ export function assertStandaloneComponentType(type: Type<unknown>) {
   }
 }
 
-/**
- * Called when there are multiple component selectors that match a given node
- *
- * 当有多个组件选择器与给定节点匹配时调用
- *
- */
+/** Verifies whether a given type is a component */
+export function assertComponentDef(type: Type<unknown>) {
+  if (!getComponentDef(type)) {
+    throw new RuntimeError(
+        RuntimeErrorCode.MISSING_GENERATED_DEF,
+        `The ${stringifyForError(type)} is not an Angular component, ` +
+            `make sure it has the \`@Component\` decorator.`);
+  }
+}
+
+/** Called when there are multiple component selectors that match a given node */
 export function throwMultipleComponentError(
     tNode: TNode, first: Type<unknown>, second: Type<unknown>): never {
   throw new RuntimeError(

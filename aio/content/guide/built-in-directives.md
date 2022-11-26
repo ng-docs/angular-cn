@@ -279,7 +279,7 @@ To add or remove an element, bind `*ngIf` to a condition expression such as `isA
 <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgIf-1"></code-example>
 
 When the `isActive` expression returns a truthy value, `NgIf` adds the `ItemDetailComponent` to the DOM.
-When the expression is falsy, `NgIf` removes the `ItemDetailComponent` from the DOM and disposes of the component and all of its sub-components.
+When the expression is falsy, `NgIf` removes the `ItemDetailComponent` from the DOM and disposes of the component and all of its subcomponents.
 
 当 `isActive` 表达式返回真值时，`NgIf` 会把 `ItemDetailComponent` 添加到 DOM 中。当表达式为假值时，`NgIf` 会从 DOM 中删除 `ItemDetailComponent` 并销毁该组件及其所有子组件。
 
@@ -323,7 +323,7 @@ Use the `NgFor` directive to present a list of items.
 
    定义一个 HTML 块，该块会决定 Angular 如何渲染单个条目。
 
-1. To list your items, assign the short hand `let item of items` to `*ngFor`.
+1. To list your items, assign the shorthand `let item of items` to `*ngFor`.
 
    要列出你的条目，请把一个简写形式 `let item of items` 赋值给 `*ngFor`。
 
@@ -394,7 +394,7 @@ Get the `index` of `*ngFor` in a template input variable and use it in the templ
 
 可以获取 `*ngFor` 的 `index`，并在模板中使用它。
 
-In the `*ngFor`, add a semicolon and `let i=index` to the short hand.
+In the `*ngFor`, add a semicolon and `let i=index` to the shorthand.
 The following example gets the `index` in a variable named `i` and displays it with the item name.
 
 在 `*ngFor` 中，添加一个分号和 `let i=index` 简写形式。下面的例子中把 `index` 取到一个名为 `i` 的变量中，并将其与条目名称一起显示。
@@ -443,7 +443,7 @@ With the `*ngFor` `trackBy` property, Angular can change and re-render only thos
 
    <code-example header="src/app/app.component.ts" path="built-in-directives/src/app/app.component.ts" region="trackByItems"></code-example>
 
-1. In the short hand expression, set `trackBy` to the `trackByItems()` method.
+1. In the shorthand expression, set `trackBy` to the `trackByItems()` method.
 
    在简写表达式中，将 `trackBy` 设置为 `trackByItems()` 方法。
 

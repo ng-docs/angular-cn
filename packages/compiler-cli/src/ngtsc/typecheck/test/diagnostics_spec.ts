@@ -11,6 +11,7 @@ import ts from 'typescript';
 import {absoluteFrom, getSourceFileOrError} from '../../file_system';
 import {runInEachFileSystem, TestFile} from '../../file_system/testing';
 import {OptimizeFor, TypeCheckingConfig} from '../api';
+import {resetParseTemplateAsSourceFileForTest, setParseTemplateAsSourceFileForTest} from '../diagnostics';
 import {ngForDeclaration, ngForDts, ngIfDeclaration, ngIfDts, setup, TestDeclaration} from '../testing';
 
 runInEachFileSystem(() => {
@@ -488,7 +489,8 @@ runInEachFileSystem(() => {
           }`);
 
         expect(messages).toEqual([
-          `TestComponent.html(1, 19): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.`
+          `TestComponent.html(1, 19): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.`
         ]);
       });
 
@@ -517,7 +519,8 @@ runInEachFileSystem(() => {
           }`);
 
         expect(messages).toEqual([
-          `TestComponent.html(1, 19): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.`
+          `TestComponent.html(1, 19): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.`
         ]);
       });
     });
@@ -688,6 +691,228 @@ class TestComponent {
           [`TestComponent.html(1, 15): Type 'number' is not assignable to type 'string'.`]);
     });
   });
+
+  // https://github.com/angular/angular/issues/44999
+  it('should not fail for components outside of rootDir', () => {
+    // This test configures a component that is located outside the configured `rootDir`. Such
+    // configuration requires that an inline type-check block is used as the reference emitter does
+    // not allow generating imports outside `rootDir`.
+    const messages =
+        diagnose(`{{invalid}}`, `export class TestComponent {}`, [], [], {}, {rootDir: '/root'});
+
+    expect(messages).toEqual(
+        [`TestComponent.html(1, 3): Property 'invalid' does not exist on type 'TestComponent'.`]);
+  });
+
+  describe('host directives', () => {
+    it('should produce a diagnostic for host directive input bindings', () => {
+      const messages = diagnose(
+          `<div dir [input]="person.name" [alias]="person.age"></div>`, `
+            class Dir {
+            }
+            class HostDir {
+              input: number;
+              otherInput: string;
+            }
+            class TestComponent {
+              person: {
+                name: string;
+                age: number;
+              };
+            }`,
+          [{
+            type: 'directive',
+            name: 'Dir',
+            selector: '[dir]',
+            hostDirectives: [{
+              directive: {
+                type: 'directive',
+                name: 'HostDir',
+                selector: '',
+                inputs: {input: 'input', otherInput: 'otherInput'},
+                isStandalone: true,
+              },
+              inputs: ['input', 'otherInput: alias']
+            }]
+          }]);
+
+      expect(messages).toEqual([
+        `TestComponent.html(1, 11): Type 'string' is not assignable to type 'number'.`,
+        `TestComponent.html(1, 33): Type 'number' is not assignable to type 'string'.`
+      ]);
+    });
+
+    it('should produce a diagnostic for directive outputs', () => {
+      const messages = diagnose(
+          `<div
+            dir
+            (numberAlias)="handleStringEvent($event)"
+            (stringEvent)="handleNumberEvent($event)"></div>`,
+          `
+            import {EventEmitter} from '@angular/core';
+            class HostDir {
+              stringEvent = new EventEmitter<string>();
+              numberEvent = new EventEmitter<number>();
+            }
+            class Dir {
+            }
+            class TestComponent {
+              handleStringEvent(event: string): void {}
+              handleNumberEvent(event: number): void {}
+            }`,
+          [{
+            type: 'directive',
+            name: 'Dir',
+            selector: '[dir]',
+            hostDirectives: [{
+              directive: {
+                type: 'directive',
+                name: 'HostDir',
+                selector: '',
+                isStandalone: true,
+                outputs: {stringEvent: 'stringEvent', numberEvent: 'numberEvent'},
+              },
+              outputs: ['stringEvent', 'numberEvent: numberAlias']
+            }]
+          }]);
+
+      expect(messages).toEqual([
+        `TestComponent.html(3, 46): Argument of type 'number' is not assignable to parameter of type 'string'.`,
+        `TestComponent.html(4, 46): Argument of type 'string' is not assignable to parameter of type 'number'.`
+      ]);
+    });
+
+    it('should produce a diagnostic for host directive inputs and outputs that have not been exposed',
+       () => {
+         const messages = diagnose(
+             `<div dir [input]="person.name" (output)="handleStringEvent($event)"></div>`, `
+            class Dir {
+            }
+            class HostDir {
+              input: number;
+              output = new EventEmitter<number>();
+            }
+            class TestComponent {
+              person: {
+                name: string;
+              };
+              handleStringEvent(event: string): void {}
+            }`,
+             [{
+               type: 'directive',
+               name: 'Dir',
+               selector: '[dir]',
+               hostDirectives: [{
+                 directive: {
+                   type: 'directive',
+                   name: 'HostDir',
+                   selector: '',
+                   inputs: {input: 'input'},
+                   outputs: {output: 'output'},
+                   isStandalone: true,
+                 },
+                 // Intentionally left blank.
+                 inputs: [],
+                 outputs: []
+               }]
+             }]);
+
+         expect(messages).toEqual([
+           // These messages are expected to refer to the native
+           // typings since the inputs/outputs haven't been exposed.
+           `TestComponent.html(1, 60): Argument of type 'Event' is not assignable to parameter of type 'string'.`,
+           `TestComponent.html(1, 10): Can't bind to 'input' since it isn't a known property of 'div'.`
+         ]);
+       });
+
+    it('should infer the type of host directive references', () => {
+      const messages = diagnose(
+          `<div dir #hostDir="hostDir">{{ render(hostDir) }}</div>`, `
+            class Dir {}
+            class HostDir {
+              value: number;
+            }
+            class TestComponent {
+              render(input: string): string { return input; }
+            }`,
+          [{
+            type: 'directive',
+            name: 'Dir',
+            selector: '[dir]',
+            hostDirectives: [{
+              directive: {
+                type: 'directive',
+                selector: '',
+                isStandalone: true,
+                name: 'HostDir',
+                exportAs: ['hostDir']
+              }
+            }]
+          }]);
+
+      expect(messages).toEqual([
+        `TestComponent.html(1, 39): Argument of type 'HostDir' is not assignable to parameter of type 'string'.`,
+      ]);
+    });
+  });
+
+  // https://github.com/angular/angular/issues/43970
+  describe('template parse failures', () => {
+    afterEach(resetParseTemplateAsSourceFileForTest);
+
+    it('baseline test without parse failure', () => {
+      const messages = diagnose(`<div (click)="test(name)"></div>`, `
+      export class TestComponent {
+        name: string | undefined;
+        test(n: string): void {}
+      }`);
+
+      expect(messages).toEqual([
+        `TestComponent.html(1, 20): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.`
+      ]);
+    });
+
+    it('should handle TypeScript parse failures gracefully', () => {
+      setParseTemplateAsSourceFileForTest(() => {
+        throw new Error('Simulated parse failure');
+      });
+
+      const messages = diagnose(`<div (click)="test(name)"></div>`, `
+      export class TestComponent {
+        name: string | undefined;
+        test(n: string): void {}
+      }`);
+
+      expect(messages.length).toBe(1);
+      expect(messages[0])
+          .toContain(
+              `main.ts(2, 20): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+  Failed to report an error in 'TestComponent.html' at 1:20
+    Error: Simulated parse failure`);
+    });
+
+    it('should handle non-Error failures gracefully', () => {
+      setParseTemplateAsSourceFileForTest(() => {
+        throw 'Simulated parse failure';
+      });
+
+      const messages = diagnose(`<div (click)="test(name)"></div>`, `
+      export class TestComponent {
+        name: string | undefined;
+        test(n: string): void {}
+      }`);
+
+      expect(messages.length).toBe(1);
+      expect(messages[0])
+          .toContain(
+              `main.ts(2, 20): Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+  Failed to report an error in 'TestComponent.html' at 1:20
+    Simulated parse failure`);
+    });
+  });
 });
 
 function diagnose(
@@ -715,8 +940,7 @@ function diagnose(
   const sf = getSourceFileOrError(program, sfPath);
   const diagnostics = templateTypeChecker.getDiagnosticsForFile(sf, OptimizeFor.WholeProgram);
   return diagnostics.map(diag => {
-    const text =
-        typeof diag.messageText === 'string' ? diag.messageText : diag.messageText.messageText;
+    const text = ts.flattenDiagnosticMessageText(diag.messageText, '\n');
     const fileName = diag.file!.fileName;
     const {line, character} = ts.getLineAndCharacterOfPosition(diag.file!, diag.start!);
     return `${fileName}(${line + 1}, ${character + 1}): ${text}`;

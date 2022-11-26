@@ -66,6 +66,13 @@ export interface NgModuleMeta {
    *
    */
   rawExports: ts.Expression|null;
+
+  /**
+   * The primary decorator associated with this `ngModule`.
+   *
+   * If this is `null`, no decorator exists, meaning it's probably from a .d.ts file.
+   */
+  decorator: ts.Decorator|null;
 }
 
 /**
@@ -155,6 +162,17 @@ export enum MetaKind {
 }
 
 /**
+ * Possible ways that a directive can be matched.
+ */
+export enum MatchSource {
+  /** The directive was matched by its selector. */
+  Selector,
+
+  /** The directive was applied as a host directive. */
+  HostDirective,
+}
+
+/**
  * Metadata collected for a directive within an NgModule's scope.
  *
  * 在 NgModule 范围内为指令收集的元数据。
@@ -162,6 +180,9 @@ export enum MetaKind {
  */
 export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   kind: MetaKind.Directive;
+
+  /** Way in which the directive was matched. */
+  matchSource: MatchSource;
 
   ref: Reference<ClassDeclaration>;
   /**
@@ -242,6 +263,31 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
    *
    */
   schemas: SchemaMetadata[]|null;
+
+  /**
+   * The primary decorator associated with this directive.
+   *
+   * If this is `null`, no decorator exists, meaning it's probably from a .d.ts file.
+   */
+  decorator: ts.Decorator|null;
+
+  /** Additional directives applied to the directive host. */
+  hostDirectives: HostDirectiveMeta[]|null;
+}
+
+/** Metadata collected about an additional directive that is being applied to a directive host. */
+export interface HostDirectiveMeta {
+  /** Reference to the host directive class. */
+  directive: Reference<ClassDeclaration>;
+
+  /** Whether the reference to the host directive is a forward reference. */
+  isForwardReference: boolean;
+
+  /** Inputs from the host directive that have been exposed. */
+  inputs: {[publicName: string]: string}|null;
+
+  /** Outputs from the host directive that have been exposed. */
+  outputs: {[publicName: string]: string}|null;
 }
 
 /**
@@ -289,6 +335,7 @@ export interface PipeMeta {
   name: string;
   nameExpr: ts.Expression|null;
   isStandalone: boolean;
+  decorator: ts.Decorator|null;
 }
 
 /**
@@ -302,6 +349,13 @@ export interface MetadataReader {
   getDirectiveMetadata(node: Reference<ClassDeclaration>): DirectiveMeta|null;
   getNgModuleMetadata(node: Reference<ClassDeclaration>): NgModuleMeta|null;
   getPipeMetadata(node: Reference<ClassDeclaration>): PipeMeta|null;
+}
+
+/**
+ * A MetadataReader which also allows access to the set of all known directive classes.
+ */
+export interface MetadataReaderWithIndex extends MetadataReader {
+  getKnownDirectives(): Iterable<ClassDeclaration>;
 }
 
 /**

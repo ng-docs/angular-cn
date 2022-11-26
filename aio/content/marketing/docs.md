@@ -2,7 +2,7 @@
 
 <h1 class="no-toc">Angular 文档简介</h1>
 
-Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.
+Angular is an application-design framework and development platform for creating efficient and sophisticated single-page apps.
 
 Angular 是一个应用设计框架与开发平台，旨在创建高效而精致的单页面应用。
 
@@ -100,7 +100,7 @@ We want to hear from you. [Report problems or submit suggestions for future docs
 
 Contribute to Angular docs by creating
 [pull requests](https://github.com/angular/angular/pulls "Angular Github pull requests")
-on the Angular Github repository.
+on the Angular GitHub repository.
 See [Contributing to Angular](https://github.com/angular/angular/blob/main/CONTRIBUTING.md "Contributing guide")
 for information about submission guidelines.
 
@@ -108,7 +108,7 @@ for information about submission guidelines.
 [贡献者指南](https://github.com/angular/angular/blob/main/CONTRIBUTING.md "贡献者指南")将会帮助你更好的为社区做贡献。
 
 Our community values respectful, supportive communication.
-Please consult and adhere to the [Code of Conduct](https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md "Contributor code of conduct").
+Please consult and adhere to the [Code of Conduct](https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md "Contributor code of conduct").
 
 我们的社区提倡相互尊重、相互支持。
 参阅[社区行为规范](https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md "contributor code of conduct")。

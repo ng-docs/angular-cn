@@ -123,7 +123,7 @@ This is known as "upgrading" and "downgrading".
 
 大多数情况下，你可以使用与常规应用程序相同的方式来指定模块。然后，使用 `upgrade/static` 辅助函数来让两个框架了解对方使用的资产。这叫做"升级（upgrading）"和"降级（downgrading）"。
 
-<div class="alert is-helpful">
+<div class="callout is-helpful">
 
 <header>Definitions:</header>
 
@@ -269,7 +269,7 @@ Unlike `UpgradeModule`—which requires some extra steps— `downgradeModule()` 
 你可能已经猜到了，你不需要修改引导现有 AngularJS 应用的方式。`UpgradeModule` 需要一些额外的步骤，但 `downgradeModule()` 能自行引导 Angular 模块，你只要为它提供配方即可。
 
 In order to start using any `upgrade/static` APIs, you still need to load the Angular framework as you would in a normal Angular application.
-You can see how this can be done with SystemJS by following the instructions in the [Upgrade Setup](guide/upgrade-setup "Setup for Upgrading from AngularJS") guide, selectively copying code from the [QuickStart github repository](https://github.com/angular/quickstart).
+You can see how this can be done with SystemJS by following the instructions in the [Upgrade Setup](guide/upgrade-setup "Setup for Upgrading from AngularJS") guide, selectively copying code from the [QuickStart GitHub repository](https://github.com/angular/quickstart).
 
 要开始使用任何 `upgrade/static` API，你仍然要像在普通 Angular 应用中一样加载 Angular 框架。要想用 SystemJS 做到这一点，你可以遵循[升级的准备工作](guide/upgrade-setup "Setup for Upgrading from AngularJS")中的指导，有选择的从[快速上手项目的 Github 仓库](https://github.com/angular/quickstart)中复制代码。
 

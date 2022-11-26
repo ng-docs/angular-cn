@@ -254,8 +254,8 @@ function difference<T>(left: Set<T>, right: Set<T>): Set<T> {
  *
  */
 // TODO(atscott): Add unit tests for this and the one for attributes
-export function getDirectiveMatchesForElementTag(
-    element: t.Template|t.Element, directives: DirectiveSymbol[]): Set<DirectiveSymbol> {
+export function getDirectiveMatchesForElementTag<T extends {selector: string | null}>(
+    element: t.Template|t.Element, directives: T[]): Set<T> {
   const attributes = getAttributes(element);
   const allAttrs = attributes.map(toAttributeCssSelector);
   const allDirectiveMatches =
@@ -318,14 +318,14 @@ export function getDirectiveMatchesForAttribute(
  * 给定指令列表和要用作选择器的文本，返回与选择器匹配的指令。
  *
  */
-function getDirectiveMatchesForSelector(
-    directives: DirectiveSymbol[], selector: string): Set<DirectiveSymbol> {
+function getDirectiveMatchesForSelector<T extends {selector: string | null}>(
+    directives: T[], selector: string): Set<T> {
   try {
     const selectors = CssSelector.parse(selector);
     if (selectors.length === 0) {
       return new Set();
     }
-    return new Set(directives.filter((dir: DirectiveSymbol) => {
+    return new Set(directives.filter((dir: T) => {
       if (dir.selector === null) {
         return false;
       }

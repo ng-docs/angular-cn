@@ -10,14 +10,14 @@ import {animate, AnimationBuilder, state, style, transition, trigger} from '@ang
 import {DOCUMENT, isPlatformServer, PlatformLocation, ɵgetDOM as getDOM} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {ApplicationRef, CompilerFactory, Component, destroyPlatform, getPlatform, HostBinding, HostListener, importProvidersFrom, Inject, Injectable, Input, NgModule, NgZone, OnInit, PLATFORM_ID, PlatformRef, Type, ViewEncapsulation} from '@angular/core';
-import {inject, waitForAsync} from '@angular/core/testing';
-import {BrowserModule, makeStateKey, Title, TransferState} from '@angular/platform-browser';
-import {BEFORE_APP_SERIALIZED, INITIAL_CONFIG, platformDynamicServer, PlatformState, renderModule, renderModuleFactory, ServerModule, ServerTransferStateModule} from '@angular/platform-server';
+import {ApplicationRef, CompilerFactory, Component, destroyPlatform, getPlatform, HostListener, Inject, Injectable, Input, NgModule, NgZone, PLATFORM_ID, PlatformRef, ViewEncapsulation} from '@angular/core';
+import {inject, TestBed, waitForAsync} from '@angular/core/testing';
+import {BrowserModule, Title} from '@angular/platform-browser';
+import {BEFORE_APP_SERIALIZED, INITIAL_CONFIG, platformDynamicServer, PlatformState, renderModule, renderModuleFactory, ServerModule} from '@angular/platform-server';
 import {Observable} from 'rxjs';
 import {first} from 'rxjs/operators';
 
-import {renderApplication} from '../src/utils';
+import {renderApplication, SERVER_CONTEXT} from '../src/utils';
 
 function createMyServerApp(standalone: boolean) {
   @Component({
@@ -389,19 +389,6 @@ const [MyHostComponentStandalone, _] = createFalseAttributesComponents(true);
 class FalseAttributesModule {
 }
 
-@Component({selector: 'app', template: '<div [innerText]="foo"></div>'})
-class InnerTextComponent {
-  foo = 'Some text';
-}
-
-@NgModule({
-  declarations: [InnerTextComponent],
-  bootstrap: [InnerTextComponent],
-  imports: [ServerModule, BrowserModule.withServerTransition({appId: 'inner-text'})]
-})
-class InnerTextModule {
-}
-
 function createMyInputComponent(standalone: boolean) {
   @Component({
     standalone,
@@ -447,49 +434,6 @@ const HTMLTypesAppStandalone = createHTMLTypesApp(true);
   bootstrap: [HTMLTypesApp]
 })
 class HTMLTypesModule {
-}
-
-const TEST_KEY = makeStateKey<number>('test');
-const STRING_KEY = makeStateKey<string>('testString');
-
-@Component({selector: 'app', template: 'Works!'})
-class TransferComponent {
-  constructor(private transferStore: TransferState) {}
-  ngOnInit() {
-    this.transferStore.set(TEST_KEY, 10);
-  }
-}
-
-@Component({selector: 'esc-app', template: 'Works!'})
-class EscapedComponent {
-  constructor(private transferStore: TransferState) {}
-  ngOnInit() {
-    this.transferStore.set(STRING_KEY, '</script><script>alert(\'Hello&\' + "World");');
-  }
-}
-
-@NgModule({
-  bootstrap: [TransferComponent],
-  declarations: [TransferComponent],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'transfer'}),
-    ServerModule,
-    ServerTransferStateModule,
-  ]
-})
-class TransferStoreModule {
-}
-
-@NgModule({
-  bootstrap: [EscapedComponent],
-  declarations: [EscapedComponent],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'transfer'}),
-    ServerModule,
-    ServerTransferStateModule,
-  ]
-})
-class EscapedTransferStoreModule {
 }
 
 function createMyHiddenComponent(standalone: boolean) {
@@ -698,7 +642,7 @@ describe('platform-server integration', () => {
     let doc: string;
     let called: boolean;
     let expectedOutput =
-        '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">Works!<h1 textcontent="fine">fine</h1></app></body></html>';
+        '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">Works!<h1 textcontent="fine">fine</h1></app></body></html>';
 
     beforeEach(() => {
       // PlatformConfig takes in a parsed document so that it can be cached across requests.
@@ -715,11 +659,17 @@ describe('platform-server integration', () => {
 
          platform.bootstrapModule(AsyncServerModule)
              .then((moduleRef) => {
-               const applicationRef: ApplicationRef = moduleRef.injector.get(ApplicationRef);
+               const applicationRef = moduleRef.injector.get(ApplicationRef);
                return applicationRef.isStable.pipe(first((isStable: boolean) => isStable))
                    .toPromise();
              })
              .then((b) => {
+               // Note: the `ng-server-context` is not present in this output, since
+               // `renderModule` or `renderApplication` functions are not used here.
+               const expectedOutput =
+                   '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">' +
+                   'Works!<h1 textcontent="fine">fine</h1></app></body></html>';
+
                expect(platform.injector.get(PlatformState).renderToString()).toBe(expectedOutput);
                platform.destroy();
                called = true;
@@ -740,7 +690,8 @@ describe('platform-server integration', () => {
 
     // Run the set of tests with regular and standalone components.
     [true, false].forEach((isStandalone: boolean) => {
-      it('using renderModule should work', waitForAsync(() => {
+      it(`using ${isStandalone ? 'renderApplication' : 'renderModule'} should work`,
+         waitForAsync(() => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
                renderApplication(MyAsyncServerAppStandalone, {...options, appId: 'simple-cmp'}) :
@@ -751,6 +702,39 @@ describe('platform-server integration', () => {
            });
          }));
 
+      it(`using ${isStandalone ? 'renderApplication' : 'renderModule'} ` +
+             `should allow passing a document reference`,
+         waitForAsync(() => {
+           const document = TestBed.inject(DOCUMENT);
+
+           // Append root element based on the app selector.
+           const rootEl = document.createElement('app');
+           document.body.appendChild(rootEl);
+
+           // Append a special marker to verify that we use a correct instance
+           // of the document for rendering.
+           const markerEl = document.createComment('test marker');
+           document.body.appendChild(markerEl);
+
+           const options = {document};
+           const bootstrap = isStandalone ?
+               renderApplication(MyAsyncServerAppStandalone, {document, appId: 'simple-cmp'}) :
+               renderModule(AsyncServerModule, options);
+           bootstrap
+               .then(output => {
+                 expect(output).toBe(
+                     '<html><head><title>fakeTitle</title></head>' +
+                     '<body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
+                     'Works!<h1 textcontent="fine">fine</h1></app>' +
+                     '<!--test marker--></body></html>');
+                 called = true;
+               })
+               .finally(() => {
+                 rootEl.remove();
+                 markerEl.remove();
+               });
+         }));
+
       it('works with SVG elements', waitForAsync(() => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
@@ -758,7 +742,7 @@ describe('platform-server integration', () => {
                renderModule(SVGServerModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
-                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">' +
+                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
                  '<svg><use xlink:href="#clear"></use></svg></app></body></html>');
              called = true;
            });
@@ -799,7 +783,69 @@ describe('platform-server integration', () => {
                renderModule(ExampleStylesModule, options);
            bootstrap.then(output => {
              expect(output).toMatch(
-                 /<html><head><style ng-transition="example-styles">div\[_ngcontent-sc\d+\] {color: blue; } \[_nghost-sc\d+\] { color: red; }<\/style><\/head><body><app _nghost-sc\d+="" ng-version="0.0.0-PLACEHOLDER"><div _ngcontent-sc\d+="">Works!<\/div><\/app><\/body><\/html>/);
+                 /<html><head><style ng-transition="example-styles">div\[_ngcontent-sc\d+\] {color: blue; } \[_nghost-sc\d+\] { color: red; }<\/style><\/head><body><app _nghost-sc\d+="" ng-version="0.0.0-PLACEHOLDER" ng-server-context="other"><div _ngcontent-sc\d+="">Works!<\/div><\/app><\/body><\/html>/);
+             called = true;
+           });
+         }));
+
+      it('adds the `ng-server-context` attribute to host elements', waitForAsync(() => {
+           const options = {
+             document: doc,
+           };
+           const providers = [{
+             provide: SERVER_CONTEXT,
+             useValue: 'ssg',
+           }];
+           const bootstrap = isStandalone ?
+               renderApplication(
+                   MyStylesAppStandalone,
+                   {...options, platformProviders: providers, appId: 'example-styles'}) :
+               renderModule(ExampleStylesModule, {...options, extraProviders: providers});
+           bootstrap.then(output => {
+             expect(output).toMatch(
+                 /<html><head><style ng-transition="example-styles">div\[_ngcontent-sc\d+\] {color: blue; } \[_nghost-sc\d+\] { color: red; }<\/style><\/head><body><app _nghost-sc\d+="" ng-version="0.0.0-PLACEHOLDER" ng-server-context="ssg"><div _ngcontent-sc\d+="">Works!<\/div><\/app><\/body><\/html>/);
+             called = true;
+           });
+         }));
+
+      it('sanitizes the `serverContext` value', waitForAsync(() => {
+           const options = {
+             document: doc,
+           };
+           const providers = [{
+             provide: SERVER_CONTEXT,
+             useValue: '!!!Some extra chars&& --><!--',
+           }];
+           const bootstrap = isStandalone ?
+               renderApplication(
+                   MyStylesAppStandalone,
+                   {...options, platformProviders: providers, appId: 'example-styles'}) :
+               renderModule(ExampleStylesModule, {...options, extraProviders: providers});
+           bootstrap.then(output => {
+             // All symbols other than [a-zA-Z0-9\-] are removed
+             expect(output).toMatch(/ng-server-context="Someextrachars----"/);
+             called = true;
+           });
+         }));
+
+      it('uses `other` as the `serverContext` value when all symbols are removed after sanitization',
+         waitForAsync(() => {
+           const options = {
+             document: doc,
+           };
+           const providers = [{
+             provide: SERVER_CONTEXT,
+             useValue: '!!! &&<>',
+           }];
+           const bootstrap = isStandalone ?
+               renderApplication(
+                   MyStylesAppStandalone,
+                   {...options, platformProviders: providers, appId: 'example-styles'}) :
+               renderModule(ExampleStylesModule, {...options, extraProviders: providers});
+           bootstrap.then(output => {
+             // All symbols other than [a-zA-Z0-9\-] are removed,
+             // the `other` is used as the default.
+             expect(output).toMatch(/ng-server-context="other"/);
              called = true;
            });
          }));
@@ -811,7 +857,7 @@ describe('platform-server integration', () => {
                renderModule(FalseAttributesModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
-                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">' +
+                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
                  '<my-child ng-reflect-attr="false">Works!</my-child></app></body></html>');
              called = true;
            });
@@ -824,7 +870,7 @@ describe('platform-server integration', () => {
                renderModule(NameModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
-                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">' +
+                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
                  '<input name=""></app></body></html>');
              called = true;
            });
@@ -841,7 +887,7 @@ describe('platform-server integration', () => {
                renderModule(HTMLTypesModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
-                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">' +
+                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
                  '<div><b>foo</b> bar</div></app></body></html>');
              called = true;
            });
@@ -854,7 +900,7 @@ describe('platform-server integration', () => {
                renderModule(HiddenModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
-                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">' +
+                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
                  '<input hidden=""><input></app></body></html>');
              called = true;
            });
@@ -871,7 +917,7 @@ describe('platform-server integration', () => {
              // title should be added by the render hook.
              expect(output).toBe(
                  '<html><head><title>RenderHook</title></head><body>' +
-                 '<app ng-version="0.0.0-PLACEHOLDER">Works!</app></body></html>');
+                 '<app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">Works!</app></body></html>');
              called = true;
            });
          }));
@@ -888,7 +934,7 @@ describe('platform-server integration', () => {
              // title should be added by the render hook.
              expect(output).toBe(
                  '<html><head><title>RenderHook</title><meta name="description"></head>' +
-                 '<body><app ng-version="0.0.0-PLACEHOLDER">Works!</app></body></html>');
+                 '<body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">Works!</app></body></html>');
              expect(consoleSpy).toHaveBeenCalled();
              called = true;
            });
@@ -905,7 +951,7 @@ describe('platform-server integration', () => {
              // title should be added by the render hook.
              expect(output).toBe(
                  '<html><head><title>AsyncRenderHook</title></head><body>' +
-                 '<app ng-version="0.0.0-PLACEHOLDER">Works!</app></body></html>');
+                 '<app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">Works!</app></body></html>');
              called = true;
            });
          }));
@@ -923,7 +969,7 @@ describe('platform-server integration', () => {
              // title should be added by the render hook.
              expect(output).toBe(
                  '<html><head><meta name="description"><title>AsyncRenderHook</title></head>' +
-                 '<body><app ng-version="0.0.0-PLACEHOLDER">Works!</app></body></html>');
+                 '<body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">Works!</app></body></html>');
              expect(consoleSpy).toHaveBeenCalled();
              called = true;
            });
@@ -1209,51 +1255,6 @@ describe('platform-server integration', () => {
         });
       });
     });
-  });
-
-  describe('ServerTransferStoreModule', () => {
-    let called = false;
-    const defaultExpectedOutput =
-        '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER">Works!</app><script id="transfer-state" type="application/json">{&q;test&q;:10}</script></body></html>';
-
-    beforeEach(() => {
-      called = false;
-    });
-    afterEach(() => {
-      expect(called).toBe(true);
-    });
-
-    it('adds transfer script tag when using renderModule', waitForAsync(() => {
-         renderModule(TransferStoreModule, {document: '<app></app>'}).then(output => {
-           expect(output).toBe(defaultExpectedOutput);
-           called = true;
-         });
-       }));
-
-    it('adds transfer script tag when using renderModuleFactory',
-       waitForAsync(inject([PlatformRef], (defaultPlatform: PlatformRef) => {
-         const compilerFactory: CompilerFactory =
-             defaultPlatform.injector.get(CompilerFactory, null)!;
-         const moduleFactory =
-             compilerFactory.createCompiler().compileModuleSync(TransferStoreModule);
-         renderModuleFactory(moduleFactory, {document: '<app></app>'}).then(output => {
-           expect(output).toBe(defaultExpectedOutput);
-           called = true;
-         });
-       })));
-
-    it('cannot break out of <script> tag in serialized output', waitForAsync(() => {
-         renderModule(EscapedTransferStoreModule, {
-           document: '<esc-app></esc-app>'
-         }).then(output => {
-           expect(output).toBe(
-               '<html><head></head><body><esc-app ng-version="0.0.0-PLACEHOLDER">Works!</esc-app>' +
-               '<script id="transfer-state" type="application/json">' +
-               '{&q;testString&q;:&q;&l;/script&g;&l;script&g;' +
-               'alert(&s;Hello&a;&s; + \\&q;World\\&q;);&q;}</script></body></html>');
-           called = true;
-         });
-       }));
   });
 });
 })();

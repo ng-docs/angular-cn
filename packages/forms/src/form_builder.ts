@@ -6,14 +6,14 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {inject, Injectable, InjectionToken} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 
 import {AsyncValidatorFn, ValidatorFn} from './directives/validators';
 import {ReactiveFormsModule} from './form_providers';
 import {AbstractControl, AbstractControlOptions, FormHooks} from './model/abstract_model';
 import {FormArray, UntypedFormArray} from './model/form_array';
 import {FormControl, FormControlOptions, FormControlState, UntypedFormControl} from './model/form_control';
-import {FormGroup, UntypedFormGroup} from './model/form_group';
+import {FormGroup, FormRecord, UntypedFormGroup} from './model/form_group';
 
 function isAbstractControlOptions(options: AbstractControlOptions|{[key: string]: any}|null|
                                   undefined): options is AbstractControlOptions {
@@ -23,12 +23,27 @@ function isAbstractControlOptions(options: AbstractControlOptions|{[key: string]
        (options as AbstractControlOptions).updateOn !== undefined);
 }
 
-function isFormControlOptions(options: FormControlOptions|{[key: string]: any}|null|
-                              undefined): options is FormControlOptions {
-  return !!options &&
-      (isAbstractControlOptions(options) ||
-       (options as FormControlOptions).initialValueIsDefault !== undefined ||
-       (options as FormControlOptions).nonNullable !== undefined);
+/**
+ * The union of all validator types that can be accepted by a ControlConfig.
+ */
+type ValidatorConfig = ValidatorFn|AsyncValidatorFn|ValidatorFn[]|AsyncValidatorFn[];
+
+/**
+ * The compiler may not always be able to prove that the elements of the control config are a tuple
+ * (i.e. occur in a fixed order). This slightly looser type is used for inference, to catch cases
+ * where the compiler cannot prove order and position.
+ *
+ * For example, consider the simple case `fb.group({foo: ['bar', Validators.required]})`. The
+ * compiler will infer this as an array, not as a tuple.
+ */
+type PermissiveControlConfig<T> = Array<T|FormControlState<T>|ValidatorConfig>;
+
+/**
+ * Helper type to allow the compiler to accept [XXXX, { updateOn: string }] as a valid shorthand
+ * argument for .group()
+ */
+interface PermissiveAbstractControlOptions extends Omit<AbstractControlOptions, 'updateOn'> {
+  updateOn?: string;
 }
 
 /**
@@ -40,7 +55,6 @@ function isFormControlOptions(options: FormControlOptions|{[key: string]: any}|n
  * @publicApi
  */
 export type ControlConfig<T> = [T|FormControlState<T>, (ValidatorFn|(ValidatorFn[]))?, (AsyncValidatorFn|AsyncValidatorFn[])?];
-
 
 // Disable clang-format to produce clearer formatting for this multiline type.
 // clang-format off
@@ -57,17 +71,31 @@ export type ɵElement<T, N extends null> =
   // The `extends` checks are wrapped in arrays in order to prevent TypeScript from applying type unions
   // through the distributive conditional type. This is the officially recommended solution:
   // https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#distributive-conditional-types
+  //
+  // Identify FormControl container types.
   [T] extends [FormControl<infer U>] ? FormControl<U> :
+  // Or FormControl containers that are optional in their parent group.
+  [T] extends [FormControl<infer U>|undefined] ? FormControl<U> :
+  // FormGroup containers.
   [T] extends [FormGroup<infer U>] ? FormGroup<U> :
+  // Optional FormGroup containers.
+  [T] extends [FormGroup<infer U>|undefined] ? FormGroup<U> :
+  // FormRecord containers.
+  [T] extends [FormRecord<infer U>] ? FormRecord<U> :
+  // Optional FormRecord containers.
+  [T] extends [FormRecord<infer U>|undefined] ? FormRecord<U> :
+  // FormArray containers.
   [T] extends [FormArray<infer U>] ? FormArray<U> :
+  // Optional FormArray containers.
+  [T] extends [FormArray<infer U>|undefined] ? FormArray<U> :
+  // Otherwise unknown AbstractControl containers.
   [T] extends [AbstractControl<infer U>] ? AbstractControl<U> :
+  // Optional AbstractControl containers.
+  [T] extends [AbstractControl<infer U>|undefined] ? AbstractControl<U> :
+  // FormControlState object container, which produces a nullable control.
   [T] extends [FormControlState<infer U>] ? FormControl<U|N> :
-  [T] extends [ControlConfig<infer U>] ? FormControl<U|N> :
-  // ControlConfig can be too much for the compiler to infer in the wrapped case. This is
-  // not surprising, since it's practically death-by-polymorphism (e.g. the optional validators
-  // members that might be arrays). Watch for ControlConfigs that might fall through.
-  [T] extends [Array<infer U|ValidatorFn|ValidatorFn[]|AsyncValidatorFn|AsyncValidatorFn[]>] ? FormControl<U|N> :
-  // Fallthough case: T is not a container type; use it directly as a value.
+  // A ControlConfig tuple, which produces a nullable control.
+  [T] extends [PermissiveControlConfig<infer U>] ? FormControl<Exclude<U, ValidatorConfig| PermissiveAbstractControlOptions>|N> :
   FormControl<T|N>;
 
 // clang-format on
@@ -169,7 +197,7 @@ export class FormBuilder {
   /**
    * @description
    *
-   * Construct a new `FormGroup` instance. Accepts a single generic argument, which is an object
+   * Constructs a new `FormGroup` instance. Accepts a single generic argument, which is an object
    * containing all the keys and corresponding inner control types.
    *
    * 构造一个新的 `FormGroup` 实例。接受单个泛型参数，该参数是包含所有键和对应的内部控件类型的对象。
@@ -205,7 +233,7 @@ export class FormBuilder {
 
   /**
    * @description
-   * Construct a new `FormGroup` instance.
+   * Constructs a new `FormGroup` instance.
    *
    * 构造一个新的 `FormGroup` 实例。
    * @deprecated This API is not typesafe and can result in issues with Closure Compiler renaming.
@@ -249,27 +277,38 @@ export class FormBuilder {
                                                                              any}|null = null):
       FormGroup {
     const reducedControls = this._reduceControls(controls);
-
-    let validators: ValidatorFn|ValidatorFn[]|null = null;
-    let asyncValidators: AsyncValidatorFn|AsyncValidatorFn[]|null = null;
-    let updateOn: FormHooks|undefined = undefined;
-
-    if (options !== null) {
-      if (isAbstractControlOptions(options)) {
-        // `options` are `AbstractControlOptions`
-        validators = options.validators != null ? options.validators : null;
-        asyncValidators = options.asyncValidators != null ? options.asyncValidators : null;
-        updateOn = options.updateOn != null ? options.updateOn : undefined;
-      } else {
-        // `options` are legacy form group options
-        validators = (options as any)['validator'] != null ? (options as any)['validator'] : null;
-        asyncValidators =
-            (options as any)['asyncValidator'] != null ? (options as any)['asyncValidator'] : null;
-      }
+    let newOptions: FormControlOptions = {};
+    if (isAbstractControlOptions(options)) {
+      // `options` are `AbstractControlOptions`
+      newOptions = options;
+    } else if (options !== null) {
+      // `options` are legacy form group options
+      newOptions.validators = (options as any).validator;
+      newOptions.asyncValidators = (options as any).asyncValidator;
     }
+    return new FormGroup(reducedControls, newOptions);
+  }
 
+  /**
+   * @description
+   * Constructs a new `FormRecord` instance. Accepts a single generic argument, which is an object
+   * containing all the keys and corresponding inner control types.
+   *
+   * @param controls A collection of child controls. The key for each child is the name
+   * under which it is registered.
+   *
+   * @param options Configuration options object for the `FormRecord`. The object should have the
+   * `AbstractControlOptions` type and might contain the following fields:
+   * * `validators`: A synchronous validator function, or an array of validator functions.
+   * * `asyncValidators`: A single async validator or array of async validator functions.
+   * * `updateOn`: The event upon which the control should be updated (options: 'change' | 'blur'
+   * | submit').
+   */
+  record<T>(controls: {[key: string]: T}, options: AbstractControlOptions|null = null):
+      FormRecord<ɵElement<T, null>> {
+    const reducedControls = this._reduceControls(controls);
     // Cast to `any` because the inferred types are not as specific as Element.
-    return new FormGroup(reducedControls, {asyncValidators, updateOn, validators}) as any;
+    return new FormRecord(reducedControls, options) as any;
   }
 
   /**
@@ -306,7 +345,7 @@ export class FormBuilder {
 
   /**
    * @description
-   * Construct a new `FormControl` with the given state, validators and options. Set
+   * Constructs a new `FormControl` with the given state, validators and options. Sets
    * `{nonNullable: true}` in the options to get a non-nullable control. Otherwise, the
    * control will be nullable. Accepts a single generic argument, which is the type  of the
    * control's value.
@@ -452,6 +491,16 @@ export abstract class NonNullableFormBuilder {
       controls: T,
       options?: AbstractControlOptions|null,
       ): FormGroup<{[K in keyof T]: ɵElement<T[K], never>}>;
+
+  /**
+   * Similar to `FormBuilder#record`, except any implicitly constructed `FormControl`
+   * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
+   * that already-constructed controls will not be altered.
+   */
+  abstract record<T>(
+      controls: {[key: string]: T},
+      options?: AbstractControlOptions|null,
+      ): FormRecord<ɵElement<T, never>>;
 
   /**
    * Similar to `FormBuilder#array`, except any implicitly constructed `FormControl`

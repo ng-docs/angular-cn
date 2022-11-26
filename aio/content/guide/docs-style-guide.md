@@ -495,29 +495,7 @@ Following convention, set the `header` attribute to the file's location within t
 
 Unless otherwise commented, all code snippets in this page are from sample source code located in the `content/examples/docs-style-guide` directory.
 
-除非另有注释，否则本页面中的所有代码片段都来自位于 `content/examples/docs-style-guide` 目录中的示例源代码。
-
-<div class="alert is-important">
-
-The documentation tooling reports an error if the file identified in the path does not exist or is in the [`.git-ignore` file](https://github.com/angular/angular/blob/main/aio/content/examples/.gitignore).
-Most `.js` files are in `.git-ignore`.
-
-如果路径中标识的文件不存在或在[`.git-ignore` 文件](https://github.com/angular/angular/blob/main/aio/content/examples/.gitignore)中，文档工具会报告错误。大多数 `.js` 文件都在 `.git-ignore` 中。
-
-To include an ignored code file in your project and display it in a guide, remove it from `.git-ignore`.
-Update the `content/examples/.gitignore` as follows:
-
-要在项目中包含被忽略的代码文件并在指南中显示它，请将其从 `.git-ignore` 中删除。更新 `content/examples/.gitignore`，如下所示：
-
-<code-example header="content/examples/.gitignore">
-
-&num; my-guide
-!my-guide/src/something.js
-!my-guide/more-javascript*.js
-
-</code-example>
-
-</div>
+除非另行说明，否则本页面中的所有代码片段都来自位于 `content/examples/docs-style-guide` 目录中的示例源代码。
 
 <a id="region"></a>
 
@@ -824,7 +802,7 @@ Every line of code after that comment belongs in the region until the code fragm
 
 `#docregion` 注释开始一个代码片段区域。该注释之后的每一行代码都属于该区域，直到代码片段处理器遇到文件结尾或关闭 `#enddocregion`。
 
-The following `src/main.ts` is a an example of a file with a single `#docregion` at the top of the file.
+The following `src/main.ts` is an example of a file with a single `#docregion` at the top of the file.
 
 以下 `src/main.ts` 是文件顶部带有单个 `#docregion` 的文件示例。
 
@@ -1935,7 +1913,7 @@ For specific language and grammar usage, a word list, style, tone, and formattin
 
 有关特定语言和语法的用法、单词列表、风格、语气和格式建议，参阅[Google 开发者文档风格指南](https://developers.google.com/style)。
 
-If you have any questions that this style guide doesn't answer or you would like to discuss documentation styles visit the [Angular repo](https://github.com/angular/angular) and [file a documentation issue](https://github.com/angular/angular/issues/new/choose).
+If you have any questions that this style guide doesn't answer or you would like to discuss documentation styles, see the [Angular repo](https://github.com/angular/angular) and [file a documentation issue](https://github.com/angular/angular/issues/new/choose).
 
 如果你有任何本风格指南无法解答的问题，或者你想讨论文档风格，请访问[Angular](https://github.com/angular/angular)存储库并[提交文档问题](https://github.com/angular/angular/issues/new/choose)。
 

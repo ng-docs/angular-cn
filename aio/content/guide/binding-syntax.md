@@ -235,7 +235,7 @@ The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direct
 
   使用 `()` 从视图绑定到源
 
-* Use `[()]` to bind in a two way sequence of view to source to view
+* Use `[()]` to bind in a two-way sequence of view to source to view
 
   使用 `[()]` 进行双向绑定，将视图绑定到源再绑定到视图
 

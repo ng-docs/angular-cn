@@ -139,7 +139,7 @@ export class AbstractFormGroupDirective extends ControlContainer implements OnIn
     ngOnInit(): void;
     get path(): string[];
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<AbstractFormGroupDirective, never, never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<AbstractFormGroupDirective, never, never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<AbstractFormGroupDirective, never>;
 }
@@ -159,7 +159,7 @@ export interface AsyncValidatorFn {
 export class CheckboxControlValueAccessor extends BuiltInControlValueAccessor implements ControlValueAccessor {
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CheckboxControlValueAccessor, "input[type=checkbox][formControlName],input[type=checkbox][formControl],input[type=checkbox][ngModel]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CheckboxControlValueAccessor, "input[type=checkbox][formControlName],input[type=checkbox][formControl],input[type=checkbox][ngModel]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CheckboxControlValueAccessor, never>;
 }
@@ -167,13 +167,16 @@ export class CheckboxControlValueAccessor extends BuiltInControlValueAccessor im
 // @public
 export class CheckboxRequiredValidator extends RequiredValidator {
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CheckboxRequiredValidator, "input[type=checkbox][required][formControlName],input[type=checkbox][required][formControl],input[type=checkbox][required][ngModel]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CheckboxRequiredValidator, "input[type=checkbox][required][formControlName],input[type=checkbox][required][formControl],input[type=checkbox][required][ngModel]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CheckboxRequiredValidator, never>;
 }
 
 // @public
 export const COMPOSITION_BUFFER_MODE: InjectionToken<boolean>;
+
+// @public
+export type ControlConfig<T> = [T | FormControlState<T>, (ValidatorFn | (ValidatorFn[]))?, (AsyncValidatorFn | AsyncValidatorFn[])?];
 
 // @public
 export abstract class ControlContainer extends AbstractControlDirective {
@@ -195,7 +198,7 @@ export class DefaultValueAccessor extends BaseControlValueAccessor implements Co
     constructor(renderer: Renderer2, elementRef: ElementRef, _compositionMode: boolean);
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DefaultValueAccessor, "input:not([type=checkbox])[formControlName],textarea[formControlName],input:not([type=checkbox])[formControl],textarea[formControl],input:not([type=checkbox])[ngModel],textarea[ngModel],[ngDefaultControl]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DefaultValueAccessor, "input:not([type=checkbox])[formControlName],textarea[formControlName],input:not([type=checkbox])[formControl],textarea[formControl],input:not([type=checkbox])[ngModel],textarea[ngModel],[ngDefaultControl]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<DefaultValueAccessor, [null, null, { optional: true; }]>;
 }
@@ -206,7 +209,7 @@ export class EmailValidator extends AbstractValidatorDirective {
     // (undocumented)
     enabled(input: boolean): boolean;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<EmailValidator, "[email][formControlName],[email][formControl],[email][ngModel]", never, { "email": "email"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<EmailValidator, "[email][formControlName],[email][formControl],[email][ngModel]", never, { "email": "email"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<EmailValidator, never>;
 }
@@ -269,7 +272,7 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
     ngOnInit(): void;
     get path(): string[];
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FormArrayName, "[formArrayName]", never, { "name": "formArrayName"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FormArrayName, "[formArrayName]", never, { "name": "formArrayName"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<FormArrayName, [{ optional: true; host: true; skipSelf: true; }, { optional: true; self: true; }, { optional: true; self: true; }]>;
 }
@@ -299,6 +302,9 @@ export class FormBuilder {
         [key: string]: any;
     }): FormGroup;
     get nonNullable(): NonNullableFormBuilder;
+    record<T>(controls: {
+        [key: string]: T;
+    }, options?: AbstractControlOptions | null): FormRecord<ɵElement<T, null>>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<FormBuilder, never>;
     // (undocumented)
@@ -334,7 +340,7 @@ export const FormControl: ɵFormControlCtor;
 
 // @public
 export class FormControlDirective extends NgControl implements OnChanges, OnDestroy {
-    constructor(validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[], valueAccessors: ControlValueAccessor[], _ngModelWarningConfig: string | null);
+    constructor(validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[], valueAccessors: ControlValueAccessor[], _ngModelWarningConfig: string | null, callSetDisabledState?: SetDisabledStateOption | undefined);
     get control(): FormControl;
     form: FormControl;
     set isDisabled(isDisabled: boolean);
@@ -350,9 +356,9 @@ export class FormControlDirective extends NgControl implements OnChanges, OnDest
     viewModel: any;
     viewToModelUpdate(newValue: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FormControlDirective, "[formControl]", ["ngForm"], { "form": "formControl"; "isDisabled": "disabled"; "model": "ngModel"; }, { "update": "ngModelChange"; }, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FormControlDirective, "[formControl]", ["ngForm"], { "form": "formControl"; "isDisabled": "disabled"; "model": "ngModel"; }, { "update": "ngModelChange"; }, never, never, false, never>;
     // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<FormControlDirective, [{ optional: true; self: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<FormControlDirective, [{ optional: true; self: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }, { optional: true; }]>;
 }
 
 // @public
@@ -373,7 +379,7 @@ export class FormControlName extends NgControl implements OnChanges, OnDestroy {
     update: EventEmitter<any>;
     viewToModelUpdate(newValue: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FormControlName, "[formControlName]", never, { "name": "formControlName"; "isDisabled": "disabled"; "model": "ngModel"; }, { "update": "ngModelChange"; }, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FormControlName, "[formControlName]", never, { "name": "formControlName"; "isDisabled": "disabled"; "model": "ngModel"; }, { "update": "ngModelChange"; }, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<FormControlName, [{ optional: true; host: true; skipSelf: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }]>;
 }
@@ -460,7 +466,7 @@ export class FormGroup<TControl extends {
 
 // @public
 export class FormGroupDirective extends ControlContainer implements Form, OnChanges, OnDestroy {
-    constructor(validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[]);
+    constructor(validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[], callSetDisabledState?: SetDisabledStateOption | undefined);
     addControl(dir: FormControlName): FormControl;
     addFormArray(dir: FormArrayName): void;
     addFormGroup(dir: FormGroupName): void;
@@ -486,9 +492,9 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
     readonly submitted: boolean;
     updateModel(dir: FormControlName, value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FormGroupDirective, "[formGroup]", ["ngForm"], { "form": "formGroup"; }, { "ngSubmit": "ngSubmit"; }, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FormGroupDirective, "[formGroup]", ["ngForm"], { "form": "formGroup"; }, { "ngSubmit": "ngSubmit"; }, never, never, false, never>;
     // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<FormGroupDirective, [{ optional: true; self: true; }, { optional: true; self: true; }]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<FormGroupDirective, [{ optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }]>;
 }
 
 // @public
@@ -496,13 +502,13 @@ export class FormGroupName extends AbstractFormGroupDirective implements OnInit,
     constructor(parent: ControlContainer, validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[]);
     name: string | number | null;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FormGroupName, "[formGroupName]", never, { "name": "formGroupName"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FormGroupName, "[formGroupName]", never, { "name": "formGroupName"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<FormGroupName, [{ optional: true; host: true; skipSelf: true; }, { optional: true; self: true; }, { optional: true; self: true; }]>;
 }
 
 // @public
-export class FormRecord<TControl extends AbstractControl<ɵValue<TControl>, ɵRawValue<TControl>> = AbstractControl> extends FormGroup<{
+export class FormRecord<TControl extends AbstractControl = AbstractControl> extends FormGroup<{
     [key: string]: TControl;
 }> {
 }
@@ -545,6 +551,9 @@ export interface FormRecord<TControl> {
 
 // @public
 export class FormsModule {
+    static withConfig(opts: {
+        callSetDisabledState?: SetDisabledStateOption;
+    }): ModuleWithProviders<ReactiveFormsModule>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<FormsModule, never>;
     // (undocumented)
@@ -554,10 +563,22 @@ export class FormsModule {
 }
 
 // @public
+export const isFormArray: (control: unknown) => control is FormArray<any>;
+
+// @public
+export const isFormControl: (control: unknown) => control is FormControl<any>;
+
+// @public
+export const isFormGroup: (control: unknown) => control is FormGroup<any>;
+
+// @public
+export const isFormRecord: (control: unknown) => control is FormRecord<AbstractControl<any, any>>;
+
+// @public
 export class MaxLengthValidator extends AbstractValidatorDirective {
     maxlength: string | number | null;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MaxLengthValidator, "[maxlength][formControlName],[maxlength][formControl],[maxlength][ngModel]", never, { "maxlength": "maxlength"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MaxLengthValidator, "[maxlength][formControlName],[maxlength][formControl],[maxlength][ngModel]", never, { "maxlength": "maxlength"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MaxLengthValidator, never>;
 }
@@ -566,7 +587,7 @@ export class MaxLengthValidator extends AbstractValidatorDirective {
 export class MaxValidator extends AbstractValidatorDirective {
     max: string | number | null;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MaxValidator, "input[type=number][max][formControlName],input[type=number][max][formControl],input[type=number][max][ngModel]", never, { "max": "max"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MaxValidator, "input[type=number][max][formControlName],input[type=number][max][formControl],input[type=number][max][ngModel]", never, { "max": "max"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MaxValidator, never>;
 }
@@ -575,7 +596,7 @@ export class MaxValidator extends AbstractValidatorDirective {
 export class MinLengthValidator extends AbstractValidatorDirective {
     minlength: string | number | null;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MinLengthValidator, "[minlength][formControlName],[minlength][formControl],[minlength][ngModel]", never, { "minlength": "minlength"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MinLengthValidator, "[minlength][formControlName],[minlength][formControl],[minlength][ngModel]", never, { "minlength": "minlength"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MinLengthValidator, never>;
 }
@@ -584,7 +605,7 @@ export class MinLengthValidator extends AbstractValidatorDirective {
 export class MinValidator extends AbstractValidatorDirective {
     min: string | number | null;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MinValidator, "input[type=number][min][formControlName],input[type=number][min][formControl],input[type=number][min][ngModel]", never, { "min": "min"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MinValidator, "input[type=number][min][formControlName],input[type=number][min][formControl],input[type=number][min][ngModel]", never, { "min": "min"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MinValidator, never>;
 }
@@ -609,7 +630,7 @@ export abstract class NgControl extends AbstractControlDirective {
 export class NgControlStatus extends AbstractControlStatus {
     constructor(cd: NgControl);
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgControlStatus, "[formControlName],[ngModel],[formControl]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgControlStatus, "[formControlName],[ngModel],[formControl]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<NgControlStatus, [{ self: true; }]>;
 }
@@ -618,14 +639,14 @@ export class NgControlStatus extends AbstractControlStatus {
 export class NgControlStatusGroup extends AbstractControlStatus {
     constructor(cd: ControlContainer);
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgControlStatusGroup, "[formGroupName],[formArrayName],[ngModelGroup],[formGroup],form:not([ngNoForm]),[ngForm]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgControlStatusGroup, "[formGroupName],[formArrayName],[ngModelGroup],[formGroup],form:not([ngNoForm]),[ngForm]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<NgControlStatusGroup, [{ optional: true; self: true; }]>;
 }
 
 // @public
 export class NgForm extends ControlContainer implements Form, AfterViewInit {
-    constructor(validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[]);
+    constructor(validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[], callSetDisabledState?: SetDisabledStateOption | undefined);
     addControl(dir: NgModel): void;
     addFormGroup(dir: NgModelGroup): void;
     get control(): FormGroup;
@@ -654,14 +675,14 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
     readonly submitted: boolean;
     updateModel(dir: NgControl, value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgForm, "form:not([ngNoForm]):not([formGroup]),ng-form,[ngForm]", ["ngForm"], { "options": "ngFormOptions"; }, { "ngSubmit": "ngSubmit"; }, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgForm, "form:not([ngNoForm]):not([formGroup]),ng-form,[ngForm]", ["ngForm"], { "options": "ngFormOptions"; }, { "ngSubmit": "ngSubmit"; }, never, never, false, never>;
     // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<NgForm, [{ optional: true; self: true; }, { optional: true; self: true; }]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NgForm, [{ optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }]>;
 }
 
 // @public
 export class NgModel extends NgControl implements OnChanges, OnDestroy {
-    constructor(parent: ControlContainer, validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[], valueAccessors: ControlValueAccessor[], _changeDetectorRef?: ChangeDetectorRef | null | undefined);
+    constructor(parent: ControlContainer, validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[], valueAccessors: ControlValueAccessor[], _changeDetectorRef?: ChangeDetectorRef | null | undefined, callSetDisabledState?: SetDisabledStateOption | undefined);
     // (undocumented)
     readonly control: FormControl;
     get formDirective(): any;
@@ -684,9 +705,9 @@ export class NgModel extends NgControl implements OnChanges, OnDestroy {
     viewModel: any;
     viewToModelUpdate(newValue: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgModel, "[ngModel]:not([formControlName]):not([formControl])", ["ngModel"], { "name": "name"; "isDisabled": "disabled"; "model": "ngModel"; "options": "ngModelOptions"; }, { "update": "ngModelChange"; }, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgModel, "[ngModel]:not([formControlName]):not([formControl])", ["ngModel"], { "name": "name"; "isDisabled": "disabled"; "model": "ngModel"; "options": "ngModelOptions"; }, { "update": "ngModelChange"; }, never, never, false, never>;
     // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<NgModel, [{ optional: true; host: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NgModel, [{ optional: true; host: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; self: true; }, { optional: true; }, { optional: true; }]>;
 }
 
 // @public
@@ -694,7 +715,7 @@ export class NgModelGroup extends AbstractFormGroupDirective implements OnInit, 
     constructor(parent: ControlContainer, validators: (Validator | ValidatorFn)[], asyncValidators: (AsyncValidator | AsyncValidatorFn)[]);
     name: string;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgModelGroup, "[ngModelGroup]", ["ngModelGroup"], { "name": "ngModelGroup"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgModelGroup, "[ngModelGroup]", ["ngModelGroup"], { "name": "ngModelGroup"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<NgModelGroup, [{ host: true; skipSelf: true; }, { optional: true; self: true; }, { optional: true; self: true; }]>;
 }
@@ -708,7 +729,7 @@ export class NgSelectOption implements OnDestroy {
     set ngValue(value: any);
     set value(value: any);
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgSelectOption, "option", never, { "ngValue": "ngValue"; "value": "value"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgSelectOption, "option", never, { "ngValue": "ngValue"; "value": "value"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<NgSelectOption, [null, null, { optional: true; host: true; }]>;
 }
@@ -720,6 +741,9 @@ export abstract class NonNullableFormBuilder {
     abstract group<T extends {}>(controls: T, options?: AbstractControlOptions | null): FormGroup<{
         [K in keyof T]: ɵElement<T[K], never>;
     }>;
+    abstract record<T>(controls: {
+        [key: string]: T;
+    }, options?: AbstractControlOptions | null): FormRecord<ɵElement<T, never>>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<NonNullableFormBuilder, never>;
     // (undocumented)
@@ -731,7 +755,7 @@ export class NumberValueAccessor extends BuiltInControlValueAccessor implements 
     registerOnChange(fn: (_: number | null) => void): void;
     writeValue(value: number): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NumberValueAccessor, "input[type=number][formControlName],input[type=number][formControl],input[type=number][ngModel]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NumberValueAccessor, "input[type=number][formControlName],input[type=number][formControl],input[type=number][ngModel]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<NumberValueAccessor, never>;
 }
@@ -740,7 +764,7 @@ export class NumberValueAccessor extends BuiltInControlValueAccessor implements 
 export class PatternValidator extends AbstractValidatorDirective {
     pattern: string | RegExp;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<PatternValidator, "[pattern][formControlName],[pattern][formControl],[pattern][ngModel]", never, { "pattern": "pattern"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<PatternValidator, "[pattern][formControlName],[pattern][formControl],[pattern][ngModel]", never, { "pattern": "pattern"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<PatternValidator, never>;
 }
@@ -760,7 +784,7 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
     value: any;
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<RadioControlValueAccessor, "input[type=radio][formControlName],input[type=radio][formControl],input[type=radio][ngModel]", never, { "name": "name"; "formControlName": "formControlName"; "value": "value"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<RadioControlValueAccessor, "input[type=radio][formControlName],input[type=radio][formControl],input[type=radio][ngModel]", never, { "name": "name"; "formControlName": "formControlName"; "value": "value"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<RadioControlValueAccessor, never>;
 }
@@ -770,7 +794,7 @@ export class RangeValueAccessor extends BuiltInControlValueAccessor implements C
     registerOnChange(fn: (_: number | null) => void): void;
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<RangeValueAccessor, "input[type=range][formControlName],input[type=range][formControl],input[type=range][ngModel]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<RangeValueAccessor, "input[type=range][formControlName],input[type=range][formControl],input[type=range][ngModel]", never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<RangeValueAccessor, never>;
 }
@@ -778,7 +802,8 @@ export class RangeValueAccessor extends BuiltInControlValueAccessor implements C
 // @public
 export class ReactiveFormsModule {
     static withConfig(opts: {
-        warnOnNgModelWithFormControl: 'never' | 'once' | 'always';
+        warnOnNgModelWithFormControl?: 'never' | 'once' | 'always';
+        callSetDisabledState?: SetDisabledStateOption;
     }): ModuleWithProviders<ReactiveFormsModule>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<ReactiveFormsModule, never>;
@@ -794,7 +819,7 @@ export class RequiredValidator extends AbstractValidatorDirective {
     enabled(input: boolean): boolean;
     required: boolean | string;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<RequiredValidator, ":not([type=checkbox])[required][formControlName],:not([type=checkbox])[required][formControl],:not([type=checkbox])[required][ngModel]", never, { "required": "required"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<RequiredValidator, ":not([type=checkbox])[required][formControlName],:not([type=checkbox])[required][formControl],:not([type=checkbox])[required][ngModel]", never, { "required": "required"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<RequiredValidator, never>;
 }
@@ -807,7 +832,7 @@ export class SelectControlValueAccessor extends BuiltInControlValueAccessor impl
     value: any;
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<SelectControlValueAccessor, "select:not([multiple])[formControlName],select:not([multiple])[formControl],select:not([multiple])[ngModel]", never, { "compareWith": "compareWith"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<SelectControlValueAccessor, "select:not([multiple])[formControlName],select:not([multiple])[formControl],select:not([multiple])[ngModel]", never, { "compareWith": "compareWith"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<SelectControlValueAccessor, never>;
 }
@@ -819,10 +844,13 @@ export class SelectMultipleControlValueAccessor extends BuiltInControlValueAcces
     value: any;
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<SelectMultipleControlValueAccessor, "select[multiple][formControlName],select[multiple][formControl],select[multiple][ngModel]", never, { "compareWith": "compareWith"; }, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<SelectMultipleControlValueAccessor, "select[multiple][formControlName],select[multiple][formControl],select[multiple][ngModel]", never, { "compareWith": "compareWith"; }, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<SelectMultipleControlValueAccessor, never>;
 }
+
+// @public
+export type SetDisabledStateOption = 'whenDisabledForLegacyCode' | 'always';
 
 // @public
 export type UntypedFormArray = FormArray<any>;

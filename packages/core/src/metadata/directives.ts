@@ -432,7 +432,7 @@ export interface Directive {
    * 标记为 `standalone` 的 Angular 指令不需要在 NgModule 中声明。此类指令不依赖于 NgModule
    * 的任何“中间上下文”（例如配置的提供程序）。
    *
-   * More information about standalone components, directives and pipes can be found in [this
+   * More information about standalone components, directives, and pipes can be found in [this
    * guide](guide/standalone-components).
    *
    * 有关独立组件、指令和管道的更多信息，请参阅[本指南](guide/standalone-components)。
@@ -440,6 +440,22 @@ export interface Directive {
    * @developerPreview
    */
   standalone?: boolean;
+
+  /**
+   * Standalone directives that should be applied to the host whenever the directive is matched.
+   * By default, none of the inputs or outputs of the host directives will be available on the host,
+   * unless they are specified in the `inputs` or `outputs` properties.
+   *
+   * You can additionally alias inputs and outputs by putting a colon and the alias after the
+   * original input or output name. For example, if a directive applied via `hostDirectives`
+   * defines an input named `menuDisabled`, you can alias this to `disabled` by adding
+   * `'menuDisabled: disabled'` as an entry to `inputs`.
+   */
+  hostDirectives?: (Type<unknown>|{
+    directive: Type<unknown>,
+    inputs?: string[],
+    outputs?: string[],
+  })[];
 }
 
 /**
@@ -796,13 +812,13 @@ export interface Component extends Directive {
 
   /**
    * Angular components marked as `standalone` do not need to be declared in an NgModule. Such
-   * components directly manage their own template dependencies (components, directives and pipes
+   * components directly manage their own template dependencies (components, directives, and pipes
    * used in a template) via the imports property.
    *
    * 标记为 `standalone` 的 Angular 组件不需要在 NgModule 中声明。此类组件通过 imports
    * 属性直接管理它们自己的模板依赖项（模板中使用的组件、指令和管道）。
    *
-   * More information about standalone components, directives and pipes can be found in [this
+   * More information about standalone components, directives, and pipes can be found in [this
    * guide](guide/standalone-components).
    *
    * 有关独立组件、指令和管道的更多信息，请参阅[本指南](guide/standalone-components)。
@@ -814,7 +830,7 @@ export interface Component extends Directive {
   /**
    * The imports property specifies the standalone component's template dependencies — those
    * directives, components, and pipes that can be used within its template. Standalone components
-   * can import other standalone components, directives and pipes as well as existing NgModules.
+   * can import other standalone components, directives, and pipes as well as existing NgModules.
    *
    * import
    * 属性指定独立组件的模板依赖项——可以在其模板中使用的那些指令、组件和管道。独立组件可以导入其他独立组件、指令和管道以及现有的
@@ -825,14 +841,13 @@ export interface Component extends Directive {
    *
    * 此属性仅适用于独立组件 - 为 NgModule 中声明的组件指定它会生成编译错误。
    *
-   * More information about standalone components, directives and pipes can be found in [this
+   * More information about standalone components, directives, and pipes can be found in [this
    * guide](guide/standalone-components).
    *
    * 有关独立组件、指令和管道的更多信息，请参阅[本指南](guide/standalone-components)。
    *
-   * @developerPreview
    */
-  imports?: (Type<any>|any[])[];
+  imports?: (Type<any>|ReadonlyArray<any>)[];
 
   /**
    * The set of schemas that declare elements to be allowed in a standalone component. Elements and
@@ -846,7 +861,7 @@ export interface Component extends Directive {
    *
    * 此属性仅适用于独立组件 - 为 NgModule 中声明的组件指定它会生成编译错误。
    *
-   * More information about standalone components, directives and pipes can be found in [this
+   * More information about standalone components, directives, and pipes can be found in [this
    * guide](guide/standalone-components).
    *
    * 有关独立组件、指令和管道的更多信息，请参阅[本指南](guide/standalone-components)。
@@ -961,7 +976,7 @@ export interface Pipe {
    * 标记为 `standalone` 的 Angular 管道不需要在 NgModule 中声明。此类管道不依赖于 NgModule
    * 的任何“中间上下文”（例如配置的提供程序）。
    *
-   * More information about standalone components, directives and pipes can be found in [this
+   * More information about standalone components, directives, and pipes can be found in [this
    * guide](guide/standalone-components).
    *
    * 有关独立组件、指令和管道的更多信息，请参阅[本指南](guide/standalone-components)。

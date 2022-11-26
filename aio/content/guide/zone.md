@@ -1,7 +1,11 @@
+<!-- vale Angular.Google_Headings = NO -->
+
 # NgZone
 
+<!-- vale Angular.Google_Headings = YES -->
+
 A zone is an execution context that persists across async tasks.
-You can think of it as [thread-local storage](https://en.wikipedia.org/wiki/Thread-local_storage) for JavaScript VMs.
+You can think of it as [thread-local storage](https://en.wikipedia.org/wiki/Thread-local_storage) for the JavaScript VM.
 This guide describes how to use Angular's NgZone to automatically detect changes in the component to update HTML.
 
 Zone 是跨异步任务而持久存在的执行上下文。你可以将其视为 JavaScript VM 中的[线程本地存储](https://en.wikipedia.org/wiki/Thread-local_storage)。本指南介绍了如何使用 Angular 的 的 NgZone 自动检测组件中的更改以更新 HTML。
@@ -24,15 +28,15 @@ In Angular, you can display data by binding controls in an HTML template to the 
 
 <code-example header="src/app/app.component.ts" path="displaying-data/src/app/app.component.1.ts"></code-example>
 
-In addition, you can bind DOM events to a method of an Angular component.
+You can also bind DOM events to a method of an Angular component.
 In such methods, you can also update a property of the Angular component, which updates the corresponding data displayed in the template.
 
 另外，你也可以将 DOM 事件绑定到 Angular 组件中的方法。在此类方法中，你还可以更新 Angular 组件的属性，该属性将更新模板中显示的相应数据。
 
 <code-example header="src/app/click-me.component.ts" path="user-input/src/app/click-me.component.ts" region="click-me-component"></code-example>
 
-In both of the above examples, the component's code updates only the property of the component.
-However, the HTML is also updated automatically.
+In both of the preceding examples, the component's code updates only the property of the component.
+The HTML is also updated automatically.
 This guide describes how and when Angular renders the HTML based on the data from the Angular component.
 
 在以上两个示例中，组件的代码仅更新组件的属性。但是，HTML 也会自动更新。本指南介绍了 Angular 如何以及何时根据 Angular 组件中的数据渲染 HTML。
@@ -114,7 +118,7 @@ To clarify how changes are detected and values updated, consider the following c
 
 </code-example>
 
-After you update the data, you need to call `detectChange()` manually to check whether the data changed.
+After you update the data, you need to call `detectChange()` manually to see whether the data changed.
 If the data changed, you render the HTML to reflect the updated data.
 
 更新数据后，需要调用 `detectChange()` 来检查数据是否已更改。如果数据已更改，则渲染 HTML 以反映更新的数据。
@@ -223,7 +227,7 @@ Typically, updates occur for one of the following reasons:
    </code-example>
 
 1. Other async operations.
-   In addition to `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously.
+   Besides `addEventListener()`, `setTimeout()` and `Promise.then()`, there are other operations that can update the data asynchronously.
    Some examples include `WebSocket.onmessage()` and `Canvas.toBlob()`.
 
    其他异步操作。除了 `addEventListener()`，`setTimeout()` 和 `Promise.then()`，还有其他一些操作可以异步更新数据。比如 `WebSocket.onmessage()` 和 `Canvas.toBlob()`。
@@ -332,12 +336,12 @@ zone.run(() =&gt; {
 
 </code-example>
 
-The above example creates a zone with several hooks.
+The preceding example creates a zone with several hooks.
 
 上面的示例创建了一个具有多个钩子的 Zone。
 
 The `onXXXTask` hooks trigger when the status of the task changes.
-The concept of a *Zone Task* is very similar to the JavaScript VM Task concept:
+The concept of a *Zone Task* is comparable to the JavaScript VM Task concept:
 
 当任务状态更改时，就会触发 `onXXXTask` 钩子。*Zone 任务*的概念与 JavaScript VM 中任务的概念非常相似：
 
@@ -362,18 +366,18 @@ These hooks trigger under the following circumstances:
 | 钩子 | 详情 |
 | `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`. |
 | `onScheduleTask` | 在计划新的异步任务时触发，比如调用 `setTimeout()` 时。 |
-| `onInvokeTask` | Triggers when an asynchronous task is about to execute, such as when the callback of `setTimeout()` is about to execute. |
+| `onInvokeTask` | Triggers when an asynchronous task is about to run, such as when the callback of `setTimeout()` is about to run. |
 | `onInvokeTask` | 在异步任务即将执行时触发，比如 `setTimeout()` 的回调即将执行时。 |
 | `onHasTask` | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
 | `onHasTask` | 当 Zone 内的一种任务的状态从稳定变为不稳定或从不稳定变为稳定时触发。状态“稳定”表示该 Zone 内没有任务，而“不稳定”表示在该 Zone 中计划了新任务。 |
-| `onInvoke` | Triggers when a synchronous function is going to execute in the zone. |
+| `onInvoke` | Triggers when a synchronous function is going to run in the zone. |
 | `onInvoke` | 将在 Zone 中执行同步函数时触发。 |
 
-With these hooks, `Zone` can monitor the status of all synchronous and asynchronous operations inside a zone.
+With these hooks, `Zone` can observe the status of all synchronous and asynchronous operations inside a zone.
 
 使用这些钩子，`Zone` 可以监视 Zone 内所有同步和异步操作的状态。
 
-The above example returns the following output:
+The preceding example returns the following output:
 
 上面的示例返回以下输出：
 
@@ -400,13 +404,17 @@ task state changed in the zone: { microTask: false,
 
 All of the functions of `Zone` are provided by a library called [Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js/README.md).
 This library implements those features by intercepting asynchronous APIs through monkey patching.
-Monkey patching is a technique to add or modify the default behavior of a function at runtime without changing the source code.
+Monkey patching is a technique to add or alter the default behavior of a function at runtime without changing the source code.
+
+<!-- vale Angular.Google_Headings = NO -->
 
 `Zone` 的所有功能均由名为 [Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js/README.md) 的库提供。该库通过猴子补丁拦截异步 API 来实现这些功能。猴子补丁是一种在运行时添加或修改函数默认行为而无需更改源代码的技术。
 
 ## NgZone
 
-While Zone.js can monitor all the states of synchronous and asynchronous operations, Angular additionally provides a service called NgZone.
+<!-- vale Angular.Google_Headings = YES -->
+
+While Zone.js can observe all the states of synchronous and asynchronous operations, Angular additionally provides a service called NgZone.
 This service creates a zone named `angular` to automatically trigger change detection when the following conditions are satisfied:
 
 虽然 Zone.js 可以监视同步和异步操作的所有状态，但 Angular 还提供了一项名为 NgZone 的服务。满足以下条件时，此服务会创建一个名为 `angular` 的 Zone 来自动触发变更检测。
@@ -419,21 +427,25 @@ This service creates a zone named `angular` to automatically trigger change dete
 
    已经没有已计划的 `microTask`
 
+<!-- vale Angular.Google_Headings = NO -->
+
 ### NgZone `run()` and `runOutsideOfAngular()`
 
 ### NgZone `run()` 和 `runOutsideOfAngular()`
 
+<!-- vale Angular.Google_Headings = YES -->
+
 `Zone` handles most asynchronous APIs such as `setTimeout()`, `Promise.then()`, and `addEventListener()`.
 For the full list, see the [Zone Module document](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md).
-Therefore in those asynchronous APIs, you don't need to trigger change detection manually.
+In those asynchronous APIs, you don't need to trigger change detection manually.
 
-`Zone` 处理大多数异步 API，比如 `setTimeout()`、`Promise.then()` 和 `addEventListener()`。有关完整列表，请参见 [Zone 模块的文档](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md)。因此，在这些异步 API 中，你无需手动触发变更检测。
+`Zone` 处理大多数异步 API，比如 `setTimeout()`、`Promise.then()` 和 `addEventListener()`。有关完整列表，请参见 [Zone 模块的文档](https://github.com/angular/angular/blob/main/packages/zone.js/MODULE.md)。在这些异步 API 中，你无需手动触发变更检测。
 
-There are still some third party APIs that Zone does not handle.
-In those cases, the `NgZone` service provides a [`run()`](api/core/NgZone#run) method that allows you to execute a function inside the Angular zone.
-This function, and all asynchronous operations in that function, trigger change detection automatically at the correct time.
+Some third party APIs are not handled by Zone.
+In those cases, the `NgZone` service provides a [`run()`](api/core/NgZone#run) method that allows you to run a function inside the Angular zone.
+This function, and all asynchronous operations in that function, triggers change detection automatically at the correct time.
 
-仍然有一些 Zone 无法处理的第三方 API。在这种情况下，`NgZone` 服务提供了 [`run()`](api/core/NgZone#run) 方法，该方法允许你在 `angular` Zone 中执行函数。此函数以及该函数中的所有异步操作会在正确的时间自动触发变更检测。
+有些第三方 API 没有被 Zone 处理。在这种情况下，`NgZone` 服务提供了 [`run()`](api/core/NgZone#run) 方法，该方法允许你在 `angular` Zone 中执行函数。此函数以及该函数中的所有异步操作会在正确的时间自动触发变更检测。
 
 <code-example format="typescript" language="typescript">
 
@@ -478,12 +490,16 @@ export class AppComponent implements OnInit {
 
 </code-example>
 
+<!-- vale Angular.Google_Headings = NO -->
+
 ### Setting up Zone.js
 
 ### 设置 Zone.js
 
+<!-- vale Angular.Google_Headings = YES -->
+
 To make Zone.js available in Angular, you need to import the `zone.js` package.
-If you are using the Angular CLI, this step is done automatically, and you will see the following line in the `src/polyfills.ts`:
+If you are using the Angular CLI, this step is done automatically, and you can see the following line in the `src/polyfills.ts`:
 
 为了使 Zone.js 在 Angular 中可用，你需要导入 `zone.js` 包。如果使用的是 Angular CLI，则此步骤将自动完成，并且你会在 `src/polyfills.ts` 中看到以下行：
 
@@ -496,24 +512,24 @@ import 'zone.js';  // Included with Angular CLI.
 
 </code-example>
 
-Before importing the  `zone.js` package, you can set the following configurations:
+Before importing the `zone.js` package, you can set the following configurations:
 
 在导入 `zone.js` 软件包之前，你可以做如下配置：
 
-* You can disable some asynchronous API monkey patching for better performance.
-  For example, you can disable the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` will not trigger change detection.
-  This is useful if, in your application, the callback of the `requestAnimationFrame()` will not update any data.
+* Disabling some asynchronous API monkey patching for better performance.
+  For example, disabling the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` does not trigger change detection.
+  This is useful if, in your application, the callback of the `requestAnimationFrame()` does not update any data.
 
   你可以禁用一些异步 API 的猴子补丁，以获得更好的性能。比如，你可以禁用 `requestAnimationFrame()` 的猴子补丁，这样 `requestAnimationFrame()` 的回调就不会触发变更检测。如果你的应用程序不会在 `requestAnimationFrame()` 回调中更新任何数据，则这种方式很有用。
 
-* You can specify that certain DOM events do not run inside the Angular zone; for example, to prevent a `mousemove` or `scroll` event to trigger change detection
+* Specify that certain DOM events do not run inside the Angular zone. For example, to prevent a `mousemove` or `scroll` event to trigger change detection
 
   你可以指定某些 DOM 事件不在 Angular Zone 内运行；比如，为了防止 `mousemove` 或 `scroll` 事件来触发变更检测。
 
-There are several other settings you can change.
+Several other settings can be changed.
 To make these changes, you need to create a `zone-flags.ts` file, such as the following.
 
-你还可以更改另外几个设置。要进行这些更改，你需要创建一个 `zone-flags.ts` 文件，如下所示。
+还可以更改另外几个设置。要进行这些更改，你需要创建一个 `zone-flags.ts` 文件，如下所示。
 
 <code-example format="typescript" language="typescript">
 
@@ -543,22 +559,26 @@ For more information about what you can configure, see the [Zone.js](https://git
 
 有关可以配置的内容的更多信息，请参阅[Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js)文档。
 
+<!-- vale Angular.Google_Headings = NO -->
+
 ### NoopZone
 
+<!-- vale Angular.Google_Headings = YES -->
+
 `Zone` helps Angular know when to trigger change detection and let the developers focus on the application development.
-By default, `Zone` is loaded and works without additional configuration.
-However, you don't necessarily have to use `Zone` to make Angular work.
+By default, `Zone` is loaded and works without further configuration.
+You don't necessarily have to use `Zone` to make Angular work.
 Instead, you can opt to trigger change detection on your own.
 
 `Zone` 能帮助 Angular 知道何时要触发变更检测，并使开发人员专注于应用开发。默认情况下，`Zone` 已加载且无需其他配置即可工作。但是，也不是一定要用 `Zone` 才能使 Angular 工作。相反，你也可以选择自己触发变更检测。
 
-<div class="alert is-helpful">
+<div class="callout is-helpful">
 
-<header>Disabling <code>Zone</code></header>
+<header>Disabling Zone</header>
 
 <header>禁用 <code>Zone</code></header>
 
-**If you disable `Zone`, you will need to trigger all change detection at the correct timing yourself, which requires comprehensive knowledge of change detection**.
+**Disabling `Zone` requires you to trigger all change detection at the correct timing yourself, which requires comprehensive knowledge of change detection**.
 
 **如果禁用了 `Zone`，你就要自己在正确的时间触发所有变更检测，这需要你对变更检测机制有全面的了解**。
 

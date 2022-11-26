@@ -290,7 +290,7 @@ export class RenameBuilder {
   findRenameLocationsAtTypescriptPosition(renameRequest: RenameRequest):
       readonly ts.RenameLocation[]|null {
     return this.compiler.perfRecorder.inPhase(PerfPhase.LsReferencesAndRenames, () => {
-      const renameInfo = getExpectedRenameTextAndInitalRenameEntries(renameRequest);
+      const renameInfo = getExpectedRenameTextAndInitialRenameEntries(renameRequest);
       if (renameInfo === null) {
         return null;
       }
@@ -418,7 +418,7 @@ export class RenameBuilder {
  * 具有的文本，并为间接重命名创建一个初始条目（重命名操作所需，但本机 TS LS 找不到）。
  *
  */
-function getExpectedRenameTextAndInitalRenameEntries(renameRequest: RenameRequest):
+function getExpectedRenameTextAndInitialRenameEntries(renameRequest: RenameRequest):
     {expectedRenameText: string, entries: ts.RenameLocation[]}|null {
   let expectedRenameText: string;
   const entries: ts.RenameLocation[] = [];

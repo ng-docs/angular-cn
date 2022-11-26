@@ -2,6 +2,8 @@
 
 # 路由转场动画
 
+Routing enables users to navigate between different routes in an application.
+
 ## Prerequisites
 
 ## 前提条件
@@ -22,7 +24,8 @@ A basic understanding of the following concepts:
 
   [可复用动画](guide/reusable-animations)
 
-Routing enables users to navigate between different routes in an application.
+## Enable routing transition animation
+
 When a user navigates from one route to another, the Angular router maps the URL path to a relevant component and displays its view.
 Animating this route transition can greatly enhance the user experience.
 
@@ -30,7 +33,7 @@ Animating this route transition can greatly enhance the user experience.
 
 The Angular router comes with high-level animation functions that let you animate the transitions between views when a route changes.
 To produce an animation sequence when switching between routes, you need to define nested animation sequences.
-Start with the top-level component that hosts the view, and nest additional animations in the components that host the embedded views.
+Start with the top-level component that hosts the view, and nest animations in the components that host the embedded views.
 
 Angular 路由器天生带有高级动画功能，它可以让你为在路由变化时为视图之间设置转场动画。要想在路由切换时生成动画序列，你需要首先定义出嵌套的动画序列。从宿主视图的顶层组件开始，在这些内嵌视图的宿主组件中嵌套添加其它动画。
 
@@ -52,7 +55,7 @@ To enable routing transition animation, do the following:
 
 Illustrate a router transition animation by navigating between two routes, *Home* and *About* associated with the `HomeComponent` and `AboutComponent` views respectively.
 Both of these component views are children of the top-most view, hosted by `AppComponent`.
-We'll implement a router transition animation that slides in the new view to the right and slides out the old view when the user navigates between the two routes.
+Implement a router transition animation that slides in the new view to the right and slides out the old view when navigating between the two routes.
 
 让我们以两个路由之间的导航过程来解释一下路由转场动画，*Home* 和 *About* 分别与 `HomeComponent` 和 `AboutComponent` 的视图相关联。所有这些组件视图都是顶层视图的子节点，其宿主是 `AppComponent`。我们将实现路由器过渡动画，该动画会在出现新视图时向右滑动，并当用户在两个路由之间导航时把旧视图滑出。
 
@@ -98,12 +101,10 @@ The route configuration tells the Angular router to instantiate the `HomeCompone
 
 `home` 和 `about` 路径分别关联着 `HomeComponent` 和 `AboutComponent` 视图。该路由配置告诉 Angular 路由器当导航匹配了相应的路径时，就实例化 `HomeComponent` 和 `AboutComponent` 视图。
 
-In addition to `path` and `component`, the `data` property of each route defines the key animation-specific configuration associated with a route.
+The `data` property of each route defines the key animation-specific configuration associated with a route.
 The `data` property value is passed into `AppComponent` when the route changes.
-You can also pass additional data in route configuration that is consumed within the animation.
-The data property value has to match the transitions defined in the `routeAnimation` trigger, which we'll define shortly.
 
-除了 `path`、`component` 之外，每个路由定义中的 `data` 属性也定义了与此路由有关的动画配置。当路由变化时，`data` 属性的值就会传给 `AppComponent`。你还可以在路由配置中传递其它的值供路由的动画使用。`data` 属性的值必须满足 `routeAnimation` 中定义的转场动画的要求，稍后我们就会定义它。
+每个路由定义中的 `data` 属性也定义了与此路由有关的动画配置。当路由变化时，`data` 属性的值就会传给 `AppComponent`。你还可以在路由配置中传递其它的值供路由的动画使用。`data` 属性的值必须满足 `routeAnimation` 中定义的转场动画的要求，稍后我们就会定义它。
 
 <div class="alert is-helpful">
 
@@ -126,7 +127,7 @@ The `<router-outlet>` directive tells the Angular router where to render the vie
 配置好路由之后，还要告诉 Angular 路由器当路由匹配时，要把视图渲染到那里。你可以通过在根组件 `AppComponent` 的模板中插入一个 `<router-outlet>` 容器来指定路由出口的位置。
 
 The `ChildrenOutletContexts` holds information about outlets and activated routes.
-We can use the `data` property of each `Route` to animate our routing transitions.
+The `data` property of each `Route` can be used to animate routing transitions.
 
 `ChildrenOutletContexts` 包含有关插座和激活路由的信息。我们可以用每个 `Route` 的 `data` 属性来为我们的路由转换设置动画。
 
@@ -140,8 +141,8 @@ Here's an example of an `AppComponent` method that detects when a route change h
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="get-route-animations-data"></code-example>
 
-Here, the `getRouteAnimationData()` method takes the value of the outlet and returns a string that represents the state of the animation based on the custom data of the current active route.
-Use this data to control which transition to execute for each route.
+The `getRouteAnimationData()` method takes the value of the outlet. It returns a string that represents the state of the animation based on the custom data of the current active route.
+Use this data to control which transition to run for each route.
 
 这里的 `getRouteAnimationData()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`），并根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个转场。
 
@@ -150,7 +151,7 @@ Use this data to control which transition to execute for each route.
 ## 动画定义
 
 Animations can be defined directly inside your components.
-For this example you are defining the animations in a separate file, which lets us re-use the animations.
+For this example you are defining the animations in a separate file, which allows re-use of animations.
 
 动画可以直接在组件中定义。对于此范例，我们会在独立的文件中定义动画，这让我们可以复用这些动画。
 
@@ -196,11 +197,7 @@ Make the animation definition available in your application by adding the reusab
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="define"></code-example>
 
-So, let's break down the animation definition and see more closely what it does…
-
-那么，我们来分解一下这个动画定义，并仔细看看它做了什么……
-
-### Styling the host and child components
+### Style the host and child components
 
 ### 为宿主组件和子组件添加样式
 
@@ -213,7 +210,7 @@ Adding these styles to the views animates the containers in place and prevents o
 
 <code-example header="src/app/animations.ts (excerpt)" path="animations/src/app/animations.ts" region="style-view"></code-example>
 
-### Querying the view containers
+### Query the view containers
 
 ### 查询视图的容器
 
@@ -292,10 +289,4 @@ You might also be interested in the following:
 
   [可复用动画](guide/reusable-animations)
 
-<!-- links -->
-
-<!-- external links -->
-
-<!-- end links -->
-
-@reviewed 2022-02-28
+@reviewed 2022-10-11

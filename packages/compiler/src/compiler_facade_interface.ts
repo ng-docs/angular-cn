@@ -165,6 +165,12 @@ export interface R3InjectorMetadataFacade {
   imports: OpaqueValue[];
 }
 
+export interface R3HostDirectiveMetadataFacade {
+  directive: Type;
+  inputs?: string[];
+  outputs?: string[];
+}
+
 export interface R3DirectiveMetadataFacade {
   name: string;
   type: Type;
@@ -181,6 +187,7 @@ export interface R3DirectiveMetadataFacade {
   providers: Provider[]|null;
   viewQueries: R3QueryMetadataFacade[];
   isStandalone: boolean;
+  hostDirectives: R3HostDirectiveMetadataFacade[]|null;
 }
 
 export interface R3ComponentMetadataFacade extends R3DirectiveMetadataFacade {
@@ -214,6 +221,7 @@ export interface R3DeclareDirectiveFacade {
   usesInheritance?: boolean;
   usesOnChanges?: boolean;
   isStandalone?: boolean;
+  hostDirectives?: R3HostDirectiveMetadataFacade[]|null;
 }
 
 export interface R3DeclareComponentFacade extends R3DeclareDirectiveFacade {

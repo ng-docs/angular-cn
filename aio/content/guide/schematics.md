@@ -10,7 +10,7 @@ Schematics are packaged into [collections](guide/glossary#collection) and instal
 
 The schematic collection can be a powerful tool for creating, modifying, and maintaining any software project, but is particularly useful for customizing Angular projects to suit the particular needs of your own organization.
 You might use schematics, for example, to generate commonly-used UI patterns or specific components, using predefined templates or layouts.
-Use schematics to enforce architectural rules and conventions, making your projects consistent and inter-operative.
+Use schematics to enforce architectural rules and conventions, making your projects consistent and interoperative.
 
 原理图的集合可以作为一个强大的工具，以创建、修改和维护任何软件项目，特别是当要自定义 Angular 项目以满足你自己组织的特定需求时。比如，你可以借助原理图来用预定义的模板或布局生成常用的 UI 模式或特定的组件。也可以用原理图来强制执行架构规则和约定，让你的项目保持一致性和互操作性。
 
@@ -26,10 +26,10 @@ You can modify these schematics, and define new ones to do things like update yo
 
 Schematics that are included in the `@schematics/angular` collection are run by default by the commands `ng generate` and `ng add`.
 The package contains named schematics that configure the options that are available to the CLI for `ng generate` sub-commands, such as `ng generate component` and `ng generate service`.
-The subcommands for `ng generate` are shorthand for the corresponding schematic.
-To specify a particular schematic (or collection of schematics) to generate, using the long form:
+The sub-commands for `ng generate` are shorthand for the corresponding schematic.
+To specify and generate a particular schematic, or a collection of schematics, using the long form:
 
-`@schematics/angular` 集合中的原理图是 `ng generate` 和 `ng add` 命令的默认原理图。此包里包含一些有名字的原理图，可用于配置 `ng generate` 子命令的选项，比如 `ng generate component` 和 `ng generate service`。`ng generate` 的子命令是相应原理图的简写。可以用长格式来指定要生成的原理图（或原理图集合）：
+`@schematics/angular` 集合中的原理图是 `ng generate` 和 `ng add` 命令的默认原理图。此包里包含一些有名字的原理图，可用于配置 `ng generate` 子命令的选项，比如 `ng generate component` 和 `ng generate service`。`ng generate` 的子命令是相应原理图的简写。可以用长格式来指定并生成特定的原理图或原理图集合：
 
 <code-example format="shell" language="shell">
 
@@ -51,7 +51,7 @@ ng generate my-schematic-name --collection collection-name
 
 ### 配置 CLI 的原理图
 
-A JSON schema associated with a schematic tells the Angular CLI what options are available to commands and subcommands, and determines the defaults.
+A JSON schema associated with a schematic tells the Angular CLI what options are available to commands and sub-commands, and determines the defaults.
 These defaults can be overridden by providing a different value for an option on the command line.
 See [Workspace Configuration](guide/workspace-config) for information about how to change the generation option defaults for your workspace.
 
@@ -74,7 +74,7 @@ As a library developer, you can create your own collections of custom schematics
 
   *添加（Add）原理图*允许开发人员使用 `ng add` 在 Angular 工作区中安装你的库
 
-* *Generation schematics* can tell the `ng generate` subcommands how to modify projects, add configurations and scripts, and scaffold artifacts that are defined in your library
+* *Generation schematics* can tell the `ng generate` sub-commands how to modify projects, add configurations and scripts, and scaffold artifacts that are defined in your library
 
   *生成（Generation）原理图*可以告诉 `ng generate` 子命令如何修改项目、添加配置和脚本，以及为库中定义的工件提供脚手架
 
@@ -98,7 +98,7 @@ For more details of what these look like and how to create them, see:
 
 ### 添加（Add）原理图
 
-An add schematic is typically supplied with a library, so that the library can be added to an existing project with `ng add`.
+An *add schematic* is typically supplied with a library, so that the library can be added to an existing project with `ng add`.
 The `add` command uses your package manager to download new dependencies, and invokes an installation script that is implemented as a schematic.
 
 库中通常都会提供一个添加原理图，以便通过 `ng add` 把这个库添加到现有项目中。`add` 命令会运行包管理器来下载新的依赖，并调用一个原理图形式的安装脚本。
@@ -109,11 +109,11 @@ Look at this one as an example and model for your own add schematic.
 比如，[`@angular/material`](https://material.angular.cn/guide/schematics) 原理图会要求 `add` 命令安装并设置 Angular Material 及其主题，并注册可通过 `ng generate` 创建的新启动器组件。可以把它作为自己的 "添加原理图" 的范例。
 
 Partner and third party libraries also support the Angular CLI with add schematics.
-For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://vmware.github.io/clarity/documentation/v1.0/get-started).
+For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://clarity.design/documentation/get-started).
 
 合作伙伴和第三方库也可以通过添加原理图来支持 Angular CLI。比如，`@ng-bootstrap/schematics` 会把 [ng-bootstrap](https://ng-bootstrap.github.io) 添加到应用中，`@clr/angular` 会安装并设置 [VMWare 的 Clarity](https://vmware.github.io/clarity/documentation/v1.0/get-started)。
 
-An add schematic can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
+An *add schematic* can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
 For example, the `@angular/pwa` schematic turns your application into a PWA by adding an application manifest and service worker.
 
 "添加原理图" 还可以通过更改配置、添加额外依赖（比如腻子脚本），或者添加程序包特有的初始化代码来修改项目。比如，`@angular/pwa` 原理图会通过添加一个应用清单（manifest）和 Service Worker。
@@ -150,15 +150,15 @@ ng generate &commat;angular/material:table &lt;component-name&gt;
 <code-example format="shell" language="shell">
 
 ng update
-    We analyzed your package.json, there are some packages to update:
+We analyzed your package.json, there are some packages to update:
 
-      Name                               Version                  Command to update
-     &hyphen;-------------------------------------------------------------------------------
-      &commat;angular/cdk                       7.2.2 -&gt; 7.3.1           ng update &commat;angular/cdk
-      &commat;angular/cli                       7.2.3 -&gt; 7.3.0           ng update &commat;angular/cli
-      &commat;angular/core                      7.2.2 -&gt; 7.2.3           ng update &commat;angular/core
-      &commat;angular/material                  7.2.2 -&gt; 7.3.1           ng update &commat;angular/material
-      rxjs                               6.3.3 -&gt; 6.4.0           ng update rxjs
+    Name                                      Version                     Command to update
+    &hyphen;-------------------------------------------------------------------------------
+    &commat;angular/cdk                       7.2.2 -&gt; 7.3.1           ng update &commat;angular/cdk
+    &commat;angular/cli                       7.2.3 -&gt; 7.3.0           ng update &commat;angular/cli
+    &commat;angular/core                      7.2.2 -&gt; 7.2.3           ng update &commat;angular/core
+    &commat;angular/material                  7.2.2 -&gt; 7.3.1           ng update &commat;angular/material
+    rxjs                                      6.3.3 -&gt; 6.4.0           ng update rxjs
 
     There might be additional packages that are outdated.
     Run "ng update --all" to try to update all at the same time.

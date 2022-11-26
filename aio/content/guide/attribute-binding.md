@@ -98,7 +98,7 @@ Sometimes there are differences between the name of property and an attribute.
 
 有时，Property 名和 Attribute 名之间存在差异。
 
-`colspan` is an attribute of `<tr>`, while `colSpan`  with a capital "S" is a property.
+`colspan` is an attribute of `<td>`, while `colSpan`  with a capital "S" is a property.
 When using attribute binding, use `colspan` with a lowercase "s".
 
 `colspan` 是 `<tr>` 的 Attibute，而带有大写 "S" 的 `colSpan` 是 Property。使用 Attribute 绑定时，请使用带有小写“s”的 `colspan`。

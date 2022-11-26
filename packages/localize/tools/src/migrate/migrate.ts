@@ -7,7 +7,7 @@
  */
 
 /**
- * Mapping between legacy message IDs and their cannonical counterparts.
+ * Mapping between legacy message IDs and their canonical counterparts.
  *
  * 旧版消息 ID 与其规范对应项之间的映射。
  *
@@ -26,9 +26,9 @@ export function migrateFile(sourceCode: string, mapping: MigrationMapping) {
   const legacyIds = Object.keys(mapping);
 
   for (const legacyId of legacyIds) {
-    const cannonicalId = mapping[legacyId];
+    const canonicalId = mapping[legacyId];
     const pattern = new RegExp(escapeRegExp(legacyId), 'g');
-    sourceCode = sourceCode.replace(pattern, cannonicalId);
+    sourceCode = sourceCode.replace(pattern, canonicalId);
   }
 
   return sourceCode;

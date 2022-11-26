@@ -110,20 +110,22 @@ Alternatively, you might want to define a different [registration strategy](api/
 
 </div>
 
-### Forcing update activation
+### Updating to the latest version
 
-### 强制激活更新
+### 升级到最新版本
 
-If the current tab needs to be updated to the latest application version immediately, it can ask to do so with the `activateUpdate()` method:
+You can update an existing tab to the latest version by reloading the page as soon as a new version is ready.
+To avoid disrupting the user's progress, it is generally a good idea to prompt the user and let them confirm that it is OK to reload the page and update to the latest version:
 
-如果当前标签页需要立即更新到最新的应用版本，可以通过 `activateUpdate()` 方法来要求立即这么做：
-
-<code-example header="prompt-update.service.ts" path="service-worker-getting-started/src/app/prompt-update.service.ts" region="sw-activate"></code-example>
+<code-example header="prompt-update.service.ts" path="service-worker-getting-started/src/app/prompt-update.service.ts" region="sw-version-ready"></code-example>
 
 <div class="alert is-important">
 
-Calling `activateUpdate()` without reloading the page could break lazy-loading in a currently running app, especially if the lazy-loaded chunks use filenames with hashes, which change every version.
-Therefore, it is recommended to reload the page once the promise returned by `activateUpdate()` is resolved.
+Calling {@link SwUpdate#activateUpdate SwUpdate#activateUpdate()} updates a tab to the latest version without reloading the page, but this could break the application.
+
+Updating without reloading can create a version mismatch between the [application shell](guide/glossary#app-shell) and other page resources, such as [lazy-loaded chunks](guide/glossary#lazy-loading), whose filenames may change between versions.
+
+You should only use `activateUpdate()`, if you are certain it is safe for your specific use case.
 
 如果调用 `activateUpdate()` 而不刷新页面，可能会破坏正在运行的应用中的惰性加载模块，特别是如果惰性加载的模块文件名中使用了哈希时，就会改变每一个版本。所以，建议每当 `activateUpdate()` 返回的 Promise 被解析时，都刷新一次页面。
 

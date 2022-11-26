@@ -12,7 +12,7 @@ import ts from 'typescript';
 import {AbsoluteFsPath} from '../../file_system';
 import {SymbolWithValueDeclaration} from '../../util/src/typescript';
 
-import {DirectiveInScope} from './scope';
+import {PotentialDirective} from './scope';
 
 export enum SymbolKind {
   Input,
@@ -444,14 +444,8 @@ export interface TemplateSymbol {
   templateNode: TmplAstTemplate;
 }
 
-/**
- * A representation of a directive/component whose selector matches a node in a component
- * template.
- *
- * 其选择器与组件模板中的节点匹配的指令/组件的表示。
- *
- */
-export interface DirectiveSymbol extends DirectiveInScope {
+/** Interface shared between host and non-host directives. */
+interface DirectiveSymbolBase extends PotentialDirective {
   kind: SymbolKind.Directive;
 
   /**
@@ -470,6 +464,16 @@ export interface DirectiveSymbol extends DirectiveInScope {
    */
   tcbLocation: TcbLocation;
 }
+
+/**
+ * A representation of a directive/component whose selector matches a node in a component
+ * template.
+ */
+export type DirectiveSymbol = (DirectiveSymbolBase&{isHostDirective: false})|(DirectiveSymbolBase&{
+  isHostDirective: true;
+  exposedInputs: Record<string, string>|null;
+  exposedOutputs: Record<string, string>|null;
+});
 
 /**
  * A representation of an attribute on an element or template. These bindings aren't currently

@@ -9,7 +9,7 @@
 import {assertDomNode, assertIndexInRange} from '../util/assert';
 
 import {TNode, TNodeFlags, TNodeType} from './interfaces/node';
-import {Renderer3} from './interfaces/renderer';
+import {Renderer} from './interfaces/renderer';
 import {RElement, RNode} from './interfaces/renderer_dom';
 import {LView} from './interfaces/view';
 import {getInsertInFrontOfRNodeWithNoI18n, nativeInsertBefore} from './node_manipulation';
@@ -64,7 +64,7 @@ export function getInsertInFrontOfRNodeWithI18n(
  *
  */
 export function processI18nInsertBefore(
-    renderer: Renderer3, childTNode: TNode, lView: LView, childRNode: RNode|RNode[],
+    renderer: Renderer, childTNode: TNode, lView: LView, childRNode: RNode|RNode[],
     parentRElement: RElement|null): void {
   const tNodeInsertBeforeIndex = childTNode.insertBeforeIndex;
   if (Array.isArray(tNodeInsertBeforeIndex)) {
@@ -80,7 +80,7 @@ export function processI18nInsertBefore(
       anchorRNode = i18nParent;
       i18nParent = parentRElement;
     }
-    if (i18nParent !== null && (childTNode.flags & TNodeFlags.isComponentHost) === 0) {
+    if (i18nParent !== null && childTNode.componentOffset === -1) {
       for (let i = 1; i < tNodeInsertBeforeIndex.length; i++) {
         // No need to `unwrapRNode` because all of the indexes point to i18n text nodes.
         // see `assertDomNode` below.

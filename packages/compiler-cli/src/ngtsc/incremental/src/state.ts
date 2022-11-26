@@ -111,7 +111,7 @@ export interface AnalyzedIncrementalState {
  *
  * 尚未成功分析的编译的增量状态，但这可以基于以前的编译。
  *
- * This is the state produced by an incremeental compilation until its own analysis succeeds. If
+ * This is the state produced by an incremental compilation until its own analysis succeeds. If
  * analysis fails, this state carries forward information about which files have changed since the
  * last successful build (the `lastAnalyzedState`), so that the next incremental build can consider
  * the total delta between the `lastAnalyzedState` and the current program in its incremental

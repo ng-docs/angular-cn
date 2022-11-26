@@ -22,7 +22,7 @@ Before continuing with this topic, you should be familiar with the following:
 
   [转场与触发器](guide/transition-and-triggers)
 
-## Creating reusable animations
+## Create reusable animations
 
 ## 创建可复用动画
 
@@ -85,10 +85,4 @@ You might also be interested in the following:
 
   [路由转场动画](guide/route-animations)
 
-<!-- links -->
-
-<!-- external links -->
-
-<!-- end links -->
-
-@reviewed 2022-02-28
+@reviewed 2022-10-11

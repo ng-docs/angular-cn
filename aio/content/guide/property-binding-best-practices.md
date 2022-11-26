@@ -2,7 +2,7 @@
 
 # 属性绑定的最佳实践
 
-By following a few guidelines, you can use property binding in a way that helps you minimize bugs and keep your code readable.
+By following a few guidelines, you can use property binding in a way that helps you reduce bugs and keep your code readable.
 
 通过遵循一些指导原则，你可以使用属性绑定来帮助你最大限度地减少错误并让代码保持可读性。
 
@@ -43,8 +43,12 @@ As a best practice, use only properties and methods that return values.
 
 ## 返回合适的类型
 
-A template expression should evaluate to the type of value that the target property expects.
-For example, return a string if the target property expects a string, a number if it expects a number, or an object if it expects an object.
+A template expression should result in the type of value that the target property expects.
+For example, return:
+
+*   a `string`, if the target property expects a string
+*   a `number`, if it expects a number
+*   an `object`, if it expects an object.
 
 模板表达式应该求值为目标属性所期望的值类型。比如，如果目标属性需要一个字符串，就返回一个字符串；如果需要一个数字，就返回一个数字；如果需要一个对象，就返回一个对象。
 
@@ -90,7 +94,7 @@ In the `ItemListComponent` the `@Input()`, `items`, has a type of `Item[]`.
 
 <code-example header="src/app/item-list.component.ts" path="property-binding/src/app/item-list/item-list.component.ts" region="item-input"></code-example>
 
-Notice that `Item` is an object that it has two properties; an `id` and a `name`.
+Notice that `Item` is an object that it has two properties, an `id` and a `name`.
 
 注意 `Item` 是一个有两个属性的对象。一个是 `id`，一个是 `name`。
 
@@ -102,7 +106,7 @@ In `app.component.ts`, `currentItems` is an array of objects in the same shape a
 
 <code-example header="src/app.component.ts" path="property-binding/src/app/app.component.ts" region="pass-object"></code-example>
 
-By supplying an object in the same shape, you satisfy the expectations of `items` when Angular evaluates the expression `currentItems`.
+By supplying an object in the same shape, you meet the expectations of `items` when Angular evaluates the expression `currentItems`.
 
 通过提供一个形态相同的对象，你就可以满足 Angular 在计算表达式 `currentItems` 时对 `items` 的期待。
 

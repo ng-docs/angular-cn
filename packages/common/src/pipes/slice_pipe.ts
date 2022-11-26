@@ -62,7 +62,11 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  *
  * @publicApi
  */
-@Pipe({name: 'slice', pure: false})
+@Pipe({
+  name: 'slice',
+  pure: false,
+  standalone: true,
+})
 export class SlicePipe implements PipeTransform {
   /**
    * @param value a list or a string to be sliced.

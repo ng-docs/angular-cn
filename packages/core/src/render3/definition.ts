@@ -7,8 +7,9 @@
  */
 
 import {ChangeDetectionStrategy} from '../change_detection/constants';
+import {NG_PROV_DEF} from '../di/interface/defs';
 import {Mutable, Type} from '../interface/type';
-import {NgModuleDef, NgModuleType} from '../metadata/ng_module_def';
+import {NgModuleDef} from '../metadata/ng_module_def';
 import {SchemaMetadata} from '../metadata/schema';
 import {ViewEncapsulation} from '../metadata/view';
 import {noSideEffects} from '../util/closure';
@@ -462,6 +463,8 @@ export function ɵɵdefineComponent<T>(componentDefinition: {
       setInput: null,
       schemas: componentDefinition.schemas || null,
       tView: null,
+      findHostDirectiveDefs: null,
+      hostDirectives: null,
     };
     const dependencies = componentDefinition.dependencies;
     const feature = componentDefinition.features;
@@ -515,8 +518,6 @@ export function extractDirectiveDef(type: Type<any>): DirectiveDef<any>|Componen
 function nonNull<T>(value: T|null): value is T {
   return value !== null;
 }
-
-export const autoRegisterModuleById: {[id: string]: NgModuleType} = {};
 
 /**
  * @codeGenApi
@@ -590,9 +591,6 @@ export function ɵɵdefineNgModule<T>(def: {
       schemas: def.schemas || null,
       id: def.id || null,
     };
-    if (def.id != null) {
-      autoRegisterModuleById[def.id!] = def.type as unknown as NgModuleType;
-    }
     return res;
   });
 }
@@ -1043,6 +1041,11 @@ export function getDirectiveDef<T>(type: any): DirectiveDef<T>|null {
 
 export function getPipeDef<T>(type: any): PipeDef<T>|null {
   return type[NG_PIPE_DEF] || null;
+}
+
+export function isStandalone<T>(type: Type<T>): boolean {
+  const def = getComponentDef(type) || getDirectiveDef(type) || getPipeDef(type);
+  return def !== null ? def.standalone : false;
 }
 
 export function getNgModuleDef<T>(type: any, throwNotFound: true): NgModuleDef<T>;

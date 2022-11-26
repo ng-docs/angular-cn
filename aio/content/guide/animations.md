@@ -22,7 +22,7 @@ Animations can improve your application and user experience in a number of ways:
 
 Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow or shrink, fade, or slide off the page.
-These changes can occur simultaneously or sequentially.You can control the timing of each transformation.
+These changes can occur simultaneously or sequentially. You can control the timing of each transformation.
 
 典型的动画会涉及多种随时间变化的转换。HTML 元素可以移动、变换颜色、增加或缩小、隐藏或从页面中滑出。这些变化可以同时发生或顺序发生。你可以控制每次转换的持续时间。
 

@@ -10,7 +10,7 @@ import {CommonModule} from '@angular/common';
 import {Component, createEnvironmentInjector, Directive, EnvironmentInjector, forwardRef, Injector, Input, NgModule, NO_ERRORS_SCHEMA, OnInit, Pipe, PipeTransform, ViewChild, ViewContainerRef} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 
-describe('standalone components, directives and pipes', () => {
+describe('standalone components, directives, and pipes', () => {
   it('should render a standalone component', () => {
     @Component({
       standalone: true,
@@ -98,7 +98,7 @@ describe('standalone components, directives and pipes', () => {
         .toEqual('<inner-cmp>Look at me, no NgModule (kinda)!</inner-cmp>');
   });
 
-  it('should allow exporting standalone components, directives and pipes from NgModule', () => {
+  it('should allow exporting standalone components, directives, and pipes from NgModule', () => {
     @Component({
       selector: 'standalone-cmp',
       standalone: true,
@@ -152,7 +152,7 @@ describe('standalone components, directives and pipes', () => {
   });
 
 
-  it('should render a standalone component with dependenices and ambient providers', () => {
+  it('should render a standalone component with dependencies and ambient providers', () => {
     @Component({
       standalone: true,
       template: 'Inner',
@@ -303,8 +303,8 @@ describe('standalone components, directives and pipes', () => {
              parent: this.inj,
            });
 
-           const rhsInj =
-               createEnvironmentInjector([{provide: Service, useClass: EnvOverrideService}]);
+           const rhsInj = createEnvironmentInjector(
+               [{provide: Service, useClass: EnvOverrideService}], this.envInj);
 
            this.vcRef.createComponent(InnerCmp, {injector: lhsInj, environmentInjector: rhsInj});
          }
@@ -352,8 +352,8 @@ describe('standalone components, directives and pipes', () => {
          constructor(readonly envInj: EnvironmentInjector) {}
 
          ngOnInit(): void {
-           const rhsInj =
-               createEnvironmentInjector([{provide: Service, useClass: EnvOverrideService}]);
+           const rhsInj = createEnvironmentInjector(
+               [{provide: Service, useClass: EnvOverrideService}], this.envInj);
 
            this.vcRef.createComponent(InnerCmp, {environmentInjector: rhsInj});
          }
@@ -451,6 +451,70 @@ describe('standalone components, directives and pipes', () => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     expect(fixture.nativeElement.innerHTML).toBe('<div red="true">blue</div>');
+  });
+
+  it('should support readonly arrays in @Component.imports', () => {
+    @Directive({selector: '[red]', standalone: true, host: {'[attr.red]': 'true'}})
+    class RedIdDirective {
+    }
+
+    @Pipe({name: 'blue', pure: true, standalone: true})
+    class BluePipe implements PipeTransform {
+      transform() {
+        return 'blue';
+      }
+    }
+
+    const DirAndPipe = [RedIdDirective, BluePipe] as const;
+
+    @Component({
+      selector: 'standalone',
+      standalone: true,
+      template: `<div red>{{'' | blue}}</div>`,
+      imports: [DirAndPipe],
+    })
+    class TestComponent {
+    }
+
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.innerHTML).toBe('<div red="true">blue</div>');
+  });
+
+  it('should deduplicate declarations', () => {
+    @Component({selector: 'test-red', standalone: true, template: 'red(<ng-content></ng-content>)'})
+    class RedComponent {
+    }
+
+    @Component({selector: 'test-blue', template: 'blue(<ng-content></ng-content>)'})
+    class BlueComponent {
+    }
+
+    @NgModule({declarations: [BlueComponent], exports: [BlueComponent]})
+    class BlueModule {
+    }
+
+    @NgModule({exports: [BlueModule]})
+    class BlueAModule {
+    }
+
+    @NgModule({exports: [BlueModule]})
+    class BlueBModule {
+    }
+
+    @Component({
+      selector: 'standalone',
+      standalone: true,
+      template: `<test-red><test-blue>orange</test-blue></test-red>`,
+      imports: [RedComponent, RedComponent, BlueAModule, BlueBModule],
+    })
+    class TestComponent {
+    }
+
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.innerHTML)
+        .toBe('<test-red>red(<test-blue>blue(orange)</test-blue>)</test-red>');
   });
 
   it('should error when forwardRef does not resolve to a truthy value', () => {

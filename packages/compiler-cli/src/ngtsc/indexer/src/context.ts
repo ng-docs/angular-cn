@@ -80,7 +80,7 @@ export interface ComponentInfo {
 }
 
 /**
- * A context for storing indexing infromation about components of a program.
+ * A context for storing indexing information about components of a program.
  *
  * 用于存储有关程序组件的索引信息的上下文。
  *

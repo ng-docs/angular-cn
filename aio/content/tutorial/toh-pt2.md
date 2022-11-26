@@ -2,9 +2,10 @@
 
 # 显示英雄列表
 
-In this page, you'll expand the Tour of Heroes application to display a list of heroes, and allow users to select a hero and display the hero's details.
+This tutorial shows you how to:
 
-本页中，你将扩展《英雄之旅》应用，让它显示一个英雄列表，并允许用户选择一个英雄，查看该英雄的详细信息。
+* Expand the Tour of Heroes application to display a list of heroes.
+* Allow users to select a hero and display the hero's details.
 
 <div class="alert is-helpful">
 
@@ -18,20 +19,13 @@ For the sample application that this page describes, see the <live-example></liv
 
 ## 创建模拟（mock）的英雄数据
 
-You'll need some heroes to display.
+The first step is to create some heroes to display.
 
-你需要一些英雄数据以供显示。
-
-Eventually you'll get them from a remote data server.
-For now, you'll create some *mock heroes* and pretend they came from the server.
-
-最终，你会从远端的数据服务器获取它。不过目前，你要先创建一些*模拟的英雄数据*，并假装它们是从服务器上取到的。
-
-Create a file called `mock-heroes.ts` in the `src/app/` folder.
+Create a file called `mock-heroes.ts` in the `src/app/` directory.
 Define a `HEROES` constant as an array of ten heroes and export it.
 The file should look like this.
 
-在 `src/app/` 文件夹中创建一个名叫 `mock-heroes.ts` 的文件。定义一个包含十个英雄的常量数组 `HEROES`，并导出它。该文件是这样的。
+在 `src/app/` 目录下创建一个名叫 `mock-heroes.ts` 的文件。定义一个包含十个英雄的常量数组 `HEROES`，并导出它。该文件是这样的。
 
 <code-example header="src/app/mock-heroes.ts" path="toh-pt2/src/app/mock-heroes.ts"></code-example>
 
@@ -45,7 +39,7 @@ Open the `HeroesComponent` class file and import the mock `HEROES`.
 
 <code-example header="src/app/heroes/heroes.component.ts (import HEROES)" path="toh-pt2/src/app/heroes/heroes.component.ts" region="import-heroes"></code-example>
 
-In the same file (`HeroesComponent` class), define a component property called `heroes` to expose the `HEROES` array for binding.
+In `HeroesComponent` class, define a component property called `heroes` to expose the `HEROES` array for binding.
 
 往类中添加一个 `heroes` 属性，这样可以暴露出这个 `HEROES` 数组，以供绑定。
 
@@ -57,35 +51,19 @@ In the same file (`HeroesComponent` class), define a component property called `
 
 Open the `HeroesComponent` template file and make the following changes:
 
-打开 `HeroesComponent` 的模板文件，并做如下修改：
+1.  Add an `<h2>` at the top.
+2.  Below the `<h2>`, add a `<ul>` element.
+3.  In the `<ul>` element, insert an `<li>`.
+4.  Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
+5.  Add CSS classes to style the component.
 
-1. Add an `<h2>` at the top.
-
-   在顶部添加 `<h2>`，。
-
-1. Below it add an HTML unordered list (`<ul>`) element.
-
-   在它下面添加一个 HTML 无序列表 ( `<ul>` ) 元素。
-
-1. Insert an `<li>` within the `<ul>`.
-
-   在 `<ul>` 中插入 `<li>` >。
-
-1. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
-
-   在 `<li>` 中放一个 `<button>` 元素，以便在 `<span>` 元素中显示单个 `hero` 的属性。
-
-1. Sprinkle some CSS classes for styling (you'll add the CSS styles shortly).
-
-   点缀上一些 CSS 类（稍后你还会添加更多 CSS 样式）。
-
-Make it look like this:
+to look like this:
 
 做完之后应该是这样的：
 
 <code-example header="heroes.component.html (heroes template)" path="toh-pt2/src/app/heroes/heroes.component.1.html" region="list"></code-example>
 
-That displays an error since the property 'hero' does not exist.
+That displays an error since the `hero` property doesn't exist.
 To have access to each individual hero and list them all, add an `*ngFor` to the `<li>` to iterate through the list of heroes:
 
 由于属性 'hero' 不存在，因此会显示一个错误。要访问每个英雄并列出所有英雄，请在 `<li>` 上添加 `*ngFor` 以遍历英雄列表：
@@ -113,10 +91,10 @@ The syntax in this example is as follows:
 
 <div class="alert is-important">
 
-Don't forget the asterisk (`*`) character in front of `ngFor`.
+Don't forget to put the asterisk `*` in front of `ngFor`.
 It's a critical part of the syntax.
 
-不要忘了 `ngFor` 前面的星号（`*`），它是该语法中的关键部分。
+不要忘了在 `ngFor` 前面放上星号（`*`），它是该语法中的关键部分。
 
 </div>
 
@@ -130,11 +108,7 @@ After the browser refreshes, the list of heroes appears.
 
 <header>交互元素</header>
 
-**NOTE**: <br />
-Inside the `<li>` element, we've wrapped the hero's details in a `<button>` element. Later on we make the hero clickable, and it is better for accessibility purposes to use natively interactive HTML elements (e.g. `<button>`) instead of adding event listeners to non-interactive ones (e.g. `<li>`).
-
-**注意**：<br />
-在 `<li>` 元素中，我们将英雄的详细信息包装在 `<button>` 元素中。稍后我们使 hero 可点击，并且出于无障碍性的目的，最好使用本机交互式 HTML 元素（例如 `<button>`），而不是向非交互式元素添加事件侦听器（例如 `<li>`）。
+Inside the `<li>` element, add a `<button>` element to wrap the hero's details, and then make the hero clickable. To improve accessibility, use HTML elements that are inherently interactive instead of adding an event listener to a non-interactive element. In this case, the interactive `<button>` element is used instead of adding an event to the `<li>` element.
 
 For more details on accessibility, see [Accessibility in Angular](guide/accessibility).
 
@@ -154,41 +128,40 @@ hover over and select a hero from the list.
 英雄列表应该富有吸引力，并且当用户把鼠标移到某个英雄上和从列表中选中某个英雄时，应该给出视觉反馈。
 
 In the [first tutorial](tutorial/toh-pt0#app-wide-styles), you set the basic styles for the entire application in `styles.css`.
-That stylesheet didn't include styles for this list of heroes.
+That style sheet didn't include styles for this list of heroes.
 
 在[教程的第一章](tutorial/toh-pt0#app-wide-styles)，你曾在 `styles.css` 中为整个应用设置了一些基础的样式。但那个样式表并不包含英雄列表所需的样式。
 
-You could add more styles to `styles.css` and keep growing that stylesheet as you add components.
+You could add more styles to `styles.css` and keep growing that style sheet as you add components.
 
 固然，你可以把更多样式加入到 `styles.css`，并且放任它随着你添加更多组件而不断膨胀。
 
-You may prefer instead to define private styles for a specific component and keep everything a component needs —the code, the HTML, and the CSS— together in one place.
+You may prefer instead to define private styles for a specific component. This keeps everything a component needs, such as the code, the HTML, and the CSS, together in one place.
 
-但还有更好的方式。你可以定义属于特定组件的私有样式，并且让组件所需的一切（代码、HTML 和 CSS）都放在一起。
+你可以定义属于特定组件的私有样式。这会让组件所需的一切（比如代码、HTML 和 CSS）都放在一起。
 
 This approach makes it easier to re-use the component somewhere else and deliver the component's intended appearance even if the global styles are different.
 
 这种方式让你在其它地方复用该组件更加容易，并且即使全局样式和这里不一样，组件也仍然具有期望的外观。
 
-You define private styles either inline in the `@Component.styles` array or as stylesheet file(s) identified in the `@Component.styleUrls` array.
+You define private styles either inline in the `@Component.styles` array or as style sheet files identified in the `@Component.styleUrls` array.
 
 你可以用多种方式定义私有样式，或者内联在 `@Component.styles` 数组中，或者在 `@Component.styleUrls` 所指出的样式表文件中。
 
-When the CLI generated the `HeroesComponent`, it created an empty `heroes.component.css` stylesheet for the `HeroesComponent` and pointed to it in `@Component.styleUrls` like this.
+When the `ng generate` created the `HeroesComponent`, it created an empty `heroes.component.css` style sheet for the `HeroesComponent` and pointed to it in `@Component.styleUrls` like this.
 
 当 CLI 生成 `HeroesComponent` 时，它也同时为 `HeroesComponent` 创建了空白的 `heroes.component.css` 样式表文件，并且让 `@Component.styleUrls` 指向它，就像这样。
 
 <code-example header="src/app/heroes/heroes.component.ts (@Component)" path="toh-pt2/src/app/heroes/heroes.component.ts" region="metadata"></code-example>
 
-Open the `heroes.component.css` file and paste in the private CSS styles for the `HeroesComponent`.
-You'll find them in the [final code review](#final-code-review) at the bottom of this guide.
+Open the `heroes.component.css` file and paste in the private CSS styles for the `HeroesComponent` from the [final code review](#final-code-review).
 
 打开 `heroes.component.css` 文件，并且把 `HeroesComponent` 的私有 CSS 样式粘贴进去。
 你可以在本指南底部的[查看最终代码](#final-code-review)中找到它们。
 
 <div class="alert is-important">
 
-Styles and stylesheets identified in `@Component` metadata are scoped to that specific component.
+Styles and style sheets identified in `@Component` metadata are scoped to that specific component.
 The `heroes.component.css` styles apply only to the `HeroesComponent` and don't affect the outer HTML or the HTML in any other component.
 
 `@Component` 元数据中指定的样式和样式表都是局限于该组件的。`heroes.component.css` 中的样式只会作用于 `HeroesComponent`，既不会影响到组件外的 HTML，也不会影响到其它组件中的 HTML。
@@ -203,9 +176,9 @@ When the user clicks a hero in the list, the component should display the select
 
 当用户在此列表中点击一个英雄时，该组件应该在页面底部显示所选英雄的详情。
 
-In this section, you'll listen for the hero item click event and display/update the hero details.
+The code in this section listens for the hero item click event and display/update the hero details.
 
-在本节，你将监听英雄条目的点击事件，并显示与更新英雄的详情。
+本节中的代码会监听英雄条目的点击事件，并显示与更新英雄的详情。
 
 ### Add a click event binding
 
@@ -251,20 +224,21 @@ Add the following `onSelect()` method, which assigns the clicked hero from the t
 ### 添加详情区
 
 Currently, you have a list in the component template.
-To click on a hero on the list and reveal details about that hero, you need a section for the details to render in the template.
+To show details about a hero when you click their name in the list, add a section
+in the template that displays their details.
 Add the following to `heroes.component.html` beneath the list section:
 
 现在，组件的模板中有一个列表。要想点击列表中的一个英雄，并显示该英雄的详情，你需要在模板中留一个区域，用来显示这些详情。在 `heroes.component.html` 中该列表的紧下方，添加如下代码：
 
 <code-example header="heroes.component.html (selected hero details)" path="toh-pt2/src/app/heroes/heroes.component.html" region="selectedHero-details"></code-example>
 
-The hero details should only be displayed when a hero is selected. When a component is created initially, there is no selected hero, so we add the `*ngIf` directive to the `<div>` that wraps the hero details, to instruct Angular to render the section only when the `selectedHero` is actually defined (after it has been selected by clicking on a hero).
+The hero details should only be displayed when a hero is selected. When a component is created initially, there is no selected hero. Add the `*ngIf` directive to the `<div>` that wraps the hero details. This directive tells Angular to render the section only when the `selectedHero` is defined after it has been selected by clicking on a hero.
 
 只有在选择英雄时才会显示英雄详细信息。最初创建组件时，没有所选的 hero，因此我们将 `*ngIf` 指令添加到包装 hero 详细信息的 `<div>` 中，以指示 Angular 仅在实际定义 `selectedHero` 时（在它被通过点击英雄来选择）。
 
 <div class="alert is-important">
 
-Don't forget the asterisk (`*`) character in front of `ngIf`.
+Don't forget the asterisk `*` character in front of `ngIf`.
 It's a critical part of the syntax.
 
 不要忘了 `ngIf` 前面的星号（`*`），它是该语法中的关键部分。
@@ -329,19 +303,19 @@ Here are the code files discussed on this page, including the `HeroesComponent` 
 
 ## 小结
 
-* The Tour of Heroes application displays a list of heroes with a detail view
+* The Tour of Heroes application displays a list of heroes with a detail view.
 
   英雄之旅应用在一个主从视图中显示了英雄列表。
 
-* The user can select a hero and see that hero's details
+* The user can select a hero and see that hero's details.
 
   用户可以选择一个英雄，并查看该英雄的详情。
 
-* You used `*ngFor` to display a list
+* You used `*ngFor` to display a list.
 
   你使用 `*ngFor` 显示了一个列表。
 
-* You used `*ngIf` to conditionally include or exclude a block of HTML
+* You used `*ngIf` to conditionally include or exclude a block of HTML.
 
   你使用 `*ngIf` 来根据条件包含或排除了一段 HTML。
 

@@ -393,7 +393,7 @@ export function parseMetadata(cooked: string, raw: string): MessageMetadata {
  *
  * @returns
  *
- * A object containing the metadata (`placeholderName` and `associatedMesssageId`) of the
+ * A object containing the metadata (`placeholderName` and `associatedMessageId`) of the
  *     preceding placeholder, along with the static text that follows.
  *
  * 包含前面占位符的元数据（`placeholderName` 和 `associatedMesssageId`）以及后面的静态文本的对象。

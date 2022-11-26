@@ -332,7 +332,7 @@ The `Router` sets the document's title using the `title` property from the `Rout
 
 <div class="alert is-helpful">
 
-**NOTE**: <br /> The `title` property follows the same rules as static route `data` and dynamic values that implement `Resolve`.
+**NOTE**: <br /> The `title` property follows the same rules as static route `data` and dynamic values that implement `ResolveFn`.
 
 **注意**：<br />
 `title` 属性遵循与实现 `Resolve` 的静态路由 `data` 和动态值相同的规则。
@@ -505,15 +505,16 @@ The following route guards are available in Angular:
 
 使用路由守卫来防止用户未经授权就导航到应用的某些部分。Angular 中提供了以下路由守卫：
 
-* [`CanActivate`](api/router/CanActivate)
+* [`canActivate`](api/router/CanActivateFn)
 
-* [`CanActivateChild`](api/router/CanActivateChild)
+* [`canActivateChild`](api/router/CanActivateChildFn)
 
-* [`CanDeactivate`](api/router/CanDeactivate)
+* [`canDeactivate`](api/router/CanDeactivateFn)
 
-* [`Resolve`](api/router/Resolve)
+* [`canMatch`](api/router/CanMatchFn)
 
-* [`CanLoad`](api/router/CanLoad)
+* [`resolve`](api/router/ResolveFn)
+*   [`canLoad`](api/router/CanLoadFn)
 
 To use route guards, consider using [component-less routes](api/router/Route#componentless-routes) as this facilitates guarding child routes.
 
@@ -523,26 +524,26 @@ Create a service for your guard:
 
 为你的守卫创建一项服务：
 
+<!-- TODO: update CLI 
 <code-example format="shell" language="shell">
 
 ng generate guard your-guard
 
 </code-example>
+-->
 
-In your guard class, implement the guard you want to use.
-The following example uses `CanActivate` to guard the route.
+In your guard function, implement the guard you want to use.
+The following example uses `canActivate` to guard the route.
 
 请在守卫类里实现你要用到的守卫。下面的例子使用 `CanActivate` 来保护该路由。
 
-<code-example header="Component (excerpt)">
+<code-example header="guard (excerpt)">
 
-export class YourGuard implements CanActivate {
-  canActivate(
+export const yourGuard: CanActivateFn = (
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
+    state: RouterStateSnapshot) => {
       // your  logic goes here
   }
-}
 
 </code-example>
 
@@ -556,7 +557,7 @@ Here, `canActivate` tells the router to mediate navigation to this particular ro
 {
   path: '/your-path',
   component: YourComponent,
-  canActivate: [YourGuard],
+  canActivate: [yourGuard],
 }
 
 </code-example>
@@ -730,7 +731,7 @@ You also have the option of switching to the `HashLocationStrategy` with an over
 
 <div class="alert is-helpful">
 
-For more information on providers and the bootstrap process, see [Dependency Injection](guide/dependency-injection#bootstrap).
+For more information on providers and the bootstrap process, see [Dependency Injection](guide/dependency-injection-providers).
 
 关于提供程序和引导过程的更多信息，请参阅[依赖注入](guide/dependency-injection#bootstrap)。
 

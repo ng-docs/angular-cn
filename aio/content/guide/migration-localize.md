@@ -35,7 +35,7 @@ It also lists `@angular/localize` as a dependency in your app's `package.json` t
 
 `@angular/localize` is a new package that supports i18n of messages in Ivy applications.
 This package requires a global `$localize` symbol to exist.
-The symbol is loaded by importing the `@angular/localize/init` module, which has the side-effect of attaching it to the global scope.
+The symbol is loaded by importing the `@angular/localize/init` module, which has the side effect of attaching it to the global scope.
 
 `@angular/localize` 是一个新的包，它在 Ivy 应用中支持信息的 i18n。该包需要一个全局的 `$localize` 符号才能存在。该符号是通过导入 `@angular/localize/init` 模块来加载的，该模块的副作用是将其附加到全局作用域。
 
@@ -57,7 +57,7 @@ Because the application does not need to be built again for each locale, this ma
 The post-compilation inlining step is optional —for example during development or if the translations will be inlined at runtime.
 Therefore this global `$localize` must be available on the global scope at runtime.
 To make `$localize` available on the global scope, each application must now import the `@angular/localize/init` module.
-This has the side-effect of attaching a minimal implementation of `&dollar;localize` to the global scope.
+This has the side effect of attaching a minimal implementation of `&dollar;localize` to the global scope.
 
 编译后的内联步骤是可选的 - 比如在开发过程中，或者运行期内联时。因此，这个 `$localize` 在运行时必须在全局范围内可用。为了让全局范围内的 `$localize` 可用，每个应用程序现在都必须导入 `@angular/localize/init` 模块。这就是把 `$localize` 的一个最小实现附加到全局范围带来的副作用。
 

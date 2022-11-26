@@ -24,7 +24,7 @@ Angular 是一个基于 [TypeScript](https://www.typescriptlang.org) 构建的�
   一套开发工具，可帮助你开发、构建、测试和更新代码
 
 With Angular, you're taking advantage of a platform that can scale from single-developer projects to enterprise-level applications.
-Angular is designed to make updating as straightforward as possible, so take advantage of the latest developments with a minimum of effort.
+Angular is designed to make updating as straightforward as possible, so take advantage of the latest developments with minimal effort.
 Best of all, the Angular ecosystem consists of a diverse group of over 1.7 million developers, library authors, and content creators.
 
 借助 Angular，无论单人项目还是企业级应用，你都能获得平台带来的优势。Angular 的设计目标之一就是让更新更容易，因此你可以用最小的成本升级到最新的 Angular 版本。最重要的是，Angular 的生态系统由包括 170 万名开发人员、库作者和内容创作者在内的多元团队构成。
@@ -92,7 +92,7 @@ When Angular renders this component, the resulting DOM looks like this:
 <code-example format="html" language="html" path="what-is-angular/src/app/hello-world-example.html"></code-example>
 
 Angular's component model offers strong encapsulation and an intuitive application structure.
-Components also make your application painless to unit test and can improve the overall readability of your code.
+Components also make your application painless to unit test and can improve the general readability of your code.
 
 Angular 的组件模型提供了强大的封装能力和直观的应用结构。组件还能让你的应用更容易进行单元测试，并可以提高代码的整体可读性。
 
@@ -106,16 +106,20 @@ For more information on what to do with components, see the [Components](guide/c
 
 ### 模板
 
+<!-- vale Angular.Google_WordListWarnings = NO -->
+
 Every component has an HTML template that declares how that component renders.
 You define this template either inline or by file path.
 
 每个组件都有一个 HTML 模板，用于声明该组件的渲染方式。你可以内联它或用文件路径定义此模板。
 
-Angular extends HTML with additional syntax that lets you insert dynamic values from your component.
+<!-- vale Angular.Google_WordListWarnings = YES -->
+
+Angular adds syntax elements that extend HTML so you can insert dynamic values from your component.
 Angular automatically updates the rendered DOM when your component's state changes.
 One application of this feature is inserting dynamic text, as shown in the following example.
 
-Angular 使用额外的语法扩展了 HTML，使你可以从组件中插入动态值。当组件的状态更改时，Angular 会自动更新已渲染的 DOM。此功能的应用之一是插入动态文本，如下例子所示。
+Angular 添加了一些语法元素以扩展 HTML，让你可以从组件中插入动态值。当组件的状态更改时，Angular 会自动更新已渲染的 DOM。此功能的应用之一是插入动态文本，如下例子所示。
 
 <code-example format="html" language="html" path="what-is-angular/src/app/hello-world-interpolation/hello-world-interpolation.component.html" region="say-hello"></code-example>
 
@@ -162,7 +166,7 @@ The preceding example calls a method, which is defined in the component class:
 
 <code-example format="typescript" language="typescript" path="what-is-angular/src/app/hello-world-bindings/hello-world-bindings.component.ts" region="method"></code-example>
 
-The following is a combined example of Interpolation, Property Binding and Event Binding within an Angular template:
+The following is a combined example of Interpolation, Property Binding, and Event Binding within an Angular template:
 
 以下是在 Angular 模板中插值和绑定的例子：
 
@@ -171,7 +175,7 @@ The following is a combined example of Interpolation, Property Binding and Event
     <code-pane header="hello-world-bindings.component.html" path="what-is-angular/src/app/hello-world-bindings/hello-world-bindings.component.html"></code-pane>
 </code-tabs>
 
-Add additional functionality to your templates through the use of [directives](guide/built-in-directives).
+Add features to your templates by using [directives](guide/built-in-directives).
 The most popular directives in Angular are `*ngIf` and `*ngFor`.
 Use directives to perform a variety of tasks, such as dynamically modifying the DOM structure.
 And create your own custom directives to create great user experiences.
@@ -205,7 +209,7 @@ For more information on templates, see the [Templates](guide/template-syntax) se
 Dependency injection lets you declare the dependencies of your TypeScript classes without taking care of their instantiation.
 Instead, Angular handles the instantiation for you.
 This design pattern lets you write more testable and flexible code.
-Even though understanding dependency injection is not critical to start using Angular, we strongly recommend it as a best practice and many aspects of Angular take advantage of it to some degree.
+Understanding dependency injection is not critical to start using Angular, but it is strongly recommended as a best practice. Many aspects of Angular take advantage of it to some degree.
 
 依赖注入让你可以声明 TypeScript 类的依赖项，而无需操心如何实例化它们，Angular 会为你处理这些琐事。这种设计模式能让你写出更加可测试、也更灵活的代码。尽管了解依赖注入对于开始用 Angular 并不是至关重要的事，但我们还是强烈建议你将其作为最佳实践，并且 Angular 自身的方方面面都在一定程度上利用了它。
 
@@ -234,15 +238,17 @@ For more information about dependency injection and Angular, see the [Dependency
 ## Angular CLI
 
 The Angular CLI is the fastest, straightforward, and recommended way to develop Angular applications.
-The Angular CLI makes a number of tasks trouble-free.
-Here are some examples:
+The Angular CLI makes some tasks trouble-free.
+For example:
+
+<!-- vale Angular.Google_WordListSuggestions = NO -->
 
 Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。Angular CLI 能简化许多任务。这里有些例子：
 
 | Command | Details |
 | :------ | :------ |
 | 命令 | 详情 |
-| [ng build](cli/build) | Compiles an Angular app into an output directory. |
+| [ng build](cli/build) | Compiles an Angular application into an output directory. |
 | [ng build](cli/build) | 把 Angular 应用编译到一个输出目录中。 |
 | [ng serve](cli/serve) | Builds and serves your application, rebuilding on file changes. |
 | [ng serve](cli/serve) | 构建你的应用并启动开发服务器，当有文件变化时就重新构建。 |
@@ -253,13 +259,13 @@ Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。An
 | [ng e2e](cli/e2e) | Builds and serves an Angular application, then runs end-to-end tests. |
 | [ng e2e](cli/e2e) | 构建一个 Angular 应用并启动开发服务器，然后运行端到端测试。 |
 
-You'll find the Angular CLI a valuable tool for building out your applications.
+<!-- vale Angular.Google_WordListSuggestions = YES -->
 
-你会发现 Angular CLI 是构建应用的宝贵工具。
+The Angular CLI is a valuable tool for building out your applications.
 
-For more information about the Angular CLI, see the [CLI Reference](cli) section.
+For more information about the Angular CLI, see the [Angular CLI Reference](cli) section.
 
-有关 Angular CLI 的更多信息，请参阅 [“CLI 参考手册”](cli)部分。
+有关 Angular CLI 的更多信息，请参阅 [“Angular CLI 参考手册”](cli)部分。
 
 <a id="1p-libraries"></a>
 
@@ -267,8 +273,8 @@ For more information about the Angular CLI, see the [CLI Reference](cli) section
 
 ## 自带库
 
-The section, [Angular applications: The essentials](#essentials), provides a brief overview of a couple of the key architectural elements you'll use when building Angular applications.
-But the many benefits of Angular really become apparent when your application grows and you want to add additional functions such as site navigation or user input.
+The section, [Angular applications: the essentials](#essentials), provides a brief overview of a couple of the key architectural elements that are used when building Angular applications.
+The many benefits of Angular really become clear when your application grows and you want to add functions such as site navigation or user input.
 Use the Angular platform to incorporate one of the many first-party libraries that Angular provides.
 
 [“Angular 应用：基本知识”](#essentials)部分提供了构建 Angular 应用时要用到的几个关键架构元素的简要描述。但是，当你的应用不断成长并且想要添加其他功能（比如站点导航或用户输入）时，Angular 的许多优势才会真正显现出来。届时，你可以通过 Angular 平台，来引入 Angular 所提供的众多自带库之一。
@@ -293,12 +299,14 @@ Some of the libraries available to you include:
 | [Angular Schematics](guide/schematics) | Automated scaffolding, refactoring, and update tools that simplify development at large scale. |
 | [Angular 原理图](guide/schematics) | 一些搭建脚手架、重构和升级的自动化工具。用于简化大规模应用的开发。 |
 
-These libraries expand your application's functionality while also letting you focus more on the features that make your application unique.
-Add these libraries knowing that they're designed to integrate seamlessly into and update simultaneously with the Angular framework.
+<!-- vale Angular.Google_Acronyms = YES -->
 
-这些库在扩展应用功能的同时，还能让你将更多精力放在那些令你的应用与众不同的功能上。你可以添加这些库，并相信它们能与 Angular 框架无缝集成并同步更新。
+These libraries expand your application's capabilities while also letting you focus more on the features that make your application unique.
+Add these libraries knowing that they're designed to integrate flawlessly into and update simultaneously with the Angular framework.
 
-These libraries are only required if and when they can help you add functionality to your applications or solve a particular problem.
+这些库在扩展应用能力的同时，还能让你将更多精力放在那些令你的应用与众不同的功能上。你可以添加这些库，并相信它们能与 Angular 框架无缝集成并同步更新。
+
+These libraries are only required when they can help you add features to your applications or solve a particular problem.
 
 只有当它们可以帮你向应用中添加功能或解决特定的问题时，你才需要这些库。
 
@@ -306,18 +314,19 @@ These libraries are only required if and when they can help you add functionalit
 
 ## 下一步
 
-This topic is intended to give you a brief overview of what Angular is, the advantages it provides, and what to expect as you start to build your applications.
+This topic gives you a brief overview of what Angular is, the advantages it provides, and what to expect as you start to build your applications.
 
 本主题旨在帮你了解 Angular：什么是 Angular？它有哪些优势？当构建应用时它能为你提供什么帮助？
 
-To see Angular in action, see our [Getting Started](start) tutorial.
+To see Angular in action, see the [Getting Started](start) tutorial.
 This tutorial uses [stackblitz.com](https://stackblitz.com), for you to explore a working example of Angular without any installation requirements.
 
 要实际使用 Angular，请参阅我们的[入门](start)教程。本教程使用 [stackblitz.com](https://stackblitz.com)，因此你可以浏览 Angular 的可工作范例，而不必先做任何安装工作。
 
-To explore Angular's capabilities further, we recommend reading through the sections, Understanding Angular and Developer Guides.
+The following sections are recommended to explore Angular's capabilities further:
 
-为了进一步探索 Angular 的功能，我们建议你通读《了解 Angular》 和《开发人员指南》这两节。
+*   [Understanding Angular](guide/understanding-angular-overview)
+*   [Angular Developer Guide](guide/developer-guide-overview)
 
 <!-- links -->
 

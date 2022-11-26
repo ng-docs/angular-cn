@@ -21,7 +21,7 @@ import {NO_PARENT_INJECTOR, NodeInjectorOffset} from '../interfaces/injector';
 import {AttributeMarker, InsertBeforeIndex, PropertyAliases, TConstants, TContainerNode, TElementNode, TNode as ITNode, TNodeFlags, TNodeProviderIndexes, TNodeType, toTNodeTypeAsString} from '../interfaces/node';
 import {SelectorFlags} from '../interfaces/projection';
 import {LQueries, TQueries} from '../interfaces/query';
-import {Renderer3, RendererFactory3} from '../interfaces/renderer';
+import {Renderer, RendererFactory} from '../interfaces/renderer';
 import {RComment, RElement, RNode} from '../interfaces/renderer_dom';
 import {getTStylingRangeNext, getTStylingRangeNextDuplicate, getTStylingRangePrev, getTStylingRangePrevDuplicate, TStylingKey, TStylingRange} from '../interfaces/styling';
 import {CHILD_HEAD, CHILD_TAIL, CLEANUP, CONTEXT, DebugNode, DECLARATION_VIEW, DestroyHookData, FLAGS, HEADER_OFFSET, HookData, HOST, HostBindingOpCodes, ID, INJECTOR, LContainerDebug as ILContainerDebug, LView, LViewDebug as ILViewDebug, LViewDebugRange, LViewDebugRangeContent, LViewFlags, NEXT, NodeInjectorDebug, PARENT, QUERIES, RENDERER, RENDERER_FACTORY, SANITIZER, T_HOST, TData, TView as ITView, TVIEW, TView, TViewType, TViewTypeAsString} from '../interfaces/view';
@@ -189,6 +189,7 @@ class TNode implements ITNode {
       public index: number,                                                          //
       public insertBeforeIndex: InsertBeforeIndex,                                   //
       public injectorIndex: number,                                                  //
+      public componentOffset: number,                                                //
       public directiveStart: number,                                                 //
       public directiveEnd: number,                                                   //
       public directiveStylingLast: number,                                           //
@@ -281,7 +282,6 @@ class TNode implements ITNode {
     if (this.flags & TNodeFlags.hasContentQuery) flags.push('TNodeFlags.hasContentQuery');
     if (this.flags & TNodeFlags.hasStyleInput) flags.push('TNodeFlags.hasStyleInput');
     if (this.flags & TNodeFlags.hasHostBindings) flags.push('TNodeFlags.hasHostBindings');
-    if (this.flags & TNodeFlags.isComponentHost) flags.push('TNodeFlags.isComponentHost');
     if (this.flags & TNodeFlags.isDirectiveHost) flags.push('TNodeFlags.isDirectiveHost');
     if (this.flags & TNodeFlags.isDetached) flags.push('TNodeFlags.isDetached');
     if (this.flags & TNodeFlags.isProjected) flags.push('TNodeFlags.isProjected');
@@ -524,10 +524,10 @@ export class LViewDebug<T = unknown> implements ILViewDebug<T> {
   get injector(): Injector|null {
     return this._raw_lView[INJECTOR];
   }
-  get rendererFactory(): RendererFactory3 {
+  get rendererFactory(): RendererFactory {
     return this._raw_lView[RENDERER_FACTORY];
   }
-  get renderer(): Renderer3 {
+  get renderer(): Renderer {
     return this._raw_lView[RENDERER];
   }
   get sanitizer(): Sanitizer|null {

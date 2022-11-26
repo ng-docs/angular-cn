@@ -11,7 +11,7 @@
  *
  * 错误详细信息页面的基本 URL。
  *
- * Keep the files below in full sync:
+ * Keep this constant in sync across:
  *
  * 保持以下文件完全同步：
  *
@@ -25,3 +25,8 @@
  *
  */
 export const ERROR_DETAILS_PAGE_BASE_URL = 'https://angular.io/errors';
+
+/**
+ * URL for the XSS security documentation.
+ */
+export const XSS_SECURITY_URL = 'https://g.co/ng/security#xss';

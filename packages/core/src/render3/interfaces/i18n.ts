@@ -335,7 +335,7 @@ export enum I18nCreateOpCode {
   SHIFT = 2,
 
   /**
-   * Should the node be appended to parent imedditatly after creation.
+   * Should the node be appended to parent immediately after creation.
    *
    * 创建后，节点是否应该立即附加到父级。
    *

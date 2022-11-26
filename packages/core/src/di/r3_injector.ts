@@ -23,14 +23,14 @@ import {ENVIRONMENT_INITIALIZER} from './initializer_token';
 import {setInjectImplementation} from './inject_switch';
 import {InjectionToken} from './injection_token';
 import {Injector} from './injector';
-import {catchInjectorError, injectArgs, NG_TEMP_TOKEN_PATH, setCurrentInjector, THROW_IF_NOT_FOUND, ɵɵinject} from './injector_compatibility';
+import {catchInjectorError, convertToBitFlags, injectArgs, NG_TEMP_TOKEN_PATH, setCurrentInjector, THROW_IF_NOT_FOUND, ɵɵinject} from './injector_compatibility';
 import {INJECTOR} from './injector_token';
 import {getInheritedInjectableDef, getInjectableDef, InjectorType, ɵɵInjectableDeclaration} from './interface/defs';
-import {InjectFlags} from './interface/injector';
-import {ClassProvider, ConstructorProvider, ImportedNgModuleProviders, Provider, StaticClassProvider} from './interface/provider';
+import {InjectFlags, InjectOptions} from './interface/injector';
+import {ClassProvider, ConstructorProvider, EnvironmentProviders, InternalEnvironmentProviders, isEnvironmentProviders, Provider, StaticClassProvider} from './interface/provider';
 import {INJECTOR_DEF_TYPES} from './internal_tokens';
 import {NullInjector} from './null_injector';
-import {importProvidersFrom, isExistingProvider, isFactoryProvider, isTypeProvider, isValueProvider, SingleProvider} from './provider_collection';
+import {isExistingProvider, isFactoryProvider, isTypeProvider, isValueProvider, SingleProvider} from './provider_collection';
 import {ProviderToken} from './provider_token';
 import {INJECTOR_SCOPE, InjectorScope} from './scope';
 
@@ -91,7 +91,6 @@ interface Record<T> {
  *
  * 创建一个新的 `Injector`，它是使用 `InjectorType<any>` 的 `defType` 配置的。
  *
- * @developerPreview
  */
 export abstract class EnvironmentInjector implements Injector {
   /**
@@ -110,6 +109,28 @@ export abstract class EnvironmentInjector implements Injector {
    * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
    *
    */
+  abstract get<T>(token: ProviderToken<T>, notFoundValue: undefined, options: InjectOptions&{
+    optional?: false;
+  }): T;
+  /**
+   * Retrieves an instance from the injector based on the provided token.
+   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   */
+  abstract get<T>(token: ProviderToken<T>, notFoundValue: null|undefined, options: InjectOptions): T
+      |null;
+  /**
+   * Retrieves an instance from the injector based on the provided token.
+   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   */
+  abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, options?: InjectOptions): T;
+  /**
+   * Retrieves an instance from the injector based on the provided token.
+   * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
+   * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
+   * @deprecated use object-based flags (`InjectOptions`) instead.
+   */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**
    * @deprecated
@@ -121,6 +142,18 @@ export abstract class EnvironmentInjector implements Injector {
    * @suppress {duplicate}
    */
   abstract get(token: any, notFoundValue?: any): any;
+
+  /**
+   * Runs the given function in the context of this `EnvironmentInjector`.
+   *
+   * Within the function's stack frame, `inject` can be used to inject dependencies from this
+   * injector. Note that `inject` is only usable synchronously, and cannot be used in any
+   * asynchronous callbacks or after any `await` points.
+   *
+   * @param fn the closure to be run in the context of this injector
+   * @returns the return value of the function, if any
+   */
+  abstract runInContext<ReturnT>(fn: () => ReturnT): ReturnT;
 
   abstract destroy(): void;
 
@@ -168,11 +201,13 @@ export class R3Injector extends EnvironmentInjector {
   private injectorDefTypes: Set<Type<unknown>>;
 
   constructor(
-      providers: Array<Provider|ImportedNgModuleProviders>, readonly parent: Injector,
+      providers: Array<Provider|EnvironmentProviders>, readonly parent: Injector,
       readonly source: string|null, readonly scopes: Set<InjectorScope>) {
     super();
     // Start off by creating Records for every provider.
-    forEachSingleProvider(providers, provider => this.processProvider(provider));
+    forEachSingleProvider(
+        providers as Array<Provider|InternalEnvironmentProviders>,
+        provider => this.processProvider(provider));
 
     // Make sure the INJECTOR token provides this injector.
     this.records.set(INJECTOR, makeRecord(undefined, this));
@@ -230,10 +265,25 @@ export class R3Injector extends EnvironmentInjector {
     this._onDestroyHooks.push(callback);
   }
 
+  override runInContext<ReturnT>(fn: () => ReturnT): ReturnT {
+    this.assertNotDestroyed();
+
+    const previousInjector = setCurrentInjector(this);
+    const previousInjectImplementation = setInjectImplementation(undefined);
+    try {
+      return fn();
+    } finally {
+      setCurrentInjector(previousInjector);
+      setInjectImplementation(previousInjectImplementation);
+    }
+  }
+
   override get<T>(
       token: ProviderToken<T>, notFoundValue: any = THROW_IF_NOT_FOUND,
-      flags = InjectFlags.Default): T {
+      flags: InjectFlags|InjectOptions = InjectFlags.Default): T {
     this.assertNotDestroyed();
+    flags = convertToBitFlags(flags) as InjectFlags;
+
     // Set the injection context.
     const previousInjector = setCurrentInjector(this);
     const previousInjectImplementation = setInjectImplementation(undefined);
@@ -297,6 +347,14 @@ export class R3Injector extends EnvironmentInjector {
     const previousInjectImplementation = setInjectImplementation(undefined);
     try {
       const initializers = this.get(ENVIRONMENT_INITIALIZER.multi, EMPTY_ARRAY, InjectFlags.Self);
+      if (ngDevMode && !Array.isArray(initializers)) {
+        throw new RuntimeError(
+            RuntimeErrorCode.INVALID_MULTI_PROVIDER,
+            'Unexpected type of the `ENVIRONMENT_INITIALIZER` token value ' +
+                `(expected an array, but got ${typeof initializers}). ` +
+                'Please check that the `ENVIRONMENT_INITIALIZER` token is configured as a ' +
+                '`multi: true` provider.');
+      }
       for (const initializer of initializers) {
         initializer();
       }
@@ -461,7 +519,7 @@ function providerToRecord(provider: SingleProvider): Record<any> {
 export function providerToFactory(
     provider: SingleProvider, ngModuleType?: InjectorType<any>, providers?: any[]): () => any {
   let factory: (() => any)|undefined = undefined;
-  if (ngDevMode && isImportedNgModuleProviders(provider)) {
+  if (ngDevMode && isEnvironmentProviders(provider)) {
     throwInvalidProviderError(undefined, providers, provider);
   }
 
@@ -516,21 +574,16 @@ function couldBeInjectableType(value: any): value is ProviderToken<any> {
       (typeof value === 'object' && value instanceof InjectionToken);
 }
 
-function isImportedNgModuleProviders(provider: Provider|ImportedNgModuleProviders):
-    provider is ImportedNgModuleProviders {
-  return !!(provider as ImportedNgModuleProviders).ɵproviders;
-}
-
 function forEachSingleProvider(
-    providers: Array<Provider|ImportedNgModuleProviders>,
+    providers: Array<Provider|InternalEnvironmentProviders>,
     fn: (provider: SingleProvider) => void): void {
   for (const provider of providers) {
     if (Array.isArray(provider)) {
       forEachSingleProvider(provider, fn);
-    } else if (isImportedNgModuleProviders(provider)) {
+    } else if (provider && isEnvironmentProviders(provider)) {
       forEachSingleProvider(provider.ɵproviders, fn);
     } else {
-      fn(provider);
+      fn(provider as SingleProvider);
     }
   }
 }

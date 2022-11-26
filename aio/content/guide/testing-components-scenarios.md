@@ -18,7 +18,7 @@ If you'd like to experiment with the application that this guide describes, <liv
 
 ## 组件绑定
 
-In the example app, the `BannerComponent` presents static title text in the HTML template.
+In the example application, the `BannerComponent` presents static title text in the HTML template.
 
 在范例应用中，`BannerComponent` 在 HTML 模板中展示了静态的标题文本。
 
@@ -234,7 +234,7 @@ Components often have service dependencies.
 
 组件通常都有服务依赖。
 
-The `WelcomeComponent` displays a welcome message to the logged in user.
+The `WelcomeComponent` displays a welcome message to the logged-in user.
 It knows who the user is based on a property of the injected `UserService`:
 
 `WelcomeComponent` 会向登录用户显示一条欢迎信息。它可以基于注入进来的 `UserService` 的一个属性了解到用户是谁：
@@ -261,10 +261,10 @@ But not the real `UserService`.
 #### 为服务提供测试替身
 
 A *component-under-test* doesn't have to be injected with real services.
-In fact, it is usually better if they are test doubles (stubs, fakes, spies, or mocks).
+In fact, it is usually better if they are test doubles such as, stubs, fakes, spies, or mocks.
 The purpose of the spec is to test the component, not the service, and real services can be trouble.
 
-*待测组件*不必注入真正的服务。事实上，如果它们是测试替身（stubs，fakes，spies 或 mocks），通常会更好。该测试规约的目的是测试组件，而不是服务，使用真正的服务可能会遇到麻烦。
+*待测组件*不必注入真正的服务。事实上，如果它们是测试替身，比如 stubs，fakes，spies 或 mocks，通常会更好。该测试规约的目的是测试组件，而不是服务，使用真正的服务可能会遇到麻烦。
 
 Injecting the real `UserService` could be a nightmare.
 The real service might ask the user for login credentials and attempt to reach an authentication server.
@@ -285,7 +285,7 @@ This particular test suite supplies a minimal mock of the `UserService` that sat
 
 #### 取得所注入的服务
 
-The tests need access to the (stub) `UserService` injected into the `WelcomeComponent`.
+The tests need access to the stub `UserService` injected into the `WelcomeComponent`.
 
 这些测试需要访问注入到 `WelcomeComponent` 中的 `UserService` 桩。
 
@@ -515,20 +515,21 @@ XHR calls within a test are rare, but if you need to call XHR, see the [`waitFor
 
 #### `tick()` 函数
 
-You do have to call [tick()](api/core/testing/tick) to advance the (virtual) clock.
+You do have to call [tick()](api/core/testing/tick) to advance the virtual clock.
 
-你必须调用 [tick()](api/core/testing/tick) 来推进（虚拟）时钟。
+你必须调用 [tick()](api/core/testing/tick) 来推进虚拟时钟。
 
 Calling [tick()](api/core/testing/tick) simulates the passage of time until all pending asynchronous activities finish.
 In this case, it waits for the error handler's `setTimeout()`.
 
 调用 [tick()](api/core/testing/tick) 时会在所有挂起的异步活动完成之前模拟时间的流逝。在这种情况下，它会等待错误处理程序中的 `setTimeout()`。
 
-The [tick()](api/core/testing/tick) function accepts milliseconds and tickOptions as parameters, the millisecond (defaults to 0 if not provided) parameter represents how much the virtual clock advances.
+The [tick()](api/core/testing/tick) function accepts `millis` and `tickOptions` as parameters. The `millis` parameter specifies how much the virtual clock advances and defaults to `0` if not provided.
 For example, if you have a `setTimeout(fn, 100)` in a `fakeAsync()` test, you need to use `tick(100)` to trigger the fn callback.
-The tickOptions is an optional parameter with a property called `processNewMacroTasksSynchronously` (defaults to true) that represents whether to invoke new generated macro tasks when ticking.
+The optional `tickOptions` parameter has a property named `processNewMacroTasksSynchronously`. The `processNewMacroTasksSynchronously` property represents whether to invoke new generated macro tasks when ticking and defaults to `true`.
 
-[tick()](api/core/testing/tick) 函数接受毫秒数(milliseconds) 和 tick 选项(tickOptions) 作为参数，毫秒数（默认值为 0）参数表示虚拟时钟要前进多少。比如，如果你在 `fakeAsync()` 测试中有一个 `setTimeout(fn, 100)`，你就需要使用 `tick(100)` 来触发其 fn 回调。tickOptions 是一个可选参数，它带有一个名为 `processNewMacroTasksSynchronously` 的属性（默认为 true），表示在 tick 时是否要调用新生成的宏任务。
+[tick()](api/core/testing/tick) 函数接受 `millis` 和 `tickOptions` 作为参数，`millis` 参数表示虚拟时钟要推进多少，如果未提供，则默认为 `0`。比如，如果你在 `fakeAsync()` 测试中有一个 `setTimeout(fn, 100)`，你就需要使用 `tick(100)` 来触发其 fn 回调。
+`tickOptions` 是一个可选参数，它带有一个名为 `processNewMacroTasksSynchronously` 的属性，它表示在 tick 时是否要调用新生成的宏任务，默认为 `true`。
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick"></code-example>
 
@@ -539,17 +540,13 @@ It's a companion to `fakeAsync()` and you can only call it within a `fakeAsync()
 
 #### tickOptions
 
+In this example, you have a new macro task, the nested `setTimeout` function. By default, when the `tick` is setTimeout, `outside` and `nested` will both be triggered.
+
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-sync"></code-example>
 
-In this example, you have a new macro task (nested setTimeout), by default, when the `tick` is setTimeout `outside` and `nested` will both be triggered.
-
-在这个例子中，我们有一个新的宏任务（嵌套的 setTimeout），默认情况下，当 `tick` 时，setTimeout 的 `outside` 和 `nested` 都会被触发。
+In some case, you don't want to trigger the new macro task when ticking. You can use `tick(millis, {processNewMacroTasksSynchronously: false})` to not invoke a new macro task.
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-async"></code-example>
-
-And in some case, you don't want to trigger the new macro task when ticking, you can use `tick(milliseconds, {processNewMacroTasksSynchronously: false})` to not invoke new macro task.
-
-在某种情况下，你不希望在 tick 时触发新的宏任务，就可以使用 `tick(milliseconds, {processNewMacroTasksSynchronously: false})` 来要求不调用新的宏任务。
 
 #### Comparing dates inside fakeAsync()
 
@@ -945,7 +942,7 @@ RxJS 弹珠测试这个主题非常丰富，超出了本指南的范围。你可
 ## 具有输入和输出属性的组件
 
 A component with inputs and outputs typically appears inside the view template of a host component.
-The host uses a property binding to set the input property and an event binding tolisten to events raised by the output property.
+The host uses a property binding to set the input property and an event binding to listen to events raised by the output property.
 
 具有输入和输出属性的组件通常会出现在宿主组件的视图模板中。宿主使用属性绑定来设置输入属性，并使用事件绑定来监听输出属性引发的事件。
 
@@ -1101,17 +1098,17 @@ The test triggered a "click" event.
 
 <code-example path="testing/src/app/dashboard/dashboard-hero.component.spec.ts" region="trigger-event-handler"></code-example>
 
-The test assumes (correctly in this case) that the runtime event handler —the component's `click()` method— doesn't care about the event object.
+In this case, the test correctly assumes that the runtime event handler, the component's `click()` method, doesn't care about the event object.
 
-测试程序假设（在这里应该这样)运行时间的事件处理器（组件的 `click()` 方法）不关心事件对象。
+在这里，测试程序假设运行时间的事件处理器（组件的 `click()` 方法）不关心事件对象。
 
 <div class="alert is-helpful">
 
 Other handlers are less forgiving.
-For example, the `RouterLink` directive expects an object with a `button` property that identifies which mouse button (if any) was pressed during the click.
+For example, the `RouterLink` directive expects an object with a `button` property that identifies which mouse button, if any, was pressed during the click.
 The `RouterLink` directive throws an error if the event object is missing.
 
-其它处理器的要求比较严格。比如，`RouterLink` 指令期望一个带有 `button` 属性的对象，该属性用于指出点击时按下的是哪个鼠标按钮。如果不给出这个事件对象，`RouterLink` 指令就会抛出一个错误。
+其它处理器的要求比较严格。比如，`RouterLink` 指令期望一个带有 `button` 属性的对象，该属性用于指出点击时按下的是哪个鼠标按钮（如果有）。如果不给出这个事件对象，`RouterLink` 指令就会抛出一个错误。
 
 </div>
 
@@ -1143,7 +1140,7 @@ Make that consistent and straightforward by encapsulating the *click-triggering*
 
 The first parameter is the *element-to-click*.
 If you want, pass a custom event object as the second parameter.
-The default is a (partial) [left-button mouse event object](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) accepted by many handlers including the `RouterLink` directive.
+The default is a partial [left-button mouse event object](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) accepted by many handlers including the `RouterLink` directive.
 
 第一个参数是**用来点击的元素**。如果你愿意，可以将自定义的事件对象传给第二个参数。 默认的是（局部的）[鼠标左键事件对象](https://developer.mozilla.org/docs/Web/API/MouseEvent/button)，它被许多事件处理器接受，包括 `RouterLink` 指令。
 
@@ -1225,7 +1222,7 @@ The `createComponent` returns a `fixture` that holds an instance of `TestHostCom
 
 `createComponent` 返回的 `fixture` 里有 `TestHostComponent` 实例，而非 `DashboardHeroComponent` 组件实例。
 
-Creating the `TestHostComponent` has the side-effect of creating a `DashboardHeroComponent` because the latter appears within the template of the former.
+Creating the `TestHostComponent` has the side effect of creating a `DashboardHeroComponent` because the latter appears within the template of the former.
 The query for the hero element (`heroEl`) still finds it in the test DOM, albeit at greater depth in the element tree than before.
 
 当然，创建 `TestHostComponent` 有创建 `DashboardHeroComponent` 的副作用，因为后者出现在前者的模板中。英雄元素（`heroEl`)的查询语句仍然可以在测试 DOM 中找到它，尽管元素树比以前更深。
@@ -1682,7 +1679,7 @@ This is a skill you might need to test a more sophisticated component, one that 
 
 #### 这些测试有什么优点？
 
-Stubbed `RouterLink` tests can confirm that a component with links and an outlet is setup properly, that the component has the links it should have, and that they are all pointing in the expected direction.
+Stubbed `RouterLink` tests can confirm that a component with links and an outlet is set up properly, that the component has the links it should have, and that they are all pointing in the expected direction.
 These tests do not concern whether the application will succeed in navigating to the target component when the user clicks a link.
 
 用 `RouterLink` 的桩指令进行测试可以确认带有链接和 outlet 的组件的设置的正确性，确认组件有应该有的链接，确认它们都指向了正确的方向。这些测试程序不关心用户点击链接时，也不关心应用是否会成功的导航到目标组件。
@@ -1837,7 +1834,7 @@ But the `BannerComponent` requires external files that the compiler must read fr
 
 当它的源码都在内存中的时候，这样做没问题。不过 `BannerComponent` 需要一些外部文件，编译时必须从文件系统中读取它，而这是一个天生的*异步*操作。
 
-If the `TestBed` were allowed to continue, the tests would run and fail mysteriously before the compiler could finished.
+If the `TestBed` were allowed to continue, the tests would run and fail mysteriously before the compiler could finish.
 
 如果 `TestBed` 继续执行，这些测试就会继续运行，并在编译器完成这些异步工作之前导致莫名其妙的失败。
 
@@ -2000,13 +1997,13 @@ In addition to the support it receives from the default testing module `CommonMo
 
   `shared` 目录里的 `TitleCasePipe`
 
-* Router services (which these tests are stubbing)
+* The Router services that these tests are stubbing out
 
-  一些路由器服务（测试程序将 stub 伪造它们）
+  一些路由器服务，测试程序将用打桩的方式伪造它们
 
-* Hero data access services (also stubbed)
+* The Hero data access services that are also stubbed out
 
-  英雄数据访问服务（同样被 stub 伪造了）
+  英雄数据访问服务，它同样被用打桩的方式伪造了
 
 One approach is to configure the testing module from the individual pieces as in this example:
 
@@ -2040,9 +2037,9 @@ The test configuration can use the `SharedModule` too as seen in this alternativ
 
 <code-example header="app/hero/hero-detail.component.spec.ts (SharedModule setup)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="setup-shared-module"></code-example>
 
-It's a bit tighter and smaller, with fewer import statements (not shown).
+It's a bit tighter and smaller, with fewer import statements, which are not shown in this example.
 
-它的导入声明少一些（未显示），稍微干净一些，小一些。
+它的导入声明少一些，稍微干净一些，小一些，这个例子中未展示它。
 
 <a id="feature-module-import"></a>
 
@@ -2138,9 +2135,9 @@ The `TestBed.overrideComponent` method can replace the component's `providers` w
 
 <code-example header="app/hero/hero-detail.component.spec.ts (Override setup)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="setup-override"></code-example>
 
-Notice that `TestBed.configureTestingModule` no longer provides a (fake) `HeroService` because it's [not needed](#spy-stub).
+Notice that `TestBed.configureTestingModule` no longer provides a fake `HeroService` because it's [not needed](#spy-stub).
 
-注意，`TestBed.configureTestingModule` 不再提供（伪造的）`HeroService`，因为[并不需要](#spy-stub)。
+注意，`TestBed.configureTestingModule` 不再提供伪造的`HeroService`，因为[并不需要](#spy-stub)。
 
 <a id="override-component-method"></a>
 

@@ -267,7 +267,7 @@ The parent component cannot data bind to the child's `start` and `stop` methods 
 
 父组件不能通过数据绑定使用子组件的 `start` 和 `stop` 方法，也不能访问子组件的 `seconds` 属性。
 
-Place a local variable, `#timer`, on the tag `<countdown-timer>` representing the child component.
+Place a local variable, `#timer`, on the tag `<app-countdown-timer>` representing the child component.
 That gives you a reference to the child component and the ability to access *any of its properties or methods* from within the parent template.
 
 把本地变量(`#timer`)放到(`<countdown-timer>`)标签中，用来代表子组件。这样父组件的模板就得到了子组件的引用，于是可以在父组件的模板中访问子组件的所有属性和方法。
@@ -316,7 +316,7 @@ The parent component *itself* has no access to the child.
 这个*本地变量*方法是个简单明了的方法。但是它也有局限性，因为父组件-子组件的连接必须全部在父组件的模板中进行。父组件本身的代码对子组件没有访问权。
 
 You can't use the *local variable* technique if the parent component's *class* relies on the child component's *class*.
-The parent-child relationship of the components is not established within each components respective *class* with the *local variable* technique.
+The parent-child relationship of the components is not established within each component's respective *class* with the *local variable* technique.
 Because the *class* instances are not connected to one another, the parent *class* cannot access the child *class* properties and methods.
 
 如果父组件的*类*需要依赖于子组件类，就不能使用*本地变量*方法。组件之间的父子关系 组件的父子关系不能通过在每个组件的*类*中各自定义*本地变量*来建立。这是因为这两个*类*的实例互相不知道，因此父*类*也就不能访问子*类*中的属性和方法。
@@ -400,7 +400,7 @@ Use [the same countdown timer tests](guide/component-interaction#countdown-tests
 
 ## 父组件和子组件通过服务来通讯
 
-A parent component and its children share a service whose interface enables bi-directional communication *within the family*.
+A parent component and its children share a service whose interface enables bidirectional communication *within the family*.
 
 父组件和它的子组件共享同一个服务，利用该服务*在组件家族内部*实现双向通讯。
 

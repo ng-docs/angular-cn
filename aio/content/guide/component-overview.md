@@ -1,4 +1,4 @@
-# Angular Components Overview
+# Angular components overview
 
 # Angular Components 概述
 
@@ -81,7 +81,7 @@ By default, this command creates the following:
 
 默认情况下，该命令会创建以下内容：
 
-* A folder named after the component
+* A directory named after the component
 
   一个以该组件命名的文件夹
 

@@ -48,7 +48,7 @@ import { AppComponent } from './app.component';
 Each module has its own top-level scope.
 In other words, top-level variables and functions in a module are not seen in other scripts or modules.
 Each module provides a namespace for identifiers to prevent them from clashing with identifiers in other modules.
-With multiple modules, you can prevent accidental global variables by creating a single global namespace and adding sub-modules to it.
+With multiple modules, you can prevent accidental global variables by creating a single global namespace and adding submodules to it.
 
 每个模块都有自己的顶级作用域。换句话说，模块中的顶级变量和函数在其他脚本或模块中是看不到的。每个模块都为其中的标识符提供了一个命名空间，以防止它们与其它模块中的标识符冲突。要想使用多个模块，你可以通过创建一个全局命名空间并为它添加子模块来防止出现意外的全局变量。
 

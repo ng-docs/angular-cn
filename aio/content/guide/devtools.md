@@ -194,7 +194,7 @@ Type `$ng0` to get a reference to the instance of the currently selected compone
 ### 选择指令或组件
 
 Similar to browsers' DevTools, you can inspect the page to select a particular component or directive.
-Click the ***Inspect element*** icon at the top left corner within Angular DevTools and hover over a DOM element on the page.
+Click the ***Inspect element*** icon in the top left corner within Angular DevTools and hover over a DOM element on the page.
 The extension recognizes the associated directives and/or components and lets you select the corresponding element in the Component tree.
 
 与浏览器的 DevTools 相似，你可以检查页面以选择特定的组件或指令。单击 DevTools 中左上角的 ***Inspect element（审查元素）***图标，然后将鼠标悬停在页面上的 DOM 元素上。该扩展可以识别关联的指令和/或组件，并允许你在组件树中选择相应的元素。
@@ -222,7 +222,7 @@ The **Profiler** tab lets you preview the execution of Angular's change detectio
 </div>
 
 The Profiler lets you start profiling or import an existing profile.
-To start profiling your application, hover over the circle at the top-left corner within the **Profiler** tab and click **Start recording**.
+To start profiling your application, hover over the circle in the top-left corner within the **Profiler** tab and click **Start recording**.
 
 通过 Profiler，你可以开始进行剖析或导入现有的剖析记录文件。要开始对应用程序进行性能剖析，请将鼠标悬停在 **Profiler** 选项卡内左上角的圆圈上，然后点击 **Start recording**。
 

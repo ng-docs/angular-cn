@@ -97,7 +97,7 @@ export abstract class ChangeDetectorRef {
    *
    * Components are normally marked as dirty (in need of rerendering) when inputs
    * have changed or events have fired in the view. Call this method to ensure that
-   * a component is checked even if these triggers have not occured.
+   * a component is checked even if these triggers have not occurred.
    *
    * 当输入已更改或视图中发生了事件时，组件通常会标记为脏的（需要重新渲染）。调用此方法会确保即使那些触发器没有被触发，也仍然检查该组件。
    *
