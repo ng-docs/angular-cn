@@ -37,7 +37,7 @@ export class ActivePerfRecorder implements PerfRecorder {
   private currentPhaseEntered = this.zeroTime;
 
   /**
-   * Creates an `ActivePerfRecoder` with its zero point set to the current time.
+   * Creates an `ActivePerfRecorder` with its zero point set to the current time.
    *
    * 创建一个 `ActivePerfRecoder` ，其零点设置为当前时间。
    *

@@ -54,22 +54,11 @@ export class SwUpdate {
    *
    * 改用 {@link versionUpdates} 。
    *
-   * The of behavior `available` can be rebuild by filtering for the `VersionReadyEvent`:
+   * The behavior of `available` can be replicated by using `versionUpdates` by filtering for the
+   * `VersionReadyEvent`:
    *
-   * 可以通过过滤 `VersionReadyEvent` 来重建 `available` 的 of 行为：
-   *
-   * ```
-   * import {filter, map} from 'rxjs/operators';
-   * // ...
-   * const updatesAvailable = swUpdate.versionUpdates.pipe(
-   *   filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
-   *   map(evt => ({
-   *     type: 'UPDATE_AVAILABLE',
-   *     current: evt.currentVersion,
-   *     available: evt.latestVersion,
-   *   })));
-   * ```
-   *
+   * {@example service-worker-getting-started/src/app/prompt-update.service.ts
+   * region='sw-replicate-available'}
    */
   readonly available: Observable<UpdateAvailableEvent>;
 
@@ -172,27 +161,25 @@ export class SwUpdate {
    * Updates the current client (i.e. browser tab) to the latest version that is ready for
    * activation.
    *
-   * 将当前客户端（即浏览器选项卡）更新到可激活的最新版本。
+   * In most cases, you should not use this method and instead should update a client by reloading
+   * the page.
    *
-   * @returns
+   * <div class="alert is-important">
    *
-   * a promise that
+   * Updating a client without reloading can easily result in a broken application due to a version
+   * mismatch between the [application shell](guide/glossary#app-shell) and other page resources,
+   * such as [lazy-loaded chunks](guide/glossary#lazy-loading), whose filenames may change between
+   * versions.
    *
-   * 一个 Promise
+   * Only use this method, if you are certain it is safe for your specific use case.
    *
-   * - resolves to `true` if an update was activated successfully
+   * </div>
    *
-   *   如果更新已成功激活，则解析为 `true`
-   *
-   * - resolves to `false` if no update was available (for example, the client was already on the
-   *   latest version).
-   *
-   *   如果没有可用的更新（例如，客户端已经在最新版本上），则解析为 `false` 。
-   *
-   * - rejects if any error occurs
-   *
-   *   如果发生任何错误，则拒绝
-   *
+   * @returns a promise that
+   *  - resolves to `true` if an update was activated successfully
+   *  - resolves to `false` if no update was available (for example, the client was already on the
+   *    latest version).
+   *  - rejects if any error occurs
    */
   activateUpdate(): Promise<boolean> {
     if (!this.sw.isEnabled) {

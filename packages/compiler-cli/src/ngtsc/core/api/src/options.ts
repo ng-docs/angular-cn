@@ -33,6 +33,11 @@ export interface TestOnlyOptions {
   _useHostForImportGeneration?: boolean;
 
   /**
+   * Enable the Language Service APIs for template type-checking for tests.
+   */
+  _enableTemplateTypeChecker?: boolean;
+
+  /**
    * An option to enable ngtsc's internal performance tracing.
    *
    * 启用 ngtsc 的内部性能跟踪的选项。

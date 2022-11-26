@@ -17,9 +17,7 @@ This section provides guidance on migrating from this deprecated API to the newe
 
 The deprecated `Renderer` class has been removed in version 9 of Angular, so it's necessary to migrate to a supported API.
 Using `Renderer2` is the recommended strategy because it supports a similar set of functionality to `Renderer`.
-The API surface is quite large (with 19 methods), but the schematic should simplify this process for your applications.
-
-已弃用的 `Renderer` 类已经在 Angular 的 9 中删除了，所以有必要迁移到支持的 API。建议使用 `Renderer2` 策略，因为它支持与 `Renderer` 很相似的一组功能。这个 API 非常庞大（有 19 种方法），但原理图会帮你简化这个过程。
+With 19 methods, the API surface is quite large, but the schematic should simplify this process for your applications.
 
 ## Is there action required on my end?
 
@@ -109,8 +107,7 @@ The schematic also keeps their parameter types as `any` so that it doesn't have 
 **Library authors should definitely use this migration to move away from the `Renderer`.**
 **Otherwise, the libraries won't work with applications built with version 9.**
 
-**库的作者肯定要做这种迁移来远离 `Renderer`。**
-**否则，这些库将不再适用于用版本 9 构建的应用。**
+**库的作者肯定要做这种迁移来远离 `Renderer`。** **否则，这些库将不再适用于用版本 9 构建的应用。**
 
 ### Full list of method migrations
 

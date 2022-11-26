@@ -38,7 +38,7 @@ export interface AstFactory<TStatement, TExpression> {
   attachComments(statement: TStatement, leadingComments: LeadingComment[]): void;
 
   /**
-   * Create a literal array expresion (e.g. `[expr1, expr2]`).
+   * Create a literal array expression (e.g. `[expr1, expr2]`).
    *
    * 创建一个文字数组表达式（例如 `[expr1, expr2]`）。
    *
@@ -107,7 +107,7 @@ export interface AstFactory<TStatement, TExpression> {
    *
    * 估算为要调用的函数的表达式。
    *
-   * @param args the arugments to be passed to the call.
+   * @param args the arguments to be passed to the call.
    *
    * 要传递给调用的参数。
    *

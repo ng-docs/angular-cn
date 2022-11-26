@@ -199,7 +199,8 @@ export function unwrapMessagePartsFromLocalizeCall(
 }
 
 /**
- * Parse the localize call expression to extract the arguments that hold the substition expressions.
+ * Parse the localize call expression to extract the arguments that hold the substitution
+ * expressions.
  *
  * 解析 localize 调用表达式以提取包含替换表达式的参数。
  *

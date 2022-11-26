@@ -8,10 +8,6 @@
 
 import ts from 'typescript';
 
-import {ClassDeclaration} from '../../reflection';
-
-const PARSED_TS_VERSION = parseFloat(ts.versionMajorMinor);
-
 
 /**
  * A `Set` of `ts.SyntaxKind`s of `ts.Expression` which are safe to wrap in a `ts.AsExpression`
@@ -175,70 +171,6 @@ export function tsCallMethod(
       /* expression */ methodAccess,
       /* typeArguments */ undefined,
       /* argumentsArray */ args);
-}
-
-/**
- * Updates a `ts.TypeParameter` declaration.
- *
- * 更新 `ts.TypeParameter` 声明。
- *
- * TODO(crisbeto): this is a backwards-compatibility layer for versions of TypeScript less than 4.7.
- * We should remove it once we have dropped support for the older versions.
- *
- * TODO(crisbeto) ：这是针对低于 4.7 的 TypeScript
- * 版本的向后兼容层。一旦我们放弃了对旧版本的支持，我们就应该将其删除。
- *
- */
-export function tsUpdateTypeParameterDeclaration(
-    node: ts.TypeParameterDeclaration, name: ts.Identifier, constraint: ts.TypeNode|undefined,
-    defaultType: ts.TypeNode|undefined): ts.TypeParameterDeclaration {
-  return PARSED_TS_VERSION < 4.7 ?
-      ts.factory.updateTypeParameterDeclaration(node, name, constraint, defaultType) :
-      (ts.factory.updateTypeParameterDeclaration as any)(
-          node, /* modifiers */[], name, constraint, defaultType);
-}
-
-export function checkIfClassIsExported(node: ClassDeclaration): boolean {
-  // A class is exported if one of two conditions is met:
-  // 1) it has the 'export' modifier.
-  // 2) it's declared at the top level, and there is an export statement for the class.
-  if (node.modifiers !== undefined &&
-      node.modifiers.some(mod => mod.kind === ts.SyntaxKind.ExportKeyword)) {
-    // Condition 1 is true, the class has an 'export' keyword attached.
-    return true;
-  } else if (
-      node.parent !== undefined && ts.isSourceFile(node.parent) &&
-      checkIfFileHasExport(node.parent, node.name.text)) {
-    // Condition 2 is true, the class is exported via an 'export {}' statement.
-    return true;
-  }
-  return false;
-}
-
-function checkIfFileHasExport(sf: ts.SourceFile, name: string): boolean {
-  for (const stmt of sf.statements) {
-    if (ts.isExportDeclaration(stmt) && stmt.exportClause !== undefined &&
-        ts.isNamedExports(stmt.exportClause)) {
-      for (const element of stmt.exportClause.elements) {
-        if (element.propertyName === undefined && element.name.text === name) {
-          // The named declaration is directly exported.
-          return true;
-        } else if (element.propertyName !== undefined && element.propertyName.text == name) {
-          // The named declaration is exported via an alias.
-          return true;
-        }
-      }
-    }
-  }
-  return false;
-}
-
-export function checkIfGenericTypesAreUnbound(node: ClassDeclaration<ts.ClassDeclaration>):
-    boolean {
-  if (node.typeParameters === undefined) {
-    return true;
-  }
-  return node.typeParameters.every(param => param.constraint === undefined);
 }
 
 export function isAccessExpression(node: ts.Node): node is ts.ElementAccessExpression|

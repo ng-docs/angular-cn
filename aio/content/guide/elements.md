@@ -266,7 +266,7 @@ class MyDialog {
 </code-example>
 
 The most straightforward way to get accurate typings is to cast the return value of the relevant DOM methods to the correct type.
-For that, use the `NgElement` and `WithProperties` types (both exported from `&commat;angular/elements`):
+For that, use the `NgElement` and `WithProperties` types (both exported from `@angular/elements`):
 
 要获得精确类型，最直白的方式是把相关 DOM 方法的返回值转换成正确的类型。要做到这一点，可以使用 `NgElement` 和 `WithProperties` 类型（都导出自 `@angular/elements`）：
 

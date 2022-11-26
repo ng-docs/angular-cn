@@ -128,7 +128,6 @@ You can read more by following the links associated with the package names below
 | 部署到 | 包 |
 | [Firebase hosting](https://firebase.google.com/docs/hosting) | [`@angular/fire`](https://npmjs.org/package/@angular/fire) |
 | [Firebase 托管](https://firebase.google.com/docs/hosting) | [`@angular/fire`](https://npmjs.org/package/@angular/fire) |
-| [Azure](https://azure.microsoft.com/en-us) | [`@azure/ng-deploy`](https://npmjs.org/package/@azure/ng-deploy) |
 | [Vercel](https://vercel.com/solutions/angular) | [`vercel init angular`](https://github.com/vercel/vercel/tree/main/examples/angular) |
 | [Netlify](https://www.netlify.com) | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy) |
 | [GitHub pages](https://pages.github.com) | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages) |
@@ -214,7 +213,7 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
 
    </code-example>
 
-1. Build your project using the Github project name, with the Angular CLI command [`ng build`](cli/build) and the following options, where `your_project_name` is the name of the project that you gave the GitHub repository in step 1.
+1. Build your project using the GitHub project name, with the Angular CLI command [`ng build`](cli/build) and the following options, where `your_project_name` is the name of the project that you gave the GitHub repository in step 1.
 
    借助 Angular CLI 命令 [`ng build`](cli/build)和以下选项，使用 Github 项目名称构建应用。这里的 `your_project_name` 是你在步骤 1 中为 GitHub 存储库提供的项目的名称。
 
@@ -251,7 +250,7 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
 
 <div class="alert is-helpful">
 
-Check out [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages), a full featured package that does all this for you and has extra functionality.
+Check out [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages), a full-featured package that does all this for you and has extra functionality.
 
  参阅 [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages)，这个包用到了全部这些特性，还提供了一些额外功能。
 
@@ -269,7 +268,7 @@ This section covers changes you may have to make to the server or to files deplo
 
 <a id="fallback"></a>
 
-### Routed apps must fallback to `index.html`
+### Routed apps must fall back to `index.html`
 
 ### 带路由的应用必须以 `index.html` 作为后备页面
 

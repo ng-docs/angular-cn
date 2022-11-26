@@ -27,7 +27,7 @@ For more information about how to serve each distributable copy of the applicati
 
 </div>
 
-For a compile time translation of the application, the build process uses [ahead-of-time (AOT) compilation][AioGuideGlossaryAheadOfTimeAotCompilation] to produce a small, fast, ready-to-run application.
+For a compile-time translation of the application, the build process uses [ahead-of-time (AOT) compilation][AioGuideGlossaryAheadOfTimeAotCompilation] to produce a small, fast, ready-to-run application.
 
 对于应用程序的编译期转换，构建过程会使用[预先 (AOT) 编译][AioGuideGlossaryAheadOfTimeAotCompilation]来生成小型、快速、可立即运行的应用程序。
 

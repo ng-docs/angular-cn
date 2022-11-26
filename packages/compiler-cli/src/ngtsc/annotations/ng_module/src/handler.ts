@@ -12,7 +12,7 @@ import ts from 'typescript';
 import {ErrorCode, FatalDiagnosticError, makeDiagnostic, makeRelatedInformation} from '../../../diagnostics';
 import {assertSuccessfulReferenceEmit, Reference, ReferenceEmitter} from '../../../imports';
 import {isArrayEqual, isReferenceEqual, isSymbolEqual, SemanticReference, SemanticSymbol} from '../../../incremental/semantic_graph';
-import {InjectableClassRegistry, MetadataReader, MetadataRegistry, MetaKind} from '../../../metadata';
+import {MetadataReader, MetadataRegistry, MetaKind} from '../../../metadata';
 import {PartialEvaluator, ResolvedValue, SyntheticValue} from '../../../partial_evaluator';
 import {PerfEvent, PerfRecorder} from '../../../perf';
 import {ClassDeclaration, DeclarationNode, Decorator, isNamedClassDeclaration, ReflectionHost, reflectObjectLiteral} from '../../../reflection';
@@ -21,7 +21,7 @@ import {getDiagnosticNode} from '../../../scope/src/util';
 import {FactoryTracker} from '../../../shims/api';
 import {AnalysisOutput, CompileResult, DecoratorHandler, DetectResult, HandlerPrecedence, ResolveResult} from '../../../transform';
 import {getSourceFile} from '../../../util/src/typescript';
-import {combineResolvers, compileDeclareFactory, compileNgFactoryDefField, createValueHasWrongTypeError, extractClassMetadata, extractSchemas, findAngularDecorator, forwardRefResolver, getProviderDiagnostics, getValidConstructorDependencies, isExpressionForwardReference, ReferencesRegistry, resolveProvidersRequiringFactory, toR3Reference, unwrapExpression, wrapFunctionExpressionsInParens, wrapTypeReference} from '../../common';
+import {combineResolvers, compileDeclareFactory, compileNgFactoryDefField, createValueHasWrongTypeError, extractClassMetadata, extractSchemas, findAngularDecorator, forwardRefResolver, getProviderDiagnostics, getValidConstructorDependencies, InjectableClassRegistry, isExpressionForwardReference, ReferencesRegistry, resolveProvidersRequiringFactory, toR3Reference, unwrapExpression, wrapFunctionExpressionsInParens, wrapTypeReference} from '../../common';
 
 import {createModuleWithProvidersResolver, isResolvedModuleWithProviders} from './module_with_providers';
 
@@ -43,6 +43,7 @@ export interface NgModuleAnalysis {
   providersRequiringFactory: Set<Reference<ClassDeclaration>>|null;
   providers: ts.Expression|null;
   remoteScopesMayRequireCycleProtection: boolean;
+  decorator: ts.Decorator|null;
 }
 
 export interface NgModuleResolution {
@@ -207,7 +208,7 @@ export class NgModuleDecoratorHandler implements
       // Look through the declarations to make sure they're all a part of the current compilation.
       for (const ref of declarationRefs) {
         if (ref.node.getSourceFile().isDeclarationFile) {
-          const errorNode: ts.Expression = ref.getOriginForDiagnostics(rawDeclarations);
+          const errorNode = ref.getOriginForDiagnostics(rawDeclarations);
 
           diagnostics.push(makeDiagnostic(
               ErrorCode.NGMODULE_INVALID_DECLARATION, errorNode,
@@ -338,11 +339,16 @@ export class NgModuleDecoratorHandler implements
     };
 
     const rawProviders = ngModule.has('providers') ? ngModule.get('providers')! : null;
-    const wrapperProviders = rawProviders !== null ?
-        new WrappedNodeExpr(
-            this.annotateForClosureCompiler ? wrapFunctionExpressionsInParens(rawProviders) :
-                                              rawProviders) :
-        null;
+    let wrappedProviders: WrappedNodeExpr<ts.Expression>|null = null;
+
+    // In most cases the providers will be an array literal. Check if it has any elements
+    // and don't include the providers if it doesn't which saves us a few bytes.
+    if (rawProviders !== null &&
+        (!ts.isArrayLiteralExpression(rawProviders) || rawProviders.elements.length > 0)) {
+      wrappedProviders = new WrappedNodeExpr(
+          this.annotateForClosureCompiler ? wrapFunctionExpressionsInParens(rawProviders) :
+                                            rawProviders);
+    }
 
     const topLevelImports: TopLevelImportedExpression[] = [];
     if (ngModule.has('imports')) {
@@ -384,7 +390,7 @@ export class NgModuleDecoratorHandler implements
       name,
       type,
       internalType,
-      providers: wrapperProviders,
+      providers: wrappedProviders,
     };
 
     const factoryMetadata: R3FactoryMetadata = {
@@ -443,6 +449,7 @@ export class NgModuleDecoratorHandler implements
             node, this.reflector, this.isCore, this.annotateForClosureCompiler),
         factorySymbolName: node.name.text,
         remoteScopesMayRequireCycleProtection,
+        decorator: decorator?.node as ts.Decorator | null ?? null,
       },
     };
   }
@@ -465,6 +472,7 @@ export class NgModuleDecoratorHandler implements
       rawDeclarations: analysis.rawDeclarations,
       rawImports: analysis.rawImports,
       rawExports: analysis.rawExports,
+      decorator: analysis.decorator,
     });
 
     if (this.factoryTracker !== null) {
@@ -473,7 +481,9 @@ export class NgModuleDecoratorHandler implements
       });
     }
 
-    this.injectableRegistry.registerInjectable(node);
+    this.injectableRegistry.registerInjectable(node, {
+      ctorDeps: analysis.fac.deps,
+    });
   }
 
   resolve(node: ClassDeclaration, analysis: Readonly<NgModuleAnalysis>):

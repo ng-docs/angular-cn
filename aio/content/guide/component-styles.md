@@ -85,7 +85,7 @@ While component consumers should avoid directly overwriting the CSS internals of
 虽然 Angular 的模拟样式封装可防止样式从组件中逃逸，但它并不能防止全局 CSS 影响整个页面。虽然组件使用者应避免直接覆盖组件的 CSS 内部，但你可以通过 Sass 等 CSS 预处理器提供受支持的自定义 API。
 
 For example, a component may offer one or more supported mixins to customize various aspects of the component's appearance.
-While this approach uses global styles in it's implementation, it allows the component author to keep the mixins up to date with changes to the component's private DOM structure and CSS classes.
+While this approach uses global styles in its implementation, it allows the component author to keep the mixins up to date with changes to the component's private DOM structure and CSS classes.
 
 比如，组件可以提供一个或多个受支持的 mixin 来自定义组件外观的各个方面。虽然这种方法在其实现中使用了全局样式，但它允许组件作者通过对组件的私有 DOM 结构和 CSS 类的更改来使 mixins 保持最新。
 

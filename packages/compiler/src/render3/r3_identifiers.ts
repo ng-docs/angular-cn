@@ -324,6 +324,9 @@ export class Identifiers {
 
   static ProvidersFeature: o.ExternalReference = {name: 'ɵɵProvidersFeature', moduleName: CORE};
 
+  static HostDirectivesFeature:
+      o.ExternalReference = {name: 'ɵɵHostDirectivesFeature', moduleName: CORE};
+
   static listener: o.ExternalReference = {name: 'ɵɵlistener', moduleName: CORE};
 
   static getInheritedFactory: o.ExternalReference = {
@@ -343,4 +346,6 @@ export class Identifiers {
   static trustConstantHtml: o.ExternalReference = {name: 'ɵɵtrustConstantHtml', moduleName: CORE};
   static trustConstantResourceUrl:
       o.ExternalReference = {name: 'ɵɵtrustConstantResourceUrl', moduleName: CORE};
+  static validateIframeAttribute:
+      o.ExternalReference = {name: 'ɵɵvalidateIframeAttribute', moduleName: CORE};
 }

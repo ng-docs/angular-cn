@@ -48,8 +48,11 @@ import {ɵɵdefineInjectable} from './interface/defs';
  * `inject` 函数来这样做。参见以下示例。
  *
  * Additionally, if a `factory` is specified you can also specify the `providedIn` option, which
- * overrides the above behavior and marks the token as belonging to a particular `@NgModule`. As
- * mentioned above, `'root'` is the default value for `providedIn`.
+ * overrides the above behavior and marks the token as belonging to a particular `@NgModule` (note:
+ * this option is now deprecated). As mentioned above, `'root'` is the default value for
+ * `providedIn`.
+ *
+ * The `providedIn: NgModule` and `providedIn: 'any'` options are deprecated.
  *
  * 此外，如果指定了 `factory`，也可以指定 `providedIn`
  * 选项，它会覆盖上述行为，并把这些令牌标记为属于特定 `@NgModule`。如上所述，`'root'` 是

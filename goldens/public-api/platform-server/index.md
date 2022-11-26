@@ -4,11 +4,11 @@
 
 ```ts
 
+import { EnvironmentProviders } from '@angular/core';
 import * as i0 from '@angular/core';
 import * as i1 from '@angular/common/http';
 import * as i2 from '@angular/platform-browser/animations';
 import * as i3 from '@angular/platform-browser';
-import { ImportedNgModuleProviders } from '@angular/core';
 import { InjectionToken } from '@angular/core';
 import { NgModuleFactory } from '@angular/core';
 import { PlatformRef } from '@angular/core';
@@ -51,15 +51,15 @@ export class PlatformState {
 // @public
 export function renderApplication<T>(rootComponent: Type<T>, options: {
     appId: string;
-    document?: string;
+    document?: string | Document;
     url?: string;
-    providers?: Array<Provider | ImportedNgModuleProviders>;
+    providers?: Array<Provider | EnvironmentProviders>;
     platformProviders?: Provider[];
 }): Promise<string>;
 
 // @public
-export function renderModule<T>(module: Type<T>, options: {
-    document?: string;
+export function renderModule<T>(moduleType: Type<T>, options: {
+    document?: string | Document;
     url?: string;
     extraProviders?: StaticProvider[];
 }): Promise<string>;
@@ -81,7 +81,7 @@ export class ServerModule {
     static ɵmod: i0.ɵɵNgModuleDeclaration<ServerModule, never, [typeof i1.HttpClientModule, typeof i2.NoopAnimationsModule], [typeof i3.BrowserModule]>;
 }
 
-// @public
+// @public @deprecated
 export class ServerTransferStateModule {
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<ServerTransferStateModule, never>;

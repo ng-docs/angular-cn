@@ -6,6 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {RendererStyleFlags2, RendererType2} from '../../render/api_flags';
+import {TrustedHTML, TrustedScript, TrustedScriptURL} from '../../util/security/trusted_type_defs';
+
+import {RComment, RElement, RNode, RText} from './renderer_dom';
+
 /**
  * The goal here is to make sure that the browser DOM API is the Renderer.
  * We do this by defining a subset of DOM API to be the renderer and then
@@ -15,56 +20,9 @@
  * it will be easy to implement such API.
  */
 
-import {RendererStyleFlags2, RendererType2} from '../../render/api_flags';
-import {TrustedHTML, TrustedScript, TrustedScriptURL} from '../../util/security/trusted_type_defs';
-
-import {getDocument} from './document';
-import {RComment, RElement, RNode, RText} from './renderer_dom';
-
-// TODO: cleanup once the code is merged in angular/angular
-export enum RendererStyleFlags3 {
-  Important = 1 << 0,
-  DashCase = 1 << 1
-}
-
-export type Renderer3 = ObjectOrientedRenderer3|ProceduralRenderer3;
-
 export type GlobalTargetName = 'document'|'window'|'body';
 
 export type GlobalTargetResolver = (element: any) => EventTarget;
-
-/**
- * Object Oriented style of API needed to create elements and text nodes.
- *
- * 创建元素和文本节点所需的面向对象风格的 API。
- *
- * This is the native browser API style, e.g. operations are methods on individual objects
- * like HTMLElement. With this style, no additional code is needed as a facade
- * (reducing payload size).
- *
- * 这是本机浏览器 API 风格，例如操作是单个对象上的方法，例如 HTMLElement
- * 。使用这种风格，不需要额外的代码作为门面（减少有效负载大小）。
- *
- */
-export interface ObjectOrientedRenderer3 {
-  createComment(data: string): RComment;
-  createElement(tagName: string): RElement;
-  createElementNS(namespace: string, tagName: string): RElement;
-  createTextNode(data: string): RText;
-
-  querySelector(selectors: string): RElement|null;
-}
-
-/**
- * Returns whether the `renderer` is a `ProceduralRenderer3`
- *
- * 返回 `renderer` 是否是 `ProceduralRenderer3`
- *
- */
-export function isProceduralRenderer(renderer: ProceduralRenderer3|
-                                     ObjectOrientedRenderer3): renderer is ProceduralRenderer3 {
-  return !!((renderer as any).listen);
-}
 
 /**
  * Procedural style of API needed to create elements and text nodes.
@@ -72,14 +30,13 @@ export function isProceduralRenderer(renderer: ProceduralRenderer3|
  * 创建元素和文本节点所需的 API 的程序风格。
  *
  * In non-native browser environments (e.g. platforms such as web-workers), this is the
- * facade that enables element manipulation. This also facilitates backwards compatibility
- * with Renderer2.
+ * facade that enables element manipulation. In practice, this is implemented by `Renderer2`.
  *
  * 在非本机浏览器环境（例如 Web-workers 等平台）中，这是启用元素操作的门面。这也促进了与 Renderer2
  * 的向后兼容。
  *
  */
-export interface ProceduralRenderer3 {
+export interface Renderer {
   destroy(): void;
   createComment(value: string): RComment;
   createElement(name: string, namespace?: string|null): RElement;
@@ -107,10 +64,8 @@ export interface ProceduralRenderer3 {
   removeAttribute(el: RElement, name: string, namespace?: string|null): void;
   addClass(el: RElement, name: string): void;
   removeClass(el: RElement, name: string): void;
-  setStyle(
-      el: RElement, style: string, value: any,
-      flags?: RendererStyleFlags2|RendererStyleFlags3): void;
-  removeStyle(el: RElement, style: string, flags?: RendererStyleFlags2|RendererStyleFlags3): void;
+  setStyle(el: RElement, style: string, value: any, flags?: RendererStyleFlags2): void;
+  removeStyle(el: RElement, style: string, flags?: RendererStyleFlags2): void;
   setProperty(el: RElement, name: string, value: any): void;
   setValue(node: RText|RComment, value: string): void;
 
@@ -120,17 +75,11 @@ export interface ProceduralRenderer3 {
       callback: (event: any) => boolean | void): () => void;
 }
 
-export interface RendererFactory3 {
-  createRenderer(hostElement: RElement|null, rendererType: RendererType2|null): Renderer3;
+export interface RendererFactory {
+  createRenderer(hostElement: RElement|null, rendererType: RendererType2|null): Renderer;
   begin?(): void;
   end?(): void;
 }
-
-export const domRendererFactory3: RendererFactory3 = {
-  createRenderer: (hostElement: RElement|null, rendererType: RendererType2|null): Renderer3 => {
-    return getDocument();
-  }
-};
 
 
 // Note: This hack is necessary so we don't erroneously get a circular dependency

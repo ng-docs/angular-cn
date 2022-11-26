@@ -144,7 +144,7 @@ A single component can be the default export for its file which facilitates lazy
 
 </div>
 
-The key is to make the code more reusable, easier to read, and less mistake prone.
+The key is to make the code more reusable, easier to read, and less mistake-prone.
 
 最关键的是，可以让代码更加可复用、更容易阅读，减少出错的可能性。
 
@@ -785,7 +785,7 @@ Keeps the names of the properties defined in the directives that are bound to th
 <div class="s-why-last">
 
 **Why**? <br />
-The Angular HTML parser is case sensitive and recognizes lower camel case.
+The Angular HTML parser is case-sensitive and recognizes lower camel case.
 
 **为何**？<br />
 Angular 的 HTML 解析器是大小写敏感的，可以识别小驼峰形式。
@@ -1932,7 +1932,7 @@ This is acceptable here because the service is stateless;that is, the consumers 
 <div class="s-why">
 
 **Why**? <br />
-`SharedModule` will contain components, directives and pipes
+`SharedModule` will contain components, directives, and pipes
 that may need features from another common module; for example,
 `ngFor` in `CommonModule`.
 
@@ -1960,7 +1960,7 @@ that may need features from another common module; for example,
 <div class="s-why">
 
 **Why**? <br />
-`SharedModule` exists to make commonly used components, directives and pipes available for use in the templates of components in many other modules.
+`SharedModule` exists to make commonly used components, directives, and pipes available for use in the templates of components in many other modules.
 
 **为何**？<br />
 `SharedModule` 的存在，能让常用的组件、指令和管道在很多其它模块的组件模板中都自动可用。

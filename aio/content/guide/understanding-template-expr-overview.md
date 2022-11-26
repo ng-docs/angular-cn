@@ -152,7 +152,7 @@ When using template expressions, follow these best practices:
   **快速执行**
 
   Angular executes template expressions after every [change detection](guide/glossary#change-detection) cycle.
-  Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses and mouse moves.
+  Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses, and mouse moves.
 
   Angular 会在每个[变更检测](guide/glossary#change-detection)周期之后执行模板表达式。许多异步活动都会触发变更检测周期，比如解析 Promise、HTTP 结果、计时器事件、按键和鼠标移动。
 

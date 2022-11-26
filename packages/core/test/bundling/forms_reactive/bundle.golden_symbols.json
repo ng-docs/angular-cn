@@ -57,13 +57,13 @@
     "name": "BuiltInControlValueAccessor"
   },
   {
+    "name": "CALL_SET_DISABLED_STATE"
+  },
+  {
     "name": "CHECKBOX_VALUE_ACCESSOR"
   },
   {
     "name": "CIRCULAR"
-  },
-  {
-    "name": "CLEAN_PROMISE"
   },
   {
     "name": "COMPONENT_REGEX"
@@ -106,9 +106,6 @@
   },
   {
     "name": "DEFAULT_VALUE_ACCESSOR"
-  },
-  {
-    "name": "DOCUMENT"
   },
   {
     "name": "DOCUMENT2"
@@ -196,6 +193,9 @@
   },
   {
     "name": "FormGroupName"
+  },
+  {
+    "name": "FormRecord"
   },
   {
     "name": "FormsExampleModule"
@@ -327,9 +327,6 @@
     "name": "NgForOf"
   },
   {
-    "name": "NgModuleFactory2"
-  },
-  {
     "name": "NgModuleRef"
   },
   {
@@ -360,13 +357,13 @@
     "name": "Optional"
   },
   {
+    "name": "PLATFORM_DESTROY_LISTENERS"
+  },
+  {
     "name": "PLATFORM_ID"
   },
   {
     "name": "PLATFORM_INITIALIZER"
-  },
-  {
-    "name": "PLATFORM_ON_DESTROY"
   },
   {
     "name": "PlatformRef"
@@ -522,9 +519,6 @@
     "name": "__forward_ref__"
   },
   {
-    "name": "_chromeNumKeyPadMap"
-  },
-  {
     "name": "_currentInjector"
   },
   {
@@ -549,9 +543,6 @@
     "name": "_randomChar"
   },
   {
-    "name": "componentDefCount"
-  },
-  {
     "name": "_symbolIterator"
   },
   {
@@ -562,6 +553,9 @@
   },
   {
     "name": "addComponentLogic"
+  },
+  {
+    "name": "addPropertyAlias"
   },
   {
     "name": "addToArray"
@@ -609,9 +603,6 @@
     "name": "attachPatchData"
   },
   {
-    "name": "autoRegisterModuleById"
-  },
-  {
     "name": "baseElement"
   },
   {
@@ -642,12 +633,6 @@
     "name": "cleanUpView"
   },
   {
-    "name": "coerceToAsyncValidator"
-  },
-  {
-    "name": "coerceToValidator"
-  },
-  {
     "name": "collectNativeNodes"
   },
   {
@@ -655,6 +640,9 @@
   },
   {
     "name": "collectStylingFromTAttrs"
+  },
+  {
+    "name": "componentDefCount"
   },
   {
     "name": "compose"
@@ -688,6 +676,9 @@
   },
   {
     "name": "controlPath"
+  },
+  {
+    "name": "convertToBitFlags"
   },
   {
     "name": "createDirectivesInstances"
@@ -729,10 +720,10 @@
     "name": "deepForEach"
   },
   {
-    "name": "defaultIterableDiffersFactory"
+    "name": "deepForEachProvider"
   },
   {
-    "name": "defaultScheduler"
+    "name": "defaultIterableDiffersFactory"
   },
   {
     "name": "destroyLView"
@@ -744,10 +735,10 @@
     "name": "detachView"
   },
   {
-    "name": "diPublicInInjector"
+    "name": "detectChangesInternal"
   },
   {
-    "name": "domRendererFactory3"
+    "name": "diPublicInInjector"
   },
   {
     "name": "empty"
@@ -763,6 +754,9 @@
   },
   {
     "name": "executeCheckHooks"
+  },
+  {
+    "name": "executeContentQueries"
   },
   {
     "name": "executeInitAndCheckHooks"
@@ -906,6 +900,9 @@
     "name": "getNullInjector"
   },
   {
+    "name": "getOrCreateComponentTView"
+  },
+  {
     "name": "getOrCreateInjectable"
   },
   {
@@ -913,9 +910,6 @@
   },
   {
     "name": "getOrCreateNodeInjectorForNode"
-  },
-  {
-    "name": "getOrCreateTComponentView"
   },
   {
     "name": "getOrCreateTNode"
@@ -1032,7 +1026,7 @@
     "name": "inheritViewQuery"
   },
   {
-    "name": "initTNodeFlags"
+    "name": "initializeDirectives"
   },
   {
     "name": "injectArgs"
@@ -1068,13 +1062,13 @@
     "name": "invertObject"
   },
   {
+    "name": "invokeDirectivesHostBindings"
+  },
+  {
     "name": "invokeHostBindingsInCreationMode"
   },
   {
     "name": "isAbstractControlOptions"
-  },
-  {
-    "name": "isAnimationProp"
   },
   {
     "name": "isArray"
@@ -1104,6 +1098,9 @@
     "name": "isEmptyInputValue"
   },
   {
+    "name": "isEnvironmentProviders"
+  },
+  {
     "name": "isFormControlState"
   },
   {
@@ -1111,9 +1108,6 @@
   },
   {
     "name": "isFunction"
-  },
-  {
-    "name": "isImportedNgModuleProviders"
   },
   {
     "name": "isInlineTemplate"
@@ -1137,9 +1131,6 @@
     "name": "isObject"
   },
   {
-    "name": "isObservable"
-  },
-  {
     "name": "isOptionsObj"
   },
   {
@@ -1147,9 +1138,6 @@
   },
   {
     "name": "isPresent"
-  },
-  {
-    "name": "isProceduralRenderer"
   },
   {
     "name": "isPromise"
@@ -1165,9 +1153,6 @@
   },
   {
     "name": "isTemplateNode"
-  },
-  {
-    "name": "isTemplateNode2"
   },
   {
     "name": "isTypeProvider"
@@ -1216,6 +1201,9 @@
   },
   {
     "name": "markAsComponentHost"
+  },
+  {
+    "name": "markDirtyIfOnPush"
   },
   {
     "name": "markDuplicates"
@@ -1329,9 +1317,6 @@
     "name": "providerToFactory"
   },
   {
-    "name": "readPatchedLView"
-  },
-  {
     "name": "refCount"
   },
   {
@@ -1348,9 +1333,6 @@
   },
   {
     "name": "registerDestroyHooksIfSupported"
-  },
-  {
-    "name": "registerHostBindingOpCodes"
   },
   {
     "name": "registerOnValidatorChange"
@@ -1378,9 +1360,6 @@
   },
   {
     "name": "renderComponent"
-  },
-  {
-    "name": "renderComponentOrTemplate"
   },
   {
     "name": "renderView"
@@ -1437,6 +1416,9 @@
     "name": "setDirectiveInputsWhichShadowsStyling"
   },
   {
+    "name": "setDisabledStateDefault"
+  },
+  {
     "name": "setIncludeViewProviders"
   },
   {
@@ -1468,6 +1450,9 @@
   },
   {
     "name": "setUpValidators"
+  },
+  {
+    "name": "setupStaticAttributes"
   },
   {
     "name": "shareSubjectFactory"
@@ -1531,9 +1516,6 @@
   },
   {
     "name": "writeDirectClass"
-  },
-  {
-    "name": "writeDirectStyle"
   },
   {
     "name": "ɵInternalFormsSharedModule"

@@ -7,12 +7,11 @@
  */
 
 import ts from 'typescript';
-import type {TsickleHost} from 'tsickle';
+import type {TsickleHost, EmitResult as TsickleEmitResult} from 'tsickle';
 import yargs from 'yargs';
 import {exitCodeFromResult, formatDiagnostics, ParsedConfiguration, performCompilation, readConfiguration} from './perform_compile';
 import {createPerformWatchHost, performWatchCompilation} from './perform_watch';
 import * as api from './transformers/api';
-import {GENERATED_FILES} from './transformers/util';
 
 type TsickleModule = typeof import('tsickle');
 
@@ -92,8 +91,8 @@ export function mainDiagnosticsForTest(
   };
 }
 
-function createEmitCallback(
-    options: api.CompilerOptions, tsickle?: TsickleModule): api.TsEmitCallback|undefined {
+function createEmitCallback(options: api.CompilerOptions, tsickle?: TsickleModule):
+    api.TsEmitCallback<TsickleEmitResult>|undefined {
   if (!options.annotateForClosureCompiler) {
     return undefined;
   }
@@ -104,10 +103,9 @@ function createEmitCallback(
       TsickleHost,
       'shouldSkipTsickleProcessing'|'pathToModuleName'|'shouldIgnoreWarningsForPath'|
       'fileNameToModuleId'|'googmodule'|'untyped'|'convertIndexImportShorthand'|
-      'transformDecorators'|'transformTypesToClosure'> = {
-    shouldSkipTsickleProcessing: (fileName) => /\.d\.ts$/.test(fileName) ||
-        // View Engine's generated files were never intended to be processed with tsickle.
-        (!options.enableIvy && GENERATED_FILES.test(fileName)),
+      'transformDecorators'|'transformTypesToClosure'|'generateExtraSuppressions'|
+      'rootDirsRelative'> = {
+    shouldSkipTsickleProcessing: (fileName) => fileName.endsWith('.d.ts'),
     pathToModuleName: (context, importPath) => '',
     shouldIgnoreWarningsForPath: (filePath) => false,
     fileNameToModuleId: (fileName) => fileName,
@@ -118,6 +116,11 @@ function createEmitCallback(
     // conflicts, we disable decorator transformations for tsickle.
     transformDecorators: false,
     transformTypesToClosure: true,
+    generateExtraSuppressions: true,
+    // Only used by the http://go/tsjs-migration-independent-javascript-imports migration in
+    // tsickle. This migration is not relevant externally and is only enabled when users
+    // would explicitly invoke `goog.tsMigrationExportsShim` (which is internal-only).
+    rootDirsRelative: (fileName) => fileName,
   };
 
   return ({

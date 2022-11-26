@@ -238,7 +238,7 @@ Here are the most useful `DebugElement` members for testers, in approximate orde
 | `providerTokens` | 组件注入器的查询令牌。包括组件自己的令牌和组件的 `providers` 元数据中列出来的令牌。 |
 | `source` | Where to find this element in the source component template. |
 | `source` | source 是在源组件模板中查询这个元素的处所。 |
-| `references` | Dictionary of objects associated with template local variables (for example, `#foo`),keyed by the local variable name. |
+| `references` | Dictionary of objects associated with template local variables (for example, `#foo`), keyed by the local variable name. |
 | `references` | 与模板本地变量（比如 `#foo`）关联的词典对象，关键字与本地变量名字配对。 |
 
 <a id="query-predicate"></a>

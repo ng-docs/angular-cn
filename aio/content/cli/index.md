@@ -136,7 +136,7 @@ Command syntax is shown as follows:
 
 命令语法如下：
 
-`ng` *commandNameOrAlias* *requiredArg* [*optionalArg*] `[options]`
+`ng` *<command-name>* *<required-arg>* [*optional-arg*] `[options]`
 
 * Most commands, and some options, have aliases.
   Aliases are shown in the syntax statement for each command.
@@ -163,8 +163,8 @@ Command syntax is shown as follows:
 
   通常，生成的工件（artifact）名称可以作为命令的参数进行指定，也可以使用 `--name` 选项。
 
-* Argument and option names can be given in either [camelCase or dash-case](guide/glossary#case-types).
-  `--myOptionName` is equivalent to `--my-option-name`.
+* Arguments and option names must be given in [ dash-case](guide/glossary#case-types).
+  For example: `--my-option-name`
 
   参数和选项的名称可以用[小驼峰或中线分隔的格式](guide/glossary#case-types)给出。`--myOptionName` 等价于 `--my-option-name`。
 
@@ -176,6 +176,10 @@ Boolean options have two forms: `--this-option` sets the flag to `true`, `--no-t
 If neither option is supplied, the flag remains in its default state, as listed in the reference documentation.
 
 逻辑型选项有两种形式：`--this-option` 可以把标志设置为 `true`，而 `--no-this-option` 可以把它设置为 `false`。如果没有提供选项，该标志就会留在文档中所列出的默认状态。
+
+### Array options
+
+Array options can be provided in two forms: `--option value1 value2` or `--option value1 --option value2`.
 
 ### Relative paths
 

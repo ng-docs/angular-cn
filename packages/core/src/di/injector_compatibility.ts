@@ -15,7 +15,7 @@ import {stringify} from '../util/stringify';
 import {resolveForwardRef} from './forward_ref';
 import {getInjectImplementation, injectRootLimpMode} from './inject_switch';
 import {Injector} from './injector';
-import {DecoratorFlags, InjectFlags, InternalInjectFlags} from './interface/injector';
+import {DecoratorFlags, InjectFlags, InjectOptions, InternalInjectFlags} from './interface/injector';
 import {ProviderToken} from './provider_token';
 
 
@@ -66,10 +66,10 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags?: InjectFla
 export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFlags.Default): T|
     null {
   if (_currentInjector === undefined) {
-    const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
-        `inject() must be called from an injection context (a constructor, a factory function or a field initializer)` :
-        '';
-    throw new RuntimeError(RuntimeErrorCode.MISSING_INJECTION_CONTEXT, errorMessage);
+    throw new RuntimeError(
+        RuntimeErrorCode.MISSING_INJECTION_CONTEXT,
+        ngDevMode &&
+            `inject() must be called from an injection context such as a constructor, a factory function, a field initializer, or a function used with \`EnvironmentInjector#runInContext\`.`);
   } else if (_currentInjector === null) {
     return injectRootLimpMode(token, undefined, flags);
   } else {
@@ -106,12 +106,6 @@ export function ɵɵinject<T>(token: ProviderToken<T>, flags = InjectFlags.Defau
  *
  * 抛出一个错误，表明编译器无法为特定类生成工厂函数。
  *
- * This instruction allows the actual error message to be optimized away when ngDevMode is turned
- * off, saving bytes of generated code while still providing a good experience in dev mode.
- *
- * 此指令允许在关闭 ngDevMode
- * 时优化实际的错误消息，节省生成的代码的字节，同时仍然在开发模式下提供良好的体验。
- *
  * The name of the class is not mentioned here, but will be in the generated factory function name
  * and thus in the stack trace.
  *
@@ -120,15 +114,15 @@ export function ɵɵinject<T>(token: ProviderToken<T>, flags = InjectFlags.Defau
  * @codeGenApi
  */
 export function ɵɵinvalidFactoryDep(index: number): never {
-  const msg = ngDevMode ?
-      `This constructor is not compatible with Angular Dependency Injection because its dependency at index ${
-          index} of the parameter list is invalid.
+  throw new RuntimeError(
+      RuntimeErrorCode.INVALID_FACTORY_DEPENDENCY,
+      ngDevMode &&
+          `This constructor is not compatible with Angular Dependency Injection because its dependency at index ${
+              index} of the parameter list is invalid.
 This can happen if the dependency type is a primitive like a string or if an ancestor of this class is missing an Angular decorator.
 
 Please check that 1) the type for the parameter at index ${
-          index} is correct and 2) the correct Angular decorators are defined for this class and its ancestors.` :
-      'invalid';
-  throw new Error(msg);
+              index} is correct and 2) the correct Angular decorators are defined for this class and its ancestors.`);
 }
 
 /**
@@ -171,8 +165,33 @@ export function inject<T>(token: ProviderToken<T>): T;
  * 如果在受支持的上下文之外调用。
  *
  * @publicApi
+ * @deprecated prefer an options object instead of `InjectFlags`
  */
 export function inject<T>(token: ProviderToken<T>, flags?: InjectFlags): T|null;
+/**
+ * @param token A token that represents a dependency that should be injected.
+ * @param options Control how injection is executed. Options correspond to injection strategies
+ *     that can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and
+ *     `@Optional`.
+ * @returns the injected value if operation is successful.
+ * @throws if called outside of a supported context, or if the token is not found.
+ *
+ * @publicApi
+ */
+export function inject<T>(token: ProviderToken<T>, options: InjectOptions&{optional?: false}): T;
+/**
+ * @param token A token that represents a dependency that should be injected.
+ * @param options Control how injection is executed. Options correspond to injection strategies
+ *     that can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and
+ *     `@Optional`.
+ * @returns the injected value if operation is successful,  `null` if the token is not
+ *     found and optional injection has been requested.
+ * @throws if called outside of a supported context, or if the token is not found and optional
+ *     injection was not requested.
+ *
+ * @publicApi
+ */
+export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|null;
 /**
  * Injects a token from the currently active injector.
  * `inject` is only supported during instantiation of a dependency by the DI system. It can be used
@@ -266,8 +285,26 @@ export function inject<T>(token: ProviderToken<T>, flags?: InjectFlags): T|null;
  * ```
  * @publicApi
  */
-export function inject<T>(token: ProviderToken<T>, flags = InjectFlags.Default): T|null {
-  return ɵɵinject(token, flags);
+export function inject<T>(
+    token: ProviderToken<T>, flags: InjectFlags|InjectOptions = InjectFlags.Default): T|null {
+  return ɵɵinject(token, convertToBitFlags(flags));
+}
+
+// Converts object-based DI flags (`InjectOptions`) to bit flags (`InjectFlags`).
+export function convertToBitFlags(flags: InjectOptions|InjectFlags|undefined): InjectFlags|
+    undefined {
+  if (typeof flags === 'undefined' || typeof flags === 'number') {
+    return flags;
+  }
+
+  // While TypeScript doesn't accept it without a cast, bitwise OR with false-y values in
+  // JavaScript is a no-op. We can use that for a very codesize-efficient conversion from
+  // `InjectOptions` to `InjectFlags`.
+  return (InternalInjectFlags.Default |  // comment to force a line break in the formatter
+          ((flags.optional && InternalInjectFlags.Optional) as number) |
+          ((flags.host && InternalInjectFlags.Host) as number) |
+          ((flags.self && InternalInjectFlags.Self) as number) |
+          ((flags.skipSelf && InternalInjectFlags.SkipSelf) as number)) as InjectFlags;
 }
 
 export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
@@ -276,10 +313,9 @@ export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
     const arg = resolveForwardRef(types[i]);
     if (Array.isArray(arg)) {
       if (arg.length === 0) {
-        const errorMessage = (typeof ngDevMode === 'undefined' || ngDevMode) ?
-            'Arguments array must have arguments.' :
-            '';
-        throw new RuntimeError(RuntimeErrorCode.INVALID_DIFFER_INPUT, errorMessage);
+        throw new RuntimeError(
+            RuntimeErrorCode.INVALID_DIFFER_INPUT,
+            ngDevMode && 'Arguments array must have arguments.');
       }
       let type: Type<any>|undefined = undefined;
       let flags: InjectFlags = InjectFlags.Default;

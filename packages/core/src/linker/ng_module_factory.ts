@@ -91,7 +91,7 @@ export interface InternalNgModuleRef<T> extends NgModuleRef<T> {
  * JIT mode. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes)
  * for additional context. Angular provides APIs that accept NgModule classes directly (such as
  * [PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule) and
- * [createNgModuleRef](api/core/createNgModuleRef)), consider switching to those APIs instead of
+ * [createNgModule](api/core/createNgModule)), consider switching to those APIs instead of
  * using factory-based ones.
  *
  * 此类主要作为 ViewEngine-based JIT API 的一部分使用，在 Ivy JIT

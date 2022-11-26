@@ -35,7 +35,7 @@ const DEFAULT_PORTS: {[key: string]: number} = {
  * @publicApi
  */
 export class $locationShim {
-  private initalizing = true;
+  private initializing = true;
   private updateBrowser = false;
   private $$absUrl: string = '';
   private $$url: string = '';
@@ -155,7 +155,7 @@ export class $locationShim {
         this.setBrowserUrlWithFallback(oldUrl, false, oldState);
         this.$$notifyChangeListeners(this.url(), this.$$state, oldUrl, oldState);
       } else {
-        this.initalizing = false;
+        this.initializing = false;
         $rootScope.$broadcast('$locationChangeSuccess', newUrl, oldUrl, newState, oldState);
         this.resetBrowserUpdate();
       }
@@ -166,7 +166,7 @@ export class $locationShim {
 
     // update browser
     $rootScope.$watch(() => {
-      if (this.initalizing || this.updateBrowser) {
+      if (this.initializing || this.updateBrowser) {
         this.updateBrowser = false;
 
         const oldUrl = this.browserUrl();
@@ -181,8 +181,8 @@ export class $locationShim {
         // next tick (thus inside $evalAsync()) in order for listeners to be registered
         // before the event fires. Mimicing behavior from $locationWatch:
         // https://github.com/angular/angular.js/blob/master/src/ng/location.js#L983
-        if (this.initalizing || urlOrStateChanged) {
-          this.initalizing = false;
+        if (this.initializing || urlOrStateChanged) {
+          this.initializing = false;
 
           $rootScope.$evalAsync(() => {
             // Get the new URL again since it could have changed due to async update
@@ -200,8 +200,8 @@ export class $locationShim {
               this.$$parse(oldUrl);
               this.$$state = oldState;
             } else {
-              // This block doesn't run when initalizing because it's going to perform the update to
-              // the URL which shouldn't be needed when initalizing.
+              // This block doesn't run when initializing because it's going to perform the update
+              // to the URL which shouldn't be needed when initializing.
               if (urlOrStateChanged) {
                 this.setBrowserUrlWithFallback(
                     newUrl, currentReplace, oldState === this.$$state ? null : this.$$state);
@@ -787,7 +787,7 @@ export class $locationShim {
 
 /**
  * The factory function used to create an instance of the `$locationShim` in Angular,
- * and provides an API-compatiable `$locationProvider` for AngularJS.
+ * and provides an API-compatible `$locationProvider` for AngularJS.
  *
  * Angular 中用于创建 `$locationShim` 实例的工厂函数，并为 AngularJS 提供与 API 兼容的
  * `$locationProvider`。

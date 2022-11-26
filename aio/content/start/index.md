@@ -19,7 +19,7 @@ StackBlitz is a browser-based development environment where you can create, save
 
 ## 前提条件
 
-To get the most out of this tutorial you should already have a basic understanding of the following.
+To get the most out of this tutorial, you should already have a basic understanding of the following.
 
 为了充分利用本教程，你应该已经对以下内容有基本的了解。
 
@@ -44,30 +44,30 @@ A component consists of three things:
 
 一个组件由三部分组成：
 
-|  | Details |
+| Component Part | Details |
 | :-- | :------ |
 |  | 详情 |
-| A component class | Handles data and functionality. |
+| A component class | Handles data and functionality |
 | 组件类 | 处理数据和功能。 |
-| An HTML template | Determines the UI. |
+| An HTML template | Determines the UI |
 | HTML 模板 | 决定 UI。 |
-| Component-specific styles | Define the look and feel. |
+| Component-specific styles | Define the look and feel       |
 | 组件专属样式 | 定义外观和感觉。 |
 
-This guide demonstrates building an application with the following components.
+This guide demonstrates building an application with the following components:
 
 本指南演示了如何使用下列组件构建应用。
 
 | Components | Details |
 | :--------- | :------ |
 | 组件 | 详情 |
-| `<app-root>` | The first component to load and the container for the other components. |
+| `<app-root>` | The first component to load and the container for the other components |
 | `<app-root>` | 第一个加载的组件，并且是其他组件的容器。 |
-| `<app-top-bar>` | The store name and checkout button. |
+| `<app-top-bar>` | The store name and checkout button |
 | `<app-top-bar>` | 商店名称和结帐按钮。 |
-| `<app-product-list>` | The product list. |
+| `<app-product-list>` | The product list |
 | `<app-product-list>` | 产品列表。 |
-| `<app-product-alerts>` | A component that contains the application's alerts. |
+| `<app-product-alerts>` | A component that contains the application's alerts                     |
 | `<app-product-alerts>` | 包含应用中各种通知的组件。 |
 
 <div class="lightbox">
@@ -279,7 +279,7 @@ The alert checks the product's price, and, if the price is greater than $700, di
 
 下一步是创建一个新的通知功能，该功能会使用来自 `ProductListComponent` 的产品数据。通知会检查产品的价格，如果价格大于 700 美元，则会显示 **Notify Me** 按钮，当产品上市销售时，用户可以通过该按钮注册通知。
 
-This section walks you through creating a child component, `ProductAlertsComponent` that can receive data from its parent component, `ProductListComponent`.
+This section walks you through creating a child component, `ProductAlertsComponent`, that can receive data from its parent component, `ProductListComponent`.
 
 本节将引导你创建一个子组件 `ProductAlertsComponent`，该子组件可以从其父组件 `ProductListComponent` 接收数据。
 
@@ -293,13 +293,13 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
    </div>
 
-1. In the new terminal, generate a new component named `product-alerts` by running the following command.
+1. In the new terminal, generate a new component named `product-alerts` by running the following command:
 
    在新终端中，通过运行以下命令生成一个名为 `product-alerts` 的新组件。
 
    <code-example format="shell" language="shell">
 
-   ng generate component product-alerts
+   `ng generate component product-alerts`
 
    </code-example>
 

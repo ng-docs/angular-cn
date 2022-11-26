@@ -2,7 +2,7 @@
 
 # Angular 变更检测和运行时优化
 
-**Change detection** is the process through which Angular checks to see whether your application state has changed, and if any DOM needs to be updated. At a high level, Angular walks your components from top to bottom, looking for changes. Angular runs its change detection mechanism periodically so that changes to the data model are reflected in an app’s view. Change detection can be triggered either manually or through an asynchronous event (for example, a user interaction or an XHR completion).
+**Change detection** is the process through which Angular checks to see whether your application state has changed, and if any DOM needs to be updated. At a high level, Angular walks your components from top to bottom, looking for changes. Angular runs its change detection mechanism periodically so that changes to the data model are reflected in an application’s view. Change detection can be triggered either manually or through an asynchronous event (for example, a user interaction or an XMLHttpRequest completion).
 
 **变更检测**是 Angular 检查你的应用程序状态是否已更改以及是否需要更新任何 DOM 的过程。大体而言，Angular 会从上到下遍历你的组件，寻找更改。Angular 会定期运行其变更检测机制，以便对数据模型的更改反映在应用程序的视图中。变更检测可以手动触发，也可以通过异步事件（比如用户交互或 XHR 自动完成）来触发。
 

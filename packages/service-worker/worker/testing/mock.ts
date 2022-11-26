@@ -104,9 +104,8 @@ export class MockServerStateBuilder {
     return this;
   }
 
-  withRedirect(from: string, to: string, toContents: string): MockServerStateBuilder {
-    this.resources.set(from, new MockResponse(toContents, {redirected: true, url: to}));
-    this.resources.set(to, new MockResponse(toContents));
+  withRedirect(from: string, to: string): MockServerStateBuilder {
+    this.resources.set(from, new MockResponse('', {redirected: true, url: to}));
     return this;
   }
 
@@ -180,6 +179,10 @@ export class MockServerState {
     this.resolve = null;
   }
 
+  getRequestsFor(url: string): Request[] {
+    return this.requests.filter(req => req.url.split('?')[0] === url);
+  }
+
   assertSawRequestFor(url: string): void {
     if (!this.sawRequestFor(url)) {
       throw new Error(`Expected request for ${url}, got none.`);
@@ -193,7 +196,7 @@ export class MockServerState {
   }
 
   sawRequestFor(url: string): boolean {
-    const matching = this.requests.filter(req => req.url.split('?')[0] === url);
+    const matching = this.getRequestsFor(url);
     if (matching.length > 0) {
       this.requests = this.requests.filter(req => req !== matching[0]);
       return true;

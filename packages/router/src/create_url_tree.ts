@@ -6,10 +6,15 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {ɵRuntimeError as RuntimeError} from '@angular/core';
+
+import {RuntimeErrorCode} from './errors';
 import {ActivatedRoute, ActivatedRouteSnapshot} from './router_state';
 import {Params, PRIMARY_OUTLET} from './shared';
 import {createRoot, squashSegmentGroup, UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
 import {forEach, last, shallowEqual} from './utils/collection';
+
+const NG_DEV_MODE = typeof ngDevMode === 'undefined' || ngDevMode;
 
 /**
  * Creates a `UrlTree` relative to an `ActivatedRouteSnapshot`.
@@ -159,17 +164,6 @@ export function createUrlTree(
   // didn't before.
   const result = createTreeUsingPathIndex(route.snapshot?._lastPathIndex);
 
-  // Check if application is relying on `relativeLinkResolution: 'legacy'`
-  if (typeof ngDevMode === 'undefined' || !!ngDevMode) {
-    const correctedResult = createTreeUsingPathIndex(route.snapshot?._correctedLastPathIndex);
-    if (correctedResult.toString() !== result.toString()) {
-      console.warn(
-          `relativeLinkResolution: 'legacy' is deprecated and will be removed in a future version of Angular. The link to ${
-              result.toString()} will change to ${
-              correctedResult.toString()} if the code is not updated before then.`);
-    }
-  }
-
   return result;
 }
 
@@ -240,12 +234,16 @@ class Navigation {
   constructor(
       public isAbsolute: boolean, public numberOfDoubleDots: number, public commands: any[]) {
     if (isAbsolute && commands.length > 0 && isMatrixParams(commands[0])) {
-      throw new Error('Root segment cannot have matrix parameters');
+      throw new RuntimeError(
+          RuntimeErrorCode.ROOT_SEGMENT_MATRIX_PARAMS,
+          NG_DEV_MODE && 'Root segment cannot have matrix parameters');
     }
 
     const cmdWithOutlet = commands.find(isCommandWithOutlets);
     if (cmdWithOutlet && cmdWithOutlet !== last(commands)) {
-      throw new Error('{outlets:{}} has to be the last command');
+      throw new RuntimeError(
+          RuntimeErrorCode.MISPLACED_OUTLETS_COMMAND,
+          NG_DEV_MODE && '{outlets:{}} has to be the last command');
     }
   }
 
@@ -366,7 +364,8 @@ function createPositionApplyingDoubleDots(
     dd -= ci;
     g = g.parent!;
     if (!g) {
-      throw new Error('Invalid number of \'../\'');
+      throw new RuntimeError(
+          RuntimeErrorCode.INVALID_DOUBLE_DOTS, NG_DEV_MODE && 'Invalid number of \'../\'');
     }
     ci = g.segments.length;
   }

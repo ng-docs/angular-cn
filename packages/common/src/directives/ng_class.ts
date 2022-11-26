@@ -51,7 +51,10 @@ type NgClassSupportedTypes = string[]|Set<string>|{[klass: string]: any}|null|un
  *
  * @publicApi
  */
-@Directive({selector: '[ngClass]'})
+@Directive({
+  selector: '[ngClass]',
+  standalone: true,
+})
 export class NgClass implements DoCheck {
   private _iterableDiffer: IterableDiffer<string>|null = null;
   private _keyValueDiffer: KeyValueDiffer<string, any>|null = null;
@@ -72,7 +75,7 @@ export class NgClass implements DoCheck {
   }
 
   @Input('ngClass')
-  set ngClass(value: string|string[]|Set<string>|{[klass: string]: any}) {
+  set ngClass(value: string|string[]|Set<string>|{[klass: string]: any}|null|undefined) {
     this._removeClasses(this._rawClass);
     this._applyClasses(this._initialClasses);
 

@@ -310,7 +310,7 @@ export class Esm5ReflectionHost extends Esm2015ReflectionHost {
    * 获取类的构造函数的参数类型和装饰器，其中信息存储在类的静态方法中。
    *
    * In this case the decorators are stored in the body of a method
-   * (`ctorParatemers`) attached to the constructor function.
+   * (`ctorParameters`) attached to the constructor function.
    *
    * 在这种情况下，装饰器存储在附加到构造函数的方法 ( `ctorParatemers` ) 的主体中。
    *

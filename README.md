@@ -35,6 +35,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://app.circleci.com/insights/github/angular/angular/workflows/default_workflow?branch=main">
+    <img src="https://dl.circleci.com/insights-snapshot/gh/angular/angular/main/default_workflow/badge.svg" alt="InsightsSnapshot" />
+  </a>
+</p>
+
 <hr>
 
 ## Documentation
@@ -109,11 +115,11 @@ Check out our [upgrade guide](https://update.angular.io/) to find out the best w
 
 ### Contributing Guidelines
 
-Read through our [contributing guidelines][contributing] to learn about our submission process, coding rules and more.
+Read through our [contributing guidelines][contributing] to learn about our submission process, coding rules, and more.
 
 ### Want to Help?
 
-Want to report a bug, contribute some code, or improve documentation? Excellent! Read up on our guidelines for [contributing][contributing] and then check out one of our issues labeled as <kbd>[help wanted](https://github.com/angular/angular/labels/help%20wanted)</kbd> or <kbd>[good first issue](https://github.com/angular/angular/labels/good%20first%20issue)</kbd>.
+Want to report a bug, contribute some code, or improve the documentation? Excellent! Read up on our guidelines for [contributing][contributing] and then check out one of our issues labeled as <kbd>[help wanted](https://github.com/angular/angular/labels/help%20wanted)</kbd> or <kbd>[good first issue](https://github.com/angular/angular/labels/good%20first%20issue)</kbd>.
 
 ### Code of Conduct
 

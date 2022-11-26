@@ -83,9 +83,10 @@ export interface Injectable {
    *
    * 确定哪些注入器将提供可注入。
    *
-   * - `Type<any>` - associates the injectable with an `@NgModule` or other `InjectorType`,
+   * - `Type<any>` - associates the injectable with an `@NgModule` or other `InjectorType`. This
+   * option is DEPRECATED.
    *
-   *   `Type<any>` - 将可注入物与 `@NgModule` 或其他 `InjectorType` 相关联，
+   *  `Type<any>` - 将可注入物与 `@NgModule` 或其他 `InjectorType` 相关联。此选项已弃用。
    *
    * - 'null' : Equivalent to `undefined`. The injectable is not provided in any scope automatically
    *   and must be added to a `providers` array of an [@NgModule](api/core/NgModule#providers),
@@ -116,7 +117,7 @@ export interface Injectable {
    *   ```
    *
    * - 'any' : Provides a unique instance in each lazy loaded module while all eagerly loaded
-   *   modules share one instance.
+   *   modules share one instance. This option is DEPRECATED.
    *
    *   'any' ：在每个惰性加载的模块中提供一个唯一实例，而所有热切加载的模块共享一个实例。
    *

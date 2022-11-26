@@ -7,10 +7,12 @@
  */
 
 import {DOCUMENT} from '@angular/common';
+import {provideLocationMocks} from '@angular/common/testing';
 import {Component, Inject, Injectable, NgModule} from '@angular/core';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {Router, RouterModule, RouterStateSnapshot, TitleStrategy} from '@angular/router';
-import {RouterTestingModule} from '@angular/router/testing';
+
+import {provideRouter} from '../src/provide_router';
 
 describe('title strategy', () => {
   describe('DefaultTitleStrategy', () => {
@@ -20,9 +22,12 @@ describe('title strategy', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
-          RouterTestingModule,
           TestModule,
         ],
+        providers: [
+          provideLocationMocks(),
+          provideRouter([]),
+        ]
       });
       router = TestBed.inject(Router);
       document = TestBed.inject(DOCUMENT);
@@ -37,6 +42,13 @@ describe('title strategy', () => {
 
     it('sets page title from resolved data', fakeAsync(() => {
          router.resetConfig([{path: 'home', title: TitleResolver, component: BlankCmp}]);
+         router.navigateByUrl('home');
+         tick();
+         expect(document.title).toBe('resolved title');
+       }));
+
+    it('sets page title from resolved data function', fakeAsync(() => {
+         router.resetConfig([{path: 'home', title: () => 'resolved title', component: BlankCmp}]);
          router.navigateByUrl('home');
          tick();
          expect(document.title).toBe('resolved title');
@@ -91,6 +103,18 @@ describe('title strategy', () => {
          tick();
          expect(document.title).toBe('resolved title');
        }));
+
+    it('can get the title from the ActivatedRouteSnapshot', async () => {
+      router.resetConfig([
+        {
+          path: 'home',
+          title: 'My Application',
+          component: BlankCmp,
+        },
+      ]);
+      await router.navigateByUrl('home');
+      expect(router.routerState.snapshot.root.firstChild!.title).toEqual('My Application');
+    });
   });
 
   describe('custom strategies', () => {
@@ -110,10 +134,13 @@ describe('title strategy', () => {
 
          TestBed.configureTestingModule({
            imports: [
-             RouterTestingModule,
              TestModule,
            ],
-           providers: [{provide: TitleStrategy, useClass: TemplatePageTitleStrategy}]
+           providers: [
+             provideLocationMocks(),
+             provideRouter([]),
+             {provide: TitleStrategy, useClass: TemplatePageTitleStrategy},
+           ]
          });
          const router = TestBed.inject(Router);
          const document = TestBed.inject(DOCUMENT);

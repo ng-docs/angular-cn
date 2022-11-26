@@ -46,7 +46,7 @@ export function isContentQueryHost(tNode: TNode): boolean {
 }
 
 export function isComponentHost(tNode: TNode): boolean {
-  return (tNode.flags & TNodeFlags.isComponentHost) === TNodeFlags.isComponentHost;
+  return tNode.componentOffset > -1;
 }
 
 export function isDirectiveHost(tNode: TNode): boolean {

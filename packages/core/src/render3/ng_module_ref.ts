@@ -8,9 +8,7 @@
 
 import {createInjectorWithoutInjectorInstances} from '../di/create_injector';
 import {Injector} from '../di/injector';
-import {INJECTOR} from '../di/injector_token';
-import {InjectFlags} from '../di/interface/injector';
-import {ImportedNgModuleProviders, Provider} from '../di/interface/provider';
+import {EnvironmentProviders, Provider} from '../di/interface/provider';
 import {EnvironmentInjector, getNullInjector, R3Injector} from '../di/r3_injector';
 import {Type} from '../interface/type';
 import {ComponentFactoryResolver as viewEngine_ComponentFactoryResolver} from '../linker/component_factory_resolver';
@@ -36,19 +34,27 @@ import {maybeUnwrapFn} from './util/misc_utils';
  *
  * 用作模块注入器的父级的可选注入器实例。如果未提供，将改为使用 `NullInjector` 。
  *
+ * @returns NgModuleRef that represents an NgModule instance.
+ *
  * @publicApi
  */
-export function createNgModuleRef<T>(
+export function createNgModule<T>(
     ngModule: Type<T>, parentInjector?: Injector): viewEngine_NgModuleRef<T> {
   return new NgModuleRef<T>(ngModule, parentInjector ?? null);
 }
-export class NgModuleRef<T> extends viewEngine_NgModuleRef<T> implements InternalNgModuleRef<T>,
-                                                                         EnvironmentInjector {
+
+/**
+ * The `createNgModule` function alias for backwards-compatibility.
+ * Please avoid using it directly and use `createNgModule` instead.
+ *
+ * @deprecated Use `createNgModule` instead.
+ */
+export const createNgModuleRef = createNgModule;
+export class NgModuleRef<T> extends viewEngine_NgModuleRef<T> implements InternalNgModuleRef<T> {
   // tslint:disable-next-line:require-internal-with-underscore
   _bootstrapComponents: Type<any>[] = [];
   // tslint:disable-next-line:require-internal-with-underscore
   _r3Injector: R3Injector;
-  override injector: EnvironmentInjector = this;
   override instance: T;
   destroyCbs: (() => void)[]|null = [];
 
@@ -84,15 +90,11 @@ export class NgModuleRef<T> extends viewEngine_NgModuleRef<T> implements Interna
     // the module might be trying to use this ref in its constructor for DI which will cause a
     // circular error that will eventually error out, because the injector isn't created yet.
     this._r3Injector.resolveInjectorInitializers();
-    this.instance = this.get(ngModuleType);
+    this.instance = this._r3Injector.get(ngModuleType);
   }
 
-  get(token: any, notFoundValue: any = Injector.THROW_IF_NOT_FOUND,
-      injectFlags: InjectFlags = InjectFlags.Default): any {
-    if (token === Injector || token === viewEngine_NgModuleRef || token === INJECTOR) {
-      return this;
-    }
-    return this._r3Injector.get(token, notFoundValue, injectFlags);
+  override get injector(): EnvironmentInjector {
+    return this._r3Injector;
   }
 
   override destroy(): void {
@@ -125,7 +127,7 @@ class EnvironmentNgModuleRefAdapter extends viewEngine_NgModuleRef<null> {
   override readonly instance = null;
 
   constructor(
-      providers: Array<Provider|ImportedNgModuleProviders>, parent: EnvironmentInjector|null,
+      providers: Array<Provider|EnvironmentProviders>, parent: EnvironmentInjector|null,
       source: string|null) {
     super();
     const injector = new R3Injector(
@@ -153,11 +155,18 @@ class EnvironmentNgModuleRefAdapter extends viewEngine_NgModuleRef<null> {
  *
  * 创建一个新的环境注入器。
  *
+ * Learn more about environment injectors in
+ * [this guide](guide/standalone-components#environment-injectors).
+ *
+ * @param providers An array of providers.
+ * @param parent A parent environment injector.
+ * @param debugName An optional name for this injector instance, which will be used in error
+ *     messages.
+ *
  * @publicApi
- * @developerPreview
  */
 export function createEnvironmentInjector(
-    providers: Array<Provider|ImportedNgModuleProviders>, parent: EnvironmentInjector|null = null,
+    providers: Array<Provider|EnvironmentProviders>, parent: EnvironmentInjector,
     debugName: string|null = null): EnvironmentInjector {
   const adapter = new EnvironmentNgModuleRefAdapter(providers, parent, debugName);
   return adapter.injector;

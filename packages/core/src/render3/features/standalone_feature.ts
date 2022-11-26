@@ -68,7 +68,7 @@ class StandaloneService implements OnDestroy {
  *
  * 作为 {@link StandaloneService} 的设置代码的特性。
  *
- * The most important responsaibility of this feature is to expose the "getStandaloneInjector"
+ * The most important responsibility of this feature is to expose the "getStandaloneInjector"
  * function (an entry points to a standalone injector creation) on a component definition object. We
  * go through the features infrastructure to make sure that the standalone injector creation logic
  * is tree-shakable and not included in applications that don't use standalone components.

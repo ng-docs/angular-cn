@@ -1019,6 +1019,16 @@ describe('Typed Class', () => {
           t1 = null as unknown as RawValueType;
         }
       });
+
+      it('with array values', () => {
+        const c = fb.control([1, 2, 3]);
+        {
+          type RawValueType = number[]|null;
+          let t: RawValueType = c.getRawValue();
+          let t1 = c.getRawValue();
+          t1 = null as unknown as RawValueType;
+        }
+      });
     });
 
     describe('should build FormGroups', () => {
@@ -1030,6 +1040,14 @@ describe('Typed Class', () => {
           let t1 = c.controls;
           t1 = null as unknown as ControlsType;
         }
+      });
+
+      it('from objects with optional keys', () => {
+        const controls = {name: fb.control('')};
+        const foo:
+            FormGroup<{name: FormControl<string|null>; address?: FormControl<string|null>;}> =
+                fb.group<{name: FormControl<string|null>; address?: FormControl<string|null>;}>(
+                    controls);
       });
 
       it('from objects with FormControlState', () => {
@@ -1052,12 +1070,39 @@ describe('Typed Class', () => {
         }
       });
 
+      it('from objects with FormControlStates nested inside ControlConfigs', () => {
+        const c = fb.group({foo: [{value: 'bar', disabled: true}, Validators.required]});
+        {
+          type ControlsType = {foo: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
       it('from objects with ControlConfigs and validators', () => {
         const c = fb.group({foo: ['bar', Validators.required]});
         {
           type ControlsType = {foo: FormControl<string|null>};
           let t: ControlsType = c.controls;
           let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+
+        const c2 = fb.group({foo: [[1, 2, 3], Validators.required]});
+        {
+          type ControlsType = {foo: FormControl<number[]|null>};
+          let t: ControlsType = c2.controls;
+          let t1 = c2.controls;
+          t1 = null as unknown as ControlsType;
+        }
+        expect(c2.controls.foo.value).toEqual([1, 2, 3]);
+
+        const c3 = fb.group({foo: [null, Validators.required]});
+        {
+          type ControlsType = {foo: FormControl<null>};
+          let t: ControlsType = c3.controls;
+          let t1 = c3.controls;
           t1 = null as unknown as ControlsType;
         }
       });
@@ -1124,10 +1169,135 @@ describe('Typed Class', () => {
           }
         });
 
+        it('from objects with builder FormRecords', () => {
+          const c = fb.group({foo: fb.record({baz: 'bar'})});
+          {
+            type ControlsType = {foo: FormRecord<FormControl<string|null>>};
+            let t: ControlsType = c.controls;
+            let t1 = c.controls;
+            t1 = null as unknown as ControlsType;
+          }
+        });
+
         it('from objects with builder FormArrays', () => {
           const c = fb.group({foo: fb.array(['bar'])});
           {
             type ControlsType = {foo: FormArray<FormControl<string|null>>};
+            let t: ControlsType = c.controls;
+            let t1 = c.controls;
+            t1 = null as unknown as ControlsType;
+          }
+        });
+      });
+    });
+
+    describe('should build FormRecords', () => {
+      it('from objects with plain values', () => {
+        const c = fb.record({foo: 'bar'});
+        {
+          type ControlsType = {[key: string]: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      it('from objects with FormControlState', () => {
+        const c = fb.record({foo: {value: 'bar', disabled: false}});
+        {
+          type ControlsType = {[key: string]: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      it('from objects with ControlConfigs', () => {
+        const c = fb.record({foo: ['bar']});
+        {
+          type ControlsType = {[key: string]: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      it('from objects with ControlConfigs and validators', () => {
+        const c = fb.record({foo: ['bar', Validators.required]});
+        {
+          type ControlsType = {[key: string]: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      it('from objects with ControlConfigs and validator lists', () => {
+        const c = fb.record({foo: ['bar', [Validators.required, Validators.email]]});
+        {
+          type ControlsType = {[key: string]: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      it('from objects with ControlConfigs and explicit types', () => {
+        const c: FormRecord<FormControl<string|null>> =
+            fb.record({foo: ['bar', [Validators.required, Validators.email]]});
+        {
+          type ControlsType = {[key: string]: FormControl<string|null>};
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      describe('from objects with FormControls', () => {
+        it('nullably', () => {
+          const c = fb.record({foo: new FormControl('bar')});
+          {
+            type ControlsType = {[key: string]: FormControl<string|null>};
+            let t: ControlsType = c.controls;
+            let t1 = c.controls;
+            t1 = null as unknown as ControlsType;
+          }
+        });
+
+        it('non-nullably', () => {
+          const c = fb.record({foo: new FormControl('bar', {nonNullable: true})});
+          {
+            type ControlsType = {[key: string]: FormControl<string>};
+            let t: ControlsType = c.controls;
+            let t1 = c.controls;
+            t1 = null as unknown as ControlsType;
+          }
+        });
+
+        it('from objects with builder FormGroups', () => {
+          const c = fb.record({foo: fb.group({baz: 'bar'})});
+          {
+            type ControlsType = {[key: string]: FormGroup<{baz: FormControl<string|null>}>};
+            let t: ControlsType = c.controls;
+            let t1 = c.controls;
+            t1 = null as unknown as ControlsType;
+          }
+        });
+
+        it('from objects with builder FormRecords', () => {
+          const c = fb.record({foo: fb.record({baz: 'bar'})});
+          {
+            type ControlsType = {[key: string]: FormRecord<FormControl<string|null>>};
+            let t: ControlsType = c.controls;
+            let t1 = c.controls;
+            t1 = null as unknown as ControlsType;
+          }
+        });
+
+        it('from objects with builder FormArrays', () => {
+          const c = fb.record({foo: fb.array(['bar'])});
+          {
+            type ControlsType = {[key: string]: FormArray<FormControl<string|null>>};
             let t: ControlsType = c.controls;
             let t1 = c.controls;
             t1 = null as unknown as ControlsType;
@@ -1213,6 +1383,16 @@ describe('Typed Class', () => {
         const c = fb.array([fb.group({bar: 'foo'})]);
         {
           type ControlsType = Array<FormGroup<{bar: FormControl<string|null>}>>;
+          let t: ControlsType = c.controls;
+          let t1 = c.controls;
+          t1 = null as unknown as ControlsType;
+        }
+      });
+
+      it('from arrays with builder FormRecords', () => {
+        const c = fb.array([fb.record({bar: 'foo'})]);
+        {
+          type ControlsType = Array<FormRecord<FormControl<string|null>>>;
           let t: ControlsType = c.controls;
           let t1 = c.controls;
           t1 = null as unknown as ControlsType;
@@ -1339,6 +1519,15 @@ describe('Typed Class', () => {
         }
         c.reset();
         expect(c.value).toEqual({foo: 'bar'});
+
+        const c2 = fb.group({foo: [[1, 2, 3], Validators.required]});
+        {
+          type ControlsType = {foo: FormControl<number[]>};
+          let t: ControlsType = c2.controls;
+          let t1 = c2.controls;
+          t1 = null as unknown as ControlsType;
+        }
+        expect(c2.controls.foo.value).toEqual([1, 2, 3]);
       });
 
       it('from objects with ControlConfigs and validator lists', () => {

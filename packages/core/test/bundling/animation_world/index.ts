@@ -8,8 +8,8 @@
 
 import '@angular/core/test/bundling/util/src/reflect_metadata';
 
-import {CommonModule} from '@angular/common';
-import {Component, Directive, ElementRef, HostBinding, HostListener, NgModule, ɵmarkDirty as markDirty, ɵrenderComponent as renderComponent} from '@angular/core';
+import {ApplicationRef, Component, Directive, ElementRef, HostBinding, HostListener, NgModule, ɵdetectChanges as detectChanges} from '@angular/core';
+import {BrowserModule, platformBrowser} from '@angular/platform-browser';
 
 @Directive({
   selector: '[make-color-grey]',
@@ -52,7 +52,7 @@ class BoxWithOverriddenStylesComponent {
     } else {
       this.onActive();
     }
-    markDirty(this);
+    detectChanges(this);
   }
 
   onActive() {
@@ -116,15 +116,18 @@ class AnimationWorldComponent {
   toggleActive(item: any, makeColorGrey: MakeColorGreyDirective) {
     item.active = !item.active;
     makeColorGrey.toggle();
-    markDirty(this);
+    detectChanges(this);
   }
 }
 
 @NgModule({
   declarations: [AnimationWorldComponent, MakeColorGreyDirective, BoxWithOverriddenStylesComponent],
-  imports: [CommonModule]
+  imports: [BrowserModule],
 })
 class AnimationWorldModule {
+  ngDoBootstrap(app: ApplicationRef) {
+    app.bootstrap(AnimationWorldComponent);
+  }
 }
 
-renderComponent(AnimationWorldComponent);
+platformBrowser().bootstrapModule(AnimationWorldModule, {ngZone: 'noop'});

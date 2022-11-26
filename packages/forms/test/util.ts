@@ -122,7 +122,7 @@ export function currentStateOf(controls: AbstractControl[]):
  */
 export function asyncValidatorReturningObservable(c: AbstractControl): EventEmitter<any> {
   const e = new EventEmitter();
-  Promise.resolve(null).then(() => {
+  Promise.resolve().then(() => {
     e.emit({'async': true});
   });
   return e;

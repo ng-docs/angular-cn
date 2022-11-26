@@ -2,7 +2,7 @@
 
 # 特殊元素
 
-Each sub-directory below this contains documentation that describes "special elements".
+Each subdirectory below this contains documentation that describes "special elements".
 These are elements that can appear in templates that have special meaning and behaviour in the Angular framework.
 
 此下方的每个子目录都包含描述“特殊元素”的文档。这些是可以出现在 Angular 框架中具有特殊含义和行为的模板中的元素。

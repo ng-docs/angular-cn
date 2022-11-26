@@ -243,13 +243,8 @@ export class NgtscProgram implements api.Program {
         this.options, ctx, resolve);
   }
 
-  emit(opts?: {
-    emitFlags?: api.EmitFlags|undefined;
-    cancellationToken?: ts.CancellationToken | undefined;
-    customTransformers?: api.CustomTransformers | undefined;
-    emitCallback?: api.TsEmitCallback | undefined;
-    mergeEmitResultsCallback?: api.TsMergeEmitResultsCallback | undefined;
-  }|undefined): ts.EmitResult {
+  emit<CbEmitRes extends ts.EmitResult>(opts?: api.EmitOptions<CbEmitRes>|
+                                        undefined): ts.EmitResult {
     // Check if emission of the i18n messages bundle was requested.
     if (opts !== undefined && opts.emitFlags !== undefined &&
         opts.emitFlags & api.EmitFlags.I18nBundle) {
@@ -267,12 +262,15 @@ export class NgtscProgram implements api.Program {
       }
     }
 
+    const forceEmit = opts?.forceEmit ?? false;
+
     this.compiler.perfRecorder.memory(PerfCheckpoint.PreEmit);
 
     const res = this.compiler.perfRecorder.inPhase(PerfPhase.TypeScriptEmit, () => {
       const {transformers} = this.compiler.prepareEmit();
       const ignoreFiles = this.compiler.ignoreForEmit;
-      const emitCallback = opts && opts.emitCallback || defaultEmitCallback;
+      const emitCallback =
+          (opts?.emitCallback ?? defaultEmitCallback) as api.TsEmitCallback<CbEmitRes>;
 
       const writeFile: ts.WriteFileCallback =
           (fileName: string, data: string, writeByteOrderMark: boolean,
@@ -300,14 +298,14 @@ export class NgtscProgram implements api.Program {
         beforeTransforms.push(...customTransforms.beforeTs);
       }
 
-      const emitResults: ts.EmitResult[] = [];
+      const emitResults: CbEmitRes[] = [];
 
       for (const targetSourceFile of this.tsProgram.getSourceFiles()) {
         if (targetSourceFile.isDeclarationFile || ignoreFiles.has(targetSourceFile)) {
           continue;
         }
 
-        if (this.compiler.incrementalCompilation.safeToSkipEmit(targetSourceFile)) {
+        if (!forceEmit && this.compiler.incrementalCompilation.safeToSkipEmit(targetSourceFile)) {
           this.compiler.perfRecorder.eventCount(PerfEvent.EmitSkipSourceFile);
           continue;
         }
@@ -354,7 +352,7 @@ export class NgtscProgram implements api.Program {
   }
 }
 
-const defaultEmitCallback: api.TsEmitCallback = ({
+const defaultEmitCallback: api.TsEmitCallback<ts.EmitResult> = ({
   program,
   targetSourceFile,
   writeFile,

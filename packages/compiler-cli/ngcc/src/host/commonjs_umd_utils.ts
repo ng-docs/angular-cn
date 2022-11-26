@@ -98,7 +98,7 @@ export function findNamespaceOfIdentifier(id: ts.Identifier): ts.Identifier|null
 
 /**
  * Return the `RequireCall` that is used to initialize the specified `ts.Identifier`, if the
- * specified indentifier was indeed initialized with a require call in a declaration of the form:
+ * specified identifier was indeed initialized with a require call in a declaration of the form:
  * `var <id> = require('...')`
  *
  * 如果指定的标识符确实是使用以下形式的声明中的 require 调用初始化的，则返回用于初始化指定的
@@ -336,7 +336,7 @@ export function isExportsStatement(stmt: ts.Node): stmt is ExportsStatement {
 }
 
 /**
- * Find the far right hand side of a sequence of aliased assignements of the form
+ * Find the far right hand side of a sequence of aliased assignments of the form
  *
  * 查找以下形式的别名赋值序列的最右侧
  *

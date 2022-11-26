@@ -39,6 +39,8 @@ export const enum RuntimeErrorCode {
   INVALID_INJECTION_TOKEN = 204,
   INJECTOR_ALREADY_DESTROYED = 205,
   PROVIDER_IN_WRONG_CONTEXT = 207,
+  MISSING_INJECTION_TOKEN = 208,
+  INVALID_MULTI_PROVIDER = 209,
 
   // Template Errors
   MULTIPLE_COMPONENTS_MATCH = -300,
@@ -48,6 +50,12 @@ export const enum RuntimeErrorCode {
   UNKNOWN_ELEMENT = 304,
   TEMPLATE_STRUCTURE_ERROR = 305,
   INVALID_EVENT_BINDING = 306,
+  HOST_DIRECTIVE_UNRESOLVABLE = 307,
+  HOST_DIRECTIVE_NOT_STANDALONE = 308,
+  DUPLICATE_DIRECTITVE = 309,
+  HOST_DIRECTIVE_COMPONENT = 310,
+  HOST_DIRECTIVE_UNDEFINED_BINDING = 311,
+  HOST_DIRECTIVE_CONFLICTING_ALIAS = 312,
 
   // Bootstrap Errors
   MULTIPLE_PLATFORMS = 400,
@@ -57,6 +65,7 @@ export const enum RuntimeErrorCode {
   PLATFORM_ALREADY_DESTROYED = 404,
   ASYNC_INITIALIZERS_STILL_RUNNING = 405,
   APPLICATION_REF_ALREADY_DESTROYED = 406,
+  RENDERER_NOT_FOUND = 407,
 
   // Styling Errors
 
@@ -64,6 +73,7 @@ export const enum RuntimeErrorCode {
 
   // i18n Errors
   INVALID_I18N_STRUCTURE = 700,
+  MISSING_LOCALE_DATA = 701,
 
   // standalone errors
   IMPORT_PROVIDERS_FROM_STANDALONE = 800,
@@ -78,6 +88,9 @@ export const enum RuntimeErrorCode {
   UNSAFE_VALUE_IN_SCRIPT = 905,
   MISSING_GENERATED_DEF = 906,
   TYPE_IS_NOT_STANDALONE = 907,
+  MISSING_ZONEJS = 908,
+  UNEXPECTED_ZONE_STATE = 909,
+  UNSAFE_IFRAME_ATTRS = -910,
 }
 
 /**
@@ -122,12 +135,16 @@ export function formatRuntimeError<T extends number = RuntimeErrorCode>(
     code: T, message: null|false|string): string {
   // Error code might be a negative number, which is a special marker that instructs the logic to
   // generate a link to the error details page on angular.io.
+  // We also prepend `0` to non-compile-time errors.
   const fullCode = `NG0${Math.abs(code)}`;
 
-  let errorMessage = `${fullCode}${message ? ': ' + message : ''}`;
+  let errorMessage = `${fullCode}${message ? ': ' + message.trim() : ''}`;
 
   if (ngDevMode && code < 0) {
-    errorMessage = `${errorMessage}. Find more at ${ERROR_DETAILS_PAGE_BASE_URL}/${fullCode}`;
+    const addPeriodSeparator = !errorMessage.match(/[.,;!?]$/);
+    const separator = addPeriodSeparator ? '.' : '';
+    errorMessage =
+        `${errorMessage}${separator} Find more at ${ERROR_DETAILS_PAGE_BASE_URL}/${fullCode}`;
   }
   return errorMessage;
 }

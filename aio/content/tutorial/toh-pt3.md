@@ -6,19 +6,22 @@ At the moment, the `HeroesComponent` displays both the list of heroes and the se
 
 此刻，`HeroesComponent` 同时显示了英雄列表和所选英雄的详情。
 
-Keeping all features in one component as the application grows will not be maintainable.
-You'll want to split up large components into smaller sub-components, each focused on a specific task or workflow.
+Keeping all features in one component as the application grows won't be maintainable.
+This tutorial splits up large components into smaller subcomponents, each focused on a specific task or workflow.
 
 把所有特性都放在同一个组件中，将会使应用“长大”后变得不可维护。你要把大型组件拆分成小一点的子组件，每个子组件都要集中精力处理某个特定的任务或工作流。
 
-In this page, you'll take the first step in that direction by moving the hero details into a separate, reusable `HeroDetailComponent`.
+The first step is to move the hero details into a separate, reusable `HeroDetailComponent` and end up with:
 
-本页面中，你将迈出第一步 —— 把英雄详情移入一个独立的、可复用的 `HeroDetailComponent`。
+第一步是把英雄详情移入一个独立的、可复用的 `HeroDetailComponent`。最终将：
 
-The `HeroesComponent` will only present the list of heroes.
-The `HeroDetailComponent` will present details of a selected hero.
+* A `HeroesComponent` that presents the list of heroes.
 
-`HeroesComponent` 将仅仅用来表示英雄列表。`HeroDetailComponent` 将用来表示所选英雄的详情。
+  `HeroesComponent` 用来展示英雄列表。
+
+* A `HeroDetailComponent` that presents the details of a selected hero.
+
+  `HeroDetailComponent` 用来展示所选英雄的详情。
 
 <div class="alert is-helpful">
 
@@ -32,7 +35,7 @@ The `HeroDetailComponent` will present details of a selected hero.
 
 ## 制作 `HeroDetailComponent`
 
-Use the Angular CLI to generate a new component named `hero-detail`.
+Use this `ng generate` command to create a new component named `hero-detail`.
 
 使用 Angular CLI 生成一个名叫 `hero-detail` 的新组件。
 
@@ -50,7 +53,7 @@ The command scaffolds the following:
 
   创建目录 `src/app/hero-detail`。
 
-Inside that directory four files are generated:
+Inside that directory, four files are created:
 
 在这个目录中会生成四个文件：
 
@@ -78,13 +81,13 @@ The command also adds the `HeroDetailComponent` as a declaration in the `@NgModu
 
 ### 编写模板
 
-Cut the HTML for the hero detail from the bottom of the `HeroesComponent` template and paste it over the generated boilerplate in the `HeroDetailComponent` template.
+Cut the HTML for the hero detail from the bottom of the `HeroesComponent` template and paste it over the boilerplate content in the `HeroDetailComponent` template.
 
 从 `HeroesComponent` 模板的底部把表示英雄详情的 HTML 代码剪切粘贴到所生成的 `HeroDetailComponent` 模板中。
 
 The pasted HTML refers to a `selectedHero`.
 The new `HeroDetailComponent` can present *any* hero, not just a selected hero.
-So replace "selectedHero" with "hero" everywhere in the template.
+Replace `selectedHero` with `hero` everywhere in the template.
 
 所粘贴的 HTML 引用了 `selectedHero`。新的 `HeroDetailComponent` 可以展示*任意*英雄，而不仅仅所选的。因此还要把模板中的所有 `selectedHero` 替换为 `hero`。
 
@@ -113,7 +116,7 @@ region="import-hero" header="src/app/hero-detail/hero-detail.component.ts (impor
 The `hero` property
 [must be an `Input` property](guide/inputs-outputs "Input and Output properties"),
 annotated with the `@Input()` decorator,
-because the *external* `HeroesComponent` [will bind to it](#heroes-component-template) like this.
+because the *external* `HeroesComponent` [binds to it](#heroes-component-template) like this.
 
 `hero` 属性[必须是一个带有 `@Input()` 装饰器的输入属性](guide/inputs-outputs "Input and Output properties")，因为*外部的* `HeroesComponent` 组件[将会绑定到它](#heroes-component-template)。就像这样：
 
@@ -141,19 +144,18 @@ This component only receives a hero object through its `hero` property and displ
 
 ## 显示 `HeroDetailComponent`
 
-The `HeroesComponent` used to display the hero details on its own, before you removed that portion of the template.
+The `HeroesComponent` used to display the hero details on its own, before you removed that part of the template.
 This section guides you through delegating logic to the `HeroDetailComponent`.
 
 `HeroesComponent` 会自行显示英雄的详情，但后面我们要移除这部分。本节会指导你把这部分逻辑委派给 `HeroDetailComponent`。
 
-The two components will have a parent/child relationship.
-The parent `HeroesComponent` will control the child `HeroDetailComponent`
-by sending it a new hero to display whenever
-the user selects a hero from the list.
+The two components have a parent/child relationship.
+The parent, `HeroesComponent`, controls the child, `HeroDetailComponent` by
+sending it a new hero to display whenever the user selects a hero from the list.
 
 这两个组件将会具有父子关系。当用户从列表中选择了某个英雄时，父组件 `HeroesComponent` 将通过把要显示的新英雄发送给子组件 `HeroDetailComponent`，来控制子组件。
 
-You won't change the `HeroesComponent` *class* but you will change its *template*.
+You don't need to change the `HeroesComponent` *class*, instead change its *template*.
 
 你不用修改 `HeroesComponent` *类*，但是要修改它的*模板*。
 
@@ -178,14 +180,14 @@ Bind the `HeroesComponent.selectedHero` to the element's `hero` property like th
 
 `[hero]="selectedHero"` 是 Angular 的[属性绑定](guide/property-binding)语法。
 
-It's a *one way* data binding from
+It's a *one-way* data binding from
 the `selectedHero` property of the `HeroesComponent` to the `hero` property of the target element, which maps to the `hero` property of the `HeroDetailComponent`.
 
 这是一种*单向*数据绑定。从 `HeroesComponent` 的 `selectedHero` 属性绑定到目标元素的 `hero` 属性，并映射到了 `HeroDetailComponent` 的 `hero` 属性。
 
 Now when the user clicks a hero in the list, the `selectedHero` changes.
-When the `selectedHero` changes, the *property binding* updates `hero`
-and the `HeroDetailComponent` displays the new hero.
+When the `selectedHero` changes, the *property binding* updates `hero` and
+the `HeroDetailComponent` displays the new hero.
 
 现在，当用户在列表中点击某个英雄时，`selectedHero` 就改变了。当 `selectedHero` 改变时，*属性绑定*会修改 `HeroDetailComponent` 的 `hero` 属性，`HeroDetailComponent` 就会显示这个新的英雄。
 

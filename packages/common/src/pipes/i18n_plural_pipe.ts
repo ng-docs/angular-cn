@@ -32,7 +32,11 @@ const _INTERPOLATION_REGEXP: RegExp = /#/g;
  *
  * @publicApi
  */
-@Pipe({name: 'i18nPlural', pure: true})
+@Pipe({
+  name: 'i18nPlural',
+  pure: true,
+  standalone: true,
+})
 export class I18nPluralPipe implements PipeTransform {
   constructor(private _localization: NgLocalization) {}
 
@@ -41,10 +45,7 @@ export class I18nPluralPipe implements PipeTransform {
    *
    * 要格式化的数字
    * @param pluralMap an object that mimics the ICU format, see
-   * <http://userguide.icu-project.org/formatparse/messages>.
-   *
-   * 模仿 ICU 格式的对象，请参见<http://userguide.icu-project.org/formatparse/messages> 。
-   *
+   * https://unicode-org.github.io/icu/userguide/format_parse/messages/.
    * @param locale a `string` defining the locale to use (uses the current {@link LOCALE_ID} by
    * default).
    *

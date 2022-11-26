@@ -84,24 +84,19 @@ This is especially useful for when there are no open clients when a notification
 
 The Angular service worker supports the following operations:
 
-Angular Service Worker 支持以下操作：
-
-| Operations | Details |
-| :--------- | :------ |
-| 操作 | 详情 |
-| `openWindow` | Opens a new tab at the specified URL, which is resolved relative to the service worker scope. |
-| `openWindow` | 在指定的 URL 处打开一个新选项卡，该选项卡相对于 Service Worker 范围进行解析。 |
-| `focusLastFocusedOrOpen` | Focuses the last focused client. If there is no client open, then it opens a new tab at the specified URL, which is resolved relative to the service worker scope. |
-| `focusLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端。如果没有客户端打开，则它会在指定的 URL 处打开一个新选项卡，该选项卡是相对于 Service Worker 范围解析的。 |
-| `navigateLastFocusedOrOpen` | Focuses the last focused client and navigates it to the specified URL, which is resolved relative to the service worker scope. If there is no client open, then it opens a new tab at the specified URL. |
-| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL，该 URL 相对于 Service Worker 范围进行解析。如果没有打开的客户端，则它会在指定的 URL 处打开一个新选项卡。 |
+| Operations                  | Details |
+|:---                         |:---     |
+| `openWindow`                | Opens a new tab at the specified URL.                                                                                                            |
+| `focusLastFocusedOrOpen`    | Focuses the last focused client. If there is no client open, then it opens a new tab at the specified URL.                                       |
+| `navigateLastFocusedOrOpen` | Focuses the last focused client and navigates it to the specified URL. If there is no client open, then it opens a new tab at the specified URL. |
+| `sendRequest`               | Send a simple GET request to the specified URL.                                                                                                                                                          |
 
 <div class="alert is-important">
 
+URLs are resolved relative to the service worker's registration scope.<br />
 If an `onActionClick` item does not define a `url`, then the service worker's registration scope is used.
 
 如果 `onActionClick` 项未定义 `url`，则使用 Service Worker 的注册范围。
-
 </div>
 
 ### Actions
@@ -130,14 +125,16 @@ In addition, using the `onActionClick` property on the `data` object, you can ti
       {"action": "foo", "title": "Open new tab"},
       {"action": "bar", "title": "Focus last"},
       {"action": "baz", "title": "Navigate last"},
-      {"action": "qux", "title": "Just notify existing clients"}
+      {"action": "qux", "title": "Send request in the background"}
+      {"action": "other", "title": "Just notify existing clients"}
     ],
     "data": {
       "onActionClick": {
         "default": {"operation": "openWindow"},
         "foo": {"operation": "openWindow", "url": "/absolute/path"},
         "bar": {"operation": "focusLastFocusedOrOpen", "url": "relative/path"},
-        "baz": {"operation": "navigateLastFocusedOrOpen", "url": "https://other.domain.com/"}
+        "baz": {"operation": "navigateLastFocusedOrOpen", "url": "https://other.domain.com/"},
+        "qux": {"operation": "sendRequest", "url": "https://yet.another.domain.com/"}
       }
     }
   }

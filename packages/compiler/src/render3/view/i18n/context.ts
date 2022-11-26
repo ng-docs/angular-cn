@@ -50,7 +50,7 @@ function setupRegistry() {
  *
  * 对表示内容的翻译 const 的引用，如果是上下文
  *
- * @param level Nestng level defined for child contexts
+ * @param level Nesting level defined for child contexts
  *
  * 为子上下文定义的嵌套级别
  *
@@ -203,7 +203,7 @@ export class I18nContext {
         const isTemplateTag = key.endsWith('NG-TEMPLATE');
         if (isTemplateTag) {
           // current template's content is placed before or after
-          // parent template tag, depending on the open/close atrribute
+          // parent template tag, depending on the open/close attribute
           phs.splice(tmplIdx + (isCloseTag ? 0 : 1), 0, ...values);
         } else {
           const idx = isCloseTag ? values.length - 1 : 0;

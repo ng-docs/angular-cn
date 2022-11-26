@@ -17,7 +17,7 @@ For example, you would use a pipe to show a date as **April 15, 1988** rather th
 
 <div class="alert is-helpful">
 
-For the sample application used in this topic, see the <live-example></live-example>.
+For the sample application used in this topic, see the <live-example name="pipes"></live-example>.
 
 对于本主题中使用的示例应用程序，请参阅<live-example></live-example>.
 

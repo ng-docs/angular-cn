@@ -6,28 +6,25 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {APP_BASE_HREF, HashLocationStrategy, Location, LOCATION_INITIALIZED, LocationStrategy, PathLocationStrategy, PlatformLocation, ViewportScroller} from '@angular/common';
-import {ANALYZE_FOR_ENTRY_COMPONENTS, APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, ApplicationRef, Compiler, ComponentRef, Inject, Injectable, InjectionToken, Injector, ModuleWithProviders, NgModule, NgProbeToken, OnDestroy, Optional, Provider, SkipSelf} from '@angular/core';
-import {Title} from '@angular/platform-browser';
-import {of, Subject} from 'rxjs';
+import {HashLocationStrategy, Location, LocationStrategy, PathLocationStrategy, ViewportScroller} from '@angular/common';
+import {APP_BOOTSTRAP_LISTENER, ComponentRef, inject, Inject, InjectionToken, ModuleWithProviders, NgModule, NgProbeToken, NgZone, Optional, Provider, SkipSelf, ɵRuntimeError as RuntimeError} from '@angular/core';
 
 import {EmptyOutletComponent} from './components/empty_outlet';
-import {RouterLink, RouterLinkWithHref} from './directives/router_link';
+import {RouterLink} from './directives/router_link';
 import {RouterLinkActive} from './directives/router_link_active';
 import {RouterOutlet} from './directives/router_outlet';
-import {Event, stringifyEvent} from './events';
-import {Route, Routes} from './models';
-import {DefaultTitleStrategy, TitleStrategy} from './page_title_strategy';
-import {RouteReuseStrategy} from './route_reuse_strategy';
-import {ErrorHandler, Router} from './router';
+import {RuntimeErrorCode} from './errors';
+import {Routes} from './models';
+import {getBootstrapListener, rootRoute, ROUTER_IS_PROVIDED, withDebugTracing, withDisabledInitialNavigation, withEnabledBlockingInitialNavigation, withPreloading} from './provide_router';
+import {Router, setupRouter} from './router';
+import {ExtraOptions, ROUTER_CONFIGURATION} from './router_config';
 import {RouterConfigLoader, ROUTES} from './router_config_loader';
 import {ChildrenOutletContexts} from './router_outlet_context';
-import {NoPreloading, PreloadAllModules, PreloadingStrategy, RouterPreloader} from './router_preloader';
-import {RouterScroller} from './router_scroller';
+import {ROUTER_SCROLLER, RouterScroller} from './router_scroller';
 import {ActivatedRoute} from './router_state';
-import {UrlHandlingStrategy} from './url_handling_strategy';
-import {DefaultUrlSerializer, UrlSerializer, UrlTree} from './url_tree';
-import {flatten} from './utils/collection';
+import {DefaultUrlSerializer, UrlSerializer} from './url_tree';
+
+const NG_DEV_MODE = typeof ngDevMode === 'undefined' || ngDevMode;
 
 /**
  * The directives defined in the `RouterModule`.
@@ -35,41 +32,28 @@ import {flatten} from './utils/collection';
  * `RouterModule` 中定义的指令。
  *
  */
-const ROUTER_DIRECTIVES =
-    [RouterOutlet, RouterLink, RouterLinkWithHref, RouterLinkActive, EmptyOutletComponent];
-
-/**
- * A [DI token](guide/glossary/#di-token) for the router service.
- *
- * DI 用它来配置路由器。
- * @publicApi
- */
-export const ROUTER_CONFIGURATION = new InjectionToken<ExtraOptions>('ROUTER_CONFIGURATION');
+const ROUTER_DIRECTIVES = [RouterOutlet, RouterLink, RouterLinkActive, EmptyOutletComponent];
 
 /**
  * @docsNotRequired
  */
-export const ROUTER_FORROOT_GUARD = new InjectionToken<void>('ROUTER_FORROOT_GUARD');
+export const ROUTER_FORROOT_GUARD = new InjectionToken<void>(
+    NG_DEV_MODE ? 'router duplicate forRoot guard' : 'ROUTER_FORROOT_GUARD');
 
+// TODO(atscott): All of these except `ActivatedRoute` are `providedIn: 'root'`. They are only kept
+// here to avoid a breaking change whereby the provider order matters based on where the
+// `RouterModule`/`RouterTestingModule` is imported. These can/should be removed as a "breaking"
+// change in a major version.
 export const ROUTER_PROVIDERS: Provider[] = [
   Location,
   {provide: UrlSerializer, useClass: DefaultUrlSerializer},
-  {
-    provide: Router,
-    useFactory: setupRouter,
-    deps: [
-      UrlSerializer, ChildrenOutletContexts, Location, Injector, Compiler, ROUTES,
-      ROUTER_CONFIGURATION, DefaultTitleStrategy, [TitleStrategy, new Optional()],
-      [UrlHandlingStrategy, new Optional()], [RouteReuseStrategy, new Optional()]
-    ]
-  },
+  {provide: Router, useFactory: setupRouter},
   ChildrenOutletContexts,
   {provide: ActivatedRoute, useFactory: rootRoute, deps: [Router]},
-  RouterPreloader,
-  NoPreloading,
-  PreloadAllModules,
-  {provide: ROUTER_CONFIGURATION, useValue: {enableTracing: false}},
   RouterConfigLoader,
+  // Only used to warn when `provideRoutes` is used without `RouterModule` or `provideRouter`. Can
+  // be removed when `provideRoutes` is removed.
+  NG_DEV_MODE ? {provide: ROUTER_IS_PROVIDED, useValue: true} : [],
 ];
 
 export function routerNgProbeToken() {
@@ -112,12 +96,11 @@ export function routerNgProbeToken() {
  * @publicApi
  */
 @NgModule({
-  declarations: ROUTER_DIRECTIVES,
+  imports: ROUTER_DIRECTIVES,
   exports: ROUTER_DIRECTIVES,
 })
 export class RouterModule {
-  // Note: We are injecting the Router so it gets created eagerly...
-  constructor(@Optional() @Inject(ROUTER_FORROOT_GUARD) guard: any, @Optional() router: Router) {}
+  constructor(@Optional() @Inject(ROUTER_FORROOT_GUARD) guard: any) {}
 
   /**
    * Creates and configures a module with all the router providers and directives.
@@ -151,30 +134,19 @@ export class RouterModule {
       ngModule: RouterModule,
       providers: [
         ROUTER_PROVIDERS,
-        provideRoutes(routes),
+        NG_DEV_MODE ? (config?.enableTracing ? withDebugTracing().ɵproviders : []) : [],
+        {provide: ROUTES, multi: true, useValue: routes},
         {
           provide: ROUTER_FORROOT_GUARD,
           useFactory: provideForRootGuard,
           deps: [[Router, new Optional(), new SkipSelf()]]
         },
         {provide: ROUTER_CONFIGURATION, useValue: config ? config : {}},
-        {
-          provide: LocationStrategy,
-          useFactory: provideLocationStrategy,
-          deps:
-              [PlatformLocation, [new Inject(APP_BASE_HREF), new Optional()], ROUTER_CONFIGURATION]
-        },
-        {
-          provide: RouterScroller,
-          useFactory: createRouterScroller,
-          deps: [Router, ViewportScroller, ROUTER_CONFIGURATION]
-        },
-        {
-          provide: PreloadingStrategy,
-          useExisting: config && config.preloadingStrategy ? config.preloadingStrategy :
-                                                             NoPreloading
-        },
+        config?.useHash ? provideHashLocationStrategy() : providePathLocationStrategy(),
+        provideRouterScroller(),
+        config?.preloadingStrategy ? withPreloading(config.preloadingStrategy).ɵproviders : [],
         {provide: NgProbeToken, multi: true, useFactory: routerNgProbeToken},
+        config?.initialNavigation ? provideInitialNavigation(config) : [],
         provideRouterInitializer(),
       ],
     };
@@ -203,578 +175,67 @@ export class RouterModule {
    * 新的 NgModule。
    */
   static forChild(routes: Routes): ModuleWithProviders<RouterModule> {
-    return {ngModule: RouterModule, providers: [provideRoutes(routes)]};
+    return {
+      ngModule: RouterModule,
+      providers: [{provide: ROUTES, multi: true, useValue: routes}],
+    };
   }
 }
 
-export function createRouterScroller(
-    router: Router, viewportScroller: ViewportScroller, config: ExtraOptions): RouterScroller {
-  if (config.scrollOffset) {
-    viewportScroller.setOffset(config.scrollOffset);
-  }
-  return new RouterScroller(router, viewportScroller, config);
+/**
+ * For internal use by `RouterModule` only. Note that this differs from `withInMemoryRouterScroller`
+ * because it reads from the `ExtraOptions` which should not be used in the standalone world.
+ */
+export function provideRouterScroller(): Provider {
+  return {
+    provide: ROUTER_SCROLLER,
+    useFactory: () => {
+      const router = inject(Router);
+      const viewportScroller = inject(ViewportScroller);
+      const zone = inject(NgZone);
+      const config: ExtraOptions = inject(ROUTER_CONFIGURATION);
+      if (config.scrollOffset) {
+        viewportScroller.setOffset(config.scrollOffset);
+      }
+      return new RouterScroller(router, viewportScroller, zone, config);
+    },
+  };
 }
 
-export function provideLocationStrategy(
-    platformLocationStrategy: PlatformLocation, baseHref: string, options: ExtraOptions = {}) {
-  return options.useHash ? new HashLocationStrategy(platformLocationStrategy, baseHref) :
-                           new PathLocationStrategy(platformLocationStrategy, baseHref);
+// Note: For internal use only with `RouterModule`. Standalone setup via `provideRouter` should
+// provide hash location directly via `{provide: LocationStrategy, useClass: HashLocationStrategy}`.
+function provideHashLocationStrategy(): Provider {
+  return {provide: LocationStrategy, useClass: HashLocationStrategy};
+}
+
+// Note: For internal use only with `RouterModule`. Standalone setup via `provideRouter` does not
+// need this at all because `PathLocationStrategy` is the default factory for `LocationStrategy`.
+function providePathLocationStrategy(): Provider {
+  return {provide: LocationStrategy, useClass: PathLocationStrategy};
 }
 
 export function provideForRootGuard(router: Router): any {
-  if ((typeof ngDevMode === 'undefined' || ngDevMode) && router) {
-    throw new Error(
-        `RouterModule.forRoot() called twice. Lazy loaded modules should use RouterModule.forChild() instead.`);
+  if (NG_DEV_MODE && router) {
+    throw new RuntimeError(
+        RuntimeErrorCode.FOR_ROOT_CALLED_TWICE,
+        `The Router was provided more than once. This can happen if 'forRoot' is used outside of the root injector.` +
+            ` Lazy loaded modules should use RouterModule.forChild() instead.`);
   }
   return 'guarded';
 }
 
-/**
- * Registers a [DI provider](guide/glossary#provider) for a set of routes.
- *
- * 为一组路由注册一个 [DI 提供者。](guide/glossary#provider)
- *
- * @param routes The route configuration to provide.
- *
- * 注册路由。
- * @usageNotes
- *
- * ```
- * @NgModule ({
- *   imports: [RouterModule.forChild(ROUTES)],
- *   providers: [provideRoutes(EXTRA_ROUTES)]
- * })
- * class MyNgModule {}
- * ```
- *
- * @publicApi
- */
-export function provideRoutes(routes: Routes): any {
+// Note: For internal use only with `RouterModule`. Standalone router setup with `provideRouter`
+// users call `withXInitialNavigation` directly.
+function provideInitialNavigation(config: Pick<ExtraOptions, 'initialNavigation'>): Provider[] {
   return [
-    {provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: routes},
-    {provide: ROUTES, multi: true, useValue: routes},
+    config.initialNavigation === 'disabled' ? withDisabledInitialNavigation().ɵproviders : [],
+    config.initialNavigation === 'enabledBlocking' ?
+        withEnabledBlockingInitialNavigation().ɵproviders :
+        [],
   ];
 }
 
-/**
- * Allowed values in an `ExtraOptions` object that configure
- * when the router performs the initial navigation operation.
- *
- * `ExtraOptions` 对象中的允许值，用于配置路由器何时执行初始导航操作。
- *
- * * 'enabledNonBlocking' - (default) The initial navigation starts after the
- *   root component has been created. The bootstrap is not blocked on the completion of the initial
- *   navigation.
- *
- *     'enabledNonBlocking'
- *   \-（默认值）在创建根组件之后开始初始导航。初始导航完成后，引导程序不会被阻止。
- *
- * * 'enabledBlocking' - The initial navigation starts before the root component is created.
- *   The bootstrap is blocked until the initial navigation is complete. This value is required
- *   for [server-side rendering](guide/universal) to work.
- *
- *     'enabledBlocking' -
- *   初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务器渲染](guide/universal)正常工作所必需的。
- *
- * * 'disabled' - The initial navigation is not performed. The location listener is set up before
- *   the root component gets created. Use if there is a reason to have
- *   more control over when the router starts its initial navigation due to some complex
- *   initialization logic.
- *
- *     `false` - 同 'legacy_disabled'. @deprecated since v4
- *
- * The following values have been [deprecated](guide/releases#deprecation-practices) since v11,
- * and should not be used for new applications.
- *
- * [从 v11 开始不推荐使用](guide/releases#deprecation-practices)以下值，并且不应将其用于新应用程序。
- *
- * @see `forRoot()`
- * @publicApi
- */
-export type InitialNavigation = 'disabled'|'enabledBlocking'|'enabledNonBlocking';
-
-/**
- * A set of configuration options for a router module, provided in the
- * `forRoot()` method.
- *
- * 在 `forRoot()` 方法中提供的一组路由器模块配置选项。
- *
- * @see `forRoot()`
- *
- *
- * @publicApi
- */
-export interface ExtraOptions {
-  /**
-   * When true, log all internal navigation events to the console.
-   * Use for debugging.
-   *
-   * 如果为 true，则将所有内部导航事件记录到控制台。用于调试。
-   *
-   */
-  enableTracing?: boolean;
-
-  /**
-   * When true, enable the location strategy that uses the URL fragment
-   * instead of the history API.
-   *
-   * 修改位置策略（`LocationStrategy`），用 URL 片段（`#`）代替 `history` API。
-   */
-  useHash?: boolean;
-
-  /**
-   * One of `enabled`, `enabledBlocking`, `enabledNonBlocking` or `disabled`.
-   * When set to `enabled` or `enabledBlocking`, the initial navigation starts before the root
-   * component is created. The bootstrap is blocked until the initial navigation is complete. This
-   * value is required for [server-side rendering](guide/universal) to work. When set to
-   * `enabledNonBlocking`, the initial navigation starts after the root component has been created.
-   * The bootstrap is not blocked on the completion of the initial navigation. When set to
-   * `disabled`, the initial navigation is not performed. The location listener is set up before the
-   * root component gets created. Use if there is a reason to have more control over when the router
-   * starts its initial navigation due to some complex initialization logic.
-   *
-   * `enabled`、`enabledBlocking`、`enabledNonBlocking` 或 `disabled` 之一。
-   * 设置为 `enabled` 或 `enabledBlocking`
-   * ，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。
-   * 该值是让[服务器端渲染](guide/universal)正常工作所必需的。
-   * 设置为
-   * `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。
-   * 设置为 `disabled`，不执行初始导航。位置监听器是在创建根组件之前设置的。
-   * 如果由于某些复杂的初始化逻辑，而有理由对路由器何时开始其初始导航有更多的控制权，请使用它。
-   *
-   */
-  initialNavigation?: InitialNavigation;
-
-  /**
-   * A custom error handler for failed navigations.
-   * If the handler returns a value, the navigation Promise is resolved with this value.
-   * If the handler throws an exception, the navigation Promise is rejected with the exception.
-   *
-   * 导航失败的自定义错误处理器。如果处理器返回一个值，则导航的 Promise
-   * 将使用该值进行解析。如果处理器引发异常，则导航 Promise 将被拒绝，并带有该异常。
-   *
-   */
-  errorHandler?: ErrorHandler;
-
-  /**
-   * Configures a preloading strategy.
-   * One of `PreloadAllModules` or `NoPreloading` (the default).
-   *
-   * 配置预加载策略，参见 `PreloadAllModules`。
-   */
-  preloadingStrategy?: any;
-
-  /**
-   * Define what the router should do if it receives a navigation request to the current URL.
-   * Default is `ignore`, which causes the router ignores the navigation.
-   * This can disable features such as a "refresh" button.
-   * Use this option to configure the behavior when navigating to the
-   * current URL. Default is 'ignore'.
-   *
-   * 规定当路由器收到一个导航到当前 URL 的请求时该如何处理。
-   * 默认情况下，路由器会忽略本次导航。不过，这会阻止实现类似于"刷新"按钮的功能。
-   * 使用该选项可以控制导航到当前 URL 时的行为。默认为 'ignore'。
-   */
-  onSameUrlNavigation?: 'reload'|'ignore';
-
-  /**
-   * Configures if the scroll position needs to be restored when navigating back.
-   *
-   * 配置是否需要在导航回来的时候恢复滚动位置。
-   *
-   * * 'disabled'- (Default) Does nothing. Scroll position is maintained on navigation.
-   *
-   *   'disabled' - 什么也不做（默认）。在导航时，会自动维护滚动位置
-   *
-   * * 'top'- Sets the scroll position to x = 0, y = 0 on all navigation.
-   *
-   *   'top' - 在任何一次导航中都把滚动位置设置为 x=0, y=0。
-   *
-   * * 'enabled'- Restores the previous scroll position on backward navigation, else sets the
-   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \(forward
-   *   navigation). This option will be the default in the future.
-   *
-   *     'enabled' ——
-   *   当向后导航时，滚动到以前的滚动位置。当向前导航时，如果提供了锚点，则自动滚动到那个锚点，否则把滚动位置设置为
-   *   [0, 0]。该选项将来会变成默认值。
-   *
-   * You can implement custom scroll restoration behavior by adapting the enabled behavior as
-   * in the following example.
-   *
-   * 你可以像下面的例子一样适配它启用时的行为，来自定义恢复滚动位置的策略：
-   *
-   * ```typescript
-   * class AppComponent {
-   *   movieData: any;
-   *
-   *   constructor(private router: Router, private viewportScroller: ViewportScroller,
-   * changeDetectorRef: ChangeDetectorRef) {
-   *   router.events.pipe(filter((event: Event): event is Scroll => event instanceof Scroll)
-   *     ).subscribe(e => {
-   *       fetch('http://example.com/movies.json').then(response => {
-   *         this.movieData = response.json();
-   *         // update the template with the data before restoring scroll
-   *         changeDetectorRef.detectChanges();
-   *
-   *         if (e.position) {
-   *           viewportScroller.scrollToPosition(e.position);
-   *         }
-   *       });
-   *     });
-   *   }
-   * }
-   * ```
-   *
-   */
-  scrollPositionRestoration?: 'disabled'|'enabled'|'top';
-
-  /**
-   * When set to 'enabled', scrolls to the anchor element when the URL has a fragment.
-   * Anchor scrolling is disabled by default.
-   *
-   * 设置为 “enabled” 时，如果 URL 有一个片段，就滚动到锚点元素。默认情况下，锚定滚动是禁用的。
-   *
-   * Anchor scrolling does not happen on 'popstate'. Instead, we restore the position
-   * that we stored or scroll to the top.
-   *
-   * 锚点滚动不会在 “popstate” 上发生。相反，我们会恢复存储的位置或滚动到顶部。
-   *
-   */
-  anchorScrolling?: 'disabled'|'enabled';
-
-  /**
-   * Configures the scroll offset the router will use when scrolling to an element.
-   *
-   * 配置当滚动到一个元素时，路由器使用的滚动偏移。
-   *
-   * When given a tuple with x and y position value,
-   * the router uses that offset each time it scrolls.
-   * When given a function, the router invokes the function every time
-   * it restores scroll position.
-   *
-   * 当给出两个数字时，路由器总会使用它们。
-   * 当给出一个函数时，路由器每当要恢复滚动位置时，都会调用该函数。
-   */
-  scrollOffset?: [number, number]|(() => [number, number]);
-
-  /**
-   * Defines how the router merges parameters, data, and resolved data from parent to child
-   * routes. By default ('emptyOnly'), inherits parent parameters only for
-   * path-less or component-less routes.
-   *
-   * 定义路由器如何将参数、数据和已解析的数据从父路由合并到子路由。默认情况下（“emptyOnly”），仅继承无路径或无组件路由的父参数。
-   *
-   * Set to 'always' to enable unconditional inheritance of parent parameters.
-   *
-   * 设置为 “always” 时会始终启用父参数的无条件继承。
-   *
-   * Note that when dealing with matrix parameters, "parent" refers to the parent `Route`
-   * config which does not necessarily mean the "URL segment to the left". When the `Route` `path`
-   * contains multiple segments, the matrix parameters must appear on the last segment. For example,
-   * matrix parameters for `{path: 'a/b', component: MyComp}` should appear as `a/b;foo=bar` and not
-   * `a;foo=bar/b`.
-   *
-   * 请注意，在处理矩阵参数时，“parent”是指父 `Route` 配置，并不一定意味着“左侧的 URL 段”。当
-   * `Route` `path` 包含多个段时，矩阵参数必须出现在最后一个段上。例如，`{path: 'a/b', component:
-   * MyComp}` 矩阵参数应该显示为 `a/b;foo=bar` 而不是 `a;foo=bar/b` 。
-   *
-   */
-  paramsInheritanceStrategy?: 'emptyOnly'|'always';
-
-  /**
-   * A custom handler for malformed URI errors. The handler is invoked when `encodedURI` contains
-   * invalid character sequences.
-   * The default implementation is to redirect to the root URL, dropping
-   * any path or parameter information. The function takes three parameters:
-   *
-   * 一个自定义的 URI 格式无效错误的处理器。每当 encodeURI
-   * 包含无效字符序列时，就会调用该处理器。默认的实现是跳转到根路径，抛弃任何路径和参数信息。该函数传入三个参数：
-   *
-   * - `'URIError'` - Error thrown when parsing a bad URL.
-   *
-   *   `'URIError'` - 当传入错误的 URL 时抛出的错误。
-   *
-   * - `'UrlSerializer'` - UrlSerializer that’s configured with the router.
-   *
-   *   `'UrlSerializer'` - 路由器所配置的 UrlSerializer。
-   *
-   * - `'url'` -  The malformed URL that caused the URIError
-   *
-   *   `'url'` - 导致 URIError 的格式无效的 URL
-   *
-   * */
-  malformedUriErrorHandler?:
-      (error: URIError, urlSerializer: UrlSerializer, url: string) => UrlTree;
-
-  /**
-   * Defines when the router updates the browser URL. By default ('deferred'),
-   * update after successful navigation.
-   * Set to 'eager' if prefer to update the URL at the beginning of navigation.
-   * Updating the URL early allows you to handle a failure of navigation by
-   * showing an error message with the URL that failed.
-   *
-   * 定义路由器要何时更新浏览器
-   * URL。默认情况下（“deferred”），在成功导航后进行更新。如果希望在导航开始时更新 URL，则设置为
-   * “eager” 。 以便早期更新 URL，这样可以通过显示带有失败 URL 的错误消息来处理导航失败。
-   *
-   */
-  urlUpdateStrategy?: 'deferred'|'eager';
-
-  /**
-   * Enables a bug fix that corrects relative link resolution in components with empty paths.
-   * Example:
-   *
-   * 启用 BUG 补丁，纠正空路径组件的相对链接解析问题。
-   *
-   * ```
-   * const routes = [
-   *   {
-   *     path: '',
-   *     component: ContainerComponent,
-   *     children: [
-   *       { path: 'a', component: AComponent },
-   *       { path: 'b', component: BComponent },
-   *     ]
-   *   }
-   * ];
-   * ```
-   *
-   * From the `ContainerComponent`, you should be able to navigate to `AComponent` using
-   * the following `routerLink`, but it will not work if `relativeLinkResolution` is set
-   * to `'legacy'`:
-   *
-   * 在 `ContainerComponent` 中不能这样用：
-   *
-   * `<a [routerLink]="['./a']">Link to A</a>`
-   *
-   * However, this will work:
-   *
-   * 不过，可以这样用：
-   *
-   * `<a [routerLink]="['../a']">Link to A</a>`
-   *
-   * In other words, you're required to use `../` rather than `./` when the relative link
-   * resolution is set to `'legacy'`.
-   *
-   * 换句话说，你需要使用 `../` 而不是 `./` 。
-   *
-   * The default in v11 is `corrected`.
-   *
-   * v11 中的默认值是 `corrected`。
-   *
-   * @deprecated
-   */
-  relativeLinkResolution?: 'legacy'|'corrected';
-
-  /**
-   * Configures how the Router attempts to restore state when a navigation is cancelled.
-   *
-   * 配置在取消导航时路由器如何尝试恢复状态。
-   *
-   * 'replace' - Always uses `location.replaceState` to set the browser state to the state of the
-   * router before the navigation started. This means that if the URL of the browser is updated
-   * _before_ the navigation is canceled, the Router will simply replace the item in history rather
-   * than trying to restore to the previous location in the session history. This happens most
-   * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
-   * buttons.
-   *
-   * 'replace' - 始终使用 `location.replaceState`
-   * 将浏览器状态设置为导航开始之前的路由器状态。这意味着，如果在取消导航 _ 之前 _ 更新了浏览器的
-   * URL，则路由器将简单地替换历史记录中的条目，而不是尝试恢复到会话历史记录中的前一个位置。这种情况最常见的情况是
-   * `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮进行导航。
-   *
-   * 'computed' - Will attempt to return to the same index in the session history that corresponds
-   * to the Angular route when the navigation gets cancelled. For example, if the browser back
-   * button is clicked and the navigation is cancelled, the Router will trigger a forward navigation
-   * and vice versa.
-   *
-   * “compute” - 当导航被取消时，将尝试返回会话历史记录中与 Angular
-   * 路由对应的同一个索引。例如，如果单击浏览器后退按钮并取消导航，则路由器将触发向前导航，反之亦然。
-   *
-   * Note: the 'computed' option is incompatible with any `UrlHandlingStrategy` which only
-   * handles a portion of the URL because the history restoration navigates to the previous place in
-   * the browser history rather than simply resetting a portion of the URL.
-   *
-   * 注意： ' `UrlHandlingStrategy` ' 选项与任何仅处理一部分 URL 的 UrlHandlingStrategy
-   * 不兼容，因为历史恢复会导航到浏览器历史记录中的上一个位置，而不是简单地重置 URL 的一部分。
-   *
-   * The default value is `replace` when not set.
-   *
-   * 默认值是未设置时的 `replace` 。
-   *
-   */
-  canceledNavigationResolution?: 'replace'|'computed';
-}
-
-export function setupRouter(
-    urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,
-    injector: Injector, compiler: Compiler, config: Route[][], opts: ExtraOptions = {},
-    defaultTitleStrategy: DefaultTitleStrategy, titleStrategy?: TitleStrategy,
-    urlHandlingStrategy?: UrlHandlingStrategy, routeReuseStrategy?: RouteReuseStrategy) {
-  const router =
-      new Router(null, urlSerializer, contexts, location, injector, compiler, flatten(config));
-
-  if (urlHandlingStrategy) {
-    router.urlHandlingStrategy = urlHandlingStrategy;
-  }
-
-  if (routeReuseStrategy) {
-    router.routeReuseStrategy = routeReuseStrategy;
-  }
-
-  router.titleStrategy = titleStrategy ?? defaultTitleStrategy;
-
-  assignExtraOptionsToRouter(opts, router);
-
-  if ((typeof ngDevMode === 'undefined' || ngDevMode) && opts.enableTracing) {
-    router.events.subscribe((e: Event) => {
-      // tslint:disable:no-console
-      console.group?.(`Router Event: ${(<any>e.constructor).name}`);
-      console.log(stringifyEvent(e));
-      console.log(e);
-      console.groupEnd?.();
-      // tslint:enable:no-console
-    });
-  }
-
-  return router;
-}
-
-export function assignExtraOptionsToRouter(opts: ExtraOptions, router: Router): void {
-  if (opts.errorHandler) {
-    router.errorHandler = opts.errorHandler;
-  }
-
-  if (opts.malformedUriErrorHandler) {
-    router.malformedUriErrorHandler = opts.malformedUriErrorHandler;
-  }
-
-  if (opts.onSameUrlNavigation) {
-    router.onSameUrlNavigation = opts.onSameUrlNavigation;
-  }
-
-  if (opts.paramsInheritanceStrategy) {
-    router.paramsInheritanceStrategy = opts.paramsInheritanceStrategy;
-  }
-
-  if (opts.relativeLinkResolution) {
-    router.relativeLinkResolution = opts.relativeLinkResolution;
-  }
-
-  if (opts.urlUpdateStrategy) {
-    router.urlUpdateStrategy = opts.urlUpdateStrategy;
-  }
-
-  if (opts.canceledNavigationResolution) {
-    router.canceledNavigationResolution = opts.canceledNavigationResolution;
-  }
-}
-
-export function rootRoute(router: Router): ActivatedRoute {
-  return router.routerState.root;
-}
-
-/**
- * Router initialization requires two steps:
- *
- * 路由器初始化需要两个步骤：
- *
- * First, we start the navigation in a `APP_INITIALIZER` to block the bootstrap if
- * a resolver or a guard executes asynchronously.
- *
- * 首先，我们在 `APP_INITIALIZER` 中启动导航，以在解析器或保护器异步执行时阻止引导。
- *
- * Next, we actually run activation in a `BOOTSTRAP_LISTENER`, using the
- * `afterPreactivation` hook provided by the router.
- * The router navigation starts, reaches the point when preactivation is done, and then
- * pauses. It waits for the hook to be resolved. We then resolve it only in a bootstrap listener.
- *
- * 接下来，我们实际上使用路由器提供的 `afterPreactivation` 钩子在 `BOOTSTRAP_LISTENER`
- * 中运行激活。路由器导航启动，到达预激活完成时，然后暂停。它会等待钩子被解析。然后，我们仅在引导侦听器中解析它。
- *
- */
-@Injectable()
-export class RouterInitializer implements OnDestroy {
-  private initNavigation = false;
-  private destroyed = false;
-  private resultOfPreactivationDone = new Subject<void>();
-
-  constructor(private injector: Injector) {}
-
-  appInitializer(): Promise<any> {
-    const p: Promise<any> = this.injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
-    return p.then(() => {
-      // If the injector was destroyed, the DI lookups below will fail.
-      if (this.destroyed) {
-        return Promise.resolve(true);
-      }
-
-      let resolve: Function = null!;
-      const res = new Promise(r => resolve = r);
-      const router = this.injector.get(Router);
-      const opts = this.injector.get(ROUTER_CONFIGURATION);
-
-      if (opts.initialNavigation === 'disabled') {
-        router.setUpLocationChangeListener();
-        resolve(true);
-      } else if (opts.initialNavigation === 'enabledBlocking') {
-        router.hooks.afterPreactivation = () => {
-          // only the initial navigation should be delayed
-          if (!this.initNavigation) {
-            this.initNavigation = true;
-            resolve(true);
-            return this.resultOfPreactivationDone;
-
-            // subsequent navigations should not be delayed
-          } else {
-            return of(null) as any;
-          }
-        };
-        router.initialNavigation();
-      } else {
-        resolve(true);
-      }
-
-      return res;
-    });
-  }
-
-  bootstrapListener(bootstrappedComponentRef: ComponentRef<any>): void {
-    const opts = this.injector.get(ROUTER_CONFIGURATION);
-    const preloader = this.injector.get(RouterPreloader);
-    const routerScroller = this.injector.get(RouterScroller);
-    const router = this.injector.get(Router);
-    const ref = this.injector.get<ApplicationRef>(ApplicationRef);
-
-    if (bootstrappedComponentRef !== ref.components[0]) {
-      return;
-    }
-
-    // Default case
-    if (opts.initialNavigation === 'enabledNonBlocking' || opts.initialNavigation === undefined) {
-      router.initialNavigation();
-    }
-
-    preloader.setUpPreloading();
-    routerScroller.init();
-    router.resetRootComponentType(ref.componentTypes[0]);
-    this.resultOfPreactivationDone.next(null!);
-    this.resultOfPreactivationDone.complete();
-  }
-
-  ngOnDestroy() {
-    this.destroyed = true;
-  }
-}
-
-export function getAppInitializer(r: RouterInitializer) {
-  return r.appInitializer.bind(r);
-}
-
-export function getBootstrapListener(r: RouterInitializer) {
-  return r.bootstrapListener.bind(r);
-}
-
+// TODO(atscott): This should not be in the public API
 /**
  * A [DI token](guide/glossary/#di-token) for the router initializer that
  * is called after the app is bootstrapped.
@@ -783,19 +244,14 @@ export function getBootstrapListener(r: RouterInitializer) {
  *
  * @publicApi
  */
-export const ROUTER_INITIALIZER =
-    new InjectionToken<(compRef: ComponentRef<any>) => void>('Router Initializer');
+export const ROUTER_INITIALIZER = new InjectionToken<(compRef: ComponentRef<any>) => void>(
+    NG_DEV_MODE ? 'Router Initializer' : '');
 
-export function provideRouterInitializer(): ReadonlyArray<Provider> {
+function provideRouterInitializer(): Provider[] {
   return [
-    RouterInitializer,
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      useFactory: getAppInitializer,
-      deps: [RouterInitializer]
-    },
-    {provide: ROUTER_INITIALIZER, useFactory: getBootstrapListener, deps: [RouterInitializer]},
+    // ROUTER_INITIALIZER token should be removed. It's public API but shouldn't be. We can just
+    // have `getBootstrapListener` directly attached to APP_BOOTSTRAP_LISTENER.
+    {provide: ROUTER_INITIALIZER, useFactory: getBootstrapListener},
     {provide: APP_BOOTSTRAP_LISTENER, multi: true, useExisting: ROUTER_INITIALIZER},
   ];
 }

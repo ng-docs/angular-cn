@@ -32,35 +32,34 @@ A locale determines the formatting and parsing of the following details.
 
   翻译名称，包括时区、语言和国家
 
+For a quick introduction to localization and internationalization watch this video:
+
+<div class="video-container">
+
+<iframe allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" src="https://www.youtube.com/embed/KNTN-nsbV7M"></iframe>
+
+</div>
+
 ## Learn about Angular internationalization
 
 ## 了解 Angular 国际化
 
 <div class="card-container">
-  <a href="guide/i18n-common-overview" class="docs-card" title="Common internationalization tasks">
-    <section>Common tasks</section>
-    <section>常见任务</section>
-    <p>Learn how to implement many of the common tasks associated with Angular internationalization.</p>
-    <p>学习如何实现与 Angular 国际化有关的常见任务</p>
-    <p class="card-footer">Common internationalization tasks</p>
-    <p class="card-footer">常见国际化任务</p>
-  </a>
-  <a href="guide/i18n-optional-overview" class="docs-card" title="Optional internationalization tasks">
-    <section>Optional practices</section>
-    <section>可选实践</section>
-    <p>Learn how to implement optional practices associated with Angular internationalization.</p>
-    <p>学习如何实现与 Angular 国际化有关的可选实践</p>
-    <p class="card-footer">Optional internationalization practices</p>
-    <p class="card-footer">可选国际化实践</p>
-  </a>
-  <a href="guide/i18n-example" class="docs-card" title="Internationalization example">
-    <section>Internationalization example</section>
-    <section>国际化范例</section>
-    <p>Review an example of Angular internationalization.</p>
-    <p>查看一个 Angular 国际化的例子</p>
-    <p class="card-footer">Example Angular Internationalization application</p>
-    <p class="card-footer">Angular 国际化应用范例</p>
-  </a>
+    <a href="guide/i18n-common-overview" class="docs-card" title="Common internationalization tasks">
+        <section>Common tasks</section>
+        <p>Learn how to implement many of the common tasks associated with Angular internationalization.</p>
+        <p class="card-footer">Common internationalization tasks</p>
+    </a>
+    <a href="guide/i18n-optional-overview" class="docs-card" title="Optional internationalization tasks">
+        <section>Optional practices</section>
+        <p>Learn how to implement optional practices associated with Angular internationalization.</p>
+        <p class="card-footer">Optional internationalization practices</p>
+    </a>
+    <a href="guide/i18n-example" class="docs-card" title="Internationalization example">
+        <section>Internationalization example</section>
+        <p>Review an example of Angular internationalization.</p>
+        <p class="card-footer">Example Angular Internationalization application</p>
+    </a>
 </div>
 
 <!-- links -->
@@ -69,4 +68,4 @@ A locale determines the formatting and parsing of the following details.
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-06-06

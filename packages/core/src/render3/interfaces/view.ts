@@ -16,9 +16,8 @@ import {LContainer} from './container';
 import {ComponentDef, ComponentTemplate, DirectiveDef, DirectiveDefList, HostBindingsFunction, PipeDef, PipeDefList, ViewQueriesFunction} from './definition';
 import {I18nUpdateOpCodes, TI18n, TIcu} from './i18n';
 import {TConstants, TNode} from './node';
-import {PlayerHandler} from './player';
 import {LQueries, TQueries} from './query';
-import {Renderer3, RendererFactory3} from './renderer';
+import {Renderer, RendererFactory} from './renderer';
 import {RComment, RElement} from './renderer_dom';
 import {TStylingKey, TStylingRange} from './styling';
 
@@ -245,8 +244,8 @@ export interface LView<T = unknown> extends Array<any> {
    * 会在此数组中保存到必要上下文的索引。
    *
    * After `LView` is created it is possible to attach additional instance specific functions at the
-   * end of the `lView[CLENUP]` because we know that no more `T` level cleanup functions will be
-   * addeded here.
+   * end of the `lView[CLEANUP]` because we know that no more `T` level cleanup functions will be
+   * added here.
    *
    * 创建 `LView` 后，可以在 `lView[CLENUP]`
    * 的末尾附加额外的实例特定函数，因为我们知道这里不会添加更多 `T` 级清理函数。
@@ -257,17 +256,8 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * - For dynamic views, this is the context with which to render the template (e.g.
    *   `NgForContext`), or `{}` if not defined explicitly.
-   *
-   *   对于动态视图，这是用于呈现模板的上下文（例如 `NgForContext`），如果未显式定义，则为 `{}` 。
-   *
-   * - For root view of the root component the context contains change detection data.
-   *
-   *   对于根组件的根视图，上下文包含变更检测数据。
-   *
-   * - For non-root components, the context is the component instance,
-   *
-   *   对于非根组件，上下文是组件实例，
-   *
+   * - For root view of the root component it's a reference to the component instance itself.
+   * - For components, the context is a reference to the component instance itself.
    * - For inline views, the context is null.
    *
    *   对于内联视图，上下文为 null。
@@ -289,7 +279,7 @@ export interface LView<T = unknown> extends Array<any> {
    * 用于创建渲染器的工厂。
    *
    */
-  [RENDERER_FACTORY]: RendererFactory3;
+  [RENDERER_FACTORY]: RendererFactory;
 
   /**
    * Renderer to be used for this view.
@@ -297,7 +287,7 @@ export interface LView<T = unknown> extends Array<any> {
    * 要用于此视图的渲染器。
    *
    */
-  [RENDERER]: Renderer3;
+  [RENDERER]: Renderer;
 
   /**
    * An optional custom sanitizer.
@@ -872,7 +862,7 @@ export const enum TViewType {
 
   /**
    * `TView` associated with a template. Such as `*ngIf`, `<ng-template>` etc... A `Component`
-   * can have zero or more `Embedede` `TView`s.
+   * can have zero or more `Embedded` `TView`s.
    *
    * 与模板关联的 `TView` 。例如 `*ngIf`、`<ng-template>` 等……一个 `Component` 可以有零个或多个
    * `Embedede` `TView` 。
@@ -1313,74 +1303,7 @@ export interface TView {
   incompleteFirstPass: boolean;
 }
 
-export const enum RootContextFlags {
-  Empty = 0b00,
-  DetectChanges = 0b01,
-  FlushPlayers = 0b10
-}
-
-
-/**
- * RootContext contains information which is shared for all components which
- * were bootstrapped with {@link renderComponent}.
- *
- * RootContext 包含可以为使用 {@link renderComponent} 引导的所有组件共享的信息。
- *
- */
-export interface RootContext<T = unknown> {
-  /**
-   * A function used for scheduling change detection in the future. Usually
-   * this is `requestAnimationFrame`.
-   *
-   * 用于调度将来变更检测的函数。通常这是 `requestAnimationFrame` 。
-   *
-   */
-  scheduler: (workFn: () => void) => void;
-
-  /**
-   * A promise which is resolved when all components are considered clean (not dirty).
-   *
-   * 当所有组件都被认为是干净的（不脏的）时才会解析的 Promise。
-   *
-   * This promise is overwritten every time a first call to {@link markDirty} is invoked.
-   *
-   * 每次调用对 {@link markDirty} 的第一次调用时，都会覆盖此 Promise。
-   *
-   */
-  clean: Promise<null>;
-
-  /**
-   * RootComponents - The components that were instantiated by the call to
-   * {@link renderComponent}.
-   *
-   * RootComponents -通过调用 {@link renderComponent} 来实例化的组件。
-   *
-   */
-  components: T[];
-
-  /**
-   * The player flushing handler to kick off all animations
-   *
-   * 启动所有动画的播放器刷新处理程序
-   *
-   */
-  playerHandler: PlayerHandler|null;
-
-  /**
-   * What render-related operations to run once a scheduler has been set
-   *
-   * 设置调度程序后要运行哪些与渲染相关的操作
-   *
-   */
-  flags: RootContextFlags;
-}
-
-/**
- * Single hook callback function.
- *
- * 单钩子回调函数。
- *
- */
+/** Single hook callback function. */
 export type HookFn = () => void;
 
 /**

@@ -26,7 +26,7 @@ export interface Import {
    */
   specifier: string;
   /**
-   * The `ts.Identifer` by which the imported module is known.
+   * The `ts.Identifier` by which the imported module is known.
    *
    * 已知导入模块的 `ts.Identifer` 。
    *

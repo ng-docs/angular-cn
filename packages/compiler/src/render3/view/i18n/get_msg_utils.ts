@@ -51,7 +51,7 @@ const GOOG_GET_MSG = 'goog.getMsg';
  *     original_code: {
  *       'interpolation': '{{ sender }}',
  *       'startTagSpan': '<span class="receiver">',
- *       'interploation_1': '{{ receiver }}',
+ *       'interpolation_1': '{{ receiver }}',
  *       'closeTagSpan': '</span>',
  *     },
  *   },

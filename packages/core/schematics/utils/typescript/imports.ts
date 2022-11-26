@@ -141,6 +141,19 @@ export function replaceImport(
   ]);
 }
 
+/**
+ * Removes a symbol from the named imports and updates a node
+ * that represents a given named imports.
+ *
+ * @param node Node that contains the imports.
+ * @param symbol Symbol that should be removed.
+ * @returns An updated node (ts.NamedImports).
+ */
+export function removeSymbolFromNamedImports(node: ts.NamedImports, symbol: ts.ImportSpecifier) {
+  return ts.factory.updateNamedImports(node, [
+    ...node.elements.filter(current => current !== symbol),
+  ]);
+}
 
 /**
  * Finds an import specifier with a particular name.

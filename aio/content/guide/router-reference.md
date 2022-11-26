@@ -1,4 +1,4 @@
-# Router Reference
+# Router reference
 
 # 路由器参考手册
 
@@ -13,7 +13,7 @@ The following sections highlight some core router concepts.
 ## 路由器导入
 
 The Angular Router is an optional service that presents a particular component view for a given URL.
-It is not part of the Angular core and thus is in its own library package, `@angular/router`.
+It isn't part of the Angular core and thus is in its own library package, `@angular/router`.
 
 Angular 的 Router 是一个可选服务，它为指定的 URL 提供特定的组件视图。它不是 Angular 核心的一部分，因此它位于自己的包 `@angular/router` 中。
 
@@ -43,7 +43,7 @@ When the browser's URL changes, that router looks for a corresponding `Route` fr
 带路由的 Angular 应用中有一个 `Router` 服务的单例实例。当浏览器的 URL 发生变化时，该路由器会查找相应的 `Route`，以便根据它确定要显示的组件。
 
 A router has no routes until you configure it.
-The following example creates five route definitions, configures the router via the `RouterModule.forRoot()` method, and adds the result to the `AppModule`'s `imports` array.
+The following example creates five route definitions, configures the router via the `RouterModule.forRoot()` method, and adds the result to the `imports` array of the `AppModule`'.
 
 在配置之前，路由器没有任何路由。下面的例子创建了五个路由定义，通过 `RouterModule.forRoot()` 方法配置路由器，并把结果添加到 `AppModule` 的 `imports` 数组中。
 
@@ -127,9 +127,7 @@ Consider the following template:
 <code-example header="src/app/app.component.html" path="router/src/app/app.component.1.html"></code-example>
 
 The `RouterLink` directives on the anchor tags give the router control over those elements.
-The navigation paths are fixed, so you can assign a string to the `routerLink` (a "one-time" binding).
-
-a 标签上的 `RouterLink` 指令让路由器可以控制这些元素。导航路径是固定的，所以你可以给 `routerLink` 赋值一个字符串（“一次性”绑定）。
+The navigation paths are fixed, so you can assign a string as a one-time binding to the `routerLink`.
 
 Had the navigation path been more dynamic, you could have bound to a template expression that returned an array of route link parameters; that is, the [link parameters array](guide/router#link-parameters-array).
 The router resolves that array into a complete URL.
@@ -156,11 +154,11 @@ routerLinkActive="..."
 
 </code-example>
 
-The template expression to the right of the equal sign, `=`, contains a space-delimited string of CSS classes that the Router adds when this link is active (and removes when the link is inactive).
+The template expression to the right of the equal sign, `=`, contains a space-delimited string of CSS classes that the Router adds when this link is active and removes when the link is inactive.
 You set the `RouterLinkActive` directive to a string of classes such as `routerLinkActive="active fluffy"` or bind it to a component property that returns such a string.
 For example,
 
-等号 `=` 右侧的模板表达式，包含一个以空格分隔的 CSS 类字符串，当这个链接处于活动状态时，路由器就会加上这些字符串（并在非活动状态时删除）。你可以把 `RouterLinkActive` 指令设置成一串类的字符串，比如 `routerLinkActive="active fluffy"`，也可以把它绑定到一个返回这样一个字符串的组件属性上，比如
+等号 `=` 右侧的模板表达式，包含一个以空格分隔的 CSS 类字符串，当这个链接处于活动状态时，路由器就会加上这些字符串，并在非活动状态时删除。你可以把 `RouterLinkActive` 指令设置成一串类的字符串，比如 `routerLinkActive="active fluffy"`，也可以把它绑定到一个返回这样一个字符串的组件属性上，比如
 
 <code-example format="typescript" hideCopy language="typescript">
 
@@ -207,7 +205,7 @@ It has a great deal of useful information including:
 | Property | Details |
 | :------- | :------ |
 | 属性 | 详情 |
-| `url` | An `Observable` of the route path(s), represented as an array of strings for each part of the route path. |
+| `url` | An `Observable` of the route paths, represented as an array of strings for each part of the route path. |
 | `url` | 一个路由路径的 `Observable`，是一个由路由路径的各个部分组成的字符串数组。 |
 | `data` | An `Observable` that contains the `data` object provided for the route. Also contains any resolved values from the [resolve guard](guide/router-tutorial-toh#resolve-guard). |
 | `data` | 包含提供给当前路由的 `data` 对象的 `Observable`。也包含任何由[解析守卫](guide/router-tutorial-toh#resolve-guard)解析出的值。 |
@@ -237,7 +235,7 @@ It has a great deal of useful information including:
 ## 路由器事件
 
 During each navigation, the `Router` emits navigation events through the `Router.events` property.
-These events range from when the navigation starts and ends to many points in between. The full list of navigation events is displayed in the following table.
+These events are shown in the following table.
 
 `Router` 在每次导航过程中都会通过 `Router.events` 属性发出导航事件。这些事件的范围贯穿从导航开始和结束之间的多个时间点。导航事件的完整列表如下表所示。
 
@@ -303,11 +301,11 @@ Here are the key `Router` terms and their meanings:
 | `Route` | 定义路由器如何基于一个 URL 模式导航到某个组件。大部分路由都由一个路径和一个组件类组成。 |
 | `RouterOutlet` | The directive (`<router-outlet>`) that marks where the router displays a view. |
 | `RouterOutlet` | 该指令 (`<router-outlet>`) 用于指出路由器应该把视图显示在哪里。 |
-| `RouterLink` | The directive for binding a clickable HTML element to a route. Clicking an element with a `routerLink` directive that is bound to a *string* or a *link parameters array* triggers a navigation. |
+| `RouterLink` | The directive for binding a clickable HTML element to a route. Clicking an element with a `routerLink` directive that's bound to a *string* or a *link parameters array* triggers a navigation. |
 | `RouterLink` | 用于将可点击的 HTML 元素绑定到某个路由的指令。单击带有 `routerLink` 指令且绑定到*字符串*或*链接参数数组*的元素，将触发导航。 |
 | `RouterLinkActive` | The directive for adding/removing classes from an HTML element when an associated `routerLink` contained on or inside the element becomes active/inactive. It can also set the `aria-current` of an active link for better accessibility. |
 | `RouterLinkActive` | 当包含在元素上或内部的关联 `routerLink` 变为活动/非活动状态时，用于从 HTML 元素添加/删除类的指令。它还可以设置活动链接的 `aria-current` 以获得更好的无障碍性。 |
-| `ActivatedRoute` | A service that is provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query params, and the global fragment. |
+| `ActivatedRoute` | A service that's provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query parameters, and the global fragment. |
 | `ActivatedRoute` | 一个提供给每个路由组件的服务，其中包含当前路由专属的信息，比如路由参数、静态数据、解析数据、全局查询参数和全局片段。 |
 | `RouterState` | The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree. |
 | `RouterState` | 路由器的当前状态，包括一棵当前激活路由的树以及遍历这棵路由树的便捷方法。 |

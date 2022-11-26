@@ -494,7 +494,7 @@ Observables can deliver single or multiple values of any type, either synchronou
 
 <div class="alert is-helpful">
 
-For details and examples of observables, see the [Observables Overview](guide/observables#using-observables-to-pass-values 'Using observables to pass values"').
+For details and examples of observables, see the [Observables Overview](guide/observables#using-observables-to-pass-values "Using observables to pass values").
 
 关于可观察对象的详细信息和范例，请参阅[可观察对象概览](guide/observables#using-observables-to-pass-values "使用可观察对象传递值“")。
 

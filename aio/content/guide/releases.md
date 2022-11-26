@@ -182,6 +182,15 @@ Dates are offered as general guidance and are subject to change.
 
 </div>
 
+### Release schedule
+
+| Version | Date |
+| :------ | :--- |
+| 版本 | 日期 |
+| v15.0 | 2022-11-18 |
+
+### Support window
+
 All major releases are typically supported for 18 months.
 
 所有主版本的典型支持周期都是 18 个月。
@@ -194,6 +203,8 @@ All major releases are typically supported for 18 months.
 | Long-term (LTS) | 12 months | Only [critical fixes and security patches](#lts-fixes) are released |
 | LTS 长期支持版 | 12 个月 | 只会发布[关键性修复和安全补丁](#lts-fixes)。 |
 
+### Actively supported versions
+
 The following table provides the status for Angular versions under support.
 
 下表中提供了目前受支持的 Angular 版本的状态。
@@ -201,13 +212,14 @@ The following table provides the status for Angular versions under support.
 | Version | Status | Released | Active ends | LTS ends |
 | :------ | :----- | :------- | :---------- | :------- |
 | 版本 | 状态 | 发布 | 停止活跃 | LTS 结束 |
-| ^14.0.0 | Active | 2022-06-02 | 2022-12-02 | 2023-12-02 |
+| ^15.0.0 | Active | 2022-11-18 | 2023-05-18 | 2024-05-18 |
+| ^15.0.0 | 活跃 | 2022-11-18 | 2023-05-18 | 2024-05-18 |
+| ^14.0.0 | LTS | 2022-06-02 | 2022-11-18 | 2023-11-18 |
 | ^14.0.0 | 活跃 | 2022-06-02 | 2022-12-02 | 2023-12-02 |
-| ^13.0.0 | Active | 2021-11-04 | 2022-06-02 | 2023-05-04 |
+| ^13.0.0 | LTS | 2021-11-04 | 2022-06-02 | 2023-05-04 |
 | ^13.0.0 | 活跃 | 2021-11-04 | 2022-06-02 | 2023-05-04 |
-| ^12.0.0 | LTS | 2021-05-12 | 2021-11-12 | 2022-11-12 |
 
-Angular versions v2 to v11 are no longer under support.
+Angular versions v2 to v12 are no longer under support.
 
 不再为 v2 到 v11  版提供支持。
 
@@ -269,7 +281,7 @@ To help ensure that you have sufficient time and a clear path to update, this is
 
 ## 公共 API
 
-Angular is a collection of many packages, sub-projects, and tools.
+Angular is a collection of many packages, subprojects, and tools.
 To prevent accidental use of private APIs and so that you can clearly understand what is covered by the practices described here — we document what is and is not considered our public API surface.
 For details, see [Supported Public API Surface of Angular](https://github.com/angular/angular/blob/main/docs/PUBLIC_API.md "Supported Public API Surface of Angular").
 
@@ -303,4 +315,4 @@ The policies and practices that are described in this document do not apply to A
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-11-21

@@ -24,7 +24,7 @@ Interpolation refers to embedding expressions into marked up text. By default, i
 
 插值是指将表达式嵌入到被标记的文本中。默认情况下，插值使用双花括号 `{{` 和 `}}` 作为定界符。
 
-To illustrate how interpolation works, consider an Angular component that contains a currentCustomer variable:
+To illustrate how interpolation works, consider an Angular component that contains a `currentCustomer` variable:
 
 为了说明插值的工作原理，请考虑一个包含 `currentCustomer` 变量的 Angular 组件：
 
@@ -36,7 +36,7 @@ Use interpolation to display the value of this variable in the corresponding com
 
 <code-example path="interpolation/src/app/app.component.html" region="interpolation-example1"></code-example>
 
-Angular replaces currentCustomer with the string value of the corresponding component property. In this case, the value is `Maria`.
+Angular replaces `currentCustomer` with the string value of the corresponding component property. In this case, the value is `Maria`.
 
 Angular 会用相应组件属性的字符串值替换掉 `currentCustomer`。在这里，它的值是 `Maria`。
 

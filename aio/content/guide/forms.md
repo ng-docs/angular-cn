@@ -4,9 +4,7 @@
 
 <a id="template-driven"></a>
 
-This tutorial shows you how to create a template-driven form whose control elements are bound to data properties, with input validation to maintain data integrity and styling to improve the user experience.
-
-本教程将为你演示如何创建一个模板驱动表单，它的控件元素绑定到数据属性，并通过输入验证来保持数据的完整性和样式，以改善用户体验。
+This tutorial shows you how to create a template-driven form. The control elements in the form are bound to data properties that have input validation. The input validation helps maintain data integrity and styling to improve the user experience.
 
 Template-driven forms use [two-way data binding](guide/architecture-components#data-binding "Intro to 2-way data binding") to update the data model in the component as changes are made in the template and vice versa.
 
@@ -15,32 +13,23 @@ Template-driven forms use [two-way data binding](guide/architecture-components#d
 <div class="alert is-helpful">
 
 Angular supports two design approaches for interactive forms.
-You can build forms by writing templates using Angular [template syntax and directives](guide/glossary#template "Definition of template terms") with the form-specific directives and techniques described in this tutorial, or you can use a reactive (or model-driven) approach to build forms.
-
-Angular 支持两种交互式表单的设计方法。你可以使用 Angular 中的[模板语法和指令，](guide/glossary#template "模板术语的定义")以及本教程中描述的表单专用指令和技巧编写模板来构建表单，或者你可以使用响应式方式（或叫模型驱动方式）来构建表单。
+You can build forms by using Angular [template syntax and directives](guide/glossary#template "Definition of template terms") to write templates with the form-specific directives.
+This tutorial describes the directives and techniques to use when writing templates. You can also use a reactive or model-driven approach to build forms.
 
 Template-driven forms are suitable for small or simple forms, while reactive forms are more scalable and suitable for complex forms.
 For a comparison of the two approaches, see [Introduction to Forms](guide/forms-overview "Overview of Angular forms.")
-
-模板驱动表单适用于小型或简单的表单，而响应式表单则更具伸缩性，适用于复杂表单。要比较这两种方法，参阅[“表单简介”](guide/forms-overview "Angular 表单概述")
 
 </div>
 
 You can build almost any kind of form with an Angular template —login forms, contact forms, and pretty much any business form.
 You can lay out the controls creatively and bind them to the data in your object model.
-You can specify validation rules and display validation errors, conditionally enable or disable specific controls, trigger built-in visual feedback, and much more.
+You can specify validation rules and display validation errors, conditionally allow input from specific controls, trigger built-in visual feedback, and much more.
 
-你可以用 Angular 模板来构建各种表单，比如登录表单、联系人表单和几乎所有的业务表单。你可以创造性地对控件进行布局并把它们绑定到对象模型的数据上。你可以指定验证规则并显示验证错误，有条不紊地启用或禁用特定控件，触发内置的视觉反馈等等。
-
-This tutorial shows you how to build a form from scratch, using a simplified sample form like the one from the [Tour of Heroes tutorial](tutorial "Tour of Heroes") to illustrate the techniques.
-
-本教程将向你展示如何通过一个简化的范例表单来从头构建一个表单，就像“[英雄之旅”教程的](tutorial "英雄之旅")中用一个表单来讲解这些技巧一样。
+This tutorial shows you how to build a simplified form like the one from the [Tour of Heroes tutorial](tutorial "Tour of Heroes") to illustrate the techniques.
 
 <div class="alert is-helpful">
 
-Run or download the example app: <live-example></live-example>.
-
-运行或下载范例应用：<live-example></live-example>。
+Run or download the example application: <live-example></live-example>.
 
 </div>
 
@@ -64,9 +53,7 @@ This tutorial teaches you how to do the following:
 
   使用跟踪控件状态的特殊 CSS 类来提供视觉反馈
 
-* Display validation errors to users and enable or disable form controls based on the form status
-
-  向用户显示验证错误，并根据表单状态启用或禁用表单控件
+* Display validation errors to users and conditionally allow input from form controls based on the form status
 
 * Share information across HTML elements using [template reference variables](guide/template-reference-variables)
 
@@ -82,11 +69,11 @@ Before going further into template-driven forms, you should have a basic underst
 
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language") and HTML5 programming
 
-  [TypeScript](https://www.typescriptlang.org/ "The TypeScript language") 和 HTML5 编程
+  [TypeScript](https://www.typescriptlang.org/ "TypeScript 语言")和 HTML5 编程
 
-* Angular app-design fundamentals, as described in [Angular Concepts](guide/architecture "Introduction to Angular concepts")
+* Angular application-design fundamentals, as described in [Angular Concepts](guide/architecture "Introduction to Angular concepts")
 
-  Angular 的应用设计基础，就像[Angular 概念简介](guide/architecture "Angular 概念简介。")中描述的那样
+  Angular 的应用设计基础，就像[Angular Concepts 中](guide/architecture "Angular 概念简介。")描述的那样
 
 * The basics of [Angular template syntax](guide/template-syntax "Template syntax guide")
 
@@ -108,13 +95,13 @@ Template-driven forms rely on directives defined in the `FormsModule`.
 
 | Directives | Details |
 | :--------- | :------ |
-| 指令 | 详细信息 |
+| 指令 | 详情 |
 | `NgModel` | Reconciles value changes in the attached form element with changes in the data model, allowing you to respond to user input with input validation and error handling. |
 | `NgModel` | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。 |
 | `NgForm` | Creates a top-level `FormGroup` instance and binds it to a `<form>` element to track aggregated form value and validation status. As soon as you import `FormsModule`, this directive becomes active by default on all `<form>` tags. You don't need to add a special selector. |
 | `NgForm` | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。 |
 | `NgModelGroup` | Creates and binds a `FormGroup` instance to a DOM element. |
-| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。 |
+| `NgModelGroup` | 创建 `FormGroup` 的实例并将其绑定到 DOM 元素。 |
 
 ### The sample application
 
@@ -138,12 +125,17 @@ These fields have initial values, so the form is valid and the **Submit** button
 
 该表单突出了一些易于使用的设计特性。比如，这两个必填字段的左边是绿色条，以便让它们醒目。这些字段都有初始值，所以表单是有效的，并且 **Submit** 按钮也是启用的。
 
-As you work with this form, you will learn how to include validation logic, how to customize the presentation with standard CSS, and how to handle error conditions to ensure valid input.
-If the user deletes the hero name, for example, the form becomes invalid.
-The application detects the changed status, and displays a validation error in an attention-grabbing style.
-In addition, the **Submit** button is disabled, and the "required" bar to the left of the input control changes from green to red.
+Working with this form shows you:
 
-当你使用这个表单时，你将学习如何包含验证逻辑，如何使用标准 CSS 自定义表达式，以及如何处理错误条件以确保输入的有效性。比如，如果用户删除了英雄的名字，那么表单就会失效。该应用会检测已更改的状态，并以醒目的样式显示验证错误。此外，**Submit** 按钮会被禁用，输入控件左侧的“必填”栏也会从绿色变为红色。
+* How to include validation logic
+
+* How to customize the presentation with standard CSS
+
+* How to handle error conditions to ensure valid input
+
+If the user deletes the hero name, for example, the form becomes not valid.
+The application detects the changed status, and displays a validation error in an attention-grabbing style.
+The **Submit** button is not enabled, and the "required" bar to the left of the input control changes from green to red.
 
 <div class="lightbox">
 
@@ -197,7 +189,7 @@ In the course of this tutorial, you bind a sample form to data and handle user i
 
 1. Respond to a native HTML button-click event by adding to the model data.
 
-   通过添加到模型数据来响应原生 HTML 按钮的单击事件
+   通过添加到模型数据来响应原生 HTML 按钮的单击事件。
 
 1. Handle form submission using the [`ngSubmit`](api/forms/NgForm#properties) output property of the form.
 
@@ -218,8 +210,6 @@ In the course of this tutorial, you bind a sample form to data and handle user i
 ## 建立表单
 
 You can recreate the sample application from the code provided here, or you can examine or download the <live-example></live-example>.
-
-你可以根据这里提供的代码从头创建范例应用，也可以查看 <live-example></live-example>。
 
 1. The provided sample application creates the `Hero` class which defines the data model reflected in the form.
 
@@ -339,8 +329,6 @@ When you include the directive using the  syntax for two-way data binding, `[(ng
 This example has a temporary diagnostic interpolation after each input tag, `{{model.name}}`, to show the current data value of the corresponding property.
 The comment reminds you to remove the diagnostic lines when you have finished observing the two-way data binding at work.
 
-这个例子中在每个 input 标记后面都有一个临时的诊断插值 `{{model.name}}`，以显示相应属性的当前数据值。本提醒是为了让你在观察完这个双向数据绑定后删除这些诊断行。
-
 </div>
 
 <a id="ngForm"></a>
@@ -417,9 +405,7 @@ Any unique value will do, but using a descriptive name is helpful.
 
    你现在可以移除显示插值的诊断消息了。
 
-1. To confirm that two-way data binding works for the entire hero model, add a new text binding with the [`json`](api/common/JsonPipe) pipe (which would serialize the data to a string) at the top to the component's template.
-
-   要想确认双向数据绑定是否在整个英雄模型上都有效，可以在该组件的顶部添加一个带有 [`json` 管道](api/common/JsonPipe)的新文本绑定。`json` 管道会把数据序列化为字符串。
+1. To confirm that two-way data binding works for the entire hero model, add a new text binding with the [`json`](api/common/JsonPipe) pipe at the top to the component's template, which serializes the data to a string.
 
    After these revisions, the form template should look like the following:
 
@@ -455,15 +441,18 @@ Any unique value will do, but using a descriptive name is helpful.
 
    你已经观察到了这种效果，可以删除 `{{ model | json }}` 的文本绑定了。
 
+## Track form states
+
+Angular applies the `ng-submitted` class to `form` elements after the form has been submitted. This class can be used to change the form's style after it has been submitted.
+
 ## Track control states
 
 ## 跟踪控件状态
 
-The `NgModel` directive on a control tracks the state of that control.
-It tells you if the user touched the control, if the value changed, or if the value became invalid.
-Angular sets special CSS classes on the control element to reflect the state, as shown in the following table.
+Adding the `NgModel` directive to a control adds class names to the control that describe its state.
+These classes can be used to change a control's style based on its state.
 
-控件上的 `NgModel` 指令会跟踪该控件的状态。它会告诉你用户是否接触过该控件、该值是否发生了变化，或者该值是否无效。Angular 在控件元素上设置了特殊的 CSS 类来反映其状态，如下表所示。
+The following table describes the class names that Angular applies based on the control's state.
 
 | States | Class if true | Class if false |
 | :----- | :------------ | :------------- |
@@ -475,10 +464,8 @@ Angular sets special CSS classes on the control element to reflect the state, as
 | The control's value is valid. | `ng-valid` | `ng-invalid` |
 | 控件的值是有效的。 | `ng-valid` | `ng-invalid` |
 
-Additionally, Angular applies the `ng-submitted` class to `<form>` elements upon submission.
-This class does *not* apply to inner controls.
-
-此外，Angular 还会在提交时把 `ng-submitted` 类应用到 `<form>` 元素上。这个类**不会**应用到内部控件上。
+Angular also applies the `ng-submitted` class to `form` elements upon submission,
+but not to the controls inside the `form` element.
 
 You use these CSS classes to define the styles for your control based on its status.
 
@@ -490,7 +477,7 @@ You use these CSS classes to define the styles for your control based on its sta
 
 To see how the classes are added and removed by the framework, open the browser's developer tools and inspect the `<input>` element that represents the hero name.
 
-要想知道框架是如何添加和移除这些类的，请打开浏览器的开发者工具，检查代表英雄名字的 `<input>`
+要想知道框架是如何添加和移除这些类的，请打开浏览器的开发者工具，检查代表英雄名字的 `<input>`。
 
 1. Using your browser's developer tools, find the  `<input>` element that corresponds to the **Name** input box.
    You can see that the element has multiple CSS classes in addition to "form-control".
@@ -611,16 +598,14 @@ To define and show an error message when appropriate, take the following steps.
 
    <div class="alert is-helpful">
 
-   The template reference variable (`#name`) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property.
+   The template reference variable \(`#name`\) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property.
    This property tells Angular how to link a reference variable to a directive.
-
-   模板引用变量（`#name`）设置为 `"ngModel"`，因为 "ngModel" 是 [`NgModel.exportAs`](api/core/Directive#exportAs) 属性的值。这个属性告诉 Angular 如何把引用变量和指令链接起来。
 
    </div>
 
 1. Add a `<div>` that contains a suitable error message.
 
-   添加一个包含合适错误信息 `<div>`
+   添加一个包含合适错误信息 `<div>`。
 
 1. Show or hide the error message by binding properties of the `name` control to the message `<div>` element's `hidden` property.
 
@@ -638,20 +623,14 @@ To define and show an error message when appropriate, take the following steps.
 
 <header>Illustrating the "pristine" state</header>
 
-<header>关于 "pristine"（原始）状态的说明</header>
-
 In this example, you hide the message when the control is either valid or *pristine*.
 Pristine means the user hasn't changed the value since it was displayed in this form.
 If you ignore the `pristine` state, you would hide the message only when the value is valid.
-If you arrive in this component with a new (blank) hero or an invalid hero, you'll see the error message immediately, before you've done anything.
-
-在这个例子中，当控件是有效的（valid）或者是*原始的*（pristine）时，你会隐藏这些消息。原始表示该用户在此表单中显示的值尚未更改过。如果你忽略了 `pristine` 状态，那么只有当值有效时才会隐藏这些消息。如果你把一个新的（空白）英雄或一个无效的英雄传给这个组件，你会立刻看到错误信息，而这时候你还没有做过任何事情。
+If you arrive in this component with a new, blank hero or an invalid hero, you'll see the error message immediately, before you've done anything.
 
 You might want the message to display only when the user makes an invalid change.
 Hiding the message while the control is in the `pristine` state achieves that goal.
 You'll see the significance of this choice when you add a new hero to the form in the next step.
-
-你可能希望只有在用户做出无效更改时，才显示该消息。因此当 `pristine` 状态时，隐藏这条消息就可以满足这个目标。当你在下一步中为表单添加一个新的英雄时，就会看到这个选择有多重要。
 
 </div>
 
@@ -712,8 +691,6 @@ To let form users add a new hero, you will add a **New Hero** button that respon
 <div class="alert is-helpful">
 
 See the [User Input](guide/user-input) guide for more information about listening for DOM events with an event binding and updating a corresponding component property.
-
-关于使用事件绑定监听 DOM 事件和更新相应组件属性的更多信息，参阅[“用户输入”指南。](guide/user-input)。
 
 </div>
 
@@ -777,7 +754,7 @@ To show a response to form submission, you can hide the data entry area and disp
 
    * When you click the **Submit** button, the `submitted` flag becomes true and the form disappears.
 
-     点击  **Submit**  按钮后，`submitted` 标志就变为 `true`，表单就会消失。
+     点击 **Submit** 按钮后，`submitted` 标志就变为 `true`，表单就会消失。
 
 1. To show something else while the form is in the submitted state, add the following HTML below the new `<div>` wrapper.
 
@@ -799,7 +776,7 @@ To show a response to form submission, you can hide the data entry area and disp
 
 ## Summary
 
-## 总结
+## 小结
 
 The Angular form discussed in this page takes advantage of the following
 framework features to provide support for data modification, validation, and more.
@@ -830,17 +807,13 @@ framework features to provide support for data modification, validation, and mor
 
   `name` 属性的用途是验证和表单元素的变更跟踪
 
-* The reference variable's `valid` property on input controls to check if a control is valid and show or hide error messages
-
-  用输入控件上的引用变量的 `valid` 属性来检查控件是否有效，并据此显示或隐藏错误信息
+* The reference variable's `valid` property on input controls indicates whether a control is valid or should show error messages
 
 * Controlling the **Submit** button's enabled state by binding to `NgForm` validity
 
   用 `NgForm` 的有效性来控制 **Submit** 按钮的启用状态
 
-* Custom CSS classes that provide visual feedback to users about invalid controls
-
-  自定义 CSS 类，为用户提供关于无效控件的视觉反馈
+* Custom CSS classes that provide visual feedback to users about controls that are not valid
 
 Here's the code for the final version of the application:
 

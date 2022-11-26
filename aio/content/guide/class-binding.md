@@ -60,7 +60,7 @@ With the object format, Angular adds a class only if its associated value is tru
 
 <div class="alert is-important">
 
-With any object-like expression—such as `object`, `Array`, `Map`, or `Set`—the identity of the object must change for Angular to update the class list.
+With any object-like expression—such as `object`, `Array`, `Map`, or `Set` —the identity of the object must change for Angular to update the class list.
 Updating the property without changing object identity has no effect.
 
 对于任何类似对象的表达式（比如 `object`、`Array`、`Map` 或 `Set`，必须更改对象的引用，Angular 才能更新类列表。在不更改对象引用的情况下只更新其 Attribute 是不会生效的。
@@ -95,7 +95,7 @@ To create a single style binding, use the prefix `style` followed by a dot and t
 
 要创建单个样式绑定，请使用 `style` 前缀，后跟一个点和 CSS 样式的名称。
 
-For example, set the ‘width’ style, type the following:  `[style.width]="width"`
+For example, to set the `width` style, type the following:  `[style.width]="width"`
 
 比如，设置 'width' 样式，键入以下内容：`[style.width]="width"`
 

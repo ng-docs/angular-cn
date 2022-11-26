@@ -7,7 +7,7 @@
  */
 
 import {LocationStrategy} from '@angular/common';
-import {Attribute, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges, ɵcoerceToBoolean as coerceToBoolean} from '@angular/core';
+import {Attribute, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges, ɵcoerceToBoolean as coerceToBoolean, ɵɵsanitizeUrlOrResourceUrl} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 
 import {Event, NavigationEnd} from '../events';
@@ -171,8 +171,27 @@ import {UrlTree} from '../url_tree';
  * @ngModule RouterModule
  * @publicApi
  */
-@Directive({selector: ':not(a):not(area)[routerLink]'})
-export class RouterLink implements OnChanges {
+@Directive({
+  selector: '[routerLink]',
+  standalone: true,
+})
+export class RouterLink implements OnChanges, OnDestroy {
+  private _preserveFragment = false;
+  private _skipLocationChange = false;
+  private _replaceUrl = false;
+
+  /**
+   * Represents an `href` attribute value applied to a host element,
+   * when a host element is `<a>`. For other tags, the value is `null`.
+   */
+  href: string|null = null;
+
+  /**
+   * Represents the `target` attribute on a host element.
+   * This is only used when the host element is an `<a>` tag.
+   */
+  @HostBinding('attr.target') @Input() target?: string;
+
   /**
    * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
    * `UrlCreationOptions`.
@@ -204,41 +223,6 @@ export class RouterLink implements OnChanges {
    */
   @Input() queryParamsHandling?: QueryParamsHandling|null;
   /**
-   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
-   * `UrlCreationOptions`.
-   *
-   * 作为 `UrlCreationOptions` 的一部分传递给 {@link Router#createUrlTree Router#createUrlTree}。
-   *
-   * @see {@link UrlCreationOptions#preserveFragment UrlCreationOptions#preserveFragment}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  // TODO(issue/24571): remove '!'.
-  @Input() preserveFragment!: boolean;
-  /**
-   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
-   * `NavigationBehaviorOptions`.
-   *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
-   * Router#navigateByUrl}。
-   *
-   * @see {@link NavigationBehaviorOptions#skipLocationChange NavigationBehaviorOptions#skipLocationChange}
-   * @see {@link Router#navigateByUrl Router#navigateByUrl}
-   */
-  // TODO(issue/24571): remove '!'.
-  @Input() skipLocationChange!: boolean;
-  /**
-   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
-   * `NavigationBehaviorOptions`.
-   *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
-   * Router#navigateByUrl}。
-   *
-   * @see {@link NavigationBehaviorOptions#replaceUrl NavigationBehaviorOptions#replaceUrl}
-   * @see {@link Router#navigateByUrl Router#navigateByUrl}
-   */
-  // TODO(issue/24571): remove '!'.
-  @Input() replaceUrl!: boolean;
-  /**
    * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
    * `NavigationBehaviorOptions`.
    *
@@ -267,38 +251,105 @@ export class RouterLink implements OnChanges {
 
   private commands: any[]|null = null;
 
+  /** Whether a host element is an `<a>` tag. */
+  private isAnchorElement: boolean;
+
+  private subscription?: Subscription;
+
   /** @internal */
   onChanges = new Subject<RouterLink>();
 
   constructor(
       private router: Router, private route: ActivatedRoute,
       @Attribute('tabindex') private readonly tabIndexAttribute: string|null|undefined,
-      private readonly renderer: Renderer2, private readonly el: ElementRef) {
-    this.setTabIndexIfNotOnNativeEl('0');
+      private readonly renderer: Renderer2, private readonly el: ElementRef,
+      private locationStrategy?: LocationStrategy) {
+    const tagName = el.nativeElement.tagName;
+    this.isAnchorElement = tagName === 'A' || tagName === 'AREA';
+
+    if (this.isAnchorElement) {
+      this.subscription = router.events.subscribe((s: Event) => {
+        if (s instanceof NavigationEnd) {
+          this.updateHref();
+        }
+      });
+    } else {
+      this.setTabIndexIfNotOnNativeEl('0');
+    }
+  }
+
+  /**
+   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
+   * `UrlCreationOptions`.
+   *
+   * 作为 `UrlCreationOptions` 的一部分传递给 {@link Router#createUrlTree Router#createUrlTree}。
+   *
+   * @see {@link UrlCreationOptions#preserveFragment UrlCreationOptions#preserveFragment}
+   * @see {@link Router#createUrlTree Router#createUrlTree}
+   */
+  @Input()
+  set preserveFragment(preserveFragment: boolean|string|null|undefined) {
+    this._preserveFragment = coerceToBoolean(preserveFragment);
+  }
+
+  get preserveFragment(): boolean {
+    return this._preserveFragment;
+  }
+
+  /**
+   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
+   * `NavigationBehaviorOptions`.
+   *
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
+   *
+   * @see {@link NavigationBehaviorOptions#skipLocationChange NavigationBehaviorOptions#skipLocationChange}
+   * @see {@link Router#navigateByUrl Router#navigateByUrl}
+   */
+  @Input()
+  set skipLocationChange(skipLocationChange: boolean|string|null|undefined) {
+    this._skipLocationChange = coerceToBoolean(skipLocationChange);
+  }
+
+  get skipLocationChange(): boolean {
+    return this._skipLocationChange;
+  }
+
+  /**
+   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
+   * `NavigationBehaviorOptions`.
+   *
+   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
+   * Router#navigateByUrl}。
+   *
+   * @see {@link NavigationBehaviorOptions#replaceUrl NavigationBehaviorOptions#replaceUrl}
+   * @see {@link Router#navigateByUrl Router#navigateByUrl}
+   */
+  @Input()
+  set replaceUrl(replaceUrl: boolean|string|null|undefined) {
+    this._replaceUrl = coerceToBoolean(replaceUrl);
+  }
+
+  get replaceUrl(): boolean {
+    return this._replaceUrl;
   }
 
   /**
    * Modifies the tab index if there was not a tabindex attribute on the element during
    * instantiation.
-   *
-   * 如果实例化期间元素上没有 tabindex 属性，则修改选项卡索引。
-   *
    */
   private setTabIndexIfNotOnNativeEl(newTabIndex: string|null) {
-    if (this.tabIndexAttribute != null /* both `null` and `undefined` */) {
+    if (this.tabIndexAttribute != null /* both `null` and `undefined` */ || this.isAnchorElement) {
       return;
     }
-    const renderer = this.renderer;
-    const nativeElement = this.el.nativeElement;
-    if (newTabIndex !== null) {
-      renderer.setAttribute(nativeElement, 'tabindex', newTabIndex);
-    } else {
-      renderer.removeAttribute(nativeElement, 'tabindex');
-    }
+    this.applyAttributeValue('tabindex', newTabIndex);
   }
 
   /** @nodoc */
   ngOnChanges(changes: SimpleChanges) {
+    if (this.isAnchorElement) {
+      this.updateHref();
+    }
     // This is subscribed to by `RouterLinkActive` so that it knows to update when there are changes
     // to the RouterLinks it's tracking.
     this.onChanges.next(this);
@@ -311,11 +362,11 @@ export class RouterLink implements OnChanges {
    *
    * - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
    *
-   *   **array** ：传递给 @link Router#createUrlTree Router#createUrlTree} 的命令。
+   *   **array** ：传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
    *
    * - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
    *
-   *   **string** ：仅包含字符串的命令数组的简写，即 `['/route']`
+   *   **string**：仅包含字符串的命令数组的简写，即 `['/route']`
    *
    * - **null|undefined**: effectively disables the `routerLink`
    *
@@ -335,19 +386,72 @@ export class RouterLink implements OnChanges {
   }
 
   /** @nodoc */
-  @HostListener('click')
-  onClick(): boolean {
+  @HostListener(
+      'click',
+      ['$event.button', '$event.ctrlKey', '$event.shiftKey', '$event.altKey', '$event.metaKey'])
+  onClick(button: number, ctrlKey: boolean, shiftKey: boolean, altKey: boolean, metaKey: boolean):
+      boolean {
     if (this.urlTree === null) {
       return true;
     }
 
+    if (this.isAnchorElement) {
+      if (button !== 0 || ctrlKey || shiftKey || altKey || metaKey) {
+        return true;
+      }
+
+      if (typeof this.target === 'string' && this.target != '_self') {
+        return true;
+      }
+    }
+
     const extras = {
-      skipLocationChange: coerceToBoolean(this.skipLocationChange),
-      replaceUrl: coerceToBoolean(this.replaceUrl),
+      skipLocationChange: this.skipLocationChange,
+      replaceUrl: this.replaceUrl,
       state: this.state,
     };
     this.router.navigateByUrl(this.urlTree, extras);
-    return true;
+
+    // Return `false` for `<a>` elements to prevent default action
+    // and cancel the native behavior, since the navigation is handled
+    // by the Router.
+    return !this.isAnchorElement;
+  }
+
+  /** @nodoc */
+  ngOnDestroy(): any {
+    this.subscription?.unsubscribe();
+  }
+
+  private updateHref(): void {
+    this.href = this.urlTree !== null && this.locationStrategy ?
+        this.locationStrategy?.prepareExternalUrl(this.router.serializeUrl(this.urlTree)) :
+        null;
+
+    const sanitizedValue = this.href === null ?
+        null :
+        // This class represents a directive that can be added to both `<a>` elements,
+        // as well as other elements. As a result, we can't define security context at
+        // compile time. So the security context is deferred to runtime.
+        // The `ɵɵsanitizeUrlOrResourceUrl` selects the necessary sanitizer function
+        // based on the tag and property names. The logic mimics the one from
+        // `packages/compiler/src/schema/dom_security_schema.ts`, which is used at compile time.
+        //
+        // Note: we should investigate whether we can switch to using `@HostBinding('attr.href')`
+        // instead of applying a value via a renderer, after a final merge of the
+        // `RouterLinkWithHref` directive.
+        ɵɵsanitizeUrlOrResourceUrl(this.href, this.el.nativeElement.tagName.toLowerCase(), 'href');
+    this.applyAttributeValue('href', sanitizedValue);
+  }
+
+  private applyAttributeValue(attrName: string, attrValue: string|null) {
+    const renderer = this.renderer;
+    const nativeElement = this.el.nativeElement;
+    if (attrValue !== null) {
+      renderer.setAttribute(nativeElement, attrName, attrValue);
+    } else {
+      renderer.removeAttribute(nativeElement, attrName);
+    }
   }
 
   get urlTree(): UrlTree|null {
@@ -361,222 +465,17 @@ export class RouterLink implements OnChanges {
       queryParams: this.queryParams,
       fragment: this.fragment,
       queryParamsHandling: this.queryParamsHandling,
-      preserveFragment: coerceToBoolean(this.preserveFragment),
+      preserveFragment: this.preserveFragment,
     });
   }
 }
 
 /**
  * @description
+ * An alias for the `RouterLink` directive.
+ * Deprecated since v15, use `RouterLink` directive instead.
  *
- * Lets you link to specific routes in your app.
- *
- * 允许你在应用中链接到特定的路由。
- *
- * See `RouterLink` for more information.
- *
- * 欲知详情，参见 `RouterLink`。
- *
- * @ngModule RouterModule
- *
+ * @deprecated use `RouterLink` directive instead.
  * @publicApi
  */
-@Directive({selector: 'a[routerLink],area[routerLink]'})
-export class RouterLinkWithHref implements OnChanges, OnDestroy {
-  // TODO(issue/24571): remove '!'.
-  @HostBinding('attr.target') @Input() target!: string;
-  /**
-   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
-   * `UrlCreationOptions`.
-   *
-   * 作为 `UrlCreationOptions` 的一部分传递给 {@link Router#createUrlTree Router#createUrlTree}。
-   *
-   * @see {@link UrlCreationOptions#queryParams UrlCreationOptions#queryParams}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  @Input() queryParams?: Params|null;
-  /**
-   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
-   * `UrlCreationOptions`.
-   *
-   * 作为 `UrlCreationOptions` 的一部分传递给 {@link Router#createUrlTree Router#createUrlTree}。
-   *
-   * @see {@link UrlCreationOptions#fragment UrlCreationOptions#fragment}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  @Input() fragment?: string;
-  /**
-   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
-   * `UrlCreationOptions`.
-   *
-   * 作为 `UrlCreationOptions` 的一部分传递给 {@link Router#createUrlTree Router#createUrlTree}。
-   *
-   * @see {@link UrlCreationOptions#queryParamsHandling UrlCreationOptions#queryParamsHandling}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  @Input() queryParamsHandling?: QueryParamsHandling|null;
-  /**
-   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
-   * `UrlCreationOptions`.
-   *
-   * 作为 `UrlCreationOptions` 的一部分传递给 {@link Router#createUrlTree Router#createUrlTree}。
-   *
-   * @see {@link UrlCreationOptions#preserveFragment UrlCreationOptions#preserveFragment}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  // TODO(issue/24571): remove '!'.
-  @Input() preserveFragment!: boolean;
-  /**
-   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
-   * `NavigationBehaviorOptions`.
-   *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
-   * Router#navigateByUrl}。
-   *
-   * @see {@link NavigationBehaviorOptions#skipLocationChange NavigationBehaviorOptions#skipLocationChange}
-   * @see {@link Router#navigateByUrl Router#navigateByUrl}
-   */
-  // TODO(issue/24571): remove '!'.
-  @Input() skipLocationChange!: boolean;
-  /**
-   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
-   * `NavigationBehaviorOptions`.
-   *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
-   * Router#navigateByUrl}。
-   *
-   * @see {@link NavigationBehaviorOptions#replaceUrl NavigationBehaviorOptions#replaceUrl}
-   * @see {@link Router#navigateByUrl Router#navigateByUrl}
-   */
-  // TODO(issue/24571): remove '!'.
-  @Input() replaceUrl!: boolean;
-  /**
-   * Passed to {@link Router#navigateByUrl Router#navigateByUrl} as part of the
-   * `NavigationBehaviorOptions`.
-   *
-   * 作为 `NavigationBehaviorOptions` 的一部分传递给 {@link Router#navigateByUrl
-   * Router#navigateByUrl}。
-   *
-   * @see {@link NavigationBehaviorOptions#state NavigationBehaviorOptions#state}
-   * @see {@link Router#navigateByUrl Router#navigateByUrl}
-   */
-  @Input() state?: {[k: string]: any};
-  /**
-   * Passed to {@link Router#createUrlTree Router#createUrlTree} as part of the
-   * `UrlCreationOptions`.
-   * Specify a value here when you do not want to use the default value
-   * for `routerLink`, which is the current activated route.
-   * Note that a value of `undefined` here will use the `routerLink` default.
-   *
-   * 作为 UrlCreationOptions 的一部分传递给 {@link Router#createUrlTree Router# `UrlCreationOptions`
-   * } 。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
-   * `undefined` 值将使用 `routerLink` 默认值。
-   *
-   * @see {@link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  @Input() relativeTo?: ActivatedRoute|null;
-
-  private commands: any[]|null = null;
-  private subscription: Subscription;
-
-  // the url displayed on the anchor element.
-  // @HostBinding('attr.href') is used rather than @HostBinding() because it removes the
-  // href attribute when it becomes `null`.
-  @HostBinding('attr.href') href: string|null = null;
-
-  /** @internal */
-  onChanges = new Subject<RouterLinkWithHref>();
-
-  constructor(
-      private router: Router, private route: ActivatedRoute,
-      private locationStrategy: LocationStrategy) {
-    this.subscription = router.events.subscribe((s: Event) => {
-      if (s instanceof NavigationEnd) {
-        this.updateTargetUrlAndHref();
-      }
-    });
-  }
-
-  /**
-   * Commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
-   *
-   * 传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
-   *
-   * - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
-   *
-   *   **array** ：传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
-   *
-   * - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
-   *
-   *   **string**：仅包含字符串的命令数组的简写，即 `['/route']`
-   *
-   * - **null|undefined**: Disables the link by removing the `href`
-   *
-   *   **null | undefined** ：空命令数组的简写，即 `[]`
-   *
-   * @see {@link Router#createUrlTree Router#createUrlTree}
-   */
-  @Input()
-  set routerLink(commands: any[]|string|null|undefined) {
-    if (commands != null) {
-      this.commands = Array.isArray(commands) ? commands : [commands];
-    } else {
-      this.commands = null;
-    }
-  }
-
-  /** @nodoc */
-  ngOnChanges(changes: SimpleChanges): any {
-    this.updateTargetUrlAndHref();
-    this.onChanges.next(this);
-  }
-  /** @nodoc */
-  ngOnDestroy(): any {
-    this.subscription.unsubscribe();
-  }
-
-  /** @nodoc */
-  @HostListener(
-      'click',
-      ['$event.button', '$event.ctrlKey', '$event.shiftKey', '$event.altKey', '$event.metaKey'])
-  onClick(button: number, ctrlKey: boolean, shiftKey: boolean, altKey: boolean, metaKey: boolean):
-      boolean {
-    if (button !== 0 || ctrlKey || shiftKey || altKey || metaKey) {
-      return true;
-    }
-
-    if (typeof this.target === 'string' && this.target != '_self' || this.urlTree === null) {
-      return true;
-    }
-
-    const extras = {
-      skipLocationChange: coerceToBoolean(this.skipLocationChange),
-      replaceUrl: coerceToBoolean(this.replaceUrl),
-      state: this.state
-    };
-    this.router.navigateByUrl(this.urlTree, extras);
-    return false;
-  }
-
-  private updateTargetUrlAndHref(): void {
-    this.href = this.urlTree !== null ?
-        this.locationStrategy.prepareExternalUrl(this.router.serializeUrl(this.urlTree)) :
-        null;
-  }
-
-  get urlTree(): UrlTree|null {
-    if (this.commands === null) {
-      return null;
-    }
-    return this.router.createUrlTree(this.commands, {
-      // If the `relativeTo` input is not defined, we want to use `this.route` by default.
-      // Otherwise, we should use the value provided by the user in the input.
-      relativeTo: this.relativeTo !== undefined ? this.relativeTo : this.route,
-      queryParams: this.queryParams,
-      fragment: this.fragment,
-      queryParamsHandling: this.queryParamsHandling,
-      preserveFragment: coerceToBoolean(this.preserveFragment),
-    });
-  }
-}
+export {RouterLink as RouterLinkWithHref};

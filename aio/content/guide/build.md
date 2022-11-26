@@ -388,43 +388,43 @@ To disable these warnings, add the CommonJS module name to `allowedCommonJsDepen
 
 ## 配置浏览器兼容性
 
-The CLI uses [Autoprefixer](https://github.com/postcss/autoprefixer) to ensure compatibility with different browser and browser versions.
-You might find it necessary to target specific browsers or exclude certain browser versions from your build.
+The Angular CLI uses [Browserslist](https://github.com/browserslist/browserslist) to ensure compatibility with different browser versions. [Autoprefixer](https://github.com/postcss/autoprefixer) is used for CSS vendor prefixing and [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) for JavaScript syntax transformations.
 
-CLI 使用 [Autoprefixer](https://github.com/postcss/autoprefixer) 来确保对不同浏览器及其版本的兼容性。你会发现当你要从构建中针对特定的目标浏览器或排除指定的浏览器版本时，这是很有必要的。
+Angular CLI 使用 [Browserslist](https://github.com/browserslist/browserslist) 来确保对不同浏览器版本的兼容性。
+[Autoprefixer](https://github.com/postcss/autoprefixer) 用于为 CSS 添加供应商前缀，而 [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) 用于进行 JavaScript 语法转换。
 
-Internally, Autoprefixer relies on a library called [Browserslist](https://github.com/browserslist/browserslist) to figure out which browsers to support with prefixing.
-Browserlist looks for configuration options in a `browserslist` property of the package configuration file, or in a configuration file named `.browserslistrc`.
-Autoprefixer looks for the `browserslist` configuration when it prefixes your CSS.
+Internally, the Angular CLI uses the below `browserslist` configuration which matches the [browsers that are supported](guide/browser-support) by Angular.
 
-在内部，Autoprefixer 依赖一个名叫 [Browserslist](https://github.com/browserslist/browserslist) 的库来指出需要为哪些浏览器加前缀。Browserlist 会在 `package.json` 的 `browserlist` 属性中或一个名叫 `.browserslistrc` 的配置文件中来配置这些选项。当 Autoprefixer 为你的 CSS 加前缀时，就会查阅 Browserlist 的配置。
+在内部，Angular CLI 使用如下 `browserslist` 配置，以匹配 Angular [所支持的浏览器](guide/browser-support)。
 
-* Tell Autoprefixer what browsers to target by adding a browserslist property to the package configuration file, `package.json`:
-
-  可以为 `package.json` 添加 `browserslist` 属性来告诉 Autoprefixer，要针对哪些浏览器：
-
-  <code-example format="json" language="json">
-
-  "browserslist": [
-    "&gt; 1%",
-    "last 2 versions"
-  ]
-
+  <code-example format="none" language="text">
+  last 1 Chrome version
+  last 1 Firefox version
+    last 2 Edge major versions
+    last 2 Safari major versions
+  last 2 iOS major versions
+  Firefox ESR
   </code-example>
 
-* Alternatively, you can add a new file, `.browserslistrc`, to the project directory, that specifies browsers you want to support:
+
+To override the internal configuration, add a new file named `.browserslistrc`, to the project directory, that specifies the browsers you want to support:
 
   或者你也可以在项目目录下添加一个新文件 `.browserslistrc`，用于指定你要支持哪些浏览器：
 
   <code-example format="none" language="text">
 
-  &num;&num;&num; Supported Browsers
-  &gt; 1%
-  last 2 versions
+  last 1 Chrome version
+  last 1 Firefox version
 
   </code-example>
 
-See the [browserslist repo](https://github.com/browserslist/browserslist) for more examples of how to target specific browsers and versions.
+See the [browserslist repository](https://github.com/browserslist/browserslist) for more examples of how to target specific browsers and versions.
+
+<div class="alert is-helpful">
+
+Use [browsersl.ist](https://browsersl.ist) to display compatible browsers for a `browserslist` query.
+
+</div>
 
 参阅 [browserslist 的代码库](https://github.com/browserslist/browserslist)以得到如何指定浏览器及其版本的更多例子。
 
@@ -691,20 +691,10 @@ module.exports = setupForCorporateProxy(proxyConfig);
 
 </code-example>
 
-<a id="browser-compat"></a>
-
-## Configuring browser compatibility
-
-## 配置浏览器兼容性
-
-See [browser support guide](guide/browser-support).
-
-参见[浏览器支持指南](guide/browser-support)。
-
 <!-- links -->
 
 <!-- external links -->
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-10-24

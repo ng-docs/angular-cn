@@ -7,7 +7,7 @@ import {fromInnerHTML} from 'app/shared/security';
 import {TocService} from 'app/shared/toc.service';
 import {asapScheduler, Observable, of, timer} from 'rxjs';
 import {catchError, observeOn, switchMap, takeUntil, tap} from 'rxjs/operators';
-import {EMPTY_HTML, unwrapHtmlForSink} from 'safevalues';
+import {EMPTY_HTML, unwrapHtml} from 'safevalues';
 
 
 // Constants
@@ -67,9 +67,9 @@ export class DocViewerComponent implements OnDestroy {
     private elementsLoader: ElementsLoader) {
     this.hostElement = elementRef.nativeElement;
 
-    // Security: the initialDocViewerContent comes from the prerendered DOM and is considered to be
-    // secure
-    this.hostElement.innerHTML = unwrapHtmlForSink(initialDocViewerContent);
+    // Security: the initialDocViewerContent comes from the prerendered DOM and is
+    // considered to be secure
+    this.hostElement.innerHTML = unwrapHtml(initialDocViewerContent) as string;
 
     if (this.hostElement.firstElementChild) {
       this.currViewContainer = this.hostElement.firstElementChild as HTMLElement;
@@ -140,7 +140,7 @@ export class DocViewerComponent implements OnDestroy {
             this.nextViewContainer.textContent = '';
           } else {// Security: `doc.contents` is always authored by the documentation team
       //           and is considered to be safe.
-       this.nextViewContainer.innerHTML = unwrapHtmlForSink(doc.contents);
+       this.nextViewContainer.innerHTML = unwrapHtml(doc.contents) as string;
       }
         }),tap(() => addTitleAndToc = this.prepareTitleAndToc(this.nextViewContainer, doc.id)),
       switchMap(() => this.elementsLoader.loadContainedCustomElements(this.nextViewContainer)),
@@ -154,12 +154,7 @@ export class DocViewerComponent implements OnDestroy {
               new Error(`[DocViewer] Error preparing document '${doc.id}': ${errorMessage}`));
         this.nextViewContainer.textContent = '';
         this.setNoIndex(true);
-// TODO(gkalpak): Remove this once gathering debug info is no longer needed.
-          if (/loading chunk \S+ failed/i.test(errorMessage)) {
-            // Print some info to help with debugging.
-            // (There is no reason to wait for this async call to complete before continuing.)
-            printSwDebugInfo();
-          }        return this.void$;
+        return this.void$;
       }),
     );
   }
@@ -281,85 +276,4 @@ function findTranslationResult(element: Element | null): Element | null {
     element = element.parentElement;
   }
   return element;
-}
-
-// Helpers
-/**
- * Print some info regarding the ServiceWorker and the caches contents to help debugging potential
- * issues with failing to find resources in the cache.
- * (See https://github.com/angular/angular/issues/28114.)
- */
-async function printSwDebugInfo(): Promise<void> {
-  const sep = '\n----------';
-  const swState = navigator.serviceWorker?.controller?.state ?? 'N/A';
-
-  console.log(`\nServiceWorker: ${swState}`);
-
-  if (typeof caches === 'undefined') {
-    console.log(`${sep}\nCaches: N/A`);
-  } else {
-    const allCacheNames = await caches.keys();
-    const swCacheNames = allCacheNames.filter(name => name.startsWith('ngsw:/:'));
-
-    await findCachesAndPrintEntries(swCacheNames, 'db:control', true, ['manifests']);
-    await findCachesAndPrintEntries(swCacheNames, 'assets:app-shell:cache', false);
-    await findCachesAndPrintEntries(swCacheNames, 'assets:app-shell:meta', true);
-  }
-
-  if (swState === 'activated') {
-    console.log(sep);
-    await fetchAndPrintSwInternalDebugInfo();
-  }
-
-  console.warn(
-      `${sep}\nIf you see this error, please report an issue at ` +
-      'https://github.com/angular/angular/issues/new?template=3-docs-bug.md including the above logs.');
-
-  // Internal helpers
-  async function fetchAndPrintSwInternalDebugInfo() {
-    try {
-      const res = await fetch('/ngsw/state');
-      if (!res.ok) {
-        throw new Error(`Response ${res.status} ${res.statusText}`);
-      }
-      console.log(await res.text());
-    } catch (err) {
-      console.log(
-          `Failed to retrieve debug info from '/ngsw/state': ${(err as Error).message || err}`);
-    }
-  }
-
-  async function findCachesAndPrintEntries(
-      swCacheNames: string[], nameSuffix: string, includeValues: boolean,
-      ignoredKeys: string[] = []): Promise<void> {
-    const cacheNames = swCacheNames.filter(name => name.endsWith(nameSuffix));
-
-    for (const cacheName of cacheNames) {
-      const cacheEntries = await getCacheEntries(cacheName, includeValues, ignoredKeys);
-      await printCacheEntries(cacheName, cacheEntries);
-    }
-  }
-
-  async function getCacheEntries(name: string, includeValues: boolean, ignoredKeys: string[] = []):
-      Promise<{key: string, value?: unknown}[]> {
-    const ignoredUrls = new Set(ignoredKeys.map(key => new Request(key).url));
-
-    const cache = await caches.open(name);
-    const keys = (await cache.keys()).map(req => req.url).filter(url => !ignoredUrls.has(url));
-    const entries = await Promise.all(
-        keys.map(async key => ({
-                   key,
-                   value: !includeValues ? undefined : await (await cache.match(key))?.json(),
-                 })));
-
-    return entries;
-  }
-
-  function printCacheEntries(name: string, entries: {key: string, value?: unknown}[]): void {
-    const entriesStr =
-        entries.map(({key, value}) => `  - ${key}${!value ? '' : `: ${JSON.stringify(value)}`}`)
-            .join('\n');
-
-    console.log(`\nCache: ${name} (${entries.length} entries)\n${entriesStr}`);
-  }
 }

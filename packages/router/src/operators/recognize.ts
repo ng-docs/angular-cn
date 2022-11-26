@@ -6,22 +6,22 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Type} from '@angular/core';
+import {EnvironmentInjector, Type} from '@angular/core';
 import {MonoTypeOperatorFunction} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 
 import {Route} from '../models';
+import {NavigationTransition} from '../navigation_transition';
 import {recognize as recognizeFn} from '../recognize';
-import {NavigationTransition} from '../router';
-import {UrlTree} from '../url_tree';
+import {UrlSerializer} from '../url_tree';
 
 export function recognize(
-    rootComponentType: Type<any>|null, config: Route[], serializer: (url: UrlTree) => string,
-    paramsInheritanceStrategy: 'emptyOnly'|'always',
-    relativeLinkResolution: 'legacy'|'corrected'): MonoTypeOperatorFunction<NavigationTransition> {
+    injector: EnvironmentInjector, rootComponentType: Type<any>|null, config: Route[],
+    serializer: UrlSerializer, paramsInheritanceStrategy: 'emptyOnly'|'always'):
+    MonoTypeOperatorFunction<NavigationTransition> {
   return mergeMap(
       t => recognizeFn(
-               rootComponentType, config, t.urlAfterRedirects!, serializer(t.urlAfterRedirects!),
-               paramsInheritanceStrategy, relativeLinkResolution)
+               injector, rootComponentType, config, t.urlAfterRedirects!,
+               serializer.serialize(t.urlAfterRedirects!), serializer, paramsInheritanceStrategy)
                .pipe(map(targetSnapshot => ({...t, targetSnapshot}))));
 }

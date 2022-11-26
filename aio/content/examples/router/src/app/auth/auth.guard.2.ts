@@ -1,31 +1,22 @@
 // #docregion
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
+import {inject} from '@angular/core';
+import {
+  CanActivateFn, CanMatchFn,
+  Router, UrlTree
+} from '@angular/router';
 
-import { AuthService } from './auth.service';
+import {AuthService} from './auth.service';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+export const authGuard: CanMatchFn|CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): true|UrlTree {
-    const url: string = state.url;
-
-    return this.checkLogin(url);
+  if (authService.isLoggedIn) {
+    return true;
   }
 
-  checkLogin(url: string): true|UrlTree {
-    if (this.authService.isLoggedIn) { return true; }
+  // Redirect to the login page
+  return router.parseUrl('/login');
+};
 
-    // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
-
-    // Redirect to the login page
-    return this.router.parseUrl('/login');
-  }
-}
 // #enddocregion

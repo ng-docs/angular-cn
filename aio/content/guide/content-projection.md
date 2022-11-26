@@ -201,7 +201,7 @@ The following steps demonstrate a typical implementation of conditional content 
 
    [创建一个属性型指令](guide/attribute-directives#building-an-attribute-directive)，它具有与这个模板的自定义属性相匹配的选择器。在此指令中，注入 `TemplateRef` 实例。
 
-   <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="zippycontentdirective"></code-example>
+   <code-example header="content-projection/src/app/example-zippy.component.ts" path="content-projection/src/app/example-zippy.component.ts" region="zippycontentdirective"></code-example>
 
    In the previous step, you added an `<ng-template>` element with a custom attribute, `appExampleZippyContent`.
    This code provides the logic that Angular will use when it encounters that custom attribute.
@@ -213,7 +213,7 @@ The following steps demonstrate a typical implementation of conditional content 
 
    在你要将内容投影到的组件中，使用 `@ContentChild` 获取此投影内容的模板。
 
-   <code-example header="content-projection/src/app/app.component.ts" path="content-projection/src/app/app.component.ts" region="contentchild"></code-example>
+   <code-example header="content-projection/src/app/example-zippy.component.ts" path="content-projection/src/app/example-zippy.component.ts" region="contentchild"></code-example>
 
    Prior to this step, your application has a component that instantiates a template when certain conditions are met.
    You've also created a directive that provides a reference to that template.

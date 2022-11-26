@@ -2,9 +2,9 @@
 
 # 用路由添加导航支持
 
-There are new requirements for the Tour of Heroes app:
+The Tour of Heroes application has new requirements:
 
-有一些《英雄之旅》的新需求：
+《英雄之旅》有一些新需求：
 
 * Add a *Dashboard* view
 
@@ -30,7 +30,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 </div>
 
-When you're done, users will be able to navigate the application like this:
+When you're done, users can navigate the application like this:
 
 完成时，用户就能像这样在应用中导航：
 
@@ -44,18 +44,18 @@ When you're done, users will be able to navigate the application like this:
 
 ## 添加 `AppRoutingModule`
 
-In Angular, the best practice is to load and configure the router in a separate, top-level module
-that is dedicated to routing and imported by the root `AppModule`.
+In Angular, the best practice is to load and configure the router in a separate, top-level module.
+The router is dedicated to routing and imported by the root `AppModule`.
 
 在 Angular 中，最好在一个独立的顶层模块中加载和配置路由器，它专注于路由功能，然后由根模块 `AppModule` 导入它。
 
-By convention, the module class name is `AppRoutingModule` and it belongs in the `app-routing.module.ts` in the `src/app` folder.
+By convention, the module class name is `AppRoutingModule` and it belongs in the `app-routing.module.ts` in the `src/app` directory.
 
 按照惯例，这个模块类的名字叫做 `AppRoutingModule`，并且位于 `src/app` 下的 `app-routing.module.ts` 文件中。
 
-Use the CLI to generate it.
+Run `ng generate` to create the application routing module.
 
-使用 CLI 生成它。
+运行 `ng generate` 以创建该应用的路由模块。
 
 <code-example format="shell" language="shell">
 
@@ -68,14 +68,14 @@ ng generate module app-routing --flat --module=app
 | Parameter | Details |
 | :-------- | :------ |
 | 参数 | 详情 |
-| `--flat` | Puts the file in `src/app` instead of its own folder. |
+| `--flat` | Puts the file in `src/app` instead of its own directory. |
 | `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。 |
-| `--module=app` | Tells the CLI to register it in the `imports` array of the `AppModule`. |
+| `--module=app` | Tells `ng generate` to register it in the `imports` array of the `AppModule`. |
 | `--module=app` | 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。 |
 
 </div>
 
-The generated file looks like this:
+The file that `ng generate` creates looks like this:
 
 生成的文件是这样的：
 
@@ -87,8 +87,8 @@ Replace it with the following:
 
 <code-example header="src/app/app-routing.module.ts (updated)" path="toh-pt5/src/app/app-routing.module.1.ts"></code-example>
 
-First, the `app-routing.module.ts` file imports `RouterModule` and `Routes` so the application can have routing functionality.
-The next import, `HeroesComponent`, will give the Router somewhere to go once you configure the routes.
+First, the `app-routing.module.ts` file imports `RouterModule` and `Routes` so the application can have routing capability.
+The next import, `HeroesComponent`, gives the Router somewhere to go once you configure the routes.
 
 首先，`app-routing.module.ts` 会导入 `RouterModule` 和 `Routes`，以便该应用具有路由功能。配置好路由后，接着导入 `HeroesComponent`，它将告诉路由器要去什么地方。
 
@@ -149,7 +149,7 @@ The `forRoot()` method supplies the service providers and directives needed for 
 
 </div>
 
-Next, `AppRoutingModule` exports `RouterModule` so it will be available throughout the application.
+Next, `AppRoutingModule` exports `RouterModule` to be available throughout the application.
 
 接下来，`AppRoutingModule` 导出 `RouterModule`，以便它在整个应用程序中生效。
 
@@ -159,13 +159,15 @@ Next, `AppRoutingModule` exports `RouterModule` so it will be available througho
 
 ## 添加 `RouterOutlet`
 
+<!-- markdownlint-disable MD001 -->
+
 Open the `AppComponent` template and replace the `<app-heroes>` element with a `<router-outlet>` element.
 
 打开 `AppComponent` 的模板，把 `<app-heroes>` 元素替换为 `<router-outlet>` 元素。
 
 <code-example header="src/app/app.component.html (router-outlet)" path="toh-pt5/src/app/app.component.html" region="outlet"></code-example>
 
-The `AppComponent` template no longer needs `<app-heroes>` because the application will only display the `HeroesComponent` when the user navigates to it.
+The `AppComponent` template no longer needs `<app-heroes>` because the application only displays the `HeroesComponent` when the user navigates to it.
 
 `AppComponent` 的模板不再需要 `<app-heroes>`，因为只有当用户导航到这里时，才需要显示 `HeroesComponent`。
 
@@ -177,25 +179,21 @@ The `<router-outlet>` tells the router where to display routed views.
 
 The `RouterOutlet` is one of the router directives that became available to the `AppComponent` because `AppModule` imports `AppRoutingModule` which exported `RouterModule`.
 The `ng generate` command you ran at the start of this tutorial added this import because of the `--module=app` flag.
-If you manually created `app-routing.module.ts` or used a tool other than the CLI to do so, you'll need to import `AppRoutingModule` into `app.module.ts` and add it to the `imports` array of the `NgModule`.
+If you didn't use the `ng generate` command to create `app-routing.module.ts`, import `AppRoutingModule` into `app.module.ts` and add it to the `imports` array of the `NgModule`.
 
 能在 `AppComponent` 中使用 `RouterOutlet`，是因为 `AppModule` 导入了 `AppRoutingModule`，而 `AppRoutingModule` 中导出了 `RouterModule`。在本教程开始时你运行的那个 `ng generate` 命令添加了这个导入，是因为 `--module=app` 标志。如果你手动创建 `app-routing.module.ts` 或使用了 CLI 之外的工具，你就要把 `AppRoutingModule` 导入到 `app.module.ts` 中，并且把它添加到 `NgModule` 的 `imports` 数组中。
 
 </div>
 
+<!-- markdownlint-disable MD024 -->
+
 #### Try it
 
 #### 试试看
 
-You should still be running with this CLI command.
+If you're not still serving your application, run `ng serve` to see your application in the browser.
 
-你的 CLI 命令应该仍在运行吧。
-
-<code-example format="shell" language="shell">
-
-ng serve
-
-</code-example>
+如果应用服务器没有在运行，请执行 `ng serve` 命令，以便在浏览器中看到你的应用。
 
 The browser should refresh and display the application title but not the list of heroes.
 
@@ -208,7 +206,7 @@ The route path to `HeroesComponent` is `/heroes`.
 看看浏览器的地址栏。URL 是以 `/` 结尾的。而到 `HeroesComponent` 的路由路径是 `/heroes`。
 
 Append `/heroes` to the URL in the browser address bar.
-You should see the familiar heroes master/detail view.
+You should see the familiar heroes overview/detail view.
 
 在地址栏中把 `/heroes` 追加到 URL 后面。你应该能看到熟悉的主从结构的英雄显示界面。
 
@@ -217,9 +215,12 @@ The browser should refresh and display the application title but not the list of
 
 从浏览器地址栏中的 URL 中移除 `/heroes`。浏览器就会刷新，并且显示本应用的标题，而不显示英雄列表。
 
+<!-- markdownlint-enable MD001 -->
+<!-- markdownlint-enable MD024 -->
+
 <a id="routerlink"></a>
 
-## Add a navigation link (`routerLink`)
+## Add a navigation link using `routerLink`
 
 ## 添加路由链接 (`routerLink`)
 
@@ -263,14 +264,14 @@ Make this and future navigation links look better by adding private CSS styles t
 
 ## 添加仪表盘视图
 
-Routing makes more sense when there are multiple views.
-So far there's only the heroes view.
+Routing makes more sense when your application has more than one view, yet
+the *Tour of Heroes* application has only the heroes view.
 
 当有多个视图时，路由会更有价值。不过目前还只有一个英雄列表视图。
 
-Add a `DashboardComponent` using the CLI:
+To add a `DashboardComponent`, run `ng generate` as shown here:
 
-使用 CLI 添加一个 `DashboardComponent`：
+要想添加 `DashboardComponent`，请运行如下 `ng generate` 命令：
 
 <code-example format="shell" language="shell">
 
@@ -278,11 +279,11 @@ ng generate component dashboard
 
 </code-example>
 
-The CLI generates the files for the `DashboardComponent` and declares it in `AppModule`.
+`ng generate` creates the files for the `DashboardComponent` and declares it in `AppModule`.
 
 CLI 生成了 `DashboardComponent` 的相关文件，并把它声明到 `AppModule` 中。
 
-Replace the default file content in these three files as follows:
+Replace the default content in these files as shown here:
 
 把这三个文件中的内容改成这样：
 
@@ -304,11 +305,11 @@ The  *template* presents a grid of hero name links.
 
   这些链接被 `dashboard.component.css` 中的样式格式化成了一些色块。
 
-* The links don't go anywhere yet but [they will shortly](#hero-details).
+* The links don't go anywhere yet.
 
   这些链接还没有指向任何地方，但[很快就会了](#hero-details)。
 
-The *class* is similar to the `HeroesComponent` class.
+The *class* is like the `HeroesComponent` class.
 
 这个*类*和 `HeroesComponent` 类很像。
 
@@ -324,9 +325,9 @@ The *class* is similar to the `HeroesComponent` class.
 
   在 `ngOnInit()` 生命周期钩子中调用 `getHeroes()`。
 
-This `getHeroes()` returns the sliced list of heroes at positions 1 and 5, returning only four of the Top Heroes (2nd, 3rd, 4th, and 5th).
+This `getHeroes()` returns the sliced list of heroes at positions 1 and 5, returning only Heroes two, three, four, and five.
 
-这个 `getHeroes()` 函数会截取第 2 到 第 5 位英雄，也就是说只返回四个顶层英雄（第二，第三，第四和第五）。
+这个 `getHeroes()` 函数会截取第 1 到 第 5 位英雄，也就是说只返回第二、第三、第四和第五个英雄。
 
 <code-example header="src/app/dashboard/dashboard.component.ts" path="toh-pt5/src/app/dashboard/dashboard.component.ts" region="getHeroes"></code-example>
 
@@ -378,7 +379,7 @@ After the browser refreshes, the router loads the `DashboardComponent` and the b
 
 ### 把仪表盘链接添加到壳组件中
 
-The user should be able to navigate back and forth between the `DashboardComponent` and the `HeroesComponent` by clicking links in the navigation area near the top of the page.
+The user should be able to navigate between the `DashboardComponent` and the `HeroesComponent` by clicking links in the navigation area near the top of the page.
 
 应该允许用户通过点击页面顶部导航区的各个链接在 `DashboardComponent` 和 `HeroesComponent` 之间来回导航。
 
@@ -419,25 +420,25 @@ The user should be able to get to these details in three ways.
 
    通过把一个“深链接” URL 粘贴到浏览器的地址栏中来指定要显示的英雄。
 
-In this section, you'll enable navigation to the `HeroDetailComponent` and liberate it from the `HeroesComponent`.
+This section enables navigation to the `HeroDetailComponent` and liberate it from the `HeroesComponent`.
 
-在这一节，你将能导航到 `HeroDetailComponent`，并把它从 `HeroesComponent` 中解放出来。
+这一节弃用了导航到 `HeroDetailComponent` 的功能，并把它从 `HeroesComponent` 中解放出来。
 
 ### Delete *hero details* from `HeroesComponent`
 
 ### 从 `HeroesComponent` 中删除*英雄详情*
 
-When the user clicks a hero item in the `HeroesComponent`, the application should navigate to the `HeroDetailComponent`, replacing the heroes list view with the hero detail view.
+When the user clicks a hero in `HeroesComponent`, the application should navigate to the `HeroDetailComponent`, replacing the heroes list view with the hero detail view.
 The heroes list view should no longer show hero details as it does now.
 
 当用户在 `HeroesComponent` 中点击某个英雄条目时，应用应该能导航到 `HeroDetailComponent`，从英雄列表视图切换到英雄详情视图。英雄列表视图将不再显示，而英雄详情视图要显示出来。
 
-Open the `HeroesComponent` template (`heroes/heroes.component.html`) and delete the `<app-hero-detail>` element from the bottom.
+Open the `heroes/heroes.component.html` and delete the `<app-hero-detail>` element from the bottom.
 
-打开 `HeroesComponent` 的模板文件（`heroes/heroes.component.html`），并从底部删除 `<app-hero-detail>` 元素。
+打开 `heroes/heroes.component.html`，并从底部删除 `<app-hero-detail>` 元素。
 
 Clicking a hero item now does nothing.
-You'll [fix that shortly](#heroes-component-links) after you enable routing to the `HeroDetailComponent`.
+You can fix that after you enable routing to the `HeroDetailComponent`.
 
 目前，点击某个英雄条目还没有反应。不过当你启用了到 `HeroDetailComponent` 的路由之后，[很快就能修复它](#heroes-component-links)。
 
@@ -461,7 +462,7 @@ Then add a *parameterized* route to the `routes` array that matches the path pat
 
 <code-example header="src/app/app-routing.module.ts" path="toh-pt5/src/app/app-routing.module.ts" region="detail-route"></code-example>
 
-The colon (`:`) character in the `path` indicates that `:id` is a placeholder for a specific hero `id`.
+The colon `:` character in the `path` indicates that `:id` is a placeholder for a specific hero `id`.
 
 `path` 中的冒号（`:`）表示 `:id` 是一个占位符，它表示某个特定英雄的 `id`。
 
@@ -501,20 +502,22 @@ The hero items in the `HeroesComponent` are `<li>` elements whose click events a
 
 <code-example header="src/app/heroes/heroes.component.html (list with onSelect)" path="toh-pt4/src/app/heroes/heroes.component.html" region="list"></code-example>
 
-Strip the `<li>` back to just its `*ngFor`, wrap the badge and name in an anchor (`<a>`) element, and add a `routerLink` attribute to the anchor that is the same as in the dashboard template
+Remove the `<li>` back to just its `*ngFor`.
+Wrap the badge and name in an anchor `<a>` element.
+Add a `routerLink` attribute to the anchor that's the same as in the dashboard template.
 
-清理 `<li>`，只保留它的 `*ngFor`，把徽章（`<badge>`）和名字包裹进一个 `<a>` 元素中，
-并且像仪表盘的模板中那样为这个 `<a>` 元素添加一个 `routerLink` 属性。
+移除 `<li>`，只保留它的 `*ngFor`。把徽章（`<badge>`）和名字包裹进一个 `<a>` 元素中。
+像仪表盘的模板中那样为这个 `<a>` 元素添加一个 `routerLink` 属性。
 
 <code-example header="src/app/heroes/heroes.component.html (list with links)" path="toh-pt5/src/app/heroes/heroes.component.html" region="list"></code-example>
 
-You'll have to fix the private stylesheet (`heroes.component.css`) to make the list look as it did before.
+Be sure to fix the private style sheet in `heroes.component.css` to make the list look as it did before.
 Revised styles are in the [final code review](#heroescomponent) at the bottom of this guide.
 
-你还要修改私有样式表（`heroes.component.css`），让列表恢复到以前的外观。
+还要修改 `heroes.component.css` 中的私有样式表，让列表恢复到以前的外观。
 修改后的样式表参阅本指南底部的[最终代码](#heroescomponent)。
 
-#### Remove dead code (optional)
+#### Remove dead code - optional
 
 #### 移除死代码（可选）
 
@@ -522,7 +525,7 @@ While the `HeroesComponent` class still works, the `onSelect()` method and `sele
 
 虽然 `HeroesComponent` 类仍然能正常工作，但 `onSelect()` 方法和 `selectedHero` 属性已经没用了。
 
-It's nice to tidy up and you'll be grateful to yourself later.
+It's nice to tidy things up for your future self.
 Here's the class after pruning away the dead code.
 
 最好清理掉它们，将来你会体会到这么做的好处。下面是删除了死代码之后的类。
@@ -533,16 +536,16 @@ Here's the class after pruning away the dead code.
 
 ## 支持路由的 `HeroDetailComponent`
 
-Previously, the parent `HeroesComponent` set the `HeroDetailComponent.hero` property and the `HeroDetailComponent` displayed the hero.
+The parent `HeroesComponent` used to set the `HeroDetailComponent.hero` property and the `HeroDetailComponent` displayed the hero.
 
-以前，父组件 `HeroesComponent` 会设置 `HeroDetailComponent.hero` 属性，然后 `HeroDetailComponent` 就会显示这个英雄。
+父组件 `HeroesComponent` 以前会设置 `HeroDetailComponent.hero` 属性，然后 `HeroDetailComponent` 就会显示这个英雄。
 
 `HeroesComponent` doesn't do that anymore.
-Now the router creates the `HeroDetailComponent` in response to a URL such as `~/detail/11`.
+Now the router creates the `HeroDetailComponent` in response to a URL such as `~/detail/12`.
 
 `HeroesComponent` 已经不会再那么做了。现在，当路由器会在响应形如 `~/detail/11` 的 URL 时创建 `HeroDetailComponent`。
 
-The `HeroDetailComponent` needs a new way to obtain the hero-to-display.
+The `HeroDetailComponent` needs a new way to get the hero to display.
 This section explains the following:
 
 `HeroDetailComponent` 需要从一种新的途径获取*要显示的英雄*。本节会讲解如下操作：
@@ -555,7 +558,7 @@ This section explains the following:
 
   从这个路由中提取出 `id`
 
-* Acquire the hero with that `id` from the server using the `HeroService`
+* Get the hero with that `id` from the server using the `HeroService`
 
   通过 `HeroService` 从服务器上获取具有这个 `id` 的英雄数据。
 
@@ -579,12 +582,12 @@ The "id" parameter is the `id` of the hero to display.
 
 [`ActivatedRoute`](api/router/ActivatedRoute) 保存着到这个 `HeroDetailComponent` 实例的路由信息。这个组件对从 URL 中提取的路由参数感兴趣。其中的 `id` 参数就是要显示的英雄的 `id`。
 
-The [`HeroService`](tutorial/toh-pt4) gets hero data from the remote server and this component will use it to get the hero-to-display.
+The [`HeroService`](tutorial/toh-pt4) gets hero data from the remote server and this component uses it to get the hero-to-display.
 
 [`HeroService`](tutorial/toh-pt4) 从远端服务器获取英雄数据，本组件将使用它来获取要显示的英雄。
 
 The [`location`](api/common/Location) is an Angular service for interacting with the browser.
-You'll use it [later](#goback) to navigate back to the view that navigated here.
+This service lets you navigate back to the previous view.
 
 [`location`](api/common/Location) 是一个 Angular 的服务，用来与浏览器打交道。
 [稍后](#goback)，你就会使用它来导航回上一个视图。
@@ -645,7 +648,9 @@ It returns a *mock hero* as an `Observable`, using the RxJS `of()` function.
 
 像 [`getHeroes()`](tutorial/toh-pt4#observable-heroservice) 一样，`getHero()` 也有一个异步函数签名。它用 RxJS 的 `of()` 函数返回一个 `Observable` 形式的*模拟英雄数据*。
 
-You'll be able to re-implement `getHero()` as a real `Http` request without having to change the `HeroDetailComponent` that calls it.
+You can rewrite `getHero()` as a real `Http` request without having to change the `HeroDetailComponent` that calls it.
+
+<!-- markdownlint-disable MD024 -->
 
 你将来可以用一个真实的 `Http` 请求来重新实现 `getHero()`，而不用修改调用了它的 `HeroDetailComponent`。
 
@@ -658,7 +663,9 @@ You can click a hero in the dashboard or in the heroes list and navigate to that
 
 刷新浏览器，应用又恢复正常了。你可以在仪表盘或英雄列表中点击一个英雄来导航到该英雄的详情视图。
 
-If you paste `localhost:4200/detail/11` in the browser address bar, the router navigates to the detail view for the hero with `id: 11`, "Dr Nice".
+If you paste `localhost:4200/detail/12` in the browser address bar, the router navigates to the detail view for the hero with `id: 12`, **Dr Nice**.
+
+<!-- markdownlint-enable MD024 -->
 
 如果你在浏览器的地址栏中粘贴了 `localhost:4200/detail/11`，路由器也会导航到 `id: 11` 的英雄（"Dr. Nice"）的详情视图。
 
@@ -668,7 +675,7 @@ If you paste `localhost:4200/detail/11` in the browser address bar, the router n
 
 ### 回到原路
 
-By clicking the browser's back button, you can go back to the hero list or dashboard view, depending upon which sent you to the detail view.
+By clicking the browser's back button, you can go back to the previous page. This could be the hero list or dashboard view, depending upon which sent you to the detail view.
 
 通过点击浏览器的后退按钮，你可以回到英雄列表或仪表盘视图，这取决于你从哪里进入的详情视图。
 
@@ -683,24 +690,26 @@ Add a *go back* button to the bottom of the component template and bind it to th
 <code-example header="src/app/hero-detail/hero-detail.component.html (back button)" path="toh-pt5/src/app/hero-detail/hero-detail.component.html" region="back-button"></code-example>
 
 Add a `goBack()` *method* to the component class that navigates backward one step in the browser's history stack
-using the `Location` service that you [injected previously](#hero-detail-ctor).
+using the `Location` service that you [used to inject](#hero-detail-ctor).
 
 在组件类中添加一个 `goBack()` 方法，利用[你以前注入的](#hero-detail-ctor) `Location` 服务在浏览器的历史栈中后退一步。
 
 <code-example header="src/app/hero-detail/hero-detail.component.ts (goBack)" path="toh-pt5/src/app/hero-detail/hero-detail.component.ts" region="goBack"></code-example>
 
 Refresh the browser and start clicking.
-Users can navigate around the app, from the dashboard to hero details and back, from heroes list to the mini detail to the hero details and back to the heroes again.
+Users can now navigate around the application using the new buttons.
 
 刷新浏览器，并开始点击。用户能在应用中导航：从仪表盘到英雄详情再回来，从英雄列表到 mini 版英雄详情到英雄详情，再回到英雄列表。
 
-The details will look better when you add the private CSS styles to `hero-detail.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
+The details look better when you add the private CSS styles to `hero-detail.component.css` as listed in one of the ["final code review"](#final-code-review) tabs below.
 
 当你将一些私有 CSS 样式添加到 `hero-detail.component.css` 里之后，其细节看起来会更好，如下面的[“查看最终代码”](#final-code-review)标签页中所示。
 
 ## Final code review
 
 ## 查看最终代码
+
+<!-- markdownlint-disable MD001 -->
 
 Here are the code files discussed on this page.
 
@@ -759,6 +768,8 @@ Here are the code files discussed on this page.
     <code-pane header="src/app/hero-detail/hero-detail.component.css" path="toh-pt5/src/app/hero-detail/hero-detail.component.css"></code-pane>
 </code-tabs>
 
+<!-- markdownlint-enable MD001 -->
+
 ## Summary
 
 ## 小结
@@ -783,7 +794,7 @@ Here are the code files discussed on this page.
 
   你在 `<a>` 元素中使用了 `routerLink` 指令
 
-* You refactored a tightly-coupled master/detail view into a routed detail view
+* You refactored a tightly coupled main/detail view into a routed detail view
 
   你把一个紧耦合的主从视图重构成了带路由的详情视图
 
@@ -791,7 +802,7 @@ Here are the code files discussed on this page.
 
   你使用路由链接参数来导航到所选英雄的详情视图
 
-* You shared the `HeroService` among multiple components
+* You shared the `HeroService` with other components
 
   在多个组件之间共享了 `HeroService` 服务
 

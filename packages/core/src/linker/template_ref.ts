@@ -70,8 +70,7 @@ export abstract class TemplateRef<C> {
   abstract readonly elementRef: ElementRef;
 
   /**
-   * Instantiates an embedded view based on this template,
-   * and attaches it to the view container.
+   * Instantiates an unattached embedded view based on this template.
    *
    * 创建一个视图对象，并把它附着到父视图的视图容器上。
    *

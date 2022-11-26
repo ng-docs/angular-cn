@@ -11,7 +11,7 @@ import {assertLView} from '../assert';
 import {readPatchedLView} from '../context_discovery';
 import {LContainer} from '../interfaces/container';
 import {isLContainer, isLView} from '../interfaces/type_checks';
-import {CHILD_HEAD, CONTEXT, FLAGS, LView, LViewFlags, NEXT, PARENT, RootContext} from '../interfaces/view';
+import {CHILD_HEAD, CONTEXT, FLAGS, LView, LViewFlags, NEXT, PARENT} from '../interfaces/view';
 
 
 /**
@@ -54,9 +54,9 @@ export function getRootView<T>(componentOrLView: LView|{}): LView<T> {
 }
 
 /**
- * Returns the `RootContext` instance that is associated with
- * the application where the target is situated. It does this by walking the parent views until it
- * gets to the root view, then getting the context off of that.
+ * Returns the context information associated with the application where the target is situated. It
+ * does this by walking the parent views until it gets to the root view, then getting the context
+ * off of that.
  *
  * 返回与目标所在的应用程序关联的 `RootContext`
  * 实例。它会通过遍历父视图直到到达根视图，然后从中获取上下文来实现。
@@ -66,11 +66,11 @@ export function getRootView<T>(componentOrLView: LView|{}): LView<T> {
  * 要获取根上下文的 `LView` 或组件。
  *
  */
-export function getRootContext<T>(viewOrComponent: LView<T>|{}): RootContext {
+export function getRootContext<T>(viewOrComponent: LView<T>|{}): T {
   const rootView = getRootView(viewOrComponent);
   ngDevMode &&
-      assertDefined(rootView[CONTEXT], 'RootView has no context. Perhaps it is disconnected?');
-  return rootView[CONTEXT] as RootContext;
+      assertDefined(rootView[CONTEXT], 'Root view has no context. Perhaps it is disconnected?');
+  return rootView[CONTEXT] as T;
 }
 
 

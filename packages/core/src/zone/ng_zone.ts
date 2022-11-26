@@ -6,11 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {RuntimeError, RuntimeErrorCode} from '../errors';
 import {EventEmitter} from '../event_emitter';
 import {global} from '../util/global';
 import {noop} from '../util/noop';
 import {getNativeRequestAnimationFrame} from '../util/raf';
 
+import {AsyncStackTaggingZoneSpec} from './async-stack-tagging';
 
 /**
  * An injectable service for executing work inside or outside of the Angular zone.
@@ -152,7 +154,9 @@ export class NgZone {
     shouldCoalesceRunChangeDetection = false
   }) {
     if (typeof Zone == 'undefined') {
-      throw new Error(`In this configuration Angular requires Zone.js`);
+      throw new RuntimeError(
+          RuntimeErrorCode.MISSING_ZONEJS,
+          ngDevMode && `In this configuration Angular requires Zone.js`);
     }
 
     Zone.assertZonePatched();
@@ -160,6 +164,15 @@ export class NgZone {
     self._nesting = 0;
 
     self._outer = self._inner = Zone.current;
+
+    // AsyncStackTaggingZoneSpec provides `linked stack traces` to show
+    // where the async operation is scheduled. For more details, refer
+    // to this article, https://developer.chrome.com/blog/devtools-better-angular-debugging/
+    // And we only import this AsyncStackTaggingZoneSpec in development mode,
+    // in the production mode, the AsyncStackTaggingZoneSpec will be tree shaken away.
+    if (ngDevMode) {
+      self._inner = self._inner.fork(new AsyncStackTaggingZoneSpec('Angular'));
+    }
 
     if ((Zone as any)['TaskTrackingZoneSpec']) {
       self._inner = self._inner.fork(new ((Zone as any)['TaskTrackingZoneSpec'] as any));
@@ -185,13 +198,17 @@ export class NgZone {
 
   static assertInAngularZone(): void {
     if (!NgZone.isInAngularZone()) {
-      throw new Error('Expected to be in Angular Zone, but it is not!');
+      throw new RuntimeError(
+          RuntimeErrorCode.UNEXPECTED_ZONE_STATE,
+          ngDevMode && 'Expected to be in Angular Zone, but it is not!');
     }
   }
 
   static assertNotInAngularZone(): void {
     if (NgZone.isInAngularZone()) {
-      throw new Error('Expected to not be in Angular Zone, but it is!');
+      throw new RuntimeError(
+          RuntimeErrorCode.UNEXPECTED_ZONE_STATE,
+          ngDevMode && 'Expected to not be in Angular Zone, but it is!');
     }
   }
 

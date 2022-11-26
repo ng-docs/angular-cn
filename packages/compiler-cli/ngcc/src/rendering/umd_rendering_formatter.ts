@@ -258,7 +258,7 @@ function renderFactoryParameters(
  * 计算给定导入 ( `i` ) 的全局标识符。
  *
  * The identifier used to access a package when using the "global" form of a UMD bundle usually
- * follows a special format where snake-case is conveted to camelCase and path separators are
+ * follows a special format where snake-case is converted to camelCase and path separators are
  * converted to dots. In addition there are special cases such as `@angular` is mapped to `ng`.
  *
  * 使用 UMD 包的“全局”形式时用于访问包的标识符通常遵循一种特殊的格式，其中的 snake-case 被转换为
@@ -283,7 +283,7 @@ function renderFactoryParameters(
  *
  * If it turns out that there are packages that are being used via globals, where this approach
  * fails, we should consider implementing a configuration based solution, similar to what would go
- * in a rollup configuration for mapping import paths to global indentifiers.
+ * in a rollup configuration for mapping import paths to global identifiers.
  *
  * 如果事实证明是通过全局变量使用的包，而这种方法失败了，我们应该考虑实现基于配置的解决方案，类似于在汇总配置中将导入路径映射到全局标识符的方式。
  *

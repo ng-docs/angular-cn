@@ -10,6 +10,7 @@ import {forwardRef, resolveForwardRef} from '../../di/forward_ref';
 import {ɵɵinject, ɵɵinvalidFactoryDep} from '../../di/injector_compatibility';
 import {ɵɵdefineInjectable, ɵɵdefineInjector} from '../../di/interface/defs';
 import {registerNgModuleType} from '../../linker/ng_module_registration';
+import * as iframe_attrs_validation from '../../sanitization/iframe_attrs_validation';
 import * as sanitization from '../../sanitization/sanitization';
 import * as r3 from '../index';
 
@@ -50,6 +51,7 @@ export const angularCoreEnv: {[name: string]: Function} =
        'ɵɵinvalidFactoryDep': ɵɵinvalidFactoryDep,
        'ɵɵtemplateRefExtractor': r3.ɵɵtemplateRefExtractor,
        'ɵɵresetView': r3.ɵɵresetView,
+       'ɵɵHostDirectivesFeature': r3.ɵɵHostDirectivesFeature,
        'ɵɵNgOnChangesFeature': r3.ɵɵNgOnChangesFeature,
        'ɵɵProvidersFeature': r3.ɵɵProvidersFeature,
        'ɵɵCopyDefinitionFeature': r3.ɵɵCopyDefinitionFeature,
@@ -173,6 +175,7 @@ export const angularCoreEnv: {[name: string]: Function} =
        'ɵɵsanitizeUrlOrResourceUrl': sanitization.ɵɵsanitizeUrlOrResourceUrl,
        'ɵɵtrustConstantHtml': sanitization.ɵɵtrustConstantHtml,
        'ɵɵtrustConstantResourceUrl': sanitization.ɵɵtrustConstantResourceUrl,
+       'ɵɵvalidateIframeAttribute': iframe_attrs_validation.ɵɵvalidateIframeAttribute,
 
        'forwardRef': forwardRef,
        'resolveForwardRef': resolveForwardRef,

@@ -26,7 +26,7 @@ export const formGroupNameProvider: any = {
 /**
  * @description
  *
- * Syncs a nested `FormGroup` to a DOM element.
+ * Syncs a nested `FormGroup` or `FormRecord` to a DOM element.
  *
  * 将嵌套的 `FormGroup` 同步到 DOM 元素上。
  *
@@ -34,8 +34,8 @@ export const formGroupNameProvider: any = {
  *
  * 本指令只能与父 `FormGroupDirective` 一起使用。
  *
- * It accepts the string name of the nested `FormGroup` to link, and
- * looks for a `FormGroup` registered with that name in the parent
+ * It accepts the string name of the nested `FormGroup` or `FormRecord` to link, and
+ * looks for a `FormGroup` or `FormRecord` registered with that name in the parent
  * `FormGroup` instance you passed into `FormGroupDirective`.
  *
  * 它接受嵌套的字符串名称 `FormGroup` 链接，并寻找使用这个名字在你传给 `FormGroupDirective` 的父

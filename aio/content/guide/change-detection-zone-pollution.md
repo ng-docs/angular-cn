@@ -1,4 +1,4 @@
-# Resolving Zone Pollution
+# Resolving zone pollution
 
 # 解决区域（Zone）污染
 
@@ -6,9 +6,9 @@
 
 **Zone.js**是一种信号机制，Angular 用它来检测应用程序状态何时可能已更改。它捕获异步操作，比如 `setTimeout`、网络请求和事件侦听器。Angular 会根据来自 Zone.js 的信号安排变更检测
 
-There are cases in which scheduled [tasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks) or [microtasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks) don’t make any changes in the data model, which makes running change detection unnecessary. Common examples are:
+In some cases scheduled [tasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks) or [microtasks](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks) don’t make any changes in the data model, which makes running change detection unnecessary. Common examples are:
 
-在某些情况下，某些已安排的[任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks)或[微任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks)不会对数据模型进行任何更改，这使得运行变更检测变得不必要。常见的例子是：
+在某些情况下，已安排的[任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#tasks)或[微任务](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide#microtasks)不会对数据模型进行任何更改，这使得运行变更检测变得不必要。常见的例子是：
 
 * `requestAnimationFrame`, `setTimeout` or `setInterval`
 
@@ -39,11 +39,11 @@ In the image above, there is a series of change detection calls triggered by eve
 
 在上图中，有一系列由与元素关联的事件处理程序触发的变更检测调用。这是使用第三方非原生 Angular 组件时的常见挑战，这些组件不会更改 `NgZone` 的默认行为。
 
-## Run tasks outside NgZone
+## Run tasks outside `NgZone`
 
 ## 在 NgZone 之外运行任务
 
-In such cases, we can instruct Angular to avoid calling change detection for tasks scheduled by a given piece of code using  [NgZone](https://angular.io/guide/zone).
+In such cases, you can instruct Angular to avoid calling change detection for tasks scheduled by a given piece of code using [NgZone](https://angular.io/guide/zone).
 
 在这种情况下，我们可以指示 Angular 避免使用[NgZone](https://angular.io/guide/zone)为给定代码段调度的任务调用变更检测。
 
@@ -58,7 +58,7 @@ class AppComponent implements OnInit {
 }
 ```
 
-The snippet above instructs Angular that it should execute the `setInterval` call outside the Angular Zone and skip running change detection after `pollForUpdates` runs.
+The preceding snippet instructs Angular to call `setInterval` outside the Angular Zone and skip running change detection after `pollForUpdates` runs.
 
 上面的代码段告诉 Angular，它应该在 Angular Zone 之外执行 `setInterval` 调用，并在 `pollForUpdates` 运行之后跳过运行变更检测。
 
@@ -74,18 +74,18 @@ import * as Plotly from 'plotly.js-dist-min';
 class AppComponent implements OnInit {
   constructor(private ngZone: NgZone) {}
   ngOnInit() {
-    this.zone.runOutsideAngular(() => {
+    this.ngZone.runOutsideAngular(() => {
       Plotly.newPlot('chart', data);
     });
   }
 }
 ```
 
-Running `Plotly.newPlot('chart', data);` within `runOutsideAngular` instructs the framework that it shouldn’t execute change detection after the execution of tasks scheduled by the initialization logic.
+Running `Plotly.newPlot('chart', data);` within `runOutsideAngular` instructs the framework that it shouldn’t run change detection after the execution of tasks scheduled by the initialization logic.
 
 在 `runOutsideAngular` 中运行 `Plotly.newPlot('chart', data);` 会告诉框架它不应该在执行此初始化逻辑安排的这些任务之后执行变更检测。
 
-For example, if `Plotly.newPlot('chart', data)` adds event listeners to a DOM element, Angular will not execute change detection after the execution of their handlers.
+For example, if `Plotly.newPlot('chart', data)` adds event listeners to a DOM element, Angular does not run change detection after the execution of their handlers.
 
 比如，如果 `Plotly.newPlot('chart', data)` 将事件侦听器添加到 DOM 元素，则 Angular 将不会在执行其处理程序之后执行变更检测。
 

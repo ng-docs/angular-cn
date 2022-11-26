@@ -22,14 +22,16 @@ Before you can build and test Angular, you must install and configure the
 following products on your development machine:
 
 * [Git](https://git-scm.com/) and/or the [**GitHub app**](https://desktop.github.com/) (for Mac and Windows);
-  [GitHub's Guide to Installing Git](https://help.github.com/articles/set-up-git) is a good source of information.
+  [GitHub's Guide to Installing Git](https://help.github.com/articles/set-up-git) is a good source of information.\
+  **Windows Users**: Git Bash or an equivalent shell is required\
+  *Windows Powershell and cmd shells are not supported [#46780](https://github.com/angular/angular/issues/46780) so some commands might fail*
 
 * [Node.js](https://nodejs.org), (version specified in the engines field of [`package.json`](../package.json)) which is used to run a development web server,
   run tests, and generate distributable files.
 
 * [Yarn](https://yarnpkg.com) (version specified in the engines field of [`package.json`](../package.json)) which is used to install dependencies.
 
-* Optional: [Java](https://openjdk.java.net/) version 7 or higher as required by [Closure Compiler](https://developers.google.com/closure/compiler). Most developers will not need this. Java is required for running some of the integration tests.
+* Optional: [Java](https://openjdk.java.net/) version 7 or higher than required by [Closure Compiler](https://developers.google.com/closure/compiler). Most developers will not need this. Java is required for running some integration tests.
 
 ## Getting the Sources
 
@@ -67,7 +69,7 @@ yarn install
 To build Angular run:
 
 ```shell
-node ./scripts/build/build-packages-dist.js
+yarn build
 ```
 
 * Results are put in the `dist/packages-dist` folder.
@@ -97,6 +99,24 @@ This can be done by running:
 ```sh
 yarn ng-dev misc build-and-link <path-to-local-project-root>
 ```
+
+### Building and serving a project
+
+#### Cache
+
+When making changes to Angular packages and testing in a local library/project you need to run `ng cache disable` to disable the Angular CLI disk cache. If you are making changes that are not reflected in your locally served library/project, verify if you have [CLI Cache](https://angular.io/guide/workspace-config#cache-options) disabled.
+
+#### Invoking the Angular CLI
+
+The Angular CLI needs to be invoked using Node.js [`--preserve-symlinks`](https://nodejs.org/api/cli.html#--preserve-symlinks) flag. Otherwise the symbolic links will be resolved using their real path which causes node module resolution to fail.
+
+##### Windows
+
+`set BAZEL_TARGET="1" && node --preserve-symlinks node_modules/@angular/cli/lib/init.js serve`
+
+##### Unix Systems
+
+`BAZEL_TARGET="1" node --preserve-symlinks node_modules/.bin/ng serve`
 
 ## Formatting your source code
 
@@ -144,8 +164,8 @@ $ yarn lint
 ## Publishing Snapshot Builds
 
 When a build of any branch on the upstream fork angular/angular is green on CircleCI, it
-automatically publishes build artifacts to repositories in the Angular org, eg. the `@angular/core`
-package is published to https://github.com/angular/core-builds.
+automatically publishes build artifacts to repositories in the Angular org. For example,
+the `@angular/core` package is published to https://github.com/angular/core-builds.
 
 You may find that your un-merged change needs some validation from external participants.
 Rather than requiring them to pull your Pull Request and build Angular locally, they can depend on
@@ -197,7 +217,7 @@ c. Some package managers (such as `pnpm` or `yarn pnp`) might not work correctly
 ### Publishing to GitHub Repos
 You can also manually publish `*-builds` snapshots just like our CircleCI build does for upstream
 builds. Before being able to publish the packages, you need to build them locally by running the
-`./scripts/build/build-packages-dist.js` script.
+`yarn build` command.
 
 First time, you need to create the GitHub repositories:
 
@@ -231,12 +251,11 @@ It will automatically recognize `*.bazel` and `*.bzl` files.
 
 
 ### Remote Build Execution and Remote Caching
-Bazel builds in the Angular repository use a shared cache.  When a build occurs a hash of the inputs is computed
-and checked against available outputs in the shared cache.  If an output is found, it is used as the output for the
+Bazel builds in the Angular repository use a shared cache. When a build occurs a hash of the inputs is computed
+and checked against available outputs in the shared cache. If an output is found, it is used as the output for the
 build action rather than performing the build locally.
 
-> Remote Build Execution requires authentication as a google.com or angular.io account.
+> Remote Build Execution requires authentication as a google.com account.
 
 #### --config=remote flag
-The `--config=remote` flag can be added to enable remote execution of builds.  This flag can be added to
-the `.bazelrc.user` file using the script at `scripts/local-dev/setup-rbe.sh`.
+The `--config=remote` flag can be added to enable remote execution of builds.

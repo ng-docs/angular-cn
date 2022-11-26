@@ -98,13 +98,13 @@ This means that any services listed in their provider arrays aren't available be
 When the Angular router lazy-loads a module, it creates a new injector.
 This injector is a child of the root application injector.
 Imagine a tree of injectors; there is a single root injector and then a child injector for each lazy loaded module.
-The router adds all of the providers from the root injector to the child injector.
-When the router creates a component within the lazy-loaded context, Angular prefers service instances created from these providers to the service instances of the application root injector.
+This child injector gets populated with all the module-specific providers, if any. 
+Look up resolution for every provider follows the [rules of dependency injection hierarchy](guide/hierarchical-dependency-injection#resolution-rules). 
 
 当 Angular 的路由器惰性加载一个模块时，它会创建一个新的注入器。这个注入器是应用的根注入器的一个子注入器。想象一棵注入器树，它有唯一的根注入器，而每一个惰性加载模块都有一个自己的子注入器。路由器会把根注入器中的所有提供者添加到子注入器中。如果路由器在惰性加载时创建组件，Angular 会更倾向于使用从这些提供者中创建的服务实例，而不是来自应用的根注入器的服务实例。
 
-Any component created within a lazy loaded module's context, such as by router navigation, gets the local instance of the service, not the instance in the root application injector.
-Components in external modules continue to receive the instance created for the application root.
+Any component created within a lazy loaded module's context, such as by router navigation, gets its own local instance of child provided services, not the instance in the root application injector.
+Components in external modules continue to receive the instances created for the application root injector.
 
 任何在惰性加载模块的上下文中创建的组件（比如路由导航），都会获取该服务的局部实例，而不是应用的根注入器中的实例。而外部模块中的组件，仍然会收到来自于应用的根注入器创建的实例。
 

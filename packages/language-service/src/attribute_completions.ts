@@ -7,7 +7,7 @@
  */
 
 import {CssSelector, SelectorMatcher, TmplAstElement, TmplAstTemplate} from '@angular/compiler';
-import {DirectiveInScope, ElementSymbol, TemplateSymbol, TemplateTypeChecker, TypeCheckableDirectiveMeta} from '@angular/compiler-cli/src/ngtsc/typecheck/api';
+import {ElementSymbol, PotentialDirective, TemplateSymbol, TemplateTypeChecker, TypeCheckableDirectiveMeta} from '@angular/compiler-cli/src/ngtsc/typecheck/api';
 import ts from 'typescript';
 
 import {DisplayInfoKind, unsafeCastDisplayInfoKindToScriptElementKind} from './display_parts';
@@ -172,7 +172,7 @@ export interface DirectiveAttributeCompletion {
    * 其选择器导致此自动完成的指令。
    *
    */
-  directive: DirectiveInScope;
+  directive: PotentialDirective;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface DirectiveInputCompletion {
    * 具有此输入的指令。
    *
    */
-  directive: DirectiveInScope;
+  directive: PotentialDirective;
 
   /**
    * The field name on the directive class which corresponds to this input.
@@ -243,7 +243,7 @@ export interface DirectiveOutputCompletion {
    * 具有此输出的指令。
    *
    */
-  directive: DirectiveInScope;
+  directive: PotentialDirective;
 
   /**
    * The field name on the directive class which corresponds to this output.
@@ -323,7 +323,18 @@ export function buildAttributeCompletionTable(
         continue;
       }
 
-      for (const [classPropertyName, propertyName] of meta.inputs) {
+      for (const [classPropertyName, rawProperyName] of meta.inputs) {
+        let propertyName: string;
+
+        if (dirSymbol.isHostDirective) {
+          if (!dirSymbol.exposedInputs?.hasOwnProperty(rawProperyName)) {
+            continue;
+          }
+          propertyName = dirSymbol.exposedInputs[rawProperyName];
+        } else {
+          propertyName = rawProperyName;
+        }
+
         if (table.has(propertyName)) {
           continue;
         }
@@ -337,7 +348,18 @@ export function buildAttributeCompletionTable(
         });
       }
 
-      for (const [classPropertyName, propertyName] of meta.outputs) {
+      for (const [classPropertyName, rawProperyName] of meta.outputs) {
+        let propertyName: string;
+
+        if (dirSymbol.isHostDirective) {
+          if (!dirSymbol.exposedOutputs?.hasOwnProperty(rawProperyName)) {
+            continue;
+          }
+          propertyName = dirSymbol.exposedOutputs[rawProperyName];
+        } else {
+          propertyName = rawProperyName;
+        }
+
         if (table.has(propertyName)) {
           continue;
         }
@@ -354,7 +376,8 @@ export function buildAttributeCompletionTable(
 
   // Next, explore hypothetical directives and determine if the addition of any single attributes
   // can cause the directive to match the element.
-  const directivesInScope = checker.getDirectivesInScope(component);
+  const directivesInScope =
+      checker.getPotentialTemplateDirectives(component).filter(d => d.isInScope);
   if (directivesInScope !== null) {
     const elementSelector = makeElementSelector(element);
 
@@ -431,7 +454,7 @@ export function buildAttributeCompletionTable(
           }
         }
       } else {
-        // Hypothetically matching a structural directive is a litle different than a plain
+        // Hypothetically matching a structural directive is a little different than a plain
         // directive. Use of the '*' structural directive syntactic sugar means that the actual
         // directive is applied to a plain <ng-template> node, not the existing element with any
         // other attributes it might already have.

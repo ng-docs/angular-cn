@@ -88,29 +88,6 @@ The CLI project is now set up to use the Angular service worker.
 This section demonstrates a service worker in action,
 using an example application.
 
-本节用一个范例应用来演示一下 Service Worker 实战。
-
-### Serving with `http-server`
-
-### 用 `http-server` 启动开发服务器
-
-Because `ng serve` does not work with service workers, you must use a separate HTTP server to test your project locally.
-Use any HTTP server.
-The following example uses the [http-server](https://www.npmjs.com/package/http-server) package from npm.
-To reduce the possibility of conflicts and avoid serving stale content, test on a dedicated port and disable caching.
-
-由于 `ng serve` 对 Service Worker 无效，所以必须用一个独立的 HTTP 服务器在本地测试你的项目。可以用任何 HTTP 服务器。下面这个例子使用来自 npm 中的 [http-server](https://www.npmjs.com/package/http-server) 包。为了减小端口冲突的可能性，我们在一个专用端口上进行测试。
-
-To serve the directory containing your web files with `http-server`, run the following command:
-
-要想使用 `http-server` 在包含这些 web 文件的目录上启动服务，运行下列命令：
-
-<code-example format="shell" language="shell">
-
-http-server -p 8080 -c-1 dist/&lt;project-name&gt;
-
-</code-example>
-
 ### Initial load
 
 ### 最初的加载
@@ -152,7 +129,7 @@ In Chrome:
 
 在 Chrome 中：
 
-1. Select **Tools** > **Developer Tools** (from the Chrome menu located at the top right corner).
+1. Select **Tools** > **Developer Tools** (from the Chrome menu located in the top right corner).
 
    选择 **Tools** > **Developer Tools**（从右上角的 Chrome 菜单）。
 

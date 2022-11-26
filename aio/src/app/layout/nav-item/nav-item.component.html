@@ -1,7 +1,7 @@
 <div *ngIf="!node.children">
   <a *ngIf="!node.divider" href="{{node.url}}" [ngClass]="classes" title="{{node.tooltipCn}}"
     class="vertical-menu-item" style="position: relative" [target]="isExternalUrl(node.url!!)?'_blank':'_self'">
-    <span>{{node.titleCn ?? node.title}}</span>
+    <span class="vertical-menu-item-text">{{node.titleCn ?? node.title}}</span>
     <mat-icon *ngIf="isExternalUrl(node.url!!)">open_in_new</mat-icon>
   </a>
   <div *ngIf="node.divider" class="mat-divider" style="margin: 4px 20px; border-top: 1px solid lightgray"></div>

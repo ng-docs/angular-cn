@@ -9,6 +9,7 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 
 import {InternalFormsSharedModule, NG_MODEL_WITH_FORM_CONTROL_WARNING, REACTIVE_DRIVEN_DIRECTIVES, TEMPLATE_DRIVEN_DIRECTIVES} from './directives';
+import {CALL_SET_DISABLED_STATE, setDisabledStateDefault, SetDisabledStateOption} from './directives/shared';
 
 /**
  * Exports the required providers and directives for template-driven forms,
@@ -35,6 +36,25 @@ import {InternalFormsSharedModule, NG_MODEL_WITH_FORM_CONTROL_WARNING, REACTIVE_
   exports: [InternalFormsSharedModule, TEMPLATE_DRIVEN_DIRECTIVES]
 })
 export class FormsModule {
+  /**
+   * @description
+   * Provides options for configuring the forms module.
+   *
+   * @param opts An object of configuration options
+   * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
+   * correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   */
+  static withConfig(opts: {
+    callSetDisabledState?: SetDisabledStateOption,
+  }): ModuleWithProviders<ReactiveFormsModule> {
+    return {
+      ngModule: FormsModule,
+      providers: [{
+        provide: CALL_SET_DISABLED_STATE,
+        useValue: opts.callSetDisabledState ?? setDisabledStateDefault
+      }]
+    };
+  }
 }
 
 /**
@@ -74,25 +94,32 @@ export class ReactiveFormsModule {
    * 一个配置选项对象
    *
    * * `warnOnNgModelWithFormControl` Configures when to emit a warning when an `ngModel`
-   *   binding is used with reactive form directives.
-   *
-   *   `warnOnNgModelWithFormControl` 配置了当 `ngModel`
-   * 绑定与响应式表单指令一起使用时，发出警告的时机。
-   *
+   * binding is used with reactive form directives.
+   * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
+   * correct, or to only call it `whenDisabled`, which is the legacy behavior.
    */
   static withConfig(opts: {
-    /**
+                    /**
      * @deprecated as of v6
      *
      * 从 v6 开始
      *
      */
-    warnOnNgModelWithFormControl: 'never'|'once'|'always'
-  }): ModuleWithProviders<ReactiveFormsModule> {
+    warnOnNgModelWithFormControl?: 'never'|'once'|
+                                                                            'always',
+                    callSetDisabledState?: SetDisabledStateOption,
+                    }): ModuleWithProviders<ReactiveFormsModule> {
     return {
       ngModule: ReactiveFormsModule,
       providers: [
-        {provide: NG_MODEL_WITH_FORM_CONTROL_WARNING, useValue: opts.warnOnNgModelWithFormControl}
+        {
+          provide: NG_MODEL_WITH_FORM_CONTROL_WARNING,
+          useValue: opts.warnOnNgModelWithFormControl ?? 'always'
+        },
+        {
+          provide: CALL_SET_DISABLED_STATE,
+          useValue: opts.callSetDisabledState ?? setDisabledStateDefault
+        }
       ]
     };
   }

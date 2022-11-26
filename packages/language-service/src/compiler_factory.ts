@@ -21,8 +21,8 @@ import {LanguageServiceAdapter} from './adapters';
  * 管理支持语言服务的 `NgCompiler` 实例，根据需要更新或替换它，以产生对当前程序的最新了解。
  *
  * TODO(alxhub): currently the options used for the compiler are specified at `CompilerFactory`
- * construction, and are not changable. In a real project, users can update `tsconfig.json`. We need
- * to properly handle a change in the compiler options, either by having an API to update the
+ * construction, and are not changeable. In a real project, users can update `tsconfig.json`. We
+ * need to properly handle a change in the compiler options, either by having an API to update the
  * `CompilerFactory` to use new options, or by replacing it entirely.
  *
  * TODO(alxhub) ：当前用于编译器的选项是在 `CompilerFactory`

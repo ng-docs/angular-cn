@@ -77,7 +77,7 @@ function getInnerRange(element: Element): LexerRange {
 }
 
 /**
- * This "hint" object is used to pass information from `canParse()` to `parse()` for
+ * This "hint" object is used to pass information from `analyze()` to `parse()` for
  * `TranslationParser`s that expect XML contents.
  *
  * 对于需要 XML 内容的 `TranslationParser` ，此“hint”对象用于将信息从 `canParse()` 传递到 `parse()`

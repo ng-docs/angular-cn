@@ -25,11 +25,23 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     CYCLIC_DI_DEPENDENCY = -200,
     // (undocumented)
+    DUPLICATE_DIRECTITVE = 309,
+    // (undocumented)
     ERROR_HANDLER_NOT_FOUND = 402,
     // (undocumented)
     EXPORT_NOT_FOUND = -301,
     // (undocumented)
     EXPRESSION_CHANGED_AFTER_CHECKED = -100,
+    // (undocumented)
+    HOST_DIRECTIVE_COMPONENT = 310,
+    // (undocumented)
+    HOST_DIRECTIVE_CONFLICTING_ALIAS = 312,
+    // (undocumented)
+    HOST_DIRECTIVE_NOT_STANDALONE = 308,
+    // (undocumented)
+    HOST_DIRECTIVE_UNDEFINED_BINDING = 311,
+    // (undocumented)
+    HOST_DIRECTIVE_UNRESOLVABLE = 307,
     // (undocumented)
     IMPORT_PROVIDERS_FROM_STANDALONE = 800,
     // (undocumented)
@@ -47,9 +59,17 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     INVALID_INJECTION_TOKEN = 204,
     // (undocumented)
+    INVALID_MULTI_PROVIDER = 209,
+    // (undocumented)
     MISSING_GENERATED_DEF = 906,
     // (undocumented)
     MISSING_INJECTION_CONTEXT = -203,
+    // (undocumented)
+    MISSING_INJECTION_TOKEN = 208,
+    // (undocumented)
+    MISSING_LOCALE_DATA = 701,
+    // (undocumented)
+    MISSING_ZONEJS = 908,
     // (undocumented)
     MULTIPLE_COMPONENTS_MATCH = -300,
     // (undocumented)
@@ -69,13 +89,19 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     RECURSIVE_APPLICATION_REF_TICK = 101,
     // (undocumented)
+    RENDERER_NOT_FOUND = 407,
+    // (undocumented)
     TEMPLATE_STRUCTURE_ERROR = 305,
     // (undocumented)
     TYPE_IS_NOT_STANDALONE = 907,
     // (undocumented)
+    UNEXPECTED_ZONE_STATE = 909,
+    // (undocumented)
     UNKNOWN_BINDING = 303,
     // (undocumented)
     UNKNOWN_ELEMENT = 304,
+    // (undocumented)
+    UNSAFE_IFRAME_ATTRS = -910,
     // (undocumented)
     UNSAFE_VALUE_IN_RESOURCE_URL = 904,
     // (undocumented)

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {EnvironmentInjector, NgModuleRef} from '@angular/core';
+import {EnvironmentInjector, Injectable, NgModuleRef} from '@angular/core';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {Observable, of} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
@@ -75,7 +75,7 @@ describe('applyRedirects', () => {
     applyRedirects(testModule.injector, null!, serializer, tree('/a/1'), [
       {path: 'a/:id', redirectTo: 'a/:other'}
     ]).subscribe(() => {}, (e) => {
-      expect(e.message).toEqual('Cannot redirect to \'a/:other\'. Cannot find \':other\'.');
+      expect(e.message).toContain('Cannot redirect to \'a/:other\'. Cannot find \':other\'.');
     });
   });
 
@@ -229,6 +229,41 @@ describe('applyRedirects', () => {
     });
   });
 
+  it('should support CanMatch providers on the route', () => {
+    @Injectable({providedIn: 'root'})
+    class CanMatchGuard {
+      canMatch() {
+        return true;
+      }
+    }
+
+    const routes = [
+      {
+        path: 'a',
+        component: ComponentA,
+        canMatch: [CanMatchGuard],
+        providers: [CanMatchGuard],
+      },
+      {
+        path: 'a',
+        component: ComponentA,
+        providers: [],
+      }
+    ];
+    applyRedirects(testModule.injector, null!, serializer, tree('a'), routes).subscribe({
+      next: () => {
+        // The 'a' segment matched, so we needed to create the injector for the `Route`
+        expect(getProvidersInjector(routes[0])).toBeDefined();
+        // The second `Route` did not match because the first did so we should not create an
+        // injector for it
+        expect(getProvidersInjector(routes[1])).not.toBeDefined();
+      },
+      error: () => {
+        throw 'Should not be reached';
+      }
+    });
+  });
+
   describe('lazy loading', () => {
     it('should load config on demand', () => {
       const loadedConfig = {
@@ -274,21 +309,18 @@ describe('applyRedirects', () => {
         loadChildren: (injector: any, p: any) => of(loadedConfig)
       };
 
-      const guard = () => true;
-      const injector = {
-        get: (token: any) => token === 'guard1' || token === 'guard2' ? guard : {injector}
-      };
-
       const config = [{
         path: 'a',
         component: ComponentA,
-        canLoad: ['guard1', 'guard2'],
+        canLoad: [() => true, () => true],
         loadChildren: jasmine.createSpy('children')
       }];
 
-      applyRedirects(<any>injector, <any>loader, serializer, tree('a/b'), config).forEach(r => {
-        expectTreeToBe(r, '/a/b');
-      });
+      applyRedirects(
+          TestBed.inject(EnvironmentInjector), <any>loader, serializer, tree('a/b'), config)
+          .forEach(r => {
+            expectTreeToBe(r, '/a/b');
+          });
     });
 
     it('should not load when any canLoad guards return false', () => {
@@ -300,29 +332,15 @@ describe('applyRedirects', () => {
         loadChildren: (injector: any, p: any) => of(loadedConfig)
       };
 
-      const trueGuard = () => true;
-      const falseGuard = () => false;
-      const injector = {
-        get: (token: any) => {
-          switch (token) {
-            case 'guard1':
-              return trueGuard;
-            case 'guard2':
-              return falseGuard;
-            case NgModuleRef:
-              return {injector};
-          }
-        }
-      };
-
       const config = [{
         path: 'a',
         component: ComponentA,
-        canLoad: ['guard1', 'guard2'],
+        canLoad: [() => true, () => false],
         loadChildren: jasmine.createSpy('children')
       }];
 
-      applyRedirects(<any>injector, <any>loader, serializer, tree('a/b'), config)
+      applyRedirects(
+          TestBed.inject(EnvironmentInjector), <any>loader, serializer, tree('a/b'), config)
           .subscribe(
               () => {
                 throw 'Should not reach';
@@ -342,29 +360,15 @@ describe('applyRedirects', () => {
         loadChildren: (injector: any, p: any) => of(loadedConfig)
       };
 
-      const trueGuard = () => Promise.resolve(true);
-      const falseGuard = () => Promise.reject('someError');
-      const injector = {
-        get: (token: any) => {
-          switch (token) {
-            case 'guard1':
-              return trueGuard;
-            case 'guard2':
-              return falseGuard;
-            case NgModuleRef:
-              return {injector};
-          }
-        }
-      };
-
       const config = [{
         path: 'a',
         component: ComponentA,
-        canLoad: ['guard1', 'guard2'],
+        canLoad: [() => Promise.resolve(true), () => Promise.reject('someError')],
         loadChildren: jasmine.createSpy('children')
       }];
 
-      applyRedirects(<any>injector, <any>loader, serializer, tree('a/b'), config)
+      applyRedirects(
+          TestBed.inject(EnvironmentInjector), <any>loader, serializer, tree('a/b'), config)
           .subscribe(
               () => {
                 throw 'Should not reach';
@@ -383,17 +387,15 @@ describe('applyRedirects', () => {
         loadChildren: (injector: any, p: any) => of(loadedConfig)
       };
 
-      const guard = {canLoad: () => Promise.resolve(true)};
-      const injector = {get: (token: any) => token === 'guard' ? guard : {injector}};
-
       const config = [{
         path: 'a',
         component: ComponentA,
-        canLoad: ['guard'],
+        canLoad: [() => Promise.resolve(true)],
         loadChildren: jasmine.createSpy('children')
       }];
 
-      applyRedirects(<any>injector, <any>loader, serializer, tree('a/b'), config)
+      applyRedirects(
+          TestBed.inject(EnvironmentInjector), <any>loader, serializer, tree('a/b'), config)
           .subscribe(
               (r) => {
                 expectTreeToBe(r, '/a/b');
@@ -418,16 +420,16 @@ describe('applyRedirects', () => {
         passedUrlSegments = urlSegments;
         return true;
       };
-      const injector = {get: (token: any) => token === 'guard' ? guard : {injector}};
 
       const config = [{
         path: 'a',
         component: ComponentA,
-        canLoad: ['guard'],
+        canLoad: [guard],
         loadChildren: jasmine.createSpy('children')
       }];
 
-      applyRedirects(<any>injector, <any>loader, serializer, tree('a/b'), config)
+      applyRedirects(
+          TestBed.inject(EnvironmentInjector), <any>loader, serializer, tree('a/b'), config)
           .subscribe(
               (r) => {
                 expectTreeToBe(r, '/a/b');
@@ -803,7 +805,7 @@ describe('applyRedirects', () => {
                 throw 'Should not be reached';
               },
               e => {
-                expect(e.message).toEqual('Cannot match any routes. URL Segment: \'b\'');
+                expect(e.message).toContain('Cannot match any routes. URL Segment: \'b\'');
               });
     });
 
@@ -962,7 +964,7 @@ describe('applyRedirects', () => {
                   throw 'Should not be reached';
                 },
                 e => {
-                  expect(e.message).toEqual(`Cannot match any routes. URL Segment: 'b'`);
+                  expect(e.message).toContain(`Cannot match any routes. URL Segment: 'b'`);
                 });
       });
     });
@@ -1055,7 +1057,7 @@ describe('applyRedirects', () => {
                   throw 'Should not be reached';
                 },
                 e => {
-                  expect(e.message).toEqual('Cannot match any routes. URL Segment: \'a\'');
+                  expect(e.message).toContain('Cannot match any routes. URL Segment: \'a\'');
                 });
       });
     });
@@ -1095,7 +1097,7 @@ describe('applyRedirects', () => {
                 throw 'Should not be reached';
               },
               e => {
-                expect(e.message).toEqual('Cannot match any routes. URL Segment: \'a/c\'');
+                expect(e.message).toContain('Cannot match any routes. URL Segment: \'a/c\'');
               });
     });
   });
@@ -1225,7 +1227,7 @@ describe('applyRedirects', () => {
                 throw new Error('should not be reached');
               },
               (e) => {
-                expect(e.message).toEqual(
+                expect(e.message).toContain(
                     'Only absolute redirects can have named outlets. redirectTo: \'b(aux:c)\'');
               });
     });

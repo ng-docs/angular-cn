@@ -22,6 +22,8 @@ As background for this guide, you should already be familiar with [Angular React
 
 ## 类型化表单概览
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L-odCf4MfJc" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 With Angular reactive forms, you explicitly specify a *form model*. As a simple example, consider this basic user login form:
 
 使用 Angular 响应式表单，你可以显式指定*表单 model*。作为一个简单的例子，考虑这个基本的用户登录表单：
@@ -110,7 +112,7 @@ email.reset();
 console.log(email.value); // null
 ```
 
-TypeScript will enforce that you always handle the possibility that the control has become `null`. If you want to make this control non-nullable, you may use the `nonNullable` option. This will cause the control to reset to its intial value, instead of `null`:
+TypeScript will enforce that you always handle the possibility that the control has become `null`. If you want to make this control non-nullable, you may use the `nonNullable` option. This will cause the control to reset to its initial value, instead of `null`:
 
 TypeScript 将强制你始终处理控件已变为 `null` 的可能性。如果要使此控件不可为空，可以用 `nonNullable` 选项。这将导致控件重置为其初始值，而不是 `null` ：
 
@@ -251,7 +253,13 @@ Any control of type `string|null` can be added to this `FormRecord`.
 
 任何 `string|null` 类型的控件都可以添加到此 `FormRecord`。
 
-If you need a `FormGroup` that is both dynamic (open-ended) and heterogenous (the controls are different types), no improved type safety is possible, and you should use `UntypedFormGroup`.
+If you need a `FormGroup` that is both dynamic (open-ended) and heterogeneous (the controls are different types), no improved type safety is possible, and you should use `UntypedFormGroup`.
+
+A `FormRecord` can also be built with the `FormBuilder`:
+
+```ts
+const addresses = fb.record({'Andrew': '2340 Folsom St'});
+```
 
 如果你需要一个动态（开放式）和异构（控件是不同类型）的 `FormGroup`，则无法提高类型安全，你应该使用 `UntypedFormGroup`。
 

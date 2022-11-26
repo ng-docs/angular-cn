@@ -1,91 +1,117 @@
-# Reviewing Content
+# Review documentation
 
-# 审查内容
+You can review the Angular documentation, even if you have never contributed to Angular before.
+Reviewing the Angular documentation provides a valuable contribution to the community.
 
-Angular developers work best when they have access to accurate and complete documentation.
-Keeping existing content up-to-date is an essential part of ensuring that all developers have a great documentation experience.
+Finding and reporting issues in the documentation helps the community know that the content is up to date.
+Even if you don't find any problems, seeing that a document has been reviewed recently, gives readers confidence in the content.
 
-当 Angular 开发人员可以访问准确而完整的文档时，他们的工作效果最好。使现有内容保持最新是确保所有开发人员都有良好的文档体验的重要部分。
+This topic describes how you can review and update the Angular documentation to help keep it up to date.
 
-This topic describes how you can help keep Angular content up-to-date by reviewing content.
+<!-- markdownLint-disable MD001 -->
+<!-- markdownLint-disable MD033 -->
 
-本主题介绍如何通过查看内容来帮助 Angular 内容保持最新。
+#### To review a topic in angular.io
 
-## Before you begin
+Perform these steps in a browser.
 
-## 在你开始之前
+1.  [Find a topic to review](#find-topics-to-review) by:
+    1.  Finding a topic with a **Last reviewed** date that is six months or more in the past.
+    1.  Finding a topic that has no **Last reviewed** date.
+    1.  Finding a topic that you've read recently.
+1.  Review the topic for errors or inaccuracies.
+1.  Complete the review.
+    1.  If the topic looks good:
+        1.  [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to publish the new reviewed date.
 
-You can review content even if you've never contributed to Angular before.
-However, you may find it helpful to have the [Contributing to Angular](https://github.com/angular/angular/blob/main/CONTRIBUTING.md) guide available if you're filing your first pull request in the repository.
+    1.  If you find an error that you don't feel comfortable fixing:
+        1.  [Open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
+        1.  [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to publish the new reviewed date.
 
-即使你以前从未为 Angular 做出过贡献，你也可以查看内容。但是，如果你在存储库中提交第一个 Pull Request，可能会发现[提供对 Angular 的贡献](https://github.com/angular/angular/blob/main/CONTRIBUTING.md)指南会很有帮助。
+    1.  If you find an error that needs only a minor change:
+        1.  [Update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to fix the error and save the new reviewed date.
 
-## Reviewing content (`@reviewed`)
+    1.  If you find an error that needs major changes:
+        1.  Address the error:
+            1.  [Make a major change](guide/contributors-guide-overview#make-a-major-change), if you're comfortable, or
+            1.  [Open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
+        1.  Whether you fix the error or open a new issue, [update or add the `@reviewed` entry](#update-the-last-reviewed-date) at the end of the topic's source code.
+        1.  [Make a minor change to a documentation topic](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to save the new reviewed date.
 
-## 审查内容 ( `@reviewed` )
+## Find topics to review
 
-All of the task-based guides, tutorials, and conceptual topics that you find on Angular.io support a `@reviewed` tag.
-When present, this tag is followed by the date representing when a given topic was reviewed for accuracy and completeness.
-On the published topic, this reviewed information appears at the bottom of the topic; for example, `Last reviewed on` followed by the day of the week, month, day, and year.
+You can review any topic in the Angular documentation, but these are the topics that benefit most from your review.
 
-你在 Angular.io 上找到的所有基于任务的指南、教程和概念主题都支持 `@reviewed` 标签。当存在时，此标签后是表示给定主题的准确性和完整性审查的日期。在已发布的主题上，此经过审核的信息出现在主题的底部；例如，`Last reviewed on` 的时间是星期、月、日和年。
+### Topics that have not been reviewed in over six months
+
+At the bottom of some topics, there's a date that shows when the topic was last reviewed.
+If that date is over six months ago, the topic is ready for a review.
+
+This is an example of a **Last reviewed** date from the bottom of a topic.
+You can also see an example of this at the end of this topic.
 
 <div class="lightbox">
 
-<img alt="Example of the last reviewed date specifying the day of the week, the month, the date, and the year on a page footer." src="generated/images/guide/contributors-guide/last-reviewed.png">
+<img alt="Example of the last reviewed date entry showing the date the topic was reviewed as month, day, and year" src="generated/images/guide/contributors-guide/last-reviewed.png">
 
 </div>
 
-This reviewed date indicates when someone last reviewed the topic to ensure that its contents were accurate.
+### Topics that have never been reviewed
 
-此审核日期表明有人最后一次审核此主题以确保其内容准确的时间。
+If a topic doesn't have a **Last reviewed** date at the bottom, it has never been reviewed.
+You can review such a topic and add a new **Last reviewed** date after you review it.
 
-You can review a topic using either the GitHub user interface or in an editor on your local machine.
-You can also review any topic that you like.
- Previous experience in the subject of the topic is helpful, but not required.
+### Topics that you know have a problem
 
-你可以用 GitHub 用户界面或在本地机器上的编辑器中查看主题。你还可以查看你喜欢的任何主题。以前在该主题上的经验会很有帮助，但不是必需的。
+If you know of a topic that has an error or inaccuracy, you can review it and make corrections during your review. If you don't feel comfortable fixing an error during your review, [open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml).
+Be sure to add or update the **Last reviewed** date after you review the topic. Whether you fix the error or just open an issue, you still reviewed the topic.
 
-**To review a topic:**
+## Update the last reviewed date
 
-**要查看主题：**
+After you review a topic, whether you change it or not, update the topic's **Last reviewed** date.
+The **Last reviewed** text at the bottom of the topic is created by the `@reviewed` tag followed by the date you reviewed the topic.
 
-1. Navigate to the topic that you want to review.
+This is an example of an `@reviewed` tag at the end of the topic's source code as it appears in a code editor.
 
-   导航到你要查看的主题。
+<code-example>
 
-1. Locate the last reviewed date at the bottom of the topic and verify that the topic meets the [review criteria](#review-criteria).
+@reviewed 2022-09-08
 
-   在主题底部找到最后一次审阅的日期，并验证该主题是否符合[审阅标准](#review-criteria)。
+</code-example>
 
-   If the topic does not have a last reviewed date, you are welcome to add it to the topic.
-   To add a date, use the `YYYY-MM-DD` date format.
-   Example:
-   `@reviewed 2021-03-23`
+The date is formatted as `YYYY-MM-DD` where:
 
-   如果该主题没有最后审查日期，欢迎你将其添加到该主题。要添加日期，请使用 `YYYY-MM-DD` 日期格式。示例：`@reviewed 2021-03-23`
+* `YYYY` is the current year
+* `MM` is the two-digit number of the current month with a leading zero if the month is 01 (January) through 09 (September)
+* `DD` is the two-digit number of the current day of the month with a leading zero if the day is 01-09.
 
-1. Read through the topic.
+For example:
 
-   通读该主题。
+| Review date | `@reviewed` tag | Resulting text displayed in the docs
+|:--- |:--- |:---
+| January 12, 2023 | `@reviewed 2023-01-12` | *Last reviewed on Thu Jan 12, 2023*
+| November 3, 2022 | `@reviewed 2022-11-03` | *Last reviewed on Fri Nov 03, 2022*
 
-1. If the topic requires an update, either [file an issue](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue) that describes the update required, or [create a pull request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr) with the update.
+## Reviewing and updating a topic
 
-   如果主题需要更新，请[提交描述所需更新的问题](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-issue)，或[创建使用更新的 Pull Request](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr)。
+These are the actions you can take after you review a topic.
 
-1. Update the `@reviewed` tag, either through the [GitHub user interface](guide/updating-content-github-ui) or through Angular's [standard pull request process](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr).
+### The topic is accurate and has no errors
 
-   通过[GitHub 用户界面](guide/updating-content-github-ui)或通过 Angular 的[标准 Pull Request 过程](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#submit-pr)来更新 `@reviewed` 标签。
+If the topic is accurate and has no errors, [make a minor change](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic) to [update the **Last reviewed** date](#update-the-last-reviewed-date) at the bottom of the page. You can use the GitHub user interface to edit the topic's source code.
 
-<a id="review-criteria"></a>
+### The topic requires minor changes
 
-### Review criteria
+If the topic has minor errors, you can fix them when you [make a minor change](/guide/contributors-guide-overview#to-make-a-minor-change-to-a-documentation-topic). Remember to [update the **Last reviewed** date](#update-the-last-reviewed-date) at the bottom of the page when you fix the error. For a minor change, you can use the GitHub user interface in a browser to edit the topic's source code.
 
-### 审核标准
+### The topic requires major changes
 
-In general, topics should be reviewed either every six months, or around every major release.
+If the topic requires major changes, you can [make a major change](guide/contributors-guide-overview#make-a-major-change), or [open a docs issue in GitHub](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml). You shouldn't make major changes in the GitHub user interface because it doesn't allow you to test them before you submit them.
 
-一般来说，应该每六个月或在每个主要版本前后审查一次主题。
+Whether you make the changes the topic needs or open a docs issue, you should still [update the **Last reviewed** date](#update-the-last-reviewed-date). You can use the GitHub user interface in the browse if you only want to update the **Last reviewed** date.
 
 <!-- links -->
 
@@ -93,4 +119,4 @@ In general, topics should be reviewed either every six months, or around every m
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-10-12

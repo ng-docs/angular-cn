@@ -68,7 +68,7 @@ export interface LegacyNgcOptions {
    * option only one .metadata.json file is produced that contains all the metadata
    * necessary for symbols exported from the library index.
    * In the generated .ngfactory.ts files flat module index is used to import symbols
-   * including both the public API from the library index as well as shrowded internal
+   * including both the public API from the library index as well as shrouded internal
    * symbols.
    * By default the .ts file supplied in the `files` field is assumed to be the
    * library index. If more than one is specified, uses `libraryIndex` to select the
@@ -176,25 +176,6 @@ export interface NgcCompatibilityOptions {
    *
    */
   generateNgSummaryShims?: boolean;
-
-  /**
-   * Tells the compiler to generate definitions using the Render3 style code generation.
-   * This option defaults to `true`.
-   *
-   * 告诉编译器使用 Render3 风格的代码生成来生成定义。此选项默认为 `true` 。
-   *
-   * Acceptable values are as follows:
-   *
-   * 可接受的值如下：
-   *
-   * `false` - run ngc normally
-   * `true` - run the ngtsc compiler instead of the normal ngc compiler
-   * `ngtsc` - alias for `true`
-   *
-   * `false` - `true` `ngtsc` `true`
-   *
-   */
-  enableIvy?: boolean|'ngtsc';
 }
 
 /**
@@ -631,10 +612,9 @@ export interface I18nOptions {
    *
    * 使用旧版格式 ID 渲染 `$localize` 消息。
    *
-   * This is only active if we are building with `enableIvy: true`.
    * The default value for now is `true`.
    *
-   * 这仅在我们使用 `enableIvy: true` 构建时才处于活动状态。现在的默认值为 `true` 。
+   * 现在的默认值为 `true` 。
    *
    * Use this option when use are using the `$localize` based localization messages but
    * have not migrated the translation files to use the new `$localize` message id format.
@@ -717,7 +697,7 @@ export interface TargetOptions {
 export interface MiscOptions {
   /**
    * Whether the compiler should avoid generating code for classes that haven't been exported.
-   * This is only active when building with `enableIvy: true`. Defaults to `true`.
+   * Defaults to `true`.
    *
    * 编译器是否应该避免为尚未导出的类生成代码。这仅在使用 `enableIvy: true`
    * 构建时才处于活动状态。默认为 `true` 。

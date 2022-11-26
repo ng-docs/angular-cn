@@ -12,18 +12,19 @@ import ts from 'typescript';
 import {ErrorCode, FatalDiagnosticError} from '../../diagnostics';
 import {Reference} from '../../imports';
 import {SemanticSymbol} from '../../incremental/semantic_graph';
-import {InjectableClassRegistry, MetadataRegistry, MetaKind} from '../../metadata';
+import {MetadataRegistry, MetaKind} from '../../metadata';
 import {PartialEvaluator} from '../../partial_evaluator';
 import {PerfEvent, PerfRecorder} from '../../perf';
 import {ClassDeclaration, Decorator, ReflectionHost, reflectObjectLiteral} from '../../reflection';
 import {LocalModuleScopeRegistry} from '../../scope';
 import {AnalysisOutput, CompileResult, DecoratorHandler, DetectResult, HandlerPrecedence, ResolveResult} from '../../transform';
-import {compileDeclareFactory, compileNgFactoryDefField, compileResults, createValueHasWrongTypeError, extractClassMetadata, findAngularDecorator, getValidConstructorDependencies, makeDuplicateDeclarationError, toFactoryMetadata, unwrapExpression, wrapTypeReference} from '../common';
+import {compileDeclareFactory, compileNgFactoryDefField, compileResults, createValueHasWrongTypeError, extractClassMetadata, findAngularDecorator, getValidConstructorDependencies, InjectableClassRegistry, makeDuplicateDeclarationError, toFactoryMetadata, unwrapExpression, wrapTypeReference,} from '../common';
 
 export interface PipeHandlerData {
   meta: R3PipeMetadata;
   classMetadata: R3ClassMetadata|null;
   pipeNameExpr: ts.Expression;
+  decorator: ts.Decorator|null;
 }
 
 /**
@@ -146,6 +147,7 @@ export class PipeDecoratorHandler implements
         },
         classMetadata: extractClassMetadata(clazz, this.reflector, this.isCore),
         pipeNameExpr,
+        decorator: decorator?.node as ts.Decorator | null ?? null,
       },
     };
   }
@@ -162,9 +164,12 @@ export class PipeDecoratorHandler implements
       name: analysis.meta.pipeName,
       nameExpr: analysis.pipeNameExpr,
       isStandalone: analysis.meta.isStandalone,
+      decorator: analysis.decorator,
     });
 
-    this.injectableRegistry.registerInjectable(node);
+    this.injectableRegistry.registerInjectable(node, {
+      ctorDeps: analysis.meta.deps,
+    });
   }
 
   resolve(node: ClassDeclaration): ResolveResult<unknown> {

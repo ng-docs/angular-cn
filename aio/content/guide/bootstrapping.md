@@ -88,7 +88,7 @@ If you use a component without declaring it, Angular returns an error message.
 
 每个组件都应该（且只能）声明（declare）在一个 `NgModule` 类中。如果你使用了未声明过的组件，Angular 就会报错。
 
-The `declarations` array only takes declarables. Declarables are components, [directives](guide/attribute-directives) and [pipes](guide/pipes).
+The `declarations` array only takes declarables. Declarables are components, [directives](guide/attribute-directives), and [pipes](guide/pipes).
 All of a module's declarables must be in the `declarations` array.
 Declarables must belong to exactly one module. The compiler emits an error if you try to declare the same class in more than one module.
 

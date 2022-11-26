@@ -2,8 +2,12 @@
 
 # 组件简介
 
-A *component* controls a patch of screen called a [*view*](guide/glossary#view "Definition of view").
-For example, individual components define and control each of the following views from the [Tour of Heroes tutorial](tutorial):
+A *component* controls a patch of screen called a [*view*](guide/glossary#view "Definition of view"). It consists
+of a TypeScript class, an HTML template, and a CSS style sheet. The TypeScript class defines the interaction 
+of the HTML template and the rendered DOM structure, while the style sheet describes its appearance.
+
+An Angular application uses individual components to define and control different aspects of the application.
+For example, an application could include components to describe:
 
 *组件*控制屏幕上被称为[*视图*](guide/glossary#view "Definition of view")的一小片区域。比如，[教程](tutorial)中的下列视图都是由一个个组件所定义和控制的：
 
@@ -19,17 +23,25 @@ For example, individual components define and control each of the following view
 
   英雄编辑器
 
-You define a component's application logic —what it does to support the view— inside a class.
-The class interacts with the view through an API of properties and methods.
+In the following example, the `HeroListComponent` class includes:
 
-你在类中定义组件的应用逻辑，为视图提供支持。组件通过一些由属性和方法组成的 API 与视图交互。
+在下面的例子中，`HeroListComponent` 类包括：
 
-For example, `HeroListComponent` has a `heroes` property that holds an array of heroes.
-Its `selectHero()` method sets a `selectedHero` property when the user clicks to choose a hero from that list.
-The component acquires the heroes from a service, which is a TypeScript [parameter property](https://www.typescriptlang.org/docs/handbook/classes.html#parameter-properties) on the constructor.
-The service is provided to the component through the dependency injection system.
+* A `heroes` property that holds an array of heroes.
 
-比如，`HeroListComponent` 中有一个 名为 `heroes` 的属性，它储存着一个数组的英雄数据。`HeroListComponent` 还有一个 `selectHero()` 方法，当用户从列表中选择一个英雄时，它会设置 `selectedHero` 属性的值。该组件会从服务获取英雄列表，它是一个 TypeScript 的构造器[参数型属性](http://www.typescriptlang.org/docs/handbook/classes.html#parameter-properties)。本服务通过依赖注入系统提供给该组件。
+  一个 `heroes` 属性，内含英雄数组。 
+
+* A `selectedHero` property that holds the last hero selected by the user.
+
+  一个 `selectedHero` 属性，内含用户最近选择的英雄。
+
+* A `selectHero()` method sets a `selectedHero` property when the user clicks to choose a hero from that list.
+
+  一个 `selectHero()` 方法，当用户从列表中点选某个英雄时，它会设置 `selectedHero` 属性。
+
+The component initializes the `heroes` property by using the `HeroService` service, which is a TypeScript [parameter property](https://www.typescriptlang.org/docs/handbook/2/classes.html#parameter-properties) on the constructor. Angular's dependency injection system provides the `HeroService` service to the component.
+
+该组件会使用 `HeroService` 服务来初始化 `heroes` 属性，`HeroService` 是一个 TypeScript 的构造器[参数型属性](https://www.typescriptlang.org/docs/handbook/2/classes.html#parameter-properties)。Angular 依赖注入系统会把 `HeroService` 服务提供给该组件。
 
 <code-example header="src/app/hero-list.component.ts (class)" path="architecture/src/app/hero-list.component.ts" region="class"></code-example>
 
@@ -101,7 +113,7 @@ A template is a form of HTML that tells Angular how to render the component.
 
 你要通过组件的配套模板来定义其视图。模板就是一种 HTML，它会告诉 Angular 如何渲染该组件。
 
-Views are typically arranged hierarchically, allowing you to modify or show and hide entire UI sections or pages as a unit.
+Views are typically organized hierarchically, allowing you to modify or show and hide entire UI sections or pages as a unit.
 The template immediately associated with a component defines that component's *host view*.
 The component can also define a *view hierarchy*, which contains *embedded views*, hosted by other components.
 
@@ -113,9 +125,9 @@ The component can also define a *view hierarchy*, which contains *embedded views
 
 </div>
 
-A view hierarchy can include views from components in the same NgModule, but it also can (and often does) include views from components that are defined in different NgModules.
+A view hierarchy can include views from components in the same NgModule and from those in different NgModules.
 
-带层次结构的视图可以包含同一模块（NgModule）中组件的视图，也可以（而且经常会）包含其它模块中定义的组件的视图。
+带层次结构的视图可以包含来自同一模块（NgModule）中或其它模块中的组件的视图。
 
 ## Template syntax
 
@@ -132,7 +144,7 @@ For example, here is a template for the Tutorial's `HeroListComponent`.
 
 <code-example header="src/app/hero-list.component.html" path="architecture/src/app/hero-list.component.html" ></code-example>
 
-This template uses typical HTML elements like `<h2>` and  `<p>`, and also includes Angular template-syntax elements, `*ngFor`, `{{hero.name}}`, `(click)`, `[hero]`, and `<app-hero-detail>`.
+This template uses typical HTML elements like `<h2>` and  `<p>`. It also includes Angular template-syntax elements, `*ngFor`, `{{hero.name}}`, `(click)`, `[hero]`, and `<app-hero-detail>`.
 The template-syntax elements tell Angular how to render the HTML to the screen, using program logic and data.
 
 这个模板使用了典型的 HTML 元素，比如 `<h2>` 和 `<p>`，还包括一些 Angular 的模板语法元素，如 `*ngFor`，`{{hero.name}}`，`click`、`[hero]` 和 `<app-hero-detail>`。这些模板语法元素告诉 Angular 该如何根据程序逻辑和数据在屏幕上渲染 HTML。
@@ -146,11 +158,14 @@ The template-syntax elements tell Angular how to render the HTML to the screen, 
 
   `{{hero.name}}`、`(click)` 和 `[hero]` 把程序数据绑定到及绑定回 DOM，以响应用户的输入。更多内容参阅稍后的[数据绑定](#data-binding)部分。
 
-* The `<app-hero-detail>` tag in the example is an element that represents a new component, `HeroDetailComponent`.
-  `HeroDetailComponent` (code not shown) defines the hero-detail child view of `HeroListComponent`.
-  Notice how custom components like this mix seamlessly with native HTML in the same layouts.
+*   The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
+    The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
 
-  模板中的 `<app-hero-detail>` 标签是一个代表新组件 `HeroDetailComponent` 的元素。`HeroDetailComponent`（代码略）定义了 `HeroListComponent` 的英雄详情子视图。注意观察像这样的自定义组件是如何与原生 HTML 元素无缝的混合在一起的。
+    此例子中的 `<app-hero-detail>` 元素标签代表一个新组件 `HeroDetailComponent`。`HeroDetailComponent` 定义了由 `HeroListComponent` 所渲染的 DOM 结构中的 `hero-detail` 部分。
+
+    Notice how these custom components mix with native HTML.
+
+    注意这些自定义组件是如何与原生 HTML 元素混用的。
 
 ### Data binding
 
@@ -234,7 +249,7 @@ A class with the `@Pipe` decorator defines a function that transforms input valu
 
 Angular 的管道可以让你在模板中声明显示值的转换逻辑。带有 `@Pipe` 装饰器的类中会定义一个转换函数，用来把输入值转换成供视图显示用的输出值。
 
-Angular defines various pipes, such as the [date](api/common/DatePipe) pipe and [currency](api/common/CurrencyPipe) pipe; for a complete list, see the [Pipes API list](api?type=pipe).
+Angular defines various pipes, such as the [date](api/common/DatePipe) pipe and [currency](api/common/CurrencyPipe) pipe. For a complete list, see the [Pipes API list](api?type=pipe).
 You can also define new pipes.
 
 Angular 自带了很多管道，比如 [date](api/common/DatePipe) 管道和 [currency](api/common/CurrencyPipe) 管道，完整的列表参阅 [Pipes API 列表](api?type=pipe)。你也可以自己定义一些新管道。
@@ -314,9 +329,9 @@ The example template uses two built-in structural directives to add application 
 | Directives | Details |
 | :--------- | :------ |
 | 指令 | 详情 |
-| [`*ngFor`](guide/built-in-directives#ngFor) | An iterative; it tells Angular to stamp out one `<li>` per hero in the `heroes` list. |
+| [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list. |
 | [`*ngFor`](guide/built-in-directives#ngFor) | 一个迭代器；它要求 Angular 为 `heroes` 列表中的每个英雄拓印出一个 `<li>`。 |
-| [`*ngIf`](guide/built-in-directives#ngIf) | A conditional; it includes the `HeroDetail` component only if a selected hero exists. |
+| [`*ngIf`](guide/built-in-directives#ngIf) | A *conditional*, which includes the `HeroDetail` component only if a selected hero exists. |
 | [`*ngIf`](guide/built-in-directives#ngIf) | 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。 |
 
 #### Attribute directives
@@ -335,9 +350,17 @@ The `ngModel` directive, which implements two-way data binding, is an example of
 
 <code-example header="src/app/hero-detail.component.html (ngModel)" path="architecture/src/app/hero-detail.component.html" region="ngModel"></code-example>
 
-Angular has more pre-defined directives that either alter the layout structure (for example, [ngSwitch](guide/built-in-directives#ngSwitch)) or modify aspects of DOM elements and components (for example, [ngStyle](guide/built-in-directives#ngstyle) and [ngClass](guide/built-in-directives#ngClass)).
+Angular includes pre-defined directives that change: 
 
-Angular 还有很多预定义指令，有些修改布局结构（比如 [ngSwitch](guide/built-in-directives#ngSwitch)），有些修改 DOM 元素和组件的样子（比如 [ngStyle](guide/built-in-directives#ngstyle) 和 [ngClass](guide/built-in-directives#ngClass)）。
+Angular 还包含另一些预定义指令，它们会修改：
+
+* The layout structure, such as [ngSwitch](guide/built-in-directives#ngSwitch), and
+
+  布局结构，比如 [ngSwitch](guide/built-in-directives#ngSwitch)，以及
+
+* Aspects of DOM elements and components, such as [ngStyle](guide/built-in-directives#ngstyle) and [ngClass](guide/built-in-directives#ngClass).
+
+  DOM 元素和组件的某些方面，比如 [ngStyle](guide/built-in-directives#ngstyle) 和 [ngClass](guide/built-in-directives#ngClass)。
 
 <div class="alert is-helpful">
 

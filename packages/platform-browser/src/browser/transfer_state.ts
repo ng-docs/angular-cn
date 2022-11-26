@@ -7,7 +7,7 @@
  */
 
 import {DOCUMENT} from '@angular/common';
-import {APP_ID, Injectable, NgModule} from '@angular/core';
+import {APP_ID, inject, Injectable, NgModule} from '@angular/core';
 
 export function escapeHtml(text: string): string {
   const escapedText: {[k: string]: string} = {
@@ -80,13 +80,10 @@ export function makeStateKey<T = void>(key: string): StateKey<T> {
  * A key value store that is transferred from the application on the server side to the application
  * on the client side.
  *
- * 从服务器端的应用程序传到客户端的应用程序的键值存储。
- *
- * `TransferState` will be available as an injectable token. To use it import
- * `ServerTransferStateModule` on the server and `BrowserTransferStateModule` on the client.
- *
- * `TransferState` 将作为可注入令牌提供。要使用它，请在服务器上导入
- * `ServerTransferStateModule`，并在客户端上导入 `BrowserTransferStateModule`。
+ * The `TransferState` is available as an injectable token.
+ * On the client, just inject this token using DI and use it, it will be lazily initialized.
+ * On the server it's already included if `renderApplication` function is used. Otherwise, import
+ * the `ServerTransferStateModule` module to make the `TransferState` available.
  *
  * The values in the store are serialized/deserialized using JSON.stringify/JSON.parse. So only
  * boolean, number, string, null and non-class objects will be serialized and deserialized in a
@@ -98,17 +95,19 @@ export function makeStateKey<T = void>(key: string): StateKey<T> {
  *
  * @publicApi
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+  useFactory: () => {
+    const doc = inject(DOCUMENT);
+    const appId = inject(APP_ID);
+    const state = new TransferState();
+    state.store = retrieveTransferredState(doc, appId);
+    return state;
+  }
+})
 export class TransferState {
   private store: {[k: string]: unknown|undefined} = {};
   private onSerializeCallbacks: {[k: string]: () => unknown | undefined} = {};
-
-  /** @internal */
-  static init(initState: {}) {
-    const transferState = new TransferState();
-    transferState.store = initState;
-    return transferState;
-  }
 
   /**
    * Get the value corresponding to a key. Return `defaultValue` if key is not found.
@@ -151,6 +150,13 @@ export class TransferState {
   }
 
   /**
+   * Indicates whether the state is empty.
+   */
+  get isEmpty(): boolean {
+    return Object.keys(this.store).length === 0;
+  }
+
+  /**
    * Register a callback to provide the value for a key when `toJson` is called.
    *
    * 注册一个回调，以在调用 `toJson` 时为指定的键名提供一个值。
@@ -181,7 +187,7 @@ export class TransferState {
   }
 }
 
-export function initTransferState(doc: Document, appId: string) {
+export function retrieveTransferredState(doc: Document, appId: string) {
   // Locate the script tag with the JSON data transferred from the server.
   // The id of the script tag is set to the Angular appId + 'state'.
   const script = doc.getElementById(appId + '-state');
@@ -194,7 +200,7 @@ export function initTransferState(doc: Document, appId: string) {
       console.warn('Exception while restoring TransferState for app ' + appId, e);
     }
   }
-  return TransferState.init(initialState);
+  return initialState;
 }
 
 /**
@@ -204,9 +210,9 @@ export function initTransferState(doc: Document, appId: string) {
  * 要安装在客户端的 NgModule，它同时会使用 `TransferState` 将状态从服务器传输到客户端。
  *
  * @publicApi
+ * @deprecated no longer needed, you can inject the `TransferState` in an app without providing
+ *     this module.
  */
-@NgModule({
-  providers: [{provide: TransferState, useFactory: initTransferState, deps: [DOCUMENT, APP_ID]}],
-})
+@NgModule({})
 export class BrowserTransferStateModule {
 }

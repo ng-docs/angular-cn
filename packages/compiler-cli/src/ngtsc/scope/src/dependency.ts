@@ -55,7 +55,7 @@ export class MetadataDtsModuleScopeResolver implements DtsModuleScopeResolver {
    * 从 .d.ts 文件解析 `Reference` d NgModule ，并生成一个可传递的 `ExportScope` ，列出该 NgModule
    * 导出给其他人的指令和管道。
    *
-   * This operation relies on a `Reference` instead of a direct TypeScrpt node as the `Reference`s
+   * This operation relies on a `Reference` instead of a direct TypeScript node as the `Reference`s
    * produced depend on how the original NgModule was imported.
    *
    * 此操作依赖于 `Reference` 而不是直接的 TypeScrpt 节点，因为生成的 `Reference` 取决于原始

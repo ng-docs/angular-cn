@@ -63,7 +63,7 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
     // (undocumented)
     ngOnInit(): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<UpgradeComponent, never, never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<UpgradeComponent, never, never, {}, {}, never, never, false, never>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<UpgradeComponent, never>;
 }
@@ -75,7 +75,7 @@ export class UpgradeModule {
     injector: Injector,
     ngZone: NgZone,
     platformRef: PlatformRef);
-    bootstrap(element: Element, modules?: string[], config?: any): void;
+    bootstrap(element: Element, modules?: string[], config?: any): any;
     injector: Injector;
     ngZone: NgZone;
     // (undocumented)

@@ -18,13 +18,15 @@ describe('functional test for reactive forms', () => {
   BUNDLES.forEach((bundle) => {
     describe(`using ${bundle} bundle`, () => {
       it('should render template form', withBody('<app-root></app-root>', async () => {
-           const {whenRendered, bootstrapApp} = require(path.join(PACKAGE, bundle));
+           // load the bundle
+           require(path.join(PACKAGE, bundle));
+           // the bundle attaches the following fields to the `window` global.
+           const {bootstrapApp} = window as any;
+
            await bootstrapApp();
 
            // Reactive forms
            const reactiveFormsComponent = (window as any).reactiveFormsComponent;
-           await whenRendered(reactiveFormsComponent);
-
            const reactiveForm = document.querySelector('app-reactive-forms')!;
 
            // Check for inputs

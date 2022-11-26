@@ -70,7 +70,7 @@ Angular 会按以下顺序执行钩子方法。可以用它来执行以下类型
 | Hook method | Purpose | Timing |
 | :---------- | :------ | :----- |
 | 钩子方法 | 用途 | 时机 |
-| `ngOnChanges()` | Respond when Angular sets or resets data-bound input properties. The method receives a `SimpleChanges` object of current and previous property values. <br /> <div class="alert is-helpful"> **NOTE**: <br /> This happens very frequently, so any operation you perform here impacts performance significantly. </div> See details in [Using change detection hooks](#onchanges) in this document. | Called before `ngOnInit()` (if the component has bound inputs) and whenever one or more data-bound input properties change. <br /> <div class="alert is-helpful"> **NOTE**: <br /> If your component has no inputs or you use it without providing any inputs, the framework will not call `ngOnChanges()`. </div> |
+| `ngOnChanges()` | Respond when Angular sets or resets data-bound input properties. The method receives a `SimpleChanges` object of current and previous property values. <br /> <div class="alert is-helpful"> **NOTE**: <br /> This happens frequently, so any operation you perform here impacts performance significantly. </div> See details in [Using change detection hooks](#onchanges) in this document. | Called before `ngOnInit()` (if the component has bound inputs) and whenever one or more data-bound input properties change. <br /> <div class="alert is-helpful"> **NOTE**: <br /> If your component has no inputs or you use it without providing any inputs, the framework will not call `ngOnChanges()`. </div> |
 | `ngOnChanges()` | 当 Angular 设置或重新设置数据绑定的输入属性时响应。该方法接受当前和上一属性值的 `SimpleChanges` 对象<br /><div class="alert is-helpful">**注意**：<br />这发生的非常频繁，所以你在这里执行的任何操作都会显著影响性能。</div>欲知详情，参阅本文档的[使用变更检测钩子](#onchanges)。 | 如果组件绑定过输入属性，那么在 `ngOnInit()` 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。<br /><div class="alert is-helpful">**注意**：<br />如果你的组件没有输入属性，或者你使用它时没有提供任何输入属性，那么框架就不会调用 `ngOnChanges()`。</div> |
 | `ngOnInit()` | Initialize the directive or component after Angular first displays the data-bound properties and sets the directive or component's input properties. See details in [Initializing a component or directive](#oninit) in this document. | Called once, after the first `ngOnChanges()`. `ngOnInit()` is still called even when `ngOnChanges()` is not (which is the case when there are no template-bound inputs). |
 | `ngOnInit()` | 在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。欲知详情，参阅本文档中的[初始化组件或指令](#oninit)。 | 在第一轮 `ngOnChanges()` 完成之后调用，只调用**一次**。而且即使没有调用过 `ngOnChanges()`，也仍然会调用 `ngOnInit()`（比如当模板中没有绑定任何输入属性时）。 |
@@ -212,12 +212,15 @@ The sequence of log messages follows the prescribed hook calling order:
 | 钩子顺序 | 日志信息 |
 | 1 | `OnChanges` |
 | 2 | `OnInit` |
-| 3-5 | `DoCheck` |
-| 6 | `AfterContentInit` |
-| 7-9 | `AfterContentChecked` |
-| 10 | `AfterViewInit` |
-| 11-13 | `AfterViewChecked` |
-| 14 | `OnDestroy` |
+| 3| `DoCheck`             |
+| 4          | `AfterContentInit`    |
+|5 | `AfterContentChecked` |
+| 6 | `AfterViewInit` |
+| 7| `AfterViewChecked`    |
+| 8          | `DoCheck`             |
+|9 | `AfterContentChecked` |
+| 10 | `AfterViewChecked` |
+| 11 | `OnDestroy` |
 
 <div class="alert is-helpful">
 
@@ -228,7 +231,7 @@ The input properties are available to the `onInit()` method for further initiali
 
 </div>
 
-Had the user clicked the *Update Hero* button, the log would show another `OnChanges` and two more triplets of `DoCheck`, `AfterContentChecked` and `AfterViewChecked`.
+Had the user clicked the *Update Hero* button, the log would show another `OnChanges` and two more triplets of `DoCheck`, `AfterContentChecked`, and `AfterViewChecked`.
 Notice that these three hooks fire *often*, so it is important to keep their logic as lean as possible.
 
 如果用户点击*Update Hero*按钮，就会看到另一个 `OnChanges` 和至少两组 `DoCheck`、`AfterContentChecked` 和 `AfterViewChecked` 钩子。注意，这三种钩子被触发了*很多次*，所以让它们的逻辑尽可能保持精简是非常重要的！。
@@ -254,8 +257,8 @@ It just tracks the appearance and disappearance of an element in the view by rec
 该例子不执行任何初始化或清理工作。它只是通过记录指令本身的实例化时间和销毁时间来跟踪元素在视图中的出现和消失。
 
 A spy directive like this can provide insight into a DOM object that you cannot change directly.
-You can't touch the implementation of a built-in `<div>`, or modify a third party component.
-You can, however watch these elements with a directive.
+You can't access the implementation of a built-in `<div>`, or modify a third party component.
+You do have the option to watch these elements with a directive.
 
 像这样的间谍指令可以深入了解你无法直接修改的 DOM 对象。你无法触及内置 `<div>` 的实现，也无法修改第三方组件，但是可以用指令来监视这些元素。
 
@@ -414,8 +417,8 @@ The `LoggerService.tick_then()` statement postpones the log update for one turn 
 
 #### 编写精简的钩子方法来避免性能问题
 
-When you run the *AfterView* sample, notice how frequently Angular calls `AfterViewChecked()`-often when there are no changes of interest.
-Be very careful about how much logic or computation you put into one of these methods.
+When you run the *AfterView* sample, notice how frequently Angular calls `AfterViewChecked()` - often when there are no changes of interest.
+Be careful about how much logic or computation you put into one of these methods.
 
 当你运行 *AfterView* 范例时，请注意当没有发生任何需要注意的变化时，Angular 仍然会频繁的调用 `AfterViewChecked()`。要非常小心你放到这些方法中的逻辑或计算量。
 
@@ -460,7 +463,7 @@ The *AfterContent* sample explores the `AfterContentInit()` and `AfterContentChe
 这个 *AfterContent* 例子探索了 `AfterContentInit()` 和 `AfterContentChecked()` 钩子。Angular 会在把外部内容投影进该组件时调用它们。
 
 Consider this variation on the [previous *AfterView*](#afterview) example.
-This time, instead of including the child view within the template, it imports the content from the `AfterContentComponent`'s parent.
+This time, instead of including the child view within the template, it imports the content from the `AfterContentComponent` hook's parent.
 The following is the parent's template.
 
 对比[前面的 AfterView](#afterview) 例子考虑这个变化。
@@ -564,7 +567,7 @@ The results are illuminating.
 
 </div>
 
-While the `ngDoCheck()` hook can detect when the hero's `name` has changed, it is very expensive.
+While the `ngDoCheck()` hook can detect when the hero's `name` has changed, it is an expensive hook.
 This hook is called with enormous frequency —after *every* change detection cycle no matter where the change occurred.
 It's called over twenty times in this example before the user can do anything.
 

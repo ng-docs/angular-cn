@@ -183,9 +183,25 @@ export class AnimationTimelineBuilderVisitor implements AstVisitor {
   visitAnimateRef(ast: AnimateRefAst, context: AnimationTimelineContext): any {
     const innerContext = context.createSubContext(ast.options);
     innerContext.transformIntoNewTimeline();
+    this._applyAnimationRefDelays([ast.options, ast.animation.options], context, innerContext);
     this.visitReference(ast.animation, innerContext);
     context.transformIntoNewTimeline(innerContext.currentTimeline.currentTime);
     context.previousNode = ast;
+  }
+
+  private _applyAnimationRefDelays(
+      animationsRefsOptions: (AnimationOptions|null)[], context: AnimationTimelineContext,
+      innerContext: AnimationTimelineContext) {
+    for (const animationRefOptions of animationsRefsOptions) {
+      const animationDelay = animationRefOptions?.delay;
+      if (animationDelay) {
+        const animationDelayValue = typeof animationDelay === 'number' ?
+            animationDelay :
+            resolveTimingValue(interpolateParams(
+                animationDelay, animationRefOptions?.params ?? {}, context.errors));
+        innerContext.delayNextStep(animationDelayValue);
+      }
+    }
   }
 
   private _visitSubInstructions(
@@ -730,7 +746,7 @@ export class TimelineBuilder {
       const val = interpolateParams(value, params, errors);
       this._pendingStyles.set(prop, val);
       if (!this._localTimelineStyles.has(prop)) {
-        this._backFill.set(prop, this._globalTimelineStyles.get(prop) || AUTO_STYLE);
+        this._backFill.set(prop, this._globalTimelineStyles.get(prop) ?? AUTO_STYLE);
       }
       this._updateStyle(prop, val);
     }

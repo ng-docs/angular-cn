@@ -225,7 +225,7 @@ When you type into the editor, the editor sends information to the language-serv
 
 When you trigger a completion list within a template, the editor first parses the template into an HTML [abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 The Angular compiler interprets that tree to determine the context: which module the template is part of, the current scope, the component selector, and where your cursor is in the template AST.
-It can then determine the symbols that could potentially be at that position..
+It can then determine the symbols that could potentially be at that position.
 
 当你触发模板中的完成列表时，编辑器首先将模板解析为 HTML [抽象语法树（AST）](https://en.wikipedia.org/wiki/Abstract_syntax_tree)。Angular 编译器解释这棵树以确定上下文：模板属于哪个模块，当前作用域，组件选择器以及光标在模板 AST 中的位置。然后，它就可以确定可能位于该位置的符号。
 

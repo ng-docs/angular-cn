@@ -105,9 +105,6 @@
     "name": "CIRCULAR"
   },
   {
-    "name": "CLEAN_PROMISE"
-  },
-  {
     "name": "COMPONENT_REGEX"
   },
   {
@@ -148,9 +145,6 @@
   },
   {
     "name": "DIMENSIONAL_PROP_SET"
-  },
-  {
-    "name": "DOCUMENT"
   },
   {
     "name": "DOCUMENT2"
@@ -357,13 +351,13 @@
     "name": "PARAM_REGEX"
   },
   {
+    "name": "PLATFORM_DESTROY_LISTENERS"
+  },
+  {
     "name": "PLATFORM_ID"
   },
   {
     "name": "PLATFORM_INITIALIZER"
-  },
-  {
-    "name": "PLATFORM_ON_DESTROY"
   },
   {
     "name": "PlatformRef"
@@ -510,9 +504,6 @@
     "name": "__forward_ref__"
   },
   {
-    "name": "_chromeNumKeyPadMap"
-  },
-  {
     "name": "_contains"
   },
   {
@@ -549,9 +540,6 @@
     "name": "_randomChar"
   },
   {
-    "name": "componentDefCount"
-  },
-  {
     "name": "_testabilityGetter"
   },
   {
@@ -562,6 +550,9 @@
   },
   {
     "name": "addComponentLogic"
+  },
+  {
+    "name": "addPropertyAlias"
   },
   {
     "name": "addToViewTree"
@@ -595,9 +586,6 @@
   },
   {
     "name": "attachPatchData"
-  },
-  {
-    "name": "autoRegisterModuleById"
   },
   {
     "name": "balanceProperties"
@@ -642,6 +630,9 @@
     "name": "collectNativeNodes"
   },
   {
+    "name": "componentDefCount"
+  },
+  {
     "name": "computeStaticStyling"
   },
   {
@@ -661,6 +652,9 @@
   },
   {
     "name": "containsElement"
+  },
+  {
+    "name": "convertToBitFlags"
   },
   {
     "name": "convertToMap"
@@ -717,16 +711,16 @@
     "name": "deepForEach"
   },
   {
-    "name": "defaultScheduler"
+    "name": "deepForEachProvider"
   },
   {
     "name": "detachMovedView"
   },
   {
-    "name": "diPublicInInjector"
+    "name": "detectChangesInternal"
   },
   {
-    "name": "domRendererFactory3"
+    "name": "diPublicInInjector"
   },
   {
     "name": "empty"
@@ -745,6 +739,9 @@
   },
   {
     "name": "executeCheckHooks"
+  },
+  {
+    "name": "executeContentQueries"
   },
   {
     "name": "executeInitAndCheckHooks"
@@ -852,13 +849,13 @@
     "name": "getNullInjector"
   },
   {
+    "name": "getOrCreateComponentTView"
+  },
+  {
     "name": "getOrCreateInjectable"
   },
   {
     "name": "getOrCreateNodeInjectorForNode"
-  },
-  {
-    "name": "getOrCreateTComponentView"
   },
   {
     "name": "getOrCreateTNode"
@@ -936,7 +933,7 @@
     "name": "incrementInitPhaseFlags"
   },
   {
-    "name": "initTNodeFlags"
+    "name": "initializeDirectives"
   },
   {
     "name": "injectArgs"
@@ -972,13 +969,13 @@
     "name": "invertObject"
   },
   {
+    "name": "invokeDirectivesHostBindings"
+  },
+  {
     "name": "invokeHostBindingsInCreationMode"
   },
   {
     "name": "invokeQuery"
-  },
-  {
-    "name": "isAnimationProp"
   },
   {
     "name": "isArray"
@@ -1008,10 +1005,10 @@
     "name": "isElementNode"
   },
   {
-    "name": "isFunction"
+    "name": "isEnvironmentProviders"
   },
   {
-    "name": "isImportedNgModuleProviders"
+    "name": "isFunction"
   },
   {
     "name": "isInlineTemplate"
@@ -1038,9 +1035,6 @@
     "name": "isPositive"
   },
   {
-    "name": "isProceduralRenderer"
-  },
-  {
     "name": "isPromise"
   },
   {
@@ -1048,9 +1042,6 @@
   },
   {
     "name": "isTemplateNode"
-  },
-  {
-    "name": "isTemplateNode2"
   },
   {
     "name": "isTypeProvider"
@@ -1099,6 +1090,9 @@
   },
   {
     "name": "markAsComponentHost"
+  },
+  {
+    "name": "markDirtyIfOnPush"
   },
   {
     "name": "maybeWrapInNotSelector"
@@ -1182,9 +1176,6 @@
     "name": "promise"
   },
   {
-    "name": "readPatchedLView"
-  },
-  {
     "name": "refCount"
   },
   {
@@ -1198,9 +1189,6 @@
   },
   {
     "name": "refreshView"
-  },
-  {
-    "name": "registerHostBindingOpCodes"
   },
   {
     "name": "registerPostOrderHooks"
@@ -1225,9 +1213,6 @@
   },
   {
     "name": "renderComponent"
-  },
-  {
-    "name": "renderComponentOrTemplate"
   },
   {
     "name": "renderView"
@@ -1311,6 +1296,9 @@
     "name": "setUpAttributes"
   },
   {
+    "name": "setupStaticAttributes"
+  },
+  {
     "name": "shareSubjectFactory"
   },
   {
@@ -1366,9 +1354,6 @@
   },
   {
     "name": "writeDirectClass"
-  },
-  {
-    "name": "writeDirectStyle"
   },
   {
     "name": "writeStyleAttribute"

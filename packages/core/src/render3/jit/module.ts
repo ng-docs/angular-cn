@@ -19,7 +19,7 @@ import {NgModuleDef, NgModuleTransitiveScopes, NgModuleType} from '../../metadat
 import {deepForEach, flatten} from '../../util/array_utils';
 import {assertDefined} from '../../util/assert';
 import {EMPTY_ARRAY} from '../../util/empty';
-import {getComponentDef, getDirectiveDef, getNgModuleDef, getPipeDef} from '../definition';
+import {getComponentDef, getDirectiveDef, getNgModuleDef, getPipeDef, isStandalone} from '../definition';
 import {NG_COMP_DEF, NG_DIR_DEF, NG_FACTORY_DEF, NG_MOD_DEF, NG_PIPE_DEF} from '../fields';
 import {ComponentDef} from '../interfaces/definition';
 import {maybeUnwrapFn} from '../util/misc_utils';
@@ -217,11 +217,6 @@ export function compileNgModuleDefs(
   });
 }
 
-export function isStandalone<T>(type: Type<T>) {
-  const def = getComponentDef(type) || getDirectiveDef(type) || getPipeDef(type);
-  return def !== null ? def.standalone : false;
-}
-
 export function generateStandaloneInDeclarationsError(type: Type<any>, location: string) {
   const prefix = `Unexpected "${stringifyForError(type)}" found in the "declarations" array of the`;
   const suffix = `"${stringifyForError(type)}" is marked as standalone and can't be declared ` +
@@ -234,7 +229,7 @@ function verifySemanticsOfNgModuleDef(
     importingModule?: NgModuleType): void {
   if (verifiedNgModule.get(moduleType)) return;
 
-  // skip verifications of standalone components, directives and pipes
+  // skip verifications of standalone components, directives, and pipes
   if (isStandalone(moduleType)) return;
 
   verifiedNgModule.set(moduleType, true);
@@ -498,6 +493,7 @@ function setScopeOnDeclaredComponents(moduleType: Type<any>, ngModule: NgModule)
   const transitiveScopes = transitiveScopesFor(moduleType);
 
   declarations.forEach(declaration => {
+    declaration = resolveForwardRef(declaration);
     if (declaration.hasOwnProperty(NG_COMP_DEF)) {
       // A `ɵcmp` field exists - go ahead and patch the component directly.
       const component = declaration as Type<any>& {ɵcmp: ComponentDef<any>};
@@ -539,7 +535,7 @@ export function patchComponentDefWithScope<C>(
 
 /**
  * Compute the pair of transitive scopes (compilation scope and exported scope) for a given type
- * (eaither a NgModule or a standalone component / directive / pipe).
+ * (either a NgModule or a standalone component / directive / pipe).
  *
  * 计算给定类型（NgModule 或独立组件/指令/管道）的一对可传递范围（编译范围和导出范围）。
  *
