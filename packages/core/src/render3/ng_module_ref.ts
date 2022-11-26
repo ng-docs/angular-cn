@@ -28,13 +28,15 @@ import {maybeUnwrapFn} from './util/misc_utils';
  * @param ngModule NgModule class.
  *
  * NgModule 类。
- *
  * @param parentInjector Optional injector instance to use as a parent for the module injector. If
  *     not provided, `NullInjector` will be used instead.
  *
  * 用作模块注入器的父级的可选注入器实例。如果未提供，将改为使用 `NullInjector` 。
+ * @returns
  *
- * @returns NgModuleRef that represents an NgModule instance.
+ * NgModuleRef that represents an NgModule instance.
+ *
+ * NgModuleRef ，表示 NgModule 实例。
  *
  * @publicApi
  */
@@ -47,7 +49,14 @@ export function createNgModule<T>(
  * The `createNgModule` function alias for backwards-compatibility.
  * Please avoid using it directly and use `createNgModule` instead.
  *
- * @deprecated Use `createNgModule` instead.
+ * 向后兼容的 `createNgModule` 函数别名。请避免直接使用它，而改用 `createNgModule` 。
+ *
+ * @deprecated
+ *
+ * Use `createNgModule` instead.
+ *
+ * 改用 `createNgModule` 。
+ *
  */
 export const createNgModuleRef = createNgModule;
 export class NgModuleRef<T> extends viewEngine_NgModuleRef<T> implements InternalNgModuleRef<T> {
@@ -158,10 +167,20 @@ class EnvironmentNgModuleRefAdapter extends viewEngine_NgModuleRef<null> {
  * Learn more about environment injectors in
  * [this guide](guide/standalone-components#environment-injectors).
  *
+ * 在[本指南](guide/standalone-components#environment-injectors)中了解有关环境注入器的更多信息。
+ *
  * @param providers An array of providers.
+ *
+ * 提供程序的数组。
+ *
  * @param parent A parent environment injector.
+ *
+ * 父环境注入器。
+ *
  * @param debugName An optional name for this injector instance, which will be used in error
  *     messages.
+ *
+ * 此注入器实例的可选名称，将在错误消息中使用。
  *
  * @publicApi
  */

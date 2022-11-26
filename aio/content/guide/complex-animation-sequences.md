@@ -249,11 +249,19 @@ If you need to animate the items of an `*ngFor` list and there is a possibility 
 
 ## Animations and Component View Encapsulation
 
+## 动画和组件视图封装
+
 Angular animations are based on the components DOM structure and do not directly take [View Encapsulation](/guide/view-encapsulation) into account, this means that components using `ViewEncapsulation.Emulated` behave exactly as if they were using `ViewEncapsulation.None` (`ViewEncapsulation.ShadowDom` behaves differently as we'll discuss shortly).
+
+Angular 动画基于组件的 DOM 结构，不会直接考虑[视图封装](/guide/view-encapsulation)，这意味着使用 `ViewEncapsulation.Emulated` 的组件的行为方式与使用 `ViewEncapsulation.None` （ `ViewEncapsulation.ShadowDom` 行为方式不同，我们将很快讨论） .
 
 For example if the `query()` function (which you'll see more of in the rest of the Animations guide) were to be applied at the top of a tree of components using the emulated view encapsulation, such query would be able to identify (and thus animate) DOM elements on any depth of the tree.
 
+例如，如果要在使用模拟（emulated）视图封装的组件树的顶级组件中应用 `query()` 函数（你还会在动画指南的其余部分看到更多此类函数），则这样的查询将能够识别（并播放动画）此树的任何深度上的 DOM 元素。
+
 On the other hand the `ViewEncapsulation.ShadowDom` changes the component's DOM structure by "hiding" DOM elements inside [`ShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot) elements. Such DOM manipulations do prevent some of the animations implementation to work properly since it relies on simple DOM structures and doesn't take `ShadowRoot` elements into account. Therefore it is advised to avoid applying animations to views incorporating components using the ShadowDom view encapsulation.
+
+另一方面， `ViewEncapsulation.ShadowDom` 会通过在 [`ShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot) 元素中“隐藏” DOM 元素来更改组件的 DOM 结构。此类 DOM 操作就会阻碍某些动画实现的正常工作，因为它只能工作在简单的 DOM 结构上，并没有考虑 `ShadowRoot` 元素。因此，建议避免使用 ShadowDom 视图封装将动画应用到包含组件的视图。
 
 ## Animation sequence summary
 

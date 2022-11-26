@@ -57,7 +57,11 @@ export class SwUpdate {
    * The behavior of `available` can be replicated by using `versionUpdates` by filtering for the
    * `VersionReadyEvent`:
    *
-   * {@example service-worker-getting-started/src/app/prompt-update.service.ts
+   * 可以用 `versionUpdates` 通过过滤 `VersionReadyEvent` 来复制 `available` 的行为：
+   *
+   * {
+   *
+   * @example service-worker-getting-started/src/app/prompt-update.service.ts
    * region='sw-replicate-available'}
    */
   readonly available: Observable<UpdateAvailableEvent>;
@@ -161,8 +165,12 @@ export class SwUpdate {
    * Updates the current client (i.e. browser tab) to the latest version that is ready for
    * activation.
    *
+   * 将当前客户端（即浏览器选项卡）更新到可激活的最新版本。
+   *
    * In most cases, you should not use this method and instead should update a client by reloading
    * the page.
+   *
+   * 在大多数情况下，你不应该使用此方法，而应该通过重新加载页面来更新客户端。
    *
    * <div class="alert is-important">
    *
@@ -179,12 +187,20 @@ export class SwUpdate {
    *
    * a promise that
    *
+   * 一个承诺
+   *
    * - resolves to `true` if an update was activated successfully
+   *
+   *   如果更新已成功激活，则解析为 `true`
    *
    * - resolves to `false` if no update was available (for example, the client was already on the
    *   latest version).
    *
+   *   如果没有可用的更新（例如，客户端已经在最新版本上），则解析为 `false` 。
+   *
    * - rejects if any error occurs
+   *
+   *   如果发生任何错误，则拒绝
    *
    */
   activateUpdate(): Promise<boolean> {

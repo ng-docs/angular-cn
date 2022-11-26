@@ -97,7 +97,7 @@ To create a single style binding, use the prefix `style` followed by a dot and t
 
 For example, to set the `width` style, type the following:  `[style.width]="width"`
 
-比如，设置 'width' 样式，键入以下内容：`[style.width]="width"`
+比如，要设置 'width' 样式，请键入以下内容：`[style.width]="width"`
 
 Angular sets the property to the value of the bound expression, which is usually a string. Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
 

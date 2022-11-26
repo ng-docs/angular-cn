@@ -63,7 +63,7 @@ export class DebugNode {
   /**
    * The host dependency injector. For example, the root element's component instance injector.
    *
-   * 主机依赖注入器。例如，根元素的组件实例注入器。
+   * 宿主依赖注入器。例如，根元素的组件实例注入器。
    *
    */
   get injector(): Injector {
@@ -126,7 +126,7 @@ export class DebugNode {
    * This component's injector lookup tokens. Includes the component itself plus the tokens that the
    * component lists in its providers metadata.
    *
-   * 此组件的注入器查找标记。包括组件本身以及组件在其提供者元数据中列出的标记。
+   * 此组件的注入器查找令牌。包括组件本身以及组件在其提供者元数据中列出的令牌。
    *
    */
   get providerTokens(): any[] {
@@ -168,7 +168,7 @@ export class DebugElement extends DebugNode {
   /**
    * The element tag name, if it is an element.
    *
-   * 元素标记名称（如果是元素）。
+   * 元素令牌名称（如果是元素）。
    *
    */
   get name(): string {
@@ -199,7 +199,7 @@ export class DebugElement extends DebugNode {
    *
    * - Host property bindings (e.g. `host: { '[id]': "id" }`)
    *
-   *   主机属性绑定（例如 `host: { '[id]': "id" }`）
+   *   宿主属性绑定（例如 `host: { '[id]': "id" }`）
    *
    * - Interpolated property bindings (e.g. \`id="{{ value }}")
    *
@@ -807,7 +807,7 @@ function _queryNativeNodeDescendants(
  * a map of property names to values. This map only contains property bindings
  * defined in templates, not in host bindings.
  *
- * 迭代给定节点的属性绑定，并生成属性名称到值的映射。此映射仅包含在模板中定义的属性绑定，不包含在主机绑定中。
+ * 迭代给定节点的属性绑定，并生成属性名称到值的映射。此映射仅包含在模板中定义的属性绑定，不包含在宿主绑定中。
  *
  */
 function collectPropertyBindings(

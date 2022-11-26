@@ -19,6 +19,8 @@ The deprecated `Renderer` class has been removed in version 9 of Angular, so it'
 Using `Renderer2` is the recommended strategy because it supports a similar set of functionality to `Renderer`.
 With 19 methods, the API surface is quite large, but the schematic should simplify this process for your applications.
 
+已弃用的 `Renderer` 类已经在 Angular 的 9 中删除了，所以有必要迁移到支持的 API。建议使用 `Renderer2` 策略，因为它支持与 `Renderer` 很相似的一组功能。这个 API 非常庞大，有 19 种方法，但原理图会帮你简化这个过程。
+
 ## Is there action required on my end?
 
 ## 完成后我还要采取什么行动吗？

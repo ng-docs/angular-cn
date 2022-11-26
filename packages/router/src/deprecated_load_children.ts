@@ -15,8 +15,15 @@ import {Observable} from 'rxjs';
 /**
  * Deprecated `loadChildren` value types.
  *
+ * 不推荐使用 `loadChildren` 值类型。
+ *
  * @publicApi
- * @deprecated represents the deprecated type side of `LoadChildren`.
+ * @deprecated
+ *
+ * represents the deprecated type side of `LoadChildren`.
+ *
+ * 表示 `LoadChildren` 的不推荐使用的类型。
+ *
  */
 export type DeprecatedLoadChildren = never;
 

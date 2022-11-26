@@ -12,7 +12,7 @@ Structural directives are directives which change the DOM layout by adding and r
 
 Angular provides a set of built-in structural directives (such as `NgIf`, `NgForOf`, `NgSwitch` and others) which are commonly used in all Angular projects. For more information see [Built-in directives](guide/built-in-directives).
 
-Angular 提供了一组内置的结构指令（例如 `NgIf` 、 `NgFor` 、 `NgSwitch` 等），在所有 Angular 项目中通用。有关更多信息，请参阅[内置指令](guide/built-in-directives)。
+Angular 提供了一组内置的结构指令（例如 `NgIf` 、 `NgForOf` 、 `NgSwitch` 等），在所有 Angular 项目中通用。有关更多信息，请参阅[内置指令](guide/built-in-directives)。
 
 <div class="alert is-helpful">
 
@@ -403,13 +403,13 @@ For example, consider the following structural directive that takes the result o
 In this example, the `LoadingState<T>` type permits either of two states, `Loaded<T>` or `Loading`.
 The expression used as the directive's `state` input (aliased as `appIfLoaded`) is of the umbrella type `LoadingState`, as it's unknown what the loading state is at that point.
 
-在这个例子中，`LoadingState<T>` 类型允许两个状态之一，`Loaded<T>` 或 `Loading`。用作指令的 `state` 输入的表达式是宽泛的伞形类型 `LoadingState`，因为还不知道此时的加载状态是什么。
+在这个例子中，`LoadingState<T>` 类型允许两个状态之一，`Loaded<T>` 或 `Loading`。用作指令的 `state` 输入（别名为 `appIfLoaded`）的表达式是宽泛的伞形类型 `LoadingState`，因为还不知道此时的加载状态是什么。
 
 The `IfLoadedDirective` definition declares the static field `ngTemplateGuard_appIfLoaded`, which expresses the narrowing behavior.
 Within the `AppComponent` template, the `*appIfLoaded` structural directive should render this template only when `state` is actually `Loaded<Hero>`.
 The type guard lets the type checker infer that the acceptable type of `state` within the template is a `Loaded<T>`, and further infer that `T` must be an instance of `Hero`.
 
-`IfLoadedDirective` 定义声明了静态字段 `ngTemplateGuard_state`，以表示其窄化行为。在 `AppComponent` 模板中，`*ifLoaded` 结构型指令只有当实际的 `state` 是 `Loaded<Person>` 类型时，才会渲染该模板。类型守护允许类型检查器推断出模板中可接受的 `state` 类型是 `Loaded<T>`，并进一步推断出 `T` 必须是一个 `Person` 的实例。
+`IfLoadedDirective` 定义声明了静态字段 `ngTemplateGuard_appIfLoaded`，以表示其窄化行为。在 `AppComponent` 模板中，`*appIfLoaded` 结构型指令只有当实际的 `state` 是 `Loaded<Person>` 类型时，才会渲染该模板。类型守护允许类型检查器推断出模板中可接受的 `state` 类型是 `Loaded<T>`，并进一步推断出 `T` 必须是一个 `Hero` 的实例。
 
 <a id="narrowing-context-type"></a>
 

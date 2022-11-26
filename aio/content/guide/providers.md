@@ -101,12 +101,12 @@ Imagine a tree of injectors; there is a single root injector and then a child in
 This child injector gets populated with all the module-specific providers, if any. 
 Look up resolution for every provider follows the [rules of dependency injection hierarchy](guide/hierarchical-dependency-injection#resolution-rules). 
 
-当 Angular 的路由器惰性加载一个模块时，它会创建一个新的注入器。这个注入器是应用的根注入器的一个子注入器。想象一棵注入器树，它有唯一的根注入器，而每一个惰性加载模块都有一个自己的子注入器。路由器会把根注入器中的所有提供者添加到子注入器中。如果路由器在惰性加载时创建组件，Angular 会更倾向于使用从这些提供者中创建的服务实例，而不是来自应用的根注入器的服务实例。
+当 Angular 的路由器惰性加载一个模块时，它会创建一个新的注入器。这个注入器是应用的根注入器的一个子注入器。想象一棵注入器树，它有唯一的根注入器，而每一个惰性加载模块都有一个自己的子注入器。这个子注入器会操纵所有特定于此模块的提供者，如果有的话。可以遵循这份[多级依赖注入规则](guide/hierarchical-dependency-injection#resolution-rules)来了解每个提供者的解析过程。
 
 Any component created within a lazy loaded module's context, such as by router navigation, gets its own local instance of child provided services, not the instance in the root application injector.
 Components in external modules continue to receive the instances created for the application root injector.
 
-任何在惰性加载模块的上下文中创建的组件（比如路由导航），都会获取该服务的局部实例，而不是应用的根注入器中的实例。而外部模块中的组件，仍然会收到来自于应用的根注入器创建的实例。
+任何在惰性加载模块的上下文中创建的组件（比如路由导航），都会获取由子注入器提供的服务的局部实例，而不是应用的根注入器中的实例。而外部模块中的组件，仍然会收到来自于应用的根注入器创建的实例。
 
 Though you can provide services by lazy loading modules, not all services can be lazy loaded.
 For instance, some modules only work in the root module, such as the Router.
@@ -170,7 +170,7 @@ Then each new instance of the `UserEditorComponent` gets its own cached service 
 
 ## Injector hierarchy and service instances
 
-## 分层注入器和服务实例
+## 多级注入器和服务实例
 
 Services are singletons within the scope of an injector, which means there is at most one instance of a service in a given injector.
 
@@ -180,7 +180,7 @@ Angular DI has a [hierarchical injection system](guide/hierarchical-dependency-i
 Whenever Angular creates a new instance of a component that has `providers` specified in `@Component()`, it also creates a new child injector for that instance.
 Similarly, when a new NgModule is lazy-loaded at run time, Angular can create an injector for it with its own providers.
 
-Angular DI 具有[分层注入体系](guide/hierarchical-dependency-injection)，这意味着嵌套的注入器可以创建自己的服务实例。`@Component()` 指定的 `providers` 的组件的新实例时，它也会为该实例创建一个新的子注入器。同样，当在运行时惰性加载新的 NgModule 时，Angular 可以使用其自己的提供者为其创建注入器。
+Angular DI 具有[多级注入体系](guide/hierarchical-dependency-injection)，这意味着嵌套的注入器可以创建自己的服务实例。`@Component()` 指定的 `providers` 的组件的新实例时，它也会为该实例创建一个新的子注入器。同样，当在运行时惰性加载新的 NgModule 时，Angular 可以使用其自己的提供者为其创建注入器。
 
 Child modules and component injectors are independent of each other, and create their own separate instances of the provided services.
 When Angular destroys an NgModule or component instance, it also destroys that injector and that injector's service instances.

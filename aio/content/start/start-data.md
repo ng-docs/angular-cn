@@ -448,7 +448,7 @@ This section guides you through modifying the `ShippingComponent` to retrieve sh
 1. Define a `shippingCosts` property that sets the `shippingCosts` property using the `getShippingPrices()` method from the `CartService`.
    Initialize the `shippingCosts` property inside `ngOnInit()` method.
 
-   定义一个 `shippingCosts` 属性，并从 `CartService` 中利用购物车服务的 `getShippingPrices()` 方法设置它。
+   定义一个 `shippingCosts` 属性，并从 `CartService` 中利用购物车服务的 `getShippingPrices()` 方法设置它。在 `ngOnInit()` 方法内部初始化 `shippingCosts` 属性。
 
    <code-example header="src/app/shipping/shipping.component.ts" path="getting-started/src/app/shipping/shipping.component.ts" region="props"></code-example>
 

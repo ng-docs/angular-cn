@@ -28,6 +28,8 @@ import {INJECTOR_DEF_TYPES} from './internal_tokens';
  * Wrap an array of `Provider`s into `EnvironmentProviders`, preventing them from being accidentally
  * referenced in \`@Component in a component injector.
  *
+ * 将 `Provider` 数组包装到 `EnvironmentProviders` 中，以防止它们在组件注入器的 \`@Component 中被意外引用。
+ *
  */
 export function makeEnvironmentProviders(providers: Provider[]): EnvironmentProviders {
   return {

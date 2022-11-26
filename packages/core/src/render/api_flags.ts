@@ -44,6 +44,8 @@ export interface RendererType2 {
    *     DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
    *     create a ShadowRoot for component's host element.
    *
+   *   `ShadowDom` ：使用现代[Shadow DOM](https://w3c.github.io/webcomponents/spec/shadow/)并为组件的宿主元素创建一个 ShadowRoot。
+   *
    *   ```
    *   `ShadowDom` ：使用现代的 [Shadow DOM](https://w3c.github.io/webcomponents/spec/shadow/)
    *   ```

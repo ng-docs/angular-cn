@@ -28,5 +28,8 @@ export const ERROR_DETAILS_PAGE_BASE_URL = 'https://angular.io/errors';
 
 /**
  * URL for the XSS security documentation.
+ *
+ * XSS 安全文档的 URL。
+ *
  */
 export const XSS_SECURITY_URL = 'https://g.co/ng/security#xss';

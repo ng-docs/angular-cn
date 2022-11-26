@@ -117,17 +117,23 @@ Alternatively, you might want to define a different [registration strategy](api/
 You can update an existing tab to the latest version by reloading the page as soon as a new version is ready.
 To avoid disrupting the user's progress, it is generally a good idea to prompt the user and let them confirm that it is OK to reload the page and update to the latest version:
 
+你可以通过在新版本就绪后立即重新加载页面来将现有选项卡更新到最新版本。为避免中断用户的进度，一般来说最好提示用户并让他们确认可以重新加载页面并更新到最新版本：
+
 <code-example header="prompt-update.service.ts" path="service-worker-getting-started/src/app/prompt-update.service.ts" region="sw-version-ready"></code-example>
 
 <div class="alert is-important">
 
 Calling {@link SwUpdate#activateUpdate SwUpdate#activateUpdate()} updates a tab to the latest version without reloading the page, but this could break the application.
 
+调用 {@link SwUpdate#activateUpdate SwUpdate#activateUpdate()} 会把某个页标签更新为最新版，而不必重新加载页面，但是这可能中断应用程序。
+
 Updating without reloading can create a version mismatch between the [application shell](guide/glossary#app-shell) and other page resources, such as [lazy-loaded chunks](guide/glossary#lazy-loading), whose filenames may change between versions.
+
+用不重新加载的方式更新可以创建一个[应用外壳](guide/glossary#app-shell)与其它页面资源（如[惰性加载块](guide/glossary#lazy-loading)）不匹配的版本，因为文件名在不同版本之间可能发生变化。
 
 You should only use `activateUpdate()`, if you are certain it is safe for your specific use case.
 
-如果调用 `activateUpdate()` 而不刷新页面，可能会破坏正在运行的应用中的惰性加载模块，特别是如果惰性加载的模块文件名中使用了哈希时，就会改变每一个版本。所以，建议每当 `activateUpdate()` 返回的 Promise 被解析时，都刷新一次页面。
+如果你确信对于你的特定用例，这种情况是安全的，你可以只用 `activateUpdate()`。
 
 </div>
 

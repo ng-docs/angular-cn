@@ -113,13 +113,17 @@
             "desc": "Listen / Code / Repeat. Everything you need to fall in love with Angular for a long time.",
             "logo": "https://ng-poland.pl/images/podcast/angular-master-podcast-logo.png",
             "title": "Angular Master Podcast",
-            "url": "https://anchor.fm/angular-master/"
+            "url": "https://anchor.fm/angular-master/",
+            "descCn": "听/编码/重复。长时间爱上 Angular 所需的一切。",
+            "titleCn": "Angular 大师播客"
           },
           "javascript-master-podcast": {
             "desc": "Listen / Code / Repeat. Everything you need to know to become an informed JavaScript developer.",
             "logo": "https://ng-poland.pl/images/podcast/javascript-master-podcast-logo.png",
             "title": "JavaScript Master Podcast",
-            "url": "https://anchor.fm/javascript-master/"
+            "url": "https://anchor.fm/javascript-master/",
+            "descCn": "听/编码/重复。要成为一名消息灵通的 JavaScript 开发人员，你需要了解的一切。",
+            "titleCn": "JavaScript 大师播客"
           },
           "happy-angular": {
             "desc": "A weekly German podcast for Angular on the go",
@@ -835,7 +839,9 @@
           "angular-from-scratch": {
             "title": "Angular from Scratch",
             "desc": "Learn Angular from Scratch, building a sales application",
-            "url": "https://leanpub.com/book-angular"
+            "url": "https://leanpub.com/book-angular",
+            "titleCn": "从头开始 Angular",
+            "descCn": "从头开始学习 Angular，构建销售应用程序"
           }
         }
       },
@@ -1006,7 +1012,9 @@
           "platzi": {
             "desc": "An online education platform with a complete path in Angular and TypeScript from zero to advanced. Platzi helps students from all over the world acquire new, in-demand skills.",
             "title": "Platzi (Español)",
-            "url": "https://platzi.com/angular-io"
+            "url": "https://platzi.com/angular-io",
+            "descCn": "一个在线教育平台，在 Angular 和 TypeScript 中提供从零到高级的完整路径。 Platzi 帮助来自世界各地的学生获得新的、急需的技能。",
+            "titleCn": "普拉齐（西班牙语）"
           }
         }
       },
@@ -1034,7 +1042,9 @@
           "angular-master-dev": {
             "desc": "Angular Architecture: Strategic Design with Nx - Online Video Course",
             "title": "Angular Master",
-            "url": "https://angularmaster.dev/"
+            "url": "https://angularmaster.dev/",
+            "descCn": "Angular 架构：使用 Nx 的战略设计 - 在线视频课程",
+            "titleCn": "Angular 大师"
           },
           "-acceleb": {
             "desc": "Customized, Instructor-Led Angular Training",

@@ -25,6 +25,9 @@ function isAbstractControlOptions(options: AbstractControlOptions|{[key: string]
 
 /**
  * The union of all validator types that can be accepted by a ControlConfig.
+ *
+ * ControlConfig 可以接受的所有验证器类型的联合。
+ *
  */
 type ValidatorConfig = ValidatorFn|AsyncValidatorFn|ValidatorFn[]|AsyncValidatorFn[];
 
@@ -33,14 +36,22 @@ type ValidatorConfig = ValidatorFn|AsyncValidatorFn|ValidatorFn[]|AsyncValidator
  * (i.e. occur in a fixed order). This slightly looser type is used for inference, to catch cases
  * where the compiler cannot prove order and position.
  *
+ * 编译器可能并不总是能够证明控制配置的元素是元组（即以固定的顺序出现）。这种稍微宽松的类型用于推理，以捕获编译器无法证明顺序和位置的情况。
+ *
  * For example, consider the simple case `fb.group({foo: ['bar', Validators.required]})`. The
  * compiler will infer this as an array, not as a tuple.
+ *
+ * 例如，考虑简单的情况 `fb.group({foo: ['bar', Validators.required]})` 。编译器会将其推断为数组，而不是元组。
+ *
  */
 type PermissiveControlConfig<T> = Array<T|FormControlState<T>|ValidatorConfig>;
 
 /**
  * Helper type to allow the compiler to accept [XXXX, { updateOn: string }] as a valid shorthand
  * argument for .group()
+ *
+ * 允许编译器接受[XXXX，{ updateOn: string }][XXXX, { updateOn: string }]作为 .group() 的有效速记参数的帮助器类型
+ *
  */
 interface PermissiveAbstractControlOptions extends Omit<AbstractControlOptions, 'updateOn'> {
   updateOn?: string;
@@ -291,19 +302,34 @@ export class FormBuilder {
 
   /**
    * @description
+   *
    * Constructs a new `FormRecord` instance. Accepts a single generic argument, which is an object
    * containing all the keys and corresponding inner control types.
+   *
+   * 构造一个新的 `FormRecord` 实例。接受单个泛型参数，该参数是包含所有键和对应的内部控件类型的对象。
+   *
    * @param controls A collection of child controls. The key for each child is the name
    * under which it is registered.
+   *
+   * 子控件的集合。每个子项的键是它注册的名称。
+   *
    * @param options Configuration options object for the `FormRecord`. The object should have the
    * `AbstractControlOptions` type and might contain the following fields:
    *
+   * `FormRecord` 的配置选项对象。该对象应该具有 `AbstractControlOptions` 类型，并可能包含以下字段：
+   *
    * * `validators`: A synchronous validator function, or an array of validator functions.
+   *
+   *   `validators` ：同步验证器函数或验证器函数数组。
    *
    * * `asyncValidators`: A single async validator or array of async validator functions.
    *
+   *   `asyncValidators` ：单个异步验证器或异步验证器函数数组。
+   *
    * * `updateOn`: The event upon which the control should be updated (options: 'change' | 'blur'
    *   | submit').
+   *
+   *   `updateOn` ：应该更新控件的事件（选项： 'change' | 'blur' | submit'）。
    *
    */
   record<T>(controls: {[key: string]: T}, options: AbstractControlOptions|null = null):
@@ -498,6 +524,9 @@ export abstract class NonNullableFormBuilder {
    * Similar to `FormBuilder#record`, except any implicitly constructed `FormControl`
    * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
    * that already-constructed controls will not be altered.
+   *
+   * 与 `FormBuilder#record` 类似，只是任何隐式构造的 `FormControl` 都将是不可为空的（即它将 `nonNullable` 设置为 true ）。请注意，已经构建的控件不会被更改。
+   *
    */
   abstract record<T>(
       controls: {[key: string]: T},

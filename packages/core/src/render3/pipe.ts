@@ -116,8 +116,18 @@ function getPipeDef(name: string, registry: PipeDefList|null): PipeDef<any>|unde
 /**
  * Generates a helpful error message for the user when a pipe is not found.
  *
+ * 找不到管道时为用户生成有用的错误消息。
+ *
  * @param name Name of the missing pipe
- * @returns The error message
+ *
+ * 缺失的管道名称
+ *
+ * @returns
+ *
+ * The error message
+ *
+ * 错误消息
+ *
  */
 function getPipeNotFoundErrorMessage(name: string) {
   const lView = getLView();

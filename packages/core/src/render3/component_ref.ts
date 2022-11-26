@@ -334,7 +334,12 @@ export class ComponentRef<T> extends AbstractComponentRef<T> {
   }
 }
 
-/** Represents a HostFeature function. */
+/**
+ * Represents a HostFeature function.
+ *
+ * 表示 HostFeature 函数。
+ *
+ */
 type HostFeature = (<T>(component: T, componentDef: ComponentDef<T>) => void);
 
 // TODO: A hack to not pull in the NullInjector from @angular/core.
@@ -344,7 +349,12 @@ export const NULL_INJECTOR: Injector = {
   }
 };
 
-/** Creates a TNode that can be used to instantiate a root component. */
+/**
+ * Creates a TNode that can be used to instantiate a root component.
+ *
+ * 创建一个可用于实例化根组件的 TNode。
+ *
+ */
 function createRootComponentTNode(lView: LView, rNode: RNode): TElementNode {
   const tView = lView[TVIEW];
   const index = HEADER_OFFSET;
@@ -360,14 +370,38 @@ function createRootComponentTNode(lView: LView, rNode: RNode): TElementNode {
 /**
  * Creates the root component view and the root component node.
  *
+ * 创建根组件视图和根组件节点。
+ *
  * @param rNode Render host element.
+ *
+ * 渲染宿主元素。
+ *
  * @param rootComponentDef ComponentDef
+ *
+ * 组件定义
+ *
  * @param rootView The parent view where the host node is stored
+ *
+ * 存储宿主节点的父视图
+ *
  * @param rendererFactory Factory to be used for creating child renderers.
+ *
+ * 用于创建子渲染器的工厂。
+ *
  * @param hostRenderer The current renderer
+ *
+ * 当前渲染器
+ *
  * @param sanitizer The sanitizer, if provided
  *
- * @returns Component view created
+ * 消毒剂（如果提供）
+ *
+ * @returns
+ *
+ * Component view created
+ *
+ * 创建的组件视图
+ *
  */
 function createRootComponentView(
     tNode: TElementNode, rNode: RElement|null, rootComponentDef: ComponentDef<any>,
@@ -392,7 +426,12 @@ function createRootComponentView(
   return rootView[tNode.index] = componentView;
 }
 
-/** Sets up the styling information on a root component. */
+/**
+ * Sets up the styling information on a root component.
+ *
+ * 在根组件上设置样式信息。
+ *
+ */
 function applyRootComponentStyling(
     rootDirectives: DirectiveDef<any>[], tNode: TElementNode, rNode: RElement|null,
     hostRenderer: Renderer): void {
@@ -412,6 +451,9 @@ function applyRootComponentStyling(
 /**
  * Creates a root component and sets it up with features and host bindings.Shared by
  * renderComponent() and ViewContainerRef.createComponent().
+ *
+ * 创建一个根组件并使用特性和宿主绑定进行设置。由 renderComponent() 和 ViewContainerRef.createComponent() 共享。
+ *
  */
 function createRootComponent<T>(
     componentView: LView, rootComponentDef: ComponentDef<T>, rootDirectives: DirectiveDef<any>[],
@@ -457,7 +499,12 @@ function createRootComponent<T>(
   return component;
 }
 
-/** Sets the static attributes on a root component. */
+/**
+ * Sets the static attributes on a root component.
+ *
+ * 设置根组件的静态属性。
+ *
+ */
 function setRootNodeAttributes(
     hostRenderer: Renderer2, componentDef: ComponentDef<unknown>, hostRNode: RElement,
     rootSelectorOrNode: any) {
@@ -477,7 +524,12 @@ function setRootNodeAttributes(
   }
 }
 
-/** Projects the `projectableNodes` that were specified when creating a root component. */
+/**
+ * Projects the `projectableNodes` that were specified when creating a root component.
+ *
+ * 投影创建根组件时指定的 `projectableNodes` 。
+ *
+ */
 function projectNodes(
     tNode: TElementNode, ngContentSelectors: string[], projectableNodes: any[][]) {
   const projection: (TNode|RNode[]|null)[] = tNode.projection = [];
@@ -495,15 +547,22 @@ function projectNodes(
 /**
  * Used to enable lifecycle hooks on the root component.
  *
+ * 用于在根组件上启用生命周期钩子。
+ *
  * Include this feature when calling `renderComponent` if the root component
  * you are rendering has lifecycle hooks defined. Otherwise, the hooks won't
  * be called properly.
  *
+ * 如果你要渲染的根组件定义了生命周期钩子，则在调用 `renderComponent` 时包含此特性。否则，这些钩子将无法被正确调用。
+ *
  * Example:
+ *
+ * 示例：
  *
  * ```
  * renderComponent(AppComponent, {hostFeatures: [LifecycleHooksFeature]});
  * ```
+ *
  */
 export function LifecycleHooksFeature(): void {
   const tNode = getCurrentTNode()!;

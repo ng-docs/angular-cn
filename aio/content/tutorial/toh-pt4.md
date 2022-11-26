@@ -77,7 +77,7 @@ It doesn't have any dependencies yet.
 
 注意，这个新的服务导入了 Angular 的 `Injectable` 符号，并且给这个服务类添加了 `@Injectable()` 装饰器。
 它把这个类标记为*依赖注入系统*的参与者之一。`HeroService` 类将会提供一个可注入的服务，并且它还可以拥有自己的待注入的依赖。
-目前它还没有依赖，但是[很快就会有了](#inject-message-service)。
+目前它没有任何依赖。
 
 The `@Injectable()` decorator accepts a metadata object for the service, the same way the `@Component()` decorator did for your component classes.
 
@@ -261,12 +261,12 @@ The `HeroesComponent` consumes the `getHeroes()` result as if heroes could be fe
 This approach won't work in a real application that uses asynchronous calls.
 It works now because your service synchronously returns *mock heroes*.
 
-这在真实的应用中几乎是不可能的。现在能这么做，只是因为目前该服务返回的是*模拟数据*。不过很快，该应用就要从远端服务器获取英雄数据了，而那天生就是*异步*操作。
+这种方法在使用异步调用的真实应用中是不可能奏效的。现在能这么做，只是因为目前该服务同步返回的是*模拟数据*。
 
 If `getHeroes()` can't return immediately with hero data, it shouldn't be
 synchronous, because that would block the browser as it waits to return data.
 
-如果 `getHeroes()` 不能立即返回英雄数据，它就不是同步的，否则在它等待返回数据期间就会阻塞浏览器。
+如果 `getHeroes()` 不能立即返回英雄数据，它就不能是同步的，否则在它等待返回数据期间就会阻塞浏览器。
 
 `HeroService.getHeroes()` must have an *asynchronous signature* of some kind.
 
@@ -434,9 +434,15 @@ Open `MessageService` and replace its contents with the following.
 
 The service exposes its cache of `messages` and two methods:
 
+该服务公开其 `messages` 缓存和两个方法：
+
 * One to `add()` a message to the cache.
 
+  将 `add()` 消息添加到缓存中的一种。
+
 * Another to `clear()` the cache.
+
+  另一个 `clear()` 缓存。
 
 该服务对外暴露了它的 `messages` 缓存，以及两个方法：`add()` 方法往缓存中添加一条消息，`clear()` 方法用于清空缓存。
 
@@ -464,7 +470,7 @@ Angular injects the singleton `MessageService` into that property when it create
 This is an example of a typical *service-in-service* scenario in which
 you inject the `MessageService` into the `HeroService` which is injected into the `HeroesComponent`.
 
-这是一个典型的“服务中的服务”场景：你把 `MessageService` 注入到了 `HeroService` 中，而 `HeroService` 又被注入到了 `HeroesComponent` 中。
+这是一个典型的“服务中的服务”场景，你把 `MessageService` 注入到了 `HeroService` 中，而 `HeroService` 又被注入到了 `HeroesComponent` 中。
 
 </div>
 
@@ -517,7 +523,7 @@ Angular 只会绑定到组件的*公共*属性。
 
 Replace the `MessagesComponent` template created by `ng generate` with the following.
 
-把 CLI 生成的 `MessagesComponent` 的模板改成这样。
+把 `ng generate` 创建的 `MessagesComponent` 的模板改成这样。
 
 <code-example header="src/app/messages/messages.component.html" path="toh-pt4/src/app/messages/messages.component.html"></code-example>
 
@@ -546,7 +552,7 @@ The messages look better after you add the private CSS styles to `messages.compo
 The following example shows how to display a history of each time the user clicks on a hero.
 This helps when you get to the next section on [Routing](tutorial/toh-pt5).
 
-下面的例子展示了当用户点击某个英雄时，如何发送和显示一条消息，以及如何显示该用户的选取历史。当你学到后面的[路由](tutorial/toh-pt5)一章时，这会很有帮助。
+下面的例子展示了当用户点击某个英雄时发生的历史。当你学到后面的[路由](tutorial/toh-pt5)一章时，这会很有帮助。
 
 <code-example header="src/app/heroes/heroes.component.ts" path="toh-pt4/src/app/heroes/heroes.component.ts"></code-example>
 

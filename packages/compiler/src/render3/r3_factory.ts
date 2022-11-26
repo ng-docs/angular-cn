@@ -113,7 +113,7 @@ export interface R3DependencyMetadata {
    * An expression representing the token or value to be injected.
    * Or `null` if the dependency could not be resolved - making it invalid.
    *
-   * 表示要注入的标记或值的表达式。如果无法解析依赖项，则为 `null` - 使其无效。
+   * 表示要注入的令牌或值的表达式。如果无法解析依赖项，则为 `null` - 使其无效。
    *
    */
   token: o.Expression|null;

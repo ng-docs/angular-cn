@@ -15,7 +15,7 @@ To prerender a static page make sure to add Server-Side Rendering (SSR) capabili
 For more information see the [universal guide](guide/universal).
 Once SSR is added, run the following command:
 
-要预先渲染静态页面，要先向你的应用程序添加 SSR 功能。有关更多信息，请参阅 [Universal 指南](guide/universal)。添加 SSR 后，运行以下命令：
+要预先渲染静态页面，要先向你的应用程序添加服务端渲染（SSR）功能。有关更多信息，请参阅 [Universal 指南](guide/universal)。添加 SSR 后，运行以下命令：
 
 <code-example format="shell" language="shell">
 
@@ -89,8 +89,12 @@ ng run &lt;app-name&gt;:prerender --routes /product/1 /product/2
 
 #### Providing extra routes using a file
 
+#### 使用文件提供额外的路由
+
 You can provide routes using a file to create static pages.
 This method is useful if you have a large number of routes to create. For example, product details for an e-commerce application, which might come from an external source, like a Database or Content Management System (CMS).
+
+你可以使用文件提供路由以创建静态页面。如果你要创建的大量路由（比如电子商务应用程序的产品详细信息）可能来自外部源，比如数据库或内容管理系统（CMS），则此方法很有用。
 
 To provide routes using a file, use the `--routes-file` option with the name of a `.txt` file containing the routes.
 
@@ -98,7 +102,7 @@ To provide routes using a file, use the `--routes-file` option with the name of 
 
 For example, you could create this file by using a script to extract IDs from a database and save them to a `routes.txt` file:
 
-比如，你可以通过使用脚本从数据库中提取 ID 并将它们保存到 `routes.txt` 文件来生成此文件：
+比如，你可以通过使用脚本从数据库中提取 ID 并将它们保存到 `routes.txt` 文件来创建此文件：
 
 <code-example language="none" header="routes.txt">
 
@@ -124,7 +128,7 @@ ng run &lt;app-name&gt;:prerender --routes-file routes.txt
 You can also pass specific routes to the prerender command.
 If you choose this option, make sure to turn off the `guessRoutes` option.
 
-你还可以将特定路由传递给 prerender 命令。如果你选择此选项，请确保禁用 `guessRoutes` 选项。
+你还可以将特定路由传递给 prerender 命令。如果你选择此选项，请确保关闭 `guessRoutes` 选项。
 
 <code-example format="shell" language="shell">
 

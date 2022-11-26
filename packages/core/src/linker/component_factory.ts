@@ -30,8 +30,16 @@ export abstract class ComponentRef<C> {
    * component using the `OnPush` change detection strategy. It will also assure that the
    * `OnChanges` lifecycle hook runs when a dynamically created component is change-detected.
    *
+   * 将指定的输入名称更新为新值。使用此方法将使用 `OnPush` 变更检测策略正确标记为 check 组件。它还将确保 `OnChanges` 生命周期钩子在检测到动态创建的组件时运行。
+   *
    * @param name The name of an input.
+   *
+   * 输入的名称。
+   *
    * @param value The new value of an input.
+   *
+   * 输入的新值。
+   *
    */
   abstract setInput(name: string, value: unknown): void;
 

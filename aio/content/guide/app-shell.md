@@ -21,7 +21,7 @@ Learn more in [The App Shell Model](https://developers.google.com/web/fundamenta
 
 Do this with the following Angular CLI command:
 
-可以用下列 CLI 命令来执行本操作：
+可以用下列 Angular CLI 命令来执行本操作：
 
 <code-example format="shell" language="shell">
 
@@ -39,7 +39,7 @@ For an existing application, you have to manually add the `RouterModule` and def
 
 Use the Angular CLI to automatically create the application shell.
 
-使用 CLI 自动创建一个应用外壳。
+使用 Angular CLI 自动创建一个应用外壳。
 
 <code-example format="shell" language="shell">
 
@@ -108,7 +108,7 @@ After running this command you can see that the `angular.json` configuration fil
 
 Use the Angular CLI to build the `app-shell` target.
 
-使用 CLI 构建目标 `app-shell`。
+使用 Angular CLI 构建目标 `app-shell`。
 
 <code-example format="shell" language="shell">
 

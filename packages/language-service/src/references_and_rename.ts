@@ -90,7 +90,12 @@ enum RequestKind {
 interface PipeRenameContext {
   type: RequestKind.PipeName;
 
-  /** The string literal for the pipe name that appears in the @Pipe meta */
+  /**
+   * The string literal for the pipe name that appears in the @Pipe meta
+   *
+   * @Pipe 元中出现的管道名称的字符串文字
+   *
+   */
   pipeNameExpr: ts.StringLiteral;
 
   /**

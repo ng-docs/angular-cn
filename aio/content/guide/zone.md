@@ -406,6 +406,8 @@ All of the functions of `Zone` are provided by a library called [Zone.js](https:
 This library implements those features by intercepting asynchronous APIs through monkey patching.
 Monkey patching is a technique to add or alter the default behavior of a function at runtime without changing the source code.
 
+`Zone` 的所有函数都由一个名为 [Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js/README.md) 的库提供。该库通过猴子补丁拦截异步 API 来实现这些特性。 猴子补丁是一种在运行时添加或更改函数的默认行为而不更改源代码的技术。
+
 <!-- vale Angular.Google_Headings = NO -->
 
 `Zone` 的所有功能均由名为 [Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js/README.md) 的库提供。该库通过猴子补丁拦截异步 API 来实现这些功能。猴子补丁是一种在运行时添加或修改函数默认行为而无需更改源代码的技术。
@@ -520,11 +522,11 @@ Before importing the `zone.js` package, you can set the following configurations
   For example, disabling the `requestAnimationFrame()` monkey patch, so the callback of `requestAnimationFrame()` does not trigger change detection.
   This is useful if, in your application, the callback of the `requestAnimationFrame()` does not update any data.
 
-  你可以禁用一些异步 API 的猴子补丁，以获得更好的性能。比如，你可以禁用 `requestAnimationFrame()` 的猴子补丁，这样 `requestAnimationFrame()` 的回调就不会触发变更检测。如果你的应用程序不会在 `requestAnimationFrame()` 回调中更新任何数据，则这种方式很有用。
+  禁用一些异步 API 的猴子补丁，以获得更好的性能。比如，你可以禁用 `requestAnimationFrame()` 的猴子补丁，这样 `requestAnimationFrame()` 的回调就不会触发变更检测。如果你的应用程序不会在 `requestAnimationFrame()` 回调中更新任何数据，则这种方式很有用。
 
 * Specify that certain DOM events do not run inside the Angular zone. For example, to prevent a `mousemove` or `scroll` event to trigger change detection
 
-  你可以指定某些 DOM 事件不在 Angular Zone 内运行；比如，为了防止 `mousemove` 或 `scroll` 事件来触发变更检测。
+  指定某些 DOM 事件不在 Angular Zone 内运行；比如，为了防止 `mousemove` 或 `scroll` 事件来触发变更检测。
 
 Several other settings can be changed.
 To make these changes, you need to create a `zone-flags.ts` file, such as the following.
@@ -570,7 +572,7 @@ By default, `Zone` is loaded and works without further configuration.
 You don't necessarily have to use `Zone` to make Angular work.
 Instead, you can opt to trigger change detection on your own.
 
-`Zone` 能帮助 Angular 知道何时要触发变更检测，并使开发人员专注于应用开发。默认情况下，`Zone` 已加载且无需其他配置即可工作。但是，也不是一定要用 `Zone` 才能使 Angular 工作。相反，你也可以选择自己触发变更检测。
+`Zone` 能帮助 Angular 知道何时要触发变更检测，并使开发人员专注于应用开发。默认情况下，`Zone` 已加载且无需其他配置即可工作。也不是一定要用 `Zone` 才能使 Angular 工作。相反，你也可以选择自己触发变更检测。
 
 <div class="callout is-helpful">
 

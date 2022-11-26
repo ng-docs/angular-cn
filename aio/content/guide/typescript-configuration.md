@@ -54,7 +54,7 @@ TypeScript 和 Angular 提供了很多选项，可以用来配置类型检查功
 For more information TypeScript configuration files, see the official [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
 For details about configuration inheritance, see the [Configuration inheritance with extends](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends) section.
 
-要了解 TypeScript 配置文件的详情，请参阅官方提供的 [TypeScript wiki](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。要了解配置继承的详情，参阅[使用 extends 进行配置继承](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends)部分。
+要了解 TypeScript 配置文件的详情，请参阅官方提供的 [TypeScript 手册](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。要了解配置继承的详情，参阅[使用 extends 进行配置继承](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends)部分。
 
 </div>
 
@@ -150,7 +150,11 @@ Angular packages include them already.
 TypeScript includes a default set of declaration files.
 These files contain the ambient declarations for various common JavaScript constructs present in JavaScript runtimes and the DOM.
 
+TypeScript 包含一组默认的声明文件。这些文件包含 JavaScript 运行时和 DOM 中存在的各种通用 JavaScript 结构的环境声明。
+
 For more information, see [lib](https://www.typescriptlang.org/tsconfig#lib) in the TypeScript guide.
+
+有关更多信息，请参阅 TypeScript 指南中的[lib](https://www.typescriptlang.org/tsconfig#lib) 。
 
 ### Installable typings files
 
@@ -187,7 +191,7 @@ For instance, to install typings for `chai` you run `npm install @types/chai --s
 By default, the target is `ES2022`. To control ECMA syntax use the [Browserslist](https://github.com/browserslist/browserslist) configuration file.
 For more information, see the [configuring browser compatibility](/guide/build#configuring-browser-compatibility) guide.
 
-默认情况下，编译目标是 `es2017`，只有现代浏览器才支持它。
+默认情况下，编译目标是 `es2022`。要控制 ECMA 语法，请使用 [Browserslist](https://github.com/browserslist/browserslist) 配置文件。欲知详情，参见[配置浏览器兼容性](/guide/build#configuring-browser-compatibility)一章。
 
 <!-- links -->
 

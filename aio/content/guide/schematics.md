@@ -111,7 +111,7 @@ Look at this one as an example and model for your own add schematic.
 Partner and third party libraries also support the Angular CLI with add schematics.
 For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://clarity.design/documentation/get-started).
 
-合作伙伴和第三方库也可以通过添加原理图来支持 Angular CLI。比如，`@ng-bootstrap/schematics` 会把 [ng-bootstrap](https://ng-bootstrap.github.io) 添加到应用中，`@clr/angular` 会安装并设置 [VMWare 的 Clarity](https://vmware.github.io/clarity/documentation/v1.0/get-started)。
+合作伙伴和第三方库也可以通过添加原理图来支持 Angular CLI。比如，`@ng-bootstrap/schematics` 会把 [ng-bootstrap](https://ng-bootstrap.github.io) 添加到应用中，`@clr/angular` 会安装并设置 [VMWare 的 Clarity](https://clarity.design/documentation/get-started)。
 
 An *add schematic* can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
 For example, the `@angular/pwa` schematic turns your application into a PWA by adding an application manifest and service worker.

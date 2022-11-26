@@ -37,7 +37,7 @@ The first step is to move the hero details into a separate, reusable `HeroDetail
 
 Use this `ng generate` command to create a new component named `hero-detail`.
 
-使用 Angular CLI 生成一个名叫 `hero-detail` 的新组件。
+使用 `ng generate` 创建一个名叫 `hero-detail` 的新组件。
 
 <code-example format="shell" language="shell">
 
@@ -83,13 +83,13 @@ The command also adds the `HeroDetailComponent` as a declaration in the `@NgModu
 
 Cut the HTML for the hero detail from the bottom of the `HeroesComponent` template and paste it over the boilerplate content in the `HeroDetailComponent` template.
 
-从 `HeroesComponent` 模板的底部把表示英雄详情的 HTML 代码剪切粘贴到所生成的 `HeroDetailComponent` 模板中。
+从 `HeroesComponent` 模板的底部把表示英雄详情的 HTML 代码剪切粘贴并覆盖 `HeroDetailComponent` 模板的样板代码。
 
 The pasted HTML refers to a `selectedHero`.
 The new `HeroDetailComponent` can present *any* hero, not just a selected hero.
 Replace `selectedHero` with `hero` everywhere in the template.
 
-所粘贴的 HTML 引用了 `selectedHero`。新的 `HeroDetailComponent` 可以展示*任意*英雄，而不仅仅所选的。因此还要把模板中的所有 `selectedHero` 替换为 `hero`。
+所粘贴的 HTML 引用了 `selectedHero`。新的 `HeroDetailComponent` 可以展示*任意*英雄，而不仅仅所选的。把模板中的所有 `selectedHero` 替换为 `hero`。
 
 When you're done, the `HeroDetailComponent` template should look like this:
 
@@ -118,7 +118,7 @@ The `hero` property
 annotated with the `@Input()` decorator,
 because the *external* `HeroesComponent` [binds to it](#heroes-component-template) like this.
 
-`hero` 属性[必须是一个带有 `@Input()` 装饰器的输入属性](guide/inputs-outputs "Input and Output properties")，因为*外部的* `HeroesComponent` 组件[将会绑定到它](#heroes-component-template)。就像这样：
+`hero` 属性[必须是一个带有 `@Input()` 装饰器的输入属性](guide/inputs-outputs "Input and Output properties")，因为*外部的* `HeroesComponent` 组件[会绑定到它](#heroes-component-template)。就像这样：
 
 <code-example path="toh-pt3/src/app/heroes/heroes.component.html" region="hero-detail-binding"></code-example>
 

@@ -147,47 +147,74 @@ export function inject<T>(token: ProviderToken<T>): T;
  * @param token A token that represents a dependency that should be injected.
  *
  * 表示应该注入的依赖项的标记。
- *
  * @param flags Control how injection is executed. The flags correspond to injection strategies that
  *     can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and `@Optional`.
  *
  * 控制注入的执行方式。这些标志对应于可以用参数装饰器 `@Host`、`@Self`、`@SkipSelf` 和
  * `@Optional` 指定的注入策略。
- *
  * @returns
  *
  * the injected value if operation is successful, `null` otherwise.
  *
  * 如果操作成功，则注入注入的值，否则为 `null` 。
- *
  * @throws if called outside of a supported context.
  *
  * 如果在受支持的上下文之外调用。
- *
  * @publicApi
- * @deprecated prefer an options object instead of `InjectFlags`
+ * @deprecated
+ *
+ * prefer an options object instead of `InjectFlags`
+ *
+ * 更喜欢 options 对象而不是 `InjectFlags`
+ *
  */
 export function inject<T>(token: ProviderToken<T>, flags?: InjectFlags): T|null;
 /**
  * @param token A token that represents a dependency that should be injected.
+ *
+ * 表示应该注入的依赖项的标记。
+ *
  * @param options Control how injection is executed. Options correspond to injection strategies
  *     that can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and
  *     `@Optional`.
- * @returns the injected value if operation is successful.
+ *
+ * 控制注入的执行方式。选项对应于可以用参数装饰器 `@Host` 、 `@Self` 、 `@SkipSelf` 和 `@Optional` 指定的注入策略。
+ *
+ * @returns
+ *
+ * the injected value if operation is successful.
+ *
+ * 如果操作成功，则注入的值。
+ *
  * @throws if called outside of a supported context, or if the token is not found.
+ *
+ * 如果在受支持的上下文之外调用，或者找不到标记。
  *
  * @publicApi
  */
 export function inject<T>(token: ProviderToken<T>, options: InjectOptions&{optional?: false}): T;
 /**
  * @param token A token that represents a dependency that should be injected.
+ *
+ * 表示应该注入的依赖项的标记。
+ *
  * @param options Control how injection is executed. Options correspond to injection strategies
  *     that can be specified with parameter decorators `@Host`, `@Self`, `@SkipSelf`, and
  *     `@Optional`.
- * @returns the injected value if operation is successful,  `null` if the token is not
+ *
+ * 控制注入的执行方式。选项对应于可以用参数装饰器 `@Host` 、 `@Self` 、 `@SkipSelf` 和 `@Optional` 指定的注入策略。
+ *
+ * @returns
+ *
+ * the injected value if operation is successful,  `null` if the token is not
  *     found and optional injection has been requested.
+ *
+ * 如果操作成功，则为注入的值，如果找不到标记并且已请求可选注入，则为 `null` 。
+ *
  * @throws if called outside of a supported context, or if the token is not found and optional
  *     injection was not requested.
+ *
+ * 如果在受支持的上下文之外调用，或者找不到标记并且未请求可选注入。
  *
  * @publicApi
  */
@@ -256,6 +283,8 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  *
  * It is also legal to call `inject` from a provider's factory:
  *
+ * 从提供者的工厂调用 `inject` 也是合法的：
+ *
  * ```typescript
  * providers: [
  *   {provide: Car, useFactory: () => {
@@ -269,6 +298,8 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  * Calls to the `inject()` function outside of the class creation context will result in error. Most
  * notably, calls to `inject()` are disallowed after a class instance was created, in methods
  * (including lifecycle hooks):
+ *
+ * 在类创建上下文之外调用 `inject()` 函数将导致错误。最值得注意的是，在创建类实例之后，不允许在方法（包括生命周期钩子）中调用 `inject()` ) ：
  *
  * ```typescript
  * @Component ({ ... })

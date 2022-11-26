@@ -83,7 +83,7 @@ class UpdatedProgramHost extends DelegatingCompilerHost {
   /**
    * The `ShimReferenceTagger` responsible for tagging `ts.SourceFile`s loaded via this host.
    *
-   * 负责标记通过此主机加载的 `ShimReferenceTagger` 的 `ts.SourceFile` 。
+   * 负责标记通过此宿主加载的 `ShimReferenceTagger` 的 `ts.SourceFile` 。
    *
    * The `UpdatedProgramHost` is used in the creation of a new `ts.Program`. Even though this new
    * program is based on a prior one, TypeScript will still start from the root files and enumerate

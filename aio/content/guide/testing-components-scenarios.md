@@ -292,7 +292,7 @@ The tests need access to the stub `UserService` injected into the `WelcomeCompon
 Angular has a hierarchical injection system.
 There can be injectors at multiple levels, from the root injector created by the `TestBed` down through the component tree.
 
-Angular 有一个分层注入系统。它具有多个层级的注入器，从 `TestBed` 创建的根注入器开始，直到组件树中的各个层级。
+Angular 有一个多级注入系统。它具有多个层级的注入器，从 `TestBed` 创建的根注入器开始，直到组件树中的各个层级。
 
 The safest way to get the injected service, the way that ***always works***,
 is to **get it from the injector of the *component-under-test***.
@@ -542,9 +542,13 @@ It's a companion to `fakeAsync()` and you can only call it within a `fakeAsync()
 
 In this example, you have a new macro task, the nested `setTimeout` function. By default, when the `tick` is setTimeout, `outside` and `nested` will both be triggered.
 
+在此示例中，你有一个新的宏任务，即嵌套的 `setTimeout` 函数。默认情况下，当 `tick` 为 setTimeout 时， `outside` 和 `nested` 都将被触发。
+
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-sync"></code-example>
 
 In some case, you don't want to trigger the new macro task when ticking. You can use `tick(millis, {processNewMacroTasksSynchronously: false})` to not invoke a new macro task.
+
+在某些情况下，你可能不想在滴答时触发新的宏任务。你可以用 `tick(millis, {processNewMacroTasksSynchronously: false})` 来避免调用新的宏任务。
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-async"></code-example>
 

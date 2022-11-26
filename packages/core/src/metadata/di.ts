@@ -380,6 +380,8 @@ export interface ContentChildDecorator {
    * * **descendants** - If `true` (default) include all descendants of the element. If `false` then
    *   only query direct children of the element.
    *
+   *   **后代**- 如果为 `true` （默认），则包括元素的所有后代。如果为 `false` ，则仅查询元素的直接子项。
+   *
    * * **read** - Used to read a different token from the queried element.
    *
    *   **read** - 用于从查询到的元素读取不同的令牌。
@@ -401,6 +403,8 @@ export interface ContentChildDecorator {
    *   - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
    *         with `@ContentChild('cmp')`)
    *
+   *     字符串形式的模板引用变量（例如，使用 `@ContentChild('cmp')` 查询 `<my-component #cmp></my-component>` ）
+   *
    *     ```
    *     字符串形式的模板引用变量（例如，使用 `@ContentChild('cmp')` 查询 `<my-component
    *     ```
@@ -409,6 +413,8 @@ export interface ContentChildDecorator {
    *
    *   - Any provider defined in the child component tree of the current component (e.g.
    *         `@ContentChild(SomeService) someService: SomeService`)
+   *
+   *     在当前组件的子组件树中定义的任何提供者（例如 `@ContentChild(SomeService) someService: SomeService` ）
    *
    *     ```
    *     在当前组件的子组件树中定义的任何提供者（例如 `@ContentChild(SomeService) someService:
@@ -423,6 +429,8 @@ export interface ContentChildDecorator {
    *
    *   - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ContentChild(TemplateRef)
    *         template;`)
+   *
+   *     `TemplateRef` （例如使用 `@ContentChild(TemplateRef) template;` 查询 `<ng-template></ng-template>` ；）
    *
    *     ```
    *     `TemplateRef`（例如使用 `@ContentChild(TemplateRef) template;` 查询
@@ -541,11 +549,15 @@ export interface ViewChildrenDecorator {
    *       ** Note: \*** This config option is **deprecated**, it will be permanently set to `true`
    *   and removed in future versions of Angular.
    *
+   *   **emitDistinctChangesOnly** -仅当 QueryList 结果发生更改时， `QueryList#changes` observable 才会发出新值。当 `false` 时，即使 QueryList 没有 `changes` ，observable 也可能会发出更改。**注意：\***此配置选项已**过时**，它将被永久设置为 `true` 并在未来版本的 Angular 中删除。
+   *
    *   ```
    *   **read** - 用于从查询的元素中读取不同的令牌。
    *   ```
    *
    *   The following selectors are supported.
+   *
+   *   支持以下选择器。
    *
    *   - Any class with the `@Component` or `@Directive` decorator
    *
@@ -553,6 +565,8 @@ export interface ViewChildrenDecorator {
    *
    *   - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
    *         with `@ViewChildren('cmp')`)
+   *
+   *     作为字符串的模板引用变量（例如，使用 `@ViewChildren('cmp')` 查询 `<my-component #cmp></my-component>` ）
    *
    *     ```
    *     作为字符串的模板引用变量（例如，使用 `@ViewChildren('cmp')` 查询 `<my-component
@@ -562,6 +576,8 @@ export interface ViewChildrenDecorator {
    *
    *   - Any provider defined in the child component tree of the current component (e.g.
    *         `@ViewChildren(SomeService) someService!: SomeService`)
+   *
+   *     在当前组件的子组件树中定义的任何提供者（例如 `@ViewChildren(SomeService) someService!: SomeService` ）
    *
    *     ```
    *     在当前组件的子组件树中定义的任何提供者（例如 `@ViewChildren(SomeService) someService!:
@@ -576,6 +592,8 @@ export interface ViewChildrenDecorator {
    *
    *   - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ViewChildren(TemplateRef)
    *         template;`)
+   *
+   *     `TemplateRef` （例如使用 `@ViewChildren(TemplateRef) template;` 查询 `<ng-template></ng-template>` ；）
    *
    *     ```
    *     `TemplateRef`（例如使用 `@ViewChildren(TemplateRef) template;` 查询

@@ -4,6 +4,8 @@
 
 **Standalone components** provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for `NgModule`s. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.
 
+**独立组件**提供了一种简化的方式来构建 Angular 应用程序。独立组件、指令和管道旨在通过减少对 `NgModule` 的需求来简化创作体验。现有应用程序可以选择性地以增量方式采用新的独立风格，而无需任何重大更改。
+
 ## Creating standalone components
 
 ## 创建独立组件
@@ -124,7 +126,7 @@ bootstrapApplication(PhotoAppComponent, {
 
 The standalone bootstrap operation is based on explicitly configuring a list of `Provider`s for dependency injection. In Angular, `provide`-prefixed functions can be used to configure different systems without needing to import NgModules. For example, `provideRouter` is used in place of `RouterModule.forRoot` to configure the router:
 
-独立的引导操作基于显式配置 `Provider` 列表以进行依赖注入。但是，现有的库可能依赖 `NgModule` 来配置 DI。例如，Angular 的路由器使用 `RouterModule.forRoot()` 帮助器在应用程序中设置路由。你可以通过 `importProvidersFrom` 实用程序在 `bootstrapApplication` 中使用这些现有的 `NgModule` ：
+独立的引导操作基于显式配置 `Provider` 列表以进行依赖注入。在 Angular 中，带有 `provide` 前缀的函数可用于配置不同的系统，而不必导入 NgModules。比如 `provideRouter` 可用于 `RouterModule.forRoot` 中以配置路由器：
 
 ```ts
 bootstrapApplication(PhotoAppComponent, {
@@ -137,6 +139,8 @@ bootstrapApplication(PhotoAppComponent, {
 ```
 
 Many third party libraries have also been updated to support this `provide`-function configuration pattern. If a library only offers an NgModule API for its DI configuration, you can use the `importProvidersFrom` utility to still use it with `bootstrapApplication` and other standalone contexts:
+
+许多第三方库也已更新以支持这种 `provide` 配置模式。如果某个库仅为其 DI 配置提供 NgModule API，你可以用 `importProvidersFrom` 实用函数，来将它与 `bootstrapApplication` 和其他独立上下文一起使用：
 
 ```ts
 import {LibraryModule} from 'ngmodule-based-library';
@@ -203,7 +207,11 @@ export const ADMIN_ROUTES: Route[] = [
 
 ### Lazy loading and default exports
 
+### 惰性加载和默认导出
+
 When using `loadChildren` and `loadComponent`, the router understands and automatically unwraps dynamic `import()` calls with `default` exports. You can take advantage of this to skip the `.then()` for such lazy loading operations.
+
+使用 `loadChildren` 和 `loadComponent` 时，路由器会理解并使用 `default` 导出来自动解包动态 `import()` 调用。你可以利用这一点跳过 `.then()` 进行此类惰性加载操作。
 
 ```ts
 // In the main application:
@@ -283,6 +291,8 @@ Note the use of an empty-path route to host `providers` that are shared among al
 
 `importProvidersFrom` can be used to import existing NgModule-based DI configuration into route `providers` as well.
 
+`importProvidersFrom` 也可用于将现有的基于 NgModule 的 DI 配置导入到路由 `providers` 中。
+
 ## Advanced topics
 
 ## 高级主题
@@ -337,7 +347,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 * **node injectors** configured in `@Directive.providers` / `@Component.providers` or `@Component.viewProviders`. Those providers are visible to a given component and all its children only.
 
-  在 `@Directive.providers` / `@Component.providers` 或 `@Component.viewProviders` 中配置的**节点注入器**。这些提供程序仅对给定组件及其所有子项可见。
+  在 `@Directive.providers` / `@Component.providers` 或 `@Component.viewProviders` 中配置的**节点注入器**。这些提供者仅对给定组件及其所有子项可见。
 
 #### Environment injectors
 
@@ -345,7 +355,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers (for example, [HttpClient](https://angular.io/api/common/http/HttpClient)). In the standalone application (one created with `bootstrapApplication`), “module” providers can be configured during the bootstrap process, in the `providers` option: 
 
-使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](https://angular.io/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供程序：
+使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](https://angular.io/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供者：
 
 ```ts
 bootstrapApplication(PhotoAppComponent, {
@@ -453,4 +463,4 @@ When Angular creates a standalone component, it needs to know that the current i
 
 A separate standalone injector is created to ensure that providers imported by a standalone component are “isolated” from the rest of the application. This lets us think of standalone components as truly self-contained pieces that can’t “leak” their implementation details to the rest of the application.
 
-创建了一个单独的独立注入器，以确保独立组件导入的提供程序与应用程序的其余部分“隔离”。这让我们将独立组件视为真正独立的部分，不能将它们的实现细节“泄漏”给应用程序的其余部分。
+创建了一个单独的独立注入器，以确保独立组件导入的提供者与应用程序的其余部分“隔离”。这让我们将独立组件视为真正独立的部分，不能将它们的实现细节“泄漏”给应用程序的其余部分。

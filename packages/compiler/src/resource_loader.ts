@@ -15,7 +15,7 @@
  * This is an abstract class, rather than an interface, so that it can be used
  * as injection token.
  *
- * 这是一个抽象类，而不是接口，因此可以作为注入标记。
+ * 这是一个抽象类，而不是接口，因此可以作为注入令牌。
  *
  */
 export abstract class ResourceLoader {

@@ -282,10 +282,11 @@ Dependency injection is front and center in both AngularJS and Angular, but ther
 
 | AngularJS | Angular |
 | :-------- | :------ |
+| AngularJS | 角 |
 | Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
 | 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。<br /> 通常是类。<br />也可能是字符串。 |
 | There is exactly one injector. <br /> Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
-| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状分层注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |
+| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状多级注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |
 
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
@@ -503,7 +504,7 @@ To begin converting your AngularJS application to a hybrid, you need to load the
 You can see how this can be done with SystemJS by following the instructions in [Setup for Upgrading to AngularJS][AioGuideUpgradeSetup] for selectively copying code from the [QuickStart GitHub repository][GithubAngularQuickstart].
 
 要想把 AngularJS 应用变成 Hybrid 应用，就要先加载 Angular 框架。
-根据[准备升级到 AngularJS][AioGuideUpgradeSetup] 中给出的步骤，选择性的把[快速入门 github 代码仓][GithubAngularQuickstart]中的代码复制过来。
+根据[准备升级到 AngularJS][AioGuideUpgradeSetup] 中给出的步骤，选择性的把[快速入门 GitHub 代码仓][GithubAngularQuickstart]中的代码复制过来。
 
 You also need to install the `@angular/upgrade` package using `npm install @angular/upgrade --save` and add a mapping for the `@angular/upgrade/static` package:
 
@@ -1864,7 +1865,7 @@ As described by the [Dependency Injection Guide][AioGuideDependencyInjection], t
 
 `@Injectable` 装饰器将把一些依赖注入相关的元数据附加到该类上，让 Angular 知道它的依赖信息。
 就像在[依赖注入指南][AioGuideDependencyInjection]中描述过的那样，
-这是一个标记装饰器，你要把它用在那些没有其它 Angular 装饰器，并且自己有依赖注入的类上。
+这是一个令牌装饰器，你要把它用在那些没有其它 Angular 装饰器，并且自己有依赖注入的类上。
 
 In its constructor the class expects to get the `HttpClient` service.
 It will be injected to it and it is stored as a private field.

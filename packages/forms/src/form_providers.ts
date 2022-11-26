@@ -38,11 +38,19 @@ import {CALL_SET_DISABLED_STATE, setDisabledStateDefault, SetDisabledStateOption
 export class FormsModule {
   /**
    * @description
+   *
    * Provides options for configuring the forms module.
+   *
+   * 提供用于配置 forms 模块的选项。
+   *
    * @param opts An object of configuration options
+   *
+   * 配置选项的对象
    *
    * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
    *   correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   *
+   *   `callSetDisabledState` 配置是 `always` 调用 `setDisabledState` ，这更正确，还是仅调用它 `whenDisabled` ，这是旧版行为。
    *
    */
   static withConfig(opts: {
@@ -97,8 +105,12 @@ export class ReactiveFormsModule {
    * * `warnOnNgModelWithFormControl` Configures when to emit a warning when an `ngModel`
    *   binding is used with reactive form directives.
    *
+   *   `warnOnNgModelWithFormControl` 配置当 `ngModel` 绑定与响应式表单指令一起使用时何时发出警告。
+   *
    * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
    *   correct, or to only call it `whenDisabled`, which is the legacy behavior.
+   *
+   *   `callSetDisabledState` 配置是 `always` 调用 `setDisabledState` ，这更正确，还是仅调用它 `whenDisabled` ，这是旧版行为。
    *
    */
   static withConfig(opts: {

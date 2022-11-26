@@ -48,9 +48,16 @@ function serializeTransferStateFactory(doc: Document, appId: string, transferSto
  * Note: this module is not needed if the `renderApplication` function is used.
  * The `renderApplication` makes all providers from this module available in the application.
  *
+ * 注意：如果使用了 `renderApplication` 函数，则不需要此模块。 `renderApplication` 使此模块中的所有提供者在应用程序中可用。
+ *
  * @publicApi
- * @deprecated no longer needed, you can inject the `TransferState` in an app without providing
+ * @deprecated
+ *
+ * no longer needed, you can inject the `TransferState` in an app without providing
  *     this module.
+ *
+ * 不再需要，你可以在不提供此模块的情况下在应用程序中注入 `TransferState` 。
+ *
  */
 @NgModule({})
 export class ServerTransferStateModule {

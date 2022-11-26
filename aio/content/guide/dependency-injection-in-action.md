@@ -315,7 +315,7 @@ It's visually simple: a few properties and the logs produced by a logger.
 The code behind it customizes how and where the DI framework provides dependencies.
 The use cases illustrate different ways to use the *provide* object literal to associate a definition object with a DI token.
 
-它背后的代码定制了 DI 框架提供依赖项的方法和位置。这个例子阐明了通过[*提供*对象字面量](guide/dependency-injection-providers#provide)来把对象的定义和 DI 令牌关联起来的另一种方式。
+它背后的代码定制了 DI 框架提供依赖项的方法和位置。这个例子阐明了通过*提供*对象字面量来把对象的定义和 DI 令牌关联起来的另一种方式。
 
 <code-example header="hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="hero-of-the-month"></code-example>
 
@@ -587,7 +587,7 @@ an interface is not a valid DI token because it is a TypeScript artifact that do
 Use this abstract class interface to get the strong typing of an interface,
 and also use it as a provider token in the way you would a normal class.
 
-就像 [DI 提供者](guide/dependency-injection-providers#di-and-interfaces)中提到的那样，接口不是有效的 DI 令牌，因为它是 TypeScript 自己用的，在运行期间不存在。使用这种抽象类接口不但可以获得像接口一样的强类型，而且可以像普通类一样把它用作提供者令牌。
+就像[配置依赖提供者](guide/dependency-injection-providers)中提到的那样，接口不是有效的 DI 令牌，因为它是 TypeScript 自己用的，在运行期间不存在。使用这种抽象类接口不但可以获得像接口一样的强类型，而且可以像普通类一样把它用作提供者令牌。
 
 A class interface should define *only* the members that its consumers are allowed to call.
 Such a narrowing interface helps decouple the concrete class from its consumers.

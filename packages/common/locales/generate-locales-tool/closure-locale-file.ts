@@ -181,7 +181,12 @@ ${
         .trim();
   }
 
-  /** Creates a locale extra data constant for the given locale. */
+  /**
+   * Creates a locale extra data constant for the given locale.
+   *
+   * 为给定的区域设置创建一个区域设置额外数据常量。
+   *
+   */
   function generateLocaleExtraDataConstant(locale: ClosureLocale, constantName: string): string {
     return `export const ${constantName} = ${
         generateLocaleExtraDataArrayCode(locale.canonicalLocaleName, locale.data)};`;

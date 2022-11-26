@@ -4,6 +4,8 @@
 
 Routing enables users to navigate between different routes in an application.
 
+路由使用户能够在应用程序中的不同路由之间导航。
+
 ## Prerequisites
 
 ## 前提条件
@@ -26,6 +28,8 @@ A basic understanding of the following concepts:
 
 ## Enable routing transition animation
 
+## 启用路由过渡动画
+
 When a user navigates from one route to another, the Angular router maps the URL path to a relevant component and displays its view.
 Animating this route transition can greatly enhance the user experience.
 
@@ -35,7 +39,7 @@ The Angular router comes with high-level animation functions that let you animat
 To produce an animation sequence when switching between routes, you need to define nested animation sequences.
 Start with the top-level component that hosts the view, and nest animations in the components that host the embedded views.
 
-Angular 路由器天生带有高级动画功能，它可以让你为在路由变化时为视图之间设置转场动画。要想在路由切换时生成动画序列，你需要首先定义出嵌套的动画序列。从宿主视图的顶层组件开始，在这些内嵌视图的宿主组件中嵌套添加其它动画。
+Angular 路由器天生带有高级动画功能，它可以让你为在路由变化时为视图之间设置转场动画。要想在路由切换时生成动画序列，你需要首先定义出嵌套的动画序列。从宿主视图的顶层组件开始，在这些内嵌视图的宿主组件中嵌套动画。
 
 To enable routing transition animation, do the following:
 
@@ -57,7 +61,7 @@ Illustrate a router transition animation by navigating between two routes, *Home
 Both of these component views are children of the top-most view, hosted by `AppComponent`.
 Implement a router transition animation that slides in the new view to the right and slides out the old view when navigating between the two routes.
 
-让我们以两个路由之间的导航过程来解释一下路由转场动画，*Home* 和 *About* 分别与 `HomeComponent` 和 `AboutComponent` 的视图相关联。所有这些组件视图都是顶层视图的子节点，其宿主是 `AppComponent`。我们将实现路由器过渡动画，该动画会在出现新视图时向右滑动，并当用户在两个路由之间导航时把旧视图滑出。
+让我们以两个路由之间的导航过程来解释一下路由转场动画，*Home* 和 *About* 分别与 `HomeComponent` 和 `AboutComponent` 的视图相关联。所有这些组件视图都是顶层视图的子节点，其宿主是 `AppComponent`。接下来将实现路由器过渡动画，该动画会在出现新视图时向右滑动，并当在两个路由之间导航时把旧视图滑出。
 
 <div class="lightbox">
 
@@ -104,7 +108,7 @@ The route configuration tells the Angular router to instantiate the `HomeCompone
 The `data` property of each route defines the key animation-specific configuration associated with a route.
 The `data` property value is passed into `AppComponent` when the route changes.
 
-每个路由定义中的 `data` 属性也定义了与此路由有关的动画配置。当路由变化时，`data` 属性的值就会传给 `AppComponent`。你还可以在路由配置中传递其它的值供路由的动画使用。`data` 属性的值必须满足 `routeAnimation` 中定义的转场动画的要求，稍后我们就会定义它。
+每个路由定义中的 `data` 属性也定义了与此路由有关的动画配置。当路由变化时，`data` 属性的值就会传给 `AppComponent`。
 
 <div class="alert is-helpful">
 
@@ -144,7 +148,7 @@ Here's an example of an `AppComponent` method that detects when a route change h
 The `getRouteAnimationData()` method takes the value of the outlet. It returns a string that represents the state of the animation based on the custom data of the current active route.
 Use this data to control which transition to run for each route.
 
-这里的 `getRouteAnimationData()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`），并根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个转场。
+这里的 `getRouteAnimationData()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`）。它会根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个转场。
 
 ## Animation definition
 

@@ -184,12 +184,16 @@ Dates are offered as general guidance and are subject to change.
 
 ### Release schedule
 
+### 发布时间表
+
 | Version | Date |
 | :------ | :--- |
 | 版本 | 日期 |
 | v15.0 | 2022-11-18 |
 
 ### Support window
+
+### 支持窗口期
 
 All major releases are typically supported for 18 months.
 
@@ -204,6 +208,8 @@ All major releases are typically supported for 18 months.
 | LTS 长期支持版 | 12 个月 | 只会发布[关键性修复和安全补丁](#lts-fixes)。 |
 
 ### Actively supported versions
+
+### 活跃支持版
 
 The following table provides the status for Angular versions under support.
 
@@ -221,7 +227,7 @@ The following table provides the status for Angular versions under support.
 
 Angular versions v2 to v12 are no longer under support.
 
-不再为 v2 到 v11  版提供支持。
+不再为 v2 到 v12  版提供支持。
 
 ### LTS fixes
 

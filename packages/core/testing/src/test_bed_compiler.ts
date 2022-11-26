@@ -439,6 +439,9 @@ export class TestBedCompiler {
   /**
    * Applies provider overrides to a given type (either an NgModule or a standalone component)
    * and all imported NgModules and standalone components recursively.
+   *
+   * 将提供程序覆盖应用到给定类型（ NgModule 或独立组件）以及所有导入的 NgModule 和独立组件。
+   *
    */
   private applyProviderOverridesInScope(type: Type<any>): void {
     const hasScope = isStandaloneComponent(type) || isNgModule(type);

@@ -20,7 +20,12 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * 用于所有 `DatePipe` 实例的（可选）提供的默认时区（例如 `'+0430'`）。如果未提供该值，则
  * `DatePipe` 将使用最终用户的本地系统时区。
  *
- * @deprecated use DATE_PIPE_DEFAULT_OPTIONS token to configure DatePipe
+ * @deprecated
+ *
+ * use DATE_PIPE_DEFAULT_OPTIONS token to configure DatePipe
+ *
+ * 使用 DATE_PIPE_DEFAULT_OPTIONS 令牌来配置 DatePipe
+ *
  */
 export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_DEFAULT_TIMEZONE');
 
@@ -28,11 +33,17 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
  * DI token that allows to provide default configuration for the `DatePipe` instances in an
  * application. The value is an object which can include the following fields:
  *
+ * 允许为应用程序中的 `DatePipe` 实例提供默认配置的 DI 令牌。该值是一个对象，可以包含以下字段：
+ *
  * - `dateFormat`: configures the default date format. If not provided, the `DatePipe`
  *   will use the 'mediumDate' as a value.
  *
+ *   `dateFormat` ：配置默认日期格式。如果未提供， `DatePipe` 将使用 'mediumDate' 作为值。
+ *
  * - `timezone`: configures the default timezone. If not provided, the `DatePipe` will
  *   use the end-user's local system timezone.
+ *
+ *   `timezone` ：配置默认时区。如果未提供， `DatePipe` 将使用最终用户的本地系统时区。
  *
  * @see `DatePipeConfig`
  * @usageNotes
@@ -40,9 +51,15 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
  * Various date pipe default values can be overwritten by providing this token with
  * the value that has this interface.
  *
+ * 可以通过向此令牌提供具有此接口的值来覆盖各种日期管道默认值。
+ *
  * For example:
  *
+ * 例如：
+ *
  * Override the default date format by providing a value using the token:
+ *
+ * 通过使用令牌提供值来覆盖默认日期格式：
  *
  * ```typescript
  * providers: [
@@ -51,6 +68,8 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
  * ```
  *
  * Override the default timezone by providing a value using the token:
+ *
+ * 通过使用令牌提供值来覆盖默认时区：
  *
  * ```typescript
  * providers: [
@@ -95,7 +114,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * injection token. The value that is passed in as the second parameter takes precedence over
  * the one defined using the injection token.
  *
- * 可以通过将格式化值的时区作为管道的第二个参数传入，或通过 `DATE_PIPE_DEFAULT_TIMEZONE` 注入标记设置默认值来指定格式化值的时区。作为第二个参数传入的值优先于使用注入标记定义的值。
+ * 可以通过将格式化值的时区作为管道的第二个参数传入，或通过 `DATE_PIPE_DEFAULT_TIMEZONE` 注入令牌设置默认值来指定格式化值的时区。作为第二个参数传入的值优先于使用注入令牌定义的值。
  * @see `formatDate()`
  * @usageNotes
  *
@@ -333,11 +352,13 @@ export class DatePipe implements PipeTransform {
    *
    * 日期表达式：`Date` 对象、数字（从 UTC 时代以来的毫秒数）或一个 ISO 字符串
    * (<https://www.w3.org/TR/NOTE-datetime>)。
-   *
    * @param format The date/time components to include, using predefined options or a
    * custom format string.  When not provided, the `DatePipe` looks for the value using the
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token (and reads the `dateFormat` property).
    * If the token is not configured, the `mediumDate` is used as a value.
+   *
+   * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时， `DatePipe` 会使用 `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌查找值（并读取 `dateFormat` 属性）。如果未配置令牌，则使用 `mediumDate` 作为值。
+   *
    * @param timezone A timezone offset (such as `'+0430'`), or a standard UTC/GMT, or continental US
    * timezone abbreviation. When not provided, the `DatePipe` looks for the value using the
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token (and reads the `timezone` property). If the token
@@ -352,9 +373,7 @@ export class DatePipe implements PipeTransform {
    * 要使用的区域格式规则的区域代码。
    * 如果不提供，就使用 `LOCALE_ID` 的值，默认为 `en-US`。
    * 参见[设置应用的区域](guide/i18n-common-locale-id)。
-   *
    * @see `DATE_PIPE_DEFAULT_OPTIONS`
-   *
    * @returns A date string in the desired format.
    *
    * 指定格式的日期字符串。

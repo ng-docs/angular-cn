@@ -10,7 +10,7 @@ It should do something specific and do it well.
 
 Angular distinguishes components from services to increase modularity and reusability.
 
-Angular 把组件和服务区分开，以提高模块性和复用性。通过把组件中和视图有关的功能与其它类型的处理分离开，你可以让组件类更加精简、高效。
+Angular 把组件和服务区分开，以提高模块性和复用性。
 
 Ideally, a component's job is to enable only the user experience.
 A component should present properties and methods for data binding to mediate between the view and the application logic. The view is what the template renders and the application logic is what includes the notion of a *model*.
@@ -20,12 +20,12 @@ A component should present properties and methods for data binding to mediate be
 A component should use services for tasks that don't involve the view or application logic. Services are good for tasks such as fetching data from the server, validating user input, or logging directly to the console. By defining such processing tasks in an *injectable service class*, you make those tasks available to any component.
 You can also make your application more adaptable by injecting different providers of the same kind of service, as appropriate in different circumstances.
 
-组件应该把诸如从服务器获取数据、验证用户输入或直接往控制台中写日志等工作委托给各种服务。通过把各种处理任务定义到可注入的服务类中，你可以让它被任何组件使用。通过在不同的环境中注入同一种服务的不同提供者，你还可以让你的应用更具适应性。
+组件应该使用服务来完成那些不涉及视图或应用逻辑的任务。服务很擅长诸如从服务器获取数据、验证用户输入或直接把日志写入控制台之类的任务。通过把各种处理任务定义到可注入的服务类中，你可以让它被任何组件使用。通过在不同的环境中注入同一种服务的不同提供者，你还可以让你的应用更具适应性。
 
 Angular doesn't *enforce* these principles.
 Instead, Angular helps you *follow* these principles by making it easy to factor your application logic into services. In Angular, *dependency injection* makes those services available to components.
 
-Angular 不会*强迫*你遵循这些原则。Angular 只会通过*依赖注入*来帮你更容易地将应用逻辑分解为服务，并让这些服务可用于各个组件中。
+Angular 不会*强迫*你遵循这些原则。Angular 只会通过*依赖注入*来帮你更容易地将应用逻辑分解为服务。在 Angular 中，*依赖注入*会令这些服务可用于各个组件中。
 
 ## Service examples
 
@@ -58,7 +58,7 @@ That service in turn might depend on the `HttpClient` service to fetch heroes as
 Dependency injection (DI) is the part of the Angular framework that provides components with access to services and other resources.
 Angular provides the ability for you to *inject* a service into a component to give that component access to the service.
 
-DI 被融入 Angular 框架中，用于在任何地方给新建的组件提供服务或所需的其它东西。组件是服务的消费者，也就是说，你可以把一个服务*注入*到组件中，让组件类得以访问该服务类。
+DI 是 Angular 框架的一部分，用于在任何地方给新建的组件提供服务和其它资源。Angular 提供了把某个服务*注入*到组件中的能力，以便那个组件得以访问该服务类。
 
 The `@Injectable()` decorator defines a class as a service in Angular and allows Angular to inject it into a component as a *dependency*.
 Likewise, the `@Injectable()` decorator indicates that a component, class, pipe, or NgModule *has* a dependency on a service.

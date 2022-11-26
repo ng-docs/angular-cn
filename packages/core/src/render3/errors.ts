@@ -35,7 +35,12 @@ export function assertStandaloneComponentType(type: Type<unknown>) {
   }
 }
 
-/** Verifies whether a given type is a component */
+/**
+ * Verifies whether a given type is a component
+ *
+ * 验证给定类型是否是组件
+ *
+ */
 export function assertComponentDef(type: Type<unknown>) {
   if (!getComponentDef(type)) {
     throw new RuntimeError(
@@ -45,7 +50,12 @@ export function assertComponentDef(type: Type<unknown>) {
   }
 }
 
-/** Called when there are multiple component selectors that match a given node */
+/**
+ * Called when there are multiple component selectors that match a given node
+ *
+ * 当有多个组件选择器与给定节点匹配时调用
+ *
+ */
 export function throwMultipleComponentError(
     tNode: TNode, first: Type<unknown>, second: Type<unknown>): never {
   throw new RuntimeError(

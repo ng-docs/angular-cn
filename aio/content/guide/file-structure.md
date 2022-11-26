@@ -38,8 +38,12 @@ Angular also supports workspaces with [multiple projects](#multiple-projects).
 This type of development environment is suitable for advanced users who are developing [shareable libraries](guide/glossary#library),
 and for enterprises that use a "monorepo" development style, with a single repository and global configuration for all Angular projects.
 
+Angular 还支持包含[多个项目](#multiple-projects)的工作区。这种开发环境适用于正在开发[可共享库](guide/glossary#library)的高级用户，以及那些使用“单一（mono）仓库”开发风格的企业，它只需要一个仓库，而且所有 Angular 项目都使用全局配置。
+
 To set up a monorepo workspace, you should skip the creating the root application.
 See [Setting up for a multi-project workspace](#multiple-projects) below.
+
+要设置单一仓库的工作区，你应该跳过创建根应用的过程。参阅下面的[设置多项目工作区](#multiple-projects)部分。
 
 ## Workspace configuration files
 
@@ -58,7 +62,7 @@ The top level of the workspace contains workspace-wide configuration files, conf
 | `.gitignore` | Specifies intentionally untracked files that [Git](https://git-scm.com) should ignore. |
 | `.gitignore` | 指定 [Git](https://git-scm.com/) 应忽略的不必追踪的文件。 |
 | `README.md` | Introductory documentation for the root application. |
-| `README.md` | 根应用的简介文档.。 |
+| `README.md` | 根应用的简介文档。 |
 | `angular.json` | CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as [Karma](https://karma-runner.github.io), and [Protractor](https://www.protractortest.org). For details, see [Angular Workspace Configuration](guide/workspace-config). |
 | `angular.json` | 为工作区中的所有项目指定 CLI 的默认配置，包括 CLI 要用到的构建、启动开发服务器和测试工具的配置项，比如 [Karma](https://karma-runner.github.io) 和 [Protractor](http://www.protractortest.org)。欲知详情，参阅 [Angular 工作区配置](guide/workspace-config) 部分。 |
 | `package.json` | Configures [npm package dependencies](guide/npm-packages) that are available to all projects in the workspace. See [npm documentation](https://docs.npmjs.com/files/package.json) for the specific format and contents of this file. |
@@ -84,9 +88,13 @@ CLI 命令 `ng new my-app` 会默认创建名为 “my-app” 的工作区文件
 When the workspace file structure is in place, you can use the `ng generate` command on the command line to add functionality and data to the application.
 This initial root-level application is the *default app* for CLI commands (unless you change the default after creating [additional apps](#multiple-projects)).
 
+当工作区文件结构到位时，可以在命令行中使用 `ng generate` 命令往该应用中添加功能和数据。这个初始的根应用是 CLI 命令的*默认应用*（除非你在创建[其它应用](#multiple-projects)之后更改了默认值）。
+
 <div class="alert is-helpful">
 
 Besides using the CLI on the command line, you can also manipulate files directly in the application's source folder and configuration files.
+
+除了在命令行中使用 CLI 之外，你还可以直接在应用的源文件夹和配置文件中操作这些文件。
 
 </div>
 
@@ -108,6 +116,7 @@ Subfolders contain the application source and application-specific configuration
 | :------------------------ | :------ |
 | 应用支持文件 | 用途 |
 | `app/` | Contains the component files in which your application logic and data are defined. See details [below](#app-src). |
+| `app/` | 包含定义应用逻辑和数据的组件文件。详见[下文](#app-src)。 |
 | `assets/` | Contains image and other asset files to be copied as-is when you build your application. |
 | `assets/` | 包含要在构建应用时应该按原样复制的图像和其它静态资源文件。 |
 | `favicon.ico` | An icon to use for this application in the bookmark bar. |
@@ -124,6 +133,8 @@ Subfolders contain the application source and application-specific configuration
 New Angular projects use strict mode by default.
 If this is not desired you can opt out when creating the project.
 For more information, see [Strict mode](guide/strict-mode).
+
+新的 Angular 项目默认使用严格模式。如果你不想这样，可以在创建项目时禁用它。欲知详情，参见[严格模式](guide/strict-mode)。
 
 </div>
 

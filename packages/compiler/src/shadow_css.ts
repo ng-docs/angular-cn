@@ -10,6 +10,9 @@
  * The following set contains all keywords that can be used in the animation css shorthand
  * property and is used during the scoping of keyframes to make sure such keywords
  * are not modified.
+ *
+ * 以下集包含可以在动画 css 速记属性中使用的所有关键字，并在关键帧范围内使用以确保不会修改此类关键字。
+ *
  */
 const animationKeywords = new Set([
   // global values
@@ -189,13 +192,21 @@ export class ShadowCss {
   /**
    * Process styles to add scope to keyframes.
    *
+   * 处理样式以添加关键帧的范围。
+   *
    * Modify both the names of the keyframes defined in the component styles and also the css
    * animation rules using them.
+   *
+   * 修改组件样式中定义的关键帧的名称以及使用它们的 css 动画规则。
    *
    * Animation rules using keyframes defined elsewhere are not modified to allow for globally
    * defined keyframes.
    *
+   * 使用在其他地方定义的关键帧的动画规则不会被修改以允许全局定义的关键帧。
+   *
    * For example, we convert this css:
+   *
+   * 例如，我们转换此 css：
    *
    * ```
    * .box {
@@ -211,6 +222,8 @@ export class ShadowCss {
    *
    * to this:
    *
+   * 对此：
+   *
    * ```
    * .box {
    *   animation: scopeName_box-animation 1s forwards;
@@ -224,9 +237,19 @@ export class ShadowCss {
    * ```
    *
    * @param cssText the component's css text that needs to be scoped.
+   *
+   * 需要限定范围的组件的 css 文本。
+   *
    * @param scopeSelector the component's scope selector.
    *
-   * @returns the scoped css text.
+   * 组件的范围选择器。
+   *
+   * @returns
+   *
+   * the scoped css text.
+   *
+   * 范围内的 css 文本。
+   *
    */
   private _scopeKeyframesRelatedCss(cssText: string, scopeSelector: string): string {
     const unscopedKeyframesSet = new Set<string>();
@@ -243,7 +266,11 @@ export class ShadowCss {
    * adds the original keyframe name to a provided set to collect all keyframes names
    * so that it can later be used to scope the animation rules.
    *
+   * 限定本地关键帧名称的范围，返回更新的 css 规则，它还将原始关键帧名称添加到提供的集中以收集所有关键帧名称，以便以后可以用它来确定动画规则的范围。
+   *
    * For example, it takes a rule such as:
+   *
+   * 例如，它需要一个规则，例如：
    *
    * ```
    * @keyframes box-animation {
@@ -255,6 +282,8 @@ export class ShadowCss {
    *
    * and returns:
    *
+   * 并返回：
+   *
    * ```
    * @keyframes scopeName_box-animation {
    *   to {
@@ -265,11 +294,27 @@ export class ShadowCss {
    *
    * and as a side effect it adds "box-animation" to the `unscopedKeyframesSet` set
    *
+   * 并作为副作用，它将“box-animation”添加到 `unscopedKeyframesSet` 集
+   *
    * @param cssRule the css rule to process.
+   *
+   * 要处理的 css 规则。
+   *
    * @param scopeSelector the component's scope selector.
+   *
+   * 组件的范围选择器。
+   *
    * @param unscopedKeyframesSet the set of unscoped keyframes names (which can be
    * modified as a side effect)
-   * @returns the css rule modified with the scoped keyframes name.
+   *
+   * 无范围关键帧名称的集（可以作为副作用修改）
+   *
+   * @returns
+   *
+   * the css rule modified with the scoped keyframes name.
+   *
+   * 使用范围内关键帧名称修改的 css 规则。
+   *
    */
   private _scopeLocalKeyframeDeclarations(
       rule: CssRule, scopeSelector: string, unscopedKeyframesSet: Set<string>): CssRule {
@@ -290,12 +335,27 @@ export class ShadowCss {
    * performed (keyframes names of keyframes not defined in the component's css need not to be
    * scoped).
    *
+   * 用于使用现有的一组 unscopedKeyframes 名称来确定关键帧名称（从动画声明获得）范围的函数，以区分是否需要执行范围（组件的 css 中未定义的关键帧的关键帧名称无需进行范围）。
+   *
    * @param keyframe the keyframes name to check.
+   *
+   * 要检查的关键帧名称。
+   *
    * @param scopeSelector the component's scope selector.
+   *
+   * 组件的范围选择器。
+   *
    * @param unscopedKeyframesSet the set of unscoped keyframes names.
    *
-   * @returns the scoped name of the keyframe, or the original name is the name need not to be
+   * 无范围的关键帧名称集。
+   *
+   * @returns
+   *
+   * the scoped name of the keyframe, or the original name is the name need not to be
    * scoped.
+   *
+   * 关键帧的范围名称，或者原始名称是不需要限定范围的名称。
+   *
    */
   private _scopeAnimationKeyframe(
       keyframe: string, scopeSelector: string, unscopedKeyframesSet: ReadonlySet<string>): string {
@@ -310,18 +370,28 @@ export class ShadowCss {
    * Regular expression used to extrapolate the possible keyframes from an
    * animation declaration (with possibly multiple animation definitions)
    *
+   * 用于从动画声明中推断可能的关键帧的正则表达式（可能带有多个动画定义）
+   *
    * The regular expression can be divided in three parts
+   *
+   * 正则表达式可以分为三部分
    *
    * - (^|\\s+)
    *   simply captures how many (if any) leading whitespaces are present
+   *
+   *   (^|\\s+) 简单地捕获存在多少（如果有）前导空格
    *
    * - (?:(?:(['"])((?:\\\\\|\\\\2|(?!\\2).)+)\\2)|(-?[A-Za-z][\w\-]\*))
    *      captures two different possible keyframes, ones which are quoted or ones which are valid css
    *   idents (custom properties excluded)
    *
+   *   (?:(?:( ['"]['"] )((?:\\\\\|\\\\2|(?!\\2).)+)\\2)|(-? [A-Za-z][\w\-] \*)) 捕获两种不同的可能关键帧，被引用的或有效的 css 标识（不包括自定义属性）
+   *
    * - (?=[,\s;]|$)
    *      simply matches the end of the possible keyframe, valid endings are: a comma, a space, a
    *   semicolon or the end of the string
+   *
+   *   (?= [,\\s;][,\s;] |$) 仅匹配可能的关键帧的结尾，有效的结尾是：逗号、空格、分号或字符串的结尾
    *
    */
   private _animationDeclarationKeyframesRe =
@@ -331,14 +401,31 @@ export class ShadowCss {
    * Scope an animation rule so that the keyframes mentioned in such rule
    * are scoped if defined in the component's css and left untouched otherwise.
    *
+   * 限定动画规则的范围，以便如果在组件的 css 中定义了此类规则中提到的关键帧，则对其进行限制，否则保持不变。
+   *
    * It can scope values of both the 'animation' and 'animation-name' properties.
    *
+   * 它可以限定 'animation' 和 'animation-name' 属性的值。
+   *
    * @param rule css rule to scope.
+   *
+   * 到范围的 css 规则。
+   *
    * @param scopeSelector the component's scope selector.
+   *
+   * 组件的范围选择器。
+   *
    * @param unscopedKeyframesSet the set of unscoped keyframes names.
    *
-   * @returns the updated css rule.
-   **/
+   * 无范围的关键帧名称集。
+   *
+   * @returns
+   *
+   * the updated css rule.
+   *
+   * 更新的 css 规则。
+   *
+   */
   private _scopeAnimationRule(
       rule: CssRule, scopeSelector: string, unscopedKeyframesSet: ReadonlySet<string>): CssRule {
     let content = rule.content.replace(
@@ -955,6 +1042,9 @@ function escapeBlocks(
  * Object containing as keys characters that should be substituted by placeholders
  * when found in strings during the css text parsing, and as values the respective
  * placeholders
+ *
+ * 对象包含作为键的字符，在 css 文本解析期间在字符串中找到时应该由占位符替换，并包含各个占位符作为值
+ *
  */
 const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
   ';': SEMI_IN_PLACEHOLDER,
@@ -967,10 +1057,14 @@ const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
  * double quotes) replace specific characters with their respective placeholders as indicated
  * by the `ESCAPE_IN_STRING_MAP` map.
  *
+ * 解析提供的 css 文本和内部字符串（意思是，在成对的未转义单引号或双引号中）用 `ESCAPE_IN_STRING_MAP` 映射所示的占位符替换特定字符。
+ *
  * For example convert the text
  *  `animation: "my-anim:at\"ion" 1s;`
  * to
  *  `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
+ *
+ * 例如，将文本 `animation: "my-anim:at\"ion" 1s;` 转换为 `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
  *
  * This is necessary in order to remove the meaning of some characters when found inside strings
  * (for example `;` indicates the end of a css declaration, `,` the sequence of values and `:` the
@@ -978,10 +1072,19 @@ const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
  * characters are within strings and so in order to prevent parsing issues they need to be replaced
  * with placeholder text for the duration of the css manipulation process).
  *
+ * 这对于删除在字符串中找到的某些字符的含义是必要的（例如 `;` 表示 css 声明的结尾， `,` 值的顺序以及 `:` 声明期间属性和值之间的除法，这些含义都不适用当此类字符在字符串中时，因此为了防止解析问题，需要在 css 操作过程中将它们替换为占位符文本）。
+ *
  * @param input the original css text.
  *
- * @returns the css text with specific characters in strings replaced by placeholders.
- **/
+ * 原始的 css 文本。
+ *
+ * @returns
+ *
+ * the css text with specific characters in strings replaced by placeholders.
+ *
+ * 字符串中的特定字符被占位符替换的 css 文本。
+ *
+ */
 function escapeInStrings(input: string): string {
   let result = input;
   let currentQuoteChar: string|null = null;
@@ -1014,17 +1117,30 @@ function escapeInStrings(input: string): string {
  * original representation, this is simply used to revert the changes applied by the
  * escapeInStrings function.
  *
+ * 在字符串中，将 `ESCAPE_IN_STRING_MAP` 映射中出现的所有键替换为它们的原始表示，这仅用于恢复 escapeInStrings 函数应用的更改。
+ *
  * For example it reverts the text:
  *  `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
  * to it's original form of:
  *  `animation: "my-anim:at\"ion" 1s;`
  *
+ * 例如，它将文本： `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;` 恢复为原始形式： `animation: "my-anim:at\"ion" 1s;`
+ *
  * Note: For the sake of simplicity this function does not check that the placeholders are
  * actually inside strings as it would anyway be extremely unlikely to find them outside of strings.
  *
+ * 注：为简单起见，此函数不会检查占位符是否真的在字符串中，因为无论如何它都极不可能在字符串之外找到它们。
+ *
  * @param input the css text containing the placeholders.
  *
- * @returns the css text without the placeholders.
+ * 包含占位符的 css 文本。
+ *
+ * @returns
+ *
+ * the css text without the placeholders.
+ *
+ * 没有占位符的 css 文本。
+ *
  */
 function unescapeInStrings(input: string): string {
   let result = input.replace(_cssCommaInPlaceholderReGlobal, ',');
@@ -1037,8 +1153,12 @@ function unescapeInStrings(input: string): string {
  * Unescape all quotes present in a string, but only if the string was actually already
  * quoted.
  *
+ * 对字符串中存在的所有引号进行转义，但前提是该字符串实际上已经被引用。
+ *
  * This generates a "canonical" representation of strings which can be used to match strings
  * which would otherwise only differ because of differently escaped quotes.
+ *
+ * 这会生成字符串的“规范”表示，可用于匹配这些字符串，否则这些字符串只会因为转义引号的不同而不同。
  *
  * For example it converts the string (assumed to be quoted):
  *  `this \\"is\\" a \\'\\\\'test`
@@ -1047,12 +1167,23 @@ function unescapeInStrings(input: string): string {
  * (note that the latter backslashes are not removed as they are not actually escaping the single
  * quote)
  *
+ * 例如，它将字符串（假定被引用）： `this \\"is\\" a \\'\\\\'test` 转换为： `this "is" a '\\\\'test` （请注意，后者反斜杠不会被删除，因为它们实际上并没有转义单引号）
  *
  * @param input the string possibly containing escaped quotes.
+ *
+ * 可能包含转义引号的字符串。
+ *
  * @param isQuoted boolean indicating whether the string was quoted inside a bigger string (if not
  * then it means that it doesn't represent an inner string and thus no unescaping is required)
  *
- * @returns the string in the "canonical" representation without escaped quotes.
+ * 布尔值，指示字符串是否在更大的字符串中被引用（如果不是，则意味着它不表示内部字符串，因此不需要取消转义）
+ *
+ * @returns
+ *
+ * the string in the "canonical" representation without escaped quotes.
+ *
+ * 不带转义引号的“规范”表示中的字符串。
+ *
  */
 function unescapeQuotes(str: string, isQuoted: boolean): string {
   return !isQuoted ? str : str.replace(/((?:^|[^\\])(?:\\\\)*)\\(?=['"])/g, '$1');
@@ -1068,7 +1199,7 @@ function unescapeQuotes(str: string, isQuoted: boolean): string {
  * Given a single context selector `A` we need to output selectors that match on the host and as an
  * ancestor of the host:
  *
- * 给定单个上下文选择器 `A` ，我们需要输出在主机上匹配的选择器并作为主机的祖先：
+ * 给定单个上下文选择器 `A` ，我们需要输出在宿主上匹配的选择器并作为宿主的祖先：
  *
  * ```
  * A <hostMarker>, A<hostMarker> {}

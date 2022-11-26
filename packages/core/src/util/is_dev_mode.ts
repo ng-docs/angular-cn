@@ -11,12 +11,17 @@ import {global} from './global';
 /**
  * Returns whether Angular is in development mode.
  *
+ * 返回 Angular 是否处于开发模式。
+ *
  * By default, this is true, unless `enableProdMode` is invoked prior to calling this method or the
  * application is built using the Angular CLI with the `optimization` option.
- * @see {@link cli/build ng build}
+ *
+ * 默认情况下，这是 true，除非在调用此方法之前调用了 `enableProdMode` ，或者应用程序是使用带有 `optimization` 选项的 Angular CLI 构建的。
+ *
+ * @see {
+ * @link cli/build ng build}
  *
  * 默认情况下，这是正确的，除非用户在调用它之前调用 `enableProdMode`
- *
  * @publicApi
  */
 export function isDevMode(): boolean {
@@ -37,8 +42,11 @@ export function isDevMode(): boolean {
  *
  * Using this method is discouraged as the Angular CLI will set production mode when using the
  * `optimization` option.
- * @see {@link cli/build ng build}
  *
+ * 不鼓励使用此方法，因为 Angular CLI 将在使用 `optimization` 选项时设置生产模式。
+ *
+ * @see {
+ * @link cli/build ng build}
  * @publicApi
  */
 export function enableProdMode(): void {

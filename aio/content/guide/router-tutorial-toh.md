@@ -42,19 +42,19 @@ Along the way, it highlights key features of the router such as:
 
 * The `canActivate` guard (checking route access)
 
-  `CanActivate` 守卫（检查路由访问）
+  `canActivate` 守卫（检查路由访问）
 
 * The `canActivateChild` guard (checking child route access)
 
-  `CanActivateChild` 守卫（检查子路由访问）
+  `canActivateChild` 守卫（检查子路由访问）
 
 * The `canDeactivate` guard (ask permission to discard unsaved changes)
 
-  `CanDeactivate` 守卫（在放弃未保存的更改之前请求许可）
+  `canDeactivate` 守卫（在放弃未保存的更改之前请求许可）
 
 * The `resolve` guard (pre-fetching route data)
 
-  `Resolve` 守卫（预先获取路由数据）。
+  `resolve` 守卫（预先获取路由数据）。
 
 * Lazy loading an `NgModule`
 
@@ -62,7 +62,7 @@ Along the way, it highlights key features of the router such as:
 
 * The `canLoad` guard (check before loading feature module assets)
 
-  `CanLoad` 守卫（在加载功能模块的文件之前检查）
+  `canLoad` 守卫（在加载功能模块的文件之前检查）
 
 This guide proceeds as a sequence of milestones as if you were building the application step-by-step, but assumes you are familiar with basic [Angular concepts](guide/architecture).
 For a general introduction to angular, see the [Getting Started](start).
@@ -197,7 +197,7 @@ You can say "OK" and lose your changes or click "Cancel" and continue editing.
 Behind this behavior is the router's `canDeactivate` guard.
 The guard gives you a chance to clean up or ask the user's permission before navigating away from the current view.
 
-这种行为的幕后是路由器的 `CanDeactivate` 守卫。该守卫让你有机会进行清理工作或在离开当前视图之前请求用户的许可。
+这种行为的幕后是路由器的 `canDeactivate` 守卫。该守卫让你有机会进行清理工作或在离开当前视图之前请求用户的许可。
 
 The `Admin` and `Login` buttons illustrate other router capabilities covered later in the guide.
 
@@ -804,7 +804,7 @@ The routing module, often called the `AppRoutingModule`, replaces the routing co
 
 The routing module is helpful as your application grows and when the configuration includes specialized guard and resolver functions.
 
-这种路由模块在你的应用不断增长，以及配置中包括了专门的守卫和解析器服务时会非常有用。
+这种路由模块在你的应用不断增长，以及配置中包括了专门的守卫和解析器函数时会非常有用。
 
 Some developers skip the routing module when the configuration is minimal and merge the routing configuration directly into the companion module (for example, `AppModule`).
 
@@ -1138,14 +1138,14 @@ Learn about inspecting the runtime router configuration [below](#inspect-config 
 Return to the `HeroesRoutingModule` and look at the route definitions again.
 The route to `HeroDetailComponent` has an `:id` token in the path.
 
-回到 `HeroesRoutingModule` 并再次检查这些路由定义。`HeroDetailComponent` 路由的路径中带有 `:id` 令牌。
+回到 `HeroesRoutingModule` 并再次检查这些路由定义。`HeroDetailComponent` 路由的路径中带有 `:id` 标记。
 
 <code-example header="src/app/heroes/heroes-routing.module.ts (excerpt)" path="router/src/app/heroes/heroes-routing.module.1.ts" region="hero-detail-route"></code-example>
 
 The `:id` token creates a slot in the path for a Route Parameter.
 In this case,  this configuration causes the router to insert the `id` of a hero into that slot.
 
-`:id` 令牌会为路由参数在路径中创建一个“空位”。在这里，这种配置会让路由器把英雄的 `id` 插入到那个“空位”中。
+`:id` 标记会为路由参数在路径中创建一个“空位”。在这里，这种配置会让路由器把英雄的 `id` 插入到那个“空位”中。
 
 If you tell the router to navigate to the detail component and display "Magneta", you expect a hero ID to appear in the browser URL like this:
 
@@ -1169,7 +1169,7 @@ If a user enters that URL into the browser address bar, the router should recogn
 
 Embedding the route parameter token, `:id`, in the route definition path is a good choice for this scenario because the `id` is *required* by the `HeroDetailComponent` and because the value `15` in the path clearly distinguishes the route to "Magneta" from a route for some other hero.
 
-在这个场景下，把路由参数的令牌 `:id` 嵌入到路由定义的 `path` 中是一个好主意，因为对于 `HeroDetailComponent` 来说 `id` 是*必须的*，而且路径中的值 `15` 已经足够把到“Magneta”的路由和到其它英雄的路由明确区分开。
+在这个场景下，把路由参数的标记 `:id` 嵌入到路由定义的 `path` 中是一个好主意，因为对于 `HeroDetailComponent` 来说 `id` 是*必须的*，而且路径中的值 `15` 已经足够把到“Magneta”的路由和到其它英雄的路由明确区分开。
 
 </div>
 
@@ -2517,8 +2517,7 @@ A guard's return value controls the router's behavior:
 **Note:** The guard can also tell the router to navigate elsewhere, effectively canceling the current navigation.
 When doing so inside a guard, the guard should return `UrlTree`;
 
-**注意**：<br />
-守卫还可以告诉路由器导航到别处，这样也会取消当前的导航。要想在守卫中这么做，就要返回 `false`。
+**注意**：守卫还可以告诉路由器导航到别处，这样也会取消当前的导航。要想在守卫中这么做，就要返回 `UrlTree`。
 
 </div>
 
@@ -2561,17 +2560,20 @@ The router supports multiple guard interfaces:
 | [`canLoad`](api/router/CanLoadFn) | To mediate navigation *to* a feature module loaded *asynchronously* |
 | [`canLoad`](api/router/CanLoadFn) | 导航到某个异步加载的特性模块时介入 |
 | [`canMatch`](api/router/CanMatchFn) | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
+| [`canMatch`](api/router/CanMatchFn) | 控制是否应该使用 `Route` ，即使 `path` 与 URL 段匹配。 |
 
 You can have multiple guards at every level of a routing hierarchy.
 The router checks the `canDeactivate` guards first, from the deepest child route to the top.
 Then it checks the `canActivate` and `canActivateChild` guards from the top down to the deepest child route.
 If the feature module is loaded asynchronously, the `canLoad` guard is checked before the module is loaded.
 
+在分层路由的每个级别上，你都可以设置多个守卫。路由器会先按照从最深的子路由由下往上检查的顺序来检查 `canDeactivate()` 守卫。然后它会按照从上到下的顺序检查 `canActivate()` 守卫。如果特性模块是异步加载的，在加载它之前还会检查 `canLoad()` 守卫。
+
 With the exception of `canMatch`, if *any* guard returns false, pending guards that have not completed are canceled, and the entire navigation is canceled. If a `canMatch` guard returns `false`, the `Router` continues
 processing the rest of the `Routes` to see if a different `Route` config matches the URL. You can think of this 
 as though the `Router` is pretending the `Route` with the `canMatch` guard did not exist.
 
-在分层路由的每个级别上，你都可以设置多个守卫。路由器会先按照从最深的子路由由下往上检查的顺序来检查 `CanDeactivate()` 守卫。然后它会按照从上到下的顺序检查 `CanActivate()` 守卫。如果特性模块是异步加载的，在加载它之前还会检查 `CanLoad()` 守卫。如果*任何*一个守卫返回 `false`，其它尚未完成的守卫会被取消，这样整个导航就被取消了。
+除 `canMatch` 之外，如果*任何*一个守卫返回 `false`，其它尚未完成的守卫会被取消，这样整个导航就被取消了。如果 `canMatch` 守卫返回 `false`，那么 `Router` 就会继续处理这些 `Routes` 的其余部分，以查看是否有别的 `Route` 配置能匹配此 URL。你可以看作 `Router` 假装带这个 `canMatch` 守卫的路由不存在一样。
 
 There are several examples over the next few sections.
 
@@ -2581,7 +2583,7 @@ There are several examples over the next few sections.
 
 ### `canActivate`: requiring authentication
 
-### `CanActivate` ：需要身份验证
+### `canActivate` ：需要身份验证
 
 Applications often restrict access to a feature area based on who the user is.
 You could permit access only to authenticated users or to users with a specific role.
@@ -2591,7 +2593,7 @@ You might block or limit access until the user's account is activated.
 
 The `canActivate` guard is the tool to manage these navigation business rules.
 
-`CanActivate` 守卫是一个管理这些导航类业务规则的工具。
+`canActivate` 守卫是一个管理这些导航类业务规则的工具。
 
 #### Add an admin feature module
 
@@ -2783,9 +2785,11 @@ The new admin feature should be accessible only to authenticated users.
 
 Write a `canActivate()` guard method to redirect anonymous users to the login page when they try to enter the admin area.
 
-编写一个 `CanActivate()` 守卫，将正在尝试访问管理组件匿名用户重定向到登录页。
+编写一个 `canActivate()` 守卫，将正在尝试访问管理组件匿名用户重定向到登录页。
 
 Create a new file named `auth.guard.ts` function in the `auth` folder. The `auth.guard.ts` file will contain the `authGuard` function.
+
+在 `auth` 文件夹中创建一个名为 `auth.guard.ts` 的新文件。 `auth.guard.ts` 文件将包含 `authGuard` 函数。
 
 <!-- TODO(atscott): update schematics to generate functional guards
 <code-example format="shell" language="shell">
@@ -2804,7 +2808,7 @@ To demonstrate the fundamentals, this example only logs to the console, `returns
 Next, open `admin-routing.module.ts`, import the `authGuard` function, and
 update the admin route with a `canActivate` guard property that references it:
 
-接下来，打开 `admin-routing.module.ts`，导入 `AuthGuard` 类，修改管理路由并通过 `CanActivate()` 守卫来引用 `AuthGuard`：
+接下来，打开 `admin-routing.module.ts`，导入 `authGuard` 函数，修改管理路由并通过 `canActivate()` 守卫来引用 `authGuard`：
 
 <code-example header="src/app/admin/admin-routing.module.ts (guarded admin route)" path="router/src/app/admin/admin-routing.module.2.ts" region="admin-route"></code-example>
 
@@ -2816,16 +2820,16 @@ The admin feature is now protected by the guard, but the guard requires more cus
 
 #### Authenticate with `authGuard`
 
-#### 通过 `AuthGuard` 验证
+#### 通过 `authGuard` 验证
 
 Make the `authGuard` mimic authentication.
 
-让 `AuthGuard` 模拟身份验证。
+让 `authGuard` 模拟身份验证。
 
 The `authGuard` should call an application service that can log in a user and retain information about the current user.
 Generate a new `AuthService` in the `auth` folder:
 
-`AuthGuard` 可以调用应用中的一项服务，该服务能让用户登录，并且保存当前用户的信息。在 `auth` 目录下生成一个新的 `AuthService`：
+`authGuard` 可以调用应用中的一项服务，该服务能让用户登录，并且保存当前用户的信息。在 `auth` 目录下生成一个新的 `AuthService`：
 
 <code-example format="shell" language="shell">
 
@@ -2855,7 +2859,7 @@ To keep things minimal, this example redirects unauthenticated users to `/admin`
 
 Revise the `authGuard` to call the `AuthService`.
 
-修改 `AuthGuard` 以调用 `AuthService`。
+修改 `authGuard` 以调用 `AuthService`。
 
 <code-example header="src/app/auth/auth.guard.ts (v2)" path="router/src/app/auth/auth.guard.2.ts"></code-example>
 
@@ -2912,10 +2916,14 @@ In `app.module.ts`, import and add the `AuthModule` to the `AppModule` imports.
 
 ### `canMatch`: Controlling `Route` matching based on application conditions
 
+### `canMatch` ：根据应用程序中的条件控制 `Route` 匹配
+
 As an alternative to using a `canActivate` guard which redirects the user to a new page if they do not have access, you can instead
 use a `canMatch` guard to control whether the `Router` even attempts to activate a `Route`. This allows you to have
 multiple `Route` configurations which share the same `path` but are matched based on different conditions. In addition, this approach
 can allow the `Router` to match the wildcard `Route` instead.
+
+作为使用 `canActivate` 保护器的替代方案，如果用户没有访问权限，则会将用户重定向到新页面，你可以用 `canMatch` 保护器来控制 `Router` 是否尝试激活 `Route` 。这允许你有多个 `Route` 配置，这些配置共享相同的 `path` ，但会根据不同的条件进行匹配。此外，这种方法还可以让 `Router` 改为匹配通配符的 `Route` 。
 
 <code-example path="router/src/app/admin/admin-routing.module.2.ts" header="src/app/admin/admin-routing.module.ts (guarded admin route)" region="can-match"></code-example>
 
@@ -2923,13 +2931,13 @@ can allow the `Router` to match the wildcard `Route` instead.
 
 ### `canActivateChild`: guarding child routes
 
-### `CanActivateChild`：保护子路由
+### `canActivateChild`：保护子路由
 
 You can also protect child routes with the `canActivateChild` guard.
 The `canActivateChild` guard is similar to the `canActivate` guard.
 The key difference is that it runs before any child route is activated.
 
-你还可以使用 `CanActivateChild` 守卫来保护子路由。`CanActivateChild` 守卫和 `CanActivate` 守卫很像。它们的区别在于，`CanActivateChild` 会在*任何子路由*被激活之前运行。
+你还可以使用 `canActivateChild` 守卫来保护子路由。`canActivateChild` 守卫和 `canActivate` 守卫很像。它们的区别在于，`canActivateChild` 会在*任何子路由*被激活之前运行。
 
 You protected the admin feature module from unauthorized access.
 You should also protect child routes *within* the feature module.
@@ -2939,18 +2947,18 @@ You should also protect child routes *within* the feature module.
 Extend the `authGuard` to protect when navigating between the `admin` routes.
 Open `auth.guard.ts` and add the `CanActivateChildFn` interface to the imported tokens from the router package.
 
-扩展 `AuthGuard` 以便在 `admin` 路由之间导航时提供保护。打开 `auth.guard.ts` 并从路由库中导入 `CanActivateChild` 接口。
+扩展 `authGuard` 以便在 `admin` 路由之间导航时提供保护。打开 `auth.guard.ts` 并从路由库中导入 `CanActivateChildFn` 接口。
 
 Next, indicate the method acts as a `canActivateChild` guard as well by adding `|CanActivateChildFn` to the type.
 
-接下来，实现 `CanActivateChild` 方法，它所接收的参数与 `CanActivate` 方法一样：一个 `ActivatedRouteSnapshot` 和一个 `RouterStateSnapshot`。`CanActivateChild` 方法可以返回 `Observable<boolean|UrlTree>` 或 `Promise<boolean|UrlTree>` 来支持异步检查，或 `boolean` 或 `UrlTree` 来支持同步检查。这里返回的或者是 `true` 以便允许用户访问管理特性模块，或者是 `UrlTree` 以便把用户重定向到登录页：
+接下来，通过把 `|CanActivateChildFn` 添加到类型信息里，来把此方法标记为 `canActivateChild` 守卫。
 
 <code-example header="src/app/auth/auth.guard.ts (excerpt)" path="router/src/app/auth/auth.guard.3.ts" region="can-activate-child"></code-example>
 
 Add the same `authGuard` to the `component-less` admin route to protect all other child routes at one time
 instead of adding the `authGuard` to each route individually.
 
-同样把这个 `AuthGuard` 添加到“无组件的”管理路由，来同时保护它的所有子路由，而不是为每个路由单独添加这个 `AuthGuard`。
+同样把这个 `authGuard` 添加到“无组件的”管理路由，来同时保护它的所有子路由，而不是为每个路由单独添加这个 `authGuard`。
 
 <code-example header="src/app/admin/admin-routing.module.ts (excerpt)" path="router/src/app/admin/admin-routing.module.3.ts" region="can-activate-child"></code-example>
 
@@ -2958,7 +2966,7 @@ instead of adding the `authGuard` to each route individually.
 
 ### `canDeactivate`: handling unsaved changes
 
-### `CanDeactivate`：处理未保存的更改
+### `canDeactivate`：处理未保存的更改
 
 Back in the "Heroes" workflow, the application accepts every change to a hero immediately without validation.
 
@@ -2985,7 +2993,7 @@ You need to stop the navigation while you wait, asynchronously, for the server t
 
 The `canDeactivate` guard helps you decide what to do with unsaved changes and how to proceed.
 
-`CanDeactivate` 守卫能帮助你决定如何处理未保存的更改，以及如何处理。
+`canDeactivate` 守卫能帮助你决定如何处理未保存的更改，以及如何处理。
 
 <a id="cancel-save"></a>
 
@@ -3072,7 +3080,7 @@ Alternatively, you could make a component-specific `canDeactivate` guard for the
 The `canDeactivate()` method provides you with the current instance of the `component`, the current `ActivatedRoute`, and `RouterStateSnapshot` in case you needed to access some external information.
 This would be useful if you only wanted to use this guard for this component and needed to get the component's properties or confirm whether the router should allow navigation away from it.
 
-另外，你也可以为 `CrisisDetailComponent` 创建一个特定的 `CanDeactivate` 守卫。在需要访问外部信息时，`canDeactivate()` 方法为你提供了组件、`ActivatedRoute` 和 `RouterStateSnapshot` 的当前实例。如果只想为这个组件使用该守卫，并且需要获取该组件属性或确认路由器是否允许从该组件导航出去时，这会非常有用。
+另外，你也可以为 `CrisisDetailComponent` 创建一个特定的 `canDeactivate` 守卫。在需要访问外部信息时，`canDeactivate()` 方法为你提供了组件、`ActivatedRoute` 和 `RouterStateSnapshot` 的当前实例。如果只想为这个组件使用该守卫，并且需要获取该组件属性或确认路由器是否允许从该组件导航出去时，这会非常有用。
 
 <code-example header="src/app/can-deactivate.guard.ts (component-specific)" path="router/src/app/can-deactivate.guard.1.ts"></code-example>
 
@@ -3138,7 +3146,11 @@ If the crisis is not found, the router navigates back to the crisis list view.
 The experience might be better if all of this were handled first, before the route is activated.
 A `crisisDetailResolver` could retrieve a `Crisis` or navigate away, if the `Crisis` did not exist, *before* activating the route and creating the `CrisisDetailComponent`.
 
+如果能在该路由将要激活时提前处理了这个问题，那么用户体验会更好。`crisisDetailResolver` 服务可以接收一个 `Crisis`，而如果这个 `Crisis` 不存在，就会在激活该路由并创建 `CrisisDetailComponent` 之前先行离开。
+
 Create a `crisis-detail-resolver.ts` file within the `Crisis Center` feature area. This file will contain the `crisisDetailResolver` function.
+
+在 `Crisis Center` 特性区域中创建一个 `crisis-detail-resolver.ts` 文件。此文件将包含 `crisisDetailResolver` 函数。
 
 <!-- TODO: Update CLI schematic for resolvers
 <code-example format="shell" language="shell">
@@ -3153,16 +3165,16 @@ ng generate service crisis-center/crisis-detail-resolver
 Move the relevant parts of the crisis retrieval logic in `CrisisDetailComponent.ngOnInit()` into the `crisisDetailResolver`.
 Import the `Crisis` model, `CrisisService`, and the `Router` so you can navigate elsewhere if you can't fetch the crisis.
 
-把 `CrisisDetailComponent.ngOnInit()` 中与危机检索有关的逻辑移到 `CrisisDetailResolverService` 中。导入 `Crisis` 模型、`CrisisService` 和 `Router` 以便让你可以在找不到指定的危机时导航到别处。
+把 `CrisisDetailComponent.ngOnInit()` 中与危机检索有关的逻辑移到 `crisisDetailResolver` 中。导入 `Crisis` 模型、`CrisisService` 和 `Router` 以便让你可以在找不到指定的危机时导航到别处。
 
 Be explicit and use the `ResolveFn` type with a type of `Crisis`.
 
-为了更明确一点，可以实现一个带有 `Crisis` 类型的 `Resolve` 接口。
+为了更明确一点，可以实现一个带有 `Crisis` 类型的 `ResolveFn` 接口。
 
 Inject the `CrisisService` and `Router`.
 That method could return a `Promise`, an `Observable`, or a synchronous return value.
 
-注入 `CrisisService` 和 `Router`，并实现 `resolve()` 方法。该方法可以返回一个 `Promise`、一个 `Observable` 来支持异步方式，或者直接返回一个值来支持同步方式。
+注入 `CrisisService` 和 `Router`。该方法可以返回一个 `Promise`、一个 `Observable` 来支持异步方式，或者直接返回一个值来支持同步方式。
 
 The `CrisisService.getCrisis()` method returns an observable in order to prevent the route from loading until the data is fetched.
 
@@ -3171,7 +3183,7 @@ The `CrisisService.getCrisis()` method returns an observable in order to prevent
 If it doesn't return a valid `Crisis`, then return an empty `Observable`, cancel the previous in-progress navigation to the `CrisisDetailComponent`, and navigate the user back to the `CrisisListComponent`.
 The updated resolver function looks like this:
 
-如果它没有返回有效的 `Crisis`，就会返回一个 `Observable`，以取消以前到 `CrisisDetailComponent` 的在途导航，并把用户导航回 `CrisisListComponent`。修改后的 `resolver` 服务是这样的：
+如果它没有返回有效的 `Crisis`，就会返回一个 `Observable`，以取消以前到 `CrisisDetailComponent` 的在途导航，并把用户导航回 `CrisisListComponent`。修改后的 `resolver` 函数是这样的：
 
 <code-example header="src/app/crisis-center/crisis-detail-resolver.ts" path="router/src/app/crisis-center/crisis-detail-resolver.ts"></code-example>
 
@@ -3195,7 +3207,7 @@ Review the following three important points:
 
 1. The router's `ResolveFn` is optional.
 
-   路由器的这个 `Resolve` 接口是可选的。`CrisisDetailResolverService` 没有继承自某个基类。路由器只要找到了这个方法，就会调用它。
+   路由器的这个 `ResolveFn` 接口是可选的。
 
 1. The router calls the resolver in any case where the user could navigate away so you don't have to code for each use case.
 
@@ -3250,7 +3262,7 @@ However, you can use query parameters to get optional parameters available to al
 
 Update the `authGuard` to provide a `session_id` query that remains after navigating to another route.
 
-修改 `AuthGuard` 以提供 `session_id` 查询参数，在导航到其它路由后，它还会存在。
+修改 `authGuard` 以提供 `session_id` 查询参数，在导航到其它路由后，它还会存在。
 
 Add an `anchor` element so you can jump to a certain point on the page.
 
@@ -3408,12 +3420,12 @@ In `app.module.ts`, remove the `AdminModule` import statement from the top of th
 
 ### `canLoad`: guarding unauthorized loading of feature modules
 
-### `CanLoad`：保护对特性模块的未授权加载
+### `canLoad`：保护对特性模块的未授权加载
 
 You're already protecting the `AdminModule` with a `canActivate` guard that prevents unauthorized users from accessing the admin feature area.
 It redirects to the login page if the user is not authorized.
 
-你已经使用 `CanActivate` 保护 `AdminModule` 了，它会阻止未授权用户访问管理特性区。如果用户未登录，它就会跳转到登录页。
+你已经使用 `canActivate` 保护 `AdminModule` 了，它会阻止未授权用户访问管理特性区。如果用户未登录，它就会跳转到登录页。
 
 But the router is still loading the `AdminModule` even if the user can't visit any of its components.
 Ideally, you'd only load the `AdminModule` if the user is logged in.
@@ -3422,9 +3434,11 @@ Ideally, you'd only load the `AdminModule` if the user is logged in.
 
 Add a `canLoad` guard that only loads the `AdminModule` once the user is logged in *and* attempts to access the admin feature area.
 
-添加一个 `CanLoad` 守卫，它只在用户已登录*并且*尝试访问管理特性区的时候，才加载 `AdminModule` 一次。
+添加一个 `canLoad` 守卫，它只在用户已登录*并且*尝试访问管理特性区的时候，才加载 `AdminModule` 一次。
 
 The existing `authGuard` already has the essential logic to support the `canLoad` guard.
+
+现有的 `authGuard` 已经有了支持 `canLoad` 保护的基本逻辑。
 
 1. Open `auth.guard.ts`.
 
@@ -3432,7 +3446,11 @@ The existing `authGuard` already has the essential logic to support the `canLoad
 
 1. Import the `CanLoadFn` interface from `@angular/router`.
 
+   从 `@angular/router` 导入 `CanLoadFn` 接口。
+
 1. Add it to the `authGuard` function's type.
+
+   将其添加到 `authGuard` 函数的类型中。
 
 <code-example header="src/app/auth/auth.guard.ts (canLoad guard)" path="router/src/app/auth/auth.guard.ts" region="canLoad"></code-example>
 
@@ -3569,22 +3587,22 @@ When you visit `http://localhost:4200`, the `/heroes` route loads immediately up
 
 Currently, the `AdminModule` does not preload because `canLoad` is blocking it.
 
-目前，`AdminModule` 并没有预加载，因为 `CanLoad` 阻塞了它。
+目前，`AdminModule` 并没有预加载，因为 `canLoad` 阻塞了它。
 
 <a id="preload-canload"></a>
 
 #### `canLoad` blocks preload of children
 
-#### `CanLoad` 会阻塞预加载
+#### `canLoad` 会阻塞子路由的预加载
 
 The `PreloadAllModules` strategy does not load feature areas protected by a [canLoad](#can-load-guard) guard.
 
-`PreloadAllModules` 策略不会加载被[CanLoad](#can-load-guard)守卫所保护的特性区。
+`PreloadAllModules` 策略不会加载被 [canLoad](#can-load-guard) 守卫所保护的特性区。
 
 You added a `canLoad` guard to the route in the `AdminModule` a few steps back to block loading of that module until the user is authorized.
 That `canLoad` guard takes precedence over the preload strategy for loading children routes.
 
-几步之前，你刚刚给 `AdminModule` 中的路由添加了 `CanLoad` 守卫，以阻塞加载那个模块，直到用户认证结束。`CanLoad` 守卫的优先级高于预加载策略。
+几步之前，你刚刚给 `AdminModule` 中的路由添加了 `canLoad` 守卫，以阻塞加载那个模块，直到用户认证结束。在加载子路由时，`canLoad` 守卫的优先级高于预加载策略。
 
 If you want to preload a module as well as guard against unauthorized access, remove the `canLoad()` guard method and rely on the [canActivate()](#can-activate-guard) guard alone.
 

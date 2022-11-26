@@ -29,6 +29,8 @@ import {AsyncValidatorFn, Validator, ValidatorFn} from './validators';
  * Token to provide to allow SetDisabledState to always be called when a CVA is added, regardless of
  * whether the control is disabled or enabled.
  *
+ * 要提供以允许在添加 CVA 时始终调用 SetDisabledState 的标记，无论控件是禁用还是启用。
+ *
  * @see `FormsModule.withConfig`
  */
 export const CALL_SET_DISABLED_STATE = new InjectionToken(
@@ -39,6 +41,8 @@ export const CALL_SET_DISABLED_STATE = new InjectionToken(
  * `setDisabledState` when attached, which is the most correct behavior. Otherwise, it will only be
  * called when disabled, which is the legacy behavior for compatibility.
  *
+ * CALL_SET_DISABLED_STATE 的类型。如果 `always` ，则 ControlValueAccessor 将在附加时始终调用 `setDisabledState` ，这是最正确的行为。否则，它只会在禁用时被调用，这是为了兼容的传统行为。
+ *
  * @publicApi
  * @see `FormsModule.withConfig`
  */
@@ -46,6 +50,9 @@ export type SetDisabledStateOption = 'whenDisabledForLegacyCode'|'always';
 
 /**
  * Whether to use the fixed setDisabledState behavior by default.
+ *
+ * 默认情况下，是否使用固定的 setDisabledState 行为。
+ *
  */
 export const setDisabledStateDefault: SetDisabledStateOption = 'always';
 

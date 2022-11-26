@@ -25,9 +25,13 @@ To get the most out of this tutorial, you should already have a basic understand
 
 * [HTML](https://developer.mozilla.org/docs/Learn/HTML "Learning HTML: Guides and tutorials")
 
+  [HTML](https://developer.mozilla.org/docs/Learn/HTML "学习 HTML：指南和教程")
+
 * [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript "JavaScript")
 
 * [TypeScript](https://www.typescriptlang.org/ "The TypeScript language")
+
+  [TypeScript](https://www.typescriptlang.org/ "TypeScript 语言")
 
 <a id="components"></a>
 
@@ -46,7 +50,7 @@ A component consists of three things:
 
 | Component Part | Details |
 | :------------- | :------ |
-|  | 详情 |
+| 部分 | 详情 |
 | A component class | Handles data and functionality |
 | 组件类 | 处理数据和功能。 |
 | An HTML template | Determines the UI |

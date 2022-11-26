@@ -41,11 +41,11 @@ In the image above, there is a series of change detection calls triggered by eve
 
 ## Run tasks outside `NgZone`
 
-## 在 NgZone 之外运行任务
+## 在 `NgZone` 之外运行任务
 
 In such cases, you can instruct Angular to avoid calling change detection for tasks scheduled by a given piece of code using [NgZone](https://angular.io/guide/zone).
 
-在这种情况下，我们可以指示 Angular 避免使用[NgZone](https://angular.io/guide/zone)为给定代码段调度的任务调用变更检测。
+在这种情况下，你可以指示 Angular 避免使用[NgZone](https://angular.io/guide/zone)为给定代码段调度的任务调用变更检测。
 
 ```ts
 import { Component, NgZone, OnInit } from '@angular/core';
@@ -60,7 +60,7 @@ class AppComponent implements OnInit {
 
 The preceding snippet instructs Angular to call `setInterval` outside the Angular Zone and skip running change detection after `pollForUpdates` runs.
 
-上面的代码段告诉 Angular，它应该在 Angular Zone 之外执行 `setInterval` 调用，并在 `pollForUpdates` 运行之后跳过运行变更检测。
+上面的代码段告诉 Angular 要在 Angular Zone 之外执行 `setInterval` 调用，并在 `pollForUpdates` 运行之后跳过运行变更检测。
 
 Third-party libraries commonly trigger unnecessary change detection cycles because they weren't authored with Zone.js in mind. Avoid these extra cycles by calling library APIs outside the Angular zone:
 

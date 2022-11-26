@@ -241,6 +241,8 @@ The Angular CLI is the fastest, straightforward, and recommended way to develop 
 The Angular CLI makes some tasks trouble-free.
 For example:
 
+Angular CLI 是开发 Angular 应用程序的最快、直接和推荐的方式。 Angular CLI 使某些任务无故障。例如：
+
 <!-- vale Angular.Google_WordListSuggestions = NO -->
 
 Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。Angular CLI 能简化许多任务。这里有些例子：
@@ -262,6 +264,8 @@ Angular CLI 是开发 Angular 应用的最快、最简单和推荐的方式。An
 <!-- vale Angular.Google_WordListSuggestions = YES -->
 
 The Angular CLI is a valuable tool for building out your applications.
+
+Angular CLI 是一种用于构建应用程序的有价值的工具。
 
 For more information about the Angular CLI, see the [Angular CLI Reference](cli) section.
 
@@ -325,9 +329,15 @@ This tutorial uses [stackblitz.com](https://stackblitz.com), for you to explore 
 
 The following sections are recommended to explore Angular's capabilities further:
 
+建议阅读以下部分来进一步探索 Angular 的特性：
+
 * [Understanding Angular](guide/understanding-angular-overview)
 
+  [了解 Angular](guide/understanding-angular-overview)
+
 * [Angular Developer Guide](guide/developer-guide-overview)
+
+  [Angular 开发人员指南](guide/developer-guide-overview)
 
 <!-- links -->
 

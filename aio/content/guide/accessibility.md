@@ -31,11 +31,11 @@ For the sample application that this page describes, see the <live-example></liv
 Building accessible web experience often involves setting [Accessible Rich Internet Applications (ARIA) attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
 Use [attribute binding](guide/attribute-binding) template syntax to control the values of accessibility-related attributes.
 
-建立无障碍的 Web 体验通常会涉及设置 [ARIA 属性（Attribute）](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) 以提供可能会丢失的语义。使用 [Attribute 绑定](guide/attribute-binding)模板语法来控制与无障碍性相关的属性（Attribute）值。
+建立无障碍的 Web 体验通常会涉及设置 [ARIA（Accessible Rich Internet Applications）属性（Attribute）](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) 以提供可能会丢失的语义。使用 [Attribute 绑定](guide/attribute-binding)模板语法来控制与无障碍性相关的属性（Attribute）值。
 
 When binding to ARIA attributes in Angular, you must use the `attr.` prefix. The ARIA specification depends specifically on HTML attributes rather than properties of DOM elements.
 
-在 Angular 中绑定 ARIA 属性（Attribute）时，必须使用 `attr.` 前缀，因为 ARIA 规范针对的是 HTML 属性（Attribute），而不是 DOM 元素的属性（Property）。
+在 Angular 中绑定 ARIA 属性（Attribute）时，必须使用 `attr.` 前缀。ARIA 规范针对的是 HTML 属性（Attribute），而不是 DOM 元素的属性（Property）。
 
 <code-example format="html" language="html">
 
@@ -105,7 +105,7 @@ For full details of these and other tools, see the [Angular CDK accessibility ov
 Native HTML elements capture several standard interaction patterns that are important to accessibility.
 When authoring Angular components, you should re-use these native elements directly when possible, rather than re-implementing well-supported behaviors.
 
-原生 HTML 元素捕获了许多对无障碍性很重要的标准交互模式。在制作 Angular 组件时，应尽可能直接复用这些原生元素，而不是重新实现已获良好支持的行为。
+原生 HTML 元素捕获了一些对无障碍性很重要的标准交互模式。在制作 Angular 组件时，应尽可能直接复用这些原生元素，而不是重新实现已获良好支持的行为。
 
 For example, instead of creating a custom element for a new variety of button, create a component that uses an attribute selector with a native `<button>` element.
 This most commonly applies to `<button>` and `<a>`, but can be used with many other types of element.
@@ -126,7 +126,7 @@ For example, the native `<input>` element cannot have children, so any custom te
 By just including `<input>` in your custom component's template, it's impossible for your component's users  to set arbitrary properties and attributes to the `<input>` element.
 Instead, create a container component that uses content projection to include the native control in the component's API.
 
-有时要使用的原生元素需要一个容器元素。比如，原生 `<input>` 元素不能有子元素，因此任何自定义的文本输入组件都需要用其它元素来包装 `<input>`。尽管你可能只在自定义组件的模板中包含 `<input>`，但这将使该组件的用户无法为 `input` 元素设置任意 Property 和 Attribute。相反，你可以创建一个使用内容投影的容器组件，以将原生控件包含在组件的 API 中。
+有时要使用的原生元素需要一个容器元素。比如，原生 `<input>` 元素不能有子元素，因此任何自定义的文本输入组件都需要用额外的元素来包装 `<input>`。如果只在自定义组件的模板中包含 `<input>`，该组件的将用户无法为 `input` 元素设置任意 Property 和 Attribute。相反，你应该创建一个使用内容投影的容器组件，以将原生控件包含在组件的 API 中。
 
 You can see [`MatFormField`](https://material.angular.io/components/form-field/overview) as an example of this pattern.
 
@@ -190,7 +190,7 @@ In a real application, the element that receives focus depends on your specific 
 The focused element should put users in a position to immediately move into the main content that has just been routed into view.
 You should avoid situations where focus returns to the `body` element after a route change.
 
-在实际的应用程序中，哪些元素获得焦点将取决于该应用特有的结构和布局。获得焦点的元素应使用户能够立即移动到刚刚进入视野的主要内容。你应该避免当路由变化后焦点重新回到 `body` 元素的情况。
+在实际的应用程序中，哪些元素会获得焦点取决于该应用特有的结构和布局。获得焦点的元素应使用户能够立即移动到刚刚进入视野的主要内容。你应该避免当路由变化后焦点重新回到 `body` 元素的情况。
 
 ### Active links identification
 
@@ -201,7 +201,7 @@ Unfortunately, a visual cue doesn't help blind or visually impaired users.
 Applying the `aria-current` attribute to the element can help identify the active link.
 For more information, see [Mozilla Developer Network (MDN) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
 
-用在活跃 `RouterLink` 元素上的 CSS 类（一般通过 `RouterLinkActive` 来指定）提供了有关哪个链接正处于活跃状态的视觉指示。此类指示不适用于盲人或视障用户，为了提供此类信息，还要将 `aria-current` 属性应用于此元素（有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)）。
+用在活跃 `RouterLink` 元素上的 CSS 类（比如 `RouterLinkActive`）提供了有关哪个链接正处于活跃状态的视觉提醒。不幸的是，此类提醒不适用于盲人或视障用户。将 `aria-current` 属性添加到此元素，可以帮你标出活跃链接。有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)。
 
 The `RouterLinkActive` directive provides the `ariaCurrentWhenActive` input which sets the `aria-current` to a specified value when the link becomes active.
 

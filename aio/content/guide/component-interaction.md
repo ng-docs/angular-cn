@@ -270,7 +270,7 @@ The parent component cannot data bind to the child's `start` and `stop` methods 
 Place a local variable, `#timer`, on the tag `<app-countdown-timer>` representing the child component.
 That gives you a reference to the child component and the ability to access *any of its properties or methods* from within the parent template.
 
-把本地变量(`#timer`)放到(`<countdown-timer>`)标签中，用来代表子组件。这样父组件的模板就得到了子组件的引用，于是可以在父组件的模板中访问子组件的所有属性和方法。
+把本地变量(`#timer`)放到(`<app-countdown-timer>`)标签中，用来代表子组件。这样父组件的模板就得到了子组件的引用，于是可以在父组件的模板中访问子组件的所有属性和方法。
 
 This example wires parent buttons to the child's `start` and `stop` and uses interpolation to display the child's `seconds` property.
 

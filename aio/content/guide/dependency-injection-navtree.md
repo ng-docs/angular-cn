@@ -14,7 +14,7 @@ To ensure that you have the best experience possible, this topic is marked for a
 
 In the meantime, this topic might be helpful: [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
-同时，下列主题可能会有所帮助：[分层注入器](guide/hierarchical-dependency-injection)。
+同时，下列主题可能会有所帮助：[多级注入器](guide/hierarchical-dependency-injection)。
 
 If you think this content should not be archived, please file a [GitHub issue](https://github.com/angular/angular/issues/new?template=3-docs-bug.md).
 

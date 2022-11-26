@@ -31,7 +31,7 @@ ng generate component heroes
 
 `ng generate` creates a new directory , `src/app/heroes/`, and generates the three files of the  `HeroesComponent` along with a test file.
 
-CLI 创建了一个新的文件夹 `src/app/heroes/`，并生成了 `HeroesComponent` 的四个文件。
+`ng generate` 创建了一个新的文件夹 `src/app/heroes/`，并生成了 `HeroesComponent` 的四个文件。
 
 The `HeroesComponent` class file is as follows:
 
@@ -94,7 +94,7 @@ Add a `hero` property to the `HeroesComponent` for a hero named, `Windstorm`.
 Open the `heroes.component.html` template file.
 Delete the default text that `ng generate` created and replace it with a data binding to the new `hero` property.
 
-打开模板文件 `heroes.component.html`。删除 Angular CLI 自动生成的默认内容，改为到 `hero` 属性的数据绑定。
+打开模板文件 `heroes.component.html`。删除 `ng generate` 自动生成的默认内容，改为到 `hero` 属性的数据绑定。
 
 <code-example header="heroes.component.html" path="toh-pt1/src/app/heroes/heroes.component.1.html" region="show-hero-1"></code-example>
 
@@ -110,14 +110,14 @@ Remember that `app-heroes` is the [element selector](#selector) for the `HeroesC
 Add an `<app-heroes>` element to the `AppComponent` template file, just below the title.
 
 别忘了，`app-heroes` 就是 `HeroesComponent` 的 [元素选择器](#selector)。
-所以，只要把 `<app-heroes>` 元素添加到 `AppComponent` 的模板文件中就可以了，就放在标题下方。
+把 `<app-heroes>` 元素添加到 `AppComponent` 的模板文件中，就放在标题下方。
 
 <code-example header="src/app/app.component.html" path="toh-pt1/src/app/app.component.html"></code-example>
 
 If  `ng serve` is still running,
 the browser should refresh and display both the application title and the hero's name.
 
-如果 CLI 的 `ng serve` 命令仍在运行，浏览器就会自动刷新，并且同时显示出应用的标题和英雄的名字。
+如果 `ng serve` 命令仍在运行，浏览器就会自动刷新，并且同时显示出应用的标题和英雄的名字。
 
 ## Create a `Hero` interface
 
@@ -173,7 +173,7 @@ The browser refreshes and displays the hero's information.
 
 Edit the `hero.name` binding like this:
 
-把 `hero.name` 的绑定修改成这样。
+把 `hero.name` 的绑定改成这样。
 
 <code-example header="src/app/heroes/heroes.component.html" path="toh-pt1/src/app/heroes/heroes.component.html" region="pipe"></code-example>
 
@@ -183,7 +183,7 @@ The browser refreshes and now the hero's name is displayed in capital letters.
 
 The word `uppercase` in the interpolation binding after the pipe <code>\|</code> character, activates the built-in `UppercasePipe`.
 
-绑定表达式中的 `uppercase` 位于管道操作符 `|` 的右边，用来调用内置管道 `UppercasePipe`。
+绑定表达式中的 `uppercase` 位于管道操作符 `|` 后面，用来调用内置管道 `UppercasePipe`。
 
 [Pipes](guide/pipes) are a good way to format strings, currency amounts, dates, and other display data.
 Angular ships with several built-in pipes and you can create your own.
@@ -224,7 +224,7 @@ Refactor the details area in the `HeroesComponent` template so it looks like thi
 Here it binds the `hero.name` property to the HTML text box so that data can flow *in both directions*.
 Data can flow from the `hero.name` property to the text box and from the text box back to the `hero.name`.
 
-这里把 `hero.name` 属性绑定到了 HTML 的 textbox 元素上，以便数据流可以**双向流动**：从 `hero.name` 属性流动到 textbox，并且从 textbox 流回到 `hero.name`。
+这里把 `hero.name` 属性绑定到了 HTML 的 textbox 元素上，以便数据流可以**双向流动**。数据可以从 `hero.name` 属性流动到 textbox，也可以从 textbox 流回到 `hero.name`。
 
 ### The missing `FormsModule`
 
@@ -289,7 +289,7 @@ Open `app.module.ts` and import the `FormsModule` symbol from the `@angular/form
 Add `FormsModule` to the  `imports` array in `@NgModule`.
 The `imports` array contains the list of external modules that the application needs.
 
-然后把 `FormsModule` 添加到 `@NgModule` 元数据的 `imports` 数组中，这里是该应用所需外部模块的列表。
+然后把 `FormsModule` 添加到 `@NgModule` 的 `imports` 数组中，这里是该应用所需外部模块的列表。
 
 <code-example header="app.module.ts (@NgModule imports)" path="toh-pt1/src/app/app.module.ts" region="ng-imports"></code-example>
 
@@ -331,7 +331,6 @@ The `HeroesComponent` is declared in the `@NgModule.declarations` array.
 
 `AppModule`  declares both application components, `AppComponent` and `HeroesComponent`.
 
-**注意**：<br />
 `AppModule` 声明了应用中的所有组件，`AppComponent` 和 `HeroesComponent`。
 
 </div>

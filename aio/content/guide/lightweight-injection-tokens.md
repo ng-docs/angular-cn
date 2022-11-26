@@ -1,5 +1,7 @@
 # Optimizing client application size with lightweight injection tokens
 
+# 使用轻量级注入令牌优化客户应用的大小
+
 This page provides a conceptual overview of a dependency injection technique that is recommended for library developers.
 Designing your library with *lightweight injection tokens* helps optimize the bundle size of client applications that use your library.
 
@@ -8,8 +10,12 @@ Designing your library with *lightweight injection tokens* helps optimize the bu
 You can manage the dependency structure among your components and injectable services to optimize bundle size by using [tree-shakable providers](guide/architecture-services#introduction-to-services-and-dependency-injection).
 This normally ensures that if a provided component or service is never actually used by the application, the compiler can remove its code from the bundle.
 
+你可以使用[可摇树优化的提供者](guide/architecture-services#introduction-to-services-and-dependency-injection)来管理组件和可注入服务之间的依赖结构，以优化发布包体积。这通常会确保如果提供的组件或服务从未被应用实际使用过，那么编译器就可以从发布包中移除它的代码。
+
 Due to the way Angular stores injection tokens, it is possible that such an unused component or service can end up in the bundle anyway.
 This page describes a dependency-injection design pattern that supports proper tree-shaking by using lightweight injection tokens.
+
+但是，由于 Angular 存储注入令牌的方式，可能会导致未用到的组件或服务最终进入发布包中。本页描述了依赖注入的一种设计模式，它通过使用轻量级注入令牌来支持正确的摇树优化。
 
 The lightweight injection token design pattern is especially important for library developers.
 It ensures that when an application uses only some of your library's capabilities, the unused code can be eliminated from the client's application bundle.
@@ -29,6 +35,8 @@ To prevent the retention of unused components, your library should use the light
 
 To better explain the condition under which token retention occurs, consider a library that provides a library-card component. This component contains a body and can contain an optional header.
 
+为了更好地解释令牌被保留的条件，我们考虑一个提供卡片组件的库。该组件包含一个卡片体，还可以包含一个可选的卡片头。
+
 <code-example format="html" language="html">
 
 &lt;lib-card&gt;
@@ -38,6 +46,8 @@ To better explain the condition under which token retention occurs, consider a l
 </code-example>
 
 In a likely implementation, the `<lib-card>` component uses `@ContentChild()` or `@ContentChildren()` to get `<lib-header>` and `<lib-body>`, as in the following.
+
+在一个可能的实现中，`<lib-card>` 组件使用 `@ContentChild()` 或者 `@ContentChildren()` 来获取 `<lib-header>` 和 `<lib-body>`，如下所示。
 
 <code-example format="typescript" language="typescript">
 
@@ -88,8 +98,12 @@ The compiler handles token references in these positions differently.
 
 * The compiler must keep *value position* references at runtime, which prevents the component from being tree-shaken.
 
+  编译器必须在运行时保留*值位置上*的引用，这就会阻止该组件被摇树优化掉。
+
 In the example, the compiler retains the `LibHeaderComponent` token that occurs in the value position. This prevents the referenced component from being tree-shaken, even if the application developer does not actually use `<lib-header>` anywhere.
 If `LibHeaderComponent` 's code, template, and styles combined becomes too large, including it unnecessarily can significantly increase the size of the client application.
+
+在这个例子中，编译器保留了 `LibHeaderComponent` 令牌，它出现在了值位置上，这就会防止所引用的组件被摇树优化掉，即使应用开发者实际上没有在任何地方用过 `<lib-header>`。如果 `LibHeaderComponent` 的代码、模板和样式变得很大，把它包含进来就会不必要地大大增加客户应用的大小。
 
 ## When to use the lightweight injection token pattern
 
@@ -110,6 +124,8 @@ There are two cases when that can happen.
 
 In the following example, both uses of the `OtherComponent` token cause retention of `OtherComponent`, preventing it from being tree-shaken when it is not used.
 
+在下面的例子中，两处对 `OtherComponent` 令牌的使用导致 `OtherComponent` 被保留下来，防止它在未用到时被摇树优化掉。
+
 <code-example format="typescript" language="typescript">
 
 class MyComponent {
@@ -125,9 +141,13 @@ Although tokens used only as type specifiers are removed when converted to JavaS
 These effectively change `constructor(@Optional() other: OtherComponent)` to `constructor(@Optional() @Inject(OtherComponent) other)`.
 The token is now in a value position, and causes the tree shaker to keep the reference.
 
+虽然转换为 JavaScript 时只会删除那些只用作类型说明符的令牌，但在运行时依赖注入需要所有这些令牌。这些工作把 `constructor(@Optional() other: OtherComponent)` 改成了 `constructor(@Optional() @Inject(OtherComponent) other)`。该令牌现在处于值的位置，并使该摇树优化器保留该引用。
+
 <div class="alert is helpful">
 
 For all services, a library should use [tree-shakable providers](guide/architecture-services#introduction-to-services-and-dependency-injection), providing dependencies at the root level rather than in component constructors.
+
+对于所有服务，库都应该使用[可摇树优化的提供者](guide/architecture-services#introduction-to-services-and-dependency-injection)，在根级而不是组件构造函数中提供依赖。
 
 </div>
 
@@ -208,6 +228,8 @@ The token is now an abstract class. Since the injectable component implements th
 The implementation of the method, with all its code overhead, resides in the injectable component that can be tree-shaken.
 This lets the parent communicate with the child, if it is present, in a type-safe manner.
 
+那些注入了轻量级注入令牌的组件可能要调用注入的类中的方法。因为令牌现在是一个抽象类，并且可注入组件实现了那个抽象类，所以你还必须在作为轻量级注入令牌的抽象类中声明一个抽象方法。该方法的实现代码（及其所有相关代码）都会留在可注入组件中，但这个组件本身仍可被摇树优化。这样就能让父组件以类型安全的方式与子组件（如果存在）进行通信。
+
 For example, the `LibCardComponent` now queries `LibHeaderToken` rather than `LibHeaderComponent`.
 The following example shows how the pattern lets `LibCardComponent` communicate with the `LibHeaderComponent` without actually referring to `LibHeaderComponent`.
 
@@ -251,6 +273,8 @@ In this example the parent  queries the token to get the child component, and st
 Before calling a method in the child, the parent component checks to see if the child component is present.
 If the child component has been tree-shaken, there is no runtime reference to it, and no call to its method.
 
+在这个例子中，父组件会查询令牌以获取子组件，并持有结果组件的引用（如果存在）。在调用子组件中的方法之前，父组件会检查子组件是否存在。如果子组件已经被摇树优化掉，那运行期间就没有对它的引用，当然也没有调用它的方法。
+
 ### Naming your lightweight injection token
 
 ### 为你的轻量级注入令牌命名
@@ -262,6 +286,8 @@ The example "LibHeaderComponent" follows this convention.
 轻量级注入令牌只对组件有用。Angular 风格指南中建议你使用“Component”后缀命名组件。比如“LibHeaderComponent”就遵循这个约定。
 
 You should maintain the relationship between the component and its token while still distinguishing between them. The recommended style is to use the component base name with the suffix "`Token`" to name your lightweight injection tokens: "`LibHeaderToken`."
+
+为了维护组件及其令牌之间的对应关系，同时又要区分它们，推荐的写法是使用组件基本名加上后缀“`Token`”来命名你的轻量级注入令牌：“`LibHeaderToken`”。
 
 <!-- links -->
 

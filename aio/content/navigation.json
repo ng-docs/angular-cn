@@ -377,7 +377,9 @@
             {
               "url": "guide/directive-composition-api",
               "title": "Directive composition API",
-              "tooltip": "Apply directive to host elements."
+              "tooltip": "Apply directive to host elements.",
+              "titleCn": "指令组合 API",
+              "tooltipCn": "将指令应用于宿主元素。"
             }
           ]
         },
@@ -391,7 +393,8 @@
               "url": "guide/dependency-injection-overview",
               "title": "Dependency injection in Angular",
               "tooltip": "Dependency injection is a design pattern in which a class requests dependencies from external sources.",
-              "titleCn": "Angular 中的依赖注入"
+              "titleCn": "Angular 中的依赖注入",
+              "tooltipCn": "依赖注入是一种设计模式，在这种设计模式中，类会从外部源请求依赖项。"
             },
             {
               "url": "guide/dependency-injection",
@@ -404,7 +407,8 @@
               "url": "guide/creating-injectable-service",
               "title": "Creating an injectable service",
               "tooltip": "Example of creating an injectable service.",
-              "titleCn": "创建可注入服务"
+              "titleCn": "创建可注入服务",
+              "tooltipCn": "创建可注入服务的示例。"
             },
             {
               "url": "guide/dependency-injection-providers",
@@ -417,7 +421,8 @@
               "url": "guide/hierarchical-dependency-injection",
               "title": "Hierarchical injectors",
               "tooltip": "Hierarchical dependency injection enables you to share dependencies between different parts of the application only when and if you need to.",
-              "titleCn": "多级注入器"
+              "titleCn": "多级注入器",
+              "tooltipCn": "多级依赖注入使你仅当需要时才在应用程序的不同部分之间共享依赖项。"
             }
           ]
         }
@@ -439,7 +444,9 @@
         {
           "url": "guide/standalone-components",
           "title": "Standalone components",
-          "tooltip": "Standalone components, directives, and pipes"
+          "tooltip": "Standalone components, directives, and pipes",
+          "titleCn": "独立组件",
+          "tooltipCn": "独立组件、指令和管道"
         },
         {
           "title": "Change detection",
@@ -580,7 +587,9 @@
         {
           "url": "guide/image-directive",
           "title": "Image optimization",
-          "tooltip": "Performant images with the Angular image directive."
+          "tooltip": "Performant images with the Angular image directive.",
+          "titleCn": "图片优化",
+          "tooltipCn": "使用 Angular 图片指令的高性能图片。"
         },
         {
           "titleCn": "测试",
@@ -878,7 +887,7 @@
         {
           "url": "guide/web-worker",
           "titleCn": "Web Worker",
-          "title": "Web workers",
+          "title": "Web Workers",
           "tooltipCn": "使用 Web Worker 进行后台处理。",
           "tooltip": "Using web workers for background processing."
         },
@@ -1200,7 +1209,9 @@
         {
           "url": "guide/releases",
           "title": "Release practices",
-          "tooltip": "Angular versioning, release, support, and deprecation policies and practices."
+          "tooltip": "Angular versioning, release, support, and deprecation policies and practices.",
+          "titleCn": "发布实践",
+          "tooltipCn": "Angular 版本控制、版本、支持和弃用策略和实践。"
         },
         {
           "url": "guide/browser-support",
@@ -1253,7 +1264,8 @@
           ]
         }
       ],
-      "titleCn": "版本发布信息"
+      "titleCn": "版本发布信息",
+      "tooltipCn": "Angular 发布实践、更新和升级。"
     },
     {
       "titleCn": "参考手册",
@@ -1629,7 +1641,9 @@
             {
               "url": "guide/doc-tasks",
               "title": "Overview",
-              "tooltip": "Overview of common tasks used to maintain angular.io."
+              "tooltip": "Overview of common tasks used to maintain angular.io.",
+              "titleCn": "概览",
+              "tooltipCn": "用于维护 angular.io 的常见任务的概览。"
             },
             {
               "url": "guide/reviewing-content",
@@ -1645,7 +1659,9 @@
               "tooltipCn": "通过添加额外的搜索关键字帮助用户找到他们需要的内容。",
               "tooltip": "Help users find the content they need by adding additional search keywords."
             }
-          ]
+          ],
+          "titleCn": "通用文档维护任务",
+          "tooltipCn": "描述 Angular 文档维护任务。"
         },
         {
           "title": "Documentation editing workflow",
@@ -1654,12 +1670,16 @@
             {
               "url": "guide/doc-update-overview",
               "title": "Overview",
-              "tooltip": "An overview of documentation authoring process."
+              "tooltip": "An overview of documentation authoring process.",
+              "titleCn": "概览",
+              "tooltipCn": "文档创作过程的概览。"
             },
             {
               "url": "guide/doc-prepare-to-edit",
               "title": "Prepare to edit documentation",
-              "tooltip": "Set up your development system to edit angular.io."
+              "tooltip": "Set up your development system to edit angular.io.",
+              "titleCn": "准备编辑文档",
+              "tooltipCn": "设置你的开发系统以编辑 angular.io。"
             },
             {
               "url": "guide/doc-select-issue",
@@ -1671,44 +1691,62 @@
             {
               "url": "guide/doc-update-start",
               "title": "Start to edit a documentation topic",
-              "tooltip": "The procedures used to start editing a documentation topic."
+              "tooltip": "The procedures used to start editing a documentation topic.",
+              "titleCn": "开始编辑文档主题",
+              "tooltipCn": "用于开始编辑文档主题的过程。"
             },
             {
               "url": "guide/doc-editing",
               "title": "Make and save changes to a documentation topic",
-              "tooltip": "Making and saving changes to a documentation topic."
+              "tooltip": "Making and saving changes to a documentation topic.",
+              "titleCn": "对文档主题进行更改并保存",
+              "tooltipCn": "对文档主题进行更改并保存。"
             },
             {
               "url": "guide/docs-lint-errors",
               "title": "Resolve documentation linter messages",
-              "tooltip": "More information about documentation lint errors."
+              "tooltip": "More information about documentation lint errors.",
+              "titleCn": "解析文档 linter 消息",
+              "tooltipCn": "有关文档 lint 错误的更多信息。"
             },
             {
               "url": "guide/doc-build-test",
               "title": "Build and test documentation",
-              "tooltip": "Building and testing documentation."
+              "tooltip": "Building and testing documentation.",
+              "titleCn": "构建和测试文档",
+              "tooltipCn": "构建和测试文档。"
             },
             {
               "url": "guide/doc-pr-prep",
               "title": "Prepare documentation for a pull request",
-              "tooltip": "Preparing documentation for a pull request."
+              "tooltip": "Preparing documentation for a pull request.",
+              "titleCn": "为Pull Request 准备文档",
+              "tooltipCn": "为Pull Request 准备文档。"
             },
             {
               "url": "guide/doc-pr-open",
               "title": "Open a documentation pull request",
-              "tooltip": "Opening a documentation pull request."
+              "tooltip": "Opening a documentation pull request.",
+              "titleCn": "打开文档Pull Request",
+              "tooltipCn": "打开文档Pull Request。"
             },
             {
               "url": "guide/doc-pr-update",
               "title": "Update a documentation pull request in progress",
-              "tooltip": "Updating a documentation pull request in progress."
+              "tooltip": "Updating a documentation pull request in progress.",
+              "titleCn": "更新正在进行的文档Pull Request",
+              "tooltipCn": "正在更新文档Pull Request。"
             },
             {
               "url": "guide/doc-edit-finish",
               "title": "Finish up a documentation pull request",
-              "tooltip": "Finishing up a documentation pull request."
+              "tooltip": "Finishing up a documentation pull request.",
+              "titleCn": "完成文档Pull Request",
+              "tooltipCn": "完成文档Pull Request。"
             }
-          ]
+          ],
+          "titleCn": "文档编辑工作流",
+          "tooltipCn": "详细描述了文档编辑过程。"
         },
         {
           "url": "guide/docs-style-guide",
@@ -1920,12 +1958,12 @@
       "title": "Languages",
       "children": [
         {
-          "titleCn": "Español",
+          "titleCn": "西班牙语",
           "title": "Español",
           "url": "http://docs.angular.lat/"
         },
         {
-          "titleCn": "English Version",
+          "titleCn": "英文版",
           "title": "English Version",
           "url": "https://angular.io/"
         },

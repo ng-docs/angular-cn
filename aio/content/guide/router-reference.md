@@ -66,7 +66,7 @@ The `:id` in the second route is a token for a route parameter.
 In a URL such as `/hero/42`, "42" is the value of the `id` parameter.
 The corresponding `HeroDetailComponent` uses that value to find and present the hero whose `id` is 42.
 
-第二个路由中的 `:id` 是路由参数的令牌。在像 `/hero/42` 这样的 URL 中，“42”是 `id` 参数的值。相应的 `HeroDetailComponent` 用这个值来查找并显示 `id` 为 42 的英雄。
+第二个路由中的 `:id` 是路由参数的标记。在像 `/hero/42` 这样的 URL 中，“42”是 `id` 参数的值。相应的 `HeroDetailComponent` 用这个值来查找并显示 `id` 为 42 的英雄。
 
 The `data` property in the third route is a place to store arbitrary data associated with this specific route.
 The data property is accessible within each activated route.
@@ -128,6 +128,8 @@ Consider the following template:
 
 The `RouterLink` directives on the anchor tags give the router control over those elements.
 The navigation paths are fixed, so you can assign a string as a one-time binding to the `routerLink`.
+
+a 标签上的 `RouterLink` 指令让路由器可以控制这些元素。导航路径是固定的，所以你可以给 `routerLink` 赋值一个字符串（“一次性”绑定）。
 
 Had the navigation path been more dynamic, you could have bound to a template expression that returned an array of route link parameters; that is, the [link parameters array](guide/router#link-parameters-array).
 The router resolves that array into a complete URL.
@@ -237,7 +239,7 @@ It has a great deal of useful information including:
 During each navigation, the `Router` emits navigation events through the `Router.events` property.
 These events are shown in the following table.
 
-`Router` 在每次导航过程中都会通过 `Router.events` 属性发出导航事件。这些事件的范围贯穿从导航开始和结束之间的多个时间点。导航事件的完整列表如下表所示。
+`Router` 在每次导航过程中都会通过 `Router.events` 属性发出导航事件。这些事件如下表所示。
 
 | Router event | Details |
 | :----------- | :------ |

@@ -6,10 +6,12 @@ A *component* controls a patch of screen called a [*view*](guide/glossary#view "
 of a TypeScript class, an HTML template, and a CSS style sheet. The TypeScript class defines the interaction 
 of the HTML template and the rendered DOM structure, while the style sheet describes its appearance.
 
+一个*组件*控制着一块被称为[*视图*](guide/glossary#view "视图的定义")的屏幕区域。它由一个 TypeScript 类、一个 HTML 模板和一个 CSS 样式表组成。 TypeScript 类定义了 HTML 模板和渲染的 DOM 结构的交互，而样式表描述了它的外观。
+
 An Angular application uses individual components to define and control different aspects of the application.
 For example, an application could include components to describe:
 
-*组件*控制屏幕上被称为[*视图*](guide/glossary#view "Definition of view")的一小片区域。比如，[教程](tutorial)中的下列视图都是由一个个组件所定义和控制的：
+Angular 应用使用一些单个组件来定义并控制应用的不同方面。比如，应用可能包含一些描述下列内容的组件：
 
 * The application root with the navigation links
 
@@ -147,7 +149,7 @@ For example, here is a template for the Tutorial's `HeroListComponent`.
 This template uses typical HTML elements like `<h2>` and  `<p>`. It also includes Angular template-syntax elements, `*ngFor`, `{{hero.name}}`, `(click)`, `[hero]`, and `<app-hero-detail>`.
 The template-syntax elements tell Angular how to render the HTML to the screen, using program logic and data.
 
-这个模板使用了典型的 HTML 元素，比如 `<h2>` 和 `<p>`，还包括一些 Angular 的模板语法元素，如 `*ngFor`，`{{hero.name}}`，`click`、`[hero]` 和 `<app-hero-detail>`。这些模板语法元素告诉 Angular 该如何根据程序逻辑和数据在屏幕上渲染 HTML。
+这个模板使用了典型的 HTML 元素，比如 `<h2>` 和 `<p>`。还包括一些 Angular 的模板语法元素，如 `*ngFor`，`{{hero.name}}`，`click`、`[hero]` 和 `<app-hero-detail>`。这些模板语法元素告诉 Angular 该如何根据程序逻辑和数据在屏幕上渲染 HTML。
 
 * The `*ngFor` directive tells Angular to iterate over a list
 
@@ -252,7 +254,7 @@ Angular 的管道可以让你在模板中声明显示值的转换逻辑。带有
 Angular defines various pipes, such as the [date](api/common/DatePipe) pipe and [currency](api/common/CurrencyPipe) pipe. For a complete list, see the [Pipes API list](api?type=pipe).
 You can also define new pipes.
 
-Angular 自带了很多管道，比如 [date](api/common/DatePipe) 管道和 [currency](api/common/CurrencyPipe) 管道，完整的列表参阅 [Pipes API 列表](api?type=pipe)。你也可以自己定义一些新管道。
+Angular 自带了很多管道，比如 [date](api/common/DatePipe) 管道和 [currency](api/common/CurrencyPipe) 管道。完整的列表参阅 [Pipes API 列表](api?type=pipe)。你也可以自己定义一些新管道。
 
 To specify a value transformation in an HTML template, use the [pipe operator (`|`)](guide/pipes).
 
@@ -330,7 +332,7 @@ The example template uses two built-in structural directives to add application 
 | :--------- | :------ |
 | 指令 | 详情 |
 | [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list. |
-| [`*ngFor`](guide/built-in-directives#ngFor) | 一个迭代器；它要求 Angular 为 `heroes` 列表中的每个英雄拓印出一个 `<li>`。 |
+| [`*ngFor`](guide/built-in-directives#ngFor) | 一个迭代器，它要求 Angular 为 `heroes` 列表中的每个英雄创建出一个 `<li>`。 |
 | [`*ngIf`](guide/built-in-directives#ngIf) | A *conditional*, which includes the `HeroDetail` component only if a selected hero exists. |
 | [`*ngIf`](guide/built-in-directives#ngIf) | 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。 |
 
