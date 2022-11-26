@@ -455,13 +455,13 @@ export interface BootstrapOptions {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
-   *（可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
+   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
    *
    * Consider the following case.
    *
    * 考虑以下情况。
    *
-   * for (let i = 0; i < 10; i ++) {
+   * for (let i = 0; i &lt; 10; i ++) {
    *   ngZone.run(() => {
    *     // do something
    *   });

@@ -27,13 +27,14 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
 /**
  * DI token that allows to provide default configuration for the `DatePipe` instances in an
  * application. The value is an object which can include the following fields:
+ *
  * - `dateFormat`: configures the default date format. If not provided, the `DatePipe`
- * will use the 'mediumDate' as a value.
+ *   will use the 'mediumDate' as a value.
+ *
  * - `timezone`: configures the default timezone. If not provided, the `DatePipe` will
- * use the end-user's local system timezone.
+ *   use the end-user's local system timezone.
  *
  * @see `DatePipeConfig`
- *
  * @usageNotes
  *
  * Various date pipe default values can be overwritten by providing this token with
@@ -42,6 +43,7 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
  * For example:
  *
  * Override the default date format by providing a value using the token:
+ *
  * ```typescript
  * providers: [
  *   {provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: {dateFormat: 'shortDate'}}
@@ -49,11 +51,13 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
  * ```
  *
  * Override the default timezone by providing a value using the token:
+ *
  * ```typescript
  * providers: [
  *   {provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: {timezone: '-1200'}}
  * ]
  * ```
+ *
  */
 export const DATE_PIPE_DEFAULT_OPTIONS =
     new InjectionToken<DatePipeConfig>('DATE_PIPE_DEFAULT_OPTIONS');
@@ -92,10 +96,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * the one defined using the injection token.
  *
  * 可以通过将格式化值的时区作为管道的第二个参数传入，或通过 `DATE_PIPE_DEFAULT_TIMEZONE` 注入标记设置默认值来指定格式化值的时区。作为第二个参数传入的值优先于使用注入标记定义的值。
- *
  * @see `formatDate()`
- *
- *
  * @usageNotes
  *
  * The result of this pipe is not reevaluated when the input is mutated. To avoid the need to
@@ -111,7 +112,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  *
  * | Option | Equivalent to | Examples (given in `en-US` locale) |
  * | ------ | ------------- | ---------------------------------- |
- * | 选项 | 相当于 | 示例（在 `en-US` 区域设置中给出）|
+ * | 选项 | 相当于 | 示例（在 `en-US` 区域设置中给出） |
  * | `'short'` | `'M/d/yy, h:mm a'` | `6/15/15, 9:03 AM` |
  * | `'medium'` | `'MMM d, y, h:mm:ss a'` | `Jun 15, 2015, 9:03:01 AM` |
  * | `'long'` | `'MMMM d, y, h:mm:ss a z'` | `June 15, 2015 at 9:03:01 AM GMT+1` |
@@ -214,7 +215,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * | Period | a, aa & aaa | Abbreviated | am/pm or AM/PM |
  * | 期间 | a、a 和 aaa | 缩写 | 上午/下午或上午/下午 |
  * |  | aaaa | Wide (fallback to `a` when missing) | ante meridiem/post meridiem |
- * |  | 啊啊 | 宽（缺失时回退到 `a`）| 子午前/子午后 |
+ * |  | 啊啊 | 宽（缺失时回退到 `a`） | 子午前/子午后 |
  * |  | aaaaa | Narrow | a/p |
  * |  | 啊啊啊 | 窄 | a/p |
  * | Period\* | B, BB & BBB | Abbreviated | mid. |
@@ -250,17 +251,17 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |  | SS | Numeric: 2 digits + zero padded | 00... 99 |
  * |  | SS | 数字： 2 位数字 + 填充零 | 00... 99 |
  * |  | SSS | Numeric: 3 digits + zero padded (= milliseconds) | 000... 999 |
- * |  | SSS | 数字： 3 位 + 填充零（= 毫秒）| 000... 999 |
+ * |  | SSS | 数字： 3 位 + 填充零（= 毫秒） | 000... 999 |
  * | Zone | z, zz & zzz | Short specific non location format (fallback to O) | GMT-8 |
- * | 区域 | z、zz 和 zzz | 简短的特定非位置格式（回退到 O）| GMT-8 |
+ * | 区域 | z、zz 和 zzz | 简短的特定非位置格式（回退到 O） | GMT-8 |
  * |  | zzzz | Long specific non location format (fallback to OOOO) | GMT-08:00 |
- * |  | zzzz | 长的特定非位置格式（回退到 OOOO）| GMT-08:00 |
+ * |  | zzzz | 长的特定非位置格式（回退到 OOOO） | GMT-08:00 |
  * |  | Z, ZZ & ZZZ | ISO8601 basic format | -0800 |
  * |  | Z、ZZ 和 ZZZ | ISO8601 基本格式 | -0800 |
  * |  | ZZZZ | Long localized GMT format | GMT-8:00 |
  * |  | ZZZZ | 长本地化 GMT 格式 | GMT-8:00 |
  * |  | ZZZZZ | ISO8601 extended format + Z indicator for offset 0 (= XXXXX) | -08:00 |
- * |  | ZZZZZ | ISO8601 扩展格式 + 偏移量 0 的 Z 指示器（= XXXXX）| -08:00 |
+ * |  | ZZZZZ | ISO8601 扩展格式 + 偏移量 0 的 Z 指示器（= XXXXX） | -08:00 |
  * |  | O, OO & OOO | Short localized GMT format | GMT-8 |
  * |  | 哦，OO & OOO | 简短的本地化 GMT 格式 | GMT-8 |
  * |  | OOOO | Long localized GMT format | GMT-08:00 |

@@ -49,12 +49,12 @@ function symbolIterator<T>(this: QueryList<T>): Iterator<T> {
  * ### 例子
  *
  * ```typescript
- *
  * @Component ({...})
  * class Container {
  * @ViewChildren (Item) items:QueryList<Item>;
  * }
  * ```
+ *
  * @publicApi
  */
 export class QueryList<T> implements Iterable<T> {

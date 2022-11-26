@@ -28,7 +28,7 @@ The following table lists some of the key AngularJS template features with their
 
 模板是 Angular 应用中的门面部分，它是用 HTML 写的。下表中是一些 AngularJS 中的关键模板特性及其在 Angular 中的等价语法。
 
-### Bindings / interpolation &rarr; bindings / interpolation
+### Bindings / interpolation → bindings / interpolation
 
 ### 绑定/插值 → 绑定/插值
 
@@ -37,7 +37,7 @@ The following table lists some of the key AngularJS template features with their
 | <header>Bindings/interpolation</header> <code-example hideCopy format="html" language="html"> Your favorite hero is: {{vm.favoriteHero}} </code-example> In AngularJS, an expression in curly braces denotes one-way binding. This binds the value of the element to a property in the controller associated with this template. <br /> When using the `controller as` syntax, the binding is prefixed with the controller alias (`vm` or `$ctrl`) because you have to be specific about the source. | <header>Bindings/interpolation</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="interpolation"></code-example> In Angular, a template expression in curly braces still denotes one-way binding. This binds the value of the element to a property of the component. The context of the binding is implied and is always the associated component, so it needs no reference variable. <br /> For more information, see the [Interpolation][AioGuideInterpolation] guide. |
 | <header>绑定/插值</header><code-example hideCopy format="html" language="html"> Your favorite hero is: {{vm.favoriteHero}} </code-example>在 AngularJS 中，花括号中的表达式表示单向绑定。这会将元素的值绑定到与此模板关联的控制器中的属性。<br />使用 `controller as` 语法时，绑定要以控制器别名（`vm` 或 `$ctrl`）为前缀，因为你必须特定于此来源。 | <header>绑定/插值</header><code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.html" region="interpolation"></code-example>在 Angular 中，花括号中的模板表达式仍然表示单向绑定。这会将元素的值绑定到组件的属性。绑定的上下文是隐式的，并且始终是与其关联的组件，因此它不需要引用变量。<br />有关更多信息，请参阅[插值][AioGuideInterpolation]指南。 |
 
-### Filters &rarr; pipes
+### Filters → pipes
 
 ### 过滤器/管道
 
@@ -46,7 +46,7 @@ The following table lists some of the key AngularJS template features with their
 | <header>Filters</header> <code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.title &verbar; uppercase}} &NewLine; &lt;/td&gt; </code-example> To filter output in AngularJS templates, use the pipe (<code>&verbar;</code>) character and one or more filters. <br /> This example filters the `title` property to uppercase. | <header>Pipes</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="uppercase"></code-example> In Angular you use similar syntax with the pipe (<code>&verbar;</code>) character to filter output, but now you call them **pipes**. Many (but not all) of the built-in filters from AngularJS are built-in pipes in Angular. <br /> For more information, see [Filters/pipes][AioGuideAjsQuickReferenceFiltersPipes]. |
 | <header>过滤器</header><code-example hideCopy format="html" language="html"> &lt;td&gt; &NewLine; &nbsp; {{movie.title &verbar; uppercase}} &NewLine; &lt;/td&gt; </code-example>要过滤 AngularJS 模板中的输出，请使用管道 (<code>&verbar;</code>) 字符和一个或多个过滤器。<br />此示例将 `title` 属性过滤为大写。 | <header>管道</header><code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="uppercase"></code-example>在 Angular 中，你可以用管道 (<code>&verbar;</code>) 字符来过滤输出，但现在它们改名为**管道**。AngularJS 的许多（但不是全部）内置过滤器都是 Angular 中的内置管道。<br />有关更多信息，请参阅[过滤器/管道][AioGuideAjsQuickReferenceFiltersPipes]。 |
 
-### Local variables &rarr; input variables
+### Local variables → input variables
 
 ### 局部变量 → 输入变量
 
@@ -67,7 +67,7 @@ AngularJS 为模板提供了七十多个内置指令。
 在 Angular 中，它们很多都已经不需要了，因为 Angular 有了一个更加强大、快捷的绑定系统。
 下面是一些 AngularJS 中的关键指令及其在 Angular 中的等价物。
 
-### `ng-app` &rarr; bootstrapping
+### `ng-app` → bootstrapping
 
 ### `ng-app` → 引导
 
@@ -92,7 +92,7 @@ AngularJS 为模板提供了七十多个内置指令。
 | <header><code>ng-click</code></header> <code-example hideCopy format="html" language="html"> &lt;button ng-click="vm.toggleImage()"&gt; &NewLine; &lt;button ng-click="vm.toggleImage(&dollar;event)"&gt; </code-example> In AngularJS, the `ng-click` directive allows you to specify custom behavior when an element is clicked. <br /> In the first example, when the user clicks the button, the `toggleImage()` method in the controller referenced by the `vm` `controller as` alias is executed. <br /> The second example demonstrates passing in the `$event` object, which provides details about the event to the controller. | <header>Bind to the <code>click</code> event</header> <code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="event-binding"></code-example> AngularJS event-based directives do not exist in Angular. Rather, define one-way binding from the template view to the component using **event binding**. <br /> For event binding, define the name of the target event within parenthesis and specify a template statement, in quotes, to the right of the equals. Angular then sets up an event handler for the target event. When the event is raised, the handler executes the template statement. <br /> In the first example, when a user clicks the button, the `toggleImage()` method in the associated component is executed. <br /> The second example demonstrates passing in the `$event` object, which provides details about the event to the component. <br /> For a list of DOM events, see [Event reference][MdnDocsWebEvents]. <br /> For more information, see the [Event binding][AioGuideEventBinding] page. |
 | <header><code>ng-click</code></header><code-example hideCopy format="html" language="html"> &lt;button ng-click="vm.toggleImage()"&gt; &NewLine; &lt;button ng-click="vm.toggleImage(&dollar;event)"&gt; </code-example>在 AngularJS 中，`ng-click` 指令允许你指定单击元素时的自定义行为。<br />在第一个示例中，当用户单击按钮时，会执行 `vm` `controller as` 别名引用的控制器中的 `toggleImage()` 方法。<br />第二个示例演示了传入 `$event` 对象，该对象会向控制器提供有关事件的详细信息。 | <header>绑定到<code>click</code>事件</header><code-example hideCopy path="ajs-quick-reference/src/app/app.component.html" region="event-binding"></code-example>Angular 中不存在 AngularJS 基于事件的指令。相反，它使用**事件绑定**来定义从模板视图到组件的单向绑定。<br />对于事件绑定，请在括号中定义目标事件的名称，并在等号的右侧指定一个模板语句，用引号引起来。然后，Angular 为目标事件设置一个事件处理程序。引发事件时，处理程序会执行模板语句。<br />在第一个示例中，当用户单击按钮时，会执行关联组件中的 `toggleImage()` 方法。<br />第二个示例演示了传入 `$event` 对象，该对象会向组件提供有关事件的详细信息。<br />有关 DOM 事件的列表，请参阅[事件参考手册][MdnDocsWebEvents]。<br />有关更多信息，请参阅[事件绑定][AioGuideEventBinding]页面。 |
 
-### `ng-controller` &rarr; component decorator
+### `ng-controller` → component decorator
 
 ### `ng-controller` → 组件装饰器
 
@@ -262,7 +262,7 @@ The Angular code is shown using TypeScript.
 
 因为很多 AngularJS 的代码是用 JavaScript 写的，所以在 AngularJS 列显示的是 JavaScript 代码，而 Angular 列显示的是 TypeScript 代码。
 
-### Immediately invoked function expression (IIFE) &rarr; none
+### Immediately invoked function expression (IIFE) → none
 
 ### 即刻调用函数表达式（IIFE） → 无
 
@@ -280,7 +280,7 @@ The Angular code is shown using TypeScript.
 | <header>Angular modules</header> <code-example hideCopy format="typescript" language="typescript"> angular .module( &NewLine;&nbsp; "movieHunter", &NewLine;&nbsp; [ &NewLine;&nbsp;&nbsp;&nbsp; "ngRoute" &NewLine;&nbsp; ] &NewLine;); </code-example> In AngularJS, an Angular module keeps track of controllers, services, and other code. The second argument defines the list of other modules that this module depends upon. | <header><code>NgModules</code></header> <code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts"></code-example> NgModules, defined with the `NgModule` decorator, serve the same purpose: <ul> <li>`imports`: specifies the list of other modules that this module depends upon</li> <li>`declaration`: keeps track of your components, pipes, and directives.</li> </ul> For more information on modules, see [NgModules][AioGuideNgmodules]. |
 | <header>Angular 模块</header><code-example hideCopy format="typescript" language="typescript"> angular .module( &NewLine;&nbsp; "movieHunter", &NewLine;&nbsp; [ &NewLine;&nbsp;&nbsp;&nbsp; "ngRoute" &NewLine;&nbsp; ] &NewLine;); </code-example>在 AngularJS 中，Angular 模块会跟踪控制器、服务和其他代码。第二个参数定义此模块依赖的其他模块的列表。 | <header><code>NgModules</code></header><code-example hideCopy path="ajs-quick-reference/src/app/app.module.1.ts"></code-example>使用 `NgModule` 装饰器定义的 NgModules 具有相同的目的：<ul><li>`imports` ：指定此模块依赖的其他模块的列表</li><li>`declaration` : 跟踪你的组件、管道和指令。</li></ul>有关模块的更多信息，请参阅[NgModules][AioGuideNgmodules]。 |
 
-### Controller registration &rarr; component decorator
+### Controller registration → component decorator
 
 ### 控制器注册 → 组件装饰器
 
@@ -289,7 +289,7 @@ The Angular code is shown using TypeScript.
 | <header>Controller registration</header> <code-example hideCopy format="typescript" language="typescript"> angular .module( &NewLine;&nbsp; "movieHunter" &NewLine;) .controller( &NewLine;&nbsp; "MovieListCtrl", &NewLine;&nbsp; [ &NewLine;&nbsp;&nbsp;&nbsp; "movieService", &NewLine;&nbsp;&nbsp;&nbsp; MovieListCtrl &NewLine;&nbsp; ] &NewLine;); </code-example> AngularJS has code in each controller that looks up an appropriate Angular module and registers the controller with that module. <br /> The first argument is the controller name. The second argument defines the string names of all dependencies injected into this controller, and a reference to the controller function. | <header>Component decorator</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="component"></code-example> Angular adds a decorator to the component class to provide any required metadata. The `@Component` decorator declares that the class is a component and provides metadata about that component such as its selector, or tag, and its template. <br /> This is how you associate a template with logic, which is defined in the component class. <br /> For more information, see the [Components][AioGuideArchitectureComponents] section of the [Architecture Overview][AioGuideArchitecture] page. |
 | <header>控制器注册</header><code-example hideCopy format="typescript" language="typescript"> angular .module( &NewLine;&nbsp; "movieHunter" &NewLine;) .controller( &NewLine;&nbsp; "MovieListCtrl", &NewLine;&nbsp; [ &NewLine;&nbsp;&nbsp;&nbsp; "movieService", &NewLine;&nbsp;&nbsp;&nbsp; MovieListCtrl &NewLine;&nbsp; ] &NewLine;); </code-example>AngularJS 在每个控制器中都有代码，可以查找适当的 Angular 模块并将控制器注册到该模块。<br />第一个参数是控制器名称。第二个参数定义注入此控制器的所有依赖项的字符串名称，以及对控制器函数的引用。 | <header>组件装饰器</header><code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="component"></code-example>Angular 向组件类添加了一个装饰器，以提供任何所需的元数据。`@Component` 装饰器声明类是组件，并提供有关该组件的元数据，例如其选择器（或标签）和模板。<br />这就是你将模板与组件类中定义的逻辑关联起来的方式。<br />有关更多信息，请参阅[架构概览][AioGuideArchitecture]页面的[组件][AioGuideArchitectureComponents]部分。 |
 
-### Controller function &rarr; component class
+### Controller function → component class
 
 ### 控制器函数 → 组件类
 
@@ -298,7 +298,7 @@ The Angular code is shown using TypeScript.
 | <header>Controller function</header> <code-example hideCopy format="typescript" language="typescript"> function MovieListCtrl(movieService) { &NewLine; } </code-example> In AngularJS, you write the code for the model and methods in a controller function. | <header>Component class</header> <code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="class"></code-example> In Angular, you create a component class to contain the data model and control methods. Use the TypeScript <code>export</code> keyword to export the class so that the component can be imported into NgModules. <br /> For more information, see the [Components][AioGuideArchitectureComponents] section of the [Architecture Overview][AioGuideArchitecture] page. |
 | <header>Controller 函数</header><code-example hideCopy format="typescript" language="typescript"> function MovieListCtrl(movieService) { &NewLine; } </code-example>在 AngularJS 中，你在控制器函数中为模型和方法编写代码。 | <header>组件类</header><code-example hideCopy path="ajs-quick-reference/src/app/movie-list.component.ts" region="class"></code-example>在 Angular 中，你创建一个组件类来包含数据模型和控制方法。使用 TypeScript <code>export</code> 关键字来导出类，以便可以将特性导入 NgModules。<br />有关更多信息，请参阅[架构概览][AioGuideArchitecture]页面的[组件][AioGuideArchitectureComponents]部分。 |
 
-### Dependency injection &rarr; dependency injection
+### Dependency injection → dependency injection
 
 ### 依赖注入 → 依赖注入
 
@@ -338,6 +338,7 @@ Now you can also encapsulate a style sheet within a specific component.
 [AioApiCommonJsonpipe]: api/common/JsonPipe "JsonPipe | @angular/common - API | Angular"
 
 [AioGuideAjsQuickReferenceFiltersPipes]: guide/ajs-quick-reference#filters--pipes "Filters/pipes - AngularJS to Angular concepts: Quick reference | Angular"
+
 [AioGuideAjsQuickReferenceTemplateDirectives]: guide/ajs-quick-reference#template-directives "Template directives - AngularJS to Angular concepts: Quick reference | Angular"
 
 [AioGuideArchitecture]: guide/architecture "Introduction to Angular concepts | Angular"

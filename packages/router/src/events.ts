@@ -636,7 +636,7 @@ export class Scroll {
  * * [RouteConfigLoadStart](api/router/RouteConfigLoadStart): Before
  *   the router [lazy loads](/guide/router#lazy-loading) a route configuration.
  *
- *     [RouteConfigLoadStart](api/router/RouteConfigLoadStart)
+ *   [RouteConfigLoadStart](api/router/RouteConfigLoadStart)
  *   ：在路由器[惰性加载](/guide/router#lazy-loading)路由配置之前。
  *
  * * [RouteConfigLoadEnd](api/router/RouteConfigLoadEnd): After a route has been lazy loaded.
@@ -646,17 +646,17 @@ export class Scroll {
  * * [RoutesRecognized](api/router/RoutesRecognized): When the router parses the URL
  *   and the routes are recognized.
  *
- *     [RoutesRecognized](api/router/RoutesRecognized) ：路由器解析 URL 并识别出路由时。
+ *   [RoutesRecognized](api/router/RoutesRecognized) ：路由器解析 URL 并识别出路由时。
  *
  * * [GuardsCheckStart](api/router/GuardsCheckStart): When the router begins the *guards*
  *   phase of routing.
  *
- *     [GuardsCheckStart](api/router/GuardsCheckStart) ：当路由器开始*路由的守卫*阶段时。
+ *   [GuardsCheckStart](api/router/GuardsCheckStart) ：当路由器开始*路由的守卫*阶段时。
  *
  * * [ChildActivationStart](api/router/ChildActivationStart): When the router
  *   begins activating a route's children.
  *
- *     [ChildActivationStart](api/router/ChildActivationStart) ：当路由器开始激活子路由时。
+ *   [ChildActivationStart](api/router/ChildActivationStart) ：当路由器开始激活子路由时。
  *
  * * [ActivationStart](api/router/ActivationStart): When the router begins activating a route.
  *
@@ -665,22 +665,22 @@ export class Scroll {
  * * [GuardsCheckEnd](api/router/GuardsCheckEnd): When the router finishes the *guards*
  *   phase of routing successfully.
  *
- *     [GuardsCheckEnd](api/router/GuardsCheckEnd) ：当路由器*成功完成路由的保护*阶段时。
+ *   [GuardsCheckEnd](api/router/GuardsCheckEnd) ：当路由器*成功完成路由的保护*阶段时。
  *
  * * [ResolveStart](api/router/ResolveStart): When the router begins the *resolve*
  *   phase of routing.
  *
- *     [ResolveStart](api/router/ResolveStart) ：路由器开始*路由的解析*阶段时。
+ *   [ResolveStart](api/router/ResolveStart) ：路由器开始*路由的解析*阶段时。
  *
  * * [ResolveEnd](api/router/ResolveEnd): When the router finishes the *resolve*
  *   phase of routing successfully.
  *
- *     [ResolveEnd](api/router/ResolveEnd) ：当路由器*成功完成路由的解析*阶段时。
+ *   [ResolveEnd](api/router/ResolveEnd) ：当路由器*成功完成路由的解析*阶段时。
  *
  * * [ChildActivationEnd](api/router/ChildActivationEnd): When the router finishes
  *   activating a route's children.
  *
- *     [ChildActivationEnd](api/router/ChildActivationEnd) ：当路由器完成激活子路由时。
+ *   [ChildActivationEnd](api/router/ChildActivationEnd) ：当路由器完成激活子路由时。
  *
  * * [ActivationEnd](api/router/ActivationEnd): When the router finishes activating a route.
  *
@@ -697,7 +697,7 @@ export class Scroll {
  * * [NavigationError](api/router/NavigationError): When navigation fails
  *   due to an unexpected error.
  *
- *     [NavigationError](api/router/NavigationError) ：由于意外错误导致导航失败时。
+ *   [NavigationError](api/router/NavigationError) ：由于意外错误导致导航失败时。
  *
  * * [Scroll](api/router/Scroll): When the user scrolls.
  *

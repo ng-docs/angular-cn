@@ -92,12 +92,12 @@ export function isInlineTemplate(tNode: TNode): boolean {
  * 匹配可以在 2 种模式下执行：投影模式（当我们投影节点时）和正则指令匹配模式：
  *
  * - in the "directive matching" mode we do _not_ take TContainer's tagName into account if it is
- *   different from NG_TEMPLATE_SELECTOR (value different from NG_TEMPLATE_SELECTOR indicates that a
- *   tag name was extracted from \* syntax so we would match the same directive twice);
+ *     different from NG_TEMPLATE_SELECTOR (value different from NG_TEMPLATE_SELECTOR indicates that a
+ *     tag name was extracted from \* syntax so we would match the same directive twice);
  *
  *   在“指令匹配”模式下，如果 TContainer 的 tagName 与 NG_TEMPLATE_SELECTOR 不同，我们就 _ 不会\_
- * 考虑它（与 NG_TEMPLATE_SELECTOR 不同的值表明标签名称是从 \*
- * 语法中提取的，因此我们将匹配同一个指令两次）；
+ *   考虑它（与 NG_TEMPLATE_SELECTOR 不同的值表明标签名称是从 \*
+ *   语法中提取的，因此我们将匹配同一个指令两次）；
  *
  * - in the "projection" mode, we use a tag name potentially extracted from the \* syntax processing
  *   (applicable to TNodeType.Container only).

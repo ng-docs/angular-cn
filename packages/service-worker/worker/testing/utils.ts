@@ -41,8 +41,8 @@ export function envIsSupported(): boolean {
  * 获取 URL 相对于提供的基本 URL 的规范化表示。
  *
  * More specifically:
- * 1\. Resolve the URL relative to the provided base URL.
- * 2\. If the URL is relative to the base URL, then strip the origin (and only return the path and
+ * 1. Resolve the URL relative to the provided base URL.
+ * 2. If the URL is relative to the base URL, then strip the origin (and only return the path and
  *    search parts). Otherwise, return the full URL.
  *
  * 更具体地说： 1. 解析相对于所提供的基本 URL 的 URL。 2.如果 URL 是相对于基本 URL
@@ -51,16 +51,13 @@ export function envIsSupported(): boolean {
  * @param url The raw URL.
  *
  * 原始 URL。
- *
  * @param relativeTo The base URL to resolve `url` relative to.
  *     (This is usually the ServiceWorker's origin or registration scope).
  *
  * 要解析 `url` 的相对基础 URL。（这通常是 ServiceWorker 的来源或注册范围）。
- *
  * @return A normalized representation of the URL.
  *
  * URL 的规范化表示。
- *
  */
 export function normalizeUrl(url: string, relativeTo: string): NormalizedUrl {
   const {origin, path, search} = parseUrl(url, relativeTo);

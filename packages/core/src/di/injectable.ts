@@ -84,18 +84,18 @@ export interface Injectable {
    * 确定哪些注入器将提供可注入。
    *
    * - `Type<any>` - associates the injectable with an `@NgModule` or other `InjectorType`. This
-   * option is DEPRECATED.
+   *   option is DEPRECATED.
    *
-   *  `Type<any>` - 将可注入物与 `@NgModule` 或其他 `InjectorType` 相关联。此选项已弃用。
+   *   `Type<any>` - 将可注入物与 `@NgModule` 或其他 `InjectorType` 相关联。此选项已弃用。
    *
    * - 'null' : Equivalent to `undefined`. The injectable is not provided in any scope automatically
-   *   and must be added to a `providers` array of an [@NgModule](api/core/NgModule#providers),
-   *   [@Component](api/core/Directive#providers) or [@Directive](api/core/Directive#providers).
+   *     and must be added to a `providers` array of an [@NgModule](api/core/NgModule#providers),
+   *     [@Component](api/core/Directive#providers) or [@Directive](api/core/Directive#providers).
    *
    *   'null' ：等效于 `undefined`
-   * 。可注入物不会在任何范围内自动提供，必须添加到[@NgModule](api/core/NgModule#providers) 、
-   * [@Component](api/core/Directive#providers)或[@Directive](api/core/Directive#providers)的
-   * `providers` 数组中。
+   *   。可注入物不会在任何范围内自动提供，必须添加到[@NgModule](api/core/NgModule#providers) 、
+   *   [@Component](api/core/Directive#providers)或[@Directive](api/core/Directive#providers)的
+   *   `providers` 数组中。
    *
    * The following options specify that this injectable should be provided in one of the following
    * injectors:

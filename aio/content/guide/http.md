@@ -531,7 +531,7 @@ The method takes a resource URL and two additional parameters:
 | body | The data to POST in the body of the request. |
 | body | 要在请求正文中 POST 的数据。 |
 | options | An object containing method options which, in this case, [specify required headers](#adding-headers). |
-| 选项【模糊翻译】 | An object containing method options which, in this case, [specify required headers](#adding-headers). |
+| 选项 | An object containing method options which, in this case, [specify required headers](#adding-headers). |
 
 The example catches errors as [described above](#error-details).
 

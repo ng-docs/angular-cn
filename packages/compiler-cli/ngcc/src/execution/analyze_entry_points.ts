@@ -122,18 +122,18 @@ function logInvalidEntryPoints(logger: Logger, invalidEntryPoints: InvalidEntryP
  * 此函数会计算并返回以下内容：
  *
  * - `propertiesToProcess`: An (ordered) list of properties that exist and need to be processed,
- *   based on the provided `propertiesToConsider`, the properties in `package.json` and their
- *   corresponding format-paths. NOTE: Only one property per format-path needs to be processed.
+ *     based on the provided `propertiesToConsider`, the properties in `package.json` and their
+ *     corresponding format-paths. NOTE: Only one property per format-path needs to be processed.
  *
  *   `propertiesToProcess` ：存在且需要处理的属性的（有序）列表，基于提供的 `propertiesToConsider`
- *、`package.json` 中的属性及其对应的 format-paths 。注意：每个 format-path 只需要处理一个属性。
+ *   、`package.json` 中的属性及其对应的 format-paths 。注意：每个 format-path 只需要处理一个属性。
  *
  * - `equivalentPropertiesMap`: A mapping from each property in `propertiesToProcess` to the list of
- *   other format properties in `package.json` that need to be marked as processed as soon as the
- *   former has been processed.
+ *     other format properties in `package.json` that need to be marked as processed as soon as the
+ *     former has been processed.
  *
  *   `equivalentPropertiesMap` PropertiesMap ：从 `propertiesToProcess` 中的每个属性到
- * `package.json` 中其他格式属性列表的映射，一旦前者被处理，就需要将其标记为已处理。
+ *   `package.json` 中其他格式属性列表的映射，一旦前者被处理，就需要将其标记为已处理。
  *
  */
 function getPropertiesToProcess(

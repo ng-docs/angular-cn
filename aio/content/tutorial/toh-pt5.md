@@ -216,6 +216,7 @@ The browser should refresh and display the application title but not the list of
 从浏览器地址栏中的 URL 中移除 `/heroes`。浏览器就会刷新，并且显示本应用的标题，而不显示英雄列表。
 
 <!-- markdownlint-enable MD001 -->
+
 <!-- markdownlint-enable MD024 -->
 
 <a id="routerlink"></a>

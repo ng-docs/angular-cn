@@ -538,7 +538,8 @@ export abstract class AssetGroup {
    *
    * TODO(gkalpak):
    *   Investigate preserving more metadata. See, also, discussion on preserving `mode`:
-   *   https://github.com/angular/angular/issues/41931#issuecomment-1227601347
+   *   <https://github.com/angular/angular/issues/41931#issuecomment-1227601347>
+   *
    */
   private newRequestWithMetadata(url: string, options: RequestInit): Request {
     return this.adapter.newRequest(url, {headers: options.headers});

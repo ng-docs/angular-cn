@@ -2140,7 +2140,7 @@ The router supports directory-like syntax in a *link parameters list* to help gu
 | :-------------------- | :------ |
 | 目录式语法 | 详情 |
 | `./` <br /> `no leading slash` | Relative to the current level. |
-| `./` <br /> `无前导斜线` | 形式是相对于当前级别的。 |
+| `./` <br /> ` 无前导斜线 ` | 形式是相对于当前级别的。 |
 | `../` | Up one level in the route path. |
 | `../` | 回到当前路由路径的上一级。 |
 
@@ -2545,14 +2545,22 @@ The observable provided to the `Router` automatically completes after it retriev
 
 The router supports multiple guard interfaces:
 
-| Guard interfaces                                  | Details |
-|:---                                               |:---     |
-| [`canActivate`](api/router/CanActivateFn)           | To mediate navigation *to* a route                                  |
-| [`canActivateChild`](api/router/CanActivateChildFn) | To mediate navigation *to* a child route                            |
-| [`canDeactivate`](api/router/CanDeactivateFn)       | To mediate navigation *away* from the current route                 |
-| [`resolve`](api/router/ResolveFn)                   | To perform route data retrieval *before* route activation           |
-| [`canLoad`](api/router/CanLoadFn)                   | To mediate navigation *to* a feature module loaded *asynchronously* |
-| [`canMatch`](api/router/CanMatchFn)                 | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
+路由器可以支持多种守卫接口：
+
+| Guard interfaces | Details |
+| :--------------- | :------ |
+| 守卫接口 | 详情 |
+| [`canActivate`](api/router/CanActivateFn) | To mediate navigation *to* a route |
+| [`canActivate`](api/router/CanActivateFn) | 导航*到*某路由时介入 |
+| [`canActivateChild`](api/router/CanActivateChildFn) | To mediate navigation *to* a child route |
+| [`canActivateChild`](api/router/CanActivateChildFn) | 导航*到*某个子路由时介入 |
+| [`canDeactivate`](api/router/CanDeactivateFn) | To mediate navigation *away* from the current route |
+| [`canDeactivate`](api/router/CanDeactivateFn) | 从当前路由*离开*时介入 |
+| [`resolve`](api/router/ResolveFn) | To perform route data retrieval *before* route activation |
+| [`resolve`](api/router/ResolveFn) | 在某路由激活*之前*获取路由数据 |
+| [`canLoad`](api/router/CanLoadFn) | To mediate navigation *to* a feature module loaded *asynchronously* |
+| [`canLoad`](api/router/CanLoadFn) | 导航到某个异步加载的特性模块时介入 |
+| [`canMatch`](api/router/CanMatchFn) | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
 
 You can have multiple guards at every level of a routing hierarchy.
 The router checks the `canDeactivate` guards first, from the deepest child route to the top.
@@ -3186,7 +3194,6 @@ Review the following three important points:
 回顾以下三个重要点：
 
 1. The router's `ResolveFn` is optional.
-   
 
    路由器的这个 `Resolve` 接口是可选的。`CrisisDetailResolverService` 没有继承自某个基类。路由器只要找到了这个方法，就会调用它。
 
@@ -3419,9 +3426,13 @@ Add a `canLoad` guard that only loads the `AdminModule` once the user is logged 
 
 The existing `authGuard` already has the essential logic to support the `canLoad` guard.
 
-1.  Open `auth.guard.ts`.
-1.  Import the `CanLoadFn` interface from `@angular/router`.
-1.  Add it to the `authGuard` function's type.
+1. Open `auth.guard.ts`.
+
+   打开 `auth.guard.ts`。
+
+1. Import the `CanLoadFn` interface from `@angular/router`.
+
+1. Add it to the `authGuard` function's type.
 
 <code-example header="src/app/auth/auth.guard.ts (canLoad guard)" path="router/src/app/auth/auth.guard.ts" region="canLoad"></code-example>
 

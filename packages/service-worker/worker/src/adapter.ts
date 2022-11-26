@@ -94,8 +94,8 @@ export class Adapter<T extends CacheStorage = CacheStorage> {
    * 获取 URL 的规范化表示，例如 ServiceWorker 的 `ngsw.json` 配置中的那些。
    *
    * More specifically:
-   * 1\. Resolve the URL relative to the ServiceWorker's scope.
-   * 2\. If the URL is relative to the ServiceWorker's own origin, then only return the path part.
+   * 1. Resolve the URL relative to the ServiceWorker's scope.
+   * 2. If the URL is relative to the ServiceWorker's own origin, then only return the path part.
    *    Otherwise, return the full URL.
    *
    * 更具体地说： 1. 解析相对于 ServiceWorker 范围的 URL。 2.如果 URL 是相对于 ServiceWorker
@@ -104,11 +104,9 @@ export class Adapter<T extends CacheStorage = CacheStorage> {
    * @param url The raw request URL.
    *
    * 原始请求 URL。
-   *
    * @return A normalized representation of the URL.
    *
    * URL 的规范化表示。
-   *
    */
   normalizeUrl(url: string): NormalizedUrl {
     // Check the URL's origin against the ServiceWorker's.

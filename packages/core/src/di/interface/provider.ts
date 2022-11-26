@@ -151,10 +151,10 @@ export interface StaticClassProvider extends StaticClassSansProvider {
  * @usageNotes
  *
  * ```ts
- *
  * @Injectable (SomeModule, {deps: []})
  * class MyService {}
  * ```
+ *
  * @publicApi
  */
 export interface ConstructorSansProvider {
@@ -511,8 +511,7 @@ export type ProcessProvidersFunction = (providers: Provider[]) => Provider[];
 
 
 /**
- * A wrapper around an NgModule that associates it with [providers](guide/glossary#provider
- * "Definition"). Usage without a generic type is deprecated.
+ * A wrapper around an NgModule that associates it with [providers](guide/glossary#provider "Definition"). Usage without a generic type is deprecated.
  *
  * 将 NgModule 与[provider](guide/glossary#provider "定义")关联的 NgModule
  * 的包装器。不推荐使用没有泛型类型的用法。
@@ -520,7 +519,6 @@ export type ProcessProvidersFunction = (providers: Provider[]) => Provider[];
  * @see [Deprecations](guide/deprecations#modulewithproviders-type-without-a-generic)
  *
  * [弃用](guide/deprecations#modulewithproviders-type-without-a-generic)
- *
  * @publicApi
  */
 export interface ModuleWithProviders<T> {

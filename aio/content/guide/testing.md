@@ -117,68 +117,67 @@ If you require to fine-tune Karma, follow the below steps:
 
 1. Create a `karma.conf.js` in the root folder of the project.
 
-    <code-example format="javascript" language="javascript" header="karma.conf.js">
+   <code-example format="javascript" language="javascript" header="karma.conf.js">
 
-    module.exports = function (config) {
-      config.set({
-        basePath: '',
-        frameworks: ['jasmine', '@angular-devkit/build-angular'],
-        plugins: [
-          require('karma-jasmine'),
-          require('karma-chrome-launcher'),
-          require('karma-jasmine-html-reporter'),
-          require('karma-coverage'),
-          require('@angular-devkit/build-angular/plugins/karma')
-        ],
-        client: {
-          jasmine: {
-            // you can add configuration options for Jasmine here
-            // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
-            // for example, you can disable the random execution with `random: false`
-            // or set a specific seed with `seed: 4321`
-          },
-          clearContext: false // leave Jasmine Spec Runner output visible in browser
-        },
-        jasmineHtmlReporter: {
-          suppressAll: true // removes the duplicated traces
-        },
-        coverageReporter: {
-          dir: require('path').join(__dirname, './coverage/<project-name>'),
-          subdir: '.',
-          reporters: [
-            { type: 'html' },
-            { type: 'text-summary' }
-          ]
-        },
-        reporters: ['progress', 'kjhtml'],
-        port: 9876,
-        colors: true,
-        logLevel: config.LOG_INFO,
-        autoWatch: true,
-        browsers: ['Chrome'],
-        singleRun: false,
-        restartOnFileChange: true
-      });
-    };
+   module.exports = function (config) {
+     config.set({
+       basePath: '',
+       frameworks: ['jasmine', '@angular-devkit/build-angular'],
+       plugins: [
+         require('karma-jasmine'),
+         require('karma-chrome-launcher'),
+         require('karma-jasmine-html-reporter'),
+         require('karma-coverage'),
+         require('@angular-devkit/build-angular/plugins/karma')
+       ],
+       client: {
+         jasmine: {
+           // you can add configuration options for Jasmine here
+           // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
+           // for example, you can disable the random execution with `random: false`
+           // or set a specific seed with `seed: 4321`
+         },
+         clearContext: false // leave Jasmine Spec Runner output visible in browser
+       },
+       jasmineHtmlReporter: {
+         suppressAll: true // removes the duplicated traces
+       },
+       coverageReporter: {
+         dir: require('path').join(__dirname, './coverage/<project-name>'),
+         subdir: '.',
+         reporters: [
+           { type: 'html' },
+           { type: 'text-summary' }
+         ]
+       },
+       reporters: ['progress', 'kjhtml'],
+       port: 9876,
+       colors: true,
+       logLevel: config.LOG_INFO,
+       autoWatch: true,
+       browsers: ['Chrome'],
+       singleRun: false,
+       restartOnFileChange: true
+     });
+   };
 
-    </code-example>
+   </code-example>
 
 1. In the `angular.json`, use the [`karmaConfig`](cli/test) option to configure the Karma builder to use the created configuration file.
 
-  <code-example format="jsonc" language="jsonc">
+   <code-example format="jsonc" language="jsonc">
 
-  "test": {
-    "builder": "@angular-devkit/build-angular:karma",
-    "options": {
-      "karmaConfig": "karma.conf.js",
-      "polyfills": ["zone.js", "zone.js/testing"],
-      "tsConfig": "src/tsconfig.spec.json",
-      "styles": ["src/styles.css"]
-    }
-  }
+   "test": {
+     "builder": "@angular-devkit/build-angular:karma",
+     "options": {
+       "karmaConfig": "karma.conf.js",
+       "polyfills": ["zone.js", "zone.js/testing"],
+       "tsConfig": "src/tsconfig.spec.json",
+       "styles": ["src/styles.css"]
+     }
+   }
 
-  </code-example>
-
+   </code-example>
 
 <div class="alert is-helpful">
 
@@ -285,14 +284,13 @@ Continuous integration (CI) servers let you set up your project repository so th
 
 避免项目出 BUG 的最佳方式之一，就是使用测试套件。但是很容易忘了一直运行它。持续集成（CI）服务器让你可以配置项目的代码仓库，以便每次提交和收到 Pull Request 时就会运行你的测试。
 
-To test your Angular CLI application in Continuous integration \(CI\) run the following command:
+To test your Angular CLI application in Continuous integration (CI) run the following command:
 
 <code-example format="shell" language="shell">
 
 ng test --no-watch --no-progress
 
 </code-example>
-
 
 ## More information on testing
 

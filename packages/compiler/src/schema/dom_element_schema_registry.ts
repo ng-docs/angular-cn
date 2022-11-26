@@ -48,7 +48,7 @@ const OBJECT = 'object';
  * specified then `""` (blank) element is assumed.
  *
  * `element` 可以从 `parentElement` 继承其他属性如果没有指定 `^parentElement` ，则假定为 `""`
- *（空白）元素。
+ * （空白）元素。
  *
  * NOTE: The blank element inherits from root `[Element]` element, the super element of all
  * elements.
@@ -70,7 +70,7 @@ const OBJECT = 'object';
  *
  * - (no prefix): property is a string.
  *
- *  （无前缀）：属性是一个字符串。
+ *   （无前缀）：属性是一个字符串。
  *
  * - `*`: property represents an event.
  *

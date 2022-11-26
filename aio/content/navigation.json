@@ -390,7 +390,8 @@
             {
               "url": "guide/dependency-injection-overview",
               "title": "Dependency injection in Angular",
-              "tooltip": "Dependency injection is a design pattern in which a class requests dependencies from external sources."
+              "tooltip": "Dependency injection is a design pattern in which a class requests dependencies from external sources.",
+              "titleCn": "Angular 中的依赖注入"
             },
             {
               "url": "guide/dependency-injection",
@@ -402,7 +403,8 @@
             {
               "url": "guide/creating-injectable-service",
               "title": "Creating an injectable service",
-              "tooltip": "Example of creating an injectable service."
+              "tooltip": "Example of creating an injectable service.",
+              "titleCn": "创建可注入服务"
             },
             {
               "url": "guide/dependency-injection-providers",
@@ -414,7 +416,8 @@
             {
               "url": "guide/hierarchical-dependency-injection",
               "title": "Hierarchical injectors",
-              "tooltip": "Hierarchical dependency injection enables you to share dependencies between different parts of the application only when and if you need to."
+              "tooltip": "Hierarchical dependency injection enables you to share dependencies between different parts of the application only when and if you need to.",
+              "titleCn": "多级注入器"
             }
           ]
         }
@@ -1608,15 +1611,15 @@
     },
     {
       "titleCn": "内容贡献者指南",
-          "title": "Documentation contributors guide",
-          "tooltipCn": "描述如何为 Angular 文档做出贡献。",
+      "title": "Documentation contributors guide",
+      "tooltipCn": "描述如何为 Angular 文档做出贡献。",
       "tooltip": "Describes how to contribute to the Angular documentation.",
       "children": [
         {
           "url": "guide/contributors-guide-overview",
-              "titleCn": "概览",
+          "titleCn": "概览",
           "title": "Overview",
-              "tooltipCn": "概述了如何为 Angular 的文档做出贡献。",
+          "tooltipCn": "概述了如何为 Angular 的文档做出贡献。",
           "tooltip": "Provides an overview of how to contribute to Angular's documentation."
         },
         {
@@ -1710,22 +1713,22 @@
         {
           "url": "guide/docs-style-guide",
           "titleCn": "文档风格指南",
-              "title": "Documentation style guide",
+          "title": "Documentation style guide",
           "tooltipCn": "给文档作者的风格指南。",
-              "tooltip": "Style guide for documentation authors."
+          "tooltip": "Style guide for documentation authors."
         },
         {
           "url": "guide/localizing-angular",
           "titleCn": "Angular 文档本地化指南",
-              "title": "Angular doc localization guidelines",
+          "title": "Angular doc localization guidelines",
           "tooltipCn": "了解本地化 Angular 文档的指南。",
-              "tooltip": "Learn about the guidelines for localizing Angular documentation."
+          "tooltip": "Learn about the guidelines for localizing Angular documentation."
         },
         {
           "url": "guide/localized-documentation",
-              "titleCn": "本地化文档",
+          "titleCn": "本地化文档",
           "title": "Localized documentation",
-              "tooltipCn": "Angular 文档的本地化版本列表",
+          "tooltipCn": "Angular 文档的本地化版本列表",
           "tooltip": "A list of localized versions of the Angular documentation",
           "hidden": true
         }

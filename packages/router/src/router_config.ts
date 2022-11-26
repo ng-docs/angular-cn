@@ -28,18 +28,19 @@ export type ErrorHandler = (error: any) => any;
  * when the router performs the initial navigation operation.
  *
  * * 'enabledNonBlocking' - (default) The initial navigation starts after the
- * root component has been created. The bootstrap is not blocked on the completion of the initial
- * navigation.
+ *   root component has been created. The bootstrap is not blocked on the completion of the initial
+ *   navigation.
+ *
  * * 'enabledBlocking' - The initial navigation starts before the root component is created.
- * The bootstrap is blocked until the initial navigation is complete. This value is required
- * for [server-side rendering](guide/universal) to work.
+ *   The bootstrap is blocked until the initial navigation is complete. This value is required
+ *   for [server-side rendering](guide/universal) to work.
+ *
  * * 'disabled' - The initial navigation is not performed. The location listener is set up before
- * the root component gets created. Use if there is a reason to have
- * more control over when the router starts its initial navigation due to some complex
- * initialization logic.
+ *   the root component gets created. Use if there is a reason to have
+ *   more control over when the router starts its initial navigation due to some complex
+ *   initialization logic.
  *
  * @see `forRoot()`
- *
  * @publicApi
  */
 export type InitialNavigation = 'disabled'|'enabledBlocking'|'enabledNonBlocking';
@@ -128,10 +129,12 @@ export interface InMemoryScrollingOptions {
    * Configures if the scroll position needs to be restored when navigating back.
    *
    * * 'disabled'- (Default) Does nothing. Scroll position is maintained on navigation.
+   *
    * * 'top'- Sets the scroll position to x = 0, y = 0 on all navigation.
+   *
    * * 'enabled'- Restores the previous scroll position on backward navigation, else sets the
-   * position to the anchor if one is provided, or sets the scroll position to [0, 0] (forward
-   * navigation). This option will be the default in the future.
+   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \(forward
+   *   navigation). This option will be the default in the future.
    *
    * You can implement custom scroll restoration behavior by adapting the enabled behavior as
    * in the following example.
@@ -157,6 +160,7 @@ export interface InMemoryScrollingOptions {
    *   }
    * }
    * ```
+   *
    */
   scrollPositionRestoration?: 'disabled'|'enabled'|'top';
 }
@@ -227,9 +231,12 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    * any path or parameter information. The function takes three parameters:
    *
    * - `'URIError'` - Error thrown when parsing a bad URL.
+   *
    * - `'UrlSerializer'` - UrlSerializer that’s configured with the router.
+   *
    * - `'url'` -  The malformed URL that caused the URIError
-   * */
+   *
+   */
   malformedUriErrorHandler?:
       (error: URIError, urlSerializer: UrlSerializer, url: string) => UrlTree;
 }

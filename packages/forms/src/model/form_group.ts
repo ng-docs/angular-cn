@@ -310,22 +310,20 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to add to the collection
    *
    * 要添加到集合的控件名称
-   *
    * @param control Provides the control for the given name
    *
    * 提供给定名称的控件
-   *
    * @param options Specifies whether this FormGroup instance should emit events after a new
    *     control is added.
    *
    * 指定此 FormGroup 实例是否应在添加新控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   added. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     added. When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象在添加控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象在添加控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   addControl(
@@ -363,18 +361,17 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to remove from the collection
    *
    * 要从集合中删除的控件名称
-   *
    * @param options Specifies whether this FormGroup instance should emit events after a
    *     control is removed.
    *
    * 指定此 FormGroup 实例是否应在删除控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   removed. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     removed. When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   removeControl(name: string, options: {emitEvent?: boolean;} = {}): void {
@@ -398,22 +395,20 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to replace in the collection
    *
    * 集合中要替换的控件名称
-   *
    * @param control Provides the control for the given name
    *
    * 提供给定名称的控件
-   *
    * @param options Specifies whether this FormGroup instance should emit events after an
    *     existing control is replaced.
    *
    * 指定此 FormGroup 实例是否应在替换现有控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control is
-   *   replaced with a new one. When false, no events are emitted.
+   *     `valueChanges` observables emit events with the latest status and value when the control is
+   *     replaced with a new one. When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时，`statusChanges` 和
-   * `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   setControl<K extends string&keyof TControl>(name: K, control: TControl[K], options?: {
@@ -484,16 +479,13 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * form.setValue({first: 'Nancy', last: 'Drew'});
    * console.log(form.value);   // {first: 'Nancy', last: 'Drew'}
    * ```
-   *
    * @throws When strict checks fail, such as setting the value of a control
    * that doesn't exist or if you exclude a value of a control that does exist.
    *
    * 当严格检查失败时，例如设置不存在的控件的值或者排除确实存在的控件的值。
-   *
    * @param value The new value for the control that matches the structure of the group.
    *
    * 与组结构匹配的控件的新值。
-   *
    * @param options Configuration options that determine how the control propagates changes
    * and emits events after the value changes.
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
@@ -508,12 +500,12 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control value is updated.
-   *   When false, no events are emitted.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control value is updated.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   override setValue(value: ɵFormGroupRawValue<TControl>, options: {
@@ -556,11 +548,9 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * form.patchValue({first: 'Nancy'});
    * console.log(form.value);   // {first: 'Nancy', last: null}
    * ```
-   *
    * @param value The object that matches the structure of the group.
    *
    * 与组结构匹配的对象。
-   *
    * @param options Configuration options that determine how the control propagates changes and
    * emits events after the value is patched.
    *
@@ -572,14 +562,14 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `onlySelf` ：当为 true 时，每次更改都只影响此控件，而不影响其父级。默认为 true。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges` observables emit events with the latest status and value when the control
-   * value is updated. When false, no events are emitted. The configuration options are passed to
-   *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
+   *     `valueChanges` observables emit events with the latest status and value when the control
+   *   value is updated. When false, no events are emitted. The configuration options are passed to
+   *     the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
-   * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
-   * updateValueAndValidity} 方法。
+   *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    */
   override patchValue(value: ɵFormGroupValue<TControl>, options: {
@@ -623,7 +613,6 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * or an object that defines the initial value and disabled state.
    *
    * 使用初始值或定义初始值和禁用状态的对象重置控件。
-   *
    * @param options Configuration options that determine how the control propagates changes
    * and emits events when the group is reset.
    *
@@ -635,16 +624,16 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `onlySelf` ：当为 true 时，每次更改只影响此控件，而不影响其父控件。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control is reset.
-   *   When false, no events are emitted.
-   *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
-   *   updateValueAndValidity} method.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control is reset.
+   *     When false, no events are emitted.
+   *     The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
+   *     updateValueAndValidity} method.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
-   * 时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
-   * updateValueAndValidity} 方法。
+   *   可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    * @usageNotes
    *
@@ -683,7 +672,6 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * console.log(form.value);  // {last: 'last'}
    * console.log(form.get('first').status);  // 'DISABLED'
    * ```
-   *
    */
   override reset(
       value: ɵTypedOrUntyped<TControl, ɵFormGroupValue<TControl>, any> = {} as unknown as

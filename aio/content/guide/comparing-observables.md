@@ -126,7 +126,7 @@ The following code snippets illustrate how the same kind of operation is defined
 
 | Operation | Observable | Promise |
 | :-------- | :--------- | :------ |
-| 操作 | 可观察对象 | Promise  |
+| 操作 | 可观察对象 | Promise |
 | Creation | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
 | 创建 | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
 | Transform | <code-example format="typescript" hideCopy language="typescript"> obs.pipe(map((value) => value \* 2));</pre> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example> |

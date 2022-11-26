@@ -435,6 +435,7 @@ Open `MessageService` and replace its contents with the following.
 The service exposes its cache of `messages` and two methods:
 
 * One to `add()` a message to the cache.
+
 * Another to `clear()` the cache.
 
 该服务对外暴露了它的 `messages` 缓存，以及两个方法：`add()` 方法往缓存中添加一条消息，`clear()` 方法用于清空缓存。

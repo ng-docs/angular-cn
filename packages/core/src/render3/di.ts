@@ -54,7 +54,6 @@ import {stringifyForError} from './util/stringify_utils';
  * 示例：
  *
  * ```
- *
  * @Injectable ()
  * class MyService {
  *   constructor(public value: String) {}
@@ -76,8 +75,8 @@ import {stringifyForError} from './util/stringify_utils';
  *     expect(myService.value).toEqual('providers');
  *   }
  * }
- *
  * ```
+ *
  */
 let includeViewProviders = true;
 
@@ -346,13 +345,13 @@ export function diPublicInInjector(
  * 给定：
  *
  * ```
- *
  * @Component (...)
  * class MyComponent {
  *   constructor(
  * @Attribute ('title') title: string) { ... }
  * }
  * ```
+ *
  * When instantiated with
  *
  * 当使用下列方式实例化时
@@ -371,6 +370,7 @@ export function diPublicInInjector(
  *   ...
  * })
  * ```
+ *
  * @publicApi
  */
 export function injectAttributeImpl(tNode: TNode, attrNameToInject: string): string|null {

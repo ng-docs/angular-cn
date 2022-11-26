@@ -124,12 +124,12 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  *   `$implicit: T`：迭代目标（绑定到 `ngForOf`）中每个条目的值。
  *
  * - `ngForOf: NgIterable<T>`: The value of the iterable expression. Useful when the expression is
- *   more complex then a property access, for example when using the async pipe (`userStreams |
- *   async`).
+ *     more complex then a property access, for example when using the async pipe (`userStreams |
+ *     async`).
  *
  *   `ngForOf:
- *   NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用
- * `async` 管道时（`userStreams | async`）。
+ *     NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用
+ *   `async` 管道时（`userStreams | async`）。
  *
  * - `index: number`: The index of the current item in the iterable.
  *

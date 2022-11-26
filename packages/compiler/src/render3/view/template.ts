@@ -1691,13 +1691,13 @@ const SHARED_CONTEXT_KEY = '$$shared_ctx$$';
  *   如果我们要存储本地引用，则值 `localRef` 为 true
  *
  * - value `priority` dictates the sorting priority of this var declaration compared
- *   to other var declarations on the same retrieval level. For example, if there is a
- *   context variable and a local ref accessing the same parent view, the context var
- *   declaration should always come before the local ref declaration.
+ *     to other var declarations on the same retrieval level. For example, if there is a
+ *     context variable and a local ref accessing the same parent view, the context var
+ *     declaration should always come before the local ref declaration.
  *
  *   value `priority` 级表明此 var 声明与同一检索级别上的其他 var
- * 声明相比的排序优先级。例如，如果有一个上下文变量和一个本地 ref 访问同一个父视图，则上下文 var
- * 声明应始终位于本地 ref 声明之前。
+ *   声明相比的排序优先级。例如，如果有一个上下文变量和一个本地 ref 访问同一个父视图，则上下文 var
+ *   声明应始终位于本地 ref 声明之前。
  *
  */
 type BindingData = {

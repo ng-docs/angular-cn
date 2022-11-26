@@ -21,6 +21,7 @@ If you are confident that a part of the application is not affected by a state c
 OnPush change detection instructs Angular to run change detection for a component subtree **only** when:
 
 OnPush 变更检测会指示 Angular 仅在以下情况下为组件子树自动运行变更检测：
+
 * The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `==`
 
   子树的根组件接收到作为模板绑定的结果的新输入。Angular 将输入的当前值和过去值使用 `==` 进行比较

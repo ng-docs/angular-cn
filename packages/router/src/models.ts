@@ -132,7 +132,8 @@ export type ResolveData = {
 export interface DefaultExport<T> {
   /**
    * Default exports are bound under the name `"default"`, per the ES Module spec:
-   * https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records
+   * <https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records>
+   *
    */
   default: T;
 }
@@ -170,6 +171,7 @@ export interface DefaultExport<T> {
  * ```
  *
  * If the lazy-loaded routes are exported via a `default` export, the `.then` can be omitted:
+ *
  * ```
  * [{
  *   path: 'lazy',
@@ -178,6 +180,8 @@ export interface DefaultExport<T> {
  *
  * @see [Route.loadChildren](api/router/Route#loadChildren)
  * @publicApi
+ * ```
+ *
  */
 export type LoadChildrenCallback = () => Type<any>|NgModuleFactory<any>|Routes|
     Observable<Type<any>|Routes|DefaultExport<Type<any>>|DefaultExport<Routes>>|
@@ -190,6 +194,7 @@ export type LoadChildrenCallback = () => Type<any>|NgModuleFactory<any>|Routes|
  *
  * @see `LoadChildrenCallback`
  * @publicApi
+ *
  */
 export type LoadChildren = LoadChildrenCallback|DeprecatedLoadChildren;
 
@@ -204,6 +209,7 @@ export type LoadChildren = LoadChildrenCallback|DeprecatedLoadChildren;
  *   `merge` ：将新参数与当前参数合并。
  *
  * - `"preserve"` : Preserve current parameters.
+ *
  * - `""` : Replace current parameters with new parameters. This is the default behavior.
  *
  *   `preserve` ：保留当前参数。
@@ -211,6 +217,7 @@ export type LoadChildren = LoadChildrenCallback|DeprecatedLoadChildren;
  * @see `UrlCreationOptions#queryParamsHandling`
  * @see `RouterLink`
  * @publicApi
+ *
  */
 export type QueryParamsHandling = 'merge'|'preserve'|'';
 
@@ -224,15 +231,20 @@ export type QueryParamsHandling = 'merge'|'preserve'|'';
  *
  * `paramsChange` : Rerun the guards and resolvers when path or
  * path param changes. This does not include query parameters. This option is the default.
+ *
  * - `always` : Run on every execution.
+ *
  * - `pathParamsChange` : Rerun guards and resolvers when the path params
- * change. This does not compare matrix or query parameters.
+ *   change. This does not compare matrix or query parameters.
+ *
  * - `paramsOrQueryParamsChange` : Run when path, matrix, or query parameters change.
+ *
  * - `pathParamsOrQueryParamsChange` : Rerun guards and resolvers when the path params
- * change or query params have changed. This does not include matrix parameters.
+ *   change or query params have changed. This does not include matrix parameters.
  *
  * @see [Route.runGuardsAndResolvers](api/router/Route#runGuardsAndResolvers)
  * @publicApi
+ *
  */
 export type RunGuardsAndResolvers =
     'pathParamsChange'|'pathParamsOrQueryParamsChange'|'paramsChange'|'paramsOrQueryParamsChange'|
@@ -534,6 +546,7 @@ export type RunGuardsAndResolvers =
  * ```
  *
  * @publicApi
+ *
  */
 export interface Route {
   /**
@@ -543,6 +556,7 @@ export interface Route {
    * 用于定义路由的页面标题。这可以是静态字符串或实现 `Resolve` 的 `Injectable` 。
    *
    * @see `PageTitleStrategy`
+   *
    */
   title?: string|Type<Resolve<string>>|ResolveFn<string>;
 
@@ -618,6 +632,7 @@ export interface Route {
    * 加载组件后，为路由 `loadComponent` 填充。
    *
    * @internal
+   *
    */
   _loadedComponent?: Type<unknown>;
 
@@ -654,9 +669,9 @@ export interface Route {
    * 一个依赖注入标记的数组，用于查找 `CanActivate()`
    * 处理程序，以确定是否允许当前用户激活组件。默认情况下，任何用户都可以激活。
    *
-   *
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
+   *
    */
   canActivate?: Array<CanActivateFn|any>;
   /**
@@ -676,9 +691,9 @@ export interface Route {
    * 用于查找 `CanActivateChild()` 处理程序的 DI
    * 标记数组，以确定是否允许当前用户激活组件的子项。默认情况下，任何用户都可以激活子项。
    *
-   *
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
+   *
    */
   canActivateChild?: Array<CanActivateChildFn|any>;
   /**
@@ -701,9 +716,9 @@ export interface Route {
    * 用于查找 `CanLoad()` 处理程序的 DI
    * 标记数组，以确定是否允许当前用户加载组件。默认情况下，任何用户都可以加载。
    *
-   *
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
+   *
    */
   canLoad?: Array<CanLoadFn|any>;
   /**
@@ -747,10 +762,11 @@ export interface Route {
    *   `paramsOrQueryParamsChange` ：查询参数更改时运行。
    *
    * - `always` : Run on every execution.
-   * By default, guards and resolvers run only when the matrix
-   * parameters of the route change.
+   *   By default, guards and resolvers run only when the matrix
+   *   parameters of the route change.
    *
    * @see RunGuardsAndResolvers
+   *
    */
   runGuardsAndResolvers?: RunGuardsAndResolvers;
 
@@ -777,6 +793,7 @@ export interface Route {
    * 从静态路由提供程序创建的注入器
    *
    * @internal
+   *
    */
   _injector?: EnvironmentInjector;
 
@@ -786,6 +803,7 @@ export interface Route {
    * 加载路由后，使用 `loadChildren` 填充路由。
    *
    * @internal
+   *
    */
   _loadedRoutes?: Route[];
 
@@ -795,6 +813,7 @@ export interface Route {
    * 加载路由后使用 `loadChildren` 填充路由
    *
    * @internal
+   *
    */
   _loadedInjector?: EnvironmentInjector;
 }
@@ -828,6 +847,7 @@ export interface LoadedRouterConfig {
  *     return true;
  *   }
  * }
+ * ```
  *
  * @Injectable ()
  * class CanActivateTeam implements CanActivate {
@@ -890,6 +910,7 @@ export interface CanActivate {
  * @publicApi
  * @see `CanActivate`
  * @see `Route`
+ *
  */
 export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -918,6 +939,7 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  *     return true;
  *   }
  * }
+ * ```
  *
  * @Injectable ()
  * class CanActivateTeam implements CanActivateChild {
@@ -990,6 +1012,7 @@ export interface CanActivateChild {
  * @publicApi
  * @see `CanActivateChild`
  * @see `Route`
+ *
  */
 export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1024,6 +1047,8 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  * in the router configuration:
  *
  * 在这里，定义的保护函数作为路由器配置中 `Route` 对象的一部分提供：
+ *
+ * ```
  *
  * ```
  *
@@ -1087,6 +1112,7 @@ export interface CanDeactivate<T> {
  * @publicApi
  * @see `CanDeactivate`
  * @see `Route`
+ *
  */
 export type CanDeactivateFn<T> =
     (component: T, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,
@@ -1104,7 +1130,6 @@ export type CanDeactivateFn<T> =
  * The following example implements a `CanMatch` function that decides whether the
  * current user has permission to access the users page.
  *
- *
  * ```
  * class UserToken {}
  * class Permissions {
@@ -1112,8 +1137,9 @@ export type CanDeactivateFn<T> =
  *     return true;
  *   }
  * }
+ * ```
  *
- * @Injectable()
+ * @Injectable ()
  * class CanMatchTeamSection implements CanMatch {
  *   constructor(private permissions: Permissions, private currentUser: UserToken) {}
  *
@@ -1127,8 +1153,7 @@ export type CanDeactivateFn<T> =
  * in the router configuration:
  *
  * ```
- *
- * @NgModule({
+ * @NgModule ({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -1155,7 +1180,7 @@ export type CanDeactivateFn<T> =
  * You can alternatively provide an in-line function with the `CanMatchFn` signature:
  *
  * ```
- * @NgModule({
+ * @NgModule ({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -1187,6 +1212,7 @@ export interface CanMatch {
  * @publicApi
  * @see `CanMatch`
  * @see `Route`
+ *
  */
 export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1207,6 +1233,8 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * needed to activate the requested route.
  *
  * 以下示例实现了一个 `resolve()` 方法，该方法会检索激活所请求的路由所需的数据。
+ *
+ * ```
  *
  * ```
  *
@@ -1324,6 +1352,7 @@ export interface Resolve<T> {
  *
  * @see `Route#resolve`.
  * @publicApi
+ *
  */
 export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<T>|Promise<T>|T;
@@ -1352,6 +1381,7 @@ export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSna
  *     return true;
  *   }
  * }
+ * ```
  *
  * @Injectable ()
  * class CanLoadTeamSection implements CanLoad {
@@ -1413,6 +1443,7 @@ export interface CanLoad {
  * @publicApi
  * @see `CanLoad`
  * @see `Route`
+ *
  */
 export type CanLoadFn = (route: Route, segments: UrlSegment[]) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1430,6 +1461,7 @@ export type CanLoadFn = (route: Route, segments: UrlSegment[]) =>
  * @see [Routing and Navigation guide](guide/router)
  *
  * @publicApi
+ *
  */
 export interface NavigationBehaviorOptions {
   /**

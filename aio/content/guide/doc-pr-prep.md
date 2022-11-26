@@ -16,13 +16,13 @@ The commits in your branch, and their messages, become part of the `angular/angu
 
 What does this mean for your pull request?
 
-1.  Your commit messages become part of the documentation of the changes made to Angular.
-    Because they become part of the `angular/angular` repo, they must conform to a specific format so that they are easy to read.
-    If they aren't correctly formatted, you can fix that before you open your pull request.
+1. Your commit messages become part of the documentation of the changes made to Angular.
+   Because they become part of the `angular/angular` repo, they must conform to a specific format so that they are easy to read.
+   If they aren't correctly formatted, you can fix that before you open your pull request.
 
-1.  You might need to squash the commits that you made while developing your update.
-    It's normal to save your changes as intermediate commits while you're developing a large update, but your pull request represents only one change to the `angular/angular` repo.
-    Squashing the commits from your working branch into fewer, or just one commit, makes the commits in your pull request match the changes your update makes to the `angular/angular` repo.
+1. You might need to squash the commits that you made while developing your update.
+   It's normal to save your changes as intermediate commits while you're developing a large update, but your pull request represents only one change to the `angular/angular` repo.
+   Squashing the commits from your working branch into fewer, or just one commit, makes the commits in your pull request match the changes your update makes to the `angular/angular` repo.
 
 ## Format commit messages for a pull request
 
@@ -214,39 +214,39 @@ The last step of this procedure then pushes the update to the fork of the `angul
 
 Perform these steps from a command-line tool on your local computer.
 
-1.  From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
-    Remember to replace `personal` with your GitHub username.
+1. From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
+   Remember to replace `personal` with your GitHub username.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd personal/angular
+   cd personal/angular
 
-    </code-example>
+   </code-example>
 
-1.  Run this command to check out the `main` branch.
+1. Run this command to check out the `main` branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git checkout main
+   git checkout main
 
-    </code-example>
+   </code-example>
 
-1.  Update the `main` branch in the `working` directory on your local computer from the upstream `angular/angular` repo.
+1. Update the `main` branch in the `working` directory on your local computer from the upstream `angular/angular` repo.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git fetch upstream
-    git merge upstream/main
+   git fetch upstream
+   git merge upstream/main
 
-    </code-example>
+   </code-example>
 
-1.  Update your `personal/angular` repo on `github.com` with the latest from the upstream `angular/angular` repo.
+1. Update your `personal/angular` repo on `github.com` with the latest from the upstream `angular/angular` repo.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git push
+   git push
 
-    </code-example>
+   </code-example>
 
 The `main` branch on your local computer and your origin repo on `github.com` are now in sync.
 They have been updated with any changes to the upstream `angular/angular` repo that were made since the last time you updated your fork.
@@ -255,39 +255,39 @@ They have been updated with any changes to the upstream `angular/angular` repo t
 
 Perform these steps from a command-line tool on your local computer.
 
-1.  From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
-    Remember to replace `personal` with your GitHub username.
+1. From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
+   Remember to replace `personal` with your GitHub username.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd personal/angular
+   cd personal/angular
 
-    </code-example>
+   </code-example>
 
-1.  Run this command to check out your `working` branch.
-    Replace `working-branch` with the name of your `working` branch.
+1. Run this command to check out your `working` branch.
+   Replace `working-branch` with the name of your `working` branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git checkout working-branch
+   git checkout working-branch
 
-    </code-example>
+   </code-example>
 
-1.  Run this command to rebase your branch to add the commits from your `working` branch to the current content in the `main` branch.
+1. Run this command to rebase your branch to add the commits from your `working` branch to the current content in the `main` branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git rebase main
+   git rebase main
 
-    </code-example>
+   </code-example>
 
-1.  Run this command to update your `working` branch in the repo in your GitHub account.
+1. Run this command to update your `working` branch in the repo in your GitHub account.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git push --force-with-lease
+   git push --force-with-lease
 
-    </code-example>
+   </code-example>
 
 ### Review the commits in your working branch
 
@@ -297,56 +297,56 @@ After you rebase your `working` branch, your commits should be after those of th
 
 Perform these steps from a command-line tool on your local computer.
 
-1.  From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
-    Remember to replace `personal` with your GitHub username.
+1. From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
+   Remember to replace `personal` with your GitHub username.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    cd personal/angular
+   cd personal/angular
 
-    </code-example>
+   </code-example>
 
-1.  Run this command to confirm that you are using the correct `working` branch.
-    If you aren't in the correct branch, replace `working-branch` with the name of your `working` branch and run `git checkout working-branch` to select the correct branch.
+1. Run this command to confirm that you are using the correct `working` branch.
+   If you aren't in the correct branch, replace `working-branch` with the name of your `working` branch and run `git checkout working-branch` to select the correct branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git status
+   git status
 
-    </code-example>
+   </code-example>
 
-1.  Review the message from the previous `git status` command.
-    If you aren't in the correct branch, replace `working-branch` with the name of your `working` branch and run `git checkout working-branch` to select the correct branch.
+1. Review the message from the previous `git status` command.
+   If you aren't in the correct branch, replace `working-branch` with the name of your `working` branch and run `git checkout working-branch` to select the correct branch.
 
-1.  Run this command to get a list of the commits in your `working` branch.
+1. Run this command to get a list of the commits in your `working` branch.
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    git log --pretty=format:"%h %as %an %Cblue%s %Cgreen%D"
+   git log --pretty=format:"%h %as %an %Cblue%s %Cgreen%D"
 
-    </code-example>
+   </code-example>
 
-    This command returns the log of commits in the `working` branch with the most recent commit at the top of the list.
+   This command returns the log of commits in the `working` branch with the most recent commit at the top of the list.
 
-1.  In the output of the previous `git log` command, find the entry that contains `upstream/main`.
-    It should be near the top of the list.
+1. In the output of the previous `git log` command, find the entry that contains `upstream/main`.
+   It should be near the top of the list.
 
-    1.  **Confirm that the entry that contains `upstream/main` also contains `origin/main` and `main`**
+   1. **Confirm that the entry that contains `upstream/main` also contains `origin/main` and `main`**
 
-        If it doesn't, you must resync your clone and your fork of `angular/angular`, and then rebase the branch before you continue.
+      If it doesn't, you must resync your clone and your fork of `angular/angular`, and then rebase the branch before you continue.
 
-    1.  **Confirm that all commits for your update are after the entry that contains `upstream/main`**
+   1. **Confirm that all commits for your update are after the entry that contains `upstream/main`**
 
-        Remember that the log output is displayed with the most recent commit first. Your commits should all be on top of the entry that contains `upstream/main` in the log output.
-        If any of your commits are listed after the entry that contains `upstream/main`, somehow your commits in the `working` branch got mixed up. You must fix the branch before you open a pull request.
+      Remember that the log output is displayed with the most recent commit first. Your commits should all be on top of the entry that contains `upstream/main` in the log output.
+      If any of your commits are listed after the entry that contains `upstream/main`, somehow your commits in the `working` branch got mixed up. You must fix the branch before you open a pull request.
 
-    1.  **Confirm that your commit messages are in the correct format**
+   1. **Confirm that your commit messages are in the correct format**
 
-        The commit message format is tested by the automated tests and it must be in the correct format before the pull request can be approved.
+      The commit message format is tested by the automated tests and it must be in the correct format before the pull request can be approved.
 
-    1.  **Confirm that your commits and their messages reflect the changes your update makes to Angular**
+   1. **Confirm that your commits and their messages reflect the changes your update makes to Angular**
 
-        If you have more commits than changes, you might need to squash them into fewer commits before your pull request is approved.
+      If you have more commits than changes, you might need to squash them into fewer commits before your pull request is approved.
 
 ## Next step
 

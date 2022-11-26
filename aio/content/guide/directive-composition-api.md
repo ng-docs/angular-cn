@@ -58,7 +58,6 @@ By explicitly specifying the inputs and outputs, consumers of the component with
 bind them in a template:
 
 ```html
-
 <admin-menu menuId="top-menu" (menuClosed)="logMenuClosed()">
 ```
 
@@ -79,7 +78,6 @@ export class AdminMenu { }
 ```
 
 ```html
-
 <admin-menu id="top-menu" (closed)="logMenuClosed()">
 ```
 
@@ -138,10 +136,15 @@ export class AdminMenu { }
 The order of execution here is:
 
 1. `MenuBehavior` instantiated
+
 2. `AdminMenu` instantiated
+
 3. `MenuBehavior` receives inputs (`ngOnInit`)
+
 4. `AdminMenu` receives inputs (`ngOnInit`)
+
 5. `MenuBehavior` applies host bindings
+
 6. `AdminMenu` applies host bindings
 
 This order of operations means that components with `hostDirectives` can override any host bindings
@@ -168,13 +171,21 @@ export class EvenMoreCustomTooltip { }
 In the example above, the order of execution is:
 
 1. `Tooltip` instantiated
+
 2. `CustomTooltip` instantiated
+
 3. `EvenMoreCustomTooltip` instantiated
+
 4. `Tooltip` receives inputs (`ngOnInit`)
+
 5. `CustomTooltip` receives inputs (`ngOnInit`)
+
 6. `EvenMoreCustomTooltip` receives inputs (`ngOnInit`)
+
 7. `Tooltip` applies host bindings
+
 8. `CustomTooltip` applies host bindings
+
 9. `EvenMoreCustomTooltip` applies host bindings
 
 ### Dependency injection

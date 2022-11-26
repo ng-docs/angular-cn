@@ -299,14 +299,12 @@ export class CurrencyPipe implements PipeTransform {
    * @param value The number to be formatted as currency.
    *
    * 要格式化为货币的数字。
-   *
    * @param currencyCode The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code,
    * such as `USD` for the US dollar and `EUR` for the euro. The default currency code can be
    * configured using the `DEFAULT_CURRENCY_CODE` injection token.
    *
    * [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)货币代码，例如 `USD` 代表美元，`EUR`
    * 代表欧元。可以用 `DEFAULT_CURRENCY_CODE` 注入令牌配置默认货币代码。
-   *
    * @param display The format for the currency indicator. One of the following:
    *
    * 货币指示器的格式。以下之一：
@@ -320,12 +318,12 @@ export class CurrencyPipe implements PipeTransform {
    *   `symbol`（默认）：显示符号（例如 `$`）。
    *
    * - `symbol-narrow`: Use the narrow symbol for locales that have two symbols for their
-   *   currency.
-   *   For example, the Canadian dollar CAD has the symbol `CA$` and the symbol-narrow `$`. If the
-   *   locale has no narrow symbol, uses the standard symbol for the locale.
+   *     currency.
+   *     For example, the Canadian dollar CAD has the symbol `CA$` and the symbol-narrow `$`. If the
+   *     locale has no narrow symbol, uses the standard symbol for the locale.
    *
    *   `symbol-narrow` ：对有两个货币符号的区域设置使用窄符号。例如，加元 CAD 的符号是 `CA$`
-   * 和符号-narrow `$` 。如果此区域设置没有窄符号，则使用此区域设置的标准符号。
+   *   和符号-narrow `$` 。如果此区域设置没有窄符号，则使用此区域设置的标准符号。
    *
    * - String: Use the given string value instead of a code or a symbol.
    *   For example, an empty string will suppress the currency & symbol.
@@ -353,14 +351,14 @@ export class CurrencyPipe implements PipeTransform {
    *   `minFractionDigits` ：小数点后的最小位数。默认为 `2` 。
    *
    * - `maxFractionDigits`: The maximum number of digits after the decimal point.
-   *   Default is `2`.
-   *   If not provided, the number will be formatted with the proper amount of digits,
-   *   depending on what the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) specifies.
-   *   For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
+   *     Default is `2`.
+   *     If not provided, the number will be formatted with the proper amount of digits,
+   *     depending on what the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) specifies.
+   *     For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
    *
    *   `maxFractionDigits` ：小数点后的最大位数。默认为 `2` 。如果未提供，则该数字将根据[ISO
-   * 4217](https://en.wikipedia.org/wiki/ISO_4217)指定的内容使用适当的位数格式化。例如，加元有 2
-   * 位，而智利比索没有。
+   *   4217](https://en.wikipedia.org/wiki/ISO_4217)指定的内容使用适当的位数格式化。例如，加元有 2
+   *   位，而智利比索没有。
    *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
@@ -368,7 +366,6 @@ export class CurrencyPipe implements PipeTransform {
    *
    * 要使用的区域设置格式规则的区域设置代码。未提供时，使用 `LOCALE_ID` 的值，默认为 `en-US`
    * 。请参阅[设置你的应用程序区域设置](guide/i18n-common-locale-id)。
-   *
    */
   transform(
       value: number|string|null|undefined, currencyCode: string = this._defaultCurrencyCode,

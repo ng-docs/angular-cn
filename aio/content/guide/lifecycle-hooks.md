@@ -212,13 +212,13 @@ The sequence of log messages follows the prescribed hook calling order:
 | 钩子顺序 | 日志信息 |
 | 1 | `OnChanges` |
 | 2 | `OnInit` |
-| 3| `DoCheck`             |
-| 4          | `AfterContentInit`    |
-|5 | `AfterContentChecked` |
+| 3 | `DoCheck` |
+| 4 | `AfterContentInit` |
+| 5 | `AfterContentChecked` |
 | 6 | `AfterViewInit` |
-| 7| `AfterViewChecked`    |
-| 8          | `DoCheck`             |
-|9 | `AfterContentChecked` |
+| 7 | `AfterViewChecked` |
+| 8 | `DoCheck` |
+| 9 | `AfterContentChecked` |
 | 10 | `AfterViewChecked` |
 | 11 | `OnDestroy` |
 

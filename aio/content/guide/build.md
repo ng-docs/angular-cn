@@ -406,7 +406,6 @@ Internally, the Angular CLI uses the below `browserslist` configuration which ma
   Firefox ESR
   </code-example>
 
-
 To override the internal configuration, add a new file named `.browserslistrc`, to the project directory, that specifies the browsers you want to support:
 
   或者你也可以在项目目录下添加一个新文件 `.browserslistrc`，用于指定你要支持哪些浏览器：

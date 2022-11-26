@@ -29,6 +29,7 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || ngDevMode;
  * @usageNotes
  *
  * Basic example of how you can add a Router to your application:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent, {
@@ -38,6 +39,7 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || ngDevMode;
  *
  * You can also enable optional features in the Router by adding functions from the `RouterFeatures`
  * type:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -52,7 +54,6 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || ngDevMode;
  * ```
  *
  * @see `RouterFeatures`
- *
  * @publicApi
  * @param routes A set of `Route`s to use for the application routing table.
  * @param features Optional features to configure additional router behaviors.
@@ -156,6 +157,7 @@ export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryS
  * @usageNotes
  *
  * Basic example of how you can enable scrolling feature:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -169,7 +171,6 @@ export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryS
  *
  * @see `provideRouter`
  * @see `ViewportScroller`
- *
  * @publicApi
  * @param options Set of configuration parameters to customize scrolling behavior, see
  *     `InMemoryScrollingOptions` for additional information.
@@ -288,6 +289,7 @@ export type InitialNavigationFeature =
  * @usageNotes
  *
  * Basic example of how you can enable this navigation behavior:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -300,7 +302,6 @@ export type InitialNavigationFeature =
  * ```
  *
  * @see `provideRouter`
- *
  * @publicApi
  * @returns A set of providers for use with `provideRouter`.
  */
@@ -397,6 +398,7 @@ export type DisabledInitialNavigationFeature =
  * @usageNotes
  *
  * Basic example of how you can disable initial navigation:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -409,9 +411,7 @@ export type DisabledInitialNavigationFeature =
  * ```
  *
  * @see `provideRouter`
- *
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withDisabledInitialNavigation(): DisabledInitialNavigationFeature {
@@ -448,6 +448,7 @@ export type DebugTracingFeature = RouterFeature<RouterFeatureKind.DebugTracingFe
  * @usageNotes
  *
  * Basic example of how you can enable debug tracing:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -460,9 +461,7 @@ export type DebugTracingFeature = RouterFeature<RouterFeatureKind.DebugTracingFe
  * ```
  *
  * @see `provideRouter`
- *
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withDebugTracing(): DebugTracingFeature {
@@ -509,6 +508,7 @@ export type PreloadingFeature = RouterFeature<RouterFeatureKind.PreloadingFeatur
  * @usageNotes
  *
  * Basic example of how you can configure preloading:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -521,11 +521,9 @@ export type PreloadingFeature = RouterFeature<RouterFeatureKind.PreloadingFeatur
  * ```
  *
  * @see `provideRouter`
- *
  * @param preloadingStrategy A reference to a class that implements a `PreloadingStrategy` that
  *     should be used.
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withPreloading(preloadingStrategy: Type<PreloadingStrategy>): PreloadingFeature {
@@ -553,6 +551,7 @@ export type RouterConfigurationFeature =
  * @usageNotes
  *
  * Basic example of how you can provide extra configuration options:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -567,11 +566,9 @@ export type RouterConfigurationFeature =
  * ```
  *
  * @see `provideRouter`
- *
  * @param options A set of parameters to configure Router, see `RouterConfigOptions` for
  *     additional information.
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withRouterConfig(options: RouterConfigOptions): RouterConfigurationFeature {

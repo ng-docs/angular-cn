@@ -222,7 +222,7 @@ export class NgZone {
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * \#runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -248,7 +248,7 @@ export class NgZone {
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * \#runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.

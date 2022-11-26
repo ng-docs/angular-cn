@@ -13,7 +13,8 @@ A basic understanding of the following:
 对下列知识有基本的了解：
 
 * [Service worker overview](https://developer.chrome.com/docs/workbox/service-worker-overview/)
-*   [Service Worker in Production](guide/service-worker-devops)
+
+* [Service Worker in Production](guide/service-worker-devops)
 
   [生产环境下的 Service Worker](guide/service-worker-devops)。
 
@@ -492,10 +493,15 @@ Angular 服务工作者是否应该缓存不透明的响应。
 
 If not specified, the default value depends on the data group's configured strategy:
 
-| Strategies                             | Details |
-|:---                                    |:---     |
-| Groups with the `freshness` strategy   | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response.                                    |
+如果未指定，则默认值取决于数据组的配置策略：
+
+| Strategies | Details |
+| :--------- | :------ |
+| 策略 | 详情 |
+| Groups with the `freshness` strategy | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
+| 使用 `freshness` 策略的组 | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
 | Groups with the `performance` strategy | The default value is `false` and the service worker doesn't cache opaque responses. These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
+| 具有 `performance` 策略的组 | The default value is `false` and the service worker doesn't cache opaque responses. These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
 
 <div class="callout is-important">
 
@@ -534,12 +540,25 @@ This optional section enables you to specify a custom list of URLs that will be 
 The ServiceWorker redirects navigation requests that don't match any `asset` or `data` group to the specified [index file](#index-file).
 A request is considered to be a navigation request if:
 
-*   Its [method](https://developer.mozilla.org/docs/Web/API/Request/method) is `GET`
-*   Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
-*   It accepts a `text/html` response as determined by the value of the `Accept` header
-*   Its URL matches the following criteria:
-    *   The URL must not contain a file extension \(that is, a `.`\) in the last path segment
-    *   The URL must not contain `__`
+* Its [method](https://developer.mozilla.org/docs/Web/API/Request/method) is `GET`
+
+* Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
+
+  它的[模式](https://developer.mozilla.org/docs/Web/API/Request/mode)是 `navigation`
+
+* It accepts a `text/html` response as determined by the value of the `Accept` header
+
+  它接受 `text/html` 响应（根据 `Accept` 头的值决定）
+
+* Its URL matches the following criteria:
+
+  * The URL must not contain a file extension (that is, a `.`) in the last path segment
+
+    URL 的最后一段路径中不能包含文件扩展名（比如 `.`）
+
+  * The URL must not contain `__`
+
+    URL 中不能包含 `__`
 
 <div class="alert is-helpful">
 

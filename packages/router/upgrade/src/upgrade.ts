@@ -127,10 +127,10 @@ export function setUpLocationSync(ngUpgrade: UpgradeModule, urlType: 'path'|'has
  *   规范化意味着相对 URL 将在应用程序文档的上下文中被解析为绝对 URL。
  *
  * - Parsing means that the anchor's `protocol`, `hostname`, `port`, `pathname` and related
- *   properties are all populated to reflect the normalized URL.
+ *     properties are all populated to reflect the normalized URL.
  *
  *   解析意味着锚的 `protocol`、`hostname`、`port`、`pathname`
- * 和相关属性都会被填充以反映规范化的 URL。
+ *   和相关属性都会被填充以反映规范化的 URL。
  *
  * While this approach has wide compatibility, it doesn't work as expected on IE. On IE, normalizing
  * happens similar to other browsers, but the parsed components will not be set. (E.g. if you assign

@@ -55,7 +55,6 @@ export interface ApplicationConfig {
  * 标志）。
  *
  * ```typescript
- *
  * @Component ({
  *   standalone: true,
  *   template: 'Hello world!'
@@ -98,21 +97,19 @@ export interface ApplicationConfig {
  *
  * await bootstrapApplication(RootComponent, {providers: [provideProtractorTestingSupport()]});
  * ```
+ *
  * @param rootComponent A reference to a standalone component that should be rendered.
  *
  * 对应该呈现的独立组件的引用。
- *
  * @param options Extra configuration for the bootstrap operation, see `ApplicationConfig` for
  *     additional info.
  *
  * 引导操作的额外配置，有关其他信息，请参阅 `ApplicationConfig` 。
- *
  * @returns
  *
  * A promise that returns an `ApplicationRef` instance once resolved.
  *
  * 解析后返回 `ApplicationRef` 实例的 Promise。
- *
  * @publicApi
  */
 export function bootstrapApplication(

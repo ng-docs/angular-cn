@@ -219,7 +219,6 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  * @param token A token that represents a dependency that should be injected.
  *
  * 表示应该注入的依赖项的标记。
- *
  * @param flags Optional flags that control how injection is executed.
  * The flags correspond to injection strategies that can be specified with
  * parameter decorators `@Host`, `@Self`, `@SkipSef`, and `@Optional`.
@@ -231,7 +230,6 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  * the injected value if operation is successful, `null` otherwise.
  *
  * 如果操作成功，则注入注入的值，否则为 `null` 。
- *
  * @throws if called outside of a supported context.
  *
  * 如果注入成功，则为 true，否则为 null。
@@ -243,7 +241,6 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  * 在实践中，构造函数、构造函数参数和字段初始化器中允许进行 `inject()` 调用：
  *
  * ```typescript
- *
  * @Injectable ({providedIn: 'root'})
  * export class Car {
  *   radio: Radio|undefined;
@@ -283,6 +280,7 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export function inject<T>(

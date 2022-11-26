@@ -25,11 +25,11 @@ class TimeoutError extends Error {
  *   当 ngcc 开始执行时，它会在 `compiler-cli/ngcc` 文件夹中创建一个文件。
  *
  * * If it finds one is already there then it pauses and waits for the file to be removed by the
- *   other process. If the file is not removed within a set timeout period given by
- *   `retryDelay*retryAttempts` an error is thrown with a suitable error message.
+ *     other process. If the file is not removed within a set timeout period given by
+ *     `retryDelay*retryAttempts` an error is thrown with a suitable error message.
  *
  *   如果它发现一个已经存在，则会暂停并等待文件被另一个进程删除。如果未在 `retryDelay*retryAttempts`
- * 给定的设置超时期限内删除文件，则会抛出错误并显示适当的错误消息。
+ *   给定的设置超时期限内删除文件，则会抛出错误并显示适当的错误消息。
  *
  * * If the process locking the file changes, then we restart the timeout.
  *

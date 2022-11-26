@@ -314,12 +314,14 @@ export function nonCollidingImportName(
 
 /**
  * Generate a new import. Follows the format:
+ *
  * ```
  * import {exportedSpecifierName as localName} from 'rawModuleSpecifier';
  * ```
  *
  * If `exportedSpecifierName` is null, or is equal to `name`, then the qualified import alias will
  * be omitted.
+ *
  */
 export function generateImport(
     localName: string, exportedSpecifierName: string|null,

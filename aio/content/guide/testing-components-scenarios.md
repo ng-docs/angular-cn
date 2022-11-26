@@ -2137,7 +2137,7 @@ The `TestBed.overrideComponent` method can replace the component's `providers` w
 
 Notice that `TestBed.configureTestingModule` no longer provides a fake `HeroService` because it's [not needed](#spy-stub).
 
-注意，`TestBed.configureTestingModule` 不再提供伪造的`HeroService`，因为[并不需要](#spy-stub)。
+注意，`TestBed.configureTestingModule` 不再提供伪造的 `HeroService`，因为[并不需要](#spy-stub)。
 
 <a id="override-component-method"></a>
 

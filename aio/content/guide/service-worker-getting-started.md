@@ -88,6 +88,8 @@ The CLI project is now set up to use the Angular service worker.
 This section demonstrates a service worker in action,
 using an example application.
 
+本节用一个范例应用来演示一下 Service Worker 实战。
+
 ### Initial load
 
 ### 最初的加载

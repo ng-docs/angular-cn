@@ -264,7 +264,7 @@ export class FormBuilder {
    *   Note: the legacy format is deprecated and might be removed in one of the next major versions
    *   of Angular.
    *
-   *     `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在
+   *   `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在
    *   Angular 的后面的某个主要版本中将其删除。
    *
    */
@@ -293,16 +293,18 @@ export class FormBuilder {
    * @description
    * Constructs a new `FormRecord` instance. Accepts a single generic argument, which is an object
    * containing all the keys and corresponding inner control types.
-   *
    * @param controls A collection of child controls. The key for each child is the name
    * under which it is registered.
-   *
    * @param options Configuration options object for the `FormRecord`. The object should have the
    * `AbstractControlOptions` type and might contain the following fields:
+   *
    * * `validators`: A synchronous validator function, or an array of validator functions.
+   *
    * * `asyncValidators`: A single async validator or array of async validator functions.
+   *
    * * `updateOn`: The event upon which the control should be updated (options: 'change' | 'blur'
-   * | submit').
+   *   | submit').
+   *
    */
   record<T>(controls: {[key: string]: T}, options: AbstractControlOptions|null = null):
       FormRecord<ɵElement<T, null>> {

@@ -27,7 +27,9 @@ export class PreloadLinkCreator {
   private readonly document = inject(DOCUMENT);
 
   /**
-   * @description Add a preload `<link>` to the `<head>` of the `index.html` that is served from the
+   * @description
+   *
+   * Add a preload `<link>` to the `<head>` of the `index.html` that is served from the
    * server while using Angular Universal and SSR to kick off image loads for high priority images.
    *
    * The `sizes` (passed in from the user) and `srcset` (parsed and formatted from `ngSrcset`)
@@ -35,7 +37,7 @@ export class PreloadLinkCreator {
    * respectively, on the preload `<link>` tag so that the correctly sized image is preloaded from
    * the CDN.
    *
-   * {@link https://web.dev/preload-responsive-images/#imagesrcset-and-imagesizes}
+   * {@link <https://web.dev/preload-responsive-images/#imagesrcset-and-imagesizes}>
    *
    * @param renderer The `Renderer2` passed in from the directive
    * @param src The original src of the image that is set on the `ngSrc` input.

@@ -865,10 +865,10 @@ interface ZoneTestConfigurations {
    *    使 `describe()` / `xdescribe()` / `fdescribe()` 方法在 syncTestZone 中运行。
    *
    * 2. Make the `it()`/`xit()`/`fit()`/`beforeEach()`/`afterEach()`/`beforeAll()`/`afterAll()`
-   *    methods run in the ProxyZone.
+   *       methods run in the ProxyZone.
    *
    *    使 `it()` / `xit()` / `fit()` / `beforeEach()` / `afterEach()` / `beforeAll()` /
-   * `afterAll()` 方法在 ProxyZone 中运行。
+   *    `afterAll()` 方法在 ProxyZone 中运行。
    *
    * With this patch, `async()`/`fakeAsync()` can work with the Jasmine runner.
    *
@@ -901,10 +901,10 @@ interface ZoneTestConfigurations {
    *    使 `describe()` / `xdescribe()` / `fdescribe()` 方法在 syncTestZone 中运行。
    *
    * 2. Make the `it()`/`xit()`/`fit()`/`beforeEach()`/`afterEach()`/`beforeAll()`/`afterAll()`
-   *    methods run in the ProxyZone.
+   *       methods run in the ProxyZone.
    *
    *    使 `it()` / `xit()` / `fit()` / `beforeEach()` / `afterEach()` / `beforeAll()` /
-   * `afterAll()` 方法在 ProxyZone 中运行。
+   *    `afterAll()` 方法在 ProxyZone 中运行。
    *
    * With this patch, `async()`/`fakeAsync()` can work with the Mocha runner.
    *
@@ -936,10 +936,10 @@ interface ZoneTestConfigurations {
    *    使 `describe()` / `xdescribe()` / `fdescribe()` 方法在 syncTestZone 中运行。
    *
    * 2. Make the `it()`/`xit()`/`fit()`/`beforeEach()`/`afterEach()`/`before()`/`after()` methods
-   *    run in the ProxyZone.
+   *       run in the ProxyZone.
    *
    *    使 `it()` / `xit()` / `fit()` / `beforeEach()` / `afterEach()` / `before()` / `after()`
-   * 方法在 ProxyZone 中运行。
+   *    方法在 ProxyZone 中运行。
    *
    * With this patch, `async()`/`fakeAsync()` can work with the Jest runner.
    *
@@ -1127,16 +1127,16 @@ interface ZoneTestConfigurations {
  * `ZoneGlobalConfigurations` 之间的区别是，
  *
  * 1. `ZoneGlobalConfigurations` must be defined on the `global/window` object before importing
- *    `zone.js`. The value of the configuration cannot be changed at runtime.
+ *       `zone.js`. The value of the configuration cannot be changed at runtime.
  *
  *    `ZoneGlobalConfigurations` 必须在导入 `zone.js` 之前在 `global/window`
- * 对象上定义。配置的值不能在运行时更改。
+ *    对象上定义。配置的值不能在运行时更改。
  *
  * 2. `ZoneRuntimeConfigurations` must be defined on the `Zone` object after importing `zone.js`.
- *    You can change the value of this configuration at runtime.
+ *       You can change the value of this configuration at runtime.
  *
  *    导入 `ZoneRuntimeConfigurations` 之后，必须在 `Zone` 对象上定义 `zone.js`
- * 。你可以在运行时更改此配置的值。
+ *    。你可以在运行时更改此配置的值。
  *
  */
 interface ZoneRuntimeConfigurations {

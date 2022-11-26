@@ -686,19 +686,19 @@ function executeOnDestroys(tView: TView, lView: LView): void {
  * 我们可能无法立即插入元素有两个原因。
  *
  * - Projection: When creating a child content element of a component, we have to skip the
- *   insertion because the content of a component will be projected.
- *   `<component><content>delayed due to projection</content></component>`
+ *     insertion because the content of a component will be projected.
+ *     `<component><content>delayed due to projection</content></component>`
  *
  *   投影：创建组件的子内容元素时，我们必须跳过插入，因为组件的内容将被投影。
- * `<component><content>delayed due to projection</content></component>`
+ *   `<component><content>delayed due to projection</content></component>`
  *
  * - Parent container is disconnected: This can happen when we are inserting a view into
- *   parent container, which itself is disconnected. For example the parent container is part
- *   of a View which has not be inserted or is made for projection but has not been inserted
- *   into destination.
+ *     parent container, which itself is disconnected. For example the parent container is part
+ *     of a View which has not be inserted or is made for projection but has not been inserted
+ *     into destination.
  *
  *   父容器已断开连接：当我们将视图插入本身已断开连接的父容器时，可能会发生这种情况。例如，父容器是
- * View 的一部分，它尚未插入或用于投影但尚未插入目标。
+ *   View 的一部分，它尚未插入或用于投影但尚未插入目标。
  *
  * @param tView: Current `TView`.
  * @param tNode: `TNode` for which we wish to retrieve render parent.

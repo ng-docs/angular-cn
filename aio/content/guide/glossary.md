@@ -347,7 +347,7 @@ Do not declare the following:
 
 * NgModule classes.
 
-  NgModule 类。【模糊翻译】
+  NgModule 类。
 
 * Service classes.
 

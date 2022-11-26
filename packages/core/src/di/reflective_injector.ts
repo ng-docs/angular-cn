@@ -45,7 +45,6 @@ const UNDEFINED = {};
  * 以下示例创建一个配置为创建 `Engine` 和 `Car` 的 `Injector`。
  *
  * ```typescript
- *
  * @Injectable ()
  * class Engine {
  * }
@@ -64,6 +63,7 @@ const UNDEFINED = {};
  * resolve all of the object's dependencies automatically.
  *
  * TODO: delete in v14.
+ *
  * @deprecated from v5 - slow and brings in a lot of code, Use `Injector.create` instead.
  *
  * 从 v5 开始 - 速度慢，并且引入了大量代码，请改用 `Injector.create` 。
@@ -87,7 +87,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -108,6 +107,7 @@ export abstract class ReflectiveInjector implements Injector {
    * expect(providers[1].key.displayName).toBe("Engine");
    * });
    * ```
+   *
    */
   static resolve(providers: Provider[]): ResolvedReflectiveProvider[] {
     return resolveReflectiveProviders(providers);
@@ -130,7 +130,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -142,6 +141,7 @@ export abstract class ReflectiveInjector implements Injector {
    * var injector = ReflectiveInjector.resolveAndCreate([Car, Engine]);
    * expect(injector.get(Car) instanceof Car).toBe(true);
    * ```
+   *
    */
   static resolveAndCreate(providers: Provider[], parent?: Injector): ReflectiveInjector {
     const ResolvedReflectiveProviders = ReflectiveInjector.resolve(providers);
@@ -164,7 +164,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -177,6 +176,7 @@ export abstract class ReflectiveInjector implements Injector {
    * var injector = ReflectiveInjector.fromResolvedProviders(providers);
    * expect(injector.get(Car) instanceof Car).toBe(true);
    * ```
+   *
    */
   static fromResolvedProviders(providers: ResolvedReflectiveProvider[], parent?: Injector):
       ReflectiveInjector {
@@ -278,7 +278,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -293,6 +292,7 @@ export abstract class ReflectiveInjector implements Injector {
    * expect(car.engine).toBe(injector.get(Engine));
    * expect(car).not.toBe(injector.resolveAndInstantiate(Car));
    * ```
+   *
    */
   abstract resolveAndInstantiate(provider: Provider): any;
 
@@ -312,7 +312,6 @@ export abstract class ReflectiveInjector implements Injector {
    * ### 例子
    *
    * ```typescript
-   *
    * @Injectable ()
    * class Engine {
    * }
@@ -327,6 +326,7 @@ export abstract class ReflectiveInjector implements Injector {
    * expect(car.engine).toBe(injector.get(Engine));
    * expect(car).not.toBe(injector.instantiateResolved(carProvider));
    * ```
+   *
    */
   abstract instantiateResolved(provider: ResolvedReflectiveProvider): any;
 

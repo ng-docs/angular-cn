@@ -76,7 +76,7 @@ export function i18nPostprocess(
    * Note: due to the way we process nested templates (BFS), multi-value placeholders are typically
    * grouped by templates, for example: [�#5�|�#6�|�#1:1�|�#3:2�] where �#5� and �#6� belong to root
    * template, �#1:1� belong to nested template with index 1 and �#1:2� - nested template with index
-   * 3\. However in real templates the order might be different: i.e. �#1:1� and/or �#3:2� may go in
+   * 3. However in real templates the order might be different: i.e. �#1:1� and/or �#3:2� may go in
    * front of �#6�. The post processing step restores the right order by keeping track of the
    * template id stack and looks for placeholders that belong to the currently active template.
    *

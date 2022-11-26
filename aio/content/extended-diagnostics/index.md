@@ -124,11 +124,11 @@ Angular 团队始终乐于接受有关可以添加的新诊断器的建议。扩
 
   假阳性率低（最好是零）
 
-* Apply to the vast majority of Angular applications \(not specific to an unofficial library\)
+* Apply to the vast majority of Angular applications (not specific to an unofficial library)
 
   适用于绝大多数 Angular 应用程序（不专属于非官方库）
 
-* Improve program correctness or performance \(not style, that responsibility falls to a linter\)
+* Improve program correctness or performance (not style, that responsibility falls to a linter)
 
   提高程序的正确性或性能（而不是风格，风格由 linter 负责）
 

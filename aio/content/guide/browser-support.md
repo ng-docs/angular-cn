@@ -71,8 +71,8 @@ If you are not using the CLI to create your projects, see [Polyfill instructions
 
 [Angular CLI](cli) 提供了对腻子脚本的支持。如果未使用 CLI 创建项目，参阅[针对非 CLI 用户的腻子脚本说明](#non-cli)。
 
-The `polyfills` options of the [browser](cli/build) and [test](cli/test) builder can be a full path for a file \(Example: `src/polyfills.ts`\) or,
-relative to the current workspace or module specifier \(Example: `zone.js`\).
+The `polyfills` options of the [browser](cli/build) and [test](cli/test) builder can be a full path for a file (Example: `src/polyfills.ts`) or,
+relative to the current workspace or module specifier (Example: `zone.js`).
 
 [browser](cli/build) 和 [test](cli/test) 构建器的 `polyfills` 选项可以是到一个文件的完整路径（比如 `src/polyfills.ts`）或相对于当前工作空间或模块的标识符（比如 `zone.js`）。
 
@@ -95,7 +95,6 @@ If you create a TypeScript file, make sure to include it in the `files` property
 }
 
 </code-example>
-
 
 <a id="non-cli"></a>
 

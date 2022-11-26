@@ -66,8 +66,10 @@ export interface DirectiveDecorator {
    *
    * In order to make a directive available to other components in your application, you should do
    * one of the following:
-   *  - either mark the directive as [standalone](guide/standalone-components),
-   *  - or declare it in an NgModule by adding it to the `declarations` and `exports` fields.
+   *
+   * - either mark the directive as [standalone](guide/standalone-components),
+   *
+   * - or declare it in an NgModule by adding it to the `declarations` and `exports` fields.
    *
    * ** Marking a directive as standalone **
    *
@@ -84,7 +86,6 @@ export interface DirectiveDecorator {
    *
    * When marking a directive as standalone, please make sure that the directive is not already
    * declared in an NgModule.
-   *
    *
    * ** Declaring a directive in an NgModule **
    *
@@ -104,12 +105,15 @@ export interface DirectiveDecorator {
    * ```
    *
    * When declaring a directive in an NgModule, please make sure that:
-   *  - the directive is declared in exactly one NgModule.
-   *  - the directive is not standalone.
-   *  - you do not re-declare a directive imported from another module.
-   *  - the directive is included into the `exports` field as well if you want this directive to be
-   *    accessible for components outside of the NgModule.
    *
+   * - the directive is declared in exactly one NgModule.
+   *
+   * - the directive is not standalone.
+   *
+   * - you do not re-declare a directive imported from another module.
+   *
+   * - the directive is included into the `exports` field as well if you want this directive to be
+   *   accessible for components outside of the NgModule.
    *
    * @Annotation
    */
@@ -524,7 +528,6 @@ export interface ComponentDecorator {
    *
    * <code-example path="core/ts/metadata/directives.ts" region="component-input"></code-example>
    *
-   *
    * ### Setting component outputs
    *
    * ### 设置组件的输出属性
@@ -534,7 +537,9 @@ export interface ComponentDecorator {
    *
    * 下面的例子展示了两个事件发生器，它们定时发出事件。一个每隔一秒发出一个输出事件，另一个则隔五秒。
    *
-   * {@example core/ts/metadata/directives.ts region='component-output-interval'}
+   * {
+   *
+   * @example core/ts/metadata/directives.ts region='component-output-interval'}
    *
    * ### Injecting a class with a view provider
    *
@@ -636,7 +641,6 @@ export interface ComponentDecorator {
    *
    * To preserve sequences of whitespace characters, use the
    * `ngPreserveWhitespaces` attribute.
-   *
    * @Annotation
    */
   (obj: Component): TypeDecorator;
@@ -753,7 +757,7 @@ export interface Component extends Directive {
    *
    * - `ViewEncapsulation.None`: Apply component styles globally without any sort of encapsulation.
    *
-   *     `ViewEncapsulation.None` ：使用不带任何封装的全局 CSS。
+   *   `ViewEncapsulation.None` ：使用不带任何封装的全局 CSS。
    *
    * - `ViewEncapsulation.ShadowDom`: Use the browser's native Shadow DOM API to encapsulate styles.
    *
@@ -1306,14 +1310,16 @@ export interface HostListener {
  *   template: '<button counting>Increment</button>',
  * })
  * class App {}
- *
  * ```
  *
  * The following example registers another DOM event handler that listens for `Enter` key-press
  * events on the global `window`.
- * ``` ts
- * import { HostListener, Component } from "@angular/core";
  *
+ * ```ts
+ * import { HostListener, Component } from "
+ * ```
+ *
+ * @angular /core";
  * @Component ({
  *   selector: 'app',
  *   template: `<h1>Hello, you have pressed enter {{counter}} number of times!</h1> Press enter key
@@ -1339,7 +1345,6 @@ export interface HostListener {
  *
  * The global target names that can be used to prefix an event name are
  * `document:`, `window:` and `body:`.
- *
  * @Annotation
  * @publicApi
  */

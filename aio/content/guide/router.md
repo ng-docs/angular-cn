@@ -514,7 +514,8 @@ The following route guards are available in Angular:
 * [`canMatch`](api/router/CanMatchFn)
 
 * [`resolve`](api/router/ResolveFn)
-*   [`canLoad`](api/router/CanLoadFn)
+
+* [`canLoad`](api/router/CanLoadFn)
 
 To use route guards, consider using [component-less routes](api/router/Route#componentless-routes) as this facilitates guarding child routes.
 

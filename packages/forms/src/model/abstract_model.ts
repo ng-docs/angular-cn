@@ -346,7 +346,8 @@ export type ɵValue<T extends AbstractControl|undefined> =
  *
  * 结果类型是 `{address: string}` 。（请注意不存在 `undefined` 。）
  *
- *  **Internal: not for public use.**
+ *  \*\*Internal: not for public use.
+ *
  */
 export type ɵRawValue<T extends AbstractControl|undefined> = T extends AbstractControl<any, any>?
     (T['setValue'] extends((v: infer R) => void) ? R : never) :
@@ -1131,10 +1132,10 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 确定控件在应用标记后如何传播更改和发出事件的配置选项。
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    */
   markAsTouched(opts: {onlySelf?: boolean} = {}): void {
@@ -1177,10 +1178,10 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 确定控件在应用标记后如何传播更改和发出事件的配置选项。
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    */
   markAsUntouched(opts: {onlySelf?: boolean} = {}): void {
@@ -1211,10 +1212,10 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 确定控件在应用标记后如何传播更改和发出事件的配置选项。
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    */
   markAsDirty(opts: {onlySelf?: boolean} = {}): void {
@@ -1245,10 +1246,10 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 确定应用标记后控件如何发出事件的配置选项。
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    */
   markAsPristine(opts: {onlySelf?: boolean} = {}): void {
@@ -1273,25 +1274,25 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 控件在执行异步验证时处于挂起状态。
    *
-   * @see { @link AbstractControl.status}
-   *
+   * @see {
+   * @link AbstractControl.status}
    * @param opts Configuration options that determine how the control propagates changes and
    * emits events after marking is applied.
    *
    * 确定控件在应用标记后如何传播更改和发出事件的配置选项。
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    * * `emitEvent`: When true or not supplied (the default), the `statusChanges`
-   *   observable emits an event with the latest status the control is marked pending.
-   *   When false, no events are emitted.
+   *     observable emits an event with the latest status the control is marked pending.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或未提供（默认）时，`statusChanges`
-   * 可观察到的会发出一个事件，该事件具有该控件被标记为挂起的最新状态。当 false 时，不会发出事件。
+   *   可观察到的会发出一个事件，该事件具有该控件被标记为挂起的最新状态。当 false 时，不会发出事件。
    *
    */
   markAsPending(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -1316,25 +1317,26 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 如果控件有子项，则所有子项也被禁用。
    *
-   * @see {@link AbstractControl.status}
+   * @see {
+   * @link AbstractControl.status}
    * @param opts Configuration options that determine how the control propagates
    * changes and emits events after the control is disabled.
    *
    * 确定控件在禁用控件后如何传播更改和发出事件的配置选项。
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control is disabled.
-   *   When false, no events are emitted.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control is disabled.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象在禁用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象在禁用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   disable(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -1369,25 +1371,26 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 默认情况下，如果控件有子项，则启用所有子项。
    *
-   * @see {@link AbstractControl.status}
+   * @see {
+   * @link AbstractControl.status}
    * @param opts Configure options that control how the control propagates changes and
    * emits events when marked as untouched
    *
    * 配置用于控制控件在标记为未触摸时传播更改和发出事件的选项
    *
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
-   *   marks all direct ancestors. Default is false.
+   *     marks all direct ancestors. Default is false.
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
-   * false。
+   *   false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control is enabled.
-   *   When false, no events are emitted.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control is enabled.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象在启用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象在启用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   enable(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -1485,12 +1488,12 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当 true 时，仅更新此控件。当 false 或未提供时，更新所有直接祖先。默认为 false。
    *
    * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
-   *   `valueChanges`
-   *   observables emit events with the latest status and value when the control is updated.
-   *   When false, no events are emitted.
+   *     `valueChanges`
+   *     observables emit events with the latest status and value when the control is updated.
+   *     When false, no events are emitted.
    *
    *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
-   * 可观察对象会在控件更新时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   可观察对象会在控件更新时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   updateValueAndValidity(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
@@ -1564,8 +1567,9 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @param opts Configuration options that determine how the control propagates
    * changes and emits events after the control errors are set.
+   *
    * * `emitEvent`: When true or not supplied (the default), the `statusChanges`
-   * observable emits an event after the errors are set.
+   *   observable emits an event after the errors are set.
    *
    * @usageNotes
    *
@@ -1586,7 +1590,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * expect(login.valid).toEqual(true);
    * ```
-   *
    */
   setErrors(errors: ValidationErrors|null, opts: {emitEvent?: boolean} = {}): void {
     (this as {errors: ValidationErrors | null}).errors = errors;
