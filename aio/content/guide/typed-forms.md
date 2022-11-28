@@ -47,7 +47,7 @@ const emailDomain = login.value.email.domain;
 
 With strictly typed reactive forms, the above code does not compile, because there is no `domain` property on `email`.
 
-使用严格类型的响应式形式，上面的代码不会编译，因为 `email` 上没有 `domain` 属性。
+使用严格类型的响应式表单时，上面的代码不会编译，因为 `email` 上并没有 `domain` 属性。
 
 In addition to the added safety, the types enable a variety of other improvements, such as better autocomplete in IDEs, and an explicit way to specify form structure.
 
@@ -86,7 +86,7 @@ Each `Untyped` symbol has exactly the same semantics as in previous Angular vers
 
 The simplest possible form consists of a single control:
 
-最简单的形式由单个控件组成：
+最简单的表单由单个控件组成：
 
 ```ts
 const email = new FormControl('angularrox@gmail.com');
@@ -234,7 +234,7 @@ login.removeControl('password');
 
 In this form, we explicitly specify the type, which allows us to make the `password` control optional. TypeScript will enforce that only optional controls can be added or removed.
 
-在这种形式中，我们显式指定类型，这允许我们将 `password` 控制设置为可选。TypeScript 将强制要求只能添加或删除可选控件。
+在这个表单中，我们明确地指定了类型，这使我们可以将 `password` 控件设为可选的。TypeScript 会强制只有可选控件才能被添加或删除。
 
 ### `FormRecord`
 
@@ -265,7 +265,7 @@ The `FormBuilder` class has been upgraded to support the new types as well, in t
 
 Additionally, an additional builder is available: `NonNullableFormBuilder`. This type is shorthand for specifying `{nonNullable: true}` on every control, and can eliminate significant boilerplate from large non-nullable forms. You can access it using the `nonNullable` property on a `FormBuilder`:
 
-此外，还提供了一个额外的构建器：`NonNullableFormBuilder`。这种类型是在每个控件上指定 `{nonNullable: true}` 的简写，并且可以从大型不可为空形式中消除重要的样板。你可以用 `FormBuilder` 上的 `nonNullable` 属性访问它：
+此外，还有一个额外的构建器：`NonNullableFormBuilder`。它是在所有控件都上指定 `{nonNullable: true}` 的简写，用来在大型非空表单中消除主要的样板代码。你可以用 `FormBuilder` 上的 `nonNullable` 属性访问它：
 
 ```ts
 const fb = new FormBuilder();
