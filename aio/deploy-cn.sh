@@ -6,9 +6,13 @@ set -e
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 
+npm i -g @awesome-fe/translate@1.1.20
+
 cd $(dirname $0)
 
 yarn build
+
+nt mark dist/generated/**/*.json
 
 cd ./release/latest.angular.live
 
