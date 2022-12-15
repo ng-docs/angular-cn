@@ -25,7 +25,7 @@ import {NO_CHANGE} from './tokens';
  *
  * ## | nodes/refs/pipes | bindings | fn slots  | injector | dir1 | host bindings | host slots |
  *
- * ## |节点/引用/管道|绑定| fn 插槽|喷油器|目录 1 |主机绑定|主机插槽|
+ * ## |节点/引用/管道|绑定| fn 插槽|喷油器|目录 1 |宿主绑定|宿主插槽|
  *
  * ```
  *                ^                      ^
@@ -38,12 +38,12 @@ import {NO_CHANGE} from './tokens';
  * any directive instances + any hostVars in directives evaluated before it.
  *
  * 纯函数指令会被赋予从绑定根的偏移量。将偏移量添加到绑定根会给出存储绑定的第一个索引。在组件视图中，绑定根是
- * bindStartIndex 。在主机绑定中，绑定根是 expandoStartIndex + 任何指令实例 +
+ * bindStartIndex 。在宿主绑定中，绑定根是 expandoStartIndex + 任何指令实例 +
  * 在它之前估算的指令中的任何 hostVars 。
  *
  * See VIEW_DATA.md for more information about host binding resolution.
  *
- * 有关主机绑定解析的更多信息，请参阅 VIEW_DATA.md 。
+ * 有关宿主绑定解析的更多信息，请参阅 VIEW_DATA.md 。
  *
  */
 

@@ -22,7 +22,7 @@ const CHARS_TO_ESCAPE = /[^a-zA-Z0-9/_]/g;
 /**
  * A host for the aliasing system, which allows for alternative exports/imports of directives/pipes.
  *
- * 别名系统的主机，它允许以替代方式导出/导入指令/管道。
+ * 别名系统的宿主，它允许以替代方式导出/导入指令/管道。
  *
  * Given an import of an NgModule (e.g. `CommonModule`), the compiler must generate imports to the
  * directives and pipes exported by this module (e.g. `NgIf`) when they're used in a particular

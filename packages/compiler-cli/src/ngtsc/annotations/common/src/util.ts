@@ -145,7 +145,7 @@ function expandForwardRef(arg: ts.Expression): ts.Expression|null {
  *
  * @param reflector a ReflectionHost
  *
- * 反射主机
+ * 反射宿主
  *
  * @returns
  *

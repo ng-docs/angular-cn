@@ -22,7 +22,7 @@ import {isDefined} from '../utils';
  * support to inject synthetic decorators into the compilation for ad-hoc migrations that ngcc
  * performs.
  *
- * 将 `TraitCompiler` 专门用于 ngcc 。主要，这包括另一种使用反射主机的 `findClassSymbols`
+ * 将 `TraitCompiler` 专门用于 ngcc 。主要，这包括另一种使用反射宿主的 `findClassSymbols`
  * 扫描要编译的类的方法，以及支持将合成装饰器注入到 ngcc 执行的即席迁移的编译中。
  *
  */

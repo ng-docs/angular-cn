@@ -92,8 +92,8 @@ export class DelegatingCompilerHost implements
  * host implementation which supports this.
  *
  * 为了让消费者在他们的 TypeScript 编译器中包含 Angular 编译，必须使用将 Angular
- * 特定文件（例如工厂、摘要、模板类型检查文件等）添加到编译中的主机来创建 `ts.Program` 。
- * `NgCompilerHost` 是支持此操作的主机实现。
+ * 特定文件（例如工厂、摘要、模板类型检查文件等）添加到编译中的宿主来创建 `ts.Program` 。
+ * `NgCompilerHost` 是支持此操作的宿主实现。
  *
  * The interface implementations here ensure that `NgCompilerHost` fully delegates to
  * `ExtendedTsCompilerHost` methods whenever present.
@@ -139,7 +139,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    * Available after this host is used to create a `ts.Program` (which causes all the files in the
    * program to be enumerated).
    *
-   * 在此主机用于创建 `ts.Program`（这会导致程序中的所有文件被枚举）之后可用。
+   * 在此宿主用于创建 `ts.Program`（这会导致程序中的所有文件被枚举）之后可用。
    *
    */
   get ignoreForEmit(): Set<ts.SourceFile> {
@@ -160,7 +160,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
   /**
    * Performs cleanup that needs to happen after a `ts.Program` has been created using this host.
    *
-   * 执行使用此主机创建 `ts.Program` 之后需要发生的清理。
+   * 执行使用此宿主创建 `ts.Program` 之后需要发生的清理。
    *
    */
   postProgramCreationCleanup(): void {
@@ -171,7 +171,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    * Create an `NgCompilerHost` from a delegate host, an array of input filenames, and the full set
    * of TypeScript and Angular compiler options.
    *
-   * 从委托主机、输入文件名数组以及完整的 TypeScript 和 Angular 编译器选项集创建一个
+   * 从委托宿主、输入文件名数组以及完整的 TypeScript 和 Angular 编译器选项集创建一个
    * `NgCompilerHost` 。
    *
    */

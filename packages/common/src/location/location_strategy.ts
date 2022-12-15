@@ -78,7 +78,7 @@ export abstract class LocationStrategy {
  * import {Component, NgModule} from '@angular/core';
  * import {APP_BASE_HREF} from '@angular/common';
  *
- * @NgModule ({
+ * @NgModule({
  *   providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
  * })
  * class AppModule {}

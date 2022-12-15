@@ -59,9 +59,7 @@ export class SwUpdate {
    *
    * 可以用 `versionUpdates` 通过过滤 `VersionReadyEvent` 来复制 `available` 的行为：
    *
-   * {
-   *
-   * @example service-worker-getting-started/src/app/prompt-update.service.ts
+   * {@example service-worker-getting-started/src/app/prompt-update.service.ts
    * region='sw-replicate-available'}
    */
   readonly available: Observable<UpdateAvailableEvent>;

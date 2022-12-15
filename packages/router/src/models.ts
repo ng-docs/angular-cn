@@ -135,7 +135,8 @@ export interface DefaultExport<T> {
    * Default exports are bound under the name `"default"`, per the ES Module spec:
    * <https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records>
    *
-   * 根据 ES 模块规范，默认导出绑定在名称 `"default"` ： <https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records>
+   * 根据 ES 模块规范，默认导出绑定在名称 `"default"` ：
+   * <https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records>
    *
    */
   default: T;
@@ -185,8 +186,6 @@ export interface DefaultExport<T> {
  *
  * @see [Route.loadChildren](api/router/Route#loadChildren)
  * @publicApi
- * ```
- *
  */
 export type LoadChildrenCallback = () => Type<any>|NgModuleFactory<any>|Routes|
     Observable<Type<any>|Routes|DefaultExport<Type<any>>|DefaultExport<Routes>>|
@@ -258,7 +257,8 @@ export type QueryParamsHandling = 'merge'|'preserve'|'';
  * - `pathParamsOrQueryParamsChange` : Rerun guards and resolvers when the path params
  *   change or query params have changed. This does not include matrix parameters.
  *
- *   `pathParamsOrQueryParamsChange` ：当路径参数更改或查询参数更改时，重新运行保护器和解析器。这不包括矩阵参数。
+ *   `pathParamsOrQueryParamsChange`
+ * ：当路径参数更改或查询参数更改时，重新运行保护器和解析器。这不包括矩阵参数。
  *
  * @see [Route.runGuardsAndResolvers](api/router/Route#runGuardsAndResolvers)
  * @publicApi
@@ -689,7 +689,8 @@ export interface Route {
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
    *
-   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject` 调用必须在同步上下文中完成。
+   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject`
+   * 调用必须在同步上下文中完成。
    *
    */
   canActivate?: Array<CanActivateFn|any>;
@@ -698,12 +699,14 @@ export interface Route {
    * handlers, in order to determine if the current user is allowed to
    * match the `Route`. By default, any route can match.
    *
-   * 用于查找 `CanMatch()` 处理程序的 `CanMatchFn` 或 DI 标记的数组，以确定是否允许当前用户匹配 `Route` 。默认情况下，任何路由都可以匹配。
+   * 用于查找 `CanMatch()` 处理程序的 `CanMatchFn` 或 DI 标记的数组，以确定是否允许当前用户匹配
+   * `Route` 。默认情况下，任何路由都可以匹配。
    *
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
    *
-   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject` 调用必须在同步上下文中完成。
+   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject`
+   * 调用必须在同步上下文中完成。
    *
    */
   canMatch?: Array<Type<CanMatch>|InjectionToken<CanMatchFn>|CanMatchFn>;
@@ -718,7 +721,8 @@ export interface Route {
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
    *
-   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject` 调用必须在同步上下文中完成。
+   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject`
+   * 调用必须在同步上下文中完成。
    *
    */
   canActivateChild?: Array<CanActivateChildFn|any>;
@@ -733,7 +737,8 @@ export interface Route {
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
    *
-   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject` 调用必须在同步上下文中完成。
+   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject`
+   * 调用必须在同步上下文中完成。
    *
    */
   canDeactivate?: Array<CanDeactivateFn<any>|any>;
@@ -748,7 +753,8 @@ export interface Route {
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
    *
-   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject` 调用必须在同步上下文中完成。
+   * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject`
+   * 调用必须在同步上下文中完成。
    *
    */
   canLoad?: Array<CanLoadFn|any>;
@@ -879,7 +885,6 @@ export interface LoadedRouterConfig {
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanActivateTeam implements CanActivate {
@@ -898,7 +903,7 @@ export interface LoadedRouterConfig {
  * in the router configuration:
  *
  * ```
- * @NgModule ({
+ * @NgModule({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -916,7 +921,7 @@ export interface LoadedRouterConfig {
  * You can alternatively provide an in-line function with the `CanActivateFn` signature:
  *
  * ```
- * @NgModule ({
+ * @NgModule({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -954,8 +959,6 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
 /**
  * @description
  *
- * 描述
- *
  * Interface that a class can implement to be a guard deciding if a child route can be activated.
  * If all guards return `true`, navigation continues. If any guard returns `false`,
  * navigation is cancelled. If any guard returns a `UrlTree`, current navigation
@@ -977,18 +980,18 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanActivateTeam implements CanActivateChild {
  *   constructor(private permissions: Permissions, private currentUser: UserToken) {}
  *
- * 可注入 ()类 CanActivateTeam 实现 CanActivateChild { 构造函数（私人权限： Permissions, private currentUser: UserToken）{}
+ * 可注入 ()类 CanActivateTeam 实现 CanActivateChild { 构造函数（私人权限： Permissions, private
+ * currentUser: UserToken）{}
  *
  *   canActivateChild(
  *     route: ActivatedRouteSnapshot,
  *     state: RouterStateSnapshot
- *   ): Observable&lt;boolean|UrlTree>|Promise&lt;boolean|UrlTree>|boolean|UrlTree {
+ *   ): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree {
  *     return this.permissions.canActivate(this.currentUser, route.params.id);
  *   }
  * }
@@ -998,9 +1001,9 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  * in the router configuration:
  * ```
  *
- * @NgModule ({
- *   imports: \[
- *     RouterModule.forRoot(\[
+ * @NgModule({
+ *   imports: [
+ *     RouterModule.forRoot([
  *       {
  *         path: 'root',
  *         canActivateChild: [CanActivateTeam],
@@ -1016,21 +1019,13 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  *   providers: [CanActivateTeam, UserToken, Permissions]
  * })
  * class AppModule {}
- *
- * NgModule ({导入：\[ RouterModule.forRoot(\[ { path: 'root', canActivateChild: [CanActivateTeam][CanActivateTeam] , child: [{ path: 'team/:id', component: TeamComponent }][
- *           {
- *              path: 'team/:id',
- *              component: TeamComponent
- *           }
- *         ] } ]) ]，提供者： [CanActivateTeam, UserToken, Permissions][CanActivateTeam, UserToken, Permissions] }) 类应用程序模块{}
- *
  * ```
  * You can alternatively provide an in-line function with the `CanActivateChildFn` signature:
  * ```
  *
- * @NgModule ({
- *   imports: \[
- *     RouterModule.forRoot(\[
+ * @NgModule({
+ *   imports: [
+ *     RouterModule.forRoot([
  *       {
  *         path: 'root',
  *         canActivateChild: [(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true],
@@ -1045,16 +1040,6 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  *   ],
  * })
  * class AppModule {}
- *
- * NgModule ({导入：\[ RouterModule.forRoot(\[ { path: 'root', canActivateChild:[(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true][(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true] , child: [{ path: 'team/:id', component: TeamComponent }][
- *           {
- *             path: 'team/:id',
- *             component: TeamComponent
- *           }
- *         ] } ]) ] , }) 类 AppModule {}
- *
- * ```
- *
  * ```
  *
  * @publicApi
@@ -1109,9 +1094,7 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  *
  * ```
  *
- * ```
- *
- * @Injectable ()
+ * @Injectable()
  * class CanDeactivateTeam implements CanDeactivate<TeamComponent> {
  *   constructor(private permissions: Permissions, private currentUser: UserToken) {}
  *
@@ -1124,7 +1107,7 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  *     return this.permissions.canDeactivate(this.currentUser, route.params.id);
  *   }
  * }
- * @NgModule ({
+ * @NgModule({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -1142,7 +1125,7 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  * You can alternatively provide an in-line function with the `CanDeactivateFn` signature:
  *
  * ```
- * @NgModule ({
+ * @NgModule({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -1192,7 +1175,9 @@ export type CanDeactivateFn<T> =
  * activation. If any guard returns `false`, the `Route` is skipped for matching and other `Route`
  * configurations are processed instead.
  *
- * 类可以实现的接口作为决定是否可以匹配 `Route` 的守卫。如果所有警卫都返回 `true` ，则导航继续，并且 `Router` 将在激活期间使用 `Route` 。如果任何警卫返回 `false` ，则会跳过 `Route` 进行匹配，并改为处理其他 `Route` 配置。
+ * 类可以实现的接口作为决定是否可以匹配 `Route` 的守卫。如果所有警卫都返回 `true` ，则导航继续，并且
+ * `Router` 将在激活期间使用 `Route` 。如果任何警卫返回 `false` ，则会跳过 `Route`
+ * 进行匹配，并改为处理其他 `Route` 配置。
  *
  * The following example implements a `CanMatch` function that decides whether the
  * current user has permission to access the users page.
@@ -1206,29 +1191,23 @@ export type CanDeactivateFn<T> =
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanMatchTeamSection implements CanMatch {
  *   constructor(private permissions: Permissions, private currentUser: UserToken) {}
  *
- * 可注入 ()类 CanMatchTeamSection 实现 CanMatch { 构造函数（私有权限： Permissions, private 当前用户： UserToken）{}
- *
- *   canMatch(route: Route, segments: UrlSegment\[]): Observable<boolean>|Promise<boolean>|boolean {
+ *   canMatch(route: Route, segments: UrlSegment[]): Observable<boolean>|Promise<boolean>|boolean {
  *     return this.permissions.canAccess(this.currentUser, route, segments);
  *   }
  * }
- *
- * canMatch(route: Route,segments: UrlSegment\[]): Observable<boolean>|承诺<boolean>|boolean { return this.permissions.canAccess(this.currentUser, route,segments); } }
- *
  * ```
  * Here, the defined guard function is provided as part of the `Route` object
  * in the router configuration:
  * ```
  *
- * @NgModule ({
- *   imports: \[
- *     RouterModule.forRoot(\[
+ * @NgModule({
+ *   imports: [
+ *     RouterModule.forRoot([
  *       {
  *         path: 'team/:id',
  *         component: TeamComponent,
@@ -1236,7 +1215,7 @@ export type CanDeactivateFn<T> =
  *         canMatch: [CanMatchTeamSection]
  *       },
  *       {
- *         path: '\*\*',
+ *         path: '**',
  *         component: NotFoundComponent
  *       }
  *     ])
@@ -1244,9 +1223,6 @@ export type CanDeactivateFn<T> =
  *   providers: [CanMatchTeamSection, UserToken, Permissions]
  * })
  * class AppModule {}
- *
- * NgModule ({导入： \[ RouterModule.forRoot(\[ { path: 'team/:id', component: TeamComponent, loadChildren: () => import('./team').then(mod => mod.TeamModule) ，canMatch: [CanMatchTeamSection][CanMatchTeamSection][个][CanMatchTeamSection, UserToken, Permissions]
- *
  * ```
  * If the `CanMatchTeamSection` were to return `false`, the router would continue navigating to the
  * `team/:id` URL, but would load the `NotFoundComponent` because the `Route` for `'team/:id'`
@@ -1255,28 +1231,23 @@ export type CanDeactivateFn<T> =
  * You can alternatively provide an in-line function with the `CanMatchFn` signature:
  * ```
  *
- * @NgModule ({
- *   imports: \[
- *     RouterModule.forRoot(\[
+ * @NgModule({
+ *   imports: [
+ *     RouterModule.forRoot([
  *       {
  *         path: 'team/:id',
  *         component: TeamComponent,
  *         loadChildren: () => import('./team').then(mod => mod.TeamModule),
- *         canMatch: \[(route: Route, segments: UrlSegment\[]) => true]
+ *         canMatch: [(route: Route, segments: UrlSegment[]) => true]
  *       },
  *       {
- *         path: '\*\*',
+ *         path: '**',
  *         component: NotFoundComponent
  *       }
  *     ])
  *   ],
  * })
  * class AppModule {}
- *
- * NgModule ({导入： \[ RouterModule.forRoot(\[ { path: 'team/:id', component: TeamComponent, loadChildren: () => import('./team').then(mod => mod.TeamModule) , canMatch: \[ （路由： Route，segments： UrlSegment\[]) => true] }，{ path: '\*\*', component: NotFoundComponent } ]) ], }） class AppModule {}
- *
- * ```
- *
  * ```
  *
  * @publicApi
@@ -1316,9 +1287,6 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * 以下示例实现了一个 `resolve()` 方法，该方法会检索激活所请求的路由所需的数据。
  *
  * ```
- *
- * ```
- *
  * @Injectable ({ providedIn: 'root' })
  * export class HeroResolver implements Resolve<Hero> {
  *   constructor(private service: HeroService) {}
@@ -1336,7 +1304,7 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * in the router configuration:
  *
  * ```
- * @NgModule ({
+ * @NgModule({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -1359,7 +1327,7 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * export const myHero: Hero = {
  *   // ...
  * }
- * @NgModule ({
+ * @NgModule({
  *   imports: [
  *     RouterModule.forRoot([
  *       {
@@ -1378,7 +1346,7 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * And you can access to your resolved data from `HeroComponent`:
  *
  * ```
- * @Component ({
+ * @Component({
  *  selector: "app-hero",
  *  templateUrl: "hero.component.html",
  * })
@@ -1435,9 +1403,6 @@ export interface Resolve<T> {
  *
  * @see `Route#resolve`.
  * @publicApi
- *
- * 请参阅\`Route#resolve\`。公共 Api
- *
  */
 export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<T>|Promise<T>|T;
@@ -1468,29 +1433,23 @@ export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSna
  *     return true;
  *   }
  * }
- * ```
  *
  * @Injectable ()
  * class CanLoadTeamSection implements CanLoad {
  *   constructor(private permissions: Permissions, private currentUser: UserToken) {}
  *
- * 可注入 ()类 CanLoadTeamSection 实现 CanLoad { 构造函数（私有权限： Permissions, private 当前用户： UserToken）{}
- *
- *   canLoad(route: Route, segments: UrlSegment\[]): Observable<boolean>|Promise<boolean>|boolean {
+ *   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean>|Promise<boolean>|boolean {
  *     return this.permissions.canLoadChildren(this.currentUser, route, segments);
  *   }
  * }
- *
- * canLoad(route: Route,segments: UrlSegment\[]): Observable<boolean>|承诺<boolean>|boolean { return this.permissions.canLoadChildren(this.currentUser, route,segments); } }
- *
  * ```
  * Here, the defined guard function is provided as part of the `Route` object
  * in the router configuration:
  * ```
  *
- * @NgModule ({
- *   imports: \[
- *     RouterModule.forRoot(\[
+ * @NgModule({
+ *   imports: [
+ *     RouterModule.forRoot([
  *       {
  *         path: 'team/:id',
  *         component: TeamComponent,
@@ -1502,31 +1461,23 @@ export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSna
  *   providers: [CanLoadTeamSection, UserToken, Permissions]
  * })
  * class AppModule {}
- *
- * NgModule ({导入： \[ RouterModule.forRoot(\[ { path: 'team/:id', component: TeamComponent, loadChildren: () => import('./team').then(mod => mod.TeamModule) ，canLoad: [CanLoadTeamSection][CanLoadTeamSection] } ]) ]，提供者： [CanLoadTeamSection, UserToken, Permissions][CanLoadTeamSection, UserToken, Permissions] }) class AppModule {}
- *
  * ```
  * You can alternatively provide an in-line function with the `CanLoadFn` signature:
  * ```
  *
- * @NgModule ({
- *   imports: \[
- *     RouterModule.forRoot(\[
+ * @NgModule({
+ *   imports: [
+ *     RouterModule.forRoot([
  *       {
  *         path: 'team/:id',
  *         component: TeamComponent,
  *         loadChildren: () => import('./team').then(mod => mod.TeamModule),
- *         canLoad: \[(route: Route, segments: UrlSegment\[]) => true]
+ *         canLoad: [(route: Route, segments: UrlSegment[]) => true]
  *       }
  *     ])
  *   ],
  * })
  * class AppModule {}
- *
- * NgModule ({导入： \[ RouterModule.forRoot(\[ { path: 'team/:id', component: TeamComponent, loadChildren: () => import('./team').then(mod => mod.TeamModule), canLoad: \[ （路线： Route，段： UrlSegment\[]) => true] } ]) ], }) 类 AppModule {}
- *
- * ```
- *
  * ```
  *
  * @publicApi
@@ -1556,7 +1507,8 @@ export type CanLoadFn = (route: Route, segments: UrlSegment[]) =>
  * Supply an object containing any of these properties to a `Router` navigation function to
  * control how the navigation should be handled.
  *
- * 修改 `Router` 导航策略的选项。将包含这些属性中的任何一个的对象提供给 `Router` 导航函数，以控制应如何处理导航。
+ * 修改 `Router` 导航策略的选项。将包含这些属性中的任何一个的对象提供给 `Router`
+ * 导航函数，以控制应如何处理导航。
  *
  * @see [Router.navigate() method](api/router/Router#navigate)
  *
@@ -1605,19 +1557,22 @@ export interface NavigationBehaviorOptions {
    * returned from the [Router.getCurrentNavigation()
    * method](api/router/Router#getcurrentnavigation) while a navigation is executing.
    *
-   * 可以传递给任何导航的开发人员定义的状态。在执行导航时，通过从[Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象访问此值。
+   * 可以传递给任何导航的开发人员定义的状态。在执行导航时，通过从[Router.getCurrentNavigation()
+   * 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象访问此值。
    *
    * After a navigation completes, the router writes an object containing this
    * value together with a `navigationId` to `history.state`.
    * The value is written when `location.go()` or `location.replaceState()`
    * is called before activating this route.
    *
-   * `navigationId` 完成后，路由器会将包含此值的对象与 NavigationId 一起写入 `history.state` 。在激活此路由之前调用 `location.go()` 或 `location.replaceState()` 时会写入该值。
+   * `navigationId` 完成后，路由器会将包含此值的对象与 NavigationId 一起写入 `history.state`
+   * 。在激活此路由之前调用 `location.go()` 或 `location.replaceState()` 时会写入该值。
    *
    * Note that `history.state` does not pass an object equality test because
    * the router adds the `navigationId` on each navigation.
    *
-   * 请注意， `history.state` 不会通过对象相等测试，因为路由器会在每个 `navigationId` 上添加 NavigationId。
+   * 请注意， `history.state` 不会通过对象相等测试，因为路由器会在每个 `navigationId` 上添加
+   * NavigationId。
    *
    */
   state?: {[k: string]: any};

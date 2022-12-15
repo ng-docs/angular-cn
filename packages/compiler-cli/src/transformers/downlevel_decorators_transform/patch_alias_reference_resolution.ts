@@ -70,8 +70,7 @@ interface EmitResolver {
  * by Webpack if the application or library is not marked as side-effect free.
  *
  * 这是 CLI 过去用于 JIT 中构造函数参数降级的技巧：
- * [https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts
- * \#L323-L325](https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325)虽然这个技巧并不理想，因为它保留了完全导入（如前所述），并且由于类型检查器涉及多次，它会导致速度变慢。
+ * <https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325>虽然这个技巧并不理想，因为它保留了完全导入（如前所述），并且由于类型检查器涉及多次，它会导致速度变慢。
  * CLI
  * 通过有另一个复杂的后处理步骤来检测和删除未使用的导入，从而解决了此导入保留问题。请注意，如果未将应用程序或库标记为无副作用，这些未使用的导入可能会导致
  * Webpack 生成未使用的块。

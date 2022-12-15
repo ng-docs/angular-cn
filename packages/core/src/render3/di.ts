@@ -58,7 +58,7 @@ import {stringifyForError} from './util/stringify_utils';
  * class MyService {
  *   constructor(public value: String) {}
  * }
- * @Component ({
+ * @Component({
  *   providers: [
  *     MyService,
  *     {provide: String, value: 'providers' }
@@ -731,7 +731,7 @@ function searchTokensOnInjector<T>(
  *
  * @param isHostSpecialCase Whether the host special case applies.
  *
- * 主机特殊情况是否适用。
+ * 宿主特殊情况是否适用。
  *
  * @returns
  *

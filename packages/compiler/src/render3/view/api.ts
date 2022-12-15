@@ -104,7 +104,7 @@ export interface R3DirectiveMetadata {
    * Mappings indicating how the directive interacts with its host element (host bindings,
    * listeners, etc).
    *
-   * 指示指令如何与其宿主元素（主机绑定、侦听器等）交互的映射。
+   * 指示指令如何与其宿主元素（宿主绑定、侦听器等）交互的映射。
    *
    */
   host: R3HostMetadata;
@@ -567,7 +567,7 @@ export interface R3QueryMetadata {
  * Mappings indicating how the class interacts with its
  * host element (host bindings, listeners, etc).
  *
- * 表明类如何与其宿主元素（主机绑定、侦听器等）交互的映射。
+ * 表明类如何与其宿主元素（宿主绑定、侦听器等）交互的映射。
  *
  */
 export interface R3HostMetadata {

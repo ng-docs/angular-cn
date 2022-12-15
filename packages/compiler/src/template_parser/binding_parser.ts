@@ -35,7 +35,7 @@ export interface HostListeners {
 /**
  * Parses bindings in templates and in the directive host area.
  *
- * 解析模板和指令主机区域中的绑定。
+ * 解析模板和指令宿主区域中的绑定。
  *
  */
 export class BindingParser {

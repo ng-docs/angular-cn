@@ -55,7 +55,7 @@ export interface ApplicationConfig {
  * 标志）。
  *
  * ```typescript
- * @Component ({
+ * @Component({
  *   standalone: true,
  *   template: 'Hello world!'
  * })
@@ -67,7 +67,8 @@ export interface ApplicationConfig {
  * You can add the list of providers that should be available in the application injector by
  * specifying the `providers` field in an object passed as the second argument:
  *
- * 你可以通过在作为第二个参数传递的对象中指定 `providers` 字段来添加应用程序注入器中应该可用的提供者列表：
+ * 你可以通过在作为第二个参数传递的对象中指定 `providers`
+ * 字段来添加应用程序注入器中应该可用的提供者列表：
  *
  * ```typescript
  * await bootstrapApplication(RootComponent, {
@@ -80,7 +81,8 @@ export interface ApplicationConfig {
  * The `importProvidersFrom` helper method can be used to collect all providers from any
  * existing NgModule (and transitively from all NgModules that it imports):
  *
- * `importProvidersFrom` 帮助器方法可用于从任何现有的 NgModule （并且从它导入的所有 NgModule 中传递）收集所有提供者：
+ * `importProvidersFrom` 帮助器方法可用于从任何现有的 NgModule （并且从它导入的所有 NgModule
+ * 中传递）收集所有提供者：
  *
  * ```typescript
  * await bootstrapApplication(RootComponent, {
@@ -95,22 +97,25 @@ export interface ApplicationConfig {
  * providers using `provideProtractorTestingSupport()` function and adding them into the `providers`
  * array, for example:
  *
- * 注意：默认情况下， `bootstrapApplication` 方法不包含[Testability](api/core/Testability) 。你可以通过使用 `provideProtractorTestingSupport()` 函数获取必要的提供程序列表并将它们添加到 `providers` 数组中来添加[Testability](api/core/Testability) ，例如：
+ * 注意：默认情况下， `bootstrapApplication` 方法不包含[Testability](api/core/Testability)
+ * 。你可以通过使用 `provideProtractorTestingSupport()` 函数获取必要的提供程序列表并将它们添加到
+ * `providers` 数组中来添加[Testability](api/core/Testability) ，例如：
  *
  * ```typescript
- * import {provideProtractorTestingSupport} from '
- * @angular /platform-browser';
+ * import {provideProtractorTestingSupport} from '@angular/platform-browser';
  *
  * await bootstrapApplication(RootComponent, {providers: [provideProtractorTestingSupport()]});
  * ```
  *
  * @param rootComponent A reference to a standalone component that should be rendered.
  *
- * 对应该呈现的独立组件的引用。
+ * 对应该渲染的独立组件的引用。
+ *
  * @param options Extra configuration for the bootstrap operation, see `ApplicationConfig` for
  *     additional info.
  *
  * 引导操作的额外配置，有关其他信息，请参阅 `ApplicationConfig` 。
+ *
  * @returns
  *
  * A promise that returns an `ApplicationRef` instance once resolved.
@@ -129,7 +134,9 @@ export function bootstrapApplication(
  * associated injectors) from rendering components on a screen. Components can be subsequently
  * bootstrapped on the returned `ApplicationRef`.
  *
- * 在不引导任何组件的情况下创建 Angular 应用程序的实例。这对于希望将应用程序环境创建（平台和关联的注入器）与屏幕上的渲染组件解耦的情况很有用。随后可以在返回的 `ApplicationRef` 上引导组件。
+ * 在不引导任何组件的情况下创建 Angular
+ * 应用程序的实例。这对于希望将应用程序环境创建（平台和关联的注入器）与屏幕上的渲染组件解耦的情况很有用。随后可以在返回的
+ * `ApplicationRef` 上引导组件。
  *
  * @param options Extra configuration for the application environment, see `ApplicationConfig` for
  *     additional info.

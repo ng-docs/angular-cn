@@ -54,7 +54,7 @@ export interface DirectiveDecorator {
    * ```ts
    * import {Directive} from '@angular/core';
    *
-   * @Directive ({
+   * @Directive({
    *   selector: 'my-directive',
    * })
    * export class MyDirective {
@@ -86,10 +86,11 @@ export interface DirectiveDecorator {
    * You can add the `standalone: true` flag to the Directive decorator metadata to declare it as
    * [standalone](guide/standalone-components):
    *
-   * 你可以将 `standalone: true` 标志添加到 Directive 装饰器元数据中，以将其声明为[Standalone](guide/standalone-components) ：
+   * 你可以将 `standalone: true` 标志添加到 Directive
+   * 装饰器元数据中，以将其声明为[Standalone](guide/standalone-components) ：
    *
    * ```ts
-   * @Directive ({
+   * @Directive({
    *   standalone: true,
    *   selector: 'my-directive',
    * })
@@ -110,12 +111,12 @@ export interface DirectiveDecorator {
    * 另一种方法是在 NgModule 中声明一个指令：
    *
    * ```ts
-   * @Directive ({
+   * @Directive({
    *   selector: 'my-directive',
    * })
    * class MyDirective {}
    *
-   * @NgModule ({
+   * @NgModule({
    *   declarations: [MyDirective, SomeComponent],
    *   exports: [MyDirective], // making it available outside of this module
    * })
@@ -250,7 +251,7 @@ export interface Directive {
    * 下面的例子创建了一个带有两个可绑定属性的组件。
    *
    * ```typescript
-   * @Component ({
+   * @Component({
    *   selector: 'bank-account',
    *   inputs: ['bankName', 'id: account-id'],
    *   template: `
@@ -293,7 +294,7 @@ export interface Directive {
    * @usageNotes
    *
    * ```typescript
-   * @Component ({
+   * @Component({
    *   selector: 'child-dir',
    *   outputs: [ 'bankNameChange' ]
    *   template: `<input (input)="bankNameChange.emit($event.target.value)" />`
@@ -302,7 +303,7 @@ export interface Directive {
    *  bankNameChange: EventEmitter<string> = new EventEmitter<string>();
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'main',
    *   template: `
    *     {{ bankName }} <child-dir (bankNameChange)="onBankNameChange($event)"></child-dir>
@@ -337,14 +338,14 @@ export interface Directive {
    * @usageNotes
    *
    * ```ts
-   * @Directive ({
+   * @Directive({
    *   selector: 'child-dir',
    *   exportAs: 'child'
    * })
    * class ChildDir {
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'main',
    *   template: `<child-dir #c="child"></child-dir>`
    * })
@@ -373,7 +374,7 @@ export interface Directive {
    * 下面的范例展示了如何定义这些查询以及到生命周期钩子中的哪个步骤才会有结果：
    *
    * ```ts
-   * @Component ({
+   * @Component({
    *   selector: 'someDir',
    *   queries: {
    *     contentChildren: new ContentChildren(ChildDirective),
@@ -478,14 +479,17 @@ export interface Directive {
    * By default, none of the inputs or outputs of the host directives will be available on the host,
    * unless they are specified in the `inputs` or `outputs` properties.
    *
-   * 指令匹配时应该应用于宿主的独立指令。默认情况下，host 指令的任何输入或输出在宿主上都不可用，除非它们在 `inputs` 或 `outputs` 属性中指定。
+   * 指令匹配时应该应用于宿主的独立指令。默认情况下，host
+   * 指令的任何输入或输出在宿主上都不可用，除非它们在 `inputs` 或 `outputs` 属性中指定。
    *
    * You can additionally alias inputs and outputs by putting a colon and the alias after the
    * original input or output name. For example, if a directive applied via `hostDirectives`
    * defines an input named `menuDisabled`, you can alias this to `disabled` by adding
    * `'menuDisabled: disabled'` as an entry to `inputs`.
    *
-   * 你可以通过在原始输入或输出名称后面放一个冒号和别名来为输入和输出额外别名。例如，如果通过 `hostDirectives` 应用的指令定义了一个名为 `menuDisabled` 的 `inputs` ，你可以通过将 `'menuDisabled: disabled'` `disabled` 条目添加到 sources 来将其别名为 enabled 。
+   * 你可以通过在原始输入或输出名称后面放一个冒号和别名来为输入和输出额外别名。例如，如果通过
+   * `hostDirectives` 应用的指令定义了一个名为 `menuDisabled` 的 `inputs` ，你可以通过将
+   * `'menuDisabled: disabled'` `disabled` 条目添加到 sources 来将其别名为 enabled 。
    *
    */
   hostDirectives?: (Type<unknown>|{
@@ -570,9 +574,7 @@ export interface ComponentDecorator {
    *
    * 下面的例子展示了两个事件发生器，它们定时发出事件。一个每隔一秒发出一个输出事件，另一个则隔五秒。
    *
-   * {
-   *
-   * @example core/ts/metadata/directives.ts region='component-output-interval'}
+   * {@example core/ts/metadata/directives.ts region='component-output-interval'}
    *
    * ### Injecting a class with a view provider
    *
@@ -590,7 +592,7 @@ export interface ComponentDecorator {
    *    }
    * }
    *
-   * @Directive ({
+   * @Directive({
    *   selector: 'needs-greeter'
    * })
    * class NeedsGreeter {
@@ -601,7 +603,7 @@ export interface ComponentDecorator {
    *   }
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'greet',
    *   viewProviders: [
    *     Greeter
@@ -1060,7 +1062,7 @@ export interface InputDecorator {
    * 下面的例子创建了一个带有两个输入属性的组件，其中一个还指定了绑定名。
    *
    * ```typescript
-   * @Component ({
+   * @Component({
    *   selector: 'bank-account',
    *   template: `
    *     Bank Name: {{bankName}}
@@ -1078,7 +1080,7 @@ export interface InputDecorator {
    *   normalizedBankName: string;
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'app',
    *   template: `
    *     <bank-account bankName="RBC" account-id="4747"></bank-account>
@@ -1217,7 +1219,7 @@ export interface HostBindingDecorator {
    * @HostBinding ('class.invalid') get invalid() { return this.control.invalid; }
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'app',
    *   template: `<input [(ngModel)]="prop">`,
    * })
@@ -1338,7 +1340,7 @@ export interface HostListener {
  *   }
  * }
  *
- * @Component ({
+ * @Component({
  *   selector: 'app',
  *   template: '<button counting>Increment</button>',
  * })
@@ -1351,11 +1353,9 @@ export interface HostListener {
  * 以下示例注册了另一个 DOM 事件处理程序，它会侦听全局 `window` 上的 `Enter` 按键事件。
  *
  * ```ts
- * import { HostListener, Component } from "
- * ```
+ * import { HostListener, Component } from "@angular/core";
  *
- * @angular /core";
- * @Component ({
+ * @Component({
  *   selector: 'app',
  *   template: `<h1>Hello, you have pressed enter {{counter}} number of times!</h1> Press enter key
  * to increment the counter.

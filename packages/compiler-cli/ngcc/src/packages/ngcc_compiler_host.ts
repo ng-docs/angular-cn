@@ -19,7 +19,7 @@ import {EntryPointFileCache} from './source_file_cache';
  * is necessary for packages that have their typings in the same directory as the sources, which
  * would otherwise let TypeScript prefer the .d.ts file instead of the JavaScript source file.
  *
- * 表示一个编译器主机，它将模块导入解析为 JavaScript 源文件（如果可用），而不是本来可以由 TypeScript
+ * 表示一个编译器宿主，它将模块导入解析为 JavaScript 源文件（如果可用），而不是本来可以由 TypeScript
  * 解析的 .d.ts 类型文件。这对于类型与源代码在同一个目录中的包是必要的，否则，TypeScript 会更喜欢
  * .d.ts 文件而不是 JavaScript 源文件。
  *
@@ -78,7 +78,7 @@ export class NgccSourcesCompilerHost extends NgtscCompilerHost {
  * cache for source files and module resolution, as these results can be reused across the sources
  * program.
  *
- * 用于 typings 程序的编译器主机实现。它利用入口点缓存来进行源文件和模块解析，因为这些结果可以在各个
+ * 用于 typings 程序的编译器宿主实现。它利用入口点缓存来进行源文件和模块解析，因为这些结果可以在各个
  * sources 程序中重用。
  *
  */

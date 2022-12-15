@@ -737,7 +737,7 @@ export const enum PreOrderHookFlags {
  * with the` 索引 `. 2. 'directiveIdx` ：与 `HostBindingsFunction` 关联的指令的索引。（这将成为
  * `HostBindingsFunction` 调用的上下文。）3. `bindingRootIdx` ： `HostBindingsFunction`
  * 绑定的开始位置。在内部 `HostBindingsFunction` 绑定索引从 `0` 开始，因此我们需要向它添加
- * `bindingRootIdx` 。 4. `HostBindingsFunction` ：要执行的主机绑定函数。
+ * `bindingRootIdx` 。 4. `HostBindingsFunction` ：要执行的宿主绑定函数。
  *
  * The above information needs to be encoded into the `HostBindingOpCodes` in an efficient manner.
  *
@@ -1001,13 +1001,13 @@ export interface TView {
    * section cannot be calculated at compile-time because directives are matched
    * at runtime to preserve locality.
    *
-   * `LView` 的“expando”部分开始的索引。 expando 部分包含注入器、指令实例和主机绑定值。与 LView 的“
+   * `LView` 的“expando”部分开始的索引。 expando 部分包含注入器、指令实例和宿主绑定值。与 LView 的“
    * `LView` ”和“vars”部分不同，本节的长度无法在编译时计算，因为指令是在运行时匹配以保留局部性。
    *
    * We store this start index so we know where to start checking host bindings
    * in `setHostBindings`.
    *
-   * 我们存储此开始索引，以便知道从哪里开始检查 `setHostBindings` 中的主机绑定。
+   * 我们存储此开始索引，以便知道从哪里开始检查 `setHostBindings` 中的宿主绑定。
    *
    */
   expandoStartIndex: number;
@@ -1066,7 +1066,7 @@ export interface TView {
    * It's necessary to keep a copy of the full def list on the TView so it's possible
    * to render template functions without a host component.
    *
-   * 有必要在 TView 上保留完整的 def 列表的副本，以便在没有主机组件的情况下呈现模板函数。
+   * 有必要在 TView 上保留完整的 def 列表的副本，以便在没有宿主组件的情况下呈现模板函数。
    *
    */
   directiveRegistry: DirectiveDefList|null;
@@ -1084,7 +1084,7 @@ export interface TView {
    * It's necessary to keep a copy of the full def list on the TView so it's possible
    * to render template functions without a host component.
    *
-   * 有必要在 TView 上保留完整的 def 列表的副本，以便在没有主机组件的情况下呈现模板函数。
+   * 有必要在 TView 上保留完整的 def 列表的副本，以便在没有宿主组件的情况下呈现模板函数。
    *
    */
   pipeRegistry: PipeDefList|null;
@@ -1403,7 +1403,7 @@ export type DestroyHookData = (HookEntry|HookData)[];
  * Each host property's name is stored here at the same index as its value in the
  * data array.
  *
- * 每个主机属性的名称都存储在与其在数据数组中的值相同的索引处。
+ * 每个宿主属性的名称都存储在与其在数据数组中的值相同的索引处。
  *
  * Each property binding name is stored here at the same index as its value in
  * the data array. If the binding is an interpolation, the static string values
@@ -1543,7 +1543,7 @@ export interface LViewDebug<T = unknown> {
   /**
    * The host element to which this `LView` is attached.
    *
-   * 此 `LView` 附加到的主机元素。
+   * 此 `LView` 附加到的宿主元素。
    *
    */
   readonly hostHTML: string|null;

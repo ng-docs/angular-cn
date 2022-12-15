@@ -226,7 +226,7 @@ export class KeyValueDiffers {
    * KeyValueDiffer}可用的全部步骤。
    *
    * ```
-   * @Component ({
+   * @Component({
    *   viewProviders: [
    *     KeyValueDiffers.extend([new ImmutableMapDiffer()])
    *   ]

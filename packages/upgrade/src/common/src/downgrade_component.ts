@@ -54,6 +54,7 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *
  * For more details and examples on downgrading Angular components to AngularJS components please
  * visit the [Upgrade guide](guide/upgrade#using-angular-components-from-angularjs-code).
+ *
  * @param info contains information about the Component that is being downgraded:
  *
  * 包含有关要降级的组件的信息：

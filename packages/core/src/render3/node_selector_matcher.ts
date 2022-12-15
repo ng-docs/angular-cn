@@ -92,8 +92,8 @@ export function isInlineTemplate(tNode: TNode): boolean {
  * 匹配可以在 2 种模式下执行：投影模式（当我们投影节点时）和正则指令匹配模式：
  *
  * - in the "directive matching" mode we do _not_ take TContainer's tagName into account if it is
- *     different from NG_TEMPLATE_SELECTOR (value different from NG_TEMPLATE_SELECTOR indicates that a
- *     tag name was extracted from \* syntax so we would match the same directive twice);
+ *     different from NG_TEMPLATE_SELECTOR (value different from NG_TEMPLATE_SELECTOR indicates that
+ * a tag name was extracted from \* syntax so we would match the same directive twice);
  *
  *   在“指令匹配”模式下，如果 TContainer 的 tagName 与 NG_TEMPLATE_SELECTOR 不同，我们就 _ 不会\_
  *   考虑它（与 NG_TEMPLATE_SELECTOR 不同的值表明标签名称是从 \*
@@ -483,7 +483,7 @@ function stringifyCSSSelector(selector: CssSelector): string {
  * its string representation.
  *
  * ComponentDef 和 DirectiveDef
- * 是使用已解析形式的选择器生成的，以避免在运行时进行额外的解析（例如，用于指令匹配）。但是在某些情况下（例如，引导组件时），需要选择器的字符串版本来查询页面上的主机元素。此函数采用选择器的解析形式，并返回其字符串表示。
+ * 是使用已解析形式的选择器生成的，以避免在运行时进行额外的解析（例如，用于指令匹配）。但是在某些情况下（例如，引导组件时），需要选择器的字符串版本来查询页面上的宿主元素。此函数采用选择器的解析形式，并返回其字符串表示。
  *
  * @param selectorList selector in parsed form
  *

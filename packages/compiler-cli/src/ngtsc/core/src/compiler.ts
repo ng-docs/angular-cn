@@ -284,7 +284,7 @@ export class NgCompiler {
    *
    * These are diagnostics which arose during setup of the host and/or program.
    *
-   * 这些是在设置主机和/或程序期间出现的诊断。
+   * 这些是在设置宿主和/或程序期间出现的诊断。
    *
    */
   private constructionDiagnostics: ts.Diagnostic[] = [];

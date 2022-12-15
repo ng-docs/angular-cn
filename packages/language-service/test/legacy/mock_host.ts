@@ -149,7 +149,7 @@ function createHost(configFileFs: MockConfigFileFs): ts.server.ServerHost {
  * and modify test files.
  *
  * 为位于 packages/language-service/test/legacy/project 中的测试项目创建一个 ConfiguredProject
- * 和一个实际程序。项目创建会练习实际的代码路径，但文件系统会使用模拟主机来截获和修改测试文件。
+ * 和一个实际程序。项目创建会练习实际的代码路径，但文件系统会使用模拟宿主来截获和修改测试文件。
  *
  */
 export function setup() {

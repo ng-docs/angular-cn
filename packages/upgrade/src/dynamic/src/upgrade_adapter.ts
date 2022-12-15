@@ -125,7 +125,7 @@ let upgradeCount: number = 0;
  * });
  *
  *
- * @Component ({
+ * @Component({
  *   selector: 'ng2-comp',
  *   inputs: ['name'],
  *   template: 'ng2[<ng1-hello [title]="name">transclude</ng1-hello>](<ng-content></ng-content>)',
@@ -134,7 +134,7 @@ let upgradeCount: number = 0;
  * class Ng2Component {
  * }
  *
- * @NgModule ({
+ * @NgModule({
  *   declarations: [Ng2Component, adapter.upgradeNg1Component('ng1Hello')],
  *   imports: [BrowserModule]
  * })
@@ -244,7 +244,7 @@ export class UpgradeAdapter {
    * const module = angular.module('myExample', []);
    * module.directive('greet', adapter.downgradeNg2Component(Greeter));
    *
-   * @Component ({
+   * @Component({
    *   selector: 'greet',
    *   template: '{{salutation}} {{name}}! - <ng-content></ng-content>'
    * })
@@ -253,7 +253,7 @@ export class UpgradeAdapter {
    * @Input () name: string;
    * }
    *
-   * @NgModule ({
+   * @NgModule({
    *   declarations: [Greeter],
    *   imports: [BrowserModule]
    * })
@@ -410,13 +410,13 @@ export class UpgradeAdapter {
    *
    * module.directive('ng2', adapter.downgradeNg2Component(Ng2Component));
    *
-   * @Component ({
+   * @Component({
    *   selector: 'ng2',
    *   template: 'ng2 template: <greet salutation="Hello" [name]="world">text</greet>'
    * })
    * class Ng2Component {
    * }
-   * @NgModule ({
+   * @NgModule({
    *   declarations: [Ng2Component, adapter.upgradeNg1Component('greet')],
    *   imports: [BrowserModule]
    * })
@@ -541,7 +541,7 @@ export class UpgradeAdapter {
    * });
    *
    *
-   * @Component ({
+   * @Component({
    *   selector: 'ng2',
    *   inputs: ['name'],
    *   template: 'ng2[<ng1 [title]="name">transclude</ng1>](<ng-content></ng-content>)'
@@ -549,7 +549,7 @@ export class UpgradeAdapter {
    * class Ng2 {
    * }
    *
-   * @NgModule ({
+   * @NgModule({
    *   declarations: [Ng2, adapter.upgradeNg1Component('ng1')],
    *   imports: [BrowserModule]
    * })

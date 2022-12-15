@@ -118,7 +118,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    * ### 例子
    *
    * ```typescript
-   * @Component ({
+   * @Component({
    *   selector: 'app-root',
    *   template: `Number of ticks: {{numberOfTicks}}`
    *   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -178,7 +178,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *   }
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'giant-list',
    *   template: `
    *     <li *ngFor="let d of dataProvider.data">Data {{d}}</li>
@@ -193,7 +193,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *   }
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'app',
    *   providers: [DataProvider],
    *   template: `
@@ -245,7 +245,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *   }
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'live-data',
    *   inputs: ['live'],
    *   template: 'Data: {{dataProvider.data}}'
@@ -262,7 +262,7 @@ export class ViewRef<T> implements viewEngine_EmbeddedViewRef<T>, viewEngine_Int
    *   }
    * }
    *
-   * @Component ({
+   * @Component({
    *   selector: 'app-root',
    *   providers: [DataProvider],
    *   template: `

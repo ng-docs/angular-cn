@@ -61,7 +61,7 @@ export function ɵɵhostProperty<T>(
 /**
  * Updates a synthetic host binding (e.g. `[@foo]`) on a component or directive.
  *
- * 更新组件或指令上的合成主机绑定（例如 `[@foo]`）。
+ * 更新组件或指令上的合成宿主绑定（例如 `[@foo]`）。
  *
  * This instruction is for compatibility purposes and is designed to ensure that a
  * synthetic host binding (e.g. `@HostBinding('@foo')`) properly gets rendered in
@@ -70,15 +70,15 @@ export function ɵɵhostProperty<T>(
  * evaluated with the sub component's renderer (because that's where the animation
  * triggers are defined).
  *
- * 本操作指南是出于兼容性目的，旨在确保合成主机绑定（例如 `@HostBinding('@foo')`
- *）在组件的渲染器中正确呈现。通常，所有主机绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
+ * 本操作指南是出于兼容性目的，旨在确保合成宿主绑定（例如 `@HostBinding('@foo')`
+ *）在组件的渲染器中正确呈现。通常，所有宿主绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
  * ，它们需要使用子组件的渲染器进行估算（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `elementProperty`. This instruction
  * only exists to ensure compatibility with the ViewEngine's host binding behavior.
  *
  * 不要使用此操作指南来代替 `elementProperty` 。本操作指南的存在只是为了确保与 ViewEngine
- * 的主机绑定行为兼容。
+ * 的宿主绑定行为兼容。
  *
  * @param index The index of the element to update in the data array
  *

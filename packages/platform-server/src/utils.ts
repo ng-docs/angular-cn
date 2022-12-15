@@ -126,7 +126,9 @@ const DEFAULT_SERVER_CONTEXT = 'other';
  * (e.g. whether SSR or SSG was used). The value is a string and characters other
  * than [a-zA-Z0-9\-] are removed. See the default value in `DEFAULT_SERVER_CONTEXT` const.
  *
- * 一个内部标记，允许提供有关服务器上下文的额外信息（例如，是使用 SSR 还是 SSG）。该值是一个字符串，并删除[a-zA-Z0-9-][a-zA-Z0-9\-]以外的字符。请参阅 `DEFAULT_SERVER_CONTEXT` const 中的默认值。
+ * 一个内部标记，允许提供有关服务器上下文的额外信息（例如，是使用 SSR 还是
+ * SSG）。该值是一个字符串，并删除[a-zA-Z0-9-][a-zA-Z0-9\-]以外的字符。请参阅
+ * `DEFAULT_SERVER_CONTEXT` const 中的默认值。
  *
  */
 export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');
@@ -200,7 +202,7 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  * 标志）。
  *
  * ```typescript
- * @Component ({
+ * @Component({
  *   standalone: true,
  *   template: 'Hello world!'
  * })
@@ -220,7 +222,8 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  *             server-generated stylings and state keys of the application in TransferState
  *             use-cases.
  *
- *   `appId` - 此应用程序的字符串标识符。 appId 用于在 TransferState 用例中作为应用程序的所有服务器生成的样式和状态键的前缀。
+ *   `appId` - 此应用程序的字符串标识符。 appId 用于在 TransferState
+ * 用例中作为应用程序的所有服务器生成的样式和状态键的前缀。
  *
  * - `document` - the document of the page to render, either as an HTML string or
  *                as a reference to the `document` instance.

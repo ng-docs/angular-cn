@@ -854,21 +854,21 @@ export function parseHostBindings(host: {[key: string]: string|o.Expression}): P
  * Verifies host bindings and returns the list of errors (if any). Empty array indicates that a
  * given set of host bindings has no errors.
  *
- * 验证主机绑定并返回错误列表（如果有）。空数组表示给定的一组主机绑定没有错误。
+ * 验证宿主绑定并返回错误列表（如果有）。空数组表示给定的一组宿主绑定没有错误。
  *
  * @param bindings set of host bindings to verify.
  *
- * 要验证的一组主机绑定。
+ * 要验证的一组宿主绑定。
  *
  * @param sourceSpan source span where host bindings were defined.
  *
- * 定义主机绑定的源跨度。
+ * 定义宿主绑定的源跨度。
  *
  * @returns
  *
  * array of errors associated with a given set of host bindings.
  *
- * 与给定的主机绑定集相关的错误数组。
+ * 与给定的宿主绑定集相关的错误数组。
  *
  */
 export function verifyHostBindings(

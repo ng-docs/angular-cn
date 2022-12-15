@@ -21,7 +21,7 @@ import {Component} from './directives';
  * 示例：
  *
  * ```
- * @Component ({
+ * @Component({
  *   selector: 'my-comp',
  *   templateUrl: 'my-comp.html', // This requires asynchronous resolution
  * })

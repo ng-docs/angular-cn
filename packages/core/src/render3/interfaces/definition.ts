@@ -189,7 +189,7 @@ export interface DirectiveDef<T> {
   /**
    * Refreshes host bindings on the associated directive.
    *
-   * 刷新关联指令上的主机绑定。
+   * 刷新关联指令上的宿主绑定。
    *
    */
   readonly hostBindings: HostBindingsFunction<T>|null;
@@ -202,7 +202,7 @@ export interface DirectiveDef<T> {
    * Used to calculate the length of the component's LView array, so we
    * can pre-fill the array and set the host binding start index.
    *
-   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置主机绑定开始索引。
+   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置宿主绑定开始索引。
    *
    */
   readonly hostVars: number;
@@ -424,7 +424,7 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    * Used to calculate the length of the component's LView array, so we
    * can pre-fill the array and set the host binding start index.
    *
-   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置主机绑定开始索引。
+   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置宿主绑定开始索引。
    *
    */
   readonly vars: number;

@@ -178,8 +178,7 @@ export function ɵɵsanitizeResourceUrl(unsafeResourceUrl: any): TrustedScriptUR
  *
  * 一种 `script` 清洁器，仅允许受信任的 javascript 通过。
  *
- * This passes only `script`s marked trusted by calling {@link
- * bypassSanitizationTrustScript}.
+ * This passes only `script`s marked trusted by calling {@link bypassSanitizationTrustScript}.
  *
  * 这只会通过调用 {@link bypassSanitizationTrustScript} 来传递标记为受信任的 `script` 。
  *
@@ -313,7 +312,7 @@ export function getUrlSanitizer(tag: string, prop: string) {
  * runtime.
  *
  * 如果我们无法在编译时定义安全上下文，则可以用此函数，当时只有 prop
- * 名称可用。当我们为指令/组件生成主机绑定时，会发生这种情况。宿主元素在编译时是未知的，因此我们将特定清洁剂的计算推迟到运行时。
+ * 名称可用。当我们为指令/组件生成宿主绑定时，会发生这种情况。宿主元素在编译时是未知的，因此我们将特定清洁剂的计算推迟到运行时。
  *
  * @param unsafeUrl untrusted `url`, typically from the user.
  *

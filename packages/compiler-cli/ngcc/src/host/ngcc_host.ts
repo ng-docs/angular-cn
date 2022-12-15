@@ -70,7 +70,7 @@ export interface NgccClassSymbol {
 /**
  * A reflection host that has extra methods for looking at non-Typescript package formats
  *
- * 一个反射主机，它具有查看非 Typescript 包格式的额外方法
+ * 一个反射宿主，它具有查看非 Typescript 包格式的额外方法
  *
  */
 export interface NgccReflectionHost extends ReflectionHost {

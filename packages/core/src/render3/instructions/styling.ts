@@ -61,7 +61,7 @@ import {setDirectiveInputsWhichShadowsStyling} from './property';
  * Note that this will apply the provided style value to the host element if this function is called
  * within a host binding function.
  *
- * 请注意，如果此函数在主机绑定函数中调用，这会将提供的 style 值应用于主机元素。
+ * 请注意，如果此函数在宿主绑定函数中调用，这会将提供的 style 值应用于宿主元素。
  *
  * @codeGenApi
  */
@@ -95,7 +95,7 @@ export function ɵɵstyleProp(
  * Note that this will apply the provided class value to the host element if this function
  * is called within a host binding function.
  *
- * 请注意，如果在主机绑定函数中调用此函数，这会将提供的 class 值应用于主机元素。
+ * 请注意，如果在宿主绑定函数中调用此函数，这会将提供的 class 值应用于宿主元素。
  *
  * @codeGenApi
  */
@@ -131,7 +131,7 @@ export function ɵɵclassProp(className: string, value: boolean|undefined|null):
  * Note that this will apply the provided styleMap value to the host element if this function
  * is called within a host binding.
  *
- * 请注意，如果在主机绑定中调用此函数，这会将提供的 styleMap 值应用于主机元素。
+ * 请注意，如果在宿主绑定中调用此函数，这会将提供的 styleMap 值应用于宿主元素。
  *
  * @codeGenApi
  */
@@ -184,7 +184,7 @@ export function styleStringParser(keyValueArray: KeyValueArray<any>, text: strin
  * within a host binding.
  *
  * 请注意，在调用 `stylingApply`
- * 之前，不会应用样式指令。请注意，如果此函数在主机绑定中调用，这将提供给主机元素的 classMap 值。
+ * 之前，不会应用样式指令。请注意，如果此函数在宿主绑定中调用，这将提供给宿主元素的 classMap 值。
  *
  * @param classes A key/value map or string of CSS classes that will be added to the
  *        given element. Any missing classes (that have already been applied to the element
@@ -573,7 +573,7 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
  * <div my-dir style="color: red" [style.color]="tmplExp"></div>
  * ```
  *
- * @Directive ({
+ * @Directive({
  *   host: {
  *     'style': 'width: 100px',
  *     '[style.color]': 'dirExp',
@@ -1153,8 +1153,7 @@ function findStylingValue(
       valueAtLViewIndex = isStylingMap ? EMPTY_ARRAY : undefined;
     }
     let currentValue = isStylingMap ? keyValueArrayGet(valueAtLViewIndex, prop) :
-        (key === prop                ? valueAtLViewIndex :
-                                      undefined);
+                                      (key === prop ? valueAtLViewIndex : undefined);
     if (containsStatics && !isStylingValuePresent(currentValue)) {
       currentValue = keyValueArrayGet(rawKey as KeyValueArray<any>, prop);
     }

@@ -11,7 +11,7 @@ import ts from 'typescript';
 /**
  * A host backed by a build system which has a unified view of the module namespace.
  *
- * 由构建系统支持的主机，它具有模块命名空间的统一视图。
+ * 由构建系统支持的宿主，它具有模块命名空间的统一视图。
  *
  * Such a build system supports the `fileNameToModuleName` method provided by certain build system
  * integrations (such as the integration with Bazel). See the docs on `fileNameToModuleName` for
@@ -30,7 +30,7 @@ export interface UnifiedModulesHost {
    * For example, such a host might determine that `/absolute/path/to/monorepo/lib/importedFile.ts`
    * should be imported using a module specifier of `monorepo/lib/importedFile`.
    *
-   * 例如，这样的主机可能会确定 `/absolute/path/to/monorepo/lib/importedFile.ts` 应该使用
+   * 例如，这样的宿主可能会确定 `/absolute/path/to/monorepo/lib/importedFile.ts` 应该使用
    * `monorepo/lib/importedFile` 模块说明符来导入。
    *
    */
@@ -41,7 +41,7 @@ export interface UnifiedModulesHost {
  * A host which additionally tracks and produces "resources" (HTML templates, CSS
  * files, etc).
  *
- * 额外跟踪和生成“资源”（HTML 模板、CSS 文件等）的主机。
+ * 额外跟踪和生成“资源”（HTML 模板、CSS 文件等）的宿主。
  *
  */
 export interface ResourceHost {
@@ -68,7 +68,7 @@ export interface ResourceHost {
    * `loadNgStructureAsync()`. Returning  `Promise<string>` outside `loadNgStructureAsync()` will
    * cause a diagnostics error or an exception to be thrown.
    *
-   * 静态或异步加载引用的资源。如果主机返回 `Promise<string>` ，则假定相应 `Program` 的用户将调用
+   * 静态或异步加载引用的资源。如果宿主返回 `Promise<string>` ，则假定相应 `Program` 的用户将调用
    * `loadNgStructureAsync()` 。在 `loadNgStructureAsync()` 之外返回 `Promise<string>`
    * 将导致诊断错误或抛出异常。
    *

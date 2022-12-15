@@ -1274,8 +1274,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 控件在执行异步验证时处于挂起状态。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @param opts Configuration options that determine how the control propagates changes and
    * emits events after marking is applied.
    *
@@ -1317,8 +1316,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 如果控件有子项，则所有子项也被禁用。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @param opts Configuration options that determine how the control propagates
    * changes and emits events after the control is disabled.
    *
@@ -1371,8 +1369,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 默认情况下，如果控件有子项，则启用所有子项。
    *
-   * @see {
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @param opts Configure options that control how the control propagates changes and
    * emits events when marked as untouched
    *

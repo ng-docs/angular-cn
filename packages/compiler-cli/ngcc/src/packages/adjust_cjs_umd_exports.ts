@@ -87,10 +87,9 @@ function isExportsIdentifier(expr: ts.Expression): boolean {
  * 只有在字符串是有效的 JS
  * 标识符（即不是保留关键字）时，才能将使用字符串文字的元素访问转换为属性访问。
  *
- * This regex is taken from {@link <https://stackoverflow.com/a/9392578/171436}>.
+ * This regex is taken from {@link https://stackoverflow.com/a/9392578/171436}.
  *
- * 此正则表达式来自 {@link
- * [https://stackoverflow.com/a/9392578/171436}](https://stackoverflow.com/a/9392578/171436%7D) 。
+ * 此正则表达式来自 {@link https://stackoverflow.com/a/9392578/171436}。
  *
  */
 const identifierPattern =

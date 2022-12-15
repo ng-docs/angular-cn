@@ -192,7 +192,7 @@ export class AppComponent implements OnInit {
       );
       this.docVersions = [
         {
-          title: 'Docs Versions',
+          title: '文档版本',
           children : allDocsVersionNodes
         }
       ];

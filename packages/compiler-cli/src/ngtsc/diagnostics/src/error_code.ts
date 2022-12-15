@@ -158,7 +158,7 @@ export enum ErrorCode {
    * Raised when a host expression has a parse error, such as a host listener or host binding
    * expression containing a pipe.
    *
-   * 在主机表达式存在解析错误时引发，例如主机侦听器或包含管道的主机绑定表达式。
+   * 在宿主表达式存在解析错误时引发，例如宿主侦听器或包含管道的宿主绑定表达式。
    *
    */
   HOST_BINDING_PARSE_ERROR = 5001,

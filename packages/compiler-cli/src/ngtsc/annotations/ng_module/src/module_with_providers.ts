@@ -23,13 +23,13 @@ import {ClassDeclaration, isNamedClassDeclaration, ReflectionHost, typeNodeToVal
  *
  * @param reflector The reflection host to use for analyzing the syntax.
  *
- * 用于分析语法的反射主机。
+ * 用于分析语法的反射宿主。
  *
- * @param isCore Whether the
+ * @param isCore Whether the @angular/core package is being compiled.
  *
- * 是否
+ * 是否正在编译 @angular/core 包。
  *
- * @angular /core package is being compiled.
+ *
  */
 export function createModuleWithProvidersResolver(
     reflector: ReflectionHost, isCore: boolean): ForeignFunctionResolver {
