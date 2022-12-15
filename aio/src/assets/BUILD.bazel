@@ -4,5 +4,10 @@ filegroup(
     name = "assets",
     srcs = glob([
         "images/**",
+        "css/**",
+        "fonts/**",
+        "images/**",
+        "js/**",
+        "videos/**",
     ]) + ["opensearch.xml"],
 )

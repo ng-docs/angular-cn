@@ -6,19 +6,21 @@ set -e
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 
-npm i -g @awesome-fe/translate@1.1.20
+npm i -g @awesome-fe/translate@1.1.21
 
 cd $(dirname $0)
 
 yarn build
 
-nt mark dist/generated/**/*.json
-
 cd ./release/latest.angular.live
 
 git pull -r
 
-cp -r ../../dist/* .
+cp -r ../../../dist/bin/aio/build/* .
+
+chmod -R +w ./generated/**/*.json
+
+nt mark ./generated/**/*.json
 
 cp index.html 404.html
 
