@@ -77,7 +77,7 @@ export type TStylingKeyPrimitive = string|null|false;
  * <div class="TEMPLATE" my-dir>
  * ```
  *
- * @Directive ({
+ * @Directive({
  *   host: {
  *     class: 'DIR',
  *     '[class.dynamic]': 'exp' // ɵɵclassProp('dynamic', ctx.exp);

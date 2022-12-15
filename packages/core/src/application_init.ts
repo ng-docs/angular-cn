@@ -50,7 +50,7 @@ import {noop} from './util/noop';
  *    });
  *  }
  *
- * @NgModule ({
+ * @NgModule({
  *   imports: [BrowserModule],
  *   declarations: [AppComponent],
  *   bootstrap: [AppComponent],
@@ -68,7 +68,9 @@ import {noop} from './util/noop';
  * demo purposes to illustrate how the factory function can work with other providers available
  * through DI.
  *
- * 也可以用 `APP_INITIALIZER` 令牌和返回 observable 的函数来配置多提供者，请参阅下面的示例。注：此示例中的 `HttpClient` 用于演示目的，以说明工厂函数如何与通过 DI 获得的其他提供程序一起使用。
+ * 也可以用 `APP_INITIALIZER` 令牌和返回 observable
+ * 的函数来配置多提供者，请参阅下面的示例。注：此示例中的 `HttpClient`
+ * 用于演示目的，以说明工厂函数如何与通过 DI 获得的其他提供程序一起使用。
  *
  * ```
  *  function initializeAppFactory(httpClient: HttpClient): () => Observable<any> {
@@ -78,7 +80,7 @@ import {noop} from './util/noop';
  *     );
  *  }
  *
- * @NgModule ({
+ * @NgModule({
  *    imports: [BrowserModule, HttpClientModule],
  *    declarations: [AppComponent],
  *    bootstrap: [AppComponent],

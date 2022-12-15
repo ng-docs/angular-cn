@@ -160,7 +160,7 @@ interface LFrame {
    * context, this is the TView.expandoStartIndex + any dirs/hostVars before the given dir.
    *
    * 纯函数指令应该从中计算其绑定索引的根索引。在组件视图中，这是 TView.bindingStartIndex
-   * 。在主机绑定上下文中，这是 TView.expandoStartIndex + 给定目录之前的任何 dirs/hostVars 。
+   * 。在宿主绑定上下文中，这是 TView.expandoStartIndex + 给定目录之前的任何 dirs/hostVars 。
    *
    */
   bindingRootIndex: number;
@@ -179,7 +179,7 @@ interface LFrame {
    * `TView.data[currentDirectiveIndex]` is `DirectiveDef`
    * `LView[currentDirectiveIndex]` is directive instance.
    *
-   * 当执行主机绑定时，this 指向了指令索引。 `TView.data[currentDirectiveIndex]` is `DirectiveDef`
+   * 当执行宿主绑定时，this 指向了指令索引。 `TView.data[currentDirectiveIndex]` is `DirectiveDef`
    * `LView[currentDirectiveIndex]` 是指令实例。
    *
    */
@@ -538,14 +538,14 @@ export function setInI18nBlock(isInI18nBlock: boolean): void {
 /**
  * Set a new binding root index so that host template functions can execute.
  *
- * 设置新的绑定根索引，以便主机模板函数可以执行。
+ * 设置新的绑定根索引，以便宿主模板函数可以执行。
  *
  * Bindings inside the host template are 0 index. But because we don't know ahead of time
  * how many host bindings we have we can't pre-compute them. For this reason they are all
  * 0 index and we just shift the root so that they match next available location in the LView.
  *
- * 主机模板中的绑定是 0
- * 索引。但因为我们不提前知道我们有多少主机绑定，所以我们无法预先计算它们。因此，它们都是 0
+ * 宿主模板中的绑定是 0
+ * 索引。但因为我们不提前知道我们有多少宿主绑定，所以我们无法预先计算它们。因此，它们都是 0
  * 索引，我们只是移动根，以便它们与 LView 中的下一个可用位置匹配。
  *
  * @param bindingRootIndex Root index for `hostBindings`
@@ -570,7 +570,7 @@ export function setBindingRootForHostBindings(
  * `TView.data[getCurrentDirectiveIndex()]` is `DirectiveDef`
  * `LView[getCurrentDirectiveIndex()]` is directive instance.
  *
- * 当执行主机绑定时，this 指向了指令索引。 `TView.data[getCurrentDirectiveIndex()]` is
+ * 当执行宿主绑定时，this 指向了指令索引。 `TView.data[getCurrentDirectiveIndex()]` is
  * `DirectiveDef` `LView[getCurrentDirectiveIndex()]` 是指令实例。
  *
  */

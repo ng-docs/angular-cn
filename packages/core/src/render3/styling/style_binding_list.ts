@@ -34,7 +34,7 @@ import {getTView} from '../state';
  *
  * ```
  *
- * @Component ({
+ * @Component({
  *   template: `
  *     <my-cmp [style]=" {color: '#001'} "
  *             [style.color]=" #002 "
@@ -50,7 +50,7 @@ import {getTView} from '../state';
  *     ...
  *   }
  * }
- * @Directive ({
+ * @Directive({
  *   selector: `[dir-style-color-1]',
  * })
  * class Style1Directive {
@@ -65,7 +65,7 @@ import {getTView} from '../state';
  *     ...
  *   }
  * }
- * @Directive ({
+ * @Directive({
  *   selector: `[dir-style-color-2]',
  * })
  * class Style2Directive {
@@ -80,7 +80,7 @@ import {getTView} from '../state';
  *     ...
  *   }
  * }
- * @Directive ({
+ * @Directive({
  *   selector: `my-cmp',
  * })
  * class MyComponent {
@@ -197,7 +197,7 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  *
  * - if `isHost === true` (we are host binding) then insertion is at head of `TStylingRange`
  *
- *   如果 `isHost === true`（我们是主机绑定），则插入在 `TStylingRange` 的头部
+ *   如果 `isHost === true`（我们是宿主绑定），则插入在 `TStylingRange` 的头部
  *
  * @param tData The `TData` to insert into.
  *

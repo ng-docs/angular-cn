@@ -113,7 +113,7 @@ export class RouterModule {
    * 在根目录下注册 NgModule 时，请按以下方式导入：
    *
    * ```
-   * @NgModule ({
+   * @NgModule({
    *   imports: [RouterModule.forRoot(ROUTES)]
    * })
    * class MyNgModule {}
@@ -161,7 +161,7 @@ export class RouterModule {
    * NgModule：
    *
    * ```
-   * @NgModule ({
+   * @NgModule({
    *   imports: [RouterModule.forChild(ROUTES)]
    * })
    * class MyNgModule {}
@@ -186,7 +186,8 @@ export class RouterModule {
  * For internal use by `RouterModule` only. Note that this differs from `withInMemoryRouterScroller`
  * because it reads from the `ExtraOptions` which should not be used in the standalone world.
  *
- * 仅供 `RouterModule` 内部使用。请注意，这与 `withInMemoryRouterScroller` 不同，因为它是从不应该在独立世界中使用的 `ExtraOptions` 中读取的。
+ * 仅供 `RouterModule` 内部使用。请注意，这与 `withInMemoryRouterScroller`
+ * 不同，因为它是从不应该在独立世界中使用的 `ExtraOptions` 中读取的。
  *
  */
 export function provideRouterScroller(): Provider {

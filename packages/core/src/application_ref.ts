@@ -578,7 +578,7 @@ export class PlatformRef {
    * ### 简单的例子
    *
    * ```typescript
-   * @NgModule ({
+   * @NgModule({
    *   imports: [BrowserModule]
    * })
    * class MyModule {}

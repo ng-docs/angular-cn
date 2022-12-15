@@ -439,7 +439,7 @@ export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
  *
  * - setting host bindings;
  *
- *   设置主机绑定；
+ *   设置宿主绑定；
  *
  * - refreshing child (embedded and component) views.
  *
@@ -835,7 +835,7 @@ function createViewBlueprint(bindingStartIndex: number, initialViewLength: numbe
 /**
  * Locates the host native element, used for bootstrapping existing nodes into rendering pipeline.
  *
- * 定位主机本机元素，用于将现有节点引导到渲染管道。
+ * 定位宿主本机元素，用于将现有节点引导到渲染管道。
  *
  * @param rendererFactory Factory function to create renderer instance.
  *
@@ -847,7 +847,7 @@ function createViewBlueprint(bindingStartIndex: number, initialViewLength: numbe
  *
  * @param encapsulation View Encapsulation defined for component that requests host element.
  *
- * 为请求主机元素的组件定义的视图封装。
+ * 为请求宿主元素的组件定义的视图封装。
  *
  */
 export function locateHostElement(
@@ -1507,7 +1507,7 @@ export function invokeDirectivesHostBindings(tView: TView, lView: LView, tNode: 
 /**
  * Invoke the host bindings in creation mode.
  *
- * 在创建模式下调用主机绑定。
+ * 在创建模式下调用宿主绑定。
  *
  * @param def `DirectiveDef` which may contain the `hostBindings` function.
  *
@@ -1895,11 +1895,11 @@ const LContainerArray: any = class LContainer extends Array {};
  *
  * @param hostNative The host element for the LContainer
  *
- * LContainer 的主机元素
+ * LContainer 的宿主元素
  *
  * @param hostTNode The host TNode for the LContainer
  *
- * LContainer 的主机 TNode
+ * LContainer 的宿主 TNode
  *
  * @param currentView The parent view of the LContainer
  *
@@ -2151,7 +2151,7 @@ function syncViewWithBlueprint(tView: TView, lView: LView) {
  *
  * @param adjustedHostIndex Index of the view's host node in LView\[], adjusted for header
  *
- * LView\[] 中视图主机节点的索引，已针对标头进行调整
+ * LView\[] 中视图宿主节点的索引，已针对标头进行调整
  *
  * @param lViewOrLContainer The LView or LContainer to add to the view tree
  *

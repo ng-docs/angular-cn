@@ -270,12 +270,11 @@ export class CompilerFacadeImpl implements CompilerFacade {
    *
    * 将被编译和执行以获取要 patch 的值的定义
    *
-   * @param context an object map of
-   *
-   * 的对象映射表
-   *
-   * @angular /core symbol names to symbols which will be available
+   * @param context an object map of @angular/core symbol names to symbols which will be available
    * in the context of the compiled expression
+   *
+   * 一个 @angular/core 符号名到符号的对象映射表，它们将在编译表达式的上下文中可用
+   *
    * @param sourceUrl a URL to use for the source map of the compiled expression
    *
    * 用于已编译表达式的源映射的 URL

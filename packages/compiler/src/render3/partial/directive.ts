@@ -145,7 +145,7 @@ function compileQuery(query: R3QueryMetadata): o.LiteralMapExpr {
  * Compiles the host metadata into its partial declaration form as declared
  * in `R3DeclareDirectiveMetadata['host']`
  *
- * 将主机元数据编译为其在 `R3DeclareDirectiveMetadata['host']` 中声明的部分声明形式
+ * 将宿主元数据编译为其在 `R3DeclareDirectiveMetadata['host']` 中声明的部分声明形式
  *
  */
 function compileHostMetadata(meta: R3HostMetadata): o.LiteralMapExpr|null {

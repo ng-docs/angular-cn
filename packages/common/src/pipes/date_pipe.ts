@@ -317,7 +317,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * 下列组件借助一个日期管道来以不同的格式显示当前日期。
  *
  * ```
- * @Component ({
+ * @Component({
  *  selector: 'date-pipe',
  *  template: `<div>
  *    <p>Today is {{today | date}}</p>
@@ -357,7 +357,9 @@ export class DatePipe implements PipeTransform {
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token (and reads the `dateFormat` property).
    * If the token is not configured, the `mediumDate` is used as a value.
    *
-   * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时， `DatePipe` 会使用 `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌查找值（并读取 `dateFormat` 属性）。如果未配置令牌，则使用 `mediumDate` 作为值。
+   * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时， `DatePipe` 会使用
+   * `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌查找值（并读取 `dateFormat` 属性）。如果未配置令牌，则使用
+   * `mediumDate` 作为值。
    *
    * @param timezone A timezone offset (such as `'+0430'`), or a standard UTC/GMT, or continental US
    * timezone abbreviation. When not provided, the `DatePipe` looks for the value using the

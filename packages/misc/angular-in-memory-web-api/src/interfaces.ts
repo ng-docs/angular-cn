@@ -107,7 +107,7 @@ export abstract class InMemoryBackendConfigArgs {
   /**
    * host for this service, e.g., 'localhost'
    *
-   * 此服务的主机，例如“localhost”
+   * 此服务的宿主，例如“localhost”
    *
    */
   host?: string;

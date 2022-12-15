@@ -34,7 +34,7 @@ import {PartialObserver, Subject, Subscription} from 'rxjs';
  * 在以下示例中，组件定义了两个创建事件发射器的输出属性。单击标题后，发射器将发出打开或关闭事件以切换当前可见性状态。
  *
  * ```html
- * @Component ({
+ * @Component({
  *   selector: 'zippy',
  *   template: `
  *   <div class="zippy">

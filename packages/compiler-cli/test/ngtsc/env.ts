@@ -121,7 +121,7 @@ export class NgtscTestEnvironment {
    * `CompilerHost.readResource` method. Note that only asynchronous compilations are affected, as
    * synchronous compilations do not use the asynchronous resource loader.
    *
-   * 安装一个编译器主机，该主机通过实现 `CompilerHost.readResource`
+   * 安装一个编译器宿主，该宿主通过实现 `CompilerHost.readResource`
    * 方法来允许异步读取资源。请注意，只有异步编译会受到影响，因为同步编译不使用异步资源加载器。
    *
    */

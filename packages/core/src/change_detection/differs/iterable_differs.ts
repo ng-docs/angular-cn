@@ -357,7 +357,7 @@ export class IterableDiffers {
    * IterableDiffer} 可用的全部步骤。
    *
    * ```
-   * @Component ({
+   * @Component({
    *   viewProviders: [
    *     IterableDiffers.extend([new ImmutableListDiffer()])
    *   ]

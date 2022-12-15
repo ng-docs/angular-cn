@@ -1354,7 +1354,8 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *   ```
  *
  * - `fromState <=> toState`, which indicates that the transition's animations should occur then
- *     the expression bound to the trigger's element goes from `fromState` to `toState` or vice versa
+ *     the expression bound to the trigger's element goes from `fromState` to `toState` or vice
+ * versa
  *
  *   `fromState <=> toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
  *   变为 `toState`，反之亦然
@@ -1386,7 +1387,8 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `:increment`/`:decrement`, which indicates that the transition's animations should occur when
  *   the numerical expression bound to the trigger's element has increased in value or decreased
  *
- *   `:increment` / `:decrement` ，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
+ *   `:increment` / `:decrement`
+ * ，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
  *
  *   _Example:_
  *
@@ -1457,7 +1459,9 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * for the element to reach the final state, in such case Angular automatically adds or removes
  * CSS styles to ensure that the element is in the correct final state.
  *
- * 如果转换中的最后一步是对使用不带 `style` 数据的计时值的 `animate()` 的调用，则该步骤会自动被认为是最终动画弧，以使元素达到最终状态，在这种情况下，Angular 会自动添加或删除 CSS 样式以确保元素处于正确的最终状态。
+ * 如果转换中的最后一步是对使用不带 `style` 数据的计时值的 `animate()`
+ * 的调用，则该步骤会自动被认为是最终动画弧，以使元素达到最终状态，在这种情况下，Angular
+ * 会自动添加或删除 CSS 样式以确保元素处于正确的最终状态。
  *
  * ### Usage Examples
  *
@@ -1750,12 +1754,15 @@ export function useAnimation(
  * (if their insertion/removal is simply a consequence of that of their parent they
  * should be queried via a different token in their parent's `:enter`/`:leave` transitions).
  *
- * 并非所有元素都可以通过 `:enter` 和 `:leave` 标记查询，唯一可以是 Angular 假定可以根据自己的逻辑进入/离开的元素（如果它们的插入/删除只是它们父级的结果，他们应该通过其父级的 `:enter` / `:leave` 转换中的不同标记来查询）。
+ * 并非所有元素都可以通过 `:enter` 和 `:leave` 标记查询，唯一可以是 Angular
+ * 假定可以根据自己的逻辑进入/离开的元素（如果它们的插入/删除只是它们父级的结果，他们应该通过其父级的
+ * `:enter` / `:leave` 转换中的不同标记来查询）。
  *
  * The only elements Angular assumes can enter/leave based on their own logic (thus the only
  * ones that can be queried via the `:enter` and `:leave` tokens) are:
  *
- * Angular 假定可以根据自己的逻辑进入/离开的唯一元素（因此可以通过 `:enter` 和 `:leave` 标记查询的唯一元素）是：
+ * Angular 假定可以根据自己的逻辑进入/离开的唯一元素（因此可以通过 `:enter` 和 `:leave`
+ * 标记查询的唯一元素）是：
  *
  * - Those inserted dynamically (via `ViewContainerRef`)
  *
@@ -1881,7 +1888,7 @@ export function query(
  *
  * ```typescript
  * import {trigger, transition, style, animate, query, stagger} from '@angular/animations';
- * @Component ({
+ * @Component({
  *   templateUrl: 'list.component.html',
  *   animations: [
  *     trigger('listAnimation', [

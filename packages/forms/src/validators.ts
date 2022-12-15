@@ -51,7 +51,7 @@ function hasValidLength(value: any): boolean {
  * true` 选项。
  *
  * ```typescript
- * @Directive ({
+ * @Directive({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
  * })
@@ -85,7 +85,7 @@ export const NG_VALIDATORS = new InjectionToken<Array<Validator|Function>>('NgVa
  * 以下示例实现了 `AsyncValidator` 接口，以创建使用自定义错误键的异步验证器指令。
  *
  * ```typescript
- * @Directive ({
+ * @Directive({
  *   selector: '[customAsyncValidator]',
  *   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: CustomAsyncValidatorDirective, multi:
  * true}]

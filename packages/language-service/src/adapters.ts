@@ -105,7 +105,7 @@ export class LanguageServiceAdapter implements NgCompilerAdapter {
    * packages/compiler-cli/src/ngtsc/core/api/src/interfaces.ts
    *
    * readResource() 是一种特定于 Angular 的方法，用于读取不由 TS
-   * 编译器主机管理的文件，即模板和样式表。它是 ExtendedTsCompilerHost 上的一个方法，请参阅
+   * 编译器宿主管理的文件，即模板和样式表。它是 ExtendedTsCompilerHost 上的一个方法，请参阅
    * packages/compiler-cli/src/ngtsc/core/api/src/interfaces.ts
    *
    */
@@ -156,7 +156,7 @@ export class LanguageServiceAdapter implements NgCompilerAdapter {
  * because signatures of calls like `FileSystem#readFile` are a bit stricter
  * than those on the adapter.
  *
- * 语言服务解析配置主机独立于适配器，因为 `FileSystem#readFile` 等调用的签名比适配器上的签名更严格。
+ * 语言服务解析配置宿主独立于适配器，因为 `FileSystem#readFile` 等调用的签名比适配器上的签名更严格。
  *
  */
 export class LSParseConfigHost implements ConfigurationHost {

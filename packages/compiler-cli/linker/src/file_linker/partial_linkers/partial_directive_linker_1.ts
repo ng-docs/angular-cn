@@ -107,7 +107,7 @@ function toInputMapping<TExpression>(value: AstValue<string|[string, string], TE
 /**
  * Extracts the host metadata configuration from the AST metadata object.
  *
- * 从 AST 元数据对象中提取主机元数据配置。
+ * 从 AST 元数据对象中提取宿主元数据配置。
  *
  */
 function toHostMetadata<TExpression>(metaObj: AstObject<R3DeclareDirectiveMetadata, TExpression>):

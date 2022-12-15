@@ -32,7 +32,7 @@ function throwNameError() {
  * declared *after* the `RadioControlRegistry` class and the `providedIn` doesn't support
  * `forwardRef` logic.
  *
- * 仅供内部的 NgModule ，作为 `RadioControlRegistry` 树形抖动提供程序的主机。注意：
+ * 仅供内部的 NgModule ，作为 `RadioControlRegistry` 树形抖动提供程序的宿主。注意：
  * `InternalFormsSharedModule` 不能在这里直接使用，因为它是在 `RadioControlRegistry`
  * 类*之后*声明的，并且 `providedIn` 不支持 `forwardRef` 逻辑。
  *
@@ -162,7 +162,7 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    * to override the `onChange` function (which expects 1 argument) in the parent
    * `BaseControlValueAccessor` class.
    *
-   * 注意：我们在此将 `onChange`（也用作主机侦听器）声明为不带参数的函数，以覆盖父
+   * 注意：我们在此将 `onChange`（也用作宿主侦听器）声明为不带参数的函数，以覆盖父
    * `BaseControlValueAccessor` 类中的 `onChange` 函数（需要 1 个参数）。
    *
    * @nodoc

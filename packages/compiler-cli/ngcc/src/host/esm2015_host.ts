@@ -1144,7 +1144,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    * if the property is not found it will fall back to looking up the property on the outer symbol.
    *
    * 在某些情况下，静态属性可以在类的 IIFE
-   * 中的内部（实现或相邻）声明上设置，也可以在外部变量声明上设置。因此，主机会检查所有地方，首先在内部符号上查找属性，如果找不到该属性，它将回到在外部符号上查找属性。
+   * 中的内部（实现或相邻）声明上设置，也可以在外部变量声明上设置。因此，宿主会检查所有地方，首先在内部符号上查找属性，如果找不到该属性，它将回到在外部符号上查找属性。
    *
    * @param symbol the class whose property we are interested in.
    *
@@ -1824,7 +1824,7 @@ export class Esm2015ReflectionHost extends TypeScriptReflectionHost implements N
    * to the property descriptor in general, not a specific accessor. If an accessor
    * has both a setter and getter, any decorators are only attached to the setter member.
    *
-   * 与 TypeScript 主机的一个区别是，在 ES2015
+   * 与 TypeScript 宿主的一个区别是，在 ES2015
    * 中，我们无法看到哪个访问器最初应用了任何装饰器，因为装饰器通常应用于属性描述符，而不是特定的访问器。如果访问器同时具有
    * setter 和 getter，则任何装饰器都只会附加到 setter 成员。
    *
@@ -2838,7 +2838,7 @@ export type DecorateHelperEntry = ParameterTypes|ParameterDecorators|DecoratorCa
 /**
  * The recorded decorator information of a single class. This information is cached in the host.
  *
- * 记录的单个类的装饰器信息。此信息会缓存在主机中。
+ * 记录的单个类的装饰器信息。此信息会缓存在宿主中。
  *
  */
 interface DecoratorInfo {

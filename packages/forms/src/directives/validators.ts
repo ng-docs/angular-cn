@@ -81,7 +81,7 @@ export type ValidationErrors = {
  * 下面的例子实现了 `Validator` 接口，以便用一个自定义的错误键来创建验证器指令。
  *
  * ```typescript
- * @Directive ({
+ * @Directive({
  *   selector: '[customValidator]',
  *   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
  * })
@@ -152,7 +152,7 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * directive classes that extend this base class.
    *
    * 将其标记为 `internal`（vs `protected`
-   *），以便此标志可以在扩展此基类的指令类的主机绑定中使用。
+   *），以便此标志可以在扩展此基类的指令类的宿主绑定中使用。
    *
    * @internal
    */
@@ -388,7 +388,7 @@ export class MinValidator extends AbstractValidatorDirective {
  * ```typescript
  * import { of } from 'rxjs';
  *
- * @Directive ({
+ * @Directive({
  *   selector: '[customAsyncValidator]',
  *   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: CustomAsyncValidatorDirective, multi:
  * true}]

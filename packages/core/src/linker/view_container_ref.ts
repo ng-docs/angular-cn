@@ -209,7 +209,7 @@ export abstract class ViewContainerRef {
    * - index: the index at which to insert the new component's host view into this container.
    *          If not specified, appends the new view as the last entry.
    *
-   *   index：将新组件的主机视图插入此容器的索引。如果未指定，则将新视图作为最后一个条目附加。
+   *   index：将新组件的宿主视图插入此容器的索引。如果未指定，则将新视图作为最后一个条目附加。
    *
    * - injector: the injector to use as the parent for the new component.
    *
@@ -254,7 +254,7 @@ export abstract class ViewContainerRef {
   /**
    * Instantiates a single component and inserts its host view into this container.
    *
-   * 实例化单个组件并将其主机视图插入此容器。
+   * 实例化单个组件并将其宿主视图插入此容器。
    *
    * @param componentFactory Component factory to use.
    *

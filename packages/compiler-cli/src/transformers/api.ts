@@ -312,7 +312,7 @@ export interface Program {
    * will produce a diagnostic error message or, `getTsProgram()` or `emit` to throw.
    *
    * 异步加载 Angular 结构信息。如果不调用此方法，则会同步加载 Angular 结构信息，包括引用的 HTML 和
-   * CSS 文件。如果提供的 Angular 编译器主机从 `loadResource()` 返回一个
+   * CSS 文件。如果提供的 Angular 编译器宿主从 `loadResource()` 返回一个
    * Promise，则将生成诊断错误消息，或者，`getTsProgram()` 或 `emit` 来抛出。
    *
    */

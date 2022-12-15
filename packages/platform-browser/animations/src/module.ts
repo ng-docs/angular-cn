@@ -59,7 +59,7 @@ export class BrowserAnimationsModule {
    * 注册 `BrowserAnimationsModule` 时，你可以用 `withConfig` 函数，如下所示：
    *
    * ```
-   * @NgModule ({
+   * @NgModule({
    *   imports: [BrowserAnimationsModule.withConfig(config)]
    * })
    * class MyNgModule {}

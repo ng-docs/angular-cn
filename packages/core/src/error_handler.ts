@@ -33,7 +33,7 @@ import {getOriginalError} from './util/errors';
  *   }
  * }
  *
- * @NgModule ({
+ * @NgModule({
  *   providers: [{provide: ErrorHandler, useClass: MyErrorHandler}]
  * })
  * class MyModule {}

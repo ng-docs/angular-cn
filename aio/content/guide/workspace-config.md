@@ -91,8 +91,6 @@ The following configuration properties are a set of options that customize the A
 | 属性 | 详情 | 值的类型 |
 | `analytics` | Share anonymous [usage data](cli/analytics) with the Angular Team. | `boolean` &verbar; `ci` |
 | `analytics` | 与 Angular 团队共享匿名[使用数据](cli/analytics)。 | `boolean` &verbar; `ci` |
-| `analyticsSharing` | A set of analytics sharing options. | [Analytics sharing options](#analytics-sharing-options) |
-| `analyticsSharing` | 一组分析共享选项。 | [分析共享选项](#analytics-sharing-options) |
 | `cache` | Control [persistent disk cache](cli/cache) used by [Angular CLI Builders](guide/cli-builder). | [Cache options](#cache-options) |
 | `cache` | 控制 [Angular CLI 构建器](guide/cli-builder)使用的[持久化磁盘缓存](cli/cache)。 | [缓存选项](#cache-options) |
 | `schematicCollections` | A list of default schematics collections to use. | `string[]` |

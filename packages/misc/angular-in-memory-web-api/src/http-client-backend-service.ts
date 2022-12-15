@@ -44,7 +44,7 @@ import {InMemoryBackendConfig, InMemoryBackendConfigArgs, InMemoryDbService, Res
  * import { InMemHeroService, inMemConfig } from '../api/in-memory-hero.service';
  * ```
  *
- * @NgModule ({
+ * @NgModule({
  *  imports: [
  *    HttpModule,
  *    HttpClientInMemoryWebApiModule.forRoot(InMemHeroService, inMemConfig),

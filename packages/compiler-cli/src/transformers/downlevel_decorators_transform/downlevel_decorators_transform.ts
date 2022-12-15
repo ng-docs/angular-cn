@@ -295,7 +295,7 @@ interface ParameterDecorationInfo {
  *
  * @param host Reflection host that is used for determining decorators.
  *
- * 用于确定装饰器的反射主机。
+ * 用于确定装饰器的反射宿主。
  *
  * @param diagnostics List which will be populated with diagnostics if any.
  *
