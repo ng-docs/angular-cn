@@ -69,7 +69,7 @@ module.exports = function generateKeywordsProcessor(log) {
 
 
         // Extract the title to use in searches
-        doc.searchTitle = doc.searchTitle || doc.title || doc.vFile && (doc.vFile.titleCn || doc.vFile.title) || doc.name || '';
+        doc.searchTitle = doc.searchTitle || doc.titleCn || doc.title || doc.vFile && (doc.vFile.titleCn || doc.vFile.title) || doc.name || '';
 
         // Attach all this search data to the document
         doc.searchTerms = {};
