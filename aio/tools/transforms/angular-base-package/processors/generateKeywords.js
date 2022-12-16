@@ -1,5 +1,6 @@
 'use strict';
 
+const jieba = require('@node-rs/jieba');
 /**
  * @dgProcessor generateKeywordsProcessor
  * @description
@@ -39,10 +40,10 @@ module.exports = function generateKeywordsProcessor(log) {
 
 
       const filteredDocs = docs
-          // We are not interested in some docTypes
-          .filter(doc => !docTypesToIgnore.has(doc.docType))
-          // Ignore internals and private exports (indicated by the ɵ prefix)
-          .filter(doc => !doc.internal && !doc.privateExport);
+        // We are not interested in some docTypes
+        .filter(doc => !docTypesToIgnore.has(doc.docType))
+        // Ignore internals and private exports (indicated by the ɵ prefix)
+        .filter(doc => !doc.internal && !doc.privateExport);
 
 
       for (const doc of filteredDocs) {
@@ -117,12 +118,28 @@ module.exports = function generateKeywordsProcessor(log) {
 
       // Helpers
       function tokenize(text, ignoreWords, dictionary) {
+        return tokenizeEnglish(text, ignoreWords, dictionary).concat(tokenizeChinese(text, dictionary));
+      }
+
+      function hasChinese(text) {
+        return /[\u4e00-\u9fa5]/.test(text);
+      }
+
+      function tokenizeChinese(text, dictionary) {
+        const tokens = [];
+        jieba.cutForSearch(text, true).filter(it=>it.length >= 2 && hasChinese(it)).forEach(keyword => {
+          storeToken(keyword, tokens, dictionary);
+        });
+        return tokens;
+      }
+
+      function tokenizeEnglish(text, ignoreWords, dictionary) {
         // Split on whitespace and things that are likely to be HTML tags (this is not exhaustive but reduces the unwanted tokens that are indexed).
         const rawTokens = text.split(new RegExp(
-                                            '[\\s/]+' +                                // whitespace
-                                            '|' +                                      // or
-                                            '</?[a-z]+(?:\\s+\\w+(?:="[^"]+")?)*/?>',  // simple HTML tags (e.g. <td>, <hr/>, </table>, etc.)
-                                            'ig'));
+          '[\\s/]+' +                                // whitespace
+          '|' +                                      // or
+          '</?[a-z]+(?:\\s+\\w+(?:="[^"]+")?)*/?>',  // simple HTML tags (e.g. <td>, <hr/>, </table>, etc.)
+          'ig'));
         const tokens = [];
         for (let token of rawTokens) {
           token = token.trim();

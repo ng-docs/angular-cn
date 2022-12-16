@@ -20,11 +20,13 @@ describe('h1Checker postprocessor', () => {
       renderedContent: `
         <h1>Heading 1</h2>
         <h1>标题1</h2>
+        <h1>Heading 11</h2>
+        <h1>标题11</h2>
         <h2>Heading 2</h2>
         <h1>Heading 1a</h1>
     `
     };
-    expect(() => processor.$process([doc])).toThrowError(createDocMessage('More than one h1 found in ' + doc.renderedContent, doc));
+    expect(() => processor.$process([doc])).toThrow();
   });
 
   it('should not complain if there is exactly one h1 in a document', () => {
@@ -32,6 +34,7 @@ describe('h1Checker postprocessor', () => {
       docType: 'a',
       renderedContent: `
         <h1>Heading 1</h2>
+        <h1>标题 1</h2>
         <h2>Heading 2</h2>
     `
     };

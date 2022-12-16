@@ -42,7 +42,7 @@ addEventListener('message', handleMessage);
 // the path and search terms for a page
 function createIndex(loadIndexFn: IndexLoader): lunr.Index {
   // The lunr typings are missing QueryLexer so we have to add them here manually.
-  const queryLexer = (lunr as any as {QueryLexer: {termSeparator: RegExp}}).QueryLexer;
+  const queryLexer = (lunr as any as { QueryLexer: { termSeparator: RegExp } }).QueryLexer;
   queryLexer.termSeparator = lunr.tokenizer.separator = /\s+/;
   return lunr(function() {
     this.pipeline.remove(lunr.stemmer);
@@ -57,7 +57,7 @@ function createIndex(loadIndexFn: IndexLoader): lunr.Index {
 }
 
 // The worker receives a message to load the index and to query the index
-function handleMessage(message: {data: WebWorkerMessage}): void {
+function handleMessage(message: { data: WebWorkerMessage }): void {
   const type = message.data.type;
   const id = message.data.id;
   const payload = message.data.payload;

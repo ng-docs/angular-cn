@@ -17,6 +17,7 @@ js_library(
         "//aio/tools/transforms/links-package",
         "//aio/tools/transforms/remark-package",
         "//aio/tools/transforms/target-package",
+        "@aio_npm//@node-rs/jieba",
         "@aio_npm//canonical-path",
         "@aio_npm//dgeni",
         "@aio_npm//dgeni-packages",
