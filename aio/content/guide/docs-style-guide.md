@@ -1539,7 +1539,7 @@ When using callouts, consider the following points:
 
 * The header does not render in the table of contents
 
-  标头不会在目录中呈现
+  标头不会在目录中渲染
 
 * You can write the callout body in Markdown
 

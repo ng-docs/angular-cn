@@ -377,7 +377,7 @@ The documentation linter checks only the content that is rendered as text.
 It does not test code-formatted text.
 One common source of false problems is code references that are not formatted as code.
 
-文档 linter 仅检查呈现为文本的内容。它不会测试代码格式的文本。错误问题的一个常见来源是未格式化为代码的代码引用。
+文档 linter 仅检查渲染为文本的内容。它不会测试代码格式的文本。错误问题的一个常见来源是未格式化为代码的代码引用。
 
 If you use these exceptions, please limit the amount of text that you exclude from analysis to the fewest lines possible.
 

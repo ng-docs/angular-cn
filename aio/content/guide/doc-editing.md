@@ -69,7 +69,7 @@ In your working branch, edit the files that need to be changed. Most documentati
 
 Angular development tools can render the documentation as you make your changes.
 
-Angular 开发工具可以在你进行更改时呈现文档。
+Angular 开发工具可以在你进行更改时渲染文档。
 
 #### To view the rendered documentation while you are editing
 
@@ -212,15 +212,15 @@ This process makes your changes *saved, but not committed*.
 
 ### Review your rendered topics
 
-### 查看你呈现的主题
+### 查看你渲染的主题
 
 After you save changes to a documentation topic, and before you commit those changes on your local computer, review the rendered topic in a browser.
 
-保存对文档主题的更改之后，在本地计算机上提交这些更改之前，请在浏览器中查看呈现的主题。
+保存对文档主题的更改之后，在本地计算机上提交这些更改之前，请在浏览器中查看渲染的主题。
 
 #### To render your changes in a browser on your local computer
 
-#### 在本地计算机的浏览器中呈现你的更改
+#### 在本地计算机的浏览器中渲染你的更改
 
 <!-- vale Angular.Google_WordListSuggestions = NO -->
 

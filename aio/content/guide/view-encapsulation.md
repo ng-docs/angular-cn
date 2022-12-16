@@ -127,7 +127,7 @@ This means that styles for components with `ViewEncapsulation.None` affect match
 
 This approach may seem counter-intuitive at first. But without it a component with `ViewEncapsulation.None` would be rendered differently within a component using `ViewEncapsulation.ShadowDom`, since its styles would not be available.
 
-这种方法乍一看似乎有违直觉，但如果没有它，带有 `ViewEncapsulation.None` 的组件将在使用 `ViewEncapsulation.ShadowDom` 的组件内呈现不同的效果，因为其样式将不可用。
+这种方法乍一看似乎有违直觉，但如果没有它，带有 `ViewEncapsulation.None` 的组件将在使用 `ViewEncapsulation.ShadowDom` 的组件内渲染不同的效果，因为其样式将不可用。
 
 </div>
 
