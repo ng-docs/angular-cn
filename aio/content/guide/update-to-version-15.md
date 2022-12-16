@@ -55,7 +55,7 @@ For a comprehensive list of the new features, see the [Angular blog post on the 
 
 #### Standalone components are stable
 
-#### 独立组件是稳定的
+#### 独立组件是稳定版了
 
 The standalone components API lets you build Angular applications without the need to use NgModules. For more information about using these APIs in your next Angular application, see [Standalone components](guide/standalone-components).
 
@@ -84,11 +84,11 @@ The directive composition API makes it possible to add directives to host elemen
 Angular v15 makes debugging Angular applications easier with cleaner stack traces.
 Angular worked with Google Chrome developers to present stack traces that show more of your application's code and less from the libraries it calls.
 
-Angular v15 使用更清洁的堆栈跟踪，使调试 Angular 应用程序更轻松。 Angular 与 Google Chrome 开发人员合作提供了堆栈跟踪，这些堆栈跟踪显示了更多应用程序代码，而不是它调用的库中的。
+Angular v15 使用更干净的堆栈跟踪，使调试 Angular 应用程序更轻松。 Angular 与 Google Chrome 开发人员合作提供了堆栈跟踪，这些堆栈跟踪显示了更多应用程序代码，而不是它调用的库中的。
 
 For more information about the Chrome DevTools and Angular's support for the cleaner stack traces, see [Modern web debugging in Chrome DevTools](https://developer.chrome.com/blog/devtools-modern-web-debugging/).
 
-有关 Chrome DevTools 和 Angular 对更清洁堆栈跟踪的支持的更多信息，请参阅[Chrome DevTools 中的现代 Web 调试](https://developer.chrome.com/blog/devtools-modern-web-debugging/)。
+有关 Chrome DevTools 和 Angular 对更干净堆栈跟踪的支持的更多信息，请参阅[Chrome DevTools 中的现代 Web 调试](https://developer.chrome.com/blog/devtools-modern-web-debugging/)。
 
 <!-- vale Angular.Google_Acronyms = NO -->
 
