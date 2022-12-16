@@ -168,6 +168,7 @@ APPLICATION_DEPS = [
     "@aio_npm//@types/lunr",
     "@aio_npm//@types/trusted-types",
     "@aio_npm//lunr",
+    "@aio_npm//@node-rs/jieba",
     "@aio_npm//rxjs",
     "@aio_npm//safevalues",
     "@aio_npm//tslib",

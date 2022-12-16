@@ -142,6 +142,25 @@ describe('generateKeywords processor', () => {
     });
   });
 
+  it('should add heading words with Chinese to the search terms', async () => {
+    const processor = createProcessor();
+    const docs = await processor.$process([
+      {
+        docType: 'class',
+        name: 'PublicExport',
+        searchTitle: 'class PublicExport',
+        vFile: { headings: { h2: ['Important heading', 'Secondary heading', '重要标题', '次要标题'] } }
+      },
+    ]);
+    const keywordsDoc = docs[docs.length - 1];
+    expect(keywordsDoc.data).toEqual({
+      dictionary: 'class publicexport head secondari 重要 标题 次要',
+      pages: [
+        jasmine.objectContaining({ headings: [2, 3, 2, 4, 5, 6, 5] })
+      ]
+    });
+  });
+
   it('should add member doc properties to the search terms', async () => {
     const processor = createProcessor();
     const docs = await processor.$process([

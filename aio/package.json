@@ -94,6 +94,7 @@
     "@bazel/jasmine": "^5.4.1",
     "@bazel/runfiles": "5.7.1",
     "@bazel/typescript": "5.7.1",
+    "@node-rs/jieba": "^1.6.1",
     "@types/html-minifier": "^3.5.3",
     "@types/jasmine": "~4.3.0",
     "@types/lodash": "^4.14.133",
