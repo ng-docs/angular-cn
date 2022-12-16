@@ -48,7 +48,7 @@ Angular 创建一个 `<ng-template>` 元素，并将 `*ngIf` 指令应用于它�
 
 Note that Angular does not actually create a real `<ng-template>` element, but instead only renders the `<div>` element.
 
-请注意，Angular 实际上并没有创建真正的 `<ng-template>` 元素，而是仅呈现 `<div>` 元素。
+请注意，Angular 实际上并没有创建真正的 `<ng-template>` 元素，而是仅渲染 `<div>` 元素。
 
 ```html
 <div _ngcontent-c0>Mr. Nice</div>
