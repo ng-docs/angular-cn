@@ -136,7 +136,7 @@ Command syntax is shown as follows:
 
 命令语法如下：
 
-`ng` *<command-name>* *<required-arg>* [*optional-arg*] `[options]`
+`ng` *<命令名>* *<必选参数>* [*可选参数*] `[选项]`
 
 * Most commands, and some options, have aliases.
   Aliases are shown in the syntax statement for each command.

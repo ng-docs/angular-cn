@@ -659,15 +659,15 @@ Several options can be used to fine-tune the optimization of an application.
 
 有几个选项可用于微调应用程序的优化方式。
 
-| Options | Details | Value type | Default value |
-| :------ | :------ | :--------- | :------------ |
-| 选项 | 详情 | 值的类型 | 默认值 |
-| `scripts` | Enables optimization of the scripts output. | `boolean` | `true` |
-| `scripts` | 启用脚本输出优化。 | `boolean` | `true` |
+| Options | Details | Value type                                                                     | Default value |
+| :------ | :------ |:-------------------------------------------------------------------------------| :------------ |
+| 选项 | 详情 | 值的类型                                                                           | 默认值 |
+| `scripts` | Enables optimization of the scripts output. | `boolean`                                                                      | `true` |
+| `scripts` | 启用脚本输出优化。 | `boolean`                                                                      | `true` |
 | `styles` | Enables optimization of the styles output. | `boolean` &verbar; [Styles optimization options](#styles-optimization-options) | `true` |
-| `styles` | 启用样式输出优化。 | `boolean` &verbar; [Styles optimization options](#styles-optimization-options) | `true` |
-| `fonts` | Enables optimization for fonts. <div class="alert is-helpful"> **NOTE**: <br /> This requires internet access. </div> | `boolean` &verbar; [Fonts optimization options](#fonts-optimization-options) | `true` |
-| `fonts` | 启用字体优化。<div class="alert is-helpful"> **注意**：<br />这需要进行国际互联网访问。</div> | `boolean` &verbar; [Fonts optimization options](#fonts-optimization-options) | `true` |
+| `styles` | 启用样式输出优化。 | `boolean` &verbar; [样式优化选项](#styles-optimization-options)                      | `true` |
+| `fonts` | Enables optimization for fonts. <div class="alert is-helpful"> **NOTE**: <br /> This requires internet access. </div> | `boolean` &verbar; [Fonts optimization options](#fonts-optimization-options)   | `true` |
+| `fonts` | 启用字体优化。<div class="alert is-helpful"> **注意**：<br />这需要进行国际互联网访问。</div> | `boolean` &verbar; [字体优化选项](#fonts-optimization-options)                       | `true` |
 
 #### Styles optimization options
 
