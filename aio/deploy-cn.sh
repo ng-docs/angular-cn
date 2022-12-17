@@ -14,6 +14,9 @@ yarn build
 
 cd ./release/latest.angular.live
 
+git add .
+git reset --hard
+
 git pull -r
 
 chmod -R +w .
