@@ -10,8 +10,8 @@ export const storageKey = 'aio-accepts-cookies';
       <h2 class="visually-hidden" translation-result="on">Cookie 使用提醒</h2>
       <h2 class="visually-hidden" translation-origin="off">Cookies concent notice</h2>
 
-      <p translation-result="on">本站使用来自 Google 的 Cookie 来提供服务并分析使用行为。</p>
-      <p translation-origin="off">This site uses cookies from Google to deliver its services and to analyze traffic.</p>
+      <p translation-result="on" style="color: inherit">本站使用来自 Google 的 Cookie 来提供服务并分析使用行为。</p>
+      <p translation-origin="off" style="color: inherit">This site uses cookies from Google to deliver its services and to analyze traffic.</p>
 
       <div class="actions">
         <a mat-button href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">
