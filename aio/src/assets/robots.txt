@@ -1,0 +1,2 @@
+Sitemap: https://angular.cn/generated/sitemap.xml
+User-agent: *
