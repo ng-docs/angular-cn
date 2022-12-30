@@ -134,7 +134,7 @@ If your component includes an `<ng-content>` element without a `select` attribut
 In the preceding example, only the second `<ng-content>` element defines a `select` attribute.
 As a result, the first `<ng-content>` element receives any other content projected into the component.
 
-在前面的示例中，只有第二个 `<ng-content>` 元素定义了 `select` 属性。结果，第一个 `<ng-content>` 就会元素接收投影到组件中的任何其他内容。
+在前面的示例中，只有第二个 `<ng-content>` 元素定义了 `select` 属性。结果，第一个 `<ng-content>` 元素就会接收投影到组件中的任何其他内容。
 
 </div>
 
