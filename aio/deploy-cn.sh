@@ -6,13 +6,7 @@ set -e
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 
-#npm i -g @awesome-fe/translate@1.1.21
-
-cd $(dirname $0)
-
-yarn build
-
-cd ./release/latest.angular.live
+cd ./release/angular.cn
 
 git add .
 git reset --hard
@@ -24,6 +18,8 @@ chmod -R +w .
 cp -r ../../../dist/bin/aio/build/* .
 
 nt mark './generated/**/*.json'
+
+ossutil cp -r . oss://angular-15 -e oss-cn-hangzhou.aliyuncs.com -u
 
 cp index.html 404.html
 
