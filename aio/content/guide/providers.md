@@ -189,7 +189,7 @@ When Angular destroys an NgModule or component instance, it also destroys that i
 
 For more information, see [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
-欲知详情，请参见[分层注射器](guide/hierarchical-dependency-injection)。
+欲知详情，请参见[分层注入器](guide/hierarchical-dependency-injection)。
 
 ## More on NgModules
 
