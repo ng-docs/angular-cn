@@ -44,7 +44,7 @@ function createIndex(loadIndexFn: IndexLoader): lunr.Index {
   // The lunr typings are missing QueryLexer so we have to add them here manually.
   const queryLexer = (lunr as any as { QueryLexer: { termSeparator: RegExp } }).QueryLexer;
   queryLexer.termSeparator = lunr.tokenizer.separator = /\s+/;
-  return lunr(function() {
+  return lunr(function () {
     this.pipeline.remove(lunr.stemmer);
     this.ref('path');
     this.field('topics', {boost: 15});
@@ -64,6 +64,7 @@ function handleMessage(message: { data: WebWorkerMessage }): void {
   switch (type) {
     case 'load-index':
       makeRequest(SEARCH_TERMS_URL, (encodedPages: EncodedPages) => {
+        chineseDictionary = loadChineseDictionary(encodedPages.dictionary);
         index = createIndex(loadIndex(encodedPages));
         postMessage({type, id, payload: true});
       });
@@ -80,18 +81,17 @@ function handleMessage(message: { data: WebWorkerMessage }): void {
 function makeRequest(url: string, callback: (response: any) => void): void {
   // The JSON file that is loaded should be an array of PageInfo:
   const searchDataRequest = new XMLHttpRequest();
-  searchDataRequest.onload = function() {
+  searchDataRequest.onload = function () {
     callback(JSON.parse(this.responseText));
   };
   searchDataRequest.open('GET', url);
   searchDataRequest.send();
 }
 
-
 // Create the search index from the searchInfo which contains the information about each page to be
 // indexed
 function loadIndex({dictionary, pages}: EncodedPages): IndexLoader {
-  const dictionaryArray = dictionary.split(' ');
+  const dictionaryArray = dictionary.split(' ').map(hexEncode);
   return (indexBuilder: lunr.Builder) => {
     // Store the pages data to be used in mapping query results back to pages
     // Add search terms from each page to the search index
@@ -116,6 +116,7 @@ function decodePage(encodedPage: EncodedPage, dictionary: string[]): PageInfo {
 function queryIndex(query: string): PageInfo[] {
   // Strip off quotes
   query = query.replace(/^["']|['"]$/g, '');
+  query = encodeKnownChinese(query);
   try {
     if (query.length) {
       // First try a query where every term must be present
@@ -147,3 +148,28 @@ function queryIndex(query: string): PageInfo[] {
 }
 
 type IndexLoader = (indexBuilder: lunr.Builder) => void;
+
+let chineseDictionary: string[];
+
+function loadChineseDictionary(dictionary: string) {
+  return dictionary.split(' ').filter(it => hasChinese(it)).sort((v1, v2) => -v1.localeCompare(v2));
+}
+
+function hasChinese(text: string): boolean {
+  return /[\u4e00-\u9fa5]/.test(text);
+}
+
+function encodeKnownChinese(query: string): string {
+  return chineseDictionary.reduce((result, word) => result.replace(word, ` ${hexEncode(word)} `), query);
+}
+
+function hexEncode(text: string): string {
+  return text.split('').map(char => {
+    const charCode = char.charCodeAt(0);
+    if (charCode > 127) {
+      return '_' + charCode.toString(16);
+    } else {
+      return char;
+    }
+  }).join('');
+}
