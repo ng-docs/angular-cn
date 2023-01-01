@@ -72,7 +72,7 @@ It identifies the NgModule's [components](guide/glossary#component "Definition o
 and makes some of them public through the `exports` property so that external components can use them.
 You can also use an NgModule to add [providers](guide/glossary#provider "Definition of provider") for [services](guide/glossary#service "Definition of a service"), so that the services are available elsewhere in your application.
 
-`@NgModule` 元数据在指导 Angular 编译过程中发挥了重要作用，它把你编写的应用代码转换成高效的 JavaScript 代码。元数据描述了如何编译组件模板以及如何在运行时[创建注入器](guide/glossary#injector "喷油器的定义")。它标出了 NgModule 的[组件](guide/glossary#component "组件的定义")、[指令](guide/glossary#directive "指令的定义")和[管道](guide/glossary#pipe "管子的定义）")，并且通过 `exports` 属性把它们中的一部分标为公开的，以便外部组件可以使用它们。你还可以使用 NgModule 为[服务](guide/glossary#service "服务的定义")[添加服务提供者](guide/glossary#provider "提供者的定义")，以便这些服务可以用在你应用的其他地方。
+`@NgModule` 元数据在指导 Angular 编译过程中发挥了重要作用，它把你编写的应用代码转换成高效的 JavaScript 代码。元数据描述了如何编译组件模板以及如何在运行时[创建注入器](guide/glossary#injector "注入器的定义")。它标出了 NgModule 的[组件](guide/glossary#component "组件的定义")、[指令](guide/glossary#directive "指令的定义")和[管道](guide/glossary#pipe "管子的定义）")，并且通过 `exports` 属性把它们中的一部分标为公开的，以便外部组件可以使用它们。你还可以使用 NgModule 为[服务](guide/glossary#service "服务的定义")[添加服务提供者](guide/glossary#provider "提供者的定义")，以便这些服务可以用在你应用的其他地方。
 
 Rather than defining all member classes in one giant file as a JavaScript module, declare which components, directives, and pipes belong to the NgModule in the `@NgModule.declarations` list.
 These classes are called [declarables](guide/glossary#declarable "Definition of a declarable").
