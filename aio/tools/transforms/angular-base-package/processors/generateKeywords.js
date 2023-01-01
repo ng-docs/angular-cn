@@ -38,7 +38,6 @@ module.exports = function generateKeywordsProcessor(log) {
       const docTypesToIgnore = new Set(this.docTypesToIgnore);
       log.debug('Doc types to ignore', docTypesToIgnore);
 
-
       const filteredDocs = docs
         // We are not interested in some docTypes
         .filter(doc => !docTypesToIgnore.has(doc.docType))
@@ -127,7 +126,7 @@ module.exports = function generateKeywordsProcessor(log) {
 
       function tokenizeChinese(text, dictionary) {
         const tokens = [];
-        jieba.cutForSearch(text, true).filter(it=>it.length >= 2 && hasChinese(it)).forEach(keyword => {
+        jieba.cutForSearch(text, true).filter(it=>hasChinese(it)).forEach(keyword => {
           storeToken(keyword, tokens, dictionary);
         });
         return tokens;
