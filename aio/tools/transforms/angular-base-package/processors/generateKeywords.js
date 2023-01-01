@@ -126,7 +126,9 @@ module.exports = function generateKeywordsProcessor(log) {
 
       function tokenizeChinese(text, dictionary) {
         const tokens = [];
-        jieba.cutForSearch(text, true).filter(it=>hasChinese(it)).forEach(keyword => {
+        const glossaries = chineseGlossaries.filter(it => text.includes(it));
+        const keywords = jieba.cutForSearch(text, true).filter(it => hasChinese(it));
+        [...keywords, ...glossaries].forEach(keyword => {
           storeToken(keyword, tokens, dictionary);
         });
         return tokens;
@@ -206,3 +208,30 @@ module.exports = function generateKeywordsProcessor(log) {
 function isString(value) {
   return typeof value == 'string';
 }
+
+// 一些比较长的中文词
+const chineseGlossaries = [
+  '元数据',
+  '装饰器',
+  '预先编译',
+  '应用外壳',
+  '大小写类型',
+  '变更检测',
+  '可声明对象',
+  '领域特定语言',
+  '入口点',
+  '不可变性',
+  '可注入对象',
+  '即时编译',
+  '可观察对象',
+  '观察者',
+  '输出属性',
+  '响应式',
+  '范围化',
+  '订阅者',
+  '目录树',
+  '视图树',
+  '层次化',
+  '工作区',
+  '可访问性',
+];
