@@ -234,4 +234,5 @@ const chineseGlossaries = [
   '层次化',
   '工作区',
   '可访问性',
+  '路由复用',
 ];

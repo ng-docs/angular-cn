@@ -1,6 +1,6 @@
 # Angular components overview
 
-# Angular Components 概述
+# Angular 组件概述
 
 Components are the main building block for Angular applications.
 Each component consists of:
