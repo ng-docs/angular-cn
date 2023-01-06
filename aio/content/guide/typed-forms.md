@@ -1,6 +1,6 @@
 # Typed Forms
 
-# 键入的表单
+# 类型化表单
 
 As of Angular 14, reactive forms are strictly typed by default.
 
