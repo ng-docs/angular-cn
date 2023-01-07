@@ -26,7 +26,7 @@ As background for this guide, you should already be familiar with [Angular React
 
 With Angular reactive forms, you explicitly specify a *form model*. As a simple example, consider this basic user login form:
 
-使用 Angular 响应式表单，你可以显式指定*表单 model*。作为一个简单的例子，考虑这个基本的用户登录表单：
+使用 Angular 响应式表单，你可以显式指定*表单模型*。作为一个简单的例子，考虑这个基本的用户登录表单：
 
 ```ts
 const login = new FormGroup({
@@ -273,7 +273,7 @@ const addresses = fb.record({'Andrew': '2340 Folsom St'});
 
 The `FormBuilder` class has been upgraded to support the new types as well, in the same manner as the above examples.
 
-`FormBuilder` 类已升级为支持新类型，方式与上面的示例相同。
+`FormBuilder` 类已升级为支持新增的类型的版本，方式与上面的示例相同。
 
 Additionally, an additional builder is available: `NonNullableFormBuilder`. This type is shorthand for specifying `{nonNullable: true}` on every control, and can eliminate significant boilerplate from large non-nullable forms. You can access it using the `nonNullable` property on a `FormBuilder`:
 
