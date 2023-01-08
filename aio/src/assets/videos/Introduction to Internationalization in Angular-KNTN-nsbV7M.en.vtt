@@ -1,0 +1,1010 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.850
+MARK THOMPSON: Hm.
+
+00:00:01.850 --> 00:00:04.580
+I wish there was some way
+for me to get my application
+
+00:00:04.580 --> 00:00:07.490
+to display in the
+language of my users.
+
+00:00:07.490 --> 00:00:08.810
+Oh wait, there is.
+
+00:00:08.810 --> 00:00:09.920
+You want to find out how?
+
+00:00:09.920 --> 00:00:11.450
+Well, you know what to do.
+
+00:00:11.450 --> 00:00:13.338
+Stick around.
+
+00:00:13.338 --> 00:00:16.691
+[MUSIC PLAYING]
+
+00:00:23.400 --> 00:00:23.970
+Hey, friends.
+
+00:00:23.970 --> 00:00:25.920
+I'm Mark from the
+Angular team, and I
+
+00:00:25.920 --> 00:00:29.160
+am thrilled to be back with
+another crisp new video.
+
+00:00:29.160 --> 00:00:31.980
+Together we'll learn
+about internationalization
+
+00:00:31.980 --> 00:00:35.190
+and Angular and
+internationalize an application.
+
+00:00:35.190 --> 00:00:38.350
+This is going to be great.
+
+00:00:38.350 --> 00:00:41.790
+Let's go over some terms before
+writing any code so that way
+
+00:00:41.790 --> 00:00:43.870
+we're all on the same page.
+
+00:00:43.870 --> 00:00:47.160
+If you're already familiar
+with internationalization,
+
+00:00:47.160 --> 00:00:50.130
+you can skip ahead
+to the next chapter.
+
+00:00:50.130 --> 00:00:52.050
+When talking about
+making your app
+
+00:00:52.050 --> 00:00:53.640
+available in
+different languages,
+
+00:00:53.640 --> 00:00:56.310
+you may hear the terms
+internationalization
+
+00:00:56.310 --> 00:00:58.020
+and localization.
+
+00:00:58.020 --> 00:01:01.620
+Although these terms are
+related, they are not the same.
+
+00:01:01.620 --> 00:01:02.580
+Let me explain.
+
+00:01:02.580 --> 00:01:07.170
+Internationalization, or
+often abbreviated as i18n,
+
+00:01:07.170 --> 00:01:09.720
+is the process of
+preparing and designing
+
+00:01:09.720 --> 00:01:12.660
+your app to support its
+use in different languages
+
+00:01:12.660 --> 00:01:14.790
+and language dialects.
+
+00:01:14.790 --> 00:01:17.100
+This could include
+enabling your application
+
+00:01:17.100 --> 00:01:19.140
+to support rendering
+in different languages
+
+00:01:19.140 --> 00:01:22.470
+by separating the content
+that will then be translated.
+
+00:01:22.470 --> 00:01:25.500
+Also, the preparation could
+include updating your app
+
+00:01:25.500 --> 00:01:27.390
+to support bidirectional text--
+
+00:01:27.390 --> 00:01:31.210
+that is, left to right
+or right to left.
+
+00:01:31.210 --> 00:01:33.310
+Once you prepare your
+app, the next step
+
+00:01:33.310 --> 00:01:35.320
+is to localize the application.
+
+00:01:35.320 --> 00:01:38.140
+Localization is the process
+of building versions
+
+00:01:38.140 --> 00:01:40.960
+of your project for
+your different locales.
+
+00:01:40.960 --> 00:01:43.390
+Wait, so what's a locale?
+
+00:01:43.390 --> 00:01:46.930
+A locale identifies a region
+where people speak a language
+
+00:01:46.930 --> 00:01:48.610
+or language variant.
+
+00:01:48.610 --> 00:01:50.650
+For a given locale,
+there's specific
+
+00:01:50.650 --> 00:01:54.670
+formatting for measurements of
+time, numbers, and currency.
+
+00:01:54.670 --> 00:01:57.100
+There's also
+translations of names,
+
+00:01:57.100 --> 00:02:01.420
+including time zones,
+languages, and countries.
+
+00:02:01.420 --> 00:02:03.640
+Check out the description
+for more resources
+
+00:02:03.640 --> 00:02:06.160
+and helpful links
+containing information
+
+00:02:06.160 --> 00:02:08.470
+about locale settings.
+
+00:02:08.470 --> 00:02:12.730
+Locals take the format of
+language ID hyphen locale
+
+00:02:12.730 --> 00:02:18.070
+extension-- for example, en-US
+for English and the United
+
+00:02:18.070 --> 00:02:23.080
+States or fr-CA for
+French and Canada.
+
+00:02:23.080 --> 00:02:25.240
+Here are a few more
+things to consider.
+
+00:02:25.240 --> 00:02:28.600
+The internationalization
+process technically only
+
+00:02:28.600 --> 00:02:30.880
+needs to happen
+once, and then you
+
+00:02:30.880 --> 00:02:33.460
+can localize your application
+to as many locales
+
+00:02:33.460 --> 00:02:37.480
+as needed without changing
+your application code.
+
+00:02:37.480 --> 00:02:39.760
+If you expand your
+application, you'll
+
+00:02:39.760 --> 00:02:42.220
+need to ensure that
+those new pages have
+
+00:02:42.220 --> 00:02:44.380
+been internationalized.
+
+00:02:44.380 --> 00:02:47.950
+Now, teams may perform
+the localization process
+
+00:02:47.950 --> 00:02:50.470
+multiple times to support
+different locales.
+
+00:02:50.470 --> 00:02:52.600
+And depending on
+the target language,
+
+00:02:52.600 --> 00:02:54.580
+it may be revealed
+that the string
+
+00:02:54.580 --> 00:02:57.980
+sizes from one of the
+locales may disrupt the UI.
+
+00:02:57.980 --> 00:03:00.980
+This can happen with languages
+like German, for example.
+
+00:03:00.980 --> 00:03:04.690
+So be sure to review your UI.
+
+00:03:04.690 --> 00:03:05.410
+All right, great.
+
+00:03:05.410 --> 00:03:08.140
+With language
+covered, let's go over
+
+00:03:08.140 --> 00:03:11.240
+what we'll do together today.
+
+00:03:11.240 --> 00:03:14.570
+We'll install our dependencies
+to add support for localization
+
+00:03:14.570 --> 00:03:16.670
+and internationalization.
+
+00:03:16.670 --> 00:03:19.310
+We'll internationalize
+our application.
+
+00:03:19.310 --> 00:03:23.240
+Then we'll localize
+our application.
+
+00:03:23.240 --> 00:03:26.050
+Now here's the application
+that we're going to localize.
+
+00:03:26.050 --> 00:03:28.420
+It represents an order
+confirmation page
+
+00:03:28.420 --> 00:03:30.490
+in an e-Commerce app.
+
+00:03:30.490 --> 00:03:33.430
+All right, let's head
+over to the code.
+
+00:03:33.430 --> 00:03:36.130
+First, let's get those
+dependencies installed.
+
+00:03:36.130 --> 00:03:39.880
+We'll do that using the
+Angular localize package.
+
+00:03:39.880 --> 00:03:41.890
+From the command
+line in your project,
+
+00:03:41.890 --> 00:03:46.330
+type ng add @angular/localize.
+
+00:03:46.330 --> 00:03:49.930
+And when asked if we want
+to proceed, reply yes.
+
+00:03:49.930 --> 00:03:53.800
+This package gives us the tools
+to localize our application.
+
+00:03:53.800 --> 00:03:55.960
+While we're getting our
+dependencies sorted,
+
+00:03:55.960 --> 00:03:58.810
+we'll also update angular.json.
+
+00:03:58.810 --> 00:04:01.990
+First, we'll specify which
+locale we'll be supporting.
+
+00:04:01.990 --> 00:04:04.810
+In my example, I'm
+going to use Spanish.
+
+00:04:04.810 --> 00:04:07.450
+Under projects,
+our app name, I'm
+
+00:04:07.450 --> 00:04:10.390
+going to add the i18n property.
+
+00:04:10.390 --> 00:04:13.090
+Next, I will specify
+the source locale
+
+00:04:13.090 --> 00:04:17.600
+property, which is our locale
+used in the source code.
+
+00:04:17.600 --> 00:04:21.519
+So for this example,
+it'll be en-US.
+
+00:04:21.519 --> 00:04:25.060
+Let's add another property
+called locale and specify
+
+00:04:25.060 --> 00:04:27.550
+which locales this
+application will support
+
+00:04:27.550 --> 00:04:31.420
+and where the translation
+file will be stored.
+
+00:04:31.420 --> 00:04:34.390
+That will be
+src/local/messages.es.xlf.
+
+00:04:38.710 --> 00:04:42.970
+We haven't created this file
+yet, but that's coming up soon.
+
+00:04:42.970 --> 00:04:47.200
+Under architect, build, options,
+let's add another localized
+
+00:04:47.200 --> 00:04:52.870
+property and give it the
+value of an array with es-PR
+
+00:04:52.870 --> 00:04:54.970
+as the only element.
+
+00:04:54.970 --> 00:04:57.070
+This tells the
+Angular which locale
+
+00:04:57.070 --> 00:05:00.880
+to build when it's time to
+localize the application.
+
+00:05:00.880 --> 00:05:03.100
+Also, please note that
+adding this property
+
+00:05:03.100 --> 00:05:07.540
+also allows us to preview a
+specific locale within ngcert.
+
+00:05:07.540 --> 00:05:09.640
+We can't preview
+multiple locales
+
+00:05:09.640 --> 00:05:13.330
+at the same time with ngcert,
+so adding multiple locales
+
+00:05:13.330 --> 00:05:16.630
+to the array or setting
+the property value to true
+
+00:05:16.630 --> 00:05:19.240
+will lead to an error when
+running our application
+
+00:05:19.240 --> 00:05:21.520
+with the dev server.
+
+00:05:21.520 --> 00:05:23.950
+All right, our app
+configuration is done.
+
+00:05:23.950 --> 00:05:25.630
+Great job.
+
+00:05:25.630 --> 00:05:29.710
+Up next, let's check out our
+application and look for OTIs.
+
+00:05:29.710 --> 00:05:33.880
+That's Opportunities
+To Internationalize.
+
+00:05:33.880 --> 00:05:37.600
+In our application, where
+can we find some OTIs?
+
+00:05:37.600 --> 00:05:40.210
+This application features
+quite a few strings that
+
+00:05:40.210 --> 00:05:43.630
+could be internationalized--
+your order is on its way,
+
+00:05:43.630 --> 00:05:45.760
+thank you for shopping
+with us and your order
+
+00:05:45.760 --> 00:05:48.340
+has been processed,
+the table header's
+
+00:05:48.340 --> 00:05:52.510
+item quantity, date and
+amount, and finally,
+
+00:05:52.510 --> 00:05:54.830
+the total amount text.
+
+00:05:54.830 --> 00:05:57.550
+We can also internationalize
+the currency
+
+00:05:57.550 --> 00:06:00.490
+for total amount
+and the date value.
+
+00:06:00.490 --> 00:06:02.590
+Is there anything else?
+
+00:06:02.590 --> 00:06:05.020
+Now, this one can
+be easy to miss.
+
+00:06:05.020 --> 00:06:07.090
+If you said images,
+then I want you
+
+00:06:07.090 --> 00:06:08.770
+to get that handle
+right now because I
+
+00:06:08.770 --> 00:06:10.960
+have something for you.
+
+00:06:10.960 --> 00:06:12.740
+High five from me to you.
+
+00:06:12.740 --> 00:06:13.540
+That's right.
+
+00:06:13.540 --> 00:06:15.670
+The images will
+have alt text that
+
+00:06:15.670 --> 00:06:19.480
+needs to be translated into
+the language of our locale.
+
+00:06:19.480 --> 00:06:22.540
+Now that we know which
+things to internationalize,
+
+00:06:22.540 --> 00:06:25.450
+let's go to the code again.
+
+00:06:25.450 --> 00:06:28.540
+In app.component.html,
+let's start
+
+00:06:28.540 --> 00:06:30.970
+by updating the text
+parts of the application.
+
+00:06:30.970 --> 00:06:32.830
+We'll mark these as
+content that will
+
+00:06:32.830 --> 00:06:34.750
+be displayed in
+the selected locale
+
+00:06:34.750 --> 00:06:37.660
+by adding the i18n attribute.
+
+00:06:37.660 --> 00:06:40.900
+In our case, we'll use the
+basic form of the attribute,
+
+00:06:40.900 --> 00:06:43.735
+but developers can add
+more metadata details
+
+00:06:43.735 --> 00:06:48.850
+like customized IDs and
+context for translators too.
+
+00:06:48.850 --> 00:06:51.340
+Next, we'll use pipes
+for the date and currency
+
+00:06:51.340 --> 00:06:52.750
+marked for translation.
+
+00:06:52.750 --> 00:06:55.510
+The date pipe and
+currency pipe both support
+
+00:06:55.510 --> 00:06:58.630
+locale-specific
+formatting by default.
+
+00:06:58.630 --> 00:07:01.270
+We'll take advantage
+of the i18n attribute
+
+00:07:01.270 --> 00:07:05.080
+to mark the Alt text attribute
+of the image for translation.
+
+00:07:05.080 --> 00:07:08.470
+The alt attribute isn't
+the only option here.
+
+00:07:08.470 --> 00:07:12.370
+We can mark other attributes
+for translations too.
+
+00:07:12.370 --> 00:07:14.300
+Before we move on
+to the next step,
+
+00:07:14.300 --> 00:07:17.230
+let's use dollar sign localize
+to mark the page title
+
+00:07:17.230 --> 00:07:20.755
+for translation in our component
+class app.component.ts.
+
+00:07:23.350 --> 00:07:25.960
+And just like that,
+we've internationalized
+
+00:07:25.960 --> 00:07:26.890
+our application.
+
+00:07:26.890 --> 00:07:28.180
+Let's go!
+
+00:07:28.180 --> 00:07:29.650
+Now for the good part.
+
+00:07:29.650 --> 00:07:33.100
+We're going to use the extract
+i18n command with the Angular
+
+00:07:33.100 --> 00:07:35.740
+CLI to extract all of
+the elements that have
+
+00:07:35.740 --> 00:07:37.750
+been marked for translation.
+
+00:07:37.750 --> 00:07:42.100
+In the command prompt, type
+ngextract--i18n and then
+
+00:07:42.100 --> 00:07:45.490
+specify where the translation
+file should live with
+
+00:07:45.490 --> 00:07:46.960
+the output path option.
+
+00:07:46.960 --> 00:07:51.580
+In this example, I'll add
+source/locale, which matches
+
+00:07:51.580 --> 00:07:54.310
+the location from angular.json.
+
+00:07:54.310 --> 00:07:56.300
+In the locale folder
+we just created,
+
+00:07:56.300 --> 00:07:59.440
+we now have our messages
+file, which is great.
+
+00:07:59.440 --> 00:08:02.230
+But these messages are
+in the original language.
+
+00:08:02.230 --> 00:08:03.730
+Here's what to do next.
+
+00:08:03.730 --> 00:08:06.280
+We're going to make a
+copy of this file for each
+
+00:08:06.280 --> 00:08:07.540
+of our supported locales.
+
+00:08:10.190 --> 00:08:13.440
+I'm going to make a copy of
+this file named messages.es.xlf.
+
+00:08:16.310 --> 00:08:20.810
+This is using the locale ID that
+we specified in angular.json.
+
+00:08:20.810 --> 00:08:24.770
+At this point, we pass the
+local files to the translator
+
+00:08:24.770 --> 00:08:28.190
+and then update our project
+with the updated files.
+
+00:08:28.190 --> 00:08:30.290
+But for this example,
+though, we're
+
+00:08:30.290 --> 00:08:32.490
+going to add the
+translations ourselves.
+
+00:08:32.490 --> 00:08:37.309
+So in messages.es.xlf,
+we find that each message
+
+00:08:37.309 --> 00:08:39.770
+from our project has a section.
+
+00:08:39.770 --> 00:08:43.010
+In that section, we find
+the ID for the translation
+
+00:08:43.010 --> 00:08:47.780
+and the original text
+under the source element.
+
+00:08:47.780 --> 00:08:51.230
+Our next step is to add a
+sibling element to the source
+
+00:08:51.230 --> 00:08:53.390
+element called target.
+
+00:08:53.390 --> 00:08:56.000
+The target represents
+the translated text
+
+00:08:56.000 --> 00:08:58.070
+for this locale.
+
+00:08:58.070 --> 00:09:00.020
+Let's make those updates now.
+
+00:09:00.020 --> 00:09:01.400
+Here's the moment of truth.
+
+00:09:01.400 --> 00:09:04.940
+Time to view our
+localized application.
+
+00:09:04.940 --> 00:09:08.270
+From the command line,
+we'll run ng serve.
+
+00:09:08.270 --> 00:09:10.650
+Now check our app
+in the browser,
+
+00:09:10.650 --> 00:09:15.320
+and there we have it-- a fully
+internationalized and localized
+
+00:09:15.320 --> 00:09:16.380
+application.
+
+00:09:16.380 --> 00:09:18.110
+So exciting.
+
+00:09:18.110 --> 00:09:21.140
+ng serve is just our
+dev server, but we
+
+00:09:21.140 --> 00:09:24.620
+can build localized versions
+of our app with ngbuild
+
+00:09:24.620 --> 00:09:27.950
+and pass the localized flag
+to build all of our locales
+
+00:09:27.950 --> 00:09:30.950
+or leave it off to build
+the locale specified in the
+
+00:09:30.950 --> 00:09:33.560
+build config in angular.json.
+
+00:09:33.560 --> 00:09:37.430
+I'm going to use a local
+server to serve our build.
+
+00:09:37.430 --> 00:09:43.430
+Next, I'll go to localhost port
+3000/es for a Spanish locale.
+
+00:09:43.430 --> 00:09:45.290
+And here we have it.
+
+00:09:45.290 --> 00:09:50.630
+We can also go to en-US for
+the English locale and whatever
+
+00:09:50.630 --> 00:09:53.780
+other locale you configured
+for this example.
+
+00:09:53.780 --> 00:09:56.540
+Right now, we can see the
+changes in our local server.
+
+00:09:56.540 --> 00:09:59.090
+When it's time to
+deploy the application,
+
+00:09:59.090 --> 00:10:03.110
+we'll want to configure the
+server, the base href, and more
+
+00:10:03.110 --> 00:10:06.200
+to properly show the users
+their preferred language.
+
+00:10:06.200 --> 00:10:08.930
+The Angular documentation
+has some great information
+
+00:10:08.930 --> 00:10:11.390
+on how to set these
+up, and you can find
+
+00:10:11.390 --> 00:10:14.010
+links in the description below.
+
+00:10:14.010 --> 00:10:15.530
+One final thing to note--
+
+00:10:15.530 --> 00:10:18.860
+you may be wondering why we
+need a version of our Web
+
+00:10:18.860 --> 00:10:20.990
+App for each locale.
+
+00:10:20.990 --> 00:10:24.630
+Why not follow patterns
+defined by other solutions?
+
+00:10:24.630 --> 00:10:27.390
+Well, these are some
+great questions.
+
+00:10:27.390 --> 00:10:30.020
+First thing to consider is
+that the translation step
+
+00:10:30.020 --> 00:10:33.200
+is done as a part of
+the post-build process.
+
+00:10:33.200 --> 00:10:36.680
+So your build times aren't
+impacted by the localization
+
+00:10:36.680 --> 00:10:37.400
+step.
+
+00:10:37.400 --> 00:10:39.740
+Next, consider the
+performance cost
+
+00:10:39.740 --> 00:10:43.970
+of changing the language of
+your application in real time.
+
+00:10:43.970 --> 00:10:47.450
+To be able to change the
+language without reloading
+
+00:10:47.450 --> 00:10:49.550
+the page, each
+translation string
+
+00:10:49.550 --> 00:10:51.500
+will create a new binding.
+
+00:10:51.500 --> 00:10:55.220
+But most of the time, users will
+not be changing the language,
+
+00:10:55.220 --> 00:10:59.040
+so the values of these
+bindings will remain the same.
+
+00:10:59.040 --> 00:11:01.490
+Then, when change
+detection runs,
+
+00:11:01.490 --> 00:11:03.470
+it'll have to check
+all of the bindings
+
+00:11:03.470 --> 00:11:05.840
+even if you haven't
+changed anything.
+
+00:11:05.840 --> 00:11:09.830
+And additionally, each binding
+is an extra instruction which
+
+00:11:09.830 --> 00:11:12.470
+adds to the application bundle.
+
+00:11:12.470 --> 00:11:14.420
+To change the language
+during runtime
+
+00:11:14.420 --> 00:11:17.390
+requires shipping the
+translation library, which
+
+00:11:17.390 --> 00:11:20.270
+also increases your app size.
+
+00:11:20.270 --> 00:11:23.360
+Here's another consideration--
+translation files
+
+00:11:23.360 --> 00:11:24.800
+aren't tree shakable.
+
+00:11:24.800 --> 00:11:26.750
+Again, let me explain.
+
+00:11:26.750 --> 00:11:29.330
+An application can have
+thousands of translations
+
+00:11:29.330 --> 00:11:31.550
+strings for a given language.
+
+00:11:31.550 --> 00:11:34.430
+It's hard to know which
+translations will be used
+
+00:11:34.430 --> 00:11:37.800
+and which won't for
+a selected language.
+
+00:11:37.800 --> 00:11:39.950
+Applying the
+translations at runtimes
+
+00:11:39.950 --> 00:11:42.590
+means that we load all of
+the translation strings
+
+00:11:42.590 --> 00:11:46.310
+even if they aren't used
+in your application.
+
+00:11:46.310 --> 00:11:49.340
+Because Angular does
+build time localization,
+
+00:11:49.340 --> 00:11:52.680
+we'll only include the strings
+that are used in the app.
+
+00:11:52.680 --> 00:11:55.550
+Now, there's a cost to the
+Angular solution as well.
+
+00:11:55.550 --> 00:11:57.470
+You'll have to refresh
+the page in order
+
+00:11:57.470 --> 00:12:01.190
+to see the translations whenever
+your user chooses a new locale
+
+00:12:01.190 --> 00:12:03.260
+that your application supports.
+
+00:12:03.260 --> 00:12:06.020
+Now, every approach
+has its trade-offs.
+
+00:12:06.020 --> 00:12:09.230
+Angular's build time
+i18n is optimized
+
+00:12:09.230 --> 00:12:11.150
+for load and performance.
+
+00:12:11.150 --> 00:12:13.640
+We believe that users
+don't change the locale
+
+00:12:13.640 --> 00:12:14.430
+too frequently.
+
+00:12:14.430 --> 00:12:18.680
+So a page reload once is
+a reasonable trade off.
+
+00:12:18.680 --> 00:12:22.115
+And friends, if you do need to
+load your translations at run
+
+00:12:22.115 --> 00:12:25.220
+time, there is a way to do it
+using dollar sign localize.
+
+00:12:25.220 --> 00:12:27.170
+But this will only work once.
+
+00:12:27.170 --> 00:12:31.250
+If you're interested, I'm going
+to link to the docs down below.
+
+00:12:31.250 --> 00:12:33.290
+All right, friends,
+that does it for me.
+
+00:12:33.290 --> 00:12:35.270
+This has been a
+lot of fun, and I
+
+00:12:35.270 --> 00:12:38.430
+hope that you've enjoyed
+our time together today.
+
+00:12:38.430 --> 00:12:41.660
+This example project, links
+to the official Angular
+
+00:12:41.660 --> 00:12:44.360
+internationalization
+guide, and more
+
+00:12:44.360 --> 00:12:47.600
+are in the description
+of this video.
+
+00:12:47.600 --> 00:12:49.400
+Like this video and
+subscribe if you
+
+00:12:49.400 --> 00:12:51.980
+haven't, and until the
+next time, friends,
+
+00:12:51.980 --> 00:12:53.780
+go build great apps.
+
+00:12:53.780 --> 00:12:56.830
+[MUSIC PLAYING]
+
