@@ -1,0 +1,869 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.928
+[MUSIC PLAYING]
+
+00:00:12.710 --> 00:00:14.310
+DYLAN HUNN: Hello,
+Angular community.
+
+00:00:14.310 --> 00:00:16.520
+My name is Dylan Hunn, and
+I'm a software engineer
+
+00:00:16.520 --> 00:00:18.740
+on the Angular framework team.
+
+00:00:18.740 --> 00:00:20.420
+Over the last
+eight months, we've
+
+00:00:20.420 --> 00:00:22.430
+been working on
+improving Angular forms.
+
+00:00:22.430 --> 00:00:25.070
+And I'm incredibly excited to
+share this new feature with you
+
+00:00:25.070 --> 00:00:26.480
+today.
+
+00:00:26.480 --> 00:00:28.970
+Typed forms are
+part of Angular 14
+
+00:00:28.970 --> 00:00:31.100
+and are ready today
+for you to start
+
+00:00:31.100 --> 00:00:33.750
+migrating your application.
+
+00:00:33.750 --> 00:00:36.810
+Before we jump into the details,
+let's get some background
+
+00:00:36.810 --> 00:00:38.400
+on reactive forms.
+
+00:00:38.400 --> 00:00:40.680
+This might already
+be familiar to anyone
+
+00:00:40.680 --> 00:00:44.580
+who builds or maintains
+a forms application.
+
+00:00:44.580 --> 00:00:48.380
+Reactive forms are one way
+to build forms in Angular.
+
+00:00:48.380 --> 00:00:50.120
+Compared with
+template-driven forms,
+
+00:00:50.120 --> 00:00:53.630
+they provide a more explicit
+data model and state management
+
+00:00:53.630 --> 00:00:56.930
+using RxJS and Observables.
+
+00:00:56.930 --> 00:00:59.150
+They are not always
+the right choice.
+
+00:00:59.150 --> 00:01:02.030
+Template-driven forms are
+less verbose and better
+
+00:01:02.030 --> 00:01:04.010
+for some use cases.
+
+00:01:04.010 --> 00:01:06.200
+These new types we're
+going to see today
+
+00:01:06.200 --> 00:01:08.130
+are only for reactive forms.
+
+00:01:08.130 --> 00:01:10.450
+So that's where we'll focus.
+
+00:01:10.450 --> 00:01:13.960
+Let's start with some background
+on why we're making this change
+
+00:01:13.960 --> 00:01:16.600
+and how it benefits
+most applications that
+
+00:01:16.600 --> 00:01:19.620
+use reactive forms.
+
+00:01:19.620 --> 00:01:22.890
+Typed forms have long been the
+most upvoted feature request
+
+00:01:22.890 --> 00:01:24.820
+from the Angular community.
+
+00:01:24.820 --> 00:01:27.360
+Additionally, this
+change unlocks a number
+
+00:01:27.360 --> 00:01:30.480
+of future improvements, such
+as better control state change
+
+00:01:30.480 --> 00:01:35.240
+events, stricter template
+type checking, and much more.
+
+00:01:35.240 --> 00:01:37.340
+When designing typed
+forms, we tried
+
+00:01:37.340 --> 00:01:39.350
+to follow some North stars.
+
+00:01:39.350 --> 00:01:42.900
+In particular, we had
+four guiding principles.
+
+00:01:42.900 --> 00:01:45.650
+First, we want the
+types to be powerful.
+
+00:01:45.650 --> 00:01:47.390
+You should be able
+to confidently
+
+00:01:47.390 --> 00:01:50.150
+modify even the
+most complex forms,
+
+00:01:50.150 --> 00:01:53.360
+no matter how deeply nested
+you have form groups or form
+
+00:01:53.360 --> 00:01:54.820
+controls.
+
+00:01:54.820 --> 00:01:58.450
+Second, we don't want to
+completely replace forms.
+
+00:01:58.450 --> 00:02:00.760
+We want to have one
+unified ecosystem
+
+00:02:00.760 --> 00:02:03.570
+that we move forward together.
+
+00:02:03.570 --> 00:02:06.930
+Third, we want forms to
+be as safe as possible, no
+
+00:02:06.930 --> 00:02:08.820
+more surprising
+anys in your types
+
+00:02:08.820 --> 00:02:11.650
+when you access
+values or controls.
+
+00:02:11.650 --> 00:02:14.590
+And fourth, you should be
+able to gradually migrate
+
+00:02:14.590 --> 00:02:18.460
+at your own pace, even if you
+have a lot of existing forms
+
+00:02:18.460 --> 00:02:20.850
+code in your application.
+
+00:02:20.850 --> 00:02:23.970
+Now let's consider an example.
+
+00:02:23.970 --> 00:02:25.860
+In general, every
+form corresponds
+
+00:02:25.860 --> 00:02:30.060
+to a schema, or the shape of
+the data you want to collect.
+
+00:02:30.060 --> 00:02:33.030
+This is an example schema
+representing a party.
+
+00:02:33.030 --> 00:02:34.530
+It has inner objects--
+
+00:02:34.530 --> 00:02:36.180
+in this case, the
+address field--
+
+00:02:36.180 --> 00:02:40.620
+and inner arrays-- in this
+case, the menu for the party.
+
+00:02:40.620 --> 00:02:44.180
+It's never necessary to
+explicitly declare your schema,
+
+00:02:44.180 --> 00:02:46.460
+but it's always useful to
+think about when you're
+
+00:02:46.460 --> 00:02:49.270
+working with a complex form.
+
+00:02:49.270 --> 00:02:53.180
+By contrast, we do explicitly
+declare the form model.
+
+00:02:53.180 --> 00:02:57.280
+And this is the corresponding
+form for hosting a party.
+
+00:02:57.280 --> 00:03:00.610
+It accepts inputs for the
+parties address, for the menu,
+
+00:03:00.610 --> 00:03:04.380
+and for any other form
+controls you might want.
+
+00:03:04.380 --> 00:03:07.440
+Previously, interacting
+with complicated forms
+
+00:03:07.440 --> 00:03:10.320
+models like this one
+could be hazardous.
+
+00:03:10.320 --> 00:03:13.380
+For example, this code
+contains a subtle bug.
+
+00:03:13.380 --> 00:03:17.100
+The value of place is number
+and calling a substring on it
+
+00:03:17.100 --> 00:03:19.580
+will crash at runtime.
+
+00:03:19.580 --> 00:03:21.860
+Now, with typed
+forms, this bug will
+
+00:03:21.860 --> 00:03:25.720
+be caught at compilation
+time right in your editor.
+
+00:03:25.720 --> 00:03:28.660
+These new types
+permeate the API.
+
+00:03:28.660 --> 00:03:31.560
+You'll benefit from them
+when accessing form values,
+
+00:03:31.560 --> 00:03:34.230
+getting deeply nested
+controls, subscribing
+
+00:03:34.230 --> 00:03:37.950
+to Observables, and so much
+more at virtually any point you
+
+00:03:37.950 --> 00:03:41.050
+interact with the
+forms API surface.
+
+00:03:41.050 --> 00:03:43.260
+This will give you
+much improved safety,
+
+00:03:43.260 --> 00:03:47.810
+preventing both simple
+typos and more complex bugs.
+
+00:03:47.810 --> 00:03:51.320
+The types also allow for
+robust autocompletion right
+
+00:03:51.320 --> 00:03:53.110
+in your editor.
+
+00:03:53.110 --> 00:03:56.710
+In the party form example, when
+accessing the form's value,
+
+00:03:56.710 --> 00:04:00.670
+the IDE suggests every
+known child of the form.
+
+00:04:00.670 --> 00:04:03.430
+This helps you navigate
+even the most complex
+
+00:04:03.430 --> 00:04:05.680
+forms with confidence.
+
+00:04:05.680 --> 00:04:07.750
+Although this is
+a big change, it's
+
+00:04:07.750 --> 00:04:11.200
+100% backwards compatible with
+all of your existing forms
+
+00:04:11.200 --> 00:04:12.500
+code.
+
+00:04:12.500 --> 00:04:15.320
+When you update to
+Angular 14, your forms
+
+00:04:15.320 --> 00:04:18.680
+will be automatically
+opted out of the new types.
+
+00:04:18.680 --> 00:04:21.380
+Then, when you're
+ready, you can turn them
+
+00:04:21.380 --> 00:04:24.200
+on one control at a
+time and incrementally
+
+00:04:24.200 --> 00:04:27.220
+migrate at your own pace.
+
+00:04:27.220 --> 00:04:29.350
+Now that you've got
+the basics, let's
+
+00:04:29.350 --> 00:04:32.750
+explore the types in action.
+
+00:04:32.750 --> 00:04:36.760
+So a moment ago, we saw a
+schema for building a party.
+
+00:04:36.760 --> 00:04:39.340
+Now let's have a look at some
+actual code corresponding
+
+00:04:39.340 --> 00:04:41.570
+to the form for this party.
+
+00:04:41.570 --> 00:04:43.420
+So let's jump into
+the template and we'll
+
+00:04:43.420 --> 00:04:46.810
+add a new button corresponding
+to hosting a party.
+
+00:04:46.810 --> 00:04:50.170
+And we will call the partyInSF
+convenience function.
+
+00:04:50.170 --> 00:04:52.660
+Now we'll jump into the
+corresponding component
+
+00:04:52.660 --> 00:04:57.480
+and we'll add the convenience
+function for throwing a party.
+
+00:04:57.480 --> 00:05:00.870
+We will access this.party
+from the enclosing component.
+
+00:05:00.870 --> 00:05:04.020
+This corresponds to the form
+group for all the party's data.
+
+00:05:04.020 --> 00:05:07.260
+And we will call setValue
+on this form group
+
+00:05:07.260 --> 00:05:09.690
+in order to give it a new value.
+
+00:05:09.690 --> 00:05:11.580
+However, notice
+that we've actually
+
+00:05:11.580 --> 00:05:13.650
+forgotten the house number.
+
+00:05:13.650 --> 00:05:16.890
+TypeScript will warn us that
+we are missing a key here
+
+00:05:16.890 --> 00:05:18.600
+because it expects
+when we call a set
+
+00:05:18.600 --> 00:05:21.610
+value, all of the keys in
+the group to be present.
+
+00:05:21.610 --> 00:05:23.080
+So let's go ahead and add it.
+
+00:05:23.080 --> 00:05:26.850
+And notice that as I type, the
+new TypeScript types also power
+
+00:05:26.850 --> 00:05:29.390
+autocompletion.
+
+00:05:29.390 --> 00:05:31.360
+However, I still
+have an error here.
+
+00:05:31.360 --> 00:05:34.240
+The type system doesn't just
+check for missing properties.
+
+00:05:34.240 --> 00:05:37.120
+It also just checks
+for all of the names
+
+00:05:37.120 --> 00:05:39.620
+and all of the
+types in the object.
+
+00:05:39.620 --> 00:05:43.030
+So here in particular, whereas
+I currently have a number key,
+
+00:05:43.030 --> 00:05:45.840
+I should have a house key.
+
+00:05:45.840 --> 00:05:49.350
+Another option would have been
+to use patch value instead.
+
+00:05:49.350 --> 00:05:51.900
+This still protects us
+against serious typing errors
+
+00:05:51.900 --> 00:05:54.990
+but relaxes the constraint
+that requires us to have
+
+00:05:54.990 --> 00:05:56.100
+all of the keys present.
+
+00:05:56.100 --> 00:05:59.250
+In particular, we can just
+have the straight key.
+
+00:05:59.250 --> 00:06:01.270
+Now let's consider another case.
+
+00:06:01.270 --> 00:06:03.270
+Let's say that a neighbor
+made a noise complaint
+
+00:06:03.270 --> 00:06:05.280
+and we want to figure out
+which neighbor it was.
+
+00:06:05.280 --> 00:06:08.050
+So we can add a new method
+on our component here
+
+00:06:08.050 --> 00:06:10.410
+and we can use the get method.
+
+00:06:10.410 --> 00:06:12.990
+The get method accepts a
+string and will automatically
+
+00:06:12.990 --> 00:06:15.510
+tokenize each field
+in the string,
+
+00:06:15.510 --> 00:06:17.850
+allowing us to access
+inner controls.
+
+00:06:17.850 --> 00:06:20.580
+And notice that the type
+is correctly computed.
+
+00:06:20.580 --> 00:06:23.217
+In this case, we actually
+have an error again.
+
+00:06:23.217 --> 00:06:25.050
+That's because we're
+trying to do arithmetic
+
+00:06:25.050 --> 00:06:26.700
+with a string key.
+
+00:06:26.700 --> 00:06:28.380
+And this error
+tells us we should
+
+00:06:28.380 --> 00:06:31.740
+be using the house key,
+instead which is numeric.
+
+00:06:31.740 --> 00:06:34.470
+Now that you've observed
+the new types up close,
+
+00:06:34.470 --> 00:06:38.050
+let's dive into the
+nitty-gritty design details.
+
+00:06:38.050 --> 00:06:40.440
+So consider the form
+group we saw a moment ago
+
+00:06:40.440 --> 00:06:42.120
+for an address.
+
+00:06:42.120 --> 00:06:44.130
+What should be the type
+of address.controls
+
+00:06:44.130 --> 00:06:44.970
+in this example?
+
+00:06:44.970 --> 00:06:46.410
+And on the other
+hand, what should
+
+00:06:46.410 --> 00:06:49.110
+be the type of address.value?
+
+00:06:49.110 --> 00:06:51.150
+When working with
+typed forms, it's
+
+00:06:51.150 --> 00:06:52.740
+important to know
+about the difference
+
+00:06:52.740 --> 00:06:56.780
+between the types of values
+versus the types of controls.
+
+00:06:56.780 --> 00:06:58.950
+As we saw earlier with
+the party example,
+
+00:06:58.950 --> 00:07:01.190
+the value is the
+shape of your data.
+
+00:07:01.190 --> 00:07:06.300
+Here, for instance, the
+street field has type string.
+
+00:07:06.300 --> 00:07:09.750
+On the other hand, you
+can also access controls.
+
+00:07:09.750 --> 00:07:12.330
+Here, the street field
+is a form control, which
+
+00:07:12.330 --> 00:07:15.150
+has a string inside of it.
+
+00:07:15.150 --> 00:07:18.190
+Typed forms use
+control types heavily.
+
+00:07:18.190 --> 00:07:21.520
+Although you rarely need to
+specify an explicit type,
+
+00:07:21.520 --> 00:07:26.430
+if you do, you should
+always use the control type.
+
+00:07:26.430 --> 00:07:30.570
+Another interesting topic
+is resetting controls.
+
+00:07:30.570 --> 00:07:33.330
+Let's consider the simplest
+possible form, just
+
+00:07:33.330 --> 00:07:35.200
+a single control.
+
+00:07:35.200 --> 00:07:37.240
+When we first
+consider this control,
+
+00:07:37.240 --> 00:07:39.230
+we see it contains a string.
+
+00:07:39.230 --> 00:07:43.130
+So we might expect the type
+to be form control of string.
+
+00:07:43.130 --> 00:07:46.060
+However, there's
+a tricky detail.
+
+00:07:46.060 --> 00:07:47.960
+When you're working
+with a form control,
+
+00:07:47.960 --> 00:07:50.650
+you can call reset at any time.
+
+00:07:50.650 --> 00:07:53.410
+And when that happens,
+the control's value
+
+00:07:53.410 --> 00:07:56.480
+will immediately reset to null.
+
+00:07:56.480 --> 00:07:59.600
+This means that you cannot
+always assume the value
+
+00:07:59.600 --> 00:08:01.610
+of a control is a string.
+
+00:08:01.610 --> 00:08:04.940
+In previous Angular versions,
+this example would crash
+
+00:08:04.940 --> 00:08:07.940
+at runtime because you cannot
+call a substring on a null
+
+00:08:07.940 --> 00:08:09.760
+value.
+
+00:08:09.760 --> 00:08:13.060
+Angular 14 now protects you
+from these kinds of errors,
+
+00:08:13.060 --> 00:08:15.940
+because the type of the
+dog control in this example
+
+00:08:15.940 --> 00:08:18.230
+is string or null.
+
+00:08:18.230 --> 00:08:22.520
+Sometimes, though, that's not
+actually the behavior you want.
+
+00:08:22.520 --> 00:08:25.240
+In fact, many existing
+forms of applications
+
+00:08:25.240 --> 00:08:29.570
+do not rely on the existing
+nullability of the controls.
+
+00:08:29.570 --> 00:08:33.289
+In Angular 14, form controls
+have a brand new option
+
+00:08:33.289 --> 00:08:35.320
+called nonNullable.
+
+00:08:35.320 --> 00:08:37.419
+Instead of resetting
+to null, the control
+
+00:08:37.419 --> 00:08:40.350
+will reset to its initial value.
+
+00:08:40.350 --> 00:08:42.600
+As you might expect,
+this also removes
+
+00:08:42.600 --> 00:08:45.110
+null from the controls type.
+
+00:08:45.110 --> 00:08:48.540
+In this example, we've gotten
+rid of the nulls entirely.
+
+00:08:48.540 --> 00:08:53.070
+And now calling substring
+is totally safe.
+
+00:08:53.070 --> 00:08:56.310
+A related area involves
+disabled controls and the effect
+
+00:08:56.310 --> 00:08:58.900
+that they have on
+a form's value.
+
+00:08:58.900 --> 00:09:01.210
+With Angular forms,
+disabled controls
+
+00:09:01.210 --> 00:09:04.020
+are not included in
+the form's value.
+
+00:09:04.020 --> 00:09:07.110
+This is similar to how
+native HTML forms behave when
+
+00:09:07.110 --> 00:09:09.540
+their controls are disabled.
+
+00:09:09.540 --> 00:09:13.650
+However, this has an impact
+on the type of your form.
+
+00:09:13.650 --> 00:09:17.070
+When you call dot value,
+any key in the form group
+
+00:09:17.070 --> 00:09:18.840
+might have been disabled.
+
+00:09:18.840 --> 00:09:22.590
+As a result, the type knows
+that each key is optional.
+
+00:09:22.590 --> 00:09:25.260
+And when you use this
+value, the type system
+
+00:09:25.260 --> 00:09:29.070
+enforces you handle the
+possibility that each key might
+
+00:09:29.070 --> 00:09:31.150
+be undefined.
+
+00:09:31.150 --> 00:09:34.360
+In this example,
+when using cat.value,
+
+00:09:34.360 --> 00:09:37.120
+all of the fields inside
+the cat form group
+
+00:09:37.120 --> 00:09:41.240
+are optional, because they
+might have been disabled.
+
+00:09:41.240 --> 00:09:43.520
+That, however, is
+not the only case
+
+00:09:43.520 --> 00:09:47.190
+in which we might have
+optional keys in our form.
+
+00:09:47.190 --> 00:09:50.010
+Sometimes you want to be
+able to freely remove keys
+
+00:09:50.010 --> 00:09:51.460
+from the form.
+
+00:09:51.460 --> 00:09:56.140
+For example, here we call
+removeControl on the name name.
+
+00:09:56.140 --> 00:09:59.320
+With typed forms, we can
+now explicitly specify
+
+00:09:59.320 --> 00:10:03.190
+which keys are optional
+versus which are required.
+
+00:10:03.190 --> 00:10:06.270
+This allows the type system to
+enforce that we safely handle
+
+00:10:06.270 --> 00:10:09.490
+controls that might be missing.
+
+00:10:09.490 --> 00:10:12.160
+For form groups that are
+entirely dynamic, where
+
+00:10:12.160 --> 00:10:14.650
+you want to add or
+remove many controls,
+
+00:10:14.650 --> 00:10:17.560
+we've also introduced
+a brand new companion
+
+00:10:17.560 --> 00:10:20.310
+type called FormRecord.
+
+00:10:20.310 --> 00:10:23.160
+The typing improvements
+here are wide and deep,
+
+00:10:23.160 --> 00:10:26.180
+and there's so much more
+to be excited about.
+
+00:10:26.180 --> 00:10:30.080
+You can read about them in depth
+in the new typed forms guide
+
+00:10:30.080 --> 00:10:33.380
+available today on
+angular.io and linked down
+
+00:10:33.380 --> 00:10:36.070
+below in the description.
+
+00:10:36.070 --> 00:10:38.530
+We are so excited
+about Angular 14
+
+00:10:38.530 --> 00:10:40.360
+and the future of typed forms.
+
+00:10:40.360 --> 00:10:41.890
+We hope that you're
+as excited as we
+
+00:10:41.890 --> 00:10:44.350
+are, both for this project and
+for the future of the forms
+
+00:10:44.350 --> 00:10:46.120
+package as a whole.
+
+00:10:46.120 --> 00:10:48.430
+Please like and subscribe,
+and thank you for watching.
+
+00:10:48.430 --> 00:10:49.180
+See you next time.
+
+00:10:49.180 --> 00:10:52.230
+[MUSIC PLAYING]
+
