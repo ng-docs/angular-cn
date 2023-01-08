@@ -1,170 +1,113 @@
 WEBVTT
 Kind: captions
-Language: en
+Language: zh-Hans
 
 00:00:00.000 --> 00:00:01.570
-MINKO GECHEV: Hello, everyone.
+MINKO GECHEV： 大家好。
 
 00:00:01.570 --> 00:00:02.820
-My name is Minko Gechev.
+我的名字是 Minko Gechev。
 
 00:00:02.820 --> 00:00:05.440
-I'm working on
-Angular at Google.
+我在谷歌从事 Angular 方面的工作。
 
-00:00:05.440 --> 00:00:07.800
-Today, in this video,
-I'll want to show you
+00:00:05.440 --> 00:00:07.410
+今天，在这段视频中，
 
-00:00:07.800 --> 00:00:10.170
-how you can use Angular
-DevTools to preview
+00:00:07.410 --> 00:00:15.290
+我想向您展示如何使用 Angular DevTools 
+来预览应用程序的结构并分析其性能。
 
-00:00:10.170 --> 00:00:11.850
-the structure of
-your application
+00:00:15.180 --> 00:00:18.648
+Angular DevTools 是一个 Chrome DevTools 
+扩展，
 
-00:00:11.850 --> 00:00:15.180
-and profile its performance.
-
-00:00:15.180 --> 00:00:17.760
-Angular DevTools is a
-Chrome DevTools extension
-
-00:00:17.760 --> 00:00:21.060
-that you can download
-from the Chrome Web Store.
+00:00:18.648 --> 00:00:21.136
+您可以从 Chrome 网上应用店下载它。
 
 00:00:21.060 --> 00:00:24.090
-You can find a link in
-the description below.
+您可以在下面的描述中找到一个链接。
 
-00:00:24.090 --> 00:00:26.220
-When you install
-Angular DevTools,
+00:00:24.090 --> 00:00:26.670
+当你安装 Angular DevTools 时，
 
-00:00:26.220 --> 00:00:29.250
-you can go to
-Extensions and pin it.
+00:00:26.670 --> 00:00:29.250
+你可以去 Extensions 并固定它。
 
-00:00:29.250 --> 00:00:31.950
-The next step is to open
-an application running
+00:00:29.250 --> 00:00:33.952
+下一步是打开一个以开发模式运行的应用程
+序。
 
-00:00:31.950 --> 00:00:33.840
-in development mode.
+00:00:33.840 --> 00:00:37.205
+查看图标颜色如何变为红色，
 
-00:00:33.840 --> 00:00:37.890
-See how the color of the icon
-changed to red, indicating
+00:00:37.205 --> 00:00:40.570
+表示我们可以调试应用程序。
 
-00:00:37.890 --> 00:00:40.570
-we can debug the application.
+00:00:40.570 --> 00:00:45.206
+现在让我们打开 Chrome DevTools 并找到 Angular 
+选项卡。
 
-00:00:40.570 --> 00:00:45.120
-Now let us open Chrome DevTools
-and find the Angular tab.
+00:00:45.120 --> 00:00:48.990
+在这里我们可以预览应用程序的组件树。
 
-00:00:45.120 --> 00:00:47.160
-Here we can preview
-the component tree
+00:00:48.990 --> 00:00:50.395
+选择组件后，
 
-00:00:47.160 --> 00:00:48.990
-of the application.
-
-00:00:48.990 --> 00:00:51.150
-Once we select the
-component, we can
-
-00:00:51.150 --> 00:00:54.600
-find its metadata,
-properties, inputs,
-
-00:00:54.600 --> 00:00:56.910
-and outputs in the right panel.
+00:00:50.395 --> 00:00:57.038
+我们可以在右侧面板中找到它的元数据、属
+性、输入和输出。
 
 00:00:56.910 --> 00:01:01.140
-And we can modify them
-directly from the UI.
+我们可以直接从 UI 修改它们。
 
-00:01:01.140 --> 00:01:03.450
-Now let us navigate
-to the Profiler tab
+00:01:01.140 --> 00:01:06.547
+现在让我们导航到 Profiler 选项卡并开始
+记录更改检测事件。
 
-00:01:03.450 --> 00:01:06.450
-and start recording
-change detection events.
+00:01:06.450 --> 00:01:10.800
+我们可以实时预览变化检测周期。
 
-00:01:06.450 --> 00:01:08.250
-We can preview change
-detection cycles
+00:01:10.800 --> 00:01:16.581
+时间线中的每个条对应一个单独的变化检测
+周期。
 
-00:01:08.250 --> 00:01:10.800
-as they occur in real-time.
+00:01:16.450 --> 00:01:20.517
+我们可以找到我们在变化检测上花费了多少
+时间，
 
-00:01:10.800 --> 00:01:12.960
-Each bar in the
-timeline corresponds
+00:01:20.517 --> 00:01:23.382
+以及当前周期是否导致任何帧丢失。
 
-00:01:12.960 --> 00:01:16.450
-to a separate change
-detection cycle.
+00:01:23.290 --> 00:01:29.586
+我们还可以预览估计的帧速率以及触发变化
+检测的内容。
 
-00:01:16.450 --> 00:01:19.400
-We can find how much time
-we spent in change detection
+00:01:29.460 --> 00:01:30.235
+在底部，
 
-00:01:19.400 --> 00:01:23.290
-and whether the current
-cycle caused any frame drops.
+00:01:30.235 --> 00:01:34.110
+我们可以预览我们花费最多时间的组件。
 
-00:01:23.290 --> 00:01:26.350
-We can also preview the
-estimated frame rate and what
+00:01:34.110 --> 00:01:35.901
+当我们选择栏时，
 
-00:01:26.350 --> 00:01:29.460
-triggered change detection.
+00:01:35.901 --> 00:01:40.080
+我们可以看到特定组件的更多详细信息。
 
-00:01:29.460 --> 00:01:31.620
-At the bottom, we can
-preview the components
+00:01:40.080 --> 00:01:44.072
+为了更好地了解应用程序的执行情况，
 
-00:01:31.620 --> 00:01:34.110
-we spent the most time in.
-
-00:01:34.110 --> 00:01:37.620
-When we select the bar,
-we can see further details
-
-00:01:37.620 --> 00:01:40.080
-for the particular component.
-
-00:01:40.080 --> 00:01:42.930
-To better understand the
-application's execution,
-
-00:01:42.930 --> 00:01:45.810
-we can switch between the
-default bar chart view
-
-00:01:45.810 --> 00:01:47.850
-or the two alternative views--
-
-00:01:47.850 --> 00:01:51.450
-flame graph and tree map.
+00:01:44.072 --> 00:01:51.571
+我们可以在默认条形图视图或两种备选视图（
+火焰图和树图）之间切换。
 
 00:01:51.450 --> 00:01:53.310
-That is all I have
-for you today.
+这就是我今天要给你的全部内容。
 
-00:01:53.310 --> 00:01:57.630
-Head to angular.io/devtools
-to find more advanced Angular
-
-00:01:57.630 --> 00:01:59.500
-DevTools features.
+00:01:53.310 --> 00:01:59.603
+前往 angular.io/devtools 查找更高级的 Angular DevTools 
+功能。
 
 00:01:59.500 --> 00:02:02.720
-Thank you very much for
-watching and happy coding.
-
+非常感谢您的观看和愉快的编码。

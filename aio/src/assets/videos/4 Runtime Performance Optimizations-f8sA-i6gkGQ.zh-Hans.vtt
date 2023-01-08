@@ -1,1350 +1,863 @@
 WEBVTT
 Kind: captions
-Language: en
+Language: zh-Hans
 
 00:00:00.000 --> 00:00:01.390
-MINKO GECHEV: Hello, everyone.
+MINKO GECHEV： 大家好。
 
 00:00:01.390 --> 00:00:02.670
-My name is Minko Gechev.
+我的名字是 Minko Gechev。
 
 00:00:02.670 --> 00:00:05.490
-I'm working on
-Angular at Google.
+我在谷歌从事 Angular 方面的工作。
 
-00:00:05.490 --> 00:00:07.410
-Over the years, I
-have profiled hundreds
+00:00:05.490 --> 00:00:06.067
+多年来，
 
-00:00:07.410 --> 00:00:08.705
-of Angular applications.
+00:00:06.067 --> 00:00:08.705
+我分析了数百个 Angular 应用程序。
 
-00:00:08.705 --> 00:00:10.830
-And I have noticed that
-the majority of performance
+00:00:08.705 --> 00:00:15.034
+而且我注意到大多数性能挑战都符合几种不
+同的模式。
 
-00:00:10.830 --> 00:00:14.902
-challenges fit into a couple
-of different patterns.
+00:00:14.902 --> 00:00:18.495
+今天，我们将研究这些模式，
 
-00:00:14.902 --> 00:00:16.860
-Today, we're going to
-look into these patterns,
+00:00:18.495 --> 00:00:21.340
+并学习如何解决它们。
 
-00:00:16.860 --> 00:00:21.340
-and we're going to learn
-how to resolve them.
+00:00:21.340 --> 00:00:22.343
+在本视频中，
 
-00:00:21.340 --> 00:00:23.350
-In this video,
-first, you'll learn
+00:00:22.343 --> 00:00:25.810
+您首先将学习如何使用 Angular DevTools。
 
-00:00:23.350 --> 00:00:25.810
-how to use Angular DevTools.
+00:00:25.810 --> 00:00:26.381
+之后，
 
-00:00:25.810 --> 00:00:27.670
-After that, we'll
-identify different
+00:00:26.381 --> 00:00:31.864
+我们将识别不同的性能回归模式并学习如何
+解决它们。
 
-00:00:27.670 --> 00:00:31.750
-performance-regression patterns
-and learn how to resolve them.
+00:00:31.750 --> 00:00:32.429
+为此，
 
-00:00:31.750 --> 00:00:34.360
-For this purpose, we'll
-use a simple prototype
-
-00:00:34.360 --> 00:00:37.450
-of a typical
-business application.
+00:00:32.429 --> 00:00:37.450
+我们将使用典型业务应用程序的简单原型。
 
 00:00:37.450 --> 00:00:41.290
-At the very top of the
-UI, we have a bar chart.
+在 UI 的最顶部，我们有一个条形图。
 
-00:00:41.290 --> 00:00:43.480
-Under the chart,
-we have two lists
+00:00:41.290 --> 00:00:42.738
+在图表下方，
 
-00:00:43.480 --> 00:00:48.400
-of employees from organizational
-Sales and R&amp;D departments.
+00:00:42.738 --> 00:00:48.531
+我们有两份来自组织销售和研发部门的员工
+名单。
 
-00:00:48.400 --> 00:00:50.740
-Each employee has a
-name and a numeric value
+00:00:48.400 --> 00:00:54.784
+每个员工都有一个姓名和一个经过繁重计算
+的与之关联的数值。
 
-00:00:50.740 --> 00:00:54.670
-associated with them that goes
-through a heavy computation.
+00:00:54.670 --> 00:00:56.771
+在这些列表中的每一个中，
 
-00:00:54.670 --> 00:00:58.690
-In each of these lists,
-we can ask new employees.
+00:00:56.771 --> 00:00:58.690
+我们都可以询问新员工。
 
-00:00:58.690 --> 00:01:00.328
-As you'll see in
-the code, there is
+00:00:58.690 --> 00:01:01.142
+正如您将在代码中看到的那样，
 
-00:01:00.328 --> 00:01:02.620
-the foundation for implementing
-the lead functionality,
-
-00:01:02.620 --> 00:01:03.230
-as well.
+00:01:01.142 --> 00:01:03.230
+还有实现主要功能的基础。
 
 00:01:03.230 --> 00:01:07.660
-But for simplicity, it
-is not part of the UI.
+但为简单起见，它不是 UI 的一部分。
 
-00:01:07.660 --> 00:01:10.990
-Remember I mentioned that the
-numeric value for each employee
+00:01:07.660 --> 00:01:13.289
+还记得我提到过每个员工的数值都经过大量
+计算吗？
 
-00:01:10.990 --> 00:01:13.090
-goes through a
-heavy computation?
+00:01:13.289 --> 00:01:14.880
+为了简单起见，
 
-00:01:13.090 --> 00:01:16.330
-I have mocked this computation
-with the Fibonacci function
+00:01:14.880 --> 00:01:18.673
+我用斐波那契函数模拟了这个计算。
 
-00:01:16.330 --> 00:01:18.550
-to keep things simple.
+00:01:18.550 --> 00:01:19.388
+请注意，
 
-00:01:18.550 --> 00:01:22.570
-Notice that we've implemented
-a pretty inefficient version
+00:01:19.388 --> 00:01:24.413
+我们已经实现了一个非常低效的斐波那契版
+本，
 
-00:01:22.570 --> 00:01:26.080
-of Fibonacci so that even
-minor performance problems can
+00:01:24.413 --> 00:01:32.549
+因此即使是很小的性能问题也会对我们将要
+探索的示例产生显着的可见影响。
 
-00:01:26.080 --> 00:01:32.310
-have significant visible impacts
-in the examples we'll explore.
+00:01:32.310 --> 00:01:38.989
+只用两个组件实现整个应用程序——EmployeeListComponent，
 
-00:01:32.310 --> 00:01:36.020
-Implement the entire application
-with just two components--
+00:01:38.989 --> 00:01:46.439
+它包含相应部门的员工列表并有一个用于输
+入新员工的文本输入，
 
-00:01:36.020 --> 00:01:39.530
-EmployeeListComponent, which
-contains the list of employees
+00:01:46.439 --> 00:01:48.751
+以及 AppComponent，
 
-00:01:39.530 --> 00:01:42.140
-for the corresponding
-department and has
+00:01:48.751 --> 00:01:56.586
+它呈现 EmployeeListComponent 的两个列
+表实例和一个条形图最佳。
 
-00:01:42.140 --> 00:01:45.260
-a text input for
-entering new employees,
+00:01:56.330 --> 00:01:58.515
+在我们跳到模式之前，
 
-00:01:45.260 --> 00:01:49.820
-and the AppComponent,
-which renders two list
+00:01:58.515 --> 00:02:04.265
+让我们看看如何使用 Angular DevTools 分
+析应用程序。
 
-00:01:49.820 --> 00:01:53.330
-instances of the
-EmployeeListComponent and a bar
+00:02:04.150 --> 00:02:07.494
+Angular DevTools 是一个 Chrome DevTools 
+扩展，
 
-00:01:53.330 --> 00:01:56.330
-chart at the top.
+00:02:07.494 --> 00:02:09.893
+您可以从 Chrome 网上应用店安装它。
 
-00:01:56.330 --> 00:01:58.190
-Before we jump to
-the patterns, let
-
-00:01:58.190 --> 00:02:00.740
-us look at how we can
-profile an application
-
-00:02:00.740 --> 00:02:04.150
-by using Angular DevTools.
-
-00:02:04.150 --> 00:02:06.970
-Angular DevTools is a
-Chrome DevTools extension
-
-00:02:06.970 --> 00:02:09.820
-that you can install from
-the Chrome Web Store.
-
-00:02:09.820 --> 00:02:12.400
-It allows you to preview the
-structure of your application
-
-00:02:12.400 --> 00:02:14.260
-in the Components explorer.
+00:02:09.820 --> 00:02:14.359
+它允许您在组件资源管理器中预览应用程序
+的结构。
 
 00:02:14.260 --> 00:02:17.290
-For this video, we'll be
-primarily using the Profiler.
+对于本视频，我们将主要使用 Profiler。
 
-00:02:17.290 --> 00:02:19.510
-To start profiling
-an application, click
+00:02:17.290 --> 00:02:20.950
+要开始分析应用程序，请单击“记录”按钮。
 
-00:02:19.510 --> 00:02:20.950
-on the Record button.
+00:02:20.950 --> 00:02:24.904
+当 Angular 在您的应用程序中执行更改检
+测时，
 
-00:02:20.950 --> 00:02:23.440
-As Angular performs change
-detection in your app,
+00:02:24.904 --> 00:02:30.974
+您会看到与 DevTools 时间轴中出现的各个
+更改检测周期相对应的条形图。
 
-00:02:23.440 --> 00:02:26.740
-you'll see bars corresponding to
-the individual change detection
+00:02:30.790 --> 00:02:33.106
+当我们从时间轴中选择帧时，
 
-00:02:26.740 --> 00:02:30.790
-cycles appearing in
-DevTools's timeline.
+00:02:33.106 --> 00:02:37.182
+我们可以预览我们在各个组件上花费了多少
+时间。
 
-00:02:30.790 --> 00:02:32.980
-When we select the
-frame from the timeline,
+00:02:37.090 --> 00:02:37.681
+在这里，
 
-00:02:32.980 --> 00:02:35.110
-we can preview how
-much time we spend
+00:02:37.681 --> 00:02:44.014
+我们在 MatFormField 和 EmployeeListComponent 
+中花费了大部分的变更检测调用。
 
-00:02:35.110 --> 00:02:37.090
-on the individual components.
+00:02:43.930 --> 00:02:51.752
+DevTools 允许我们以不同的格式预览 Profiler 
+输出——条形图、树图和火焰图。
 
-00:02:37.090 --> 00:02:39.910
-Here, we spend the majority of
-the change-detection invocation
+00:02:51.640 --> 00:02:55.840
+火焰图提供了组件树的分层视图。
 
-00:02:39.910 --> 00:02:43.930
-within the MatFormField
-and EmployeeListComponent.
+00:02:55.840 --> 00:02:57.699
+当我们点击一​​个特定的组件时，
 
-00:02:43.930 --> 00:02:46.180
-DevTools allows us to
-preview the Profiler output
+00:02:57.699 --> 00:03:00.584
+我们可以看到 Angular 在它上面花费了多
+少时间。
 
-00:02:46.180 --> 00:02:47.470
-in different formats--
+00:03:00.520 --> 00:03:01.168
+例如，
 
-00:02:47.470 --> 00:02:51.640
-bar charts, tree maps,
-and flame graphs.
+00:03:01.168 --> 00:03:08.949
+我们花了大约 0.1 毫秒来检测 EmployeeListComponent 
+中的变化。
 
-00:02:51.640 --> 00:02:54.070
-The flame graph provides
-a hierarchical view
+00:03:08.820 --> 00:03:12.721
+由于我们的应用程序没有复杂的嵌套结构，
 
-00:02:54.070 --> 00:02:55.840
-of the component tree.
-
-00:02:55.840 --> 00:02:57.980
-When we click on a
-particular component,
-
-00:02:57.980 --> 00:03:00.520
-we can see how much time
-Angular spent on it.
-
-00:03:00.520 --> 00:03:04.120
-For example, we spent
-about 0.1 milliseconds
-
-00:03:04.120 --> 00:03:08.820
-on detecting changes within
-the EmployeeListComponent.
-
-00:03:08.820 --> 00:03:12.210
-Since our application doesn't
-have a complicated nested
-
-00:03:12.210 --> 00:03:15.990
-structure, we'll use the
-default bar chart view.
+00:03:12.721 --> 00:03:15.990
+因此我们将使用默认的条形图视图。
 
 00:03:15.990 --> 00:03:18.360
-Now let us look at
-individual patterns.
+现在让我们看看个别模式。
 
 00:03:18.360 --> 00:03:21.420
-We'll describe the
-cause of the problem.
+我们将描述问题的原因。
 
 00:03:21.420 --> 00:03:26.370
-You'll learn how to
-identify it and resolve it.
+您将学习如何识别它并解决它。
 
 00:03:26.370 --> 00:03:30.390
-The first pattern we're going
-to look into is zone pollution.
+我们要研究的第一个模式是区域污染。
 
-00:03:30.390 --> 00:03:32.010
-Let us go back to
-the application
+00:03:30.390 --> 00:03:36.429
+让我们回到应用程序并开始使用 Angular DevTools 
+的 Profiler 进行记录。
 
-00:03:32.010 --> 00:03:36.340
-and start recording with
-Angular DevTools's Profiler.
+00:03:36.340 --> 00:03:40.245
+如果我们开始与应用程序中的条形图交互，
 
-00:03:36.340 --> 00:03:39.460
-If we start interacting with the
-bar chart in the application,
+00:03:40.245 --> 00:03:44.150
+我们会看到我们触发了多个变化检测周期，
 
-00:03:39.460 --> 00:03:42.100
-we'll see that we trigger
-multiple change detection
+00:03:44.150 --> 00:03:47.000
+每个周期都需要相当长的时间。
 
-00:03:42.100 --> 00:03:47.000
-cycles, each of which takes
-a decent amount of time.
+00:03:47.000 --> 00:03:50.115
+如果我们探索变化检测周期，
 
-00:03:47.000 --> 00:03:49.680
-If we explore the
-change detection cycles,
+00:03:50.115 --> 00:03:56.844
+我们将看到变化检测的来源是 mouseup 和 mousemove 
+事件。
 
-00:03:49.680 --> 00:03:51.860
-we'll see that the source
-of the change detection
+00:03:56.720 --> 00:04:00.370
+每个循环需要超过 740 毫秒，
 
-00:03:51.860 --> 00:03:56.720
-is mouseup and mousemove events.
+00:04:00.370 --> 00:04:04.160
+这会显着降低浏览器的帧速率。
 
-00:03:56.720 --> 00:04:00.600
-Each cycle takes more
-than 740 milliseconds,
+00:04:04.160 --> 00:04:10.857
+我们大部分时间都花在了 EmployeeListComponent 
+的两个实例上，
 
-00:04:00.600 --> 00:04:04.160
-which significantly drops
-the browser's frame rate.
-
-00:04:04.160 --> 00:04:07.700
-We spent most of the
-time in the two instances
-
-00:04:07.700 --> 00:04:11.030
-of the EmployeeListComponent,
-where each check takes
-
-00:04:11.030 --> 00:04:14.830
-more than 360 milliseconds.
+00:04:10.857 --> 00:04:14.943
+其中每次检查花费的时间超过 360 毫秒。
 
 00:04:14.830 --> 00:04:17.320
-Now let us resolve this problem.
+现在让我们来解决这个问题。
 
-00:04:17.320 --> 00:04:19.200
-The beginning of
-app.component's template
+00:04:17.320 --> 00:04:22.416
+app.component 模板的开头是我们渲染条形
+图的 div 容器。
 
-00:04:19.200 --> 00:04:22.320
-is div container where
-we render the bar chart.
+00:04:22.320 --> 00:04:32.632
+我们通过调用 Plotly 图表库的新绘图方法
+在 app.component 的 [听不清] 生命周期
+挂钩上初始化 Ng 中的图表。
 
-00:04:22.320 --> 00:04:25.860
-We initialize the chart in
-the Ng on the [INAUDIBLE]
+00:04:32.430 --> 00:04:38.511
+我们传递 DOM 容器的 ID 和我们要呈现的
+数据。
 
-00:04:25.860 --> 00:04:28.080
-lifecycle hook in
-the app.component
+00:04:38.370 --> 00:04:43.628
+鉴于我们在 Profiler 中获得的 mouseup 
+和 mousemove 事件，
 
-00:04:28.080 --> 00:04:32.430
-by invoking the new plot method
-of the Plotly charting library.
+00:04:43.628 --> 00:04:50.388
+这意味着 Plotly 的初始化逻辑可能正在将
+这些 EventListeners 添加到条形图。
 
-00:04:32.430 --> 00:04:35.250
-We pass the ID of
-the DOM container
+00:04:50.200 --> 00:04:52.475
+Plotly 提供了一个独立的库，
 
-00:04:35.250 --> 00:04:38.370
-and the data we want to render.
+00:04:52.475 --> 00:04:54.400
+不需要与 Angular 交互。
 
-00:04:38.370 --> 00:04:41.640
-Given the mouseup
-and mousemove events
+00:04:54.400 --> 00:04:59.560
+我们可以在 Angular 区域之外运行初始化
+逻辑，
 
-00:04:41.640 --> 00:04:43.950
-that we got in
-the Profiler, this
+00:04:59.560 --> 00:05:03.040
+以防止调用冗余的变更检测周期。
 
-00:04:43.950 --> 00:04:46.350
-means that probably the
-initialization logic of Plotly
+00:05:02.920 --> 00:05:08.489
+让我们转到 app.component 的构造函数并
+注入 Ng 区域。
 
-00:04:46.350 --> 00:04:50.200
-is adding these
-EventListeners to the bars.
+00:05:08.380 --> 00:05:18.947
+我们可以回到图表的初始化逻辑和我们传递
+给 runOutsideangular 的回调的快速内部。
 
-00:04:50.200 --> 00:04:52.180
-Plotly offers a
-standalone library
+00:05:18.810 --> 00:05:23.147
+当我们返回应用程序并启动 Profiler 时，
 
-00:04:52.180 --> 00:04:54.400
-that doesn't need to
-interact with Angular.
+00:05:23.147 --> 00:05:29.007
+我们会看到与条形图中的条形的交互不再触
+发更改检测。
 
-00:04:54.400 --> 00:04:57.370
-We can run the initialization
-logic outside of the Angular
+00:05:28.890 --> 00:05:33.762
+当 Angular 区域包装触发冗余变化检测周
+期的回调时，
 
-00:04:57.370 --> 00:05:00.940
-zone to prevent the invocation
-of redundant change detection
+00:05:33.762 --> 00:05:35.850
+就会出现区域污染模式。
 
-00:05:00.940 --> 00:05:02.920
-cycles.
+00:05:35.750 --> 00:05:43.678
+当我们运行使用 requestAnimationFrame、setTimeout 
+或 addEventListener 的初始化逻辑时，
 
-00:05:02.920 --> 00:05:05.110
-Let us go to the
-constructor of app.component
+00:05:43.678 --> 00:05:44.905
+就会污染区域。
 
-00:05:05.110 --> 00:05:08.380
-and inject the Ng zone.
+00:05:44.810 --> 00:05:51.088
+我们可以通过在 Profiler 输出中寻找意外
+的变化检测周期来识别问题。
 
-00:05:08.380 --> 00:05:11.050
-We can go back to the
-chart's initialization logic
+00:05:50.990 --> 00:05:52.520
+在大多数情况下，
 
-00:05:11.050 --> 00:05:13.540
-and the rapid
-inside of a callback
-
-00:05:13.540 --> 00:05:18.810
-that we pass to
-runOutsideangular.
-
-00:05:18.810 --> 00:05:20.880
-When we go back
-to the application
-
-00:05:20.880 --> 00:05:22.740
-and start the
-Profiler, we'll see
-
-00:05:22.740 --> 00:05:25.410
-that interactions with
-the bars in the bar chart
-
-00:05:25.410 --> 00:05:28.890
-don't trigger change
-detections anymore.
-
-00:05:28.890 --> 00:05:31.460
-The zone-pollution pattern
-occurs when the Angular zone
-
-00:05:31.460 --> 00:05:34.190
-wraps callbacks that trigger
-redundant change detection
-
-00:05:34.190 --> 00:05:35.750
-cycles.
-
-00:05:35.750 --> 00:05:39.260
-Polluting the zone happens when
-we run an initialization logic
-
-00:05:39.260 --> 00:05:42.560
-that uses requestAnimationFrame,
-setTimeout,
-
-00:05:42.560 --> 00:05:44.810
-or addEventListener.
-
-00:05:44.810 --> 00:05:47.270
-We can identify the
-problem by looking
-
-00:05:47.270 --> 00:05:50.990
-for unexpected change detection
-cycles in the Profiler output.
-
-00:05:50.990 --> 00:05:53.390
-In most cases, I have
-found that the reason
-
-00:05:53.390 --> 00:05:56.090
-is requestAnimationFrame.
+00:05:52.520 --> 00:05:56.090
+我发现原因是 requestAnimationFrame。
 
 00:05:56.090 --> 00:05:58.050
-The solution is usually
-pretty straightforward.
+解决方案通常非常简单。
 
-00:05:58.050 --> 00:06:00.230
-All you need to do is move
-the initialization logic
+00:05:58.050 --> 00:06:02.980
+您需要做的就是将初始化逻辑移出 Angular 
+区域。
 
-00:06:00.230 --> 00:06:02.870
-outside of the Angular zone.
+00:06:02.870 --> 00:06:07.855
+我们将研究的以下模式是越界变化检测。
 
-00:06:02.870 --> 00:06:05.990
-The following pattern we'll
-look into is the out of bounds
-
-00:06:05.990 --> 00:06:07.855
-change detection.
-
-00:06:07.855 --> 00:06:09.230
-Let us go back to
-the application
-
-00:06:09.230 --> 00:06:11.640
-and enter a new employee.
+00:06:07.855 --> 00:06:11.640
+让我们回到应用程序并输入一个新员工。
 
 00:06:11.640 --> 00:06:14.210
-Notice that the experience
-is pretty laggy.
+请注意，体验非常滞后。
 
-00:06:14.210 --> 00:06:17.540
-When we start profiling, we
-notice two change detection
+00:06:14.210 --> 00:06:16.082
+当我们开始分析时，
 
-00:06:17.540 --> 00:06:21.920
-cycles triggered on
-each character we enter.
+00:06:16.082 --> 00:06:22.030
+我们注意到我们输入的每个字符都会触发两
+个变化检测周期。
 
-00:06:21.920 --> 00:06:24.290
-The first one is
-on the Input event,
+00:06:21.920 --> 00:06:25.052
+第一个在 Input 事件上，
 
-00:06:24.290 --> 00:06:27.900
-and the second
-one is on keydown.
+00:06:25.052 --> 00:06:27.900
+第二个在 keydown 上。
 
-00:06:27.900 --> 00:06:31.920
-For both events, we spent
-more than 380 milliseconds
+00:06:27.900 --> 00:06:29.414
+对于这两个事件，
 
-00:06:31.920 --> 00:06:34.140
-detecting changes
-in the two instances
+00:06:29.414 --> 00:06:36.481
+我们花费了 380 多毫秒来检测 EmployeeListComponent 
+的两个实例中的变化。
 
-00:06:34.140 --> 00:06:36.380
-of the EmployeeListComponent.
+00:06:36.380 --> 00:06:37.364
+请注意，
 
-00:06:36.380 --> 00:06:38.910
-Notice that even though
-we are typing only
+00:06:37.364 --> 00:06:41.720
+即使我们只输入了销售部门的输入，
 
-00:06:38.910 --> 00:06:41.430
-in the input for the
-Sales department,
+00:06:41.720 --> 00:06:44.671
+我们也检查了研发部门。
 
-00:06:41.430 --> 00:06:44.670
-we also check the
-R&amp;D department.
+00:06:44.670 --> 00:06:50.644
+由于键入这些输入只会更改销售部门内的视
+图状态，
 
-00:06:44.670 --> 00:06:47.610
-Since typing in
-these input changes
-
-00:06:47.610 --> 00:06:50.370
-only the View state within
-the Sales department,
-
-00:06:50.370 --> 00:06:54.540
-detecting changes in the
-R&amp;D department is redundant.
+00:06:50.644 --> 00:06:54.670
+因此检测研发部门的更改是多余的。
 
 00:06:54.540 --> 00:06:56.130
-Let us fix this.
+让我们解决这个问题。
 
-00:06:56.130 --> 00:06:59.700
-For this purpose, we'll update
-the change-detection strategy
+00:06:56.130 --> 00:06:56.697
+为此，
 
-00:06:59.700 --> 00:07:03.270
-of the EmployeeListComponents
-to OnPush.
+00:06:56.697 --> 00:07:03.384
+我们将 EmployeeListComponents 的变更检
+测策略更新为 OnPush。
 
-00:07:03.270 --> 00:07:06.060
-With OnPush, Angular will
-trigger change detection
+00:07:03.270 --> 00:07:04.591
+使用 OnPush，
 
-00:07:06.060 --> 00:07:08.640
-within the component
-when we pass input
+00:07:04.591 --> 00:07:09.656
+当我们基于 [听不清] 检查传递具有新值的
+输入时，
 
-00:07:08.640 --> 00:07:12.960
-with a new value based
-on an [INAUDIBLE] check.
+00:07:09.656 --> 00:07:13.070
+Angular 将触发组件内的更改检测。
 
-00:07:12.960 --> 00:07:15.180
-We'll use an immutable
-list from immutable.js
+00:07:12.960 --> 00:07:18.872
+我们将使用 immutable.js 中的不可变列表
+来防止数组引用发生变化，
 
-00:07:15.180 --> 00:07:17.610
-to prevent mutation of
-the array references
+00:07:18.872 --> 00:07:21.256
+并确保高效的数据共享结构。
 
-00:07:17.610 --> 00:07:21.160
-and also, to ensure efficient
-structure of sharing of data.
+00:07:21.160 --> 00:07:26.511
+让我们首先将销售和研发部门数组更改为不
+可变列表。
 
-00:07:21.160 --> 00:07:24.630
-Let us first change the Sales
-and R&amp;D department arrays
+00:07:26.400 --> 00:07:27.021
+之后，
 
-00:07:24.630 --> 00:07:26.400
-to immutable lists.
+00:07:27.021 --> 00:07:33.732
+我们将更新 app.component 中 Add 和 Remove 
+方法的签名，
 
-00:07:26.400 --> 00:07:30.150
-After that, we'll update
-the signatures of the Add
+00:07:33.732 --> 00:07:37.833
+以便它们可以接受不可变的员工列表。
 
-00:07:30.150 --> 00:07:33.540
-and Remove methods
-in the app.component
+00:07:37.710 --> 00:07:38.393
+接下来，
 
-00:07:33.540 --> 00:07:37.710
-so that they can accept
-immutable lists of employees.
+00:07:38.393 --> 00:07:48.157
+我们需要确保分配这两个方法产生的结果以
+更新本地引用并将它们沿组件树向下传递给 EmployeeListComponent。
 
-00:07:37.710 --> 00:07:40.740
-Next, we need to make sure we
-assign the results produced
-
-00:07:40.740 --> 00:07:43.590
-by these two methods to
-update the local references
-
-00:07:43.590 --> 00:07:48.060
-and pass them down the component
-tree to EmployeeListComponent.
-
-00:07:48.060 --> 00:07:50.520
-We need the assignment
-because we are no longer
-
-00:07:50.520 --> 00:07:51.890
-mutating the lists.
+00:07:48.060 --> 00:07:51.890
+我们需要分配，因为我们不再改变列表。
 
 00:07:51.890 --> 00:07:56.590
-Instead, Immutabe.js
-creates new ones.
+相反，Immutabe.js 会创建新的。
 
-00:07:56.590 --> 00:07:58.540
-Since we're now
-passing immutable lists
+00:07:56.590 --> 00:08:01.668
+由于我们现在将不可变列表传递给 EmployeeListComponent，
 
-00:07:58.540 --> 00:08:00.250
-to the EmployeeListComponent,
-we need
+00:08:01.668 --> 00:08:04.830
+因此我们需要更新其数据输入的类型。
 
-00:08:00.250 --> 00:08:04.830
-to update the type
-of its data input.
+00:08:04.830 --> 00:08:08.238
+不可变列表具有大小而不是长度属性，
 
-00:08:04.830 --> 00:08:08.380
-Immutable lists have size
-rather than a length property,
-
-00:08:08.380 --> 00:08:11.250
-so we need to update the
-property access in the template
-
-00:08:11.250 --> 00:08:15.570
-and set the changeDetection
-strategy to OnPush.
+00:08:08.238 --> 00:08:15.673
+因此我们需要更新模板中的属性访问并将 changeDetection 
+策略设置为 OnPush。
 
 00:08:15.570 --> 00:08:18.192
-Now, let us get back
-to the application.
+现在，让我们回到应用程序。
 
-00:08:18.192 --> 00:08:19.650
-Notice that entering
-a new employee
+00:08:18.192 --> 00:08:22.890
+请注意，现在输入新员工的速度要快一些，
 
-00:08:19.650 --> 00:08:22.860
-now is a little faster,
-even though it still
-
-00:08:22.860 --> 00:08:25.630
-looks pretty laggy.
+00:08:22.890 --> 00:08:25.630
+尽管它看起来仍然很慢。
 
 00:08:25.630 --> 00:08:26.860
-Let us fix this.
+让我们解决这个问题。
 
-00:08:26.860 --> 00:08:30.070
-We'll do this as part of the
-refactoring of out of bounds
+00:08:26.860 --> 00:08:31.562
+我们将这样做作为越界变化检测重构的一部
+分。
 
-00:08:30.070 --> 00:08:31.450
-change detection.
+00:08:31.450 --> 00:08:33.455
+当我们开始输入时，
 
-00:08:31.450 --> 00:08:33.220
-When we start typing
-into the input,
+00:08:33.455 --> 00:08:36.640
+Angular 会定期执行变化检测。
 
-00:08:33.220 --> 00:08:36.640
-Angular performs change
-detection pretty regularly.
+00:08:36.640 --> 00:08:46.096
+它检查整个 EmployeeListComponent 并评
+估每个员工的繁重计算两次——在输入和按键
+事件时，
 
-00:08:36.640 --> 00:08:38.830
-It checks the whole
-EmployeeListComponent
+00:08:46.096 --> 00:08:48.685
+即使没有任何值发生变化。
 
-00:08:38.830 --> 00:08:42.730
-and evaluates each employee's
-heavy computation twice--
+00:08:48.460 --> 00:08:54.930
+发生这种情况是因为在输入中键入会触发绕
+过 OnPush 更改检测策略的事件。
 
-00:08:42.730 --> 00:08:47.200
-on input and on keydown events,
-even though none of the values
+00:08:54.835 --> 00:08:59.771
+当具有 OnPush 变化检测策略的组件内的事
+件发生时，
 
-00:08:47.200 --> 00:08:48.460
-have changed.
+00:08:59.771 --> 00:09:02.548
+Angular 将检测该组件的变化，
 
-00:08:48.460 --> 00:08:50.560
-This happens because
-typing into the input
+00:09:02.548 --> 00:09:04.913
+即使它没有收到新的输入。
 
-00:08:50.560 --> 00:08:53.950
-triggers events that bypass
-the OnPush change-detection
+00:09:04.810 --> 00:09:09.731
+这里的问题是我们只是更改输入的本地状态，
 
-00:08:53.950 --> 00:08:54.835
-strategy.
+00:09:09.731 --> 00:09:12.129
+而不是更新单个员工，
 
-00:08:54.835 --> 00:08:57.520
-And when an event within
-a component with OnPush
+00:09:12.129 --> 00:09:17.050
+这意味着完全跳过他们的更改方向是安全的。
 
-00:08:57.520 --> 00:08:59.080
-change-detection
-strategy occurs,
+00:09:17.050 --> 00:09:20.860
+为了提高性能，我们将重构组件树。
 
-00:08:59.080 --> 00:09:01.600
-Angular will detect this
-component for changes,
+00:09:20.860 --> 00:09:21.419
+目前，
 
-00:09:01.600 --> 00:09:04.810
-even if it hasn't
-received new inputs.
+00:09:21.419 --> 00:09:26.672
+app 组件呈现 EmployeeListComponent 的
+两个实例。
 
-00:09:04.810 --> 00:09:06.460
-The problem here
-is that we're only
+00:09:26.560 --> 00:09:27.944
+在本节的最后，
 
-00:09:06.460 --> 00:09:08.990
-changing the local
-state of the input
+00:09:27.944 --> 00:09:35.077
+EmployeeListComponent 将使用 NameInputComponents 
+获取新员工的姓名，
 
-00:09:08.990 --> 00:09:11.800
-but not updating the
-individual employees, which
+00:09:35.077 --> 00:09:38.697
+并使用 ListComponent 呈现员工列表。
 
-00:09:11.800 --> 00:09:14.650
-means that it is safe
-to completely skip
+00:09:38.590 --> 00:09:42.442
+我们将为列表组件使用 OnPush 变化检测策
+略。
 
-00:09:14.650 --> 00:09:17.050
-change direction for them.
+00:09:42.350 --> 00:09:44.528
+因此，通过这种方式，
 
-00:09:17.050 --> 00:09:18.890
-To improve the
-performance here, we'll
+00:09:44.528 --> 00:09:53.241
+兄弟组件 NameInputComponent 中发生的事
+件将不会触发对员工的任何冗余重估。
 
-00:09:18.890 --> 00:09:20.860
-refactor the component tree.
+00:09:53.120 --> 00:10:01.887
+让我们首先进入 EmployeeListComponent 
+的目录并创建 name-input.component 和 list.component。
 
-00:09:20.860 --> 00:09:24.130
-Currently, the app component
-renders two instances
+00:10:01.790 --> 00:10:02.814
+作为下一步，
 
-00:09:24.130 --> 00:09:26.560
-of the EmployeeListComponent.
+00:10:02.814 --> 00:10:10.543
+我们可以将输入字段从 employee-list.component 
+提取到 name-input.component 的模板中。
 
-00:09:26.560 --> 00:09:29.030
-At the end of this section,
-the EmployeeListComponent
-
-00:09:29.030 --> 00:09:33.400
-will use the NameInputComponents
-to get new employees' names
-
-00:09:33.400 --> 00:09:38.590
-and ListComponent to render
-the list of employees.
-
-00:09:38.590 --> 00:09:40.840
-We'll use OnPush
-change-detection strategy
-
-00:09:40.840 --> 00:09:42.350
-for the list component.
-
-00:09:42.350 --> 00:09:46.570
-So this way, events happening
-in the sibling component,
-
-00:09:46.570 --> 00:09:48.940
-the NameInputComponent,
-will not trigger
-
-00:09:48.940 --> 00:09:53.120
-any redundant revaluations
-for employees.
-
-00:09:53.120 --> 00:09:55.910
-Let us first go to the directory
-of the EmployeeListComponent
-
-00:09:55.910 --> 00:09:58.880
-and create the
-name-input.component
-
-00:09:58.880 --> 00:10:01.790
-and the list.component.
-
-00:10:01.790 --> 00:10:05.030
-As the next step, we can
-extract the input field from
-
-00:10:05.030 --> 00:10:07.940
-the employee-list.component
-to the template
-
-00:10:07.940 --> 00:10:10.450
-of the name-input.component.
-
-00:10:10.450 --> 00:10:13.270
-We can also move the
-corresponding styles, the label
-
-00:10:13.270 --> 00:10:18.410
-property, and the handleKey
-method and copy the out output.
+00:10:10.450 --> 00:10:18.536
+我们还可以移动相应的样式、label 属性和 handleKey 
+方法并复制输出。
 
 00:10:18.410 --> 00:10:21.145
-Let us also remove the
-OnInit lifecycle hook.
+让我们也删除 OnInit 生命周期钩子。
 
-00:10:37.860 --> 00:10:39.810
-We can use the
-name-input.component within
+00:10:21.145 --> 00:10:38.999
+我们可以在 employee-list.component 的
+模板中使用 name-input.component，
 
-00:10:39.810 --> 00:10:41.730
-the employee-list.component's
-template,
+00:10:38.999 --> 00:10:45.375
+下一步处理应用程序的输出。
 
-00:10:41.730 --> 00:10:45.120
-handling the app's
-output as the next step.
+00:10:45.120 --> 00:10:55.658
+现在让我们将模板的其余 mat-list 部分移
+至 ListComponent。
 
-00:10:50.010 --> 00:10:53.670
-Now let us move the rest of the
-mat-list part of the template
+00:10:55.470 --> 00:11:02.526
+我们还应该携带计算方法并删除 OnInit 生
+命周期挂钩实现，
 
-00:10:53.670 --> 00:10:55.470
-to the ListComponent.
+00:11:02.526 --> 00:11:05.270
+因为我们根本不使用它。
 
-00:10:58.120 --> 00:11:00.340
-We should also carry
-the calculate method
+00:11:05.140 --> 00:11:10.565
+接下来，让我们移动斐波那契函数。
 
-00:11:00.340 --> 00:11:03.610
-and remove the OnInit
-lifecycle hook implementation
-
-00:11:03.610 --> 00:11:05.140
-because we're
-simply not using it.
-
-00:11:08.720 --> 00:11:10.565
-Next, let us move the
-Fibonacci function.
-
-00:11:15.510 --> 00:11:18.480
-We can now move the data input.
+00:11:10.565 --> 00:11:18.480
+我们现在可以移动数据输入。
 
 00:11:18.480 --> 00:11:20.970
-Finally, we can copy
-the remove output.
+最后，我们可以复制删除输出。
 
-00:11:43.040 --> 00:11:45.500
-To ensure the UI
-looks crisp, we can
+00:11:20.970 --> 00:11:29.883
+为了确保 UI 看起来清晰，
 
-00:11:45.500 --> 00:11:48.320
-move the styles associated
-with the list visualization
+00:11:29.883 --> 00:11:50.808
+我们可以将与列表可视化关联的样式移动到
+列表组件的样式。
 
-00:11:48.320 --> 00:11:50.420
-to the styles of
-the list component.
+00:11:50.420 --> 00:11:51.828
+最后，
 
-00:12:01.050 --> 00:12:03.740
-Finally, we can set the
-change-detection strategy
+00:11:51.828 --> 00:12:07.592
+我们可以将 list.components 的变更检测
+策略设置为 OnPush。
 
-00:12:03.740 --> 00:12:07.310
-of the list.components
-to OnPush.
+00:12:07.310 --> 00:12:12.481
+让我们使用 employee-list.components 模
+板中的 list.component，
 
-00:12:07.310 --> 00:12:10.160
-Let us use the list.component
-in the employee-list.components
+00:12:12.481 --> 00:12:14.939
+传递相应的输入并处理删除输出。
 
-00:12:10.160 --> 00:12:12.590
-template, passing the
-corresponding input
+00:12:14.855 --> 00:12:20.071
+当您返回应用程序时，
 
-00:12:12.590 --> 00:12:14.855
-and handling the remove output.
+00:12:20.071 --> 00:12:29.130
+请注意打字体验没有任何明显的延迟。
 
-00:12:21.240 --> 00:12:22.900
-When you go back
-to the application,
+00:12:29.130 --> 00:12:30.230
+回顾一下，
 
-00:12:22.900 --> 00:12:24.630
-notice that the
-typing experience
+00:12:30.230 --> 00:12:38.299
+当仅影响特定组件的本地状态的操作触发组
+件的不相关部分的更改检测时，
 
-00:12:24.630 --> 00:12:29.130
-is without any noticeable lag.
+00:12:38.299 --> 00:12:40.622
+就会出现此性能问题。
 
-00:12:29.130 --> 00:12:31.380
-To recap, this
-performance problem
+00:12:40.500 --> 00:12:50.475
+我们可以通过检查 Profiler 的输出并找到
+不应受特定交互影响的组件来识别问题。
 
-00:12:31.380 --> 00:12:33.900
-occurs when an action
-that only impacts
+00:12:50.340 --> 00:12:52.252
+为了解决这个问题，
 
-00:12:33.900 --> 00:12:36.150
-the local state of a
-particular component
+00:12:52.252 --> 00:12:56.638
+我们可以隔离触发频繁本地状态更改的组件，
 
-00:12:36.150 --> 00:12:38.850
-triggers change detection
-in unrelated parts
+00:12:56.638 --> 00:13:02.373
+并将具有昂贵的更改检测检查的组件设置为
+使用 OnPush。
 
-00:12:38.850 --> 00:12:40.500
-of the componentry.
+00:13:02.260 --> 00:13:10.042
+我们要看的第三种模式是引用透明表达式的
+重新计算。
 
-00:12:40.500 --> 00:12:43.860
-We can identify the problem
-by inspecting the Profiler's
+00:13:09.880 --> 00:13:13.280
+如果我们在模板中有一个表达式，
 
-00:12:43.860 --> 00:12:46.380
-output and finding
-the components that
+00:13:13.280 --> 00:13:17.149
+当它的参数不变时可以用它的值替换，
 
-00:12:46.380 --> 00:12:50.340
-are not supposed to be affected
-by a particular interaction.
+00:13:17.149 --> 00:13:19.611
+我们称它为引用透明的。
 
-00:12:50.340 --> 00:12:52.830
-To resolve the issue, we
-can isolate the component
+00:13:19.610 --> 00:13:24.957
+这意味着我们不必重新计算变化检测周期之
+间的表达式，
 
-00:12:52.830 --> 00:12:55.080
-which triggers frequent
-local state changes
+00:13:24.957 --> 00:13:27.417
+除非它们的输入发生变化。
 
-00:12:55.080 --> 00:12:58.410
-and sets the components with
-expensive change detection
+00:13:27.310 --> 00:13:30.370
+让我们回到应用程序并添加一名员工。
 
-00:12:58.410 --> 00:13:02.260
-checks to use OnPush.
+00:13:30.370 --> 00:13:31.000
+请注意，
 
-00:13:02.260 --> 00:13:04.540
-The third pattern
-we're going to look at
+00:13:31.000 --> 00:13:35.950
+我们得到了一个由 keydown 事件触发的相
+当昂贵的换站周期。
 
-00:13:04.540 --> 00:13:07.810
-is the recalculation of
-referentially transparent
+00:13:35.860 --> 00:13:38.656
+我们降低了浏览器的帧率，
 
-00:13:07.810 --> 00:13:09.880
-expressions.
+00:13:38.656 --> 00:13:44.491
+Angular 将大部分变化检测周期都花在了列
+表组件中。
 
-00:13:09.880 --> 00:13:12.190
-If we have an expression
-in a template that
+00:13:44.370 --> 00:13:47.833
+当我们将新员工添加到 Sales 列表时，
 
-00:13:12.190 --> 00:13:14.500
-could be replaced
-with its value when
+00:13:47.833 --> 00:13:50.787
+我们调用 app 组件的 add 方法，
 
-00:13:14.500 --> 00:13:16.780
-its parameters don't
-change, we call
+00:13:50.787 --> 00:13:53.130
+这会创建一个不可变列表。
 
-00:13:16.780 --> 00:13:19.610
-it referentially transparent.
+00:13:53.130 --> 00:13:58.755
+不可变列表将新的不可变列表传递给 ListComponent，
 
-00:13:19.610 --> 00:13:22.120
-This means that we don't
-have to recalculate
+00:13:58.755 --> 00:14:00.550
+触发其更改检测。
 
-00:13:22.120 --> 00:13:24.640
-the expressions between
-change-detection cycles
+00:14:00.550 --> 00:14:06.409
+Angular 遍历各个员工并重新计算他​​们的
+数值，
 
-00:13:24.640 --> 00:13:27.310
-unless their input change.
+00:14:06.409 --> 00:14:08.673
+即使他们没有改变。
 
-00:13:27.310 --> 00:13:28.810
-Let us go back to
-the application
+00:14:08.540 --> 00:14:14.310
+理想情况下，您只想计算新员工的价值。
 
-00:13:28.810 --> 00:13:30.370
-and add an employee.
+00:14:14.310 --> 00:14:19.411
+我们可以通过一点重构来提高应用程序的性
+能。
 
-00:13:30.370 --> 00:13:32.980
-Notice that we got a pretty
-expensive change-station cycle
+00:14:19.290 --> 00:14:22.498
+我们可以创建一个名为 calculate 的新管
+道。
 
-00:13:32.980 --> 00:13:35.860
-triggered by the keydown event.
+00:14:22.420 --> 00:14:27.798
+让我们导入管道装饰器并将管道名称设置为“
+计算”。
 
-00:13:35.860 --> 00:13:37.630
-We dropped the
-browser's frame rate
+00:14:27.798 --> 00:14:28.616
+在这里，
 
-00:13:37.630 --> 00:13:41.200
-and Angular spent most of
-its change detection cycles
+00:14:28.616 --> 00:14:32.241
+我们明确表示管道是纯粹的可读性，
 
-00:13:41.200 --> 00:13:44.370
-within the list component.
+00:14:32.241 --> 00:14:34.696
+即使这是属性的默认值。
 
-00:13:44.370 --> 00:13:46.770
-When we add a new employee
-to the Sales list,
+00:14:34.580 --> 00:14:35.268
+下一步，
 
-00:13:46.770 --> 00:13:51.240
-we invoke the add methods
-of the app component, which
+00:14:35.268 --> 00:14:38.219
+我们可以实现 CalculatePipe 类，
 
-00:13:51.240 --> 00:13:53.130
-creates an immutable list.
+00:14:38.219 --> 00:14:42.448
+添加一个转换方法并实现 PipeTransform 
+接口。
 
-00:13:53.130 --> 00:13:56.070
-The immutable list passes
-the new immutable list
+00:14:42.350 --> 00:14:55.021
+现在让我们移动 Fibonacci 实现并从 ListComponent 
+中删除冗余的计算方法。
 
-00:13:56.070 --> 00:14:00.550
-to the ListComponent,
-triggering its change detection.
+00:14:54.840 --> 00:15:07.801
+让我们将 CalculatePipe 添加到 employee-list.module 
+中的声明中。
 
-00:14:00.550 --> 00:14:02.760
-Angular goes through
-the individual employees
+00:15:07.595 --> 00:15:08.998
+最后，
 
-00:14:02.760 --> 00:14:05.190
-and recalculates
-their numeric values,
+00:15:08.998 --> 00:15:25.551
+我们需要更新 ListComponent 的模板以使
+用管道而不是方法调用。
 
-00:14:05.190 --> 00:14:08.540
-even though they didn't change.
+00:15:25.270 --> 00:15:25.737
+请注意，
 
-00:14:08.540 --> 00:14:11.360
-Ideally, you would want to
-calculate the value only
+00:15:25.737 --> 00:15:28.937
+现在我们可以在没有任何明显延迟的情况下
+添加员工。
 
-00:14:11.360 --> 00:14:14.310
-for a new employee.
+00:15:28.870 --> 00:15:30.435
+回顾一下，
 
-00:14:14.310 --> 00:14:16.560
-We can improve the
-application's performance
+00:15:30.435 --> 00:15:38.261
+当 Angular 重复地重新计算相同的模板表
+达式时，
 
-00:14:16.560 --> 00:14:19.290
-here with a little
-bit of refactoring.
+00:15:38.261 --> 00:15:43.305
+即使它们仅依赖于值不变的参数，
 
-00:14:19.290 --> 00:14:22.420
-We can create a new
-pipe called calculate.
+00:15:43.305 --> 00:15:45.914
+也会出现此问题。
 
-00:14:22.420 --> 00:14:24.990
-Let us import the pipe
-decorator and sets
+00:15:45.740 --> 00:15:55.707
+我们可以通过注意到变化检测周期与我们在 UI 
+中所做的更改不成比例的时间来识别 Angular DevTools 
+的问题。
 
-00:14:24.990 --> 00:14:27.360
-the pipe name to "calculate."
+00:15:55.510 --> 00:16:03.759
+解决方案通常涉及将计算移动到纯管道或通
+过记忆缓存它。
 
-00:14:27.360 --> 00:14:29.430
-Here, we explicitly
-said the pipe
+00:16:03.600 --> 00:16:08.700
+我们要看的最后一个模式是大型组件树。
 
-00:14:29.430 --> 00:14:32.160
-to be pure for readability,
-even though that's
+00:16:08.700 --> 00:16:13.352
+即使我们优化了每个组件并且不执行冗余计
+算，
 
-00:14:32.160 --> 00:14:34.580
-the property's default value.
+00:16:13.352 --> 00:16:16.121
+如果我们有数千个组件实例，
 
-00:14:34.580 --> 00:14:37.790
-As a next step, we can implement
-the CalculatePipe class,
+00:16:16.121 --> 00:16:18.890
+我们仍然可以观察到帧丢失。
 
-00:14:37.790 --> 00:14:41.540
-adding a transform method and
-implementing the PipeTransform
+00:16:18.780 --> 00:16:22.159
+为了展示我们如何在这种情况下提高性能，
 
-00:14:41.540 --> 00:14:42.350
-interface.
+00:16:22.159 --> 00:16:24.990
+我在每个列表中添加了几百名员工。
 
-00:14:49.200 --> 00:14:51.270
-Now let us move the
-Fibonacci implementation
+00:16:24.990 --> 00:16:27.538
+当我们添加一名新员工时，
 
-00:14:51.270 --> 00:14:53.550
-and remove the redundant
-calculate method
+00:16:27.538 --> 00:16:33.410
+我们注意到检测 ListComponent 的变化需
+要超过 25 毫秒，
 
-00:14:53.550 --> 00:14:54.840
-from the ListComponent.
+00:16:33.410 --> 00:16:34.850
+这会导致丢帧。
 
-00:15:02.630 --> 00:15:05.750
-Let us add the CalculatePipe
-to the declarations
+00:16:34.740 --> 00:16:40.350
+提高大型组件树的性能涉及使组件树更小。
 
-00:15:05.750 --> 00:15:07.595
-in the employee-list.module.
+00:16:40.350 --> 00:16:46.020
+标准技术是按需呈现，例如虚拟化或分页。
 
-00:15:15.530 --> 00:15:19.360
-Finally, we need to update the
-template of the ListComponent
+00:16:46.020 --> 00:16:47.752
+出于我们的目的，
 
-00:15:19.360 --> 00:15:25.270
-to use the pipe rather
-than a method call.
+00:16:47.752 --> 00:16:52.140
+我们将使用 Angular cdk 的虚拟滚动组件。
 
-00:15:25.270 --> 00:15:27.040
-Notice that now we
-can add an employee
+00:16:52.140 --> 00:16:54.800
+在 ListComponent 的模板中，
 
-00:15:27.040 --> 00:15:28.870
-without any visible delays.
+00:16:54.800 --> 00:17:00.630
+我们将使用项目大小等于 50 的 cdk_virtual_scroll_viewport。
 
-00:15:32.410 --> 00:15:36.250
-To recap, this problem occurs
-when Angular recalculates
+00:17:00.630 --> 00:17:03.537
+我们还将添加 CSS 类“视口”，
 
-00:15:36.250 --> 00:15:38.650
-the same template
-expression repeatedly,
+00:17:03.537 --> 00:17:06.780
+以便我们可以设置此组件的样式。
 
-00:15:38.650 --> 00:15:44.050
-even though they depend only on
-parameters that value does not
+00:17:06.780 --> 00:17:09.288
+我们将使用 cdkVirtualFor，
 
-00:15:44.050 --> 00:15:45.740
-change.
-
-00:15:45.740 --> 00:15:48.170
-We can identify the problem
-with Angular DevTools
-
-00:15:48.170 --> 00:15:50.540
-by noticing change
-detection cycles that
-
-00:15:50.540 --> 00:15:55.510
-don't take time proportional to
-the changes we made in the UI.
-
-00:15:55.510 --> 00:15:58.750
-The solution usually involves
-either moving a calculation
-
-00:15:58.750 --> 00:16:03.600
-to a pure pipe or caching
-it via memorization.
-
-00:16:03.600 --> 00:16:05.370
-The final pattern
-we're going to look at
-
-00:16:05.370 --> 00:16:08.700
-is large component trees.
-
-00:16:08.700 --> 00:16:10.920
-Even if we have
-optimized each component
-
-00:16:10.920 --> 00:16:13.440
-and don't perform
-redundant calculations,
-
-00:16:13.440 --> 00:16:16.380
-we can still observe frame
-drops if we have thousands
-
-00:16:16.380 --> 00:16:18.780
-of component instances.
-
-00:16:18.780 --> 00:16:21.630
-To show how we can improve the
-performance in this scenario,
-
-00:16:21.630 --> 00:16:24.990
-I added a few hundred of
-employees to each list.
-
-00:16:24.990 --> 00:16:27.000
-When we add a new
-employee, we notice
-
-00:16:27.000 --> 00:16:29.700
-that detecting the
-ListComponent for changes
-
-00:16:29.700 --> 00:16:34.740
-takes over 25 milliseconds,
-which causes frame drops.
-
-00:16:34.740 --> 00:16:37.140
-Improving the performance
-in large component trees
-
-00:16:37.140 --> 00:16:40.350
-involves making the
-component tree smaller.
-
-00:16:40.350 --> 00:16:42.510
-Standard techniques are
-on-demand rendering,
-
-00:16:42.510 --> 00:16:46.020
-such as virtualization
-or pagination.
-
-00:16:46.020 --> 00:16:49.280
-For our purposes, we're going
-to use the Angular cdk's
-
-00:16:49.280 --> 00:16:52.140
-virtual scrolling component.
-
-00:16:52.140 --> 00:16:54.120
-In the template of
-the ListComponent,
-
-00:16:54.120 --> 00:16:56.910
-we will use the
-cdk_virtual_scroll_viewport
-
-00:16:56.910 --> 00:17:00.630
-with item size equal to 50.
-
-00:17:00.630 --> 00:17:04.109
-And we're also going to add the
-CSS class "viewport" so that we
-
-00:17:04.109 --> 00:17:06.780
-can style this component.
-
-00:17:06.780 --> 00:17:10.109
-Instead of using ngFor
-in the mat-list item,
-
-00:17:10.109 --> 00:17:12.599
-we'll use the cdkVirtualFor.
+00:17:09.288 --> 00:17:12.599
+而不是在 mat-list 项中使用 ngFor。
 
 00:17:12.599 --> 00:17:18.079
-We'll also set the height of
-the container to 800 pixels.
+我们还将容器的高度设置为 800 像素。
 
 00:17:18.079 --> 00:17:21.240
-And that's all.
+就这样。
 
-00:17:21.240 --> 00:17:23.700
-Now when we add a new
-item, the change section
+00:17:21.240 --> 00:17:23.755
+现在，当我们添加一个新项目时，
 
-00:17:23.700 --> 00:17:27.197
-in the ListComponent
-takes 1/5 of the time
+00:17:23.755 --> 00:17:28.245
+ListComponent 中的更改部分花费的时间是
+以前的 1/5。
 
-00:17:27.197 --> 00:17:28.155
-it used to take before.
+00:17:28.155 --> 00:17:29.265
+请记住，
 
-00:17:33.433 --> 00:17:34.850
-Keep in mind that
-even if you have
+00:17:29.265 --> 00:17:36.242
+即使您拥有高度优化的组件并渲染了数千个
+组件，
 
-00:17:34.850 --> 00:17:38.270
-highly optimized components
-and render thousands of them,
+00:17:36.242 --> 00:17:43.537
+它们的模板组合在变更检测期间仍然可能非
+常昂贵。
 
-00:17:38.270 --> 00:17:40.490
-their templates
-combined could still
+00:17:43.220 --> 00:17:48.445
+如果您发现许多组件只占用整个变更检测周
+期的一小部分，
 
-00:17:40.490 --> 00:17:43.220
-be very expensive
-during change detection.
+00:17:48.445 --> 00:17:54.273
+或者当有一个组件具有非常大的视图需要花
+费大量时间来检查时，
 
-00:17:43.220 --> 00:17:45.680
-You can identify this
-problem in your DevTools
+00:17:54.273 --> 00:17:57.790
+您可以在您的 DevTools 中识别此问题。
 
-00:17:45.680 --> 00:17:48.380
-if you find many
-components that just
-
-00:17:48.380 --> 00:17:51.020
-take a fraction of the
-overall change detection cycle
-
-00:17:51.020 --> 00:17:55.070
-or when there is one component
-with a really large view that
-
-00:17:55.070 --> 00:17:57.590
-takes a lot of
-time to be checked.
-
-00:17:57.590 --> 00:18:00.260
-The solution involves on-demand
-rendering of components
-
-00:18:00.260 --> 00:18:03.020
-to trim the component tree.
+00:17:57.590 --> 00:18:03.152
+该解决方案涉及组件的按需渲染以修剪组件
+树。
 
 00:18:03.020 --> 00:18:05.300
-That's pretty much everything
-I had for you today.
+这几乎就是我今天为你准备的一切。
 
-00:18:05.300 --> 00:18:07.310
-We first went through
-the fundamentals
+00:18:05.300 --> 00:18:09.968
+我们首先了解了使用 Angular DevTools 的
+基础知识，
 
-00:18:07.310 --> 00:18:11.330
-of using Angular DevTools,
-focusing on the profiler.
+00:18:09.968 --> 00:18:11.427
+重点关注分析器。
 
-00:18:11.330 --> 00:18:13.130
-After that, we
-explored four patterns
+00:18:11.330 --> 00:18:12.006
+之后，
 
-00:18:13.130 --> 00:18:15.530
-that can help you
-identify and resolve
-
-00:18:15.530 --> 00:18:17.170
-common performance issues--
-
-00:18:17.170 --> 00:18:21.485
-zone pollution, out of bounds,
-change detection, recalculation
-
-00:18:21.485 --> 00:18:23.990
-of referentially
-transparent expressions,
-
-00:18:23.990 --> 00:18:27.410
-and large component trees.
+00:18:12.006 --> 00:18:27.681
+我们探索了四种可以帮助您识别和解决常见
+性能问题的模式——区域污染、越界、变化检测、
+引用透明表达式的重新计算和大型组件树。
 
 00:18:27.410 --> 00:18:29.460
-Thank you very much for
-watching this video.
+非常感谢您观看此视频。
 
 00:18:29.460 --> 00:18:32.350
-See you next time
-and happy coding.
+下次见，编码愉快。

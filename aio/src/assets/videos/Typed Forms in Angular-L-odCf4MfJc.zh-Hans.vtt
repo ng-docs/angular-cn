@@ -1,869 +1,619 @@
 WEBVTT
 Kind: captions
-Language: en
+Language: zh-Hans
 
-00:00:00.000 --> 00:00:02.928
-[MUSIC PLAYING]
+00:00:00.000 --> 00:00:09.881
+[音乐播放] DYLAN HUNN：大家好，
 
-00:00:12.710 --> 00:00:14.310
-DYLAN HUNN: Hello,
-Angular community.
+00:00:09.881 --> 00:00:14.310
+Angular 社区。
 
-00:00:14.310 --> 00:00:16.520
-My name is Dylan Hunn, and
-I'm a software engineer
+00:00:14.310 --> 00:00:15.673
+我叫 Dylan Hunn，
 
-00:00:16.520 --> 00:00:18.740
-on the Angular framework team.
+00:00:15.673 --> 00:00:18.740
+是 Angular 框架团队的一名软件工程师。
 
-00:00:18.740 --> 00:00:20.420
-Over the last
-eight months, we've
+00:00:18.740 --> 00:00:20.020
+在过去的八个月里，
 
-00:00:20.420 --> 00:00:22.430
-been working on
-improving Angular forms.
+00:00:20.020 --> 00:00:22.430
+我们一直致力于改进 Angular 表单。
 
-00:00:22.430 --> 00:00:25.070
-And I'm incredibly excited to
-share this new feature with you
+00:00:22.430 --> 00:00:26.480
+我非常高兴今天能与您分享这项新功能。
 
-00:00:25.070 --> 00:00:26.480
-today.
+00:00:26.480 --> 00:00:30.115
+类型化表单是 Angular 14 的一部分，
 
-00:00:26.480 --> 00:00:28.970
-Typed forms are
-part of Angular 14
+00:00:30.115 --> 00:00:33.750
+今天就可以开始迁移您的应用程序了。
 
-00:00:28.970 --> 00:00:31.100
-and are ready today
-for you to start
+00:00:33.750 --> 00:00:35.328
+在我们进入细节之前，
 
-00:00:31.100 --> 00:00:33.750
-migrating your application.
+00:00:35.328 --> 00:00:38.400
+让我们先了解一下响应式表单的背景知识。
 
-00:00:33.750 --> 00:00:36.810
-Before we jump into the details,
-let's get some background
+00:00:38.400 --> 00:00:42.556
+对于构建或维护表单应用程序的任何人来说，
 
-00:00:36.810 --> 00:00:38.400
-on reactive forms.
+00:00:42.556 --> 00:00:44.580
+这可能已经很熟悉了。
 
-00:00:38.400 --> 00:00:40.680
-This might already
-be familiar to anyone
+00:00:44.580 --> 00:00:48.466
+响应式表单是在 Angular 中构建表单的一
+种方式。
 
-00:00:40.680 --> 00:00:44.580
-who builds or maintains
-a forms application.
+00:00:48.380 --> 00:00:50.543
+与模板驱动的表单相比，
 
-00:00:44.580 --> 00:00:48.380
-Reactive forms are one way
-to build forms in Angular.
-
-00:00:48.380 --> 00:00:50.120
-Compared with
-template-driven forms,
-
-00:00:50.120 --> 00:00:53.630
-they provide a more explicit
-data model and state management
-
-00:00:53.630 --> 00:00:56.930
-using RxJS and Observables.
+00:00:50.543 --> 00:00:57.033
+它们使用 RxJS 和 Observables 提供了更
+明确的数据模型和状态管理。
 
 00:00:56.930 --> 00:00:59.150
-They are not always
-the right choice.
+他们并不总是正确的选择。
 
-00:00:59.150 --> 00:01:02.030
-Template-driven forms are
-less verbose and better
+00:00:59.150 --> 00:01:01.791
+模板驱动的表单不那么冗长，
 
-00:01:02.030 --> 00:01:04.010
-for some use cases.
+00:01:01.791 --> 00:01:04.010
+对于某些用例来说更好。
 
-00:01:04.010 --> 00:01:06.200
-These new types we're
-going to see today
-
-00:01:06.200 --> 00:01:08.130
-are only for reactive forms.
+00:01:04.010 --> 00:01:08.222
+我们今天要看到的这些新类型仅适用于反应
+式形式。
 
 00:01:08.130 --> 00:01:10.450
-So that's where we'll focus.
+所以这就是我们要关注的地方。
 
-00:01:10.450 --> 00:01:13.960
-Let's start with some background
-on why we're making this change
+00:01:10.450 --> 00:01:12.590
+让我们从一些背景开始，
 
-00:01:13.960 --> 00:01:16.600
-and how it benefits
-most applications that
+00:01:12.590 --> 00:01:19.722
+了解为什么要进行此更改以及它如何使大多
+数使用响应式表单的应用程序受益。
 
-00:01:16.600 --> 00:01:19.620
-use reactive forms.
+00:01:19.620 --> 00:01:20.413
+长期以来，
 
-00:01:19.620 --> 00:01:22.890
-Typed forms have long been the
-most upvoted feature request
+00:01:20.413 --> 00:01:24.908
+类型化表单一直是 Angular 社区中投票最
+多的功能请求。
 
-00:01:22.890 --> 00:01:24.820
-from the Angular community.
+00:01:24.820 --> 00:01:28.790
+此外，此更改解锁了许多未来的改进，
 
-00:01:24.820 --> 00:01:27.360
-Additionally, this
-change unlocks a number
+00:01:28.790 --> 00:01:35.365
+例如更好的控件状态更改事件、更严格的模
+板类型检查等等。
 
-00:01:27.360 --> 00:01:30.480
-of future improvements, such
-as better control state change
+00:01:35.240 --> 00:01:36.987
+在设计打字表格时，
 
-00:01:30.480 --> 00:01:35.240
-events, stricter template
-type checking, and much more.
-
-00:01:35.240 --> 00:01:37.340
-When designing typed
-forms, we tried
-
-00:01:37.340 --> 00:01:39.350
-to follow some North stars.
+00:01:36.987 --> 00:01:39.350
+我们试图跟随一些北极星。
 
 00:01:39.350 --> 00:01:42.900
-In particular, we had
-four guiding principles.
+特别是，我们有四项指导原则。
 
 00:01:42.900 --> 00:01:45.650
-First, we want the
-types to be powerful.
+首先，我们希望类型强大。
 
-00:01:45.650 --> 00:01:47.390
-You should be able
-to confidently
+00:01:45.650 --> 00:01:50.356
+您应该能够自信地修改即使是最复杂的表单，
 
-00:01:47.390 --> 00:01:50.150
-modify even the
-most complex forms,
-
-00:01:50.150 --> 00:01:53.360
-no matter how deeply nested
-you have form groups or form
-
-00:01:53.360 --> 00:01:54.820
-controls.
+00:01:50.356 --> 00:01:54.820
+无论您的表单组或表单控件的嵌套有多深。
 
 00:01:54.820 --> 00:01:58.450
-Second, we don't want to
-completely replace forms.
+其次，我们不想完全取代表格。
 
-00:01:58.450 --> 00:02:00.760
-We want to have one
-unified ecosystem
+00:01:58.450 --> 00:02:03.689
+我们希望拥有一个我们共同前进的统一生态
+系统。
 
-00:02:00.760 --> 00:02:03.570
-that we move forward together.
+00:02:03.570 --> 00:02:06.329
+第三，我们希望表单尽可能安全，
 
-00:02:03.570 --> 00:02:06.930
-Third, we want forms to
-be as safe as possible, no
+00:02:06.329 --> 00:02:08.201
+当您访问值或控件时，
 
-00:02:06.930 --> 00:02:08.820
-more surprising
-anys in your types
+00:02:08.201 --> 00:02:11.650
+您的类型中的任何内容都不会令人惊讶。
 
-00:02:08.820 --> 00:02:11.650
-when you access
-values or controls.
+00:02:11.650 --> 00:02:12.247
+第四，
 
-00:02:11.650 --> 00:02:14.590
-And fourth, you should be
-able to gradually migrate
+00:02:12.247 --> 00:02:16.190
+您应该能够按照自己的步调逐步迁移，
 
-00:02:14.590 --> 00:02:18.460
-at your own pace, even if you
-have a lot of existing forms
-
-00:02:18.460 --> 00:02:20.850
-code in your application.
+00:02:16.190 --> 00:02:20.850
+即使您的应用程序中有很多现有的表单代码。
 
 00:02:20.850 --> 00:02:23.970
-Now let's consider an example.
+现在让我们考虑一个例子。
 
-00:02:23.970 --> 00:02:25.860
-In general, every
-form corresponds
+00:02:23.970 --> 00:02:27.187
+通常，每个表单都对应一个模式，
 
-00:02:25.860 --> 00:02:30.060
-to a schema, or the shape of
-the data you want to collect.
+00:02:27.187 --> 00:02:30.060
+或者您要收集的数据的形状。
 
 00:02:30.060 --> 00:02:33.030
-This is an example schema
-representing a party.
+这是代表一方的示例架构。
 
-00:02:33.030 --> 00:02:34.530
-It has inner objects--
+00:02:33.030 --> 00:02:40.733
+它具有内部对象——在本例中为地址字段——和
+内部数组——在本例中为派对菜单。
 
-00:02:34.530 --> 00:02:36.180
-in this case, the
-address field--
+00:02:40.620 --> 00:02:44.421
+从来没有必要显式声明您的架构，
 
-00:02:36.180 --> 00:02:40.620
-and inner arrays-- in this
-case, the menu for the party.
-
-00:02:40.620 --> 00:02:44.180
-It's never necessary to
-explicitly declare your schema,
-
-00:02:44.180 --> 00:02:46.460
-but it's always useful to
-think about when you're
-
-00:02:46.460 --> 00:02:49.270
-working with a complex form.
+00:02:44.421 --> 00:02:49.270
+但在处理复杂表单时考虑一下总是有用的。
 
 00:02:49.270 --> 00:02:53.180
-By contrast, we do explicitly
-declare the form model.
+相比之下，我们确实明确声明了表单模型。
 
 00:02:53.180 --> 00:02:57.280
-And this is the corresponding
-form for hosting a party.
+这是举办派对的相应表格。
 
-00:02:57.280 --> 00:03:00.610
-It accepts inputs for the
-parties address, for the menu,
+00:02:57.280 --> 00:03:04.502
+它接受各方地址、菜单以及您可能需要的任
+何其他表单控件的输入。
 
-00:03:00.610 --> 00:03:04.380
-and for any other form
-controls you might want.
+00:03:04.380 --> 00:03:05.087
+以前，
 
-00:03:04.380 --> 00:03:07.440
-Previously, interacting
-with complicated forms
-
-00:03:07.440 --> 00:03:10.320
-models like this one
-could be hazardous.
+00:03:05.087 --> 00:03:10.320
+与像这样的复杂表单模型交互可能很危险。
 
 00:03:10.320 --> 00:03:13.380
-For example, this code
-contains a subtle bug.
+例如，这段代码包含一个微妙的错误。
 
-00:03:13.380 --> 00:03:17.100
-The value of place is number
-and calling a substring on it
+00:03:13.380 --> 00:03:19.689
+place 的值为 number 并且在其上调用子字
+符串将在运行时崩溃。
 
-00:03:17.100 --> 00:03:19.580
-will crash at runtime.
+00:03:19.580 --> 00:03:21.593
+现在，有了类型化表单，
 
-00:03:19.580 --> 00:03:21.860
-Now, with typed
-forms, this bug will
-
-00:03:21.860 --> 00:03:25.720
-be caught at compilation
-time right in your editor.
+00:03:21.593 --> 00:03:25.821
+这个错误将在编译时就在您的编辑器中被捕
+获。
 
 00:03:25.720 --> 00:03:28.660
-These new types
-permeate the API.
+这些新类型渗透到 API 中。
 
-00:03:28.660 --> 00:03:31.560
-You'll benefit from them
-when accessing form values,
+00:03:28.660 --> 00:03:39.068
+在访问表单值、获取深层嵌套控件、订阅 Observables 
+等几乎任何与表单 API 表面交互的点时，
 
-00:03:31.560 --> 00:03:34.230
-getting deeply nested
-controls, subscribing
+00:03:39.068 --> 00:03:41.174
+您都​​会从中受益。
 
-00:03:34.230 --> 00:03:37.950
-to Observables, and so much
-more at virtually any point you
+00:03:41.050 --> 00:03:43.520
+这将大大提高安全性，
 
-00:03:37.950 --> 00:03:41.050
-interact with the
-forms API surface.
+00:03:43.520 --> 00:03:47.810
+防止简单的拼写错误和更复杂的错误。
 
-00:03:41.050 --> 00:03:43.260
-This will give you
-much improved safety,
+00:03:47.810 --> 00:03:53.223
+这些类型还允许在您的编辑器中进行强大的
+自动完成。
 
-00:03:43.260 --> 00:03:47.810
-preventing both simple
-typos and more complex bugs.
+00:03:53.110 --> 00:03:57.190
+在派对表单示例中，当访问表单的值时，
 
-00:03:47.810 --> 00:03:51.320
-The types also allow for
-robust autocompletion right
+00:03:57.190 --> 00:04:00.670
+IDE 会建议表单的每个已知子项。
 
-00:03:51.320 --> 00:03:53.110
-in your editor.
+00:04:00.670 --> 00:04:05.680
+这有助于您自信地浏览最复杂的表单。
 
-00:03:53.110 --> 00:03:56.710
-In the party form example, when
-accessing the form's value,
+00:04:05.680 --> 00:04:08.294
+虽然这是一个很大的变化，
 
-00:03:56.710 --> 00:04:00.670
-the IDE suggests every
-known child of the form.
+00:04:08.294 --> 00:04:12.500
+但它 100% 向后兼容所有现有的表单代码。
 
-00:04:00.670 --> 00:04:03.430
-This helps you navigate
-even the most complex
+00:04:12.500 --> 00:04:15.361
+当您更新到 Angular 14 时，
 
-00:04:03.430 --> 00:04:05.680
-forms with confidence.
+00:04:15.361 --> 00:04:18.680
+您的表单将自动选择退出新类型。
 
-00:04:05.680 --> 00:04:07.750
-Although this is
-a big change, it's
+00:04:18.680 --> 00:04:20.927
+然后，当您准备就绪时，
 
-00:04:07.750 --> 00:04:11.200
-100% backwards compatible with
-all of your existing forms
+00:04:20.927 --> 00:04:24.410
+您可以一次在一个控件上打开它们，
 
-00:04:11.200 --> 00:04:12.500
-code.
+00:04:24.410 --> 00:04:27.219
+并按照自己的步调逐步迁移。
 
-00:04:12.500 --> 00:04:15.320
-When you update to
-Angular 14, your forms
+00:04:27.220 --> 00:04:30.225
+现在您已经掌握了基础知识，
 
-00:04:15.320 --> 00:04:18.680
-will be automatically
-opted out of the new types.
+00:04:30.225 --> 00:04:32.750
+让我们探索实际的类型。
 
-00:04:18.680 --> 00:04:21.380
-Then, when you're
-ready, you can turn them
+00:04:32.750 --> 00:04:33.700
+所以刚才，
 
-00:04:21.380 --> 00:04:24.200
-on one control at a
-time and incrementally
+00:04:33.700 --> 00:04:36.760
+我们看到了一个建立派对的模式。
 
-00:04:24.200 --> 00:04:27.220
-migrate at your own pace.
+00:04:36.760 --> 00:04:41.664
+现在让我们看一下与该聚会的表单相对应的
+一些实际代码。
 
-00:04:27.220 --> 00:04:29.350
-Now that you've got
-the basics, let's
+00:04:41.570 --> 00:04:43.348
+所以让我们进入模板，
 
-00:04:29.350 --> 00:04:32.750
-explore the types in action.
-
-00:04:32.750 --> 00:04:36.760
-So a moment ago, we saw a
-schema for building a party.
-
-00:04:36.760 --> 00:04:39.340
-Now let's have a look at some
-actual code corresponding
-
-00:04:39.340 --> 00:04:41.570
-to the form for this party.
-
-00:04:41.570 --> 00:04:43.420
-So let's jump into
-the template and we'll
-
-00:04:43.420 --> 00:04:46.810
-add a new button corresponding
-to hosting a party.
+00:04:43.348 --> 00:04:46.810
+我们将添加一个对应于举办派对的新按钮。
 
 00:04:46.810 --> 00:04:50.170
-And we will call the partyInSF
-convenience function.
+我们将调用 partyInSF 便捷函数。
 
-00:04:50.170 --> 00:04:52.660
-Now we'll jump into the
-corresponding component
+00:04:50.170 --> 00:04:53.460
+现在我们将跳转到相应的组件，
 
-00:04:52.660 --> 00:04:57.480
-and we'll add the convenience
-function for throwing a party.
+00:04:53.460 --> 00:04:57.481
+我们将添加用于举办派对的便利功能。
 
 00:04:57.480 --> 00:05:00.870
-We will access this.party
-from the enclosing component.
+我们将从封闭组件访问 this.party。
 
 00:05:00.870 --> 00:05:04.020
-This corresponds to the form
-group for all the party's data.
+这对应于所有当事方数据的表单组。
 
-00:05:04.020 --> 00:05:07.260
-And we will call setValue
-on this form group
+00:05:04.020 --> 00:05:09.822
+我们将调用此表单组的 setValue 以赋予其
+新值。
 
-00:05:07.260 --> 00:05:09.690
-in order to give it a new value.
+00:05:09.690 --> 00:05:13.650
+但是，请注意我们实际上忘记了门牌号。
 
-00:05:09.690 --> 00:05:11.580
-However, notice
-that we've actually
+00:05:13.650 --> 00:05:16.906
+TypeScript 会警告我们这里缺少一个键，
 
-00:05:11.580 --> 00:05:13.650
-forgotten the house number.
+00:05:16.906 --> 00:05:19.891
+因为它期望当我们调用一个设置值时，
 
-00:05:13.650 --> 00:05:16.890
-TypeScript will warn us that
-we are missing a key here
-
-00:05:16.890 --> 00:05:18.600
-because it expects
-when we call a set
-
-00:05:18.600 --> 00:05:21.610
-value, all of the keys in
-the group to be present.
+00:05:19.891 --> 00:05:21.610
+组中的所有键都存在。
 
 00:05:21.610 --> 00:05:23.080
-So let's go ahead and add it.
+因此，让我们继续添加它。
 
-00:05:23.080 --> 00:05:26.850
-And notice that as I type, the
-new TypeScript types also power
+00:05:23.080 --> 00:05:25.073
+请注意，在我键入时，
 
-00:05:26.850 --> 00:05:29.390
-autocompletion.
+00:05:25.073 --> 00:05:29.390
+新的 TypeScript 类型也支持自动完成功能。
 
 00:05:29.390 --> 00:05:31.360
-However, I still
-have an error here.
+但是，我这里仍然有错误。
 
 00:05:31.360 --> 00:05:34.240
-The type system doesn't just
-check for missing properties.
+类型系统不只是检查缺失的属性。
 
-00:05:34.240 --> 00:05:37.120
-It also just checks
-for all of the names
+00:05:34.240 --> 00:05:39.620
+它还只检查对象中的所有名称和所有类型。
 
-00:05:37.120 --> 00:05:39.620
-and all of the
-types in the object.
+00:05:39.620 --> 00:05:41.247
+所以特别是在这里，
 
-00:05:39.620 --> 00:05:43.030
-So here in particular, whereas
-I currently have a number key,
+00:05:41.247 --> 00:05:43.639
+虽然我目前有一把数字钥匙，
 
-00:05:43.030 --> 00:05:45.840
-I should have a house key.
+00:05:43.639 --> 00:05:45.840
+但我应该有一把房门钥匙。
 
 00:05:45.840 --> 00:05:49.350
-Another option would have been
-to use patch value instead.
+另一种选择是改用补丁值。
 
-00:05:49.350 --> 00:05:51.900
-This still protects us
-against serious typing errors
+00:05:49.350 --> 00:05:52.819
+这仍然可以保护我们免受严重的打字错误，
 
-00:05:51.900 --> 00:05:54.990
-but relaxes the constraint
-that requires us to have
-
-00:05:54.990 --> 00:05:56.100
-all of the keys present.
+00:05:52.819 --> 00:05:56.100
+但放宽了要求我们拥有所有密钥的约束。
 
 00:05:56.100 --> 00:05:59.250
-In particular, we can just
-have the straight key.
+特别是，我们可以有直键。
 
 00:05:59.250 --> 00:06:01.270
-Now let's consider another case.
+现在让我们考虑另一种情况。
 
-00:06:01.270 --> 00:06:03.270
-Let's say that a neighbor
-made a noise complaint
+00:06:01.270 --> 00:06:03.044
+假设一个邻居投诉了噪音，
 
-00:06:03.270 --> 00:06:05.280
-and we want to figure out
-which neighbor it was.
+00:06:03.044 --> 00:06:05.280
+我们想弄清楚是哪个邻居投诉的。
 
-00:06:05.280 --> 00:06:08.050
-So we can add a new method
-on our component here
+00:06:05.280 --> 00:06:08.700
+所以我们可以在我们的组件上添加一个新方
+法，
 
-00:06:08.050 --> 00:06:10.410
-and we can use the get method.
+00:06:08.700 --> 00:06:10.491
+我们可以使用 get 方法。
 
-00:06:10.410 --> 00:06:12.990
-The get method accepts a
-string and will automatically
+00:06:10.410 --> 00:06:15.839
+get 方法接受一个字符串并将自动标记字符
+串中的每个字段，
 
-00:06:12.990 --> 00:06:15.510
-tokenize each field
-in the string,
-
-00:06:15.510 --> 00:06:17.850
-allowing us to access
-inner controls.
+00:06:15.839 --> 00:06:17.950
+允许我们访问内部控件。
 
 00:06:17.850 --> 00:06:20.580
-And notice that the type
-is correctly computed.
+并注意类型是正确计算的。
 
 00:06:20.580 --> 00:06:23.217
-In this case, we actually
-have an error again.
+在这种情况下，我们实际上又出现了错误。
 
-00:06:23.217 --> 00:06:25.050
-That's because we're
-trying to do arithmetic
+00:06:23.217 --> 00:06:26.777
+那是因为我们正在尝试使用字符串键进行算
+术运算。
 
-00:06:25.050 --> 00:06:26.700
-with a string key.
+00:06:26.700 --> 00:06:30.480
+这个错误告诉我们应该使用房屋钥匙，
 
-00:06:26.700 --> 00:06:28.380
-And this error
-tells us we should
+00:06:30.480 --> 00:06:31.740
+而不是数字。
 
-00:06:28.380 --> 00:06:31.740
-be using the house key,
-instead which is numeric.
+00:06:31.740 --> 00:06:35.211
+现在您已经近距离观察了这些新类型，
 
-00:06:31.740 --> 00:06:34.470
-Now that you've observed
-the new types up close,
+00:06:35.211 --> 00:06:38.051
+让我们深入了解细节设计细节。
 
-00:06:34.470 --> 00:06:38.050
-let's dive into the
-nitty-gritty design details.
+00:06:38.050 --> 00:06:38.535
+因此，
 
-00:06:38.050 --> 00:06:40.440
-So consider the form
-group we saw a moment ago
+00:06:38.535 --> 00:06:42.120
+请考虑我们刚才看到的用于地址的表单组。
 
-00:06:40.440 --> 00:06:42.120
-for an address.
+00:06:42.120 --> 00:06:46.681
+本例中 address.controls 的类型应该是什
+么？
 
-00:06:42.120 --> 00:06:44.130
-What should be the type
-of address.controls
+00:06:46.681 --> 00:06:47.658
+另一方面，
 
-00:06:44.130 --> 00:06:44.970
-in this example?
+00:06:47.658 --> 00:06:51.024
+address.value 的类型应该是什么？
 
-00:06:44.970 --> 00:06:46.410
-And on the other
-hand, what should
+00:06:51.024 --> 00:06:52.870
+使用类型化表单时，
 
-00:06:46.410 --> 00:06:49.110
-be the type of address.value?
+00:06:52.870 --> 00:06:56.888
+了解值类型与控件类型之间的区别很重要。
 
-00:06:49.110 --> 00:06:51.150
-When working with
-typed forms, it's
+00:06:56.780 --> 00:06:59.867
+正如我们之前在聚会示例中看到的那样，
 
-00:06:51.150 --> 00:06:52.740
-important to know
-about the difference
-
-00:06:52.740 --> 00:06:56.780
-between the types of values
-versus the types of controls.
-
-00:06:56.780 --> 00:06:58.950
-As we saw earlier with
-the party example,
-
-00:06:58.950 --> 00:07:01.190
-the value is the
-shape of your data.
+00:06:59.867 --> 00:07:01.190
+值是数据的形状。
 
 00:07:01.190 --> 00:07:06.300
-Here, for instance, the
-street field has type string.
+例如，在这里，街道字段的类型为字符串。
 
 00:07:06.300 --> 00:07:09.750
-On the other hand, you
-can also access controls.
+另一方面，您也可以访问控件。
 
-00:07:09.750 --> 00:07:12.330
-Here, the street field
-is a form control, which
+00:07:09.750 --> 00:07:13.197
+在这里，街道字段是一个表单控件，
 
-00:07:12.330 --> 00:07:15.150
-has a string inside of it.
+00:07:13.197 --> 00:07:15.150
+其中有一个字符串。
 
 00:07:15.150 --> 00:07:18.190
-Typed forms use
-control types heavily.
+类型化表单大量使用控件类型。
 
-00:07:18.190 --> 00:07:21.520
-Although you rarely need to
-specify an explicit type,
+00:07:18.190 --> 00:07:21.613
+虽然您很少需要指定显式类型，
 
-00:07:21.520 --> 00:07:26.430
-if you do, you should
-always use the control type.
+00:07:21.613 --> 00:07:23.515
+但如果您这样做，
+
+00:07:23.515 --> 00:07:26.431
+您应该始终使用控件类型。
 
 00:07:26.430 --> 00:07:30.570
-Another interesting topic
-is resetting controls.
+另一个有趣的话题是重置控件。
 
-00:07:30.570 --> 00:07:33.330
-Let's consider the simplest
-possible form, just
+00:07:30.570 --> 00:07:35.200
+让我们考虑最简单的形式，只有一个控件。
 
-00:07:33.330 --> 00:07:35.200
-a single control.
+00:07:35.200 --> 00:07:37.215
+当我们首先考虑这个控件时，
 
-00:07:35.200 --> 00:07:37.240
-When we first
-consider this control,
-
-00:07:37.240 --> 00:07:39.230
-we see it contains a string.
+00:07:37.215 --> 00:07:39.230
+我们看到它包含一个字符串。
 
 00:07:39.230 --> 00:07:43.130
-So we might expect the type
-to be form control of string.
+所以我们可能期望类型是字符串的形式控制。
 
 00:07:43.130 --> 00:07:46.060
-However, there's
-a tricky detail.
+但是，有一个棘手的细节。
 
-00:07:46.060 --> 00:07:47.960
-When you're working
-with a form control,
+00:07:46.060 --> 00:07:48.355
+当您使用表单控件时，
 
-00:07:47.960 --> 00:07:50.650
-you can call reset at any time.
+00:07:48.355 --> 00:07:50.650
+您可以随时调用重置。
 
-00:07:50.650 --> 00:07:53.410
-And when that happens,
-the control's value
+00:07:50.650 --> 00:07:52.955
+当发生这种情况时，
 
-00:07:53.410 --> 00:07:56.480
-will immediately reset to null.
+00:07:52.955 --> 00:07:56.480
+控件的值将立即重置为 null。
 
-00:07:56.480 --> 00:07:59.600
-This means that you cannot
-always assume the value
+00:07:56.480 --> 00:08:01.729
+这意味着您不能总是假设控件的值是一个字
+符串。
 
-00:07:59.600 --> 00:08:01.610
-of a control is a string.
+00:08:01.610 --> 00:08:04.253
+在以前的 Angular 版本中，
 
-00:08:01.610 --> 00:08:04.940
-In previous Angular versions,
-this example would crash
+00:08:04.253 --> 00:08:06.566
+此示例会在运行时崩溃，
 
-00:08:04.940 --> 00:08:07.940
-at runtime because you cannot
-call a substring on a null
+00:08:06.566 --> 00:08:09.760
+因为您无法对空值调用子字符串。
 
-00:08:07.940 --> 00:08:09.760
-value.
+00:08:09.760 --> 00:08:14.352
+Angular 14 现在可以保护您免受此类错误
+的影响，
 
-00:08:09.760 --> 00:08:13.060
-Angular 14 now protects you
-from these kinds of errors,
-
-00:08:13.060 --> 00:08:15.940
-because the type of the
-dog control in this example
-
-00:08:15.940 --> 00:08:18.230
-is string or null.
+00:08:14.352 --> 00:08:18.332
+因为此示例中狗控件的类型是字符串或空值。
 
 00:08:18.230 --> 00:08:22.520
-Sometimes, though, that's not
-actually the behavior you want.
+但有时，这实际上并不是您想要的行为。
 
-00:08:22.520 --> 00:08:25.240
-In fact, many existing
-forms of applications
+00:08:22.520 --> 00:08:23.401
+事实上，
 
-00:08:25.240 --> 00:08:29.570
-do not rely on the existing
-nullability of the controls.
+00:08:23.401 --> 00:08:29.696
+许多现有形式的应用程序并不依赖于控件的
+现有可空性。
 
-00:08:29.570 --> 00:08:33.289
-In Angular 14, form controls
-have a brand new option
+00:08:29.570 --> 00:08:31.227
+在 Angular 14 中，
 
-00:08:33.289 --> 00:08:35.320
-called nonNullable.
+00:08:31.227 --> 00:08:35.418
+表单控件有一个名为 nonNullable 的全新
+选项。
 
-00:08:35.320 --> 00:08:37.419
-Instead of resetting
-to null, the control
+00:08:35.320 --> 00:08:37.899
+控件不会重置为 null，
 
-00:08:37.419 --> 00:08:40.350
-will reset to its initial value.
+00:08:37.899 --> 00:08:40.350
+而是重置为其初始值。
 
-00:08:40.350 --> 00:08:42.600
-As you might expect,
-this also removes
+00:08:40.350 --> 00:08:41.508
+如您所料，
 
-00:08:42.600 --> 00:08:45.110
-null from the controls type.
+00:08:41.508 --> 00:08:45.110
+这还会从控件类型中删除 null。
 
 00:08:45.110 --> 00:08:48.540
-In this example, we've gotten
-rid of the nulls entirely.
+在这个例子中，我们已经完全摆脱了空值。
 
 00:08:48.540 --> 00:08:53.070
-And now calling substring
-is totally safe.
+现在调用 substring 是完全安全的。
 
-00:08:53.070 --> 00:08:56.310
-A related area involves
-disabled controls and the effect
+00:08:53.070 --> 00:08:58.900
+相关领域涉及禁用控件及其对窗体值的影响。
 
-00:08:56.310 --> 00:08:58.900
-that they have on
-a form's value.
+00:08:58.900 --> 00:09:00.861
+对于 Angular 表单，
 
-00:08:58.900 --> 00:09:01.210
-With Angular forms,
-disabled controls
+00:09:00.861 --> 00:09:04.020
+禁用的控件不包含在表单的值中。
 
-00:09:01.210 --> 00:09:04.020
-are not included in
-the form's value.
-
-00:09:04.020 --> 00:09:07.110
-This is similar to how
-native HTML forms behave when
-
-00:09:07.110 --> 00:09:09.540
-their controls are disabled.
+00:09:04.020 --> 00:09:09.653
+这类似于本机 HTML 表单在其控件被禁用时
+的行为方式。
 
 00:09:09.540 --> 00:09:13.650
-However, this has an impact
-on the type of your form.
+但是，这会影响表单的类型。
 
-00:09:13.650 --> 00:09:17.070
-When you call dot value,
-any key in the form group
+00:09:13.650 --> 00:09:15.342
+当您调用点值时，
 
-00:09:17.070 --> 00:09:18.840
-might have been disabled.
+00:09:15.342 --> 00:09:18.840
+表单组中的任何键都可能已被禁用。
 
 00:09:18.840 --> 00:09:22.590
-As a result, the type knows
-that each key is optional.
+结果，该类型知道每个键都是可选的。
 
-00:09:22.590 --> 00:09:25.260
-And when you use this
-value, the type system
+00:09:22.590 --> 00:09:24.730
+当您使用此值时，
 
-00:09:25.260 --> 00:09:29.070
-enforces you handle the
-possibility that each key might
+00:09:24.730 --> 00:09:31.293
+类型系统会强制您处理每个键可能未定义的
+可能性。
 
-00:09:29.070 --> 00:09:31.150
-be undefined.
+00:09:31.150 --> 00:09:34.830
+在此示例中，当使用 cat.value 时，
 
-00:09:31.150 --> 00:09:34.360
-In this example,
-when using cat.value,
+00:09:34.830 --> 00:09:38.747
+cat 表单组中的所有字段都是可选的，
 
-00:09:34.360 --> 00:09:37.120
-all of the fields inside
-the cat form group
+00:09:38.747 --> 00:09:41.240
+因为它们可能已被禁用。
 
-00:09:37.120 --> 00:09:41.240
-are optional, because they
-might have been disabled.
+00:09:41.240 --> 00:09:41.835
+然而，
 
-00:09:41.240 --> 00:09:43.520
-That, however, is
-not the only case
+00:09:41.835 --> 00:09:47.309
+这并不是我们可能在表单中使用可选键的唯
+一情况。
 
-00:09:43.520 --> 00:09:47.190
-in which we might have
-optional keys in our form.
+00:09:47.190 --> 00:09:51.460
+有时您希望能够自由地从表单中删除键。
 
-00:09:47.190 --> 00:09:50.010
-Sometimes you want to be
-able to freely remove keys
+00:09:51.460 --> 00:09:51.992
+例如，
 
-00:09:50.010 --> 00:09:51.460
-from the form.
+00:09:51.992 --> 00:09:56.140
+这里我们对名称 name 调用 removeControl。
 
-00:09:51.460 --> 00:09:56.140
-For example, here we call
-removeControl on the name name.
+00:09:56.140 --> 00:09:57.819
+使用类型化表单，
 
-00:09:56.140 --> 00:09:59.320
-With typed forms, we can
-now explicitly specify
+00:09:57.819 --> 00:10:01.736
+我们现在可以明确指定哪些键是可选的，
 
-00:09:59.320 --> 00:10:03.190
-which keys are optional
-versus which are required.
+00:10:01.736 --> 00:10:03.191
+哪些是必需的。
 
-00:10:03.190 --> 00:10:06.270
-This allows the type system to
-enforce that we safely handle
+00:10:03.190 --> 00:10:09.624
+这允许类型系统强制我们安全地处理可能丢
+失的控件。
 
-00:10:06.270 --> 00:10:09.490
-controls that might be missing.
+00:10:09.490 --> 00:10:11.785
+对于完全动态的表单组，
 
-00:10:09.490 --> 00:10:12.160
-For form groups that are
-entirely dynamic, where
+00:10:11.785 --> 00:10:15.173
+您希望在其中添加或删除许多控件，
 
-00:10:12.160 --> 00:10:14.650
-you want to add or
-remove many controls,
+00:10:15.173 --> 00:10:20.419
+我们还引入了一种名为 FormRecord 的全新
+伴随类型。
 
-00:10:14.650 --> 00:10:17.560
-we've also introduced
-a brand new companion
+00:10:20.310 --> 00:10:23.584
+这里的打字改进是广泛而深入的，
 
-00:10:17.560 --> 00:10:20.310
-type called FormRecord.
+00:10:23.584 --> 00:10:26.180
+还有更多值得兴奋的地方。
 
-00:10:20.310 --> 00:10:23.160
-The typing improvements
-here are wide and deep,
+00:10:26.180 --> 00:10:33.658
+您可以在 angular.io 上今天提供的新类型
+表单指南中深入阅读它们，
 
-00:10:23.160 --> 00:10:26.180
-and there's so much more
-to be excited about.
+00:10:33.658 --> 00:10:36.191
+并在下面的描述中链接。
 
-00:10:26.180 --> 00:10:30.080
-You can read about them in depth
-in the new typed forms guide
+00:10:36.070 --> 00:10:40.448
+我们对 Angular 14 和类型化表单的未来感
+到非常兴奋。
 
-00:10:30.080 --> 00:10:33.380
-available today on
-angular.io and linked down
-
-00:10:33.380 --> 00:10:36.070
-below in the description.
-
-00:10:36.070 --> 00:10:38.530
-We are so excited
-about Angular 14
-
-00:10:38.530 --> 00:10:40.360
-and the future of typed forms.
-
-00:10:40.360 --> 00:10:41.890
-We hope that you're
-as excited as we
-
-00:10:41.890 --> 00:10:44.350
-are, both for this project and
-for the future of the forms
-
-00:10:44.350 --> 00:10:46.120
-package as a whole.
+00:10:40.360 --> 00:10:46.221
+我们希望您和我们一样对这个项目和整个表
+单包的未来感到兴奋。
 
 00:10:46.120 --> 00:10:48.430
-Please like and subscribe,
-and thank you for watching.
+请喜欢和订阅，感谢您的收看。
 
 00:10:48.430 --> 00:10:49.180
-See you next time.
+下次见。
 
 00:10:49.180 --> 00:10:52.230
-[MUSIC PLAYING]
-
+[音乐播放]
