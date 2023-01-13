@@ -226,8 +226,8 @@ That function takes an Angular control object and returns *either* null if the c
 The validation error object typically has a property whose name is the validation key, `'forbiddenName'`, and whose value is an arbitrary dictionary of values that you could insert into an error message, `{name}`.
 
 `forbiddenNameValidator` 工厂函数返回配置好的验证器函数。
-该函数接受一个 Angular 控制器对象，并在控制器值有效时返回 null，或无效时返回验证错误对象。
-验证错误对象通常有一个名为验证秘钥（`forbiddenName`）的属性。其值为一个任意词典，你可以用来插入错误信息（`{name}`）。
+该函数接受一个 Angular 控件对象，并在控件值有效时返回 null，或无效时返回验证错误对象。
+验证错误对象通常有一个属性，其属性名（`'forbiddenName'`）是验证的键名，其值为一个任意值字典，你可以用来插入错误信息（`{name}`）。
 
 Custom async validators are similar to sync validators, but they must instead return a Promise or observable that later emits null or a validation error object.
 In the case of an observable, the observable must complete, at which point the form uses the last value emitted for validation.
