@@ -63,7 +63,7 @@ DI 是 Angular 框架的一部分，用于在任何地方给新建的组件提�
 The `@Injectable()` decorator defines a class as a service in Angular and allows Angular to inject it into a component as a *dependency*.
 Likewise, the `@Injectable()` decorator indicates that a component, class, pipe, or NgModule *has* a dependency on a service.
 
-`@Injectable()` 装饰器把一个类定义为 ANgular 中的服务，并且允许 Angular 把它作为*依赖*注入到组件中。
+`@Injectable()` 装饰器把一个类定义为 Angular 中的服务，并且允许 Angular 把它作为*依赖*注入到组件中。
 类似的，`@Injectable()` 装饰器会标记出某个组件、类、管道或 NgModule 具有对某个服务的依赖。
 
 * The *injector* is the main mechanism.
