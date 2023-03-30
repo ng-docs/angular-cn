@@ -10,11 +10,12 @@
 
   {% if doc.videoUrl.length %}
   <div class="video-container">
-    <iframe
-    src="{$ doc.videoUrl $}"
-    frameborder="0"
-    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen></iframe>
+    <video controls>
+      <source src="{$ doc.videoUrl $}.webm" type="video/webm">
+      <source src="{$ doc.videoUrl $}.mp4" type="video/mp4">
+      <track src="{$ doc.videoUrl $}.en.vtt" label="English" kind="subtitles" srclang="en">
+      <track src="{$ doc.videoUrl $}.cn.vtt" label="简体中文" kind="subtitles" srclang="cn" default>
+    </video>
   </div>
   {% endif%}
   {% if doc.videoCaption %}{$ doc.videoCaption | marked $}{% endif%}

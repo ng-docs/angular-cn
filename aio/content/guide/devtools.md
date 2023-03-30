@@ -9,7 +9,12 @@ Angular DevTools 是一个浏览器扩展，为 Angular 应用程序提供调试
 
 <div class="video-container">
 
-<iframe allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" src="https://www.youtube.com/embed/bavWOHZM6zE"></iframe>
+  <video controls>
+    <source src="http://videos.angular.cn/Introducing Angular DevTools-bavWOHZM6zE.webm" type="video/webm">
+    <source src="http://videos.angular.cn/Introducing Angular DevTools-bavWOHZM6zE.mp4" type="video/mp4">
+    <track src="http://videos.angular.cn/Introducing Angular DevTools-bavWOHZM6zE.en.vtt" label="English" kind="subtitles" srclang="en">
+    <track src="http://videos.angular.cn/Introducing Angular DevTools-bavWOHZM6zE.cn.vtt" label="简体中文" kind="subtitles" srclang="cn" default>
+  </video>
 
 </div>
 

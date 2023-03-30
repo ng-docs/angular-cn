@@ -19,9 +19,13 @@ Watch this video if you prefer to learn more about performance optimizations in 
 如果你更想了解有关媒体格式性能优化的更多信息，请观看此视频：
 
 <div class="video-container">
-
-<iframe allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" src="https://www.youtube.com/embed/f8sA-i6gkGQ"></iframe>
-
+  <video controls>
+    <source src="http://videos.angular.cn/4 Runtime Performance Optimizations-f8sA-i6gkGQ.webm" type="video/webm">
+    <source src="http://videos.angular.cn/4 Runtime Performance Optimizations-f8sA-i6gkGQ.mp4" type="video/mp4">
+    <track src="http://videos.angular.cn/4 Runtime Performance Optimizations-f8sA-i6gkGQ.en.vtt" label="English" kind="subtitles" srclang="en">
+    <track src="http://videos.angular.cn/4 Runtime Performance Optimizations-f8sA-i6gkGQ.cn.vtt" label="简体中文" kind="subtitles" srclang="cn" default>
+    <p>注意：本视频不支持 IE 浏览器</p>
+  </video>
 </div>
 
 @reviewed 2022-05-04
