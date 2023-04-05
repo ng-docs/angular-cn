@@ -9,7 +9,7 @@ The Tour of Heroes `HeroesComponent` is getting and displaying fake data.
 Refactoring the `HeroesComponent` focuses on supporting the view and
 making it easier to unit-test with a mock service.
 
-重构 `HeroesComponent` 的重点于为视图提供支持，并让它更容易使用模拟服务进行单元测试。
+重构 `HeroesComponent` 的重点在于为视图提供支持，并让它更容易使用模拟服务进行单元测试。
 
 <div class="alert is-helpful">
 
