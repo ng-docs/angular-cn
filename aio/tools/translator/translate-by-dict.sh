@@ -15,7 +15,5 @@ nt translate content/marketing/resources.json --engine=dict --dict ./tools/trans
 # 帮助文件
 nt translate content/cli-src/help/*.json --engine=dict --dict ./tools/translator/dict/angular --jsonProperties=description --jsonProperties=shortDescription --jsonProperties=longDescription
 
-cd ..
 # 源码
-nt translate 'packages/**/*.ts' '!packages/**/*.d.ts' '!packages/**/*_spec.ts' '!packages/**/*.spec.ts' -et internal -et nodoc --engine=dict --dict ./tools/translator/dict/angular
-cd -
+nt translate '../packages/**/*.ts' '!../packages/**/*.d.ts' '!../packages/**/*_spec.ts' '!../packages/**/*.spec.ts' -et internal -et nodoc --engine=dict --dict ./tools/translator/dict/angular
