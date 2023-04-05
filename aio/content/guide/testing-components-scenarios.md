@@ -1494,7 +1494,6 @@ The Angular compiler creates the `BannerStubComponent` for the `<app-banner>` el
 
 Angular 编译器会为 `<app-banner>` 元素创建 `BannerStubComponent`，并把 `RouterLink` 应用到带有 `routerLink` 属性的链接上，不过它会忽略 `<app-welcome>` 和 `<router-outlet>` 标签。
 
-
 <a id="by-directive"></a>
 <a id="inject-directive"></a>
 
@@ -1697,13 +1696,13 @@ A typical approach is to divide the setup logic into two separate `beforeEach()`
 
 典型的做法是把准备逻辑拆成两个独立的 `beforeEach()` 函数：
 
-| Functions | Details |
-| :-------- | :------ |
-| 函数 | 详情 |
-| Asynchronous `beforeEach()` | Compiles the components |
-| 异步 `beforeEach()` | 负责编译组件 |
-| Synchronous `beforeEach()` | Performs the remaining setup |
-| 同步 `beforeEach()` | 负责执行其余的准备代码 |
+| Functions                   | Details                      |
+| :-------------------------- | :--------------------------- |
+| 函数                        | 详情                         |
+| Asynchronous `beforeEach()` | Compiles the components      |
+| 异步 `beforeEach()`         | 负责编译组件                 |
+| Synchronous `beforeEach()`  | Performs the remaining setup |
+| 同步 `beforeEach()`         | 负责执行其余的准备代码       |
 
 #### The async `beforeEach`
 

@@ -17,13 +17,13 @@ that are important to Angular developers, including details about the following 
 
 本页面会涵盖 TypeScript 配置与环境的某些方面，这些对 Angular 开发者是很重要的。具体来说包括下列文件：
 
-| Files | Details |
-| :---- | :------ |
-| 文件 | 详情 |
+| Files                                                    | Details                            |
+| :------------------------------------------------------- | :--------------------------------- |
+| 文件                                                     | 详情                               |
 | [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript compiler configuration. |
-| [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript 编译器配置。 |
-| [typings](guide/typescript-configuration#typings) | TypesScript declaration files. |
-| [typings](guide/typescript-configuration#typings) | TypesScript 类型声明文件。 |
+| [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript 编译器配置。            |
+| [typings](guide/typescript-configuration#typings)        | TypesScript declaration files.     |
+| [typings](guide/typescript-configuration#typings)        | TypesScript 类型声明文件。         |
 
 <a id="tsconfig"></a>
 

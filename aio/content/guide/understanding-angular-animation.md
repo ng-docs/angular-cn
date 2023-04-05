@@ -4,16 +4,31 @@ Animation provides the illusion of motion: HTML elements change styling over tim
 
 ## Prerequisites
 
+## 前提条件
+
 Before learning Angular animations, you should be familiar with building basic Angular apps:
 
-*   [Tutorial](tutorial)
-*   [Architecture Overview](guide/architecture)
+* [Tutorial](tutorial)
+
+  [教程](tutorial)
+
+* [Architecture Overview](guide/architecture)
+
+  [架构概览](guide/architecture)
 
 Animations can improve your application and user experience in many ways:
 
-*   Without animations, web page transitions can seem abrupt and jarring
-*   Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
-*   Good animations intuitively call the user's attention to where it is needed
+* Without animations, web page transitions can seem abrupt and jarring
+
+  没有动画，Web 页面的转场就会显得突兀、不协调
+
+* Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
+
+  运动能极大地提升用户体验，因此动画可以让用户察觉到应用对他们的操作做出了响应
+
+* Good animations intuitively call the user's attention to where it is needed
+
+  良好的动画可以直观的把用户的注意力吸引到要留意的地方
 
 Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow, shrink, fade, or slide off the page. These changes can occur simultaneously or sequentially. You can control the timing of each transformation.
@@ -29,6 +44,8 @@ Animation transition states represent a style at certain points in your animatio
 Animate a transition that changes a single HTML element from one state to another. For example, you can specify that a button displays either **Open** or **Closed** based on the user's last action. When the button is in the `open` state, it's visible and yellow. When it's in the `closed` state, it's translucent and blue.
 
 In HTML, these attributes are set using ordinary CSS styles such as color and opacity. In Angular, use the `style()` function to specify a set of CSS styles for use with animations. Collect a set of styles in an animation state, and give the state a name, such as `open` or `closed`.
+
+在 HTML 中，这些属性都使用普通的 CSS 样式，比如颜色（color）和透明度（opacity）。在 Angular 中，使用 `style()` 函数来指定一组用作动画的 CSS 样式。可以为动画状态指定一组样式，并为该状态指定一个名字，比如 `open` 或 `closed`。
 
 <div class="alert is-helpful">
 

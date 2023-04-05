@@ -75,17 +75,17 @@ The following table summarizes class binding syntax.
 
 下表是各种类绑定语法的小结。
 
-| Binding Type | Syntax | Input Type | Example Input Values |
-| :----------- | :----- | :--------- | :------------------- |
-| 绑定类型 | 语法 | 输入属性 | 范例输入值 |
-| Single class binding | `[class.sale]="onSale"` | <code>boolean &verbar; undefined &verbar; null</code> | `true`, `false` |
-| 单一类绑定 | `[class.sale]="onSale"` | <code>boolean &verbar; undefined &verbar; null</code> | `true`, `false` |
-| Multi-class binding | `[class]="classExpression"` | `string` | `"my-class-1 my-class-2 my-class-3"` |
-| 多重类绑定 | `[class]="classExpression"` | `string` | `"my-class-1 my-class-2 my-class-3"` |
-| Multi-class binding | `[class]="classExpression"` | <code>Record&lt;string, boolean &verbar; undefined &verbar; null></code> | `{foo: true, bar: false}` |
-| 多重类绑定 | `[class]="classExpression"` | <code>Record&lt;string, boolean &verbar; undefined &verbar; null></code> | `{foo: true, bar: false}` |
-| Multi-class binding | `[class]="classExpression"` | <code>Array&lt;string></code> | `['foo', 'bar']` |
-| 多重类绑定 | `[class]="classExpression"` | <code>Array&lt;string></code> | `['foo', 'bar']` |
+| Binding Type         | Syntax                      | Input Type                                                               | Example Input Values                 |
+| :------------------- | :-------------------------- | :----------------------------------------------------------------------- | :----------------------------------- |
+| 绑定类型             | 语法                        | 输入属性                                                                 | 范例输入值                           |
+| Single class binding | `[class.sale]="onSale"`     | <code>boolean &verbar; undefined &verbar; null</code>                    | `true`, `false`                      |
+| 单一类绑定           | `[class.sale]="onSale"`     | <code>boolean &verbar; undefined &verbar; null</code>                    | `true`, `false`                      |
+| Multi-class binding  | `[class]="classExpression"` | `string`                                                                 | `"my-class-1 my-class-2 my-class-3"` |
+| 多重类绑定           | `[class]="classExpression"` | `string`                                                                 | `"my-class-1 my-class-2 my-class-3"` |
+| Multi-class binding  | `[class]="classExpression"` | <code>Record&lt;string, boolean &verbar; undefined &verbar; null></code> | `{foo: true, bar: false}`            |
+| 多重类绑定           | `[class]="classExpression"` | <code>Record&lt;string, boolean &verbar; undefined &verbar; null></code> | `{foo: true, bar: false}`            |
+| Multi-class binding  | `[class]="classExpression"` | <code>Array&lt;string></code>                                            | `['foo', 'bar']`                     |
+| 多重类绑定           | `[class]="classExpression"` | <code>Array&lt;string></code>                                            | `['foo', 'bar']`                     |
 
 ## Binding to a single style
 
@@ -158,17 +158,17 @@ The following table summarizes style binding syntax.
 
 下表是各种样式绑定语法的小结。
 
-| Binding Type | Syntax | Input Type | Example Input Values |
-| :----------- | :----- | :--------- | :------------------- |
-| 绑定类型 | 语法 | 输入属性 | 范例输入值 |
-| Single style binding | `[style.width]="width"` | <code>string &verbar; undefined &verbar; null</code> | `"100px"` |
-| 单一样式绑定 | `[style.width]="width"` | <code>string &verbar; undefined &verbar; null</code> | `"100px"` |
-| Single style binding with units | `[style.width.px]="width"` | <code>number &verbar; undefined &verbar; null</code> | `100` |
-| 带单位的单一样式绑定 | `[style.width.px]="width"` | <code>number &verbar; undefined &verbar; null</code> | `100` |
-| Multi-style binding | `[style]="styleExpression"` | `string` | `"width: 100px; height: 100px"` |
-| 多重样式绑定 | `[style]="styleExpression"` | `string` | `"width: 100px; height: 100px"` |
-| Multi-style binding | `[style]="styleExpression"` | <code>Record&lt;string, string &verbar; undefined &verbar; null></code> | `{width: '100px', height: '100px'}` |
-| 多重样式绑定 | `[style]="styleExpression"` | <code>Record&lt;string, string &verbar; undefined &verbar; null></code> | `{width: '100px', height: '100px'}` |
+| Binding Type                    | Syntax                      | Input Type                                                              | Example Input Values                |
+| :------------------------------ | :-------------------------- | :---------------------------------------------------------------------- | :---------------------------------- |
+| 绑定类型                        | 语法                        | 输入属性                                                                | 范例输入值                          |
+| Single style binding            | `[style.width]="width"`     | <code>string &verbar; undefined &verbar; null</code>                    | `"100px"`                           |
+| 单一样式绑定                    | `[style.width]="width"`     | <code>string &verbar; undefined &verbar; null</code>                    | `"100px"`                           |
+| Single style binding with units | `[style.width.px]="width"`  | <code>number &verbar; undefined &verbar; null</code>                    | `100`                               |
+| 带单位的单一样式绑定            | `[style.width.px]="width"`  | <code>number &verbar; undefined &verbar; null</code>                    | `100`                               |
+| Multi-style binding             | `[style]="styleExpression"` | `string`                                                                | `"width: 100px; height: 100px"`     |
+| 多重样式绑定                    | `[style]="styleExpression"` | `string`                                                                | `"width: 100px; height: 100px"`     |
+| Multi-style binding             | `[style]="styleExpression"` | <code>Record&lt;string, string &verbar; undefined &verbar; null></code> | `{width: '100px', height: '100px'}` |
+| 多重样式绑定                    | `[style]="styleExpression"` | <code>Record&lt;string, string &verbar; undefined &verbar; null></code> | `{width: '100px', height: '100px'}` |
 
 {@a styling-precedence}
 

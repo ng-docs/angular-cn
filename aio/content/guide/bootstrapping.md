@@ -56,17 +56,17 @@ The `@NgModule` decorator identifies `AppModule` as an `NgModule` class.
 
 `@NgModule` 装饰器表明 `AppModule` 是一个 `NgModule` 类。`@NgModule` 获取一个元数据对象，它会告诉 Angular 如何编译和启动本应用。
 
-| metadata object | Details |
-| :-------------- | :------ |
-| 元数据对象 | 详细信息 |
-| declarations | This application's lone component. |
-| declarations | 该应用所拥有的组件。 |
-| imports | Import `BrowserModule` to have browser-specific services such as DOM rendering, sanitization, and location. |
-| imports | 导入 `BrowserModule` 以获取浏览器特有的服务，比如 DOM 渲染、无害化处理和位置（location）。 |
-| providers | The service providers. |
-| providers | 各种服务提供者。 |
-| bootstrap | The *root* component that Angular creates and inserts into the `index.html` host web page. |
-| bootstrap | *根*组件，Angular 创建它并插入 `index.html` 宿主页面。 |
+| metadata object | Details                                                                                                     |
+| :-------------- | :---------------------------------------------------------------------------------------------------------- |
+| 元数据对象      | 详细信息                                                                                                    |
+| declarations    | This application's lone component.                                                                          |
+| declarations    | 该应用所拥有的组件。                                                                                        |
+| imports         | Import `BrowserModule` to have browser-specific services such as DOM rendering, sanitization, and location. |
+| imports         | 导入 `BrowserModule` 以获取浏览器特有的服务，比如 DOM 渲染、无害化处理和位置（location）。                  |
+| providers       | The service providers.                                                                                      |
+| providers       | 各种服务提供者。                                                                                            |
+| bootstrap       | The *root* component that Angular creates and inserts into the `index.html` host web page.                  |
+| bootstrap       | *根*组件，Angular 创建它并插入 `index.html` 宿主页面。                                                      |
 
 The default application created by the Angular CLI only has one component, `AppComponent`, so it is in both the `declarations` and the `bootstrap` arrays.
 

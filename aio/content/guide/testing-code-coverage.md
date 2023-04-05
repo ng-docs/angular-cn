@@ -81,13 +81,11 @@ coverageReporter: {
 
 </code-example>
 
-
 <div class="alert is-helpful">
 
 Read more about creating and fine tunning Karma configuration in the [testing guide](guide/testing#configuration).
 
 </div>
-
 
 The `check` property causes the tool to enforce a minimum of 80% code coverage when the unit tests are run in the project.
 

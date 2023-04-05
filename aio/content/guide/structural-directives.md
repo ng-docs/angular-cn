@@ -279,19 +279,19 @@ The following tables describe each portion of the structural directive grammar:
     <code-pane format="typescript" header="let" hideCopy language="typescript"> let = "let" :local "=" :export ";"? </code-pane>
 </code-tabs>
 
-| Keyword | Details |
-| :------ | :------ |
-| 关键字 | 详情 |
-| `prefix` | HTML attribute key |
-| `prefix` | HTML 属性的键名 |
-| `key` | HTML attribute key |
-| `key` | HTML 属性的键名 |
-| `local` | Local variable name used in the template |
-| `local` | 在模板中使用的局部变量名 |
-| `export` | Value exported by the directive under a given name |
-| `export` | 该指令以特定名称导出的值 |
-| `expression` | Standard Angular expression |
-| `expression` | 标准 Angular 表达式 |
+| Keyword      | Details                                            |
+| :----------- | :------------------------------------------------- |
+| 关键字       | 详情                                               |
+| `prefix`     | HTML attribute key                                 |
+| `prefix`     | HTML 属性的键名                                    |
+| `key`        | HTML attribute key                                 |
+| `key`        | HTML 属性的键名                                    |
+| `local`      | Local variable name used in the template           |
+| `local`      | 在模板中使用的局部变量名                           |
+| `export`     | Value exported by the directive under a given name |
+| `export`     | 该指令以特定名称导出的值                           |
+| `expression` | Standard Angular expression                        |
+| `expression` | 标准 Angular 表达式                                |
 
 ### How Angular translates shorthand
 
@@ -301,15 +301,15 @@ Angular translates structural directive shorthand into the normal binding syntax
 
 Angular 会将结构型指令的简写形式转换为普通的绑定语法，如下所示：
 
-| Shorthand | Translation |
-| :-------- | :---------- |
-| 简写形式 | 翻译结果 |
-| `prefix` and naked `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
-| `prefix` 和裸 `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example> |
-| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **NOTE**: <br /> The `prefix` is added to the `key` </div> |
-| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **注意**: <br /> `prefix` 被加到了 `key` 上</div> |
-| `keyExp` | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> |
-| `let` | <code-example format="typescript" hideCopy language="typescript"> let-local="export" </code-example> |
+| Shorthand                       | Translation                                                                                                                                                                                                                   |
+| :------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 简写形式                        | 翻译结果                                                                                                                                                                                                                      |
+| `prefix` and naked `expression` | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example>                                                                                                                       |
+| `prefix` 和裸 `expression`      | <code-example format="typescript" hideCopy language="typescript"> [prefix]="expression" </code-example>                                                                                                                       |
+| `keyExp`                        | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **NOTE**: <br /> The `prefix` is added to the `key` </div> |
+| `keyExp`                        | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example> <div class="alert is-helpful"> **注意**: <br /> `prefix` 被加到了 `key` 上</div>          |
+| `keyExp`                        | <code-example format="typescript" hideCopy language="typescript"> [prefixKey] "expression" (let-prefixKey="export") </code-example>                                                                                           |
+| `let`                           | <code-example format="typescript" hideCopy language="typescript"> let-local="export" </code-example>                                                                                                                          |
 
 ### Shorthand examples
 
@@ -319,13 +319,13 @@ The following table provides shorthand examples:
 
 下表提供了一些简写形式示例：
 
-| Shorthand | How Angular interprets the syntax |
-| :-------- | :-------------------------------- |
-| 简写形式 | Angular 如何解释此语法 |
-| <code-example format="typescript" hideCopy language="typescript"> &ast;ngFor="let item of [1,2,3]" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template ngFor &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-item &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForOf]="[1,2,3]"&gt; </code-example> |
+| Shorthand                                                                                                                                                                                                     | How Angular interprets the syntax                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 简写形式                                                                                                                                                                                                      | Angular 如何解释此语法                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <code-example format="typescript" hideCopy language="typescript"> &ast;ngFor="let item of [1,2,3]" </code-example>                                                                                            | <code-example format="html" hideCopy language="html"> &lt;ng-template ngFor &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-item &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForOf]="[1,2,3]"&gt; </code-example>                                                                                                                                                                                                                                                                                                                  |
 | <code-example format="typescript" hideCopy language="typescript"> &ast;ngFor="let item of [1,2,3] as items; &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trackBy: myTrack; index as i" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template ngFor &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-item &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForOf]="[1,2,3]" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-items="ngForOf" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ngForTrackBy]="myTrack" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-i="index"&gt; </code-example> |
-| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp"&gt; </code-example> |
-| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp as value" </code-example> | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-value="ngIf"&gt; </code-example> |
+| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp" </code-example>                                                                                                             | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp"&gt; </code-example>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <code-example format="typescript" hideCopy language="typescript"> &ast;ngIf="exp as value" </code-example>                                                                                                    | <code-example format="html" hideCopy language="html"> &lt;ng-template [ngIf]="exp" &NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let-value="ngIf"&gt; </code-example>                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 <a id="directive-type-checks"></a>
 

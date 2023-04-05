@@ -64,13 +64,13 @@ Angular has two injector hierarchies:
 
 Angular 中有两个注入器层次结构：
 
-| Injector hierarchies | Details |
-| :------------------- | :------ |
-| 注入器层次结构 | 详情 |
-| `ModuleInjector` hierarchy | Configure a `ModuleInjector` in this hierarchy using an `@NgModule()` or `@Injectable()` annotation. |
-| `ModuleInjector` 层次结构 | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。 |
+| Injector hierarchies        | Details                                                                                                                                                                   |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 注入器层次结构              | 详情                                                                                                                                                                      |
+| `ModuleInjector` hierarchy  | Configure a `ModuleInjector` in this hierarchy using an `@NgModule()` or `@Injectable()` annotation.                                                                      |
+| `ModuleInjector` 层次结构   | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。                                                                                           |
 | `ElementInjector` hierarchy | Created implicitly at each DOM element. An `ElementInjector` is empty by default unless you configure it in the `providers` property on `@Directive()` or `@Component()`. |
-| `ElementInjector` 层次结构 | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。 |
+| `ElementInjector` 层次结构  | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。                                  |
 
 <a id="register-providers-injectable"></a>
 
@@ -508,13 +508,13 @@ A component class can provide services in two ways:
 
 组件类可以通过两种方式提供服务：
 
-| Arrays | Details |
-| :----- | :------ |
-| 数组 | 详情 |
-| With a `providers` array | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp; providers: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: FlowerService, useValue: {emoji: '&#x1F33A;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example> |
-| 使用 `providers` 数组 | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp; providers: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: FlowerService, useValue: {emoji: '&#x1F33A;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example> |
+| Arrays                       | Details                                                                                                                                                                                                                                                                  |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 数组                         | 详情                                                                                                                                                                                                                                                                     |
+| With a `providers` array     | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp; providers: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: FlowerService, useValue: {emoji: '&#x1F33A;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example>    |
+| 使用 `providers` 数组        | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp; providers: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: FlowerService, useValue: {emoji: '&#x1F33A;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example>    |
 | With a `viewProviders` array | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp;viewProviders: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: AnimalService, useValue: {emoji: '&#x1F436;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example> |
-| 使用 `viewProviders` 数组 | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp;viewProviders: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: AnimalService, useValue: {emoji: '&#x1F436;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example> |
+| 使用 `viewProviders` 数组    | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp;viewProviders: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: AnimalService, useValue: {emoji: '&#x1F436;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example> |
 
 To understand how the `providers` and `viewProviders` influence service visibility differently, the following sections build a <live-example name="providers-viewproviders"></live-example> step-by-step and compare the use of `providers` and `viewProviders` in code and a logical tree.
 

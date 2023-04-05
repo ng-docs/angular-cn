@@ -1256,17 +1256,17 @@ It provides methods to handle parameter access for both route parameters (`param
 
 `ParamMap` API 的灵感来自 URLSearchParams[接口](https://developer.mozilla.org/docs/Web/API/URLSearchParams)。它提供了处理路由参数 ( `paramMap` ) 和查询参数 ( `queryParamMap` ) 的参数访问的方法。
 
-| Member | Details |
-| :----- | :------ |
-| 成员 | 详情 |
-| `has(name)` | Returns `true` if the parameter name is in the map of parameters. |
-| `has(name)` | 如果参数名位于参数列表中，就返回 `true`。 |
-| `get(name)` | Returns the parameter name value (a `string`) if present, or `null` if the parameter name is not in the map. Returns the *first* element if the parameter value is actually an array of values. |
-| `get(name)` | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。 |
+| Member         | Details                                                                                                                                                                                            |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 成员           | 详情                                                                                                                                                                                               |
+| `has(name)`    | Returns `true` if the parameter name is in the map of parameters.                                                                                                                                  |
+| `has(name)`    | 如果参数名位于参数列表中，就返回 `true`。                                                                                                                                                          |
+| `get(name)`    | Returns the parameter name value (a `string`) if present, or `null` if the parameter name is not in the map. Returns the *first* element if the parameter value is actually an array of values.    |
+| `get(name)`    | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。                                                                     |
 | `getAll(name)` | Returns a `string array` of the parameter name value if found, or an empty `array` if the parameter name value is not in the map. Use `getAll` when a single parameter could have multiple values. |
-| `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。 |
-| `keys` | Returns a `string array` of all parameter names in the map. |
-| `keys` | 返回这个 map 中的所有参数名组成的字符串数组。 |
+| `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。                                                                         |
+| `keys`         | Returns a `string array` of all parameter names in the map.                                                                                                                                        |
+| `keys`         | 返回这个 map 中的所有参数名组成的字符串数组。                                                                                                                                                      |
 
 <a id="reuse"></a>
 
@@ -2502,15 +2502,15 @@ A guard's return value controls the router's behavior:
 
 守卫返回一个值，以控制路由器的行为：
 
-| Guard return value | Details |
-| :----------------- | :------ |
-| 守卫返回的值 | 详情 |
-| `true` | The navigation process continues |
-| `true` | 导航过程会继续 |
-| `false` | The navigation process stops and the user stays put |
-| `false` | 导航过程就会终止，且用户留在原地。 |
-| `UrlTree` | The current navigation cancels and a new navigation is initiated to the `UrlTree` returned |
-| `UrlTree` | 取消当前导航，并开始导航到所返回的 `UrlTree` |
+| Guard return value | Details                                                                                    |
+| :----------------- | :----------------------------------------------------------------------------------------- |
+| 守卫返回的值       | 详情                                                                                       |
+| `true`             | The navigation process continues                                                           |
+| `true`             | 导航过程会继续                                                                             |
+| `false`            | The navigation process stops and the user stays put                                        |
+| `false`            | 导航过程就会终止，且用户留在原地。                                                         |
+| `UrlTree`          | The current navigation cancels and a new navigation is initiated to the `UrlTree` returned |
+| `UrlTree`          | 取消当前导航，并开始导航到所返回的 `UrlTree`                                               |
 
 <div class="alert is-helpful">
 
@@ -2546,19 +2546,19 @@ The router supports multiple guard methods:
 
 路由器可以支持多种守卫接口：
 
-| Guard interfaces | Details |
-| :--------------- | :------ |
-| 守卫接口 | 详情 |
-| [`canActivate`](api/router/CanActivateFn) | To mediate navigation *to* a route |
-| [`canActivate`](api/router/CanActivateFn) | 导航*到*某路由时介入 |
-| [`canActivateChild`](api/router/CanActivateChildFn) | To mediate navigation *to* a child route |
-| [`canActivateChild`](api/router/CanActivateChildFn) | 导航*到*某个子路由时介入 |
-| [`canDeactivate`](api/router/CanDeactivateFn) | To mediate navigation *away* from the current route |
-| [`canDeactivate`](api/router/CanDeactivateFn) | 从当前路由*离开*时介入 |
-| [`resolve`](api/router/ResolveFn) | To perform route data retrieval *before* route activation |
-| [`resolve`](api/router/ResolveFn) | 在某路由激活*之前*获取路由数据 |
-| [`canMatch`](api/router/CanMatchFn) | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
-| [`canMatch`](api/router/CanMatchFn) | 控制是否应该使用 `Route` ，即使 `path` 与 URL 段匹配。 |
+| Guard interfaces                                    | Details                                                                                         |
+| :-------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| 守卫接口                                            | 详情                                                                                            |
+| [`canActivate`](api/router/CanActivateFn)           | To mediate navigation *to* a route                                                              |
+| [`canActivate`](api/router/CanActivateFn)           | 导航*到*某路由时介入                                                                            |
+| [`canActivateChild`](api/router/CanActivateChildFn) | To mediate navigation *to* a child route                                                        |
+| [`canActivateChild`](api/router/CanActivateChildFn) | 导航*到*某个子路由时介入                                                                        |
+| [`canDeactivate`](api/router/CanDeactivateFn)       | To mediate navigation *away* from the current route                                             |
+| [`canDeactivate`](api/router/CanDeactivateFn)       | 从当前路由*离开*时介入                                                                          |
+| [`resolve`](api/router/ResolveFn)                   | To perform route data retrieval *before* route activation                                       |
+| [`resolve`](api/router/ResolveFn)                   | 在某路由激活*之前*获取路由数据                                                                  |
+| [`canMatch`](api/router/CanMatchFn)                 | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
+| [`canMatch`](api/router/CanMatchFn)                 | 控制是否应该使用 `Route` ，即使 `path` 与 URL 段匹配。                                          |
 
 You can have multiple guards at every level of a routing hierarchy.
 The router checks the `canDeactivate` guards first, from the deepest child route to the top.
@@ -2896,7 +2896,6 @@ In `app.module.ts`, import and add `AuthModule` to the `AppModule` imports array
     <code-pane header="src/app/auth/auth.module.ts" path="router/src/app/auth/auth.module.ts"></code-pane>
 </code-tabs>
 
-
 <a id="can-activate-child-guard"></a>
 
 ### `canActivateChild`: guarding child routes
@@ -2916,6 +2915,8 @@ You should also protect child routes *within* the feature module.
 
 Add the same `authGuard` to the `component-less` admin route to protect all other child routes at one time
 instead of adding the `authGuard` to each route individually.
+
+同样把这个 `authGuard` 添加到“无组件的”管理路由，来同时保护它的所有子路由，而不是为每个路由单独添加这个 `authGuard`。
 
 <code-example header="src/app/admin/admin-routing.module.ts (excerpt)" path="router/src/app/admin/admin-routing.module.3.ts" region="can-activate-child"></code-example>
 
@@ -3447,13 +3448,13 @@ The `Router` offers two preloading strategies:
 
 `Router` 提供了两种预加载策略：
 
-| Strategies | Details |
-| :--------- | :------ |
-| 策略 | 详情 |
+| Strategies    | Details                                                            |
+| :------------ | :----------------------------------------------------------------- |
+| 策略          | 详情                                                               |
 | No preloading | The default. Lazy loaded feature areas are still loaded on-demand. |
-| 不预加载 | 这是默认值。惰性加载的特性区仍然会按需加载。 |
-| Preloading | All lazy loaded feature areas are preloaded. |
-| 预加载 | 预加载所有惰性加载的特性区。 |
+| 不预加载      | 这是默认值。惰性加载的特性区仍然会按需加载。                       |
+| Preloading    | All lazy loaded feature areas are preloaded.                       |
+| 预加载        | 预加载所有惰性加载的特性区。                                       |
 
 The router either never preloads, or preloads every lazy loaded module.
 The `Router` also supports [custom preloading strategies](#custom-preloading) for fine control over which modules to preload and when.

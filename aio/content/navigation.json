@@ -263,7 +263,8 @@
                 {
                   "url": "guide/property-binding",
                   "title": "Property binding",
-                  "tooltip": "Learn how to use property binding."
+                  "tooltip": "Learn how to use property binding.",
+                  "titleCn": "属性绑定"
                 },
                 {
                   "url": "guide/attribute-binding",
@@ -931,14 +932,17 @@
             {
               "url": "guide/creating-libraries",
               "title": "Creating libraries",
-              "tooltip": "Extend Angular by creating, publishing, and using your own libraries."
+              "tooltip": "Extend Angular by creating, publishing, and using your own libraries.",
+              "titleCn": "创建库"
             },
             {
               "url": "guide/angular-package-format",
               "title": "Angular package format",
-              "tooltip": "Information about the Angular Package Format."
+              "tooltip": "Information about the Angular Package Format.",
+              "titleCn": "Angular 包格式"
             }
-          ]
+          ],
+          "titleCn": "Angular 库"
         }
       ]
     },

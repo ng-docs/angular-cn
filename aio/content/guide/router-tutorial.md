@@ -377,13 +377,13 @@ In this step of the tutorial, you add a route that redirects the user to display
 
    注意这个新路由使用一个空字符串作为它的路径。另外，它还把 `component` 属性替换成了这两个新属性：
 
-   | Properties | Details |
-   | :--------- | :------ |
-   | 属性 | 详情 |
-   | `redirectTo` | This property instructs Angular to redirect from an empty path to the `heroes-list` path. |
-   | `redirectTo` | 这个属性指示 Angular 从空路径重定向到 `heroes-list` 路径。 |
-   | `pathMatch` | This property instructs Angular on how much of the URL to match. For this tutorial, you should set this property to `full`. This strategy is recommended when you have an empty string for a path. For more information about this property, see the [Route API documentation](api/router/Route). |
-   | `pathMatch` | 这个属性指示 Angular 要如何匹配 URL。对于本教程，你应该把这个属性设置为 `full`。当路径为空字符串时，建议使用此策略。关于此属性的更多信息，请参阅 [Route API 文档](/api/router/Route)。 |
+   | Properties   | Details                                                                                                                                                                                                                                                                                           |
+   | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | 属性         | 详情                                                                                                                                                                                                                                                                                              |
+   | `redirectTo` | This property instructs Angular to redirect from an empty path to the `heroes-list` path.                                                                                                                                                                                                         |
+   | `redirectTo` | 这个属性指示 Angular 从空路径重定向到 `heroes-list` 路径。                                                                                                                                                                                                                                        |
+   | `pathMatch`  | This property instructs Angular on how much of the URL to match. For this tutorial, you should set this property to `full`. This strategy is recommended when you have an empty string for a path. For more information about this property, see the [Route API documentation](api/router/Route). |
+   | `pathMatch`  | 这个属性指示 Angular 要如何匹配 URL。对于本教程，你应该把这个属性设置为 `full`。当路径为空字符串时，建议使用此策略。关于此属性的更多信息，请参阅 [Route API 文档](/api/router/Route)。                                                                                                            |
 
 Now when you open your application, it displays the `heroes-list` component by default.
 

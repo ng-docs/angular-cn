@@ -222,19 +222,19 @@ Here is a summary of the case types:
 
 Angular 使用大小写约定来区分多种名字，详见[风格指南中的 "命名" 一节][AioGuideStyleguide0201]。下面是这些大小写类型的汇总表：
 
-|  | Details | example |
-| :-- | :------ | :------ |
-|  | 详情 | 例子 |
-| camelCase | Symbols, properties, methods, pipe names, non-component directive selectors, constants. <br /> Standard or lower camel case uses lowercase on the first letter of the item. | `selectedHero` |
-| 小驼峰形式（camelCase） | 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。 | `selectedHero` |
-| UpperCamelCase <br /> PascalCase | Class names, including classes that define components, interfaces, NgModules, directives, and pipes. <br /> Upper camel case uses uppercase on the first letter of the item. | `HeroComponent` |
-| 大驼峰形式<br />Pascal 形式 | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。 | `HeroComponent` |
-| dash-case <br /> kebab-case | Descriptive part of file names, component selectors. | `app-hero-list` |
-| 中线形式（dash-case）<br />烤串形式（kebab-case） | 文件名中的描述部分，组件的选择器。 | `app-hero-list` |
-| underscore_case <br /> snake_case | Not typically used in Angular. <br /> Snake case uses words connected with underscores. | `convert_link_mode` |
-| 下划线形式（underscore_case）<br />蛇形形式（snake_case） | 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。 | `convert_link_mode` |
-| UPPER_UNDERSCORE_CASE <br /> UPPER_SNAKE_CASE <br /> SCREAMING_SNAKE_CASE | Traditional for constants. <br /> This case is acceptable, but camelCase is preferred. <br /> Upper snake case uses words in all capital letters connected with underscores. | `FIX_ME` |
-| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE） | 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。 | `FIX_ME` |
+|                                                                                                                          | Details                                                                                                                                                                      | example             |
+| :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+|                                                                                                                          | 详情                                                                                                                                                                         | 例子                |
+| camelCase                                                                                                                | Symbols, properties, methods, pipe names, non-component directive selectors, constants. <br /> Standard or lower camel case uses lowercase on the first letter of the item.  | `selectedHero`      |
+| 小驼峰形式（camelCase）                                                                                                  | 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。                                                                 | `selectedHero`      |
+| UpperCamelCase <br /> PascalCase                                                                                         | Class names, including classes that define components, interfaces, NgModules, directives, and pipes. <br /> Upper camel case uses uppercase on the first letter of the item. | `HeroComponent`     |
+| 大驼峰形式<br />Pascal 形式                                                                                              | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。                                                                      | `HeroComponent`     |
+| dash-case <br /> kebab-case                                                                                              | Descriptive part of file names, component selectors.                                                                                                                         | `app-hero-list`     |
+| 中线形式（dash-case）<br />烤串形式（kebab-case）                                                                        | 文件名中的描述部分，组件的选择器。                                                                                                                                           | `app-hero-list`     |
+| underscore_case <br /> snake_case                                                                                        | Not typically used in Angular. <br /> Snake case uses words connected with underscores.                                                                                      | `convert_link_mode` |
+| 下划线形式（underscore_case）<br />蛇形形式（snake_case）                                                                | 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。                                                                                                              | `convert_link_mode` |
+| UPPER_UNDERSCORE_CASE <br /> UPPER_SNAKE_CASE <br /> SCREAMING_SNAKE_CASE                                                | Traditional for constants. <br /> This case is acceptable, but camelCase is preferred. <br /> Upper snake case uses words in all capital letters connected with underscores. | `FIX_ME`            |
+| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE） | 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。                                                                    | `FIX_ME`            |
 
 ## change detection
 
@@ -870,25 +870,25 @@ Angular runs these hook methods in the following order:
 
 Angular 会按以下顺序调用钩子方法：
 
-|  | hook method | Details |
-| :-- | :---------- | :------ |
-|  | 钩子方法 | 详细信息 |
-| 1 | `ngOnChanges` | When an [input][AioGuideGlossaryInput] or [output][AioGuideGlossaryOutput] binding value changes. |
-| 1 | `ngOnChanges` | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。 |
-| 2 | `ngOnInit` | After the first `ngOnChanges`. |
-| 2 | `ngOnInit` | 在第一个 `ngOnChanges` 之后。 |
-| 3 | `ngDoCheck` | Developer's custom change detection. |
-| 3 | `ngDoCheck` | 开发人员的自定义变更检测。 |
-| 4 | `ngAfterContentInit` | After component content initialized. |
-| 4 | `ngAfterContentInit` | 组件内容初始化后。 |
-| 5 | `ngAfterContentChecked` | After every check of component content. |
-| 5 | `ngAfterContentChecked` | 在每次检查组件内容之后。 |
-| 6 | `ngAfterViewInit` | After the views of a component are initialized. |
-| 6 | `ngAfterViewInit` | 在组件的视图被初始化之后。 |
-| 7 | `ngAfterViewChecked` | After every check of the views of a component. |
-| 7 | `ngAfterViewChecked` | 在每次检查组件视图之后。 |
-| 8 | `ngOnDestroy` | Just before the directive is destroyed. |
-| 8 | `ngOnDestroy` | 就在指令被销毁之前。 |
+|     | hook method             | Details                                                                                           |
+| :-- | :---------------------- | :------------------------------------------------------------------------------------------------ |
+|     | 钩子方法                | 详细信息                                                                                          |
+| 1   | `ngOnChanges`           | When an [input][AioGuideGlossaryInput] or [output][AioGuideGlossaryOutput] binding value changes. |
+| 1   | `ngOnChanges`           | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。                     |
+| 2   | `ngOnInit`              | After the first `ngOnChanges`.                                                                    |
+| 2   | `ngOnInit`              | 在第一个 `ngOnChanges` 之后。                                                                     |
+| 3   | `ngDoCheck`             | Developer's custom change detection.                                                              |
+| 3   | `ngDoCheck`             | 开发人员的自定义变更检测。                                                                        |
+| 4   | `ngAfterContentInit`    | After component content initialized.                                                              |
+| 4   | `ngAfterContentInit`    | 组件内容初始化后。                                                                                |
+| 5   | `ngAfterContentChecked` | After every check of component content.                                                           |
+| 5   | `ngAfterContentChecked` | 在每次检查组件内容之后。                                                                          |
+| 6   | `ngAfterViewInit`       | After the views of a component are initialized.                                                   |
+| 6   | `ngAfterViewInit`       | 在组件的视图被初始化之后。                                                                        |
+| 7   | `ngAfterViewChecked`    | After every check of the views of a component.                                                    |
+| 7   | `ngAfterViewChecked`    | 在每次检查组件视图之后。                                                                          |
+| 8   | `ngOnDestroy`           | Just before the directive is destroyed.                                                           |
+| 8   | `ngOnDestroy`           | 就在指令被销毁之前。                                                                              |
 
 To learn more, see [Lifecycle Hooks][AioGuideLifecycleHooks].
 
@@ -1937,6 +1937,7 @@ Learn more about zones in this [Brian Ford video][YoutubeWatchV3iqtmusceU].
 [AioGuideGlossaryM]: guide/glossary#module "M - Glossary | Angular"
 
 [AioGuideGlossaryModule]: guide/glossary#module "module - Glossary | Angular"
+
 [AioGuideGlossaryNgmodule]: guide/glossary#ngmodule "NgModule - Glossary | Angular"
 
 [AioGuideGlossaryNpmPackage]: guide/glossary#npm-package "npm package - Glossary | Angular"

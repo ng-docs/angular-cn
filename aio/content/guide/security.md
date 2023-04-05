@@ -110,17 +110,17 @@ Angular defines the following security contexts:
 
 Angular 定义了四个安全环境：
 
-| Security contexts | Details |
-| :---------------- | :------ |
-| 安全上下文 | 详情 |
-| HTML | Used when interpreting a value as HTML, for example, when binding to `innerHtml`. |
-| HTML | 值需要被解释为 HTML 时使用，比如当绑定到 `innerHTML` 时。 |
-| Style | Used when binding CSS into the `style` property. |
-| 样式 | 值需要作为 CSS 绑定到 `style` 属性时使用。 |
-| URL | Used for URL properties, such as `<a href>`. |
-| URL | 值需要被用作 URL 属性时使用，比如 `<a href>`。 |
-| Resource URL | A URL that is loaded and executed as code, for example, in `<script src>`. |
-| 资源 URL | 值需要作为代码进行加载并执行，比如 `<script src>` 中的 URL。 |
+| Security contexts | Details                                                                           |
+| :---------------- | :-------------------------------------------------------------------------------- |
+| 安全上下文        | 详情                                                                              |
+| HTML              | Used when interpreting a value as HTML, for example, when binding to `innerHtml`. |
+| HTML              | 值需要被解释为 HTML 时使用，比如当绑定到 `innerHTML` 时。                         |
+| Style             | Used when binding CSS into the `style` property.                                  |
+| 样式              | 值需要作为 CSS 绑定到 `style` 属性时使用。                                        |
+| URL               | Used for URL properties, such as `<a href>`.                                      |
+| URL               | 值需要被用作 URL 属性时使用，比如 `<a href>`。                                    |
+| Resource URL      | A URL that is loaded and executed as code, for example, in `<script src>`.        |
+| 资源 URL          | 值需要作为代码进行加载并执行，比如 `<script src>` 中的 URL。                      |
 
 Angular sanitizes untrusted values for HTML, styles, and URLs. Sanitizing resource URLs isn't possible because they contain arbitrary code.
 In development mode, Angular prints a console warning when it has to change a value during sanitization.
@@ -287,11 +287,13 @@ If an attacker can predict future nonces, they can circumvent the protections of
 
 If you cannot generate nones in your project, you can allow inline styles by adding `'unsafe-inline'` to the `style-src` section of the CSP header.
 
-| Sections                | Details |
-|:---                     |:---     |
-| `default-src 'self';`   | Allows the page to load all its required resources from the same origin. |
-| `style-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load global styles from the same origin \(`'self'`\) and styles inserted by Angular with the `nonce-randomNonceGoesHere`. |
-| `script-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load JavaScript from the same origin \(`'self'`\) and scripts inserted by the Angular CLI with the `nonce-randomNonceGoesHere`. This is only required if you're using critical CSS inlining. |
+| Sections                                         | Details                                                                                                                                                                                                       |
+| :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 区段                                             | 详情                                                                                                                                                                                                          |
+| `default-src 'self';`                            | Allows the page to load all its required resources from the same origin.                                                                                                                                      |
+| `default-src 'self';`                            | 允许此页面加载所有来自同源的资源。                                                                                                                                                                            |
+| `style-src 'self' 'nonce-randomNonceGoesHere';`  | Allows the page to load global styles from the same origin (`'self'`) and styles inserted by Angular with the `nonce-randomNonceGoesHere`.                                                                    |
+| `script-src 'self' 'nonce-randomNonceGoesHere';` | Allows the page to load JavaScript from the same origin (`'self'`) and scripts inserted by the Angular CLI with the `nonce-randomNonceGoesHere`. This is only required if you're using critical CSS inlining. |
 
 Angular itself requires only these settings to function correctly.
 As your project grows, you may need to expand your CSP settings to accommodate extra features specific to your application.
@@ -328,17 +330,17 @@ To enforce Trusted Types for your application, you must configure your applicati
 
 要为你的应用程序强制实施可信类型，你必须将应用程序的 Web 服务器配置为使用以下 Angular 策略之一发出 HTTP 请求头：
 
-| Policies | Detail |
-| :------- | :----- |
-| 策略 | 详情 |
-| `angular` | This policy is used in security-reviewed code that is internal to Angular, and is required for Angular to function when Trusted Types are enforced. Any inline template values or content sanitized by Angular is treated as safe by this policy. |
-| `angular` | 此策略用于 Angular 内部经过安全审查的代码，并且当强制执行可信类型时，Angular 需要此策略才能正常运行。任何由 Angular 清理的内联模板值或内容都被此政策视为安全的。 |
-| `angular#unsafe-bypass` | This policy is used for applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypass security, such as `bypassSecurityTrustHtml`. Any application that uses these methods must enable this policy. |
-| `angular#unsafe-bypass` | 此策略用于要使用 Angular 的 [DomSanitizer](api/platform-browser/DomSanitizer) 的各个方法来绕过安全性的应用程序，比如 `bypassSecurityTrustHtml`。任何使用了这些方法的应用程序都必须启用此策略。 |
-| `angular#unsafe-jit` | This policy is used by the [Just-In-Time (JIT) compiler](api/core/Compiler). You must enable this policy if your application interacts directly with the JIT compiler or is running in JIT mode using the [platform browser dynamic](api/platform-browser-dynamic/platformBrowserDynamic). |
-| `angular#unsafe-jit` | 此策略供[Just-In-Time (JIT) 编译器](api/core/Compiler)使用。如果你的应用程序直接与 JIT 编译器交互或使用[平台浏览器动态](api/platform-browser-dynamic/platformBrowserDynamic)以 JIT 模式运行，你必须启用此策略。 |
-| `angular#bundler` | This policy is used by the Angular CLI bundler when creating lazy chunk files. |
-| `angular#bundler` | 创建惰性加载块文件时，Angular CLI 打包器会使用此策略。 |
+| Policies                | Detail                                                                                                                                                                                                                                                                                     |
+| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 策略                    | 详情                                                                                                                                                                                                                                                                                       |
+| `angular`               | This policy is used in security-reviewed code that is internal to Angular, and is required for Angular to function when Trusted Types are enforced. Any inline template values or content sanitized by Angular is treated as safe by this policy.                                          |
+| `angular`               | 此策略用于 Angular 内部经过安全审查的代码，并且当强制执行可信类型时，Angular 需要此策略才能正常运行。任何由 Angular 清理的内联模板值或内容都被此政策视为安全的。                                                                                                                           |
+| `angular#unsafe-bypass` | This policy is used for applications that use any of the methods in Angular's [DomSanitizer](api/platform-browser/DomSanitizer) that bypass security, such as `bypassSecurityTrustHtml`. Any application that uses these methods must enable this policy.                                  |
+| `angular#unsafe-bypass` | 此策略用于要使用 Angular 的 [DomSanitizer](api/platform-browser/DomSanitizer) 的各个方法来绕过安全性的应用程序，比如 `bypassSecurityTrustHtml`。任何使用了这些方法的应用程序都必须启用此策略。                                                                                             |
+| `angular#unsafe-jit`    | This policy is used by the [Just-In-Time (JIT) compiler](api/core/Compiler). You must enable this policy if your application interacts directly with the JIT compiler or is running in JIT mode using the [platform browser dynamic](api/platform-browser-dynamic/platformBrowserDynamic). |
+| `angular#unsafe-jit`    | 此策略供[Just-In-Time (JIT) 编译器](api/core/Compiler)使用。如果你的应用程序直接与 JIT 编译器交互或使用[平台浏览器动态](api/platform-browser-dynamic/platformBrowserDynamic)以 JIT 模式运行，你必须启用此策略。                                                                            |
+| `angular#bundler`       | This policy is used by the Angular CLI bundler when creating lazy chunk files.                                                                                                                                                                                                             |
+| `angular#bundler`       | 创建惰性加载块文件时，Angular CLI 打包器会使用此策略。                                                                                                                                                                                                                                     |
 
 You should configure the HTTP headers for Trusted Types in the following locations:
 

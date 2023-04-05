@@ -127,13 +127,13 @@ Validator functions can be either synchronous or asynchronous.
 
 验证器函数可以是同步函数，也可以是异步函数。
 
-| Validator type | Details |
-| :------------- | :------ |
-| 验证器类型 | 详细信息 |
-| Sync validators | Synchronous functions that take a control instance and immediately return either a set of validation errors or `null`. Pass these in as the second argument when you instantiate a `FormControl`. |
-| 同步验证器 | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。 |
+| Validator type   | Details                                                                                                                                                                                                                 |
+| :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 验证器类型       | 详细信息                                                                                                                                                                                                                |
+| Sync validators  | Synchronous functions that take a control instance and immediately return either a set of validation errors or `null`. Pass these in as the second argument when you instantiate a `FormControl`.                       |
+| 同步验证器       | 这些同步函数接受一个控件实例，然后返回一组验证错误或 `null`。可以在实例化一个 `FormControl` 时把它作为构造函数的第二个参数传进去。                                                                                      |
 | Async validators | Asynchronous functions that take a control instance and return a Promise or Observable that later emits a set of validation errors or `null`. Pass these in as the third argument when you instantiate a `FormControl`. |
-| 异步验证器 | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。 |
+| 异步验证器       | 这些异步函数接受一个控件实例并返回一个 Promise 或 Observable，它稍后会发出一组验证错误或 `null`。在实例化 `FormControl` 时，可以把它们作为第三个参数传入。                                                              |
 
 For performance reasons, Angular only runs async validators if all sync validators pass.
 Each must complete before errors are set.

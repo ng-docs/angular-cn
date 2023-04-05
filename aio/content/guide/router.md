@@ -692,13 +692,13 @@ The router supports both styles with two `LocationStrategy` providers:
 
 路由器通过两种 `LocationStrategy` 提供者来支持所有这些风格：
 
-| Providers | Details |
-| :-------- | :------ |
-| 提供者 | 详情 |
+| Providers              | Details                              |
+| :--------------------- | :----------------------------------- |
+| 提供者                 | 详情                                 |
 | `PathLocationStrategy` | The default "HTML5 pushState" style. |
-| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。 |
-| `HashLocationStrategy` | The "hash URL" style. |
-| `HashLocationStrategy` | “hash URL”风格。 |
+| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。     |
+| `HashLocationStrategy` | The "hash URL" style.                |
+| `HashLocationStrategy` | “hash URL”风格。                     |
 
 The `RouterModule.forRoot()` function sets the `LocationStrategy` to the `PathLocationStrategy`, which makes it the default strategy.
 You also have the option of switching to the `HashLocationStrategy` with an override during the bootstrapping process.

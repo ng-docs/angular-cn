@@ -12,43 +12,43 @@ This styling precedence is as follows, from the most specific with the highest p
 
    模板绑定是最具体的，因为它们会直接且排他地应用于元素，因此它们具有最高的优先级。
 
-   | Binding type | Examples |
-   | :----------- | :------- |
-   | 绑定类型 | 例子 |
-   | Property binding | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example> |
-   | 属性绑定 | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example> |
-   | Map binding | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
-   | 映射绑定 | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
-   | Static value | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example> |
-   | 静态值 | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example> |
+   | Binding type     | Examples                                                                                                                                                                                                                |
+   | :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | 绑定类型         | 例子                                                                                                                                                                                                                    |
+   | Property binding | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example>          |
+   | 属性绑定         | <code-example format="html" hideCopy language="html"> &lt;div [class.foo]="hasFoo"&gt; </code-example> <code-example format="html" hideCopy language="html" >&lt;div [style.color]="color"&gt; </code-example>          |
+   | Map binding      | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
+   | 映射绑定         | <code-example format="html" hideCopy language="html"> &lt;div [class]="classExpression"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div [style]="styleExpression"&gt; </code-example> |
+   | Static value     | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example>                     |
+   | 静态值           | <code-example format="html" hideCopy language="html"> &lt;div class="foo"&gt; </code-example> <code-example format="html" hideCopy language="html"> &lt;div style="color: blue"&gt; </code-example>                     |
 
 1. Directive host bindings are less specific because you can use directives in multiple locations, so they have a lower precedence than template bindings.
 
    指令的宿主绑定不太有特异性，因为你可以在多个位置使用该指令，因此它们的优先级比模板绑定低。
 
-   | Binding type | Examples |
-   | :----------- | :------- |
-   | 绑定类型 | 例子 |
+   | Binding type     | Examples                                                                                                                                                                                                                             |
+   | :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | 绑定类型         | 例子                                                                                                                                                                                                                                 |
    | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
-   | 属性绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
-   | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example> |
-   | 映射绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example> |
-   | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
-   | 静态值 | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
+   | 属性绑定         | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style.color]': 'color'} </code-example> |
+   | Map binding      | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example>    |
+   | 映射绑定         | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpr'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpr'} </code-example>    |
+   | Static value     | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example>            |
+   | 静态值           | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example>            |
 
 1. Component host bindings have the lowest precedence.
 
    组件宿主绑定的优先级最低。
 
-   | Binding type | Examples |
-   | :----------- | :------- |
-   | 绑定类型 | 例子 |
-   | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example> |
-   | 属性绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example> |
-   | Map binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
-   | 映射绑定 | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
-   | Static value | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
-   | 静态值 | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example> |
+   | Binding type     | Examples                                                                                                                                                                                                                                      |
+   | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | 绑定类型         | 例子                                                                                                                                                                                                                                          |
+   | Property binding | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example>           |
+   | 属性绑定         | <code-example format="typescript" hideCopy language="typescript"> host: {'[class.foo]': 'hasFoo'} </code-example> <code-example format="typescript" hideCopy language="typescript">host: {'[style.color]': 'color'} </code-example>           |
+   | Map binding      | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
+   | 映射绑定         | <code-example format="typescript" hideCopy language="typescript"> host: {'[class]': 'classExpression'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'[style]': 'styleExpression'} </code-example> |
+   | Static value     | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example>                     |
+   | 静态值           | <code-example format="typescript" hideCopy language="typescript"> host: {'class': 'foo'} </code-example> <code-example format="typescript" hideCopy language="typescript"> host: {'style': 'color: blue'} </code-example>                     |
 
 ## Precedence and specificity
 
