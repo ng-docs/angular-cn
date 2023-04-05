@@ -11,10 +11,13 @@ import ts from 'typescript';
 
 import {AbsoluteFsPath} from '../../../../src/ngtsc/file_system';
 import {ErrorCode} from '../../diagnostics';
+import {Reference} from '../../imports';
+import {NgModuleMeta, PipeMeta} from '../../metadata';
+import {ClassDeclaration} from '../../reflection';
 
 import {FullTemplateMapping, NgTemplateDiagnostic, TypeCheckableDirectiveMeta} from './api';
 import {GlobalCompletion} from './completion';
-import {PotentialDirective, PotentialImport, PotentialPipe} from './scope';
+import {PotentialDirective, PotentialImport, PotentialImportMode, PotentialPipe} from './scope';
 import {ElementSymbol, Symbol, TcbLocation, TemplateSymbol} from './symbols';
 
 /**
@@ -211,12 +214,12 @@ export interface TemplateTypeChecker {
   getPotentialTemplateDirectives(component: ts.ClassDeclaration): PotentialDirective[];
 
   /**
-   * Get basic metadata on the pipes which are in scope for the given component.
+   * Get basic metadata on the pipes which are in scope or can be imported for the given component.
    *
    * 获取给定组件范围内的管道上的基本元数据。
    *
    */
-  getPipesInScope(component: ts.ClassDeclaration): PotentialPipe[]|null;
+  getPotentialPipes(component: ts.ClassDeclaration): PotentialPipe[];
 
   /**
    * Retrieve a `Map` of potential template element tags, to either the `PotentialDirective` that
@@ -232,8 +235,9 @@ export interface TemplateTypeChecker {
   /**
    * In the context of an Angular trait, generate potential imports for a directive.
    */
-  getPotentialImportsFor(directive: PotentialDirective, inComponent: ts.ClassDeclaration):
-      ReadonlyArray<PotentialImport>;
+  getPotentialImportsFor(
+      toImport: Reference<ClassDeclaration>, inComponent: ts.ClassDeclaration,
+      importMode: PotentialImportMode): ReadonlyArray<PotentialImport>;
 
   /**
    * Get the primary decorator for an Angular class (such as @Component). This does not work for
@@ -277,6 +281,26 @@ export interface TemplateTypeChecker {
    *
    */
   getDirectiveMetadata(dir: ts.ClassDeclaration): TypeCheckableDirectiveMeta|null;
+
+  /**
+   * Retrieve the type checking engine's metadata for the given NgModule class, if available.
+   */
+  getNgModuleMetadata(module: ts.ClassDeclaration): NgModuleMeta|null;
+
+  /**
+   * Retrieve the type checking engine's metadata for the given pipe class, if available.
+   */
+  getPipeMetadata(pipe: ts.ClassDeclaration): PipeMeta|null;
+
+  /**
+   * Gets the directives that have been used in a component's template.
+   */
+  getUsedDirectives(component: ts.ClassDeclaration): TypeCheckableDirectiveMeta[]|null;
+
+  /**
+   * Gets the pipes that have been used in a component's template.
+   */
+  getUsedPipes(component: ts.ClassDeclaration): string[]|null;
 
   /**
    * Reset the `TemplateTypeChecker`'s state for the given class, so that it will be recomputed on

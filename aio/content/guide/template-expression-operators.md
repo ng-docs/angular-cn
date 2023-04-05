@@ -97,6 +97,8 @@ The `$any()` cast function works anywhere in a binding expression where a method
 
 `$any()` 强制转换函数可在绑定表达式中任何进行方法调用的地方使用。
 
+Also note that `$any()` only affects the typing. There is no method call in the generated code; the `$any()` function is entirely compiled away.
+
 <!-- links -->
 
 <!-- external links -->

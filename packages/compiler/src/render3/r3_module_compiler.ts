@@ -80,34 +80,6 @@ export interface R3NgModuleMetadata {
   type: R3Reference;
 
   /**
-   * An expression representing the module type being compiled, intended for use within a class
-   * definition itself.
-   *
-   * 表示正在编译的模块类型的表达式，旨在在类定义本身中使用。
-   *
-   * This can differ from the outer `type` if the class is being compiled by ngcc and is inside
-   * an IIFE structure that uses a different name internally.
-   *
-   * 如果类正在由 ngcc 编译并且在内部使用不同名称的 IIFE 结构中，这可能与外部 `type` 不同。
-   *
-   */
-  internalType: o.Expression;
-
-  /**
-   * An expression intended for use by statements that are adjacent (i.e. tightly coupled) to but
-   * not internal to a class definition.
-   *
-   * 旨在供与类定义相邻（即紧耦合）但不在类定义内部的语句使用的表达式。
-   *
-   * This can differ from the outer `type` if the class is being compiled by ngcc and is inside
-   * an IIFE structure that uses a different name internally.
-   *
-   * 如果类正在由 ngcc 编译并且在内部使用不同名称的 IIFE 结构中，这可能与外部 `type` 不同。
-   *
-   */
-  adjacentType: o.Expression;
-
-  /**
    * An array of expressions representing the bootstrap components specified by the module.
    *
    * 表示模块指定的引导组件的表达式数组。
@@ -258,8 +230,7 @@ interface R3NgModuleDefMap {
  */
 export function compileNgModule(meta: R3NgModuleMetadata): R3CompiledExpression {
   const {
-    adjacentType,
-    internalType,
+    type: moduleType,
     bootstrap,
     declarations,
     imports,
@@ -272,7 +243,7 @@ export function compileNgModule(meta: R3NgModuleMetadata): R3CompiledExpression 
 
   const statements: o.Statement[] = [];
   const definitionMap = new DefinitionMap<R3NgModuleDefMap>();
-  definitionMap.set('type', internalType);
+  definitionMap.set('type', moduleType.value);
 
   if (bootstrap.length > 0) {
     definitionMap.set('bootstrap', refsToArray(bootstrap, containsForwardDecls));
@@ -315,7 +286,7 @@ export function compileNgModule(meta: R3NgModuleMetadata): R3CompiledExpression 
 
     // Generate a side-effectful call to register this NgModule by its id, as per the semantics of
     // NgModule ids.
-    statements.push(o.importExpr(R3.registerNgModuleType).callFn([adjacentType, id]).toStmt());
+    statements.push(o.importExpr(R3.registerNgModuleType).callFn([moduleType.value, id]).toStmt());
   }
 
   const expression =
@@ -381,7 +352,7 @@ export function createNgModuleType(
  *
  */
 function generateSetNgModuleScopeCall(meta: R3NgModuleMetadata): o.Statement|null {
-  const {adjacentType: moduleType, declarations, imports, exports, containsForwardDecls} = meta;
+  const {type: moduleType, declarations, imports, exports, containsForwardDecls} = meta;
 
   const scopeMap = new DefinitionMap<
       {declarations: o.Expression, imports: o.Expression, exports: o.Expression}>();
@@ -405,7 +376,7 @@ function generateSetNgModuleScopeCall(meta: R3NgModuleMetadata): o.Statement|nul
   // setNgModuleScope(...)
   const fnCall = new o.InvokeFunctionExpr(
       /* fn */ o.importExpr(R3.setNgModuleScope),
-      /* args */[moduleType, scopeMap.toLiteralMap()]);
+      /* args */[moduleType.value, scopeMap.toLiteralMap()]);
 
   // (ngJitMode guard) && setNgModuleScope(...)
   const guardedCall = jitOnlyGuardedExpression(fnCall);

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {DEFAULT_INTERPOLATION_CONFIG, InterpolationConfig, LexerRange, ParsedTemplate, ParseSourceFile, parseTemplate, TmplAstNode} from '@angular/compiler';
+import {DEFAULT_INTERPOLATION_CONFIG, InterpolationConfig, LexerRange, ParsedTemplate, ParseSourceFile, parseTemplate, TmplAstNode,} from '@angular/compiler';
 import ts from 'typescript';
 
 import {ErrorCode, FatalDiagnosticError} from '../../../diagnostics';
@@ -311,9 +311,9 @@ function parseExtractedTemplate(
 }
 
 export function parseTemplateDeclaration(
-    decorator: Decorator, component: Map<string, ts.Expression>, containingFile: string,
-    evaluator: PartialEvaluator, resourceLoader: ResourceLoader,
-    defaultPreserveWhitespaces: boolean): TemplateDeclaration {
+    node: ClassDeclaration, decorator: Decorator, component: Map<string, ts.Expression>,
+    containingFile: string, evaluator: PartialEvaluator, depTracker: DependencyTracker|null,
+    resourceLoader: ResourceLoader, defaultPreserveWhitespaces: boolean): TemplateDeclaration {
   let preserveWhitespaces: boolean = defaultPreserveWhitespaces;
   if (component.has('preserveWhitespaces')) {
     const expr = component.get('preserveWhitespaces')!;
@@ -354,6 +354,12 @@ export function parseTemplateDeclaration(
         resolvedTemplateUrl: resourceUrl,
       };
     } catch (e) {
+      if (depTracker !== null) {
+        // The analysis of this file cannot be re-used if the template URL could
+        // not be resolved. Future builds should re-analyze and re-attempt resolution.
+        depTracker.recordDependencyAnalysisFailure(node.getSourceFile());
+      }
+
       throw makeResourceNotFoundError(
           templateUrl, templateUrlExpr, ResourceTypeForDiagnostics.Template);
     }
@@ -368,8 +374,7 @@ export function parseTemplateDeclaration(
     };
   } else {
     throw new FatalDiagnosticError(
-        ErrorCode.COMPONENT_MISSING_TEMPLATE, Decorator.nodeForError(decorator),
-        'component is missing a template');
+        ErrorCode.COMPONENT_MISSING_TEMPLATE, decorator.node, 'component is missing a template');
   }
 }
 
@@ -397,7 +402,7 @@ export function preloadAndParseTemplate(
       if (templatePromise !== undefined) {
         return templatePromise.then(() => {
           const templateDecl = parseTemplateDeclaration(
-              decorator, component, containingFile, evaluator, resourceLoader,
+              node, decorator, component, containingFile, evaluator, depTracker, resourceLoader,
               defaultPreserveWhitespaces);
           const template =
               extractTemplate(node, templateDecl, evaluator, depTracker, resourceLoader, options);
@@ -408,12 +413,18 @@ export function preloadAndParseTemplate(
         return Promise.resolve(null);
       }
     } catch (e) {
+      if (depTracker !== null) {
+        // The analysis of this file cannot be re-used if the template URL could
+        // not be resolved. Future builds should re-analyze and re-attempt resolution.
+        depTracker.recordDependencyAnalysisFailure(node.getSourceFile());
+      }
+
       throw makeResourceNotFoundError(
           templateUrl, templateUrlExpr, ResourceTypeForDiagnostics.Template);
     }
   } else {
     const templateDecl = parseTemplateDeclaration(
-        decorator, component, containingFile, evaluator, resourceLoader,
+        node, decorator, component, containingFile, evaluator, depTracker, resourceLoader,
         defaultPreserveWhitespaces);
     const template =
         extractTemplate(node, templateDecl, evaluator, depTracker, resourceLoader, options);

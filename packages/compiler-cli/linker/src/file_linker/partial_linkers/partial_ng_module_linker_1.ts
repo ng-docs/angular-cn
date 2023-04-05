@@ -47,8 +47,6 @@ export function toR3NgModuleMeta<TExpression>(
 
   const meta: R3NgModuleMetadata = {
     type: wrapReference(wrappedType),
-    internalType: wrappedType,
-    adjacentType: wrappedType,
     bootstrap: [],
     declarations: [],
     publicDeclarationTypes: null,

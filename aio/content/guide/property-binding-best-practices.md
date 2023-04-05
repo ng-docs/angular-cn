@@ -104,7 +104,7 @@ In the `ItemListComponent` the `@Input()`, `items`, has a type of `Item[]`.
 
 <code-example header="src/app/item-list.component.ts" path="property-binding/src/app/item-list/item-list.component.ts" region="item-input"></code-example>
 
-Notice that `Item` is an object that it has two properties, an `id` and a `name`.
+Notice that `Item` is an object and it has two properties, an `id` and a `name`.
 
 注意 `Item` 是一个有两个属性的对象。一个是 `id`，一个是 `name`。
 

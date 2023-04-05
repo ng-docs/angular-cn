@@ -6,7 +6,7 @@ After you prepare a component for translation, use the [`extract-i18n`][AioCliEx
 
 准备好要翻译的组件后，使用 [Angular CLI][AioCliMain] 的 [`extract-i18n`][AioCliExtractI18n] 命令将组件中的标记文本提取到*源语言*文件中。
 
-The marked text includes text marked with `i18n`, attributes marked with `i18n-`*attribute*, and text tagged with `$localize` as described in [Prepare templates for translations][AioGuideI18nCommonPrepare].
+The marked text includes text marked with `i18n`, attributes marked with `i18n-`*attribute*, and text tagged with `$localize` as described in [Prepare component for translation][AioGuideI18nCommonPrepare].
 
 已标记的文本包括标记为 `i18n` 的文本、标记为 `i18n-`*属性*的属性和标记为 `$localize` 的文本，如[准备翻译模板][AioGuideI18nCommonPrepare]中所述。
 
@@ -189,7 +189,7 @@ To create a translation file for a locale or language, complete the following ac
 
    <code-example language="file">
 
-   messages.xlf --&gt; message.{locale}.xlf
+   messages.xlf --&gt; messages.{locale}.xlf
 
    </code-example>
 
@@ -449,8 +449,7 @@ The following example displays both translation units after translating.
 
 [AioGuideI18nCommonMerge]: guide/i18n-common-merge "Merge translations into the application | Angular"
 
-[AioGuideI18nCommonPrepare]: guide/i18n-common-prepare "Prepare templates for translations | Angular"
-
+[AioGuideI18nCommonPrepare]: guide/i18n-common-prepare "Prepare component for translation | Angular"
 [AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings]: guide/i18n-common-prepare#add-helpful-descriptions-and-meanings "Add helpful descriptions and meanings - Prepare component for translation | Angular"
 
 [AioGuideI18nCommonTranslationFilesCreateATranslationFileForEachLanguage]: guide/i18n-common-translation-files#create-a-translation-file-for-each-language "Create a translation file for each language - Work with translation files | Angular"

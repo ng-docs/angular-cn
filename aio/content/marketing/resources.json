@@ -1,6 +1,6 @@
 {
   "社区": {
-    "order": 3,
+    "order": 1,
     "subCategories": {
       "社区作品": {
         "order": 1,
@@ -73,6 +73,11 @@
             "title": "Angular Community Meetup",
             "descCn": "快来在这个每月一次的、多系列、多事件、多时区的在线聚会上学习技术技能和人脉。",
             "titleCn": "Angular 社区聚会"
+          },
+          "This-is-Angular": {
+            "desc": "Inclusive Angular publication free from conflict of interest. This publication is all about sharing Angular knowledge for free and not at all about money or KPIs. Cross-posts are welcome. Part of This is Learning.",
+            "url": "https://dev.to/this-is-angular",
+            "title": "This is Angular"
           }
         }
       },
@@ -153,7 +158,7 @@
     }
   },
   "开发": {
-    "order": 1,
+    "order": 3,
     "subCategories": {
       "跨平台开发": {
         "order": 5,
@@ -351,6 +356,12 @@
             "logo": "",
             "title": "Compodoc",
             "url": "https://github.com/compodoc/compodoc"
+          },
+          "docgeni": {
+            "desc": "A modern, powerful and out of the box documentation generator for Angular component lib and markdown docs.",
+            "logo": "",
+            "title": "Docgeni",
+            "url": "https://github.com/docgeni/docgeni"
           },
           "angular-playground": {
             "desc": "UI development environment for building, testing, and documenting Angular applications.",
@@ -709,9 +720,9 @@
           "-KLIzGEp8Mh5W-FkiQnL": {
             "desc": "A no-nonsense beginner's guide to building web applications with Angular and TypeScript",
             "descCn": "使用 Angular 和 TypeScript 构建 Web 应用程序的入门指南",
-            "title": "Learning Angular - Third Edition",
+            "title": "Learning Angular - Fourth Edition",
             "titleCn": "学习 Angular - 第三版",
-            "url": "https://www.packtpub.com/product/learning-angular-third-edition/9781839210662"
+            "url": "https://www.amazon.com/dp/1803240601"
           },
           "3ab": {
             "desc": "More than 15 books from O'Reilly about Angular",
@@ -825,7 +836,7 @@
           "angular-projects": {
             "title": "Angular Projects - Second Edition",
             "desc": "Build modern web apps by exploring Angular with 10 different projects and cutting-edge technologies",
-            "url": "https://www.packtpub.com/product/angular-projects-second-edition/9781800205260",
+            "url": "https://www.amazon.com/dp/1800205260",
             "titleCn": "Angular 项目 - 第二版",
             "descCn": "通过使用 10 种不同的项目和前沿技术探索 Angular 来构建现代 Web 应用程序"
           },
@@ -1015,6 +1026,11 @@
             "url": "https://platzi.com/angular-io",
             "descCn": "一个在线教育平台，在 Angular 和 TypeScript 中提供从零到高级的完整路径。 Platzi 帮助来自世界各地的学生获得新的、急需的技能。",
             "titleCn": "普拉齐（西班牙语）"
+          },
+          "angular-gettin-started": {
+            "desc": "Want to learn #Angular, but not sure where to start? Check out this in-depth “Angular for Beginners Course“ created by Angular #GDE @SantoshYadavDev.",
+            "title": "Angular for Beginners Course",
+            "url": "https://youtu.be/3qBXWUpoPHo"
           }
         }
       },
@@ -1168,11 +1184,11 @@
             "titleCn": "Angular.Schule（德语）",
             "url": "https://angular.schule/"
           },
-          "strbrw": {
+          "simplified": {
             "desc": "Angular and RxJS trainings, Code Reviews and consultancy. We help software engineers all over the world to create better web-applications...",
             "descCn": "Angular 和 RxJS 培训、代码审查和咨询。我们帮助世界各地的软件工程师创建更好的 Web 应用程序...",
-            "title": "StrongBrew",
-            "url": "https://strongbrew.io/"
+            "title": "Simplified Courses",
+            "url": "https://simplified.courses/"
           },
           "angular.de": {
             "desc": "Onsite Angular Training delivered by the greatest community in the german speaking area in Germany, Austria and Switzerland. We also regularly post articles and tutorials on our blog.",

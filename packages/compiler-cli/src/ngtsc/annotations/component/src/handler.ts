@@ -27,7 +27,7 @@ import {ExtendedTemplateChecker} from '../../../typecheck/extended/api';
 import {getSourceFile} from '../../../util/src/typescript';
 import {Xi18nContext} from '../../../xi18n';
 import {combineResolvers, compileDeclareFactory, compileNgFactoryDefField, compileResults, extractClassMetadata, extractSchemas, findAngularDecorator, forwardRefResolver, getDirectiveDiagnostics, getProviderDiagnostics, InjectableClassRegistry, isExpressionForwardReference, readBaseClass, resolveEnumValue, resolveImportedFile, resolveLiteral, resolveProvidersRequiringFactory, ResourceLoader, toFactoryMetadata, validateHostDirectives, wrapFunctionExpressionsInParens,} from '../../common';
-import {extractDirectiveMetadata, parseFieldArrayValue} from '../../directive';
+import {extractDirectiveMetadata, parseFieldStringArrayValue} from '../../directive';
 import {createModuleWithProvidersResolver, NgModuleSymbol} from '../../ng_module';
 
 import {checkCustomElementSelectorForErrors, makeCyclicImportInfo} from './diagnostics';
@@ -36,7 +36,6 @@ import {_extractTemplateStyleUrls, extractComponentStyleUrls, extractStyleResour
 import {ComponentSymbol} from './symbol';
 import {animationTriggerResolver, collectAnimationNames, validateAndFlattenComponentImports} from './util';
 
-const EMPTY_MAP = new Map<string, Expression>();
 const EMPTY_ARRAY: any[] = [];
 
 /**
@@ -64,7 +63,13 @@ export class ComponentDecoratorHandler implements
       private injectableRegistry: InjectableClassRegistry,
       private semanticDepGraphUpdater: SemanticDepGraphUpdater|null,
       private annotateForClosureCompiler: boolean, private perf: PerfRecorder,
-      private hostDirectivesResolver: HostDirectivesResolver) {}
+      private hostDirectivesResolver: HostDirectivesResolver) {
+    this.extractTemplateOptions = {
+      enableI18nLegacyMessageIdFormat: this.enableI18nLegacyMessageIdFormat,
+      i18nNormalizeLineEndingsInICUs: this.i18nNormalizeLineEndingsInICUs,
+      usePoisonedData: this.usePoisonedData,
+    };
+  }
 
   private literalCache = new Map<Decorator, ts.ObjectLiteralExpression>();
   private elementSchemaRegistry = new DomElementSchemaRegistry();
@@ -80,10 +85,9 @@ export class ComponentDecoratorHandler implements
   private preanalyzeTemplateCache = new Map<DeclarationNode, ParsedTemplateWithSource>();
   private preanalyzeStylesCache = new Map<DeclarationNode, string[]|null>();
 
-  private extractTemplateOptions = {
-    enableI18nLegacyMessageIdFormat: this.enableI18nLegacyMessageIdFormat,
-    i18nNormalizeLineEndingsInICUs: this.i18nNormalizeLineEndingsInICUs,
-    usePoisonedData: this.usePoisonedData,
+  private extractTemplateOptions: {
+    enableI18nLegacyMessageIdFormat: boolean; i18nNormalizeLineEndingsInICUs: boolean;
+    usePoisonedData: boolean;
   };
 
   readonly precedence = HandlerPrecedence.PRIMARY;
@@ -159,7 +163,7 @@ export class ComponentDecoratorHandler implements
     // Extract inline styles, process, and cache for use in synchronous analyze phase
     let inlineStyles;
     if (component.has('styles')) {
-      const litStyles = parseFieldArrayValue(component, 'styles', this.evaluator);
+      const litStyles = parseFieldStringArrayValue(component, 'styles', this.evaluator);
       if (litStyles === null) {
         this.preanalyzeStylesCache.set(node, null);
       } else {
@@ -324,8 +328,8 @@ export class ComponentDecoratorHandler implements
       template = preanalyzed;
     } else {
       const templateDecl = parseTemplateDeclaration(
-          decorator, component, containingFile, this.evaluator, this.resourceLoader,
-          this.defaultPreserveWhitespaces);
+          node, decorator, component, containingFile, this.evaluator, this.depTracker,
+          this.resourceLoader, this.defaultPreserveWhitespaces);
       template = extractTemplate(
           node, templateDecl, this.evaluator, this.depTracker, this.resourceLoader, {
             enableI18nLegacyMessageIdFormat: this.enableI18nLegacyMessageIdFormat,
@@ -359,6 +363,13 @@ export class ComponentDecoratorHandler implements
           this.depTracker.addResourceDependency(node.getSourceFile(), absoluteFrom(resourceUrl));
         }
       } catch {
+        if (this.depTracker !== null) {
+          // The analysis of this file cannot be re-used if one of the style URLs could
+          // not be resolved or loaded. Future builds should re-analyze and re-attempt
+          // resolution/loading.
+          this.depTracker.recordDependencyAnalysisFailure(node.getSourceFile());
+        }
+
         if (diagnostics === undefined) {
           diagnostics = [];
         }
@@ -402,7 +413,7 @@ export class ComponentDecoratorHandler implements
       }
 
       if (component.has('styles')) {
-        const litStyles = parseFieldArrayValue(component, 'styles', this.evaluator);
+        const litStyles = parseFieldStringArrayValue(component, 'styles', this.evaluator);
         if (litStyles !== null) {
           inlineStyles = [...litStyles];
           styles.push(...litStyles);

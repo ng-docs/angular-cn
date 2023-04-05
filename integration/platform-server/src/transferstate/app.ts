@@ -7,7 +7,7 @@
  */
 
 import {NgModule} from '@angular/core';
-import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 
 import {TransferStateComponent} from './transfer-state.component';
 
@@ -15,7 +15,7 @@ import {TransferStateComponent} from './transfer-state.component';
   declarations: [TransferStateComponent],
   bootstrap: [TransferStateComponent],
   imports: [
-    BrowserModule.withServerTransition({appId: 'ts'}),
+    BrowserModule,
   ],
 })
 export class TransferStateModule {

@@ -136,49 +136,6 @@ export interface LegacyNgcOptions {
 }
 
 /**
- * Options which were added to the Angular Ivy compiler to support backwards compatibility with
- * existing View Engine applications.
- *
- * 添加到 Angular Ivy 编译器以支持与现有 View Engine 应用程序向后兼容的选项。
- *
- * These are expected to be removed at some point in the future.
- *
- * 预计这些将在未来的某个时候被删除。
- *
- * @publicApi
- */
-export interface NgcCompatibilityOptions {
-  /**
-   * Controls whether ngtsc will emit `.ngfactory.js` shims for each compiled `.ts` file.
-   *
-   * 控制 ngtsc 是否为每个已编译的 `.ts` 文件发出 `.ngfactory.js` shim。
-   *
-   * These shims support legacy imports from `ngfactory` files, by exporting a factory shim
-   * for each component or NgModule in the original `.ts` file.
-   *
-   * 这些垫片通过为原始 `.ts` 文件中的每个组件或 NgModule 导出工厂 shim，来支持从 `ngfactory`
-   * 文件的旧版导入。
-   *
-   */
-  generateNgFactoryShims?: boolean;
-
-  /**
-   * Controls whether ngtsc will emit `.ngsummary.js` shims for each compiled `.ts` file.
-   *
-   * 控制 ngtsc 是否为每个已编译的 `.ts` 文件发出 `.ngsummary.js` shim。
-   *
-   * These shims support legacy imports from `ngsummary` files, by exporting an empty object
-   * for each NgModule in the original `.ts` file. The only purpose of summaries is to feed them to
-   * `TestBed`, which is a no-op in Ivy.
-   *
-   * 这些垫片通过为原始 `.ts` 文件中的每个 NgModule 导出一个空对象，支持从 `ngsummary`
-   * 文件中的旧版导入。摘要的唯一目的是将它们提供给 `TestBed` ，这是 Ivy 中的空操作。
-   *
-   */
-  generateNgSummaryShims?: boolean;
-}
-
-/**
  * Options related to template type-checking and its strictness.
  *
  * 与模板类型检查及其严格性相关的选项。

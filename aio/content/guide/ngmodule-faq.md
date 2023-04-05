@@ -235,7 +235,7 @@ Don't export the following:
   不可声明的对象，比如服务、函数、配置、实体模型等。
 
 * Components that are only loaded dynamically by the router or by bootstrapping.
-  Such [entry components](guide/ngmodule-faq#q-entry-component-defined) can never be selected in another component's template.
+  Such components can never be selected in another component's template.
   While there's no harm in exporting them, there's also no benefit.
 
   那些只被路由器或引导函数动态加载的组件。比如[入口组件](guide/ngmodule-faq#q-entry-component-defined)可能从来不会在其它组件的模板中出现。导出它们没有坏处，但也没有好处。
@@ -690,42 +690,6 @@ Here is a custom constructor for an NgModule called `GreetingModule`.
 某些 NgModule（比如 `BrowserModule`）就实现了那样一个守卫。下面是一个名叫 `GreetingModule` 的 NgModule 的 自定义构造函数。
 
 <code-example header="src/app/greeting/greeting.module.ts (Constructor)" path="ngmodules/src/app/greeting/greeting.module.ts" region="ctor"></code-example>
-
-<a id="q-entry-component-defined"></a>
-
-## What is an `entry component`?
-
-## 什么是*入口组件*？
-
-An entry component is any component that Angular loads *imperatively* by type.
-
-Angular 根据组件类型*命令式*加载的组件是*入口组件*。
-
-A component loaded *declaratively* by way of its selector is *not* an entry component.
-
-而通过组件选择器*声明式*加载的组件则*不是*入口组件。
-
-Angular loads a component declaratively when using the component's selector to locate the element in the template.
-Angular then creates the HTML representation of the component and inserts it into the DOM at the selected element.
-These aren't entry components.
-
-Angular 会声明式的加载组件，它使用组件的选择器在模板中定位元素。然后，Angular 会创建该组件的 HTML 表示，并把它插入 DOM 中所选元素的内部。它们不是入口组件。
-
-The bootstrapped root `AppComponent` is an *entry component*.
-True, its selector matches an element tag in `index.html`.
-But `index.html` isn't a component template and the `AppComponent` selector doesn't match an element in any component template.
-
-而用于引导的根 `AppComponent` 则是一个*入口组件*。虽然它的选择器匹配了 `index.html` 中的一个元素，但是 `index.html` 并不是组件模板，而且 `AppComponent` 选择器也不会在任何组件模板中出现。
-
-Components in route definitions are also *entry components*.
-A route definition refers to a component by its *type*.
-The router ignores a routed component's selector, if it even has one, and loads the component dynamically into a `RouterOutlet`.
-
-在路由定义中用到的组件也同样是*入口组件*。路由定义根据*类型*来引用组件。路由器会忽略路由组件的选择器（即使它有选择器），并且把该组件动态加载到 `RouterOutlet` 中。
-
-For more information, see [Entry Components](guide/entry-components).
-
-要了解更多，参阅[入口组件](guide/entry-components)一章。
 
 ## What kinds of modules should I have and how should I use them?
 

@@ -69,6 +69,7 @@ class HeroListModule {}
 </code-example>
 
 When you register a provider with a specific NgModule, the same instance of a service is available to all components in that NgModule.
+To understand all edge-cases, see [Hierarchical injectors](guide/hierarchical-dependency-injection).
 
 当你向特定的 NgModule 注册提供者时，同一个服务实例可用于该 NgModule 中的所有组件。
 

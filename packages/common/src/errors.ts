@@ -9,9 +9,6 @@
 /**
  * The list of error codes used in runtime code of the `common` package.
  * Reserved error code range: 2000-2999.
- *
- * `common` 包的运行时代码中使用的错误代码列表。保留的错误代码范围： 2000-2999。
- *
  */
 export const enum RuntimeErrorCode {
   // NgSwitch errors
@@ -36,4 +33,5 @@ export const enum RuntimeErrorCode {
   OVERSIZED_IMAGE = 2960,
   TOO_MANY_PRELOADED_IMAGES = 2961,
   MISSING_BUILTIN_LOADER = 2962,
+  MISSING_NECESSARY_LOADER = 2963,
 }

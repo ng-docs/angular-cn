@@ -50,12 +50,12 @@ export abstract class ViewRef extends ChangeDetectorRef {
    * 处理函数，用于清理与视图关联的由开发人员定义的数据。在调用 `destroy()` 方法时调用。
    *
    */
-  abstract onDestroy(callback: Function): any /** TODO #9100 */;
+  abstract onDestroy(callback: Function): void;
 }
 
 /**
  * Represents an Angular [view](guide/glossary#view) in a view container.
- * An [embedded view](guide/glossary#view-tree) can be referenced from a component
+ * An [embedded view](guide/glossary#view-hierarchy) can be referenced from a component
  * other than the hosting component whose template defines it, or it can be defined
  * independently by a `TemplateRef`.
  *

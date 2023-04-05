@@ -61,21 +61,6 @@ setPublicVar SAUCE_TUNNEL_IDENTIFIER "angular-framework-${CIRCLE_BUILD_NUM}-${CI
 # acquire CircleCI instances for too long if sauceconnect failed, we need a connect timeout.
 setPublicVar SAUCE_READY_FILE_TIMEOUT 120
 
-
-####################################################################################################
-# Define environment variables for the `angular/components` repo unit tests job.
-####################################################################################################
-# We specifically use a directory within "/tmp" here because we want the cloned repo to be
-# completely isolated from angular/angular in order to avoid any bad interactions between
-# their separate build setups. **NOTE**: When updating the temporary directory, also update
-# the `save_cache` path configuration in `config.yml`
-setPublicVar COMPONENTS_REPO_TMP_DIR "/tmp/angular-components-repo"
-setPublicVar COMPONENTS_REPO_URL "https://github.com/angular/components.git"
-# TODO(BRANCH_RENAME_CLEANUP): fixup branch name to point to main branch
-setPublicVar COMPONENTS_REPO_BRANCH "main-branch-rename-do-not-delete"
-# **NOTE**: When updating the commit SHA, also update the cache key in the CircleCI `config.yml`.
-setPublicVar COMPONENTS_REPO_COMMIT "e65f5f5bafcd00dbb64387878fb866283909a2dd"
-
 ####################################################################################################
 # Create shell script in /tmp for Bazel actions to access CI envs without
 # busting the cache. Used by payload-size.sh script in integration tests.

@@ -120,9 +120,8 @@ export class TypeScriptAstFactory implements AstFactory<ts.Statement, ts.Express
       throw new Error(`Invalid syntax, expected a block, but got ${ts.SyntaxKind[body.kind]}.`);
     }
     return ts.factory.createFunctionDeclaration(
-        undefined, undefined, undefined, functionName, undefined,
-        parameters.map(
-            param => ts.factory.createParameterDeclaration(undefined, undefined, undefined, param)),
+        undefined, undefined, functionName, undefined,
+        parameters.map(param => ts.factory.createParameterDeclaration(undefined, undefined, param)),
         undefined, body);
   }
 
@@ -133,8 +132,7 @@ export class TypeScriptAstFactory implements AstFactory<ts.Statement, ts.Express
     }
     return ts.factory.createFunctionExpression(
         undefined, undefined, functionName ?? undefined, undefined,
-        parameters.map(
-            param => ts.factory.createParameterDeclaration(undefined, undefined, undefined, param)),
+        parameters.map(param => ts.factory.createParameterDeclaration(undefined, undefined, param)),
         undefined, body);
   }
 

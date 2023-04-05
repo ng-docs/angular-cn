@@ -12,13 +12,8 @@
     },
     {
       "url": "resources",
-      "titleCn": "资源",
-      "title": "Resources"
-    },
-    {
-      "url": "events",
-      "titleCn": "活动",
-      "title": "Events"
+      "titleCn": "社区",
+      "title": "Community"
     },
     {
       "url": "https://blog.ralph.wang",
@@ -266,6 +261,11 @@
                   "tooltip": "Introductory guide to binding."
                 },
                 {
+                  "url": "guide/property-binding",
+                  "title": "Property binding",
+                  "tooltip": "Learn how to use property binding."
+                },
+                {
                   "url": "guide/attribute-binding",
                   "titleCn": "属性绑定",
                   "title": "Attribute binding",
@@ -285,13 +285,6 @@
                   "title": "Event binding",
                   "tooltipCn": "了解如何使用事件绑定。",
                   "tooltip": "Learn how to use to event binding."
-                },
-                {
-                  "url": "guide/property-binding",
-                  "titleCn": "属性绑定",
-                  "title": "Property binding",
-                  "tooltipCn": "了解如何使用属性绑定。",
-                  "tooltip": "Learn how to use property binding."
                 },
                 {
                   "url": "guide/two-way-binding",
@@ -442,11 +435,22 @@
           "tooltip": "A list of developer guides for building Angular applications."
         },
         {
-          "url": "guide/standalone-components",
-          "title": "Standalone components",
-          "tooltip": "Standalone components, directives, and pipes",
           "titleCn": "独立组件",
-          "tooltipCn": "独立组件、指令和管道"
+          "title": "Standalone",
+          "tooltipCn": "独立组件、指令和管道",
+          "tooltip": "Learn about Angular's standalone APIs and how to convert your application to them.",
+          "children": [
+            {
+              "url": "guide/standalone-components",
+              "title": "Standalone components",
+              "tooltip": "Standalone components, directives, and pipes"
+            },
+            {
+              "url": "guide/standalone-migration",
+              "title": "Migrating to standalone",
+              "tooltip": "Migrate your application to Angular's standalone APIs"
+            }
+          ]
         },
         {
           "title": "Change detection",
@@ -585,11 +589,16 @@
           "tooltip": "Use HTTP to talk to a remote server."
         },
         {
+          "url": "guide/hydration",
+          "title": "Hydration",
+          "tooltip": "How to enable hydration on your server rendered applications."
+        },
+        {
           "url": "guide/image-directive",
-          "title": "Image optimization",
-          "tooltip": "Performant images with the Angular image directive.",
           "titleCn": "图片优化",
-          "tooltipCn": "使用 Angular 图片指令的高性能图片。"
+          "title": "Image optimization",
+          "tooltipCn": "使用 Angular 图片指令的高性能图片。",
+          "tooltip": "Performant images with the Angular image directive."
         },
         {
           "titleCn": "测试",
@@ -904,6 +913,32 @@
           "title": "Prerendering",
           "tooltipCn": "使用 Angular Universal 在服务器端预渲染 HTML。",
           "tooltip": "Prerender HTML server-side with Angular Universal."
+        },
+        {
+          "title": "Angular Libraries",
+          "tooltip": "Extending Angular with shared libraries.",
+          "children": [
+            {
+              "url": "guide/libraries",
+              "title": "Libraries overview",
+              "tooltip": "Understand how and when to use or create libraries."
+            },
+            {
+              "url": "guide/using-libraries",
+              "title": "Using published libraries",
+              "tooltip": "Integrate published libraries into an app."
+            },
+            {
+              "url": "guide/creating-libraries",
+              "title": "Creating libraries",
+              "tooltip": "Extend Angular by creating, publishing, and using your own libraries."
+            },
+            {
+              "url": "guide/angular-package-format",
+              "title": "Angular package format",
+              "tooltip": "Information about the Angular Package Format."
+            }
+          ]
         }
       ]
     },
@@ -1086,56 +1121,56 @@
           "tooltip": "The Tour of Heroes app is used as a reference point in many Angular examples.",
           "children": [
             {
-              "url": "tutorial",
+              "url": "tutorial/tour-of-heroes",
               "titleCn": "介绍",
               "title": "Introduction",
               "tooltipCn": "英雄之旅应用和教程简介",
               "tooltip": "Introduction to the Tour of Heroes app and tutorial"
             },
             {
-              "url": "tutorial/toh-pt0",
+              "url": "tutorial/tour-of-heroes/toh-pt0",
               "titleCn": "创建项目",
               "title": "Create a project",
               "tooltipCn": "创建应用外壳",
               "tooltip": "Creating the application shell"
             },
             {
-              "url": "tutorial/toh-pt1",
+              "url": "tutorial/tour-of-heroes/toh-pt1",
               "titleCn": "1. 英雄编辑器",
               "title": "1. The hero editor",
               "tooltipCn": "第 1 部分：构建一个简单的编辑器",
               "tooltip": "Part 1: Build a simple editor"
             },
             {
-              "url": "tutorial/toh-pt2",
+              "url": "tutorial/tour-of-heroes/toh-pt2",
               "titleCn": "2. 显示列表",
               "title": "2. Display a list",
               "tooltipCn": "第 2 部分：构建一个包含英雄列表的主从信息页面。",
               "tooltip": "Part 2: Build a master/detail page with a list of heroes."
             },
             {
-              "url": "tutorial/toh-pt3",
+              "url": "tutorial/tour-of-heroes/toh-pt3",
               "titleCn": "3. 创建特性组件",
               "title": "3. Create a feature component",
               "tooltipCn": "第 3 部分：将主/详细视图重构为单独的组件。",
               "tooltip": "Part 3: Refactor the master/detail views into separate components."
             },
             {
-              "url": "tutorial/toh-pt4",
+              "url": "tutorial/tour-of-heroes/toh-pt4",
               "titleCn": "4. 添加服务",
               "title": "4. Add services",
               "tooltipCn": "第 4 部分：创建一个可复用的服务来管理英雄数据。",
               "tooltip": "Part 4: Create a reusable service to manage hero data."
             },
             {
-              "url": "tutorial/toh-pt5",
+              "url": "tutorial/tour-of-heroes/toh-pt5",
               "titleCn": "5. 添加导航",
               "title": "5. Add navigation",
               "tooltipCn": "第 5 部分：添加 Angular 路由器并在视图之间导航。",
               "tooltip": "Part 5: Add the Angular router and navigate among the views."
             },
             {
-              "url": "tutorial/toh-pt6",
+              "url": "tutorial/tour-of-heroes/toh-pt6",
               "titleCn": "6. 从服务器获取数据",
               "title": "6. Get data from a server",
               "tooltipCn": "第 6 部分：使用 HTTP 检索和保存英雄数据。",
@@ -1149,42 +1184,6 @@
           "title": "Building a template-driven form",
           "tooltipCn": "使用指令和 Angular 模板语法创建模板驱动表单。",
           "tooltip": "Create a template-driven form using directives and Angular template syntax."
-        },
-        {
-          "titleCn": "Angular 库",
-          "title": "Angular Libraries",
-          "tooltipCn": "使用共享库扩展 Angular。",
-          "tooltip": "Extending Angular with shared libraries.",
-          "children": [
-            {
-              "url": "guide/libraries",
-              "titleCn": "库概览",
-              "title": "Libraries overview",
-              "tooltipCn": "了解如何以及何时使用或创建库。",
-              "tooltip": "Understand how and when to use or create libraries."
-            },
-            {
-              "url": "guide/using-libraries",
-              "titleCn": "使用已发布的库",
-              "title": "Using published libraries",
-              "tooltipCn": "将已发布的库集成到应用中。",
-              "tooltip": "Integrate published libraries into an app."
-            },
-            {
-              "url": "guide/creating-libraries",
-              "titleCn": "创建库",
-              "title": "Creating libraries",
-              "tooltipCn": "通过创建、发布和使用你自己的库来扩展 Angular。",
-              "tooltip": "Extend Angular by creating, publishing, and using your own libraries."
-            },
-            {
-              "url": "guide/angular-package-format",
-              "titleCn": "Angular 包格式",
-              "title": "Angular package format",
-              "tooltipCn": "关于 Angular 包格式的信息",
-              "tooltip": "Information about the Angular Package Format."
-            }
-          ]
         }
       ]
     },
@@ -1420,13 +1419,6 @@
                   "title": "Types of feature modules",
                   "tooltipCn": "不同类型特性模块的描述。",
                   "tooltip": "Description of the different types of feature modules."
-                },
-                {
-                  "url": "guide/entry-components",
-                  "titleCn": "入口组件",
-                  "title": "Entry components",
-                  "tooltipCn": "关于 Angular 中的入口组件的一切。",
-                  "tooltip": "All about entry components in Angular."
                 },
                 {
                   "url": "guide/feature-modules",

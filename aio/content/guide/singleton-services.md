@@ -39,7 +39,7 @@ This tells Angular to provide the service in the application root.
 
 <code-example path="providers/src/app/user.service.0.ts"  header="src/app/user.service.ts"></code-example>
 
-For more detailed information on services, see the [Services](tutorial/toh-pt4) chapter of the [Tour of Heroes tutorial](tutorial).
+For more detailed information on services, see the [Services](tutorial/tour-of-heroes/toh-pt4) chapter of the [Tour of Heroes tutorial](tutorial/tour-of-heroes).
 
 要想深入了解关于服务的信息，参阅[《英雄之旅》教程](tutorial)中的[服务](tutorial/toh-pt4)一章。
 

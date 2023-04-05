@@ -60,7 +60,7 @@ A component consists of three things:
 
 This guide demonstrates building an application with the following components:
 
-本指南演示了如何使用下列组件构建应用。
+本指南演示了如何使用下列组件构建应用：
 
 | Components | Details |
 | :--------- | :------ |
@@ -299,7 +299,7 @@ This section walks you through creating a child component, `ProductAlertsCompone
 
 1. In the new terminal, generate a new component named `product-alerts` by running the following command:
 
-   在新终端中，通过运行以下命令生成一个名为 `product-alerts` 的新组件。
+   在新终端中，通过运行以下命令生成一个名为 `product-alerts` 的新组件：
 
    <code-example format="shell" language="shell">
 

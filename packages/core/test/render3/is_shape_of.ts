@@ -168,6 +168,7 @@ const ShapeOfTView: ShapeOf<TView> = {
   schemas: true,
   consts: true,
   incompleteFirstPass: true,
+  ssrId: true,
 };
 
 
@@ -200,8 +201,9 @@ const ShapeOfTNode: ShapeOf<TNode> = {
   initialInputs: true,
   inputs: true,
   outputs: true,
-  tViews: true,
+  tView: true,
   next: true,
+  prev: true,
   projectionNext: true,
   child: true,
   parent: true,

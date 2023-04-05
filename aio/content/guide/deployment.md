@@ -236,7 +236,7 @@ To deploy your Angular application to [GitHub Pages](https://help.github.com/art
 
    提交你的更改，并推送。
 
-1. On the GitHub project page, go to Settings and scroll down to the GitHub Pages section to configure the site to [publish from the docs folder](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
+1. On the GitHub project page, go to Settings and select the Pages option from the left sidebar to configure the site to [publish from the docs folder](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
 
    在 GitHub 项目页面上，转到 Settings 并向下滚动到 GitHub Pages 部分，以配置[要从 docs 文件夹发布](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source)的站点。
 

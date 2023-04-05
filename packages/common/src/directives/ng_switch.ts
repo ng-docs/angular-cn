@@ -135,8 +135,7 @@ export class SwitchView {
   standalone: true,
 })
 export class NgSwitch {
-  // TODO(issue/24571): remove '!'.
-  private _defaultViews!: SwitchView[];
+  private _defaultViews: SwitchView[] = [];
   private _defaultUsed = false;
   private _caseCount = 0;
   private _lastCaseCheckIndex = 0;
@@ -158,9 +157,6 @@ export class NgSwitch {
 
   /** @internal */
   _addDefault(view: SwitchView) {
-    if (!this._defaultViews) {
-      this._defaultViews = [];
-    }
     this._defaultViews.push(view);
   }
 
@@ -178,10 +174,9 @@ export class NgSwitch {
   }
 
   private _updateDefaultCases(useDefault: boolean) {
-    if (this._defaultViews && useDefault !== this._defaultUsed) {
+    if (this._defaultViews.length > 0 && useDefault !== this._defaultUsed) {
       this._defaultUsed = useDefault;
-      for (let i = 0; i < this._defaultViews.length; i++) {
-        const defaultView = this._defaultViews[i];
+      for (const defaultView of this._defaultViews) {
         defaultView.enforceState(useDefault);
       }
     }

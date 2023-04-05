@@ -19,12 +19,7 @@ import {SecurityContext} from '../core';
 //
 // =================================================================================================
 
-/**
- * Map from tagName|propertyName to SecurityContext. Properties applying to all tags use '\*'.
- *
- * 从 tagName|propertyName 映射到 SecurityContext。适用于所有标签的属性都使用 '\*'。
- *
- */
+/** Map from tagName|propertyName to SecurityContext. Properties applying to all tags use '*'. */
 let _SECURITY_SCHEMA!: {[k: string]: SecurityContext};
 
 export function SECURITY_SCHEMA(): {[k: string]: SecurityContext} {
@@ -88,13 +83,8 @@ function registerContext(ctx: SecurityContext, specs: string[]) {
  * attributes are taken into account while creating an instance of an `<iframe>`
  * at runtime.
  *
- * `<iframe>` 的安全敏感属性集，*必须*仅作为静态属性应用。这可确保在运行时创建 `<iframe>` 实例时考虑所有安全敏感属性。
- *
  * Note: avoid using this set directly, use the `isIframeSecuritySensitiveAttr` function
  * in the code instead.
- *
- * 注意：避免直接使用此集，请改用代码中的 `isIframeSecuritySensitiveAttr` 函数。
- *
  */
 export const IFRAME_SECURITY_SENSITIVE_ATTRS =
     new Set(['sandbox', 'allow', 'allowfullscreen', 'referrerpolicy', 'csp', 'fetchpriority']);
@@ -102,9 +92,6 @@ export const IFRAME_SECURITY_SENSITIVE_ATTRS =
 /**
  * Checks whether a given attribute name might represent a security-sensitive
  * attribute of an <iframe>.
- *
- * 检查给定的属性名称是否可能表示<iframe>.
- *
  */
 export function isIframeSecuritySensitiveAttr(attrName: string): boolean {
   // The `setAttribute` DOM API is case-insensitive, so we lowercase the value

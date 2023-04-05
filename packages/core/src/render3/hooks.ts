@@ -343,9 +343,10 @@ function callHooks(
         break;
       }
     } else {
-      const isInitHook = arr[i] < 0;
-      if (isInitHook)
+      const isInitHook = (arr[i] as number) < 0;
+      if (isInitHook) {
         currentView[PREORDER_HOOK_FLAGS] += PreOrderHookFlags.NumberOfInitHooksCalledIncrementer;
+      }
       if (lastNodeIndexFound < nodeIndexLimit || nodeIndexLimit == -1) {
         callHook(currentView, initPhase, arr, i);
         currentView[PREORDER_HOOK_FLAGS] =
@@ -380,7 +381,7 @@ function callHooks(
  *
  */
 function callHook(currentView: LView, initPhase: InitPhaseState, arr: HookData, i: number) {
-  const isInitHook = arr[i] < 0;
+  const isInitHook = (arr[i] as number) < 0;
   const hook = arr[i + 1] as () => void;
   const directiveIndex = isInitHook ? -arr[i] : arr[i] as number;
   const directive = currentView[directiveIndex];

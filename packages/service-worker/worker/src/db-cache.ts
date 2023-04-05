@@ -58,11 +58,13 @@ export class CacheDatabase implements Database {
  *
  */
 export class CacheTable implements Table {
-  cacheName = this.cache.name;
+  cacheName: string;
 
   constructor(
       readonly name: string, private cache: NamedCache, private adapter: Adapter,
-      private cacheQueryOptions?: CacheQueryOptions) {}
+      private cacheQueryOptions?: CacheQueryOptions) {
+    this.cacheName = this.cache.name;
+  }
 
   private request(key: string): Request {
     return this.adapter.newRequest('/' + key);

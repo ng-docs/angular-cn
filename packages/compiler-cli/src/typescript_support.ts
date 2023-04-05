@@ -22,7 +22,7 @@ import {compareVersions} from './version_helpers';
  * 配置参数值。
  *
  */
-const MIN_TS_VERSION = '4.8.2';
+const MIN_TS_VERSION = '4.9.3';
 
 /**
  * Supremum of supported TypeScript versions
@@ -39,7 +39,7 @@ const MIN_TS_VERSION = '4.8.2';
  * 配置参数值。
  *
  */
-const MAX_TS_VERSION = '4.9.0';
+const MAX_TS_VERSION = '5.1.0';
 
 /**
  * The currently used version of TypeScript, which can be adjusted for testing purposes using

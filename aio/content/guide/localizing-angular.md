@@ -77,35 +77,35 @@ To localize Angular documentation, you must include, at a minimum, the following
 
     [设置本地环境和工作区](guide/setup-local)
 
-* [Tour of Heroes app and tutorial](tutorial)
+* [Tour of Heroes app and tutorial](tutorial/tour-of-heroes)
 
   [英雄之旅应用程序和教程](tutorial)
 
-  * [Create a new project](tutorial/toh-pt0)
+  * [Create a new project](tutorial/tour-of-heroes/toh-pt0)
 
     [创建一个新项目](tutorial/toh-pt0)
 
-  * [The hero editor](tutorial/toh-pt1)
+  * [The hero editor](tutorial/tour-of-heroes/toh-pt1)
 
     [英雄编辑](tutorial/toh-pt1)
 
-  * [Display a selection list](tutorial/toh-pt2)
+  * [Display a selection list](tutorial/tour-of-heroes/toh-pt2)
 
     [显示选择列表](tutorial/toh-pt2)
 
-  * [Create a feature component](tutorial/toh-pt3)
+  * [Create a feature component](tutorial/tour-of-heroes/toh-pt3)
 
     [创建特性组件](tutorial/toh-pt3)
 
-  * [Add services](tutorial/toh-pt4)
+  * [Add services](tutorial/tour-of-heroes/toh-pt4)
 
     [添加服务](tutorial/toh-pt4)
 
-  * [Add navigation with routing](tutorial/toh-pt5)
+  * [Add navigation with routing](tutorial/tour-of-heroes/toh-pt5)
 
     [使用路由添加导航](tutorial/toh-pt5)
 
-  * [Get data from a server](tutorial/toh-pt6)
+  * [Get data from a server](tutorial/tour-of-heroes/toh-pt6)
 
     [从服务器获取数据](tutorial/toh-pt6)
 

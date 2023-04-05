@@ -51,7 +51,6 @@ export function toR3PipeMeta<TExpression>(metaObj: AstObject<R3DeclarePipeMetada
   return {
     name: typeName,
     type: wrapReference(typeExpr.getOpaque()),
-    internalType: metaObj.getOpaque('type'),
     typeArgumentCount: 0,
     deps: null,
     pipeName: metaObj.getString('name'),

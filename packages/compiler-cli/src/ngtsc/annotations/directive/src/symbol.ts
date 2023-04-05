@@ -7,7 +7,7 @@
  */
 
 import {areTypeParametersEqual, isArrayEqual, isSetEqual, isSymbolEqual, SemanticSymbol, SemanticTypeParameter} from '../../../incremental/semantic_graph';
-import {BindingPropertyName, ClassPropertyMapping, ClassPropertyName, DirectiveTypeCheckMeta, TemplateGuardMeta} from '../../../metadata';
+import {ClassPropertyMapping, DirectiveTypeCheckMeta, InputMapping, InputOrOutput, TemplateGuardMeta} from '../../../metadata';
 import {ClassDeclaration} from '../../../reflection';
 
 /**
@@ -22,8 +22,8 @@ export class DirectiveSymbol extends SemanticSymbol {
 
   constructor(
       decl: ClassDeclaration, public readonly selector: string|null,
-      public readonly inputs: ClassPropertyMapping, public readonly outputs: ClassPropertyMapping,
-      public readonly exportAs: string[]|null,
+      public readonly inputs: ClassPropertyMapping<InputMapping>,
+      public readonly outputs: ClassPropertyMapping, public readonly exportAs: string[]|null,
       public readonly typeCheckMeta: DirectiveTypeCheckMeta,
       public readonly typeParameters: SemanticTypeParameter[]|null) {
     super(decl);
@@ -63,7 +63,7 @@ export class DirectiveSymbol extends SemanticSymbol {
     if (!isArrayEqual(
             Array.from(this.inputs), Array.from(previousSymbol.inputs), isInputMappingEqual) ||
         !isArrayEqual(
-            Array.from(this.outputs), Array.from(previousSymbol.outputs), isInputMappingEqual)) {
+            Array.from(this.outputs), Array.from(previousSymbol.outputs), isInputOrOutputEqual)) {
       return true;
     }
 
@@ -90,10 +90,13 @@ export class DirectiveSymbol extends SemanticSymbol {
   }
 }
 
-function isInputMappingEqual(
-    current: [ClassPropertyName, BindingPropertyName],
-    previous: [ClassPropertyName, BindingPropertyName]): boolean {
-  return current[0] === previous[0] && current[1] === previous[1];
+function isInputMappingEqual(current: InputMapping, previous: InputMapping): boolean {
+  return isInputOrOutputEqual(current, previous) && current.required === previous.required;
+}
+
+function isInputOrOutputEqual(current: InputOrOutput, previous: InputOrOutput): boolean {
+  return current.classPropertyName === previous.classPropertyName &&
+      current.bindingPropertyName === previous.bindingPropertyName;
 }
 
 function isTypeCheckMetaEqual(

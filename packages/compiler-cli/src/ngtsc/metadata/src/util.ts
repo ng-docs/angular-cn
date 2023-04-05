@@ -10,10 +10,9 @@ import ts from 'typescript';
 
 import {OwningModule, Reference} from '../../imports';
 import {ClassDeclaration, ClassMember, ClassMemberKind, isNamedClassDeclaration, ReflectionHost, reflectTypeEntityToDeclaration} from '../../reflection';
-import {getModifiers} from '../../ts_compatibility';
 import {nodeDebugInfo} from '../../util/src/typescript';
 
-import {DirectiveMeta, DirectiveTypeCheckMeta, MetadataReader, NgModuleMeta, PipeMeta, TemplateGuardMeta} from './api';
+import {DirectiveMeta, DirectiveTypeCheckMeta, InputMapping, MetadataReader, NgModuleMeta, PipeMeta, TemplateGuardMeta} from './api';
 import {ClassPropertyMapping, ClassPropertyName} from './property_mapping';
 
 export function extractReferencesFromType(
@@ -116,7 +115,7 @@ export function readStringArrayType(type: ts.TypeNode): string[] {
  *
  */
 export function extractDirectiveTypeCheckMeta(
-    node: ClassDeclaration, inputs: ClassPropertyMapping,
+    node: ClassDeclaration, inputs: ClassPropertyMapping<InputMapping>,
     reflector: ReflectionHost): DirectiveTypeCheckMeta {
   const members = reflector.getMembersOfClass(node);
   const staticMembers = members.filter(member => member.isStatic);
@@ -161,7 +160,7 @@ export function extractDirectiveTypeCheckMeta(
 }
 
 function isRestricted(node: ts.Node): boolean {
-  const modifiers = getModifiers(node);
+  const modifiers = ts.canHaveModifiers(node) ? ts.getModifiers(node) : undefined;
 
   return modifiers !== undefined && modifiers.some(({kind}) => {
     return kind === ts.SyntaxKind.PrivateKeyword || kind === ts.SyntaxKind.ProtectedKeyword ||

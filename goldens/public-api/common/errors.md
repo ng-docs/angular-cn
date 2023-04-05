@@ -15,6 +15,10 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     LCP_IMG_MISSING_PRIORITY = 2955,
     // (undocumented)
+    MISSING_BUILTIN_LOADER = 2962,
+    // (undocumented)
+    MISSING_NECESSARY_LOADER = 2963,
+    // (undocumented)
     NG_FOR_MISSING_DIFFER = -2200,
     // (undocumented)
     OVERSIZED_IMAGE = 2960,

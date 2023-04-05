@@ -70,8 +70,8 @@ export class ModuleWithComponentFactories<T> {
 @Injectable({providedIn: 'root'})
 export class Compiler {
   /**
-   * Compiles the given NgModule and all of its components. All templates of the components listed
-   * in `entryComponents` have to be inlined.
+   * Compiles the given NgModule and all of its components. All templates of the components
+   * have to be inlined.
    *
    * 编译给定的 NgModule 及其所有组件。必须内联 `entryComponents` 列出的组件的所有模板。
    *

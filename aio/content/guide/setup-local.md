@@ -60,7 +60,7 @@ To install Angular on your local system, you need the following:
 
 ## 安装 Angular CLI
 
-You use the Angular CLI to create projects, generate application and library code, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
+You can use the Angular CLI to create projects, generate application and library code, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
 
 你可以使用 Angular CLI 来创建项目，生成应用和库代码，以及执行各种持续开发任务，比如测试、打包和部署。
 
@@ -181,7 +181,7 @@ If your installation and setup was successful, you should see a page similar to 
 
   关于 Angular 单页应用程序架构和设计原理的基本概念和术语的详尽介绍，参阅 [Angular 的基本概念](guide/architecture)部分。
 
-* Work through the [Tour of Heroes Tutorial](tutorial), a complete hands-on exercise that introduces you to the app development process using the Angular CLI and walks through important subsystems.
+* Work through the [Tour of Heroes Tutorial](tutorial/tour-of-heroes), a complete hands-on exercise that introduces you to the app development process using the Angular CLI and walks through important subsystems.
 
   过一遍[英雄之旅教程](tutorial)，这是一个完整的动手练习题，它将教你使用 Angular CLI 进行应用开发的过程，并逐步介绍重要的子系统。
 

@@ -1452,7 +1452,7 @@ export class TemplateDefinitionBuilder implements t.Visitor<void>, LocalResolver
       return o.TYPED_NULL_EXPR;
     }
 
-    const refsParam = flatten(references.map(reference => {
+    const refsParam = references.flatMap(reference => {
       const slot = this.allocateDataSlot();
       // Generate the update temporary.
       const variableName = this._bindingScope.freshReferenceName();
@@ -1469,8 +1469,9 @@ export class TemplateDefinitionBuilder implements t.Visitor<void>, LocalResolver
             const refExpr = lhs.set(o.importExpr(R3.reference).callFn([o.literal(slot)]));
             return nextContextStmt.concat(refExpr.toConstDecl());
           }, true);
+
       return [reference.name, reference.value];
-    }));
+    });
 
     return asLiteral(refsParam);
   }
@@ -2655,11 +2656,4 @@ export interface ParsedTemplate {
    *
    */
   commentNodes?: t.Comment[];
-}
-
-function flatten<T>(list: Array<T|T[]>): T[] {
-  return list.reduce((flat: any[], item: T|T[]): T[] => {
-    const flatItem = Array.isArray(item) ? flatten(item) : item;
-    return (<T[]>flat).concat(flatItem);
-  }, []);
 }

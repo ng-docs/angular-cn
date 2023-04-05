@@ -7,6 +7,7 @@
  */
 /// <reference types="node" />
 
+import {runfiles} from '@bazel/runfiles';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -43,15 +44,11 @@ export function getAngularPackagesFromRunfiles() {
            }));
 }
 
-/**
- * Resolves a NPM package from the Bazel runfiles. We need to resolve the Bazel tree
- * artifacts using a "resolve file" because the NodeJS module resolution does not allow
- * resolving to directory paths.
- *
+/** Resolves a file or directory from the Bazel runfiles. *
  * 从 Bazel 运行文件解析 NPM 包。我们需要使用“解析文件”解析 Bazel 树工件，因为 NodeJS
  * 模块解析不允许解析到目录路径。
  *
  */
-export function resolveNpmTreeArtifact(manifestPath: string, resolveFile = 'package.json') {
-  return path.dirname(require.resolve(path.posix.join(manifestPath, resolveFile)));
+export function resolveFromRunfiles(manifestPath: string) {
+  return runfiles.resolve(manifestPath);
 }

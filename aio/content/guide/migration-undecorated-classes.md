@@ -280,18 +280,10 @@ You can either add `@Directive()` with a selector or move the Angular-specific f
 
 由于 Angular 9 中引入了对无选择器装饰器的支持，如果你想支持 Angular 8 及更早版本，就不应该添加一个无选择器的 `@Directive()` 装饰器。你可以添加带选择器的 `@Directive()`，或者把 Angular 特有的特性移动到受影响的子类中。
 
-## What about applications using non-migrated libraries?
-
-## 那些使用未迁移库的应用呢？
-
-The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
-
-[Angular 兼容性编译器](guide/glossary#ngcc)（`ngcc`）应该会自动转换所有未迁移的库来生成合适的代码。
-
 <!-- links -->
 
 <!-- external links -->
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-02-16

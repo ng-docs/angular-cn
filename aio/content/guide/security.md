@@ -247,23 +247,51 @@ Read more about content security policy at the [Web Fundamentals guide](https://
 
 内容安全策略（CSP）是防止 XSS 的深度防御技术。要启用 CSP，请将你的 Web 服务器配置为返回适当的 `Content-Security-Policy` HTTP 请求头。在 Google Developers 网站上的[《网络基础知识》指南](https://developers.google.com/web/fundamentals/security/csp)中了解有关内容安全政策的更多信息。
 
-The minimal policy required for brand-new Angular is:
+The minimal policy required for a brand-new Angular application is:
 
 新版 Angular 所需的最小化策略是：
 
 <code-example format="none" language="none">
 
-default-src 'self'; style-src 'self' 'unsafe-inline';
+default-src 'self'; style-src 'self' 'nonce-randomNonceGoesHere'; script-src 'self' 'nonce-randomNonceGoesHere';
 
 </code-example>
 
-| Sections | Details |
-| :------- | :------ |
-| 区段 | 详情 |
-| `default-src 'self';` | Allows the page to load all its required resources from the same origin. |
-| `default-src 'self';` | 允许此页面加载所有来自同源的资源。 |
-| `style-src 'self' 'unsafe-inline';` | Allows the page to load global styles from the same origin (`'self'`) and enables components to load their styles (`'unsafe-inline'` - see [`angular/angular#6361`](https://github.com/angular/angular/issues/6361)). |
-| `style-src 'self' 'unsafe-inline';` | 允许此页面加载来自同源的全局样式(`'self'`)，并允许组件加载它们的样式(`'unsafe-inline'` - 参见 [`angular/angular#6361`](https://github.com/angular/angular/issues/6361))。 |
+When serving your Angular application, the server should include a  randomly-generated nonce in the HTTP header for each request.
+You must provide this nonce to Angular so that the framework can render `<style>` elements.
+You can set the nonce for Angular in one of two ways:
+
+1. Set the `ngCspNonce` attribute on the root application element as `<app ngCspNonce="randomNonceGoesHere"></app>`. Use this approach if you have access to server-side templating that can add the nonce both to the header and the `index.html` when constructing the response.
+2. Provide the nonce using the `CSP_NONCE` injection token. Use this approach if you have access to the nonce at runtime and you want to be able to cache the `index.html`.
+
+<code-example format="typescript" language="typescript">
+
+import {bootstrapApplication, CSP_NONCE} from '&commat;angular/core';
+import {AppComponent} from './app/app.component';
+
+bootstrapApplication(AppComponent, {
+  providers: [{
+    provide: CSP_NONCE,
+    useValue: globalThis.myRandomNonceValue
+  }]
+});
+
+</code-example>
+
+<div class="callout is-helpful">
+
+Always ensure that the nonces you provide are <strong>unique per request</strong> and that they are not predictable or guessable.
+If an attacker can predict future nonces, they can circumvent the protections offered by CSP.
+
+</div>
+
+If you cannot generate nones in your project, you can allow inline styles by adding `'unsafe-inline'` to the `style-src` section of the CSP header.
+
+| Sections                | Details |
+|:---                     |:---     |
+| `default-src 'self';`   | Allows the page to load all its required resources from the same origin. |
+| `style-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load global styles from the same origin \(`'self'`\) and styles inserted by Angular with the `nonce-randomNonceGoesHere`. |
+| `script-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load JavaScript from the same origin \(`'self'`\) and scripts inserted by the Angular CLI with the `nonce-randomNonceGoesHere`. This is only required if you're using critical CSS inlining. |
 
 Angular itself requires only these settings to function correctly.
 As your project grows, you may need to expand your CSP settings to accommodate extra features specific to your application.
@@ -280,7 +308,7 @@ Angular 本身只需要这些设置即可正常运行。随着项目的增长，
 
 <!-- vale Angular.Google_Headings = YES -->
 
-It is recommended that you use [Trusted Types](https://w3c.github.io/webappsec-trusted-types/dist/spec) as a way to help secure your applications from cross-site scripting attacks.
+It is recommended that you use [Trusted Types](https://w3c.github.io/trusted-types/dist/spec/) as a way to help secure your applications from cross-site scripting attacks.
 Trusted Types is a [web platform](https://en.wikipedia.org/wiki/Web_platform) feature that can help you prevent cross-site scripting attacks by enforcing safer coding practices.
 Trusted Types can also help simplify the auditing of application code.
 

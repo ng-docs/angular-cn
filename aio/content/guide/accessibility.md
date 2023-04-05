@@ -28,7 +28,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 ## 无障碍属性（Attribute）
 
-Building accessible web experience often involves setting [Accessible Rich Internet Applications (ARIA) attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
+Building accessible web experience often involves setting [Accessible Rich Internet Applications \(ARIA\) attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
 Use [attribute binding](guide/attribute-binding) template syntax to control the values of accessibility-related attributes.
 
 建立无障碍的 Web 体验通常会涉及设置 [ARIA（Accessible Rich Internet Applications）属性（Attribute）](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) 以提供可能会丢失的语义。使用 [Attribute 绑定](guide/attribute-binding)模板语法来控制与无障碍性相关的属性（Attribute）值。
@@ -199,7 +199,7 @@ You should avoid situations where focus returns to the `body` element after a ro
 CSS classes applied to active `RouterLink` elements, such as `RouterLinkActive`, provide a visual cue to identify the active link.
 Unfortunately, a visual cue doesn't help blind or visually impaired users.
 Applying the `aria-current` attribute to the element can help identify the active link.
-For more information, see [Mozilla Developer Network (MDN) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
+For more information, see [Mozilla Developer Network \(MDN\) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
 
 用在活跃 `RouterLink` 元素上的 CSS 类（比如 `RouterLinkActive`）提供了有关哪个链接正处于活跃状态的视觉提醒。不幸的是，此类提醒不适用于盲人或视障用户。将 `aria-current` 属性添加到此元素，可以帮你标出活跃链接。有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)。
 
@@ -235,7 +235,7 @@ The following example shows how to apply the `active-page` class to active links
 
 ## More information
 
-## 额外资源
+## 更多信息
 
 * [Accessibility - Google Web Fundamentals](https://developers.google.com/web/fundamentals/accessibility)
 

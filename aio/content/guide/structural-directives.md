@@ -34,7 +34,7 @@ Angular transforms the asterisk in front of a structural directive into an `<ng-
 
 应用结构指令时，它们通常以星号 `*` 为前缀，例如 `*ngIf`。本约定是 Angular 解释并转换为更长形式的速记。Angular 会将结构指令前面的星号转换为围绕宿主元素及其后代的 `<ng-template>`。
 
-For example, let's take the following code which uses an `*ngIf` to displays the hero's name if `hero` exists:
+For example, let's take the following code which uses an `*ngIf` to display the hero's name if `hero` exists:
 
 例如，让我们采取以下代码，如果 `hero` 存在，则使用 `*ngIf` 来显示英雄的名字：
 
@@ -90,7 +90,7 @@ Angular sets `let-hero` to the value of the context's `$implicit` property, whic
 
 Angular 会将 `let-hero` 设置为上下文的 `$implicit` 属性的值，`NgFor` 已经将其初始化为当前正在迭代的英雄。
 
-For more information, see the [NgFor API](api/common/NgForOf "API: NgFor") and [NgForOf API](api/common/NgForOf) documentation.
+For more information, see the [NgFor API](api/common/NgFor "API: NgFor") and [NgForOf API](api/common/NgForOf) documentation.
 
 有关更多信息，请参见 [NgFor API](api/common/NgForOf "API：NgFor") 和 [NgForOf API](api/common/NgForOf) 文档。
 

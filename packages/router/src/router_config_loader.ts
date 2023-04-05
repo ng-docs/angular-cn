@@ -6,17 +6,15 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Compiler, EnvironmentInjector, Injectable, InjectFlags, InjectionToken, Injector, NgModuleFactory, Type} from '@angular/core';
+import {Compiler, EnvironmentInjector, inject, Injectable, InjectFlags, InjectionToken, Injector, NgModuleFactory, Type} from '@angular/core';
 import {ConnectableObservable, from, Observable, of, Subject} from 'rxjs';
-import {catchError, finalize, map, mergeMap, refCount, tap} from 'rxjs/operators';
+import {finalize, map, mergeMap, refCount, tap} from 'rxjs/operators';
 
-import {deprecatedLoadChildrenString} from './deprecated_load_children';
 import {DefaultExport, LoadChildren, LoadChildrenCallback, LoadedRouterConfig, Route, Routes} from './models';
-import {flatten, wrapIntoObservable} from './utils/collection';
+import {wrapIntoObservable} from './utils/collection';
 import {assertStandalone, standardizeConfig, validateConfig} from './utils/config';
 
 
-const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
 
 /**
  * The [DI token](guide/glossary/#di-token) for a router configuration.
@@ -28,7 +26,7 @@ const NG_DEV_MODE = typeof ngDevMode === 'undefined' || !!ngDevMode;
  * `ROUTES` 是一个通过依赖注入进行路由器配置的低级 API。
  *
  * We recommend that in almost all cases to use higher level APIs such as `RouterModule.forRoot()`,
- * `RouterModule.forChild()`, `provideRoutes`, or `Router.resetConfig()`.
+ * `provideRouter`, or `Router.resetConfig()`.
  *
  * 我们建议在几乎所有情况下使用更高级的 API，例如 `RouterModule.forRoot()` 、
  * `RouterModule.forChild()`、`provideRoutes` 或 `Router.resetConfig()` 。
@@ -45,11 +43,7 @@ export class RouterConfigLoader {
   private childrenLoaders = new WeakMap<Route, Observable<LoadedRouterConfig>>();
   onLoadStartListener?: (r: Route) => void;
   onLoadEndListener?: (r: Route) => void;
-
-  constructor(
-      private injector: Injector,
-      private compiler: Compiler,
-  ) {}
+  private readonly compiler = inject(Compiler);
 
   loadComponent(route: Route): Observable<Type<unknown>> {
     if (this.componentLoaders.get(route)) {
@@ -68,7 +62,8 @@ export class RouterConfigLoader {
                                  if (this.onLoadEndListener) {
                                    this.onLoadEndListener(route);
                                  }
-                                 NG_DEV_MODE && assertStandalone(route.path ?? '', component);
+                                 (typeof ngDevMode === 'undefined' || ngDevMode) &&
+                                     assertStandalone(route.path ?? '', component);
                                  route._loadedComponent = component;
                                }),
                                finalize(() => {
@@ -112,10 +107,11 @@ export class RouterConfigLoader {
             // will get stuck in an infinite loop. The child module's Injector will look to
             // its parent `Injector` when it doesn't find any ROUTES so it will return routes
             // for it's parent module instead.
-            rawRoutes = flatten(injector.get(ROUTES, [], InjectFlags.Self | InjectFlags.Optional));
+            rawRoutes = injector.get(ROUTES, [], InjectFlags.Self | InjectFlags.Optional).flat();
           }
           const routes = rawRoutes.map(standardizeConfig);
-          NG_DEV_MODE && validateConfig(routes, route.path, requireStandaloneComponents);
+          (typeof ngDevMode === 'undefined' || ngDevMode) &&
+              validateConfig(routes, route.path, requireStandaloneComponents);
           return {routes, injector};
         }),
         finalize(() => {
@@ -131,10 +127,6 @@ export class RouterConfigLoader {
 
   private loadModuleFactoryOrRoutes(loadChildren: LoadChildren):
       Observable<NgModuleFactory<any>|Routes> {
-    const deprecatedResult = deprecatedLoadChildrenString(this.injector, loadChildren);
-    if (deprecatedResult) {
-      return deprecatedResult;
-    }
     return wrapIntoObservable((loadChildren as LoadChildrenCallback)())
         .pipe(
             map(maybeUnwrapDefaultExport),

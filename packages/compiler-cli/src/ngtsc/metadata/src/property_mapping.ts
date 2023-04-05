@@ -77,14 +77,15 @@ export interface InputOrOutput {
  * 允许双向查询映射 - 查找具有给定属性名称的所有输入/输出，或从特定的类属性映射到其绑定属性名称。
  *
  */
-export class ClassPropertyMapping implements InputOutputPropertySet {
+export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> implements
+    InputOutputPropertySet {
   /**
    * Mapping from class property names to the single `InputOrOutput` for that class property.
    *
    * 从类属性名称映射到该类属性的单个 `InputOrOutput` 。
    *
    */
-  private forwardMap: Map<ClassPropertyName, InputOrOutput>;
+  private forwardMap: Map<ClassPropertyName, T>;
 
   /**
    * Mapping from property names to one or more `InputOrOutput`s which share that name.
@@ -92,9 +93,9 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 从属性名称映射到共享该名称的一个或多个 `InputOrOutput` 。
    *
    */
-  private reverseMap: Map<BindingPropertyName, InputOrOutput[]>;
+  private reverseMap: Map<BindingPropertyName, T[]>;
 
-  private constructor(forwardMap: Map<ClassPropertyName, InputOrOutput>) {
+  private constructor(forwardMap: Map<ClassPropertyName, T>) {
     this.forwardMap = forwardMap;
     this.reverseMap = reverseMapFromForwardMap(forwardMap);
   }
@@ -105,7 +106,7 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 构造一个没有条目的 `ClassPropertyMapping` 。
    *
    */
-  static empty(): ClassPropertyMapping {
+  static empty<T extends InputOrOutput>(): ClassPropertyMapping<T> {
     return new ClassPropertyMapping(new Map());
   }
 
@@ -119,15 +120,23 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * .d.ts 文件）。
    *
    */
-  static fromMappedObject(obj: {
-    [classPropertyName: string]: BindingPropertyName|[ClassPropertyName, BindingPropertyName]
-  }): ClassPropertyMapping {
-    const forwardMap = new Map<ClassPropertyName, InputOrOutput>();
+  static fromMappedObject<T extends InputOrOutput>(obj: {
+    [classPropertyName: string]: BindingPropertyName|[ClassPropertyName, BindingPropertyName]|T
+  }): ClassPropertyMapping<T> {
+    const forwardMap = new Map<ClassPropertyName, T>();
 
     for (const classPropertyName of Object.keys(obj)) {
       const value = obj[classPropertyName];
-      const bindingPropertyName = Array.isArray(value) ? value[0] : value;
-      const inputOrOutput: InputOrOutput = {classPropertyName, bindingPropertyName};
+      let inputOrOutput: T;
+
+      if (typeof value === 'string') {
+        inputOrOutput = {classPropertyName, bindingPropertyName: value} as T;
+      } else if (Array.isArray(value)) {
+        inputOrOutput = {classPropertyName, bindingPropertyName: value[0]} as T;
+      } else {
+        inputOrOutput = value;
+      }
+
       forwardMap.set(classPropertyName, inputOrOutput);
     }
 
@@ -141,8 +150,9 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 将两个映射合并为一个，来自 `b` 的类属性优先于来自 `a` 的类属性。
    *
    */
-  static merge(a: ClassPropertyMapping, b: ClassPropertyMapping): ClassPropertyMapping {
-    const forwardMap = new Map<ClassPropertyName, InputOrOutput>(a.forwardMap.entries());
+  static merge<T extends InputOrOutput>(a: ClassPropertyMapping<T>, b: ClassPropertyMapping<T>):
+      ClassPropertyMapping<T> {
+    const forwardMap = new Map<ClassPropertyName, T>(a.forwardMap.entries());
     for (const [classPropertyName, inputOrOutput] of b.forwardMap) {
       forwardMap.set(classPropertyName, inputOrOutput);
     }
@@ -186,7 +196,7 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 查找使用此 `propertyName` 的所有 `InputOrOutput` 。
    *
    */
-  getByBindingPropertyName(propertyName: string): ReadonlyArray<InputOrOutput>|null {
+  getByBindingPropertyName(propertyName: string): ReadonlyArray<T>|null {
     return this.reverseMap.has(propertyName) ? this.reverseMap.get(propertyName)! : null;
   }
 
@@ -196,7 +206,7 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 查找与 `InputOrOutput` 关联的 `classPropertyName` 。
    *
    */
-  getByClassPropertyName(classPropertyName: string): InputOrOutput|null {
+  getByClassPropertyName(classPropertyName: string): T|null {
     return this.forwardMap.has(classPropertyName) ? this.forwardMap.get(classPropertyName)! : null;
   }
 
@@ -228,17 +238,10 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 序列化映射（例如转换为 .d.ts 文件）时会使用此对象格式。
    *
    */
-  toJointMappedObject():
-      {[classPropertyName: string]: BindingPropertyName|[BindingPropertyName, ClassPropertyName]} {
-    const obj: {
-      [classPropertyName: string]: BindingPropertyName|[BindingPropertyName, ClassPropertyName]
-    } = {};
+  toJointMappedObject(): {[classPropertyName: string]: T} {
+    const obj: {[classPropertyName: string]: T} = {};
     for (const [classPropertyName, inputOrOutput] of this.forwardMap) {
-      if (inputOrOutput.bindingPropertyName as string === classPropertyName as string) {
-        obj[classPropertyName] = inputOrOutput.bindingPropertyName;
-      } else {
-        obj[classPropertyName] = [inputOrOutput.bindingPropertyName, classPropertyName];
-      }
+      obj[classPropertyName] = inputOrOutput;
     }
     return obj;
   }
@@ -250,16 +253,16 @@ export class ClassPropertyMapping implements InputOutputPropertySet {
    * 实现迭代器协议并返回包含类和绑定属性名称（并且可用于解构）的条目对象。
    *
    */
-  * [Symbol.iterator](): IterableIterator<[ClassPropertyName, BindingPropertyName]> {
-    for (const [classPropertyName, inputOrOutput] of this.forwardMap.entries()) {
-      yield [classPropertyName, inputOrOutput.bindingPropertyName];
+  * [Symbol.iterator](): IterableIterator<T> {
+    for (const inputOrOutput of this.forwardMap.values()) {
+      yield inputOrOutput;
     }
   }
 }
 
-function reverseMapFromForwardMap(forwardMap: Map<ClassPropertyName, InputOrOutput>):
-    Map<BindingPropertyName, InputOrOutput[]> {
-  const reverseMap = new Map<BindingPropertyName, InputOrOutput[]>();
+function reverseMapFromForwardMap<T extends InputOrOutput>(forwardMap: Map<ClassPropertyName, T>):
+    Map<BindingPropertyName, T[]> {
+  const reverseMap = new Map<BindingPropertyName, T[]>();
   for (const [_, inputOrOutput] of forwardMap) {
     if (!reverseMap.has(inputOrOutput.bindingPropertyName)) {
       reverseMap.set(inputOrOutput.bindingPropertyName, []);

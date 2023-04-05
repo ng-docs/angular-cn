@@ -29,6 +29,7 @@ import {ActivatedRouteSnapshot, RouterStateSnapshot} from './router_state';
  * @publicApi
  */
 export type NavigationTrigger = 'imperative'|'popstate'|'hashchange';
+export const IMPERATIVE_NAVIGATION = 'imperative';
 
 /**
  * Identifies the type of a router event.
@@ -54,6 +55,7 @@ export const enum EventType {
   ActivationStart,
   ActivationEnd,
   Scroll,
+  NavigationSkipped,
 }
 
 /**
@@ -239,6 +241,26 @@ export const enum NavigationCancellationCode {
 }
 
 /**
+ * A code for the `NavigationSkipped` event of the `Router` to indicate the
+ * reason a navigation was skipped.
+ *
+ * @publicApi
+ */
+export const enum NavigationSkippedCode {
+  /**
+   * A navigation was skipped because the navigation URL was the same as the current Router URL.
+   */
+  IgnoredSameUrlNavigation,
+  /**
+   * A navigation was skipped because the configured `UrlHandlingStrategy` return `false` for both
+   * the current Router URL and the target of the navigation.
+   *
+   * @see UrlHandlingStrategy
+   */
+  IgnoredByUrlHandlingStrategy,
+}
+
+/**
  * An event triggered when a navigation is canceled, directly or indirectly.
  * This can happen for several reasons including when a route guard
  * returns `false` or initiates a redirect by returning a `UrlTree`.
@@ -277,6 +299,37 @@ export class NavigationCancel extends RouterEvent {
   /** @docsNotRequired */
   override toString(): string {
     return `NavigationCancel(id: ${this.id}, url: '${this.url}')`;
+  }
+}
+
+/**
+ * An event triggered when a navigation is skipped.
+ * This can happen for a couple reasons including onSameUrlHandling
+ * is set to `ignore` and the navigation URL is not different than the
+ * current state.
+ *
+ * @publicApi
+ */
+export class NavigationSkipped extends RouterEvent {
+  readonly type = EventType.NavigationSkipped;
+
+  constructor(
+      /** @docsNotRequired */
+      id: number,
+      /** @docsNotRequired */
+      url: string,
+      /**
+       * A description of why the navigation was skipped. For debug purposes only. Use `code`
+       * instead for a stable skipped reason that can be used in production.
+       */
+      public reason: string,
+      /**
+       * A code to indicate why the navigation was skipped. This code is stable for
+       * the reason and can be relied on whereas the `reason` string could change and should not be
+       * used in production.
+       */
+      readonly code?: NavigationSkippedCode) {
+    super(id, url);
   }
 }
 
@@ -620,7 +673,7 @@ export class Scroll {
 
   constructor(
       /** @docsNotRequired */
-      readonly routerEvent: NavigationEnd,
+      readonly routerEvent: NavigationEnd|NavigationSkipped,
 
       /** @docsNotRequired */
       readonly position: [number, number]|null,
@@ -719,16 +772,12 @@ export class Scroll {
  *
  * @publicApi
  */
-export type Event =
-    RouterEvent|NavigationStart|NavigationEnd|NavigationCancel|NavigationError|RoutesRecognized|
+export type Event = NavigationStart|NavigationEnd|NavigationCancel|NavigationError|RoutesRecognized|
     GuardsCheckStart|GuardsCheckEnd|RouteConfigLoadStart|RouteConfigLoadEnd|ChildActivationStart|
-    ChildActivationEnd|ActivationStart|ActivationEnd|Scroll|ResolveStart|ResolveEnd;
-
+    ChildActivationEnd|ActivationStart|ActivationEnd|Scroll|ResolveStart|ResolveEnd|
+    NavigationSkipped;
 
 export function stringifyEvent(routerEvent: Event): string {
-  if (!('type' in routerEvent)) {
-    return `Unknown Router Event: ${routerEvent.constructor.name}`;
-  }
   switch (routerEvent.type) {
     case EventType.ActivationEnd:
       return `ActivationEnd(path: '${routerEvent.snapshot.routeConfig?.path || ''}')`;
@@ -748,6 +797,8 @@ export function stringifyEvent(routerEvent: Event): string {
           routerEvent.state})`;
     case EventType.NavigationCancel:
       return `NavigationCancel(id: ${routerEvent.id}, url: '${routerEvent.url}')`;
+    case EventType.NavigationSkipped:
+      return `NavigationSkipped(id: ${routerEvent.id}, url: '${routerEvent.url}')`;
     case EventType.NavigationEnd:
       return `NavigationEnd(id: ${routerEvent.id}, url: '${routerEvent.url}', urlAfterRedirects: '${
           routerEvent.urlAfterRedirects}')`;

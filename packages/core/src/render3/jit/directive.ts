@@ -141,7 +141,6 @@ export function compileComponent(type: Type<any>, metadata: Component): void {
           encapsulation,
           interpolation: metadata.interpolation,
           viewProviders: metadata.viewProviders || null,
-          isStandalone: !!metadata.standalone,
         };
 
         compilationDepth++;

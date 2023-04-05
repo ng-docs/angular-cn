@@ -5,12 +5,14 @@
 ```ts
 
 import { EnvironmentInjector } from '@angular/core';
+import { EnvironmentProviders } from '@angular/core';
 import * as i0 from '@angular/core';
 import { InjectionToken } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { Observable } from 'rxjs';
+import { OnDestroy } from '@angular/core';
 import { Provider } from '@angular/core';
-import { XhrFactory as XhrFactory_2 } from '@angular/common';
+import { XhrFactory } from '@angular/common';
 
 // @public
 export const HTTP_INTERCEPTORS: InjectionToken<HttpInterceptor[]>;
@@ -1727,7 +1729,7 @@ export enum HttpEventType {
     User = 5
 }
 
-// @public (undocumented)
+// @public
 export interface HttpFeature<KindT extends HttpFeatureKind> {
     // (undocumented)
     ɵkind: KindT;
@@ -1735,7 +1737,7 @@ export interface HttpFeature<KindT extends HttpFeatureKind> {
     ɵproviders: Provider[];
 }
 
-// @public (undocumented)
+// @public
 export enum HttpFeatureKind {
     // (undocumented)
     CustomXsrfConfiguration = 2,
@@ -2127,9 +2129,11 @@ export interface HttpUserEvent<T> {
 }
 
 // @public
-export class HttpXhrBackend implements HttpBackend {
-    constructor(xhrFactory: XhrFactory_2);
+export class HttpXhrBackend implements HttpBackend, OnDestroy {
+    constructor(xhrFactory: XhrFactory);
     handle(req: HttpRequest<any>): Observable<HttpEvent<any>>;
+    // (undocumented)
+    ngOnDestroy(): void;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<HttpXhrBackend, never>;
     // (undocumented)
@@ -2161,35 +2165,29 @@ export class JsonpInterceptor {
     static ɵprov: i0.ɵɵInjectableDeclaration<JsonpInterceptor>;
 }
 
-// @public (undocumented)
-export function provideHttpClient(...features: HttpFeature<HttpFeatureKind>[]): Provider[];
+// @public
+export function provideHttpClient(...features: HttpFeature<HttpFeatureKind>[]): EnvironmentProviders;
 
-// @public (undocumented)
+// @public
 export function withInterceptors(interceptorFns: HttpInterceptorFn[]): HttpFeature<HttpFeatureKind.Interceptors>;
 
-// @public (undocumented)
+// @public
+export function withInterceptorsFromDi(): HttpFeature<HttpFeatureKind.LegacyInterceptors>;
+
+// @public
 export function withJsonpSupport(): HttpFeature<HttpFeatureKind.JsonpSupport>;
 
-// @public (undocumented)
-export function withLegacyInterceptors(): HttpFeature<HttpFeatureKind.LegacyInterceptors>;
-
-// @public (undocumented)
+// @public
 export function withNoXsrfProtection(): HttpFeature<HttpFeatureKind.NoXsrfProtection>;
 
-// @public (undocumented)
+// @public
 export function withRequestsMadeViaParent(): HttpFeature<HttpFeatureKind.RequestsMadeViaParent>;
 
-// @public (undocumented)
+// @public
 export function withXsrfConfiguration({ cookieName, headerName }: {
     cookieName?: string;
     headerName?: string;
 }): HttpFeature<HttpFeatureKind.CustomXsrfConfiguration>;
-
-// @public @deprecated
-export type XhrFactory = XhrFactory_2;
-
-// @public @deprecated
-export const XhrFactory: typeof XhrFactory_2;
 
 // (No @packageDocumentation comment for this package)
 

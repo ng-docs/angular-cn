@@ -42,7 +42,6 @@ export function generateTypeCtorDeclarationFn(
         /* declarationList */ declList);
   } else {
     return ts.factory.createFunctionDeclaration(
-        /* decorators */ undefined,
         /* modifiers */[ts.factory.createModifier(ts.SyntaxKind.DeclareKeyword)],
         /* asteriskToken */ undefined,
         /* name */ meta.fnName,
@@ -143,7 +142,6 @@ export function generateInlineTypeCtor(
 
   // Create the type constructor method declaration.
   return ts.factory.createMethodDeclaration(
-      /* decorators */ undefined,
       /* modifiers */[ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
       /* asteriskToken */ undefined,
       /* name */ meta.fnName,
@@ -205,7 +203,6 @@ function constructTypeCtorParameter(
 
   // Create the 'init' parameter itself.
   return ts.factory.createParameterDeclaration(
-      /* decorators */ undefined,
       /* modifiers */ undefined,
       /* dotDotDotToken */ undefined,
       /* name */ 'init',

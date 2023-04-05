@@ -116,8 +116,8 @@ It then configures the `@NgModule` with the following arrays:
 
   `providers` ：一些服务提供者，可供其他 NgModule 中的组件使用。新生成的根模块中没有提供者。
 
-* `bootstrap`: The [entry component](guide/entry-components "Specifying an entry component") that Angular creates and inserts into the `index.html` host web page, thereby bootstrapping the application.
-  This entry component, `AppComponent`, appears in both the `declarations` and the `bootstrap` arrays.
+* `bootstrap`: The component that Angular creates and inserts into the `index.html` host web page, thereby bootstrapping the application.
+  This component, `AppComponent`, appears in both the `declarations` and the `bootstrap` arrays.
 
   `bootstrap` ：[Angular 创建的入口组件](guide/entry-components "指定一个入口组件")，Angular 会创建它，并把它插入到宿主页面 `index.html` 中，从而引导该应用。这个入口组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
 

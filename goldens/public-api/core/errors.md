@@ -21,13 +21,11 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     ASYNC_INITIALIZERS_STILL_RUNNING = 405,
     // (undocumented)
-    BOOTSTRAP_COMPONENTS_NOT_FOUND = 403,
+    BOOTSTRAP_COMPONENTS_NOT_FOUND = -403,
     // (undocumented)
     CYCLIC_DI_DEPENDENCY = -200,
     // (undocumented)
     DUPLICATE_DIRECTITVE = 309,
-    // (undocumented)
-    ERROR_HANDLER_NOT_FOUND = 402,
     // (undocumented)
     EXPORT_NOT_FOUND = -301,
     // (undocumented)
@@ -42,6 +40,14 @@ export const enum RuntimeErrorCode {
     HOST_DIRECTIVE_UNDEFINED_BINDING = 311,
     // (undocumented)
     HOST_DIRECTIVE_UNRESOLVABLE = 307,
+    // (undocumented)
+    HYDRATION_I18N_NOT_YET_SUPPORTED = 518,
+    // (undocumented)
+    HYDRATION_MISSING_NODE = -502,
+    // (undocumented)
+    HYDRATION_MISSING_SIBLINGS = -501,
+    // (undocumented)
+    HYDRATION_NODE_MISMATCH = -500,
     // (undocumented)
     IMPORT_PROVIDERS_FROM_STANDALONE = 800,
     // (undocumented)
@@ -59,7 +65,9 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     INVALID_INJECTION_TOKEN = 204,
     // (undocumented)
-    INVALID_MULTI_PROVIDER = 209,
+    INVALID_MULTI_PROVIDER = -209,
+    // (undocumented)
+    INVALID_SKIP_HYDRATION_HOST = -504,
     // (undocumented)
     MISSING_GENERATED_DEF = 906,
     // (undocumented)
@@ -68,6 +76,8 @@ export const enum RuntimeErrorCode {
     MISSING_INJECTION_TOKEN = 208,
     // (undocumented)
     MISSING_LOCALE_DATA = 701,
+    // (undocumented)
+    MISSING_REQUIRED_INJECTABLE_IN_BOOTSTRAP = 402,
     // (undocumented)
     MISSING_ZONEJS = 908,
     // (undocumented)
@@ -91,6 +101,8 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     RENDERER_NOT_FOUND = 407,
     // (undocumented)
+    SIGNAL_WRITE_FROM_ILLEGAL_CONTEXT = 600,
+    // (undocumented)
     TEMPLATE_STRUCTURE_ERROR = 305,
     // (undocumented)
     TYPE_IS_NOT_STANDALONE = 907,
@@ -101,9 +113,13 @@ export const enum RuntimeErrorCode {
     // (undocumented)
     UNKNOWN_ELEMENT = 304,
     // (undocumented)
+    UNSAFE_IFRAME_ATTRS = -910,
+    // (undocumented)
     UNSAFE_VALUE_IN_RESOURCE_URL = 904,
     // (undocumented)
     UNSAFE_VALUE_IN_SCRIPT = 905,
+    // (undocumented)
+    UNSUPPORTED_PROJECTION_DOM_NODES = -503,
     // (undocumented)
     VIEW_ALREADY_ATTACHED = 902
 }

@@ -10,9 +10,6 @@
  * The following set contains all keywords that can be used in the animation css shorthand
  * property and is used during the scoping of keyframes to make sure such keywords
  * are not modified.
- *
- * 以下集包含可以在动画 css 速记属性中使用的所有关键字，并在关键帧范围内使用以确保不会修改此类关键字。
- *
  */
 const animationKeywords = new Set([
   // global values
@@ -30,24 +27,13 @@ const animationKeywords = new Set([
 ]);
 
 /**
- * The following class is a port of shadowCSS from webcomponents.js to TypeScript.
- *
- * 此文件是从 webcomponents.js 到 TypeScript 的 shadowCSS 的端口。
- *
- * Please make sure to keep to edits in sync with the source file.
- *
- * 请确保使编辑与源文件同步。
+ * The following class has its origin from a port of shadowCSS from webcomponents.js to TypeScript.
+ * It has since diverge in many ways to tailor Angular's needs.
  *
  * Source:
- * <https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js>
- *
- * 来源：
- * <https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js>
+ * https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js
  *
  * The original file level comment is reproduced below
- *
- * 原始文件级注释在下面复制
- *
  */
 
 /*
@@ -83,28 +69,8 @@ const animationKeywords = new Set([
     }
 
   * encapsulation: Styles defined within ShadowDOM, apply only to
-  dom inside the ShadowDOM. Polymer uses one of two techniques to implement
-  this feature.
-
-  By default, rules are prefixed with the host element tag name
-  as a descendant selector. This ensures styling does not leak out of the 'top'
-  of the element's ShadowDOM. For example,
-
-  div {
-      font-weight: bold;
-    }
-
-  becomes:
-
-  x-foo div {
-      font-weight: bold;
-    }
-
-  becomes:
-
-
-  Alternatively, if WebComponents.ShadowCSS.strictStyling is set to true then
-  selectors are scoped by adding an attribute selector suffix to each
+  dom inside the ShadowDOM.
+  The selectors are scoped by adding an attribute selector suffix to each
   simple selector that contains the host element tag name. Each element
   in the element's ShadowDOM template is also given the scope attribute.
   Thus, these rules match only elements that have the scope attribute.
@@ -165,15 +131,11 @@ const animationKeywords = new Set([
   in comments in lieu of the next selector when running under polyfill.
 */
 export class ShadowCss {
-  strictStyling: boolean = true;
-
   /*
-   * Shim some cssText with the given selector. Returns cssText that can
-   * be included in the document via WebComponents.ShadowCSS.addCssToDocument(css).
+   * Shim some cssText with the given selector. Returns cssText that can be included in the document
    *
-   * When strictStyling is true:
-   * - selector is the attribute added to all elements inside the host,
-   * - hostSelector is the attribute added to the host itself.
+   * The selector is the attribute added to all elements inside the host,
+   * The hostSelector is the attribute added to the host itself.
    */
   shimCssText(cssText: string, selector: string, hostSelector: string = ''): string {
     const commentsWithHash = extractCommentsWithHash(cssText);
@@ -192,21 +154,13 @@ export class ShadowCss {
   /**
    * Process styles to add scope to keyframes.
    *
-   * 处理样式以添加关键帧的范围。
-   *
    * Modify both the names of the keyframes defined in the component styles and also the css
    * animation rules using them.
-   *
-   * 修改组件样式中定义的关键帧的名称以及使用它们的 css 动画规则。
    *
    * Animation rules using keyframes defined elsewhere are not modified to allow for globally
    * defined keyframes.
    *
-   * 使用在其他地方定义的关键帧的动画规则不会被修改以允许全局定义的关键帧。
-   *
    * For example, we convert this css:
-   *
-   * 例如，我们转换此 css：
    *
    * ```
    * .box {
@@ -222,8 +176,6 @@ export class ShadowCss {
    *
    * to this:
    *
-   * 对此：
-   *
    * ```
    * .box {
    *   animation: scopeName_box-animation 1s forwards;
@@ -237,19 +189,9 @@ export class ShadowCss {
    * ```
    *
    * @param cssText the component's css text that needs to be scoped.
-   *
-   * 需要限定范围的组件的 css 文本。
-   *
    * @param scopeSelector the component's scope selector.
    *
-   * 组件的范围选择器。
-   *
-   * @returns
-   *
-   * the scoped css text.
-   *
-   * 范围内的 css 文本。
-   *
+   * @returns the scoped css text.
    */
   private _scopeKeyframesRelatedCss(cssText: string, scopeSelector: string): string {
     const unscopedKeyframesSet = new Set<string>();
@@ -266,11 +208,7 @@ export class ShadowCss {
    * adds the original keyframe name to a provided set to collect all keyframes names
    * so that it can later be used to scope the animation rules.
    *
-   * 限定本地关键帧名称的范围，返回更新的 css 规则，它还将原始关键帧名称添加到提供的集中以收集所有关键帧名称，以便以后可以用它来确定动画规则的范围。
-   *
    * For example, it takes a rule such as:
-   *
-   * 例如，它需要一个规则，例如：
    *
    * ```
    * @keyframes box-animation {
@@ -282,8 +220,6 @@ export class ShadowCss {
    *
    * and returns:
    *
-   * 并返回：
-   *
    * ```
    * @keyframes scopeName_box-animation {
    *   to {
@@ -291,30 +227,14 @@ export class ShadowCss {
    *   }
    * }
    * ```
-   *
    * and as a side effect it adds "box-animation" to the `unscopedKeyframesSet` set
    *
-   * 并作为副作用，它将“box-animation”添加到 `unscopedKeyframesSet` 集
-   *
    * @param cssRule the css rule to process.
-   *
-   * 要处理的 css 规则。
-   *
    * @param scopeSelector the component's scope selector.
-   *
-   * 组件的范围选择器。
-   *
    * @param unscopedKeyframesSet the set of unscoped keyframes names (which can be
    * modified as a side effect)
    *
-   * 无范围关键帧名称的集（可以作为副作用修改）
-   *
-   * @returns
-   *
-   * the css rule modified with the scoped keyframes name.
-   *
-   * 使用范围内关键帧名称修改的 css 规则。
-   *
+   * @returns the css rule modified with the scoped keyframes name.
    */
   private _scopeLocalKeyframeDeclarations(
       rule: CssRule, scopeSelector: string, unscopedKeyframesSet: Set<string>): CssRule {
@@ -335,27 +255,12 @@ export class ShadowCss {
    * performed (keyframes names of keyframes not defined in the component's css need not to be
    * scoped).
    *
-   * 用于使用现有的一组 unscopedKeyframes 名称来确定关键帧名称（从动画声明获得）范围的函数，以区分是否需要执行范围（组件的 css 中未定义的关键帧的关键帧名称无需进行范围）。
-   *
    * @param keyframe the keyframes name to check.
-   *
-   * 要检查的关键帧名称。
-   *
    * @param scopeSelector the component's scope selector.
-   *
-   * 组件的范围选择器。
-   *
    * @param unscopedKeyframesSet the set of unscoped keyframes names.
    *
-   * 无范围的关键帧名称集。
-   *
-   * @returns
-   *
-   * the scoped name of the keyframe, or the original name is the name need not to be
+   * @returns the scoped name of the keyframe, or the original name is the name need not to be
    * scoped.
-   *
-   * 关键帧的范围名称，或者原始名称是不需要限定范围的名称。
-   *
    */
   private _scopeAnimationKeyframe(
       keyframe: string, scopeSelector: string, unscopedKeyframesSet: ReadonlySet<string>): string {
@@ -370,29 +275,15 @@ export class ShadowCss {
    * Regular expression used to extrapolate the possible keyframes from an
    * animation declaration (with possibly multiple animation definitions)
    *
-   * 用于从动画声明中推断可能的关键帧的正则表达式（可能带有多个动画定义）
-   *
    * The regular expression can be divided in three parts
-   *
-   * 正则表达式可以分为三部分
-   *
-   * - (^|\\s+)
-   *   simply captures how many (if any) leading whitespaces are present
-   *
-   *   (^|\\s+) 简单地捕获存在多少（如果有）前导空格
-   *
-   * - (?:(?:(['"])((?:\\\\\|\\\\2|(?!\\2).)+)\\2)|(-?[A-Za-z][\w\-]\*))
-   *      captures two different possible keyframes, ones which are quoted or ones which are valid css
-   *   idents (custom properties excluded)
-   *
-   *   (?:(?:( ['"]['"] )((?:\\\\\|\\\\2|(?!\\2).)+)\\2)|(-? [A-Za-z][\w\-] \*)) 捕获两种不同的可能关键帧，被引用的或有效的 css 标识（不包括自定义属性）
-   *
-   * - (?=[,\s;]|$)
-   *      simply matches the end of the possible keyframe, valid endings are: a comma, a space, a
-   *   semicolon or the end of the string
-   *
-   *   (?= [,\\s;][,\s;] |$) 仅匹配可能的关键帧的结尾，有效的结尾是：逗号、空格、分号或字符串的结尾
-   *
+   *  - (^|\s+)
+   *    simply captures how many (if any) leading whitespaces are present
+   *  - (?:(?:(['"])((?:\\\\|\\\2|(?!\2).)+)\2)|(-?[A-Za-z][\w\-]*))
+   *    captures two different possible keyframes, ones which are quoted or ones which are valid css
+   * idents (custom properties excluded)
+   *  - (?=[,\s;]|$)
+   *    simply matches the end of the possible keyframe, valid endings are: a comma, a space, a
+   * semicolon or the end of the string
    */
   private _animationDeclarationKeyframesRe =
       /(^|\s+)(?:(?:(['"])((?:\\\\|\\\2|(?!\2).)+)\2)|(-?[A-Za-z][\w\-]*))(?=[,\s]|$)/g;
@@ -401,31 +292,14 @@ export class ShadowCss {
    * Scope an animation rule so that the keyframes mentioned in such rule
    * are scoped if defined in the component's css and left untouched otherwise.
    *
-   * 限定动画规则的范围，以便如果在组件的 css 中定义了此类规则中提到的关键帧，则对其进行限制，否则保持不变。
-   *
    * It can scope values of both the 'animation' and 'animation-name' properties.
    *
-   * 它可以限定 'animation' 和 'animation-name' 属性的值。
-   *
    * @param rule css rule to scope.
-   *
-   * 到范围的 css 规则。
-   *
    * @param scopeSelector the component's scope selector.
-   *
-   * 组件的范围选择器。
-   *
    * @param unscopedKeyframesSet the set of unscoped keyframes names.
    *
-   * 无范围的关键帧名称集。
-   *
-   * @returns
-   *
-   * the updated css rule.
-   *
-   * 更新的 css 规则。
-   *
-   */
+   * @returns the updated css rule.
+   **/
   private _scopeAnimationRule(
       rule: CssRule, scopeSelector: string, unscopedKeyframesSet: ReadonlySet<string>): CssRule {
     let content = rule.content.replace(
@@ -473,7 +347,6 @@ export class ShadowCss {
    *
    **/
   private _insertPolyfillDirectivesInCssText(cssText: string): string {
-    // Difference with webcomponents.js: does not handle comments
     return cssText.replace(_cssContentNextSelectorRe, function(...m: string[]) {
       return m[2] + '{';
     });
@@ -495,7 +368,6 @@ export class ShadowCss {
    *
    **/
   private _insertPolyfillRulesInCssText(cssText: string): string {
-    // Difference with webcomponents.js: does not handle comments
     return cssText.replace(_cssContentRuleRe, (...m: string[]) => {
       const rule = m[0].replace(m[1], '').replace(m[2], '');
       return m[4] + rule;
@@ -541,7 +413,6 @@ export class ShadowCss {
    *
    **/
   private _extractUnscopedRulesFromCssText(cssText: string): string {
-    // Difference with webcomponents.js: does not handle comments
     let r = '';
     let m: RegExpExecArray|null;
     _cssContentUnscopedRuleRe.lastIndex = 0;
@@ -668,11 +539,11 @@ export class ShadowCss {
       let selector = rule.selector;
       let content = rule.content;
       if (rule.selector[0] !== '@') {
-        selector =
-            this._scopeSelector(rule.selector, scopeSelector, hostSelector, this.strictStyling);
+        selector = this._scopeSelector(rule.selector, scopeSelector, hostSelector);
       } else if (
           rule.selector.startsWith('@media') || rule.selector.startsWith('@supports') ||
-          rule.selector.startsWith('@document') || rule.selector.startsWith('@layer')) {
+          rule.selector.startsWith('@document') || rule.selector.startsWith('@layer') ||
+          rule.selector.startsWith('@container')) {
         content = this._scopeSelectors(rule.content, scopeSelector, hostSelector);
       } else if (rule.selector.startsWith('@font-face') || rule.selector.startsWith('@page')) {
         content = this._stripScopingSelectors(rule.content);
@@ -685,22 +556,12 @@ export class ShadowCss {
    * Handle a css text that is within a rule that should not contain scope selectors by simply
    * removing them! An example of such a rule is `@font-face`.
    *
-   * 处理在不应该包含范围选择器的规则中的 css 文本，只需删除它们！这种规则的一个例子是 `@font-face`
-   * 。
-   *
    * `@font-face` rules cannot contain nested selectors. Nor can they be nested under a selector.
    * Normally this would be a syntax error by the author of the styles. But in some rare cases, such
    * as importing styles from a library, and applying `:host ::ng-deep` to the imported styles, we
    * can end up with broken css if the imported styles happen to contain @font-face rules.
    *
-   * `@font-face`
-   * 规则不能包含嵌套选择器。它们也不能嵌套在选择器下。通常，这将是样式作者的语法错误。但在某些罕见的情况下，例如从库导入样式，并将
-   * `:host ::ng-deep` 应用于导入的样式，如果导入的样式碰巧包含 @font-face
-   * 规则，我们最终可能会出现损坏的 css。
-   *
    * For example:
-   *
-   * 例如：
    *
    * ```
    * :host ::ng-deep {
@@ -711,7 +572,6 @@ export class ShadowCss {
    * as well as some specific at-rules. Since they can't be encapsulated, we have to strip
    * any scoping selectors from them. For more information: https://www.w3.org/TR/css-page-3
    * ```
-   *
    */
   private _stripScopingSelectors(cssText: string): string {
     return processRules(cssText, rule => {
@@ -721,17 +581,14 @@ export class ShadowCss {
     });
   }
 
-  private _scopeSelector(
-      selector: string, scopeSelector: string, hostSelector: string, strict: boolean): string {
+  private _scopeSelector(selector: string, scopeSelector: string, hostSelector: string): string {
     return selector.split(',')
         .map(part => part.trim().split(_shadowDeepSelectors))
         .map((deepParts) => {
           const [shallowPart, ...otherParts] = deepParts;
           const applyScope = (shallowPart: string) => {
             if (this._selectorNeedsScoping(shallowPart, scopeSelector)) {
-              return strict ?
-                  this._applyStrictSelectorScope(shallowPart, scopeSelector, hostSelector) :
-                  this._applySelectorScope(shallowPart, scopeSelector, hostSelector);
+              return this._applySelectorScope(shallowPart, scopeSelector, hostSelector);
             } else {
               return shallowPart;
             }
@@ -753,19 +610,13 @@ export class ShadowCss {
     return new RegExp('^(' + scopeSelector + ')' + _selectorReSuffix, 'm');
   }
 
-  private _applySelectorScope(selector: string, scopeSelector: string, hostSelector: string):
-      string {
-    // Difference from webcomponents.js: scopeSelector could not be an array
-    return this._applySimpleSelectorScope(selector, scopeSelector, hostSelector);
-  }
-
   // scope via name and [is=name]
   private _applySimpleSelectorScope(selector: string, scopeSelector: string, hostSelector: string):
       string {
     // In Android browser, the lastIndex is not reset when the regex is used in String.replace()
     _polyfillHostRe.lastIndex = 0;
     if (_polyfillHostRe.test(selector)) {
-      const replaceBy = this.strictStyling ? `[${hostSelector}]` : scopeSelector;
+      const replaceBy = `[${hostSelector}]`;
       return selector
           .replace(
               _polyfillHostNoCombinatorRe,
@@ -784,7 +635,7 @@ export class ShadowCss {
 
   // return a selector with [name] suffix on each simple selector
   // e.g. .foo.bar > .zot becomes .foo[name].bar[name] > .zot[name]  /** @internal */
-  private _applyStrictSelectorScope(selector: string, scopeSelector: string, hostSelector: string):
+  private _applySelectorScope(selector: string, scopeSelector: string, hostSelector: string):
       string {
     const isRe = /\[is=([^\]]*)\]/g;
     scopeSelector = scopeSelector.replace(isRe, (_: string, ...parts: string[]) => parts[0]);
@@ -840,6 +691,15 @@ export class ShadowCss {
     while ((res = sep.exec(selector)) !== null) {
       const separator = res[1];
       const part = selector.slice(startIndex, res.index).trim();
+
+      // A space following an escaped hex value and followed by another hex character
+      // (ie: ".\fc ber" for ".über") is not a separator between 2 selectors
+      // also keep in mind that backslashes are replaced by a placeholder by SafeSelector
+      // These escaped selectors happen for example when esbuild runs with optimization.minify.
+      if (part.match(_placeholderRe) && selector[res.index + 1]?.match(/[a-fA-F\d]/)) {
+        continue;
+      }
+
       shouldScope = shouldScope || part.indexOf(_polyfillHostNoCombinator) > -1;
       const scopedPart = shouldScope ? _scopeSelectorPart(part) : part;
       scopedSelector += `${scopedPart} ${separator} `;
@@ -888,7 +748,7 @@ class SafeSelector {
   }
 
   restore(content: string): string {
-    return content.replace(/__ph-(\d+)__/g, (_ph, index) => this.placeholders[+index]);
+    return content.replace(_placeholderRe, (_ph, index) => this.placeholders[+index]);
   }
 
   content(): string {
@@ -898,9 +758,6 @@ class SafeSelector {
   /**
    * Replaces all of the substrings that match a regex within a
    * special string (e.g. `__ph-0__`, `__ph-1__`, etc).
-   *
-   * 替换特殊字符串中与正则表达式匹配的所有子字符串（例如 `__ph-0__` 0\_\_、`__ph-1__` 等）。
-   *
    */
   private _escapeRegexMatches(content: string, pattern: RegExp): string {
     return content.replace(pattern, (_, keep) => {
@@ -946,6 +803,8 @@ const _colonHostRe = /:host/gim;
 const _colonHostContextRe = /:host-context/gim;
 
 const _commentRe = /\/\*[\s\S]*?\*\//g;
+
+const _placeholderRe = /__ph-(\d+)__/g;
 
 function stripComments(input: string): string {
   return input.replace(_commentRe, '');
@@ -1042,9 +901,6 @@ function escapeBlocks(
  * Object containing as keys characters that should be substituted by placeholders
  * when found in strings during the css text parsing, and as values the respective
  * placeholders
- *
- * 对象包含作为键的字符，在 css 文本解析期间在字符串中找到时应该由占位符替换，并包含各个占位符作为值
- *
  */
 const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
   ';': SEMI_IN_PLACEHOLDER,
@@ -1057,14 +913,10 @@ const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
  * double quotes) replace specific characters with their respective placeholders as indicated
  * by the `ESCAPE_IN_STRING_MAP` map.
  *
- * 解析提供的 css 文本和内部字符串（意思是，在成对的未转义单引号或双引号中）用 `ESCAPE_IN_STRING_MAP` 映射所示的占位符替换特定字符。
- *
  * For example convert the text
  *  `animation: "my-anim:at\"ion" 1s;`
  * to
  *  `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
- *
- * 例如，将文本 `animation: "my-anim:at\"ion" 1s;` 转换为 `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
  *
  * This is necessary in order to remove the meaning of some characters when found inside strings
  * (for example `;` indicates the end of a css declaration, `,` the sequence of values and `:` the
@@ -1072,19 +924,10 @@ const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
  * characters are within strings and so in order to prevent parsing issues they need to be replaced
  * with placeholder text for the duration of the css manipulation process).
  *
- * 这对于删除在字符串中找到的某些字符的含义是必要的（例如 `;` 表示 css 声明的结尾， `,` 值的顺序以及 `:` 声明期间属性和值之间的除法，这些含义都不适用当此类字符在字符串中时，因此为了防止解析问题，需要在 css 操作过程中将它们替换为占位符文本）。
- *
  * @param input the original css text.
  *
- * 原始的 css 文本。
- *
- * @returns
- *
- * the css text with specific characters in strings replaced by placeholders.
- *
- * 字符串中的特定字符被占位符替换的 css 文本。
- *
- */
+ * @returns the css text with specific characters in strings replaced by placeholders.
+ **/
 function escapeInStrings(input: string): string {
   let result = input;
   let currentQuoteChar: string|null = null;
@@ -1117,30 +960,17 @@ function escapeInStrings(input: string): string {
  * original representation, this is simply used to revert the changes applied by the
  * escapeInStrings function.
  *
- * 在字符串中，将 `ESCAPE_IN_STRING_MAP` 映射中出现的所有键替换为它们的原始表示，这仅用于恢复 escapeInStrings 函数应用的更改。
- *
  * For example it reverts the text:
  *  `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
  * to it's original form of:
  *  `animation: "my-anim:at\"ion" 1s;`
  *
- * 例如，它将文本： `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;` 恢复为原始形式： `animation: "my-anim:at\"ion" 1s;`
- *
  * Note: For the sake of simplicity this function does not check that the placeholders are
  * actually inside strings as it would anyway be extremely unlikely to find them outside of strings.
  *
- * 注：为简单起见，此函数不会检查占位符是否真的在字符串中，因为无论如何它都极不可能在字符串之外找到它们。
- *
  * @param input the css text containing the placeholders.
  *
- * 包含占位符的 css 文本。
- *
- * @returns
- *
- * the css text without the placeholders.
- *
- * 没有占位符的 css 文本。
- *
+ * @returns the css text without the placeholders.
  */
 function unescapeInStrings(input: string): string {
   let result = input.replace(_cssCommaInPlaceholderReGlobal, ',');
@@ -1153,12 +983,8 @@ function unescapeInStrings(input: string): string {
  * Unescape all quotes present in a string, but only if the string was actually already
  * quoted.
  *
- * 对字符串中存在的所有引号进行转义，但前提是该字符串实际上已经被引用。
- *
  * This generates a "canonical" representation of strings which can be used to match strings
  * which would otherwise only differ because of differently escaped quotes.
- *
- * 这会生成字符串的“规范”表示，可用于匹配这些字符串，否则这些字符串只会因为转义引号的不同而不同。
  *
  * For example it converts the string (assumed to be quoted):
  *  `this \\"is\\" a \\'\\\\'test`
@@ -1167,23 +993,12 @@ function unescapeInStrings(input: string): string {
  * (note that the latter backslashes are not removed as they are not actually escaping the single
  * quote)
  *
- * 例如，它将字符串（假定被引用）： `this \\"is\\" a \\'\\\\'test` 转换为： `this "is" a '\\\\'test` （请注意，后者反斜杠不会被删除，因为它们实际上并没有转义单引号）
  *
  * @param input the string possibly containing escaped quotes.
- *
- * 可能包含转义引号的字符串。
- *
  * @param isQuoted boolean indicating whether the string was quoted inside a bigger string (if not
  * then it means that it doesn't represent an inner string and thus no unescaping is required)
  *
- * 布尔值，指示字符串是否在更大的字符串中被引用（如果不是，则意味着它不表示内部字符串，因此不需要取消转义）
- *
- * @returns
- *
- * the string in the "canonical" representation without escaped quotes.
- *
- * 不带转义引号的“规范”表示中的字符串。
- *
+ * @returns the string in the "canonical" representation without escaped quotes.
  */
 function unescapeQuotes(str: string, isQuoted: boolean): string {
   return !isQuoted ? str : str.replace(/((?:^|[^\\])(?:\\\\)*)\\(?=['"])/g, '$1');
@@ -1193,13 +1008,8 @@ function unescapeQuotes(str: string, isQuoted: boolean): string {
  * Combine the `contextSelectors` with the `hostMarker` and the `otherSelectors`
  * to create a selector that matches the same as `:host-context()`.
  *
- * 将 `contextSelectors` 与 `hostMarker` 和 `otherSelectors` 结合使用，以创建一个与
- * `:host-context()` 相同的选择器。
- *
  * Given a single context selector `A` we need to output selectors that match on the host and as an
  * ancestor of the host:
- *
- * 给定单个上下文选择器 `A` ，我们需要输出在宿主上匹配的选择器并作为宿主的祖先：
  *
  * ```
  * A <hostMarker>, A<hostMarker> {}
@@ -1208,9 +1018,6 @@ function unescapeQuotes(str: string, isQuoted: boolean): string {
  * When there is more than one context selector we also have to create combinations of those
  * selectors with each other. For example if there are `A` and `B` selectors the output is:
  *
- * 当有多个上下文选择器时，我们还必须创建这些选择器彼此的组合。例如，如果有 `A` 和 `B`
- * 选择器，则输出是：
- *
  * ```
  * AB<hostMarker>, AB <hostMarker>, A B<hostMarker>,
  * B A<hostMarker>, A B <hostMarker>, B A <hostMarker> {}
@@ -1218,20 +1025,9 @@ function unescapeQuotes(str: string, isQuoted: boolean): string {
  *
  * And so on...
  *
- * 等等……
- *
  * @param hostMarker the string that selects the host element.
- *
- * 选择宿主元素的字符串。
- *
  * @param contextSelectors an array of context selectors that will be combined.
- *
- * 将组合的上下文选择器数组。
- *
  * @param otherSelectors the rest of the selectors that are not context selectors.
- *
- * 其余不是上下文选择器的选择器。
- *
  */
 function combineHostContextSelectors(contextSelectors: string[], otherSelectors: string): string {
   const hostMarker = _polyfillHostNoCombinator;
@@ -1271,23 +1067,12 @@ function combineHostContextSelectors(contextSelectors: string[], otherSelectors:
  * Mutate the given `groups` array so that there are `multiples` clones of the original array
  * stored.
  *
- * 变异给定的 `groups` 数组，以便存储原始数组的 `multiples` 克隆。
- *
  * For example `repeatGroups([a, b], 3)` will result in `[a, b, a, b, a, b]` - but importantly the
  * newly added groups will be clones of the original.
  *
- * 例如 `repeatGroups([a, b], 3)` 将导致 `[a, b, a, b, a, b]` -
- * 但重要的是，新添加的组将是原始组的克隆。
- *
  * @param groups An array of groups of strings that will be repeated. This array is mutated
  *     in-place.
- *
- * 将重复的字符串组的数组。此数组是就地变异的。
- *
  * @param multiples The number of times the current groups should appear.
- *
- * 当前组应该出现的次数。
- *
  */
 export function repeatGroups(groups: string[][], multiples: number): void {
   const length = groups.length;
