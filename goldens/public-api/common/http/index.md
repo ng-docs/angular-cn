@@ -5,7 +5,6 @@
 ```ts
 
 import { EnvironmentInjector } from '@angular/core';
-import { EnvironmentProviders } from '@angular/core';
 import * as i0 from '@angular/core';
 import { InjectionToken } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
@@ -1728,7 +1727,7 @@ export enum HttpEventType {
     User = 5
 }
 
-// @public
+// @public (undocumented)
 export interface HttpFeature<KindT extends HttpFeatureKind> {
     // (undocumented)
     ɵkind: KindT;
@@ -1736,7 +1735,7 @@ export interface HttpFeature<KindT extends HttpFeatureKind> {
     ɵproviders: Provider[];
 }
 
-// @public
+// @public (undocumented)
 export enum HttpFeatureKind {
     // (undocumented)
     CustomXsrfConfiguration = 2,
@@ -2162,25 +2161,25 @@ export class JsonpInterceptor {
     static ɵprov: i0.ɵɵInjectableDeclaration<JsonpInterceptor>;
 }
 
-// @public
-export function provideHttpClient(...features: HttpFeature<HttpFeatureKind>[]): EnvironmentProviders;
+// @public (undocumented)
+export function provideHttpClient(...features: HttpFeature<HttpFeatureKind>[]): Provider[];
 
-// @public
+// @public (undocumented)
 export function withInterceptors(interceptorFns: HttpInterceptorFn[]): HttpFeature<HttpFeatureKind.Interceptors>;
 
-// @public
-export function withInterceptorsFromDi(): HttpFeature<HttpFeatureKind.LegacyInterceptors>;
-
-// @public
+// @public (undocumented)
 export function withJsonpSupport(): HttpFeature<HttpFeatureKind.JsonpSupport>;
 
-// @public
+// @public (undocumented)
+export function withLegacyInterceptors(): HttpFeature<HttpFeatureKind.LegacyInterceptors>;
+
+// @public (undocumented)
 export function withNoXsrfProtection(): HttpFeature<HttpFeatureKind.NoXsrfProtection>;
 
-// @public
+// @public (undocumented)
 export function withRequestsMadeViaParent(): HttpFeature<HttpFeatureKind.RequestsMadeViaParent>;
 
-// @public
+// @public (undocumented)
 export function withXsrfConfiguration({ cookieName, headerName }: {
     cookieName?: string;
     headerName?: string;
