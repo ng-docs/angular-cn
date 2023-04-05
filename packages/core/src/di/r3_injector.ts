@@ -11,9 +11,9 @@ import '../util/ng_dev_mode';
 import {RuntimeError, RuntimeErrorCode} from '../errors';
 import {OnDestroy} from '../interface/lifecycle_hooks';
 import {Type} from '../interface/type';
-import {getComponentDef} from '../render3/definition';
 import {FactoryFn, getFactoryDef} from '../render3/definition_factory';
 import {throwCyclicDependencyError, throwInvalidProviderError, throwMixedMultiProviderError} from '../render3/errors_di';
+import {NG_ENV_ID} from '../render3/fields';
 import {newArray} from '../util/array_utils';
 import {EMPTY_ARRAY} from '../util/empty';
 import {stringify} from '../util/stringify';
@@ -193,15 +193,8 @@ export abstract class EnvironmentInjector implements Injector {
    * 在函数的堆栈框架中， `inject` 可用于从此注入器注入依赖项。请注意， `inject` 仅可同步使用，不能在任何异步回调或任何 `await` 点之后使用。
    *
    * @param fn the closure to be run in the context of this injector
-   *
-   * 要在此注入器的上下文中运行的闭包
-   *
-   * @returns
-   *
-   * the return value of the function, if any
-   *
-   * 函数的返回值（如果有）
-   *
+   * @returns the return value of the function, if any
+   * @deprecated use the standalone function `runInInjectionContext` instead
    */
   abstract runInContext<ReturnT>(fn: () => ReturnT): ReturnT;
 
@@ -210,7 +203,7 @@ export abstract class EnvironmentInjector implements Injector {
   /**
    * @internal
    */
-  abstract onDestroy(callback: () => void): void;
+  abstract onDestroy(callback: () => void): () => void;
 }
 
 export class R3Injector extends EnvironmentInjector {
@@ -311,8 +304,9 @@ export class R3Injector extends EnvironmentInjector {
     }
   }
 
-  override onDestroy(callback: () => void): void {
+  override onDestroy(callback: () => void): () => void {
     this._onDestroyHooks.push(callback);
+    return () => this.removeOnDestroy(callback);
   }
 
   override runInContext<ReturnT>(fn: () => ReturnT): ReturnT {
@@ -332,6 +326,11 @@ export class R3Injector extends EnvironmentInjector {
       token: ProviderToken<T>, notFoundValue: any = THROW_IF_NOT_FOUND,
       flags: InjectFlags|InjectOptions = InjectFlags.Default): T {
     this.assertNotDestroyed();
+
+    if (token.hasOwnProperty(NG_ENV_ID)) {
+      return (token as any)[NG_ENV_ID](this);
+    }
+
     flags = convertToBitFlags(flags) as InjectFlags;
 
     // Set the injection context.
@@ -423,7 +422,7 @@ export class R3Injector extends EnvironmentInjector {
     return `R3Injector[${tokens.join(', ')}]`;
   }
 
-  private assertNotDestroyed(): void {
+  assertNotDestroyed(): void {
     if (this._destroyed) {
       throw new RuntimeError(
           RuntimeErrorCode.INJECTOR_ALREADY_DESTROYED,
@@ -494,6 +493,13 @@ export class R3Injector extends EnvironmentInjector {
       return providedIn === 'any' || (this.scopes.has(providedIn));
     } else {
       return this.injectorDefTypes.has(providedIn);
+    }
+  }
+
+  private removeOnDestroy(callback: () => void): void {
+    const destroyCBIdx = this._onDestroyHooks.indexOf(callback);
+    if (destroyCBIdx !== -1) {
+      this._onDestroyHooks.splice(destroyCBIdx, 1);
     }
   }
 }
@@ -625,8 +631,7 @@ function couldBeInjectableType(value: any): value is ProviderToken<any> {
 }
 
 function forEachSingleProvider(
-    providers: Array<Provider|InternalEnvironmentProviders>,
-    fn: (provider: SingleProvider) => void): void {
+    providers: Array<Provider|EnvironmentProviders>, fn: (provider: SingleProvider) => void): void {
   for (const provider of providers) {
     if (Array.isArray(provider)) {
       forEachSingleProvider(provider, fn);

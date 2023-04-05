@@ -8,17 +8,17 @@
 
 import {CommonModule, HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 import {provideLocationMocks, SpyLocation} from '@angular/common/testing';
-import {ChangeDetectionStrategy, Component, EnvironmentInjector, inject as coreInject, Inject, Injectable, InjectionToken, NgModule, NgModuleRef, NgZone, OnDestroy, QueryList, ViewChild, ViewChildren, ɵConsole as Console, ɵNoopNgZone as NoopNgZone} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EnvironmentInjector, inject as coreInject, Inject, Injectable, InjectionToken, NgModule, NgModuleRef, NgZone, OnDestroy, QueryList, Type, ViewChild, ViewChildren, ɵConsole as Console, ɵNoopNgZone as NoopNgZone} from '@angular/core';
 import {ComponentFixture, fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser/src/dom/debug/by';
 import {expect} from '@angular/platform-browser/testing/src/matchers';
-import {ActivatedRoute, ActivatedRouteSnapshot, ActivationEnd, ActivationStart, CanActivate, CanDeactivate, ChildActivationEnd, ChildActivationStart, DefaultUrlSerializer, DetachedRouteHandle, Event, GuardsCheckEnd, GuardsCheckStart, Navigation, NavigationCancel, NavigationCancellationCode, NavigationEnd, NavigationError, NavigationStart, ParamMap, Params, PreloadAllModules, PreloadingStrategy, PRIMARY_OUTLET, Resolve, ResolveEnd, ResolveStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router, RouteReuseStrategy, RouterEvent, RouterLink, RouterLinkActive, RouterModule, RouterOutlet, RouterPreloader, RouterStateSnapshot, RoutesRecognized, RunGuardsAndResolvers, UrlHandlingStrategy, UrlSegmentGroup, UrlSerializer, UrlTree} from '@angular/router';
+import {ActivatedRoute, ActivatedRouteSnapshot, ActivationEnd, ActivationStart, ChildActivationEnd, ChildActivationStart, DefaultUrlSerializer, DetachedRouteHandle, Event, GuardsCheckEnd, GuardsCheckStart, Navigation, NavigationCancel, NavigationCancellationCode, NavigationEnd, NavigationError, NavigationSkipped, NavigationStart, ParamMap, Params, PreloadAllModules, PreloadingStrategy, PRIMARY_OUTLET, ResolveEnd, ResolveStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router, RouteReuseStrategy, RouterEvent, RouterLink, RouterLinkActive, RouterModule, RouterOutlet, RouterPreloader, RouterStateSnapshot, RoutesRecognized, RunGuardsAndResolvers, UrlHandlingStrategy, UrlSegment, UrlSegmentGroup, UrlSerializer, UrlTree} from '@angular/router';
 import {concat, EMPTY, Observable, Observer, of, Subscription} from 'rxjs';
 import {delay, filter, first, last, map, mapTo, takeWhile, tap} from 'rxjs/operators';
 
-import {CanActivateChildFn, CanActivateFn, CanMatch, CanMatchFn, ResolveFn} from '../src/models';
-import {provideRouter, withRouterConfig} from '../src/provide_router';
-import {forEach, wrapIntoObservable} from '../src/utils/collection';
+import {CanActivateChildFn, CanActivateFn, CanMatchFn, Data, ResolveFn} from '../src/models';
+import {provideRouter, withNavigationErrorHandler, withRouterConfig} from '../src/provide_router';
+import {wrapIntoObservable} from '../src/utils/collection';
 import {getLoadedRoutes} from '../src/utils/config';
 
 const ROUTER_DIRECTIVES = [RouterLink, RouterLinkActive, RouterOutlet];
@@ -60,15 +60,19 @@ describe('Integration', () => {
      })));
 
   describe('navigation', function() {
-    it('should navigate to the current URL', fakeAsync(inject([Router], (router: Router) => {
-         router.onSameUrlNavigation = 'reload';
+    it('should navigate to the current URL', fakeAsync(() => {
+         TestBed.configureTestingModule({
+           providers: [
+             provideRouter([], withRouterConfig({onSameUrlNavigation: 'reload'})),
+           ]
+         });
+         const router = TestBed.inject(Router);
          router.resetConfig([
            {path: '', component: SimpleCmp},
            {path: 'simple', component: SimpleCmp},
          ]);
 
-         const fixture = createRoot(router, RootCmp);
-         const events: Event[] = [];
+         const events: (NavigationStart|NavigationEnd)[] = [];
          router.events.subscribe(e => onlyNavigationStartAndEnd(e) && events.push(e));
 
          router.navigateByUrl('/simple');
@@ -81,8 +85,34 @@ describe('Integration', () => {
            [NavigationStart, '/simple'], [NavigationEnd, '/simple'], [NavigationStart, '/simple'],
            [NavigationEnd, '/simple']
          ]);
-       })));
+       }));
 
+    it('should override default onSameUrlNavigation with extras', async () => {
+      TestBed.configureTestingModule({
+        providers: [
+          provideRouter([], withRouterConfig({onSameUrlNavigation: 'ignore'})),
+        ]
+      });
+      const router = TestBed.inject(Router);
+      router.resetConfig([
+        {path: '', component: SimpleCmp},
+        {path: 'simple', component: SimpleCmp},
+      ]);
+
+      const events: (NavigationStart|NavigationEnd)[] = [];
+      router.events.subscribe(e => onlyNavigationStartAndEnd(e) && events.push(e));
+
+      await router.navigateByUrl('/simple');
+      await router.navigateByUrl('/simple');
+      // By default, the second navigation is ignored
+      expectEvents(events, [[NavigationStart, '/simple'], [NavigationEnd, '/simple']]);
+      await router.navigateByUrl('/simple', {onSameUrlNavigation: 'reload'});
+      // We overrode the `onSameUrlNavigation` value. This navigation should be processed.
+      expectEvents(events, [
+        [NavigationStart, '/simple'], [NavigationEnd, '/simple'], [NavigationStart, '/simple'],
+        [NavigationEnd, '/simple']
+      ]);
+    });
 
     it('should ignore empty paths in relative links',
        fakeAsync(inject([Router], (router: Router) => {
@@ -163,7 +193,7 @@ describe('Integration', () => {
            }
          });
 
-         let state: any = {foo: 'bar'};
+         let state: Record<string, string> = {foo: 'bar'};
          router.navigateByUrl('/simple', {state});
          tick();
          location.back();
@@ -370,7 +400,7 @@ describe('Integration', () => {
   });
 
   describe('should execute navigations serially', () => {
-    let log: any[] = [];
+    let log: Array<string|Params> = [];
 
     beforeEach(() => {
       log = [];
@@ -388,8 +418,8 @@ describe('Integration', () => {
             provide: 'trueIn2Seconds',
             useValue: () => {
               log.push('trueIn2Seconds-start');
-              let res: any = null;
-              const p = new Promise(r => res = r);
+              let res: ((value: boolean) => void);
+              const p = new Promise<boolean>(r => res = r);
               setTimeout(() => {
                 log.push('trueIn2Seconds-end');
                 res(true);
@@ -405,7 +435,7 @@ describe('Integration', () => {
       @Component({template: '<router-outlet></router-outlet>'})
       class Parent {
         constructor(route: ActivatedRoute) {
-          route.params.subscribe((s: any) => {
+          route.params.subscribe((s: Params) => {
             log.push(s);
           });
         }
@@ -456,7 +486,7 @@ describe('Integration', () => {
 
       @NgModule({
         declarations: [Parent, NamedOutletHost, Child1, Child2, Child3],
-        imports: [RouterModule]
+        imports: [RouterModule.forRoot([])]
       })
       class TestModule {
       }
@@ -640,7 +670,7 @@ describe('Integration', () => {
 
        @NgModule({
          declarations: [OnPushOutlet, NeedCdCmp],
-         imports: [RouterModule],
+         imports: [RouterModule.forRoot([])],
        })
        class TestModule {
        }
@@ -835,7 +865,7 @@ describe('Integration', () => {
 
   describe('"eager" urlUpdateStrategy', () => {
     @Injectable()
-    class AuthGuard implements CanActivate {
+    class AuthGuard {
       canActivateResult = true;
 
       canActivate() {
@@ -843,7 +873,7 @@ describe('Integration', () => {
       }
     }
     @Injectable()
-    class DelayedGuard implements CanActivate {
+    class DelayedGuard {
       canActivate() {
         return of('').pipe(delay(1000), mapTo(true));
       }
@@ -1136,7 +1166,7 @@ describe('Integration', () => {
      })));
 
   it('should navigate when locations changes',
-     fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
+     fakeAsync(inject([Router, Location], (router: Router, location: SpyLocation) => {
        const fixture = createRoot(router, RootCmp);
 
        router.resetConfig([{
@@ -1145,16 +1175,16 @@ describe('Integration', () => {
          children: [{path: 'user/:name', component: UserCmp}]
        }]);
 
-       const recordedEvents: any[] = [];
+       const recordedEvents: (NavigationStart|NavigationEnd)[] = [];
        router.events.forEach(e => onlyNavigationStartAndEnd(e) && recordedEvents.push(e));
 
        router.navigateByUrl('/team/22/user/victor');
        advance(fixture);
 
-       (<any>location).simulateHashChange('/team/22/user/fedor');
+       location.simulateHashChange('/team/22/user/fedor');
        advance(fixture);
 
-       (<any>location).simulateUrlPop('/team/22/user/fedor');
+       location.simulateUrlPop('/team/22/user/fedor');
        advance(fixture);
 
        expect(fixture.nativeElement).toHaveText('team 22 [ user fedor, right:  ]');
@@ -1539,7 +1569,7 @@ describe('Integration', () => {
 
        router.resetConfig([{path: 'user/:name', component: UserCmp}]);
 
-       const recordedEvents: any[] = [];
+       const recordedEvents: Event[] = [];
        router.events.forEach(e => recordedEvents.push(e));
 
        router.navigateByUrl('/user/init');
@@ -1548,8 +1578,8 @@ describe('Integration', () => {
        const user = fixture.debugElement.children[1].componentInstance;
 
        let r1: any, r2: any;
-       router.navigateByUrl('/user/victor')!.then(_ => r1 = _);
-       router.navigateByUrl('/user/fedor')!.then(_ => r2 = _);
+       router.navigateByUrl('/user/victor').then(_ => r1 = _);
+       router.navigateByUrl('/user/fedor').then(_ => r2 = _);
        advance(fixture);
 
        expect(r1).toEqual(false);  // returns false because it was canceled
@@ -1614,11 +1644,11 @@ describe('Integration', () => {
 
        router.resetConfig([{path: 'user/:name', component: UserCmp}]);
 
-       const recordedEvents: any[] = [];
+       const recordedEvents: Event[] = [];
        router.events.forEach(e => recordedEvents.push(e));
 
        let e: any;
-       router.navigateByUrl('/invalid')!.catch(_ => e = _);
+       router.navigateByUrl('/invalid').catch(_ => e = _);
        advance(fixture);
        expect(e.message).toContain('Cannot match any routes');
 
@@ -1637,6 +1667,29 @@ describe('Integration', () => {
          [NavigationEnd, '/user/fedor']
        ]);
      })));
+
+  it('should be able to provide an error handler with DI dependencies', async () => {
+    @Injectable({providedIn: 'root'})
+    class Handler {
+      handlerCalled = false;
+    }
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter(
+            [{
+              path: 'throw',
+              canMatch: [() => {
+                throw new Error('');
+              }],
+              component: BlankCmp
+            }],
+            withNavigationErrorHandler(() => coreInject(Handler).handlerCalled = true)),
+      ]
+    });
+    const router = TestBed.inject(Router);
+    await expectAsync(router.navigateByUrl('/throw')).toBeRejected();
+    expect(TestBed.inject(Handler).handlerCalled).toBeTrue();
+  });
 
   // Errors should behave the same for both deferred and eager URL update strategies
   ['deferred', 'eager'].forEach((strat: any) => {
@@ -1992,7 +2045,8 @@ describe('Integration', () => {
        router.navigateByUrl('/cmp');
        advance(fixture);
 
-       const cmp = fixture.debugElement.children[1].componentInstance;
+       const cmp: ComponentRecordingRoutePathAndUrl =
+           fixture.debugElement.children[1].componentInstance;
 
        expect(cmp.url).toBe('/cmp');
        expect(cmp.path.length).toEqual(2);
@@ -2001,7 +2055,7 @@ describe('Integration', () => {
 
 
   describe('data', () => {
-    class ResolveSix implements Resolve<number> {
+    class ResolveSix {
       resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): number {
         return 6;
       }
@@ -2028,7 +2082,7 @@ describe('Integration', () => {
           {
             provide: 'overridingGuard',
             useValue: (route: ActivatedRouteSnapshot) => {
-              (route as any).data = {prop: 10};
+              route.data = {prop: 10};
               return true;
             }
           },
@@ -2298,14 +2352,13 @@ describe('Integration', () => {
            ]
          }]);
 
-         const e: any = null;
          router.navigateByUrl('/parent/child1');
          advance(fixture);
 
          router.navigateByUrl('/parent/child2');
          advance(fixture);
 
-         const cmp = fixture.debugElement.children[1].componentInstance;
+         const cmp: CollectParamsCmp = fixture.debugElement.children[1].componentInstance;
          expect(cmp.route.snapshot.data).toEqual({two: 2});
        })));
 
@@ -2533,7 +2586,7 @@ describe('Integration', () => {
 
     describe('should run resolvers for the same route concurrently', () => {
       let log: string[];
-      let observer: Observer<any>;
+      let observer: Observer<unknown>;
 
       beforeEach(() => {
         log = [];
@@ -2542,7 +2595,7 @@ describe('Integration', () => {
             {
               provide: 'resolver1',
               useValue: () => {
-                const obs$ = new Observable((obs: Observer<any>) => {
+                const obs$ = new Observable((obs) => {
                   observer = obs;
                   return () => {};
                 });
@@ -3118,7 +3171,7 @@ describe('Integration', () => {
         it('works', fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
              const fixture = createRoot(router, RootCmp);
 
-             const recordedEvents: any[] = [];
+             const recordedEvents: Event[] = [];
              router.events.forEach(e => recordedEvents.push(e));
 
              router.resetConfig(
@@ -3189,7 +3242,7 @@ describe('Integration', () => {
       });
 
       describe('should work when given a class', () => {
-        class AlwaysTrue implements CanActivate {
+        class AlwaysTrue {
           canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
             return true;
           }
@@ -3218,7 +3271,7 @@ describe('Integration', () => {
             providers: [{
               provide: 'CanActivate',
               useValue: (a: ActivatedRouteSnapshot, b: RouterStateSnapshot) => {
-                return Observable.create((observer: any) => {
+                return new Observable<boolean>((observer) => {
                   observer.next(false);
                 });
               }
@@ -3356,9 +3409,9 @@ describe('Integration', () => {
         }));
 
         it('works', fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
-             const recordedEvents: any[] = [];
+             const recordedEvents: Event[] = [];
              let cancelEvent: NavigationCancel = null!;
-             router.events.forEach((e: any) => {
+             router.events.forEach((e) => {
                recordedEvents.push(e);
                if (e instanceof NavigationCancel) cancelEvent = e;
              });
@@ -3400,7 +3453,7 @@ describe('Integration', () => {
 
         it('works with root url',
            fakeAsync(inject([Router, Location], (router: Router, location: Location) => {
-             const recordedEvents: any[] = [];
+             const recordedEvents: Event[] = [];
              let cancelEvent: NavigationCancel = null!;
              router.events.forEach((e: any) => {
                recordedEvents.push(e);
@@ -3550,8 +3603,8 @@ describe('Integration', () => {
              const fixture = configureRouter(router, 'paramsChange');
 
              const cmp: RouteCmp = fixture.debugElement.children[1].componentInstance;
-             const recordedData: any[] = [];
-             cmp.route.data.subscribe((data: any) => recordedData.push(data));
+             const recordedData: Data[] = [];
+             cmp.route.data.subscribe((data) => recordedData.push(data));
 
              expect(guardRunCount).toEqual(1);
              expect(recordedData).toEqual([{data: 0}]);
@@ -3577,8 +3630,8 @@ describe('Integration', () => {
              const fixture = configureRouter(router, 'paramsOrQueryParamsChange');
 
              const cmp: RouteCmp = fixture.debugElement.children[1].componentInstance;
-             const recordedData: any[] = [];
-             cmp.route.data.subscribe((data: any) => recordedData.push(data));
+             const recordedData: Data[] = [];
+             cmp.route.data.subscribe((data) => recordedData.push(data));
 
              expect(guardRunCount).toEqual(1);
              expect(recordedData).toEqual([{data: 0}]);
@@ -3609,8 +3662,8 @@ describe('Integration', () => {
              const fixture = configureRouter(router, 'always');
 
              const cmp: RouteCmp = fixture.debugElement.children[1].componentInstance;
-             const recordedData: any[] = [];
-             cmp.route.data.subscribe((data: any) => recordedData.push(data));
+             const recordedData: Data[] = [];
+             cmp.route.data.subscribe((data) => recordedData.push(data));
 
              expect(guardRunCount).toEqual(1);
              expect(recordedData).toEqual([{data: 0}]);
@@ -3650,8 +3703,8 @@ describe('Integration', () => {
              const fixture = configureRouter(router, 'pathParamsChange');
 
              const cmp: RouteCmp = fixture.debugElement.children[1].componentInstance;
-             const recordedData: any[] = [];
-             cmp.route.data.subscribe((data: any) => recordedData.push(data));
+             const recordedData: Data[] = [];
+             cmp.route.data.subscribe((data) => recordedData.push(data));
 
              // First navigation has already run
              expect(guardRunCount).toEqual(1);
@@ -3725,8 +3778,8 @@ describe('Integration', () => {
              const fixture = configureRouter(router, 'pathParamsOrQueryParamsChange');
 
              const cmp: RouteCmp = fixture.debugElement.children[1].componentInstance;
-             const recordedData: any[] = [];
-             cmp.route.data.subscribe((data: any) => recordedData.push(data));
+             const recordedData: Data[] = [];
+             cmp.route.data.subscribe((data) => recordedData.push(data));
 
              // First navigation has already run
              expect(guardRunCount).toEqual(1);
@@ -3761,8 +3814,8 @@ describe('Integration', () => {
              const fixture = configureRouter(router, (from, to) => to.paramMap.get('p') === '2');
 
              const cmp: RouteCmp = fixture.debugElement.children[1].componentInstance;
-             const recordedData: any[] = [];
-             cmp.route.data.subscribe((data: any) => recordedData.push(data));
+             const recordedData: Data[] = [];
+             cmp.route.data.subscribe((data) => recordedData.push(data));
 
              // First navigation has already run
              expect(guardRunCount).toEqual(1);
@@ -4162,7 +4215,7 @@ describe('Integration', () => {
       describe('next state', () => {
         let log: string[];
 
-        class ClassWithNextState implements CanDeactivate<TeamCmp> {
+        class ClassWithNextState {
           canDeactivate(
               component: TeamCmp, currentRoute: ActivatedRouteSnapshot,
               currentState: RouterStateSnapshot, nextState: RouterStateSnapshot): boolean {
@@ -4232,7 +4285,7 @@ describe('Integration', () => {
       });
 
       describe('should work when given a class', () => {
-        class AlwaysTrue implements CanDeactivate<TeamCmp> {
+        class AlwaysTrue {
           canDeactivate(): boolean {
             return true;
           }
@@ -4268,7 +4321,7 @@ describe('Integration', () => {
             providers: [{
               provide: 'CanDeactivate',
               useValue: (c: TeamCmp, a: ActivatedRouteSnapshot, b: RouterStateSnapshot) => {
-                return Observable.create((observer: any) => {
+                return new Observable<boolean>((observer) => {
                   observer.next(false);
                 });
               }
@@ -4379,7 +4432,7 @@ describe('Integration', () => {
             },
             {
               provide: 'returnFalseAndNavigate',
-              useFactory: (router: any) => (a: any) => {
+              useFactory: (router: Router) => (a: any) => {
                 router.navigate(['blank']);
                 return false;
               },
@@ -4416,7 +4469,7 @@ describe('Integration', () => {
              {path: 'lazyTrue', canLoad: ['alwaysTrue'], loadChildren: () => LoadedModule}
            ]);
 
-           const recordedEvents: any[] = [];
+           const recordedEvents: Event[] = [];
            router.events.forEach(e => recordedEvents.push(e));
 
 
@@ -4477,7 +4530,7 @@ describe('Integration', () => {
              {path: 'blank', component: BlankCmp}
            ]);
 
-           const recordedEvents: any[] = [];
+           const recordedEvents: Event[] = [];
            router.events.forEach(e => recordedEvents.push(e));
 
 
@@ -4515,7 +4568,7 @@ describe('Integration', () => {
              {path: 'blank', component: BlankCmp}
            ]);
 
-           const recordedEvents: any[] = [];
+           const recordedEvents: Event[] = [];
            router.events.forEach(e => recordedEvents.push(e));
 
 
@@ -4562,8 +4615,8 @@ describe('Integration', () => {
              {path: 'lazy-true', canLoad: ['alwaysTrue'], loadChildren: () => LazyLoadedModule},
            ]);
 
-           let navFalseResult: any;
-           let navTrueResult: any;
+           let navFalseResult = true;
+           let navTrueResult = false;
            router.navigateByUrl('/lazy-false').then(v => {
              navFalseResult = v;
            });
@@ -4859,7 +4912,7 @@ describe('Integration', () => {
 
     describe('canMatch', () => {
       @Injectable({providedIn: 'root'})
-      class ConfigurableGuard implements CanMatch {
+      class ConfigurableGuard {
         result: Promise<boolean|UrlTree>|Observable<boolean|UrlTree>|boolean|UrlTree = false;
         canMatch() {
           return this.result;
@@ -4955,7 +5008,7 @@ describe('Integration', () => {
            class ChildLazyLoadedComponent {
            }
            @Injectable()
-           class LazyCanMatchFalse implements CanMatch {
+           class LazyCanMatchFalse {
              canMatch() {
                return false;
              }
@@ -5208,22 +5261,28 @@ describe('Integration', () => {
 
          router.resetConfig([{path: 'user/:name', component: UserCmp}]);
 
-         const recordedEvents: any[] = [];
+         const recordedEvents: Event[] = [];
          router.events.forEach(e => recordedEvents.push(e));
 
          router.navigateByUrl('/user/fedor');
          advance(fixture);
 
-         expect(fixture.nativeElement).toHaveText('user fedor');
-         expect(recordedEvents[3] instanceof ChildActivationStart).toBe(true);
-         expect(recordedEvents[3].snapshot).toBe(recordedEvents[9].snapshot.root);
-         expect(recordedEvents[9] instanceof ChildActivationEnd).toBe(true);
-         expect(recordedEvents[9].snapshot).toBe(recordedEvents[9].snapshot.root);
+         const event3 = recordedEvents[3] as ChildActivationStart;
+         const event9 = recordedEvents[9] as ChildActivationEnd;
 
-         expect(recordedEvents[4] instanceof ActivationStart).toBe(true);
-         expect(recordedEvents[4].snapshot.routeConfig.path).toBe('user/:name');
-         expect(recordedEvents[8] instanceof ActivationEnd).toBe(true);
-         expect(recordedEvents[8].snapshot.routeConfig.path).toBe('user/:name');
+         expect(fixture.nativeElement).toHaveText('user fedor');
+         expect(event3 instanceof ChildActivationStart).toBe(true);
+         expect(event3.snapshot).toBe(event9.snapshot.root);
+         expect(event9 instanceof ChildActivationEnd).toBe(true);
+         expect(event9.snapshot).toBe(event9.snapshot.root);
+
+         const event4 = recordedEvents[4] as ActivationStart;
+         const event8 = recordedEvents[8] as ActivationEnd;
+
+         expect(event4 instanceof ActivationStart).toBe(true);
+         expect(event4.snapshot.routeConfig?.path).toBe('user/:name');
+         expect(event8 instanceof ActivationEnd).toBe(true);
+         expect(event8.snapshot.routeConfig?.path).toBe('user/:name');
 
          expectEvents(recordedEvents, [
            [NavigationStart, '/user/fedor'], [RoutesRecognized, '/user/fedor'],
@@ -5244,7 +5303,7 @@ describe('Integration', () => {
          ]);
 
          const navigateSpy = spyOn(router, 'navigate').and.callThrough();
-         const recordedEvents: any[] = [];
+         const recordedEvents: Event[] = [];
 
          const navStart$ = router.events.pipe(
              tap(e => recordedEvents.push(e)),
@@ -5716,7 +5775,7 @@ describe('Integration', () => {
          }
 
          @Injectable()
-         class Resolver implements Resolve<Service> {
+         class Resolver {
            constructor(public service: Service) {}
            resolve() {
              return this.service;
@@ -6025,7 +6084,7 @@ describe('Integration', () => {
       class LoadedModule {
       }
 
-      @NgModule({declarations: [EagerParentComponent], imports: [RouterModule]})
+      @NgModule({declarations: [EagerParentComponent], imports: [RouterModule.forRoot([])]})
       class TestModule {
       }
 
@@ -6088,7 +6147,7 @@ describe('Integration', () => {
            }
          }]);
 
-         const recordedEvents: any[] = [];
+         const recordedEvents: Event[] = [];
          router.events.forEach(e => recordedEvents.push(e));
 
          router.navigateByUrl('/lazy/loaded')!.catch(s => {});
@@ -6221,7 +6280,7 @@ describe('Integration', () => {
            router.navigateByUrl('/blank');
            advance(fixture);
 
-           const config = router.config as any;
+           const config = router.config;
            const firstRoutes = getLoadedRoutes(config[1])!;
 
            expect(firstRoutes).toBeDefined();
@@ -6244,7 +6303,7 @@ describe('Integration', () => {
            router.navigateByUrl('/blank');
            advance(fixture);
 
-           const config = router.config as any;
+           const config = router.config;
            const firstRoutes = getLoadedRoutes(config[1])!;
 
            expect(firstRoutes).toBeUndefined();
@@ -6270,30 +6329,30 @@ describe('Integration', () => {
 
         extract(url: UrlTree): UrlTree {
           const oldRoot = url.root;
-          const children: any = {};
+          const children: Record<string, UrlSegmentGroup> = {};
           if (oldRoot.children[PRIMARY_OUTLET]) {
             children[PRIMARY_OUTLET] = oldRoot.children[PRIMARY_OUTLET];
           }
           const root = new UrlSegmentGroup(oldRoot.segments, children);
-          return new (UrlTree as any)(root, url.queryParams, url.fragment);
+          return new UrlTree(root, url.queryParams, url.fragment);
         }
 
         merge(newUrlPart: UrlTree, wholeUrl: UrlTree): UrlTree {
           const oldRoot = newUrlPart.root;
 
-          const children: any = {};
+          const children: Record<string, UrlSegmentGroup> = {};
           if (oldRoot.children[PRIMARY_OUTLET]) {
             children[PRIMARY_OUTLET] = oldRoot.children[PRIMARY_OUTLET];
           }
 
-          forEach(wholeUrl.root.children, (v: any, k: any) => {
+          Object.entries(wholeUrl.root.children).forEach(([k, v]: [string, any]) => {
             if (k !== PRIMARY_OUTLET) {
               children[k] = v;
             }
             v.parent = this;
           });
           const root = new UrlSegmentGroup(oldRoot.segments, children);
-          return new (UrlTree as any)(root, newUrlPart.queryParams, newUrlPart.fragment);
+          return new UrlTree(root, newUrlPart.queryParams, newUrlPart.fragment);
         }
       }
 
@@ -6317,7 +6376,7 @@ describe('Integration', () => {
                  [{path: 'user/:name', component: UserCmp}, {path: 'simple', component: SimpleCmp}]
            }]);
 
-           const events: any[] = [];
+           const events: Event[] = [];
            router.events.subscribe(e => e instanceof RouterEvent && events.push(e));
 
            // supported URL
@@ -6352,7 +6411,8 @@ describe('Integration', () => {
            advance(fixture);
 
            expect(location.path()).toEqual('/exclude/two');
-           expectEvents(events, []);
+           expectEvents(events, [[NavigationSkipped, '/exclude/two']]);
+           events.splice(0);
 
            // back to a supported URL
            location.simulateHashChange('/include/simple');
@@ -6380,7 +6440,7 @@ describe('Integration', () => {
                  [{path: 'user/:name', component: UserCmp}, {path: 'simple', component: SimpleCmp}]
            }]);
 
-           const events: any[] = [];
+           const events: Event[] = [];
            router.events.subscribe(e => e instanceof RouterEvent && events.push(e));
 
            location.simulateHashChange('/include/user/kate(aux:excluded)');
@@ -6397,7 +6457,8 @@ describe('Integration', () => {
 
            location.simulateHashChange('/include/user/kate(aux:excluded2)');
            advance(fixture);
-           expectEvents(events, []);
+           expectEvents(events, [[NavigationSkipped, '/include/user/kate(aux:excluded2)']]);
+           events.splice(0);
 
            router.navigateByUrl('/include/simple');
            advance(fixture);
@@ -6576,14 +6637,14 @@ describe('Integration', () => {
                `<router-outlet (attach)="recordAttached($event)" (detach)="recordDetached($event)"></router-outlet>`
          })
          class Container {
-           attachedComponents: any[] = [];
-           detachedComponents: any[] = [];
+           attachedComponents: unknown[] = [];
+           detachedComponents: unknown[] = [];
 
-           recordAttached(component: any): void {
+           recordAttached(component: unknown): void {
              this.attachedComponents.push(component);
            }
 
-           recordDetached(component: any): void {
+           recordDetached(component: unknown): void {
              this.detachedComponents.push(component);
            }
          }
@@ -6984,12 +7045,12 @@ describe('Testing router options', () => {
 function expectEvents(events: Event[], pairs: any[]) {
   expect(events.length).toEqual(pairs.length);
   for (let i = 0; i < events.length; ++i) {
-    expect((<any>events[i].constructor).name).toBe(pairs[i][0].name);
+    expect((events[i].constructor).name).toBe(pairs[i][0].name);
     expect((<any>events[i]).url).toBe(pairs[i][1]);
   }
 }
 
-function onlyNavigationStartAndEnd(e: Event): boolean {
+function onlyNavigationStartAndEnd(e: Event): e is NavigationStart|NavigationEnd {
   return e instanceof NavigationStart || e instanceof NavigationEnd;
 }
 
@@ -7064,16 +7125,16 @@ class SimpleCmp {
 
 @Component({selector: 'collect-params-cmp', template: `collect-params`})
 class CollectParamsCmp {
-  private params: any = [];
-  private urls: any = [];
+  private params: Params = [];
+  private urls: UrlSegment[][] = [];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute) {
     route.params.forEach(p => this.params.push(p));
     route.url.forEach(u => this.urls.push(u));
   }
 
   recordedUrls(): string[] {
-    return this.urls.map((a: any) => a.map((p: any) => p.path).join('/'));
+    return this.urls.map((a: UrlSegment[]) => a.map((p: UrlSegment) => p.path).join('/'));
   }
 }
 
@@ -7099,7 +7160,7 @@ class TeamCmp {
   routerLink = ['.'];
 
   constructor(public route: ActivatedRoute) {
-    this.id = route.params.pipe(map((p: any) => p['id']));
+    this.id = route.params.pipe(map((p: Params) => p['id']));
     route.params.forEach(p => {
       this.recordedParams.push(p);
       this.snapshotParams.push(route.snapshot.params);
@@ -7122,7 +7183,7 @@ class UserCmp {
   snapshotParams: Params[] = [];
 
   constructor(route: ActivatedRoute) {
-    this.name = route.params.pipe(map((p: any) => p['name']));
+    this.name = route.params.pipe(map((p: Params) => p['name']));
     route.params.forEach(p => {
       this.recordedParams.push(p);
       this.snapshotParams.push(route.snapshot.params);
@@ -7191,19 +7252,19 @@ class OutletInNgIf {
               </div>`
 })
 class DummyLinkWithParentCmp {
-  private exact: boolean;
+  protected exact: boolean;
   constructor(route: ActivatedRoute) {
-    this.exact = (<any>route.snapshot.params).exact === 'true';
+    this.exact = (route.snapshot.params).exact === 'true';
   }
 }
 
 @Component({selector: 'cmp', template: ''})
 class ComponentRecordingRoutePathAndUrl {
-  private path: any;
-  private url: any;
+  public path: ActivatedRoute[];
+  public url: string;
 
   constructor(router: Router, route: ActivatedRoute) {
-    this.path = (router.routerState as any).pathFromRoot(route);
+    this.path = route.pathFromRoot;
     this.url = router.url.toString();
   }
 }
@@ -7251,13 +7312,13 @@ class ConditionalThrowingCmp {
 
 
 
-function advance(fixture: ComponentFixture<any>, millis?: number): void {
+function advance(fixture: ComponentFixture<unknown>, millis?: number): void {
   tick(millis);
   fixture.detectChanges();
 }
 
-function createRoot(router: Router, type: any): ComponentFixture<any> {
-  const f = TestBed.createComponent(type);
+function createRoot<T>(router: Router, type: Type<T>): ComponentFixture<T> {
+  const f = TestBed.createComponent<T>(type);
   advance(f);
   router.initialNavigation();
   advance(f);

@@ -12,7 +12,7 @@ import ts from 'typescript';
 import {Reference} from '../../imports';
 import {ClassDeclaration} from '../../reflection';
 
-import {ClassPropertyMapping, ClassPropertyName} from './property_mapping';
+import {ClassPropertyMapping, ClassPropertyName, InputOrOutput} from './property_mapping';
 
 /**
  * Metadata collected for an `NgModule`.
@@ -172,6 +172,9 @@ export enum MatchSource {
   HostDirective,
 }
 
+/** Metadata for a single input mapping. */
+export type InputMapping = InputOrOutput&{required: boolean};
+
 /**
  * Metadata collected for a directive within an NgModule's scope.
  *
@@ -200,7 +203,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
    * 输入字段名称到属性名称的映射。
    *
    */
-  inputs: ClassPropertyMapping;
+  inputs: ClassPropertyMapping<InputMapping>;
 
   /**
    * A mapping of output field names to the property names.
@@ -352,10 +355,17 @@ export interface MetadataReader {
 }
 
 /**
- * A MetadataReader which also allows access to the set of all known directive classes.
+ * A MetadataReader which also allows access to the set of all known trait classes.
  */
 export interface MetadataReaderWithIndex extends MetadataReader {
-  getKnownDirectives(): Iterable<ClassDeclaration>;
+  getKnown(kind: MetaKind): Array<ClassDeclaration>;
+}
+
+/**
+ * An NgModuleIndex allows access to information about traits exported by NgModules.
+ */
+export interface NgModuleIndex {
+  getNgModulesExporting(directiveOrPipe: ClassDeclaration): Array<Reference<ClassDeclaration>>;
 }
 
 /**

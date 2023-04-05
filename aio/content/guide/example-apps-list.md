@@ -62,7 +62,7 @@ The Tour of Heroes is a comprehensive tutorial that guides you through the proce
 <live-example name="toh-pt6"></live-example>
 
 Completed Tour of Heroes example application.
-For more information, see [Tour of Heroes app and tutorial](tutorial).
+For more information, see [Tour of Heroes app and tutorial](tutorial/tour-of-heroes).
 
 完成后的英雄之旅范例应用。欲知详情，参阅[“英雄之旅”应用和教程](tutorial)。
 
@@ -73,7 +73,7 @@ For more information, see [Tour of Heroes app and tutorial](tutorial).
 <live-example name="toh-pt0"></live-example>
 
 Initial Tour of Heroes example application for beginning the tutorial.
-For more information, see [Create a new project](tutorial/toh-pt0).
+For more information, see [Create a new project](tutorial/tour-of-heroes/toh-pt0).
 
 初始的英雄之旅范例应用，从这里开始本教程。欲知详情，参阅[创建新项目](tutorial/toh-pt0)。
 
@@ -84,7 +84,7 @@ For more information, see [Create a new project](tutorial/toh-pt0).
 <live-example name="toh-pt1"></live-example>
 
 First step of the Tour of Heroes example application.
-For more information, see [The hero editor](tutorial/toh-pt1).
+For more information, see [The hero editor](tutorial/tour-of-heroes/toh-pt1).
 
 “英雄之旅”范例应用中的第一步。欲知详情，参阅[英雄编辑器](tutorial/toh-pt1)。
 
@@ -95,7 +95,7 @@ For more information, see [The hero editor](tutorial/toh-pt1).
 <live-example name="toh-pt2"></live-example>
 
 Second step of the Tour of Heroes example application.
-For more information, see [Display a selection list](tutorial/toh-pt2).
+For more information, see [Display a selection list](tutorial/tour-of-heroes/toh-pt2).
 
 “英雄之旅”范例应用中的第二步。欲知详情，参阅[显示选择列表](tutorial/toh-pt2)。
 
@@ -106,7 +106,7 @@ For more information, see [Display a selection list](tutorial/toh-pt2).
 <live-example name="toh-pt3"></live-example>
 
 Third step of the Tour of Heroes example application.
-For more information, see [Create a feature component](tutorial/toh-pt3).
+For more information, see [Create a feature component](tutorial/tour-of-heroes/toh-pt3).
 
 “英雄之旅”范例应用中的第三步。欲知详情，参阅[创建要素组件](tutorial/toh-pt3)。
 
@@ -117,7 +117,7 @@ For more information, see [Create a feature component](tutorial/toh-pt3).
 <live-example name="toh-pt4"></live-example>
 
 Fourth step of the Tour of Heroes example application.
-For more information, see [Add services](tutorial/toh-pt4).
+For more information, see [Add services](tutorial/tour-of-heroes/toh-pt4).
 
 “英雄之旅”范例应用中的第四步。欲知详情，参阅[添加服务](tutorial/toh-pt4)。
 
@@ -128,7 +128,7 @@ For more information, see [Add services](tutorial/toh-pt4).
 <live-example name="toh-pt5"></live-example>
 
 Fifth step of the Tour of Heroes example application.
-For more information, see [Add in-app navigation with routing](tutorial/toh-pt5).
+For more information, see [Add in-app navigation with routing](tutorial/tour-of-heroes/toh-pt5).
 
 “英雄之旅”范例应用中的第五步。欲知详情，参阅[使用路由添加应用内导航](tutorial/toh-pt5)。
 
@@ -139,7 +139,7 @@ For more information, see [Add in-app navigation with routing](tutorial/toh-pt5)
 <live-example name="toh-pt6"></live-example>
 
 Sixth and final step of the Tour of Heroes example application.
-For more information, see [Get data from a server](tutorial/toh-pt6).
+For more information, see [Get data from a server](tutorial/tour-of-heroes/toh-pt6).
 
 “英雄之旅”范例应用中的第六步也是最后一步。欲知详情，参阅[从服务器获取数据](tutorial/toh-pt6)。
 

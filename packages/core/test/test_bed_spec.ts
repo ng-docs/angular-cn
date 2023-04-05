@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {APP_INITIALIZER, ChangeDetectorRef, Compiler, Component, Directive, ElementRef, ErrorHandler, getNgModuleById, Inject, Injectable, InjectFlags, InjectionToken, InjectOptions, Injector, Input, LOCALE_ID, ModuleWithProviders, NgModule, Optional, Pipe, Type, ViewChild, ɵsetClassMetadata as setClassMetadata, ɵɵdefineComponent as defineComponent, ɵɵdefineInjector as defineInjector, ɵɵdefineNgModule as defineNgModule, ɵɵelementEnd as elementEnd, ɵɵelementStart as elementStart, ɵɵsetNgModuleScope as setNgModuleScope, ɵɵtext as text} from '@angular/core';
+import {APP_INITIALIZER, ChangeDetectorRef, Compiler, Component, Directive, ElementRef, ErrorHandler, getNgModuleById, inject, Inject, Injectable, InjectFlags, InjectionToken, InjectOptions, Injector, Input, LOCALE_ID, ModuleWithProviders, NgModule, Optional, Pipe, Type, ViewChild, ɵsetClassMetadata as setClassMetadata, ɵɵdefineComponent as defineComponent, ɵɵdefineInjector as defineInjector, ɵɵdefineNgModule as defineNgModule, ɵɵelementEnd as elementEnd, ɵɵelementStart as elementStart, ɵɵsetNgModuleScope as setNgModuleScope, ɵɵtext as text} from '@angular/core';
 import {TestBed, TestBedImpl} from '@angular/core/testing/src/test_bed';
 import {By} from '@angular/platform-browser';
 import {expect} from '@angular/platform-browser/testing/src/matchers';
@@ -1020,7 +1020,7 @@ describe('TestBed', () => {
 
     it('overridden with an array', () => {
       const overrideValue = ['override'];
-      TestBed.overrideProvider(multiToken, {useValue: overrideValue, multi: true} as any);
+      TestBed.overrideProvider(multiToken, {useValue: overrideValue, multi: true});
 
       const value = TestBed.inject(multiToken);
       expect(value.length).toEqual(overrideValue.length);
@@ -1031,7 +1031,7 @@ describe('TestBed', () => {
       // This is actually invalid because multi providers return arrays. We have this here so we can
       // ensure Ivy behaves the same as VE does currently.
       const overrideValue = 'override';
-      TestBed.overrideProvider(multiToken, {useValue: overrideValue, multi: true} as any);
+      TestBed.overrideProvider(multiToken, {useValue: overrideValue, multi: true});
 
       const value = TestBed.inject(multiToken);
       expect(value.length).toEqual(overrideValue.length);
@@ -1248,7 +1248,7 @@ describe('TestBed', () => {
     });
 
     const multiOverride = {useValue: [{value: 'new provider'}], multi: true};
-    TestBed.overrideProvider(MY_TOKEN, multiOverride as any);
+    TestBed.overrideProvider(MY_TOKEN, multiOverride);
 
     const fixture = TestBed.createComponent(MyComp);
     expect(fixture.componentInstance.myProviders).toEqual([{value: 'new provider'}]);
@@ -1892,6 +1892,20 @@ describe('TestBed', () => {
             .toBeNull();
       });
     });
+  });
+
+  it('should be able to call Testbed.runInInjectionContext in tests', () => {
+    const expectedValue = 'testValue';
+    @Injectable({providedIn: 'root'})
+    class SomeInjectable {
+      readonly instanceValue = expectedValue;
+    }
+
+    function functionThatUsesInject(): string {
+      return inject(SomeInjectable).instanceValue;
+    }
+
+    expect(TestBed.runInInjectionContext(functionThatUsesInject)).toEqual(expectedValue);
   });
 });
 

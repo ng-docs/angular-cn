@@ -338,7 +338,7 @@ When `true`, enables [strict template type checking](guide/template-typecheck#st
 
 如果为 `true`，则启用[严格的模板类型检查](guide/template-typecheck#strict-mode)。
 
-The strictness flags that this open enables allow you to turn on and off specific types of strict template type checking.
+The strictness flags that this option enables allow you to turn on and off specific types of strict template type checking.
 See [troubleshooting template errors](guide/template-typecheck#troubleshooting-template-errors).
 
 这些严格性标志允许你启用和禁用特定类型的严格模板类型检查。参阅[排除模板错误](guide/template-typecheck#troubleshooting-template-errors)。
@@ -375,7 +375,7 @@ Besides the configuration file, you can also use [`tsc` command line options](ht
 
 <!-- links -->
 
-[AioGuideI18nCommonPrepareMarkTextInComponentTemplate]: guide/i18n-common-prepare#mark-text-in-component-template "Mark text in component template - Prepare templates for translations | Angular"
+[AioGuideI18nCommonPrepareMarkTextInComponentTemplate]: guide/i18n-common-prepare#mark-text-in-component-template "Mark text in component template - Prepare component for translation | Angular"
 
 <!-- end links -->
 

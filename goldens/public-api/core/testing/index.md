@@ -140,16 +140,19 @@ export interface TestBed {
     overrideProvider(token: any, provider: {
         useFactory: Function;
         deps: any[];
+        multi?: boolean;
     }): TestBed;
     // (undocumented)
     overrideProvider(token: any, provider: {
         useValue: any;
+        multi?: boolean;
     }): TestBed;
     // (undocumented)
     overrideProvider(token: any, provider: {
         useFactory?: Function;
         useValue?: any;
         deps?: any[];
+        multi?: boolean;
     }): TestBed;
     // (undocumented)
     overrideTemplate(component: Type<any>, template: string): TestBed;
@@ -160,6 +163,7 @@ export interface TestBed {
     resetTestEnvironment(): void;
     // (undocumented)
     resetTestingModule(): TestBed;
+    runInInjectionContext<T>(fn: () => T): T;
 }
 
 // @public

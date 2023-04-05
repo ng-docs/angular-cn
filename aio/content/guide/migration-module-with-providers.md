@@ -103,18 +103,10 @@ Libraries should add the generic type to any usages of the `ModuleWithProviders`
 
 库应该把泛型类型添加到 `ModuleWithProviders` 类型的任何一次使用中。
 
-## What about applications using non-migrated libraries?
-
-## 那些使用未迁移库的应用呢？
-
-The [Angular compatibility compiler](guide/glossary#ngcc) (`ngcc`) should automatically transform any non-migrated libraries to generate the proper code.
-
-[Angular 兼容性编译器](guide/glossary#ngcc)（`ngcc`）会自动转换所有未迁移的库来生成合适的代码。
-
 <!-- links -->
 
 <!-- external links -->
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-02-16

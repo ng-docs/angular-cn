@@ -10,12 +10,8 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
 /**
  * Wraps a function in a new function which sets up document and HTML for running a test.
  *
- * 将函数包装在一个新函数中，该函数会设置文档和 HTML 以运行测试。
- *
  * This function wraps an existing testing function. The wrapper adds HTML to the `body` element of
  * the `document` and subsequently tears it down.
- *
- * 此函数旨在包装现有的测试函数。包装器将 HTML 添加到 `document` 的 `body` 元素，然后将其删除。
  *
  * This function can be used with `async await` and `Promise`s. If the wrapped function returns a
  * promise (or is `async`) then the teardown is delayed until that `Promise` is resolved.
@@ -24,8 +20,6 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  * one by loading `domino` and installing it.
  *
  * Example:
- *
- * 示例：
  *
  * ```
  * describe('something', () => {
@@ -38,13 +32,7 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  * ```
  *
  * @param html HTML which should be inserted into the `body` of the `document`.
- *
- * 应该插入到 `document` `body` 中的 HTML。
- *
  * @param blockFn function to wrap. The function can return promise or be `async`.
- *
- * 要包装的函数。该函数可以返回 promise 或者是 `async` 。
- *
  */
 export function withBody<T extends Function>(html: string, blockFn: T): T {
   return wrapTestFn(() => document.body, html, blockFn);
@@ -101,11 +89,7 @@ function wrapTestFn<T extends Function>(
 /**
  * Runs jasmine expectations against the provided keys for `ngDevMode`.
  *
- * 根据为 `ngDevMode` 提供的键运行 jasmine 预期。
- *
  * Will not perform expectations for keys that are not provided.
- *
- * 不会对未提供的键执行预期。
  *
  * ```ts
  * // Expect that `ngDevMode.styleMap` is `1`, and `ngDevMode.tNode` is `3`, but we don't care
@@ -115,7 +99,6 @@ function wrapTestFn<T extends Function>(
  *   tNode: 3,
  * })
  * ```
- *
  */
 export function expectPerfCounters(expectedCounters: Partial<NgDevModePerfCounters>): void {
   Object.keys(expectedCounters).forEach(key => {
@@ -129,63 +112,60 @@ let savedDocument: Document|undefined = undefined;
 let savedRequestAnimationFrame: ((callback: FrameRequestCallback) => number)|undefined = undefined;
 let savedNode: typeof Node|undefined = undefined;
 let requestAnimationFrameCount = 0;
+let domino: typeof import('../../../platform-server/src/bundled-domino')['default']|null|undefined =
+    undefined;
 
-/**
- * System.js uses regexp to look for `require` statements. `domino` has to be
- * extracted into a constant so that the regexp in the System.js does not match
- * and does not try to load domino in the browser.
- *
- * System.js 使用正则表达式来查找 `require` 语句。必须将 `domino` 提取为常量，以便 System.js
- * 中的正则表达式不匹配，并且不会尝试在浏览器中加载 domino。
- *
- */
-const domino: any = (function(domino) {
-  if (typeof global == 'object' && global.process && typeof require == 'function') {
-    try {
-      return require(domino);
-    } catch (e) {
-      // It is possible that we don't have domino available in which case just give up.
-    }
+async function loadDominoOrNull():
+    Promise<typeof import('../../../platform-server/src/bundled-domino')['default']|null> {
+  if (domino !== undefined) {
+    return domino;
   }
-  // Seems like we don't have domino, give up.
-  return null;
-})('domino');
 
-/**
- * Ensure that global has `Document` if we are in node.js
- *
- * 如果我们在 node.js 中，请确保全局具有 `Document`
- *
- * @publicApi
- */
-export function ensureDocument(): void {
-  if (domino) {
-    // we are in node.js.
-    const window = domino.createWindow('', 'http://localhost');
-    savedDocument = (global as any).document;
-    (global as any).window = window;
-    (global as any).document = window.document;
-    // Trick to avoid Event patching from
-    // https://github.com/angular/angular/blob/7cf5e95ac9f0f2648beebf0d5bd9056b79946970/packages/platform-browser/src/dom/events/dom_events.ts#L112-L132
-    // It fails with Domino with TypeError: Cannot assign to read only property
-    // 'stopImmediatePropagation' of object '#<Event>'
-    (global as any).Event = null;
-    savedNode = (global as any).Node;
-    (global as any).Node = domino.impl.Node;
-
-    savedRequestAnimationFrame = (global as any).requestAnimationFrame;
-    (global as any).requestAnimationFrame = function(cb: FrameRequestCallback): number {
-      setImmediate(cb);
-      return requestAnimationFrameCount++;
-    };
+  try {
+    return domino = (await import('../../../platform-server/src/bundled-domino')).default;
+  } catch {
+    return domino = null;
   }
 }
 
 /**
+ * Ensure that global has `Document` if we are in node.js
+ * @publicApi
+ */
+export async function ensureDocument(): Promise<void> {
+  if ((global as any).isBrowser) {
+    return;
+  }
+
+  const domino = await loadDominoOrNull();
+  if (domino === null) {
+    return;
+  }
+
+  // we are in node.js.
+  const window = domino.createWindow('', 'http://localhost');
+  savedDocument = (global as any).document;
+  (global as any).window = window;
+  (global as any).document = window.document;
+  // Trick to avoid Event patching from
+  // https://github.com/angular/angular/blob/7cf5e95ac9f0f2648beebf0d5bd9056b79946970/packages/platform-browser/src/dom/events/dom_events.ts#L112-L132
+  // It fails with Domino with TypeError: Cannot assign to read only property
+  // 'stopImmediatePropagation' of object '#<Event>'
+  (global as any).Event = null;
+  savedNode = (global as any).Node;
+  // Domino types do not type `impl`, but it's a documented field.
+  // See: https://www.npmjs.com/package/domino#usage.
+  (global as any).Node = (domino as typeof domino&{impl: any}).impl.Node;
+
+  savedRequestAnimationFrame = (global as any).requestAnimationFrame;
+  (global as any).requestAnimationFrame = function(cb: () => void): number {
+    setImmediate(cb);
+    return requestAnimationFrameCount++;
+  };
+}
+
+/**
  * Restore the state of `Document` between tests.
- *
- * 在测试之间恢复 `Document` 的状态。
- *
  * @publicApi
  */
 export function cleanupDocument(): void {

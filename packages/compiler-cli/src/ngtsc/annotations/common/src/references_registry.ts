@@ -31,9 +31,7 @@ export interface ReferencesRegistry {
 }
 
 /**
- * This registry does nothing, since ngtsc does not currently need
- * this functionality.
- * The ngcc tool implements a working version for its purposes.
+ * This registry does nothing.
  *
  * 此注册表什么都不做，因为 ngtsc 当前不需要此特性。 ngcc 工具为其目的实现了一个工作版本。
  *

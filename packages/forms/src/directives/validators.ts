@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, forwardRef, Input, OnChanges, SimpleChanges, StaticProvider, ɵcoerceToBoolean as coerceToBoolean} from '@angular/core';
+import {Directive, forwardRef, Input, OnChanges, Provider, SimpleChanges, ɵcoerceToBoolean as coerceToBoolean} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {AbstractControl} from '../model/abstract_model';
@@ -241,7 +241,7 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
  * 将 `MaxValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
  *
  */
-export const MAX_VALIDATOR: StaticProvider = {
+export const MAX_VALIDATOR: Provider = {
   provide: NG_VALIDATORS,
   useExisting: forwardRef(() => MaxValidator),
   multi: true
@@ -309,7 +309,7 @@ export class MaxValidator extends AbstractValidatorDirective {
  * 将 `MinValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
  *
  */
-export const MIN_VALIDATOR: StaticProvider = {
+export const MIN_VALIDATOR: Provider = {
   provide: NG_VALIDATORS,
   useExisting: forwardRef(() => MinValidator),
   multi: true
@@ -431,7 +431,7 @@ export interface AsyncValidator extends Validator {
  * 将 `RequiredValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
  *
  */
-export const REQUIRED_VALIDATOR: StaticProvider = {
+export const REQUIRED_VALIDATOR: Provider = {
   provide: NG_VALIDATORS,
   useExisting: forwardRef(() => RequiredValidator),
   multi: true
@@ -445,7 +445,7 @@ export const REQUIRED_VALIDATOR: StaticProvider = {
  * 将 `CheckboxRequiredValidator` 添加到 `NG_VALIDATORS` 多提供程序列表的提供程序。
  *
  */
-export const CHECKBOX_REQUIRED_VALIDATOR: StaticProvider = {
+export const CHECKBOX_REQUIRED_VALIDATOR: Provider = {
   provide: NG_VALIDATORS,
   useExisting: forwardRef(() => CheckboxRequiredValidator),
   multi: true

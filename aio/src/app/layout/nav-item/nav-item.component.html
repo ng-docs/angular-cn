@@ -1,5 +1,5 @@
 <div *ngIf="!node.children">
-  <a *ngIf="!node.divider" href="{{node.url}}" [ngClass]="classes" title="{{node.tooltipCn}}"
+  <a *ngIf="!node.divider" href="{{node.url}}" [class]="classes" title="{{node.tooltipCn}}"
     class="vertical-menu-item" style="position: relative" [target]="isExternalUrl(node.url!!)?'_blank':'_self'">
     <span class="vertical-menu-item-text">{{node.titleCn ?? node.title}}</span>
     <mat-icon *ngIf="isExternalUrl(node.url!!)">open_in_new</mat-icon>
@@ -8,20 +8,20 @@
 </div>
 
 <div *ngIf="node.children">
-  <a *ngIf="!!node.url" href="{{node.url}}" [ngClass]="classes" title="{{node.tooltipCn}}"
+  <a *ngIf="!!node.url" href="{{node.url}}" [class]="classes" title="{{node.tooltipCn}}"
     (click)="headerClicked()" class="vertical-menu-item heading">
     <span>{{node.titleCn ?? node.title}}</span>
     <mat-icon class="rotating-icon" svgIcon="keyboard_arrow_right"></mat-icon>
   </a>
 
-  <button *ngIf="!node.url" type="button" [ngClass]="classes" title="{{node.tooltipCn}}"
+  <button *ngIf="!node.url" type="button" [class]="classes" title="{{node.tooltipCn}}"
     (click)="headerClicked()" class="vertical-menu-item heading"
     [attr.aria-pressed]="isExpanded">
     <span>{{node.titleCn ?? node.title}}</span>
     <mat-icon class="rotating-icon" svgIcon="keyboard_arrow_right"></mat-icon>
   </button>
 
-  <div class="heading-children" [ngClass]="classes">
+  <div class="heading-children" [class]="classes">
     <aio-nav-item *ngFor="let node of nodeChildren" [level]="level + 1" [isWide]="isWide"
     [isParentExpanded]="isExpanded"
     [node]="node" [selectedNodes]="selectedNodes"></aio-nav-item>

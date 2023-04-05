@@ -9,7 +9,6 @@
 import ts from 'typescript';
 
 import {AbsoluteFsPath} from '../../../file_system';
-import {FactoryTracker} from '../../../shims/api';
 
 import {ExtendedTsCompilerHost, UnifiedModulesHost} from './interfaces';
 
@@ -91,18 +90,6 @@ export interface NgCompilerAdapter extends
    *
    */
   readonly ignoreForEmit: Set<ts.SourceFile>;
-
-  /**
-   * A tracker for usage of symbols in `.ngfactory` shims.
-   *
-   * 用于 `.ngfactory` shims 中符号使用情况的跟踪器。
-   *
-   * This can be left `null` if such shims are not a part of the `ts.Program`.
-   *
-   * 如果这样的垫片不是 `ts.Program` 的一部分，可以将其保留为 `null` 。
-   *
-   */
-  readonly factoryTracker: FactoryTracker|null;
 
   /**
    * A specialized interface provided in some environments (such as Bazel) which overrides how

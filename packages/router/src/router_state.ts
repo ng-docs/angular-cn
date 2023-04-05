@@ -19,8 +19,6 @@ import {Tree, TreeNode} from './utils/tree';
 /**
  * Represents the state of the router as a tree of activated routes.
  *
- * 将路由器的状态表示为已激活路由的树。
- *
  * @usageNotes
  *
  * Every node in the route tree is an `ActivatedRoute` instance
@@ -28,13 +26,8 @@ import {Tree, TreeNode} from './utils/tree';
  * and the resolved data.
  * Use the `ActivatedRoute` properties to traverse the tree from any node.
  *
- * 路由树中的每个节点都是 `ActivatedRoute` 的实例，该实例了解“已消耗的” URL
- * 段，已提取的参数和已解析的数据。使用 `ActivatedRoute` 属性可以从任何节点遍历树。
- *
  * The following fragment shows how a component gets the root node
  * of the current state to establish its own route tree:
- *
- * 以下片段显示了组件如何获取当前状态的根节点以建立其自己的路由树：
  *
  * ```
  * @Component({templateUrl:'template.html'})
@@ -51,8 +44,6 @@ import {Tree, TreeNode} from './utils/tree';
  *
  * @see `ActivatedRoute`
  * @see [Getting route information](guide/router#getting-route-information)
- *
- * [获取路由信息](guide/router#getting-route-information)
  *
  * @publicApi
  */
@@ -93,7 +84,7 @@ export function createEmptyStateSnapshot(
   const fragment = '';
   const activated = new ActivatedRouteSnapshot(
       [], emptyParams, emptyQueryParams, fragment, emptyData, PRIMARY_OUTLET, rootComponent, null,
-      urlTree.root, -1, {});
+      {});
   return new RouterStateSnapshot('', new TreeNode<ActivatedRouteSnapshot>(activated, []));
 }
 
@@ -102,151 +93,81 @@ export function createEmptyStateSnapshot(
  * that is loaded in an outlet.
  * Use to traverse the `RouterState` tree and extract information from nodes.
  *
- * 允许访问与某出口中加载的组件关联路由信息。用于遍历 `RouterState` 树并从节点提取信息。
- *
  * The following example shows how to construct a component using information from a
  * currently activated route.
- *
- * 以下示例演示如何使用当前激活的路由中的信息来构造组件。
  *
  * Note: the observables in this class only emit when the current and previous values differ based
  * on shallow equality. For example, changing deeply nested properties in resolved `data` will not
  * cause the `ActivatedRoute.data` `Observable` to emit a new value.
- *
- * 注意：此类中的 observable 仅当当前值和以前的值基于浅等式而不同时，才会发出。例如，更改解析 `data`
- * 中的深层嵌套属性不会导致 `ActivatedRoute.data` `Observable` 发出新值。
  *
  * {@example router/activated-route/module.ts region="activated-route"
  *     header="activated-route.component.ts"}
  *
  * @see [Getting route information](guide/router#getting-route-information)
  *
- * [获取路由信息](guide/router#getting-route-information)
- *
  * @publicApi
  */
 export class ActivatedRoute {
-  /**
-   * The current snapshot of this route
-   *
-   * 本路由此刻的快照
-   */
+  /** The current snapshot of this route */
   snapshot!: ActivatedRouteSnapshot;
   /** @internal */
   _futureSnapshot: ActivatedRouteSnapshot;
   /** @internal */
   _routerState!: RouterState;
   /** @internal */
-  _paramMap!: Observable<ParamMap>;
+  _paramMap?: Observable<ParamMap>;
   /** @internal */
-  _queryParamMap!: Observable<ParamMap>;
+  _queryParamMap?: Observable<ParamMap>;
 
-  /**
-   * An Observable of the resolved route title
-   *
-   * 已解析路由标题的 Observable
-   *
-   */
-  readonly title: Observable<string|undefined> =
-      this.data?.pipe(map((d: Data) => d[RouteTitleKey])) ?? of(undefined);
+  /** An Observable of the resolved route title */
+  readonly title: Observable<string|undefined>;
 
   /** @internal */
   constructor(
-      /**
-       * An observable of the URL segments matched by this route.
-       *
-       * 一个 `Observable`，表示与当前路由匹配的 URL 段。
-       */
+      /** An observable of the URL segments matched by this route. */
       public url: Observable<UrlSegment[]>,
-      /**
-       * An observable of the matrix parameters scoped to this route.
-       *
-       * 一个 `Observable`，表示当前路由范围内的矩阵参数（`;`）。
-       */
+      /** An observable of the matrix parameters scoped to this route. */
       public params: Observable<Params>,
-      /**
-       * An observable of the query parameters shared by all the routes.
-       *
-       * 一个 `Observable`，表示所有路由共享的查询参数（`?`）。
-       */
+      /** An observable of the query parameters shared by all the routes. */
       public queryParams: Observable<Params>,
-      /**
-       * An observable of the URL fragment shared by all the routes.
-       *
-       * 一个 `Observable`，表示由所有路由共享的 URL 片段（`#`）。
-       */
+      /** An observable of the URL fragment shared by all the routes. */
       public fragment: Observable<string|null>,
-      /**
-       * An observable of the static and resolved data of this route.
-       *
-       * 一个 `Observable`，表示该路由的静态数据和解析出的数据。
-       */
+      /** An observable of the static and resolved data of this route. */
       public data: Observable<Data>,
-      /**
-       * The outlet name of the route, a constant.
-       *
-       * 本路由对应的出口名，是个常量。
-       */
+      /** The outlet name of the route, a constant. */
       public outlet: string,
-      /**
-       * The component of the route, a constant.
-       *
-       * 本路由对应的组件，是个常量。
-       */
+      /** The component of the route, a constant. */
       public component: Type<any>|null, futureSnapshot: ActivatedRouteSnapshot) {
     this._futureSnapshot = futureSnapshot;
+    this.title = this.data?.pipe(map((d: Data) => d[RouteTitleKey])) ?? of(undefined);
   }
 
-  /**
-   * The configuration used to match this route.
-   *
-   * 用于匹配本路由的配置项。
-   */
+  /** The configuration used to match this route. */
   get routeConfig(): Route|null {
     return this._futureSnapshot.routeConfig;
   }
 
-  /**
-   * The root of the router state.
-   *
-   * 路由器状态树的根节点。
-   */
+  /** The root of the router state. */
   get root(): ActivatedRoute {
     return this._routerState.root;
   }
 
-  /**
-   * The parent of this route in the router state tree.
-   *
-   * 在路由器状态树中，当前路由的父路由。
-   */
+  /** The parent of this route in the router state tree. */
   get parent(): ActivatedRoute|null {
     return this._routerState.parent(this);
   }
 
-  /**
-   * The first child of this route in the router state tree.
-   *
-   * 在路由器状态树中，当前路由的第一个子路由。
-   */
+  /** The first child of this route in the router state tree. */
   get firstChild(): ActivatedRoute|null {
     return this._routerState.firstChild(this);
   }
 
-  /**
-   * The children of this route in the router state tree.
-   *
-   * 在路由器状态树中，当前路由的所有子路由。
-   */
+  /** The children of this route in the router state tree. */
   get children(): ActivatedRoute[] {
     return this._routerState.children(this);
   }
 
-  /**
-   * The path from the root of the router state tree to this route.
-   *
-   * 在路由器状态树中从根节点开始到当前路由的完整路径。
-   */
+  /** The path from the root of the router state tree to this route. */
   get pathFromRoot(): ActivatedRoute[] {
     return this._routerState.pathFromRoot(this);
   }
@@ -255,10 +176,6 @@ export class ActivatedRoute {
    * An Observable that contains a map of the required and optional parameters
    * specific to the route.
    * The map supports retrieving single and multiple values from the same parameter.
-   *
-   * 一个
-   * Observable，其中包含特定于路由的必要和可选参数的映射。该映射支持从同一参数中检索单个和多个值。
-   *
    */
   get paramMap(): Observable<ParamMap> {
     if (!this._paramMap) {
@@ -270,10 +187,6 @@ export class ActivatedRoute {
   /**
    * An Observable that contains a map of the query parameters available to all routes.
    * The map supports retrieving single and multiple values from the query parameter.
-   *
-   * 一个
-   * Observable，其中包含可用于所有路由的查询参数的映射。该映射支持从查询参数中检索单个和多个值。
-   *
    */
   get queryParamMap(): Observable<ParamMap> {
     if (!this._queryParamMap) {
@@ -300,9 +213,6 @@ export type Inherited = {
 /**
  * Returns the inherited params, data, and resolve for a given route.
  * By default, this only inherits values up to the nearest path-less or component-less route.
- *
- * 返回给定路由的继承的参数、数据和解析。默认情况下，这仅继承到最近的无路径或无组件路由的值。
- *
  * @internal
  */
 export function inheritedParamsDataResolve(
@@ -352,13 +262,8 @@ function flattenInherited(pathFromRoot: ActivatedRouteSnapshot[]): Inherited {
  * outlet at a particular moment in time. ActivatedRouteSnapshot can also be used to
  * traverse the router state tree.
  *
- * 包含与当前组件相关的路由的当前瞬间信息。`ActivatedRoute` 也可用于遍历路由器的状态树。
- * `ActivatedRouteSnapshot` 也能用于遍历路由器状态树。
- *
  * The following example initializes a component with route information extracted
  * from the snapshot of the root node at the time of creation.
- *
- * 以下示例使用在创建时从根节点的快照中提取的路由信息来初始化组件。
  *
  * ```
  * @Component({templateUrl:'./my-component.html'})
@@ -370,40 +275,24 @@ function flattenInherited(pathFromRoot: ActivatedRouteSnapshot[]): Inherited {
  *   }
  * }
  * ```
+ *
  * @publicApi
  */
 export class ActivatedRouteSnapshot {
-  /**
-   *The configuration used to match this route
-   *
-   * 用于匹配当前路由的配置项
-   **/
+  /** The configuration used to match this route **/
   public readonly routeConfig: Route|null;
-  /** @internal **/
-  _urlSegment: UrlSegmentGroup;
-  /** @internal */
-  _lastPathIndex: number;
   /** @internal */
   _resolve: ResolveData;
   /** @internal */
-  // TODO(issue/24571): remove '!'.
-  _resolvedData!: Data;
+  _resolvedData?: Data;
   /** @internal */
-  // TODO(issue/24571): remove '!'.
   _routerState!: RouterStateSnapshot;
   /** @internal */
-  // TODO(issue/24571): remove '!'.
-  _paramMap!: ParamMap;
+  _paramMap?: ParamMap;
   /** @internal */
-  // TODO(issue/24571): remove '!'.
-  _queryParamMap!: ParamMap;
+  _queryParamMap?: ParamMap;
 
-  /**
-   * The resolved route title
-   *
-   * 解析的路由标题
-   *
-   */
+  /** The resolved route title */
   get title(): string|undefined {
     // Note: This _must_ be a getter because the data is mutated in the resolvers. Title will not be
     // available at the time of class instantiation.
@@ -412,11 +301,7 @@ export class ActivatedRouteSnapshot {
 
   /** @internal */
   constructor(
-      /**
-       * The URL segments matched by this route
-       *
-       * 与当前路由匹配的 URL 段
-       */
+      /** The URL segments matched by this route */
       public url: UrlSegment[],
       /**
        *  The matrix parameters scoped to this route.
@@ -438,84 +323,41 @@ export class ActivatedRouteSnapshot {
        *  ```
        */
       public params: Params,
-      /**
-       * The query parameters shared by all the routes
-       *
-       * 所有路由共享的查询参数（`?`）
-       */
+      /** The query parameters shared by all the routes */
       public queryParams: Params,
-      /**
-       * The URL fragment shared by all the routes
-       *
-       * 所有路由共享的 URL 片段（`#`）
-       */
+      /** The URL fragment shared by all the routes */
       public fragment: string|null,
-      /**
-       * The static and resolved data of this route
-       *
-       * 此路由的静态数据和已解析数据
-       */
+      /** The static and resolved data of this route */
       public data: Data,
-      /**
-       * The outlet name of the route
-       *
-       * 此路由的出口（outlet）名称
-       */
+      /** The outlet name of the route */
       public outlet: string,
-      /**
-       * The component of the route
-       *
-       * 此路由对应的组件
-       */
-      public component: Type<any>|null, routeConfig: Route|null, urlSegment: UrlSegmentGroup,
-      lastPathIndex: number, resolve: ResolveData) {
+      /** The component of the route */
+      public component: Type<any>|null, routeConfig: Route|null, resolve: ResolveData) {
     this.routeConfig = routeConfig;
-    this._urlSegment = urlSegment;
-    this._lastPathIndex = lastPathIndex;
     this._resolve = resolve;
   }
 
-  /**
-   * The root of the router state
-   *
-   * 路由器状态树的根节点
-   */
+  /** The root of the router state */
   get root(): ActivatedRouteSnapshot {
     return this._routerState.root;
   }
 
-  /**
-   * The parent of this route in the router state tree
-   *
-   * 在路由器状态树中，当前路由的父路由
-   */
+  /** The parent of this route in the router state tree */
   get parent(): ActivatedRouteSnapshot|null {
     return this._routerState.parent(this);
   }
 
-  /**
-   * The first child of this route in the router state tree
-   *
-   * 在路由器状态树中，当前路由的第一个子路由
-   */
+  /** The first child of this route in the router state tree */
   get firstChild(): ActivatedRouteSnapshot|null {
     return this._routerState.firstChild(this);
   }
 
-  /**
-   * The children of this route in the router state tree
-   *
-   * 在路由器状态树中，当前路由的所有子路由
-   */
+  /** The children of this route in the router state tree */
   get children(): ActivatedRouteSnapshot[] {
     return this._routerState.children(this);
   }
 
-  /**
-   * The path from the root of the router state tree to this route
-   *
-   * 在路由器状态树中从根节点开始到当前路由的完整路径
-   */
+  /** The path from the root of the router state tree to this route */
   get pathFromRoot(): ActivatedRouteSnapshot[] {
     return this._routerState.pathFromRoot(this);
   }
@@ -546,18 +388,11 @@ export class ActivatedRouteSnapshot {
  *
  * Represents the state of the router at a moment in time.
  *
- * 表示路由器在当前瞬间的状态。
- *
  * This is a tree of activated route snapshots. Every node in this tree knows about
  * the "consumed" URL segments, the extracted parameters, and the resolved data.
  *
- * 这是一个由活动路由的快照组成的树。本树中的每个节点都会知道 "已消费的" URL
- * 片段、已提取出的参数和已解析出的数据。
- *
  * The following example shows how a component is initialized with information
  * from the snapshot of the root node's state at the time of creation.
- *
- * 以下示例演示了如何使用创建时根节点状态快照中的信息初始化组件。
  *
  * ```
  * @Component({templateUrl:'template.html'})
@@ -603,9 +438,6 @@ function serializeNode(node: TreeNode<ActivatedRouteSnapshot>): string {
  * The expectation is that the activate route is created with the right set of parameters.
  * So we push new values into the observables only when they are not the initial values.
  * And we detect that by checking if the snapshot field is set.
- *
- * 活动路由在创建时就应该具有一组正确的参数集，所以只有当它们不等于初始值时，我们才需要把新值推送到各个
- * `Observable` 中。 我们通过检查它的 snapshot 字段是否已经设置过，来判断是否需要推送。
  */
 export function advanceActivatedRoute(route: ActivatedRoute): void {
   if (route.snapshot) {

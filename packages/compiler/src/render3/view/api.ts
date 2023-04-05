@@ -39,20 +39,6 @@ export interface R3DirectiveMetadata {
   type: R3Reference;
 
   /**
-   * An expression representing a reference to the directive being compiled, intended for use within
-   * a class definition itself.
-   *
-   * 表示对正在编译的指令的引用的表达式，旨在在类定义本身中使用。
-   *
-   * This can differ from the outer `type` if the class is being compiled by ngcc and is inside
-   * an IIFE structure that uses a different name internally.
-   *
-   * 如果类正在由 ngcc 编译并且在内部使用不同名称的 IIFE 结构中，这可能与外部 `type` 不同。
-   *
-   */
-  internalType: o.Expression;
-
-  /**
    * Number of generic type parameters of the type itself.
    *
    * 类型本身的泛型类型参数的数量。
@@ -133,7 +119,7 @@ export interface R3DirectiveMetadata {
    * 输入从类属性名称到绑定属性名称的映射，如果名称不同，则映射到绑定属性名称和类属性名称的元组。
    *
    */
-  inputs: {[field: string]: string|[string, string]};
+  inputs: {[field: string]: R3InputMetadata};
 
   /**
    * A mapping of outputs from class property names to binding property names, or to a tuple of
@@ -381,6 +367,14 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
   changeDetection?: ChangeDetectionStrategy;
 }
 
+/**
+ * Metadata for an individual input on a directive.
+ */
+export interface R3InputMetadata {
+  classPropertyName: string;
+  bindingPropertyName: string;
+  required: boolean;
+}
 
 export enum R3TemplateDependencyKind {
   Directive = 0,

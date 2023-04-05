@@ -9,40 +9,26 @@
 import {ɵRuntimeError as RuntimeError} from '@angular/core';
 
 import {RuntimeErrorCode} from './errors';
-import {ActivatedRoute, ActivatedRouteSnapshot} from './router_state';
+import {ActivatedRouteSnapshot} from './router_state';
 import {Params, PRIMARY_OUTLET} from './shared';
 import {createRoot, squashSegmentGroup, UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
-import {forEach, last, shallowEqual} from './utils/collection';
+import {last, shallowEqual} from './utils/collection';
 
-const NG_DEV_MODE = typeof ngDevMode === 'undefined' || ngDevMode;
 
 /**
  * Creates a `UrlTree` relative to an `ActivatedRouteSnapshot`.
  *
- * 创建相对于 `ActivatedRouteSnapshot` 的 `UrlTree` 。
- *
  * @publicApi
+ *
+ *
  * @param relativeTo The `ActivatedRouteSnapshot` to apply the commands to
- *
- * 要应用命令的 `ActivatedRouteSnapshot`
- *
  * @param commands An array of URL fragments with which to construct the new URL tree.
  * If the path is static, can be the literal URL string. For a dynamic path, pass an array of path
  * segments, followed by the parameters for each segment.
  * The fragments are applied to the one provided in the `relativeTo` parameter.
- *
- * 用于构建新 URL 树的 URL 片段数组。如果路径是静态的，则可以是文字 URL
- * 字符串。对于动态路径，请传递一个路径段数组，后跟每个段的参数。片段会应用于 `relativeTo`
- * 参数中提供的片段。
- *
  * @param queryParams The query parameters for the `UrlTree`. `null` if the `UrlTree` does not have
  *     any query parameters.
- *
- * `UrlTree` 的查询参数。如果 `UrlTree` 没有任何查询参数，则为 `null` 。
- *
  * @param fragment The fragment for the `UrlTree`. `null` if the `UrlTree` does not have a fragment.
- *
- * `UrlTree` 的片段。如果 `UrlTree` 没有片段，则为 `null` 。
  *
  * @usageNotes
  *
@@ -87,10 +73,11 @@ export function createUrlTreeFromSnapshot(
   return createUrlTreeFromSegmentGroup(relativeToUrlSegmentGroup, commands, queryParams, fragment);
 }
 
-function createSegmentGroupFromRoute(route: ActivatedRouteSnapshot): UrlSegmentGroup {
+export function createSegmentGroupFromRoute(route: ActivatedRouteSnapshot): UrlSegmentGroup {
   let targetGroup: UrlSegmentGroup|undefined;
 
-  function createSegmentGroupFromRouteRecursive(currentRoute: ActivatedRouteSnapshot) {
+  function createSegmentGroupFromRouteRecursive(currentRoute: ActivatedRouteSnapshot):
+      UrlSegmentGroup {
     const childOutlets: {[outlet: string]: UrlSegmentGroup} = {};
     for (const childSnapshot of currentRoute.children) {
       const root = createSegmentGroupFromRouteRecursive(childSnapshot);
@@ -135,38 +122,6 @@ export function createUrlTreeFromSegmentGroup(
   return tree(root, position.segmentGroup, newSegmentGroup, queryParams, fragment);
 }
 
-export function createUrlTree(
-    route: ActivatedRoute, urlTree: UrlTree, commands: any[], queryParams: Params|null,
-    fragment: string|null): UrlTree {
-  if (commands.length === 0) {
-    return tree(urlTree.root, urlTree.root, urlTree.root, queryParams, fragment);
-  }
-
-  const nav = computeNavigation(commands);
-
-  if (nav.toRoot()) {
-    return tree(urlTree.root, urlTree.root, new UrlSegmentGroup([], {}), queryParams, fragment);
-  }
-
-  function createTreeUsingPathIndex(lastPathIndex: number) {
-    const startingPosition =
-        findStartingPosition(nav, urlTree, route.snapshot?._urlSegment, lastPathIndex);
-
-    const segmentGroup = startingPosition.processChildren ?
-        updateSegmentGroupChildren(
-            startingPosition.segmentGroup, startingPosition.index, nav.commands) :
-        updateSegmentGroup(startingPosition.segmentGroup, startingPosition.index, nav.commands);
-    return tree(urlTree.root, startingPosition.segmentGroup, segmentGroup, queryParams, fragment);
-  }
-  // Note: The types should disallow `snapshot` from being `undefined` but due to test mocks, this
-  // may be the case. Since we try to access it at an earlier point before the refactor to add the
-  // warning for `relativeLinkResolution: 'legacy'`, this may cause failures in tests where it
-  // didn't before.
-  const result = createTreeUsingPathIndex(route.snapshot?._lastPathIndex);
-
-  return result;
-}
-
 function isMatrixParams(command: any): boolean {
   return typeof command === 'object' && command != null && !command.outlets && !command.segmentPath;
 }
@@ -174,10 +129,6 @@ function isMatrixParams(command: any): boolean {
 /**
  * Determines if a given command has an `outlets` map. When we encounter a command
  * with an outlets k/v map, we need to apply each outlet individually to the existing segment.
- *
- * 确定给定命令是否具有 `outlets` 映射。当我们遇到带有 outlets k/v 映射的命令时，我们需要将每个
- * outlet 单独应用于现有的段。
- *
  */
 function isCommandWithOutlets(command: any): command is {outlets: {[key: string]: any}} {
   return typeof command === 'object' && command != null && command.outlets;
@@ -188,7 +139,7 @@ function tree(
     queryParams: Params|null, fragment: string|null): UrlTree {
   let qp: any = {};
   if (queryParams) {
-    forEach(queryParams, (value: any, name: any) => {
+    Object.entries(queryParams).forEach(([name, value]) => {
       qp[name] = Array.isArray(value) ? value.map((v: any) => `${v}`) : `${value}`;
     });
   }
@@ -210,17 +161,12 @@ function tree(
  * shouldn't be necessary but the fallback logic for an invalid ActivatedRoute in the creation uses
  * the Router's current url tree. If we don't create new segment groups, we end up modifying that
  * value.
- *
- * 将位于 `current` 某些子项中的 `oldSegment` 替换为 `newSegment` 。这也具有创建新的
- * `UrlSegmentGroup` 副本以更新引用的效果。这应该不是必要的，但创建中无效的 ActiveRoute
- * 的后备逻辑使用了路由器的当前 url 树。如果我们不创建新的细分组，我们最终会修改该值。
- *
  */
 function replaceSegment(
     current: UrlSegmentGroup, oldSegment: UrlSegmentGroup,
     newSegment: UrlSegmentGroup): UrlSegmentGroup {
   const children: {[key: string]: UrlSegmentGroup} = {};
-  forEach(current.children, (c: UrlSegmentGroup, outletName: string) => {
+  Object.entries(current.children).forEach(([outletName, c]) => {
     if (c === oldSegment) {
       children[outletName] = newSegment;
     } else {
@@ -236,14 +182,16 @@ class Navigation {
     if (isAbsolute && commands.length > 0 && isMatrixParams(commands[0])) {
       throw new RuntimeError(
           RuntimeErrorCode.ROOT_SEGMENT_MATRIX_PARAMS,
-          NG_DEV_MODE && 'Root segment cannot have matrix parameters');
+          (typeof ngDevMode === 'undefined' || ngDevMode) &&
+              'Root segment cannot have matrix parameters');
     }
 
     const cmdWithOutlet = commands.find(isCommandWithOutlets);
     if (cmdWithOutlet && cmdWithOutlet !== last(commands)) {
       throw new RuntimeError(
           RuntimeErrorCode.MISPLACED_OUTLETS_COMMAND,
-          NG_DEV_MODE && '{outlets:{}} has to be the last command');
+          (typeof ngDevMode === 'undefined' || ngDevMode) &&
+              '{outlets:{}} has to be the last command');
     }
   }
 
@@ -252,12 +200,7 @@ class Navigation {
   }
 }
 
-/**
- * Transforms commands to a normalized `Navigation`
- *
- * 将命令转换为规范化的 `Navigation`
- *
- */
+/** Transforms commands to a normalized `Navigation` */
 function computeNavigation(commands: any[]): Navigation {
   if ((typeof commands[0] === 'string') && commands.length === 1 && commands[0] === '/') {
     return new Navigation(true, 0, commands);
@@ -270,7 +213,7 @@ function computeNavigation(commands: any[]): Navigation {
     if (typeof cmd === 'object' && cmd != null) {
       if (cmd.outlets) {
         const outlets: {[k: string]: any} = {};
-        forEach(cmd.outlets, (commands: any, name: string) => {
+        Object.entries(cmd.outlets).forEach(([name, commands]) => {
           outlets[name] = typeof commands === 'string' ? commands.split('/') : commands;
         });
         return [...res, {outlets}];
@@ -335,26 +278,6 @@ function findStartingPositionForTargetGroup(
   return createPositionApplyingDoubleDots(target, index, nav.numberOfDoubleDots);
 }
 
-function findStartingPosition(
-    nav: Navigation, tree: UrlTree, segmentGroup: UrlSegmentGroup,
-    lastPathIndex: number): Position {
-  if (nav.isAbsolute) {
-    return new Position(tree.root, true, 0);
-  }
-
-  if (lastPathIndex === -1) {
-    // Pathless ActivatedRoute has _lastPathIndex === -1 but should not process children
-    // see issue #26224, #13011, #35687
-    // However, if the ActivatedRoute is the root we should process children like above.
-    const processChildren = segmentGroup === tree.root;
-    return new Position(segmentGroup, processChildren, 0);
-  }
-
-  const modifier = isMatrixParams(nav.commands[0]) ? 0 : 1;
-  const index = lastPathIndex + modifier;
-  return createPositionApplyingDoubleDots(segmentGroup, index, nav.numberOfDoubleDots);
-}
-
 function createPositionApplyingDoubleDots(
     group: UrlSegmentGroup, index: number, numberOfDoubleDots: number): Position {
   let g = group;
@@ -365,7 +288,8 @@ function createPositionApplyingDoubleDots(
     g = g.parent!;
     if (!g) {
       throw new RuntimeError(
-          RuntimeErrorCode.INVALID_DOUBLE_DOTS, NG_DEV_MODE && 'Invalid number of \'../\'');
+          RuntimeErrorCode.INVALID_DOUBLE_DOTS,
+          (typeof ngDevMode === 'undefined' || ngDevMode) && 'Invalid number of \'../\'');
     }
     ci = g.segments.length;
   }
@@ -414,8 +338,36 @@ function updateSegmentGroupChildren(
   } else {
     const outlets = getOutlets(commands);
     const children: {[key: string]: UrlSegmentGroup} = {};
+    // If the set of commands does not apply anything to the primary outlet and the child segment is
+    // an empty path primary segment on its own, we want to apply the commands to the empty child
+    // path rather than here. The outcome is that the empty primary child is effectively removed
+    // from the final output UrlTree. Imagine the following config:
+    //
+    // {path: '', children: [{path: '**', outlet: 'popup'}]}.
+    //
+    // Navigation to /(popup:a) will activate the child outlet correctly Given a follow-up
+    // navigation with commands
+    // ['/', {outlets: {'popup': 'b'}}], we _would not_ want to apply the outlet commands to the
+    // root segment because that would result in
+    // //(popup:a)(popup:b) since the outlet command got applied one level above where it appears in
+    // the `ActivatedRoute` rather than updating the existing one.
+    //
+    // Because empty paths do not appear in the URL segments and the fact that the segments used in
+    // the output `UrlTree` are squashed to eliminate these empty paths where possible
+    // https://github.com/angular/angular/blob/13f10de40e25c6900ca55bd83b36bd533dacfa9e/packages/router/src/url_tree.ts#L755
+    // it can be hard to determine what is the right thing to do when applying commands to a
+    // `UrlSegmentGroup` that is created from an "unsquashed"/expanded `ActivatedRoute` tree.
+    // This code effectively "squashes" empty path primary routes when they have no siblings on
+    // the same level of the tree.
+    if (!outlets[PRIMARY_OUTLET] && segmentGroup.children[PRIMARY_OUTLET] &&
+        segmentGroup.numberOfChildren === 1 &&
+        segmentGroup.children[PRIMARY_OUTLET].segments.length === 0) {
+      const childrenOfEmptyChild =
+          updateSegmentGroupChildren(segmentGroup.children[PRIMARY_OUTLET], startIndex, commands);
+      return new UrlSegmentGroup(segmentGroup.segments, childrenOfEmptyChild.children);
+    }
 
-    forEach(outlets, (commands, outlet) => {
+    Object.entries(outlets).forEach(([outlet, commands]) => {
       if (typeof commands === 'string') {
         commands = [commands];
       }
@@ -424,7 +376,7 @@ function updateSegmentGroupChildren(
       }
     });
 
-    forEach(segmentGroup.children, (child: UrlSegmentGroup, childOutlet: string) => {
+    Object.entries(segmentGroup.children).forEach(([childOutlet, child]) => {
       if (outlets[childOutlet] === undefined) {
         children[childOutlet] = child;
       }
@@ -503,7 +455,7 @@ function createNewSegmentGroup(
 function createNewSegmentChildren(outlets: {[name: string]: unknown[]|string}):
     {[outlet: string]: UrlSegmentGroup} {
   const children: {[outlet: string]: UrlSegmentGroup} = {};
-  forEach(outlets, (commands, outlet) => {
+  Object.entries(outlets).forEach(([outlet, commands]) => {
     if (typeof commands === 'string') {
       commands = [commands];
     }
@@ -516,7 +468,7 @@ function createNewSegmentChildren(outlets: {[name: string]: unknown[]|string}):
 
 function stringify(params: {[key: string]: any}): {[key: string]: string} {
   const res: {[key: string]: string} = {};
-  forEach(params, (v: any, k: string) => res[k] = `${v}`);
+  Object.entries(params).forEach(([k, v]) => res[k] = `${v}`);
   return res;
 }
 

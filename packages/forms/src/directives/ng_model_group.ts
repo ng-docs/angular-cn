@@ -70,8 +70,7 @@ export class NgModelGroup extends AbstractFormGroupDirective implements OnInit, 
    * 跟踪绑定到指令 `NgModelGroup` 的名称。该名称对应于父 `NgForm` 中的键名。
    *
    */
-  // TODO(issue/24571): remove '!'.
-  @Input('ngModelGroup') override name!: string;
+  @Input('ngModelGroup') override name: string = '';
 
   constructor(
       @Host() @SkipSelf() parent: ControlContainer,

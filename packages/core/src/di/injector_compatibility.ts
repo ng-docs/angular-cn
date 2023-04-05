@@ -55,6 +55,10 @@ export const SOURCE = '__source';
  */
 let _currentInjector: Injector|undefined|null = undefined;
 
+export function getCurrentInjector(): Injector|undefined|null {
+  return _currentInjector;
+}
+
 export function setCurrentInjector(injector: Injector|null|undefined): Injector|undefined|null {
   const former = _currentInjector;
   _currentInjector = injector;
@@ -69,7 +73,7 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFla
     throw new RuntimeError(
         RuntimeErrorCode.MISSING_INJECTION_CONTEXT,
         ngDevMode &&
-            `inject() must be called from an injection context such as a constructor, a factory function, a field initializer, or a function used with \`EnvironmentInjector#runInContext\`.`);
+            `inject() must be called from an injection context such as a constructor, a factory function, a field initializer, or a function used with \`runInInjectionContext\`.`);
   } else if (_currentInjector === null) {
     return injectRootLimpMode(token, undefined, flags);
   } else {
@@ -248,7 +252,7 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  * 表示应该注入的依赖项的标记。
  * @param flags Optional flags that control how injection is executed.
  * The flags correspond to injection strategies that can be specified with
- * parameter decorators `@Host`, `@Self`, `@SkipSef`, and `@Optional`.
+ * parameter decorators `@Host`, `@Self`, `@SkipSelf`, and `@Optional`.
  *
  * 控制执行注入方式的可选标志。这些标志对应于可以使用参数装饰器 `@Host`、`@Self`、`@SkipSef` 和
  * `@Optional` 指定的注入策略。

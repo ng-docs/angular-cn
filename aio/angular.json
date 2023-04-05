@@ -74,13 +74,7 @@
               {
                 "followSymlinks": true,
                 "input": "src/",
-                "glob": "**/google44a5c950a9a9b940.html",
-                "output": "/"
-              },
-              {
-                "followSymlinks": true,
-                "input": "src/",
-                "glob": "**/baidu_verify_AD8wvnfKCx.html",
+                "glob": "**/google385281288605d160.html",
                 "output": "/"
               },
               {
@@ -226,8 +220,7 @@
             "tsConfig": "tsconfig.spec.json",
             "webWorkerTsConfig": "tsconfig.worker.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/assets", "src/pwa-manifest.json", "src/google44a5c950a9a9b940.html",
-              "src/baidu_verify_AD8wvnfKCx.html"],
+            "assets": ["src/assets", "src/pwa-manifest.json", "src/google385281288605d160.html"],
             "styles": [
               "src/styles/main.scss",
               {

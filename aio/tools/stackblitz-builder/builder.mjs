@@ -1,7 +1,7 @@
 // Canonical path provides a consistent path (i.e. always forward slashes) across different OSes
 import path from 'canonical-path';
 import fs from 'fs-extra';
-import {globbySync} from 'globby';
+import { globbySync } from 'globby';
 import jsdom from 'jsdom';
 
 import regionExtractor from '../transforms/examples-package/services/region-parser.js';
@@ -66,8 +66,8 @@ export class StackblitzBuilder {
 
   _buildCopyrightStrings() {
     const copyright = 'Copyright Google LLC. All Rights Reserved.\n' +
-      'Use of this source code is governed by an MIT-style license that\n' +
-      'can be found in the LICENSE file at https://angular.io/license';
+        'Use of this source code is governed by an MIT-style license that\n' +
+        'can be found in the LICENSE file at https://angular.io/license';
     const pad = '\n\n';
 
     return {
@@ -101,7 +101,7 @@ export class StackblitzBuilder {
   _checkForOutdatedConfig() {
     // Ensure that nobody is trying to use the old config filenames (i.e. `plnkr.json`).
     const plunkerPaths = path.join(this.examplePath, '**/*plnkr.json');
-    const fileNames = globbySync(plunkerPaths, {ignore: ['**/node_modules/**'],
+    const fileNames = globbySync(plunkerPaths, { ignore: ['**/node_modules/**'],
       dot: true // Include subpaths that begin with '.' when using a wildcard inclusion.
                 // Needed to include the bazel .cache folder on Linux.
     });
@@ -109,11 +109,11 @@ export class StackblitzBuilder {
     if (fileNames.length) {
       const readmePath = path.join(__dirname, 'README.md');
       const errorMessage =
-        'One or more examples are still trying to use \'plnkr.json\' files for configuring ' +
-        'live examples. This is not supported any more. \'stackblitz.json\' should be used ' +
-        'instead.\n' +
-        `(Slight modifications may be required. See '${readmePath}' for more info.\n\n` +
-        fileNames.map(name => `- ${name}`).join('\n');
+          'One or more examples are still trying to use \'plnkr.json\' files for configuring ' +
+          'live examples. This is not supported any more. \'stackblitz.json\' should be used ' +
+          'instead.\n' +
+          `(Slight modifications may be required. See '${readmePath}' for more info.\n\n` +
+          fileNames.map(name => `- ${name}`).join('\n');
 
       throw Error(errorMessage);
     }
@@ -127,7 +127,7 @@ export class StackblitzBuilder {
       return config.file;
     } else {
       const defaultPrimaryFiles = ['src/app/app.component.html', 'src/app/app.component.ts', 'src/app/main.ts'];
-      const primaryFile = defaultPrimaryFiles.find(fileName => fs.existsSync(path.join(config.basePath, fileName)));
+      const primaryFile = defaultPrimaryFiles.find(fileName =>  fs.existsSync(path.join(config.basePath, fileName)));
 
       if (!primaryFile) {
         throw new Error(`None of the default primary files (${defaultPrimaryFiles.join(', ')}) exists in '${config.basePath}'.`);
@@ -182,12 +182,7 @@ export class StackblitzBuilder {
     config.fileNames.forEach((fileName) => {
       let content;
       const extn = path.extname(fileName);
-      if (extn === '.png') {
-        content = this._encodeBase64(fileName);
-        fileName = `${fileName.slice(0, -extn.length)}.base64${extn}`;
-      } else {
-        content = fs.readFileSync(fileName, 'utf-8');
-      }
+      content = fs.readFileSync(fileName, 'utf-8');
 
       if (extn === '.js' || extn === '.ts' || extn === '.css') {
         content = content + this.copyrights.jsCss;
@@ -237,7 +232,7 @@ export class StackblitzBuilder {
     const doc = new jsdom.JSDOM(baseHtml).window.document;
     const form = doc.querySelector('form');
 
-    for (const [key, value] of Object.entries(postData)) {
+    for(const [key, value] of Object.entries(postData)) {
       const ele = this._htmlToElement(doc, `<input type="hidden" name="${key}">`);
       ele.setAttribute('value', value);
       form.appendChild(ele);
@@ -248,7 +243,7 @@ export class StackblitzBuilder {
 
   _encodeBase64(file) {
     // read binary data
-    return fs.readFileSync(file, {encoding: 'base64'});
+    return fs.readFileSync(file, { encoding: 'base64' });
   }
 
   _htmlToElement(document, html) {
@@ -294,12 +289,13 @@ export class StackblitzBuilder {
 
     // exclude all specs if no spec is mentioned in `files[]`
     if (!includeSpec) {
-      defaultExcludes.push('!**/*.spec.*', '!**/spec.js');
+      defaultExcludes.push('!**/*.spec.*','!**/spec.js');
     }
 
     gpaths.push(...defaultExcludes);
 
-    config.fileNames = globbySync(gpaths, {ignore: ['**/node_modules/**'],
+    config.fileNames = globbySync(gpaths, {
+      ignore: ['**/node_modules/**'],
       dot: true // Include subpaths that begin with '.' when using a wildcard inclusion.
                 // Needed to include the bazel .cache folder on Linux.
     });

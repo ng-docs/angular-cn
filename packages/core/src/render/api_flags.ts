@@ -64,7 +64,7 @@ export interface RendererType2 {
    * 定义要存储在渲染器实例上的 CSS 样式。
    *
    */
-  styles: (string|any[])[];
+  styles: string[];
   /**
    * Defines arbitrary developer-defined data to be stored on a renderer instance.
    * This is useful for renderers that delegate to other renderers.

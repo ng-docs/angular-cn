@@ -33,7 +33,7 @@ You can specify validation rules and display validation errors, conditionally al
 
 你可以用 Angular 模板来构建各种表单，比如登录表单、联系人表单和几乎所有的业务表单。你可以创造性地对控件进行布局并把它们绑定到对象模型的数据上。你可以指定验证规则并显示验证错误，根据条件启用或禁用特定控件，触发内置的视觉反馈等等。
 
-This tutorial shows you how to build a simplified form like the one from the [Tour of Heroes tutorial](tutorial "Tour of Heroes") to illustrate the techniques.
+This tutorial shows you how to build a simplified form like the one from the [Tour of Heroes tutorial](tutorial/tour-of-heroes "Tour of Heroes") to illustrate the techniques.
 
 本教程向你展示了如何构建一个简化的表单，例如[《英雄之旅》教程](tutorial "英雄之旅")中的表单来讲解这些技术。
 

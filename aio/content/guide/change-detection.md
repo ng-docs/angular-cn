@@ -6,7 +6,7 @@
 
 **变更检测**是 Angular 检查你的应用程序状态是否已更改以及是否需要更新任何 DOM 的过程。大体而言，Angular 会从上到下遍历你的组件，寻找更改。Angular 会定期运行其变更检测机制，以便对数据模型的更改反映在应用程序的视图中。变更检测可以手动触发，也可以通过异步事件（比如用户交互或 XHR 自动完成）来触发。
 
-Change detection is a highly optimized performant, but it can still cause slowdowns if the application runs it too frequently.
+Change detection is highly optimized and performant, but it can still cause slowdowns if the application runs it too frequently.
 
 变更检测具有一种高度优化的性能，但如果应用程序过于频繁的运行它，它仍然会导致变慢。
 

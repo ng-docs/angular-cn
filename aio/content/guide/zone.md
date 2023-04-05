@@ -410,8 +410,6 @@ Monkey patching is a technique to add or alter the default behavior of a functio
 
 <!-- vale Angular.Google_Headings = NO -->
 
-`Zone` 的所有功能均由名为 [Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js/README.md) 的库提供。该库通过猴子补丁拦截异步 API 来实现这些功能。猴子补丁是一种在运行时添加或修改函数默认行为而无需更改源代码的技术。
-
 ## NgZone
 
 <!-- vale Angular.Google_Headings = YES -->

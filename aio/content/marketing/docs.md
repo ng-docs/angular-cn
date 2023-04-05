@@ -1,4 +1,4 @@
-<h1 class="no-toc">Introduction to the Angular Docs</h1>
+<h1 class="no-toc">Introduction to the Angular docs</h1>
 
 <h1 class="no-toc">Angular 文档简介</h1>
 
@@ -6,8 +6,8 @@ Angular is an application-design framework and development platform for creating
 
 Angular 是一个应用设计框架与开发平台，旨在创建高效而精致的单页面应用。
 
-These Angular docs help you learn and use the Angular framework and development platform, from your first application to optimizing complex single-page apps for enterprises.
-Tutorials and guides include downloadable examples to accelerate your projects.
+These Angular docs help you learn and use the Angular framework and development platform, from your first application to optimizing complex single-page applications for enterprises.
+Tutorials and guides include downloadable examples to help you start your projects.
 
 这份 Angular 文档会帮助你学习和使用 Angular 框架与开发平台，从你的第一个应用开始，一直到优化复杂的企业级单页面应用。
 这些教程和指南中都包含可下载的范例，以加速你的学习。
@@ -24,7 +24,7 @@ Tutorials and guides include downloadable examples to accelerate your projects.
   <a href="start" class="docs-card" title="Getting started">
     <section>Getting started</section>
     <section>开始工作</section>
-    <p>Examine and work with a small ready-made Angular app, without any setup.</p>
+    <p>Examine and work with a small ready-made Angular application, without any setup.</p>
     <p>无需搭建环境，试用一个现成的小型 Angular 应用</p>
     <p class="card-footer">Try it now</p>
     <p class="card-footer">立即试用</p>
@@ -32,7 +32,7 @@ Tutorials and guides include downloadable examples to accelerate your projects.
   <a href="guide/architecture" class="docs-card" title="Angular Concepts">
     <section>Learn and Explore</section>
     <section>深入探索</section>
-    <p>Learn about the fundamental design concepts and architecture of Angular apps.</p>
+    <p>Learn about the fundamental design concepts and architecture of Angular applications.</p>
       <p>学习 Angular 应用的更多知识及架构特性</p>
     <p class="card-footer">Introduction to Angular concepts</p>
       <p class="card-footer">架构</p>
@@ -47,7 +47,7 @@ Tutorials and guides include downloadable examples to accelerate your projects.
   </a>
   <a href="tutorial" class="docs-card" title="Work through a full tutorial">
     <section>Hello World</section>
-    <p>Work through a full tutorial to create your first app.</p>
+    <p>Work through a full tutorial to create your first application.</p>
     <p>一个完整教程，带你从头到尾创建首个应用</p>
     <p class="card-footer">Tour of Heroes tutorial</p>
     <p class="card-footer">英雄之旅教程</p>
@@ -90,7 +90,7 @@ server {
 
 ## 反馈
 
-<h3>You can sit with us!</h3>
+<!-- vale Angular.Google_We = NO -->
 
 <h3>你也可以和我们一起做贡献！</h4>
 
@@ -112,3 +112,5 @@ Please consult and adhere to the [Code of Conduct](https://github.com/angular/co
 
 我们的社区提倡相互尊重、相互支持。
 参阅[社区行为规范](https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md "contributor code of conduct")。
+
+<!-- vale Angular.Google_We = YES -->

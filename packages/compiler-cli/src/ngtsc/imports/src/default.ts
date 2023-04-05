@@ -11,6 +11,8 @@ import ts from 'typescript';
 
 import {getSourceFile} from '../../util/src/typescript';
 
+import {loadIsReferencedAliasDeclarationPatch} from './patch_alias_reference_resolution';
+
 const DefaultImportDeclaration = Symbol('DefaultImportDeclaration');
 
 interface WithDefaultImportDeclaration {
@@ -77,10 +79,10 @@ export function getDefaultImportDeclaration(expr: WrappedNodeExpr<unknown>): ts.
  * Angular 在值位置重用导入的符号（例如，我们看到一个 Foo 类型的构造函数参数并尝试写为
  * "inject(Foo)"），我们最终将有一个悬挂引用，因为 TS 将省略导入，因为它最初仅用于类型位置。
  *
- * To avoid this, the compiler must "touch" the imports with `ts.getMutableClone`, and should
- * only do this for imports which are actually consumed. The `DefaultImportTracker` keeps track of
- * these imports as they're encountered and emitted, and implements a transform which can correctly
- * flag the imports as required.
+ * To avoid this, the compiler must patch the emit resolver, and should only do this for imports
+ * which are actually consumed. The `DefaultImportTracker` keeps track of these imports as they're
+ * encountered and emitted, and implements a transform which can correctly flag the imports as
+ * required.
  *
  * 为避免这种情况，编译器必须使用 `ts.getMutableClone`
  * “接触”导入，并且应该仅对实际使用的导入执行此操作。 `DefaultImportTracker`
@@ -95,23 +97,25 @@ export function getDefaultImportDeclaration(expr: WrappedNodeExpr<unknown>): ts.
  */
 export class DefaultImportTracker {
   /**
-   * A `Map` which tracks the `Set` of `ts.ImportDeclaration`s for default imports that were used in
-   * a given `ts.SourceFile` and need to be preserved.
+   * A `Map` which tracks the `Set` of `ts.ImportClause`s for default imports that were used in
+   * a given file name.
    *
    * 一个 `Map` ，它跟踪 `ts.ImportDeclaration` 的 `Set` 以进行默认导入，这些导入在给定的
    * `ts.SourceFile` 中使用并需要保留。
    *
    */
-  private sourceFileToUsedImports = new Map<ts.SourceFile, Set<ts.ImportDeclaration>>();
+  private sourceFileToUsedImports = new Map<string, Set<ts.ImportClause>>();
 
   recordUsedImport(importDecl: ts.ImportDeclaration): void {
-    const sf = getSourceFile(importDecl);
+    if (importDecl.importClause) {
+      const sf = getSourceFile(importDecl);
 
-    // Add the default import declaration to the set of used import declarations for the file.
-    if (!this.sourceFileToUsedImports.has(sf)) {
-      this.sourceFileToUsedImports.set(sf, new Set<ts.ImportDeclaration>());
+      // Add the default import declaration to the set of used import declarations for the file.
+      if (!this.sourceFileToUsedImports.has(sf.fileName)) {
+        this.sourceFileToUsedImports.set(sf.fileName, new Set<ts.ImportClause>());
+      }
+      this.sourceFileToUsedImports.get(sf.fileName)!.add(importDecl.importClause);
     }
-    this.sourceFileToUsedImports.get(sf)!.add(importDecl);
   }
 
   /**
@@ -126,68 +130,25 @@ export class DefaultImportTracker {
    *
    */
   importPreservingTransformer(): ts.TransformerFactory<ts.SourceFile> {
-    return (context: ts.TransformationContext) => {
-      return (sf: ts.SourceFile) => {
-        return this.transformSourceFile(sf);
+    return context => {
+      let clausesToPreserve: Set<ts.Declaration>|null = null;
+
+      return sourceFile => {
+        const clausesForFile = this.sourceFileToUsedImports.get(sourceFile.fileName);
+
+        if (clausesForFile !== undefined) {
+          for (const clause of clausesForFile) {
+            // Initialize the patch lazily so that apps that
+            // don't use default imports aren't patched.
+            if (clausesToPreserve === null) {
+              clausesToPreserve = loadIsReferencedAliasDeclarationPatch(context);
+            }
+            clausesToPreserve.add(clause);
+          }
+        }
+
+        return sourceFile;
       };
     };
-  }
-
-  /**
-   * Process a `ts.SourceFile` and replace any `ts.ImportDeclaration`s.
-   *
-   * 处理 `ts.SourceFile` 并替换任何 `ts.ImportDeclaration` 。
-   *
-   */
-  private transformSourceFile(sf: ts.SourceFile): ts.SourceFile {
-    const originalSf = ts.getOriginalNode(sf) as ts.SourceFile;
-    // Take a fast path if no import declarations need to be preserved in the file.
-    if (!this.sourceFileToUsedImports.has(originalSf)) {
-      return sf;
-    }
-
-    // There are declarations that need to be preserved.
-    const importsToPreserve = this.sourceFileToUsedImports.get(originalSf)!;
-
-    // Generate a new statement list which preserves any imports present in `importsToPreserve`.
-    const statements = sf.statements.map(stmt => {
-      if (ts.isImportDeclaration(stmt) && importsToPreserve.has(stmt)) {
-        // Preserving an import that's marked as unreferenced (type-only) is tricky in TypeScript.
-        //
-        // Various approaches have been tried, with mixed success:
-        //
-        // 1. Using `ts.updateImportDeclaration` does not cause the import to be retained.
-        //
-        // 2. Using `ts.factory.createImportDeclaration` with the same `ts.ImportClause` causes the
-        //    import to correctly be retained, but when emitting CommonJS module format code,
-        //    references to the imported value will not match the import variable.
-        //
-        // 3. Emitting "import * as" imports instead generates the correct import variable, but
-        //    references are missing the ".default" access. This happens to work for tsickle code
-        //    with goog.module transformations as tsickle strips the ".default" anyway.
-        //
-        // 4. It's possible to trick TypeScript by setting `ts.NodeFlag.Synthesized` on the import
-        //    declaration. This causes the import to be correctly retained and generated, but can
-        //    violate invariants elsewhere in the compiler and cause crashes.
-        //
-        // 5. Using `ts.getMutableClone` seems to correctly preserve the import and correctly
-        //    generate references to the import variable across all module types.
-        //
-        // Therefore, option 5 is the one used here. It seems to be implemented as the correct way
-        // to perform option 4, which preserves all the compiler's invariants.
-        //
-        // TODO(alxhub): discuss with the TypeScript team and determine if there's a better way to
-        // deal with this issue.
-        // tslint:disable-next-line: ban
-        stmt = ts.getMutableClone(stmt);
-      }
-      return stmt;
-    });
-
-    // Save memory - there's no need to keep these around once the transform has run for the given
-    // file.
-    this.sourceFileToUsedImports.delete(originalSf);
-
-    return ts.factory.updateSourceFile(sf, statements);
   }
 }

@@ -52,7 +52,6 @@ export function toR3DirectiveMeta<TExpression>(
     typeSourceSpan: createSourceSpan(typeExpr.getRange(), code, sourceUrl),
     type: wrapReference(typeExpr.getOpaque()),
     typeArgumentCount: 0,
-    internalType: metaObj.getOpaque('type'),
     deps: null,
     host: toHostMetadata(metaObj),
     inputs: metaObj.has('inputs') ? metaObj.getObject('inputs').toLiteral(toInputMapping) : {},
@@ -89,10 +88,11 @@ export function toR3DirectiveMeta<TExpression>(
  * 将单个输入的 AST 值解码为其在元数据中使用的表示。
  *
  */
-function toInputMapping<TExpression>(value: AstValue<string|[string, string], TExpression>):
-    string|[string, string] {
+function toInputMapping<TExpression>(
+    value: AstValue<string|[string, string], TExpression>,
+    key: string): {bindingPropertyName: string, classPropertyName: string, required: boolean} {
   if (value.isString()) {
-    return value.getString();
+    return {bindingPropertyName: value.getString(), classPropertyName: key, required: false};
   }
 
   const values = value.getArray().map(innerValue => innerValue.getString());
@@ -101,7 +101,7 @@ function toInputMapping<TExpression>(value: AstValue<string|[string, string], TE
         value.expression,
         'Unsupported input, expected a string or an array containing exactly two strings');
   }
-  return values as [string, string];
+  return {bindingPropertyName: values[0], classPropertyName: values[1], required: false};
 }
 
 /**

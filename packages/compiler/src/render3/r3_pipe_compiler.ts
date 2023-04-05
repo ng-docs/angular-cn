@@ -29,20 +29,6 @@ export interface R3PipeMetadata {
   type: R3Reference;
 
   /**
-   * An expression representing the pipe being compiled, intended for use within a class definition
-   * itself.
-   *
-   * 表示正在编译的管道的表达式，用于在类定义本身中使用。
-   *
-   * This can differ from the outer `type` if the class is being compiled by ngcc and is inside an
-   * IIFE structure that uses a different name internally.
-   *
-   * 如果类正在由 ngcc 编译并且在内部使用不同名称的 IIFE 结构中，这可能与外部 `type` 不同。
-   *
-   */
-  internalType: o.Expression;
-
-  /**
    * Number of generic type parameters of the type itself.
    *
    * 类型本身的泛型类型参数的数量。

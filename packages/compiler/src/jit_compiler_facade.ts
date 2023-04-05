@@ -7,7 +7,7 @@
  */
 
 
-import {CompilerFacade, CoreEnvironment, ExportedCompilerFacade, OpaqueValue, R3ComponentMetadataFacade, R3DeclareComponentFacade, R3DeclareDependencyMetadataFacade, R3DeclareDirectiveDependencyFacade, R3DeclareDirectiveFacade, R3DeclareFactoryFacade, R3DeclareInjectableFacade, R3DeclareInjectorFacade, R3DeclareNgModuleFacade, R3DeclarePipeDependencyFacade, R3DeclarePipeFacade, R3DeclareQueryMetadataFacade, R3DependencyMetadataFacade, R3DirectiveMetadataFacade, R3FactoryDefMetadataFacade, R3InjectableMetadataFacade, R3InjectorMetadataFacade, R3NgModuleMetadataFacade, R3PipeMetadataFacade, R3QueryMetadataFacade, R3TemplateDependencyFacade, StringMap, StringMapWithRename} from './compiler_facade_interface';
+import {CompilerFacade, CoreEnvironment, ExportedCompilerFacade, InputMap, OpaqueValue, R3ComponentMetadataFacade, R3DeclareComponentFacade, R3DeclareDependencyMetadataFacade, R3DeclareDirectiveDependencyFacade, R3DeclareDirectiveFacade, R3DeclareFactoryFacade, R3DeclareInjectableFacade, R3DeclareInjectorFacade, R3DeclareNgModuleFacade, R3DeclarePipeDependencyFacade, R3DeclarePipeFacade, R3DeclareQueryMetadataFacade, R3DependencyMetadataFacade, R3DirectiveMetadataFacade, R3FactoryDefMetadataFacade, R3InjectableMetadataFacade, R3InjectorMetadataFacade, R3NgModuleMetadataFacade, R3PipeMetadataFacade, R3QueryMetadataFacade, R3TemplateDependencyFacade} from './compiler_facade_interface';
 import {ConstantPool} from './constant_pool';
 import {ChangeDetectionStrategy, HostBinding, HostListener, Input, Output, ViewEncapsulation} from './core';
 import {compileInjectable} from './injectable_compiler_2';
@@ -39,7 +39,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
     const metadata: R3PipeMetadata = {
       name: facade.name,
       type: wrapReference(facade.type),
-      internalType: new WrappedNodeExpr(facade.type),
       typeArgumentCount: 0,
       deps: null,
       pipeName: facade.pipeName,
@@ -65,7 +64,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
         {
           name: facade.name,
           type: wrapReference(facade.type),
-          internalType: new WrappedNodeExpr(facade.type),
           typeArgumentCount: facade.typeArgumentCount,
           providedIn: computeProvidedIn(facade.providedIn),
           useClass: convertToProviderExpression(facade, 'useClass'),
@@ -86,7 +84,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
         {
           name: facade.type.name,
           type: wrapReference(facade.type),
-          internalType: new WrappedNodeExpr(facade.type),
           typeArgumentCount: 0,
           providedIn: computeProvidedIn(facade.providedIn),
           useClass: convertToProviderExpression(facade, 'useClass'),
@@ -106,7 +103,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
     const meta: R3InjectorMetadata = {
       name: facade.name,
       type: wrapReference(facade.type),
-      internalType: new WrappedNodeExpr(facade.type),
       providers: facade.providers && facade.providers.length > 0 ?
           new WrappedNodeExpr(facade.providers) :
           null,
@@ -129,8 +125,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
       facade: R3NgModuleMetadataFacade): any {
     const meta: R3NgModuleMetadata = {
       type: wrapReference(facade.type),
-      internalType: new WrappedNodeExpr(facade.type),
-      adjacentType: new WrappedNodeExpr(facade.type),
       bootstrap: facade.bootstrap.map(wrapReference),
       declarations: facade.declarations.map(wrapReference),
       publicDeclarationTypes: null,  // only needed for types in AOT
@@ -232,7 +226,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
     const factoryRes = compileFactoryFunction({
       name: meta.name,
       type: wrapReference(meta.type),
-      internalType: new WrappedNodeExpr(meta.type),
       typeArgumentCount: meta.typeArgumentCount,
       deps: convertR3DependencyMetadataArray(meta.deps),
       target: meta.target,
@@ -246,7 +239,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
     const factoryRes = compileFactoryFunction({
       name: meta.type.name,
       type: wrapReference(meta.type),
-      internalType: new WrappedNodeExpr(meta.type),
       typeArgumentCount: 0,
       deps: Array.isArray(meta.deps) ? meta.deps.map(convertR3DeclareDependencyMetadata) :
                                        meta.deps,
@@ -339,19 +331,22 @@ function convertQueryPredicate(predicate: OpaqueValue|string[]): MaybeForwardRef
 }
 
 function convertDirectiveFacadeToMetadata(facade: R3DirectiveMetadataFacade): R3DirectiveMetadata {
-  const inputsFromMetadata = parseInputOutputs(facade.inputs || []);
-  const outputsFromMetadata = parseInputOutputs(facade.outputs || []);
+  const inputsFromMetadata = parseInputsArray(facade.inputs || []);
+  const outputsFromMetadata = parseMappingStringArray(facade.outputs || []);
   const propMetadata = facade.propMetadata;
-  const inputsFromType: StringMapWithRename = {};
-  const outputsFromType: StringMap = {};
+  const inputsFromType: InputMap = {};
+  const outputsFromType: Record<string, string> = {};
   for (const field in propMetadata) {
     if (propMetadata.hasOwnProperty(field)) {
       propMetadata[field].forEach(ann => {
         if (isInput(ann)) {
-          inputsFromType[field] =
-              ann.bindingPropertyName ? [ann.bindingPropertyName, field] : field;
+          inputsFromType[field] = {
+            bindingPropertyName: ann.alias || field,
+            classPropertyName: field,
+            required: ann.required || false
+          };
         } else if (isOutput(ann)) {
-          outputsFromType[field] = ann.bindingPropertyName || field;
+          outputsFromType[field] = ann.alias || field;
         }
       });
     }
@@ -362,7 +357,6 @@ function convertDirectiveFacadeToMetadata(facade: R3DirectiveMetadataFacade): R3
     typeArgumentCount: 0,
     typeSourceSpan: facade.typeSourceSpan,
     type: wrapReference(facade.type),
-    internalType: new WrappedNodeExpr(facade.type),
     deps: null,
     host: extractHostBindings(facade.propMetadata, facade.typeSourceSpan, facade.host),
     inputs: {...inputsFromMetadata, ...inputsFromType},
@@ -381,9 +375,8 @@ function convertDeclareDirectiveFacadeToMetadata(
     name: declaration.type.name,
     type: wrapReference(declaration.type),
     typeSourceSpan,
-    internalType: new WrappedNodeExpr(declaration.type),
     selector: declaration.selector ?? null,
-    inputs: declaration.inputs ?? {},
+    inputs: declaration.inputs ? inputsMappingToInputMetadata(declaration.inputs) : {},
     outputs: declaration.outputs ?? {},
     host: convertHostDeclarationToMetadata(declaration.host),
     queries: (declaration.queries ?? []).map(convertQueryDeclarationToMetadata),
@@ -428,8 +421,8 @@ function convertHostDirectivesToMetadata(
           {
             directive: wrapReference(hostDirective.directive),
             isForwardReference: false,
-            inputs: hostDirective.inputs ? parseInputOutputs(hostDirective.inputs) : null,
-            outputs: hostDirective.outputs ? parseInputOutputs(hostDirective.outputs) : null,
+            inputs: hostDirective.inputs ? parseMappingStringArray(hostDirective.inputs) : null,
+            outputs: hostDirective.outputs ? parseMappingStringArray(hostDirective.outputs) : null,
           };
     });
   }
@@ -682,19 +675,51 @@ function isOutput(value: any): value is Output {
   return value.ngMetadataName === 'Output';
 }
 
-function parseInputOutputs(values: string[]): StringMap {
+function inputsMappingToInputMetadata(inputs: Record<string, string|[string, string]>) {
+  return Object.keys(inputs).reduce((result, key) => {
+    const value = inputs[key];
+    result[key] = typeof value === 'string' ?
+        {bindingPropertyName: value, classPropertyName: value, required: false} :
+        {bindingPropertyName: value[0], classPropertyName: value[1], required: false};
+    return result;
+  }, {} as InputMap);
+}
+
+function parseInputsArray(values: (string|{name: string, alias?: string, required?: boolean})[]) {
   return values.reduce((results, value) => {
-    const [field, property] = value.split(':', 2).map(str => str.trim());
-    results[field] = property || field;
+    if (typeof value === 'string') {
+      const [bindingPropertyName, classPropertyName] = parseMappingString(value);
+      results[classPropertyName] = {bindingPropertyName, classPropertyName, required: false};
+    } else {
+      results[value.name] = {
+        bindingPropertyName: value.alias || value.name,
+        classPropertyName: value.name,
+        required: value.required || false
+      };
+    }
     return results;
-  }, {} as StringMap);
+  }, {} as InputMap);
+}
+
+function parseMappingStringArray(values: string[]): Record<string, string> {
+  return values.reduce((results, value) => {
+    const [alias, fieldName] = parseMappingString(value);
+    results[fieldName] = alias;
+    return results;
+  }, {} as Record<string, string>);
+}
+
+function parseMappingString(value: string): [alias: string, fieldName: string] {
+  // Either the value is 'field' or 'field: property'. In the first case, `property` will
+  // be undefined, in which case the field name should also be used as the property name.
+  const [fieldName, bindingPropertyName] = value.split(':', 2).map(str => str.trim());
+  return [bindingPropertyName ?? fieldName, fieldName];
 }
 
 function convertDeclarePipeFacadeToMetadata(declaration: R3DeclarePipeFacade): R3PipeMetadata {
   return {
     name: declaration.type.name,
     type: wrapReference(declaration.type),
-    internalType: new WrappedNodeExpr(declaration.type),
     typeArgumentCount: 0,
     pipeName: declaration.name,
     deps: null,
@@ -708,7 +733,6 @@ function convertDeclareInjectorFacadeToMetadata(declaration: R3DeclareInjectorFa
   return {
     name: declaration.type.name,
     type: wrapReference(declaration.type),
-    internalType: new WrappedNodeExpr(declaration.type),
     providers: declaration.providers !== undefined && declaration.providers.length > 0 ?
         new WrappedNodeExpr(declaration.providers) :
         null,

@@ -34,7 +34,7 @@ import {OptimizeFor} from './typecheck/api';
  * 的命名）。
  *
  */
-interface PluginCompilerHost extends ts.CompilerHost, Partial<UnifiedModulesHost> {
+export interface PluginCompilerHost extends ts.CompilerHost, Partial<UnifiedModulesHost> {
   readonly inputFiles: ReadonlyArray<string>;
 }
 

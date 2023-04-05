@@ -34,7 +34,6 @@ The following properties, at the top-level of the file, configure the workspace.
 | `schematics` | 一组[原理图](guide/glossary#schematic)，用于定制 `ng generate` 子命令在本工作区中的默认选项。参阅[生成器原理图](#schematics)。 |
 | `projects` | Contains a subsection for each library or application in the workspace, with the per-project configuration options. |
 | `projects` | 对于工作区中的每个应用或库都会包含一个子分区，子分区中是每个项目的配置项。 |
-
 The initial application that you create with `ng new app_name` is listed under "projects":
 
 你通过 `ng new app_name` 命令创建的初始应用会列在 `projects` 目录下：

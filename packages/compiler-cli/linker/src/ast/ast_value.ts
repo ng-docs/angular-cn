@@ -46,17 +46,6 @@ type ArrayValueType<T> = T extends Array<infer R>? R : never;
 type ConformsTo<This, Actual, Expected> = Actual extends Expected ? This : never;
 
 /**
- * Ensures that `This` is an `AstValue` whose generic type conforms to `Expected`, to disallow
- * calling a method if the value's type does not conform.
- *
- * 确保 `This` 是一个 `AstValue` ，其泛型类型符合 `Expected`
- * ，如果值的类型不符合，则不允许调用方法。
- *
- */
-type HasValueType<This, Expected> =
-    This extends AstValue<infer Actual, any>? ConformsTo<This, Actual, Expected>: never;
-
-/**
  * Represents only the string keys of type `T`.
  *
  * 仅表示 `T` 类型的字符串键。
@@ -96,7 +85,7 @@ export class AstObject<T extends object, TExpression> {
   static parse<T extends object, TExpression>(expression: TExpression, host: AstHost<TExpression>):
       AstObject<T, TExpression> {
     const obj = host.parseObjectLiteral(expression);
-    return new AstObject(expression, obj, host);
+    return new AstObject<T, TExpression>(expression, obj, host);
   }
 
   private constructor(
@@ -172,7 +161,7 @@ export class AstObject<T extends object, TExpression> {
       AstObject<ObjectType<T[K]>, TExpression> {
     const expr = this.getRequiredProperty(propertyName);
     const obj = this.host.parseObjectLiteral(expr);
-    return new AstObject(expr, obj, this.host);
+    return new AstObject<ObjectType<T[K]>, TExpression>(expr, obj, this.host);
   }
 
   /**
@@ -188,7 +177,7 @@ export class AstObject<T extends object, TExpression> {
   getArray<K extends PropertyKey<T>>(this: ConformsTo<this, T[K], unknown[]>, propertyName: K):
       AstValue<ArrayValueType<T[K]>, TExpression>[] {
     const arr = this.host.parseArrayLiteral(this.getRequiredProperty(propertyName));
-    return arr.map(entry => new AstValue(entry, this.host));
+    return arr.map(entry => new AstValue<ArrayValueType<T[K]>, TExpression>(entry, this.host));
   }
 
   /**
@@ -231,7 +220,7 @@ export class AstObject<T extends object, TExpression> {
    *
    */
   getValue<K extends PropertyKey<T>>(propertyName: K): AstValue<T[K], TExpression> {
-    return new AstValue(this.getRequiredProperty(propertyName), this.host);
+    return new AstValue<T[K], TExpression>(this.getRequiredProperty(propertyName), this.host);
   }
 
   /**
@@ -242,10 +231,12 @@ export class AstObject<T extends object, TExpression> {
    *）映射到泛型类型 ( `T` )。
    *
    */
-  toLiteral<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>) => V): Record<string, V> {
+  toLiteral<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>, key: string) => V):
+      Record<string, V> {
     const result: Record<string, V> = {};
     for (const [key, expression] of this.obj) {
-      result[key] = mapper(new AstValue(expression, this.host));
+      result[key] =
+          mapper(new AstValue<ObjectValueType<T>, TExpression>(expression, this.host), key);
     }
     return result;
   }
@@ -261,7 +252,7 @@ export class AstObject<T extends object, TExpression> {
   toMap<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>) => V): Map<string, V> {
     const result = new Map<string, V>();
     for (const [key, expression] of this.obj) {
-      result.set(key, mapper(new AstValue(expression, this.host)));
+      result.set(key, mapper(new AstValue<ObjectValueType<T>, TExpression>(expression, this.host)));
     }
     return result;
   }
@@ -319,7 +310,7 @@ export class AstValue<T, TExpression> {
    * 从此值解析数字，如果不是数字，则错误。
    *
    */
-  getNumber(this: HasValueType<this, number>): number {
+  getNumber(this: ConformsTo<this, T, number>): number {
     return this.host.parseNumericLiteral(this.expression);
   }
 
@@ -339,7 +330,7 @@ export class AstValue<T, TExpression> {
    * 从此值解析字符串，如果不是字符串，则解析错误。
    *
    */
-  getString(this: HasValueType<this, string>): string {
+  getString(this: ConformsTo<this, T, string>): string {
     return this.host.parseStringLiteral(this.expression);
   }
 
@@ -359,7 +350,7 @@ export class AstValue<T, TExpression> {
    * 从此值解析布尔值，如果不是布尔值，则解析错误。
    *
    */
-  getBoolean(this: HasValueType<this, boolean>): boolean {
+  getBoolean(this: ConformsTo<this, T, boolean>): boolean {
     return this.host.parseBooleanLiteral(this.expression);
   }
 
@@ -379,8 +370,8 @@ export class AstValue<T, TExpression> {
    * 将此值解析为 `AstObject` ，如果它不是对象文字，则解析为错误。
    *
    */
-  getObject(this: HasValueType<this, object>): AstObject<ObjectType<T>, TExpression> {
-    return AstObject.parse(this.expression, this.host);
+  getObject(this: ConformsTo<this, T, object>): AstObject<ObjectType<T>, TExpression> {
+    return AstObject.parse<ObjectType<T>, TExpression>(this.expression, this.host);
   }
 
   /**
@@ -399,9 +390,9 @@ export class AstValue<T, TExpression> {
    * 将此值解析为 `AstValue` 对象数组，如果它不是数组文字，则解析为错误。
    *
    */
-  getArray(this: HasValueType<this, unknown[]>): AstValue<ArrayValueType<T>, TExpression>[] {
+  getArray(this: ConformsTo<this, T, unknown[]>): AstValue<ArrayValueType<T>, TExpression>[] {
     const arr = this.host.parseArrayLiteral(this.expression);
-    return arr.map(entry => new AstValue(entry, this.host));
+    return arr.map(entry => new AstValue<ArrayValueType<T>, TExpression>(entry, this.host));
   }
 
   /**
@@ -421,7 +412,7 @@ export class AstValue<T, TExpression> {
    * 从此值中将返回值作为 `AstValue` 提取为函数表达式，如果不是函数表达式，则将其提取为错误。
    *
    */
-  getFunctionReturnValue<R>(this: HasValueType<this, Function>): AstValue<R, TExpression> {
+  getFunctionReturnValue<R>(this: ConformsTo<this, T, Function>): AstValue<R, TExpression> {
     return new AstValue(this.host.parseReturnValue(this.expression), this.host);
   }
 

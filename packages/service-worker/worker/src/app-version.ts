@@ -76,7 +76,7 @@ export class AppVersion implements UpdateSource {
    * 作为满足导航请求的索引页面的文件的规范化 URL。通常这是 `/index.html` 。
    *
    */
-  private indexUrl = this.adapter.normalizeUrl(this.manifest.index);
+  private indexUrl: NormalizedUrl;
 
   /**
    * Tracks whether the manifest has encountered any inconsistencies.
@@ -94,6 +94,7 @@ export class AppVersion implements UpdateSource {
       private scope: ServiceWorkerGlobalScope, private adapter: Adapter, private database: Database,
       idle: IdleScheduler, private debugHandler: DebugHandler, readonly manifest: Manifest,
       readonly manifestHash: string) {
+    this.indexUrl = this.adapter.normalizeUrl(this.manifest.index);
     // The hashTable within the manifest is an Object - convert it to a Map for easier lookups.
     Object.keys(manifest.hashTable).forEach(url => {
       this.hashTable.set(adapter.normalizeUrl(url), manifest.hashTable[url]);

@@ -1260,33 +1260,15 @@ Testing the `DashboardComponent` seemed daunting in part because it involves the
 
 <code-example header="app/dashboard/dashboard.component.ts (constructor)" path="testing/src/app/dashboard/dashboard.component.ts" region="ctor"></code-example>
 
-Mocking the `HeroService` with a spy is a [familiar story](#component-with-async-service).
-But the `Router` has a complicated API and is entwined with other services and application preconditions.
-Might it be difficult to mock?
-
-使用间谍来 Mock `HeroService` 是一个[熟悉的故事](#component-with-async-service)。
-但是 `Router` 的 API 很复杂，并且与其它服务和应用的前置条件纠缠在一起。它应该很难进行 Mock 吧？
-
-Fortunately, not in this case because the `DashboardComponent` isn't doing much with the `Router`
-
-庆幸的是，在这个例子中不会，因为 `DashboardComponent` 并没有深度使用 `Router`。
-
 <code-example header="app/dashboard/dashboard.component.ts (goToDetail)" path="testing/src/app/dashboard/dashboard.component.ts" region="goto-detail" ></code-example>
 
-This is often the case with *routing components*.
-As a rule you test the component, not the router, and care only if the component navigates with the right address under the given conditions.
+Angular provides test helpers to reduce boilerplate and more effectively test code which depends on the Router and HttpClient.
 
-这是*路由组件*中的通例。一般来说，你应该测试组件而不是路由器，应该只关心组件有没有根据给定的条件导航到正确的地址。
+<code-example header="app/dashboard/dashboard.component.spec.ts" path="testing/src/app/dashboard/dashboard.component.spec.ts" region="router-harness"></code-example>
 
-Providing a router spy for *this component* test suite happens to be as easy as providing a `HeroService` spy.
+The following test clicks the displayed hero and confirms that we navigate to the expected URL.
 
-为*这个组件*的测试套件提供路由器的间谍就像提供 `HeroService` 的间谍一样简单。
-
-<code-example header="app/dashboard/dashboard.component.spec.ts (spies)" path="testing/src/app/dashboard/dashboard.component.spec.ts" region="router-spy"></code-example>
-
-The following test clicks the displayed hero and confirms that `Router.navigateByUrl` is called with the expected url.
-
-下面这个测试会点击正在显示的英雄，并确认 `Router.navigateByUrl` 曾用所期待的 URL 调用过。
+下面这个测试会点击正在显示的英雄，并确认我们正在导航到所期望的 URL。
 
 <code-example header="app/dashboard/dashboard.component.spec.ts (navigate test)" path="testing/src/app/dashboard/dashboard.component.spec.ts" region="navigate-test"></code-example>
 
@@ -1338,58 +1320,11 @@ The [ActivatedRoute in action](guide/router-tutorial-toh#activated-route-in-acti
 
 </div>
 
-Tests can explore how the `HeroDetailComponent` responds to different `id` parameter values by manipulating the `ActivatedRoute` injected into the component's constructor.
+Tests can explore how the `HeroDetailComponent` responds to different `id` parameter values by navigating to different routes.
 
-通过操纵注入到组件构造函数中的这个 `ActivatedRoute`，测试可以探查 `HeroDetailComponent` 是如何对不同的 `id` 参数值做出响应的。
+通过导航到不同的路由，测试可以探查 `HeroDetailComponent` 是如何对不同的 `id` 参数值做出响应的。
 
-You know how to spy on the `Router` and a data service.
-
-你已经知道了如何给 `Router` 和数据服务安插间谍。
-
-You'll take a different approach with `ActivatedRoute` because
-
-不过对于 `ActivatedRoute`，你要采用另一种方式，因为：
-
-* `paramMap` returns an `Observable` that can emit more than one value during a test
-
-  在测试期间，`paramMap` 会返回一个能发出多个值的 `Observable`。
-
-* You need the router helper function, `convertToParamMap()`, to create a `ParamMap`
-
-  你需要路由器的辅助函数 `convertToParamMap()` 来创建 `ParamMap`。
-
-* Other *routed component* tests need a test double for `ActivatedRoute`
-
-  针对*路由目标组件*的其它测试需要一个 `ActivatedRoute` 的测试替身。
-
-These differences argue for a re-usable stub class.
-
-这些差异表明你需要一个可复用的桩类（stub）。
-
-#### `ActivatedRouteStub`
-
-The following `ActivatedRouteStub` class serves as a test double for `ActivatedRoute`.
-
-下面的 `ActivatedRouteStub` 类就是作为 `ActivatedRoute` 类的测试替身使用的。
-
-<code-example header="testing/activated-route-stub.ts (ActivatedRouteStub)" path="testing/src/testing/activated-route-stub.ts" region="activated-route-stub"></code-example>
-
-Consider placing such helpers in a `testing` folder sibling to the `app` folder.
-This sample puts `ActivatedRouteStub` in `testing/activated-route-stub.ts`.
-
-考虑把这类辅助函数放进一个紧邻 `app` 文件夹的 `testing` 文件夹。这个例子把 `ActivatedRouteStub` 放在了 `testing/activated-route-stub.ts` 中。
-
-<div class="alert is-helpful">
-
-Consider writing a more capable version of this stub class with the [*marble testing library*](#marble-testing).
-
-可以考虑使用[*弹珠测试库*](#marble-testing)来为此测试桩编写一个更强力的版本。
-
-</div>
-
-<a id="tests-w-test-double"></a>
-
-#### Testing with `ActivatedRouteStub`
+#### Testing with the `RouterTestingHarness`
 
 #### 使用 `ActivatedRouteStub` 进行测试
 
@@ -1412,7 +1347,7 @@ When the `id` cannot be found, the component should re-route to the `HeroListCom
 
 当找不到 `id` 的时候，组件应该重新路由到 `HeroListComponent`。
 
-The test suite setup provided the same router spy [described above](#routing-component) which spies on the router without actually navigating.
+The test suite setup provided the same router harness [described above](#routing-component).
 
 测试套件的准备代码提供了一个和[前面](#routing-component)一样的路由器间谍，它会充当路由器的角色，而不用发起实际的导航。
 
@@ -1421,19 +1356,6 @@ This test expects the component to try to navigate to the `HeroListComponent`.
 这个测试中会期待该组件尝试导航到 `HeroListComponent`。
 
 <code-example header="app/hero/hero-detail.component.spec.ts (bad id)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="route-bad-id"></code-example>
-
-While this application doesn't have a route to the `HeroDetailComponent` that omits the `id` parameter, it might add such a route someday.
-The component should do something reasonable when there is no `id`.
-
-虽然本应用没有在缺少 `id` 参数的时候，继续导航到 `HeroDetailComponent` 的路由，但是，将来它可能会添加这样的路由。当没有 `id` 时，该组件应该作出合理的反应。
-
-In this implementation, the component should create and display a new hero.
-New heroes have `id=0` and a blank `name`.
-This test confirms that the component behaves as expected:
-
-在本例中，组件应该创建和显示新英雄。新英雄的 `id` 为零，`name` 为空。本测试程序确认组件是按照预期的这样做的：
-
-<code-example header="app/hero/hero-detail.component.spec.ts (no id)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="route-no-id" ></code-example>
 
 ## Nested component tests
 
@@ -1452,10 +1374,6 @@ The `AppComponent`, for example, displays a navigation bar with anchors and thei
 比如，`AppComponent` 会显示一个带有链接及其 `RouterLink` 指令的导航条。
 
 <code-example header="app/app.component.html" path="testing/src/app/app.component.html"></code-example>
-
-While the `AppComponent` *class* is empty, you might want to write unit tests to confirm that the links are wired properly to the `RouterLink` directives, perhaps for the reasons as explained in the [following section](#why-stubbed-routerlink-tests).
-
-虽然 `AppComponent` *类*是空的，但你可能会希望写个单元测试来确认这些链接是否正确使用了 `RouterLink` 指令。可能的原因会在[稍后](#why-stubbed-routerlink-tests)的章节进行解释。
 
 To validate the links, you don't need the `Router` to navigate and you don't need the `<router-outlet>` to mark where the `Router` inserts *routed components*.
 
@@ -1513,10 +1431,6 @@ The `AppComponent` is the test subject, so of course you declare the real versio
 
 `AppComponent` 是该测试的主角，因此当然要用它的真实版本。
 
-The `RouterLinkDirectiveStub`, [described later](#routerlink), is a test version of the real `RouterLink` that helps with the link tests.
-
-而 `RouterLinkDirectiveStub`（[稍后讲解](#routerlink)）是一个真实的 `RouterLink` 的测试版，它能帮你对链接进行测试。
-
 The rest are stubs.
 
 其它都是测试桩。
@@ -1535,7 +1449,7 @@ The `NO_ERRORS_SCHEMA` tells the Angular compiler to ignore unrecognized element
 
 `NO_ERRORS_SCHEMA` 会要求 Angular 编译器忽略不认识的那些元素和属性。
 
-The compiler recognizes the `<app-root>` element and the `routerLink` attribute because you declared a corresponding `AppComponent` and `RouterLinkDirectiveStub` in the `TestBed` configuration.
+The compiler recognizes the `<app-root>` element and the `routerLink` attribute because you declared a corresponding `AppComponent` and `RouterLink` in the `TestBed` configuration.
 
 编译器将会识别出 `<app-root>` 元素和 `RouterLink` 属性，因为你在 `TestBed` 的配置中声明了相应的 `AppComponent` 和 `RouterLinkDirectiveStub`。
 
@@ -1576,47 +1490,10 @@ In practice you will combine the two techniques in the same setup, as seen in th
 
 <code-example header="app/app.component.spec.ts (mixed setup)" path="testing/src/app/app.component.spec.ts" region="mixed-setup"></code-example>
 
-The Angular compiler creates the `BannerComponentStub` for the `<app-banner>` element and applies the `RouterLinkStubDirective` to the anchors with the `routerLink` attribute, but it ignores the `<app-welcome>` and `<router-outlet>` tags.
+The Angular compiler creates the `BannerStubComponent` for the `<app-banner>` element and applies the `RouterLink` to the anchors with the `routerLink` attribute, but it ignores the `<app-welcome>` and `<router-outlet>` tags.
 
-Angular 编译器会为 `<app-banner>` 元素创建 `BannerComponentStub`，并把 `RouterLinkStubDirective` 应用到带有 `routerLink` 属性的链接上，不过它会忽略 `<app-welcome>` 和 `<router-outlet>` 标签。
+Angular 编译器会为 `<app-banner>` 元素创建 `BannerStubComponent`，并把 `RouterLink` 应用到带有 `routerLink` 属性的链接上，不过它会忽略 `<app-welcome>` 和 `<router-outlet>` 标签。
 
-<a id="routerlink"></a>
-
-## Components with `RouterLink`
-
-## 带有 `RouterLink` 的组件
-
-The real `RouterLinkDirective` is quite complicated and entangled with other components and directives of the `RouterModule`.
-It requires challenging setup to mock and use in tests.
-
-真实的 `RouterLinkDirective` 太复杂了，而且与 `RouterModule` 中的其它组件和指令有着千丝万缕的联系。要在准备阶段 Mock 它以及在测试中使用它具有一定的挑战性。
-
-The `RouterLinkDirectiveStub` in this sample code replaces the real directive with an alternative version designed to validate the kind of anchor tag wiring seen in the `AppComponent` template.
-
-这段范例代码中的 `RouterLinkDirectiveStub` 用一个代用品替换了真实的指令，这个代用品用来验证 `AppComponent` 中所用链接的类型。
-
-<code-example header="testing/router-link-directive-stub.ts (RouterLinkDirectiveStub)" path="testing/src/testing/router-link-directive-stub.ts" region="router-link"></code-example>
-
-The URL bound to the `[routerLink]` attribute flows in to the directive's `linkParams` property.
-
-这个 URL 被绑定到了 `[routerLink]` 属性，它的值流入了该指令的 `linkParams` 属性。
-
-The `HostListener` wires the click event of the host element (the `<a>` anchor elements in `AppComponent`) to the stub directive's `onClick` method.
-
-它的元数据中的 `host` 属性把宿主元素（即 `AppComponent` 中的 `<a>` 元素）的 `click` 事件关联到了这个桩指令的 `onClick` 方法。
-
-Clicking the anchor should trigger the `onClick()` method, which sets the stub's telltale `navigatedTo` property.
-Tests inspect `navigatedTo` to confirm that clicking the anchor sets the expected route definition.
-
-点击这个链接应该触发 `onClick()` 方法，其中会设置该桩指令中的警示器属性 `navigatedTo`。测试中检查 `navigatedTo` 以确认点击该链接确实如预期的那样根据路由定义设置了该属性。
-
-<div class="alert is-helpful">
-
-Whether the router is configured properly to navigate with that route definition is a question for a separate set of tests.
-
-路由器的配置是否正确和是否能按照那些路由定义进行导航，是测试中一组独立的问题。
-
-</div>
 
 <a id="by-directive"></a>
 <a id="inject-directive"></a>
@@ -1660,53 +1537,6 @@ Here are some tests that confirm those links are wired to the `routerLink` direc
 下面这些测试用来确认那些链接是否如预期般连接到了 `RouterLink` 指令中：
 
 <code-example header="app/app.component.spec.ts (selected tests)" path="testing/src/app/app.component.spec.ts" region="tests"></code-example>
-
-<div class="alert is-helpful">
-
-The "click" test *in this example* is misleading.
-It tests the `RouterLinkDirectiveStub` rather than the *component*.
-This is a common failing of directive stubs.
-
-其实*这个例子中*的“click”测试误入歧途了。它测试的重点其实是 `RouterLinkDirectiveStub`，而不是该组件。这是写桩指令时常见的错误。
-
-It has a legitimate purpose in this guide.
-It demonstrates how to find a `RouterLink` element, click it, and inspect a result, without engaging the full router machinery.
-This is a skill you might need to test a more sophisticated component, one that changes the display, re-calculates parameters, or re-arranges navigation options when the user clicks the link.
-
-在本章中，它有存在的必要。它演示了如何在不涉及完整路由器机制的情况下，如何找到 `RouterLink` 元素、点击它并检查结果。要测试更复杂的组件，你可能需要具备这样的能力，能改变视图和重新计算参数，或者当用户点击链接时，有能力重新安排导航选项。
-
-</div>
-
-<a id="why-stubbed-routerlink-tests"></a>
-
-#### What good are these tests?
-
-#### 这些测试有什么优点？
-
-Stubbed `RouterLink` tests can confirm that a component with links and an outlet is set up properly, that the component has the links it should have, and that they are all pointing in the expected direction.
-These tests do not concern whether the application will succeed in navigating to the target component when the user clicks a link.
-
-用 `RouterLink` 的桩指令进行测试可以确认带有链接和 outlet 的组件的设置的正确性，确认组件有应该有的链接，确认它们都指向了正确的方向。这些测试程序不关心用户点击链接时，也不关心应用是否会成功的导航到目标组件。
-
-Stubbing the RouterLink and RouterOutlet is the best option for such limited testing goals.
-Relying on the real router would make them brittle.
-They could fail for reasons unrelated to the component.
-For example, a navigation guard could prevent an unauthorized user from visiting the `HeroListComponent`.
-That's not the fault of the `AppComponent` and no change to that component could cure the failed test.
-
-对于这些有限的测试目标，使用 RouterLink 桩指令和 RouterOutlet 桩组件 是最佳选择。依靠真正的路由器会让它们很脆弱。它们可能因为与组件无关的原因而失败。比如，一个导航守卫可能防止没有授权的用户访问 `HeroListComponent`。这并不是 `AppComponent` 的过错，并且无论该组件怎么改变都无法修复这个失败的测试程序。
-
-A *different* battery of tests can explore whether the application navigates as expected in the presence of conditions that influence guards such as whether the user is authenticated and authorized.
-
-一组不同的测试程序可以探索当存在影响守卫的条件时（比如用户是否已认证和授权），该应用是否如期望般导航。
-
-<div class="alert is-helpful">
-
-A future guide update explains how to write such tests with the `RouterTestingModule`.
-
-未来对本章的更新将介绍如何使用 `RouterTestingModule` 来编写这样的测试程序。
-
-</div>
 
 <a id="page-object"></a>
 
@@ -1778,11 +1608,6 @@ A `createComponent` method creates a `page` object and fills in the blanks once 
 `createComponent` 方法会创建一个 `page` 对象，并在 `hero` 到来时自动填补空白。
 
 <code-example header="app/hero/hero-detail.component.spec.ts (createComponent)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="create-component"></code-example>
-
-The [`HeroDetailComponent` tests](#tests-w-test-double) in an earlier section demonstrate how `createComponent` and `page` keep the tests short and *on message*.
-There are no distractions: no waiting for promises to resolve and no searching the DOM for element values to compare.
-
-前面小节中的 [`HeroDetailComponent` 测试](#tests-w-test-double)示范了如何 `createComponent`，而 `page` 让这些测试保持简短而富有表达力。 而且还不用分心：不用等待 Promise 被解析，不必在 DOM 中找出元素的值才能进行比较。
 
 Here are a few more `HeroDetailComponent` tests to reinforce the point.
 
@@ -2005,9 +1830,9 @@ In addition to the support it receives from the default testing module `CommonMo
 
   一些路由器服务，测试程序将用打桩的方式伪造它们
 
-* The Hero data access services that are also stubbed out
+* The Hero data access services
 
-  英雄数据访问服务，它同样被用打桩的方式伪造了
+  英雄数据访问这些服务
 
 One approach is to configure the testing module from the individual pieces as in this example:
 
@@ -2058,7 +1883,6 @@ Try a test configuration that imports the `HeroModule` like this one:
 
 <code-example header="app/hero/hero-detail.component.spec.ts (HeroModule setup)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="setup-hero-module"></code-example>
 
-That's *really* crisp.
 Only the *test doubles* in the `providers` remain.
 Even the `HeroDetailComponent` declaration is gone.
 

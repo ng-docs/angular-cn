@@ -26,7 +26,7 @@ You should be familiar with the Angular apps in general, and have the fundamenta
 
 你应该大体上熟悉 Angular 应用程序，并具有组件、指令和 NgModules 的基础知识。强烈建议你完成以下教程：
 
-[Tour of Heroes application and tutorial](tutorial)
+[Tour of Heroes application and tutorial](tutorial/tour-of-heroes)
 
 [《英雄之旅》应用和教程](tutorial)
 

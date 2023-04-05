@@ -19,6 +19,7 @@ import {IncrementalBuildStrategy, IncrementalCompilation, IncrementalState} from
 import {SemanticSymbol} from '../../incremental/semantic_graph';
 import {generateAnalysis, IndexedComponent, IndexingContext} from '../../indexer';
 import {ComponentResources, CompoundMetadataReader, CompoundMetadataRegistry, DirectiveMeta, DtsMetadataReader, HostDirectivesResolver, LocalMetadataRegistry, MetadataReader, MetadataReaderWithIndex, PipeMeta, ResourceRegistry} from '../../metadata';
+import {NgModuleIndexImpl} from '../../metadata/src/ng_module_index';
 import {PartialEvaluator} from '../../partial_evaluator';
 import {ActivePerfRecorder, DelegatingPerfRecorder, PerfCheckpoint, PerfEvent, PerfPhase} from '../../perf';
 import {FileUpdate, ProgramDriver, UpdateMode} from '../../program_driver';
@@ -26,9 +27,7 @@ import {DeclarationNode, isNamedClassDeclaration, TypeScriptReflectionHost} from
 import {AdapterResourceLoader} from '../../resource';
 import {ComponentScopeReader, CompoundComponentScopeReader, LocalModuleScopeRegistry, MetadataDtsModuleScopeResolver, TypeCheckScopeRegistry} from '../../scope';
 import {StandaloneComponentScopeReader} from '../../scope/src/standalone';
-import {generatedFactoryTransform} from '../../shims';
 import {aliasTransformFactory, CompilationMode, declarationTransformFactory, DecoratorHandler, DtsTransformRegistry, ivyTransformFactory, TraitCompiler} from '../../transform';
-import {getModifiers} from '../../ts_compatibility';
 import {TemplateTypeCheckerImpl} from '../../typecheck';
 import {OptimizeFor, TemplateTypeChecker, TypeCheckingConfig} from '../../typecheck/api';
 import {ALL_DIAGNOSTIC_FACTORIES, ExtendedTemplateCheckerImpl} from '../../typecheck/extended';
@@ -763,11 +762,6 @@ export class NgCompiler {
       afterDeclarations.push(aliasTransformFactory(compilation.traitCompiler.exportStatements));
     }
 
-    if (this.adapter.factoryTracker !== null) {
-      before.push(
-          generatedFactoryTransform(this.adapter.factoryTracker.sourceInfo, importRewriter));
-    }
-
     return {transformers: {before, afterDeclarations} as ts.CustomTransformers};
   }
 
@@ -1116,6 +1110,7 @@ export class NgCompiler {
     const localMetaReader: MetadataReaderWithIndex = localMetaRegistry;
     const depScopeReader = new MetadataDtsModuleScopeResolver(dtsReader, aliasingHost);
     const metaReader = new CompoundMetadataReader([localMetaReader, dtsReader]);
+    const ngModuleIndex = new NgModuleIndexImpl(metaReader, localMetaReader);
     const ngModuleScopeRegistry = new LocalModuleScopeRegistry(
         localMetaReader, metaReader, depScopeReader, refEmitter, aliasingHost);
     const standaloneScopeReader =
@@ -1182,7 +1177,7 @@ export class NgCompiler {
         new DirectiveDecoratorHandler(
             reflector, evaluator, metaRegistry, ngModuleScopeRegistry, metaReader,
             injectableRegistry, refEmitter, isCore, strictCtorDeps, semanticDepGraphUpdater,
-          this.closureCompilerEnabled, /** compileUndecoratedClassesWithAngularFeatures */ false,
+          this.closureCompilerEnabled,
           this.delegatingPerfRecorder,
         ) as Readonly<DecoratorHandler<unknown, unknown, SemanticSymbol | null,unknown>>,
       // clang-format on
@@ -1196,7 +1191,7 @@ export class NgCompiler {
           this.delegatingPerfRecorder),
       new NgModuleDecoratorHandler(
           reflector, evaluator, metaReader, metaRegistry, ngModuleScopeRegistry, referencesRegistry,
-          isCore, refEmitter, this.adapter.factoryTracker, this.closureCompilerEnabled,
+          isCore, refEmitter, this.closureCompilerEnabled,
           this.options.onlyPublishPublicTypingsForNgModules ?? false, injectableRegistry,
           this.delegatingPerfRecorder),
     ];
@@ -1217,7 +1212,7 @@ export class NgCompiler {
     const templateTypeChecker = new TemplateTypeCheckerImpl(
         this.inputProgram, notifyingDriver, traitCompiler, this.getTypeCheckingConfig(), refEmitter,
         reflector, this.adapter, this.incrementalCompilation, metaReader, localMetaReader,
-        scopeReader, typeCheckScopeRegistry, this.delegatingPerfRecorder);
+        ngModuleIndex, scopeReader, typeCheckScopeRegistry, this.delegatingPerfRecorder);
 
     // Only construct the extended template checker if the configuration is valid and usable.
     const extendedTemplateChecker = this.constructionDiagnostics.length === 0 ?
@@ -1263,7 +1258,7 @@ export function isAngularCorePackage(program: ts.Program): boolean {
       return false;
     }
     // It must be exported.
-    const modifiers = getModifiers(stmt);
+    const modifiers = ts.getModifiers(stmt);
     if (modifiers === undefined ||
         !modifiers.some(mod => mod.kind === ts.SyntaxKind.ExportKeyword)) {
       return false;
@@ -1423,8 +1418,12 @@ class ReferenceGraphAdapter implements ReferencesRegistry {
 }
 
 class NotifyingProgramDriverWrapper implements ProgramDriver {
+  getSourceFileVersion: ProgramDriver['getSourceFileVersion'];
+
   constructor(
-      private delegate: ProgramDriver, private notifyNewProgram: (program: ts.Program) => void) {}
+      private delegate: ProgramDriver, private notifyNewProgram: (program: ts.Program) => void) {
+    this.getSourceFileVersion = this.delegate.getSourceFileVersion?.bind(this);
+  }
 
   get supportsInlineOperations() {
     return this.delegate.supportsInlineOperations;
@@ -1438,8 +1437,6 @@ class NotifyingProgramDriverWrapper implements ProgramDriver {
     this.delegate.updateFiles(contents, updateMode);
     this.notifyNewProgram(this.delegate.getProgram());
   }
-
-  getSourceFileVersion = this.delegate.getSourceFileVersion?.bind(this);
 }
 
 function versionMapFromProgram(

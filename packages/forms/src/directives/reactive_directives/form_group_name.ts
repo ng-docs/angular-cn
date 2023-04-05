@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, forwardRef, Host, Inject, Input, OnDestroy, OnInit, Optional, Self, SkipSelf} from '@angular/core';
+import {Directive, forwardRef, Host, Inject, Input, OnDestroy, OnInit, Optional, Provider, Self, SkipSelf} from '@angular/core';
 
 import {FormArray} from '../../model/form_array';
 import {NG_ASYNC_VALIDATORS, NG_VALIDATORS} from '../../validators';
@@ -18,7 +18,7 @@ import {AsyncValidator, AsyncValidatorFn, Validator, ValidatorFn} from '../valid
 
 import {FormGroupDirective} from './form_group_directive';
 
-export const formGroupNameProvider: any = {
+const formGroupNameProvider: Provider = {
   provide: ControlContainer,
   useExisting: forwardRef(() => FormGroupName)
 };
@@ -110,8 +110,7 @@ export class FormGroupName extends AbstractFormGroupDirective implements OnInit,
    * `FormArray` 组上进行迭代时将表单组绑定到索引。
    *
    */
-  // TODO(issue/24571): remove '!'.
-  @Input('formGroupName') override name!: string|number|null;
+  @Input('formGroupName') override name: string|number|null = null;
 
   constructor(
       @Optional() @Host() @SkipSelf() parent: ControlContainer,
@@ -192,8 +191,7 @@ export class FormArrayName extends ControlContainer implements OnInit, OnDestroy
    * `FormArray` 数组上进行迭代时将表单数组绑定到索引。
    *
    */
-  // TODO(issue/24571): remove '!'.
-  @Input('formArrayName') override name!: string|number|null;
+  @Input('formArrayName') override name: string|number|null = null;
 
   constructor(
       @Optional() @Host() @SkipSelf() parent: ControlContainer,

@@ -13,7 +13,7 @@ import {ApplicationRef, Component, CUSTOM_ELEMENTS_SCHEMA, destroyPlatform, ENVI
 import {TestBed} from '@angular/core/testing';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {NavigationEnd, provideRouter, Resolve, Router, RouterModule, RouterOutlet, withEnabledBlockingInitialNavigation} from '@angular/router';
+import {NavigationEnd, provideRouter, Router, RouterModule, RouterOutlet, withEnabledBlockingInitialNavigation} from '@angular/router';
 
 // This is needed, because all files under `packages/` are compiled together as part of the
 // [legacy-unit-tests-saucelabs][1] CI job, including the `lib.webworker.d.ts` typings brought in by
@@ -51,9 +51,9 @@ describe('bootstrap', () => {
   }
 
   @Injectable({providedIn: 'root'})
-  class TestResolver implements Resolve<any> {
+  class TestResolver {
     resolve() {
-      let resolve: any = null;
+      let resolve: (value: unknown) => void;
       const res = new Promise(r => resolve = r);
       setTimeout(() => resolve('test-data'), 0);
       return res;
@@ -257,6 +257,9 @@ describe('bootstrap', () => {
       const router = ref.injector.get(Router);
       const data = router.routerState.snapshot.root.firstChild!.data;
       expect(data['test']).toEqual('test-data');
+      // Also ensure that the navigation completed. The navigation transition clears the
+      // current navigation in its `finalize` operator.
+      expect(router.getCurrentNavigation()).toBeNull();
     });
     await Promise.all([bootstrapPromise, navigationEndPromise]);
   });
@@ -455,7 +458,7 @@ describe('bootstrap', () => {
               scrollPositionRestoration: 'enabled',
               anchorScrolling: 'enabled',
               scrollOffset: [0, 100],
-              onSameUrlNavigation: 'reload'
+              onSameUrlNavigation: 'ignore',
             })
       ],
       declarations: [TallComponent, RootCmp],
@@ -494,13 +497,16 @@ describe('bootstrap', () => {
 
     await router.navigateByUrl('/aa#marker2');
     await resolveAfter(100);
-    expect(window.pageYOffset).toBeGreaterThanOrEqual(5900);
-    expect(window.pageYOffset).toBeLessThan(6000);  // offset
+    expect(window.scrollY).toBeGreaterThanOrEqual(5900);
+    expect(window.scrollY).toBeLessThan(6000);  // offset
 
-    await router.navigateByUrl('/aa#marker3');
+    // Scroll somewhere else, then navigate to the hash again. Even though the same url navigation
+    // is ignored by the Router, we should still scroll.
+    window.scrollTo(0, 3000);
+    await router.navigateByUrl('/aa#marker2');
     await resolveAfter(100);
-    expect(window.pageYOffset).toBeGreaterThanOrEqual(8900);
-    expect(window.pageYOffset).toBeLessThan(9000);
+    expect(window.scrollY).toBeGreaterThanOrEqual(5900);
+    expect(window.scrollY).toBeLessThan(6000);  // offset
   });
 
   it('should cleanup "popstate" and "hashchange" listeners', async () => {

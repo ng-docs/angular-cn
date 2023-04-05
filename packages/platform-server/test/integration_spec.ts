@@ -10,14 +10,28 @@ import {animate, AnimationBuilder, state, style, transition, trigger} from '@ang
 import {DOCUMENT, isPlatformServer, PlatformLocation, ɵgetDOM as getDOM} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {ApplicationRef, CompilerFactory, Component, destroyPlatform, getPlatform, HostListener, Inject, Injectable, Input, NgModule, NgZone, PLATFORM_ID, PlatformRef, ViewEncapsulation} from '@angular/core';
-import {inject, TestBed, waitForAsync} from '@angular/core/testing';
-import {BrowserModule, Title} from '@angular/platform-browser';
-import {BEFORE_APP_SERIALIZED, INITIAL_CONFIG, platformDynamicServer, PlatformState, renderModule, renderModuleFactory, ServerModule} from '@angular/platform-server';
+import {ApplicationConfig, ApplicationRef, Component, destroyPlatform, EnvironmentProviders, getPlatform, HostListener, Inject, inject as coreInject, Injectable, Input, makeStateKey, mergeApplicationConfig, NgModule, NgZone, PLATFORM_ID, Provider, TransferState, Type, ViewEncapsulation} from '@angular/core';
+import {InitialRenderPendingTasks} from '@angular/core/src/initial_render_pending_tasks';
+import {TestBed, waitForAsync} from '@angular/core/testing';
+import {bootstrapApplication, BrowserModule, Title} from '@angular/platform-browser';
+import {BEFORE_APP_SERIALIZED, INITIAL_CONFIG, platformDynamicServer, PlatformState, provideServerRendering, renderModule, ServerModule} from '@angular/platform-server';
+import {provideRouter, RouterOutlet, Routes} from '@angular/router';
 import {Observable} from 'rxjs';
 import {first} from 'rxjs/operators';
 
 import {renderApplication, SERVER_CONTEXT} from '../src/utils';
+
+const APP_CONFIG: ApplicationConfig = {
+  providers: [
+    provideServerRendering(),
+  ]
+};
+
+function getStandaloneBoostrapFn(
+    component: Type<unknown>, providers: Array<Provider|EnvironmentProviders> = []): () =>
+    Promise<ApplicationRef> {
+  return () => bootstrapApplication(component, mergeApplicationConfig(APP_CONFIG, {providers}));
+}
 
 function createMyServerApp(standalone: boolean) {
   @Component({
@@ -38,6 +52,39 @@ const MyServerAppStandalone = createMyServerApp(true);
   exports: [MyServerApp],
 })
 export class MyServerAppModule {
+}
+
+function createAppWithPendingTask(standalone: boolean) {
+  @Component({
+    standalone,
+    selector: 'app',
+    template: `Completed: {{ completed }}`,
+  })
+  class PendingTasksApp {
+    completed = 'No';
+
+    constructor() {
+      const pendingTasks = coreInject(InitialRenderPendingTasks);
+      const taskId = pendingTasks.add();
+      setTimeout(() => {
+        pendingTasks.remove(taskId);
+        this.completed = 'Yes';
+      });
+    }
+  }
+  return PendingTasksApp;
+}
+
+const PendingTasksApp = createAppWithPendingTask(false);
+const PendingTasksAppStandalone = createAppWithPendingTask(true);
+
+@NgModule({
+  declarations: [PendingTasksApp],
+  exports: [PendingTasksApp],
+  imports: [ServerModule],
+  bootstrap: [PendingTasksApp],
+})
+export class PendingTasksAppModule {
 }
 
 @NgModule({
@@ -95,8 +142,7 @@ const RenderHookProviders = [
 
 @NgModule({
   bootstrap: [MyServerApp],
-  imports:
-      [MyServerAppModule, BrowserModule.withServerTransition({appId: 'render-hook'}), ServerModule],
+  imports: [MyServerAppModule, BrowserModule, ServerModule],
   providers: [...RenderHookProviders],
 })
 class RenderHookModule {
@@ -110,8 +156,7 @@ const MultiRenderHookProviders = [
 
 @NgModule({
   bootstrap: [MyServerApp],
-  imports:
-      [MyServerAppModule, BrowserModule.withServerTransition({appId: 'render-hook'}), ServerModule],
+  imports: [MyServerAppModule, BrowserModule, ServerModule],
   providers: [...MultiRenderHookProviders],
 })
 class MultiRenderHookModule {
@@ -128,8 +173,7 @@ const AsyncRenderHookProviders = [
 
 @NgModule({
   bootstrap: [MyServerApp],
-  imports:
-      [MyServerAppModule, BrowserModule.withServerTransition({appId: 'render-hook'}), ServerModule],
+  imports: [MyServerAppModule, BrowserModule, ServerModule],
   providers: [...AsyncRenderHookProviders],
 })
 class AsyncRenderHookModule {
@@ -148,8 +192,7 @@ const AsyncMultiRenderHookProviders = [
 
 @NgModule({
   bootstrap: [MyServerApp],
-  imports:
-      [MyServerAppModule, BrowserModule.withServerTransition({appId: 'render-hook'}), ServerModule],
+  imports: [MyServerAppModule, BrowserModule, ServerModule],
   providers: [...AsyncMultiRenderHookProviders],
 })
 class AsyncMultiRenderHookModule {
@@ -201,11 +244,11 @@ function createMyAsyncServerApp(standalone: boolean) {
 }
 
 const MyAsyncServerApp = createMyAsyncServerApp(false);
-const MyAsyncServerAppStandalone = createMyAsyncServerApp(true);
+const MyAsyncServerAppStandalone = getStandaloneBoostrapFn(createMyAsyncServerApp(true));
 
 @NgModule({
   declarations: [MyAsyncServerApp],
-  imports: [BrowserModule.withServerTransition({appId: 'async-server'}), ServerModule],
+  imports: [BrowserModule, ServerModule],
   bootstrap: [MyAsyncServerApp]
 })
 class AsyncServerModule {
@@ -223,11 +266,11 @@ function createSVGComponent(standalone: boolean) {
 }
 
 const SVGComponent = createSVGComponent(false);
-const SVGComponentStandalone = createSVGComponent(true);
+const SVGComponentStandalone = getStandaloneBoostrapFn(createSVGComponent(true));
 
 @NgModule({
   declarations: [SVGComponent],
-  imports: [BrowserModule.withServerTransition({appId: 'svg-server'}), ServerModule],
+  imports: [BrowserModule, ServerModule],
   bootstrap: [SVGComponent]
 })
 class SVGServerModule {
@@ -265,11 +308,11 @@ function createMyAnimationApp(standalone: boolean) {
 }
 
 const MyAnimationApp = createMyAnimationApp(false);
-const MyAnimationAppStandalone = createMyAnimationApp(true);
+const MyAnimationAppStandalone = getStandaloneBoostrapFn(createMyAnimationApp(true));
 
 @NgModule({
   declarations: [MyAnimationApp],
-  imports: [BrowserModule.withServerTransition({appId: 'anim-server'}), ServerModule],
+  imports: [BrowserModule, ServerModule],
   bootstrap: [MyAnimationApp]
 })
 class AnimationServerModule {
@@ -288,14 +331,38 @@ function createMyStylesApp(standalone: boolean) {
 }
 
 const MyStylesApp = createMyStylesApp(false);
-const MyStylesAppStandalone = createMyStylesApp(true);
+const MyStylesAppStandalone = getStandaloneBoostrapFn(createMyStylesApp(true));
+
+@NgModule(
+    {declarations: [MyStylesApp], imports: [BrowserModule, ServerModule], bootstrap: [MyStylesApp]})
+class ExampleStylesModule {
+}
+
+function createMyTransferStateApp(standalone: boolean) {
+  @Component({
+    standalone,
+    selector: 'app',
+    template: `<div>Works!</div>`,
+  })
+  class MyStylesApp {
+    state = coreInject(TransferState);
+    constructor() {
+      this.state.set(makeStateKey<string>('some-key'), 'some-value');
+    }
+  }
+  return MyStylesApp;
+}
+
+const MyTransferStateApp = createMyTransferStateApp(false);
+const MyTransferStateAppStandalone = getStandaloneBoostrapFn(createMyTransferStateApp(true));
+
 
 @NgModule({
-  declarations: [MyStylesApp],
-  imports: [BrowserModule.withServerTransition({appId: 'example-styles'}), ServerModule],
-  bootstrap: [MyStylesApp]
+  declarations: [MyTransferStateApp],
+  imports: [BrowserModule, ServerModule],
+  bootstrap: [MyTransferStateApp]
 })
-class ExampleStylesModule {
+class MyTransferStateModule {
 }
 
 @NgModule({
@@ -346,11 +413,12 @@ function createShadowDomEncapsulationApp(standalone: boolean) {
 }
 
 const ShadowDomEncapsulationApp = createShadowDomEncapsulationApp(false);
-const ShadowDomEncapsulationAppStandalone = createShadowDomEncapsulationApp(true);
+const ShadowDomEncapsulationAppStandalone =
+    getStandaloneBoostrapFn(createShadowDomEncapsulationApp(true));
 
 @NgModule({
   declarations: [ShadowDomEncapsulationApp],
-  imports: [BrowserModule.withServerTransition({appId: 'test'}), ServerModule],
+  imports: [BrowserModule, ServerModule],
   bootstrap: [ShadowDomEncapsulationApp]
 })
 class ShadowDomExampleModule {
@@ -363,7 +431,6 @@ function createFalseAttributesComponents(standalone: boolean) {
     template: 'Works!',
   })
   class MyChildComponent {
-    // TODO(issue/24571): remove '!'.
     @Input() public attr!: boolean;
   }
 
@@ -379,12 +446,12 @@ function createFalseAttributesComponents(standalone: boolean) {
 }
 
 const [MyHostComponent, MyChildComponent] = createFalseAttributesComponents(false);
-const [MyHostComponentStandalone, _] = createFalseAttributesComponents(true);
+const MyHostComponentStandalone = getStandaloneBoostrapFn(createFalseAttributesComponents(true)[0]);
 
 @NgModule({
   declarations: [MyHostComponent, MyChildComponent],
   bootstrap: [MyHostComponent],
-  imports: [ServerModule, BrowserModule.withServerTransition({appId: 'false-attributes'})]
+  imports: [ServerModule, BrowserModule]
 })
 class FalseAttributesModule {
 }
@@ -402,12 +469,12 @@ function createMyInputComponent(standalone: boolean) {
 }
 
 const MyInputComponent = createMyInputComponent(false);
-const MyInputComponentStandalone = createMyInputComponent(true);
+const MyInputComponentStandalone = getStandaloneBoostrapFn(createMyInputComponent(true));
 
 @NgModule({
   declarations: [MyInputComponent],
   bootstrap: [MyInputComponent],
-  imports: [ServerModule, BrowserModule.withServerTransition({appId: 'name-attributes'})]
+  imports: [ServerModule, BrowserModule]
 })
 class NameModule {
 }
@@ -426,11 +493,11 @@ function createHTMLTypesApp(standalone: boolean) {
 }
 
 const HTMLTypesApp = createHTMLTypesApp(false);
-const HTMLTypesAppStandalone = createHTMLTypesApp(true);
+const HTMLTypesAppStandalone = getStandaloneBoostrapFn(createHTMLTypesApp(true));
 
 @NgModule({
   declarations: [HTMLTypesApp],
-  imports: [BrowserModule.withServerTransition({appId: 'inner-html'}), ServerModule],
+  imports: [BrowserModule, ServerModule],
   bootstrap: [HTMLTypesApp]
 })
 class HTMLTypesModule {
@@ -449,12 +516,12 @@ function createMyHiddenComponent(standalone: boolean) {
 }
 
 const MyHiddenComponent = createMyHiddenComponent(false);
-const MyHiddenComponentStandalone = createMyHiddenComponent(true);
+const MyHiddenComponentStandalone = getStandaloneBoostrapFn(createMyHiddenComponent(true));
 
 @NgModule({
   declarations: [MyHiddenComponent],
   bootstrap: [MyHiddenComponent],
-  imports: [ServerModule, BrowserModule.withServerTransition({appId: 'hidden-attributes'})]
+  imports: [ServerModule, BrowserModule]
 })
 class HiddenModule {
 }
@@ -531,7 +598,7 @@ describe('platform-server integration', () => {
        });
      }));
 
-  it('adds styles with ng-transition attribute', waitForAsync(() => {
+  it('adds styles with ng-app-id attribute', waitForAsync(() => {
        const platform = platformDynamicServer([{
          provide: INITIAL_CONFIG,
          useValue: {document: '<html><head></head><body><app></app></body></html>'}
@@ -542,7 +609,7 @@ describe('platform-server integration', () => {
          const styles: any[] = head.children as any;
          expect(styles.length).toBe(1);
          expect(styles[0].textContent).toContain('color: red');
-         expect(styles[0].getAttribute('ng-transition')).toBe('example-styles');
+         expect(styles[0].getAttribute('ng-app-id')).toBe('ng');
        });
      }));
 
@@ -676,26 +743,13 @@ describe('platform-server integration', () => {
              });
        }));
 
-    it('using renderModuleFactory should work',
-       waitForAsync(inject([PlatformRef], (defaultPlatform: PlatformRef) => {
-         const compilerFactory: CompilerFactory =
-             defaultPlatform.injector.get(CompilerFactory, null)!;
-         const moduleFactory =
-             compilerFactory.createCompiler().compileModuleSync(AsyncServerModule);
-         renderModuleFactory(moduleFactory, {document: doc}).then(output => {
-           expect(output).toBe(expectedOutput);
-           called = true;
-         });
-       })));
-
     // Run the set of tests with regular and standalone components.
     [true, false].forEach((isStandalone: boolean) => {
       it(`using ${isStandalone ? 'renderApplication' : 'renderModule'} should work`,
          waitForAsync(() => {
            const options = {document: doc};
-           const bootstrap = isStandalone ?
-               renderApplication(MyAsyncServerAppStandalone, {...options, appId: 'simple-cmp'}) :
-               renderModule(AsyncServerModule, options);
+           const bootstrap = isStandalone ? renderApplication(MyAsyncServerAppStandalone, options) :
+                                            renderModule(AsyncServerModule, options);
            bootstrap.then(output => {
              expect(output).toBe(expectedOutput);
              called = true;
@@ -718,7 +772,7 @@ describe('platform-server integration', () => {
 
            const options = {document};
            const bootstrap = isStandalone ?
-               renderApplication(MyAsyncServerAppStandalone, {document, appId: 'simple-cmp'}) :
+               renderApplication(MyAsyncServerAppStandalone, {document}) :
                renderModule(AsyncServerModule, options);
            bootstrap
                .then(output => {
@@ -738,7 +792,7 @@ describe('platform-server integration', () => {
       it('works with SVG elements', waitForAsync(() => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
-               renderApplication(SVGComponentStandalone, {...options, appId: 'simple-cmp'}) :
+               renderApplication(SVGComponentStandalone, {...options}) :
                renderModule(SVGServerModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
@@ -750,14 +804,13 @@ describe('platform-server integration', () => {
 
       it('works with animation', waitForAsync(() => {
            const options = {document: doc};
-           const bootstrap = isStandalone ?
-               renderApplication(MyAnimationAppStandalone, {...options, appId: 'simple-cmp'}) :
-               renderModule(AnimationServerModule, options);
+           const bootstrap = isStandalone ? renderApplication(MyAnimationAppStandalone, options) :
+                                            renderModule(AnimationServerModule, options);
            bootstrap.then(output => {
              expect(output).toContain('Works!');
              expect(output).toContain('ng-trigger-myAnimation');
              expect(output).toContain('opacity:1;');
-             expect(output).toContain('transform:translate3d(0 , 0 , 0);');
+             expect(output).toContain('transform:translate3d(0, 0, 0);');
              expect(output).toContain('font-weight:bold;');
              called = true;
            });
@@ -766,24 +819,11 @@ describe('platform-server integration', () => {
       it('should handle ViewEncapsulation.ShadowDom', waitForAsync(() => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
-               renderApplication(
-                   ShadowDomEncapsulationAppStandalone, {...options, appId: 'simple-cmp'}) :
+               renderApplication(ShadowDomEncapsulationAppStandalone, options) :
                renderModule(ShadowDomExampleModule, options);
            bootstrap.then(output => {
              expect(output).not.toBe('');
              expect(output).toContain('color: red');
-             called = true;
-           });
-         }));
-
-      it('sets a prefix for the _nghost and _ngcontent attributes', waitForAsync(() => {
-           const options = {document: doc};
-           const bootstrap = isStandalone ?
-               renderApplication(MyStylesAppStandalone, {...options, appId: 'example-styles'}) :
-               renderModule(ExampleStylesModule, options);
-           bootstrap.then(output => {
-             expect(output).toMatch(
-                 /<html><head><style ng-transition="example-styles">div\[_ngcontent-sc\d+\] {color: blue; } \[_nghost-sc\d+\] { color: red; }<\/style><\/head><body><app _nghost-sc\d+="" ng-version="0.0.0-PLACEHOLDER" ng-server-context="other"><div _ngcontent-sc\d+="">Works!<\/div><\/app><\/body><\/html>/);
              called = true;
            });
          }));
@@ -798,12 +838,11 @@ describe('platform-server integration', () => {
            }];
            const bootstrap = isStandalone ?
                renderApplication(
-                   MyStylesAppStandalone,
-                   {...options, platformProviders: providers, appId: 'example-styles'}) :
+                   MyStylesAppStandalone, {...options, platformProviders: providers}) :
                renderModule(ExampleStylesModule, {...options, extraProviders: providers});
            bootstrap.then(output => {
              expect(output).toMatch(
-                 /<html><head><style ng-transition="example-styles">div\[_ngcontent-sc\d+\] {color: blue; } \[_nghost-sc\d+\] { color: red; }<\/style><\/head><body><app _nghost-sc\d+="" ng-version="0.0.0-PLACEHOLDER" ng-server-context="ssg"><div _ngcontent-sc\d+="">Works!<\/div><\/app><\/body><\/html>/);
+                 /<app _nghost-ng-c\d+="" ng-version="0.0.0-PLACEHOLDER" ng-server-context="ssg">/);
              called = true;
            });
          }));
@@ -818,12 +857,27 @@ describe('platform-server integration', () => {
            }];
            const bootstrap = isStandalone ?
                renderApplication(
-                   MyStylesAppStandalone,
-                   {...options, platformProviders: providers, appId: 'example-styles'}) :
+                   MyStylesAppStandalone, {...options, platformProviders: providers}) :
                renderModule(ExampleStylesModule, {...options, extraProviders: providers});
            bootstrap.then(output => {
              // All symbols other than [a-zA-Z0-9\-] are removed
              expect(output).toMatch(/ng-server-context="Someextrachars----"/);
+             called = true;
+           });
+         }));
+
+      it(`using ${isStandalone ? 'renderApplication' : 'renderModule'} ` +
+             `should serialize transfer state only once`,
+         waitForAsync(() => {
+           const options = {document: doc};
+           const bootstrap = isStandalone ?
+               renderApplication(MyTransferStateAppStandalone, options) :
+               renderModule(MyTransferStateModule, options);
+           bootstrap.then(output => {
+             const expectedOutput =
+                 '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other"><div>Works!</div></app>' +
+                 '<script id="ng-state" type="application/json">{&q;some-key&q;:&q;some-value&q;}</script></body></html>';
+             expect(output).toEqual(expectedOutput);
              called = true;
            });
          }));
@@ -839,8 +893,7 @@ describe('platform-server integration', () => {
            }];
            const bootstrap = isStandalone ?
                renderApplication(
-                   MyStylesAppStandalone,
-                   {...options, platformProviders: providers, appId: 'example-styles'}) :
+                   MyStylesAppStandalone, {...options, platformProviders: providers}) :
                renderModule(ExampleStylesModule, {...options, extraProviders: providers});
            bootstrap.then(output => {
              // All symbols other than [a-zA-Z0-9\-] are removed,
@@ -852,9 +905,8 @@ describe('platform-server integration', () => {
 
       it('should handle false values on attributes', waitForAsync(() => {
            const options = {document: doc};
-           const bootstrap = isStandalone ?
-               renderApplication(MyHostComponentStandalone, {...options, appId: 'example-app'}) :
-               renderModule(FalseAttributesModule, options);
+           const bootstrap = isStandalone ? renderApplication(MyHostComponentStandalone, options) :
+                                            renderModule(FalseAttributesModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
                  '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
@@ -865,9 +917,8 @@ describe('platform-server integration', () => {
 
       it('should handle element property "name"', waitForAsync(() => {
            const options = {document: doc};
-           const bootstrap = isStandalone ?
-               renderApplication(MyInputComponentStandalone, {...options, appId: 'example-app'}) :
-               renderModule(NameModule, options);
+           const bootstrap = isStandalone ? renderApplication(MyInputComponentStandalone, options) :
+                                            renderModule(NameModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
                  '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
@@ -882,9 +933,8 @@ describe('platform-server integration', () => {
            (global as any).Node = undefined;
            (global as any).Document = undefined;
            const options = {document: doc};
-           const bootstrap = isStandalone ?
-               renderApplication(HTMLTypesAppStandalone, {...options, appId: 'example-app'}) :
-               renderModule(HTMLTypesModule, options);
+           const bootstrap = isStandalone ? renderApplication(HTMLTypesAppStandalone, options) :
+                                            renderModule(HTMLTypesModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
                  '<html><head></head><body><app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">' +
@@ -896,7 +946,7 @@ describe('platform-server integration', () => {
       it('should handle element property "hidden"', waitForAsync(() => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
-               renderApplication(MyHiddenComponentStandalone, {...options, appId: 'example-app'}) :
+               renderApplication(MyHiddenComponentStandalone, options) :
                renderModule(HiddenModule, options);
            bootstrap.then(output => {
              expect(output).toBe(
@@ -910,8 +960,7 @@ describe('platform-server integration', () => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
                renderApplication(
-                   MyServerAppStandalone,
-                   {...options, appId: 'example-app', providers: [...RenderHookProviders]}) :
+                   getStandaloneBoostrapFn(MyServerAppStandalone, RenderHookProviders), options) :
                renderModule(RenderHookModule, options);
            bootstrap.then(output => {
              // title should be added by the render hook.
@@ -927,8 +976,8 @@ describe('platform-server integration', () => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
                renderApplication(
-                   MyServerAppStandalone,
-                   {...options, appId: 'example-app', providers: [...MultiRenderHookProviders]}) :
+                   getStandaloneBoostrapFn(MyServerAppStandalone, MultiRenderHookProviders),
+                   options) :
                renderModule(MultiRenderHookModule, options);
            bootstrap.then(output => {
              // title should be added by the render hook.
@@ -944,8 +993,8 @@ describe('platform-server integration', () => {
            const options = {document: doc};
            const bootstrap = isStandalone ?
                renderApplication(
-                   MyServerAppStandalone,
-                   {...options, appId: 'example-app', providers: [...AsyncRenderHookProviders]}) :
+                   getStandaloneBoostrapFn(MyServerAppStandalone, AsyncRenderHookProviders),
+                   options) :
                renderModule(AsyncRenderHookModule, options);
            bootstrap.then(output => {
              // title should be added by the render hook.
@@ -959,12 +1008,11 @@ describe('platform-server integration', () => {
       it('should call multiple async and sync render hooks', waitForAsync(() => {
            const consoleSpy = spyOn(console, 'warn');
            const options = {document: doc};
-           const bootstrap = isStandalone ? renderApplication(MyServerAppStandalone, {
-             ...options,
-             appId: 'example-app',
-             providers: [...AsyncMultiRenderHookProviders]
-           }) :
-                                            renderModule(AsyncMultiRenderHookModule, options);
+           const bootstrap = isStandalone ?
+               renderApplication(
+                   getStandaloneBoostrapFn(MyServerAppStandalone, AsyncMultiRenderHookProviders),
+                   options) :
+               renderModule(AsyncMultiRenderHookModule, options);
            bootstrap.then(output => {
              // title should be added by the render hook.
              expect(output).toBe(
@@ -974,6 +1022,75 @@ describe('platform-server integration', () => {
              called = true;
            });
          }));
+
+      it(`should wait for InitialRenderPendingTasks before serializing ` +
+             `(standalone: ${isStandalone})`,
+         waitForAsync(() => {
+           const options = {document: doc};
+           const bootstrap = isStandalone ?
+               renderApplication(getStandaloneBoostrapFn(PendingTasksAppStandalone), options) :
+               renderModule(PendingTasksAppModule, options);
+           bootstrap.then(output => {
+             expect(output).toBe(
+                 '<html><head></head><body>' +
+                 '<app ng-version="0.0.0-PLACEHOLDER" ng-server-context="other">Completed: Yes</app>' +
+                 '</body></html>');
+             called = true;
+           });
+         }));
+    });
+  });
+
+  describe('Router', () => {
+    it('should wait for lazy routes before serializing', async () => {
+      const ngZone = TestBed.inject(NgZone);
+
+      @Component({
+        standalone: true,
+        selector: 'lazy',
+        template: `LazyCmp content`,
+      })
+      class LazyCmp {
+      }
+
+      const routes: Routes = [{
+        path: '',
+        loadComponent: () => {
+          return ngZone.runOutsideAngular(() => {
+            return new Promise(resolve => {
+              setTimeout(() => resolve(LazyCmp), 100);
+            });
+          });
+        },
+      }];
+
+      @Component({
+        standalone: false,
+        selector: 'app',
+        template: `
+          Works!
+          <router-outlet />
+        `,
+      })
+      class MyServerApp {
+      }
+
+      @NgModule({
+        declarations: [MyServerApp],
+        exports: [MyServerApp],
+        imports: [BrowserModule, ServerModule, RouterOutlet],
+        providers: [provideRouter(routes)],
+        bootstrap: [MyServerApp],
+      })
+      class MyServerAppModule {
+      }
+
+      const options = {document: '<html><head></head><body><app></app></body></html>'};
+      const output = await renderModule(MyServerAppModule, options);
+
+      // Expect serialization to happen once a lazy-loaded route completes loading
+      // and a lazy component is rendered.
+      expect(output).toContain('<lazy>LazyCmp content</lazy>');
     });
   });
 
@@ -998,244 +1115,6 @@ describe('platform-server integration', () => {
                expect(body).toEqual('success!');
              });
              mock.expectOne('http://localhost/testing').flush('success!');
-           });
-         });
-       }));
-
-    describe('relative requests', () => {
-      it('will throw if "useAbsoluteUrl" is true but "baseUrl" is not provided', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost',
-            useAbsoluteUrl: true,
-          },
-        }]);
-        const appRef = await platform.bootstrapModule(HttpClientExampleModule);
-        expect(() => appRef.injector.get(PlatformLocation))
-            .toThrowError(/"PlatformConfig\.baseUrl" must be set if "useAbsoluteUrl" is true/);
-      });
-
-      it('will resolve absolute url using "baseUrl"', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost',
-            useAbsoluteUrl: true,
-            baseUrl: 'https://angular.io:8080',
-          },
-        }]);
-        const appRef = await platform.bootstrapModule(HttpClientExampleModule);
-        const location = appRef.injector.get(PlatformLocation);
-        expect(location.protocol).toBe('https:');
-        expect(location.hostname).toBe('angular.io');
-        expect(location.port).toBe('8080');
-      });
-
-      it('"baseUrl" has no effect if "useAbsoluteUrl" is not enabled', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost',
-            baseUrl: 'https://angular.io:8080',
-          },
-        }]);
-        const appRef = await platform.bootstrapModule(HttpClientExampleModule);
-        const location = appRef.injector.get(PlatformLocation);
-        expect(location.protocol).toBe('http:');
-        expect(location.hostname).toBe('localhost');
-        expect(location.port).toBe('');
-      });
-
-      it('correctly maps to absolute URL request with base config', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost',
-            baseUrl: 'http://localhost',
-            useAbsoluteUrl: true,
-          }
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('/testing').subscribe((body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('success!');
-          });
-          mock.expectOne('http://localhost/testing').flush('success!');
-        });
-      });
-
-      it('uses default URL behavior when not enabled', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {document: '<app></app>', url: 'http://localhost', useAbsoluteUrl: false}
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('/testing').subscribe(() => {}, (body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('error');
-          });
-          mock.expectOne('/testing').flush('error');
-        });
-      });
-
-      it('correctly maps to absolute URL request with port', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost:5000',
-            baseUrl: 'http://localhost',
-            useAbsoluteUrl: true,
-          }
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('/testing').subscribe((body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('success!');
-          });
-          mock.expectOne('http://localhost:5000/testing').flush('success!');
-        });
-      });
-
-      it('correctly maps to absolute URL request with two slashes', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost/',
-            baseUrl: 'http://localhost',
-            useAbsoluteUrl: true,
-          }
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('/testing').subscribe((body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('success!');
-          });
-          mock.expectOne('http://localhost/testing').flush('success!');
-        });
-      });
-
-      it('correctly maps to absolute URL request with no slashes', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost',
-            baseUrl: 'http://localhost',
-            useAbsoluteUrl: true,
-          }
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('testing').subscribe((body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('success!');
-          });
-          mock.expectOne('http://localhost/testing').flush('success!');
-        });
-      });
-
-      it('correctly maps to absolute URL request with longer url and no slashes', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost/path/page',
-            baseUrl: 'http://localhost',
-            useAbsoluteUrl: true,
-          }
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('testing').subscribe((body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('success!');
-          });
-          mock.expectOne('http://localhost/path/testing').flush('success!');
-        });
-      });
-
-      it('correctly maps to absolute URL request with longer url and slashes', async () => {
-        const platform = platformDynamicServer([{
-          provide: INITIAL_CONFIG,
-          useValue: {
-            document: '<app></app>',
-            url: 'http://localhost/path/page',
-            baseUrl: 'http://localhost',
-            useAbsoluteUrl: true,
-          }
-        }]);
-        const ref = await platform.bootstrapModule(HttpClientExampleModule);
-        const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-        const http = ref.injector.get(HttpClient);
-        ref.injector.get(NgZone).run(() => {
-          http.get<string>('/testing').subscribe((body: string) => {
-            NgZone.assertInAngularZone();
-            expect(body).toEqual('success!');
-          });
-          mock.expectOne('http://localhost/testing').flush('success!');
-        });
-      });
-
-      it('correctly maps to absolute URL request with longer url, slashes, and base href',
-         async () => {
-           const platform = platformDynamicServer([{
-             provide: INITIAL_CONFIG,
-             useValue: {
-               document: '<base href="http://other"><app></app>',
-               url: 'http://localhost/path/page',
-               baseUrl: 'http://localhost',
-               useAbsoluteUrl: true,
-             }
-           }]);
-           const ref = await platform.bootstrapModule(HttpClientExampleModule);
-           const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-           const http = ref.injector.get(HttpClient);
-           ref.injector.get(NgZone).run(() => {
-             http.get<string>('/testing').subscribe((body: string) => {
-               NgZone.assertInAngularZone();
-               expect(body).toEqual('success!');
-             });
-             mock.expectOne('http://other/testing').flush('success!');
-           });
-         });
-    });
-
-    it('requests are macrotasks', waitForAsync(() => {
-         const platform = platformDynamicServer(
-             [{provide: INITIAL_CONFIG, useValue: {document: '<app></app>'}}]);
-         platform.bootstrapModule(HttpClientExampleModule).then(ref => {
-           const mock = ref.injector.get(HttpTestingController) as HttpTestingController;
-           const http = ref.injector.get(HttpClient);
-           ref.injector.get(NgZone).run(() => {
-             http.get<string>('http://localhost/testing').subscribe((body: string) => {
-               expect(body).toEqual('success!');
-             });
-             expect(ref.injector.get<NgZone>(NgZone).hasPendingMacrotasks).toBeTruthy();
-             mock.expectOne('http://localhost/testing').flush('success!');
-             expect(ref.injector.get<NgZone>(NgZone).hasPendingMacrotasks).toBeFalsy();
            });
          });
        }));

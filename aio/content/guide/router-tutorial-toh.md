@@ -28,31 +28,31 @@ Along the way, it highlights key features of the router such as:
 
   将应用程序功能组织到模块中
 
-* Navigating to a component (*Heroes* link to "Heroes List")
+* Navigating to a component \(*Heroes* link to "Heroes List"\)
 
   导航到组件（从 *Heroes* 链接导航到“英雄列表”）
 
-* Including a route parameter (passing the Hero `id` while routing to the "Hero Detail")
+* Including a route parameter \(passing the Hero `id` while routing to the "Hero Detail"\)
 
   包括一个路由参数（在路由到“英雄详细信息”时传入英雄的 `id`）
 
-* Child routes (the *Crisis Center* has its own routes)
+* Child routes \(the *Crisis Center* has its own routes\)
 
   子路由（*危机中心*特性区有自己的路由）
 
-* The `canActivate` guard (checking route access)
+* The `canActivate` guard \(checking route access\)
 
   `canActivate` 守卫（检查路由访问）
 
-* The `canActivateChild` guard (checking child route access)
+* The `canActivateChild` guard \(checking child route access\)
 
   `canActivateChild` 守卫（检查子路由访问）
 
-* The `canDeactivate` guard (ask permission to discard unsaved changes)
+* The `canDeactivate` guard \(ask permission to discard unsaved changes\)
 
   `canDeactivate` 守卫（在放弃未保存的更改之前请求许可）
 
-* The `resolve` guard (pre-fetching route data)
+* The `resolve` guard \(pre-fetching route data\)
 
   `resolve` 守卫（预先获取路由数据）。
 
@@ -60,13 +60,13 @@ Along the way, it highlights key features of the router such as:
 
   惰性加载 `NgModule`
 
-* The `canLoad` guard (check before loading feature module assets)
+* The `canMatch` guard \(check before loading feature module assets\)
 
-  `canLoad` 守卫（在加载功能模块的文件之前检查）
+  `canMatch` 守卫（在加载功能模块的文件之前检查）
 
 This guide proceeds as a sequence of milestones as if you were building the application step-by-step, but assumes you are familiar with basic [Angular concepts](guide/architecture).
 For a general introduction to angular, see the [Getting Started](start).
-For a more in-depth overview, see the [Tour of Heroes](tutorial) tutorial.
+For a more in-depth overview, see the [Tour of Heroes](tutorial/tour-of-heroes) tutorial.
 
 本指南按照里程碑的顺序进行，就像你逐步构建应用程序一样，但这里假定你已经熟悉 [Angular 的](guide/architecture)基本概念。关于 Angular 的一般性介绍，请参见[《入门指南》](start)。关于更深入的概述，请参见[《英雄之旅》](tutorial)教程。
 
@@ -86,7 +86,7 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
-You might find the [Tour of Heroes tutorial](tutorial) helpful, but it is not required.
+You might find the [Tour of Heroes tutorial](tutorial/tour-of-heroes) helpful, but it is not required.
 
 你可能会发现[《英雄之旅》教程](tutorial)很有用，但这不是必需的。
 
@@ -419,7 +419,7 @@ Because a wildcard route is the least specific route, place it last in the route
 
 </div>
 
-To test this feature, add a button with a `RouterLink` to the `HeroListComponent` template and set the link to a non-existant route called `"/sidekicks"`.
+To test this feature, add a button with a `RouterLink` to the `HeroListComponent` template and set the link to a non-existent route called `"/sidekicks"`.
 
 要测试本特性，请往 `HeroListComponent` 的模板中添加一个带 `RouterLink` 的按钮，并且把它的链接设置为一个不存在的路由 `"/sidekicks"`。
 
@@ -840,7 +840,7 @@ This milestone covers the following:
 
   通过路由传递必要信息和可选信息
 
-This sample application recreates the heroes feature in the "Services" section of the [Tour of Heroes tutorial](tutorial/toh-pt4 "Tour of Heroes: Services"), and reuses much of the code from the <live-example name="toh-pt4" title="Tour of Heroes: Services example code"></live-example>.
+This sample application recreates the heroes feature in the "Services" section of the [Tour of Heroes tutorial](tutorial/tour-of-heroes/toh-pt4 "Tour of Heroes: Services"), and reuses much of the code from the <live-example name="toh-pt4" title="Tour of Heroes: Services example code"></live-example>.
 
 这个示例应用在[“英雄指南”教程](tutorial/toh-pt4 "英雄指南：服务")的“服务”部分重新创建了英雄特性区，并复用了<live-example name="toh-pt4" title="Tour of Heroes: Services example code"></live-example>中的大部分代码。
 
@@ -2515,7 +2515,7 @@ A guard's return value controls the router's behavior:
 <div class="alert is-helpful">
 
 **Note:** The guard can also tell the router to navigate elsewhere, effectively canceling the current navigation.
-When doing so inside a guard, the guard should return `UrlTree`;
+When doing so inside a guard, the guard should return `UrlTree`.
 
 **注意**：守卫还可以告诉路由器导航到别处，这样也会取消当前的导航。要想在守卫中这么做，就要返回 `UrlTree`。
 
@@ -2528,7 +2528,7 @@ These are all asynchronous operations.
 
 守卫可以用同步的方式返回一个布尔值。但在很多情况下，守卫无法用同步的方式给出答案。守卫可能会向用户问一个问题、把更改保存到服务器，或者获取新数据，而这些都是异步操作。
 
-Accordingly, a routing guard can return an `Observable<boolean>` or a `Promise<boolean>` and the router will wait for the observable to resolve to `true` or `false`.
+Accordingly, a routing guard can return an `Observable<boolean>` or a `Promise<boolean>` and the router will wait for the observable or the promise to resolve to `true` or `false`.
 
 因此，路由的守卫可以返回一个 `Observable<boolean>` 或 `Promise<boolean>`，并且路由器会等待这个可观察对象被解析为 `true` 或 `false`。
 
@@ -2542,7 +2542,7 @@ The observable provided to the `Router` automatically completes after it retriev
 
 </div>
 
-The router supports multiple guard interfaces:
+The router supports multiple guard methods:
 
 路由器可以支持多种守卫接口：
 
@@ -2557,15 +2557,13 @@ The router supports multiple guard interfaces:
 | [`canDeactivate`](api/router/CanDeactivateFn) | 从当前路由*离开*时介入 |
 | [`resolve`](api/router/ResolveFn) | To perform route data retrieval *before* route activation |
 | [`resolve`](api/router/ResolveFn) | 在某路由激活*之前*获取路由数据 |
-| [`canLoad`](api/router/CanLoadFn) | To mediate navigation *to* a feature module loaded *asynchronously* |
-| [`canLoad`](api/router/CanLoadFn) | 导航到某个异步加载的特性模块时介入 |
 | [`canMatch`](api/router/CanMatchFn) | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
 | [`canMatch`](api/router/CanMatchFn) | 控制是否应该使用 `Route` ，即使 `path` 与 URL 段匹配。 |
 
 You can have multiple guards at every level of a routing hierarchy.
 The router checks the `canDeactivate` guards first, from the deepest child route to the top.
 Then it checks the `canActivate` and `canActivateChild` guards from the top down to the deepest child route.
-If the feature module is loaded asynchronously, the `canLoad` guard is checked before the module is loaded.
+If the feature module is loaded asynchronously, the `canMatch` guard is checked before the module is loaded.
 
 在分层路由的每个级别上，你都可以设置多个守卫。路由器会先按照从最深的子路由由下往上检查的顺序来检查 `canDeactivate()` 守卫。然后它会按照从上到下的顺序检查 `canActivate()` 守卫。如果特性模块是异步加载的，在加载它之前还会检查 `canLoad()` 守卫。
 
@@ -2787,7 +2785,7 @@ Write a `canActivate()` guard method to redirect anonymous users to the login pa
 
 编写一个 `canActivate()` 守卫，将正在尝试访问管理组件匿名用户重定向到登录页。
 
-Create a new file named `auth.guard.ts` function in the `auth` folder. The `auth.guard.ts` file will contain the `authGuard` function.
+Create a new file named `auth.guard.ts` in the `auth` folder. The `auth.guard.ts` file will contain the `authGuard` function.
 
 在 `auth` 文件夹中创建一个名为 `auth.guard.ts` 的新文件。 `auth.guard.ts` 文件将包含 `authGuard` 函数。
 
@@ -2799,7 +2797,7 @@ ng generate guard auth/auth
 </code-example>
  -->
 
-To demonstrate the fundamentals, this example only logs to the console, `returns` true immediately, and lets navigation proceed:
+To demonstrate the fundamentals, this example only logs to the console, returns `true` immediately, and lets navigation proceed:
 
 为了演示这些基础知识，这个例子只把日志写到控制台中，立即 `return` true，并允许继续导航：
 
@@ -2863,24 +2861,10 @@ Revise the `authGuard` to call the `AuthService`.
 
 <code-example header="src/app/auth/auth.guard.ts (v2)" path="router/src/app/auth/auth.guard.2.ts"></code-example>
 
-Notice that you inject the `AuthService` and the `Router` in the constructor.
-You haven't provided the `AuthService` yet but it's good to know that you can inject helpful services into routing guards.
-
-注意，你把 `AuthService` 和 `Router` 服务注入到了构造函数中。你还没有提供 `AuthService`，这里要说明的是：可以往路由守卫中注入有用的服务。
-
-This guard returns a synchronous boolean result.
-If the user is logged in, it returns true and the navigation continues.
-
-该守卫返回一个同步的布尔值。如果用户已经登录，它就返回 `true`，导航会继续。
-
-The `ActivatedRouteSnapshot` contains the *future* route that will be activated and the `RouterStateSnapshot` contains the *future* `RouterState` of the application, should you pass through the guard check.
-
-这个 `ActivatedRouteSnapshot` 包含了*即将*被激活的路由，而 `RouterStateSnapshot` 包含了该应用*即将*到达的状态。你应该通过守卫进行检查。
-
-If the user is not logged in, you store the attempted URL the user came from using the `RouterStateSnapshot.url` and tell the router to redirect to a login page — a page you haven't created yet.
+This guard returns a synchronous boolean result or a `UrlTree`.
+If the user is logged in, it returns `true` and the navigation continues.
+Otherwise, it redirects to a login page; a page you haven't created yet.
 Returning a `UrlTree` tells the `Router` to cancel the current navigation and schedule a new one to redirect the user.
-
-如果用户还没有登录，你就会用 `RouterStateSnapshot.url` 保存用户来自的 URL 并让路由器跳转到登录页（你尚未创建该页）。返回 `UrlTree` 会告诉路由器取消这次导航，并把用户重定向到一个新地址。
 
 <a id="add-login-component"></a>
 
@@ -2900,8 +2884,8 @@ ng generate component auth/login
 
 </code-example>
 
-Register a `/login` route in the `auth/auth-routing.module.ts`.
-In `app.module.ts`, import and add the `AuthModule` to the `AppModule` imports.
+Register a `/login` route in the `auth/auth-routing.module.ts` file.
+In `app.module.ts`, import and add `AuthModule` to the `AppModule` imports array.
 
 在 `auth/auth-routing.module.ts` 文件中注册一个 `/login` 路由。在 `app.module.ts` 中，导入 `AuthModule` 并且添加到 `AppModule` 的 `imports` 中。
 
@@ -2912,20 +2896,6 @@ In `app.module.ts`, import and add the `AuthModule` to the `AppModule` imports.
     <code-pane header="src/app/auth/auth.module.ts" path="router/src/app/auth/auth.module.ts"></code-pane>
 </code-tabs>
 
-<a id="can-match-guard"></a>
-
-### `canMatch`: Controlling `Route` matching based on application conditions
-
-### `canMatch` ：根据应用程序中的条件控制 `Route` 匹配
-
-As an alternative to using a `canActivate` guard which redirects the user to a new page if they do not have access, you can instead
-use a `canMatch` guard to control whether the `Router` even attempts to activate a `Route`. This allows you to have
-multiple `Route` configurations which share the same `path` but are matched based on different conditions. In addition, this approach
-can allow the `Router` to match the wildcard `Route` instead.
-
-作为使用 `canActivate` 保护器的替代方案，如果用户没有访问权限，则会将用户重定向到新页面，你可以用 `canMatch` 保护器来控制 `Router` 是否尝试激活 `Route` 。这允许你有多个 `Route` 配置，这些配置共享相同的 `path` ，但会根据不同的条件进行匹配。此外，这种方法还可以让 `Router` 改为匹配通配符的 `Route` 。
-
-<code-example path="router/src/app/admin/admin-routing.module.2.ts" header="src/app/admin/admin-routing.module.ts (guarded admin route)" region="can-match"></code-example>
 
 <a id="can-activate-child-guard"></a>
 
@@ -2944,21 +2914,8 @@ You should also protect child routes *within* the feature module.
 
 你要保护管理特性模块，防止它被非授权访问，还要保护这个特性模块*内部*的那些子路由。
 
-Extend the `authGuard` to protect when navigating between the `admin` routes.
-Open `auth.guard.ts` and add the `CanActivateChildFn` interface to the imported tokens from the router package.
-
-扩展 `authGuard` 以便在 `admin` 路由之间导航时提供保护。打开 `auth.guard.ts` 并从路由库中导入 `CanActivateChildFn` 接口。
-
-Next, indicate the method acts as a `canActivateChild` guard as well by adding `|CanActivateChildFn` to the type.
-
-接下来，通过把 `|CanActivateChildFn` 添加到类型信息里，来把此方法标记为 `canActivateChild` 守卫。
-
-<code-example header="src/app/auth/auth.guard.ts (excerpt)" path="router/src/app/auth/auth.guard.3.ts" region="can-activate-child"></code-example>
-
 Add the same `authGuard` to the `component-less` admin route to protect all other child routes at one time
 instead of adding the `authGuard` to each route individually.
-
-同样把这个 `authGuard` 添加到“无组件的”管理路由，来同时保护它的所有子路由，而不是为每个路由单独添加这个 `authGuard`。
 
 <code-example header="src/app/admin/admin-routing.module.ts (excerpt)" path="router/src/app/admin/admin-routing.module.3.ts" region="can-activate-child"></code-example>
 
@@ -3071,7 +3028,7 @@ Paste the following code into your guard.
 
 <code-example header="src/app/can-deactivate.guard.ts" path="router/src/app/can-deactivate.guard.ts"></code-example>
 
-While the guard doesn't have to know which component has a deactivate method, it can detect that the `CrisisDetailComponent` component has the `canDeactivate()` method and call it.
+While the guard doesn't have to know which component has a `deactivate` method, it can detect that the `CrisisDetailComponent` component has the `canDeactivate()` method and call it.
 The guard not knowing the details of any component's deactivation method makes the guard reusable.
 
 守卫不需要知道哪个组件有 `deactivate` 方法，它可以检测 `CrisisDetailComponent` 组件有没有 `canDeactivate()` 方法并调用它。守卫在不知道任何组件 `deactivate` 方法细节的情况下，就能让这个守卫重复使用。
@@ -3416,11 +3373,11 @@ In `app.module.ts`, remove the `AdminModule` import statement from the top of th
 
 在 `app.module.ts` 中，从顶部移除 `AdminModule` 的导入语句，并且从 NgModule 的 `imports` 数组中移除 `AdminModule`。
 
-<a id="can-load-guard"></a>
+<a id="can-match-guard"></a>
 
-### `canLoad`: guarding unauthorized loading of feature modules
+### `canMatch`: guarding unauthorized access of feature modules
 
-### `canLoad`：保护对特性模块的未授权加载
+### `canMatch`：保护对特性模块的未授权访问
 
 You're already protecting the `AdminModule` with a `canActivate` guard that prevents unauthorized users from accessing the admin feature area.
 It redirects to the login page if the user is not authorized.
@@ -3432,32 +3389,16 @@ Ideally, you'd only load the `AdminModule` if the user is logged in.
 
 但是路由器仍然会加载 `AdminModule` —— 即使用户无法访问它的任何一个组件。理想的方式是，只有在用户已登录的情况下你才加载 `AdminModule`。
 
-Add a `canLoad` guard that only loads the `AdminModule` once the user is logged in *and* attempts to access the admin feature area.
+A `canMatch` guard controls whether the `Router` attempts to match a `Route`. This lets you have
+multiple `Route` configurations that share the same `path` but are matched based on different conditions. This approach
+allows the `Router` to match the wildcard `Route` instead.
 
-添加一个 `canLoad` 守卫，它只在用户已登录*并且*尝试访问管理特性区的时候，才加载 `AdminModule` 一次。
+The existing `authGuard` contains the logic to support the `canMatch` guard.
 
-The existing `authGuard` already has the essential logic to support the `canLoad` guard.
-
-现有的 `authGuard` 已经有了支持 `canLoad` 保护的基本逻辑。
-
-1. Open `auth.guard.ts`.
-
-   打开 `auth.guard.ts`。
-
-1. Import the `CanLoadFn` interface from `@angular/router`.
-
-   从 `@angular/router` 导入 `CanLoadFn` 接口。
-
-1. Add it to the `authGuard` function's type.
-
-   将其添加到 `authGuard` 函数的类型中。
-
-<code-example header="src/app/auth/auth.guard.ts (canLoad guard)" path="router/src/app/auth/auth.guard.ts" region="canLoad"></code-example>
-
-Now add the `authGuard` to the `canLoad` array property for the `admin` route.
+Finally, add the `authGuard` to the `canMatch` array property for the `admin` route.
 The completed admin route looks like this:
 
-现在，把 `authGuard` 添加到 `admin` 路由的 `canLoad` 数组中。完整的 `admin` 路由是这样的：
+最后，把 `authGuard` 添加到 `admin` 路由的 `canMatch` 数组中。完整的 `admin` 路由是这样的：
 
 <code-example header="app-routing.module.ts (lazy admin route)" path="router/src/app/app-routing.module.5.ts" region="admin"></code-example>
 
@@ -3585,29 +3526,6 @@ When you visit `http://localhost:4200`, the `/heroes` route loads immediately up
 
 当访问 `http://localhost:4200` 时，`/heroes` 路由立即随之启动，并且路由器在加载了 `HeroesModule` 之后立即开始加载 `CrisisCenterModule`。
 
-Currently, the `AdminModule` does not preload because `canLoad` is blocking it.
-
-目前，`AdminModule` 并没有预加载，因为 `canLoad` 阻塞了它。
-
-<a id="preload-canload"></a>
-
-#### `canLoad` blocks preload of children
-
-#### `canLoad` 会阻塞子路由的预加载
-
-The `PreloadAllModules` strategy does not load feature areas protected by a [canLoad](#can-load-guard) guard.
-
-`PreloadAllModules` 策略不会加载被 [canLoad](#can-load-guard) 守卫所保护的特性区。
-
-You added a `canLoad` guard to the route in the `AdminModule` a few steps back to block loading of that module until the user is authorized.
-That `canLoad` guard takes precedence over the preload strategy for loading children routes.
-
-几步之前，你刚刚给 `AdminModule` 中的路由添加了 `canLoad` 守卫，以阻塞加载那个模块，直到用户认证结束。在加载子路由时，`canLoad` 守卫的优先级高于预加载策略。
-
-If you want to preload a module as well as guard against unauthorized access, remove the `canLoad()` guard method and rely on the [canActivate()](#can-activate-guard) guard alone.
-
-如果你要加载一个模块并且保护它防止未授权访问，请移除 `canLoad` 守卫，只单独依赖[CanActivate](#can-activate-guard)守卫。
-
 <a id="custom-preloading"></a>
 
 ### Custom Preloading Strategy
@@ -3668,7 +3586,9 @@ If the route does not preload, it returns an `Observable` of `null`.
 
 `preload` 的实现要返回一个 `Observable`。如果该路由应该预加载，它就会返回调用加载器函数所返回的 `Observable`。如果该路由*不*应该预加载，它就返回一个 `null` 值的 `Observable` 对象。
 
-In this sample, the  `preload()` method loads the route if the route's `data.preload` flag is truthy.
+In this sample, the  `preload()` method loads the route if the route's `data.preload` flag is truthy. We also skip loading the
+`Route` if there is a `canMatch` guard because the user might
+not have access to it.
 
 在这个例子中，如果路由的 `data.preload` 标志是真值，则 `preload()` 方法会加载该路由。
 

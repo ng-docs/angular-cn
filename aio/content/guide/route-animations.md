@@ -2,10 +2,6 @@
 
 # 路由转场动画
 
-Routing enables users to navigate between different routes in an application.
-
-路由使用户能够在应用程序中的不同路由之间导航。
-
 ## Prerequisites
 
 ## 前提条件

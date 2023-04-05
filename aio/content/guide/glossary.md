@@ -920,13 +920,6 @@ Compare to [NgModule][AioGuideGlossaryNgmodule].
 
 与 [NgModule][AioGuideGlossaryNgmodule] 的对比。
 
-## ngcc
-
-Angular compatibility compiler.
-If you build your application using [Ivy][AioGuideGlossaryIvy], but it depends on libraries that have not been compiled with Ivy, the Angular CLI uses `ngcc` to automatically update the dependent libraries to use Ivy.
-
-Angular 兼容性编译器。如果使用 [Ivy][AioGuideGlossaryIvy] 构建应用程序，但依赖未用 Ivy 编译的库，则 CLI 将使用 `ngcc` 自动更新依赖库以使用 Ivy。
-
 ## NgModule
 
 ## Ng 模块（NgModule）
@@ -1704,7 +1697,7 @@ Angular 曾经用过的编译和渲染管道。它已被 [Ivy][AioGuideGlossaryI
 ## 视图树（View hierarchy）
 
 A tree of related views that can be acted on as a unit.
-The root view referenced as the *host view* of a component.
+The root view is referenced as the *host view* of a component.
 A host view is the root of a tree of *embedded views*, collected in a `ViewContainerRef` view container attached to an anchor element in the hosting component.
 The view hierarchy is a key part of Angular [change detection][AioGuideGlossaryChangeDetection].
 
@@ -1944,9 +1937,6 @@ Learn more about zones in this [Brian Ford video][YoutubeWatchV3iqtmusceU].
 [AioGuideGlossaryM]: guide/glossary#module "M - Glossary | Angular"
 
 [AioGuideGlossaryModule]: guide/glossary#module "module - Glossary | Angular"
-
-[AioGuideGlossaryN]: guide/glossary#ngcc "N - Glossary | Angular"
-
 [AioGuideGlossaryNgmodule]: guide/glossary#ngmodule "NgModule - Glossary | Angular"
 
 [AioGuideGlossaryNpmPackage]: guide/glossary#npm-package "npm package - Glossary | Angular"
@@ -2123,4 +2113,4 @@ Learn more about zones in this [Brian Ford video][YoutubeWatchV3iqtmusceU].
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-02-16

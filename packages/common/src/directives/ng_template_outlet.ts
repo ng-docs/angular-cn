@@ -46,8 +46,8 @@ import {Directive, EmbeddedViewRef, Injector, Input, OnChanges, SimpleChanges, T
   selector: '[ngTemplateOutlet]',
   standalone: true,
 })
-export class NgTemplateOutlet implements OnChanges {
-  private _viewRef: EmbeddedViewRef<any>|null = null;
+export class NgTemplateOutlet<C = unknown> implements OnChanges {
+  private _viewRef: EmbeddedViewRef<C>|null = null;
 
   /**
    * A context object to attach to the {@link EmbeddedViewRef}. This should be an
@@ -60,7 +60,7 @@ export class NgTemplateOutlet implements OnChanges {
    * 声明中进行绑定。在上下文对象中使用 `$implicit` 为键名时，将把它作为默认值。
    *
    */
-  @Input() public ngTemplateOutletContext: Object|null = null;
+  @Input() public ngTemplateOutletContext: C|null = null;
 
   /**
    * A string defining the template reference and optionally the context object for the template.
@@ -68,7 +68,7 @@ export class NgTemplateOutlet implements OnChanges {
    * 一个字符串，用于定义模板引用以及模板的上下文对象。
    *
    */
-  @Input() public ngTemplateOutlet: TemplateRef<any>|null = null;
+  @Input() public ngTemplateOutlet: TemplateRef<C>|null = null;
 
   /**
    * Injector to be used within the embedded view.
@@ -93,10 +93,11 @@ export class NgTemplateOutlet implements OnChanges {
         const {
           ngTemplateOutlet: template,
           ngTemplateOutletContext: context,
-          ngTemplateOutletInjector: injector
+          ngTemplateOutletInjector: injector,
         } = this;
-        this._viewRef = viewContainerRef.createEmbeddedView(
-            template, context, injector ? {injector} : undefined);
+        this._viewRef =
+            viewContainerRef.createEmbeddedView(
+                template, context, injector ? {injector} : undefined) as EmbeddedViewRef<C>;
       } else {
         this._viewRef = null;
       }

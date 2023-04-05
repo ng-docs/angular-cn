@@ -12,7 +12,7 @@ import {OwningModule, Reference} from '../../imports';
 import {ClassDeclaration, isNamedClassDeclaration, ReflectionHost, TypeValueReferenceKind} from '../../reflection';
 import {nodeDebugInfo} from '../../util/src/typescript';
 
-import {DirectiveMeta, HostDirectiveMeta, MatchSource, MetadataReader, MetaKind, NgModuleMeta, PipeMeta} from './api';
+import {DirectiveMeta, HostDirectiveMeta, InputMapping, MatchSource, MetadataReader, MetaKind, NgModuleMeta, PipeMeta} from './api';
 import {ClassPropertyMapping} from './property_mapping';
 import {extractDirectiveTypeCheckMeta, extractReferencesFromType, extraReferenceFromTypeQuery, readBooleanType, readMapType, readStringArrayType, readStringType} from './util';
 
@@ -108,8 +108,7 @@ export class DtsMetadataReader implements MetadataReader {
     const isStandalone =
         def.type.typeArguments.length > 7 && (readBooleanType(def.type.typeArguments[7]) ?? false);
 
-    const inputs = ClassPropertyMapping.fromMappedObject(
-        readMapType(def.type.typeArguments[3], readStringType));
+    const inputs = ClassPropertyMapping.fromMappedObject(readInputsType(def.type.typeArguments[3]));
     const outputs = ClassPropertyMapping.fromMappedObject(
         readMapType(def.type.typeArguments[4], readStringType));
     const hostDirectives = def.type.typeArguments.length > 8 ?
@@ -180,6 +179,44 @@ export class DtsMetadataReader implements MetadataReader {
       decorator: null,
     };
   }
+}
+
+function readInputsType(type: ts.TypeNode): Record<string, InputMapping> {
+  const inputsMap = {} as Record<string, InputMapping>;
+
+  if (ts.isTypeLiteralNode(type)) {
+    for (const member of type.members) {
+      if (!ts.isPropertySignature(member) || member.type === undefined ||
+          member.name === undefined ||
+          (!ts.isStringLiteral(member.name) && !ts.isIdentifier(member.name))) {
+        continue;
+      }
+
+      const stringValue = readStringType(member.type);
+
+      // Before v16 the inputs map has the type of `{[field: string]: string}`.
+      // After v16 it has the type of `{[field: string]: {alias: string, required: boolean}}`.
+      if (stringValue != null) {
+        inputsMap[member.name.text] = {
+          bindingPropertyName: stringValue,
+          classPropertyName: member.name.text,
+          required: false
+        };
+      } else {
+        const config = readMapType(member.type, innerValue => {
+                         return readStringType(innerValue) ?? readBooleanType(innerValue);
+                       }) as {alias: string, required: boolean};
+
+        inputsMap[member.name.text] = {
+          classPropertyName: member.name.text,
+          bindingPropertyName: config.alias,
+          required: config.required
+        };
+      }
+    }
+  }
+
+  return inputsMap;
 }
 
 function readBaseClass(clazz: ClassDeclaration, checker: ts.TypeChecker, reflector: ReflectionHost):

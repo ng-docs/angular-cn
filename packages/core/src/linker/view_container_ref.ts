@@ -8,18 +8,23 @@
 
 import {Injector} from '../di/injector';
 import {EnvironmentInjector} from '../di/r3_injector';
+import {validateMatchingNode} from '../hydration/error_handling';
+import {CONTAINERS} from '../hydration/interfaces';
+import {isInSkipHydrationBlock} from '../hydration/skip_hydration';
+import {getSegmentHead, isDisconnectedNode, markRNodeAsClaimedByHydration} from '../hydration/utils';
+import {findMatchingDehydratedView, locateDehydratedViewsInContainer} from '../hydration/views';
 import {isType, Type} from '../interface/type';
 import {assertNodeInjector} from '../render3/assert';
 import {ComponentFactory as R3ComponentFactory} from '../render3/component_ref';
 import {getComponentDef} from '../render3/definition';
 import {getParentInjectorLocation, NodeInjector} from '../render3/di';
 import {addToViewTree, createLContainer} from '../render3/instructions/shared';
-import {CONTAINER_HEADER_OFFSET, LContainer, NATIVE, VIEW_REFS} from '../render3/interfaces/container';
+import {CONTAINER_HEADER_OFFSET, DEHYDRATED_VIEWS, LContainer, NATIVE, VIEW_REFS} from '../render3/interfaces/container';
 import {NodeInjectorOffset} from '../render3/interfaces/injector';
-import {TContainerNode, TDirectiveHostNode, TElementContainerNode, TElementNode, TNodeType} from '../render3/interfaces/node';
-import {RComment, RElement} from '../render3/interfaces/renderer_dom';
+import {TContainerNode, TDirectiveHostNode, TElementContainerNode, TElementNode, TNode, TNodeType} from '../render3/interfaces/node';
+import {RComment, RElement, RNode} from '../render3/interfaces/renderer_dom';
 import {isLContainer} from '../render3/interfaces/type_checks';
-import {LView, PARENT, RENDERER, T_HOST, TVIEW} from '../render3/interfaces/view';
+import {HEADER_OFFSET, HYDRATION, LView, PARENT, RENDERER, T_HOST, TVIEW} from '../render3/interfaces/view';
 import {assertTNodeType} from '../render3/node_assert';
 import {addViewToContainer, destroyLView, detachView, getBeforeNodeForView, insertView, nativeInsertBefore, nativeNextSibling, nativeParentNode} from '../render3/node_manipulation';
 import {getCurrentTNode, getLView} from '../render3/state';
@@ -34,22 +39,16 @@ import {createElementRef, ElementRef} from './element_ref';
 import {NgModuleRef} from './ng_module_factory';
 import {TemplateRef} from './template_ref';
 import {EmbeddedViewRef, ViewRef} from './view_ref';
+
 /**
  * Represents a container where one or more views can be attached to a component.
- *
- * 表示可以将一个或多个视图附着到组件中的容器。
  *
  * Can contain *host views* (created by instantiating a
  * component with the `createComponent()` method), and *embedded views*
  * (created by instantiating a `TemplateRef` with the `createEmbeddedView()` method).
  *
- * 可以包含*宿主视图*（当用 `createComponent()` 方法实例化组件时创建）和*内嵌视图*（当用
- * `createEmbeddedView()` 方法实例化 `TemplateRef` 时创建）。
- *
  * A view container instance can contain other view containers,
- * creating a [view hierarchy](guide/glossary#view-tree).
- *
- * 视图容器的实例还可以包含其它视图容器，以创建[层次化视图](guide/glossary#view-tree)。
+ * creating a [view hierarchy](guide/glossary#view-hierarchy).
  *
  * @see `ComponentRef`
  * @see `EmbeddedViewRef`
@@ -62,19 +61,11 @@ export abstract class ViewContainerRef {
    * Each view container can have only one anchor element, and each anchor element
    * can have only a single view container.
    *
-   * 锚点元素用来指定本容器在父容器视图中的位置。
-   * 每个视图容器都只能有一个锚点元素，每个锚点元素也只能属于一个视图容器。
-   *
    * Root elements of views attached to this container become siblings of the anchor element in
    * the rendered view.
    *
-   * 视图的根元素会附着到该容器上，在渲染好的视图中会变成锚点元素的兄弟。
-   *
    * Access the `ViewContainerRef` of an element by placing a `Directive` injected
    * with `ViewContainerRef` on the element, or use a `ViewChild` query.
-   *
-   * 可以在元素上放置注入了 `ViewContainerRef` 的 `Directive` 来访问元素的
-   * `ViewContainerRef`。也可以使用 `ViewChild` 进行查询。
    *
    * <!-- TODO: rename to anchorElement -->
    */
@@ -82,85 +73,42 @@ export abstract class ViewContainerRef {
 
   /**
    * The [dependency injector](guide/glossary#injector) for this view container.
-   *
-   * 该视图容器的[依赖注入器](guide/glossary#injector)。
    */
   abstract get injector(): Injector;
 
-  /**
-   * @deprecated No replacement
-   *
-   * 无替代品
-   *
-   */
+  /** @deprecated No replacement */
   abstract get parentInjector(): Injector;
 
   /**
    * Destroys all views in this container.
-   *
-   * 销毁本容器中的所有视图。
    */
   abstract clear(): void;
 
   /**
    * Retrieves a view from this container.
-   *
-   * 从该容器中获取一个视图
-   *
    * @param index The 0-based index of the view to retrieve.
-   *
-   * 所要获取视图的从 0 开始的索引。
-   *
    * @returns The `ViewRef` instance, or null if the index is out of range.
-   *
-   * `ViewRef` 实例，如果索引超出范围则为 0。
    */
   abstract get(index: number): ViewRef|null;
 
   /**
    * Reports how many views are currently attached to this container.
-   *
-   * 报告目前附加到本容器的视图的数量。
-   *
    * @returns The number of views.
-   *
-   * 视图的数量。
    */
   abstract get length(): number;
 
   /**
    * Instantiates an embedded view and inserts it
    * into this container.
-   *
-   * 实例化一个内嵌视图，并把它插入到该容器中。
-   *
    * @param templateRef The HTML template that defines the view.
-   *
-   * 用来定义视图的 HTML 模板。
    * @param context The data-binding context of the embedded view, as declared
    * in the `<ng-template>` usage.
-   *
-   * 嵌入式视图的数据绑定上下文，在 `<ng-template>` 用法中声明。
-   *
    * @param options Extra configuration for the created view. Includes:
+   *  * index: The 0-based index at which to insert the new view into this container.
+   *           If not specified, appends the new view as the last entry.
+   *  * injector: Injector to be used within the embedded view.
    *
-   * 创建的视图的额外配置。包括：
-   *
-   * - index: The 0-based index at which to insert the new view into this container.
-   *          If not specified, appends the new view as the last entry.
-   *
-   *   index：将新视图插入此容器的从 0 开始的索引。如果未指定，则将新视图作为最后一个条目附加。
-   *
-   * - injector: Injector to be used within the embedded view.
-   *
-   *   注入器：要在嵌入式视图中使用的注入器。
-   *
-   * @returns
-   *
-   * The `ViewRef` instance for the newly created view.
-   *
-   * 新创建的视图的 `ViewRef` 实例。
-   *
+   * @returns The `ViewRef` instance for the newly created view.
    */
   abstract createEmbeddedView<C>(templateRef: TemplateRef<C>, context?: C, options?: {
     index?: number,
@@ -170,26 +118,13 @@ export abstract class ViewContainerRef {
   /**
    * Instantiates an embedded view and inserts it
    * into this container.
-   *
-   * 实例化一个嵌入式视图并将其插入此容器。
-   *
    * @param templateRef The HTML template that defines the view.
-   *
-   * 定义视图的 HTML 模板。
-   *
    * @param context The data-binding context of the embedded view, as declared
    * in the `<ng-template>` usage.
-   *
-   * 嵌入式视图的数据绑定上下文，在 `<ng-template>` 用法中声明。
-   *
    * @param index The 0-based index at which to insert the new view into this container.
    * If not specified, appends the new view as the last entry.
    *
-   * 从 0 开始的索引，表示新视图要插入到当前容器的哪个位置。
-   * 如果没有指定，就把新的视图追加到最后。
    * @returns The `ViewRef` instance for the newly created view.
-   *
-   * 新创建的这个视图的 `ViewRef` 实例。
    */
   abstract createEmbeddedView<C>(templateRef: TemplateRef<C>, context?: C, index?: number):
       EmbeddedViewRef<C>;
@@ -197,51 +132,22 @@ export abstract class ViewContainerRef {
   /**
    * Instantiates a single component and inserts its host view into this container.
    *
-   * 实例化一个 {@link Component} 并把它的宿主视图插入到本容器的指定 `index` 处。
-   *
    * @param componentType Component Type to use.
-   *
-   * 要使用的组件类型。
    * @param options An object that contains extra parameters:
+   *  * index: the index at which to insert the new component's host view into this container.
+   *           If not specified, appends the new view as the last entry.
+   *  * injector: the injector to use as the parent for the new component.
+   *  * ngModuleRef: an NgModuleRef of the component's NgModule, you should almost always provide
+   *                 this to ensure that all expected providers are available for the component
+   *                 instantiation.
+   *  * environmentInjector: an EnvironmentInjector which will provide the component's environment.
+   *                 you should almost always provide this to ensure that all expected providers
+   *                 are available for the component instantiation. This option is intended to
+   *                 replace the `ngModuleRef` parameter.
+   *  * projectableNodes: list of DOM nodes that should be projected through
+   *                      [`<ng-content>`](api/core/ng-content) of the new component instance.
    *
-   * 包含额外参数的对象：
-   *
-   * - index: the index at which to insert the new component's host view into this container.
-   *          If not specified, appends the new view as the last entry.
-   *
-   *   index：将新组件的宿主视图插入此容器的索引。如果未指定，则将新视图作为最后一个条目附加。
-   *
-   * - injector: the injector to use as the parent for the new component.
-   *
-   *   注入器：用作新组件的父级的注入器。
-   *
-   * - ngModuleRef: an NgModuleRef of the component's NgModule, you should almost always provide
-   *                  this to ensure that all expected providers are available for the component
-   *                  instantiation.
-   *
-   *   ngModuleRef ：组件的 NgModule 的 NgModuleRef
-   *   ，你几乎应该始终提供它以确保所有预期的提供程序都可用于组件实例化。
-   *
-   * - environmentInjector: an EnvironmentInjector which will provide the component's environment.
-   *                  you should almost always provide this to ensure that all expected providers
-   *                  are available for the component instantiation. This option is intended to
-   *                  replace the `ngModuleRef` parameter.
-   *
-   *   EnvironmentInjector ：一个 EnvironmentInjector
-   *   ，它将提供组件的环境。你几乎应该始终提供此内容，以确保所有预期的提供者都可用于组件实例化。此选项旨在替换
-   *   `ngModuleRef` 参数。
-   *
-   * - projectableNodes: list of DOM nodes that should be projected through
-   *                       [`<ng-content>`](api/core/ng-content) of the new component instance.
-   *
-   *   projectableNodes：应该通过新组件实例的[`<ng-content>`](api/core/ng-content)投影的 DOM
-   *   节点列表。
-   *
-   * @returns
-   *
-   * The new `ComponentRef` which contains the component instance and the host view.
-   *
-   * 包含组件实例和宿主视图的新 `ComponentRef` 。
+   * @returns The new `ComponentRef` which contains the component instance and the host view.
    */
   abstract createComponent<C>(componentType: Type<C>, options?: {
     index?: number,
@@ -254,35 +160,20 @@ export abstract class ViewContainerRef {
   /**
    * Instantiates a single component and inserts its host view into this container.
    *
-   * 实例化单个组件并将其宿主视图插入此容器。
-   *
    * @param componentFactory Component factory to use.
-   *
-   * 要使用的工厂。
    * @param index The index at which to insert the new component's host view into this container.
    * If not specified, appends the new view as the last entry.
-   *
-   * 从 0 开始的索引，表示新组件的宿主视图要插入到当前容器的哪个位置。
-   * 如果没有指定，就把新的视图追加到最后。
    * @param injector The injector to use as the parent for the new component.
-   *
-   * 一个注入器，将用作新组件的父注入器。
    * @param projectableNodes List of DOM nodes that should be projected through
    *     [`<ng-content>`](api/core/ng-content) of the new component instance.
-   *
-   * 应该通过新组件实例的[`<ng-content>`](api/core/ng-content)投影的 DOM 节点列表。
-   *
    * @param ngModuleRef An instance of the NgModuleRef that represent an NgModule.
    * This information is used to retrieve corresponding NgModule injector.
    *
-   * 表示 NgModule 的 NgModuleRef 的实例。此信息用于检索相应的 NgModule 注入器。
+   * @returns The new `ComponentRef` which contains the component instance and the host view.
    *
-   * @returns
-   *
-   * The new `ComponentRef` which contains the component instance and the host view.
-   *
-   * 包含组件实例和宿主视图的新 `ComponentRef` 。
-   *
+   * @deprecated Angular no longer requires component factories to dynamically create components.
+   *     Use different signature of the `createComponent` method, which allows passing
+   *     Component class directly.
    */
   abstract createComponent<C>(
       componentFactory: ComponentFactory<C>, index?: number, injector?: Injector,
@@ -291,87 +182,42 @@ export abstract class ViewContainerRef {
 
   /**
    * Inserts a view into this container.
-   *
-   * 把一个视图插入到当前容器中。
-   *
    * @param viewRef The view to insert.
-   *
-   * 要插入的视图。
-   *
    * @param index The 0-based index at which to insert the view.
    * If not specified, appends the new view as the last entry.
-   *
-   * 从 0 开始的索引，表示该视图要插入到当前容器的哪个位置。
-   * 如果没有指定，就把新的视图追加到最后。
-   *
    * @returns The inserted `ViewRef` instance.
-   *
-   * 插入后的 `ViewRef` 实例。
    *
    */
   abstract insert(viewRef: ViewRef, index?: number): ViewRef;
 
   /**
    * Moves a view to a new location in this container.
-   *
-   * 把一个视图移到容器中的新位置。
-   *
    * @param viewRef The view to move.
-   *
-   * 要移动的视图。
-   *
    * @param index The 0-based index of the new location.
-   *
-   * 从 0 开始索引，用于表示新位置。
-   *
    * @returns The moved `ViewRef` instance.
-   *
-   * 移动后的 `ViewRef` 实例。
-   *
    */
   abstract move(viewRef: ViewRef, currentIndex: number): ViewRef;
 
   /**
    * Returns the index of a view within the current container.
-   *
-   * 返回某个视图在当前容器中的索引。
-   *
    * @param viewRef The view to query.
-   *
-   * 要查询的视图。
-   *
    * @returns The 0-based index of the view's position in this container,
    * or `-1` if this container doesn't contain the view.
-   *
-   * 本视图在其容器中的从 0 开始的索引，如果没找到，则返回 `-1`。
    */
   abstract indexOf(viewRef: ViewRef): number;
 
   /**
    * Destroys a view attached to this container
-   *
-   * 销毁附着在该容器中的某个视图
-   *
    * @param index The 0-based index of the view to destroy.
    * If not specified, the last view in the container is removed.
-   *
-   * 要销毁的视图的从 0 开始的索引。
-   * 如果不指定 `index`，则移除容器中的最后一个视图。
    */
   abstract remove(index?: number): void;
 
   /**
    * Detaches a view from this container without destroying it.
    * Use along with `insert()` to move a view within the current container.
-   *
-   * 从当前容器中分离某个视图，但不会销毁它。
-   * 通常会和 `insert()` 一起使用，在当前容器中移动一个视图。
-   *
    * @param index The 0-based index of the view to detach.
    * If not specified, the last view in the container is detached.
-   *
-   * 要分离的视图的从 0 开始的索引。
-   * 如果省略 `index` 参数，则拆出最后一个 {@link ViewRef}。
    */
   abstract detach(index?: number): ViewRef|null;
 
@@ -386,15 +232,7 @@ export abstract class ViewContainerRef {
  * Creates a ViewContainerRef and stores it on the injector. Or, if the ViewContainerRef
  * already exists, retrieves the existing ViewContainerRef.
  *
- * 创建一个 ViewContainerRef 并将其存储在注入器上。或者，如果 ViewContainerRef
- * 已经存在，则检索现有的 ViewContainerRef 。
- *
- * @returns
- *
- * The ViewContainerRef instance to use
- *
- * 要使用的 ViewContainerRef 实例
- *
+ * @returns The ViewContainerRef instance to use
  */
 export function injectViewContainerRef(): ViewContainerRef {
   const previousTNode = getCurrentTNode() as TElementNode | TElementContainerNode | TContainerNode;
@@ -421,14 +259,7 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
     return new NodeInjector(this._hostTNode, this._hostLView);
   }
 
-  /**
-   * @deprecated
-   *
-   * No replacement
-   *
-   * 无更换
-   *
-   */
+  /** @deprecated No replacement */
   override get parentInjector(): Injector {
     const parentLocation = getParentInjectorLocation(this._hostTNode, this._hostLView);
     if (hasParentInjector(parentLocation)) {
@@ -478,8 +309,9 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
       injector = indexOrOptions.injector;
     }
 
-    const viewRef = templateRef.createEmbeddedView(context || <any>{}, injector);
-    this.insert(viewRef, index);
+    const hydrationInfo = findMatchingDehydratedView(this._lContainer, templateRef.ssrId);
+    const viewRef = templateRef.createEmbeddedViewImpl(context || <any>{}, injector, hydrationInfo);
+    this.insertImpl(viewRef, index, !!hydrationInfo);
     return viewRef;
   }
 
@@ -490,15 +322,9 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
     ngModuleRef?: NgModuleRef<unknown>,
   }): ComponentRef<C>;
   /**
-   * @deprecated
-   *
-   * Angular no longer requires component factories to dynamically create components.
+   * @deprecated Angular no longer requires component factories to dynamically create components.
    *     Use different signature of the `createComponent` method, which allows passing
    *     Component class directly.
-   *
-   * Angular 不再需要组件工厂动态创建组件。使用 `createComponent` 方法的不同签名，该方法允许直接传递
-   * Component 类。
-   *
    */
   override createComponent<C>(
       componentFactory: ComponentFactory<C>, index?: number|undefined,
@@ -597,13 +423,20 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
       }
     }
 
+    const componentDef = getComponentDef(componentFactory.componentType ?? {});
+    const dehydratedView = findMatchingDehydratedView(this._lContainer, componentDef?.id ?? null);
+    const rNode = dehydratedView?.firstChild ?? null;
     const componentRef =
-        componentFactory.create(contextInjector, projectableNodes, undefined, environmentInjector);
-    this.insert(componentRef.hostView, index);
+        componentFactory.create(contextInjector, projectableNodes, rNode, environmentInjector);
+    this.insertImpl(componentRef.hostView, index, !!dehydratedView);
     return componentRef;
   }
 
   override insert(viewRef: ViewRef, index?: number): ViewRef {
+    return this.insertImpl(viewRef, index, false);
+  }
+
+  private insertImpl(viewRef: ViewRef, index?: number, skipDomInsertion?: boolean): ViewRef {
     const lView = (viewRef as R3ViewRef<any>)._lView!;
     const tView = lView[TVIEW];
 
@@ -645,11 +478,13 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
     insertView(tView, lView, lContainer, adjustedIdx);
 
     // Physical operation of adding the DOM nodes.
-    const beforeNode = getBeforeNodeForView(adjustedIdx, lContainer);
-    const renderer = lView[RENDERER];
-    const parentRNode = nativeParentNode(renderer, lContainer[NATIVE] as RElement | RComment);
-    if (parentRNode !== null) {
-      addViewToContainer(tView, lContainer[T_HOST], renderer, lView, parentRNode, beforeNode);
+    if (!skipDomInsertion) {
+      const beforeNode = getBeforeNodeForView(adjustedIdx, lContainer);
+      const renderer = lView[RENDERER];
+      const parentRNode = nativeParentNode(renderer, lContainer[NATIVE] as RElement | RComment);
+      if (parentRNode !== null) {
+        addViewToContainer(tView, lContainer[T_HOST], renderer, lView, parentRNode, beforeNode);
+      }
     }
 
     (viewRef as R3ViewRef<any>).attachToViewContainerRef();
@@ -719,30 +554,9 @@ function getOrCreateViewRefs(lContainer: LContainer): ViewRef[] {
 /**
  * Creates a ViewContainerRef and stores it on the injector.
  *
- * 创建一个 ViewContainerRef 并将其存储在注入器上。
- *
- * @param ViewContainerRefToken The ViewContainerRef type
- *
- * ViewContainerRef 类型
- *
- * @param ElementRefToken The ElementRef type
- *
- * ElementRef 类型
- *
  * @param hostTNode The node that is requesting a ViewContainerRef
- *
- * 请求 ViewContainerRef 的节点
- *
  * @param hostLView The view to which the node belongs
- *
- * 节点所属的视图
- *
- * @returns
- *
- * The ViewContainerRef instance to use
- *
- * 要使用的 ViewContainerRef 实例
- *
+ * @returns The ViewContainerRef instance to use
  */
 export function createContainerRef(
     hostTNode: TElementNode|TContainerNode|TElementContainerNode,
@@ -755,33 +569,110 @@ export function createContainerRef(
     // If the host is a container, we don't need to create a new LContainer
     lContainer = slotValue;
   } else {
-    let commentNode: RComment;
-    // If the host is an element container, the native host element is guaranteed to be a
-    // comment and we can reuse that comment as anchor element for the new LContainer.
-    // The comment node in question is already part of the DOM structure so we don't need to append
-    // it again.
-    if (hostTNode.type & TNodeType.ElementContainer) {
-      commentNode = unwrapRNode(slotValue) as RComment;
-    } else {
-      // If the host is a regular element, we have to insert a comment node manually which will
-      // be used as an anchor when inserting elements. In this specific case we use low-level DOM
-      // manipulation to insert it.
-      const renderer = hostLView[RENDERER];
-      ngDevMode && ngDevMode.rendererCreateComment++;
-      commentNode = renderer.createComment(ngDevMode ? 'container' : '');
-
-      const hostNative = getNativeByTNode(hostTNode, hostLView)!;
-      const parentOfHostNative = nativeParentNode(renderer, hostNative);
-      nativeInsertBefore(
-          renderer, parentOfHostNative!, commentNode, nativeNextSibling(renderer, hostNative),
-          false);
-    }
-
-    hostLView[hostTNode.index] = lContainer =
-        createLContainer(slotValue, hostLView, commentNode, hostTNode);
-
+    // An LContainer anchor can not be `null`, but we set it here temporarily
+    // and update to the actual value later in this function (see
+    // `_locateOrCreateAnchorNode`).
+    lContainer = createLContainer(slotValue, hostLView, null!, hostTNode);
+    hostLView[hostTNode.index] = lContainer;
     addToViewTree(hostLView, lContainer);
   }
+  _locateOrCreateAnchorNode(lContainer, hostLView, hostTNode, slotValue);
 
   return new R3ViewContainerRef(lContainer, hostTNode, hostLView);
+}
+
+/**
+ * Creates and inserts a comment node that acts as an anchor for a view container.
+ *
+ * If the host is a regular element, we have to insert a comment node manually which will
+ * be used as an anchor when inserting elements. In this specific case we use low-level DOM
+ * manipulation to insert it.
+ */
+function insertAnchorNode(hostLView: LView, hostTNode: TNode): RComment {
+  const renderer = hostLView[RENDERER];
+  ngDevMode && ngDevMode.rendererCreateComment++;
+  const commentNode = renderer.createComment(ngDevMode ? 'container' : '');
+
+  const hostNative = getNativeByTNode(hostTNode, hostLView)!;
+  const parentOfHostNative = nativeParentNode(renderer, hostNative);
+  nativeInsertBefore(
+      renderer, parentOfHostNative!, commentNode, nativeNextSibling(renderer, hostNative), false);
+  return commentNode;
+}
+
+let _locateOrCreateAnchorNode = createAnchorNode;
+
+/**
+ * Regular creation mode: an anchor is created and
+ * assigned to the `lContainer[NATIVE]` slot.
+ */
+function createAnchorNode(
+    lContainer: LContainer, hostLView: LView, hostTNode: TNode, slotValue: any) {
+  // We already have a native element (anchor) set, return.
+  if (lContainer[NATIVE]) return;
+
+  let commentNode: RComment;
+  // If the host is an element container, the native host element is guaranteed to be a
+  // comment and we can reuse that comment as anchor element for the new LContainer.
+  // The comment node in question is already part of the DOM structure so we don't need to append
+  // it again.
+  if (hostTNode.type & TNodeType.ElementContainer) {
+    commentNode = unwrapRNode(slotValue) as RComment;
+  } else {
+    commentNode = insertAnchorNode(hostLView, hostTNode);
+  }
+  lContainer[NATIVE] = commentNode;
+}
+
+/**
+ * Hydration logic that looks up:
+ *  - an anchor node in the DOM and stores the node in `lContainer[NATIVE]`
+ *  - all dehydrated views in this container and puts them into `lContainer[DEHYDRATED_VIEWS]`
+ */
+function locateOrCreateAnchorNode(
+    lContainer: LContainer, hostLView: LView, hostTNode: TNode, slotValue: any) {
+  // We already have a native element (anchor) set and the process
+  // of finding dehydrated views happened (so the `lContainer[DEHYDRATED_VIEWS]`
+  // is not null), exit early.
+  if (lContainer[NATIVE] && lContainer[DEHYDRATED_VIEWS]) return;
+
+  const hydrationInfo = hostLView[HYDRATION];
+  const noOffsetIndex = hostTNode.index - HEADER_OFFSET;
+  const isNodeCreationMode = !hydrationInfo || isInSkipHydrationBlock(hostTNode) ||
+      isDisconnectedNode(hydrationInfo, noOffsetIndex);
+
+  // Regular creation mode.
+  if (isNodeCreationMode) {
+    return createAnchorNode(lContainer, hostLView, hostTNode, slotValue);
+  }
+
+  // Hydration mode, looking up an anchor node and dehydrated views in DOM.
+  const currentRNode: RNode|null = getSegmentHead(hydrationInfo, noOffsetIndex);
+
+  const serializedViews = hydrationInfo.data[CONTAINERS]?.[noOffsetIndex];
+  ngDevMode &&
+      assertDefined(
+          serializedViews,
+          'Unexpected state: no hydration info available for a given TNode, ' +
+              'which represents a view container.');
+
+  const [commentNode, dehydratedViews] =
+      locateDehydratedViewsInContainer(currentRNode!, serializedViews!);
+
+  if (ngDevMode) {
+    validateMatchingNode(commentNode, Node.COMMENT_NODE, null, hostLView, hostTNode, true);
+    // Do not throw in case this node is already claimed (thus `false` as a second
+    // argument). If this container is created based on an `<ng-template>`, the comment
+    // node would be already claimed from the `template` instruction. If an element acts
+    // as an anchor (e.g. <div #vcRef>), a separate comment node would be created/located,
+    // so we need to claim it here.
+    markRNodeAsClaimedByHydration(commentNode, false);
+  }
+
+  lContainer[NATIVE] = commentNode as RComment;
+  lContainer[DEHYDRATED_VIEWS] = dehydratedViews;
+}
+
+export function enableLocateOrCreateContainerRefImpl() {
+  _locateOrCreateAnchorNode = locateOrCreateAnchorNode;
 }

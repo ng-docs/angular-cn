@@ -50,7 +50,7 @@ function createInjectorDefinitionMap(meta: R3InjectorMetadata):
   definitionMap.set('version', o.literal('0.0.0-PLACEHOLDER'));
   definitionMap.set('ngImport', o.importExpr(R3.core));
 
-  definitionMap.set('type', meta.internalType);
+  definitionMap.set('type', meta.type.value);
   definitionMap.set('providers', meta.providers);
   if (meta.imports.length > 0) {
     definitionMap.set('imports', o.literalArr(meta.imports));

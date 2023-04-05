@@ -8,8 +8,8 @@
 
 import {DOCUMENT, ɵgetDOM as getDOM} from '@angular/common';
 import {DomElementSchemaRegistry} from '@angular/compiler';
-import {Inject, Injectable, NgZone, Renderer2, RendererFactory2, RendererStyleFlags2, RendererType2, ViewEncapsulation} from '@angular/core';
-import {EventManager, ɵflattenStyles as flattenStyles, ɵNAMESPACE_URIS as NAMESPACE_URIS, ɵSharedStylesHost as SharedStylesHost, ɵshimContentAttribute as shimContentAttribute, ɵshimHostAttribute as shimHostAttribute} from '@angular/platform-browser';
+import {APP_ID, Inject, Injectable, NgZone, Renderer2, RendererFactory2, RendererStyleFlags2, RendererType2, ViewEncapsulation} from '@angular/core';
+import {EventManager, ɵNAMESPACE_URIS as NAMESPACE_URIS, ɵSharedStylesHost as SharedStylesHost, ɵshimContentAttribute as shimContentAttribute, ɵshimHostAttribute as shimHostAttribute, ɵshimStyles as shimStylesContent} from '@angular/platform-browser';
 
 const EMPTY_ARRAY: any[] = [];
 
@@ -22,8 +22,12 @@ export class ServerRendererFactory2 implements RendererFactory2 {
   private schema = DEFAULT_SCHEMA;
 
   constructor(
-      private eventManager: EventManager, private ngZone: NgZone,
-      @Inject(DOCUMENT) private document: any, private sharedStylesHost: SharedStylesHost) {
+      private eventManager: EventManager,
+      private ngZone: NgZone,
+      @Inject(DOCUMENT) private document: Document,
+      private sharedStylesHost: SharedStylesHost,
+      @Inject(APP_ID) private appId: string,
+  ) {
     this.defaultRenderer = new DefaultServerRenderer2(eventManager, document, ngZone, this.schema);
   }
 
@@ -37,15 +41,16 @@ export class ServerRendererFactory2 implements RendererFactory2 {
         if (!renderer) {
           renderer = new EmulatedEncapsulationServerRenderer2(
               this.eventManager, this.document, this.ngZone, this.sharedStylesHost, this.schema,
-              type);
+              type, this.appId);
           this.rendererByCompId.set(type.id, renderer);
         }
+
         (<EmulatedEncapsulationServerRenderer2>renderer).applyToHost(element);
         return renderer;
       }
       default: {
         if (!this.rendererByCompId.has(type.id)) {
-          const styles = flattenStyles(type.id, type.styles, []);
+          const styles = shimStylesContent(type.id, type.styles);
           this.sharedStylesHost.addStyles(styles);
           this.rendererByCompId.set(type.id, this.defaultRenderer);
         }
@@ -204,11 +209,7 @@ class DefaultServerRenderer2 implements Renderer2 {
       target: 'document'|'window'|'body'|any, eventName: string,
       callback: (event: any) => boolean): () => void {
     checkNoSyntheticProp(eventName, 'listener');
-    if (typeof target === 'string') {
-      return <() => void>this.eventManager.addGlobalEventListener(
-          target, eventName, this.decoratePreventDefault(callback));
-    }
-    return <() => void>this.eventManager.addEventListener(
+    return this.eventManager.addEventListener(
                target, eventName, this.decoratePreventDefault(callback)) as () => void;
   }
 
@@ -252,16 +253,17 @@ class EmulatedEncapsulationServerRenderer2 extends DefaultServerRenderer2 {
   private hostAttr: string;
 
   constructor(
-      eventManager: EventManager, document: any, ngZone: NgZone, sharedStylesHost: SharedStylesHost,
-      schema: DomElementSchemaRegistry, private component: RendererType2) {
+      eventManager: EventManager, document: Document, ngZone: NgZone,
+      sharedStylesHost: SharedStylesHost, schema: DomElementSchemaRegistry,
+      private component: RendererType2, appId: string) {
     super(eventManager, document, ngZone, schema);
-    // Add a 's' prefix to style attributes to indicate server.
-    const componentId = 's' + component.id;
-    const styles = flattenStyles(componentId, component.styles, []);
+
+    const componentShortId = appId + '-' + this.component.id;
+    const styles = shimStylesContent(componentShortId, this.component.styles);
     sharedStylesHost.addStyles(styles);
 
-    this.contentAttr = shimContentAttribute(componentId);
-    this.hostAttr = shimHostAttribute(componentId);
+    this.contentAttr = shimContentAttribute(componentShortId);
+    this.hostAttr = shimHostAttribute(componentShortId);
   }
 
   applyToHost(element: any) {

@@ -718,7 +718,7 @@ interface UntypedFormArrayCtor {
 }
 
 /**
- * UntypedFormArray is a non-strongly-typed version of @see FormArray, which
+ * UntypedFormArray is a non-strongly-typed version of `FormArray`, which
  * permits heterogenous controls.
  *
  * UntypedFormArray 是 @see FormArray 的非强类型版本，它允许进行异构控件。

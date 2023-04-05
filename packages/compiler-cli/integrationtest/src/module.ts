@@ -20,15 +20,11 @@ import {BasicComp} from './basic';
 import {ComponentUsingThirdParty} from './comp_using_3rdp';
 import {ComponentUsingFlatModule} from './comp_using_flat_module';
 import {CUSTOM} from './custom_token';
-import {CompWithAnalyzeEntryComponentsProvider, CompWithEntryComponents} from './entry_components';
 import {BindingErrorComp} from './errors';
 import {CompConsumingEvents, CompUsingPipes, CompWithProviders, CompWithReferences, DirPublishingEvents, ModuleUsingCustomElements} from './features';
 import {CompUsingRootModuleDirectiveAndPipe, SomeDirectiveInRootModule, SomeLibModule, SomePipeInRootModule, SomeService} from './module_fixtures';
 import {CompWithNgContent, ProjectingComp} from './projection';
 import {CompForChildQuery, CompWithChildQuery, CompWithDirectiveChild, DirectiveForQuery} from './queries';
-
-// Adding an export here so that TypeScript compiles the file as well
-export {SomeModule as JitSummariesSomeModule} from './jit_summaries';
 
 @NgModule({
   declarations: [
@@ -38,10 +34,8 @@ export {SomeModule as JitSummariesSomeModule} from './jit_summaries';
     CompForChildQuery,
     CompUsingPipes,
     CompUsingRootModuleDirectiveAndPipe,
-    CompWithAnalyzeEntryComponentsProvider,
     CompWithChildQuery,
     CompWithDirectiveChild,
-    CompWithEntryComponents,
     CompWithNgContent,
     CompWithProviders,
     CompWithReferences,
@@ -67,19 +61,6 @@ export {SomeModule as JitSummariesSomeModule} from './jit_summaries';
   providers: [
     SomeService,
     {provide: CUSTOM, useValue: forwardRef(() => ({name: 'some name'}))},
-  ],
-  entryComponents: [
-    AnimateCmp,
-    BasicComp,
-    CompUsingRootModuleDirectiveAndPipe,
-    CompWithAnalyzeEntryComponentsProvider,
-    CompWithChildQuery,
-    CompWithEntryComponents,
-    CompWithReferences,
-    ProjectingComp,
-    ComponentUsingThirdParty,
-    ComponentUsingFlatModule,
-    BindingErrorComp,
   ]
 })
 export class MainModule {

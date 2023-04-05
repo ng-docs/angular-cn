@@ -68,7 +68,7 @@ export abstract class ComponentRef<C> {
   abstract get instance(): C;
 
   /**
-   * The [host view](guide/glossary#view-tree) defined by the template
+   * The [host view](guide/glossary#view-hierarchy) defined by the template
    * for this component instance.
    *
    * 模板为此组件实例定义的[宿主视图](guide/glossary#view-tree)。
