@@ -129,13 +129,13 @@ There are two types of data binding:
 
 模板会把 HTML 和 Angular 的标记（markup）组合起来，这些标记可以在 HTML 元素显示出来之前修改它们。模板中的*指令*会提供程序逻辑，而*绑定标记*会把你应用中的数据和 DOM 连接在一起。有两种类型的数据绑定：
 
-| Data bindings | Details |
-| :------------ | :------ |
-| 数据绑定 | 详情 |
-| Event binding | Lets your application respond to user input in the target environment by updating your application data. |
-| 事件绑定 | 让你的应用可以通过更新应用的数据来响应目标环境下的用户输入。 |
-| Property binding | Lets you interpolate values that are computed from your application data into the HTML. |
-| 属性绑定 | 让你将从应用数据中计算出来的值插入到 HTML 中。 |
+| Data bindings    | Details                                                                                                  |
+| :--------------- | :------------------------------------------------------------------------------------------------------- |
+| 数据绑定         | 详情                                                                                                     |
+| Event binding    | Lets your application respond to user input in the target environment by updating your application data. |
+| 事件绑定         | 让你的应用可以通过更新应用的数据来响应目标环境下的用户输入。                                             |
+| Property binding | Lets you interpolate values that are computed from your application data into the HTML.                  |
+| 属性绑定         | 让你将从应用数据中计算出来的值插入到 HTML 中。                                                           |
 
 Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic.
 Angular supports *two-way data binding*, meaning that changes in the DOM, such as user choices, are also reflected in your program data.

@@ -190,31 +190,31 @@ There are three supported input types.
 
 支持三种输入类型。
 
-| Input type | Details |
-| :--------- | :------ |
-| 输入类型 | 详情 |
-| confirmation | A yes or no question; ideal for Boolean options. |
-| 确认 | 是或否的问题；布尔选项的理想选择。 |
-| input | Textual input; ideal for string or number options. |
-| 输入 | 文字输入；字符串或数字选项的理想选择。 |
-| list | A predefined set of allowed values. |
-| 清单 | 预定义的一组允许值。 |
+| Input type   | Details                                            |
+| :----------- | :------------------------------------------------- |
+| 输入类型     | 详情                                               |
+| confirmation | A yes or no question; ideal for Boolean options.   |
+| 确认         | 是或否的问题；布尔选项的理想选择。                 |
+| input        | Textual input; ideal for string or number options. |
+| 输入         | 文字输入；字符串或数字选项的理想选择。             |
+| list         | A predefined set of allowed values.                |
+| 清单         | 预定义的一组允许值。                               |
 
 In the short form, the type is inferred from the property's type and constraints.
 
 简而言之，类型是根据属性的类型和约束来推断的。
 
-| Property schema | Prompt type |
-| :-------------- | :---------- |
-| 属性模式 | 提示类型 |
-| "type": "boolean" | confirmation ("yes"=`true`, "no"=`false`) |
-| "type": "boolean" | 确认（“yes” = `true`，“no” = `false`） |
-| "type": "string" | input |
-| "type": "string" | 输入 |
-| "type": "number" | input (only valid numbers accepted) |
-| "type": "number" | 输入（仅接受有效数字） |
-| "type": "integer" | input (only valid numbers accepted) |
-| "type": "integer" | 输入（仅接受有效数字） |
+| Property schema       | Prompt type                                |
+| :-------------------- | :----------------------------------------- |
+| 属性模式              | 提示类型                                   |
+| "type": "boolean"     | confirmation ("yes"=`true`, "no"=`false`)  |
+| "type": "boolean"     | 确认（“yes” = `true`，“no” = `false`）     |
+| "type": "string"      | input                                      |
+| "type": "string"      | 输入                                       |
+| "type": "number"      | input (only valid numbers accepted)        |
+| "type": "number"      | 输入（仅接受有效数字）                     |
+| "type": "integer"     | input (only valid numbers accepted)        |
+| "type": "integer"     | 输入（仅接受有效数字）                     |
 | "enum": [……&hellip;] | list (enum members become list selections) |
 | "enum": [……&hellip;] | 列表（枚举成员成为列表中的选择项） |
 
@@ -255,15 +255,15 @@ In this form, the `x-prompt` field value is a JSON object with subfields that cu
 
 在需要对提示进行其它自定义和控制情况下，`x-prompt` 字段也支持长格式语法。在这种形式下，`x-prompt` 字段值是带有子字段的 JSON 对象，这些子字段可自定义提示的行为。
 
-| Field | Data value |
-| :---- | :--------- |
-| 字段 | 数据值 |
-| type | `confirmation`, `input`, or `list` (selected automatically in short form) |
-| type | `confirmation`，`input` 或 `list`（以简短形式自动选择） |
-| message | string (required) |
-| message | 字符串（必填） |
-| items | string and/or label/value object pair (only valid with type `list`) |
-| items | 字符串和/或“标签/值”对象（仅对 `list` 类型有效） |
+| Field   | Data value                                                                |
+| :------ | :------------------------------------------------------------------------ |
+| 字段    | 数据值                                                                    |
+| type    | `confirmation`, `input`, or `list` (selected automatically in short form) |
+| type    | `confirmation`，`input` 或 `list`（以简短形式自动选择）                   |
+| message | string (required)                                                         |
+| message | 字符串（必填）                                                            |
+| items   | string and/or label/value object pair (only valid with type `list`)       |
+| items   | 字符串和/或“标签/值”对象（仅对 `list` 类型有效）                          |
 
 The following example of the long form is from the JSON schema for the schematic that the CLI uses to [generate applications](https://github.com/angular/angular-cli/blob/ba8a6ea59983bb52a6f1e66d105c5a77517f062e/packages/schematics/angular/application/schema.json#L56).
 It defines the prompt that lets users choose which style preprocessor they want to use for the application being created.
@@ -529,17 +529,17 @@ Each named schematic in the collection has the following main parts.
 
 该集合中每个命名原理图都有以下主要部分。
 
-| Parts | Details |
-| :---- | :------ |
-| 部分 | 详情 |
-| `index.ts` | Code that defines the transformation logic for a named schematic. |
-| `index.ts` | 定义命名原理图中转换逻辑的代码。 |
-| `schema.json` | Schematic variable definition. |
-| `schema.json` | 原理图变量定义。 |
-| `schema.d.ts` | Schematic variables. |
-| `schema.d.ts` | 原理图变量。 |
-| `files/` | Optional component/template files to replicate. |
-| `files/` | 要复制的可选组件/模板文件。 |
+| Parts         | Details                                                           |
+| :------------ | :---------------------------------------------------------------- |
+| 部分          | 详情                                                              |
+| `index.ts`    | Code that defines the transformation logic for a named schematic. |
+| `index.ts`    | 定义命名原理图中转换逻辑的代码。                                  |
+| `schema.json` | Schematic variable definition.                                    |
+| `schema.json` | 原理图变量定义。                                                  |
+| `schema.d.ts` | Schematic variables.                                              |
+| `schema.d.ts` | 原理图变量。                                                      |
+| `files/`      | Optional component/template files to replicate.                   |
+| `files/`      | 要复制的可选组件/模板文件。                                       |
 
 It is possible for a schematic to provide all of its logic in the `index.ts` file, without additional templates.
 You can create dynamic schematics for Angular, however, by providing components and templates in the `files` folder, like those in standalone Angular projects.

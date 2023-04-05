@@ -160,13 +160,13 @@ However, since Angular 6.0, the best practice for providing services is with the
 
 `forRoot()` 会接受一个服务配置对象，并返回一个 [ModuleWithProviders](api/core/ModuleWithProviders) 对象，它带有下列属性：
 
-| Properties | Details |
-| :--------- | :------ |
-| 属性 | 详情 |
-| `ngModule` | In this example, the `GreetingModule` class |
-| `ngModule` | 在这个例子中，就是 `GreetingModule` 类。 |
-| `providers` | The configured providers |
-| `providers` | 配置好的服务提供者 |
+| Properties  | Details                                     |
+| :---------- | :------------------------------------------ |
+| 属性        | 详情                                        |
+| `ngModule`  | In this example, the `GreetingModule` class |
+| `ngModule`  | 在这个例子中，就是 `GreetingModule` 类。    |
+| `providers` | The configured providers                    |
+| `providers` | 配置好的服务提供者                          |
 
 In the <live-example name="ngmodules">live example</live-example> the root `AppModule` imports the `GreetingModule` and adds the `providers` to the `AppModule` providers.
 Specifically, Angular accumulates all imported providers before appending the items listed in `@NgModule.providers`.

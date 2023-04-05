@@ -39,13 +39,13 @@ Two-way binding combines property binding with event binding:
 
 双向绑定将属性绑定与事件绑定结合在一起：
 
-| Bindings | Details |
-| :------- | :------ |
-| 绑定 | 详情 |
-| [Property binding](guide/property-binding) | Sets a specific element property. |
-| [属性绑定](guide/property-binding) | 设置特定的元素属性。 |
-| [Event binding](guide/event-binding) | Listens for an element change event. |
-| [事件绑定](guide/event-binding) | 侦听元素更改事件。 |
+| Bindings                                   | Details                              |
+| :----------------------------------------- | :----------------------------------- |
+| 绑定                                       | 详情                                 |
+| [Property binding](guide/property-binding) | Sets a specific element property.    |
+| [属性绑定](guide/property-binding)         | 设置特定的元素属性。                 |
+| [Event binding](guide/event-binding)       | Listens for an element change event. |
+| [事件绑定](guide/event-binding)            | 侦听元素更改事件。                   |
 
 ## Adding two-way data binding
 

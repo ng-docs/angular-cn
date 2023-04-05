@@ -48,31 +48,31 @@ A component consists of three things:
 
 一个组件由三部分组成：
 
-| Component Part | Details |
-| :------------- | :------ |
-| 部分 | 详情 |
-| A component class | Handles data and functionality |
-| 组件类 | 处理数据和功能。 |
-| An HTML template | Determines the UI |
-| HTML 模板 | 决定 UI。 |
-| Component-specific styles | Define the look and feel |
-| 组件专属样式 | 定义外观和感觉。 |
+| Component Part            | Details                        |
+| :------------------------ | :----------------------------- |
+| 部分                      | 详情                           |
+| A component class         | Handles data and functionality |
+| 组件类                    | 处理数据和功能。               |
+| An HTML template          | Determines the UI              |
+| HTML 模板                 | 决定 UI。                      |
+| Component-specific styles | Define the look and feel       |
+| 组件专属样式              | 定义外观和感觉。               |
 
 This guide demonstrates building an application with the following components:
 
 本指南演示了如何使用下列组件构建应用：
 
-| Components | Details |
-| :--------- | :------ |
-| 组件 | 详情 |
-| `<app-root>` | The first component to load and the container for the other components |
-| `<app-root>` | 第一个加载的组件，并且是其他组件的容器。 |
-| `<app-top-bar>` | The store name and checkout button |
-| `<app-top-bar>` | 商店名称和结帐按钮。 |
-| `<app-product-list>` | The product list |
-| `<app-product-list>` | 产品列表。 |
-| `<app-product-alerts>` | A component that contains the application's alerts |
-| `<app-product-alerts>` | 包含应用中各种通知的组件。 |
+| Components             | Details                                                                |
+| :--------------------- | :--------------------------------------------------------------------- |
+| 组件                   | 详情                                                                   |
+| `<app-root>`           | The first component to load and the container for the other components |
+| `<app-root>`           | 第一个加载的组件，并且是其他组件的容器。                               |
+| `<app-top-bar>`        | The store name and checkout button                                     |
+| `<app-top-bar>`        | 商店名称和结帐按钮。                                                   |
+| `<app-product-list>`   | The product list                                                       |
+| `<app-product-list>`   | 产品列表。                                                             |
+| `<app-product-alerts>` | A component that contains the application's alerts                     |
+| `<app-product-alerts>` | 包含应用中各种通知的组件。                                             |
 
 <div class="lightbox">
 

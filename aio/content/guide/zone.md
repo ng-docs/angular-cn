@@ -361,17 +361,17 @@ These hooks trigger under the following circumstances:
 
 这些钩子在以下情况下触发：
 
-| Hooks | Details |
-| :---- | :------ |
-| 钩子 | 详情 |
-| `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`. |
-| `onScheduleTask` | 在计划新的异步任务时触发，比如调用 `setTimeout()` 时。 |
-| `onInvokeTask` | Triggers when an asynchronous task is about to run, such as when the callback of `setTimeout()` is about to run. |
-| `onInvokeTask` | 在异步任务即将执行时触发，比如 `setTimeout()` 的回调即将执行时。 |
-| `onHasTask` | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
-| `onHasTask` | 当 Zone 内的一种任务的状态从稳定变为不稳定或从不稳定变为稳定时触发。状态“稳定”表示该 Zone 内没有任务，而“不稳定”表示在该 Zone 中计划了新任务。 |
-| `onInvoke` | Triggers when a synchronous function is going to run in the zone. |
-| `onInvoke` | 将在 Zone 中执行同步函数时触发。 |
+| Hooks            | Details                                                                                                                                                                                                                                           |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 钩子             | 详情                                                                                                                                                                                                                                              |
+| `onScheduleTask` | Triggers when a new asynchronous task is scheduled, such as when you call `setTimeout()`.                                                                                                                                                         |
+| `onScheduleTask` | 在计划新的异步任务时触发，比如调用 `setTimeout()` 时。                                                                                                                                                                                            |
+| `onInvokeTask`   | Triggers when an asynchronous task is about to run, such as when the callback of `setTimeout()` is about to run.                                                                                                                                  |
+| `onInvokeTask`   | 在异步任务即将执行时触发，比如 `setTimeout()` 的回调即将执行时。                                                                                                                                                                                  |
+| `onHasTask`      | Triggers when the status of one kind of task inside a zone changes from stable to unstable or from unstable to stable. A status of "stable" means there are no tasks inside the zone, while "unstable" means a new task is scheduled in the zone. |
+| `onHasTask`      | 当 Zone 内的一种任务的状态从稳定变为不稳定或从不稳定变为稳定时触发。状态“稳定”表示该 Zone 内没有任务，而“不稳定”表示在该 Zone 中计划了新任务。                                                                                                    |
+| `onInvoke`       | Triggers when a synchronous function is going to run in the zone.                                                                                                                                                                                 |
+| `onInvoke`       | 将在 Zone 中执行同步函数时触发。                                                                                                                                                                                                                  |
 
 With these hooks, `Zone` can observe the status of all synchronous and asynchronous operations inside a zone.
 

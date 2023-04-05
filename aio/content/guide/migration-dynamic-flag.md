@@ -109,13 +109,13 @@ In order to support applications that are still running with version 8, the safe
 
 为了支持那些仍在运行版本 8 的应用，库中最安全的选项是保留 `static` 标志，以保持解析时序的一致性。
 
-| Library and application combination | Details |
-| :---------------------------------- | :------ |
-| 库和应用的组合 | 详情 |
+| Library and application combination                        | Details                                                                                                                                 |
+| :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| 库和应用的组合                                             | 详情                                                                                                                                    |
 | Libraries on version 9 with applications running version 8 | The schematic won't run on libraries. As long as libraries retain their `static` flags from version 8, they should work with apps on 8. |
-| 版本 9 的库和版本 8 的应用 | 该原理图不会在库中运行。只要库从版本 8 开始就保留了 `static` 标志，就同样可以在 8 上运行。 |
-| Libraries on version 8 with applications running version 9 | Libraries will have explicit flags defined. The behavior with explicit flags has not changed. |
-| 版本 8 的库和版本 9 的应用 | 库中中会定义显式的标志。只要带有显式标志，其行为就不会改变。 |
+| 版本 9 的库和版本 8 的应用                                 | 该原理图不会在库中运行。只要库从版本 8 开始就保留了 `static` 标志，就同样可以在 8 上运行。                                              |
+| Libraries on version 8 with applications running version 9 | Libraries will have explicit flags defined. The behavior with explicit flags has not changed.                                           |
+| 版本 8 的库和版本 9 的应用                                 | 库中中会定义显式的标志。只要带有显式标志，其行为就不会改变。                                                                            |
 
 ### What about applications using non-migrated libraries?
 

@@ -36,13 +36,13 @@ When you open the extension, you'll see two additional tabs:
 
 打开扩展程序时，你还会看到另外两个选项卡：
 
-| Tabs | Details |
-| :--- | :------ |
-| 选项卡 | 详细信息 |
-| [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state. |
-| [组件](#components) | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。 |
-| [Profiler](#profiler) | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
-| [环境配置器](#profiler) | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。 |
+| Tabs                      | Details                                                                                                                |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------- |
+| 选项卡                    | 详细信息                                                                                                               |
+| [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state.                    |
+| [组件](#components)       | 允许你浏览应用程序中的组件和指令并预览或编辑它们的状态。                                                               |
+| [Profiler](#profiler)     | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
+| [环境配置器](#profiler)   | 让你分析你的应用程序并了解变更检测执行期间的性能瓶颈是什么。                                                           |
 
 <div class="lightbox">
 
@@ -118,13 +118,13 @@ Navigate in the component tree using the mouse or the following keyboard shortcu
 
 可以使用鼠标或下列键盘快捷键在组件树中导航：
 
-| Keyboard shortcut | Details |
-| :---------------- | :------ |
-| 键盘快捷方式 | 详细信息 |
-| Up and down arrows | Select the previous and next nodes |
-| 向上和向下箭头 | 选择上一个和下一个节点 |
-| Left and right arrows | Collapse and expand a node |
-| 左右箭头 | 折叠和展开节点 |
+| Keyboard shortcut     | Details                            |
+| :-------------------- | :--------------------------------- |
+| 键盘快捷方式          | 详细信息                           |
+| Up and down arrows    | Select the previous and next nodes |
+| 向上和向下箭头        | 选择上一个和下一个节点             |
+| Left and right arrows | Collapse and expand a node         |
+| 左右箭头              | 折叠和展开节点                     |
 
 To look up a component or directive by name use the search box above the component tree.
 To navigate to the next search match, press `Enter`.

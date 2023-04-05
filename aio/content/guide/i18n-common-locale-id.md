@@ -51,17 +51,17 @@ For the examples in this guide, use the following languages and locales.
 
 对于本指南中的示例，使用了如下语言和语言环境。
 
-| Language | Locale | Unicode locale ID |
-| :------- | :----- | :---------------- |
-| 语言 | 地区 | Unicode 语言环境 ID |
-| English | Canada | `en-CA` |
-| 英语 | 加拿大 | `en-CA` |
-| English | United States of America | `en-US` |
-| 英语 | 美国 | `en-US` |
-| French | Canada | `fr-CA` |
-| 法语 | 加拿大 | `fr-CA` |
-| French | France | `fr-FR` |
-| 法语 | 法国 | `fr-FR` |
+| Language | Locale                   | Unicode locale ID   |
+| :------- | :----------------------- | :------------------ |
+| 语言     | 地区                     | Unicode 语言环境 ID |
+| English  | Canada                   | `en-CA`             |
+| 英语     | 加拿大                   | `en-CA`             |
+| English  | United States of America | `en-US`             |
+| 英语     | 美国                     | `en-US`             |
+| French   | Canada                   | `fr-CA`             |
+| 法语     | 加拿大                   | `fr-CA`             |
+| French   | France                   | `fr-FR`             |
+| 法语     | 法国                     | `fr-FR`             |
 
 The [Angular repository][GithubAngularAngularTreeMasterPackagesCommonLocales] includes common locales.
 

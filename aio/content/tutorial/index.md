@@ -44,7 +44,11 @@ This section contains tutorials to help you get started developing applications 
 
 * Use [routing](guide/glossary#router "Router definition") to navigate among different views and their components.
 
+  使用[路由](guide/glossary#router "Router definition")在不同的视图及其组件之间导航。
+
 ## Building a template-driven form
+
+## 构建模板驱动表单
 
 [Building a template-driven form](guide/forms) shows you how to create a template-driven form.
 

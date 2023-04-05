@@ -113,21 +113,21 @@ Chaining is used in many RxJS examples.
 
 </div>
 
-| Area | Operators |
-| :--- | :-------- |
-| 特性区 | 操作 |
-| Creation | `from`, `fromEvent`, `of` |
-| 创建 | `from`, `fromEvent`, `of` |
-| Combination | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
-| 组合 | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
-| Filtering | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil` |
-| 过滤 | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil` |
-| Transformation | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap` |
-| 转换 | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap` |
-| Utility | `tap` |
-| 工具 | `tap` |
-| Multicasting | `share` |
-| 多播 | `share` |
+| Area           | Operators                                                                 |
+| :------------- | :------------------------------------------------------------------------ |
+| 特性区         | 操作                                                                      |
+| Creation       | `from`, `fromEvent`, `of`                                                 |
+| 创建           | `from`, `fromEvent`, `of`                                                 |
+| Combination    | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
+| 组合           | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
+| Filtering      | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil`     |
+| 过滤           | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil`     |
+| Transformation | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap`         |
+| 转换           | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap`         |
+| Utility        | `tap`                                                                     |
+| 工具           | `tap`                                                                     |
+| Multicasting   | `share`                                                                   |
+| 多播           | `share`                                                                   |
 
 ## Error handling
 

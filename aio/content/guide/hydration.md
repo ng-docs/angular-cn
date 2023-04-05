@@ -124,6 +124,7 @@ Keep in mind that adding the `ngSkipHydration` attribute to your root applicatio
 <a id="i18n"></a>
 
 ## I18N
+
 We don't yet support internationalization with hydration, but support is coming. If you attempt to enable hydration on an application with internationalization, you will receive an error NG518, which states that I18N is not yet supported.
 
 ## Third Party Libraries with DOM Manipulation

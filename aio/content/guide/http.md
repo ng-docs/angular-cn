@@ -577,13 +577,13 @@ The method takes a resource URL and two additional parameters:
 
 `HttpClient.post()` 方法像 `get()` 一样也有类型参数，可以用它来指出你期望服务器返回特定类型的数据。该方法需要一个资源 URL 和两个额外的参数：
 
-| Parameter | Details |
-| :-------- | :------ |
-| 参数 | 详情 |
-| body | The data to POST in the body of the request. |
-| body | 要在请求正文中 POST 的数据。 |
-| options | An object containing method options which, in this case, [specify required headers](#adding-headers). |
-| options | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。 |
+| Parameter | Details                                                                                               |
+| :-------- | :---------------------------------------------------------------------------------------------------- |
+| 参数      | 详情                                                                                                  |
+| body      | The data to POST in the body of the request.                                                          |
+| body      | 要在请求正文中 POST 的数据。                                                                          |
+| options   | An object containing method options which, in this case, [specify required headers](#adding-headers). |
+| options   | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。                           |
 
 The example catches errors as [described above](#error-details).
 
@@ -1335,15 +1335,15 @@ Rather than forward every `searchText` value directly to the injected `PackageSe
 
 除了把每个 `searchText` 的值都直接转发给 `PackageSearchService` 之外，`ngOnInit()` 中的代码还通过下列三个操作符对这些搜索值进行*管道*处理，以便只有当它是一个新值并且用户已经停止输入时，要搜索的值才会抵达该服务。
 
-| RxJS operators | Details |
-| :------------- | :------ |
-| RxJS 操作符 | 详情 |
-| `debounceTime(500)`⁠ | Wait for the user to stop typing, which is 1/2 second in this case. |
-| `debounceTime(500)`⁠ | 等待用户停止输入，本例中为 1/2 秒。 |
-| `distinctUntilChanged()` | Wait until the search text changes. |
-| `distinctUntilChanged()` | 等待搜索文本发生变化。 |
-| `switchMap()`⁠ | Send the search request to the service. |
-| `switchMap()`⁠ | 将搜索请求发送到服务。 |
+| RxJS operators           | Details                                                             |
+| :----------------------- | :------------------------------------------------------------------ |
+| RxJS 操作符              | 详情                                                                |
+| `debounceTime(500)`⁠     | Wait for the user to stop typing, which is 1/2 second in this case. |
+| `debounceTime(500)`⁠     | 等待用户停止输入，本例中为 1/2 秒。                                 |
+| `distinctUntilChanged()` | Wait until the search text changes.                                 |
+| `distinctUntilChanged()` | 等待搜索文本发生变化。                                              |
+| `switchMap()`⁠           | Send the search request to the service.                             |
+| `switchMap()`⁠           | 将搜索请求发送到服务。                                              |
 
 The code sets `packages$` to this re-composed `Observable` of search results.
 The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe) and displays search results as they arrive.

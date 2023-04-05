@@ -7,17 +7,17 @@ The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to
 
 Angular 提供了以下内置的数据转换[管道][AioGuideGlossaryPipe]。数据转换管道会使用 [`LOCALE_ID`][AioApiCoreLocaleId] 令牌来根据每个语言环境的规则来格式化数据。
 
-| Data transformation pipe | Details |
-| :----------------------- | :------ |
-| 数据转换管道 | 详情 |
-| [`DatePipe`][AioApiCommonDatepipe] | Formats a date value. |
-| [`DatePipe`][AioApiCommonDatepipe] | 格式化日期值。 |
-| [`CurrencyPipe`][AioApiCommonCurrencypipe] | Transforms a number into a currency string. |
-| [`CurrencyPipe`][AioApiCommonCurrencypipe] | 将数字转换为货币字符串。 |
-| [`DecimalPipe`][AioApiCommonDecimalpipe] | Transforms a number into a decimal number string. |
-| [`DecimalPipe`][AioApiCommonDecimalpipe] | 将数字转换为十进制数字字符串。 |
-| [`PercentPipe`][AioApiCommonPercentpipe] | Transforms a number into a percentage string. |
-| [`PercentPipe`][AioApiCommonPercentpipe] | 将数字转换为百分比字符串。 |
+| Data transformation pipe                   | Details                                           |
+| :----------------------------------------- | :------------------------------------------------ |
+| 数据转换管道                               | 详情                                              |
+| [`DatePipe`][AioApiCommonDatepipe]         | Formats a date value.                             |
+| [`DatePipe`][AioApiCommonDatepipe]         | 格式化日期值。                                    |
+| [`CurrencyPipe`][AioApiCommonCurrencypipe] | Transforms a number into a currency string.       |
+| [`CurrencyPipe`][AioApiCommonCurrencypipe] | 将数字转换为货币字符串。                          |
+| [`DecimalPipe`][AioApiCommonDecimalpipe]   | Transforms a number into a decimal number string. |
+| [`DecimalPipe`][AioApiCommonDecimalpipe]   | 将数字转换为十进制数字字符串。                    |
+| [`PercentPipe`][AioApiCommonPercentpipe]   | Transforms a number into a percentage string.     |
+| [`PercentPipe`][AioApiCommonPercentpipe]   | 将数字转换为百分比字符串。                        |
 
 ## Use DatePipe to display the current date
 

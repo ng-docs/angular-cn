@@ -45,17 +45,17 @@ Unless otherwise commented, patterns use a **limited\*** glob format that intern
 
 除非另有注释，否则模式使用**limited\*** glob 格式，该格式将在内部转换为正则表达式：
 
-| Glob formats | Details |
-| :----------- | :------ |
-| Glob 格式 | 详情 |
-| `**` | Matches 0 or more path segments |
-| `**` | 匹配 0 个或多个路径段 |
-| `*` | Matches 0 or more characters excluding `/` |
-| `*` | 匹配不包括 `/` 的 0 个或多个字符 |
-| `?` | Matches exactly one character excluding `/` |
-| `?` | 正好匹配不包括 `/` 的一个字符 |
-| `!` prefix | Marks the pattern as being negative, meaning that only files that don't match the pattern are included |
-| `!` 前缀 | 将模式标记为负数，这意味着仅包含与模式不匹配的文件 |
+| Glob formats | Details                                                                                                |
+| :----------- | :----------------------------------------------------------------------------------------------------- |
+| Glob 格式    | 详情                                                                                                   |
+| `**`         | Matches 0 or more path segments                                                                        |
+| `**`         | 匹配 0 个或多个路径段                                                                                  |
+| `*`          | Matches 0 or more characters excluding `/`                                                             |
+| `*`          | 匹配不包括 `/` 的 0 个或多个字符                                                                       |
+| `?`          | Matches exactly one character excluding `/`                                                            |
+| `?`          | 正好匹配不包括 `/` 的一个字符                                                                          |
+| `!` prefix   | Marks the pattern as being negative, meaning that only files that don't match the pattern are included |
+| `!` 前缀     | 将模式标记为负数，这意味着仅包含与模式不匹配的文件                                                     |
 
 <div class="alert is-helpful">
 
@@ -97,15 +97,15 @@ Example patterns:
 
 范例模式：
 
-| Patterns | Details |
-| :------- | :------ |
-| 模式 | 详情 |
-| `/**/*.html` | Specifies all HTML files |
-| `/**/*.html` | 指定所有 HTML 文件 |
-| `/*.html` | Specifies only HTML files in the root |
-| `/*.html` | 仅指定根中的 HTML 文件 |
-| `!/**/*.map` | Exclude all sourcemaps |
-| `!/**/*.map` | 排除所有源映射 |
+| Patterns     | Details                               |
+| :----------- | :------------------------------------ |
+| 模式         | 详情                                  |
+| `/**/*.html` | Specifies all HTML files              |
+| `/**/*.html` | 指定所有 HTML 文件                    |
+| `/*.html`    | Specifies only HTML files in the root |
+| `/*.html`    | 仅指定根中的 HTML 文件                |
+| `!/**/*.map` | Exclude all sourcemaps                |
+| `!/**/*.map` | 排除所有源映射                        |
 
 ## Service worker configuration properties
 
@@ -225,13 +225,13 @@ The `installMode` can be either of two values:
 
 `installMode` 决定了这些资源最初的缓存方式。`installMode` 可以取如下两个值之一：
 
-| Values | Details |
-| :----- | :------ |
-| 值 | 详情 |
-| `prefetch` | Tells the Angular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline. |
-| `prefetch` | 要求 Angular Service Worker 在缓存当前版本的应用时要获取每一个列出的资源。这是个带宽密集型的模式，但可以确保这些资源在请求时可用，即使浏览器正处于离线状态。 |
-| `lazy` | Does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
-| `lazy` | 不会预先缓存任何资源。相反，Angular Service Worker 只会缓存它收到请求的资源。这是一种按需缓存模式。永远不会请求的资源也永远不会被缓存。这对于像为不同分辨率提供的图片之类的资源很有用，那样 Service Worker 就只会为特定的屏幕和设备方向缓存正确的资源。 |
+| Values     | Details                                                                                                                                                                                                                                                                                                                                                                                       |
+| :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 值         | 详情                                                                                                                                                                                                                                                                                                                                                                                          |
+| `prefetch` | Tells the Angular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline.                                                                                                                       |
+| `prefetch` | 要求 Angular Service Worker 在缓存当前版本的应用时要获取每一个列出的资源。这是个带宽密集型的模式，但可以确保这些资源在请求时可用，即使浏览器正处于离线状态。                                                                                                                                                                                                                                  |
+| `lazy`     | Does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
+| `lazy`     | 不会预先缓存任何资源。相反，Angular Service Worker 只会缓存它收到请求的资源。这是一种按需缓存模式。永远不会请求的资源也永远不会被缓存。这对于像为不同分辨率提供的图片之类的资源很有用，那样 Service Worker 就只会为特定的屏幕和设备方向缓存正确的资源。                                                                                                                                       |
 
 Defaults to `prefetch`.
 
@@ -247,13 +247,13 @@ Any resources in the group that have changed since the previous version are upda
 
 对于已经存在于缓存中的资源，`updateMode` 会决定在发现了新版本应用后的缓存行为。自上一版本以来更改过的所有组中资源都会根据 `updateMode` 进行更新。
 
-| Values | Details |
-| :----- | :------ |
-| 值 | 详情 |
-| `prefetch` | Tells the service worker to download and cache the changed resources immediately. |
-| `prefetch` | 要求 Service Worker 立即下载并缓存更新过的资源。 |
-| `lazy` | Tells the service worker to not cache those resources. Instead, it treats them as unrequested and waits until they're requested again before updating them. An `updateMode` of `lazy` is only valid if the `installMode` is also `lazy`. |
-| `lazy` | `lazy` 要求 Service Worker 不要缓存这些资源，而是先把它们看作未被请求的，等到它们再次被请求时才进行更新。`lazy` 这个 `updateMode` 只有在 `installMode` 也同样是 `lazy` 时才有效。 |
+| Values     | Details                                                                                                                                                                                                                                  |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 值         | 详情                                                                                                                                                                                                                                     |
+| `prefetch` | Tells the service worker to download and cache the changed resources immediately.                                                                                                                                                        |
+| `prefetch` | 要求 Service Worker 立即下载并缓存更新过的资源。                                                                                                                                                                                         |
+| `lazy`     | Tells the service worker to not cache those resources. Instead, it treats them as unrequested and waits until they're requested again before updating them. An `updateMode` of `lazy` is only valid if the `installMode` is also `lazy`. |
+| `lazy`     | `lazy` 要求 Service Worker 不要缓存这些资源，而是先把它们看作未被请求的，等到它们再次被请求时才进行更新。`lazy` 这个 `updateMode` 只有在 `installMode` 也同样是 `lazy` 时才有效。                                                        |
 
 Defaults to the value `installMode` is set to.
 
@@ -265,13 +265,13 @@ This section describes the resources to cache, broken up into the following grou
 
 本节描述要缓存的资源，分为如下几组：
 
-| Resource groups | Details |
-| :-------------- | :------ |
-| 资源组 | 详情 |
-| `files` | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files. |
-| `files` | `files` 列出了与 `dist` 目录中的文件相匹配的模式。它们可以是单个文件也可以是能匹配多个文件的类似 glob 的模式。 |
-| `urls` | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)* |
-| `urls` | 包括要在运行时进行匹配的 URL 和 URL 模式。这些资源不是直接获取的，也没有内容散列，但它们会根据 HTTP 标头进行缓存。 这对于像 Google Fonts 服务这样的 CDN 非常有用。<br> **（不支持 glob 的逆模式，`?` 将会按字面匹配；也就是说它不会匹配除了 `?` 之外的任何字符。）** |
+| Resource groups | Details                                                                                                                                                                                                                                                                                                                                                                                                        |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 资源组          | 详情                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `files`         | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files.                                                                                                                                                                                                                                                                   |
+| `files`         | `files` 列出了与 `dist` 目录中的文件相匹配的模式。它们可以是单个文件也可以是能匹配多个文件的类似 glob 的模式。                                                                                                                                                                                                                                                                                                 |
+| `urls`          | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)* |
+| `urls`          | 包括要在运行时进行匹配的 URL 和 URL 模式。这些资源不是直接获取的，也没有内容散列，但它们会根据 HTTP 标头进行缓存。 这对于像 Google Fonts 服务这样的 CDN 非常有用。<br> **（不支持 glob 的逆模式，`?` 将会按字面匹配；也就是说它不会匹配除了 `?` 之外的任何字符。）**                                                                                                                                           |
 
 #### `cacheQueryOptions`
 
@@ -282,11 +282,11 @@ Currently, only the following options are supported:
 
 这些选项用来修改对请求进行匹配的行为。它们会传给浏览器的 `Cache#match` 函数。详情参阅 [MDN](https://developer.mozilla.org/docs/Web/API/Cache/match)。目前，只支持下列选项：
 
-| Options | Details |
-| :------ | :------ |
-| 选项 | 详情 |
+| Options        | Details                                       |
+| :------------- | :-------------------------------------------- |
+| 选项           | 详情                                          |
 | `ignoreSearch` | Ignore query parameters. Defaults to `false`. |
-| `ignoreSearch` | 忽略查询参数。默认为 `false`。 |
+| `ignoreSearch` | 忽略查询参数。默认为 `false`。                |
 
 ### `dataGroups`
 
@@ -420,19 +420,19 @@ The `maxAge` parameter indicates how long responses are allowed to remain in the
 
 （必需）`maxAge` 参数表示在响应因失效而要清除之前允许在缓存中留存的时间。`maxAge` 是一个表示持续时间的字符串，可使用以下单位作为后缀：
 
-| Suffixes | Details |
-| :------- | :------ |
-| 后缀 | 详情 |
-| `d` | Days |
-| `d` | 天 |
-| `h` | Hours |
-| `h` | 小时 |
-| `m` | Minutes |
-| `m` | 分钟 |
-| `s` | Seconds |
-| `s` | 秒 |
-| `u` | Milliseconds |
-| `u` | 毫秒 |
+| Suffixes | Details      |
+| :------- | :----------- |
+| 后缀     | 详情         |
+| `d`      | Days         |
+| `d`      | 天           |
+| `h`      | Hours        |
+| `h`      | 小时         |
+| `m`      | Minutes      |
+| `m`      | 分钟         |
+| `s`      | Seconds      |
+| `s`      | 秒           |
+| `u`      | Milliseconds |
+| `u`      | 毫秒         |
 
 For example, the string `3d12h` caches content for up to three and a half days.
 
@@ -449,19 +449,19 @@ The network timeout is how long the Angular service worker waits for the network
 
 这个表示持续时间的字符串用于指定网络超时时间。如果配置了网络超时时间，Angular Service Worker 就会先等待这么长时间再使用缓存。`timeout` 是一个表示持续时间的字符串，使用下列后缀单位：
 
-| Suffixes | Details |
-| :------- | :------ |
-| 后缀 | 详情 |
-| `d` | Days |
-| `d` | 天 |
-| `h` | Hours |
-| `h` | 小时 |
-| `m` | Minutes |
-| `m` | 分钟 |
-| `s` | Seconds |
-| `s` | 秒 |
-| `u` | Milliseconds |
-| `u` | 毫秒 |
+| Suffixes | Details      |
+| :------- | :----------- |
+| 后缀     | 详情         |
+| `d`      | Days         |
+| `d`      | 天           |
+| `h`      | Hours        |
+| `h`      | 小时         |
+| `m`      | Minutes      |
+| `m`      | 分钟         |
+| `s`      | Seconds      |
+| `s`      | 秒           |
+| `u`      | Milliseconds |
+| `u`      | 毫秒         |
 
 For example, the string `5s30u` translates to five seconds and 30 milliseconds of network timeout.
 
@@ -473,13 +473,13 @@ The Angular service worker can use either of two caching strategies for data res
 
 Angular Service Worker 可以使用两种缓存策略之一来获取数据资源。
 
-| Caching strategies | Details |
-| :----------------- | :------ |
-| 缓存策略 | 详情 |
-| `performance` | The default, optimizes for responses that are as fast as possible. If a resource exists in the cache, the cached version is used, and no network request is made. This allows for some staleness, depending on the `maxAge`, in exchange for better performance. This is suitable for resources that don't change often; for example, user avatar images. |
-| `performance` | `performance`，默认值，为尽快给出响应而优化。如果缓存中存在某个资源，则使用这个缓存版本，而不再发起网络请求。它允许资源有一定的陈旧性（取决于 `maxAge`）以换取更好的性能。适用于那些不经常改变的资源，比如用户头像。 |
-| `freshness` | Optimizes for currency of data, preferentially fetching requested data from the network. Only if the network times out, according to `timeout`, does the request fall back to the cache. This is useful for resources that change frequently; for example, account balances. |
-| `freshness` | 为数据的即时性而优化，优先从网络获取请求的数据。只有当网络超时时，请求才会根据 `timeout` 的设置回退到缓存中。这对于那些频繁变化的资源很有用，比如账户余额。 |
+| Caching strategies | Details                                                                                                                                                                                                                                                                                                                                                   |
+| :----------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 缓存策略           | 详情                                                                                                                                                                                                                                                                                                                                                      |
+| `performance`      | The default, optimizes for responses that are as fast as possible. If a resource exists in the cache, the cached version is used, and no network request is made. This allows for some staleness, depending on the `maxAge`, in exchange for better performance. This is suitable for resources that don't change often; for example, user avatar images. |
+| `performance`      | `performance`，默认值，为尽快给出响应而优化。如果缓存中存在某个资源，则使用这个缓存版本，而不再发起网络请求。它允许资源有一定的陈旧性（取决于 `maxAge`）以换取更好的性能。适用于那些不经常改变的资源，比如用户头像。                                                                                                                                      |
+| `freshness`        | Optimizes for currency of data, preferentially fetching requested data from the network. Only if the network times out, according to `timeout`, does the request fall back to the cache. This is useful for resources that change frequently; for example, account balances.                                                                              |
+| `freshness`        | 为数据的即时性而优化，优先从网络获取请求的数据。只有当网络超时时，请求才会根据 `timeout` 的设置回退到缓存中。这对于那些频繁变化的资源很有用，比如账户余额。                                                                                                                                                                                               |
 
 <div class="alert is-helpful">
 
@@ -520,13 +520,13 @@ If not specified, the default value depends on the data group's configured strat
 
 如果未指定，则默认值取决于数据组的配置策略：
 
-| Strategies | Details |
-| :--------- | :------ |
-| 策略 | 详情 |
-| Groups with the `freshness` strategy | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response. |
-| 使用 `freshness` 策略的组 | 默认值为 `true`，Service Worker 会缓存不透明响应。这些组每次都会重新请求数据，只有在脱机或在慢速网络上时才会回到缓存响应。因此，服务工作者是否缓存错误响应是无关紧要的。 |
+| Strategies                             | Details                                                                                                                                                                                                                                                                                                                     |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 策略                                   | 详情                                                                                                                                                                                                                                                                                                                        |
+| Groups with the `freshness` strategy   | The default value is `true` and the service worker caches opaque responses. These groups will request the data every time and only fall back to the cached response when offline or on a slow network. Therefore, it doesn't matter if the service worker caches an error response.                                         |
+| 使用 `freshness` 策略的组              | 默认值为 `true`，Service Worker 会缓存不透明响应。这些组每次都会重新请求数据，只有在脱机或在慢速网络上时才会回到缓存响应。因此，服务工作者是否缓存错误响应是无关紧要的。                                                                                                                                                    |
 | Groups with the `performance` strategy | The default value is `false` and the service worker doesn't cache opaque responses. These groups would continue to return a cached response until `maxAge` expires, even if the error was due to a temporary network or server issue. Therefore, it would be problematic for the service worker to cache an error response. |
-| 具有 `performance` 策略的组 | 默认值为 `false`，Service Worker 不缓存不透明响应）。这些组将继续返回缓存响应，直到 `maxAge` 过期，即使错误是由于临时网络或服务器问题造成的。因此，服务工作者缓存错误响应将是有问题的。 |
+| 具有 `performance` 策略的组            | 默认值为 `false`，Service Worker 不缓存不透明响应）。这些组将继续返回缓存响应，直到 `maxAge` 过期，即使错误是由于临时网络或服务器问题造成的。因此，服务工作者缓存错误响应将是有问题的。                                                                                                                                     |
 
 <div class="callout is-important">
 
@@ -650,13 +650,13 @@ This optional property enables you to configure how the service worker handles n
 
 </code-example>
 
-| Possible values | Details |
-| :-------------- | :------ |
-| 可能的值 | 详情 |
-| `'performance'` | The default setting. Serves the specified [index file](#index-file), which is typically cached. |
-| `'performance'` | 默认设置。提供指定的[索引文件](#index-file)，它通常会被缓存。 |
-| `'freshness'` | Passes the requests through to the network and falls back to the `performance` behavior when offline. This value is useful when the server redirects the navigation requests elsewhere using a `3xx` HTTP redirect status code. Reasons for using this value include: <ul> <li> Redirecting to an authentication website when authentication is not handled by the application </li> <li> Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign </li> <li> Redirecting to a different website, such as a server-status page, while a page is temporarily down </li> </ul> |
-| `'freshness'` | 将请求透传到网络，并在脱机时回退到 `performance` 模式。当服务器在用 HTTP 重定向状态码 `3xx` 将导航请求重定向到其他位置时，此值很有用。使用此值的原因包括：<ul> <li> 当应用尚未处理身份验证时，重定向到身份验证网站。</li> <li> 重定向特定的 URL，以免在网站重新设计后破坏现有的链接/书签。</li> <li>  当页面暂时关闭时，重定向到其他网站，比如服务器状态页。</li> </ul> |
+| Possible values | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 可能的值        | 详情                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `'performance'` | The default setting. Serves the specified [index file](#index-file), which is typically cached.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `'performance'` | 默认设置。提供指定的[索引文件](#index-file)，它通常会被缓存。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `'freshness'`   | Passes the requests through to the network and falls back to the `performance` behavior when offline. This value is useful when the server redirects the navigation requests elsewhere using a `3xx` HTTP redirect status code. Reasons for using this value include: <ul> <li> Redirecting to an authentication website when authentication is not handled by the application </li> <li> Redirecting specific URLs to avoid breaking existing links/bookmarks after a website redesign </li> <li> Redirecting to a different website, such as a server-status page, while a page is temporarily down </li> </ul> |
+| `'freshness'`   | 将请求透传到网络，并在脱机时回退到 `performance` 模式。当服务器在用 HTTP 重定向状态码 `3xx` 将导航请求重定向到其他位置时，此值很有用。使用此值的原因包括：<ul> <li> 当应用尚未处理身份验证时，重定向到身份验证网站。</li> <li> 重定向特定的 URL，以免在网站重新设计后破坏现有的链接/书签。</li> <li>  当页面暂时关闭时，重定向到其他网站，比如服务器状态页。</li> </ul>                                                                                                                                                                                                                                           |
 
 <div class="alert is-important">
 

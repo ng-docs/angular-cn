@@ -211,15 +211,15 @@ The following parameters provide context and additional information to reduce co
 
 以下参数提供上下文和附加信息，以避免翻译人员弄混。
 
-| Metadata parameter | Details |
-| :----------------- | :------ |
-| 元数据参数 | 详情 |
-| Custom ID | Provide a custom identifier |
-| 自定义 ID | 提供自定义标识符 |
-| Description | Provide additional information or context |
-| 说明 | 提供额外的信息或背景 |
-| Meaning | Provide the meaning or intent of the text within the specific context |
-| 含义(Meaning) | 提供文本在特定上下文中的含义或意图 |
+| Metadata parameter | Details                                                               |
+| :----------------- | :-------------------------------------------------------------------- |
+| 元数据参数         | 详情                                                                  |
+| Custom ID          | Provide a custom identifier                                           |
+| 自定义 ID          | 提供自定义标识符                                                      |
+| Description        | Provide additional information or context                             |
+| 说明               | 提供额外的信息或背景                                                  |
+| Meaning            | Provide the meaning or intent of the text within the specific context |
+| 含义(Meaning)      | 提供文本在特定上下文中的含义或意图                                    |
 
 For additional information about custom IDs, see [Manage marked text with custom IDs][AioGuideI18nOptionalManageMarkedText].
 
@@ -364,13 +364,13 @@ An ICU clause defines the type of conditional text.
 
 组件属性定义了变量，而 ICU 子句定义了条件文本的类型。
 
-| ICU clause | Details |
-| :--------- | :------ |
-| ICU 子句 | 详情 |
-| [`plural`][AioGuideI18nCommonPrepareMarkPlurals] | Mark the use of plural numbers |
-| [`plural`][AioGuideI18nCommonPrepareMarkPlurals] | 标记复数的使用 |
+| ICU clause                                                              | Details                                                             |
+| :---------------------------------------------------------------------- | :------------------------------------------------------------------ |
+| ICU 子句                                                                | 详情                                                                |
+| [`plural`][AioGuideI18nCommonPrepareMarkPlurals]                        | Mark the use of plural numbers                                      |
+| [`plural`][AioGuideI18nCommonPrepareMarkPlurals]                        | 标记复数的使用                                                      |
 | [`select`][AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions] | Mark choices for alternate text based on your defined string values |
-| [`select`][AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions] | 根据你定义的字符串值标记出替代文本的一些选择 |
+| [`select`][AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions] | 根据你定义的字符串值标记出替代文本的一些选择                        |
 
 To simplify translation, use International Components for Unicode clauses (ICU clauses) with regular expressions.
 
@@ -418,21 +418,21 @@ The following pluralization categories are available for English and may change 
 
 以下复数类别适用于英语，可能会根据语言环境而变化。
 
-| Pluralization category | Details | Example |
-| :--------------------- | :------ | :------ |
-| 复数类 | 详情 | 范例 |
-| `zero` | Quantity is zero | `=0 { }` <br /> `zero { }` |
-| `zero` | 数量为零 | `=0 { }` <br /> `zero { }` |
-| `one` | Quantity is 1 | `=1 { }` <br /> `one { }` |
-| `one` | 数量为 1 | `=1 { }` <br /> `one { }` |
-| `two` | Quantity is 2 | `=2 { }` <br /> `two { }` |
-| `two` | 数量为 2 | `=2 { }` <br /> `two { }` |
-| `few` | Quantity is 2 or more | `few { }` |
-| `few` | 数量为 2 或更多 | `few { }` |
-| `many` | Quantity is a large number | `many { }` |
-| `many` | 数量很大 | `many { }` |
-| `other` | The default quantity | `other { }` |
-| `other` | 数量的默认值 | `other { }` |
+| Pluralization category | Details                    | Example                    |
+| :--------------------- | :------------------------- | :------------------------- |
+| 复数类                 | 详情                       | 范例                       |
+| `zero`                 | Quantity is zero           | `=0 { }` <br /> `zero { }` |
+| `zero`                 | 数量为零                   | `=0 { }` <br /> `zero { }` |
+| `one`                  | Quantity is 1              | `=1 { }` <br /> `one { }`  |
+| `one`                  | 数量为 1                   | `=1 { }` <br /> `one { }`  |
+| `two`                  | Quantity is 2              | `=2 { }` <br /> `two { }`  |
+| `two`                  | 数量为 2                   | `=2 { }` <br /> `two { }`  |
+| `few`                  | Quantity is 2 or more      | `few { }`                  |
+| `few`                  | 数量为 2 或更多            | `few { }`                  |
+| `many`                 | Quantity is a large number | `many { }`                 |
+| `many`                 | 数量很大                   | `many { }`                 |
+| `other`                | The default quantity       | `other { }`                |
+| `other`                | 数量的默认值               | `other { }`                |
 
 If none of the pluralization categories match, Angular uses `other` to match the standard fallback for a missing category.
 
@@ -525,19 +525,19 @@ Review the following details in the previous code example.
 
 查看前面代码示例中的以下详细信息。
 
-| Parameters | Details |
-| :--------- | :------ |
-| 参数 | 详情 |
-| `minutes` | The first parameter specifies the component property is `minutes` and determines the number of minutes. |
-| `minutes` | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。 |
-| `plural` | The second parameter specifies the ICU clause is `plural`. |
-| `plural` | 第二个参数指定 ICU 子句是 `plural`。 |
-| `=0 {just now}` | For zero minutes, the pluralization category is `=0`. The value is `just now`. |
-| `=0 {just now}` | 对于零分钟，复数类别是 `=0`。其值是 `just now`。 |
-| `=1 {one minute}` | For one minute, the pluralization category is `=1`. The value is `one minute`. |
-| `=1 {one minute}` | 对于一分钟，复数类别是 `=1`。该值为 `one minute`。 |
+| Parameters                        | Details                                                                                                               |
+| :-------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
+| 参数                              | 详情                                                                                                                  |
+| `minutes`                         | The first parameter specifies the component property is `minutes` and determines the number of minutes.               |
+| `minutes`                         | 第一个参数指定这个组件属性是 `minutes` 并确定其分钟数。                                                               |
+| `plural`                          | The second parameter specifies the ICU clause is `plural`.                                                            |
+| `plural`                          | 第二个参数指定 ICU 子句是 `plural`。                                                                                  |
+| `=0 {just now}`                   | For zero minutes, the pluralization category is `=0`. The value is `just now`.                                        |
+| `=0 {just now}`                   | 对于零分钟，复数类别是 `=0`。其值是 `just now`。                                                                      |
+| `=1 {one minute}`                 | For one minute, the pluralization category is `=1`. The value is `one minute`.                                        |
+| `=1 {one minute}`                 | 对于一分钟，复数类别是 `=1`。该值为 `one minute`。                                                                    |
 | `other {{{minutes}} minutes ago}` | For any unmatched cardinality, the default pluralization category is `other`. The value is `{{minutes}} minutes ago`. |
-| `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。 |
+| `other {{{minutes}} minutes ago}` | 对于任何不匹配的基数，默认的复数类别是 `other`。该值为 `{{minutes}} minutes ago`。                                    |
 
 `{{minutes}}` is an [interpolation][AioGuideGlossaryInterpolation].
 
@@ -633,15 +633,15 @@ The `gender` property binds the outputs to each of following string values.
 
 `gender` 属性将输出绑定到以下每个字符串值。
 
-| Value | English value |
-| :---- | :------------ |
-| 值 | 英语值 |
-| female | `female` |
-| 女性 | `female` |
-| male | `male` |
-| 男性 | `male` |
-| other | `other` |
-| 其它 | `other` |
+| Value  | English value |
+| :----- | :------------ |
+| 值     | 英语值        |
+| female | `female`      |
+| 女性   | `female`      |
+| male   | `male`        |
+| 男性   | `male`        |
+| other  | `other`       |
+| 其它   | `other`       |
 
 The `select` clause maps the values to the appropriate translations.
 The following code example shows `gender` property used with the select clause.
@@ -678,9 +678,11 @@ The following code example shows nested clauses based on the `gender` and `minut
 [AioGuideI18nCommonPrepare]: guide/i18n-common-prepare "Prepare component for translation | Angular"
 
 [AioGuideI18nCommonPrepareAddHelpfulDescriptionsAndMeanings]: guide/i18n-common-prepare#add-helpful-descriptions-and-meanings "Add helpful descriptions and meanings - Prepare component for translation | Angular"
+
 [AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions]: guide/i18n-common-prepare#mark-alternates-and-nested-expressions "Mark alternates and nested expressions - Prepare templates for translation | Angular"
 
 [AioGuideI18nCommonPrepareMarkElementAttributesForTranslations]: guide/i18n-common-prepare#mark-element-attributes-for-translations "Mark element attributes for translations - Prepare component for translation | Angular"
+
 [AioGuideI18nCommonPrepareMarkPlurals]: guide/i18n-common-prepare#mark-plurals "Mark plurals - Prepare component for translation | Angular"
 
 [AioGuideI18nCommonPrepareMarkTextInComponentTemplate]: guide/i18n-common-prepare#mark-text-in-component-template "Mark text in component template - Prepare component for translation | Angular"

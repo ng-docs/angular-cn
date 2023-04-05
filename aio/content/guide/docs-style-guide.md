@@ -15,19 +15,19 @@ Before contributing to the Angular documentation, it is helpful if you are famil
 
 在为 Angular 文档做贡献之前，如果你熟悉以下内容，会很有帮助：
 
-| Subjects | Details |
-| :------- | :------ |
-| 主题 | 详细信息 |
-| `git` | For an introduction, see GitHub's [Git Handbook](https://guides.github.com/introduction/git-handbook) |
-| `git` | 有关介绍，参阅 GitHub 的[Git 手册](https://guides.github.com/introduction/git-handbook) |
-| GitHub | For an introduction, see GitHub's [Hello World](https://guides.github.com/activities/hello-world) |
-| GitHub | 有关介绍，参阅 GitHub 的[Hello World](https://guides.github.com/activities/hello-world) |
-| Markdown | See GitHub's [Mastering Markdown](https://guides.github.com/features/mastering-markdown) |
-| 降价 | 参阅 GitHub 的[精通 Markdown](https://guides.github.com/features/mastering-markdown) |
-| Angular coding style | See the [Angular Style Guide](guide/styleguide "Angular Application Code Style Guide") |
-| Angular 编码风格 | 参阅[Angular 风格指南](guide/styleguide "Angular 应用程序代码风格指南") |
+| Subjects             | Details                                                                                                                                                                   |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 主题                 | 详细信息                                                                                                                                                                  |
+| `git`                | For an introduction, see GitHub's [Git Handbook](https://guides.github.com/introduction/git-handbook)                                                                     |
+| `git`                | 有关介绍，参阅 GitHub 的[Git 手册](https://guides.github.com/introduction/git-handbook)                                                                                   |
+| GitHub               | For an introduction, see GitHub's [Hello World](https://guides.github.com/activities/hello-world)                                                                         |
+| GitHub               | 有关介绍，参阅 GitHub 的[Hello World](https://guides.github.com/activities/hello-world)                                                                                   |
+| Markdown             | See GitHub's [Mastering Markdown](https://guides.github.com/features/mastering-markdown)                                                                                  |
+| 降价                 | 参阅 GitHub 的[精通 Markdown](https://guides.github.com/features/mastering-markdown)                                                                                      |
+| Angular coding style | See the [Angular Style Guide](guide/styleguide "Angular Application Code Style Guide")                                                                                    |
+| Angular 编码风格     | 参阅[Angular 风格指南](guide/styleguide "Angular 应用程序代码风格指南")                                                                                                   |
 | Google writing style | The [Google Developer Documentation Style Guide](https://developers.google.com/style) is a comprehensive resource that this Angular documentation style guide builds upon |
-| 谷歌的写作风格 | [Google 开发者文档风格指南](https://developers.google.com/style)是本 Angular 文档风格指南所基于的综合资源 |
+| 谷歌的写作风格       | [Google 开发者文档风格指南](https://developers.google.com/style)是本 Angular 文档风格指南所基于的综合资源                                                                 |
 
 ## Kinds of Angular documentation
 
@@ -37,15 +37,15 @@ The categories of Angular documentation include:
 
 Angular 文档的类别包括：
 
-| Angular documentation categories | Details |
-| :------------------------------- | :------ |
-| Angular 文档类别 | 详细信息 |
-| [Guides](docs) | Much of what's in the [documentation section of angular.io](docs). Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example. These include [Getting Started](start), [Tour of Heroes](tutorial/tour-of-heroes), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/http). Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown"). |
-| [指南](docs) | [angular.io 文档部分中的大部分内容](docs)。指南会引导读者一步步完成任务以展示概念，并且通常伴随着一个工作示例。其中包括[入门](start)、[英雄之旅](tutorial)以及有关[Forms](guide/forms-overview) 、[依赖注入](guide/dependency-injection)和[HttpClient](guide/http)的页面。社区的贡献成员和 Angular 团队成员在[Markdown](https://daringfireball.net/projects/markdown/syntax "降价")中维护本文档。 |
-| [API documentation](api) | Reference documents for the [Angular Application Programming Interface, or API](api). These are more succinct than guides and serve as a reference for Angular features. They are especially helpful for people already acquainted with Angular concepts. The [angular.io](https://angular.io) infrastructure generates these documents from source code and comments that contributors edit. |
-| [API 文档](api) | [Angular 应用程序编程接口或 API](api)的参考文档。这些比指南更简洁，可作为 Angular 特性的参考。它们对于已经熟悉 Angular 概念的人特别有帮助。[angular.io](https://angular.io)基础设施从源代码和贡献者编辑的注释生成这些文档。 |
-| [CLI documentation](cli) | The [angular.io](https://angular.io) infrastructure generates these documents from CLI source code. |
-| [CLI 文档](cli) | [angular.io](https://angular.io)基础设施从 CLI 源代码生成这些文档。 |
+| Angular documentation categories | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| :------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Angular 文档类别                 | 详细信息                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [Guides](docs)                   | Much of what's in the [documentation section of angular.io](docs). Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example. These include [Getting Started](start), [Tour of Heroes](tutorial/tour-of-heroes), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/http). Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown"). |
+| [指南](docs)                     | [angular.io 文档部分中的大部分内容](docs)。指南会引导读者一步步完成任务以展示概念，并且通常伴随着一个工作示例。其中包括[入门](start)、[英雄之旅](tutorial)以及有关[Forms](guide/forms-overview) 、[依赖注入](guide/dependency-injection)和[HttpClient](guide/http)的页面。社区的贡献成员和 Angular 团队成员在[Markdown](https://daringfireball.net/projects/markdown/syntax "降价")中维护本文档。                                                                                                                                                                                          |
+| [API documentation](api)         | Reference documents for the [Angular Application Programming Interface, or API](api). These are more succinct than guides and serve as a reference for Angular features. They are especially helpful for people already acquainted with Angular concepts. The [angular.io](https://angular.io) infrastructure generates these documents from source code and comments that contributors edit.                                                                                                                                                                                              |
+| [API 文档](api)                  | [Angular 应用程序编程接口或 API](api)的参考文档。这些比指南更简洁，可作为 Angular 特性的参考。它们对于已经熟悉 Angular 概念的人特别有帮助。[angular.io](https://angular.io)基础设施从源代码和贡献者编辑的注释生成这些文档。                                                                                                                                                                                                                                                                                                                                                                |
+| [CLI documentation](cli)         | The [angular.io](https://angular.io) infrastructure generates these documents from CLI source code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [CLI 文档](cli)                  | [angular.io](https://angular.io)基础设施从 CLI 源代码生成这些文档。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 ## Markdown and HTML
 
@@ -99,13 +99,13 @@ Begin the title with the Markdown hash (`#`) character, which renders as an `<h1
 
 </code-example>
 
-| Title guidance | Details |
-| :------------- | :------ |
-| 标题指导 | 详细信息 |
-| A document can have only one `<h1>` | Title text should be in *Sentence case*, which means the first word is capitalized and all other words are lower case. Technical terms that are always capitalized, like "Angular", are the exception. <code-example format="html" language="html"> &num; Deprecation policy in Angular </code-example> |
-| 一个文档只能有一个 `<h1>` | 标题文本应该是*Sentence case*，这意味着第一个单词是大写的，所有其他单词都是小写的。始终大写的技术术语，比如“Angular”，是个例外。<code-example format="html" language="html"># Angular 中的弃用策略</code-example> |
-| Always follow the title with at least one blank line | The corresponding text in the left nav is in *Title Case*, which means that you use capital letters to start the first words and all principal words. Use lower case letters for secondary words such as "in", "of", and "the". You can also shorten the nav title to fit in the column. |
-| 始终在标题后面至少有一个空行 | 左侧导航中的相应文本在*Title Case*中，这意味着你可以用大写字母来开头第一个单词和所有主要单词。对“in”、“of”和“the”等次要词使用小写字母。你还可以缩短导航标题以适合列。 |
+| Title guidance                                       | Details                                                                                                                                                                                                                                                                                                 |
+| :--------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 标题指导                                             | 详细信息                                                                                                                                                                                                                                                                                                |
+| A document can have only one `<h1>`                  | Title text should be in *Sentence case*, which means the first word is capitalized and all other words are lower case. Technical terms that are always capitalized, like "Angular", are the exception. <code-example format="html" language="html"> &num; Deprecation policy in Angular </code-example> |
+| 一个文档只能有一个 `<h1>`                            | 标题文本应该是*Sentence case*，这意味着第一个单词是大写的，所有其他单词都是小写的。始终大写的技术术语，比如“Angular”，是个例外。<code-example format="html" language="html"># Angular 中的弃用策略</code-example>                                                                                       |
+| Always follow the title with at least one blank line | The corresponding text in the left nav is in *Title Case*, which means that you use capital letters to start the first words and all principal words. Use lower case letters for secondary words such as "in", "of", and "the". You can also shorten the nav title to fit in the column.                |
+| 始终在标题后面至少有一个空行                         | 左侧导航中的相应文本在*Title Case*中，这意味着你可以用大写字母来开头第一个单词和所有主要单词。对“in”、“of”和“the”等次要词使用小写字母。你还可以缩短导航标题以适合列。                                                                                                                                   |
 
 ## Sections
 
@@ -289,19 +289,19 @@ A navigation node has the following properties:
 
 导航节点具有以下属性：
 
-| Properties | Details |
-| :--------- | :------ |
-| 属性 | 详细信息 |
-| `url` | The URL of the guide page, which is an item node only. |
-| `url` | 指南页面的 URL，仅是 item 节点。 |
-| `title` | The text displayed in the side nav. |
-| `title` | 侧面导航中显示的文本。 |
-| `tooltip` | Text that appears when the reader hovers over the navigation link. |
-| `tooltip` | 当阅读器将鼠标悬停在导航链接上时出现的文本。 |
-| `children` | An array of child nodes, which is a header node only. |
-| `children` | 子节点数组，仅是标头节点。 |
-| `hidden` | Defined and set `true` if this is a guide page that should not be displayed in the navigation panel. |
-| `hidden` | 如果这是不应该在导航面板中显示的指南页面，则已定义并设置为 `true`。 |
+| Properties | Details                                                                                              |
+| :--------- | :--------------------------------------------------------------------------------------------------- |
+| 属性       | 详细信息                                                                                             |
+| `url`      | The URL of the guide page, which is an item node only.                                               |
+| `url`      | 指南页面的 URL，仅是 item 节点。                                                                     |
+| `title`    | The text displayed in the side nav.                                                                  |
+| `title`    | 侧面导航中显示的文本。                                                                               |
+| `tooltip`  | Text that appears when the reader hovers over the navigation link.                                   |
+| `tooltip`  | 当阅读器将鼠标悬停在导航链接上时出现的文本。                                                         |
+| `children` | An array of child nodes, which is a header node only.                                                |
+| `children` | 子节点数组，仅是标头节点。                                                                           |
+| `hidden`   | Defined and set `true` if this is a guide page that should not be displayed in the navigation panel. |
+| `hidden`   | 如果这是不应该在导航面板中显示的指南页面，则已定义并设置为 `true`。                                  |
 
 <div class="alert is-critical">
 

@@ -61,13 +61,13 @@ There are a few rules in particular that will make it much easier to do *an incr
 
 有一些特别的规则可以让使用 Angular 的 `upgrade/static` 模块进行*增量升级*变得更简单：
 
-| Rules | Details |
-| :---- | :------ |
-| 规则 | 详情 |
-| [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | There should be one component per file. This not only makes components easy to navigate and find, but will also allow us to migrate them between languages and frameworks one at a time. In this example application, each controller, component, service, and filter is in its own source file. |
-| [单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility] | 每个文件应该只放一个组件。这不仅让组件更容易浏览和查找，而且还让你能逐个迁移它们的语言和框架。在这个范例程序中，每个控制器、工厂和过滤器都位于各自的源文件中。 |
-| [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | Define similar principles on a higher level of abstraction: Different parts of the application should reside in different directories and NgModules. |
-| [按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | 在较高的抽象层定义了一些相似的原则：应用程序中的不同部分应该被分到不同的目录和 NgModule 中。 |
+| Rules                                                                                                                                                                                             | Details                                                                                                                                                                                                                                                                                          |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 规则                                                                                                                                                                                              | 详情                                                                                                                                                                                                                                                                                             |
+| [Rule of 1][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]                                                                                                             | There should be one component per file. This not only makes components easy to navigate and find, but will also allow us to migrate them between languages and frameworks one at a time. In this example application, each controller, component, service, and filter is in its own source file. |
+| [单一规则][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdSingleResponsibility]                                                                                                              | 每个文件应该只放一个组件。这不仅让组件更容易浏览和查找，而且还让你能逐个迁移它们的语言和框架。在这个范例程序中，每个控制器、工厂和过滤器都位于各自的源文件中。                                                                                                                                   |
+| [Folders-by-Feature Structure][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [Modularity][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity] | Define similar principles on a higher level of abstraction: Different parts of the application should reside in different directories and NgModules.                                                                                                                                             |
+| [按特性分目录的结构][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdFoldersByFeatureStructure] <br /> [模块化][GithubJohnpapaAngularStyleguideBlobPrimaryA1ReadmeMdModularity]               | 在较高的抽象层定义了一些相似的原则：应用程序中的不同部分应该被分到不同的目录和 NgModule 中。                                                                                                                                                                                                     |
 
 When an application is laid out feature per feature in this way, it can also be migrated one feature at a time.
 For applications that don't already look like this, applying the rules in the AngularJS style guide is a highly recommended preparation step.
@@ -154,45 +154,45 @@ To be Angular compatible, an AngularJS component directive should configure thes
 
 要与 Angular 兼容，AngularJS 的组件型指令应该配置下列属性：
 
-| Attributes | Details |
-| :--------- | :------ |
-| 属性 | 详情 |
-| `restrict: 'E'` | Components are usually used as elements. |
-| `restrict: 'E'` | 组件通常会以元素的方式使用。 |
-| `scope: {}` | An isolate scope. In Angular, components are always isolated from their surroundings, and you should do this in AngularJS too. |
-| `scope: {}` | 一个独立作用域。在 Angular 中，组件永远是从它们的环境中被隔离出来的，在 AngularJS 中也同样如此。 |
-| `bindToController: {}` | Component inputs and outputs should be bound to the controller instead of using the `$scope`. |
-| `bindToController: {}` | 组件的输入和输出应该绑定到控制器，而不是 `$scope`。 |
-| `controller` <br /> `controllerAs` | Components have their own controllers. |
-| `controller` <br /> `controllerAs` | 组件要有自己的控制器。 |
-| `template` <br /> `templateUrl` | Components have their own templates. |
-| `template` <br /> `templateUrl` | 组件要有自己的模板。 |
+| Attributes                         | Details                                                                                                                        |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| 属性                               | 详情                                                                                                                           |
+| `restrict: 'E'`                    | Components are usually used as elements.                                                                                       |
+| `restrict: 'E'`                    | 组件通常会以元素的方式使用。                                                                                                   |
+| `scope: {}`                        | An isolate scope. In Angular, components are always isolated from their surroundings, and you should do this in AngularJS too. |
+| `scope: {}`                        | 一个独立作用域。在 Angular 中，组件永远是从它们的环境中被隔离出来的，在 AngularJS 中也同样如此。                               |
+| `bindToController: {}`             | Component inputs and outputs should be bound to the controller instead of using the `$scope`.                                  |
+| `bindToController: {}`             | 组件的输入和输出应该绑定到控制器，而不是 `$scope`。                                                                            |
+| `controller` <br /> `controllerAs` | Components have their own controllers.                                                                                         |
+| `controller` <br /> `controllerAs` | 组件要有自己的控制器。                                                                                                         |
+| `template` <br /> `templateUrl`    | Components have their own templates.                                                                                           |
+| `template` <br /> `templateUrl`    | 组件要有自己的模板。                                                                                                           |
 
 Component directives may also use the following attributes:
 
 组件型指令还可能使用下列属性：
 
-| Attributes | Details |
-| :--------- | :------ |
-| 属性 | 详情 |
-| `transclude: true/{}` | If the component needs to transclude content from elsewhere. |
-| `transclude: true/{}` | 如果组件需要从其它地方透传内容，就设置它。 |
-| `require` | If the component needs to communicate with the controller of some parent component. |
-| `require` | 如果组件需要和父组件的控制器通讯，就设置它。 |
+| Attributes            | Details                                                                             |
+| :-------------------- | :---------------------------------------------------------------------------------- |
+| 属性                  | 详情                                                                                |
+| `transclude: true/{}` | If the component needs to transclude content from elsewhere.                        |
+| `transclude: true/{}` | 如果组件需要从其它地方透传内容，就设置它。                                          |
+| `require`             | If the component needs to communicate with the controller of some parent component. |
+| `require`             | 如果组件需要和父组件的控制器通讯，就设置它。                                        |
 
 Component directives **should not** use the following attributes:
 
 组件型指令**不能**使用下列属性：
 
-| Attributes (avoid) | Details |
-| :----------------- | :------ |
-| 不能使用的属性 | 详情 |
-| `compile` | This will not be supported in Angular. |
-| `compile` | Angular 不再支持它。 |
-| `replace: true` | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS. |
-| `replace: true` | Angular 永远不会用组件模板替换一个组件元素。这个特性在 AngularJS 中也同样不建议使用了。 |
+| Attributes (avoid)           | Details                                                                                                                        |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| 不能使用的属性               | 详情                                                                                                                           |
+| `compile`                    | This will not be supported in Angular.                                                                                         |
+| `compile`                    | Angular 不再支持它。                                                                                                           |
+| `replace: true`              | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS.        |
+| `replace: true`              | Angular 永远不会用组件模板替换一个组件元素。这个特性在 AngularJS 中也同样不建议使用了。                                        |
 | `priority` <br /> `terminal` | While AngularJS components may use these, they are not used in Angular and it is better not to write code that relies on them. |
-| `priority` <br /> `terminal` | 虽然 AngularJS 的组件可能使用这些，但它们在 Angular 中已经没用了，并且最好不要再写依赖它们的代码。 |
+| `priority` <br /> `terminal` | 虽然 AngularJS 的组件可能使用这些，但它们在 Angular 中已经没用了，并且最好不要再写依赖它们的代码。                             |
 
 An AngularJS component directive that is fully aligned with the Angular architecture may look something like this:
 
@@ -280,13 +280,13 @@ Dependency injection is front and center in both AngularJS and Angular, but ther
 
 无论是在 AngularJS 中还是在 Angular 中，依赖注入都位于前沿和中心的位置，但在两个框架的工作原理上，却存在着一些关键的不同之处。
 
-| AngularJS | Angular |
-| :-------- | :------ |
-| AngularJS | 角 |
-| Dependency injection tokens are always strings | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings. |
-| 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。<br /> 通常是类。<br />也可能是字符串。 |
+| AngularJS                                                                                                             | Angular                                                                                                                                                |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AngularJS                                                                                                             | 角                                                                                                                                                     |
+| Dependency injection tokens are always strings                                                                        | Tokens [can have different types][AioGuideDependencyInjection]. <br /> They are often classes. <br /> They may also be strings.                        |
+| 依赖注入的令牌(Token)永远是字符串(译注：指服务名称)。                                                                 | 令牌[可以有不同的类型][AioGuideDependencyInjection]。<br /> 通常是类。<br />也可能是字符串。                                                           |
 | There is exactly one injector. <br /> Even in multi-module applications, everything is poured into one big namespace. | There is a [tree hierarchy of injectors][AioGuideHierarchicalDependencyInjection], with a root injector and an additional injector for each component. |
-| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。 | 这是一个[树状多级注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。 |
+| 只有一个注入器。<br/>即使在多模块的应用程序中，每样东西也都会被装入一个巨大的命名空间中。                             | 这是一个[树状多级注入器][AioGuideHierarchicalDependencyInjection]：有一个根注入器，而且每个组件也有一个自己的注入器。                                  |
 
 Even accounting for these differences you can still have dependency injection interoperability.
 `upgrade/static` resolves the differences and makes everything work seamlessly:
@@ -743,17 +743,17 @@ When you use the component from an Angular template, provide the inputs and outp
 
 升级后的组件也可能有输入属性和输出属性，它们是在原 AngularJS 组件型指令的 scope/controller 绑定中定义的。当你从 Angular 模板中使用该组件时，就要使用**Angular 模板语法**来提供这些输入属性和输出属性，但要遵循下列规则：
 
-| Bindings | Binding definition | Template syntax |
-| :------- | :----------------- | :-------------- |
-| 绑定 | 绑定定义 | 模板语法 |
-| Attribute binding | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">` |
-| 属性绑定 | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">` |
-| Expression binding | `myOutput: '&myOutput'` | `<my-component (myOutput)="action()">` |
-| 表达式绑定 | `myOutput: '&myOutput'` | `<my-component (myOutput)="action()">` |
-| One-way binding | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
-| 单向绑定 | `myValue: '<myValue'` | `<my-component [myValue]="anExpression">` |
-| Two-way binding | `myValue: '=myValue'` | As a two-way binding: <br /> `<my-component [(myValue)]="anExpression">` <br /> Since most AngularJS two-way bindings actually only need a one-way binding in practice, `<my-component [myValue]="anExpression">` is often enough. |
-| 双向绑定 | `myValue: '=myValue'` | 用作双向绑定：`<my-component [(myValue)]="anExpression">`。<br/> 由于大多数 AngularJS 的双向绑定实际上只是单向绑定，因此通常写成 `<my-component [myValue]="anExpression">` 也够用了。 |
+| Bindings           | Binding definition            | Template syntax                                                                                                                                                                                                                    |
+| :----------------- | :---------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 绑定               | 绑定定义                      | 模板语法                                                                                                                                                                                                                           |
+| Attribute binding  | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">`                                                                                                                                                                                               |
+| 属性绑定           | `myAttribute: '@myAttribute'` | `<my-component myAttribute="value">`                                                                                                                                                                                               |
+| Expression binding | `myOutput: '&myOutput'`       | `<my-component (myOutput)="action()">`                                                                                                                                                                                             |
+| 表达式绑定         | `myOutput: '&myOutput'`       | `<my-component (myOutput)="action()">`                                                                                                                                                                                             |
+| One-way binding    | `myValue: '<myValue'`         | `<my-component [myValue]="anExpression">`                                                                                                                                                                                          |
+| 单向绑定           | `myValue: '<myValue'`         | `<my-component [myValue]="anExpression">`                                                                                                                                                                                          |
+| Two-way binding    | `myValue: '=myValue'`         | As a two-way binding: <br /> `<my-component [(myValue)]="anExpression">` <br /> Since most AngularJS two-way bindings actually only need a one-way binding in practice, `<my-component [myValue]="anExpression">` is often enough. |
+| 双向绑定           | `myValue: '=myValue'`         | 用作双向绑定：`<my-component [(myValue)]="anExpression">`。<br/> 由于大多数 AngularJS 的双向绑定实际上只是单向绑定，因此通常写成 `<my-component [myValue]="anExpression">` 也够用了。                                              |
 
 For example, imagine a hero detail AngularJS component directive with one input and one output:
 
@@ -2389,19 +2389,19 @@ For PhoneCat you need to make the following changes in order to make things work
 
 当你开始组件和模块升级到 Angular 时，还需要一系列后续的修改。这是因为 E2E 测试有一些匹配器是 AngularJS 中特有的。对于 PhoneCat 来说，为了让它能在 Angular 下工作，你得做下列修改：
 
-| Previous code | New code | Details |
-| :------------ | :------- | :------ |
-| 老代码 | 新代码 | 详情 |
+| Previous code                                               | New code                  | Details                                              |
+| :---------------------------------------------------------- | :------------------------ | :--------------------------------------------------- |
+| 老代码                                                      | 新代码                    | 详情                                                 |
 | `by.repeater('phone in $ctrl.phones').column('phone.name')` | `by.css('.phones .name')` | The repeater matcher relies on AngularJS `ng-repeat` |
-| `by.repeater('phone in $ctrl.phones').column('phone.name')` | `by.css('.phones .name')` | repeater 匹配器依赖于 AngularJS 中的 `ng-repeat` |
-| `by.repeater('phone in $ctrl.phones')` | `by.css('.phones li')` | The repeater matcher relies on AngularJS `ng-repeat` |
-| `by.repeater('phone in $ctrl.phones')` | `by.css('.phones li')` | repeater 匹配器依赖于 AngularJS 中的 `ng-repeat` |
-| `by.model('$ctrl.query')` | `by.css('input')` | The model matcher relies on AngularJS `ng-model` |
-| `by.model('$ctrl.query')` | `by.css('input')` | 模型匹配器依赖于 AngularJS `ng-model` |
-| `by.model('$ctrl.orderProp')` | `by.css('select')` | The model matcher relies on AngularJS `ng-model` |
-| `by.model('$ctrl.orderProp')` | `by.css('select')` | 模型匹配器依赖于 AngularJS `ng-model` |
-| `by.binding('$ctrl.phone.name')` | `by.css('h1')` | The binding matcher relies on AngularJS data binding |
-| `by.binding('$ctrl.phone.name')` | `by.css('h1')` | binding 匹配器依赖于 AngularJS 的数据绑定 |
+| `by.repeater('phone in $ctrl.phones').column('phone.name')` | `by.css('.phones .name')` | repeater 匹配器依赖于 AngularJS 中的 `ng-repeat`     |
+| `by.repeater('phone in $ctrl.phones')`                      | `by.css('.phones li')`    | The repeater matcher relies on AngularJS `ng-repeat` |
+| `by.repeater('phone in $ctrl.phones')`                      | `by.css('.phones li')`    | repeater 匹配器依赖于 AngularJS 中的 `ng-repeat`     |
+| `by.model('$ctrl.query')`                                   | `by.css('input')`         | The model matcher relies on AngularJS `ng-model`     |
+| `by.model('$ctrl.query')`                                   | `by.css('input')`         | 模型匹配器依赖于 AngularJS `ng-model`                |
+| `by.model('$ctrl.orderProp')`                               | `by.css('select')`        | The model matcher relies on AngularJS `ng-model`     |
+| `by.model('$ctrl.orderProp')`                               | `by.css('select')`        | 模型匹配器依赖于 AngularJS `ng-model`                |
+| `by.binding('$ctrl.phone.name')`                            | `by.css('h1')`            | The binding matcher relies on AngularJS data binding |
+| `by.binding('$ctrl.phone.name')`                            | `by.css('h1')`            | binding 匹配器依赖于 AngularJS 的数据绑定            |
 
 When the bootstrap method is switched from that of `UpgradeModule` to pure Angular, AngularJS ceases to exist on the page completely.
 At this point, you need to tell Protractor that it should not be looking for an AngularJS application anymore, but instead it should find *Angular apps* from the page.
