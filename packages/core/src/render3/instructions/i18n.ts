@@ -28,6 +28,7 @@ import {getConstant} from '../util/view_utils';
  * contain placeholders which associate inner elements and sub-templates within the translation.
  *
  * The translation `message` placeholders are:
+ *
  * - `�{index}(:{block})�`: *Binding Placeholder*: Marks a location where an expression will be
  *   interpolated into. The placeholder `index` points to the expression binding index. An optional
  *   `block` that matches the sub-template in which it was declared.
@@ -35,7 +36,7 @@ import {getConstant} from '../util/view_utils';
  *   and end of DOM element that were embedded in the original translation block. The placeholder
  *   `index` points to the element index in the template instructions set. An optional `block` that
  *   matches the sub-template in which it was declared.
- * - `�*{index}:{block}�`/`�/*{index}:{block}�`: *Sub-template Placeholder*: Sub-templates must be
+ * - `�*{index}:{block}�`/`�/\*{index}:{block}�`: *Sub-template Placeholder*: Sub-templates must be
  *   split up and translated separately in each angular template function. The `index` points to the
  *   `template` instruction index. A `block` that matches the sub-template in which it was declared.
  *
@@ -71,7 +72,6 @@ export function ɵɵi18nStart(
 }
 
 
-
 /**
  * Translates a translation block marked by `i18nStart` and `i18nEnd`. It inserts the text/ICU nodes
  * into the render tree, moves the placeholder nodes and removes the deleted nodes.
@@ -101,7 +101,7 @@ export function ɵɵi18nEnd(): void {
  *   and end of DOM element that were embedded in the original translation block. The placeholder
  *   `index` points to the element index in the template instructions set. An optional `block` that
  *   matches the sub-template in which it was declared.
- * - `�*{index}:{block}�`/`�/*{index}:{block}�`: *Sub-template Placeholder*: Sub-templates must be
+ * - `�*{index}:{block}�`/`�/\*{index}:{block}�`: *Sub-template Placeholder*: Sub-templates must be
  *   split up and translated separately in each angular template function. The `index` points to the
  *   `template` instruction index. A `block` that matches the sub-template in which it was declared.
  *
