@@ -399,9 +399,6 @@ export class HttpParams {
    *
    * @return A new body with the given value removed, or with all values
    * removed if no value is specified.
-   *
-   * 构造一个新的 `body`，如果指定了 `value`，则移除具有指定 `value` 和指定 `param`
-   * 的条目；如果没有指定 `value`，则移除指定 `param` 对应的所有值。
    */
   delete(param: string, value?: string|number|boolean): HttpParams {
     return this.clone({param, value, op: 'd'});

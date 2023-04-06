@@ -149,7 +149,7 @@ export class SelectControlValueAccessor extends BuiltInControlValueAccessor impl
   /**
    * Sets the "value" property on the select element.
    *
-   * 在输入元素上设置 “value” 属性。如果在选项元素上提供了 ID，则还将设置 “selectedIndex” 属性。
+   * 在 select 元素上设置 “value” 属性。
    *
    * @nodoc
    */

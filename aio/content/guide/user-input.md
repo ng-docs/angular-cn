@@ -286,7 +286,7 @@ Here's how it works.
 
 ## On blur
 
-## 失去焦点事件 (blur)
+## 失焦事件 (blur)
 
 In the previous example, the current state of the input box is lost if the user mouses away and clicks elsewhere without first pressing *Enter*.
 The component's `value` property is updated only when the user presses *Enter*.

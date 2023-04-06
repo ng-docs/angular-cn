@@ -33,13 +33,13 @@ type PostprocessPlaceholder = [number, boolean, string];
  * 通过将消息字符串从中间格式（可能包含我们需要替换的一些标记）转换为可由 i18nStart
  * 指令使用的最终形式来处理消息字符串的后处理。后处理步骤包括：
  *
- * 1. Resolve all multi-value cases (like [�*1:1��#2:1�|�#4:1�|�5�])
+ * 1. Resolve all multi-value cases (like `[�*1:1��#2:1�|�#4:1�|�5�]`)
  *
- *    解析所有多值情况（例如 [�\*1:1��#2:1�|�#4:1�|.5�][�*1:1��#2:1�|�#4:1�|�5�]）
+ *    解析所有多值情况（例如 `[�*1:1��#2:1�|�#4:1�|�5�]`）
  *
  * 2. Replace all ICU vars (like "VAR_PLURAL")
  *
- *    替换所有 ICU var（例如“VAR_PLURAL”）
+ *    替换所有 ICU var（例如 “VAR_PLURAL”）
  *
  * 3. Replace all placeholders used inside ICUs in a form of {PLACEHOLDER}
  *

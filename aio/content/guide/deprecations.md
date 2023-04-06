@@ -67,10 +67,10 @@ v16 - v19
 | `@angular/upgrade` | [`@angular/upgrade`](#upgrade)                        | v8            | v11               |
 | `@angular/upgrade` | [`getAngularLib`](#upgrade-static)                    | v8            | v11               |
 | `@angular/upgrade` | [`setAngularLib`](#upgrade-static)                    | v8            | v11               |
-| 腻子脚本           | [reflect-metadata](#reflect-metadata)                 | v8            | v11               |
 | polyfills          | [reflect-metadata](#reflect-metadata)                 | v8            | v11               |
-| 模板语法           | [`<template>`](#template-tag)                         | v7            | v11               |
+| 腻子脚本           | [reflect-metadata](#reflect-metadata)                 | v8            | v11               |
 | template syntax    | [`<template>`](#template-tag)                         | v7            | v11               |
+| 模板语法           | [`<template>`](#template-tag)                         | v7            | v11               |
 
 ### Deprecated features that can be removed in v12 or later
 
@@ -535,7 +535,7 @@ This deprecation only affects the support for class and
 `InjectionToken` guards at the `Route` definition. `Injectable` classes
 and `InjectionToken` providers are _not_ deprecated in the general
 sense. That said, the interfaces like `CanActivate`,
-`CanDeactivate`, etc.  will be deleted in a future release of Angular. Simply removing the
+`CanDeactivate`, etc. will be deleted in a future release of Angular. Simply removing the
 `implements CanActivate` from the injectable class and updating the route definition
 to be a function like `canActivate: [() => inject(MyGuard).canActivate()]` is sufficient
 to get rid of the deprecation warning.
@@ -855,19 +855,19 @@ Projects that currently have `fullTemplateTypeCheck: true` configured can migrat
 <code-example language="json" header="tsconfig.app.json">
 
 {
-  "angularCompilerOptions": {
-    &hellip;
-    "strictTemplates": true,
-    "strictInputTypes": false,
-    "strictNullInputTypes": false,
-    "strictAttributeTypes": false,
-    "strictOutputEventTypes": false,
-    "strictDomEventTypes": false,
-    "strictDomLocalRefTypes": false,
-    "strictSafeNavigationTypes": false,
-    "strictContextGenerics": false,
-    &hellip;
-  }
+"angularCompilerOptions": {
+&hellip;
+"strictTemplates": true,
+"strictInputTypes": false,
+"strictNullInputTypes": false,
+"strictAttributeTypes": false,
+"strictOutputEventTypes": false,
+"strictDomEventTypes": false,
+"strictDomLocalRefTypes": false,
+"strictSafeNavigationTypes": false,
+"strictContextGenerics": false,
+&hellip;
+}
 }
 
 </code-example>

@@ -58,8 +58,7 @@ export type CldrLocaleData = CldrStatic&{
      * More details: http://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup
      *
      * 区域设置的解析包名称。更多详细信息：
-     * [http](http://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup)
-     * ://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup
+     * http://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup
      *
      */
     bundle: string;

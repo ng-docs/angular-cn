@@ -409,7 +409,7 @@ export class Location implements OnDestroy {
    *
    * @returns The joined URL string.
    *
-   * 给定的一组 URL 字符串，如果需要，就用斜杠合在一起。
+   * 联结后的 URL 字符串。
    *
    */
   public static joinWithSlash: (start: string, end: string) => string = joinWithSlash;

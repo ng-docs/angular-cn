@@ -244,7 +244,7 @@ export function classStringParser(keyValueArray: KeyValueArray<any>, text: strin
  *
  * @param isClassBased `true` if `class` change (`false` if `style`)
  *
- * 如果 `class` 更改，则为 `true`（如果 `style` 则为 `false`）
+ * 如果是基于 `class` 更改的，则为 `true`（如果基于 `style` 则为 `false`）
  *
  */
 export function checkStylingProperty(
@@ -289,7 +289,7 @@ export function checkStylingProperty(
  *
  * @param isClassBased `true` if `class` change (`false` if `style`)
  *
- * 如果 `class` 更改，则为 `true`（如果 `style` 则为 `false`）
+ * 如果是基于 `class` 更改的，则为 `true`（如果基于 `style` 则为 `false`）
  *
  */
 export function checkStylingMap(
@@ -381,7 +381,7 @@ function isInHostBindings(tView: TView, bindingIndex: number): boolean {
  *
  * @param isClassBased `true` if `class` change (`false` if `style`)
  *
- * 如果 `class` 更改，则为 `true`（如果 `style` 则为 `false`）
+ * 如果是基于 `class` 更改的，则为 `true`（如果基于 `style` 则为 `false`）
  *
  */
 function stylingFirstUpdatePass(
@@ -438,7 +438,7 @@ function stylingFirstUpdatePass(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  */
 export function wrapInStaticStylingKey(
@@ -528,7 +528,7 @@ export function wrapInStaticStylingKey(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  * @return `TStylingKey` if found or `undefined` if not found.
  *
@@ -614,7 +614,7 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  * @param tStylingKey New `TStylingKey` which is replacing the old one.
  *
@@ -651,7 +651,7 @@ function setTemplateHeadTStylingKey(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  */
 function collectResidual(tData: TData, tNode: TNode, isClassBased: boolean): KeyValueArray<any>|
@@ -699,7 +699,7 @@ function collectResidual(tData: TData, tNode: TNode, isClassBased: boolean): Key
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  */
 function collectStylingFromDirectives(
@@ -746,7 +746,7 @@ function collectStylingFromDirectives(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  */
 function collectStylingFromTAttrs(
@@ -920,7 +920,7 @@ export function styleKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: st
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  * @param bindingIndex Binding index of the binding.
  *
@@ -1020,7 +1020,7 @@ function updateStylingMap(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  * @param bindingIndex Binding index of the binding.
  *
@@ -1122,7 +1122,7 @@ function updateStyling(
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  */
 function findStylingValue(
@@ -1239,7 +1239,7 @@ function normalizeSuffix(value: any, suffix: string|undefined|null): string|null
  *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
- * 如果是 `class` ，则为 `true`（如果是 `style` ，则为 `false`）
+ * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  */
 export function hasStylingInputShadow(tNode: TNode, isClassBased: boolean) {

@@ -140,8 +140,8 @@ export function ngDevModeResetPerfCounters(): NgDevModePerfCounters {
  *
  * 在 toplevel 上检查 `ngDevMode` 时，请始终在引用它之前初始化它（例如 `((typeof ngDevMode ===
  * 'undefined' || ngDevMode) && initNgDevMode())`
- * ），否则你会得到像[https://github.com](https://github.com/angular/angular/issues/31595)中的
- * `ReferenceError` [/angular/angular/issues/31595](https://github.com/angular/angular/issues/31595)
+ * ），否则你会得到像 https://github.com/angular/angular/issues/31595 中那样的
+ * `ReferenceError`。
  * 。
  *
  * Details on possible values for `ngDevMode` can be found on its docstring.
