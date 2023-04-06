@@ -10,8 +10,10 @@
  * Base URL for the error details page.
  *
  * Keep this constant in sync across:
- *  - packages/compiler-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
- *  - packages/core/src/error_details_base_url.ts
+ *
+ * - packages/compiler-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
+ * - packages/core/src/error_details_base_url.ts
+ *
  */
 export const ERROR_DETAILS_PAGE_BASE_URL = 'https://angular.io/errors';
 

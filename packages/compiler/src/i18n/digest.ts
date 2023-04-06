@@ -129,9 +129,9 @@ class _SerializerIgnoreIcuExpVisitor extends _SerializerVisitor {
  *
  * 计算给定字符串的 SHA1
  *
- * see <https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
+ * see https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
  *
- * 看到<https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
+ * 看到 https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
  *
  * WARNING: this function has not been designed not tested with security in mind.
  *          DO NOT USE IT IN A SECURITY SENSITIVE CONTEXT.
@@ -218,10 +218,10 @@ function fk(index: number, b: number, c: number, d: number): [number, number] {
  * 输出是编码为十进制字符串的 64 位数字
  *
  * based on:
- * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
+ * https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java
  *
  * 基于：
- * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
+ * https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java
  *
  */
 export function fingerprint(str: string): [number, number] {
@@ -425,9 +425,9 @@ const base256 = new BigIntExponentiation(256);
  *
  * 将两个 32 位字表示为单个十进制数。这需要一个大整数存储模型，因为 JS 数字不足以表示 64 位数字。
  *
- * Based on <https://www.danvk.org/hex2dec.html>
+ * Based on https://www.danvk.org/hex2dec.html
  *
- * 基于<https://www.danvk.org/hex2dec.html>
+ * 基于 https://www.danvk.org/hex2dec.html
  *
  */
 function wordsToDecimalString(hi: number, lo: number): string {

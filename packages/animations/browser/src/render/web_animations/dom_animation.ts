@@ -16,7 +16,7 @@
  *
  * 它是浏览器的外部 API，因此必须使用“声明接口”，以防止被 Closure Compiler 重命名。
  *
- * @see <https://developer.mozilla.org/de/docs/Web/API/Animation>
+ * @see https://developer.mozilla.org/de/docs/Web/API/Animation
  *
  */
 export declare interface DOMAnimation {

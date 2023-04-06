@@ -599,10 +599,10 @@ export class NgCompiler {
    * 此 `ts.Program` 有两个主要目的：
    *
    * * As an incremental starting point for creating the next `ts.Program` based on files that the
-   *   user has changed (for clients using the TS compiler program APIs).
+   *     user has changed (for clients using the TS compiler program APIs).
    *
    *   作为根据用户更改的文件创建下一个 `ts.Program` 的增量起点（对于使用 TS 编译器程序 API
-   * 的客户端）。
+   *   的客户端）。
    *
    * * As the "before" point for an incremental compilation invocation, to determine what's changed
    *   between the old and new programs (for all compilations).

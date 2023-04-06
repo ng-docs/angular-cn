@@ -232,16 +232,16 @@ export function parseUri(str: string): UriInfo {
 
 /**
  * Interface for the result of the `parseRequestUrl` method:
- *   Given URL "<http://localhost:8080/api/customers/42?foo=1> the default implementation returns
+ *   Given URL "http://localhost:8080/api/customers/42?foo=1 the default implementation returns
  *     base: 'api/'
  *     collectionName: 'customers'
  *     id: '42'
  *     query: this.createQuery('foo=1')
- *     resourceUrl: '<http://localhost/api/customers/>'
+ *     resourceUrl: 'http://localhost/api/customers/'
  *
- * `parseRequestUrl` 方法结果的接口：给定 URL “ <http://localhost:8080/api/customers/42?foo=1>
+ * `parseRequestUrl` 方法结果的接口：给定 URL “ http://localhost:8080/api/customers/42?foo=1
  * ，默认实现返回 base: 'api/' collectionName: 'customers' id: '42' 查询： this.createQuery('foo=1')
- * resourceUrl: ' <http://localhost/api/customers/> '
+ * resourceUrl: ' http://localhost/api/customers/ '
  *
  */
 export interface ParsedRequestUrl {
@@ -423,10 +423,10 @@ export interface ResponseOptions {
   headers?: HttpHeaders;
 
   /**
-   * Http {@link <https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html> status code}
+   * Http {@link https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html status code}
    * associated with the response.
    *
-   * 与响应关联的 HTTP {@link <https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>状态代码}。
+   * 与响应关联的 HTTP {@link https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html 状态代码}。
    *
    */
   status?: number;

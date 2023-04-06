@@ -129,21 +129,21 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  *
  * ### 预定义的格式选项
  *
- * | Option | Equivalent to | Examples (given in `en-US` locale) |
- * | ------ | ------------- | ---------------------------------- |
- * | 选项 | 相当于 | 示例（在 `en-US` 区域设置中给出） |
- * | `'short'` | `'M/d/yy, h:mm a'` | `6/15/15, 9:03 AM` |
- * | `'medium'` | `'MMM d, y, h:mm:ss a'` | `Jun 15, 2015, 9:03:01 AM` |
- * | `'long'` | `'MMMM d, y, h:mm:ss a z'` | `June 15, 2015 at 9:03:01 AM GMT+1` |
- * | `'full'` | `'EEEE, MMMM d, y, h:mm:ss a zzzz'` | `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00` |
- * | `'shortDate'` | `'M/d/yy'` | `6/15/15` |
- * | `'mediumDate'` | `'MMM d, y'` | `Jun 15, 2015` |
- * | `'longDate'` | `'MMMM d, y'` | `June 15, 2015` |
- * | `'fullDate'` | `'EEEE, MMMM d, y'` | `Monday, June 15, 2015` |
- * | `'shortTime'` | `'h:mm a'` | `9:03 AM` |
- * | `'mediumTime'` | `'h:mm:ss a'` | `9:03:01 AM` |
- * | `'longTime'` | `'h:mm:ss a z'` | `9:03:01 AM GMT+1` |
- * | `'fullTime'` | `'h:mm:ss a zzzz'` | `9:03:01 AM GMT+01:00` |
+ * | Option         | Equivalent to                       | Examples (given in `en-US` locale)              |
+ * | -------------- | ----------------------------------- | ----------------------------------------------- |
+ * | 选项           | 相当于                              | 示例（在 `en-US` 区域设置中给出）               |
+ * | `'short'`      | `'M/d/yy, h:mm a'`                  | `6/15/15, 9:03 AM`                              |
+ * | `'medium'`     | `'MMM d, y, h:mm:ss a'`             | `Jun 15, 2015, 9:03:01 AM`                      |
+ * | `'long'`       | `'MMMM d, y, h:mm:ss a z'`          | `June 15, 2015 at 9:03:01 AM GMT+1`             |
+ * | `'full'`       | `'EEEE, MMMM d, y, h:mm:ss a zzzz'` | `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00` |
+ * | `'shortDate'`  | `'M/d/yy'`                          | `6/15/15`                                       |
+ * | `'mediumDate'` | `'MMM d, y'`                        | `Jun 15, 2015`                                  |
+ * | `'longDate'`   | `'MMMM d, y'`                       | `June 15, 2015`                                 |
+ * | `'fullDate'`   | `'EEEE, MMMM d, y'`                 | `Monday, June 15, 2015`                         |
+ * | `'shortTime'`  | `'h:mm a'`                          | `9:03 AM`                                       |
+ * | `'mediumTime'` | `'h:mm:ss a'`                       | `9:03:01 AM`                                    |
+ * | `'longTime'`   | `'h:mm:ss a z'`                     | `9:03:01 AM GMT+1`                              |
+ * | `'fullTime'`   | `'h:mm:ss a zzzz'`                  | `9:03:01 AM GMT+01:00`                          |
  *
  *   `'fullTime'`: 等价于 `'h:mm:ss a zzzz'` (`9:03:01 AM GMT+01:00`).
  *
@@ -158,133 +158,133 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  *
  * 你可以用符号构造格式字符串来指定日期时间值的组成部分，如下表所述。格式详细信息取决于区域设置。标有 (\*) 的字段仅在给定区域设置的额外数据集中可用。
  *
- * | Field type | Format | Description | Example Value |
- * | ---------- | ------ | ----------- | ------------- |
- * | 字段类型 | 格式 | 描述 | 示例值 |
- * | Era | G, GG & GGG | Abbreviated | AD |
- * | 时代 | G、GG 和 GGG | 缩写 | 广告 |
- * |  | GGGG | Wide | Anno Domini |
- * |  | GGGG | 宽 | 安诺·多米尼 |
- * |  | GGGGG | Narrow | A |
- * |  | GGGGG | 窄 | 一个 |
- * | Year | y | Numeric: minimum digits | 2, 20, 201, 2017, 20173 |
- * | 年份 | 是 | 数字：最小位数 | 2、20、201、2017、20173 |
- * |  | yy | Numeric: 2 digits + zero padded | 02, 20, 01, 17, 73 |
- * |  | yy | 数字： 2 位数字 + 填充零 | 02、20、01、17、73 |
- * |  | yyy | Numeric: 3 digits + zero padded | 002, 020, 201, 2017, 20173 |
- * |  | 年年 | 数字： 3 位数字 + 填充零 | 002、020、201、2017、20173 |
- * |  | yyyy | Numeric: 4 digits or more + zero padded | 0002, 0020, 0201, 2017, 20173 |
- * |  | yyyy | 数字： 4 位或更多位 + 填充零 | 0002、0020、0201、2017、20173 |
- * | Week-numbering year | Y | Numeric: minimum digits | 2, 20, 201, 2017, 20173 |
- * | 周编号年份 | 是 | 数字：最小位数 | 2、20、201、2017、20173 |
- * |  | YY | Numeric: 2 digits + zero padded | 02, 20, 01, 17, 73 |
- * |  | YY | 数字： 2 位数字 + 填充零 | 02、20、01、17、73 |
- * |  | YYY | Numeric: 3 digits + zero padded | 002, 020, 201, 2017, 20173 |
- * |  | YYY | 数字： 3 位数字 + 填充零 | 002、020、201、2017、20173 |
- * |  | YYYY | Numeric: 4 digits or more + zero padded | 0002, 0020, 0201, 2017, 20173 |
- * |  | YYYY | 数字： 4 位或更多位 + 填充零 | 0002、0020、0201、2017、20173 |
- * | Month | M | Numeric: 1 digit | 9, 12 |
- * | 月份 | 中号 | 数字： 1 位 | 9、12 |
- * |  | MM | Numeric: 2 digits + zero padded | 09, 12 |
- * |  | MM | 数字： 2 位数字 + 填充零 | 09、12 |
- * |  | MMM | Abbreviated | Sep |
- * |  | 嗯 | 缩写 | 九月 |
- * |  | MMMM | Wide | September |
- * |  | MMMM | 宽 | 9 月 |
- * |  | MMMMM | Narrow | S |
- * |  | 嗯嗯 | 窄 | 小号 |
- * | Month standalone | L | Numeric: 1 digit | 9, 12 |
- * | 独立月 | 大号 | 数字： 1 位 | 9、12 |
- * |  | LL | Numeric: 2 digits + zero padded | 09, 12 |
- * |  | LL | 数字： 2 位数字 + 填充零 | 09、12 |
- * |  | LLL | Abbreviated | Sep |
- * |  | LLL | 缩写 | 九月 |
- * |  | LLLL | Wide | September |
- * |  | LLLL | 宽 | 9 月 |
- * |  | LLLLL | Narrow | S |
- * |  | LLLL | 窄 | 小号 |
- * | Week of year | w | Numeric: minimum digits | 1... 53 |
- * | 一年中的一周 | w | 数字：最小位数 | 1… 53 |
- * |  | ww | Numeric: 2 digits + zero padded | 01... 53 |
- * |  | 万维网 | 数字： 2 位数字 + 填充零 | 01... 53 |
- * | Week of month | W | Numeric: 1 digit | 1... 5 |
- * | 每月的一周 | 瓦 | 数字： 1 位 | 1... 5 |
- * | Day of month | d | Numeric: minimum digits | 1 |
- * | 一个月中的哪一天 | d | 数字：最小位数 | 1 |
- * |  | dd | Numeric: 2 digits + zero padded | 01 |
- * |  | dd | 数字： 2 位数字 + 填充零 | 01 |
- * | Week day | E, EE & EEE | Abbreviated | Tue |
- * | 工作日 | E、EE 和 EEE | 缩写 | 星期二 |
- * |  | EEEE | Wide | Tuesday |
- * |  | EEEE | 宽 | 星期二 |
- * |  | EEEEE | Narrow | T |
- * |  | EEEE | 窄 | 吨 |
- * |  | EEEEEE | Short | Tu |
- * |  | EEEEEE | 短 | 涂 |
- * | Week day standalone | c, cc | Numeric: 1 digit | 2 |
- * | 工作日独立 | c, cc | 数字： 1 位 | 2 |
- * |  | ccc | Abbreviated | Tue |
- * |  | ccc | 缩写 | 星期二 |
- * |  | cccc | Wide | Tuesday |
- * |  | cccc | 宽 | 星期二 |
- * |  | ccccc | Narrow | T |
- * |  | cccc | 窄 | 牛 |
- * |  | cccccc | Short | Tu |
- * |  | cccccc | 短 | 涂 |
- * | Period | a, aa & aaa | Abbreviated | am/pm or AM/PM |
- * | 期间 | a、a 和 aaa | 缩写 | 上午/下午或上午/下午 |
- * |  | aaaa | Wide (fallback to `a` when missing) | ante meridiem/post meridiem |
- * |  | 啊啊 | 宽（缺失时回退到 `a`） | 子午前/子午后 |
- * |  | aaaaa | Narrow | a/p |
- * |  | 啊啊啊 | 窄 | a/p |
- * | Period\* | B, BB & BBB | Abbreviated | mid. |
- * | 期间\* | B、BB 和 BBB | 缩写 | 中。 |
- * |  | BBBB | Wide | am, pm, midnight, noon, morning, afternoon, evening, night |
- * |  | BBBB | 宽 | 上午, 下午, 午夜, 中午, 早上, 下午, 晚上, 夜 |
- * |  | BBBBB | Narrow | md |
- * |  | BBBBB | 窄 | MD |
- * | Period standalone\* | b, bb & bbb | Abbreviated | mid. |
- * | 独立期间\* | b、bb & bbb | 缩写 | 中。 |
- * |  | bbbb | Wide | am, pm, midnight, noon, morning, afternoon, evening, night |
- * |  | bbbb | 宽 | 上午, 下午, 午夜, 中午, 早上, 下午, 晚上, 夜 |
- * |  | bbbbb | Narrow | md |
- * |  | bbbbb | 窄 | MD |
- * | Hour 1-12 | h | Numeric: minimum digits | 1, 12 |
- * | 1-12 小时 | 小时 | 数字：最小位数 | 1、12 |
- * |  | hh | Numeric: 2 digits + zero padded | 01, 12 |
- * |  | hh | 数字： 2 位数字 + 填充零 | 01、12 |
- * | Hour 0-23 | H | Numeric: minimum digits | 0, 23 |
- * | 小时 0-23 | 高 | 数字：最小位数 | 0、23 |
- * |  | HH | Numeric: 2 digits + zero padded | 00, 23 |
- * |  | 高 | 数字： 2 位数字 + 填充零 | 00、23 |
- * | Minute | m | Numeric: minimum digits | 8, 59 |
- * | 分钟 | 米 | 数字：最小位数 | 8、59 |
- * |  | mm | Numeric: 2 digits + zero padded | 08, 59 |
- * |  | 毫米 | 数字： 2 位数字 + 填充零 | 08、59 |
- * | Second | s | Numeric: minimum digits | 0... 59 |
- * | 第二 | s | 数字：最小位数 | 0... 59 |
- * |  | ss | Numeric: 2 digits + zero padded | 00... 59 |
- * |  | ss | 数字： 2 位数字 + 填充零 | 00... 59 |
- * | Fractional seconds | S | Numeric: 1 digit | 0... 9 |
- * | 小数秒 | 小号 | 数字： 1 位 | 0... 9 |
- * |  | SS | Numeric: 2 digits + zero padded | 00... 99 |
- * |  | SS | 数字： 2 位数字 + 填充零 | 00... 99 |
- * |  | SSS | Numeric: 3 digits + zero padded (= milliseconds) | 000... 999 |
- * |  | SSS | 数字： 3 位 + 填充零（= 毫秒） | 000... 999 |
- * | Zone | z, zz & zzz | Short specific non location format (fallback to O) | GMT-8 |
- * | 区域 | z、zz 和 zzz | 简短的特定非位置格式（回退到 O） | GMT-8 |
- * |  | zzzz | Long specific non location format (fallback to OOOO) | GMT-08:00 |
- * |  | zzzz | 长的特定非位置格式（回退到 OOOO） | GMT-08:00 |
- * |  | Z, ZZ & ZZZ | ISO8601 basic format | -0800 |
- * |  | Z、ZZ 和 ZZZ | ISO8601 基本格式 | -0800 |
- * |  | ZZZZ | Long localized GMT format | GMT-8:00 |
- * |  | ZZZZ | 长本地化 GMT 格式 | GMT-8:00 |
- * |  | ZZZZZ | ISO8601 extended format + Z indicator for offset 0 (= XXXXX) | -08:00 |
- * |  | ZZZZZ | ISO8601 扩展格式 + 偏移量 0 的 Z 指示器（= XXXXX） | -08:00 |
- * |  | O, OO & OOO | Short localized GMT format | GMT-8 |
- * |  | 哦，OO & OOO | 简短的本地化 GMT 格式 | GMT-8 |
- * |  | OOOO | Long localized GMT format | GMT-08:00 |
- * |  | OOOO | 长本地化 GMT 格式 | GMT-08:00 |
+ * | Field type          | Format       | Description                                                  | Example Value                                              |
+ * | ------------------- | ------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+ * | 字段类型            | 格式         | 描述                                                         | 示例值                                                     |
+ * | Era                 | G, GG & GGG  | Abbreviated                                                  | AD                                                         |
+ * | 时代                | G、GG 和 GGG | 缩写                                                         | 广告                                                       |
+ * |                     | GGGG         | Wide                                                         | Anno Domini                                                |
+ * |                     | GGGG         | 宽                                                           | 安诺·多米尼                                                |
+ * |                     | GGGGG        | Narrow                                                       | A                                                          |
+ * |                     | GGGGG        | 窄                                                           | 一个                                                       |
+ * | Year                | y            | Numeric: minimum digits                                      | 2, 20, 201, 2017, 20173                                    |
+ * | 年份                | y           | 数字：最小位数                                               | 2、20、201、2017、20173                                    |
+ * |                     | yy           | Numeric: 2 digits + zero padded                              | 02, 20, 01, 17, 73                                         |
+ * |                     | yy           | 数字： 2 位数字 + 填充零                                     | 02、20、01、17、73                                         |
+ * |                     | yyy          | Numeric: 3 digits + zero padded                              | 002, 020, 201, 2017, 20173                                 |
+ * |                     | yyy         | 数字： 3 位数字 + 填充零                                     | 002、020、201、2017、20173                                 |
+ * |                     | yyyy         | Numeric: 4 digits or more + zero padded                      | 0002, 0020, 0201, 2017, 20173                              |
+ * |                     | yyyy         | 数字： 4 位或更多位 + 填充零                                 | 0002、0020、0201、2017、20173                              |
+ * | Week-numbering year | Y            | Numeric: minimum digits                                      | 2, 20, 201, 2017, 20173                                    |
+ * | 周编号年份          | Y           | 数字：最小位数                                               | 2、20、201、2017、20173                                    |
+ * |                     | YY           | Numeric: 2 digits + zero padded                              | 02, 20, 01, 17, 73                                         |
+ * |                     | YY           | 数字： 2 位数字 + 填充零                                     | 02、20、01、17、73                                         |
+ * |                     | YYY          | Numeric: 3 digits + zero padded                              | 002, 020, 201, 2017, 20173                                 |
+ * |                     | YYY          | 数字： 3 位数字 + 填充零                                     | 002、020、201、2017、20173                                 |
+ * |                     | YYYY         | Numeric: 4 digits or more + zero padded                      | 0002, 0020, 0201, 2017, 20173                              |
+ * |                     | YYYY         | 数字： 4 位或更多位 + 填充零                                 | 0002、0020、0201、2017、20173                              |
+ * | Month               | M            | Numeric: 1 digit                                             | 9, 12                                                      |
+ * | 月份                | M         | 数字： 1 位                                                  | 9、12                                                      |
+ * |                     | MM           | Numeric: 2 digits + zero padded                              | 09, 12                                                     |
+ * |                     | MM           | 数字： 2 位数字 + 填充零                                     | 09、12                                                     |
+ * |                     | MMM          | Abbreviated                                                  | Sep                                                        |
+ * |                     | MMM           | 缩写                                                         | 九月                                                       |
+ * |                     | MMMM         | Wide                                                         | September                                                  |
+ * |                     | MMMM         | 宽                                                           | 9 月                                                       |
+ * |                     | MMMMM        | Narrow                                                       | S                                                          |
+ * |                     | MMMMM         | 窄                                                           | 小号                                                       |
+ * | Month standalone    | L            | Numeric: 1 digit                                             | 9, 12                                                      |
+ * | 独立月              | L         | 数字： 1 位                                                  | 9、12                                                      |
+ * |                     | LL           | Numeric: 2 digits + zero padded                              | 09, 12                                                     |
+ * |                     | LL           | 数字： 2 位数字 + 填充零                                     | 09、12                                                     |
+ * |                     | LLL          | Abbreviated                                                  | Sep                                                        |
+ * |                     | LLL          | 缩写                                                         | 九月                                                       |
+ * |                     | LLLL         | Wide                                                         | September                                                  |
+ * |                     | LLLL         | 宽                                                           | 9 月                                                       |
+ * |                     | LLLLL        | Narrow                                                       | S                                                          |
+ * |                     | LLLL         | 窄                                                           | 小号                                                       |
+ * | Week of year        | w            | Numeric: minimum digits                                      | 1... 53                                                    |
+ * | 一年中的一周        | w            | 数字：最小位数                                               | 1… 53                                                      |
+ * |                     | ww           | Numeric: 2 digits + zero padded                              | 01... 53                                                   |
+ * |                     | ww       | 数字： 2 位数字 + 填充零                                     | 01... 53                                                   |
+ * | Week of month       | W            | Numeric: 1 digit                                             | 1... 5                                                     |
+ * | 每月的一周          | W           | 数字： 1 位                                                  | 1... 5                                                     |
+ * | Day of month        | d            | Numeric: minimum digits                                      | 1                                                          |
+ * | 一个月中的哪一天    | d            | 数字：最小位数                                               | 1                                                          |
+ * |                     | dd           | Numeric: 2 digits + zero padded                              | 01                                                         |
+ * |                     | dd           | 数字： 2 位数字 + 填充零                                     | 01                                                         |
+ * | Week day            | E, EE & EEE  | Abbreviated                                                  | Tue                                                        |
+ * | 工作日              | E、EE 和 EEE | 缩写                                                         | 星期二                                                     |
+ * |                     | EEEE         | Wide                                                         | Tuesday                                                    |
+ * |                     | EEEE         | 宽                                                           | 星期二                                                     |
+ * |                     | EEEEE        | Narrow                                                       | T                                                          |
+ * |                     | EEEE         | 窄                                                           | 吨                                                         |
+ * |                     | EEEEEE       | Short                                                        | Tu                                                         |
+ * |                     | EEEEEE       | 短                                                           | 涂                                                         |
+ * | Week day standalone | c, cc        | Numeric: 1 digit                                             | 2                                                          |
+ * | 工作日独立          | c, cc        | 数字： 1 位                                                  | 2                                                          |
+ * |                     | ccc          | Abbreviated                                                  | Tue                                                        |
+ * |                     | ccc          | 缩写                                                         | 星期二                                                     |
+ * |                     | cccc         | Wide                                                         | Tuesday                                                    |
+ * |                     | cccc         | 宽                                                           | 星期二                                                     |
+ * |                     | ccccc        | Narrow                                                       | T                                                          |
+ * |                     | cccc         | 窄                                                           | 牛                                                         |
+ * |                     | cccccc       | Short                                                        | Tu                                                         |
+ * |                     | cccccc       | 短                                                           | 涂                                                         |
+ * | Period              | a, aa & aaa  | Abbreviated                                                  | am/pm or AM/PM                                             |
+ * | 期间                | a、a 和 aaa  | 缩写                                                         | 上午/下午或上午/下午                                       |
+ * |                     | aaaa         | Wide (fallback to `a` when missing)                          | ante meridiem/post meridiem                                |
+ * |                     | aaaa         | 宽（缺失时回退到 `a`）                                       | 子午前/子午后                                              |
+ * |                     | aaaaa        | Narrow                                                       | a/p                                                        |
+ * |                     | aaaaa       | 窄                                                           | a/p                                                        |
+ * | Period\*            | B, BB & BBB  | Abbreviated                                                  | mid.                                                       |
+ * | 期间\*              | B、BB 和 BBB | 缩写                                                         | 中。                                                       |
+ * |                     | BBBB         | Wide                                                         | am, pm, midnight, noon, morning, afternoon, evening, night |
+ * |                     | BBBB         | 宽                                                           | 上午, 下午, 午夜, 中午, 早上, 下午, 晚上, 夜               |
+ * |                     | BBBBB        | Narrow                                                       | md                                                         |
+ * |                     | BBBBB        | 窄                                                           | MD                                                         |
+ * | Period standalone\* | b, bb & bbb  | Abbreviated                                                  | mid.                                                       |
+ * | 独立期间\*          | b、bb & bbb  | 缩写                                                         | 中。                                                       |
+ * |                     | bbbb         | Wide                                                         | am, pm, midnight, noon, morning, afternoon, evening, night |
+ * |                     | bbbb         | 宽                                                           | 上午, 下午, 午夜, 中午, 早上, 下午, 晚上, 夜               |
+ * |                     | bbbbb        | Narrow                                                       | md                                                         |
+ * |                     | bbbbb        | 窄                                                           | MD                                                         |
+ * | Hour 1-12           | h            | Numeric: minimum digits                                      | 1, 12                                                      |
+ * | 1-12 小时           | h         | 数字：最小位数                                               | 1、12                                                      |
+ * |                     | hh           | Numeric: 2 digits + zero padded                              | 01, 12                                                     |
+ * |                     | hh           | 数字： 2 位数字 + 填充零                                     | 01、12                                                     |
+ * | Hour 0-23           | H            | Numeric: minimum digits                                      | 0, 23                                                      |
+ * | 小时 0-23           | H           | 数字：最小位数                                               | 0、23                                                      |
+ * |                     | HH           | Numeric: 2 digits + zero padded                              | 00, 23                                                     |
+ * |                     | HH           | 数字： 2 位数字 + 填充零                                     | 00、23                                                     |
+ * | Minute              | m            | Numeric: minimum digits                                      | 8, 59                                                      |
+ * | 分钟                | m           | 数字：最小位数                                               | 8、59                                                      |
+ * |                     | mm           | Numeric: 2 digits + zero padded                              | 08, 59                                                     |
+ * |                     | mm         | 数字： 2 位数字 + 填充零                                     | 08、59                                                     |
+ * | Second              | s            | Numeric: minimum digits                                      | 0... 59                                                    |
+ * | 第二                | s            | 数字：最小位数                                               | 0... 59                                                    |
+ * |                     | ss           | Numeric: 2 digits + zero padded                              | 00... 59                                                   |
+ * |                     | ss           | 数字： 2 位数字 + 填充零                                     | 00... 59                                                   |
+ * | Fractional seconds  | S            | Numeric: 1 digit                                             | 0... 9                                                     |
+ * | 小数秒              | S         | 数字： 1 位                                                  | 0... 9                                                     |
+ * |                     | SS           | Numeric: 2 digits + zero padded                              | 00... 99                                                   |
+ * |                     | SS           | 数字： 2 位数字 + 填充零                                     | 00... 99                                                   |
+ * |                     | SSS          | Numeric: 3 digits + zero padded (= milliseconds)             | 000... 999                                                 |
+ * |                     | SSS          | 数字： 3 位 + 填充零（= 毫秒）                               | 000... 999                                                 |
+ * | Zone                | z, zz & zzz  | Short specific non location format (fallback to O)           | GMT-8                                                      |
+ * | 区域                | z、zz 和 zzz | 简短的特定非位置格式（回退到 O）                             | GMT-8                                                      |
+ * |                     | zzzz         | Long specific non location format (fallback to OOOO)         | GMT-08:00                                                  |
+ * |                     | zzzz         | 长的特定非位置格式（回退到 OOOO）                            | GMT-08:00                                                  |
+ * |                     | Z, ZZ & ZZZ  | ISO8601 basic format                                         | -0800                                                      |
+ * |                     | Z、ZZ 和 ZZZ | ISO8601 基本格式                                             | -0800                                                      |
+ * |                     | ZZZZ         | Long localized GMT format                                    | GMT-8:00                                                   |
+ * |                     | ZZZZ         | 长本地化 GMT 格式                                            | GMT-8:00                                                   |
+ * |                     | ZZZZZ        | ISO8601 extended format + Z indicator for offset 0 (= XXXXX) | -08:00                                                     |
+ * |                     | ZZZZZ        | ISO8601 扩展格式 + 偏移量 0 的 Z 指示器（= XXXXX）           | -08:00                                                     |
+ * |                     | O, OO & OOO  | Short localized GMT format                                   | GMT-8                                                      |
+ * |                     | O，OO & OOO | 简短的本地化 GMT 格式                                        | GMT-8                                                      |
+ * |                     | OOOO         | Long localized GMT format                                    | GMT-08:00                                                  |
+ * |                     | OOOO         | 长本地化 GMT 格式                                            | GMT-08:00                                                  |
  *
  * 请注意，时区校正不适用于没有时间部分的 ISO 字符串，比如“2016-09-19”
  *
@@ -348,10 +348,11 @@ export class DatePipe implements PipeTransform {
 
   /**
    * @param value The date expression: a `Date` object,  a number
-   * (milliseconds since UTC epoch), or an ISO string (<https://www.w3.org/TR/NOTE-datetime>).
+   * (milliseconds since UTC epoch), or an ISO string (https://www.w3.org/TR/NOTE-datetime).
    *
    * 日期表达式：`Date` 对象、数字（从 UTC 时代以来的毫秒数）或一个 ISO 字符串
-   * (<https://www.w3.org/TR/NOTE-datetime>)。
+   * (https://www.w3.org/TR/NOTE-datetime)。
+   *
    * @param format The date/time components to include, using predefined options or a
    * custom format string.  When not provided, the `DatePipe` looks for the value using the
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token (and reads the `dateFormat` property).
@@ -360,7 +361,6 @@ export class DatePipe implements PipeTransform {
    * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时， `DatePipe` 会使用
    * `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌查找值（并读取 `dateFormat` 属性）。如果未配置令牌，则使用
    * `mediumDate` 作为值。
-   *
    * @param timezone A timezone offset (such as `'+0430'`), or a standard UTC/GMT, or continental US
    * timezone abbreviation. When not provided, the `DatePipe` looks for the value using the
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token (and reads the `timezone` property). If the token

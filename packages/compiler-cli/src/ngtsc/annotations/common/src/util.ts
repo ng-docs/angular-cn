@@ -285,17 +285,16 @@ const parensWrapperTransformerFactory: ts.TransformerFactory<ts.Expression> =
  * automatic semicolon insertion, e.g. if a function is the expression in a `return` statement.
  * More
  * info can be found in Tsickle source code here:
- * <https://github.com/angular/tsickle/blob/d7974262571c8a17d684e5ba07680e1b1993afdd/src/jsdoc_transformer.ts#L1021>
+ * https://github.com/angular/tsickle/blob/d7974262571c8a17d684e5ba07680e1b1993afdd/src/jsdoc_transformer.ts#L1021
  *
  * 将给定表达式中的所有函数包装在括号中。这是为了避免在 Angular 的分析和转换阶段之间添加的 Tsickle
  * 注解可能会触发自动插入分号的问题，例如，如果函数是 `return` 语句中的表达式。更多信息可以在这里的
  * Tsickle 源代码中找到：
- * <https://github.com/angular/tsickle/blob/d7974262571c8a17d684e5ba07680e1b1993afdd/src/jsdoc_transformer.ts#L1021>
+ * https://github.com/angular/tsickle/blob/d7974262571c8a17d684e5ba07680e1b1993afdd/src/jsdoc_transformer.ts#L1021
  *
  * @param expression Expression where functions should be wrapped in parentheses
  *
  * 函数应该用括号括起来的表达式
- *
  */
 export function wrapFunctionExpressionsInParens(expression: ts.Expression): ts.Expression {
   return ts.transform(expression, [parensWrapperTransformerFactory]).transformed[0];

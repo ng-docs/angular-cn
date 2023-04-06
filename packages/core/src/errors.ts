@@ -103,6 +103,9 @@ export const enum RuntimeErrorCode {
  * Formats and outputs the error message in a consistent way.
  *
  * Example:
+ *
+ * 范例：
+ *
  * ```
  *  throw new RuntimeError(
  *    RuntimeErrorCode.INJECTOR_ALREADY_DESTROYED,
@@ -113,6 +116,7 @@ export const enum RuntimeErrorCode {
  * mode (when the `ngDevMode` is defined). In production mode (after tree-shaking pass), the
  * `message` argument becomes `false`, thus we account for it in the typings and the runtime
  * logic.
+ *
  */
 export class RuntimeError<T extends number = RuntimeErrorCode> extends Error {
   constructor(public code: T, message: null|false|string) {

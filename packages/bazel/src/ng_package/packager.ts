@@ -11,10 +11,10 @@ import * as path from 'path';
 
 /**
  * Interface describing a file captured in the Bazel action.
- * <https://docs.bazel.build/versions/main/skylark/lib/File.html>.
+ * https://docs.bazel.build/versions/main/skylark/lib/File.html.
  *
  * 描述在 Bazel 操作中捕获的文件的接口。
- * <https://docs.bazel.build/versions/main/skylark/lib/File.html> 。
+ * https://docs.bazel.build/versions/main/skylark/lib/File.html 。
  *
  */
 interface BazelFileInfo {
@@ -129,7 +129,7 @@ type KnownPackageJsonFormatFields = typeof knownFormatPackageJsonFormatFields[nu
 
 /**
  * Type describing the conditional exports descriptor for an entry-point.
- * <https://nodejs.org/api/packages.html#packages_conditional_exports>
+ * https://nodejs.org/api/packages.html#packages_conditional_exports
  *
  * 描述入口点的条件导出描述符的类型。
  * [https://nodejs.org/api/packages.html#packages_Conditional_exports](https://nodejs.org/api/packages.html#packages_conditional_exports)

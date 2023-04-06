@@ -11,9 +11,11 @@ import {NodeNavigationStep, REFERENCE_NODE_BODY, REFERENCE_NODE_HOST} from './in
 /**
  * Regexp that extracts a reference node information from the compressed node location.
  * The reference node is represented as either:
- *  - a number which points to an LView slot
- *  - the `b` char which indicates that the lookup should start from the `document.body`
- *  - the `h` char to start lookup from the component host node (`lView[HOST]`)
+ *
+ * - a number which points to an LView slot
+ * - the `b` char which indicates that the lookup should start from the `document.body`
+ * - the `h` char to start lookup from the component host node (`lView[HOST]`)
+ *
  */
 const REF_EXTRACTOR_REGEXP =
     new RegExp(`^(\\d+)*(${REFERENCE_NODE_BODY}|${REFERENCE_NODE_HOST})*(.*)`);

@@ -37,7 +37,7 @@ export class PreloadLinkCreator {
    * respectively, on the preload `<link>` tag so that the correctly sized image is preloaded from
    * the CDN.
    *
-   * {@link <https://web.dev/preload-responsive-images/#imagesrcset-and-imagesizes}>
+   * {@link https://web.dev/preload-responsive-images/#imagesrcset-and-imagesizes}
    *
    * @param renderer The `Renderer2` passed in from the directive
    * @param src The original src of the image that is set on the `ngSrc` input.

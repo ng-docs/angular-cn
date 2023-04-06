@@ -73,9 +73,9 @@ export interface TestModuleMetadata {
    * 当组件的模板中存在未知元素时，是否应抛出 NG0304 运行时错误。默认为 `false`
    * ，仅记录错误。如果设置为 `true` ，则抛出错误。
    *
-   * @see <https://angular.io/errors/NG8001> for the description of the problem and how to fix it
+   * @see https://angular.io/errors/NG8001 for the description of the problem and how to fix it
    *
-   * <https://angular.io/errors/NG8001>用于问题的描述以及如何解决它
+   * https://angular.io/errors/NG8001 用于问题的描述以及如何解决它
    *
    */
   errorOnUnknownElements?: boolean;
@@ -87,9 +87,9 @@ export interface TestModuleMetadata {
    * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
    * ，则抛出错误。
    *
-   * @see <https://angular.io/errors/NG8002> for the description of the error and how to fix it
+   * @see https://angular.io/errors/NG8002 for the description of the error and how to fix it
    *
-   * <https://angular.io/errors/NG8002>用于错误的描述以及如何解决它
+   * https://angular.io/errors/NG8002 用于错误的描述以及如何解决它
    *
    */
   errorOnUnknownProperties?: boolean;
@@ -114,9 +114,9 @@ export interface TestEnvironmentOptions {
    * 当组件的模板中存在未知元素时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
    * ，则抛出错误。
    *
-   * @see <https://angular.io/errors/NG8001> for the description of the error and how to fix it
+   * @see https://angular.io/errors/NG8001 for the description of the error and how to fix it
    *
-   * <https://angular.io/errors/NG8001>用于错误的描述以及如何解决它
+   * https://angular.io/errors/NG8001 用于错误的描述以及如何解决它
    *
    */
   errorOnUnknownElements?: boolean;
@@ -128,9 +128,9 @@ export interface TestEnvironmentOptions {
    * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
    * ，则抛出错误。
    *
-   * @see <https://angular.io/errors/NG8002> for the description of the error and how to fix it
+   * @see https://angular.io/errors/NG8002 for the description of the error and how to fix it
    *
-   * <https://angular.io/errors/NG8002>用于错误的描述以及如何解决它
+   * https://angular.io/errors/NG8002 用于错误的描述以及如何解决它
    *
    */
   errorOnUnknownProperties?: boolean;

@@ -29,6 +29,8 @@ const INTERNAL_PRECONNECT_CHECK_BLOCKLIST = new Set(['localhost', '127.0.0.1', '
  *
  * or:
  *
+ * 或者：
+ *
  * ```typescript
  *  {provide: PRECONNECT_CHECK_BLOCKLIST,
  *   useValue: ['https://your-domain-1.com', 'https://your-domain-2.com']}

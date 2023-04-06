@@ -67,7 +67,12 @@ const PLATFORM_DESTROY_LISTENERS =
  * A [DI token](guide/glossary#di-token "DI token definition") that provides a set of callbacks to
  * be called for every component that is bootstrapped.
  *
+ * 一个 [DI 令牌](guide/glossary#di-token "DI
+ * 令牌定义")，该令牌提供了一组针对每个要引导的组件调用的回调。
+ *
  * Each callback must take a `ComponentRef` instance and return nothing.
+ *
+ * 每个回调都必须接受 `ComponentRef` 实例，并且不返回任何内容。
  *
  * `(componentRef: ComponentRef) => void`
  *
@@ -149,6 +154,8 @@ export function isBoundToModule<C>(cf: ComponentFactory<C>): boolean {
 /**
  * A token for third-party components that can register themselves with NgProbe.
  *
+ * 本令牌可以在 NgProbe 中注册自己的第三方组件。
+ *
  * @publicApi
  */
 export class NgProbeToken {
@@ -158,6 +165,8 @@ export class NgProbeToken {
 /**
  * Creates a platform.
  * Platforms must be created on launch using this function.
+ *
+ * 创建一个平台。必须使用此函数在启动时创建平台。
  *
  * @publicApi
  */
@@ -290,11 +299,22 @@ export function internalCreateApplication(config: {
 /**
  * Creates a factory for a platform. Can be used to provide or override `Providers` specific to
  * your application's runtime needs, such as `PLATFORM_INITIALIZER` and `PLATFORM_ID`.
+ *
+ * 为平台创建工厂。可用于提供或覆盖针对你的应用程序的运行时需求的 `Providers`，比如 `PLATFORM_INITIALIZER` 和 `PLATFORM_ID` 。
+ *
  * @param parentPlatformFactory Another platform factory to modify. Allows you to compose factories
  * to build up configurations that might be required by different libraries or parts of the
  * application.
+ *
+ * 要修改的另一个平台工厂。允许你组合多个工厂来构建一些配置，其它库或应用程序的其它部分可能需要的它们。
+ *
  * @param name Identifies the new platform factory.
+ *
+ * 标识新的平台工厂。
+ *
  * @param providers A set of dependency providers for platforms created with the new factory.
+ *
+ * 使用新工厂创建的平台的一组依赖项提供者。
  *
  * @publicApi
  */
@@ -323,6 +343,8 @@ export function createPlatformFactory(
 
 /**
  * Checks that there is currently a platform that contains the given token as a provider.
+ *
+ * 检查当前是否存在以给定标记为提供者的平台。
  *
  * @publicApi
  */
@@ -362,6 +384,8 @@ export function createPlatformInjector(providers: StaticProvider[] = [], name?: 
  * Destroys the current Angular platform and all Angular applications on the page.
  * Destroys all modules and listeners registered with the platform.
  *
+ * 销毁页面上的当前 Angular 平台和所有 Angular 应用程序。销毁在平台上注册的所有模块和监听器。
+ *
  * @publicApi
  */
 export function destroyPlatform(): void {
@@ -370,6 +394,8 @@ export function destroyPlatform(): void {
 
 /**
  * Returns the current platform.
+ *
+ * 返回当前平台。
  *
  * @publicApi
  */
@@ -389,6 +415,8 @@ export interface NgZoneOptions {
    * Optionally specify coalescing event change detections or not.
    * Consider the following case.
    *
+   * （可选）指定或不指定合并事件变更检测。考虑以下情况。
+   *
    * ```
    * <div (click)="doSomething()">
    *   <button (click)="doSomethingElse()"></button>
@@ -400,11 +428,16 @@ export interface NgZoneOptions {
    * triggered. We can coalesce such kind of events to only trigger
    * change detection only once.
    *
+   * 单击按钮时，由于事件冒泡，将调用两个事件处理程序，并触发 2 次变更检测。我们可以合并此类事件以仅触发变更检测一次。
+   *
    * By default, this option will be false. So the events will not be
    * coalesced and the change detection will be triggered multiple times.
    * And if this option be set to true, the change detection will be
    * triggered async by scheduling a animation frame. So in the case above,
    * the change detection will only be triggered once.
+   *
+   * 默认情况下，此选项将是 false 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为 true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
+   *
    */
   eventCoalescing?: boolean;
 
@@ -412,7 +445,12 @@ export interface NgZoneOptions {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
+   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
+   *
    * Consider the following case.
+   *
+   * 考虑以下情况。
+   *
    * ```
    * for (let i = 0; i < 10; i ++) {
    *   ngZone.run(() => {
@@ -424,6 +462,8 @@ export interface NgZoneOptions {
    * This case triggers the change detection multiple times.
    * With ngZoneRunCoalescing options, all change detections in an event loop trigger only once.
    * In addition, the change detection executes in requestAnimation.
+   *
+   * 这种情况会多次触发变更检测。使用 ngZoneRunCoalescing 选项，事件循环中的所有变更检测只会触发一次。此外，变更检测是在 requestAnimation 中执行的。
    *
    */
   runCoalescing?: boolean;
@@ -432,21 +472,36 @@ export interface NgZoneOptions {
 /**
  * Provides additional options to the bootstrapping process.
  *
+ * 为引导过程提供其他选项。
+ *
  * @publicApi
  */
 export interface BootstrapOptions {
   /**
    * Optionally specify which `NgZone` should be used.
    *
+   * （可选）指定应该使用哪个 `NgZone` 。
+   *
    * - Provide your own `NgZone` instance.
+   *
+   *   提供你自己的 `NgZone` 实例。
+   *
    * - `zone.js` - Use default `NgZone` which requires `Zone.js`.
+   *
+   *   `zone.js` - 使用需要 `Zone.js` `NgZone`。
+   *
    * - `noop` - Use `NoopNgZone` which does nothing.
+   *
+   *   `noop` - 使用什么都不做的 `NoopNgZone` 。
+   *
    */
   ngZone?: NgZone|'zone.js'|'noop';
 
   /**
    * Optionally specify coalescing event change detections or not.
    * Consider the following case.
+   *
+   * （可选）指定或不指定合并事件变更检测。考虑以下情况。
    *
    * ```
    * <div (click)="doSomething()">
@@ -459,11 +514,16 @@ export interface BootstrapOptions {
    * triggered. We can coalesce such kind of events to only trigger
    * change detection only once.
    *
+   * 单击按钮时，由于事件冒泡，将调用两个事件处理程序，并触发 2 次变更检测。我们可以合并此类事件以仅触发变更检测一次。
+   *
    * By default, this option will be false. So the events will not be
    * coalesced and the change detection will be triggered multiple times.
    * And if this option be set to true, the change detection will be
    * triggered async by scheduling a animation frame. So in the case above,
    * the change detection will only be triggered once.
+   *
+   * 默认情况下，此选项将是 false 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为 true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
+   *
    */
   ngZoneEventCoalescing?: boolean;
 
@@ -471,7 +531,12 @@ export interface BootstrapOptions {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
+   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
+   *
    * Consider the following case.
+   *
+   * 考虑以下情况。
+   *
    * ```
    * for (let i = 0; i < 10; i ++) {
    *   ngZone.run(() => {
@@ -483,6 +548,8 @@ export interface BootstrapOptions {
    * This case triggers the change detection multiple times.
    * With ngZoneRunCoalescing options, all change detections in an event loop trigger only once.
    * In addition, the change detection executes in requestAnimation.
+   *
+   * 这种情况会多次触发变更检测。使用 ngZoneRunCoalescing 选项，事件循环中的所有变更检测只会触发一次。此外，变更检测是在 requestAnimation 中执行的。
    *
    */
   ngZoneRunCoalescing?: boolean;
@@ -494,6 +561,8 @@ export interface BootstrapOptions {
  * to every Angular application running on the page are bound in its scope.
  * A page's platform is initialized implicitly when a platform is created using a platform
  * factory such as `PlatformBrowser`, or explicitly by calling the `createPlatform()` function.
+ *
+ * Angular 平台是 Angular 在网页上的入口点。每个页面只有一个平台。页面上运行的每个 Angular 应用程序所共有的服务（比如反射）都在其范围内绑定。当使用 `PlatformBrowser` 这样的平台工厂创建平台时，将隐式初始化此页面的平台；也可以通过调用 `createPlatform()` 函数来显式初始化此页面的平台。
  *
  * @publicApi
  */
@@ -508,6 +577,8 @@ export class PlatformRef {
 
   /**
    * Creates an instance of an `@NgModule` for the given platform.
+   *
+   * 为给定的平台创建 `@NgModule` 的实例。
    *
    * @deprecated Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
    *     argument is deprecated. Use the `PlatformRef.bootstrapModule` API instead.
@@ -572,8 +643,13 @@ export class PlatformRef {
   /**
    * Creates an instance of an `@NgModule` for a given platform.
    *
+   * 使用给定的运行时编译器为给定的平台创建 `@NgModule` 的实例。
+   *
    * @usageNotes
+   *
    * ### Simple Example
+   *
+   * ### 简单的例子
    *
    * ```typescript
    * @NgModule({
@@ -613,6 +689,9 @@ export class PlatformRef {
 
   /**
    * Registers a listener to be called when the platform is destroyed.
+   *
+   * 注册销毁平台时要调用的监听器。
+   *
    */
   onDestroy(callback: () => void): void {
     this._destroyListeners.push(callback);
@@ -629,6 +708,9 @@ export class PlatformRef {
   /**
    * Destroys the current Angular platform and all Angular applications on the page.
    * Destroys all modules and listeners registered with the platform.
+   *
+   * 销毁页面上的当前 Angular 平台和所有 Angular 应用程序。销毁在平台上注册的所有模块和监听器。
+   *
    */
   destroy() {
     if (this._destroyed) {
@@ -650,6 +732,9 @@ export class PlatformRef {
 
   /**
    * Indicates whether this instance was destroyed.
+   *
+   * 表明此实例是否已销毁。
+   *
    */
   get destroyed() {
     return this._destroyed;
@@ -715,15 +800,20 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
 /**
  * A reference to an Angular application running on a page.
  *
+ * 对页面上运行的 Angular 应用程序的引用。
+ *
  * @usageNotes
+ *
  * {@a is-stable-examples}
+ *
  * ### isStable examples and caveats
  *
  * Note two important points about `isStable`, demonstrated in the examples below:
+ *
  * - the application will never be stable if you start any kind
- * of recurrent asynchronous task when the application starts
- * (for example for a polling process, started with a `setInterval`, a `setTimeout`
- * or using RxJS operators like `interval`);
+ *   of recurrent asynchronous task when the application starts
+ *   (for example for a polling process, started with a `setInterval`, a `setTimeout`
+ *   or using RxJS operators like `interval`);
  * - the `isStable` Observable runs outside of the Angular zone.
  *
  * Let's imagine that you start a recurrent task
@@ -738,6 +828,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *   interval(1000).subscribe(counter => console.log(counter));
  * }
  * ```
+ *
  * In this example, `isStable` will never emit `true`,
  * and the trace "App is stable now" will never get logged.
  *
@@ -754,6 +845,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *   ).subscribe(counter => console.log(counter));
  * }
  * ```
+ *
  * In this example, the trace "App is stable now" will be logged
  * and then the counter starts incrementing every second.
  *
@@ -773,6 +865,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *   ).subscribe(counter => this.value = counter);
  * }
  * ```
+ *
  * As the `isStable` Observable runs outside the zone,
  * the `value` field will be updated properly,
  * but the template will not be refreshed!
@@ -817,6 +910,9 @@ export class ApplicationRef {
 
   /**
    * Indicates whether this instance was destroyed.
+   *
+   * 表明此实例是否已销毁。
+   *
    */
   get destroyed() {
     return this._destroyed;
@@ -825,22 +921,34 @@ export class ApplicationRef {
   /**
    * Get a list of component types registered to this application.
    * This list is populated even before the component is created.
+   *
+   * 获取注册到该应用程序的组件类型的列表。在创建组件之前，会填充此列表。
+   *
    */
   public readonly componentTypes: Type<any>[] = [];
 
   /**
    * Get a list of components registered to this application.
+   *
+   * 获取已注册到该应用中的组件的列表。
+   *
    */
   public readonly components: ComponentRef<any>[] = [];
 
   /**
    * Returns an Observable that indicates when the application is stable or unstable.
+   *
+   * 返回一个 Observable，指示应用程序何时变得稳定或不稳定。
+   *
    */
   public readonly isStable = inject(ZONE_IS_STABLE_OBSERVABLE);
 
   private readonly _injector = inject(EnvironmentInjector);
   /**
    * The `EnvironmentInjector` used to create this application.
+   *
+   * 用于创建此应用程序的 `EnvironmentInjector` 。
+   *
    */
   get injector(): EnvironmentInjector {
     return this._injector;
@@ -850,25 +958,40 @@ export class ApplicationRef {
    * Bootstrap a component onto the element identified by its selector or, optionally, to a
    * specified element.
    *
+   * 将组件引导到其选择器标识的元素上，或者（可选）引导到指定的元素。
+   *
    * @usageNotes
+   *
    * ### Bootstrap process
+   *
+   * ### 引导过程
    *
    * When bootstrapping a component, Angular mounts it onto a target DOM element
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动变更检测。可以用 `rootSelectorOrNode` 参数提供目标 DOM 元素。
+   *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
    * (first matched element is used).
    *
+   * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
+   *
    * ### Example
+   *
+   * ### 范例
    *
    * Generally, we define the component to bootstrap in the `bootstrap` array of `NgModule`,
    * but it requires us to know the component while writing the application code.
    *
+   * 一般来说，我们在 `NgModule` 的 `bootstrap` 数组中定义要引导的组件，但它需要我们在编写应用程序代码时了解组件。
+   *
    * Imagine a situation where we have to wait for an API call to decide about the component to
    * bootstrap. We can use the `ngDoBootstrap` hook of the `NgModule` and call this method to
    * dynamically bootstrap a component.
+   *
+   * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的 `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
    *
    * {@example core/ts/platform/platform.ts region='componentSelector'}
    *
@@ -882,6 +1005,7 @@ export class ApplicationRef {
    * While in this example, we are providing reference to a DOM node.
    *
    * {@example core/ts/platform/platform.ts region='domNode'}
+   *
    */
   bootstrap<C>(component: Type<C>, rootSelectorOrNode?: string|any): ComponentRef<C>;
 
@@ -889,25 +1013,40 @@ export class ApplicationRef {
    * Bootstrap a component onto the element identified by its selector or, optionally, to a
    * specified element.
    *
+   * 将组件引导到其选择器标识的元素上，或者（可选）引导到指定的元素。
+   *
    * @usageNotes
+   *
    * ### Bootstrap process
+   *
+   * ### 引导过程
    *
    * When bootstrapping a component, Angular mounts it onto a target DOM element
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动变更检测。可以用 `rootSelectorOrNode` 参数提供目标 DOM 元素。
+   *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
    * (first matched element is used).
    *
+   * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
+   *
    * ### Example
+   *
+   * ### 范例
    *
    * Generally, we define the component to bootstrap in the `bootstrap` array of `NgModule`,
    * but it requires us to know the component while writing the application code.
    *
+   * 一般来说，我们在 `NgModule` 的 `bootstrap` 数组中定义要引导的组件，但它需要我们在编写应用程序代码时了解组件。
+   *
    * Imagine a situation where we have to wait for an API call to decide about the component to
    * bootstrap. We can use the `ngDoBootstrap` hook of the `NgModule` and call this method to
    * dynamically bootstrap a component.
+   *
+   * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的 `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
    *
    * {@example core/ts/platform/platform.ts region='componentSelector'}
    *
@@ -932,25 +1071,40 @@ export class ApplicationRef {
    * Bootstrap a component onto the element identified by its selector or, optionally, to a
    * specified element.
    *
+   * 将组件引导到其选择器标识的元素上，或者（可选）引导到指定的元素。
+   *
    * @usageNotes
+   *
    * ### Bootstrap process
+   *
+   * ### 引导过程
    *
    * When bootstrapping a component, Angular mounts it onto a target DOM element
    * and kicks off automatic change detection. The target DOM element can be
    * provided using the `rootSelectorOrNode` argument.
    *
+   * 引导组件时，Angular 会将其挂载到目标 DOM 元素上并启动自动变更检测。可以用 `rootSelectorOrNode` 参数提供目标 DOM 元素。
+   *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
    * (first matched element is used).
    *
+   * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
+   *
    * ### Example
+   *
+   * ### 范例
    *
    * Generally, we define the component to bootstrap in the `bootstrap` array of `NgModule`,
    * but it requires us to know the component while writing the application code.
    *
+   * 一般来说，我们在 `NgModule` 的 `bootstrap` 数组中定义要引导的组件，但它需要我们在编写应用程序代码时了解组件。
+   *
    * Imagine a situation where we have to wait for an API call to decide about the component to
    * bootstrap. We can use the `ngDoBootstrap` hook of the `NgModule` and call this method to
    * dynamically bootstrap a component.
+   *
+   * 想象这样一种情况，我们必须等待 API 调用来决定要引导的组件。我们可以用 `NgModule` 的 `ngDoBootstrap` 钩子并调用此方法来动态引导组件。
    *
    * {@example core/ts/platform/platform.ts region='componentSelector'}
    *
@@ -964,6 +1118,7 @@ export class ApplicationRef {
    * While in this example, we are providing reference to a DOM node.
    *
    * {@example core/ts/platform/platform.ts region='domNode'}
+   *
    */
   bootstrap<C>(componentOrFactory: ComponentFactory<C>|Type<C>, rootSelectorOrNode?: string|any):
       ComponentRef<C> {
@@ -1018,12 +1173,17 @@ export class ApplicationRef {
   /**
    * Invoke this method to explicitly process change detection and its side-effects.
    *
+   * 调用此方法可以显式处理变更检测及其副作用。
+   *
    * In development mode, `tick()` also performs a second change detection cycle to ensure that no
    * further changes are detected. If additional changes are picked up during this second cycle,
    * bindings in the app have side-effects that cannot be resolved in a single change detection
    * pass.
    * In this case, Angular throws an error, since an Angular application can only have one change
    * detection pass during which all change detection must complete.
+   *
+   * 在开发模式下，`tick()` 还会执行第二个变更检测周期，以确保没有检测到其他更改。如果在第二个周期内获取了其他更改，则应用程序中的绑定就会产生副作用，这些副作用无法通过一次变更检测过程解决。在这种情况下，Angular 就会引发错误，因为 Angular 应用程序只能进行一次变更检测遍历，在此过程中必须完成所有变更检测。
+   *
    */
   tick(): void {
     (typeof ngDevMode === 'undefined' || ngDevMode) && this.warnIfDestroyed();
@@ -1055,6 +1215,9 @@ export class ApplicationRef {
    * Attaches a view so that it will be dirty checked.
    * The view will be automatically detached when it is destroyed.
    * This will throw if the view is already attached to a ViewContainer.
+   *
+   * 附加视图，以便对其进行脏检查。视图销毁后将自动分离。如果视图已附加到 ViewContainer，则会抛出此错误。
+   *
    */
   attachView(viewRef: ViewRef): void {
     (typeof ngDevMode === 'undefined' || ngDevMode) && this.warnIfDestroyed();
@@ -1065,6 +1228,9 @@ export class ApplicationRef {
 
   /**
    * Detaches a view from dirty checking again.
+   *
+   * 再次从脏检查中分离视图。
+   *
    */
   detachView(viewRef: ViewRef): void {
     (typeof ngDevMode === 'undefined' || ngDevMode) && this.warnIfDestroyed();
@@ -1128,6 +1294,9 @@ export class ApplicationRef {
    * Destroys an Angular application represented by this `ApplicationRef`. Calling this function
    * will destroy the associated environment injectors as well as all the bootstrapped components
    * with their views.
+   *
+   * 销毁此 `ApplicationRef` 表示的 Angular 应用程序。调用此函数将破坏关联的环境注入器以及所有带有视图的引导组件。
+   *
    */
   destroy(): void {
     if (this._destroyed) {
@@ -1152,6 +1321,9 @@ export class ApplicationRef {
 
   /**
    * Returns the number of attached views.
+   *
+   * 返回已附加视图的数量。
+   *
    */
   get viewCount() {
     return this._views.length;

@@ -54,9 +54,9 @@ import {PlatformReflectionCapabilities} from './platform_reflection_capabilities
  *     var _this = _super.apply(this, __spreadArray([], __read(arguments), false)) || this;
  * ```
  *
- * More details can be found in: <https://github.com/angular/angular/issues/38453>.
+ * More details can be found in: https://github.com/angular/angular/issues/38453.
  *
- * 更多详细信息，请参阅： <https://github.com/angular/angular/issues/38453> 。
+ * 更多详细信息，请参阅： https://github.com/angular/angular/issues/38453 。
  *
  */
 export const ES5_DELEGATE_CTOR =

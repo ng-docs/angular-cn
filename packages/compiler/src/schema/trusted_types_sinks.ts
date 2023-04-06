@@ -13,9 +13,9 @@
  * 与 Trusted Types 接收器对应的 tagName|propertyName 集。适用于所有标签的属性都使用 '\*'。
  *
  * Extracted from, and should be kept in sync with
- * <https://w3c.github.io/webappsec-trusted-types/dist/spec/#integrations>
+ * https://w3c.github.io/webappsec-trusted-types/dist/spec/#integrations
  *
- * 从<https://w3c.github.io/webappsec-trusted-types/dist/spec/#integrations>提取并应保持同步
+ * 从 https://w3c.github.io/webappsec-trusted-types/dist/spec/#integrations 提取并应保持同步
  *
  */
 const TRUSTED_TYPES_SINKS = new Set<string>([

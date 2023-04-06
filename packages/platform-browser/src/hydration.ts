@@ -78,6 +78,7 @@ export function withNoHttpTransferCache():
  *
  * Basic example of how you can enable hydration in your application when
  * `bootstrapApplication` function is used:
+ *
  * ```
  * bootstrapApplication(AppComponent, {
  *   providers: [provideClientHydration()]
@@ -86,6 +87,7 @@ export function withNoHttpTransferCache():
  *
  * Alternatively if you are using NgModules, you would add `provideClientHydration`
  * to your root app module's provider list.
+ *
  * ```
  * @NgModule({
  *   declarations: [RootCmp],
@@ -97,10 +99,11 @@ export function withNoHttpTransferCache():
  *
  * @see `withNoDomReuse`
  * @see `withNoHttpTransferCache`
- *
  * @param features Optional features to configure additional router behaviors.
- * @returns A set of providers to enable hydration.
  *
+ * 配置其他路由器行为的可选特性。
+ *
+ * @returns A set of providers to enable hydration.
  * @publicApi
  * @developerPreview
  */

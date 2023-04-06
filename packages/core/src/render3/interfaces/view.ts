@@ -127,6 +127,9 @@ export interface LView<T = unknown> extends Array<any> {
    * Store the `TNode` of the location where the current `LView` is inserted into.
    *
    * Given:
+   *
+   * 给定：
+   *
    * ```
    * <div>
    *   <ng-template><span></span></ng-template>
@@ -134,6 +137,7 @@ export interface LView<T = unknown> extends Array<any> {
    * ```
    *
    * We end up with two `TView`s.
+   *
    * - `parent` `TView` which contains `<div><!-- anchor --></div>`
    * - `child` `TView` which contains `<span></span>`
    *
@@ -142,15 +146,16 @@ export interface LView<T = unknown> extends Array<any> {
    * insertion information in the `TView` and instead we must store it in the `LView[T_HOST]`.
    *
    * So to determine where is our insertion parent we would execute:
+   *
    * ```
    * const parentLView = lView[PARENT];
    * const parentTNode = lView[T_HOST];
    * const insertionParent = parentLView[parentTNode.index];
    * ```
    *
-   *
    * If `null`, this is the root view of an application (root component is in this view) and it has
    * no parents.
+   *
    */
   [T_HOST]: TNode|null;
 
@@ -217,8 +222,8 @@ export interface LView<T = unknown> extends Array<any> {
    *
    * Example (AppComponent template):
    *
-   * <ng-template #foo></ng-template>       <-- declared here -->
-   * <some-comp [tpl]="foo"></some-comp>    <-- inserted inside this component -->
+   * &lt;ng-template #foo></ng-template>       &lt;-- declared here -->
+   * &lt;some-comp [tpl]="foo"></some-comp>    &lt;-- inserted inside this component -->
    *
    * The <ng-template> above is declared in the AppComponent template, but it will be passed into
    * SomeComp and inserted there. In this case, the declaration view would be the AppComponent,
@@ -226,6 +231,7 @@ export interface LView<T = unknown> extends Array<any> {
    * traverse through the insertion view to clean up listeners. When we are calling the
    * template function during change detection, we need the declaration view to get inherited
    * context.
+   *
    */
   [DECLARATION_VIEW]: LView|null;
 
@@ -238,6 +244,9 @@ export interface LView<T = unknown> extends Array<any> {
    * `DECLARATION_VIEW`.
    *
    * Example:
+   *
+   * 范例：
+   *
    * ```
    * <#VIEW #myComp>
    *  <div *ngIf="true">
@@ -245,6 +254,7 @@ export interface LView<T = unknown> extends Array<any> {
    *  </div>
    * </#VIEW>
    * ```
+   *
    * In the above case `DECLARATION_VIEW` for `myTmpl` points to the `LView` of `ngIf` whereas
    * `DECLARATION_COMPONENT_VIEW` points to `LView` of the `myComp` which owns the template.
    *
@@ -263,6 +273,7 @@ export interface LView<T = unknown> extends Array<any> {
    * `DECLARATION_COMPONENT_VIEW` to differentiate them. As in this example.
    *
    * Example showing intra component `LView` movement.
+   *
    * ```
    * <#VIEW #myComp>
    *   <div *ngIf="condition; then thenBlock else elseBlock"></div>
@@ -270,20 +281,22 @@ export interface LView<T = unknown> extends Array<any> {
    *   <ng-template #elseBlock>Content to render when condition is false.</ng-template>
    * </#VIEW>
    * ```
+   *
    * The `thenBlock` and `elseBlock` is moved but not transplanted.
    *
    * Example showing inter component `LView` movement (transplanted view).
+   *
    * ```
    * <#VIEW #myComp>
    *   <ng-template #myTmpl>...</ng-template>
    *   <insertion-component [template]="myTmpl"></insertion-component>
    * </#VIEW>
    * ```
+   *
    * In the above example `myTmpl` is passed into a different component. If `insertion-component`
    * instantiates `myTmpl` and `insertion-component` is on-push then the `LContainer` needs to be
    * marked as containing transplanted views and those views need to be CD as part of the
    * declaration CD.
-   *
    *
    * When change detection runs, it iterates over `[MOVED_VIEWS]` and CDs any child `LView`s where
    * the `DECLARATION_COMPONENT_VIEW` of the current component and the child `LView` does not match
@@ -293,11 +306,13 @@ export interface LView<T = unknown> extends Array<any> {
    *       simplest / most common case).
    *
    * see also:
-   *   - https://hackmd.io/@mhevery/rJUJsvv9H write up of the problem
-   *   - `LContainer[HAS_TRANSPLANTED_VIEWS]` which marks which `LContainer` has transplanted views.
-   *   - `LContainer[TRANSPLANT_HEAD]` and `LContainer[TRANSPLANT_TAIL]` storage for transplanted
-   *   - `LView[DECLARATION_LCONTAINER]` similar problem for queries
-   *   - `LContainer[MOVED_VIEWS]` similar problem for queries
+   *
+   * - https://hackmd.io/@mhevery/rJUJsvv9H write up of the problem
+   * - `LContainer[HAS_TRANSPLANTED_VIEWS]` which marks which `LContainer` has transplanted views.
+   * - `LContainer[TRANSPLANT_HEAD]` and `LContainer[TRANSPLANT_TAIL]` storage for transplanted
+   * - `LView[DECLARATION_LCONTAINER]` similar problem for queries
+   * - `LContainer[MOVED_VIEWS]` similar problem for queries
+   *
    */
   [DECLARATION_COMPONENT_VIEW]: LView;
 
@@ -432,10 +447,12 @@ export const enum LViewFlags {
 
 /**
  * Possible states of the init phase:
+ *
  * - 00: OnInit hooks to be run.
  * - 01: AfterContentInit hooks to be run
  * - 10: AfterViewInit hooks to be run
  * - 11: All init hooks have been run
+ *
  */
 export const enum InitPhaseState {
   OnInitHooksToBeRun = 0b00,
@@ -464,9 +481,10 @@ export const enum PreOrderHookFlags {
  * Stores a set of OpCodes to process `HostBindingsFunction` associated with a current view.
  *
  * In order to invoke `HostBindingsFunction` we need:
- * 1. 'elementIdx`: Index to the element associated with the `HostBindingsFunction`.
- * 2. 'directiveIdx`: Index to the directive associated with the `HostBindingsFunction`. (This will
- *    become the context for the `HostBindingsFunction` invocation.)
+ *
+ * 1. `elementIdx`: Index to the element associated with the`HostBindingsFunction`.
+ * 2. `directiveIdx`: Index to the directive associated with the`HostBindingsFunction`. (This will
+ *    become the context for the`HostBindingsFunction` invocation.)
  * 3. `bindingRootIdx`: Location where the bindings for the `HostBindingsFunction` start. Internally
  *    `HostBindingsFunction` binding indexes start from `0` so we need to add `bindingRootIdx` to
  *    it.
@@ -480,13 +498,16 @@ export const enum PreOrderHookFlags {
  * 4. `HostBindingsFunction` is passed in as is.
  *
  * The `HostBindingOpCodes` array contains:
+ *
  * - negative number to select the element index.
  * - followed by 1 or more of:
- *    - a number to select the directive index
- *    - a number to select the bindingRoot index
- *    - and a function to invoke.
+ *   - a number to select the directive index
+ *   - a number to select the bindingRoot index
+ *   - and a function to invoke.
  *
  * ## Example
+ *
+ * ## 范例
  *
  * ```
  * const hostBindingOpCodes = [
@@ -499,6 +520,7 @@ export const enum PreOrderHookFlags {
  * ```
  *
  * ## Pseudocode
+ *
  * ```
  * const hostBindingOpCodes = tView.hostBindingOpCodes;
  * if (hostBindingOpCodes === null) return;
@@ -562,7 +584,8 @@ export const enum TViewType {
  */
 export interface TView {
   /**
-   * Type of `TView` (`Root`|`Component`|`Embedded`).
+   * Type of `TView` (`Root`\|`Component`\|`Embedded`).
+   *
    */
   type: TViewType;
 
@@ -606,7 +629,10 @@ export interface TView {
    */
   firstUpdatePass: boolean;
 
-  /** Static data equivalent of LView.data[]. Contains TNodes, PipeDefInternal or TI18n. */
+  /**
+   * Static data equivalent of LView.data\[]. Contains TNodes, PipeDefInternal or TI18n.
+   *
+   */
   data: TData;
 
   /**
@@ -615,7 +641,8 @@ export interface TView {
    * will begin reading bindings at the correct point in the array when
    * we are in update mode.
    *
-   * -1 means that it has not been initialized.
+   * \-1 means that it has not been initialized.
+   *
    */
   bindingStartIndex: number;
 
@@ -758,15 +785,15 @@ export interface TView {
    *
    * 3rd index is: index of listener function `listener = lView[CLEANUP][tView.cleanup[i+2]]`
    * 4th index is: `useCaptureOrIndx = tView.cleanup[i+3]`
-   *    `typeof useCaptureOrIndx == 'boolean' : useCapture boolean
-   *    `typeof useCaptureOrIndx == 'number':
+   *    `typeof useCaptureOrIndx == 'boolean' : useCapture boolean`typeof useCaptureOrIndx == 'number':
    *         `useCaptureOrIndx >= 0` `removeListener = LView[CLEANUP][useCaptureOrIndx]`
    *         `useCaptureOrIndx <  0` `subscription = LView[CLEANUP][-useCaptureOrIndx]`
    *
    * If it's an output subscription or query list destroy hook:
    * 1st index is: output unsubscribe function / query list destroy function
-   * 2nd index is: index of function context in LView.cleanupInstances[]
+   * 2nd index is: index of function context in LView.cleanupInstances\[]
    *               `tView.cleanup[i+0].call(lView[CLEANUP][tView.cleanup[i+1]])`
+   *
    */
   cleanup: any[]|null;
 
@@ -786,11 +813,13 @@ export interface TView {
   /**
    * An array of indices pointing to directives with content queries alongside with the
    * corresponding query index. Each entry in this array is a tuple of:
+   *
    * - index of the first content query index declared by a given directive;
    * - index of a directive.
    *
    * We are storing those indexes so we can refresh content queries as part of a view refresh
    * process.
+   *
    */
   contentQueries: number[]|null;
 
@@ -813,9 +842,11 @@ export interface TView {
 
   /**
    * Unique id of this TView for hydration purposes:
+   *
    * - TViewType.Embedded: a unique id generated during serialization on the server
    * - TViewType.Component: an id generated based on component properties
    *                        (see `getComponentId` function for details)
+   *
    */
   ssrId: string|null;
 }
@@ -835,31 +866,37 @@ export type HookEntry = number|HookFn;
  * For each node of the view, the following data is stored:
  * 1) Node index (optional)
  * 2) A series of number/function pairs where:
- *  - even indices are directive indices
- *  - odd indices are hook functions
+ *
+ * - even indices are directive indices
+ * - odd indices are hook functions
  *
  * Special cases:
- *  - a negative directive index flags an init hook (ngOnInit, ngAfterContentInit, ngAfterViewInit)
+ *
+ * - a negative directive index flags an init hook (ngOnInit, ngAfterContentInit, ngAfterViewInit)
+ *
  */
 export type HookData = HookEntry[];
 
 /**
  * Array of destroy hooks that should be executed for a view and their directive indices.
  *
- * The array is set up as a series of number/function or number/(number|function)[]:
+ * The array is set up as a series of number/function or number/(number|function)\[]:
+ *
  * - Even indices represent the context with which hooks should be called.
  * - Odd indices are the hook functions themselves. If a value at an odd index is an array,
  *   it represents the destroy hooks of a `multi` provider where:
+ *
  *     - Even indices represent the index of the provider for which we've registered a destroy hook,
- *       inside of the `multi` provider array.
+ *         inside of the `multi` provider array.
  *     - Odd indices are the destroy hook functions.
- * For example:
- * LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]`
- * destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
+ *   For example:
+ *   LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]`
+ *   destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
  *
  * In the example above `AService` is a type provider with an `ngOnDestroy`, whereas `BService`,
  * `CService` and `DService` are part of a `multi` provider where only `BService` and `DService`
  * have an `ngOnDestroy` hook.
+ *
  */
 export type DestroyHookData = (HookEntry|HookData)[];
 
@@ -889,6 +926,7 @@ export type DestroyHookData = (HookEntry|HookData)[];
  *  v2 value   |   id � prefix � suffix
  *
  * Injector bloom filters are also stored here.
+ *
  */
 export type TData = (TNode|PipeDef<any>|DirectiveDef<any>|ComponentDef<any>|number|TStylingRange|
                      TStylingKey|ProviderToken<any>|TI18n|I18nUpdateOpCodes|TIcu|null|string)[];

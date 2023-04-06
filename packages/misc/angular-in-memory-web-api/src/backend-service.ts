@@ -19,11 +19,11 @@ import {InMemoryBackendConfig, InMemoryBackendConfigArgs, InMemoryDbService, Par
  * Simulate the behavior of a RESTy web api
  * backed by the simple in-memory data store provided by the injected `InMemoryDbService` service.
  * Conforms mostly to behavior described here:
- * <http://www.restapitutorial.com/lessons/httpmethods.html>
+ * http://www.restapitutorial.com/lessons/httpmethods.html
  *
  * 内存 Web api 后端的基类 模拟由注入的 `InMemoryDbService` 服务提供的简单内存数据存储支持的 RESTy
  * Web api 的行为。主要符合此处描述的行为：
- * <http://www.restapitutorial.com/lessons/httpmethods.html>
+ * http://www.restapitutorial.com/lessons/httpmethods.html
  *
  */
 export abstract class BackendService {
@@ -611,18 +611,18 @@ export abstract class BackendService {
    * 和 `urlRoot` 。
    *
    * Configuring the `apiBase` yields the most interesting changes to `parseRequestUrl` behavior:
-   *   When apiBase=undefined and url='<http://localhost/api/collection/42>'
+   *   When apiBase=undefined and url='http://localhost/api/collection/42'
    *     {base: 'api/', collectionName: 'collection', id: '42', ...}
-   *   When apiBase='some/api/root/' and url='<http://localhost/some/api/root/collection>'
+   *   When apiBase='some/api/root/' and url='http://localhost/some/api/root/collection'
    *     {base: 'some/api/root/', collectionName: 'collection', id: undefined, ...}
-   *   When apiBase='/' and url='<http://localhost/collection>'
+   *   When apiBase='/' and url='http://localhost/collection'
    *     {base: '/', collectionName: 'collection', id: undefined, ...}
    *
    * 配置 `apiBase` 会对 `parseRequestUrl` 行为产生最有趣的更改：当 apiBase=undefined 和 url='
-   * <http://localhost/api/collection/42> ' {base: 'api/', collectionName: 'collection', id: '42 ',
-   * ...} 当 apiBase='some/api/root/' 和 url=' <http://localhost/some/api/root/collection> ' {base:
+   * http://localhost/api/collection/42 ' {base: 'api/', collectionName: 'collection', id: '42 ',
+   * ...} 当 apiBase='some/api/root/' 和 url=' http://localhost/some/api/root/collection ' {base:
    * 'some/api/root/', collectionName: ' collection', id: undefined, ...} 当 apiBase='/' 和 url='
-   * <http://localhost/collection> ' {base: '/', collectionName: 'collection', id: undefined, ...}
+   * http://localhost/collection ' {base: '/', collectionName: 'collection', id: undefined, ...}
    *
    * The actual api base segment values are ignored. Only the number of segments matters.
    * The following api base strings are considered identical: 'a/b' ~ 'some/api/' ~ \`two/segments'

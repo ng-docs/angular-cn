@@ -11,9 +11,9 @@
  *
  * 注释中不允许使用的字符串。
  *
- * see: <https://html.spec.whatwg.org/multipage/syntax.html#comments>
+ * see: https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
- * 请参阅： <https://html.spec.whatwg.org/multipage/syntax.html#comments>
+ * 请参阅： https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
  */
 const COMMENT_DISALLOWED = /^>|^->|<!--|-->|--!>|<!-$/g;
@@ -41,9 +41,9 @@ const COMMENT_DELIMITER_ESCAPED = '\u200B$1\u200B';
  * 上方的意思是文本，而不是注释的结尾。这可以通过 DOM API 以编程方式创建。（`<!--`
  * 也不允许使用。）
  *
- * see: <https://html.spec.whatwg.org/multipage/syntax.html#comments>
+ * see: https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
- * 请参阅： <https://html.spec.whatwg.org/multipage/syntax.html#comments>
+ * 请参阅： https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
  * ```
  * div.innerHTML = div.innerHTML
@@ -64,13 +64,12 @@ const COMMENT_DELIMITER_ESCAPED = '\u200B$1\u200B';
  *
  * 此函数通过查找注释分隔符（`<` 和 `>`）并用 `_>_` 包围它们来转译注释文本，其中 `_` 是零宽度空格
  * `\u200B` 。结果是，如果注释包含任何注释开始/结束分隔符（例如 `<!--`、`-->` 或 `--!>`
- *），它将正常呈现文本，但不会导致 HTML 解析器关闭/打开评论。
+ * ），它将正常呈现文本，但不会导致 HTML 解析器关闭/打开评论。
  *
  * @param value text to make safe for comment node by escaping the comment open/close character
  *     sequence.
  *
  * 通过转义注释打开/关闭字符序列来使注释节点安全的文本。
- *
  */
 export function escapeCommentText(value: string): string {
   return value.replace(

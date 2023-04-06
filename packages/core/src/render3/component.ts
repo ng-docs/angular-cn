@@ -64,19 +64,17 @@ import {assertComponentDef} from './errors';
  * // to include the component view into change detection cycles.
  * applicationRef.attachView(componentRef.hostView);
  * ```
- *
  * @param component Component class reference.
  *
  * 组件类引用。
- *
  * @param options Set of options to use:
  *
  * 要使用的选项集：
  *
  * - `environmentInjector`: An `EnvironmentInjector` instance to be used for the component, see
- *   additional info about it at <https://angular.io/guide/standalone-components#environment-injectors>.
+ *   additional info about it at https://angular.io/guide/standalone-components#environment-injectors.
  *
- *   `environmentInjector` ：要用于组件的 `EnvironmentInjector` 实例，请在<https://angular.io/guide/standalone-components#environment-injectors>中查看有关它的其他信息。
+ *   `environmentInjector` ：要用于组件的 `EnvironmentInjector` 实例，请在 https://angular.io/guide/standalone-components#environment-injectors 中查看有关它的其他信息。
  *
  * - `hostElement` (optional): A DOM node that should act as a host node for the component. If not
  *   provided, Angular creates one based on the tag name used in the component selector (and falls
@@ -85,9 +83,9 @@ import {assertComponentDef} from './errors';
  *   `hostElement` （可选）：应该作为组件的宿主节点的 DOM 节点。如果未提供，Angular 会根据组件选择器中使用的标签名称创建一个（如果选择器没有标签名称信息，则回用 `div` ）。
  *
  * - `elementInjector` (optional): An `ElementInjector` instance, see additional info about it at
- *   <https://angular.io/guide/hierarchical-dependency-injection#elementinjector>.
+ *   https://angular.io/guide/hierarchical-dependency-injection#elementinjector.
  *
- *   `elementInjector` （可选）：一个 `ElementInjector` 实例，请在<https://angular.io/guide/hierarchical-dependency-injection#elementinjector>上查看有关它的其他信息。
+ *   `elementInjector` （可选）：一个 `ElementInjector` 实例，请在 https://angular.io/guide/hierarchical-dependency-injection#elementinjector 上查看有关它的其他信息。
  *
  * - `projectableNodes` (optional): A list of DOM nodes that should be projected through
  *                     [`<ng-content>`](api/core/ng-content) of the new component instance.
@@ -99,7 +97,6 @@ import {assertComponentDef} from './errors';
  * ComponentRef instance that represents a given Component.
  *
  * 表示给定 Component 的 ComponentRef 实例。
- *
  * @publicApi
  */
 export function createComponent<C>(component: Type<C>, options: {

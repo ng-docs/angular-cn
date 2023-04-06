@@ -17,6 +17,8 @@ import {equalArraysOrString, shallowEqual} from './utils/collection';
  * A set of options which specify how to determine if a `UrlTree` is active, given the `UrlTree`
  * for the current router state.
  *
+ * 一组选项，指定如何在给定当前路由器状态的 `UrlTree` 的情况下确定 `UrlTree` 是否处于活动状态。
+ *
  * @publicApi
  * @see Router.isActive
  */
@@ -24,39 +26,77 @@ export interface IsActiveMatchOptions {
   /**
    * Defines the strategy for comparing the matrix parameters of two `UrlTree`s.
    *
+   * 定义比较两个 `UrlTree` 的矩阵参数的策略。
+   *
    * The matrix parameter matching is dependent on the strategy for matching the
    * segments. That is, if the `paths` option is set to `'subset'`, only
    * the matrix parameters of the matching segments will be compared.
    *
+   * 矩阵参数匹配取决于匹配段的策略。也就是说，如果 `paths` 选项设置为 `'subset'` ，则只会比较匹配段的矩阵参数。
+   *
    * - `'exact'`: Requires that matching segments also have exact matrix parameter
-   * matches.
+   *   matches.
+   *
+   *   `'exact'` ：要求匹配的段也具有精确的矩阵参数匹配。
+   *
    * - `'subset'`: The matching segments in the router's active `UrlTree` may contain
-   * extra matrix parameters, but those that exist in the `UrlTree` in question must match.
+   *   extra matrix parameters, but those that exist in the `UrlTree` in question must match.
+   *
+   *   `'subset'` ：路由器的活动 `UrlTree` 中的匹配段可能包含额外的矩阵参数，但相关 `UrlTree` 中存在的那些必须匹配。
+   *
    * - `'ignored'`: When comparing `UrlTree`s, matrix params will be ignored.
+   *
+   *   `'ignored'` ：比较 `UrlTree` 时，矩阵参数将被忽略。
+   *
    */
   matrixParams: 'exact'|'subset'|'ignored';
   /**
    * Defines the strategy for comparing the query parameters of two `UrlTree`s.
    *
+   * 定义比较两个 `UrlTree` 的查询参数的策略。
+   *
    * - `'exact'`: the query parameters must match exactly.
+   *
+   *   `'exact'` ：查询参数必须完全匹配。
+   *
    * - `'subset'`: the active `UrlTree` may contain extra parameters,
-   * but must match the key and value of any that exist in the `UrlTree` in question.
+   *   but must match the key and value of any that exist in the `UrlTree` in question.
+   *
+   *   `'subset'` ：活动的 `UrlTree` 可能包含额外的参数，但必须与相关 `UrlTree` 中存在的任何参数的键和值匹配。
+   *
    * - `'ignored'`: When comparing `UrlTree`s, query params will be ignored.
+   *
+   *   `'ignored'` ：比较 `UrlTree` 时，查询参数将被忽略。
+   *
    */
   queryParams: 'exact'|'subset'|'ignored';
   /**
    * Defines the strategy for comparing the `UrlSegment`s of the `UrlTree`s.
    *
+   * 定义用于比较 `UrlSegment` 的 `UrlTree` 的策略。
+   *
    * - `'exact'`: all segments in each `UrlTree` must match.
+   *
+   *   `'exact'` ：每个 `UrlTree` 中的所有段都必须匹配。
+   *
    * - `'subset'`: a `UrlTree` will be determined to be active if it
-   * is a subtree of the active route. That is, the active route may contain extra
-   * segments, but must at least have all the segments of the `UrlTree` in question.
+   *   is a subtree of the active route. That is, the active route may contain extra
+   *   segments, but must at least have all the segments of the `UrlTree` in question.
+   *
+   *   `'subset'` ：如果 `UrlTree` 是活动路由的子树，则将其确定为活动状态。也就是说，活动路由可能包含额外的段，但必须至少具有相关的 `UrlTree` 的所有段。
+   *
    */
   paths: 'exact'|'subset';
   /**
    * - `'exact'`: indicates that the `UrlTree` fragments must be equal.
+   *
+   *   `'exact'` ：表明 `UrlTree` 片段必须相等。
+   *
    * - `'ignored'`: the fragments will not be compared when determining if a
-   * `UrlTree` is active.
+   *   `UrlTree` is active.
+   *
+   *   `'ignored'` ：确定 `UrlTree` 是否处于活动状态时，不会比较片段。
+   *
    */
   fragment: 'exact'|'ignored';
 }
@@ -161,12 +201,19 @@ function matrixParamsMatch(
  *
  * Represents the parsed URL.
  *
+ * 代表已解析的 URL。
+ *
  * Since a router state is a tree, and the URL is nothing but a serialized state, the URL is a
  * serialized tree.
  * UrlTree is a data structure that provides a lot of affordances in dealing with URLs
  *
+ * 由于路由器状态是一棵树，而 URL 只是序列化的状态，所以 URL 就是序列化的树。 UrlTree 是一种数据结构，在处理 URL 时提供了很多便利
+ *
  * @usageNotes
+ *
  * ### Example
+ *
+ * ### 范例
  *
  * ```
  * @Component({templateUrl:'template.html'})
@@ -225,12 +272,21 @@ export class UrlTree {
  *
  * Represents the parsed URL segment group.
  *
+ * 表示已解析的 URL 段组。
+ *
  * See `UrlTree` for more information.
+ *
+ * 有关更多信息，请参见 `UrlTree`。
  *
  * @publicApi
  */
 export class UrlSegmentGroup {
-  /** The parent node in the url tree */
+  /**
+   * The parent node in the url tree
+   *
+   * 网址树中的父节点
+   *
+   */
   parent: UrlSegmentGroup|null = null;
 
   constructor(
@@ -241,12 +297,22 @@ export class UrlSegmentGroup {
     Object.values(children).forEach((v) => (v.parent = this));
   }
 
-  /** Whether the segment has child segments */
+  /**
+   * Whether the segment has child segments
+   *
+   * 该网址段是否有子段
+   *
+   */
   hasChildren(): boolean {
     return this.numberOfChildren > 0;
   }
 
-  /** Number of child segments */
+  /**
+   * Number of child segments
+   *
+   * 子段数
+   *
+   */
   get numberOfChildren(): number {
     return Object.keys(this.children).length;
   }
@@ -263,11 +329,19 @@ export class UrlSegmentGroup {
  *
  * Represents a single URL segment.
  *
+ * 表示一个 URL 段。
+ *
  * A UrlSegment is a part of a URL between the two slashes. It contains a path and the matrix
  * parameters associated with the segment.
  *
+ * UrlSegment 是两个斜杠之间的 URL 的一部分。它包含路径和与该段关联的矩阵参数。
  * @usageNotes
- * ### Example
+ *
+ * ### Example
+ *
+ * ### 范例
+ *
+ * 范例：
  *
  * ```
  * @Component({templateUrl:'template.html'})
@@ -339,19 +413,35 @@ export function mapChildrenIntoArray<T>(
  *
  * Serializes and deserializes a URL string into a URL tree.
  *
+ * 将 URL 字符串序列化和反序列化为 URL 树。
+ *
  * The url serialization strategy is customizable. You can
  * make all URLs case insensitive by providing a custom UrlSerializer.
  *
+ * 有关 URL 序列化程序的示例，请参见 `DefaultUrlSerializer`。
+ *
  * See `DefaultUrlSerializer` for an example of a URL serializer.
+ *
+ * 有关 URL 序列化程序的示例，请参见 `DefaultUrlSerializer`。
  *
  * @publicApi
  */
 @Injectable({providedIn: 'root', useFactory: () => new DefaultUrlSerializer()})
 export abstract class UrlSerializer {
-  /** Parse a url into a `UrlTree` */
+  /**
+   * Parse a url into a `UrlTree`
+   *
+   * 将网址解析为 `UrlTree`
+   *
+   */
   abstract parse(url: string): UrlTree;
 
-  /** Converts a `UrlTree` into a url */
+  /**
+   * Converts a `UrlTree` into a url
+   *
+   * 将 `UrlTree` 转换为 url
+   *
+   */
   abstract serialize(tree: UrlTree): string;
 }
 
@@ -360,7 +450,11 @@ export abstract class UrlSerializer {
  *
  * A default implementation of the `UrlSerializer`.
  *
+ * `UrlSerializer` 的默认实现。
+ *
  * Example URLs:
+ *
+ * 范例网址：
  *
  * ```
  * /inbox/33(popup:compose)
@@ -371,16 +465,28 @@ export abstract class UrlSerializer {
  * colon syntax to specify the outlet, and the ';parameter=value' syntax (e.g., open=true) to
  * specify route specific parameters.
  *
+ * DefaultUrlSerializer 使用圆括号序列化辅助段（比如，popup:compose），使用冒号语法指定出口，并使用';parameter=value' 语法（比如 open=true）来指定路由的特有参数。
+ *
  * @publicApi
  */
 export class DefaultUrlSerializer implements UrlSerializer {
-  /** Parses a url into a `UrlTree` */
+  /**
+   * Parses a url into a `UrlTree`
+   *
+   * 将网址解析为 `UrlTree`
+   *
+   */
   parse(url: string): UrlTree {
     const p = new UrlParser(url);
     return new UrlTree(p.parseRootSegment(), p.parseQueryParams(), p.parseFragment());
   }
 
-  /** Converts a `UrlTree` into a url */
+  /**
+   * Converts a `UrlTree` into a url
+   *
+   * 将 `UrlTree` 转换为 url
+   *
+   */
   serialize(tree: UrlTree): string {
     const segment = `/${serializeSegment(tree.root, true)}`;
     const query = serializeQueryParams(tree.queryParams);
@@ -740,13 +846,15 @@ export function createRoot(rootCandidate: UrlSegmentGroup) {
 
 /**
  * Recursively
+ *
  * - merges primary segment children into their parents
  * - drops empty children (those which have no segments and no children themselves). This latter
- * prevents serializing a group into something like `/a(aux:)`, where `aux` is an empty child
- * segment.
+ *   prevents serializing a group into something like `/a(aux:)`, where `aux` is an empty child
+ *   segment.
  * - merges named outlets without a primary segment sibling into the children. This prevents
- * serializing a URL like `//(a:a)(b:b) instead of `/(a:a//b:b)` when the aux b route lives on the
- * root but the `a` route lives under an empty path primary route.
+ *   serializing a URL like `//(a:a)(b:b) instead of`/(a:a//b:b)`when the aux b route lives on the
+ *   root but the`a\` route lives under an empty path primary route.
+ *
  */
 export function squashSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGroup {
   const newChildren: Record<string, UrlSegmentGroup> = {};

@@ -18,6 +18,7 @@ import {PLATFORM_SERVER_PROVIDERS} from './server';
  * @usageNotes
  *
  * Basic example of how you can add server support to your application:
+ *
  * ```ts
  * bootstrapApplication(AppComponent, {
  *   providers: [provideServerRendering()]

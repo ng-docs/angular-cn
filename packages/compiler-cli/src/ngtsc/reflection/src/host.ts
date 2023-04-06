@@ -65,6 +65,7 @@ export function isDecoratorIdentifier(exp: ts.Expression): exp is DecoratorIdent
  * The `ts.Declaration` of a "class".
  *
  * Classes are represented differently in different code formats:
+ *
  * - In TS code, they are typically defined using the `class` keyword.
  * - In ES2015 code, they are usually defined using the `class` keyword, but they can also be
  *   variable declarations, which are initialized to a class expression (e.g.
@@ -75,6 +76,7 @@ export function isDecoratorIdentifier(exp: ts.Expression): exp is DecoratorIdent
  *
  * For `ReflectionHost` purposes, a class declaration should always have a `name` identifier,
  * because we need to be able to reference it in other parts of the program.
+ *
  */
 export type ClassDeclaration<T extends DeclarationNode = DeclarationNode> = T&{name: ts.Identifier};
 

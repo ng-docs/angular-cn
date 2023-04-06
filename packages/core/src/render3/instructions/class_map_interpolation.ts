@@ -612,16 +612,13 @@ export function ɵɵclassMapInterpolate8(
  *  ['prefix', v0, '-', v1, '-', v2, '-', v3, '-', v4, '-', v5, '-', v6, '-', v7, '-', v9,
  *  'suffix']);
  * ```
- *
- * .
- *
+ *.
  * @param values The collection of values and the strings in-between those values, beginning with
  * a string prefix and ending with a string suffix.
  * (e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`)
  *
  * 值和这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。（例如 `['prefix', value0,
  * '-', value1, '-', value2, ..., value99, 'suffix']`）
- *
  * @codeGenApi
  */
 export function ɵɵclassMapInterpolateV(values: any[]): void {

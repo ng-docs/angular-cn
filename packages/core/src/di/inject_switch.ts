@@ -23,12 +23,17 @@ import {ProviderToken} from './provider_token';
  * By default, it is `injectInjectorOnly`, which makes it `Injector`-only aware. It can be changed
  * to `directiveInject`, which brings in the `NodeInjector` system of ivy. It is designed this
  * way for two reasons:
- *  1\. `Injector` should not depend on ivy logic.
- *  2\. To maintain tree shake-ability we don't want to bring in unnecessary code.
  *
  * 默认情况下，它是 `injectInjectorOnly` ，这使得它可以感知 `Injector` 。它可以更改为
- * `directiveInject` ，它会引入 ivy 的 `NodeInjector` 系统。它是这样设计的，有两个原因： 1.
- * `Injector` 不应该依赖于 ivy 逻辑。 2.为了保持树的抖动能力，我们不想引入不必要的代码。
+ * `directiveInject` ，它会引入 ivy 的 `NodeInjector` 系统。它是这样设计的，有两个原因：
+ *
+ * 1. `Injector` should not depend on ivy logic.
+ *
+ *    `Injector` 不应该依赖于 ivy 逻辑。
+ *
+ * 1. To maintain tree shake-ability we don't want to bring in unnecessary code.
+ *
+ *    为了保持树的抖动能力，我们不想引入不必要的代码。
  *
  */
 let _injectImplementation: (<T>(token: ProviderToken<T>, flags?: InjectFlags) => T | null)|

@@ -452,11 +452,11 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    *   `Native` ：使用渲染器的本机封装机制。
    *
    * - `ShadowDom`: Use modern [ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/) and
-   *   create a ShadowRoot for component's host element.
+   *     create a ShadowRoot for component's host element.
    *
    *   `ShadowDom`
-   * ：使用现代[ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/)并为组件的宿主元素创建一个
-   * ShadowRoot。
+   *   ：使用现代[ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/)并为组件的宿主元素创建一个
+   *   ShadowRoot。
    *
    * - `None`: Do not provide any template or style encapsulation.
    *

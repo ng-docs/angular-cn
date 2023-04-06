@@ -221,11 +221,13 @@ function removeExportReferences(
 
 /**
  * Determines whether an `@NgModule` class is safe to remove. A module is safe to remove if:
+ *
  * 1. It has no `declarations`.
  * 2. It has no `providers`.
  * 3. It has no `bootstrap` components.
  * 4. It has no `ModuleWithProviders` in its `imports`.
  * 5. It has no class members. Empty construstors are ignored.
+ *
  * @param node Class that is being checked.
  * @param typeChecker
  */

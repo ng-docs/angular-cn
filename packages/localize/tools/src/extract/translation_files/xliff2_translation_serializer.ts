@@ -27,7 +27,7 @@ const MAX_LEGACY_XLIFF_2_MESSAGE_LENGTH = 20;
  *
  * 一个翻译序列化器，可以以 XLIFF 2 格式编写翻译。
  *
- * <https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html>
+ * https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html
  *
  * @see Xliff2TranslationParser
  * @publicApi used by CLI

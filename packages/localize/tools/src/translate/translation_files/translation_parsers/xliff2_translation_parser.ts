@@ -19,7 +19,7 @@ import {addErrorsToBundle, addParseDiagnostic, addParseError, canParseXml, getAt
  *
  * 可以从 XLIFF 2 文件加载翻译的翻译解析器。
  *
- * <https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html>
+ * https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html
  *
  * @see Xliff2TranslationSerializer
  * @publicApi used by CLI

@@ -30,8 +30,8 @@ export interface PopStateEvent {
  * Depending on the `LocationStrategy` used, `Location` persists
  * to the URL's path or the URL's hash segment.
  *
- * 这取决于使用了哪个 {@link LocationStrategy}，`Location` 可能会使用 URL
- * 的路径进行持久化，也可能使用 URL 的哈希片段（`#`）进行持久化。
+ * 这取决于使用了哪个 `LocationStrategy`，`Location` 可能会使用 URL
+ * 的路径或 URL 的哈希片段（`#`）进行持久化。
  *
  * @usageNotes
  *
@@ -301,8 +301,7 @@ export class Location implements OnDestroy {
    * `location.historyGo(2)` 会向前移动两页，`location.historyGo(-2)`
    * 会向后移动两页。当我们尝试超越历史会话中存储的内容时，我们会停留在当前页面。当
    * `relativePosition` 等于 0 时会发生相同的行为。
-   *
-   * @see <https://developer.mozilla.org/en-US/docs/Web/API/History_API#Moving_to_a_specific_point_in_history>
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/History_API#Moving_to_a_specific_point_in_history
    *
    */
   historyGo(relativePosition: number = 0): void {

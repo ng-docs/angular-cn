@@ -38,10 +38,10 @@ interface ClosureLocale {
 
 /**
  * Locales used by closure that need to be captured within the Closure Locale file. Extracted from:
- * <https://github.com/google/closure-library/blob/c7445058af72f679ef3273274e936d5d5f40b55a/closure/goog/i18n/datetimepatterns.js#L2450>
+ * https://github.com/google/closure-library/blob/c7445058af72f679ef3273274e936d5d5f40b55a/closure/goog/i18n/datetimepatterns.js#L2450
  *
  * 闭包使用的需要在 Closure 区域设置文件中捕获的区域设置。提取自：
- * <https://github.com/google/closure-library/blob/c7445058af72f679ef3273274e936d5d5f40b55a/closure/goog/i18n/datetimepatterns.js#L2450>
+ * https://github.com/google/closure-library/blob/c7445058af72f679ef3273274e936d5d5f40b55a/closure/goog/i18n/datetimepatterns.js#L2450
  *
  */
 const closureLibraryLocales = [

@@ -110,9 +110,9 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * 这些插槽中的每一个（除了最后一个插槽）都包含一个布隆过滤器。此布隆过滤器确定指令在关联节点上是否可用。这使我们无法在此级别搜索指令数组，除非指令可能在其中。
  *
- * See: <https://en.wikipedia.org/wiki/Bloom_filter> for more about bloom filters.
+ * See: https://en.wikipedia.org/wiki/Bloom_filter for more about bloom filters.
  *
- * 有关布隆过滤器的更多信息，请参阅： <https://en.wikipedia.org/wiki/Bloom_filter> 。
+ * 有关布隆过滤器的更多信息，请参阅： https://en.wikipedia.org/wiki/Bloom_filter 。
  *
  * Because all injectors have been flattened into `LView` and `TViewData`, they cannot typed
  * using interfaces as they were previously. The start index of each `LInjector` and `TInjector`
@@ -239,7 +239,7 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  *    // Necessary to find directive indices for a particular node.
  *
- * // 有必要查找特定节点的指令索引。
+ *    // 有必要查找特定节点的指令索引。
  *
  * [TNODE]: TElementNode|TElementContainerNode|TContainerNode;
  *

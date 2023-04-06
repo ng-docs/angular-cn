@@ -440,9 +440,9 @@ export class HttpErrorResponse extends HttpResponseBase implements Error {
 
 /**
  * Http status codes.
- * As per <https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml>
+ * As per https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  *
- * Http 状态代码。根据<https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml>
+ * Http 状态代码。根据 https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  *
  * @publicApi
  */

@@ -11,6 +11,8 @@ import {Inject, Injectable, InjectionToken, NgZone} from '@angular/core';
 /**
  * The injection token for the event-manager plug-in service.
  *
+ * 事件管理器插件服务的注入令牌。
+ *
  * @publicApi
  */
 export const EVENT_MANAGER_PLUGINS =
@@ -19,6 +21,8 @@ export const EVENT_MANAGER_PLUGINS =
 /**
  * An injectable service that provides event management for Angular
  * through a browser plug-in.
+ *
+ * 通过浏览器插件为 Angular 提供事件管理的可注入服务。
  *
  * @publicApi
  */
@@ -29,6 +33,9 @@ export class EventManager {
 
   /**
    * Initializes an instance of the event-manager service.
+   *
+   * 初始化事件管理器服务的实例。
+   *
    */
   constructor(@Inject(EVENT_MANAGER_PLUGINS) plugins: EventManagerPlugin[], private _zone: NgZone) {
     plugins.forEach((plugin) => {
@@ -40,10 +47,21 @@ export class EventManager {
   /**
    * Registers a handler for a specific element and event.
    *
+   * 注册特定元素和事件的处理器。
+   *
    * @param element The HTML element to receive event notifications.
+   *
+   * 要接收事件通知的 HTML 元素。
+   *
    * @param eventName The name of the event to listen for.
+   *
+   * 要监听的事件的名称。
+   *
    * @param handler A function to call when the notification occurs. Receives the
    * event object as an argument.
+   *
+   * 通知发生时调用的函数。接收事件对象作为参数。
+   *
    * @returns  A callback function that can be used to remove the handler.
    */
   addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
@@ -53,6 +71,9 @@ export class EventManager {
 
   /**
    * Retrieves the compilation zone in which event listeners are registered.
+   *
+   * 检索在其中注册了事件侦听器的编译 Zone。
+   *
    */
   getZone(): NgZone {
     return this._zone;

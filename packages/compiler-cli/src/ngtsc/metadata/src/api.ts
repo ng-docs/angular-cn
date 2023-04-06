@@ -102,11 +102,11 @@ export interface DirectiveTypeCheckMeta {
   /**
    * The set of input fields which have a corresponding static `ngAcceptInputType_` on the
    * Directive's class. This allows inputs to accept a wider range of types and coerce the input to
-   * a narrower type with a getter/setter. See <https://angular.io/guide/template-typecheck>.
+   * a narrower type with a getter/setter. See https://angular.io/guide/template-typecheck.
    *
    * 在 Directive 的类上具有对应的静态 `ngAcceptInputType_`
    * 的输入字段集。这允许输入接受更广泛的类型，并使用 getter/setter
-   * 将输入强制转换为更窄的类型。请参阅<https://angular.io/guide/template-typecheck> 。
+   * 将输入强制转换为更窄的类型。请参阅 https://angular.io/guide/template-typecheck 。
    *
    */
   coercedInputFields: Set<ClassPropertyName>;

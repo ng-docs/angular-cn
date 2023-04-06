@@ -1296,9 +1296,7 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
 /**
  * Declares an animation transition which is played when a certain specified condition is met.
  *
- * 声明一个转场动画，以便在满足给定条件时运行一系列动画步骤。该条件是一个逻辑型表达式或一个函数，
- * 该函数比较以前和现在的动画状态，如果应该开始转场则返回 `true`。
- * 当满足所定义的转场动画的状态标准时，就会开始执行相关的动画。
+ * 声明一个转场动画，以便在满足给定条件时运行一系列动画步骤。
  *
  * @param stateChangeExpr A string with a specific format or a function that specifies when the
  * animation transition should occur (see [State Change Expression](#state-change-expression)).
@@ -1354,11 +1352,11 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *   ```
  *
  * - `fromState <=> toState`, which indicates that the transition's animations should occur then
- *     the expression bound to the trigger's element goes from `fromState` to `toState` or vice
- * versa
+ *       the expression bound to the trigger's element goes from `fromState` to `toState` or vice
+ *   versa
  *
  *   `fromState <=> toState`，这表明应该发生转换的动画，然后绑定到触发器元素的表达式从 `fromState`
- *   变为 `toState`，反之亦然
+ *     变为 `toState`，反之亦然
  *
  *   _Example:_
  *
@@ -1385,10 +1383,10 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *   ```
  *
  * - `:increment`/`:decrement`, which indicates that the transition's animations should occur when
- *   the numerical expression bound to the trigger's element has increased in value or decreased
+ *     the numerical expression bound to the trigger's element has increased in value or decreased
  *
  *   `:increment` / `:decrement`
- * ，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
+ *   ，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
  *
  *   _Example:_
  *

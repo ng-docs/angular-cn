@@ -37,11 +37,11 @@ export type TStylingKey = TStylingKeyPrimitive|TStylingStatic;
  *   `null` ：表示映射，因此没有名称。与 `ɵɵstyleMap` / `ɵɵclassMap` 使用。
  *
  * - `false`: Represents an ignore case. This happens when `ɵɵstyleProp`/`ɵɵclassProp` instruction
- *   is combined with directive which shadows its input `@Input('class')`. That way the binding
- *   should not participate in the styling resolution.
+ *     is combined with directive which shadows its input `@Input('class')`. That way the binding
+ *     should not participate in the styling resolution.
  *
  *   `false` ：表示忽略大小写。当 `ɵɵstyleProp` / `ɵɵclassProp` 指令与隐藏其输入 `@Input('class')`
- * 指令结合使用时，会发生这种情况。这样，绑定不应该参与样式解析。
+ *   指令结合使用时，会发生这种情况。这样，绑定不应该参与样式解析。
  *
  */
 export type TStylingKeyPrimitive = string|null|false;

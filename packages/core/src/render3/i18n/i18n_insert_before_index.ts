@@ -19,17 +19,26 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  * `TNode`
  *
  * Things to keep in mind:
- * 1. All i18n text nodes are encoded as `TNodeType.Element` and are created eagerly by the
- *    `ɵɵi18nStart` instruction.
- * 2. All `TNodeType.Placeholder` `TNodes` are elements which will be created later by
- *    `ɵɵelementStart` instruction.
- * 3. `ɵɵelementStart` instruction will create `TNode`s in the ascending `TNode.index` order. (So a
- *    smaller index `TNode` is guaranteed to be created before a larger one)
  *
- * 要记住的事情： 1.所有 i18n 文本节点都被编码为 `TNodeType.Element` ，并且由 `ɵɵi18nStart`
- * 指令立即创建。 2.所有 `TNodeType.Placeholder` `TNodes` 都是稍后将由 `ɵɵelementStart`
- * 指令创建的元素。 3. `ɵɵelementStart` 指令将按 `TNode` `TNode.index`（因此可以保证在较大的索引
- * `TNode` 之前创建）
+ * 要记住的事情：
+ *
+ * 1. All i18n text nodes are encoded as `TNodeType.Element` and are created eagerly by the
+ *       `ɵɵi18nStart` instruction.
+ *
+ *    所有 i18n 文本节点都被编码为 `TNodeType.Element` ，并且由 `ɵɵi18nStart`
+ *    指令立即创建。
+ *
+ * 2. All `TNodeType.Placeholder` `TNodes` are elements which will be created later by
+ *       `ɵɵelementStart` instruction.
+ *
+ *    所有 `TNodeType.Placeholder` `TNodes` 都是稍后将由 `ɵɵelementStart`
+ *    指令创建的元素。
+ *
+ * 3. `ɵɵelementStart` instruction will create `TNode`s in the ascending `TNode.index` order. (So a
+ *       smaller index `TNode` is guaranteed to be created before a larger one)
+ *
+ *    `ɵɵelementStart` 指令将按 `TNode` `TNode.index`（因此可以保证在较大的索引
+ *    `TNode` 之前创建）
  *
  * We use the above three invariants to determine `TNode.insertBeforeIndex`.
  *

@@ -36,7 +36,7 @@ The following are metadata errors you may encounter, with explanations and sugge
 
 ## Expression form not supported
 
-## 不支持表达形式 (Expression form not supported)
+## 不支持此表达式格式 (Expression form not supported)
 
 <div class="alert is-helpful">
 

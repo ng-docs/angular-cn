@@ -193,6 +193,9 @@ export abstract class EnvironmentInjector implements Injector {
    * 在函数的堆栈框架中， `inject` 可用于从此注入器注入依赖项。请注意， `inject` 仅可同步使用，不能在任何异步回调或任何 `await` 点之后使用。
    *
    * @param fn the closure to be run in the context of this injector
+   *
+   * 要在此注入器的上下文中运行的闭包
+   *
    * @returns the return value of the function, if any
    * @deprecated use the standalone function `runInInjectionContext` instead
    */

@@ -102,9 +102,8 @@ function _extractId(valueString: string): string {
  * for selects in IE, see:
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event#browser_compatibility
  *
- * 注意：我们要监听 `change` 事件，这是因为 `input` 事件不会在 Firefox 和 IE 的 `select`
- * 元素上触发： https://bugzilla.mozilla.org/show_bug.cgi?id=1024350
- * https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4660045/
+ * **注意：**我们要监听 `change` 事件，因为 `input` 事件不会在 IE 的 `select`
+ * 元素上触发： https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event#browser_compatibility
  *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule

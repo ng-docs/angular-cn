@@ -1190,9 +1190,9 @@ export class _ParseAST {
    * 5. ngForTrackBy -> func
    *
    * For a full description of the microsyntax grammar, see
-   * <https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855>
+   * https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855
    *
-   * 有关微语法语法的完整描述，请参阅<https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855>
+   * 有关微语法语法的完整描述，请参阅 https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855
    *
    * @param templateKey name of the microsyntax directive, like ngIf, ngFor,
    * without the \*, along with its absolute span.

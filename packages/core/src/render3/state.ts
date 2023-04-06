@@ -274,11 +274,15 @@ interface InstructionState {
    * Stores the root TNode that has the 'ngSkipHydration' attribute on it for later reference.
    *
    * Example:
+   *
+   * 范例：
+   *
    * ```
    * <my-comp ngSkipHydration>
    *   Should reference this root node
    * </my-comp>
    * ```
+   *
    */
   skipHydrationRootTNode: TNode|null;
 }

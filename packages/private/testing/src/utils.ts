@@ -21,6 +21,8 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  *
  * Example:
  *
+ * 范例：
+ *
  * ```
  * describe('something', () => {
  *   it('should do something', withBody('<app-root></app-root>', async () => {
@@ -51,6 +53,8 @@ export function withBody<T extends Function>(html: string, blockFn: T): T {
  * one by loading `domino` and installing it.
  *
  * Example:
+ *
+ * 范例：
  *
  * ```
  * describe('something', () => {

@@ -30,7 +30,11 @@ export abstract class DestroyRef {
    * be invoked to unregister the callback.
    *
    * @usageNotes
+   *
    * ### Example
+   *
+   * ### 范例
+   *
    * ```typescript
    * const destroyRef = inject(DestroyRef);
    *
@@ -40,6 +44,7 @@ export abstract class DestroyRef {
    * // stop the destroy callback from executing if needed
    * unregisterFn();
    * ```
+   *
    */
   abstract onDestroy(callback: () => void): () => void;
 

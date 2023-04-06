@@ -679,7 +679,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * false otherwise.
    *
    * 如果控件已通过其所有验证测试，则为 true ，否则为 false 。
-   *
    */
   get valid(): boolean {
     return this.status === VALID;
@@ -698,7 +697,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * false otherwise.
    *
    * 如果此控件未通过其一个或多个验证检查，则为 true ，否则为 false 。
-   *
    */
   get invalid(): boolean {
     return this.status === INVALID;
@@ -717,7 +715,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * false otherwise.
    *
    * 如果此控件正在进行验证检查，则为 true ，否则为 false 。
-   *
    */
   get pending(): boolean {
     return this.status == PENDING;
@@ -741,7 +738,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * True if the control is disabled, false otherwise.
    *
    * 如果控件已禁用，则为 true ，否则为 false 。
-   *
    */
   get disabled(): boolean {
     return this.status === DISABLED;
@@ -1138,7 +1134,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
-   *
    */
   markAsTouched(opts: {onlySelf?: boolean} = {}): void {
     (this as {touched: boolean}).touched = true;
@@ -1184,7 +1179,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
-   *
    */
   markAsUntouched(opts: {onlySelf?: boolean} = {}): void {
     (this as {touched: boolean}).touched = false;
@@ -1218,7 +1212,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
-   *
    */
   markAsDirty(opts: {onlySelf?: boolean} = {}): void {
     (this as {pristine: boolean}).pristine = false;

@@ -31,7 +31,6 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  * an AngularJS wrapper directive for "downgrading" an Angular component.
  *
  * 此帮助器函数返回一个工厂函数，用于注册 AngularJS 包装器指令以“降级” Angular 组件。
- *
  * @usageNotes
  *
  * ### Examples
@@ -54,7 +53,6 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *
  * For more details and examples on downgrading Angular components to AngularJS components please
  * visit the [Upgrade guide](guide/upgrade#using-angular-components-from-angularjs-code).
- *
  * @param info contains information about the Component that is being downgraded:
  *
  * 包含有关要降级的组件的信息：
@@ -64,26 +62,26 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *   `component: Type<any>` ：将被降级的组件的类型
  *
  * - `downgradedModule?: string`: The name of the downgraded module (if any) that the component
- *   "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose
- *   corresponding Angular module will be bootstrapped, when the component needs to be instantiated.
- *   <br />
- *   (This option is only necessary when using `downgradeModule()` to downgrade more than one
- *   Angular module.)
+ *     "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose
+ *     corresponding Angular module will be bootstrapped, when the component needs to be instantiated.
+ *     <br />
+ *     (This option is only necessary when using `downgradeModule()` to downgrade more than one
+ *     Angular module.)
  *
  *   `downgradedModule?: string` ：组件“属于”的降级模块（如果有）的名称，由对 `downgradeModule()`
- * 的调用返回。当需要实例化组件时，正是此模块，其对应的 Angular 模块将被引导。<br />（仅在使用
- * `downgradeModule()` 降级多个 Angular 模块时才需要此选项。）
+ *   的调用返回。当需要实例化组件时，正是此模块，其对应的 Angular 模块将被引导。<br />（仅在使用
+ *   `downgradeModule()` 降级多个 Angular 模块时才需要此选项。）
  *
  * - `propagateDigest?: boolean`: Whether to perform {@link ChangeDetectorRef#detectChanges
- *   change detection} on the component on every
- *   [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest). If set to `false`,
- *   change detection will still be performed when any of the component's inputs changes.
- *   (Default: true)
+ *     change detection} on the component on every
+ *     [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest). If set to `false`,
+ *     change detection will still be performed when any of the component's inputs changes.
+ *     (Default: true)
  *
  *   `propagateDigest?: boolean` :
- * 是否在每个[$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)上对组件执行 {@link
- * ChangeDetectorRef#detectChanges 变更检测}。如果设置为 `false`
- * ，当任何组件的输入更改时，仍将执行变更检测。（默认：true）
+ *   是否在每个[$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)上对组件执行 {@link
+ *   ChangeDetectorRef#detectChanges 变更检测}。如果设置为 `false`
+ *   ，当任何组件的输入更改时，仍将执行变更检测。（默认：true）
  *
  * @returns
  *
@@ -91,7 +89,6 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  * AngularJS module.
  *
  * 一个工厂函数，可用于在 AngularJS 模块中注册组件。
- *
  * @publicApi
  */
 export function downgradeComponent(info: {

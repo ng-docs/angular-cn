@@ -44,9 +44,10 @@ export function getAngularPackagesFromRunfiles() {
            }));
 }
 
-/** Resolves a file or directory from the Bazel runfiles. *
- * 从 Bazel 运行文件解析 NPM 包。我们需要使用“解析文件”解析 Bazel 树工件，因为 NodeJS
- * 模块解析不允许解析到目录路径。
+/**
+ * Resolves a file or directory from the Bazel runfiles.
+ *
+ * 从 Bazel 运行文件解析 NPM 包。
  *
  */
 export function resolveFromRunfiles(manifestPath: string) {

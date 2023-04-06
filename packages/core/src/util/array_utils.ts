@@ -157,14 +157,19 @@ export function arrayInsert2(array: any[], index: number, value1: any, value2: a
  * Get an index of an `value` in a sorted `array`.
  *
  * NOTE:
+ *
  * - This uses binary search algorithm for fast removals.
  *
  * @param array A sorted array to binary search.
  * @param value The value to look for.
- * @returns index of the value.
- *   - positive index if value found.
- *   - negative index if value not found. (`~index` to get the value where it should have been
- *     located)
+ * @returns
+ *
+ * index of the value.
+ *
+ * - positive index if value found.
+ * - negative index if value not found. (`~index` to get the value where it should have been
+ *   located)
+ *
  */
 export function arrayIndexOfSorted(array: string[], value: string): number {
   return _arrayIndexOfSorted(array, value, 0);
@@ -213,7 +218,8 @@ export function keyValueArraySet<V>(
  *
  * @param keyValueArray to search.
  * @param key The key to locate.
- * @return The `value` stored at the `key` location or `undefined if not found.
+ * @return The `value` stored at the `key` location or `undefined` if not found.
+ *
  */
 export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string): V|undefined {
   const index = keyValueArrayIndexOf(keyValueArray, key);
@@ -229,10 +235,14 @@ export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string
  *
  * @param keyValueArray to search.
  * @param key The key to locate.
- * @returns index of where the key is (or should have been.)
- *   - positive (even) index if key found.
- *   - negative index if key not found. (`~index` (even) to get the index where it should have
- *     been inserted.)
+ * @returns
+ *
+ * index of where the key is (or should have been.)
+ *
+ * - positive (even) index if key found.
+ * - negative index if key not found. (`~index` (even) to get the index where it should have
+ *   been inserted.)
+ *
  */
 export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: string): number {
   return _arrayIndexOfSorted(keyValueArray as string[], key, 1);
@@ -243,10 +253,14 @@ export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: st
  *
  * @param keyValueArray to modify.
  * @param key The key to locate or delete (if exist).
- * @returns index of where the key was (or should have been.)
- *   - positive (even) index if key found and deleted.
- *   - negative index if key not found. (`~index` (even) to get the index where it should have
- *     been.)
+ * @returns
+ *
+ * index of where the key was (or should have been.)
+ *
+ * - positive (even) index if key found and deleted.
+ * - negative index if key not found. (`~index` (even) to get the index where it should have
+ *   been.)
+ *
  */
 export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: string): number {
   const index = keyValueArrayIndexOf(keyValueArray, key);
@@ -262,18 +276,25 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  * INTERNAL: Get an index of an `value` in a sorted `array` by grouping search by `shift`.
  *
  * NOTE:
+ *
  * - This uses binary search algorithm for fast removals.
  *
  * @param array A sorted array to binary search.
  * @param value The value to look for.
  * @param shift grouping shift.
- *   - `0` means look at every location
- *   - `1` means only look at every other (even) location (the odd locations are to be ignored as
- *         they are values.)
- * @returns index of the value.
- *   - positive index if value found.
- *   - negative index if value not found. (`~index` to get the value where it should have been
- * inserted)
+ *
+ * - `0` means look at every location
+ * - `1` means only look at every other (even) location (the odd locations are to be ignored as
+ *       they are values.)
+ *
+ * @returns
+ *
+ * index of the value.
+ *
+ * - positive index if value found.
+ * - negative index if value not found. (`~index` to get the value where it should have been
+ *   inserted)
+ *
  */
 function _arrayIndexOfSorted(array: string[], value: string, shift: number): number {
   ngDevMode && assertEqual(Array.isArray(array), true, 'Expecting an array');
