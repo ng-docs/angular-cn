@@ -162,11 +162,11 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * | ------------------- | ------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
  * | 字段类型            | 格式         | 描述                                                         | 示例值                                                     |
  * | Era                 | G, GG & GGG  | Abbreviated                                                  | AD                                                         |
- * | 时代                | G、GG 和 GGG | 缩写                                                         | 广告                                                       |
+ * | 年代                | G、GG 和 GGG | 缩写                                                         | AD                                                       |
  * |                     | GGGG         | Wide                                                         | Anno Domini                                                |
- * |                     | GGGG         | 宽                                                           | 安诺·多米尼                                                |
+ * |                     | GGGG         | 宽                                                           | Anno Domini                                                |
  * |                     | GGGGG        | Narrow                                                       | A                                                          |
- * |                     | GGGGG        | 窄                                                           | 一个                                                       |
+ * |                     | GGGGG        | 窄                                                           | A                                                       |
  * | Year                | y            | Numeric: minimum digits                                      | 2, 20, 201, 2017, 20173                                    |
  * | 年份                | y           | 数字：最小位数                                               | 2、20、201、2017、20173                                    |
  * |                     | yy           | Numeric: 2 digits + zero padded                              | 02, 20, 01, 17, 73                                         |
@@ -188,21 +188,21 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | MM           | Numeric: 2 digits + zero padded                              | 09, 12                                                     |
  * |                     | MM           | 数字： 2 位数字 + 填充零                                     | 09、12                                                     |
  * |                     | MMM          | Abbreviated                                                  | Sep                                                        |
- * |                     | MMM           | 缩写                                                         | 九月                                                       |
+ * |                     | MMM           | 缩写                                                         | Sep                                                       |
  * |                     | MMMM         | Wide                                                         | September                                                  |
- * |                     | MMMM         | 宽                                                           | 9 月                                                       |
+ * |                     | MMMM         | 宽                                                           | September                                                       |
  * |                     | MMMMM        | Narrow                                                       | S                                                          |
- * |                     | MMMMM         | 窄                                                           | 小号                                                       |
+ * |                     | MMMMM         | 窄                                                           | S                                                       |
  * | Month standalone    | L            | Numeric: 1 digit                                             | 9, 12                                                      |
  * | 独立月              | L         | 数字： 1 位                                                  | 9、12                                                      |
  * |                     | LL           | Numeric: 2 digits + zero padded                              | 09, 12                                                     |
  * |                     | LL           | 数字： 2 位数字 + 填充零                                     | 09、12                                                     |
  * |                     | LLL          | Abbreviated                                                  | Sep                                                        |
- * |                     | LLL          | 缩写                                                         | 九月                                                       |
+ * |                     | LLL          | 缩写                                                         | Sep                                                       |
  * |                     | LLLL         | Wide                                                         | September                                                  |
- * |                     | LLLL         | 宽                                                           | 9 月                                                       |
+ * |                     | LLLL         | 宽                                                           | September                                                       |
  * |                     | LLLLL        | Narrow                                                       | S                                                          |
- * |                     | LLLL         | 窄                                                           | 小号                                                       |
+ * |                     | LLLL         | 窄                                                           | S                                                       |
  * | Week of year        | w            | Numeric: minimum digits                                      | 1... 53                                                    |
  * | 一年中的一周        | w            | 数字：最小位数                                               | 1… 53                                                      |
  * |                     | ww           | Numeric: 2 digits + zero padded                              | 01... 53                                                   |
@@ -214,43 +214,43 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | dd           | Numeric: 2 digits + zero padded                              | 01                                                         |
  * |                     | dd           | 数字： 2 位数字 + 填充零                                     | 01                                                         |
  * | Week day            | E, EE & EEE  | Abbreviated                                                  | Tue                                                        |
- * | 工作日              | E、EE 和 EEE | 缩写                                                         | 星期二                                                     |
+ * | 工作日              | E、EE 和 EEE | 缩写                                                         | Tue                                                     |
  * |                     | EEEE         | Wide                                                         | Tuesday                                                    |
- * |                     | EEEE         | 宽                                                           | 星期二                                                     |
+ * |                     | EEEE         | 宽                                                           | Tuesday                                                     |
  * |                     | EEEEE        | Narrow                                                       | T                                                          |
- * |                     | EEEE         | 窄                                                           | 吨                                                         |
+ * |                     | EEEE         | 窄                                                           | T                                                         |
  * |                     | EEEEEE       | Short                                                        | Tu                                                         |
- * |                     | EEEEEE       | 短                                                           | 涂                                                         |
+ * |                     | EEEEEE       | 短                                                           | Tu                                                         |
  * | Week day standalone | c, cc        | Numeric: 1 digit                                             | 2                                                          |
- * | 工作日独立          | c, cc        | 数字： 1 位                                                  | 2                                                          |
+ * | 单独工作日          | c, cc        | 数字： 1 位                                                  | 2                                                          |
  * |                     | ccc          | Abbreviated                                                  | Tue                                                        |
- * |                     | ccc          | 缩写                                                         | 星期二                                                     |
+ * |                     | ccc          | 缩写                                                         | Tue                                                     |
  * |                     | cccc         | Wide                                                         | Tuesday                                                    |
- * |                     | cccc         | 宽                                                           | 星期二                                                     |
+ * |                     | cccc         | 宽                                                           | Tuesday                                                     |
  * |                     | ccccc        | Narrow                                                       | T                                                          |
- * |                     | cccc         | 窄                                                           | 牛                                                         |
+ * |                     | cccc         | 窄                                                           | T                                                         |
  * |                     | cccccc       | Short                                                        | Tu                                                         |
- * |                     | cccccc       | 短                                                           | 涂                                                         |
+ * |                     | cccccc       | 短                                                           | Tu                                                         |
  * | Period              | a, aa & aaa  | Abbreviated                                                  | am/pm or AM/PM                                             |
- * | 期间                | a、a 和 aaa  | 缩写                                                         | 上午/下午或上午/下午                                       |
+ * | 时段                | a、a 和 aaa  | 缩写                                                         | am/pm or AM/PM                                       |
  * |                     | aaaa         | Wide (fallback to `a` when missing)                          | ante meridiem/post meridiem                                |
- * |                     | aaaa         | 宽（缺失时回退到 `a`）                                       | 子午前/子午后                                              |
+ * |                     | aaaa         | 宽（缺失时回退到 `a`）                                       | ante meridiem/post meridiem                                              |
  * |                     | aaaaa        | Narrow                                                       | a/p                                                        |
  * |                     | aaaaa       | 窄                                                           | a/p                                                        |
  * | Period\*            | B, BB & BBB  | Abbreviated                                                  | mid.                                                       |
- * | 期间\*              | B、BB 和 BBB | 缩写                                                         | 中。                                                       |
+ * | 时段\*              | B、BB 和 BBB | 缩写                                                         | mid.                                                       |
  * |                     | BBBB         | Wide                                                         | am, pm, midnight, noon, morning, afternoon, evening, night |
- * |                     | BBBB         | 宽                                                           | 上午, 下午, 午夜, 中午, 早上, 下午, 晚上, 夜               |
+ * |                     | BBBB         | 宽                                                           | am, pm, midnight, noon, morning, afternoon, evening, night               |
  * |                     | BBBBB        | Narrow                                                       | md                                                         |
  * |                     | BBBBB        | 窄                                                           | MD                                                         |
  * | Period standalone\* | b, bb & bbb  | Abbreviated                                                  | mid.                                                       |
- * | 独立期间\*          | b、bb & bbb  | 缩写                                                         | 中。                                                       |
+ * | 单独时段\*          | b、bb & bbb  | 缩写                                                         | mid.                                                         |
  * |                     | bbbb         | Wide                                                         | am, pm, midnight, noon, morning, afternoon, evening, night |
- * |                     | bbbb         | 宽                                                           | 上午, 下午, 午夜, 中午, 早上, 下午, 晚上, 夜               |
+ * |                     | bbbb         | 宽                                                           | am, pm, midnight, noon, morning, afternoon, evening, night              |
  * |                     | bbbbb        | Narrow                                                       | md                                                         |
  * |                     | bbbbb        | 窄                                                           | MD                                                         |
  * | Hour 1-12           | h            | Numeric: minimum digits                                      | 1, 12                                                      |
- * | 1-12 小时           | h         | 数字：最小位数                                               | 1、12                                                      |
+ * | 小时（1-12）            | h         | 数字：最小位数                                               | 1、12                                                      |
  * |                     | hh           | Numeric: 2 digits + zero padded                              | 01, 12                                                     |
  * |                     | hh           | 数字： 2 位数字 + 填充零                                     | 01、12                                                     |
  * | Hour 0-23           | H            | Numeric: minimum digits                                      | 0, 23                                                      |
@@ -262,7 +262,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | mm           | Numeric: 2 digits + zero padded                              | 08, 59                                                     |
  * |                     | mm         | 数字： 2 位数字 + 填充零                                     | 08、59                                                     |
  * | Second              | s            | Numeric: minimum digits                                      | 0... 59                                                    |
- * | 第二                | s            | 数字：最小位数                                               | 0... 59                                                    |
+ * | 秒                | s            | 数字：最小位数                                               | 0... 59                                                    |
  * |                     | ss           | Numeric: 2 digits + zero padded                              | 00... 59                                                   |
  * |                     | ss           | 数字： 2 位数字 + 填充零                                     | 00... 59                                                   |
  * | Fractional seconds  | S            | Numeric: 1 digit                                             | 0... 9                                                     |
@@ -286,7 +286,6 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | OOOO         | Long localized GMT format                                    | GMT-08:00                                                  |
  * |                     | OOOO         | 长本地化 GMT 格式                                            | GMT-08:00                                                  |
  *
- * 请注意，时区校正不适用于没有时间部分的 ISO 字符串，比如“2016-09-19”
  *
  * ### Format examples
  *

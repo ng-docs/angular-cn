@@ -27,11 +27,10 @@
  *
  * For further size improvements, "undefined" values will be replaced by a constant in the arrays
  * as the last step of the file generation (in generateLocale and generateLocaleExtra).
- * e.g.: [x, y, undefined, z, undefined, undefined] will be [x, y, u, z, u, u]
+ * e.g.: \[x, y, undefined, z, undefined, undefined] will be \[x, y, u, z, u, u]
  *
  * 为了进一步提高大小，作为文件生成的最后一步（在 generateLocale 和 generateLocaleExtra
- * 中），“未定义”值将被数组中的常量替换。例如： [x, y, undefined, z, undefined , undefined][x, y,
- * undefined, z, undefined, undefined]将是[x, y, u, z, u, u][x, y, u, z, u, u]
+ * 中），“未定义”值将被数组中的常量替换。例如： \[x, y, undefined, z, undefined , undefined] 将是 \[x, y, u, z, u, u]
  *
  */
 export function removeDuplicates(data: unknown[]) {

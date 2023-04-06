@@ -54,11 +54,11 @@
  *
  * In its simplest form a zone allows one to intercept the scheduling and calling of asynchronous
  * operations, and execute additional code before as well as after the asynchronous task. The rules
- * of interception are configured using [ZoneConfig]. There can be many different zone instances in
+ * of interception are configured using `[ZoneConfig]`. There can be many different zone instances in
  * a system, but only one zone is active at any given time which can be retrieved using
- * [Zone#current].
+ * `[Zone#current]`.
  *
- * 区域最简单的形式允许人们截获异步操作的调度和调用，并在异步任务之前和之后执行额外的代码。拦截规则是使用[ZoneConfig][ZoneConfig]配置的。系统中可以有许多不同的区域实例，但在任何给定时间只有一个区域处于活动状态，可以用[Zone#current][Zone#current]检索。
+ * 区域最简单的形式允许人们截获异步操作的调度和调用，并在异步任务之前和之后执行额外的代码。拦截规则是使用`[ZoneConfig]` 配置的。系统中可以有许多不同的区域实例，但在任何给定时间只有一个区域处于活动状态，可以用 `[Zone#current]` 检索。
  *
  * ## Callback Wrapping
  *
@@ -90,7 +90,7 @@
  * executes the application in the `app` zone. The advertising code is interested in the same
  * error processing but it needs to send the errors to a different third-party. So it creates the
  * `ads` zone with a different error handler. Now both advertising as well as application code
- * create many asynchronous operations, but the [Zone] will ensure that all of the asynchronous
+ * create many asynchronous operations, but the `[Zone]` will ensure that all of the asynchronous
  * operations created from the application code will execute in `app` zone with its error
  * handler and all of the advertisement code will execute in the `ads` zone with its error handler.
  * This will not only work for the async operations created directly, but also for all subsequent
@@ -101,14 +101,14 @@
  * `app` 区域以将所有错误发送到服务器进行分析，然后执行应用 `app`
  * 区域中的应用程序。广告代码对同一个错误处理感兴趣，但它需要将错误发送给不同的第三方。因此它使用不同的错误处理程序创建了
  * `ads`
- * 区域。现在广告和应用程序代码都创建了许多异步操作，但[Zone][Zone]将确保从应用程序代码创建的所有异步操作都将在带有错误处理程序的
+ * 区域。现在广告和应用程序代码都创建了许多异步操作，但`[Zone]`将确保从应用程序代码创建的所有异步操作都将在带有错误处理程序的
  * `app` 区域中执行，并且所有广告代码都将在 `ads`
  * 区域中执行及其错误处理程序。这不仅适用于直接创建的异步操作，也适用于所有后续的异步操作。
  *
  * If you think of chain of asynchronous operations as a thread of execution (bit of a stretch)
  * then [Zone#current] will act as a thread local variable.
  *
- * 如果你将异步操作链视为一个执行线程（有点牵强），那么[Zone#current][Zone#current]将作为线程局部变量。
+ * 如果你将异步操作链视为一个执行线程（有点牵强），那么`[Zone#current]`将作为线程局部变量。
  *
  * ## Asynchronous operation scheduling
  *
@@ -132,57 +132,51 @@
  *
  * 从本质上，可以安排三种任务：
  *
- * 1. [MicroTask] used for doing work right after the current task. This is non-cancelable which is
+ * 1. `[MicroTask]` used for doing work right after the current task. This is non-cancelable which is
  *    guaranteed to run exactly once and immediately.
  *
- *    [MicroTask][MicroTask]用于在当前任务之后立即工作。这是不可取消的，可以保证正好运行一次并立即运行。
+ *    `[MicroTask]`用于在当前任务之后立即工作。这是不可取消的，可以保证正好运行一次并立即运行。
  *
- * 2. [MacroTask] used for doing work later. Such as `setTimeout`. This is typically cancelable
+ * 2. `[MacroTask]` used for doing work later. Such as `setTimeout`. This is typically cancelable
  *       which is guaranteed to execute at least once after some well understood delay.
  *
- *    [MacroTask][MacroTask]用于以后做工作。例如 `setTimeout`
+ *    `[MacroTask]`用于以后做工作。例如 `setTimeout`
  *    。这通常是可取消的，它可以保证在一些众所周知的延迟之后至少执行一次。
  *
- * 3. [EventTask] used for listening on some future event. This may execute zero or more times, with
+ * 3. `[EventTask]` used for listening on some future event. This may execute zero or more times, with
  *    an unknown delay.
  *
- *    [EventTask][EventTask]用于侦听某些未来的事件。这可能会执行零次或多次，具有未知的延迟。
+ *    `[EventTask]`用于侦听某些未来的事件。这可能会执行零次或多次，具有未知的延迟。
  *
  * Each asynchronous API is modeled and routed through one of these APIs.
  *
  * 每个异步 API 都会通过这些 API 之一进行建模和路由。
  *
- * ### [MicroTask]
+ * ### `[MicroTask]`
  *
- * ### [微任务][MicroTask]
- *
- * [MicroTask]s represent work which will be done in current VM turn as soon as possible, before VM
+ * `[MicroTask]`s represent work which will be done in current VM turn as soon as possible, before VM
  * yielding.
  *
- * [MicroTask][MicroTask] s 表示将在 VM 屈服之前在当前 VM 轮次中尽快完成的工作。
+ * `[MicroTask]` s 表示将在 VM 屈服之前在当前 VM 轮次中尽快完成的工作。
  *
- * ### [MacroTask]
+ * ### `[MacroTask]`
  *
- * ### [宏任务][MacroTask]
- *
- * [MacroTask]s represent work which will be done after some delay. (Sometimes the delay is
+ * `[MacroTask]`s represent work which will be done after some delay. (Sometimes the delay is
  * approximate such as on next available animation frame). Typically these methods include:
  * `setTimeout`, `setImmediate`, `setInterval`, `requestAnimationFrame`, and all browser specific
  * variants.
  *
- * [MacroTask][MacroTask] s 表示将在一段时间后完成的工作。
+ * `[MacroTask]` s 表示将在一段时间后完成的工作。
  * （有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括： `setTimeout`、`setImmediate`
  * 、`setInterval`、`requestAnimationFrame` 以及所有浏览器特定的变体。
  *
- * ### [EventTask]
+ * ### `[EventTask]`
  *
- * ### [事件任务][EventTask]
- *
- * [EventTask]s represent a request to create a listener on an event. Unlike the other task
+ * `[EventTask]`s represent a request to create a listener on an event. Unlike the other task
  * events they may never be executed, but typically execute more than once. There is no queue of
  * events, rather their callbacks are unpredictable both in order and time.
  *
- * [EventTask][EventTask]表示要在事件上创建侦听器的请求。与其他任务事件不同，它们可能永远不会被执行，但通常会执行多次。没有事件队列，而是它们的回调在顺序和时间上都是不可预测的。
+ * `[EventTask]`表示要在事件上创建侦听器的请求。与其他任务事件不同，它们可能永远不会被执行，但通常会执行多次。没有事件队列，而是它们的回调在顺序和时间上都是不可预测的。
  *
  * ## Global Error Handling
  *
@@ -192,10 +186,10 @@
  *
  * ## 可组合性
  *
- * Zones can be composed together through [Zone.fork()]. A child zone may create its own set of
+ * Zones can be composed together through `[Zone.fork()]`. A child zone may create its own set of
  * rules. A child zone is expected to either:
  *
- * 区域可以通过[Zone.fork()][Zone.fork()]组合在一起。子区域可以创建自己的一组规则。子区域应该：
+ * 区域可以通过`[Zone.fork()]`组合在一起。子区域可以创建自己的一组规则。子区域应该：
  *
  * 1. Delegate the interception to a parent zone, and optionally add before and after wrapCallback
  *    hooks.
@@ -249,9 +243,9 @@ interface Zone {
    * 返回与 `key` 关联的值。
    *
    * If the current zone does not have a key, the request is delegated to the parent zone. Use
-   * [ZoneSpec.properties] to configure the set of properties associated with the current zone.
+   * `[ZoneSpec.properties]` to configure the set of properties associated with the current zone.
    *
-   * 如果当前区域没有键，则请求将委托给父区域。使用[ZoneSpec.properties][ZoneSpec.properties]配置与当前区域关联的属性集。
+   * 如果当前区域没有键，则请求将委托给父区域。使用`[ZoneSpec.properties]`配置与当前区域关联的属性集。
    *
    * @param key The key to retrieve.
    *
@@ -317,9 +311,9 @@ interface Zone {
    * 包装的函数会正确地将 `this` 以及 `arguments` 转发给 `callback` 。
    *
    * Before the function is wrapped the zone can intercept the `callback` by declaring
-   * [ZoneSpec.onIntercept].
+   * `[ZoneSpec.onIntercept]`.
    *
-   * 在包装函数之前，区域可以通过声明[ZoneSpec.onIntercept][ZoneSpec.onIntercept]来截获 `callback`
+   * 在包装函数之前，区域可以通过声明`[ZoneSpec.onIntercept]`来截获 `callback`
    * 。
    *
    * @param callback the function which will be wrapped in the zone.
@@ -330,9 +324,9 @@ interface Zone {
    * 被包装的 API 的唯一调试位置。
    * @returns
    *
-   * {function(): \*} A function which will invoke the `callback` through [Zone.runGuarded].
+   * {function(): \*} A function which will invoke the `callback` through `[Zone.runGuarded]`.
    *
-   * 一个将通过[Zone.runGuarded][Zone.runGuarded]调用 `callback` 的函数。
+   * 一个将通过`[Zone.runGuarded]`调用 `callback` 的函数。
    *
    */
   wrap<F extends Function>(callback: F, source: string): F;
@@ -342,9 +336,9 @@ interface Zone {
    *
    * 调用给定区域中的函数。
    *
-   * The invocation of `callback` can be intercepted by declaring [ZoneSpec.onInvoke].
+   * The invocation of `callback` can be intercepted by declaring `[ZoneSpec.onInvoke]`.
    *
-   * 可以通过声明[ZoneSpec.onInvoke][ZoneSpec.onInvoke]来截获 `callback` 的调用。
+   * 可以通过声明`[ZoneSpec.onInvoke]`来截获 `callback` 的调用。
    *
    * @param callback The function to invoke.
    *
@@ -370,15 +364,15 @@ interface Zone {
    *
    * 调用给定区域中的函数并捕获任何异常。
    *
-   * Any exceptions thrown will be forwarded to [Zone.HandleError].
+   * Any exceptions thrown will be forwarded to `[Zone.HandleError]`.
    *
-   * 抛出的任何异常都将被转发到[Zone.HandleError][Zone.HandleError] 。
+   * 抛出的任何异常都将被转发到`[Zone.HandleError]` 。
    *
-   * The invocation of `callback` can be intercepted by declaring [ZoneSpec.onInvoke]. The
-   * handling of exceptions can be intercepted by declaring [ZoneSpec.handleError].
+   * The invocation of `callback` can be intercepted by declaring `[ZoneSpec.onInvoke]`. The
+   * handling of exceptions can be intercepted by declaring `[ZoneSpec.handleError]`.
    *
-   * 可以通过声明[ZoneSpec.onInvoke][ZoneSpec.onInvoke]来截获 `callback`
-   * 的调用。可以通过声明[ZoneSpec.handleError][ZoneSpec.handleError]来截获异常的处理。
+   * 可以通过声明`[ZoneSpec.onInvoke]`来截获 `callback`
+   * 的调用。可以通过声明`[ZoneSpec.handleError]`来截获异常的处理。
    *
    * @param callback The function to invoke.
    *
@@ -400,9 +394,9 @@ interface Zone {
   runGuarded<T>(callback: Function, applyThis?: any, applyArgs?: any[], source?: string): T;
 
   /**
-   * Execute the Task by restoring the [Zone.currentTask] in the Task's zone.
+   * Execute the Task by restoring the `[Zone.currentTask]` in the Task's zone.
    *
-   * 通过恢复任务区域中的[Zone.currentTask][Zone.currentTask]来执行任务。
+   * 通过恢复任务区域中的`[Zone.currentTask]`来执行任务。
    *
    * @param task to run
    *
@@ -481,11 +475,11 @@ interface Zone {
    *
    * 允许该区域拦截计划任务的取消。
    *
-   * The interception is configured using [ZoneSpec.onCancelTask]. The default canceler invokes
-   * the [Task.cancelFn].
+   * The interception is configured using `[ZoneSpec.onCancelTask]`. The default canceler invokes
+   * the `[Task.cancelFn]`.
    *
-   * 拦截是使用[ZoneSpec.onCancelTask][ZoneSpec.onCancelTask]
-   * 配置的。默认取消器调用[Task.cancelFn][Task.cancelFn] 。
+   * 拦截是使用`[ZoneSpec.onCancelTask]`
+   * 配置的。默认取消器调用`[Task.cancelFn]` 。
    *
    * @param task
    * @returns {any}
@@ -497,11 +491,11 @@ interface ZoneType {
   /**
    * @returns
    *
-   * {Zone} Returns the current [Zone]. The only way to change
-   * the current zone is by invoking a run() method, which will update the current zone for the
-   * duration of the run method callback.
+   * {Zone} Returns the current `[Zone]`. The only way to change
+   * the current zone is by invoking a `run()` method, which will update the current zone for the
+   * duration of the `run` method callback.
    *
-   * 返回当前的[Zone][Zone] 。更改当前区域的唯一方法是调用 run() 方法，该方法将在 run
+   * 返回当前的`[Zone]` 。更改当前区域的唯一方法是调用 `run()` 方法，该方法将在 `run`
    * 方法回调期间更新当前区域。
    *
    */
@@ -646,9 +640,9 @@ interface ZoneSpec {
   name: string;
 
   /**
-   * A set of properties to be associated with Zone. Use [Zone.get] to retrieve them.
+   * A set of properties to be associated with Zone. Use `[Zone.get]` to retrieve them.
    *
-   * 要与 Zone 关联的一组属性。使用[Zone.get][Zone.get]来检索它们。
+   * 要与 Zone 关联的一组属性。使用`[Zone.get]`来检索它们。
    *
    */
   properties?: {[key: string]: any};
@@ -662,17 +656,17 @@ interface ZoneSpec {
    *
    * 当区域被 fork 时，请求会被转发到此方法进行拦截。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param zoneSpec The argument passed into the `fork` method.
    *
@@ -688,17 +682,17 @@ interface ZoneSpec {
    *
    * 允许拦截回调的包装。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param delegate The argument passed into the `wrap` method.
    *
@@ -718,17 +712,17 @@ interface ZoneSpec {
    *
    * 允许拦截回调调用。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param delegate The argument passed into the `run` method.
    *
@@ -756,17 +750,17 @@ interface ZoneSpec {
    *
    * 允许截获错误处理。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param error The argument passed into the `handleError` method.
    *
@@ -782,17 +776,17 @@ interface ZoneSpec {
    *
    * 允许拦截任务调度。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param task The argument passed into the `scheduleTask` method.
    *
@@ -811,17 +805,17 @@ interface ZoneSpec {
    *
    * 允许拦截任务取消。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param task The argument passed into the `cancelTask` method.
    *
@@ -836,17 +830,17 @@ interface ZoneSpec {
    *
    * 任务队列空状态更改的通知。
    *
-   * @param parentZoneDelegate Delegate which performs the parent [ZoneSpec] operation.
+   * @param parentZoneDelegate Delegate which performs the parent `[ZoneSpec]` operation.
    *
-   * 执行父[ZoneSpec][ZoneSpec]操作的委托。
+   * 执行父`[ZoneSpec]`操作的委托。
    *
-   * @param currentZone The current [Zone] where the current interceptor has been declared.
+   * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前[Zone][Zone] 。
+   * 已声明当前拦截器的当前`[Zone]` 。
    *
-   * @param targetZone The [Zone] which originally received the request.
+   * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的[Zone][Zone] 。
+   * 最初收到请求的`[Zone]` 。
    *
    * @param hasTaskState
    */
@@ -952,9 +946,9 @@ type TaskState = 'notScheduled'|'scheduling'|'scheduled'|'running'|'canceling'|'
  */
 interface TaskData {
   /**
-   * A periodic [MacroTask] is such which get automatically rescheduled after it is executed.
+   * A periodic `[MacroTask]` is such which get automatically rescheduled after it is executed.
    *
-   * 周期性的[MacroTask][MacroTask]就是这样的，它会在执行后自动重新调度。
+   * 周期性的`[MacroTask]`就是这样的，它会在执行后自动重新调度。
    *
    */
   isPeriodic?: boolean;
@@ -982,34 +976,34 @@ interface TaskData {
  * 表示使用干净堆栈执行的工作。
  *
  * Tasks are used in Zones to mark work which is performed on clean stack frame. There are three
- * kinds of task. [MicroTask], [MacroTask], and [EventTask].
+ * kinds of task. `[MicroTask]`, `[MacroTask]`, and `[EventTask]`.
  *
- * Zones 中使用任务来标记在干净的堆栈帧上执行的工作。有三种任务。 [MicroTask][MicroTask] 、
- * [MacroTask][MacroTask]和[EventTask][EventTask] 。
+ * Zones 中使用任务来标记在干净的堆栈帧上执行的工作。有三种任务。 `[MicroTask]` 、
+ * `[MacroTask]`和`[EventTask]` 。
  *
- * A JS VM can be modeled as a [MicroTask] queue, [MacroTask] queue, and [EventTask] set.
+ * A JS VM can be modeled as a `[MicroTask]` queue, `[MacroTask]` queue, and `[EventTask]` set.
  *
- * JS VM 可以建模为[MicroTask][MicroTask]队列、
- * [MacroTask][MacroTask]队列和[EventTask][EventTask]集。
+ * JS VM 可以建模为`[MicroTask]`队列、
+ * `[MacroTask]`队列和`[EventTask]`集。
  *
- * - [MicroTask] queue represents a set of tasks which are executing right after the current stack
- *     frame becomes clean and before a VM yield. All [MicroTask]s execute in order of insertion
- *     before VM yield and the next [MacroTask] is executed.
+ * - `[MicroTask]` queue represents a set of tasks which are executing right after the current stack
+ *     frame becomes clean and before a VM yield. All `[MicroTask]`s execute in order of insertion
+ *     before VM yield and the next `[MacroTask]` is executed.
  *
- *   [MicroTask][MicroTask]队列表示一组任务，这些任务正在当前堆栈帧变得干净之后、VM
- *   屈服之前执行。所有[MicroTask 都会][MicroTask]按在 VM yield
- *   之前的插入顺序执行，并执行下一个[MacroTask][MacroTask] 。
+ *   `[MicroTask]`队列表示一组任务，这些任务正在当前堆栈帧变得干净之后、VM
+ *   屈服之前执行。所有`[MicroTask]`都会按在 VM yield
+ *   之前的插入顺序执行，并执行下一个`[MacroTask]` 。
  *
- * - [MacroTask] queue represents a set of tasks which are executed one at a time after each VM
+ * - `[MacroTask]` queue represents a set of tasks which are executed one at a time after each VM
  *     yield. The queue is ordered by time, and insertions can happen in any location.
  *
- *   [MacroTask][MacroTask]队列表示一组任务，这些任务在每个 VM
+ *   `[MacroTask]`队列表示一组任务，这些任务在每个 VM
  *   屈服之后一次执行一个。队列按时间排序，并且插入可以发生在任何位置。
  *
- * - [EventTask] is a set of tasks which can at any time be inserted to the end of the [MacroTask]
+ * - `[EventTask]` is a set of tasks which can at any time be inserted to the end of the `[MacroTask]`
  *   queue. This happens when the event fires.
  *
- *   [EventTask][EventTask]是一组任务，可以随时插入到[MacroTask][MacroTask]队列的末尾。这会在事件触发时发生。
+ *   `[EventTask]`是一组任务，可以随时插入到`[MacroTask]`队列的末尾。这会在事件触发时发生。
  *
  */
 interface Task {
@@ -1039,20 +1033,20 @@ interface Task {
   source: string;
 
   /**
-   * The Function to be used by the VM upon entering the [Task]. This function will delegate to
-   * [Zone.runTask] and delegate to `callback`.
+   * The Function to be used by the VM upon entering the `[Task]`. This function will delegate to
+   * `[Zone.runTask]` and delegate to `callback`.
    *
-   * VM 进入[Task][Task]时要使用的 Function 。此函数将委托给[Zone.runTask][Zone.runTask]并委托给
+   * VM 进入`[Task]`时要使用的 Function 。此函数将委托给`[Zone.runTask]`并委托给
    * `callback` 。
    *
    */
   invoke: Function;
 
   /**
-   * Function which needs to be executed by the Task after the [Zone.currentTask] has been set to
+   * Function which needs to be executed by the Task after the `[Zone.currentTask]` has been set to
    * the current task.
    *
-   * 在[Zone.currentTask][Zone.currentTask]设置为当前任务之后需要由 Task 执行的函数。
+   * 在`[Zone.currentTask]`设置为当前任务之后需要由 Task 执行的函数。
    *
    */
   callback: Function;
@@ -1154,13 +1148,13 @@ const Zone: ZoneType = (function(global: any) {
 
   const checkDuplicate = global[__symbol__('forceDuplicateZoneCheck')] === true;
   if (global['Zone']) {
-    // if global['Zone'] already exists (maybe zone.js was already loaded or
+    // if `global['Zone']` already exists (maybe zone.js was already loaded or
     // some other lib also registered a global object named Zone), we may need
     // to throw an error, but sometimes user may not want this error.
     // For example,
     // we have two web pages, page1 includes zone.js, page2 doesn't.
     // and the 1st time user load page1 and page2, everything work fine,
-    // but when user load page2 again, error occurs because global['Zone'] already exists.
+    // but when user load page2 again, error occurs because `global['Zone']` already exists.
     // so we add a flag to let user choose whether to throw this error or not.
     // By default, if existing Zone is from zone.js, we will not throw the error.
     if (checkDuplicate || typeof global['Zone'].__symbol__ !== 'function') {

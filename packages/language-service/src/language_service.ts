@@ -427,10 +427,10 @@ export class LanguageService {
    *
    * 这是日志输出的示例。
    *
-   * Perf 245  [16:16:39.353] LanguageService#getQuickInfoAtPosition(): {"events":{},"phases":{
+   * Perf 245  `[16:16:39.353]` LanguageService#getQuickInfoAtPosition(): {"events":{},"phases":{
    * "Unaccounted":379,"TtcSymbol":4},"memory":{}}
    *
-   * Perf 245 [16:16:39.353][16:16:39.353]
+   * Perf 245 `[16:16:39.353]`
    * LanguageService#getQuickInfoAtPosition(): {"events":{},"phases":{
    * "Unaccounted":379,"TtcSymbol":4},"memory":{}}
    *

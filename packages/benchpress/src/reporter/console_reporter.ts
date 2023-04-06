@@ -18,7 +18,7 @@ import {formatNum, formatStats, sortedProps} from './util';
 /**
  * A reporter for the console
  *
- * 控制台的记者
+ * 控制台汇报器
  *
  */
 @Injectable()

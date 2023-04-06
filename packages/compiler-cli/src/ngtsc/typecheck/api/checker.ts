@@ -167,12 +167,12 @@ export interface TemplateTypeChecker {
    *
    * Global completions are completions in the global context, as opposed to completions within an
    * existing expression. For example, completing inside a new interpolation expression (`{{|}}`) or
-   * inside a new property binding \`[input]="|" should retrieve global completions, which will
+   * inside a new property binding `[input]="|"` should retrieve global completions, which will
    * include completions from the template's context component, as well as any local references or
    * template variables which are in scope for that expression.
    *
    * 全局自动完成是全局上下文中的自动完成，而不是现有表达式中的自动完成。例如，在新的插值表达式 (
-   * `{{|}}` ) 或新属性绑定 \` [input][input] ="|"
+   * `{{|}}` ) 或新属性绑定 `[input]="|"`
    * 中完成应该检索全局自动完成，这将包括来自模板上下文组件的自动完成，以及该表达式范围内的任何本地引用或模板变量。
    *
    */

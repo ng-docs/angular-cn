@@ -631,10 +631,9 @@ export abstract class BackendService {
    * 'some/api/' ~ \`two/segments'
    *
    * To replace this default method, assign your alternative to your
-   * InMemDbService['parseRequestUrl']
+   * `InMemDbService['parseRequestUrl']`
    *
-   * 要替换此默认方法，请将你的替代方案分配给你的 InMemDbService
-   * ['parseRequestUrl']['parseRequestUrl']
+   * 要替换此默认方法，请将你的替代方案分配给你的 `InMemDbService['parseRequestUrl']`
    *
    */
   protected parseRequestUrl(url: string): ParsedRequestUrl {

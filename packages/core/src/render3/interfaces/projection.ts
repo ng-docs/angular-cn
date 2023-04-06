@@ -53,23 +53,32 @@
  * 例如 SelectorFlags.NOT | SelectorFlags.ELEMENT
  *
  * Example:
+ *
+ * 示例：
+ *
  * Original: `div.foo.bar[attr1=val1][attr2]`
- * Parsed: ['div', 'attr1', 'val1', 'attr2', '', SelectorFlags.CLASS, 'foo', 'bar']
  *
- * 示例： 原始： `div.foo.bar[attr1=val1][attr2]` 解析： ['div', 'attr1', 'val1', 'attr2', '',
- * SelectorFlags.CLASS, 'foo', 'bar']['div', 'attr1', 'val1', 'attr2', '', SelectorFlags.CLASS,
- * 'foo', 'bar']
+ * 原文：`div.foo.bar[attr1=val1][attr2]`
  *
- * Original: 'div[attr1]&#x3A;not(.foo[attr2])
- * Parsed: [
+ * Parsed: `['div', 'attr1', 'val1', 'attr2', '', SelectorFlags.CLASS, 'foo', 'bar']`
+ *
+ * 解析后：`['div', 'attr1', 'val1', 'attr2', '', SelectorFlags.CLASS, 'foo', 'bar']`
+ *
+ *
+ * Original: `'div[attr1]:not(.foo[attr2])`
+ *
+ * 原文: `'div[attr1]:not(.foo[attr2])`
+ *
+ * Parsed:
+ *
+ * 解析后：
+ *
+ * ```
+ * [
  *  'div', 'attr1', '',
  *  SelectorFlags.NOT | SelectorFlags.ATTRIBUTE 'attr2', '', SelectorFlags.CLASS, 'foo'
  * ]
- *
- * 原文： 'div [attr1][attr1] :not(.foo [attr2][attr2] ) 解析： ['div', 'attr1', '',
- * SelectorFlags.NOT | SelectorFlags.ATTRIBUTE 'attr2', '', SelectorFlags.CLASS, 'foo'][ 'div',
- * 'attr1', '', SelectorFlags.NOT | SelectorFlags.ATTRIBUTE 'attr2', '', SelectorFlags.CLASS, 'foo'
- * ]
+ * ```
  *
  * See more examples in node_selector_matcher_spec.ts
  *
@@ -88,11 +97,13 @@ export type CssSelector = (string|SelectorFlags)[];
  *
  * 指令或组件可以有多个选择器。此类型用于指令 defs，因此列表中的任何选择器都将匹配该指令。
  *
- * Original: 'form, [ngForm]'
- * Parsed: \[['form'], ['', 'ngForm', '']]
+ * Original: `'form, [ngForm]'`
  *
- * 原文： 'form, [ngForm][ngForm] ' 解析： \[ ['form']['form'] , ['', 'ngForm', '']['', 'ngForm',
- * ''] ]
+ * 原文：`'form, [ngForm]'`
+ *
+ * Parsed: `[['form'], ['', 'ngForm', '']]`
+ *
+ * 解析后：`[['form'], ['', 'ngForm', '']]`
  *
  */
 export type CssSelectorList = CssSelector[];

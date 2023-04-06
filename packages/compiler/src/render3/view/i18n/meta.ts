@@ -261,16 +261,13 @@ const I18N_ID_SEPARATOR = '@@';
  *
  * 解析 i18n 元，例如：
  *
- * - "@@id",
+ * - `"@@id"`,
  *
- * - "description[@@id]",
- *
- *   “描述[@@id][@@id] ”，
- *
- * - "meaning|description[@@id]"
+ * - `"description[@@id]"`,
+ * - `"meaning|description[@@id]"`
  *   and returns an object with parsed output.
  *
- *   “meaning|description [@@id][@@id] ” 并返回具有解析输出的对象。
+ *   `"meaning|description[@@id]"` 并返回具有解析输出的对象。
  *
  * @param meta String that represents i18n meta
  *

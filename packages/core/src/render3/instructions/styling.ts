@@ -790,11 +790,11 @@ function collectStylingFromTAttrs(
  * The advantage of converting to `KeyValueArray` is that we can perform diff in an input
  * independent
  * way.
- * (ie we can compare `foo bar` to \`['bar', 'baz'] and determine a set of changes which need to be
+ * (ie we can compare `foo bar` to `['bar', 'baz']` and determine a set of changes which need to be
  * applied)
  *
  * 转换为 `KeyValueArray` 的优势是我们可以以与输入无关的方式执行 diff。（即我们可以将 `foo bar` 与
- * \` ['bar', 'baz']['bar', 'baz']进行比较，并确定需要应用的一组更改）
+ * `['bar', 'baz']` 进行比较，并确定需要应用的一组更改）
  *
  * The fact that `KeyValueArray` is sorted is very important because it allows us to compute the
  * difference in linear fashion without the need to allocate any additional data.

@@ -250,9 +250,9 @@ export interface DirectiveDef<T> {
    * first before all class and style values are set. When there is a change in value
    * type (like when classes and styles are introduced) a marker must be used to separate
    * the entries. The marker values themselves are set via entries found in the
-   * [AttributeMarker] enum.
+   * `[AttributeMarker]` enum.
    *
-   * 在设置所有类和风格值之前，必须首先在列表的开头定义所有非类和非风格属性。当值类型发生更改时（例如介绍类和样式时），必须使用标记来分隔条目。标记值本身是通过[AttributeMarker][AttributeMarker]枚举中的条目设置的。
+   * 在设置所有类和风格值之前，必须首先在列表的开头定义所有非类和非风格属性。当值类型发生更改时（例如介绍类和样式时），必须使用标记来分隔条目。标记值本身是通过`[AttributeMarker]`枚举中的条目设置的。
    *
    */
   readonly hostAttrs: TAttributes|null;

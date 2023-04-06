@@ -387,9 +387,9 @@ export type ɵCoerceStrArrToNumArr<S> =
     [];
 
 /**
- * Navigate takes a type T and an array K, and returns the type of T\[K[0]]\[K[1]]\[K[2]]...
+ * Navigate takes a type T and an array K, and returns the type of `T[K[0]][K[1]][K[2]]`...
  *
- * Navigate 接受类型 T 和数组 K，并返回 T\[K [0][0] ]\[K [1][1] ]\[K [2][2] ]...的类型
+ * Navigate 接受类型 T 和数组 K，并返回 `T[K[0]][K[1]][K[2]]`...的类型
  *
  */
 export type ɵNavigate<T, K extends(Array<string|number>)> =
@@ -418,11 +418,11 @@ export type ɵWriteable<T> = {
 /**
  * GetProperty takes a type T and some property names or indices K.
  * If K is a dot-separated string, it is tokenized into an array before proceeding.
- * Then, the type of the nested property at K is computed: T\[K[0]]\[K[1]]\[K[2]]...
+ * Then, the type of the nested property at K is computed: `T[K[0]][K[1]][K[2]]`...
  * This works with both objects, which are indexed by property name, and arrays, which are indexed
  * numerically.
  *
- * GetProperty 接受类型 T 和一些属性名称或索引 K。如果 K 是点号分隔的字符串，则会在继续之前将其标记化为数组。然后，计算 K 处的嵌套属性的类型： T\[K [0][0] ]\[K [1][1] ]\[K [2][2] ]... 这适用于按属性名称索引的对象和按数字索引的数组。
+ * GetProperty 接受类型 T 和一些属性名称或索引 K。如果 K 是点号分隔的字符串，则会在继续之前将其标记化为数组。然后，计算 K 处的嵌套属性的类型： `T[K[0]][K[1]][K[2]]`... 这适用于按属性名称索引的对象和按数字索引的数组。
  *
  * For internal use only.
  *

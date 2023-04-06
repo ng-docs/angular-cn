@@ -47,8 +47,7 @@ export class LCPImageObserver implements OnDestroy {
 
   /**
    * Inits PerformanceObserver and subscribes to LCP events.
-   * Based on <https://web.dev/lcp/#measure-lcp-in-javascript>
-   *
+   * Based on https://web.dev/lcp/#measure-lcp-in-javascript
    */
   private initPerformanceObserver(): PerformanceObserver {
     const observer = new PerformanceObserver((entryList) => {

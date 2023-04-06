@@ -81,19 +81,18 @@ export function generateTypeCtorDeclarationFn(
  *
  * 典型的构造函数是：
  *
+ * ```
  * NgForOf.ngTypeCtor(init: {
  *   ngForOf: ['foo', 'bar'],
  *   ngForTrackBy: null as any,
  *   ngForTemplate: null as any,
  * }); // Infers a type of NgForOf<string>.
- *
- * NgForOf.ngTypeCtor(init: { ngForOf: ['foo', 'bar']['foo', 'bar'] , ngForTrackBy: null as any,
- * ngForTemplate: null as any, }); // 推断 NgForOf 的类型<string>.
+ * ```
  *
  * Any inputs declared on the type for which no property binding is present are assigned a value of
  * type `any`, to avoid producing any type errors for unset inputs.
  *
- * 在不存在属性绑定的类型上声明的任何输入都会被分配为 `any`
+ * 在不存在属性绑定的类型上声明的任何输入都会被赋值为 `any`
  * 类型的值，以避免为未设置的输入产生任何类型错误。
  *
  * Inline type constructors are used when the type being created has bounded generic types which

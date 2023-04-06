@@ -143,13 +143,13 @@ interface BoundStylingEntry {
  *
  *   静态样式/类属性（style="..." 和 class="..."）
  *
- * - Dynamic style/class map bindings ([style]="map" and [class]="map|string")
+ * - Dynamic style/class map bindings (`[style]="map"` and `[class]="map|string"`)
  *
- *   动态样式/类映射绑定（[style][style] ="map" 和[class][class] ="map|string"）
+ *   动态样式/类映射绑定（`[style]="map"` 和 `[class]="map|string"`）
  *
- * - Dynamic style/class property bindings ([style.prop]="exp" and [class.name]="exp")
+ * - Dynamic style/class property bindings (`[style.prop]="exp"` and `[class.name]="exp"`)
  *
- *   动态样式/类属性绑定（[style.prop][style.prop] ="exp" 和[class.name][class.name] ="exp"）
+ *   动态样式/类属性绑定（ `[style.prop]="exp"` 和 `[class.name]="exp"` ）
  *
  * Due to the complex relationship of all of these cases, the instructions generated
  * for these attributes/properties/bindings must be done so in the correct order. The
@@ -166,8 +166,6 @@ interface BoundStylingEntry {
  *   styleProp(...)
  *   classProp(...)
  * }
- *
- * if (createMode) {Style(…) } if (updateMode) { styleMap(…) classMap(…) styleProp(…) classProp(…) }
  *
  * The creation/update methods within the builder class produce these instructions.
  *
@@ -200,23 +198,23 @@ export class StylingBuilder {
    */
   private _classMapInput: BoundStylingEntry|null = null;
   /**
-   * the input for [style] \(if it exists)
+   * the input for \[style] \(if it exists)
    *
-   * [style][style]的输入（如果存在）
+   * \[style]的输入（如果存在）
    *
    */
   private _styleMapInput: BoundStylingEntry|null = null;
   /**
-   * an array of each [style.prop] input
+   * an array of each \[style.prop] input
    *
-   * 每个[style.prop][style.prop]输入的数组
+   * 每个\[style.prop] 输入的数组
    *
    */
   private _singleStyleInputs: BoundStylingEntry[]|null = null;
   /**
-   * an array of each [class.name] input
+   * an array of each \[class.name] input
    *
-   * 每个[class.name][class.name]输入的数组
+   * 每个\[class.name]输入的数组
    *
    */
   private _singleClassInputs: BoundStylingEntry[]|null = null;

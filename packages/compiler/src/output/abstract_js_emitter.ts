@@ -21,10 +21,10 @@ import * as o from './output_ast';
  * `raw` 属性。这通常是使用名为 `__makeTemplateObject(cooked, raw)`
  * 的函数构造的，但它可能并非在所有环境中都可用。
  *
- * This is a JavaScript polyfill that uses \_\_makeTemplateObject when it's available, but otherwise
+ * This is a JavaScript polyfill that uses `__makeTemplateObject` when it's available, but otherwise
  * creates an inline helper with the same functionality.
  *
- * 这是一个 JavaScript polyfill，它在可用时使用 \_\_makeTemplateObject
+ * 这是一个 JavaScript polyfill，它在可用时使用 `__makeTemplateObject`
  * ，但否则会创建一个具有相同特性的内联帮助器。
  *
  * In the inline function, if `Object.defineProperty` is available we use that to attach the `raw`
