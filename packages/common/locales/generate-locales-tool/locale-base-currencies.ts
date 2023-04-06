@@ -38,10 +38,9 @@ export const CURRENCIES_EN: {[code: string]: CurrenciesSymbols | [string | undef
 
 /**
  * Generate a list of currencies to be used as a base for other currencies
- * e.g.: {'ARS': [, '$'], 'AUD': ['A$', '$'], ...}
+ * e.g.: `{'ARS': [, '$'], 'AUD': ['A$', '$'], ...}`
  *
- * 生成要用作其他货币基础的货币列表，例如： {'ARS': [, '$'][, '$'] , 'AUD': ['A$', '$']['A$', '$'] ,
- * ...}
+ * 生成要用作其他货币基础的货币列表，例如：`{'ARS': [, '$'], 'AUD': ['A$', '$'], ...}`
  *
  */
 export function generateBaseCurrencies(localeData: CldrLocaleData) {

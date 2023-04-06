@@ -34,10 +34,9 @@ export function toNumbers(value: string): number[] {
  * 在考虑字典顺序的情况下比较两个正数数组。
  *
  * However - unlike lexicographical order - for arrays of different length we consider:
- * [1, 2, 3] = [1, 2, 3, 0] instead of [1, 2, 3] &lt; [1, 2, 3, 0]
+ * `[1, 2, 3] = [1, 2, 3, 0]` instead of `[1, 2, 3] &lt; [1, 2, 3, 0]`
  *
- * 但是 - 与字典顺序不同 - 对于不同长度的数组，我们考虑： [1, 2, 3][1, 2, 3] = [1, 2, 3, 0][1, 2, 3,
- * 0]而不是[1, 2, 3][1, 2, 3] &lt; [1, 2, 3, 0][1, 2, 3, 0]
+ * 但是 - 与字典顺序不同 - 对于不同长度的数组，我们考虑： `[1, 2, 3] = [1, 2, 3, 0]`而不是 `[1, 2, 3] &lt; [1, 2, 3, 0]`
  *
  * @param a The 'left hand' array in the comparison test
  *

@@ -103,6 +103,10 @@ function extractMetadataFromSingleDecorator(
  * createCtorParametersClassProperty 会创建一个包含降级装饰器信息的静态 'ctorParameters' 属性。
  *
  * The property contains an arrow function that returns an array of object literals of the shape:
+ *
+ * 该属性包含一个箭头函数，该函数会返回一个具有以下形状的对象文字的数组：
+ *
+ * ```
  *     static ctorParameters = () => \[{
  *       type: SomeClass|undefined,  // the type of the param that's decorated, if it's a value.
  *       decorators: \[{
@@ -110,11 +114,7 @@ function extractMetadataFromSingleDecorator(
  *         args: [ARGS],       // the arguments passed to the decorator.
  *       }]
  *     }];
- *
- * 该属性包含一个箭头函数，该函数会返回一个具有以下形状的对象文字的数组： static ctorParameters = ()
- * => \[{ type: SomeClass|undefined, // 被装饰的参数的类型，如果是值。 decorator: \[{ type:
- * DecoratorFn, // 被调用的装饰器的类型。 args: [ARGS][ARGS] , // 传递给装饰器的参数。 }] }];
- *
+ * ```
  */
 function createCtorParametersClassProperty(
     diagnostics: ts.Diagnostic[],

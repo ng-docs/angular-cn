@@ -154,14 +154,12 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  *    state of the execution of these init hooks. This is done by storing and maintaining flags in the
  *    view: the {@link InitPhaseState}, and the index within that phase. They can be seen as a cursor
  *    in the following structure:
- *          \[[onInit1, onInit2], [afterContentInit1], [afterViewInit1, afterViewInit2,
- *    afterViewInit3]] They are are stored as flags in LView[FLAGS].
+ *   `[[onInit1, onInit2], [afterContentInit1], [afterViewInit1, afterViewInit2, afterViewInit3]]`
+ *   They are are stored as flags in LView[FLAGS].
  *
- *    初始化钩子（ngOnInit、ngAfterContentInit、ngAfterViewInit
- *       ）都必须在许多变更检测周期中执行一次，并且只能执行一次。即使某些钩子抛出，或者某些递归触发变更检测周期，也必须是真的。为了解决这个问题，需要跟踪这些初始化钩子的执行状态。这是通过在视图中存储和维护标志来完成的： {@link
- *    InitPhaseState} 和该阶段中的索引。它们可以被视为以下结构中的游标： \[ [onInit1, onInit2][onInit1,
- *    onInit2] , [afterContentInit1][afterContentInit1] , [afterViewInit1, afterViewInit2,
- *    afterViewInit3][afterViewInit1, afterViewInit2, afterViewInit3] ]它们作为标志存储在 LView
+ *    初始化钩子（ngOnInit、ngAfterContentInit、ngAfterViewInit）都必须在许多变更检测周期中执行一次，并且只能执行一次。即使某些钩子抛出，或者某些递归触发变更检测周期，也必须是真的。为了解决这个问题，需要跟踪这些初始化钩子的执行状态。这是通过在视图中存储和维护标志来完成的： {@link
+ *    InitPhaseState} 和该阶段中的索引。它们可以被视为以下结构中的游标：
+ *    `[[onInit1, onInit2], [afterContentInit1], [afterViewInit1, afterViewInit2, afterViewInit3]]` 它们作为标志存储在 LView
  *    [FLAGS][FLAGS]中。
  *
  * 2. Pre-order hooks can be executed in batches, because of the select instruction.
@@ -176,10 +174,9 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  *   下一个要执行的钩子的索引
  *
  * - the number of init hooks already found in the processed part of the  array
- *     They are are stored as flags in LView[PREORDER_HOOK_FLAGS].
+ *     They are are stored as flags in `LView[PREORDER_HOOK_FLAGS]`.
  *
- *   在数组的已处理部分中已经找到的初始化钩子的数量它们作为标志存储在 LView
- *   [PREORDER_HOOK_FLAGS][PREORDER_HOOK_FLAGS]中。
+ *   在数组的已处理部分中已经找到的初始化钩子的数量它们作为标志存储在 `LView[PREORDER_HOOK_FLAGS]` 中。
  *
  */
 

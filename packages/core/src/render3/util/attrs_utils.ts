@@ -23,16 +23,16 @@ import {RElement} from '../interfaces/renderer_dom';
  * 此函数接受两种形式的属性条目：
  *
  * default: (key, value):
- *  attrs = [key1, value1, key2, value2]
  *
- * 默认值：（键，值）： attrs = [key1, value1, key2, value2][key1, value1, key2, value2]
+ * 默认值：(key, value):
+ *
+ *  `attrs = [key1, value1, key2, value2]`
  *
  * namespaced: (NAMESPACE_MARKER, uri, name, value)
- *  attrs = [NAMESPACE_MARKER, uri, name, value, NAMESPACE_MARKER, uri, name, value]
  *
- * 命名空间： (NAMESPACE_MARKER, uri, name, value) attrs = [NAMESPACE_MARKER, uri, name, value,
- * NAMESPACE_MARKER, uri, name, value][NAMESPACE_MARKER, uri, name, value, NAMESPACE_MARKER, uri,
- * name, value]
+ * 加命名空间后：(NAMESPACE_MARKER, uri, name, value)
+ *
+ *  `attrs = [NAMESPACE_MARKER, uri, name, value, NAMESPACE_MARKER, uri, name, value]`
  *
  * The `attrs` array can contain a mix of both the default and namespaced entries.
  * The "default" values are set without a marker, but if the function comes across
