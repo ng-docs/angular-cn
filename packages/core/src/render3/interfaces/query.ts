@@ -144,7 +144,7 @@ export interface TQuery {
    * - \-1 - indicates that we need to read a default value based on the node type (TemplateRef for
    *     ng-template and ElementRef for other elements);
    *
-   *   -1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef ，其他元素为 ElementRef
+   *   \-1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef ，其他元素为 ElementRef
    *   ）；
    *
    * - a positive number - index of an injectable to be read from the element injector.

@@ -210,8 +210,9 @@ export function ɵɵtextInterpolate3(
  * itself, so that it may be chained.
  *
  * 本身，以便它可以被链接起来。
- *
  * @see ɵɵtextInterpolateV
+ *
+ * 文本插值 V【模糊翻译】
  *
  * ɵɵtextInterplateV
  *

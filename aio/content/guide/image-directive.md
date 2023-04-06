@@ -433,9 +433,9 @@ The base URL for your image assets should be passed to the provider factory as a
 
 图片资产的基本 URL 应作为参数传递给提供者工厂。对于大多数网站，此基本 URL 应匹配以下模式之一：
 
-* <https://yoursite.yourcdn.com>
-* <https://subdomain.yoursite.com>
-* <https://subdomain.yourcdn.com/yoursite>
+* https://yoursite.yourcdn.com
+* https://subdomain.yoursite.com
+* https://subdomain.yourcdn.com/yoursite
 
 You can learn more about the base URL structure in the docs of a corresponding CDN provider.
 

@@ -78,8 +78,8 @@ For example, your `myBuilder` folder could contain the following files.
 | `src/schema.json`        | 构建器输入选项的定义。                                                                       |
 | `builders.json`          | Builders definition.                                                                         |
 | `builders.json`          | 测试配置。                                                                                   |
-| `package.json`           | Dependencies. See <https://docs.npmjs.com/files/package.json>.                               |
-| `package.json`           | 依赖包。参阅 <https://docs.npmjs.com/files/package.json>。                                   |
+| `package.json`           | Dependencies. See https://docs.npmjs.com/files/package.json.                                 |
+| `package.json`           | 依赖包。参阅 https://docs.npmjs.com/files/package.json。                                     |
 | `tsconfig.json`          | [TypeScript configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html). |
 | `tsconfig.json`          | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。     |
 

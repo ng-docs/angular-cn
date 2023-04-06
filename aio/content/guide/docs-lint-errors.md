@@ -262,11 +262,11 @@ The following table has some common words detected by this type of message and s
 <!-- vale Angular.WriteGood_TooWordy = NO -->
 
 | `Too-wordy` word     | Simpler replacement   |
-|:---------------------|:----------------------|
-| `Too-wordy` 单词       | 简单更换为                 |
+| :------------------- | :-------------------- |
+| `Too-wordy` 单词     | 简单更换为            |
 | `accelerate`         | `speed up`            |
 | `accomplish`         | `perform` or `finish` |
-| `accomplish`         | `perform` 或 `finish`  |
+| `accomplish`         | `perform` 或 `finish` |
 | `acquire`            | `get`                 |
 | `additional`         | `more`                |
 | `adjustment`         | `change`              |
@@ -279,7 +279,7 @@ The following table has some common words detected by this type of message and s
 | `have a tendency to` | `tend to`             |
 | `in addition`        | `furthermore`         |
 | `modify`             | `change` or `update`  |
-| `modify`             | `change` 或 `update`   |
+| `modify`             | `change` 或 `update`  |
 | `monitor`            | `observe`             |
 | `necessitate`        | `require`             |
 | `one particular`     | `one`                 |

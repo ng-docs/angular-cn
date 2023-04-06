@@ -145,6 +145,9 @@ export const enum TNodeProviderIndexes {
 /**
  * A set of marker values to be used in the attributes arrays. These markers indicate that some
  * items are not regular attributes and the processing should be adapted accordingly.
+ *
+ * 要在属性数组中使用的一组标记值。这些标记表明某些条目不是常规属性，应相应地调整处理。
+ *
  */
 export const enum AttributeMarker {
   /**
@@ -160,13 +163,20 @@ export const enum AttributeMarker {
    * Marker indicates that the following 3 values in the attributes array are:
    * namespaceUri, attributeName, attributeValue
    * in that order.
+   *
+   * 标记表明 properties 数组中的以下 3 个值依次是： namespaceUri、attributeName、attributeValue 。
+   *
    */
   NamespaceURI = 0,
 
   /**
    * Signals class declaration.
    *
+   * 信号类声明。
+   *
    * Each value following `Classes` designates a class name to include on the element.
+   *
+   * `Classes` 后面的每个值都指定要包含在元素中的类名。
    *
    * ## Example:
    *
@@ -182,6 +192,8 @@ export const enum AttributeMarker {
    *
    * the generated code is:
    *
+   * 生成的代码是：
+   *
    * ```
    * var _c1 = [AttributeMarker.Classes, 'foo', 'bar', 'baz'];
    * ```
@@ -192,8 +204,12 @@ export const enum AttributeMarker {
   /**
    * Signals style declaration.
    *
+   * 信号风格声明。
+   *
    * Each pair of values following `Styles` designates a style name and value to include on the
    * element.
+   *
+   * `Styles` 后面的每对值都指定要包含在元素中的样式名称和值。
    *
    * ## Example:
    *
@@ -209,6 +225,8 @@ export const enum AttributeMarker {
    *
    * the generated code is:
    *
+   * 生成的代码是：
+   *
    * ```
    * var _c1 = [AttributeMarker.Styles, 'width', '100px', 'height'. '200px', 'color', 'red'];
    * ```
@@ -219,7 +237,11 @@ export const enum AttributeMarker {
   /**
    * Signals that the following attribute names were extracted from input or output bindings.
    *
+   * 表明以下属性名称是从输入或输出绑定中提取的。
+   *
    * For example, given the following HTML:
+   *
+   * 例如，给定以下 HTML：
    *
    * ```
    * <div moo="car" [foo]="exp" (bar)="doSth()">
@@ -227,22 +249,31 @@ export const enum AttributeMarker {
    *
    * the generated code is:
    *
+   * 生成的代码是：
+   *
    * ```
    * var _c1 = ['moo', 'car', AttributeMarker.Bindings, 'foo', 'bar'];
    * ```
+   *
    */
   Bindings = 3,
 
   /**
    * Signals that the following attribute names were hoisted from an inline-template declaration.
    *
+   * 表明以下属性名称是从内联模板声明中提升的。
+   *
    * For example, given the following HTML:
+   *
+   * 例如，给定以下 HTML：
    *
    * ```
    * <div *ngFor="let value of values; trackBy:trackBy" dirA [dirB]="value">
    * ```
    *
    * the generated code for the `template()` instruction would include:
+   *
+   * 为 `template()` 指令生成的代码将包括：
    *
    * ```
    * ['dirA', '', AttributeMarker.Bindings, 'dirB', AttributeMarker.Template, 'ngFor', 'ngForOf',
@@ -252,9 +283,12 @@ export const enum AttributeMarker {
    * while the generated code for the `element()` instruction inside the template function would
    * include:
    *
+   * 而模板函数中 `element()` 指令的生成代码将包括：
+   *
    * ```
    * ['dirA', '', AttributeMarker.Bindings, 'dirB']
    * ```
+   *
    */
   Template = 4,
 
@@ -262,7 +296,11 @@ export const enum AttributeMarker {
    * Signals that the following attribute is `ngProjectAs` and its value is a parsed
    * `CssSelector`.
    *
+   * 表明以下属性是 `ngProjectAs` ，其值是解析后的 `CssSelector` 。
+   *
    * For example, given the following HTML:
+   *
+   * 例如，给定以下 HTML：
    *
    * ```
    * <h1 attr="value" ngProjectAs="[title]">
@@ -270,22 +308,31 @@ export const enum AttributeMarker {
    *
    * the generated code for the `element()` instruction would include:
    *
+   * 为 `element()` 指令生成的代码将包括：
+   *
    * ```
    * ['attr', 'value', AttributeMarker.ProjectAs, ['', 'title', '']]
    * ```
+   *
    */
   ProjectAs = 5,
 
   /**
    * Signals that the following attribute will be translated by runtime i18n
    *
+   * 表明以下属性将由运行时 i18n 翻译的信号
+   *
    * For example, given the following HTML:
+   *
+   * 例如，给定以下 HTML：
    *
    * ```
    * <div moo="car" foo="value" i18n-foo [bar]="binding" i18n-bar>
    * ```
    *
    * the generated code is:
+   *
+   * 生成的代码是：
    *
    * ```
    * var _c1 = ['moo', 'car', AttributeMarker.I18n, 'foo', 'bar'];
@@ -385,6 +432,8 @@ export interface TNode {
    * `<span>` itself.
    *
    * Pseudo code:
+   *
+   * 伪代码：【模糊翻译】
    *
    * ```
    *   if (insertBeforeIndex === null) {
@@ -716,12 +765,17 @@ export interface TNode {
    * ```
    *
    * In the above case:
-   * - `color: lowest` is stored with `ɵɵstyleProp('color', ctx.exp);` instruction
-   * -  `color: highest` is the residual and is stored here.
    *
-   * - `undefined': not initialized.
+   * - `color: lowest` is stored with `ɵɵstyleProp('color', ctx.exp);` instruction
+   *
+   * - `color: highest` is the residual and is stored here.
+   *
+   * - `undefined`: not initialized.
+   *
    * - `null`: initialized but `styles` is `null`
+   *
    * - `KeyValueArray`: parsed version of `styles`.
+   *
    */
   residualStyles: KeyValueArray<any>|undefined|null;
 
@@ -794,6 +848,9 @@ export interface TNode {
 
 /**
  * See `TNode.insertBeforeIndex`
+ *
+ * 请参阅 `TNode.insertBeforeIndex`
+ *
  */
 export type InsertBeforeIndex = null|number|number[];
 

@@ -64,7 +64,6 @@
  *
  * 解析后：`['div', 'attr1', 'val1', 'attr2', '', SelectorFlags.CLASS, 'foo', 'bar']`
  *
- *
  * Original: `'div[attr1]:not(.foo[attr2])`
  *
  * 原文: `'div[attr1]:not(.foo[attr2])`

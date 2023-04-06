@@ -9,6 +9,8 @@
 /**
  * Base URL for the error details page.
  *
+ * 错误详细信息页面的基本 URL。
+ *
  * Keep this constant in sync across:
  *
  * - packages/compiler-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts

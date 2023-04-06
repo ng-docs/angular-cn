@@ -587,7 +587,10 @@ export class NgOptimizedImage implements OnInit, OnChanges, OnDestroy {
   }
 }
 
-/***** Helpers *****/
+/**
+ * \*\* Helpers
+ *
+ */
 
 /**
  * Convert input value to integer.
@@ -614,7 +617,10 @@ function processConfig(config: ImageConfig): ImageConfig {
   return Object.assign({}, defaultConfig, config, sortedBreakpoints);
 }
 
-/***** Assert functions *****/
+/**
+ * \*\* Assert functions
+ *
+ */
 
 /**
  * Verifies that there is no `src` set on a host element.

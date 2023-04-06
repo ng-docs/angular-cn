@@ -149,8 +149,19 @@ declare global {
    *   **传递估算**： `$localize` 标签是一个运行时函数，它只是估算原始模板文字字符串，而不对各个部分应用任何翻译。此版本在开发期间或无需翻译本地化模板文字的地方使用。
    *
    * @param messageParts a collection of the static parts of the template string.
+   *
+   * 模板字符串的静态部分的集合。
+   *
    * @param expressions a collection of the values of each placeholder in the template string.
-   * @returns the translated string, with the `messageParts` and `expressions` interleaved together.
+   *
+   * 模板字符串中每个占位符的值的集合。
+   *
+   * @returns
+   *
+   * the translated string, with the `messageParts` and `expressions` interleaved together.
+   *
+   * 翻译后的字符串，`messageParts` 和 `expressions` 交错在一起。
+   *
    */
   const $localize: ɵLocalizeFn;
 }

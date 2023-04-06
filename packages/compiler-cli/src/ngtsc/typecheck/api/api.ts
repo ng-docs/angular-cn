@@ -116,8 +116,13 @@ export interface TypeCheckingConfig {
    * directive or component is receiving the binding. If set to `true`, both sides of the assignment
    * are checked.
    *
+   * 例如，如果 this 为 `false` ，则表达式 `[input]="expr"` 将进行 `expr`
+   * 类型检查，但不会将结果类型分配给正在接收绑定的任何指令或组件的 `input` 属性。如果设置为 `true`
+   * ，则会检查赋值的两边。
+   *
    * This flag only affects bindings to components/directives. Bindings to the DOM are checked if
    * `checkTypeOfDomBindings` is set.
+   *
    */
   checkTypeOfInputBindings: boolean;
 
@@ -132,6 +137,8 @@ export interface TypeCheckingConfig {
   /**
    * Whether to use strict null types for input bindings for directives.
    *
+   * 是否对指令的输入绑定使用严格的 null 类型。
+   *
    * If this is `true`, applications that are compiled with TypeScript's `strictNullChecks` enabled
    * will produce type errors for bindings which can evaluate to `undefined` or `null` where the
    * inputs's type does not include `undefined` or `null` in its type. If set to `false`, all
@@ -140,11 +147,14 @@ export interface TypeCheckingConfig {
    * compiled with `strictNullChecks` enabled.
    *
    * If `checkTypeOfInputBindings` is set to `false`, this flag has no effect.
+   *
    */
   strictNullInputBindings: boolean;
 
   /**
    * Whether to check text attributes that happen to be consumed by a directive or component.
+   *
+   * 是否检查恰好被指令或组件使用的文本属性。
    *
    * For example, in a template containing `<input matInput disabled>` the `disabled` attribute ends
    * up being consumed as an input with type `boolean` by the `matInput` directive. At runtime, the
@@ -152,7 +162,13 @@ export interface TypeCheckingConfig {
    * without a value, so with this flag set to `true`, an error would be reported. If set to
    * `false`, text attributes will never report an error.
    *
+   * 例如，在包含 `<input matInput disabled>` 的模板中，`disabled` 属性最终会被 `matInput` 指令作为
+   * `boolean`
+   * 类型的输入使用。在运行时，输入将设置为属性的字符串值，对于没有值的属性，这是一个空字符串，因此在此标志设置为
+   * `true` 的情况下，将报告错误。如果设置为 `false` ，则文本属性将永远不会报告错误。
+   *
    * Note that if `checkTypeOfInputBindings` is set to `false`, this flag has no effect.
+   *
    */
   checkTypeOfAttributes: boolean;
 
@@ -172,9 +188,15 @@ export interface TypeCheckingConfig {
    * Whether to infer the type of the `$event` variable in event bindings for directive outputs or
    * animation events.
    *
+   * 是在指令输出或动画事件的事件绑定中推断 `$event` 变量的类型。
+   *
    * If this is `true`, the type of `$event` will be inferred based on the generic type of
    * `EventEmitter`/`Subject` of the output. If set to `false`, the `$event` variable will be of
    * type `any`.
+   *
+   * 如果为 `true` ，则 `$event` 的类型将根据输出的 `EventEmitter` / `Subject`
+   * 的泛型类型来推断。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
+   *
    */
   checkTypeOfOutputEvents: boolean;
 
@@ -189,9 +211,15 @@ export interface TypeCheckingConfig {
   /**
    * Whether to infer the type of the `$event` variable in event bindings to DOM events.
    *
+   * 是否在到 DOM 事件的事件绑定中推断 `$event` 变量的类型。
+   *
    * If this is `true`, the type of `$event` will be inferred based on TypeScript's
    * `HTMLElementEventMap`, with a fallback to the native `Event` type. If set to `false`, the
    * `$event` variable will be of type `any`.
+   *
+   * 如果为 `true` ，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到本机
+   * `Event` 类型。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
+   *
    */
   checkTypeOfDomEvents: boolean;
 
@@ -208,9 +236,12 @@ export interface TypeCheckingConfig {
   /**
    * Whether to infer the type of local references.
    *
+   * 是否推断本地引用的类型。
+   *
    * If this is `true`, the type of a `#ref` variable that points to a directive or `TemplateRef` in
    * the template will be inferred correctly. If set to `false`, the type of `ref` for will be
    * `any`.
+   *
    */
   checkTypeOfNonDomReferences: boolean;
 
@@ -248,9 +279,15 @@ export interface TypeCheckingConfig {
   /**
    * Whether to use a strict type for null-safe navigation operations.
    *
+   * 是否将严格类型用于 null 安全的导航操作。
+   *
    * If this is `false`, then the return type of `a?.b` or `a?()` will be `any`. If set to `true`,
    * then the return type of `a?.b` for example will be the same as the type of the ternary
    * expression `a != null ? a.b : a`.
+   *
+   * 如果这是 `false` ，则 `a?.b` 或 `a?()` 的返回类型将是 `any` 。如果设置为 `true` ，则 `a?.b`
+   * 的返回类型将与三元表达式 `a != null ? ab : a` 的类型相同 `a != null ? ab : a` 。
+   *
    */
   strictSafeNavigationTypes: boolean;
 

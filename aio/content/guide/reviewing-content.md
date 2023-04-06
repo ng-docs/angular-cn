@@ -29,6 +29,7 @@ Perform these steps in a browser.
 在浏览器中执行这些步骤。
 
 1. [Find a topic to review](#find-topics-to-review) by:
+
    1. Finding a topic with a **Last reviewed** date that is six months or more in the past.
 
       查找**上次查看**日期是过去六个月或更长时间的主题。
@@ -40,6 +41,7 @@ Perform these steps in a browser.
    1. Finding a topic that you've read recently.
 
       查找你最近读过的主题。
+
 1. Review the topic for errors or inaccuracies.
 
    查看主题中的错误或不准确之处。
@@ -197,12 +199,12 @@ For example:
 
 比如：
 
-| Review date        | `@reviewed` tag        | Resulting text displayed in the docs       |
-| :----------------- | :--------------------- | :----------------------------------------- |
-| 审核日期           | `@reviewed` 标签       | 文档中显示的结果文本                       |
-| January 12, 2023   | `@reviewed 2023-01-12` | *Last reviewed on Thu Jan 12, 2023*        |
-| 2023 年 1 月 12 日 | `@reviewed 2023-01-12` | *最后审核时间：2023 年 1 月 12 日星期四*   |
-| November 3, 2022   | `@reviewed 2022-11-03` | *Last reviewed on Fri Nov 03, 2022*        |
+| Review date        | `@reviewed` tag        | Resulting text displayed in the docs     |
+| :----------------- | :--------------------- | :--------------------------------------- |
+| 审核日期           | `@reviewed` 标签       | 文档中显示的结果文本                     |
+| January 12, 2023   | `@reviewed 2023-01-12` | *Last reviewed on Thu Jan 12, 2023*      |
+| 2023 年 1 月 12 日 | `@reviewed 2023-01-12` | *最后审核时间：2023 年 1 月 12 日星期四* |
+| November 3, 2022   | `@reviewed 2022-11-03` | *Last reviewed on Fri Nov 03, 2022*      |
 
 ## Reviewing and updating a topic
 

@@ -37,6 +37,9 @@ import {FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, ON_DESTROY_HOOKS, PARENT,
 /**
  * Returns `RNode`.
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
+ *
+ * `RNode`、`LView`、`LContainer` 的包装值
+ *
  */
 export function unwrapRNode(value: RNode|LView|LContainer): RNode {
   while (Array.isArray(value)) {
@@ -48,6 +51,9 @@ export function unwrapRNode(value: RNode|LView|LContainer): RNode {
 /**
  * Returns `LView` or `null` if not found.
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
+ *
+ * `RNode`、`LView`、`LContainer` 的包装值
+ *
  */
 export function unwrapLView(value: RNode|LView|LContainer): LView|null {
   while (Array.isArray(value)) {
@@ -168,9 +174,9 @@ export function resetPreOrderHookFlags(lView: LView) {
  * Updates the `TRANSPLANTED_VIEWS_TO_REFRESH` counter on the `LContainer` as well as the parents
  * whose
  *
- *  1. counter goes from 0 to 1, indicating that there is a new child that has a view to refresh
- *  or
- *  2. counter goes from 1 to 0, indicating there are no more descendant views to refresh
+ * 1. counter goes from 0 to 1, indicating that there is a new child that has a view to refresh
+ *    or
+ * 1. counter goes from 1 to 0, indicating there are no more descendant views to refresh
  *
  */
 export function updateTransplantedViewCount(lContainer: LContainer, amount: 1|- 1) {

@@ -61,7 +61,13 @@ import {handleUnknownPropertyError, isPropertyValid, matchingSchemas} from './el
  * `HostBindingsFunction`s associated with the current `LView`.
  *
  * @param tView Current `TView`.
+ *
+ * 当前 `TView`。【模糊翻译】
+ *
  * @param lView Current `LView`.
+ *
+ * 当前的 `LView`。【模糊翻译】
+ *
  */
 export function processHostBindingOpCodes(tView: TView, lView: LView): void {
   const hostBindingOpCodes = tView.hostBindingOpCodes;
@@ -787,6 +793,9 @@ export function storeCleanupWithContext(
  *
  * @param tView `TView` to which this `TNode` belongs
  * @param tParent Parent `TNode`
+ *
+ * 父 `TNode`【模糊翻译】
+ *
  * @param type The type of the node
  * @param index The index of the TNode in TView.data, adjusted for HEADER_OFFSET
  * @param tagName The tag name of the node
@@ -1953,6 +1962,9 @@ export function handleError(lView: LView, error: any): void {
  * Set the inputs of directives at the current node to corresponding value.
  *
  * @param tView The current TView
+ *
+ * 当前的 TView
+ *
  * @param lView the `LView` which contains the directives.
  * @param inputs mapping between the public "input" name and privately-known,
  *        possibly minified, property names to write to.

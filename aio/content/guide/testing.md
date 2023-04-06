@@ -23,8 +23,11 @@ Before writing tests for your Angular application, you should have a basic under
   [Angular 的基本原理](guide/architecture)
 
 * [JavaScript](https://javascript.info/)
+
 * HTML
+
 * CSS
+
 * [Angular CLI](cli)
 
 The testing documentation offers tips and techniques for unit and integration testing Angular applications through a sample application created with the [Angular CLI](cli).

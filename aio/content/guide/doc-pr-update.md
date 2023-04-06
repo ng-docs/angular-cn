@@ -268,7 +268,7 @@ Perform these steps from a command-line tool on your local computer.
 
    查看编辑器中的命令并更改它们以符合你的意图。
 
-   The commands are processed from top to bottom, that is from oldest commit to the most recent.\
+   The commands are processed from top to bottom, that is from oldest commit to the most recent.
    To merge all commits in this branch for this pull request, change the `pick` commands to `squash` for all commits except for the first one.
    This text shows how this looks for this example.
 

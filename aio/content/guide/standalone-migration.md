@@ -62,7 +62,7 @@ The migration has the following modes:
 1. Convert declarations to standalone.
 2. Remove unnecessary NgModules.
 3. Switch to standalone bootstrapping API.
-You should run these migrations in the order given.
+   You should run these migrations in the order given.
 
 ### Convert declarations to standalone
 

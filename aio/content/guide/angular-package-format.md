@@ -110,21 +110,21 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 此表描述了 `node_modules/@angular/core` 下的文件布局，注释为描述文件和目录的用途：
 
 | Files                                                                                                             | Purpose                                                                                                                                                                                                        |
-| :---------------------------------------------------------------------------------------------------------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 文件                                                                                                              | 用途                                                                                                                                                                                                             |
+| :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 文件                                                                                                              | 用途                                                                                                                                                                                                           |
 | `README.md`                                                                                                       | Package README, used by npmjs web UI.                                                                                                                                                                          |
-| `README.md`                                                                                                       | 包 README，由 npmjs web UI 使用。                                                                                                                                                                                    |
+| `README.md`                                                                                                       | 包 README，由 npmjs web UI 使用。                                                                                                                                                                              |
 | `package.json`                                                                                                    | Primary `package.json`, describing the package itself as well as all available entrypoints and code formats. This file contains the "exports" mapping used by runtimes and tools to perform module resolution. |
-| `package.json`                                                                                                    | 主要的 `package.json`，描述包本身以及所有可用的入口点和代码格式。此文件包含供运行时使用的 `"exports"` 映射和一些用于执行模块解析的工具。                                                                                                                             |
+| `package.json`                                                                                                    | 主要的 `package.json`，描述包本身以及所有可用的入口点和代码格式。此文件包含供运行时使用的 `"exports"` 映射和一些用于执行模块解析的工具。                                                                       |
 | `index.d.ts`                                                                                                      | Bundled `.d.ts` for the primary entrypoint `@angular/core`.                                                                                                                                                    |
-| `index.d.ts`                                                                                                      | 主入口点 `@angular/core` 捆绑的 `.d.ts`。                                                                                                                                                                              |
+| `index.d.ts`                                                                                                      | 主入口点 `@angular/core` 捆绑的 `.d.ts`。                                                                                                                                                                      |
 | `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                               | Tree of `@angular/core` sources in unflattened ES2022 format.                                                                                                                                                  |
 | `esm2022/testing/`                                                                                                | Tree of the `@angular/core/testing` entrypoint in unflattened ES2022 format.                                                                                                                                   |
-| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened \(FESM\) ES2022 format, along with source maps.                                                                                                                          |
+| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2022 format, along with source maps.                                                                                                                            |
 | `testing/`                                                                                                        | Directory representing the "testing" entrypoint.                                                                                                                                                               |
-| `testing/`                                                                                                        | 代表 `testing` 入口点的目录。                                                                                                                                                                                           |
+| `testing/`                                                                                                        | 代表 `testing` 入口点的目录。                                                                                                                                                                                  |
 | `testing/index.d.ts`                                                                                              | Bundled `.d.ts` for the `@angular/core/testing` entrypoint.                                                                                                                                                    |
-| `testing/index.d.ts`                                                                                              | 为 `@angular/core/testing` 入口点打包的 `.d.ts`。                                                                                                                                                                      |
+| `testing/index.d.ts`                                                                                              | 为 `@angular/core/testing` 入口点打包的 `.d.ts`。                                                                                                                                                              |
 
 ## `package.json`
 
@@ -205,14 +205,14 @@ For each entrypoint, the available formats are:
 
 主要看 `"."` 和 `"./testing"` 这两个键，它们分别定义了 `@angular/core` 主要入口点和 `@angular/core/testing` 次要入口点的可用代码格式。对于每个入口点，可用的格式为：
 
-| Formats                   | Details                                                                                                                                                                           |
-|:--------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 格式                        | 详情                                                                                                                                                                                |
-| Typings \(`.d.ts` files\) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
-| 类型定义（`.d.ts` 文件）          | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。                                                                                                                                                 |
-| `es2022`                  | ES2022 code flattened into a single source file.                                                                                                                                  |
-| `esm2022`                 | ES2022 code in unflattened source files \(this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details\). |
-| `default`                 | ES2022 code flattened into a single source.                                                                                                                                       |
+| Formats                  | Details                                                                                                                                                                         |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 格式                     | 详情                                                                                                                                                                            |
+| Typings (`.d.ts` files)  | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                         |
+| 类型定义（`.d.ts` 文件） | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。                                                                                                                                  |
+| `es2022`                 | ES2022 code flattened into a single source file.                                                                                                                                |
+| `esm2022`                | ES2022 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
+| `default`                | ES2022 code flattened into a single source.                                                                                                                                     |
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 
@@ -419,7 +419,7 @@ To generate a flattened ES Module index file, use the following configuration op
 
 </code-example>
 
-Once the index file \(for example, `my-ui-lib.js`\) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
+Once the index file (for example, `my-ui-lib.js`) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
 
 一旦 ngc 生成了索引文件（比如 `my-ui-lib.js`），打包器和优化器（如 Rollup）就可用于生成扁平化的 ESM 文件。
 

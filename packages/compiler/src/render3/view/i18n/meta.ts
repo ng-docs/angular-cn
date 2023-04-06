@@ -264,6 +264,7 @@ const I18N_ID_SEPARATOR = '@@';
  * - `"@@id"`,
  *
  * - `"description[@@id]"`,
+ *
  * - `"meaning|description[@@id]"`
  *   and returns an object with parsed output.
  *
@@ -272,13 +273,11 @@ const I18N_ID_SEPARATOR = '@@';
  * @param meta String that represents i18n meta
  *
  * 表示 i18n 元的字符串
- *
  * @returns
  *
  * Object with id, meaning and description fields
  *
  * 具有 id、meaning 和 description 字段的对象
- *
  */
 export function parseI18nMeta(meta: string = ''): I18nMeta {
   let customId: string|undefined;

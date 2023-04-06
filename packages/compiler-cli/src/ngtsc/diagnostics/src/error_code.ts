@@ -444,6 +444,8 @@ export enum ErrorCode {
    *
    * When the type of foo doesn't include `null` or `undefined`.
    *
+   * 当 foo 的类型不包括 `null` 或 `undefined` 时。
+   *
    */
   OPTIONAL_CHAIN_NOT_NULLABLE = 8107,
 

@@ -158,6 +158,8 @@ export function arrayInsert2(array: any[], index: number, value1: any, value2: a
  *
  * NOTE:
  *
+ * 注意：
+ *
  * - This uses binary search algorithm for fast removals.
  *
  * @param array A sorted array to binary search.
@@ -169,7 +171,6 @@ export function arrayInsert2(array: any[], index: number, value1: any, value2: a
  * - positive index if value found.
  * - negative index if value not found. (`~index` to get the value where it should have been
  *   located)
- *
  */
 export function arrayIndexOfSorted(array: string[], value: string): number {
   return _arrayIndexOfSorted(array, value, 0);
@@ -194,6 +195,8 @@ export interface KeyValueArray<VALUE> extends Array<VALUE|string> {
 
 /**
  * Set a `value` for a `key`.
+ *
+ * 为 `key` 设置 `value` 。
  *
  * @param keyValueArray to modify.
  * @param key The key to locate or create.
@@ -277,6 +280,8 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  *
  * NOTE:
  *
+ * 注意：
+ *
  * - This uses binary search algorithm for fast removals.
  *
  * @param array A sorted array to binary search.
@@ -286,7 +291,6 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  * - `0` means look at every location
  * - `1` means only look at every other (even) location (the odd locations are to be ignored as
  *       they are values.)
- *
  * @returns
  *
  * index of the value.
@@ -294,7 +298,6 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  * - positive index if value found.
  * - negative index if value not found. (`~index` to get the value where it should have been
  *   inserted)
- *
  */
 function _arrayIndexOfSorted(array: string[], value: string, shift: number): number {
   ngDevMode && assertEqual(Array.isArray(array), true, 'Expecting an array');

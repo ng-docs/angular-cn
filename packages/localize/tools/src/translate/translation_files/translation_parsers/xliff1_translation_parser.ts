@@ -22,9 +22,6 @@ import {addErrorsToBundle, addParseDiagnostic, addParseError, canParseXml, getAt
  * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
  * https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html
  *
- * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
- * [https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html](https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html)
- *
  * @see Xliff1TranslationSerializer
  * @publicApi used by CLI
  */

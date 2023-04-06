@@ -156,6 +156,9 @@ export function replaceImport(
  * that represents a given named imports.
  *
  * @param node Node that contains the imports.
+ *
+ * 包含导入的节点。
+ *
  * @param symbol Symbol that should be removed.
  * @returns An updated node (ts.NamedImports).
  */

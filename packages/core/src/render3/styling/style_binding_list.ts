@@ -141,26 +141,27 @@ import {getTView} from '../state';
  * Notice that the bindings are inserted in the order of execution, but the `TView.data` allows
  * us to traverse them in the order of priority.
  *
- * |Idx|`TView.data`|`LView`          | Notes
- * |---|------------|-----------------|--------------
- * |...|            |                 |
- * |10 |`null`      |`{color: '#001'}`| `ɵɵstyleMap('color', {color: '#001'})`
- * |11 |`30 | 12`   | ...             |
- * |12 |`color`     |`'#002'`         | `ɵɵstyleProp('color', '#002')`
- * |13 |`10 | 0`    | ...             |
- * |...|            |                 |
- * |20 |`null`      |`{color: '#003'}`| `ɵɵstyleMap('color', {color: '#003'})`
- * |21 |`0 | 22`    | ...             |
- * |22 |`color`     |`'#004'`         | `ɵɵstyleProp('color', '#004')`
- * |23 |`20 | 24`   | ...             |
- * |24 |`null`      |`{color: '#005'}`| `ɵɵstyleMap('color', {color: '#005'})`
- * |25 |`22 | 26`   | ...             |
- * |26 |`color`     |`'#006'`         | `ɵɵstyleProp('color', '#006')`
- * |27 |`24 | 28`   | ...             |
- * |28 |`null`      |`{color: '#007'}`| `ɵɵstyleMap('color', {color: '#007'})`
- * |29 |`26 | 30`   | ...             |
- * |30 |`color`     |`'#008'`         | `ɵɵstyleProp('color', '#008')`
- * |31 |`28 | 10`   | ...             |
+ * | Idx | `TView.data` | `LView`           | Notes                                  |
+ * | --- | ------------ | ----------------- | -------------------------------------- |
+ * | Idx | `TView.data` | `LView`           | 说明                   |
+ * | ... |              |                   |                                        |
+ * | 10  | `null`       | `{color: '#001'}` | `ɵɵstyleMap('color', {color: '#001'})` |
+ * | 11  | `30 | 12`    | ...               |                                        |
+ * | 12  | `color`      | `'#002'`          | `ɵɵstyleProp('color', '#002')`         |
+ * | 13  | `10 | 0`     | ...               |                                        |
+ * | ... |              |                   |                                        |
+ * | 20  | `null`       | `{color: '#003'}` | `ɵɵstyleMap('color', {color: '#003'})` |
+ * | 21  | `0 | 22`     | ...               |                                        |
+ * | 22  | `color`      | `'#004'`          | `ɵɵstyleProp('color', '#004')`         |
+ * | 23  | `20 | 24`    | ...               |                                        |
+ * | 24  | `null`       | `{color: '#005'}` | `ɵɵstyleMap('color', {color: '#005'})` |
+ * | 25  | `22 | 26`    | ...               |                                        |
+ * | 26  | `color`      | `'#006'`          | `ɵɵstyleProp('color', '#006')`         |
+ * | 27  | `24 | 28`    | ...               |                                        |
+ * | 28  | `null`       | `{color: '#007'}` | `ɵɵstyleMap('color', {color: '#007'})` |
+ * | 29  | `26 | 30`    | ...               |                                        |
+ * | 30  | `color`      | `'#008'`          | `ɵɵstyleProp('color', '#008')`         |
+ * | 31  | `28 | 10`    | ...               |                                        |
  *
  * The above data structure allows us to re-concatenate the styling no matter which data binding
  * changes.

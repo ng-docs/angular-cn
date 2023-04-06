@@ -30,9 +30,6 @@ const LEGACY_XLIFF_MESSAGE_LENGTH = 40;
  * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
  * https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html
  *
- * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
- * [https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html](https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html)
- *
  * @see Xliff1TranslationParser
  * @publicApi used by CLI
  */

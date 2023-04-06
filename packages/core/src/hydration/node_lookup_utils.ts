@@ -36,8 +36,14 @@ function getNoOffsetIndex(tNode: TNode): number {
  *
  * @param hydrationInfo The hydration annotation data
  * @param tView the current tView
+ *
+ * 当前的 TView
+ *
  * @param lView the current lView
  * @param tNode the current tNode
+ *
+ * 当前 TNode
+ *
  * @returns an RNode that represents a given tNode
  */
 export function locateNextRNode<T extends RNode>(

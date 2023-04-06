@@ -812,7 +812,7 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
 1. Provide the router with an appropriate `APP_BASE_HREF` value.
 
-   用适当的\[APP_BASE_HREF]\[]值提供（provide）路由器。
+   用适当的 `APP_BASE_HREF` 值提供（provide）路由器。
 
 1. Use root URLs (URLs with an `authority`) for all web resources: CSS, images, scripts, and template HTML files.
 

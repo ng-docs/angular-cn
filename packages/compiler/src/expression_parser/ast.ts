@@ -373,21 +373,21 @@ export class ASTWithSource extends AST {
  *
  * TemplateBinding 是指微语法表达式中的特定键值对。一些例子是：
  *
- *   |     expression      |     key      |  value  | binding type |
- *   |---------------------|--------------|---------|--------------|
- *   |     表达式           |     键        |  值     | 绑定类型      |
- *   | 1. let item         |    item      |  null   |   variable   |
- *   | 1. let item         |    item      |  null   |   变量   |
- *   | 2. of items         |   ngForOf    |  items  |  expression  |
- *   | 2. of items         |   ngForOf    |  items  |  表达式  |
- *   | 3. let x = y        |      x       |    y    |   variable   |
- *   | 3. let x = y        |      x       |    y    |   变量   |
- *   | 4. index as i       |      i       |  index  |   variable   |
- *   | 4. index as i       |      i       |  index  |   变量   |
- *   | 5. trackBy: func    | ngForTrackBy |   func  |  expression  |
- *   | 5. trackBy: func    | ngForTrackBy |   func  |  表达式  |
- *   | 6. *ngIf="cond"     |     ngIf     |   cond  |  expression  |
- *   | 6. *ngIf="cond"     |     ngIf     |   cond  |  表达式  |
+ * | expression       | key          | value | binding type |
+ * | ---------------- | ------------ | ----- | ------------ |
+ * | 表达式           | 键           | 值    | 绑定类型     |
+ * | 1. let item      | item         | null  | variable     |
+ * | 1. let item      | item         | null  | 变量         |
+ * | 2. of items      | ngForOf      | items | expression   |
+ * | 2. of items      | ngForOf      | items | 表达式       |
+ * | 3. let x = y     | x            | y     | variable     |
+ * | 3. let x = y     | x            | y     | 变量         |
+ * | 4. index as i    | i            | index | variable     |
+ * | 4. index as i    | i            | index | 变量         |
+ * | 5. trackBy: func | ngForTrackBy | func  | expression   |
+ * | 5. trackBy: func | ngForTrackBy | func  | 表达式       |
+ * | 6. \*ngIf="cond" | ngIf         | cond  | expression   |
+ * | 6. \*ngIf="cond" | ngIf         | cond  | 表达式       |
  *
  * (6) is a notable exception because it is a binding from the template key in
  * the LHS of a HTML attribute to the expression in the RHS. All other bindings

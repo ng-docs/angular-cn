@@ -1277,6 +1277,7 @@ export interface HostListener {
  *   }
  * }
  * ```
+ *
  * The list of valid key names for `keydown` and `keyup` events
  * can be found here:
  * https://www.w3.org/TR/DOM-Level-3-Events-key/#named-key-attribute-values

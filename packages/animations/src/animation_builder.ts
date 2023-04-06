@@ -86,7 +86,7 @@ export abstract class AnimationBuilder {
    *
    * @see `animate()`
    */
-  abstract build(animation: AnimationMetadata|AnimationMetadata[]): AnimationFactory;
+  abstract build(animation: AnimationMetadata | AnimationMetadata[]): AnimationFactory;
 }
 
 /**

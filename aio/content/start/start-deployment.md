@@ -79,10 +79,10 @@ A best practice is to run your project locally before you deploy it. To run your
 
    </code-example>
 
-1. To see your application in the browser, go to <http://localhost:4200/>.
+1. To see your application in the browser, go to http://localhost:4200/.
    If the default port 4200 is not available, you can specify another port with the port flag as in the following example:
 
-   要在浏览器中查看你的应用，请访问 <http://localhost:4200/>。如果默认端口 4200 不可用，则可以使用端口标志指定另一个端口，如下所示：
+   要在浏览器中查看你的应用，请访问 http://localhost:4200/。如果默认端口 4200 不可用，则可以使用端口标志指定另一个端口，如下所示：
 
    <code-example format="shell" language="shell">
 

@@ -73,6 +73,9 @@ export function makeLocalePlugin(
  * * `"undefined" != typeof $localize`
  *
  * @param expression the expression to check
+ *
+ * 要检查的表达式
+ *
  * @param localizeName the name of the `$localize` symbol
  */
 function isLocalizeGuard(expression: NodePath, localizeName: string): boolean {

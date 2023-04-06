@@ -24,9 +24,9 @@ npm install -g &commat;angular/cli<aio-angular-dist-tag class="pln"></aio-angula
 
 </code-example>
 
-For details about changes between versions, and information about updating from previous releases, see the Releases tab on GitHub: <https://github.com/angular/angular-cli/releases>
+For details about changes between versions, and information about updating from previous releases, see the Releases tab on GitHub: https://github.com/angular/angular-cli/releases
 
-关于版本变更的详情，以及如何从以前版本升级的信息，参阅 GitHub 上的 Releases 页：<https://github.com/angular/angular-cli/releases>
+关于版本变更的详情，以及如何从以前版本升级的信息，参阅 GitHub 上的 Releases 页：https://github.com/angular/angular-cli/releases
 
 ## Basic workflow
 
@@ -57,10 +57,10 @@ ng serve
 
 </code-example>
 
-In your browser, open <http://localhost:4200/> to see the new application run.
+In your browser, open http://localhost:4200/ to see the new application run.
 When you use the [ng serve](cli/serve) command to build an application and serve it locally, the server automatically rebuilds the application and reloads the page when you change any of the source files.
 
-在浏览器中，打开 <http://localhost:4200/> 查看运行效果。当你使用 [ng serve](cli/serve) 命令来构建应用并在本地启动开发服务器时，服务器会自动重新构建此应用，并在修改源码时重新加载此页面。
+在浏览器中，打开 http://localhost:4200/ 查看运行效果。当你使用 [ng serve](cli/serve) 命令来构建应用并在本地启动开发服务器时，服务器会自动重新构建此应用，并在修改源码时重新加载此页面。
 
 <div class="alert is-helpful">
 

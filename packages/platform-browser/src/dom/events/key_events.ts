@@ -131,6 +131,9 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * characters to a standard spelling, and orders all the values consistently.
    *
    * @param eventName The name of the key event to listen for.
+   *
+   * 要监听的键盘事件的名称。
+   *
    * @returns an object with the full, normalized string, and the dom event name
    * or null in the case when the event doesn't match a keyboard event.
    */

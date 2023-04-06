@@ -93,7 +93,9 @@ For more information about the required software, see [Setting up the local envi
     Angular 需要[活动的长期支持 (LTS) 或维护 LTS 版本](https://nodejs.org/about/releases)的 Node.js。
 
   * [nvm](https://github.com/nvm-sh/nvm#about)
+
   * [Yarn](https://yarnpkg.com/getting-started/install)
+
   * [Homebrew](https://brew.sh) for macOS or [Chocolatey](https://chocolatey.org/install) for Windows
 
     macOS 的[Homebrew](https://brew.sh)或 Windows 的[Chocolatey](https://chocolatey.org/install)
@@ -118,10 +120,10 @@ You can also install other tools and IDE extensions that you find helpful.
 ## 设置你的工作区
 
 The Angular documentation is stored with the Angular framework code in a GitHub source code repository, also called a *repo*, at:
-<https://github.com/angular/angular>.
+https://github.com/angular/angular.
 To contribute documentation to Angular, you need:
 
-Angular 文档与 Angular 框架代码一起存储在 GitHub 源代码存储库（也称为*repo* ）中，位于： <https://github.com/angular/angular> 。要向 Angular 贡献文档，你需要：
+Angular 文档与 Angular 框架代码一起存储在 GitHub 源代码存储库（也称为*repo* ）中，位于： https://github.com/angular/angular 。要向 Angular 贡献文档，你需要：
 
 * A GitHub account
 
@@ -197,9 +199,9 @@ If you use a different configuration, the procedures in these topics might not w
 </div>
 
 The code and documentation for the Angular framework are stored in a public repository, or repo, on [github.com](https://github.com) in the `angular` account.
-The path to the Angular repo is <https://github.com/angular/angular>, hence the abbreviated name, `angular/angular`.
+The path to the Angular repo is https://github.com/angular/angular, hence the abbreviated name, `angular/angular`.
 
-Angular 框架的代码和文档存储在[github.com](https://github.com)上的 `angular` 帐户的公共存储库或存储库中。 Angular 存储库的路径是<https://github.com/angular/angular> ，因此是缩写名称 `angular/angular` 。
+Angular 框架的代码和文档存储在[github.com](https://github.com)上的 `angular` 帐户的公共存储库或存储库中。 Angular 存储库的路径是 https://github.com/angular/angular ，因此是缩写名称 `angular/angular` 。
 
 [GitHub](https://github.com) is a cloud service that hosts many accounts and repositories.
 You can imagine the `angular/angular` repo in GitHub as shown in this image.
@@ -538,8 +540,8 @@ These directories in the `angular/aio` directory are where you find the files th
 Angular 文档目录是 Angular 文档文件的根。 `angular/aio` 目录中的这些目录是你找到编辑最多的文件的地方。
 
 | Directory                      | Files                                                    |
-|:-------------------------------| :------------------------------------------------------- |
-| 目录                             | 文件                                                     |
+| :----------------------------- | :------------------------------------------------------- |
+| 目录                           | 文件                                                     |
 | `angular/aio/content`          | Files and other assets used in the Angular documentation |
 | `angular/aio/content`          | Angular 文档中使用的文件和其他资产                       |
 | `angular/aio/content/guide`    | The markdown files for most Angular documentation        |

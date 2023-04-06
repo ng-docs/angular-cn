@@ -121,7 +121,7 @@ These are the aspects of Angular that behave differently in v15 and that might r
 
 #### Angular v15 支持 node.js 版本： 14.20.x、16.13.x 和 18.10.x
 
-In v15, Angular no longer supports node.js versions 14.\[15-19\].x or 16.\[10-12\].x. [PR #47730](https://github.com/angular/angular/pull/47730)
+In v15, Angular no longer supports node.js versions 14.\[15-19].x or 16.\[10-12].x. [PR #47730](https://github.com/angular/angular/pull/47730)
 
 在 v15 中，Angular 不再支持 node.js 版本 14.\[15-19].x 或 16.\[10-12].x。[PR #47730](https://github.com/angular/angular/pull/47730)
 

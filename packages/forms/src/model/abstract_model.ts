@@ -350,6 +350,8 @@ export type ɵValue<T extends AbstractControl|undefined> =
  *
  *  \*\*Internal: not for public use.
  *
+ * \*\*内部：不供公众使用。
+ *
  */
 export type ɵRawValue<T extends AbstractControl|undefined> = T extends AbstractControl<any, any>?
     (T['setValue'] extends((v: infer R) => void) ? R : never) :

@@ -504,6 +504,9 @@ export interface ɵFormControlCtor {
   /**
    * The presence of an explicit `prototype` property provides backwards-compatibility for apps that
    * manually inspect the prototype chain.
+   *
+   * 显式 `prototype` 属性的存在为手动检查原型链的应用程序提供了向后兼容。
+   *
    */
   prototype: FormControl<any>;
 }
@@ -656,6 +659,9 @@ interface UntypedFormControlCtor {
   /**
    * The presence of an explicit `prototype` property provides backwards-compatibility for apps that
    * manually inspect the prototype chain.
+   *
+   * 显式 `prototype` 属性的存在为手动检查原型链的应用程序提供了向后兼容。
+   *
    */
   prototype: FormControl<any>;
 }

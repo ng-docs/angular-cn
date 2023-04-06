@@ -62,13 +62,16 @@ export interface HttpInterceptor {
    * @param req The outgoing request object to handle.
    *
    * 要处理的传出请求对象。
-   *
    * @param next The next interceptor in the chain, or the backend
    * if no interceptors remain in the chain.
    *
    * 链中的下一个拦截器，如果链中没有拦截器，则为其后端接口。
+   * @returns
    *
-   * @returns An observable of the event stream.
+   * An observable of the event stream.
+   *
+   * 事件流的可观察对象。
+   *
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>;
 }

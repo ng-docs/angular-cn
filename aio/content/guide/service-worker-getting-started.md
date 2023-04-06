@@ -278,10 +278,10 @@ Now look at how the browser and service worker handle the updated application.
 
 现在，看看浏览器和 Service Worker 如何处理这个更新后的应用。
 
-1. Open <http://localhost:8080> again in the same window.
+1. Open http://localhost:8080 again in the same window.
    What happens?
 
-   再次在同一个窗口中打开 <http://localhost:8080>，发生了什么？
+   再次在同一个窗口中打开 http://localhost:8080，发生了什么？
 
    <div class="lightbox">
 

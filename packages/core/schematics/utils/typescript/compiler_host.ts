@@ -52,11 +52,26 @@ export function createMigrationProgram(
 /**
  * Creates the options necessary to instantiate a TypeScript program.
  * @param tree Virtual file system tree that contains the source files.
+ *
+ * 包含源文件的虚拟文件系统树。
+ *
  * @param tsconfigPath Virtual file system path that resolves to the TypeScript project.
+ *
+ * 解析为 TypeScript 项目的虚拟文件系统路径。
+ *
  * @param basePath Base path for the virtual file system tree.
+ *
+ * 虚拟文件系统树的基本路径。
+ *
  * @param fakeFileRead Optional file reader function. Can be used to overwrite files in
  *   the TypeScript program, or to add in-memory files (e.g. to add global types).
+ *
+ * 可选的文件阅读器功能。可用于覆盖 TypeScript 程序中的文件，或添加内存文件（例如添加全局类型）。
+ *
  * @param additionalFiles Additional file paths that should be added to the program.
+ *
+ * 应该添加到程序中的其他文件路径。
+ *
  * @param optionOverrides Overrides of the parsed compiler options.
  */
 export function createProgramOptions(

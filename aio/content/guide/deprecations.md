@@ -62,8 +62,8 @@ v16 - v19
 | `@angular/core`    | [`defineInjectable`](#core)                           | v8            | v11               |
 | `@angular/core`    | [`entryComponents`](api/core/NgModule)                | v9            | v11               |
 | `@angular/core`    | [`ANALYZE_FOR_ENTRY_COMPONENTS`](#core)               | v9            | v11               |
-| `@angular/forms`   | [与响应式表单一起使用的 `ngModel`](#ngmodel-reactive) | v6            | v11               |
 | `@angular/forms`   | [`ngModel` with reactive forms](#ngmodel-reactive)    | v6            | v11               |
+| `@angular/forms`   | [与响应式表单一起使用的 `ngModel`](#ngmodel-reactive) | v6            | v11               |
 | `@angular/upgrade` | [`@angular/upgrade`](#upgrade)                        | v8            | v11               |
 | `@angular/upgrade` | [`getAngularLib`](#upgrade-static)                    | v8            | v11               |
 | `@angular/upgrade` | [`setAngularLib`](#upgrade-static)                    | v8            | v11               |

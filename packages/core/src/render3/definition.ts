@@ -28,7 +28,12 @@ interface DirectiveDefinition<T> {
    */
   type: Type<T>;
 
-  /** The selectors that will be used to match nodes to this directive. */
+  /**
+   * The selectors that will be used to match nodes to this directive.
+   *
+   * 将用于将节点与此指令匹配的选择器。
+   *
+   */
   selectors?: CssSelectorList;
 
   /**
@@ -73,6 +78,8 @@ interface DirectiveDefinition<T> {
    *
    * NOTE:
    *
+   * 注意：
+   *
    * - Because declared and public name are usually same we only generate the array
    *   `['declared', 'public']` format when they differ.
    * - The reason why this API and `outputs` API is not the same is that `NgOnChanges` has
@@ -110,18 +117,29 @@ interface DirectiveDefinition<T> {
   /**
    * The number of bindings in this directive `hostBindings` (including pure fn bindings).
    *
+   * 此指令 `hostBindings` 中的绑定数量（包括纯 fn 绑定）。
+   *
    * Used to calculate the length of the component's LView array, so we
    * can pre-fill the array and set the host binding start index.
+   *
+   * 用于计算组件的 LView 数组的长度，因此我们可以预填充数组并设置宿主绑定开始索引。
+   *
    */
   hostVars?: number;
 
   /**
    * Assign static attribute values to a host element.
    *
+   * 将静态属性值分配给宿主元素。
+   *
    * This property will assign static attribute values as well as class and style
    * values to a host element. Since attribute values can consist of different types of values,
    * the `hostAttrs` array must include the values in the following format:
    *
+   * 此属性会将静态属性值以及 class 和 style
+   * 值分配给宿主元素。由于属性值可以由不同类型的值组成，因此 `hostAttrs` 数组必须包含以下格式的值：
+   *
+   * ```
    * attrs = \[
    *   // static attributes (like `title`, `name`, `id`...)
    *   attr1, value1, attr2, value,
@@ -138,6 +156,7 @@ interface DirectiveDefinition<T> {
    *   // a series of CSS styles (property + value) that will be applied to the element
    *   STYLES_MARKER, prop1, value1, prop2, value2
    * ]
+   * ```
    *
    * All non-class and non-style attributes must be defined at the start of the list
    * first before all class and style values are set. When there is a change in value
@@ -179,16 +198,22 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
   /**
    * The number of nodes, local refs, and pipes in this component template.
    *
+   * 此组件模板中的节点、本地引用和管道的数量。
+   *
    * Used to calculate the length of this component's LView array, so we
    * can pre-fill the array and set the binding start index.
+   *
    */
   decls: number;
 
   /**
    * The number of bindings in this component template (including pure fn bindings).
    *
+   * 此组件模板中的绑定数量（包括纯 fn 绑定）。
+   *
    * Used to calculate the length of this component's LView array, so we
    * can pre-fill the array and set the host binding start index.
+   *
    */
   vars: number;
 
@@ -233,6 +258,9 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
 
   /**
    * An array of `ngContent[selector]` values that were found in the template.
+   *
+   * 在模板中找到的 `ngContent[selector]` 值的数组。
+   *
    */
   ngContentSelectors?: string[];
   /**
@@ -260,6 +288,9 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
 
   /**
    * A set of styles that the component needs to be present for component to render correctly.
+   *
+   * 组件需要存在的一组样式，以便组件正确呈现。
+   *
    */
   styles?: string[];
 
@@ -282,6 +313,9 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
 
   /**
    * The set of schemas that declare elements to be allowed in the component's template.
+   *
+   * 声明组件模板中允许的元素的模式集。
+   *
    */
   schemas?: SchemaMetadata[]|null;
 }
@@ -373,25 +407,53 @@ function nonNull<T>(value: T|null): value is T {
  * @codeGenApi
  */
 export function ɵɵdefineNgModule<T>(def: {
-  /** Token representing the module. Used by DI. */
+  /**
+   * Token representing the module. Used by DI.
+   *
+   * 表示模块的标记。由 DI 使用。
+   *
+   */
   type: T;
 
-  /** List of components to bootstrap. */
+  /**
+   * List of components to bootstrap.
+   *
+   * 要引导的组件列表。
+   *
+   */
   bootstrap?: Type<any>[] | (() => Type<any>[]);
 
-  /** List of components, directives, and pipes declared by this module. */
+  /**
+   * List of components, directives, and pipes declared by this module.
+   *
+   * 此模块声明的组件、指令和管道的列表。
+   *
+   */
   declarations?: Type<any>[] | (() => Type<any>[]);
 
-  /** List of modules or `ModuleWithProviders` imported by this module. */
+  /**
+   * List of modules or `ModuleWithProviders` imported by this module.
+   *
+   * 此模块导入的模块或 `ModuleWithProviders` 列表。
+   *
+   */
   imports?: Type<any>[] | (() => Type<any>[]);
 
   /**
    * List of modules, `ModuleWithProviders`, components, directives, or pipes exported by this
    * module.
+   *
+   * 此模块导出的模块、 `ModuleWithProviders` 、组件、指令或管道的列表。
+   *
    */
   exports?: Type<any>[] | (() => Type<any>[]);
 
-  /** The set of schemas that declare elements to be allowed in the NgModule. */
+  /**
+   * The set of schemas that declare elements to be allowed in the NgModule.
+   *
+   * 声明 NgModule 中允许的元素的模式集。
+   *
+   */
   schemas?: SchemaMetadata[] | null;
 
   /** Unique ID for the module that is used with `getModuleFactory`. */
@@ -423,15 +485,28 @@ export function ɵɵdefineNgModule<T>(def: {
  * @codeGenApi
  */
 export function ɵɵsetNgModuleScope(type: any, scope: {
-  /** List of components, directives, and pipes declared by this module. */
+  /**
+   * List of components, directives, and pipes declared by this module.
+   *
+   * 此模块声明的组件、指令和管道的列表。
+   *
+   */
   declarations?: Type<any>[]|(() => Type<any>[]);
 
-  /** List of modules or `ModuleWithProviders` imported by this module. */
+  /**
+   * List of modules or `ModuleWithProviders` imported by this module.
+   *
+   * 此模块导入的模块或 `ModuleWithProviders` 列表。
+   *
+   */
   imports?: Type<any>[] | (() => Type<any>[]);
 
   /**
    * List of modules, `ModuleWithProviders`, components, directives, or pipes exported by this
    * module.
+   *
+   * 此模块导出的模块、 `ModuleWithProviders` 、组件、指令或管道的列表。
+   *
    */
   exports?: Type<any>[] | (() => Type<any>[]);
 }): unknown {
@@ -580,6 +655,9 @@ export function ɵɵdefinePipe<T>(pipeDef: {
 
   /**
    * Whether the pipe is standalone.
+   *
+   * 管道是否是独立的。
+   *
    */
   standalone?: boolean;
 }): unknown {

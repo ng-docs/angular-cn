@@ -16,8 +16,14 @@ import {RComment, RElement, RNode, RText} from './renderer_dom';
  * We do this by defining a subset of DOM API to be the renderer and then
  * use that at runtime for rendering.
  *
+ * 这里的目标是确保浏览器 DOM API 是 Renderer。我们通过定义 DOM API
+ * 的一个子集作为渲染器，然后在运行时使用它进行渲染来实现。
+ *
  * At runtime we can then use the DOM api directly, in server or web-worker
  * it will be easy to implement such API.
+ *
+ * 然后在运行时，我们可以直接使用 DOM api，在服务器或 Web-worker 中很容易实现这样的 API。
+ *
  */
 
 export type GlobalTargetName = 'document'|'window'|'body';

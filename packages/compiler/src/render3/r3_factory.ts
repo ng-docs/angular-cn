@@ -41,6 +41,9 @@ export interface R3ConstructorFactoryMetadata {
 
   /**
    * Type of the target being created by the factory.
+   *
+   * 工厂正在创建的目标的类型。
+   *
    */
   target: FactoryTarget;
 }

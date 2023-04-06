@@ -16,7 +16,11 @@ import {AbstractControl, AbstractControlOptions, assertAllValuesPresent, assertC
  *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
+ * Angular 在内部使用此类型来支持类型化表单；不要直接使用它。
+ *
  * For internal use only.
+ *
+ * 仅供内部使用。
  *
  */
 export type ɵFormGroupValue<T extends {[K in keyof T]?: AbstractControl<any>}> =
@@ -28,7 +32,11 @@ export type ɵFormGroupValue<T extends {[K in keyof T]?: AbstractControl<any>}> 
  *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
+ * Angular 在内部使用此类型来支持类型化表单；不要直接使用它。
+ *
  * For internal use only.
+ *
+ * 仅供内部使用。
  *
  */
 export type ɵFormGroupRawValue<T extends {[K in keyof T]?: AbstractControl<any>}> =
@@ -38,6 +46,9 @@ export type ɵFormGroupRawValue<T extends {[K in keyof T]?: AbstractControl<any>
  * OptionalKeys returns the union of all optional keys in the object.
  *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
+ *
+ * Angular 在内部使用此类型来支持类型化表单；不要直接使用它。
+ *
  */
 export type ɵOptionalKeys<T> = {
   [K in keyof T] -?: undefined extends T[K] ? K : never
@@ -504,11 +515,9 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * form.patchValue({first: 'Nancy'});
    * console.log(form.value);   // {first: 'Nancy', last: null}
    * ```
-   *
    * @param value The object that matches the structure of the group.
    *
    * 与该组的结构匹配的对象。
-   *
    * @param options Configuration options that determine how the control propagates changes and
    * emits events after the value is patched.
    *
@@ -523,6 +532,11 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control value
    *   is updated. When false, no events are emitted. The configuration options are passed to
    *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
+   *
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    */
   override patchValue(value: ɵFormGroupValue<TControl>, options: {
@@ -565,7 +579,6 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * or an object that defines the initial value and disabled state.
    *
    * 使用初始值或一个包含初始值和禁用状态的对象来重置该控件。
-   *
    * @param options Configuration options that determine how the control propagates changes
    * and emits events when the group is reset.
    *
@@ -582,6 +595,11 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   When false, no events are emitted.
    *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} method.
+   *
+   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
+   *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
+   *   updateValueAndValidity} 方法。
    *
    * @usageNotes
    *
@@ -620,7 +638,6 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * console.log(form.value);  // {last: 'last'}
    * console.log(form.get('first').status);  // 'DISABLED'
    * ```
-   *
    */
   override reset(
       value: ɵTypedOrUntyped<TControl, ɵFormGroupValue<TControl>, any> = {} as unknown as
@@ -741,6 +758,9 @@ interface UntypedFormGroupCtor {
   /**
    * The presence of an explicit `prototype` property provides backwards-compatibility for apps that
    * manually inspect the prototype chain.
+   *
+   * 显式 `prototype` 属性的存在为手动检查原型链的应用程序提供了向后兼容。
+   *
    */
   prototype: FormGroup<any>;
 }

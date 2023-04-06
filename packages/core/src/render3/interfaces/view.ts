@@ -521,6 +521,8 @@ export const enum PreOrderHookFlags {
  *
  * ## Pseudocode
  *
+ * ## 伪代码
+ *
  * ```
  * const hostBindingOpCodes = tView.hostBindingOpCodes;
  * if (hostBindingOpCodes === null) return;
@@ -700,8 +702,11 @@ export interface TView {
    * The property is either an array of `PipeDefs`s or a function which returns the array of
    * `PipeDefs`s. The function is necessary to be able to support forward declarations.
    *
+   * 该属性是 `PipeDefs` s 的数组或返回 `PipeDefs` s 数组的函数。该函数是支持前向声明所必需的。
+   *
    * It's necessary to keep a copy of the full def list on the TView so it's possible
    * to render template functions without a host component.
+   *
    */
   pipeRegistry: PipeDefList|null;
 
@@ -807,6 +812,9 @@ export interface TView {
 
   /**
    * A collection of queries tracked in a given view.
+   *
+   * 在给定视图中跟踪的查询的集合。
+   *
    */
   queries: TQueries|null;
 
@@ -886,12 +894,12 @@ export type HookData = HookEntry[];
  * - Odd indices are the hook functions themselves. If a value at an odd index is an array,
  *   it represents the destroy hooks of a `multi` provider where:
  *
- *     - Even indices represent the index of the provider for which we've registered a destroy hook,
- *         inside of the `multi` provider array.
- *     - Odd indices are the destroy hook functions.
- *   For example:
- *   LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]`
- *   destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
+ *   - Even indices represent the index of the provider for which we've registered a destroy hook,
+ *       inside of the `multi` provider array.
+ *   - Odd indices are the destroy hook functions.
+ *     For example:
+ *     LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]`
+ *     destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
  *
  * In the example above `AService` is a type provider with an `ngOnDestroy`, whereas `BService`,
  * `CService` and `DService` are part of a `multi` provider where only `BService` and `DService`
@@ -917,13 +925,13 @@ export type DestroyHookData = (HookEntry|HookData)[];
  * the data array. If the binding is an interpolation, the static string values
  * are stored parallel to the dynamic values. Example:
  *
- * id="prefix {{ v0 }} a {{ v1 }} b {{ v2 }} suffix"
+ * `id="prefix {{ v0 }} a {{ v1 }} b {{ v2 }} suffix"`
  *
- * LView       |   TView.data
- *------------------------
- *  v0 value   |   'a'
- *  v1 value   |   'b'
- *  v2 value   |   id � prefix � suffix
+ * | LView       |   TView.data |
+ * | ----------- | ---------- |
+ * | v0 value   |   'a' |
+ * | v1 value   |   'b' |
+ * | v2 value   |   id � prefix � suffix |
  *
  * Injector bloom filters are also stored here.
  *

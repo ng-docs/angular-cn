@@ -184,6 +184,8 @@ export function renderDetachView(tView: TView, lView: LView) {
  *
  * Notes:
  *
+ * 注意：
+ *
  * - Because it's used for onDestroy calls, it needs to be bottom-up.
  * - Must process containers instead of their views to avoid splicing
  *   when views are destroyed and re-added.
@@ -657,8 +659,17 @@ export function nativeNextSibling(renderer: Renderer, node: RNode): RNode|null {
  * takes `TNode.insertBeforeIndex` into account if i18n code has been invoked.
  *
  * @param parentTNode parent `TNode`
+ *
+ * 父 `TNode`
+ *
  * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
+ *
+ * 当前 `TNode`（我们要插入到 DOM 中的节点）
+ *
  * @param lView current `LView`
+ *
+ * 当前的 `LView`
+ *
  */
 function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView: LView): RNode|
     null {
@@ -674,8 +685,17 @@ function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView:
  * does not take `TNode.insertBeforeIndex` into account.
  *
  * @param parentTNode parent `TNode`
+ *
+ * 父 `TNode`
+ *
  * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
+ *
+ * 当前 `TNode`（我们要插入到 DOM 中的节点）
+ *
  * @param lView current `LView`
+ *
+ * 当前的 `LView`
+ *
  */
 export function getInsertInFrontOfRNodeWithNoI18n(
     parentTNode: TNode, currentTNode: TNode, lView: LView): RNode|null {

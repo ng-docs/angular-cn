@@ -30,11 +30,11 @@ If `@angular/localize` is not installed and you try to build a localized version
 
 ## 选项
 
-| OPTION             | DESCRIPTION                                                                                                                                                                                   | VALUE TYPE           | DEFAULT VALUE      |
-| :----------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------- | :----------------- |
-| 选项   | 说明                                                                                                                                                                             | 值的类型 | 默认值 |
-| `--project`        | The name of the project.                                                                                                                                                                      | `string`             |                    |
-| `--use-at-runtime` | If set, then `$localize` can be used at runtime. Also `@angular/localize` gets included in the `dependencies` section of `package.json`, rather than `devDependencies`, which is the default. | `boolean`            | `false`            |
+| OPTION             | DESCRIPTION                                                                                                                                                                                   | VALUE TYPE | DEFAULT VALUE |
+| :----------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- | :------------ |
+| 选项               | 说明                                                                                                                                                                                          | 值的类型   | 默认值        |
+| `--project`        | The name of the project.                                                                                                                                                                      | `string`   |               |
+| `--use-at-runtime` | If set, then `$localize` can be used at runtime. Also `@angular/localize` gets included in the `dependencies` section of `package.json`, rather than `devDependencies`, which is the default. | `boolean`  | `false`       |
 
 For more available options, see [ng add][AioCliAdd] in [Angular CLI][AioCliMain].
 

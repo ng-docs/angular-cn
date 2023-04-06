@@ -685,6 +685,9 @@ function getOrCreateViewRefs(lContainer: LContainer): ViewRef[] {
  *
  * @param hostTNode The node that is requesting a ViewContainerRef
  * @param hostLView The view to which the node belongs
+ *
+ * 节点所属的视图
+ *
  * @returns The ViewContainerRef instance to use
  */
 export function createContainerRef(

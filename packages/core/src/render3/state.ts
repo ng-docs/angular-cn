@@ -352,6 +352,9 @@ export function isInSkipHydrationBlock(): boolean {
 /**
  * Returns true if this is the root TNode of the skip hydration block.
  * @param tNode the current TNode
+ *
+ * 当前 TNode
+ *
  * @returns boolean
  */
 export function isSkipHydrationRootTNode(tNode: TNode): boolean {
@@ -389,6 +392,9 @@ export function ɵɵenableBindings(): void {
 /**
  * Sets a flag to specify that the TNode is in a skip hydration block.
  * @param tNode the current TNode
+ *
+ * 当前 TNode
+ *
  */
 export function enterSkipHydrationBlock(tNode: TNode): void {
   instructionState.skipHydrationRootTNode = tNode;

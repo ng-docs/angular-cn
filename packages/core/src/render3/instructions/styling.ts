@@ -1066,25 +1066,25 @@ function updateStyling(
  * 在某个位置应用值时，需要参考相关值。
  *
  * - If there is a higher priority binding, we should be using that one instead.
- *   For example `<div  [style]="{color:exp1}" [style.color]="exp2">` change to `exp1`
- *   requires that we check `exp2` to see if it is set to value other than `undefined`.
+ *     For example `<div  [style]="{color:exp1}" [style.color]="exp2">` change to `exp1`
+ *     requires that we check `exp2` to see if it is set to value other than `undefined`.
  *
  *   如果有更高优先级的绑定，我们应该改用那个绑定。例如 `<div [style]="{color:exp1}"
- * [style.color]="exp2">` 更改为 `exp1` 需要我们检查 `exp2` 以查看它是否设置为 `undefined`
- * 以外的值。
+ *   [style.color]="exp2">` 更改为 `exp1` 需要我们检查 `exp2` 以查看它是否设置为 `undefined`
+ *   以外的值。
  *
  * - If there is a lower priority binding and we are changing to `undefined`
- *   For example `<div  [style]="{color:exp1}" [style.color]="exp2">` change to `exp2` to
- *   `undefined` requires that we check `exp1` (and static values) and use that as new value.
+ *     For example `<div  [style]="{color:exp1}" [style.color]="exp2">` change to `exp2` to
+ *     `undefined` requires that we check `exp1` (and static values) and use that as new value.
  *
  *   如果有较低优先级的绑定并且我们要更改为 `undefined` 例如 `<div [style]="{color:exp1}"
- * [style.color]="exp2">` 将 `exp2` 更改为 `undefined` 要求我们检查 `exp1`
- *（和静态值）并将其作为新值。
+ *   [style.color]="exp2">` 将 `exp2` 更改为 `undefined` 要求我们检查 `exp1`
+ *   （和静态值）并将其作为新值。
  *
  * NOTE: The styling stores two values.
- * 1\. The raw value which came from the application is stored at `index + 0` location. (This value
+ * 1. The raw value which came from the application is stored at `index + 0` location. (This value
  *    is used for dirty checking).
- * 2\. The normalized value is stored at `index + 1`.
+ * 2. The normalized value is stored at `index + 1`.
  *
  * 注意：此样式存储两个值。 1.来自应用程序的原始值存储在 `index + 0` 位置。（此值用于脏检查）。 2.
  * 归一化值存储在 `index + 1` 处。
@@ -1092,16 +1092,15 @@ function updateStyling(
  * @param tData `TData` used for traversing the priority.
  *
  * 用于遍历优先级的 `TData` 。
- *
  * @param tNode `TNode` to use for resolving static styling. Also controls search direction.
  *
  * 用于解析静态样式的 `TNode` 。还控制搜索方向。
  *
  * - `TNode` search next and quit as soon as `isStylingValuePresent(value)` is true.
- *    If no value found consult `tNode.residualStyle`/`tNode.residualClass` for default value.
+ *      If no value found consult `tNode.residualStyle`/`tNode.residualClass` for default value.
  *
  *   `TNode` 搜索下一个并在 `isStylingValuePresent(value)` 为 true 时立即退出。如果找不到值，请参阅
- * `tNode.residualStyle` / `tNode.residualClass` 作为默认值。
+ *   `tNode.residualStyle` / `tNode.residualClass` 作为默认值。
  *
  * - `null` search prev and go all the way to end. Return last value where
  *   `isStylingValuePresent(value)` is true.
@@ -1111,19 +1110,15 @@ function updateStyling(
  * @param lView `LView` used for retrieving the actual values.
  *
  * `LView` 用于检索实际值。
- *
  * @param prop Property which we are interested in.
  *
  * 我们感兴趣的属性。
- *
  * @param index Starting index in the linked list of styling bindings where the search should start.
  *
  * 应该开始搜索的样式绑定链接列表中的起始索引。
- *
  * @param isClassBased `true` if `class` (`false` if `style`)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
- *
  */
 function findStylingValue(
     tData: TData, tNode: TNode|null, lView: LView, prop: string, index: number,

@@ -45,6 +45,8 @@ export interface AttributeDecorator {
 /**
  * Type of the Attribute metadata.
  *
+ * 属性元数据的类型。
+ *
  * @publicApi
  */
 export interface Attribute {
