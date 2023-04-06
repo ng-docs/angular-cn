@@ -1662,9 +1662,9 @@ export type DeclareLocalVarCallback = (scope: BindingScope, relativeLevel: numbe
 const SHARED_CONTEXT_KEY = '$$shared_ctx$$';
 
 /**
- * This is used when one refers to variable such as: 'let abc = nextContext(2).$implicit\`.
+ * This is used when one refers to variable such as: `let abc = nextContext(2).$implicit`.
  *
- * 当引用变量时使用此变量，例如： 'let abc = nextContext(2).$implicit\`。
+ * 当引用变量时使用此变量，例如： `let abc = nextContext(2).$implicit`。
  *
  * - key to the map is the string literal `"abc"`.
  *
