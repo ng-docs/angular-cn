@@ -132,7 +132,7 @@ type KnownPackageJsonFormatFields = typeof knownFormatPackageJsonFormatFields[nu
  * https://nodejs.org/api/packages.html#packages_conditional_exports
  *
  * 描述入口点的条件导出描述符的类型。
- * [https://nodejs.org/api/packages.html#packages_Conditional_exports](https://nodejs.org/api/packages.html#packages_conditional_exports)
+ * https://nodejs.org/api/packages.html#packages_conditional_exports
  *
  */
 type ConditionalExport = {

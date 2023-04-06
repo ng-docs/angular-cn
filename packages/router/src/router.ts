@@ -643,7 +643,7 @@ export class Router {
    *
    * @param extras An object containing properties that modify the navigation strategy.
    *
-   * 一个包含一组属性的对象，它会修改导航策略。 该函数会忽略 `NavigationExtras` 中任何可能会改变所提供的 URL 的属性。
+   * 一个包含一组属性的对象，它会修改导航策略。
    *
    * @returns A Promise that resolves to 'true' when navigation succeeds,
    * to 'false' when navigation fails, or is rejected on error.

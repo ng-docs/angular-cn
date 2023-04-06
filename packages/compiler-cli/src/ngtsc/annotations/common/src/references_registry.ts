@@ -33,7 +33,7 @@ export interface ReferencesRegistry {
 /**
  * This registry does nothing.
  *
- * 此注册表什么都不做，因为 ngtsc 当前不需要此特性。 ngcc 工具为其目的实现了一个工作版本。
+ * 此注册表什么都不做。
  *
  */
 export class NoopReferencesRegistry implements ReferencesRegistry {

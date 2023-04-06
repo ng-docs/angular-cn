@@ -24,7 +24,7 @@
  *
  * The joined URL string.
  *
- * 联接的 URL 字符串。
+ * 联接后的 URL 字符串。
  *
  */
 export function joinWithSlash(start: string, end: string): string {

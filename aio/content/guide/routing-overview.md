@@ -22,7 +22,7 @@ To explore a sample app featuring the router's primary features, see the <live-e
 
 Before creating a route, you should be familiar with the following:
 
-在创建路线之前，你应该熟悉以下内容：
+在创建路由之前，你应该熟悉以下内容：
 
 * [Basics of components](guide/architecture-components)
 

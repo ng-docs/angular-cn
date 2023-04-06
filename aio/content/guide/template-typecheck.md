@@ -474,7 +474,7 @@ This has the same effect as the binding:
 At runtime, the input will be set to the empty string, which is not a `boolean` value.
 Angular component libraries that deal with this problem often "coerce" the value into the right type in the setter:
 
-在运行时，输入将设置为空字符串，这不是 `boolean` 值。处理此问题的角组件库通常将值“强制转换”到 setter 中的正确类型中：
+在运行时，输入将设置为空字符串，这不是 `boolean` 值。处理此问题的 Angular 组件库通常将值“强制转换”到 setter 中的正确类型中：
 
 <code-example format="typescript" language="typescript">
 

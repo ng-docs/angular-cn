@@ -700,7 +700,7 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * | .      | Replaced automatically by the character used for the decimal point.                |
  * | .      | 自动替换为用作小数点的字符。                                                       |
  * | ,      | Replaced by the "grouping" (thousands) separator.                                  |
- * | .      | 替换为（千）“分组”分隔符。                                                         |
+ * | ,      | 替换为（千）“分组”分隔符。                                                         |
  * | 0      | Replaced by a digit (or zero if there aren't enough digits).                       |
  * | 0      | 替换为一个数字（如果没有足够的数字，则为零）。                                     |
  * | #      | Replaced by a digit (or nothing if there aren't enough).                           |

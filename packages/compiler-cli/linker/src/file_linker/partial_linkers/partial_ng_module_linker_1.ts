@@ -120,8 +120,7 @@ export function toR3NgModuleMeta<TExpression>(
  *
  * If `field` is `function() { return [exp1, exp2, exp3]; }` then we return `[exp1, exp2, exp3]`.
  *
- * 如果 `field` 是 `function() { return [exp1, exp2, exp3]; }` 然后我们返回 `[exp1, exp2, exp3]`
- * `function() { return [exp1, exp2, exp3]; }`
+ * 如果 `field` 是 `function() { return [exp1, exp2, exp3]; }` 那我们就返回 `[exp1, exp2, exp3]`。
  *
  */
 function unwrapForwardRefs<TExpression>(field: AstValue<unknown, TExpression>):

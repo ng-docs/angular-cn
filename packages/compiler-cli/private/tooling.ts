@@ -23,7 +23,7 @@ import {getDownlevelDecoratorsTransform} from '../src/transformers/downlevel_dec
  * https://github.com/terser-js/terser#conditional-compilation
  *
  * Terser
- * 应该使用[https://github.com/terser-js/terser#Conditional-compilation](https://github.com/terser-js/terser#conditional-compilation)设置的
+ * 应该使用 https://github.com/terser-js/terser#conditional-compilation 设置的
  * `@angular/core` 中全局变量的已知值
  *
  */

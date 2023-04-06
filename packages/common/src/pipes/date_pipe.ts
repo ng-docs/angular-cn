@@ -202,7 +202,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | LLLL         | Wide                                                         | September                                                  |
  * |                     | LLLL         | 宽                                                           | September                                                       |
  * |                     | LLLLL        | Narrow                                                       | S                                                          |
- * |                     | LLLL         | 窄                                                           | S                                                       |
+ * |                     | LLLLL         | 窄                                                           | S                                                       |
  * | Week of year        | w            | Numeric: minimum digits                                      | 1... 53                                                    |
  * | 一年中的一周        | w            | 数字：最小位数                                               | 1… 53                                                      |
  * |                     | ww           | Numeric: 2 digits + zero padded                              | 01... 53                                                   |
@@ -218,7 +218,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | EEEE         | Wide                                                         | Tuesday                                                    |
  * |                     | EEEE         | 宽                                                           | Tuesday                                                     |
  * |                     | EEEEE        | Narrow                                                       | T                                                          |
- * |                     | EEEE         | 窄                                                           | T                                                         |
+ * |                     | EEEEE         | 窄                                                           | T                                                         |
  * |                     | EEEEEE       | Short                                                        | Tu                                                         |
  * |                     | EEEEEE       | 短                                                           | Tu                                                         |
  * | Week day standalone | c, cc        | Numeric: 1 digit                                             | 2                                                          |
@@ -228,7 +228,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | cccc         | Wide                                                         | Tuesday                                                    |
  * |                     | cccc         | 宽                                                           | Tuesday                                                     |
  * |                     | ccccc        | Narrow                                                       | T                                                          |
- * |                     | cccc         | 窄                                                           | T                                                         |
+ * |                     | ccccc         | 窄                                                           | T                                                         |
  * |                     | cccccc       | Short                                                        | Tu                                                         |
  * |                     | cccccc       | 短                                                           | Tu                                                         |
  * | Period              | a, aa & aaa  | Abbreviated                                                  | am/pm or AM/PM                                             |
@@ -242,13 +242,13 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | BBBB         | Wide                                                         | am, pm, midnight, noon, morning, afternoon, evening, night |
  * |                     | BBBB         | 宽                                                           | am, pm, midnight, noon, morning, afternoon, evening, night               |
  * |                     | BBBBB        | Narrow                                                       | md                                                         |
- * |                     | BBBBB        | 窄                                                           | MD                                                         |
+ * |                     | BBBBB        | 窄                                                           | md                                                         |
  * | Period standalone\* | b, bb & bbb  | Abbreviated                                                  | mid.                                                       |
  * | 单独时段\*          | b、bb & bbb  | 缩写                                                         | mid.                                                         |
  * |                     | bbbb         | Wide                                                         | am, pm, midnight, noon, morning, afternoon, evening, night |
  * |                     | bbbb         | 宽                                                           | am, pm, midnight, noon, morning, afternoon, evening, night              |
  * |                     | bbbbb        | Narrow                                                       | md                                                         |
- * |                     | bbbbb        | 窄                                                           | MD                                                         |
+ * |                     | bbbbb        | 窄                                                           | md                                                         |
  * | Hour 1-12           | h            | Numeric: minimum digits                                      | 1, 12                                                      |
  * | 小时（1-12）            | h         | 数字：最小位数                                               | 1、12                                                      |
  * |                     | hh           | Numeric: 2 digits + zero padded                              | 01, 12                                                     |
@@ -272,7 +272,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | SSS          | Numeric: 3 digits + zero padded (= milliseconds)             | 000... 999                                                 |
  * |                     | SSS          | 数字： 3 位 + 填充零（= 毫秒）                               | 000... 999                                                 |
  * | Zone                | z, zz & zzz  | Short specific non location format (fallback to O)           | GMT-8                                                      |
- * | 区域                | z、zz 和 zzz | 简短的特定非位置格式（回退到 O）                             | GMT-8                                                      |
+ * | 时区                | z、zz 和 zzz | 简短的特定非位置格式（回退到 O）                             | GMT-8                                                      |
  * |                     | zzzz         | Long specific non location format (fallback to OOOO)         | GMT-08:00                                                  |
  * |                     | zzzz         | 长的特定非位置格式（回退到 OOOO）                            | GMT-08:00                                                  |
  * |                     | Z, ZZ & ZZZ  | ISO8601 basic format                                         | -0800                                                      |

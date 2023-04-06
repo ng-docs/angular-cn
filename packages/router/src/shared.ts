@@ -160,7 +160,7 @@ class ParamsAsMap implements ParamMap {
  *
  * @returns The new map instance.
  *
- * 把 `Params` 实例转换成 `ParamMap` 实例。
+ * 新的 `ParamMap` 实例。
  *
  * @publicApi
  */
@@ -192,7 +192,7 @@ export function convertToParamMap(params: Params): ParamMap {
  * @see UrlMatchResult
  * @see Route
  *
- * 路线
+ * 路由
  *
  * @returns
  *
