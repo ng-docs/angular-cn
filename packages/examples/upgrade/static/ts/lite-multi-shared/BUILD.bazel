@@ -18,10 +18,3 @@ filegroup(
         "**/*.ts",
     ]),
 )
-
-filegroup(
-    name = "files_for_docgen",
-    srcs = glob([
-        "**/*.ts",
-    ]),
-)
