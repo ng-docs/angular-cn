@@ -331,10 +331,10 @@ function transformIvySourceFile(
  * 为 Angular 生成的 `$localize` 消息计算正确的目标输出
  *
  * In some versions of TypeScript, the transformation of synthetic `$localize` tagged template
- * literals is broken. See <https://github.com/microsoft/TypeScript/issues/38485>
+ * literals is broken. See https://github.com/microsoft/TypeScript/issues/38485
  *
  * 在某些版本的 TypeScript 中，合成 `$localize`
- * 标记模板文字的转换被破坏了。请参阅<https://github.com/microsoft/TypeScript/issues/38485>
+ * 标记模板文字的转换被破坏了。请参阅 https://github.com/microsoft/TypeScript/issues/38485
  *
  * Here we compute what the expected final output target of the compilation will
  * be so that we can generate ES5 compliant `$localize` calls instead of relying upon TS to do the

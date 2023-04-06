@@ -734,11 +734,11 @@ const LocalExportedDeclarations = Symbol('LocalExportedDeclarations');
  *    此处缓存的唯一引用是 `ts.SourceFile` 本地的，因此在 `this.statements` 中也可用。
  *
  * 1. The only way this `Set` could change is if the source file itself was changed, which would
- *    invalidate the entire `ts.SourceFile` object in favor of a new version. Thus, changing the
- *    source file also invalidates this cache.
+ *       invalidate the entire `ts.SourceFile` object in favor of a new version. Thus, changing the
+ *       source file also invalidates this cache.
  *
  *    此 `Set` 可以更改的唯一方法是源文件本身已更改，这将使整个 `ts.SourceFile`
- * 对象无效以支持新版本。因此，更改源文件也会使此缓存无效。
+ *    对象无效以支持新版本。因此，更改源文件也会使此缓存无效。
  *
  */
 interface SourceFileWithCachedExports extends ts.SourceFile {

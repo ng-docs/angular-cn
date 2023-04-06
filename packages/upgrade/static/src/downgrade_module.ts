@@ -52,19 +52,19 @@ let moduleUid = 0;
  * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
- *   using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
- *   NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
- *   bootstrap function instead.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
+ *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
+ *     bootstrap function instead.
  *
  *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
- * PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
- *   来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
+ *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
+ *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
  * - `NgModule` class: If you pass an NgModule class, it will be used to instantiate a module
- *   using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
  *
  *   `NgModule` 类：如果你传递了 NgModule 类，它将用于使用 `platformBrowser` 的 {@link
- * PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
+ *   PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
  *
  * - `Function`: If you pass a function, it is expected to return a promise resolving to an
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
@@ -194,18 +194,18 @@ let moduleUid = 0;
  *   `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
  *
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
- *   {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
- *   downgraded modules, each one is considered a "root" module. As a consequence, a new instance
- *   will be created for every injectable provided in `"root"` (via
- *   {@link Injectable#providedIn `providedIn`}).
- *   If this is not your intention, you can have a shared module (that will act as act as the "root"
- *   module) and create all downgraded modules using that module's injector:
+ *     {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
+ *     downgraded modules, each one is considered a "root" module. As a consequence, a new instance
+ *     will be created for every injectable provided in `"root"` (via
+ *     {@link Injectable#providedIn `providedIn`}).
+ *     If this is not your intention, you can have a shared module (that will act as act as the "root"
+ *     module) and create all downgraded modules using that module's injector:
  *
  *   使用 {@link PlatformRef#bootstrapmodule `bootstrapModule()` } 或 {@link
- * PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
- *   引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
- *   中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
- *   ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
+ *   PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
+ *     引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
+ *     中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
+ *     ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
  *
  *   {@example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  *
@@ -246,19 +246,19 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
- *   using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
- *   NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
- *   bootstrap function instead.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
+ *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
+ *     bootstrap function instead.
  *
  *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
- * PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
- *   来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
+ *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
+ *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
  * - `NgModule` class: If you pass an NgModule class, it will be used to instantiate a module
- *   using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
  *
  *   `NgModule` 类：如果你传递了 NgModule 类，它将用于使用 `platformBrowser` 的 {@link
- * PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
+ *   PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
  *
  * - `Function`: If you pass a function, it is expected to return a promise resolving to an
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
@@ -388,18 +388,18 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
  *
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
- *   {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
- *   downgraded modules, each one is considered a "root" module. As a consequence, a new instance
- *   will be created for every injectable provided in `"root"` (via
- *   {@link Injectable#providedIn `providedIn`}).
- *   If this is not your intention, you can have a shared module (that will act as act as the "root"
- *   module) and create all downgraded modules using that module's injector:
+ *     {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
+ *     downgraded modules, each one is considered a "root" module. As a consequence, a new instance
+ *     will be created for every injectable provided in `"root"` (via
+ *     {@link Injectable#providedIn `providedIn`}).
+ *     If this is not your intention, you can have a shared module (that will act as act as the "root"
+ *     module) and create all downgraded modules using that module's injector:
  *
  *   使用 {@link PlatformRef#bootstrapmodule `bootstrapModule()` } 或 {@link
- * PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
- *   引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
- *   中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
- *   ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
+ *   PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
+ *     引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
+ *     中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
+ *     ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
  *
  *   {@example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  *
@@ -445,19 +445,19 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
- *   using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
- *   NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
- *   bootstrap function instead.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
+ *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
+ *     bootstrap function instead.
  *
  *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
- * PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
- *   来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
+ *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
+ *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
  * - `NgModule` class: If you pass an NgModule class, it will be used to instantiate a module
- *   using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
  *
  *   `NgModule` 类：如果你传递了 NgModule 类，它将用于使用 `platformBrowser` 的 {@link
- * PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
+ *   PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
  *
  * - `Function`: If you pass a function, it is expected to return a promise resolving to an
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
@@ -587,18 +587,18 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
  *
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
- *   {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
- *   downgraded modules, each one is considered a "root" module. As a consequence, a new instance
- *   will be created for every injectable provided in `"root"` (via
- *   {@link Injectable#providedIn `providedIn`}).
- *   If this is not your intention, you can have a shared module (that will act as act as the "root"
- *   module) and create all downgraded modules using that module's injector:
+ *     {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
+ *     downgraded modules, each one is considered a "root" module. As a consequence, a new instance
+ *     will be created for every injectable provided in `"root"` (via
+ *     {@link Injectable#providedIn `providedIn`}).
+ *     If this is not your intention, you can have a shared module (that will act as act as the "root"
+ *     module) and create all downgraded modules using that module's injector:
  *
  *   使用 {@link PlatformRef#bootstrapmodule `bootstrapModule()`} 或 {@link
- * PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
- *   引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
- *   中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
- *   ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
+ *   PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
+ *     引导降级模块时，每个都被认为是一个“根”模块。因此，将为 `"root"`
+ *     中提供的每个可注入物创建一个新实例（通过 {@link Injectable#providedIn `providedIn` }
+ *     ）。如果这不是你的意图，你可以有一个共享模块（将作为“根”模块）并使用该模块的注入器创建所有降级模块：
  *
  *   {@example upgrade/static/ts/lite-multi-shared/module.ts region="shared-root-module"}
  *

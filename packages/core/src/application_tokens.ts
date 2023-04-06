@@ -49,12 +49,18 @@ const DEFAULT_APP_ID = 'ng';
 
 /**
  * A function that is executed when a platform is initialized.
+ *
+ * 平台初始化时执行的函数。
+ *
  * @publicApi
  */
 export const PLATFORM_INITIALIZER = new InjectionToken<Array<() => void>>('Platform Initializer');
 
 /**
  * A token that indicates an opaque platform ID.
+ *
+ * 标识不透明平台 ID 的令牌。
+ *
  * @publicApi
  */
 export const PLATFORM_ID = new InjectionToken<Object>('Platform ID', {
@@ -65,6 +71,9 @@ export const PLATFORM_ID = new InjectionToken<Object>('Platform ID', {
 /**
  * A [DI token](guide/glossary#di-token "DI token definition") that indicates the root directory of
  * the application
+ *
+ * 一个 [DI 令牌](guide/glossary#di-token "DI 令牌定义")，指示应用程序的根目录
+ *
  * @publicApi
  */
 export const PACKAGE_ROOT_URL = new InjectionToken<string>('Application Packages Root URL');
@@ -76,6 +85,9 @@ export const PACKAGE_ROOT_URL = new InjectionToken<string>('Application Packages
 /**
  * A [DI token](guide/glossary#di-token "DI token definition") that indicates which animations
  * module has been loaded.
+ *
+ * 一个[DI 令牌](guide/glossary#di-token "DI 令牌定义")，表明已加载了哪个动画模块。
+ *
  * @publicApi
  */
 export const ANIMATION_MODULE_TYPE =

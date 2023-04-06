@@ -288,10 +288,12 @@ export function allocExpando(
 
 /**
  * Processes a view in the creation mode. This includes a number of steps in a specific order:
+ *
  * - creating view query functions (if any);
  * - executing a template function in the creation mode;
  * - updating static queries (if any);
  * - creating child components defined in a given view.
+ *
  */
 export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
   ngDevMode && assertEqual(isCreationMode(lView), true, 'Should be run in creation mode');
@@ -355,11 +357,13 @@ export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
 
 /**
  * Processes a view in update mode. This includes a number of steps in a specific order:
+ *
  * - executing a template function in update mode;
  * - executing hooks;
  * - refreshing queries;
  * - setting host bindings;
  * - refreshing child (embedded and component) views.
+ *
  */
 export function refreshView<T>(
     tView: TView, lView: LView, templateFn: ComponentTemplate<{}>|null, context: T) {
@@ -749,8 +753,10 @@ export function enableApplyRootElementTransformImpl() {
  * Saves context for this cleanup function in LView.cleanupInstances.
  *
  * On the first template pass, saves in TView:
+ *
  * - Cleanup function
  * - Index of context we just saved in LView.cleanupInstances
+ *
  */
 export function storeCleanupWithContext(
     tView: TView, lView: LView, context: any, cleanupFn: Function): void {
@@ -1355,8 +1361,10 @@ function findDirectiveDefMatches(
 
 /**
  * Marks a given TNode as a component's host. This consists of:
+ *
  * - setting the component offset on the TNode.
  * - storing index of component's host element so it will be queued for view refresh during CD.
+ *
  */
 export function markAsComponentHost(tView: TView, hostTNode: TNode, componentOffset: number): void {
   ngDevMode && assertFirstCreatePass(tView);
@@ -1679,7 +1687,8 @@ function markTransplantedViewsForRefresh(lView: LView) {
 /**
  * Refreshes components by entering the component view and processing its bindings, queries, etc.
  *
- * @param componentHostIdx  Element index in LView[] (adjusted for HEADER_OFFSET)
+ * @param componentHostIdx  Element index in LView\[] (adjusted for HEADER_OFFSET)
+ *
  */
 function refreshComponent(hostLView: LView, componentHostIdx: number): void {
   ngDevMode && assertEqual(isCreationMode(hostLView), false, 'Should be run in update mode');
@@ -1758,19 +1767,21 @@ function renderComponent(hostLView: LView, componentHostIdx: number) {
  * will be skipped. However, consider this case of two components side-by-side:
  *
  * App template:
+ *
  * ```
  * <comp></comp>
  * <comp></comp>
  * ```
  *
  * The following will happen:
+ *
  * 1. App template begins processing.
  * 2. First <comp> is matched as a component and its LView is created.
  * 3. Second <comp> is matched as a component and its LView is created.
  * 4. App template completes processing, so it's time to check child templates.
  * 5. First <comp> template is checked. It has a directive, so its def is pushed to blueprint.
  * 6. Second <comp> template is checked. Its blueprint has been updated by the first
- * <comp> template, but its LView was created before this update, so it is out of sync.
+ *    <comp> template, but its LView was created before this update, so it is out of sync.
  *
  * Note that embedded views inside ngFor loops will never be out of sync because these views
  * are processed as soon as they are created.
@@ -1791,7 +1802,8 @@ function syncViewWithBlueprint(tView: TView, lView: LView) {
  * and call onDestroy callbacks.
  *
  * @param lView The view where LView or LContainer should be added
- * @param adjustedHostIndex Index of the view's host node in LView[], adjusted for header
+ * @param adjustedHostIndex Index of the view's host node in LView\[], adjusted for header
+ *
  * @param lViewOrLContainer The LView or LContainer to add to the view tree
  * @returns The state passed in
  */
@@ -1863,6 +1875,7 @@ function executeViewQueryFn<T>(
  * Stores meta-data for a property binding to be used by TestBed's `DebugElement.properties`.
  *
  * In order to support TestBed's `DebugElement.properties` we need to save, for each binding:
+ *
  * - a bound property name;
  * - a static parts of interpolated strings;
  *
@@ -1870,9 +1883,10 @@ function executeViewQueryFn<T>(
  * property binding metadata will be stored in `TView.data` at the same index as a bound value in
  * `LView`). Metadata are represented as `INTERPOLATION_DELIMITER`-delimited string with the
  * following format:
+ *
  * - `propertyName` for bound properties;
  * - `propertyName�prefix�interpolation_static_part1�..interpolation_static_partN�suffix` for
- * interpolated properties.
+ *   interpolated properties.
  *
  * @param tData `TData` where meta-data will be saved;
  * @param tNode `TNode` that is a target of the binding;
@@ -1911,7 +1925,8 @@ export function getOrCreateTViewCleanup(tView: TView): any[] {
 
 /**
  * There are cases where the sub component's renderer needs to be included
- * instead of the current renderer (see the componentSyntheticHost* instructions).
+ * instead of the current renderer (see the componentSyntheticHost\* instructions).
+ *
  */
 export function loadComponentRenderer(
     currentDef: DirectiveDef<any>|null, tNode: TNode, lView: LView): Renderer {

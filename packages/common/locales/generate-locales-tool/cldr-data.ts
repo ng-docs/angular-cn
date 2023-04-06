@@ -55,7 +55,7 @@ export type CldrLocaleData = CldrStatic&{
   attributes: {
     /**
      * Resolved bundle name for the locale.
-     * More details: <http://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup>
+     * More details: http://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup
      *
      * 区域设置的解析包名称。更多详细信息：
      * [http](http://www.unicode.org/reports/tr35/#Bundle_vs_Item_Lookup)
@@ -68,10 +68,10 @@ export type CldrLocaleData = CldrStatic&{
 
 /**
  * Possible reasons for an alias in the CLDR supplemental data. See:
- * <https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata>.
+ * https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata.
  *
  * CLDR 补充数据中存在别名的可能原因。请参阅：
- * <https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata> 。
+ * https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata 。
  *
  */
 export type CldrLocaleAliasReason =
@@ -129,9 +129,9 @@ export class CldrData {
 
   /**
    * Gets the CLDR language aliases.
-   * <http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences>.
+   * http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences.
    *
-   * 获取 CLDR 语言别名。 <http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences> 。
+   * 获取 CLDR 语言别名。 http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences 。
    *
    */
   getLanguageAliases():

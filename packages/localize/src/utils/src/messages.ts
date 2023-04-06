@@ -70,7 +70,7 @@ export type MessageId = string;
  * `@angular/localize` `typescript` Web 环境兼容，并且会使用默认导入，仅在启用
  * `allowSyntheticDefaultImports` 时才进行类型检查。
  *
- * @see <https://github.com/angular/angular/issues/45179>
+ * @see https://github.com/angular/angular/issues/45179
  *
  */
 type AbsoluteFsPathLocalizeCopy = string&{_brand: 'AbsoluteFsPath'};

@@ -388,9 +388,9 @@ function toPercent(parsedNumber: ParsedNumber): ParsedNumber {
 
 /**
  * Parses a number.
- * Significant bits of this parse algorithm came from <https://github.com/MikeMcl/big.js/>
+ * Significant bits of this parse algorithm came from https://github.com/MikeMcl/big.js/
  *
- * 解析一个数字。此解析算法的重要位来自<https://github.com/MikeMcl/big.js/>
+ * 解析一个数字。此解析算法的重要位来自 https://github.com/MikeMcl/big.js/
  *
  */
 function parseNumber(num: number): ParsedNumber {

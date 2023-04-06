@@ -390,6 +390,9 @@ export enum ErrorCode {
    * A text attribute is not interpreted as a binding but likely intended to be.
    *
    * For example:
+   *
+   * 比如：
+   *
    * ```
    * <div
    *   attr.x="value"
@@ -400,6 +403,7 @@ export enum ErrorCode {
    *
    * All of the above attributes will just be static text attributes and will not be interpreted as
    * bindings by the compiler.
+   *
    */
   TEXT_ATTRIBUTE_NOT_BINDING = 8104,
 
@@ -408,9 +412,13 @@ export enum ErrorCode {
    * in their statement.
    *
    * For example:
+   *
+   * 比如：
+   *
    * ```
    * <ul><li *ngFor="item of items">{{item["name"]}};</li></ul>
    * ```
+   *
    */
   MISSING_NGFOROF_LET = 8105,
   /**
@@ -433,7 +441,9 @@ export enum ErrorCode {
    * {{ foo?.['bar'] }}
    * {{ foo?.() }}
    * ```
+   *
    * When the type of foo doesn't include `null` or `undefined`.
+   *
    */
   OPTIONAL_CHAIN_NOT_NULLABLE = 8107,
 
@@ -442,12 +452,16 @@ export enum ErrorCode {
    * `ngSkipHydration` should not be a binding (it should be a static attribute).
    *
    * For example:
+   *
+   * 比如：
+   *
    * ```
    * <my-cmp [ngSkipHydration]="someTruthyVar" />
    * ```
    *
    * `ngSkipHydration` cannot be a binding and can not have values other than "true" or an empty
    * value
+   *
    */
   SKIP_HYDRATION_NOT_STATIC = 8108,
 

@@ -22,15 +22,16 @@ import {FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, ON_DESTROY_HOOKS, PARENT,
  * because the storage is sparse. This file contains utilities for dealing with such data types.
  *
  * How do we know what is stored at a given location in `LView`.
+ *
  * - `Array.isArray(value) === false` => `RNode` (The normal storage value)
  * - `Array.isArray(value) === true` => then the `value[0]` represents the wrapped value.
  *   - `typeof value[TYPE] === 'object'` => `LView`
- *      - This happens when we have a component at a given location
+ *     - This happens when we have a component at a given location
  *   - `typeof value[TYPE] === true` => `LContainer`
- *      - This happens when we have `LContainer` binding at a given location.
- *
+ *     - This happens when we have `LContainer` binding at a given location.
  *
  * NOTE: it is assumed that `Array.isArray` and `typeof` operations are very efficient.
+ *
  */
 
 /**
@@ -166,9 +167,11 @@ export function resetPreOrderHookFlags(lView: LView) {
 /**
  * Updates the `TRANSPLANTED_VIEWS_TO_REFRESH` counter on the `LContainer` as well as the parents
  * whose
+ *
  *  1. counter goes from 0 to 1, indicating that there is a new child that has a view to refresh
  *  or
  *  2. counter goes from 1 to 0, indicating there are no more descendant views to refresh
+ *
  */
 export function updateTransplantedViewCount(lContainer: LContainer, amount: 1|- 1) {
   lContainer[TRANSPLANTED_VIEWS_TO_REFRESH] += amount;

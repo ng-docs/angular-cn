@@ -144,10 +144,10 @@ export function setUpLocationSync(ngUpgrade: UpgradeModule, urlType: 'path'|'has
  * 来执行解析来解决这个问题，并且再次分配它。这会正确填充所有属性。
  *
  * See
- * <https://github.com/angular/angular.js/blob/2c7400e7d07b0f6cec1817dab40b9250ce8ebce6/src/ng/urlUtils.js#L26-L33>
+ * https://github.com/angular/angular.js/blob/2c7400e7d07b0f6cec1817dab40b9250ce8ebce6/src/ng/urlUtils.js#L26-L33
  * for more info.
  *
- * 有关更多信息，请参阅<https://github.com/angular/angular.js/blob/2c7400e7d07b0f6cec1817dab40b9250ce8ebce6/src/ng/urlUtils.js#L26-L33>
+ * 有关更多信息，请参阅 https://github.com/angular/angular.js/blob/2c7400e7d07b0f6cec1817dab40b9250ce8ebce6/src/ng/urlUtils.js#L26-L33
  * 。
  *
  */

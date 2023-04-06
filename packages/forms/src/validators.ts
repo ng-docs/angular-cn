@@ -150,14 +150,14 @@ export const NG_ASYNC_VALIDATORS =
  * ## 实现背景
  *
  * This regexp was ported over from AngularJS (see there for git history):
- * <https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27>
+ * https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27
  * It is based on the
  * [WHATWG version](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address) with
  * some enhancements to incorporate more RFC rules (such as rules related to domain names and the
  * lengths of different parts of the address). The main differences from the WHATWG version are:
  *
  * 此正则表达式是从 AngularJS 移植的（有关 git 历史记录，请参阅那里）：
- * <https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27>它基于[WHATWG](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)具有一些增强功能以包含更多
+ * https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27 它基于[WHATWG](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)具有一些增强功能以包含更多
  * RFC
  * 规则的[版本](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)（例如与域名和地址不同部分的长度相关的规则）。与
  * WHATWG 版本的主要区别是：

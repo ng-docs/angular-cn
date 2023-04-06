@@ -1,4 +1,3 @@
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -12,11 +11,16 @@ import {EnvironmentProviders, Provider} from './di';
 /**
  * Set of config options available during the application bootstrap operation.
  *
+ * 在引导操作期间通过 `bootstrapApplication` 调用可用的一组配置选项。
+ *
  * @publicApi
  */
 export interface ApplicationConfig {
   /**
    * List of providers that should be available to the root component and all its children.
+   *
+   * 应该可用于根组件及其所有子组件的提供者列表。
+   *
    */
   providers: Array<Provider|EnvironmentProviders>;
 }

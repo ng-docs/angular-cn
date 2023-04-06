@@ -49,7 +49,7 @@ For more information about how Google handles security issues, see [Google's sec
 | Don't alter your copy of Angular | Private, customized versions of Angular tend to fall behind the current version and might not include important security fixes and enhancements. Instead, share your Angular improvements with the community and make a pull request. |
 | 不要修改你的 Angular 副本 | 私有的、定制版的 Angular 往往跟不上最新版本，这可能导致你忽略重要的安全修复与增强。反之，应该在社区共享你对 Angular 所做的改进并创建 Pull Request。. |
 | Avoid Angular APIs marked in the documentation as "*Security Risk*" | For more information, see the [Trusting safe values](guide/security#bypass-security-apis) section of this page. |
-| 避免使用本文档中带“[*安全风险*](guide/security#bypass-security-apis)”标记的 Angular API | 要了解更多信息，请参阅本章的[信任那些安全的值](guide/security#bypass-security-apis)部分。 |
+| 避免使用本文档中带“安全风险”标记的 Angular API | 要了解更多信息，请参阅本章的[信任那些安全的值](guide/security#bypass-security-apis)部分。 |
 
 </div>
 

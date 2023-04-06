@@ -20,12 +20,18 @@ import {PRIMARY_OUTLET} from '../shared';
 /**
  * An interface that defines the contract for developing a component outlet for the `Router`.
  *
+ * 一个接口，定义了为 `Router` 开发组件出口的契约。
+ *
  * An outlet acts as a placeholder that Angular dynamically fills based on the current router state.
+ *
+ * 出口充当占位符，Angular 会根据当前的路由器状态动态填充。
  *
  * A router outlet should register itself with the `Router` via
  * `ChildrenOutletContexts#onChildOutletCreated` and unregister with
  * `ChildrenOutletContexts#onChildOutletDestroyed`. When the `Router` identifies a matched `Route`,
  * it looks for a registered outlet in the `ChildrenOutletContexts` and activates it.
+ *
+ * 路由器出口应该通过 ChildrenOutletContexts#onChildOutletCreated 向 `Router` 注册自己，并通过 `ChildrenOutletContexts#onChildOutletCreated` `ChildrenOutletContexts#onChildOutletDestroyed` 注册。当 `Router` 识别到匹配的 `Route` 时，它会在 `ChildrenOutletContexts` 中查找注册的插座并激活它。
  *
  * @see `ChildrenOutletContexts`
  * @publicApi
@@ -34,68 +40,110 @@ export interface RouterOutletContract {
   /**
    * Whether the given outlet is activated.
    *
+   * 给定的插座是否已激活。
+   *
    * An outlet is considered "activated" if it has an active component.
+   *
+   * 如果插座有活动组件，则认为它是“激活的”。
+   *
    */
   isActivated: boolean;
 
-  /** The instance of the activated component or `null` if the outlet is not activated. */
+  /**
+   * The instance of the activated component or `null` if the outlet is not activated.
+   *
+   * 已激活组件的实例；如果未激活插座，则为 `null` 。
+   *
+   */
   component: Object|null;
 
   /**
    * The `Data` of the `ActivatedRoute` snapshot.
+   *
+   * `ActivatedRoute` 快照的 `Data` 。
+   *
    */
   activatedRouteData: Data;
 
   /**
    * The `ActivatedRoute` for the outlet or `null` if the outlet is not activated.
+   *
+   * 插座的 `ActivatedRoute` ，如果此插座未激活，则为 `null` 。
+   *
    */
   activatedRoute: ActivatedRoute|null;
 
   /**
    * Called by the `Router` when the outlet should activate (create a component).
+   *
+   * 在插座应该激活（创建组件）时由 `Router` 调用。
+   *
    */
   activateWith(activatedRoute: ActivatedRoute, environmentInjector: EnvironmentInjector|null): void;
 
   /**
    * A request to destroy the currently activated component.
    *
+   * 销毁当前激活的组件的请求。
+   *
    * When a `RouteReuseStrategy` indicates that an `ActivatedRoute` should be removed but stored for
    * later re-use rather than destroyed, the `Router` will call `detach` instead.
+   *
+   * 当 `RouteReuseStrategy` 表明应该删除 `ActivatedRoute` 但存储以供以后重用而不是销毁时，`Router` 将改为调用 `detach` 。
+   *
    */
   deactivate(): void;
 
   /**
    * Called when the `RouteReuseStrategy` instructs to detach the subtree.
    *
+   * 受 `RouteReuseStrategy` 的指示，从子树中分离开时调用。
+   *
    * This is similar to `deactivate`, but the activated component should _not_ be destroyed.
    * Instead, it is returned so that it can be reattached later via the `attach` method.
+   *
    */
   detach(): ComponentRef<unknown>;
 
   /**
    * Called when the `RouteReuseStrategy` instructs to re-attach a previously detached subtree.
+   *
+   * `RouteReuseStrategy` 的指示，把以前分离的子树重新附加回来时调用。
+   *
    */
   attach(ref: ComponentRef<unknown>, activatedRoute: ActivatedRoute): void;
 
   /**
    * Emits an activate event when a new component is instantiated
-   **/
+   *
+   * 实例化新组件时发出 activate 事件
+   *
+   */
   activateEvents?: EventEmitter<unknown>;
 
   /**
    * Emits a deactivate event when a component is destroyed.
+   *
+   * 当组件被销毁时发出 deactivate 事件。
+   *
    */
   deactivateEvents?: EventEmitter<unknown>;
 
   /**
    * Emits an attached component instance when the `RouteReuseStrategy` instructs to re-attach a
    * previously detached subtree.
-   **/
+   *
+   * 当 `RouteReuseStrategy` 指示重新附加以前分离的子树时，发出一个附加的组件实例。
+   *
+   */
   attachEvents?: EventEmitter<unknown>;
 
   /**
    * Emits a detached component instance when the `RouteReuseStrategy` instructs to detach the
    * subtree.
+   *
+   * 当 `RouteReuseStrategy` 指示分离子树时发出一个分离的组件实例。
+   *
    */
   detachEvents?: EventEmitter<unknown>;
 
@@ -115,8 +163,12 @@ export interface RouterOutletContract {
  *
  * Acts as a placeholder that Angular dynamically fills based on the current router state.
  *
+ * 一个占位符，Angular 会根据当前的路由器状态动态填充它。
+ *
  * Each outlet can have a unique name, determined by the optional `name` attribute.
  * The name cannot be set or changed dynamically. If not set, default value is "primary".
+ *
+ * 每个出口可以具有唯一的名称，该 `name` 由可选的 name 属性确定。该名称不能动态设置或更改。如果未设置，则默认值为 “primary”。
  *
  * ```
  * <router-outlet></router-outlet>
@@ -127,15 +179,21 @@ export interface RouterOutletContract {
  * Named outlets can be the targets of secondary routes.
  * The `Route` object for a secondary route has an `outlet` property to identify the target outlet:
  *
+ * 每当新组件实例化之后，路由出口就会发出一个激活事件；在销毁时则发出取消激活的事件。
+ *
  * `{path: <base-path>, component: <component>, outlet: <target_outlet_name>}`
  *
  * Using named outlets and secondary routes, you can target multiple outlets in
  * the same `RouterLink` directive.
  *
+ * 使用命名的出口和辅助路由，你可以在同一 `RouterLink` 指令中定位多个出口。
+ *
  * The router keeps track of separate branches in a navigation tree for each named outlet and
  * generates a representation of that tree in the URL.
  * The URL for a secondary route uses the following syntax to specify both the primary and secondary
  * routes at the same time:
+ *
+ * 路由器在导航树中跟踪每个命名出口的单独分支，并在 URL 中生成该树的表示形式。辅助路由的 URL 使用以下语法同时指定主要路由和辅助路由：
  *
  * `http://base-path/primary-route-path(outlet-name:route-path)`
  *
@@ -144,6 +202,8 @@ export interface RouterOutletContract {
  * An attached event emits when the `RouteReuseStrategy` instructs the outlet to reattach the
  * subtree, and the detached event emits when the `RouteReuseStrategy` instructs the outlet to
  * detach the subtree.
+ *
+ * 每当新组件实例化之后，路由出口就会发出一个激活事件；在销毁时则发出取消激活的事件。
  *
  * ```
  * <router-outlet
@@ -155,10 +215,12 @@ export interface RouterOutletContract {
  *
  * @see [Routing tutorial](guide/router-tutorial-toh#named-outlets "Example of a named
  * outlet and secondary route configuration").
+ *
+ * [路由导航](guide/router-tutorial-toh#named-outlets "命名出口与第二路由的配置范例")。
+ *
  * @see `RouterLink`
  * @see `Route`
  * @ngModule RouterModule
- *
  * @publicApi
  */
 @Directive({
@@ -185,11 +247,17 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
   /**
    * Emits an attached component instance when the `RouteReuseStrategy` instructs to re-attach a
    * previously detached subtree.
-   **/
+   *
+   * 当 `RouteReuseStrategy` 指示重新附加以前分离的子树时，发出一个附加的组件实例。
+   *
+   */
   @Output('attach') attachEvents = new EventEmitter<unknown>();
   /**
    * Emits a detached component instance when the `RouteReuseStrategy` instructs to detach the
    * subtree.
+   *
+   * 当 `RouteReuseStrategy` 指示分离子树时发出一个分离的组件实例。
+   *
    */
   @Output('detach') detachEvents = new EventEmitter<unknown>();
 
@@ -292,6 +360,9 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
 
   /**
    * Called when the `RouteReuseStrategy` instructs to detach the subtree
+   *
+   * 受 `RouteReuseStrategy` 的指示，从子树中分离开时调用
+   *
    */
   detach(): ComponentRef<any> {
     if (!this.activated)
@@ -308,6 +379,9 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
 
   /**
    * Called when the `RouteReuseStrategy` instructs to re-attach a previously detached subtree
+   *
+   * `RouteReuseStrategy` 的指示，把以前分离的子树重新附加回来时调用
+   *
    */
   attach(ref: ComponentRef<any>, activatedRoute: ActivatedRoute) {
     this.activated = ref;

@@ -50,9 +50,9 @@ export function ɵɵresolveBody(element: RElement&{ownerDocument: Document}) {
  * DebugElement.properties 将不会返回该绑定的正确值。但是，对于真实应用程序，不应该有运行时效果。
  *
  * This character is typically rendered as a question mark inside of a diamond.
- * See <https://en.wikipedia.org/wiki/Specials_(Unicode_block>)
+ * See https://en.wikipedia.org/wiki/Specials_(Unicode_block)
  *
- * 此字符通常呈现为钻石内的问号。请参阅<https://en.wikipedia.org/wiki/Specials_(Unicode_block> )
+ * 此字符通常呈现为钻石内的问号。请参阅 https://en.wikipedia.org/wiki/Specials_(Unicode_block )
  *
  */
 export const INTERPOLATION_DELIMITER = `�`;

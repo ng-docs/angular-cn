@@ -25,8 +25,13 @@ import {unwrapRNode} from './view_utils';
 /**
  * Retrieves the component instance associated with a given DOM element.
  *
+ * 检索与给定 DOM 元素关联的组件实例。
+ *
  * @usageNotes
+ *
  * Given the following DOM structure:
+ *
+ * 给定以下 DOM 结构：
  *
  * ```html
  * <app-root>
@@ -39,13 +44,18 @@ import {unwrapRNode} from './view_utils';
  * Calling `getComponent` on `<child-comp>` will return the instance of `ChildComponent`
  * associated with this DOM element.
  *
+ * 在 `<my-app>` 上调用该函数将返回 `MyApp` 实例。
+ *
  * Calling the function on `<app-root>` will return the `MyApp` instance.
  *
+ * 在 `<my-app>` 上调用该函数将返回 `MyApp` 实例。
  *
  * @param element DOM element from which the component should be retrieved.
+ *
+ * 要从中检索组件的 DOM 元素。
+ *
  * @returns Component instance associated with the element or `null` if there
  *    is no component associated with it.
- *
  * @publicApi
  * @globalApi ng
  */
@@ -71,10 +81,14 @@ export function getComponent<T>(element: Element): T|null {
  * view that the element is part of. Otherwise retrieves the instance of the component whose view
  * owns the element (in this case, the result is the same as calling `getOwningComponent`).
  *
+ * 如果在嵌入式视图中（比如 `*ngIf` 或 `*ngFor`），则检索元素所属的嵌入式视图的上下文。否则，检索其视图中拥有该元素的组件的实例（在这种情况下，其结果与调用 `getOwningComponent` 相同）。
+ *
  * @param element Element for which to get the surrounding component instance.
+ *
+ * 要获取外围组件实例的元素。
+ *
  * @returns Instance of the component that is around the element or null if the element isn't
  *    inside any component.
- *
  * @publicApi
  * @globalApi ng
  */
@@ -88,15 +102,21 @@ export function getContext<T extends {}>(element: Element): T|null {
 /**
  * Retrieves the component instance whose view contains the DOM element.
  *
+ * 检索其视图中包含此 DOM 元素的组件实例。
+ *
  * For example, if `<child-comp>` is used in the template of `<app-comp>`
  * (i.e. a `ViewChild` of `<app-comp>`), calling `getOwningComponent` on `<child-comp>`
  * would return `<app-comp>`.
  *
+ * 比如，如果 `<child-comp>` 在 `<app-comp>` 的模板中使用（即 `<app-comp>` 的 `ViewChild`），在 `<child-comp>` 上调用 `getOwningComponent` 将返回 `<app-comp>`。
+ *
  * @param elementOrDir DOM element, component or directive instance
  *    for which to retrieve the root components.
+ *
+ * 要为其检索根组件的 DOM 元素、组件或指令实例。
+ *
  * @returns Component instance whose view owns the DOM element or null if the element is not
  *    part of a component view.
- *
  * @publicApi
  * @globalApi ng
  */
@@ -116,10 +136,14 @@ export function getOwningComponent<T>(elementOrDir: Element|{}): T|null {
  * Retrieves all root components associated with a DOM element, directive or component instance.
  * Root components are those which have been bootstrapped by Angular.
  *
+ * 检索与 DOM 元素，指令或组件实例关联的所有根组件。根组件是由 Angular 引导启动的组件。
+ *
  * @param elementOrDir DOM element, component or directive instance
  *    for which to retrieve the root components.
- * @returns Root components associated with the target object.
  *
+ * 要为其检索根组件的 DOM 元素、组件或指令实例。
+ *
+ * @returns Root components associated with the target object.
  * @publicApi
  * @globalApi ng
  */
@@ -131,10 +155,14 @@ export function getRootComponents(elementOrDir: Element|{}): {}[] {
 /**
  * Retrieves an `Injector` associated with an element, component or directive instance.
  *
+ * 检索与元素、组件或指令实例关联的 `Injector`。
+ *
  * @param elementOrDir DOM element, component or directive instance for which to
  *    retrieve the injector.
- * @returns Injector associated with the element, component or directive instance.
  *
+ * 要为其获取注入器的 DOM 元素、组件或指令实例。
+ *
+ * @returns Injector associated with the element, component or directive instance.
  * @publicApi
  * @globalApi ng
  */
@@ -179,8 +207,13 @@ export function getInjectionTokens(element: Element): any[] {
  * Retrieves directive instances associated with a given DOM node. Does not include
  * component instances.
  *
+ * 检索与给定 DOM 元素关联的指令实例。不包括组件实例。
+ *
  * @usageNotes
+ *
  * Given the following DOM structure:
+ *
+ * 给定以下 DOM 结构：
  *
  * ```html
  * <app-root>
@@ -192,11 +225,17 @@ export function getInjectionTokens(element: Element): any[] {
  * Calling `getDirectives` on `<button>` will return an array with an instance of the `MyButton`
  * directive that is associated with the DOM node.
  *
+ * 在 `<my-comp>` 上调用 `getDirectives` 将返回一个空数组。
+ *
  * Calling `getDirectives` on `<my-comp>` will return an empty array.
  *
- * @param node DOM node for which to get the directives.
- * @returns Array of directives associated with the node.
+ * 在 `<my-comp>` 上调用 `getDirectives` 将返回一个空数组。
  *
+ * @param node DOM node for which to get the directives.
+ *
+ * 要为其获取指令的 DOM 元素。
+ *
+ * @returns Array of directives associated with the node.
  * @publicApi
  * @globalApi ng
  */
@@ -231,6 +270,8 @@ export function getDirectives(node: Node): {}[] {
  * This information might be useful for debugging purposes or tooling.
  * Currently only `inputs` and `outputs` metadata is available.
  *
+ * 给定指令实例的部分元数据。此信息可能可用于调试目的或工具。当前只有 `inputs` 和 `outputs` 元数据可用。
+ *
  * @publicApi
  */
 export interface DirectiveDebugMetadata {
@@ -242,10 +283,24 @@ export interface DirectiveDebugMetadata {
  * Partial metadata for a given component instance.
  * This information might be useful for debugging purposes or tooling.
  * Currently the following fields are available:
- *  - inputs
- *  - outputs
- *  - encapsulation
- *  - changeDetection
+ *
+ * 给定组件实例的部分元数据。此信息可能可用于调试目的或工具。目前有以下字段可用：
+ *
+ * - inputs
+ *
+ *   inputs（输入属性）
+ *
+ * - outputs
+ *
+ *   outputs（输出属性）
+ *
+ * - encapsulation
+ *
+ *   encapsulation（封装）
+ *
+ * - changeDetection
+ *
+ *   changeDetection（变更检测）
  *
  * @publicApi
  */
@@ -259,9 +314,13 @@ export interface ComponentDebugMetadata extends DirectiveDebugMetadata {
  * The function accepts an instance of a directive or component and returns the corresponding
  * metadata.
  *
- * @param directiveOrComponentInstance Instance of a directive or component
- * @returns metadata of the passed directive or component
+ * 返回特定指令或组件实例的调试（部分）元数据。该函数接受指令或组件的实例，并返回相应的元数据。
  *
+ * @param directiveOrComponentInstance Instance of a directive or component
+ *
+ * 指令或组件的实例
+ *
+ * @returns metadata of the passed directive or component
  * @publicApi
  * @globalApi ng
  */
@@ -317,10 +376,14 @@ export function getLocalRefs(target: {}): {[key: string]: any} {
  * Retrieves the host element of a component or directive instance.
  * The host element is the DOM element that matched the selector of the directive.
  *
+ * 检索组件或指令实例的宿主元素。 宿主元素是与指令的选择器匹配的 DOM 元素。
+ *
  * @param componentOrDirective Component or directive instance for which the host
  *     element should be retrieved.
- * @returns Host element of the target.
  *
+ * 要为其检索宿主元素的组件或指令实例。
+ *
+ * @returns Host element of the target.
  * @publicApi
  * @globalApi ng
  */
@@ -345,19 +408,45 @@ export function getRenderedText(component: any): string {
 
 /**
  * Event listener configuration returned from `getListeners`.
+ *
+ * `getListeners` 返回的事件监听器配置。
+ *
  * @publicApi
  */
 export interface Listener {
-  /** Name of the event listener. */
+  /**
+   * Name of the event listener.
+   *
+   * 事件监听器的名称。
+   *
+   */
   name: string;
-  /** Element that the listener is bound to. */
+  /**
+   * Element that the listener is bound to.
+   *
+   * 监听器绑定到的元素。
+   *
+   */
   element: Element;
-  /** Callback that is invoked when the event is triggered. */
+  /**
+   * Callback that is invoked when the event is triggered.
+   *
+   * 触发事件时调用的回调。
+   *
+   */
   callback: (value: any) => any;
-  /** Whether the listener is using event capturing. */
+  /**
+   * Whether the listener is using event capturing.
+   *
+   * 监听器是否正在使用事件捕获。
+   *
+   */
   useCapture: boolean;
   /**
    * Type of the listener (e.g. a native DOM event or a custom @Output).
+   *
+   * 监听器的类型（比如，原生 DOM 事件或自定义 @Output）。
+   *
    */
   type: 'dom'|'output';
 }
@@ -368,8 +457,13 @@ export interface Listener {
  * listeners, but it does not include event listeners defined outside of the Angular context
  * (e.g. through `addEventListener`).
  *
+ * 检索与 DOM 元素关联的事件监听器的列表。该列表包含宿主监听器，但不包含在 Angular 上下文之外定义的事件监听器（比如，通过 `addEventListener`）。
+ *
  * @usageNotes
+ *
  * Given the following DOM structure:
+ *
+ * 给定以下 DOM 结构：
  *
  * ```html
  * <app-root>
@@ -378,6 +472,8 @@ export interface Listener {
  * ```
  *
  * Calling `getListeners` on `<div>` will return an object that looks as follows:
+ *
+ * 在 `<div>` 上调用 `getListeners` 将返回一个如下所示的对象：
  *
  * ```ts
  * {
@@ -389,8 +485,10 @@ export interface Listener {
  * ```
  *
  * @param element Element for which the DOM listeners should be retrieved.
- * @returns Array of event listeners on the DOM element.
  *
+ * 要为其检索 DOM 监听器的元素。
+ *
+ * @returns Array of event listeners on the DOM element.
  * @publicApi
  * @globalApi ng
  */

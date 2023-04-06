@@ -694,25 +694,25 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  *
  * 以下是数字模式中使用的特殊字符：
  *
- * | Symbol | Meaning |
- * | ------ | ------- |
- * | 符号 | 含义 |
- * | . | Replaced automatically by the character used for the decimal point. |
- * | . | 自动替换为用作小数点的字符。 |
- * | , | Replaced by the "grouping" (thousands) separator. |
- * | . | 替换为（千）“分组”分隔符。 |
- * | 0 | Replaced by a digit (or zero if there aren't enough digits). |
- * | 0 | 替换为一个数字（如果没有足够的数字，则为零）。 |
- * | # | Replaced by a digit (or nothing if there aren't enough). |
- * | # | 用数字代替（如果数字不足，则不进行任何替换）。 |
- * | ¤ | Replaced by a currency symbol, such as $ or USD. |
- * | ¤ | 替换为货币符号，比如 $ 或 USD。 |
- * | % | Marks a percent format. The % symbol may change position, but must be retained. |
- * | % | 标记百分比格式。％符号可能会更改位置，但必须保留。 |
- * | E | Marks a scientific format. The E symbol may change position, but must be retained. |
- * | E | 标记科学计数法格式。 E 符号可能会改变位置，但必须保留。 |
- * | ' | Special characters used as literal characters are quoted with ASCII single quotes. |
- * | ' | 表示文本字面量的特殊字符，用 ASCII 单引号引起来。 |
+ * | Symbol | Meaning                                                                            |
+ * | ------ | ---------------------------------------------------------------------------------- |
+ * | 符号   | 含义                                                                               |
+ * | .      | Replaced automatically by the character used for the decimal point.                |
+ * | .      | 自动替换为用作小数点的字符。                                                       |
+ * | ,      | Replaced by the "grouping" (thousands) separator.                                  |
+ * | .      | 替换为（千）“分组”分隔符。                                                         |
+ * | 0      | Replaced by a digit (or zero if there aren't enough digits).                       |
+ * | 0      | 替换为一个数字（如果没有足够的数字，则为零）。                                     |
+ * | #      | Replaced by a digit (or nothing if there aren't enough).                           |
+ * | #      | 用数字代替（如果数字不足，则不进行任何替换）。                                     |
+ * | ¤      | Replaced by a currency symbol, such as $ or USD.                                   |
+ * | ¤      | 替换为货币符号，比如 $ 或 USD。                                                    |
+ * | %      | Marks a percent format. The % symbol may change position, but must be retained.    |
+ * | %      | 标记百分比格式。％符号可能会更改位置，但必须保留。                                 |
+ * | E      | Marks a scientific format. The E symbol may change position, but must be retained. |
+ * | E      | 标记科学计数法格式。 E 符号可能会改变位置，但必须保留。                            |
+ * | '      | Special characters used as literal characters are quoted with ASCII single quotes. |
+ * | '      | 表示文本字面量的特殊字符，用 ASCII 单引号引起来。                                  |
  *
  * @param locale A locale code for the locale format rules to use.
  *

@@ -169,10 +169,9 @@ export class BrowserViewportScroller implements ViewportScroller {
    * @param target The ID of an element or name of the anchor.
    *
    * 元素的 ID 或锚点的名称。
+   * @see https://html.spec.whatwg.org/#the-indicated-part-of-the-document
    *
-   * @see <https://html.spec.whatwg.org/#the-indicated-part-of-the-document>
-   *
-   * @see <https://html.spec.whatwg.org/#scroll-to-fragid>
+   * @see https://html.spec.whatwg.org/#scroll-to-fragid
    *
    */
   scrollToAnchor(target: string): void {

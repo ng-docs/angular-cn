@@ -504,9 +504,6 @@ export class ResolveStart extends RouterEvent {
  * 在路由的“解析”阶段结束时触发的事件。
  *
  * @see `ResolveStart`.
- *
- * 表示路由解析（`Resolve`）阶段的结束。参见 `ResolveStart` 上的注释以了解这个试验性 API 的用法。
- *
  * @publicApi
  */
 export class ResolveEnd extends RouterEvent {

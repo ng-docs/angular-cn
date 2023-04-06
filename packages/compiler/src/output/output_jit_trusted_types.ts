@@ -27,23 +27,23 @@ import {global} from '../util';
  * 虽然 Angular 暂时仅在内部使用受信任类型，但对受信任类型的引用可能会泄漏到我们的 core.d.ts
  * 中，这将迫使任何针对 @angular/core 编译的人在他们的编译单元中提供 @types/trusted-types 包.
  *
- * Until <https://github.com/microsoft/TypeScript/issues/30024> is resolved, we
+ * Until https://github.com/microsoft/TypeScript/issues/30024 is resolved, we
  * will keep Angular's public API surface free of references to Trusted Types.
  * For internal and semi-private APIs that need to reference Trusted Types, the
  * minimal type definitions for the Trusted Types API provided by this module
  * should be used instead. They are marked as "declare" to prevent them from
  * being renamed by compiler optimization.
  *
- * 在解决<https://github.com/microsoft/TypeScript/issues/30024>之前，我们将保持 Angular 的公共 API
+ * 在解决 https://github.com/microsoft/TypeScript/issues/30024 之前，我们将保持 Angular 的公共 API
  * 图面不存在对受信任类型的引用。对于需要引用受信任类型的内部和半私有
  * API，应改为使用此模块提供的受信任类型 API
  * 的最小类型定义。它们被标记为“declare”，以防止它们被编译器优化重命名。
  *
  * Adapted from
- * <https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/trusted-types/index.d.ts>
+ * https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/trusted-types/index.d.ts
  * but restricted to the API surface used within Angular.
  *
- * 改编自<https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/trusted-types/index.d.ts>
+ * 改编自 https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/trusted-types/index.d.ts
  * ，但仅限于 Angular 中使用的 API 图面。
  *
  */

@@ -27,12 +27,11 @@ const LEGACY_XLIFF_MESSAGE_LENGTH = 40;
  *
  * 可以编写 XLIFF 1.2 格式的文件的翻译序列化器。
  *
- * <https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html>
- * <https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html>
+ * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
+ * https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html
  *
- * <https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html>
- * [https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff
- * -profile-html-1.2.html](https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html)
+ * https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html
+ * [https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html](https://docs.oasis-open.org/xliff/v1.2/xliff-profile-html/xliff-profile-html-1.2.html)
  *
  * @see Xliff1TranslationParser
  * @publicApi used by CLI

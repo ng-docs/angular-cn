@@ -41,13 +41,13 @@ const PH_REGEXP = /�(\/?[#*]\d+):?\d*�/gi;
 
 /**
  * Angular Dart introduced &ngsp; as a placeholder for non-removable space, see:
- * <https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32>
+ * https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32
  * In Angular Dart &ngsp; is converted to the 0xE500 PUA (Private Use Areas) unicode character
  * and later on replaced by a space. We are re-implementing the same idea here, since translations
  * might contain this special character.
  *
  * Angular Dart 介绍了 &ngsp;作为不可移动空间的占位符，请参阅：
- * <https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32>在
+ * https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32 在
  * Angular Dart &ngsp; 中被转换为 0xE500 PUA（私人使用区域）unicode
  * 字符，后来被空格替换。我们在这里重新实现了同一个想法，因为翻译可能包含这个特殊字符。
  *

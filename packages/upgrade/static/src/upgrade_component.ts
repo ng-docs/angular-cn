@@ -43,7 +43,6 @@ class Bindings {
  * that wrap AngularJS components that need to be "upgraded".
  *
  * 此帮助器类应该用作创建包装需要“升级”的 AngularJS 组件的 Angular 指令的基类。
- *
  * @usageNotes
  *
  * ### Examples
@@ -68,12 +67,14 @@ class Bindings {
  * compile time.
  *
  * Note that we must do the following:
+ *
  * * specify the directive's selector (`ng1-hero`)
  * * specify all inputs and outputs that the AngularJS component expects
  * * derive from `UpgradeComponent`
  * * call the base class from the constructor, passing
  *   * the AngularJS name of the component (`ng1Hero`)
  *   * the `ElementRef` and `Injector` for the component wrapper
+ *
  * @publicApi
  * @extensible
  */

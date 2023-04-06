@@ -40,9 +40,9 @@ export function serializeDocument(doc: Document): string {
 }
 
 /**
- * DOM Adapter for the server platform based on <https://github.com/fgnass/domino>.
+ * DOM Adapter for the server platform based on https://github.com/fgnass/domino.
  *
- * 基于<https://github.com/fgnass/domino>的服务器平台的 DOM 适配器。
+ * 基于 https://github.com/fgnass/domino 的服务器平台的 DOM 适配器。
  *
  */
 export class DominoAdapter extends BrowserDomAdapter {

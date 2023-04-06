@@ -1,4 +1,3 @@
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -232,7 +231,8 @@ export function getSegmentHead(hydrationInfo: DehydratedView, index: number): RN
  * serialized in `ELEMENT_CONTAINERS` (element container size) or by
  * computing the sum of root nodes in all dehydrated views in a given
  * container (in case this `<ng-container>` was also used as a view
- * container host node, e.g. <ng-container *ngIf>).
+ * container host node, e.g. &lt;ng-container \*ngIf>).
+ *
  */
 export function getNgContainerSize(hydrationInfo: DehydratedView, index: number): number|null {
   const data = hydrationInfo.data;

@@ -25,8 +25,7 @@
  *
  * Invoking `{{ 'It was the best of times' | truncate }}` in a template will produce `It was...`.
  *
- * 调用 `{{ 'It was the best of times' | truncate }}` 模板中的 `{{ 'It was the best of times' |
- * truncate }}` 将生成 `It was...` 。
+ * 调用模板中的 `{{ 'It was the best of times' | truncate }}` 将生成 `It was...` 。
  *
  * In the following example, `TruncatePipe` takes parameters that sets the truncated length and the
  * string to append with.

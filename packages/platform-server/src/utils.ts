@@ -122,8 +122,10 @@ export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');
 
 /**
  * Sanitizes provided server context:
+ *
  * - removes all characters other than a-z, A-Z, 0-9 and `-`
  * - returns `other` if nothing is provided or the string is empty after sanitization
+ *
  */
 function sanitizeServerContext(serverContext: string): string {
   const context = serverContext.replace(/[^a-zA-Z0-9\-]/g, '');
@@ -133,12 +135,28 @@ function sanitizeServerContext(serverContext: string): string {
 /**
  * Bootstraps an application using provided NgModule and serializes the page content to string.
  *
+ * 使用提供的 NgModule 引导应用程序，并将页面内容序列化为字符串。
+ *
  * @param moduleType A reference to an NgModule that should be used for bootstrap.
+ *
+ * 对应该用于引导的 NgModule 的引用。
+ *
  * @param options Additional configuration for the render operation:
- *  - `document` - the document of the page to render, either as an HTML string or
- *                 as a reference to the `document` instance.
- *  - `url` - the URL for the current render request.
- *  - `extraProviders` - set of platform level providers for the current render request.
+ *
+ * 渲染操作的附加配置：
+ *
+ * - `document` - the document of the page to render, either as an HTML string or
+ *                as a reference to the `document` instance.
+ *
+ *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *
+ * - `url` - the URL for the current render request.
+ *
+ *   `url` - 当前呈现请求的 URL。
+ *
+ * - `extraProviders` - set of platform level providers for the current render request.
+ *
+ *   `extraProviders` - 当前渲染请求的平台级提供程序集。
  *
  * @publicApi
  */
@@ -154,7 +172,9 @@ export function renderModule<T>(moduleType: Type<T>, options: {
 
 /**
  * Bootstraps an instance of an Angular application and renders it to a string.
-
+ *
+ * 引导 Angular 应用程序的实例并将其呈现为字符串。
+ *
  * ```typescript
  * const bootstrap = () => bootstrapApplication(RootComponent, appConfig);
  * const output: string = await renderApplication(bootstrap);
@@ -163,13 +183,23 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  * @param bootstrap A method that when invoked returns a promise that returns an `ApplicationRef`
  *     instance once resolved.
  * @param options Additional configuration for the render operation:
- *  - `document` - the document of the page to render, either as an HTML string or
- *                 as a reference to the `document` instance.
- *  - `url` - the URL for the current render request.
- *  - `platformProviders` - the platform level providers for the current render request.
+ *
+ * 渲染操作的附加配置：
+ *
+ * - `document` - the document of the page to render, either as an HTML string or
+ *                as a reference to the `document` instance.
+ *
+ *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *
+ * - `url` - the URL for the current render request.
+ *
+ *   `url` - 当前呈现请求的 URL。
+ *
+ * - `platformProviders` - the platform level providers for the current render request.
+ *
+ *   `platformProviders` - 当前渲染请求的平台级提供程序。
  *
  * @returns A Promise, that returns serialized (to a string) rendered page, once resolved.
- *
  * @publicApi
  * @developerPreview
  */

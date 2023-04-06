@@ -28,9 +28,14 @@ import {afterNextNavigation} from './utils/navigations';
  * Sets up providers necessary to enable `Router` functionality for the application.
  * Allows to configure a set of routes as well as extra features that should be enabled.
  *
+ * 设置为应用程序启用 `Router` 特性所需的提供程序。允许配置一组路由以及应该启用的额外特性。
+ *
  * @usageNotes
  *
  * Basic example of how you can add a Router to your application:
+ *
+ * 如何将路由器添加到应用程序的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent, {
@@ -40,6 +45,9 @@ import {afterNextNavigation} from './utils/navigations';
  *
  * You can also enable optional features in the Router by adding functions from the `RouterFeatures`
  * type:
+ *
+ * 你还可以通过添加 `RouterFeatures` 类型的函数来在路由器中启用可选特性：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -54,10 +62,15 @@ import {afterNextNavigation} from './utils/navigations';
  * ```
  *
  * @see `RouterFeatures`
- *
  * @publicApi
  * @param routes A set of `Route`s to use for the application routing table.
+ *
+ * 用于应用程序路由表的一组 `Route` 。
+ *
  * @param features Optional features to configure additional router behaviors.
+ *
+ * 配置其他路由器行为的可选特性。
+ *
  * @returns A set of providers to setup a Router.
  */
 export function provideRouter(routes: Routes, ...features: RouterFeatures[]): EnvironmentProviders {
@@ -78,6 +91,8 @@ export function rootRoute(router: Router): ActivatedRoute {
 
 /**
  * Helper type to represent a Router feature.
+ *
+ * 表示路由器特性的帮助器类型。
  *
  * @publicApi
  */
@@ -118,7 +133,12 @@ const routerIsProvidedDevModeCheck = {
 
 /**
  * Registers a [DI provider](guide/glossary#provider) for a set of routes.
+ *
+ * 为一组路由注册[DI 提供程序](guide/glossary#provider)。
+ *
  * @param routes The route configuration to provide.
+ *
+ * 注册路由。
  *
  * @usageNotes
  *
@@ -128,7 +148,6 @@ const routerIsProvidedDevModeCheck = {
  * })
  * class LazyLoadedChildModule {}
  * ```
- *
  * @deprecated If necessary, provide routes using the `ROUTES` `InjectionToken`.
  * @see `ROUTES`
  * @publicApi
@@ -143,9 +162,10 @@ export function provideRoutes(routes: Routes): Provider[] {
 /**
  * A type alias for providers returned by `withInMemoryScrolling` for use with `provideRouter`.
  *
+ * `provideRouter` `withInMemoryScrolling` 使用。
+ *
  * @see `withInMemoryScrolling`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryScrollingFeature>;
@@ -153,9 +173,14 @@ export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryS
 /**
  * Enables customizable scrolling behavior for router navigations.
  *
+ * 为路由器导航启用可自定义的滚动行为。
+ *
  * @usageNotes
  *
  * Basic example of how you can enable scrolling feature:
+ *
+ * 如何启用滚动特性的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -169,10 +194,12 @@ export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryS
  *
  * @see `provideRouter`
  * @see `ViewportScroller`
- *
  * @publicApi
  * @param options Set of configuration parameters to customize scrolling behavior, see
  *     `InMemoryScrollingOptions` for additional information.
+ *
+ * 可选值。默认值为 `{}`。
+ *
  * @returns A set of providers for use with `provideRouter`.
  */
 export function withInMemoryScrolling(options: InMemoryScrollingOptions = {}):
@@ -260,9 +287,10 @@ const INITIAL_NAVIGATION = new InjectionToken<InitialNavigation>(
  * A type alias for providers returned by `withEnabledBlockingInitialNavigation` for use with
  * `provideRouter`.
  *
+ * `provideRouter` `withEnabledBlockingInitialNavigation` 使用。
+ *
  * @see `withEnabledBlockingInitialNavigation`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type EnabledBlockingInitialNavigationFeature =
@@ -272,10 +300,11 @@ export type EnabledBlockingInitialNavigationFeature =
  * A type alias for providers returned by `withEnabledBlockingInitialNavigation` or
  * `withDisabledInitialNavigation` functions for use with `provideRouter`.
  *
+ * 由 `withEnabledBlockingInitialNavigation` 或 `withDisabledInitialNavigation` 函数返回的提供程序的类型别名，与 `provideRouter` 一起使用。
+ *
  * @see `withEnabledBlockingInitialNavigation`
  * @see `withDisabledInitialNavigation`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type InitialNavigationFeature =
@@ -284,12 +313,19 @@ export type InitialNavigationFeature =
 /**
  * Configures initial navigation to start before the root component is created.
  *
+ * 将初始导航配置为在创建根组件之前启动。
+ *
  * The bootstrap is blocked until the initial navigation is complete. This value is required for
  * [server-side rendering](guide/universal) to work.
+ *
+ * 在初始导航完成之前，引导程序被阻止。[服务器端渲染](guide/universal)需要此值。
  *
  * @usageNotes
  *
  * Basic example of how you can enable this navigation behavior:
+ *
+ * 如何启用此导航行为的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -302,7 +338,6 @@ export type InitialNavigationFeature =
  * ```
  *
  * @see `provideRouter`
- *
  * @publicApi
  * @returns A set of providers for use with `provideRouter`.
  */
@@ -349,9 +384,10 @@ export function withEnabledBlockingInitialNavigation(): EnabledBlockingInitialNa
  * A type alias for providers returned by `withDisabledInitialNavigation` for use with
  * `provideRouter`.
  *
+ * `provideRouter` `withDisabledInitialNavigation` 使用。
+ *
  * @see `withDisabledInitialNavigation`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type DisabledInitialNavigationFeature =
@@ -360,12 +396,19 @@ export type DisabledInitialNavigationFeature =
 /**
  * Disables initial navigation.
  *
+ * 禁用初始导航。
+ *
  * Use if there is a reason to have more control over when the router starts its initial navigation
  * due to some complex initialization logic.
+ *
+ * 如果由于某些复杂的初始化逻辑而有理由对路由器何时开始其初始导航有更多控制权，可以使用。
  *
  * @usageNotes
  *
  * Basic example of how you can disable initial navigation:
+ *
+ * 如何禁用初始导航的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -378,9 +421,7 @@ export type DisabledInitialNavigationFeature =
  * ```
  *
  * @see `provideRouter`
- *
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withDisabledInitialNavigation(): DisabledInitialNavigationFeature {
@@ -403,9 +444,10 @@ export function withDisabledInitialNavigation(): DisabledInitialNavigationFeatur
 /**
  * A type alias for providers returned by `withDebugTracing` for use with `provideRouter`.
  *
+ * `withDebugTracing` 返回的提供程序的类型别名，与 `provideRouter` 一起使用。
+ *
  * @see `withDebugTracing`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type DebugTracingFeature = RouterFeature<RouterFeatureKind.DebugTracingFeature>;
@@ -414,9 +456,14 @@ export type DebugTracingFeature = RouterFeature<RouterFeatureKind.DebugTracingFe
  * Enables logging of all internal navigation events to the console.
  * Extra logging might be useful for debugging purposes to inspect Router event sequence.
  *
+ * 启用将所有内部导航事件记录到控制台。额外的日志可能可用于调试以检查路由器事件顺序。
+ *
  * @usageNotes
  *
  * Basic example of how you can enable debug tracing:
+ *
+ * 如何启用调试跟踪的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -429,9 +476,7 @@ export type DebugTracingFeature = RouterFeature<RouterFeatureKind.DebugTracingFe
  * ```
  *
  * @see `provideRouter`
- *
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withDebugTracing(): DebugTracingFeature {
@@ -465,9 +510,10 @@ const ROUTER_PRELOADER = new InjectionToken<RouterPreloader>(
  * A type alias that represents a feature which enables preloading in Router.
  * The type is used to describe the return value of the `withPreloading` function.
  *
+ * 一种类型别名，表示在 Router 中启用预加载的特性。该类型用于描述 `withPreloading` 函数的返回值。
+ *
  * @see `withPreloading`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type PreloadingFeature = RouterFeature<RouterFeatureKind.PreloadingFeature>;
@@ -476,9 +522,14 @@ export type PreloadingFeature = RouterFeature<RouterFeatureKind.PreloadingFeatur
  * Allows to configure a preloading strategy to use. The strategy is configured by providing a
  * reference to a class that implements a `PreloadingStrategy`.
  *
+ * 允许配置要使用的预加载策略。该策略是通过提供对实现 `PreloadingStrategy` 的类的引用来配置的。
+ *
  * @usageNotes
  *
  * Basic example of how you can configure preloading:
+ *
+ * 如何配置预加载的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -491,11 +542,12 @@ export type PreloadingFeature = RouterFeature<RouterFeatureKind.PreloadingFeatur
  * ```
  *
  * @see `provideRouter`
- *
  * @param preloadingStrategy A reference to a class that implements a `PreloadingStrategy` that
  *     should be used.
- * @returns A set of providers for use with `provideRouter`.
  *
+ * 对实现应该使用的 `PreloadingStrategy` 的类的引用。
+ *
+ * @returns A set of providers for use with `provideRouter`.
  * @publicApi
  */
 export function withPreloading(preloadingStrategy: Type<PreloadingStrategy>): PreloadingFeature {
@@ -509,9 +561,10 @@ export function withPreloading(preloadingStrategy: Type<PreloadingStrategy>): Pr
 /**
  * A type alias for providers returned by `withRouterConfig` for use with `provideRouter`.
  *
+ * `withRouterConfig` 返回的提供程序的类型别名，与 `provideRouter` 一起使用。
+ *
  * @see `withRouterConfig`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type RouterConfigurationFeature =
@@ -520,9 +573,14 @@ export type RouterConfigurationFeature =
 /**
  * Allows to provide extra parameters to configure Router.
  *
+ * 允许提供额外的参数来配置路由器。
+ *
  * @usageNotes
  *
  * Basic example of how you can provide extra configuration options:
+ *
+ * 如何提供额外配置选项的基本示例：
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -537,11 +595,12 @@ export type RouterConfigurationFeature =
  * ```
  *
  * @see `provideRouter`
- *
  * @param options A set of parameters to configure Router, see `RouterConfigOptions` for
  *     additional information.
- * @returns A set of providers for use with `provideRouter`.
  *
+ * 用于配置路由器的一组参数，有关其他信息，请参阅 `RouterConfigOptions` 。
+ *
+ * @returns A set of providers for use with `provideRouter`.
  * @publicApi
  */
 export function withRouterConfig(options: RouterConfigOptions): RouterConfigurationFeature {
@@ -567,6 +626,7 @@ export type RouterHashLocationFeature = RouterFeature<RouterFeatureKind.RouterHa
  * @usageNotes
  *
  * Basic example of how you can use the hash location option:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -580,9 +640,7 @@ export type RouterHashLocationFeature = RouterFeature<RouterFeatureKind.RouterHa
  *
  * @see `provideRouter`
  * @see `HashLocationStrategy`
- *
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withHashLocation(): RouterConfigurationFeature {
@@ -612,6 +670,7 @@ export type NavigationErrorHandlerFeature =
  * @usageNotes
  *
  * Basic example of how you can use the error handler option:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -627,9 +686,7 @@ export type NavigationErrorHandlerFeature =
  * @see `NavigationError`
  * @see `inject`
  * @see `EnvironmentInjector#runInContext`
- *
  * @returns A set of providers for use with `provideRouter`.
- *
  * @publicApi
  */
 export function withNavigationErrorHandler(fn: (error: NavigationError) => void):
@@ -667,6 +724,7 @@ export type ComponentInputBindingFeature =
  * @usageNotes
  *
  * Basic example of how you can enable the feature:
+ *
  * ```
  * const appRoutes: Routes = [];
  * bootstrapApplication(AppComponent,
@@ -695,8 +753,9 @@ export function withComponentInputBinding(): ComponentInputBindingFeature {
  * See documentation for each symbol to find corresponding function name. See also `provideRouter`
  * documentation on how to use those functions.
  *
- * @see `provideRouter`
+ * 一个类型别名，表示可与 `provideRouter` 一起使用的所有路由器特性。可以通过向 `provideRouter` 调用添加特殊函数来启用特性。请参阅每个符号的文档以查找对应的函数名称。有关如何使用这些函数，另请参阅 `provideRouter` 文档。
  *
+ * @see `provideRouter`
  * @publicApi
  */
 export type RouterFeatures =

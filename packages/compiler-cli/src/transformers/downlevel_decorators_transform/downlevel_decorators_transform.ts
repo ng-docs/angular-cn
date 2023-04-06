@@ -181,12 +181,12 @@ function createCtorParametersClassProperty(
  * 返回一个表示给定节点的（可能）值部分的表达式。
  *
  * This is a partial re-implementation of TypeScript's serializeTypeReferenceNode. This is a
- * workaround for <https://github.com/Microsoft/TypeScript/issues/17516> (serializeTypeReferenceNode
+ * workaround for https://github.com/Microsoft/TypeScript/issues/17516 (serializeTypeReferenceNode
  * not being exposed). In practice this implementation is sufficient for Angular's use of type
  * metadata.
  *
  * 这是 TypeScript 的 serializeTypeReferenceNode
- * 的部分重新实现。这是<https://github.com/Microsoft/TypeScript/issues/17516>的解决方法（不会公开
+ * 的部分重新实现。这是 https://github.com/Microsoft/TypeScript/issues/17516 的解决方法（不会公开
  * serializeTypeReferenceNode）。在实践中，此实现对于 Angular 使用类型元数据就足够了。
  *
  */

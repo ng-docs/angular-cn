@@ -103,9 +103,11 @@ export interface SerializedContainerView extends SerializedView {
   /**
    * Unique id that represents a TView that was used to create
    * a given instance of a view:
-   *  - TViewType.Embedded: a unique id generated during serialization on the server
-   *  - TViewType.Component: an id generated based on component properties
-   *                        (see `getComponentId` function for details)
+   *
+   * - TViewType.Embedded: a unique id generated during serialization on the server
+   * - TViewType.Component: an id generated based on component properties
+   *                       (see `getComponentId` function for details)
+   *
    */
   [TEMPLATE_ID]: string;
 
@@ -119,7 +121,8 @@ export interface SerializedContainerView extends SerializedView {
   /**
    * Number of times this view is repeated.
    * This is used to avoid serializing and sending the same hydration
-   * information about similar views (for example, produced by *ngFor).
+   * information about similar views (for example, produced by \*ngFor).
+   *
    */
   [MULTIPLIER]?: number;
 }

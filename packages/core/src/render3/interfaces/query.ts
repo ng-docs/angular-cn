@@ -127,10 +127,10 @@ export interface TQuery {
    *   一个正数（最常见的情况），以表明一个匹配的 TNode；
    *
    * - a negative number to indicate that a given query is crossing a <ng-template> element and
-   *   results from views created based on TemplateRef should be inserted at this place.
+   *     results from views created based on TemplateRef should be inserted at this place.
    *
    *   一个负数，以表明给定的查询正在跨越<ng-template>应该在此位置插入基于 TemplateRef
-   * 创建的视图的元素和结果。
+   *   创建的视图的元素和结果。
    *
    * A match index is a number used to find an actual value (for a given node) when query results
    * are materialized. This index can have one of the following values:
@@ -142,10 +142,10 @@ export interface TQuery {
    *   \-2 - 表明我们需要读取特殊标记（TemplateRef、ViewContainerRef 等）；
    *
    * - \-1 - indicates that we need to read a default value based on the node type (TemplateRef for
-   *   ng-template and ElementRef for other elements);
+   *     ng-template and ElementRef for other elements);
    *
-   *   \-1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef ，其他元素为 ElementRef
-   *）；
+   *   -1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef ，其他元素为 ElementRef
+   *   ）；
    *
    * - a positive number - index of an injectable to be read from the element injector.
    *

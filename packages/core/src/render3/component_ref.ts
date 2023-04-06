@@ -490,9 +490,12 @@ function projectNodes(
  *
  * Example:
  *
+ * 范例：
+ *
  * ```
  * renderComponent(AppComponent, {hostFeatures: [LifecycleHooksFeature]});
  * ```
+ *
  */
 export function LifecycleHooksFeature(): void {
   const tNode = getCurrentTNode()!;

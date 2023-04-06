@@ -82,6 +82,7 @@ describe('element', function() {
      *
      * Given that this can only arise when someone is emulating clicks on DOM in a synchronous
      * fashion we have few choices:
+     *
      * 1. Ignore as this is unlikely to be a problem outside of tests.
      * 2. Monkey patch the event methods to increment the _numberOfNestedTaskFrames and prevent
      *    eager drainage.

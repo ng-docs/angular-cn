@@ -132,7 +132,8 @@ export function createElementNode(
  * to propagate deeply into the nested containers to remove all elements in the
  * views beneath it.
  *
- * @param tView The `TView' of the `LView` from which elements should be added or removed
+ * @param tView The `TView` of the `LView` from which elements should be added or removed
+ *
  * @param lView The view from which elements should be added or removed
  */
 export function removeViewFromContainer(tView: TView, lView: LView): void {
@@ -149,7 +150,8 @@ export function removeViewFromContainer(tView: TView, lView: LView): void {
  * to propagate deeply into the nested containers to add all elements in the
  * views beneath it.
  *
- * @param tView The `TView' of the `LView` from which elements should be added or removed
+ * @param tView The `TView` of the `LView` from which elements should be added or removed
+ *
  * @param parentTNode The `TNode` where the `LView` should be attached to.
  * @param renderer Current renderer to use for DOM manipulations.
  * @param lView The view from which elements should be added or removed
@@ -168,7 +170,8 @@ export function addViewToContainer(
 /**
  * Detach a `LView` from the DOM by detaching its nodes.
  *
- * @param tView The `TView' of the `LView` to be detached
+ * @param tView The `TView` of the `LView` to be detached
+ *
  * @param lView the `LView` to be detached.
  */
 export function renderDetachView(tView: TView, lView: LView) {
@@ -180,13 +183,14 @@ export function renderDetachView(tView: TView, lView: LView) {
  * call onDestroy callbacks.
  *
  * Notes:
- *  - Because it's used for onDestroy calls, it needs to be bottom-up.
- *  - Must process containers instead of their views to avoid splicing
- *  when views are destroyed and re-added.
- *  - Using a while loop because it's faster than recursion
- *  - Destroy only called on movement to sibling or movement to parent (laterally or up)
  *
- *  @param rootView The view to destroy
+ * - Because it's used for onDestroy calls, it needs to be bottom-up.
+ * - Must process containers instead of their views to avoid splicing
+ *   when views are destroyed and re-added.
+ * - Using a while loop because it's faster than recursion
+ * - Destroy only called on movement to sibling or movement to parent (laterally or up)
+ *
+ * @param rootView The view to destroy
  */
 export function destroyViewTree(rootView: LView): void {
   // If the view has no children, we can clean it up and return early.
@@ -235,8 +239,12 @@ export function destroyViewTree(rootView: LView): void {
  * root node of another view (in that case, the view's elements will be added when
  * the container's parent view is added later).
  *
- * @param tView The `TView' of the `LView` to insert
+ * @param tView The `TView` of the `LView` to insert
+ *
  * @param lView The view to insert
+ *
+ * 要插入的视图。
+ *
  * @param lContainer The container into which the view should be inserted
  * @param index Which index in the container to insert the child view into
  */
@@ -372,7 +380,7 @@ export function detachView(lContainer: LContainer, removeIndex: number): LView|u
  * A standalone function which destroys an LView,
  * conducting clean up (e.g. removing listeners, calling onDestroys).
  *
- * @param tView The `TView' of the `LView` to be destroyed
+ * @param tView The `TView` of the `LView` to be destroyed
  * @param lView The view to be destroyed.
  */
 export function destroyLView(tView: TView, lView: LView) {
@@ -519,6 +527,7 @@ function executeOnDestroys(tView: TView, lView: LView): void {
  * Returns a native element if a node can be inserted into the given parent.
  *
  * There are two reasons why we may not be able to insert a element immediately.
+ *
  * - Projection: When creating a child content element of a component, we have to skip the
  *   insertion because the content of a component will be projected.
  *   `<component><content>delayed due to projection</content></component>`
@@ -541,8 +550,9 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  * If `TNode` is `TNodeType.Element` => return `RElement` at `LView[tNode.index]` location.
  * If `TNode` is `TNodeType.ElementContainer|IcuContain` => return the parent (recursively).
  * If `TNode` is `null` then return host `RElement`:
- *   - return `null` if projection
- *   - return `null` if parent container is disconnected (we have no parent.)
+ *
+ * - return `null` if projection
+ * - return `null` if parent container is disconnected (we have no parent.)
  *
  * @param tView: Current `TView`.
  * @param tNode: `TNode` for which we wish to retrieve `RElement` (or `null` if host element is
@@ -705,7 +715,7 @@ export function setI18nHandling(
 /**
  * Appends the `child` native node (or a collection of nodes) to the `parent`.
  *
- * @param tView The `TView' to be appended
+ * @param tView The `TView` to be appended
  * @param lView The current LView
  * @param childRNode The native child (or children) that should be appended
  * @param childTNode The TNode of the child element
@@ -886,6 +896,7 @@ function applyNodes(
  * root nodes of the View, and for each node perform the `action`.
  *
  * Things get more complicated with containers and projections. That is because coming across:
+ *
  * - Container: implies that we have to insert/remove/destroy the views of that container as well
  *              which in turn can have their own Containers at the View roots.
  * - Projection: implies that we have to insert/remove/destroy the nodes of the projection. The
@@ -895,7 +906,8 @@ function applyNodes(
  * As you can see this is a very recursive problem. Yes recursion is not most efficient but the
  * code is complicated enough that trying to implemented with recursion becomes unmaintainable.
  *
- * @param tView The `TView' which needs to be inserted, detached, destroyed
+ * @param tView The `TView` which needs to be inserted, detached, destroyed
+ *
  * @param lView The LView which needs to be inserted, detached, destroyed.
  * @param renderer Renderer to use
  * @param action action to perform (insert, detach, destroy)

@@ -86,7 +86,6 @@ export function ɵɵi18nEnd(): void {
 }
 
 /**
- *
  * Use this instruction to create a translation block that doesn't contain any placeholder.
  * It calls both {@link i18nStart} and {@link i18nEnd} in one instruction.
  *
@@ -94,6 +93,7 @@ export function ɵɵi18nEnd(): void {
  * contain placeholders which associate inner elements and sub-templates within the translation.
  *
  * The translation `message` placeholders are:
+ *
  * - `�{index}(:{block})�`: *Binding Placeholder*: Marks a location where an expression will be
  *   interpolated into. The placeholder `index` points to the expression binding index. An optional
  *   `block` that matches the sub-template in which it was declared.
@@ -108,7 +108,6 @@ export function ɵɵi18nEnd(): void {
  * @param index A unique index of the translation in the static block.
  * @param messageIndex An index of the translation message from the `def.consts` array.
  * @param subTemplateIndex Optional sub-template index in the `message`.
- *
  * @codeGenApi
  */
 export function ɵɵi18n(index: number, messageIndex: number, subTemplateIndex?: number): void {

@@ -29,12 +29,17 @@ export function envIsSupported(): boolean {
  * 获取 URL 相对于提供的基本 URL 的规范化表示。
  *
  * More specifically:
+ *
+ * 更具体地说：
+ *
  * 1. Resolve the URL relative to the provided base URL.
+ *
+ *    解析相对于所提供的基本 URL 的 URL。
+ *
  * 2. If the URL is relative to the base URL, then strip the origin (and only return the path and
  *    search parts). Otherwise, return the full URL.
  *
- * 更具体地说： 1. 解析相对于所提供的基本 URL 的 URL。 2.如果 URL 是相对于基本 URL
- * 的，则删除源（并仅返回路径和搜索部分）。否则，返回完整的 URL。
+ *    如果 URL 是相对于基本 URL 的，则删除源（并仅返回路径和搜索部分）。否则，返回完整的 URL。
  *
  * @param url The raw URL.
  *

@@ -16,11 +16,13 @@ const EMPTY_ARRAY: string[] = [];
 /**
  * Represents internal object used to track state of each CSS class. There are 3 different (boolean)
  * flags that, combined together, indicate state of a given CSS class:
+ *
  * - enabled: indicates if a class should be present in the DOM (true) or not (false);
  * - changed: tracks if a class was toggled (added or removed) during the custom dirty-checking
- * process; changed classes must be synchronized with the DOM;
+ *   process; changed classes must be synchronized with the DOM;
  * - touched: tracks if a class is present in the current object bound to the class / ngClass input;
- * classes that are not present any more can be removed from the internal data structures;
+ *   classes that are not present any more can be removed from the internal data structures;
+ *
  */
 interface CssClassState {
   // PERF: could use a bit mask to represent state as all fields are boolean flags
@@ -31,7 +33,6 @@ interface CssClassState {
 
 /**
  * @ngModule CommonModule
- *
  * @usageNotes
  * ```
  *     <some-element [ngClass]="'first second'">...</some-element>
@@ -44,16 +45,28 @@ interface CssClassState {
  *
  *     <some-element [ngClass]="{'class1 class2 class3' : true}">...</some-element>
  * ```
- *
  * @description
  *
  * Adds and removes CSS classes on an HTML element.
  *
+ * 从 HTML 元素上添加和移除 CSS 类。
+ *
  * The CSS classes are updated as follows, depending on the type of the expression evaluation:
+ *
+ * CSS 类会根据表达式求值结果进行更新，更新逻辑取决于结果的类型：
+ *
  * - `string` - the CSS classes listed in the string (space delimited) are added,
+ *
+ *   `string` - 会把列在字符串中的 CSS 类（空格分隔）添加进来，
+ *
  * - `Array` - the CSS classes declared as Array elements are added,
+ *
+ *   `Array` - 会把数组中的各个元素作为 CSS 类添加进来，
+ *
  * - `Object` - keys are CSS classes that get added when the expression given in the value
  *              evaluates to a truthy value, otherwise they are removed.
+ *
+ *   `Object` - 每个 key 都是要处理的 CSS 类，当表达式求值为真的时候则添加，为假则移除。
  *
  * @publicApi
  */

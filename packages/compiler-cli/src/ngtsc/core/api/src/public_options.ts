@@ -196,9 +196,9 @@ export interface StrictTemplateOptions {
    * ，即使设置了“fullTemplateTypeCheck”、“strictTemplates”和/或“strictInputTypes”。请注意，如果未设置
    * `strictInputTypes` 或设置为 `false` ，则此标志无效。
    *
-   * Tracking issue for enabling this by default: <https://github.com/angular/angular/issues/38400>
+   * Tracking issue for enabling this by default: https://github.com/angular/angular/issues/38400
    *
-   * 默认启用此功能的跟踪问题： <https://github.com/angular/angular/issues/38400>
+   * 默认启用此功能的跟踪问题： https://github.com/angular/angular/issues/38400
    *
    */
   strictInputAccessModifiers?: boolean;

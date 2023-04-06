@@ -62,15 +62,15 @@ export function matchingProjectionSlotIndex(tNode: TNode, projectionSlots: Proje
  *
  * Having a CSS selector in 2 different formats is not ideal, but alternatives have even more
  * drawbacks:
+ *
  * - having only a textual form would require runtime parsing of CSS selectors;
  * - we can't have only a parsed as we can't re-construct textual form from it (as entered by a
- * template author).
+ *   template author).
  *
  * @param projectionSlots? A collection of projection slots. A projection slot can be based
  *        on a parsed CSS selectors or set to the wildcard selector ("*") in order to match
  *        all nodes which do not match any selector. If not specified, a single wildcard
  *        selector projection slot will be defined.
- *
  * @codeGenApi
  */
 export function ɵɵprojectionDef(projectionSlots?: ProjectionSlots): void {

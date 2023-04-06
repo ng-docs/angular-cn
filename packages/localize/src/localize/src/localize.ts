@@ -175,41 +175,38 @@ export interface TranslateFn {
  * 有三种情况：
  *
  * * **compile-time inlining**: the `$localize` tag is transformed at compile time by a
- *   transpiler, removing the tag and replacing the template literal string with a translated
- *   literal string from a collection of translations provided to the transpilation tool.
+ *     transpiler, removing the tag and replacing the template literal string with a translated
+ *     literal string from a collection of translations provided to the transpilation tool.
  *
  *   **编译时内联**： `$localize`
- * 标签在编译时由转译器转换，删除标签并使用提供给转译工具的翻译集合中的翻译后的文字字符串替换模板文字字符串。
+ *   标签在编译时由转译器转换，删除标签并使用提供给转译工具的翻译集合中的翻译后的文字字符串替换模板文字字符串。
  *
  * * **run-time evaluation**: the `$localize` tag is a run-time function that replaces and
- *   reorders the parts (static strings and expressions) of the template literal string with strings
- *   from a collection of translations loaded at run-time.
+ *     reorders the parts (static strings and expressions) of the template literal string with strings
+ *     from a collection of translations loaded at run-time.
  *
  *   **运行时估算**： `$localize`
- * 标签是一个运行时函数，它会使用运行时加载的翻译集合中的字符串替换模板文字字符串的部分（静态字符串和表达式）并重新排序。
+ *   标签是一个运行时函数，它会使用运行时加载的翻译集合中的字符串替换模板文字字符串的部分（静态字符串和表达式）并重新排序。
  *
  * * **pass-through evaluation**: the `$localize` tag is a run-time function that simply evaluates
- *   the original template literal string without applying any translations to the parts. This
- *   version is used during development or where there is no need to translate the localized
- *   template literals.
+ *     the original template literal string without applying any translations to the parts. This
+ *     version is used during development or where there is no need to translate the localized
+ *     template literals.
  *
  *   **传递估算**： `$localize`
- * 标签是一个运行时函数，它只是估算原始模板文字字符串，而不对各个部分应用任何翻译。此版本在开发期间或无需翻译本地化模板文字的地方使用。
+ *   标签是一个运行时函数，它只是估算原始模板文字字符串，而不对各个部分应用任何翻译。此版本在开发期间或无需翻译本地化模板文字的地方使用。
  *
  * @param messageParts a collection of the static parts of the template string.
  *
  * 模板字符串的静态部分的集合。
- *
  * @param expressions a collection of the values of each placeholder in the template string.
  *
  * 模板字符串中每个占位符的值的集合。
- *
  * @returns
  *
  * the translated string, with the `messageParts` and `expressions` interleaved together.
  *
  * 翻译后的字符串，`messageParts` 和 `expressions` 交错在一起。
- *
  * @globalApi
  * @publicApi
  */

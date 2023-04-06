@@ -66,6 +66,7 @@ export function makeLocalePlugin(
 
 /**
  * Returns true if the expression one of:
+ *
  * * `typeof $localize !== "undefined"`
  * * `"undefined" !== typeof $localize`
  * * `typeof $localize != "undefined"`

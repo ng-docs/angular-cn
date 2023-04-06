@@ -88,11 +88,13 @@ export const BUILT_IN_LOADERS = [imgixLoaderInfo, imageKitLoaderInfo, cloudinary
 
 /**
  * A configuration object for the NgOptimizedImage directive. Contains:
+ *
  * - breakpoints: An array of integer breakpoints used to generate
  *      srcsets for responsive images.
  *
  * Learn more about the responsive image configuration in [the NgOptimizedImage
  * guide](guide/image-directive).
+ *
  * @publicApi
  * @developerPreview
  */
@@ -119,11 +121,19 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  *
  * `NgOptimizedImage` ensures that the loading of the Largest Contentful Paint (LCP) image is
  * prioritized by:
+ *
  * - Automatically setting the `fetchpriority` attribute on the `<img>` tag
+ *
+ *   自动设置 `<img>` 标签上的 `fetchpriority` 属性
+ *
  * - Lazy loading non-priority images by default
+ *
  * - Asserting that there is a corresponding preconnect link tag in the document head
  *
+ *   断言文档头中有相应的预连接链接标签
+ *
  * In addition, the directive:
+ *
  * - Generates appropriate asset URLs if a corresponding `ImageLoader` function is provided
  * - Automatically generates a srcset
  * - Requires that `width` and `height` are set
@@ -131,13 +141,16 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  * - Warns if the image will be visually distorted when rendered
  *
  * @usageNotes
+ *
  * The `NgOptimizedImage` directive is marked as [standalone](guide/standalone-components) and can
  * be imported directly.
  *
  * Follow the steps below to enable and use the directive:
+ *
  * 1. Import it into the necessary NgModule or a standalone Component.
  * 2. Optionally provide an `ImageLoader` if you use an image hosting service.
  * 3. Update the necessary `<img>` tags in templates and replace `src` attributes with `ngSrc`.
+ *
  * Using a `ngSrc` allows the directive to control when the `src` gets set, which triggers an image
  * download.
  *
@@ -169,6 +182,8 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  * To use an existing loader for a **third-party image service**: add the provider factory for your
  * chosen service to the `providers` array. In the example below, the Imgix loader is used:
  *
+ * 要将现有的加载器用于**第三方图片服务**，请将你选择的服务的提供者工厂添加到 `providers` 数组中。在下面的示例中，使用了 Imgix 加载器：
+ *
  * ```typescript
  * import {provideImgixLoader} from '@angular/common';
  *
@@ -179,6 +194,7 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  * ```
  *
  * The `NgOptimizedImage` directive provides the following functions:
+ *
  * - `provideCloudflareLoader`
  * - `provideCloudinaryLoader`
  * - `provideImageKitLoader`
@@ -255,10 +271,14 @@ export class NgOptimizedImage implements OnInit, OnChanges, OnDestroy {
    * descriptors to generate the final `srcset` property of the image.
    *
    * Example:
+   *
+   * 范例：
+   *
    * ```
    * <img ngSrc="hello.jpg" ngSrcset="100w, 200w" />  =>
    * <img src="path/hello.jpg" srcset="path/hello.jpg?w=100 100w, path/hello.jpg?w=200 200w" />
    * ```
+   *
    */
   @Input() ngSrcset!: string;
 
@@ -284,8 +304,9 @@ export class NgOptimizedImage implements OnInit, OnChanges, OnDestroy {
 
   /**
    * For responsive images: the intrinsic height of the image in pixels.
-   * For fixed size images: the desired rendered height of the image in pixels.* The intrinsic
+   * For fixed size images: the desired rendered height of the image in pixels.\* The intrinsic
    * height of the image in pixels.
+   *
    */
   @Input()
   set height(value: string|number|undefined) {
@@ -786,8 +807,10 @@ function assertGreaterThanZero(dir: NgOptimizedImage, inputValue: unknown, input
 
 /**
  * Verifies that the rendered image is not visually distorted. Effectively this is checking:
+ *
  * - Whether the "width" and "height" attributes reflect the actual dimensions of the image.
  * - Whether image styling is "correct" (see below for a longer explanation).
+ *
  */
 function assertNoImageDistortion(
     dir: NgOptimizedImage, img: HTMLImageElement, renderer: Renderer2) {

@@ -58,10 +58,6 @@ import {ɵɵdefineInjectable} from './interface/defs';
  *
  * The `providedIn: NgModule` and `providedIn: 'any'` options are deprecated.
  *
- * 此外，如果指定了 `factory`，也可以指定 `providedIn`
- * 选项，它会覆盖上述行为，并把这些令牌标记为属于特定 `@NgModule`。如上所述，`'root'` 是
- * `providedIn` 的默认值。
- *
  * @usageNotes
  *
  * ### Basic Examples

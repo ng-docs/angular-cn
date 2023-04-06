@@ -48,16 +48,16 @@ interface EmitResolver {
  * at runtime. We can instruct TypeScript to preserve imports for such identifiers by
  * creating a mutable clone of a given import specifier/clause or namespace, but that
  * has the downside of preserving the full import in the JS output. See:
- * <https://github.com/microsoft/TypeScript/blob/3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/src/compiler/transformers/ts.ts#L242-L250>.
+ * https://github.com/microsoft/TypeScript/blob/3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/src/compiler/transformers/ts.ts#L242-L250.
  *
  * 但实际上，由于我们降低了装饰器和构造函数参数的级别，我们希望这些符号保留在 JavaScript
  * 输出中，因为它们将在运行时用作值。我们可以通过创建给定导入说明符/子句或命名空间的可变克隆来指示
  * TypeScript 保留此类标识符的导入，但这有一个缺点是在 JS 输出中保留完全导入。请参阅：
- * <https://github.com/microsoft/TypeScript/blob/3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/src/compiler/transformers/ts.ts#L242-L250>
+ * https://github.com/microsoft/TypeScript/blob/3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/src/compiler/transformers/ts.ts#L242-L250
  * 。
  *
  * This is a trick the CLI used in the past  for constructor parameter downleveling in JIT:
- * <https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325>
+ * https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325
  * The trick is not ideal though as it preserves the full import (as outlined before), and it
  * results in a slow-down due to the type checker being involved multiple times. The CLI worked
  * around this import preserving issue by having another complex post-process step that detects and
@@ -65,7 +65,7 @@ interface EmitResolver {
  * by Webpack if the application or library is not marked as side-effect free.
  *
  * 这是 CLI 过去用于 JIT 中构造函数参数降级的技巧：
- * <https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325>虽然这个技巧并不理想，因为它保留了完全导入（如前所述），并且由于类型检查器涉及多次，它会导致速度变慢。
+ * https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325 虽然这个技巧并不理想，因为它保留了完全导入（如前所述），并且由于类型检查器涉及多次，它会导致速度变慢。
  * CLI
  * 通过有另一个复杂的后处理步骤来检测和删除未使用的导入，从而解决了此导入保留问题。请注意，如果未将应用程序或库标记为无副作用，这些未使用的导入可能会导致
  * Webpack 生成未使用的块。
@@ -80,14 +80,12 @@ interface EmitResolver {
  * 进行导入删除来做得更好，但要提供有关别名声明的信息（例如导入说明符），因为它们实际上是被引用的（因为它们现在将出现在静态属性中）。
  *
  * More information about these limitations with transformers can be found in:
- *   1. <https://github.com/Microsoft/TypeScript/issues/17552>.
- *   2. <https://github.com/microsoft/TypeScript/issues/17516>.
- *   3. <https://github.com/angular/tsickle/issues/635>.
  *
- * 有关转换器的这些限制的更多信息，请参阅： 1.
- * <https://github.com/Microsoft/TypeScript/issues/17552> 。 2.
- * <https://github.com/microsoft/TypeScript/issues/17516> 。 3.
- * <https://github.com/angular/tsickle/issues/635> 。
+ * 有关转换器的这些限制的更多信息，请参阅：
+ *
+ * 1. https://github.com/Microsoft/TypeScript/issues/17552.
+ * 1. https://github.com/microsoft/TypeScript/issues/17516.
+ * 1. https://github.com/angular/tsickle/issues/635.
  *
  * The patch we apply to tell TypeScript about actual referenced aliases (i.e. imported symbols),
  * matches conceptually with the logic that runs internally in TypeScript when the
@@ -107,10 +105,10 @@ interface EmitResolver {
  *
  * See below. Note that this uses sourcegraph as the TypeScript checker file doesn't display on
  * Github.
- * <https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257>
+ * https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257
  *
  * 见下文。请注意，这使用 sourcegraph 作为 TypeScript 检查器文件不会显示在 Github 上。
- * <https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257>
+ * https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257
  *
  */
 export function loadIsReferencedAliasDeclarationPatch(context: ts.TransformationContext):

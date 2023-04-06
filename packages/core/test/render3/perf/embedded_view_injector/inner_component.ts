@@ -19,36 +19,29 @@ import {InjectorComp} from './injector_component';
  * 创建一个将在主应用程序中呈现的组件，该组件在根和带有注入器组件的模板将被呈现的位置之间添加几层元素。模板对应于：
  *
  * <div>
- *
  *   <div>
- *
- * ```
- * <div>
- *   <div>
- *     <div [renderTemplate]="template"></div>
  *     <div>
- *       <ng-template #template>
+ *       <div>
+ *         <div [renderTemplate]="template"></div>
  *         <div>
- *           <div>
+ *           <ng-template #template>
  *             <div>
  *               <div>
  *                 <div>
- *                   <injector-comp></injector-comp>
+ *                   <div>
+ *                     <div>
+ *                       <injector-comp></injector-comp>
+ *                     </div>
+ *                   </div>
  *                 </div>
  *               </div>
  *             </div>
- *           </div>
+ *           </ng-template>
  *         </div>
- *       </ng-template>
+ *       </div>
  *     </div>
  *   </div>
  * </div>
- * ```
- *
- *   </div>
- *
- * </div>
- *
  */
 export function createInnerComponent(renderTemplateDirective: Type<{}>) {
   function InnerComp_ng_template_6_Template(rf: RenderFlags, ctx: any) {

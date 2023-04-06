@@ -143,7 +143,7 @@ export abstract class Injector {
   /**
    * @deprecated from v4.0.0 use ProviderToken<T>
    *
-   *   从 v4.0.0 开始，改用 Type<T>、AbstractType<T> 或 InjectionToken<T>
+   *   从 v4.0.0 开始，改用 InjectionToken<T>
    *
    * @suppress {duplicate}
    */

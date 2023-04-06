@@ -51,9 +51,9 @@ import {SwitchView} from './ng_switch';
  *
  *   否则，该视图将被视为“类别匹配”，并且仅在未找到精确值匹配且该值映射到已定义语言环境的类别时才会显示。
  *
- * See <http://cldr.unicode.org/index/cldr-spec/plural-rules>
+ * See http://cldr.unicode.org/index/cldr-spec/plural-rules
  *
- * 参见 <http://cldr.unicode.org/index/cldr-spec/plural-rules>
+ * 参见 http://cldr.unicode.org/index/cldr-spec/plural-rules
  *
  * @publicApi
  */

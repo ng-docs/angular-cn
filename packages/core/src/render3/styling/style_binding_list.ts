@@ -33,7 +33,6 @@ import {getTView} from '../state';
  * 假设我们正在处理以下代码：
  *
  * ```
- *
  * @Component({
  *   template: `
  *     <my-cmp [style]=" {color: '#001'} "
@@ -173,6 +172,7 @@ import {getTView} from '../state';
  *
  * NOTE: See `should support example in 'tnode_linked_list.ts' documentation` in
  * `tnode_linked_list_spec.ts` for working example.
+ *
  */
 let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefined;
 

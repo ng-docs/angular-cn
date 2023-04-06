@@ -247,9 +247,6 @@ export interface IterableChangeRecord<V> {
  *
  * A custom `trackBy` function must have several properties:
  *
- * 传给 `NgForOf` 指令的可选函数，该函数定义如何跟踪可迭代对象中条目的更改。该函数接受迭代索引和条目
- * ID 作为参数。提供后，Angular 将根据函数的返回值的变化进行跟踪。
- *
  * - be [idempotent](https://en.wikipedia.org/wiki/Idempotence) (be without side effects, and always
  *   return the same value for a given input)
  *

@@ -225,8 +225,7 @@ export class NgZone {
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
-   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -251,8 +250,7 @@ export class NgZone {
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
    * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
    *
-   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link
-   * #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -334,9 +332,9 @@ interface NgZonePrivate extends NgZone {
    * 中并防止重新进入。需要该标志，因为有可能从变更检测中调用变更检测导致不正确的行为。
    *
    * For detail, please refer here,
-   * <https://github.com/angular/angular/pull/40540>
+   * https://github.com/angular/angular/pull/40540
    *
-   * 有关详细信息，请参阅这里，<https://github.com/angular/angular/pull/40540>
+   * 有关详细信息，请参阅这里，https://github.com/angular/angular/pull/40540
    *
    */
   isCheckStableRunning: boolean;

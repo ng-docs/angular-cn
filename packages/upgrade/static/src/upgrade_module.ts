@@ -69,7 +69,6 @@ import {NgAdapterInjector} from './util';
  *    coexisting in a single application.
  *
  *    混合 Angular 应用程序的引导，该应用程序包含在单个应用程序中共存的两个框架。
- *
  * @usageNotes
  *
  * ```ts
@@ -80,15 +79,23 @@ import {NgAdapterInjector} from './util';
  *
  * ### Mental Model
  *
+ * ### 心理模型
+ *
  * When reasoning about how a hybrid application works it is useful to have a mental model which
  * describes what is happening and explains what is happening at the lowest level.
+ *
+ * 在推理混合应用程序的工作方式时，有一个心智模型会很有用，它可以描述正在发生的事情并在最低级别解释正在发生的事情。
  *
  * 1. There are two independent frameworks running in a single application, each framework treats
  *    the other as a black box.
  *
+ *    在单个应用程序中运行有两个独立的框架，每个框架都将另一个框架视为黑盒。
+ *
  * 2. Each DOM element on the page is owned exactly by one framework. Whichever framework
  *    instantiated the element is the owner. Each framework only updates/interacts with its own
  *    DOM elements and ignores others.
+ *
+ *    页面上的每个 DOM 元素都归一个框架所有。无论哪个框架实例化此元素，都是所有者。每个框架都只更新自己的 DOM 元素/交互，而忽略其他框架。
  *
  * 3. AngularJS directives always execute inside the AngularJS framework codebase regardless of
  *    where they are instantiated.
@@ -144,6 +151,8 @@ import {NgAdapterInjector} from './util';
  *
  * ### Examples
  *
+ * ### 例子
+ *
  * Import the `UpgradeModule` into your top level {@link NgModule Angular `NgModule`}.
  *
  * {@example upgrade/static/ts/full/module.ts region='ng2-module'}
@@ -159,6 +168,7 @@ import {NgAdapterInjector} from './util';
  * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
  *
  * {@a upgrading-an-angular-1-service}
+ *
  * ### Upgrading an AngularJS service
  *
  * There is no specific API for upgrading an AngularJS service. Instead you should just follow the

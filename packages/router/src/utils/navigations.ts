@@ -21,10 +21,12 @@ enum NavigationResult {
  * Performs the given action once the router finishes its next/current navigation.
  *
  * The navigation is considered complete under the following conditions:
+ *
  * - `NavigationCancel` event emits and the code is not `NavigationCancellationCode.Redirect` or
- * `NavigationCancellationCode.SupersededByNewNavigation`. In these cases, the
- * redirecting/superseding navigation must finish.
+ *   `NavigationCancellationCode.SupersededByNewNavigation`. In these cases, the
+ *   redirecting/superseding navigation must finish.
  * - `NavigationError`, `NavigationEnd`, or `NavigationSkipped` event emits
+ *
  */
 export function afterNextNavigation(router: {events: Observable<Event>}, action: () => void) {
   router.events

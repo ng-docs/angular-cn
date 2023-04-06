@@ -11,9 +11,9 @@
  *
  * 计算给定字符串的 SHA1
  *
- * see <https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
+ * see https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
  *
- * 看到<https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
+ * 看到 https://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
  *
  * WARNING: this function has not been designed not tested with security in mind.
  *          DO NOT USE IT IN A SECURITY SENSITIVE CONTEXT.

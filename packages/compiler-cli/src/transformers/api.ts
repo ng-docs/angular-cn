@@ -97,11 +97,11 @@ export interface CompilerOptions extends NgCompilerOptions, ts.CompilerOptions {
    * in Angular metadata (e.g. @Component, @Inject, @ViewChild). This can be enabled in
    * order to avoid dynamically generated module dependencies which can break strict
    * dependency enforcements. This is not enabled by default.
-   * Read more about this here: <https://github.com/angular/angular/issues/25644>.
+   * Read more about this here: https://github.com/angular/angular/issues/25644.
    *
    * NGC 是否应该为 Angular
    * 元数据中引用的外部符号（例如 @Component、@Inject、@ViewChild）生成重新导出。可以启用此功能以避免动态生成的模块依赖项，这可能会破坏严格的依赖强制执行。默认情况下，此未启用。在这里读更多关于这个的内容：
-   * <https://github.com/angular/angular/issues/25644> 。
+   * https://github.com/angular/angular/issues/25644 。
    *
    */
   createExternalSymbolFactoryReexports?: boolean;
@@ -146,10 +146,10 @@ export interface CompilerHost extends ts.CompilerHost, ExtendedTsCompilerHost {
    * 为源文件生成 AMD 模块名称。在 Bazel 中使用。
    *
    * An AMD module can have an arbitrary name, so that it is require'd by name
-   * rather than by path. See <https://requirejs.org/docs/whyamd.html#namedmodules>
+   * rather than by path. See https://requirejs.org/docs/whyamd.html#namedmodules
    *
    * AMD
-   * 模块可以有任意名称，因此它是按名称而不是路径要求的。请参阅<https://requirejs.org/docs/whyamd.html#namedmodules>
+   * 模块可以有任意名称，因此它是按名称而不是路径要求的。请参阅 https://requirejs.org/docs/whyamd.html#namedmodules
    *
    */
   amdModuleName?(sf: ts.SourceFile): string|undefined;

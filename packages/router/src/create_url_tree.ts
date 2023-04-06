@@ -18,17 +18,28 @@ import {last, shallowEqual} from './utils/collection';
 /**
  * Creates a `UrlTree` relative to an `ActivatedRouteSnapshot`.
  *
+ * 创建相对于 `ActivatedRouteSnapshot` 的 `UrlTree` 。
+ *
  * @publicApi
- *
- *
  * @param relativeTo The `ActivatedRouteSnapshot` to apply the commands to
+ *
+ * 要应用命令的 `ActivatedRouteSnapshot`
+ *
  * @param commands An array of URL fragments with which to construct the new URL tree.
  * If the path is static, can be the literal URL string. For a dynamic path, pass an array of path
  * segments, followed by the parameters for each segment.
  * The fragments are applied to the one provided in the `relativeTo` parameter.
+ *
+ * 用于构建新 URL 树的 URL 片段数组。如果路径是静态的，则可以是文字 URL 字符串。对于动态路径，请传递一个路径段数组，后跟每个段的参数。片段会应用于 `relativeTo` 参数中提供的片段。
+ *
  * @param queryParams The query parameters for the `UrlTree`. `null` if the `UrlTree` does not have
  *     any query parameters.
+ *
+ * 可选值。默认值为 `null`。
+ *
  * @param fragment The fragment for the `UrlTree`. `null` if the `UrlTree` does not have a fragment.
+ *
+ * 可选值。默认值为 `null`。
  *
  * @usageNotes
  *

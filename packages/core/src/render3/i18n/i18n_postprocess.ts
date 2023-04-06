@@ -75,8 +75,7 @@ export function i18nPostprocess(
    *
    * Note: due to the way we process nested templates (BFS), multi-value placeholders are typically
    * grouped by templates, for example: [�#5�|�#6�|�#1:1�|�#3:2�] where �#5� and �#6� belong to root
-   * template, �#1:1� belong to nested template with index 1 and �#1:2� - nested template with index
-   * 3. However in real templates the order might be different: i.e. �#1:1� and/or �#3:2� may go in
+   * template, �#1:1� belong to nested template with index 1 and �#1:2� - nested template with index 3. However in real templates the order might be different: i.e. �#1:1� and/or �#3:2� may go in
    * front of �#6�. The post processing step restores the right order by keeping track of the
    * template id stack and looks for placeholders that belong to the currently active template.
    *
@@ -156,7 +155,7 @@ export function i18nPostprocess(
   });
 
   /**
-   * Step 4: replace all ICU references with corresponding values (like �ICU_EXP_ICU_1�) in case
+   * Step 4: replace all ICU references with corresponding values (like ICU_EXP_ICU_1) in case
    * multiple ICUs have the same placeholder name
    *
    * 步骤 4：用相应的值（例如 “ICU_EXP_ICU_1”）替换所有 ICU 引用，以防多个 ICU 具有相同的占位符名称

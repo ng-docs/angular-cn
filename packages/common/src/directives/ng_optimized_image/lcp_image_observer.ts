@@ -23,7 +23,7 @@ import {getUrl} from './url';
  * Note: this is a dev-mode only class and it does not appear in prod bundles,
  * thus there is no `ngDevMode` use in the code.
  *
- * Based on <https://web.dev/lcp/#measure-lcp-in-javascript>.
+ * Based on https://web.dev/lcp/#measure-lcp-in-javascript.
  *
  */
 @Injectable({providedIn: 'root'})
