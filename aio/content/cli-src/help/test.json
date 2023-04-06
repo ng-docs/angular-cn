@@ -38,6 +38,11 @@
       "descriptionCn": "逗号分隔列表格式的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分中指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
     },
     {
+      "name": "exclude",
+      "type": "array",
+      "description": "Globs of files to exclude, relative to the project root."
+    },
+    {
       "name": "help",
       "type": "boolean",
       "description": "Shows a help message for this command in the console.",
@@ -46,8 +51,8 @@
     {
       "name": "include",
       "type": "array",
-      "description": "Globs of files to include, relative to workspace or project root. \nThere are 2 special cases:\n - when a path to directory is provided, all spec files ending \".spec.@(ts|tsx)\" will be included\n - when a path to a file is provided, and a matching spec file exists it will be included instead.",
-      "descriptionCn": "要包含的文件 glob，相对于工作区或项目根。有 2 种特殊情况：\n\n- 当提供了目录的路径时，将包含所有以 `.spec.@(ts|tsx)` 结尾的测试规约文件\n\n- 当提供了文件的路径并且存在匹配的测试规约文件时，它将被包含在内。"
+      "description": "Globs of files to include, relative to project root. \nThere are 2 special cases:\n - when a path to directory is provided, all spec files ending \".spec.@(ts|tsx)\" will be included\n - when a path to a file is provided, and a matching spec file exists it will be included instead.",
+      "descriptionCn": "要包含的文件 glob，相对于项目根。有 2 种特殊情况：\n\n- 当提供了目录的路径时，将包含所有以 `.spec.@(ts|tsx)` 结尾的测试规约文件\n\n- 当提供了文件的路径并且存在匹配的测试规约文件时，它将被包含在内。"
     },
     {
       "name": "inline-style-language",
@@ -83,8 +88,8 @@
     {
       "name": "polyfills",
       "type": "string",
-      "description": "The name of the polyfills file.",
-      "descriptionCn": "polyfills 文件的名称。"
+      "description": "Polyfills to be included in the build.",
+      "descriptionCn": "要包含进本构建的腻子脚本。"
     },
     {
       "name": "preserve-symlinks",

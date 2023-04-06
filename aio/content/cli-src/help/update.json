@@ -28,8 +28,8 @@
       "name": "force",
       "type": "boolean",
       "default": false,
-      "description": "Ignore peer dependency version mismatches. Passes the '--force' flag to the package manager when installing packages.",
-      "descriptionCn": "忽略对等依赖版本不匹配的情况。安装包时，将 `--force` 标志传递给包管理器。"
+      "description": "Ignore peer dependency version mismatches.",
+      "descriptionCn": "忽略对等依赖版本不匹配的情况。"
     },
     {
       "name": "from",

@@ -193,8 +193,8 @@
     {
       "name": "polyfills",
       "type": "string",
-      "description": "The full path for the polyfills file, relative to the current workspace.",
-      "descriptionCn": "polyfills 文件的完整路径。是相对于当前工作空间的。"
+      "description": "Polyfills to be included in the build.",
+      "descriptionCn": "要包含进本构建中的腻子脚本。"
     },
     {
       "name": "preserve-symlinks",
@@ -260,8 +260,8 @@
       "name": "vendor-chunk",
       "type": "boolean",
       "default": false,
-      "description": "Generate a seperate bundle containing only vendor libraries. This option should only used for development.",
-      "descriptionCn": "生成仅包含供应商库的单独捆绑包。此选项只能用于开发阶段。"
+      "description": "Generate a seperate bundle containing only vendor libraries. This option should only be used for development to reduce the incremental compilation time.",
+      "descriptionCn": "生成仅包含供应商库的单独捆绑包。此选项只能用于开发阶段以缩短增量编译的时间。"
     },
     {
       "name": "verbose",
