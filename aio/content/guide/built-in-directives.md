@@ -397,7 +397,7 @@ Get the `index` of `*ngFor` in a template input variable and use it in the templ
 In the `*ngFor`, add a semicolon and `let i=index` to the shorthand.
 The following example gets the `index` in a variable named `i` and displays it with the item name.
 
-在 `*ngFor` 中，添加一个分号和 `let i=index` 简写形式。下面的例子中把 `index` 取到一个名为 `i` 的变量中，并将其与条目名称一起显示。
+在 `*ngFor` 的简写形式上添加一个分号和 `let i=index` 。下面的例子获取在一个名为 `i` 的变量中保存的 `index`，并将其与条目名称一起显示。
 
 <code-example header="src/app/app.component.html" path="built-in-directives/src/app/app.component.html" region="NgFor-3"></code-example>
 
