@@ -183,7 +183,7 @@ If your installation and setup was successful, you should see a page similar to 
 
 * Work through the [Tour of Heroes Tutorial](tutorial/tour-of-heroes), a complete hands-on exercise that introduces you to the app development process using the Angular CLI and walks through important subsystems.
 
-  过一遍[英雄之旅教程](tutorial)，这是一个完整的动手练习题，它将教你使用 Angular CLI 进行应用开发的过程，并逐步介绍重要的子系统。
+  过一遍[英雄之旅教程](tutorial/tour-of-heroes)，这是一个完整的动手练习题，它将教你使用 Angular CLI 进行应用开发的过程，并逐步介绍重要的子系统。
 
 * To learn more about using the Angular CLI, see the [CLI Overview](cli "CLI Overview").
   In addition to creating the initial workspace and app scaffolding, use the CLI to generate Angular code such as components and services.

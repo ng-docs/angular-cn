@@ -68,7 +68,7 @@ This guide proceeds as a sequence of milestones as if you were building the appl
 For a general introduction to angular, see the [Getting Started](start).
 For a more in-depth overview, see the [Tour of Heroes](tutorial/tour-of-heroes) tutorial.
 
-本指南按照里程碑的顺序进行，就像你逐步构建应用程序一样，但这里假定你已经熟悉 [Angular 的](guide/architecture)基本概念。关于 Angular 的一般性介绍，请参见[《入门指南》](start)。关于更深入的概述，请参见[《英雄之旅》](tutorial)教程。
+本指南按照里程碑的顺序进行，就像你逐步构建应用程序一样，但这里假定你已经熟悉 [Angular 的](guide/architecture)基本概念。关于 Angular 的一般性介绍，请参见[《入门指南》](start)。关于更深入的概述，请参见[《英雄之旅》](tutorial/tour-of-heroes)教程。
 
 ## Prerequisites
 
@@ -88,7 +88,7 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 You might find the [Tour of Heroes tutorial](tutorial/tour-of-heroes) helpful, but it is not required.
 
-你可能会发现[《英雄之旅》教程](tutorial)很有用，但这不是必需的。
+你可能会发现[《英雄之旅》教程](tutorial/tour-of-heroes)很有用，但这不是必需的。
 
 ## The sample application in action
 
@@ -842,7 +842,7 @@ This milestone covers the following:
 
 This sample application recreates the heroes feature in the "Services" section of the [Tour of Heroes tutorial](tutorial/tour-of-heroes/toh-pt4 "Tour of Heroes: Services"), and reuses much of the code from the <live-example name="toh-pt4" title="Tour of Heroes: Services example code"></live-example>.
 
-这个示例应用在[“英雄指南”教程](tutorial/toh-pt4 "英雄指南：服务")的“服务”部分重新创建了英雄特性区，并复用了<live-example name="toh-pt4" title="Tour of Heroes: Services example code"></live-example>中的大部分代码。
+这个示例应用在[“英雄指南”教程](tutorial/tour-of-heroes/toh-pt4 "英雄指南：服务")的“服务”部分重新创建了英雄特性区，并复用了<live-example name="toh-pt4" title="Tour of Heroes: Services example code"></live-example>中的大部分代码。
 
 A typical application has multiple feature areas, each dedicated to a particular business purpose with its own folder.
 

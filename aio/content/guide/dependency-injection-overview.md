@@ -28,7 +28,7 @@ You should be familiar with the Angular apps in general, and have the fundamenta
 
 [Tour of Heroes application and tutorial](tutorial/tour-of-heroes)
 
-[《英雄之旅》应用和教程](tutorial)
+[《英雄之旅》应用和教程](tutorial/tour-of-heroes)
 
 ## Learn about Angular dependency injection
 
