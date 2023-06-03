@@ -154,11 +154,11 @@ import {UrlTree} from '../url_tree';
  * </a>
  * ```
  *
- * Use {@link Router.getCurrentNavigation\(\) Router#getCurrentNavigation} to retrieve a saved
+ * Use {@link Router.getCurrentNavigation() Router#getCurrentNavigation} to retrieve a saved
  * navigation-state value. For example, to capture the `tracingId` during the `NavigationStart`
  * event:
  *
- * 使用 {@link Router.getCurrentNavigation\(\) Router#getCurrentNavigation}
+ * 使用 {@link Router.getCurrentNavigation() Router#getCurrentNavigation}
  * 来检索保存的导航状态值。比如，要在 `NavigationStart` 事件中捕获 `tracingId`
  *
  * ```
