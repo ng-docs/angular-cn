@@ -31,7 +31,7 @@ import {createEs2015LinkerPlugin} from './es2015_linker_plugin';
  * The linker plugin that is created uses the native NodeJS filesystem APIs to interact with the
  * filesystem. Any logging output is printed to the console.
  *
- * 创建的链接器插件使用本机 NodeJS 文件系统 API 与文件系统交互。任何日志输出都会打印到控制台。
+ * 创建的链接器插件使用原生 NodeJS 文件系统 API 与文件系统交互。任何日志输出都会打印到控制台。
  *
  * @param api Provides access to the Babel environment that is configuring this plugin.
  *

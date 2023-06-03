@@ -35,7 +35,7 @@ const enum WalkTNodeTreeAction {
   /**
    * node create in the native environment. Run on initial creation.
    *
-   * 在本机环境中创建节点。 在初始创建时运行。
+   * 在原生环境中创建节点。 在初始创建时运行。
    *
    */
   Create = 0,
@@ -44,7 +44,7 @@ const enum WalkTNodeTreeAction {
    * node insert in the native environment.
    * Run when existing node has been detached and needs to be re-attached.
    *
-   * 在本机环境中插入节点。 当现有节点已分离并需要重新连接时运行。
+   * 在原生环境中插入节点。 当现有节点已分离并需要重新连接时运行。
    *
    */
   Insert = 1,
@@ -52,7 +52,7 @@ const enum WalkTNodeTreeAction {
   /**
    * node detach from the native environment
    *
-   * 节点从本机环境中分离
+   * 节点从原生环境中分离
    *
    */
   Detach = 2,
@@ -136,7 +136,7 @@ export function createCommentNode(renderer: Renderer, value: string): RComment {
 /**
  * Creates a native element from a tag name, using a renderer.
  *
- * 使用渲染器从标签名称创建本机元素。
+ * 使用渲染器从标签名称创建原生元素。
  *
  * @param renderer A renderer to use
  *
@@ -673,7 +673,7 @@ function executeOnDestroys(tView: TView, lView: LView): void {
 /**
  * Returns a native element if a node can be inserted into the given parent.
  *
- * 如果可以将节点插入到给定的父级中，则返回本机元素。
+ * 如果可以将节点插入到给定的父级中，则返回原生元素。
  *
  * There are two reasons why we may not be able to insert a element immediately.
  *
@@ -773,7 +773,7 @@ export function getClosestRElement(tView: TView, tNode: TNode|null, lView: LView
  * Inserts a native node before another native node for a given parent.
  * This is a utility function that can be used when native nodes were determined.
  *
- * 在给定父节点的另一个本机节点之前插入一个本机节点。 这是一个实用函数，可以在确定本机节点时使用。
+ * 在给定父节点的另一个原生节点之前插入一个原生节点。 这是一个实用函数，可以在确定原生节点时使用。
  *
  */
 export function nativeInsertBefore(
@@ -822,7 +822,7 @@ function isTemplateNode(node: RElement): node is RTemplate {
 /**
  * Returns a native parent of a given native node.
  *
- * 返回给定本机节点的本机父节点。
+ * 返回给定原生节点的原生父节点。
  *
  */
 export function nativeParentNode(renderer: Renderer, node: RNode): RElement|null {
@@ -832,7 +832,7 @@ export function nativeParentNode(renderer: Renderer, node: RNode): RElement|null
 /**
  * Returns a native sibling of a given native node.
  *
- * 返回给定本机节点的本机兄弟节点。
+ * 返回给定原生节点的原生兄弟节点。
  *
  */
 export function nativeNextSibling(renderer: Renderer, node: RNode): RNode|null {
@@ -934,7 +934,7 @@ export function setI18nHandling(
 /**
  * Appends the `child` native node \(or a collection of nodes\) to the `parent`.
  *
- * 将 `child` 本机节点（或节点集合）附加到 `parent` 。
+ * 将 `child` 原生节点（或节点集合）附加到 `parent` 。
  *
  * @param tView The `TView` to be appended
  *
@@ -976,11 +976,11 @@ export function appendChild(
 /**
  * Returns the first native node for a given LView, starting from the provided TNode.
  *
- * 返回给定 LView 的第一个本机节点，从提供的 TNode 开始。
+ * 返回给定 LView 的第一个原生节点，从提供的 TNode 开始。
  *
  * Native nodes are returned in the order in which those appear in the native tree \(DOM\).
  *
- * 本机节点按照它们在本机树 \(DOM\) 中出现的顺序返回。
+ * 原生节点按照它们在原生树 \(DOM\) 中出现的顺序返回。
  *
  */
 export function getFirstNativeNode(lView: LView, tNode: TNode|null): RNode|null {
@@ -1060,7 +1060,7 @@ export function getBeforeNodeForView(viewIndexInContainer: number, lContainer: L
  * parent from the native tree as not all platforms / browsers support the equivalent of
  * node.remove\(\).
  *
- * 使用给定的渲染器删除本机节点本身。 要删除节点，我们要从原生树中查找其父节点，因为并非所有平台/浏览器都支持 node.remove\(\) 的等价物。
+ * 使用给定的渲染器删除原生节点本身。 要删除节点，我们要从原生树中查找其父节点，因为并非所有平台/浏览器都支持 node.remove\(\) 的等价物。
  *
  * @param renderer A renderer to be used
  *
@@ -1068,7 +1068,7 @@ export function getBeforeNodeForView(viewIndexInContainer: number, lContainer: L
  *
  * @param rNode The native node that should be removed
  *
- * 应该移除的本机节点
+ * 应该移除的原生节点
  *
  * @param isHostElement A flag indicating if a node to be removed is a host of a component.
  *
@@ -1090,7 +1090,7 @@ export function nativeRemoveNode(renderer: Renderer, rNode: RNode, isHostElement
  *
  * @param rElement the native RElement to be cleared
  *
- * 要清除的本机 RElement
+ * 要清除的原生 RElement
  *
  */
 export function clearElementContents(rElement: RElement): void {

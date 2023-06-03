@@ -107,7 +107,7 @@ The HTML produced by the server side rendering operation **must not** be altered
 
 If there is a mismatch between server and client DOM tree structures, the hydration process will encounter problems attempting to match up what was expected to what is actually present in the DOM. Components that do direct DOM manipulation using native DOM APIs are the most common culprit.
 
-如果服务器和客户端 DOM 树结构不匹配，水合过程将遇到问题，试图将预期的内容与 DOM 中实际存在的内容相匹配。 使用本机 DOM API 进行直接 DOM 操作的组件是最常见的罪魁祸首。
+如果服务器和客户端 DOM 树结构不匹配，水合过程将遇到问题，试图将预期的内容与 DOM 中实际存在的内容相匹配。 使用原生 DOM API 进行直接 DOM 操作的组件是最常见的罪魁祸首。
 
 <a id="dom-manipulation"></a>
 
@@ -117,7 +117,7 @@ If there is a mismatch between server and client DOM tree structures, the hydrat
 
 If you have components that manipulate the DOM using native DOM APIs, the hydration process will encounter errors. Specific cases where DOM manipulation is a problem are situations like accessing the `document`, querying for specific elements, and injecting additional nodes using `appendChild`. Detaching DOM nodes and moving them to other locations will also result in errors.
 
-如果你有使用本机 DOM API 操作 DOM 的组件，水合过程将遇到错误。 DOM 操作成为问题的特定情况是访问 `document` 、查询特定元素以及使用 `appendChild` 注入其他节点等情况。 分离 DOM 节点并将它们移动到其他位置也会导致错误。
+如果你有使用原生 DOM API 操作 DOM 的组件，水合过程将遇到错误。 DOM 操作成为问题的特定情况是访问 `document` 、查询特定元素以及使用 `appendChild` 注入其他节点等情况。 分离 DOM 节点并将它们移动到其他位置也会导致错误。
 
 This is because Angular is unaware of these DOM changes and cannot resolve them during the hydration process. Angular will expect a certain structure, but it will encounter a different structure when attempting to hydrate. This mismatch will result in hydration failure and throw a DOM mismatch error \([see below](#errors)\).
 
@@ -197,7 +197,7 @@ Providing a custom or a "noop" Zone.js implementation may lead to a different ti
 
 There are several hydration related errors you may encounter ranging from node mismatches to cases when the `ngSkipHydration` was used on an invalid host node. The most common error case that may occur is due to direct DOM manipulation using native APIs that results in hydration being unable to find or match the expected DOM tree structure on the client that was rendered by the server. The other case you may encounter this type of error was mentioned in the prior section on Valid HTML structures. So, make sure the HTML in your templates are using valid structure, and you'll avoid that error case.
 
-你可能会遇到多种与水合作用相关的错误，从节点不匹配到在无效主机节点上使用 `ngSkipHydration` 的情况。 可能发生的最常见错误情况是由于使用本机 API 的直接 DOM 操作导致 hydration 无法在客户端上找到或匹配服务器呈现的预期 DOM 树结构。 你可能会遇到此类错误的另一种情况已在前面有关有效 HTML 结构的部分中提到。 因此，请确保你模板中的 HTML 使用有效结构，这样你就可以避免这种错误情况。
+你可能会遇到多种与水合作用相关的错误，从节点不匹配到在无效主机节点上使用 `ngSkipHydration` 的情况。 可能发生的最常见错误情况是由于使用原生 API 的直接 DOM 操作导致 hydration 无法在客户端上找到或匹配服务器呈现的预期 DOM 树结构。 你可能会遇到此类错误的另一种情况已在前面有关有效 HTML 结构的部分中提到。 因此，请确保你模板中的 HTML 使用有效结构，这样你就可以避免这种错误情况。
 
 For a full reference on hydration related errors, visit the [Errors Reference Guide](/errors).
 

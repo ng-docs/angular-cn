@@ -185,7 +185,7 @@
           },
           "ab": {
             "desc": "NativeScript is how you build cross-platform, native iOS and Android apps with Angular and TypeScript. Get 100% access to native APIs via JavaScript and reuse of packages from NPM, CocoaPods and Gradle. Open source and backed by Telerik.",
-            "descCn": "NativeScript 能让你使用 Angular 和 TypeScript 构建跨平台、本机 iOS 和 Android 应用程序。通过 JavaScript 以及对 NPM、CocoaPods 和 Gradle 中包的复用，可 100％访问原生 API。开源并得到 Telerik 的支持。",
+            "descCn": "NativeScript 能让你使用 Angular 和 TypeScript 构建跨平台、原生 iOS 和 Android 应用程序。通过 JavaScript 以及对 NPM、CocoaPods 和 Gradle 中包的复用，可 100％访问原生 API。开源并得到 Telerik 的支持。",
             "logo": "",
             "title": "NativeScript",
             "url": "https://docs.nativescript.org/tutorial/angular.html"

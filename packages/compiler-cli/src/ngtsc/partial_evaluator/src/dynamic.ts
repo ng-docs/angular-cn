@@ -49,7 +49,7 @@ export const enum DynamicValueReason {
    * such as `window`.
    *
    * 外部引用无法解析为可以估算的值。例如，在 `.d.ts`
-   * 中声明的函数的调用表达式，或访问本机全局变量，例如 `window` 。
+   * 中声明的函数的调用表达式，或访问原生全局变量，例如 `window` 。
    *
    */
   EXTERNAL_REFERENCE,

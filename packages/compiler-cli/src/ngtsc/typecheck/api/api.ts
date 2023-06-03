@@ -286,7 +286,7 @@ export interface TypeCheckingConfig {
    * `HTMLElementEventMap`, with a fallback to the native `Event` type. If set to `false`, the
    * `$event` variable will be of type `any`.
    *
-   * 如果为 `true` ，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到本机
+   * 如果为 `true` ，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到原生
    * `Event` 类型。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
    *
    */

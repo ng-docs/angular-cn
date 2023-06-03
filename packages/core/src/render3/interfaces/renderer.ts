@@ -38,7 +38,7 @@ export type GlobalTargetResolver = (element: any) => EventTarget;
  * In non-native browser environments \(e.g. platforms such as web-workers\), this is the
  * facade that enables element manipulation. In practice, this is implemented by `Renderer2`.
  *
- * 在非本机浏览器环境（例如 Web-workers 等平台）中，这是启用元素操作的门面。这也促进了与 Renderer2
+ * 在非原生浏览器环境（例如 Web-workers 等平台）中，这是启用元素操作的门面。这也促进了与 Renderer2
  * 的向后兼容。
  *
  */

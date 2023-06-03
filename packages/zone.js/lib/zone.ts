@@ -521,7 +521,7 @@ interface ZoneType {
    * load patch for specified native module, allow user to
    * define their own patch, user can use this API after loading zone.js
    *
-   * 加载指定本机模块的补丁，允许用户定义自己的补丁，用户可以在加载 zone.js 后使用此 API
+   * 加载指定原生模块的补丁，允许用户定义自己的补丁，用户可以在加载 zone.js 后使用此 API
    *
    */
   __load_patch(name: string, fn: _PatchFn, ignoreDuplicate?: boolean): void;
@@ -944,7 +944,7 @@ interface TaskData {
   /**
    * identifier returned by the native setTimeout.
    *
-   * 本机 setTimeout 返回的标识符。
+   * 原生 setTimeout 返回的标识符。
    *
    */
   handleId?: number;

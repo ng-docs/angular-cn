@@ -250,7 +250,7 @@ abstract class TcbOp {
  * A `TcbOp` which creates an expression for a native DOM element \(or web component\) from a
  * `TmplAstElement`.
  *
- * 一个 `TcbOp` ，它从 `TmplAstElement` 为本机 DOM 元素（或 Web 组件）创建表达式。
+ * 一个 `TcbOp` ，它从 `TmplAstElement` 为原生 DOM 元素（或 Web 组件）创建表达式。
  *
  * Executing this operation returns a reference to the element variable.
  *

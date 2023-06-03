@@ -16,7 +16,7 @@ import {elementPropertyInternal, loadComponentRenderer, storePropertyBindingMeta
 /**
  * Update a property on a host element. Only applies to native node properties, not inputs.
  *
- * 更新宿主元素上的属性。仅适用于本机节点属性，不适用于输入。
+ * 更新宿主元素上的属性。仅适用于原生节点属性，不适用于输入。
  *
  * Operates on the element selected by index via the {@link select} instruction.
  *

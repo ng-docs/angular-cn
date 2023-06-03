@@ -540,12 +540,12 @@ export interface TNode {
   /**
    * Index of the TNode in TView.data and corresponding native element in LView.
    *
-   * TView.data 中 TNode 的索引和 LView 中相应的本机元素。
+   * TView.data 中 TNode 的索引和 LView 中相应的原生元素。
    *
    * This is necessary to get from any TNode to its corresponding native element when
    * traversing the node tree.
    *
-   * 在遍历节点树时，这是从任何 TNode 到其对应的本机元素所必需的。
+   * 在遍历节点树时，这是从任何 TNode 到其对应的原生元素所必需的。
    *
    * If index is -1, this is a dynamically created container node or embedded view node.
    *
@@ -951,7 +951,7 @@ export interface TNode {
    * We need a reference to a node's parent so we can append the node to its parent's native
    * element at the appropriate time.
    *
-   * 我们需要对节点父节点的引用，以便我们可以在适当的时候将该节点附加到其父节点的本机元素。
+   * 我们需要对节点父节点的引用，以便我们可以在适当的时候将该节点附加到其父节点的原生元素。
    *
    * If the parent would be in a different view \(e.g. component host\), this property will be null.
    * It's important that we don't try to cross component boundaries when retrieving the parent
@@ -1050,7 +1050,7 @@ export interface TNode {
    * If `projection` is of type `RNode[][]` than we have a collection of native nodes passed as
    * projectable nodes during dynamic component creation.
    *
-   * 如果 `projection` 是 `RNode[][]` 类型，那么在动态组件创建期间我们有一组作为可投影节点传递的本机节点。
+   * 如果 `projection` 是 `RNode[][]` 类型，那么在动态组件创建期间我们有一组作为可投影节点传递的原生节点。
    *
    */
   projection: (TNode|RNode[])[]|number|null;
@@ -1311,7 +1311,7 @@ export interface TElementNode extends TNode {
    * TNodes or native nodes \(see TNode.projection for more info\). If it's a regular element node
    * or a component without projection, it will be null.
    *
-   * 如果这是一个带有投影的组件 TNode，这将是一个投影 TNode 或本机节点的数组（有关更多信息，请参阅 TNode.projection）。 如果是常规元素节点或没有投影的组件，则为空。
+   * 如果这是一个带有投影的组件 TNode，这将是一个投影 TNode 或原生节点的数组（有关更多信息，请参阅 TNode.projection）。 如果是常规元素节点或没有投影的组件，则为空。
    *
    */
   projection: (TNode|RNode[])[]|null;

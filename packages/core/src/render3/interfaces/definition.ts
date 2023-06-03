@@ -490,11 +490,11 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    *
    * - `Emulated` \(default\): Emulate native scoping of styles.
    *
-   *   `Emulated`（默认）：模拟样式的本机范围。
+   *   `Emulated`（默认）：模拟样式的原生范围。
    *
    * - `Native`: Use the native encapsulation mechanism of the renderer.
    *
-   *   `Native` ：使用渲染器的本机封装机制。
+   *   `Native` ：使用渲染器的原生封装机制。
    *
    * - `ShadowDom`: Use modern [ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/) and
    *     create a ShadowRoot for component's host element.

@@ -213,7 +213,7 @@ export class BrowserViewportScroller implements ViewportScroller {
   /**
    * Scrolls to an element using the native offset and the specified offset set on this scroller.
    *
-   * 使用本机偏移量和此滚动器上设置的指定偏移量滚动到一个元素。
+   * 使用原生偏移量和此滚动器上设置的指定偏移量滚动到一个元素。
    *
    * The offset can be used when we know that there is a floating header and scrolling naively to an
    * element (ex: `scrollIntoView`) leaves the element hidden behind the floating header.

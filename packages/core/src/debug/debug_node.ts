@@ -582,7 +582,7 @@ function _queryAll(
  *
  * @param rootNativeNode the root native node on which predicate should not be matched
  *
- * 不应该匹配谓词的本机根节点
+ * 不应该匹配谓词的原生根节点
  *
  */
 function _queryNodeChildren(
@@ -689,7 +689,7 @@ function _queryNodeChildren(
  *
  * @param rootNativeNode the root native node on which predicate should not be matched
  *
- * 不应该匹配谓词的本机根节点
+ * 不应该匹配谓词的原生根节点
  *
  */
 function _queryNodeChildrenInContainer(
@@ -707,11 +707,11 @@ function _queryNodeChildrenInContainer(
 /**
  * Match the current native node against the predicate.
  *
- * 将当前的本机节点与谓词匹配。
+ * 将当前的原生节点与谓词匹配。
  *
  * @param nativeNode the current native node
  *
- * 当前的本机节点
+ * 当前的原生节点
  *
  * @param predicate the predicate to match
  *
@@ -727,7 +727,7 @@ function _queryNodeChildrenInContainer(
  *
  * @param rootNativeNode the root native node on which predicate should not be matched
  *
- * 不应该匹配谓词的本机根节点
+ * 不应该匹配谓词的原生根节点
  *
  */
 function _addQueryMatch(
@@ -759,7 +759,7 @@ function _addQueryMatch(
  *
  * @param nativeNode the current native node
  *
- * 当前的本机节点
+ * 当前的原生节点
  *
  * @param predicate the predicate to match
  *

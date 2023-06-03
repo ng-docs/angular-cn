@@ -23,7 +23,7 @@ import type {TmplAstBoundAttribute, TmplAstBoundEvent, TmplAstBoundText, TmplAst
  * 可用于实现 Render3 模板 AST 访问器的基类。使用此类，而不是在 `@angular/compiler` 中找到的
  * `NullVisitor` ，因为 `NullVisitor` 需要深度导入，从 v13 开始，ESM
  * 捆绑包不再支持这种导入。当前还要求 Schematics 是 CommonJS 以支持在 Angular CLI
- * 中执行。因此，必须通过本机动态导入加载 ESM `@angular/compiler` 包。使用动态导入会使从
+ * 中执行。因此，必须通过原生动态导入加载 ESM `@angular/compiler` 包。使用动态导入会使从
  * `@angular/compiler` 中存在的类扩展的类变得复杂，因为该类在模块估算时不存在。使用
  * `@angular/compiler`
  * 中找到的基类的类必须包装在工厂中，以允许在动态导入完成后在运行时访问类值。此类实现了

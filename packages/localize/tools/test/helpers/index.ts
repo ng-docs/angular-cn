@@ -12,7 +12,7 @@ import {MockFileSystemNative} from '@angular/compiler-cli/src/ngtsc/file_system/
 /**
  * Only run these tests on the "native" file-system.
  *
- * 仅在“本机”文件系统上运行这些测试。
+ * 仅在“原生”文件系统上运行这些测试。
  *
  * Babel uses the `path.resolve()` function internally, which makes it very hard to mock out the
  * file-system from the outside. We run these tests on Unix and Windows in our CI jobs, so there is

@@ -165,7 +165,7 @@ The [Browser Support](guide/browser-support) guide explains which browsers need 
 The packages listed in the `devDependencies` section of `package.json` help you develop the application on your local machine.
 You don't deploy them with the production application.
 
-`package.json` 的 *devDependencies* 区列出的这些包可以帮助你在本机开发应用。你不必把它们部署到生产环境中。
+`package.json` 的 *devDependencies* 区列出的这些包可以帮助你在原生开发应用。你不必把它们部署到生产环境中。
 
 To add a new `devDependency`, use either one of the following commands:
 

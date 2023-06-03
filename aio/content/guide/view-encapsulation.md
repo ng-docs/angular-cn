@@ -61,7 +61,7 @@ Two kinds of these attributes exist:
 | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 属性         | 详情                                                                                                                                                                                         |
 | `_nghost`    | Are added to elements that enclose a component's view and that would be ShadowRoots in a native Shadow DOM encapsulation. This is typically the case for components' host elements.          |
-| `_nghost`    | 被添加到包裹组件视图的元素中，这将是本机 Shadow DOM 封装中的 ShadowRoots。组件的宿主元素通常就是这种情况。                                                                                   |
+| `_nghost`    | 被添加到包裹组件视图的元素中，这将是原生 Shadow DOM 封装中的 ShadowRoots。组件的宿主元素通常就是这种情况。                                                                                   |
 | `_ngcontent` | Are added to child element within a component's view, those are used to match the elements with their respective emulated ShadowRoots \(host elements with a matching `_nghost` attribute\). |
 | `_ngcontent` | 被添加到组件视图中的子元素上，这些属性用于将元素与其各自模拟的 ShadowRoots（具有匹配 `_nghost` 属性的宿主元素）相匹配。                                                                      |
 

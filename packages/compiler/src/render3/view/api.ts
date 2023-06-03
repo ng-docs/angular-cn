@@ -312,7 +312,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
    * - `ViewEncapsulation.Emulated`: Apply modified component styles in order to emulate
    *                                 a native Shadow DOM CSS encapsulation behavior.
    *
-   *   `ViewEncapsulation.Emulated` ：应用修改后的组件样式以模拟本机 Shadow DOM CSS 封装行为。
+   *   `ViewEncapsulation.Emulated` ：应用修改后的组件样式以模拟原生 Shadow DOM CSS 封装行为。
    *
    * - `ViewEncapsulation.None`: Apply component styles globally without any sort of encapsulation.
    *
@@ -320,7 +320,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
    *
    * - `ViewEncapsulation.ShadowDom`: Use the browser's native Shadow DOM API to encapsulate styles.
    *
-   *   `ViewEncapsulation.ShadowDom` ：使用浏览器的本机 Shadow DOM API 来封装样式。
+   *   `ViewEncapsulation.ShadowDom` ：使用浏览器的原生 Shadow DOM API 来封装样式。
    *
    */
   encapsulation: ViewEncapsulation;

@@ -153,15 +153,15 @@ export function createLView<T>(
  *
  * @param native The native element for this node, if applicable
  *
- * 此节点的本机元素（如果适用）
+ * 此节点的原生元素（如果适用）
  *
  * @param name The tag name of the associated native element, if applicable
  *
- * 关联的本机元素的标签名称（如果适用）
+ * 关联的原生元素的标签名称（如果适用）
  *
  * @param attrs Any attrs for the native element, if applicable
  *
- * 本机元素的任何属性（如果适用）
+ * 原生元素的任何属性（如果适用）
  *
  */
 export function getOrCreateTNode(

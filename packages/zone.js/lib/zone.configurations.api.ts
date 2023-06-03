@@ -778,7 +778,7 @@ interface ZoneGlobalConfigurations {
    * the native `addEventListener()` for better performance.
    *
    * 有时，你不希望此修补版本中使用的所有事件名称，因为它会影响性能。例如，你可能希望 `scroll` 或
-   * `mousemove` 事件侦听器运行本机 `addEventListener()` 以获得更好的性能。
+   * `mousemove` 事件侦听器运行原生 `addEventListener()` 以获得更好的性能。
    *
    * Users can achieve this goal by defining `__zone_symbol__UNPATCHED_EVENTS = ['scroll',
    * 'mousemove'];` before importing `zone.js`.

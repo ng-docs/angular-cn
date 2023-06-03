@@ -591,7 +591,7 @@ export type RunGuardsAndResolvers =
  * Given the following example route, the router will lazy load
  * the associated module on demand using the browser native import system.
  *
- * 对于以下示例路由，路由器将使用浏览器本机导入系统按需惰性加载关联的模块。
+ * 对于以下示例路由，路由器将使用浏览器原生导入系统按需惰性加载关联的模块。
  *
  * ```
  * [{
