@@ -2868,7 +2868,7 @@ If the user is logged in, it returns `true` and the navigation continues.
 Otherwise, it redirects to a login page; a page you haven't created yet.
 Returning a `UrlTree` tells the `Router` to cancel the current navigation and schedule a new one to redirect the user.
 
-这个守卫返回一个同步布尔结果或一个 `UrlTree` 。 如果用户已登录，则返回 `true` 并继续导航。 否则，它会重定向到登录页面； 您尚未创建的页面。 返回一个 `UrlTree` 告诉 `Router` 取消当前导航并安排一个新的导航来重定向用户。
+这个守卫返回一个同步布尔结果或一个 `UrlTree` 。 如果用户已登录，则返回 `true` 并继续导航。 否则，它会重定向到登录页面； 你尚未创建的页面。 返回一个 `UrlTree` 告诉 `Router` 取消当前导航并安排一个新的导航来重定向用户。
 
 <a id="add-login-component"></a>
 
@@ -3394,7 +3394,7 @@ A `canMatch` guard controls whether the `Router` attempts to match a `Route`. Th
 multiple `Route` configurations that share the same `path` but are matched based on different conditions. This approach
 allows the `Router` to match the wildcard `Route` instead.
 
-`canMatch` 守卫控制 `Router` 是否尝试匹配 `Route` 。 这使您可以拥有多个 `Route` 配置，这些配置共享相同的 `path` 但根据不同的条件进行匹配。 这种方法允许 `Router` 改为匹配通配符 `Route` 。
+`canMatch` 守卫控制 `Router` 是否尝试匹配 `Route` 。 这使你可以拥有多个 `Route` 配置，这些配置共享相同的 `path` 但根据不同的条件进行匹配。 这种方法允许 `Router` 改为匹配通配符 `Route` 。
 
 The existing `authGuard` contains the logic to support the `canMatch` guard.
 

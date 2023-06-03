@@ -59,7 +59,7 @@ function serializeTransferStateFactory(doc: Document, appId: string, transferSto
  * no longer needed, you can inject the `TransferState` in an app without providing
  *     this module.
  *
- * 不再需要，您可以在不提供此模块的情况下将 `TransferState` 注入应用程序。
+ * 不再需要，你可以在不提供此模块的情况下将 `TransferState` 注入应用程序。
  *
  */
 @NgModule({})

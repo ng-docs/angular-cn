@@ -282,7 +282,7 @@ export class ComponentFactory<T> extends AbstractComponentFactory<T> {
  * Component Instance and allows you to destroy the Component Instance via the {@link #destroy}
  * method.
  *
- * `ComponentRef` 提供对组件实例以及与此组件实例相关的其他对象的访问，并允许您通过 {@link #destroy} 方法销毁组件实例。
+ * `ComponentRef` 提供对组件实例以及与此组件实例相关的其他对象的访问，并允许你通过 {@link #destroy} 方法销毁组件实例。
  *
  */
 export class ComponentRef<T> extends AbstractComponentRef<T> {
@@ -570,7 +570,7 @@ function projectNodes(
  * you are rendering has lifecycle hooks defined. Otherwise, the hooks won't
  * be called properly.
  *
- * 如果您正在渲染的根组件定义了生命周期挂钩，则在调用 `renderComponent` 时包括此功能。 否则，钩子将不会被正确调用。
+ * 如果你正在渲染的根组件定义了生命周期挂钩，则在调用 `renderComponent` 时包括此功能。 否则，钩子将不会被正确调用。
  *
  * Example:
  *

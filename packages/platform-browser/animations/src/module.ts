@@ -90,7 +90,7 @@ export class BrowserAnimationsModule {
  * is no need to import the `BrowserAnimationsModule` NgModule at all, just add
  * providers returned by this function to the `providers` list as show below.
  *
- * 当您想要在使用 `bootstrapApplication` 函数引导的应用程序中启用动画时，该函数很有用。 在这种情况下，根本不需要导入 `BrowserAnimationsModule` NgModule，只需将此函数返回的提供者添加到 `providers` 列表中，如下所示。
+ * 当你想要在使用 `bootstrapApplication` 函数引导的应用程序中启用动画时，该函数很有用。 在这种情况下，根本不需要导入 `BrowserAnimationsModule` NgModule，只需将此函数返回的提供者添加到 `providers` 列表中，如下所示。
  *
  * ```typescript
  * bootstrapApplication(RootComponent, {
@@ -135,7 +135,7 @@ export class NoopAnimationsModule {
  * the `bootstrapApplication` function, but you need to disable animations
  * \(for example, when running tests\).
  *
- * 当您想使用 `bootstrapApplication` 函数引导应用程序时，该函数很有用，但您需要禁用动画（例如，在运行测试时）。
+ * 当你想使用 `bootstrapApplication` 函数引导应用程序时，该函数很有用，但你需要禁用动画（例如，在运行测试时）。
  *
  * ```typescript
  * bootstrapApplication(RootComponent, {

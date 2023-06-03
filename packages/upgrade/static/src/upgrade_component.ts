@@ -68,7 +68,7 @@ class Bindings {
  * because the AOT compiler requires that this information is statically available at
  * compile time.
  *
- * 在此示例中，您可以看到我们必须从 `UpgradeComponent` 基类派生，但也提供了一个 {@link Directive `@Directive` } 装饰器。 这是因为 AOT 编译器要求此信息在编译时静态可用。
+ * 在此示例中，你可以看到我们必须从 `UpgradeComponent` 基类派生，但也提供了一个 {@link Directive `@Directive` } 装饰器。 这是因为 AOT 编译器要求此信息在编译时静态可用。
  *
  * Note that we must do the following:
  *

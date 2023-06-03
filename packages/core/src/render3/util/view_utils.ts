@@ -187,7 +187,7 @@ export function isCreationMode(view: LView): boolean {
  * Note: This determines whether a view should be checked, not whether it's inserted
  * into a container. For that, you'll want `viewAttachedToContainer` below.
  *
- * 注意：这决定了一个视图是否应该被检查，而不是它是否被插入到一个容器中。 为此，您需要下面的 `viewAttachedToContainer` 。
+ * 注意：这决定了一个视图是否应该被检查，而不是它是否被插入到一个容器中。 为此，你需要下面的 `viewAttachedToContainer` 。
  *
  */
 export function viewAttachedToChangeDetector(view: LView): boolean {

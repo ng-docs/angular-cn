@@ -869,7 +869,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * \(here incrementing a counter, using RxJS `interval`\),
  * and at the same time subscribe to `isStable`.
  *
- * 假设您开始一个循环任务（这里使用 RxJS `interval` 递增一个计数器），同时订阅 `isStable` 。
+ * 假设你开始一个循环任务（这里使用 RxJS `interval` 递增一个计数器），同时订阅 `isStable` 。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -889,7 +889,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * you have to wait for the application to be stable
  * before starting your polling process.
  *
- * 如果您想在应用程序稳定时执行某些操作，则必须等待应用程序稳定后再开始轮询过程。
+ * 如果你想在应用程序稳定时执行某些操作，则必须等待应用程序稳定后再开始轮询过程。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -916,7 +916,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * you update a field of your component
  * and display it in its template.
  *
- * 假设您不记录计数器值，而是更新组件的一个字段并将其显示在其模板中。
+ * 假设你不记录计数器值，而是更新组件的一个字段并将其显示在其模板中。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -935,7 +935,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *
  * You'll have to manually trigger the change detection to update the template.
  *
- * 您必须手动触发更改检测才能更新模板。
+ * 你必须手动触发更改检测才能更新模板。
  *
  * ```
  * constructor(appRef: ApplicationRef, cd: ChangeDetectorRef) {
@@ -1557,7 +1557,7 @@ export function internalProvideZoneChangeDetection(ngZoneFactory: () => NgZone):
  * This provider is not available for `platformBrowser().bootstrapModule`, which uses
  * `BootstrapOptions` instead.
  *
- * 默认情况下，应用程序中已经提供了 `NgZone` 。 该提供程序允许您在 `NgZone` 中配置诸如 `eventCoalescing` 之类的选项。 此提供程序不适用于 `platformBrowser().bootstrapModule` ，它使用 `BootstrapOptions` 代替。
+ * 默认情况下，应用程序中已经提供了 `NgZone` 。 该提供程序允许你在 `NgZone` 中配置诸如 `eventCoalescing` 之类的选项。 此提供程序不适用于 `platformBrowser().bootstrapModule` ，它使用 `BootstrapOptions` 代替。
  *
  * @usageNotes
  * ```typescript=

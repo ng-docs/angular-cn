@@ -69,7 +69,7 @@ If `initialValue` is omitted, the signal returned by `toSignal` returns `undefin
 
 Some Observables are known to emit synchronously, such as `BehaviorSubject`. In those cases, you can specify the `requireSync: true` option.
 
-已知一些 Observables 是同步发出的，例如 `BehaviorSubject` 。 在这些情况下，您可以指定 `requireSync: true` 选项。
+已知一些 Observables 是同步发出的，例如 `BehaviorSubject` 。 在这些情况下，你可以指定 `requireSync: true` 选项。
 
 When `requiredSync` is `true`, `toSignal` enforces that the Observable emits synchronously on subscription. This guarantees that the signal always has a value, and no `undefined` type or initial value is required.
 
@@ -83,7 +83,7 @@ By default, `toSignal` automatically unsubscribes from the Observable upon destr
 
 The `manualCleanup` option disables this automatic cleanup. You can use this setting for Observables that complete themselves naturally.
 
-`manualCleanup` 选项禁用此自动清理。 您可以将此设置用于自然完成的 Observable。
+`manualCleanup` 选项禁用此自动清理。 你可以将此设置用于自然完成的 Observable。
 
 ### Error and Completion
 
@@ -139,7 +139,7 @@ As the `query` signal changes, the `query$` Observable emits the latest query an
 
 Unlike Observables, signals never provide a synchronous notification of changes. Even if your code updates a signal's value multiple times, effects which depend on its value run only after the signal has "settled".
 
-与 Observable 不同，信号从不提供同步的变化通知。 即使您的代码多次更新信号值，依赖于信号值的效果也只会在信号“稳定”后运行。
+与 Observable 不同，信号从不提供同步的变化通知。 即使你的代码多次更新信号值，依赖于信号值的效果也只会在信号“稳定”后运行。
 
 ```ts
 const obs$ = toObservable(mySignal);

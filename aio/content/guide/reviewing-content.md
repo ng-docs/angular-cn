@@ -243,7 +243,7 @@ If the topic requires major changes, you can [make a major change](guide/contrib
 
 Whether you make the changes the topic needs or open a docs issue, you should still [update the **Last reviewed** date](#update-the-last-reviewed-date). You can use the GitHub user interface in the browser if you only want to update the **Last reviewed** date.
 
-无论您是进行主题需要的更改还是打开文档问题，您仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date) 。 如果您只想更新**上次审查**日期，您可以在浏览器中使用 GitHub 用户界面。
+无论你是进行主题需要的更改还是打开文档问题，你仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date) 。 如果你只想更新**上次审查**日期，你可以在浏览器中使用 GitHub 用户界面。
 
 <!-- links -->
 

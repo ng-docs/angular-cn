@@ -85,7 +85,7 @@ export type ɵOptionalKeys<T> = {
  * `FormGroup` is intended for use cases where the keys are known ahead of time.
  * If you need to dynamically add and remove controls, use {@link FormRecord} instead.
  *
- * `FormGroup` 适用于提前知道密钥的用例。 如果您需要动态添加和删除控件，请改用 {@link FormRecord}。
+ * `FormGroup` 适用于提前知道密钥的用例。 如果你需要动态添加和删除控件，请改用 {@link FormRecord}。
  *
  * `FormGroup` accepts an optional type parameter `TControl`, which is an object type with inner
  * control types as values.
@@ -419,7 +419,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * Reports false for disabled controls. If you'd like to check for existence in the group
    * only, use {@link AbstractControl#get get} instead.
    *
-   * 对禁用的控件报告 false。 如果您只想检查组中是否存在，请改用 {@link AbstractControl#get get}。
+   * 对禁用的控件报告 false。 如果你只想检查组中是否存在，请改用 {@link AbstractControl#get get}。
    *
    * @param controlName The control name to check for existence in the collection
    *
@@ -464,7 +464,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @throws When strict checks fail, such as setting the value of a control
    * that doesn't exist or if you exclude a value of a control that does exist.
    *
-   * 当严格检查失败时，例如设置不存在的控件的值，或者如果您排除存在的控件的值。
+   * 当严格检查失败时，例如设置不存在的控件的值，或者如果你排除存在的控件的值。
    *
    * @param value The new value for the control that matches the structure of the group.
    *

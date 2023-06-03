@@ -665,7 +665,7 @@ export interface ComponentDecorator {
    * in certain fragments of a template. For example, you can exclude an entire
    * DOM sub-tree by using the `ngPreserveWhitespaces` attribute:
    *
-   * 您可以覆盖默认行为以在模板的某些片段中保留空白字符。 例如，您可以使用 `ngPreserveWhitespaces` 属性排除整个 DOM 子树：
+   * 你可以覆盖默认行为以在模板的某些片段中保留空白字符。 例如，你可以使用 `ngPreserveWhitespaces` 属性排除整个 DOM 子树：
    *
    * ```html
    * <div ngPreserveWhitespaces>
@@ -678,7 +678,7 @@ export interface ComponentDecorator {
    * which is replaced with a space character by Angular's template
    * compiler:
    *
-   * 您可以使用 `&ngsp;` ，它被 Angular 的模板编译器替换为空格字符：
+   * 你可以使用 `&ngsp;` ，它被 Angular 的模板编译器替换为空格字符：
    *
    * ```html
    * <a>Spaces</a>&ngsp;<a>between</a>&ngsp;<a>links.</a>

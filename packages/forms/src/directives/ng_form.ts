@@ -97,7 +97,7 @@ const resolvedPromise = (() => Promise.resolve())();
  * The following example shows you how to change the "updateOn" option from its default using
  * ngFormOptions.
  *
- * 以下示例向您展示了如何使用 ngFormOptions 更改“updateOn”选项的默认值。
+ * 以下示例向你展示了如何使用 ngFormOptions 更改“updateOn”选项的默认值。
  *
  * ```html
  * <form [ngFormOptions]="{updateOn: 'blur'}">

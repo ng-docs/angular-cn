@@ -20,7 +20,7 @@ Also for a more detailed look at different techniques and concepts surrounding S
 
 You can enable server-side rendering in your Angular application using the `@nguniversal/express-engine` schematic as described below.
 
-您可以使用 `@nguniversal/express-engine` 原理图在您的 Angular 应用程序中启用服务器端渲染，如下所述。
+你可以使用 `@nguniversal/express-engine` 原理图在你的 Angular 应用程序中启用服务器端渲染，如下所述。
 
 <div class="alert is-helpful">
 
@@ -56,7 +56,7 @@ A Node.js Express web server compiles HTML pages with Universal based on client 
 
 Run the following command to add SSR support into your application:
 
-运行以下命令将 SSR 支持添加到您的应用程序中：
+运行以下命令将 SSR 支持添加到你的应用程序中：
 
 <code-example format="shell" language="shell">
 
@@ -138,7 +138,7 @@ Hydration 是在客户端恢复服务器端呈现的应用程序的过程。 这
 
 You can enable hydration by updating the `app.module.ts` file. Import the `provideClientHydration` function from `@angular/platform-browser` and add the function call to the `providers` section of the `AppModule` as shown below.
 
-您可以通过更新 `app.module.ts` 文件来启用水合作用。 从 `@angular/platform-browser` 导入 `provideClientHydration` 函数，并将函数调用添加到 `AppModule` 的 `providers` 部分，如下所示。
+你可以通过更新 `app.module.ts` 文件来启用水合作用。 从 `@angular/platform-browser` 导入 `provideClientHydration` 函数，并将函数调用添加到 `AppModule` 的 `providers` 部分，如下所示。
 
 ```typescript
 import {provideClientHydration} from '@angular/platform-browser';
@@ -170,12 +170,12 @@ npm run dev:ssr
 
 ### Step 4. Run your application in a browser
 
-### 第 4 步。在浏览器中运行您的应用程序
+### 第 4 步。在浏览器中运行你的应用程序
 
 Once the web server starts, open a browser and navigate to `http://localhost:4200`.
 You should see the familiar Tour of Heroes dashboard page.
 
-Web 服务器启动后，打开浏览器并导航到 `http://localhost:4200` 。 您应该会看到熟悉的 Tour of Heroes 仪表板页面。
+Web 服务器启动后，打开浏览器并导航到 `http://localhost:4200` 。 你应该会看到熟悉的 Tour of Heroes 仪表板页面。
 
 Navigation using `routerLinks` works correctly because they use the built-in anchor \(`<a>`\) elements.
 You can go from the Dashboard to the Heroes page and back.
@@ -377,7 +377,7 @@ This is a good argument for making the application [routable](guide/router).
 
 If you are using Universal in conjunction with the Angular service worker, the behavior is different than the normal server side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker. For subsequent requests, the `index.html` file is served statically and bypasses server side rendering.
 
-如果您将 Universal 与 Angular service worker 结合使用，则其行为不同于正常的服务器端呈现行为。 初始服务器请求将按预期在服务器上呈现。 但是，在该初始请求之后，后续请求将由 service worker 处理。 对于后续请求， `index.html` 文件是静态提供的并绕过服务器端呈现。
+如果你将 Universal 与 Angular service worker 结合使用，则其行为不同于正常的服务器端呈现行为。 初始服务器请求将按预期在服务器上呈现。 但是，在该初始请求之后，后续请求将由 service worker 处理。 对于后续请求， `index.html` 文件是静态提供的并绕过服务器端呈现。
 
 <a id="universal-engine"></a>
 
@@ -522,7 +522,7 @@ This option is the least intrusive as it does not require any changes to the app
 Here, "request URL" refers to the URL of the request as a response to which the application is being rendered on the server.
 For example, if the client requested `https://my-server.com/dashboard` and you are rendering the application on the server to respond to that request, `options.url` should be set to `https://my-server.com/dashboard`.
 
-推荐的解决方案是将完整的请求 URL 传递给[renderModule](api/platform-server/renderModule)的 `options` 参数。 此选项的侵入性最小，因为它不需要对应用程序进行任何更改。 此处，“请求 URL”指的是请求的 URL，作为应用程序在服务器上呈现的响应。 例如，如果客户端请求 `https://my-server.com/dashboard` 并且您正在服务器上呈现应用程序以响应该请求，则 `options.url` 应设置为 `https://my-server.com/dashboard` 。
+推荐的解决方案是将完整的请求 URL 传递给[renderModule](api/platform-server/renderModule)的 `options` 参数。 此选项的侵入性最小，因为它不需要对应用程序进行任何更改。 此处，“请求 URL”指的是请求的 URL，作为应用程序在服务器上呈现的响应。 例如，如果客户端请求 `https://my-server.com/dashboard` 并且你正在服务器上呈现应用程序以响应该请求，则 `options.url` 应设置为 `https://my-server.com/dashboard` 。
 
 Now, on every HTTP request made as part of rendering the application on the server, Angular can correctly resolve the request URL to an absolute URL, using the provided `options.url`.
 

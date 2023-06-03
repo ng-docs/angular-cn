@@ -484,7 +484,7 @@ Angular 的 `forwardRef()` 函数创建了一个 Angular 稍后可以解析的�
 
 For example, this situation happens when a standalone parent component imports a standalone child component and vice-versa. You can resolve this circular dependency issue by using the `forwardRef` function.
 
-例如，当独立父组件导入独立子组件时会发生这种情况，反之亦然。 您可以使用 `forwardRef` 函数解决此循环依赖问题。
+例如，当独立父组件导入独立子组件时会发生这种情况，反之亦然。 你可以使用 `forwardRef` 函数解决此循环依赖问题。
 
 ```ts
 @Component({

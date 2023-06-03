@@ -41,7 +41,7 @@ import {getDocument} from './render3/interfaces/document';
  * By default, when there is only one application bootstrapped, you don't need to provide the
  * `APP_ID` token \(the `ng` will be used as an app ID\).
  *
- * 默认情况下，当只有一个应用程序启动时，您不需要提供 `APP_ID` 令牌（ `ng` 将用作应用程序 ID）。
+ * 默认情况下，当只有一个应用程序启动时，你不需要提供 `APP_ID` 令牌（ `ng` 将用作应用程序 ID）。
  *
  * @publicApi
  */

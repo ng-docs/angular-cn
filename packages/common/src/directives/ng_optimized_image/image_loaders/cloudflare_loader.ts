@@ -18,7 +18,7 @@ import {createImageLoader, ImageLoaderConfig} from './image_loader';
  *
  * @param path Your domain name, e.g. https://mysite.com
  *
- * 您的域名，例如 https://mysite.com
+ * 你的域名，例如 https://mysite.com
  *
  * @returns
  *

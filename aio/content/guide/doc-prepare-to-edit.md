@@ -635,7 +635,7 @@ Perform these steps from a command-line tool on your local computer.
    These are most, but not all, of the tests that are performed after you open your pull request.
    Some tests can only be run in the automated testing environment.
 
-   在文档目录中，运行这些命令以启动验证文档是否一致的自动化测试。 这些是大多数（但不是全部）在您打开拉取请求后执行的测试。 有些测试只能在自动化测试环境中运行。
+   在文档目录中，运行这些命令以启动验证文档是否一致的自动化测试。 这些是大多数（但不是全部）在你打开拉取请求后执行的测试。 有些测试只能在自动化测试环境中运行。
 
    <code-example format="shell" language="shell">
 

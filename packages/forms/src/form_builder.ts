@@ -252,7 +252,7 @@ export class FormBuilder {
    * subclass, so TypeScript sees this as an error. For example, change the `(group: FormGroup) =>
    * ValidationErrors|null` signature to be `(group: AbstractControl) => ValidationErrors|null`.
    *
-   * 此 API 不是类型安全的，可能会导致 Closure Compiler 重命名问题。 改用带有 `AbstractControlOptions` 的 `FormBuilder#group` 重载。 请注意， `AbstractControlOptions` 期望 `validators` 和 `asyncValidators` 是有效的验证器。 如果您有自定义验证器，请确保它们的验证函数参数是 `AbstractControl` 而不是子类，例如 `FormGroup` 。 这些函数将使用 `AbstractControl` 类型的对象调用，并且不能自动向下转换为子类，因此 TypeScript 将此视为错误。 例如，将 `(group: FormGroup) => ValidationErrors|null` 签名更改为 `(group: AbstractControl) => ValidationErrors|null` 。
+   * 此 API 不是类型安全的，可能会导致 Closure Compiler 重命名问题。 改用带有 `AbstractControlOptions` 的 `FormBuilder#group` 重载。 请注意， `AbstractControlOptions` 期望 `validators` 和 `asyncValidators` 是有效的验证器。 如果你有自定义验证器，请确保它们的验证函数参数是 `AbstractControl` 而不是子类，例如 `FormGroup` 。 这些函数将使用 `AbstractControl` 类型的对象调用，并且不能自动向下转换为子类，因此 TypeScript 将此视为错误。 例如，将 `(group: FormGroup) => ValidationErrors|null` 签名更改为 `(group: AbstractControl) => ValidationErrors|null` 。
    *
    * @param controls A record of child controls. The key for each child is the name
    * under which the control is registered.

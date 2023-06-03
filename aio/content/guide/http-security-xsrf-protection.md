@@ -4,13 +4,13 @@
 
 [Cross-Site Request Forgery \(XSRF or CSRF\)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) is an attack technique by which the attacker can trick an authenticated user into unknowingly executing actions on your website.
 
-[跨站点请求伪造（XSRF 或 CSRF）](https://en.wikipedia.org/wiki/Cross-site_request_forgery)是一种攻击技术，攻击者可以通过这种技术诱使经过身份验证的用户在您的网站上不知不觉地执行操作。
+[跨站点请求伪造（XSRF 或 CSRF）](https://en.wikipedia.org/wiki/Cross-site_request_forgery)是一种攻击技术，攻击者可以通过这种技术诱使经过身份验证的用户在你的网站上不知不觉地执行操作。
 
 `HttpClient` supports a [common mechanism](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token) used to prevent XSRF attacks.
 When performing HTTP requests, an interceptor reads a token from a cookie, by default `XSRF-TOKEN`, and sets it as an HTTP header, `X-XSRF-TOKEN`.
 Because only code that runs on your domain could read the cookie, the backend can be certain that the HTTP request came from your client application and not an attacker.
 
-`HttpClient` 支持用于防止 XSRF 攻击的[通用机制](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token)。 当执行 HTTP 请求时，拦截器从 cookie 中读取令牌，默认为 `XSRF-TOKEN` ，并将其设置为 HTTP 标头 `X-XSRF-TOKEN` 。 因为只有在您的域上运行的代码才能读取 cookie，后端可以确定 HTTP 请求来自您的客户端应用程序而不是攻击者。
+`HttpClient` 支持用于防止 XSRF 攻击的[通用机制](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token)。 当执行 HTTP 请求时，拦截器从 cookie 中读取令牌，默认为 `XSRF-TOKEN` ，并将其设置为 HTTP 标头 `X-XSRF-TOKEN` 。 因为只有在你的域上运行的代码才能读取 cookie，后端可以确定 HTTP 请求来自你的客户端应用程序而不是攻击者。
 
 By default, an interceptor sends this header on all mutating requests \(such as POST\)
 to relative URLs, but not on GET/HEAD requests or on requests with an absolute URL.

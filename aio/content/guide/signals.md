@@ -5,7 +5,7 @@
 **Angular Signals** is a system that granularly tracks how and where your state is used throughout an application, allowing the framework to optimize
 rendering updates.
 
-**Angular Signals**是一个系统，可以精细地跟踪您的状态在整个应用程序中的使用方式和位置，从而允许框架优化渲染更新。
+**Angular Signals**是一个系统，可以精细地跟踪你的状态在整个应用程序中的使用方式和位置，从而允许框架优化渲染更新。
 
 <div class="alert is-important">
 
@@ -35,7 +35,7 @@ Signals may be either _writable_ or _read-only_.
 
 Writable signals provide an API for updating their values directly. You create writable signals by calling the `signal` function with the signal's initial value:
 
-可写信号提供了一个 API 来直接更新它们的值。 您可以通过使用信号的初始值调用 `signal` 函数来创建可写信号：
+可写信号提供了一个 API 来直接更新它们的值。 你可以通过使用信号的初始值调用 `signal` 函数来创建可写信号：
 
 ```ts
 const count = signal(0);
@@ -46,7 +46,7 @@ console.log('The count is: ' + count());
 
 To change the value of a writable signal, you can either `.set()` it directly:
 
-要更改可写信号的值，您可以直接 `.set()` ：
+要更改可写信号的值，你可以直接 `.set()` ：
 
 ```ts
 count.set(3);
@@ -63,7 +63,7 @@ count.update(value => value + 1);
 
 When working with signals that contain objects, it's sometimes useful to mutate that object directly. For example, if the object is an array, you may want to push a new value without replacing the array entirely. To make an internal change like this, use the `.mutate` method:
 
-在处理包含对象的信号时，有时直接改变该对象很有用。 例如，如果对象是一个数组，您可能希望在不完全替换数组的情况下推送一个新值。 要进行这样的内部更改，请使用 `.mutate` 方法：
+在处理包含对象的信号时，有时直接改变该对象很有用。 例如，如果对象是一个数组，你可能希望在不完全替换数组的情况下推送一个新值。 要进行这样的内部更改，请使用 `.mutate` 方法：
 
 ```ts
 const todos = signal([{title: 'Learn signals', done: false}]);
@@ -117,7 +117,7 @@ As a result, it's safe to perform computationally expensive derivations in compu
 
 You cannot directly assign values to a computed signal. That is,
 
-您不能直接为计算信号赋值。 那是，
+你不能直接为计算信号赋值。 那是，
 
 ```ts
 doubleCount.set(3);
@@ -173,7 +173,7 @@ When an `OnPush` component uses a signal's value in its template, Angular will t
 
 Signals are useful because they can notify interested consumers when they change. An **effect** is an operation that runs whenever one or more signal values change. You can create an effect with the `effect` function:
 
-信号很有用，因为它们可以在变化时通知感兴趣的消费者。 **效果**是一种操作，只要一个或多个信号值发生变化就会运行。 您可以使用 `effect` 函数创建效果：
+信号很有用，因为它们可以在变化时通知感兴趣的消费者。 **效果**是一种操作，只要一个或多个信号值发生变化就会运行。 你可以使用 `effect` 函数创建效果：
 
 ```ts
 effect(() => {
@@ -263,7 +263,7 @@ export class EffectiveCounterCmp {
 
 To create an effect outside of the constructor, you can pass an `Injector` to `effect` via its options:
 
-要在构造函数之外创建效果，您可以通过其选项传递 `Injector` 以产生 `effect` ：
+要在构造函数之外创建效果，你可以通过其选项传递 `Injector` 以产生 `effect` ：
 
 ```ts
 @Component({...})
@@ -285,7 +285,7 @@ export class EffectiveCounterCmp {
 
 When you create an effect, it is automatically destroyed when its enclosing context is destroyed. This means that effects created within components are destroyed when the component is destroyed. The same goes for effects within directives, services, etc.
 
-当您创建一个效果时，它会在其封闭上下文被销毁时自动销毁。 这意味着当组件被销毁时，在组件内创建的效果也会被销毁。 指令、服务等中的效果也是如此。
+当你创建一个效果时，它会在其封闭上下文被销毁时自动销毁。 这意味着当组件被销毁时，在组件内创建的效果也会被销毁。 指令、服务等中的效果也是如此。
 
 Effects return an `EffectRef` that can be used to destroy them manually, via the `.destroy()` operation. This can also be combined with the `manualCleanup` option to create an effect that lasts until it is manually destroyed. Be careful to actually clean up such effects when they're no longer required.
 
@@ -301,7 +301,7 @@ Effects return an `EffectRef` that can be used to destroy them manually, via the
 
 When creating a signal, you can optionally provide an equality function, which will be used to check whether the new value is actually different than the previous one.
 
-创建信号时，您可以选择提供相等函数，该函数将用于检查新值是否实际上与前一个值不同。
+创建信号时，你可以选择提供相等函数，该函数将用于检查新值是否实际上与前一个值不同。
 
 ```ts
 import _ from 'lodash';
@@ -328,7 +328,7 @@ For writable signals, `.mutate()` does not check for equality because it mutates
 
 Rarely, you may want to execute code which may read signals in a reactive function such as `computed` or `effect` _without_ creating a dependency.
 
-在极少数情况下，您可能希望执行可以 _ 在不 _ 创建依赖项的情况下读取反应函数（例如 `computed` 或 `effect` 中的信号的代码。
+在极少数情况下，你可能希望执行可以 _ 在不 _ 创建依赖项的情况下读取反应函数（例如 `computed` 或 `effect` 中的信号的代码。
 
 For example, suppose that when `currentUser` changes, the value of a `counter` should be logged. Creating an `effect` which reads both signals:
 
@@ -346,7 +346,7 @@ This example logs a message when _either_ `currentUser` or `counter` changes. Ho
 
 You can prevent a signal read from being tracked by calling its getter with `untracked`:
 
-您可以通过使用 `untracked` 调用其 getter 来防止信号读取被跟踪：
+你可以通过使用 `untracked` 调用其 getter 来防止信号读取被跟踪：
 
 ```ts
 effect(() => {
@@ -375,7 +375,7 @@ effect(() => {
 
 Effects might start long-running operations, which should be cancelled if the effect is destroyed or runs again before the first operation finished. When you create an effect, your function can optionally accept an `onCleanup` function as its first parameter. This `onCleanup` function lets you register a callback that is invoked before the next run of the effect begins, or when the effect is destroyed.
 
-效果可能会启动长时间运行的操作，如果效果在第一个操作完成之前被破坏或再次运行，则应取消该操作。 创建效果时，您的函数可以选择接受 `onCleanup` 函数作为其第一个参数。 这个 `onCleanup` 函数允许您注册一个回调，该回调在效果的下一次运行开始之前或效果被销毁时调用。
+效果可能会启动长时间运行的操作，如果效果在第一个操作完成之前被破坏或再次运行，则应取消该操作。 创建效果时，你的函数可以选择接受 `onCleanup` 函数作为其第一个参数。 这个 `onCleanup` 函数允许你注册一个回调，该回调在效果的下一次运行开始之前或效果被销毁时调用。
 
 ```ts
 effect((onCleanup) => {

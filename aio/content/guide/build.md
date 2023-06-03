@@ -14,7 +14,7 @@ This page discusses build-specific configuration options for Angular projects.
 
 You can define different named build configurations for your project, such as `development` and `staging`, with different defaults.
 
-您可以为您的项目定义不同的命名构建配置，例如 `development` 和 `staging` ，具有不同的默认值。
+你可以为你的项目定义不同的命名构建配置，例如 `development` 和 `staging` ，具有不同的默认值。
 
 Each named configuration can have defaults for any of the options that apply to the various [builder targets](guide/glossary#target), such as `build`, `serve`, and `test`.
 The [Angular CLI](cli) `build`, `serve`, and `test` commands can then replace files with appropriate versions for your intended target environment.
@@ -38,7 +38,7 @@ ng generate environments
 The project's `src/environments/` directory contains the base configuration file, `environment.ts`, which provides configuration for `production`, the default environment.
 You can override default values for additional environments, such as `development` and `staging`, in target-specific configuration files.
 
-项目的 `src/environments/` 目录包含基本配置文件 `environment.ts` ，它提供 `production` 的配置，即默认环境。 您可以在特定于目标的配置文件中覆盖其他环境的默认值，例如 `development` 和 `staging` 。
+项目的 `src/environments/` 目录包含基本配置文件 `environment.ts` ，它提供 `production` 的配置，即默认环境。 你可以在特定于目标的配置文件中覆盖其他环境的默认值，例如 `development` 和 `staging` 。
 
 For example:
 
@@ -92,7 +92,7 @@ export const environment = {
 You can add target-specific configuration files, such as `environment.development.ts`.
 The following content sets default values for the development build target:
 
-您可以添加特定于目标的配置文件，例如 `environment.development.ts` 。 以下内容为开发构建目标设置了默认值：
+你可以添加特定于目标的配置文件，例如 `environment.development.ts` 。 以下内容为开发构建目标设置了默认值：
 
 <code-example format="typescript" language="typescript">
 
@@ -215,7 +215,7 @@ For example:
 
 This means that when you build your development configuration with `ng build --configuration development`, the `src/environments/environment.ts` file is replaced with the target-specific version of the file, `src/environments/environment.development.ts`.
 
-这意味着当您使用 `ng build --configuration development` 构建开发配置时， `src/environments/environment.ts` 文件将替换为文件的目标特定版本 `src/environments/environment.development.ts` 。
+这意味着当你使用 `ng build --configuration development` 构建开发配置时， `src/environments/environment.ts` 文件将替换为文件的目标特定版本 `src/environments/environment.development.ts` 。
 
 You can add additional configurations as required.
 To add a staging environment, create a copy of `src/environments/environment.ts` called `src/environments/environment.staging.ts`, then add a `staging` configuration to `angular.json`:

@@ -93,7 +93,7 @@ The following `HeroesService` example, like the POST example, replaces a resourc
 
 As for any of the HTTP methods that return an observable, the caller, `HeroesComponent.update()` [must `subscribe()`](guide/http-request-data-from-server#always-subscribe "Why you must always subscribe.") to the observable returned from the `HttpClient.put()` in order to initiate the request.
 
-对于任何返回可观察对象的 HTTP 方法，调用者 `HeroesComponent.update()` [必须 `subscribe()`](guide/http-request-data-from-server#always-subscribe "为什么您必须始终订阅。")到从 `HttpClient.put()` 返回的可观察对象以发起请求。
+对于任何返回可观察对象的 HTTP 方法，调用者 `HeroesComponent.update()` [必须 `subscribe()`](guide/http-request-data-from-server#always-subscribe "为什么你必须始终订阅。")到从 `HttpClient.put()` 返回的可观察对象以发起请求。
 
 ## Add and updating headers
 

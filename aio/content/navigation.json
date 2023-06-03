@@ -454,7 +454,7 @@
               "title": "Migrating to standalone",
               "tooltip": "Migrate your application to Angular's standalone APIs",
               "titleCn": "迁移到独立",
-              "tooltipCn": "将您的应用程序迁移到 Angular 的独立 API"
+              "tooltipCn": "将你的应用程序迁移到 Angular 的独立 API"
             }
           ]
         },
@@ -952,7 +952,7 @@
               "title": "Creating libraries",
               "tooltip": "Extend Angular by creating, publishing, and using your own libraries.",
               "titleCn": "创建库",
-              "tooltipCn": "通过创建、发布和使用您自己的库来扩展 Angular。"
+              "tooltipCn": "通过创建、发布和使用你自己的库来扩展 Angular。"
             },
             {
               "url": "guide/angular-package-format",
@@ -1199,7 +1199,7 @@
               "title": "Create an interface",
               "tooltip": "Create an interface for your app",
               "titleCn": "创建接口",
-              "tooltipCn": "为您的应用创建界面"
+              "tooltipCn": "为你的应用创建界面"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-05",
@@ -1234,14 +1234,14 @@
               "title": "Angular services",
               "tooltip": "Add an Angular service to your app",
               "titleCn": "角度服务",
-              "tooltipCn": "将 Angular 服务添加到您的应用程序"
+              "tooltipCn": "将 Angular 服务添加到你的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-10",
               "title": "Add routing",
               "tooltip": "Add routing to your app",
               "titleCn": "添加路由",
-              "tooltipCn": "将路由添加到您的应用程序"
+              "tooltipCn": "将路由添加到你的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-11",
@@ -1255,21 +1255,21 @@
               "title": "Integrate Angular forms",
               "tooltip": "Add an Angular form to your app",
               "titleCn": "集成 Angular 表单",
-              "tooltipCn": "将 Angular 表单添加到您的应用程序"
+              "tooltipCn": "将 Angular 表单添加到你的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-13",
               "title": "Add search functionality",
               "tooltip": "Add search functionality to your app",
               "titleCn": "添加搜索功能",
-              "tooltipCn": "将搜索功能添加到您的应用程序"
+              "tooltipCn": "将搜索功能添加到你的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-14",
               "title": "Add HTTP communication",
               "tooltip": "Add HTTP communication to your app",
               "titleCn": "添加 HTTP 通信",
-              "tooltipCn": "将 HTTP 通信添加到您的应用程序"
+              "tooltipCn": "将 HTTP 通信添加到你的应用程序"
             }
           ],
           "tooltipCn": "通过构建 Angular 应用程序了解如何开始使用 Angular"

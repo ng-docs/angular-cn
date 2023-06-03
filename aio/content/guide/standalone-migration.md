@@ -42,7 +42,7 @@ Before using the schematic, please ensure that the project:
 | `mode` | The transformation to perform. See [Migration modes](#migration-modes) below for details on the available options.            |
 | `mode` | 要执行的转换。 有关可用选项的详细信息，请参阅下面的[迁移模式](#migration-modes)。                                             |
 | `path` | The path to migrate, relative to the project root. You can use this option to migrate sections of your project incrementally. |
-| `path` | 相对于项目根目录的迁移路径。 您可以使用此选项以增量方式迁移项目的各个部分。                                                   |
+| `path` | 相对于项目根目录的迁移路径。 你可以使用此选项以增量方式迁移项目的各个部分。                                                   |
 
 ## Migrations steps
 
@@ -50,7 +50,7 @@ Before using the schematic, please ensure that the project:
 
 The migration process is composed of three steps. You'll have to run it multiple times and check manually that the project builds and behaves as expected.
 
-迁移过程由三个步骤组成。 您必须多次运行它并手动检查项目是否按预期构建和运行。
+迁移过程由三个步骤组成。 你必须多次运行它并手动检查项目是否按预期构建和运行。
 
 <div class="callout is-helpful">
 
@@ -63,7 +63,7 @@ You should plan to apply manual fixes after each step of the migration. Addition
 
 Run the migration in the order listed below, verifying that your code builds and runs between each step:
 
-按照下面列出的顺序运行迁移，验证您的代码在每个步骤之间构建和运行：
+按照下面列出的顺序运行迁移，验证你的代码在每个步骤之间构建和运行：
 
 1. Run `ng g @angular/core:standalone` and select "Convert all components, directives and pipes to standalone"
 
@@ -87,11 +87,11 @@ Run the migration in the order listed below, verifying that your code builds and
 
 Congratulations, your application has been converted to standalone 🎉. These are some optional follow-up steps you may want to take now:
 
-恭喜，您的应用程序已转换为独立应用程序 🎉。 这些是您现在可能想要采取的一些可选的后续步骤：
+恭喜，你的应用程序已转换为独立应用程序 🎉。 这些是你现在可能想要采取的一些可选的后续步骤：
 
 * Find and remove any remaining `NgModule` declarations: since the ["Remove unnecessary NgModules" step](#remove-unnecessary-ngmodules) cannot remove all modules automatically, you may have to remove the remaining declarations manually.
 
-  查找并删除任何剩余的 `NgModule` 声明：由于[“删除不必要的 NgModule”步骤](#remove-unnecessary-ngmodules)不能自动删除所有模块，您可能必须手动删除剩余的声明。
+  查找并删除任何剩余的 `NgModule` 声明：由于[“删除不必要的 NgModule”步骤](#remove-unnecessary-ngmodules)不能自动删除所有模块，你可能必须手动删除剩余的声明。
 
 * Run the project's unit tests and fix any failures.
 
@@ -103,7 +103,7 @@ Congratulations, your application has been converted to standalone 🎉. These a
 
 * Run any linters in your project and fix new warnings. Some linters support a `--fix` flag that may resolve so warnings automatically.
 
-  在您的项目中运行任何 linters 并修复新警告。 一些 linters 支持 `--fix` 标志，可以自动解决 so 警告。
+  在你的项目中运行任何 linters 并修复新警告。 一些 linters 支持 `--fix` 标志，可以自动解决 so 警告。
 
 ## Migration modes
 
@@ -124,7 +124,7 @@ The migration has the following modes:
 3. Switch to standalone bootstrapping API.
    You should run these migrations in the order given.
 
-   切换到独立的引导 API。 您应该按照给定的顺序运行这些迁移。
+   切换到独立的引导 API。 你应该按照给定的顺序运行这些迁移。
 
 ### Convert declarations to standalone
 
@@ -197,7 +197,7 @@ export class GreeterComponent {
 
 After converting all declarations to standalone, many NgModules can be safely removed. This step deletes such module declarations and as many corresponding references as possible. If the migration cannot delete a reference automatically, it leaves the following TODO comment so that you can delete the NgModule manually:
 
-将所有声明转换为独立声明后，可以安全地删除许多 NgModule。 此步骤删除此类模块声明和尽可能多的相应引用。 如果迁移无法自动删除引用，它会留下以下 TODO 注释，以便您可以手动删除 NgModule：
+将所有声明转换为独立声明后，可以安全地删除许多 NgModule。 此步骤删除此类模块声明和尽可能多的相应引用。 如果迁移无法自动删除引用，它会留下以下 TODO 注释，以便你可以手动删除 NgModule：
 
 ```typescript
 /* TODO(standalone-migration): clean up removed NgModule reference manually */
@@ -328,7 +328,7 @@ Some common problems that may prevent the schematic from working correctly inclu
 
 * Code that cannot be statically analyzed - the schematic uses static analysis to understand your code and determine where to make changes. The migration may skip any classes with metadata that cannot be statically analyzed at build time.
 
-  无法静态分析的代码——原理图使用静态分析来理解您的代码并确定在哪里进行更改。 迁移可能会跳过任何包含在构建时无法静态分析的元数据的类。
+  无法静态分析的代码——原理图使用静态分析来理解你的代码并确定在哪里进行更改。 迁移可能会跳过任何包含在构建时无法静态分析的元数据的类。
 
 ## Limitations
 
@@ -344,6 +344,6 @@ Due to the size and complexity of the migration, there are some cases that the s
 
 * The schematic relies on direct calls to Angular APIs. The schematic cannot recognize custom wrappers around Angular APIs. For example, if there you define a custom `customConfigureTestModule` function that wraps `TestBed.configureTestingModule`, components it declares may not be recognized.
 
-  该示意图依赖于对 Angular API 的直接调用。 原理图无法识别围绕 Angular API 的自定义包装器。 例如，如果您在那里定义了一个自定义的 `customConfigureTestModule` 函数来包装 `TestBed.configureTestingModule` ，它声明的组件可能无法被识别。
+  该示意图依赖于对 Angular API 的直接调用。 原理图无法识别围绕 Angular API 的自定义包装器。 例如，如果你在那里定义了一个自定义的 `customConfigureTestModule` 函数来包装 `TestBed.configureTestingModule` ，它声明的组件可能无法被识别。
 
 @reviewed 2023-02-15

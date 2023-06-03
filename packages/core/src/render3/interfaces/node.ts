@@ -1368,7 +1368,7 @@ export interface TContainerNode extends TNode {
    * If it's -1, this is a dynamically created container node that isn't stored in
    * data\[\] \(e.g. when you inject ViewContainerRef\) .
    *
-   * 如果它是 -1，这是一个动态创建的容器节点，它没有存储在 data\[\] 中（例如，当您注入 ViewContainerRef 时）。
+   * 如果它是 -1，这是一个动态创建的容器节点，它没有存储在 data\[\] 中（例如，当你注入 ViewContainerRef 时）。
    *
    */
   index: number;

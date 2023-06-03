@@ -26,7 +26,7 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  *   application state and initially rejects navigation to a route. After fixing the state, you want
  *   to re-navigate to the same URL so the route with the `canMatch` guard can activate.
  *
- *   `'reload'` ：路由器处理 URL，即使它与当前状态没有区别。 您可能需要此选项的一个示例是，如果 `canMatch` 守卫取决于应用程序状态并且最初拒绝导航到路由。 修复状态后，您想要重新导航到相同的 URL，以便可以激活带有 `canMatch` 守卫的路由。
+ *   `'reload'` ：路由器处理 URL，即使它与当前状态没有区别。 你可能需要此选项的一个示例是，如果 `canMatch` 守卫取决于应用程序状态并且最初拒绝导航到路由。 修复状态后，你想要重新导航到相同的 URL，以便可以激活带有 `canMatch` 守卫的路由。
  *
  * Note that this only configures whether the Route reprocesses the URL and triggers related
  * action and events like redirects, guards, and resolvers. By default, the router re-uses a
@@ -37,7 +37,7 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  * resolvers and most guards for routes do not run unless the path or path params changed
  * \(configured by `runGuardsAndResolvers`\).
  *
- * 请注意，这仅配置 Route 是否重新处理 URL 并触发相关操作和事件，如重定向、守卫和解析器。 默认情况下，当路由器重新导航到相同的组件类型而不首先访问不同的组件时，它会重新使用组件实例。 此行为由 `RouteReuseStrategy` 配置。 为了在相同的 url 导航上重新加载路由组件，您需要将 `onSameUrlNavigation` 设置为 `'reload'`_ 并 _ 提供一个 `RouteReuseStrategy` ，它为 `shouldReuseRoute` 返回 `false` 。 此外，除非路径或路径参数更改（由 `runGuardsAndResolvers` 配置），否则解析器和大多数路由守卫不会运行。
+ * 请注意，这仅配置 Route 是否重新处理 URL 并触发相关操作和事件，如重定向、守卫和解析器。 默认情况下，当路由器重新导航到相同的组件类型而不首先访问不同的组件时，它会重新使用组件实例。 此行为由 `RouteReuseStrategy` 配置。 为了在相同的 url 导航上重新加载路由组件，你需要将 `onSameUrlNavigation` 设置为 `'reload'`_ 并 _ 提供一个 `RouteReuseStrategy` ，它为 `shouldReuseRoute` 返回 `false` 。 此外，除非路径或路径参数更改（由 `runGuardsAndResolvers` 配置），否则解析器和大多数路由守卫不会运行。
  *
  * @publicApi
  * @see `RouteReuseStrategy`

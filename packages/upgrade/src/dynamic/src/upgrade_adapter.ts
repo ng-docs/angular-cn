@@ -467,7 +467,7 @@ export class UpgradeAdapter {
    * an `UpgradeAdapterRef`, which lets you register a `ready()` callback to
    * run assertions once the Angular components are ready to test through AngularJS.
    *
-   * 一个 `UpgradeAdapterRef` ，一旦 Angular 组件准备好通过 AngularJS 进行测试，它允许您注册一个 `ready()` 回调来运行断言。
+   * 一个 `UpgradeAdapterRef` ，一旦 Angular 组件准备好通过 AngularJS 进行测试，它允许你注册一个 `ready()` 回调来运行断言。
    *
    */
   registerForNg1Tests(modules?: string[]): UpgradeAdapterRef {

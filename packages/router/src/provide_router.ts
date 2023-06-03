@@ -724,7 +724,7 @@ export type NavigationErrorHandlerFeature =
  *
  * This function is run inside application's injection context so you can use the `inject` function.
  *
- * 此函数在应用程序的注入上下文中运行，因此您可以使用 `inject` 函数。
+ * 此函数在应用程序的注入上下文中运行，因此你可以使用 `inject` 函数。
  *
  * @usageNotes
  *

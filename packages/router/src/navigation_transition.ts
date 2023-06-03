@@ -413,7 +413,7 @@ export class NavigationTransitions {
    * Hook that enables you to pause navigation after the preactivation phase.
    * Used by `RouterModule`.
    *
-   * 使您能够在预激活阶段后暂停导航的挂钩。 由 `RouterModule` 使用。
+   * 使你能够在预激活阶段后暂停导航的挂钩。 由 `RouterModule` 使用。
    *
    * @internal
    */

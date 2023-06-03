@@ -10,7 +10,7 @@ Angular 指令提供了一种封装可复用行为的好方法 —— 指令可�
 The *directive composition API* lets you apply directives to a component's host element from
 _within_ the component TypeScript class.
 
-*指令组合 API*允许您从组件 TypeScript 类 _ 中将 _ 指令应用于组件的宿主元素。
+*指令组合 API*允许你从组件 TypeScript 类 _ 中将 _ 指令应用于组件的宿主元素。
 
 ## Adding directives to a component
 

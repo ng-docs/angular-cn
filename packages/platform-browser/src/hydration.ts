@@ -144,7 +144,7 @@ function provideZoneJsCompatibilityDetector(): Provider[] {
  * passing special functions \(from the `HydrationFeatures` set\) as arguments to the
  * `provideClientHydration` function.
  *
- * 设置为应用程序启用水合功能所需的提供程序。 默认情况下，该函数启用推荐的一组功能以获得大多数应用程序的最佳性能。 您可以通过将特殊函数（来自 `HydrationFeatures` 集）作为参数传递给 `provideClientHydration` 函数来启用/禁用功能。
+ * 设置为应用程序启用水合功能所需的提供程序。 默认情况下，该函数启用推荐的一组功能以获得大多数应用程序的最佳性能。 你可以通过将特殊函数（来自 `HydrationFeatures` 集）作为参数传递给 `provideClientHydration` 函数来启用/禁用功能。
  *
  * @usageNotes
  *
@@ -162,7 +162,7 @@ function provideZoneJsCompatibilityDetector(): Provider[] {
  * Alternatively if you are using NgModules, you would add `provideClientHydration`
  * to your root app module's provider list.
  *
- * 或者，如果您使用的是 NgModules，您可以将 `provideClientHydration` 添加到根应用程序模块的提供者列表中。
+ * 或者，如果你使用的是 NgModules，你可以将 `provideClientHydration` 添加到根应用程序模块的提供者列表中。
  *
  * ```
  * @NgModule({

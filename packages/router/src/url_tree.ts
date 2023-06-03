@@ -561,7 +561,7 @@ function encodeUriString(s: string): string {
  * This function should be used to encode both keys and values in a query string key/value. In
  * the following URL, you need to call encodeUriQuery on "k" and "v":
  *
- * 此函数应用于对查询字符串键/值中的键和值进行编码。 在以下 URL 中，您需要对“k”和“v”调用 encodeUriQuery：
+ * 此函数应用于对查询字符串键/值中的键和值进行编码。 在以下 URL 中，你需要对“k”和“v”调用 encodeUriQuery：
  *
  * http://www.site.org/html;mk=mv?k=v#f
  *
@@ -574,7 +574,7 @@ export function encodeUriQuery(s: string): string {
  * This function should be used to encode a URL fragment. In the following URL, you need to call
  * encodeUriFragment on "f":
  *
- * 此函数应用于对 URL 片段进行编码。 在以下 URL 中，您需要在“f”上调用 encodeUriFragment：
+ * 此函数应用于对 URL 片段进行编码。 在以下 URL 中，你需要在“f”上调用 encodeUriFragment：
  *
  * http://www.site.org/html;mk=mv?k=v#f
  *
@@ -588,7 +588,7 @@ export function encodeUriFragment(s: string): string {
  * pair for matrix params. In the following URL, you need to call encodeUriSegment on "html",
  * "mk", and "mv":
  *
- * 此函数应在任何 URI 段以及矩阵参数的键/值对中的键和值上运行。 在以下 URL 中，您需要对“html”、“mk”和“mv”调用 encodeUriSegment：
+ * 此函数应在任何 URI 段以及矩阵参数的键/值对中的键和值上运行。 在以下 URL 中，你需要对“html”、“mk”和“mv”调用 encodeUriSegment：
  *
  * http://www.site.org/html;mk=mv?k=v#f
  *

@@ -1174,7 +1174,7 @@ function applyNodes(
  * As you can see this is a very recursive problem. Yes recursion is not most efficient but the
  * code is complicated enough that trying to implemented with recursion becomes unmaintainable.
  *
- * 如您所见，这是一个非常递归的问题。 是的，递归不是最有效的，但代码足够复杂，以至于尝试用递归实现变得无法维护。
+ * 如你所见，这是一个非常递归的问题。 是的，递归不是最有效的，但代码足够复杂，以至于尝试用递归实现变得无法维护。
  *
  * @param tView The `TView` which needs to be inserted, detached, destroyed
  *

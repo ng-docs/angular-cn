@@ -4,7 +4,7 @@
 
 You can define a set of styles together to make up a specific state for animating elements and transitions. These states represent style at certain points in your animations that you can animate to and from. For example, you can animate a state as the starting point to a different state and the end of an animation.
 
-您可以一起定义一组样式来构成动画元素和过渡的特定状态。 这些状态代表动画中某些点的样式，您可以对其进行动画处理。 例如，您可以将一个状态设置为不同状态的起点和动画的结束点。
+你可以一起定义一组样式来构成动画元素和过渡的特定状态。 这些状态代表动画中某些点的样式，你可以对其进行动画处理。 例如，你可以将一个状态设置为不同状态的起点和动画的结束点。
 
 ## What is a state?
 
@@ -20,7 +20,7 @@ A state is the condition of an animation. The Angular state\(\) function takes t
 
 Aliasing a set of styles and allows you to reference that alias for animations in general. This can make animations more readable or more understandable at a glance. You can give animations a useful and descriptive state name, which allows you to quickly understand the purpose of that animation state.
 
-为一组样式设置别名，并允许您在一般情况下为动画引用该别名。 这可以使动画更具可读性或更容易一目了然。 您可以为动画提供一个有用的描述性状态名称，这使您可以快速了解该动画状态的用途。
+为一组样式设置别名，并允许你在一般情况下为动画引用该别名。 这可以使动画更具可读性或更容易一目了然。 你可以为动画提供一个有用的描述性状态名称，这使你可以快速了解该动画状态的用途。
 
 Use Angular's [`state()`](api/animations/state) function to define different states to call at the end of each transition.
 This function takes two arguments:

@@ -188,7 +188,7 @@ import {NgAdapterInjector} from './util';
  *
  * Import the `UpgradeModule` into your top level {@link NgModule Angular `NgModule`}.
  *
- * 将 `UpgradeModule` 导入您的顶层 {@link NgModule Angular `NgModule` }。
+ * 将 `UpgradeModule` 导入你的顶层 {@link NgModule Angular `NgModule` }。
  *
  * {@example upgrade/static/ts/full/module.ts region='ng2-module'}
  *
@@ -202,7 +202,7 @@ import {NgAdapterInjector} from './util';
  *
  * Finally, kick off the whole process, by bootstrapping your top level Angular `NgModule`.
  *
- * 最后，通过引导您的顶级 Angular `NgModule` 来启动整个过程。
+ * 最后，通过引导你的顶级 Angular `NgModule` 来启动整个过程。
  *
  * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
  *
@@ -215,7 +215,7 @@ import {NgAdapterInjector} from './util';
  * There is no specific API for upgrading an AngularJS service. Instead you should just follow the
  * following recipe:
  *
- * 没有用于升级 AngularJS 服务的特定 API。 相反，您应该遵循以下食谱：
+ * 没有用于升级 AngularJS 服务的特定 API。 相反，你应该遵循以下食谱：
  *
  * Let's say you have an AngularJS service:
  *
@@ -233,7 +233,7 @@ import {NgAdapterInjector} from './util';
  * Then you can use the "upgraded" AngularJS service by injecting it into an Angular component
  * or service.
  *
- * 然后，您可以通过将“升级后的”AngularJS 服务注入到 Angular 组件或服务中来使用它。
+ * 然后，你可以通过将“升级后的”AngularJS 服务注入到 Angular 组件或服务中来使用它。
  *
  * {@example upgrade/static/ts/full/module.ts region="use-ng1-upgraded-service"}
  *

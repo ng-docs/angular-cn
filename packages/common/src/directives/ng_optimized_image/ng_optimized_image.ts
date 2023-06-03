@@ -222,7 +222,7 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  *
  * 2. Optionally provide an `ImageLoader` if you use an image hosting service.
  *
- *    如果您使用图像托管服务，可选择提供 `ImageLoader` 。
+ *    如果你使用图像托管服务，可选择提供 `ImageLoader` 。
  *
  * 3. Update the necessary `<img>` tags in templates and replace `src` attributes with `ngSrc`.
  *
@@ -290,12 +290,12 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  * If you use a different image provider, you can create a custom loader function as described
  * below.
  *
- * 如果您使用不同的图像提供者，您可以创建一个自定义加载器函数，如下所述。
+ * 如果你使用不同的图像提供者，你可以创建一个自定义加载器函数，如下所述。
  *
  * To use a **custom loader**: provide your loader function as a value for the `IMAGE_LOADER` DI
  * token.
  *
- * 要使用**自定义加载器**：提供您的加载器函数作为 `IMAGE_LOADER` DI 令牌的值。
+ * 要使用**自定义加载器**：提供你的加载器函数作为 `IMAGE_LOADER` DI 令牌的值。
  *
  * ```typescript
  * import {IMAGE_LOADER, ImageLoaderConfig} from '@angular/common';
