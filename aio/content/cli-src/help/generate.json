@@ -153,7 +153,7 @@
           "name": "project-root",
           "type": "string",
           "description": "The root directory of the new application.",
-          "descriptionCn": "新应用程序的根目录。"
+          "descriptionCn": "新建应用程序的根目录。"
         },
         {
           "name": "routing",
@@ -191,7 +191,7 @@
           "type": "boolean",
           "default": false,
           "description": "Creates an application based upon the standalone API, without NgModules.",
-          "descriptionCn": "创建一个基于独立 API 的应用程序，没有 NgModules。"
+          "descriptionCn": "创建一个基于独立 API 的应用程序，不使用 NgModules。"
         },
         {
           "name": "strict",
@@ -614,7 +614,7 @@
           "type": "boolean",
           "default": true,
           "description": "Specifies whether to generate a guard as a function.",
-          "descriptionCn": "指定是否将守卫生成为函数。"
+          "descriptionCn": "指定是否生成函数型路由守卫。"
         },
         {
           "name": "implements",
@@ -669,7 +669,7 @@
           "type": "boolean",
           "default": false,
           "description": "Creates the interceptor as a `HttpInterceptorFn`.",
-          "descriptionCn": "将拦截器创建为`HttpInterceptorFn` 。"
+          "descriptionCn": "将拦截器创建为`HttpInterceptorFn` 形式。"
         },
         {
           "name": "name",
@@ -767,7 +767,7 @@
           "name": "project-root",
           "type": "string",
           "description": "The root directory of the new library.",
-          "descriptionCn": "新库的根目录。"
+          "descriptionCn": "新建的库的根目录。"
         },
         {
           "name": "skip-install",
@@ -948,7 +948,7 @@
           "type": "boolean",
           "default": true,
           "description": "Creates the resolver as a `ResolveFn`.",
-          "descriptionCn": "将解析器创建为`ResolveFn` 。"
+          "descriptionCn": "将解析器创建为`ResolveFn` 的形式。"
         },
         {
           "name": "name",

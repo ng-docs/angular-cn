@@ -41,7 +41,7 @@
       "name": "exclude",
       "type": "array",
       "description": "Globs of files to exclude, relative to the project root.",
-      "descriptionCn": "相对于项目根目录要排除的文件 Glob。"
+      "descriptionCn": "要排除的文件 Glob，是相对于项目根目录的路径。"
     },
     {
       "name": "help",

@@ -171,7 +171,7 @@
       "type": "boolean",
       "default": false,
       "description": "Creates an application based upon the standalone API, without NgModules.",
-      "descriptionCn": "创建一个基于独立 API 的应用程序，没有 NgModules。"
+      "descriptionCn": "创建一个基于独立 API 的应用程序，不使用 NgModules。"
     },
     {
       "name": "strict",
@@ -205,5 +205,5 @@
     }
   ],
   "shortDescriptionCn": "创建一个新的 Angular 工作区。",
-  "longDescriptionCn": "创建并初始化一个新的 Angular 应用程序，它是新工作区的默认项目。\n\n\n\n为可选配置提供交互式提示，例如添加路由支持。 可以安全地允许所有提示为默认值。\n\n- 新的工作区文件夹被赋予指定的项目名称，并包含顶层的配置文件。\n\n\n- 默认情况下，新初始应用程序（与工作区同名）的文件位于`src/`子文件夹中。\n\n\n- 新应用程序的配置出现在`angular.json`工作区配置文件的`projects`部分中，在其项目名称下。\n\n\n- 你在工作区中生成的后续应用程序驻留在`projects/`子文件夹中。\n\n\n\n如果你计划在工作区中有多个应用程序，你可以使用`--no-create-application`选项创建一个空工作区。 然后，你可以使用`ng generate application`创建初始应用程序。 这允许工作区名称不同于初始应用程序名称，并确保所有应用程序都驻留在`/projects`子文件夹中，与配置文件的结构相匹配。"
+  "longDescriptionCn": "创建并初始化一个新的 Angular 应用程序，它是新工作区的默认项目。\n\n\n\n为可选配置提供交互式提示，例如添加路由支持。所有这些提示都可以放心的选择默认值。\n\n- 新的工作区文件夹名称就是指定的项目名称，其中包含顶层的配置文件。\n\n\n- 默认情况下，新初始应用程序（与工作区同名）的文件位于 `src/` 子文件夹中。\n\n\n- 新应用程序的配置出现在 `angular.json` 工作区配置文件的 `projects` 部分中相应的项目名称下。\n\n\n- 你在工作区中生成的后续应用程序都位于 `projects/` 子文件夹中。\n\n\n\n如果你希望在工作区中包含多个应用程序，可以使用 `--no-create-application` 选项创建一个空工作区。然后，你可以使用 `ng generate application` 创建初始应用程序。这能让工作区名称不同于初始应用程序名称，并确保所有应用程序都位于 `/projects` 子文件夹中，与配置文件的结构相匹配。"
 }
