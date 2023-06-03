@@ -942,7 +942,7 @@ export function setI18nHandling(
  *
  * @param lView The current LView
  *
- * 当前 lView【模糊翻译】
+ * 当前的 LView
  *
  * @param childRNode The native child \(or children\) that should be appended
  *

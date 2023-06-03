@@ -41,9 +41,6 @@ import {textBindingInternal} from './shared';
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate(v0: any): typeof ɵɵtextInterpolate {
@@ -80,9 +77,6 @@ export function ɵɵtextInterpolate(v0: any): typeof ɵɵtextInterpolate {
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate1(
@@ -123,9 +117,6 @@ export function ɵɵtextInterpolate1(
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate2(
@@ -168,8 +159,6 @@ export function ɵɵtextInterpolate2(
  *
  * @see textInterpolateV
  *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate3(
@@ -211,9 +200,6 @@ export function ɵɵtextInterpolate3(
  *
  * 本身，以便它可以链式调用。
  * @see ɵɵtextInterpolateV
- *
- * 文本插值 V【模糊翻译】
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate4(
@@ -256,9 +242,6 @@ export function ɵɵtextInterpolate4(
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate5(
@@ -309,9 +292,6 @@ export function ɵɵtextInterpolate5(
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate6(
@@ -355,9 +335,6 @@ export function ɵɵtextInterpolate6(
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate7(
@@ -402,9 +379,6 @@ export function ɵɵtextInterpolate7(
  * 本身，以便它可以被链接起来。
  *
  * @see textInterpolateV
- *
- * 文本插值 V
- *
  * @codeGenApi
  */
 export function ɵɵtextInterpolate8(

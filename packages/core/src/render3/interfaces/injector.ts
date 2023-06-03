@@ -126,129 +126,64 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * export interface LInjector extends Array<any> {
  *
- * 导出接口 LInjector 扩展了 Array<any>{
- *
- *    // Cumulative bloom for directive IDs 0-31  \(IDs are % BLOOM_SIZE\)
- *
- * // 指令 ID 0-31 的累积绽放（ID 是 % BLOOM_SIZE）
- *
- * [0]: number;
+ *    // Cumulative bloom for directive IDs 0-31  (IDs are % BLOOM_SIZE)
+ *    [0]: number;
  *
  *    // Cumulative bloom for directive IDs 32-63
- *
- * // 指令 ID 32-63 的累积绽放
- *
- * [1]: number;
+ *    [1]: number;
  *
  *    // Cumulative bloom for directive IDs 64-95
- *
- * // 指令 ID 64-95 的累积 bloom
- *
- * [2]: number;
+ *    [2]: number;
  *
  *    // Cumulative bloom for directive IDs 96-127
- *
- * // 指令 ID 96-127 的累积绽放
- *
- * [3]: number;
+ *    [3]: number;
  *
  *    // Cumulative bloom for directive IDs 128-159
- *
- * // 指令 ID 128-159 的累积绽放
- *
- * [4]: number;
+ *    [4]: number;
  *
  *    // Cumulative bloom for directive IDs 160 - 191
- *
- * // 指令 ID 160 - 191 的累积 bloom
- *
- * [5]: number;
+ *    [5]: number;
  *
  *    // Cumulative bloom for directive IDs 192 - 223
- *
- * // 指令 ID 192 - 223 的累积 bloom
- *
- * [6]: number;
+ *    [6]: number;
  *
  *    // Cumulative bloom for directive IDs 224 - 255
- *
- * // 指令 ID 224 - 255 的累积 bloom
- *
- * [7]: number;
+ *    [7]: number;
  *
  *    // We need to store a reference to the injector's parent so DI can keep looking up
  *    // the injector tree until it finds the dependency it's looking for.
- *
- * // 我们需要存储对注入器父级的引用，以便 DI 可以继续查找 // 注入器树，直到找到它要查找的依赖项。
- *
- * [PARENT_INJECTOR]: number;
- *
+ *    [PARENT_INJECTOR]: number;
  * }
- *
- * 韩国人【模糊翻译】
  *
  * export interface TInjector extends Array<any> {
  *
- * 导出接口 TInjector 扩展了 Array<any>{
- *
- *    // Shared node bloom for directive IDs 0-31  \(IDs are % BLOOM_SIZE\)
- *
- * // 指令 ID 0-31 的共享节点 bloom（ID 是 % BLOOM_SIZE）
- *
- * [0]: number;
+ *    // Shared node bloom for directive IDs 0-31  (IDs are % BLOOM_SIZE)
+ *    [0]: number;
  *
  *    // Shared node bloom for directive IDs 32-63
- *
- * // 指令 ID 32-63 的共享节点 bloom
- *
- * [1]: number;
+ *    [1]: number;
  *
  *    // Shared node bloom for directive IDs 64-95
- *
- * // 指令 ID 64-95 的共享节点 bloom
- *
- * [2]: number;
+ *    [2]: number;
  *
  *    // Shared node bloom for directive IDs 96-127
- *
- * // 指令 ID 96-127 的共享节点 bloom
- *
- * [3]: number;
+ *    [3]: number;
  *
  *    // Shared node bloom for directive IDs 128-159
- *
- * // 指令 ID 128-159 的共享节点 bloom
- *
- * [4]: number;
+ *    [4]: number;
  *
  *    // Shared node bloom for directive IDs 160 - 191
- *
- * // 指令 ID 160 - 191 的共享节点 bloom
- *
- * [5]: number;
+ *    [5]: number;
  *
  *    // Shared node bloom for directive IDs 192 - 223
- *
- * // 指令 ID 192 - 223 的共享节点 bloom
- *
- * [6]: number;
+ *    [6]: number;
  *
  *    // Shared node bloom for directive IDs 224 - 255
- *
- * // 指令 ID 224 - 255 的共享节点 bloom
- *
- * [7]: number;
+ *    [7]: number;
  *
  *    // Necessary to find directive indices for a particular node.
- *
- *    // 有必要查找特定节点的指令索引。
- *
- * [TNODE]: TElementNode|TElementContainerNode|TContainerNode;
- *
+ *    [TNODE]: TElementNode|TElementContainerNode|TContainerNode;
  *  }
- *
- * 韩国人【模糊翻译】
- *
  */
 
 /**

@@ -218,7 +218,7 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`DatePipe` - `DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE)   | `{ provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: '-1200' }` | v15                   | Use the `DATE_PIPE_DEFAULT_OPTIONS` injection token, which can configure multiple settings at once instead.                               |
 | [`DatePipe` - `DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE)   | `{ provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: '-1200' }` | v15                   | 使用 `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌，它可以改为一次配置多个设置。                                                                   |
 | `isPlatformWorkerApp` and `isPlatformWorkerUi`                                       | None                                                                    | v16                   | These two functions have no purpose since the removal of the webworker platform \(they only return `false`\). They can be safely removed. |
-| `isPlatformWorkerApp` 和 `isPlatformWorkerUi`                                          | 没了【模糊翻译】                                                        | v16                   | 这两个函数在移除 webworker 平台后就没有用了（它们只返回 `false` ）。 它们可以安全地移除。                                                  |
+| `isPlatformWorkerApp` 和 `isPlatformWorkerUi`                                          | 没了                                                        | v16                   | 这两个函数在移除 webworker 平台后就没有用了（它们只返回 `false` ）。 它们可以安全地移除。                                                  |
 
 <a id="core"></a>
 

@@ -613,10 +613,6 @@ export function ɵɵclassMapInterpolate8(
  *  'suffix']);
  * ```
  *
- * .
- *
- * 韩国人【模糊翻译】
- *
  * @param values The collection of values and the strings in-between those values, beginning with
  * a string prefix and ending with a string suffix.
  * \(e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`\)

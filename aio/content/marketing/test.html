@@ -1,64 +1,50 @@
-<h1 translation-result="on">测试代码页</h1><h1 translation-origin="off">Test Code Page</h1>
+<h1>Test Code Page</h1>
 
-<h2 translation-result="on">&lt;代码标签&gt;</h2>
+<h2>&lt;code-tabs&gt;</h2>
 
-<h2 translation-origin="off">&lt;code-tabs&gt;</h2>
-
-<p translation-result="on">代码选项卡级别没有 linenums</p>
-
-<p translation-origin="off">No linenums at code-tabs level</p>
+<p>No linenums at code-tabs level</p>
 <code-tabs>
-  <code-pane header="TS code file" language="ts">
+  <code-pane header='TS code file' language='ts'>
   class {
     foo(param: string) {}
   }
   </code-pane>
-  <code-pane header="HTML content file" language="html">&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
-  <code-pane header="JSON data file" language="json" class="avoid">{ "key": "value" }</code-pane>
+  <code-pane header='HTML content file' language='html'>&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
+  <code-pane header='JSON data file' language='json' class='avoid'>{ "key": "value" }</code-pane>
 </code-tabs>
 <p></p>
 
-<p translation-result="on">linenums=true 在代码选项卡级别</p>
-
-<p translation-origin="off">linenums=true at code-tabs level</p>
-<code-tabs linenums="true">
-  <code-pane header="TS code file" language="ts">
+<p>linenums=true at code-tabs level</p>
+<code-tabs linenums='true'>
+  <code-pane header='TS code file' language='ts'>
   class {
     foo(param: string) {}
   }
   </code-pane>
-  <code-pane header="HTML content file" language="html">&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
-  <code-pane header="JSON data file" language="json" class="avoid">{ "key": "value" }</code-pane>
+  <code-pane header='HTML content file' language='html'>&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
+  <code-pane header='JSON data file' language='json' class='avoid'>{ "key": "value" }</code-pane>
 </code-tabs>
 <p></p>
 
-<p translation-result="on">代码选项卡级别没有 linenums； 第二个 HTML 窗格的 linenums=true</p>
-
-<p translation-origin="off">No linenums at code-tabs level; linenums=true for second HTML pane</p>
-<code-tabs>
-  <code-pane header="TS code file" language="ts">
+<p>No linenums at code-tabs level; linenums=true for second HTML pane</p>
+<code-tabs >
+  <code-pane header='TS code file' language='ts'>
   class {
     foo(param: string) {}
   }
   </code-pane>
-  <code-pane header="HTML content file" language="html" linenums="true">&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
-  <code-pane header="JSON data file" language="json" class="avoid">{ "key": "value" }</code-pane>
+  <code-pane header='HTML content file' language='html' linenums='true'>&lt;h1&gt;Heading&lt;/h1&gt;</code-pane>
+  <code-pane header='JSON data file' language='json' class='avoid'>{ "key": "value" }</code-pane>
 </code-tabs>
 <p></p>
 
-<h2 translation-result="on">&lt;代码示例&gt;</h2>
+<h2>&lt;code-example&gt;</h2>
 
-<h2 translation-origin="off">&lt;code-example&gt;</h2>
-
-<p translation-result="on">一条线。</p>
-
-<p translation-origin="off">One line.</p>
+<p>One line.</p>
 <code-example>const foo = 'bar'</code-example>
 
-<p translation-result="on">多行，linenums=true。</p>
-
-<p translation-origin="off">Multi-line, linenums=true.</p>
-<code-example linenums="true">
+<p>Multi-line, linenums=true.</p>
+<code-example linenums='true'>
 &lt;hero-details <em>nghost-pmm-5&gt;
   &lt;h2 </em>ngcontent-pmm-5&gt;Bah Dah Bing&lt;/h2&gt;
   &lt;hero-team <em>ngcontent-pmm-5 </em>nghost-pmm-6&gt;
@@ -67,9 +53,7 @@
 &lt;/hero-details&gt;
 </code-example>
 
-<p translation-result="on">默认 linenums (false)。</p>
-
-<p translation-origin="off">Default linenums (false).</p>
+<p>Default linenums (false).</p>
 <code-example>
 &lt;hero-details <em>nghost-pmm-5&gt;
   &lt;h2 </em>ngcontent-pmm-5&gt;Mister Fantastic&lt;/h2&gt;
@@ -79,9 +63,7 @@
 &lt;/hero-details&gt;
 </code-example>
 
-<p translation-result="on">这个标题。</p>
-
-<p translation-origin="off">Header on this one.</p>
+<p>Header on this one.</p>
 <code-example header="hero-details.component.ts (excerpt)">
   &lt;hero-details <em>nghost-pmm-5&gt;
     &lt;h2 </em>ngcontent-pmm-5&gt;Mister Fantastic&lt;/h2&gt;
@@ -91,9 +73,7 @@
   &lt;/hero-details&gt;
 </code-example>
 
-<p translation-result="on">这个标题上有一个“避免”标题。</p>
-
-<p translation-origin="off">An "avoid" header on this one.</p>
+<p>An "avoid" header on this one.</p>
 <code-example class="avoid" header="hero-details.component.ts (Avoid)">
   &lt;hero-details <em>nghost-pmm-5&gt;
     &lt;h2 </em>ngcontent-pmm-5&gt;Mister Fantastic&lt;/h2&gt;
@@ -107,75 +87,47 @@
 
 ```html
   <hero-details>
-    <h2 translation-result="on">神奇先生</h2>
-    <h2 translation-origin="off">Mister Fantastic</h2>
+    <h2>Mister Fantastic</h2>
     <hero-team>
-      <h3 translation-result="on">输队</h3>
-      <h3 translation-origin="off">Losing Team</h3>
+      <h3>Losing Team</h3>
     </hero-team>
   </hero-details>
 ```
 
-<h2 translation-result="on">&lt;实例&gt;</h2>
+<h2>&lt;live-example&gt;</h2>
 
-<h2 translation-origin="off">&lt;live-example&gt;</h2>
-
-<p translation-result="on">简单的实例</p>
-
-<p translation-origin="off">Plain live-example</p>
+<p>Plain live-example</p>
 Try this <live-example></live-example>.
 
-<p translation-result="on">标题为 atty 的实例</p>
-
-<p translation-origin="off">live-example with title atty</p>
+<p>live-example with title atty</p>
 <live-example title="Good Example"></live-example>
 
-<p translation-result="on">带有标题正文的实例</p>
-
-<p translation-origin="off">live-example with title body</p>
+<p>live-example with title body</p>
 <live-example title="Good Example">Try this great example</live-example>
 
-<p translation-result="on">带名字的实例</p>
-
-<p translation-origin="off">live-example with name</p>
+<p>live-example with name</p>
 <live-example name="testy" title="Better Example"></live-example>
 
-<p translation-result="on">带有 spacey name 和 stackblitz 的实例</p>
-
-<p translation-origin="off">live-example with spacey name and stackblitz</p>
+<p>live-example with spacey name and stackblitz</p>
 <live-example name=" testy " stackblitz="super-stackblitz"></live-example>
 
-<p translation-result="on">带有名称和 stackblitz 但没有下载的实时示例</p>
+<p>live-example with name and stackblitz but no download</p>
+<live-example name="testy" stackblitz="super-stackblitz" noDownload></live-example>
 
-<p translation-origin="off">live-example with name and stackblitz but no download</p>
-<live-example name="testy" stackblitz="super-stackblitz" nodownload=""></live-example>
+<p>live-example embedded with name and stackblitz</p>
+<live-example embedded name="testy" stackblitz="super-stackblitz"></live-example>
 
-<p translation-result="on">嵌入名称和 stackblitz 的实例</p>
+<p>More text follows ...</p>
 
-<p translation-origin="off">live-example embedded with name and stackblitz</p>
-<live-example embedded="" name="testy" stackblitz="super-stackblitz"></live-example>
+<p>Getting Started Widgets</p>
 
-<p translation-result="on">更多文字如下...</p>
-
-<p translation-origin="off">More text follows ...</p>
-
-<p translation-result="on">入门小部件</p>
-
-<p translation-origin="off">Getting Started Widgets</p>
-
-<p translation-result="on">插补</p>
-
-<p translation-origin="off">Interpolation</p>
+<p>Interpolation</p>
 <aio-gs-interpolation></aio-gs-interpolation>
 
-<p translation-result="on">属性绑定【模糊翻译】</p>
-
-<p translation-origin="off">Property Binding</p>
+<p>Property Binding</p>
 <aio-gs-property-binding></aio-gs-property-binding>
 
-<p translation-result="on">事件绑定【模糊翻译】</p>
-
-<p translation-origin="off">Event Binding</p>
+<p>Event Binding</p>
 <aio-gs-event-binding></aio-gs-event-binding>
 
 <p>NgIf</p>

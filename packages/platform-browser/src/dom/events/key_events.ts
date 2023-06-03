@@ -198,12 +198,7 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    *
    * 规范化的用户定义的预期键事件字符串
    *
-   * @returns
-   *
-   * boolean.
-   *
-   * 。【模糊翻译】。
-   *
+   * @returns boolean.
    */
   static matchEventFullKeyCode(event: KeyboardEvent, fullKeyCode: string): boolean {
     let keycode = _keyMap[event.key] || event.key;

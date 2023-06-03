@@ -33,7 +33,7 @@ The method takes a resource URL and two additional parameters:
 | body             | The data to POST in the body of the request.                                       |
 | body             | 要在请求正文中 POST 的数据。                                                       |
 | options          | An object containing method options which, in this case, specify required headers. |
-| 选项【模糊翻译】 | 包含方法选项的对象，在这种情况下，指定所需的标头。                                 |
+| options | 包含方法选项的对象，在这种情况下，指定所需的标头。                                 |
 
 The example catches errors as [described above](guide/http-handle-request-errors#error-details).
 

@@ -9,11 +9,23 @@
 import {EventEmitter, ɵRuntimeError as RuntimeError} from '@angular/core';
 import {Observable} from 'rxjs';
 
-import {asyncValidatorsDroppedWithOptsWarning, missingControlError, missingControlValueError, noControlsError} from '../directives/reactive_errors';
+import {
+  asyncValidatorsDroppedWithOptsWarning,
+  missingControlError,
+  missingControlValueError,
+  noControlsError,
+} from '../directives/reactive_errors';
 import {AsyncValidatorFn, ValidationErrors, ValidatorFn} from '../directives/validators';
 import {RuntimeErrorCode} from '../errors';
 import {FormArray, FormGroup} from '../forms';
-import {addValidators, composeAsyncValidators, composeValidators, hasValidator, removeValidators, toObservable} from '../validators';
+import {
+  addValidators,
+  composeAsyncValidators,
+  composeValidators,
+  hasValidator,
+  removeValidators,
+  toObservable,
+} from '../validators';
 
 
 /**
@@ -84,7 +96,7 @@ export const DISABLED = 'DISABLED';
  *
  * @publicApi
  */
-export type FormControlStatus = 'VALID'|'INVALID'|'PENDING'|'DISABLED';
+export type FormControlStatus = 'VALID' | 'INVALID' | 'PENDING' | 'DISABLED';
 
 /**
  * Gets validators from either an options object or given validators.
@@ -92,8 +104,8 @@ export type FormControlStatus = 'VALID'|'INVALID'|'PENDING'|'DISABLED';
  * 从 options 对象或给定的验证器获取验证器。
  *
  */
-export function pickValidators(validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|
-                               null): ValidatorFn|ValidatorFn[]|null {
+export function pickValidators(validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions |
+  null): ValidatorFn | ValidatorFn[] | null {
   return (isOptionsObj(validatorOrOpts) ? validatorOrOpts.validators : validatorOrOpts) || null;
 }
 
@@ -103,7 +115,7 @@ export function pickValidators(validatorOrOpts?: ValidatorFn|ValidatorFn[]|Abstr
  * 通过组合提供的验证器创建验证器函数。
  *
  */
-function coerceToValidator(validator: ValidatorFn|ValidatorFn[]|null): ValidatorFn|null {
+function coerceToValidator(validator: ValidatorFn | ValidatorFn[] | null): ValidatorFn | null {
   return Array.isArray(validator) ? composeValidators(validator) : validator || null;
 }
 
@@ -114,9 +126,9 @@ function coerceToValidator(validator: ValidatorFn|ValidatorFn[]|null): Validator
  *
  */
 export function pickAsyncValidators(
-    asyncValidator?: AsyncValidatorFn|AsyncValidatorFn[]|null,
-    validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null): AsyncValidatorFn|
-    AsyncValidatorFn[]|null {
+  asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null,
+  validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null): AsyncValidatorFn |
+  AsyncValidatorFn[] | null {
   if (typeof ngDevMode === 'undefined' || ngDevMode) {
     if (isOptionsObj(validatorOrOpts) && asyncValidator) {
       console.warn(asyncValidatorsDroppedWithOptsWarning);
@@ -131,13 +143,13 @@ export function pickAsyncValidators(
  * 通过组合提供的异步验证器创建异步验证器函数。
  *
  */
-function coerceToAsyncValidator(asyncValidator?: AsyncValidatorFn|AsyncValidatorFn[]|
-                                null): AsyncValidatorFn|null {
+function coerceToAsyncValidator(asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] |
+  null): AsyncValidatorFn | null {
   return Array.isArray(asyncValidator) ? composeAsyncValidators(asyncValidator) :
-                                         asyncValidator || null;
+    asyncValidator || null;
 }
 
-export type FormHooks = 'change'|'blur'|'submit';
+export type FormHooks = 'change' | 'blur' | 'submit';
 
 /**
  * Interface for options provided to an `AbstractControl`.
@@ -155,7 +167,7 @@ export interface AbstractControlOptions {
    * 应用于控件的验证器列表。
    *
    */
-  validators?: ValidatorFn|ValidatorFn[]|null;
+  validators?: ValidatorFn | ValidatorFn[] | null;
   /**
    * @description
    *
@@ -164,7 +176,7 @@ export interface AbstractControlOptions {
    * 应用于控制的异步验证器列表。
    *
    */
-  asyncValidators?: AsyncValidatorFn|AsyncValidatorFn[]|null;
+  asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;
   /**
    * @description
    *
@@ -173,43 +185,43 @@ export interface AbstractControlOptions {
    * 要更新的控件的事件名称。
    *
    */
-  updateOn?: 'change'|'blur'|'submit';
+  updateOn?: 'change' | 'blur' | 'submit';
 }
 
-export function isOptionsObj(validatorOrOpts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|
-                             null): validatorOrOpts is AbstractControlOptions {
+export function isOptionsObj(validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions |
+  null): validatorOrOpts is AbstractControlOptions {
   return validatorOrOpts != null && !Array.isArray(validatorOrOpts) &&
-      typeof validatorOrOpts === 'object';
+    typeof validatorOrOpts === 'object';
 }
 
-export function assertControlPresent(parent: any, isGroup: boolean, key: string|number): void {
-  const controls = parent.controls as {[key: string|number]: unknown};
+export function assertControlPresent(parent: any, isGroup: boolean, key: string | number): void {
+  const controls = parent.controls as { [key: string | number]: unknown };
   const collection = isGroup ? Object.keys(controls) : controls;
   if (!collection.length) {
     throw new RuntimeError(
-        RuntimeErrorCode.NO_CONTROLS,
-        (typeof ngDevMode === 'undefined' || ngDevMode) ? noControlsError(isGroup) : '');
+      RuntimeErrorCode.NO_CONTROLS,
+      (typeof ngDevMode === 'undefined' || ngDevMode) ? noControlsError(isGroup) : '');
   }
   if (!controls[key]) {
     throw new RuntimeError(
-        RuntimeErrorCode.MISSING_CONTROL,
-        (typeof ngDevMode === 'undefined' || ngDevMode) ? missingControlError(isGroup, key) : '');
+      RuntimeErrorCode.MISSING_CONTROL,
+      (typeof ngDevMode === 'undefined' || ngDevMode) ? missingControlError(isGroup, key) : '');
   }
 }
 
 export function assertAllValuesPresent(control: any, isGroup: boolean, value: any): void {
-  control._forEachChild((_: unknown, key: string|number) => {
+  control._forEachChild((_: unknown, key: string | number) => {
     if (value[key] === undefined) {
       throw new RuntimeError(
-          RuntimeErrorCode.MISSING_CONTROL_VALUE,
-          (typeof ngDevMode === 'undefined' || ngDevMode) ? missingControlValueError(isGroup, key) :
-                                                            '');
+        RuntimeErrorCode.MISSING_CONTROL_VALUE,
+        (typeof ngDevMode === 'undefined' || ngDevMode) ? missingControlValueError(isGroup, key) :
+          '');
     }
   });
 }
 
 // IsAny checks if T is `any`, by checking a condition that couldn't possibly be true otherwise.
-export type ɵIsAny<T, Y, N> = 0 extends(1&T) ? Y : N;
+export type ɵIsAny<T, Y, N> = 0 extends (1 & T) ? Y : N;
 
 /**
  * `TypedOrUntyped` allows one of two different types to be selected, depending on whether the Forms
@@ -303,8 +315,8 @@ export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
  *
  * \*\*内部：不供公众使用。
  */
-export type ɵValue<T extends AbstractControl|undefined> =
-    T extends AbstractControl<any, any>? T['value'] : never;
+export type ɵValue<T extends AbstractControl | undefined> =
+  T extends AbstractControl<any, any> ? T['value'] : never;
 
 /**
  * RawValue gives the raw value type corresponding to a control type.
@@ -351,9 +363,9 @@ export type ɵValue<T extends AbstractControl|undefined> =
  *
  * \*\*内部：不供公众使用。
  */
-export type ɵRawValue<T extends AbstractControl|undefined> = T extends AbstractControl<any, any>?
-    (T['setValue'] extends((v: infer R) => void) ? R : never) :
-    never;
+export type ɵRawValue<T extends AbstractControl | undefined> = T extends AbstractControl<any, any> ?
+  (T['setValue'] extends ((v: infer R) => void) ? R : never) :
+  never;
 
 // Disable clang-format to produce clearer formatting for these multiline types.
 // clang-format off
@@ -392,11 +404,11 @@ export type ɵCoerceStrArrToNumArr<S> =
  * Navigate 接受类型 T 和数组 K，并返回 `T[K[0]][K[1]][K[2]]`...的类型
  *
  */
-export type ɵNavigate<T, K extends(Array<string|number>)> =
+export type ɵNavigate<T, K extends (Array<string | number>)> =
   T extends object ? /* T must be indexable (object or array) */
     (K extends [infer Head, ...infer Tail] ? /* Split K into head and tail */
       (Head extends keyof T ? /* head(K) must index T */
-        (Tail extends(string|number)[] ? /* tail(K) must be an array */
+        (Tail extends (string | number)[] ? /* tail(K) must be an array */
           [] extends Tail ? T[Head] : /* base case: K can be split, but Tail is empty */
             (ɵNavigate<T[Head], Tail>) /* explore T[head(K)] by tail(K) */ :
           any) /* tail(K) was not an array, give up */ :
@@ -412,7 +424,7 @@ export type ɵNavigate<T, K extends(Array<string|number>)> =
  *
  */
 export type ɵWriteable<T> = {
-  -readonly[P in keyof T]: T[P]
+  -readonly [P in keyof T]: T[P]
 };
 
 /**
@@ -430,12 +442,12 @@ export type ɵWriteable<T> = {
  *
  */
 export type ɵGetProperty<T, K> =
-    // K is a string
-    K extends string ? ɵGetProperty<T, ɵCoerceStrArrToNumArr<ɵTokenize<K, '.'>>> :
+// K is a string
+  K extends string ? ɵGetProperty<T, ɵCoerceStrArrToNumArr<ɵTokenize<K, '.'>>> :
     // Is is an array
-    ɵWriteable<K> extends Array<string|number> ? ɵNavigate<T, ɵWriteable<K>> :
-    // Fall through permissively if we can't calculate the type of K.
-    any;
+    ɵWriteable<K> extends Array<string | number> ? ɵNavigate<T, ɵWriteable<K>> :
+      // Fall through permissively if we can't calculate the type of K.
+      any;
 
 // clang-format on
 
@@ -486,12 +498,13 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   _pendingTouched = false;
 
   /** @internal */
-  _onCollectionChange = () => {};
+  _onCollectionChange = () => {
+  };
 
   /** @internal */
   _updateOn?: FormHooks;
 
-  private _parent: FormGroup|FormArray|null = null;
+  private _parent: FormGroup | FormArray | null = null;
   private _asyncValidationSubscription: any;
 
   /**
@@ -502,7 +515,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _composedValidatorFn!: ValidatorFn|null;
+  private _composedValidatorFn!: ValidatorFn | null;
 
   /**
    * Contains the result of merging asynchronous validators into a single validator function
@@ -512,7 +525,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _composedAsyncValidatorFn!: AsyncValidatorFn|null;
+  private _composedAsyncValidatorFn!: AsyncValidatorFn | null;
 
   /**
    * Synchronous validators as they were provided:
@@ -533,7 +546,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _rawValidators!: ValidatorFn|ValidatorFn[]|null;
+  private _rawValidators!: ValidatorFn | ValidatorFn[] | null;
 
   /**
    * Asynchronous validators as they were provided:
@@ -555,7 +568,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * @internal
    */
-  private _rawAsyncValidators!: AsyncValidatorFn|AsyncValidatorFn[]|null;
+  private _rawAsyncValidators!: AsyncValidatorFn | AsyncValidatorFn[] | null;
 
   /**
    * The current value of the control.
@@ -600,8 +613,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    */
   constructor(
-      validators: ValidatorFn|ValidatorFn[]|null,
-      asyncValidators: AsyncValidatorFn|AsyncValidatorFn[]|null) {
+    validators: ValidatorFn | ValidatorFn[] | null,
+    asyncValidators: AsyncValidatorFn | AsyncValidatorFn[] | null) {
     this._assignValidators(validators);
     this._assignAsyncValidators(asyncValidators);
   }
@@ -615,10 +628,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * `Validators.compose()` 。
    *
    */
-  get validator(): ValidatorFn|null {
+  get validator(): ValidatorFn | null {
     return this._composedValidatorFn;
   }
-  set validator(validatorFn: ValidatorFn|null) {
+
+  set validator(validatorFn: ValidatorFn | null) {
     this._rawValidators = this._composedValidatorFn = validatorFn;
   }
 
@@ -631,10 +645,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * `Validators.compose()` 。
    *
    */
-  get asyncValidator(): AsyncValidatorFn|null {
+  get asyncValidator(): AsyncValidatorFn | null {
     return this._composedAsyncValidatorFn;
   }
-  set asyncValidator(asyncValidatorFn: AsyncValidatorFn|null) {
+
+  set asyncValidator(asyncValidatorFn: AsyncValidatorFn | null) {
     this._rawAsyncValidators = this._composedAsyncValidatorFn = asyncValidatorFn;
   }
 
@@ -644,7 +659,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 父控件。
    *
    */
-  get parent(): FormGroup|FormArray|null {
+  get parent(): FormGroup | FormArray | null {
     return this._parent;
   }
 
@@ -668,11 +683,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当其 `status` 为 `VALID` 时，控件是 `valid` 的。
    *
-   * @see {
-   *
-   * 韩国人【模糊翻译】
-   *
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @returns
    *
    * True if the control has passed all of its validation tests,
@@ -689,11 +700,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当 `status` 为 `INVALID` 时，控件 `invalid` 。
    *
-   * @see {
-   *
-   * 韩国人【模糊翻译】
-   *
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @returns
    *
    * True if this control has failed one or more of its validation checks,
@@ -710,11 +717,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当 `status` 为 `PENDING` 时，控件处于 `pending` 状态。
    *
-   * @see {
-   *
-   * 韩国人【模糊翻译】
-   *
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @returns
    *
    * True if this control is in the process of conducting a validation check,
@@ -737,11 +740,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 禁用的控件免于验证检查，并且不包含在其祖先控件的汇总值中。
    *
-   * @see {
-   *
-   * 韩国人【模糊翻译】
-   *
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    * @returns
    *
    * True if the control is disabled, false otherwise.
@@ -763,11 +762,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * false if the status is 'DISABLED'.
    *
    * 如果控件具有“DISABLED”以外的任何状态，则为 true ，如果状态是“DISABLED”，则为 false 。
-   * @see {
-   *
-   * 韩国人【模糊翻译】
-   *
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    */
   get enabled(): boolean {
     return this.status !== DISABLED;
@@ -780,7 +775,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 包含因验证失败生成的任何错误的对象，如果没有错误，则为 null 。
    *
    */
-  public readonly errors!: ValidationErrors|null;
+  public readonly errors!: ValidationErrors | null;
 
   /**
    * A control is `pristine` if the user has not yet changed
@@ -872,11 +867,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 每次重新计算控件的验证 `status` 时都会发出事件的多播 observable。
    *
    * @see `FormControlStatus`
-   * @see {
-   *
-   * 韩国人【模糊翻译】
-   *
-   * @link AbstractControl.status}
+   * @see {@link AbstractControl.status}
    */
   public readonly statusChanges!: Observable<FormControlStatus>;
 
@@ -911,7 +902,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 如果你想添加新的验证器而不影响现有的验证器，请考虑改用 `addValidators()` 方法。
    *
    */
-  setValidators(validators: ValidatorFn|ValidatorFn[]|null): void {
+  setValidators(validators: ValidatorFn | ValidatorFn[] | null): void {
     this._assignValidators(validators);
   }
 
@@ -932,7 +923,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 如果你想添加新的验证器而不影响现有的验证器，请考虑改用 `addAsyncValidators()` 方法。
    *
    */
-  setAsyncValidators(validators: AsyncValidatorFn|AsyncValidatorFn[]|null): void {
+  setAsyncValidators(validators: AsyncValidatorFn | AsyncValidatorFn[] | null): void {
     this._assignAsyncValidators(validators);
   }
 
@@ -958,7 +949,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 要添加到此控件的新验证器函数。
    *
    */
-  addValidators(validators: ValidatorFn|ValidatorFn[]): void {
+  addValidators(validators: ValidatorFn | ValidatorFn[]): void {
     this.setValidators(addValidators(validators, this._rawValidators));
   }
 
@@ -982,7 +973,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 要添加到此控件的新的异步验证器函数。
    *
    */
-  addAsyncValidators(validators: AsyncValidatorFn|AsyncValidatorFn[]): void {
+  addAsyncValidators(validators: AsyncValidatorFn | AsyncValidatorFn[]): void {
     this.setAsyncValidators(addValidators(validators, this._rawAsyncValidators));
   }
 
@@ -1023,7 +1014,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 要删除的验证器。
    */
-  removeValidators(validators: ValidatorFn|ValidatorFn[]): void {
+  removeValidators(validators: ValidatorFn | ValidatorFn[]): void {
     this.setValidators(removeValidators(validators, this._rawValidators));
   }
 
@@ -1045,7 +1036,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 要删除的异步验证器或验证器。
    *
    */
-  removeAsyncValidators(validators: AsyncValidatorFn|AsyncValidatorFn[]): void {
+  removeAsyncValidators(validators: AsyncValidatorFn | AsyncValidatorFn[]): void {
     this.setAsyncValidators(removeValidators(validators, this._rawAsyncValidators));
   }
 
@@ -1158,8 +1149,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    */
-  markAsTouched(opts: {onlySelf?: boolean} = {}): void {
-    (this as {touched: boolean}).touched = true;
+  markAsTouched(opts: { onlySelf?: boolean } = {}): void {
+    (this as { touched: boolean }).touched = true;
 
     if (this._parent && !opts.onlySelf) {
       this._parent.markAsTouched(opts);
@@ -1203,8 +1194,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    */
-  markAsUntouched(opts: {onlySelf?: boolean} = {}): void {
-    (this as {touched: boolean}).touched = false;
+  markAsUntouched(opts: { onlySelf?: boolean } = {}): void {
+    (this as { touched: boolean }).touched = false;
     this._pendingTouched = false;
 
     this._forEachChild((control: AbstractControl) => {
@@ -1236,8 +1227,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    */
-  markAsDirty(opts: {onlySelf?: boolean} = {}): void {
-    (this as {pristine: boolean}).pristine = false;
+  markAsDirty(opts: { onlySelf?: boolean } = {}): void {
+    (this as { pristine: boolean }).pristine = false;
 
     if (this._parent && !opts.onlySelf) {
       this._parent.markAsDirty(opts);
@@ -1270,8 +1261,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   false。
    *
    */
-  markAsPristine(opts: {onlySelf?: boolean} = {}): void {
-    (this as {pristine: boolean}).pristine = true;
+  markAsPristine(opts: { onlySelf?: boolean } = {}): void {
+    (this as { pristine: boolean }).pristine = true;
     this._pendingDirty = false;
 
     this._forEachChild((control: AbstractControl) => {
@@ -1312,8 +1303,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   可观察到的会发出一个事件，该事件具有该控件被标记为挂起的最新状态。当 false 时，不会发出事件。
    *
    */
-  markAsPending(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
-    (this as {status: FormControlStatus}).status = PENDING;
+  markAsPending(opts: { onlySelf?: boolean, emitEvent?: boolean } = {}): void {
+    (this as { status: FormControlStatus }).status = PENDING;
 
     if (opts.emitEvent !== false) {
       (this.statusChanges as EventEmitter<FormControlStatus>).emit(this.status);
@@ -1355,13 +1346,13 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   可观察对象在禁用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
-  disable(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
+  disable(opts: { onlySelf?: boolean, emitEvent?: boolean } = {}): void {
     // If parent has been marked artificially dirty we don't want to re-calculate the
     // parent's dirtiness based on the children.
     const skipPristineCheck = this._parentMarkedDirty(opts.onlySelf);
 
-    (this as {status: FormControlStatus}).status = DISABLED;
-    (this as {errors: ValidationErrors | null}).errors = null;
+    (this as { status: FormControlStatus }).status = DISABLED;
+    (this as { errors: ValidationErrors | null }).errors = null;
     this._forEachChild((control: AbstractControl) => {
       control.disable({...opts, onlySelf: true});
     });
@@ -1408,12 +1399,12 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   可观察对象在启用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
-  enable(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
+  enable(opts: { onlySelf?: boolean, emitEvent?: boolean } = {}): void {
     // If parent has been marked artificially dirty we don't want to re-calculate the
     // parent's dirtiness based on the children.
     const skipPristineCheck = this._parentMarkedDirty(opts.onlySelf);
 
-    (this as {status: FormControlStatus}).status = VALID;
+    (this as { status: FormControlStatus }).status = VALID;
     this._forEachChild((control: AbstractControl) => {
       control.enable({...opts, onlySelf: true});
     });
@@ -1424,7 +1415,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   private _updateAncestors(
-      opts: {onlySelf?: boolean, emitEvent?: boolean, skipPristineCheck?: boolean}): void {
+    opts: { onlySelf?: boolean, emitEvent?: boolean, skipPristineCheck?: boolean }): void {
     if (this._parent && !opts.onlySelf) {
       this._parent.updateValueAndValidity(opts);
       if (!opts.skipPristineCheck) {
@@ -1444,7 +1435,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 新的父级。
    *
    */
-  setParent(parent: FormGroup|FormArray|null): void {
+  setParent(parent: FormGroup | FormArray | null): void {
     this._parent = parent;
   }
 
@@ -1511,14 +1502,14 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   可观察对象会在控件更新时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
-  updateValueAndValidity(opts: {onlySelf?: boolean, emitEvent?: boolean} = {}): void {
+  updateValueAndValidity(opts: { onlySelf?: boolean, emitEvent?: boolean } = {}): void {
     this._setInitialStatus();
     this._updateValue();
 
     if (this.enabled) {
       this._cancelExistingSubscription();
-      (this as {errors: ValidationErrors | null}).errors = this._runValidator();
-      (this as {status: FormControlStatus}).status = this._calculateStatus();
+      (this as { errors: ValidationErrors | null }).errors = this._runValidator();
+      (this as { status: FormControlStatus }).status = this._calculateStatus();
 
       if (this.status === VALID || this.status === PENDING) {
         this._runAsyncValidator(opts.emitEvent);
@@ -1536,25 +1527,25 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   /** @internal */
-  _updateTreeValidity(opts: {emitEvent?: boolean} = {emitEvent: true}): void {
+  _updateTreeValidity(opts: { emitEvent?: boolean } = {emitEvent: true}): void {
     this._forEachChild((ctrl: AbstractControl) => ctrl._updateTreeValidity(opts));
     this.updateValueAndValidity({onlySelf: true, emitEvent: opts.emitEvent});
   }
 
   private _setInitialStatus() {
-    (this as {status: FormControlStatus}).status = this._allControlsDisabled() ? DISABLED : VALID;
+    (this as { status: FormControlStatus }).status = this._allControlsDisabled() ? DISABLED : VALID;
   }
 
-  private _runValidator(): ValidationErrors|null {
+  private _runValidator(): ValidationErrors | null {
     return this.validator ? this.validator(this) : null;
   }
 
   private _runAsyncValidator(emitEvent?: boolean): void {
     if (this.asyncValidator) {
-      (this as {status: FormControlStatus}).status = PENDING;
+      (this as { status: FormControlStatus }).status = PENDING;
       this._hasOwnPendingAsyncValidator = true;
       const obs = toObservable(this.asyncValidator(this));
-      this._asyncValidationSubscription = obs.subscribe((errors: ValidationErrors|null) => {
+      this._asyncValidationSubscription = obs.subscribe((errors: ValidationErrors | null) => {
         this._hasOwnPendingAsyncValidator = false;
         // This will trigger the recalculation of the validation status, which depends on
         // the state of the asynchronous validation (whether it is in progress or not). So, it is
@@ -1610,8 +1601,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * expect(login.valid).toEqual(true);
    * ```
    */
-  setErrors(errors: ValidationErrors|null, opts: {emitEvent?: boolean} = {}): void {
-    (this as {errors: ValidationErrors | null}).errors = errors;
+  setErrors(errors: ValidationErrors | null, opts: { emitEvent?: boolean } = {}): void {
+    (this as { errors: ValidationErrors | null }).errors = errors;
     this._updateControlsErrors(opts.emitEvent !== false);
   }
 
@@ -1625,8 +1616,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * get 的此签名支持字符串和 `const` 数组（`.get(['foo', 'bar'] as const)`）。
    *
    */
-  get<P extends string|(readonly(string|number)[])>(path: P):
-      AbstractControl<ɵGetProperty<TRawValue, P>>|null;
+  get<P extends string | (readonly(string | number)[])>(path: P):
+    AbstractControl<ɵGetProperty<TRawValue, P>> | null;
 
   /**
    * Retrieves a child control given the control's name or path.
@@ -1640,8 +1631,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * `readonly` 数组。
    *
    */
-  get<P extends string|Array<string|number>>(path: P):
-      AbstractControl<ɵGetProperty<TRawValue, P>>|null;
+  get<P extends string | Array<string | number>>(path: P):
+    AbstractControl<ɵGetProperty<TRawValue, P>> | null;
 
   /**
    * Retrieves a child control given the control's name or path.
@@ -1695,14 +1686,14 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `this.form.get(['items', 0, 'price']);`
    *
    */
-  get<P extends string|((string | number)[])>(path: P):
-      AbstractControl<ɵGetProperty<TRawValue, P>>|null {
-    let currPath: Array<string|number>|string = path;
+  get<P extends string | ((string | number)[])>(path: P):
+    AbstractControl<ɵGetProperty<TRawValue, P>> | null {
+    let currPath: Array<string | number> | string = path;
     if (currPath == null) return null;
     if (!Array.isArray(currPath)) currPath = currPath.split('.');
     if (currPath.length === 0) return null;
     return currPath.reduce(
-        (control: AbstractControl|null, name) => control && control._find(name), this);
+      (control: AbstractControl | null, name) => control && control._find(name), this);
   }
 
   /**
@@ -1757,7 +1748,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 该特定错误的错误数据。如果不存在控件或错误，则返回 null 。
    *
    */
-  getError(errorCode: string, path?: Array<string|number>|string): any {
+  getError(errorCode: string, path?: Array<string | number> | string): any {
     const control = path ? this.get(path) : this;
     return control && control.errors ? control.errors[errorCode] : null;
   }
@@ -1821,7 +1812,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 如果控件不存在，则返回 false 。
    *
    */
-  hasError(errorCode: string, path?: Array<string|number>|string): boolean {
+  hasError(errorCode: string, path?: Array<string | number> | string): boolean {
     return !!this.getError(errorCode, path);
   }
 
@@ -1843,7 +1834,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
 
   /** @internal */
   _updateControlsErrors(emitEvent: boolean): void {
-    (this as {status: FormControlStatus}).status = this._calculateStatus();
+    (this as { status: FormControlStatus }).status = this._calculateStatus();
 
     if (emitEvent) {
       (this.statusChanges as EventEmitter<FormControlStatus>).emit(this.status);
@@ -1856,8 +1847,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
 
   /** @internal */
   _initObservables() {
-    (this as {valueChanges: Observable<TValue>}).valueChanges = new EventEmitter();
-    (this as {statusChanges: Observable<FormControlStatus>}).statusChanges = new EventEmitter();
+    (this as { valueChanges: Observable<TValue> }).valueChanges = new EventEmitter();
+    (this as { statusChanges: Observable<FormControlStatus> }).statusChanges = new EventEmitter();
   }
 
 
@@ -1900,8 +1891,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   /** @internal */
-  _updatePristine(opts: {onlySelf?: boolean} = {}): void {
-    (this as {pristine: boolean}).pristine = !this._anyControlsDirty();
+  _updatePristine(opts: { onlySelf?: boolean } = {}): void {
+    (this as { pristine: boolean }).pristine = !this._anyControlsDirty();
 
     if (this._parent && !opts.onlySelf) {
       this._parent._updatePristine(opts);
@@ -1909,8 +1900,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   /** @internal */
-  _updateTouched(opts: {onlySelf?: boolean} = {}): void {
-    (this as {touched: boolean}).touched = this._anyControlsTouched();
+  _updateTouched(opts: { onlySelf?: boolean } = {}): void {
+    (this as { touched: boolean }).touched = this._anyControlsTouched();
 
     if (this._parent && !opts.onlySelf) {
       this._parent._updateTouched(opts);
@@ -1926,11 +1917,12 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   /** @internal */
-  _setUpdateStrategy(opts?: ValidatorFn|ValidatorFn[]|AbstractControlOptions|null): void {
+  _setUpdateStrategy(opts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null): void {
     if (isOptionsObj(opts) && opts.updateOn != null) {
       this._updateOn = opts.updateOn!;
     }
   }
+
   /**
    * Check to see if parent has been marked artificially dirty.
    *
@@ -1944,7 +1936,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   /** @internal */
-  _find(name: string|number): AbstractControl|null {
+  _find(name: string | number): AbstractControl | null {
     return null;
   }
 
@@ -1953,7 +1945,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * different method, because it is called in the constructor and it can break cases where
    * a control is extended.
    */
-  private _assignValidators(validators: ValidatorFn|ValidatorFn[]|null): void {
+  private _assignValidators(validators: ValidatorFn | ValidatorFn[] | null): void {
     this._rawValidators = Array.isArray(validators) ? validators.slice() : validators;
     this._composedValidatorFn = coerceToValidator(this._rawValidators);
   }
@@ -1963,7 +1955,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * different method, because it is called in the constructor and it can break cases where
    * a control is extended.
    */
-  private _assignAsyncValidators(validators: AsyncValidatorFn|AsyncValidatorFn[]|null): void {
+  private _assignAsyncValidators(validators: AsyncValidatorFn | AsyncValidatorFn[] | null): void {
     this._rawAsyncValidators = Array.isArray(validators) ? validators.slice() : validators;
     this._composedAsyncValidatorFn = coerceToAsyncValidator(this._rawAsyncValidators);
   }

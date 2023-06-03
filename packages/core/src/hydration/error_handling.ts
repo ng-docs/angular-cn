@@ -375,8 +375,6 @@ function describeRNode(rNode: RNode, innerContent: string = '…'): string {
  *
  * @param isViewContainerAnchor boolean
  *
- * 。【模糊翻译】【模糊翻译】
- *
  * @returns string
  */
 function describeExpectedDom(lView: LView, tNode: TNode, isViewContainerAnchor: boolean): string {

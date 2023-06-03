@@ -225,9 +225,6 @@ export interface RouterOutletContract {
  * [路由导航](guide/router-tutorial-toh#named-outlets "命名出口与第二路由的配置范例")。
  * @see `RouterLink`
  * @see `Route`
- *
- * 。【模糊翻译】【模糊翻译】
- *
  * @ngModule RouterModule
  * @publicApi
  */
