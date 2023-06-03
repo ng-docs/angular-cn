@@ -799,7 +799,7 @@ export function createTNode(
  * If the mapping is provided, it'll act as an allowlist, as well as a mapping of what public
  * name inputs/outputs should be exposed under.
  *
- * 用于为主机指令设置别名或过滤掉属性的对象。 如果提供了映射，它将充当白名单，以及应在其下公开哪些公共名称输入/输出的映射。
+ * 用于为宿主指令设置别名或过滤掉属性的对象。 如果提供了映射，它将充当白名单，以及应在其下公开哪些公共名称输入/输出的映射。
  *
  */
 function generatePropertyAliases(
@@ -1258,7 +1258,7 @@ export function invokeDirectivesHostBindings(tView: TView, lView: LView, tNode: 
 /**
  * Invoke the host bindings in creation mode.
  *
- * 在创建模式下调用主机绑定。
+ * 在创建模式下调用宿主绑定。
  *
  * @param def `DirectiveDef` which may contain the `hostBindings` function.
  *
@@ -1351,7 +1351,7 @@ function findDirectiveDefMatches(
 /**
  * Marks a given TNode as a component's host. This consists of:
  *
- * 将给定的 TNode 标记为组件的主机。 这包括：
+ * 将给定的 TNode 标记为组件的宿主。 这包括：
  *
  * - setting the component offset on the TNode.
  *
@@ -1678,7 +1678,7 @@ function generateInitialInputs(
  *
  * @param hostTNode The host TNode for the LContainer
  *
- * LContainer 的主机 TNode
+ * LContainer 的宿主 TNode
  *
  * @param currentView The parent view of the LContainer
  *
@@ -1758,7 +1758,7 @@ export function refreshContentQueries(tView: TView, lView: LView): void {
  *
  * @param adjustedHostIndex Index of the view's host node in LView\[\], adjusted for header
  *
- * LView\[\] 中视图主机节点的索引，针对标头进行了调整
+ * LView\[\] 中视图宿主节点的索引，针对标头进行了调整
  *
  * @param lViewOrLContainer The LView or LContainer to add to the view tree
  *

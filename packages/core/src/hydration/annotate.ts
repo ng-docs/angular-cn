@@ -277,7 +277,7 @@ function appendDisconnectedNodeIndex(ngh: SerializedView, tNode: TNode) {
  *
  * the `SerializedView` object containing the data to be added to the host node
  *
- * 包含要添加到主机节点的数据的 `SerializedView` 对象
+ * 包含要添加到宿主节点的数据的 `SerializedView` 对象
  *
  */
 function serializeLView(lView: LView, context: HydrationContext): SerializedView {

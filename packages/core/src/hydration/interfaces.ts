@@ -12,7 +12,7 @@ import {RNode} from '../render3/interfaces/renderer_dom';
 /**
  * Encodes that the node lookup should start from the host node of this component.
  *
- * 编码节点查找应从该组件的主机节点开始。
+ * 编码节点查找应从该组件的宿主节点开始。
  *
  */
 export const REFERENCE_NODE_HOST = 'h';

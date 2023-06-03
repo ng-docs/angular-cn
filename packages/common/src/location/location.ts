@@ -46,7 +46,7 @@ export interface PopStateEvent {
  * trailing slash:
  *
  * `Location` 负责基于应用的基地址（base href）对 URL 进行标准化。
- * 所谓标准化的 URL 就是一个从主机（host）开始算的绝对地址，包括应用的基地址，但不包括结尾的斜杠：
+ * 所谓标准化的 URL 就是一个从宿主（host）开始算的绝对地址，包括应用的基地址，但不包括结尾的斜杠：
  *
  * - `/my/app/user/123` is normalized
  *

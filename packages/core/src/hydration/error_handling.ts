@@ -156,7 +156,7 @@ export function nodeNotFoundError(lView: LView, tNode: TNode): Error {
  *
  * @param host the Host Node
  *
- * 主机节点
+ * 宿主节点
  *
  * @param path the path to the node
  *

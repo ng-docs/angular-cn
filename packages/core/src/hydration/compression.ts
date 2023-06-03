@@ -24,7 +24,7 @@ import {NodeNavigationStep, REFERENCE_NODE_BODY, REFERENCE_NODE_HOST} from './in
  *
  * - the `h` char to start lookup from the component host node \(`lView[HOST]`\)
  *
- *   从组件主机节点 \( `lView[HOST]` \) 开始查找的 `h` 字符
+ *   从组件宿主节点 \( `lView[HOST]` \) 开始查找的 `h` 字符
  *
  */
 const REF_EXTRACTOR_REGEXP =

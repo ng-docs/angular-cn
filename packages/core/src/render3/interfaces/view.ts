@@ -543,7 +543,7 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * Same as REACTIVE_TEMPLATE_CONSUMER, but for the host bindings of the LView.
    *
-   * 与 REACTIVE_TEMPLATE_CONSUMER 相同，但用于 LView 的主机绑定。
+   * 与 REACTIVE_TEMPLATE_CONSUMER 相同，但用于 LView 的宿主绑定。
    *
    */
   [REACTIVE_HOST_BINDING_CONSUMER]: ReactiveLViewConsumer|null;
@@ -803,7 +803,7 @@ export const enum PreOrderHookFlags {
  *
  * 4. `HostBindingsFunction`: A host binding function to execute.
  *
- *    `HostBindingsFunction` ：要执行的主机绑定函数。
+ *    `HostBindingsFunction` ：要执行的宿主绑定函数。
  *
  * The above information needs to be encoded into the `HostBindingOpCodes` in an efficient manner.
  *
@@ -1044,12 +1044,12 @@ export interface TView {
    * section cannot be calculated at compile-time because directives are matched
    * at runtime to preserve locality.
    *
-   * `LView` 的“expando”部分开始的索引。 expando 部分包含注入器、指令实例和主机绑定值。 与 `LView` 的“decls”和“vars”部分不同，此部分的长度无法在编译时计算，因为指令在运行时匹配以保留局部性。
+   * `LView` 的“expando”部分开始的索引。 expando 部分包含注入器、指令实例和宿主绑定值。 与 `LView` 的“decls”和“vars”部分不同，此部分的长度无法在编译时计算，因为指令在运行时匹配以保留局部性。
    *
    * We store this start index so we know where to start checking host bindings
    * in `setHostBindings`.
    *
-   * 我们存储此起始索引，以便我们知道从哪里开始检查 `setHostBindings` 中的主机绑定。
+   * 我们存储此起始索引，以便我们知道从哪里开始检查 `setHostBindings` 中的宿主绑定。
    *
    */
   expandoStartIndex: number;
@@ -1455,7 +1455,7 @@ export type DestroyHookData = (HookEntry|HookData)[];
  * Each host property's name is stored here at the same index as its value in the
  * data array.
  *
- * 每个主机属性的名称都存储在此处与其在数据数组中的值相同的索引处。
+ * 每个宿主属性的名称都存储在此处与其在数据数组中的值相同的索引处。
  *
  * Each property binding name is stored here at the same index as its value in
  * the data array. If the binding is an interpolation, the static string values

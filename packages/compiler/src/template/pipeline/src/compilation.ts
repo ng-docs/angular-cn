@@ -14,7 +14,7 @@ import * as ir from '../ir';
  * Compilation-in-progress of a whole component's template, including the main template and any
  * embedded views or host bindings.
  *
- * 正在编译整个组件的模板，包括主模板和任何嵌入式视图或主机绑定。
+ * 正在编译整个组件的模板，包括主模板和任何嵌入式视图或宿主绑定。
  *
  */
 export class ComponentCompilation {

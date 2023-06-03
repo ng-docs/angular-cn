@@ -13,7 +13,7 @@ import {LView} from '../render3/interfaces/view';
  * The name of an attribute that can be added to the hydration boundary node
  * \(component host node\) to disable hydration for the content within that boundary.
  *
- * 可以添加到水合作用边界节点（组件主机节点）以禁用该边界内内容的水合作用的属性的名称。
+ * 可以添加到水合作用边界节点（组件宿主节点）以禁用该边界内内容的水合作用的属性的名称。
  *
  */
 export const SKIP_HYDRATION_ATTR_NAME = 'ngSkipHydration';

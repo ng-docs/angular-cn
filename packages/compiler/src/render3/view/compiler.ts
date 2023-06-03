@@ -1004,7 +1004,7 @@ function createHostDirectivesFeatureArg(
  * This conversion is necessary, because hosts bind to the public name of the host directive and
  * keeping the mapping in an object literal will break for apps using property renaming.
  *
- * 这种转换是必要的，因为主机绑定到主机指令的公共名称，并且将映射保留在对象文字中会破坏使用属性重命名的应用程序。
+ * 这种转换是必要的，因为宿主绑定到宿主指令的公共名称，并且将映射保留在对象文字中会破坏使用属性重命名的应用程序。
  *
  */
 export function createHostDirectivesMappingArray(mapping: Record<string, string>):

@@ -197,7 +197,7 @@ export enum MatchSource {
   /**
    * The directive was applied as a host directive.
    *
-   * 该指令已作为主机指令应用。
+   * 该指令已作为宿主指令应用。
    *
    */
   HostDirective,
@@ -345,7 +345,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   /**
    * Additional directives applied to the directive host.
    *
-   * 应用于指令主机的附加指令。
+   * 应用于指令宿主的附加指令。
    *
    */
   hostDirectives: HostDirectiveMeta[]|null;
@@ -362,14 +362,14 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
 /**
  * Metadata collected about an additional directive that is being applied to a directive host.
  *
- * 收集的有关应用于指令主机的附加指令的元数据。
+ * 收集的有关应用于指令宿主的附加指令的元数据。
  *
  */
 export interface HostDirectiveMeta {
   /**
    * Reference to the host directive class.
    *
-   * 引用主机指令类。
+   * 引用宿主指令类。
    *
    */
   directive: Reference<ClassDeclaration>;
@@ -377,7 +377,7 @@ export interface HostDirectiveMeta {
   /**
    * Whether the reference to the host directive is a forward reference.
    *
-   * 对主机指令的引用是否为前向引用。
+   * 对宿主指令的引用是否为前向引用。
    *
    */
   isForwardReference: boolean;
@@ -385,7 +385,7 @@ export interface HostDirectiveMeta {
   /**
    * Inputs from the host directive that have been exposed.
    *
-   * 来自已公开的主机指令的输入。
+   * 来自已公开的宿主指令的输入。
    *
    */
   inputs: {[publicName: string]: string}|null;
@@ -393,7 +393,7 @@ export interface HostDirectiveMeta {
   /**
    * Outputs from the host directive that have been exposed.
    *
-   * 已公开的主机指令的输出。
+   * 已公开的宿主指令的输出。
    *
    */
   outputs: {[publicName: string]: string}|null;

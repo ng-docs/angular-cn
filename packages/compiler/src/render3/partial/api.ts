@@ -197,7 +197,7 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
   /**
    * Additional directives applied to the directive host.
    *
-   * 应用于指令主机的附加指令。
+   * 应用于指令宿主的附加指令。
    *
    */
   hostDirectives?: R3DeclareHostDirectiveMetadata[];

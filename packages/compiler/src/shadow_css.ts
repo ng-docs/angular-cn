@@ -1083,7 +1083,7 @@ function unescapeQuotes(str: string, isQuoted: boolean): string {
  * Given a single context selector `A` we need to output selectors that match on the host and as an
  * ancestor of the host:
  *
- * 给定一个上下文选择器 `A` 我们需要输出匹配主机并作为主机祖先的选择器：
+ * 给定一个上下文选择器 `A` 我们需要输出匹配宿主并作为宿主祖先的选择器：
  *
  * ```
  * A <hostMarker>, A<hostMarker> {}

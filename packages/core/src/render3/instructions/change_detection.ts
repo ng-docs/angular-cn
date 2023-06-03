@@ -139,7 +139,7 @@ const enum ChangeDetectionMode {
  *
  * - setting host bindings;
  *
- *   设置主机绑定；
+ *   设置宿主绑定；
  *
  * - refreshing child \(embedded and component\) views.
  *

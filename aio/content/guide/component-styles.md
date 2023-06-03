@@ -171,8 +171,6 @@ Use `:host-context` selector for that purpose instead.
 
 ### :host-context
 
-### ：主机上下文
-
 Sometimes it's useful to apply styles to elements within a component's template based on some condition in an element that is an ancestor of the host element.
 For example, a CSS theme class could be applied to the document `<body>` element, and you want to change how your component looks based on that.
 

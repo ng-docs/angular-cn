@@ -709,7 +709,7 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  * If `TNode` is `TNodeType.ElementContainer|IcuContain` => return the parent \(recursively\).
  * If `TNode` is `null` then return host `RElement`:
  *
- * 如果 `TNode` 是 `TNodeType.Element` => 在 `LView[tNode.index]` 位置返回 `RElement` 。 如果 `TNode` 是 `TNodeType.ElementContainer|IcuContain` => 返回父级（递归）。 如果 `TNode` 为 `null` 则返回主机 `RElement` ：
+ * 如果 `TNode` 是 `TNodeType.Element` => 在 `LView[tNode.index]` 位置返回 `RElement` 。 如果 `TNode` 是 `TNodeType.ElementContainer|IcuContain` => 返回父级（递归）。 如果 `TNode` 为 `null` 则返回宿主 `RElement` ：
  *
  * - return `null` if projection
  *
@@ -1072,7 +1072,7 @@ export function getBeforeNodeForView(viewIndexInContainer: number, lContainer: L
  *
  * @param isHostElement A flag indicating if a node to be removed is a host of a component.
  *
- * 一个标志，指示要删除的节点是否是组件的主机。
+ * 一个标志，指示要删除的节点是否是组件的宿主。
  *
  */
 export function nativeRemoveNode(renderer: Renderer, rNode: RNode, isHostElement?: boolean): void {

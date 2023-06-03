@@ -1346,7 +1346,7 @@ export interface HostListener {
  * Angular invokes the supplied handler method when the host element emits the specified event,
  * and updates the bound element with the result.
  *
- * 将 DOM 事件绑定到主机侦听器并提供配置元数据的装饰器。 当宿主元素发出指定事件时，Angular 调用提供的处理程序方法，并用结果更新绑定元素。
+ * 将 DOM 事件绑定到宿主侦听器并提供配置元数据的装饰器。 当宿主元素发出指定事件时，Angular 调用提供的处理程序方法，并用结果更新绑定元素。
  *
  * If the handler method returns false, applies `preventDefault` on the bound element.
  *

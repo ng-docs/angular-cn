@@ -143,7 +143,7 @@ export const enum TNodeFlags {
   /**
    * Bit #1 - This bit is set if the node is a host for any directive \(including a component\)
    *
-   * 位 #1 - 如果节点是任何指令（包括组件）的主机，则设置此位
+   * 位 #1 - 如果节点是任何指令（包括组件）的宿主，则设置此位
    *
    */
   isDirectiveHost = 0x1,
@@ -191,12 +191,12 @@ export const enum TNodeFlags {
   /**
    * Bit #7 - This bit is set if the node has directives with host bindings.
    *
-   * 位 #7 - 如果节点具有主机绑定的指令，则设置此位。
+   * 位 #7 - 如果节点具有宿主绑定的指令，则设置此位。
    *
    * This flags allows us to guard host-binding logic and invoke it only on nodes
    * that actually have directives with host bindings.
    *
-   * 这个标志允许我们保护主机绑定逻辑并仅在实际具有主机绑定指令的节点上调用它。
+   * 这个标志允许我们保护宿主绑定逻辑并仅在实际具有宿主绑定指令的节点上调用它。
    *
    */
   hasHostBindings = 0x40,
@@ -648,7 +648,7 @@ export interface TNode {
    * Injector indices are not set across view boundaries because there could be multiple component
    * hosts.
    *
-   * 如果索引 !== -1，则它是该节点注入器的索引或同一视图中父注入器的索引。 我们将父注入器索引向下传递到视图的节点树中，这样就可以在不遍历可能很深的节点树的情况下找到父注入器。 注入器索引不会跨视图边界设置，因为可能有多个组件主机。
+   * 如果索引 !== -1，则它是该节点注入器的索引或同一视图中父注入器的索引。 我们将父注入器索引向下传递到视图的节点树中，这样就可以在不遍历可能很深的节点树的情况下找到父注入器。 注入器索引不会跨视图边界设置，因为可能有多个组件宿主。
    *
    * If tNode.injectorIndex === tNode.parent.injectorIndex, then the index belongs to a parent
    * injector.
@@ -796,7 +796,7 @@ export interface TNode {
   /**
    * Same as `TNode.attrs` but contains merged data across all directive host bindings.
    *
-   * 与 `TNode.attrs` 相同，但包含跨所有指令主机绑定的合并数据。
+   * 与 `TNode.attrs` 相同，但包含跨所有指令宿主绑定的合并数据。
    *
    * We need to keep `attrs` as unmerged so that it can be used for attribute selectors.
    * We merge attrs here so that it can be used in a performant way for initial rendering.
@@ -959,7 +959,7 @@ export interface TNode {
    * used \(and thus shouldn't be stored on TNode\). In these cases, we retrieve the parent through
    * LView.node instead \(which will be instance-specific\).
    *
-   * 如果父级在不同的视图中（例如组件主机），则此属性将为空。 重要的是我们在检索父级时不要尝试跨越组件边界，因为父级会根据使用组件的位置而改变（例如索引、属性）（因此不应存储在 TNode 上）。 在这些情况下，我们改为通过 LView.node 检索父级（这将是特定于实例的）。
+   * 如果父级在不同的视图中（例如组件宿主），则此属性将为空。 重要的是我们在检索父级时不要尝试跨越组件边界，因为父级会根据使用组件的位置而改变（例如索引、属性）（因此不应存储在 TNode 上）。 在这些情况下，我们改为通过 LView.node 检索父级（这将是特定于实例的）。
    *
    * If this is an inline view node \(V\), the parent will be its container.
    *
@@ -1023,7 +1023,7 @@ export interface TNode {
    *     because the same component \(`<child>`\) can be used in multiple locations \(`c1`, `c2`\) and
    *   as a result have different set of nodes to project.
    *
-   *   我们使用主机（ `c1` ， `c2` ）而不是 `<ng-content>` （ `cont1` ）存储 `projection` ，因为相同的组件（ `<child>` ）可以在多个位置（ `c1` ， `c2` ）使用，因此具有不同的集合项目的节点。
+   *   我们使用宿主（ `c1` ， `c2` ）而不是 `<ng-content>` （ `cont1` ）存储 `projection` ，因为相同的组件（ `<child>` ）可以在多个位置（ `c1` ， `c2` ）使用，因此具有不同的集合项目的节点。
    *
    * - without `projection` it would be difficult to efficiently traverse nodes to be projected.
    *
@@ -1035,7 +1035,7 @@ export interface TNode {
    *
    * - `projection` is an index of the host's `projection`Nodes.
    *
-   *   `projection` 是主机 `projection` 节点的索引。
+   *   `projection` 是宿主 `projection` 节点的索引。
    *
    *   - This would return the first head node to project:
    *     `getHost(currentTNode).projection[currentTNode.projection]`.
@@ -1058,7 +1058,7 @@ export interface TNode {
   /**
    * A collection of all `style` static values for an element \(including from host\).
    *
-   * 元素的所有 `style` 静态值的集合（包括来自主机的）。
+   * 元素的所有 `style` 静态值的集合（包括来自宿主的）。
    *
    * This field will be populated if and when:
    *
@@ -1080,7 +1080,7 @@ export interface TNode {
   /**
    * A collection of all `style` static values for an element excluding host sources.
    *
-   * 元素的所有 `style` 静态值的集合，不包括主机源。
+   * 元素的所有 `style` 静态值的集合，不包括宿主源。
    *
    * Populated when there are one or more initial `style`s on an element
    * \(e.g. `<div style="width:200px;">`\)
@@ -1151,7 +1151,7 @@ export interface TNode {
   /**
    * A collection of all class static values for an element \(including from host\).
    *
-   * 元素的所有类静态值的集合（包括来自主机的）。
+   * 元素的所有类静态值的集合（包括来自宿主的）。
    *
    * This field will be populated if and when:
    *
@@ -1164,7 +1164,7 @@ export interface TNode {
    * - There are one or more initial classes on an directive/component host
    *   \(e.g. `@Directive({host: {class: "SOME_CLASS" } }`\)
    *
-   *   指令/组件主机上有一个或多个初始类（例如 `@Directive({host: {class: "SOME_CLASS" } }` ）
+   *   指令/组件宿主上有一个或多个初始类（例如 `@Directive({host: {class: "SOME_CLASS" } }` ）
    *
    */
   classes: string|null;
@@ -1172,7 +1172,7 @@ export interface TNode {
   /**
    * A collection of all class static values for an element excluding host sources.
    *
-   * 一个元素的所有类静态值的集合，不包括主机源。
+   * 一个元素的所有类静态值的集合，不包括宿主源。
    *
    * Populated when there are one or more initial classes on an element
    * \(e.g. `<div class="SOME_CLASS">`\)
@@ -1227,7 +1227,7 @@ export interface TNode {
    * - If no template bindings but there are host bindings, the head value will point to the last
    *   host binding for "class" \(not the head of the linked list\), tail will be 0.
    *
-   *   如果没有模板绑定但有主机绑定，head 值将指向“class”的最后一个主机绑定（不是链表的头部），tail 将为 0。
+   *   如果没有模板绑定但有宿主绑定，head 值将指向“class”的最后一个宿主绑定（不是链表的头部），tail 将为 0。
    *
    * See: `style_binding_list.ts` for details.
    *
@@ -1257,7 +1257,7 @@ export interface TNode {
    * - If no template bindings but there are host bindings, the head value will point to the last
    *   host binding for "style" \(not the head of the linked list\), tail will be 0.
    *
-   *   如果没有模板绑定，但有主机绑定，head 值将指向最后一个“style”的主机绑定（不是链表的头部），tail 将为 0。
+   *   如果没有模板绑定，但有宿主绑定，head 值将指向最后一个“style”的宿主绑定（不是链表的头部），tail 将为 0。
    *
    * See: `style_binding_list.ts` for details.
    *

@@ -150,7 +150,7 @@ export interface DirectiveDef<T> {
    * Note: the private names are used for the keys, rather than the public ones, because public
    * names can be re-aliased in host directives which would invalidate the lookup.
    *
-   * 将输入的私有名称映射到它们的转换函数的字典。 注意：私有名称用于密钥，而不是公共名称，因为公共名称可以在主机指令中重新命名，这会使查找无效。
+   * 将输入的私有名称映射到它们的转换函数的字典。 注意：私有名称用于密钥，而不是公共名称，因为公共名称可以在宿主指令中重新命名，这会使查找无效。
    *
    */
   readonly inputTransforms: {[classPropertyName: string]: InputTransformFunction}|null;
@@ -348,7 +348,7 @@ export interface DirectiveDef<T> {
    * Function that will add the host directives to the list of matches during directive matching.
    * Patched onto the definition by the `HostDirectivesFeature`.
    *
-   * 在指令匹配期间将主机指令添加到匹配列表的函数。 由 `HostDirectivesFeature` 修补到定义上。
+   * 在指令匹配期间将宿主指令添加到匹配列表的函数。 由 `HostDirectivesFeature` 修补到定义上。
    *
    * @param currentDef Definition that has been matched.
    *
@@ -357,12 +357,12 @@ export interface DirectiveDef<T> {
    * @param matchedDefs List of all matches for a specified node. Will be mutated to include the
    * host directives.
    *
-   * 指定节点的所有匹配列表。 将被变异以包含主机指令。
+   * 指定节点的所有匹配列表。 将被变异以包含宿主指令。
    *
    * @param hostDirectiveDefs Mapping of directive definitions to their host directive
    * configuration. Host directives will be added to the map as they're being matched to the node.
    *
-   * 将指令定义映射到它们的主机指令配置。 主机指令将在与节点匹配时添加到地图中。
+   * 将指令定义映射到它们的宿主指令配置。 宿主指令将在与节点匹配时添加到地图中。
    *
    */
   findHostDirectiveDefs:
@@ -705,14 +705,14 @@ export interface DirectiveDefFeature {
 /**
  * Runtime information used to configure a host directive.
  *
- * 用于配置主机指令的运行时信息。
+ * 用于配置宿主指令的运行时信息。
  *
  */
 export interface HostDirectiveDef<T = unknown> {
   /**
    * Class representing the host directive.
    *
-   * 表示主机指令的类。
+   * 表示宿主指令的类。
    *
    */
   directive: Type<T>;
@@ -739,7 +739,7 @@ export interface HostDirectiveDef<T = unknown> {
  * they represent. Also serves as an allowlist of the inputs/outputs from the host directive that
  * the author has decided to expose.
  *
- * 指令绑定的公共别名与其表示的基础输入/输出之间的映射。 还用作作者决定公开的主机指令的输入/输出的白名单。
+ * 指令绑定的公共别名与其表示的基础输入/输出之间的映射。 还用作作者决定公开的宿主指令的输入/输出的白名单。
  *
  */
 export type HostDirectiveBindingMap = {
@@ -750,7 +750,7 @@ export type HostDirectiveBindingMap = {
  * Mapping between a directive that was used as a host directive
  * and the configuration that was used to define it as such.
  *
- * 用作主机指令的指令与用于定义它的配置之间的映射。
+ * 用作宿主指令的指令与用于定义它的配置之间的映射。
  *
  */
 export type HostDirectiveDefs = Map<DirectiveDef<unknown>, HostDirectiveDef>;

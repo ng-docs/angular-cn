@@ -197,7 +197,7 @@ Providing a custom or a "noop" Zone.js implementation may lead to a different ti
 
 There are several hydration related errors you may encounter ranging from node mismatches to cases when the `ngSkipHydration` was used on an invalid host node. The most common error case that may occur is due to direct DOM manipulation using native APIs that results in hydration being unable to find or match the expected DOM tree structure on the client that was rendered by the server. The other case you may encounter this type of error was mentioned in the prior section on Valid HTML structures. So, make sure the HTML in your templates are using valid structure, and you'll avoid that error case.
 
-你可能会遇到多种与水合作用相关的错误，从节点不匹配到在无效主机节点上使用 `ngSkipHydration` 的情况。 可能发生的最常见错误情况是由于使用原生 API 的直接 DOM 操作导致 hydration 无法在客户端上找到或匹配服务器呈现的预期 DOM 树结构。 你可能会遇到此类错误的另一种情况已在前面有关有效 HTML 结构的部分中提到。 因此，请确保你模板中的 HTML 使用有效结构，这样你就可以避免这种错误情况。
+你可能会遇到多种与水合作用相关的错误，从节点不匹配到在无效宿主节点上使用 `ngSkipHydration` 的情况。 可能发生的最常见错误情况是由于使用原生 API 的直接 DOM 操作导致 hydration 无法在客户端上找到或匹配服务器呈现的预期 DOM 树结构。 你可能会遇到此类错误的另一种情况已在前面有关有效 HTML 结构的部分中提到。 因此，请确保你模板中的 HTML 使用有效结构，这样你就可以避免这种错误情况。
 
 For a full reference on hydration related errors, visit the [Errors Reference Guide](/errors).
 
@@ -219,7 +219,7 @@ Some components may not work properly with hydration enabled due to some of the 
 
 Alternatively you can set `ngSkipHydration` as a host binding.
 
-或者，你可以将 `ngSkipHydration` 设置为主机绑定。
+或者，你可以将 `ngSkipHydration` 设置为宿主绑定。
 
 ```typescript
 @Component({
@@ -241,7 +241,7 @@ This will fix rendering issues, but it means that for this component (and its ch
 
 The `ngSkipHydration` attribute can only be used on component host nodes. Angular throws an error if this attribute is added to other nodes.
 
-`ngSkipHydration` 属性只能在组件主机节点上使用。 如果将此属性添加到其他节点，Angular 会抛出错误。
+`ngSkipHydration` 属性只能在组件宿主节点上使用。 如果将此属性添加到其他节点，Angular 会抛出错误。
 
 Keep in mind that adding the `ngSkipHydration` attribute to your root application component would effectively disable hydration for your entire application. Be careful and thoughtful about using this attribute. It is intended as a last resort workaround. Components that break hydration should be considered bugs that need to be fixed.
 

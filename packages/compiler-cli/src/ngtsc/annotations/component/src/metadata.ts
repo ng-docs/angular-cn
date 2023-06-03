@@ -96,7 +96,7 @@ export interface ComponentAnalysisData {
   /**
    * Additional directives applied to the component host.
    *
-   * 应用于组件主机的附加指令。
+   * 应用于组件宿主的附加指令。
    *
    */
   hostDirectives: HostDirectiveMeta[]|null;
@@ -104,7 +104,7 @@ export interface ComponentAnalysisData {
   /**
    * Raw expression that defined the host directives array. Used for diagnostics.
    *
-   * 定义主机指令数组的原始表达式。 用于诊断。
+   * 定义宿主指令数组的原始表达式。 用于诊断。
    *
    */
   rawHostDirectives: ts.Expression|null;

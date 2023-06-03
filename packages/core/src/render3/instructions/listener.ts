@@ -68,7 +68,7 @@ export function ɵɵlistener(
 /**
  * Registers a synthetic host listener \(e.g. `(@foo.start)`\) on a component or directive.
  *
- * 在组件或指令上注册合成主机侦听器（例如 `(@foo.start)` ）。
+ * 在组件或指令上注册合成宿主侦听器（例如 `(@foo.start)` ）。
  *
  * This instruction is for compatibility purposes and is designed to ensure that a
  * synthetic host listener \(e.g. `@HostListener('@foo.start')`\) properly gets rendered
@@ -77,12 +77,12 @@ export function ɵɵlistener(
  * to be evaluated with the sub component's renderer \(because that's where the
  * animation triggers are defined\).
  *
- * 此指令用于兼容性目的，旨在确保合成主机侦听器（例如 `@HostListener('@foo.start')` ）在组件的渲染器中正确渲染。 通常所有主机侦听器都使用父组件的渲染器进行评估，但是，在动画@triggers 的情况下，它们需要使用子组件的渲染器进行评估（因为这是定义动画触发器的地方）。
+ * 此指令用于兼容性目的，旨在确保合成宿主侦听器（例如 `@HostListener('@foo.start')` ）在组件的渲染器中正确渲染。 通常所有宿主侦听器都使用父组件的渲染器进行评估，但是，在动画@triggers 的情况下，它们需要使用子组件的渲染器进行评估（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `listener`. This instruction
  * only exists to ensure compatibility with the ViewEngine's host binding behavior.
  *
- * 不要将此指令用作 `listener` 的替代品。 此指令仅用于确保与 ViewEngine 的主机绑定行为兼容。
+ * 不要将此指令用作 `listener` 的替代品。 此指令仅用于确保与 ViewEngine 的宿主绑定行为兼容。
  *
  * @param eventName Name of the event
  *

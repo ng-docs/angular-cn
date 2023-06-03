@@ -905,7 +905,7 @@ function evaluateHostExpressionBindings(
 /**
  * Extracts and prepares the host directives metadata from an array literal expression.
  *
- * 从数组文字表达式中提取并准备主机指令元数据。
+ * 从数组文字表达式中提取并准备宿主指令元数据。
  *
  * @param rawHostDirectives Expression that defined the `hostDirectives`.
  *
@@ -947,7 +947,7 @@ function extractHostDirectives(
 /**
  * Parses the expression that defines the `inputs` or `outputs` of a host directive.
  *
- * 解析定义主机指令的 `inputs` 或 `outputs` 表达式。
+ * 解析定义宿主指令的 `inputs` 或 `outputs` 表达式。
  *
  * @param field Name of the field that is being parsed.
  *
@@ -959,11 +959,11 @@ function extractHostDirectives(
  *
  * @param classReference Reference to the host directive class.
  *
- * 引用主机指令类。
+ * 引用宿主指令类。
  *
  * @param sourceExpression Expression that the host directive is referenced in.
  *
- * 引用主机指令的表达式。
+ * 引用宿主指令的表达式。
  *
  */
 function parseHostDirectivesMapping(
@@ -984,7 +984,7 @@ function parseHostDirectivesMapping(
 /**
  * Converts the parsed host directive information into metadata.
  *
- * 将解析的主机指令信息转换为元数据。
+ * 将解析的宿主指令信息转换为元数据。
  *
  */
 function toHostDirectiveMetadata(

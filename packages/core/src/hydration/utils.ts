@@ -39,7 +39,7 @@ export const NGH_DATA_KEY = makeStateKey<Array<SerializedView>>(TRANSFER_STATE_T
  * nodes and contain a reference to a particular slot in transferred
  * state that contains the necessary hydration info for this component.
  *
- * 将添加到主机组件节点的属性的名称，并包含对处于传输状态的特定插槽的引用，该插槽包含此组件的必要水合作用信息。
+ * 将添加到宿主组件节点的属性的名称，并包含对处于传输状态的特定插槽的引用，该插槽包含此组件的必要水合作用信息。
  *
  */
 export const NGH_ATTR_NAME = 'ngh';

@@ -213,7 +213,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Creates a new component through the component factory with the provided element host and
    * sets up its initial inputs, listens for outputs changes, and runs an initial change detection.
    *
-   * 使用提供的元素主机通过组件工厂创建一个新组件，并设置其初始输入，侦听输出更改，并运行初始更改检测。
+   * 使用提供的元素宿主通过组件工厂创建一个新组件，并设置其初始输入，侦听输出更改，并运行初始更改检测。
    *
    */
   protected initializeComponent(element: HTMLElement) {

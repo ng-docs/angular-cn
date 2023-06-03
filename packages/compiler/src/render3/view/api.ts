@@ -182,7 +182,7 @@ export interface R3DirectiveMetadata {
   /**
    * Additional directives applied to the directive host.
    *
-   * 应用于指令主机的附加指令。
+   * 应用于指令宿主的附加指令。
    *
    */
   hostDirectives: R3HostDirectiveMetadata[]|null;
@@ -610,14 +610,14 @@ export interface R3HostMetadata {
 /**
  * Information needed to compile a host directive for the render3 runtime.
  *
- * 为 render3 运行时编译主机指令所需的信息。
+ * 为 render3 运行时编译宿主指令所需的信息。
  *
  */
 export interface R3HostDirectiveMetadata {
   /**
    * An expression representing the host directive class itself.
    *
-   * 表示主机指令类本身的表达式。
+   * 表示宿主指令类本身的表达式。
    *
    */
   directive: R3Reference;
@@ -625,7 +625,7 @@ export interface R3HostDirectiveMetadata {
   /**
    * Whether the expression referring to the host directive is a forward reference.
    *
-   * 引用主机指令的表达式是否为前向引用。
+   * 引用宿主指令的表达式是否为前向引用。
    *
    */
   isForwardReference: boolean;
@@ -633,7 +633,7 @@ export interface R3HostDirectiveMetadata {
   /**
    * Inputs from the host directive that will be exposed on the host.
    *
-   * 来自将在主机上公开的主机指令的输入。
+   * 来自将在宿主上公开的宿主指令的输入。
    *
    */
   inputs: {[publicName: string]: string}|null;
@@ -641,7 +641,7 @@ export interface R3HostDirectiveMetadata {
   /**
    * Outputs from the host directive that will be exposed on the host.
    *
-   * 将在主机上公开的主机指令的输出。
+   * 将在宿主上公开的宿主指令的输出。
    *
    */
   outputs: {[publicName: string]: string}|null;

@@ -447,7 +447,7 @@ export interface TemplateSymbol {
 /**
  * Interface shared between host and non-host directives.
  *
- * 主机和非主机指令之间共享的接口。
+ * 宿主和非宿主指令之间共享的接口。
  *
  */
 interface DirectiveSymbolBase extends PotentialDirective {

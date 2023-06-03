@@ -103,7 +103,7 @@ export enum ErrorCode {
   /**
    * Raised when the compiler wasn't able to resolve the metadata of a host directive.
    *
-   * 当编译器无法解析主机指令的元数据时引发。
+   * 当编译器无法解析宿主指令的元数据时引发。
    *
    */
   HOST_DIRECTIVE_INVALID = 2013,
@@ -111,7 +111,7 @@ export enum ErrorCode {
   /**
    * Raised when a host directive isn't standalone.
    *
-   * 当主机指令不是独立的时引发。
+   * 当宿主指令不是独立的时引发。
    *
    */
   HOST_DIRECTIVE_NOT_STANDALONE = 2014,
@@ -119,7 +119,7 @@ export enum ErrorCode {
   /**
    * Raised when a host directive is a component.
    *
-   * 当主机指令是组件时引发。
+   * 当宿主指令是组件时引发。
    *
    */
   HOST_DIRECTIVE_COMPONENT = 2015,
@@ -136,7 +136,7 @@ export enum ErrorCode {
   /**
    * Raised when a host tries to alias a host directive binding that does not exist.
    *
-   * 当主机尝试为不存在的主机指令绑定设置别名时引发。
+   * 当宿主尝试为不存在的宿主指令绑定设置别名时引发。
    *
    */
   HOST_DIRECTIVE_UNDEFINED_BINDING = 2017,
@@ -145,7 +145,7 @@ export enum ErrorCode {
    * Raised when a host tries to alias a host directive
    * binding to a pre-existing binding's public name.
    *
-   * 当主机尝试将主机指令绑定到预先存在的绑定的公共名称时引发。
+   * 当宿主尝试将宿主指令绑定到预先存在的绑定的公共名称时引发。
    *
    */
   HOST_DIRECTIVE_CONFLICTING_ALIAS = 2018,
@@ -154,7 +154,7 @@ export enum ErrorCode {
    * Raised when a host directive definition doesn't expose a
    * required binding from the host directive.
    *
-   * 当主机指令定义未公开主机指令所需的绑定时引发。
+   * 当宿主指令定义未公开宿主指令所需的绑定时引发。
    *
    */
   HOST_DIRECTIVE_MISSING_REQUIRED_BINDING = 2019,

@@ -93,7 +93,7 @@ export interface LContainer extends Array<any> {
    * The host could be an LView if this container is on a component node.
    * In that case, the component LView is its HOST.
    *
-   * 如果此容器位于组件节点上，则主机可以是 LView。 在那种情况下，组件 LView 是它的宿主。
+   * 如果此容器位于组件节点上，则宿主可以是 LView。 在那种情况下，组件 LView 是它的宿主。
    *
    */
   readonly[HOST]: RElement|RComment|LView;
@@ -162,7 +162,7 @@ export interface LContainer extends Array<any> {
   /**
    * Pointer to the `TNode` which represents the host of the container.
    *
-   * 指向代表容器主机的 `TNode` 指针。
+   * 指向代表容器宿主的 `TNode` 指针。
    *
    */
   [T_HOST]: TNode;

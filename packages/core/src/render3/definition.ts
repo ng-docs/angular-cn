@@ -158,7 +158,7 @@ interface DirectiveDefinition<T> {
   /**
    * Function executed by the parent template to allow child directive to apply host bindings.
    *
-   * 由父模板执行以允许子指令应用主机绑定的函数。
+   * 由父模板执行以允许子指令应用宿主绑定的函数。
    *
    */
   hostBindings?: HostBindingsFunction<T>;

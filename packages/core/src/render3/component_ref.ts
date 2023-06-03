@@ -469,7 +469,7 @@ function applyRootComponentStyling(
  * Creates a root component and sets it up with features and host bindings.Shared by
  * renderComponent\(\) and ViewContainerRef.createComponent\(\).
  *
- * 创建一个根组件并为其设置功能和主机绑定。由 renderComponent\(\) 和 ViewContainerRef.createComponent\(\) 共享。
+ * 创建一个根组件并为其设置功能和宿主绑定。由 renderComponent\(\) 和 ViewContainerRef.createComponent\(\) 共享。
  *
  */
 function createRootComponent<T>(

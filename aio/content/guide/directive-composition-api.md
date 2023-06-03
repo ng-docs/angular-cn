@@ -152,7 +152,7 @@ export class SpecializedMenuWithTooltip { }
 
 ## Host directive semantics
 
-## 主机指令语义
+## 宿主指令语义
 
 ### Directive execution order
 

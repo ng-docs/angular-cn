@@ -16,7 +16,7 @@ import {DirectiveDef, HostDirectiveBindingMap, HostDirectiveDef, HostDirectiveDe
 /**
  * Values that can be used to define a host directive through the `HostDirectivesFeature`.
  *
- * 可用于通过 `HostDirectivesFeature` 定义主机指令的值。
+ * 可用于通过 `HostDirectivesFeature` 定义宿主指令的值。
  *
  */
 type HostDirectiveConfig = Type<unknown>|{
@@ -30,7 +30,7 @@ type HostDirectiveConfig = Type<unknown>|{
  * function onto it. The expectation is that the runtime will invoke the function during
  * directive matching.
  *
- * 此功能通过将函数修补到指令定义上，将主机指令行为添加到指令定义中。 期望运行时将在指令匹配期间调用该函数。
+ * 此功能通过将函数修补到指令定义上，将宿主指令行为添加到指令定义中。 期望运行时将在指令匹配期间调用该函数。
  *
  * For example:
  *
@@ -134,7 +134,7 @@ function bindingArrayToMap(bindings: string[]|undefined): HostDirectiveBindingMa
  * is used *only* by the `NgOnChangesFeature` when determining what name is used in the
  * `SimpleChanges` object which won't be reached if an input doesn't exist.
  *
- * 由于主机指令输入重新映射发生在指令匹配期间，因此 `declaredInputs` 将不包含输入可用的新别名。 此函数通过将主机指令别名修补到 `declaredInputs` 来解决此问题。 *不*存在此修补意外向主机指令引入新输入的风险，因为 `declaredInputs`*仅*由 `NgOnChangesFeature` 在确定 `SimpleChanges` 对象中使用的名称时使用，如果输入不存在则无法访问。
+ * 由于宿主指令输入重新映射发生在指令匹配期间，因此 `declaredInputs` 将不包含输入可用的新别名。 此函数通过将宿主指令别名修补到 `declaredInputs` 来解决此问题。 *不*存在此修补意外向宿主指令引入新输入的风险，因为 `declaredInputs`*仅*由 `NgOnChangesFeature` 在确定 `SimpleChanges` 对象中使用的名称时使用，如果输入不存在则无法访问。
  *
  */
 function patchDeclaredInputs(
@@ -163,15 +163,15 @@ function patchDeclaredInputs(
 /**
  * Verifies that the host directive has been configured correctly.
  *
- * 验证主机指令是否已正确配置。
+ * 验证宿主指令是否已正确配置。
  *
  * @param hostDirectiveConfig Host directive configuration object.
  *
- * 主机指令配置对象。
+ * 宿主指令配置对象。
  *
  * @param directiveDef Directive definition of the host directive.
  *
- * 主机指令的指令定义。
+ * 宿主指令的指令定义。
  *
  * @param matchedDefs Directives that have been matched so far.
  *
@@ -216,7 +216,7 @@ function validateHostDirective(
 /**
  * Checks that the host directive inputs/outputs configuration is valid.
  *
- * 检查主机指令输入/输出配置是否有效。
+ * 检查宿主指令输入/输出配置是否有效。
  *
  * @param bindingType Kind of binding that is being validated. Used in the error message.
  *
@@ -224,11 +224,11 @@ function validateHostDirective(
  *
  * @param def Definition of the host directive that is being validated against.
  *
- * 正在验证的主机指令的定义。
+ * 正在验证的宿主指令的定义。
  *
  * @param hostDirectiveBindings Host directive mapping object that shold be validated.
  *
- * 应验证的主机指令映射对象。
+ * 应验证的宿主指令映射对象。
  *
  */
 function validateMappings(

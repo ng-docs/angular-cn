@@ -497,7 +497,7 @@ export class NgOptimizedImage implements OnInit, OnChanges, OnDestroy {
    * This input is exclusively read to assert that `src` is not set in conflict
    * with `ngSrc` and that images don't start to load until a lazy loading strategy is set.
    *
-   * 如果在主机 `<img>` 元素上设置了 `src` 属性的值。 专门读取此输入以断言 `src` 未设置为与 `ngSrc` 冲突，并且在设置延迟加载策略之前图像不会开始加载。
+   * 如果在宿主 `<img>` 元素上设置了 `src` 属性的值。 专门读取此输入以断言 `src` 未设置为与 `ngSrc` 冲突，并且在设置延迟加载策略之前图像不会开始加载。
    *
    * @internal
    */
@@ -508,7 +508,7 @@ export class NgOptimizedImage implements OnInit, OnChanges, OnDestroy {
    * This input is exclusively read to assert that `srcset` is not set in conflict
    * with `ngSrcset` and that images don't start to load until a lazy loading strategy is set.
    *
-   * `srcset` 属性的值（如果在主机 `<img>` 元素上设置）。 专门读取此输入以断言 `srcset` 未设置为与 `ngSrcset` 冲突，并且在设置延迟加载策略之前图像不会开始加载。
+   * `srcset` 属性的值（如果在宿主 `<img>` 元素上设置）。 专门读取此输入以断言 `srcset` 未设置为与 `ngSrcset` 冲突，并且在设置延迟加载策略之前图像不会开始加载。
    *
    * @internal
    */
@@ -766,7 +766,7 @@ function processConfig(config: ImageConfig): ImageConfig {
 /**
  * Verifies that there is no `src` set on a host element.
  *
- * 验证没有在主机元素上设置 `src` 。
+ * 验证没有在宿主元素上设置 `src` 。
  *
  */
 function assertNoConflictingSrc(dir: NgOptimizedImage) {
@@ -783,7 +783,7 @@ function assertNoConflictingSrc(dir: NgOptimizedImage) {
 /**
  * Verifies that there is no `srcset` set on a host element.
  *
- * 验证主机元素上没有设置 `srcset` 。
+ * 验证宿主元素上没有设置 `srcset` 。
  *
  */
 function assertNoConflictingSrcset(dir: NgOptimizedImage) {
