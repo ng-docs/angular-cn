@@ -1,6 +1,6 @@
 # Hydration
 
-# 补水
+# 水合
 
 <div class="alert is-important">
 
@@ -10,7 +10,7 @@ The hydration feature is available for [developer preview](/guide/releases#devel
 
 ## What is hydration
 
-## 什么是补水
+## 什么是水合
 
 Hydration is the process that restores the server side rendered application on the client. This includes things like reusing the server rendered DOM structures, persisting the application state, transferring application data that was retrieved already by the server, and other processes.
 
@@ -18,7 +18,7 @@ Hydration 是在客户端恢复服务端渲染的应用程序的过程。 这包
 
 ## Why is hydration important?
 
-## 为什么补水很重要？
+## 为什么水合很重要？
 
 Hydration improves application performance by avoiding extra work to re-create DOM nodes. Instead, Angular tries to match existing DOM elements to the applications structure at runtime and reuses DOM nodes when possible. This results in a performance improvement that can be measured using [Core Web Vitals \(CWV\)](https://web.dev/learn-core-web-vitals/) statistics, such as reducing the First Input Delay \([FID](https://web.dev/fid/)\) and Largest Contentful Paint \([LCP](https://web.dev/lcp/)\), as well as Cumulative Layout Shift \([CLS](https://web.dev/cls/)\). Improving these numbers also affects things like SEO performance.
 
