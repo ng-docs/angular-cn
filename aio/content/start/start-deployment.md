@@ -136,7 +136,7 @@ A best practice is to run your project locally before you deploy it. To run your
 In this tutorial, you've laid the foundation to explore the Angular world in areas such as mobile development, UX/UI development, and server-side rendering.
 You can go deeper by studying more of Angular's features, engaging with the vibrant community, and exploring the robust ecosystem.
 
-在本教程中，你奠定了在移动开发、UX/UI 开发和服务器端渲染等领域探索 Angular 世界的基础。你可以通过研究 Angular 的更多特性、与充满活力的社区互动，以及探索其健壮的生态系统，来更深入地了解 Angular。
+在本教程中，你奠定了在移动开发、UX/UI 开发和服务端渲染等领域探索 Angular 世界的基础。你可以通过研究 Angular 的更多特性、与充满活力的社区互动，以及探索其健壮的生态系统，来更深入地了解 Angular。
 
 ### Learning more Angular
 

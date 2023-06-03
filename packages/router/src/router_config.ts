@@ -265,7 +265,7 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    * root component gets created. Use if there is a reason to have more control over when the router
    * starts its initial navigation due to some complex initialization logic.
    *
-   * `enabled`、`enabledBlocking`、`enabledNonBlocking` 或 `disabled` 之一。 设置为 `enabled` 或 `enabledBlocking` ，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。 该值是让[服务器端渲染](guide/universal)正常工作所必需的。 设置为 `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。 设置为 `disabled`，不执行初始导航。位置监听器是在创建根组件之前设置的。 如果由于某些复杂的初始化逻辑，而有理由对路由器何时开始其初始导航有更多的控制权，请使用它。
+   * `enabled`、`enabledBlocking`、`enabledNonBlocking` 或 `disabled` 之一。 设置为 `enabled` 或 `enabledBlocking` ，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。 该值是让[服务端渲染](guide/universal)正常工作所必需的。 设置为 `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。 设置为 `disabled`，不执行初始导航。位置监听器是在创建根组件之前设置的。 如果由于某些复杂的初始化逻辑，而有理由对路由器何时开始其初始导航有更多的控制权，请使用它。
    *
    */
   initialNavigation?: InitialNavigation;

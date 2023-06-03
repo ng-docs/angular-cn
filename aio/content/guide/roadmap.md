@@ -26,17 +26,17 @@ For example, we release features in the next minor after completion or the next 
 
 ### Explore hydration and server-side rendering improvements
 
-### 探索水合作用和服务器端渲染改进
+### 探索水合作用和服务端渲染改进
 
 In v16, we released a developer preview of non-destructive full hydration, see the [hydration guide](guide/hydration) and the [blog post](https://blog.angular.io/whats-next-for-server-side-rendering-in-angular-2a6f27662b67) for additional information. We're already seeing significant improvements to Core Web Vitals, including [LCP](https://web.dev/lcp) and [CLS](https://web.dev/cls). In lab tests, we consistently observed 45% better LCP of a real-world app.
 
 在 v16 中，我们发布了无损完全水合的开发者预览版，请参阅[水合指南](guide/hydration)和[博客文章](https://blog.angular.io/whats-next-for-server-side-rendering-in-angular-2a6f27662b67)了解更多信息。 我们已经看到 Core Web Vitals 的显着改进，包括[LCP](https://web.dev/lcp)和[CLS](https://web.dev/cls) 。 在实验室测试中，我们始终观察到真实应用程序的 LCP 提高了 45%。
 
-### 探索水化（hydration）和服务器端渲染可用性的改进
+### 探索水化（hydration）和服务端渲染可用性的改进
 
 As the next step, we will iterate on polishing full hydration and further explore the dynamically evolving space of partial hydration and resumability. These more advanced patterns carry their own trade-offs; we'll share updates as we progress.
 
-作为该项目的第一步，我们将实现无损水化。这项技术将允许我们复用服务器端渲染好的 DOM，而不是重新渲染它，仅会附加事件侦听器并创建 Angular 运行时所需的数据结构。下一步，我们将进一步探索部分水化和可恢复的动态演化空间。每种方法都有它们的权衡，我们希望做出明智的决定，什么是 Angular 的最佳长期解决方案。
+作为该项目的第一步，我们将实现无损水化。这项技术将允许我们复用服务端渲染好的 DOM，而不是重新渲染它，仅会附加事件侦听器并创建 Angular 运行时所需的数据结构。下一步，我们将进一步探索部分水化和可恢复的动态演化空间。每种方法都有它们的权衡，我们希望做出明智的决定，什么是 Angular 的最佳长期解决方案。
 
 ### Improve runtime performance and developer experience with a new reactivity model
 

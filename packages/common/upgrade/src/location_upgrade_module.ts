@@ -47,7 +47,7 @@ export interface LocationUpgradeConfig {
   /**
    * Configures the base href when used in server-side rendered applications
    *
-   * 配置在服务器端渲染的应用程序中使用时的 base href
+   * 配置在服务端渲染的应用程序中使用时的 base href
    *
    */
   serverBaseHref?: string;

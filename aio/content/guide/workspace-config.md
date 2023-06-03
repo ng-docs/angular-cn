@@ -285,7 +285,7 @@ See the example in [Build target](#build-target) below.
 | `architect/extract-i18n` | Configures defaults for options of the `ng extract-i18n` command, which extracts marked message strings from source code and outputs translation files.                                              |
 | `architect/extract-i18n` | 为 `ng extract-i18n` 命令的选项配置了默认值，该命令用于从源代码中提取带标记的消息串，并输出翻译文件。                                                                                                |
 | `architect/server`       | Configures defaults for creating a Universal application with server-side rendering, using the `ng run <project>:server` command.                                                                    |
-| `architect/server`       | 用于为使用 `ng run <project>:server` 命令创建带服务器端渲染的 Universal 应用配置默认值。                                                                                                             |
+| `architect/server`       | 用于为使用 `ng run <project>:server` 命令创建带服务端渲染的 Universal 应用配置默认值。                                                                                                             |
 | `architect/app-shell`    | Configures defaults for creating an application shell for a progressive web application \(PWA\), using the `ng run <project>:app-shell` command.                                                     |
 | `architect/app-shell`    | 配置了使用 `ng run <project>:app-shell` 命令为渐进式 Web 应用（PWA）配置创建应用外壳时的默认值。                                                                                                     |
 

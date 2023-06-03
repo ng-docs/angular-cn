@@ -296,7 +296,7 @@
           },
           "ab2": {
             "desc": "Lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js",
-            "descCn": "轻巧但功能强大的 IDE，完全适合通过 Node.js 进行复杂的客户端开发和服务器端开发",
+            "descCn": "轻巧但功能强大的 IDE，完全适合通过 Node.js 进行复杂的客户端开发和服务端开发",
             "logo": "",
             "title": "WebStorm",
             "url": "https://www.jetbrains.com/webstorm/"
@@ -339,7 +339,7 @@
           },
           "b1": {
             "desc": "Server-side Rendering for Angular apps.",
-            "descCn": "Angular 应用程序的服务器端渲染。",
+            "descCn": "Angular 应用程序的服务端渲染。",
             "logo": "https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png",
             "title": "Angular Universal",
             "url": "https://angular.io/guide/universal",

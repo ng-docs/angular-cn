@@ -12,7 +12,7 @@ By default, Angular renders applications only in a *browser*. Angular Universal 
 
 With server-side rendering an application generally renders in a browser faster, giving users a chance to view the application UI before it becomes fully interactive. See \([the "Why use Server-Side Rendering?" section](#why-do-it)\) below for addition information.
 
-使用服务器端渲染，应用程序通常可以更快地在浏览器中渲染，让用户有机会在应用程序 UI 变得完全交互之前查看它。 有关其他信息，请参阅下面的（ [“为什么使用服务器端渲染？”部分](#why-do-it)）。
+使用服务端渲染，应用程序通常可以更快地在浏览器中渲染，让用户有机会在应用程序 UI 变得完全交互之前查看它。 有关其他信息，请参阅下面的（ [“为什么使用服务端渲染？”部分](#why-do-it)）。
 
 Also for a more detailed look at different techniques and concepts surrounding SSR, check out this [article](https://developers.google.com/web/updates/2019/02/rendering-on-the-web).
 
@@ -20,7 +20,7 @@ Also for a more detailed look at different techniques and concepts surrounding S
 
 You can enable server-side rendering in your Angular application using the `@nguniversal/express-engine` schematic as described below.
 
-你可以使用 `@nguniversal/express-engine` 原理图在你的 Angular 应用程序中启用服务器端渲染，如下所述。
+你可以使用 `@nguniversal/express-engine` 原理图在你的 Angular 应用程序中启用服务端渲染，如下所述。
 
 <div class="alert is-helpful">
 
@@ -52,7 +52,7 @@ A Node.js Express web server compiles HTML pages with Universal based on client 
 
 ### Step 1. Enable Server-Side Rendering
 
-### 步骤 1. 启用服务器端渲染
+### 步骤 1. 启用服务端渲染
 
 Run the following command to add SSR support into your application:
 
@@ -134,7 +134,7 @@ The hydration feature is available for [developer preview](/guide/releases#devel
 
 Hydration is the process that restores the server side rendered application on the client. This includes things like reusing the server rendered DOM structures, persisting the application state, transferring application data that was retrieved already by the server, and other processes. Learn more about hydration in [this guide](guide/hydration).
 
-Hydration 是在客户端恢复服务器端渲染的应用程序的过程。 这包括重用服务器渲染的 DOM 结构、持久化应用程序状态、传输服务器已经检索到的应用程序数据以及其他进程。 在[本指南](guide/hydration)中了解更多关于补水的信息。
+Hydration 是在客户端恢复服务端渲染的应用程序的过程。 这包括重用服务器渲染的 DOM 结构、持久化应用程序状态、传输服务器已经检索到的应用程序数据以及其他进程。 在[本指南](guide/hydration)中了解更多关于补水的信息。
 
 You can enable hydration by updating the `app.module.ts` file. Import the `provideClientHydration` function from `@angular/platform-browser` and add the function call to the `providers` section of the `AppModule` as shown below.
 
@@ -377,7 +377,7 @@ This is a good argument for making the application [routable](guide/router).
 
 If you are using Universal in conjunction with the Angular service worker, the behavior is different than the normal server side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker. For subsequent requests, the `index.html` file is served statically and bypasses server side rendering.
 
-如果你将 Universal 与 Angular service worker 结合使用，则其行为不同于正常的服务器端渲染行为。 初始服务器请求将按预期在服务器上渲染。 但是，在该初始请求之后，后续请求将由 service worker 处理。 对于后续请求， `index.html` 文件是静态提供的并绕过服务器端渲染。
+如果你将 Universal 与 Angular service worker 结合使用，则其行为不同于正常的服务端渲染行为。 初始服务器请求将按预期在服务器上渲染。 但是，在该初始请求之后，后续请求将由 service worker 处理。 对于后续请求， `index.html` 文件是静态提供的并绕过服务端渲染。
 
 <a id="universal-engine"></a>
 
@@ -403,7 +403,7 @@ It accepts an object with the following properties:
 | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 属性             | 详情                                                                                                                                                                                                                                                                                                      |
 | `bootstrap`      | The root `NgModule` or function that when invoked returns a `Promise` that resolves to an `ApplicationRef` of the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
-| `bootstrap`      | 根 `NgModule` 或函数在调用时返回一个 `Promise` ，该 Promise 在服务器上渲染时解析为应用程序的 `ApplicationRef` 。 对于示例应用程序，它是 `AppServerModule` 。 它是通用服务器端渲染器和 Angular 应用程序之间的桥梁。                                                                                             |
+| `bootstrap`      | 根 `NgModule` 或函数在调用时返回一个 `Promise` ，该 Promise 在服务器上渲染时解析为应用程序的 `ApplicationRef` 。 对于示例应用程序，它是 `AppServerModule` 。 它是通用服务端渲染器和 Angular 应用程序之间的桥梁。                                                                                             |
 | `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance.                                                   |
 | `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。                                                                                                                                                            |
 
@@ -536,11 +536,11 @@ Now, on every HTTP request made as part of rendering the application on the serv
 | :-------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 脚本                                                                                                      | 详情                                                                                                                                                                                                                                                                                                                                                                                                          |
 | <code-example format="shell" language="shell"> npm run dev:ssr </code-example>                            | Similar to [`ng serve`](cli/serve), which offers live reload during development, but uses server-side rendering. The application runs in watch mode and refreshes the browser after every change. This command is slower than the actual `ng serve` command.                                                                                                                                                  |
-| <code-example format="shell" language="shell"> npm run dev:ssr </code-example>                            | 此命令类似于 [`ng serve`](cli/serve)，它在开发期间提供实时重新加载，但使用服务器端渲染。该应用程序以监视模式运行并在每次更改后刷新浏览器。这个命令要比实际的 `ng serve` 命令慢。                                                                                                                                                                                                                              |
+| <code-example format="shell" language="shell"> npm run dev:ssr </code-example>                            | 此命令类似于 [`ng serve`](cli/serve)，它在开发期间提供实时重新加载，但使用服务端渲染。该应用程序以监视模式运行并在每次更改后刷新浏览器。这个命令要比实际的 `ng serve` 命令慢。                                                                                                                                                                                                                              |
 | <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | Builds both the server script and the application in production mode. Use this command when you want to build the project for deployment.                                                                                                                                                                                                                                                                     |
 | <code-example format="shell" language="shell"> ng build &amp;&amp; ng run app-name:server </code-example> | 此命令会在生产模式下构建服务器脚本和应用程序。当你要构建用于部署的项目时，请使用此命令。                                                                                                                                                                                                                                                                                                                      |
 | <code-example format="shell" language="shell"> npm run serve:ssr </code-example>                          | Starts the server script for serving the application locally with server-side rendering. It uses the build artifacts created by `ng run build:ssr`, so make sure you have run that command as well. <div class="alert is-helpful"> **NOTE**: <br /> `serve:ssr` is not intended to be used to serve your application in production, but only for testing the server-side rendered application locally. </div> |
-| <code-example format="shell" language="shell"> npm run serve:ssr </code-example>                          | 此命令启动服务器脚本，用于通过服务器端渲染在本地为应用程序提供服务。它使用由 `ng run build:ssr` 创建的构建工件，因此请确保你也运行了该命令。<div class="alert is-helpful">**注意**：<br />`serve:ssr` 不能用于在生产环境为你的应用程序提供服务，而仅用于在本地测试服务器端渲染的应用程序。</div>                                                                                                              |
+| <code-example format="shell" language="shell"> npm run serve:ssr </code-example>                          | 此命令启动服务器脚本，用于通过服务端渲染在本地为应用程序提供服务。它使用由 `ng run build:ssr` 创建的构建工件，因此请确保你也运行了该命令。<div class="alert is-helpful">**注意**：<br />`serve:ssr` 不能用于在生产环境为你的应用程序提供服务，而仅用于在本地测试服务端渲染的应用程序。</div>                                                                                                              |
 | <code-example format="shell" language="shell"> npm run prerender </code-example>                          | Used to prerender an application's pages. Read more about prerendering [here](guide/prerendering).                                                                                                                                                                                                                                                                                                            |
 | <code-example format="shell" language="shell"> npm run prerender </code-example>                          | 此脚本可用于预先渲染应用程序的页面。[在此处](guide/prerendering)阅读有关预先渲染的更多信息。                                                                                                                                                                                                                                                                                                                  |
 

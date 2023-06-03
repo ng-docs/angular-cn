@@ -265,7 +265,7 @@ You can set the nonce for Angular in one of two ways:
 
 1. Set the `ngCspNonce` attribute on the root application element as `<app ngCspNonce="randomNonceGoesHere"></app>`. Use this approach if you have access to server-side templating that can add the nonce both to the header and the `index.html` when constructing the response.
 
-   将根应用程序元素上的 `ngCspNonce` 属性设置为 `<app ngCspNonce="randomNonceGoesHere"></app>` 。 如果你可以访问服务器端模板，在构建响应时可以将随机数添加到标头和 `index.html` 请使用此方法。
+   将根应用程序元素上的 `ngCspNonce` 属性设置为 `<app ngCspNonce="randomNonceGoesHere"></app>` 。 如果你可以访问服务端模板，在构建响应时可以将随机数添加到标头和 `index.html` 请使用此方法。
 
 2. Provide the nonce using the `CSP_NONCE` injection token. Use this approach if you have access to the nonce at runtime and you want to be able to cache the `index.html`.
 
@@ -446,7 +446,7 @@ AOT 编译器的替代方法是 JIT 编译器，它可以在运行时将模板�
 
 ### Server-side XSS protection
 
-### 服务器端 XSS 保护
+### 服务端 XSS 保护
 
 HTML constructed on the server is vulnerable to injection attacks.
 Injecting template code into an Angular application is the same as injecting executable code into the application:
@@ -454,7 +454,7 @@ It gives the attacker full control over the application.
 To prevent this, use a templating language that automatically escapes values to prevent XSS vulnerabilities on the server.
 Don't create Angular templates on the server side using a templating language. This carries a high risk of introducing template-injection vulnerabilities.
 
-在服务器上构造的 HTML 容易受到注入攻击。将模板代码注入到 Angular 应用程序中与注入可执行代码是一样的：它使攻击者可以完全控制该应用程序。为避免这种情况，请使用一种模板语言来自动转义值以防止服务器上的 XSS 漏洞。不要在服务器端使用模板语言生成 Angular 模板。这样做会带来引入模板注入漏洞的高风险。
+在服务器上构造的 HTML 容易受到注入攻击。将模板代码注入到 Angular 应用程序中与注入可执行代码是一样的：它使攻击者可以完全控制该应用程序。为避免这种情况，请使用一种模板语言来自动转义值以防止服务器上的 XSS 漏洞。不要在服务端使用模板语言生成 Angular 模板。这样做会带来引入模板注入漏洞的高风险。
 
 <a id="http"></a>
 
@@ -467,7 +467,7 @@ Don't create Angular templates on the server side using a templating language. T
 Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request forgery \(CSRF or XSRF\) and cross-site script inclusion \(XSSI\).
 Both of these must be mitigated primarily on the server side, but Angular provides helpers to make integration on the client side easier.
 
-Angular 内置了一些支持来防范两个常见的 HTTP 漏洞：跨站请求伪造（XSRF）和跨站脚本包含（XSSI）。这两个漏洞主要在服务器端防范，但是 Angular 也自带了一些辅助特性，可以让客户端的集成变得更容易。
+Angular 内置了一些支持来防范两个常见的 HTTP 漏洞：跨站请求伪造（XSRF）和跨站脚本包含（XSSI）。这两个漏洞主要在服务端防范，但是 Angular 也自带了一些辅助特性，可以让客户端的集成变得更容易。
 
 <a id="xsrf"></a>
 

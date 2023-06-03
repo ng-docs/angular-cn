@@ -1064,7 +1064,7 @@ Isolating platform-specific functionality allows the developer to make platform-
 
 * When [server-side rendering \(SSR\)][AioGuideGlossaryServerSideRendering] is used, the [`platform-server`][AioApiPlatformServer] package provides web server implementations of the `DOM`, `XMLHttpRequest`, and other low-level features that do not rely on a browser.
 
-  使用[服务端渲染][AioGuideGlossaryServerSideRendering]（SSR）时，[`platform-server`][AioApiPlatformServer] 包将提供 `DOM`、`XMLHttpRequest` 和其它不依赖浏览器的其它底层功能的 Web 服务器端实现。
+  使用[服务端渲染][AioGuideGlossaryServerSideRendering]（SSR）时，[`platform-server`][AioApiPlatformServer] 包将提供 `DOM`、`XMLHttpRequest` 和其它不依赖浏览器的其它底层功能的 Web 服务端实现。
 
 ## polyfill
 

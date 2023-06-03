@@ -17,7 +17,7 @@ To merge the completed translations into your project, complete the following ac
 
 After you merge the translations, serve each distributable copy of the application using server-side language detection or different subdirectories.
 
-合并翻译后，可使用服务器端语言检测或不同的子目录来提供（serve）应用程序的每个可分发副本。
+合并翻译后，可使用服务端语言检测或不同的子目录来提供（serve）应用程序的每个可分发副本。
 
 <div class="alert is-helpful">
 

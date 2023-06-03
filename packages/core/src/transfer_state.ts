@@ -69,7 +69,7 @@ function initTransferState(): TransferState {
  * A key value store that is transferred from the application on the server side to the application
  * on the client side.
  *
- * 从服务器端的应用程序传到客户端的应用程序的键值存储。
+ * 从服务端的应用程序传到客户端的应用程序的键值存储。
  *
  * The `TransferState` is available as an injectable token.
  * On the client, just inject this token using DI and use it, it will be lazily initialized.

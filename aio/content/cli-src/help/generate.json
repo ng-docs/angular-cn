@@ -100,7 +100,7 @@
       ],
       "aliases": [],
       "deprecated": false,
-      "shortDescriptionCn": "生成用于运行应用程序的服务器端版本的应用程序 shell。"
+      "shortDescriptionCn": "生成用于运行应用程序的服务端版本的应用程序 shell。"
     },
     {
       "name": "application",

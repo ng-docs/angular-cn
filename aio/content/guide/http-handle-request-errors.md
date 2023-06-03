@@ -34,7 +34,7 @@ Two types of errors can occur.
 * The server backend might reject the request, returning an HTTP response with a status code such as 404 or 500.
   These are error *responses*.
 
-  服务器端可能会拒绝该请求，并返回状态码为 404 或 500 的 HTTP *响应*对象。这些是错误*响应*。
+  服务端可能会拒绝该请求，并返回状态码为 404 或 500 的 HTTP *响应*对象。这些是错误*响应*。
 
 * Something could go wrong on the client-side such as a network error that prevents the request from completing successfully or an exception thrown in an RxJS operator.
   These errors have `status` set to `0` and the `error` property contains a `ProgressEvent` object, whose `type` might provide further information.

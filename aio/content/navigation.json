@@ -919,14 +919,14 @@
           "url": "guide/universal",
           "titleCn": "服务端渲染",
           "title": "Server-side rendering",
-          "tooltipCn": "使用 Angular Universal 在服务器端渲染 HTML。",
+          "tooltipCn": "使用 Angular Universal 在服务端渲染 HTML。",
           "tooltip": "Render HTML server-side with Angular Universal."
         },
         {
           "url": "guide/prerendering",
           "titleCn": "预渲染（Prerender）",
           "title": "Prerendering",
-          "tooltipCn": "使用 Angular Universal 在服务器端预渲染 HTML。",
+          "tooltipCn": "使用 Angular Universal 在服务端预渲染 HTML。",
           "tooltip": "Prerender HTML server-side with Angular Universal."
         },
         {

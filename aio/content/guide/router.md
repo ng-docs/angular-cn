@@ -727,7 +727,7 @@ It produces URLs that are easier for users to understand and it preserves the op
 Rendering critical pages on the server is a technique that can greatly improve perceived responsiveness when the application first loads.
 An application that would otherwise take ten or more seconds to start could be rendered on the server and delivered to the user's device in less than a second.
 
-在服务器端渲染指定的页面，是一项可以在该应用首次加载时大幅提升响应速度的技术。那些原本需要十秒甚至更长时间加载的应用，可以预先在服务端渲染好，并在少于一秒的时间内完整渲染在用户的设备上。
+在服务端渲染指定的页面，是一项可以在该应用首次加载时大幅提升响应速度的技术。那些原本需要十秒甚至更长时间加载的应用，可以预先在服务端渲染好，并在少于一秒的时间内完整渲染在用户的设备上。
 
 This option is only available if application URLs look like normal web URLs without hash \(`#`\) characters in the middle.
 

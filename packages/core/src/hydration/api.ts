@@ -139,13 +139,13 @@ function whenStable(appRef: ApplicationRef, injector: Injector): Promise<void> {
  * included into the `provideClientHydration` public API function from
  * the `platform-browser` package.
  *
- * 返回为服务器端渲染的应用程序设置水合支持所需的一组提供程序。 该函数包含在 `platform-browser` 包中的 `provideClientHydration` 公共 API 函数中。
+ * 返回为服务端渲染的应用程序设置水合支持所需的一组提供程序。 该函数包含在 `platform-browser` 包中的 `provideClientHydration` 公共 API 函数中。
  *
  * The function sets up an internal flag that would be recognized during
  * the server side rendering time as well, so there is no need to
  * configure or change anything in NgUniversal to enable the feature.
  *
- * 该函数设置了一个内部标志，该标志也会在服务器端渲染期间被识别，因此无需在 NgUniversal 中配置或更改任何内容即可启用该功能。
+ * 该函数设置了一个内部标志，该标志也会在服务端渲染期间被识别，因此无需在 NgUniversal 中配置或更改任何内容即可启用该功能。
  *
  */
 export function withDomHydration(): EnvironmentProviders {
