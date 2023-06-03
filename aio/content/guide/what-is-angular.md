@@ -298,7 +298,7 @@ Some of the libraries available to you include:
 | [Angular HttpClient](guide/http)          | 健壮的 HTTP 客户端库，它可以支持更高级的客户端-服务器通讯。                                                                                    |
 | [Angular Animations](guide/animations)    | Rich system for driving animations based on application state.                                                                                 |
 | [Angular 动画](guide/animations)          | 丰富的动画体系，用于驱动基于应用状态的动画。                                                                                                   |
-| [Angular PWA](guide/service-worker-intro) | Tools for building Progressive Web Applications (PWAs) including a service worker and Web app manifest.                                        |
+| [Angular PWA](guide/service-worker-intro) | Tools for building Progressive Web Applications \(PWAs\) including a service worker and Web app manifest.                                      |
 | [Angular PWA](guide/service-worker-intro) | 一些用于构建渐进式 Web 应用（PWA）的工具，包括 Service Worker 和 Web 应用清单（Manifest）。                                                    |
 | [Angular Schematics](guide/schematics)    | Automated scaffolding, refactoring, and update tools that simplify development at large scale.                                                 |
 | [Angular 原理图](guide/schematics)        | 一些搭建脚手架、重构和升级的自动化工具。用于简化大规模应用的开发。                                                                             |

@@ -116,14 +116,20 @@ function refreshContentQueries(tView: TView, lView: LView): void {
   }
 }
 
-/** Refreshes child components in the current view (update mode). */
+/**
+ * Refreshes child components in the current view \(update mode\).
+ *
+ */
 function refreshChildComponents(hostLView: LView, components: number[]): void {
   for (let i = 0; i < components.length; i++) {
     refreshComponent(hostLView, components[i]);
   }
 }
 
-/** Renders child components in the current view (creation mode). */
+/**
+ * Renders child components in the current view \(creation mode\).
+ *
+ */
 function renderChildComponents(hostLView: LView, components: number[]): void {
   for (let i = 0; i < components.length; i++) {
     renderComponent(hostLView, components[i]);
@@ -170,8 +176,9 @@ export function createLView<T>(
  * Create and stores the TNode, and hooks it up to the tree.
  *
  * @param tView The current `TView`.
- * @param index The index at which the TNode should be saved (null if view, since they are not
- * saved).
+ * @param index The index at which the TNode should be saved \(null if view, since they are not
+ * saved\).
+ *
  * @param type The type of TNode to create
  * @param native The native element for this node, if applicable
  * @param name The tag name of the associated native element, if applicable
@@ -258,8 +265,8 @@ export function createTNodeAtIndex(
 }
 
 /**
- * When elements are created dynamically after a view blueprint is created (e.g. through
- * i18nApply()), we need to adjust the blueprint for future
+ * When elements are created dynamically after a view blueprint is created \(e.g. through
+ * `i18nApply()`\), we need to adjust the blueprint for future
  * template passes.
  *
  * @param tView `TView` associated with `LView`
@@ -295,9 +302,9 @@ export function allocExpando(
 /**
  * Processes a view in the creation mode. This includes a number of steps in a specific order:
  *
- * - creating view query functions (if any);
+ * - creating view query functions \(if any\);
  * - executing a template function in the creation mode;
- * - updating static queries (if any);
+ * - updating static queries \(if any\);
  * - creating child components defined in a given view.
  *
  */
@@ -368,7 +375,7 @@ export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
  * - executing hooks;
  * - refreshing queries;
  * - setting host bindings;
- * - refreshing child (embedded and component) views.
+ * - refreshing child \(embedded and component\) views.
  *
  */
 export function refreshView<T>(
@@ -561,7 +568,8 @@ export function createDirectivesInstances(tView: TView, lView: LView, tNode: TDi
 
 /**
  * Takes a list of local names and indices and pushes the resolved local variable values
- * to LView in the same order as they are loaded in the template with load().
+ * to LView in the same order as they are loaded in the template with load\(\).
+ *
  */
 export function saveResolvedLocalsInData(
     viewData: LView, tNode: TDirectiveHostNode,
@@ -975,12 +983,13 @@ function initializeInputAndOutputAliases(
 /**
  * Mapping between attributes names that don't correspond to their element property names.
  *
- * Performance note: this function is written as a series of if checks (instead of, say, a property
- * object lookup) for performance reasons - the series of `if` checks seems to be the fastest way of
+ * Performance note: this function is written as a series of if checks \(instead of, say, a property
+ * object lookup\) for performance reasons - the series of `if` checks seems to be the fastest way of
  * mapping property names. Do NOT change without benchmarking.
  *
  * Note: this mapping has to be kept in sync with the equally named mapping in the template
  * type-checking machinery of ngtsc.
+ *
  */
 function mapPropName(name: string): string {
   if (name === 'class') return 'className';
@@ -1209,9 +1218,10 @@ export function registerHostBindingOpCodes(
  * Returns the last selected element index in the `HostBindingOpCodes`
  *
  * For perf reasons we don't need to update the selected element index in `HostBindingOpCodes` only
- * if it changes. This method returns the last index (or '0' if not found.)
+ * if it changes. This method returns the last index \(or '0' if not found.\)
  *
  * Selected element index are only the ones which are negative.
+ *
  */
 function lastSelectedElementIdx(hostBindingOpCodes: HostBindingOpCodes): number {
   let i = hostBindingOpCodes.length;
@@ -1300,7 +1310,8 @@ export function invokeHostBindingsInCreationMode(def: DirectiveDef<any>, directi
 
 /**
  * Matches the current node against all available selectors.
- * If a component is matched (at most one), it is returned in first position in the array.
+ * If a component is matched \(at most one\), it is returned in first position in the array.
+ *
  */
 function findDirectiveDefMatches(
     tView: TView, tNode: TElementNode|TContainerNode|TElementContainerNode):
@@ -1644,8 +1655,9 @@ export function createLContainer(
 }
 
 /**
- * Goes over embedded views (ones created through ViewContainerRef APIs) and refreshes
+ * Goes over embedded views \(ones created through ViewContainerRef APIs\) and refreshes
  * them by executing an associated template function.
+ *
  */
 function refreshEmbeddedViews(lView: LView) {
   for (let lContainer = getFirstLContainer(lView); lContainer !== null;
@@ -1696,7 +1708,7 @@ function markTransplantedViewsForRefresh(lView: LView) {
 /**
  * Refreshes components by entering the component view and processing its bindings, queries, etc.
  *
- * @param componentHostIdx  Element index in LView\[] (adjusted for HEADER_OFFSET)
+ * @param componentHostIdx  Element index in LView\[\] \(adjusted for HEADER_OFFSET\)
  *
  */
 function refreshComponent(hostLView: LView, componentHostIdx: number): void {
@@ -1811,7 +1823,7 @@ function syncViewWithBlueprint(tView: TView, lView: LView) {
  * and call onDestroy callbacks.
  *
  * @param lView The view where LView or LContainer should be added
- * @param adjustedHostIndex Index of the view's host node in LView\[], adjusted for header
+ * @param adjustedHostIndex Index of the view's host node in LView\[\], adjusted for header
  *
  * @param lViewOrLContainer The LView or LContainer to add to the view tree
  * @returns The state passed in
@@ -1888,9 +1900,9 @@ function executeViewQueryFn<T>(
  * - a bound property name;
  * - a static parts of interpolated strings;
  *
- * A given property metadata is saved at the binding's index in the `TView.data` (in other words, a
+ * A given property metadata is saved at the binding's index in the `TView.data` \(in other words, a
  * property binding metadata will be stored in `TView.data` at the same index as a bound value in
- * `LView`). Metadata are represented as `INTERPOLATION_DELIMITER`-delimited string with the
+ * `LView`\). Metadata are represented as `INTERPOLATION_DELIMITER`-delimited string with the
  * following format:
  *
  * - `propertyName` for bound properties;
@@ -1901,7 +1913,8 @@ function executeViewQueryFn<T>(
  * @param tNode `TNode` that is a target of the binding;
  * @param propertyName bound property name;
  * @param bindingIndex binding index in `LView`
- * @param interpolationParts static interpolation parts (for property interpolations)
+ * @param interpolationParts static interpolation parts \(for property interpolations\)
+ *
  */
 export function storePropertyBindingMetadata(
     tData: TData, tNode: TNode, propertyName: string, bindingIndex: number,
@@ -1934,7 +1947,7 @@ export function getOrCreateTViewCleanup(tView: TView): any[] {
 
 /**
  * There are cases where the sub component's renderer needs to be included
- * instead of the current renderer (see the componentSyntheticHost\* instructions).
+ * instead of the current renderer \(see the componentSyntheticHost\* instructions\).
  *
  */
 export function loadComponentRenderer(

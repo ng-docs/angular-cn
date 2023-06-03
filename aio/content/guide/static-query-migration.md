@@ -14,7 +14,7 @@ This migration is especially crucial for library authors to facilitate their use
 
 </div>
 
-In version 9, the default setting for `@ViewChild` and `@ContentChild` queries is changing in order to fix buggy and surprising behavior in queries (read more about that [here](#what-does-this-flag-mean)).
+In version 9, the default setting for `@ViewChild` and `@ContentChild` queries is changing in order to fix buggy and surprising behavior in queries \(read more about that [here](#what-does-this-flag-mean)\).
 
 在版本 9 中，`@ViewChild` 和 `@ContentChild` 这两个查询的默认设置会改变，以修复查询中的 BUG 和意外行为（详情参阅[此处](#what-does-this-flag-mean)）。
 
@@ -97,11 +97,11 @@ This is because by the time those lifecycle hooks run, change detection has comp
 在官方 API 文档中，我们建议对于[视图查询](api/core/ViewChild#description) 总是在 `ngAfterViewInit` 中获取查询结果，对于[内容查询](api/core/ContentChild#description) 总是在 `ngAfterContentInit` 中获取查询结果。这是因为当这些生命周期钩子运行时，相关节点的变更检测已完成，我们可以确信收集到了所有可能的查询结果。
 
 Most applications will want to use `{static: false}` for the same reason.
-This setting will ensure query matches that are dependent on binding resolution (for example, results inside instances of `*ngIf` or `*ngFor`) will be found by the query.
+This setting will ensure query matches that are dependent on binding resolution \(for example, results inside instances of `*ngIf` or `*ngFor`\) will be found by the query.
 
 由于这个原因，大多数应用都应该使用 `{static: false}`。这个设置可以确保找出那些依赖于绑定解析的查询结果（比如 `*ngIf` 或 `*ngFor` 内的查询）。
 
-There are rarer cases where `{static: true}` flag might be necessary (see [answer here](#should-i-use-static-true)).
+There are rarer cases where `{static: true}` flag might be necessary \(see [answer here](#should-i-use-static-true)\).
 
 在某些很少见的情况下，必须使用 `{static: true}` 标志（参阅[这里的回答](#should-i-use-static-true)）。
 
@@ -119,7 +119,7 @@ In most other cases, the best practice is to use `{static: false}`.
 
 这个选项的引入是为了支持动态创建嵌入式视图。如果你要查询一个 `TemplateRef` 以便动态创建一个视图，将无法在 `ngAfterViewInit` 中这样做。这是因为变量检测已在该视图上运行过，所以这时候使用该模板创建一个新视图就会抛出 `ExpressionHasChangedAfterChecked` 错误。在这种情况下，你要把 `static` 标志设置为 `true`，并在 `ngOnInit` 中创建你的视图。在其它大多数情况下，最好的做法是使用 `{static: false}`。
 
-However, to facilitate the migration to version 8, you may also want to set the `static` flag to `true` if your component code already depends on the query results being available some time **before** `ngAfterViewInit` (for view queries) or `ngAfterContentInit` (for content queries).
+However, to facilitate the migration to version 8, you may also want to set the `static` flag to `true` if your component code already depends on the query results being available some time **before** `ngAfterViewInit` \(for view queries\) or `ngAfterContentInit` \(for content queries\).
 For example, if your component relies on the query results being populated in the `ngOnInit` hook or in `@Input` setters, you will need to either set the flag to `true` or re-work your component to adjust to later timing.
 
 为了便于迁移到版本 8 中，如果你的组件代码期望这些查询的结果在 `ngAfterViewInit`（对于视图查询）或 `ngAfterContentInit`（对于内容查询）**之前**的某个时刻就已经可用，可能也要把 `static` 标志设置为 `true`。比如，如果你的组件期望在 `ngOnInit` 钩子或 `@Input` 的 setter 中这些查询结果已经就绪，就要把该标志设置为 `true` 或者改写你的组件以推迟它的执行时间。
@@ -156,13 +156,13 @@ This classification determined when query results would become available to user
 
 当没有 `static` 标志时，编译器会自行决定每个查询该如何解析。所有的 `@ViewChild` / `@ContentChild` 查询在编译时都会被归类为两种方式之一：“static” 或 “dynamic”。当查询结果可供用户使用时，就会决定该使用何种方式。
 
-| Queries         | Details                                                                                                                                                                                                                                                                                                              |
-| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 查询            | 详情                                                                                                                                                                                                                                                                                                                 |
-| Static queries  | The result could be determined statically because the result didn't depend on runtime values like bindings. Results from queries classified as static were available before change detection ran for that view (accessible in `ngOnInit`).                                                                           |
-| 静态查询        | 查询结果是可以静态确定的，因为其结果并不依赖运行期间的值（比如数据绑定）。静态查询的结果在该视图运行变更检测之前就是可用的（可以在 `ngOnInit` 访问）。                                                                                                                                                               |
-| Dynamic queries | the result could not be determined statically because the result depended on runtime values (bindings). Results from queries classified as dynamic were not available until after change detection ran for that view (accessible in `ngAfterContentInit` for content queries or `ngAfterViewInit` for view queries). |
-| 动态查询        | 查询结果是无法静态确定的，因为其结果取决于运行期间的值（比如数据绑定）。动态查询的结果在运行该视图的变更检测之前是不可用的（只能在 `ngAfterContentInit` 中访问内容查询或在 `ngAfterViewInit` 中访问视图查询）。                                                                                                      |
+| Queries         | Details                                                                                                                                                                                                                                                                                                                  |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 查询            | 详情                                                                                                                                                                                                                                                                                                                     |
+| Static queries  | The result could be determined statically because the result didn't depend on runtime values like bindings. Results from queries classified as static were available before change detection ran for that view \(accessible in `ngOnInit`\).                                                                             |
+| 静态查询        | 查询结果是可以静态确定的，因为其结果并不依赖运行期间的值（比如数据绑定）。静态查询的结果在该视图运行变更检测之前就是可用的（可以在 `ngOnInit` 访问）。                                                                                                                                                                   |
+| Dynamic queries | the result could not be determined statically because the result depended on runtime values \(bindings\). Results from queries classified as dynamic were not available until after change detection ran for that view \(accessible in `ngAfterContentInit` for content queries or `ngAfterViewInit` for view queries\). |
+| 动态查询        | 查询结果是无法静态确定的，因为其结果取决于运行期间的值（比如数据绑定）。动态查询的结果在运行该视图的变更检测之前是不可用的（只能在 `ngAfterContentInit` 中访问内容查询或在 `ngAfterViewInit` 中访问视图查询）。                                                                                                          |
 
 For example, let's say we have a component, `Comp`.
 Inside it, we have this query:
@@ -221,7 +221,7 @@ Namely:
 
 这种策略会根据查询所在的位置，在不同的时机进行解析，这引起了很大的困惑。即：
 
-* Sometimes query results are available in `ngOnInit`, but sometimes they aren't and it's not clear why (see [21800](https://github.com/angular/angular/issues/21800) or [19872](https://github.com/angular/angular/issues/19872))
+* Sometimes query results are available in `ngOnInit`, but sometimes they aren't and it's not clear why \(see [21800](https://github.com/angular/angular/issues/21800) or [19872](https://github.com/angular/angular/issues/19872)\)
 
   其查询结果在 `ngOnInit` 中有时可用有时不可用，而且还不清楚为什么（参阅 [21800](https://github.com/angular/angular/issues/21800) 或 [19872](https://github.com/angular/angular/issues/19872)）。
 
@@ -245,7 +245,7 @@ This makes the logic more consistent and predictable for users.
 
 在版本 9 中，我们准备简化这种行为：默认情况下，每当运行变更检测之后，都会解析所有查询。模板中查询的位置不会再影响查询结果何时可用，也不会突然破坏你的代码，其默认行为总是一样的。这样，这种逻辑对于用户来说就更加一致、更加可预测。
 
-That said, if an application does need query results earlier (for example, the query result is needed to create an embedded view), it's possible to add the `{static: true}` flag to explicitly ask for static resolution.
+That said, if an application does need query results earlier \(for example, the query result is needed to create an embedded view\), it's possible to add the `{static: true}` flag to explicitly ask for static resolution.
 With this flag, users can indicate that they only care about results that are statically available and the query results will be populated before `ngOnInit`.
 
 也就是说，如果一个应用程序确实需要更早拿到查询结果（比如，在创建嵌入式视图时需要这种查询结果），就可以添加 `{static: true}` 标志来明确要求静态解析。有了这个标志，用户就可以表明他们只关心那些静态可用的结果，并且在 `ngOnInit` 之前就会填上查询结果。
@@ -268,7 +268,7 @@ No, this change only affects `@ViewChild` and `@ContentChild` queries specifical
 ### 为什么我还要指定 `{static: false}`？它不是默认值吗？
 
 The goal of this migration is to transition apps that aren't yet on version 9 to a query pattern that is compatible with version 9.
-However, most applications use libraries, and it's likely that some of these libraries may not be upgraded to version 8 yet (and thus might not have the proper flags).
+However, most applications use libraries, and it's likely that some of these libraries may not be upgraded to version 8 yet \(and thus might not have the proper flags\).
 Since the application's version of Angular will be used for compilation, if we change the default, the behavior of queries in the library's components will change to the version 8 default and possibly break.
 This way, an application's dependencies will behave the same way during the transition as they did in the previous version.
 
@@ -285,7 +285,7 @@ In Angular version 9 and later, it will be safe to remove any `{static: false}` 
 ### 我还可以继续使用尚未更新到版本 8 的 Angular 库吗？
 
 Yes, absolutely.
-Because we have not changed the default query behavior in version 8 (such as the compiler still chooses a timing if no flag is set), when your application runs with a library that has not updated to version 8, the library will run the same way it did in version 7.
+Because we have not changed the default query behavior in version 8 \(such as the compiler still chooses a timing if no flag is set\), when your application runs with a library that has not updated to version 8, the library will run the same way it did in version 7.
 This guarantees your app will work in version 8 even if libraries take longer to update their code.
 
 绝对没问题！
@@ -302,7 +302,7 @@ Angular version 7 apps will continue to work with libraries that have this flag.
 
 是的，Angular 团队对库的建议是更新到版本 8 并添加 `static` 标志。Angular 7 的应用可以继续使用那些带有此标志的库。
 
-However, if you update your library to Angular version 8 and want to take advantage of the new version 8 APIs, or you want more recent dependencies (such as Typescript or RxJS) your library will become incompatible with Angular version 7 apps.
+However, if you update your library to Angular version 8 and want to take advantage of the new version 8 APIs, or you want more recent dependencies \(such as Typescript or RxJS\) your library will become incompatible with Angular version 7 apps.
 If your goal is to make your library compatible with Angular versions 7 and 8, you should not update your lib at all —except for `peerDependencies` in `package.json`.
 
 但是，如果你把你的库更新到 Angular 8，并希望利用新的第 8 版 API，或者你想要新版依赖项（比如 Typescript 或 RxJS），你的库就会变得与 Angular 7 的应用不兼容。如果你的目标是同时与 Angular 7 和 8 兼容，那你就不应该更新你的库，只有 `package.json` 中的 `peerDependencies` 除外。

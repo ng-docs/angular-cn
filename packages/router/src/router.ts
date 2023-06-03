@@ -40,7 +40,8 @@ function defaultMalformedUriErrorHandler(
 
 /**
  * The equivalent `IsActiveMatchOptions` options for `Router.isActive` is called with `true`
- * (exact = true).
+ * \(exact = true\).
+ *
  */
 export const exactMatchOptions: IsActiveMatchOptions = {
   paths: 'exact',
@@ -51,7 +52,8 @@ export const exactMatchOptions: IsActiveMatchOptions = {
 
 /**
  * The equivalent `IsActiveMatchOptions` options for `Router.isActive` is called with `false`
- * (exact = false).
+ * \(exact = false\).
+ *
  */
 export const subsetMatchOptions: IsActiveMatchOptions = {
   paths: 'subset',
@@ -67,6 +69,9 @@ export const subsetMatchOptions: IsActiveMatchOptions = {
  *
  * 一个提供导航和操纵 URL 能力的 NgModule。
  * @see `Route`.
+ *
+ * 。【模糊翻译】
+ *
  * @see [Routing and Navigation Guide](guide/router).
  *
  * [路由和导航指南](guide/router)。
@@ -76,12 +81,13 @@ export const subsetMatchOptions: IsActiveMatchOptions = {
 @Injectable({providedIn: 'root'})
 export class Router {
   /**
-   * Represents the activated `UrlTree` that the `Router` is configured to handle (through
-   * `UrlHandlingStrategy`). That is, after we find the route config tree that we're going to
+   * Represents the activated `UrlTree` that the `Router` is configured to handle \(through
+   * `UrlHandlingStrategy`\). That is, after we find the route config tree that we're going to
    * activate, run guards, and are just about to activate the route, we set the currentUrlTree.
    *
    * This should match the `browserUrlTree` when a navigation succeeds. If the
    * `UrlHandlingStrategy.shouldProcessUrl` is `false`, only the `browserUrlTree` is updated.
+   *
    * @internal
    */
   currentUrlTree: UrlTree;
@@ -90,12 +96,12 @@ export class Router {
    * navigation transition:
    *
    * 1. The rawUrl represents the full URL that's being navigated to
-   * 2. We apply redirects, which might only apply to _part_ of the URL (due to
-   *    `UrlHandlingStrategy`).
-   * 3. Right before activation (because we assume activation will succeed), we update the
-   *    rawUrlTree to be a combination of the urlAfterRedirects (again, this might only apply to part
-   *    of the initial url) and the rawUrl of the transition (which was the original navigation url in
-   *    its full form).
+   * 2. We apply redirects, which might only apply to _part_ of the URL \(due to
+   *    `UrlHandlingStrategy`\).
+   * 3. Right before activation \(because we assume activation will succeed\), we update the
+   *    rawUrlTree to be a combination of the urlAfterRedirects \(again, this might only apply to part
+   *    of the initial url\) and the rawUrl of the transition \(which was the original navigation url in
+   *    its full form\).
    *
    * @internal
    *
@@ -115,9 +121,9 @@ export class Router {
    */
   rawUrlTree: UrlTree;
   /**
-   * Meant to represent the part of the browser url that the `Router` is set up to handle (via the
-   * `UrlHandlingStrategy`). This value is updated immediately after the browser url is updated (or
-   * the browser url update is skipped via `skipLocationChange`). With that, note that
+   * Meant to represent the part of the browser url that the `Router` is set up to handle \(via the
+   * `UrlHandlingStrategy`\). This value is updated immediately after the browser url is updated \(or
+   * the browser url update is skipped via `skipLocationChange`\). With that, note that
    * `browserUrlTree` _may not_ reflect the actual browser URL for two reasons:
    *
    * 1. `UrlHandlingStrategy` only handles part of the URL
@@ -128,6 +134,7 @@ export class Router {
    * activation with `'deferred'`.
    *
    * This should match the `currentUrlTree` when the navigation succeeds.
+   *
    * @internal
    */
   browserUrlTree: UrlTree;
@@ -285,7 +292,7 @@ export class Router {
 
   /**
    * Determines when the router updates the browser URL.
-   * By default (`"deferred"`), updates the browser URL after navigation has finished.
+   * By default \(`"deferred"`\), updates the browser URL after navigation has finished.
    * Set to `'eager'` to update the browser URL at the beginning of navigation.
    * You can choose to update early so that, if navigation fails,
    * you can show an error message with the URL that failed.
@@ -394,7 +401,7 @@ export class Router {
 
   /**
    * Sets up the location change listener. This listener detects navigations triggered from outside
-   * the Router (the browser back/forward buttons, for example) and schedules a corresponding Router
+   * the Router \(the browser back/forward buttons, for example\) and schedules a corresponding Router
    * navigation so that the correct events, guards, etc. are triggered.
    *
    * 设置 location 更改监听器。该监听器检测从路由器外部触发的导航（比如，浏览器的后退/前进按钮），并安排相应的路由器导航，以便触发正确的事件、守卫等。

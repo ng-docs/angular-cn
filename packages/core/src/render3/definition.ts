@@ -106,6 +106,7 @@ interface DirectiveDefinition<T> {
    * A list of optional features to apply.
    *
    * See: {@link NgOnChangesFeature}, {@link ProvidersFeature}, {@link InheritDefinitionFeature}
+   *
    */
   features?: DirectiveDefFeature[];
 
@@ -115,7 +116,7 @@ interface DirectiveDefinition<T> {
   hostBindings?: HostBindingsFunction<T>;
 
   /**
-   * The number of bindings in this directive `hostBindings` (including pure fn bindings).
+   * The number of bindings in this directive `hostBindings` \(including pure fn bindings\).
    *
    * 此指令 `hostBindings` 中的绑定数量（包括纯 fn 绑定）。
    *
@@ -160,7 +161,7 @@ interface DirectiveDefinition<T> {
    *
    * All non-class and non-style attributes must be defined at the start of the list
    * first before all class and style values are set. When there is a change in value
-   * type (like when classes and styles are introduced) a marker must be used to separate
+   * type \(like when classes and styles are introduced\) a marker must be used to separate
    * the entries. The marker values themselves are set via entries found in the
    * [AttributeMarker] enum.
    *
@@ -207,7 +208,7 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
   decls: number;
 
   /**
-   * The number of bindings in this component template (including pure fn bindings).
+   * The number of bindings in this component template \(including pure fn bindings\).
    *
    * 此组件模板中的绑定数量（包括纯 fn 绑定）。
    *
@@ -267,11 +268,13 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
    * A list of optional features to apply.
    *
    * See: {@link NgOnChangesFeature}, {@link ProvidersFeature}
+   *
    */
   features?: ComponentDefFeature[];
 
   /**
    * Defines template and style encapsulation options available for Component's {@link Component}.
+   *
    */
   encapsulation?: ViewEncapsulation;
 
@@ -553,7 +556,7 @@ export function ɵɵsetNgModuleScope(type: any, scope: {
  * }
  * ```
  *
- * becomes: (public name => minifiedName)
+ * becomes: \(public name => minifiedName\)
  *
  * ```
  * {
@@ -562,7 +565,7 @@ export function ɵɵsetNgModuleScope(type: any, scope: {
  * }
  * ```
  *
- * Optionally the function can take `secondary` which will result in: (public name => declared name)
+ * Optionally the function can take `secondary` which will result in: \(public name => declared name\)
  *
  * ```
  * {
@@ -571,7 +574,6 @@ export function ɵɵsetNgModuleScope(type: any, scope: {
  * }
  * ```
  *
-
  */
 function invertObject<T>(
     obj?: {[P in keyof T]?: string|[string, string]},

@@ -71,11 +71,10 @@ export function generateTypeCtorDeclarationFn(
  *
  * NgFor 的内联类型构造函数类似于：
  *
- * static ngTypeCtor<T>(init: Pick&lt;NgForOf<T>, 'ngForOf'|'ngForTrackBy'|'ngForTemplate'>):
+ * ```
+ * static ngTypeCtor<T>(init: Pick<NgForOf<T>, 'ngForOf'|'ngForTrackBy'|'ngForTemplate'>):
  *   NgForOf<T>;
- *
- * 静态 ngTypeCtor<T>（初始化： Pick&lt;NgForOf<T>, 'ngForOf'|'ngForTrackBy'|'ngForTemplate'>):
- * NgForOf<T>;
+ * ```
  *
  * A typical constructor would be:
  *
@@ -96,7 +95,7 @@ export function generateTypeCtorDeclarationFn(
  * 类型的值，以避免为未设置的输入产生任何类型错误。
  *
  * Inline type constructors are used when the type being created has bounded generic types which
- * make writing a declared type constructor (via `generateTypeCtorDeclarationFn`) difficult or
+ * make writing a declared type constructor \(via `generateTypeCtorDeclarationFn`\) difficult or
  * impossible.
  *
  * 当正在创建的类型具有有界泛型类型，这使得编写声明的类型构造函数（通过
@@ -106,17 +105,14 @@ export function generateTypeCtorDeclarationFn(
  * generated.
  *
  * 将为其生成类型构造函数的 `ClassDeclaration<ts.ClassDeclaration>` 。
- *
  * @param meta additional metadata required to generate the type constructor.
  *
  * 生成类型构造函数所需的额外元数据。
- *
  * @returns
  *
  * a `ts.MethodDeclaration` for the type constructor.
  *
  * 类型构造函数的 `ts.MethodDeclaration` 。
- *
  */
 export function generateInlineTypeCtor(
     node: ClassDeclaration<ts.ClassDeclaration>, meta: TypeCtorMetadata): ts.MethodDeclaration {
@@ -260,7 +256,7 @@ export function requiresInlineTypeCtor(
  * var _t2 = ctor({ngForOf: [1, 2] as any, ngForTrackBy: null as any, ngForTemplate: null as any});
  * ```
  *
- * then inference for `T` fails (it cannot be inferred from `T[] = any`). In this case, `T` takes
+ * then inference for `T` fails \(it cannot be inferred from `T[] = any`\). In this case, `T` takes
  * the type `{}`, and so `_t2` is inferred as `NgFor<{}>`. This is obviously wrong.
  *
  * 然后对 `T` 的推断失败（不能从 `T[] = any` 推断）。在这种情况下，`T` 采用 `{}` 类型，因此 `_t2`

@@ -354,8 +354,8 @@ export class $locationShim {
    * 版本时触发。
    *
    * It's possible for `$locationChange` events to happen, but for the browser URL
-   * (window.location) to remain unchanged. This `onChange` callback will fire only when AngularJS
-   * actually updates the browser URL (window.location).
+   * \(window.location\) to remain unchanged. This `onChange` callback will fire only when AngularJS
+   * actually updates the browser URL \(window.location\).
    *
    * `$locationChange` 事件有可能发生，但浏览器的 URL（window.location）保持不变。仅当 AngularJS
    * 实际上更新浏览器 URL（window.location）时，才会触发此 `onChange`
@@ -363,11 +363,9 @@ export class $locationShim {
    * @param fn The callback function that is triggered for the listener when the URL changes.
    *
    * URL 更改时为监听器触发的回调函数。
-   *
    * @param err The callback function that is triggered when an error occurs.
    *
    * 发生错误时触发的回调函数。
-   *
    */
   onChange(
       fn: (url: string, state: unknown, oldUrl: string, oldState: unknown) => void,
@@ -590,7 +588,7 @@ export class $locationShim {
    *
    * 检索当前 URL 的路径，或更改路径并返回对其自身实例的引用。
    *
-   * Paths should always begin with forward slash (/). This method adds the forward slash
+   * Paths should always begin with forward slash \(/\). This method adds the forward slash
    * if it is missing.
    *
    * 路径应始终以正斜杠（/）开头。如果缺少此斜杠，则此方法将添加它。
@@ -600,6 +598,7 @@ export class $locationShim {
    * let path = $location.path();
    * // => "/some/path"
    * ```
+   *
    */
   path(): string;
   path(path: string|number|null): this;
@@ -767,7 +766,7 @@ export class $locationShim {
    *
    * This method is supported only in HTML5 mode and only in browsers supporting
    * the HTML5 History API methods such as `pushState` and `replaceState`. If you need to support
-   * older browsers (like Android &lt; 4.0), don't use this method.
+   * older browsers \(like Android &lt; 4.0\), don't use this method.
    *
    * 仅在 HTML5 模式下以及在支持 HTML5 History API 方法（比如 `pushState` 和
    * `replaceState`）的浏览器中才支持此方法。如果你需要支持较旧的浏览器（比如 Android

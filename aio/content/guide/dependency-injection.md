@@ -10,7 +10,7 @@ Two main roles exist in the DI system: dependency consumer and dependency provid
 
 DI 系统中存在两个主要角色：依赖使用者和依赖提供者。
 
-Angular facilitates the interaction between dependency consumers and dependency providers using an abstraction called [Injector](guide/glossary#injector). When a dependency is requested, the injector checks its registry to see if there is an instance already available there. If not, a new instance is created and stored in the registry. Angular creates an application-wide injector (also known as "root" injector) during the application bootstrap process, as well as any other injectors as needed. In most cases you don't need to manually create injectors, but you should know that there is a layer that connects providers and consumers.
+Angular facilitates the interaction between dependency consumers and dependency providers using an abstraction called [Injector](guide/glossary#injector). When a dependency is requested, the injector checks its registry to see if there is an instance already available there. If not, a new instance is created and stored in the registry. Angular creates an application-wide injector \(also known as "root" injector\) during the application bootstrap process, as well as any other injectors as needed. In most cases you don't need to manually create injectors, but you should know that there is a layer that connects providers and consumers.
 
 Angular 使用一种称为 [Injector](guide/glossary#injector) 的抽象来促进依赖消费者和依赖提供者之间的互动。当有人请求依赖项时，注入器会检查其注册表以查看那里是否已有可用的实例。如果没有，就会创建一个新实例并将其存储在注册表中。Angular 会在应用的引导过程中创建一个应用范围的注入器（也称为“根”注入器），并会根据需要创建任何其它注入器。在大多数情况下，你都不需要手动创建注入器，但应该知道有这样一个连接提供者和消费者的层次。
 
@@ -26,9 +26,9 @@ Imagine there is a class called HeroService that needs to act as a dependency in
 
 假设有一个名为 HeroService 的类需要用作组件中的依赖项。
 
-The first step is to add the @Injectable decorator to show that the class can be injected.
+The first step is to add the `@Injectable` decorator to show that the class can be injected.
 
-第一步是添加 @Injectable 装饰器以表明此类可以被注入。
+第一步是添加 `@Injectable` 装饰器以表明此类可以被注入。
 
 <code-example language="typescript">
 @Injectable()

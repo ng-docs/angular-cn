@@ -46,11 +46,9 @@ const formGroupNameProvider: Provider = {
  * controls into their own nested object.
  *
  * 使用嵌套表单组可以与其余表单分开验证表单的子组，也可以将某些控件的值分组到自己的嵌套对象中。
- *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单指南](guide/reactive-forms)
- *
  * @usageNotes
  *
  * ### Access the group by name
@@ -143,8 +141,8 @@ export const formArrayNameProvider: any = {
  *
  * 将嵌套的 `FormArray` 同步到 DOM 元素。
  *
- * This directive is designed to be used with a parent `FormGroupDirective` (selector:
- * `[formGroup]`).
+ * This directive is designed to be used with a parent `FormGroupDirective` \(selector:
+ * `[formGroup]`\).
  *
  * 此指令旨在与父 `FormGroupDirective`（选择器为 `[formGroup]`）一起使用。
  *
@@ -158,9 +156,7 @@ export const formArrayNameProvider: any = {
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单指南](guide/reactive-forms)
- *
  * @see `AbstractControl`
- *
  * @usageNotes
  *
  * ### Example

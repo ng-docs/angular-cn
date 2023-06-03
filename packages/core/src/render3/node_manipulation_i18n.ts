@@ -17,7 +17,7 @@ import {unwrapRNode} from './util/view_utils';
 
 
 /**
- * Find a node in front of which `currentTNode` should be inserted (takes i18n into account).
+ * Find a node in front of which `currentTNode` should be inserted \(takes i18n into account\).
  *
  * 查找应该在其前面插入 `currentTNode` 的节点（考虑 i18n）。
  *
@@ -29,15 +29,13 @@ import {unwrapRNode} from './util/view_utils';
  * @param parentTNode parent `TNode`
  *
  * 父 `TNode`
- *
- * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
+ * @param currentTNode current `TNode` \(The node which we would like to insert into the DOM\)
  *
  * 当前 `TNode`（我们要插入到 DOM 中的节点）
  *
  * @param lView current `LView`
  *
  * 当前的 `LView`
- *
  */
 export function getInsertInFrontOfRNodeWithI18n(
     parentTNode: TNode, currentTNode: TNode, lView: LView): RNode|null {

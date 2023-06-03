@@ -168,7 +168,7 @@ To encourage this practice, we will be working on more ergonomic code-splitting 
 
 Web 应用程序的一个常见问题是它们的初始加载时间很慢。改进它的一种方法是在组件级别应用更精细的代码拆分。为了鼓励这种实践，我们将致力于开发更符合人体工程学的代码拆分 API。
 
-### Ensure smooth adoption for future RxJS changes (version 8 and beyond)
+### Ensure smooth adoption for future RxJS changes \(version 8 and beyond\)
 
 ### 确保未来 RxJS 更改（版本 8 及更高版本）的顺利采用
 

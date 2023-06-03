@@ -96,9 +96,9 @@ export function isAngularDecorator(decorator: Decorator, name: string, isCore: b
  *
  * 展开 `ts.Expression` ，删除外部类型转换或括号，直到表达式处于最低级别形式。
  *
- * For example, the expression "(foo as Type)" unwraps to "foo".
+ * For example, the expression `(foo as Type)` unwraps to `foo`.
  *
- * 例如，表达式“(foo as Type)”会展开为“foo”。
+ * 例如，表达式 `(foo as Type)` 会展开为 `foo`。
  *
  */
 export function unwrapExpression(node: ts.Expression): ts.Expression {
@@ -134,25 +134,24 @@ function expandForwardRef(arg: ts.Expression): ts.Expression|null {
 
 
 /**
- * If the given `node` is a forwardRef() expression then resolve its inner value, otherwise return
+ * If the given `node` is a `forwardRef()` expression then resolve its inner value, otherwise return
  * `null`.
  *
- * 如果给定 `node` 是 forwardRef() 表达式，则解析其内部值，否则返回 `null` 。
+ * 如果给定 `node` 是 `forwardRef()` 表达式，则解析其内部值，否则返回 `null` 。
  *
- * @param node the forwardRef() expression to resolve
+ * @param node the `forwardRef()` expression to resolve
  *
- * 要解析的 forwardRef() 表达式
+ * 要解析的 `forwardRef()` 表达式
  *
  * @param reflector a ReflectionHost
  *
  * 反射宿主
- *
  * @returns
  *
- * the resolved expression, if the original expression was a forwardRef(), or `null`
+ * the resolved expression, if the original expression was a `forwardRef()`, or `null`
  *     otherwise.
  *
- * 解析的表达式（如果原始表达式是 forwardRef()），否则为 `null` 。
+ * 解析的表达式（如果原始表达式是 `forwardRef()`），否则为 `null` 。
  *
  */
 export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHost): ts.Expression|
@@ -182,25 +181,21 @@ export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHo
 }
 
 /**
- * A foreign function resolver for `staticallyResolve` which unwraps forwardRef() expressions.
+ * A foreign function resolver for `staticallyResolve` which unwraps `forwardRef()` expressions.
  *
- * staticlyResolve 的外来函数解析器，它会解开 `staticallyResolve` () 表达式。
- *
- * @param ref a Reference to the declaration of the function being called (which might be
- * forwardRef)
+ * @param ref a Reference to the declaration of the function being called \(which might be
+ * forwardRef\)
  *
  * 对被调用函数声明的引用（可能是 forwardRef）
  *
  * @param args the arguments to the invocation of the forwardRef expression
  *
  * 调用 forwardRef 表达式的参数
- *
  * @returns
  *
  * an unwrapped argument if `ref` pointed to forwardRef, or null otherwise
  *
  * 如果 `ref` 指向 forwardRef ，则为未包装的参数，否则为 null
- *
  */
 export const forwardRefResolver: ForeignFunctionResolver =
     (fn, callExpr, resolve, unresolvable) => {
@@ -363,9 +358,9 @@ export function resolveProvidersRequiringFactory(
  * 为类创建 R3Reference。
  *
  * The `value` is the exported declaration of the class from its source file.
- * The `type` is an expression that would be used in the typings (.d.ts) files.
+ * The `type` is an expression that would be used in the typings \(.d.ts\) files.
  *
- * 该 `value` 是从源文件中导出的类的声明。该 `type` 是 ngcc 在 typings (.d.ts) 文件中使用的表达式。
+ * 该 `value` 是从源文件中导出的类的声明。该 `type` 是 ngcc 在 typings（.d.ts）文件中使用的表达式。
  *
  */
 export function wrapTypeReference(reflector: ReflectionHost, clazz: ClassDeclaration): R3Reference {

@@ -18,15 +18,14 @@ import {isNameOnlyAttributeMarker} from './util/attrs_utils';
 const NG_TEMPLATE_SELECTOR = 'ng-template';
 
 /**
- * Search the `TAttributes` to see if it contains `cssClassToMatch` (case insensitive)
+ * Search the `TAttributes` to see if it contains `cssClassToMatch` \(case insensitive\)
  *
  * 搜索 `TAttributes` 以查看它是否包含 `cssClassToMatch`（不区分大小写）
  *
  * @param attrs `TAttributes` to search through.
  *
  * 要搜索的 `TAttributes` 。
- *
- * @param cssClassToMatch class to match (lowercase)
+ * @param cssClassToMatch class to match \(lowercase\)
  *
  * 要匹配的类（小写）
  *
@@ -34,7 +33,6 @@ const NG_TEMPLATE_SELECTOR = 'ng-template';
  *    addition to the `AttributeMarker.Classes`.
  *
  * 除了 `AttributeMarker.Classes` 之外，类匹配是否应该查看属性 `class` 。
- *
  */
 function isCssClassMatching(
     attrs: TAttributes, cssClassToMatch: string, isProjectionMode: boolean): boolean {
@@ -77,14 +75,13 @@ function isCssClassMatching(
 }
 
 /**
- * Checks whether the `tNode` represents an inline template (e.g. `*ngFor`).
+ * Checks whether the `tNode` represents an inline template \(e.g. `*ngFor`\).
  *
  * 检查 `tNode` 是否表示内联模板（例如 `*ngFor`）。
  *
  * @param tNode current TNode
  *
  * 当前 TNode
- *
  */
 export function isInlineTemplate(tNode: TNode): boolean {
   return tNode.type === TNodeType.Container && tNode.value !== NG_TEMPLATE_SELECTOR;
@@ -95,21 +92,21 @@ export function isInlineTemplate(tNode: TNode): boolean {
  *
  * 检查给定 tNode 是否与基于标签的选择器匹配并且具有有效类型的函数。
  *
- * Matching can be performed in 2 modes: projection mode (when we project nodes) and regular
+ * Matching can be performed in 2 modes: projection mode \(when we project nodes\) and regular
  * directive matching mode:
  *
  * 匹配可以在 2 种模式下执行：投影模式（当我们投影节点时）和正则指令匹配模式：
  *
  * - in the "directive matching" mode we do _not_ take TContainer's tagName into account if it is
- *       different from NG_TEMPLATE_SELECTOR (value different from NG_TEMPLATE_SELECTOR indicates that
- *   a tag name was extracted from \* syntax so we would match the same directive twice);
+ *       different from NG_TEMPLATE_SELECTOR \(value different from NG_TEMPLATE_SELECTOR indicates that
+ *   a tag name was extracted from \* syntax so we would match the same directive twice\);
  *
  *   在“指令匹配”模式下，如果 TContainer 的 tagName 与 NG_TEMPLATE_SELECTOR 不同，我们就 _ 不会\_
  *     考虑它（与 NG_TEMPLATE_SELECTOR 不同的值表明标签名称是从 \*
  *     语法中提取的，因此我们将匹配同一个指令两次）；
  *
  * - in the "projection" mode, we use a tag name potentially extracted from the \* syntax processing
- *   (applicable to TNodeType.Container only).
+ *   \(applicable to TNodeType.Container only\).
  *
  *   在“投影”模式下，我们使用可能从 \* 语法处理中提取的标签名称（仅适用于 TNodeType.Container）。
  *
@@ -283,22 +280,19 @@ function isPositive(mode: SelectorFlags): boolean {
  * @param name the name of the attribute to find
  *
  * 要查找的属性名称
- *
  * @param attrs the attribute array to examine
  *
  * 要检查的属性数组
- *
- * @param isInlineTemplate true if the node being matched is an inline template (e.g. `*ngFor`)
- * rather than a manually expanded template node (e.g `<ng-template>`).
+ * @param isInlineTemplate true if the node being matched is an inline template \(e.g. `*ngFor`\)
+ * rather than a manually expanded template node \(e.g `<ng-template>`\).
  *
  * 如果要匹配的节点是内联模板（例如 `*ngFor`）而不是手动扩展的模板节点（例如 `<ng-template>`
- *），则为 true 。
+ * ），则为 true 。
  *
  * @param isProjectionMode true if we are matching against content projection otherwise we are
  * matching against directives.
  *
  * 如果我们要与内容投影匹配，则为 true ，否则我们正在匹配指令。
- *
  */
 function findAttrIndexInNode(
     name: string, attrs: TAttributes|null, isInlineTemplate: boolean,
@@ -486,8 +480,8 @@ function stringifyCSSSelector(selector: CssSelector): string {
  * 以解析的形式生成 CSS 选择器的字符串表示。
  *
  * ComponentDef and DirectiveDef are generated with the selector in parsed form to avoid doing
- * additional parsing at runtime (for example, for directive matching). However in some cases (for
- * example, while bootstrapping a component), a string version of the selector is required to query
+ * additional parsing at runtime \(for example, for directive matching\). However in some cases \(for
+ * example, while bootstrapping a component\), a string version of the selector is required to query
  * for the host element on the page. This function takes the parsed form of a selector and returns
  * its string representation.
  *
@@ -497,13 +491,11 @@ function stringifyCSSSelector(selector: CssSelector): string {
  * @param selectorList selector in parsed form
  *
  * 解析形式的选择器
- *
  * @returns
  *
  * string representation of a given selector
  *
  * 给定选择器的字符串表示
- *
  */
 export function stringifyCSSSelectorList(selectorList: CssSelectorList): string {
   return selectorList.map(stringifyCSSSelector).join(',');
@@ -515,13 +507,13 @@ export function stringifyCSSSelectorList(selectorList: CssSelectorList): string 
  * 从给定的 CSS 选择器中提取属性和类信息。
  *
  * This function is used while creating a component dynamically. In this case, the host element
- * (that is created dynamically) should contain attributes and classes specified in component's CSS
+ * \(that is created dynamically\) should contain attributes and classes specified in component's CSS
  * selector.
  *
  * 动态创建组件时使用此函数。在这种情况下，宿主元素（动态创建的）应该包含组件的 CSS
  * 选择器中指定的属性和类。
  *
- * @param selector CSS selector in parsed form (in a form of array)
+ * @param selector CSS selector in parsed form \(in a form of array\)
  *
  * 解析后的 CSS 选择器（数组形式）
  *
@@ -530,7 +522,6 @@ export function stringifyCSSSelectorList(selectorList: CssSelectorList): string 
  * object with `attrs` and `classes` fields that contain extracted information
  *
  * 具有包含提取信息的 `attrs` 和 `classes` 字段的对象
- *
  */
 export function extractAttrsAndClassesFromSelector(selector: CssSelector):
     {attrs: string[], classes: string[]} {

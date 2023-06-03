@@ -20,7 +20,6 @@ import {CanActivateChildFn, CanActivateFn, CanDeactivateFn, CanMatchFn, ResolveF
  * @see Route
  *
  * 路由
- *
  */
 export function mapToCanMatch(providers: Array<Type<{canMatch: CanMatchFn}>>): CanMatchFn[] {
   return providers.map(provider => (...params) => inject(provider).canMatch(...params));
@@ -36,7 +35,6 @@ export function mapToCanMatch(providers: Array<Type<{canMatch: CanMatchFn}>>): C
  * @see Route
  *
  * 路由
- *
  */
 export function mapToCanActivate(providers: Array<Type<{canActivate: CanActivateFn}>>):
     CanActivateFn[] {
@@ -52,7 +50,6 @@ export function mapToCanActivate(providers: Array<Type<{canActivate: CanActivate
  * @see Route
  *
  * 路由
- *
  */
 export function mapToCanActivateChild(
     providers: Array<Type<{canActivateChild: CanActivateChildFn}>>): CanActivateChildFn[] {
@@ -68,7 +65,6 @@ export function mapToCanActivateChild(
  * @see Route
  *
  * 路由
- *
  */
 export function mapToCanDeactivate<T = unknown>(
     providers: Array<Type<{canDeactivate: CanDeactivateFn<T>}>>): CanDeactivateFn<T>[] {
@@ -84,7 +80,6 @@ export function mapToCanDeactivate<T = unknown>(
  * @see Route
  *
  * 路由
- *
  */
 export function mapToResolve<T>(provider: Type<{resolve: ResolveFn<T>}>): ResolveFn<T> {
   return (...params) => inject(provider).resolve(...params);

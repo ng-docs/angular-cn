@@ -17,7 +17,7 @@ For the sample application used in this topic, see the <live-example></live-exam
 
 </div>
 
-Angular provides built-in pipes for typical data transformations, including transformations for internationalization (i18n), which use locale information to format data.
+Angular provides built-in pipes for typical data transformations, including transformations for internationalization \(i18n\), which use locale information to format data.
 The following are commonly used built-in pipes for data formatting:
 
 Angular 为典型的数据转换提供了内置的管道，包括国际化的转换（i18n），它使用本地化信息来格式化数据。数据格式化常用的内置管道如下：
@@ -78,7 +78,7 @@ To use pipes you should have a basic understanding of the following:
 
 ## 在模板中使用管道
 
-To apply a pipe, use the pipe (`|`) character within a template expression as shown in the following code example, along with the *name* of the pipe, which is `date` for the built-in [`DatePipe`](api/common/DatePipe).
+To apply a pipe, use the pipe \(`|`\) character within a template expression as shown in the following code example, along with the *name* of the pipe, which is `date` for the built-in [`DatePipe`](api/common/DatePipe).
 The tabs in the example show the following:
 
 要应用管道，请如下所示在模板表达式中使用管道操作符（`|`），紧接着是该管道的*名字*，对于内置的 [`DatePipe`](api/common/DatePipe) 它的名字是 `date`。这个例子中的显示如下：
@@ -109,7 +109,7 @@ The component's `birthday` value flows through the pipe operator, `|` to the [`d
 Use optional parameters to fine-tune a pipe's output.
 For example, use the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") with a country code such as EUR as a parameter.
 The template expression `{{ amount | currency:'EUR' }}` transforms the `amount` to currency in euros.
-Follow the pipe name (`currency`) with a colon (`:`) character and the parameter value (`'EUR'`).
+Follow the pipe name \(`currency`\) with a colon \(`:`\) character and the parameter value \(`'EUR'`\).
 
 可以用可选参数微调管道的输出。比如，你可以使用 [`CurrencyPipe`](api/common/CurrencyPipe "API 参考") 和国家代码（如 EUR）作为参数。模板表达式 `{{ amount | currency:'EUR' }}` 会把 `amount` 转换成欧元。紧跟在管道名称（`currency`）后面的是冒号（`:`）和参数值（`'EUR'`）。
 
@@ -128,11 +128,11 @@ For example, `{{ slice:1:5 }}` creates a new array or string containing a subset
 
 ### 范例：格式化日期
 
-The tabs in the following example demonstrates toggling between two different formats (`'shortDate'` and `'fullDate'`):
+The tabs in the following example demonstrates toggling between two different formats \(`'shortDate'` and `'fullDate'`\):
 
 下面的例子显示了两种不同格式（`'shortDate'` 和 `'fullDate'`）之间的切换：
 
-* The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) (named `date`) to show the date as **04/15/88**.
+* The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) \(named `date`\) to show the date as **04/15/88**.
 
   该 `app.component.html` 模板使用 [`DatePipe`](api/common/DatePipe)（名为 `date`）的格式参数把日期显示为 **04/15/88**。
 
@@ -140,7 +140,7 @@ The tabs in the following example demonstrates toggling between two different fo
 
   `hero-birthday2.component.ts` 组件把该管道的 format 参数绑定到 `template` 中组件的 `format` 属性，并添加了一个按钮，其 click 事件绑定到了该组件的 `toggleFormat()` 方法。
 
-* The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form (`'shortDate'`) and a longer form (`'fullDate'`).
+* The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form \(`'shortDate'`\) and a longer form \(`'fullDate'`\).
 
   `hero-birthday2.component.ts` 组件的 `toggleFormat()` 方法会在短格式（`'shortDate'`）和长格式（`'fullDate'`）之间切换该组件的 `format` 属性。
 
@@ -197,7 +197,7 @@ Then, use your custom pipe in template expressions, the same way you use built-i
 ### 把一个类标记为一个管道
 
 To mark a class as a pipe and supply configuration metadata, apply the [`@Pipe`](api/core/Pipe "API reference for Pipe") [decorator](guide/glossary#decorator--decoration "Definition for decorator") to the class.
-Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") (the general convention for class names) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
+Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") \(the general convention for class names\) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
 Do not use hyphens in the `name`.
 For details and more examples, see [Pipe names](guide/styleguide#pipe-names "Pipe names in the Angular coding style guide").
 
@@ -248,13 +248,13 @@ The following code example shows two component definitions:
 
 下列代码范例显示了两个组件定义：
 
-| Files                          | Details                                                                                                                                                                                                           |
-| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 文件                           | 详情                                                                                                                                                                                                              |
-| `exponential-strength.pipe.ts` | Defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation. It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe. |
-| `exponential-strength.pipe.ts` | 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。                                                         |
-| `power-booster.component.ts`   | Demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`).                                                                                                                     |
-| `power-booster.component.ts`   | 演示了如何使用该管道，指定了一个值（`2`）和一个 exponent 参数（`10`）。                                                                                                                                           |
+| Files                          | Details                                                                                                                                                                                                             |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 文件                           | 详情                                                                                                                                                                                                                |
+| `exponential-strength.pipe.ts` | Defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation. It defines an argument to the `transform` method \(`exponent`\) for a parameter passed to the pipe. |
+| `exponential-strength.pipe.ts` | 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。                                                           |
+| `power-booster.component.ts`   | Demonstrates how to use the pipe, specifying a value \(`2`\) and the exponent parameter \(`10`\).                                                                                                                   |
+| `power-booster.component.ts`   | 演示了如何使用该管道，指定了一个值（`2`）和一个 exponent 参数（`10`）。                                                                                                                                             |
 
 <code-tabs>
     <code-pane header="src/app/exponential-strength.pipe.ts" path="pipes/src/app/exponential-strength.pipe.ts"></code-pane>
@@ -306,7 +306,7 @@ The `exponentialStrength` pipe executes every time the user changes the "normal 
 
 Angular detects each change and immediately runs the pipe.
 This is fine for primitive input values.
-However, if you change something *inside* a composite object (such as the month of a date, an element of an array, or an object property), you need to understand how change detection works, and how to use an `impure` pipe.
+However, if you change something *inside* a composite object \(such as the month of a date, an element of an array, or an object property\), you need to understand how change detection works, and how to use an `impure` pipe.
 
 Angular 会检测每次变更，并立即运行该管道。对于原始输入值，这很好。但是，如果要在复合对象中更改某些*内部值*（比如日期中的月份、数组中的元素或对象中的属性），就需要了解变更检测的工作原理，以及如何使用 `impure`（非纯）管道。
 
@@ -351,9 +351,9 @@ So Angular uses a faster change-detection algorithm for executing a pipe, as des
 ### 检测原始类型和对象引用的纯变更
 
 By default, pipes are defined as *pure* so that Angular executes the pipe only when it detects a *pure change* to the input value.
-A pure change is either a change to a primitive input value (such as `String`, `Number`, `Boolean`, or `Symbol`), or a changed object reference (such as `Date`, `Array`, `Function`, or `Object`).
+A pure change is either a change to a primitive input value \(such as `String`, `Number`, `Boolean`, or `Symbol`\), or a changed object reference \(such as `Date`, `Array`, `Function`, or `Object`\).
 
-通过默认情况下，管道会定义成*纯的(pure)*，这样 Angular 只有在检测到输入值发生了*纯变更*时才会执行该管道。纯变更是对原始输入值（比如 `String`、`Number`、`Boolean` 或 `Symbol`）的变更，或是对对象引用的变更（比如 `Date`、`Array`、`Function`、`Object`）。
+通过默认情况下，管道会定义成*纯的（pure）*，这样 Angular 只有在检测到输入值发生了*纯变更*时才会执行该管道。纯变更是对原始输入值（比如 `String`、`Number`、`Boolean` 或 `Symbol`）的变更，或是对对象引用的变更（比如 `Date`、`Array`、`Function`、`Object`）。
 
 <a id="pure-pipe-pure-fn"></a>
 
@@ -374,11 +374,11 @@ The tabs for the example show the following:
 
 但是，以数组作为输入的纯管道可能无法正常工作。为了演示这个问题，修改前面的例子来把英雄列表过滤成那些会飞的英雄。在 `*ngFor` 中使用 `FlyingHeroesPipe`，代码如下。这个例子的显示如下：
 
-* The template (`flying-heroes.component.html (flyers)`) with the new pipe
+* The template \(`flying-heroes.component.html (flyers)`\) with the new pipe
 
   带有新管道的模板（`flying-heroes.component.html (flyers)`）
 
-* The `FlyingHeroesPipe` custom pipe implementation (`flying-heroes.pipe.ts`)
+* The `FlyingHeroesPipe` custom pipe implementation \(`flying-heroes.pipe.ts`\)
 
   `FlyingHeroesPipe` 自定义管道实现（`flying-heroes.pipe.ts`）
 
@@ -488,7 +488,7 @@ To confirm that the display updates as the user adds heroes, see the <live-examp
 
 [Observables](guide/glossary#observable "Definition of observable") let you pass messages between parts of your application.
 Observables are recommended for event handling, asynchronous programming, and handling multiple values.
-Observables can deliver single or multiple values of any type, either synchronously (as a function delivers a value to its caller) or asynchronously on a schedule.
+Observables can deliver single or multiple values of any type, either synchronously \(as a function delivers a value to its caller\) or asynchronously on a schedule.
 
 [可观察对象](guide/glossary#observable "可观察对象的定义")能让你在应用的各个部分之间传递消息。建议在事件处理、异步编程以及处理多个值时使用这些可观察对象。可观察对象可以提供任意类型的单个或多个值，可以是同步的（作为一个函数为它的调用者提供一个值），也可以是异步的。
 
@@ -507,7 +507,7 @@ Without this pipe, your component code would have to subscribe to the observable
 使用内置的 [`AsyncPipe`](api/common/AsyncPipe "AsyncPipe 的 API 描述") 接受一个可观察对象作为输入，并自动订阅输入。如果没有这个管道，你的组件代码就必须订阅这个可观察对象来使用它的值，提取已解析的值、把它们公开进行绑定，并在销毁这段可观察对象时取消订阅，以防止内存泄漏。`AsyncPipe` 是一个非纯管道，可以节省组件中的样板代码，以维护订阅，并在数据到达时持续从该可观察对象中提供值。
 
 The following code example binds an observable of message strings
-(`message$`) to a view with the `async` pipe.
+\(`message$`\) to a view with the `async` pipe.
 
 下列代码范例使用 `async` 管道将带有消息字符串（`message$`）的可观察对象绑定到视图中。
 
@@ -535,11 +535,11 @@ The tabs show the following:
 
 每当组件运行变更检测时就会调用非纯管道，这可能每隔几毫秒就运行一次。为避免出现性能问题，只有当请求的 URL 发生变化时才会调用该服务器（如下例所示），并使用该管道缓存服务器的响应。显示如下：
 
-* The `fetch` pipe (`fetch-json.pipe.ts`).
+* The `fetch` pipe \(`fetch-json.pipe.ts`\).
 
   `fetch` 管道（`fetch-json.pipe.ts`）。
 
-* A harness component (`hero-list.component.ts`) for demonstrating the request, using a template that defines two bindings to the pipe requesting the heroes from the `heroes.json` file.
+* A harness component \(`hero-list.component.ts`\) for demonstrating the request, using a template that defines two bindings to the pipe requesting the heroes from the `heroes.json` file.
   The second binding chains the `fetch` pipe with the built-in `JsonPipe` to display the same hero data in JSON format.
 
   一个用于演示该请求的挽具组件（`hero-list.component.ts`），它使用一个模板，该模板定义了两个到该管道的绑定，该管道会向 `heroes.json` 文件请求英雄数组。第二个绑定把 `fetch` 管道与内置的 `JsonPipe` 串联起来，以 JSON 格式显示同一份英雄数据。
@@ -590,10 +590,10 @@ The built-in [JsonPipe](api/common/JsonPipe "API description for JsonPipe") prov
 
 ## 管道的优先级
 
-The pipe operator has a higher precedence than the ternary operator (`?:`), which means `a ? b : c | x` is parsed as `a ? b : (c | x)`.
+The pipe operator has a higher precedence than the ternary operator \(`?:`\), which means `a ? b : c | x` is parsed as `a ? b : (c | x)`.
 The pipe operator cannot be used without parentheses in the first and second operands of `?:`.
 
-管道操作符要比三目运算符(`?:`)的优先级高，这意味着 `a ? b : c | x` 会被解析成 `a ? b : (c | x)`。
+管道操作符要比三目运算符（`?:`）的优先级高，这意味着 `a ? b : c | x` 会被解析成 `a ? b : (c | x)`。
 
 Due to precedence, if you want a pipe to apply to the result of a ternary, wrap the entire expression in parentheses; for example, `(a ? b : c) | x`.
 

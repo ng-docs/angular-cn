@@ -104,7 +104,7 @@ export class ViewRef<T> implements EmbeddedViewRef<T>, InternalViewRef, ChangeDe
    *
    * This can be used to ensure an {@link ChangeDetectionStrategy#OnPush OnPush} component is
    * checked when it needs to be re-rendered but the two normal triggers haven't marked it
-   * dirty (i.e. inputs haven't changed and events haven't fired in the view).
+   * dirty \(i.e. inputs haven't changed and events haven't fired in the view\).
    *
    * 这可用于确保在需要重新渲染但两个普通触发器尚未将其标记为脏（即输入没有更改并且事件没有触发）时检查 {@link
    * ChangeDetectionStrategy#OnPush OnPush} 组件在视图中）。

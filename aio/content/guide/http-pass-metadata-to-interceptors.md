@@ -27,7 +27,7 @@ The lambda function `() => 3` passed during the creation of the `HttpContextToke
 
 1. It lets TypeScript infer the type of this token:
    `HttpContextToken<number>`
-   The request context is type-safe &mdash;reading a token from a request's context returns a value of the appropriate type.
+   The request context is type-safe —reading a token from a request's context returns a value of the appropriate type.
 
    它允许 TypeScript 推断此令牌的类型：`HttpContextToken<number>`。这个请求上下文是类型安全的 —— 从请求上下文中读取令牌将返回适当类型的值。
 

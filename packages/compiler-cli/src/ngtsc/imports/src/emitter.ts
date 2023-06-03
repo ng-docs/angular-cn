@@ -48,7 +48,7 @@ export enum ImportFlags {
    * 发出引用时不要使用任何别名信息。
    *
    * This is sometimes required if emitting into a context where generated references will be fed
-   * into TypeScript and type-checked (such as in template type-checking).
+   * into TypeScript and type-checked \(such as in template type-checking\).
    *
    * 如果发出到所生成的引用将被送入 TypeScript
    * 并进行类型检查的上下文（例如在模板类型检查中）的上下文中，有时需要这样做。
@@ -231,8 +231,8 @@ export function assertSuccessfulReferenceEmit(
  * `node_modules` 中。
  *
  * Different `ReferenceEmitStrategy` implementations implement specific logic for generating such
- * references. A single strategy (such as using a local declaration) may not always be able to
- * generate an expression for every `Reference` (for example, if no local identifier is available),
+ * references. A single strategy \(such as using a local declaration\) may not always be able to
+ * generate an expression for every `Reference` \(for example, if no local identifier is available\),
  * and may return `null` in such a case.
  *
  * 不同的 `ReferenceEmitStrategy` 实现实现了用于生成此类引用的特定逻辑。单个策略（例如使用 local
@@ -379,8 +379,8 @@ interface ModuleExports {
  * 一个 `ReferenceEmitStrategy` ，它将使用绝对导入来引用来自 `node_modules` 的声明。
  *
  * Part of this strategy involves looking at the target entry point and identifying the exported
- * name of the targeted declaration, as it might be different from the declared name (e.g. a
- * directive might be declared as FooDirImpl, but exported as FooDir). If no export can be found
+ * name of the targeted declaration, as it might be different from the declared name \(e.g. a
+ * directive might be declared as FooDirImpl, but exported as FooDir\). If no export can be found
  * which maps back to the original directive, an error is thrown.
  *
  * 该策略的一部分就是查看目标入口点并识别目标声明的导出名称，因为它可能与声明的名称不同（例如，指令可能被声明为

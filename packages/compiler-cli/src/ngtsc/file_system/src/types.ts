@@ -31,7 +31,7 @@ export type BrandedPath<B extends string> = string&{
 export type AbsoluteFsPath = BrandedPath<'AbsoluteFsPath'>;
 
 /**
- * A path that's relative to another (unspecified) root.
+ * A path that's relative to another \(unspecified\) root.
  *
  * 相对于另一个（未指定）根的路径。
  *
@@ -61,11 +61,11 @@ export interface PathManipulation {
    * 计算 `from` 和 `to` 之间的相对路径。
    *
    * In file-systems that can have multiple file trees the returned path may not actually be
-   * "relative" (i.e. `PathSegment`). For example, Windows can have multiple drives :
+   * "relative" \(i.e. `PathSegment`\). For example, Windows can have multiple drives :
    * `relative('c:/a/b', 'd:/a/c')` would be \`d:/a/c'.
    *
    * 在可以有多个文件树的文件系统中，返回的路径实际上可能不是“相对的”（即 `PathSegment`
-   *）。例如，Windows 可以有多个驱动器： `relative('c:/a/b', 'd:/a/c')` 将是 \`d:/a/c'。
+   * ）。例如，Windows 可以有多个驱动器： `relative('c:/a/b', 'd:/a/c')` 将是 \`d:/a/c'。
    *
    */
   relative<T extends PathString>(from: T, to: T): PathSegment|AbsoluteFsPath;

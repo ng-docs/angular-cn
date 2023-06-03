@@ -45,9 +45,9 @@ import {EmbeddedViewRef, ViewRef} from './view_ref';
  *
  * 表示可以将一个或多个视图附着到组件中的容器。
  *
- * Can contain *host views* (created by instantiating a
- * component with the `createComponent()` method), and *embedded views*
- * (created by instantiating a `TemplateRef` with the `createEmbeddedView()` method).
+ * Can contain *host views* \(created by instantiating a
+ * component with the `createComponent()` method\), and *embedded views*
+ * \(created by instantiating a `TemplateRef` with the `createEmbeddedView()` method\).
  *
  * 视图容器的实例还可以包含其它视图容器，以创建[层次化视图](guide/glossary#view-tree)。
  *

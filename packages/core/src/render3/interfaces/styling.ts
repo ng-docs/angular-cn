@@ -23,7 +23,7 @@ export type TStylingKey = TStylingKeyPrimitive|TStylingStatic;
 
 
 /**
- * The primitive portion (`TStylingStatic` removed) of the value stored in the `TData` which is
+ * The primitive portion \(`TStylingStatic` removed\) of the value stored in the `TData` which is
  * needed to re-concatenate the styling.
  *
  * 存储在 `TData` 中的值的原始部分（`TStylingStatic` 已删除），需要重新连接样式。
@@ -51,19 +51,19 @@ export type TStylingKeyPrimitive = string|null|false;
  *
  * 存储样式绑定的静态值。
  *
- * The `TStylingStatic` is just `KeyValueArray` where key `""` (stored at location 0) contains the
- * `TStylingKey` (stored at location 1). In other words this wraps the `TStylingKey` such that the
+ * The `TStylingStatic` is just `KeyValueArray` where key `""` \(stored at location 0\) contains the
+ * `TStylingKey` \(stored at location 1\). In other words this wraps the `TStylingKey` such that the
  * `""` contains the wrapped value.
  *
  * `TStylingStatic` 只是 `KeyValueArray` ，其中的键 `""`（存储在位置 0）包含 `TStylingKey`
- *（存储在位置 1）。换句话说，这会包装 `TStylingKey` ，以便 `""` 包含包装后的值。
+ * （存储在位置 1）。换句话说，这会包装 `TStylingKey` ，以便 `""` 包含包装后的值。
  *
  * When instructions are resolving styling they may need to look forward or backwards in the linked
  * list to resolve the value. For this reason we have to make sure that he linked list also contains
  * the static values. However the list only has space for one item per styling instruction. For this
  * reason we store the static values here as part of the `TStylingKey`. This means that the
  * resolution function when looking for a value needs to first look at the binding value, and than
- * at `TStylingKey` (if it exists).
+ * at `TStylingKey` \(if it exists\).
  *
  * 当操作指南解析样式时，它们可能需要在链表中向前或向后查找以解析值。出于这个原因，我们必须确保他的链表还包含静态值。但是，该列表中每个样式说明只有一项空间。出于这个原因，我们将静态值作为
  * `TStylingKey` 的一部分存储在这里。这意味着查找值时的解析函数需要首先查看绑定值，而不是
@@ -77,6 +77,7 @@ export type TStylingKeyPrimitive = string|null|false;
  * <div class="TEMPLATE" my-dir>
  * ```
  *
+ * ```
  * @Directive({
  *   host: {
  *     class: 'DIR',
@@ -210,7 +211,7 @@ export const enum StylingRange {
    * This bit is set if the previous bindings contains a binding which could possibly cause a
    * duplicate. For example: `<div [style]="map" [style.width]="width">`, the `width` binding will
    * have previous duplicate set. The implication is that if `width` binding becomes `null`, it is
-   * necessary to defer the value to `map.width`. (Because `width` overwrites `map.width`.)
+   * necessary to defer the value to `map.width`. \(Because `width` overwrites `map.width`.\)
    *
    * 如果以前的绑定包含可能导致重复的绑定，则设置此位。例如： `<div [style]="map"
    * [style.width]="width">` ，`width` 绑定将有以前的重复集。这意味着，如果 `width` 绑定变为 `null`
@@ -223,7 +224,7 @@ export const enum StylingRange {
    * This bit is set to if the next binding contains a binding which could possibly cause a
    * duplicate. For example: `<div [style]="map" [style.width]="width">`, the `map` binding will
    * have next duplicate set. The implication is that if `map.width` binding becomes not `null`, it
-   * is necessary to defer the value to `width`. (Because `width` overwrites `map.width`.)
+   * is necessary to defer the value to `width`. \(Because `width` overwrites `map.width`.\)
    *
    * 如果下一个绑定包含可能导致重复的绑定，则此位设置为。例如： `<div [style]="map"
    * [style.width]="width">` ，`map` 绑定将有下一个重复集。这意味着，如果 `map.width` 绑定变得不为

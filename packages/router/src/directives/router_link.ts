@@ -58,6 +58,7 @@ import {UrlTree} from '../url_tree';
  * 你提供给链接的输入将被视为当前 URL 的增量。比如，假设当前 URL 是 `/user/(box//aux:team)`。则链接
  * `<a [routerLink]="['/user/jim']">Jim</a>` 会创建 URL `/user/(jim//aux:team)`
  * 。欲知详情，请参见 {@link Router#createUrlTree createUrlTree}。
+ *
  * @usageNotes
  *
  * You can use absolute or relative paths in a link, set query parameters,
@@ -153,11 +154,11 @@ import {UrlTree} from '../url_tree';
  * </a>
  * ```
  *
- * Use {@link Router.getCurrentNavigation() Router#getCurrentNavigation} to retrieve a saved
+ * Use {@link Router.getCurrentNavigation\(\) Router#getCurrentNavigation} to retrieve a saved
  * navigation-state value. For example, to capture the `tracingId` during the `NavigationStart`
  * event:
  *
- * 使用 {@link Router.getCurrentNavigation() Router#getCurrentNavigation}
+ * 使用 {@link Router.getCurrentNavigation\(\) Router#getCurrentNavigation}
  * 来检索保存的导航状态值。比如，要在 `NavigationStart` 事件中捕获 `tracingId`
  *
  * ```

@@ -24,11 +24,11 @@ const PROFILER_GLOBAL_NAME = 'profiler';
  *
  * 用法：
  *
- * 1. Open developer console (e.g. in Chrome Ctrl + Shift + j)
+ * 1. Open developer console \(e.g. in Chrome Ctrl + Shift + j\)
  *
  *    打开开发人员控制台（比如，Chrome 中是 Ctrl + Shift + j）
  *
- * 1. Type `ng.` (usually the console will show auto-complete suggestion)
+ * 1. Type `ng.` \(usually the console will show auto-complete suggestion\)
  *
  *    输入 `ng.`（通常，控制台会显示自动完成建议）
  *

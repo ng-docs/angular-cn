@@ -38,7 +38,7 @@ export interface IncrementalBuildStrategy {
 
   /**
    * Convert this `IncrementalBuildStrategy` into a possibly new instance to be used in the next
-   * incremental compilation (may be a no-op if the strategy is not stateful).
+   * incremental compilation \(may be a no-op if the strategy is not stateful\).
    *
    * 将此 `IncrementalBuildStrategy`
    * 转换为要在下一次增量编译中使用的可能新实例（如果策略是无状态的，可能是无操作）。
@@ -128,7 +128,7 @@ export class PatchedProgramIncrementalBuildStrategy implements IncrementalBuildS
  * The TS model of incremental compilation is based around reuse of a previous `ts.Program` in the
  * construction of a new one. The `NgCompiler` follows this abstraction - passing in a previous
  * `ts.Program` is sufficient to trigger incremental compilation. This previous `ts.Program` need
- * not be from an Angular compilation (that is, it need not have been created from `NgCompiler`).
+ * not be from an Angular compilation \(that is, it need not have been created from `NgCompiler`\).
  *
  * 增量编译的 TS 模型是基于在构建新的 `ts.Program` 中重用以前的 ts.Program 。 `NgCompiler`
  * 遵循这种抽象 - 传入以前的 `ts.Program` 足以触发增量编译。以前的 `ts.Program` 无需来自 Angular

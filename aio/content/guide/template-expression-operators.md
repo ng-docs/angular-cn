@@ -37,7 +37,7 @@ See the <live-example></live-example> for a working example containing the code 
 
 <a id="non-null-assertion-operator"></a>
 
-## The non-null assertion operator (`!`)
+## The non-null assertion operator \(`!`\)
 
 ## 非空断言运算符（`!`）
 

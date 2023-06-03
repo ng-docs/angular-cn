@@ -264,22 +264,20 @@ export class CurrencyPipe implements PipeTransform {
    * @param value The number to be formatted as currency.
    *
    * 要格式化为货币的数字。
-   *
    * @param currencyCode The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code,
    * such as `USD` for the US dollar and `EUR` for the euro. The default currency code can be
    * configured using the `DEFAULT_CURRENCY_CODE` injection token.
    *
    * 可选值。默认值为 `this._defaultCurrencyCode`。
-   *
    * @param display The format for the currency indicator. One of the following:
    *
    * 货币指示器的格式。以下之一：
    *
-   * - `code`: Show the code (such as `USD`).
+   * - `code`: Show the code \(such as `USD`\).
    *
    *   `code` ：显示代码（例如 `USD`）。
    *
-   * - `symbol`(default): Show the symbol (such as `$`).
+   * - `symbol`\(default\): Show the symbol \(such as `$`\).
    *
    *   `symbol`（默认）：显示符号（例如 `$`）。
    *
@@ -295,7 +293,7 @@ export class CurrencyPipe implements PipeTransform {
    *
    *   字符串：使用给定的字符串值，而不是代码或符号。例如，空字符串将抑制货币 & 符号。
    *
-   * - Boolean (marked deprecated in v5): `true` for symbol and false for `code`.
+   * - Boolean \(marked deprecated in v5\): `true` for symbol and false for `code`.
    *
    *   布尔值（在 v5 中标记为已弃用）： symbol 为 `true` ，`code` 为 false 。
    *
@@ -320,13 +318,11 @@ export class CurrencyPipe implements PipeTransform {
    *   For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
    *
    *   `maxFractionDigits` ：小数点后的最大位数。默认为 `2` 。如果未提供，则该数字将根据[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)指定的内容使用适当的位数格式化。例如，加元有 2 位，而智利比索没有。
-   *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
    * See [Setting your app locale](guide/i18n-common-locale-id).
    *
    * 可选值。默认值为 `undefined`。
-   *
    */
   transform(
       value: number|string|null|undefined, currencyCode: string = this._defaultCurrencyCode,
@@ -367,7 +363,8 @@ function isValue(value: number|string|null|undefined): value is number|string {
 }
 
 /**
- * Transforms a string into a number (if needed).
+ * Transforms a string into a number \(if needed\).
+ *
  */
 function strToNumber(value: number|string): number {
   // Convert strings to numbers

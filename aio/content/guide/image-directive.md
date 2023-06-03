@@ -6,9 +6,9 @@ The `NgOptimizedImage` directive makes it easy to adopt performance best practic
 
 `NgOptimizedImage` 指令可以轻松采用关于性能的最佳实践来加载图片。
 
-The directive ensures that the loading of the [Largest Contentful Paint (LCP)](http://web.dev/lcp) image is prioritized by:
+The directive ensures that the loading of the [Largest Contentful Paint \(LCP\)](http://web.dev/lcp) image is prioritized by:
 
-该指令可确保[最大内容绘制 (LCP)](http://web.dev/lcp)图片的加载优先级为：
+该指令可确保[最大内容绘制 （LCP）](http://web.dev/lcp)图片的加载优先级为：
 
 * Automatically setting the `fetchpriority` attribute on the `<img>` tag
 
@@ -68,7 +68,7 @@ The directive is defined as a [standalone directive](/guide/standalone-component
 
 该指令被定义为[独立指令](/guide/standalone-components)，因此组件应该直接导入它。
 
-#### Step 2: (Optional) Set up a Loader
+#### Step 2: \(Optional\) Set up a Loader
 
 #### 第 2 步：（可选）设置加载器
 
@@ -116,11 +116,11 @@ Marking an image as `priority` applies the following optimizations:
 
 将图片标记为 `priority` 会应用以下优化：
 
-* Sets `fetchpriority=high` (read more about priority hints [here](https://web.dev/priority-hints))
+* Sets `fetchpriority=high` \(read more about priority hints [here](https://web.dev/priority-hints)\)
 
   设置 `fetchpriority=high` （在[这里](https://web.dev/priority-hints)阅读有关优先级提示的更多内容）
 
-* Sets `loading=eager` (read more about native lazy loading [here](https://web.dev/browser-level-image-lazy-loading))
+* Sets `loading=eager` \(read more about native lazy loading [here](https://web.dev/browser-level-image-lazy-loading)\)
 
   设置 `loading=eager` （在[这里](https://web.dev/browser-level-image-lazy-loading)阅读有关原生惰性加载的更多信息）
 
@@ -146,7 +146,7 @@ In order to prevent [image-related layout shifts](https://web.dev/css-web-vitals
 
 </code-example>
 
-For **responsive images** (images which you've styled to grow and shrink relative to the viewport), the `width` and `height` attributes should be the instrinsic size of the image file.
+For **responsive images** \(images which you've styled to grow and shrink relative to the viewport\), the `width` and `height` attributes should be the instrinsic size of the image file.
 
 对于**响应式图片**（会相对于视口而增长和缩小的图片），`width` 和 `height` 属性应该是图片文件的内在大小。
 
@@ -162,7 +162,7 @@ Note: If you don't know the size of your images, consider using "fill mode" to i
 
 ### 使用 `fill` 模式
 
-In cases where you want to have an image fill a containing element, you can use the `fill` attribute. This is often useful when you want to achieve a "background image" behavior. It can also be helpful when you don't know the exact width and height of your image, but you do have a parent container with a known size that you'd like to fit your image into (see "object-fit" below).
+In cases where you want to have an image fill a containing element, you can use the `fill` attribute. This is often useful when you want to achieve a "background image" behavior. It can also be helpful when you don't know the exact width and height of your image, but you do have a parent container with a known size that you'd like to fit your image into \(see "object-fit" below\).
 
 如果你希望让图片填充其容器元素，可以用 `fill` 属性。当你想实现“背景图片”行为时，这通常会很有用。当你不知道图片的确切宽度和高度时，它也会很有帮助，但如果你确实有一个具有已知大小的父容器，可能希望将图片适配进其中（请参阅下面的“object-fit”） .。
 
@@ -258,7 +258,7 @@ Defining a [`srcset` attribute](https://developer.mozilla.org/en-US/docs/Web/API
 
 #### 固定大小的图片
 
-If your image should be "fixed" in size  (i.e. the same size across devices, except for [pixel density](https://web.dev/codelab-density-descriptors/)), there is no need to set a `sizes` attribute. A `srcset` can be generated automatically from the image's width and height attributes with no further input required. 
+If your image should be "fixed" in size  \(i.e. the same size across devices, except for [pixel density](https://web.dev/codelab-density-descriptors/)\), there is no need to set a `sizes` attribute. A `srcset` can be generated automatically from the image's width and height attributes with no further input required. 
 
 如果你的图片的大小应该是“固定的”（即跨设备的大小相同，除了[像素密度](https://web.dev/codelab-density-descriptors/)不同），则无需设置 `sizes` 属性。可以从图片的 `width` 和 `height` 属性自动生成 `srcset`，无需更多的输入属性。
 
@@ -270,11 +270,11 @@ Example srcset generated: `<img ... srcset="image-400w.jpg 1x, image-800w.jpg 2x
 
 #### 响应式图片
 
-If your image should be responsive (i.e. grow and shrink according to viewport size), then you will need to define a [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) to generate the `srcset`.
+If your image should be responsive \(i.e. grow and shrink according to viewport size\), then you will need to define a [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) to generate the `srcset`.
 
 如果你的图片应该是响应式的（即会根据视口大小放大和缩小），那么你需要定义一个 [`sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) 属性来生成 `srcset` 。
 
-If you haven't used `sizes` before, a good place to start is to set it based on viewport width. For example, if your CSS causes the image to fill 100% of viewport width, set `sizes` to `100vw` and the browser will select the image in the `srcset` that is closest to the viewport width (after accounting for pixel density). If your image is only likely to take up half the screen (ex: in a sidebar), set `sizes` to `50vw` to ensure the browser selects a smaller image. And so on.
+If you haven't used `sizes` before, a good place to start is to set it based on viewport width. For example, if your CSS causes the image to fill 100% of viewport width, set `sizes` to `100vw` and the browser will select the image in the `srcset` that is closest to the viewport width \(after accounting for pixel density\). If your image is only likely to take up half the screen \(ex: in a sidebar\), set `sizes` to `50vw` to ensure the browser selects a smaller image. And so on.
 
 如果你以前没有使用过 `sizes` ，一个很好的起点是根据视口宽度来设置它。例如，如果你的 CSS 要让图片填充视口宽度的 100% ，则将 `sizes` 设置为 `100vw` ，浏览器将选择 `srcset` 中最接近视口宽度的图片（在考虑像素密度之后）。如果你的图片只可能占屏幕的一半（例如：在侧边栏中），请将 `sizes` 设置为 `50vw` 以确保浏览器选择较小的图片。以此类推。
 
@@ -313,7 +313,7 @@ If you would like to manually define a `srcset` attribute, you can provide your 
 
 </code-example>
 
-If the `ngSrcset` attribute is present, `NgOptimizedImage` generates and sets the `srcset` based on the sizes included. Do not include image file names in `ngSrcset` - the directive infers this information from `ngSrc`. The directive supports both width descriptors (e.g. `100w`) and density descriptors (e.g. `1x`).
+If the `ngSrcset` attribute is present, `NgOptimizedImage` generates and sets the `srcset` based on the sizes included. Do not include image file names in `ngSrcset` - the directive infers this information from `ngSrc`. The directive supports both width descriptors \(e.g. `100w`\) and density descriptors \(e.g. `1x`\).
 
 如果存在 `ngSrcset` 属性，则 `NgOptimizedImage` 会根据包含的大小生成并设置 `srcset` 。不要在 `ngSrcset` 中包含图片文件名 - 该指令会从 `ngSrc` 推断此信息。该指令支持宽度描述符（例如 `100w` ）和密度描述符（例如 `1x` ）。
 
@@ -460,7 +460,7 @@ providers: [
 ],
 </code-example>
 
-A loader function for the `NgOptimizedImage` directive takes an object with the `ImageLoaderConfig` type (from `@angular/common`) as its argument and returns the absolute URL of the image asset. The `ImageLoaderConfig` object contains the `src` property, and optional `width` and `loaderParams` properties.
+A loader function for the `NgOptimizedImage` directive takes an object with the `ImageLoaderConfig` type \(from `@angular/common`\) as its argument and returns the absolute URL of the image asset. The `ImageLoaderConfig` object contains the `src` property, and optional `width` and `loaderParams` properties.
 
 Note: even though the `width` property may not always be present, a custom loader must use it to support requesting images at various widths in order for `ngSrcset` to work properly.
 

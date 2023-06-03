@@ -61,7 +61,8 @@ function enableHydrationRuntimeSupport() {
 /**
  * Detects whether the code is invoked in a browser.
  * Later on, this check should be replaced with a tree-shakable
- * flag (e.g. `!isServer`).
+ * flag \(e.g. `!isServer`\).
+ *
  */
 function isBrowser(): boolean {
   return inject(PLATFORM_ID) === 'browser';

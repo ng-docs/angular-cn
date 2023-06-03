@@ -798,10 +798,9 @@ export function ɵɵattributeInterpolate8(
  * @param attrName The name of the attribute to update.
  *
  * 要更新的属性的名称。
- *
  * @param values The collection of values and the strings in-between those values, beginning with
  * a string prefix and ending with a string suffix.
- * (e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`)
+ * \(e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`\)
  *
  * 值和这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。（例如 `['prefix', value0,
  * '-', value1, '-', value2, ..., value99, 'suffix']`）
@@ -809,13 +808,11 @@ export function ɵɵattributeInterpolate8(
  * @param sanitizer An optional sanitizer function
  *
  * 可选的消毒器功能
- *
  * @returns
  *
  * itself, so that it may be chained.
  *
  * 本身，以便它可以被链接起来。
- *
  * @codeGenApi
  */
 export function ɵɵattributeInterpolateV(

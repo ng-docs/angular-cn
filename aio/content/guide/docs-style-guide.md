@@ -89,9 +89,9 @@ Every guide document must have a title, and it should appear at the top of the p
 
 每个指南文档都必须有一个标题，并且它应该出现在页面的顶部。
 
-Begin the title with the Markdown hash (`#`) character, which renders as an `<h1>` in the browser.
+Begin the title with the Markdown hash \(`#`\) character, which renders as an `<h1>` in the browser.
 
-标题以 Markdown 哈希 ( `#` ) 字符开头，在浏览器中渲染为 `<h1>`。
+标题以 Markdown 哈希（`#`）字符开头，在浏览器中渲染为 `<h1>`。
 
 <code-example format="html" language="html">
 
@@ -175,9 +175,9 @@ Content after a blank line.
 
 ### 其他节标题
 
-While you can use additional section headings, the [Table-of-contents (TOC)](#table-of-contents) generator only shows `<h2>` and `<h3>` headings in the TOC on the right of the page.
+While you can use additional section headings, the [Table-of-contents \(TOC\)](#table-of-contents) generator only shows `<h2>` and `<h3>` headings in the TOC on the right of the page.
 
-虽然你可以用其他部分标题，但[目录 (TOC)](#table-of-contents)生成器仅在页面右侧的 TOC 中显示 `<h2>` 和 `<h3>` 标题。
+虽然你可以用其他部分标题，但[目录（TOC）](#table-of-contents)生成器仅在页面右侧的 TOC 中显示 `<h2>` 和 `<h3>` 标题。
 
 <code-example format="html" language="html">
 

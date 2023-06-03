@@ -4,7 +4,7 @@ You can define a set of styles together to make up a specific state for animatin
 
 ## What is a state?
 
-A state is the condition of an animation. The Angular state() function takes two parameters: a unique name and a style. There is also an optional parameter.
+A state is the condition of an animation. The Angular state\(\) function takes two parameters: a unique name and a style. There is also an optional parameter.
 
 ## Why would you want to use state?
 

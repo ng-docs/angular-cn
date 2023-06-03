@@ -272,7 +272,7 @@ Angular DevTools attempts to estimate the frame drop at this point to indicate w
 
 在变更检测时间轴前面，你可以发现 Angular 在此周期中花费了多少时间。Angular DevTools 会试图估算出掉帧情况，以指示应用程序的执行何时可能会影响用户体验。
 
-Angular DevTools also indicates what triggered the change detection (that is, the change detection's source).
+Angular DevTools also indicates what triggered the change detection \(that is, the change detection's source\).
 
 Angular DevTools 还会指出触发这次变更检测的原因（即变更检测的来源）。
 

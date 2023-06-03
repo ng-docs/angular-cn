@@ -15,8 +15,9 @@ export interface Decorator {
   /**
    * Name by which the decorator was invoked in the user's code.
    *
-   * This is distinct from the name by which the decorator was imported (though in practice they
-   * will usually be the same).
+   * This is distinct from the name by which the decorator was imported \(though in practice they
+   * will usually be the same\).
+   *
    */
   name: string;
 
@@ -47,8 +48,9 @@ export interface Decorator {
 }
 
 /**
- * A decorator is identified by either a simple identifier (e.g. `Decorator`) or, in some cases,
- * a namespaced property access (e.g. `core.Decorator`).
+ * A decorator is identified by either a simple identifier \(e.g. `Decorator`\) or, in some cases,
+ * a namespaced property access \(e.g. `core.Decorator`\).
+ *
  */
 export type DecoratorIdentifier = ts.Identifier|NamespacedIdentifier;
 export type NamespacedIdentifier = ts.PropertyAccessExpression&{
@@ -68,8 +70,8 @@ export function isDecoratorIdentifier(exp: ts.Expression): exp is DecoratorIdent
  *
  * - In TS code, they are typically defined using the `class` keyword.
  * - In ES2015 code, they are usually defined using the `class` keyword, but they can also be
- *   variable declarations, which are initialized to a class expression (e.g.
- *   `let Foo = Foo1 = class Foo {}`).
+ *   variable declarations, which are initialized to a class expression \(e.g.
+ *   `let Foo = Foo1 = class Foo {}`\).
  * - In ES5 code, they are typically defined as variable declarations being assigned the return
  *   value of an IIFE. The actual "class" is implemented as a constructor function inside the IIFE,
  *   but the outer variable declaration represents the "class" to the rest of the program.
@@ -101,7 +103,8 @@ export interface ClassMember {
   node: ts.Node|null;
 
   /**
-   * Indication of which type of member this is (property, method, etc).
+   * Indication of which type of member this is \(property, method, etc\).
+   *
    */
   kind: ClassMemberKind;
 
@@ -335,10 +338,11 @@ export type UnavailableValue =
  * A reference to a value that originated from a type position.
  *
  * For example, a constructor parameter could be declared as `foo: Foo`. A `TypeValueReference`
- * extracted from this would refer to the value of the class `Foo` (assuming it was actually a
- * type).
+ * extracted from this would refer to the value of the class `Foo` \(assuming it was actually a
+ * type\).
  *
  * See the individual types for additional information.
+ *
  */
 export type TypeValueReference =
     LocalTypeValueReference|ImportedTypeValueReference|UnavailableTypeValueReference;
@@ -350,8 +354,9 @@ export interface CtorParameter {
   /**
    * Name of the parameter, if available.
    *
-   * Some parameters don't have a simple string name (for example, parameters which are destructured
-   * into multiple variables). In these cases, `name` can be `null`.
+   * Some parameters don't have a simple string name \(for example, parameters which are destructured
+   * into multiple variables\). In these cases, `name` can be `null`.
+   *
    */
   name: string|null;
 
@@ -442,14 +447,16 @@ export interface Parameter {
  */
 export interface Import {
   /**
-   * The name of the imported symbol under which it was exported (not imported).
+   * The name of the imported symbol under which it was exported \(not imported\).
+   *
    */
   name: string;
 
   /**
    * The module from which the symbol was imported.
    *
-   * This could either be an absolute module name (@angular/core for example) or a relative path.
+   * This could either be an absolute module name \(@angular/core for example\) or a relative path.
+   *
    */
   from: string;
 }
@@ -466,8 +473,9 @@ export type DeclarationNode = ts.Declaration;
 export interface Declaration<T extends ts.Declaration = ts.Declaration> {
   /**
    * The absolute module path from which the symbol was imported into the application, if the symbol
-   * was imported via an absolute module (even through a chain of re-exports). If the symbol is part
+   * was imported via an absolute module \(even through a chain of re-exports\). If the symbol is part
    * of the application and was not imported from an absolute path, this will be `null`.
+   *
    */
   viaModule: string|null;
 
@@ -485,12 +493,13 @@ export interface Declaration<T extends ts.Declaration = ts.Declaration> {
  * presents a single API by which the compiler can query specific information about the AST.
  *
  * All operations on the `ReflectionHost` require the use of TypeScript `ts.Node`s with binding
- * information already available (that is, nodes that come from a `ts.Program` that has been
- * type-checked, and are not synthetically created).
+ * information already available \(that is, nodes that come from a `ts.Program` that has been
+ * type-checked, and are not synthetically created\).
+ *
  */
 export interface ReflectionHost {
   /**
-   * Examine a declaration (for example, of a class or function) and return metadata about any
+   * Examine a declaration \(for example, of a class or function\) and return metadata about any
    * decorators present on the declaration.
    *
    * @param declaration a TypeScript `ts.Declaration` node representing the class or function over
@@ -498,7 +507,6 @@ export interface ReflectionHost {
    * source is in ES6 format, this will be a `ts.ClassDeclaration` node. If the source is in ES5
    * format, this might be a `ts.VariableDeclaration` as classes in ES5 are represented as the
    * result of an IIFE execution.
-   *
    * @returns an array of `Decorator` metadata if decorators are present on the declaration, or
    * `null` if either no decorators were present or if the declaration is not of a decoratable type.
    */
@@ -538,7 +546,7 @@ export interface ReflectionHost {
    * on the parameter declaration, whereas an ES5 function has its default value set in a statement
    * of the form:
    *
-   * if (param === void 0) { param = 3; }
+   * if \(param === void 0\) { param = 3; }
    *
    * This method abstracts over these details, and interprets the function declaration and body to
    * extract parameter default values and the "real" body.
@@ -547,7 +555,6 @@ export interface ReflectionHost {
    * parameter objects in the function signature.
    *
    * @param fn a TypeScript `ts.Declaration` node representing the function over which to reflect.
-   *
    * @returns a `FunctionDefinition` giving metadata about the function definition.
    */
   getDefinitionOfFunction(fn: ts.Node): FunctionDefinition|null;
@@ -584,14 +591,13 @@ export interface ReflectionHost {
    * definition was imported from `@angular/core` into the application where it was referenced.
    *
    * If the definition is re-exported several times from different absolute module names, only
-   * the first one (the one by which the application refers to the module) is returned.
+   * the first one \(the one by which the application refers to the module\) is returned.
    *
    * This module name is returned in the `viaModule` field of the `Declaration`. If The declaration
    * is relative to the application itself and there was no import through an absolute path, then
    * `viaModule` is `null`.
    *
    * @param id a TypeScript `ts.Identifier` to trace back to a declaration.
-   *
    * @returns metadata about the `Declaration` if the original declaration is found, or `null`
    * otherwise.
    */
@@ -600,11 +606,11 @@ export interface ReflectionHost {
   /**
    * Collect the declarations exported from a module by name.
    *
-   * Iterates over the exports of a module (including re-exports) and returns a map of export
+   * Iterates over the exports of a module \(including re-exports\) and returns a map of export
    * name to its `Declaration`. If an exported value is itself re-exported from another module,
    * the `Declaration`'s `viaModule` will reflect that.
    *
-   * @param node a TypeScript `ts.Node` representing the module (for example a `ts.SourceFile`) for
+   * @param node a TypeScript `ts.Node` representing the module \(for example a `ts.SourceFile`\) for
    * which to collect exports.
    *
    * @returns a map of `Declaration`s for the module's exports, by name.
@@ -624,7 +630,7 @@ export interface ReflectionHost {
   hasBaseClass(clazz: ClassDeclaration): boolean;
 
   /**
-   * Get an expression representing the base class (if any) of the given `clazz`.
+   * Get an expression representing the base class \(if any\) of the given `clazz`.
    *
    * This expression is most commonly an Identifier, but is possible to inherit from a more dynamic
    * expression.

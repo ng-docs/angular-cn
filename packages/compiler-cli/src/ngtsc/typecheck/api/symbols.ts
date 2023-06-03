@@ -279,9 +279,9 @@ export interface ReferenceSymbol {
    *
    *   ref 引用 `ng-template` 时的 `TmplAstTemplate`
    *
-   * - `ts.ClassDeclaration` when the local ref refers to a Directive instance (#ref="myExportAs")
+   * - `ts.ClassDeclaration` when the local ref refers to a Directive instance \(#ref="myExportAs"\)
    *
-   *   本地 ref 引用 Directive 实例时的 `ts.ClassDeclaration` (#ref="myExportAs")
+   *   本地 ref 引用 Directive 实例时的 `ts.ClassDeclaration` \(#ref="myExportAs"\)
    *
    */
   target: TmplAstElement|TmplAstTemplate|ts.ClassDeclaration;
@@ -477,11 +477,11 @@ export type DirectiveSymbol = (DirectiveSymbolBase&{isHostDirective: false})|(Di
 
 /**
  * A representation of an attribute on an element or template. These bindings aren't currently
- * type-checked (see `checkTypeOfDomBindings`) so they won't have a `ts.Type`, `ts.Symbol`, or shim
+ * type-checked \(see `checkTypeOfDomBindings`\) so they won't have a `ts.Type`, `ts.Symbol`, or shim
  * location.
  *
  * 元素或模板上属性的表示。这些绑定当前没有经过类型检查（请参阅 `checkTypeOfDomBindings`
- *），因此它们不会有 `ts.Type`、`ts.Symbol` 或 shim 位置。
+ * ），因此它们不会有 `ts.Type`、`ts.Symbol` 或 shim 位置。
  *
  */
 export interface DomBindingSymbol {

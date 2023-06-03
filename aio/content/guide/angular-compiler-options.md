@@ -2,7 +2,7 @@
 
 # Angular 编译器选项
 
-When you use [ahead-of-time compilation (AOT)](guide/aot-compiler), you can control how your application is compiled by specifying *template* compiler options in the [TypeScript configuration file](guide/typescript-configuration).
+When you use [ahead-of-time compilation \(AOT\)](guide/aot-compiler), you can control how your application is compiled by specifying *template* compiler options in the [TypeScript configuration file](guide/typescript-configuration).
 
 使用 [预先（AoT）编译](guide/aot-compiler) 时，可以通过在 [TypeScript 配置文件中](guide/typescript-configuration)指定*模板*编译器选项来控制如何编译应用程序。
 
@@ -180,7 +180,7 @@ Might be required by some third-party Angular libraries.
 
 ### `flatModuleId`
 
-The module ID to use for importing a flat module (when `flatModuleOutFile` is `true`).
+The module ID to use for importing a flat module \(when `flatModuleOutFile` is `true`\).
 References created by the template compiler use this module name when importing symbols from the flat module.
 Ignored if `flatModuleOutFile` is `false`.
 
@@ -236,7 +236,7 @@ The `fullTemplateTypeCheck` option has been deprecated in Angular 13 in favor of
 
 ### `generateCodeForLibraries`
 
-When `true`, creates factory files (`.ngfactory.js` and `.ngstyle.js`) for `.d.ts` files with a corresponding `.metadata.json` file. The default value is `true`.
+When `true`, creates factory files \(`.ngfactory.js` and `.ngstyle.js`\) for `.d.ts` files with a corresponding `.metadata.json` file. The default value is `true`.
 
 如果为 `true`，就会为 `.d.ts` 和相应的 `.metadata.json` 创建工厂文件（`.ngfactory.js` 和 `.ngstyle.js`）。默认值为 `true`。
 

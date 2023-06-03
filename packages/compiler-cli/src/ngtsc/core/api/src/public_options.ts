@@ -144,7 +144,7 @@ export interface LegacyNgcOptions {
  */
 export interface StrictTemplateOptions {
   /**
-   * If `true`, implies all template strictness flags below (unless individually disabled).
+   * If `true`, implies all template strictness flags below \(unless individually disabled\).
    *
    * 如果为 `true` ，则意味着下面的所有模板严格性标志（除非单独禁用）。
    *
@@ -183,8 +183,8 @@ export interface StrictTemplateOptions {
   strictInputTypes?: boolean;
 
   /**
-   * Whether to check if the input binding attempts to assign to a restricted field (readonly,
-   * private, or protected) on the directive/component.
+   * Whether to check if the input binding attempts to assign to a restricted field \(readonly,
+   * private, or protected\) on the directive/component.
    *
    * 是否检查输入绑定是否尝试分配给指令/组件上的受限字段（只读、私有或受保护）。
    *
@@ -438,8 +438,8 @@ export interface DiagnosticOptions {
 }
 
 /**
- * Options which control behavior useful for "monorepo" build cases using Bazel (such as the
- * internal Google monorepo, g3).
+ * Options which control behavior useful for "monorepo" build cases using Bazel \(such as the
+ * internal Google monorepo, g3\).
  *
  * 使用 Bazel 控制可用于“monorepo”构建用例的行为的选项（例如内部的 Google monorepo、g3）。
  *
@@ -453,13 +453,13 @@ export interface BazelAndG3Options {
    * 允许生成从 NgModule 文件中的 NgModule 可见的指令/管道的别名重新导出。
    *
    * This option should be disabled for application builds or for Angular Package Format libraries
-   * (where NgModules along with their directives/pipes are exported via a single entrypoint).
+   * \(where NgModules along with their directives/pipes are exported via a single entrypoint\).
    *
    * 应该为应用程序构建或 Angular 包格式库（其中的 NgModules
    * 及其指令/管道通过单个入口点导出）禁用此选项。
    *
    * For other library compilations which are intended to be path-mapped into an application build
-   * (or another library), enabling this option enables the resulting deep imports to work
+   * \(or another library\), enabling this option enables the resulting deep imports to work
    * correctly.
    *
    * 对于旨在路径映射到应用程序构建（或另一个库）的其他库编译，启用此选项可让所生成的深度导入正常工作。
@@ -473,7 +473,7 @@ export interface BazelAndG3Options {
    * ```
    *
    * The compiler will attempt to generate imports of directives/pipes from that same module
-   * specifier (the compiler does not rewrite the user's given import path, unlike View Engine).
+   * specifier \(the compiler does not rewrite the user's given import path, unlike View Engine\).
    *
    * 编译器将尝试从同一个模块说明符生成指令/管道的导入（与 View Engine
    * 不同，编译器不会重写用户给定的导入路径）。
@@ -540,7 +540,7 @@ export interface I18nOptions {
   i18nInLocale?: string;
 
   /**
-   * Export format (xlf, xlf2 or xmb) when the xi18n operation is requested.
+   * Export format \(xlf, xlf2 or xmb\) when the xi18n operation is requested.
    *
    * 请求 xi18n 操作时的导出格式（xlf、xlf2 或 xmb）。
    *
@@ -557,7 +557,7 @@ export interface I18nOptions {
 
 
   /**
-   * Locale of the application (used when xi18n is requested).
+   * Locale of the application \(used when xi18n is requested\).
    *
    * 应用程序的区域设置（请求 xi18n 时使用）。
    *
@@ -584,7 +584,7 @@ export interface I18nOptions {
 
   /**
    * Whether translation variable name should contain external message id
-   * (used by Closure Compiler's output of `goog.getMsg` for transition period)
+   * \(used by Closure Compiler's output of `goog.getMsg` for transition period\)
    *
    * 翻译变量名称是否应该包含外部消息 id（供 Closure Compiler 的 `goog.getMsg` 输出在过渡期使用）
    *
@@ -592,8 +592,8 @@ export interface I18nOptions {
   i18nUseExternalIds?: boolean;
 
   /**
-   * If templates are stored in external files (e.g. via `templateUrl`) then we need to decide
-   * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
+   * If templates are stored in external files \(e.g. via `templateUrl`\) then we need to decide
+   * whether or not to normalize the line-endings \(from `\r\n` to `\n`\) when processing ICU
    * expressions.
    *
    * 如果模板存储在外部文件中（例如通过 `templateUrl`），那么我们需要在处理 ICU

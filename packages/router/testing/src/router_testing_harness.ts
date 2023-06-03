@@ -101,8 +101,11 @@ export class RouterTestingHarness {
    * {@example router/testing/test/router_testing_harness_examples.spec.ts region='Guard'}
    *
    * @param url The target of the navigation. Passed to `Router.navigateByUrl`.
-   * @returns The activated component instance of the `RouterOutlet` after navigation completes
-   *     (`null` if the outlet does not get activated).
+   * @returns
+   *
+   * The activated component instance of the `RouterOutlet` after navigation completes
+   *     \(`null` if the outlet does not get activated\).
+   *
    */
   async navigateByUrl(url: string): Promise<null|{}>;
   /**

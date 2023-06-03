@@ -22,7 +22,6 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * of the `other` key is returned when present, otherwise an empty string is returned.
  *
  * 如果 `mapping` 中的任何键都不与 `value` 匹配，`other` 键的内容如果存在则返回，否则返回空字符串。
- *
  * @usageNotes
  *
  * ### Example

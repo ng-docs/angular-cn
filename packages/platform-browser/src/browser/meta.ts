@@ -57,7 +57,7 @@ export function createMeta() {
  * HTML `<meta>` tag. These tags define document metadata that is important for
  * things like configuring a Content Security Policy, defining browser compatibility
  * and security settings, setting HTTP Headers, defining rich content for social sharing,
- * and Search Engine Optimization (SEO).
+ * and Search Engine Optimization \(SEO\).
  *
  * `MetaDefinition` 对象的属性与 HTML `<meta>`
  * 标记的属性一一对应。这些标记定义了文档的元数据，这些元数据对于配置内容安全策略、定义浏览器兼容性和安全设置、设置
@@ -78,9 +78,7 @@ export function createMeta() {
  * @see [HTML meta tag](https://developer.mozilla.org/docs/Web/HTML/Element/meta)
  *
  * [HTML 元标记](https://developer.mozilla.org/docs/Web/HTML/Element/meta)
- *
- * @see [Document.querySelector()](https://developer.mozilla.org/docs/Web/API/Document/querySelector)
- *
+ * @see [Document.querySelector\(\)](https://developer.mozilla.org/docs/Web/API/Document/querySelector)
  *
  * @publicApi
  */

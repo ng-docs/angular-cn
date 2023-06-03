@@ -11,7 +11,7 @@ Angular Universal 允许你预先渲染应用程序的页面。预先渲染是�
 
 ## 如何预先渲染页面
 
-To prerender a static page make sure to add Server-Side Rendering (SSR) capabilities to your application.
+To prerender a static page make sure to add Server-Side Rendering \(SSR\) capabilities to your application.
 For more information see the [universal guide](guide/universal).
 Once SSR is added, run the following command:
 
@@ -92,7 +92,7 @@ ng run &lt;app-name&gt;:prerender --routes /product/1 /product/2
 #### 使用文件提供额外的路由
 
 You can provide routes using a file to create static pages.
-This method is useful if you have a large number of routes to create. For example, product details for an e-commerce application, which might come from an external source, like a Database or Content Management System (CMS).
+This method is useful if you have a large number of routes to create. For example, product details for an e-commerce application, which might come from an external source, like a Database or Content Management System \(CMS\).
 
 你可以使用文件提供路由以创建静态页面。如果你要创建的大量路由（比如电子商务应用程序的产品详细信息）可能来自外部源，比如数据库或内容管理系统（CMS），则此方法很有用。
 

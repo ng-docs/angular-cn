@@ -108,7 +108,7 @@ export class NodeJSReadonlyFileSystem extends NodeJSPathManipulation implements 
 }
 
 /**
- * A wrapper around the Node.js file-system (i.e. the `fs` package).
+ * A wrapper around the Node.js file-system \(i.e. the `fs` package\).
  *
  * Node.js 文件系统的包装器（即 `fs` 包）。
  *

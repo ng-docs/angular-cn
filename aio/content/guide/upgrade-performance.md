@@ -15,11 +15,11 @@
 </div>
 
 This guide describes some of the built-in tools for efficiently migrating AngularJS projects over to the Angular platform, one piece at a time.
-It is very similar to [Upgrading from AngularJS](guide/upgrade) with the exception that this one uses the [downgradeModule()](api/upgrade/static/downgradeModule) helper function instead of the [UpgradeModule](api/upgrade/static/UpgradeModule) class.
+It is very similar to [Upgrading from AngularJS](guide/upgrade) with the exception that this one uses the [`downgradeModule(`)](api/upgrade/static/downgradeModule) helper function instead of the [`UpgradeModule`](api/upgrade/static/UpgradeModule) class.
 This affects how the application is bootstrapped and how change detection is propagated between the two frameworks.
 It allows you to upgrade incrementally while improving the speed of your hybrid applications and leveraging the latest of Angular in AngularJS applications early in the process of upgrading.
 
-本指南介绍了一些用来将 AngularJS 项目高效地逐块迁移到 Angular 平台上的工具。本章和[从 AngularJS 升级](guide/upgrade)很像，但是这里会用辅助函数 [downgradeModule()](api/upgrade/static/downgradeModule) 取代 [UpgradeModule](api/upgrade/static/UpgradeModule)。这会影响到应用如何启动，以及变更检测事件如何在两个框架之间传播。它能让你逐步升级，并提高混合式应用的运行速度，并让你能在升级过程中尽早用上 Angular 中的最新特性。
+本指南介绍了一些用来将 AngularJS 项目高效地逐块迁移到 Angular 平台上的工具。本章和[从 AngularJS 升级](guide/upgrade)很像，但是这里会用辅助函数 [`downgradeModule()`](api/upgrade/static/downgradeModule) 取代 [`UpgradeModule`](api/upgrade/static/UpgradeModule)。这会影响到应用如何启动，以及变更检测事件如何在两个框架之间传播。它能让你逐步升级，并提高混合式应用的运行速度，并让你能在升级过程中尽早用上 Angular 中的最新特性。
 
 ## Preparation
 
@@ -86,10 +86,10 @@ In such cases, you are responsible for notifying the interested parties by manua
 
 但是，大多数情况下，应用的其它地方并不会关心某个组件中进行的局部更改。比如，如果用户点击了某个表单的提交按钮，通常会由组件自行处理这个操作的结果。话虽如此，但在某些情况下，你可能希望把这些变化传播到应用中由另一个框架控制的部分。这时候，你就有责任通过手动触发变更检测来通知相关方。
 
-If you want a particular piece of code to trigger change detection in the AngularJS part of the app, you need to wrap it in [scope.$apply()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply).
-Similarly, for triggering change detection in Angular you would use [ngZone.run()](api/core/NgZone#run).
+If you want a particular piece of code to trigger change detection in the AngularJS part of the app, you need to wrap it in [`scope.$apply()`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply).
+Similarly, for triggering change detection in Angular you would use [`ngZone.run()`](api/core/NgZone#run).
 
-如果你希望某些代码片段在应用的 AngularJS 部分触发变更检测，就要把它包在 [scope.$apply()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply) 中。同样，要想在 Angular 中触发变更检测，就要调用 [ngZone.run()](api/core/NgZone#run)。
+如果你希望某些代码片段在应用的 AngularJS 部分触发变更检测，就要把它包在 [`scope.$apply()`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply) 中。同样，要想在 Angular 中触发变更检测，就要调用 [`ngZone.run()`](api/core/NgZone#run)。
 
 In many cases, a few extra change detection runs may not matter much.
 However, on larger or change-detection-heavy applications they can have a noticeable impact.
@@ -106,11 +106,11 @@ Both AngularJS and Angular have their own concept of modules to help organize an
 AngularJS 和 Angular 都有自己的模块概念，来帮你把应用按功能组织成内聚的代码块。
 
 Their details are quite different in architecture and implementation.
-In AngularJS, you create a module by specifying its name and dependencies with [angular.module()](https://docs.angularjs.org/api/ng/function/angular.module).
+In AngularJS, you create a module by specifying its name and dependencies with [`angular.module()`](https://docs.angularjs.org/api/ng/function/angular.module).
 Then you can add assets using its various methods.
 In Angular, you create a class adorned with an [NgModule](api/core/NgModule) decorator that describes assets in metadata.
 
-它们在架构和实现方面的细节有很大不同。在 AngularJS 中，你可以用 [angular.module()](https://docs.angularjs.org/api/ng/function/angular.module) 指定名字和依赖，以创建一个模块。然后，你可以使用它的各种方法添加资产。在 Angular 中，你要创建一个带有 [NgModule](api/core/NgModule) 装饰器的类，靠这个装饰器的元数据来描述这些资产。
+它们在架构和实现方面的细节有很大不同。在 AngularJS 中，你可以用 [`angular.module()`](https://docs.angularjs.org/api/ng/function/angular.module) 指定名字和依赖，以创建一个模块。然后，你可以使用它的各种方法添加资产。在 Angular 中，你要创建一个带有 [NgModule](api/core/NgModule) 装饰器的类，靠这个装饰器的元数据来描述这些资产。
 
 In a hybrid application you run both frameworks at the same time.
 This means that you need at least one module each from both AngularJS and Angular.
@@ -195,13 +195,13 @@ You define that recipe by providing a factory function that can create an instan
 
 * `(extraProviders: StaticProvider[]) => Promise<NgModuleRef>`
 
-When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [platformBrowser](api/platform-browser/platformBrowser)'s [bootstrapModuleFactory()](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time (AOT) compilation.
+When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [`platformBrowser`](api/platform-browser/platformBrowser)'s [`bootstrapModuleFactory()`](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time (AOT) compilation.
 AOT compilation helps make your applications load faster
 For more about AOT and how to create an `NgModuleFactory`, see the [Ahead-of-Time Compilation](guide/aot-compiler) guide.
 
-当传入 `NgModuleFactory` 时，`downgradeModule()` 会把它传给 [platformBrowser](api/platform-browser/platformBrowser) 的 [bootstrapModuleFactory()](api/core/PlatformRef#bootstrapModuleFactory) 来实例化模块。它与预先（AOT）编译模式兼容。预先编译能让你的应用加载更快。要了解预先编译的更多知识，以及如何创建 `NgModuleFactory`，参阅 [预先编译](guide/aot-compiler) 章。
+当传入 `NgModuleFactory` 时，`downgradeModule()` 会把它传给 [`platformBrowser`](api/platform-browser/platformBrowser) 的 [`bootstrapModuleFactory()`](api/core/PlatformRef#bootstrapModuleFactory) 来实例化模块。它与预先（AOT）编译模式兼容。预先编译能让你的应用加载更快。要了解预先编译的更多知识，以及如何创建 `NgModuleFactory`，参阅 [预先编译](guide/aot-compiler) 章。
 
-Alternatively, you can pass a plain function, which is expected to return a promise resolving to an [NgModuleRef](api/core/NgModuleRef) (that is, an instance of your Angular module).
+Alternatively, you can pass a plain function, which is expected to return a promise resolving to an [NgModuleRef](api/core/NgModuleRef) \(that is, an instance of your Angular module\).
 The function is called with an array of extra [Providers](api/core/StaticProvider) that are expected to be available on the returned `NgModuleRef`'s [Injector](api/core/Injector).
 For example, if you are using [platformBrowser](api/platform-browser/platformBrowser) or [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic), you can pass the `extraProviders` array to them:
 
@@ -410,7 +410,7 @@ For example, it is *OK* to use a downgraded service in an upgraded component tha
 
 ## 使用混合式应用进行预先编译
 
-You can take advantage of ahead-of-time (AOT) compilation in hybrid applications just like in any other Angular application.
+You can take advantage of ahead-of-time \(AOT\) compilation in hybrid applications just like in any other Angular application.
 The setup for a hybrid application is mostly the same as described in the [Ahead-of-Time Compilation](guide/aot-compiler) guide save for differences in `index.html` and `main-aot.ts`.
 
 你可以像在任何其它 Angular 应用中一样，利用混合式应用的预先（AOT）编译功能。混合式应用的设置与[预先（AOT）编译](guide/aot-compiler)一章所讲的大致相同，但 `index.html` 和 `main-aot.ts` 略有差异。
@@ -449,9 +449,9 @@ This page covered how to use the [upgrade/static](api/upgrade/static) package to
 
 该页面介绍了如何借助 [upgrade/static](api/upgrade/static) 包，来按照你自己的节奏逐步升级现有的 AngularJS 应用。并且升级过程中不会方案此应用的进一步开发。
 
-Specifically, this guide showed how you can achieve better performance and greater flexibility in your hybrid applications by using [downgradeModule()](api/upgrade/static/downgradeModule) instead of [UpgradeModule](api/upgrade/static/UpgradeModule).
+Specifically, this guide showed how you can achieve better performance and greater flexibility in your hybrid applications by using [`downgradeModule()`](api/upgrade/static/downgradeModule) instead of [`UpgradeModule`](api/upgrade/static/UpgradeModule).
 
-具体来说，本章介绍了如何使用 [downgradeModule()](api/upgrade/static/downgradeModule) 来代替 [UpgradeModule](api/upgrade/static/UpgradeModule)，为混合式应用提供更好的性能和更大的灵活性。
+具体来说，本章介绍了如何使用 [`downgradeModule()`](api/upgrade/static/downgradeModule) 来代替 [`UpgradeModule`](api/upgrade/static/UpgradeModule)，为混合式应用提供更好的性能和更大的灵活性。
 
 To summarize, the key differentiating factors of `downgradeModule()` are:
 

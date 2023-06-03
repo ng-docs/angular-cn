@@ -120,7 +120,6 @@ export function createEmptyStateSnapshot(
  * @see [Getting route information](guide/router#getting-route-information)
  *
  * [获取路由信息](guide/router#getting-route-information)
- *
  * @publicApi
  */
 export class ActivatedRoute {

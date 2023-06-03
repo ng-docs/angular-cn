@@ -69,6 +69,7 @@ import {NgAdapterInjector} from './util';
  *    coexisting in a single application.
  *
  *    混合 Angular 应用程序的引导，该应用程序包含在单个应用程序中共存的两个框架。
+ *
  * @usageNotes
  *
  * ```ts
@@ -123,7 +124,7 @@ import {NgAdapterInjector} from './util';
  *       camelCase.
  *
  *    3. However the template binding syntax will always use the Angular style, e.g. square
- *       brackets (`[...]`) for property binding.
+ *       brackets \(`[...]`\) for property binding.
  *
  * 8. Angular is bootstrapped first; AngularJS is bootstrapped second. AngularJS always owns the
  *    root component of the application.
@@ -229,17 +230,15 @@ export class UpgradeModule {
    * @param element the element on which to bootstrap the AngularJS application
    *
    * 要引导 AngularJS 应用程序的元素
-   *
    * @param [modules] the AngularJS modules to bootstrap for this application
    *
    * 要为此应用程序引导的 AngularJS 模块
-   *
    * @param [config] optional extra AngularJS bootstrap configuration
    *
    * 可选的额外 AngularJS 引导配置
-   *
    * @return The value returned by
-   *     [angular.bootstrap()](https://docs.angularjs.org/api/ng/function/angular.bootstrap).
+   *     [angular.bootstrap\(\)](https://docs.angularjs.org/api/ng/function/angular.bootstrap).
+   *
    */
   bootstrap(
       element: Element, modules: string[] = [], config?: any /*angular.IAngularBootstrapConfig*/):

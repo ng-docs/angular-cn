@@ -14,7 +14,7 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  * the `document` and subsequently tears it down.
  *
  * This function can be used with `async await` and `Promise`s. If the wrapped function returns a
- * promise (or is `async`) then the teardown is delayed until that `Promise` is resolved.
+ * promise \(or is `async`\) then the teardown is delayed until that `Promise` is resolved.
  *
  * In the NodeJS environment this function detects if `document` is present and if not, it creates
  * one by loading `domino` and installing it.
@@ -47,7 +47,7 @@ export function withBody<T extends Function>(html: string, blockFn: T): T {
  * the `document` and subsequently tears it down.
  *
  * This function can be used with `async await` and `Promise`s. If the wrapped function returns a
- * promise (or is `async`) then the teardown is delayed until that `Promise` is resolved.
+ * promise \(or is `async`\) then the teardown is delayed until that `Promise` is resolved.
  *
  * In the NodeJS environment this function detects if `document` is present and if not, it creates
  * one by loading `domino` and installing it.
@@ -72,8 +72,9 @@ export function withHead<T extends Function>(html: string, blockFn: T): T {
 }
 
 /**
- * Wraps provided function (which typically contains the code of a test) into a new function that
+ * Wraps provided function \(which typically contains the code of a test\) into a new function that
  * performs the necessary setup of the environment.
+ *
  */
 function wrapTestFn<T extends Function>(
     elementGetter: () => HTMLElement, html: string, blockFn: T): T {

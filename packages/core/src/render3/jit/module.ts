@@ -78,7 +78,7 @@ export function flushModuleScopingQueueAsMuchAsPossible() {
 /**
  * Returns truthy if a declaration has resolved. If the declaration happens to be
  * an array of declarations, it will recurse to check each declaration in that array
- * (which may also be arrays).
+ * \(which may also be arrays\).
  *
  * 如果声明已解析，则返回
  * truthy。如果声明恰好是声明数组，它将递归检查该数组中的每个声明（也可以是数组）。
@@ -519,8 +519,8 @@ export function patchComponentDefWithScope<C>(
 }
 
 /**
- * Compute the pair of transitive scopes (compilation scope and exported scope) for a given type
- * (either a NgModule or a standalone component / directive / pipe).
+ * Compute the pair of transitive scopes \(compilation scope and exported scope\) for a given type
+ * \(either a NgModule or a standalone component / directive / pipe\).
  *
  * 计算给定类型（NgModule 或独立组件/指令/管道）的一对可传递范围（编译范围和导出范围）。
  *
@@ -565,7 +565,7 @@ export function transitiveScopesFor<T>(type: Type<T>): NgModuleTransitiveScopes 
 }
 
 /**
- * Compute the pair of transitive scopes (compilation scope and exported scope) for a given module.
+ * Compute the pair of transitive scopes \(compilation scope and exported scope\) for a given module.
  *
  * 计算给定模块的一对可传递范围（编译范围和导出范围）。
  *
@@ -578,7 +578,6 @@ export function transitiveScopesFor<T>(type: Type<T>): NgModuleTransitiveScopes 
  * @param moduleType module that transitive scope should be calculated for.
  *
  * 应该计算可传递范围的模块。
- *
  */
 export function transitiveScopesForNgModule<T>(moduleType: Type<T>): NgModuleTransitiveScopes {
   const def = getNgModuleDef(moduleType, true);

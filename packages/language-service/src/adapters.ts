@@ -98,12 +98,12 @@ export class LanguageServiceAdapter implements NgCompilerAdapter {
   }
 
   /**
-   * readResource() is an Angular-specific method for reading files that are not
+   * readResource\(\) is an Angular-specific method for reading files that are not
    * managed by the TS compiler host, namely templates and stylesheets.
    * It is a method on ExtendedTsCompilerHost, see
    * packages/compiler-cli/src/ngtsc/core/api/src/interfaces.ts
    *
-   * readResource() 是一种特定于 Angular 的方法，用于读取不由 TS
+   * readResource\(\) 是一种特定于 Angular 的方法，用于读取不由 TS
    * 编译器宿主管理的文件，即模板和样式表。它是 ExtendedTsCompilerHost 上的一个方法，请参阅
    * packages/compiler-cli/src/ngtsc/core/api/src/interfaces.ts
    *

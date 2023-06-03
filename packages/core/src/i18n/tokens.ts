@@ -51,8 +51,8 @@ export function getGlobalLocale(): string {
 
 /**
  * Provide this token to set the locale of your application.
- * It is used for i18n extraction, by i18n pipes (DatePipe, I18nPluralPipe, CurrencyPipe,
- * DecimalPipe and PercentPipe) and by ICU expressions.
+ * It is used for i18n extraction, by i18n pipes \(DatePipe, I18nPluralPipe, CurrencyPipe,
+ * DecimalPipe and PercentPipe\) and by ICU expressions.
  *
  * 提供此令牌以设置应用程序的语言环境。它通过 i18n
  * 管道（DatePipe、I18nPluralPipe、CurrencyPipe、DecimalPipe 和 PercentPipe）和 ICU 表达式用于 i18n
@@ -77,7 +77,6 @@ export function getGlobalLocale(): string {
  *   providers: [{provide: LOCALE_ID, useValue: 'en-US' }]
  * });
  * ```
- *
  * @publicApi
  */
 export const LOCALE_ID: InjectionToken<string> = new InjectionToken('LocaleId', {
@@ -146,8 +145,8 @@ export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrency
 });
 
 /**
- * Use this token at bootstrap to provide the content of your translation file (`xtb`,
- * `xlf` or `xlf2`) when you want to translate your application in another language.
+ * Use this token at bootstrap to provide the content of your translation file \(`xtb`,
+ * `xlf` or `xlf2`\) when you want to translate your application in another language.
  *
  * 当你想用另一种语言翻译应用程序时，可以在引导程序中使用此令牌来提供翻译文件的内容（`xtb`、`xlf`
  * 或 `xlf2`）
@@ -174,7 +173,6 @@ export const DEFAULT_CURRENCY_CODE = new InjectionToken<string>('DefaultCurrency
  *   providers: [{provide: TRANSLATIONS, useValue: translations }]
  * });
  * ```
- *
  * @publicApi
  */
 export const TRANSLATIONS = new InjectionToken<string>('Translations');
@@ -204,7 +202,6 @@ export const TRANSLATIONS = new InjectionToken<string>('Translations');
  *   providers: [{provide: TRANSLATIONS_FORMAT, useValue: 'xlf' }]
  * });
  * ```
- *
  * @publicApi
  */
 export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsFormat');
@@ -220,7 +217,7 @@ export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsForma
  *
  *   Error：如果缺少翻译，则抛出该错误。
  *
- * - Warning (default): show a warning in the console and/or shell.
+ * - Warning \(default\): show a warning in the console and/or shell.
  *
  *   Warning（默认）：在控制台和/或应用外壳中显示警告。
  *
@@ -247,7 +244,6 @@ export const TRANSLATIONS_FORMAT = new InjectionToken<string>('TranslationsForma
  *   missingTranslation: MissingTranslationStrategy.Error
  * });
  * ```
- *
  * @publicApi
  */
 export enum MissingTranslationStrategy {

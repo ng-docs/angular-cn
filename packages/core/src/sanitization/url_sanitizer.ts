@@ -17,22 +17,22 @@ import {XSS_SECURITY_URL} from '../error_details_base_url';
  * This regular expression matches a subset of URLs that will not cause script
  * execution if used in URL context within a HTML document. Specifically, this
  * regular expression matches if:
- * (1) Either a protocol that is not javascript:, and that has valid characters
- *     (alphanumeric or `[+-.]`).
- * (2) or no protocol.  A protocol must be followed by a colon. The below
+ * \(1\) Either a protocol that is not javascript:, and that has valid characters
+ *     \(alphanumeric or `[+-.]`\).
+ * \(2\) or no protocol.  A protocol must be followed by a colon. The below
  *     allows that by allowing colons only after one of the characters `[/?#]`.
- *     A colon after a hash (#) must be in the fragment.
- *     Otherwise, a colon after a (?) must be in a query.
- *     Otherwise, a colon after a single solidus (/) must be in a path.
- *     Otherwise, a colon after a double solidus (//) must be in the authority
- *     (before port).
+ *     A colon after a hash \(#\) must be in the fragment.
+ *     Otherwise, a colon after a \(?\) must be in a query.
+ *     Otherwise, a colon after a single solidus \(/\) must be in a path.
+ *     Otherwise, a colon after a double solidus \(//\) must be in the authority
+ *     \(before port\).
  *
  * 此正则表达式会匹配如果在 HTML 文档中的 URL 上下文中使用时不会导致脚本执行的 URL
  * 子集。具体来说，此正则表达式与 if（从这里开始的注释和从 Soy 的 EscapingConventions
  * 复制的正则表达式）匹配：（1）允许的协议（http、https、mailto 或 ftp）。
- *（2）或没有协议。协议后面必须跟一个冒号。下面的方法是只允许在字符 `[/?#]` 之一之后使用冒号。哈希
- * (#) 后面的冒号必须在片段中。否则，(?) 之后的冒号必须在查询中。否则，单个斜线 (/)
- * 之后的冒号必须在路径中。否则，双斜线 (//) 之后的冒号必须在权限中（port 之前）。
+ * （2）或没有协议。协议后面必须跟一个冒号。下面的方法是只允许在字符 `[/?#]` 之一之后使用冒号。哈希
+ * \(#\) 后面的冒号必须在片段中。否则，\(?\) 之后的冒号必须在查询中。否则，单个斜线 \(/\)
+ * 之后的冒号必须在路径中。否则，双斜线 \(//\) 之后的冒号必须在权限中（port 之前）。
  *
  * The pattern disallows &, used in HTML entity declarations before
  * one of the characters in `[/?#]`. This disallows HTML entities used in the

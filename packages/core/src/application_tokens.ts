@@ -15,7 +15,7 @@ import {getDocument} from './render3/interfaces/document';
  * {@link ViewEncapsulation#Emulated ViewEncapsulation.Emulated} is being used.
  *
  * The token is needed in cases when multiple applications are bootstrapped on a page
- * (for example, using `bootstrapApplication` calls). In this case, ensure that those applications
+ * \(for example, using `bootstrapApplication` calls\). In this case, ensure that those applications
  * have different `APP_ID` value setup. For example:
  *
  * ```
@@ -35,7 +35,7 @@ import {getDocument} from './render3/interfaces/document';
  * ```
  *
  * By default, when there is only one application bootstrapped, you don't need to provide the
- * `APP_ID` token (the `ng` will be used as an app ID).
+ * `APP_ID` token \(the `ng` will be used as an app ID\).
  *
  * @publicApi
  */

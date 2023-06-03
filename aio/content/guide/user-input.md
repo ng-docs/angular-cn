@@ -85,9 +85,9 @@ This section shows how to bind to the `keyup` event of an input box to get the u
 
 DOM 事件可以携带可能对组件有用的信息。本节将展示如何绑定输入框的 `keyup` 事件，在每个敲按键盘时获取用户输入。
 
-The following code listens to the `keyup` event and passes the entire event payload (`$event`) to the component event handler.
+The following code listens to the `keyup` event and passes the entire event payload \(`$event`\) to the component event handler.
 
-下面的代码监听 `keyup` 事件，并将整个事件载荷 (`$event`) 传给组件的事件处理器。
+下面的代码监听 `keyup` 事件，并将整个事件载荷 （`$event`） 传给组件的事件处理器。
 
 <code-example header="src/app/keyup.components.ts (template v.1)" path="user-input/src/app/keyup.components.ts" region="key-up-component-1-template"></code-example>
 
@@ -110,10 +110,10 @@ In this case, `target` refers to the [`<input>` element](https://developer.mozil
 在本例中，`target` 是[`<input>` 元素](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)，
 `event.target.value` 返回该元素的当前内容。
 
-After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character (`|`).
+After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character \(`|`\).
 The [interpolation](guide/interpolation) displays the accumulating input box changes from the `values` property.
 
-在组件的 `onKey()` 方法中，把输入框的值和分隔符 (`|`) 追加组件的 `values` 属性。
+在组件的 `onKey()` 方法中，把输入框的值和分隔符 （`|`） 追加组件的 `values` 属性。
 使用[插值](guide/interpolation)来把存放累加结果的 `values` 属性回显到屏幕上。
 
 <!-- vale Angular.Angular_Spelling = NO -->
@@ -196,11 +196,11 @@ The next section shows how to use template reference variables to address this p
 There's another way to get the user data:
 use Angular [**template reference variables**](guide/template-reference-variables).
 These variables provide direct access to an element from within the template.
-To declare a template reference variable, precede an identifier with a hash/pound character (`#`).
+To declare a template reference variable, precede an identifier with a hash/pound character \(`#`\).
 
 还有另一种获取用户数据的方式：使用 Angular 的[**模板引用变量**](guide/template-reference-variables)。
 这些变量提供了从模块中直接访问元素的能力。
-在标识符前加上井号 (`#`) 就能声明一个模板引用变量。
+在标识符前加上井号 （`#`） 就能声明一个模板引用变量。
 
 The following example uses a template reference variable to implement a keystroke loopback in a simple template.
 
@@ -256,7 +256,7 @@ It no longer requires knowledge of the `$event` and its structure.
 
 <a id="key-event"></a>
 
-## Key event filtering (with `key.enter`)
+## Key event filtering \(with `key.enter`\)
 
 ## 按键事件过滤（通过 `key.enter`）
 
@@ -286,7 +286,7 @@ Here's how it works.
 
 ## On blur
 
-## 失焦事件 (blur)
+## 失焦事件 （blur）
 
 In the previous example, the current state of the input box is lost if the user mouses away and clicks elsewhere without first pressing *Enter*.
 The component's `value` property is updated only when the user presses *Enter*.

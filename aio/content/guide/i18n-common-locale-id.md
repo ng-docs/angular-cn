@@ -2,7 +2,7 @@
 
 # 通过 ID 引用语言环境
 
-Angular uses the Unicode *locale identifier* (Unicode locale ID) to find the correct locale data for internationalization of text strings.
+Angular uses the Unicode *locale identifier* \(Unicode locale ID\) to find the correct locale data for internationalization of text strings.
 
 Angular 使用 Unicode *语言环境标识符*（Unicode 语言环境 ID）来查找正确的语言环境数据，以实现文本字符串的国际化。
 
@@ -24,9 +24,9 @@ Angular 使用 Unicode *语言环境标识符*（Unicode 语言环境 ID）来�
 </div>
 
 A locale ID specifies the language, country, and an optional code for further variants or subdivisions.
-A locale ID consists of the language identifier, a hyphen (`-`) character, and the locale extension.
+A locale ID consists of the language identifier, a hyphen \(`-`\) character, and the locale extension.
 
-语言环境 ID 指定语言、国家/地区和其他变体或细分的可选代码。语言环境 ID 由语言标识符、破折号(`-`)字符和语言环境扩展组成。
+语言环境 ID 指定语言、国家/地区和其他变体或细分的可选代码。语言环境 ID 由语言标识符、破折号（`-`）字符和语言环境扩展组成。
 
 <code-example>
 

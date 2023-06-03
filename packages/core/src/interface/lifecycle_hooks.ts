@@ -15,13 +15,11 @@ import {SimpleChanges} from './simple_change';
  *
  * 一个生命周期钩子，当指令的任何一个可绑定属性发生变化时调用。
  * 定义一个 `ngOnChanges()` 方法来处理这些变更。
- *
  * @see `DoCheck`
  * @see `OnInit`
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface to
@@ -57,12 +55,10 @@ export interface OnChanges {
  *
  * 一个生命周期钩子，它会在 Angular 初始化完了该指令的所有数据绑定属性之后调用。
  * 定义 `ngOnInit()` 方法可以处理所有附加的初始化任务。
- *
  * @see `AfterContentInit`
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface to
@@ -113,7 +109,6 @@ export interface OnInit {
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface
@@ -152,7 +147,6 @@ export interface DoCheck {
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface
@@ -182,13 +176,11 @@ export interface OnDestroy {
  *
  * 一个生命周期钩子，它会在 Angular 完全实例化了指令的所有内容之后调用。
  * 定义一个 `ngAfterContentInit()` 方法来处理额外的初始化任务。
- *
  * @see `OnInit`
  * @see `AfterViewInit`
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface to
@@ -220,12 +212,10 @@ export interface AfterContentInit {
  * completed checking all content of a directive.
  *
  * 一个生命周期钩子，它会在默认的变更检测器对指令的所有内容完成了变更检查之后调用。
- *
  * @see `AfterViewChecked`
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface to
@@ -256,13 +246,11 @@ export interface AfterContentChecked {
  *
  * 一个生命周期钩子，会在 Angular 完全初始化了组件的视图后调用。
  * 定义一个 `ngAfterViewInit()` 方法来处理一些额外的初始化任务。
- *
  * @see `OnInit`
  * @see `AfterContentInit`
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface to
@@ -292,12 +280,10 @@ export interface AfterViewInit {
  * completed checking a component's view for changes.
  *
  * 一个生命周期钩子，它会在默认的变更检测器完成了对组件视图的变更检测之后调用。
- *
  * @see `AfterContentChecked`
  * @see [Lifecycle hooks guide](guide/lifecycle-hooks)
  *
  * [生命周期钩子](guide/lifecycle-hooks#onchanges)
- *
  * @usageNotes
  *
  * The following snippet shows how a component can implement this interface to

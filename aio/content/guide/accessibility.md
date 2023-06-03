@@ -79,7 +79,7 @@ See the [Binding syntax](guide/binding-syntax#html-attribute-vs-dom-property) gu
 ## Angular UI 组件
 
 The [Angular Material](https://material.angular.io) library, which is maintained by the Angular team, is a suite of reusable UI components that aims to be fully accessible.
-The [Component Development Kit (CDK)](https://material.angular.io/cdk/categories) includes the `a11y` package that provides tools to support various areas of accessibility.
+The [Component Development Kit \(CDK\)](https://material.angular.io/cdk/categories) includes the `a11y` package that provides tools to support various areas of accessibility.
 For example:
 
 由 Angular 团队维护的 [Angular Material](https://material.angular.cn) 库是旨在提供完全无障碍的一组可复用 UI 组件。[组件开发工具包（CDK）](https://material.angular.cn/cdk/categories)中包括 `a11y` 软件包，该软件包提供了支持无障碍领域的各种工具。比如：
@@ -199,7 +199,7 @@ You should avoid situations where focus returns to the `body` element after a ro
 CSS classes applied to active `RouterLink` elements, such as `RouterLinkActive`, provide a visual cue to identify the active link.
 Unfortunately, a visual cue doesn't help blind or visually impaired users.
 Applying the `aria-current` attribute to the element can help identify the active link.
-For more information, see [Mozilla Developer Network \(MDN\) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
+For more information, see [Mozilla Developer Network \(MDN\) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)\).
 
 用在活跃 `RouterLink` 元素上的 CSS 类（比如 `RouterLinkActive`）提供了有关哪个链接正处于活跃状态的视觉提醒。不幸的是，此类提醒不适用于盲人或视障用户。将 `aria-current` 属性添加到此元素，可以帮你标出活跃链接。有关更多信息，参阅[MDN aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)。
 
@@ -271,7 +271,7 @@ The following example shows how to apply the `active-page` class to active links
 
 * [Angular ESLint](https://github.com/angular-eslint/angular-eslint#functionality) provides linting rules that can help you make sure your code meets accessibility standards.
 
-  [Angular ESLint](https://github.com/angular-eslint/angular-eslint#functionality)提供了整理(linting)规则，可以帮助你确保你的代码符合无障碍性标准。
+  [Angular ESLint](https://github.com/angular-eslint/angular-eslint#functionality)提供了整理（linting）规则，可以帮助你确保你的代码符合无障碍性标准。
 
 <!-- vale Angular.Angular_Spelling = YES -->
 

@@ -5,7 +5,7 @@
 This document describes the Angular Package Format \(APF\).
 APF is an Angular specific specification for the structure and format of npm packages that is used by all first-party Angular packages \(`@angular/core`, `@angular/material`, etc.\) and most third-party Angular libraries.
 
-本文档描述了 Angular 包格式 (APF)。APF 是针对 npm 包结构和格式的 Angular 专用规范，所有第一方 Angular 包（`@angular/core` 、 `@angular/material` 等）和大多数第三方 Angular 库都使用了该规范。
+本文档描述了 Angular 包格式 \(APF\)。APF 是针对 npm 包结构和格式的 Angular 专用规范，所有第一方 Angular 包（`@angular/core` 、 `@angular/material` 等）和大多数第三方 Angular 库都使用了该规范。
 
 APF enables a package to work seamlessly under most common scenarios that use Angular.
 Packages that use APF are compatible with the tooling offered by the Angular team as well as wider JavaScript ecosystem.
@@ -120,7 +120,7 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 | `index.d.ts`                                                                                                      | 主入口点 `@angular/core` 捆绑的 `.d.ts`。                                                                                                                                                                      |
 | `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                               | Tree of `@angular/core` sources in unflattened ES2022 format.                                                                                                                                                  |
 | `esm2022/testing/`                                                                                                | Tree of the `@angular/core/testing` entrypoint in unflattened ES2022 format.                                                                                                                                   |
-| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2022 format, along with source maps.                                                                                                                            |
+| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened \(FESM\) ES2022 format, along with source maps.                                                                                                                          |
 | `testing/`                                                                                                        | Directory representing the "testing" entrypoint.                                                                                                                                                               |
 | `testing/`                                                                                                        | 代表 `testing` 入口点的目录。                                                                                                                                                                                  |
 | `testing/index.d.ts`                                                                                              | Bundled `.d.ts` for the `@angular/core/testing` entrypoint.                                                                                                                                                    |
@@ -134,7 +134,7 @@ The primary `package.json` contains important package metadata, including the fo
 
 * It [declares](#esm-declaration) the package to be in EcmaScript Module \(ESM\) format
 
-  它把此包[声明](#esm-declaration)为 EcmaScript 模块 (ESM) 格式
+  它把此包[声明](#esm-declaration)为 EcmaScript 模块 \(ESM\) 格式
 
 * It contains an [`"exports"` field](#exports) which defines the available source code formats of all entrypoints
 
@@ -205,14 +205,14 @@ For each entrypoint, the available formats are:
 
 主要看 `"."` 和 `"./testing"` 这两个键，它们分别定义了 `@angular/core` 主要入口点和 `@angular/core/testing` 次要入口点的可用代码格式。对于每个入口点，可用的格式为：
 
-| Formats                  | Details                                                                                                                                                                         |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 格式                     | 详情                                                                                                                                                                            |
-| Typings (`.d.ts` files)  | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                         |
-| 类型定义（`.d.ts` 文件） | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。                                                                                                                                  |
-| `es2022`                 | ES2022 code flattened into a single source file.                                                                                                                                |
-| `esm2022`                | ES2022 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
-| `default`                | ES2022 code flattened into a single source.                                                                                                                                     |
+| Formats                   | Details                                                                                                                                                                           |
+| :------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 格式                      | 详情                                                                                                                                                                              |
+| Typings \(`.d.ts` files\) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
+| 类型定义（`.d.ts` 文件）  | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。                                                                                                                                    |
+| `es2022`                  | ES2022 code flattened into a single source file.                                                                                                                                  |
+| `esm2022`                 | ES2022 code in unflattened source files \(this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details\). |
+| `default`                 | ES2022 code flattened into a single source.                                                                                                                                       |
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 
@@ -384,7 +384,7 @@ Please check out the excellent post ["The cost of small modules"](https://nolanl
 
 APF 指定代码要以“扁平化”的 ES 模块格式发布。这显著减少了 Angular 应用程序的构建时间以及最终应用程序包的下载和解析时间。请查看 Nolan Lawson 发表的优秀文章[“小模块的成本”](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules)。
 
-The Angular compiler can generate index ES module files. Tools like Rollup can use these files to generate flattened modules in a *Flattened ES Module* (FESM) file format.
+The Angular compiler can generate index ES module files. Tools like Rollup can use these files to generate flattened modules in a *Flattened ES Module* \(FESM\) file format.
 
 Angular 编译器可以生成索引 ES 模块文件。像 Rollup 这样的工具可以用这些文件以扁平化 ES 模块（FESM）文件格式生成扁平化模块。
 
@@ -419,7 +419,7 @@ To generate a flattened ES Module index file, use the following configuration op
 
 </code-example>
 
-Once the index file (for example, `my-ui-lib.js`) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
+Once the index file \(for example, `my-ui-lib.js`\) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
 
 一旦 ngc 生成了索引文件（比如 `my-ui-lib.js`），打包器和优化器（如 Rollup）就可用于生成扁平化的 ESM 文件。
 
@@ -485,13 +485,13 @@ This is because the tslib version is tied to the TypeScript version used to comp
 
 ## 例子
 
-* [@angular/core package](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
+* [&commat;angular/core package](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
 
-  [@angular/core 包](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
+  [&commat;angular/core 包](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
 
-* [@angular/material package](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
+* [&commat;angular/material package](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
 
-  [@angular/material 包](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
+  [&commat;angular/material 包](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
 
 ## Definition of terms
 
@@ -623,7 +623,7 @@ These module IDs are usually considered to be private APIs that can change over 
 An import coming from an entry point.
 The available top-level imports are what define the public API and are exposed in "&commat;angular/name" modules, such as `@angular/core` or `@angular/common`.
 
-来自入口点的导入。可用的顶级导入定义了公共 API，并在“@angular/name”模块中公开，比如 `@angular/core` 或 `@angular/common`。
+来自入口点的导入。可用的顶级导入定义了公共 API，并在“&commat;angular/name”模块中公开，比如 `@angular/core` 或 `@angular/common`。
 
 #### Tree-shaking
 

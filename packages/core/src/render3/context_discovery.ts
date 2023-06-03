@@ -43,9 +43,9 @@ import {getComponentLViewByIndex, unwrapRNode} from './util/view_utils';
  *
  * If the monkey-patch value is not detected then the code will walk up the DOM until an element
  * is found which contains a monkey-patch reference. When that occurs then the provided element
- * will be updated with a new context (which is then returned). If the monkey-patch value is not
- * detected for a component/directive instance then it will throw an error (all components and
- * directives should be automatically monkey-patched by ivy).
+ * will be updated with a new context \(which is then returned\). If the monkey-patch value is not
+ * detected for a component/directive instance then it will throw an error \(all components and
+ * directives should be automatically monkey-patched by ivy\).
  *
  * 如果未检测到 Monkey-patch 值，则代码将沿着 DOM 向上走，直到找到包含 Monkey-patch
  * 引用的元素。当发生这种情况时，所提供的元素将使用新的上下文（然后返回）进行更新。如果未为组件/指令实例检测到
@@ -54,7 +54,6 @@ import {getComponentLViewByIndex, unwrapRNode} from './util/view_utils';
  * @param target Component, Directive or DOM Node.
  *
  * 组件、指令或 DOM 节点。
- *
  */
 export function getLContext(target: any): LContext|null {
   let mpValue = readPatchedData(target);
@@ -198,8 +197,8 @@ export function getComponentViewByInstance(componentInstance: {}): LView {
 const MONKEY_PATCH_KEY_NAME = '__ngContext__';
 
 /**
- * Assigns the given data to the given target (which could be a component,
- * directive or DOM node instance) using monkey-patching.
+ * Assigns the given data to the given target \(which could be a component,
+ * directive or DOM node instance\) using monkey-patching.
  *
  * 使用 Monkey-patching 将给定数据分配给给定目标（可以是组件、指令或 DOM 节点实例）。
  *
@@ -218,8 +217,8 @@ export function attachPatchData(target: any, data: LView|LContext) {
 }
 
 /**
- * Returns the monkey-patch value data present on the target (which could be
- * a component, directive or a DOM node).
+ * Returns the monkey-patch value data present on the target \(which could be
+ * a component, directive or a DOM node\).
  *
  * 返回目标上存在的 Monkey-patch 值数据（可以是组件、指令或 DOM 节点）。
  *
@@ -264,7 +263,7 @@ function findViaNativeElement(lView: LView, target: RElement): number {
 }
 
 /**
- * Locates the next tNode (child, sibling or parent).
+ * Locates the next tNode \(child, sibling or parent\).
  *
  * 定位下一个 tNode（子级、同级或父级）。
  *
@@ -374,7 +373,7 @@ export function getComponentAtNodeIndex(nodeIndex: number, lView: LView): {}|nul
 }
 
 /**
- * Returns a map of local references (local reference name => element or directive instance) that
+ * Returns a map of local references \(local reference name => element or directive instance\) that
  * exist on a given element.
  *
  * 返回给定元素上存在的本地引用（本地引用 name => 元素或指令实例）的映射表。

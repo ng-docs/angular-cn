@@ -65,7 +65,7 @@ export interface AnimationTriggerNames {
  */
 export interface DirectiveMeta {
   /**
-   * Name of the directive class (used for debugging).
+   * Name of the directive class \(used for debugging\).
    *
    * 指令类的名称（用于调试）。
    *
@@ -113,7 +113,7 @@ export interface DirectiveMeta {
   outputs: InputOutputPropertySet;
 
   /**
-   * Name under which the directive is exported, if any (exportAs in Angular).
+   * Name under which the directive is exported, if any \(exportAs in Angular\).
    *
    * 导出指令的名称（如果有）（在 Angular 中为 exportAs）。
    *
@@ -176,7 +176,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
   readonly target: Target;
 
   /**
-   * For a given template node (either an `Element` or a `Template`), get the set of directives
+   * For a given template node \(either an `Element` or a `Template`\), get the set of directives
    * which matched the node, if any.
    *
    * 对于给定的模板节点（`Element` 或 `Template`），获取与该节点匹配的指令集（如果有）。
@@ -254,8 +254,8 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
   getNestingLevel(template: Template): number;
 
   /**
-   * Get all `Reference`s and `Variables` visible within the given `Template` (or at the top level,
-   * if `null` is passed).
+   * Get all `Reference`s and `Variables` visible within the given `Template` \(or at the top level,
+   * if `null` is passed\).
    *
    * 获取给定 `Template` 中的所有 `Reference` 和 `Variables`（或在顶级，如果传递了 `null`）。
    *

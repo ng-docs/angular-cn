@@ -35,8 +35,8 @@ export function isDevMode(): boolean {
  * 禁用 Angular 的开发模式，该模式将关闭框架中的断言和其他检查。
  *
  * One important assertion this disables verifies that a change detection pass
- * does not result in additional changes to any bindings (also known as
- * unidirectional data flow).
+ * does not result in additional changes to any bindings \(also known as
+ * unidirectional data flow\).
  *
  * 一个重要的断言，它禁用了对变更检测不会导致对任何绑定的（也称为单向数据流）额外更改的验证。
  *

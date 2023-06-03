@@ -34,7 +34,7 @@ export abstract class ViewportScroller {
    *
    * 配置滚动到锚点时使用的顶部偏移量。
    *
-   * @param offset A position in screen coordinates (a tuple with x and y values)
+   * @param offset A position in screen coordinates \(a tuple with x and y values\)
    * or a function that returns the top offset position.
    *
    * 屏幕坐标中的位置（具有 x 和 y 值的元组）或返回顶部偏移位置的函数。
@@ -47,7 +47,9 @@ export abstract class ViewportScroller {
    *
    * 检索当前滚动位置。
    *
-   * @returns A position in screen coordinates (a tuple with x and y values).
+   * @returns
+   *
+   * A position in screen coordinates \(a tuple with x and y values\).
    *
    * 屏幕坐标中的位置（具有 x 和 y 值的元组）。
    *
@@ -59,7 +61,7 @@ export abstract class ViewportScroller {
    *
    * 滚动到指定位置。
    *
-   * @param position A position in screen coordinates (a tuple with x and y values).
+   * @param position A position in screen coordinates \(a tuple with x and y values\).
    *
    * 屏幕坐标中的位置（具有 x 和 y 值的元组）。
    *
@@ -106,7 +108,7 @@ export class BrowserViewportScroller implements ViewportScroller {
    *
    * 配置滚动到锚点时使用的顶部偏移量。
    *
-   * @param offset A position in screen coordinates (a tuple with x and y values)
+   * @param offset A position in screen coordinates \(a tuple with x and y values\)
    * or a function that returns the top offset position.
    *
    * 屏幕坐标中的位置（具有 x 和 y 值的元组）或返回顶部偏移位置的函数。

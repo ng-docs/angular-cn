@@ -16,8 +16,8 @@ import {ɵɵdefineInjectable} from './interface/defs';
  *
  * 创建可用于 DI 提供者的令牌。
  *
- * Use an `InjectionToken` whenever the type you are injecting is not reified (does not have a
- * runtime representation) such as when injecting an interface, callable type, array or
+ * Use an `InjectionToken` whenever the type you are injecting is not reified \(does not have a
+ * runtime representation\) such as when injecting an interface, callable type, array or
  * parameterized type.
  *
  * 每当你要注入的类型无法确定（没有运行时表示形式）时，比如在注入接口、可调用类型、数组或参数化类型时，都应使用
@@ -36,7 +36,7 @@ import {ɵɵdefineInjectable} from './interface/defs';
  * ```
  *
  * When creating an `InjectionToken`, you can optionally specify a factory function which returns
- * (possibly by creating) a default value of the parameterized type `T`. This sets up the
+ * \(possibly by creating\) a default value of the parameterized type `T`. This sets up the
  * `InjectionToken` using this factory as a provider as if it was defined explicitly in the
  * application's root injector. If the factory function, which takes zero arguments, needs to inject
  * dependencies, it can do so using the `inject` function.
@@ -48,8 +48,8 @@ import {ɵɵdefineInjectable} from './interface/defs';
  * `inject` 函数来这样做。参见以下示例。
  *
  * Additionally, if a `factory` is specified you can also specify the `providedIn` option, which
- * overrides the above behavior and marks the token as belonging to a particular `@NgModule` (note:
- * this option is now deprecated). As mentioned above, `'root'` is the default value for
+ * overrides the above behavior and marks the token as belonging to a particular `@NgModule` \(note:
+ * this option is now deprecated\). As mentioned above, `'root'` is the default value for
  * `providedIn`.
  *
  * 此外，如果指定了 `factory` ，你还可以指定 `providedIn`
@@ -73,6 +73,7 @@ import {ɵɵdefineInjectable} from './interface/defs';
  * ### Tree-shakable InjectionToken
  *
  * {@example core/di/ts/injector_spec.ts region='ShakableInjectionToken'}
+ *
  * @publicApi
  */
 export class InjectionToken<T> {

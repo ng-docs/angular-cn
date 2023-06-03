@@ -69,7 +69,7 @@ To extract the source language file, complete the following actions.
    <code-example path="i18n/doc-files/commands.sh" region="extract-i18n-default"></code-example>
 
 The `extract-i18n` command creates a source language file named `messages.xlf` in the root directory of your project.
-For more information about the XML Localization Interchange File Format (XLIFF, version 1.2), see [XLIFF][WikipediaWikiXliff].
+For more information about the XML Localization Interchange File Format \(XLIFF, version 1.2\), see [XLIFF][WikipediaWikiXliff].
 
 `extract-i18n` 命令在项目的根目录中创建一个名为 `messages.xlf` 的源语言文件。有关 XML 本地化交换文件格式（XLIFF，版本 1.2）的更多信息，请参阅 [XLIFF][WikipediaWikiXliff]。
 
@@ -113,24 +113,24 @@ The `extract-i18n` command creates files in the following translation formats.
 
 `extract-i18n` 命令会创建如下翻译格式的文件。
 
-| Translation format | Details                                                                                                          | File extension  |
-| :----------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------- |
-| 翻译格式           | 详情                                                                                                             | 文件扩展名      |
-| ARB                | [Application Resource Bundle][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]           | `.arb`          |
-| ARB                | [应用资源包][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]                            | `.arb`          |
-| ARB                | [应用资源包][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]                            | `.arb`          |
-| JSON               | [JavaScript Object Notation][JsonMain]                                                                           | `.json`         |
-| JSON               | [JavaScript 对象表示法][JsonMain]                                                                                | `.json`         |
-| JSON               | [JavaScript 对象表示法][JsonMain]                                                                                | `.json`         |
-| XLIFF 1.2          | [XML Localization Interchange File Format, version 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                | `.xlf`          |
-| XLIFF 1.2          | [XML 本地化交换文件格式，版本 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                                     | `.xlf`          |
-| XLIFF 1.2          | [XML 本地化交换文件格式，版本 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                                     | `.xlf`          |
-| XLIFF 2            | [XML Localization Interchange File Format, version 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf`          |
-| XLIFF 2            | [XML 本地化交换文件格式，版本 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html]                      | `.xlf`          |
-| XLIFF 2            | [XML 本地化交换文件格式，版本 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html]                      | `.xlf`          |
-| XMB                | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                 | `.xmb` (`.xtb`) |
-| XMB                | [XML 消息包][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                         | `.xmb` (`.xtb`) |
-| XMB                | [XML 消息包][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                         | `.xmb` (`.xtb`) |
+| Translation format | Details                                                                                                          | File extension    |
+| :----------------- | :--------------------------------------------------------------------------------------------------------------- | :---------------- |
+| 翻译格式           | 详情                                                                                                             | 文件扩展名        |
+| ARB                | [Application Resource Bundle][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]           | `.arb`            |
+| ARB                | [应用资源包][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]                            | `.arb`            |
+| ARB                | [应用资源包][GithubGoogleAppResourceBundleWikiApplicationresourcebundlespecification]                            | `.arb`            |
+| JSON               | [JavaScript Object Notation][JsonMain]                                                                           | `.json`           |
+| JSON               | [JavaScript 对象表示法][JsonMain]                                                                                | `.json`           |
+| JSON               | [JavaScript 对象表示法][JsonMain]                                                                                | `.json`           |
+| XLIFF 1.2          | [XML Localization Interchange File Format, version 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                | `.xlf`            |
+| XLIFF 1.2          | [XML 本地化交换文件格式，版本 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                                     | `.xlf`            |
+| XLIFF 1.2          | [XML 本地化交换文件格式，版本 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                                     | `.xlf`            |
+| XLIFF 2            | [XML Localization Interchange File Format, version 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf`            |
+| XLIFF 2            | [XML 本地化交换文件格式，版本 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html]                      | `.xlf`            |
+| XLIFF 2            | [XML 本地化交换文件格式，版本 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html]                      | `.xlf`            |
+| XMB                | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                 | `.xmb` \(`.xtb`\) |
+| XMB                | [XML 消息包][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                         | `.xmb` \(`.xtb`\) |
+| XMB                | [XML 消息包][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                         | `.xmb` \(`.xtb`\) |
 
 Specify the translation format explicitly with the `--format` command option.
 
@@ -236,9 +236,9 @@ For example, to create a French translation file, complete the following actions
 
    复制 `messages.xlf` 源语言文件。
 
-1. Rename the copy to `messages.fr.xlf` for the French language (`fr`) translation.
+1. Rename the copy to `messages.fr.xlf` for the French language \(`fr`\) translation.
 
-   将副本重命名为 `messages.fr.xlf` 以进行法语 ( `fr` ) 翻译。
+   将副本重命名为 `messages.fr.xlf` 以进行法语（`fr`）翻译。
 
 1. Move the `fr` translation file to the `src/locale` directory.
 
@@ -378,7 +378,7 @@ The following example displays a `select` ICU expression in the component templa
 <code-example header="src/app/app.component.html" path="i18n/src/app/app.component.html" region="i18n-select"></code-example>
 
 In this example, Angular extracts the expression into two translation units.
-The first contains the text outside of the `select` clause, and uses a placeholder for `select` (`<x id="ICU">`):
+The first contains the text outside of the `select` clause, and uses a placeholder for `select` \(`<x id="ICU">`\):
 
 在这个例子中，Angular 将表达式提取到两个翻译单元中。第一个包含 `select` 子句之外的文本，并为 `select` 使用占位符（`<x id="ICU">`）：
 

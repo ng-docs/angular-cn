@@ -96,7 +96,7 @@ interface PackageMetadata {
    */
   npmPackageName: string;
   /**
-   * Record of entry-points (including the primary one) and their info.
+   * Record of entry-points \(including the primary one\) and their info.
    *
    * 入口点（包括主要入口点）及其信息的记录。
    *
@@ -402,7 +402,7 @@ function main(args: string[]): void {
   }
 
   /**
-   * Inserts or edits properties into the package.json file(s) in the package so that
+   * Inserts or edits properties into the package.json file\(s\) in the package so that
    * they point to all the right generated artifacts.
    *
    * 将属性插入或编辑到包中的 package.json 文件中，以使它们指向所有正确生成的工件。
@@ -411,15 +411,12 @@ function main(args: string[]): void {
    *   the package output.
    *
    * `package.json` 存储在包输出中的路径。
-   *
    * @param parsedPackage Parsed package.json content
    *
    * 解析的 package.json 内容
-   *
    * @param isGeneratedPackageJson Whether the passed package.json has been generated.
    *
    * 是否已生成传递的 package.json 。
-   *
    */
   function insertFormatFieldsIntoPackageJson(
       packageJsonOutRelativePath: string, parsedPackage: Readonly<PackageJson>,
@@ -554,7 +551,7 @@ function main(args: string[]): void {
   }
 
   /**
-   * Whether the package explicitly sets any of the format properties (like `main`).
+   * Whether the package explicitly sets any of the format properties \(like `main`\).
    *
    * 包是否显式设置任何格式属性（例如 `main`）。
    *

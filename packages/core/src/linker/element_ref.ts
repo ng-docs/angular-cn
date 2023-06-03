@@ -77,7 +77,7 @@ export function createElementRef(tNode: TNode, lView: LView): ElementRef {
 export class ElementRef<T = any> {
   /**
    * The underlying native element or `null` if direct access to native elements is not supported
-   * (e.g. when the application runs in a web worker).
+   * \(e.g. when the application runs in a web worker\).
    *
    * 背后的原生元素，如果不支持直接访问原生元素，则为 `null`（比如：在 Web Worker
    * 环境下运行此应用的时候）。

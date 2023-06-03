@@ -157,16 +157,14 @@ export abstract class EnvironmentInjector implements Injector {
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
    * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
-   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
    * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
-   *
    * @deprecated
    *
-   * use object-based flags (`InjectOptions`) instead.
+   * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   * 改用基于对象的标志（`InjectOptions`）。
    *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;

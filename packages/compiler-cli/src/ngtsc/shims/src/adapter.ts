@@ -29,7 +29,7 @@ interface ShimGeneratorData {
  * The `ShimAdapter` provides an API that's designed to be used by a `ts.CompilerHost`
  * implementation and allows it to include synthetic "shim" files in the program that's being
  * created. It works for both freshly created programs as well as with reuse of an older program
- * (which already may contain shim files and thus have a different creation flow).
+ * \(which already may contain shim files and thus have a different creation flow\).
  *
  * `ShimAdapter` 提供了一个旨在供 `ts.CompilerHost` 实现使用的
  * API，并允许它在正在创建的程序中包含合成的“shim”文件。它适用于新创建的程序以及重用旧程序（可能已经包含

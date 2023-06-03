@@ -163,7 +163,7 @@ To tell the library how to build the schematics, add a `tsconfig.schematics.json
    | `outDir`  | Maps to the library's output folder. By default, this is the `dist/my-lib` folder at the root of your workspace. |
    | `outDir`  | 映射到了库的输出目录下。默认情况下，这是工作区根目录下的 `dist/my-lib` 文件夹。                                  |
 
-1. To make sure your schematics source files get compiled into the library bundle, add the following scripts to the `package.json` file in your library project's root folder (`projects/my-lib`).
+1. To make sure your schematics source files get compiled into the library bundle, add the following scripts to the `package.json` file in your library project's root folder \(`projects/my-lib`\).
 
    要确保你的原理图源文件会被编译进库包中，请把下列脚本添加到库项目的根文件夹（`projects/my-lib`）下的 `package.json` 文件中。
 
@@ -365,7 +365,7 @@ You now have the framework in place for creating the code that actually modifies
 
 你现在有了一个框架，可用来创建一些真正修改用户程序的代码，以便对库中定义的服务进行设置。
 
-The Angular workspace where the user installed your library contains multiple projects (applications and libraries).
+The Angular workspace where the user installed your library contains multiple projects \(applications and libraries\).
 The user can specify the project on the command line, or let it default.
 In either case, your code needs to identify the specific project to which this schematic is being applied, so that you can retrieve information from the project configuration.
 

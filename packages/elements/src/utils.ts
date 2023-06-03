@@ -31,7 +31,7 @@ export const scheduler = {
 
   /**
    * Schedule a callback to be called before the next render.
-   * (If `window.requestAnimationFrame()` is not available, use `scheduler.schedule()` instead.)
+   * \(If `window.requestAnimationFrame()` is not available, use `scheduler.schedule()` instead.\)
    *
    * 安排要在下一次渲染之前调用的回调。（如果 `window.requestAnimationFrame()` 不可用，请改用
    * `scheduler.schedule()` 。）

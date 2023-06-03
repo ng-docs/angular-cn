@@ -142,25 +142,22 @@ export function assembleBoundTextPlaceholders(
  *
  * 将占位符映射中的占位符名称格式化为表达式。
  *
- * The placeholder names are converted from "internal" format (e.g. `START_TAG_DIV_1`) to "external"
- * format (e.g. `startTagDiv_1`).
+ * The placeholder names are converted from "internal" format \(e.g. `START_TAG_DIV_1`\) to "external"
+ * format \(e.g. `startTagDiv_1`\).
  *
  * 占位符名称会从“内部”格式（例如 `START_TAG_DIV_1`）转换为“外部”格式（例如 `startTagDiv_1`）。
  *
  * @param params A map of placeholder names to expressions.
  *
  * 占位符名称到表达式的映射。
- *
  * @param useCamelCase whether to camelCase the placeholder name when formatting.
  *
  * 格式化时是否要将占位符名称 CamelCase 。
- *
  * @returns
  *
  * A new map of formatted placeholder names to expressions.
  *
  * 格式化的占位符名称到表达式的新映射。
- *
  */
 export function formatI18nPlaceholderNamesInMap(
     params: {[name: string]: o.Expression} = {}, useCamelCase: boolean) {
@@ -174,7 +171,7 @@ export function formatI18nPlaceholderNamesInMap(
 
 /**
  * Converts internal placeholder names to public-facing format
- * (for example to use in goog.getMsg call).
+ * \(for example to use in goog.getMsg call\).
  * Example: `START_TAG_DIV_1` is converted to `startTagDiv_1`.
  *
  * 将内部占位符名称转换为面向公众的格式（例如在 goog.getMsg 调用中使用）。示例： `START_TAG_DIV_1`
@@ -183,13 +180,11 @@ export function formatI18nPlaceholderNamesInMap(
  * @param name The placeholder name that should be formatted
  *
  * 应该格式化的占位符名称
- *
  * @returns
  *
  * Formatted placeholder name
  *
  * 格式化的占位符名称
- *
  */
 export function formatI18nPlaceholderName(name: string, useCamelCase: boolean = true): string {
   const publicName = toPublicName(name);

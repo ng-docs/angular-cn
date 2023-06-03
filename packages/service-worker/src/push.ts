@@ -183,8 +183,8 @@ export class SwPush {
   readonly subscription: Observable<PushSubscription|null>;
 
   /**
-   * True if the Service Worker is enabled (supported by the browser and enabled via
-   * `ServiceWorkerModule`).
+   * True if the Service Worker is enabled \(supported by the browser and enabled via
+   * `ServiceWorkerModule`\).
    *
    * 如果启用了 Service Worker（受浏览器支持并通过 `ServiceWorkerModule` 启用），则为真。
    *

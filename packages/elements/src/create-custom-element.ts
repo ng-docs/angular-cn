@@ -16,15 +16,14 @@ import {getComponentInputs, getDefaultAttributeToPropertyInputs} from './utils';
 /**
  * Prototype for a class constructor based on an Angular component
  * that can be used for custom element registration. Implemented and returned
- * by the {@link createCustomElement createCustomElement() function}.
+ * by the {@link createCustomElement createCustomElement\(\) function}.
  *
  * 基于 Angular 组件的类构造函数的原型，该原型可用于自定义元素注册。由 {@link createCustomElement
- * createCustomElement() 函数} 实现并返回。
+ * createCustomElement\(\) 函数} 实现并返回。
  *
  * @see [Angular Elements Overview](guide/elements "Turning Angular components into custom elements")
  *
  * [Angular 元素概述](guide/elements "将 Angular 组件变成自定义元素")
- *
  * @publicApi
  */
 export interface NgElementConstructor<P> {

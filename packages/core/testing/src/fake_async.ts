@@ -82,11 +82,9 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  * @param millis The number of milliseconds to advance the virtual timer.
  *
  * 可选值。默认值为 `0`。
- *
  * @param tickOptions The options to pass to the `tick()` function.
  *
  * 传给 `tick()` 函数的选项。
- *
  * @usageNotes
  *
  * The `tick()` option is a flag called `processNewMacroTasksSynchronously`,
@@ -95,15 +93,15 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  * `tick()` 选项是一个名为 `processNewMacroTasksSynchronously` 的标志，它确定是否调用新的 MacroTasks。
  *
  * If you provide a `tickOptions` object, but do not specify a
- * `processNewMacroTasksSynchronously` property (`tick(100, {})`),
+ * `processNewMacroTasksSynchronously` property \(`tick(100, {})`\),
  * then `processNewMacroTasksSynchronously` defaults to true.
  *
- * 如果你提供了 `tickOptions` 对象，但未指定 `processNewMacroTasksSynchronously` 属性 ( `tick(100, {})` )，则 `processNewMacroTasksSynchronously` 默认为 true。
+ * 如果你提供了 `tickOptions` 对象，但未指定 `processNewMacroTasksSynchronously` 属性 \( `tick(100, {})` \)，则 `processNewMacroTasksSynchronously` 默认为 true。
  *
- * If you omit the `tickOptions` parameter (`tick(100))`), then
+ * If you omit the `tickOptions` parameter \(`tick(100))`\), then
  * `tickOptions` defaults to `{processNewMacroTasksSynchronously: true}`.
  *
- * 如果你省略了 `tickOptions` 参数 ( `tick(100))` ) ，则 `tickOptions` 默认为 `{processNewMacroTasksSynchronously: true}` 。
+ * 如果你省略了 `tickOptions` 参数 \( `tick(100))` \) ，则 `tickOptions` 默认为 `{processNewMacroTasksSynchronously: true}` 。
  *
  * ### Example
  *
@@ -111,7 +109,7 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  *
  * {@example core/testing/ts/fake_async.ts region='basic'}
  *
- * The following example includes a nested timeout (new macroTask), and
+ * The following example includes a nested timeout \(new macroTask\), and
  * the `tickOptions` parameter is allowed to default. In this case,
  * `processNewMacroTasksSynchronously` defaults to true, and the nested
  * function is executed on each tick.

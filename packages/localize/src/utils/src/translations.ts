@@ -40,8 +40,8 @@ export function isMissingTranslationError(e: any): e is MissingTranslationError 
 }
 
 /**
- * Translate the text of the `$localize` tagged-string (i.e. `messageParts` and
- * `substitutions`) using the given `translations`.
+ * Translate the text of the `$localize` tagged-string \(i.e. `messageParts` and
+ * `substitutions`\) using the given `translations`.
  *
  * 使用给定的 `translations` `$localize` 标记字符串的文本（即 `messageParts` 和 `substitutions`）。
  *
@@ -54,7 +54,7 @@ export function isMissingTranslationError(e: any): e is MissingTranslationError 
  *
  * If one is found then it is used to translate the message into a new set of `messageParts` and
  * `substitutions`.
- * The translation may reorder (or remove) substitutions as appropriate.
+ * The translation may reorder \(or remove\) substitutions as appropriate.
  *
  * 如果找到了一个，则用它来将消息转换为一组新的 `messageParts` 和 `substitutions`
  * 。翻译可能会酌情重新排序（或删除）替换。

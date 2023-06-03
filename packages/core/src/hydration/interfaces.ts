@@ -17,7 +17,8 @@ export const REFERENCE_NODE_BODY = 'b';
 
 /**
  * Describes navigation steps that the runtime logic need to perform,
- * starting from a given (known) element.
+ * starting from a given \(known\) element.
+ *
  */
 export enum NodeNavigationStep {
   FirstChild = 'f',
@@ -39,10 +40,11 @@ export const DISCONNECTED_NODES = 'd';
 
 /**
  * Represents element containers within this view, stored as key-value pairs
- * where key is an index of a container in an LView (also used in the
- * `elementContainerStart` instruction), the value is the number of root nodes
+ * where key is an index of a container in an LView \(also used in the
+ * `elementContainerStart` instruction\), the value is the number of root nodes
  * in this container. This information is needed to locate an anchor comment
  * node that goes after all container nodes.
+ *
  */
 export interface SerializedElementContainers {
   [key: number]: number;
@@ -51,7 +53,8 @@ export interface SerializedElementContainers {
 /**
  * Serialized data structure that contains relevant hydration
  * annotation information that describes a given hydration boundary
- * (e.g. a component).
+ * \(e.g. a component\).
+ *
  */
 export interface SerializedView {
   /**
@@ -79,7 +82,8 @@ export interface SerializedView {
    * Serialized information about nodes in a template.
    * Key-value pairs where a key is an index of the corresponding
    * DOM node in an LView and the value is a path that describes
-   * the location of this node (as a set of navigation instructions).
+   * the location of this node \(as a set of navigation instructions\).
+   *
    */
   [NODES]?: Record<number, string>;
 
@@ -106,7 +110,7 @@ export interface SerializedContainerView extends SerializedView {
    *
    * - TViewType.Embedded: a unique id generated during serialization on the server
    * - TViewType.Component: an id generated based on component properties
-   *                       (see `getComponentId` function for details)
+   *                       \(see `getComponentId` function for details\)
    *
    */
   [TEMPLATE_ID]: string;
@@ -121,7 +125,7 @@ export interface SerializedContainerView extends SerializedView {
   /**
    * Number of times this view is repeated.
    * This is used to avoid serializing and sending the same hydration
-   * information about similar views (for example, produced by \*ngFor).
+   * information about similar views \(for example, produced by \*ngFor\).
    *
    */
   [MULTIPLIER]?: number;
@@ -169,8 +173,9 @@ export interface DehydratedView {
  * An object that contains hydration-related information serialized
  * on the server, as well as the necessary references to segments of
  * the DOM, to facilitate the hydration process for a given view
- * inside a view container (either an embedded view or a view created
- * for a component).
+ * inside a view container \(either an embedded view or a view created
+ * for a component\).
+ *
  */
 export interface DehydratedContainerView extends DehydratedView {
   data: Readonly<SerializedContainerView>;

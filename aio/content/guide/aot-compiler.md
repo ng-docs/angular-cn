@@ -1,4 +1,4 @@
-# Ahead-of-time (AOT) compilation
+# Ahead-of-time \(AOT\) compilation
 
 # 预先（AOT）编译器
 
@@ -7,7 +7,7 @@ Because the components and templates provided by Angular cannot be understood by
 
 Angular 应用主要由组件及其 HTML 模板组成。由于浏览器无法直接理解 Angular 所提供的组件和模板，因此 Angular 应用程序需要先进行编译才能在浏览器中运行。
 
-The Angular [ahead-of-time (AOT) compiler](guide/glossary#aot) converts your Angular HTML and TypeScript code into efficient JavaScript code during the build phase *before* the browser downloads and runs that code.
+The Angular [ahead-of-time \(AOT\) compiler](guide/glossary#aot) converts your Angular HTML and TypeScript code into efficient JavaScript code during the build phase *before* the browser downloads and runs that code.
 Compiling your application during the build process provides a faster rendering in the browser.
 
 在浏览器下载和运行代码*之前*的编译阶段，Angular 预先（AOT）编译器会先把你的 Angular HTML 和 TypeScript 代码转换成高效的 JavaScript 代码。在构建期间编译应用可以让浏览器中的渲染更快速。
@@ -54,18 +54,18 @@ Angular offers two ways to compile your application:
 
 Angular 提供了两种方式来编译你的应用：
 
-| Angular compile     | Details                                                                                           |
-| :------------------ | :------------------------------------------------------------------------------------------------ |
-| Angular 编译方式    | 详情                                                                                              |
-| Just-in-Time (JIT)  | Compiles your application in the browser at runtime. This was the default until Angular 8.        |
-| 即时 (JIT)          | 当运行时在浏览器中编译你的应用程序。在 Angular 8 之前，这是默认值。                               |
-| Ahead-of-Time (AOT) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
-| 预先 (AOT)          | 在构建时编译你的应用程序和库。这是从 Angular 9 开始的默认值。                                     |
+| Angular compile       | Details                                                                                           |
+|:----------------------| :------------------------------------------------------------------------------------------------ |
+| Angular 编译方式          | 详情                                                                                              |
+| Just-in-Time \(JIT\)  | Compiles your application in the browser at runtime. This was the default until Angular 8.        |
+| 即时（JIT）               | 当运行时在浏览器中编译你的应用程序。在 Angular 8 之前，这是默认值。                               |
+| Ahead-of-Time \(AOT\) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
+| 预先（AOT）             | 在构建时编译你的应用程序和库。这是从 Angular 9 开始的默认值。                                     |
 
-When you run the [`ng build`](cli/build) (build only) or [`ng serve`](cli/serve) (build and serve locally) CLI commands, the type of compilation (JIT or AOT) depends on the value of the `aot` property in your build configuration specified in `angular.json`.
+When you run the [`ng build`](cli/build) \(build only\) or [`ng serve`](cli/serve) \(build and serve locally\) CLI commands, the type of compilation \(JIT or AOT\) depends on the value of the `aot` property in your build configuration specified in `angular.json`.
 By default, `aot` is set to `true` for new CLI applications.
 
-当运行 CLI 命令 [`ng build`](cli/build) (只构建) 或 [`ng serve`](cli/serve) (构建并启动本地服务器) 时，编译类型（JIT 或 AOT）取决于你在 `angular.json` 中的构建配置所指定的 `aot` 属性。默认情况下，对于新的 CLI 应用，其 `aot` 为 `true`。
+当运行 CLI 命令 [`ng build`](cli/build) （只构建）或 [`ng serve`](cli/serve)（构建并启动本地服务器）时，编译类型（JIT 或 AOT）取决于你在 `angular.json` 中的构建配置所指定的 `aot` 属性。默认情况下，对于新的 CLI 应用，其 `aot` 为 `true`。
 
 See the [CLI command reference](cli) and [Building and serving Angular apps](guide/build) for more information.
 
@@ -178,9 +178,9 @@ At the same time, the AOT **collector** analyzes the metadata recorded in the An
 TypeScript 编译器会做一些初步的分析工作，它会生成**类型定义文件**`.d.ts`，其中带有类型信息，Angular 编译器需要借助它们来生成代码。
 同时，AOT **收集器（collector）** 会记录 Angular 装饰器中的元数据，并把它们输出到**`.metadata.json`**文件中，和每个 `.d.ts` 文件相对应。
 
-You can think of `.metadata.json` as a diagram of the overall structure of a decorator's metadata, represented as an [abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+You can think of `.metadata.json` as a diagram of the overall structure of a decorator's metadata, represented as an [abstract syntax tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
-你可以把 `.metadata.json` 文件看做一个包括全部装饰器的元数据的全景图，就像[抽象语法树 (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree)一样。
+你可以把 `.metadata.json` 文件看做一个包括全部装饰器的元数据的全景图，就像[抽象语法树（AST）](https://en.wikipedia.org/wiki/Abstract_syntax_tree)一样。
 
 <div class="alert is-helpful">
 
@@ -504,19 +504,19 @@ The compiler, however, can later refuse to generate a call to a *particular* fun
 
 只要语法有效，收集器就可以用 `new` 来表示函数调用或对象创建。但是，编译器在后面可以拒绝生成对*特定*函数的调用或对*特定*对象的创建。
 
-The compiler can only create instances of certain classes, supports only core decorators, and only supports calls to macros (functions or static methods) that return expressions.
+The compiler can only create instances of certain classes, supports only core decorators, and only supports calls to macros \(functions or static methods\) that return expressions.
 
 编译器只能创建某些类的实例，仅支持核心装饰器，并且仅支持对返回表达式的宏（函数或静态方法）的调用。
 
-| Compiler action      | Details                                                                                                                                              |
-| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 编译器动作           | 详情                                                                                                                                                 |
-| New instances        | The compiler only allows metadata that create instances of the class `InjectionToken` from `@angular/core`.                                          |
-| 新建实例             | 编译器只允许创建来自 `@angular/core` 的 `InjectionToken` 类创建实例。                                                                                |
-| Supported decorators | The compiler only supports metadata for the [Angular decorators in the `@angular/core` module](api/core#decorators).                                 |
-| 支持的装饰器         | 编译器只支持来自 [`@angular/core` 模块](api/core#decorators)的 Angular 装饰器的元数据。                                                              |
-| Function calls       | Factory functions must be exported, named functions. The AOT compiler does not support lambda expressions ("arrow functions") for factory functions. |
-| 函数调用             | 工厂函数必须导出为命名函数。AOT 编译器不支持用 Lambda 表达式（箭头函数）充当工厂函数。                                                               |
+| Compiler action      | Details                                                                                                                                                |
+| :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 编译器动作           | 详情                                                                                                                                                   |
+| New instances        | The compiler only allows metadata that create instances of the class `InjectionToken` from `@angular/core`.                                            |
+| 新建实例             | 编译器只允许创建来自 `@angular/core` 的 `InjectionToken` 类创建实例。                                                                                  |
+| Supported decorators | The compiler only supports metadata for the [Angular decorators in the `@angular/core` module](api/core#decorators).                                   |
+| 支持的装饰器         | 编译器只支持来自 [`@angular/core` 模块](api/core#decorators)的 Angular 装饰器的元数据。                                                                |
+| Function calls       | Factory functions must be exported, named functions. The AOT compiler does not support lambda expressions \("arrow functions"\) for factory functions. |
+| 函数调用             | 工厂函数必须导出为命名函数。AOT 编译器不支持用 Lambda 表达式（箭头函数）充当工厂函数。                                                                 |
 
 <a id="function-calls"></a>
 
@@ -649,7 +649,7 @@ In the template type-checking phase, the Angular template compiler uses the Type
 Angular 编译器最有用的功能之一就是能够对模板中的表达式进行类型检查，在由于出错而导致运行时崩溃之前就捕获任何错误。在模板类型检查阶段，Angular 模板编译器会使用 TypeScript 编译器来验证模板中的绑定表达式。
 
 Enable this phase explicitly by adding the compiler option `"fullTemplateTypeCheck"` in the `"angularCompilerOptions"` of the project's TypeScript configuration file
-(see [Angular Compiler Options](guide/angular-compiler-options)).
+\(see [Angular Compiler Options](guide/angular-compiler-options)\).
 
 通过在该项目的 TypeScript 配置文件中的 `"angularCompilerOptions"` 中添加编译器选项 `"fullTemplateTypeCheck"`，可以显式启用本阶段（见[Angular 编译器选项](guide/angular-compiler-options)）。
 

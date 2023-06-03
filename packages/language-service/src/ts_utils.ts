@@ -192,7 +192,7 @@ export function objectPropertyAssignmentForKey(
 
 /**
  * Given an ObjectLiteralExpression node, create or update the specified key, using the provided
- * callback to generate the new value (possibly based on an old value).
+ * callback to generate the new value \(possibly based on an old value\).
  *
  * 给定一个 ObjectLiteralExpression
  * 节点，创建或更新指定的键，使用提供的回调生成新值（可能基于旧值）。

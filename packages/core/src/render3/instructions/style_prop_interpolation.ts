@@ -757,10 +757,9 @@ export function ɵɵstylePropInterpolate8(
  *        `styling`..
  *
  * 要更新的样式索引。此索引值是指传入 style . 的 style bindings 数组中 `styling` 的索引
- *
  * @param values The collection of values and the strings in-between those values, beginning with
  * a string prefix and ending with a string suffix.
- * (e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`)
+ * \(e.g. `['prefix', value0, '-', value1, '-', value2, ..., value99, 'suffix']`\)
  *
  * 值和这些值之间的字符串的集合，以字符串前缀开头并以字符串后缀结尾。（例如 `['prefix', value0,
  * '-', value1, '-', value2, ..., value99, 'suffix']`）
@@ -768,13 +767,11 @@ export function ɵɵstylePropInterpolate8(
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
  * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
- *
  * @returns
  *
  * itself, so that it may be chained.
  *
  * 本身，以便它可以被链接起来。
- *
  * @codeGenApi
  */
 export function ɵɵstylePropInterpolateV(

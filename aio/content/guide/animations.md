@@ -218,7 +218,7 @@ These definitions are placed in the second argument of the `animate()` function.
 
 #### 动画元数据：持续时间、延迟和缓动效果
 
-The `animate()` function (second argument of the transition function) accepts the `timings` and `styles` input parameters.
+The `animate()` function \(second argument of the transition function\) accepts the `timings` and `styles` input parameters.
 
 `animate()` 函数（作为转场函数的第二个参数）可以接受 `timings` 和 `styles` 参数。
 
@@ -423,7 +423,7 @@ Then it's up to the `openClose` code to handle the state change and kick off a s
 
 在这个例子中，当 `isOpen` 表达式求值为一个已定义状态 `open` 或 `closed` 时，就会通知 `openClose` 触发器说状态变化了。然后，就由 `openClose` 中的代码来处理状态变更，并启动状态变更动画。
 
-For elements entering or leaving a page (inserted or removed from the DOM), you can make the animations conditional.
+For elements entering or leaving a page \(inserted or removed from the DOM\), you can make the animations conditional.
 For example, use `*ngIf` with the animation trigger in the HTML template.
 
 对于那些进入或离开页面的元素（插入到 DOM 中或从中移除），你可以让动画变成有条件的。比如，在 HTML 模板中可以和 `*ngIf` 一起使用动画触发器。
@@ -474,7 +474,7 @@ Learn about more advanced features in Angular animations under the Animation sec
 
 ## 动画 API 小结
 
-The functional API provided by the `@angular/animations` module provides a domain-specific language (DSL) for creating and controlling animations in Angular applications.
+The functional API provided by the `@angular/animations` module provides a domain-specific language \(DSL\) for creating and controlling animations in Angular applications.
 See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
 
 `@angular/animations` 模块提供的这些功能性 API 提供了一种领域特定语言（DSL），用于在 Angular 应用中创建和控制动画效果。到 [API 参考手册](api/animations)中查看完整的列表以及这些核心功能、相关数据结构的详细语法。
@@ -494,7 +494,7 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | `transition()`                    | 定义两个命名状态之间的动画序列。使用数组语法。                                                                                                                                                              |
 | `keyframes()`                     | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax.                       |
 | `keyframes()`                     | 允许以特定的时间间隔对样式进行顺序更改。用于 `animate()` 中。每个 `keyframe()` 中都可以包含多个 `style()` 调用。使用数组语法。                                                                              |
-| [`group()`](api/animations/group) | Specifies a group of animation steps (*inner animations*) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.       |
+| [`group()`](api/animations/group) | Specifies a group of animation steps \(*inner animations*\) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.     |
 | [`group()`](api/animations/group) | 指定要并行运行的一组动画步骤（*内部动画*）。该动画只有当所有内部动画步骤都完成之后才会继续。用于 `sequence()` 或 `transition()` 中。                                                                        |
 | `query()`                         | Finds one or more inner HTML elements within the current element.                                                                                                                                           |
 | `query()`                         | 找出当前元素中的一个或多个内部 HTML 元素。                                                                                                                                                                  |

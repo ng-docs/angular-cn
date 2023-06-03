@@ -32,9 +32,9 @@ export function createMessageDiagnostic(messageText: string): ts.Diagnostic {
  *
  * 从 `commentText` 字符串中删除多行注释开始和结束标记。
  *
- * This will also strip the JSDOC comment start marker (`/**`).
+ * This will also strip the JSDOC comment start marker \(`/**`\).
  *
- * 这还将去除 JSDOC 注释开始标记 ( `/**` )。
+ * 这还将去除 JSDOC 注释开始标记 \( `/**` \)。
  *
  */
 export function stripComment(commentText: string): string {

@@ -190,7 +190,7 @@ export function renderDetachView(tView: TView, lView: LView) {
  * - Must process containers instead of their views to avoid splicing
  *   when views are destroyed and re-added.
  * - Using a while loop because it's faster than recursion
- * - Destroy only called on movement to sibling or movement to parent (laterally or up)
+ * - Destroy only called on movement to sibling or movement to parent \(laterally or up\)
  *
  * @param rootView The view to destroy
  */
@@ -238,15 +238,13 @@ export function destroyViewTree(rootView: LView): void {
  *
  * This adds the view to the container's array of active views in the correct
  * position. It also adds the view's elements to the DOM if the container isn't a
- * root node of another view (in that case, the view's elements will be added when
- * the container's parent view is added later).
+ * root node of another view \(in that case, the view's elements will be added when
+ * the container's parent view is added later\).
  *
  * @param tView The `TView` of the `LView` to insert
- *
  * @param lView The view to insert
  *
  * 要插入的视图。
- *
  * @param lContainer The container into which the view should be inserted
  * @param index Which index in the container to insert the child view into
  */
@@ -287,8 +285,9 @@ export function insertView(tView: TView, lView: LView, lContainer: LContainer, i
 }
 
 /**
- * Track views created from the declaration container (TemplateRef) and inserted into a
+ * Track views created from the declaration container \(TemplateRef\) and inserted into a
  * different LContainer.
+ *
  */
 function trackMovedView(declarationContainer: LContainer, lView: LView) {
   ngDevMode && assertDefined(lView, 'LView required');
@@ -380,7 +379,7 @@ export function detachView(lContainer: LContainer, removeIndex: number): LView|u
 
 /**
  * A standalone function which destroys an LView,
- * conducting clean up (e.g. removing listeners, calling onDestroys).
+ * conducting clean up \(e.g. removing listeners, calling onDestroys\).
  *
  * @param tView The `TView` of the `LView` to be destroyed
  * @param lView The view to be destroyed.
@@ -550,17 +549,20 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  * Get closest `RElement` or `null` if it can't be found.
  *
  * If `TNode` is `TNodeType.Element` => return `RElement` at `LView[tNode.index]` location.
- * If `TNode` is `TNodeType.ElementContainer|IcuContain` => return the parent (recursively).
+ * If `TNode` is `TNodeType.ElementContainer|IcuContain` => return the parent \(recursively\).
  * If `TNode` is `null` then return host `RElement`:
  *
  * - return `null` if projection
- * - return `null` if parent container is disconnected (we have no parent.)
+ * - return `null` if parent container is disconnected \(we have no parent.\)
  *
  * @param tView: Current `TView`.
  * @param tNode: `TNode` for which we wish to retrieve `RElement` (or `null` if host element is
  *     needed).
  * @param lView: Current `LView`.
- * @returns `null` if the `RElement` can't be determined at this time (no parent / projection)
+ * @returns
+ *
+ * `null` if the `RElement` can't be determined at this time \(no parent / projection\)
+ *
  */
 export function getClosestRElement(tView: TView, tNode: TNode|null, lView: LView): RElement|null {
   let parentTNode: TNode|null = tNode;
@@ -661,15 +663,13 @@ export function nativeNextSibling(renderer: Renderer, node: RNode): RNode|null {
  * @param parentTNode parent `TNode`
  *
  * 父 `TNode`
- *
- * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
+ * @param currentTNode current `TNode` \(The node which we would like to insert into the DOM\)
  *
  * 当前 `TNode`（我们要插入到 DOM 中的节点）
  *
  * @param lView current `LView`
  *
  * 当前的 `LView`
- *
  */
 function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView: LView): RNode|
     null {
@@ -678,8 +678,8 @@ function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView:
 
 
 /**
- * Find a node in front of which `currentTNode` should be inserted. (Does not take i18n into
- * account)
+ * Find a node in front of which `currentTNode` should be inserted. \(Does not take i18n into
+ * account\)
  *
  * This method determines the `RNode` in front of which we should insert the `currentRNode`. This
  * does not take `TNode.insertBeforeIndex` into account.
@@ -687,15 +687,13 @@ function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView:
  * @param parentTNode parent `TNode`
  *
  * 父 `TNode`
- *
- * @param currentTNode current `TNode` (The node which we would like to insert into the DOM)
+ * @param currentTNode current `TNode` \(The node which we would like to insert into the DOM\)
  *
  * 当前 `TNode`（我们要插入到 DOM 中的节点）
  *
  * @param lView current `LView`
  *
  * 当前的 `LView`
- *
  */
 export function getInsertInFrontOfRNodeWithNoI18n(
     parentTNode: TNode, currentTNode: TNode, lView: LView): RNode|null {
@@ -733,11 +731,12 @@ export function setI18nHandling(
 }
 
 /**
- * Appends the `child` native node (or a collection of nodes) to the `parent`.
+ * Appends the `child` native node \(or a collection of nodes\) to the `parent`.
  *
  * @param tView The `TView` to be appended
  * @param lView The current LView
- * @param childRNode The native child (or children) that should be appended
+ * @param childRNode The native child \(or children\) that should be appended
+ *
  * @param childTNode The TNode of the child element
  */
 export function appendChild(
@@ -763,7 +762,8 @@ export function appendChild(
 /**
  * Returns the first native node for a given LView, starting from the provided TNode.
  *
- * Native nodes are returned in the order in which those appear in the native tree (DOM).
+ * Native nodes are returned in the order in which those appear in the native tree \(DOM\).
+ *
  */
 export function getFirstNativeNode(lView: LView, tNode: TNode|null): RNode|null {
   if (tNode !== null) {
@@ -840,7 +840,7 @@ export function getBeforeNodeForView(viewIndexInContainer: number, lContainer: L
 /**
  * Removes a native node itself using a given renderer. To remove the node we are looking up its
  * parent from the native tree as not all platforms / browsers support the equivalent of
- * node.remove().
+ * node.remove\(\).
  *
  * @param renderer A renderer to be used
  * @param rNode The native node that should be removed
@@ -910,7 +910,7 @@ function applyNodes(
 
 
 /**
- * `applyView` performs operation on the view as specified in `action` (insert, detach, destroy)
+ * `applyView` performs operation on the view as specified in `action` \(insert, detach, destroy\)
  *
  * Inserting a view without projection or containers at top level is simple. Just iterate over the
  * root nodes of the View, and for each node perform the `action`.
@@ -927,11 +927,12 @@ function applyNodes(
  * code is complicated enough that trying to implemented with recursion becomes unmaintainable.
  *
  * @param tView The `TView` which needs to be inserted, detached, destroyed
- *
  * @param lView The LView which needs to be inserted, detached, destroyed.
  * @param renderer Renderer to use
- * @param action action to perform (insert, detach, destroy)
- * @param parentRElement parent DOM element for insertion (Removal does not need it).
+ * @param action action to perform \(insert, detach, destroy\)
+ *
+ * @param parentRElement parent DOM element for insertion \(Removal does not need it\).
+ *
  * @param beforeNode Before which node the insertions should happen.
  */
 function applyView(
@@ -966,14 +967,15 @@ export function applyProjection(tView: TView, lView: LView, tProjectionNode: TPr
 }
 
 /**
- * `applyProjectionRecursive` performs operation on the projection specified by `action` (insert,
- * detach, destroy)
+ * `applyProjectionRecursive` performs operation on the projection specified by `action` \(insert,
+ * detach, destroy\)
  *
  * Inserting a projection requires us to locate the projected nodes from the parent component. The
  * complication is that those nodes themselves could be re-projected from their parent component.
  *
  * @param renderer Render to use
- * @param action action to perform (insert, detach, destroy)
+ * @param action action to perform \(insert, detach, destroy\)
+ *
  * @param lView The LView which needs to be inserted, detached, destroyed.
  * @param tProjectionNode node to project
  * @param parentRElement parent DOM element for insertion/removal.
@@ -1008,13 +1010,14 @@ function applyProjectionRecursive(
 
 /**
  * `applyContainer` performs an operation on the container and its views as specified by
- * `action` (insert, detach, destroy)
+ * `action` \(insert, detach, destroy\)
  *
  * Inserting a Container is complicated by the fact that the container may have Views which
  * themselves have containers or projections.
  *
  * @param renderer Renderer to use
- * @param action action to perform (insert, detach, destroy)
+ * @param action action to perform \(insert, detach, destroy\)
+ *
  * @param lContainer The LContainer which needs to be inserted, detached, destroyed.
  * @param parentRElement parent DOM element for insertion/removal.
  * @param beforeNode Before which node the insertions should happen.
@@ -1048,11 +1051,13 @@ function applyContainer(
  * Writes class/style to element.
  *
  * @param renderer Renderer to use.
- * @param isClassBased `true` if it should be written to `class` (`false` to write to `style`)
+ * @param isClassBased `true` if it should be written to `class` \(`false` to write to `style`\)
+ *
  * @param rNode The Node to write to.
  * @param prop Property to write to. This would be the class/style name.
- * @param value Value to write. If `null`/`undefined`/`false` this is considered a remove (set/add
- *        otherwise).
+ * @param value Value to write. If `null`/`undefined`/`false` this is considered a remove \(set/add
+ *        otherwise\).
+ *
  */
 export function applyStyling(
     renderer: Renderer, isClassBased: boolean, rNode: RElement, prop: string, value: any) {

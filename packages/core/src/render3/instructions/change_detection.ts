@@ -12,7 +12,7 @@ import {TVIEW} from '../interfaces/view';
 import {detectChangesInternal} from './shared';
 
 /**
- * Synchronously perform change detection on a component (and possibly its sub-components).
+ * Synchronously perform change detection on a component \(and possibly its sub-components\).
  *
  * 对组件（可能还有其子组件）同步执行变更检测。
  *
@@ -23,7 +23,6 @@ import {detectChangesInternal} from './shared';
  * @param component The component which the change detection should be performed on.
  *
  * 应该在其上执行变更检测的组件。
- *
  */
 export function detectChanges(component: {}): void {
   const view = getComponentViewByInstance(component);

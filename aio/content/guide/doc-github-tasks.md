@@ -297,7 +297,7 @@ As you make changes to files in the working directory of your fork of the Angula
   This is the state of your changes as you edit a file in your integrated development environment \(IDE\).
     This is the state of your changes as you're making them in your IDE.
 
-  这是你在集成开发环境 (IDE) 中编辑文件时所做的更改的状态。这是你在 IDE 中进行更改时的状态。
+  这是你在集成开发环境（IDE）中编辑文件时所做的更改的状态。这是你在 IDE 中进行更改时的状态。
 
 * **Saved but not committed**
 

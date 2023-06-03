@@ -63,14 +63,13 @@ export abstract class ViewRef extends ChangeDetectorRef {
  * [视图](guide/glossary#view)。[嵌入视图](guide/glossary#view-tree)可以从在模板中定义它的宿主组件之外的组件中引用，也可以由
  * `TemplateRef` 进行独立定义。
  *
- * Properties of elements in a view can change, but the structure (number and order) of elements in
+ * Properties of elements in a view can change, but the structure \(number and order\) of elements in
  * a view cannot. Change the structure of elements by inserting, moving, or
  * removing nested views in a view container.
  *
  * 视图中元素的属性可以更改，但是视图中元素的结构（数量和顺序）不能更改。通过在视图容器中插入，移动或删除嵌套视图来更改元素的结构。
  *
  * @see `ViewContainerRef`
- *
  * @usageNotes
  *
  * The following template breaks down into two separate `TemplateRef` instances,

@@ -68,14 +68,16 @@ export interface DomAttributeCompletion {
   kind: AttributeCompletionKind.DomAttribute;
 
   /**
-   * Name of the HTML attribute (not to be confused with the corresponding DOM property name).
+   * Name of the HTML attribute \(not to be confused with the corresponding DOM property name\).
+   *
    */
   attribute: string;
 
   /**
    * Whether this attribute is also a DOM property. Note that this is required to be `true` because
    * we only want to provide DOM attributes when there is an Angular syntax associated with them
-   * (`[propertyName]=""`).
+   * \(`[propertyName]=""`\).
+   *
    */
   isAlsoProperty: true;
 }
@@ -127,8 +129,9 @@ export interface DirectiveInputCompletion {
   kind: AttributeCompletionKind.DirectiveInput;
 
   /**
-   * The public property name of the input (the name which would be used in any binding to that
-   * input).
+   * The public property name of the input \(the name which would be used in any binding to that
+   * input\).
+   *
    */
   propertyName: string;
 
@@ -146,8 +149,9 @@ export interface DirectiveInputCompletion {
   classPropertyName: string;
 
   /**
-   * Whether this input can be used with two-way binding (that is, whether a corresponding change
-   * output exists on the directive).
+   * Whether this input can be used with two-way binding \(that is, whether a corresponding change
+   * output exists on the directive\).
+   *
    */
   twoWayBindingSupported: boolean;
 }
@@ -156,8 +160,9 @@ export interface DirectiveOutputCompletion {
   kind: AttributeCompletionKind.DirectiveOutput;
 
   /**
-   * The public event name of the output (the name which would be used in any binding to that
-   * output).
+   * The public event name of the output \(the name which would be used in any binding to that
+   * output\).
+   *
    */
   eventName: string;
 
@@ -419,12 +424,13 @@ enum AsciiSortPriority {
  * `[attribute]` - either a static attribute can be generated, or a property binding. However,
  * `<element [attr|]>` is not an attribute context, and so only the property completion `attribute`
  * is generated. Note that this completion does not have the `[]` property binding sugar as its
- * implicitly present in a property binding context (we're already completing within an `[attr|]`
- * expression).
+ * implicitly present in a property binding context \(we're already completing within an `[attr|]`
+ * expression\).
  *
  * If the `insertSnippet` is `true`, the completion entries should includes the property or event
  * binding sugar in some case. For Example `<div (my¦) />`, the `replacementSpan` is `(my)`, and the
  * `insertText` is `(myOutput)="$0"`.
+ *
  */
 export function addAttributeCompletionEntries(
     entries: ts.CompletionEntry[], completion: AttributeCompletion, isAttributeContext: boolean,

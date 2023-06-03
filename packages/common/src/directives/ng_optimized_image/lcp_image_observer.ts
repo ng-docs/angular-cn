@@ -17,7 +17,7 @@ import {getUrl} from './url';
 
 /**
  * Observer that detects whether an image with `NgOptimizedImage`
- * is treated as a Largest Contentful Paint (LCP) element. If so,
+ * is treated as a Largest Contentful Paint \(LCP\) element. If so,
  * asserts that the image has the `priority` attribute.
  *
  * Note: this is a dev-mode only class and it does not appear in prod bundles,

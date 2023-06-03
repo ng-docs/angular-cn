@@ -26,8 +26,8 @@ export interface DeclareComponentTemplateInfo {
    *
    * 模板的字符串内容。
    *
-   * This is the "logical" template string, after expansion of any escaped characters (for inline
-   * templates). This may differ from the actual template bytes as they appear in the .ts file.
+   * This is the "logical" template string, after expansion of any escaped characters \(for inline
+   * templates\). This may differ from the actual template bytes as they appear in the .ts file.
    *
    * 这是扩展任何转义字符（对于内联模板）之后的“逻辑”模板字符串。这可能与 .ts
    * 文件中出现的实际模板字节不同。
@@ -49,7 +49,7 @@ export interface DeclareComponentTemplateInfo {
   sourceUrl: string;
 
   /**
-   * Whether the template was inline (using `template`) or external (using `templateUrl`).
+   * Whether the template was inline \(using `template`\) or external \(using `templateUrl`\).
    *
    * 模板是内联的（使用 `template`）还是外部的（使用 `templateUrl`）。
    *

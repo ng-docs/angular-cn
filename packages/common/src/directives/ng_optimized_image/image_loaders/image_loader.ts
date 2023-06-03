@@ -24,7 +24,8 @@ export interface ImageLoaderConfig {
    */
   src: string;
   /**
-   * Width of the requested image (to be used when generating srcset).
+   * Width of the requested image \(to be used when generating srcset\).
+   *
    */
   width?: number;
   /**
@@ -76,7 +77,8 @@ export const IMAGE_LOADER = new InjectionToken<ImageLoader>('ImageLoader', {
  * configuration for a given loader: a DI token corresponding to the actual loader function, plus DI
  * tokens managing preconnect check functionality.
  * @param buildUrlFn a function returning a full URL based on loader's configuration
- * @param exampleUrls example of full URLs for a given loader (used in error messages)
+ * @param exampleUrls example of full URLs for a given loader \(used in error messages\)
+ *
  * @returns a set of DI providers corresponding to the configured image loader
  */
 export function createImageLoader(

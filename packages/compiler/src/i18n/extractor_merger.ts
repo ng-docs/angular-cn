@@ -56,11 +56,11 @@ enum _VisitorMode {
  *
  * 此访问器用于：
  *
- * 1. to extract all the translatable strings from an html AST (see `extract()`),
+ * 1. to extract all the translatable strings from an html AST \(see `extract()`\),
  *
  *    从 html AST 中提取所有可翻译字符串（请参阅 `extract()`）
  *
- * 2. to replace the translatable strings with the actual translations (see `merge()`)
+ * 2. to replace the translatable strings with the actual translations \(see `merge()`\)
  *
  *    用实际的翻译替换可翻译字符串（请参阅 `merge()`）
  *

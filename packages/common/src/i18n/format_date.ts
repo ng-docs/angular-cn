@@ -47,11 +47,11 @@ enum TranslationType {
  * Formats a date according to locale rules.
  *
  * 基于区域规则格式化日期。
- * @param value The date to format, as a Date, or a number (milliseconds since UTC epoch)
+ * @param value The date to format, as a Date, or a number \(milliseconds since UTC epoch\)
  * or an [ISO date-time string](https://www.w3.org/TR/NOTE-datetime).
  *
  * 要格式化的日期，是一个日期、数字（从 UTC 时代以来的毫秒数）或 ISO 字符串
- * (https://www.w3.org/TR/NOTE-datetime)。
+ * \(https://www.w3.org/TR/NOTE-datetime\)。
  *
  * @param format The date-time components to include. See `DatePipe` for details.
  *
@@ -59,19 +59,21 @@ enum TranslationType {
  * @param locale A locale code for the locale format rules to use.
  *
  * 一个区域代码，用来表示要使用的区域格式规则。
- * @param timezone The time zone. A time zone offset from GMT (such as `'+0430'`),
+ * @param timezone The time zone. A time zone offset from GMT \(such as `'+0430'`\),
  * or a standard UTC/GMT or continental US time zone abbreviation.
  * If not specified, uses host system settings.
  *
  * 时区。可以是 GMT 中的时区偏移（如 `'+0430'`），或一个标准的 UTC/GMT 或美国大陆时区的缩写。
  * 如果没有指定，就会使用宿主系统中的设定。
+ *
  * @returns The formatted date string.
  *
  * 格式化之后的日期字符串。
  * @see `DatePipe`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化 (i18n) 指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
+ *
  * @publicApi
  */
 export function formatDate(
@@ -392,12 +394,13 @@ function getDateTranslation(
 
 /**
  * Returns a date formatter that transforms a date and an offset into a timezone with ISO8601 or
- * GMT format depending on the width (eg: short = +0430, short:GMT = GMT+4, long = GMT+04:30,
- * extended = +04:30)
+ * GMT format depending on the width \(eg: short = +0430, short:GMT = GMT+4, long = GMT+04:30,
+ * extended = +04:30\)
  *
  * 返回一个日期格式化器，它会根据宽度把日期和偏移转换成 ISO8601 或 GMT 格式的时区
- *（如 short = +0430, short:GMT = GMT+4, long = GMT+04:30,
+ * （如 short = +0430, short:GMT = GMT+4, long = GMT+04:30,
  * extended = +04:30）。
+ *
  */
 function timeZoneGetter(width: ZoneWidth): DateFormatter {
   return function(date: Date, locale: string, offset: number) {
@@ -792,12 +795,12 @@ function convertTimezoneToLocal(date: Date, timezone: string, reverse: boolean):
  *
  *   数字：时间戳
  *
- * - string: numeric (e.g. "1234"), ISO and date strings in a format supported by
- *     [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
+ * - string: numeric \(e.g. "1234"\), ISO and date strings in a format supported by
+ *     [`Date.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
  *     Note: ISO strings without time return a date without timeoffset.
  *
  *   字符串：数字（如 "1234"）、ISO 格式和
- *   [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
+ *   [`Date.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
  *     所支持的日期字符串格式。
  *     注意：不带时间的 ISO 字符串会返回一个没有时区偏移量的日期。
  *

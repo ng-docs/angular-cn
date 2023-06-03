@@ -36,9 +36,9 @@ import {getComponent, getContext, getDirectiveMetadata, getDirectives, getHostEl
 
 /**
  * This value reflects the property on the window where the dev
- * tools are patched (window.ng).
+ * tools are patched \(window.ng\).
  *
- * 此值反映了修补开发工具的窗口 (window.ng) 上的属性。
+ * 此值反映了修补开发工具的 window（window.ng）上的属性。
  *
  */
 export const GLOBAL_PUBLISH_EXPANDO_KEY = 'ng';

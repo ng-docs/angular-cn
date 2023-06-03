@@ -65,7 +65,6 @@ export class ModuleWithComponentFactories<T> {
  *
  * Ivy JIT 模式不需要访问此符号。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
  * 更改](guide/deprecations#jit-api-changes)。
- *
  */
 @Injectable({providedIn: 'root'})
 export class Compiler {

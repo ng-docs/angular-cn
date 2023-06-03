@@ -101,7 +101,7 @@ function constructDetailsForInterpolation(
  *
  * 构造一个包含 ExpressionChangedAfterItHasBeenCheckedError 详细信息的对象：
  *
- * - property name (for property bindings or interpolations)
+ * - property name \(for property bindings or interpolations\)
  *
  *   属性名称（用于属性绑定或插值）
  *

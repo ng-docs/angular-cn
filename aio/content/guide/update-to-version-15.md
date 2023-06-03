@@ -96,10 +96,10 @@ For more information about the Chrome DevTools and Angular's support for the cle
 
 <!-- vale Angular.Google_Acronyms = YES -->
 
-Many of the components in Angular Material v15 have been refactored to be based on Angular Material Design Components (MDC) for the Web.
+Many of the components in Angular Material v15 have been refactored to be based on Angular Material Design Components \(MDC\) for the Web.
 The refactored components offer improved accessibility and adherence to the Material Design spec.
 
-Angular Material v15 中的许多组件已被重构为基于 Web 的 Angular Material 设计组件 (MDC)。重构的组件提供了改进的无障碍性和对 Material Design 规范的遵守。
+Angular Material v15 中的许多组件已被重构为基于 Web 的 Angular Material 设计组件 （MDC）。重构的组件提供了改进的无障碍性和对 Material Design 规范的遵守。
 
 For more information about the updated components, see [Migrating to MDC-based Angular Material Components](https://material.angular.io/guide/mdc-migration).
 
@@ -121,9 +121,9 @@ These are the aspects of Angular that behave differently in v15 and that might r
 
 #### Angular v15 支持 node.js 版本： 14.20.x、16.13.x 和 18.10.x
 
-In v15, Angular no longer supports node.js versions 14.\[15-19].x or 16.\[10-12].x. [PR #47730](https://github.com/angular/angular/pull/47730)
+In v15, Angular no longer supports node.js versions 14.\[15-19\].x or 16.\[10-12\].x. [PR #47730](https://github.com/angular/angular/pull/47730)
 
-在 v15 中，Angular 不再支持 node.js 版本 14.\[15-19].x 或 16.\[10-12].x。[PR #47730](https://github.com/angular/angular/pull/47730)
+在 v15 中，Angular 不再支持 node.js 版本 14.\[15-19\].x 或 16.\[10-12\].x。[PR #47730](https://github.com/angular/angular/pull/47730)
 
 <a id="v15-bc-02"></a>
 
@@ -307,10 +307,10 @@ Angular 编译器选项 `enableIvy` 已删除，因为现在 Ivy 是 Angular 的
 
 #### 基于 MDC 的 Angular Material 组件
 
-In Angular Material v15, many components have been refactored to be based on the official Material Design Components for Web (MDC).
+In Angular Material v15, many components have been refactored to be based on the official Material Design Components for Web \(MDC\).
 For information about breaking changes in Material components v15, see [Migrating to MDC-based Angular Material Components](https://material.angular.io/guide/mdc-migration).
 
-在 Angular Material v15 中，许多组件已被重构为基于官方的 Web Material Design 组件 (MDC) 。有关 Material 组件 v15 中的重大更改的信息，请参阅[迁移到基于 MDC 的 Angular Material 组件](https://material.angular.io/guide/mdc-migration)。
+在 Angular Material v15 中，许多组件已被重构为基于官方的 Web Material Design 组件 （MDC） 。有关 Material 组件 v15 中的重大更改的信息，请参阅[迁移到基于 MDC 的 Angular Material 组件](https://material.angular.io/guide/mdc-migration)。
 
 <a id="v15-bc-11"></a>
 

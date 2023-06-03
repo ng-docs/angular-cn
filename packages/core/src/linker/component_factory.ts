@@ -85,7 +85,7 @@ export abstract class ComponentRef<C> {
   abstract get changeDetectorRef(): ChangeDetectorRef;
 
   /**
-   * The type of this component (as created by a `ComponentFactory` class).
+   * The type of this component \(as created by a `ComponentFactory` class\).
    *
    * 此组件的类型（由 `ComponentFactory` 类创建）。
    *

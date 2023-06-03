@@ -46,11 +46,11 @@ export interface LinkerRange<TExpression> {
  * 在部分声明调用名称和部分链接器集合之间创建映射。
  *
  * Each collection of partial-linkers will contain a version range that will be matched against the
- * `minVersion` of the partial-declaration. (Additionally, a partial-linker may modify its behaviour
- * internally based on the `version` property of the declaration.)
+ * `minVersion` of the partial-declaration. \(Additionally, a partial-linker may modify its behaviour
+ * internally based on the `version` property of the declaration.\)
  *
  * 部分链接器的每个集合都将包含一个版本范围，该范围将与部分声明的 `minVersion` 匹配。
- *（此外，部分链接器可以根据声明的 `version` 属性在内部修改其行为。）
+ * （此外，部分链接器可以根据声明的 `version` 属性在内部修改其行为。）
  *
  * Versions should be sorted in ascending order. The most recent partial-linker will be used as the
  * fallback linker if none of the other version ranges match. For example:
@@ -138,9 +138,9 @@ export function createLinkerMap<TStatement, TExpression>(
  * `<=XYZ` ，这意味着范围应该按升序。
  *
  * Note that any "pre-release" versions are stripped from ranges. Therefore if a `minVersion` is
- * `11.1.0-next.1` then this would match `11.1.0-next.2` and also `12.0.0-next.1`. (This is
+ * `11.1.0-next.1` then this would match `11.1.0-next.2` and also `12.0.0-next.1`. \(This is
  * different to standard semver range checking, where pre-release versions do not cross full version
- * boundaries.)
+ * boundaries.\)
  *
  * 请注意，任何“预发布”版本都会从范围中删除。因此，如果 `minVersion` 是 `11.1.0-next.1`
  * ，那么这将匹配 `11.1.0-next.2` 以及 `12.0.0-next.1` 。（这与标准 semver
@@ -211,7 +211,7 @@ export class PartialLinkerSelector<TExpression> {
  * 根据 `version` 和比较器计算 semver Range。
  *
  * The range is computed as any version greater/less than or equal to the given `versionStr`
- * depending upon the `comparator` (ignoring any prerelease versions).
+ * depending upon the `comparator` \(ignoring any prerelease versions\).
  *
  * 根据 `comparator` 的不同，范围会被计算为大于/小于或等于给定 `versionStr`
  * 的任何版本（忽略任何预发行版本）。
@@ -220,17 +220,14 @@ export class PartialLinkerSelector<TExpression> {
  *     range.
  *
  * 一个字符串，用于确定版本是指定最小值还是最大值范围。
- *
  * @param versionStr the version given in the partial declaration
  *
  * 部分声明中给出的版本
- *
  * @returns
  *
  * A semver range for the provided `version` and comparator.
  *
  * 提供的 `version` 和比较器的 semver 范围。
- *
  */
 function getRange(comparator: '<='|'>=', versionStr: string): semver.Range {
   const version = new semver.SemVer(versionStr);

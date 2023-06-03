@@ -30,8 +30,8 @@ import {_sanitizeUrl as _sanitizeUrl} from './url_sanitizer';
  *
  * 一种 `html` 清洁器，可通过删除危险内容将不受信任的 `html`**字符串**转换为受信任的字符串。
  *
- * This method parses the `html` and locates potentially dangerous content (such as urls and
- * javascript) and removes it.
+ * This method parses the `html` and locates potentially dangerous content \(such as urls and
+ * javascript\) and removes it.
  *
  * 此方法会解析 `html` 并定位具有潜在危险的内容（例如 urls 和 javascript）并将其删除。
  *
@@ -42,14 +42,12 @@ import {_sanitizeUrl as _sanitizeUrl} from './url_sanitizer';
  * @param unsafeHtml untrusted `html`, typically from the user.
  *
  * 不受信任的 `html` ，通常来自用户。
- *
  * @returns
  *
  * `html` string which is safe to display to user, because all of the dangerous javascript
  * and urls have been removed.
  *
  * 可以安全地显示给用户的 `html` 字符串，因为所有危险的 javascript 和 url 都已删除。
- *
  * @codeGenApi
  */
 export function ɵɵsanitizeHtml(unsafeHtml: any): TrustedHTML|string {
@@ -76,13 +74,11 @@ export function ɵɵsanitizeHtml(unsafeHtml: any): TrustedHTML|string {
  * @param unsafeStyle untrusted `style`, typically from the user.
  *
  * 不受信任的 `style` ，通常来自用户。
- *
  * @returns
  *
  * `style` string which is safe to bind to the `style` properties.
  *
  * 可以安全地绑定到 `style` 属性的 `style` 字符串。
- *
  * @codeGenApi
  */
 export function ɵɵsanitizeStyle(unsafeStyle: any): string {
@@ -103,7 +99,7 @@ export function ɵɵsanitizeStyle(unsafeStyle: any): string {
  *
  * 一种 `url` 清洁器，可通过删除危险内容将不受信任的 `url`**字符串**转换为受信任的字符串。
  *
- * This method parses the `url` and locates potentially dangerous content (such as javascript) and
+ * This method parses the `url` and locates potentially dangerous content \(such as javascript\) and
  * removes it.
  *
  * 此方法会解析 `url` 并定位具有潜在危险的内容（例如 javascript）并将其删除。
@@ -115,14 +111,12 @@ export function ɵɵsanitizeStyle(unsafeStyle: any): string {
  * @param unsafeUrl untrusted `url`, typically from the user.
  *
  * 不受信任的 `url` ，通常来自用户。
- *
  * @returns
  *
  * `url` string which is safe to bind to the `src` properties such as `<img src>`, because
  * all of the dangerous javascript has been removed.
  *
  * 可以安全绑定到 `src` 属性的 `url` 字符串，例如 `<img src>` ，因为所有危险的 javascript 都已删除。
- *
  * @codeGenApi
  */
 export function ɵɵsanitizeUrl(unsafeUrl: any): string {
@@ -148,7 +142,6 @@ export function ɵɵsanitizeUrl(unsafeUrl: any): string {
  * @param unsafeResourceUrl untrusted `url`, typically from the user.
  *
  * 不受信任的 `url` ，通常来自用户。
- *
  * @returns
  *
  * `url` string which is safe to bind to the `src` properties such as `<img src>`, because
@@ -156,7 +149,6 @@ export function ɵɵsanitizeUrl(unsafeUrl: any): string {
  *
  * 可以安全地绑定到 `src` 属性的 `url` 字符串，例如 `<img src>` ，因为只有受信任的 `url`
  * 被允许通过。
- *
  * @codeGenApi
  */
 export function ɵɵsanitizeResourceUrl(unsafeResourceUrl: any): TrustedScriptURL|string {
@@ -185,7 +177,6 @@ export function ɵɵsanitizeResourceUrl(unsafeResourceUrl: any): TrustedScriptUR
  * @param unsafeScript untrusted `script`, typically from the user.
  *
  * 不受信任的 `script` ，通常来自用户。
- *
  * @returns
  *
  * `url` string which is safe to bind to the `<script>` element such as `<img src>`,
@@ -193,7 +184,6 @@ export function ɵɵsanitizeResourceUrl(unsafeResourceUrl: any): TrustedScriptUR
  *
  * 可以安全绑定到 `<script>` 元素的 `url` 字符串，例如 `<img src>` ，因为只有受信任的 `scripts`
  * 被允许通过。
- *
  * @codeGenApi
  */
 export function ɵɵsanitizeScript(unsafeScript: any): TrustedScript|string {

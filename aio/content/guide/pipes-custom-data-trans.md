@@ -15,7 +15,7 @@ To mark a class as a pipe and supply configuration metadata, apply the [`@Pipe`]
 
 要将类标记为管道并提供配置元数据，请将[`@Pipe`](api/core/Pipe "管道的 API 参考")[装饰器](guide/glossary#decorator--decoration "装饰器的定义")添加到此类上。
 
-Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") (the general convention for class names) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
+Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") \(the general convention for class names\) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
 Do not use hyphens in the `name`.
 
 使用[UpperCamelCase](guide/glossary#case-types "案例类型的定义")（类名的一般约定）作为管道类名，并使用[camelCase](guide/glossary#case-types "案例类型的定义")作为对应的 `name` 字符串。不要在 `name` 中使用连字符。
@@ -67,11 +67,11 @@ The following code example shows two component definitions:
 下列代码范例显示了两个组件定义：
 
 * The `exponential-strength.pipe.ts` component defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation.
-  It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe.
+  It defines an argument to the `transform` method \(`exponent`\) for a parameter passed to the pipe.
 
   `exponential-strength.pipe.ts` 通过一个执行转换的 `transform` 方法定义了一个名为 `exponentialStrength` 的自定义管道。它为传给管道的参数定义了 `transform` 方法的一个参数（`exponent`）。
 
-* The `power-booster.component.ts` component demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`).
+* The `power-booster.component.ts` component demonstrates how to use the pipe, specifying a value \(`2`\) and the exponent parameter \(`10`\).
 
   `power-booster.component.ts` 组件演示了如何使用该管道，指定了一个值（`2`）和一个 exponent 参数（`10`）。
 

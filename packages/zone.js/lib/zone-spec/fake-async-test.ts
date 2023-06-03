@@ -750,9 +750,9 @@ Zone.__load_patch('fakeasync', (global: any, Zone: ZoneType, api: _ZonePrivate) 
    *
    * 如果函数结束时有任何挂起的计时器，将抛出异常。
    *
-   * Can be used to wrap inject() calls.
+   * Can be used to wrap inject\(\) calls.
    *
-   * 可用于包装 injection() 调用。
+   * 可用于包装 injection\(\) 调用。
    *
    * ## Example
    *
@@ -766,7 +766,6 @@ Zone.__load_patch('fakeasync', (global: any, Zone: ZoneType, api: _ZonePrivate) 
    * The function wrapped to be executed in the fakeAsync zone
    *
    * 要在 fakeAsync 区域中执行的包装函数
-   *
    * @experimental
    */
   function fakeAsync(fn: Function): (...args: any[]) => any {

@@ -169,9 +169,9 @@ export function convertToParamMap(params: Params): ParamMap {
 }
 
 /**
- * Matches the route configuration (`route`) against the actual URL (`segments`).
+ * Matches the route configuration \(`route`\) against the actual URL \(`segments`\).
  *
- * 将路由配置 ( `route` ) 与实际 URL ( `segments` ) 匹配。
+ * 将路由配置 \( `route` \) 与实际 URL \( `segments` \) 匹配。
  *
  * When no matcher is defined on a `Route`, this is the matcher used by the Router by default.
  *
@@ -180,26 +180,21 @@ export function convertToParamMap(params: Params): ParamMap {
  * @param segments The remaining unmatched segments in the current navigation
  *
  * 当前导航中剩余的不匹配段
- *
  * @param segmentGroup The current segment group being matched
  *
  * 正在匹配的当前段组
- *
  * @param route The `Route` to match against.
  *
  * 要匹配的 `Route` 。
- *
  * @see UrlMatchResult
  * @see Route
  *
  * 路由
- *
  * @returns
  *
  * The resulting match information or `null` if the `route` should not match.
  *
  * 结果的匹配信息，如果 `route` 不应该匹配，则为 `null` 。
- *
  * @publicApi
  */
 export function defaultUrlMatcher(

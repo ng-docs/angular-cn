@@ -10,7 +10,6 @@ import {Directive, EmbeddedViewRef, Injector, Input, OnChanges, SimpleChanges, T
 
 /**
  * @ngModule CommonModule
- *
  * @description
  *
  * Inserts an embedded view from a prepared `TemplateRef`.
@@ -23,7 +22,6 @@ import {Directive, EmbeddedViewRef, Injector, Input, OnChanges, SimpleChanges, T
  *
  * 你可以通过设置 `[ngTemplateOutletContext]` 来给 `EmbeddedViewRef` 附加一个上下文对象。
  * `[ngTemplateOutletContext]` 是一个对象，该对象的 key 可在模板中使用 `let` 语句进行绑定。
- *
  * @usageNotes
  *
  * ```

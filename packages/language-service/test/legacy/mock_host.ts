@@ -221,7 +221,7 @@ export class MockService {
 
   /**
    * Overwrite an inline template defined in `fileName` and return the entire
-   * content of the source file (not just the template). If a cursor is present
+   * content of the source file \(not just the template\). If a cursor is present
    * in `newTemplate`, it will be removed and the position of the cursor in the
    * source file will be returned.
    *

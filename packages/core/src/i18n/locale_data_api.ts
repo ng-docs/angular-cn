@@ -54,16 +54,14 @@ export function registerLocaleData(data: any, localeId?: string|any, extraData?:
  * @param locale The locale code.
  *
  * 区域设置代码。
- *
  * @returns
  *
  * The locale data.
  *
  * 区域设置数据。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化 (i18n) 指南](https://angular.io/guide/i18n-overview)
+ * [国际化（i18n）指南](https://angular.io/guide/i18n-overview)
  *
  */
 export function findLocaleData(locale: string): any {
@@ -124,17 +122,15 @@ export function getLocaleCurrencyCode(locale: string): string|null {
  * @param locale A locale code for the locale format rules to use.
  *
  * 要使用的区域设置格式规则的区域设置代码。
- *
  * @returns
  *
  * The plural function for the locale.
  *
  * 语言环境的复数函数。
- *
  * @see `NgPlural`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化 (i18n) 指南](https://angular.io/guide/i18n-overview)
+ * [国际化（i18n）指南](https://angular.io/guide/i18n-overview)
  *
  */
 export function getLocalePluralCase(locale: string): (value: number) => number {
@@ -213,7 +209,7 @@ export const enum ExtraLocaleDataIndex {
 }
 
 /**
- * Index of each value in currency data (used to describe CURRENCIES_EN in currencies.ts)
+ * Index of each value in currency data \(used to describe CURRENCIES_EN in currencies.ts\)
  *
  * 货币数据中每个值的索引（用于在 currency.ts 中描述 CURRENCIES_EN）
  *

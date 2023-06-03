@@ -73,7 +73,7 @@ Binding happens when Angular performs **change detection**.
 
 **当 Angular 执行变更检测**时就会发生绑定。
 
-In production, change detection kicks in automatically when Angular creates a component or the user enters a keystroke or an asynchronous activity (for example, AJAX) completes.
+In production, change detection kicks in automatically when Angular creates a component or the user enters a keystroke or an asynchronous activity \(for example, AJAX\) completes.
 
 在生产环境中，当 Angular 创建一个组件，或者用户输入按键，或者异步活动（比如 AJAX）完成时，就会自动进行变更检测。
 
@@ -395,7 +395,7 @@ In this example, the `TwainComponent.getQuote()` method tells you that the `quot
 <code-example header="app/twain/twain.component.ts (getQuote)" path="testing/src/app/twain/twain.component.ts" region="get-quote"></code-example>
 
 The `TwainComponent` gets quotes from an injected `TwainService`.
-The component starts the returned `Observable` with a placeholder value (`'...'`), before the service can return its first quote.
+The component starts the returned `Observable` with a placeholder value \(`'...'`\), before the service can return its first quote.
 
 该 `TwainComponent` 从注入的 `TwainService` 中获取名言。该在服务能返回第一条名言之前，该服务会先返回一个占位流（`'...'`）。
 
@@ -496,7 +496,7 @@ fakeAsync(() =&gt; { /* test body */ })
 
 The `fakeAsync()` function enables a linear coding style by running the test body in a special `fakeAsync test zone`.
 The test body appears to be synchronous.
-There is no nested syntax (like a `Promise.then()`) to disrupt the flow of control.
+There is no nested syntax \(like a `Promise.then()`\) to disrupt the flow of control.
 
 通过在一个特殊的 `fakeAsync test zone`（译注：Zone.js 的一个特例）中运行测试体，`fakeAsync()` 函数可以启用线性编码风格。这个测试体看上去是同步的。没有像 `Promise.then()` 这样的嵌套语法来破坏控制流。
 
@@ -515,28 +515,28 @@ XHR calls within a test are rare, but if you need to call XHR, see the [`waitFor
 
 #### `tick()` 函数
 
-You do have to call [tick()](api/core/testing/tick) to advance the virtual clock.
+You do have to call [`tick()`](api/core/testing/tick) to advance the virtual clock.
 
-你必须调用 [tick()](api/core/testing/tick) 来推进虚拟时钟。
+你必须调用 [`tick()`](api/core/testing/tick) 来推进虚拟时钟。
 
-Calling [tick()](api/core/testing/tick) simulates the passage of time until all pending asynchronous activities finish.
+Calling [`tick()`](api/core/testing/tick) simulates the passage of time until all pending asynchronous activities finish.
 In this case, it waits for the error handler's `setTimeout()`.
 
-调用 [tick()](api/core/testing/tick) 时会在所有挂起的异步活动完成之前模拟时间的流逝。在这种情况下，它会等待错误处理程序中的 `setTimeout()`。
+调用 [`tick()`](api/core/testing/tick) 时会在所有挂起的异步活动完成之前模拟时间的流逝。在这种情况下，它会等待错误处理程序中的 `setTimeout()`。
 
-The [tick()](api/core/testing/tick) function accepts `millis` and `tickOptions` as parameters. The `millis` parameter specifies how much the virtual clock advances and defaults to `0` if not provided.
+The [`tick()`](api/core/testing/tick) function accepts `millis` and `tickOptions` as parameters. The `millis` parameter specifies how much the virtual clock advances and defaults to `0` if not provided.
 For example, if you have a `setTimeout(fn, 100)` in a `fakeAsync()` test, you need to use `tick(100)` to trigger the fn callback.
 The optional `tickOptions` parameter has a property named `processNewMacroTasksSynchronously`. The `processNewMacroTasksSynchronously` property represents whether to invoke new generated macro tasks when ticking and defaults to `true`.
 
-[tick()](api/core/testing/tick) 函数接受 `millis` 和 `tickOptions` 作为参数，`millis` 参数表示虚拟时钟要推进多少，如果未提供，则默认为 `0`。比如，如果你在 `fakeAsync()` 测试中有一个 `setTimeout(fn, 100)`，你就需要使用 `tick(100)` 来触发其 fn 回调。
+[`tick()`](api/core/testing/tick) 函数接受 `millis` 和 `tickOptions` 作为参数，`millis` 参数表示虚拟时钟要推进多少，如果未提供，则默认为 `0`。比如，如果你在 `fakeAsync()` 测试中有一个 `setTimeout(fn, 100)`，你就需要使用 `tick(100)` 来触发其 fn 回调。
 `tickOptions` 是一个可选参数，它带有一个名为 `processNewMacroTasksSynchronously` 的属性，它表示在 tick 时是否要调用新生成的宏任务，默认为 `true`。
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick"></code-example>
 
-The [tick()](api/core/testing/tick) function is one of the Angular testing utilities that you import with `TestBed`.
+The [`tick()`](api/core/testing/tick) function is one of the Angular testing utilities that you import with `TestBed`.
 It's a companion to `fakeAsync()` and you can only call it within a `fakeAsync()` body.
 
-[tick()](api/core/testing/tick) 函数是你用 `TestBed` 导入的 Angular 测试工具函数之一。它是 `fakeAsync()` 的伴生工具，你只能在 `fakeAsync()` 测试体内调用它。
+[`tick()`](api/core/testing/tick) 函数是你用 `TestBed` 导入的 Angular 测试工具函数之一。它是 `fakeAsync()` 的伴生工具，你只能在 `fakeAsync()` 测试体内调用它。
 
 #### tickOptions
 
@@ -552,9 +552,9 @@ In some case, you don't want to trigger the new macro task when ticking. You can
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-async"></code-example>
 
-#### Comparing dates inside fakeAsync()
+#### Comparing dates inside `fakeAsync()`
 
-#### 比较 fakeAsync() 内部的日期
+#### 比较 `fakeAsync()` 内部的日期
 
 `fakeAsync()` simulates passage of time, which lets you calculate the difference between dates inside `fakeAsync()`.
 
@@ -562,9 +562,9 @@ In some case, you don't want to trigger the new macro task when ticking. You can
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-date"></code-example>
 
-#### jasmine.clock with fakeAsync()
+#### `jasmine.clock` with `fakeAsync()`
 
-#### jasmine.clock 与 fakeAsync() 联用
+#### `jasmine.clock` 与 `fakeAsync()` 联用
 
 Jasmine also provides a `clock` feature to mock dates.
 Angular automatically runs tests that are run after `jasmine.clock().install()` is called inside a `fakeAsync()` method until `jasmine.clock().uninstall()` is called.
@@ -590,7 +590,7 @@ import 'zone.js/testing';
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-clock"></code-example>
 
-#### Using the RxJS scheduler inside fakeAsync()
+#### Using the RxJS scheduler inside `fakeAsync()`
 
 #### 在 `fakeAsync()` 中使用 RxJS 调度器
 
@@ -712,15 +712,15 @@ Here's a `fakeAsync()` test that demonstrates the data flow you'd expect in the 
 
 <code-example path="testing/src/app/twain/twain.component.spec.ts" region="fake-async-test"></code-example>
 
-Notice that the quote element displays the placeholder value (`'...'`) after `ngOnInit()`.
+Notice that the quote element displays the placeholder value \(`'...'`\) after `ngOnInit()`.
 The first quote hasn't arrived yet.
 
 注意，quote 元素会在 `ngOnInit()` 之后显示占位符 `'...'`。因为第一句名言尚未到来。
 
-To flush the first quote from the observable, you call [tick()](api/core/testing/tick).
+To flush the first quote from the observable, you call [`tick()`](api/core/testing/tick).
 Then call `detectChanges()` to tell Angular to update the screen.
 
-要清除可观察对象中的第一句名言，你可以调用 [tick()](api/core/testing/tick)。然后调用 `detectChanges()` 来告诉 Angular 更新屏幕。
+要清除可观察对象中的第一句名言，你可以调用 [`tick()`](api/core/testing/tick)。然后调用 `detectChanges()` 来告诉 Angular 更新屏幕。
 
 Then you can assert that the quote element displays the expected text.
 
@@ -761,9 +761,9 @@ When using an `intervalTimer()` such as `setInterval()` in `waitForAsync()`, rem
 #### `whenStable`
 
 The test must wait for the `getQuote()` observable to emit the next quote.
-Instead of calling [tick()](api/core/testing/tick), it calls `fixture.whenStable()`.
+Instead of calling [`tick()`](api/core/testing/tick), it calls `fixture.whenStable()`.
 
-测试必须等待 `getQuote()` 可观察对象发出下一句名言。它并没有调用 [tick()](api/core/testing/tick)，而是调用了 `fixture.whenStable()`。
+测试必须等待 `getQuote()` 可观察对象发出下一句名言。它并没有调用 [`tick()`](api/core/testing/tick)，而是调用了 `fixture.whenStable()`。
 
 The `fixture.whenStable()` returns a promise that resolves when the JavaScript engine's task queue becomes empty.
 In this example, the task queue becomes empty when the observable emits the first quote.
@@ -863,8 +863,8 @@ Marble testing uses a test scheduler to simulate the passage of time in a synchr
 注意，这个 Jasmine 测试是同步的。没有 `fakeAsync()`。弹珠测试使用测试调度程序（scheduler）来模拟同步测试中的时间流逝。
 
 The beauty of marble testing is in the visual definition of the observable streams.
-This test defines a [*cold* observable](#cold-observable) that waits three [frames](#marble-frame) (`---`), emits a value (`x`), and completes (`|`).
-In the second argument you map the value marker (`x`) to the emitted value (`testQuote`).
+This test defines a [*cold* observable](#cold-observable) that waits three [frames](#marble-frame) \(`---`\), emits a value \(`x`\), and completes \(`|`\).
+In the second argument you map the value marker \(`x`\) to the emitted value \(`testQuote`\).
 
 弹珠测试的美妙之处在于对可观察对象流的视觉定义。这个测试定义了一个[*冷*可观察对象](#cold-observable)，它等待三[帧](#marble-frame)（`---`），发出一个值（`x`），并完成（`|`）。在第二个参数中，你把值标记（`x`）映射到了发出的值（`testQuote`）。
 
@@ -880,10 +880,10 @@ When you're ready to activate the marble observables, you tell the `TestSchedule
 
 <code-example path="testing/src/app/twain/twain.component.marbles.spec.ts" region="test-scheduler-flush"></code-example>
 
-This step serves a purpose analogous to [tick()](api/core/testing/tick) and `whenStable()` in the earlier `fakeAsync()` and `waitForAsync()` examples.
+This step serves a purpose analogous to [`tick()`](api/core/testing/tick) and `whenStable()` in the earlier `fakeAsync()` and `waitForAsync()` examples.
 The balance of the test is the same as those examples.
 
-这个步骤的作用类似于之前的 `fakeAsync()` 和 `waitForAsync()` 例子中的 [tick()](api/core/testing/tick) 和 `whenStable()` 测试。对这种测试的权衡策略与那些例子是一样的。
+这个步骤的作用类似于之前的 `fakeAsync()` 和 `waitForAsync()` 例子中的 [`tick()`](api/core/testing/tick) 和 `whenStable()` 测试。对这种测试的权衡策略与那些例子是一样的。
 
 #### Marble error testing
 
@@ -895,9 +895,9 @@ Here's the marble testing version of the `getQuote()` error test.
 
 <code-example path="testing/src/app/twain/twain.component.marbles.spec.ts" region="error-test"></code-example>
 
-It's still an async test, calling `fakeAsync()` and [tick()](api/core/testing/tick), because the component itself calls `setTimeout()` when processing errors.
+It's still an async test, calling `fakeAsync()` and [tick\(\)](api/core/testing/tick), because the component itself calls `setTimeout()` when processing errors.
 
-它仍然是异步测试，调用 `fakeAsync()` 和 [tick()](api/core/testing/tick)，因为该组件在处理错误时会调用 `setTimeout()`。
+它仍然是异步测试，调用 `fakeAsync()` 和 [tick\(\)](api/core/testing/tick)，因为该组件在处理错误时会调用 `setTimeout()`。
 
 Look at the marble observable definition.
 
@@ -905,7 +905,7 @@ Look at the marble observable definition.
 
 <code-example path="testing/src/app/twain/twain.component.marbles.spec.ts" region="error-marbles"></code-example>
 
-This is a *cold* observable that waits three frames and then emits an error, the hash (`#`) character indicates the timing of the error that is specified in the third argument.
+This is a *cold* observable that waits three frames and then emits an error, the hash \(`#`\) character indicates the timing of the error that is specified in the third argument.
 The second argument is null because the observable never emits a value.
 
 这是一个*冷*可观察对象，等待三帧，然后发出一个错误，井号（`#`）标出了在第三个参数中指定错误的发生时间。第二个参数为 null，因为该可观察对象永远不会发出值。
@@ -917,7 +917,7 @@ The second argument is null because the observable never emits a value.
 <a id="marble-frame"></a>
 
 A *marble frame* is a virtual unit of testing time.
-Each symbol (`-`, `x`, `|`, `#`) marks the passing of one frame.
+Each symbol \(`-`, `x`, `|`, `#`\) marks the passing of one frame.
 
 *弹珠帧*是测试时间线上的虚拟单位。每个符号（`-`，`x`，`|`，`#`）都表示经过了一帧。
 
@@ -1032,7 +1032,7 @@ Here's the meat of the spec file setup.
 
 <code-example header="app/dashboard/dashboard-hero.component.spec.ts (setup)" path="testing/src/app/dashboard/dashboard-hero.component.spec.ts" region="setup"></code-example>
 
-Notice how the setup code assigns a test hero (`expectedHero`) to the component's `hero` property, emulating the way the `DashboardComponent` would set it using the property binding in its repeater.
+Notice how the setup code assigns a test hero \(`expectedHero`\) to the component's `hero` property, emulating the way the `DashboardComponent` would set it using the property binding in its repeater.
 
 注意这些设置代码如何把一个测试英雄（`expectedHero`）赋值给组件的 `hero` 属性的，它模仿了 `DashboardComponent` 在其复写器中通过属性绑定来设置它的方式。
 
@@ -1058,7 +1058,7 @@ This small test demonstrates how Angular tests can verify a component's visual r
 
 #### 点击
 
-Clicking the hero should raise a `selected` event that the host component (`DashboardComponent` presumably) can hear:
+Clicking the hero should raise a `selected` event that the host component \(`DashboardComponent` presumably\) can hear:
 
 单击该英雄应该会让一个宿主组件（可能是 `DashboardComponent`）监听到 `selected` 事件。
 
@@ -1227,9 +1227,9 @@ The `createComponent` returns a `fixture` that holds an instance of `TestHostCom
 `createComponent` 返回的 `fixture` 里有 `TestHostComponent` 实例，而非 `DashboardHeroComponent` 组件实例。
 
 Creating the `TestHostComponent` has the side effect of creating a `DashboardHeroComponent` because the latter appears within the template of the former.
-The query for the hero element (`heroEl`) still finds it in the test DOM, albeit at greater depth in the element tree than before.
+The query for the hero element \(`heroEl`\) still finds it in the test DOM, albeit at greater depth in the element tree than before.
 
-当然，创建 `TestHostComponent` 有创建 `DashboardHeroComponent` 的副作用，因为后者出现在前者的模板中。英雄元素（`heroEl`)的查询语句仍然可以在测试 DOM 中找到它，尽管元素树比以前更深。
+当然，创建 `TestHostComponent` 有创建 `DashboardHeroComponent` 的副作用，因为后者出现在前者的模板中。英雄元素（`heroEl`）的查询语句仍然可以在测试 DOM 中找到它，尽管元素树比以前更深。
 
 The tests themselves are almost identical to the stand-alone version:
 
@@ -1379,7 +1379,7 @@ To validate the links, you don't need the `Router` to navigate and you don't nee
 
 要想验证这些链接，你不必用 `Router` 进行导航，也不必使用 `<router-outlet>` 来指出 `Router` 应该把*路由目标组件*插入到什么地方。
 
-The `BannerComponent` and `WelcomeComponent` (indicated by `<app-banner>` and `<app-welcome>`) are also irrelevant.
+The `BannerComponent` and `WelcomeComponent` \(indicated by `<app-banner>` and `<app-welcome>`\) are also irrelevant.
 
 而 `BannerComponent` 和 `WelcomeComponent`（写作 `<app-banner>` 和 `<app-welcome>`）也同样风马牛不相及。
 
@@ -1918,7 +1918,7 @@ They prepare the dependency injector at the *fixture level*.
 在 `TestBed.configureTestingModule` 的 `providers` 中 stub 伪造组件的 `HeroDetailService` 是不可行的。这些是**测试模块**的提供者，而非组件的。组件级别的提供者应该在**fixture 级别**的依赖注入器中进行准备。
 
 Angular creates the component with its *own* injector, which is a *child* of the fixture injector.
-It registers the component's providers (the `HeroDetailService` in this case) with the child injector.
+It registers the component's providers \(the `HeroDetailService` in this case\) with the child injector.
 
 Angular 会使用自己的注入器来创建这些组件，这个注入器是夹具的注入器的子注入器。它使用这个子注入器注册了该组件服务提供者（这里是 `HeroDetailService`）。
 
@@ -1978,7 +1978,7 @@ Focus on the `overrideComponent` method.
 
 <code-example header="app/hero/hero-detail.component.spec.ts (overrideComponent)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="override-component-method"></code-example>
 
-It takes two arguments: the component type to override (`HeroDetailComponent`) and an override metadata object.
+It takes two arguments: the component type to override \(`HeroDetailComponent`\) and an override metadata object.
 The [override metadata object](guide/testing-utility-apis#metadata-override-object) is a generic defined as follows:
 
 它接受两个参数：要改写的组件类型（`HeroDetailComponent`），以及用于改写的元数据对象。[用于改写的元数据对象](guide/testing-utility-apis#metadata-override-object)是一个泛型，其定义如下：
@@ -2014,9 +2014,9 @@ providers?: any[];
 
 <a id="spy-stub"></a>
 
-#### Provide a *spy stub* (`HeroDetailServiceSpy`)
+#### Provide a *spy stub* \(`HeroDetailServiceSpy`\)
 
-#### 提供 *间谍桩* (`HeroDetailServiceSpy`)
+#### 提供 *间谍桩*（`HeroDetailServiceSpy`）
 
 This example completely replaces the component's `providers` array with a new array containing a `HeroDetailServiceSpy`.
 

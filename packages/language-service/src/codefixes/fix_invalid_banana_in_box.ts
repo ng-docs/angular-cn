@@ -56,8 +56,9 @@ export const fixInvalidBananaInBoxMeta: CodeActionMeta = {
 
       /**
        * This diagnostic has detected a likely mistake that puts the square brackets inside the
-       * parens (the BoundEvent `([thing])`) when it should be the other way around `[(thing)]` so
+       * parens \(the BoundEvent `([thing])`\) when it should be the other way around `[(thing)]` so
        * this function is trying to find the bound event in order to flip the syntax.
+       *
        */
       const boundEvent = getTheBoundEventAtPosition(templateInfo, start);
       if (boundEvent === null) {

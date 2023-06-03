@@ -39,7 +39,7 @@ Each diagnostic can be configured as either:
 
 默认情况下，扩展诊断是警告，并且不会阻止编译。每个诊断都可以配置为：
 
-* `warning` (default) - The compiler emits the diagnostic as a warning but does not block
+* `warning` \(default\) - The compiler emits the diagnostic as a warning but does not block
   compilation. The compiler will still exit with status code 0, even if warnings are emitted.
 
   `warning`（默认）-编译器将诊断作为警告发出，但不会阻止编译。即使发出了警告，编译器仍然会以状态代码 0 退出。
@@ -95,7 +95,7 @@ This is required to allow the compiler to better understand Angular template typ
 
 ## 语义化版本控制
 
-The Angular team intends to add or enable new extended diagnostics in **minor** versions of Angular (see [semver](https://docs.npmjs.com/about-semantic-versioning)).
+The Angular team intends to add or enable new extended diagnostics in **minor** versions of Angular \(see [semver](https://docs.npmjs.com/about-semantic-versioning)\).
 This means that upgrading Angular may show new warnings in your existing codebase.
 This enables the team to deliver features more quickly and to make extended diagnostics more accessible to developers.
 
@@ -134,11 +134,11 @@ Angular 团队始终乐于接受有关可以添加的新诊断器的建议。扩
 
   假阳性率低（最好是零）
 
-* Apply to the vast majority of Angular applications (not specific to an unofficial library)
+* Apply to the vast majority of Angular applications \(not specific to an unofficial library\)
 
   适用于绝大多数 Angular 应用程序（不专属于非官方库）
 
-* Improve program correctness or performance (not style, that responsibility falls to a linter)
+* Improve program correctness or performance \(not style, that responsibility falls to a linter\)
 
   提高程序的正确性或性能（而不是风格，风格由 linter 负责）
 

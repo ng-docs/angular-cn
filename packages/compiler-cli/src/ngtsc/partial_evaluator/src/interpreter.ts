@@ -77,7 +77,7 @@ const UNARY_OPERATORS = new Map<ts.SyntaxKind, (a: any) => any>([
 interface Context {
   originatingFile: ts.SourceFile;
   /**
-   * The module name (if any) which was used to reach the currently resolving symbols.
+   * The module name \(if any\) which was used to reach the currently resolving symbols.
    *
    * 用于访问当前解析符号的模块名称（如果有）。
    *

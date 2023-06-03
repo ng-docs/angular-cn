@@ -33,20 +33,18 @@ function toInteger(value: string|number): number {
 }
 
 /**
- * Method that ensures that provided value is a float (and converts it to float if needed).
+ * Method that ensures that provided value is a float \(and converts it to float if needed\).
  *
  * 确保提供的值是浮点数（并如果需要将其转换为浮点数）的方法。
  *
  * @param value The value to convert to float.
  *
  * 要转换为浮点数的值。
- *
  * @returns
  *
  * value of parameter converted to number or float.
  *
  * 转换为数字或浮点数的参数值。
- *
  */
 function toFloat(value: string|number): number {
   return typeof value === 'number' ? value : parseFloat(value);
@@ -148,32 +146,32 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    *
    * 跟踪此验证器是否启用的标志。
    *
-   * Marking it `internal` (vs `protected`), so that this flag can be used in host bindings of
+   * Marking it `internal` \(vs `protected`\), so that this flag can be used in host bindings of
    * directive classes that extend this base class.
    *
    * 将其标记为 `internal`（vs `protected`
-   *），以便此标志可以在扩展此基类的指令类的宿主绑定中使用。
+   * ），以便此标志可以在扩展此基类的指令类的宿主绑定中使用。
    *
    * @internal
    */
   _enabled?: boolean;
 
   /**
-   * Name of an input that matches directive selector attribute (e.g. `minlength` for
-   * `MinLengthDirective`). An input with a given name might contain configuration information (like
-   * `minlength='10'`) or a flag that indicates whether validator should be enabled (like
-   * `[required]='false'`).
+   * Name of an input that matches directive selector attribute \(e.g. `minlength` for
+   * `MinLengthDirective`\). An input with a given name might contain configuration information \(like
+   * `minlength='10'`\) or a flag that indicates whether validator should be enabled \(like
+   * `[required]='false'`\).
    *
    * 与指令选择器属性匹配的输入的名称（例如 `minlength` 的 `MinLengthDirective`
-   *）。具有给定名称的输入可能包含配置信息（例如 `minlength='10'`
-   *）或表明是否应启用验证器的标志（例如 `[required]='false'`）。
+   * ）。具有给定名称的输入可能包含配置信息（例如 `minlength='10'`
+   * ）或表明是否应启用验证器的标志（例如 `[required]='false'`）。
    *
    * @internal
    */
   abstract inputName: string;
 
   /**
-   * Creates an instance of a validator (specific to a directive that extends this base class).
+   * Creates an instance of a validator \(specific to a directive that extends this base class\).
    *
    * 创建验证器的实例（特定于扩展此基类的指令）。
    *
@@ -220,8 +218,8 @@ abstract class AbstractValidatorDirective implements Validator, OnChanges {
    * @description
    *
    * Determines whether this validator should be active or not based on an input.
-   * Base class implementation checks whether an input is defined (if the value is different from
-   * `null` and `undefined`). Validator classes that extend this base class can override this
+   * Base class implementation checks whether an input is defined \(if the value is different from
+   * `null` and `undefined`\). Validator classes that extend this base class can override this
    * function with the logic specific to a particular validator directive.
    *
    * 根据输入确定此验证器是否应该处于活动状态。基类实现会检查输入是否已定义（如果值不同于 `null` 和
@@ -257,7 +255,6 @@ export const MAX_VALIDATOR: Provider = {
  * @see [Form Validation](guide/form-validation)
  *
  * [表单验证](guide/form-validation)
- *
  * @usageNotes
  *
  * ### Adding a max validator
@@ -272,7 +269,6 @@ export const MAX_VALIDATOR: Provider = {
  * ```html
  * <input type="number" ngModel max="4">
  * ```
- *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule
  * @publicApi
@@ -325,7 +321,6 @@ export const MIN_VALIDATOR: Provider = {
  * @see [Form Validation](guide/form-validation)
  *
  * [表单验证](guide/form-validation)
- *
  * @usageNotes
  *
  * ### Adding a min validator
@@ -340,7 +335,6 @@ export const MIN_VALIDATOR: Provider = {
  * ```html
  * <input type="number" ngModel min="4">
  * ```
- *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule
  * @publicApi

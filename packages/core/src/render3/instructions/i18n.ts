@@ -144,11 +144,10 @@ export function ɵɵi18nAttributes(index: number, attrsIndex: number): void {
  * @param value The binding's value
  *
  * 绑定的值
- *
  * @returns
  *
  * This function returns itself so that it may be chained
- * (e.g. `i18nExp(ctx.name)(ctx.title)`)
+ * \(e.g. `i18nExp(ctx.name)(ctx.title)`\)
  *
  * 此函数返回自身，以便它可以被链接（例如 `i18nExp(ctx.name)(ctx.title)`）
  *
@@ -165,8 +164,8 @@ export function ɵɵi18nExp<T>(value: T): typeof ɵɵi18nExp {
  *
  * 在绑定更改时更新翻译块或 i18n 属性。
  *
- * @param index Index of either {@link i18nStart} (translation block) or {@link i18nAttributes}
- * (i18n attribute) on which it should update the content.
+ * @param index Index of either {@link i18nStart} \(translation block\) or {@link i18nAttributes}
+ * \(i18n attribute\) on which it should update the content.
  *
  * 应该更新内容的 {@link i18nStart}（翻译块）或 {@link i18nAttributes}（i18n 属性）的索引。
  *
@@ -182,17 +181,17 @@ export function ɵɵi18nApply(index: number) {
  * 处理消息字符串的后处理以进行国际化。
  *
  * Handles message string post-processing by transforming it from intermediate
- * format (that might contain some markers that we need to replace) to the final
+ * format \(that might contain some markers that we need to replace\) to the final
  * form, consumable by i18nStart instruction. Post processing steps include:
  *
  * 通过将消息字符串从中间格式（可能包含我们需要替换的一些标记）转换为可由 i18nStart
  * 指令使用的最终形式来处理消息字符串的后处理。后处理步骤包括：
  *
- * 1. Resolve all multi-value cases (like `[�*1:1��#2:1�|�#4:1�|�5�]`)
+ * 1. Resolve all multi-value cases \(like `[�*1:1��#2:1�|�#4:1�|�5�]`\)
  *
  *    解析所有多值情况（例如 `[�*1:1��#2:1�|�#4:1�|�5�]`）
  *
- * 2. Replace all ICU vars (like "VAR_PLURAL")
+ * 2. Replace all ICU vars \(like "VAR_PLURAL"\)
  *
  *    替换所有 ICU var（例如“VAR_PLURAL”）
  *
@@ -200,7 +199,7 @@ export function ɵɵi18nApply(index: number) {
  *
  *    以 {PLACEHOLDER} 的形式替换 ICU 中使用的所有占位符
  *
- * 4. Replace all ICU references with corresponding values (like �ICU_EXP_ICU_1�)
+ * 4. Replace all ICU references with corresponding values \(like �ICU_EXP_ICU_1�\)
  *    in case multiple ICUs have the same placeholder name
  *
  *    如果多个 ICU 具有相同的占位符名称，则将所有 ICU 引用替换为相应的值（例如 “ICU_EXP_ICU_1”）
@@ -208,17 +207,14 @@ export function ɵɵi18nApply(index: number) {
  * @param message Raw translation string for post processing
  *
  * 用于后处理的原始翻译字符串
- *
  * @param replacements Set of replacements that should be applied
  *
  * 应该应用的替换集
- *
  * @returns
  *
  * Transformed string that can be consumed by i18nStart instruction
  *
  * i18nStart 指令可以用的转换字符串
- *
  * @codeGenApi
  */
 export function ɵɵi18nPostprocess(

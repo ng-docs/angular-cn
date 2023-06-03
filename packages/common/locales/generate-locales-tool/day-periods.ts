@@ -52,9 +52,7 @@ export function getDayPeriods(localeData: CldrLocaleData, dayPeriodsList: string
  *
  * @returns
  *
- * string\[]
- *
- * 字符串\[]
+ * `string[]`
  *
  */
 export function getDayPeriodRules(
@@ -87,9 +85,9 @@ export function getDayPeriodRules(
 }
 
 /**
- * Returns the basic day periods (am/pm)
+ * Returns the basic day periods \(am/pm\)
  *
- * 返回基本日期间 (am/pm)
+ * 返回基本日期间（am/pm）
  *
  */
 export function getDayPeriodsAmPm(localeData: CldrLocaleData) {
@@ -97,7 +95,7 @@ export function getDayPeriodsAmPm(localeData: CldrLocaleData) {
 }
 
 /**
- * Returns the extra day periods (without am/pm)
+ * Returns the extra day periods \(without am/pm\)
  *
  * 返回额外的天数（不包括 am/pm）
  *

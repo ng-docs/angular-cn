@@ -14,12 +14,15 @@ import {RuntimeErrorCode} from '../../errors';
 import {DEFAULT_PRELOADED_IMAGES_LIMIT, PRELOADED_IMAGES} from './tokens';
 
 /**
- * @description Contains the logic needed to track and add preload link tags to the `<head>` tag. It
+ * @description
+ *
+ * Contains the logic needed to track and add preload link tags to the `<head>` tag. It
  * will also track what images have already had preload link tags added so as to not duplicate link
  * tags.
  *
  * In dev mode this service will validate that the number of preloaded images does not exceed the
  * configured default preloaded images limit: {@link DEFAULT_PRELOADED_IMAGES_LIMIT}.
+ *
  */
 @Injectable({providedIn: 'root'})
 export class PreloadLinkCreator {
@@ -32,7 +35,7 @@ export class PreloadLinkCreator {
    * Add a preload `<link>` to the `<head>` of the `index.html` that is served from the
    * server while using Angular Universal and SSR to kick off image loads for high priority images.
    *
-   * The `sizes` (passed in from the user) and `srcset` (parsed and formatted from `ngSrcset`)
+   * The `sizes` \(passed in from the user\) and `srcset` \(parsed and formatted from `ngSrcset`\)
    * properties used to set the corresponding attributes, `imagesizes` and `imagesrcset`
    * respectively, on the preload `<link>` tag so that the correctly sized image is preloaded from
    * the CDN.

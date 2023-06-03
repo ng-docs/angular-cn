@@ -359,9 +359,9 @@ export const enum QueryFlags {
   isStatic = 0b0010,
 
   /**
-   * If the `QueryList` should fire change event only if actual change to query was computed (vs old
+   * If the `QueryList` should fire change event only if actual change to query was computed \(vs old
    * behavior where the change was fired whenever the query was recomputed, even if the recomputed
-   * query resulted in the same list.)
+   * query resulted in the same list.\)
    *
    * 如果仅在计算了对查询的实际更改时，`QueryList` 应该触发 change
    * 事件（与旧行为相比，每当重新计算查询时都会触发更改，即使重新计算的查询产生了同一个列表。）
@@ -865,7 +865,7 @@ export function parseHostBindings(host: {[key: string]: string|o.Expression}): P
 }
 
 /**
- * Verifies host bindings and returns the list of errors (if any). Empty array indicates that a
+ * Verifies host bindings and returns the list of errors \(if any\). Empty array indicates that a
  * given set of host bindings has no errors.
  *
  * 验证宿主绑定并返回错误列表（如果有）。空数组表示给定的一组宿主绑定没有错误。
@@ -873,17 +873,14 @@ export function parseHostBindings(host: {[key: string]: string|o.Expression}): P
  * @param bindings set of host bindings to verify.
  *
  * 要验证的一组宿主绑定。
- *
  * @param sourceSpan source span where host bindings were defined.
  *
  * 定义宿主绑定的源跨度。
- *
  * @returns
  *
  * array of errors associated with a given set of host bindings.
  *
  * 与给定的宿主绑定集相关的错误数组。
- *
  */
 export function verifyHostBindings(
     bindings: ParsedHostBindings, sourceSpan: ParseSourceSpan): ParseError[] {

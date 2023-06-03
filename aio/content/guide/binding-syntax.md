@@ -219,9 +219,9 @@ Angular 根据数据流的方向提供三种类型的数据绑定：
 | 双向                                                                     | <code-example> [(target)]="expression" </code-example>                       | 双向                                    |
 
 Binding types other than interpolation have a target name to the left of the equal sign.
-The target of a binding is a property or event, which you surround with square bracket (`[ ]`) characters, parenthesis (`( )`) characters, or both (`[( )]`) characters.
+The target of a binding is a property or event, which you surround with square bracket \(`[ ]`\) characters, parenthesis \(`( )`\) characters, or both \(`[( )]`\) characters.
 
-插值以外的绑定类型在等号左侧有一个目标名称。绑定的目标是 property 或事件，你可以用方括号 ( `[ ]` ) 字符、括号 ( `( )` ) 字符或两者 ( `[( )]` ) 字符括起来。
+插值以外的绑定类型在等号左侧有一个目标名称。绑定的目标是 property 或事件，你可以用方括号（`[ ]`）字符、括号（`( )`）字符或两者（`[( )]`）字符括起来。
 
 The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direction of data flow.
 
@@ -239,7 +239,7 @@ The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direct
 
   使用 `[()]` 进行双向绑定，将视图绑定到源再绑定到视图
 
-Place the expression or statement to the right of the equal sign within double quote (`""`) characters.
+Place the expression or statement to the right of the equal sign within double quote \(`""`\) characters.
 For more information see [Interpolation](guide/interpolation) and [Template statements](guide/template-statements).
 
 将表达式或语句放在双引号 `""` 中等号的右侧。有关更多信息，请参见[插值](guide/interpolation)和[模板语句](guide/template-statements)。
@@ -255,20 +255,20 @@ The following table summarizes the targets for the different binding types.
 数据绑定的目标可以是 Property、事件或 Attribute 的名称。源指令的每个 public 成员都可以自动用于绑定模板表达式或模板语句中。下表总结了不同绑定类型的目标。
 
 | Type      | Target                                                               | Examples                                                                                                                                                                                                                                                |
-| :-------- | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 类型      | 目标                                                                 | 例子                                                                                                                                                                                                                                                    |
+| :-------- |:---------------------------------------------------------------------| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 类型      | 目标                                                                   | 例子                                                                                                                                                                                                                                                    |
 | Property  | Element property <br /> Component property <br /> Directive property | `alt`, `src`, `hero`, and `ngClass` in the following: <code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). --> |
-| 属性      | 元素属性 <br /> 组件属性 <br /> 指令属性                             | 下面例子中的 `alt`、`src`、`hero` 和 `ngClass`：<code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). -->       |
+| 属性      | 元素属性 <br /> 组件属性 <br /> 指令属性                                         | 下面例子中的 `alt`、`src`、`hero` 和 `ngClass`：<code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). -->       |
 | Event     | Element event <br /> Component event <br /> Directive event          | `click`, `deleteRequest`, and `myClick` in the following: <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example>                                                                               |
-| 事件      | 元素事件 <br /> 组件事件 <br /> 指令事件                             | 下面例子中的 `click`、`deleteRequest` 和 `myClick`：<code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example>                                                                                     |
+| 事件      | 元素事件 <br /> 组件事件 <br /> 指令事件                                         | 下面例子中的 `click`、`deleteRequest` 和 `myClick`：<code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example>                                                                                     |
 | Two-way   | Event and property                                                   | <code-example path="template-syntax/src/app/app.component.html" region="2-way-binding-syntax-1"></code-example>                                                                                                                                         |
-| 双向      | 事件与属性                                                           | <code-example path="template-syntax/src/app/app.component.html" region="2-way-binding-syntax-1"></code-example>                                                                                                                                         |
-| Attribute | Attribute (the exception)                                            | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example>                                                                                                                                     |
-| Attribute | Attribute (少数特例情况)                                             | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example>                                                                                                                                     |
+| 双向      | 事件与属性                                                                | <code-example path="template-syntax/src/app/app.component.html" region="2-way-binding-syntax-1"></code-example>                                                                                                                                         |
+| Attribute | Attribute \(the exception\)                                          | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example>                                                                                                                                     |
+| Attribute | Attribute（少数特例情况）                                                     | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example>                                                                                                                                     |
 | Class     | `class` property                                                     | <code-example path="template-syntax/src/app/app.component.html" region="class-binding-syntax-1"></code-example>                                                                                                                                         |
-| 类        | `class` 属性                                                         | <code-example path="template-syntax/src/app/app.component.html" region="class-binding-syntax-1"></code-example>                                                                                                                                         |
+| 类        | `class` 属性                                                           | <code-example path="template-syntax/src/app/app.component.html" region="class-binding-syntax-1"></code-example>                                                                                                                                         |
 | Style     | `style` property                                                     | <code-example path="template-syntax/src/app/app.component.html" region="style-binding-syntax-1"></code-example>                                                                                                                                         |
-| 样式      | `style` 属性                                                         | <code-example path="template-syntax/src/app/app.component.html" region="style-binding-syntax-1"></code-example>                                                                                                                                         |
+| 样式      | `style` 属性                                                           | <code-example path="template-syntax/src/app/app.component.html" region="style-binding-syntax-1"></code-example>                                                                                                                                         |
 
 <!-- links -->
 

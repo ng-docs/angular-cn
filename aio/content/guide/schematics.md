@@ -113,7 +113,7 @@ For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap
 
 合作伙伴和第三方库也可以通过添加原理图来支持 Angular CLI。比如，`@ng-bootstrap/schematics` 会把 [ng-bootstrap](https://ng-bootstrap.github.io) 添加到应用中，`@clr/angular` 会安装并设置 [VMWare 的 Clarity](https://clarity.design/documentation/get-started)。
 
-An *add schematic* can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
+An *add schematic* can also update a project with configuration changes, add additional dependencies \(such as polyfills\), or scaffold package-specific initialization code.
 For example, the `@angular/pwa` schematic turns your application into a PWA by adding an application manifest and service worker.
 
 "添加原理图" 还可以通过更改配置、添加额外依赖（比如腻子脚本），或者添加程序包特有的初始化代码来修改项目。比如，`@angular/pwa` 原理图会通过添加一个应用清单（manifest）和 Service Worker。
@@ -123,7 +123,7 @@ For example, the `@angular/pwa` schematic turns your application into a PWA by a
 ### 生成（Generation）原理图
 
 Generation schematics are instructions for the `ng generate` command.
-The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic (in place of a sub-command) to generate an artifact defined in your library.
+The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic \(in place of a sub-command\) to generate an artifact defined in your library.
 
 生成器原理图是 `ng generate` 的操作指令。那些已经有文档的子命令会使用默认的 Angular 生成器原理图，但你可以在子命令中指定另一个原理图来生成你的库中定义的那些工件。
 
@@ -165,7 +165,7 @@ We analyzed your package.json, there are some packages to update:
 
 </code-example>
 
-If you pass the command a set of libraries to update (or the `--all` flag), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
+If you pass the command a set of libraries to update \(or the `--all` flag\), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
 
 如果你给这个命令指定一组要更新的库（或 `--all` 标志），它就会更新这些库、这些库的对等依赖，以及对等依赖的对等依赖。
 

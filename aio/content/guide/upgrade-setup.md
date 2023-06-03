@@ -77,11 +77,11 @@ npm install
 
 <a id="non-essential"></a>
 
-## Delete *non-essential* files (optional)
+## Delete *non-essential* files \(optional\)
 
 ## 删除*非必需*文件（可选）
 
-You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance (***including all git-related artifacts*** such as the `.git` folder and `.gitignore`).
+You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance \(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`\).
 
 你可以快速删除一些涉及到测试和维护快速开始版本库的 *非必需* 文件（***包括所有 git 相关的文件***如 `.git` 文件夹和 `.gitignore`！）。
 
@@ -97,7 +97,7 @@ Open a terminal window in the project folder and enter the following commands fo
 
 在项目目录下打开一个终端窗口，并根据你的操作系统执行以下命令：
 
-### macOS / Mac OS X (bash)
+### macOS / Mac OS X \(bash\)
 
 <code-example format="shell" language="shell">
 
@@ -125,7 +125,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
 由于不推荐使用快速入门仓库（它已不再更新），所以你需要一些额外的步骤来使用最新的 Angular。
 
-1. Remove the obsolete `@angular/http` package (both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`).
+1. Remove the obsolete `@angular/http` package \(both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`\).
 
    删除过时的 `@angular/http` 包（全都来自 `package.json > dependencies` 和 `src/systemjs.config.js > SystemJS.config() > map`）。
 
@@ -139,7 +139,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
    </code-example>
 
-1. Install the latest versions of other packages used by Angular (RxJS, TypeScript, Zone.js) by running:
+1. Install the latest versions of other packages used by Angular \(RxJS, TypeScript, Zone.js\) by running:
 
    通过运行以下命令安装 Angular 用到的其它包的最新版本（RxJS、TypeScript、Zone.js）：
 
@@ -161,7 +161,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
    </code-example>
 
-1. In order to be able to load the latest Angular framework packages (in ES2015 format) correctly, replace the relevant entries in `src/systemjs.config.js`:
+1. In order to be able to load the latest Angular framework packages \(in ES2015 format\) correctly, replace the relevant entries in `src/systemjs.config.js`:
 
    为了能正确加载最新的 Angular 框架包（ES2015 格式），请替换 `src/systemjs.config.js` 中的相关条目：
 
@@ -173,7 +173,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
    <code-example format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="rxjs-paths"></code-example>
 
-1. In order to be able to load the `tslib` package (which is required for files transpiled by TypeScript), add the following entry to `src/systemjs.config.js`:
+1. In order to be able to load the `tslib` package \(which is required for files transpiled by TypeScript\), add the following entry to `src/systemjs.config.js`:
 
    为了能够加载 `tslib` 包（这是由 TypeScript 转译后的文件所必需的），请将以下条目添加到 `src/systemjs.config.js` ：
 
@@ -226,9 +226,9 @@ Consequently, there are many files in the project folder on your machine, most o
 
 <a id="app-files"></a>
 
-Focus on the following three TypeScript (`.ts`) files in the `/src` folder.
+Focus on the following three TypeScript \(`.ts`\) files in the `/src` folder.
 
-注意 `/src` 目录中以下三个 TypeScript (`.ts`) 文件：
+注意 `/src` 目录中以下三个 TypeScript （`.ts`） 文件：
 
 <div class="filetree">
   <div class="file">
@@ -277,21 +277,21 @@ The following are all in `src/`
 
 `src/` 目录文件详情如下：
 
-| File                 | Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 文件                 | 用途                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| app/app.component.ts | Defines the same `AppComponent` as the one in the QuickStart playground. It is the **root** component of what will become a tree of nested components as the application evolves.                                                                                                                                                                                                                                                                                                                    |
-| app/app.component.ts | 定义与《快速上手》游乐场同样的 `AppComponent`。它是**根**组件，随着应用的演变，它将变成一颗嵌套组件树。                                                                                                                                                                                                                                                                                                                                                                                              |
-| app/app.module.ts    | Defines `AppModule`, the  [root module](guide/bootstrapping "AppModule: the root module") that tells Angular how to assemble the application. When initially created, it declares only the `AppComponent`. Over time, you add more components to declare.                                                                                                                                                                                                                                            |
-| app/app.module.ts    | 定义 `AppModule`，[根模块](guide/bootstrapping "AppModule: 根模块")为 Angular 描述如何组装应用。目前，它只声明了 `AppComponent`。不久，它将声明更多组件。                                                                                                                                                                                                                                                                                                                                            |
-| main.ts              | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module (`AppModule`) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
-| main.ts              | 使[即时 (JIT) 编译器](guide/glossary#jit)用编译应用并且在浏览器中[启动](guide/bootstrapping "启动应用")并运行应用。对于大多数项目的开发，这都是合理的选择。而且它是在像 Stackblitz 这样的*在线编程*环境中运行例子的唯一选择。你将在本文档中学习其它编译和开发选择。                                                                                                                                                                                                                                  |
+| File                 | Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 文件                 | 用途                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| app/app.component.ts | Defines the same `AppComponent` as the one in the QuickStart playground. It is the **root** component of what will become a tree of nested components as the application evolves.                                                                                                                                                                                                                                                                                                                      |
+| app/app.component.ts | 定义与《快速上手》游乐场同样的 `AppComponent`。它是**根**组件，随着应用的演变，它将变成一颗嵌套组件树。                                                                                                                                                                                                                                                                                                                                                                                                |
+| app/app.module.ts    | Defines `AppModule`, the  [root module](guide/bootstrapping "AppModule: the root module") that tells Angular how to assemble the application. When initially created, it declares only the `AppComponent`. Over time, you add more components to declare.                                                                                                                                                                                                                                              |
+| app/app.module.ts    | 定义 `AppModule`，[根模块](guide/bootstrapping "AppModule: 根模块")为 Angular 描述如何组装应用。目前，它只声明了 `AppComponent`。不久，它将声明更多组件。                                                                                                                                                                                                                                                                                                                                              |
+| main.ts              | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module \(`AppModule`\) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
+| main.ts              | 使[即时 （JIT） 编译器](guide/glossary#jit)用编译应用并且在浏览器中[启动](guide/bootstrapping "启动应用")并运行应用。对于大多数项目的开发，这都是合理的选择。而且它是在像 Stackblitz 这样的*在线编程*环境中运行例子的唯一选择。你将在本文档中学习其它编译和开发选择。                                                                                                                                                                                                                                  |
 
 ## Appendix: Test using `fakeAsync()/waitForAsync()`
 
 ## 附录：使用 `fakeAsync()/waitForAsync()` 进行测试
 
-If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests (for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)), you need to import `zone.js/testing` in your test setup file.
+If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests \(for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)\), you need to import `zone.js/testing` in your test setup file.
 
 如果你使用 `fakeAsync()` 或 `async()` 辅助函数来运行单元测试（详情参阅[测试指南](guide/testing-components-scenarios#fake-async)），就要在测试的准备文件中导入 `zone.js/testing`。
 

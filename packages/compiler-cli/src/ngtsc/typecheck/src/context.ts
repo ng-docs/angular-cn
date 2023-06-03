@@ -174,12 +174,12 @@ export interface PendingShimData {
  *
  * 使 `TypeCheckContextImpl` 适应更大的模板类型检查系统。
  *
- * Through this interface, a single `TypeCheckContextImpl` (which represents one "pass" of template
- * type-checking) requests information about the larger state of type-checking, as well as reports
+ * Through this interface, a single `TypeCheckContextImpl` \(which represents one "pass" of template
+ * type-checking\) requests information about the larger state of type-checking, as well as reports
  * back its results once finalized.
  *
  * 通过此接口，单个 `TypeCheckContextImpl`
- *（代表模板类型检查的一次“通过”）请求有关较大类型检查状态的信息，并在完成后报告其结果。
+ * （代表模板类型检查的一次“通过”）请求有关较大类型检查状态的信息，并在完成后报告其结果。
  *
  */
 export interface TypeCheckingHost {

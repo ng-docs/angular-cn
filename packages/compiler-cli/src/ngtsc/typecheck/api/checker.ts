@@ -34,9 +34,9 @@ import {ElementSymbol, Symbol, TcbLocation, TemplateSymbol} from './symbols';
  *
  * 一般来说，此接口支持两种操作：
  *
- * - updating Type Check Blocks (TCB)s that capture the template in the form of TypeScript code
+ * - updating Type Check Blocks \(TCB\)s that capture the template in the form of TypeScript code
  *
- *   更新以 TypeScript 代码形式捕获模板的类型检查块 (TCB)
+ *   更新以 TypeScript 代码形式捕获模板的类型检查块 （TCB）
  *
  * - querying information about available TCBs, including diagnostics
  *
@@ -63,15 +63,15 @@ export interface TemplateTypeChecker {
    *
    * 获取当前可用于给定 `ts.SourceFile` `ts.Diagnostic`
    *
-   * This method will fail (throw) if there are components within the `ts.SourceFile` that do not
+   * This method will fail \(throw\) if there are components within the `ts.SourceFile` that do not
    * have TCBs available.
    *
    * 如果 `ts.SourceFile` 中有没有可用的 TCB 的组件，此方法将失败（抛出）。
    *
-   * Generating a template type-checking program is expensive, and in some workflows (e.g. checking
-   * an entire program before emit), it should ideally only be done once. The `optimizeFor` flag
-   * allows the caller to hint to `getDiagnosticsForFile` (which internally will create a template
-   * type-checking program if needed) whether the caller is interested in just the results of the
+   * Generating a template type-checking program is expensive, and in some workflows \(e.g. checking
+   * an entire program before emit\), it should ideally only be done once. The `optimizeFor` flag
+   * allows the caller to hint to `getDiagnosticsForFile` \(which internally will create a template
+   * type-checking program if needed\) whether the caller is interested in just the results of the
    * single file, or whether they plan to query about other files in the program. Based on this
    * flag, `getDiagnosticsForFile` will determine how much of the user's program to prepare for
    * checking as part of the template type-checking program it creates.
@@ -166,13 +166,13 @@ export interface TemplateTypeChecker {
    * 在给定的上下文中获取“全局” `Completion` 。
    *
    * Global completions are completions in the global context, as opposed to completions within an
-   * existing expression. For example, completing inside a new interpolation expression (`{{|}}`) or
+   * existing expression. For example, completing inside a new interpolation expression \(`{{|}}`\) or
    * inside a new property binding `[input]="|"` should retrieve global completions, which will
    * include completions from the template's context component, as well as any local references or
    * template variables which are in scope for that expression.
    *
-   * 全局自动完成是全局上下文中的自动完成，而不是现有表达式中的自动完成。例如，在新的插值表达式 (
-   * `{{|}}` ) 或新属性绑定 `[input]="|"`
+   * 全局自动完成是全局上下文中的自动完成，而不是现有表达式中的自动完成。例如，在新的插值表达式 （
+   * `{{|}}` ） 或新属性绑定 `[input]="|"`
    * 中完成应该检索全局自动完成，这将包括来自模板上下文组件的自动完成，以及该表达式范围内的任何本地引用或模板变量。
    *
    */
@@ -192,8 +192,8 @@ export interface TemplateTypeChecker {
       expr: PropertyRead|SafePropertyRead, component: ts.ClassDeclaration): TcbLocation|null;
 
   /**
-   * For the given node represents a `LiteralPrimitive`(the `TextAttribute` represents a string
-   * literal), retrieve a `TcbLocation` that can be used to perform autocompletion at that point in
+   * For the given node represents a `LiteralPrimitive`\(the `TextAttribute` represents a string
+   * literal\), retrieve a `TcbLocation` that can be used to perform autocompletion at that point in
    * the node, if such a location exists.
    *
    * 对于给定的节点表示 `LiteralPrimitive`（`TextAttribute` 表示字符串文字），请检索一个
@@ -223,11 +223,11 @@ export interface TemplateTypeChecker {
 
   /**
    * Retrieve a `Map` of potential template element tags, to either the `PotentialDirective` that
-   * declares them (if the tag is from a directive/component), or `null` if the tag originates from
+   * declares them \(if the tag is from a directive/component\), or `null` if the tag originates from
    * the DOM schema.
    *
    * 检索潜在模板元素标签的 `Map` ，到声明它们的 `DirectiveInScope`
-   *（如果标签来自指令/组件），如果标签来自 DOM 模式，则为 `null` 。
+   * （如果标签来自指令/组件），如果标签来自 DOM 模式，则为 `null` 。
    *
    */
   getPotentialElementTags(component: ts.ClassDeclaration): Map<string, PotentialDirective|null>;
@@ -240,8 +240,9 @@ export interface TemplateTypeChecker {
       importMode: PotentialImportMode): ReadonlyArray<PotentialImport>;
 
   /**
-   * Get the primary decorator for an Angular class (such as @Component). This does not work for
+   * Get the primary decorator for an Angular class \(such as @Component\). This does not work for
    * `@Injectable`.
+   *
    */
   getPrimaryAngularDecorator(target: ts.ClassDeclaration): ts.Decorator|null;
 

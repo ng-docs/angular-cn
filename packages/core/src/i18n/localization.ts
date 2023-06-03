@@ -23,7 +23,7 @@ export function getPluralCase(value: string, locale: string): string {
 }
 
 /**
- * The locale id that the application is using by default (for translations and ICU expressions).
+ * The locale id that the application is using by default \(for translations and ICU expressions\).
  *
  * 默认情况下应用程序使用的区域设置 id（用于翻译和 ICU 表达式）。
  *

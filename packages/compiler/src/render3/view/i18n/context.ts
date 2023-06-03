@@ -29,14 +29,14 @@ function setupRegistry() {
 
 /**
  * I18nContext is a helper class which keeps track of all i18n-related aspects
- * (accumulates placeholders, bindings, etc) between i18nStart and i18nEnd instructions.
+ * \(accumulates placeholders, bindings, etc\) between i18nStart and i18nEnd instructions.
  *
  * I18nContext 是一个帮助器类，它会跟踪 i18nStart 和 i18nEnd 指令之间的所有 i18n
  * 相关切面（累积占位符、绑定等）。
  *
  * When we enter a nested template, the top-level context is being passed down
  * to the nested component, which uses this context to generate a child instance
- * of I18nContext class (to handle nested template) and at the end, reconciles it back
+ * of I18nContext class \(to handle nested template\) and at the end, reconciles it back
  * with the parent context.
  *
  * 当我们输入嵌套模板时，顶级上下文正在被传递给嵌套组件，它使用此上下文生成 I18nContext
@@ -45,20 +45,16 @@ function setupRegistry() {
  * @param index Instruction index of i18nStart, which initiates this context
  *
  * i18nStart 的指令索引，用于启动此上下文
- *
  * @param ref Reference to a translation const that represents the content if thus context
  *
  * 对表示内容的翻译 const 的引用，如果是上下文
- *
  * @param level Nesting level defined for child contexts
  *
  * 为子上下文定义的嵌套级别
- *
  * @param templateIndex Instruction index of a template which this context belongs to
  *
  * 此上下文所属的模板的指令索引
- *
- * @param meta Meta information (id, meaning, description, etc) associated with this context
+ * @param meta Meta information \(id, meaning, description, etc\) associated with this context
  *
  * 与此上下文相关的元信息（id、含义、描述等）
  *
@@ -145,12 +141,10 @@ export class I18nContext {
    * @param index Instruction index of corresponding i18nStart, which initiates this context
    *
    * 启动此上下文的相应 i18nStart 的指令索引
-   *
    * @param templateIndex Instruction index of a template which this context belongs to
    *
    * 此上下文所属的模板的指令索引
-   *
-   * @param meta Meta information (id, meaning, description, etc) associated with this context
+   * @param meta Meta information \(id, meaning, description, etc\) associated with this context
    *
    * 与此上下文相关的元信息（id、含义、描述等）
    *
@@ -159,21 +153,19 @@ export class I18nContext {
    * I18nContext instance
    *
    * I18nContext 实例
-   *
    */
   forkChildContext(index: number, templateIndex: number, meta: i18n.I18nMeta) {
     return new I18nContext(index, this.ref, this.level + 1, templateIndex, meta, this._registry);
   }
 
   /**
-   * Reconciles child context into parent one once the end of the i18n block is reached (i18nEnd).
+   * Reconciles child context into parent one once the end of the i18n block is reached \(i18nEnd\).
    *
-   * 到达 i18n 块的末尾 (i18nEnd) 后，将子上下文协调为父上下文。
+   * 到达 i18n 块的末尾（i18nEnd）后，将子上下文协调为父上下文。
    *
    * @param context Child I18nContext instance to be reconciled with parent context.
    *
    * 要与父上下文协调的子 I18nContext 实例。
-   *
    */
   reconcileChildContext(context: I18nContext) {
     // set the right context id for open and close

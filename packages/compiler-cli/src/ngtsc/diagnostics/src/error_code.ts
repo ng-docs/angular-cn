@@ -338,7 +338,7 @@ export enum ErrorCode {
   DUPLICATE_VARIABLE_DECLARATION = 8006,
 
   /**
-   * A template has a two way binding (two bindings created by a single syntactical element)
+   * A template has a two way binding \(two bindings created by a single syntactical element\)
    * in which the input and output are going to different places.
    *
    * 模板有一个双向绑定（由单个语法元素创建的两个绑定），其中的输入和输出将发送到不同的位置。
@@ -381,8 +381,9 @@ export enum ErrorCode {
   NULLISH_COALESCING_NOT_NULLABLE = 8102,
 
   /**
-   * A known control flow directive (e.g. `*ngIf`) is used in a template,
+   * A known control flow directive \(e.g. `*ngIf`\) is used in a template,
    * but the `CommonModule` is not imported.
+   *
    */
   MISSING_CONTROL_FLOW_DIRECTIVE = 8103,
 
@@ -451,7 +452,7 @@ export enum ErrorCode {
 
 
   /**
-   * `ngSkipHydration` should not be a binding (it should be a static attribute).
+   * `ngSkipHydration` should not be a binding \(it should be a static attribute\).
    *
    * For example:
    *

@@ -53,8 +53,8 @@ export class TestRequest {
   constructor(public request: HttpRequest<any>, private observer: Observer<HttpEvent<any>>) {}
 
   /**
-   * Resolve the request by returning a body plus additional HTTP information (such as response
-   * headers) if provided.
+   * Resolve the request by returning a body plus additional HTTP information \(such as response
+   * headers\) if provided.
    * If the request specifies an expected body type, the body is converted into the requested type.
    * Otherwise, the body is converted to `JSON` by default.
    *
@@ -64,6 +64,7 @@ export class TestRequest {
    * Both successful and unsuccessful responses can be delivered via `flush()`.
    *
    * 成功和失败的响应都可以通过 `flush()` 传递。
+   *
    */
   flush(
       body: ArrayBuffer|Blob|boolean|string|number|Object|(boolean|string|number|Object|null)[]|
@@ -102,7 +103,7 @@ export class TestRequest {
   }
 
   /**
-   * Resolve the request by returning an `ErrorEvent` (e.g. simulating a network failure).
+   * Resolve the request by returning an `ErrorEvent` \(e.g. simulating a network failure\).
    *
    * 通过返回 `ErrorEvent`（比如，模拟网络故障）来解决请求。
    *
@@ -111,11 +112,10 @@ export class TestRequest {
    * Http requests never emit an `ErrorEvent`. Please specify a `ProgressEvent`.
    *
    * Http 请求永远不会发出 `ErrorEvent` 。请指定 `ProgressEvent` 。
-   *
    */
   error(error: ErrorEvent, opts?: TestRequestErrorOptions): void;
   /**
-   * Resolve the request by returning an `ProgressEvent` (e.g. simulating a network failure).
+   * Resolve the request by returning an `ProgressEvent` \(e.g. simulating a network failure\).
    *
    * 通过返回 `ProgressEvent` 来解决请求（例如模拟网络故障）。
    *
@@ -140,7 +140,7 @@ export class TestRequest {
   }
 
   /**
-   * Deliver an arbitrary `HttpEvent` (such as a progress event) on the response stream for this
+   * Deliver an arbitrary `HttpEvent` \(such as a progress event\) on the response stream for this
    * request.
    *
    * 在响应流上为此请求传递一个任意的 `HttpEvent`

@@ -240,7 +240,7 @@ export function extractQueryMetadata(
   const arg = evaluator.evaluate(node);
 
   /**
-   * Whether or not this query should collect only static results (see view/api.ts)
+   * Whether or not this query should collect only static results \(see view/api.ts\)
    *
    * 此查询是否应该仅收集静态结果（请参阅 view/api.ts）
    *
@@ -535,7 +535,7 @@ function parseMappingString(value: string): [bindingPropertyName: string, fieldN
 }
 
 /**
- * Parse property decorators (e.g. `Input` or `Output`) and invoke callback with the parsed data.
+ * Parse property decorators \(e.g. `Input` or `Output`\) and invoke callback with the parsed data.
  *
  * 解析属性装饰器（例如 `Input` 或 `Output`）并返回形状正确的元数据对象。
  *

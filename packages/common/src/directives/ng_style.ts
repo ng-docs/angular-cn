@@ -10,7 +10,6 @@ import {Directive, DoCheck, ElementRef, Input, KeyValueChanges, KeyValueDiffer, 
 
 /**
  * @ngModule CommonModule
- *
  * @usageNotes
  *
  * Set the font of the containing element to the result of an expression.
@@ -36,13 +35,12 @@ import {Directive, DoCheck, ElementRef, Input, KeyValueChanges, KeyValueDiffer, 
  * ```
  * <some-element [ngStyle]="objExp">...</some-element>
  * ```
- *
  * @description
  *
  * An attribute directive that updates styles for the containing HTML element.
  * Sets one or more style properties, specified as colon-separated key-value pairs.
  * The key is a style name, with an optional `.<unit>` suffix
- * (such as 'top.px', 'font-style.em').
+ * \(such as 'top.px', 'font-style.em'\).
  * The value is an expression to be evaluated.
  * The resulting non-null value, expressed in the given unit,
  * is assigned to the given style property.

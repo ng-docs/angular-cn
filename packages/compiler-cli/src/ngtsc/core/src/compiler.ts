@@ -38,10 +38,10 @@ import {DiagnosticCategoryLabel, NgCompilerAdapter, NgCompilerOptions} from '../
 
 /**
  * State information about a compilation which is only generated once some data is requested from
- * the `NgCompiler` (for example, by calling `getDiagnostics`).
+ * the `NgCompiler` \(for example, by calling `getDiagnostics`\).
  *
  * 有关编译的状态信息，仅在从 `NgCompiler` 请求某些数据时才会生成（例如，通过调用 `getDiagnostics`
- *）。
+ * ）。
  *
  */
 interface LazyCompilationState {
@@ -121,7 +121,7 @@ export interface IncrementalResourceCompilationTicket {
  *
  * 开始 Angular 编译的请求，可以从头开始或从已知的先前状态开始。
  *
- * `CompilationTicket`s are used to initialize (or update) an `NgCompiler` instance, the core of the
+ * `CompilationTicket`s are used to initialize \(or update\) an `NgCompiler` instance, the core of the
  * Angular compiler. They abstract the starting state of compilation and allow `NgCompiler` to be
  * managed independently of any incremental compilation lifecycle.
  *
@@ -254,7 +254,7 @@ export function resourceChangeTicket(compiler: NgCompiler, modifiedResourceFiles
  * 的每个实例都支持单次编译，这可能是增量的。
  *
  * `NgCompiler` is lazy, and does not perform any of the work of the compilation until one of its
- * output methods (e.g. `getDiagnostics`) is called.
+ * output methods \(e.g. `getDiagnostics`\) is called.
  *
  * `NgCompiler` 是延迟的，在调用其输出方法之一（例如 `getDiagnostics`）之前不会执行任何编译工作。
  *
@@ -437,9 +437,9 @@ export class NgCompiler {
    * 在 CLI 使用的旧属性名称下公开 `IncrementalCompilation` ，避免重命名为 `incrementalCompilation`
    * 时出现先有鸡还是先有蛋的问题。
    *
-   * TODO(alxhub): remove when the CLI uses the new name.
+   * TODO\(alxhub\): remove when the CLI uses the new name.
    *
-   * TODO(alxhub) ：在 CLI 使用新名称时删除。
+   * TODO\(alxhub\) ：在 CLI 使用新名称时删除。
    *
    */
   get incrementalDriver(): IncrementalCompilation {
@@ -599,13 +599,13 @@ export class NgCompiler {
    * 此 `ts.Program` 有两个主要目的：
    *
    * * As an incremental starting point for creating the next `ts.Program` based on files that the
-   *     user has changed (for clients using the TS compiler program APIs).
+   *     user has changed \(for clients using the TS compiler program APIs\).
    *
    *   作为根据用户更改的文件创建下一个 `ts.Program` 的增量起点（对于使用 TS 编译器程序 API
    *   的客户端）。
    *
    * * As the "before" point for an incremental compilation invocation, to determine what's changed
-   *   between the old and new programs (for all compilations).
+   *   between the old and new programs \(for all compilations\).
    *
    *   作为增量编译调用的“之前”点，以确定新旧程序之间发生的变化（对于所有编译）。
    *
@@ -623,7 +623,7 @@ export class NgCompiler {
   }
 
   /**
-   * Retrieves the `ts.Declaration`s for any component(s) which use the given template file.
+   * Retrieves the `ts.Declaration`s for any component\(s\) which use the given template file.
    *
    * 检索使用给定模板文件的任何组件的 `ts.Declaration` 。
    *
@@ -634,7 +634,7 @@ export class NgCompiler {
   }
 
   /**
-   * Retrieves the `ts.Declaration`s for any component(s) which use the given template file.
+   * Retrieves the `ts.Declaration`s for any component\(s\) which use the given template file.
    *
    * 检索使用给定模板文件的任何组件的 `ts.Declaration` 。
    *
@@ -678,7 +678,7 @@ export class NgCompiler {
   }
 
   /**
-   * Perform Angular's analysis step (as a precursor to `getDiagnostics` or `prepareEmit`)
+   * Perform Angular's analysis step \(as a precursor to `getDiagnostics` or `prepareEmit`\)
    * asynchronously.
    *
    * 异步执行 Angular 的分析步骤（作为 `getDiagnostics` 或 `prepareEmit` 的前体）。

@@ -92,7 +92,7 @@ export function buildLocalizeReplacement(
 }
 
 /**
- * Extract the message parts from the given `call` (to `$localize`).
+ * Extract the message parts from the given `call` \(to `$localize`\).
  *
  * 从给定的 `call` 中提取消息部分（到 `$localize`）。
  *
@@ -105,12 +105,10 @@ export function buildLocalizeReplacement(
  * @param call The AST node of the call to process.
  *
  * 调用 process 的 AST 节点。
- *
  * @param fs The file system to use when computing source-map paths. If not provided then it uses
  *     the "current" FileSystem.
  *
  * 计算源映射路径时要使用的文件系统。如果未提供，则使用“当前”文件系统。
- *
  * @publicApi used by CLI
  */
 export function unwrapMessagePartsFromLocalizeCall(

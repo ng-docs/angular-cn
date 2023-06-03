@@ -116,13 +116,13 @@ export class DelegatingCompilerHost implements
 }
 
 /**
- * A wrapper around `ts.CompilerHost` (plus any extension methods from `ExtendedTsCompilerHost`).
+ * A wrapper around `ts.CompilerHost` \(plus any extension methods from `ExtendedTsCompilerHost`\).
  *
  * `ts.CompilerHost` 的包装器（加上 `ExtendedTsCompilerHost` 的任何扩展方法）。
  *
  * In order for a consumer to include Angular compilation in their TypeScript compiler, the
- * `ts.Program` must be created with a host that adds Angular-specific files (e.g.
- * the template type-checking file, etc) to the compilation. `NgCompilerHost` is the
+ * `ts.Program` must be created with a host that adds Angular-specific files \(e.g.
+ * the template type-checking file, etc\) to the compilation. `NgCompilerHost` is the
  * host implementation which supports this.
  *
  * 为了让消费者在他们的 TypeScript 编译器中包含 Angular 编译，必须使用将 Angular
@@ -168,8 +168,8 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    *
    * 检索一组不应该作为 JS 文件发出的 `ts.SourceFile` 。
    *
-   * Available after this host is used to create a `ts.Program` (which causes all the files in the
-   * program to be enumerated).
+   * Available after this host is used to create a `ts.Program` \(which causes all the files in the
+   * program to be enumerated\).
    *
    * 在此宿主用于创建 `ts.Program`（这会导致程序中的所有文件被枚举）之后可用。
    *

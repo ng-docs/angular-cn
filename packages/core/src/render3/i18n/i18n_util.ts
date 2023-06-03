@@ -24,14 +24,14 @@ import {addTNodeAndUpdateInsertBeforeIndex} from './i18n_insert_before_index';
  *
  * 在给定的 `index` 处检索 `TIcu` 。
  *
- * The `TIcu` can be stored either directly (if it is nested ICU) OR
+ * The `TIcu` can be stored either directly \(if it is nested ICU\) OR
  * it is stored inside tho `TIcuContainer` if it is top level ICU.
  *
  * `TIcu` 可以直接存储（如果是嵌套 ICU），如果是顶级 ICU，则可以存储在 `TIcuContainer` 中。
  *
  * The reason for this is that the top level ICU need a `TNode` so that they are part of the render
  * tree, but nested ICU's have no TNode, because we don't know ahead of time if the nested ICU is
- * expressed (parent ICU may have selected a case which does not contain it.)
+ * expressed \(parent ICU may have selected a case which does not contain it.\)
  *
  * 原因是顶级 ICU 需要一个 `TNode` ，以便它们是渲染树的一部分，但嵌套 ICU 没有
  * TNode，因为我们无法提前知道嵌套 ICU 是否被表达（父 ICU 可能有选择了一个不包含它的案例。）
@@ -39,11 +39,9 @@ import {addTNodeAndUpdateInsertBeforeIndex} from './i18n_insert_before_index';
  * @param tView Current `TView`.
  *
  * 当前 `TView` 。
- *
  * @param index Index where the value should be read from.
  *
  * 应该从中读取值的索引。
- *
  */
 export function getTIcu(tView: TView, index: number): TIcu|null {
   const value = tView.data[index] as null | TIcu | TIcuContainerNode | string;
@@ -67,14 +65,14 @@ export function getTIcu(tView: TView, index: number): TIcu|null {
  *
  * `TIcu` 存储在给定的 `index` 处。
  *
- * The `TIcu` can be stored either directly (if it is nested ICU) OR
+ * The `TIcu` can be stored either directly \(if it is nested ICU\) OR
  * it is stored inside tho `TIcuContainer` if it is top level ICU.
  *
  * `TIcu` 可以直接存储（如果是嵌套 ICU），如果是顶级 ICU，则可以存储在 `TIcuContainer` 中。
  *
  * The reason for this is that the top level ICU need a `TNode` so that they are part of the render
  * tree, but nested ICU's have no TNode, because we don't know ahead of time if the nested ICU is
- * expressed (parent ICU may have selected a case which does not contain it.)
+ * expressed \(parent ICU may have selected a case which does not contain it.\)
  *
  * 原因是顶级 ICU 需要一个 `TNode` ，以便它们是渲染树的一部分，但嵌套 ICU 没有
  * TNode，因为我们无法提前知道嵌套 ICU 是否被表达（父 ICU 可能有选择了一个不包含它的案例。）
@@ -82,15 +80,12 @@ export function getTIcu(tView: TView, index: number): TIcu|null {
  * @param tView Current `TView`.
  *
  * 当前 `TView` 。
- *
  * @param index Index where the value should be stored at in `Tview.data`
  *
  * `Tview.data` 中应该存储值的索引
- *
  * @param tIcu The TIcu to store.
  *
  * 要存储的 TIcu。
- *
  */
 export function setTIcu(tView: TView, index: number, tIcu: TIcu): void {
   const tNode = tView.data[index] as null | TIcuContainerNode;

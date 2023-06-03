@@ -17,13 +17,13 @@ import {FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, ON_DESTROY_HOOKS, PARENT,
 
 
 /**
- * For efficiency reasons we often put several different data types (`RNode`, `LView`, `LContainer`)
+ * For efficiency reasons we often put several different data types \(`RNode`, `LView`, `LContainer`\)
  * in same location in `LView`. This is because we don't want to pre-allocate space for it
  * because the storage is sparse. This file contains utilities for dealing with such data types.
  *
  * How do we know what is stored at a given location in `LView`.
  *
- * - `Array.isArray(value) === false` => `RNode` (The normal storage value)
+ * - `Array.isArray(value) === false` => `RNode` \(The normal storage value\)
  * - `Array.isArray(value) === true` => then the `value[0]` represents the wrapped value.
  *   - `typeof value[TYPE] === 'object'` => `LView`
  *     - This happens when we have a component at a given location

@@ -71,7 +71,7 @@ export enum PerfPhase {
   ResourceUpdate,
 
   /**
-   * Time spent calculating the plain TypeScript diagnostics (structural and semantic).
+   * Time spent calculating the plain TypeScript diagnostics \(structural and semantic\).
    *
    * 计算普通的 TypeScript 诊断（结构和语义）所花费的时间。
    *
@@ -87,8 +87,8 @@ export enum PerfPhase {
   Analysis,
 
   /**
-   * Time spent in Angular global analysis (synthesis of analysis information into a complete
-   * understanding of the program).
+   * Time spent in Angular global analysis \(synthesis of analysis information into a complete
+   * understanding of the program\).
    *
    * 花在 Angular 全局分析（将分析信息合成为对程序的完整了解）上的时间。
    *
@@ -134,7 +134,7 @@ export enum PerfPhase {
    * Angular 在即将发出时对 AST 执行代码转换所花费的时间。
    *
    * This includes the actual code generation step for templates, and occurs during the emit phase
-   * (but is tracked separately from `TypeScriptEmit` time).
+   * \(but is tracked separately from `TypeScriptEmit` time\).
    *
    * 这包括模板的实际代码生成步骤，并且发生在发出阶段（但与 `TypeScriptEmit` 时间分开跟踪）。
    *
@@ -192,7 +192,7 @@ export enum PerfPhase {
   LsDefinition,
 
   /**
-   * Time spent by the Angular Language Service calculating a "get completions" (AKA autocomplete)
+   * Time spent by the Angular Language Service calculating a "get completions" \(AKA autocomplete\)
    * operation.
    *
    * Angular 语言服务计算“获取自动完成”（AKA 自动完成）操作所花费的时间。
@@ -364,18 +364,18 @@ export enum PerfEvent {
   SourceFileReuseAnalysis,
 
   /**
-   * A Type Check Block (TCB) was generated.
+   * A Type Check Block \(TCB\) was generated.
    *
-   * 生成了类型检查块 (TCB)。
+   * 生成了类型检查块 （TCB）。
    *
    */
   GenerateTcb,
 
   /**
-   * A Type Check Block (TCB) could not be generated because inlining was disabled, and the block
+   * A Type Check Block \(TCB\) could not be generated because inlining was disabled, and the block
    * would've required inlining.
    *
-   * 无法生成类型检查块 (TCB)，因为内联已禁用，并且该块将需要内联。
+   * 无法生成类型检查块 （TCB），因为内联已禁用，并且该块将需要内联。
    *
    */
   SkipGenerateTcbNoInline,
@@ -480,9 +480,9 @@ export enum PerfCheckpoint {
   Resolve,
 
   /**
-   * The point just after Type Check Blocks (TCBs) have been generated.
+   * The point just after Type Check Blocks \(TCBs\) have been generated.
    *
-   * 已生成类型检查块 (TCB) 之后的点。
+   * 已生成类型检查块 （TCB） 之后的点。
    *
    */
   TtcGeneration,
@@ -590,7 +590,7 @@ export interface PerfRecorder {
   eventCount(event: PerfEvent, incrementBy?: number): void;
 
   /**
-   * Return the `PerfRecorder` to an empty state (clear all tracked statistics) and reset the zero
+   * Return the `PerfRecorder` to an empty state \(clear all tracked statistics\) and reset the zero
    * point to the current time.
    *
    * 将 `PerfRecorder` 恢复为空状态（清除所有跟踪的统计信息）并将零点重置为当前时间。

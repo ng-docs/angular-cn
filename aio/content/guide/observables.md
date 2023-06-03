@@ -8,7 +8,7 @@ They are used frequently in Angular and are a technique for event handling, asyn
 可观察对象对在应用的各个部分之间传递消息提供了支持。它们在 Angular 中频繁使用，并且推荐把它们用于事件处理、异步编程以及处理多个值等场景。
 
 The observer pattern is a software design pattern in which an object, called the *subject*, maintains a list of its dependents, called *observers*, and notifies them automatically of state changes.
-This pattern is similar (but not identical) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
+This pattern is similar \(but not identical\) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
 
 观察者（Observer）模式是一个软件设计模式，它有一个对象，称之为*主体 Subject*，负责维护一个依赖项（称之为观察者 Observer）的列表，并且在状态变化时自动通知它们。该模式和[发布/订阅](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)模式非常相似（但不完全一样）。
 
@@ -219,7 +219,7 @@ Later we will look at tools that simplify the process of multicasting, allowing 
 Because observables produce values asynchronously, try/catch will not effectively catch errors.
 Instead, you handle errors by specifying an `error` callback on the observer.
 Producing an error also causes the observable to clean up subscriptions and stop producing values.
-An observable can either produce values (calling the `next` callback), or it can complete, calling either the `complete` or `error` callback.
+An observable can either produce values \(calling the `next` callback\), or it can complete, calling either the `complete` or `error` callback.
 
 由于可观察对象会异步生成值，所以用 `try/catch` 是无法捕获错误的。你应该在观察者中指定一个 `error` 回调来处理错误。发生错误时还会导致可观察对象清理现有的订阅，并且停止生成值。可观察对象可以生成值（调用 `next` 回调），也可以调用 `complete` 或 `error` 回调来主动结束。
 
@@ -232,7 +232,7 @@ myObservable.subscribe({
 
 </code-example>
 
-Error handling (and specifically recovering from an error) is covered in more detail in a later section.
+Error handling \(and specifically recovering from an error\) is covered in more detail in a later section.
 
 在稍后的小节中会对错误处理（特别是从错误中的恢复）做更详细的讲解。
 

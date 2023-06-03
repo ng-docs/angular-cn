@@ -25,7 +25,8 @@ import {isAbstractClassDeclaration, readBaseClass} from './util';
  * more NgModules.
  *
  * The resulting `ts.Diagnostic` will have a context entry for each NgModule showing the point where
- * the directive/pipe exists in its `declarations` (if possible).
+ * the directive/pipe exists in its `declarations` \(if possible\).
+ *
  */
 export function makeDuplicateDeclarationError(
     node: ClassDeclaration, data: DeclarationData[], kind: string): ts.Diagnostic {

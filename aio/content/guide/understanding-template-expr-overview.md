@@ -19,9 +19,9 @@ You can't use JavaScript expressions that have or promote side effects, includin
 
 你不能使用那些具有或可能引发副作用的 JavaScript 表达式，包括：
 
-* Assignments (`=`, `+=`, `-=`, `...`)
+* Assignments \(`=`, `+=`, `-=`, `...`\)
 
-  赋值 (`=`, `+=`, `-=`, `...`)
+  赋值（`=`, `+=`, `-=`, `...`）
 
 * Operators such as `new`, `typeof`, or `instanceof`
 

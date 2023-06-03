@@ -62,7 +62,7 @@ As component author, you can explicitly design a component to accept customizati
 
 作为组件作者，你可以用四种不同的方式之一显式设计组件以接受自定义。
 
-#### 1. Use CSS Custom Properties (recommended)
+#### 1. Use CSS Custom Properties \(recommended\)
 
 #### 1. 使用 CSS 自定义属性（推荐）
 
@@ -115,10 +115,10 @@ This is not recommended because the additional JavaScript cost of this style API
 
 ## 特殊的选择器
 
-Component styles have a few special *selectors* from the world of shadow DOM style scoping (described in the [CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1) page on the [W3C](https://www.w3.org) site).
+Component styles have a few special *selectors* from the world of shadow DOM style scoping \(described in the [CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1) page on the [W3C](https://www.w3.org) site\).
 The following sections describe these selectors.
 
-组件样式中有一些从影子(Shadow) DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中）引入的特殊*选择器*：
+组件样式中有一些从影子（Shadow） DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中）引入的特殊*选择器*：
 
 ### :host
 
@@ -131,7 +131,7 @@ The `:host` pseudo-class selector may be used to create styles that target the h
 <code-example header="src/app/host-selector-example.component.ts" path="component-styles/src/app/host-selector-example.component.ts"></code-example>
 
 Creating the following style will target the component's host element.
-Any rule applied to this selector will affect the host element and all its descendants (in this case, italicizing all contained text).
+Any rule applied to this selector will affect the host element and all its descendants \(in this case, italicizing all contained text\).
 
 下面的样式将以组件的宿主元素为目标。应用于此选择器的任何规则都将影响宿主元素及其所有后代（在这种情况下，将所有包含的文本斜体）。（译注：后代的样式源自 CSS 的样式继承特性）
 
@@ -172,7 +172,7 @@ Use `:host-context` selector for that purpose instead.
 Sometimes it's useful to apply styles to elements within a component's template based on some condition in an element that is an ancestor of the host element.
 For example, a CSS theme class could be applied to the document `<body>` element, and you want to change how your component looks based on that.
 
-有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。比如，在文档的 `<body>` 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。
+有时候，需要以某些来自宿主的祖先元素为条件来决定是否要应用某些样式。比如，在文档的 `<body>` 元素上可能有一个用于表示样式主题（theme）的 CSS 类，你应当基于它来决定组件的样式。
 
 Use the `:host-context()` pseudo-class selector, which works just like the function form of `:host()`.
 The `:host-context()` selector looks for a CSS class in any ancestor of the component host element, up to the document root.
@@ -197,7 +197,7 @@ Only the host element and its descendants will be affected, not the ancestor wit
 
 </div>
 
-### (deprecated) `/deep/`, `>>>`, and `::ng-deep`
+### \(deprecated\) `/deep/`, `>>>`, and `::ng-deep`
 
 ### 已弃用 `/deep/`、`>>>` 和 `::ng-deep`
 
@@ -374,9 +374,9 @@ Once included, the CLI includes the stylesheet, whether the link tag's href URL 
 
 </div>
 
-### CSS @imports
+### CSS `@imports`
 
-### CSS @imports 语法
+### CSS `@imports` 语法
 
 Import CSS files into the CSS files using the standard CSS `@import` rule.
 For details, see [`@import`](https://developer.mozilla.org/en/docs/Web/CSS/@import) on the [MDN](https://developer.mozilla.org) site.
@@ -409,7 +409,7 @@ See the [Styles configuration guide](guide/workspace-config#styles-and-scripts-c
 
 ### 非 CSS 样式文件
 
-If you're building with the CLI, you can write style files in [sass](https://sass-lang.com), or [less](https://lesscss.org), and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions (`.scss`, `.less`) as in the following example:
+If you're building with the CLI, you can write style files in [sass](https://sass-lang.com), or [less](https://lesscss.org), and specify those files in the `@Component.styleUrls` metadata with the appropriate extensions \(`.scss`, `.less`\) as in the following example:
 
 如果使用 CLI 进行构建，那么你可以用 [sass](https://sass-lang.com) 或 [less](https://lesscss.org) 来编写样式，并使用相应的扩展名（`.scss`、`.less`）把它们指定到 `@Component.styleUrls` 元数据中。例子如下：
 
@@ -428,7 +428,7 @@ The CLI build process runs the pertinent CSS preprocessor.
 
 CLI 的构建过程会运行相关的预处理器。
 
-When generating a component file with `ng generate component`, the CLI emits an empty CSS styles file (`.css`) by default.
+When generating a component file with `ng generate component`, the CLI emits an empty CSS styles file \(`.css`\) by default.
 Configure the CLI to default to your preferred CSS preprocessor as explained in the [Workspace configuration guide](guide/workspace-config#generation-schematics).
 
 当使用 `ng generate component` 命令生成组件文件时，CLI 会默认生成一个空白的 CSS 样式文件（`.css`）。你可以配置 CLI，让它默认使用你喜欢的 CSS 预处理器，参阅[工作区配置指南](guide/workspace-config#generation-schematics)中的解释。

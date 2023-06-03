@@ -134,7 +134,7 @@ The `data` property of each `Route` can be used to animate routing transitions.
 <code-example header="src/app/app.component.html" path="animations/src/app/app.component.html" region="route-animations-outlet"></code-example>
 
 `AppComponent` defines a method that can detect when a view changes.
-The method assigns an animation state value to the animation trigger (`@routeAnimation`) based on the route configuration `data` property value.
+The method assigns an animation state value to the animation trigger \(`@routeAnimation`\) based on the route configuration `data` property value.
 Here's an example of an `AppComponent` method that detects when a route change happens.
 
 `AppComponent` 中定义了一个可以检测视图何时发生变化的方法，该方法会基于路由配置的 `data` 属性值，将动画状态值赋值给动画触发器（`@routeAnimation`）。下面就是一个 `AppComponent` 中的范例方法，用于检测路由在何时发生了变化。
@@ -165,7 +165,7 @@ The animation definition performs the following tasks:
 
 该动画定义做了如下事情：
 
-* Defines two transitions (a single `trigger` can define multiple states and transitions)
+* Defines two transitions \(a single `trigger` can define multiple states and transitions\)
 
   定义两个转场。每个触发器都可以定义多个状态和多个转场
 
@@ -191,7 +191,7 @@ The transition states must match the `data` property value defined in the route 
 
 </div>
 
-Make the animation definition available in your application by adding the reusable animation (`slideInAnimation`) to the `animations` metadata of the `AppComponent`.
+Make the animation definition available in your application by adding the reusable animation \(`slideInAnimation`\) to the `animations` metadata of the `AppComponent`.
 
 通过将可复用动画 `slideInAnimation` 添加到 `AppComponent` 的 `animations` 元数据中，可以让此动画定义能用在你的应用中。
 

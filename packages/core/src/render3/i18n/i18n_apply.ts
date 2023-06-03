@@ -37,18 +37,20 @@ import {getCurrentICUCaseIndex, getParentFromIcuCreateOpCode, getRefFromIcuCreat
  *
  * 这用于仅当对应的输入发生更改时才有效地更新 i18n 中的表达式。
  *
- * 1) Each bit represents which of the `ɵɵi18nExp` has changed.
- * 2) There are 32 bits allowed in JS.
- * 3) Bit 32 is special as it is shared for all changes past 32. (In other words if you have more
+ * 1. Each bit represents which of the `ɵɵi18nExp` has changed.
+ *
+ *    每个位都表示 `ɵɵi18nExp` 中的哪个发生了变化。
+ *
+ * 2. There are 32 bits allowed in JS.
+ *
+ *    JS 中允许使用 32 位。
+ *
+ * 3. Bit 32 is special as it is shared for all changes past 32. \(In other words if you have more
  * than 32 `ɵɵi18nExp` then all changes past 32nd `ɵɵi18nExp` will be mapped to same bit. This means
  * that we may end up changing more than we need to. But i18n expressions with 32 bindings is rare
- * so in practice it should not be an issue.)
+ * so in practice it should not be an issue.\)
  *
- * 1) 每个位都表示 `ɵɵi18nExp` 中的哪个发生了变化。 2）JS 中允许使用 32 位。 3）第 32
- * 位是特殊的，因为它是为 32 以后的所有更改共享的。（换句话说，如果你有超过 32 `ɵɵi18nExp`
- * ，那么超过 32nd `ɵɵi18nExp`
- * 的所有更改都将映射到同一个位。这意味着我们最终可能会更改超过我们需要。但具有 32 个绑定的 i18n
- * 表达式很少见，因此在实践中这应该不是问题。）
+ *    第 32 位是特殊的，因为它是为 32 以后的所有更改共享的。（换句话说，如果你有超过 32 `ɵɵi18nExp` ，那么超过 32nd `ɵɵi18nExp` 的所有更改都将映射到同一个位。这意味着我们最终可能会更改超过我们需要。但具有 32 个绑定的 i18n 表达式很少见，因此在实践中这应该不是问题。）
  *
  */
 let changeMask = 0b0;
@@ -107,19 +109,17 @@ export function applyI18n(tView: TView, lView: LView, index: number) {
  *
  * 应用存储在 `TI18n.create` 中的 `I18nCreateOpCodes` 操作码。
  *
- * Creates text (and comment) nodes which are internationalized.
+ * Creates text \(and comment\) nodes which are internationalized.
  *
  * 创建国际化的文本（和注释）节点。
  *
  * @param lView Current lView
  *
  * 当前的 lView
- *
  * @param createOpCodes Set of op-codes to apply
  *
  * 要应用的操作码集
- *
- * @param parentRNode Parent node (so that direct children can be added eagerly) or `null` if it is
+ * @param parentRNode Parent node \(so that direct children can be added eagerly\) or `null` if it is
  *     a root node.
  *
  * 父节点（以便可以立即添加直接子项），如果是根节点，则为 `null` 。
@@ -127,7 +127,6 @@ export function applyI18n(tView: TView, lView: LView, index: number) {
  * @param insertInFrontOf DOM node that should be used as an anchor.
  *
  * 应该用作锚点的 DOM 节点。
- *
  */
 export function applyCreateOpCodes(
     lView: LView, createOpCodes: I18nCreateOpCodes, parentRNode: RElement|null,
@@ -311,21 +310,17 @@ export function applyMutableOpCodes(
  * @param tView Current `TView`
  *
  * 当前 `TView`
- *
  * @param lView Current `LView`
  *
  * 当前 `LView`
- *
  * @param updateOpCodes OpCodes to process
  *
  * 要处理的操作码
- *
  * @param bindingsStartIndex Location of the first `ɵɵi18nApply`
  *
  * 第一个 `ɵɵi18nApply` 的位置
- *
- * @param changeMask Each bit corresponds to a `ɵɵi18nExp` (Counting backwards from
- *     `bindingsStartIndex`)
+ * @param changeMask Each bit corresponds to a `ɵɵi18nExp` \(Counting backwards from
+ *     `bindingsStartIndex`\)
  *
  * 每个位对应一个 `ɵɵi18nExp`（从 `bindingsStartIndex` 倒数）
  *

@@ -45,14 +45,11 @@ const formControlBinding: Provider = {
  * 请注意，已弃用将 `ngModel` 输入属性和 `ngModelChange`
  * 事件与响应式表单指令一起使用的方式，并计划在 Angular
  * 的未来版本中删除。有关详细信息，请参阅[已弃用特性](guide/deprecations#ngmodel-with-reactive-forms)。
- *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单指南](guide/reactive-forms)
- *
  * @see `FormControl`
  * @see `AbstractControl`
- *
  * @usageNotes
  *
  * The following example shows how to register a standalone control and set its value.

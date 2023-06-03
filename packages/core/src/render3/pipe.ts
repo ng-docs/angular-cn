@@ -156,11 +156,9 @@ function getPipeNotFoundErrorMessage(name: string) {
  * @param index Pipe index where the pipe was stored on creation.
  *
  * 创建时存储管道的管道索引。
- *
  * @param slotOffset the offset in the reserved slot space
  *
  * 保留插槽空间中的偏移量
- *
  * @param v1 1st argument to {@link PipeTransform#transform}.
  *
  * {@link PipeTransform#transform} 的第一个参数。
@@ -190,11 +188,9 @@ export function ɵɵpipeBind1(index: number, slotOffset: number, v1: any): any {
  * @param index Pipe index where the pipe was stored on creation.
  *
  * 创建时存储管道的管道索引。
- *
  * @param slotOffset the offset in the reserved slot space
  *
  * 保留插槽空间中的偏移量
- *
  * @param v1 1st argument to {@link PipeTransform#transform}.
  *
  * {@link PipeTransform#transform} 的第一个参数。
@@ -228,11 +224,9 @@ export function ɵɵpipeBind2(index: number, slotOffset: number, v1: any, v2: an
  * @param index Pipe index where the pipe was stored on creation.
  *
  * 创建时存储管道的管道索引。
- *
  * @param slotOffset the offset in the reserved slot space
  *
  * 保留插槽空间中的偏移量
- *
  * @param v1 1st argument to {@link PipeTransform#transform}.
  *
  * {@link PipeTransform#transform} 的第一个参数。
@@ -270,11 +264,9 @@ export function ɵɵpipeBind3(index: number, slotOffset: number, v1: any, v2: an
  * @param index Pipe index where the pipe was stored on creation.
  *
  * 创建时存储管道的管道索引。
- *
  * @param slotOffset the offset in the reserved slot space
  *
  * 保留插槽空间中的偏移量
- *
  * @param v1 1st argument to {@link PipeTransform#transform}.
  *
  * {@link PipeTransform#transform} 的第一个参数。
@@ -317,11 +309,9 @@ export function ɵɵpipeBind4(
  * @param index Pipe index where the pipe was stored on creation.
  *
  * 创建时存储管道的管道索引。
- *
  * @param slotOffset the offset in the reserved slot space
  *
  * 保留插槽空间中的偏移量
- *
  * @param values Array of arguments to pass to {@link PipeTransform#transform} method.
  *
  * 要传递给 {@link PipeTransform#transform} 方法的参数数组。

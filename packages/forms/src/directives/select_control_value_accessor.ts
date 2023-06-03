@@ -36,7 +36,6 @@ function _extractId(valueString: string): string {
  *
  * 该 `ControlValueAccessor` 用于写入 select 控件的值，并监听 select 控件的变化。该值访问器会被
  * `FormControlDirective`、`FormControlName` 和 `NgModel` 指令使用。
- *
  * @usageNotes
  *
  * ### Using select controls in a reactive form

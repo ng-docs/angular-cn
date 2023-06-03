@@ -41,19 +41,17 @@ import {Checks, getAllRouteGuards} from './utils/preactivation';
  * control how the target URL should be constructed.
  *
  * 修改 `Router` URL 的选项。将包含这些属性中的任何一个的对象提供给 `Router` 导航函数，以控制目标 URL 的构建方式。
+ * @see [Router.navigate\(\) method](api/router/Router#navigate)
  *
- * @see [Router.navigate() method](api/router/Router#navigate)
+ * [Router.navigate\(\) 方法](api/router/Router#navigate)
  *
- * [Router.navigate() 方法](api/router/Router#navigate)
+ * @see [Router.createUrlTree\(\) method](api/router/Router#createurltree)
  *
- * @see [Router.createUrlTree() method](api/router/Router#createurltree)
- *
- * [Router.createUrlTree() 方法](api/router/Router#createurltree)
+ * [Router.createUrlTree\(\) 方法](api/router/Router#createurltree)
  *
  * @see [Routing and Navigation guide](guide/router)
  *
  * [路由和导航指南](guide/router)
- *
  * @publicApi
  */
 export interface UrlCreationOptions {
@@ -195,28 +193,25 @@ export interface UrlCreationOptions {
  * control how the target URL should be constructed or interpreted.
  *
  * 修改 `Router` 导航策略的选项。将包含这些属性中的任何一个的对象提供给 `Router` 导航函数，以控制目标 URL 的构建或解释方式。
+ * @see [Router.navigate\(\) method](api/router/Router#navigate)
  *
- * @see [Router.navigate() method](api/router/Router#navigate)
+ * [Router.navigate\(\) 方法](api/router/Router#navigate)
  *
- * [Router.navigate() 方法](api/router/Router#navigate)
+ * @see [Router.navigateByUrl\(\) method](api/router/Router#navigatebyurl)
  *
- * @see [Router.navigateByUrl() method](api/router/Router#navigatebyurl)
+ * [Router.navigateByUrl\(\) 方法](api/router/Router#navigatebyurl)
  *
- * [Router.navigateByUrl() 方法](api/router/Router#navigatebyurl)
+ * @see [Router.createUrlTree\(\) method](api/router/Router#createurltree)
  *
- * @see [Router.createUrlTree() method](api/router/Router#createurltree)
- *
- * [Router.createUrlTree() 方法](api/router/Router#createurltree)
+ * [Router.createUrlTree\(\) 方法](api/router/Router#createurltree)
  *
  * @see [Routing and Navigation guide](guide/router)
  *
  * [路由和导航指南](guide/router)
- *
  * @see UrlCreationOptions
  * @see NavigationBehaviorOptions
  *
  * 导航行为选项
- *
  * @publicApi
  */
 export interface NavigationExtras extends UrlCreationOptions, NavigationBehaviorOptions {}
@@ -233,9 +228,9 @@ export type RestoredState = {
 /**
  * Information about a navigation operation.
  * Retrieve the most recent navigation object with the
- * [Router.getCurrentNavigation() method](api/router/Router#getcurrentnavigation) .
+ * [Router.getCurrentNavigation\(\) method](api/router/Router#getcurrentnavigation) .
  *
- * 有关导航操作的信息。使用[Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
+ * 有关导航操作的信息。使用[Router.getCurrentNavigation\(\) 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
  *
  * * *id* : The unique identifier of the current navigation.
  *

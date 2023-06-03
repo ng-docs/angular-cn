@@ -34,7 +34,6 @@ export interface ValueSansProvider {
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
  * [“依赖注入指南”](guide/dependency-injection) 。
- *
  * @usageNotes
  *
  * ### Example
@@ -105,7 +104,6 @@ export interface StaticClassSansProvider {
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
  * [“依赖注入指南”](guide/dependency-injection) 。
- *
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='StaticClassProvider'}
@@ -175,7 +173,6 @@ export interface ConstructorSansProvider {
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
  * [“依赖注入指南”](guide/dependency-injection) 。
- *
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='ConstructorProvider'}
@@ -220,7 +217,7 @@ export interface ConstructorProvider extends ConstructorSansProvider {
  */
 export interface ExistingSansProvider {
   /**
-   * Existing `token` to return. (Equivalent to `injector.get(useExisting)`)
+   * Existing `token` to return. \(Equivalent to `injector.get(useExisting)`\)
    *
    * 返回现有的 `token`。（等效于 `injector.get(useExisting)`）
    *
@@ -236,7 +233,6 @@ export interface ExistingSansProvider {
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
  * [“依赖注入指南”](guide/dependency-injection) 。
- *
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='ExistingProvider'}
@@ -308,7 +304,6 @@ export interface FactorySansProvider {
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
  * [“依赖注入指南”](guide/dependency-injection) 。
- *
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='FactoryProvider'}
@@ -325,7 +320,7 @@ export interface FactorySansProvider {
  */
 export interface FactoryProvider extends FactorySansProvider {
   /**
-   * An injection token. (Typically an instance of `Type` or `InjectionToken`, but can be `any`).
+   * An injection token. \(Typically an instance of `Type` or `InjectionToken`, but can be `any`\).
    *
    * 注入令牌。（通常是 `Type` 或 `InjectionToken` 的实例，但也可以是 `any` 实例）。
    *
@@ -344,7 +339,7 @@ export interface FactoryProvider extends FactorySansProvider {
 }
 
 /**
- * Describes how an `Injector` should be configured as static (that is, without reflection).
+ * Describes how an `Injector` should be configured as static \(that is, without reflection\).
  * A static provider provides tokens to an injector for various types of dependencies.
  *
  * 描述如何将 `Injector`
@@ -353,7 +348,6 @@ export interface FactoryProvider extends FactorySansProvider {
  * @see `Injector.create()`.
  *
  * `Injector.create()` 。
- *
  * @see ["Dependency Injection Guide"](guide/dependency-injection-providers).
  *
  * [“依赖注入指南”](guide/dependency-injection-providers) 。
@@ -380,6 +374,7 @@ export type StaticProvider =
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='TypeProvider'}
+ *
  * @publicApi
  */
 export interface TypeProvider extends Type<any> {}
@@ -414,7 +409,6 @@ export interface ClassSansProvider {
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
  * [“依赖注入指南”](guide/dependency-injection) 。
- *
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='ClassProvider'}
@@ -431,7 +425,7 @@ export interface ClassSansProvider {
  */
 export interface ClassProvider extends ClassSansProvider {
   /**
-   * An injection token. (Typically an instance of `Type` or `InjectionToken`, but can be `any`).
+   * An injection token. \(Typically an instance of `Type` or `InjectionToken`, but can be `any`\).
    *
    * 注入令牌。（通常是 `Type` 或 `InjectionToken` 的实例，但也可以是 `any` 实例）。
    *
@@ -466,8 +460,8 @@ export type Provider = TypeProvider|ValueProvider|ClassProvider|ConstructorProvi
     ExistingProvider|FactoryProvider|any[];
 
 /**
- * Encapsulated `Provider`s that are only accepted during creation of an `EnvironmentInjector` (e.g.
- * in an `NgModule`).
+ * Encapsulated `Provider`s that are only accepted during creation of an `EnvironmentInjector` \(e.g.
+ * in an `NgModule`\).
  *
  * Using this wrapper type prevents providers which are only designed to work in
  * application/environment injectors from being accidentally included in
@@ -477,7 +471,6 @@ export type Provider = TypeProvider|ValueProvider|ClassProvider|ConstructorProvi
  *
  * @see `makeEnvironmentProviders`
  * @see `importProvidersFrom`
- *
  * @publicApi
  */
 export type EnvironmentProviders = {
@@ -502,8 +495,8 @@ export function isEnvironmentProviders(
 }
 
 /**
- * Describes a function that is used to process provider lists (such as provider
- * overrides).
+ * Describes a function that is used to process provider lists \(such as provider
+ * overrides\).
  *
  * 描述用于处理提供程序列表的函数（例如提供程序覆盖）。
  *
@@ -532,7 +525,7 @@ export interface ModuleWithProviders<T> {
  *
  * 通过 `importProvidersFrom` 函数从 NgModules 导入的提供程序。
  *
- * These providers are meant for use in an application injector (or other environment injectors) and
+ * These providers are meant for use in an application injector \(or other environment injectors\) and
  * should not be used in component injectors.
  *
  * 这些提供程序旨在用于应用程序注入器（或其他环境注入器），不应在组件注入器中使用。

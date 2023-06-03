@@ -27,9 +27,9 @@ For more information about how to serve each distributable copy of the applicati
 
 </div>
 
-For a compile-time translation of the application, the build process uses [ahead-of-time (AOT) compilation][AioGuideGlossaryAheadOfTimeAotCompilation] to produce a small, fast, ready-to-run application.
+For a compile-time translation of the application, the build process uses [ahead-of-time \(AOT\) compilation][AioGuideGlossaryAheadOfTimeAotCompilation] to produce a small, fast, ready-to-run application.
 
-对于应用程序的编译期转换，构建过程会使用[预先 (AOT) 编译][AioGuideGlossaryAheadOfTimeAotCompilation]来生成小型、快速、可立即运行的应用程序。
+对于应用程序的编译期转换，构建过程会使用[预先（AOT）编译][AioGuideGlossaryAheadOfTimeAotCompilation]来生成小型、快速、可立即运行的应用程序。
 
 <div class="alert is-helpful">
 
@@ -74,21 +74,21 @@ The following sub-options identify the source language and tell the compiler whe
 
 以下子选项标识源语言并告诉编译器在哪里可以找到项目支持的翻译。
 
-| Suboption      | Details                                                                    |
-| :------------- | :------------------------------------------------------------------------- |
-| 子选项         | 详情                                                                       |
-| `sourceLocale` | The locale you use within the application source code (`en-US` by default) |
-| `sourceLocale` | 你在应用程序源代码中使用的语言环境（默认为 `en-US`）                       |
-| `locales`      | A map of locale identifiers to translation files                           |
-| `locales`      | 语言环境标识符到翻译文件的映射表                                           |
+| Suboption      | Details                                                                      |
+| :------------- | :--------------------------------------------------------------------------- |
+| 子选项         | 详情                                                                         |
+| `sourceLocale` | The locale you use within the application source code \(`en-US` by default\) |
+| `sourceLocale` | 你在应用程序源代码中使用的语言环境（默认为 `en-US`）                         |
+| `locales`      | A map of locale identifiers to translation files                             |
+| `locales`      | 语言环境标识符到翻译文件的映射表                                             |
 
 ### `angular.json` for `en-US` and `fr` example
 
 ### `angular.json` 用于 `en-US` 和 `fr` 示例
 
-For example, the following excerpt of an [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file sets the source locale to `en-US` and provides the path to the French (`fr`) locale translation file.
+For example, the following excerpt of an [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file sets the source locale to `en-US` and provides the path to the French \(`fr`\) locale translation file.
 
-比如，工作区构建配置文件 [`angular.json`][AioGuideWorkspaceConfig] 的以下代码片段会将源语言环境设置为 `en-US` 并提供法语 ( `fr` ) 语言环境翻译文件的路径。
+比如，工作区构建配置文件 [`angular.json`][AioGuideWorkspaceConfig] 的以下代码片段会将源语言环境设置为 `en-US` 并提供法语（`fr`）语言环境翻译文件的路径。
 
 <code-example header="angular.json" path="i18n/angular.json" region="locale-config"></code-example>
 

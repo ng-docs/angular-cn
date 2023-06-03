@@ -14,7 +14,7 @@ import glob from 'glob';
 /**
  * Globs that match CLDR JSON data files that should be fetched. We limit these intentionally
  * as loading unused data results in significant slow-down of the generation
- * (noticeable in local development if locale data is re-generated).
+ * \(noticeable in local development if locale data is re-generated\).
  *
  * 与应该提取的 CLDR JSON 数据文件匹配的
  * Glob。我们故意限制这些，因为加载未使用的数据会导致生成显着减慢（如果重新生成语言环境数据，在本地开发中会很明显）。

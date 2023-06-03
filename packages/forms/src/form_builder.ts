@@ -29,17 +29,19 @@ type ValidatorConfig = ValidatorFn|AsyncValidatorFn|ValidatorFn[]|AsyncValidator
 
 /**
  * The compiler may not always be able to prove that the elements of the control config are a tuple
- * (i.e. occur in a fixed order). This slightly looser type is used for inference, to catch cases
+ * \(i.e. occur in a fixed order\). This slightly looser type is used for inference, to catch cases
  * where the compiler cannot prove order and position.
  *
  * For example, consider the simple case `fb.group({foo: ['bar', Validators.required]})`. The
  * compiler will infer this as an array, not as a tuple.
+ *
  */
 type PermissiveControlConfig<T> = Array<T|FormControlState<T>|ValidatorConfig>;
 
 /**
  * Helper type to allow the compiler to accept [XXXX, { updateOn: string }] as a valid shorthand
- * argument for .group()
+ * argument for .group\(\)
+ *
  */
 interface PermissiveAbstractControlOptions extends Omit<AbstractControlOptions, 'updateOn'> {
   updateOn?: string;
@@ -189,12 +191,10 @@ export class FormBuilder {
    * containing all the keys and corresponding inner control types.
    *
    * 构造一个新的 `FormGroup` 实例。接受单个泛型参数，该参数是包含所有键和对应的内部控件类型的对象。
-   *
    * @param controls A collection of child controls. The key for each child is the name
    * under which it is registered.
    *
    * 子控件的集合。每个子控件的键就是其注册名称。
-   *
    * @param options Configuration options object for the `FormGroup`. The object should have the
    * `AbstractControlOptions` type and might contain the following fields:
    *
@@ -208,8 +208,8 @@ export class FormBuilder {
    *
    *   `asyncValidators`：一个异步验证器函数或其数组。
    *
-   * * `updateOn`: The event upon which the control should be updated (options: 'change' | 'blur'
-   *   | submit').
+   * * `updateOn`: The event upon which the control should be updated \(options: 'change' | 'blur'
+   *   | submit'\).
    *
    *   `updateOn` ：控件应更新的事件（选项： 'change' | 'blur' | submit'）。
    *
@@ -283,12 +283,10 @@ export class FormBuilder {
    * containing all the keys and corresponding inner control types.
    *
    * 构造一个新的 `FormRecord` 实例。接受单个泛型参数，该参数是包含所有键和对应的内部控件类型的对象。
-   *
    * @param controls A collection of child controls. The key for each child is the name
    * under which it is registered.
    *
    * 子控件的集合。每个子控件的键就是其注册名称。
-   *
    * @param options Configuration options object for the `FormRecord`. The object should have the
    * `AbstractControlOptions` type and might contain the following fields:
    *
@@ -302,8 +300,8 @@ export class FormBuilder {
    *
    *   `asyncValidators`：一个异步验证器函数或其数组。
    *
-   * * `updateOn`: The event upon which the control should be updated (options: 'change' | 'blur'
-   *   | submit').
+   * * `updateOn`: The event upon which the control should be updated \(options: 'change' | 'blur'
+   *   | submit'\).
    *
    *   `updateOn` ：控件应更新的事件（选项： 'change' | 'blur' | submit'）。
    *
@@ -454,6 +452,7 @@ export class FormBuilder {
 
 /**
  * @description
+ *
  * `NonNullableFormBuilder` is similar to {@link FormBuilder}, but automatically constructed
  * {@link FormControl} elements have `{nonNullable: true}` and are non-nullable.
  *
@@ -466,7 +465,7 @@ export class FormBuilder {
 export abstract class NonNullableFormBuilder {
   /**
    * Similar to `FormBuilder#group`, except any implicitly constructed `FormControl`
-   * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
+   * will be non-nullable \(i.e. it will have `nonNullable` set to true\). Note
    * that already-constructed controls will not be altered.
    *
    * 类似于 `FormBuilder#group` ，只是任何隐式构造的 `FormControl` 都将是不可空的（即它将 `nonNullable` 设置为 true）。请注意，已经构建的控件不会被更改。
@@ -479,7 +478,7 @@ export abstract class NonNullableFormBuilder {
 
   /**
    * Similar to `FormBuilder#record`, except any implicitly constructed `FormControl`
-   * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
+   * will be non-nullable \(i.e. it will have `nonNullable` set to true\). Note
    * that already-constructed controls will not be altered.
    *
    * 与 `FormBuilder#record` 类似，只是任何隐式构造的 `FormControl` 都将是不可为空的（即它将 `nonNullable` 设置为 true ）。请注意，已经构建的控件不会被更改。
@@ -492,7 +491,7 @@ export abstract class NonNullableFormBuilder {
 
   /**
    * Similar to `FormBuilder#array`, except any implicitly constructed `FormControl`
-   * will be non-nullable (i.e. it will have `nonNullable` set to true). Note
+   * will be non-nullable \(i.e. it will have `nonNullable` set to true\). Note
    * that already-constructed controls will not be altered.
    *
    * 类似于 `FormBuilder#array` ，只是任何隐式构造的 `FormControl` 都将是不可为空的（即它将 `nonNullable` 设置为 true）。请注意，已经构建的控件不会被更改。

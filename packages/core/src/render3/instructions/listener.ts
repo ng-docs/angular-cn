@@ -51,14 +51,14 @@ export function ɵɵlistener(
 }
 
 /**
- * Registers a synthetic host listener (e.g. `(@foo.start)`) on a component or directive.
+ * Registers a synthetic host listener \(e.g. `(@foo.start)`\) on a component or directive.
  *
  * This instruction is for compatibility purposes and is designed to ensure that a
- * synthetic host listener (e.g. `@HostListener('@foo.start')`) properly gets rendered
+ * synthetic host listener \(e.g. `@HostListener('@foo.start')`\) properly gets rendered
  * in the component's renderer. Normally all host listeners are evaluated with the
  * parent component's renderer, but, in the case of animation @triggers, they need
- * to be evaluated with the sub component's renderer (because that's where the
- * animation triggers are defined).
+ * to be evaluated with the sub component's renderer \(because that's where the
+ * animation triggers are defined\).
  *
  * Do not use this instruction as a replacement for `listener`. This instruction
  * only exists to ensure compatibility with the ViewEngine's host binding behavior.
@@ -68,7 +68,6 @@ export function ɵɵlistener(
  * @param useCapture Whether or not to use capture in event listener
  * @param eventTargetResolver Function that returns global target information in case this listener
  * should be attached to a global object like window, document or body
- *
  * @codeGenApi
  */
 export function ɵɵsyntheticHostListener(
@@ -239,7 +238,8 @@ function executeListenerWithErrorHandling(
  * @param lView The LView that contains this listener
  * @param listenerFn The listener function to call
  * @param wrapWithPreventDefault Whether or not to prevent default behavior
- * (the procedural renderer does this already, so in those cases, we should skip)
+ * \(the procedural renderer does this already, so in those cases, we should skip\)
+ *
  */
 function wrapListener(
     tNode: TNode, lView: LView<{}|null>, context: {}|null, listenerFn: (e?: any) => any,

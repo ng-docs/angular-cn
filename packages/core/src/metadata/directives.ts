@@ -433,8 +433,8 @@ export interface Directive {
 
   /**
    * Angular directives marked as `standalone` do not need to be declared in an NgModule. Such
-   * directives don't depend on any "intermediate context" of an NgModule (ex. configured
-   * providers).
+   * directives don't depend on any "intermediate context" of an NgModule \(ex. configured
+   * providers\).
    *
    * 标记为 `standalone` 的 Angular 指令不需要在 NgModule 中声明。此类指令不依赖于 NgModule 的任何“中间上下文”（例如配置的提供程序）。
    *
@@ -579,7 +579,7 @@ export interface ComponentDecorator {
    * ### Preserving whitespace
    *
    * Removing whitespace can greatly reduce AOT-generated code size and speed up view creation.
-   * As of Angular 6, the default for `preserveWhitespaces` is false (whitespace is removed).
+   * As of Angular 6, the default for `preserveWhitespaces` is false \(whitespace is removed\).
    * To change the default setting for all components in your application, set
    * the `preserveWhitespaces` option of the AOT compiler.
    *
@@ -665,7 +665,7 @@ export interface Component extends Directive {
    *
    * 当组件实例化之后，Angular 就会创建一个变更检测器，它负责传播组件各个绑定值的变化。 该策略是下列值之一：
    *
-   * - `ChangeDetectionStrategy#OnPush` sets the strategy to `CheckOnce` (on demand).
+   * - `ChangeDetectionStrategy#OnPush` sets the strategy to `CheckOnce` \(on demand\).
    *
    *   `ChangeDetectionStrategy#OnPush` 把策略设置为 `CheckOnce`（按需）。
    *
@@ -750,7 +750,7 @@ export interface Component extends Directive {
    * - `ViewEncapsulation.Emulated`: Apply modified component styles in order to emulate
    *                                 a native Shadow DOM CSS encapsulation behavior.
    *
-   *   `ViewEncapsulation.Emulated`：使用垫片（shimmed) CSS 来模拟原生行为。
+   *   `ViewEncapsulation.Emulated`：使用垫片（shimmed\) CSS 来模拟原生行为。
    *
    * - `ViewEncapsulation.None`: Apply component styles globally without any sort of encapsulation.
    *
@@ -773,7 +773,7 @@ export interface Component extends Directive {
   encapsulation?: ViewEncapsulation;
 
   /**
-   * Overrides the default interpolation start and end delimiters (`{{` and `}}`).
+   * Overrides the default interpolation start and end delimiters \(`{{` and `}}`\).
    *
    * 改写默认的插值表达式起止分界符（`{{` 和 `}}`）。
    *
@@ -793,8 +793,8 @@ export interface Component extends Directive {
 
   /**
    * Angular components marked as `standalone` do not need to be declared in an NgModule. Such
-   * components directly manage their own template dependencies (components, directives, and pipes
-   * used in a template) via the imports property.
+   * components directly manage their own template dependencies \(components, directives, and pipes
+   * used in a template\) via the imports property.
    *
    * 标记为 `standalone` 的 Angular 组件不需要在 NgModule 中声明。此类组件通过 imports 属性直接管理它们自己的模板依赖项（模板中使用的组件、指令和管道）。
    *
@@ -919,8 +919,8 @@ export interface Pipe {
    *
    * 为 `true` 时，该管道是纯管道，也就是说 `transform()` 方法只有在其输入参数变化时才会被调用。管道默认都是纯管道。
    *
-   * If the pipe has internal state (that is, the result
-   * depends on state other than its arguments), set `pure` to false.
+   * If the pipe has internal state \(that is, the result
+   * depends on state other than its arguments\), set `pure` to false.
    * In this case, the pipe is invoked on each change-detection cycle,
    * even if the arguments have not changed.
    *
@@ -931,7 +931,7 @@ export interface Pipe {
 
   /**
    * Angular pipes marked as `standalone` do not need to be declared in an NgModule. Such
-   * pipes don't depend on any "intermediate context" of an NgModule (ex. configured providers).
+   * pipes don't depend on any "intermediate context" of an NgModule \(ex. configured providers\).
    *
    * 标记为 `standalone` 的 Angular 管道不需要在 NgModule 中声明。此类管道不依赖于 NgModule 的任何“中间上下文”（例如配置的提供程序）。
    *

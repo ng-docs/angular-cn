@@ -210,7 +210,7 @@ This example from the `HeroListComponent` template uses three of these forms.
 | `{{hero.name}}` [interpolation](guide/interpolation)                     | Displays the component's `hero.name` property value within the `<button>` element.                                                |
 | `{{hero.name}}`[插值](guide/interpolation)                               | 在 `<button>` 元素中显示组件的 `hero.name` 属性值。                                                                               |
 
-Two-way data binding (used mainly in [template-driven forms](guide/forms)) combines property and event binding in a single notation.
+Two-way data binding \(used mainly in [template-driven forms](guide/forms)\) combines property and event binding in a single notation.
 Here's an example from the `HeroDetailComponent` template that uses two-way data binding with the `ngModel` directive.
 
 **双向数据绑定**（主要用于[模板驱动表单](guide/forms)中），它会把属性绑定和事件绑定组合成一种单独的写法。下面这个来自 `HeroDetailComponent` 模板中的例子通过 `ngModel` 指令使用了双向数据绑定：
@@ -256,9 +256,9 @@ You can also define new pipes.
 
 Angular 自带了很多管道，比如 [date](api/common/DatePipe) 管道和 [currency](api/common/CurrencyPipe) 管道。完整的列表参阅 [Pipes API 列表](api?type=pipe)。你也可以自己定义一些新管道。
 
-To specify a value transformation in an HTML template, use the [pipe operator (`|`)](guide/pipes).
+To specify a value transformation in an HTML template, use the [pipe operator \(`|`\)](guide/pipes).
 
-要在 HTML 模板中指定值的转换方式，请使用[管道操作符 ( `|` )](guide/pipes)。
+要在 HTML 模板中指定值的转换方式，请使用[管道操作符（`|`）](guide/pipes)。
 
 <code-example format="html" language="html">
 
@@ -346,7 +346,7 @@ In templates they look like regular HTML attributes, hence the name.
 *属性型指令*会修改现有元素的外观或行为。在模板中，它们看起来就像普通的 HTML 属性一样，因此得名“属性型指令”。
 
 The `ngModel` directive, which implements two-way data binding, is an example of an attribute directive.
-`ngModel` modifies the behavior of an existing element (typically `<input>`) by setting its display value property and responding to change events.
+`ngModel` modifies the behavior of an existing element \(typically `<input>`\) by setting its display value property and responding to change events.
 
 `ngModel` 指令就是属性型指令的一个例子，它实现了双向数据绑定。`ngModel` 修改现有元素（一般是 `<input>`）的行为：设置其显示属性值，并响应 change 事件。
 

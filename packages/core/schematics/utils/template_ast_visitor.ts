@@ -19,7 +19,7 @@ import type {TmplAstBoundAttribute, TmplAstBoundEvent, TmplAstBoundText, TmplAst
  * complicated due to the class not being present at module evaluation time. The classes using a
  * base class found within `@angular/compiler` must be wrapped in a factory to allow the class value
  * to be accessible at runtime after the dynamic import has completed. This class implements the
- * interface of the `TmplAstRecursiveVisitor` class (but does not extend) as the
+ * interface of the `TmplAstRecursiveVisitor` class \(but does not extend\) as the
  * `TmplAstRecursiveVisitor` as an interface provides the required set of visit methods. The base
  * interface `Visitor<T>` is not exported.
  *
@@ -64,8 +64,8 @@ export class TemplateAstVisitor implements TmplAstRecursiveVisitor {
 
   /**
    * Visits all the provided nodes in order using this Visitor's visit methods.
-   * This is a simplified variant of the `visitAll` function found inside of (but not
-   * exported from) the `@angular/compiler` that does not support returning a value
+   * This is a simplified variant of the `visitAll` function found inside of \(but not
+   * exported from\) the `@angular/compiler` that does not support returning a value
    * since the migrations do not directly transform the nodes.
    *
    * 使用此 Visitor 的 visit 方法按顺序访问所有提供的节点。这是在 `@angular/compiler`
@@ -74,7 +74,6 @@ export class TemplateAstVisitor implements TmplAstRecursiveVisitor {
    * @param nodes An iterable of nodes to visit using this visitor.
    *
    * 使用此访问器访问的节点的迭代。
-   *
    */
   visitAll(nodes: Iterable<TmplAstNode>): void {
     for (const node of nodes) {

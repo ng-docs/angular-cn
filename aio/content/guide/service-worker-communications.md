@@ -178,12 +178,12 @@ For example, imagine the following scenario:
   旧版本在服务器上不再可用。
 
 * In the meantime, the user's browser decides to evict `lazy-chunk.<lazy-hash-1>.js` from its cache.
-  Browsers might decide to evict specific (or all) resources from a cache in order to reclaim disk space.
+  Browsers might decide to evict specific \(or all\) resources from a cache in order to reclaim disk space.
 
   同时，用户的浏览器决定从其缓存中清退 `lazy-chunk.<lazy-hash-1>.js` 浏览器可能决定从缓存中清退特定（或所有）资源，以便回收磁盘空间。
 
 * The user opens the application again.
-  The service worker serves the latest version known to it at this point, namely the old version (`index.html` and `main.<main-hash-1>.js`).
+  The service worker serves the latest version known to it at this point, namely the old version \(`index.html` and `main.<main-hash-1>.js`\).
 
   用户再次打开本应用。此时，Service Worker 将提供它所知的最新版本，当然，实际上对我们是旧版本（`index.html` 和 `main.<main-hash-1>.js`）。
 
@@ -191,8 +191,8 @@ For example, imagine the following scenario:
 
   在稍后的某个时刻，该应用程序请求惰性捆绑包 `lazy-chunk.<lazy-hash-1>.js`。
 
-* The service worker is unable to find the asset in the cache (remember that the browser evicted it).
-  Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
+* The service worker is unable to find the asset in the cache \(remember that the browser evicted it\).
+  Nor is it able to retrieve it from the server \(because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version\).
 
   Service Worker 无法在缓存中找到该资产（请记住浏览器已经将其清退了）。它也无法从服务器上获取它（因为服务器现在只有较新版本的 `lazy-chunk.<lazy-hash-2>.js`）。
 

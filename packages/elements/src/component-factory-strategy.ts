@@ -242,7 +242,8 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
 
   /**
    * Marks the component view for check, if necessary.
-   * (NOTE: This is required when the `ChangeDetectionStrategy` is set to `OnPush`.)
+   * \(NOTE: This is required when the `ChangeDetectionStrategy` is set to `OnPush`.\)
+   *
    */
   protected markViewForCheck(viewChangeDetectorRef: ChangeDetectorRef): void {
     if (this.hasInputChanges) {

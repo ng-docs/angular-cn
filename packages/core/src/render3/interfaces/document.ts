@@ -29,7 +29,7 @@
  *
  * 在浏览器环境之外运行 ivy 时，有必要调用 `setDocument()` 来告诉 ivy 全局 `document` 是什么。
  *
- * Angular does this for us in each of the standard platforms (`Browser`, `Server`, and `WebWorker`)
+ * Angular does this for us in each of the standard platforms \(`Browser`, `Server`, and `WebWorker`\)
  * by calling `setDocument()` when providing the `DOCUMENT` token.
  *
  * Angular 在每个标准平台（`Browser`、`Server` 和 `WebWorker`）中通过在提供 `DOCUMENT`

@@ -302,7 +302,6 @@ export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
  * \*\*Internal: not for public use.
  *
  * \*\*内部：不供公众使用。
- *
  */
 export type ɵValue<T extends AbstractControl|undefined> =
     T extends AbstractControl<any, any>? T['value'] : never;
@@ -319,8 +318,8 @@ export type ɵValue<T extends AbstractControl|undefined> =
  * 请注意，结果类型将遵循与控件、组或数组上的 `.getRawValue()`
  * 相同的规则。这意味着组中的所有控件都是必需的，而不是可选的，无论它们的禁用状态如何。
  *
- * You may also wish to use {@link ɵValue}, which will have `undefined` in group keys (which can be
- * disabled).
+ * You may also wish to use {@link ɵValue}, which will have `undefined` in group keys \(which can be
+ * disabled\).
  *
  * 你可能还希望使用 {@link ɵValue} ，它在组键中将有 `undefined`（可以禁用）。
  *
@@ -344,7 +343,7 @@ export type ɵValue<T extends AbstractControl|undefined> =
  * type PartyFormValues = RawValue<FormGroup<PartyFormControls>>;
  * ```
  *
- * The resulting type is `{address: string}`. (Note the absence of `undefined`.)
+ * The resulting type is `{address: string}`. \(Note the absence of `undefined`.\)
  *
  * 结果类型是 `{address: string}` 。（请注意不存在 `undefined` 。）
  *
@@ -454,24 +453,21 @@ export type ɵGetProperty<T, K> =
  * 它提供了所有控件和控件组都具有的一些共享行为，例如运行验证器、计算状态和重置状态。它还定义了在所有子类之间共享的属性，例如
  * `value`、`valid` 和 `dirty` 。它不应该直接实例化。
  *
- * The first type parameter TValue represents the value type of the control (`control.value`).
- * The optional type parameter TRawValue  represents the raw value type (`control.getRawValue()`).
+ * The first type parameter TValue represents the value type of the control \(`control.value`\).
+ * The optional type parameter TRawValue  represents the raw value type \(`control.getRawValue()`\).
  *
- * 第一个类型参数 TValue 表示控件的值类型 ( `control.value` )。可选的类型参数 TRawValue
- * 表示原始值类型 ( `control.getRawValue()` )。
+ * 第一个类型参数 TValue 表示控件的值类型 \( `control.value` \)。可选的类型参数 TRawValue
+ * 表示原始值类型 \( `control.getRawValue()` \)。
  *
  * @see [Forms Guide](/guide/forms)
  *
  * [表单指南](/guide/forms)
- *
  * @see [Reactive Forms Guide](/guide/reactive-forms)
  *
  * [响应式表单指南](/guide/reactive-forms)
- *
  * @see [Dynamic Forms Guide](/guide/dynamic-form)
  *
  * [动态表单指南](/guide/dynamic-form)
- *
  * @publicApi
  */
 export abstract class AbstractControl<TValue = any, TRawValue extends TValue = TValue> {
@@ -838,11 +834,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
 
   /**
    * A multicasting observable that emits an event every time the value of the control changes, in
-   * the UI or programmatically. It also emits an event each time you call enable() or disable()
+   * the UI or programmatically. It also emits an event each time you call enable\(\) or disable\(\)
    * without passing along {emitEvent: false} as a function argument.
    *
    * 一种多播 observable，每次控件的值发生更改（在 UI
-   * 中或以编程方式）时都会发出事件。它还会在你每次调用 enable() 或 disable()
+   * 中或以编程方式）时都会发出事件。它还会在你每次调用 enable\(\) 或 disable\(\)
    * 时发出一个事件，而不将 {emitEvent: false} 作为函数参数传递。
    *
    */
@@ -861,8 +857,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   public readonly statusChanges!: Observable<FormControlStatus>;
 
   /**
-   * Reports the update strategy of the `AbstractControl` (meaning
-   * the event on which the control updates itself).
+   * Reports the update strategy of the `AbstractControl` \(meaning
+   * the event on which the control updates itself\).
    * Possible values: `'change'` \| `'blur'` \| `'submit'`
    * Default value: `'change'`
    *
@@ -1283,7 +1279,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
-   * * `emitEvent`: When true or not supplied (the default), the `statusChanges`
+   * * `emitEvent`: When true or not supplied \(the default\), the `statusChanges`
    *     observable emits an event with the latest status the control is marked pending.
    *     When false, no events are emitted.
    *
@@ -1325,7 +1321,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *     `valueChanges`
    *     observables emit events with the latest status and value when the control is disabled.
    *     When false, no events are emitted.
@@ -1378,7 +1374,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *     `valueChanges`
    *     observables emit events with the latest status and value when the control is enabled.
    *     When false, no events are emitted.
@@ -1428,7 +1424,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   }
 
   /**
-   * Sets the value of the control. Abstract method (implemented in sub-classes).
+   * Sets the value of the control. Abstract method \(implemented in sub-classes\).
    *
    * 设置控件的值。抽象方法（在子类中实现）。
    *
@@ -1436,7 +1432,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   abstract setValue(value: TRawValue, options?: Object): void;
 
   /**
-   * Patches the value of the control. Abstract method (implemented in sub-classes).
+   * Patches the value of the control. Abstract method \(implemented in sub-classes\).
    *
    * 修补控件的值。抽象方法（在子类中实现）。
    *
@@ -1444,7 +1440,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   abstract patchValue(value: TValue, options?: Object): void;
 
   /**
-   * Resets the control. Abstract method (implemented in sub-classes).
+   * Resets the control. Abstract method \(implemented in sub-classes\).
    *
    * 重置控件。抽象方法（在子类中实现）。
    *
@@ -1481,7 +1477,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    *   `onlySelf` ：当 true 时，仅更新此控件。当 false 或未提供时，更新所有直接祖先。默认为 false。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *     `valueChanges`
    *     observables emit events with the latest status and value when the control is updated.
    *     When false, no events are emitted.
@@ -1562,7 +1558,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * @param opts Configuration options that determine how the control propagates
    * changes and emits events after the control errors are set.
    *
-   * * `emitEvent`: When true or not supplied (the default), the `statusChanges`
+   * * `emitEvent`: When true or not supplied \(the default\), the `statusChanges`
    *   observable emits an event after the errors are set.
    *
    * @usageNotes
@@ -1595,7 +1591,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 检索给定控件的名称或路径的子控件。
    *
-   * This signature for get supports strings and `const` arrays (`.get(['foo', 'bar'] as const)`).
+   * This signature for get supports strings and `const` arrays \(`.get(['foo', 'bar'] as const)`\).
    *
    * get 的此签名支持字符串和 `const` 数组（`.get(['foo', 'bar'] as const)`）。
    *
@@ -1608,7 +1604,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 检索给定控件的名称或路径的子控件。
    *
-   * This signature for `get` supports non-const (mutable) arrays. Inferred type
+   * This signature for `get` supports non-const \(mutable\) arrays. Inferred type
    * information will not be as robust, so prefer to pass a `readonly` array if possible.
    *
    * `get` 的此签名支持非常量（可变）数组。推断的类型信息将没有那么健壮，因此如果可能，更喜欢传递

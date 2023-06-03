@@ -240,9 +240,8 @@ export abstract class Renderer2 {
    * @param selectorOrNode The DOM element.
    *
    * DOM 元素。
-   *
    * @param preserveContent Whether the contents of the root element
-   * should be preserved, or cleared upon bootstrap (default behavior).
+   * should be preserved, or cleared upon bootstrap \(default behavior\).
    * Use with `ViewEncapsulation.ShadowDom` to allow simple native
    * content projection via `<slot>` elements.
    *

@@ -47,7 +47,7 @@ function isAngularDecorator(decorator: Decorator, isCore: boolean): boolean {
 const DECORATOR_INVOCATION_JSDOC_TYPE = '!Array<{type: !Function, args: (undefined|!Array<?>)}>';
 
 /**
- * Extracts the type of the decorator (the function or expression invoked), as well as all the
+ * Extracts the type of the decorator \(the function or expression invoked\), as well as all the
  * arguments passed to the decorator. Returns an AST with the form:
  *
  * 提取装饰器的类型（调用的函数或表达式），以及传递给装饰器的所有参数。返回具有以下形式的 AST：
@@ -107,9 +107,9 @@ function extractMetadataFromSingleDecorator(
  * 该属性包含一个箭头函数，该函数会返回一个具有以下形状的对象文字的数组：
  *
  * ```
- *     static ctorParameters = () => \[{
+ *     static ctorParameters = () => [{
  *       type: SomeClass|undefined,  // the type of the param that's decorated, if it's a value.
- *       decorators: \[{
+ *       decorators: [{
  *         type: DecoratorFn,  // the type of the decorator that's invoked.
  *         args: [ARGS],       // the arguments passed to the decorator.
  *       }]
@@ -176,13 +176,13 @@ function createCtorParametersClassProperty(
 }
 
 /**
- * Returns an expression representing the (potentially) value part for the given node.
+ * Returns an expression representing the \(potentially\) value part for the given node.
  *
  * 返回一个表示给定节点的（可能）值部分的表达式。
  *
  * This is a partial re-implementation of TypeScript's serializeTypeReferenceNode. This is a
- * workaround for https://github.com/Microsoft/TypeScript/issues/17516 (serializeTypeReferenceNode
- * not being exposed). In practice this implementation is sufficient for Angular's use of type
+ * workaround for https://github.com/Microsoft/TypeScript/issues/17516 \(serializeTypeReferenceNode
+ * not being exposed\). In practice this implementation is sufficient for Angular's use of type
  * metadata.
  *
  * 这是 TypeScript 的 serializeTypeReferenceNode
@@ -236,13 +236,13 @@ function typeReferenceToExpression(
 }
 
 /**
- * Checks whether a given symbol refers to a value that exists at runtime (as distinct from a type).
+ * Checks whether a given symbol refers to a value that exists at runtime \(as distinct from a type\).
  *
  * 检查给定的符号是否引用了运行时存在的值（与类型不同）。
  *
  * Expands aliases, which is important for the case where
  *   import \* as x from 'some-module';
- * and x is now a value (the module object).
+ * and x is now a value \(the module object\).
  *
  * 扩展别名，这对于 import \* as x from 'some-module' 的情况很重要；并且 x
  * 现在是一个值（模块对象）。
@@ -266,8 +266,8 @@ function symbolIsRuntimeValue(typeChecker: ts.TypeChecker, symbol: ts.Symbol): b
  */
 interface ParameterDecorationInfo {
   /**
-   * The type declaration for the parameter. Only set if the type is a value (e.g. a class, not an
-   * interface).
+   * The type declaration for the parameter. Only set if the type is a value \(e.g. a class, not an
+   * interface\).
    *
    * 参数的类型声明。只有在类型是值（例如类，而不是接口）时才设置。
    *
@@ -337,14 +337,11 @@ export function getDownlevelDecoratorsTransform(
    * 属性，其中包含应用了装饰器的每个属性的类型信息。
    *
    * ```
-   * static propDecorators: {[key: string]: {type: Function, args?:
-   * ```
-   *
-   * any\[]}\[]} = { propA: \[{type: MyDecorator, args: [1, 2]}, ...],
+   *     static propDecorators: {[key: string]: {type: Function, args?:
+   * any[]}[]} = { propA: [{type: MyDecorator, args: [1, 2]}, ...],
    *       ...
    *     };
-   *
-   * any\[]}\[]} = { propA: \[{type: MyDecorator, args: [1, 2][1, 2] }, ...], ... };
+   * ```
    *
    */
   function createPropDecoratorsClassProperty(
@@ -376,7 +373,7 @@ export function getDownlevelDecoratorsTransform(
     const referencedParameterTypes = loadIsReferencedAliasDeclarationPatch(context);
 
     /**
-     * Converts an EntityName (from a type annotation) to an expression (accessing a value).
+     * Converts an EntityName \(from a type annotation\) to an expression \(accessing a value\).
      *
      * 将 EntityName（从类型注解）转换为表达式（访问值）。
      *

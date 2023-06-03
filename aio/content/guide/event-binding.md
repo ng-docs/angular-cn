@@ -68,7 +68,7 @@ To determine an event target, Angular checks if the name of the target event mat
 
 为了确定事件目标，Angular 会检查目标事件的名称是否与已知指令的 event 属性匹配。
 
-Create the following example: (Angular checks to see if `myClick` is an event on the custom `ClickDirective`)
+Create the following example: \(Angular checks to see if `myClick` is an event on the custom `ClickDirective`\)
 
 创建以下示例：（Angular 会检查 `myClick` 是否是自定义 `ClickDirective` 上的事件）
 
@@ -123,7 +123,7 @@ You can bind to keyboard events using Angular's binding syntax. You can specify 
 
 你可以用 Angular 的绑定语法绑定到键盘事件。你可以指定要绑定到键盘事件的键值或代码。它们的 `key` 和 `code` 字段是浏览器键盘事件对象的原生部分。默认情况下，事件绑定假定你要使用键盘事件上的 `key` 字段。你还可以用 `code` 字段。
 
-Combinations of keys can be separated by a `.` (period). For example, `keydown.enter` will allow you to bind events to the `enter` key. You can also use modifier keys, such as `shift`, `alt`, `control`, and the `command` keys from Mac. The following example shows how to bind a keyboard event to `keydown.shift.t`.
+Combinations of keys can be separated by a `.` \(period\). For example, `keydown.enter` will allow you to bind events to the `enter` key. You can also use modifier keys, such as `shift`, `alt`, `control`, and the `command` keys from Mac. The following example shows how to bind a keyboard event to `keydown.shift.t`.
 
 键的组合可以用点（`.`）分隔。例如， `keydown.enter` 将允许你将事件绑定到 `enter` 键。你还可以用修饰键，例如 `shift` 、 `alt` 、 `control` 和 Mac 中的 `command` 键。以下示例展示了如何将键盘事件绑定到 `keydown.shift.t` 。
 

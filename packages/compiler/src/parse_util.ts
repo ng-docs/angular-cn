@@ -108,7 +108,7 @@ export class ParseSourceSpan {
    * 创建一个对象，该对象包含有关在文本词法分析/解析期间捕获的标记/节点范围的信息。
    *
    * @param start
-   * The location of the start of the span (having skipped leading trivia).
+   * The location of the start of the span \(having skipped leading trivia\).
    * Skipping leading trivia makes source-spans more "user friendly", since things like HTML
    * elements will appear to begin at the start of the opening tag, rather than at the start of any
    * leading trivia, which could include newlines.
@@ -120,7 +120,6 @@ export class ParseSourceSpan {
    * The location of the end of the span.
    *
    * 跨度结束的位置。
-   *
    * @param fullStart
    * The start of the token without skipping the leading trivia.
    * This is used by tooling that splits tokens further, such as extracting Angular interpolations
@@ -131,9 +130,8 @@ export class ParseSourceSpan {
    * 标记的开始，而不跳过领先的琐事。这由进一步拆分标记的工具使用，例如从文本标记中提取 Angular
    * 插值。此类工具会创建相对于原始标记的 source-span 的新的 source-span
    * 。如果已跳过前导琐事字符，则新的 source-spans 可能会被错误地偏移。
-   *
    * @param details
-   * Additional information (such as identifier names) that should be associated with the span.
+   * Additional information \(such as identifier names\) that should be associated with the span.
    *
    * 应该与 Span 关联的附加信息（例如标识符名称）。
    *

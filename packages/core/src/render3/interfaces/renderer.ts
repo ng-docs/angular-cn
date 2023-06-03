@@ -35,7 +35,7 @@ export type GlobalTargetResolver = (element: any) => EventTarget;
  *
  * 创建元素和文本节点所需的 API 的程序风格。
  *
- * In non-native browser environments (e.g. platforms such as web-workers), this is the
+ * In non-native browser environments \(e.g. platforms such as web-workers\), this is the
  * facade that enables element manipulation. In practice, this is implemented by `Renderer2`.
  *
  * 在非本机浏览器环境（例如 Web-workers 等平台）中，这是启用元素操作的门面。这也促进了与 Renderer2

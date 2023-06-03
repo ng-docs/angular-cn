@@ -19,7 +19,7 @@ import {BazelAndG3Options, DiagnosticOptions, I18nOptions, LegacyNgcOptions, Mis
  */
 export interface TestOnlyOptions {
   /**
-   * Whether to use the CompilerHost's fileNameToModuleName utility (if available) to generate
+   * Whether to use the CompilerHost's fileNameToModuleName utility \(if available\) to generate
    * import module specifiers. This is false by default, and exists to support running ngtsc
    * within Google. This option is internal and is used by the ng_module.bzl rule to switch
    * behavior between Bazel and Blaze.

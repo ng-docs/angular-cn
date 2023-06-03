@@ -28,7 +28,7 @@ import {EmbeddedViewRef} from './view_ref';
  * 要想根据模板实例化内嵌的视图，请使用 `ViewContainerRef` 的 `createEmbeddedView()` 方法。
  *
  * Access a `TemplateRef` instance by placing a directive on an `<ng-template>`
- * element (or directive prefixed with `*`). The `TemplateRef` for the embedded view
+ * element \(or directive prefixed with `*`\). The `TemplateRef` for the embedded view
  * is injected into the constructor of the directive,
  * using the `TemplateRef` token.
  *
@@ -44,7 +44,6 @@ import {EmbeddedViewRef} from './view_ref';
  * @see [Navigate the Component Tree with DI](guide/dependency-injection-navtree)
  *
  * [使用 DI 在组件树中导航](guide/dependency-injection-navtree)
- *
  * @publicApi
  */
 export abstract class TemplateRef<C> {
@@ -93,7 +92,7 @@ export abstract class TemplateRef<C> {
    * Implementation of the `createEmbeddedView` function.
    *
    * This implementation is internal and allows framework code
-   * to invoke it with extra parameters (e.g. for hydration) without
+   * to invoke it with extra parameters \(e.g. for hydration\) without
    * affecting public API.
    *
    * @internal

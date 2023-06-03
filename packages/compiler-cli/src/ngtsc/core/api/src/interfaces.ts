@@ -14,7 +14,7 @@ import ts from 'typescript';
  * 由构建系统支持的宿主，它具有模块命名空间的统一视图。
  *
  * Such a build system supports the `fileNameToModuleName` method provided by certain build system
- * integrations (such as the integration with Bazel). See the docs on `fileNameToModuleName` for
+ * integrations \(such as the integration with Bazel\). See the docs on `fileNameToModuleName` for
  * more details.
  *
  * 这样的构建系统支持某些构建系统集成（例如与 Bazel 的集成）提供的 `fileNameToModuleName`
@@ -38,8 +38,8 @@ export interface UnifiedModulesHost {
 }
 
 /**
- * A host which additionally tracks and produces "resources" (HTML templates, CSS
- * files, etc).
+ * A host which additionally tracks and produces "resources" \(HTML templates, CSS
+ * files, etc\).
  *
  * 额外跟踪和生成“资源”（HTML 模板、CSS 文件等）的宿主。
  *

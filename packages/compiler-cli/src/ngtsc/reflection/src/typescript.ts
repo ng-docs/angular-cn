@@ -702,7 +702,7 @@ function getContainingImportDeclaration(node: ts.Node): ts.ImportDeclaration|nul
 
 /**
  * Compute the name by which the `decl` was exported, not imported.
- * If no such declaration can be found (e.g. it is a namespace import)
+ * If no such declaration can be found \(e.g. it is a namespace import\)
  * then fallback to the `originalId`.
  *
  * 计算 `decl` 导出而不是导入的名称。如果找不到这样的声明（例如它是命名空间导入），则回退到
@@ -719,7 +719,7 @@ const LocalExportedDeclarations = Symbol('LocalExportedDeclarations');
 
 /**
  * A `ts.SourceFile` expando which includes a cached `Set` of local `ts.Declaration`s that are
- * exported either directly (`export class ...`) or indirectly (via `export {...}`).
+ * exported either directly \(`export class ...`\) or indirectly \(via `export {...}`\).
  *
  * 一个 `ts.SourceFile` expando，包含一个本地的 `ts.Declaration` 的缓存 `Set` ，可以直接（`export
  * class ...`）或间接（通过 `export {...}`）导出。

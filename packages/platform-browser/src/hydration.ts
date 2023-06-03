@@ -71,7 +71,7 @@ export function withNoHttpTransferCache():
  * Sets up providers necessary to enable hydration functionality for the application.
  * By default, the function enables the recommended set of features for the optimal
  * performance for most of the applications. You can enable/disable features by
- * passing special functions (from the `HydrationFeatures` set) as arguments to the
+ * passing special functions \(from the `HydrationFeatures` set\) as arguments to the
  * `provideClientHydration` function.
  *
  * @usageNotes
@@ -96,13 +96,11 @@ export function withNoHttpTransferCache():
  * })
  * export class AppModule {}
  * ```
- *
  * @see `withNoDomReuse`
  * @see `withNoHttpTransferCache`
  * @param features Optional features to configure additional router behaviors.
  *
  * 配置其他路由器行为的可选特性。
- *
  * @returns A set of providers to enable hydration.
  * @publicApi
  * @developerPreview

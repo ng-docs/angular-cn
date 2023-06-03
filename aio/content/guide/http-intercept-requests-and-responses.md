@@ -75,10 +75,10 @@ This is a common middleware pattern found in frameworks such as Express.js.
 
 ## 提供这个拦截器
 
-The `NoopInterceptor` is a service managed by Angular's [dependency injection (DI)](guide/dependency-injection) system.
+The `NoopInterceptor` is a service managed by Angular's [dependency injection \(DI\)](guide/dependency-injection) system.
 Like other services, you must provide the interceptor class before the app can use it.
 
-这个 `NoopInterceptor` 就是一个由 Angular [依赖注入 (DI)](guide/dependency-injection)系统管理的服务。像其它服务一样，你也必须先提供这个拦截器类，应用才能使用它。
+这个 `NoopInterceptor` 就是一个由 Angular [依赖注入（DI）](guide/dependency-injection)系统管理的服务。像其它服务一样，你也必须先提供这个拦截器类，应用才能使用它。
 
 Because interceptors are optional dependencies of the `HttpClient` service, you must provide them in the same injector or a parent of the injector that provides `HttpClient`.
 Interceptors provided *after* DI creates the `HttpClient` are ignored.

@@ -38,14 +38,14 @@ const OBJECT = 'object';
  * ## 元素继承
  *
  * The `element_inheritance` can be further subdivided as `element1,element2,...^parentElement`.
- * Here the individual elements are separated by `,` (commas). Every element in the list
+ * Here the individual elements are separated by `,` \(commas\). Every element in the list
  * has identical properties.
  *
  * `element_inheritance` 可以进一步细分为 `element1,element2,...^parentElement` 。在这里，各个元素用
  * `,`（逗号）分隔。列表中的每个元素都具有相同的属性。
  *
  * An `element` may inherit additional properties from `parentElement` If no `^parentElement` is
- * specified then `""` (blank) element is assumed.
+ * specified then `""` \(blank\) element is assumed.
  *
  * `element` 可以从 `parentElement` 继承其他属性如果没有指定 `^parentElement` ，则假定为 `""`
  * （空白）元素。
@@ -63,12 +63,12 @@ const OBJECT = 'object';
  *
  * ## 属性
  *
- * Each element has a set of properties separated by `,` (commas). Each property can be prefixed
+ * Each element has a set of properties separated by `,` \(commas\). Each property can be prefixed
  * by a special character designating its type:
  *
  * 每个元素都有一组用 `,`（逗号）分隔的属性。每个属性都可以以指定其类型的特殊字符为前缀：
  *
- * - (no prefix): property is a string.
+ * - \(no prefix\): property is a string.
  *
  *   （无前缀）：属性是一个字符串。
  *

@@ -46,9 +46,9 @@ Do *not* declare the following:
 
 *不要*声明：
 
-* A class that's already declared in another module, whether an application module, @NgModule, or third-party module.
+* A class that's already declared in another module, whether an application module, `@NgModule`, or third-party module.
 
-  已经在其它模块中声明过的类。无论它来自应用自己的模块（@NgModule）还是第三方模块。
+  已经在其它模块中声明过的类。无论它来自应用自己的模块（`@NgModule`）还是第三方模块。
 
 * An array of directives imported from another module.
   For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
@@ -89,7 +89,7 @@ Membership in one list doesn't imply membership in another list.
 
   `AppComponent` 可能在此模块中引导，但可能是由另一个特性模块声明的。
 
-* A component could be imported from another application module (so you can't declare it) and re-exported by this module.
+* A component could be imported from another application module \(so you can't declare it\) and re-exported by this module.
 
   某个组件可能是从另一个应用模块中导入的（所以你没法声明它）并且被当前模块重新导出。
 
@@ -118,7 +118,7 @@ The "x" class isn't visible to other modules until you add it to the `exports` l
 
 ## 我应该导入什么？
 
-Import NgModules whose public (exported) [declarable classes](guide/bootstrapping#the-declarations-array)
+Import NgModules whose public \(exported\) [declarable classes](guide/bootstrapping#the-declarations-array)
 you need to reference in this module's component templates.
 
 导入你需要在当前模块的组件模板中使用的那些公开的（被导出的）[可声明类](guide/bootstrapping#the-declarations-array)。
@@ -240,7 +240,7 @@ Don't export the following:
 
   那些只被路由器或引导函数动态加载的组件。比如[入口组件](guide/ngmodule-faq#q-entry-component-defined)可能从来不会在其它组件的模板中出现。导出它们没有坏处，但也没有好处。
 
-* Pure service modules that don't have public (exported) declarations.
+* Pure service modules that don't have public \(exported\) declarations.
   For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
   Its only purpose is to add http service providers to the application as a whole.
 
@@ -282,7 +282,7 @@ Its only purpose is to add http service providers to the application as a whole.
 
 ## What is the `forRoot()` method?
 
-## *forRoot()*方法是什么？
+## `forRoot()` 方法是什么？
 
 The `forRoot()` static method is a convention that makes it easy for developers to configure services and providers that are intended to be singletons.
 A good example of `forRoot()` is the `RouterModule.forRoot()` method.
@@ -340,7 +340,7 @@ Adding a service provider to `@NgModule.providers` effectively publishes the ser
 列在引导模块的 `@NgModule.providers` 中的服务提供者具有**全应用级作用域**。往 `NgModule.providers` 中添加服务提供者将导致该服务被发布到整个应用中。
 
 When you import an NgModule,
-Angular adds the module's service providers (the contents of its `providers` list) to the application root injector.
+Angular adds the module's service providers \(the contents of its `providers` list\) to the application root injector.
 
 当你导入一个模块时，Angular 就会把该模块的服务提供者（也就是它的 `providers` 列表中的内容）加入该应用的*根注入器*中。
 
@@ -498,12 +498,12 @@ Thus, the lazy loading is preferable.
 
 ## 我应该把全应用级提供者添加到根模块 `AppModule` 中还是根组件 `AppComponent` 中？
 
-Define application-wide providers by specifying `providedIn: 'root'` on its `@Injectable()` decorator (in the case of services) or at `InjectionToken` construction (in the case where tokens are provided).
+Define application-wide providers by specifying `providedIn: 'root'` on its `@Injectable()` decorator \(in the case of services\) or at `InjectionToken` construction \(in the case where tokens are provided\).
 Providers that are created this way automatically are made available to the entire application and don't need to be listed in any module.
 
 通过在服务的 `@Injectable()` 装饰器中（比如服务）指定 `providedIn: 'root'` 来定义全应用级提供者，或者 `InjectionToken` 的构造器（比如提供令牌的地方），都可以定义全应用级提供者。通过这种方式创建的服务提供者会自动在整个应用中可用，而不用把它列在任何模块中。
 
-If a provider cannot be configured in this way (perhaps because it has no sensible default value), then register application-wide providers in the root `AppModule`, not in the `AppComponent`.
+If a provider cannot be configured in this way \(perhaps because it has no sensible default value\), then register application-wide providers in the root `AppModule`, not in the `AppComponent`.
 
 如果某个提供者不能用这种方式配置（可能因为它没有有意义的默认值），那就在根模块 `AppModule` 中注册这些全应用级服务，而不是在 `AppComponent` 中。
 
@@ -554,12 +554,12 @@ This means that lazy-loaded modules can't reach them.
 ## 我应该把其它提供者注册到模块中还是组件中？
 
 Providers should be configured using `@Injectable` syntax.
-If possible, they should be provided in the application root (`providedIn: 'root'`).
+If possible, they should be provided in the application root \(`providedIn: 'root'`\).
 Services that are configured this way are lazily loaded if they are only used from a lazily loaded context.
 
 提供者应该使用 `@Injectable` 语法进行配置。只要可能，就应该把它们在应用的根注入器中提供（`providedIn: 'root'`）。如果它们只被惰性加载的上下文中使用，那么这种方式配置的服务就是惰性加载的。
 
-If it's the consumer's decision whether a provider is available application-wide or not, then register providers in modules (`@NgModule.providers`) instead of registering in components (`@Component.providers`).
+If it's the consumer's decision whether a provider is available application-wide or not, then register providers in modules \(`@NgModule.providers`\) instead of registering in components \(`@Component.providers`\).
 
 如果要由消费方来决定是否把它作为全应用级提供者，那么就要在模块中（`@NgModule.providers`）注册提供者，而不是组件中（`@Component.providers`）。
 
@@ -589,7 +589,7 @@ The changes that editor makes in its service don't touch the instances elsewhere
 ### 急性加载的场景
 
 When an eagerly loaded module provides a service, for example a `UserService`, that service is available application-wide.
-If the root module provides `UserService` and imports another module that provides the same `UserService`, Angular registers one of them in the root application injector (see [What if I import the same module twice?](guide/ngmodule-faq#q-reimport)).
+If the root module provides `UserService` and imports another module that provides the same `UserService`, Angular registers one of them in the root application injector \(see [What if I import the same module twice?](guide/ngmodule-faq#q-reimport)\).
 
 当急性加载的模块提供了服务时，比如 `UserService`，该服务是在全应用级可用的。如果根模块提供了 `UserService`，并导入了另一个也提供了同一个 `UserService` 的模块，Angular 就会把它们中的一个注册进应用的根注入器中（参阅[如果两次导入了同一个模块会怎样？](guide/ngmodule-faq#q-reimport)）。
 
@@ -744,7 +744,7 @@ In an Angular app, NgModules and JavaScript modules work together.
 
 在 Angular 应用中，NgModule 会和 JavaScript 的模块一起工作。
 
-In modern JavaScript, every file is a module (see the [Modules](https://exploringjs.com/es6/ch_modules.html) page of the Exploring ES6 website).
+In modern JavaScript, every file is a module \(see the [Modules](https://exploringjs.com/es6/ch_modules.html) page of the Exploring ES6 website\).
 Within each file you write an `export` statement to make parts of the module public.
 
 在现代 JavaScript 中，每个文件都是模块（参阅[模块](http://exploringjs.com/es6/ch_modules.html)）。在每个文件中，你要写一个 `export` 语句将模块的一部分公开。

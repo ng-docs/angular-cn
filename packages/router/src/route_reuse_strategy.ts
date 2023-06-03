@@ -47,7 +47,7 @@ export type DetachedRouteHandleInternal = {
 @Injectable({providedIn: 'root', useFactory: () => inject(DefaultRouteReuseStrategy)})
 export abstract class RouteReuseStrategy {
   /**
-   * Determines if this route (and its subtree) should be detached to be reused later
+   * Determines if this route \(and its subtree\) should be detached to be reused later
    *
    * 确定是否应分离此路由（及其子树）以便以后复用
    *
@@ -67,7 +67,7 @@ export abstract class RouteReuseStrategy {
   abstract store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle|null): void;
 
   /**
-   * Determines if this route (and its subtree) should be reattached
+   * Determines if this route \(and its subtree\) should be reattached
    *
    * 确定是否应重新连接此路由（及其子树）
    *
@@ -97,7 +97,7 @@ export abstract class RouteReuseStrategy {
  * This base route reuse strategy only reuses routes when the matched router configs are
  * identical. This prevents components from being destroyed and recreated
  * when just the route parameters, query parameters or fragment change
- * (that is, the existing component is _reused_).
+ * \(that is, the existing component is _reused_\).
  *
  * 此基本路由复用策略仅在匹配的路由器配置完全相同时复用路由。这样可以防止仅在片段或查询参数发生更改时销毁和重新创建组件（也就是*复用*现有组件）。
  *
@@ -137,7 +137,7 @@ export abstract class BaseRouteReuseStrategy implements RouteReuseStrategy {
   store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle): void {}
 
   /**
-   * Returns `false`, meaning the route (and its subtree) is never reattached
+   * Returns `false`, meaning the route \(and its subtree\) is never reattached
    *
    * 返回 `false` ，表示路由（及其子树）从不重新连接
    *

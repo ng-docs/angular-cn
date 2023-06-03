@@ -379,7 +379,7 @@ export interface TypeCheckingTarget {
   templates: {[className: string]: string};
 
   /**
-   * Any declarations (e.g. directives) which should be considered as part of the scope for the
+   * Any declarations \(e.g. directives\) which should be considered as part of the scope for the
    * components in this file.
    *
    * 应被视为此文件中组件范围的一部分的任何声明（例如指令）。

@@ -2,9 +2,9 @@
 
 # 了解模板
 
-In Angular, a template is a blueprint for a fragment of a user interface (UI).  Templates are written in HTML, and special syntax can be used within a template to build on many of Angular's features.
+In Angular, a template is a blueprint for a fragment of a user interface \(UI\).  Templates are written in HTML, and special syntax can be used within a template to build on many of Angular's features.
 
-在 Angular 中，模板是用户界面 (UI) 片段的蓝图。模板是用 HTML 编写的，可以在模板中使用特殊语法来构建 Angular 的许多特性。
+在 Angular 中，模板是用户界面 （UI） 片段的蓝图。模板是用 HTML 编写的，可以在模板中使用特殊语法来构建 Angular 的许多特性。
 
 ## Prerequisites
 
@@ -29,9 +29,9 @@ Before learning template syntax, you should be familiar with the following:
 ## 增强 HTML
 
 Angular extends the HTML syntax in your templates with additional functionality.  
-For example, Angular’s data binding syntax helps to set Document Object Model (DOM) properties dynamically.
+For example, Angular’s data binding syntax helps to set Document Object Model \(DOM\) properties dynamically.
 
-Angular 使用额外的特性扩展了模板中的 HTML 语法。例如，Angular 的数据绑定语法有助于动态设置文档对象模型 (DOM) 属性。
+Angular 使用额外的特性扩展了模板中的 HTML 语法。例如，Angular 的数据绑定语法有助于动态设置文档对象模型 （DOM） 属性。
 
 Almost all HTML syntax is valid template syntax.  However, because an Angular template is only a fragment of the UI, it does not include elements such as `<html>`, `<body>`, or `<base>`.
 

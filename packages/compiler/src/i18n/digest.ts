@@ -410,7 +410,7 @@ function wordAt(bytes: Byte[], index: number, endian: Endian): number {
  * 次幂结果和记忆化的二次幂计算，以实现高效的乘法。
  *
  * For our purposes, this can be safely stored as a global without memory concerns. The reason is
- * that we encode two words, so only need the 0th (for the low word) and 4th (for the high word)
+ * that we encode two words, so only need the 0th \(for the low word\) and 4th \(for the high word\)
  * exponent.
  *
  * 就我们的目的而言，这可以安全地存储为全局而不存在内存问题。原因是我们对两个词进行了编码，因此只需要第

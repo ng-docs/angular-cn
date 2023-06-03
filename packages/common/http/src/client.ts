@@ -63,7 +63,7 @@ function addBody<T>(
  * Performs HTTP requests.
  * This service is available as an injectable class, with methods to perform HTTP requests.
  * Each request method has multiple signatures, and the return type varies based on
- * the signature that is called (mainly the values of `observe` and `responseType`).
+ * the signature that is called \(mainly the values of `observe` and `responseType`\).
  *
  * 执行 HTTP 请求。该服务作为可注入类提供，带有执行 HTTP
  * 请求的方法。每个请求方法都有多个签名，并且返回类型会根据所调用的签名（主要的值是 `observe` 和
@@ -128,11 +128,9 @@ function addBody<T>(
  *    .pipe(catchError(this.handleError('patchHero')));
  * }
  * ```
- *
  * @see [HTTP Guide](guide/http)
  *
  * [HTTP 指南](guide/http)
- *
  * @see [HTTP Request](api/common/http/HttpRequest)
  *
  * [HTTP 指南](guide/http)
@@ -2354,7 +2352,7 @@ export class HttpClient {
    * API endpoints that don't support newer,
    * and preferable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) protocol.
    * JSONP treats the endpoint API as a JavaScript file and tricks the browser to process the
-   * requests even if the API endpoint is not located on the same domain (origin) as the client-side
+   * requests even if the API endpoint is not located on the same domain \(origin\) as the client-side
    * application making the request.
    * The endpoint API must support JSONP callback for JSONP requests to work.
    * The resource API returns the JSON response wrapped in a callback function.
@@ -2373,11 +2371,9 @@ export class HttpClient {
    * @param url The resource URL.
    *
    * 资源 URL。
-   *
    * @param callbackParam The callback function name.
    *
    * 回调函数名称。
-   *
    */
   jsonp<T>(url: string, callbackParam: string): Observable<T> {
     return this.request<any>('JSONP', url, {

@@ -55,7 +55,7 @@ export type ImportProvidersSource =
  * 从所有 NgModule 和独立组件（包括可传递导入的组件）收集提供程序。
  *
  * Providers extracted via `importProvidersFrom` are only usable in an application injector or
- * another environment injector (such as a route injector). They should not be used in component
+ * another environment injector \(such as a route injector\). They should not be used in component
  * providers.
  *
  * 通过 `importProvidersFrom`
@@ -96,13 +96,11 @@ export type ImportProvidersSource =
  *   }
  * ];
  * ```
- *
  * @returns
  *
  * Collected providers from the specified list of types.
  *
  * 从指定的类型列表中收集的提供程序。
- *
  * @publicApi
  */
 export function importProvidersFrom(...sources: ImportProvidersSource[]): EnvironmentProviders {
@@ -180,11 +178,11 @@ export type SingleProvider = TypeProvider|ValueProvider|ClassProvider|Constructo
  * If an `InjectorTypeWithProviders` that declares providers besides the type is specified,
  * the function will return "true" to indicate that the providers of the type definition need
  * to be processed. This allows us to process providers of injector types after all imports of
- * an injector definition are processed. (following View Engine semantics: see FW-1349)
+ * an injector definition are processed. \(following View Engine semantics: see FW-1349\)
  *
  * 如果指定了除了类型之外还声明提供者的 `InjectorTypeWithProviders`
  * ，则函数将返回“true”以表明需要处理此类型定义的提供者。这允许我们在处理注入器定义的所有导入之后处理注入器类型的提供者。
- *（遵循视图引擎语义：请参阅 FW-1349）
+ * （遵循视图引擎语义：请参阅 FW-1349）
  *
  */
 export function walkProviderTree(

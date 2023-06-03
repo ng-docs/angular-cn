@@ -384,7 +384,7 @@ The following example references `item` first in an interpolation and then passe
 
 For more information about template input variables, see [Structural directive shorthand](guide/structural-directives#shorthand).
 
-有关模板输入变量的更多信息，请参见《结构型指令简写形式》](guide/structural-directives#shorthand)。
+有关模板输入变量的更多信息，请参见[结构型指令简写形式](guide/structural-directives#shorthand)。
 
 ### Getting the `index` of `*ngFor`
 

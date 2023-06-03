@@ -19,7 +19,7 @@ Targeted to land in the [6.x release cycle](https://github.com/angular/angular/b
 ## 概览
 
 Elements provides an API that allows developers to register Angular Components as Custom Elements 
-("Web Components"), and bridges the built-in DOM API to Angular's component interface and change 
+\("Web Components"\), and bridges the built-in DOM API to Angular's component interface and change 
 detection APIs.
 
 Angular 元素提供了一种 API，它允许开发者把 Angular 组件注册为自定义元素（Web Components），并且在内置的 DOM API 和 Angular 的组件接口与变更检测 API 之间建立一个桥梁。

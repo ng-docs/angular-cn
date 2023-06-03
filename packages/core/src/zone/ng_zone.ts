@@ -99,7 +99,6 @@ import {AsyncStackTaggingZoneSpec} from './async-stack-tagging';
  *   }
  * }
  * ```
- *
  * @publicApi
  */
 export class NgZone {
@@ -223,7 +222,7 @@ export class NgZone {
    * 在 Angular Zone 内同步执行的 `fn` 函数，并返回该函数返回的值。
    *
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
-   * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
+   * outside of the Angular zone \(typically started via {@link #runOutsideAngular}\).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
@@ -248,7 +247,7 @@ export class NgZone {
    * 作为任务在 Angular Zone 中同步执行 `fn` 函数，并返回该函数返回的值。
    *
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
-   * outside of the Angular zone (typically started via {@link #runOutsideAngular}).
+   * outside of the Angular zone \(typically started via {@link #runOutsideAngular}\).
    *
    * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
    *
@@ -304,6 +303,7 @@ export class NgZone {
    * Use {@link #run} to reenter the Angular zone and do work that updates the application model.
    *
    * 使用 {@link #run} 重新进入 Angular Zone 并执行更新应用程序模型的工作。
+   *
    */
   runOutsideAngular<T>(fn: (...args: any[]) => T): T {
     return (this as any as NgZonePrivate)._outer.run(fn);
@@ -374,19 +374,19 @@ interface NgZonePrivate extends NgZone {
    * Optionally specify if `NgZone#run()` method invocations should be coalesced
    * into a single change detection.
    *
-   *（可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
+   * （可选）指定 `NgZone#run()` 方法调用是否应合并为单个变更检测。
    *
    * Consider the following case.
    *
    * 考虑以下情况。
    *
-   * for (let i = 0; i &lt; 10; i ++) {
-   *   ngZone.run(() => {
+   * for \(let i = 0; i &lt; 10; i ++\) {
+   *   ngZone.run\(\(\) => {
    *     // do something
-   *   });
+   *   }\);
    * }
    *
-   * for (let i = 0; i &lt; 10; i ++) { ngZone.run(() => { // 做点什么 }); }
+   * for \(let i = 0; i &lt; 10; i ++\) { ngZone.run\(\(\) => { // 做点什么 }\); }
    *
    * This case triggers the change detection multiple times.
    * With ngZoneRunCoalescing options, all change detections in an event loops trigger only once.
@@ -598,9 +598,10 @@ export class NoopNgZone implements NgZone {
 /**
  * Token used to drive ApplicationRef.isStable
  *
- * TODO: This should be moved entirely to NgZone (as a breaking change) so it can be tree-shakeable
+ * TODO: This should be moved entirely to NgZone \(as a breaking change\) so it can be tree-shakeable
  * for `NoopNgZone` which is always just an `Observable` of `true`. Additionally, we should consider
  * whether the property on `NgZone` should be `Observable` or `Signal`.
+ *
  */
 export const ZONE_IS_STABLE_OBSERVABLE =
     new InjectionToken<Observable<boolean>>(ngDevMode ? 'isStable Observable' : '', {

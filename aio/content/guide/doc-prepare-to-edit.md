@@ -56,7 +56,7 @@ The instructions in this section assume that you are using the software in this 
 Some software in this list, such as the integrated development environment \(IDE\), can be substituted with similar software.
 If you use a substitute IDE, you might need to adapt the instructions in this section to your IDE.
 
-此列表中的某些软件，例如集成开发环境 (IDE)，可以用类似的软件替换。如果你使用替代 IDE，你可能需要将本节中的说明适应你的 IDE。
+此列表中的某些软件，例如集成开发环境（IDE），可以用类似的软件替换。如果你使用替代 IDE，你可能需要将本节中的说明适应你的 IDE。
 
 For more information about the required software, see [Setting up the local environment and workspace](guide/setup-local).
 
@@ -88,9 +88,9 @@ For more information about the required software, see [Setting up the local envi
 
   * [node.js](https://nodejs.org/en/download)
 
-    Angular requires an [active long-term-support (LTS) or maintenance LTS version](https://nodejs.org/about/releases) of Node.js.
+    Angular requires an [active long-term-support \(LTS\) or maintenance LTS version](https://nodejs.org/about/releases) of Node.js.
 
-    Angular 需要[活动的长期支持 (LTS) 或维护 LTS 版本](https://nodejs.org/about/releases)的 Node.js。
+    Angular 需要[活动的长期支持（LTS）或维护 LTS 版本](https://nodejs.org/about/releases)的 Node.js。
 
   * [nvm](https://github.com/nvm-sh/nvm#about)
 

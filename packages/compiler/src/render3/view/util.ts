@@ -25,10 +25,10 @@ import {isI18nAttribute} from './i18n/util';
  *
  * 检查对象键是否包含可能不安全的字符，因此键应该用引号引起来。注意：我们不会将所有键都用引号引起来，因为它可能会影响缩小，并且当对象键被缩小器破坏时，在某些情况下可能会工作。
  *
- * TODO(FW-1136): this is a temporary solution, we need to come up with a better way of working with
+ * TODO\(FW-1136\): this is a temporary solution, we need to come up with a better way of working with
  * inputs that contain potentially unsafe chars.
  *
- * TODO(FW-1136)
+ * TODO\(FW-1136\)
  * ：这是一个临时解决方案，我们需要想出一种更好的方法来处理包含可能不安全的字符的输入。
  *
  */
@@ -339,9 +339,8 @@ export class DefinitionMap<T = any> {
  * @param elOrTpl the element or template in question
  *
  * 有问题的元素或模板
- *
  * @return an object set up for directive matching. For attributes on the element/template, this
- * object maps a property name to its (static) value. For any bindings, this map simply maps the
+ * object maps a property name to its \(static\) value. For any bindings, this map simply maps the
  * property name to an empty string.
  *
  * 为指令匹配设置的对象。对于元素/模板上的属性，此对象将属性名称映射到其（静态）值。对于任何绑定，此映射只是将属性名称映射到一个空字符串。

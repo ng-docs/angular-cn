@@ -27,7 +27,7 @@ export default ${generateLocaleExtraDataArrayCode(locale, localeData)};
 }
 
 /**
- * Generates the "extra" locale data array (in JS-code as a string) for the given locale.
+ * Generates the "extra" locale data array \(in JS-code as a string\) for the given locale.
  *
  * 为给定的区域设置生成“额外的”区域设置数据数组（在 JS 代码中为字符串）。
  *

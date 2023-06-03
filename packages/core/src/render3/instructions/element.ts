@@ -207,25 +207,20 @@ export function ɵɵelementEnd(): typeof ɵɵelementEnd {
  * @param index Index of the element in the data array
  *
  * 数据数组中元素的索引
- *
  * @param name Name of the DOM Node
  *
  * DOM 节点的名称
- *
  * @param attrsIndex Index of the element's attributes in the `consts` array.
  *
  * 元素属性在 `consts` 数组中的索引。
- *
  * @param localRefsIndex Index of the element's local references in the `consts` array.
  *
  * 元素的本地引用在 `consts` 数组中的索引。
- *
  * @returns
  *
  * This function returns itself so that it may be chained.
  *
  * 此函数返回自己，以便它可以被链接。
- *
  * @codeGenApi
  */
 export function ɵɵelement(
@@ -243,8 +238,9 @@ let _locateOrCreateElementNode: typeof locateOrCreateElementNodeImpl =
     };
 
 /**
- * Enables hydration code path (to lookup existing elements in DOM)
+ * Enables hydration code path \(to lookup existing elements in DOM\)
  * in addition to the regular creation mode of element nodes.
+ *
  */
 function locateOrCreateElementNodeImpl(
     tView: TView, lView: LView, tNode: TNode, renderer: Renderer, name: string,

@@ -25,7 +25,7 @@ const NO_DECORATORS = new Set<ts.Decorator>();
 const CLOSURE_FILE_OVERVIEW_REGEXP = /\s+@fileoverview\s+/i;
 
 /**
- * Metadata to support @fileoverview blocks (Closure annotations) extracting/restoring.
+ * Metadata to support @fileoverview blocks \(Closure annotations\) extracting/restoring.
  *
  * 支持 @fileoverview 块（闭包注解）提取/恢复的元数据。
  *
@@ -82,7 +82,7 @@ class IvyCompilationVisitor extends Visitor {
 
 /**
  * Visits all classes and performs transformation of corresponding TS nodes based on the Ivy
- * compilation results (provided as an argument).
+ * compilation results \(provided as an argument\).
  *
  * 访问所有类并根据 Ivy 编译结果（作为参数提供）对相应的 TS 节点执行转换。
  *

@@ -13,8 +13,8 @@ import {ClassDeclaration} from '../../reflection';
 
 /**
  * Represents an resource for a component and contains the `AbsoluteFsPath`
- * to the file which was resolved by evaluating the `ts.Expression` (generally, a relative or
- * absolute string path to the resource).
+ * to the file which was resolved by evaluating the `ts.Expression` \(generally, a relative or
+ * absolute string path to the resource\).
  *
  * 表示组件的资源，并包含通过估算 `ts.Expression`（通常是资源的相对或绝对字符串路径）解析的文件的
  * `AbsoluteFsPath` 。
@@ -53,7 +53,7 @@ export interface ComponentResources {
 }
 
 /**
- * Tracks the mapping between external template/style files and the component(s) which use them.
+ * Tracks the mapping between external template/style files and the component\(s\) which use them.
  *
  * 跟踪外部模板/样式文件与使用它们的组件之间的映射。
  *

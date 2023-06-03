@@ -31,6 +31,7 @@ export class By {
    * ### 例子
    *
    * {@example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
+   *
    */
   static all(): Predicate<DebugNode> {
     return () => true;
@@ -48,6 +49,7 @@ export class By {
    * ### 例子
    *
    * {@example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
+   *
    */
   static css(selector: string): Predicate<DebugElement> {
     return (debugElement) => {
@@ -69,6 +71,7 @@ export class By {
    * ### 例子
    *
    * {@example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
+   *
    */
   static directive(type: Type<any>): Predicate<DebugNode> {
     return (debugNode) => debugNode.providerTokens!.indexOf(type) !== -1;

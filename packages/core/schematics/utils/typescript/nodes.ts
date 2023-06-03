@@ -63,7 +63,10 @@ export function isNullCheck(node: ts.Node): boolean {
   return false;
 }
 
-/** Checks whether a property access is safe (e.g. `foo.parent?.value`). */
+/**
+ * Checks whether a property access is safe \(e.g. `foo.parent?.value`\).
+ *
+ */
 export function isSafeAccess(node: ts.Node): boolean {
   return node.parent != null && ts.isPropertyAccessExpression(node.parent) &&
       node.parent.expression === node && node.parent.questionDotToken != null;

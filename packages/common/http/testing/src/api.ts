@@ -161,7 +161,7 @@ export abstract class HttpTestingController {
    *
    * 如果有任何未完成的请求，则失败并显示一条错误消息，指出未处理哪些请求。
    *
-   * If `ignoreCancelled` is not set (the default), `verify()` will also fail if cancelled requests
+   * If `ignoreCancelled` is not set \(the default\), `verify()` will also fail if cancelled requests
    * were not explicitly matched.
    *
    * 如果未设置过 `ignoreCancelled`（默认），且未明确匹配已取消的请求，则 `verify()` 就会失败。

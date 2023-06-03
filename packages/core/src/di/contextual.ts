@@ -42,7 +42,7 @@ export function runInInjectionContext<ReturnT>(injector: Injector, fn: () => Ret
 /**
  * Asserts that the current stack frame is within an injection context and has access to `inject`.
  *
- * @param debugFn a reference to the function making the assertion (used for the error message).
+ * @param debugFn a reference to the function making the assertion \(used for the error message\).
  *
  * @publicApi
  */

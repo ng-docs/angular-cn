@@ -30,18 +30,14 @@ export interface SchemaMetadata {
  *
  * 定义一个架构，该架构允许 NgModule 包含以下内容：
  *
- * - Non-Angular elements named with dash case (`-`).
+ * - Non-Angular elements named with dash case \(`-`\).
  *
  *   使用（`-`）命名法的非 Angular 元素。
  *
- * - Element properties named with dash case (`-`).
+ * - Element properties named with dash case \(`-`\).
  *   Dash case is the naming convention for custom elements.
  *
- *   以破折号 ( `-` ) 命名的元素属性。破折号是自定义元素的命名约定。
- *
- *   ```
- *   使用（`-`）命名的元素属性。中线命名法是自定义元素的命名约定。
- *   ```
+ *   以破折号（`-`）命名的元素属性。破折号是自定义元素的命名约定。
  *
  * @publicApi
  */

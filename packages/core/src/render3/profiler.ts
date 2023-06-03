@@ -102,7 +102,7 @@ let profilerCallback: Profiler|null = null;
 
 /**
  * Sets the callback function which will be invoked before and after performing certain actions at
- * runtime (for example, before and after running change detection).
+ * runtime \(for example, before and after running change detection\).
  *
  * 设置将在运行时执行某些操作（例如，运行变更检测之前和之后）之前和之后调用的回调函数。
  *
@@ -116,7 +116,6 @@ let profilerCallback: Profiler|null = null;
  * @param profiler function provided by the caller or null value to disable profiling.
  *
  * 调用者提供的函数或 null 值以禁用分析。
- *
  */
 export const setProfiler = (profiler: Profiler|null) => {
   profilerCallback = profiler;

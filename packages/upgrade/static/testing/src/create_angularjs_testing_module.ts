@@ -45,7 +45,7 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * region="angularjs-setup"></code-example>
  *
  * Once this is done we can get hold of services via the AngularJS `$injector` as normal.
- * Services that are (or have dependencies on) a downgraded Angular service, will be instantiated as
+ * Services that are \(or have dependencies on\) a downgraded Angular service, will be instantiated as
  * needed by the Angular root `Injector`.
  *
  * 完成后，我们可以像往常一样通过 AngularJS `$injector` 获取服务。作为（或依赖于）降级的 Angular
@@ -111,7 +111,6 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * @param angularModules a collection of Angular modules to include in the configuration.
  *
  * 要包含在配置中的 Angular 模块的集合。
- *
  * @publicApi
  */
 export function createAngularJSTestingModule(angularModules: any[]): string {

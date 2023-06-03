@@ -41,9 +41,9 @@ export class AngularProfiler {
    * Optionally, a user may pass a `config` parameter containing a map of
    * options. Supported options are:
    *
-   *（可选）用户可以传递包含选项映射表的 `config` 参数。支持的选项是：
+   * （可选）用户可以传递包含选项映射表的 `config` 参数。支持的选项是：
    *
-   * `record` (boolean) - causes the profiler to record a CPU profile while
+   * `record` \(boolean\) - causes the profiler to record a CPU profile while
    * it exercises the change detector. Example:
    *
    * `record`（boolean）- 使分析器在运行变更检测器时记录 CPU 环境配置文件。示例：

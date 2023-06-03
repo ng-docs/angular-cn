@@ -28,7 +28,7 @@ For a step-by-step example, see the [step-by-step setup](#step-by-step) section 
 本节会介绍配置惰性加载路由的基本过程。
 想要一个分步的范例，参阅本页的[分步设置](#step-by-step)部分。
 
-To lazy load Angular modules, use `loadChildren` (instead of `component`) in your `AppRoutingModule` `routes` configuration as follows.
+To lazy load Angular modules, use `loadChildren` \(instead of `component`\) in your `AppRoutingModule` `routes` configuration as follows.
 
 要惰性加载 Angular 模块，请在 `AppRoutingModule` `routes` 中使用 `loadChildren` 代替 `component` 进行配置，代码如下。
 

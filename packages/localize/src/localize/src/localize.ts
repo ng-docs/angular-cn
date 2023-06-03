@@ -182,7 +182,7 @@ export interface TranslateFn {
  *   标签在编译时由转译器转换，删除标签并使用提供给转译工具的翻译集合中的翻译后的文字字符串替换模板文字字符串。
  *
  * * **run-time evaluation**: the `$localize` tag is a run-time function that replaces and
- *     reorders the parts (static strings and expressions) of the template literal string with strings
+ *     reorders the parts \(static strings and expressions\) of the template literal string with strings
  *     from a collection of translations loaded at run-time.
  *
  *   **运行时估算**： `$localize`
@@ -232,33 +232,29 @@ const BLOCK_MARKER = ':';
  *
  * 如果找到，`messagePart` 的开头删除一个分隔的“块”。
  *
- * If a marker character (:) actually appears in the content at the start of a tagged string or
+ * If a marker character \(:\) actually appears in the content at the start of a tagged string or
  * after a substitution expression, where a block has not been provided the character must be
  * escaped with a backslash, `\:`. This function checks for this by looking at the `raw`
  * messagePart, which should still contain the backslash.
  *
- * 如果标记字符 (:)
+ * 如果标记字符 \(:\)
  * 实际出现在内容中标记字符串的开头或替换表达式之后（未提供块），则该字符必须使用反斜杠 `\:`
  * 进行转译。此函数通过查看仍应包含反斜杠的 `raw` messagePart 来检查这一点。
  *
  * @param messagePart The cooked message part to process.
  *
  * 要处理的煮熟的消息部分。
- *
  * @param rawMessagePart The raw message part to check.
  *
  * 要检查的原始消息部分。
- *
  * @returns
  *
  * the message part with the placeholder name stripped, if found.
  *
  * 删除占位符名称的消息部分（如果找到）。
- *
  * @throws an error if the block is unterminated
  *
  * 如果块未终止，则出现错误
- *
  */
 function stripBlock(messagePart: string, rawMessagePart: string) {
   return rawMessagePart.charAt(0) === BLOCK_MARKER ?

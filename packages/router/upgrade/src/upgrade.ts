@@ -133,8 +133,8 @@ export function setUpLocationSync(ngUpgrade: UpgradeModule, urlType: 'path'|'has
  *   和相关属性都会被填充以反映规范化的 URL。
  *
  * While this approach has wide compatibility, it doesn't work as expected on IE. On IE, normalizing
- * happens similar to other browsers, but the parsed components will not be set. (E.g. if you assign
- * `a.href = 'foo'`, then `a.protocol`, `a.host`, etc. will not be correctly updated.)
+ * happens similar to other browsers, but the parsed components will not be set. \(E.g. if you assign
+ * `a.href = 'foo'`, then `a.protocol`, `a.host`, etc. will not be correctly updated.\)
  * We work around that by performing the parsing in a 2nd step by taking a previously normalized URL
  * and assigning it again. This correctly populates all properties.
  *

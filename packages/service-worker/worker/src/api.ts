@@ -13,8 +13,8 @@ export enum UpdateCacheStatus {
 }
 
 /**
- * A `string` representing a URL that has been normalized relative to an origin (usually that of the
- * ServiceWorker).
+ * A `string` representing a URL that has been normalized relative to an origin \(usually that of the
+ * ServiceWorker\).
  *
  * 一个 `string` ，表示已相对于源（通常是 ServiceWorker 的）规范化的 URL。
  *

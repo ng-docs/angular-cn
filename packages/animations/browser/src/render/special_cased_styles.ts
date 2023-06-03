@@ -10,13 +10,13 @@ import {ɵStyleDataMap} from '@angular/animations';
 import {eraseStyles, setStyles} from '../util';
 
 /**
- * Returns an instance of `SpecialCasedStyles` if and when any special (non animateable) styles are
+ * Returns an instance of `SpecialCasedStyles` if and when any special \(non animateable\) styles are
  * detected.
  *
  * 如果检测到任何特殊（不可动画）样式，则返回 `SpecialCasedStyles` 的实例。
  *
  * In CSS there exist properties that cannot be animated within a keyframe animation
- * (whether it be via CSS keyframes or web-animations) and the animation implementation
+ * \(whether it be via CSS keyframes or web-animations\) and the animation implementation
  * will ignore them. This function is designed to detect those special cased styles and
  * return a container that will be executed at the start and end of the animation.
  *
@@ -28,7 +28,6 @@ import {eraseStyles, setStyles} from '../util';
  * an instance of `SpecialCasedStyles` if any special styles are detected otherwise `null`
  *
  * 如果检测到任何特殊样式，则为 `SpecialCasedStyles` 的实例，否则为 `null`
- *
  */
 export function packageNonAnimatableStyles(
     element: any, styles: ɵStyleDataMap|Array<ɵStyleDataMap>): SpecialCasedStyles|null {
@@ -52,8 +51,8 @@ export function packageNonAnimatableStyles(
  *
  * 旨在在基于关键帧的动画期间执行以应用任何特殊情况的样式。
  *
- * When started (when the `start()` method is run) then the provided `startStyles`
- * will be applied. When finished (when the `finish()` method is called) the
+ * When started \(when the `start()` method is run\) then the provided `startStyles`
+ * will be applied. When finished \(when the `finish()` method is called\) the
  * `endStyles` will be applied as well any any starting styles. Finally when
  * `destroy()` is called then all styles will be removed.
  *

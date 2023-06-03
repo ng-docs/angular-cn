@@ -85,7 +85,7 @@ export const enum InjectFlags {
 
   /**
    * Specifies that an injector should retrieve a dependency from any injector until reaching the
-   * host element of the current component. (Only used with Element Injector)
+   * host element of the current component. \(Only used with Element Injector\)
    *
    * 指定注入器应该从任何注入器检索依赖项，直到到达当前组件的宿主元素。（仅与 Element Injector
    * 一起使用）
@@ -218,14 +218,14 @@ export function parseSelectorToR3Selector(selector: string|null): R3CssSelectorL
 
 // Pasted from render3/interfaces/definition since it cannot be referenced directly
 /**
- * Flags passed into template functions to determine which blocks (i.e. creation, update)
+ * Flags passed into template functions to determine which blocks \(i.e. creation, update\)
  * should be executed.
  *
  * 传递给模板函数的标志，以确定应该执行哪些块（即创建、更新）。
  *
  * Typically, a template runs both the creation block and the update block on initialization and
  * subsequent runs only execute the update block. However, dynamically created views require that
- * the creation block be executed separately from the update block (for backwards compat).
+ * the creation block be executed separately from the update block \(for backwards compat\).
  *
  * 通常，模板在初始化时会同时运行 Creation 块和 update 块，随后的运行仅执行 update
  * 块。但是，动态创建的视图要求创建块与更新块分开执行（用于向后兼容）。

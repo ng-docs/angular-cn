@@ -37,15 +37,15 @@ export function isSignal(value: Function): value is Signal<unknown> {
 }
 
 /**
- * Converts `fn` into a marked signal function (where `isSignal(fn)` will be `true`).
+ * Converts `fn` into a marked signal function \(where `isSignal(fn)` will be `true`\).
  *
  * @param fn A zero-argument function which will be converted into a `Signal`.
  */
 export function createSignalFromFunction<T>(node: ReactiveNode, fn: () => T): Signal<T>;
 
 /**
- * Converts `fn` into a marked signal function (where `isSignal(fn)` will be `true`), and
- * potentially add some set of extra properties (passed as an object record `extraApi`).
+ * Converts `fn` into a marked signal function \(where `isSignal(fn)` will be `true`\), and
+ * potentially add some set of extra properties \(passed as an object record `extraApi`\).
  *
  * @param fn A zero-argument function which will be converted into a `Signal`.
  * @param extraApi An object whose properties will be copied onto `fn` in order to create a specific
@@ -55,8 +55,9 @@ export function createSignalFromFunction<T, U extends Record<string, unknown>>(
     node: ReactiveNode, fn: () => T, extraApi: U): Signal<T>&U;
 
 /**
- * Converts `fn` into a marked signal function (where `isSignal(fn)` will be `true`), and
- * potentially add some set of extra properties (passed as an object record `extraApi`).
+ * Converts `fn` into a marked signal function \(where `isSignal(fn)` will be `true`\), and
+ * potentially add some set of extra properties \(passed as an object record `extraApi`\).
+ *
  */
 export function createSignalFromFunction<T, U extends Record<string, unknown> = {}>(
     node: ReactiveNode, fn: () => T, extraApi: U = ({} as U)): Signal<T>&U {
@@ -76,7 +77,7 @@ export type ValueEqualityFn<T> = (a: T, b: T) => boolean;
  * The default equality function used for `signal` and `computed`, which treats objects and arrays
  * as never equal, and all other primitive values using identity semantics.
  *
- * This allows signals to hold non-primitive values (arrays, objects, other collections) and still
+ * This allows signals to hold non-primitive values \(arrays, objects, other collections\) and still
  * propagate change notification upon explicit mutation without identity change.
  *
  * @developerPreview

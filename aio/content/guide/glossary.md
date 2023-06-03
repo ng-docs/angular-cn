@@ -43,15 +43,15 @@ This glossary lists the most prominent terms and a few less familiar ones with u
 
 <a id="aot"></a>
 
-## ahead-of-time (AOT) compilation
+## ahead-of-time \(AOT\) compilation
 
-## 预先 (ahead-of-time, AOT) 编译
+## 预先 （ahead-of-time, AOT） 编译
 
-The Angular ahead-of-time (AOT) compiler converts Angular HTML and TypeScript code into efficient JavaScript code during the build phase. The build phase occurs before the browser downloads and runs the rendered code.
-This is the best compilation mode for production environments, with decreased load time and increased performance compared to [just-in-time (JIT) compilation][AioGuideGlossaryJustInTimeJitCompilation].
+The Angular ahead-of-time \(AOT\) compiler converts Angular HTML and TypeScript code into efficient JavaScript code during the build phase. The build phase occurs before the browser downloads and runs the rendered code.
+This is the best compilation mode for production environments, with decreased load time and increased performance compared to [just-in-time \(JIT\) compilation][AioGuideGlossaryJustInTimeJitCompilation].
 
 Angular 的预先（AOT）编译器可以在构建阶段把 Angular 的 HTML 代码和 TypeScript 代码转换成高效的 JavaScript 代码。构建阶段发生在浏览器下载并运行所生成的代码之前。（译者注：故名“预先”）
-对于产品环境，这是最好的编译模式，相对于[即时 (JIT) 编译][AioGuideGlossaryJustInTimeJitCompilation].而言，它能减小加载时间，并提高性能。
+对于产品环境，这是最好的编译模式，相对于[即时 （JIT） 编译][AioGuideGlossaryJustInTimeJitCompilation].而言，它能减小加载时间，并提高性能。
 
 By compiling your application using the `ngc` command-line tool, you can bootstrap directly to a module factory, so you do not need to include the Angular compiler in your JavaScript bundle.
 
@@ -69,9 +69,9 @@ Learn more in [Angular Elements Overview][AioGuideElements].
 
 在 [Angular 元素概览][AioGuideElements]中了解更多信息。
 
-## Angular package format (APF)
+## Angular package format \(APF\)
 
-## Angular 包格式 (APF)
+## Angular 包格式 （APF）
 
 An Angular specific specification for layout of npm packages that is used by all first-party Angular packages, and most third-party Angular libraries.
 
@@ -121,7 +121,7 @@ Architect is a shell that runs a [builder][AioGuideGlossaryBuilder] with a given
 The [builder][AioGuideGlossaryBuilder] is defined in an [npm package][AioGuideGlossaryNpmPackage].
 
 CLI 用来根据所提供的配置执行复杂任务（比如编译和执行测试）的工具。
-建筑师是一个外壳，它用来对一个指定的[目标配置][AioGuideGlossaryTarget]来执行一个[构建器（builder）][AioGuideGlossaryBuilder] (定义在一个 [npm 包][AioGuideGlossaryNpmPackage]中)。
+建筑师是一个外壳，它用来对一个指定的[目标配置][AioGuideGlossaryTarget]来执行一个[构建器（builder）][AioGuideGlossaryBuilder] （定义在一个 [npm 包][AioGuideGlossaryNpmPackage]中）。
 [构建器][AioGuideGlossaryBuilder]在 [npm 包][AioGuideGlossaryNpmPackage]中定义。
 
 In the [workspace configuration file][AioGuideWorkspaceConfigProjectToolConfigurationOptions], an "architect" section provides configuration options for Architect builders.
@@ -146,7 +146,7 @@ For example, a custom builder can replace the third-party tools used by the buil
 A category of [directive][AioGuideGlossaryDirective] that can listen to and modify the behavior of other HTML elements, attributes, properties, and components.
 They are usually represented as HTML attributes, hence the name.
 
-[指令 (directive)][AioGuideGlossaryDirective]的一种。可以监听或修改其它 HTML 元素、特性 (attribute)、属性 (property)、组件的行为。通常用作 HTML 属性，就像它的名字所暗示的那样。
+[指令（directive）][AioGuideGlossaryDirective]的一种。可以监听或修改其它 HTML 元素、特性 （attribute）、属性 （property）、组件的行为。通常用作 HTML 属性，就像它的名字所暗示的那样。
 
 Learn more in [Attribute Directives][AioGuideAttributeDirectives].
 
@@ -154,7 +154,7 @@ Learn more in [Attribute Directives][AioGuideAttributeDirectives].
 
 ## binding
 
-## 绑定 (binding)
+## 绑定 （binding）
 
 Generally, the practice of setting a variable or property to a data value.
 Within Angular, typically refers to [data binding][AioGuideGlossaryDataBinding], which coordinates DOM object properties with data object properties.
@@ -307,7 +307,7 @@ In Angular, a set of related [schematics][AioGuideGlossarySchematic] collected i
 
 <a id="cli"></a>
 
-## command-line interface (CLI)
+## command-line interface \(CLI\)
 
 ## 命令行界面（CLI）
 
@@ -332,7 +332,7 @@ See also [Schematics CLI][AioGuideGlossarySchematicsCli].
 
 ## component
 
-## 组件 (component)
+## 组件 （component）
 
 A class with the `@Component()` [decorator][AioGuideGlossaryDecoratorDecoration] that associates it with a companion [template][AioGuideGlossaryTemplate].
 Together, the component class and template define a [view][AioGuideGlossaryView].
@@ -485,7 +485,7 @@ Note that declarables can also be declared as standalone and simply be imported 
 ## 装饰器（decorator | decoration）
 
 A function that modifies a class or property definition.
-Decorators are an experimental (stage 3) [JavaScript language feature][GithubTC39ProposalDecorators].
+Decorators are an experimental \(stage 3\) [JavaScript language feature][GithubTC39ProposalDecorators].
 A decorator is also referenced as an *annotation*.
 TypeScript adds support for decorators.
 
@@ -501,16 +501,16 @@ See also [class field decorator][AioGuideGlossaryClassFieldDecorator].
 
 欲知详情，参阅 [类装饰器][AioGuideGlossaryClassDecorator]、[类属性装饰器][AioGuideGlossaryClassFieldDecorator]。
 
-## dependency injection (DI)
+## dependency injection \(DI\)
 
 ## 依赖注入（dependency injection）
 
-A design pattern and mechanism for creating and delivering some parts of an application (dependencies) to other parts of an application that require them.
+A design pattern and mechanism for creating and delivering some parts of an application \(dependencies\) to other parts of an application that require them.
 
 依赖注入既是设计模式，同时又是一种机制：当应用程序的一些部件（即一些依赖）需要另一些部件时， 利用依赖注入来创建被请求的部件，并将它们注入到需要它们的部件中。
 
 In Angular, dependencies are typically services, but they also can be values, such as strings or functions.
-An [injector][AioGuideGlossaryInjector] for an application (created automatically during bootstrap) instantiates dependencies when needed, using a configured [provider][AioGuideGlossaryProvider] of the service or value.
+An [injector][AioGuideGlossaryInjector] for an application \(created automatically during bootstrap\) instantiates dependencies when needed, using a configured [provider][AioGuideGlossaryProvider] of the service or value.
 Learn more in [Dependency Injection in Angular][AioGuideDependencyInjection].
 
 在 Angular 中，依赖通常是服务，但是也可以是值，比如字符串或函数。应用的[注入器][AioGuideGlossaryInjector]（它是在启动期间自动创建的）会使用该服务或值的配置好的[提供者][AioGuideGlossaryProvider]来按需实例化这些依赖。各个不同的提供者可以为同一个服务提供不同的实现。
@@ -536,8 +536,8 @@ A directive class definition is immediately preceded by a `@Directive()` [decora
 A directive class is usually associated with an HTML element or attribute, and that element or attribute is often referred to as the directive itself.
 When Angular finds a directive in an HTML [template][AioGuideGlossaryTemplate], it creates the matching directive class instance and gives the instance control over that portion of the browser DOM.
 
-指令类几乎总与 HTML 元素或属性 (attribute) 相关。
-通常会把这些 HTML 元素或者属性 (attribute) 当做指令本身。
+指令类几乎总与 HTML 元素或属性 （attribute） 相关。
+通常会把这些 HTML 元素或者属性 （attribute） 当做指令本身。
 当 Angular 在 HTML [模板中][AioGuideGlossaryTemplate]发现某个指令时，会创建与之相匹配的指令类的实例，并且把这部分 DOM 的控制权交给它。
 
 Angular has three categories of directive:
@@ -577,9 +577,9 @@ You can use **lowerCamelCase** when describing how to apply the directive to an 
 
 **lowerCamelCase**（比如 `ngIf`）用于引用指令的属性名。在描述如何将指令应用于 HTML 模板中的元素时，使用 **lowerCamelCase**。
 
-## domain-specific language (DSL)
+## domain-specific language \(DSL\)
 
-## 领域特定语言（DSL)
+## 领域特定语言（DSL）
 
 A special-purpose library or API.
 To learn more, see [Domain-specific language][WikipediaWikiDomainSpecificLanguage].
@@ -720,7 +720,7 @@ Angular 中的类或其它概念使用[依赖注入][AioGuideGlossaryDependencyI
 
 ## injector
 
-## 注入器 (injector)
+## 注入器 （injector）
 
 An object in the Angular [dependency-injection][AioGuideGlossaryDependencyInjectionDi] system that can find a named dependency in its cache or create a dependency using a configured [provider][AioGuideGlossaryProvider].
 Injectors are created for NgModules automatically as part of the bootstrap process and are inherited through the component hierarchy.
@@ -746,7 +746,7 @@ Learn more about the injector hierarchy in [Hierarchical Dependency Injectors][A
 
 ## input
 
-## 输入属性 (input)
+## 输入属性 （input）
 
 When defining a [directive][AioGuideGlossaryDirective], the `@Input()` decorator on a directive property makes that property available as a *target* of a [property binding][AioGuidePropertyBinding].
 Data values flow into an input property from the data source identified in the [template expression][AioGuideGlossaryTemplateExpression] to the right of the equal sign.
@@ -765,7 +765,7 @@ To learn more, see [`@Input()` and `@Output()` decorator functions][AioGuideInpu
 A form of property [data binding][AioGuideGlossaryDataBinding] in which a [template expression][AioGuideGlossaryTemplateExpression] between double-curly braces renders as text.
 That text can be concatenated with neighboring text before it is assigned to an element property or displayed between element tags, as in this example.
 
-[属性数据绑定 (property data binding)][AioGuideGlossaryDataBinding] 的一种形式，位于双花括号中的[模板表达式 (template expression)][AioGuideGlossaryTemplateExpression]会被渲染成文本。
+[属性数据绑定 （property data binding\)][AioGuideGlossaryDataBinding] 的一种形式，位于双花括号中的[模板表达式 （template expression）][AioGuideGlossaryTemplateExpression]会被渲染成文本。
 在被赋值给元素属性或者显示在元素标签中之前，这些文本可能会先与周边的文本合并，参阅下面的例子。
 
 <code-example format="html" language="html">
@@ -795,22 +795,22 @@ To learn more, see also [TypeScript][AioGuideGlossaryTypescript].
 
 <a id="jit"></a>
 
-## just-in-time (JIT) compilation
+## just-in-time \(JIT\) compilation
 
-## 即时 (just-in-time, JIT) 编译
+## 即时 （just-in-time, JIT） 编译
 
-The Angular just-in-time (JIT) compiler converts your Angular HTML and TypeScript code into efficient JavaScript code at run time, as part of bootstrapping.
+The Angular just-in-time \(JIT\) compiler converts your Angular HTML and TypeScript code into efficient JavaScript code at run time, as part of bootstrapping.
 
-在启动期间，Angular 的即时编译器（JIT)会在运行期间把你的 Angular HTML 和 TypeScript 代码转换成高效的 JavaScript 代码。
+在启动期间，Angular 的即时编译器（JIT）会在运行期间把你的 Angular HTML 和 TypeScript 代码转换成高效的 JavaScript 代码。
 
-JIT compilation is the default (as opposed to AOT compilation) when you run the `ng build` and `ng serve` Angular CLI commands, and is a good choice during development.
+JIT compilation is the default \(as opposed to AOT compilation\) when you run the `ng build` and `ng serve` Angular CLI commands, and is a good choice during development.
 JIT mode is strongly discouraged for production use because it results in large application payloads that hinder the bootstrap performance.
 
 当你运行 Angular 的 CLI 命令 `ng build` 和 `ng serve` 时，JIT 编译是默认选项，而且是开发期间的最佳实践。但是强烈建议你不要在生产环境下使用 JIT 模式，因为它会导致巨大的应用负担，从而拖累启动时的性能。
 
-Compare to [ahead-of-time (AOT) compilation][AioGuideGlossaryAheadOfTimeAotCompilation].
+Compare to [ahead-of-time \(AOT\) compilation][AioGuideGlossaryAheadOfTimeAotCompilation].
 
-与[预先 (AOT) 编译相比][AioGuideGlossaryAheadOfTimeAotCompilation]。
+与[预先 （AOT） 编译相比][AioGuideGlossaryAheadOfTimeAotCompilation]。
 
 ## lazy loading
 
@@ -906,7 +906,7 @@ Angular uses standard JavaScript modules and also defines an Angular module, `Ng
 In JavaScript, or ECMAScript, each file is a module and all objects defined in the file belong to that module.
 Objects can be exported, making them public, and public objects can be imported for use by other modules.
 
-在 JavaScript (ECMAScript) 中，每个文件都是一个模块，该文件中定义的所有对象都属于这个模块。这些对象可以导出为公共对象，而这些公共对象可以被其它模块导入后使用。
+在 JavaScript （ECMAScript） 中，每个文件都是一个模块，该文件中定义的所有对象都属于这个模块。这些对象可以导出为公共对象，而这些公共对象可以被其它模块导入后使用。
 
 Angular ships as a collection of JavaScript modules.
 A collection of JavaScript modules are also referenced as a library.
@@ -997,10 +997,10 @@ A subscriber receives notification of new values as they are produced and notifi
 
 订阅者会在生成了新值时收到包含这个新值的通知，以及正常结束或错误结束时的通知。
 
-Angular uses a third-party library named [Reactive Extensions (RxJS)][RxjsMain].
+Angular uses a third-party library named [Reactive Extensions \(RxJS\)][RxjsMain].
 To learn more, see [Observables][AioGuideObservables].
 
-Angular 使用一个名叫[响应式扩展 (RxJS)][RxjsMain]的第三方包来实现这些功能。
+Angular 使用一个名叫[响应式扩展 （RxJS）][RxjsMain]的第三方包来实现这些功能。
 要了解更多，参阅[可观察对象][AioGuideObservables]。
 
 ## observer
@@ -1060,7 +1060,7 @@ Isolating platform-specific functionality allows the developer to make platform-
 
   在 Web 浏览器中运行时，[`BrowserModule`][AioApiPlatformBrowserBrowsermodule] 是从 `platform-browser` 软件包中导入的，并支持简化安全性和事件处理的服务，并允许应用程序访问浏览器专有的功能，比如解释键盘输入和控制文档要显示的标题。浏览器中运行的所有应用程序都使用同一个平台服务。
 
-* When [server-side rendering (SSR)][AioGuideGlossaryServerSideRendering] is used, the [`platform-server`][AioApiPlatformServer] package provides web server implementations of the `DOM`, `XMLHttpRequest`, and other low-level features that do not rely on a browser.
+* When [server-side rendering \(SSR\)][AioGuideGlossaryServerSideRendering] is used, the [`platform-server`][AioApiPlatformServer] package provides web server implementations of the `DOM`, `XMLHttpRequest`, and other low-level features that do not rely on a browser.
 
   使用[服务端渲染][AioGuideGlossaryServerSideRendering]（SSR）时，[`platform-server`][AioApiPlatformServer] 包将提供 `DOM`、`XMLHttpRequest` 和其它不依赖浏览器的其它底层功能的 Web 服务器端实现。
 
@@ -1163,12 +1163,12 @@ For an introduction and comparison of both forms approaches, see [Introduction t
 
 ## 解析器（resolver）
 
-A class that implements the [Resolve][AioApiRouterResolve] interface that you use to produce or retrieve data that is needed before navigation to a requested route can be completed.
-You may use a function with the same signature as the [resolve()][AioApiRouterResolve] method in place of the [Resolve][AioApiRouterResolve] interface.
+A class that implements the [`Resolve`][AioApiRouterResolve] interface that you use to produce or retrieve data that is needed before navigation to a requested route can be completed.
+You may use a function with the same signature as the [`resolve()`][AioApiRouterResolve] method in place of the [`Resolve`][AioApiRouterResolve] interface.
 Resolvers run after all [route guards][AioGuideGlossaryRouteGuard] for a route tree have been executed and have succeeded.
 
-一个实现了 [Resolve][AioApiRouterResolve] 接口的类，你可以在导航到所请求的路由之前，先用它来生成或获取数据。
-你还可以在 [Resolve][AioApiRouterResolve] 接口的位置使用一个与 [resolve() 方法][AioApiRouterResolve]具有相同签名的方法。一些解析器会在一棵路由树的所有[路由守卫][AioGuideGlossaryRouteGuard]都执行并成功之后运行。
+一个实现了 [`Resolve`][AioApiRouterResolve] 接口的类，你可以在导航到所请求的路由之前，先用它来生成或获取数据。
+你还可以在 [`Resolve`][AioApiRouterResolve] 接口的位置使用一个与 [`resolve()` 方法][AioApiRouterResolve]具有相同签名的方法。一些解析器会在一棵路由树的所有[路由守卫][AioGuideGlossaryRouteGuard]都执行并成功之后运行。
 
 See an example of using a [resolve guard][AioGuideRouterTutorialTohResolvePreFetchingComponentData] to retrieve dynamic data.
 
@@ -1293,7 +1293,7 @@ You can also use the `schematics` command to add a new schematic to an existing 
 
 ## scoped package
 
-## 范围化包 (scoped package)
+## 范围化包 （scoped package）
 
 A way to group related [npm packages][AioGuideNpmPackages].
 NgModules are delivered within scoped packages whose names begin with the Angular *scope name* `@angular`.
@@ -1330,10 +1330,10 @@ You can easily prepare an application for server-side rendering by using the [An
 
 ## 服务（service）
 
-In Angular, a class with the [@Injectable()][AioGuideGlossaryInjectable] decorator that encapsulates non-UI logic and code that can be reused across an application.
+In Angular, a class with the [`@Injectable()`][AioGuideGlossaryInjectable] decorator that encapsulates non-UI logic and code that can be reused across an application.
 Angular distinguishes components from services to increase modularity and reusability.
 
-在 Angular 中，服务就是一个带有 [@Injectable][AioGuideGlossaryInjectable] 装饰器的类，它封装了可以在应用程序中复用的非 UI 逻辑和代码。
+在 Angular 中，服务就是一个带有 [`@Injectable`][AioGuideGlossaryInjectable] 装饰器的类，它封装了可以在应用程序中复用的非 UI 逻辑和代码。
 Angular 把组件和服务分开，是为了增进模块化程度和可复用性。
 
 The `@Injectable()` metadata allows the service class to be used with the [dependency injection][AioGuideGlossaryDependencyInjectionDi] mechanism.
@@ -1459,7 +1459,7 @@ Code that defines how to render the [view][AioGuideGlossaryView] of a component.
 
 用来定义要如何渲染组件[视图][AioGuideGlossaryView]的代码。
 
-A template combines straight HTML with Angular [data-binding][AioGuideGlossaryDataBinding] syntax, [directives][AioGuideGlossaryDirective], and [template expressions][AioGuideGlossaryTemplateExpression] (logical constructs).
+A template combines straight HTML with Angular [data-binding][AioGuideGlossaryDataBinding] syntax, [directives][AioGuideGlossaryDirective], and [template expressions][AioGuideGlossaryTemplateExpression] \(logical constructs\).
 The Angular elements insert or calculate values that modify the HTML elements before the page is displayed.
 Learn more about Angular template language in the [Template Syntax][AioGuideTemplateSyntax] guide.
 
@@ -1492,7 +1492,7 @@ When using template-driven forms:
 * The "source of truth" is the template.
   The validation is defined using attributes on the individual input elements.
 
-  模板是“事实之源”。使用属性 (attribute) 在单个输入元素上定义验证规则。
+  模板是“事实之源”。使用属性 （attribute） 在单个输入元素上定义验证规则。
 
 * [Two-way binding][AioGuideGlossaryDataBinding] with `ngModel` keeps the component model synchronized with the user's entry into the input elements.
 
@@ -1517,7 +1517,7 @@ For an introduction and comparison of both forms approaches, see [Introduction t
 
 A TypeScript-like syntax that Angular evaluates within a [data binding][AioGuideGlossaryDataBinding].
 
-一种类似 TypeScript 的语法，Angular 用它对[数据绑定 (data binding)][AioGuideGlossaryDataBinding]进行求值。
+一种类似 TypeScript 的语法，Angular 用它对[数据绑定 （data binding）][AioGuideGlossaryDataBinding]进行求值。
 
 <!--todo: have Alex review this -->
 
@@ -1625,7 +1625,7 @@ A data flow model where the component tree is always checked for changes in one 
 
 In practice, this means that data in Angular flows downward during change detection.
 A parent component can easily change values in its child components because the parent is checked first.
-A failure could occur, however, if a child component tries to change a value in its parent during change detection (inverting the expected data flow), because the parent component has already been rendered.
+A failure could occur, however, if a child component tries to change a value in its parent during change detection \(inverting the expected data flow\), because the parent component has already been rendered.
 In development mode, Angular throws the `ExpressionChangedAfterItHasBeenCheckedError` error if your application attempts to do this, rather than silently failing to render the new value.
 
 在实践中，这意味着 Angular 中的数据会在变更检测过程中向下流动。父组件可以很容易地改变子组件中的值，因为父组件是先检查的。但是，如果子组件在变更检测期间（反转预期的数据流）尝试更改其父组件中的值，则可能会导致错误，因为父组件已经渲染过了。在开发模式下，如果你的应用尝试这样做，Angular 会抛出 `ExpressionChangedAfterItHasBeenCheckedError` 错误，而不是沉默地渲染新值。
@@ -1657,19 +1657,19 @@ The smallest grouping of display elements that can be created and destroyed toge
 Angular renders a view under the control of one or more [directives][AioGuideGlossaryDirective].
 
 视图是可显示元素的最小分组单位，它们会被同时创建和销毁。
-Angular 在一个或多个[指令 (directive)][AioGuideGlossaryDirective] 的控制下渲染视图。
+Angular 在一个或多个[指令 （directive）][AioGuideGlossaryDirective] 的控制下渲染视图。
 
 A [component][AioGuideGlossaryComponent] class and its associated [template][AioGuideGlossaryTemplate] define a view.
 A view is specifically represented by a `ViewRef` instance associated with a component.
 A view that belongs immediately to a component is referenced as a *host view*.
 Views are typically collected into [view hierarchies][AioGuideGlossaryViewHierarchy].
 
-[组件 (component)][AioGuideGlossaryComponent] 类及其关联的[模板 (template)][AioGuideGlossaryTemplate]定义了一个视图。
+[组件（component）][AioGuideGlossaryComponent] 类及其关联的[模板 （template）][AioGuideGlossaryTemplate]定义了一个视图。
 具体实现上，视图由一个与该组件相关的 `ViewRef` 实例表示。
 直属于某个组件的视图叫做*宿主视图*。
 通常会把视图组织成一些[视图树（view hierarchies）][AioGuideGlossaryViewHierarchy]。
 
-Properties of elements in a view can change dynamically, in response to user actions; the structure (number and order) of elements in a view cannot.
+Properties of elements in a view can change dynamically, in response to user actions; the structure \(number and order\) of elements in a view cannot.
 You can change the structure of elements by inserting, moving, or removing nested views within their view containers.
 
 视图中各个元素的属性可以动态修改以响应用户的操作，而这些元素的结构（数量或顺序）则不能。你可以通过在它们的视图容器中插入、移动或移除内嵌视图来修改这些元素的结构。
@@ -1721,17 +1721,17 @@ See [custom element][AioGuideGlossaryCustomElement].
 
 ## 工作区（workspace）
 
-A collection of Angular [projects][AioGuideGlossaryProject] (that is, applications and libraries) powered by the Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] that are typically co-located in a single source-control repository (such as [git][GitScmMain]).
+A collection of Angular [projects][AioGuideGlossaryProject] \(that is, applications and libraries\) powered by the Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] that are typically co-located in a single source-control repository \(such as [git][GitScmMain]\).
 
 一组基于 [Angular CLI][AioGuideGlossaryCommandLineInterfaceCli] 的 Angular [项目][AioGuideGlossaryProject]（也就是说应用或库），它们通常共同位于一个单一的源码仓库（比如 [git][GitScmMain]）中。
 
-The [`ng new`][AioCliNew] Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] command creates a file system directory (the "workspace root").
-In the workspace root, it also creates the workspace [configuration file][AioGuideGlossaryConfiguration] (`angular.json`) and, by default, an initial application project with the same name.
+The [`ng new`][AioCliNew] Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] command creates a file system directory \(the "workspace root"\).
+In the workspace root, it also creates the workspace [configuration file][AioGuideGlossaryConfiguration] \(`angular.json`\) and, by default, an initial application project with the same name.
 
 [CLI][AioGuideGlossaryCommandLineInterfaceCli] 的 [`ng new` 命令][AioCliNew]会在文件系统中创建一个目录（也就是工作区的根目录）。
 在工作区根目录下，还会创建此工作区的[配置文件][AioGuideGlossaryConfiguration]（`angular.json`），并且还会默认初始化一个同名的应用项目。
 
-Commands that create or operate on applications and libraries (such as `add` and `generate`) must be executed from within a workspace directory.
+Commands that create or operate on applications and libraries \(such as `add` and `generate`\) must be executed from within a workspace directory.
 To learn more, see [Workspace Configuration][AioGuideWorkspaceConfig].
 
 而用来创建或操作应用和库的命令（比如 `add` 和 `generate`）必须在工作区目录下才能执行。
@@ -1755,7 +1755,7 @@ To learn more, see [Workspace and Project File Structure][AioGuideFileStructure]
 
 ## zone
 
-## 区域 (zone)
+## 区域 （zone）
 
 An execution context for a set of asynchronous tasks.
 Useful for debugging, profiling, and testing applications that include asynchronous operations such as event processing, promises, and runs to remote servers.
@@ -1764,7 +1764,7 @@ Useful for debugging, profiling, and testing applications that include asynchron
 
 An Angular application runs in a zone where it can respond to asynchronous events by checking for data changes and updating the information it displays by resolving [data bindings][AioGuideGlossaryDataBinding].
 
-Angular 应用会运行在一个 Zone 区域中，在这里，它可以对异步事件做出反应，可以通过检查数据变更、利用[数据绑定 (data bindings)][AioGuideGlossaryDataBinding] 来更新信息显示。
+Angular 应用会运行在一个 Zone 区域中，在这里，它可以对异步事件做出反应，可以通过检查数据变更、利用[数据绑定 （data bindings）][AioGuideGlossaryDataBinding] 来更新信息显示。
 
 A zone client can take action before and after an async operation completes.
 

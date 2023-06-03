@@ -28,7 +28,7 @@ export class OutletContext {
 }
 
 /**
- * Store contextual information about the children (= nested) `RouterOutlet`
+ * Store contextual information about the children \(= nested\) `RouterOutlet`
  *
  * 存储关于子级（=嵌套）`RouterOutlet` 的上下文信息。
  *

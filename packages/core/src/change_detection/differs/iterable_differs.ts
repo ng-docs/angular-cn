@@ -140,7 +140,7 @@ export interface IterableChanges<V> {
   forEachRemovedItem(fn: (record: IterableChangeRecord<V>) => void): void;
 
   /**
-   * Iterate over all items which had their identity (as computed by the `TrackByFunction`)
+   * Iterate over all items which had their identity \(as computed by the `TrackByFunction`\)
    * changed.
    *
    * 遍历所有更改过标识（由 `TrackByFunction` 计算）的条目。
@@ -207,7 +207,7 @@ export interface IterableChangeRecord<V> {
  *
  * 在所有这些场景中，通常希望仅更新与受更改影响的条目关联的 DOM 元素。此行为对以下内容很重要：
  *
- * - preserve any DOM-specific UI state (like cursor position, focus, text selection) when the
+ * - preserve any DOM-specific UI state \(like cursor position, focus, text selection\) when the
  *   iterable is modified
  *
  *   修改迭代器时保留任何特定于 DOM 的 UI 状态（例如光标位置、焦点、文本选择）
@@ -247,8 +247,8 @@ export interface IterableChangeRecord<V> {
  *
  * A custom `trackBy` function must have several properties:
  *
- * - be [idempotent](https://en.wikipedia.org/wiki/Idempotence) (be without side effects, and always
- *   return the same value for a given input)
+ * - be [idempotent](https://en.wikipedia.org/wiki/Idempotence) \(be without side effects, and always
+ *   return the same value for a given input\)
  *
  *   [幂等](https://en.wikipedia.org/wiki/Idempotence)（没有副作用，并且对于给定输入始终返回相同的值）
  *
@@ -351,6 +351,7 @@ export class IterableDiffers {
    *   ]
    * })
    * ```
+   *
    */
   static extend(factories: IterableDifferFactory[]): StaticProvider {
     return {

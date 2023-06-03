@@ -185,13 +185,13 @@ The order of execution here is:
 
    `AdminMenu` 实例化
 
-3. `MenuBehavior` receives inputs (`ngOnInit`)
+3. `MenuBehavior` receives inputs \(`ngOnInit`\)
 
    `MenuBehavior` 接收输入（ `ngOnInit` ）
 
-4. `AdminMenu` receives inputs (`ngOnInit`)
+4. `AdminMenu` receives inputs \(`ngOnInit`\)
 
-   `AdminMenu` 接收输入 ( `ngOnInit` )
+   `AdminMenu` 接收输入（`ngOnInit`）
 
 5. `MenuBehavior` applies host bindings
 
@@ -242,17 +242,17 @@ In the example above, the order of execution is:
 
    `EvenMoreCustomTooltip` 实例化
 
-4. `Tooltip` receives inputs (`ngOnInit`)
+4. `Tooltip` receives inputs \(`ngOnInit`\)
 
-   `Tooltip` 接收输入 ( `ngOnInit` )
+   `Tooltip` 接收输入（`ngOnInit`）
 
-5. `CustomTooltip` receives inputs (`ngOnInit`)
+5. `CustomTooltip` receives inputs \(`ngOnInit`\)
 
-   `CustomTooltip` 接收输入 ( `ngOnInit` )
+   `CustomTooltip` 接收输入（`ngOnInit`）
 
-6. `EvenMoreCustomTooltip` receives inputs (`ngOnInit`)
+6. `EvenMoreCustomTooltip` receives inputs \(`ngOnInit`\)
 
-   `EvenMoreCustomTooltip` 接收输入 ( `ngOnInit` )
+   `EvenMoreCustomTooltip` 接收输入（`ngOnInit`）
 
 7. `Tooltip` applies host bindings
 

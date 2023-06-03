@@ -32,7 +32,7 @@ export interface RendererType2 {
    *
    * 视图封装类型，它确定如何将样式应用于 DOM 元素。为下列值之一
    *
-   * - `Emulated` (default): Emulate native scoping of styles.
+   * - `Emulated` \(default\): Emulate native scoping of styles.
    *
    *   `Emulated`（默认）：模拟样式的原生作用域。
    *
@@ -95,7 +95,7 @@ export enum RendererStyleFlags2 {
    */
   Important = 1 << 0,
   /**
-   * Marks a style as using dash case naming (this-is-dash-case).
+   * Marks a style as using dash case naming \(this-is-dash-case\).
    *
    * 将样式标记为使用中线命名法（this-is-dash-case）。
    *

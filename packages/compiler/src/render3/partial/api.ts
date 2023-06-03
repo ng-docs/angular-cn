@@ -208,7 +208,7 @@ export interface R3DeclareComponentMetadata extends R3DeclareDirectiveMetadata {
   template: o.Expression;
 
   /**
-   * Whether the template was inline (using `template`) or external (using `templateUrl`).
+   * Whether the template was inline \(using `template`\) or external \(using `templateUrl`\).
    * Defaults to false.
    *
    * 模板是内联的（使用 `template`）还是外部的（使用 `templateUrl`）。默认为 false。
@@ -258,8 +258,8 @@ export interface R3DeclareComponentMetadata extends R3DeclareDirectiveMetadata {
   dependencies?: R3DeclareTemplateDependencyMetadata[];
 
   /**
-   * A map of pipe names to an expression referencing the pipe type (possibly a forward reference
-   * wrapped in a `forwardRef` invocation) which are used in the template.
+   * A map of pipe names to an expression referencing the pipe type \(possibly a forward reference
+   * wrapped in a `forwardRef` invocation\) which are used in the template.
    *
    * 管道名称到引用模板中使用的管道类型的表达式（可能是包装在 `forwardRef`
    * 调用中的前向引用）的映射。
@@ -333,8 +333,8 @@ export interface R3DeclareDirectiveDependencyMetadata {
   selector: string;
 
   /**
-   * Reference to the directive class (possibly a forward reference wrapped in a `forwardRef`
-   * invocation).
+   * Reference to the directive class \(possibly a forward reference wrapped in a `forwardRef`
+   * invocation\).
    *
    * 对指令类的引用（可能是包装在 `forwardRef` 调用中的前向引用）。
    *
@@ -372,8 +372,8 @@ export interface R3DeclarePipeDependencyMetadata {
   name: string;
 
   /**
-   * Reference to the pipe class (possibly a forward reference wrapped in a `forwardRef`
-   * invocation).
+   * Reference to the pipe class \(possibly a forward reference wrapped in a `forwardRef`
+   * invocation\).
    *
    * 对管道类的引用（可能是包装在 `forwardRef` 调用中的前向引用）。
    *
@@ -405,7 +405,7 @@ export interface R3DeclareQueryMetadata {
   first?: boolean;
 
   /**
-   * Either an expression representing a type (possibly wrapped in a `forwardRef()`) or
+   * Either an expression representing a type \(possibly wrapped in a `forwardRef()`\) or
    * `InjectionToken` for the query predicate, or a set of string selectors.
    *
    * 查询谓词的表示类型（可能包含在 `forwardRef()` 中）或 `InjectionToken`
@@ -446,7 +446,7 @@ export interface R3DeclareQueryMetadata {
    *
    * If static is true, the query's results will be set on the component after nodes are created,
    * but before change detection runs. This means that any results that relied upon change detection
-   * to run (e.g. results inside *ngIf or *ngFor views) will not be collected. Query results are
+   * to run \(e.g. results inside *ngIf or *ngFor views\) will not be collected. Query results are
    * available in the ngOnInit hook.
    *
    * 如果 static 为
@@ -455,8 +455,8 @@ export interface R3DeclareQueryMetadata {
    *
    * If static is false, the query's results will be set on the component after change detection
    * runs. This means that the query results can contain nodes inside *ngIf or *ngFor views, but
-   * the results will not be available in the ngOnInit hook (only in the ngAfterContentInit for
-   * content hooks and ngAfterViewInit for view hooks).
+   * the results will not be available in the ngOnInit hook \(only in the ngAfterContentInit for
+   * content hooks and ngAfterViewInit for view hooks\).
    *
    * 如果 static 为 false，则查询的结果将在变更检测运行后在组件上设置。这意味着查询结果可以包含*ngIf
    * 或*ngFor 视图中的节点，但结果将在 ngOnInit 钩子中不可用（仅在 ngAfterContentInit

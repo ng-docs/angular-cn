@@ -78,7 +78,7 @@ Additional pages and sections describe some basic programming techniques for Ang
 
 Angular provides a framework for single-page applications, where most of the logic and data resides on the client.
 Most applications still need to access a server using the `HttpClient` to access and save data.
-For some platforms and applications, you might also want to use the PWA (Progressive Web App) model to improve the user experience.
+For some platforms and applications, you might also want to use the PWA \(Progressive Web App\) model to improve the user experience.
 
 Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数据都留在客户端。大多数应用仍然需要使用 `HttpClient` 来访问服务器，以访问和保存数据。对于某些平台和应用，你可能还希望使用 PWA（渐进式 Web 应用）模型来改善用户体验。
 
@@ -86,7 +86,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [HTTP](guide/http)：与服务器通信，通过 HTTP 客户端来获取数据、保存数据，并调用服务端的动作。
 
-* [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering (SSR). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
+* [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering \(SSR\). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
 
   [服务器端渲染](guide/universal)：Angular Universal 通过服务器端渲染（SSR）在服务器上生成静态应用页面。这允许你在服务器上运行 Angular 应用，以提高性能，并在移动设备和低功耗设备上快速显示首屏，同时也方便了网页抓取工具。
 
@@ -106,7 +106,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [CLI 命令参考手册](cli)：Angular CLI 是一个命令行工具，可用于创建项目、生成应用和库代码，以及执行各种持续开发任务，如测试、打包和部署。
 
-* [Compilation](guide/aot-compiler): Angular provides just-in-time (JIT) compilation for the development environment, and ahead-of-time (AOT) compilation for the production environment.
+* [Compilation](guide/aot-compiler): Angular provides just-in-time \(JIT\) compilation for the development environment, and ahead-of-time \(AOT\) compilation for the production environment.
 
   [编译](guide/aot-compiler)：Angular 为开发环境提供了 JIT（即时）编译方式，为生产环境提供了 AOT（预先）编译方式。
 
@@ -122,7 +122,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [安全指南](guide/security)：学习 Angular 对常见 Web 应用的弱点和工具（比如跨站脚本攻击）提供的内置防护措施。
 
-* [Internationalization][AioGuideI18nOverview]: Make your application available in multiple languages with Angular's internationalization (i18n) tools.
+* [Internationalization][AioGuideI18nOverview]: Make your application available in multiple languages with Angular's internationalization \(i18n\) tools.
 
   [国际化][AioGuideI18nOverview] ：借助 Angular 的国际化（i18n）工具，可以让你的应用支持多本地环境。
 

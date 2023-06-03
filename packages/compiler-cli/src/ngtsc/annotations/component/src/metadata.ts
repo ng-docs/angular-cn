@@ -33,7 +33,7 @@ export type ComponentMetadataResolvedFields = SubsetOfKeys<
 export interface ComponentAnalysisData {
   /**
    * `meta` includes those fields of `R3ComponentMetadata` which are calculated at `analyze` time
-   * (not during resolve).
+   * \(not during resolve\).
    *
    * `meta` 包括 `R3ComponentMetadata` 中在 `analyze` 时（而不是解析期间）计算的那些字段。
    *

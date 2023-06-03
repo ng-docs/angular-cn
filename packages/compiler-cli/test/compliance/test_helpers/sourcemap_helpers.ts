@@ -113,17 +113,16 @@ interface SegmentMapping {
 }
 
 /**
- * Extract the source-map information (encoded in comments - see `checkMappings()`) from the given
+ * Extract the source-map information \(encoded in comments - see `checkMappings()`\) from the given
  * `expected` source content, returning both the `mappings` and the `expected` source code, stripped
  * of the source-mapping comments.
  *
  * 从给定的 `expected` 源内容中提取 source-map 信息（在注释中编码 - 请参阅 `checkMappings()`
- *），返回 `mappings` 和 `expected` 的源代码，去除源映射注释。
+ * ），返回 `mappings` 和 `expected` 的源代码，去除源映射注释。
  *
  * @param expected The content of the expected file containing source-map information.
  *
  * 包含 source-map 信息的预期文件的内容。
- *
  */
 function extractMappings(
     fs: ReadonlyFileSystem, expected: string): {expected: string, mappings: SegmentMapping[]} {

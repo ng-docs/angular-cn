@@ -33,8 +33,8 @@ export function assertTextSpans(items: Array<{textSpan: string}>, expectedTextSp
 }
 
 /**
- * Returns whether the given `ts.Diagnostic` is of a type only produced by the Angular compiler (as
- * opposed to being an upstream TypeScript diagnostic).
+ * Returns whether the given `ts.Diagnostic` is of a type only produced by the Angular compiler \(as
+ * opposed to being an upstream TypeScript diagnostic\).
  *
  * 返回给定的 `ts.Diagnostic` 是否属于仅由 Angular 编译器生成的类型（而不是上游的 TypeScript
  * 诊断）。

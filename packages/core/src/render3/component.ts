@@ -29,7 +29,7 @@ import {assertComponentDef} from './errors';
  * 下面的示例演示了如何使用 `createComponent` 函数动态创建 ComponentRef 的实例并将其附加到 ApplicationRef 上，以便它被包含在变更检测周期中。
  *
  * Note: the example uses standalone components, but the function can also be used for
- * non-standalone components (declared in an NgModule) as well.
+ * non-standalone components \(declared in an NgModule\) as well.
  *
  * 注：该示例使用了独立组件，但该函数也可用于非独立组件（在 NgModule 中声明）。
  *
@@ -64,6 +64,7 @@ import {assertComponentDef} from './errors';
  * // to include the component view into change detection cycles.
  * applicationRef.attachView(componentRef.hostView);
  * ```
+ *
  * @param component Component class reference.
  *
  * 组件类引用。
@@ -76,18 +77,18 @@ import {assertComponentDef} from './errors';
  *
  *   `environmentInjector` ：要用于组件的 `EnvironmentInjector` 实例，请在 https://angular.io/guide/standalone-components#environment-injectors 中查看有关它的其他信息。
  *
- * - `hostElement` (optional): A DOM node that should act as a host node for the component. If not
- *   provided, Angular creates one based on the tag name used in the component selector (and falls
- *   back to using `div` if selector doesn't have tag name info).
+ * - `hostElement` \(optional\): A DOM node that should act as a host node for the component. If not
+ *   provided, Angular creates one based on the tag name used in the component selector \(and falls
+ *   back to using `div` if selector doesn't have tag name info\).
  *
  *   `hostElement` （可选）：应该作为组件的宿主节点的 DOM 节点。如果未提供，Angular 会根据组件选择器中使用的标签名称创建一个（如果选择器没有标签名称信息，则回用 `div` ）。
  *
- * - `elementInjector` (optional): An `ElementInjector` instance, see additional info about it at
+ * - `elementInjector` \(optional\): An `ElementInjector` instance, see additional info about it at
  *   https://angular.io/guide/hierarchical-dependency-injection#elementinjector.
  *
  *   `elementInjector` （可选）：一个 `ElementInjector` 实例，请在 https://angular.io/guide/hierarchical-dependency-injection#elementinjector 上查看有关它的其他信息。
  *
- * - `projectableNodes` (optional): A list of DOM nodes that should be projected through
+ * - `projectableNodes` \(optional\): A list of DOM nodes that should be projected through
  *                     [`<ng-content>`](api/core/ng-content) of the new component instance.
  *
  *   `projectableNodes` （可选）：应该通过新组件实例的[`<ng-content>`](api/core/ng-content)投影的 DOM 节点列表。

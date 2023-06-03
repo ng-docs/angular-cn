@@ -17,11 +17,11 @@
  *
  * 此文件有两个副本。请确保它们是同步的：
  *
- * - packages/compiler/src/compiler_facade_interface.ts          (main)
+ * - packages/compiler/src/compiler_facade_interface.ts          \(main\)
  *
  *   package/compiler/src/compiler_facade_interface.ts（主）
  *
- * - packages/core/src/compiler/compiler_facade_interface.ts     (replica)
+ * - packages/core/src/compiler/compiler_facade_interface.ts     \(replica\)
  *
  *   package/core/src/compiler/compiler_facade_interface.ts（副本）
  *

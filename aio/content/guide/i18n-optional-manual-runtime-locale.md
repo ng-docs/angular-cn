@@ -6,10 +6,10 @@
 
 <!--todo: To override the provider for the locale ID token. -->
 
-The initial installation of Angular already contains locale data for English in the United States (`en-US`).
+The initial installation of Angular already contains locale data for English in the United States \(`en-US`\).
 The [Angular CLI][AioCliMain] automatically includes the locale data and sets the `LOCALE_ID` value when you use the `--localize` option with [`ng build`][AioCliBuild] command.
 
-Angular 的初始安装中已经包含了美国英语 (`en-US`) 的语言环境数据。当你将 `--localize` 选项与 [`ng build`][AioCliBuild] 命令一起使用时，[Angular CLI][AioCliMain] 会自动包含语言环境数据并设置 `LOCALE_ID` 值。
+Angular 的初始安装中已经包含了美国英语（`en-US`）的语言环境数据。当你将 `--localize` 选项与 [`ng build`][AioCliBuild] 命令一起使用时，[Angular CLI][AioCliMain] 会自动包含语言环境数据并设置 `LOCALE_ID` 值。
 
 To manually set the runtime locale of an application to one other than the automatic value, complete the following actions.
 

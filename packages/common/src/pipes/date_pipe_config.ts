@@ -22,7 +22,7 @@ export interface DatePipeConfig {
 
 /**
  * The default date format of Angular date pipe, which corresponds to the following format:
- * `'MMM d,y'` (e.g. `Jun 15, 2015`)
+ * `'MMM d,y'` \(e.g. `Jun 15, 2015`\)
  *
  * Angular 日期管道的默认日期格式，对应于以下格式： `'MMM d,y'` （例如 `Jun 15, 2015` ）
  *

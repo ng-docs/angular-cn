@@ -741,7 +741,7 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * ```typescript
  * // this method is run each time the `myAnimationTrigger` trigger value changes.
  * function myInlineMatcherFn(fromState: string, toState: string, element: any, params: {[key:
- string]: any}): boolean {
+ *  string]: any}): boolean {
  *   // notice that `element` and `params` are also available here
  *   return toState == 'yes-please-animate';
  * }
@@ -846,7 +846,7 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  *
  * ### 检测某个动画何时被禁用
  *
- * If a region of the DOM (or the entire application) has its animations disabled, the animation
+ * If a region of the DOM \(or the entire application\) has its animations disabled, the animation
  * trigger callbacks still fire, but for zero seconds. When the callback fires, it provides
  * an instance of an `AnimationEvent`. If animations are disabled,
  * the `.disabled` flag on the event is true.
@@ -854,6 +854,7 @@ export interface AnimationStaggerMetadata extends AnimationMetadata {
  * 如果 DOM 中的某个区域（或整个应用程序）的动画被禁用时，动画触发器的回调仍然会触发，但持续 0 秒。
  * 当回调被触发时，它会提供一个 `AnimationEvent` 的例子。如果动画被禁用了，则该事件上的 `.disabled`
  *  标志为 `true`。
+ *
  * @publicApi
  */
 export function trigger(name: string, definitions: AnimationMetadata[]): AnimationTriggerMetadata {
@@ -1123,7 +1124,7 @@ export function sequence(
  *
  *   一组表示样式的键值对。
  *
- * - An asterisk (\*), to use auto-styling, where styles are derived from the element
+ * - An asterisk \(\*\), to use auto-styling, where styles are derived from the element
  *   being animated and applied to the animation when it starts.
  *
  *   一个星号（`*`），表示自动样式，其样式值会在应用此样式的时刻从目标元素中取得，并用作动画参数。
@@ -1186,7 +1187,7 @@ export function style(tokens: '*'|{[key: string]: string | number}|
  *   `void` 你可以使用该名称关联一些样式，用于定义当该元素从应用中移除时的样式。比如，当 `ngIf`
  *   的值为 `false` 时，相关元素的状态就是 `void`。
  *
- * - `*` (asterisk) Indicates the default state. You can associate styles with this name
+ * - `*` \(asterisk\) Indicates the default state. You can associate styles with this name
  *   to be used as the fallback when the state that is being animated is not declared
  *   within the trigger.
  *
@@ -1299,9 +1300,10 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * 声明一个转场动画，以便在满足给定条件时运行一系列动画步骤。
  *
  * @param stateChangeExpr A string with a specific format or a function that specifies when the
- * animation transition should occur (see [State Change Expression](#state-change-expression)).
+ * animation transition should occur \(see [State Change Expression](#state-change-expression)\).
  *
  * 具有特定格式的字符串或指定动画转换何时发生的函数（请参阅[状态更改表达式](#state-change-expression)）。
+ *
  * @param steps One or more animation objects that represent the animation's instructions.
  *
  * 表示动画操作指南的一个或多个动画对象。
@@ -1327,8 +1329,8 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *
  *   具有特定语法的字符串
  *
- * - or a function that compares the previous and current state (value of the expression bound to
- *     the element's trigger) and returns `true` if the transition should occur or `false` otherwise
+ * - or a function that compares the previous and current state \(value of the expression bound to
+ *     the element's trigger\) and returns `true` if the transition should occur or `false` otherwise
  *
  *   或一个比较前一个状态和当前状态（绑定到元素触发器的表达式的值）的函数，如果应该发生转换，则返回
  *   `true`，否则返回 `false`
@@ -1425,13 +1427,13 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *
  *   星号可以作为匹配任何状态的通配符
  *
- * - (as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
- *   equivalent to `:leave`)
+ * - \(as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
+ *   equivalent to `:leave`\)
  *
  *   （由于上述原因， `void => *` 等效于 `:enter` ，并且 `* => void` 等效于 `:leave` ）
  *
- * - `true` and `false` also match expression values of `1` and `0` respectively (but do not match
- *   _truthy_ and _falsy_ values)
+ * - `true` and `false` also match expression values of `1` and `0` respectively \(but do not match
+ *   _truthy_ and _falsy_ values\)
  *
  *   `true` 和 `false` 也分别匹配表达式值 `1` 和 `0` （但不匹配 _truthy_ 和 _falsy_ 值）
  *
@@ -1669,9 +1671,9 @@ export function useAnimation(
  *
  * 要查询的元素或包含特定于 Angular 的特性的一组元素，使用以下一个或多个标记指定。
  *
- * - `query(":enter")` or `query(":leave")` : Query for newly inserted/removed elements (not
+ * - `query(":enter")` or `query(":leave")` : Query for newly inserted/removed elements \(not
  *      all elements can be queried via these tokens, see
- *      [Entering and Leaving Elements](#entering-and-leaving-elements))
+ *      [Entering and Leaving Elements](#entering-and-leaving-elements)\)
  *
  *   `query(":enter")` 或 `query(":leave")`
  *   ：查询新插入/删除的元素（并非所有元素都可以通过这些标记查询，请参阅[进入和离开元素](#entering-and-leaving-elements)）
@@ -1691,6 +1693,7 @@ export function useAnimation(
  * - `query(":self")` : Include the current element into the animation sequence.
  *
  *   `query(":self")`：把当前元素包含到动画序列中。
+ *
  * @param animation One or more animation steps to apply to the queried element or elements.
  * An array is treated as an animation sequence.
  *
@@ -1749,24 +1752,24 @@ export function useAnimation(
  *
  * Not all elements can be queried via the `:enter` and `:leave` tokens, the only ones
  * that can are those that Angular assumes can enter/leave based on their own logic
- * (if their insertion/removal is simply a consequence of that of their parent they
- * should be queried via a different token in their parent's `:enter`/`:leave` transitions).
+ * \(if their insertion/removal is simply a consequence of that of their parent they
+ * should be queried via a different token in their parent's `:enter`/`:leave` transitions\).
  *
  * 并非所有元素都可以通过 `:enter` 和 `:leave` 标记查询，唯一可以是 Angular
  * 假定可以根据自己的逻辑进入/离开的元素（如果它们的插入/删除只是它们父级的结果，他们应该通过其父级的
  * `:enter` / `:leave` 转换中的不同标记来查询）。
  *
- * The only elements Angular assumes can enter/leave based on their own logic (thus the only
- * ones that can be queried via the `:enter` and `:leave` tokens) are:
+ * The only elements Angular assumes can enter/leave based on their own logic \(thus the only
+ * ones that can be queried via the `:enter` and `:leave` tokens\) are:
  *
  * Angular 假定可以根据自己的逻辑进入/离开的唯一元素（因此可以通过 `:enter` 和 `:leave`
  * 标记查询的唯一元素）是：
  *
- * - Those inserted dynamically (via `ViewContainerRef`)
+ * - Those inserted dynamically \(via `ViewContainerRef`\)
  *
  *   动态插入的（通过 `ViewContainerRef` ）
  *
- * - Those that have a structural directive (which, under the hood, are a subset of the above ones)
+ * - Those that have a structural directive \(which, under the hood, are a subset of the above ones\)
  *
  *   那些具有结构指令的（在引擎盖下是上述指令的子集）
  *

@@ -41,13 +41,13 @@
  *
  *    提供特定于上下文的最后一帧错误处理
  *
- * 5. (Intercept blocking methods)
+ * 5. \(Intercept blocking methods\)
  *
  *    （拦截阻塞方法）
  *
  * A zone by itself does not do anything, instead it relies on some other code to route existing
- * platform API through it. (The zone library ships with code which monkey patches all of the
- * browsers's asynchronous API and redirects them through the zone for interception.)
+ * platform API through it. \(The zone library ships with code which monkey patches all of the
+ * browsers's asynchronous API and redirects them through the zone for interception.\)
  *
  * 区域本身不做任何事情，而是依赖一些其他代码来通过它路由现有的平台 API。
  * （区域库附带的代码可以用猴子修补所有浏览器的异步 API 并将它们重定向通过区域以进行拦截。）
@@ -67,8 +67,8 @@
  * An important aspect of the zones is that they should persist across asynchronous operations. To
  * achieve this, when a future work is scheduled through async API, it is necessary to capture, and
  * subsequently restore the current zone. For example if a code is running in zone `b` and it
- * invokes `setTimeout` to scheduleTask work later, the `setTimeout` method needs to 1) capture the
- * current zone and 2) wrap the `wrapCallback` in code which will restore the current zone `b` once
+ * invokes `setTimeout` to scheduleTask work later, the `setTimeout` method needs to 1\) capture the
+ * current zone and 2\) wrap the `wrapCallback` in code which will restore the current zone `b` once
  * the wrapCallback executes. In this way the rules which govern the current code are preserved in
  * all future asynchronous tasks. There could be a different zone `c` which has different rules and
  * is associated with different asynchronous tasks. As these tasks are processed, each asynchronous
@@ -84,8 +84,8 @@
  * 都会正确恢复正确的区域，并保留该区域以供将来的异步回调使用。
  *
  * Example: Suppose a browser page consist of application code as well as third-party
- * advertisement code. (These two code bases are independent, developed by different mutually
- * unaware developers.) The application code may be interested in doing global error handling and
+ * advertisement code. \(These two code bases are independent, developed by different mutually
+ * unaware developers.\) The application code may be interested in doing global error handling and
  * so it configures the `app` zone to send all of the errors to the server for analysis, and then
  * executes the application in the `app` zone. The advertising code is interested in the same
  * error processing but it needs to send the errors to a different third-party. So it creates the
@@ -105,7 +105,7 @@
  * `app` 区域中执行，并且所有广告代码都将在 `ads`
  * 区域中执行及其错误处理程序。这不仅适用于直接创建的异步操作，也适用于所有后续的异步操作。
  *
- * If you think of chain of asynchronous operations as a thread of execution (bit of a stretch)
+ * If you think of chain of asynchronous operations as a thread of execution \(bit of a stretch\)
  * then [Zone#current] will act as a thread local variable.
  *
  * 如果你将异步操作链视为一个执行线程（有点牵强），那么 `[Zone#current]` 将作为线程局部变量。
@@ -117,7 +117,7 @@
  * In addition to wrapping the callbacks to restore the zone, all operations which cause a
  * scheduling of work for later are routed through the current zone which is allowed to intercept
  * them by adding work before or after the wrapCallback as well as using different means of
- * achieving the request. (Useful for unit testing, or tracking of requests). In some instances
+ * achieving the request. \(Useful for unit testing, or tracking of requests\). In some instances
  * such as `setTimeout` the wrapping of the wrapCallback and scheduling is done in the same
  * wrapCallback, but there are other examples such as `Promises` where the `then` wrapCallback is
  * wrapped, but the execution of `then` is triggered by `Promise` scheduling `resolve` work.
@@ -161,8 +161,8 @@
  *
  * ### `[MacroTask]`
  *
- * `[MacroTask]`s represent work which will be done after some delay. (Sometimes the delay is
- * approximate such as on next available animation frame). Typically these methods include:
+ * `[MacroTask]`s represent work which will be done after some delay. \(Sometimes the delay is
+ * approximate such as on next available animation frame\). Typically these methods include:
  * `setTimeout`, `setImmediate`, `setInterval`, `requestAnimationFrame`, and all browser specific
  * variants.
  *
@@ -230,7 +230,7 @@ interface Zone {
   /**
    * @returns
    *
-   * {string} The Zone name (useful for debugging)
+   * {string} The Zone name \(useful for debugging\)
    *
    * 区域名称（用于调试）
    *
@@ -322,7 +322,7 @@ interface Zone {
    * 被包装的 API 的唯一调试位置。
    * @returns
    *
-   * {function(): \*} A function which will invoke the `callback` through `[Zone.runGuarded]`.
+   * {function\(\): \*} A function which will invoke the `callback` through `[Zone.runGuarded]`.
    *
    * 一个将通过 `[Zone.runGuarded]` 调用 `callback` 的函数。
    *
@@ -615,7 +615,7 @@ interface UncaughtPromiseError extends Error {
  *
  * 提供一种配置区域事件拦截的方法。
  *
- * Only the `name` property is required (all other are optional).
+ * Only the `name` property is required \(all other are optional\).
  *
  * 只有 `name` 属性是必需的（所有其他都是可选的）。
  *
@@ -838,15 +838,15 @@ interface ZoneSpec {
  *  A ZoneDelegate is needed because a child zone can't simply invoke a method on a parent zone. For
  *  example a child zone wrap can't just call parent zone wrap. Doing so would create a callback
  *  which is bound to the parent zone. What we are interested in is intercepting the callback before
- *  it is bound to any zone. Furthermore, we also need to pass the targetZone (zone which received
- *  the original request) to the delegate.
+ *  it is bound to any zone. Furthermore, we also need to pass the targetZone \(zone which received
+ *  the original request\) to the delegate.
  *
  * 需要 ZoneDelegate
  * ，因为子区域不能简单地调用父区域上的方法。例如，子区域换行不能只调用父区域换行。这样做将创建一个绑定到父区域的回调。我们感兴趣的是在回调绑定到任何区域之前拦截回调。此外，我们还需要将
  * targetZone（接收到原始请求的区域）传递给委托。
  *
  *  The ZoneDelegate methods mirror those of Zone with an addition of extra targetZone argument in
- *  the method signature. (The original Zone which received the request.) Some methods are renamed
+ *  the method signature. \(The original Zone which received the request.\) Some methods are renamed
  *  to prevent confusion, because they have slightly different semantics and arguments.
  *
  * ZoneDelegate 方法镜像了 Zone 的方法，只是在方法签名中添加了额外的 targetZone 参数。

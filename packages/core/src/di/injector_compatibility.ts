@@ -44,7 +44,7 @@ export const SOURCE = '__source';
  *
  *   `undefined` ：调用 `inject` 是错误的
  *
- * - `null`: `inject` can be called but there is no injector (limp-mode).
+ * - `null`: `inject` can be called but there is no injector \(limp-mode\).
  *
  *   `null` ：可以调用 injection，但没有 `inject` 器（limp-mode）。
  *
@@ -86,15 +86,14 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFla
  *
  * 生成的方式：从当前活动的注入器注入令牌。
  *
- * (Additional documentation moved to `inject`, as it is the public API, and an alias for this
- * instruction)
+ * \(Additional documentation moved to `inject`, as it is the public API, and an alias for this
+ * instruction\)
  *
- *（其他文档移到了 `inject` ，因为它是公共 API，并且是此指令的别名）
+ * （其他文档移到了 `inject` ，因为它是公共 API，并且是此指令的别名）
  *
  * @see inject
  *
  * 注入
- *
  * @codeGenApi
  * @publicApi This instruction has been emitted by ViewEngine for some time and is deployed to npm.
  */
@@ -230,7 +229,7 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  *
  * 从当前活动的注入器注入令牌。 `inject` 仅在 DI 系统实例化依赖项期间受支持。它可以在以下期间使用：
  *
- * - Construction (via the `constructor`) of a class being instantiated by the DI system, such
+ * - Construction \(via the `constructor`\) of a class being instantiated by the DI system, such
  *   as an `@Injectable` or `@Component`.
  *
  *   由 DI 系统实例化的类的构造（通过 `constructor`），例如 `@Injectable` 或 `@Component` 。
@@ -301,9 +300,9 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  *
  * Calls to the `inject()` function outside of the class creation context will result in error. Most
  * notably, calls to `inject()` are disallowed after a class instance was created, in methods
- * (including lifecycle hooks):
+ * \(including lifecycle hooks\):
  *
- * 在类创建上下文之外调用 `inject()` 函数将导致错误。最值得注意的是，在创建类实例之后，不允许在方法（包括生命周期钩子）中调用 `inject()` ) ：
+ * 在类创建上下文之外调用 `inject()` 函数将导致错误。最值得注意的是，在创建类实例之后，不允许在方法（包括生命周期钩子）中调用 `inject()`）：
  *
  * ```typescript
  * @Component ({ ... })
@@ -378,8 +377,8 @@ export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
 
 /**
  * Attaches a given InjectFlag to a given decorator using monkey-patching.
- * Since DI decorators can be used in providers `deps` array (when provider is configured using
- * `useFactory`) without initialization (e.g. `Host`) and as an instance (e.g. `new Host()`), we
+ * Since DI decorators can be used in providers `deps` array \(when provider is configured using
+ * `useFactory`\) without initialization \(e.g. `Host`\) and as an instance \(e.g. `new Host()`\), we
  * attach the flag to make it available both as a static property and as a field on decorator
  * instance.
  *
@@ -390,11 +389,9 @@ export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
  * @param decorator Provided DI decorator.
  *
  * 提供了 DI 装饰器。
- *
  * @param flag InjectFlag that should be applied.
  *
  * 应该应用的 InjectFlag 。
- *
  */
 export function attachInjectFlag(decorator: any, flag: InternalInjectFlags|DecoratorFlags): any {
   decorator[DI_DECORATOR_FLAG] = flag;

@@ -42,21 +42,21 @@ The functions that control complex animation sequences are:
 
 <a id="complex-sequence"></a>
 
-## The query() function
+## The `query()` function
 
-## query() 函数
+## `query()` 函数
 
 Most complex animations rely on the `query()` function to find child elements and apply animations to them, basic examples of such are:
 
 大多数复杂动画都依赖 `query()` 函数来查找子元素并对其应用动画，基本的例子是：
 
-| Examples                               | Details                                                                                                                                                                                             |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 例子                                   | 详情                                                                                                                                                                                                |
-| `query()` followed by `animate()`      | Used to query simple HTML elements and directly apply animations to them.                                                                                                                           |
-| `query()` 后跟 `animate()`             | 用于查询简单的 HTML 元素并直接对它们应用动画。                                                                                                                                                      |
-| `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation (which would be otherwise be blocked by the current/parent element's animation). |
-| `query()` 后跟 `animateChild()`        | 用于查询子元素，这些元素本身就应用了动画元数据并触发这样的动画（否则将被当前/父元素的动画阻止）。                                                                                                   |
+| Examples                               | Details                                                                                                                                                                                               |
+| :------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 例子                                   | 详情                                                                                                                                                                                                  |
+| `query()` followed by `animate()`      | Used to query simple HTML elements and directly apply animations to them.                                                                                                                             |
+| `query()` 后跟 `animate()`             | 用于查询简单的 HTML 元素并直接对它们应用动画。                                                                                                                                                        |
+| `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation \(which would be otherwise be blocked by the current/parent element's animation\). |
+| `query()` 后跟 `animateChild()`        | 用于查询子元素，这些元素本身就应用了动画元数据并触发这样的动画（否则将被当前/父元素的动画阻止）。                                                                                                     |
 
 The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Angular-specific tokens:
 
@@ -90,7 +90,7 @@ You can also see an illustration of this in the animations live example (introdu
 
 </div>
 
-## Animate multiple elements using query() and stagger() functions
+## Animate multiple elements using `query()` and `stagger()` functions
 
 ## 使用 `query()` 和 `stagger()`（交错）函数执行多元素动画
 
@@ -98,7 +98,7 @@ After having queried child elements via `query()`, the `stagger()` function lets
 
 通过 `query()` 查询子元素后，`stagger()` 函数允许你定义每个查询的动画项之间的时间间隙，从而为元素之间延迟设置动画。
 
-The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list (of heroes) adding each in sequence, with a slight delay, from top to bottom.
+The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list \(of heroes\) adding each in sequence, with a slight delay, from top to bottom.
 
 下面的例子演示了如何使用 `query()` 和 `stagger()` 函数对依次添加的英雄列表从上到下播放动画（有少许延迟）。
 
@@ -121,7 +121,7 @@ The following example demonstrates how to use the `query()` and `stagger()` func
 
 <code-example header="src/app/hero-list-page.component.ts" path="animations/src/app/hero-list-page.component.ts" region="page-animations"></code-example>
 
-## Parallel animation using group() function
+## Parallel animation using `group()` function
 
 ## 使用 `group()` 函数播放并行动画
 
@@ -201,7 +201,7 @@ The code in this example performs the following tasks:
 
 这个例子中的代码包含下列任务：
 
-* Skips animations when the user first opens or navigates to this page (the filter animation narrows what is already there, so it only works on elements that already exist in the DOM)
+* Skips animations when the user first opens or navigates to this page \(the filter animation narrows what is already there, so it only works on elements that already exist in the DOM\)
 
   当用户首次打开或导航到此页面时，跳过所有动画（该动画会压扁已经存在的内容，因此它只会作用于那些已经存在于 DOM 中的元素）
 
@@ -251,11 +251,11 @@ If you need to animate the items of an `*ngFor` list and there is a possibility 
 
 ## 动画和组件视图封装
 
-Angular animations are based on the components DOM structure and do not directly take [View Encapsulation](/guide/view-encapsulation) into account, this means that components using `ViewEncapsulation.Emulated` behave exactly as if they were using `ViewEncapsulation.None` (`ViewEncapsulation.ShadowDom` behaves differently as we'll discuss shortly).
+Angular animations are based on the components DOM structure and do not directly take [View Encapsulation](/guide/view-encapsulation) into account, this means that components using `ViewEncapsulation.Emulated` behave exactly as if they were using `ViewEncapsulation.None` \(`ViewEncapsulation.ShadowDom` behaves differently as we'll discuss shortly\).
 
 Angular 动画基于组件的 DOM 结构，不会直接考虑[视图封装](/guide/view-encapsulation)，这意味着使用 `ViewEncapsulation.Emulated` 的组件的行为方式与使用 `ViewEncapsulation.None` （ `ViewEncapsulation.ShadowDom` 行为方式不同，我们将很快讨论） .
 
-For example if the `query()` function (which you'll see more of in the rest of the Animations guide) were to be applied at the top of a tree of components using the emulated view encapsulation, such query would be able to identify (and thus animate) DOM elements on any depth of the tree.
+For example if the `query()` function \(which you'll see more of in the rest of the Animations guide\) were to be applied at the top of a tree of components using the emulated view encapsulation, such query would be able to identify \(and thus animate\) DOM elements on any depth of the tree.
 
 例如，如果要在使用模拟（emulated）视图封装的组件树的顶级组件中应用 `query()` 函数（你还会在动画指南的其余部分看到更多此类函数），则这样的查询将能够识别（并播放动画）此树的任何深度上的 DOM 元素。
 

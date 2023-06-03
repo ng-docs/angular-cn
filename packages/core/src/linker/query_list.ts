@@ -54,7 +54,6 @@ function symbolIterator<T>(this: QueryList<T>): Iterator<T> {
  * @ViewChildren (Item) items:QueryList<Item>;
  * }
  * ```
- *
  * @publicApi
  */
 export class QueryList<T> implements Iterable<T> {
@@ -79,11 +78,11 @@ export class QueryList<T> implements Iterable<T> {
 
   /**
    * @param emitDistinctChangesOnly Whether `QueryList.changes` should fire only when actual change
-   *     has occurred. Or if it should fire when query is recomputed. (recomputing could resolve in
-   *     the same result)
+   *     has occurred. Or if it should fire when query is recomputed. \(recomputing could resolve in
+   *     the same result\)
    *
    * `QueryList.changes` 是否仅在发生实际更改时才触发。或者如果它应该在重新计算查询时触发。
-   *（重新计算可以解决相同的结果）
+   * （重新计算可以解决相同的结果）
    *
    */
   constructor(private _emitDistinctChangesOnly: boolean = false) {
@@ -200,9 +199,9 @@ export class QueryList<T> implements Iterable<T> {
    * 要存储的查询结果
    * @param identityAccessor Optional function for extracting stable object identity from a value
    *    in the array. This function is executed for each element of the query result list while
-   *    comparing current query list with the new one (provided as a first argument of the `reset`
-   *    function) to detect if the lists are different. If the function is not provided, elements
-   *    are compared as is (without any pre-processing).
+   *    comparing current query list with the new one \(provided as a first argument of the `reset`
+   *    function\) to detect if the lists are different. If the function is not provided, elements
+   *    are compared as is \(without any pre-processing\).
    *
    * 从数组中的值提取稳定对象标识的可选函数。此函数会为查询结果列表的每个元素执行，同时将当前查询列表与新查询列表（作为
    * `reset`
@@ -264,7 +263,7 @@ export class QueryList<T> implements Iterable<T> {
 }
 
 /**
- * Internal set of APIs used by the framework. (not to be made public)
+ * Internal set of APIs used by the framework. \(not to be made public\)
  *
  * 框架使用的内部 API 集。（不公开）
  *

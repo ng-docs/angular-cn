@@ -11,7 +11,8 @@ import {LView} from '../render3/interfaces/view';
 
 /**
  * The name of an attribute that can be added to the hydration boundary node
- * (component host node) to disable hydration for the content within that boundary.
+ * \(component host node\) to disable hydration for the content within that boundary.
+ *
  */
 export const SKIP_HYDRATION_ATTR_NAME = 'ngSkipHydration';
 

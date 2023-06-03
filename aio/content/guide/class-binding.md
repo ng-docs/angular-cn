@@ -176,7 +176,7 @@ The following table summarizes style binding syntax.
 
 ## 样式优先级
 
-A single HTML element can have its CSS class list and style values bound to multiple sources (for example, host bindings from multiple directives).
+A single HTML element can have its CSS class list and style values bound to multiple sources \(for example, host bindings from multiple directives\).
 
 一个 HTML 元素可以将其 CSS 类列表和样式值绑定到多个源（比如，来自多个指令的宿主绑定）。
 

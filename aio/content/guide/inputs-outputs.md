@@ -89,7 +89,7 @@ In this example, the parent component template is `app.component.html`.
 
 1. Use the child's selector, here `<app-item-detail>`, as a directive within the parent component template.
 
-   使用子组件的 selector (`<app-item-detail>`) 作为父组件模板中的指令。
+   使用子组件的 selector（`<app-item-detail>`）作为父组件模板中的指令。
 
 1. Use [property binding](guide/property-binding) to bind the `item` property in the child to the `currentItem` property of the parent.
 

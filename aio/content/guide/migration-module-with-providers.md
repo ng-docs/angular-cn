@@ -6,7 +6,7 @@
 
 ## 这个原理图做了什么？
 
-Some Angular libraries, such as `@angular/router` and `@ngrx/store`, implement APIs that return a type called `ModuleWithProviders` (typically via a method named `forRoot()`).
+Some Angular libraries, such as `@angular/router` and `@ngrx/store`, implement APIs that return a type called `ModuleWithProviders` \(typically via a method named `forRoot()`\).
 This type represents an `NgModule` along with additional providers.
 Angular version 9 deprecates use of `ModuleWithProviders` without an explicitly generic type, where the generic type refers to the type of the `NgModule`.
 
@@ -81,7 +81,7 @@ A future version of Angular will remove the default generic type, making an expl
 
 ## 当我把新的 `ModuleWithProviders` 类型添加到应用中时，是否应该添加泛型？
 
-Yes, any time your code references the `ModuleWithProviders` type, it should have a generic type that matches the actual `NgModule` that is returned (for example, `ModuleWithProviders<MyModule>`).
+Yes, any time your code references the `ModuleWithProviders` type, it should have a generic type that matches the actual `NgModule` that is returned \(for example, `ModuleWithProviders<MyModule>`\).
 
 是的，任何时候，当你的代码引用了 `ModuleWithProviders` 类型，都要有一个与其返回的实际 `NgModule` 相匹配的泛型类型（比如，`ModuleWithProviders<MyModule>`）。
 

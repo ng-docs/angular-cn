@@ -118,7 +118,7 @@ Angular 语言服务目前在[Visual Studio Code](https://code.visualstudio.com)
 ### Visual Studio Code
 
 In [Visual Studio Code](https://code.visualstudio.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
-Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext".
+Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open \(⌘+P on Mac, CTRL+P on Windows\) and type "? ext".
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
 在 [Visual Studio Code 中](https://code.visualstudio.com)，从 “[扩展程序：市场](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template) 中安装扩展程序。可以用左侧菜单窗格中的扩展程序图标从编辑器中打开市场，或使用 VS 快速打开（在 Mac 上为 ⌘+ P，在 Windows 上为 CTRL + P）并输入“? ext”。在市场中，搜索 Angular Language Service 扩展，并点击 **Install** 按钮。
@@ -153,7 +153,7 @@ Since WebStorm 2019.1, the `@angular/language-service` is not required anymore a
 ### Sublime Text
 
 In [Sublime Text](https://www.sublimetext.com), the Language Service supports only in-line templates when installed as a plug-in.
-You need a custom Sublime plug-in (or modifications to the current plug-in) for completions in HTML files.
+You need a custom Sublime plug-in \(or modifications to the current plug-in\) for completions in HTML files.
 
 在 [Sublime Text](https://www.sublimetext.com) 中，当安装为插件时，语言服务仅支持内联模板。你需要自定义 Sublime 插件（或修改当前插件），来实现 HTML 文件中的自动补齐。
 
@@ -194,7 +194,7 @@ Starting with TypeScript 2.3, TypeScript has a plug-in model that the language s
 
    </code-example>
 
-1. In your editor's user preferences (`Cmd+,` or `Ctrl+,`), add the following:
+1. In your editor's user preferences \(`Cmd+,` or `Ctrl+,`\), add the following:
 
    在编辑器的用户首选项（`Cmd+,` 或 `Ctrl+,`）中，添加以下内容：
 
@@ -223,7 +223,7 @@ When you type into the editor, the editor sends information to the language-serv
 
 当你将编辑器与语言服务一起使用时，该编辑器将启动一个单独的语言服务进程，并使用[语言服务协议](https://microsoft.github.io/language-server-protocol)通过 [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 与之通信。当你输入编辑器时，编辑器会将信息发送到语言服务流程，以跟踪你的项目状态。
 
-When you trigger a completion list within a template, the editor first parses the template into an HTML [abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+When you trigger a completion list within a template, the editor first parses the template into an HTML [abstract syntax tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 The Angular compiler interprets that tree to determine the context: which module the template is part of, the current scope, the component selector, and where your cursor is in the template AST.
 It can then determine the symbols that could potentially be at that position.
 

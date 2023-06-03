@@ -10,7 +10,7 @@ Structural directives are directives which change the DOM layout by adding and r
 
 结构指令是通过添加和删除 DOM 元素来更改 DOM 布局的指令。
 
-Angular provides a set of built-in structural directives (such as `NgIf`, `NgForOf`, `NgSwitch` and others) which are commonly used in all Angular projects. For more information see [Built-in directives](guide/built-in-directives).
+Angular provides a set of built-in structural directives \(such as `NgIf`, `NgForOf`, `NgSwitch` and others\) which are commonly used in all Angular projects. For more information see [Built-in directives](guide/built-in-directives).
 
 Angular 提供了一组内置的结构指令（例如 `NgIf` 、 `NgForOf` 、 `NgSwitch` 等），在所有 Angular 项目中通用。有关更多信息，请参阅[内置指令](guide/built-in-directives)。
 
@@ -125,7 +125,7 @@ When two directives lay claim to the same host element, which one should take pr
 当两个指令都声称使用了同一个宿主元素时，哪一个应该优先？
 
 Which should go first, the `NgIf` or the `NgFor`? Can the `NgIf` cancel the effect of the `NgFor`?
-If so (and it seems like it should be so), how should Angular generalize the ability to cancel for other structural directives?
+If so \(and it seems like it should be so\), how should Angular generalize the ability to cancel for other structural directives?
 
 哪个应该先走，`NgIf` 或 `NgFor` ？ `NgIf` 可以取消 `NgFor` 的效果吗？如果是这样（看起来应该是这样），Angular 应该如何概括其他结构指令的取消能力？
 
@@ -234,8 +234,8 @@ In this section, you'll update your application to test the `UnlessDirective`.
    <code-example header="src/app/app.component.html (appUnless)" path="structural-directives/src/app/app.component.html" region="appUnless"></code-example>
 
    The asterisk is shorthand that marks `appUnless` as a structural directive.
-   When the `condition` is falsy, the top (A) paragraph appears and the bottom (B) paragraph disappears.
-   When the `condition` is truthy, the top (A) paragraph disappears and the bottom (B) paragraph appears.
+   When the `condition` is falsy, the top \(A\) paragraph appears and the bottom \(B\) paragraph disappears.
+   When the `condition` is truthy, the top \(A\) paragraph disappears and the bottom \(B\) paragraph appears.
 
    星号是将 `appUnless` 标记为结构型指令的简写形式。如果 `condition` 是假值，则会让顶部段落 A，而底部段落 B 消失。当 `condition` 为真时，顶部段落 A 消失，而底部段落 B 出现。
 
@@ -401,7 +401,7 @@ For example, consider the following structural directive that takes the result o
 </code-tabs>
 
 In this example, the `LoadingState<T>` type permits either of two states, `Loaded<T>` or `Loading`.
-The expression used as the directive's `state` input (aliased as `appIfLoaded`) is of the umbrella type `LoadingState`, as it's unknown what the loading state is at that point.
+The expression used as the directive's `state` input \(aliased as `appIfLoaded`\) is of the umbrella type `LoadingState`, as it's unknown what the loading state is at that point.
 
 在这个例子中，`LoadingState<T>` 类型允许两个状态之一，`Loaded<T>` 或 `Loading`。用作指令的 `state` 输入（别名为 `appIfLoaded`）的表达式是宽泛的伞形类型 `LoadingState`，因为还不知道此时的加载状态是什么。
 

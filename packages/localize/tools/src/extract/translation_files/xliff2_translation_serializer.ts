@@ -213,7 +213,7 @@ export class Xliff2TranslationSerializer implements TranslationSerializer {
  * 根据 `placeholder` 名称计算 `type` 属性的值。
  *
  * If the tag is not known but starts with `TAG_`, `START_TAG_` or `CLOSE_TAG_` then the type is
- * `other`. Certain formatting tags (e.g. bold, italic, etc) have type `fmt`. Line-breaks, images
+ * `other`. Certain formatting tags \(e.g. bold, italic, etc\) have type `fmt`. Line-breaks, images
  * and links are special cases.
  *
  * 如果标签是未知的但以 `TAG_`、`START_TAG_` 或 `CLOSE_TAG_` ，则类型是 `other`

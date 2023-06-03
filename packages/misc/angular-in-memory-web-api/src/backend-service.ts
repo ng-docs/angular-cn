@@ -68,18 +68,18 @@ export abstract class BackendService {
    * 是正则表达式；返回名称以 'j' 或 'J' 开头的客户 GET api/customers.json/42 // 忽略“.json”
    *
    * Also accepts direct commands to the service in which the last segment of the apiBase is the
-   * word "commands" Examples: POST commands/resetDb, GET/POST commands/config - get or (re)set the
+   * word "commands" Examples: POST commands/resetDb, GET/POST commands/config - get or \(re\)set the
    * config
    *
    * 还接受对服务的直接命令，其中 apiBase 的最后一段是单词“commands” 示例： POST
    * 命令/resetDb、GET/POST 命令/config - 获取或（重新）设置配置
    *
    *   HTTP overrides:
-   *     If the injected inMemDbService defines an HTTP method (lowercase)
+   *     If the injected inMemDbService defines an HTTP method \(lowercase\)
    *     The request is forwarded to that method as in
    *     `inMemDbService.get(requestInfo)`
    *     which must return either an Observable of the response type
-   *     for this http library or null|undefined (which means "keep processing").
+   *     for this http library or null|undefined \(which means "keep processing"\).
    *
    * HTTP 覆盖：如果注入的 inMemDbService 定义了一个 HTTP 方法（小写），则请求将被转发到该方法，就像
    * `inMemDbService.get(requestInfo)` 一样，它必须返回此 HTTP 库的响应类型的 Observable 或
@@ -196,7 +196,7 @@ export abstract class BackendService {
   }
 
   /**
-   * Get a method from the `InMemoryDbService` (if it exists), bound to that service
+   * Get a method from the `InMemoryDbService` \(if it exists\), bound to that service
    *
    * 从 `InMemoryDbService`（如果存在）获取绑定到该服务的方法
    *
@@ -253,20 +253,20 @@ export abstract class BackendService {
    * 当 `apiBase` 路径的最后一段是“commands”时，`collectionName` 是命令。
    *
    * Example URLs:
-   *   commands/resetdb (POST) // Reset the "database" to its original state
-   *   commands/config (GET)   // Return this service's config object
-   *   commands/config (POST)  // Update the config (e.g. the delay)
+   *   commands/resetdb \(POST\) // Reset the "database" to its original state
+   *   commands/config \(GET\)   // Return this service's config object
+   *   commands/config \(POST\)  // Update the config \(e.g. the delay\)
    *
-   * 示例 URL： commands/resetdb (POST) // 将“数据库”重置为其原始状态 commands/config (GET) //
-   * 返回此服务的配置对象 commands/config (POST) // 更新配置（例如延迟）
+   * 示例 URL： commands/resetdb \(POST\) // 将“数据库”重置为其原始状态 commands/config \(GET\) //
+   * 返回此服务的配置对象 commands/config \(POST\) // 更新配置（例如延迟）
    *
    * Usage:
-   *   http.post('commands/resetdb', undefined);
-   *   http.get('commands/config');
-   *   http.post('commands/config', '{"delay":1000}');
+   *   http.post\('commands/resetdb', undefined\);
+   *   http.get\('commands/config'\);
+   *   http.post\('commands/config', '{"delay":1000}'\);
    *
-   * 用法： http.post('commands/resetdb', undefined); http.get('commands/config');
-   * http.post('commands/config', '{"delay":1000}');
+   * 用法： http.post\('commands/resetdb', undefined\); http.get\('commands/config'\);
+   * http.post\('commands/config', '{"delay":1000}'\);
    *
    */
   protected commands(reqInfo: RequestInfo): Observable<any> {
@@ -347,8 +347,7 @@ export abstract class BackendService {
    * @param resOptionsFactory - creates ResponseOptions when observable is subscribed
    *
    *   订阅 observable 时创建 ResponseOptions
-   *
-   * @param withDelay - if true (default), add simulated latency delay from configuration
+   * @param withDelay - if true \(default\), add simulated latency delay from configuration
    *
    *   如果为 true（默认），则从配置中添加模拟的延迟延迟
    *
@@ -557,15 +556,14 @@ export abstract class BackendService {
   }
 
   /**
-   * return canonical HTTP method name (lowercase) from the request object
-   * e.g. (req.method || 'get').toLowerCase();
+   * return canonical HTTP method name \(lowercase\) from the request object
+   * e.g. \(req.method || 'get'\).toLowerCase\(\);
    *
-   * 从请求对象返回规范的 HTTP 方法名称（小写），例如 (req.method || 'get').toLowerCase();
+   * 从请求对象返回规范的 HTTP 方法名称（小写），例如 \(req.method || 'get'\).toLowerCase\(\);
    *
    * @param req - request object from the http call
    *
    *   来自 http 调用的请求对象
-   *
    */
   protected abstract getRequestMethod(req: any): string;
 

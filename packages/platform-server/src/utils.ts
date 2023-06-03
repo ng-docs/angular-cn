@@ -115,8 +115,9 @@ const DEFAULT_SERVER_CONTEXT = 'other';
 
 /**
  * An internal token that allows providing extra information about the server context
- * (e.g. whether SSR or SSG was used). The value is a string and characters other
+ * \(e.g. whether SSR or SSG was used\). The value is a string and characters other
  * than [a-zA-Z0-9\-] are removed. See the default value in `DEFAULT_SERVER_CONTEXT` const.
+ *
  */
 export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');
 
@@ -198,8 +199,10 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  * - `platformProviders` - the platform level providers for the current render request.
  *
  *   `platformProviders` - 当前渲染请求的平台级提供程序。
+ * @returns
  *
- * @returns A Promise, that returns serialized (to a string) rendered page, once resolved.
+ * A Promise, that returns serialized \(to a string\) rendered page, once resolved.
+ *
  * @publicApi
  * @developerPreview
  */

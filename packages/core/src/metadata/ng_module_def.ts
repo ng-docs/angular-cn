@@ -23,8 +23,8 @@ export interface NgModuleType<T = any> extends Type<T> {
  * A scope is a set of directives and pipes that are visible in a particular context. Each
  * `NgModule` has two scopes. The `compilation` scope is the set of directives and pipes that will
  * be recognized in the templates of components declared by the module. The `exported` scope is the
- * set of directives and pipes exported by a module (that is, module B's exported scope gets added
- * to module A's compilation scope when module A imports B).
+ * set of directives and pipes exported by a module \(that is, module B's exported scope gets added
+ * to module A's compilation scope when module A imports B\).
  *
  * 范围是在特定上下文中可见的一组指令和管道。每个 `NgModule` 都有两个范围。 `compilation`
  * 范围是将在模块声明的组件模板中识别的指令和管道集。 `exported`

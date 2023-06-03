@@ -58,12 +58,13 @@ let _findMatchingDehydratedViewImpl: typeof findMatchingDehydratedViewImpl =
 
 /**
  * Retrieves the next dehydrated view from the LContainer and verifies that
- * it matches a given template id (from the TView that was used to create this
- * instance of a view). If the id doesn't match, that means that we are in an
+ * it matches a given template id \(from the TView that was used to create this
+ * instance of a view\). If the id doesn't match, that means that we are in an
  * unexpected state and can not complete the reconciliation process. Thus,
- * all dehydrated views from this LContainer are removed (including corresponding
- * DOM nodes) and the rendering is performed as if there were no dehydrated views
+ * all dehydrated views from this LContainer are removed \(including corresponding
+ * DOM nodes\) and the rendering is performed as if there were no dehydrated views
  * in this container.
+ *
  */
 function findMatchingDehydratedViewImpl(
     lContainer: LContainer, template: string|null): DehydratedContainerView|null {

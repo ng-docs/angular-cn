@@ -51,10 +51,10 @@ export function matchingProjectionSlotIndex(tNode: TNode, projectionSlots: Proje
 /**
  * Instruction to distribute projectable nodes among <ng-content> occurrences in a given template.
  * It takes all the selectors from the entire component's template and decides where
- * each projected node belongs (it re-distributes nodes among "buckets" where each "bucket" is
- * backed by a selector).
+ * each projected node belongs \(it re-distributes nodes among "buckets" where each "bucket" is
+ * backed by a selector\).
  *
- * This function requires CSS selectors to be provided in 2 forms: parsed (by a compiler) and text,
+ * This function requires CSS selectors to be provided in 2 forms: parsed \(by a compiler\) and text,
  * un-parsed form.
  *
  * The parsed form is needed for efficient matching of a node against a given CSS selector.
@@ -64,8 +64,8 @@ export function matchingProjectionSlotIndex(tNode: TNode, projectionSlots: Proje
  * drawbacks:
  *
  * - having only a textual form would require runtime parsing of CSS selectors;
- * - we can't have only a parsed as we can't re-construct textual form from it (as entered by a
- *   template author).
+ * - we can't have only a parsed as we can't re-construct textual form from it \(as entered by a
+ *   template author\).
  *
  * @param projectionSlots? A collection of projection slots. A projection slot can be based
  *        on a parsed CSS selectors or set to the wildcard selector ("*") in order to match

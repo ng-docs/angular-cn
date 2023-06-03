@@ -98,14 +98,13 @@ export class NgPlural {
 
 /**
  * @ngModule CommonModule
- *
  * @description
  *
  * Creates a view that will be added/removed from the parent {@link NgPlural} when the
  * given expression matches the plural expression according to CLDR rules.
  *
  * 创建一个视图，当给定表达式根据 CLDR 规则与复数表达式匹配时，将在父视图 {@link NgPlural}
- *中添加/删除该视图。
+ * 中添加/删除该视图。
  *
  * @usageNotes
  *
@@ -114,7 +113,7 @@ export class NgPlural {
  *   <ng-template ngPluralCase="=0">...</ng-template>
  *   <ng-template ngPluralCase="other">...</ng-template>
  * </some-element>
- *```
+ * ```
  *
  * See {@link NgPlural} for more details and example.
  *

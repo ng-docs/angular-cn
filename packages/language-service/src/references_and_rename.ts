@@ -94,7 +94,6 @@ interface PipeRenameContext {
    * The string literal for the pipe name that appears in the @Pipe meta
    *
    * @Pipe 元中出现的管道名称的字符串文字
-   *
    */
   pipeNameExpr: ts.StringLiteral;
 
@@ -416,8 +415,8 @@ export class RenameBuilder {
 
 /**
  * From the provided `RenameRequest`, determines what text we should expect all produced
- * `ts.RenameLocation`s to have and creates an initial entry for indirect renames (one which is
- * required for the rename operation, but cannot be found by the native TS LS).
+ * `ts.RenameLocation`s to have and creates an initial entry for indirect renames \(one which is
+ * required for the rename operation, but cannot be found by the native TS LS\).
  *
  * 从提供的 `RenameRequest` ，确定我们应该期望所有生成的 `ts.RenameLocation`
  * 具有的文本，并为间接重命名创建一个初始条目（重命名操作所需，但本机 TS LS 找不到）。

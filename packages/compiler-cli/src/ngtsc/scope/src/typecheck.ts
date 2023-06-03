@@ -57,7 +57,7 @@ export interface TypeCheckScope {
 
   /**
    * Whether the original compilation scope which produced this `TypeCheckScope` was itself poisoned
-   * (contained semantic errors during its production).
+   * \(contained semantic errors during its production\).
    *
    * 生成此 `TypeCheckScope` 的原始编译范围本身是否已中毒（在其生产过程中包含语义错误）。
    *

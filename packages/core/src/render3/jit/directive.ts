@@ -54,12 +54,12 @@ let compilationDepth = 0;
 
 /**
  * Compile an Angular component according to its decorator metadata, and patch the resulting
- * component def (ɵcmp) onto the component type.
+ * component def \(ɵcmp\) onto the component type.
  *
- * 根据其装饰器元数据编译 Angular 组件，并将生成的组件 def (ɵcmp) 修补到组件类型上。
+ * 根据其装饰器元数据编译 Angular 组件，并将生成的组件 def \(ɵcmp\) 修补到组件类型上。
  *
- * Compilation may be asynchronous (due to the need to resolve URLs for the component template or
- * other resources, for example). In the event that compilation is not immediate, `compileComponent`
+ * Compilation may be asynchronous \(due to the need to resolve URLs for the component template or
+ * other resources, for example\). In the event that compilation is not immediate, `compileComponent`
  * will enqueue resource resolution into a global queue and will fail to return the `ɵcmp`
  * until the global queue has been resolved with a call to `resolveComponentResources`.
  *
@@ -417,8 +417,8 @@ export function extendsDirectlyFromObject(type: Type<any>): boolean {
 }
 
 /**
- * Extract the `R3DirectiveMetadata` for a particular directive (either a `Directive` or a
- * `Component`).
+ * Extract the `R3DirectiveMetadata` for a particular directive \(either a `Directive` or a
+ * `Component`\).
  *
  * 提取特定指令（`Directive` 或 `Component`）的 `R3DirectiveMetadata` 。
  *

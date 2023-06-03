@@ -904,8 +904,8 @@ function convertDiagnostic(
 }
 
 /**
- * Data for template type-checking related to a specific input file in the user's program (which
- * contains components to be checked).
+ * Data for template type-checking related to a specific input file in the user's program \(which
+ * contains components to be checked\).
  *
  * 与用户程序中的特定输入文件（包含要检查的组件）相关的模板类型检查的数据。
  *

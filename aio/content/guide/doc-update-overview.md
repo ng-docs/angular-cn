@@ -74,7 +74,7 @@ For more information about how to create a `working` branch, see [Starting to ed
 In your `working` branch, you edit and create the documentation topics necessary to resolve the issue.
 You perform most of this work in your integrated development environment \(IDE\).
 
-在你的 `working` 分支中，你可以编辑和创建解决问题所需的文档主题。你在集成开发环境 (IDE) 中执行大部分此类工作。
+在你的 `working` 分支中，你可以编辑和创建解决问题所需的文档主题。你在集成开发环境（IDE）中执行大部分此类工作。
 
 For more information about how to revise a documentation topic, see [Revising a documentation topic](guide/doc-editing).
 

@@ -34,7 +34,7 @@ For details about changes between versions, and information about updating from 
 
 Invoke the tool on the command line through the `ng` executable.
 Online help is available on the command line.
-Enter the following to list commands or options for a given command (such as [generate](cli/generate)) with a short description.
+Enter the following to list commands or options for a given command \(such as [generate](cli/generate)\) with a short description.
 
 通过 `ng` 可执行文件可以在命令行上调用此工具。命令行中还提供了联机帮助。输入下列命令列出命令或指定命令（如 [generate](cli/generate)）选项的简短说明。
 
@@ -145,8 +145,8 @@ Command syntax is shown as follows:
 
   大多数命令以及少量选项，会有别名。别名会显示在每个命令的语法描述中。
 
-* Option names are prefixed with a double dash (`--`) characters.
-  Option aliases are prefixed with a single dash (`-`) character.
+* Option names are prefixed with a double dash \(`--`\) characters.
+  Option aliases are prefixed with a single dash \(`-`\) character.
   Arguments are not prefixed.
   For example:
 

@@ -34,19 +34,16 @@ import {elementPropertyInternal, setInputsForProperty, storePropertyBindingMetad
  *        renaming as part of minification.
  *
  * 属性的名称。因为它将转到 DOM，因此不会作为缩小的一部分重命名。
- *
  * @param value New value to write.
  *
  * 要写入的新值。
- *
  * @param sanitizer An optional function used to sanitize the value.
  *
  * 用于清理值的可选函数。
- *
  * @returns
  *
  * This function returns itself so that it may be chained
- * (e.g. `property('name', ctx.name)('title', ctx.title)`)
+ * \(e.g. `property('name', ctx.name)('title', ctx.title)`\)
  *
  * 此函数返回自身，以便它可以被链接（例如 `property('name', ctx.name)('title', ctx.title)`）
  *

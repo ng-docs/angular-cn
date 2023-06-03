@@ -34,7 +34,7 @@ These decorators mark their type and provide metadata that tells Angular how to 
 
   组件类的元数据将组件类和一个用来定义视图的*模板*关联起来。模板把普通的 HTML 和 Angular *指令*与*绑定标记（markup）*组合起来，这样 Angular 就可以在渲染 HTML 之前先修改这些 HTML。
 
-* The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection (DI)*
+* The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection \(DI\)*
 
   服务类的元数据提供了一些信息，Angular 要用这些信息来让组件可以通过*依赖注入（DI）*使用该服务。
 
@@ -64,7 +64,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 ## 模块
 
-Angular *NgModules* differ from and complement JavaScript (ES2015) modules.
+Angular *NgModules* differ from and complement JavaScript \(ES2015\) modules.
 An NgModule declares a compilation context for a set of components that is dedicated to an application domain, a workflow, or a closely related set of capabilities.
 An NgModule can associate its components with related code, such as services, to form functional units.
 
@@ -97,7 +97,7 @@ For a more detailed discussion, see [Introduction to modules](guide/architecture
 
 ## 组件
 
-Every Angular application has at least one component, the *root component* that connects a component hierarchy with the page document object model (DOM).
+Every Angular application has at least one component, the *root component* that connects a component hierarchy with the page document object model \(DOM\).
 Each component defines a class that contains application data and logic, and is associated with an HTML *template* that defines a view to be displayed in a target environment.
 
 每个 Angular 应用都至少有一个组件，也就是*根组件*，它会把组件树和页面中的 DOM 连接起来。每个组件都会定义一个类，其中包含应用的数据和逻辑，并与一个 HTML *模板*相关联，该模板定义了一个供目标环境下显示的视图。
@@ -166,9 +166,9 @@ For data or logic that isn't associated with a specific view, and that you want 
 A service class definition is immediately preceded by the `@Injectable()` decorator.
 The decorator provides the metadata that allows other providers to be **injected** as dependencies into your class.
 
-对于与特定视图无关并希望跨组件共享的数据或逻辑，可以创建*服务*类。服务类的定义通常紧跟在 “@Injectable()” 装饰器之后。该装饰器提供的元数据可以让你的服务作为依赖*被注入到*客户组件中。
+对于与特定视图无关并希望跨组件共享的数据或逻辑，可以创建*服务*类。服务类的定义通常紧跟在 “&commat;Injectable\(\)” 装饰器之后。该装饰器提供的元数据可以让你的服务作为依赖*被注入到*客户组件中。
 
-*Dependency injection* (DI) lets you keep your component classes lean and efficient.
+*Dependency injection* \(DI\) lets you keep your component classes lean and efficient.
 They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
 
 *依赖注入*（或 DI）让你可以保持组件类的精简和高效。有了 DI，组件就不用从服务器获取数据、验证用户输入或直接把日志写到控制台，而是会把这些任务委托给服务。

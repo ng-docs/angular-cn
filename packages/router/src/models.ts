@@ -30,7 +30,7 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  * routed components on same url navigation, you need to set `onSameUrlNavigation` to `'reload'`
  * _and_ provide a `RouteReuseStrategy` which returns `false` for `shouldReuseRoute`. Additionally,
  * resolvers and most guards for routes do not run unless the path or path params changed
- * (configured by `runGuardsAndResolvers`).
+ * \(configured by `runGuardsAndResolvers`\).
  *
  * @publicApi
  * @see `RouteReuseStrategy`
@@ -520,14 +520,14 @@ export type RunGuardsAndResolvers =
  * and both of them require an ID parameter. You can accomplish this using a route
  * that does not specify a component at the top level.
  *
- * 在以下示例中，'MainChild' 和 'AuxChild' 是同级。当导航到 'parent/10/(a//aux:b)' 时，该路由会实例化彼此相邻的主要子组件和 aux 子组件。为此，应用程序组件必须定义主要和辅助出口。
+ * 在以下示例中，'MainChild' 和 'AuxChild' 是同级。当导航到 'parent/10/\(a//aux:b\)' 时，该路由会实例化彼此相邻的主要子组件和 aux 子组件。为此，应用程序组件必须定义主要和辅助出口。
  *
  * In the following example, 'MainChild' and 'AuxChild' are siblings.
- * When navigating to 'parent/10/(a//aux:b)', the route instantiates
+ * When navigating to 'parent/10/\(a//aux:b\)', the route instantiates
  * the main child and aux child components next to each other.
  * For this to work, the application component must have the primary and aux outlets defined.
  *
- * 在以下示例中，“MainChild”和“AuxChild”是同级。当导航到 'parent/10/(a//aux:b)' 时，该路由会实例化彼此相邻的主子组件和辅助子组件。为此，应用程序组件必须定义主要的出口和辅助出口。
+ * 在以下示例中，“MainChild”和“AuxChild”是同级。当导航到 'parent/10/\(a//aux:b\)' 时，该路由会实例化彼此相邻的主子组件和辅助子组件。为此，应用程序组件必须定义主要的出口和辅助出口。
  *
  * ```
  * [{
@@ -600,8 +600,8 @@ export interface Route {
   /**
    * The path to match against. Cannot be used together with a custom `matcher` function.
    * A URL string that uses router matching notation.
-   * Can be a wild card (`**`) that matches any URL (see Usage Notes below).
-   * Default is "/" (the root path).
+   * Can be a wild card \(`**`\) that matches any URL \(see Usage Notes below\).
+   * Default is "/" \(the root path\).
    *
    * 匹配的路径。不能与自定义 `matcher` 功能一起使用。使用路由器匹配表示法的 URL 字符串。可以是与任何 URL 匹配的通配符（`**`）（请参阅下面的使用说明）。默认值为 “/”（根路径）。
    *
@@ -668,10 +668,10 @@ export interface Route {
    *
    * 路径匹配时要重定向到的 URL。
    *
-   * Absolute if the URL begins with a slash (/), otherwise relative to the path URL.
+   * Absolute if the URL begins with a slash \(/\), otherwise relative to the path URL.
    * Note that no further redirects are evaluated after an absolute redirect.
    *
-   * 如果 URL 以斜杠 (/) 开头，则为绝对值，否则相对于路径 URL。请注意，在绝对重定向之后不会估算进一步的重定向。
+   * 如果 URL 以斜杠 \(/\) 开头，则为绝对值，否则相对于路径 URL。请注意，在绝对重定向之后不会估算进一步的重定向。
    *
    * When not present, router does not redirect.
    *
@@ -1395,7 +1395,6 @@ export interface Resolve<T> {
  * The order of execution is: baseGuard, childGuard, baseDataResolver, childDataResolver.
  *
  * 执行顺序为：BaseGuard、ChildGuard、BaseDataResolver、ChildDataResolver。
- *
  * @publicApi
  * @see `Route`
  */
@@ -1456,9 +1455,11 @@ export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSna
  * })
  * class AppModule {}
  * ```
- *
  * @publicApi
- * @deprecated Use {@link CanMatchFn} instead
+ * @deprecated
+ *
+ * Use {@link CanMatchFn} instead
+ *
  */
 export interface CanLoad {
   canLoad(route: Route, segments: UrlSegment[]):
@@ -1488,19 +1489,17 @@ export type CanLoadFn = (route: Route, segments: UrlSegment[]) =>
  * control how the navigation should be handled.
  *
  * 修改 `Router` 导航策略的选项。将包含这些属性中的任何一个的对象提供给 `Router` 导航函数，以控制应如何处理导航。
+ * @see [Router.navigate\(\) method](api/router/Router#navigate)
  *
- * @see [Router.navigate() method](api/router/Router#navigate)
+ * [Router.navigate\(\) 方法](api/router/Router#navigate)
  *
- * [Router.navigate() 方法](api/router/Router#navigate)
+ * @see [Router.navigateByUrl\(\) method](api/router/Router#navigatebyurl)
  *
- * @see [Router.navigateByUrl() method](api/router/Router#navigatebyurl)
- *
- * [Router.navigateByUrl() 方法](api/router/Router#navigatebyurl)
+ * [Router.navigateByUrl\(\) 方法](api/router/Router#navigatebyurl)
  *
  * @see [Routing and Navigation guide](guide/router)
  *
  * [路由和导航指南](guide/router)
- *
  * @publicApi
  */
 export interface NavigationBehaviorOptions {
@@ -1544,10 +1543,10 @@ export interface NavigationBehaviorOptions {
   /**
    * Developer-defined state that can be passed to any navigation.
    * Access this value through the `Navigation.extras` object
-   * returned from the [Router.getCurrentNavigation()
+   * returned from the [Router.getCurrentNavigation\(\)
    * method](api/router/Router#getcurrentnavigation) while a navigation is executing.
    *
-   * 由开发人员定义的状态，可以传递给任何导航。当执行导航时会通过由 [Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象来访问此值。
+   * 由开发人员定义的状态，可以传递给任何导航。当执行导航时会通过由 [Router.getCurrentNavigation\(\) 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象来访问此值。
    *
    * After a navigation completes, the router writes an object containing this
    * value together with a `navigationId` to `history.state`.

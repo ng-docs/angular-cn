@@ -32,19 +32,16 @@ const EXTRA_CHECK_FUNCTIONS: Record<string, ExtraCheckFunction> = {
  * @param fs The mock file-system that holds the expected and generated files to compare.
  *
  * 包含要比较的预期文件和生成文件的模拟文件系统。
- *
- * @param testPath Path to the current test case (relative to the basePath).
+ * @param testPath Path to the current test case \(relative to the basePath\).
  *
  * 当前测试用例的路径（相对于 basePath）。
  *
  * @param failureMessage The message to display if the expectation fails.
  *
  * 如果期望失败，要显示的消息。
- *
  * @param expectedFiles The list of expected-generated pairs to compare.
  *
  * 要比较的预期生成对的列表。
- *
  */
 export function checkExpectations(
     fs: ReadonlyFileSystem, testPath: string, failureMessage: string, expectedFiles: ExpectedFile[],

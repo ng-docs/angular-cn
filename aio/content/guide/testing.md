@@ -94,7 +94,7 @@ The test output is displayed in the browser using [Karma Jasmine HTML Reporter](
 
 </div>
 
-Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group ("test suite").
+Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group \("test suite"\).
 
 可以点击某一行测试，来单独重跑这个测试，或者点击一行描述信息来重跑所选测试组（“测试套件”）中的那些测试。
 
@@ -153,7 +153,7 @@ The test file extension **must be `.spec.ts`** so that tooling can identify it a
 </div>
 
 The `app.component.ts` and `app.component.spec.ts` files are siblings in the same folder.
-The root file names (`app.component`) are the same for both files.
+The root file names \(`app.component`\) are the same for both files.
 
 `app.component.ts` 和 `app.component.spec.ts` 文件位于同一个文件夹中，而且相邻。其根文件名部分（`app.component`）都是一样的。
 
@@ -230,7 +230,7 @@ Continuous integration \(CI\) servers let you set up your project repository so 
 
 To test your Angular CLI application in Continuous integration \(CI\) run the following command:
 
-要在持续集成 (CI) 中测试你的 Angular CLI 应用程序，请运行以下命令：
+要在持续集成 \(CI\) 中测试你的 Angular CLI 应用程序，请运行以下命令：
 
 <code-example format="shell" language="shell">
 

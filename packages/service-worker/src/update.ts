@@ -61,6 +61,7 @@ export class SwUpdate {
    *
    * {@example service-worker-getting-started/src/app/prompt-update.service.ts
    * region='sw-replicate-available'}
+   *
    */
   readonly available: Observable<UpdateAvailableEvent>;
 
@@ -91,8 +92,8 @@ export class SwUpdate {
   readonly unrecoverable: Observable<UnrecoverableStateEvent>;
 
   /**
-   * True if the Service Worker is enabled (supported by the browser and enabled via
-   * `ServiceWorkerModule`).
+   * True if the Service Worker is enabled \(supported by the browser and enabled via
+   * `ServiceWorkerModule`\).
    *
    * 如果启用了 Service Worker（受浏览器支持并通过 `ServiceWorkerModule` 启用），则为真。
    *
@@ -160,7 +161,7 @@ export class SwUpdate {
   }
 
   /**
-   * Updates the current client (i.e. browser tab) to the latest version that is ready for
+   * Updates the current client \(i.e. browser tab\) to the latest version that is ready for
    * activation.
    *
    * 将当前客户端（即浏览器选项卡）更新到可激活的最新版本。
@@ -191,8 +192,8 @@ export class SwUpdate {
    *
    *   如果更新已成功激活，则解析为 `true`
    *
-   * - resolves to `false` if no update was available (for example, the client was already on the
-   *   latest version).
+   * - resolves to `false` if no update was available \(for example, the client was already on the
+   *   latest version\).
    *
    *   如果没有可用的更新（例如，客户端已经在最新版本上），则解析为 `false` 。
    *

@@ -10,7 +10,7 @@ import {AbsoluteFsPath} from '../../../src/ngtsc/file_system';
 import {SourceFile, SourceFileLoader} from '../../../src/ngtsc/sourcemaps';
 
 /**
- * A function that will return a `SourceFile` object (or null) for the current file being linked.
+ * A function that will return a `SourceFile` object \(or null\) for the current file being linked.
  *
  * 一个函数，它将返回正在链接的当前文件的 `SourceFile` 对象（或 null）。
  *

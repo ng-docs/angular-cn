@@ -58,7 +58,7 @@ interface EmitResolver {
  *
  * This is a trick the CLI used in the past  for constructor parameter downleveling in JIT:
  * https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325
- * The trick is not ideal though as it preserves the full import (as outlined before), and it
+ * The trick is not ideal though as it preserves the full import \(as outlined before\), and it
  * results in a slow-down due to the type checker being involved multiple times. The CLI worked
  * around this import preserving issue by having another complex post-process step that detects and
  * elides unused imports. Note that these unused imports could cause unused chunks being generated
@@ -72,8 +72,8 @@ interface EmitResolver {
  *
  * This is not ideal though, as we basically re-implement the complex import usage resolution
  * from TypeScript. We can do better by letting TypeScript do the import eliding, but providing
- * information about the alias declarations (e.g. import specifiers) that should not be elided
- * because they are actually referenced (as they will now appear in static properties).
+ * information about the alias declarations \(e.g. import specifiers\) that should not be elided
+ * because they are actually referenced \(as they will now appear in static properties\).
  *
  * 但这并不理想，因为我们基本上是从 TypeScript 重新实现了复杂的导入使用解析。我们可以通过让
  * TypeScript
@@ -87,7 +87,7 @@ interface EmitResolver {
  * 1. https://github.com/microsoft/TypeScript/issues/17516.
  * 1. https://github.com/angular/tsickle/issues/635.
  *
- * The patch we apply to tell TypeScript about actual referenced aliases (i.e. imported symbols),
+ * The patch we apply to tell TypeScript about actual referenced aliases \(i.e. imported symbols\),
  * matches conceptually with the logic that runs internally in TypeScript when the
  * `emitDecoratorMetadata` flag is enabled. TypeScript basically surfaces the same problem and
  * solves it conceptually the same way, but obviously doesn't need to access an internal API.

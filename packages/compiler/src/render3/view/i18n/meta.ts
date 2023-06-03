@@ -43,7 +43,7 @@ const setI18nRefs: VisitNodeFn = (htmlNode, i18nNode) => {
 
 /**
  * This visitor walks over HTML parse tree and converts information stored in
- * i18n-related attributes ("i18n" and "i18n-\*") into i18n meta object that is
+ * i18n-related attributes \("i18n" and "i18n-\*"\) into i18n meta object that is
  * stored with other element's and attribute's information.
  *
  * 此访问者会遍历 HTML 解析树，并将存储在 i18n 相关属性（“i18n”和“i18n-\*”）中的信息转换为 i18n

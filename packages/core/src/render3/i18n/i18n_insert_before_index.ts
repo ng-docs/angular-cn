@@ -34,8 +34,8 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  *    所有 `TNodeType.Placeholder` `TNodes` 都是稍后将由 `ɵɵelementStart`
  *    指令创建的元素。
  *
- * 3. `ɵɵelementStart` instruction will create `TNode`s in the ascending `TNode.index` order. (So a
- *       smaller index `TNode` is guaranteed to be created before a larger one)
+ * 3. `ɵɵelementStart` instruction will create `TNode`s in the ascending `TNode.index` order. \(So a
+ *       smaller index `TNode` is guaranteed to be created before a larger one\)
  *
  *    `ɵɵelementStart` 指令将按 `TNode` `TNode.index`（因此可以保证在较大的索引
  *    `TNode` 之前创建）
@@ -52,11 +52,11 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  * `TNode.next.index` 可能比 `TNode.index`
  * 大，这意味着下一个节点尚未创建，因此我们不能在它前面插入。
  *
- * Rule1: `TNode.insertBeforeIndex = null` if `TNode.next === null` (Initial condition, as we don't
- *        know if there will be further `TNode`s inserted after.)
+ * Rule1: `TNode.insertBeforeIndex = null` if `TNode.next === null` \(Initial condition, as we don't
+ *        know if there will be further `TNode`s inserted after.\)
  * Rule2: If `previousTNode` is created after the `tNode` being inserted, then
- *        `previousTNode.insertBeforeNode = tNode.index` (So when a new `tNode` is added we check
- *        previous to see if we can update its `insertBeforeTNode`)
+ *        `previousTNode.insertBeforeNode = tNode.index` \(So when a new `tNode` is added we check
+ *        previous to see if we can update its `insertBeforeTNode`\)
  *
  * 规则 1： `TNode.insertBeforeIndex = null` if `TNode.next === null`
  * （初始条件，因为我们不知道之后是否会插入更多 `TNode` 。）规则 2：如果 `previousTNode` 是在插入
@@ -69,10 +69,11 @@ import {getInsertInFrontOfRNodeWithI18n, processI18nInsertBefore} from '../node_
  * 有关更多上下文，请参阅 `TNode.insertBeforeIndex` 。
  *
  * @param previousTNodes A list of previous TNodes so that we can easily traverse `TNode`s in
- *     reverse order. (If `TNode` would have `previous` this would not be necessary.)
+ *     reverse order. \(If `TNode` would have `previous` this would not be necessary.\)
  *
  * 以前的 TNode 的列表，以便我们可以轻松地以相反的顺序遍历 `TNode` 。（如果 `TNode` 有 `previous`
  * 的，则没有必要。）
+ *
  * @param newTNode A TNode to add to the `previousTNodes` list.
  *
  * 要添加到 `previousTNodes` 列表的 TNode。

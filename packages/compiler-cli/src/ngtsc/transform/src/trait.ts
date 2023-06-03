@@ -47,7 +47,7 @@ export enum TraitState {
 }
 
 /**
- * An Ivy aspect added to a class (for example, the compilation of a component definition).
+ * An Ivy aspect added to a class \(for example, the compilation of a component definition\).
  *
  * 添加到类的 Ivy 切面（例如，组件定义的编译）。
  *
@@ -66,7 +66,7 @@ export enum TraitState {
  * 都在类型系统中表示。这包括从一种类型到另一种类型的任何可能的转换。
  *
  * This not only simplifies the implementation, but ensures traits are monomorphic objects as
- * they're all just "views" in the type system of the same object (which never changes shape).
+ * they're all just "views" in the type system of the same object \(which never changes shape\).
  *
  * 这不仅简化了实现，还确保了 trait
  * 是单态对象，因为它们都是同一个对象类型系统中的“视图”（它永远不会改变形状）。
@@ -76,8 +76,8 @@ export type Trait<D, A, S extends SemanticSymbol|null, R> = PendingTrait<D, A, S
     SkippedTrait<D, A, S, R>|AnalyzedTrait<D, A, S, R>|ResolvedTrait<D, A, S, R>;
 
 /**
- * The value side of `Trait` exposes a helper to create a `Trait` in a pending state (by delegating
- * to `TraitImpl`).
+ * The value side of `Trait` exposes a helper to create a `Trait` in a pending state \(by delegating
+ * to `TraitImpl`\).
  *
  * `Trait` 的值侧公开了一个帮助器，以创建处于挂起状态的 `Trait`（通过委托给 `TraitImpl`）。
  *
@@ -116,10 +116,10 @@ export interface TraitBase<D, A, S extends SemanticSymbol|null, R> {
   handler: DecoratorHandler<D, A, S, R>;
 
   /**
-   * The detection result (of `handler.detect`) which indicated that this trait applied to the
+   * The detection result \(of `handler.detect`\) which indicated that this trait applied to the
    * class.
    *
-   *（`handler.detect` 的）检测结果，表明此特性适用于类。
+   * （`handler.detect` 的）检测结果，表明此特性适用于类。
    *
    * This is mainly used to cache the detection between pre-analysis and analysis.
    *
@@ -198,7 +198,7 @@ export interface AnalyzedTrait<D, A, S extends SemanticSymbol|null, R> extends
   symbol: S;
 
   /**
-   * Analysis results of the given trait (if able to be produced), or `null` if analysis failed
+   * Analysis results of the given trait \(if able to be produced\), or `null` if analysis failed
    * completely.
    *
    * 给定性状的分析结果（如果能够生成），如果分析完全失败，则为 `null` 。

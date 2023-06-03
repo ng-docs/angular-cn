@@ -24,10 +24,11 @@ import {isInSkipHydrationBlock, SKIP_HYDRATION_ATTR_NAME} from './skip_hydration
 import {getComponentLViewForHydration, NGH_ATTR_NAME, NGH_DATA_KEY, TextNodeMarker} from './utils';
 
 /**
- * A collection that tracks all serialized views (`ngh` DOM annotations)
+ * A collection that tracks all serialized views \(`ngh` DOM annotations\)
  * to avoid duplication. An attempt to add a duplicate view results in the
  * collection returning the index of the previously collected serialized view.
  * This reduces the number of annotations needed for a given page.
+ *
  */
 class SerializedViewCollection {
   private views: SerializedView[] = [];
@@ -82,7 +83,8 @@ interface HydrationContext {
 
 /**
  * Computes the number of root nodes in a given view
- * (or child nodes in a given container if a tNode is provided).
+ * \(or child nodes in a given container if a tNode is provided\).
+ *
  */
 function calcNumRootNodes(tView: TView, lView: LView, tNode: TNode|null): number {
   const rootNodes: unknown[] = [];
@@ -186,9 +188,10 @@ function serializeLContainer(
 }
 
 /**
- * Helper function to produce a node path (which navigation steps runtime logic
- * needs to take to locate a node) and stores it in the `NODES` section of the
+ * Helper function to produce a node path \(which navigation steps runtime logic
+ * needs to take to locate a node\) and stores it in the `NODES` section of the
  * current serialized view.
+ *
  */
 function appendSerializedNodePath(ngh: SerializedView, tNode: TNode, lView: LView) {
   const noOffsetIndex = tNode.index - HEADER_OFFSET;
@@ -452,8 +455,9 @@ function isContentProjectedNode(tNode: TNode): boolean {
  * Check whether a given node exists, but is disconnected from the DOM.
  *
  * Note: we leverage the fact that we have this information available in the DOM emulation
- * layer (in Domino) for now. Longer-term solution should not rely on the DOM emulation and
+ * layer \(in Domino\) for now. Longer-term solution should not rely on the DOM emulation and
  * only use internal data structures and state to compute this information.
+ *
  */
 function isDisconnectedNode(tNode: TNode, lView: LView) {
   return !(tNode.type & TNodeType.Projection) && !!lView[tNode.index] &&

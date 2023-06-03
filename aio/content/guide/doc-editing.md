@@ -153,9 +153,9 @@ As you make changes to the documentation source files on your local computer, yo
 
   **已创建，但未保存**
 
-  This is the state of your changes as you edit a file in your integrated development environment (IDE).
+  This is the state of your changes as you edit a file in your integrated development environment \(IDE\).
 
-  这是你在集成开发环境 (IDE) 中编辑文件时所做的更改的状态。
+  这是你在集成开发环境（IDE）中编辑文件时所做的更改的状态。
 
 * **Saved, but not committed**
 

@@ -6,7 +6,7 @@ This page provides a conceptual overview of how to create and publish new librar
 
 对于如何创建和发布新库，以扩展 Angular 的功能，本页面提供了一个概念性的总览
 
-If you find that you need to solve the same problem in more than one application (or want to share your solution with other developers), you have a candidate for a library.
+If you find that you need to solve the same problem in more than one application \(or want to share your solution with other developers\), you have a candidate for a library.
 A simple example might be a button that sends users to your company website, that would be included in all applications that your company builds.
 
 如果你发现自己要在多个应用中解决同样的问题（或者要把你的解决方案分享给其它开发者），你就有了一个潜在的库。简单的例子就是一个用来把用户带到你公司网站上的按钮，该按钮会包含在你公司构建的所有应用中。
@@ -103,7 +103,7 @@ This builder, among other things, ensures that the library is always built with 
 
 To make library code reusable you must define a public API for it.
 This "user layer" defines what is available to consumers of your library.
-A user of your library should be able to access public functionality (such as NgModules, service providers and general utility functions) through a single import path.
+A user of your library should be able to access public functionality \(such as NgModules, service providers and general utility functions\) through a single import path.
 
 要让库代码可以复用，你必须为它定义一个公共的 API。这个“用户层”定义了库中消费者的可用内容。该库的用户应该可以通过单个的导入路径来访问公共功能（如 NgModules、服务提供者和工具函数）。
 
@@ -113,7 +113,7 @@ Use an NgModule to expose services and components.
 
 库的公共 API 是在库文件夹下的 `public-api.ts` 文件中维护的。当你的库被导入应用时，从该文件导出的所有内容都会公开。请使用 NgModule 来暴露这些服务和组件。
 
-Your library should supply documentation (typically a README file) for installation and maintenance.
+Your library should supply documentation \(typically a README file\) for installation and maintenance.
 
 你的库里应该提供一些文档（通常是 README 文件）来指导别人安装和维护。
 
@@ -151,7 +151,7 @@ Here are some things to consider in migrating application functionality to a lib
 
     同样，如果你的库代码依赖于某个服务，则需要迁移该服务
 
-  * If your library code or its templates depend on other libraries (such as Angular Material, for instance), you must configure your library with those dependencies
+  * If your library code or its templates depend on other libraries \(such as Angular Material, for instance\), you must configure your library with those dependencies
 
     如果你的库代码或其模板依赖于其它库（比如 Angular Material），你就必须把它们配置为该库的依赖
 
@@ -180,7 +180,7 @@ Here are some things to consider in migrating application functionality to a lib
 
 ## 使用代码生成原理图与 CLI 集成
 
-A library typically includes *reusable code* that defines components, services, and other Angular artifacts (pipes, directives) that you import into a project.
+A library typically includes *reusable code* that defines components, services, and other Angular artifacts \(pipes, directives\) that you import into a project.
 A library is packaged into an npm package for publishing and sharing.
 This package can also include [schematics](guide/glossary#schematic) that provide instructions for generating or transforming code directly in your project, in the same way that the CLI creates a generic new component with `ng generate component`.
 A schematic that is packaged with a library can, for example, provide the Angular CLI with the information it needs to generate a component that configures and uses a particular feature, or set of features, defined in that library.
@@ -196,7 +196,7 @@ Create and include the following kinds of schematics:
 
   包含一个安装原理图，以便 `ng add` 可以把你的库添加到项目中。
 
-* Include generation schematics in your library so that `ng generate` can scaffold your defined artifacts (components, services, tests) in a project
+* Include generation schematics in your library so that `ng generate` can scaffold your defined artifacts \(components, services, tests\) in a project
 
   在库中包含了生成原理图，以便 `ng generate` 可以为项目中的已定义工件（组件，服务，测试等）提供支持。
 
@@ -255,7 +255,7 @@ npm publish
 
 ## 管理库中的资产（assets）
 
-In your Angular library, the distributable can include additional assets like theming files, Sass mixins, or documentation (like a changelog).
+In your Angular library, the distributable can include additional assets like theming files, Sass mixins, or documentation \(like a changelog\).
 For more information [copy assets into your library as part of the build](https://github.com/ng-packagr/ng-packagr/blob/master/docs/copy-assets.md) and [embed assets in component styles](https://github.com/ng-packagr/ng-packagr/blob/master/docs/embed-assets-css.md).
 
 对于 Angular 库，可分发文件中可包含一些额外的资产，如主题文件、Sass mixins 或文档（如变更日志）。欲知详情，请参见[在构建时将资产复制到库中](https://github.com/ng-packagr/ng-packagr/blob/master/docs/copy-assets.md)和[将资产嵌入到组件样式中](https://github.com/ng-packagr/ng-packagr/blob/master/docs/embed-assets-css.md)。
@@ -422,13 +422,13 @@ There are two distribution formats to use when publishing a library:
 
 发布库时可以使用两种分发格式：
 
-| Distribution formats      | Details                                                                                                                                                                                                                                                                                                                                  |
-| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 分发格式                  | 详情                                                                                                                                                                                                                                                                                                                                     |
-| Partial-Ivy (recommended) | Contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards.                                                                                                                                                                                                                      |
-| 部分 Ivy（推荐）          | 包含可移植代码，从 v12 开始，使用任何版本的 Angular 构建的 Ivy 应用都可以使用这些可移植代码。                                                                                                                                                                                                                                            |
-| Full-Ivy                  | Contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the *exact* same version of Angular. This format is useful for environments where all library and application code is built directly from source. |
-| 完全 Ivy                  | 包含专用的 Angular Ivy 指令，不能保证它们可在 Angular 的不同版本中使用。这种格式要求库和应用使用*完全相同*的 Angular 版本构建。这种格式对于直接从源代码构建所有库和应用代码的环境很有用。                                                                                                                                                |
+| Distribution formats        | Details                                                                                                                                                                                                                                                                                                                                  |
+| :-------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 分发格式                    | 详情                                                                                                                                                                                                                                                                                                                                     |
+| Partial-Ivy \(recommended\) | Contains portable code that can be consumed by Ivy applications built with any version of Angular from v12 onwards.                                                                                                                                                                                                                      |
+| 部分 Ivy（推荐）            | 包含可移植代码，从 v12 开始，使用任何版本的 Angular 构建的 Ivy 应用都可以使用这些可移植代码。                                                                                                                                                                                                                                            |
+| Full-Ivy                    | Contains private Angular Ivy instructions, which are not guaranteed to work across different versions of Angular. This format requires that the library and application are built with the *exact* same version of Angular. This format is useful for environments where all library and application code is built directly from source. |
+| 完全 Ivy                    | 包含专用的 Angular Ivy 指令，不能保证它们可在 Angular 的不同版本中使用。这种格式要求库和应用使用*完全相同*的 Angular 版本构建。这种格式对于直接从源代码构建所有库和应用代码的环境很有用。                                                                                                                                                |
 
 For publishing to npm use the partial-Ivy format as it is stable between patch versions of Angular.
 

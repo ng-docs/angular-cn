@@ -27,8 +27,8 @@ import {OptimizeFor} from './typecheck/api';
  *
  * 一个 `ts.CompilerHost` ，它还返回输入文件的列表，应该从中创建 `ts.Program` 。
  *
- * Currently mirrored from @bazel/concatjs/internal/tsc_wrapped/plugin_api (with the naming of
- * `fileNameToModuleName` corrected).
+ * Currently mirrored from @bazel/concatjs/internal/tsc_wrapped/plugin_api \(with the naming of
+ * `fileNameToModuleName` corrected\).
  *
  * 当前从 @bazel/concatjs/internal/tsc_wrapped/plugin_api 镜像（更正了 `fileNameToModuleName`
  * 的命名）。

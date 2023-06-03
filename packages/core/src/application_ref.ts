@@ -49,16 +49,18 @@ import {isStableFactory, NgZone, NoopNgZone, ZONE_IS_STABLE_OBSERVABLE} from './
 let _platformInjector: Injector|null = null;
 
 /**
- * Internal token to indicate whether having multiple bootstrapped platform should be allowed (only
- * one bootstrapped platform is allowed by default). This token helps to support SSR scenarios.
+ * Internal token to indicate whether having multiple bootstrapped platform should be allowed \(only
+ * one bootstrapped platform is allowed by default\). This token helps to support SSR scenarios.
+ *
  */
 export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultipleToken');
 
 /**
  * Internal token that allows to register extra callbacks that should be invoked during the
  * `PlatformRef.destroy` operation. This token is needed to avoid a direct reference to the
- * `PlatformRef` class (i.e. register the callback via `PlatformRef.onDestroy`), thus making the
+ * `PlatformRef` class \(i.e. register the callback via `PlatformRef.onDestroy`\), thus making the
  * entire class tree-shakeable.
+ *
  */
 const PLATFORM_DESTROY_LISTENERS =
     new InjectionToken<Set<VoidFunction>>('PlatformDestroyListeners');
@@ -212,7 +214,7 @@ function runPlatformInitializers(injector: Injector): void {
  * Internal create application API that implements the core application creation logic and optional
  * bootstrap logic.
  *
- * Platforms (such as `platform-browser`) may require different set of application and platform
+ * Platforms \(such as `platform-browser`\) may require different set of application and platform
  * providers for an application to function correctly. As a result, platforms may use this function
  * internally and supply the necessary providers during the bootstrap, while exposing
  * platform-specific APIs as a part of their public API.
@@ -366,8 +368,9 @@ export function assertPlatform(requiredToken: any): PlatformRef {
 }
 
 /**
- * Helper function to create an instance of a platform injector (that maintains the 'platform'
- * scope).
+ * Helper function to create an instance of a platform injector \(that maintains the 'platform'
+ * scope\).
+ *
  */
 export function createPlatformInjector(providers: StaticProvider[] = [], name?: string): Injector {
   return Injector.create({
@@ -557,7 +560,7 @@ export interface BootstrapOptions {
 
 /**
  * The Angular platform is the entry point for Angular on a web page.
- * Each page has exactly one platform. Services (such as reflection) which are common
+ * Each page has exactly one platform. Services \(such as reflection\) which are common
  * to every Angular application running on the page are bound in its scope.
  * A page's platform is initialized implicitly when a platform is created using a platform
  * factory such as `PlatformBrowser`, or explicitly by calling the `createPlatform()` function.
@@ -700,6 +703,7 @@ export class PlatformRef {
   /**
    * Retrieves the platform {@link Injector}, which is the parent injector for
    * every Angular application on the page and provides singleton providers.
+   *
    */
   get injector(): Injector {
     return this._injector;
@@ -812,12 +816,12 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *
  * - the application will never be stable if you start any kind
  *   of recurrent asynchronous task when the application starts
- *   (for example for a polling process, started with a `setInterval`, a `setTimeout`
- *   or using RxJS operators like `interval`);
+ *   \(for example for a polling process, started with a `setInterval`, a `setTimeout`
+ *   or using RxJS operators like `interval`\);
  * - the `isStable` Observable runs outside of the Angular zone.
  *
  * Let's imagine that you start a recurrent task
- * (here incrementing a counter, using RxJS `interval`),
+ * \(here incrementing a counter, using RxJS `interval`\),
  * and at the same time subscribe to `isStable`.
  *
  * ```
@@ -974,7 +978,7 @@ export class ApplicationRef {
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
-   * (first matched element is used).
+   * \(first matched element is used\).
    *
    * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
    *
@@ -1029,7 +1033,7 @@ export class ApplicationRef {
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
-   * (first matched element is used).
+   * \(first matched element is used\).
    *
    * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
    *
@@ -1087,7 +1091,7 @@ export class ApplicationRef {
    *
    * If the target DOM element is not provided, Angular tries to find one on a page
    * using the `selector` of the component that is being bootstrapped
-   * (first matched element is used).
+   * \(first matched element is used\).
    *
    * （可选）可以将组件安装到与 componentType 的选择器不匹配的 DOM 元素上。
    *
@@ -1357,8 +1361,9 @@ function _lastDefined<T>(args: T[]): T|undefined {
 /**
  * `InjectionToken` used to configure how to call the `ErrorHandler`.
  *
- * `NgZone` is provided by default today so the default (and only) implementation for this
+ * `NgZone` is provided by default today so the default \(and only\) implementation for this
  * is calling `ErrorHandler.handleError` outside of the Angular zone.
+ *
  */
 const INTERNAL_APPLICATION_ERROR_HANDLER = new InjectionToken<(e: any) => void>(
     (typeof ngDevMode === 'undefined' || ngDevMode) ? 'internal error handler' : '', {

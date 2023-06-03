@@ -130,8 +130,8 @@ export function prepareEventListenerParameters(
 // Collects information needed to generate `consts` field of the ComponentDef.
 export interface ComponentDefConsts {
   /**
-   * When a constant requires some pre-processing (e.g. i18n translation block that includes
-   * goog.getMsg and $localize calls), the `prepareStatements` section contains corresponding
+   * When a constant requires some pre-processing \(e.g. i18n translation block that includes
+   * goog.getMsg and $localize calls\), the `prepareStatements` section contains corresponding
    * statements.
    *
    * 当常量需要一些预处理（例如，包含 goog.getMsg 和 $localize 调用的 i18n 翻译块）时，
@@ -2191,7 +2191,7 @@ export interface ParseTemplateOptions {
    *  def"
    * ```
    *
-   * The line continuation (`\` followed by a newline) should be removed from a token
+   * The line continuation \(`\` followed by a newline\) should be removed from a token
    * but the new line should increment the current line for source mapping.
    *
    * 应该从标记中删除行继续（`\` 后跟换行符），但新行应该增加当前行以进行源映射。
@@ -2228,8 +2228,8 @@ export interface ParseTemplateOptions {
   enableI18nLegacyMessageIdFormat?: boolean;
 
   /**
-   * If this text is stored in an external template (e.g. via `templateUrl`) then we need to decide
-   * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
+   * If this text is stored in an external template \(e.g. via `templateUrl`\) then we need to decide
+   * whether or not to normalize the line-endings \(from `\r\n` to `\n`\) when processing ICU
    * expressions.
    *
    * 如果此文本存储在外部模板中（例如通过 `templateUrl`），那么我们需要决定在处理 ICU
@@ -2514,22 +2514,19 @@ const NG_I18N_CLOSURE_MODE = 'ngI18nClosureMode';
  * @param message The original i18n AST message node
  *
  * 原始 i18n AST 消息节点
- *
  * @param variable The variable that will be assigned the translation, e.g. `I18N_1`.
  *
  * 将分配给翻译的变量，例如 `I18N_1` 。
- *
  * @param closureVar The variable for Closure `goog.getMsg` calls, e.g. `MSG_EXTERNAL_XXX`.
  *
  * Closure `goog.getMsg` 调用的变量，例如 `MSG_EXTERNAL_XXX` 。
- *
- * @param params Object mapping placeholder names to their values (e.g.
- * `{ "interpolation": "\uFFFD0\uFFFD" }`).
+ * @param params Object mapping placeholder names to their values \(e.g.
+ * `{ "interpolation": "\uFFFD0\uFFFD" }`\).
  *
  * 对象将占位符名称映射到它们的值（例如 `{ "interpolation": "\uFFFD0\uFFFD" }`）。
  *
- * @param transformFn Optional transformation function that will be applied to the translation (e.g.
- * post-processing).
+ * @param transformFn Optional transformation function that will be applied to the translation \(e.g.
+ * post-processing\).
  *
  * 将应用于翻译的可选转换函数（例如后处理）。
  *
@@ -2538,7 +2535,6 @@ const NG_I18N_CLOSURE_MODE = 'ngI18nClosureMode';
  * An array of statements that defined a given translation.
  *
  * 定义给定翻译的语句数组。
- *
  */
 export function getTranslationDeclStmts(
     message: i18n.Message, variable: o.ReadVarExpr, closureVar: o.ReadVarExpr,

@@ -24,6 +24,7 @@ import {stringify} from '../util/stringify';
  * ### 例子
  *
  * {@example core/di/ts/forward_ref/forward_ref_spec.ts region='forward_ref_fn'}
+ *
  * @publicApi
  */
 export interface ForwardRefFn {
@@ -51,6 +52,7 @@ const __forward_ref__ = getClosureSafeProperty({__forward_ref__: getClosureSafeP
  * ### 例子
  *
  * {@example core/di/ts/forward_ref/forward_ref_spec.ts region='forward_ref'}
+ *
  * @publicApi
  */
 export function forwardRef(forwardRefFn: ForwardRefFn): Type<any> {

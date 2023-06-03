@@ -121,7 +121,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    * 节点的名称（如果有）。
    *
    * This is only suited for debugging. Any actual references to this node should be made with
-   * `ts.Identifier`s (see `getIdentityIn`).
+   * `ts.Identifier`s \(see `getIdentityIn`\).
    *
    * 这仅适合调试。对此节点的任何实际引用都应该使用 `ts.Identifier`（请参阅 `getIdentityIn`）。
    *

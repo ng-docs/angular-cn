@@ -17,7 +17,7 @@ import {DependencyTracker} from '../api';
  * `DependencyTracker` 依赖图 API 的实现。
  *
  * The `FileDependencyGraph`'s primary job is to determine whether a given file has "logically"
- * changed, given the set of physical changes (direct changes to files on disk).
+ * changed, given the set of physical changes \(direct changes to files on disk\).
  *
  * `FileDependencyGraph`
  * 的主要工作是在给定物理更改集（直接更改磁盘上的文件）的情况下确定给定文件是否“逻辑上”更改。
@@ -85,18 +85,23 @@ export class FileDependencyGraph<T extends {fileName: string} = ts.SourceFile> i
    *
    * 本质上，对于构建 `n` ，此方法会执行：
    *
-   * G(n) + L(n) = G(n - 1) + P(n)
+   * `G(n) + L(n) = G(n - 1) + P(n)`
    *
    * where:
    *
    * 其中：
    *
-   * G(n) = the dependency graph of build `n`
-   * L(n) = the logically changed files from build n - 1 to build n.
-   * P(n) = the physically changed files from build n - 1 to build n.
+   * G\(n\) = the dependency graph of build `n`
    *
-   * G(n) = 构建 `n` 的依赖图 L(n) = 从构建 n - 1 到构建 n 逻辑上更改的文件。 P(n) = 从构建 n - 1
-   * 到构建 n 的物理更改的文件。
+   * G\(n\) = 构建 `n` 的依赖图
+   *
+   * L\(n\) = the logically changed files from build n - 1 to build n.
+   *
+   * L\(n\) = 从构建 n - 1 到构建 n 逻辑上更改的文件。
+   *
+   * P\(n\) = the physically changed files from build n - 1 to build n.
+   *
+   * P\(n\) = 从构建 n - 1 到构建 n 的物理更改的文件。
    *
    */
   updateWithPhysicalChanges(

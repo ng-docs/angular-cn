@@ -224,11 +224,11 @@ export class AstObject<T extends object, TExpression> {
   }
 
   /**
-   * Converts the AstObject to a raw JavaScript object, mapping each property value (as an
-   * `AstValue`) to the generic type (`T`) via the `mapper` function.
+   * Converts the AstObject to a raw JavaScript object, mapping each property value \(as an
+   * `AstValue`\) to the generic type \(`T`\) via the `mapper` function.
    *
    * 将 AstObject 转换为原始 JavaScript 对象，通过 `mapper` 函数将每个属性值（作为 `AstValue`
-   *）映射到泛型类型 ( `T` )。
+   * ）映射到泛型类型 （ `T` ）。
    *
    */
   toLiteral<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>, key: string) => V):
@@ -242,11 +242,11 @@ export class AstObject<T extends object, TExpression> {
   }
 
   /**
-   * Converts the AstObject to a JavaScript Map, mapping each property value (as an
-   * `AstValue`) to the generic type (`T`) via the `mapper` function.
+   * Converts the AstObject to a JavaScript Map, mapping each property value \(as an
+   * `AstValue`\) to the generic type \(`T`\) via the `mapper` function.
    *
    * 将 AstObject 转换为 JavaScript Map，通过 `mapper` 函数将每个属性值（作为 `AstValue`
-   *）映射到泛型类型 ( `T` )。
+   * ）映射到泛型类型 （ `T` ）。
    *
    */
   toMap<V>(mapper: (value: AstValue<ObjectValueType<T>, TExpression>) => V): Map<string, V> {

@@ -8,7 +8,7 @@
 
 /**
  * A SecurityContext marks a location that has dangerous security implications, e.g. a DOM property
- * like `innerHTML` that could cause Cross Site Scripting (XSS) security bugs when improperly
+ * like `innerHTML` that could cause Cross Site Scripting \(XSS\) security bugs when improperly
  * handled.
  *
  * SecurityContext 标记了具有危险安全隐患的位置，比如，像 `innerHTML` 这样的 DOM

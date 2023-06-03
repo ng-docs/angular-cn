@@ -15,7 +15,6 @@ import {Pipe, PipeTransform} from '@angular/core';
  * Converts a value into its JSON-format representation.  Useful for debugging.
  *
  * 把一个值转换成 JSON 字符串格式。在调试时很有用。
- *
  * @usageNotes
  *
  * The following component uses a JSON pipe to convert an object

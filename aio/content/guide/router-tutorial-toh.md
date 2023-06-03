@@ -478,7 +478,7 @@ The application should navigate there as if the user clicked the "Heroes" link o
 
 这个应用需要一个有效的默认路由，在这里应该用英雄列表作为默认页。当用户点击"Heroes"链接或把 `localhost:4200/heroes` 粘贴到地址栏时，它应该导航到列表页。
 
-Add a `redirect` route that translates the initial relative URL (`''`) to the default path (`/heroes`) you want.
+Add a `redirect` route that translates the initial relative URL \(`''`\) to the default path \(`/heroes`\) you want.
 
 添加一个 `redirect` 路由，把最初的相对 URL（`''`）转换成所需的默认路径（`/heroes`）。
 
@@ -721,7 +721,7 @@ The Routing Module has several characteristics:
 
 The sample routing application does not include routing by default.
 When you use the [Angular CLI](cli) to create a project that does use routing, set the `--routing` option for the project or application, and for each NgModule.
-When you create or initialize a new project (using the CLI [`ng new`](cli/new) command) or a new application (using the [`ng generate app`](cli/generate) command), specify the `--routing` option.
+When you create or initialize a new project \(using the CLI [`ng new`](cli/new) command\) or a new application \(using the [`ng generate app`](cli/generate) command\), specify the `--routing` option.
 This tells the CLI to include the `@angular/router` npm package and create a file named `app-routing.module.ts`.
 You can then use routing in any NgModule that you add to the project or application.
 
@@ -806,7 +806,7 @@ The routing module is helpful as your application grows and when the configurati
 
 这种路由模块在你的应用不断增长，以及配置中包括了专门的守卫和解析器函数时会非常有用。
 
-Some developers skip the routing module when the configuration is minimal and merge the routing configuration directly into the companion module (for example, `AppModule`).
+Some developers skip the routing module when the configuration is minimal and merge the routing configuration directly into the companion module \(for example, `AppModule`\).
 
 在配置很简单时，一些开发者会跳过路由模块，并将路由配置直接混合在关联模块中（比如 `AppModule`）。
 
@@ -1195,7 +1195,7 @@ The router composes the destination URL from the array like this: `localhost:420
 
 路由器从该数组中组合出了目标 URL：`localhost:4200/hero/15`。
 
-The router extracts the route parameter (`id:15`) from the URL and supplies it to the `HeroDetailComponent` using the `ActivatedRoute` service.
+The router extracts the route parameter \(`id:15`\) from the URL and supplies it to the `HeroDetailComponent` using the `ActivatedRoute` service.
 
 路由器从 URL 中解析出路由参数（`id:15`），并通过 **ActivatedRoute** 服务来把它提供给 `HeroDetailComponent` 组件。
 
@@ -1219,7 +1219,7 @@ Import the `switchMap` operator because you need it later to process the `Observ
 
 <a id="hero-detail-ctor"></a>
 
-Add the services as private variables to the constructor so that Angular injects them (makes them visible to the component).
+Add the services as private variables to the constructor so that Angular injects them \(makes them visible to the component\).
 
 把这些服务作为私有变量添加到构造函数中，以便 Angular 注入它们（让它们对组件可见）。
 
@@ -1245,23 +1245,23 @@ If the user re-navigates to this route with a new `id` while the `HeroService` i
 
 `switchMap` 操作符做了两件事。它把 `HeroService` 返回的 `Observable<Hero>` 拍平，并取消以前的未完成请求。当 `HeroService` 仍在检索旧的 `id` 时，如果用户使用新的 `id` 重新导航到这个路由，`switchMap` 会放弃那个旧请求，并返回新 `id` 的英雄。
 
-`AsyncPipe` handles the observable subscription and the component's `hero` property will be (re)set with the retrieved hero.
+`AsyncPipe` handles the observable subscription and the component's `hero` property will be \(re\)set with the retrieved hero.
 
 `AsyncPipe` 处理这个可观察的订阅，而且该组件的 `hero` 属性也会用检索到的英雄（重新）进行设置。
 
 #### `ParamMap` API
 
 The `ParamMap` API is inspired by the [URLSearchParams interface](https://developer.mozilla.org/docs/Web/API/URLSearchParams).
-It provides methods to handle parameter access for both route parameters (`paramMap`) and query parameters (`queryParamMap`).
+It provides methods to handle parameter access for both route parameters \(`paramMap`\) and query parameters \(`queryParamMap`\).
 
-`ParamMap` API 的灵感来自 URLSearchParams[接口](https://developer.mozilla.org/docs/Web/API/URLSearchParams)。它提供了处理路由参数 ( `paramMap` ) 和查询参数 ( `queryParamMap` ) 的参数访问的方法。
+`ParamMap` API 的灵感来自 URLSearchParams[接口](https://developer.mozilla.org/docs/Web/API/URLSearchParams)。它提供了处理路由参数 （ `paramMap` ） 和查询参数 （ `queryParamMap` ） 的参数访问的方法。
 
 | Member         | Details                                                                                                                                                                                            |
 | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 成员           | 详情                                                                                                                                                                                               |
 | `has(name)`    | Returns `true` if the parameter name is in the map of parameters.                                                                                                                                  |
 | `has(name)`    | 如果参数名位于参数列表中，就返回 `true`。                                                                                                                                                          |
-| `get(name)`    | Returns the parameter name value (a `string`) if present, or `null` if the parameter name is not in the map. Returns the *first* element if the parameter value is actually an array of values.    |
+| `get(name)`    | Returns the parameter name value \(a `string`\) if present, or `null` if the parameter name is not in the map. Returns the *first* element if the parameter value is actually an array of values.  |
 | `get(name)`    | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。                                                                     |
 | `getAll(name)` | Returns a `string array` of the parameter name value if found, or an empty `array` if the parameter name value is not in the map. Use `getAll` when a single parameter could have multiple values. |
 | `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。                                                                         |
@@ -1421,7 +1421,7 @@ Define optional parameters in a separate object *after* you define the required 
 
 和必要参数一样，路由器也支持通过可选参数导航。在你定义完必要参数之后，再通过一个*独立的对象*来定义可选参数。
 
-In general, use a required route parameter when the value is mandatory (for example, if necessary to distinguish one route path from another); and an optional parameter when the value is optional, complex, and/or multivariate.
+In general, use a required route parameter when the value is mandatory \(for example, if necessary to distinguish one route path from another\); and an optional parameter when the value is optional, complex, and/or multivariate.
 
 通常，对于必传的值（比如用于区分两个路由路径的）使用*必备参数*；当这个值是可选的、复杂的或多值的时，使用可选参数。
 
@@ -1461,7 +1461,7 @@ Now, send the `id` of the current hero with the navigation request so that the
 现在，使用导航请求发送当前英雄的 `id`，以便 `HeroListComponent` 在其列表中突出显示该英雄。
 
 Send the `id` with an object that contains an optional `id` parameter.
-For demonstration purposes, there's an extra junk parameter (`foo`) in the object that the `HeroListComponent` should ignore.
+For demonstration purposes, there's an extra junk parameter \(`foo`\) in the object that the `HeroListComponent` should ignore.
 Here's the revised navigation statement:
 
 传送一个包含可选 `id` 参数的对象。为了演示，这里还在对象中定义了一个没用的额外参数（`foo`），`HeroListComponent` 应该忽略它。下面是修改过的导航语句：
@@ -1486,7 +1486,7 @@ localhost:4200/heroes;id=15;foo=foo
 
 </code-example>
 
-The `id` value appears in the URL as (`;id=15;foo=foo`), not in the URL path.
+The `id` value appears in the URL as \(`;id=15;foo=foo`\), not in the URL path.
 The path for the "Heroes" route doesn't have an `:id` token.
 
 `id` 的值像这样出现在 URL 中（`;id=15;foo=foo`），但不在 URL 的路径部分。“Heroes”路由的路径部分并没有定义 `:id`。
@@ -1632,7 +1632,7 @@ This file does the following:
 
   导出了一个名叫 `slideInAnimation` 的常量，并把它设置为一个名叫 `routeAnimation` 的动画触发器。
 
-* Defines one transition when switching back and forth from the `heroes` and `hero` routes to ease the component in from the left of the screen as it enters the application view (`:enter`), the other to animate the component to the right as it leaves the application view (`:leave`)
+* Defines one transition when switching back and forth from the `heroes` and `hero` routes to ease the component in from the left of the screen as it enters the application view \(`:enter`\), the other to animate the component to the right as it leaves the application view \(`:leave`\)
 
   定义一个转场动画，当在 `heroes` 和 `hero` 路由之间来回切换时，如果进入（`:enter`）应用视图则让组件从屏幕的左侧滑入，如果离开（`:leave`）应用视图则让组件从右侧划出。
 
@@ -1931,7 +1931,7 @@ This section shows you how to organize the crisis center to conform to the follo
 
   每个特性区的根组件中都有自己的路由出口及其子路由
 
-* Feature area routes rarely (if ever) cross with routes of other features
+* Feature area routes rarely \(if ever\) cross with routes of other features
 
   特性区内的路由很少（也许永远不会）与其它特性区的路由产生交叉
 
@@ -2045,13 +2045,13 @@ Apply that logic to navigation within the crisis center for which the parent pat
 
 如果把该逻辑应用到危机中心中的导航，那么父路径就是 `/crisis-center`。
 
-* To navigate to the `CrisisCenterHomeComponent`, the full URL is `/crisis-center` (`/crisis-center` + `''` + `''`)
+* To navigate to the `CrisisCenterHomeComponent`, the full URL is `/crisis-center` \(`/crisis-center` + `''` + `''`\)
 
-  要导航到 `CrisisCenterHomeComponent`，完整的 URL 是 `/crisis-center` (`/crisis-center` + `''` + `''`)
+  要导航到 `CrisisCenterHomeComponent`，完整的 URL 是 `/crisis-center` （`/crisis-center` + `''` + `''`）
 
-* To navigate to the `CrisisDetailComponent` for a crisis with `id=2`, the full URL is `/crisis-center/2` (`/crisis-center` + `''` +  `'/2'`)
+* To navigate to the `CrisisDetailComponent` for a crisis with `id=2`, the full URL is `/crisis-center/2` \(`/crisis-center` + `''` +  `'/2'`\)
 
-  要导航到 `CrisisDetailComponent` 以展示 `id=2` 的危机，完整的 URL 是 `/crisis-center/2` (`/crisis-center` + `''` + `'/2'`)
+  要导航到 `CrisisDetailComponent` 以展示 `id=2` 的危机，完整的 URL 是 `/crisis-center/2` （`/crisis-center` + `''` + `'/2'`）
 
 The absolute URL for the latter example, including the `localhost` origin, is as follows:
 
@@ -2337,7 +2337,7 @@ You have to specify the named outlet in a *link parameters array* and bind it to
 
 虽然 `compose` 路由被配置到了 `popup` 出口上，但这仍然不足以把该路由和 `RouterLink` 指令联系起来。你还要在*链接参数数组*中指定这个命名出口，并通过属性绑定的形式把它绑定到 `RouterLink` 上。
 
-The *link parameters array* contains an object with a single `outlets` property whose value is another object keyed by one (or more) outlet names.
+The *link parameters array* contains an object with a single `outlets` property whose value is another object keyed by one \(or more\) outlet names.
 In this case there is only the "popup" outlet property and its value is another *link parameters array* that specifies the `compose` route.
 
 *链接参数数组*包含一个只有一个 `outlets` 属性的对象，它的值是另一个对象，这个对象以一个或多个路由的出口名作为属性名。在这里，它只有一个出口名“popup”，它的值则是另一个*链接参数数组*，用于指定 `compose` 路由。
@@ -2392,7 +2392,7 @@ The relevant part of the URL follows the `...`:
 
   圆括号包裹的部分是第二路由。
 
-* The secondary route consists of an outlet name (`popup`), a `colon` separator, and the secondary route path (`compose`)
+* The secondary route consists of an outlet name \(`popup`\), a `colon` separator, and the secondary route path \(`compose`\)
 
   第二路由包括一个出口名称（`popup`）、一个冒号分隔符和第二路由的路径（`compose`）。
 
@@ -2478,7 +2478,7 @@ At the moment, any user can navigate anywhere in the application any time, but s
 
   该用户可能无权导航到目标组件
 
-* Maybe the user must login (authenticate) first
+* Maybe the user must login \(authenticate\) first
 
   可能用户得先登录（认证）
 
@@ -2941,7 +2941,7 @@ If the user approves, the application can save.
 当用户要导航离开时，你可以让用户自己决定该怎么处理这些未保存的更改。如果用户选择了取消，你就留下来，并允许更多改动。如果用户选择了确认，那就进行保存。
 
 You still might delay navigation until the save succeeds.
-If you let the user move to the next screen immediately and saving were to fail (perhaps the data is ruled invalid), you would lose the context of the error.
+If you let the user move to the next screen immediately and saving were to fail \(perhaps the data is ruled invalid\), you would lose the context of the error.
 
 在保存成功之前，你还可以继续推迟导航。如果你让用户立即移到下一个界面，而保存却失败了（可能因为数据不符合有效性规则），你就会丢失该错误的上下文环境。
 
@@ -3005,7 +3005,7 @@ The `window.confirm` is a blocking action that displays a modal dialog and waits
 
 <code-example header="src/app/dialog.service.ts" path="router/src/app/dialog.service.ts"></code-example>
 
-It returns an `Observable` that resolves when the user eventually decides what to do: either to discard changes and navigate away (`true`) or to preserve the pending changes and stay in the crisis editor (`false`).
+It returns an `Observable` that resolves when the user eventually decides what to do: either to discard changes and navigate away \(`true`\) or to preserve the pending changes and stay in the crisis editor \(`false`\).
 
 它返回*observable*，当用户最终决定了如何去做时，它就会被*解析* —— 或者决定放弃更改直接导航离开（`true`），或者保留未完成的修改，留在危机编辑器中（`false`）。
 
@@ -3049,7 +3049,7 @@ Looking back at the `CrisisDetailComponent`, it implements the confirmation work
 <code-example header="src/app/crisis-center/crisis-detail/crisis-detail.component.ts (excerpt)" path="router/src/app/crisis-center/crisis-detail/crisis-detail.component.ts" region="canDeactivate"></code-example>
 
 Notice that the `canDeactivate()` method can return synchronously; it returns `true` immediately if there is no crisis or there are no pending changes.
-But it can also return a `Promise` or an `Observable` and the router will wait for that to resolve to truthy (navigate) or falsy (stay on the current route).
+But it can also return a `Promise` or an `Observable` and the router will wait for that to resolve to truthy \(navigate\) or falsy \(stay on the current route\).
 
 注意，`canDeactivate()` 方法可以同步返回;如果没有危机，或者没有待处理的更改，它会立即返回 `true`。但它也能返回一个 `Promise` 或一个 `Observable`，路由器也会等待它解析为真值（导航）或伪造（停留在当前路由上）。
 
@@ -3337,7 +3337,7 @@ Open the `AppRoutingModule` and add a new `admin` route to its `appRoutes` array
 
 Give it a `loadChildren` property instead of a `children` property.
 The `loadChildren` property takes a function that returns a promise using the browser's built-in syntax for lazy loading code using dynamic imports `import('...')`.
-The path is the location of the `AdminModule` (relative to the application root).
+The path is the location of the `AdminModule` \(relative to the application root\).
 After the code is requested and loaded, the `Promise` resolves an object that contains the `NgModule`, in this case the `AdminModule`.
 
 给它一个 `loadChildren` 属性（替换掉 `children` 属性）。`loadChildren` 属性接收一个函数，该函数使用浏览器内置的动态导入语法 `import('...')` 来惰性加载代码，并返回一个承诺（Promise）。其路径是 `AdminModule` 的位置（相对于应用的根目录）。当代码请求并加载完毕后，这个 `Promise` 就会解析成一个包含 `NgModule` 的对象，也就是 `AdminModule`。
@@ -3519,7 +3519,7 @@ Add the `PreloadAllModules` token to the `forRoot()` call:
 
 <code-example header="src/app/app-routing.module.ts (preload all)" path="router/src/app/app-routing.module.6.ts" region="forRoot"></code-example>
 
-This configures the `Router` preloader to immediately load all lazy loaded routes (routes with a `loadChildren` property).
+This configures the `Router` preloader to immediately load all lazy loaded routes \(routes with a `loadChildren` property\).
 
 这项配置会让 `Router` 预加载器立即加载*所有*惰性加载路由（带 `loadChildren` 属性的路由）。
 

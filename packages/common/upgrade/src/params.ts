@@ -384,20 +384,20 @@ function toKeyValue(obj: {[k: string]: unknown}) {
 
 /**
  * We need our custom method because encodeURIComponent is too aggressive and doesn't follow
- * https://tools.ietf.org/html/rfc3986 with regards to the character set (pchar) allowed in path
+ * https://tools.ietf.org/html/rfc3986 with regards to the character set \(pchar\) allowed in path
  * segments:
  *    segment       = *pchar
  *    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
  *    pct-encoded   = "%" HEXDIG HEXDIG
  *    unreserved    = ALPHA / DIGIT / "-" / "." / "\_" / "~"
- *    sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+ *    sub-delims    = "!" / "$" / "&" / "'" / "\(" / "\)"
  *                     / "*" / "+" / "," / ";" / "="
  *
  * 我们需要我们的自定义方法，因为 encodeURIComponent
  * 过于激进，并且在路径段中允许的字符集（pchar）方面不遵循 https://tools.ietf.org/html/rfc3986
  * ：segment = *pchar pchar = unreserved / pct -encoded / sub-delims / “:” / “@” pct-encoded = “%”
  * HEXDIG HEXDIG unreserved = ALPHA / DIGIT /“-”/“。” /"\_" /"~" sub-delims = "!"
- * /“$”/“&”/“'”/“(”/“)”/“* ”/“+”/“,”/“;” / "="
+ * /“$”/“&”/“'”/“\(”/“\)”/“* ”/“+”/“,”/“;” / "="
  *
  * Logic from https://github.com/angular/angular.js/blob/864c7f0/src/Angular.js#L1437
  *
@@ -413,17 +413,17 @@ function encodeUriSegment(val: string) {
  * This method is intended for encoding *key* or *value* parts of query component. We need a custom
  * method because encodeURIComponent is too aggressive and encodes stuff that doesn't have to be
  * encoded per https://tools.ietf.org/html/rfc3986:
- *    query         = *( pchar / "/" / "?" )
+ *    query         = *\( pchar / "/" / "?" \)
  *    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
  *    unreserved    = ALPHA / DIGIT / "-" / "." / "\_" / "~"
  *    pct-encoded   = "%" HEXDIG HEXDIG
- *    sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+ *    sub-delims    = "!" / "$" / "&" / "'" / "\(" / "\)"
  *                     / "*" / "+" / "," / ";" / "="
  *
  * 此方法旨在编码查询组件的*键*或*值*部分。我们需要一个自定义方法，因为 encodeURIComponent
- * 太激进了，并且会编码不必按 https://tools.ietf.org/html/rfc3986 编码的东西： query = *( pchar /
- * "/" / "?" ) pchar = 未保留/pct 编码/子 delims/“:”/“@”未保留=ALPHA/DIGIT/“-”/“.” /“\_”/“~”
- * pct-encoded = “%” HEXDIG HEXDIG sub-delims = “!” /“$”/“&”/“'”/“(”/“)”/“* ”/“+”/“,”/“;” / "="
+ * 太激进了，并且会编码不必按 https://tools.ietf.org/html/rfc3986 编码的东西： query = *\( pchar /
+ * "/" / "?" \) pchar = 未保留/pct 编码/子 delims/“:”/“@”未保留=ALPHA/DIGIT/“-”/“.” /“\_”/“~”
+ * pct-encoded = “%” HEXDIG HEXDIG sub-delims = “!” /“$”/“&”/“'”/“\(”/“\)”/“* ”/“+”/“,”/“;” / "="
  *
  * Logic from https://github.com/angular/angular.js/blob/864c7f0/src/Angular.js#L1456
  *

@@ -82,8 +82,8 @@ type CyclicSourceFile = ts.SourceFile&{[NgCyclicResult]?: CyclicResultMarker};
  * Stores the results of cycle detection in a memory efficient manner. A symbol is attached to
  * source files that indicate what the cyclic analysis result is, as indicated by two markers that
  * are unique to this instance. This alleviates memory pressure in large import graphs, as each
- * execution is able to store its results in the same memory location (i.e. in the symbol
- * on the source file) as earlier executions.
+ * execution is able to store its results in the same memory location \(i.e. in the symbol
+ * on the source file\) as earlier executions.
  *
  * 以内存高效的方式存储周期检测的结果。源文件上会附加一个符号，以表明循环分析结果是什么，由此实例唯一的两个标记表示。这减轻了大型导入图中的内存压力，因为每次执行都能够将其结果存储在与早期执行相同的内存位置（即源文件上的符号中）。
  *

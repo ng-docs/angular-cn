@@ -32,7 +32,6 @@ export interface PopStateEvent {
  *
  * 这取决于使用了哪个 `LocationStrategy`，`Location` 可能会使用 URL
  * 的路径或 URL 的哈希片段（`#`）进行持久化。
- *
  * @usageNotes
  *
  * It's better to use the `Router.navigate()` service to trigger route changes. Use
@@ -190,22 +189,19 @@ export class Location implements OnDestroy {
 
   /**
    * Normalizes an external URL path.
-   * If the given URL doesn't begin with a leading slash (`'/'`), adds one
+   * If the given URL doesn't begin with a leading slash \(`'/'`\), adds one
    * before normalizing. Adds a hash if `HashLocationStrategy` is
    * in use, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
    *
-   * 标准化外部 URL 路径。如果给定的 URL 并非以斜杠（`'/'`
-   *）开头，就会在规范化之前添加一个。如果使用 `HashLocationStrategy` 则添加哈希；如果使用
+   * 标准化外部 URL 路径。如果给定的 URL 并非以斜杠（`'/'`）开头，就会在规范化之前添加一个。如果使用 `HashLocationStrategy` 则添加哈希；如果使用
    * `PathLocationStrategy` 则添加 `APP_BASE_HREF`。
    *
    * @param url String representing a URL.
    *
    * 表示一个 URL。
-   *
    * @returns  A normalized platform-specific URL.
    *
    * 标准化之后的平台相关 URL。
-   *
    */
   prepareExternalUrl(url: string): string {
     if (url && url[0] !== '/') {

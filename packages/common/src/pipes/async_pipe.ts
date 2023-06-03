@@ -62,7 +62,6 @@ const _subscribableStrategy = new SubscribableStrategy();
  * `async` 管道会订阅一个 `Observable` 或 `Promise`，并返回它发出的最近一个值。
  * 当新值到来时，`async` 管道就会把该组件标记为需要进行变更检测。当组件被销毁时，`async`
  * 管道就会自动取消订阅，以消除潜在的内存泄露问题。
- *
  * @usageNotes
  *
  * ### Examples

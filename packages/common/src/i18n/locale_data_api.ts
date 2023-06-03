@@ -19,10 +19,10 @@ import {CURRENCIES_EN, CurrenciesSymbols} from './currencies';
  * @see `getLocaleNumberFormat()`.
  *
  * `getLocaleNumberFormat()` 。
- *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
+ *
  * @publicApi
  */
 export enum NumberFormatStyle {
@@ -38,9 +38,8 @@ export enum NumberFormatStyle {
  * 用于将复数形式转换为不同语言的复数形式。
  *
  * @see `NgPlural`
- *
  * @see `NgPluralCase`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -66,8 +65,7 @@ export enum Plural {
  *
  * [CLDR
  * 网站](http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles)
- *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -128,7 +126,7 @@ export enum TranslationWidth {
  * @see `getLocaleDateFormat()`
  * @see `getLocaleTimeFormat()`
  * @see `getLocaleDateTimeFormat()`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -136,15 +134,16 @@ export enum TranslationWidth {
  */
 export enum FormatWidth {
   /**
-   * For `en-US`, 'M/d/yy, h:mm a'`(Example:`6/15/15, 9:03 AM\`)
+   * For `en-US`, `'M/d/yy, h:mm a'`
+   * \(Example: `6/15/15, 9:03 AM`\)
    *
-   * 对于 `en-US`，是 'M/d/yy, h:mm a'`(比如:`6/15/15, 9:03 AM\`)
+   * 对于 `en-US`，是 `'M/d/yy, h:mm a'`（比如:`6/15/15, 9:03 AM`）
    *
    */
   Short,
   /**
    * For `en-US`, `'MMM d, y, h:mm:ss a'`
-   * (Example: `Jun 15, 2015, 9:03:01 AM`)
+   * \(Example: `Jun 15, 2015, 9:03:01 AM`\)
    *
    * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（比如： `Jun 15, 2015, 9:03:01 AM`）
    *
@@ -152,7 +151,7 @@ export enum FormatWidth {
   Medium,
   /**
    * For `en-US`, `'MMMM d, y, h:mm:ss a z'`
-   * (Example: `June 15, 2015 at 9:03:01 AM GMT+1`)
+   * \(Example: `June 15, 2015 at 9:03:01 AM GMT+1`\)
    *
    * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（比如： `June 15, 2015 at 9:03:01 AM GMT+1`）
    *
@@ -160,7 +159,7 @@ export enum FormatWidth {
   Long,
   /**
    * For `en-US`, `'EEEE, MMMM d, y, h:mm:ss a zzzz'`
-   * (Example: `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00`)
+   * \(Example: `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00`\)
    *
    * 对于 `en-US`，是 `'EEEE, MMMM d, y, h:mm:ss a zzzz'`（比如：`Monday, June 15, 2015 at 9:03:01
    * AM GMT+01:00`）
@@ -176,8 +175,7 @@ export enum FormatWidth {
  * 可用于替换数字模式中占位符的符号。比如基于 `en-US` 的值。
  *
  * @see `getLocaleNumberSymbol()`
- *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -211,7 +209,7 @@ export enum NumberSymbol {
    */
   List,
   /**
-   * Sign for percentage (out of 100).
+   * Sign for percentage \(out of 100\).
    * Example: 23.4%
    *
    * 百分号（最大为 100）。比如：23.4％
@@ -235,7 +233,7 @@ export enum NumberSymbol {
    */
   MinusSign,
   /**
-   * Computer notation for exponential value (n times a power of 10).
+   * Computer notation for exponential value \(n times a power of 10\).
    * Example: 1.2E3
    *
    * 指数值的计算机表示法（10 的 n 次幂）。比如：1.2E3
@@ -251,7 +249,7 @@ export enum NumberSymbol {
    */
   SuperscriptingExponent,
   /**
-   * Sign for permille (out of 1000).
+   * Sign for permille \(out of 1000\).
    * Example: 23.4‰
    *
    * 千分号（最大为 1000）。比如：23.4‰
@@ -283,7 +281,7 @@ export enum NumberSymbol {
    */
   TimeSeparator,
   /**
-   * Decimal separator for currency values (fallback to `Decimal`).
+   * Decimal separator for currency values \(fallback to `Decimal`\).
    * Example: $2,345.67
    *
    * 货币值的小数分隔符（回退为 `Decimal`）。比如：$2,345.67
@@ -291,7 +289,7 @@ export enum NumberSymbol {
    */
   CurrencyDecimal,
   /**
-   * Group separator for currency values (fallback to `Group`).
+   * Group separator for currency values \(fallback to `Group`\).
    * Example: $2,345.67
    *
    * 货币值的组分隔符（回退为 `Group`）。比如：$2,345.67
@@ -327,12 +325,10 @@ export enum WeekDay {
  * @param locale A locale code, such as `fr-FR`.
  *
  * 语言环境代码，比如 `fr-FR` 。
- *
  * @returns The locale code. For example, `fr`.
  *
  * 语言环境代码。比如，`fr` 。
- *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -350,22 +346,18 @@ export function getLocaleId(locale: string): string {
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param formStyle The required grammatical form.
  *
  * 所需的语法形式。
- *
  * @param width The required character width.
  *
  * 所需的字符宽度。
- *
  * @returns An array of localized period strings. For example, `[AM, PM]` for `en-US`.
  *
  * 本地化的区间字符串数组。比如，`en-US` `[AM, PM]` 。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -387,23 +379,19 @@ export function getLocaleDayPeriods(
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param formStyle The required grammatical form.
  *
  * 所需的语法形式。
- *
  * @param width The required character width.
  *
  * 所需的字符宽度。
- *
  * @returns An array of localized name strings.
  * For example,`[Sunday, Monday, ... Saturday]` for `en-US`.
  *
  * 本地化名称字符串的数组。比如，`en-US` `[Sunday, Monday, ... Saturday]` 。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -424,23 +412,19 @@ export function getLocaleDayNames(
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param formStyle The required grammatical form.
  *
  * 所需的语法形式。
- *
  * @param width The required character width.
  *
  * 所需的字符宽度。
- *
  * @returns An array of localized name strings.
  * For example,  `[January, February, ...]` for `en-US`.
  *
  * 本地化名称字符串的数组，比如，对于 `en-US` 是 `[January, February, ...]`。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -461,20 +445,16 @@ export function getLocaleMonthNames(
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param width The required character width.
  *
  * 所需的字符宽度。
- *
-
  * @returns An array of localized era strings.
  * For example, `[AD, BC]` for `en-US`.
  *
  * 本地化年代字符串的数组。比如，对于 `en-US`，是 `[AD, BC]`。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -493,17 +473,18 @@ export function getLocaleEraNames(
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
+ * @returns
  *
- * @returns A day index number, using the 0-based week-day index for `en-US`
- * (Sunday = 0, Monday = 1, ...).
+ * A day index number, using the 0-based week-day index for `en-US`
+ * \(Sunday = 0, Monday = 1, ...\).
  * For example, for `fr-FR`, returns 1 to indicate that the first day is Monday.
  *
  * 工作日索引号，使用基于 0 的 `en-US` 的工作日索引（星期日= 0，星期一= 1，...）。比如，对于 `fr-FR`
  * ，返回 1 表示第一天是星期一。
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -520,14 +501,12 @@ export function getLocaleFirstDayOfWeek(locale: string): WeekDay {
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @returns The range of day values, `[startDay, endDay]`.
  *
  * 日期值的范围 `[startDay, endDay]` 。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -544,20 +523,16 @@ export function getLocaleWeekEndRange(locale: string): [WeekDay, WeekDay] {
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param width The format type.
  *
  * 格式类型。
- *
  * @returns The localized formatting string.
  *
  * 本地化的格式字符串。
- *
  * @see `FormatWidth`
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -574,22 +549,17 @@ export function getLocaleDateFormat(locale: string, width: FormatWidth): string 
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param width The format type.
  *
  * 格式类型。
- *
  * @returns The localized formatting string.
  *
  * 本地化的格式字符串。
- *
  * @see `FormatWidth`
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n-overview)
- *
-
  * @publicApi
  */
 export function getLocaleTimeFormat(locale: string, width: FormatWidth): string {
@@ -605,20 +575,16 @@ export function getLocaleTimeFormat(locale: string, width: FormatWidth): string 
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param width The format type.
  *
  * 格式类型。
- *
  * @returns The localized formatting string.
  *
  * 本地化的格式字符串。
- *
  * @see `FormatWidth`
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -636,20 +602,16 @@ export function getLocaleDateTimeFormat(locale: string, width: FormatWidth): str
  * @param locale The locale code.
  *
  * 语言环境代码。
- *
  * @param symbol The symbol to localize.
  *
  * 要本地化的符号。
- *
  * @returns The character for the localized symbol.
  *
  * 本地化符号的字符。
- *
  * @see `NumberSymbol`
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -678,7 +640,7 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * 数字会以类似 `#,###.00` 的模式进行格式化。比如，模式 `#,###.00` 用于格式化数字 12345.678
  * 时可能的结果是 “12'345,678”。如果你的语言的分组分隔符是撇号，而十进制分隔符是逗号，就会是这样的。
  *
- * <b>Important:</b> The characters `.` `,` `0` `#` (and others below) are special placeholders
+ * <b>Important:</b> The characters `.` `,` `0` `#` \(and others below\) are special placeholders
  * that stand for the decimal separator, and so on, and are NOT real characters.
  * You must NOT "translate" the placeholders. For example, don't change `.` to `,` even though in
  * your language the decimal point is written with a comma. The symbols should be replaced by the
@@ -699,11 +661,11 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * | 符号   | 含义                                                                               |
  * | .      | Replaced automatically by the character used for the decimal point.                |
  * | .      | 自动替换为用作小数点的字符。                                                       |
- * | ,      | Replaced by the "grouping" (thousands) separator.                                  |
+ * | ,      | Replaced by the "grouping" \(thousands\) separator.                                |
  * | ,      | 替换为（千）“分组”分隔符。                                                         |
- * | 0      | Replaced by a digit (or zero if there aren't enough digits).                       |
+ * | 0      | Replaced by a digit \(or zero if there aren't enough digits\).                     |
  * | 0      | 替换为一个数字（如果没有足够的数字，则为零）。                                     |
- * | #      | Replaced by a digit (or nothing if there aren't enough).                           |
+ * | #      | Replaced by a digit \(or nothing if there aren't enough\).                         |
  * | #      | 用数字代替（如果数字不足，则不进行任何替换）。                                     |
  * | ¤      | Replaced by a currency symbol, such as $ or USD.                                   |
  * | ¤      | 替换为货币符号，比如 $ 或 USD。                                                    |
@@ -717,9 +679,10 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- * @param type The type of numeric value to be formatted (such as `Decimal` or `Currency`.)
+ * @param type The type of numeric value to be formatted \(such as `Decimal` or `Currency`.\)
  *
  * 要格式化的数值类型（比如 `Decimal` 或 `Currency`）。
+ *
  * @returns The localized format string.
  *
  * 本地化的格式字符串。
@@ -727,9 +690,10 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * @see [CLDR website](http://cldr.unicode.org/translation/number-patterns)
  *
  * [CLDR 官网](http://cldr.unicode.org/translation/number-patterns)
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
+ *
  * @publicApi
  */
 export function getLocaleNumberFormat(locale: string, type: NumberFormatStyle): string {
@@ -746,15 +710,13 @@ export function getLocaleNumberFormat(locale: string, type: NumberFormatStyle): 
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @returns The localized symbol character,
  * or `null` if the main country cannot be determined.
  *
  * 本地化的符号字符；如果无法确定主要国家则为 `null`。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -772,13 +734,11 @@ export function getLocaleCurrencySymbol(locale: string): string|null {
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @returns The currency name,
  * or `null` if the main country cannot be determined.
  *
  * 货币名称；如果无法确定主要国家/地区，则为 `null`。
- *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -820,14 +780,12 @@ export function getLocaleCurrencyCode(locale: string): string|null {
  * @param locale A locale code for the locale format rules to use.
  *
  * 语言格式规则使用的语言环境代码。
- *
  * @returns The currency values.
  *
  * 货币值。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  */
 function getLocaleCurrencies(locale: string): {[code: string]: CurrenciesSymbols} {
@@ -877,17 +835,14 @@ function checkFullData(data: any) {
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @returns The rules for the locale, a single time value or array of *from-time, to-time*,
  * or null if no periods are available.
  *
  * 语言环境的规则，单个时间值或 *from-time，to-time* 或 null 的数组（如果没有可用时段）。
- *
  * @see `getLocaleExtraDayPeriods()`
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -920,23 +875,19 @@ export function getLocaleExtraDayPeriodRules(locale: string): (Time|[Time, Time]
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @param formStyle The required grammatical form.
  *
  * 所需的语法形式。
- *
  * @param width The required character width.
  *
  * 所需的字符宽度。
- *
  * @returns The translated day-period strings.
  *
  * 翻译后的一天时段字符串。
- *
  * @see `getLocaleExtraDayPeriodRules()`
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -960,16 +911,13 @@ export function getLocaleExtraDayPeriods(
  * @param locale A locale code for the locale format rules to use.
  *
  * 用于要使用的语言环境格式规则的语言环境代码。
- *
  * @publicApi
- *
  * @returns 'rtl' or 'ltr'
  *
  * 'rtl' 或 'ltr'
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  */
 export function getLocaleDirection(locale: string): 'ltr'|'rtl' {
@@ -982,7 +930,7 @@ export function getLocaleDirection(locale: string): 'ltr'|'rtl' {
  *
  * 检索数组中定义的第一个值，从索引位置开始向后找。
  *
- * To avoid repeating the same data (as when the "format" and "standalone" forms are the same)
+ * To avoid repeating the same data \(as when the "format" and "standalone" forms are the same\)
  * add the first value to the locale data arrays, and add other values only if they are different.
  *
  * 为避免重复相同的数据（比如当 "format" 和 "standalone"
@@ -991,18 +939,15 @@ export function getLocaleDirection(locale: string): 'ltr'|'rtl' {
  * @param data The data array to retrieve from.
  *
  * 要检索的数据数组。
- *
  * @param index A 0-based index into the array to start from.
  *
  * 从 0 开始的数组索引。
- *
  * @returns The value immediately before the given index position.
  *
  * 给定索引位置之前的值。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -1053,22 +998,18 @@ function extractTime(time: string): Time {
  * @param code The currency code.
  *
  * 货币代码。
- *
  * @param format The format, `wide` or `narrow`.
  *
  * 格式，如 `wide` 或 `narrow` 。
- *
  * @param locale A locale code for the locale format rules to use.
  *
  * 要用作语言环境格式规则的语言环境代码。
- *
  * @returns The symbol, or the currency code if no symbol is available.
  *
  * 符号，或货币代码（如果没有可用的符号）。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */
@@ -1095,14 +1036,12 @@ const DEFAULT_NB_OF_CURRENCY_DIGITS = 2;
  * @param code The currency code.
  *
  * 货币代码。
- *
  * @returns The number of decimal digits, typically 0 or 2.
  *
  * 小数位数，通常为 0 或 2。
+ * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
  *
- * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
- *
- * [国际化(i18n)指南](guide/i18n-overview)
+ * [国际化（i18n）指南](guide/i18n-overview)
  *
  * @publicApi
  */

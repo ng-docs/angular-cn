@@ -258,7 +258,7 @@ To set up a redirect, configure a route with the `path` you want to redirect fro
 
 In this example, the third route is a redirect so that the router defaults to the `first-component` route.
 Notice that this redirect precedes the wildcard route.
-Here, `path: ''` means to use the initial relative URL (`''`).
+Here, `path: ''` means to use the initial relative URL \(`''`\).
 
 在这个例子中，第三个路由是重定向路由，所以路由器会默认跳到 `first-component` 路由。注意，这个重定向路由位于通配符路由之前。这里的 `path: ''` 表示使用初始的相对 URL（`''`）。
 
@@ -591,9 +591,9 @@ Review the following:
 
 查看以下内容：
 
-* The first item in the array identifies the parent route (`/crisis-center`)
+* The first item in the array identifies the parent route \(`/crisis-center`\)
 
-  数组中的第一个条目标记出了父路由(`/crisis-center`)。
+  数组中的第一个条目标记出了父路由（`/crisis-center`）。
 
 * There are no parameters for this parent route
 
@@ -613,15 +613,15 @@ Consider the following router link that navigates from the root of the applicati
 
 <code-example header="src/app/app.component.ts (Dragon-anchor)" path="router/src/app/app.component.3.ts" region="Dragon-anchor"></code-example>
 
-* The first item in the array identifies the parent route (`/crisis-center`)
+* The first item in the array identifies the parent route \(`/crisis-center`\)
 
-  数组中的第一个条目标记出了父路由(`/crisis-center`)。
+  数组中的第一个条目标记出了父路由（`/crisis-center`）。
 
 * There are no parameters for this parent route
 
   这个父路由没有参数。
 
-* The second item identifies the child route details about a particular crisis (`/:id`)
+* The second item identifies the child route details about a particular crisis \(`/:id`\)
 
   数组中的第二个条目（'/:id'）用来标记出到指定危机的详情页的子路由。
 
@@ -629,7 +629,7 @@ Consider the following router link that navigates from the root of the applicati
 
   详细的子路由需要一个 `id` 路由参数。
 
-* You added the `id` of the Dragon Crisis as the second item in the array (`1`)
+* You added the `id` of the Dragon Crisis as the second item in the array \(`1`\)
 
   你把*巨龙危机*的 `id` 添加为该数组中的第二个条目（`1`）。
 
@@ -644,7 +644,7 @@ You could also redefine the `AppComponent` template with Crisis Center routes ex
 <code-example header="src/app/app.component.ts (template)" path="router/src/app/app.component.3.ts" region="template"></code-example>
 
 In summary, you can write applications with one, two or more levels of routing.
-The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, (required) router parameters, and (optional) route parameter objects.
+The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, \(required\) router parameters, and \(optional\) route parameter objects.
 
 总之，你可以用一级、两级或多级路由来写应用程序。链接参数数组提供了用来表示任意深度路由的链接参数数组以及任意合法的路由参数序列、必须的路由器参数以及可选的路由参数对象。
 
@@ -676,7 +676,7 @@ localhost:3002/crisis-center
 
 </code-example>
 
-Older browsers send page requests to the server when the location URL changes unless the change occurs after a "#" (called the "hash").
+Older browsers send page requests to the server when the location URL changes unless the change occurs after a "#" \(called the "hash"\).
 Routers can take advantage of this exception by composing in-application route URLs with hashes.
 Here's a "hash URL" that routes to the Crisis Center.
 
@@ -731,7 +731,7 @@ An application that would otherwise take ten or more seconds to start could be r
 
 在服务器端渲染指定的页面，是一项可以在该应用首次加载时大幅提升响应速度的技术。那些原本需要十秒甚至更长时间加载的应用，可以预先在服务端渲染好，并在少于一秒的时间内完整渲染在用户的设备上。
 
-This option is only available if application URLs look like normal web URLs without hash (`#`) characters in the middle.
+This option is only available if application URLs look like normal web URLs without hash \(`#`\) characters in the middle.
 
 只有当应用的 URL 看起来像是标准的 Web URL，中间没有 hash（`#`）时，这个选项才能生效。
 
@@ -798,7 +798,7 @@ The preferred way to configure the strategy is to add a [`<base href>` element](
 
 <code-example header="src/index.html (base-href)" path="router/src/index.html" region="base-href"></code-example>
 
-Without that tag, the browser might not be able to load resources (images, CSS, scripts) when "deep linking" into the application.
+Without that tag, the browser might not be able to load resources \(images, CSS, scripts\) when "deep linking" into the application.
 
 如果没有该标记，浏览器就可能无法在“深度链接”进入应用时加载资源（图片，CSS，脚本）。
 
@@ -814,7 +814,7 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
    用适当的 `APP_BASE_HREF` 值提供（provide）路由器。
 
-1. Use root URLs (URLs with an `authority`) for all web resources: CSS, images, scripts, and template HTML files.
+1. Use root URLs \(URLs with an `authority`\) for all web resources: CSS, images, scripts, and template HTML files.
 
    对所有 Web 资源（CSS、图片、脚本和模板 HTML 文件）使用根 URL（高优先度 URL）。
 
@@ -827,7 +827,7 @@ Those developers can still use HTML5 URLs by taking the following two steps:
 
      如果 `<base href>` 包含 `query` 部分，则只有页内链接的 `path` 部分为空并且没有 `query` 时，才会使用这里的 `query`。这意味着 `<base href>` 中的 `query` 部分只有在使用 `HashLocationStrategy` 策略时才有用。
 
-   - If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
+   - If a link in the page is a root URL \(has an `authority`\), the `<base href>` is not used.
      In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
 
      如果页内链接是根 URL（高优先度 URL），则 `<base href>` 不会使用。在这种方式下，`APP_BASE_HREF` 的优先度将会导致所有由 Angular 创建的链接忽略 `<base href>`。

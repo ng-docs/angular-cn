@@ -24,7 +24,7 @@ import {getCurrentTNode, getLView} from '../state';
  * DirectiveInject 旨在用于 `directiveInject` 、组件和管道工厂。所有其他 `inject` 使用 injection
  * ，它不会遍历节点注入器树。
  *
- * Usage example (in factory function):
+ * Usage example \(in factory function\):
  *
  * 用法示例（在工厂函数中）：
  *
@@ -42,17 +42,14 @@ import {getCurrentTNode, getLView} from '../state';
  * @param token the type or token to inject
  *
  * 要注入的类型或标记
- *
  * @param flags Injection flags
  *
  * 注入标志
- *
  * @returns
  *
  * the value from the injector or `null` when not found
  *
  * 来自注入器的值或找不到时为 `null`
- *
  * @codeGenApi
  */
 export function ɵɵdirectiveInject<T>(token: ProviderToken<T>): T;

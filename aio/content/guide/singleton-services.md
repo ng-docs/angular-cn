@@ -77,7 +77,7 @@ However, understanding how `forRoot()` works to make sure a service is a singlet
 
 通常，你只需要用 `providedIn` 提供服务，用 `forRoot()`/`forChild()` 提供路由即可。不过，理解 `forRoot()` 为何能够确保服务只有单个实例，可以让你学会更深层次的开发知识。
 
-If a module defines both providers and declarations (components, directives, pipes), then loading the module in multiple feature modules would duplicate the registration of the service.
+If a module defines both providers and declarations \(components, directives, pipes\), then loading the module in multiple feature modules would duplicate the registration of the service.
 This could result in multiple service instances and the service would no longer behave as a singleton.
 
 如果模块同时定义了 providers（服务）和 declarations（组件、指令、管道），那么，当你同时在多个特性模块中加载此模块时，这些服务就会被注册在多个地方。这会导致出现多个服务实例，并且该服务的行为不再像单例一样。

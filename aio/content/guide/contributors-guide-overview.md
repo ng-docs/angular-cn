@@ -64,10 +64,10 @@ Perform these steps in a browser.
 
 在浏览器中执行这些步骤。
 
-1. Confirm you have a [signed Contributor License Agreement (CLA)][GoogleDeveloperClaClas] on file.
+1. Confirm you have a [signed Contributor License Agreement \(CLA\)][GoogleDeveloperClaClas] on file.
    If you don't, [sign a CLA][GithubAngularAngularBlobMainContributingMdSigningTheCla].
 
-   确认你有[已签署的贡献者许可协议 (CLA)][GoogleDeveloperClaClas]存档。如果没这样做过，请先[签署 CLA][GithubAngularAngularBlobMainContributingMdSigningTheCla] 。
+   确认你有[已签署的贡献者许可协议（CLA）][GoogleDeveloperClaClas]存档。如果没这样做过，请先[签署 CLA][GithubAngularAngularBlobMainContributingMdSigningTheCla] 。
 
 1. Sign into [github.com][GithubMain], or if you don't have a GitHub account, [create a new GitHub account][GithubJoin].
 

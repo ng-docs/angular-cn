@@ -27,7 +27,7 @@ export interface LocalNgModuleData {
 
 /**
  * A registry which collects information about NgModules, Directives, Components, and Pipes which
- * are local (declared in the ts.Program being compiled), and can produce `LocalModuleScope`s
+ * are local \(declared in the ts.Program being compiled\), and can produce `LocalModuleScope`s
  * which summarize the compilation scope of a component.
  *
  * 一个注册表，它收集有关本地的 NgModules、指令、组件和管道的信息（在正在编译的 ts.Program
@@ -42,7 +42,7 @@ export interface LocalNgModuleData {
  *
  * The `LocalModuleScopeRegistry` has two "modes" of operation. During analysis, data for each
  * individual NgModule, Directive, Component, and Pipe is added to the registry. No attempt is made
- * to traverse or validate the NgModule graph (imports, exports, etc). After analysis, one of
+ * to traverse or validate the NgModule graph \(imports, exports, etc\). After analysis, one of
  * `getScopeOfModule` or `getScopeForComponent` can be called, which traverses the NgModule graph
  * and applies the NgModule logic to generate a `LocalModuleScope`, the full scope for the given
  * module or component.
@@ -173,7 +173,7 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
   }
 
   /**
-   * If `node` is declared in more than one NgModule (duplicate declaration), then get the
+   * If `node` is declared in more than one NgModule \(duplicate declaration\), then get the
    * `DeclarationData` for each offending declaration.
    *
    * 如果 `node` 在多个 NgModule（重复声明）中声明，则获取每个有问题的声明的 `DeclarationData` 。

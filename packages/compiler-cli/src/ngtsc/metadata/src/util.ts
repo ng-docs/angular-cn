@@ -205,8 +205,8 @@ function extractCoercedInput(member: ClassMember): string|null {
  *
  * 一种 `MetadataReader` ，它会从一组有序的子读取器中读取，直到获得所请求的元数据。
  *
- * This is used to combine `MetadataReader`s that read from different sources (e.g. from a registry
- * and from .d.ts files).
+ * This is used to combine `MetadataReader`s that read from different sources \(e.g. from a registry
+ * and from .d.ts files\).
  *
  * 这用于组合从不同来源（例如从注册表和从 .d.ts 文件）读取的 `MetadataReader` 。
  *

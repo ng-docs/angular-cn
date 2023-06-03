@@ -266,19 +266,16 @@ export function resetParserState(text: string): void {
  * @param text Text to scan
  *
  * 要扫描的文本
- *
  * @param startIndex Starting index of character where the scan should start.
  *
  * 扫描应该开始的字符的起始索引。
- *
  * @param endIndex Ending index of character where the scan should end.
  *
  * 扫描应该结束的字符的结束索引。
- *
  * @returns
  *
- * Index of next non-whitespace character (May be the same as `start` if no whitespace at
- *          that location.)
+ * Index of next non-whitespace character \(May be the same as `start` if no whitespace at
+ *          that location.\)
  *
  * 下一个非空格字符的索引（如果该位置没有空格，可能与 `start` 相同。）
  *

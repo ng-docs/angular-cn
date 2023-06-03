@@ -28,7 +28,6 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  * service identified by the `token` parameter.
  *
  * 此帮助器函数返回一个工厂函数，该函数提供对 `token` 参数标识的 Angular 服务的访问。
- *
  * @usageNotes
  *
  * ### Examples
@@ -71,15 +70,15 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  *   use it in a downgraded Angular component from a different module.
  *
  * </div>
+ *
  * @param token an `InjectionToken` that identifies a service provided from Angular.
  *
  * 一个 `InjectionToken` ，用于标识 Angular 提供的服务。
- *
- * @param downgradedModule the name of the downgraded module (if any) that the injectable
+ * @param downgradedModule the name of the downgraded module \(if any\) that the injectable
  * "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose injector will
  * be used for instantiating the injectable.<br />
- * (This option is only necessary when using `downgradeModule()` to downgrade more than one Angular
- * module.)
+ * \(This option is only necessary when using `downgradeModule()` to downgrade more than one Angular
+ * module.\)
  *
  * 可注入“属于”的降级模块的名称（如果有），由对 `downgradeModule()`
  * 的调用返回。它是模块，其注入器将用于实例化可注入。<br />（仅在使用 `downgradeModule()` 降级多个
@@ -91,7 +90,6 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  * used to register the service on an AngularJS module.
  *
  * 一个[工厂函数](https://docs.angularjs.org/guide/di)，可用于在 AngularJS 模块上注册服务。
- *
  * @publicApi
  */
 export function downgradeInjectable(token: any, downgradedModule: string = ''): Function {

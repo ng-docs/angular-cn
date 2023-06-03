@@ -29,9 +29,9 @@ let upgradeCount: number = 0;
  * `UpgradeAdapter` 允许：
  *
  * 1. creation of Angular component from AngularJS component directive
- *    (See [UpgradeAdapter#upgradeNg1Component()])
+ *    \(See [UpgradeAdapter#upgradeNg1Component()]\)
  * 2. creation of AngularJS directive from Angular component.
- *    (See [UpgradeAdapter#downgradeNg2Component()])
+ *    \(See [UpgradeAdapter#downgradeNg2Component()]\)
  * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
  *    coexisting in a single application.
  *
@@ -133,7 +133,6 @@ let upgradeCount: number = 0;
  *       "ng2[ng1[Hello World!](transclude)](project)");
  * });
  * ```
- *
  * @deprecated Deprecated since v5. Use `upgrade/static` instead, which also supports
  * [Ahead-of-Time compilation](guide/aot-compiler).
  * @publicApi
@@ -301,7 +300,7 @@ export class UpgradeAdapter {
    *
    *     `compile` ：不支持，因为宿主元素归 Angular 所有，它不允许在编译期间修改 DOM 结构。
    *
-   *   - `controller`: supported. (NOTE: injection of `$attrs` and `$transclude` is not supported.)
+   *   - `controller`: supported. \(NOTE: injection of `$attrs` and `$transclude` is not supported.\)
    *
    *     `controller` ：支持。（注意：不支持注入 `$attrs` 和 `$transclude` 。）
    *
@@ -313,7 +312,7 @@ export class UpgradeAdapter {
    *
    *     `bindToController` ：支持。
    *
-   *   - `link`: supported. (NOTE: only pre-link function is supported.)
+   *   - `link`: supported. \(NOTE: only pre-link function is supported.\)
    *
    *     `link` ：支持。（注意：仅支持预链接功能。）
    *
@@ -473,7 +472,7 @@ export class UpgradeAdapter {
    *
    * 引导混合 AngularJS / Angular 应用程序。
    *
-   * This `bootstrap` method is a direct replacement (takes same arguments) for AngularJS
+   * This `bootstrap` method is a direct replacement \(takes same arguments\) for AngularJS
    * [`bootstrap`](https://docs.angularjs.org/api/ng/function/angular.bootstrap) method. Unlike
    * AngularJS, this bootstrap is asynchronous.
    *
@@ -518,7 +517,6 @@ export class UpgradeAdapter {
    *       "ng2[ng1[Hello World!](transclude)](project)");
    * });
    * ```
-   *
    */
   bootstrap(element: Element, modules?: any[], config?: IAngularBootstrapConfig):
       UpgradeAdapterRef {

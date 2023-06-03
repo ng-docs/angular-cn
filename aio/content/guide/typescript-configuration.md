@@ -10,7 +10,7 @@ TypeScript 是 Angular 应用开发中使用的主语言。它是 JavaScript 的
 Browsers can't execute TypeScript directly.
 Typescript must be "transpiled" into JavaScript using the *tsc* compiler, which requires some configuration.
 
-浏览器不能直接执行 TypeScript。它得先用 *tsc* 编译器转译(transpile)成 JavaScript，而且编译器需要进行一些配置。
+浏览器不能直接执行 TypeScript。它得先用 *tsc* 编译器转译（transpile）成 JavaScript，而且编译器需要进行一些配置。
 
 This page covers some aspects of TypeScript configuration and the TypeScript environment
 that are important to Angular developers, including details about the following files:
@@ -76,10 +76,10 @@ But your choice now can make a difference in larger projects, so it merits discu
 
 TypeScript 开发者们在 `noImplicitAny` 标志应该是 `true` 还是 `false` 上存在分歧。这没有标准答案，你以后还可以修改这个标志。但是你的选择会在大项目中产生显著差异，所以它值得讨论一番。
 
-When the `noImplicitAny` flag is `false` (the default), and if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to `any`.
+When the `noImplicitAny` flag is `false` \(the default\), and if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to `any`.
 That's what is meant by *implicit `any`*.
 
-当 `noImplicitAny` 标志是 `false`(默认值)时，如果编译器无法根据变量的用途推断出变量的类型，它就会悄悄的把变量类型默认为 `any`。这就是*隐式 `any`*的含义。
+当 `noImplicitAny` 标志是 `false`（默认值）时，如果编译器无法根据变量的用途推断出变量的类型，它就会悄悄的把变量类型默认为 `any`。这就是*隐式 `any`*的含义。
 
 When the `noImplicitAny` flag is `true` and the TypeScript compiler cannot infer the type, it still generates the JavaScript files, but it also **reports an error**.
 Many seasoned developers prefer this stricter setting because type checking catches more unintentional errors at compile time.
@@ -114,7 +114,7 @@ For more information about how the TypeScript configuration affects compilation,
 
 ## TypeScript typings
 
-## TypeScript 类型定义(typings)
+## TypeScript 类型定义（typings）
 
 Many JavaScript libraries, such as jQuery, the Jasmine testing library, and Angular, extend the JavaScript environment with features and syntax that the TypeScript compiler doesn't recognize natively.
 When the compiler doesn't recognize something, it reports an error.

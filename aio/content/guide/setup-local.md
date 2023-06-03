@@ -158,7 +158,7 @@ and rebuilds the app as you make changes to those files.
 
 `ng serve` 命令会启动开发服务器、监视文件，并在这些文件发生更改时重建应用。
 
-The `--open` (or just `-o`) option automatically opens your browser
+The `--open` \(or just `-o`\) option automatically opens your browser
 to `http://localhost:4200/`.
 
 `--open`（或者只用 `-o` 缩写）选项会自动打开你的浏览器，并访问 `http://localhost:4200/`。

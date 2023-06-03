@@ -13,7 +13,7 @@ import {LinkedDefinition} from '../partial_linkers/partial_linker';
 import {Translator} from '../translator';
 
 /**
- * This class represents (from the point of view of the `FileLinker`) the scope in which
+ * This class represents \(from the point of view of the `FileLinker`\) the scope in which
  * statements and expressions related to a linked partial declaration will be emitted.
  *
  * 此类表示（从 `FileLinker` 的角度来看）将发出与链接的部分声明相关的语句和表达式的范围。

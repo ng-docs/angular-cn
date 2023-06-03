@@ -65,8 +65,8 @@ export interface InputOrOutput {
  *
  * 组件属性和模板绑定属性名称的映射，例如包含特定指令或组件的输入。
  *
- * A single component property has exactly one input/output annotation (and therefore one binding
- * property name) associated with it, but the same binding property name may be shared across many
+ * A single component property has exactly one input/output annotation \(and therefore one binding
+ * property name\) associated with it, but the same binding property name may be shared across many
  * component property names.
  *
  * 单个组件属性只有一个关联的输入/输出注解（因此有一个绑定属性名称），但同一个绑定属性名称可以在许多组件属性名称之间共享。
@@ -113,7 +113,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
   /**
    * Construct a `ClassPropertyMapping` from a primitive JS object which maps class property names
    * to either binding property names or an array that contains both names, which is used in on-disk
-   * metadata formats (e.g. in .d.ts files).
+   * metadata formats \(e.g. in .d.ts files\).
    *
    * 从原始 JS 对象构造一个 `ClassPropertyMapping`
    * ，该对象将类属性名称映射到绑定属性名称或包含这两个名称的数组，用于磁盘上的元数据格式（例如
@@ -227,13 +227,13 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
 
   /**
    * Convert this mapping to a primitive JS object which maps each class property either to itself
-   * (for cases where the binding property name is the same) or to an array which contains both
+   * \(for cases where the binding property name is the same\) or to an array which contains both
    * names if they differ.
    *
    * 将此映射转换为原始 JS
    * 对象，该对象将每个类属性映射到本身（对于绑定属性名称相同的情况），或者映射到包含两个名称（如果不同）的数组。
    *
-   * This object format is used when mappings are serialized (for example into .d.ts files).
+   * This object format is used when mappings are serialized \(for example into .d.ts files\).
    *
    * 序列化映射（例如转换为 .d.ts 文件）时会使用此对象格式。
    *
@@ -248,7 +248,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
 
   /**
    * Implement the iterator protocol and return entry objects which contain the class and binding
-   * property names (and are useful for destructuring).
+   * property names \(and are useful for destructuring\).
    *
    * 实现迭代器协议并返回包含类和绑定属性名称（并且可用于解构）的条目对象。
    *

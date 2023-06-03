@@ -29,11 +29,12 @@ export const TYPE = 1;
 
 /**
  * Flag to signify that this `LContainer` may have transplanted views which need to be change
- * detected. (see: `LView[DECLARATION_COMPONENT_VIEW])`.
+ * detected. \(see: `LView[DECLARATION_COMPONENT_VIEW])`.
  *
  * This flag, once set, is never unset for the `LContainer`. This means that when unset we can skip
  * a lot of work in `refreshEmbeddedViews`. But when set we still need to verify
  * that the `MOVED_VIEWS` are transplanted and on-push.
+ *
  */
 export const HAS_TRANSPLANTED_VIEWS = 2;
 
@@ -52,8 +53,9 @@ export const DEHYDRATED_VIEWS = 10;
 /**
  * Size of LContainer's header. Represents the index after which all views in the
  * container will be inserted. We need to keep a record of current views so we know
- * which views are already in the DOM (and don't need to be re-added) and so we can
+ * which views are already in the DOM \(and don't need to be re-added\) and so we can
  * remove views from the DOM when they are no longer required.
+ *
  */
 export const CONTAINER_HEADER_OFFSET = 11;
 
@@ -61,9 +63,10 @@ export const CONTAINER_HEADER_OFFSET = 11;
  * The state associated with a container.
  *
  * This is an array so that its structure is closer to LView. This helps
- * when traversing the view tree (which is a mix of containers and component
- * views), so we can jump to viewOrContainer[NEXT] in the same way regardless
+ * when traversing the view tree \(which is a mix of containers and component
+ * views\), so we can jump to viewOrContainer[NEXT] in the same way regardless
  * of type.
+ *
  */
 export interface LContainer extends Array<any> {
   /**
@@ -82,9 +85,10 @@ export interface LContainer extends Array<any> {
 
   /**
    * Flag to signify that this `LContainer` may have transplanted views which need to be change
-   * detected. (see: `LView[DECLARATION_COMPONENT_VIEW])`.
+   * detected. \(see: `LView[DECLARATION_COMPONENT_VIEW])`.
    *
    * This flag, once set, is never unset for the `LContainer`.
+   *
    */
   [HAS_TRANSPLANTED_VIEWS]: boolean;
 

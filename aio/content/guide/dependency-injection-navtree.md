@@ -79,9 +79,9 @@ In the following example, the parent `AlexComponent` has several children includ
 
 <code-example header="parent-finder.component.ts (CathyComponent)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="cathy"></code-example>
 
-Notice that even though the [@Optional](guide/dependency-injection-in-action#optional) qualifier is there for safety, the <live-example name="dependency-injection-in-action"></live-example> confirms that the `alex` parameter is set.
+Notice that even though the [`@Optional`](guide/dependency-injection-in-action#optional) qualifier is there for safety, the <live-example name="dependency-injection-in-action"></live-example> confirms that the `alex` parameter is set.
 
-注意，虽然为了安全起见我们用了 [@Optional](guide/dependency-injection-in-action#optional) 限定符，但是<live-example name="dependency-injection-in-action"></live-example>中仍然会确认 `alex` 参数是否有值。
+注意，虽然为了安全起见我们用了 [`@Optional`](guide/dependency-injection-in-action#optional) 限定符，但是<live-example name="dependency-injection-in-action"></live-example>中仍然会确认 `alex` 参数是否有值。
 
 <a id="base-parent"></a>
 
@@ -120,7 +120,7 @@ This example is examining *whether a component can inject its parent via the par
 这个设计并不怎么好。该例子是为了验证*组件是否能通过其父组件的基类来注入父组件*。
 
 The sample's `CraigComponent` explores this question.
-[Looking back](#alex), you see that the `Alex` component *extends* (*inherits*) from a class named `Base`.
+[Looking back](#alex), you see that the `Alex` component *extends* \(*inherits*\) from a class named `Base`.
 
 这个例子中的 `CraigComponent` 体现了此问题。[往回看](#alex)，你可以看到 `Alex` 组件*扩展*（*继承*）了基类 `Base`。
 

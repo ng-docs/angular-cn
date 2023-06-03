@@ -187,7 +187,7 @@ The date is formatted as `YYYY-MM-DD` where:
 
   `YYYY` 是当前年份
 
-* `MM` is the two-digit number of the current month with a leading zero if the month is 01 (January) through 09 (September)
+* `MM` is the two-digit number of the current month with a leading zero if the month is 01 \(January\) through 09 \(September\)
 
   `MM` 是当前月的两位数，如果月份是 01（一月）到 09（九月），则以前导零
 

@@ -13,8 +13,8 @@ import {AbsoluteSourceSpan, AttributeIdentifier, ElementIdentifier, IdentifierKi
 import {ComponentMeta} from './context';
 
 /**
- * A parsed node in a template, which may have a name (if it is a selector) or
- * be anonymous (like a text span).
+ * A parsed node in a template, which may have a name \(if it is a selector\) or
+ * be anonymous \(like a text span\).
  *
  * 模板中的解析节点，可能有一个名称（如果它是选择器）或是匿名的（如文本跨度）。
  *
@@ -31,7 +31,7 @@ type TargetIdentifierMap = Map<TmplTarget, TargetIdentifier>;
 
 /**
  * Visits the AST of an Angular template syntax expression, finding interesting
- * entities (variable references, etc.). Creates an array of Entities found in
+ * entities \(variable references, etc.\). Creates an array of Entities found in
  * the expression, with the location of the Entities being relative to the
  * expression.
  *

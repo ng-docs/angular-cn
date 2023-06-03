@@ -232,7 +232,7 @@ Some common problems that may prevent the schematic from working correctly inclu
 
 Due to the size and complexity of the migration, there are some cases that the schematic cannot handle:
 
-* Because unit tests are not ahead-of-time (AoT) compiled, `imports` added to components in unit tests might not be entirely correct.
+* Because unit tests are not ahead-of-time \(AoT\) compiled, `imports` added to components in unit tests might not be entirely correct.
 * The schematic relies on direct calls to Angular APIs. The schematic cannot recognize custom wrappers around Angular APIs. For example, if there you define a custom `customConfigureTestModule` function that wraps `TestBed.configureTestingModule`, components it declares may not be recognized.
 
 @reviewed 2023-02-15

@@ -151,28 +151,28 @@ export interface ContentChildrenDecorator {
    *
    *   任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
-   * - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *   with `@ContentChildren('cmp')`)
+   * - A template reference variable as a string \(e.g. query `<my-component #cmp></my-component>`
+   *   with `@ContentChildren('cmp')`\)
    *
    *   字符串形式的模板引用变量（例如，使用 `@ContentChildren('cmp')` 查询 `<my-component #cmp></my-component>`）
    *
-   * - Any provider defined in the child component tree of the current component (e.g.
-   *   `@ContentChildren(SomeService) someService: SomeService`)
+   * - Any provider defined in the child component tree of the current component \(e.g.
+   *   `@ContentChildren(SomeService) someService: SomeService`\)
    *
    *   在当前组件的子组件树中定义的任何提供者（例如 `@ContentChildren(SomeService) someService: SomeService`）
    *
-   * - Any provider defined through a string token (e.g. `@ContentChildren('someToken')
-   *   someTokenVal: any`)
+   * - Any provider defined through a string token \(e.g. `@ContentChildren('someToken')
+   *   someTokenVal: any`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `@ContentChildren('someToken') someTokenVal: any`）
    *
-   * - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with
-   *   `@ContentChildren(TemplateRef) template;`)
+   * - A `TemplateRef` \(e.g. query `<ng-template></ng-template>` with
+   *   `@ContentChildren(TemplateRef) template;`\)
    *
    *   `TemplateRef`（例如使用 `@ContentChildren(TemplateRef) template;` 查询 `<ng-template></ng-template>` ；）
    *
-   * In addition, multiple string selectors can be separated with a comma (e.g.
-   * `@ContentChildren('cmp1,cmp2')`)
+   * In addition, multiple string selectors can be separated with a comma \(e.g.
+   * `@ContentChildren('cmp1,cmp2')`\)
    *
    * 此外，多个字符串选择器可以用逗号分隔（例如 `@ContentChildren('cmp1,cmp2')`）
    *
@@ -189,7 +189,7 @@ export interface ContentChildrenDecorator {
    *
    *   在此查询的 `selector` 匹配的组件注入器上定义的任何提供程序
    *
-   * - Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   * - Any provider defined through a string token \(e.g. `{provide: 'token', useValue: 'val'}`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `{provide: 'token', useValue: 'val'}`）
    *
@@ -286,7 +286,7 @@ export interface ContentChildDecorator {
    *
    *   **selector** - 要查询的指令类型或名称。
    *
-   * * **descendants** - If `true` (default) include all descendants of the element. If `false` then
+   * * **descendants** - If `true` \(default\) include all descendants of the element. If `false` then
    *   only query direct children of the element.
    *
    *   **后代**- 如果为 `true` （默认），则包括元素的所有后代。如果为 `false` ，则仅查询元素的直接子项。
@@ -308,23 +308,23 @@ export interface ContentChildDecorator {
    *
    *   任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
-   * - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *   with `@ContentChild('cmp')`)
+   * - A template reference variable as a string \(e.g. query `<my-component #cmp></my-component>`
+   *   with `@ContentChild('cmp')`\)
    *
    *   字符串形式的模板引用变量（例如，使用 `@ContentChild('cmp')` 查询 `<my-component #cmp></my-component>` ）
    *
-   * - Any provider defined in the child component tree of the current component (e.g.
-   *   `@ContentChild(SomeService) someService: SomeService`)
+   * - Any provider defined in the child component tree of the current component \(e.g.
+   *   `@ContentChild(SomeService) someService: SomeService`\)
    *
    *   在当前组件的子组件树中定义的任何提供者（例如 `@ContentChild(SomeService) someService: SomeService` ）
    *
-   * - Any provider defined through a string token (e.g. `@ContentChild('someToken') someTokenVal:
-   *   any`)
+   * - Any provider defined through a string token \(e.g. `@ContentChild('someToken') someTokenVal:
+   *   any`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `@ContentChild('someToken') someTokenVal: any`）
    *
-   * - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ContentChild(TemplateRef)
-   *   template;`)
+   * - A `TemplateRef` \(e.g. query `<ng-template></ng-template>` with `@ContentChild(TemplateRef)
+   *   template;`\)
    *
    *   `TemplateRef` （例如使用 `@ContentChild(TemplateRef) template;` 查询 `<ng-template></ng-template>` ；）
    *
@@ -341,7 +341,7 @@ export interface ContentChildDecorator {
    *
    *   在此查询的 `selector` 匹配的组件注入器上定义的任何提供程序
    *
-   * - Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   * - Any provider defined through a string token \(e.g. `{provide: 'token', useValue: 'val'}`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `{provide: 'token', useValue: 'val'}`）
    *
@@ -441,28 +441,28 @@ export interface ViewChildrenDecorator {
    *
    *   任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
-   * - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *   with `@ViewChildren('cmp')`)
+   * - A template reference variable as a string \(e.g. query `<my-component #cmp></my-component>`
+   *   with `@ViewChildren('cmp')`\)
    *
    *   作为字符串的模板引用变量（例如，使用 `@ViewChildren('cmp')` 查询 `<my-component #cmp></my-component>` ）
    *
-   * - Any provider defined in the child component tree of the current component (e.g.
-   *   `@ViewChildren(SomeService) someService!: SomeService`)
+   * - Any provider defined in the child component tree of the current component \(e.g.
+   *   `@ViewChildren(SomeService) someService!: SomeService`\)
    *
    *   在当前组件的子组件树中定义的任何提供者（例如 `@ViewChildren(SomeService) someService!: SomeService` ）
    *
-   * - Any provider defined through a string token (e.g. `@ViewChildren('someToken')
-   *   someTokenVal!: any`)
+   * - Any provider defined through a string token \(e.g. `@ViewChildren('someToken')
+   *   someTokenVal!: any`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `@ViewChildren('someToken') someTokenVal!: any`）
    *
-   * - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ViewChildren(TemplateRef)
-   *   template;`)
+   * - A `TemplateRef` \(e.g. query `<ng-template></ng-template>` with `@ViewChildren(TemplateRef)
+   *   template;`\)
    *
    *   `TemplateRef` （例如使用 `@ViewChildren(TemplateRef) template;` 查询 `<ng-template></ng-template>` ；）
    *
-   * In addition, multiple string selectors can be separated with a comma (e.g.
-   * `@ViewChildren('cmp1,cmp2')`)
+   * In addition, multiple string selectors can be separated with a comma \(e.g.
+   * `@ViewChildren('cmp1,cmp2')`\)
    *
    * 此外，多个字符串选择器可以用逗号分隔（例如 `@ViewChildren('cmp1,cmp2')`）
    *
@@ -479,7 +479,7 @@ export interface ViewChildrenDecorator {
    *
    *   在此查询的 `selector` 匹配的组件注入器上定义的任何提供程序
    *
-   * - Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   * - Any provider defined through a string token \(e.g. `{provide: 'token', useValue: 'val'}`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `{provide: 'token', useValue: 'val'}`）
    *
@@ -494,6 +494,7 @@ export interface ViewChildrenDecorator {
    * ### Another example
    *
    * {@example core/di/ts/viewChildren/view_children_example.ts region='Component'}
+   *
    * @Annotation
    */
   (selector: ProviderToken<unknown>|Function|string,
@@ -572,23 +573,23 @@ export interface ViewChildDecorator {
    *
    *   任何带有 `@Component` 或 `@Directive` 装饰器的类
    *
-   * - A template reference variable as a string (e.g. query `<my-component #cmp></my-component>`
-   *   with `@ViewChild('cmp')`)
+   * - A template reference variable as a string \(e.g. query `<my-component #cmp></my-component>`
+   *   with `@ViewChild('cmp')`\)
    *
    *   字符串形式的模板引用变量（比如可以使用 `@ViewChild('cmp')` 来查询 `<my-component #cmp></my-component>`
    *
-   * - Any provider defined in the child component tree of the current component (e.g.
-   *   `@ViewChild(SomeService) someService: SomeService`)
+   * - Any provider defined in the child component tree of the current component \(e.g.
+   *   `@ViewChild(SomeService) someService: SomeService`\)
    *
    *   组件树中任何当前组件的子组件所定义的提供者（比如 `@ViewChild(SomeService) someService: SomeService` ）
    *
-   * - Any provider defined through a string token (e.g. `@ViewChild('someToken') someTokenVal:
-   *   any`)
+   * - Any provider defined through a string token \(e.g. `@ViewChild('someToken') someTokenVal:
+   *   any`\)
    *
    *   任何通过字符串令牌定义的提供者（比如 `@ViewChild('someToken') someTokenVal: any`）
    *
-   * - A `TemplateRef` (e.g. query `<ng-template></ng-template>` with `@ViewChild(TemplateRef)
-   *   template;`)
+   * - A `TemplateRef` \(e.g. query `<ng-template></ng-template>` with `@ViewChild(TemplateRef)
+   *   template;`\)
    *
    *   `TemplateRef`（比如可以用 `@ViewChild(TemplateRef) template;` 来查询 `<ng-template></ng-template>`）
    *
@@ -605,7 +606,7 @@ export interface ViewChildDecorator {
    *
    *   在此查询的 `selector` 匹配的组件注入器上定义的任何提供程序
    *
-   * - Any provider defined through a string token (e.g. `{provide: 'token', useValue: 'val'}`)
+   * - Any provider defined through a string token \(e.g. `{provide: 'token', useValue: 'val'}`\)
    *
    *   通过字符串标记定义的任何提供程序（例如 `{provide: 'token', useValue: 'val'}`）
    *

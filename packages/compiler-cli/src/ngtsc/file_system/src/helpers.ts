@@ -141,7 +141,7 @@ export function basename(filePath: PathString, extension?: string): PathSegment 
  *
  * 如果给定的路径是本地相对的，则返回 true 。
  *
- * This is used to work out if the given path is relative (i.e. not absolute) but also is not
+ * This is used to work out if the given path is relative \(i.e. not absolute\) but also is not
  * escaping the current directory.
  *
  * 这用于确定给定的路径是否是相对的（即不是绝对的），但也没有转义当前目录。

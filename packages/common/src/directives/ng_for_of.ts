@@ -118,13 +118,13 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  *
  * `NgForOf` 导出了一系列值，可以指定别名后作为局部变量使用：
  *
- * - `$implicit: T`: The value of the individual items in the iterable (`ngForOf`).
+ * - `$implicit: T`: The value of the individual items in the iterable \(`ngForOf`\).
  *
  *   `$implicit: T`：迭代目标（绑定到 `ngForOf`）中每个条目的值。
  *
  * - `ngForOf: NgIterable<T>`: The value of the iterable expression. Useful when the expression is
- *     more complex then a property access, for example when using the async pipe (`userStreams |
- *     async`).
+ *     more complex then a property access, for example when using the async pipe \(`userStreams |
+ *     async`\).
  *
  *   `ngForOf:
  *     NgIterable<T>`：迭代表达式的值。当表达式不局限于访问某个属性时，这会非常有用，比如在使用
@@ -189,8 +189,8 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * The identities of elements in the iterator can change while the data does not.
  * This can happen, for example, if the iterator is produced from an RPC to the server, and that
  * RPC is re-run. Even if the data hasn't changed, the second response produces objects with
- * different identities, and Angular must tear down the entire DOM and rebuild it (as if all old
- * elements were deleted and all new elements inserted).
+ * different identities, and Angular must tear down the entire DOM and rebuild it \(as if all old
+ * elements were deleted and all new elements inserted\).
  *
  * 即使数据没有变化，迭代器中的元素标识符也可能会发生变化。比如，如果迭代器处理的目标是通过 RPC
  * 从服务器取来的，而 RPC
@@ -248,10 +248,10 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
    * `NgForOf` 使用计算的键将 iterable 中的条目与它为这些条目生成的 DOM 元素关联起来。
    *
    * A custom `TrackByFunction` is useful to provide good user experience in cases when items in an
-   * iterable rendered using `NgForOf` have a natural identifier (for example, custom ID or a
-   * primary key), and this iterable could be updated with new object instances that still
-   * represent the same underlying entity (for example, when data is re-fetched from the server,
-   * and the iterable is recreated and re-rendered, but most of the data is still the same).
+   * iterable rendered using `NgForOf` have a natural identifier \(for example, custom ID or a
+   * primary key\), and this iterable could be updated with new object instances that still
+   * represent the same underlying entity \(for example, when data is re-fetched from the server,
+   * and the iterable is recreated and re-rendered, but most of the data is still the same\).
    *
    * 在使用 `NgForOf` 渲染的迭代中的条目具有自然标识符（例如自定义 ID 或主键）的情况下，自定义
    * `TrackByFunction`

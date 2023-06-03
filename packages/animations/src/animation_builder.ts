@@ -28,11 +28,10 @@ import {AnimationPlayer} from './players/animation_player';
  *
  * 应用通常不需要创建自己的动画播放器，但是如果需要，请按照以下步骤操作：
  *
- * 1. Use the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code> method
+ * 1. Use the [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build) method
  *    to create a programmatic animation. The method returns an `AnimationFactory` instance.
  *
- *    使用<code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)
- *       ()</code>方法来创建程序化动画。该方法返回一个 `AnimationFactory` 实例。
+ *    使用 [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build) 方法来创建程序化动画。该方法返回一个 `AnimationFactory` 实例。
  *
  * 2. Use the factory object to create an `AnimationPlayer` and attach it to a DOM element.
  *
@@ -91,26 +90,24 @@ export abstract class AnimationBuilder {
 
 /**
  * A factory object returned from the
- * <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code>
+ * [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build)
  * method.
  *
- * 从 `AnimationBuilder`.`build()` 方法返回的工厂对象。。
+ * 从 [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build) 方法返回的工厂对象。。
  *
  * @publicApi
  */
 export abstract class AnimationFactory {
   /**
    * Creates an `AnimationPlayer` instance for the reusable animation defined by
-   * the <code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)()</code>
+   * the [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build)
    * method that created this factory and attaches the new player a DOM element.
    *
-   * `AnimationPlayer`<code>[AnimationBuilder.build](api/animations/AnimationBuilder#build)
-   * ()</code>创建此工厂并为新播放器附加 DOM 元素的方法。
+   * `AnimationPlayer [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build) 创建此工厂并为新播放器附加 DOM 元素的方法。
    *
    * @param element The DOM element to which to attach the player.
    *
    * 要附加播放器的 DOM 元素。
-   *
    * @param options A set of options that can include a time delay and
    * additional developer-defined parameters.
    *

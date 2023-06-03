@@ -84,42 +84,36 @@ export enum TcbGenericContextBehavior {
  *
  * As a side effect of generating a TCB for the component, `ts.Diagnostic`s may also be produced
  * directly for issues within the template which are identified during generation. These issues are
- * recorded in either the `domSchemaChecker` (which checks usage of DOM elements and bindings) as
- * well as the `oobRecorder` (which records errors when the type-checking code generator is unable
- * to sufficiently understand a template).
+ * recorded in either the `domSchemaChecker` \(which checks usage of DOM elements and bindings\) as
+ * well as the `oobRecorder` \(which records errors when the type-checking code generator is unable
+ * to sufficiently understand a template\).
  *
  * 作为为组件生成 TCB 的副作用，也可以为生成期间识别的模板中的问题直接生成 `ts.Diagnostic`
  * 。这些问题记录在 `domSchemaChecker`（检查 DOM 元素和绑定的使用情况）以及 `oobRecorder`
- *（当类型检查代码生成器无法充分理解模板时记录错误）中。
+ * （当类型检查代码生成器无法充分理解模板时记录错误）中。
  *
  * @param env an `Environment` into which type-checking code will be generated.
  *
  * 将在其中生成类型检查代码的 `Environment` 。
- *
  * @param ref a `Reference` to the component class which should be type-checked.
  *
  * a 对应该进行类型检查的组件类的 `Reference` 。
- *
  * @param name a `ts.Identifier` to use for the generated `ts.FunctionDeclaration`.
  *
  * 用于生成的 `ts.Identifier` 的 `ts.FunctionDeclaration` 。
- *
  * @param meta metadata about the component's template and the function being generated.
  *
  * 有关组件模板和正在生成的函数的元数据。
- *
  * @param domSchemaChecker used to check and record errors regarding improper usage of DOM elements
  * and bindings.
  *
  * 用于检查和记录有关不正确使用 DOM 元素和绑定的错误。
- *
  * @param oobRecorder used to record errors regarding template elements which could not be correctly
  * translated into types during TCB generation.
  *
  * 用于记录有关在 TCB 生成期间无法正确转换为类型的模板元素的错误。
- *
- * @param genericContextBehavior controls how generic parameters (especially parameters with generic
- * bounds) will be referenced from the generated TCB code.
+ * @param genericContextBehavior controls how generic parameters \(especially parameters with generic
+ * bounds\) will be referenced from the generated TCB code.
  *
  * 控制如何从生成的 TCB 代码中引用泛型参数（尤其是具有泛型边界的参数）。
  *
@@ -196,8 +190,8 @@ export function generateTypeCheckBlock(
  *
  * The generation of a TCB is non-linear. Bindings within a template may result in the need to
  * construct certain types earlier than they otherwise would be constructed. That is, if the
- * generation of a TCB for a template is broken down into specific operations (constructing a
- * directive, extracting a variable from a let- operation, etc), then it's possible for operations
+ * generation of a TCB for a template is broken down into specific operations \(constructing a
+ * directive, extracting a variable from a let- operation, etc\), then it's possible for operations
  * earlier in the sequence to depend on operations which occur later in the sequence.
  *
  * TCB
@@ -206,12 +200,12 @@ export function generateTypeCheckBlock(
  * let-操作中提取变量等），那么序列中靠前的操作可能会依赖于发生的操作在顺序的后面。
  *
  * `TcbOp` abstracts the different types of operations which are required to convert a template into
- * a TCB. This allows for two phases of processing for the template, where 1) a linear sequence of
- * `TcbOp`s is generated, and then 2) these operations are executed, not necessarily in linear
+ * a TCB. This allows for two phases of processing for the template, where 1\) a linear sequence of
+ * `TcbOp`s is generated, and then 2\) these operations are executed, not necessarily in linear
  * order.
  *
- * `TcbOp` 抽象了将模板转换为 TCB 所需的不同类型的操作。这允许对模板进行两个处理阶段，其中 1) 生成
- * `TcbOp` 的线性序列，然后 2) 执行这些操作，不一定按线性顺序。
+ * `TcbOp` 抽象了将模板转换为 TCB 所需的不同类型的操作。这允许对模板进行两个处理阶段，其中 1\) 生成
+ * `TcbOp` 的线性序列，然后 2\) 执行这些操作，不一定按线性顺序。
  *
  * Each `TcbOp` may insert statements into the body of the TCB, and also optionally return a
  * `ts.Expression` which can be used to reference the operation's result.
@@ -234,12 +228,12 @@ abstract class TcbOp {
   abstract execute(): ts.Expression|null;
 
   /**
-   * Replacement value or operation used while this `TcbOp` is executing (i.e. to resolve circular
-   * references during its execution).
+   * Replacement value or operation used while this `TcbOp` is executing \(i.e. to resolve circular
+   * references during its execution\).
    *
    * 执行此 `TcbOp` 时使用的替换值或操作（即在其执行期间解析循环引用）。
    *
-   * This is usually a `null!` expression (which asks TS to infer an appropriate type), but another
+   * This is usually a `null!` expression \(which asks TS to infer an appropriate type\), but another
    * `TcbOp` can be returned in cases where additional code generation is necessary to deal with
    * circular references.
    *
@@ -253,7 +247,7 @@ abstract class TcbOp {
 }
 
 /**
- * A `TcbOp` which creates an expression for a native DOM element (or web component) from a
+ * A `TcbOp` which creates an expression for a native DOM element \(or web component\) from a
  * `TmplAstElement`.
  *
  * 一个 `TcbOp` ，它从 `TmplAstElement` 为本机 DOM 元素（或 Web 组件）创建表达式。
@@ -292,9 +286,9 @@ class TcbElementOp extends TcbOp {
  * 一个 `TcbOp` ，它在 `TmplAstVariable` 的上下文上为特定的 `TmplAstTemplate` -TmplAstVariable
  * 创建表达式。
  *
- * Executing this operation returns a reference to the variable variable (lol).
+ * Executing this operation returns a reference to the variable variable \(lol\).
  *
- * 执行此操作会返回对变量 variable (lol) 的引用。
+ * 执行此操作会返回对变量 variable \(lol\) 的引用。
  *
  */
 class TcbVariableOp extends TcbOp {
@@ -499,7 +493,7 @@ class TcbTemplateBodyOp extends TcbOp {
 }
 
 /**
- * A `TcbOp` which renders a text binding (interpolation) into the TCB.
+ * A `TcbOp` which renders a text binding \(interpolation\) into the TCB.
  *
  * 一个 `TcbOp` ，它将文本绑定（插值）呈现到 TCB 中。
  *
@@ -650,13 +644,13 @@ class TcbGenericDirectiveTypeWithAnyParamsOp extends TcbDirectiveTypeOpBase {
  * could be gathered without this operation using the `BoundTarget`. However, for the case of
  * ng-template references, we will need this reference variable to not only provide a location in
  * the shim file, but also to narrow the variable to the correct `TemplateRef<T>` type rather than
- * `TemplateRef<any>` (this work is still TODO).
+ * `TemplateRef<any>` \(this work is still TODO\).
  *
  * 此操作支持在获取引用符号时对 `TemplateTypeChecker`
  * 进行更流式查找。在大多数情况下，这不是必需的。也就是说，可以在不使用此操作的情况下使用
  * `BoundTarget` 收集符号的信息。但是，对于 ng-template 引用，我们将需要此引用变量，不仅要提供在
  * shim 文件中的位置，还要将变量范围缩小为正确的 `TemplateRef<T>` 类型，而不是 `TemplateRef<any>`
- *（此工作仍然是 TODO）。
+ * （此工作仍然是 TODO）。
  *
  * Executing this operation returns a reference to the directive instance variable with its inferred
  * type.
@@ -1310,7 +1304,7 @@ class TcbUnclaimedOutputsOp extends TcbOp {
  * 一个 `TcbOp` ，它为组件上下文生成完成点。
  *
  * This completion point looks like `this. ;` in the TCB output, and does not produce diagnostics.
- * TypeScript autocompletion APIs can be used at this completion point (after the '.') to produce
+ * TypeScript autocompletion APIs can be used at this completion point \(after the '.'\) to produce
  * autocompletion results of properties and methods from the template's component context.
  *
  * 此完成点如下 `this. ;` 在 TCB 输出中，并且不生成诊断。可以在此完成点（“.”之后）使用 TypeScript
@@ -1340,7 +1334,7 @@ class TcbComponentContextCompletionOp extends TcbOp {
  * 用于中断 `TcbOp` 之间的循环引用的值。
  *
  * This value is returned whenever `TcbOp`s have a circular dependency. The expression is a non-null
- * assertion of the null value (in TypeScript, the expression `null!`). This construction will infer
+ * assertion of the null value \(in TypeScript, the expression `null!`\). This construction will infer
  * the least narrow type for whatever it's assigned to.
  *
  * 每当 `TcbOp` 具有循环依赖项时，都会返回此值。该表达式是 null 值的非 null 断言（在 TypeScript
@@ -1516,8 +1510,7 @@ class Scope {
    * @param tcb the overall context of TCB generation.
    *
    * TCB 生成的整体上下文。
-   *
-   * @param parent the `Scope` of the parent template (if any) or `null` if this is the root
+   * @param parent the `Scope` of the parent template \(if any\) or `null` if this is the root
    * `Scope`.
    *
    * 父模板的 `Scope`（如果有），如果这是根 `Scope` ，则为 `null` 。
@@ -1526,11 +1519,9 @@ class Scope {
    * calculate the `Scope`, or a list of nodes if no outer template object is available.
    *
    * 表示要为其计算 `Scope` 的模板的 `TmplAstTemplate` ，如果没有外部模板对象可用，则为节点列表。
-   *
    * @param guard an expression that is applied to this scope for type narrowing purposes.
    *
    * 用于此范围的类型缩小的表达式。
-   *
    */
   static forNodes(
       tcb: Context, parent: Scope|null, templateOrNodes: TmplAstTemplate|(TmplAstNode[]),
@@ -1574,7 +1565,7 @@ class Scope {
 
   /**
    * Look up a `ts.Expression` representing the value of some operation in the current `Scope`,
-   * including any parent scope(s). This method always returns a mutable clone of the
+   * including any parent scope\(s\). This method always returns a mutable clone of the
    * `ts.Expression` with the comments cleared.
    *
    * 查找表示当前 `Scope` 中某些操作的值的 `ts.Expression` ，包括任何父范围。此方法始终返回
@@ -1604,13 +1595,11 @@ class Scope {
    * * `TmplAstReference` - retrieve variable created for the local ref
    *
    *   `TmplAstReference` - 检索为本地 ref 创建的变量
-   *
    * @param directive if present, a directive type on a `TmplAstElement` or `TmplAstTemplate` to
    * look up instead of the default for an element or template node.
    *
    * 如果存在，则为要查找的 `TmplAstElement` 或 `TmplAstTemplate`
    * 上的指令类型，而不是元素或模板节点的默认值。
-   *
    */
   resolve(
       node: TmplAstElement|TmplAstTemplate|TmplAstVariable|TmplAstReference,
@@ -2019,8 +2008,8 @@ class TcbExpressionTranslator {
    *
    * 在给定范围内解析 `AST` 表达式。
    *
-   * Some `AST` expressions refer to top-level concepts (references, variables, the component
-   * context). This method assists in resolving those.
+   * Some `AST` expressions refer to top-level concepts \(references, variables, the component
+   * context\). This method assists in resolving those.
    *
    * 某些 `AST` 表达式引用了顶级概念（引用、变量、组件上下文）。此方法可帮助解决这些问题。
    *

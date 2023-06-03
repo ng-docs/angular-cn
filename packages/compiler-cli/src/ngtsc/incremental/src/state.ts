@@ -80,7 +80,7 @@ export interface AnalyzedIncrementalState {
 
   /**
    * All generated template type-checking files produced as part of this compilation, or `null` if
-   * type-checking was not (yet) performed.
+   * type-checking was not \(yet\) performed.
    *
    * 作为此编译的一部分生成的所有生成的模板类型检查文件，如果（尚未）执行类型检查，则为 `null` 。
    *
@@ -113,12 +113,11 @@ export interface AnalyzedIncrementalState {
  *
  * This is the state produced by an incremental compilation until its own analysis succeeds. If
  * analysis fails, this state carries forward information about which files have changed since the
- * last successful build (the `lastAnalyzedState`), so that the next incremental build can consider
+ * last successful build \(the `lastAnalyzedState`\), so that the next incremental build can consider
  * the total delta between the `lastAnalyzedState` and the current program in its incremental
  * analysis.
  *
- * 这是增量编译在其自己的分析成功之前产生的状态。如果分析失败，此状态会携带有关自上次成功构建 (
- * `lastAnalyzedState` ) 以来哪些文件已更改的信息，以便下一个增量构建可以在其增量分析中考虑
+ * 这是增量编译在其自己的分析成功之前产生的状态。如果分析失败，此状态会携带有关自上次成功构建（`lastAnalyzedState`） 以来哪些文件已更改的信息，以便下一个增量构建可以在其增量分析中考虑
  * `lastAnalyzedState` 和当前程序之间的总变化。
  *
  */

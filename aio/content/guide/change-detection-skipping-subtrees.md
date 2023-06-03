@@ -26,7 +26,7 @@ OnPush 变更检测会指示 Angular 仅在以下情况下为组件子树运行�
 
   子树的根组件接收到作为模板绑定的结果的新输入。Angular 将输入的当前值和过去值使用 `==` 进行比较
 
-* Angular handles an event _(for example using event binding, output binding, or `@HostListener` )_ in the subtree's root component or any of its children whether they are using OnPush change detection or not.
+* Angular handles an event _\(for example using event binding, output binding, or `@HostListener` \)_ in the subtree's root component or any of its children whether they are using OnPush change detection or not.
 
   Angular 在本子树的根组件或它的任何子组件（而不管其是否使用 OnPush 变更检测方式）中处理使用 OnPush 变更检测策略的组件中的事件（比如事件绑定、输出绑定或 `@HostListener`）时
 
@@ -58,7 +58,7 @@ If Angular handles an event within a component without `OnPush` strategy, the fr
 
 如果 Angular 在没有 `OnPush` 策略的情况下处理组件中的事件，则框架会在整个组件树上执行变更检测。Angular 将跳过具有 `OnPush` 策略的组件的后代组件子树，如果该组件没有收到新输入的话。
 
-As an example, if we set the change detection strategy of `MainComponent` to `OnPush` and the user interacts with a component outside the subtree with root `MainComponent`, Angular will check all the green components from the diagram below (`AppComponent`, `HeaderComponent`, `SearchComponent`, `ButtonComponent`) unless `MainComponent` receives new inputs:
+As an example, if we set the change detection strategy of `MainComponent` to `OnPush` and the user interacts with a component outside the subtree with root `MainComponent`, Angular will check all the green components from the diagram below \(`AppComponent`, `HeaderComponent`, `SearchComponent`, `ButtonComponent`\) unless `MainComponent` receives new inputs:
 
 比如，如果我们将 `MainComponent` 的变更检测策略设置为 `OnPush`，并且用户与具有根 `MainComponent` 的子树外的组件交互，Angular 将检查下图中的所有绿色组件（`AppComponent` 、 `HeaderComponent` 、 `SearchComponent` 、 `ButtonComponent`），除非 `MainComponent` 接收到了新的输入：
 
@@ -92,7 +92,7 @@ If Angular handles an event in a component with OnPush, the framework will execu
 
 如果 Angular 使用 OnPush 处理组件中的事件，则框架将在整个组件树中执行变更检测，包括组件的祖先。
 
-As an example, in the diagram below, Angular handles an event in `LoginComponent` which uses OnPush. Angular will invoke change detection in the entire component subtree including `MainComponent` (`LoginComponent`’s parent), even though `MainComponent` has `OnPush` as well. Angular checks `MainComponent` as well because `LoginComponent` is part of its view.
+As an example, in the diagram below, Angular handles an event in `LoginComponent` which uses OnPush. Angular will invoke change detection in the entire component subtree including `MainComponent` \(`LoginComponent`’s parent\), even though `MainComponent` has `OnPush` as well. Angular checks `MainComponent` as well because `LoginComponent` is part of its view.
 
 比如，在下图中，Angular 会处理使用 OnPush 的 `LoginComponent` 中的事件。Angular 将在整个组件子树中调用变更检测，包括 `MainComponent`（`LoginComponent` 的父级），尽管 `MainComponent` 也有 `OnPush`。Angular 也会检查 `MainComponent`，因为 `LoginComponent` 是其视图的一部分。
 

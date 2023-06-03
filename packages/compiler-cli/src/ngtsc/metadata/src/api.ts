@@ -33,8 +33,8 @@ export interface NgModuleMeta {
    *
    * 产生 `declarations` 的原始 `ts.Expression`（如果存在）。
    *
-   * If this is `null`, then either no declarations exist, or no expression was available (likely
-   * because the module came from a .d.ts file).
+   * If this is `null`, then either no declarations exist, or no expression was available \(likely
+   * because the module came from a .d.ts file\).
    *
    * 如果这是 `null` ，则不存在声明，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
    *
@@ -46,8 +46,8 @@ export interface NgModuleMeta {
    *
    * 产生 `imports` 的原始 `ts.Expression`（如果存在）。
    *
-   * If this is `null`, then either no imports exist, or no expression was available (likely
-   * because the module came from a .d.ts file).
+   * If this is `null`, then either no imports exist, or no expression was available \(likely
+   * because the module came from a .d.ts file\).
    *
    * 如果这是 `null` ，则不存在导入，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
    *
@@ -59,8 +59,8 @@ export interface NgModuleMeta {
    *
    * 导致 `exports` 的原始 `ts.Expression`（如果存在）。
    *
-   * If this is `null`, then either no exports exist, or no expression was available (likely
-   * because the module came from a .d.ts file).
+   * If this is `null`, then either no exports exist, or no expression was available \(likely
+   * because the module came from a .d.ts file\).
    *
    * 如果这是 `null` ，则不存在导出，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
    *
@@ -236,7 +236,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   isPoisoned: boolean;
 
   /**
-   * Whether the directive is likely a structural directive (injects `TemplateRef`).
+   * Whether the directive is likely a structural directive \(injects `TemplateRef`\).
    *
    * 该指令是否可能是结构指令（注入 `TemplateRef`）。
    *

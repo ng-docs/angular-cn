@@ -41,14 +41,12 @@ const formDirectiveProvider: Provider = {
  * 该指令接受现有的 `FormGroup` 实例。然后，它将使用此 `FormGroup` 实例中的任何子控件
  * `FormControl`、`FormGroup` 和 `FormArray` 的实例与其子指令 `FormControlName`、`FormGroupName` 和
  * `FormArrayName` 匹配。
- *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单指南](guide/reactive-forms)
- *
  * @see `AbstractControl`
- *
  * @usageNotes
+ *
  * ### Register Form Group
  *
  * ### 注册表单组

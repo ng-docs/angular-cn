@@ -32,7 +32,7 @@ export class MockResourceLoader extends ResourceLoader {
 
   /**
    * Add an expectation for the given URL. Incoming requests will be checked against
-   * the next expectation (in FIFO order). The `verifyNoOutstandingExpectations` method
+   * the next expectation \(in FIFO order\). The `verifyNoOutstandingExpectations` method
    * can be used to check if any expectations have not yet been met.
    *
    * 为给定的 URL 添加期望。将根据下一个期望（按 FIFO 顺序）检查传入的请求。

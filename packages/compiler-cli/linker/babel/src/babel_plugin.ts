@@ -22,7 +22,7 @@ import {createEs2015LinkerPlugin} from './es2015_linker_plugin';
  * 链接器集成到 Angular CLI 之外的构建管道中的推荐方式。
  *
  * When the module specifier `@angular/compiler-cli/linker/babel` is used as a plugin in a Babel
- * configuration, Babel invokes this function (by means of the default export) to create the plugin
+ * configuration, Babel invokes this function \(by means of the default export\) to create the plugin
  * instance according to the provided options.
  *
  * 当模块说明符 `@angular/compiler-cli/linker/babel` 用作 Babel 配置中的插件时，Babel
@@ -36,11 +36,9 @@ import {createEs2015LinkerPlugin} from './es2015_linker_plugin';
  * @param api Provides access to the Babel environment that is configuring this plugin.
  *
  * 提供对正在配置此插件的 Babel 环境的访问。
- *
  * @param options The plugin options that have been configured.
  *
  * 已配置的插件选项。
- *
  */
 export function defaultLinkerPlugin(api: ConfigAPI, options: Partial<LinkerOptions>): PluginObj {
   api.assertVersion(7);

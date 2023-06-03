@@ -28,7 +28,7 @@ function hasPreserveWhitespacesAttr(attrs: html.Attribute[]): boolean {
 /**
  * Angular Dart introduced &ngsp; as a placeholder for non-removable space, see:
  * https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32
- * In Angular Dart &ngsp; is converted to the 0xE500 PUA (Private Use Areas) unicode character
+ * In Angular Dart &ngsp; is converted to the 0xE500 PUA \(Private Use Areas\) unicode character
  * and later on replaced by a space. We are re-implementing the same idea here.
  *
  * Angular Dart 介绍了 &ngsp;作为不可移动空间的占位符，请参阅：
@@ -63,9 +63,9 @@ export function replaceNgsp(value: string): string {
  *
  *   转换 &ngsp;单个空间的伪实体；
  *
- * Removal and trimming of whitespaces have positive performance impact (less code to generate
- * while compiling templates, faster view creation). At the same time it can be "destructive"
- * in some cases (whitespaces can influence layout). Because of the potential of breaking layout
+ * Removal and trimming of whitespaces have positive performance impact \(less code to generate
+ * while compiling templates, faster view creation\). At the same time it can be "destructive"
+ * in some cases \(whitespaces can influence layout\). Because of the potential of breaking layout
  * this visitor is not activated by default in Angular 5 and people need to explicitly opt-in for
  * whitespace removal. The default option for whitespace removal will be revisited in Angular 6
  * and might be changed to "on" by default.

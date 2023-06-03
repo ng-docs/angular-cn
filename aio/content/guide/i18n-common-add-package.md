@@ -22,7 +22,7 @@ For more information about `package.json` and `tsconfig.json` files, see [Worksp
 
 </div>
 
-If `@angular/localize` is not installed and you try to build a localized version of your project (for example, while using the `i18n` attributes in templates), the [Angular CLI][AioCliMain] will generate an error, which would contain the steps that you can take to enable i18n for your project.
+If `@angular/localize` is not installed and you try to build a localized version of your project \(for example, while using the `i18n` attributes in templates\), the [Angular CLI][AioCliMain] will generate an error, which would contain the steps that you can take to enable i18n for your project.
 
 如果尚未安装 `@angular/localize`，而你试图构建此项目的本地化版本，[Angular CLI][AioCliMain] 就会报错。
 
@@ -42,7 +42,7 @@ For more available options, see [ng add][AioCliAdd] in [Angular CLI][AioCliMain]
 
 ## 下一步呢？
 
-* [@angular/localize API][AioApiLocalize]
+* [`@angular/localize` API][AioApiLocalize]
 * [Refer to locales by ID][AioGuideI18nCommonLocaleId]
 
   [通过 ID 引用语音环境][AioGuideI18nCommonLocaleId]

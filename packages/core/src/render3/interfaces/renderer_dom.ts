@@ -84,7 +84,7 @@ export interface RNode {
    *
    * 附加一个子节点。
    *
-   * Used exclusively for building up DOM which are static (ie not View roots)
+   * Used exclusively for building up DOM which are static \(ie not View roots\)
    *
    * 专门用于构建静态 DOM（即不是 View 根）
    *

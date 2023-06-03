@@ -59,7 +59,7 @@ export class ExpansionError extends ParseError {
 }
 
 /**
- * Expand expansion forms (plural, select) to directives
+ * Expand expansion forms \(plural, select\) to directives
  *
  * 将扩展形式（复数，select）扩展为指令
  *

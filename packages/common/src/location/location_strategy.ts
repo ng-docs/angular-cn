@@ -90,6 +90,7 @@ export const APP_BASE_HREF = new InjectionToken<string>('appBaseHref');
 
 /**
  * @description
+ *
  * A {@link LocationStrategy} used to configure the {@link Location} service to
  * represent its state in the
  * [path](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax) of the

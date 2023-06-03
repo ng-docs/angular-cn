@@ -74,7 +74,7 @@ export interface RouterOutletContract {
   activatedRoute: ActivatedRoute|null;
 
   /**
-   * Called by the `Router` when the outlet should activate (create a component).
+   * Called by the `Router` when the outlet should activate \(create a component\).
    *
    * 在插座应该激活（创建组件）时由 `Router` 调用。
    *
@@ -453,14 +453,15 @@ export const INPUT_BINDER = new InjectionToken<RoutedComponentInputBinder>('');
  * inputs.
  *
  * The RouterOutlet registers itself with this service when an `ActivatedRoute` is attached or
- * activated. When this happens, the service subscribes to the `ActivatedRoute` observables (params,
- * queryParams, data) and sets the inputs of the component using `ComponentRef.setInput`.
+ * activated. When this happens, the service subscribes to the `ActivatedRoute` observables \(params,
+ * queryParams, data\) and sets the inputs of the component using `ComponentRef.setInput`.
  * Importantly, when an input does not have an item in the route data with a matching key, this
  * input is set to `undefined`. If it were not done this way, the previous information would be
- * retained if the data got removed from the route (i.e. if a query parameter is removed).
+ * retained if the data got removed from the route \(i.e. if a query parameter is removed\).
  *
  * The `RouterOutlet` should unregister itself when destroyed via `unsubscribeFromRouteData` so that
  * the subscriptions are cleaned up.
+ *
  */
 @Injectable()
 export class RoutedComponentInputBinder {

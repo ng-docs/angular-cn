@@ -19,7 +19,7 @@ import {TypeParameterEmitter} from './type_parameter_emitter';
 
 /**
  * Represents the origin environment from where reference will be emitted. This interface exists
- * as an indirection for the `Environment` type, which would otherwise introduce a (type-only)
+ * as an indirection for the `Environment` type, which would otherwise introduce a \(type-only\)
  * import cycle.
  *
  * 表示将发出引用的源环境。此接口作为 `Environment` 类型的间接存在，否则将引入（仅类型）导入周期。
@@ -159,7 +159,7 @@ export function findTypeCheckBlock(
 /**
  * Traverses up the AST starting from the given node to extract the source location from comments
  * that have been emitted into the TCB. If the node does not exist within a TCB, or if an ignore
- * marker comment is found up the tree (and this is part of a diagnostic request), this function
+ * marker comment is found up the tree \(and this is part of a diagnostic request\), this function
  * returns null.
  *
  * 从给定节点开始向上遍历 AST，以从已发出到 TCB 的注释中提取源位置。如果该节点在 TCB

@@ -22,11 +22,11 @@ import {TestRequest} from './request';
  *
  * `HttpClientTestingBackend` works by keeping a list of all open requests.
  * As requests come in, they're added to the list. Users can assert that specific
- * requests were made and then flush them. In the end, a verify() method asserts
+ * requests were made and then flush them. In the end, a `verify()` method asserts
  * that no unexpected requests were made.
  *
  * `HttpClientTestingBackend`
- * 会通过保留所有打开的请求的列表来工作。当请求进来时，它们会被添加到列表中。用户可以断言已发出特定请求，然后刷新它们。最后，verify()
+ * 会通过保留所有打开的请求的列表来工作。当请求进来时，它们会被添加到列表中。用户可以断言已发出特定请求，然后刷新它们。最后，`verify()`
  * 方法会断言没有发出意外请求。
  *
  */

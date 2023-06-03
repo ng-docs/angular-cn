@@ -16,7 +16,7 @@ import {AbsoluteFsPath} from '../file_system';
  * 增量构建引擎的接口。
  *
  * `AnalysisT` is a generic type representing a unit of work. This is generic to avoid a cyclic
- * dependency between the incremental engine API definition and its consumer(s).
+ * dependency between the incremental engine API definition and its consumer\(s\).
  * `FileTypeCheckDataT` is a generic type representing template type-checking data for a particular
  * input file, which is generic for the same reason.
  *

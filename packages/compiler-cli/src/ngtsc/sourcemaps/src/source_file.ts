@@ -25,8 +25,8 @@ export class SourceFile {
    *
    * 已被展平的解析映射，以便任何中间源映射都被展平。
    *
-   * The result is that any source file mentioned in the flattened mappings have no source map (are
-   * pure original source files).
+   * The result is that any source file mentioned in the flattened mappings have no source map \(are
+   * pure original source files\).
    *
    * 结果是展平映射中提到的任何源文件都没有源映射（是纯原始源文件）。
    *
@@ -430,10 +430,9 @@ export function parseMappings(
  * @param mappings The mappings whose original segments we want to extract
  *
  * 我们要提取其原始段的映射
- *
  * @returns
  *
- * Return a map from original source-files (referenced in the `mappings`) to arrays of
+ * Return a map from original source-files \(referenced in the `mappings`\) to arrays of
  * segment-markers sorted by their order in their source file.
  *
  * 返回从原始 source-files（在 `mappings` 中引用）到按源文件中的顺序排序的段标记数组的映射。

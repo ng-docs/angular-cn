@@ -28,15 +28,14 @@ export class DtsMetadataReader implements MetadataReader {
   constructor(private checker: ts.TypeChecker, private reflector: ReflectionHost) {}
 
   /**
-   * Read the metadata from a class that has already been compiled somehow (either it's in a .d.ts
-   * file, or in a .ts file with a handwritten definition).
+   * Read the metadata from a class that has already been compiled somehow \(either it's in a .d.ts
+   * file, or in a .ts file with a handwritten definition\).
    *
    * 从已经以某种方式编译的类中读取元数据（它在 .d.ts 文件中，或在具有手写定义的 .ts 文件中）。
    *
    * @param ref `Reference` to the class of interest, with the context of how it was obtained.
    *
    * 对感兴趣的类的 `Reference` ，以及它是如何获取的上下文。
-   *
    */
   getNgModuleMetadata(ref: Reference<ClassDeclaration>): NgModuleMeta|null {
     const clazz = ref.node;
@@ -73,7 +72,7 @@ export class DtsMetadataReader implements MetadataReader {
   }
 
   /**
-   * Read directive (or component) metadata from a referenced class in a .d.ts file.
+   * Read directive \(or component\) metadata from a referenced class in a .d.ts file.
    *
    * 从 .d.ts 文件中的引用类读取指令（或组件）元数据。
    *

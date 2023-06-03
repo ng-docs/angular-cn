@@ -14,8 +14,8 @@ import {DeclarationNode} from '../../reflection';
 import {ReferenceGraph} from './reference_graph';
 
 /**
- * Produce `ts.Diagnostic`s for classes that are visible from exported types (e.g. directives
- * exposed by exported `NgModule`s) that are not themselves exported.
+ * Produce `ts.Diagnostic`s for classes that are visible from exported types \(e.g. directives
+ * exposed by exported `NgModule`s\) that are not themselves exported.
  *
  * 为从本身不是导出的导出类型（例如导出的 `NgModule` 公开的指令）中可见的类生成 `ts.Diagnostic` 。
  *
@@ -44,22 +44,18 @@ import {ReferenceGraph} from './reference_graph';
  * public API.
  *
  * 库入口点的 `ts.SourceFile` ，应导出库的公共 API。
- *
  * @param checker `ts.TypeChecker` for the current program.
  *
  * 当前程序的 `ts.TypeChecker` 。
- *
  * @param refGraph `ReferenceGraph` tracking the visibility of Angular types.
  *
  * `ReferenceGraph` 跟踪 Angular 类型的可见性。
- *
  * @returns
  *
  * an array of `ts.Diagnostic`s representing errors when visible classes are not exported
  * properly.
  *
  * 一个 `ts.Diagnostic` s 数组，表示可见类无法正确导出时出现的错误。
- *
  */
 export function checkForPrivateExports(
     entryPoint: ts.SourceFile, checker: ts.TypeChecker, refGraph: ReferenceGraph): ts.Diagnostic[] {

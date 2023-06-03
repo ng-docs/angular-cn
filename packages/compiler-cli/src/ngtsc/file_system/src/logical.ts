@@ -14,8 +14,8 @@ import {stripExtension} from './util';
 
 
 /**
- * A path that's relative to the logical root of a TypeScript project (one of the project's
- * rootDirs).
+ * A path that's relative to the logical root of a TypeScript project \(one of the project's
+ * rootDirs\).
  *
  * 相对于 TypeScript 项目的逻辑根（项目的 rootDirs 之一）的路径。
  *

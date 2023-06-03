@@ -17,7 +17,8 @@ import {R3CompiledExpression, R3Reference, typeWithParameters} from './util';
  */
 export interface R3ConstructorFactoryMetadata {
   /**
-   * String name of the type being generated (used to name the factory function).
+   * String name of the type being generated \(used to name the factory function\).
+   *
    */
   name: string;
 
@@ -83,28 +84,33 @@ export interface R3DependencyMetadata {
 
   /**
    * If an @Attribute decorator is present, this is the literal type of the attribute name, or
-   * the unknown type if no literal type is available (e.g. the attribute name is an expression).
+   * the unknown type if no literal type is available \(e.g. the attribute name is an expression\).
    * Otherwise it is null;
+   *
    */
   attributeNameType: o.Expression|null;
 
   /**
    * Whether the dependency has an @Host qualifier.
+   *
    */
   host: boolean;
 
   /**
    * Whether the dependency has an @Optional qualifier.
+   *
    */
   optional: boolean;
 
   /**
    * Whether the dependency has an @Self qualifier.
+   *
    */
   self: boolean;
 
   /**
    * Whether the dependency has an @SkipSelf qualifier.
+   *
    */
   skipSelf: boolean;
 }

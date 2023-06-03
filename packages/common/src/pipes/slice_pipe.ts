@@ -14,7 +14,7 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * @ngModule CommonModule
  * @description
  *
- * Creates a new `Array` or `String` containing a subset (slice) of the elements.
+ * Creates a new `Array` or `String` containing a subset \(slice\) of the elements.
  *
  * 从一个 `Array` 或 `String` 中创建其元素一个新子集（slice）。
  *

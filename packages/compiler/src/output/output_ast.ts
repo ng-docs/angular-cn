@@ -514,21 +514,19 @@ export class PlaceholderPiece {
    *
    * 创建 `PlaceholderPiece` 的新实例。
    *
-   * @param text the name of this placeholder (e.g. `PH_1`).
+   * @param text the name of this placeholder \(e.g. `PH_1`\).
    *
    * 此占位符的名称（例如 `PH_1`）。
    *
    * @param sourceSpan the location of this placeholder in its localized message the source code.
    *
    * 此占位符在其本地化消息源代码中的位置。
-   *
    * @param associatedMessage reference to another message that this placeholder is associated with.
    * The `associatedMessage` is mainly used to provide a relationship to an ICU message that has
    * been extracted out from the message containing the placeholder.
    *
    * 对此占位符关联的另一条消息的引用。 `associatedMessage` 主要用于提供与 ICU
    * 消息的关系，该消息已从包含占位符的消息中提取出来。
-   *
    */
   constructor(
       public text: string, public sourceSpan: ParseSourceSpan, public associatedMessage?: Message) {
@@ -616,7 +614,7 @@ export class LocalizedString extends Expression {
    *
    * 格式是 `:<placeholder-name>[@@<associated-id>]:` 。
    *
-   * The `associated-id` is the message id of the (usually an ICU) message to which this placeholder
+   * The `associated-id` is the message id of the \(usually an ICU\) message to which this placeholder
    * refers.
    *
    * `associated-id` 是此占位符引用的消息（通常是 ICU）的消息 id。
@@ -624,7 +622,6 @@ export class LocalizedString extends Expression {
    * @param partIndex The index of the message part to serialize.
    *
    * 要序列化的消息部分的索引。
-   *
    */
   serializeI18nTemplatePart(partIndex: number): CookedRawString {
     const placeholder = this.placeHolderNames[partIndex - 1];

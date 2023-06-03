@@ -141,9 +141,9 @@ To mark the title attribute for translation, complete the following action.
 
 ## 在组件代码中标记文本
 
-In component code, the translation source text and the metadata are surrounded by backtick (<code>\`</code>) characters.
+In component code, the translation source text and the metadata are surrounded by backtick \(<code>\`</code>\) characters.
 
-在组件代码中，翻译源文本和元数据被反引号 (<code>\`</code>) 字符包围。
+在组件代码中，翻译源文本和元数据被反引号 （<code>\`</code>） 字符包围。
 
 Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark a string in your code for translation.
 
@@ -157,9 +157,9 @@ Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark 
 
 </code-example>
 
-The i18n metadata is surrounded by colon (`:`) characters and prepends the translation source text.
+The i18n metadata is surrounded by colon \(`:`\) characters and prepends the translation source text.
 
-i18n 元数据包裹在冒号 (`:`) 字符中，并放在翻译源文本之前。
+i18n 元数据包裹在冒号 （`:`） 字符中，并放在翻译源文本之前。
 
 <!--todo: replace with code-example -->
 
@@ -219,7 +219,7 @@ The following parameters provide context and additional information to reduce co
 | Description        | Provide additional information or context                             |
 | 说明               | 提供额外的信息或背景                                                  |
 | Meaning            | Provide the meaning or intent of the text within the specific context |
-| 含义(Meaning)      | 提供文本在特定上下文中的含义或意图                                    |
+| 含义（Meaning）    | 提供文本在特定上下文中的含义或意图                                    |
 
 For additional information about custom IDs, see [Manage marked text with custom IDs][AioGuideI18nOptionalManageMarkedText].
 
@@ -347,9 +347,9 @@ That one translation entry is merged back into the application wherever the same
 ## ICU 表达式
 
 ICU expressions help you mark alternate text in component templates to meet conditions.
-An ICU expression includes a component property, an ICU clause, and the case statements surrounded by open curly brace (`{`) and close curly brace (`}`) characters.
+An ICU expression includes a component property, an ICU clause, and the case statements surrounded by open curly brace \(`{`\) and close curly brace \(`}`\) characters.
 
-ICU 表达式可帮助你在组件模板中标记出某些条件下的替代文本。ICU 表达式包括一个组件属性、一个 ICU 子句以及由左花括号 ( `{` ) 和右花括号 ( `}` ) 字符包围的 case 语句。
+ICU 表达式可帮助你在组件模板中标记出某些条件下的替代文本。ICU 表达式包括一个组件属性、一个 ICU 子句以及由左花括号 （ `{` ） 和右花括号 （ `}` ） 字符包围的 case 语句。
 
 <!--todo: replace with code-example -->
 
@@ -372,7 +372,7 @@ An ICU clause defines the type of conditional text.
 | [`select`][AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions] | Mark choices for alternate text based on your defined string values |
 | [`select`][AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions] | 根据你定义的字符串值标记出替代文本的一些选择                        |
 
-To simplify translation, use International Components for Unicode clauses (ICU clauses) with regular expressions.
+To simplify translation, use International Components for Unicode clauses \(ICU clauses\) with regular expressions.
 
 为了简化翻译，请使用带有正则表达式的 Unicode 子句（ICU 子句）的国际化组件。
 
@@ -402,9 +402,9 @@ Use the `plural` clause to mark expressions that may not be meaningful if transl
 
 </code-example>
 
-After the pluralization category, enter the default text (English) surrounded by open curly brace (`{`) and close curly brace (`}`) characters.
+After the pluralization category, enter the default text \(English\) surrounded by open curly brace \(`{`\) and close curly brace \(`}`\) characters.
 
-在复数类别之后，输入由左大括号 (`{`) 和右大括号 (`}`) 字符包围的默认文本（英文）。
+在复数类别之后，输入由左大括号 （`{`） 和右大括号 （`}`） 字符包围的默认文本（英文）。
 
 <!--todo: replace with code-example -->
 
@@ -563,9 +563,9 @@ Translate all of the alternates to display alternate text based on the value of 
 
 翻译所有替代项以根据变量的值显示替代文本。
 
-After the selection category, enter the text (English) surrounded by open curly brace (`{`) and close curly brace (`}`) characters.
+After the selection category, enter the text \(English\) surrounded by open curly brace \(`{`\) and close curly brace \(`}`\) characters.
 
-在选择类别后，输入由左大括号 ( `{` ) 和右大括号 ( `}` ) 字符包围的文本（英文）。
+在选择类别后，输入由左大括号 （ `{` ） 和右大括号 （ `}` ） 字符包围的文本（英文）。
 
 <!--todo: replace with code-example -->
 

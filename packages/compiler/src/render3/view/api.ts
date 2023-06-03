@@ -87,8 +87,8 @@ export interface R3DirectiveMetadata {
   viewQueries: R3QueryMetadata[];
 
   /**
-   * Mappings indicating how the directive interacts with its host element (host bindings,
-   * listeners, etc).
+   * Mappings indicating how the directive interacts with its host element \(host bindings,
+   * listeners, etc\).
    *
    * 指示指令如何与其宿主元素（宿主绑定、侦听器等）交互的映射。
    *
@@ -333,7 +333,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
   /**
    * Path to the .ts file in which this template's generated code will be included, relative to
    * the compilation root. This will be used to generate identifiers that need to be globally
-   * unique in certain contexts (such as g3).
+   * unique in certain contexts \(such as g3\).
    *
    * 将包含此模板生成的代码的 .ts
    * 文件的路径，相对于编译根。这将用于生成在某些上下文中需要全局唯一的标识符（例如 g3）。
@@ -343,7 +343,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
 
   /**
    * Whether translation variable name should contain external message id
-   * (used by Closure Compiler's output of `goog.getMsg` for transition period).
+   * \(used by Closure Compiler's output of `goog.getMsg` for transition period\).
    *
    * 转换变量名称是否应该包含外部消息 id（供 Closure Compiler 的 `goog.getMsg` 输出在过渡期使用）。
    *
@@ -351,7 +351,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
   i18nUseExternalIds: boolean;
 
   /**
-   * Overrides the default interpolation start and end delimiters ({{ and }}).
+   * Overrides the default interpolation start and end delimiters \({{ and }}\).
    *
    * 覆盖默认的插值开始和结束分隔符（{{ 和 }}）。
    *
@@ -444,7 +444,7 @@ export interface R3DirectiveDependencyMetadata extends R3TemplateDependency {
   outputs: string[];
 
   /**
-   * Name under which the directive is exported, if any (exportAs in Angular). Null otherwise.
+   * Name under which the directive is exported, if any \(exportAs in Angular\). Null otherwise.
    *
    * 导出指令的名称（如果有）（在 Angular 中为 exportAs）。否则为空。
    *
@@ -471,7 +471,7 @@ export interface R3NgModuleDependencyMetadata extends R3TemplateDependency {
 }
 
 /**
- * Information needed to compile a query (view or content).
+ * Information needed to compile a query \(view or content\).
  *
  * 编译查询（视图或内容）所需的信息。
  *
@@ -511,9 +511,9 @@ export interface R3QueryMetadata {
   descendants: boolean;
 
   /**
-   * If the `QueryList` should fire change event only if actual change to query was computed (vs old
+   * If the `QueryList` should fire change event only if actual change to query was computed \(vs old
    * behavior where the change was fired whenever the query was recomputed, even if the recomputed
-   * query resulted in the same list.)
+   * query resulted in the same list.\)
    *
    * 如果仅在计算了对查询的实际更改时，`QueryList` 应该触发 change
    * 事件（与旧行为相比，每当重新计算查询时都会触发更改，即使重新计算的查询产生了同一个列表。）
@@ -537,7 +537,7 @@ export interface R3QueryMetadata {
    *
    * If static is true, the query's results will be set on the component after nodes are created,
    * but before change detection runs. This means that any results that relied upon change detection
-   * to run (e.g. results inside *ngIf or *ngFor views) will not be collected. Query results are
+   * to run \(e.g. results inside *ngIf or *ngFor views\) will not be collected. Query results are
    * available in the ngOnInit hook.
    *
    * 如果 static 为
@@ -546,8 +546,8 @@ export interface R3QueryMetadata {
    *
    * If static is false, the query's results will be set on the component after change detection
    * runs. This means that the query results can contain nodes inside *ngIf or *ngFor views, but
-   * the results will not be available in the ngOnInit hook (only in the ngAfterContentInit for
-   * content hooks and ngAfterViewInit for view hooks).
+   * the results will not be available in the ngOnInit hook \(only in the ngAfterContentInit for
+   * content hooks and ngAfterViewInit for view hooks\).
    *
    * 如果 static 为 false，则查询的结果将在变更检测运行后在组件上设置。这意味着查询结果可以包含*ngIf
    * 或*ngFor 视图中的节点，但结果将在 ngOnInit 钩子中不可用（仅在 ngAfterContentInit
@@ -559,7 +559,7 @@ export interface R3QueryMetadata {
 
 /**
  * Mappings indicating how the class interacts with its
- * host element (host bindings, listeners, etc).
+ * host element \(host bindings, listeners, etc\).
  *
  * 表明类如何与其宿主元素（宿主绑定、侦听器等）交互的映射。
  *

@@ -17,8 +17,9 @@ import {NgZone} from './zone/ng_zone';
  * rendering.
  *
  * This information is needed to make sure that the serialization on the server
- * is delayed until all tasks in the queue (such as an initial navigation or a
- * pending HTTP request) are completed.
+ * is delayed until all tasks in the queue \(such as an initial navigation or a
+ * pending HTTP request\) are completed.
+ *
  */
 @Injectable({providedIn: 'root'})
 export class InitialRenderPendingTasks implements OnDestroy {

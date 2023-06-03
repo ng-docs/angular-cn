@@ -41,6 +41,7 @@ export enum ViewEncapsulation {
    * This is the default option.
    *
    * 这是默认选项。
+   *
    */
   Emulated = 0,
 

@@ -44,7 +44,6 @@ export interface NgModule {
    * @see [Dependency Injection guide](guide/dependency-injection)
    *
    * [“依赖注入指南”](guide/dependency-injection) 。
-   *
    * @see [NgModule guide](guide/providers)
    * @usageNotes
    *
@@ -58,7 +57,7 @@ export interface NgModule {
    * A lazy-loaded module has its own injector, typically a child of the app root injector.
    * Lazy-loaded services are scoped to the lazy-loaded module's injector.
    * If a lazy-loaded module also provides the `UserService`, any component created
-   * within that module's context (such as by router navigation) gets the local instance
+   * within that module's context \(such as by router navigation\) gets the local instance
    * of the service, not the instance in the root injector.
    * Components in external modules continue to receive the instance provided by their injectors.
    *
@@ -98,7 +97,7 @@ export interface NgModule {
   providers?: Array<Provider|EnvironmentProviders>;
 
   /**
-   * The set of components, directives, and pipes ([declarables](guide/glossary#declarable))
+   * The set of components, directives, and pipes \([declarables](guide/glossary#declarable)\)
    * that belong to this module.
    *
    * 属于该模块的一组组件、指令和管道（统称[可声明对象](guide/glossary#declarable)）。
@@ -132,7 +131,6 @@ export interface NgModule {
    * class CommonModule {
    * }
    * ```
-   *
    */
   declarations?: Array<Type<any>|any[]>;
 

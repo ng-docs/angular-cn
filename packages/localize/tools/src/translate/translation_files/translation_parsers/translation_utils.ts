@@ -103,16 +103,13 @@ export interface XmlTranslationParserHint {
  * @param filePath The path to the file being checked.
  *
  * 正在检查的文件的路径。
- *
  * @param contents The contents of the file being checked.
  *
  * 正在检查的文件的内容。
- *
  * @param rootNodeName The expected name of an XML root node that should exist.
  *
  * 应该存在的 XML 根节点的预期名称。
- *
- * @param attributes The attributes (and their values) that should appear on the root node.
+ * @param attributes The attributes \(and their values\) that should appear on the root node.
  *
  * 应该出现在根节点上的属性（及其值）。
  *
@@ -123,7 +120,6 @@ export interface XmlTranslationParserHint {
  *
  * 如果 XML 文档具有预期的格式，则 `TranslationParser.parse()` 使用的 `XmlTranslationParserHint`
  * 对象。
- *
  */
 export function canParseXml(
     filePath: string, contents: string, rootNodeName: string,

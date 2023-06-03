@@ -31,7 +31,7 @@ export interface TemplateTarget {
   position: number;
 
   /**
-   * The template (or AST expression) node or nodes closest to the search position.
+   * The template \(or AST expression\) node or nodes closest to the search position.
    *
    * 离搜索位置最近的模板（或 AST 表达式）节点。
    *
@@ -39,8 +39,8 @@ export interface TemplateTarget {
   context: TargetContext;
 
   /**
-   * The `t.Template` which contains the found node or expression (or `null` if in the root
-   * template).
+   * The `t.Template` which contains the found node or expression \(or `null` if in the root
+   * template\).
    *
    * 包含找到的节点或表达式的 `t.Template`（如果在根模板中，则为 `null`）。
    *
@@ -156,7 +156,7 @@ export interface RawTemplateNode {
 }
 
 /**
- * A `t.Element` (or `t.Template`) element node that's targeted, where the given position is within
+ * A `t.Element` \(or `t.Template`\) element node that's targeted, where the given position is within
  * the tag name.
  *
  * 目标的 `t.Element`（或 `t.Template`）元素节点，其中的给定位置在标签名称中。
@@ -168,7 +168,7 @@ export interface ElementInTagContext {
 }
 
 /**
- * A `t.Element` (or `t.Template`) element node that's targeted, where the given position is within
+ * A `t.Element` \(or `t.Template`\) element node that's targeted, where the given position is within
  * the element body.
  *
  * 目标的 `t.Element`（或 `t.Template`）元素节点，其中的给定位置在元素体中。

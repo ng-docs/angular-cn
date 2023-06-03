@@ -72,11 +72,11 @@ export const ID_SEPARATOR = '@@';
  * $localize `:@@custom-id␟2df64767cd895a8fabe3e18b94b5b6b6f9e2e3f0: Welcome!`;
  * ```
  *
- * Note that this character is the "symbol for the unit separator" (␟) not the "unit separator
+ * Note that this character is the "symbol for the unit separator" \(␟\) not the "unit separator
  * character" itself, since that has no visual representation. See
  * https://graphemica.com/%E2%90%9F.
  *
- * 请注意，此字符是“单位分隔符的符号” (␟)
+ * 请注意，此字符是“单位分隔符的符号” \(␟\)
  * 而不是“单位分隔符”本身，因为它没有视觉表示。请参阅 https://graphemica.com/%E2%90%9F 。
  *
  * Here is some background for the original "unit separator character":

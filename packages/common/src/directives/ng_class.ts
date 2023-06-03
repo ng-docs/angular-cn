@@ -14,11 +14,11 @@ const WS_REGEXP = /\s+/;
 const EMPTY_ARRAY: string[] = [];
 
 /**
- * Represents internal object used to track state of each CSS class. There are 3 different (boolean)
+ * Represents internal object used to track state of each CSS class. There are 3 different \(boolean\)
  * flags that, combined together, indicate state of a given CSS class:
  *
- * - enabled: indicates if a class should be present in the DOM (true) or not (false);
- * - changed: tracks if a class was toggled (added or removed) during the custom dirty-checking
+ * - enabled: indicates if a class should be present in the DOM \(true\) or not \(false\);
+ * - changed: tracks if a class was toggled \(added or removed\) during the custom dirty-checking
  *   process; changed classes must be synchronized with the DOM;
  * - touched: tracks if a class is present in the current object bound to the class / ngClass input;
  *   classes that are not present any more can be removed from the internal data structures;
@@ -55,7 +55,7 @@ interface CssClassState {
  *
  * CSS 类会根据表达式求值结果进行更新，更新逻辑取决于结果的类型：
  *
- * - `string` - the CSS classes listed in the string (space delimited) are added,
+ * - `string` - the CSS classes listed in the string \(space delimited\) are added,
  *
  *   `string` - 会把列在字符串中的 CSS 类（空格分隔）添加进来，
  *

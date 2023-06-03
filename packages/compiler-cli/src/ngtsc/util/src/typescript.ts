@@ -195,8 +195,8 @@ export function isAssignment(node: ts.Node): node is ts.BinaryExpression {
 export type SubsetOfKeys<T, K extends keyof T> = K;
 
 /**
- * Represents the type `T`, with a transformation applied that turns all methods (even optional
- * ones) into required fields (which may be `undefined`, if the method was optional).
+ * Represents the type `T`, with a transformation applied that turns all methods \(even optional
+ * ones\) into required fields \(which may be `undefined`, if the method was optional\).
  *
  * 表示 `T` 类型，并应用了转换，将所有方法（甚至是可选的）转换为必需字段（如果方法是可选的，则可能是
  * `undefined`）。

@@ -24,7 +24,8 @@ import {CONTAINERS, DehydratedView, DISCONNECTED_NODES, ELEMENT_CONTAINERS, MULT
 const TRANSFER_STATE_TOKEN_ID = '__ɵnghData__';
 
 /**
- * Lookup key used to reference DOM hydration data (ngh) in `TransferState`.
+ * Lookup key used to reference DOM hydration data \(ngh\) in `TransferState`.
+ *
  */
 export const NGH_DATA_KEY = makeStateKey<Array<SerializedView>>(TRANSFER_STATE_TOKEN_ID);
 
@@ -228,10 +229,10 @@ export function getSegmentHead(hydrationInfo: DehydratedView, index: number): RN
 
 /**
  * Returns the size of an <ng-container>, using either the information
- * serialized in `ELEMENT_CONTAINERS` (element container size) or by
+ * serialized in `ELEMENT_CONTAINERS` \(element container size\) or by
  * computing the sum of root nodes in all dehydrated views in a given
- * container (in case this `<ng-container>` was also used as a view
- * container host node, e.g. &lt;ng-container \*ngIf>).
+ * container \(in case this `<ng-container>` was also used as a view
+ * container host node, e.g. &lt;ng-container \*ngIf>\).
  *
  */
 export function getNgContainerSize(hydrationInfo: DehydratedView, index: number): number|null {
@@ -253,8 +254,9 @@ export function getSerializedContainerViews(
 }
 
 /**
- * Computes the size of a serialized container (the number of root nodes)
+ * Computes the size of a serialized container \(the number of root nodes\)
  * by calculating the sum of root nodes in all dehydrated views in this container.
+ *
  */
 export function calcSerializedContainerSize(hydrationInfo: DehydratedView, index: number): number {
   const views = getSerializedContainerViews(hydrationInfo, index) ?? [];

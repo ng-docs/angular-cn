@@ -169,9 +169,9 @@ v16 - v19
 | template syntax | [`/deep/`, `>>>`, and `::ng-deep`](#deep-component-style-selector) | v7            | unspecified       |
 | 模板语法        | [`/deep/`, `>>>`, and `::ng-deep`](#deep-component-style-selector) | v7            | unspecified       |
 
-For information about Angular Component Development Kit (CDK) and Angular Material deprecations, see the [changelog](https://github.com/angular/components/blob/main/CHANGELOG.md).
+For information about Angular Component Development Kit \(CDK\) and Angular Material deprecations, see the [changelog](https://github.com/angular/components/blob/main/CHANGELOG.md).
 
-有关 Angular 组件开发工具包 (CDK) 和 Angular Material 弃用的信息，请参阅[更改日志](https://github.com/angular/components/blob/main/CHANGELOG.md)。
+有关 Angular 组件开发工具包（CDK）和 Angular Material 弃用的信息，请参阅[更改日志](https://github.com/angular/components/blob/main/CHANGELOG.md)。
 
 ## Deprecated APIs
 
@@ -219,7 +219,7 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`async`](api/core/testing/async)                                                                          | [`waitForAsync`](api/core/testing/waitForAsync)                                                                                                             | v11                   | `@angular/core/testing` 中的[`async`](api/core/testing/async)函数已重命名为 `waitForAsync` ，以避免与本机 JavaScript `async` 语法混淆。现有的函数已被弃用，可以在未来的版本中删除。                                                                               |     |
 | [`getModuleFactory`](api/core/getModuleFactory)                                                            | [`getNgModuleById`](api/core/getNgModuleById)                                                                                                               | v13                   | Ivy allows working with NgModule classes directly, without retrieving corresponding factories.                                                                                                                                                                    |     |
 | [`getModuleFactory`](api/core/getModuleFactory)                                                            | [`getNgModuleById`](api/core/getNgModuleById)                                                                                                               | v13                   | Ivy 允许直接使用 NgModule 类，而无需检索相应的工厂。                                                                                                                                                                                                              |     |
-| `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly`                         | none (was part of [issue #40091](https://github.com/angular/angular/issues/40091))                                                                          |                       | This is a temporary flag introduced as part of bug fix of [issue #40091](https://github.com/angular/angular/issues/40091) and will be removed.                                                                                                                    |     |
+| `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly`                         | none \(was part of [issue #40091](https://github.com/angular/angular/issues/40091)\)                                                                        |                       | This is a temporary flag introduced as part of bug fix of [issue #40091](https://github.com/angular/angular/issues/40091) and will be removed.                                                                                                                    |     |
 | `ViewChildren.emitDistinctChangesOnly` / `ContentChildren.emitDistinctChangesOnly`                         | 无（是[问题 #40091](https://github.com/angular/angular/issues/40091)的一部分）                                                                              |                       | 这是作为[问题 #40091](https://github.com/angular/angular/issues/40091)的错误修复的一部分引入的临时标志，将被删除。                                                                                                                                                |     |
 | Factory-based signature of [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)                 | Type-based signature of [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)                                                                     | v13                   | With Ivy, there is no need to resolve Component factory and Component Type can be provided directly.                                                                                                                                                              |     |
 | [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)的基于工厂的签名                            | [`ApplicationRef.bootstrap`](api/core/ApplicationRef#bootstrap)的基于类型的签名                                                                             | v13                   | 有了 ivy，不需要解析 Component factory，直接提供 Component Type 即可。                                                                                                                                                                                            |     |
@@ -350,15 +350,15 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/upgrade/static
 
-| API                                                                                | Replacement                                                                         | Deprecation announced | Details                                                                                               |
-| :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- | :-------------------- | :---------------------------------------------------------------------------------------------------- |
-| API                                                                                | 替代品                                                                              | 已宣布弃用            | 详情                                                                                                  |
-| [`getAngularLib`](api/upgrade/static/getAngularLib)                                | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal)                       | v5                    | See [Upgrading from AngularJS](guide/upgrade).                                                        |
-| [`getAngularLib`](api/upgrade/static/getAngularLib)                                | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal)                       | v5                    | 参阅[从 AngularJS 升级](guide/upgrade)。                                                              |
-| [`setAngularLib`](api/upgrade/static/setAngularLib)                                | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal)                       | v5                    | See [Upgrading from AngularJS](guide/upgrade).                                                        |
-| [`setAngularLib`](api/upgrade/static/setAngularLib)                                | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal)                       | v5                    | 参阅[从 AngularJS 升级](guide/upgrade)。                                                              |
-| [Factory-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | [NgModule-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | v13                   | The `downgradeModule` supports more ergonomic NgModule-based API (versus NgModule factory based API). |
-| [`downgradeModule` 的基于工厂的签名](api/upgrade/static/downgradeModule)           | [`downgradeModule` 的基于 NgModule 的签名](api/upgrade/static/downgradeModule)      | v13                   | `downgradeModule` 支持更符合人体工程学的基于 NgModule 的 API（与基于 NgModule 工厂的 API 相比）。     |
+| API                                                                                | Replacement                                                                         | Deprecation announced | Details                                                                                                 |
+| :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------ |
+| API                                                                                | 替代品                                                                              | 已宣布弃用            | 详情                                                                                                    |
+| [`getAngularLib`](api/upgrade/static/getAngularLib)                                | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal)                       | v5                    | See [Upgrading from AngularJS](guide/upgrade).                                                          |
+| [`getAngularLib`](api/upgrade/static/getAngularLib)                                | [`getAngularJSGlobal`](api/upgrade/static/getAngularJSGlobal)                       | v5                    | 参阅[从 AngularJS 升级](guide/upgrade)。                                                                |
+| [`setAngularLib`](api/upgrade/static/setAngularLib)                                | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal)                       | v5                    | See [Upgrading from AngularJS](guide/upgrade).                                                          |
+| [`setAngularLib`](api/upgrade/static/setAngularLib)                                | [`setAngularJSGlobal`](api/upgrade/static/setAngularJSGlobal)                       | v5                    | 参阅[从 AngularJS 升级](guide/upgrade)。                                                                |
+| [Factory-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | [NgModule-based signature of `downgradeModule`](api/upgrade/static/downgradeModule) | v13                   | The `downgradeModule` supports more ergonomic NgModule-based API \(versus NgModule factory based API\). |
+| [`downgradeModule` 的基于工厂的签名](api/upgrade/static/downgradeModule)           | [`downgradeModule` 的基于 NgModule 的签名](api/upgrade/static/downgradeModule)      | v13                   | `downgradeModule` 支持更符合人体工程学的基于 NgModule 的 API（与基于 NgModule 工厂的 API 相比）。       |
 
 <a id="deprecated-features"></a>
 
@@ -377,11 +377,11 @@ It also includes deprecated API usage scenarios or API combinations, to augment 
 
 ### Web 跟踪框架集成
 
-Angular previously supported an integration with the [Web Tracing Framework (WTF)](https://google.github.io/tracing-framework) for performance testing of Angular applications.
+Angular previously supported an integration with the [Web Tracing Framework \(WTF\)](https://google.github.io/tracing-framework) for performance testing of Angular applications.
 This integration has not been maintained and is now defunct.
 As a result, the integration was deprecated in Angular version 8, and due to no evidence of any existing usage, removed in version 9.
 
-Angular 以前支持与[Web 跟踪框架 (WTF)](https://google.github.io/tracing-framework)集成，以对 Angular 应用程序进行性能测试。此集成未经维护，现已失效。因此，该集成在 Angular 版本 8 中被弃用，并且由于没有任何现有使用的证据，因此在版本 9 中被删除。
+Angular 以前支持与[Web 跟踪框架（WTF）](https://google.github.io/tracing-framework)集成，以对 Angular 应用程序进行性能测试。此集成未经维护，现已失效。因此，该集成在 Angular 版本 8 中被弃用，并且由于没有任何现有使用的证据，因此在版本 9 中被删除。
 
 <a id="deep-component-style-selector"></a>
 
@@ -596,7 +596,7 @@ The following options are deprecated in entirely:
 in the lifecycle of a navigation. A `CanMatch` guard which returns false will prevent the `Route` from being
 matched at all and also prevent loading the children of the `Route`. `CanMatch` guards can accomplish the same
 goals as `CanLoad` but with the addition of allowing the navigation to match other routes when they reject
-(such as a wildcard route). There is no need to have both types of guards in the API surface.
+\(such as a wildcard route\). There is no need to have both types of guards in the API surface.
 
 <a id="loadChildren"></a>
 
@@ -949,7 +949,7 @@ This section contains a complete list all of the currently deprecated CLI flags.
 
 ## 删除的 API
 
-The following APIs have been removed starting with version 11.0.0&ast;:
+The following APIs have been removed starting with version 11.0.0\*:
 
 从 11.0.0\*开始，已经移除了以下 API：
 
@@ -958,9 +958,9 @@ The following APIs have been removed starting with version 11.0.0&ast;:
 | 包                | API                   | 替代品                                                                     | 详情    |
 | `@angular/router` | `preserveQueryParams` | [`queryParamsHandling`](api/router/UrlCreationOptions#queryParamsHandling) |         |
 
-&ast; To see APIs removed in version 10, check out this guide on the [version 10 docs site](https://v10.angular.io/guide/deprecations#removed).
+\* To see APIs removed in version 10, check out this guide on the [version 10 docs site](https://v10.angular.io/guide/deprecations#removed).
 
-&ast; 要查看版本 10 中移除的 API，请查看 [版本 10 文档站点](https://v10.angular.cn/guide/deprecations#removed)上的本指南。
+\* 要查看版本 10 中移除的 API，请查看 [版本 10 文档站点](https://v10.angular.cn/guide/deprecations#removed)上的本指南。
 
 <a id="style-sanitization"></a>
 

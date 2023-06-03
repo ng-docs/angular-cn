@@ -112,7 +112,7 @@ export class DebugNode {
   }
 
   /**
-   * Dictionary of objects associated with template local variables (e.g. #foo), keyed by the local
+   * Dictionary of objects associated with template local variables \(e.g. #foo\), keyed by the local
    * variable name.
    *
    * 与模板局部变量（例如 #foo）关联的对象字典，以局部变量名作为键。
@@ -193,15 +193,15 @@ export class DebugElement extends DebugNode {
    *
    * 这张地图包括：
    *
-   * - Regular property bindings (e.g. `[id]="id"`)
+   * - Regular property bindings \(e.g. `[id]="id"`\)
    *
    *   常规属性绑定（例如 `[id]="id"`）
    *
-   * - Host property bindings (e.g. `host: { '[id]': "id" }`)
+   * - Host property bindings \(e.g. `host: { '[id]': "id" }`\)
    *
    *   宿主属性绑定（例如 `host: { '[id]': "id" }`）
    *
-   * - Interpolated property bindings (e.g. \`id="{{ value }}")
+   * - Interpolated property bindings \(e.g. \`id="{{ value }}"\)
    *
    *   插值属性绑定（例如 \`id="{{ value }}"）
    *
@@ -209,11 +209,11 @@ export class DebugElement extends DebugNode {
    *
    *   它不包括：
    *
-   * - input property bindings (e.g. `[myCustomInput]="value"`)
+   * - input property bindings \(e.g. `[myCustomInput]="value"`\)
    *
    *   输入属性绑定（例如 `[myCustomInput]="value"`）
    *
-   * - attribute bindings (e.g. `[attr.role]="menu"`)
+   * - attribute bindings \(e.g. `[attr.role]="menu"`\)
    *
    *   属性绑定（例如 `[attr.role]="menu"`）
    *

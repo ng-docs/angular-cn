@@ -184,7 +184,12 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    *
    * @param event The keyboard event.
    * @param fullKeyCode The normalized user defined expected key event string
-   * @returns boolean.
+   * @returns
+   *
+   * boolean.
+   *
+   * 。【模糊翻译】
+   *
    */
   static matchEventFullKeyCode(event: KeyboardEvent, fullKeyCode: string): boolean {
     let keycode = _keyMap[event.key] || event.key;

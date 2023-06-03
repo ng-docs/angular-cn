@@ -52,7 +52,7 @@ export type GetTcbResponse = {
    */
   content: string,
   /**
-   * Spans over node(s) in the typecheck block corresponding to the
+   * Spans over node\(s\) in the typecheck block corresponding to the
    * TS code generated for template node under the current cursor position.
    *
    * 跨越类型检查块中与当前光标位置下为模板节点生成的 TS 代码对应的节点。

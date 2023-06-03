@@ -23,9 +23,9 @@ npm 上的 `@angular/common` 包中包含语言环境数据文件。语言环境
 
 ## 法语的 `import` 示例
 
-The following example imports the global variants for French (`fr`).
+The following example imports the global variants for French \(`fr`\).
 
-以下示例导入了法语 ( `fr` ) 的全局变体。
+以下示例导入了法语（`fr`）的全局变体。
 
 <code-example header="src/app/app.module.ts" path="i18n/doc-files/app.module.ts" region="global-locale"></code-example>
 

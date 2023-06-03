@@ -46,7 +46,7 @@ export function getBinding(lView: LView, bindingIndex: number): any {
  * 如果更改，则更新绑定，然后返回它是否已更新。
  *
  * This function also checks the `CheckNoChangesMode` and throws if changes are made.
- * Some changes (Objects/iterables) during `CheckNoChangesMode` are exempt to comply with VE
+ * Some changes \(Objects/iterables\) during `CheckNoChangesMode` are exempt to comply with VE
  * behavior.
  *
  * 此函数还会检查 `CheckNoChangesMode` ，如果进行了更改，则抛出。 `CheckNoChangesMode`
@@ -55,19 +55,16 @@ export function getBinding(lView: LView, bindingIndex: number): any {
  * @param lView current `LView`
  *
  * 当前的 `LView`
- *
  * @param bindingIndex The binding in the `LView` to check
  *
  * 要检查的 `LView` 中的绑定
- *
  * @param value New value to check against `lView[bindingIndex]`
  *
  * 要检查 `lView[bindingIndex]` 的新值
- *
  * @returns
  *
- * `true` if the bindings has changed. (Throws if binding has changed during
- *          `CheckNoChangesMode`)
+ * `true` if the bindings has changed. \(Throws if binding has changed during
+ *          `CheckNoChangesMode`\)
  *
  * 如果绑定已更改，则为 `true` 。（如果在 `CheckNoChangesMode` 期间绑定已更改，则抛出）
  *

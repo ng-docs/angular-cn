@@ -67,8 +67,9 @@ let _locateOrCreateTextNode: typeof locateOrCreateTextNodeImpl =
     };
 
 /**
- * Enables hydration code path (to lookup existing elements in DOM)
+ * Enables hydration code path \(to lookup existing elements in DOM\)
  * in addition to the regular creation mode of text nodes.
+ *
  */
 function locateOrCreateTextNodeImpl(
     tView: TView, lView: LView, tNode: TNode, value: string, index: number): RText {

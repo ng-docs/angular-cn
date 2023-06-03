@@ -72,13 +72,13 @@ export function newArray<T>(size: number, value?: T): T[] {
 }
 
 /**
- * Remove item from array (Same as `Array.splice()` but faster.)
+ * Remove item from array \(Same as `Array.splice()` but faster.\)
  *
  * `Array.splice()` is not as fast because it has to allocate an array for the elements which were
  * removed. This causes memory pressure and slows down code when most of the time we don't
  * care about the deleted items array.
  *
- * https://jsperf.com/fast-array-splice (About 20x faster)
+ * https://jsperf.com/fast-array-splice \(About 20x faster\)
  *
  * @param array Array to splice
  * @param index Index of element in array to remove.
@@ -169,8 +169,9 @@ export function arrayInsert2(array: any[], index: number, value1: any, value2: a
  * index of the value.
  *
  * - positive index if value found.
- * - negative index if value not found. (`~index` to get the value where it should have been
- *   located)
+ * - negative index if value not found. \(`~index` to get the value where it should have been
+ *   located\)
+ *
  */
 export function arrayIndexOfSorted(array: string[], value: string): number {
   return _arrayIndexOfSorted(array, value, 0);
@@ -181,13 +182,14 @@ export function arrayIndexOfSorted(array: string[], value: string): number {
  * `KeyValueArray` is an array where even positions contain keys and odd positions contain values.
  *
  * `KeyValueArray` provides a very efficient way of iterating over its contents. For small
- * sets (~10) the cost of binary searching an `KeyValueArray` has about the same performance
+ * sets \(~10\) the cost of binary searching an `KeyValueArray` has about the same performance
  * characteristics that of a `Map` with significantly better memory footprint.
  *
  * If used as a `Map` the keys are stored in alphabetical order so that they can be binary searched
  * for retrieval.
  *
  * See: `keyValueArraySet`, `keyValueArrayGet`, `keyValueArrayIndexOf`, `keyValueArrayDelete`.
+ *
  */
 export interface KeyValueArray<VALUE> extends Array<VALUE|string> {
   __brand__: 'array-map';
@@ -201,7 +203,10 @@ export interface KeyValueArray<VALUE> extends Array<VALUE|string> {
  * @param keyValueArray to modify.
  * @param key The key to locate or create.
  * @param value The value to set for a `key`.
- * @returns index (always even) of where the value vas set.
+ * @returns
+ *
+ * index \(always even\) of where the value vas set.
+ *
  */
 export function keyValueArraySet<V>(
     keyValueArray: KeyValueArray<V>, key: string, value: V): number {
@@ -217,12 +222,11 @@ export function keyValueArraySet<V>(
 }
 
 /**
- * Retrieve a `value` for a `key` (on `undefined` if not found.)
+ * Retrieve a `value` for a `key` \(on `undefined` if not found.\)
  *
  * @param keyValueArray to search.
  * @param key The key to locate.
  * @return The `value` stored at the `key` location or `undefined` if not found.
- *
  */
 export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string): V|undefined {
   const index = keyValueArrayIndexOf(keyValueArray, key);
@@ -240,11 +244,11 @@ export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string
  * @param key The key to locate.
  * @returns
  *
- * index of where the key is (or should have been.)
+ * index of where the key is \(or should have been.\)
  *
- * - positive (even) index if key found.
- * - negative index if key not found. (`~index` (even) to get the index where it should have
- *   been inserted.)
+ * - positive \(even\) index if key found.
+ * - negative index if key not found. \(`~index` \(even\) to get the index where it should have
+ *   been inserted.\)
  *
  */
 export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: string): number {
@@ -252,17 +256,18 @@ export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: st
 }
 
 /**
- * Delete a `key` (and `value`) from the `KeyValueArray`.
+ * Delete a `key` \(and `value`\) from the `KeyValueArray`.
  *
  * @param keyValueArray to modify.
- * @param key The key to locate or delete (if exist).
+ * @param key The key to locate or delete \(if exist\).
+ *
  * @returns
  *
- * index of where the key was (or should have been.)
+ * index of where the key was \(or should have been.\)
  *
- * - positive (even) index if key found and deleted.
- * - negative index if key not found. (`~index` (even) to get the index where it should have
- *   been.)
+ * - positive \(even\) index if key found and deleted.
+ * - negative index if key not found. \(`~index` \(even\) to get the index where it should have
+ *   been.\)
  *
  */
 export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: string): number {
@@ -289,15 +294,17 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  * @param shift grouping shift.
  *
  * - `0` means look at every location
- * - `1` means only look at every other (even) location (the odd locations are to be ignored as
- *       they are values.)
+ * - `1` means only look at every other \(even\) location \(the odd locations are to be ignored as
+ *       they are values.\)
+ *
  * @returns
  *
  * index of the value.
  *
  * - positive index if value found.
- * - negative index if value not found. (`~index` to get the value where it should have been
- *   inserted)
+ * - negative index if value not found. \(`~index` to get the value where it should have been
+ *   inserted\)
+ *
  */
 function _arrayIndexOfSorted(array: string[], value: string, shift: number): number {
   ngDevMode && assertEqual(Array.isArray(array), true, 'Expecting an array');

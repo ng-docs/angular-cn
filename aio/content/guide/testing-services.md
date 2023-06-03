@@ -81,7 +81,7 @@ Angular testing utilities make it straightforward to investigate how injected se
 
 ## 使用 *TestBed* 测试服务
 
-Your application relies on Angular [dependency injection (DI)](guide/dependency-injection) to create services.
+Your application relies on Angular [dependency injection \(DI\)](guide/dependency-injection) to create services.
 When a service has a dependent service, DI finds or creates that dependent service.
 And if that dependent service has its own dependencies, DI finds-or-creates them as well.
 
@@ -101,13 +101,13 @@ As a service *tester*, you must at least think about the first level of service 
 ## Angular `TestBed`
 
 The `TestBed` is the most important of the Angular testing utilities.
-The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [@NgModule](guide/ngmodules).
+The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [`@NgModule`](guide/ngmodules).
 
-`TestBed` 是 Angular 测试实用工具中最重要的。`TestBed` 创建了一个动态构造的 Angular *测试*模块，用来模拟一个 Angular 的 [@NgModule](guide/ngmodules)。
+`TestBed` 是 Angular 测试实用工具中最重要的。`TestBed` 创建了一个动态构造的 Angular *测试*模块，用来模拟一个 Angular 的 [`@NgModule`](guide/ngmodules)。
 
-The `TestBed.configureTestingModule()` method takes a metadata object that can have most of the properties of an [@NgModule](guide/ngmodules).
+The `TestBed.configureTestingModule()` method takes a metadata object that can have most of the properties of an [`@NgModule`](guide/ngmodules).
 
-`TestBed.configureTestingModule()` 方法接受一个元数据对象，它可以拥有[@NgModule](guide/ngmodules)的大部分属性。
+`TestBed.configureTestingModule()` 方法接受一个元数据对象，它可以拥有[`@NgModule`](guide/ngmodules)的大部分属性。
 
 To test a service, you set the `providers` metadata property with an array of the services that you'll test or mock.
 
@@ -180,7 +180,7 @@ Begin by putting re-usable, preparatory code in a *setup* function instead of `b
 <code-example header="app/demo/demo.spec.ts (setup)" path="testing/src/app/demo/demo.spec.ts" region="no-before-each-setup"></code-example>
 
 The `setup()` function returns an object literal with the variables, such as `masterService`, that a test might reference.
-You don't define *semi-global* variables (for example, `let masterService: MasterService`) in the body of the `describe()`.
+You don't define *semi-global* variables \(for example, `let masterService: MasterService`\) in the body of the `describe()`.
 
 `setup()` 函数返回一个包含测试可能引用的变量（如 `masterService`）的对象字面量。你并没有在 `describe()` 的函数体中定义*半全局*变量（比如 `let masterService: MasterService`）。
 

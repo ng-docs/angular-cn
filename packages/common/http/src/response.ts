@@ -318,8 +318,8 @@ export class HttpHeaderResponse extends HttpResponseBase {
 }
 
 /**
- * A full HTTP response, including a typed response body (which may be `null`
- * if one was not returned).
+ * A full HTTP response, including a typed response body \(which may be `null`
+ * if one was not returned\).
  *
  * 一个完整的 HTTP 响应对象，包括一个带类型的响应体（如果没返回内容，则为 `null`）。
  *

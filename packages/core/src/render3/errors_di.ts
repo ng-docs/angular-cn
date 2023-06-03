@@ -15,7 +15,7 @@ import {stringifyForError} from './util/stringify_utils';
 
 
 /**
- * Called when directives inject each other (creating a circular dependency)
+ * Called when directives inject each other \(creating a circular dependency\)
  *
  * 当指令相互注入（创建循环依赖）时调用
  *

@@ -45,11 +45,12 @@ import {createRenderTemplateDirective} from './render_template_directive';
  *     </div>
  *   </div>
  * </div>
- * ```
  *
+ * ```
  *   </div>
  *
  * </div>
+ * ```
  *
  */
 export function createAppComponent(injector: Injector|undefined) {

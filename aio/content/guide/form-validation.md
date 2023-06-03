@@ -163,7 +163,7 @@ built-in validators —this time, in function form, as in the following example.
 <code-example header="reactive/hero-form-reactive.component.ts (validator functions)" path="form-validation/src/app/reactive/hero-form-reactive.component.1.ts" region="form-group"></code-example>
 
 In this example, the `name` control sets up two built-in validators —`Validators.required` and `Validators.minLength(4)`— and one custom validator, `forbiddenNameValidator`.
-(For more details see [custom validators](#custom-validators).)
+\(For more details see [custom validators](#custom-validators).\)
 
 在这个例子中，`name` 控件设置了两个内置验证器 - `Validators.required` 和 `Validators.minLength(4)` 以及一个自定义验证器 `forbiddenNameValidator`。（欲知详情，参阅下面的[自定义验证器](#custom-validators)部分。）
 
@@ -315,9 +315,9 @@ Angular 会自动把很多控件属性作为 CSS 类映射到控件所在的元�
 
 * `.ng-touched`
 
-* `.ng-submitted` (enclosing form element only)
+* `.ng-submitted` \(enclosing form element only\)
 
-  `.ng-submitted` (只对 form 元素添加)
+  `.ng-submitted`（只对 form 元素添加）
 
 In the following example, the hero form uses the `.ng-valid` and `.ng-invalid` classes to
 set the color of each form control's border.
@@ -468,7 +468,7 @@ These are very similar to their synchronous counterparts, with the following dif
   返回的可观察对象必须是有尽的，这意味着它必须在某个时刻完成（complete）。要把无尽的可观察对象转换成有尽的，可以在管道中加入过滤操作符，比如 `first`、`last`、`take` 或 `takeUntil`。
 
 Asynchronous validation happens after the synchronous validation, and is performed only if the synchronous validation is successful.
-This check lets forms avoid potentially expensive async validation processes (such as an HTTP request) if the more basic validation methods have already found invalid input.
+This check lets forms avoid potentially expensive async validation processes \(such as an HTTP request\) if the more basic validation methods have already found invalid input.
 
 异步验证在同步验证完成后才会发生，并且只有在同步验证成功时才会执行。如果更基本的验证方法已经发现了无效输入，那么这种检查顺序就可以让表单避免使用昂贵的异步验证流程（比如 HTTP 请求）。
 
@@ -598,7 +598,7 @@ Dispatching an HTTP request after every keystroke could put a strain on the back
 
 默认情况下，所有验证程序在每次表单值更改后都会运行。对于同步验证器，这通常不会对应用性能产生明显的影响。但是，异步验证器通常会执行某种 HTTP 请求来验证控件。每次按键后调度一次 HTTP 请求都会给后端 API 带来压力，应该尽可能避免。
 
-You can delay updating the form validity by changing the `updateOn` property from `change` (default) to `submit` or `blur`.
+You can delay updating the form validity by changing the `updateOn` property from `change` \(default\) to `submit` or `blur`.
 
 你可以把 `updateOn` 属性从 `change`（默认值）改成 `submit` 或 `blur` 来推迟表单验证的更新时机。
 

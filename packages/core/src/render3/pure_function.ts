@@ -19,9 +19,9 @@ import {NO_CHANGE} from './tokens';
  *
  * 纯函数的绑定是在常规绑定之后存储的。
  *
- * ## |-------decls------|---------vars---------|                 |----- hostVars (dir1) ------|
+ * ## |-------decls------|---------vars---------|                 |----- hostVars \(dir1\) ------|
  *
- * ## |-------decls------|---------vars----------| |----- hostVars (dir1) ------|
+ * ## |-------decls------|---------vars----------| |----- hostVars \(dir1\) ------|
  *
  * ## | nodes/refs/pipes | bindings | fn slots  | injector | dir1 | host bindings | host slots |
  *

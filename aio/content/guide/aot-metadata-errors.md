@@ -7,7 +7,7 @@ The following are metadata errors you may encounter, with explanations and sugge
 以下是你可能会遇到的元数据错误，带有解释和建议的更正。
 
 [Expression form not supported](#expression-form-not-supported) <br /> 
-[Reference to a local (non-exported) symbol](#reference-to-a-local-symbol) <br /> 
+[Reference to a local \(non-exported\) symbol](#reference-to-a-local-symbol) <br /> 
 [Only initialized variables and constants](#only-initialized-variables) <br /> 
 [Reference to a non-exported class](#reference-to-a-non-exported-class) <br /> 
 [Reference to a non-exported function](#reference-to-a-non-exported-function) <br /> 
@@ -20,7 +20,7 @@ The following are metadata errors you may encounter, with explanations and sugge
 [Symbol reference expected](#symbol-reference-expected) <br /> 
 
 [不支持此表达式格式（Expression form not supported）](#expression-form-not-supported)<br />
-[引用了局部（未导出的）符号（Reference to a local (non-exported) symbol）](#reference-to-a-local-symbol)<br />
+[引用了局部（未导出的）符号（Reference to a local \(non-exported\) symbol）](#reference-to-a-local-symbol)<br />
 [只允许初始化过的变量和常量（Only initialized variables and constants）](#only-initialized-variables)<br />
 [引用了未导出的类（Reference to a non-exported class）](#reference-to-a-non-exported-class)<br />
 [引用了未导出的函数（Reference to a non-exported function）](#reference-to-a-non-exported-function)<br />
@@ -36,7 +36,7 @@ The following are metadata errors you may encounter, with explanations and sugge
 
 ## Expression form not supported
 
-## 不支持此表达式格式 (Expression form not supported)
+## 不支持此表达式格式（Expression form not supported）
 
 <div class="alert is-helpful">
 
@@ -77,9 +77,9 @@ and be wary of new or unusual TypeScript features.
 
 <a id="reference-to-a-local-symbol"></a>
 
-## Reference to a local (non-exported) symbol
+## Reference to a local \(non-exported\) symbol
 
-## 引用本地（未导出的）符号 (Reference to a local (non-exported) symbol)
+## 引用本地（未导出的）符号（Reference to a local \(non-exported\) symbol）
 
 <div class="alert is-helpful">
 
@@ -113,7 +113,7 @@ export class MyComponent {}
 
 </code-example>
 
-The compiler generates the component factory, which includes the `useValue` provider code, in a separate module. *That* factory module can't reach back to *this* source module to access the local (non-exported) `foo` variable.
+The compiler generates the component factory, which includes the `useValue` provider code, in a separate module. *That* factory module can't reach back to *this* source module to access the local \(non-exported\) `foo` variable.
 
 编译器会生成这个组件工厂，其中包含 `useValue` 提供者的代码。*那个*工厂模块不能访问*这个*源码模块，无法访问这个（未导出的）`foo` 变量。
 
@@ -194,7 +194,7 @@ Prefixing the declaration with `export` merely produces a new error, "[`Only ini
 
 ## Only initialized variables and constants
 
-## 只支持初始化过的变量和常量 (Only initialized variables and constants)
+## 只支持初始化过的变量和常量（Only initialized variables and constants）
 
 <div class="alert is-helpful">
 
@@ -269,7 +269,7 @@ export class MyComponent {}
 
 ## Reference to a non-exported class
 
-## 引用未导出过的类 (Reference to a non-exported class)
+## 引用未导出过的类（Reference to a non-exported class）
 
 <div class="alert is-helpful">
 
@@ -324,7 +324,7 @@ export abstract class MyStrategy { }
 
 ## Reference to a non-exported function
 
-## 引用未导出过的函数 (Reference to a non-exported function)
+## 引用未导出过的函数（Reference to a non-exported function）
 
 <div class="alert is-helpful">
 
@@ -373,7 +373,7 @@ export function myStrategy() { &hellip; }
 
 ## Function calls are not supported
 
-## 不支持函数调用 (Function calls are not supported)
+## 不支持函数调用（Function calls are not supported）
 
 <div class="alert is-helpful">
 
@@ -445,7 +445,7 @@ export function someValueFactory() {
 
 ## Destructured variable or constant not supported
 
-## 不支持解构变量或常量 (Destructured variable or constant not supported)
+## 不支持解构变量或常量（Destructured variable or constant not supported）
 
 <div class="alert is-helpful">
 
@@ -500,7 +500,7 @@ import { configuration } from './configuration';
 
 ## Could not resolve type
 
-## 无法解析类型 (Could not resolve type)
+## 无法解析类型（Could not resolve type）
 
 <div class="alert is-helpful">
 
@@ -592,7 +592,7 @@ uses the `@Inject(WINDOW)` to generate the injection code.
 
 对于编译器来说，构造函数中出现 `Window` 类型已不再是个问题，因为它现在使用 `@Inject(WINDOW)` 来生成注入代码。
 
-Angular does something similar with the `DOCUMENT` token so you can inject the browser's `document` object (or an abstraction of it, depending upon the platform in which the application runs).
+Angular does something similar with the `DOCUMENT` token so you can inject the browser's `document` object \(or an abstraction of it, depending upon the platform in which the application runs\).
 
 Angular 也用 `DOCUMENT` 令牌做了类似的事情，所以你也可以注入浏览器的 `document` 对象（或它的一个抽象层，取决于该应用运行在哪个平台）。
 
@@ -612,7 +612,7 @@ export class MyComponent {
 
 ## Name expected
 
-## 期望的名字 (Name expected)
+## 期望有名字（Name expected）
 
 <div class="alert is-helpful">
 
@@ -648,7 +648,7 @@ provider: [{ provide: Foo, useValue: { '0': 'test' } }]
 
 ## Unsupported enum member name
 
-## 不支持的枚举成员名称 (Unsupported enum member name)
+## 不支持的枚举成员名称（Unsupported enum member name）
 
 <div class="alert is-helpful">
 
@@ -689,7 +689,7 @@ Avoid referring to enums with complicated initializers or computed properties.
 
 ## Tagged template expressions are not supported
 
-## 不支持带标签的模板表达式 (Tagged template expressions are not supported)
+## 不支持带标签的模板表达式（Tagged template expressions are not supported）
 
 <div class="alert is-helpful">
 
@@ -726,7 +726,7 @@ AOT 编译器不支持带标签函数的模板表达式，避免在元数据表�
 
 ## Symbol reference expected
 
-## 期待符号的引用 (Symbol reference expected)
+## 期待符号的引用（Symbol reference expected）
 
 <div class="alert is-helpful">
 

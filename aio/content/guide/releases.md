@@ -113,7 +113,7 @@ See [Keeping Up-to-Date](guide/updating "Updating your projects") for more infor
 
 ### 预览发布
 
-We let you preview what's coming by providing "Next" and Release Candidates (`rc`) pre-releases for each major and minor release:
+We let you preview what's coming by providing "Next" and Release Candidates \(`rc`\) pre-releases for each major and minor release:
 
 我们还会通过提供 Next 版和 RC（候选发布）版来让你预览每个即将到来的大版本和小版本。
 
@@ -159,9 +159,9 @@ In general, expect the following release cycle:
 
   每个主版本中包含 1~3 个小版本
 
-* A patch release and pre-release (`next` or `rc`) build almost every week
+* A patch release and pre-release \(`next` or `rc`\) build almost every week
 
-  差不多每周一个发行版或预发行版(`next` 或 `rc`)的补丁版本
+  差不多每周一个发行版或预发行版（`next` 或 `rc`）的补丁版本
 
 This cadence of releases gives eager developers access to new features as soon as they are fully developed and pass through our code review and integration testing processes, while maintaining the stability and reliability of the platform for production users that prefer to receive features after they have been validated by Google and other developers that use the pre-release builds.
 
@@ -201,13 +201,13 @@ All major releases are typically supported for 18 months.
 
 所有主版本的典型支持周期都是 18 个月。
 
-| Support stage   | Support Timing | Details                                                             |
-| :-------------- | :------------- | :------------------------------------------------------------------ |
-| 支持阶段        | 支持时间       | 详情                                                                |
-| Active          | 6 months       | Regularly-scheduled updates and patches are released                |
-| 活跃            | 6 个月         | 会定期发布更新和补丁                                                |
-| Long-term (LTS) | 12 months      | Only [critical fixes and security patches](#lts-fixes) are released |
-| LTS 长期支持版  | 12 个月        | 只会发布[关键性修复和安全补丁](#lts-fixes)。                        |
+| Support stage     | Support Timing | Details                                                             |
+| :---------------- | :------------- | :------------------------------------------------------------------ |
+| 支持阶段          | 支持时间       | 详情                                                                |
+| Active            | 6 months       | Regularly-scheduled updates and patches are released                |
+| 活跃              | 6 个月         | 会定期发布更新和补丁                                                |
+| Long-term \(LTS\) | 12 months      | Only [critical fixes and security patches](#lts-fixes) are released |
+| LTS 长期支持版    | 12 个月        | 只会发布[关键性修复和安全补丁](#lts-fixes)。                        |
 
 ### Actively supported versions
 
@@ -253,7 +253,7 @@ As a general rule, a fix is considered for an LTS version if it resolves one of:
 
 ## 弃用策略
 
-Sometimes "breaking changes", such as the removal of support for select APIs and features, are necessary to innovate and stay current with new best practices, changing dependencies, or changes in the (web) platform itself.
+Sometimes "breaking changes", such as the removal of support for select APIs and features, are necessary to innovate and stay current with new best practices, changing dependencies, or changes in the \(web\) platform itself.
 
 "重大变更"（比如移除特定的 API 和特性）有时候是必须的，比如创新、让最佳实践与时俱进、变更依赖关系甚至来自 Web 平台自身的变化。
 

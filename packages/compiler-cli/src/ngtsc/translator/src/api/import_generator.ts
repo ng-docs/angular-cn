@@ -22,7 +22,7 @@ export interface NamedImport<TExpression> {
    */
   moduleImport: TExpression|null;
   /**
-   * The (possibly rewritten) name of the imported symbol.
+   * The \(possibly rewritten\) name of the imported symbol.
    *
    * 导入的符号的（可能是重写的）名称。
    *

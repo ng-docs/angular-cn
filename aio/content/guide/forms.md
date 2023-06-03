@@ -365,7 +365,7 @@ The comment reminds you to remove the diagnostic lines when you have finished ob
 
 ### 访问表单的整体状态
 
-When you imported the `FormsModule` in your component, Angular automatically created and attached an [NgForm](api/forms/NgForm "API reference for NgForm") directive to the `<form>` tag in the template (because `NgForm` has the selector `form` that matches `<form>` elements).
+When you imported the `FormsModule` in your component, Angular automatically created and attached an [NgForm](api/forms/NgForm "API reference for NgForm") directive to the `<form>` tag in the template \(because `NgForm` has the selector `form` that matches `<form>` elements\).
 
 当你导入了 `FormsModule` 时，Angular 会自动为模板中的 `<form>` 标签创建并附加一个 [NgForm](api/forms/NgForm "NgForm 的 API 参考") 指令。（因为 `NgForm` 定义了一个能匹配 `<form>` 元素的选择器 `form`）。
 
@@ -749,7 +749,7 @@ See the [User Input](guide/user-input) guide for more information about listenin
 ## 使用 `ngSubmit` 提交表单
 
 The user should be able to submit this form after filling it in.
-The **Submit** button at the bottom of the form does nothing on its own, but it does trigger a form-submit event because of its type (`type="submit"`).
+The **Submit** button at the bottom of the form does nothing on its own, but it does trigger a form-submit event because of its type \(`type="submit"`\).
 To respond to this event, take the following steps.
 
 用户应该可以在填写之后提交这个表单。表单底部的 **Submit** 按钮本身没有任何作用，但由于它的类型（`type="submit"`），它会触发一个表单提交事件。要响应此事件，请执行以下步骤。

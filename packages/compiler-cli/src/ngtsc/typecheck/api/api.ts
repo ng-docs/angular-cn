@@ -53,8 +53,9 @@ export interface TemplateDiagnostic extends ts.Diagnostic {
 export type NgTemplateDiagnostic<T extends ErrorCode> = TemplateDiagnostic&{__ngCode: T};
 
 /**
- * Metadata required in addition to a component class in order to generate a type check block (TCB)
+ * Metadata required in addition to a component class in order to generate a type check block \(TCB\)
  * for that component.
+ *
  */
 export interface TypeCheckBlockMetadata {
   /**

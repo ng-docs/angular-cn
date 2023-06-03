@@ -21,7 +21,6 @@ const _INTERPOLATION_REGEXP: RegExp = /#/g;
  * Maps a value to a string that pluralizes the value according to locale rules.
  *
  * 将值映射到根据语言环境规则对该值进行复数化的字符串。
- *
  * @usageNotes
  *
  * ### Example
@@ -48,11 +47,11 @@ export class I18nPluralPipe implements PipeTransform {
    * https://unicode-org.github.io/icu/userguide/format_parse/messages/.
    *
    * 模仿 ICU 格式的对象，请参阅 https://unicode-org.github.io/icu/userguide/format_parse/messages/ 。
-   *
-   * @param locale a `string` defining the locale to use (uses the current {@link LOCALE_ID} by
-   * default).
+   * @param locale a `string` defining the locale to use \(uses the current {@link LOCALE_ID} by
+   * default\).
    *
    * 定义要使用的语言环境的 `string`（默认情况下使用当前的 {@link LOCALE_ID}）。
+   *
    */
   transform(value: number|null|undefined, pluralMap: {[count: string]: string}, locale?: string):
       string {

@@ -909,8 +909,8 @@ const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
 };
 
 /**
- * Parse the provided css text and inside strings (meaning, inside pairs of unescaped single or
- * double quotes) replace specific characters with their respective placeholders as indicated
+ * Parse the provided css text and inside strings \(meaning, inside pairs of unescaped single or
+ * double quotes\) replace specific characters with their respective placeholders as indicated
  * by the `ESCAPE_IN_STRING_MAP` map.
  *
  * For example convert the text
@@ -919,15 +919,14 @@ const ESCAPE_IN_STRING_MAP: {[key: string]: string} = {
  *  `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;`
  *
  * This is necessary in order to remove the meaning of some characters when found inside strings
- * (for example `;` indicates the end of a css declaration, `,` the sequence of values and `:` the
+ * \(for example `;` indicates the end of a css declaration, `,` the sequence of values and `:` the
  * division between property and value during a declaration, none of these meanings apply when such
  * characters are within strings and so in order to prevent parsing issues they need to be replaced
- * with placeholder text for the duration of the css manipulation process).
+ * with placeholder text for the duration of the css manipulation process\).
  *
  * @param input the original css text.
- *
  * @returns the css text with specific characters in strings replaced by placeholders.
- **/
+ */
 function escapeInStrings(input: string): string {
   let result = input;
   let currentQuoteChar: string|null = null;
@@ -986,17 +985,16 @@ function unescapeInStrings(input: string): string {
  * This generates a "canonical" representation of strings which can be used to match strings
  * which would otherwise only differ because of differently escaped quotes.
  *
- * For example it converts the string (assumed to be quoted):
+ * For example it converts the string \(assumed to be quoted\):
  *  `this \\"is\\" a \\'\\\\'test`
  * to:
  *  `this "is" a '\\\\'test`
- * (note that the latter backslashes are not removed as they are not actually escaping the single
- * quote)
- *
+ * \(note that the latter backslashes are not removed as they are not actually escaping the single
+ * quote\)
  *
  * @param input the string possibly containing escaped quotes.
- * @param isQuoted boolean indicating whether the string was quoted inside a bigger string (if not
- * then it means that it doesn't represent an inner string and thus no unescaping is required)
+ * @param isQuoted boolean indicating whether the string was quoted inside a bigger string \(if not
+ * then it means that it doesn't represent an inner string and thus no unescaping is required\)
  *
  * @returns the string in the "canonical" representation without escaped quotes.
  */

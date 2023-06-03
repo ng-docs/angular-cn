@@ -56,7 +56,7 @@ export interface TemplateContext<Code extends ErrorCode> {
 
   /**
    * TypeScript interface that provides type information about symbols that appear
-   * in the template (it is not to query types outside the Angular component).
+   * in the template \(it is not to query types outside the Angular component\).
    *
    * TypeScript 接口，提供有关模板中出现的符号的类型信息（它不会查询 Angular 组件之外的类型）。
    *
@@ -131,7 +131,7 @@ export abstract class TemplateCheckWithVisitor<Code extends ErrorCode> implement
 }
 
 /**
- * Visits all nodes in a template (TmplAstNode and AST) and calls `visitNode` for each one.
+ * Visits all nodes in a template \(TmplAstNode and AST\) and calls `visitNode` for each one.
  *
  * 访问模板中的所有节点（TmplAstNode 和 AST）并为每个节点调用 `visitNode` 。
  *

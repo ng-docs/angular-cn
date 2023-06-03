@@ -5,7 +5,7 @@
 Use optional parameters to fine-tune a pipe's output.
 For example, use the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") with a country code such as EUR as a parameter.
 The template expression `{{ amount | currency:'EUR' }}` transforms the `amount` to currency in euros.
-Follow the pipe name (`currency`) with a colon (`:`) and the parameter value (`'EUR'`).
+Follow the pipe name \(`currency`\) with a colon \(`:`\) and the parameter value \(`'EUR'`\).
 
 可以用可选参数微调管道的输出。比如，你可以使用 [`CurrencyPipe`](api/common/CurrencyPipe "API 参考") 和国家代码（如 EUR）作为参数。模板表达式 `{{ amount | currency:'EUR' }}` 会把 `amount` 转换成欧元。紧跟在管道名称（`currency`）后面的是冒号（`:`）和参数值（`'EUR'`）。
 
@@ -22,11 +22,11 @@ Some pipes require at least one parameter and allow more optional parameters, su
 
 ## 范例：格式化日期
 
-The tabs in the following example demonstrates toggling between two different formats (`'shortDate'` and `'fullDate'`):
+The tabs in the following example demonstrates toggling between two different formats \(`'shortDate'` and `'fullDate'`\):
 
 下面的例子显示了两种不同格式（`'shortDate'` 和 `'fullDate'`）之间的切换：
 
-* The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) (named `date`) to show the date as **04/15/88**.
+* The `app.component.html` template uses a format parameter for the [`DatePipe`](api/common/DatePipe) \(named `date`\) to show the date as **04/15/88**.
 
   该 `app.component.html` 模板使用 [`DatePipe`](api/common/DatePipe)（名为 `date`）的格式参数把日期显示为 **04/15/88**。
 
@@ -35,7 +35,7 @@ The tabs in the following example demonstrates toggling between two different fo
   `hero-birthday2.component.ts` 组件把该管道的 format 参数绑定到 `template` 中组件的 `format` 属性，并添加了一个按钮，其 click 事件绑定到了该组件的 `toggleFormat()` 方法。
 
 * The `hero-birthday2.component.ts` component's `toggleFormat()` method toggles the component's `format` property between a short form
-  (`'shortDate'`) and a longer form (`'fullDate'`).
+  \(`'shortDate'`\) and a longer form \(`'fullDate'`\).
 
   `hero-birthday2.component.ts` 组件的 `toggleFormat()` 方法会在短格式（`'shortDate'`）和长格式（`'fullDate'`）之间切换该组件的 `format` 属性。
 

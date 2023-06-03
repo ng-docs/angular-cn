@@ -22,15 +22,15 @@ import {RElement} from '../interfaces/renderer_dom';
  *
  * 此函数接受两种形式的属性条目：
  *
- * default: (key, value):
+ * default: `(key, value)`:
  *
- * 默认值：(key, value):
+ * 默认值：`(key, value)`:
  *
  *  `attrs = [key1, value1, key2, value2]`
  *
- * namespaced: (NAMESPACE_MARKER, uri, name, value)
+ * namespaced: `(NAMESPACE_MARKER, uri, name, value)`
  *
- * 加命名空间后：(NAMESPACE_MARKER, uri, name, value)
+ * 加命名空间后：`(NAMESPACE_MARKER, uri, name, value)`
  *
  *  `attrs = [NAMESPACE_MARKER, uri, name, value, NAMESPACE_MARKER, uri, name, value]`
  *
@@ -58,21 +58,17 @@ import {RElement} from '../interfaces/renderer_dom';
  * @param renderer The renderer to be used
  *
  * 要使用的渲染器
- *
  * @param native The element that the attributes will be assigned to
  *
  * 属性将分配给的元素
- *
  * @param attrs The attribute array of values that will be assigned to the element
  *
  * 将分配给元素的值的属性数组
- *
  * @returns
  *
  * the index value that was last accessed in the attributes array
  *
  * 属性数组中最后访问的索引值
- *
  */
 export function setUpAttributes(renderer: Renderer, native: RElement, attrs: TAttributes): number {
   let i = 0;
@@ -127,10 +123,9 @@ export function setUpAttributes(renderer: Renderer, native: RElement, attrs: TAt
  * @param marker The attribute marker to test.
  *
  * 要测试的属性标记。
- *
  * @returns
  *
- * true if the marker is a "name-only" marker (e.g. `Bindings`, `Template` or `I18n`).
+ * true if the marker is a "name-only" marker \(e.g. `Bindings`, `Template` or `I18n`\).
  *
  * 如果标记是“仅名称”标记（例如 `Bindings`、`Template` 或 `I18n`），则为 true 。
  *
@@ -203,23 +198,19 @@ export function mergeHostAttrs(dst: TAttributes|null, src: TAttributes|null): TA
  * @param dst `TAttributes` to append to.
  *
  * 要附加到的 `TAttributes` 。
- *
  * @param marker Region where the `key`/`value` should be added.
  *
  * 应该添加 `key` / `value` 的区域。
- *
  * @param key1 Key to add to `TAttributes`
  *
  * 要添加到 `TAttributes` 的键
- *
- * @param key2 Key to add to `TAttributes` (in case of `AttributeMarker.NamespaceURI`)
+ * @param key2 Key to add to `TAttributes` \(in case of `AttributeMarker.NamespaceURI`\)
  *
  * 要添加到 `TAttributes` 的键（在 `AttributeMarker.NamespaceURI` 的情况下）
  *
  * @param value Value to add or to overwrite to `TAttributes` Only used if `marker` is not Class.
  *
  * 要添加或覆盖 `TAttributes` 的值仅在 `marker` 不是 Class 时使用。
- *
  */
 export function mergeHostAttribute(
     dst: TAttributes, marker: AttributeMarker, key1: string, key2: string|null,

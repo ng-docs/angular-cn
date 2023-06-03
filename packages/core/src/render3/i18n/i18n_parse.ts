@@ -42,7 +42,7 @@ const PH_REGEXP = /�(\/?[#*]\d+):?\d*�/gi;
 /**
  * Angular Dart introduced &ngsp; as a placeholder for non-removable space, see:
  * https://github.com/dart-lang/angular/blob/0bb611387d29d65b5af7f9d2515ab571fd3fbee4/_tests/test/compiler/preserve_whitespace_test.dart#L25-L32
- * In Angular Dart &ngsp; is converted to the 0xE500 PUA (Private Use Areas) unicode character
+ * In Angular Dart &ngsp; is converted to the 0xE500 PUA \(Private Use Areas\) unicode character
  * and later on replaced by a space. We are re-implementing the same idea here, since translations
  * might contain this special character.
  *
@@ -90,22 +90,18 @@ function attachDebugGetter<T>(obj: T, debugGetter: (this: T) => any): void {
  * @param tView Current `TView`
  *
  * 当前 `TView`
- *
  * @parentTNodeIndex index to the parent TNode of this i18n block
  * @param lView Current `LView`
  *
  * 当前 `LView`
- *
  * @param index Index of `ɵɵi18nStart` instruction.
  *
  * `ɵɵi18nStart` 指令的索引。
- *
  * @param message Message to translate.
  *
  * 要翻译的消息。
- *
- * @param subTemplateIndex Index into the sub template of message translation. (ie in case of
- *     `ngIf`) (-1 otherwise)
+ * @param subTemplateIndex Index into the sub template of message translation. \(ie in case of
+ *     `ngIf`\) \(-1 otherwise\)
  *
  * 对消息翻译的子模板的索引。（即在 `ngIf` 的情况下）（否则为-1）
  *
@@ -193,30 +189,24 @@ export function i18nStartFirstCreatePass(
  * @param tView Current `TView` needed to allocate space in i18n range.
  *
  * 当前 `TView` 需要在 i18n 范围内分配空间。
- *
  * @param rootTNode Root `TNode` of the i18n block. This node determines if the new TNode will be
  *     added as part of the `i18nStart` instruction or as part of the `TNode.insertBeforeIndex`.
  *
  * i18n 块的根 `TNode` 。此节点确定新的 TNode 是作为 `i18nStart` 指令的一部分还是作为
  * `TNode.insertBeforeIndex` 的一部分添加。
- *
  * @param existingTNodes internal state for `addTNodeAndUpdateInsertBeforeIndex`.
  *
  * `addTNodeAndUpdateInsertBeforeIndex` 的内部状态。
- *
  * @param lView Current `LView` needed to allocate space in i18n range.
  *
  * 当前 `LView` 需要在 i18n 范围内分配空间。
- *
  * @param createOpCodes Array storing `I18nCreateOpCodes` where new opCodes will be added.
  *
  * 存储 `I18nCreateOpCodes` 的数组，将在其中添加新的 opCodes。
- *
  * @param text Text to be added when the `Text` or `Comment` node will be created.
  *
  * 创建 `Text` 或 `Comment` 节点时要添加的文本。
- *
- * @param isICU true if a `Comment` node for ICU (instead of `Text`) node should be created.
+ * @param isICU true if a `Comment` node for ICU \(instead of `Text`\) node should be created.
  *
  * 如果要创建 ICU 的 `Comment` 节点（而不是 `Text`）节点，则为 true 。
  *
@@ -294,27 +284,22 @@ function createTNodeAndAddOpCode(
  * @param tView Current `TView`
  *
  * 当前 `TView`
- *
  * @param rootTNode Root `TNode` of the i18n block. This node determines if the new TNode will
  *     be added as part of the `i18nStart` instruction or as part of the
  *     `TNode.insertBeforeIndex`.
  *
  * i18n 块的根 `TNode` 。此节点确定新的 TNode 是作为 `i18nStart` 指令的一部分还是作为
  * `TNode.insertBeforeIndex` 的一部分添加。
- *
  * @param existingTNodes internal state for `addTNodeAndUpdateInsertBeforeIndex`.
  *
  * `addTNodeAndUpdateInsertBeforeIndex` 的内部状态。
- *
  * @param createOpCodes Location where the creation OpCodes will be stored.
  *
  * 将存储创建的 OpCode 的位置。
- *
  * @param lView Current `LView`
  *
  * 当前 `LView`
- *
- * @param text The translated text (which may contain binding)
+ * @param text The translated text \(which may contain binding\)
  *
  * 翻译后的文本（可能包含绑定）
  *
@@ -463,7 +448,7 @@ function generateBindingUpdateOpCodes(
  * 来加快此过程，但这将需要更复杂的代码和/或要创建的瞬态对象。
  *
  * Since this function is only called once when the template is instantiated, is trivial in the
- * first instance (since `opCodes` will be an empty array), and it is not common for elements to
+ * first instance \(since `opCodes` will be an empty array\), and it is not common for elements to
  * contain multiple i18n bound attributes, it seems like this is a reasonable compromise.
  *
  * 由于此函数仅在模板实例化时调用一次，在第一个实例中很简单（因为 `opCodes`
@@ -490,12 +475,12 @@ function countBindings(opCodes: I18nUpdateOpCodes): number {
  * Each index represents a single bit on the bit-mask. Because bit-mask only has 32 bits, we make
  * the 32nd bit share all masks for all bindings higher than 32. Since it is extremely rare to
  * have more than 32 bindings this will be hit very rarely. The downside of hitting this corner
- * case is that we will execute binding code more often than necessary. (penalty of performance)
+ * case is that we will execute binding code more often than necessary. \(penalty of performance\)
  *
  * 每个索引都表示位掩码上的单个位。因为 bit-mask 只有 32 位，所以我们让第 32 位共享所有高于 32
  * 的绑定的所有掩码。由于很少有超过 32
  * 的绑定，因此很少会被命中。遇到这种极端情况的缺点是我们将比必要的更频繁地执行绑定代码。
- *（绩效处罚）
+ * （绩效处罚）
  *
  */
 function toMaskBit(bindingIndex: number): number {
@@ -599,7 +584,7 @@ export function getTranslationForTemplate(message: string, subTemplateIndex: num
  *
  *   `lView[anchorIdx]` 指向表示 ICU 锚的 `Comment` 节点。
  *
- * - `tView.data[anchorIdx]` points to the `TIcuContainerNode` if ICU is root (`null` otherwise)
+ * - `tView.data[anchorIdx]` points to the `TIcuContainerNode` if ICU is root \(`null` otherwise\)
  *
  *   如果 ICU 是根，则 `tView.data[anchorIdx]` 指向 `TIcuContainerNode`（否则为 `null`）
  *
@@ -701,9 +686,9 @@ export function parseICUBlock(pattern: string): IcuExpression {
  * 将模式分解为字符串和顶级 {...} 块。可用于将消息拆分为文本和 ICU 表达式，或将 ICU
  * 表达式拆分为键和案例。来自闭包库的原始代码，针对 Angular 进行了修改。
  *
- * @param pattern (sub)Pattern to be broken.
+ * @param pattern \(sub\)Pattern to be broken.
  *
- *（子）要打破的模式。
+ * （子）要打破的模式。
  *
  * @returns
  *
@@ -718,7 +703,6 @@ export function parseICUBlock(pattern: string): IcuExpression {
  * - even positions: `ICUExpression` => ICU expression parsed into `ICUExpression` record.
  *
  *   偶数位置： `ICUExpression` => ICU 表达式解析为 `ICUExpression` 记录。
- *
  */
 export function i18nParseTextIntoPartsAndICU(pattern: string): (string|IcuExpression)[] {
   if (!pattern) {

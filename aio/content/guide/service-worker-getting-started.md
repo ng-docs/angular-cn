@@ -37,7 +37,7 @@ The preceding command completes the following actions:
 
 1. Adds the `@angular/service-worker` package to your project.
 
-   把 @angular/service-worker 添加到你的项目中。
+   把 `@angular/service-worker` 添加到你的项目中。
 
 1. Enables service worker build support in the CLI.
 
@@ -59,7 +59,7 @@ The preceding command completes the following actions:
 
      为 `theme-color` 添加 meta 标签。
 
-1. Installs icon files to support the installed Progressive Web App (PWA).
+1. Installs icon files to support the installed Progressive Web App \(PWA\).
 
    创建图标文件，以支持安装渐进式应用（PWA）。
 
@@ -131,7 +131,7 @@ In Chrome:
 
 在 Chrome 中：
 
-1. Select **Tools** > **Developer Tools** (from the Chrome menu located in the top right corner).
+1. Select **Tools** > **Developer Tools** \(from the Chrome menu located in the top right corner\).
 
    选择 **Tools** > **Developer Tools**（从右上角的 Chrome 菜单）。
 
@@ -198,7 +198,7 @@ The `ngsw-config.json` boilerplate configuration is set up to cache the specific
 
 * `favicon.ico`
 
-* Build artifacts (JS and CSS bundles)
+* Build artifacts \(JS and CSS bundles\)
 
   构建结果（JS 和 CSS 包）
 
@@ -206,10 +206,10 @@ The `ngsw-config.json` boilerplate configuration is set up to cache the specific
 
   `assets` 下的一切
 
-* Images and fonts directly under the configured `outputPath` (by default `./dist/<project-name>/`) or `resourcesOutputPath`.
+* Images and fonts directly under the configured `outputPath` \(by default `./dist/<project-name>/`\) or `resourcesOutputPath`.
   See [`ng build`](cli/build) for more information about these options.
 
-  图片和字体直接位于所配置的 `outputPath` (默认为 `./dist/<project-name>/`) 或 `resourcesOutputPath` 下。关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
+  图片和字体直接位于所配置的 `outputPath`(认为 `./dist/<project-name>/`）或 `resourcesOutputPath` 下。关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
 
 <div class="alert is-important">
 

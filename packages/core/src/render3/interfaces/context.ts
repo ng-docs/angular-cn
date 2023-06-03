@@ -14,7 +14,7 @@ import {LView} from './view';
 
 /**
  * The internal view context which is specific to a given DOM element, directive or
- * component instance. Each value in here (besides the LView and element node details)
+ * component instance. Each value in here \(besides the LView and element node details\)
  * can be present, null or undefined. If undefined then it implies the value has not been
  * looked up yet, otherwise, if null, then a lookup was executed and nothing was found.
  *
@@ -48,7 +48,7 @@ export class LContext {
   public directives: any[]|null|undefined;
 
   /**
-   * The map of local references (local reference name => element or directive instance) that
+   * The map of local references \(local reference name => element or directive instance\) that
    * exist on this element.
    *
    * 此元素上存在的本地引用（本地引用名称 => 元素或指令实例）的映射。

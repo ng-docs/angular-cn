@@ -172,7 +172,7 @@ This additional information comes from adding decorators.
 
 #### 父类缺少了装饰器
 
-When the decorator is missing from the parent class, the subclass will inherit a constructor from a class for which the compiler did not generate special constructor info (because it was not decorated as a directive).
+When the decorator is missing from the parent class, the subclass will inherit a constructor from a class for which the compiler did not generate special constructor info \(because it was not decorated as a directive\).
 When Angular then tries to create the subclass, it doesn't have the correct info to create it.
 
 当父类中缺少装饰器时，该子类会继承一个构造函数，而这个构造函数并没有为编译器生成特殊的构造函数信息（因为它没有指令装饰器）。当 Angular 尝试创建子类时，它没有正确的信息来创建它。
@@ -231,7 +231,7 @@ Always requiring a class decorator leads to two main benefits for Angular:
 所以始终都需要一个类装饰器，这会给 Angular 带来两大好处：
 
 1. The previous behavior was inconsistent.
-   Some Angular features required a decorator (dependency injection), but others did not.
+   Some Angular features required a decorator \(dependency injection\), but others did not.
    Now, all Angular features consistently require a class decorator.
 
    以前的行为是不一致的。一些 Angular 特性需要装饰器（依赖注入），但其它的则不需要。现在，所有的 Angular 特性都需要一个类装饰器。
@@ -246,7 +246,7 @@ Always requiring a class decorator leads to two main benefits for Angular:
 ## `@Directive()` 装饰器里面没有元数据是怎么回事？
 
 The presence of the `@Directive` decorator causes Angular to generate extra code for the affected class.
-If that decorator includes no properties (metadata), the directive won't be matched to elements or instantiated directly, but other classes that *extend* the directive class will inherit this generated code.
+If that decorator includes no properties \(metadata\), the directive won't be matched to elements or instantiated directly, but other classes that *extend* the directive class will inherit this generated code.
 You can think of this as an "abstract" directive.
 
 `@Directive` 装饰器的出现让 Angular 为受其影响的类生成了额外的代码。如果该装饰器不包含任何属性（元数据），该指令就不会与任何元素匹配或者被直接实例化，但*扩展*该指令类的其它类也会继承这些生成的代码。你可以把它看作一个“抽象”的指令。

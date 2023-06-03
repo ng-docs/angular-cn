@@ -14,7 +14,7 @@ import {ClassDeclaration} from '../../reflection';
 
 
 /**
- * Data for one of a given NgModule's scopes (either compilation scope or export scopes).
+ * Data for one of a given NgModule's scopes \(either compilation scope or export scopes\).
  *
  * 给定 NgModule 范围之一（编译范围或导出范围）的数据。
  *
@@ -114,7 +114,7 @@ export interface ComponentScopeReader {
    * 获取此组件所需的 `RemoteScope`（如果有）。
    *
    * If the component requires remote scoping, then retrieve the directives/pipes registered for
-   * that component. If remote scoping is not required (the common case), returns `null`.
+   * that component. If remote scoping is not required \(the common case\), returns `null`.
    *
    * 如果组件需要远程范围，则检索为该组件注册的指令/管道。如果不需要远程范围设定（常见情况），则返回
    * `null` 。

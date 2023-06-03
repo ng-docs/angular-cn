@@ -141,11 +141,11 @@ import {Directive, EmbeddedViewRef, Input, TemplateRef, ViewContainerRef, ɵstri
  *
  * The conditional displays the data only if `userStream` returns a value,
  * so you don't need to use the
- * safe-navigation-operator (`?.`)
+ * safe-navigation-operator \(`?.`\)
  * to guard against null values when accessing properties.
  * You can display an alternative template while waiting for the data.
  *
- * 只有当 `userStream` 返回了值的时候，才会有条件的显示此数据。所以你不用使用安全导航操作符 (`?.`)
+ * 只有当 `userStream` 返回了值的时候，才会有条件的显示此数据。所以你不用使用安全导航操作符（`?.`）
  * 来在访问属性时避免空值。你可以在等待数据时显示一个备用模板。
  *
  * ### Shorthand syntax
@@ -201,6 +201,7 @@ import {Directive, EmbeddedViewRef, Input, TemplateRef, ViewContainerRef, ɵstri
  * [Structural Directives](guide/structural-directives#one-per-element).
  *
  *  隐式模板对象的存在，影响了结构型指令的嵌套规则。欲知详情，参见[结构型指令](https://angular.io/guide/structural-directives#one-per-element)。
+ *
  * @ngModule CommonModule
  * @publicApi
  */

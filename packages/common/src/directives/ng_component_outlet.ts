@@ -97,6 +97,7 @@ import {ComponentRef, createNgModule, Directive, Injector, Input, NgModuleFactor
  * A more complete example with additional options:
  *
  * {@example common/ngComponentOutlet/ts/module.ts region='CompleteExample'}
+ *
  * @publicApi
  * @ngModule CommonModule
  */

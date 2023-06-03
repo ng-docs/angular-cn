@@ -124,14 +124,14 @@ export class NgControlStatus extends AbstractControlStatus {
 
 /**
  * @description
+ *
  * Directive automatically applied to Angular form groups that sets CSS classes
- * based on control status (valid/invalid/dirty/etc). On groups, this includes the additional
+ * based on control status \(valid/invalid/dirty/etc\). On groups, this includes the additional
  * class ng-submitted.
  *
  * 该指令自动应用于 Angular 表单组，基于控件的状态（有效、无效、脏等）设置 CSS 类。
  *
  * @see `NgControlStatus`
- *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule
  * @publicApi

@@ -30,7 +30,7 @@ export type ErrorHandler = (error: any) => any;
  *
  * 在路由器执行初始导航操作时配置的 `ExtraOptions` 对象中允许的值。
  *
- * * 'enabledNonBlocking' - (default) The initial navigation starts after the
+ * * 'enabledNonBlocking' - \(default\) The initial navigation starts after the
  *   root component has been created. The bootstrap is not blocked on the completion of the initial
  *   navigation.
  *
@@ -105,7 +105,7 @@ export interface RouterConfigOptions {
 
   /**
    * Defines how the router merges parameters, data, and resolved data from parent to child
-   * routes. By default ('emptyOnly'), inherits parent parameters only for
+   * routes. By default \('emptyOnly'\), inherits parent parameters only for
    * path-less or component-less routes.
    *
    * 定义路由器如何将参数、数据和已解析的数据从父路由合并到子路由。默认情况下（“emptyOnly”），仅继承无路径或无组件路由的父参数。
@@ -126,7 +126,7 @@ export interface RouterConfigOptions {
   paramsInheritanceStrategy?: 'emptyOnly'|'always';
 
   /**
-   * Defines when the router updates the browser URL. By default ('deferred'),
+   * Defines when the router updates the browser URL. By default \('deferred'\),
    * update after successful navigation.
    * Set to 'eager' if prefer to update the URL at the beginning of navigation.
    * Updating the URL early allows you to handle a failure of navigation by
@@ -166,7 +166,7 @@ export interface InMemoryScrollingOptions {
    *
    * 配置是否需要在导航回来的时候恢复滚动位置。
    *
-   * * 'disabled'- (Default) Does nothing. Scroll position is maintained on navigation.
+   * * 'disabled'- \(Default\) Does nothing. Scroll position is maintained on navigation.
    *
    *   'disabled' - 什么也不做（默认）。在导航时，会自动维护滚动位置。
    *
@@ -175,8 +175,8 @@ export interface InMemoryScrollingOptions {
    *   'top' - 在任何一次导航中都把滚动位置设置为 x=0, y=0。
    *
    * * 'enabled'- Restores the previous scroll position on backward navigation, else sets the
-   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \(forward
-   *   navigation). This option will be the default in the future.
+   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \\(forward
+   *   navigation\). This option will be the default in the future.
    *
    * You can implement custom scroll restoration behavior by adapting the enabled behavior as
    * in the following example.
@@ -272,7 +272,7 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
 
   /**
    * Configures a preloading strategy.
-   * One of `PreloadAllModules` or `NoPreloading` (the default).
+   * One of `PreloadAllModules` or `NoPreloading` \(the default\).
    *
    * 配置预加载策略，参见 `PreloadAllModules`。
    *

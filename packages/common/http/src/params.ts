@@ -405,10 +405,11 @@ export class HttpParams {
   }
 
   /**
-   * Serializes the body to an encoded string, where key-value pairs (separated by `=`) are
+   * Serializes the body to an encoded string, where key-value pairs \(separated by `=`\) are
    * separated by `&`s.
    *
    * 把该 `body` 序列化为一个编码过的字符串，其中的 key-value 对（用 `=` 分隔）会以 `&` 分隔。
+   *
    */
   toString(): string {
     this.init();

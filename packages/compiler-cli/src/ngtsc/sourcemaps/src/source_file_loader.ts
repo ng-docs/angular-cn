@@ -21,7 +21,7 @@ const SCHEME_MATCHER = /^([a-z][a-z0-9.-]*):\/\//i;
  *
  * 此类可用于加载源文件、其关联的源映射和任何上游源。
  *
- * Since a source file might reference (or include) a source map, this class can load those too.
+ * Since a source file might reference \(or include\) a source map, this class can load those too.
  * Since a source map might reference other source files, these are also loaded as needed.
  *
  * 由于源文件可能引用（或包含）源映射，因此此类也可以加载它们。由于源映射可能会引用其他源文件，因此还会根据需要加载这些文件。

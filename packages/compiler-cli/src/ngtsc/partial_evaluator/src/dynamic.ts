@@ -23,9 +23,9 @@ export const enum DynamicValueReason {
   /**
    * A value could not be determined statically, because it contains a term that could not be
    * determined statically.
-   * (E.g. a property assignment or call expression where the lhs is a `DynamicValue`, a template
+   * \(E.g. a property assignment or call expression where the lhs is a `DynamicValue`, a template
    * literal with a dynamic expression, an object literal with a spread assignment which could not
-   * be determined statically, etc.)
+   * be determined statically, etc.\)
    *
    * 无法静态确定一个值，因为它包含一个无法静态确定的术语。（例如，lhs 是 `DynamicValue`
    * 的属性赋值或调用表达式、具有动态表达式的模板文字、具有无法静态确定的扩展赋值的对象文字等）
@@ -35,8 +35,8 @@ export const enum DynamicValueReason {
 
   /**
    * A string could not be statically evaluated.
-   * (E.g. a dynamically constructed object property name or a template literal expression that
-   * could not be statically resolved to a primitive value.)
+   * \(E.g. a dynamically constructed object property name or a template literal expression that
+   * could not be statically resolved to a primitive value.\)
    *
    * 无法静态估算字符串。（例如，动态构造的对象属性名称或无法静态解析为原始值的模板文字表达式。）
    *

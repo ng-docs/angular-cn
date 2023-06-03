@@ -104,15 +104,17 @@ export interface CreateEffectOptions {
   /**
    * The `Injector` in which to create the effect.
    *
-   * If this is not provided, the current injection context will be used instead (via `inject`).
+   * If this is not provided, the current injection context will be used instead \(via `inject`\).
+   *
    */
   injector?: Injector;
 
   /**
    * Whether the `effect` should require manual cleanup.
    *
-   * If this is `false` (the default) the effect will automatically register itself to be cleaned up
+   * If this is `false` \(the default\) the effect will automatically register itself to be cleaned up
    * with the current `DestroyRef`.
+   *
    */
   manualCleanup?: boolean;
 

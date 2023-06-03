@@ -33,14 +33,11 @@ const controlNameBinding: Provider = {
  * element by name.
  *
  * 根据名字将现有 `FormGroup` 中的 `FormControl` 与一个表单控件进行同步。
- *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单指南](guide/reactive-forms)
- *
  * @see `FormControl`
  * @see `AbstractControl`
- *
  * @usageNotes
  *
  * ### Register `FormControl` within a group

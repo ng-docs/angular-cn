@@ -34,21 +34,19 @@ import {ClassDeclaration, isNamedClassDeclaration, ReflectionHost, typeNodeToVal
 export function createModuleWithProvidersResolver(
     reflector: ReflectionHost, isCore: boolean): ForeignFunctionResolver {
   /**
-   * Retrieve an `NgModule` identifier (T) from the specified `type`, if it is of the form:
+   * Retrieve an `NgModule` identifier \(T\) from the specified `type`, if it is of the form:
    * `ModuleWithProviders<T>`
    *
-   * 从指定的 `type` 检索 `NgModule` 标识符 (T)，如果它是以下形式： `ModuleWithProviders<T>`
+   * 从指定的 `type` 检索 `NgModule` 标识符（T），如果它是以下形式： `ModuleWithProviders<T>`
    *
    * @param type The type to reflect on.
    *
    * 要反射的类型。
-   *
    * @returns
    *
    * the identifier of the NgModule type if found, or null otherwise.
    *
    * 如果找到，则为 NgModule 类型的标识符，否则为 null 。
-   *
    */
   function _reflectModuleFromTypeParam(
       type: ts.TypeNode,
@@ -98,21 +96,19 @@ export function createModuleWithProvidersResolver(
   }
 
   /**
-   * Retrieve an `NgModule` identifier (T) from the specified `type`, if it is of the form:
+   * Retrieve an `NgModule` identifier \(T\) from the specified `type`, if it is of the form:
    * `A|B|{ngModule: T}|C`.
    *
-   * 从指定的 `type` 检索 `NgModule` 标识符 (T)，如果它是以下格式： `A|B|{ngModule: T}|C` 。
+   * 从指定的 `type` 检索 `NgModule` 标识符（T），如果它是以下格式： `A|B|{ngModule: T}|C` 。
    *
    * @param type The type to reflect on.
    *
    * 要反射的类型。
-   *
    * @returns
    *
    * the identifier of the NgModule type if found, or null otherwise.
    *
    * 如果找到，则为 NgModule 类型的标识符，否则为 null 。
-   *
    */
   function _reflectModuleFromLiteralType(type: ts.TypeNode): ts.Expression|null {
     if (!ts.isIntersectionTypeNode(type)) {

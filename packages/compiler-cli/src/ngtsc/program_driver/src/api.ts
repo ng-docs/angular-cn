@@ -46,7 +46,7 @@ export interface MaybeSourceFileWithOriginalFile extends ts.SourceFile {
 
 export interface ProgramDriver {
   /**
-   * Whether this strategy supports modifying user files (inline modifications) in addition to
+   * Whether this strategy supports modifying user files \(inline modifications\) in addition to
    * modifying type-checking shims.
    *
    * 除了修改类型检查填充程序之外，此策略是否支持修改用户文件（内联修改）。
@@ -79,7 +79,7 @@ export interface ProgramDriver {
    *
    * If this method is present, the compiler will use these versions in addition to object identity
    * for `ts.SourceFile`s to determine what's changed between two incremental programs. This is
-   * valuable for some clients (such as the Language Service) that treat `ts.SourceFile`s as mutable
+   * valuable for some clients \(such as the Language Service\) that treat `ts.SourceFile`s as mutable
    * objects.
    *
    * 如果存在此方法，编译器将使用这些版本以及 `ts.SourceFile` s

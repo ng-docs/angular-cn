@@ -77,16 +77,15 @@ export function getComponent<T>(element: Element): T|null {
 
 
 /**
- * If inside an embedded view (e.g. `*ngIf` or `*ngFor`), retrieves the context of the embedded
+ * If inside an embedded view \(e.g. `*ngIf` or `*ngFor`\), retrieves the context of the embedded
  * view that the element is part of. Otherwise retrieves the instance of the component whose view
- * owns the element (in this case, the result is the same as calling `getOwningComponent`).
+ * owns the element \(in this case, the result is the same as calling `getOwningComponent`\).
  *
  * 如果在嵌入式视图中（比如 `*ngIf` 或 `*ngFor`），则检索元素所属的嵌入式视图的上下文。否则，检索其视图中拥有该元素的组件的实例（在这种情况下，其结果与调用 `getOwningComponent` 相同）。
  *
  * @param element Element for which to get the surrounding component instance.
  *
  * 要获取外围组件实例的元素。
- *
  * @returns Instance of the component that is around the element or null if the element isn't
  *    inside any component.
  * @publicApi
@@ -105,7 +104,7 @@ export function getContext<T extends {}>(element: Element): T|null {
  * 检索其视图中包含此 DOM 元素的组件实例。
  *
  * For example, if `<child-comp>` is used in the template of `<app-comp>`
- * (i.e. a `ViewChild` of `<app-comp>`), calling `getOwningComponent` on `<child-comp>`
+ * \(i.e. a `ViewChild` of `<app-comp>`\), calling `getOwningComponent` on `<child-comp>`
  * would return `<app-comp>`.
  *
  * 比如，如果 `<child-comp>` 在 `<app-comp>` 的模板中使用（即 `<app-comp>` 的 `ViewChild`），在 `<child-comp>` 上调用 `getOwningComponent` 将返回 `<app-comp>`。
@@ -114,7 +113,6 @@ export function getContext<T extends {}>(element: Element): T|null {
  *    for which to retrieve the root components.
  *
  * 要为其检索根组件的 DOM 元素、组件或指令实例。
- *
  * @returns Component instance whose view owns the DOM element or null if the element is not
  *    part of a component view.
  * @publicApi
@@ -310,7 +308,7 @@ export interface ComponentDebugMetadata extends DirectiveDebugMetadata {
 }
 
 /**
- * Returns the debug (partial) metadata for a particular directive or component instance.
+ * Returns the debug \(partial\) metadata for a particular directive or component instance.
  * The function accepts an instance of a directive or component and returns the corresponding
  * metadata.
  *
@@ -319,7 +317,6 @@ export interface ComponentDebugMetadata extends DirectiveDebugMetadata {
  * @param directiveOrComponentInstance Instance of a directive or component
  *
  * 指令或组件的实例
- *
  * @returns metadata of the passed directive or component
  * @publicApi
  * @globalApi ng
@@ -443,7 +440,7 @@ export interface Listener {
    */
   useCapture: boolean;
   /**
-   * Type of the listener (e.g. a native DOM event or a custom @Output).
+   * Type of the listener \(e.g. a native DOM event or a custom @Output\).
    *
    * 监听器的类型（比如，原生 DOM 事件或自定义 @Output）。
    *
@@ -455,7 +452,7 @@ export interface Listener {
 /**
  * Retrieves a list of event listeners associated with a DOM element. The list does include host
  * listeners, but it does not include event listeners defined outside of the Angular context
- * (e.g. through `addEventListener`).
+ * \(e.g. through `addEventListener`\).
  *
  * 检索与 DOM 元素关联的事件监听器的列表。该列表包含宿主监听器，但不包含在 Angular 上下文之外定义的事件监听器（比如，通过 `addEventListener`）。
  *
@@ -483,11 +480,9 @@ export interface Listener {
  *   useCapture: false
  * }
  * ```
- *
  * @param element Element for which the DOM listeners should be retrieved.
  *
  * 要为其检索 DOM 监听器的元素。
- *
  * @returns Array of event listeners on the DOM element.
  * @publicApi
  * @globalApi ng

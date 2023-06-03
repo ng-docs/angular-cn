@@ -14,7 +14,6 @@
  * 表示指令实例上单个属性从先前值到新值的基本变更对象。在 {@link SimpleChanges} 对象中作为值传递给 `ngOnChanges` 挂钩。
  *
  * @see `OnChanges`
- *
  * @publicApi
  */
 export class SimpleChange {
@@ -38,7 +37,6 @@ export class SimpleChange {
  * 用 {@link SimpleChange} 对象表示的变更的哈希表，这些对象以声明的属性名称存储在指令或组件上，这些属性属于它们。这是传递给 `ngOnChanges` 钩子的类型。
  *
  * @see `OnChanges`
- *
  * @publicApi
  */
 export interface SimpleChanges {

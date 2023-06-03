@@ -22,19 +22,18 @@ import {ClassProvider, ConstructorProvider, EnvironmentProviders, ExistingProvid
  * requesting injection of other types if necessary.
  *
  * 至少，这要包括一个 `factory` ，该工厂定义如何创建给定类型 `T`
- ，如有必要，可能会请求注入其他类型。
+ *  ，如有必要，可能会请求注入其他类型。
  *
  * Optionally, a `providedIn` parameter specifies that the given type belongs to a particular
- * `Injector`, `NgModule`, or a special scope (e.g. `'root'`). A value of `null` indicates
+ * `Injector`, `NgModule`, or a special scope \(e.g. `'root'`\). A value of `null` indicates
  * that the injectable does not belong to any scope.
  *
  * 可选的参数 `providedIn` 规定给定的类型属于某个特定的 `InjectorDef`、`NgModule`
- 还是一个特殊的范围（比如 `'root'`）。如果值为 `null` 表示可注入对象不属于任何范围。
+ *  还是一个特殊的范围（比如 `'root'`）。如果值为 `null` 表示可注入对象不属于任何范围。
  *
  * @codeGenApi
  * @publicApi The ViewEngine compiler emits code with this type for injectables. This code is
  *   deployed to npm, and should be treated as public api.
-
  */
 export interface ɵɵInjectableDeclaration<T> {
   /**
@@ -98,8 +97,8 @@ export interface ɵɵInjectableDeclaration<T> {
  * DI 系统应该如何创建有关要包含在 `Injector` 中的提供程序的信息以及携带这些信息的给定类型。
  *
  * An `InjectorDef` can import other types which have `InjectorDefs`, forming a deep nested
- * structure of providers with a defined priority (identically to how `NgModule`s also have
- * an import/dependency structure).
+ * structure of providers with a defined priority \(identically to how `NgModule`s also have
+ * an import/dependency structure\).
  *
  * `InjectorDef` 可以导入具有 `InjectorDefs`
  * 的其他类型，形成具有定义的优先级的提供者的深层嵌套结构（与 `NgModule` s
@@ -189,7 +188,7 @@ export interface InjectorTypeWithProviders<T> {
 
 /**
  * Construct an injectable definition which defines how a token will be constructed by the DI
- * system, and in which injectors (if any) it will be available.
+ * system, and in which injectors \(if any\) it will be available.
  *
  * 构造一个 `InjectableDef` ，它定义 DI 体系将如何构造令牌以及在哪些注入器中可用（如果有的话）。
  *
@@ -247,18 +246,18 @@ export const defineInjectable = ɵɵdefineInjectable;
  *
  * 构造一个配置注入器的 `InjectorDef` 。
  *
- * This should be assigned to a static injector def (`ɵinj`) field on a type, which will then be an
+ * This should be assigned to a static injector def \(`ɵinj`\) field on a type, which will then be an
  * `InjectorType`.
  *
- * 这应该分配给类型上的静态注入器 def ( `ɵinj` ) 字段，然后是 `InjectorType` 。
+ * 这应该分配给类型上的静态注入器 def \( `ɵinj` \) 字段，然后是 `InjectorType` 。
  *
  * Options:
  *
  * 选项：
  *
  * * `providers`: an optional array of providers to add to the injector. Each provider must
- *     either have a factory or point to a type which has a `ɵprov` static property (the
- *     type must be an `InjectableType`).
+ *     either have a factory or point to a type which has a `ɵprov` static property \(the
+ *     type must be an `InjectableType`\).
  *
  *   `providers` ：要添加到注入器的可选提供者数组。每个提供者必须有一个工厂或指向具有 `ɵprov`
  *   静态属性的类型（类型必须是 `InjectableType`）。
@@ -277,12 +276,12 @@ export function ɵɵdefineInjector(options: {providers?: any[], imports?: any[]}
 }
 
 /**
- * Read the injectable def (`ɵprov`) for `type` in a way which is immune to accidentally reading
+ * Read the injectable def \(`ɵprov`\) for `type` in a way which is immune to accidentally reading
  * inherited value.
  *
- * 以不会意外读取继承值的方式读取 `type` 的可注入 def ( `ɵprov` )。
+ * 以不会意外读取继承值的方式读取 `type` 的可注入 def \( `ɵprov` \)。
  *
- * @param type A type which may have its own (non-inherited) `ɵprov`.
+ * @param type A type which may have its own \(non-inherited\) `ɵprov`.
  *
  * 可能有自己的（非继承的）`ɵprov` 的类型。
  *
@@ -307,21 +306,19 @@ function getOwnDefinition<T>(type: any, field: string): ɵɵInjectableDeclaratio
 }
 
 /**
- * Read the injectable def (`ɵprov`) for `type` or read the `ɵprov` from one of its ancestors.
+ * Read the injectable def \(`ɵprov`\) for `type` or read the `ɵprov` from one of its ancestors.
  *
- * 读取 `type` 的可注入 def ( `ɵprov` ) 或从其祖先之一读取 `ɵprov` 。
+ * 读取 `type` 的可注入 def \( `ɵprov` \) 或从其祖先之一读取 `ɵprov` 。
  *
  * @param type A type which may have `ɵprov`, via inheritance.
  *
  * 通过继承可能具有 `ɵprov` 的类型。
- *
  * @deprecated
  *
  * Will be removed in a future version of Angular, where an error will occur in the
  *     scenario if we find the `ɵprov` on an ancestor only.
  *
  * 将在未来的 Angular 版本中删除，如果我们仅在祖先上找到 `ɵprov` ，则会在场景中发生错误。
- *
  */
 export function getInheritedInjectableDef<T>(type: any): ɵɵInjectableDeclaration<T>|null {
   const def = type && (type[NG_PROV_DEF] || type[NG_INJECTABLE_DEF]);
@@ -366,9 +363,9 @@ function getTypeName(type: any): string {
  *
  * 以不会意外读取继承值的方式读取注入器的 def 类型。
  *
- * @param type type which may have an injector def (`ɵinj`)
+ * @param type type which may have an injector def \(`ɵinj`\)
  *
- * 可能有注入器的类型 def ( `ɵinj` )
+ * 可能有注入器的类型 def \( `ɵinj` \)
  *
  */
 export function getInjectorDef<T>(type: any): ɵɵInjectorDef<T>|null {

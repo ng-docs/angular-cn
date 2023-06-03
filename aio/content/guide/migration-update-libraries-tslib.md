@@ -61,7 +61,7 @@ If `tslib` remained declared as a library peer dependency, it would be possible 
 
 [`tslib`](https://github.com/Microsoft/tslib) 是 Typescript 的运行时库。该库的版本绑定到了用于编译库的 TypeScript 编译器的版本。平级依赖不能准确表达此运行时库与编译器之间的这种关系。如果 `tslib` 仍然声明为库对等依赖项，则某些 Angular 工作区可能会出现工作区无法满足 `tslib` 平级依赖项要求的状态，从而导致构建期或运行期错误。
 
-As of TypeScript 3.9 (used by Angular v10), `tslib` version of 2.x is required to build new applications.
+As of TypeScript 3.9 \(used by Angular v10\), `tslib` version of 2.x is required to build new applications.
 However, older libraries built with previous version of TypeScript and already published to npm might need `tslib` 1.x.
 This migration makes it possible for code depending on incompatible versions of the `tslib` runtime library to remain interoperable.
 

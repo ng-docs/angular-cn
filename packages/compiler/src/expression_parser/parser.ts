@@ -210,11 +210,11 @@ export class Parser {
 
   /**
    * Similar to `parseInterpolation`, but treats the provided string as a single expression
-   * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
+   * element that would normally appear within the interpolation prefix and suffix \(`{{` and `}}`\).
    * This is used for parsing the switch expression in ICUs.
    *
    * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`
-   *）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
+   * ）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
    *
    */
   parseInterpolationExpression(expression: string, location: string, absoluteOffset: number):
@@ -528,17 +528,16 @@ export class _ParseAST {
   }
 
   /**
-   * Retrieve a `ParseSpan` from `start` to the current position (or to `artificialEndIndex` if
-   * provided).
+   * Retrieve a `ParseSpan` from `start` to the current position \(or to `artificialEndIndex` if
+   * provided\).
    *
    * 检索从 `start` 到当前位置的 `ParseSpan`（如果提供，则检索到 `artificialEndIndex`）。
    *
    * @param start Position from which the `ParseSpan` will start.
    *
    * `ParseSpan` 将开始的位置。
-   *
-   * @param artificialEndIndex Optional ending index to be used if provided (and if greater than the
-   *     natural ending index)
+   * @param artificialEndIndex Optional ending index to be used if provided \(and if greater than the
+   *     natural ending index\)
    *
    * 如果提供，则要使用的可选结尾索引（并且如果大于自然结尾索引）
    *

@@ -16,7 +16,7 @@
 
 ### `standalone` 标志和组件 `imports`
 
-Components, directives, and pipes can now be marked as `standalone: true`. Angular classes marked as standalone do not need to be declared in an `NgModule` (the Angular compiler will report an error if you try).
+Components, directives, and pipes can now be marked as `standalone: true`. Angular classes marked as standalone do not need to be declared in an `NgModule` \(the Angular compiler will report an error if you try\).
 
 组件、指令和管道现在可以标记为 `standalone: true`。标记为独立的 Angular 类不需要在 `NgModule` 中声明（如果你尝试，Angular 编译器会报告错误）。
 
@@ -74,11 +74,11 @@ You can use standalone components with existing `NgModule`-based libraries or de
 
 ## 在基于 NgModule 的应用程序中使用独立组件
 
-Standalone components can also be imported into existing NgModules-based contexts. This allows existing applications (which are using NgModules today) to incrementally adopt the new, standalone style of component.
+Standalone components can also be imported into existing NgModules-based contexts. This allows existing applications \(which are using NgModules today\) to incrementally adopt the new, standalone style of component.
 
 独立组件也可以导入到现有的基于 NgModules 的上下文中。这允许现有应用程序（今天使用 NgModules）逐步采用新的独立风格的组件。
 
-You can import a standalone component (or directive, or pipe) just like you would an `NgModule` - using `NgModule.imports`:
+You can import a standalone component \(or directive, or pipe\) just like you would an `NgModule` - using `NgModule.imports`:
 
 你可以像导入 `NgModule` 一样导入独立组件（或指令或管道）- 使用 `NgModule.imports` ：
 
@@ -232,9 +232,9 @@ export default [
 
 ### 为路由的子集提供服务
 
-The lazy loading API for `NgModule`s (`loadChildren`) creates a new "module" injector when it loads the lazily loaded children of a route. This feature was often useful to provide services only to a subset of routes in the application. For example, if all routes under `/admin` were scoped using a `loadChildren` boundary, then admin-only services could be provided only to those routes. Doing this required using the `loadChildren` API, even if lazy loading of the routes in question was unnecessary.
+The lazy loading API for `NgModule`s \(`loadChildren`\) creates a new "module" injector when it loads the lazily loaded children of a route. This feature was often useful to provide services only to a subset of routes in the application. For example, if all routes under `/admin` were scoped using a `loadChildren` boundary, then admin-only services could be provided only to those routes. Doing this required using the `loadChildren` API, even if lazy loading of the routes in question was unnecessary.
 
-`NgModule` 的惰性加载 API ( `loadChildren` ) 在加载路由的惰性加载的子项时会创建一个新的“模块”注入器。此特性通常可用于仅向应用程序中的一部分路由提供服务。例如，如果 `/admin` 下的所有路由都使用 `loadChildren` 边界来限定范围，则可以仅向这些路由提供仅限管理的服务。执行此操作需要使用 `loadChildren` API，即使惰性加载有问题的路由不是必要的。
+`NgModule` 的惰性加载 API （ `loadChildren`）在加载路由的惰性加载的子项时会创建一个新的“模块”注入器。此特性通常可用于仅向应用程序中的一部分路由提供服务。例如，如果 `/admin` 下的所有路由都使用 `loadChildren` 边界来限定范围，则可以仅向这些路由提供仅限管理的服务。执行此操作需要使用 `loadChildren` API，即使惰性加载有问题的路由不是必要的。
 
 The Router now supports explicitly specifying additional `providers` on a `Route`, which allows this same scoping without the need for either lazy loading or `NgModule`s. For example, scoped services within an `/admin` route structure would look like:
 
@@ -329,7 +329,7 @@ As an alternative to publishing a `NgModule`, library authors might want to expo
 export const CAROUSEL_DIRECTIVES = [ImageCarouselComponent, ImageSlideComponent] as const;
 ```
 
-Such an array could be imported by applications using `NgModule`s and added to the `@NgModule.imports`. Please note the presence of the TypeScript’s `as const` construct: it gives Angular compiler additional information required for proper compilation and is a recommended practice (as it makes the exported array immutable from the TypeScript point of view).
+Such an array could be imported by applications using `NgModule`s and added to the `@NgModule.imports`. Please note the presence of the TypeScript’s `as const` construct: it gives Angular compiler additional information required for proper compilation and is a recommended practice \(as it makes the exported array immutable from the TypeScript point of view\).
 
 这样的数组可以由使用 `NgModule` 的应用程序导入并添加到 `@NgModule.imports`。请注意 TypeScript 的 `as const` 构造的存在：它为 Angular 编译器提供了正确编译所需的额外信息，并且是一种推荐的实践（因为它使导出的数组从 TypeScript 的角度来看是不可变的）。
 
@@ -353,7 +353,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 #### 环境注入器
 
-Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers (for example, [HttpClient](https://angular.io/api/common/http/HttpClient)). In the standalone application (one created with `bootstrapApplication`), “module” providers can be configured during the bootstrap process, in the `providers` option: 
+Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers \(for example, [HttpClient](https://angular.io/api/common/http/HttpClient)\). In the standalone application \(one created with `bootstrapApplication`\), “module” providers can be configured during the bootstrap process, in the `providers` option: 
 
 使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](https://angular.io/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供者：
 
@@ -375,15 +375,15 @@ Environment injectors can be configured using one of the following:
 
 可以用以下方法之一配置环境注入器：
 
-* `@NgModule.providers` (in applications bootstrapping through an `NgModule`);
+* `@NgModule.providers` \(in applications bootstrapping through an `NgModule`\);
 
   `@NgModule.providers`（在通过 `NgModule` 引导的应用程序中）；
 
-* `@Injectable({provideIn: "..."})`(in both the NgModule-based and the “standalone” applications);
+* `@Injectable({provideIn: "..."})`\(in both the NgModule-based and the “standalone” applications\);
 
   `@Injectable({provideIn: "..."})`（在基于 NgModule 以及“独立”应用程序中）；
 
-* `providers` option in the `bootstrapApplication` call (in fully “standalone” applications);
+* `providers` option in the `bootstrapApplication` call \(in fully “standalone” applications\);
 
   `bootstrapApplication` 调用中的 `providers` 选项（在完全“独立”的应用程序中）；
 
@@ -402,7 +402,7 @@ const parentInjector = … // existing environment injector
 const childInjector = createEnvironmentInjector([{provide: PhotosService, useClass: CustomPhotosService}], parentInjector);
 ```
 
-Environment injectors have one additional capability: they can execute initialization logic when an environment injector gets created (similar to the `NgModule` constructors that get executed when a module injector is created):
+Environment injectors have one additional capability: they can execute initialization logic when an environment injector gets created \(similar to the `NgModule` constructors that get executed when a module injector is created\):
 
 环境注入器还有一个额外的能力：它们可以在创建环境注入器时执行初始化逻辑（类似于创建模块注入器时执行的 `NgModule` 构造函数）：
 
@@ -454,11 +454,11 @@ class DateModalComponent {
 }
 ```
 
-In the above example, the component `DateModalComponent` is standalone - it can be consumed directly and has no NgModule which needs to be imported in order to use it. However, `DateModalComponent` has a dependency, the `DatePickerComponent,` which is imported via its NgModule (the `DatePickerModule`). This NgModule may declare providers (in this case: `CalendarService`) which are required for the `DatePickerComponent` to function correctly.
+In the above example, the component `DateModalComponent` is standalone - it can be consumed directly and has no NgModule which needs to be imported in order to use it. However, `DateModalComponent` has a dependency, the `DatePickerComponent,` which is imported via its NgModule \(the `DatePickerModule`\). This NgModule may declare providers \(in this case: `CalendarService`\) which are required for the `DatePickerComponent` to function correctly.
 
 在上面的示例中，组件 `DateModalComponent` 是独立的 - 它可以直接使用，并且没有需要导入才能使用它的 NgModule。但是，`DateModalComponent` 有一个依赖项 `DatePickerComponent`，它是通过其 NgModule（`DatePickerModule`）导入的。此 NgModule 可以声明 `DatePickerComponent` 正常运行所需的提供者（在本例中为：`CalendarService`）。
 
-When Angular creates a standalone component, it needs to know that the current injector has all of the necessary services for the standalone component's dependencies, including those based on NgModules. To guarantee that, in some cases Angular will create a new "standalone injector" as a child of the current environment injector. Today, this happens for all bootstrapped standalone components: it will be a child of the root environment injector. The same rule applies to the dynamically created (for example, by the router or the `ViewContainerRef` API) standalone components. 
+When Angular creates a standalone component, it needs to know that the current injector has all of the necessary services for the standalone component's dependencies, including those based on NgModules. To guarantee that, in some cases Angular will create a new "standalone injector" as a child of the current environment injector. Today, this happens for all bootstrapped standalone components: it will be a child of the root environment injector. The same rule applies to the dynamically created \(for example, by the router or the `ViewContainerRef` API\) standalone components. 
 
 当 Angular 创建独立组件时，它需要知道当前注入器具有独立组件依赖项的所有必要服务，包括基于 NgModules 的服务。为了保证这一点，在某些情况下，Angular 会创建一个新的“独立注入器”作为当前环境注入器的子项。今天，这种情况发生在所有引导的独立组件上：它将是根环境注入器的子项。相同的规则适用于动态创建的（例如，由路由器或 `ViewContainerRef` API）独立组件。
 

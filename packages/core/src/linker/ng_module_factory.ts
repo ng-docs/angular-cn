@@ -89,16 +89,16 @@ export interface InternalNgModuleRef<T> extends NgModuleRef<T> {
  *
  * This class was mostly used as a part of ViewEngine-based JIT API and is no longer needed in Ivy
  * JIT mode. See [JIT API changes due to ViewEngine deprecation](guide/deprecations#jit-api-changes)
- * for additional context. Angular provides APIs that accept NgModule classes directly (such as
+ * for additional context. Angular provides APIs that accept NgModule classes directly \(such as
  * [PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule) and
- * [createNgModule](api/core/createNgModule)), consider switching to those APIs instead of
+ * [createNgModule](api/core/createNgModule)\), consider switching to those APIs instead of
  * using factory-based ones.
  *
  * 此类主要作为 ViewEngine-based JIT API 的一部分使用，在 Ivy JIT
  * 模式下不再需要。有关其他上下文，请参阅[由于 ViewEngine 弃用导致的 JIT API
  * 更改](guide/deprecations#jit-api-changes)。 Angular 提供了直接接受 NgModule 类的
  * API（例如[PlatformRef.bootstrapModule](api/core/PlatformRef#bootstrapModule)和[createNgModuleRef](api/core/createNgModuleRef)
- *），请考虑切换到这些 API，而不是使用基于工厂的 API。
+ * ），请考虑切换到这些 API，而不是使用基于工厂的 API。
  *
  */
 export abstract class NgModuleFactory<T> {

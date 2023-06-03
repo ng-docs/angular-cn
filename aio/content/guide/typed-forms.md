@@ -41,7 +41,7 @@ const login = new FormGroup({
 });
 ```
 
-Angular provides many APIs for interacting with this `FormGroup`. For example, you may call `login.value`, `login.controls`, `login.patchValue`, etc. (For a full API reference, see the [API documentation](api/forms/FormGroup).)
+Angular provides many APIs for interacting with this `FormGroup`. For example, you may call `login.value`, `login.controls`, `login.patchValue`, etc. \(For a full API reference, see the [API documentation](api/forms/FormGroup).\)
 
 Angular 提供了许多 API 来与此 `FormGroup` 交互。例如，你可以调用 `login.value` 、 `login.controls` 、 `login.patchValue` 等。（有关完整的 API 参考，请参阅[API 文档](api/forms/FormGroup)。）
 
@@ -61,7 +61,7 @@ In addition to the added safety, the types enable a variety of other improvement
 
 除了增加安全性之外，这些类型还支持各种其他改进，例如 IDE 中更好的自动完成，以及显式指定表单结构的方式。
 
-These improvements currently apply only to *reactive* forms (not [*template-driven* forms](guide/forms "Forms Guide")).
+These improvements currently apply only to *reactive* forms \(not [*template-driven* forms](guide/forms "Forms Guide")\).
 
 这些改进当前仅适用于*响应*式表单（不适用于[*模板驱动的*表单](guide/forms "表单指南")）。
 
@@ -210,7 +210,7 @@ As a consequence, the type of `login.value` is `Partial<{email: string, password
 
 因此，`login.value` 的类型是 `Partial<{email: string, password: string}>`。这种类型的 `Partial` 意味着每个成员可能是未定义的。
 
-More specifically, the type of `login.value.email` is `string|undefined`, and TypeScript will enforce that you handle the possibly `undefined` value (if you have `strictNullChecks` enabled).
+More specifically, the type of `login.value.email` is `string|undefined`, and TypeScript will enforce that you handle the possibly `undefined` value \(if you have `strictNullChecks` enabled\).
 
 更具体地说，`login.value.email` 的类型是 `string|undefined`，TypeScript 将强制你处理可能 `undefined` 的值（如果你启用了 `strictNullChecks`）。
 
@@ -259,7 +259,7 @@ Any control of type `string|null` can be added to this `FormRecord`.
 
 任何 `string|null` 类型的控件都可以添加到此 `FormRecord`。
 
-If you need a `FormGroup` that is both dynamic (open-ended) and heterogeneous (the controls are different types), no improved type safety is possible, and you should use `UntypedFormGroup`.
+If you need a `FormGroup` that is both dynamic \(open-ended\) and heterogeneous \(the controls are different types\), no improved type safety is possible, and you should use `UntypedFormGroup`.
 
 如果你需要一个动态（开放式）和异构（控件是不同类型）的 `FormGroup` ，则无法提升为类型安全的，这时你应该使用 `UntypedFormGroup` 。
 
@@ -293,7 +293,7 @@ const login = fb.nonNullable.group({
 });
 ```
 
-On the above example, both inner controls will be non-nullable (i.e. `nonNullable` will be set).
+On the above example, both inner controls will be non-nullable \(i.e. `nonNullable` will be set\).
 
 在上面的示例中，两个内部控件都将不可为空（即将设置 `nonNullable`）。
 

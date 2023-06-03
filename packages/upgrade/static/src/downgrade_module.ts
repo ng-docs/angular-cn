@@ -23,7 +23,7 @@ let moduleUid = 0;
  * @description
  *
  * A helper function for creating an AngularJS module that can bootstrap an Angular module
- * "on-demand" (possibly lazily) when a {@link downgradeComponent downgraded component} needs to be
+ * "on-demand" \(possibly lazily\) when a {@link downgradeComponent downgraded component} needs to be
  * instantiated.
  *
  * 一个用于创建 AngularJS 模块的帮助器函数，当需要实例化 {@link downgradeComponent 降级组件}
@@ -42,7 +42,7 @@ let moduleUid = 0;
  * 它允许惰性加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
  * 应用程序，将 Angular 用于特定路由，并且只有在/当用户访问这些路由之一时才实例化 Angular 模块。
  *
- * The Angular module will be bootstrapped once (when requested for the first time) and the same
+ * The Angular module will be bootstrapped once \(when requested for the first time\) and the same
  * reference will be used from that point onwards.
  *
  * Angular 模块将被引导一次（第一次请求时），并且从那时起将使用相同的引用。
@@ -52,19 +52,19 @@ let moduleUid = 0;
  * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
- *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}.
  *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
  *     bootstrap function instead.
  *
  *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
- *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
+ *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}
  *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
  * - `NgModule` class: If you pass an NgModule class, it will be used to instantiate a module
- *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule\(\)}.
  *
  *   `NgModule` 类：如果你传递了 NgModule 类，它将用于使用 `platformBrowser` 的 {@link
- *   PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
+ *   PlatformRef#bootstrapModule bootstrapModule\(\)} 来实例化模块。
  *
  * - `Function`: If you pass a function, it is expected to return a promise resolving to an
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
@@ -88,7 +88,7 @@ let moduleUid = 0;
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
- * build a hybrid application. Note that the Angular pieces (e.g. downgraded services) will not be
+ * build a hybrid application. Note that the Angular pieces \(e.g. downgraded services\) will not be
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
@@ -122,11 +122,11 @@ let moduleUid = 0;
  *    AngularJS 模块。
  *
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
- *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
+ *    [$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
  *    detected in the Angular part of the application.
  *
  *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
- *    不会自动运行[$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
+ *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -137,7 +137,7 @@ let moduleUid = 0;
  *
  * `downgradeModule()`, on the other side, does not try to tie the two change detection systems as
  * tightly, restricting the explicit change detection runs only to cases where it knows it is
- * necessary (e.g. when the inputs of a downgraded component change). This improves performance,
+ * necessary \(e.g. when the inputs of a downgraded component change\). This improves performance,
  * especially in change-detection-heavy applications, but leaves it up to the developer to manually
  * notify each framework as needed.
  *
@@ -187,8 +187,8 @@ let moduleUid = 0;
  *   `downgradeComponent()` 和 `downgradeInjectable()` 。
  *
  * - If you want some injectables to be shared among all downgraded modules, you can provide them as
- *   `StaticProvider`s, when creating the `PlatformRef` (e.g. via `platformBrowser` or
- *   `platformBrowserDynamic`).
+ *   `StaticProvider`s, when creating the `PlatformRef` \(e.g. via `platformBrowser` or
+ *   `platformBrowserDynamic`\).
  *
  *   如果你希望在所有降级模块之间共享某些注入器，可以在创建 `PlatformRef` 时将它们作为
  *   `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
@@ -196,10 +196,10 @@ let moduleUid = 0;
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
  *     {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
  *     downgraded modules, each one is considered a "root" module. As a consequence, a new instance
- *     will be created for every injectable provided in `"root"` (via
- *     {@link Injectable#providedIn `providedIn`}).
- *     If this is not your intention, you can have a shared module (that will act as act as the "root"
- *     module) and create all downgraded modules using that module's injector:
+ *     will be created for every injectable provided in `"root"` \(via
+ *     {@link Injectable#providedIn `providedIn`}\).
+ *     If this is not your intention, you can have a shared module \(that will act as act as the "root"
+ *     module\) and create all downgraded modules using that module's injector:
  *
  *   使用 {@link PlatformRef#bootstrapmodule `bootstrapModule()` } 或 {@link
  *   PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
@@ -217,7 +217,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * @description
  *
  * A helper function for creating an AngularJS module that can bootstrap an Angular module
- * "on-demand" (possibly lazily) when a {@link downgradeComponent downgraded component} needs to be
+ * "on-demand" \(possibly lazily\) when a {@link downgradeComponent downgraded component} needs to be
  * instantiated.
  *
  * 一个用于创建 AngularJS 模块的帮助器函数，当需要实例化 {@link downgradeComponent 降级组件}
@@ -236,7 +236,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * 它允许惰性加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
  * 应用程序，将 Angular 用于特定路由，并且只有在/当用户访问这些路由之一时才实例化 Angular 模块。
  *
- * The Angular module will be bootstrapped once (when requested for the first time) and the same
+ * The Angular module will be bootstrapped once \(when requested for the first time\) and the same
  * reference will be used from that point onwards.
  *
  * Angular 模块将被引导一次（第一次请求时），并且从那时起将使用相同的引用。
@@ -246,19 +246,19 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
- *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}.
  *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
  *     bootstrap function instead.
  *
  *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
- *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
+ *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}
  *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
  * - `NgModule` class: If you pass an NgModule class, it will be used to instantiate a module
- *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule\(\)}.
  *
  *   `NgModule` 类：如果你传递了 NgModule 类，它将用于使用 `platformBrowser` 的 {@link
- *   PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
+ *   PlatformRef#bootstrapModule bootstrapModule\(\)} 来实例化模块。
  *
  * - `Function`: If you pass a function, it is expected to return a promise resolving to an
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
@@ -282,7 +282,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
- * build a hybrid application. Note that the Angular pieces (e.g. downgraded services) will not be
+ * build a hybrid application. Note that the Angular pieces \(e.g. downgraded services\) will not be
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
@@ -316,11 +316,11 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *    AngularJS 模块。
  *
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
- *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
+ *    [$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
  *    detected in the Angular part of the application.
  *
  *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
- *    不会自动运行[$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
+ *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -331,7 +331,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *
  * `downgradeModule()`, on the other side, does not try to tie the two change detection systems as
  * tightly, restricting the explicit change detection runs only to cases where it knows it is
- * necessary (e.g. when the inputs of a downgraded component change). This improves performance,
+ * necessary \(e.g. when the inputs of a downgraded component change\). This improves performance,
  * especially in change-detection-heavy applications, but leaves it up to the developer to manually
  * notify each framework as needed.
  *
@@ -381,8 +381,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   `downgradeComponent()` 和 `downgradeInjectable()` 。
  *
  * - If you want some injectables to be shared among all downgraded modules, you can provide them as
- *   `StaticProvider`s, when creating the `PlatformRef` (e.g. via `platformBrowser` or
- *   `platformBrowserDynamic`).
+ *   `StaticProvider`s, when creating the `PlatformRef` \(e.g. via `platformBrowser` or
+ *   `platformBrowserDynamic`\).
  *
  *   如果你希望在所有降级模块之间共享某些注入器，可以在创建 `PlatformRef` 时将它们作为
  *   `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
@@ -390,10 +390,10 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
  *     {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
  *     downgraded modules, each one is considered a "root" module. As a consequence, a new instance
- *     will be created for every injectable provided in `"root"` (via
- *     {@link Injectable#providedIn `providedIn`}).
- *     If this is not your intention, you can have a shared module (that will act as act as the "root"
- *     module) and create all downgraded modules using that module's injector:
+ *     will be created for every injectable provided in `"root"` \(via
+ *     {@link Injectable#providedIn `providedIn`}\).
+ *     If this is not your intention, you can have a shared module \(that will act as act as the "root"
+ *     module\) and create all downgraded modules using that module's injector:
  *
  *   使用 {@link PlatformRef#bootstrapmodule `bootstrapModule()` } 或 {@link
  *   PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }
@@ -416,7 +416,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * @description
  *
  * A helper function for creating an AngularJS module that can bootstrap an Angular module
- * "on-demand" (possibly lazily) when a {@link downgradeComponent downgraded component} needs to be
+ * "on-demand" \(possibly lazily\) when a {@link downgradeComponent downgraded component} needs to be
  * instantiated.
  *
  * 一个用于创建 AngularJS 模块的帮助器函数，当需要实例化 {@link downgradeComponent 降级组件}
@@ -435,7 +435,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * 它允许惰性加载/引导混合应用程序的 Angular 部分，而无需预先支付成本。例如，你可以有一个 AngularJS
  * 应用程序，将 Angular 用于特定路由，并且只有在/当用户访问这些路由之一时才实例化 Angular 模块。
  *
- * The Angular module will be bootstrapped once (when requested for the first time) and the same
+ * The Angular module will be bootstrapped once \(when requested for the first time\) and the same
  * reference will be used from that point onwards.
  *
  * Angular 模块将被引导一次（第一次请求时），并且从那时起将使用相同的引用。
@@ -445,19 +445,19 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * `downgradeModule()` 需要 `NgModuleFactory`、`NgModule` 类或函数：
  *
  * - `NgModuleFactory`: If you pass an `NgModuleFactory`, it will be used to instantiate a module
- *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}.
  *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
  *     bootstrap function instead.
  *
  *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
- *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory()}
+ *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}
  *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
  * - `NgModule` class: If you pass an NgModule class, it will be used to instantiate a module
- *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule()}.
+ *     using `platformBrowser`'s {@link PlatformRef#bootstrapModule bootstrapModule\(\)}.
  *
  *   `NgModule` 类：如果你传递了 NgModule 类，它将用于使用 `platformBrowser` 的 {@link
- *   PlatformRef#bootstrapModule bootstrapModule()} 来实例化模块。
+ *   PlatformRef#bootstrapModule bootstrapModule\(\)} 来实例化模块。
  *
  * - `Function`: If you pass a function, it is expected to return a promise resolving to an
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
@@ -481,7 +481,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
- * build a hybrid application. Note that the Angular pieces (e.g. downgraded services) will not be
+ * build a hybrid application. Note that the Angular pieces \(e.g. downgraded services\) will not be
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
@@ -515,11 +515,11 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *    AngularJS 模块。
  *
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
- *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
+ *    [$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
  *    detected in the Angular part of the application.
  *
  *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
- *    不会自动运行[$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
+ *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -530,7 +530,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *
  * `downgradeModule()`, on the other side, does not try to tie the two change detection systems as
  * tightly, restricting the explicit change detection runs only to cases where it knows it is
- * necessary (e.g. when the inputs of a downgraded component change). This improves performance,
+ * necessary \(e.g. when the inputs of a downgraded component change\). This improves performance,
  * especially in change-detection-heavy applications, but leaves it up to the developer to manually
  * notify each framework as needed.
  *
@@ -580,8 +580,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   `downgradeComponent()` 和 `downgradeInjectable()` 。
  *
  * - If you want some injectables to be shared among all downgraded modules, you can provide them as
- *   `StaticProvider`s, when creating the `PlatformRef` (e.g. via `platformBrowser` or
- *   `platformBrowserDynamic`).
+ *   `StaticProvider`s, when creating the `PlatformRef` \(e.g. via `platformBrowser` or
+ *   `platformBrowserDynamic`\).
  *
  *   如果你希望在所有降级模块之间共享某些注入器，可以在创建 `PlatformRef` 时将它们作为
  *   `StaticProvider` 提供（例如通过 `platformBrowser` 或 `platformBrowserDynamic`）。
@@ -589,10 +589,10 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * - When using {@link PlatformRef#bootstrapmodule `bootstrapModule()`} or
  *     {@link PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()`} to bootstrap the
  *     downgraded modules, each one is considered a "root" module. As a consequence, a new instance
- *     will be created for every injectable provided in `"root"` (via
- *     {@link Injectable#providedIn `providedIn`}).
- *     If this is not your intention, you can have a shared module (that will act as act as the "root"
- *     module) and create all downgraded modules using that module's injector:
+ *     will be created for every injectable provided in `"root"` \(via
+ *     {@link Injectable#providedIn `providedIn`}\).
+ *     If this is not your intention, you can have a shared module \(that will act as act as the "root"
+ *     module\) and create all downgraded modules using that module's injector:
  *
  *   使用 {@link PlatformRef#bootstrapmodule `bootstrapModule()`} 或 {@link
  *   PlatformRef#bootstrapmodulefactory `bootstrapModuleFactory()` }

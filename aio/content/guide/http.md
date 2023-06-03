@@ -812,10 +812,10 @@ This is a common middleware pattern found in frameworks such as Express.js.
 
 ### 提供这个拦截器
 
-The `NoopInterceptor` is a service managed by Angular's [dependency injection (DI)](guide/dependency-injection) system.
+The `NoopInterceptor` is a service managed by Angular's [dependency injection \(DI\)](guide/dependency-injection) system.
 Like other services, you must provide the interceptor class before the app can use it.
 
-这个 `NoopInterceptor` 就是一个由 Angular [依赖注入 (DI)](guide/dependency-injection)系统管理的服务。像其它服务一样，你也必须先提供这个拦截器类，应用才能使用它。
+这个 `NoopInterceptor` 就是一个由 Angular [依赖注入 \(DI\)](guide/dependency-injection)系统管理的服务。像其它服务一样，你也必须先提供这个拦截器类，应用才能使用它。
 
 Because interceptors are optional dependencies of the `HttpClient` service, you must provide them in the same injector or a parent of the injector that provides `HttpClient`.
 Interceptors provided *after* DI creates the `HttpClient` are ignored.
@@ -1267,7 +1267,7 @@ When using [`HttpClient.request()`](api/common/http/HttpClient#request) with an 
 
 </div>
 
-Next, pass this request object to the `HttpClient.request()` method, which returns an `Observable` of `HttpEvents` (the same events processed by [interceptors](#interceptor-events)).
+Next, pass this request object to the `HttpClient.request()` method, which returns an `Observable` of `HttpEvents` \(the same events processed by [interceptors](#interceptor-events)\).
 
 接下来，把这个请求对象传给 `HttpClient.request()` 方法，该方法返回一个 `HttpEvents` 的 `Observable`（与 [拦截器](#interceptor-events) 部分处理过的事件相同）。
 
@@ -1390,14 +1390,14 @@ If you think you'll reuse this debouncing logic, consider moving it to a utility
 
 ## 安全：XSRF 防护
 
-[Cross-Site Request Forgery (XSRF or CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) is an attack technique by which the attacker can trick an authenticated user into unknowingly executing actions on your website.
+[Cross-Site Request Forgery \(XSRF or CSRF\)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) is an attack technique by which the attacker can trick an authenticated user into unknowingly executing actions on your website.
 `HttpClient` supports a [common mechanism](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token) used to prevent XSRF attacks.
 When performing HTTP requests, an interceptor reads a token from a cookie, by default `XSRF-TOKEN`, and sets it as an HTTP header, `X-XSRF-TOKEN`.
 Because only code that runs on your domain could read the cookie, the backend can be certain that the HTTP request came from your client application and not an attacker.
 
-[跨站请求伪造 (XSRF 或 CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery)是一个攻击技术，它能让攻击者假冒一个已认证的用户在你的网站上执行未知的操作。`HttpClient` 支持一种[通用的机制](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token)来防范 XSRF 攻击。当执行 HTTP 请求时，一个拦截器会从 cookie 中读取 XSRF 标记（默认名字为 `XSRF-TOKEN`），并且把它设置为一个 HTTP 头 `X-XSRF-TOKEN`，由于只有运行在你自己的域名下的代码才能读取这个 cookie，因此后端可以确认这个 HTTP 请求真的来自你的客户端应用，而不是攻击者。
+[跨站请求伪造（XSRF 或 CSRF）](https://en.wikipedia.org/wiki/Cross-site_request_forgery)是一个攻击技术，它能让攻击者假冒一个已认证的用户在你的网站上执行未知的操作。`HttpClient` 支持一种[通用的机制](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token)来防范 XSRF 攻击。当执行 HTTP 请求时，一个拦截器会从 cookie 中读取 XSRF 标记（默认名字为 `XSRF-TOKEN`），并且把它设置为一个 HTTP 头 `X-XSRF-TOKEN`，由于只有运行在你自己的域名下的代码才能读取这个 cookie，因此后端可以确认这个 HTTP 请求真的来自你的客户端应用，而不是攻击者。
 
-By default, an interceptor sends this header on all mutating requests (such as POST)
+By default, an interceptor sends this header on all mutating requests \(such as POST\)
 to relative URLs, but not on GET/HEAD requests or on requests with an absolute URL.
 
 默认情况下，拦截器会在所有的修改型请求中（比如 POST 等）把这个请求头发送给使用相对 URL 的请求。但不会在 GET/HEAD 请求中发送，也不会发送给使用绝对 URL 的请求。

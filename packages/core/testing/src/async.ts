@@ -48,13 +48,15 @@ export function waitForAsync(fn: Function): (done: any) => any {
 }
 
 /**
- * @deprecated use `waitForAsync()`, (expected removal in v12)
+ * @deprecated
+ *
+ * use `waitForAsync()`, \(expected removal in v12\)
  *
  * 改用 `waitForAsync()`（将在 v12 中删除）
  *
  * @see {@link waitForAsync}
  * @publicApi
- * */
+ */
 export function async(fn: Function): (done: any) => any {
   return waitForAsync(fn);
 }

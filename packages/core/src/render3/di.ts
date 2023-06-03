@@ -87,7 +87,7 @@ export function setIncludeViewProviders(v: boolean): boolean {
 }
 
 /**
- * The number of slots in each bloom filter (used by DI). The larger this number, the fewer
+ * The number of slots in each bloom filter \(used by DI\). The larger this number, the fewer
  * directives that will share slots, and thus, the fewer false positives when checking for
  * the existence of a directive.
  *
@@ -100,10 +100,10 @@ const BLOOM_MASK = BLOOM_SIZE - 1;
 
 /**
  * The number of bits that is represented by a single bloom bucket. JS bit operations are 32 bits,
- * so each bucket represents 32 distinct tokens which accounts for log2(32) = 5 bits of a bloom hash
+ * so each bucket represents 32 distinct tokens which accounts for log2\(32\) = 5 bits of a bloom hash
  * number.
  *
- * 单个布隆桶表示的位数。 JS 位操作是 32 位，因此每个存储桶表示 32 个不同的标记，它们占 log2(32) = 5
+ * 单个布隆桶表示的位数。 JS 位操作是 32 位，因此每个存储桶表示 32 个不同的标记，它们占 log2\(32\) = 5
  * 位的 bloom 哈希值。
  *
  */
@@ -176,24 +176,21 @@ export function bloomAdd(
 }
 
 /**
- * Creates (or gets an existing) injector for a given element or container.
+ * Creates \(or gets an existing\) injector for a given element or container.
  *
  * 为给定元素或容器创建（或获取现有的）注入器。
  *
  * @param tNode for which an injector should be retrieved / created.
  *
  * 应该为其检索/创建注入器的。
- *
  * @param lView View where the node is stored
  *
  * 查看节点的存储位置
- *
  * @returns
  *
  * Node injector
  *
  * 节点注入器
- *
  */
 export function getOrCreateNodeInjectorForNode(
     tNode: TElementNode|TContainerNode|TElementContainerNode, lView: LView): number {
@@ -330,8 +327,8 @@ export function diPublicInInjector(
  *
  * This method is used with `factory` functions which are generated as part of
  * `defineDirective` or `defineComponent`. The method retrieves the static value
- * of an attribute. (Dynamic attributes are not supported since they are not resolved
- *  at the time of injection and can change over time.)
+ * of an attribute. \(Dynamic attributes are not supported since they are not resolved
+ *  at the time of injection and can change over time.\)
  *
  * 本方法与 `factory` 函数一起使用，这些工厂函数是 `defineDirective` 或 `defineComponent`
  * 生成物的一部分。该方法会检索属性的静态值。（不支持动态属性，因为它们在注入时尚无法解析，并且会随着时间变化。）
@@ -491,7 +488,7 @@ function lookupTokenUsingModuleInjector<T>(
  * 通过向上走节点注入器树然后走模块注入器树来寻找提供标记的注入器。
  *
  * This function patches `token` with `__NG_ELEMENT_ID__` which contains the id for the bloom
- * filter. `-1` is reserved for injecting `Injector` (implemented by `NodeInjector`)
+ * filter. `-1` is reserved for injecting `Injector` \(implemented by `NodeInjector`\)
  *
  * 此函数使用包含布隆过滤器的 id 的 `__NG_ELEMENT_ID__` 来修补 `token` 。 `-1` 保留用于注入
  * `Injector`（由 `NodeInjector` 实现）
@@ -499,29 +496,23 @@ function lookupTokenUsingModuleInjector<T>(
  * @param tNode The Node where the search for the injector should start
  *
  * 应该开始搜索注入器的节点
- *
  * @param lView The `LView` that contains the `tNode`
  *
  * 包含 `LView` 的 `tNode`
- *
  * @param token The token to look for
  *
  * 要查找的标记
- *
  * @param flags Injection flags
  *
  * 注入标志
- *
  * @param notFoundValue The value to return when the injection flags is `InjectFlags.Optional`
  *
  * 当注入标志为 `InjectFlags.Optional` 时要返回的值
- *
  * @returns
  *
  * the value from the injector, `null` when not found, or `notFoundValue` if provided
  *
  * 来自注入器的值，找不到时为 `null` ，如果提供了 `notFoundValue`
- *
  */
 export function getOrCreateInjectable<T>(
     tNode: TDirectiveHostNode|null, lView: LView, token: ProviderToken<T>,

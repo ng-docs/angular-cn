@@ -219,7 +219,7 @@ The following diagrams illustrate both kinds of data flow for each type of form,
 
 ### 响应式表单中的数据流
 
-In reactive forms each form element in the view is directly linked to the form model (a `FormControl` instance).
+In reactive forms each form element in the view is directly linked to the form model \(a `FormControl` instance\).
 Updates from the view to the model and from the model to the view are synchronous and do not depend on how the UI is rendered.
 
 在响应式表单中，视图中的每个表单元素都直接链接到一个表单模型（`FormControl` 实例）。
@@ -319,7 +319,7 @@ The view-to-model diagram shows how data flows when an input field's value is ch
 
    控件值访问器 `ControlValueAccessory` 还会调用 `NgModel.viewToModelUpdate()` 方法，它会发出一个 `ngModelChange` 事件。
 
-1. Because the component template uses two-way data binding for the `favoriteColor` property, the `favoriteColor` property in the component is updated to the value emitted by the `ngModelChange` event (*Blue*).
+1. Because the component template uses two-way data binding for the `favoriteColor` property, the `favoriteColor` property in the component is updated to the value emitted by the `ngModelChange` event \(*Blue*\).
 
    由于该组件模板双向数据绑定到了 `favoriteColor`，组件中的 `favoriteColor` 属性就会修改为 `ngModelChange` 事件所发出的值（"Blue"）。
 

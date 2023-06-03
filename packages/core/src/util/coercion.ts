@@ -7,7 +7,7 @@
  */
 
 /**
- * Coerces a value (typically a string) to a boolean.
+ * Coerces a value \(typically a string\) to a boolean.
  *
  * 将值（通常是字符串）强制转换为布尔值。
  *

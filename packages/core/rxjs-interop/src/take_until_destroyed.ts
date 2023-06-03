@@ -11,13 +11,12 @@ import {MonoTypeOperatorFunction, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 /**
- * Operator which completes the Observable when the calling context (component, directive, service,
- * etc) is destroyed.
+ * Operator which completes the Observable when the calling context \(component, directive, service,
+ * etc\) is destroyed.
  *
  * @param destroyRef optionally, the `DestroyRef` representing the current context. This can be
  *     passed explicitly to use `takeUntilDestroyed` outside of an injection context. Otherwise, the
  * current `DestroyRef` is injected.
- *
  * @developerPreview
  */
 export function takeUntilDestroyed<T>(destroyRef?: DestroyRef): MonoTypeOperatorFunction<T> {

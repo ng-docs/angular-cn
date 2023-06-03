@@ -96,15 +96,15 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
 
 /**
  * Each injector is saved in 9 contiguous slots in `LView` and 9 contiguous slots in
- * `TView.data`. This allows us to store information about the current node's tokens (which
- * can be shared in `TView`) as well as the tokens of its ancestor nodes (which cannot be
- * shared, so they live in `LView`).
+ * `TView.data`. This allows us to store information about the current node's tokens \(which
+ * can be shared in `TView`\) as well as the tokens of its ancestor nodes \(which cannot be
+ * shared, so they live in `LView`\).
  *
  * 每个注入器都保存在 `LView` 的 9 个连续插槽和 `TView.data` 的 9
  * 个连续插槽中。这允许我们存储有关当前节点的标记（可以在 `TView`
  * 中共享）以及其祖先节点的标记（无法共享，因此它们位于 `LView` 中）的信息。
  *
- * Each of these slots (aside from the last slot) contains a bloom filter. This bloom filter
+ * Each of these slots \(aside from the last slot\) contains a bloom filter. This bloom filter
  * determines whether a directive is available on the associated node or not. This prevents us
  * from searching the directives array at this level unless it's probable the directive is in it.
  *
@@ -128,7 +128,7 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * 导出接口 LInjector 扩展了 Array<any>{
  *
- *    // Cumulative bloom for directive IDs 0-31  (IDs are % BLOOM_SIZE)
+ *    // Cumulative bloom for directive IDs 0-31  \(IDs are % BLOOM_SIZE\)
  *
  * // 指令 ID 0-31 的累积绽放（ID 是 % BLOOM_SIZE）
  *
@@ -189,7 +189,7 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * 导出接口 TInjector 扩展了 Array<any>{
  *
- *    // Shared node bloom for directive IDs 0-31  (IDs are % BLOOM_SIZE)
+ *    // Shared node bloom for directive IDs 0-31  \(IDs are % BLOOM_SIZE\)
  *
  * // 指令 ID 0-31 的共享节点 bloom（ID 是 % BLOOM_SIZE）
  *
@@ -260,11 +260,11 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * 注意：某些字段是可选的，这意味着此类有两个隐藏类。
  *
- * - One without `multi` support (most common)
+ * - One without `multi` support \(most common\)
  *
  *   一个没有 `multi` 支持的（最常见）
  *
- * - One with `multi` values, (rare).
+ * - One with `multi` values, \(rare\).
  *
  *   一个具有 `multi` 值，（罕见）。
  *
@@ -398,16 +398,16 @@ export class NodeInjectorFactory {
    * ```
    *
    * We have to return `['all']` in case of content injection, but `['all', 'viewOnly']` in case
-   * of view injection. We further have to make sure that the shared instances (in our case
-   * `all`) are the exact same instance in both the content as well as the view injection. (We
-   * have to make sure that we don't double instantiate.) For this reason the `viewProviders`
+   * of view injection. We further have to make sure that the shared instances \(in our case
+   * `all`\) are the exact same instance in both the content as well as the view injection. \(We
+   * have to make sure that we don't double instantiate.\) For this reason the `viewProviders`
    * `Factory` has a pointer to the shadowed `providers` factory so that it can instantiate the
-   * `providers` (`['all']`) and then extend it with `viewProviders` (`['all'] + ['viewOnly'] =
-   * ['all', 'viewOnly']`).
+   * `providers` \(`['all']`\) and then extend it with `viewProviders` \(`['all'] + ['viewOnly'] =
+   * ['all', 'viewOnly']`\).
    *
    * 在内容注入的情况下，我们必须返回 `['all']` ，但在视图注入的情况下必须返回 \[' `['all',
    * 'viewOnly']` 。我们还必须确保共享实例（在我们的示例中为 `all`
-   *）在内容和视图注入中是完全相同的实例。（我们必须确保我们不会双重实例化。）因此，
+   * ）在内容和视图注入中是完全相同的实例。（我们必须确保我们不会双重实例化。）因此，
    * `viewProvides` `Factory` 有一个指向影子 sources 工厂的指针，以便它可以实例化 `provides`
    * `providers`（`['all']`），然后使用 `viewProviders`（`['all'] + ['viewOnly'] = ['all',
    * 'viewOnly']`）。

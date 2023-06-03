@@ -110,8 +110,8 @@ export type ɵOptionalKeys<T> = {
  *
  * `FormGroup` 接受一个通用参数，该参数是一个包含其内部控件的对象。这种类型通常会被自动推断，但如果你愿意，你始终可以显式指定它。
  *
- * If you have controls that are optional (i.e. they can be removed, you can use the `?` in the
- * type):
+ * If you have controls that are optional \(i.e. they can be removed, you can use the `?` in the
+ * type\):
  *
  * 如果你有可选的控件（即它们可以被删除，你可以在类型中使用 `?`）：
  *
@@ -246,7 +246,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
 
   /**
    * Registers a control with the group's list of controls. In a strongly-typed group, the control
-   * must be in the group's type (possibly as an optional key).
+   * must be in the group's type \(possibly as an optional key\).
    *
    * 使用组的控件列表注册控件。在强类型组中，控件必须是组的类型（可能作为可选键）。
    *
@@ -256,11 +256,9 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to register in the collection
    *
    * 注册到集合中的控件名
-   *
    * @param control Provides the control for the given name
    *
    * 提供这个名字对应的控件
-   *
    */
   registerControl<K extends string&keyof TControl>(name: K, control: TControl[K]): TControl[K];
   registerControl(
@@ -277,7 +275,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
 
   /**
    * Add a control to this group. In a strongly-typed group, the control must be in the group's type
-   * (possibly as an optional key).
+   * \(possibly as an optional key\).
    *
    * 向此组添加控件。在强类型组中，控件必须是组的类型（可能作为可选键）。
    *
@@ -288,17 +286,15 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to add to the collection
    *
    * 要注册到集合中的控件名
-   *
    * @param control Provides the control for the given name
    *
    * 提供这个名字对应的控件
-   *
    * @param options Specifies whether this FormGroup instance should emit events after a new
    *     control is added.
    *
    * 指定此 FormGroup 实例是否应在添加新控件后发出事件。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   added. When false, no events are emitted.
    *
@@ -340,11 +336,10 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to remove from the collection
    *
    * 要从集合中移除的控件名
-   *
    * @param options Specifies whether this FormGroup instance should emit events after a
    *     control is removed.
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   removed. When false, no events are emitted.
    *
@@ -361,7 +356,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
 
   /**
    * Replace an existing control. In a strongly-typed group, the control must be in the group's type
-   * (possibly as an optional key).
+   * \(possibly as an optional key\).
    *
    * 替换现有的控件。在强类型组中，控件必须是组的类型（可能作为可选键）。
    *
@@ -372,17 +367,15 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param name The control name to replace in the collection
    *
    * 要从集合中替换掉的控件名
-   *
    * @param control Provides the control for the given name
    *
    * 提供这个名字对应的控件
-   *
    * @param options Specifies whether this FormGroup instance should emit events after an
    *     existing control is replaced.
    *
    * 指定此 FormGroup 实例是否应在替换现有控件后发出事件。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   replaced with a new one. When false, no events are emitted.
    *
@@ -417,7 +410,6 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * @param controlName The control name to check for existence in the collection
    *
    * 要在集合中检查是否存在的控件名
-   *
    * @returns false for disabled controls, true otherwise.
    */
   contains<K extends string>(controlName: K): boolean;
@@ -450,13 +442,11 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * form.setValue({first: 'Nancy', last: 'Drew'});
    * console.log(form.value);   // {first: 'Nancy', last: 'Drew'}
    * ```
-   *
    * @throws When strict checks fail, such as setting the value of a control
    * that doesn't exist or if you exclude a value of a control that does exist.
    * @param value The new value for the control that matches the structure of the group.
    *
    * 控件的新值，其结构必须和该组的结构相匹配。
-   *
    * @param options Configuration options that determine how the control propagates changes
    * and emits events after the value changes.
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
@@ -467,7 +457,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *
    *   `onlySelf`:：如果为 `true`，则每个变更仅仅影响当前控件，而不会影响父控件。默认为 `false`。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges`
    *   observables emit events with the latest status and value when the control value is updated.
    *   When false, no events are emitted.
@@ -528,7 +518,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *
    *   `onlySelf` ：当为 true 时，每次更改都只影响此控件，而不影响其父级。默认为 true。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges` observables emit events with the latest status and value when the control value
    *   is updated. When false, no events are emitted. The configuration options are passed to
    *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
@@ -589,7 +579,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *
    *   `onlySelf`:：如果为 `true`，则每个变更仅仅影响当前控件，而不会影响父控件。默认为 `false`。
    *
-   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges`
    *   observables emit events with the latest status and value when the control is reset.
    *   When false, no events are emitted.

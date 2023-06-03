@@ -246,7 +246,7 @@ export interface ComplianceTest {
    */
   relativePath: string;
   /**
-   * The absolute path (on the real file-system) to the test case containing this test.
+   * The absolute path \(on the real file-system\) to the test case containing this test.
    *
    * 包含此测试的测试用例的绝对路径（在真实文件系统上）。
    *
@@ -300,16 +300,16 @@ export interface ComplianceTest {
    */
   expectations: Expectation[];
   /**
-   * If set to `true`, then focus on this test (equivalent to jasmine's 'fit()\`).
+   * If set to `true`, then focus on this test (equivalent to jasmine's `fit()`).
    *
-   * 如果设置为 `true` ，则专注于此测试（等效于 jasmine 的 'fit()\`）。
+   * 如果设置为 `true` ，则专注于此测试（等效于 jasmine 的 `fit()`）。
    *
    */
   focusTest?: boolean;
   /**
-   * If set to `true`, then exclude this test (equivalent to jasmine's 'xit()\`).
+   * If set to `true`, then exclude this test \(equivalent to jasmine's `xit()`\).
    *
-   * 如果设置为 `true` ，则排除此测试（等效于 jasmine 的 'xit()\`）。
+   * 如果设置为 `true` ，则排除此测试（等效于 jasmine 的 `xit()`）。
    *
    */
   excludeTest?: boolean;
@@ -371,7 +371,7 @@ export interface ExpectedError {
 }
 
 /**
- * The name (or name and arguments) of a function to call to run additional checks against the
+ * The name \(or name and arguments\) of a function to call to run additional checks against the
  * generated code.
  *
  * 要调用的函数的名称（或名称和参数），以对生成的代码运行额外检查。

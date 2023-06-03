@@ -12,7 +12,7 @@
  * 将给定的 `text` 拆分为“静态字符串”和 ICU “占位符名称”组成的数组。
  *
  * This is required because ICU expressions in `$localize` tagged messages may contain "dynamic"
- * piece (e.g. interpolations or element markers). These markers need to be translated to
+ * piece \(e.g. interpolations or element markers\). These markers need to be translated to
  * placeholders in extracted translation files. So we must parse ICUs to identify them and separate
  * them out so that the translation serializers can render them appropriately.
  *
@@ -67,18 +67,17 @@
  * @param text Text to be broken.
  *
  * 要打破的文本。
- *
  * @returns
  *
  * an array of strings, where
  *
  * 一个字符串数组，其中
  *
- * - even values are static strings (e.g. 0, 2, 4, etc)
+ * - even values are static strings \(e.g. 0, 2, 4, etc\)
  *
  *   偶数值是静态字符串（例如 0、2、4 等）
  *
- * - odd values are placeholder names (e.g. 1, 3, 5, etc)
+ * - odd values are placeholder names \(e.g. 1, 3, 5, etc\)
  *
  *   奇数值是占位符名称（例如 1、3、5 等）
  *
@@ -126,7 +125,7 @@ export function extractIcuPlaceholders(text: string): string[] {
 }
 
 /**
- * A helper class to store the pieces ("static text" or "placeholder name") in an ICU.
+ * A helper class to store the pieces \("static text" or "placeholder name"\) in an ICU.
  *
  * 将各个部分（“静态文本”或“占位符名称”）存储在 ICU 中的帮助器类。
  *
@@ -164,8 +163,8 @@ class IcuPieces {
    *
    * 将存储的部分作为字符串数组返回。
    *
-   * Even values are static strings (e.g. 0, 2, 4, etc)
-   * Odd values are placeholder names (e.g. 1, 3, 5, etc)
+   * Even values are static strings \(e.g. 0, 2, 4, etc\)
+   * Odd values are placeholder names \(e.g. 1, 3, 5, etc\)
    *
    * 偶数值是静态字符串（例如 0、2、4 等）奇数值是占位符名称（例如 1、3、5 等）
    *
@@ -249,7 +248,7 @@ class StateStack {
   }
 
   /**
-   * Get the current (most recent) state from the stack.
+   * Get the current \(most recent\) state from the stack.
    *
    * 从堆栈中获取当前（最新）状态。
    *

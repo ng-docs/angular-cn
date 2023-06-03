@@ -65,14 +65,13 @@ function extractTranslations(source: string): Set<string[]> {
 }
 
 /**
- * Extract placeholder names (of the form `{$PLACEHOLDER}`) from the `msg`.
+ * Extract placeholder names \(of the form `{$PLACEHOLDER}`\) from the `msg`.
  *
  * 从 `msg` 中提取占位符名称（格式 `{$PLACEHOLDER}`）。
  *
  * @param msg The text of the message to parse.
  *
  * 要解析的消息的文本。
- *
  */
 function extractPlaceholdersFromMsg(msg: string): Set<string> {
   const regex = /{\$(.*?)}/g;
@@ -80,7 +79,7 @@ function extractPlaceholdersFromMsg(msg: string): Set<string> {
 }
 
 /**
- * Extract the placeholder names (of the form `"PLACEHOLDER": "XXX"`) from the body of the argument
+ * Extract the placeholder names \(of the form `"PLACEHOLDER": "XXX"`\) from the body of the argument
  * provided as `args`.
  *
  * 从作为 `args` 提供的参数主体中提取占位符名称（格式为 `"PLACEHOLDER": "XXX"`）。
@@ -88,7 +87,6 @@ function extractPlaceholdersFromMsg(msg: string): Set<string> {
  * @param args The body of an object literal containing placeholder info.
  *
  * 包含占位符信息的对象文字的主体。
- *
  */
 function extractPlaceholdersFromArgs(args: string): Set<string> {
   const regex = /\s+"(.+?)":\s*".*?"/g;

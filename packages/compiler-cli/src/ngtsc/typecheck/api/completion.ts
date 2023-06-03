@@ -19,7 +19,7 @@ import {TcbLocation} from './symbols';
 export type Completion = ReferenceCompletion|VariableCompletion;
 
 /**
- * Discriminant of an autocompletion source (a `Completion`).
+ * Discriminant of an autocompletion source \(a `Completion`\).
  *
  * 自动完成源（`Completion`）的判别式。
  *
@@ -87,7 +87,7 @@ export interface VariableCompletion {
 export interface GlobalCompletion {
   /**
    * A location within the type-checking shim where TypeScript's completion APIs can be used to
-   * access completions for the template's component context (component class members).
+   * access completions for the template's component context \(component class members\).
    *
    * 类型检查 shim 中的位置，TypeScript 的自动完成 API
    * 可用于访问模板的组件上下文（组件类成员）的自动完成。
@@ -103,7 +103,7 @@ export interface GlobalCompletion {
    *
    * Shadowing of references/variables from multiple levels of the template has already been
    * accounted for in the preparation of `templateContext`. Entries here shadow component members of
-   * the same name (from the `componentContext` completions).
+   * the same name \(from the `componentContext` completions\).
    *
    * 在 templateContext 的准备过程中，已经考虑了来自 `templateContext`
    * 多个级别的引用/变量的阴影。此处的条目会影响同名的组件成员（来自 `componentContext` 自动完成）。
@@ -113,7 +113,7 @@ export interface GlobalCompletion {
 
   /**
    * A location within the type-checking shim where TypeScript's completion APIs can be used to
-   * access completions for the AST node of the cursor position (primitive constants).
+   * access completions for the AST node of the cursor position \(primitive constants\).
    *
    * 类型检查 shim 中的一个位置，TypeScript 的自动完成 API 可用于访问光标位置的 AST
    * 节点的自动完成（原始常量）。

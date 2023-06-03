@@ -143,7 +143,7 @@ import {getTView} from '../state';
  *
  * | Idx | `TView.data` | `LView`           | Notes                                  |
  * | --- | ------------ | ----------------- | -------------------------------------- |
- * | Idx | `TView.data` | `LView`           | 说明                   |
+ * | Idx | `TView.data` | `LView`           | 说明                                   |
  * | ... |              |                   |                                        |
  * | 10  | `null`       | `{color: '#001'}` | `ɵɵstyleMap('color', {color: '#001'})` |
  * | 11  | `30 | 12`    | ...               |                                        |
@@ -168,7 +168,7 @@ import {getTView} from '../state';
  *
  * NOTE: in addition to keeping track of next/previous index the `TView.data` also stores prev/next
  * duplicate bit. The duplicate bit if true says there either is a binding with the same name or
- * there is a map (which may contain the name). This information is useful in knowing if other
+ * there is a map \(which may contain the name\). This information is useful in knowing if other
  * styles with higher priority need to be searched for overwrites.
  *
  * NOTE: See `should support example in 'tnode_linked_list.ts' documentation` in
@@ -192,37 +192,34 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  *
  * 该函数通过跟踪 `tStylingRange` 来工作，它包含两个指向样式模板部分的头/尾的指针。
  *
- * - if `isHost === false` (we are template) then insertion is at tail of `TStylingRange`
+ * - if `isHost === false` \(we are template\) then insertion is at tail of `TStylingRange`
  *
  *   如果 `isHost === false`（我们是模板），则插入在 `TStylingRange` 的尾部
  *
- * - if `isHost === true` (we are host binding) then insertion is at head of `TStylingRange`
+ * - if `isHost === true` \(we are host binding\) then insertion is at head of `TStylingRange`
  *
  *   如果 `isHost === true`（我们是宿主绑定），则插入在 `TStylingRange` 的头部
  *
  * @param tData The `TData` to insert into.
  *
  * 要插入的 `TData` 。
- *
  * @param tNode `TNode` associated with the styling element.
  *
  * 与样式元素关联的 `TNode` 。
- *
  * @param tStylingKey See `TStylingKey`.
  *
  * 请参阅 `TStylingKey` 。
- *
- * @param index location of where `tStyleValue` should be stored (and linked into list.)
+ * @param index location of where `tStyleValue` should be stored \(and linked into list.\)
  *
  * 应该存储 `tStyleValue` 的位置（并链接到列表中。）
  *
- * @param isHostBinding `true` if the insertion is for a `hostBinding`. (insertion is in front of
- *               template.)
+ * @param isHostBinding `true` if the insertion is for a `hostBinding`. \(insertion is in front of
+ *               template.\)
  *
  * `true` 插入是针对 `hostBinding` 的，则为 true 。（插入在模板前面。）
  *
  * @param isClassBinding True if the associated `tStylingKey` as a `class` styling.
- *                       `tNode.classBindings` should be used (or `tNode.styleBindings` otherwise.)
+ *                       `tNode.classBindings` should be used \(or `tNode.styleBindings` otherwise.\)
  *
  * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings`（或否则使用
  * `tNode.styleBindings` 。）
@@ -325,21 +322,18 @@ export function insertTStylingBinding(
  * @param tNode `TNode` where the residual is stored.
  *
  * 存储残差的 `TNode` 。
- *
  * @param tStylingKey `TStylingKey` to store.
  *
  * 要存储的 `TStylingKey` 。
- *
  * @param tData `TData` associated with the current `LView`.
  *
  * 与当前 `TData` 关联的 `LView` 。
- *
- * @param index location of where `tStyleValue` should be stored (and linked into list.)
+ * @param index location of where `tStyleValue` should be stored \(and linked into list.\)
  *
  * 应该存储 `tStyleValue` 的位置（并链接到列表中。）
  *
  * @param isClassBinding True if the associated `tStylingKey` as a `class` styling.
- *                       `tNode.classBindings` should be used (or `tNode.styleBindings` otherwise.)
+ *                       `tNode.classBindings` should be used \(or `tNode.styleBindings` otherwise.\)
  *
  * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings`（或否则使用
  * `tNode.styleBindings` 。）
@@ -433,7 +427,7 @@ function markDuplicateOfResidualStyling(
  * 在上述情况下，添加 `[style.color]` 将产生重复，因为已经有了一个 `[style]` 绑定，它是 Map
  * ，因此是完全动态的，可以生成 `color` 或 `width` 。
  *
- * NOTE: Once `[style]` (Map) is added into the system all things are mapped as duplicates.
+ * NOTE: Once `[style]` \(Map\) is added into the system all things are mapped as duplicates.
  * NOTE: We use `style` as example, but same logic is applied to `class`es as well.
  *
  * 注意：一旦 `[style]`（Map）添加到系统中，所有东西都被映射为副本。注意：我们使用 `style`
@@ -442,19 +436,16 @@ function markDuplicateOfResidualStyling(
  * @param tData `TData` where the linked list is stored.
  *
  * 存储链表的 `TData` 。
- *
  * @param tStylingKey `TStylingKeyPrimitive` which contains the value to compare to other keys in
  *        the linked list.
  *
  * `TStylingKeyPrimitive` ，其中包含要与链表中其他键进行比较的值。
- *
  * @param index Starting location in the linked list to search from
  *
  * 链表中要搜索的起始位置
- *
  * @param isPrevDir Direction.
- *        \- `true` for previous (lower priority);
- *        \- `false` for next (higher priority).
+ *        \- `true` for previous \(lower priority\);
+ *        \- `false` for next \(higher priority\).
  *
  * 方向。 - 上一个为 `true`（优先级较低）； - 下一个为 `false`（更高优先级）。
  *

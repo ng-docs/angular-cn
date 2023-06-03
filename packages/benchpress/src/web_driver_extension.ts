@@ -89,7 +89,7 @@ export abstract class WebDriverExtension {
    *
    *   名称：事件名称：'script', 'gc', 'render', ...
    *
-   * - ph: phase: 'B' (begin), 'E' (end), 'X' (Complete event), 'I' (Instant event)
+   * - ph: phase: 'B' \(begin\), 'E' \(end\), 'X' \(Complete event\), 'I' \(Instant event\)
    *
    *   ph：phase：“B”（开始），“E”（结束），“X”（完成事件），“I”（即时事件）
    *

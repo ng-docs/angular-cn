@@ -53,7 +53,7 @@ export class AngularTestingModule {
  * <code-example path="upgrade/static/ts/full/module.spec.ts" region="angular-setup"></code-example>
  *
  * Once this is done we can get hold of services via the Angular `Injector` as normal.
- * Services that are (or have dependencies on) an upgraded AngularJS service, will be instantiated
+ * Services that are \(or have dependencies on\) an upgraded AngularJS service, will be instantiated
  * as needed by the AngularJS `$injector`.
  *
  * 完成后，我们可以像往常一样通过 Angular `Injector` 获取服务。作为（或依赖于）升级后的 AngularJS
@@ -119,11 +119,9 @@ export class AngularTestingModule {
  * configuration.
  *
  * 要包含在配置中的 AngularJS 模块名称的集合。
- *
  * @param [strictDi] whether the AngularJS injector should have `strictDI` enabled.
  *
  * AngularJS 注入器是否应该启用 `strictDI` 。
- *
  * @publicApi
  */
 export function createAngularTestingModule(

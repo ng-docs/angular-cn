@@ -2,7 +2,7 @@
 
 # Angular 元素（Elements）概览
 
-*Angular elements* are Angular components packaged as *custom elements* (also called Web Components), a web standard for defining new HTML elements in a framework-agnostic way.
+*Angular elements* are Angular components packaged as *custom elements* \(also called Web Components\), a web standard for defining new HTML elements in a framework-agnostic way.
 
 *Angular 元素*就是打包成*自定义元素*的 Angular 组件。所谓自定义元素就是一套与具体框架无关的用于定义新 HTML 元素的 Web 标准。
 
@@ -14,7 +14,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 </div>
 
-[Custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) are a Web Platform feature currently supported by Chrome, Edge (Chromium-based), Firefox, Opera, and Safari, and available in other browsers through polyfills (see [Browser Support](#browser-support)).
+[Custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) are a Web Platform feature currently supported by Chrome, Edge \(Chromium-based\), Firefox, Opera, and Safari, and available in other browsers through polyfills \(see [Browser Support](#browser-support)\).
 A custom element extends HTML by allowing you to define a tag whose content is created and controlled by JavaScript code.
 The browser maintains a `CustomElementRegistry` of defined custom elements, which maps an instantiable JavaScript class to an HTML tag.
 
@@ -165,19 +165,19 @@ The recently-developed [custom elements](https://developer.mozilla.org/docs/Web/
 
 最近开发的 Web 平台特性：[自定义元素](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements)目前在一些浏览器中实现了原生支持，而其它浏览器或者尚未决定，或者已经制订了计划。
 
-| Browser                     | Custom Element Support |
-| :-------------------------- | :--------------------- |
-| 浏览器                      | 自定义元素支持         |
-| Chrome                      | Supported natively.    |
-| Chrome                      | 原生支持。             |
-| Edge (Chromium-based)       | Supported natively.    |
-| Edge (基于 Chromium 的版本) | 原生支持。             |
-| Firefox                     | Supported natively.    |
-| Firefox                     | 原生支持。             |
-| Opera                       | Supported natively.    |
-| Opera                       | 原生支持。             |
-| Safari                      | Supported natively.    |
-| Safari                      | 原生支持。             |
+| Browser                       | Custom Element Support |
+| :---------------------------- | :--------------------- |
+| 浏览器                        | 自定义元素支持         |
+| Chrome                        | Supported natively.    |
+| Chrome                        | 原生支持。             |
+| Edge \(Chromium-based\)       | Supported natively.    |
+| Edge \(基于 Chromium 的版本\) | 原生支持。             |
+| Firefox                       | Supported natively.    |
+| Firefox                       | 原生支持。             |
+| Opera                         | Supported natively.    |
+| Opera                         | 原生支持。             |
+| Safari                        | Supported natively.    |
+| Safari                        | 原生支持。             |
 
 To add the `@angular/elements` package to your workspace, run the following command:
 
@@ -198,7 +198,7 @@ Previously, when you wanted to add a component to an application at runtime, you
 以前，如果你要在运行期间把一个组件添加到应用中，就得定义成*动态组件*，然后还要加载它、把它附加到 DOM 中的元素上，并且装配所有的依赖、变更检测和事件处理，详见[动态组件加载器](guide/dynamic-component-loader)。
 
 Using an Angular custom element makes the process much simpler and more transparent, by providing all of the infrastructure and framework automatically —all you have to do is define the kind of event handling you want.
-(You do still have to exclude the component from compilation, if you are not going to use it in your application.)
+\(You do still have to exclude the component from compilation, if you are not going to use it in your application.\)
 
 用 Angular 自定义组件会让这个过程更简单、更透明。它会自动提供所有基础设施和框架，而你要做的就是定义所需的各种事件处理逻辑。（如果你不准备在应用中直接用它，还要把该组件在编译时排除出去。）
 
@@ -241,11 +241,11 @@ Similarly, `document.createElement('div')` returns an `HTMLDivElement`, which Ty
 
 一般的 DOM API，比如 `document.createElement()` 或 `document.querySelector()`，会返回一个与指定的参数相匹配的元素类型。比如，调用 `document.createElement('a')` 会返回 `HTMLAnchorElement`，这样 TypeScript 就会知道它有一个 `href` 属性，而 `document.createElement('div')` 会返回 `HTMLDivElement`，这样 TypeScript 就会知道它没有 `href` 属性。
 
-When called with unknown elements, such as a custom element name (`popup-element` in our example), the methods return a generic type, such as `HTMLElement`, because TypeScript can't infer the correct type of the returned element.
+When called with unknown elements, such as a custom element name \(`popup-element` in our example\), the methods return a generic type, such as `HTMLElement`, because TypeScript can't infer the correct type of the returned element.
 
 当调用未知元素（比如自定义的元素名 `popup-element`）时，该方法会返回泛化类型，比如 `HTMLELement`，这时候 TypeScript 就无法推断出所返回元素的正确类型。
 
-Custom elements created with Angular extend `NgElement` (which in turn extends `HTMLElement`).
+Custom elements created with Angular extend `NgElement` \(which in turn extends `HTMLElement`\).
 Additionally, these custom elements will have a property for each input of the corresponding component.
 For example, our `popup-element` has a `message` property of type `string`.
 
@@ -266,7 +266,7 @@ class MyDialog {
 </code-example>
 
 The most straightforward way to get accurate typings is to cast the return value of the relevant DOM methods to the correct type.
-For that, use the `NgElement` and `WithProperties` types (both exported from `@angular/elements`):
+For that, use the `NgElement` and `WithProperties` types \(both exported from `@angular/elements`\):
 
 要获得精确类型，最直白的方式是把相关 DOM 方法的返回值转换成正确的类型。要做到这一点，可以使用 `NgElement` 和 `WithProperties` 类型（都导出自 `@angular/elements`）：
 
@@ -284,7 +284,7 @@ But it can get cumbersome if you need it in several places, because you have to 
 
 这是一种让你的自定义元素快速获得 TypeScript 特性（比如类型检查和自动完成支持）的好办法，不过如果你要在多个地方使用它，可能会有点啰嗦，因为不得不在每个地方对返回类型做转换。
 
-An alternative way, that only requires defining each custom element's type once, is augmenting the `HTMLElementTagNameMap`, which TypeScript uses to infer the type of a returned element based on its tag name (for DOM methods such as `document.createElement()`, `document.querySelector()`, etc.):
+An alternative way, that only requires defining each custom element's type once, is augmenting the `HTMLElementTagNameMap`, which TypeScript uses to infer the type of a returned element based on its tag name \(for DOM methods such as `document.createElement()`, `document.querySelector()`, etc.\):
 
 另一种方式可以对每个自定义元素的类型只声明一次。你可以扩展 `HTMLElementTagNameMap`，TypeScript 会在 DOM 方法（如 `document.createElement()`、`document.querySelector()` 等）中用它来根据标签名推断返回元素的类型。
 

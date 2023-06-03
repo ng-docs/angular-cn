@@ -11,7 +11,7 @@ import {assertDefined} from '../../util/assert';
 
 
 /**
- * The locale id that the application is currently using (for translations and ICU expressions).
+ * The locale id that the application is currently using \(for translations and ICU expressions\).
  * This is the ivy version of `LOCALE_ID` that was defined as an injection token for the view engine
  * but is now defined as a global value.
  *

@@ -16,7 +16,7 @@ Angular 提取器会生成一个文件，其中包含以下每个实例的翻译
 
 As described in [How meanings control text extraction and merges][AioGuideI18nCommonPrepareHowMeaningsControlTextExtractionAndMerges], Angular assigns each translation unit a unique ID.
 
-如[含义(meaning)如何控制文本提取与合并][AioGuideI18nCommonPrepareHowMeaningsControlTextExtractionAndMerges]中所述，Angular 会为每个翻译单元分配一个唯一的 ID。
+如[含义（meaning）如何控制文本提取与合并][AioGuideI18nCommonPrepareHowMeaningsControlTextExtractionAndMerges]中所述，Angular 会为每个翻译单元分配一个唯一的 ID。
 
 The following example displays translation units with unique IDs.
 
@@ -75,7 +75,7 @@ The drawback of using custom IDs is that if you change the text, your translatio
 
 Use a custom ID in combination with a description and a meaning to further help the translator.
 
-将自定义 ID 与描述(description)和含义(meaning)结合使用，以进一步帮助翻译人员。
+将自定义 ID 与描述（description）和含义（meaning）结合使用，以进一步帮助翻译人员。
 
 The following example includes a description, followed by the custom ID.
 
@@ -134,9 +134,9 @@ The following displays the translation in French.
 
 <code-example header="src/locale/messages.fr.xlf" path="i18n/doc-files/messages.fr.xlf.html" region="i18n-duplicate-custom-id"></code-example>
 
-Both elements now use the same translation (`Bonjour`), because both were defined with the same custom ID.
+Both elements now use the same translation \(`Bonjour`\), because both were defined with the same custom ID.
 
-这两个元素现在使用相同的翻译 ( `Bonjour` )，因为它们都是使用相同的自定义 ID 定义的。
+这两个元素现在使用相同的翻译 （ `Bonjour` ），因为它们都是使用相同的自定义 ID 定义的。
 
 <code-example path="i18n/doc-files/rendered-output.html"></code-example>
 

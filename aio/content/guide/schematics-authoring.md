@@ -26,7 +26,7 @@ The public API for schematics defines classes that represent the basic concepts.
 原理图的公共 API 定义了表达其基本概念的类。
 
 * The virtual file system is represented by a `Tree`.
-  The `Tree` data structure contains a *base* (a set of files that already exists) and a *staging area* (a list of changes to be applied to the base).
+  The `Tree` data structure contains a *base* \(a set of files that already exists\) and a *staging area* \(a list of changes to be applied to the base\).
   When making modifications, you don't actually change the base, but add those modifications to the staging area.
 
   虚拟文件系统用 `Tree`（树）表示。`Tree` 数据结构包含一个*基础状态 base*（一组已经存在的文件）和一个 *暂存区 staging*（需要应用到 base 的更改列表）。在进行修改的过程中，你并没有真正改变它的 base，而是把那些修改添加到了暂存区。
@@ -204,19 +204,19 @@ In the short form, the type is inferred from the property's type and constraints
 
 简而言之，类型是根据属性的类型和约束来推断的。
 
-| Property schema       | Prompt type                                |
-| :-------------------- | :----------------------------------------- |
-| 属性模式              | 提示类型                                   |
-| "type": "boolean"     | confirmation ("yes"=`true`, "no"=`false`)  |
-| "type": "boolean"     | 确认（“yes” = `true`，“no” = `false`）     |
-| "type": "string"      | input                                      |
-| "type": "string"      | 输入                                       |
-| "type": "number"      | input (only valid numbers accepted)        |
-| "type": "number"      | 输入（仅接受有效数字）                     |
-| "type": "integer"     | input (only valid numbers accepted)        |
-| "type": "integer"     | 输入（仅接受有效数字）                     |
-| "enum": [……&hellip;] | list (enum members become list selections) |
-| "enum": [……&hellip;] | 列表（枚举成员成为列表中的选择项） |
+| Property schema      | Prompt type                                |
+|:---------------------| :----------------------------------------- |
+| 属性模式                 | 提示类型                                   |
+| "type": "boolean"    | confirmation ("yes"=`true`, "no"=`false`)  |
+| "type": "boolean"    | 确认（“yes” = `true`，“no” = `false`）     |
+| "type": "string"     | input                                      |
+| "type": "string"     | 输入                                       |
+| "type": "number"     | input (only valid numbers accepted)        |
+| "type": "number"     | 输入（仅接受有效数字）                     |
+| "type": "integer"    | input (only valid numbers accepted)        |
+| "type": "integer"    | 输入（仅接受有效数字）                     |
+| "enum": [&hellip;]   | list (enum members become list selections) |
+| "enum": [&hellip;] | 列表（枚举成员成为列表中的选择项） |
 
 In the following example, the property takes an enumerated value, so the schematic automatically chooses the list type, and creates a menu from the possible values.
 
@@ -255,15 +255,15 @@ In this form, the `x-prompt` field value is a JSON object with subfields that cu
 
 在需要对提示进行其它自定义和控制情况下，`x-prompt` 字段也支持长格式语法。在这种形式下，`x-prompt` 字段值是带有子字段的 JSON 对象，这些子字段可自定义提示的行为。
 
-| Field   | Data value                                                                |
-| :------ | :------------------------------------------------------------------------ |
-| 字段    | 数据值                                                                    |
-| type    | `confirmation`, `input`, or `list` (selected automatically in short form) |
-| type    | `confirmation`，`input` 或 `list`（以简短形式自动选择）                   |
-| message | string (required)                                                         |
-| message | 字符串（必填）                                                            |
-| items   | string and/or label/value object pair (only valid with type `list`)       |
-| items   | 字符串和/或“标签/值”对象（仅对 `list` 类型有效）                          |
+| Field   | Data value                                                                  |
+| :------ | :-------------------------------------------------------------------------- |
+| 字段    | 数据值                                                                      |
+| type    | `confirmation`, `input`, or `list` \(selected automatically in short form\) |
+| type    | `confirmation`，`input` 或 `list`（以简短形式自动选择）                     |
+| message | string \(required\)                                                         |
+| message | 字符串（必填）                                                              |
+| items   | string and/or label/value object pair \(only valid with type `list`\)       |
+| items   | 字符串和/或“标签/值”对象（仅对 `list` 类型有效）                            |
 
 The following example of the long form is from the JSON schema for the schematic that the CLI uses to [generate applications](https://github.com/angular/angular-cli/blob/ba8a6ea59983bb52a6f1e66d105c5a77517f062e/packages/schematics/angular/application/schema.json#L56).
 It defines the prompt that lets users choose which style preprocessor they want to use for the application being created.
@@ -387,7 +387,7 @@ schematics blank --name=hello-world
 </code-example>
 
 The `blank` schematic is provided by the Schematics CLI.
-The command creates a new project folder (the root folder for the collection) and an initial named schematic in the collection.
+The command creates a new project folder \(the root folder for the collection\) and an initial named schematic in the collection.
 
 `blank` 原理图是由 Schematics CLI 提供的。该命令用于创建一个新的项目文件夹（该集合的根文件夹），并在该集合中创建一个最初的命名原理图。
 
@@ -427,7 +427,7 @@ schematics &lt;path-to-schematics-project&gt;:&lt;schematics-name&gt; --&lt;requ
 </code-example>
 
 The path can be absolute or relative to the current working directory where the command is executed.
-For example, to run the schematic you just generated (which has no required options), use the following command.
+For example, to run the schematic you just generated \(which has no required options\), use the following command.
 
 该路径可以是绝对路径，也可以是执行该命令的当前工作目录的相对路径。比如，要运行刚生成的原理图（它没有必选项），请使用下面的命令。
 

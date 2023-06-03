@@ -14,7 +14,7 @@ import {NodeNavigationStep, REFERENCE_NODE_BODY, REFERENCE_NODE_HOST} from './in
  *
  * - a number which points to an LView slot
  * - the `b` char which indicates that the lookup should start from the `document.body`
- * - the `h` char to start lookup from the component host node (`lView[HOST]`)
+ * - the `h` char to start lookup from the component host node \(`lView[HOST]`\)
  *
  */
 const REF_EXTRACTOR_REGEXP =
@@ -22,11 +22,12 @@ const REF_EXTRACTOR_REGEXP =
 
 /**
  * Helper function that takes a reference node location and a set of navigation steps
- * (from the reference node) to a target node and outputs a string that represents
+ * \(from the reference node\) to a target node and outputs a string that represents
  * a location.
  *
- * For example, given: referenceNode = 'b' (body) and path = ['firstChild', 'firstChild',
+ * For example, given: referenceNode = 'b' \(body\) and path = ['firstChild', 'firstChild',
  * 'nextSibling'], the function returns: `bf2n`.
+ *
  */
 export function compressNodeLocation(referenceNode: string, path: NodeNavigationStep[]): string {
   const result: Array<string|number> = [referenceNode];
@@ -50,7 +51,7 @@ export function compressNodeLocation(referenceNode: string, path: NodeNavigation
 /**
  * Helper function that reverts the `compressNodeLocation` and transforms a given
  * string into an array where at 0th position there is a reference node info and
- * after that it contains information (in pairs) about a navigation step and the
+ * after that it contains information \(in pairs\) about a navigation step and the
  * number of repetitions.
  *
  * For example, the path like 'bf2n' will be transformed to:
@@ -58,6 +59,7 @@ export function compressNodeLocation(referenceNode: string, path: NodeNavigation
  *
  * This information is later consumed by the code that navigates the DOM to find
  * a given node by its location.
+ *
  */
 export function decompressNodeLocation(path: string):
     [string|number, ...(number | NodeNavigationStep)[]] {

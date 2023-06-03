@@ -10,7 +10,7 @@ Angular distinguishes components from services to increase modularity and reusab
 
 Angular 将组件与服务区分开来，是为了提高模块化程度和可复用性。通过将组件中与视图相关的特性与其他类型的处理分离开，可以让你的组件类更加精简高效。
 
-Ideally, a component's job is to enable the user experience and nothing more. A component should present properties and methods for data binding, to mediate between the view (rendered by the template) and the application logic (which often includes some notion of a model).
+Ideally, a component's job is to enable the user experience and nothing more. A component should present properties and methods for data binding, to mediate between the view \(rendered by the template\) and the application logic \(which often includes some notion of a model\).
 
 理想情况下，组件的工作就是提供用户体验，并无其它职责。组件应该表达用于数据绑定的属性和方法，以在视图（由模板渲染）和应用逻辑（通常包括某个模型的一些概念）之间进行居中协调。
 

@@ -24,7 +24,7 @@ A basic understanding of the following:
 
 The `ngsw-config.json` configuration file specifies which files and data URLs the Angular service worker should cache and how it should update the cached files and data.
 The [Angular CLI](cli) processes the configuration file during `ng build`.
-Manually, process it with the `ngsw-config` tool (where `<project-name>` is the name of the project being built):
+Manually, process it with the `ngsw-config` tool \(where `<project-name>` is the name of the project being built\):
 
 配置文件 `ngsw-config.json` 指定了 Angular Service Worker 应该缓存哪些文件和数据的 URL，以及如何更新缓存的文件和数据。[Angular CLI](cli) 会在 `ng build` 期间处理配置文件。如果想手动处理，可以用 `ngsw-config` 工具（这里的 `<project-name>` 就是要构建的项目名）：
 
@@ -265,13 +265,13 @@ This section describes the resources to cache, broken up into the following grou
 
 本节描述要缓存的资源，分为如下几组：
 
-| Resource groups | Details                                                                                                                                                                                                                                                                                                                                                                                                        |
-| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 资源组          | 详情                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `files`         | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files.                                                                                                                                                                                                                                                                   |
-| `files`         | `files` 列出了与 `dist` 目录中的文件相匹配的模式。它们可以是单个文件也可以是能匹配多个文件的类似 glob 的模式。                                                                                                                                                                                                                                                                                                 |
-| `urls`          | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)* |
-| `urls`          | 包括要在运行时进行匹配的 URL 和 URL 模式。这些资源不是直接获取的，也没有内容散列，但它们会根据 HTTP 标头进行缓存。 这对于像 Google Fonts 服务这样的 CDN 非常有用。<br> **（不支持 glob 的逆模式，`?` 将会按字面匹配；也就是说它不会匹配除了 `?` 之外的任何字符。）**                                                                                                                                           |
+| Resource groups | Details                                                                                                                                                                                                                                                                                                                                                                                                          |
+| :-------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 资源组          | 详情                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `files`         | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files.                                                                                                                                                                                                                                                                     |
+| `files`         | `files` 列出了与 `dist` 目录中的文件相匹配的模式。它们可以是单个文件也可以是能匹配多个文件的类似 glob 的模式。                                                                                                                                                                                                                                                                                                   |
+| `urls`          | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *\(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.\)* |
+| `urls`          | 包括要在运行时进行匹配的 URL 和 URL 模式。这些资源不是直接获取的，也没有内容散列，但它们会根据 HTTP 标头进行缓存。 这对于像 Google Fonts 服务这样的 CDN 非常有用。<br> **（不支持 glob 的逆模式，`?` 将会按字面匹配；也就是说它不会匹配除了 `?` 之外的任何字符。）**                                                                                                                                             |
 
 #### `cacheQueryOptions`
 
@@ -365,7 +365,7 @@ Similar to `assetGroups`, every data group has a `name` which uniquely identifie
 
 A list of URL patterns.
 URLs that match these patterns are cached according to this data group's policy.
-Only non-mutating requests (GET and HEAD) are cached.
+Only non-mutating requests \(GET and HEAD\) are cached.
 
 一个 URL 模式的列表。匹配这些模式的 URL 将会根据该数据组的策略进行缓存。只有非修改型的请求（GET 和 HEAD）才会进行缓存。
 
@@ -583,7 +583,7 @@ A request is considered to be a navigation request if:
 
   其 URL 符合以下条件：
 
-  * The URL must not contain a file extension (that is, a `.`) in the last path segment
+  * The URL must not contain a file extension \(that is, a `.`\) in the last path segment
 
     URL 的最后一段路径中不能包含文件扩展名（比如 `.`）
 
@@ -609,7 +609,7 @@ For example, you might want to ignore specific routes, such as those that are no
 虽然这些默认条件在大多数情况下都挺好用，不过有时还是要配置一些不同的规则。比如，你可能希望忽略一些特定的路由（它们可能不是 Angular 应用的一部分），而是把它们透传给服务器。
 
 This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that are matched at runtime.
-It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.
+It can contain both negative patterns \(that is, patterns starting with `!`\) and non-negative patterns and URLs.
 
 该字段包含一个将要在运行期间匹配的 URL 和 [类似 glob 的](#glob-patterns) URL 模式。
 它既可以包含正向模式也可以包含反向模式（比如用 `!` 开头的模式）。

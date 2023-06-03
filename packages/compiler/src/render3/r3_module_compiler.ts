@@ -14,7 +14,7 @@ import {jitOnlyGuardedExpression, R3CompiledExpression, R3Reference, refsToArray
 import {DefinitionMap} from './view/util';
 
 /**
- * How the selector scope of an NgModule (its declarations, imports, and exports) should be emitted
+ * How the selector scope of an NgModule \(its declarations, imports, and exports\) should be emitted
  * as a part of the NgModule definition.
  *
  * NgModule 的选择器范围（其声明、导入和导出）应如何作为 NgModule 定义的一部分发出。
@@ -65,9 +65,9 @@ export enum R3SelectorScopeMode {
 }
 
 /**
- * Metadata required by the module compiler to generate a module def (`ɵmod`) for a type.
+ * Metadata required by the module compiler to generate a module def \(`ɵmod`\) for a type.
  *
- * 模块编译器为某种类型生成模块 def ( `ɵmod` ) 所需的元数据。
+ * 模块编译器为某种类型生成模块 def \( `ɵmod` \) 所需的元数据。
  *
  */
 export interface R3NgModuleMetadata {
@@ -129,7 +129,7 @@ export interface R3NgModuleMetadata {
   exports: R3Reference[];
 
   /**
-   * How to emit the selector scope values (declarations, imports, exports).
+   * How to emit the selector scope values \(declarations, imports, exports\).
    *
    * 如何发出选择器范围值（声明、导入、导出）。
    *
@@ -300,7 +300,7 @@ export function compileNgModule(meta: R3NgModuleMetadata): R3CompiledExpression 
  * This function is used in JIT mode to generate the call to `ɵɵdefineNgModule()` from a call to
  * `ɵɵngDeclareNgModule()`.
  *
- * 此函数在 JIT 模式下使用，以通过对 ɵɵngDeclareNgModule() 的调用生成对 `ɵɵdefineNgModule()`
+ * 此函数在 JIT 模式下使用，以通过对 ɵɵngDeclareNgModule\(\) 的调用生成对 `ɵɵdefineNgModule()`
  * `ɵɵngDeclareNgModule()` 调用。
  *
  */

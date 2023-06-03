@@ -1,6 +1,6 @@
 # Guidelines for creating NgModules
 
-# 模块(NgModule)创建指南
+# 模块（NgModule）创建指南
 
 This topic provides a conceptual overview of the different categories of [NgModules](guide/glossary#ngmodule "Definition of NgModule") you can create in order to organize your code in a modular structure.
 These categories are not cast in stone —they are suggestions.
@@ -59,21 +59,21 @@ The following table summarizes the key characteristics of each category.
 
 下表总结了每个类别的主要特性。
 
-| NgModule     | Declarations | Providers     | Exports       | Imported by                    |
-| :----------- | :----------- | :------------ | :------------ | :----------------------------- |
-| 模块         | 可声明对象   | 提供者        | 导出          | 被谁导入                       |
-| Domain       | Yes          | Rare          | Top component | Another domain, `AppModule`    |
-| 领域模块     | 是           | 罕见          | 顶级组件      | 其它领域 `AppModule`           |
-| Routed       | Yes          | Rare          | No            | None                           |
-| 带路由的模块 | 是           | 罕见          | 否            | 无                             |
-| Routing      | No           | Yes (Guards)  | RouterModule  | Another domain (for routing)   |
-| 路由         | 否           | 是 (路由守卫) | RouterModule  | 其它领域模块（为获取路由定义） |
-| Service      | No           | Yes           | No            | `AppModule`                    |
-| 服务模块     | 否           | 是            | 否            | `AppModule`                    |
-| Widget       | Yes          | Rare          | Yes           | Another domain                 |
-| 小部件模块   | 是           | 罕见          | 是            | 其它领域模块                   |
-| Shared       | Yes          | No            | Yes           | Another domain                 |
-| 共享模块     | 是           | 否            | 是            | 其它领域模块                   |
+| NgModule     | Declarations | Providers       | Exports       | Imported by                    |
+| :----------- | :----------- | :-------------- | :------------ | :----------------------------- |
+| 模块         | 可声明对象   | 提供者          | 导出          | 被谁导入                       |
+| Domain       | Yes          | Rare            | Top component | Another domain, `AppModule`    |
+| 领域模块     | 是           | 罕见            | 顶级组件      | 其它领域 `AppModule`           |
+| Routed       | Yes          | Rare            | No            | None                           |
+| 带路由的模块 | 是           | 罕见            | 否            | 无                             |
+| Routing      | No           | Yes \(Guards\)  | RouterModule  | Another domain \(for routing\) |
+| 路由         | 否           | 是 （路由守卫） | RouterModule  | 其它领域模块（为获取路由定义） |
+| Service      | No           | Yes             | No            | `AppModule`                    |
+| 服务模块     | 否           | 是              | 否            | `AppModule`                    |
+| Widget       | Yes          | Rare            | Yes           | Another domain                 |
+| 小部件模块   | 是           | 罕见            | 是            | 其它领域模块                   |
+| Shared       | Yes          | No              | Yes           | Another domain                 |
+| 共享模块     | 是           | 否              | 是            | 其它领域模块                   |
 
 <a id="domain"></a>
 
@@ -92,7 +92,7 @@ Private supporting subcomponents descend from it.
 
 领域模块用来组织与特定功能有关的代码，里面包含构成此功能的所有组件、路由和模板。领域模块中的顶级组件是该特性或领域的根，是你要导出的唯一组件。各种私有的支撑子组件都是它的后代。
 
-Import a domain NgModule exactly once into another NgModule, such as a domain NgModule, or into the root NgModule (`AppModule`) of an application that contains only a few NgModules.
+Import a domain NgModule exactly once into another NgModule, such as a domain NgModule, or into the root NgModule \(`AppModule`\) of an application that contains only a few NgModules.
 
 领域模块要导入到另一个模块中一次并且只能一次，比如一个领域模块，或者一个只包含少量模块的应用的根模块（`AppModule`）中。
 
@@ -126,7 +126,7 @@ Don't import a lazy-loaded routed NgModule into another NgModule, as this would 
 
 不要把惰性加载的带路由的模块导入到另一个模块中，因为这会触发一个急性加载，从而破坏了惰性加载它的目的。
 
-Routed NgModules rarely have providers because you load a routed NgModule only when needed (such as for routing).
+Routed NgModules rarely have providers because you load a routed NgModule only when needed \(such as for routing\).
 Services listed in the NgModules' `provider` array would not be available because the root injector wouldn't know about the lazy-loaded NgModule.
 If you include providers, the lifetime of the provided services should be the same as the lifetime of the NgModule.
 Don't provide app-wide [singleton services](guide/singleton-services) in a routed NgModule or in an NgModule that the routed NgModule imports.

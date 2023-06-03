@@ -46,7 +46,7 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * `NgModel` directives.
  *
  * 默认的 `ControlValueAccessor` ，用于写入值并监听输入元素的更改。该访问器供 `FormControlDirective`
- *、`FormControlName` 和 `NgModel` 指令使用。
+ * 、`FormControlName` 和 `NgModel` 指令使用。
  *
  * {@searchKeywords ngDefaultControl}
  *
@@ -57,7 +57,7 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * ### 使用默认值访问器
  *
  * The following example shows how to use an input element that activates the default value accessor
- * (in this case, a text field).
+ * \(in this case, a text field\).
  *
  * 以下示例演示了如何使用输入元素激活默认值访问器（在这种情况下为文本字段）。
  *
@@ -81,6 +81,7 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * ```
  * <custom-input-component ngDefaultControl [(ngModel)]="value"></custom-input-component>
  * ```
+ *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule
  * @publicApi

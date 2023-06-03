@@ -32,7 +32,7 @@ export interface SafeValue {}
 export interface SafeHtml extends SafeValue {}
 
 /**
- * Marker interface for a value that's safe to use as style (CSS).
+ * Marker interface for a value that's safe to use as style \(CSS\).
  *
  * 一个标记性接口，用于表示一个值可以安全地用在样式（CSS）上下文中。
  *
@@ -68,7 +68,7 @@ export interface SafeUrl extends SafeValue {}
 export interface SafeResourceUrl extends SafeValue {}
 
 /**
- * DomSanitizer helps preventing Cross Site Scripting Security bugs (XSS) by sanitizing
+ * DomSanitizer helps preventing Cross Site Scripting Security bugs \(XSS\) by sanitizing
  * values to be safe to use in the different DOM contexts.
  *
  * DomSanitizer 可以把值净化为在不同 DOM 上下文中的安全内容，来帮你防范跨站脚本攻击（XSS）类的安全问题。
@@ -87,7 +87,7 @@ export interface SafeResourceUrl extends SafeValue {}
  * 在特定场景下，可能要禁用净化机制，比如，如果应用程序真的需要生成具有动态值的 `javascript:` 链接。 用户可以通过使用 `bypassSecurityTrust...` 方法来构建出一个值，以绕过安全性检查，并在模板中绑定它。
  *
  * These situations should be very rare, and extraordinary care must be taken to avoid creating a
- * Cross Site Scripting (XSS) security bug!
+ * Cross Site Scripting \(XSS\) security bug!
  *
  * 这种场景其实非常罕见，必须特别小心，避免引入跨站脚本攻击（XSS）类的安全风险。
  *
@@ -97,7 +97,7 @@ export interface SafeResourceUrl extends SafeValue {}
  *
  * 当使用 `bypassSecurityTrust...` 时，请尽量确保尽早调用该方法，并且让他尽可能接近值的来源，以便能更容易地验证使用它时有没有引入安全风险。
  *
- * It is not required (and not recommended) to bypass security if the value is safe, e.g. a URL that
+ * It is not required \(and not recommended\) to bypass security if the value is safe, e.g. a URL that
  * does not start with a suspicious protocol, or an HTML snippet that does not contain dangerous
  * code. The sanitizer leaves safe values intact.
  *
@@ -124,7 +124,7 @@ export abstract class DomSanitizer implements Sanitizer {
 
   /**
    * Bypass security and trust the given value to be safe HTML. Only use this when the bound HTML
-   * is unsafe (e.g. contains `<script>` tags) and the code should be executed. The sanitizer will
+   * is unsafe \(e.g. contains `<script>` tags\) and the code should be executed. The sanitizer will
    * leave safe HTML intact, so in most situations this method should not be used.
    *
    * 绕过安全检查，并信任给定的值是一个安全的 HTML。只有当要绑定的 HTML 是不安全内容（比如包含 `<script>`）而且你确实希望运行这些代码时，才需要使用它。 净化器会确保安全 HTML 的完整性，因此在大多数场景下都不需要使用该方法。
@@ -138,7 +138,7 @@ export abstract class DomSanitizer implements Sanitizer {
   abstract bypassSecurityTrustHtml(value: string): SafeHtml;
 
   /**
-   * Bypass security and trust the given value to be safe style value (CSS).
+   * Bypass security and trust the given value to be safe style value \(CSS\).
    *
    * 绕过安全检查，并信任给定的值是一个安全的样式（CSS）。
    *

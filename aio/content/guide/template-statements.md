@@ -44,7 +44,7 @@ You can change anything in your application during a single event loop.
 
 Like [template expressions](guide/interpolation), template statements use a language that looks like JavaScript.
 However, the parser for template statements differs from the parser for template expressions.
-In addition, the template statements parser specifically supports both basic assignment (`=`) and chaining expressions with semicolons (`;`).
+In addition, the template statements parser specifically supports both basic assignment \(`=`\) and chaining expressions with semicolons \(`;`\).
 
 与[模板表达式](guide/interpolation)一样，模板语句使用类似于 JavaScript 的语言。但是，模板语句的解析器与模板表达式的解析器有所不同。此外，模板语句解析器特别支持基本赋值 `=` 和带有分号 `;` 的串联表达式。
 

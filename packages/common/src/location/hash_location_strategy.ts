@@ -16,6 +16,7 @@ import {joinWithSlash, normalizeQueryParams} from './util';
 
 /**
  * @description
+ *
  * A {@link LocationStrategy} used to configure the {@link Location} service to
  * represent its state in the
  * [hash fragment](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax)

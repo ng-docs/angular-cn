@@ -41,7 +41,7 @@ export interface LexerRange {
  */
 export interface TokenizeOptions {
   /**
-   * Whether to tokenize ICU messages (considered as text nodes when false).
+   * Whether to tokenize ICU messages \(considered as text nodes when false\).
    *
    * 是否标记 ICU 消息（为 false 时被认为是文本节点）。
    *
@@ -93,7 +93,7 @@ export interface TokenizeOptions {
    *  def"
    * ```
    *
-   * The line continuation (`\` followed by a newline) should be removed from a token
+   * The line continuation \(`\` followed by a newline\) should be removed from a token
    * but the new line should increment the current line for source mapping.
    *
    * 应该从标记中删除行继续（`\` 后跟换行符），但新行应该增加当前行以进行源映射。
@@ -101,8 +101,8 @@ export interface TokenizeOptions {
    */
   escapedString?: boolean;
   /**
-   * If this text is stored in an external template (e.g. via `templateUrl`) then we need to decide
-   * whether or not to normalize the line-endings (from `\r\n` to `\n`) when processing ICU
+   * If this text is stored in an external template \(e.g. via `templateUrl`\) then we need to decide
+   * whether or not to normalize the line-endings \(from `\r\n` to `\n`\) when processing ICU
    * expressions.
    *
    * 如果此文本存储在外部模板中（例如通过 `templateUrl`），那么我们需要决定在处理 ICU

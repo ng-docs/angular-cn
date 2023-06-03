@@ -92,7 +92,7 @@ export interface NgCompilerAdapter extends
   readonly ignoreForEmit: Set<ts.SourceFile>;
 
   /**
-   * A specialized interface provided in some environments (such as Bazel) which overrides how
+   * A specialized interface provided in some environments \(such as Bazel\) which overrides how
    * import specifiers are generated.
    *
    * 在某些环境（例如 Bazel）中提供的专门接口，它会覆盖导入说明符的生成方式。
@@ -115,8 +115,8 @@ export interface NgCompilerAdapter extends
 
 export interface SourceFileTypeIdentifier {
   /**
-   * Distinguishes between shim files added by Angular to the compilation process (both those
-   * intended for output, like ngfactory files, as well as internal shims like ngtypecheck files)
+   * Distinguishes between shim files added by Angular to the compilation process \(both those
+   * intended for output, like ngfactory files, as well as internal shims like ngtypecheck files\)
    * and original files in the user's program.
    *
    * 区分 Angular 添加到编译过程的 shim 文件（用于输出的文件，例如 ngfactory 文件，以及内部

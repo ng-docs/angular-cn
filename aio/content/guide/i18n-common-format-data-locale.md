@@ -43,9 +43,9 @@ Add the `locale` parameter to the pipe to override the current value of `LOCALE_
 
 将 `locale` 参数添加到此管道以覆盖 `LOCALE_ID` 令牌的当前值。
 
-To force the currency to use American English (`en-US`), use the following format for the `CurrencyPipe`
+To force the currency to use American English \(`en-US`\), use the following format for the `CurrencyPipe`
 
-要强制货币使用美式英语 ( `en-US` )，请以如下格式使用 `CurrencyPipe`
+要强制货币使用美式英语（`en-US`），请以如下格式使用 `CurrencyPipe`
 
 <!--todo: replace with code-example -->
 

@@ -34,16 +34,16 @@ For information about preparing your system to make major changes to the documen
 ## 日常文档维护任务
 
 | Task                                                     | Scope              |
-| :------------------------------------------------------- |:-------------------|
-| 任务                                                     | 范围                 |
+| :------------------------------------------------------- | :----------------- |
+| 任务                                                     | 范围               |
 | [Review current documentation](guide/reviewing-content)  | Minor \(See note\) |
-| [查看当前文档](guide/reviewing-content)                  | 次要（见注）             |
+| [查看当前文档](guide/reviewing-content)                  | 次要（见注）       |
 | [Update search keywords](guide/updating-search-keywords) | Minor              |
-| [更新搜索关键字](guide/updating-search-keywords)         | 次要                 |
+| [更新搜索关键字](guide/updating-search-keywords)         | 次要               |
 | [Resolve linter errors](guide/docs-lint-errors)          | Major              |
-| [解决 linter 错误](guide/docs-lint-errors)               | 专业                 |
+| [解决 linter 错误](guide/docs-lint-errors)               | 专业               |
 | [Resolve documentation issues](guide/doc-select-issue)   | Major              |
-| [解决文档问题](guide/doc-select-issue)                   | 专业                 |
+| [解决文档问题](guide/doc-select-issue)                   | 专业               |
 
 <div class="alert is-helpful">
 

@@ -8,7 +8,7 @@
 
 /**
  * Represents a big integer using a buffer of its individual digits, with the least significant
- * digit stored at the beginning of the array (little endian).
+ * digit stored at the beginning of the array \(little endian\).
  *
  * 使用单个数字的缓冲区表示一个大整数，最低有效位存储在数组的开头（小端）。
  *
@@ -146,12 +146,12 @@ export class BigIntForMultiplication {
    * 计算 `num * b` 的值，其中 `num` 是 JS 数字，`b` 是一个大整数。 `b`
    * 的值由为此计算优化的存储模型表示。
    *
-   * This operation is implemented in N(log2(num)) by continuous halving of the number, where the
-   * least-significant bit (LSB) is tested in each iteration. If the bit is set, the bit's index is
+   * This operation is implemented in `N(log2(num))` by continuous halving of the number, where the
+   * least-significant bit \(LSB\) is tested in each iteration. If the bit is set, the bit's index is
    * used as exponent into the power-of-two multiplication of `b`.
    *
-   * 此操作是通过将数字连续减半在 N(log2(num)) 中实现的，其中每次迭代都会测试最低有效位
-   * (LSB)。如果该位已设置，则该位的索引将作为 `b` 的二次幂乘法的指数。
+   * 此操作是通过将数字连续减半在 `N(log2(num))` 中实现的，其中每次迭代都会测试最低有效位
+   * （LSB）。如果该位已设置，则该位的索引将作为 `b` 的二次幂乘法的指数。
    *
    * As an example, consider the multiplication num=42, b=1337. In binary 42 is 0b00101010 and the
    * algorithm unrolls into the following iterations:

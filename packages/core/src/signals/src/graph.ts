@@ -15,8 +15,9 @@ import {newWeakRef, WeakRef} from './weak_ref';
 let _nextReactiveId: number = 0;
 
 /**
- * Tracks the currently active reactive consumer (or `null` if there is no active
- * consumer).
+ * Tracks the currently active reactive consumer \(or `null` if there is no active
+ * consumer\).
+ *
  */
 let activeConsumer: ReactiveNode|null = null;
 
@@ -67,8 +68,8 @@ interface ReactiveEdge {
  *
  * Producers expose a monotonic `valueVersion` counter, and are responsible for incrementing this
  * version when their value semantically changes. Some producers may produce their values lazily and
- * thus at times need to be polled for potential updates to their value (and by extension their
- * `valueVersion`). This is accomplished via the `onProducerUpdateValueVersion` method for
+ * thus at times need to be polled for potential updates to their value \(and by extension their
+ * `valueVersion`\). This is accomplished via the `onProducerUpdateValueVersion` method for
  * implemented by producers, which should perform whatever calculations are necessary to ensure
  * `valueVersion` is up to date.
  *
@@ -87,6 +88,7 @@ interface ReactiveEdge {
  * This allows a producer to identify whether its record of the dependency is current or stale, by
  * comparing the consumer's `trackingVersion` to the version at which the dependency was
  * last observed.
+ *
  */
 export abstract class ReactiveNode {
   private readonly id = _nextReactiveId++;

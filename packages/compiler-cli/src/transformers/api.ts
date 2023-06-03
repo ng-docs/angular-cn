@@ -94,7 +94,7 @@ export interface CompilerOptions extends NgCompilerOptions, ts.CompilerOptions {
 
   /**
    * Whether NGC should generate re-exports for external symbols which are referenced
-   * in Angular metadata (e.g. @Component, @Inject, @ViewChild). This can be enabled in
+   * in Angular metadata \(e.g. @Component, @Inject, @ViewChild\). This can be enabled in
    * order to avoid dynamically generated module dependencies which can break strict
    * dependency enforcements. This is not enabled by default.
    * Read more about this here: https://github.com/angular/angular/issues/25644.

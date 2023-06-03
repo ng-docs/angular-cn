@@ -7,17 +7,16 @@
  */
 
 /**
- * Returns element classes in form of a stable (sorted) string.
+ * Returns element classes in form of a stable \(sorted\) string.
  *
  * 以稳定（已排序）字符串的形式返回元素类。
  *
  * @param element HTML Element.
  *
  * HTML 元素。
- *
  * @returns
  *
- * Returns element classes in form of a stable (sorted) string.
+ * Returns element classes in form of a stable \(sorted\) string.
  *
  * 以稳定（已排序）字符串的形式返回元素类。
  *
@@ -57,17 +56,16 @@ export function getElementClasses(element: Element): {[key: string]: true} {
 }
 
 /**
- * Returns element styles in form of a stable (sorted) string.
+ * Returns element styles in form of a stable \(sorted\) string.
  *
  * 以稳定（已排序）字符串的形式返回元素样式。
  *
  * @param element HTML Element.
  *
  * HTML 元素。
- *
  * @returns
  *
- * Returns element styles in form of a stable (sorted) string.
+ * Returns element styles in form of a stable \(sorted\) string.
  *
  * 以稳定（已排序）字符串的形式返回元素样式。
  *

@@ -29,11 +29,11 @@ Find the code from the examples used here in this [GitHub repository](https://gi
 ## CLI 构建器
 
 The internal Architect tool delegates work to handler functions called [*builders*](guide/glossary#builder).
-A builder handler function receives two arguments; a set of input `options` (a JSON object), and a `context` (a `BuilderContext` object).
+A builder handler function receives two arguments; a set of input `options` \(a JSON object\), and a `context` \(a `BuilderContext` object\).
 
 内部建筑师工具会把工作委托给名叫[*构建器*](guide/glossary#builder)的处理器函数。处理器函数接收两个参数：一组 `options` 输入（JSON 对象）和一个 `context`（`BuilderContext` 对象）。
 
-The separation of concerns here is the same as with [schematics](guide/glossary#schematic), which are used for other CLI commands that touch your code (such as `ng generate`).
+The separation of concerns here is the same as with [schematics](guide/glossary#schematic), which are used for other CLI commands that touch your code \(such as `ng generate`\).
 
 这里对关注点的分离和[原理图](guide/glossary#schematic)中是一样的，它也适用于其它要接触（touch）代码的 CLI 命令（比如 `ng generate`）。
 
@@ -46,14 +46,14 @@ The separation of concerns here is the same as with [schematics](guide/glossary#
 
   除了上下文信息之外，此 `context` 对象（它是 `BuilderContext` 的实例）还允许你访问调度方法 `context.scheduleTarget()`。调度器会用指定的[目标配置](guide/glossary#target)来执行构建器处理函数。
 
-The builder handler function can be synchronous (return a value) or asynchronous (return a Promise), or it can watch and return multiple values (return an Observable).
+The builder handler function can be synchronous \(return a value\) or asynchronous \(return a Promise\), or it can watch and return multiple values \(return an Observable\).
 The return value or values must always be of type `BuilderOutput`.
 This object contains a Boolean `success` field and an optional `error` field that can contain an error message.
 
 这个构建器处理函数可以是同步的（返回一个值）或异步的（返回一个 Promise），也可以监视并返回多个值（返回一个 Observable）。最终返回的值全都是 `BuilderOutput` 类型的。该对象包含一个逻辑字段 `success` 和一个可以包含错误信息的可选字段 `error`。
 
 Angular provides some builders that are used by the CLI for commands such as `ng build` and `ng test`.
-Default target configurations for these and other built-in CLI builders can be found (and customized) in the "architect" section of the [workspace configuration file](guide/workspace-config), `angular.json`.
+Default target configurations for these and other built-in CLI builders can be found \(and customized\) in the "architect" section of the [workspace configuration file](guide/workspace-config), `angular.json`.
 Also, extend and customize Angular by creating your own builders, which you can run using the [`ng run` CLI command](cli/run).
 
 Angular 提供了一些构建器，供 CLI 命令使用，如 `ng build` 和 `ng test` 等。这些内置 CLI 构建器的默认目标配置可以在[工作区配置文件](guide/workspace-config) `angular.json` 的 `architect` 部分找到（并进行自定义）。可以通过创建自己的构建器来扩展和自定义 Angular，你可以使用 [`ng run` CLI 命令](cli/run)来运行你自己的构建器。
@@ -83,7 +83,7 @@ For example, your `myBuilder` folder could contain the following files.
 | `tsconfig.json`          | [TypeScript configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html). |
 | `tsconfig.json`          | [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。     |
 
-Publish the builder to `npm` (see [Publishing your Library](guide/creating-libraries#publishing-your-library)).
+Publish the builder to `npm` \(see [Publishing your Library](guide/creating-libraries#publishing-your-library)\).
 If you publish it as `@example/my-builder`, install it using the following command.
 
 将此构建器发布到 `npm`（参阅[发布你的库](guide/creating-libraries#publishing-your-library)）。如果你将其发布为 `&commat;example/my-builder`，请使用以下命令安装它。
@@ -106,7 +106,7 @@ To create a builder, use the `createBuilder()` CLI Builder function, and return 
 <code-example header="src/my-builder.ts (builder skeleton)" path="cli-builder/src/my-builder.ts" region="builder-skeleton"></code-example>
 
 Now let's add some logic to it.
-The following code retrieves the source and destination file paths from user options and copies the file from the source to the destination (using the [Promise version of the built-in NodeJS `copyFile()` function](https://nodejs.org/api/fs.html#fs_fspromises_copyfile_src_dest_mode)).
+The following code retrieves the source and destination file paths from user options and copies the file from the source to the destination \(using the [Promise version of the built-in NodeJS `copyFile()` function](https://nodejs.org/api/fs.html#fs_fspromises_copyfile_src_dest_mode)\).
 If the copy operation fails, it returns an error with a message about the underlying problem.
 
 现在，让我们为它添加一些逻辑。下列代码会从用户选项中获取源文件和目标文件的路径，并且把源文件复制到目标文件（使用 [NodeJS 内置函数 `copyFile()` 的 Promise 版本](https://nodejs.org/api/fs.html#fs_fspromises_copyfile_src_dest_mode)）。如果文件操作失败了，它会返回一个带有底层错误信息的 error 对象。
@@ -120,7 +120,7 @@ If the copy operation fails, it returns an error with a message about the underl
 By default, `copyFile()` does not print anything to the process standard output or error.
 If an error occurs, it might be difficult to understand exactly what the builder was trying to do when the problem occurred.
 Add some additional context by logging additional information using the `Logger` API.
-This also lets the builder itself be executed in a separate process, even if the standard output and error are deactivated (as in an [Electron app](https://electronjs.org)).
+This also lets the builder itself be executed in a separate process, even if the standard output and error are deactivated \(as in an [Electron app](https://electronjs.org)\).
 
 默认情况下，`copyFile()` 方法不会往标准输出或标准错误中打印任何信息。如果发生了错误，可能很难理解构建器到底做了什么。可以使用 `Logger` API 来记录一些额外的信息，以提供额外的上下文。这样还能让构建器本身可以在一个单独的进程中执行，即使其标准输出和标准错误被停用了也无所谓（就像在 [Electron 应用中一样](https://electronjs.org/)）。
 
@@ -138,7 +138,7 @@ The CLI Builder API includes progress and status reporting tools, which can prov
 
 CLI 构建器 API 包含一些进度报告和状态报告工具，可以为某些函数和接口提供提示信息。
 
-To report progress, use the `context.reportProgress()` method, which takes a current value, (optional) total, and status string as arguments.
+To report progress, use the `context.reportProgress()` method, which takes a current value, \(optional\) total, and status string as arguments.
 The total can be any number; for example, if you know how many files you have to process, the total could be the number of files, and current should be the number processed so far.
 The status string is unmodified unless you pass in a new string value.
 
@@ -184,7 +184,7 @@ In either case, you must provide required inputs, but can let other inputs defau
 
 You define builder inputs in a JSON schema associated with that builder.
 The Architect tool collects the resolved input values into an `options` object, and validates their types against the schema before passing them to the builder function.
-(The Schematics library does the same kind of validation of user input.)
+\(The Schematics library does the same kind of validation of user input.\)
 
 你可以在该构建器的相关 JSON 模式中定义构建器都有哪些输入。建筑师工具会把解析后的输入值收集到一个 `options` 对象中，并在将其传给构建器函数之前先根据这个模式验证它们的类型。（Schematics 库也对用户输入做了同样的验证）。
 
@@ -265,7 +265,7 @@ In the `package.json` file, add a `builders` key that tells the Architect tool w
 </code-example>
 
 The official name of our builder is now `@example/copy-file:copy`.
-The first part of this is the package name (resolved using node resolution), and the second part is the builder name (resolved using the `builders.json` file).
+The first part of this is the package name \(resolved using node resolution\), and the second part is the builder name \(resolved using the `builders.json` file\).
 
 现在，这个构建器的正式名字是 `@example/copy-file:copy`。第一部分是包名（使用 node 方案进行解析），第二部分是构建器名称（使用 `builders.json` 文件进行解析）。
 
@@ -346,15 +346,15 @@ project:target[:configuration]
 
 </code-example>
 
-|                       | Details                                                                                                               |
-| :-------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-|                       | 详情                                                                                                                  |
-| project               | The name of the Angular CLI project that the target is associated with.                                               |
-| 项目（project）       | 与此目标关联的 Angular CLI 项目的名称。                                                                               |
-| target                | A named builder configuration from the `architect` section of the `angular.json` file.                                |
-| 目标                  | `angular.json` 文件 `architect` 下的指定构建器配置。                                                                  |
-| configuration         | (optional) The name of a specific configuration override for the given target, as defined in the `angular.json` file. |
-| 配置（configuration） | （可选）用于覆盖指定目标的具体配置名称，如 `angular.json` 文件中的定义。                                              |
+|                       | Details                                                                                                                 |
+| :-------------------- | :---------------------------------------------------------------------------------------------------------------------- |
+|                       | 详情                                                                                                                    |
+| project               | The name of the Angular CLI project that the target is associated with.                                                 |
+| 项目（project）       | 与此目标关联的 Angular CLI 项目的名称。                                                                                 |
+| target                | A named builder configuration from the `architect` section of the `angular.json` file.                                  |
+| 目标                  | `angular.json` 文件 `architect` 下的指定构建器配置。                                                                    |
+| configuration         | \(optional\) The name of a specific configuration override for the given target, as defined in the `angular.json` file. |
+| 配置（configuration） | （可选）用于覆盖指定目标的具体配置名称，如 `angular.json` 文件中的定义。                                                |
 
 If your builder calls another builder, it might need to read a passed target string.
 Parse this string into an object by using the `targetFromTargetString()` utility function from `@angular-devkit/architect`.
@@ -375,7 +375,7 @@ The CLI typically schedules tasks by calling the `context.scheduleTarget()` func
 
 在调度器返回 `BuilderRun` 控件对象之前，不会执行该构建器函数。CLI 通常会通过调用 `context.scheduleTarget()` 函数来调度任务，然后使用 `angular.json` 文件中的目标定义来解析输入选项。
 
-Architect resolves input options for a given target by taking the default options object, then overwriting values from the configuration used (if any), then further overwriting values from the overrides object passed to `context.scheduleTarget()`.
+Architect resolves input options for a given target by taking the default options object, then overwriting values from the configuration used \(if any\), then further overwriting values from the overrides object passed to `context.scheduleTarget()`.
 For the Angular CLI, the overrides object is built from command line arguments.
 
 建筑师会接受默认的选项对象来解析指定目标的输入选项，然后覆盖所用配置中的值（如果有的话），然后再从传给 `context.scheduleTarget()` 的覆盖对象中覆盖这些值。对于 Angular CLI，覆盖对象是从命令行参数中构建的。
@@ -410,7 +410,7 @@ Let's create a simple `angular.json` file that puts target configurations into c
 
 让我们创建一个简单的 `angular.json` 文件，它会把目标配置放到上下文中。
 
-You can publish the builder to npm (see [Publishing your Library](guide/creating-libraries#publishing-your-library)), and install it using the following command:
+You can publish the builder to npm \(see [Publishing your Library](guide/creating-libraries#publishing-your-library)\), and install it using the following command:
 
 你可以把这个构建器发布到 npm（参阅[发布你的库](guide/creating-libraries#publishing-your-library)），并使用如下命令来安装它：
 
@@ -479,7 +479,7 @@ You need to update the `angular.json` file to add a target for this builder to t
   我们会为项目的 `architect` 对象添加一个新的目标小节
 
 * The target named "copy-package" uses our builder, which you published to `@example/copy-file`.
-  (See [Publishing your Library](guide/creating-libraries#publishing-your-library).)
+  \(See [Publishing your Library](guide/creating-libraries#publishing-your-library).\)
 
   名为 `copy-package` 的目标使用了我们的构建器，它发布到了 `@example/copy-file`。（参阅[发布你的库](guide/creating-libraries#publishing-your-library)）
 
@@ -564,7 +564,7 @@ ng run builder-test:copy-package --destination=package-other.json
 </code-example>
 
 This copies the file to `package-other.json` instead of `package-copy.json`.
-Because you did not override the *source* option, it will copy from the `package.json` file (the default value provided for the target).
+Because you did not override the *source* option, it will copy from the `package.json` file \(the default value provided for the target\).
 
 这将把此文件复制为 `package-other.json` 而不再是 `package-copy.json`。因为我们没有覆盖 *source* 选项，所以它仍然会从 `package.json` 文件复制（提供给该目标的默认值）。
 
@@ -577,7 +577,7 @@ Use integration testing for your builder, so that you can use the Architect sche
 对构建器进行集成测试，以便你可以使用建筑师的调度器来创建一个上下文，就像这个[例子](https://github.com/mgechev/cli-builders-demo)中一样。
 
 * In the builder source directory, you have created a new test file `my-builder.spec.ts`.
-  The code creates new instances of `JsonSchemaRegistry` (for schema validation), `TestingArchitectHost` (an in-memory implementation of `ArchitectHost`), and `Architect`.
+  The code creates new instances of `JsonSchemaRegistry` \(for schema validation\), `TestingArchitectHost` \(an in-memory implementation of `ArchitectHost`\), and `Architect`.
 
   在构建器的源码目录下，你创建了一个新的测试文件 `my-builder.spec.ts`。该代码创建了 `JsonSchemaRegistry`（用于模式验证）、`TestingArchitectHost`（对 `ArchitectHost` 的内存实现）和 `Architect` 的新实例。
 
@@ -605,8 +605,8 @@ You can avoid this by renaming `my-builder.spec.ts` to `my-builder.spec.js`.
 
 ### 监视（watch）模式
 
-Architect expects builders to run once (by default) and return.
-This behavior is not entirely compatible with a builder that watches for changes (like Webpack, for example).
+Architect expects builders to run once \(by default\) and return.
+This behavior is not entirely compatible with a builder that watches for changes \(like Webpack, for example\).
 Architect can support watch mode, but there are some things to look out for.
 
 建筑师希望构建器运行一次（默认情况下）并返回。这种行为与那些需要监视文件更改的构建器（比如 Webpack）并不完全兼容。建筑师可以支持监视模式，但要注意一些问题。
@@ -624,7 +624,7 @@ Architect can support watch mode, but there are some things to look out for.
   这个构建器应该总是在每次执行后发出一个 `BuilderOutput` 对象。一旦它被执行，就会进入一个由外部事件触发的监视模式。如果一个事件导致它重启，那么此构建器应该执行 `context.reportRunning()` 函数来告诉建筑师再次运行它。如果调度器还计划了另一次运行，就会阻止建筑师停掉这个构建器。
 
 When your builder calls `BuilderRun.stop()` to exit watch mode, Architect unsubscribes from the builder's Observable and calls the builder's teardown logic to clean up.
-(This behavior also allows for long-running builds to be stopped and cleaned up.)
+\(This behavior also allows for long-running builds to be stopped and cleaned up.\)
 
 当你的构建器通过调用 `BuilderRun.stop()` 来退出监视模式时，建筑师会从构建器的 Observable 中取消订阅，并调用构建器的退出逻辑进行清理。（这种行为也允许停止和清理运行时间过长的构建。）
 
@@ -632,15 +632,15 @@ In general, if your builder is watching an external event, you should separate y
 
 一般来说，如果你的构建器正在监视一个外部事件，你应该把你的运行分成三个阶段。
 
-| Phases     | Details                                                                                                                                                                                                                                                  |
-| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 阶段       | 详情                                                                                                                                                                                                                                                     |
-| Running    | For example, webpack compiles. This ends when webpack finishes and your builder emits a `BuilderOutput` object.                                                                                                                                          |
-| 运行       | 比如 webpack 编译。这会在 webpack 完成并且你的构建器发出 `BuilderOutput` 对象时结束。                                                                                                                                                                    |
-| Watching   | Between two runs, watch an external event stream. For example, webpack watches the file system for any changes. This ends when webpack restarts building, and `context.reportRunning()` is called. This goes back to step 1.                             |
-| 监视       | 在两次运行之间监视外部事件流。比如，webpack 会监视文件系统是否发生了任何变化。这会在 webpack 重启构建时结束，并调用 `context.reportRunning()`。这样就会再回到第 1 步。                                                                                   |
-| Completion | Either the task is fully completed (for example, webpack was supposed to run a number of times), or the builder run was stopped (using `BuilderRun.stop()`). Your teardown logic is executed, and Architect unsubscribes from your builder's Observable. |
-| 完成       | 任务完全完成（比如，webpack 应运行多次），或者构建器停止运行（使用 `BuilderRun.stop()`）。你的退出逻辑被调用了，建筑师也从你的构建器的 Observable 中取消了订阅。                                                                                         |
+| Phases     | Details                                                                                                                                                                                                                                                      |
+| :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 阶段       | 详情                                                                                                                                                                                                                                                         |
+| Running    | For example, webpack compiles. This ends when webpack finishes and your builder emits a `BuilderOutput` object.                                                                                                                                              |
+| 运行       | 比如 webpack 编译。这会在 webpack 完成并且你的构建器发出 `BuilderOutput` 对象时结束。                                                                                                                                                                        |
+| Watching   | Between two runs, watch an external event stream. For example, webpack watches the file system for any changes. This ends when webpack restarts building, and `context.reportRunning()` is called. This goes back to step 1.                                 |
+| 监视       | 在两次运行之间监视外部事件流。比如，webpack 会监视文件系统是否发生了任何变化。这会在 webpack 重启构建时结束，并调用 `context.reportRunning()`。这样就会再回到第 1 步。                                                                                       |
+| Completion | Either the task is fully completed \(for example, webpack was supposed to run a number of times\), or the builder run was stopped \(using `BuilderRun.stop()`\). Your teardown logic is executed, and Architect unsubscribes from your builder's Observable. |
+| 完成       | 任务完全完成（比如，webpack 应运行多次），或者构建器停止运行（使用 `BuilderRun.stop()`）。你的退出逻辑被调用了，建筑师也从你的构建器的 Observable 中取消了订阅。                                                                                             |
 
 ## Summary
 

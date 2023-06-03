@@ -23,11 +23,12 @@ export const modelGroupProvider: any = {
 
 /**
  * @description
+ *
  * Creates and binds a `FormGroup` instance to a DOM element.
  *
  * 创建 `FormGroup` 的实例并将其绑定到 DOM 元素。
  *
- * This directive can only be used as a child of `NgForm` (within `<form>` tags).
+ * This directive can only be used as a child of `NgForm` \(within `<form>` tags\).
  *
  * 此指令只能用作 `NgForm` 的子级（在 `<form>` 标记内）。
  *
@@ -39,7 +40,7 @@ export const modelGroupProvider: any = {
  *
  * Provide a name for the sub-group and it will become the key
  * for the sub-group in the form's full value. If you need direct access, export the directive into
- * a local template variable using `ngModelGroup` (ex: `#myGroup="ngModelGroup"`).
+ * a local template variable using `ngModelGroup` \(ex: `#myGroup="ngModelGroup"`\).
  *
  * 为子组提供一个名称，它将成为表单完整值中子组的关键字。如果你需要直接访问它，可以使用
  * `ngModelGroup`（比如：`#myGroup="ngModelGroup"`）来把此指令导出到本地模板变量中。

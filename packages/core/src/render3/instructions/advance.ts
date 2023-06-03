@@ -40,7 +40,6 @@ import {getLView, getSelectedIndex, getTView, isInCheckNoChangesMode, setSelecte
  * @param delta Number of elements to advance forwards by.
  *
  * 要前进的元素数。
- *
  * @codeGenApi
  */
 export function ɵɵadvance(delta: number): void {

@@ -108,8 +108,8 @@ export function ngswCommChannelFactory(
  */
 export abstract class SwRegistrationOptions {
   /**
-   * Whether the ServiceWorker will be registered and the related services (such as `SwPush` and
-   * `SwUpdate`) will attempt to communicate and interact with it.
+   * Whether the ServiceWorker will be registered and the related services \(such as `SwPush` and
+   * `SwUpdate`\) will attempt to communicate and interact with it.
    *
    * ServiceWorker 是否将被注册，并且相关服务（例如 `SwPush` 和 `SwUpdate` ）将尝试与它进行通信和交互。
    *
@@ -123,9 +123,9 @@ export abstract class SwRegistrationOptions {
   /**
    * A URL that defines the ServiceWorker's registration scope; that is, what range of URLs it can
    * control. It will be used when calling
-   * [ServiceWorkerContainer#register()](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register).
+   * [ServiceWorkerContainer#register\(\)](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register).
    *
-   * 定义 ServiceWorker 的注册范围的 URL；也就是说，它可以控制的 URL 范围。调用[ServiceWorkerContainer#register()](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)时将使用它。
+   * 定义 ServiceWorker 的注册范围的 URL；也就是说，它可以控制的 URL 范围。调用[ServiceWorkerContainer#register\(\)](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)时将使用它。
    *
    */
   scope?: string;
@@ -136,22 +136,22 @@ export abstract class SwRegistrationOptions {
    *
    * 定义 ServiceWorker 注册策略，该策略确定它将何时注册到浏览器。
    *
-   * The default behavior of registering once the application stabilizes (i.e. as soon as there are
-   * no pending micro- and macro-tasks) is designed to register the ServiceWorker as soon as
+   * The default behavior of registering once the application stabilizes \(i.e. as soon as there are
+   * no pending micro- and macro-tasks\) is designed to register the ServiceWorker as soon as
    * possible but without affecting the application's first time load.
    *
    * 应用程序稳定后注册的默认行为（即一旦没有挂起的微任务和宏任务）旨在尽快注册 ServiceWorker，但不影响应用程序的首次加载。
    *
    * Still, there might be cases where you want more control over when the ServiceWorker is
-   * registered (for example, there might be a long-running timeout or polling interval, preventing
-   * the app from stabilizing). The available option are:
+   * registered \(for example, there might be a long-running timeout or polling interval, preventing
+   * the app from stabilizing\). The available option are:
    *
    * 不过，在某些情况下，你可能希望对 ServiceWorker 的注册时间进行更多控制（例如，可能会有长时间运行的超时或轮询间隔，以防止应用程序稳定）。可用的选项是：
    *
-   * - `registerWhenStable:<timeout>`: Register as soon as the application stabilizes (no pending
-   *     micro-/macro-tasks) but no later than `<timeout>` milliseconds. If the app hasn't
-   *     stabilized after `<timeout>` milliseconds (for example, due to a recurrent asynchronous
-   *     task), the ServiceWorker will be registered anyway.
+   * - `registerWhenStable:<timeout>`: Register as soon as the application stabilizes \(no pending
+   *     micro-/macro-tasks\) but no later than `<timeout>` milliseconds. If the app hasn't
+   *     stabilized after `<timeout>` milliseconds \(for example, due to a recurrent asynchronous
+   *     task\), the ServiceWorker will be registered anyway.
    *     If `<timeout>` is omitted, the ServiceWorker will only be registered once the app
    *     stabilizes.
    *

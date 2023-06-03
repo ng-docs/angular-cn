@@ -215,10 +215,10 @@ interface ZoneGlobalConfigurations {
    *
    * 禁用 `Object.defineProperty()` API 的猴子补丁。
    *
-   * Note: This configuration is available only in the legacy bundle (dist/zone.js). This module is
-   * not available in the evergreen bundle (zone-evergreen.js).
+   * Note: This configuration is available only in the legacy bundle \(dist/zone.js\). This module is
+   * not available in the evergreen bundle \(zone-evergreen.js\).
    *
-   * 注意：此配置仅在旧版包 (dist/zone.js) 中可用。此模块在 evergreen 包 ( zone-evergreen.js )
+   * 注意：此配置仅在旧版包 \(dist/zone.js\) 中可用。此模块在 evergreen 包 \( zone-evergreen.js \)
    * 中不可用。
    *
    * In the legacy browser, the default behavior of `zone.js` is to monkey patch
@@ -244,10 +244,10 @@ interface ZoneGlobalConfigurations {
    *
    * 禁用浏览器 `registerElement()` API 的猴子补丁。
    *
-   * NOTE: This configuration is only available in the legacy bundle (dist/zone.js), this
-   * module is not available in the evergreen bundle (zone-evergreen.js).
+   * NOTE: This configuration is only available in the legacy bundle \(dist/zone.js\), this
+   * module is not available in the evergreen bundle \(zone-evergreen.js\).
    *
-   * 注意：此配置仅在旧版包 (dist/zone.js) 中可用，此模块在常绿包 (zone-evergreen.js) 中不可用。
+   * 注意：此配置仅在旧版包 \(dist/zone.js\) 中可用，此模块在常绿包 \(zone-evergreen.js\) 中不可用。
    *
    * In the legacy browser, the default behavior of `zone.js` is to monkey patch the
    * `registerElement()` API to make asynchronous callbacks of the API in the same zone when
@@ -301,14 +301,14 @@ interface ZoneGlobalConfigurations {
    *
    * 禁用浏览器旧版 `EventTarget` API 的猴子补丁。
    *
-   * NOTE: This configuration is only available in the legacy bundle (dist/zone.js), this module
-   * is not available in the evergreen bundle (zone-evergreen.js).
+   * NOTE: This configuration is only available in the legacy bundle \(dist/zone.js\), this module
+   * is not available in the evergreen bundle \(zone-evergreen.js\).
    *
-   * 注意：此配置仅在旧版包 (dist/zone.js) 中可用，此模块在常绿包 (zone-evergreen.js) 中不可用。
+   * 注意：此配置仅在旧版包 \(dist/zone.js\) 中可用，此模块在常绿包 \(zone-evergreen.js\) 中不可用。
    *
    * In some old browsers, the `EventTarget` is not available, so `zone.js` cannot directly monkey
-   * patch the `EventTarget`. Instead, `zone.js` patches all known HTML elements' prototypes (such
-   * as `HtmlDivElement`). The callback of the `addEventListener()` will be in the same zone when
+   * patch the `EventTarget`. Instead, `zone.js` patches all known HTML elements' prototypes \(such
+   * as `HtmlDivElement`\). The callback of the `addEventListener()` will be in the same zone when
    * the `addEventListener()` is called.
    *
    * 在某些旧版浏览器中，`EventTarget` 不可用，因此 `zone.js` 不能直接猴子修补 `EventTarget`
@@ -346,11 +346,11 @@ interface ZoneGlobalConfigurations {
    * 禁用浏览器 `timer` API 的猴子补丁。
    *
    * By default, `zone.js` monkey patches browser timer
-   * APIs (`setTimeout()`/`setInterval()`/`setImmediate()`) to make asynchronous callbacks of those
+   * APIs \(`setTimeout()`/`setInterval()`/`setImmediate()`\) to make asynchronous callbacks of those
    * APIs in the same zone when scheduled.
    *
-   * 默认情况下，`zone.js` 修补浏览器计时器 API ( `setTimeout()` / `setInterval()` /
-   * `setImmediate()` ) 以在调度时在同一个区域中对这些 API 进行异步回调。
+   * 默认情况下，`zone.js` 修补浏览器计时器 API \( `setTimeout()` / `setInterval()` /
+   * `setImmediate()` \) 以在调度时在同一个区域中对这些 API 进行异步回调。
    *
    * Consider the following example:
    *
@@ -447,17 +447,17 @@ interface ZoneGlobalConfigurations {
    *
    * If you set `__Zone_disable_queueMicrotask = true` before importing `zone.js`,
    * `zone.js` does not monkey patch the `queueMicrotask()` API and the above code
-   * output will change to: 'queueMicrotask() callback is invoked in the zone <root>'.
+   * output will change to: 'queueMicrotask\(\) callback is invoked in the zone <root>'.
    *
    * 如果你在导入 `zone.js` 之前设置 `__Zone_disable_queueMicrotask = true` ，`zone.js` 不会对
-   * `queueMicrotask()` API 进行猴子修补，并且上面的代码输出将更改为： 'queueMicrotask()
+   * `queueMicrotask()` API 进行猴子修补，并且上面的代码输出将更改为： 'queueMicrotask\(\)
    * 回调是在区域中调用的<root>'。
    *
    */
   __Zone_disable_queueMicrotask?: boolean;
 
   /**
-   * Disable the monkey patch of the browser blocking APIs(`alert()`/`prompt()`/`confirm()`).
+   * Disable the monkey patch of the browser blocking APIs\(`alert()`/`prompt()`/`confirm()`\).
    *
    * 禁用浏览器阻塞 API 的猴子补丁（`alert()` / `prompt()` / `confirm()`）。
    *
@@ -524,11 +524,11 @@ interface ZoneGlobalConfigurations {
   __Zone_disable_IntersectionObserver?: boolean;
 
   /**
-   * Disable the monkey patch of the browser onProperty APIs(such as onclick).
+   * Disable the monkey patch of the browser onProperty APIs\(such as onclick\).
    *
    * 禁用浏览器 onProperty API 的猴子补丁（例如 onclick）。
    *
-   * By default, `zone.js` monkey patches onXXX properties (such as onclick). The callbacks of onXXX
+   * By default, `zone.js` monkey patches onXXX properties \(such as onclick\). The callbacks of onXXX
    * properties run in the same zone when the onXXX properties is set.
    *
    * 默认情况下，`zone.js` 猴子会修补 onXXX 属性（例如 onclick）。设置 onXXX 属性时，onXXX
@@ -767,10 +767,10 @@ interface ZoneGlobalConfigurations {
    *
    * 定义用户不希望由 `zone.js` 修补的事件名称。
    *
-   * By default, `zone.js` monkey patches EventTarget.addEventListener(). The event listener
-   * callback runs in the same zone when the addEventListener() is called.
+   * By default, `zone.js` monkey patches EventTarget.addEventListener\(\). The event listener
+   * callback runs in the same zone when the addEventListener\(\) is called.
    *
-   * 默认情况下，`zone.js` 猴子修补 EventTarget.addEventListener() 。调用 addEventListener()
+   * 默认情况下，`zone.js` 猴子修补 EventTarget.addEventListener\(\) 。调用 addEventListener\(\)
    * 时，事件侦听器回调在同一个区域中运行。
    *
    * Sometimes, you don't want all of the event names used in this patched version because it
@@ -911,11 +911,11 @@ interface ZoneTestConfigurations {
    * 使用此补丁，`async()` / `fakeAsync()` 可以与 Mocha 运行器一起使用。
    *
    * If you set `__Zone_disable_mocha = true` before importing `zone-testing.js`,
-   * `zone-testing.js` does not monkey patch the Mocha APIs and the `async()/`fakeAsync()\` can not
+   * `zone-testing.js` does not monkey patch the Mocha APIs and the `async()/`fakeAsync\(\)\` can not
    * work with the Mocha runner any longer.
    *
    * 如果你在导入 `zone-testing.js` 之前设置 `__Zone_disable_mocha = true` ，则 `zone-testing.js`
-   * 不会对 Mocha API 进行猴子补丁，并且 `async()/` fakeAsync() \` 不能再与 Mocha 运行器一起使用。
+   * 不会对 Mocha API 进行猴子补丁，并且 `async()/` fakeAsync\(\) \` 不能再与 Mocha 运行器一起使用。
    *
    */
   __Zone_disable_mocha?: boolean;

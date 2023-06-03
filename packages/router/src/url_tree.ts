@@ -461,8 +461,8 @@ export abstract class UrlSerializer {
  * /inbox/33;open=true/messages/44
  * ```
  *
- * DefaultUrlSerializer uses parentheses to serialize secondary segments (e.g., popup:compose), the
- * colon syntax to specify the outlet, and the ';parameter=value' syntax (e.g., open=true) to
+ * DefaultUrlSerializer uses parentheses to serialize secondary segments \(e.g., popup:compose\), the
+ * colon syntax to specify the outlet, and the ';parameter=value' syntax \(e.g., open=true\) to
  * specify route specific parameters.
  *
  * DefaultUrlSerializer 使用圆括号序列化辅助段（比如，popup:compose），使用冒号语法指定出口，并使用';parameter=value' 语法（比如 open=true）来指定路由的特有参数。
@@ -848,11 +848,11 @@ export function createRoot(rootCandidate: UrlSegmentGroup) {
  * Recursively
  *
  * - merges primary segment children into their parents
- * - drops empty children (those which have no segments and no children themselves). This latter
+ * - drops empty children \(those which have no segments and no children themselves\). This latter
  *   prevents serializing a group into something like `/a(aux:)`, where `aux` is an empty child
  *   segment.
  * - merges named outlets without a primary segment sibling into the children. This prevents
- *   serializing a URL like `//(a:a)(b:b) instead of`/(a:a//b:b)`when the aux b route lives on the
+ *   serializing a URL like `//(a:a)(b:b) instead of`/\(a:a//b:b\)`when the aux b route lives on the
  *   root but the`a\` route lives under an empty path primary route.
  *
  */

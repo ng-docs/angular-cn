@@ -100,7 +100,7 @@ export interface TranslationHandler {
 }
 
 /**
- * Translate each file (e.g. source file or static asset) using the given `TranslationHandler`s.
+ * Translate each file \(e.g. source file or static asset\) using the given `TranslationHandler`s.
  * The file will be translated by the first handler that returns true for `canTranslate()`.
  *
  * 使用给定的 `TranslationHandler` 翻译每个文件（例如源文件或静态资产）。该文件将由第一个为

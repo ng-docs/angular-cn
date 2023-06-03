@@ -41,7 +41,7 @@ At first glance, you should be able to understand what the test is testing.
 
 组件类的测试应该保持非常干净和简单。它应该只测试一个单元。一眼看上去，你就应该能够理解正在测试的对象。
 
-Consider this `LightswitchComponent` which toggles a light on and off (represented by an on-screen message) when the user clicks the button.
+Consider this `LightswitchComponent` which toggles a light on and off \(represented by an on-screen message\) when the user clicks the button.
 
 考虑这个 `LightswitchComponent`，当用户单击该按钮时，它会打开和关闭一个指示灯（用屏幕上的一条消息表示）。
 
@@ -145,7 +145,7 @@ None of the preceding *class-only* tests can answer key questions about how the 
 
   用户能否真正选中由 `DashboardHeroComponent` 显示的英雄？
 
-* Is the hero name displayed as expected (such as uppercase)?
+* Is the hero name displayed as expected \(such as uppercase\)?
 
   英雄名字是否按预期显示的（比如大写字母）？
 
@@ -174,7 +174,7 @@ The CLI creates an initial test file for you by default when you ask it to gener
 
 当你要求 CLI 生成一个新组件时，它会默认为你创建一个初始的测试文件。
 
-For example, the following CLI command generates a `BannerComponent` in the `app/banner` folder (with inline template and styles):
+For example, the following CLI command generates a `BannerComponent` in the `app/banner` folder \(with inline template and styles\):
 
 比如，下列 CLI 命令会在 `app/banner` 文件夹中生成带有内联模板和内联样式的 `BannerComponent`：
 

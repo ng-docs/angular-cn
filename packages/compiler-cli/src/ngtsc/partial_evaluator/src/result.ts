@@ -105,8 +105,8 @@ export class EnumValue {
 
 /**
  * An implementation of a known function that can be statically evaluated.
- * It could be a built-in function or method (such as `Array.prototype.slice`) or a TypeScript
- * helper (such as `__spread`).
+ * It could be a built-in function or method \(such as `Array.prototype.slice`\) or a TypeScript
+ * helper \(such as `__spread`\).
  *
  * 可以静态估算的已知函数的实现。它可以是内置函数或方法（例如 `Array.prototype.slice`）或
  * TypeScript 帮助器（例如 `__spread`）。

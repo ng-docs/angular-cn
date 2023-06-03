@@ -124,7 +124,7 @@ The preview features two areas:
 
 * A header for a product list, `Products`
 
-  产品列表(`Products`)及其标题
+  产品列表（`Products`）及其标题
 
 <div class="lightbox">
 

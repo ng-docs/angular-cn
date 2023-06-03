@@ -34,7 +34,7 @@ export function isReferenceToImport(
 }
 
 /**
- * Checks whether a node's type is nullable (`null`, `undefined` or `void`).
+ * Checks whether a node's type is nullable \(`null`, `undefined` or `void`\).
  *
  * 检查节点的类型是否可以为 null（`null`、`undefined` 或 `void`）。
  *

@@ -13,8 +13,8 @@ import {NgModuleFactory} from './ng_module_factory';
 import {getRegisteredNgModuleType} from './ng_module_registration';
 
 /**
- * Returns the NgModuleFactory with the given id (specified using [@NgModule.id
- * field](api/core/NgModule#id)), if it exists and has been loaded. Factories for NgModules that do
+ * Returns the NgModuleFactory with the given id \(specified using [@NgModule.id
+ * field](api/core/NgModule#id)\), if it exists and has been loaded. Factories for NgModules that do
  * not specify an `id` cannot be retrieved. Throws if an NgModule cannot be found.
  *
  * 返回具有给定 id 的 NgModuleFactory（如果存在并且已加载）。无法检索未指定过 `id`
@@ -26,7 +26,6 @@ import {getRegisteredNgModuleType} from './ng_module_registration';
  * Use `getNgModuleById` instead.
  *
  * 改用 `getNgModuleById` 。
- *
  */
 export function getModuleFactory(id: string): NgModuleFactory<any> {
   const type = getRegisteredNgModuleType(id);
@@ -35,8 +34,8 @@ export function getModuleFactory(id: string): NgModuleFactory<any> {
 }
 
 /**
- * Returns the NgModule class with the given id (specified using [@NgModule.id
- * field](api/core/NgModule#id)), if it exists and has been loaded. Classes for NgModules that do
+ * Returns the NgModule class with the given id \(specified using [@NgModule.id
+ * field](api/core/NgModule#id)\), if it exists and has been loaded. Classes for NgModules that do
  * not specify an `id` cannot be retrieved. Throws if an NgModule cannot be found.
  *
  * 返回具有给定 id（使用[@NgModule.id 字段](api/core/NgModule#id)指定）的 NgModule

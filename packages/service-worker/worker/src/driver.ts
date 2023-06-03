@@ -131,7 +131,7 @@ export class Driver implements Debuggable, UpdateSource {
 
   /**
    * A scheduler which manages a queue of tasks that need to be executed when the SW is
-   * not doing any other work (not processing any other requests).
+   * not doing any other work \(not processing any other requests\).
    *
    * 一种调度程序，它管理在 SW 不做任何其他工作（不处理任何其他请求）时需要执行的任务队列。
    *
@@ -1036,7 +1036,7 @@ export class Driver implements Debuggable, UpdateSource {
   /**
    * Delete caches that were used by older versions of `@angular/service-worker` to avoid running
    * into storage quota limitations imposed by browsers.
-   * (Since at this point the SW has claimed all clients, it is safe to remove those caches.)
+   * \(Since at this point the SW has claimed all clients, it is safe to remove those caches.\)
    *
    * 删除旧版 `@angular/service-worker` 使用的缓存，以避免遇到浏览器施加的存储配额限制。（由于此时
    * SW 已声明所有客户端，因此删除这些缓存是安全的。）

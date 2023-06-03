@@ -43,7 +43,7 @@ The symbol is loaded by importing the `@angular/localize/init` module, which has
 
 ## 为何这次迁移必不可少？
 
-Prior to Angular version 9, Angular's internationalization (i18n) system inlined translated messages into the compiled output as part of this template compilation.
+Prior to Angular version 9, Angular's internationalization \(i18n\) system inlined translated messages into the compiled output as part of this template compilation.
 This approach required running the template compiler once per target locale, often leading to slow production build times.
 
 在 Angular 第 9 版之前，Angular 的国际化（i18n）系统会把已翻译的消息内联到编译输出中，作为模板编译的一部分。这种方法要求为每个目标本地环境运行一次模板编译器，这通常会导致生产构建时间变慢。
@@ -82,7 +82,7 @@ This schematic automatically adds the `@angular/localize/init` import for you if
 
 ## 为什么我的 tslint 失败了？
 
-The import of `@angular/localize/init` may cause a tslint error for `no-import-side-effect` because it adds to the global context (that is, a side effect).
+The import of `@angular/localize/init` may cause a tslint error for `no-import-side-effect` because it adds to the global context \(that is, a side effect\).
 To fix this error, add the following to your `tslint.config`:
 
 `@angular/localize/init` 的导入可能会导致 `no-import-side-effect` 的 tslint 错误，因为它会添加全局上下文（也就是副作用）。要修复此错误，请在 `tslint.config` 添加如下 `tslint.config` ：

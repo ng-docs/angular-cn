@@ -61,8 +61,8 @@ export type MessageId = string;
  * Declares a copy of the `AbsoluteFsPath` branded type in `@angular/compiler-cli` to avoid an
  * import into `@angular/compiler-cli`. The compiler-cli's declaration files are not necessarily
  * compatible with web environments that use `@angular/localize`, and would inadvertently include
- * `typescript` declaration files in any compilation unit that uses `@angular/localize` (which
- * increases parsing time and memory usage during builds) using a default import that only
+ * `typescript` declaration files in any compilation unit that uses `@angular/localize` \(which
+ * increases parsing time and memory usage during builds\) using a default import that only
  * type-checks when `allowSyntheticDefaultImports` is enabled.
  *
  * 在 `@angular/compiler-cli` 中声明 `AbsoluteFsPath` 品牌类型的副本，以避免导入到
@@ -71,7 +71,6 @@ export type MessageId = string;
  * `allowSyntheticDefaultImports` 时才进行类型检查。
  *
  * @see https://github.com/angular/angular/issues/45179
- *
  */
 type AbsoluteFsPathLocalizeCopy = string&{_brand: 'AbsoluteFsPath'};
 
@@ -297,20 +296,20 @@ export function parseMessage(
 }
 
 /**
- * Parse the given message part (`cooked` + `raw`) to extract the message metadata from the text.
+ * Parse the given message part \(`cooked` + `raw`\) to extract the message metadata from the text.
  *
  * 解析给定的消息部分（`cooked` + `raw`）以从文本中提取消息元数据。
  *
  * If the message part has a metadata block this function will extract the `meaning`,
- * `description`, `customId` and `legacyId` (if provided) from the block. These metadata properties
+ * `description`, `customId` and `legacyId` \(if provided\) from the block. These metadata properties
  * are serialized in the string delimited by `|`, `@@` and `␟` respectively.
  *
  * 如果消息部分有一个元数据块，此函数将从块中提取 `meaning`、`description`、`customId` 和
  * `legacyId`（如果提供）。这些元数据属性在由 `|` 分隔的字符串中序列化、 `@@` 和 `␟` 。
  *
- * (Note that `␟` is the `LEGACY_ID_INDICATOR` - see `constants.ts`.)
+ * \(Note that `␟` is the `LEGACY_ID_INDICATOR` - see `constants.ts`.\)
  *
- *（请注意，`␟` 是 `LEGACY_ID_INDICATOR` - 请参阅 `constants.ts` 。）
+ * （请注意，`␟` 是 `LEGACY_ID_INDICATOR` - 请参阅 `constants.ts` 。）
  *
  * For example:
  *
@@ -330,17 +329,14 @@ export function parseMessage(
  * @param cooked The cooked version of the message part to parse.
  *
  * 要解析的消息部分的成熟版本。
- *
  * @param raw The raw version of the message part to parse.
  *
  * 要解析的消息部分的原始版本。
- *
  * @returns
  *
  * A object containing any metadata that was parsed from the message part.
  *
  * 包含从消息部分解析的任何元数据的对象。
- *
  */
 export function parseMetadata(cooked: string, raw: string): MessageMetadata {
   const {text: messageString, block} = splitBlock(cooked, raw);
@@ -362,16 +358,16 @@ export function parseMetadata(cooked: string, raw: string): MessageMetadata {
 }
 
 /**
- * Parse the given message part (`cooked` + `raw`) to extract any placeholder metadata from the
+ * Parse the given message part \(`cooked` + `raw`\) to extract any placeholder metadata from the
  * text.
  *
  * 解析给定的消息部分（`cooked` + `raw`）以从文本中提取任何占位符元数据。
  *
  * If the message part has a metadata block this function will extract the `placeholderName` and
- * `associatedMessageId` (if provided) from the block.
+ * `associatedMessageId` \(if provided\) from the block.
  *
  * 如果消息部分有一个元数据块，则此函数将从块中提取 `placeholderName` 和 `associatedMessageId`
- *（如果提供）。
+ * （如果提供）。
  *
  * These metadata properties are serialized in the string delimited by `@@`.
  *
@@ -388,14 +384,12 @@ export function parseMetadata(cooked: string, raw: string): MessageMetadata {
  * @param cooked The cooked version of the message part to parse.
  *
  * 要解析的消息部分的成熟版本。
- *
  * @param raw The raw version of the message part to parse.
  *
  * 要解析的消息部分的原始版本。
- *
  * @returns
  *
- * A object containing the metadata (`placeholderName` and `associatedMessageId`) of the
+ * A object containing the metadata \(`placeholderName` and `associatedMessageId`\) of the
  *     preceding placeholder, along with the static text that follows.
  *
  * 包含前面占位符的元数据（`placeholderName` 和 `associatedMesssageId`）以及后面的静态文本的对象。
@@ -413,7 +407,7 @@ export function parsePlaceholder(cooked: string, raw: string):
 }
 
 /**
- * Split a message part (`cooked` + `raw`) into an optional delimited "block" off the front and the
+ * Split a message part \(`cooked` + `raw`\) into an optional delimited "block" off the front and the
  * rest of the text of the message part.
  *
  * 将消息部分（`cooked` + `raw`）拆分为前面的可选分隔“块”和消息部分的其余文本。
@@ -438,22 +432,18 @@ export function parsePlaceholder(cooked: string, raw: string):
  * @param cooked The cooked version of the message part to parse.
  *
  * 要解析的消息部分的成熟版本。
- *
  * @param raw The raw version of the message part to parse.
  *
  * 要解析的消息部分的原始版本。
- *
  * @returns
  *
  * An object containing the `text` of the message part and the text of the `block`, if it
  * exists.
  *
  * 一个对象，包含消息部分的 `text` 和 `block` 的文本（如果存在）。
- *
  * @throws an error if the `block` is unterminated
  *
  * 如果 `block` 未终止，则出现错误
- *
  */
 export function splitBlock(cooked: string, raw: string): {text: string, block?: string} {
   if (raw.charAt(0) !== BLOCK_MARKER) {
@@ -477,11 +467,11 @@ function computePlaceholderName(index: number) {
  *
  * 查找第一个非转义冒号表示的“标记块”的结尾。
  *
- * @param cooked The cooked string (where escaped chars have been processed)
+ * @param cooked The cooked string \(where escaped chars have been processed\)
  *
  * 煮熟的字符串（已处理转义字符的地方）
  *
- * @param raw The raw string (where escape sequences are still in place)
+ * @param raw The raw string \(where escape sequences are still in place\)
  *
  * 原始字符串（转义序列仍然存在）
  *
@@ -490,11 +480,9 @@ function computePlaceholderName(index: number) {
  * the index of the end of block marker
  *
  * 块标记结尾的索引
- *
  * @throws an error if the block is unterminated
  *
  * 如果块未终止，则出现错误
- *
  */
 export function findEndOfBlock(cooked: string, raw: string): number {
   for (let cookedIndex = 1, rawIndex = 1; cookedIndex < cooked.length; cookedIndex++, rawIndex++) {

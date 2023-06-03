@@ -31,9 +31,9 @@ If you are currently using AngularJS, see [Upgrading from AngularJS](guide/upgra
 
 ## 获得新版本的发布通知
 
-To be notified when new releases are available, follow [@angular](https://twitter.com/angular "@angular on Twitter") on Twitter or subscribe to the [Angular blog](https://blog.angular.io "Angular blog").
+To be notified when new releases are available, follow [`@angular`](https://twitter.com/angular "@angular on Twitter") on Twitter or subscribe to the [Angular blog](https://blog.angular.io "Angular blog").
 
-要想获得新版本发布通知，请关注 Twitter 上的 [@angular](https://twitter.com/angular "@angular on Twitter") 或订阅 [Angular 官方博客](https://blog.angular.io "Angular blog")。
+要想获得新版本发布通知，请关注 Twitter 上的 [`@angular`](https://twitter.com/angular "@angular on Twitter") 或订阅 [Angular 官方博客](https://blog.angular.io "Angular blog")。
 
 <a id="learn"></a>
 
@@ -71,9 +71,9 @@ For example, `stable (v13.0.3)`.
 在 [Angular 文档站](docs "Angular documentation")左侧导航栏的底部可以看到 Angular 最新的稳定版版本号。比如 `stable (v13.0.3)`。
 
 You can also find the most current version of Angular by using the CLI command [`ng update`](cli/update).
-By default, [`ng update`](cli/update)(without additional arguments) lists the updates that are available to you.
+By default, [`ng update`](cli/update)\(without additional arguments\) lists the updates that are available to you.
 
-你还可以使用 [CLI 命令 `ng update`](cli/update) 发现 Angular 的最新版本。默认情况下，[`ng update`](cli/update)（不带其它参数）会列出你可用的所有更新。
+你还可以使用 [CLI 命令 `ng update`](cli/update)发现 Angular 的最新版本。默认情况下，[`ng update`](cli/update)（不带其它参数）会列出你可用的所有更新。
 
 <a id="updating"></a>
 
@@ -112,7 +112,7 @@ It also describes supported update paths.
 
   发布声明：[Angular 博客 - 发布声明](https://blog.angular.io/tagged/release%20notes "Angular blog announcements about recent releases")
 
-* Release announcements (older):
+* Release announcements \(older\):
   [Angular blog - announcements about releases prior to August 2017](https://blog.angularjs.org/search?q=available&by-date=true "Angular blog announcements about releases prior to August 2017")
 
   发布声明（旧的）：[Angular 博客 - 2017 年 8 月以前的](https://blog.angularjs.org/search?q=available&by-date=true "Angular blog announcements about releases prior to August 2017")

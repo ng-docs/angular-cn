@@ -23,7 +23,7 @@ A basic understanding of the following:
 
 ## Service Worker 与应用资源的缓存
 
-Imagine the Angular service worker as a forward cache or a Content Delivery Network (CDN) edge that is installed in the end user's web browser.
+Imagine the Angular service worker as a forward cache or a Content Delivery Network \(CDN\) edge that is installed in the end user's web browser.
 The service worker responds to requests made by the Angular application for resources or data from a local cache, without needing to wait for the network.
 Like any cache, it has rules for how content is expired and updated.
 

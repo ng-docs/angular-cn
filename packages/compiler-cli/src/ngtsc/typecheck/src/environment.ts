@@ -20,9 +20,9 @@ import {generateTypeCtorDeclarationFn, requiresInlineTypeCtor} from './type_cons
 import {TypeParameterEmitter} from './type_parameter_emitter';
 
 /**
- * A context which hosts one or more Type Check Blocks (TCBs).
+ * A context which hosts one or more Type Check Blocks \(TCBs\).
  *
- * 托管一个或多个类型检查块 (TCB) 的上下文。
+ * 托管一个或多个类型检查块（TCB）的上下文。
  *
  * An `Environment` supports the generation of TCBs by tracking necessary imports, declarations of
  * type constructors, and other statements beyond the type-checking code within the TCB itself.

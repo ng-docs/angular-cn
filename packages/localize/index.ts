@@ -136,7 +136,7 @@ declare global {
    *   **编译时内联**： `$localize` 标签在编译时由转译器转换，删除标签并使用提供给转译工具的翻译集合中的翻译后的文字字符串替换模板文字字符串。
    *
    * * **run-time evaluation**: the `$localize` tag is a run-time function that replaces and
-   *   reorders the parts (static strings and expressions) of the template literal string with strings
+   *   reorders the parts \(static strings and expressions\) of the template literal string with strings
    *   from a collection of translations loaded at run-time.
    *
    *   **运行时估算**： `$localize` 标签是一个运行时函数，它会使用运行时加载的翻译集合中的字符串替换模板文字字符串的部分（静态字符串和表达式）并重新排序。
@@ -151,17 +151,14 @@ declare global {
    * @param messageParts a collection of the static parts of the template string.
    *
    * 模板字符串的静态部分的集合。
-   *
    * @param expressions a collection of the values of each placeholder in the template string.
    *
    * 模板字符串中每个占位符的值的集合。
-   *
    * @returns
    *
    * the translated string, with the `messageParts` and `expressions` interleaved together.
    *
    * 翻译后的字符串，`messageParts` 和 `expressions` 交错在一起。
-   *
    */
   const $localize: ɵLocalizeFn;
 }

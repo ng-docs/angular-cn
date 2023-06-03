@@ -103,8 +103,8 @@ class Scope implements Visitor {
   }
 
   /**
-   * Process a template (either as a `Template` sub-template with variables, or a plain array of
-   * template `Node`s) and construct its `Scope`.
+   * Process a template \(either as a `Template` sub-template with variables, or a plain array of
+   * template `Node`s\) and construct its `Scope`.
    *
    * 处理模板（作为带有变量的 `Template` 子模板，或模板 `Node` 的普通数组）并构造其 `Scope` 。
    *
@@ -222,7 +222,7 @@ class Scope implements Visitor {
 }
 
 /**
- * Processes a template and matches directives on nodes (elements and templates).
+ * Processes a template and matches directives on nodes \(elements and templates\).
  *
  * 处理模板并匹配节点（元素和模板）上的指令。
  *
@@ -240,11 +240,11 @@ class DirectiveBinder<DirectiveT extends DirectiveMeta> implements Visitor {
           Map<Reference, {directive: DirectiveT, node: Element|Template}|Element|Template>) {}
 
   /**
-   * Process a template (list of `Node`s) and perform directive matching against each node.
+   * Process a template \(list of `Node`s\) and perform directive matching against each node.
    *
    * 处理模板（`Node` 列表）并对每个节点执行指令匹配。
    *
-   * @param template the list of template `Node`s to match (recursively).
+   * @param template the list of template `Node`s to match \(recursively\).
    *
    * 要匹配的模板 `Node` 列表（递归）。
    *
@@ -252,18 +252,17 @@ class DirectiveBinder<DirectiveT extends DirectiveMeta> implements Visitor {
    * this template.
    *
    * 包含此模板范围内的指令的 `SelectorMatcher` 。
-   *
    * @returns
    *
    * three maps which contain information about directives in the template: the
    * `directives` map which lists directives matched on each node, the `bindings` map which
-   * indicates which directives claimed which bindings (inputs, outputs, etc), and the `references`
-   * map which resolves #references (`Reference`s) within the template to the named directive or
+   * indicates which directives claimed which bindings \(inputs, outputs, etc\), and the `references`
+   * map which resolves #references \(`Reference`s\) within the template to the named directive or
    * template node.
    *
    * 三个包含模板中指令信息的映射表：列出在每个节点上匹配的指令的 `directives`
    * 映射表、表明哪些指令声明了哪些绑定（输入、输出等）的 `bindings` 映射表以及解析 #references（
-   * `Reference`）的 `references` 映射表 s) 在模板中到命名的指令或模板节点。
+   * `Reference`）的 `references` 映射表 s\) 在模板中到命名的指令或模板节点。
    *
    */
   static apply<DirectiveT extends DirectiveMeta>(
@@ -424,23 +423,21 @@ class TemplateBinder extends RecursiveAstVisitor implements Visitor {
    * @param template the nodes of the template to process
    *
    * 要处理的模板的节点
-   *
    * @param scope the `Scope` of the template being processed.
    *
    * 正在处理的模板的 `Scope` 。
-   *
    * @returns
    *
    * three maps which contain metadata about the template: `expressions` which interprets
    * special `AST` nodes in expressions as pointing to references or variables declared within the
    * template, `symbols` which maps those variables and references to the nested `Template` which
    * declares them, if any, and `nestingLevel` which associates each `Template` with a integer
-   * nesting level (how many levels deep within the template structure the `Template` is), starting
+   * nesting level \(how many levels deep within the template structure the `Template` is\), starting
    * at 1.
    *
    * 三个包含有关模板的 `symbols` 数据的映射： `expressions` ，将表达式中的特殊 `AST`
    * 节点解释为指向模板中声明的引用或变量，将这些变量和引用映射到声明它们的嵌套 `Template`
-   *（如果有）和 `nestingLevel` 每个 `Template` 都有一个整数嵌套级别（模板在 `Template`
+   * （如果有）和 `nestingLevel` 每个 `Template` 都有一个整数嵌套级别（模板在 `Template`
    * 结构中的深度是多少），从 1 开始。
    *
    */

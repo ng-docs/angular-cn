@@ -27,7 +27,7 @@ For the sample application used in this topic, see the <live-example name="pipes
 
 ## 内置管道
 
-Angular provides built-in pipes for typical data transformations, including transformations for internationalization (i18n), which use locale information to format data.
+Angular provides built-in pipes for typical data transformations, including transformations for internationalization \(i18n\), which use locale information to format data.
 The following are commonly used built-in pipes for data formatting:
 
 Angular 为典型的数据转换提供了内置的管道，包括国际化的转换（i18n），它使用本地化信息来格式化数据。数据格式化常用的内置管道如下：
@@ -76,10 +76,10 @@ Create pipes to encapsulate custom transformations and use your custom pipes in 
 
 ## 管道的优先级
 
-The pipe operator has a higher precedence than the ternary operator (`?:`), which means `a ? b : c | x` is parsed as `a ? b : (c | x)`.
+The pipe operator has a higher precedence than the ternary operator \(`?:`\), which means `a ? b : c | x` is parsed as `a ? b : (c | x)`.
 The pipe operator cannot be used without parentheses in the first and second operands of `?:`.
 
-管道操作符要比三目运算符(`?:`)的优先级高，这意味着 `a ? b : c | x` 会被解析成 `a ? b : (c | x)`。
+管道操作符要比三目运算符（`?:`）的优先级高，这意味着 `a ? b : c | x` 会被解析成 `a ? b : (c | x)`。
 
 Due to precedence, if you want a pipe to apply to the result of a ternary, wrap the entire expression in parentheses; for example, `(a ? b : c) | x`.
 

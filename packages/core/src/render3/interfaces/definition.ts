@@ -49,14 +49,14 @@ export type ContentQueriesFunction<T> =
     <U extends T>(rf: RenderFlags, ctx: U, directiveIndex: number) => void;
 
 /**
- * Flags passed into template functions to determine which blocks (i.e. creation, update)
+ * Flags passed into template functions to determine which blocks \(i.e. creation, update\)
  * should be executed.
  *
  * 传递给模板函数的标志，以确定应该执行哪些块（即创建、更新）。
  *
  * Typically, a template runs both the creation block and the update block on initialization and
  * subsequent runs only execute the update block. However, dynamically created views require that
- * the creation block be executed separately from the update block (for backwards compat).
+ * the creation block be executed separately from the update block \(for backwards compat\).
  *
  * 通常，模板在初始化时会同时运行 Creation 块和 update 块，随后的运行仅执行 update
  * 块。但是，动态创建的视图要求创建块与更新块分开执行（用于向后兼容）。
@@ -136,7 +136,7 @@ export interface DirectiveDef<T> {
   /**
    * A dictionary mapping the inputs' minified property names to their public API names, which
    * are their aliases if any, or their original unminified property names
-   * (as in `@Input('alias') propertyName: any;`).
+   * \(as in `@Input('alias') propertyName: any;`\).
    *
    * 将输入的缩小属性名称映射到它们的公共 API
    * 名称的字典，这些名称是它们的别名（如果有）或它们的原始未缩小属性名称（如 `@Input('alias')
@@ -159,7 +159,7 @@ export interface DirectiveDef<T> {
   /**
    * A dictionary mapping the outputs' minified property names to their public API names, which
    * are their aliases if any, or their original unminified property names
-   * (as in `@Output('alias') propertyName: any;`).
+   * \(as in `@Output('alias') propertyName: any;`\).
    *
    * 将输出的缩小属性名称映射到它们的公共 API
    * 名称的字典，这些名称是它们的别名（如果有）或它们的原始未缩小属性名称（如 `@Output('alias')
@@ -195,7 +195,7 @@ export interface DirectiveDef<T> {
   readonly hostBindings: HostBindingsFunction<T>|null;
 
   /**
-   * The number of bindings in this directive `hostBindings` (including pure fn bindings).
+   * The number of bindings in this directive `hostBindings` \(including pure fn bindings\).
    *
    * 此指令 `hostBindings` 中的绑定数量（包括纯 fn 绑定）。
    *
@@ -220,35 +220,35 @@ export interface DirectiveDef<T> {
    * 值分配给宿主元素。由于属性值可以由不同类型的值组成，因此 `hostAttrs` 数组必须包含以下格式的值：
    *
    * attrs = \[
-   *   // static attributes (like `title`, `name`, `id`...)
+   *   // static attributes \(like `title`, `name`, `id`...\)
    *   attr1, value1, attr2, value,
    *
    * attrs = \[ // 静态属性（例如 `title` , `name` , `id` ...）attr1, value1, attr2, value,
    *
-   *   // a single namespace value (like `x:id`)
+   *   // a single namespace value \(like `x:id`\)
    *   NAMESPACE_MARKER, namespaceUri1, name1, value1,
    *
    * // 单个命名空间值（例如 `x:id`）NAMESPACE_MARKER, namespaceUri1, name1, value1,
    *
-   *   // another single namespace value (like `x:name`)
+   *   // another single namespace value \(like `x:name`\)
    *   NAMESPACE_MARKER, namespaceUri2, name2, value2,
    *
    * // 另一个单个命名空间值（例如 `x:name`）NAMESPACE_MARKER, namespaceUri2, name2, value2,
    *
-   *   // a series of CSS classes that will be applied to the element (no spaces)
+   *   // a series of CSS classes that will be applied to the element \(no spaces\)
    *   CLASSES_MARKER, class1, class2, class3,
    *
    * // 将应用于元素的一系列 CSS 类（无空格）CLASSES_MARKER, class1, class2, class3,
    *
-   *   // a series of CSS styles (property + value) that will be applied to the element
+   *   // a series of CSS styles \(property + value\) that will be applied to the element
    *   STYLES_MARKER, prop1, value1, prop2, value2
-   * ]
+   * \]
    *
    * // 将应用于元素 STYLES_MARKER,prop1, value1,prop2, value2 的一系列 CSS 样式（property + value）
    *
    * All non-class and non-style attributes must be defined at the start of the list
    * first before all class and style values are set. When there is a change in value
-   * type (like when classes and styles are introduced) a marker must be used to separate
+   * type \(like when classes and styles are introduced\) a marker must be used to separate
    * the entries. The marker values themselves are set via entries found in the
    * `[AttributeMarker]` enum.
    *
@@ -284,7 +284,7 @@ export interface DirectiveDef<T> {
   readonly selectors: CssSelectorList;
 
   /**
-   * Name under which the directive is exported (for use with local references in template)
+   * Name under which the directive is exported \(for use with local references in template\)
    *
    * 导出指令的名称（与模板中的本地引用一起使用）
    *
@@ -292,7 +292,7 @@ export interface DirectiveDef<T> {
   readonly exportAs: string[]|null;
 
   /**
-   * Whether this directive (or component) is standalone.
+   * Whether this directive \(or component\) is standalone.
    *
    * 此指令（或组件）是否是独立的。
    *
@@ -417,7 +417,7 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
   readonly decls: number;
 
   /**
-   * The number of bindings in this component template (including pure fn bindings).
+   * The number of bindings in this component template \(including pure fn bindings\).
    *
    * 此组件模板中的绑定数量（包括纯 fn 绑定）。
    *
@@ -443,7 +443,7 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    *
    * 视图封装类型，它确定如何将样式应用于 DOM 元素。之一
    *
-   * - `Emulated` (default): Emulate native scoping of styles.
+   * - `Emulated` \(default\): Emulate native scoping of styles.
    *
    *   `Emulated`（默认）：模拟样式的本机范围。
    *

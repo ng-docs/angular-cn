@@ -62,7 +62,7 @@ Here are some key differences:
 * Promises execute immediately, and just once.
   The computation of the result is initiated when the promise is created.
   There is no way to restart work.
-  All `then` clauses (subscriptions) share the same computation.
+  All `then` clauses \(subscriptions\) share the same computation.
 
   Promise 会立即执行，并且只执行一次。当 Promise 创建时，会立即计算出结果。没有办法重新做一次。所有的 `then` 语句（订阅）都会共享同一次计算。
 
@@ -79,7 +79,7 @@ Here are some key differences:
 
   <code-example header="src/observables.ts (chain)" path="comparing-observables/src/observables.ts" region="chain"></code-example>
 
-* Promises do not differentiate between the last `.then` clauses (equivalent to subscription) and intermediate `.then` clauses (equivalent to map).
+* Promises do not differentiate between the last `.then` clauses \(equivalent to subscription\) and intermediate `.then` clauses \(equivalent to map\).
 
   Promise 并不区分最后的 `.then()` 语句（等价于订阅）和中间的 `.then()` 语句（等价于映射）。
 
@@ -129,8 +129,8 @@ The following code snippets illustrate how the same kind of operation is defined
 | 操作        | 可观察对象                                                                                                                                                           | Promise                                                                                                                                                            |
 | Creation    | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
 | 创建        | <code-example format="typescript" hideCopy language="typescript"> new Observable((observer) =&gt; { &NewLine;&nbsp; observer.next(123); &NewLine;}); </code-example> | <code-example format="typescript" hideCopy language="typescript"> new Promise((resolve, reject) =&gt; { &NewLine;&nbsp; resolve(123); &NewLine;}); </code-example> |
-| Transform   | <code-example format="typescript" hideCopy language="typescript"> obs.pipe(map((value) => value \* 2));</pre>                                                        | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example>                                        |
-| 转换        | <code-example format="typescript" hideCopy language="typescript">obs.pipe(map((value) => value \* 2));</pre>                                                         | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example>                                        |
+| Transform   | <code-example format="typescript" hideCopy language="typescript"> obs.pipe\(map\(\(value\) => value \* 2\)\);</pre>                                                  | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example>                                        |
+| 转换        | <code-example format="typescript" hideCopy language="typescript">obs.pipe\(map\(\(value\) => value \* 2\)\);</pre>                                                   | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; value &ast; 2);</code-example>                                        |
 | Subscribe   | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example>    |
 | 订阅        | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example>    |
 | Unsubscribe | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example>                                                                  | Implied by promise resolution.                                                                                                                                     |

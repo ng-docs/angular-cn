@@ -49,10 +49,10 @@ export function getDefaultImportDeclaration(expr: WrappedNodeExpr<unknown>): ts.
  *
  * TypeScript 无法在某些模块格式的转换器中生成默认导入。问题是对于声明：
  *
+ * ```
  * import X from 'some/module';
  * console.log(X);
- *
- * 从 'some/module' 导入 X； console.log(X);
+ * ```
  *
  * TypeScript will not use the "X" name in generated code. For normal user code, this is fine
  * because references to X will also be renamed. However, if both the import and any references are
@@ -63,21 +63,21 @@ export function getDefaultImportDeclaration(expr: WrappedNodeExpr<unknown>): ts.
  * 的引用也会被重命名。但是，如果导入和任何引用都在转换器中添加，TypeScript
  * 不会将两者关联起来，并且在重命名导入变量时将保持“X”引用悬空。生成的代码类似于：
  *
+ * ```
  * const module_1 = require('some/module');
  * console.log(X); // now X is a dangling reference.
- *
- * const module_1 = require('some/module'); console.log(X); // 现在 X 是一个悬挂引用。
+ * ```
  *
  * Therefore, we cannot synthetically add default imports, and must reuse the imports that users
  * include. Doing this poses a challenge for imports that are only consumed in the type position in
- * the user's code. If Angular reuses the imported symbol in a value position (for example, we
- * see a constructor parameter of type Foo and try to write "inject(Foo)") we will also end up with
+ * the user's code. If Angular reuses the imported symbol in a value position \(for example, we
+ * see a constructor parameter of type Foo and try to write `inject(Foo)`\) we will also end up with
  * a dangling reference, as TS will elide the import because it was only used in the type position
  * originally.
  *
  * 因此，我们不能综合添加默认导入，必须重用用户包含的导入。这样做对仅在用户代码中的类型位置使用的导入提出了挑战。如果
  * Angular 在值位置重用导入的符号（例如，我们看到一个 Foo 类型的构造函数参数并尝试写为
- * "inject(Foo)"），我们最终将有一个悬挂引用，因为 TS 将省略导入，因为它最初仅用于类型位置。
+ * `inject(Foo)`），我们最终将有一个悬挂引用，因为 TS 将省略导入，因为它最初仅用于类型位置。
  *
  * To avoid this, the compiler must patch the emit resolver, and should only do this for imports
  * which are actually consumed. The `DefaultImportTracker` keeps track of these imports as they're

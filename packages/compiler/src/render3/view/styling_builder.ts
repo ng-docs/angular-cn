@@ -33,8 +33,8 @@ const IMPORTANT_FLAG = '!important';
  *
  * 注册绑定时，它将将以下信息放在 `LView` 中：
  *
- * slot 1) binding value
- * slot 2) cached value (all other values collected before it in string form)
+ * slot 1\) binding value
+ * slot 2\) cached value \(all other values collected before it in string form\)
  *
  * 插槽 1）绑定值插槽 2）缓存值（在它之前以字符串形式收集的所有其他值）
  *
@@ -42,9 +42,9 @@ const IMPORTANT_FLAG = '!important';
  *
  * 注册绑定时，它将将以下信息放在 `TData` 中：
  *
- * slot 1) prop name
- * slot 2) binding index that points to the previous style/class binding (and some extra config
- * values)
+ * slot 1\) prop name
+ * slot 2\) binding index that points to the previous style/class binding \(and some extra config
+ * values\)
  *
  * 插槽 1）道具名称插槽 2）指向前一个样式/类绑定（以及一些额外的配置值）的绑定索引
  *
@@ -124,13 +124,13 @@ interface BoundStylingEntry {
 }
 
 /**
- * Produces creation/update instructions for all styling bindings (class and style)
+ * Produces creation/update instructions for all styling bindings \(class and style\)
  *
  * 为所有样式绑定（类和风格）生成创建/更新操作指南
  *
  * It also produces the creation instruction to register all initial styling values
- * (which are all the static class="..." and style="..." attribute values that exist
- * on an element within a template).
+ * \(which are all the static class="..." and style="..." attribute values that exist
+ * on an element within a template\).
  *
  * 它还会生成创建指令来注册所有初始样式值（这是模板中元素上存在的所有 static class="..." 和
  * style="..." 属性值）。
@@ -139,15 +139,15 @@ interface BoundStylingEntry {
  *
  * 下面的构建器类会处理针对以下情况的生成操作指南：
  *
- * - Static style/class attributes (style="..." and class="...")
+ * - Static style/class attributes \(style="..." and class="..."\)
  *
  *   静态样式/类属性（style="..." 和 class="..."）
  *
- * - Dynamic style/class map bindings (`[style]="map"` and `[class]="map|string"`)
+ * - Dynamic style/class map bindings \(`[style]="map"` and `[class]="map|string"`\)
  *
  *   动态样式/类映射绑定（`[style]="map"` 和 `[class]="map|string"`）
  *
- * - Dynamic style/class property bindings (`[style.prop]="exp"` and `[class.name]="exp"`)
+ * - Dynamic style/class property bindings \(`[style.prop]="exp"` and `[class.name]="exp"`\)
  *
  *   动态样式/类属性绑定（ `[style.prop]="exp"` 和 `[class.name]="exp"` ）
  *
@@ -157,14 +157,14 @@ interface BoundStylingEntry {
  *
  * 由于所有这些情况下的复杂关系，为这些属性/属性/绑定生成的指令必须按正确的顺序完成。这些必须生成的顺序如下：
  *
- * if (createMode) {
- *   styling(...)
+ * if \(createMode\) {
+ *   styling\(...\)
  * }
- * if (updateMode) {
- *   styleMap(...)
- *   classMap(...)
- *   styleProp(...)
- *   classProp(...)
+ * if \(updateMode\) {
+ *   styleMap\(...\)
+ *   classMap\(...\)
+ *   styleProp\(...\)
+ *   classProp\(...\)
  * }
  *
  * The creation/update methods within the builder class produce these instructions.
@@ -182,7 +182,7 @@ export class StylingBuilder {
   private _hasInitialValues = false;
   /**
    * Whether or not there are any styling bindings present
-   *  (i.e. `[style]`, `[class]`, `[style.prop]` or `[class.name]`)
+   *  \(i.e. `[style]`, `[class]`, `[style.prop]` or `[class.name]`\)
    *
    * 是否存在任何样式绑定（即 `[style]`、`[class]`、`[style.prop]` 或 `[class.name]`）
    *
@@ -255,8 +255,8 @@ export class StylingBuilder {
    *
    * 将给定的输入注册到样式构建器，以供以后生成 AOT 代码时使用。
    *
-   * The code below will only accept the input if it is somehow tied to styling (whether it be
-   * style/class bindings or static style/class attributes).
+   * The code below will only accept the input if it is somehow tied to styling \(whether it be
+   * style/class bindings or static style/class attributes\).
    *
    * 下面的代码仅在输入以某种方式与样式绑定（无论是样式/类绑定还是静态样式/类属性）时才接受输入。
    *
@@ -361,7 +361,7 @@ export class StylingBuilder {
    *
    * 将元素的静态样式字符串值注册到构建器。
    *
-   * @param value the style string (e.g. `width:100px; height:200px;`)
+   * @param value the style string \(e.g. `width:100px; height:200px;`\)
    *
    * 样式字符串（例如 `width:100px; height:200px;`）
    *
@@ -376,7 +376,7 @@ export class StylingBuilder {
    *
    * 将元素的静态类字符串值注册到构建器。
    *
-   * @param value the className string (e.g. `disabled gold zoom`)
+   * @param value the className string \(e.g. `disabled gold zoom`\)
    *
    * className 字符串（例如 `disabled gold zoom`）
    *
@@ -422,7 +422,7 @@ export class StylingBuilder {
    * 使用 `elementHostAttrs` 的所有表达式和参数构建指令。
    *
    * The instruction generation code below is used for producing the AOT statement code which is
-   * responsible for registering initial styles (within a directive hostBindings' creation block),
+   * responsible for registering initial styles \(within a directive hostBindings' creation block\),
    * as well as any of the provided attribute values, to the directive host element.
    *
    * 下面的指令生成代码用于生成 AOT 语句代码，该代码负责将初始样式（在指令 hostBindings

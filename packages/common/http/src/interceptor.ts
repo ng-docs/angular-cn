@@ -41,13 +41,12 @@ import {HttpEvent} from './response';
  * @see [HTTP Guide](guide/http#intercepting-requests-and-responses)
  *
  * [HTTP 一章](guide/http#intercepting-requests-and-responses)
- *
  * @usageNotes
  *
  * To use the same instance of `HttpInterceptors` for the entire app, import the `HttpClientModule`
  * only in your `AppModule`, and add the interceptors to the root application injector.
- * If you import `HttpClientModule` multiple times across different modules (for example, in lazy
- * loading modules), each import creates a new copy of the `HttpClientModule`, which overwrites the
+ * If you import `HttpClientModule` multiple times across different modules \(for example, in lazy
+ * loading modules\), each import creates a new copy of the `HttpClientModule`, which overwrites the
  * interceptors provided in the root module.
  *
  * 要想在整个应用中使用 `HttpInterceptors` 的同一个实例，就只能在 `AppModule` 模块中导入 `HttpClientModule`，并且把拦截器都添加到应用的根注入器中。 如果你在不同的模块中多次导入 `HttpClientModule`，则每次导入都会创建 `HttpClientModule` 的一个新复本，它将会覆盖根模块上提供的那些拦截器。
@@ -116,9 +115,9 @@ export type HttpHandlerFn = (req: HttpRequest<unknown>) => Observable<HttpEvent<
  *
  * `HttpInterceptorFn` 是 `HttpClient` 在发出请求时调用的中间件函数。这些函数有机会修改传出请求或任何返回的响应，以及阻止、重定向或以其他方式更改请求或响应语义。
  *
- * An `HttpHandlerFn` representing the next interceptor (or the backend which will make a real HTTP
- * request) is provided. Most interceptors will delegate to this function, but that is not required
- * (see `HttpHandlerFn` for more details).
+ * An `HttpHandlerFn` representing the next interceptor \(or the backend which will make a real HTTP
+ * request\) is provided. Most interceptors will delegate to this function, but that is not required
+ * \(see `HttpHandlerFn` for more details\).
  *
  * 提供了一个表示下一个拦截器（或将发出真实 HTTP 请求的后端）的 `HttpHandlerFn` 。大多数拦截器会委托给此函数，但这不是必需的（有关详细信息，请参阅 `HttpHandlerFn` ）。
  *
@@ -135,13 +134,14 @@ export type HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn)
  * Function which invokes an HTTP interceptor chain.
  *
  * Each interceptor in the interceptor chain is turned into a `ChainedInterceptorFn` which closes
- * over the rest of the chain (represented by another `ChainedInterceptorFn`). The last such
+ * over the rest of the chain \(represented by another `ChainedInterceptorFn`\). The last such
  * function in the chain will instead delegate to the `finalHandlerFn`, which is passed down when
  * the chain is invoked.
  *
  * This pattern allows for a chain of many interceptors to be composed and wrapped in a single
  * `HttpInterceptorFn`, which is a useful abstraction for including different kinds of interceptors
- * (e.g. legacy class-based interceptors) in the same chain.
+ * \(e.g. legacy class-based interceptors\) in the same chain.
+ *
  */
 type ChainedInterceptorFn<RequestT> = (req: HttpRequest<RequestT>, finalHandlerFn: HttpHandlerFn) =>
     Observable<HttpEvent<RequestT>>;

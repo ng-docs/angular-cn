@@ -12,14 +12,14 @@
  * The reason is:
  *
  * 1. Promise.prototype.then should trigger ZoneSpec.scheduleTask and acts as a microTask
- * 2. Promise should be able to controlled by fakeAsync(), so Promise.prototype.then can work as
- *    sync operation in fakeAsync()
+ * 2. Promise should be able to controlled by fakeAsync\(\), so Promise.prototype.then can work as
+ *    sync operation in fakeAsync\(\)
  * 3. Promise unhandledRejection can be handled by ZoneSpec.onHandleError hook
  *
  * And this implementation also has it's disadvantage.
  *
  * 1. We need to implement a full Promise spec by ourselves.
- * 2. We need to implement the new APIs for Promise such as (all, allSettled, any...) when the new
+ * 2. We need to implement the new APIs for Promise such as \(all, allSettled, any...\) when the new
  *    APIs are available.
  * 3. Promise behavior is different with the native one, such as the timing of then callback.
  * 4. Can not handle the some vm operation requires native Promise such as async/await or
@@ -34,10 +34,10 @@
  *
  * Also this new implementation introduces breaking changes.
  *
- * 1. Promise can not be easily handled by fakeAsync(), and since we will deprecate fakeAsync() in
+ * 1. Promise can not be easily handled by fakeAsync\(\), and since we will deprecate fakeAsync\(\) in
  *    the future, this is the first step.
- * 2. Promise unhandled rejection happened inside new Promise(callback) will not be handled by
- *    ZoneSpec.onHandleError(thenCallback error will not be be impacted).
+ * 2. Promise unhandled rejection happened inside new Promise\(callback\) will not be handled by
+ *    ZoneSpec.onHandleError\(thenCallback error will not be be impacted\).
  *
  * So now we only introduces this change to `zone-node` bundle, since the breaking change will be
  * minor for NodeJS environment,

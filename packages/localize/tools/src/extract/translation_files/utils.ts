@@ -21,7 +21,7 @@ import {MessageId, ɵParsedMessage, ɵSourceLocation} from '@angular/localize';
  *
  * 为确保消息以确定的顺序呈现：
  *
- * - the messages within a group are sorted by location (file path, then start position)
+ * - the messages within a group are sorted by location \(file path, then start position\)
  *
  *   组中的消息按位置（文件路径，然后是开始位置）排序
  *
@@ -32,18 +32,15 @@ import {MessageId, ɵParsedMessage, ɵSourceLocation} from '@angular/localize';
  * @param messages the messages to consolidate.
  *
  * 要合并的消息。
- *
  * @param getMessageId a function that will compute the message id of a message.
  *
  * 一个将计算消息的消息 id 的函数。
- *
  * @returns
  *
  * an array of message groups, where each group is an array of messages that have the same
  *     id.
  *
  * 消息组的数组，其中每个组都是具有相同 id 的消息数组。
- *
  */
 export function consolidateMessages(
     messages: ɵParsedMessage[],

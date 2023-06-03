@@ -3,7 +3,7 @@
 # 应用外壳
 
 Application shell is a way to render a portion of your application using a route at build time.
-It can improve the user experience by quickly launching a static rendered page (a skeleton common to all pages) while the browser downloads the full client version and switches to it automatically after the code loads.
+It can improve the user experience by quickly launching a static rendered page \(a skeleton common to all pages\) while the browser downloads the full client version and switches to it automatically after the code loads.
 
 应用外壳是一种在构建期间借助路由渲染部分应用的方法。它可以通过快速启动一个静态渲染页面（所有页面的公共骨架）来改善用户体验。与此同时，浏览器会下载完整的客户端版本，并在代码加载后自动切换到完整版。
 

@@ -109,13 +109,12 @@ export class AnimationTransitionFactory {
  * Besides that the function doesn't have any other effect.
  *
  * Note: this check is done here after the timelines are built instead of doing on a lower level so
- * that we can make sure that the warning appears only once per instruction (we can aggregate here
- * all the issues instead of finding them separately).
+ * that we can make sure that the warning appears only once per instruction \(we can aggregate here
+ * all the issues instead of finding them separately\).
  *
  * @param timelines The built timelines for the current instruction.
  * @param triggerName The name of the trigger for the current instruction.
  * @param driver Animation driver used to perform the check.
- *
  */
 function checkNonAnimatableInTimelines(
     timelines: AnimationTimelineInstruction[], triggerName: string, driver: AnimationDriver): void {

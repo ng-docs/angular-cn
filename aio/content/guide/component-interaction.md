@@ -48,15 +48,15 @@ This cookbook contains recipes for common component communication scenarios in w
 
 ## 通过输入型绑定把数据从父组件传到子组件。
 
-`HeroChildComponent` has two ***input properties***, typically adorned with [@Input() decorator](guide/inputs-outputs#input).
+`HeroChildComponent` has two ***input properties***, typically adorned with [`@Input()` decorator](guide/inputs-outputs#input).
 
-`HeroChildComponent` 有两个***输入型属性***，它们通常带[@Input 装饰器](guide/inputs-outputs#input)。
+`HeroChildComponent` 有两个***输入型属性***，它们通常带[`@Input()` 装饰器](guide/inputs-outputs#input)。
 
 <code-example header="component-interaction/src/app/hero-child.component.ts" path="component-interaction/src/app/hero-child.component.ts"></code-example>
 
 The second `@Input` aliases the child component property name `masterName` as `'master'`.
 
-第二个 `@Input` 为子组件的属性名 `masterName` 指定一个别名 `master`(译者注：不推荐为起别名，参阅风格指南).
+第二个 `@Input` 为子组件的属性名 `masterName` 指定一个别名 `master`（译者注：不推荐为起别名，参阅风格指南）.
 
 The `HeroParentComponent` nests the child `HeroChildComponent` inside an `*ngFor` repeater, binding its `master` string property to the child's `master` alias, and each iteration's `hero` instance to the child's `hero` property.
 
@@ -197,27 +197,27 @@ Test that ***both*** input properties are set initially and that button clicks t
 The child component exposes an `EventEmitter` property with which it `emits` events when something happens.
 The parent binds to that event property and reacts to those events.
 
-子组件暴露一个 `EventEmitter` 属性，当事件发生时，子组件利用该属性 `emits`(向上弹射)事件。父组件绑定到这个事件属性，并在事件发生时作出回应。
+子组件暴露一个 `EventEmitter` 属性，当事件发生时，子组件利用该属性 `emits` （发出）事件。父组件绑定到这个事件属性，并在事件发生时作出回应。
 
-The child's `EventEmitter` property is an ***output property***, typically adorned with an [@Output() decorator](guide/inputs-outputs#output) as seen in this `VoterComponent`:
+The child's `EventEmitter` property is an ***output property***, typically adorned with an [`@Output()` decorator](guide/inputs-outputs#output) as seen in this `VoterComponent`:
 
-子组件的 `EventEmitter` 属性是一个**输出属性**，通常带有[@Output 装饰器](guide/inputs-outputs#output)，就像在 `VoterComponent` 中看到的。
+子组件的 `EventEmitter` 属性是一个**输出属性**，通常带有[`@Output()` 装饰器](guide/inputs-outputs#output)，就像在 `VoterComponent` 中看到的。
 
 <code-example header="component-interaction/src/app/voter.component.ts" path="component-interaction/src/app/voter.component.ts"></code-example>
 
 Clicking a button triggers emission of a `true` or `false`, the boolean *payload*.
 
-点击按钮会触发 `true` 或 `false`(布尔型*有效载荷*)的事件。
+点击按钮会触发 `true` 或 `false`（布尔型*有效载荷*）的事件。
 
 The parent `VoteTakerComponent` binds an event handler called `onVoted()` that responds to the child event payload `$event` and updates a counter.
 
-父组件 `VoteTakerComponent` 绑定了一个事件处理器(`onVoted()`)，用来响应子组件的事件(`$event`)并更新一个计数器。
+父组件 `VoteTakerComponent` 绑定了一个事件处理器（`onVoted()`），用来响应子组件的事件（`$event`）并更新一个计数器。
 
 <code-example header="component-interaction/src/app/votetaker.component.ts" path="component-interaction/src/app/votetaker.component.ts"></code-example>
 
 The framework passes the event argument —represented by `$event`— to the handler method, and the method processes it:
 
-本框架把事件参数(用 `$event` 表示)传给事件处理方法，该方法会处理它：
+本框架把事件参数（用 `$event` 表示）传给事件处理方法，该方法会处理它：
 
 <div class="lightbox">
 
@@ -270,7 +270,7 @@ The parent component cannot data bind to the child's `start` and `stop` methods 
 Place a local variable, `#timer`, on the tag `<app-countdown-timer>` representing the child component.
 That gives you a reference to the child component and the ability to access *any of its properties or methods* from within the parent template.
 
-把本地变量(`#timer`)放到(`<app-countdown-timer>`)标签中，用来代表子组件。这样父组件的模板就得到了子组件的引用，于是可以在父组件的模板中访问子组件的所有属性和方法。
+把本地变量 `#timer` 放到 `<app-countdown-timer>` 标签中，用来代表子组件。这样父组件的模板就得到了子组件的引用，于是可以在父组件的模板中访问子组件的所有属性和方法。
 
 This example wires parent buttons to the child's `start` and `stop` and uses interpolation to display the child's `seconds` property.
 
@@ -415,9 +415,9 @@ This `MissionService` connects the `MissionControlComponent` to multiple `Astron
 
 <code-example header="component-interaction/src/app/mission.service.ts" path="component-interaction/src/app/mission.service.ts"></code-example>
 
-The `MissionControlComponent` both provides the instance of the service that it shares with its children (through the `providers` metadata array) and injects that instance into itself through its constructor:
+The `MissionControlComponent` both provides the instance of the service that it shares with its children \(through the `providers` metadata array\) and injects that instance into itself through its constructor:
 
-`MissionControlComponent` 提供服务的实例，并将其共享给它的子组件(通过 `providers` 元数据数组)，子组件可以通过构造函数将该实例注入到自身。
+`MissionControlComponent` 提供服务的实例，并将其共享给它的子组件（通过 `providers` 元数据数组），子组件可以通过构造函数将该实例注入到自身。
 
 <code-example header="component-interaction/src/app/missioncontrol.component.ts" path="component-interaction/src/app/missioncontrol.component.ts"></code-example>
 

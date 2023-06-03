@@ -35,7 +35,7 @@ export interface SafeValue {}
 export interface SafeHtml extends SafeValue {}
 
 /**
- * Marker interface for a value that's safe to use as style (CSS).
+ * Marker interface for a value that's safe to use as style \(CSS\).
  *
  * 标记界面，可安全用作样式（CSS）。
  *
@@ -154,13 +154,11 @@ export function getSanitizationBypassType(value: any): BypassType|null {
  * @param trustedHtml `html` string which needs to be implicitly trusted.
  *
  * 需要隐式信任的 `html` 字符串。
- *
  * @returns
  *
  * a `html` which has been branded to be implicitly trusted.
  *
  * 已被标记为隐式信任的 `html` 。
- *
  */
 export function bypassSanitizationTrustHtml(trustedHtml: string): SafeHtml {
   return new SafeHtmlImpl(trustedHtml);
@@ -179,13 +177,11 @@ export function bypassSanitizationTrustHtml(trustedHtml: string): SafeHtml {
  * @param trustedStyle `style` string which needs to be implicitly trusted.
  *
  * 需要隐式信任的 `style` 字符串。
- *
  * @returns
  *
  * a `style` hich has been branded to be implicitly trusted.
  *
  * 一种被认为是隐式信任的 `style` 。
- *
  */
 export function bypassSanitizationTrustStyle(trustedStyle: string): SafeStyle {
   return new SafeStyleImpl(trustedStyle);
@@ -204,13 +200,11 @@ export function bypassSanitizationTrustStyle(trustedStyle: string): SafeStyle {
  * @param trustedScript `script` string which needs to be implicitly trusted.
  *
  * 需要隐式信任的 `script` 字符串。
- *
  * @returns
  *
  * a `script` which has been branded to be implicitly trusted.
  *
  * 已被标记为隐式信任的 `script` 。
- *
  */
 export function bypassSanitizationTrustScript(trustedScript: string): SafeScript {
   return new SafeScriptImpl(trustedScript);
@@ -229,13 +223,11 @@ export function bypassSanitizationTrustScript(trustedScript: string): SafeScript
  * @param trustedUrl `url` string which needs to be implicitly trusted.
  *
  * 需要隐式信任的 `url` 字符串。
- *
  * @returns
  *
  * a `url`  which has been branded to be implicitly trusted.
  *
  * 已被标记为隐式信任的 `url` 。
- *
  */
 export function bypassSanitizationTrustUrl(trustedUrl: string): SafeUrl {
   return new SafeUrlImpl(trustedUrl);
@@ -254,13 +246,11 @@ export function bypassSanitizationTrustUrl(trustedUrl: string): SafeUrl {
  * @param trustedResourceUrl `url` string which needs to be implicitly trusted.
  *
  * 需要隐式信任的 `url` 字符串。
- *
  * @returns
  *
  * a `url` which has been branded to be implicitly trusted.
  *
  * 已被标记为隐式信任的 `url` 。
- *
  */
 export function bypassSanitizationTrustResourceUrl(trustedResourceUrl: string): SafeResourceUrl {
   return new SafeResourceUrlImpl(trustedResourceUrl);

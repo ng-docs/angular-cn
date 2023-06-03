@@ -65,6 +65,7 @@ const resolvedPromise = (() => Promise.resolve())();
 
 /**
  * @description
+ *
  * Creates a `FormControl` instance from a domain model and binds it
  * to a form control element.
  *
@@ -82,34 +83,33 @@ const resolvedPromise = (() => Promise.resolve())();
  * `ngModel` selector to activate it.
  *
  * 这个指令可以单独使用，也可以用作一个大表单的一部分。你所要做的一切就是用 `ngModel`
- 选择器来激活它。
+ *  选择器来激活它。
  *
  * It accepts a domain model as an optional `Input`. If you have a one-way binding
  * to `ngModel` with `[]` syntax, changing the domain model's value in the component
  * class sets the value in the view. If you have a two-way binding with `[()]` syntax
- * (also known as 'banana-in-a-box syntax'), the value in the UI always syncs back to
+ * \(also known as 'banana-in-a-box syntax'\), the value in the UI always syncs back to
  * the domain model in your class.
  *
  * 它可以接受一个领域模型作为可选的 `Input`。如果使用 `[]` 语法来单向绑定到
- `ngModel`，那么在组件类中修改领域模型将会更新视图中的值。
+ *  `ngModel`，那么在组件类中修改领域模型将会更新视图中的值。
  * 如果使用 `[()]` 语法来双向绑定到 `ngModel`，那么视图中值的变化会随时同步回组件类中的领域模型。
  *
- * To inspect the properties of the associated `FormControl` (like thevalidity state),
- * export the directive into a local template variable using `ngModel` as the key (ex:*
- `#myVar="ngModel"`). You can then access the control using the directive's `control` property.
- * However, the most commonly used properties (like `valid` and `dirty`) also exist on the control
+ * To inspect the properties of the associated `FormControl` \(like thevalidity state\),
+ * export the directive into a local template variable using `ngModel` as the key \(ex:*
+ *  `#myVar="ngModel"`\). You can then access the control using the directive's `control` property.
+ * However, the most commonly used properties \(like `valid` and `dirty`\) also exist on the control
  * for direct access.
-  See a full list of properties directly available in* `AbstractControlDirective`.
+ *   See a full list of properties directly available in* `AbstractControlDirective`.
  *
  * 如果你希望查看与 `FormControl` 相关的属性（比如校验状态），你也可以使用 `ngModel`
- 作为键，把该指令导出到一个局部模板变量中（如：`#myVar="ngModel"`）。
+ *  作为键，把该指令导出到一个局部模板变量中（如：`#myVar="ngModel"`）。
  * 你也可以使用该指令的 `control` 属性来访问此控件，实际上你要用到的大多数属性（如 `valid` 和
- `dirty`）都会委托给该控件，这样你就可以直接访问这些属性了。
+ *  `dirty`）都会委托给该控件，这样你就可以直接访问这些属性了。
  * 你可以在 `AbstractControlDirective` 中直接查看这些属性的完整列表。
  *
  * @see `RadioControlValueAccessor`
  * @see `SelectControlValueAccessor`
- *
  * @usageNotes
  *
  * ### Using ngModel on a standalone control
@@ -117,9 +117,9 @@ const resolvedPromise = (() => Promise.resolve())();
  * ### 在独立控件模式下使用 ngModel
  *
  * 如果你希望查看与 `FormControl` 相关的属性（比如校验状态），你也可以使用 `ngModel`
- 作为键，把该指令导出到一个局部模板变量中（如：`#myVar="ngModel"`）。
+ *  作为键，把该指令导出到一个局部模板变量中（如：`#myVar="ngModel"`）。
  * 你也可以使用该指令的 `control` 属性来访问此控件，实际上你要用到的大多数属性（如 `valid` 和
- `dirty`）都会委托给该控件，这样你就可以直接访问这些属性了。
+ *  `dirty`）都会委托给该控件，这样你就可以直接访问这些属性了。
  * 你可以在 `AbstractControlDirective` 中直接查看这些属性的完整列表。
  *
  * The following examples show a simple standalone control using `ngModel`:
@@ -132,11 +132,11 @@ const resolvedPromise = (() => Promise.resolve())();
  * so that the control can be registered with the parent form under that name.
  *
  * 当在 `<form>` 标签中使用 `ngModel` 时，你还需要提供一个 `name`
- 属性，以便该控件可以使用这个名字把自己注册到父表单中。
+ *  属性，以便该控件可以使用这个名字把自己注册到父表单中。
  *
  * In the context of a parent form, it's often unnecessary to include one-way or two-way binding,
  * as the parent form syncs the value for you. You access its properties by exporting it into a
- * local template variable using `ngForm` such as (`#f="ngForm"`). Use the variable where
+ * local template variable using `ngForm` such as \(`#f="ngForm"`\). Use the variable where
  * needed on form submission.
  *
  * 在父表单的上下文中，通常不用包含单向或双向绑定，因为这个父表单将会为你同步该值。
@@ -148,7 +148,7 @@ const resolvedPromise = (() => Promise.resolve())();
  * than the domain model's value on submit.
  *
  * 如果你只是要为表单设置初始值，对 `ngModel`
- 使用单向绑定就够了。在提交时，你可以使用从表单导出的值，而不必使用领域模型的值。
+ *  使用单向绑定就够了。在提交时，你可以使用从表单导出的值，而不必使用领域模型的值。
  *
  * ### Using ngModel within a form
  *
@@ -186,7 +186,7 @@ const resolvedPromise = (() => Promise.resolve())();
  * to specify the NgModel's name, you must specify it using the `ngModelOptions` input instead.
  *
  * 下面的例子展示了设置 name 属性的另一种方式。该 name
- 属性要和自定义表单组件一起使用，而该自定义组件的 `@Input` 属性 name 已用作其它用途。
+ *  属性要和自定义表单组件一起使用，而该自定义组件的 `@Input` 属性 name 已用作其它用途。
  *
  * ```html
  * <form>

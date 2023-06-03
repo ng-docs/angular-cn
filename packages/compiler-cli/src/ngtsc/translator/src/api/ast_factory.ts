@@ -38,63 +38,56 @@ export interface AstFactory<TStatement, TExpression> {
   attachComments(statement: TStatement, leadingComments: LeadingComment[]): void;
 
   /**
-   * Create a literal array expression (e.g. `[expr1, expr2]`).
+   * Create a literal array expression \(e.g. `[expr1, expr2]`\).
    *
    * 创建一个文字数组表达式（例如 `[expr1, expr2]`）。
    *
    * @param elements a collection of the expressions to appear in each array slot.
    *
    * 要出现在每个数组槽中的表达式的集合。
-   *
    */
   createArrayLiteral(elements: TExpression[]): TExpression;
 
   /**
-   * Create an assignment expression (e.g. `lhsExpr = rhsExpr`).
+   * Create an assignment expression \(e.g. `lhsExpr = rhsExpr`\).
    *
    * 创建一个赋值表达式（例如 `lhsExpr = rhsExpr`）。
    *
    * @param target an expression that evaluates to the left side of the assignment.
    *
    * 计算结果为赋值左侧的表达式。
-   *
    * @param value an expression that evaluates to the right side of the assignment.
    *
    * 估算为赋值右侧的表达式。
-   *
    */
   createAssignment(target: TExpression, value: TExpression): TExpression;
 
   /**
-   * Create a binary expression (e.g. `lhs && rhs`).
+   * Create a binary expression \(e.g. `lhs && rhs`\).
    *
    * 创建一个二进制表达式（例如 `lhs && rhs`）。
    *
    * @param leftOperand an expression that will appear on the left of the operator.
    *
    * 将出现在运算符左侧的表达式。
-   *
    * @param operator the binary operator that will be applied.
    *
    * 将应用的二元运算符。
-   *
    * @param rightOperand an expression that will appear on the right of the operator.
    *
    * 将出现在运算符右侧的表达式。
-   *
    */
   createBinaryExpression(
       leftOperand: TExpression, operator: BinaryOperator, rightOperand: TExpression): TExpression;
 
   /**
-   * Create a block of statements (e.g. `{ stmt1; stmt2; }`).
+   * Create a block of statements \(e.g. `{ stmt1; stmt2; }`\).
    *
    * 创建一个语句块（例如 `{ stmt1; stmt2; }`）。
    *
    * @param body an array of statements to be wrapped in a block.
    *
    * 要包装在块中的语句数组。
-   *
    */
   createBlock(body: TStatement[]): TStatement;
 
@@ -106,12 +99,10 @@ export interface AstFactory<TStatement, TExpression> {
    * @param callee an expression that evaluates to a function to be called.
    *
    * 估算为要调用的函数的表达式。
-   *
    * @param args the arguments to be passed to the call.
    *
    * 要传递给调用的参数。
-   *
-   * @param pure whether to mark the call as pure (having no side-effects).
+   * @param pure whether to mark the call as pure \(having no side-effects\).
    *
    * 是否将调用标记为纯（没有副作用）。
    *
@@ -119,69 +110,61 @@ export interface AstFactory<TStatement, TExpression> {
   createCallExpression(callee: TExpression, args: TExpression[], pure: boolean): TExpression;
 
   /**
-   * Create a ternary expression (e.g. `testExpr ? trueExpr : falseExpr`).
+   * Create a ternary expression \(e.g. `testExpr ? trueExpr : falseExpr`\).
    *
    * 创建一个三元表达式（例如 `testExpr ? trueExpr : falseExpr`）。
    *
    * @param condition an expression that will be tested for truthiness.
    *
    * 将要测试其真实性的表达式。
-   *
    * @param thenExpression an expression that is executed if `condition` is truthy.
    *
    * 如果 `condition` 为真，则执行的表达式。
-   *
    * @param elseExpression an expression that is executed if `condition` is falsy.
    *
    * 如果 `condition` 为 false ，则执行的表达式。
-   *
    */
   createConditional(
       condition: TExpression, thenExpression: TExpression,
       elseExpression: TExpression): TExpression;
 
   /**
-   * Create an element access (e.g. `obj[expr]`).
+   * Create an element access \(e.g. `obj[expr]`\).
    *
    * 创建元素访问（例如 `obj[expr]`）。
    *
    * @param expression an expression that evaluates to the object to be accessed.
    *
    * 估算为要访问的对象的表达式。
-   *
    * @param element an expression that evaluates to the element on the object.
    *
    * 估算为对象上元素的表达式。
-   *
    */
   createElementAccess(expression: TExpression, element: TExpression): TExpression;
 
   /**
-   * Create a statement that is simply executing the given `expression` (e.g. `x = 10;`).
+   * Create a statement that is simply executing the given `expression` \(e.g. `x = 10;`\).
    *
    * 创建一个仅执行给定 `expression` 的语句（例如 `x = 10;`）。
    *
    * @param expression the expression to be converted to a statement.
    *
    * 要转换为语句的表达式。
-   *
    */
   createExpressionStatement(expression: TExpression): TStatement;
 
   /**
-   * Create a statement that declares a function (e.g. `function foo(param1, param2) { stmt; }`).
+   * Create a statement that declares a function \(e.g. `function foo(param1, param2) { stmt; }`\).
    *
    * 创建一个声明函数的语句（例如 `function foo(param1, param2) { stmt; }`）。
    *
    * @param functionName the name of the function.
    *
    * 函数的名称。
-   *
    * @param parameters the names of the function's parameters.
    *
    * 函数参数的名称。
-   *
-   * @param body a statement (or a block of statements) that are the body of the function.
+   * @param body a statement \(or a block of statements\) that are the body of the function.
    *
    * 作为函数体的语句（或语句块）。
    *
@@ -191,19 +174,17 @@ export interface AstFactory<TStatement, TExpression> {
 
   /**
    * Create an expression that represents a function
-   * (e.g. `function foo(param1, param2) { stmt; }`).
+   * \(e.g. `function foo(param1, param2) { stmt; }`\).
    *
    * 创建一个表示函数的表达式（例如 `function foo(param1, param2) { stmt; }`）。
    *
    * @param functionName the name of the function.
    *
    * 函数的名称。
-   *
    * @param parameters the names of the function's parameters.
    *
    * 函数参数的名称。
-   *
-   * @param body a statement (or a block of statements) that are the body of the function.
+   * @param body a statement \(or a block of statements\) that are the body of the function.
    *
    * 作为函数体的语句（或语句块）。
    *
@@ -224,20 +205,19 @@ export interface AstFactory<TStatement, TExpression> {
   createIdentifier(name: string): TExpression;
 
   /**
-   * Create an if statement (e.g. `if (testExpr) { trueStmt; } else { falseStmt; }`).
+   * Create an if statement \(e.g. `if (testExpr) { trueStmt; } else { falseStmt; }`\).
    *
    * 创建一个 if 语句（例如 `if (testExpr) { trueStmt; } else { falseStmt; }`）。
    *
    * @param condition an expression that will be tested for truthiness.
    *
    * 将要测试其真实性的表达式。
-   *
-   * @param thenStatement a statement (or block of statements) that is executed if `condition` is
+   * @param thenStatement a statement \(or block of statements\) that is executed if `condition` is
    *     truthy.
    *
    * 如果 `condition` 为真，则执行的语句（或语句块）。
    *
-   * @param elseStatement a statement (or block of statements) that is executed if `condition` is
+   * @param elseStatement a statement \(or block of statements\) that is executed if `condition` is
    *     falsy.
    *
    * 在 `condition` 为 falsy 时执行的语句（或语句块）。
@@ -248,14 +228,13 @@ export interface AstFactory<TStatement, TExpression> {
       elseStatement: TStatement|null): TStatement;
 
   /**
-   * Create a simple literal (e.g. `"string"`, `123`, `false`, etc).
+   * Create a simple literal \(e.g. `"string"`, `123`, `false`, etc\).
    *
    * 创建一个简单的文字（例如 `"string"`、`123`、`false` 等）。
    *
    * @param value the value of the literal.
    *
    * 文字的值。
-   *
    */
   createLiteral(value: string|number|boolean|null|undefined): TExpression;
 
@@ -276,11 +255,11 @@ export interface AstFactory<TStatement, TExpression> {
   createNewExpression(expression: TExpression, args: TExpression[]): TExpression;
 
   /**
-   * Create a literal object expression (e.g. `{ prop1: expr1, prop2: expr2 }`).
+   * Create a literal object expression \(e.g. `{ prop1: expr1, prop2: expr2 }`\).
    *
    * 创建一个文字对象表达式（例如 `{ prop1: expr1, prop2: expr2 }`）。
    *
-   * @param properties the properties (key and value) to appear in the object.
+   * @param properties the properties \(key and value\) to appear in the object.
    *
    * 要出现在对象中的属性（键和值）。
    *
@@ -300,30 +279,27 @@ export interface AstFactory<TStatement, TExpression> {
   createParenthesizedExpression(expression: TExpression): TExpression;
 
   /**
-   * Create a property access (e.g. `obj.prop`).
+   * Create a property access \(e.g. `obj.prop`\).
    *
    * 创建属性访问（例如 `obj.prop`）。
    *
    * @param expression an expression that evaluates to the object to be accessed.
    *
    * 估算为要访问的对象的表达式。
-   *
    * @param propertyName the name of the property to access.
    *
    * 要访问的属性的名称。
-   *
    */
   createPropertyAccess(expression: TExpression, propertyName: string): TExpression;
 
   /**
-   * Create a return statement (e.g `return expr;`).
+   * Create a return statement \(e.g `return expr;`\).
    *
    * 创建一个 return 语句（例如 `return expr;`）。
    *
    * @param expression the expression to be returned.
    *
    * 要返回的表达式。
-   *
    */
   createReturnStatement(expression: TExpression|null): TStatement;
 
@@ -349,42 +325,39 @@ export interface AstFactory<TStatement, TExpression> {
   createTaggedTemplate(tag: TExpression, template: TemplateLiteral<TExpression>): TExpression;
 
   /**
-   * Create a throw statement (e.g. `throw expr;`).
+   * Create a throw statement \(e.g. `throw expr;`\).
    *
    * 创建一个 throw 语句（例如 `throw expr;`）。
    *
    * @param expression the expression to be thrown.
    *
    * 要抛出的表达式。
-   *
    */
   createThrowStatement(expression: TExpression): TStatement;
 
   /**
-   * Create an expression that extracts the type of an expression (e.g. `typeof expr`).
+   * Create an expression that extracts the type of an expression \(e.g. `typeof expr`\).
    *
    * 创建一个提取表达式类型的表达式（例如 `typeof expr`）。
    *
    * @param expression the expression whose type we want.
    *
    * 我们想要其类型的表达式。
-   *
    */
   createTypeOfExpression(expression: TExpression): TExpression;
 
   /**
-   * Prefix the `operand` with the given `operator` (e.g. `-expr`).
+   * Prefix the `operand` with the given `operator` \(e.g. `-expr`\).
    *
    * 使用给定的 `operator`（例如 `-expr`）为 `operand` 添加前缀。
    *
-   * @param operator the text of the operator to apply (e.g. `+`, `-` or `!`).
+   * @param operator the text of the operator to apply \(e.g. `+`, `-` or `!`\).
    *
    * 要应用的运算符的文本（例如 `+`、`-` 或 `!`）。
    *
    * @param operand the expression that the operator applies to.
    *
    * 运算符适用的表达式。
-   *
    */
   createUnaryExpression(operator: UnaryOperator, operand: TExpression): TExpression;
 
@@ -521,8 +494,8 @@ export interface ObjectLiteralProperty<TExpression> {
 }
 
 /**
- * Information used by the `AstFactory` to create a template literal string (i.e. a back-ticked
- * string with interpolations).
+ * Information used by the `AstFactory` to create a template literal string \(i.e. a back-ticked
+ * string with interpolations\).
  *
  * `AstFactory` 用于创建模板文字字符串（即带有插值的反引号字符串）的信息。
  *

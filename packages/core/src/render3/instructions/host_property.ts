@@ -26,19 +26,16 @@ import {elementPropertyInternal, loadComponentRenderer, storePropertyBindingMeta
  *        renaming as part of minification.
  *
  * 属性的名称。因为它将转到 DOM，因此不会作为缩小的一部分重命名。
- *
  * @param value New value to write.
  *
  * 要写入的新值。
- *
  * @param sanitizer An optional function used to sanitize the value.
  *
  * 用于清理值的可选函数。
- *
  * @returns
  *
  * This function returns itself so that it may be chained
- * (e.g. `property('name', ctx.name)('title', ctx.title)`)
+ * \(e.g. `property('name', ctx.name)('title', ctx.title)`\)
  *
  * 此函数返回自己，以便它可以被链接（例如 `property('name', ctx.name)('title', ctx.title)`）
  *
@@ -59,19 +56,19 @@ export function ɵɵhostProperty<T>(
 
 
 /**
- * Updates a synthetic host binding (e.g. `[@foo]`) on a component or directive.
+ * Updates a synthetic host binding \(e.g. `[@foo]`\) on a component or directive.
  *
  * 更新组件或指令上的合成宿主绑定（例如 `[@foo]`）。
  *
  * This instruction is for compatibility purposes and is designed to ensure that a
- * synthetic host binding (e.g. `@HostBinding('@foo')`) properly gets rendered in
+ * synthetic host binding \(e.g. `@HostBinding('@foo')`\) properly gets rendered in
  * the component's renderer. Normally all host bindings are evaluated with the parent
  * component's renderer, but, in the case of animation @triggers, they need to be
- * evaluated with the sub component's renderer (because that's where the animation
- * triggers are defined).
+ * evaluated with the sub component's renderer \(because that's where the animation
+ * triggers are defined\).
  *
  * 本操作指南是出于兼容性目的，旨在确保合成宿主绑定（例如 `@HostBinding('@foo')`
- *）在组件的渲染器中正确呈现。通常，所有宿主绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
+ * ）在组件的渲染器中正确呈现。通常，所有宿主绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
  * ，它们需要使用子组件的渲染器进行估算（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `elementProperty`. This instruction
@@ -83,20 +80,16 @@ export function ɵɵhostProperty<T>(
  * @param index The index of the element to update in the data array
  *
  * 数据数组中要更新的元素的索引
- *
  * @param propName Name of property. Because it is going to DOM, this is not subject to
  *        renaming as part of minification.
  *
  * 属性的名称。因为它将转到 DOM，因此不会作为缩小的一部分重命名。
- *
  * @param value New value to write.
  *
  * 要写入的新值。
- *
  * @param sanitizer An optional function used to sanitize the value.
  *
  * 用于清理值的可选函数。
- *
  * @codeGenApi
  */
 export function ɵɵsyntheticHostProperty<T>(

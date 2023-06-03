@@ -208,7 +208,7 @@ For more information, see [Providers](guide/providers).
 ## `bootstrap` 数组
 
 The application launches by bootstrapping the root `AppModule`, which is also referred to as an `entryComponent`.
-Among other things, the bootstrapping process creates the component(s) listed in the `bootstrap` array and inserts each one into the browser DOM.
+Among other things, the bootstrapping process creates the component\(s\) listed in the `bootstrap` array and inserts each one into the browser DOM.
 
 应用是通过引导根模块 `AppModule` 来启动的，根模块还引用了 `entryComponent`。此外，引导过程还会创建 `bootstrap` 数组中列出的组件，并把它们逐个插入到浏览器的 DOM 中。
 

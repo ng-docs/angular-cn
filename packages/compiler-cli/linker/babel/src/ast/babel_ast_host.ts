@@ -173,7 +173,7 @@ function isNotSpreadElement(e: t.Expression|t.SpreadElement): e is t.Expression 
  *
  * 如果节点可以被认为是对象表达式的基于文本的属性名称，则返回 true 。
  *
- * Notably in the Babel AST, object patterns (for destructuring) could be of type
+ * Notably in the Babel AST, object patterns \(for destructuring\) could be of type
  * `t.PrivateName` so we need a distinction between object expressions and patterns.
  *
  * 值得注意的是，在 Babel AST 中，对象模式（用于解构）可能是 `t.PrivateName`

@@ -12,7 +12,7 @@ import {Subject} from 'rxjs';
 
 /**
  * Parser from https://tools.ietf.org/html/rfc3986#appendix-B
- * ^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?
+ * `^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?`
  *  12            3  4          5       6  7        8 9
  *
  * Example: http://www.ics.uci.edu/pub/ietf/uri/#Related

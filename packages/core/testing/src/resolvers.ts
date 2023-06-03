@@ -26,7 +26,7 @@ export interface Resolver<T> {
 }
 
 /**
- * Allows to override ivy metadata for tests (via the `TestBed`).
+ * Allows to override ivy metadata for tests \(via the `TestBed`\).
  *
  * 允许覆盖测试的 ivy 元数据（通过 `TestBed`）。
  *

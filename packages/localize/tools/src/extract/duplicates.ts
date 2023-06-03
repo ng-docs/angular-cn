@@ -14,7 +14,7 @@ import {serializeLocationPosition} from '../source_file_utils';
 /**
  * Check each of the given `messages` to find those that have the same id but different message
  * text. Add diagnostics messages for each of these duplicate messages to the given `diagnostics`
- * object (as necessary).
+ * object \(as necessary\).
  *
  * 检查给定的每条 `messages` ，以查找那些具有相同 id
  * 但消息文本不同的消息。将每个重复消息的诊断消息添加到给定的 `diagnostics` 对象（根据需要）。

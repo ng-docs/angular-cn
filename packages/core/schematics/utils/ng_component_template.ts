@@ -30,7 +30,7 @@ export interface ResolvedTemplate {
    */
   content: string;
   /**
-   * Start offset of the template content (e.g. in the inline source file)
+   * Start offset of the template content \(e.g. in the inline source file\)
    *
    * 模板内容的开始偏移量（例如在内联源文件中）
    *
@@ -66,7 +66,7 @@ export interface ResolvedTemplate {
 
 /**
  * Visitor that can be used to determine Angular templates referenced within given
- * TypeScript source files (inline templates or external referenced templates)
+ * TypeScript source files \(inline templates or external referenced templates\)
  *
  * 可用于确定给定 TypeScript 源文件中引用的 Angular 模板（内联模板或外部引用模板）的访问器
  *

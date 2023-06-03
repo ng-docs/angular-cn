@@ -1,4 +1,4 @@
-# Server-side rendering (SSR) with Angular Universal
+# Server-side rendering \(SSR\) with Angular Universal
 
 # Angular Universal：Angular 统一平台简介
 
@@ -6,7 +6,7 @@ This guide describes **Angular Universal**, a technology that allows Angular to 
 
 By default, Angular renders applications only in a *browser*. Angular Universal allows Angular to render an application on the *server*, generating *static* HTML contents, which represents an application state. Once the HTML contents is rendered in a browser, Angular bootstraps an application and reuses the information available in the server-generated HTML.
 
-With server-side rendering an application generally renders in a browser faster, giving users a chance to view the application UI before it becomes fully interactive. See ([the "Why use Server-Side Rendering?" section](#why-do-it)) below for addition information.
+With server-side rendering an application generally renders in a browser faster, giving users a chance to view the application UI before it becomes fully interactive. See \([the "Why use Server-Side Rendering?" section](#why-do-it)\) below for addition information.
 
 Also for a more detailed look at different techniques and concepts surrounding SSR, check out this [article](https://developers.google.com/web/updates/2019/02/rendering-on-the-web).
 
@@ -27,7 +27,7 @@ See the `engines` property in the [package.json](https://unpkg.com/browse/@angul
 
 The [Tour of Heroes tutorial](tutorial/tour-of-heroes) is the foundation for this walkthrough.
 
-In this example, the Angular CLI compiles and bundles the Universal version of the application with the [Ahead-of-Time (AOT) compiler](guide/aot-compiler).
+In this example, the Angular CLI compiles and bundles the Universal version of the application with the [Ahead-of-Time \(AOT\) compiler](guide/aot-compiler).
 A Node.js Express web server compiles HTML pages with Universal based on client requests.
 
 在这个例子中，Angular CLI 使用 [预先（AoT）编译器](guide/aot-compiler)编译并打包了该应用的 Universal 版本。Node.js Express Web 服务器则会根据客户端的请求，利用 Universal 编译 HTML 页面。
@@ -48,7 +48,7 @@ ng add &commat;nguniversal/express-engine
 
 </code-example>
 
-The command updates the application code to enable SSR and adds extra files to the project structure (files that are marked with the `*` symbol).
+The command updates the application code to enable SSR and adds extra files to the project structure \(files that are marked with the `*` symbol\).
 
 <div class='filetree'>
     <div class='file'>
@@ -202,22 +202,22 @@ There are three main reasons to create a Universal version of your application.
 
 有三个主要的理由来为你的应用创建一个 Universal 版本。
 
-* Facilitate web crawlers through [search engine optimization (SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)
+* Facilitate web crawlers through [search engine optimization \(SEO\)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)
 
-  通过[搜索引擎优化(SEO)](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)来帮助网络爬虫。
+  通过[搜索引擎优化（SEO）](https://static.googleusercontent.com/media/www.google.com/en//webmasters/docs/search-engine-optimization-starter-guide.pdf)来帮助网络爬虫。
 
 * Improve performance on mobile and low-powered devices
 
   提升手机和低功耗设备上的性能
 
-* Show the first page quickly with a [first-contentful paint (FCP)](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)
+* Show the first page quickly with a [first-contentful paint \(FCP\)](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)
 
-  迅速显示出第一个支持[首次内容绘制(FCP)](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)的页面
+  迅速显示出第一个支持[首次内容绘制（FCP）](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint)的页面
 
 <a id="seo"></a>
 <a id="web-crawlers"></a>
 
-### Facilitate web crawlers (SEO)
+### Facilitate web crawlers \(SEO\)
 
 ### 帮助网络爬虫（SEO）
 
@@ -461,7 +461,7 @@ file isn't found.
 
 <code-example header="server.ts (static files)" path="universal/server.ts" region="static"></code-example>
 
-### Using absolute URLs for HTTP (data) requests on the server
+### Using absolute URLs for HTTP \(data\) requests on the server
 
 ### 在服务端使用绝对 URL 进行 HTTP（数据）请求
 
@@ -481,7 +481,7 @@ If, for some reason, you are not using an `@nguniversal/*-engine` package, you m
 
 如果出于某种原因，你没有使用 `@nguniversal/*-engine` 包，你可能需要亲自处理它。
 
-The recommended solution is to pass the full request URL to the `options` argument of [renderModule()](api/platform-server/renderModule).
+The recommended solution is to pass the full request URL to the `options` argument of [`renderModule()`](api/platform-server/renderModule).
 This option is the least intrusive as it does not require any changes to the application.
 Here, "request URL" refers to the URL of the request as a response to which the application is being rendered on the server.
 For example, if the client requested `https://my-server.com/dashboard` and you are rendering the application on the server to respond to that request, `options.url` should be set to `https://my-server.com/dashboard`.

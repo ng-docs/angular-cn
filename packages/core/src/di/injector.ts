@@ -27,12 +27,10 @@ import {ProviderToken} from './provider_token';
  * @see ["DI Providers"](guide/dependency-injection-providers).
  *
  * [“DI 提供者”](guide/dependency-injection-providers) 。
- *
  * @see `StaticProvider`
- *
  * @usageNotes
  *
- *  The following example creates a service injector instance.
+ * The following example creates a service injector instance.
  *
  * 以下示例创建一个服务注入器实例。
  *
@@ -127,16 +125,14 @@ export abstract class Injector {
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
    * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
-   *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
    * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
-   *
    * @deprecated
    *
-   * use object-based flags (`InjectOptions`) instead.
+   * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   * 改用基于对象的标志（`InjectOptions`）。
    *
    */
   abstract get<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
@@ -150,7 +146,9 @@ export abstract class Injector {
   abstract get(token: any, notFoundValue?: any): any;
 
   /**
-   * @deprecated from v5 use the new signature Injector.create(options)
+   * @deprecated
+   *
+   * from v5 use the new signature Injector.create\(options\)
    *
    * 从 v5 开始使用新的签名 Injector.create（options）
    *
@@ -171,11 +169,11 @@ export abstract class Injector {
    *
    *   `providers` ：一组 [StaticProvider 类型](api/core/StaticProvider)的提供者。
    *
-   * * `parent`: (optional) A parent injector.
+   * * `parent`: \(optional\) A parent injector.
    *
    *   `parent` ：（可选）父注入器。
    *
-   * - `name`: (optional) A developer-defined identifying name for the new injector.
+   * - `name`: \(optional\) A developer-defined identifying name for the new injector.
    *
    *   `name` ：（可选）新注入器的开发人员自定义的标识名称。
    *

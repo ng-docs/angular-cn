@@ -7,8 +7,8 @@ These are elements that can appear in templates that have special meaning and be
 
 此下方的每个子目录都包含描述“特殊元素”的文档。这些是可以出现在 Angular 框架中具有特殊含义和行为的模板中的元素。
 
-Each element should have a markdown file with the same file name as the element's tag name (for example, `ng-container.md`).
-The file should be stored in a directory whose name is that of the Angular package under which this element should appear in the docs (usually `core`).
+Each element should have a markdown file with the same file name as the element's tag name \(for example, `ng-container.md`\).
+The file should be stored in a directory whose name is that of the Angular package under which this element should appear in the docs \(usually `core`\).
 
 每个元素都应该有一个与元素的标签名相同的文件名的 markdown 文件（例如 `ng-container.md`）。该文件应该存储在一个目录中，其名称是 Angular 包的名称，文档中此元素应该出现在该目录下（通常是 `core`）。
 

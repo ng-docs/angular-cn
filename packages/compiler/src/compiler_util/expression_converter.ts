@@ -23,7 +23,7 @@ export interface LocalResolver {
 
 /**
  * Converts the given expression AST into an executable output AST, assuming the expression is
- * used in an action binding (e.g. an event handler).
+ * used in an action binding \(e.g. an event handler\).
  *
  * 假定表达式在操作绑定（例如事件处理程序）中使用，将给定的表达式 AST 转换为可执行的输出 AST。
  *

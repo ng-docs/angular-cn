@@ -68,9 +68,9 @@ To prepare your project for translations, you should have a basic understanding 
 
   [Angular CLI][AioCliMain] [命令行][AioGuideGlossaryCommandLineInterfaceCli]，管理 Angular 开发周期的工具
 
-* [Extensible Markup Language (XML)][W3Xml] used for translation files
+* [Extensible Markup Language \(XML\)][W3Xml] used for translation files
 
-  [Extensible Markup Language (XML)][W3Xml] 用于翻译文件
+  [XML][W3Xml] 用于翻译文件
 
 ## Learn about common Angular internationalization tasks
 

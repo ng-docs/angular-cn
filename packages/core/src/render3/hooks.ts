@@ -36,15 +36,12 @@ import {isInCheckNoChangesMode} from './state';
  * @param directiveIndex The index of the directive in LView
  *
  * LView 中指令的索引
- *
  * @param directiveDef The definition containing the hooks to setup in tView
  *
  * 包含要在 tView 中设置的钩子的定义
- *
  * @param tView The current TView
  *
  * 当前的 TView
- *
  */
 export function registerPreOrderHooks(
     directiveIndex: number, directiveDef: DirectiveDef<any>, tView: TView): void {
@@ -95,11 +92,9 @@ export function registerPreOrderHooks(
  * @param tView The current TView
  *
  * 当前的 TView
- *
  * @param tNode The TNode whose directives are to be searched for hooks to queue
  *
  * 要搜索其指令以查找要排队的钩子的 TNode
- *
  */
 export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
   ngDevMode && assertFirstCreatePass(tView);
@@ -148,7 +143,7 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  *
  * 执行钩子需要复杂的逻辑，因为我们需要处理 2 个约束。
  *
- * 1. Init hooks (ngOnInit, ngAfterContentInit, ngAfterViewInit) must all be executed once and only
+ * 1. Init hooks \(ngOnInit, ngAfterContentInit, ngAfterViewInit\) must all be executed once and only
  *           once, across many change detection cycles. This must be true even if some hooks throw, or
  *     if some recursively trigger a change detection cycle. To solve that, it is required to track the
  *     state of the execution of these init hooks. This is done by storing and maintaining flags in the
@@ -182,7 +177,7 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
 
 
 /**
- * Executes pre-order check hooks ( OnChanges, DoChanges) given a view where all the init hooks were
+ * Executes pre-order check hooks \( OnChanges, DoChanges\) given a view where all the init hooks were
  * executed once. This is a light version of executeInitAndCheckPreOrderHooks where we can skip read
  * / write of the init-hooks related flags.
  *
@@ -192,28 +187,26 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  * @param lView The LView where hooks are defined
  *
  * 定义钩子的 LView
- *
  * @param hooks Hooks to be run
  *
  * 要运行的挂钩
- *
  * @param nodeIndex 3 cases depending on the value:
  *
  * 3 种情况，取决于值：
  *
- * - undefined: all hooks from the array should be executed (post-order case)
+ * - undefined: all hooks from the array should be executed \(post-order case\)
  *
  *   未定义：应该执行数组中的所有钩子（后序案例）
  *
- * - null: execute hooks only from the saved index until the end of the array (pre-order case, when
- *   flushing the remaining hooks)
+ * - null: execute hooks only from the saved index until the end of the array \(pre-order case, when
+ *   flushing the remaining hooks\)
  *
  *   null ：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
  *
- * - number: execute hooks only from the saved index until that node index exclusive (pre-order
- *   case, when executing select(number))
+ * - number: execute hooks only from the saved index until that node index exclusive \(pre-order
+ *   case, when executing select\(number\)\)
  *
- *   number ：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select(number) 时）
+ *   number ：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select\(number\) 时）
  *
  */
 export function executeCheckHooks(lView: LView, hooks: HookData, nodeIndex?: number|null) {
@@ -221,8 +214,8 @@ export function executeCheckHooks(lView: LView, hooks: HookData, nodeIndex?: num
 }
 
 /**
- * Executes post-order init and check hooks (one of AfterContentInit, AfterContentChecked,
- * AfterViewInit, AfterViewChecked) given a view where there are pending init hooks to be executed.
+ * Executes post-order init and check hooks \(one of AfterContentInit, AfterContentChecked,
+ * AfterViewInit, AfterViewChecked\) given a view where there are pending init hooks to be executed.
  *
  * 给定一个视图，其中有要执行的挂起的 init 钩子，执行后序初始化和检查钩子（
  * AfterContentInit、AfterContentChecked、AfterViewInit、AfterViewChecked 之一）。
@@ -230,32 +223,29 @@ export function executeCheckHooks(lView: LView, hooks: HookData, nodeIndex?: num
  * @param lView The LView where hooks are defined
  *
  * 定义钩子的 LView
- *
  * @param hooks Hooks to be run
  *
  * 要运行的挂钩
- *
  * @param initPhase A phase for which hooks should be run
  *
  * 应该运行钩子的阶段
- *
  * @param nodeIndex 3 cases depending on the value:
  *
  * 3 种情况，取决于值：
  *
- * - undefined: all hooks from the array should be executed (post-order case)
+ * - undefined: all hooks from the array should be executed \(post-order case\)
  *
  *   未定义：应该执行数组中的所有钩子（后序案例）
  *
- * - null: execute hooks only from the saved index until the end of the array (pre-order case, when
- *   flushing the remaining hooks)
+ * - null: execute hooks only from the saved index until the end of the array \(pre-order case, when
+ *   flushing the remaining hooks\)
  *
  *   null ：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
  *
- * - number: execute hooks only from the saved index until that node index exclusive (pre-order
- *   case, when executing select(number))
+ * - number: execute hooks only from the saved index until that node index exclusive \(pre-order
+ *   case, when executing select\(number\)\)
  *
- *   number ：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select(number) 时）
+ *   number ：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select\(number\) 时）
  *
  */
 export function executeInitAndCheckHooks(
@@ -291,32 +281,29 @@ export function incrementInitPhaseFlags(lView: LView, initPhase: InitPhaseState)
  * @param currentView The current view
  *
  * 当前视图
- *
  * @param arr The array in which the hooks are found
  *
  * 在其中找到钩子的数组
- *
  * @param initPhaseState the current state of the init phase
  *
  * 初始化阶段的当前状态
- *
  * @param currentNodeIndex 3 cases depending on the value:
  *
  * 3 种情况，取决于值：
  *
- * - undefined: all hooks from the array should be executed (post-order case)
+ * - undefined: all hooks from the array should be executed \(post-order case\)
  *
  *   未定义：应该执行数组中的所有钩子（后序案例）
  *
- * - null: execute hooks only from the saved index until the end of the array (pre-order case, when
- *   flushing the remaining hooks)
+ * - null: execute hooks only from the saved index until the end of the array \(pre-order case, when
+ *   flushing the remaining hooks\)
  *
  *   null ：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
  *
- * - number: execute hooks only from the saved index until that node index exclusive (pre-order
- *   case, when executing select(number))
+ * - number: execute hooks only from the saved index until that node index exclusive \(pre-order
+ *   case, when executing select\(number\)\)
  *
- *   number ：仅从保存的索引执行钩子，直到该节点索引不包括在内（预购情况，执行 select(number) 时）
+ *   number ：仅从保存的索引执行钩子，直到该节点索引不包括在内（预购情况，执行 select\(number\) 时）
  *
  */
 function callHooks(

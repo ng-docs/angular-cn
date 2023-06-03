@@ -116,7 +116,6 @@ export class RadioControlRegistry {
  *
  * `ControlValueAccessor` 用于写入单选控件的值和监听单选控件值的更改。这个值访问器由
  * `FormControlDirective`、`FormControlName` 和 `NgModel` 指令使用。
- *
  * @usageNotes
  *
  * ### Using radio buttons with reactive form directives
@@ -161,8 +160,8 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    *
    * 在此 input 元素上发生 change 事件时调用的已注册回调函数。
    *
-   * Note: we declare `onChange` here (also used as host listener) as a function with no arguments
-   * to override the `onChange` function (which expects 1 argument) in the parent
+   * Note: we declare `onChange` here \(also used as host listener\) as a function with no arguments
+   * to override the `onChange` function \(which expects 1 argument\) in the parent
    * `BaseControlValueAccessor` class.
    *
    * 注意：我们在此将 `onChange`（也用作宿主侦听器）声明为不带参数的函数，以覆盖父

@@ -125,7 +125,6 @@ export interface ControlValueAccessor {
    *
    * 在你自己的值访问器中实现 `registerOnTouched`
    * ，请保存给定函数，以便你的类在应将控件视为失焦或“已接触过”时调用它。
-   *
    * @usageNotes
    *
    * ### Store the callback function
@@ -142,7 +141,7 @@ export interface ControlValueAccessor {
    * }
    * ```
    *
-   * On blur (or equivalent), your class should call the registered function to allow
+   * On blur \(or equivalent\), your class should call the registered function to allow
    * the forms API to update itself:
    *
    * 在 blur（或等效事件）时，你的类应调用已注册的函数以允许表单 API 自行更新：
@@ -156,7 +155,6 @@ export interface ControlValueAccessor {
    * @param fn The callback function to register
    *
    * 要注册的回调函数
-   *
    */
   registerOnTouched(fn: any): void;
 
@@ -271,10 +269,10 @@ export class BaseControlValueAccessor {
 }
 
 /**
- * Base class for all built-in ControlValueAccessor classes (except DefaultValueAccessor, which is
- * used in case no other CVAs can be found). We use this class to distinguish between default CVA,
+ * Base class for all built-in ControlValueAccessor classes \(except DefaultValueAccessor, which is
+ * used in case no other CVAs can be found\). We use this class to distinguish between default CVA,
  * built-in CVAs and custom CVAs, so that Forms logic can recognize built-in CVAs and treat custom
- * ones with higher priority (when both built-in and custom CVAs are present).
+ * ones with higher priority \(when both built-in and custom CVAs are present\).
  *
  * 所有内置 ControlValueAccessor 类的基类（DefaultValueAccessor 除外，在找不到其他 CVA
  * 的情况下使用）。我们使用此类来区分默认 CVA、内置 CVA 和自定义 CVA，以便 Forms 逻辑可以识别内置

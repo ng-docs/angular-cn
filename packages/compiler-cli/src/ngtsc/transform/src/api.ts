@@ -177,7 +177,7 @@ export interface DecoratorHandler<D, A, S extends SemanticSymbol|null, R> {
    *
    * Analysis should always be a "pure" operation, with no side effects. This is because the
    * detect/analysis steps might be skipped for files which have not changed during incremental
-   * builds. Any side effects required for compilation (e.g. registration of metadata) should happen
+   * builds. Any side effects required for compilation \(e.g. registration of metadata\) should happen
    * in the `register` phase, which is guaranteed to run even for incremental builds.
    *
    * 分析应该始终是“纯”操作，没有副作用。这是因为对于增量构建期间未更改的文件，可能会跳过检测/分析步骤。编译所需的任何副作用（例如元数据的注册）都应该发生在
@@ -350,8 +350,8 @@ export interface DetectResult<M> {
 }
 
 /**
- * The output of an analysis operation, consisting of possibly an arbitrary analysis object (used as
- * the input to code generation) and potentially diagnostics if there were errors uncovered during
+ * The output of an analysis operation, consisting of possibly an arbitrary analysis object \(used as
+ * the input to code generation\) and potentially diagnostics if there were errors uncovered during
  * analysis.
  *
  * 分析操作的输出，可能由一个任意分析对象（用作代码生成的输入）组成，如果分析期间发现了错误，则可能是诊断信息。

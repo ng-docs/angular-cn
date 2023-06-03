@@ -61,7 +61,7 @@ export type ShapeOf<T> = {
 };
 
 /**
- * Determines if a particular object is of a given shape (duck-type version of `instanceof`.)
+ * Determines if a particular object is of a given shape \(duck-type version of `instanceof`.\)
  *
  * 确定特定对象是否具有给定的形状（`instanceof` 的鸭型版本。）
  *
@@ -76,11 +76,9 @@ export type ShapeOf<T> = {
  * @param obj Object to test for.
  *
  * 要测试的对象。
- *
  * @param shapeOf Desired shape.
  *
  * 所需的形状。
- *
  */
 export function isShapeOf<T>(obj: any, shapeOf: ShapeOf<T>): obj is T {
   if (typeof obj === 'object' && obj) {

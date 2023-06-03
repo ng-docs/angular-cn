@@ -127,7 +127,7 @@ export class NoopAnimationsModule {
  *
  * The function is useful when you want to bootstrap an application using
  * the `bootstrapApplication` function, but you need to disable animations
- * (for example, when running tests).
+ * \(for example, when running tests\).
  *
  * ```typescript
  * bootstrapApplication(RootComponent, {

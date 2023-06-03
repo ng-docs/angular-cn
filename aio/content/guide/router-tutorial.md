@@ -6,7 +6,7 @@ This tutorial describes how to build a single-page application, SPA that uses mu
 
 本教程将介绍如何构建一个使用多个 Angular 路由的单页面应用 SPA。
 
-In a Single Page Application (SPA), all of your application's functions exist in a single HTML page.
+In a Single Page Application \(SPA\), all of your application's functions exist in a single HTML page.
 As users access your application's features, the browser needs to render only the parts that matter to the user, instead of loading a new page.
 This pattern can significantly improve your application's user experience.
 
@@ -350,7 +350,7 @@ In this tutorial, that CSS class is `activebutton`, but you could use any class 
 
 再次查看你的申请表。单击其中一个按钮时，该按钮的样式会自动更新，并为该用户标出该活动组件。通过添加 `routerLinkActive` 指令，可以通知你的应用把一个特定的 CSS 类应用到当前的活动路由中。在本教程中，这个 CSS 类是 `activebutton`，但你可以使用任何想要的类。
 
-Note that we are also specifying a value for the `routerLinkActive`'s `ariaCurrentWhenActive`. This makes sure that visually impaired users (which may not perceive the different styling being applied) can also identify the active button. For more information see the Accessibility Best Practices [Active links identification section](guide/accessibility#active-links-identification).
+Note that we are also specifying a value for the `routerLinkActive`'s `ariaCurrentWhenActive`. This makes sure that visually impaired users \(which may not perceive the different styling being applied\) can also identify the active button. For more information see the Accessibility Best Practices [Active links identification section](guide/accessibility#active-links-identification).
 
 请注意，我们还为 `routerLinkActive` 的 `ariaCurrentWhenActive` 指定了一个值。这可确保视障用户（他们可能无法感知正在应用的不同样式）也可以识别活动按钮。有关更多信息，请参阅无障碍性最佳实践[活动链接标识部分](guide/accessibility#active-links-identification)。
 

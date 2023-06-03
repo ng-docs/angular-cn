@@ -50,12 +50,10 @@ export class Message {
    * @param nodes message AST
    *
    * 消息 AST
-   *
    * @param placeholders maps placeholder names to static content and their source spans
    *
    * 将占位符名称映射到静态内容及其源范围
-   *
-   * @param placeholderToMessage maps placeholder names to messages (used for nested ICU messages)
+   * @param placeholderToMessage maps placeholder names to messages \(used for nested ICU messages\)
    *
    * 将占位符名称映射到消息（用于嵌套 ICU 消息）
    *
@@ -150,7 +148,7 @@ export class Placeholder implements Node {
 
 export class IcuPlaceholder implements Node {
   /**
-   * Used to capture a message computed from a previous processing pass (see `setI18nRefs()`).
+   * Used to capture a message computed from a previous processing pass \(see `setI18nRefs()`\).
    *
    * 用于捕获从上一个处理过程计算的消息（请参阅 `setI18nRefs()`）。
    *

@@ -85,14 +85,14 @@ export interface ClassRecord {
  *
  * The `TraitCompiler` is responsible for processing all classes in the program. Any time a
  * `DecoratorHandler` matches a class, a "trait" is created to represent that Angular aspect of the
- * class (such as the class having a component definition).
+ * class \(such as the class having a component definition\).
  *
  * `TraitCompiler` 负责处理程序中的所有类。任何时候 `DecoratorHandler`
  * 与类匹配时，都会创建一个“特征”来表示类的该 Angular 切面（例如具有组件定义的类）。
  *
  * The `TraitCompiler` transitions each trait through the various phases of compilation, culminating
  * in the production of `CompileResult`s instructing the compiler to apply various mutations to the
- * class (like adding fields or type declarations).
+ * class \(like adding fields or type declarations\).
  *
  * `TraitCompiler` 通过编译的各个阶段转换每个特性，最终会生成 `CompileResult`
  * ，以指示编译器对类应用各种突变（例如添加字段或类型声明）。

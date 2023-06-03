@@ -29,7 +29,7 @@ export abstract class Validator {
 
   /**
    * Returns a Map that describes the properties of the validator
-   * (e.g. sample size, ...)
+   * \(e.g. sample size, ...\)
    *
    * 返回描述验证器属性（例如样本大小，……）的 Map
    *

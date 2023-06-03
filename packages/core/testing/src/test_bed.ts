@@ -110,22 +110,22 @@ export interface TestBed {
   inject<T>(token: ProviderToken<T>, notFoundValue: null|undefined, options: InjectOptions): T|null;
   inject<T>(token: ProviderToken<T>, notFoundValue?: T, options?: InjectOptions): T;
   /**
- * @deprecated
- *
- * use object-based flags (`InjectOptions`) instead.
- *
- * 改用基于对象的标志 ( `InjectOptions` ) 。
- *
- */
+   * @deprecated
+   *
+   * use object-based flags \(`InjectOptions`\) instead.
+   *
+   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   *
+   */
   inject<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**
- * @deprecated
- *
- * use object-based flags (`InjectOptions`) instead.
- *
- * 改用基于对象的标志 ( `InjectOptions` ) 。
- *
- */
+   * @deprecated
+   *
+   * use object-based flags \(`InjectOptions`\) instead.
+   *
+   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   *
+   */
   inject<T>(token: ProviderToken<T>, notFoundValue: null, flags?: InjectFlags): T|null;
 
   /**
@@ -407,18 +407,18 @@ export class TestBedImpl implements TestBed {
   /**
    * @deprecated
    *
-   * use object-based flags (`InjectOptions`) instead.
+   * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   * 改用基于对象的标志 \( `InjectOptions` \) 。
    *
    */
   static inject<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**
    * @deprecated
    *
-   * use object-based flags (`InjectOptions`) instead.
+   * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   * 改用基于对象的标志 \( `InjectOptions` \) 。
    *
    */
   static inject<T>(token: ProviderToken<T>, notFoundValue: null, flags?: InjectFlags): T|null;
@@ -648,18 +648,18 @@ export class TestBedImpl implements TestBed {
   /**
    * @deprecated
    *
-   * use object-based flags (`InjectOptions`) instead.
+   * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   * 改用基于对象的标志 \( `InjectOptions` \) 。
    *
    */
   inject<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
   /**
    * @deprecated
    *
-   * use object-based flags (`InjectOptions`) instead.
+   * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 ( `InjectOptions` ) 。
+   * 改用基于对象的标志 \( `InjectOptions` \) 。
    *
    */
   inject<T>(token: ProviderToken<T>, notFoundValue: null, flags?: InjectFlags): T|null;
@@ -947,7 +947,7 @@ export const TestBed: TestBedStatic = TestBedImpl;
 
 /**
  * Allows injecting dependencies in `beforeEach()` and `it()`. Note: this function
- * (imported from the `@angular/core/testing` package) can **only** be used to inject dependencies
+ * \(imported from the `@angular/core/testing` package\) can **only** be used to inject dependencies
  * in tests. To inject dependencies in your application code, use the [`inject`](api/core/inject)
  * function from the `@angular/core` package instead.
  *

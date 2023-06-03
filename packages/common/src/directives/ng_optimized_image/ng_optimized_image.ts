@@ -22,10 +22,11 @@ import {PreloadLinkCreator} from './preload-link-creator';
 
 /**
  * When a Base64-encoded image is passed as an input to the `NgOptimizedImage` directive,
- * an error is thrown. The image content (as a string) might be very long, thus making
+ * an error is thrown. The image content \(as a string\) might be very long, thus making
  * it hard to read an error message if the entire string is included. This const defines
  * the number of characters that should be included into the error message. The rest
  * of the content is truncated.
+ *
  */
 const BASE64_IMG_MAX_LENGTH_IN_ERROR = 50;
 
@@ -70,8 +71,9 @@ const ASPECT_RATIO_TOLERANCE = .1;
 
 /**
  * Used to determine whether the image has been requested at an overly
- * large size compared to the actual rendered image size (after taking
- * into account a typical device pixel ratio). In pixels.
+ * large size compared to the actual rendered image size \(after taking
+ * into account a typical device pixel ratio\). In pixels.
+ *
  */
 const OVERSIZED_IMAGE_TOLERANCE = 1000;
 
@@ -119,7 +121,7 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
 /**
  * Directive that improves image loading performance by enforcing best practices.
  *
- * `NgOptimizedImage` ensures that the loading of the Largest Contentful Paint (LCP) image is
+ * `NgOptimizedImage` ensures that the loading of the Largest Contentful Paint \(LCP\) image is
  * prioritized by:
  *
  * - Automatically setting the `fetchpriority` attribute on the `<img>` tag
@@ -225,7 +227,6 @@ export const IMAGE_CONFIG = new InjectionToken<ImageConfig>(
  * ```
  * <img ngSrc="logo.png" width="200" height="100">
  * ```
- *
  * @publicApi
  */
 @Directive({
@@ -319,10 +320,11 @@ export class NgOptimizedImage implements OnInit, OnChanges, OnDestroy {
   private _height?: number;
 
   /**
-   * The desired loading behavior (lazy, eager, or auto).
+   * The desired loading behavior \(lazy, eager, or auto\).
    *
    * Setting images as loading='eager' or loading='auto' marks them
    * as non-priority images. Avoid changing this input for priority images.
+   *
    */
   @Input() loading?: 'lazy'|'eager'|'auto';
 
@@ -815,7 +817,7 @@ function assertGreaterThanZero(dir: NgOptimizedImage, inputValue: unknown, input
  * Verifies that the rendered image is not visually distorted. Effectively this is checking:
  *
  * - Whether the "width" and "height" attributes reflect the actual dimensions of the image.
- * - Whether image styling is "correct" (see below for a longer explanation).
+ * - Whether image styling is "correct" \(see below for a longer explanation\).
  *
  */
 function assertNoImageDistortion(
@@ -970,7 +972,7 @@ function assertValidLoadingInput(dir: NgOptimizedImage) {
 }
 
 /**
- * Warns if NOT using a loader (falling back to the generic loader) and
+ * Warns if NOT using a loader \(falling back to the generic loader\) and
  * the image appears to be hosted on one of the image CDNs for which
  * we do have a built-in image loader. Suggests switching to the
  * built-in loader.
@@ -1002,7 +1004,8 @@ function assertNotMissingBuiltInLoader(ngSrc: string, imageLoader: ImageLoader) 
 }
 
 /**
- * Warns if ngSrcset is present and no loader is configured (i.e. the default one is being used).
+ * Warns if ngSrcset is present and no loader is configured \(i.e. the default one is being used\).
+ *
  */
 function assertNoNgSrcsetWithoutLoader(dir: NgOptimizedImage, imageLoader: ImageLoader) {
   if (dir.ngSrcset && imageLoader === noopImageLoader) {
@@ -1016,8 +1019,9 @@ function assertNoNgSrcsetWithoutLoader(dir: NgOptimizedImage, imageLoader: Image
 }
 
 /**
- * Warns if loaderParams is present and no loader is configured (i.e. the default one is being
- * used).
+ * Warns if loaderParams is present and no loader is configured \(i.e. the default one is being
+ * used\).
+ *
  */
 function assertNoLoaderParamsWithoutLoader(dir: NgOptimizedImage, imageLoader: ImageLoader) {
   if (dir.loaderParams && imageLoader === noopImageLoader) {

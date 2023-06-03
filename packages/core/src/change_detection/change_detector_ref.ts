@@ -43,7 +43,7 @@ import {ViewRef} from '../render3/view_ref';
  * ### 使用 `markForCheck()` 和 `CheckOnce` 策略
  *
  * The following example sets the `OnPush` change-detection strategy for a component
- * (`CheckOnce`, rather than the default `CheckAlways`), then forces a second check
+ * \(`CheckOnce`, rather than the default `CheckAlways`\), then forces a second check
  * after an interval. See [live demo](https://plnkr.co/edit/GC512b?p=preview).
  *
  * 下面的例子为组件设置了 `OnPush` 变更检测策略（`CheckOnce` 而不是默认的
@@ -88,14 +88,14 @@ import {ViewRef} from '../render3/view_ref';
  */
 export abstract class ChangeDetectorRef {
   /**
-   * When a view uses the {@link ChangeDetectionStrategy#OnPush OnPush} (checkOnce)
+   * When a view uses the {@link ChangeDetectionStrategy#OnPush OnPush} \(checkOnce\)
    * change detection strategy, explicitly marks the view as changed so that
    * it can be checked again.
    *
    * 当视图使用 {@link ChangeDetectionStrategy#OnPush
    * OnPush}（`checkOnce`）变更检测策略时，把该视图显式标记为已更改，以便它再次进行检查。
    *
-   * Components are normally marked as dirty (in need of rerendering) when inputs
+   * Components are normally marked as dirty \(in need of rerendering\) when inputs
    * have changed or events have fired in the view. Call this method to ensure that
    * a component is checked even if these triggers have not occurred.
    *
@@ -175,7 +175,7 @@ export abstract class ChangeDetectorRef {
 
 
 /**
- * Returns a ChangeDetectorRef (a.k.a. a ViewRef)
+ * Returns a ChangeDetectorRef \(a.k.a. a ViewRef\)
  *
  * 返回 ChangeDetectorRef（又名 ViewRef）
  *
@@ -187,28 +187,24 @@ export function injectChangeDetectorRef(flags: InjectFlags): ChangeDetectorRef {
 }
 
 /**
- * Creates a ViewRef and stores it on the injector as ChangeDetectorRef (public alias).
+ * Creates a ViewRef and stores it on the injector as ChangeDetectorRef \(public alias\).
  *
  * 创建一个 ViewRef 并将其作为 ChangeDetectorRef（公共别名）存储在注入器中。
  *
  * @param tNode The node that is requesting a ChangeDetectorRef
  *
  * 请求 ChangeDetectorRef 的节点
- *
  * @param lView The view to which the node belongs
  *
  * 节点所属的视图
- *
  * @param isPipe Whether the view is being injected into a pipe.
  *
  * 视图是否正在注入管道。
- *
  * @returns
  *
  * The ChangeDetectorRef to use
  *
  * 要使用的 ChangeDetectorRef
- *
  */
 function createViewRef(tNode: TNode, lView: LView, isPipe: boolean): ChangeDetectorRef {
   if (isComponentHost(tNode) && !isPipe) {

@@ -54,7 +54,7 @@ This provides several advantages over promise-based HTTP APIs:
 
 Angular 的 `HttpClient` 从 HTTP 方法调用中返回了可观察对象。比如，`http.get('/api')` 就会返回可观察对象。相对于基于承诺（Promise）的 HTTP API，它有一系列优点：
 
-* Observables do not mutate the server response (as can occur through chained `.then()` calls on promises).
+* Observables do not mutate the server response \(as can occur through chained `.then()` calls on promises\).
   Instead, you can use a series of operators to transform values as needed.
 
   可观察对象不会修改服务器的响应（和在 Promise 上串联起来的 `.then()` 调用一样）。反之，你可以使用一系列操作符来按需转换这些值。
@@ -89,7 +89,7 @@ The observable continuously updates the view with the current time.
 
 ## Router
 
-## 路由器 (router)
+## 路由器（router）
 
 [`Router.events`](api/router/Router#events) provides events as observables.
 You can use the `filter()` operator from RxJS to look for events of interest, and subscribe to them in order to make decisions based on the sequence of events in the navigation process.
@@ -109,7 +109,7 @@ Here's an example:
 
 ## Reactive forms
 
-## 响应式表单 (reactive forms)
+## 响应式表单（reactive forms）
 
 Reactive forms have properties that use observables to monitor form control values.
 The [`FormControl`](api/forms/FormControl) properties `valueChanges` and `statusChanges` contain observables that raise change events.

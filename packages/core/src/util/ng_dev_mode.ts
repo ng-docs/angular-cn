@@ -128,14 +128,14 @@ export function ngDevModeResetPerfCounters(): NgDevModePerfCounters {
  * 的生产构建，否则我们应该通过提供尽可能多的早期警告和错误来帮助开发人员。
  *
  * `ɵɵdefineComponent` is guaranteed to have been called before any component template functions
- * (and thus Ivy instructions), so a single initialization there is sufficient to ensure ngDevMode
+ * \(and thus Ivy instructions\), so a single initialization there is sufficient to ensure ngDevMode
  * is defined for the entire instruction set.
  *
  * `ɵɵdefineComponent` 保证已在任何组件模板函数（因此是 Ivy
  * 指令）之前调用，因此那里的单个初始化足以确保为整个指令集定义 ngDevMode 。
  *
  * When checking `ngDevMode` on toplevel, always init it before referencing it
- * (e.g. `((typeof ngDevMode === 'undefined' || ngDevMode) && initNgDevMode())`), otherwise you can
+ * \(e.g. `((typeof ngDevMode === 'undefined' || ngDevMode) && initNgDevMode())`\), otherwise you can
  *  get a `ReferenceError` like in https://github.com/angular/angular/issues/31595.
  *
  * 在 toplevel 上检查 `ngDevMode` 时，请始终在引用它之前初始化它（例如 `((typeof ngDevMode ===

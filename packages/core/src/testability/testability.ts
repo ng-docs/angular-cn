@@ -59,7 +59,7 @@ interface WaitCallback {
  *
  * This token acts as a bridge between the core bootstrap code and the `Testability` class. This is
  * needed to ensure that there are no direct references to the `Testability` class, so it can be
- * tree-shaken away (if not referenced). For the environments/setups when the `Testability` class
+ * tree-shaken away \(if not referenced\). For the environments/setups when the `Testability` class
  * should be available, this token is used to add a provider that references the `Testability`
  * class. Otherwise, only this token is retained in a bundle, but the `Testability` class is not.
  *
@@ -85,8 +85,8 @@ export const TESTABILITY_GETTER = new InjectionToken<GetTestability>('');
  *
  * Testability 服务提供了可以从浏览器访问的测试钩子。
  *
- * Angular applications bootstrapped using an NgModule (via `@NgModule.bootstrap` field) will also
- * instantiate Testability by default (in both development and production modes).
+ * Angular applications bootstrapped using an NgModule \(via `@NgModule.bootstrap` field\) will also
+ * instantiate Testability by default \(in both development and production modes\).
  *
  * 默认情况下，使用 NgModule（通过 `@NgModule.bootstrap` 字段）引导的 Angular 应用程序也将实例化
  * Testability（在开发和生产模式下）。
@@ -274,11 +274,10 @@ export class Testability implements PublicTestability {
    *    whichever comes first.
    *
    * 当 Angular 稳定或超时到期时调用的回调，以先到者为准。
-   *
    * @param timeout Optional. The maximum time to wait for Angular to become stable. If not
-   *    specified, whenStable() will wait forever.
+   *    specified, whenStable\(\) will wait forever.
    *
-   * 可选的。等待 Angular 稳定下来的最长时间。如果未指定，那么 whenStable() 将永远等待。
+   * 可选的。等待 Angular 稳定下来的最长时间。如果未指定，那么 whenStable\(\) 将永远等待。
    *
    * @param updateCb Optional. If specified, this callback will be invoked whenever the set of
    *    pending macrotasks changes. If this callback returns true doneCb will not be invoked
@@ -286,7 +285,6 @@ export class Testability implements PublicTestability {
    *
    * 可选的。如果指定，则每当挂起的宏任务集发生更改时，都会调用此回调。如果此回调返回
    * true，那么将不会调用 doneCb，并且不会发出进一步的更新。
-   *
    */
   whenStable(doneCb: Function, timeout?: number, updateCb?: Function): void {
     if (updateCb && !this.taskTrackingZone) {
@@ -445,7 +443,7 @@ export class TestabilityRegistry {
   }
 
   /**
-   * Get all registered applications(root elements)
+   * Get all registered applications\(root elements\)
    *
    * 获取所有注册的应用程序（根元素）
    *

@@ -12,7 +12,7 @@ import ts from 'typescript';
 const parseSpanComment = /^(\d+),(\d+)$/;
 
 /**
- * Reads the trailing comments and finds the first match which is a span comment (i.e. 4,10) on a
+ * Reads the trailing comments and finds the first match which is a span comment \(i.e. 4,10\) on a
  * node and returns it as an `AbsoluteSourceSpan`.
  *
  * 读取尾部注释并查找第一个匹配项，这是节点上的跨度注释（即 4,10），并将其作为 `AbsoluteSourceSpan`
@@ -51,7 +51,7 @@ export enum CommentTriviaType {
 }
 
 /**
- * Identifies what the TCB expression is for (for example, a directive declaration).
+ * Identifies what the TCB expression is for \(for example, a directive declaration\).
  *
  * 标识 TCB 表达式的用途（例如，指令声明）。
  *

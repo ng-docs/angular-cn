@@ -14,23 +14,20 @@ import {isDOMElement, isDOMText, isTI18n, isTIcu, isTNode, isTView} from './is_s
 
 
 /**
- * Generic matcher which asserts that an object is of a given shape (`shapePredicate`) and that it
+ * Generic matcher which asserts that an object is of a given shape \(`shapePredicate`\) and that it
  * contains a subset of properties.
  *
- * 通用匹配器，它断言一个对象具有给定的形状 ( `shapePredicate` )，并且它包含属性的子集。
+ * 通用匹配器，它断言一个对象具有给定的形状 \( `shapePredicate` \)，并且它包含属性的子集。
  *
  * @param name Name of `shapePredicate` to display when assertion fails.
  *
  * 断言失败时要显示的 `shapePredicate` 的名称。
- *
  * @param shapePredicate Predicate which verifies that the object is of correct shape.
  *
  * 验证对象具有正确形状的谓词。
- *
  * @param expected Expected set of properties to be found on the object.
  *
  * 要在对象上找到的预期属性集。
- *
  */
 export function matchObjectShape<T>(
     name: string, shapePredicate: (obj: any) => obj is T,

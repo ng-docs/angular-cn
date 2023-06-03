@@ -94,25 +94,22 @@ export class AdapterResourceLoader implements ResourceLoader {
    *
    * 加载资源后，它的值会被缓存，以便可以通过 `load()` 方法同步访问它。
    *
-   * @param resolvedUrl The url (resolved by a call to `resolve()`) of the resource to preload.
+   * @param resolvedUrl The url \(resolved by a call to `resolve()`\) of the resource to preload.
    *
    * 要预加载的资源的 url（通过调用 `resolve()` 来解析）。
    *
    * @param context Information about the resource such as the type and containing file.
    *
    * 有关资源的信息，例如类型和包含文件。
-   *
    * @returns
    *
    * A Promise that is resolved once the resource has been loaded or `undefined` if the
    * file has already been loaded.
    *
    * 加载资源后解析的 Promise ，如果已加载文件，则为 `undefined` 。
-   *
    * @throws An Error if pre-loading is not available.
    *
    * 如果预加载不可用，则会出现错误。
-   *
    */
   preload(resolvedUrl: string, context: ResourceLoaderContext): Promise<void>|undefined {
     if (!this.adapter.readResource) {
@@ -196,7 +193,7 @@ export class AdapterResourceLoader implements ResourceLoader {
    *
    * 资源的内容可能已通过先前对 `preload()` 的调用而被缓存。
    *
-   * @param resolvedUrl The url (resolved by a call to `resolve()`) of the resource to load.
+   * @param resolvedUrl The url \(resolved by a call to `resolve()`\) of the resource to load.
    *
    * 要加载的资源的 url（通过调用 `resolve()` 来解析）。
    *
@@ -205,7 +202,6 @@ export class AdapterResourceLoader implements ResourceLoader {
    * The contents of the resource.
    *
    * 资源的内容。
-   *
    */
   load(resolvedUrl: string): string {
     if (this.cache.has(resolvedUrl)) {

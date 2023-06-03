@@ -12,7 +12,7 @@ Hydration is the process that restores the server side rendered application on t
 
 ## Why is hydration important?
 
-Hydration improves application performance by avoiding extra work to re-create DOM nodes. Instead, Angular tries to match existing DOM elements to the applications structure at runtime and reuses DOM nodes when possible. This results in a performance improvement that can be measured using [Core Web Vitals (CWV)](https://web.dev/learn-core-web-vitals/) statistics, such as reducing the First Input Delay ([FID](https://web.dev/fid/)) and Largest Contentful Paint ([LCP](https://web.dev/lcp/)), as well as Cumulative Layout Shift ([CLS](https://web.dev/cls/)). Improving these numbers also affects things like SEO performance.
+Hydration improves application performance by avoiding extra work to re-create DOM nodes. Instead, Angular tries to match existing DOM elements to the applications structure at runtime and reuses DOM nodes when possible. This results in a performance improvement that can be measured using [Core Web Vitals \(CWV\)](https://web.dev/learn-core-web-vitals/) statistics, such as reducing the First Input Delay \([FID](https://web.dev/fid/)\) and Largest Contentful Paint \([LCP](https://web.dev/lcp/)\), as well as Cumulative Layout Shift \([CLS](https://web.dev/cls/)\). Improving these numbers also affects things like SEO performance.
 
 Without hydration enabled, server side rendered Angular applications will destroy and re-render the application's DOM, which may result in a visible UI flicker. This re-rendering can negatively impact [Core Web Vitals](https://web.dev/learn-core-web-vitals/) like [LCP](https://web.dev/lcp/) and cause a layout shift. Enabling hydration allows the existing DOM to be re-used and prevents a flicker.
 
@@ -20,7 +20,7 @@ Without hydration enabled, server side rendered Angular applications will destro
 
 ## How do you enable hydration in Angular
 
-Before you can get started with hydration, you must have a server side rendered (SSR) application. Follow the [Angular Universal Guide](https://angular.io/guide/universal) to enable server side rendering first. Once you have SSR working with your application, you can enable hydration by visiting your main app component or module and importing `provideClientHydration` from `@angular/platform-browser`. You'll then add that provider to your app's bootstrapping providers list.
+Before you can get started with hydration, you must have a server side rendered \(SSR\) application. Follow the [Angular Universal Guide](https://angular.io/guide/universal) to enable server side rendering first. Once you have SSR working with your application, you can enable hydration by visiting your main app component or module and importing `provideClientHydration` from `@angular/platform-browser`. You'll then add that provider to your app's bootstrapping providers list.
 
 ```typescript
 import {
@@ -63,7 +63,7 @@ You can confirm hydration is enabled by opening Developer Tools in your browser 
 
 ## Constraints
 
-Hydration imposes a few constraints on your application that are not present without hydration enabled. Ideally your application should have similar application structure (in terms of its DOM representation) on both the server and the client. The process of hydration expects the DOM tree to have the same structure in both places.
+Hydration imposes a few constraints on your application that are not present without hydration enabled. Ideally your application should have similar application structure \(in terms of its DOM representation\) on both the server and the client. The process of hydration expects the DOM tree to have the same structure in both places.
 
 If there is a mismatch between server and client DOM tree structures, the hydration process will encounter problems attempting to match up what was expected to what is actually present in the DOM. Components that do direct DOM manipulation using native DOM APIs are the most common culprit.
 
@@ -73,9 +73,9 @@ If there is a mismatch between server and client DOM tree structures, the hydrat
 
 If you have components that manipulate the DOM using native DOM APIs, the hydration process will encounter errors. Specific cases where DOM manipulation is a problem are situations like accessing the `document`, querying for specific elements, and injecting additional nodes using `appendChild`. Detaching DOM nodes and moving them to other locations will also result in errors.
 
-This is because Angular is unaware of these DOM changes and cannot resolve them during the hydration process. Angular will expect a certain structure, but it will encounter a different structure when attempting to hydrate. This mismatch will result in hydration failure and throw a DOM mismatch error ([see below](#errors)).
+This is because Angular is unaware of these DOM changes and cannot resolve them during the hydration process. Angular will expect a certain structure, but it will encounter a different structure when attempting to hydrate. This mismatch will result in hydration failure and throw a DOM mismatch error \([see below](#errors)\).
 
-It is best to refactor your component to avoid this sort of DOM manipulation. Try to use Angular APIs to do this work, if you can. If you cannot refactor this behavior, use the `ngSkipHydration` attribute ([described below](#ngskiphydration)) until you can refactor into a hydration friendly solution.
+It is best to refactor your component to avoid this sort of DOM manipulation. Try to use Angular APIs to do this work, if you can. If you cannot refactor this behavior, use the `ngSkipHydration` attribute \([described below](#ngskiphydration)\) until you can refactor into a hydration friendly solution.
 
 ### Valid HTML DOM structure
 

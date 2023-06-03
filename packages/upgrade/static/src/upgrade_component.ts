@@ -68,11 +68,11 @@ class Bindings {
  *
  * Note that we must do the following:
  *
- * * specify the directive's selector (`ng1-hero`)
+ * * specify the directive's selector \(`ng1-hero`\)
  * * specify all inputs and outputs that the AngularJS component expects
  * * derive from `UpgradeComponent`
  * * call the base class from the constructor, passing
- *   * the AngularJS name of the component (`ng1Hero`)
+ *   * the AngularJS name of the component \(`ng1Hero`\)
  *   * the `ElementRef` and `Injector` for the component wrapper
  *
  * @publicApi

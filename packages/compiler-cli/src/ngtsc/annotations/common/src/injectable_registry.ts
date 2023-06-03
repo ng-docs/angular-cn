@@ -18,8 +18,9 @@ export interface InjectableMeta {
 }
 
 /**
- * Registry that keeps track of classes that can be constructed via dependency injection (e.g.
- * injectables, directives, pipes).
+ * Registry that keeps track of classes that can be constructed via dependency injection \(e.g.
+ * injectables, directives, pipes\).
+ *
  */
 export class InjectableClassRegistry {
   private classes = new Map<ClassDeclaration, InjectableMeta>();

@@ -2,7 +2,7 @@
 
 # 依赖注入实战
 
-This guide explores many of the features of dependency injection (DI) in Angular.
+This guide explores many of the features of dependency injection \(DI\) in Angular.
 
 本章涉及到 Angular 依赖注入（DI）的很多特性。
 
@@ -16,9 +16,9 @@ See the <live-example></live-example> for a working example containing the code 
 
 <a id="multiple-service-instances"></a>
 
-## Multiple service instances (sandboxing)
+## Multiple service instances \(sandboxing\)
 
-## 多个服务实例(沙箱式隔离)
+## 多个服务实例（沙箱式隔离）
 
 Sometimes you want multiple instances of a service at *the same level* of the component hierarchy.
 
@@ -52,7 +52,7 @@ Three instances of `HeroBioComponent` can't share the same instance of `HeroCach
 
 Instead, each `HeroBioComponent` gets its *own* `HeroCacheService` instance by listing `HeroCacheService` in its metadata `providers` array.
 
-它们应该通过在自己的元数据(metadata)`providers` 数组里面列出 `HeroCacheService`, 这样每个 `HeroBioComponent` 就能*拥有*自己独立的 `HeroCacheService` 实例了。
+它们应该通过在自己的元数据（metadata）`providers` 数组里面列出 `HeroCacheService`, 这样每个 `HeroBioComponent` 就能*拥有*自己独立的 `HeroCacheService` 实例了。
 
 <code-example header="src/app/hero-bio.component.ts" path="dependency-injection-in-action/src/app/hero-bio.component.ts" region="component"></code-example>
 
@@ -85,7 +85,7 @@ By default, the DI framework searches for a provider in the injector hierarchy, 
 
 当类需要某个依赖项时，该依赖项就会作为参数添加到类的构造函数中。当 Angular 需要实例化该类时，就会调用 DI 框架来提供该依赖。默认情况下，DI 框架会在注入器树中查找一个提供者，从该组件的局部注入器开始，如果需要，则沿着注入器树向上冒泡，直到根注入器。
 
-* The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
+* The first injector configured with a provider supplies the dependency \(a service instance or value\) to the constructor
 
   第一个配置过该提供者的注入器就会把依赖（服务实例或值）提供给这个构造函数
 
@@ -141,7 +141,7 @@ Focus on the template:
 Now there's a new `<hero-contact>` element between the `<hero-bio>` tags.
 Angular *projects*, or *transcludes*, the corresponding `HeroContactComponent` into the `HeroBioComponent` view, placing it in the `<ng-content>` slot of the `HeroBioComponent` template.
 
-在 `<hero-bio>` 标签中是一个新的 `<hero-contact>` 元素。Angular 就会把相应的 `HeroContactComponent`*投影*(*transclude*)进 `HeroBioComponent` 的视图里，将它放在 `HeroBioComponent` 模板的 `<ng-content>` 标签槽里。
+在 `<hero-bio>` 标签中是一个新的 `<hero-contact>` 元素。Angular 就会把相应的 `HeroContactComponent`*投影*或透传（*transclude*）进 `HeroBioComponent` 的视图里，将它放在 `HeroBioComponent` 模板的 `<ng-content>` 标签槽里。
 
 <code-example header="src/app/hero-bio.component.ts (template)" path="dependency-injection-in-action/src/app/hero-bio.component.ts" region="template"></code-example>
 
@@ -260,7 +260,7 @@ The `sessionStorageService` instance interacts with the `BrowserStorageService` 
 Although developers strive to avoid it, many visual effects and third-party tools, such as jQuery, require DOM access.
 As a result, you might need to access a component's DOM element.
 
-即便开发者极力避免，仍然会有很多视觉效果和第三方工具 (比如 jQuery) 需要访问 DOM。这会让你不得不访问组件所在的 DOM 元素。
+即便开发者极力避免，仍然会有很多视觉效果和第三方工具（比如 jQuery）需要访问 DOM。这会让你不得不访问组件所在的 DOM 元素。
 
 To illustrate, here's a minimal version of `HighlightDirective` from the [Attribute Directives](guide/attribute-directives) page.
 
@@ -273,13 +273,13 @@ The directive sets the background to a highlight color when the user mouses over
 当用户把鼠标移到 DOM 元素上时，指令将指令所在的元素的背景设置为一个高亮颜色。
 
 Angular sets the constructor's `el` parameter to the injected `ElementRef`.
-(An `ElementRef` is a wrapper around a DOM element, whose `nativeElement` property exposes the DOM element for the directive to manipulate.)
+\(An `ElementRef` is a wrapper around a DOM element, whose `nativeElement` property exposes the DOM element for the directive to manipulate.\)
 
 Angular 把构造函数参数 `el` 设置为注入的 `ElementRef`，该 `ElementRef` 代表了宿主的 DOM 元素，它的 `nativeElement` 属性把该 DOM 元素暴露给了指令。
 
-The sample code applies the directive's `appHighlight` attribute to two `<div>` tags, first without a value (yielding the default color) and then with an assigned color value.
+The sample code applies the directive's `appHighlight` attribute to two `<div>` tags, first without a value \(yielding the default color\) and then with an assigned color value.
 
-下面的代码把指令的 `appHighlight` 属性(Attribute)填加到两个 `<div>` 标签里，一个没有赋值，一个赋值了颜色。
+下面的代码把指令的 `appHighlight` 属性（Attribute）填加到两个 `<div>` 标签里，一个没有赋值，一个赋值了颜色。
 
 <code-example header="src/app/app.component.html (highlight)" path="dependency-injection-in-action/src/app/app.component.html" region="highlight"></code-example>
 
@@ -390,10 +390,10 @@ The following code shows two examples in `HeroOfTheMonthComponent`.
 
 <code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-class"></code-example>
 
-The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created (`HeroService`) is also the provider's dependency injection token.
+The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created \(`HeroService`\) is also the provider's dependency injection token.
 The short form is generally preferred; this long form makes the details explicit.
 
-第一个提供者是*展开了语法糖的*，是一个典型情况的展开。一般来说，被新建的类(`HeroService`)同时也是该提供者的注入令牌。通常都选用缩写形式，完整形式可以让细节更明确。
+第一个提供者是*展开了语法糖的*，是一个典型情况的展开。一般来说，被新建的类（`HeroService`）同时也是该提供者的注入令牌。通常都选用缩写形式，完整形式可以让细节更明确。
 
 The second provider substitutes `DateLoggerService` for `LoggerService`.
 `LoggerService` is already registered at the `AppComponent` level.
@@ -498,7 +498,7 @@ Use this technique to create a dependency object with a factory function whose i
 
 使用这项技术，可以用包含了一些***依赖服务和本地状态***输入的工厂函数来***建立一个依赖对象***。
 
-The dependency object (returned by the factory function) is typically a class instance, but can be other things as well.
+The dependency object \(returned by the factory function\) is typically a class instance, but can be other things as well.
 In this example, the dependency object is a string of the names of the runners-up to the "Hero of the Month" contest.
 
 这个依赖对象（由工厂函数返回的）通常是一个类实例，不过也可以是任何其它东西。在这个例子中，依赖对象是一个表示 "月度英雄" 参赛者名称的字符串。
@@ -511,7 +511,7 @@ The `runnersUpFactory()` returns the *provider factory function*, which can use 
 
 <code-example header="runners-up.ts (excerpt)" path="dependency-injection-in-action/src/app/runners-up.ts" region="factory-synopsis"></code-example>
 
-The provider factory function (returned by `runnersUpFactory()`) returns the actual dependency object, the string of names.
+The provider factory function \(returned by `runnersUpFactory()`\) returns the actual dependency object, the string of names.
 
 由 `runnersUpFactory()` 返回的提供者的工厂函数返回了实际的依赖对象，也就是表示名字的字符串。
 
@@ -724,9 +724,9 @@ These complications argue for *avoiding component inheritance*.
 
 <a id="forwardref"></a>
 
-## Break circularities with a forward class reference (*forwardRef*)
+## Break circularities with a forward class reference \(*forwardRef*\)
 
-## 使用一个前向引用(*forwardRef*)来打破循环
+## 使用一个前向引用（*forwardRef*）来打破循环
 
 The order of class declaration matters in TypeScript.
 You can't refer directly to a class until it's been defined.

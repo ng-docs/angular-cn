@@ -45,7 +45,7 @@ That service in turn might depend on the `HttpClient` service to fetch heroes as
 
 <code-example header="src/app/hero.service.ts (class)" path="architecture/src/app/hero.service.ts" region="class"></code-example>
 
-## Dependency injection (DI)
+## Dependency injection \(DI\)
 
 ## 依赖注入（dependency injection）
 
@@ -55,7 +55,7 @@ That service in turn might depend on the `HttpClient` service to fetch heroes as
 
 </div>
 
-Dependency injection (DI) is the part of the Angular framework that provides components with access to services and other resources.
+Dependency injection \(DI\) is the part of the Angular framework that provides components with access to services and other resources.
 Angular provides the ability for you to *inject* a service into a component to give that component access to the service.
 
 DI 是 Angular 框架的一部分，用于在任何地方给新建的组件提供服务和其它资源。Angular 提供了把某个服务*注入*到组件中的能力，以便那个组件得以访问该服务类。
@@ -125,7 +125,7 @@ The process of `HeroService` injection looks something like this.
 
 You must register at least one *provider* of any service you are going to use.
 The provider can be part of the service's own metadata, making that service available everywhere, or you can register providers with specific modules or components.
-You register providers in the metadata of the service (in the `@Injectable()` decorator), or in the `@NgModule()` or `@Component()` metadata
+You register providers in the metadata of the service \(in the `@Injectable()` decorator\), or in the `@NgModule()` or `@Component()` metadata
 
 对于要用到的任何服务，你必须至少注册一个*提供者*。服务可以在自己的元数据中把自己注册为提供者，这样可以让自己随处可用。或者，你也可以为特定的模块或组件注册提供者。要注册提供者，就要在服务的 `@Injectable()` 装饰器中提供它的元数据，或者在 `@NgModule()` 或 `@Component()` 的元数据中。
 

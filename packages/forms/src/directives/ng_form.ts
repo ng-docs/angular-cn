@@ -30,6 +30,7 @@ const resolvedPromise = (() => Promise.resolve())();
 
 /**
  * @description
+ *
  * Creates a top-level `FormGroup` instance and binds it to a form
  * to track aggregate form value and validation status.
  *
@@ -42,7 +43,7 @@ const resolvedPromise = (() => Promise.resolve())();
  * 标签上生效。你不需要再添加任何特殊的选择器。
  *
  * You optionally export the directive into a local template variable using `ngForm` as the key
- * (ex: `#myForm="ngForm"`). This is optional, but useful.  Many properties from the underlying
+ * \(ex: `#myForm="ngForm"`\). This is optional, but useful.  Many properties from the underlying
  * `FormGroup` instance are duplicated on the directive itself, so a reference to it
  * gives you access to the aggregate value and validity status of the form, as well as
  * user interaction properties like `dirty` and `touched`.
@@ -163,7 +164,7 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
    * `NgForm` 实例的选项。接受下列属性：
    *
    * **updateOn**: Sets the default `updateOn` value for all child `NgModels` below it
-   * unless explicitly set by a child `NgModel` using `ngModelOptions`). Defaults to 'change'.
+   * unless explicitly set by a child `NgModel` using `ngModelOptions`\). Defaults to 'change'.
    * Possible values: `'change'` \| `'blur'` \| `'submit'`
    *
    * **updateOn**：为所有子级的 `NgModel` 设置 `updateOn` 的默认值（除非子 `NgModel` 通过

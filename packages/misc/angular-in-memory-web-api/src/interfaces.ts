@@ -20,7 +20,7 @@ import {Observable} from 'rxjs';
  * 其 `createDb` 方法创建表示数据库的命名集合的哈希
  *
  * For maximum flexibility, the service may define HTTP method overrides.
- * Such methods must match the spelling of an HTTP method in lower case (e.g, "get").
+ * Such methods must match the spelling of an HTTP method in lower case \(e.g, "get"\).
  * If a request has a matching method, it will be called as in
  * `get(info: requestInfo, db: {})` where `db` is the database object described above.
  *
@@ -75,14 +75,14 @@ export abstract class InMemoryBackendConfigArgs {
    */
   apiBase?: string;
   /**
-   * false (default) if search match should be case insensitive
+   * false \(default\) if search match should be case insensitive
    *
    * false（默认）如果搜索匹配应该不区分大小写
    *
    */
   caseSensitiveSearch?: boolean;
   /**
-   * false (default) put content directly inside the response body.
+   * false \(default\) put content directly inside the response body.
    * true: encapsulate content in a `data` property inside the response body, `{ data: ... }`.
    *
    * false（默认）将内容直接放在响应正文中。 true ：将内容封装在响应正文中的 `data` 属性中 `{ data:
@@ -91,14 +91,14 @@ export abstract class InMemoryBackendConfigArgs {
    */
   dataEncapsulation?: boolean;
   /**
-   * delay (in ms) to simulate latency
+   * delay \(in ms\) to simulate latency
    *
    * 延迟（以毫秒为单位）以模拟延迟
    *
    */
   delay?: number;
   /**
-   * false (default) should 204 when object-to-delete not found; true: 404
+   * false \(default\) should 204 when object-to-delete not found; true: 404
    *
    * false（默认）当找不到 object-to-delete 时应该为 204；真： 404
    *
@@ -112,35 +112,35 @@ export abstract class InMemoryBackendConfigArgs {
    */
   host?: string;
   /**
-   * false (default) should pass unrecognized request URL through to original backend; true: 404
+   * false \(default\) should pass unrecognized request URL through to original backend; true: 404
    *
    * false（默认）应该将无法识别的请求 URL 传递到原始后端；真： 404
    *
    */
   passThruUnknownUrl?: boolean;
   /**
-   * true (default) should NOT return the item (204) after a POST. false: return the item (200).
+   * true \(default\) should NOT return the item \(204\) after a POST. false: return the item \(200\).
    *
-   * true（默认）不应该在 POST 之后返回条目 (204)。 false ：返回条目 (200)。
+   * true（默认）不应该在 POST 之后返回条目 \(204\)。 false ：返回条目 \(200\)。
    *
    */
   post204?: boolean;
   /**
-   * false (default) should NOT update existing item with POST. false: OK to update.
+   * false \(default\) should NOT update existing item with POST. false: OK to update.
    *
    * false（默认）不应使用 POST 更新现有项。 false：可以更新。
    *
    */
   post409?: boolean;
   /**
-   * true (default) should NOT return the item (204) after a POST. false: return the item (200).
+   * true \(default\) should NOT return the item \(204\) after a POST. false: return the item \(200\).
    *
-   * true（默认）不应该在 POST 之后返回条目 (204)。 false ：返回条目 (200)。
+   * true（默认）不应该在 POST 之后返回条目 \(204\)。 false ：返回条目 \(200\)。
    *
    */
   put204?: boolean;
   /**
-   * false (default) if item not found, create as new item; false: should 404.
+   * false \(default\) if item not found, create as new item; false: should 404.
    *
    * false（默认）如果找不到条目，则创建为新条目； false：应该 404。
    *
@@ -159,15 +159,15 @@ export abstract class InMemoryBackendConfigArgs {
 /**
  * InMemoryBackendService configuration options
  *  Usage:
- *    InMemoryWebApiModule.forRoot(InMemHeroService, {delay: 600})
+ *    InMemoryWebApiModule.forRoot\(InMemHeroService, {delay: 600}\)
  *
- * InMemoryBackendService 配置选项 用法： InMemoryWebApiModule.forRoot(InMemHeroService, {delay:
- * 600})
+ * InMemoryBackendService 配置选项 用法： InMemoryWebApiModule.forRoot\(InMemHeroService, {delay:
+ * 600}\)
  *
  *  or if providing separately:
- *    provide(InMemoryBackendConfig, {useValue: {delay: 600}}),
+ *    provide\(InMemoryBackendConfig, {useValue: {delay: 600}}\),
  *
- * 或者如果单独提供： provide(InMemoryBackendConfig, {useValue: {delay: 600}}),
+ * 或者如果单独提供： provide\(InMemoryBackendConfig, {useValue: {delay: 600}}\),
  *
  */
 @Injectable()
@@ -194,9 +194,9 @@ export class InMemoryBackendConfig implements InMemoryBackendConfigArgs {
 }
 
 /**
- * Return information (UriInfo) about a URI
+ * Return information \(UriInfo\) about a URI
  *
- * 返回有关 URI 的信息 (UriInfo)
+ * 返回有关 URI 的信息 \(UriInfo\)
  *
  */
 export function parseUri(str: string): UriInfo {
@@ -236,11 +236,11 @@ export function parseUri(str: string): UriInfo {
  *     base: 'api/'
  *     collectionName: 'customers'
  *     id: '42'
- *     query: this.createQuery('foo=1')
+ *     query: this.createQuery\('foo=1'\)
  *     resourceUrl: 'http://localhost/api/customers/'
  *
  * `parseRequestUrl` 方法结果的接口：给定 URL “ http://localhost:8080/api/customers/42?foo=1
- * ，默认实现返回 base: 'api/' collectionName: 'customers' id: '42' 查询： this.createQuery('foo=1')
+ * ，默认实现返回 base: 'api/' collectionName: 'customers' id: '42' 查询： this.createQuery\('foo=1'\)
  * resourceUrl: ' http://localhost/api/customers/ '
  *
  */
@@ -318,8 +318,7 @@ export interface RequestInfoUtilities {
    * @param resOptionsFactory - creates ResponseOptions when observable is subscribed
    *
    *   订阅 observable 时创建 ResponseOptions
-   *
-   * @param withDelay - if true (default), add simulated latency delay from configuration
+   * @param withDelay - if true \(default\), add simulated latency delay from configuration
    *
    *   如果为 true（默认），则从配置中添加模拟的延迟延迟
    *
@@ -369,7 +368,7 @@ export interface RequestInfoUtilities {
   getLocation(url: string): UriInfo;
 
   /**
-   * Get (or create) the "real" backend
+   * Get \(or create\) the "real" backend
    *
    * 获取（或创建）“真实”后端
    *

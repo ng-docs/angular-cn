@@ -43,7 +43,7 @@ interface LruNode {
   url: string;
 
   /**
-   * The previous (more recent) node in the chain, or null if this is the head.
+   * The previous \(more recent\) node in the chain, or null if this is the head.
    *
    * 链中的前一个（最近的）节点，如果这是头，则为 null 。
    *
@@ -51,7 +51,7 @@ interface LruNode {
   previous: string|null;
 
   /**
-   * The next (less recent) node in the chain, or null if this is the tail.
+   * The next \(less recent\) node in the chain, or null if this is the tail.
    *
    * 链中的下一个（最近的）节点，如果这是尾部，则为 null 。
    *
@@ -87,7 +87,7 @@ interface LruState {
   tail: string|null;
 
   /**
-   * Map of URLs to data for each URL (including next/prev pointers).
+   * Map of URLs to data for each URL \(including next/prev pointers\).
    *
    * URL 到每个 URL 的数据的映射（包括 next/prev 指针）。
    *

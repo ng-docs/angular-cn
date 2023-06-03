@@ -3,7 +3,7 @@
 # Angular 的 Service Worker 简介
 
 Service workers augment the traditional web deployment model and empower applications to deliver a user experience with the reliability and performance on par with code that is written to run on your operating system and hardware.
-Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://web.dev/progressive-web-apps/) (also known as a PWA).
+Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://web.dev/progressive-web-apps/) \(also known as a PWA\).
 
 Service Worker 可以增强传统的 Web 发布模式，并使应用程序能够提供可与原生代码（它运行在你的操作系统和硬件层面）媲美的高可靠、高性能的用户体验。为 Angular 应用添加 Service Worker 是把应用转换成[渐进式应用（PWA）](https://web.dev/progressive-web-apps/)的步骤之一。
 
@@ -74,7 +74,7 @@ To achieve this, the Angular service worker follows these guidelines:
   只要有可能，Service Worker 就会尽量节省带宽。它只会下载那些发生了变化的资源。
 
 To support these behaviors, the Angular service worker loads a *manifest* file from the server.
-The file, called `ngsw.json` (not to be confused with the [web app manifest](https://developer.mozilla.org/docs/Web/Manifest)), describes the resources to cache and includes hashes of every file's contents.
+The file, called `ngsw.json` \(not to be confused with the [web app manifest](https://developer.mozilla.org/docs/Web/Manifest)\), describes the resources to cache and includes hashes of every file's contents.
 When an update to the application is deployed, the contents of the manifest change, informing the service worker that a new version of the application should be downloaded and cached.
 This manifest is generated from a CLI-generated configuration file called `ngsw-config.json`.
 
@@ -112,7 +112,7 @@ There is one exception to this rule: to make local development more straightforw
 ### 浏览器支持
 
 To benefit from the Angular service worker, your application must run in a web browser that supports service workers in general.
-Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser (Android version) and Samsung Internet.
+Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser \(Android version\) and Samsung Internet.
 Browsers like IE and Opera Mini do not support service workers.
 
 要从 Angular Service Worker 中受益，你的应用必须在支持 Service Worker 的 Web 浏览器中运行。当前，最新版本的 Chrome，Firefox，Edge，Safari，Opera，UC 浏览器（Android 版）和 Samsung Internet 支持 Service Worker。而 IE 和 Opera Mini 等浏览器不支持 Service Worker。

@@ -519,7 +519,7 @@ export function getStatusText(code: number) {
 }
 
 /**
- * Returns true if the Http Status Code is 200-299 (success)
+ * Returns true if the Http Status Code is 200-299 \(success\)
  *
  * 如果 Http 状态代码是 200-299（成功），则返回 true
  *

@@ -22,7 +22,8 @@ let shouldThrowErrorOnUnknownElement = false;
 /**
  * Sets a strict mode for JIT-compiled components to throw an error on unknown elements,
  * instead of just logging the error.
- * (for AOT-compiled ones this check happens at build time).
+ * \(for AOT-compiled ones this check happens at build time\).
+ *
  */
 export function ɵsetUnknownElementStrictMode(shouldThrow: boolean) {
   shouldThrowErrorOnUnknownElement = shouldThrow;
@@ -40,7 +41,8 @@ let shouldThrowErrorOnUnknownProperty = false;
 /**
  * Sets a strict mode for JIT-compiled components to throw an error on unknown properties,
  * instead of just logging the error.
- * (for AOT-compiled ones this check happens at build time).
+ * \(for AOT-compiled ones this check happens at build time\).
+ *
  */
 export function ɵsetUnknownPropertyStrictMode(shouldThrow: boolean) {
   shouldThrowErrorOnUnknownProperty = shouldThrow;
@@ -56,8 +58,8 @@ export function ɵgetUnknownPropertyStrictMode() {
 /**
  * Validates that the element is known at runtime and produces
  * an error if it's not the case.
- * This check is relevant for JIT-compiled components (for AOT-compiled
- * ones this check happens at build time).
+ * This check is relevant for JIT-compiled components \(for AOT-compiled
+ * ones this check happens at build time\).
  *
  * The element is considered known if either:
  *
@@ -126,8 +128,8 @@ export function validateElementIsKnown(
 /**
  * Validates that the property of the element is known at runtime and returns
  * false if it's not the case.
- * This check is relevant for JIT-compiled components (for AOT-compiled
- * ones this check happens at build time).
+ * This check is relevant for JIT-compiled components \(for AOT-compiled
+ * ones this check happens at build time\).
  *
  * The property is considered known if either:
  *
@@ -228,11 +230,11 @@ export function reportUnknownPropertyError(message: string) {
 }
 
 /**
- * WARNING: this is a **dev-mode only** function (thus should always be guarded by the `ngDevMode`)
+ * WARNING: this is a **dev-mode only** function \(thus should always be guarded by the `ngDevMode`\)
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode and also it relies on the constructor function being available.
  *
- * Gets a reference to the host component def (where a current component is declared).
+ * Gets a reference to the host component def \(where a current component is declared\).
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  */
@@ -249,7 +251,7 @@ export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|
 }
 
 /**
- * WARNING: this is a **dev-mode only** function (thus should always be guarded by the `ngDevMode`)
+ * WARNING: this is a **dev-mode only** function \(thus should always be guarded by the `ngDevMode`\)
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
@@ -266,7 +268,7 @@ export function isHostComponentStandalone(lView: LView): boolean {
 }
 
 /**
- * WARNING: this is a **dev-mode only** function (thus should always be guarded by the `ngDevMode`)
+ * WARNING: this is a **dev-mode only** function \(thus should always be guarded by the `ngDevMode`\)
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *

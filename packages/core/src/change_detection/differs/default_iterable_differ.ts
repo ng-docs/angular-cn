@@ -234,7 +234,7 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
 
   /**
    * Reset the state of the change objects to show no changes. This means set previousKey to
-   * currentKey, and clear all of the queues (additions, moves, removals).
+   * currentKey, and clear all of the queues \(additions, moves, removals\).
    * Set the previousIndexes of moved and added items to their currentIndexes
    * Reset the list of additions, moves and removals
    *
@@ -330,7 +330,7 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
   }
 
   /**
-   * This check is only needed if an array contains duplicates. (Short circuit of nothing dirty)
+   * This check is only needed if an array contains duplicates. \(Short circuit of nothing dirty\)
    *
    * 仅当数组包含重复项时才需要进行此检查。（不脏时跳过）
    *

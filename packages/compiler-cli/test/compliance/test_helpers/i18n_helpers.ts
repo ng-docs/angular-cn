@@ -8,7 +8,7 @@
 
 /**
  * Unique message id index that is needed to avoid different i18n vars with the same name to appear
- * in the i18n block while generating an output string (used to verify compiler-generated code).
+ * in the i18n block while generating an output string \(used to verify compiler-generated code\).
  *
  * 生成输出字符串（用于验证编译器生成的代码）时，为避免出现在 i18n 块中的不同 i18n var
  * 所需的唯一消息 ID 索引。
@@ -96,7 +96,7 @@ export function i18nIcuMsg(message: string, placeholders: Placeholder[], options
  *
  *   第二项是包含占位符的变量的标识符。
  *
- * - The third (optional) items is the id of the message that this placeholder references.
+ * - The third \(optional\) items is the id of the message that this placeholder references.
  *   This is used for matching ICU placeholders to ICU messages.
  *
  *   第三个（可选）条目是此占位符引用的消息的 id。这用于将 ICU 占位符与 ICU 消息匹配。
@@ -118,7 +118,7 @@ interface Meta {
 
 
 /**
- * Convert a set of placeholders to a string (as it's expected from compiler).
+ * Convert a set of placeholders to a string \(as it's expected from compiler\).
  *
  * 将一组占位符转换为字符串（正如编译器所预期的）。
  *

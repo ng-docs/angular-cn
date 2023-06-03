@@ -59,10 +59,10 @@ export class ImplicitReceiver extends AST {
 }
 
 /**
- * Receiver when something is accessed through `this` (e.g. `this.foo`). Note that this class
+ * Receiver when something is accessed through `this` \(e.g. `this.foo`\). Note that this class
  * inherits from `ImplicitReceiver`, because accessing something through `this` is treated the
- * same as accessing it implicitly inside of an Angular template (e.g. `[attr.title]="this.title"`
- * is the same as `[attr.title]="title"`.). Inheriting allows for the `this` accesses to be treated
+ * same as accessing it implicitly inside of an Angular template \(e.g. `[attr.title]="this.title"`
+ * is the same as `[attr.title]="title"`.\). Inheriting allows for the `this` accesses to be treated
  * the same as implicit ones, except for a couple of exceptions like `$event` and `$any`.
  * TODO: we should find a way for this class not to extend from `ImplicitReceiver` in the future.
  *
@@ -389,11 +389,11 @@ export class ASTWithSource extends AST {
  * | 6. \*ngIf="cond" | ngIf         | cond  | expression   |
  * | 6. \*ngIf="cond" | ngIf         | cond  | 表达式       |
  *
- * (6) is a notable exception because it is a binding from the template key in
+ * \(6\) is a notable exception because it is a binding from the template key in
  * the LHS of a HTML attribute to the expression in the RHS. All other bindings
  * in the example above are derived solely from the RHS.
  *
- * (6) 是一个值得注意的异常，因为它是从 HTML 属性的 LHS 中的模板键到 RHS
+ * \(6\) 是一个值得注意的异常，因为它是从 HTML 属性的 LHS 中的模板键到 RHS
  * 中的表达式的绑定。上面的示例中的所有其他绑定都仅来自 RHS。
  *
  */

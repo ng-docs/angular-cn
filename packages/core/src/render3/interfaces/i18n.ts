@@ -36,19 +36,27 @@ export interface I18nRemoveOpCodes extends Array<number> {
  *
  * `I18nMutateOpCode` 为 `I18nMutateOpCodes` 数组定义 OpCodes。
  *
- * OpCodes are efficient operations which can be applied to the DOM to update it. (For example to
- * update to a new ICU case requires that we clean up previous elements and create new ones.)
+ * OpCodes are efficient operations which can be applied to the DOM to update it. \(For example to
+ * update to a new ICU case requires that we clean up previous elements and create new ones.\)
  *
  * OpCodes 是高效的操作，可以应用于 DOM 以更新它。（例如，要更新到新的 ICU
  * 病例，需要我们清理以前的元素并创建新元素。）
  *
  * OpCodes contain three parts:
- *  1) Parent node index offset. (p)
- *  2) Reference node index offset. (r)
- *  3) The instruction to execute. (i)
  *
- * OpCodes 包含三部分： 1）父节点索引偏移量。 (p) 2) 参考节点索引偏移量。 (r) 3) 要执行的指令。
- *（一）
+ * OpCodes 包含三部分：
+ *
+ *  1. Parent node index offset. \(p\)
+ *
+ *     父节点索引偏移量。（p）
+ *
+ *  2. Reference node index offset. \(r\)
+ *
+ *     参考节点索引偏移量。（r）
+ *
+ *  3. The instruction to execute. \(i\)
+ *
+ *     要执行的指令。（i）
  *
  * pppp pppp pppp pppp rrrr rrrr rrrr riii
  * 3322 2222 2222 1111 1111 1110 0000 0000
@@ -89,7 +97,7 @@ export const enum IcuCreateOpCode {
   MASK_INSTRUCTION = 0b1,
 
   /**
-   * Mask for the Reference node (bits 16-3)
+   * Mask for the Reference node \(bits 16-3\)
    *
    * 参考节点的掩码（第 16-3 位）
    *
@@ -275,7 +283,7 @@ export interface I18nDebug {
  *
  * 存储 OpCode 的数组，用于动态创建 `i18n` 翻译 DOM 元素。
  *
- * This array creates a sequence of `Text` and `Comment` (as ICU anchor) DOM elements. It consists
+ * This array creates a sequence of `Text` and `Comment` \(as ICU anchor\) DOM elements. It consists
  * of a pair of `number` and `string` pairs which encode the operations for the creation of the
  * translated block.
  *
@@ -343,7 +351,7 @@ export enum I18nCreateOpCode {
   APPEND_EAGERLY = 0b01,
 
   /**
-   * If set the node should be comment (rather than a text) node.
+   * If set the node should be comment \(rather than a text\) node.
    *
    * 如果设置了，则节点应该是注释（而不是文本）节点。
    *
@@ -359,8 +367,8 @@ export enum I18nCreateOpCode {
  * 存储由于表达式的更改而需要用于更新 DOM 渲染树的 DOM 操作。
  *
  * The basic idea is that `i18nExp` OpCodes capture expression changes and update a change
- * mask bit. (Bit 1 for expression 1, bit 2 for expression 2 etc..., bit 32 for expression 32 and
- * higher.) The OpCodes then compare its own change mask against the expression change mask to
+ * mask bit. \(Bit 1 for expression 1, bit 2 for expression 2 etc..., bit 32 for expression 32 and
+ * higher.\) The OpCodes then compare its own change mask against the expression change mask to
  * determine if the OpCodes should execute.
  *
  * 基本思想是 `i18nExp` OpCodes 捕获表达式更改并更新更改掩码位。（表达式 1 的位 1，表达式 2 的位 2
@@ -368,8 +376,8 @@ export enum I18nCreateOpCode {
  * 将其自己的更改掩码与表达式更改掩码进行比较，以确定 OpCodes 是否应该执行。
  *
  * NOTE: 32nd bit is special as it says 32nd or higher. This way if we have more than 32 bindings
- * the code still works, but with lower efficiency. (it is unlikely that a translation would have
- * more than 32 bindings.)
+ * the code still works, but with lower efficiency. \(it is unlikely that a translation would have
+ * more than 32 bindings.\)
  *
  * 注意：第 32 位是特殊的，因为它表示 32nd 或更高。这样，如果我们有超过 32
  * 个绑定，代码仍然可以工作，但效率较低。（翻译不太可能有超过 32 个绑定。）
@@ -520,7 +528,7 @@ export interface TIcu {
    * If the value stored is:
    * `null`: No current case selected.
    *   `<0`: A flag which means that the ICU just switched and that `icuUpdate` must be executed
-   *         regardless of the `mask`. (After the execution the flag is cleared)
+   *         regardless of the `mask`. \(After the execution the flag is cleared\)
    *   `>=0` A currently selected case index.
    *
    * 如果存储的值为： `null` ：未选择当前案例。 `<0` ：一个标志，这意味着 ICU 刚刚切换，并且无论

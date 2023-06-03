@@ -499,7 +499,7 @@ Understanding the idea of the `<#VIEW>` demarcation is especially significant wh
 
 ## 在 `@Component()` 中提供服务
 
-How you provide services using a `@Component()` (or `@Directive()`) decorator determines their visibility.
+How you provide services using a `@Component()` \(or `@Directive()`\) decorator determines their visibility.
 The following sections demonstrate `providers` and `viewProviders` along with ways to modify service visibility with `@SkipSelf()` and `@Host()`.
 
 你如何通过 `@Component()`（或 `@Directive()`）装饰器提供服务决定了它们的可见性。以下各节演示了 `providers` 和 `viewProviders` 以及使用 `@SkipSelf()` 和 `@Host()` 修改服务可见性的方法。
@@ -722,7 +722,7 @@ In the logical tree, this is represented as follows:
 
 </code-example>
 
-When `<app-child>` requests the `FlowerService`, the injector begins its search at the `<#VIEW>` belonging to `<app-child>` (`<#VIEW>` is included because it is injected from `@Component()`) and ends with `<app-child>`.
+When `<app-child>` requests the `FlowerService`, the injector begins its search at the `<#VIEW>` belonging to `<app-child>` \(`<#VIEW>` is included because it is injected from `@Component()`\) and ends with `<app-child>`.
 In this case, the `FlowerService` is resolved in the `providers` array with sunflower <code>🌻</code> of the `<app-child>`.
 The injector doesn't have to look any further in the injector tree.
 It stops as soon as it finds the `FlowerService` and never sees the red hibiscus <code>🌺</code>.
@@ -1018,7 +1018,7 @@ Though `<app-child>` provides the sunflower <code>🌻</code>, the application r
 
 尽管 `<app-child>` 提供了🌻（向日葵），但该应用程序渲染了🌺（红色芙蓉），因为 `@SkipSelf()` 导致当前的注入器跳过了自身并寻找其父级。
 
-If you now add `@Host()` (in addition to the `@SkipSelf()`) to the `@Inject` of the `FlowerService`, the result will be `null`.
+If you now add `@Host()` \(in addition to the `@SkipSelf()`\) to the `@Inject` of the `FlowerService`, the result will be `null`.
 This is because `@Host()` limits the upper bound of the search to the `<#VIEW>`.
 Here's the idea in the logical tree:
 
@@ -1248,7 +1248,7 @@ It gets those villains from a `VillainsService`.
 
 出于架构方面的考虑，可能会让你决定把一个服务限制到只能在它所属的那个应用域中访问。 比如，这个例子中包括一个用于显示反派列表的 `VillainsListComponent`，它会从 `VillainsService` 中获得反派列表数据。
 
-If you provided `VillainsService` in the root `AppModule` (where you registered the `HeroesService`), that would make the `VillainsService` visible everywhere in the application, including the *Hero* workflows.
+If you provided `VillainsService` in the root `AppModule` \(where you registered the `HeroesService`\), that would make the `VillainsService` visible everywhere in the application, including the *Hero* workflows.
 If you later modified the `VillainsService`, you could break something in a hero component somewhere.
 
 如果你在根模块 `AppModule` 中（也就是你注册 `HeroesService` 的地方）提供 `VillainsService`，就会让应用中的任何地方都能访问到 `VillainsService`，包括针对英雄的工作流。如果你稍后修改了 `VillainsService`，就可能破坏了英雄组件中的某些地方。在根模块 `AppModule` 中提供该服务将会引入此风险。
@@ -1376,21 +1376,21 @@ For example, consider a `Car` component that includes tire service information a
 
 例如，考虑一个包含轮胎服务信息并依赖其它服务来提供有关汽车的更多详细信息的 `Car` 组件。
 
-The root injector, marked as (A), uses *generic* providers for details about `CarService` and `EngineService`.
+The root injector, marked as \(A\), uses *generic* providers for details about `CarService` and `EngineService`.
 
-标记为 (A) 的根注入器使用*通用*提供者来获取有关 `CarService` 和 `EngineService` 的详细信息。
+标记为 （A） 的根注入器使用*通用*提供者来获取有关 `CarService` 和 `EngineService` 的详细信息。
 
-1. `Car` component (A).  Component (A) displays tire service data about a car and specifies generic services to provide more information about the car.
+1. `Car` component \(A\).  Component \(A\) displays tire service data about a car and specifies generic services to provide more information about the car.
 
-   `Car` 组件 (A)。组件 (A) 显示有关汽车的轮胎服务数据，并指定通用服务以提供有关汽车的更多信息。
+   `Car` 组件（A）。组件 （A） 显示有关汽车的轮胎服务数据，并指定通用服务以提供有关汽车的更多信息。
 
-2. Child component (B). Component (B) defines its own, *specialized* providers for `CarService` and `EngineService` that have special capabilities suitable for what's going on in component (B).
+2. Child component \(B\). Component \(B\) defines its own, *specialized* providers for `CarService` and `EngineService` that have special capabilities suitable for what's going on in component \(B\).
 
-   子组件 (B)。组件 (B) 为 `CarService` 和 `EngineService` 定义了自己的*特化的*提供者，它们具有适合组件 (B) 中发生的事情的特殊能力。
+   子组件（B）。组件（B）为 `CarService` 和 `EngineService` 定义了自己的*特化的*提供者，它们具有适合组件 （B） 中发生的事情的特殊能力。
 
-3. Child component (C) as a child of Component (B). Component (C) defines its own, even *more specialized* provider for `CarService`.
+3. Child component \(C\) as a child of Component \(B\). Component \(C\) defines its own, even *more specialized* provider for `CarService`.
 
-   子组件 (C) 作为组件 (B) 的子组件。组件 (C) 为 `CarService` 定义了自己的、*更加特化*的提供者。
+   子组件（C）作为组件（B）的子组件。组件 （C） 为 `CarService` 定义了自己的、*更加特化*的提供者。
 
 <div class="lightbox">
 
@@ -1402,21 +1402,21 @@ Behind the scenes, each component sets up its own injector with zero, one, or mo
 
 在幕后，每个组件都有自己的注入器，这个注入器带有为组件本身准备的 0 个、1 个或多个提供者。
 
-When you resolve an instance of `Car` at the deepest component (C), its injector produces: 
+When you resolve an instance of `Car` at the deepest component \(C\), its injector produces: 
 
-当你在最深的组件 (C) 处解析 `Car` 实例时，其注入器会生成：
+当你在最深的组件 （C） 处解析 `Car` 实例时，其注入器会生成：
 
-* An instance of `Car` resolved by injector (C)
+* An instance of `Car` resolved by injector \(C\)
 
-  由注入器 (C) 解析的 `Car` 实例
+  由注入器 （C） 解析的 `Car` 实例
 
-* An `Engine` resolved by injector (B)
+* An `Engine` resolved by injector \(B\)
 
-  由注入器 (B) 解析的 `Engine`
+  由注入器 （B） 解析的 `Engine`
 
-* Its `Tires` resolved by the root injector (A).
+* Its `Tires` resolved by the root injector \(A\).
 
-  它的 `Tires` 由根注入器 (A) 解析。
+  它的 `Tires` 由根注入器 （A） 解析。
 
 <div class="lightbox">
 

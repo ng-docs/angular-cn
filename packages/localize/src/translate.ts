@@ -129,7 +129,7 @@ export function clearTranslations() {
  *
  * 使用加载的翻译来翻译给定消息的文本。
  *
- * This function may reorder (or remove) substitutions as indicated in the matching translation.
+ * This function may reorder \(or remove\) substitutions as indicated in the matching translation.
  *
  * 此函数可能会按照匹配翻译中的指示重新排序（或删除）替换。
  *

@@ -15,7 +15,7 @@ import {PerfPhase, PerfRecorder} from '../../perf';
  *
  * `ts.Program` 中的缓存导入图。
  *
- * The `ImportGraph` keeps track of dependencies (imports) of individual `ts.SourceFile`s. Only
+ * The `ImportGraph` keeps track of dependencies \(imports\) of individual `ts.SourceFile`s. Only
  * dependencies within the same program are tracked; imports into packages on NPM are not.
  *
  * `ImportGraph` 会跟踪单个 `ts.SourceFile` 的依赖项（导入）。仅跟踪同一程序中的依赖项；导入到 NPM
@@ -28,7 +28,7 @@ export class ImportGraph {
   constructor(private checker: ts.TypeChecker, private perf: PerfRecorder) {}
 
   /**
-   * List the direct (not transitive) imports of a given `ts.SourceFile`.
+   * List the direct \(not transitive\) imports of a given `ts.SourceFile`.
    *
    * 列出给定 `ts.SourceFile` 的直接（不可传递）导入。
    *

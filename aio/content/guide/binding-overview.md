@@ -2,7 +2,7 @@
 
 # 了解绑定
 
-In an Angular template, a binding creates a live connection between a part of the UI created from a template (a DOM element, directive, or component) and the model (the component instance to which the template belongs). This connection can be used to synchronize the view with the model, to notify the model when an event or user action takes place in the view, or both. Angular's [Change Detection](guide/change-detection) algorithm is responsible for keeping the view and the model in sync.
+In an Angular template, a binding creates a live connection between a part of the UI created from a template \(a DOM element, directive, or component\) and the model \(the component instance to which the template belongs\). This connection can be used to synchronize the view with the model, to notify the model when an event or user action takes place in the view, or both. Angular's [Change Detection](guide/change-detection) algorithm is responsible for keeping the view and the model in sync.
 
 在 Angular 模板中，绑定会在从模板创建的一部分 UI（DOM 元素、指令或组件）与模型（模板所属的组件实例）之间创建实时连接。此连接可用于将视图与模型同步、在视图中发生事件或用户操作时通知模型，或两者兼而有之。Angular 的[变更检测](guide/change-detection)算法负责保持视图和模型的同步。
 
@@ -43,9 +43,9 @@ You can't use JavaScript expressions that have or promote side effects, includin
 
 你不能使用那些具有或可能引发副作用的 JavaScript 表达式，包括：
 
-* Assignments (`=`, `+=`, `-=`, `...`)
+* Assignments \(`=`, `+=`, `-=`, `...`\)
 
-  赋值 (`=`, `+=`, `-=`, `...`)
+  赋值（`=`, `+=`, `-=`, `...`）
 
 * Operators such as `new`, `typeof`, or `instanceof`
 

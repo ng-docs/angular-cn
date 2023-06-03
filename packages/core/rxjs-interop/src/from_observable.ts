@@ -20,13 +20,14 @@ import {Observable} from 'rxjs';
  * The subscription will last for the lifetime of the current injection context. That is, if
  * `fromObservable` is called from a component context, the subscription will be cleaned up when the
  * component is destroyed. When called outside of a component, the current `EnvironmentInjector`'s
- * lifetime will be used (which is typically the lifetime of the application itself).
+ * lifetime will be used \(which is typically the lifetime of the application itself\).
  *
  * If the `Observable` does not produce a value before the `Signal` is read, the `Signal` will throw
- * an error. To avoid this, use a synchronous `Observable` (potentially created with the `startWith`
- * operator) or pass an initial value to `fromObservable` as the second argument.
+ * an error. To avoid this, use a synchronous `Observable` \(potentially created with the `startWith`
+ * operator\) or pass an initial value to `fromObservable` as the second argument.
  *
  * `fromObservable` must be called in an injection context.
+ *
  */
 export function fromObservable<T>(source: Observable<T>): Signal<T>;
 
@@ -41,7 +42,7 @@ export function fromObservable<T>(source: Observable<T>): Signal<T>;
  * The subscription will last for the lifetime of the current injection context. That is, if
  * `fromObservable` is called from a component context, the subscription will be cleaned up when the
  * component is destroyed. When called outside of a component, the current `EnvironmentInjector`'s
- * lifetime will be used (which is typically the lifetime of the application itself).
+ * lifetime will be used \(which is typically the lifetime of the application itself\).
  *
  * Before the `Observable` emits its first value, the `Signal` will return the configured
  * `initialValue`. If the `Observable` is known to produce a value before the `Signal` will be read,

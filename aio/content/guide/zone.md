@@ -138,9 +138,9 @@ Typically, updates occur for one of the following reasons:
 要了解变更检测的工作原理，请首先考虑应用程序何时需要更新 HTML。通常，会由于以下原因之一而发生更新：
 
 1. Component initialization.
-   For example, when bootstrapping an Angular application, Angular loads the bootstrap component and triggers the [ApplicationRef.tick()](api/core/ApplicationRef#tick) to call change detection and View Rendering.
+   For example, when bootstrapping an Angular application, Angular loads the bootstrap component and triggers the [`ApplicationRef.tick()`](api/core/ApplicationRef#tick) to call change detection and View Rendering.
 
-   组件初始化。比如，当引导 Angular 应用程序时，Angular 会加载引导组件并触发 [ApplicationRef.tick()](api/core/ApplicationRef#tick) 来调用变更检测和视图渲染。
+   组件初始化。比如，当引导 Angular 应用程序时，Angular 会加载引导组件并触发 [`ApplicationRef.tick()`](api/core/ApplicationRef#tick) 来调用变更检测和视图渲染。
 
 1. Event listener.
    The DOM event listener can update the data in an Angular component and also trigger change detection, as in the following example.
@@ -202,7 +202,7 @@ Typically, updates occur for one of the following reasons:
    </code-example>
 
 1. MicroTasks, such as `Promise.then()`.
-   Other asynchronous APIs return a Promise object (such as `fetch`), so the `then()` callback function can also update the data.
+   Other asynchronous APIs return a Promise object \(such as `fetch`\), so the `then()` callback function can also update the data.
    For example:
 
    微任务，比如 `Promise.then()`。其他异步 API（比如 `fetch`）会返回 Promise 对象，因此 `then()` 回调函数也可以更新数据。比如：

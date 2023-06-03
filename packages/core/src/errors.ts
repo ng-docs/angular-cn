@@ -113,7 +113,7 @@ export const enum RuntimeErrorCode {
  * ```
  *
  * Note: the `message` argument contains a descriptive error message as a string in development
- * mode (when the `ngDevMode` is defined). In production mode (after tree-shaking pass), the
+ * mode \(when the `ngDevMode` is defined\). In production mode \(after tree-shaking pass\), the
  * `message` argument becomes `false`, thus we account for it in the typings and the runtime
  * logic.
  *

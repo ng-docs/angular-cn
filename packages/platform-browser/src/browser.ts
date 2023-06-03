@@ -41,8 +41,8 @@ export {ApplicationConfig};
    *
    * @usageNotes
    *
-   * The root component passed into this function *must* be a standalone one (should have the
-   * `standalone: true` flag in the `@Component` decorator config).
+   * The root component passed into this function *must* be a standalone one \(should have the
+   * `standalone: true` flag in the `@Component` decorator config\).
    *
    * 传递给此函数的根组件*必须*是独立的（在 `@Component` 装饰器配置中应该有 `standalone: true` 标志）。
    *
@@ -70,7 +70,7 @@ export {ApplicationConfig};
    * ```
    *
    * The `importProvidersFrom` helper method can be used to collect all providers from any
-   * existing NgModule (and transitively from all NgModules that it imports):
+   * existing NgModule \(and transitively from all NgModules that it imports\):
    *
    * `importProvidersFrom` 帮助器方法可用于从任何现有的 NgModule （并且从它导入的所有 NgModule 中传递）收集所有提供者：
    *
@@ -98,12 +98,10 @@ export {ApplicationConfig};
    * @param rootComponent A reference to a standalone component that should be rendered.
    *
    * 对应该渲染的独立组件的引用。
-   *
    * @param options Extra configuration for the bootstrap operation, see `ApplicationConfig` for
    *     additional info.
    *
    * 可选值。默认值为 `undefined`。
-   *
    * @returns A promise that returns an `ApplicationRef` instance once resolved.
    * @publicApi
    */
@@ -114,8 +112,8 @@ export function bootstrapApplication(
 
 /**
  * Create an instance of an Angular application without bootstrapping any components. This is useful
- * for the situation where one wants to decouple application environment creation (a platform and
- * associated injectors) from rendering components on a screen. Components can be subsequently
+ * for the situation where one wants to decouple application environment creation \(a platform and
+ * associated injectors\) from rendering components on a screen. Components can be subsequently
  * bootstrapped on the returned `ApplicationRef`.
  *
  * 在不引导任何组件的情况下创建 Angular 应用程序的实例。这对于希望将应用程序环境创建（平台和关联的注入器）与屏幕上的渲染组件解耦的情况很有用。随后可以在返回的 `ApplicationRef` 上引导组件。
@@ -124,7 +122,6 @@ export function bootstrapApplication(
  *     additional info.
  *
  * 可选值。默认值为 `undefined`。
- *
  * @returns A promise that returns an `ApplicationRef` instance once resolved.
  * @publicApi
  */
@@ -145,8 +142,8 @@ function createProvidersConfig(options?: ApplicationConfig) {
 /**
  * Returns a set of providers required to setup [Testability](api/core/Testability) for an
  * application bootstrapped using the `bootstrapApplication` function. The set of providers is
- * needed to support testing an application with Protractor (which relies on the Testability APIs
- * to be present).
+ * needed to support testing an application with Protractor \(which relies on the Testability APIs
+ * to be present\).
  *
  * 返回使用 `bootstrapApplication` 函数引导的应用程序设置[Testability](api/core/Testability)所需的一组提供程序。需要这组提供者来支持使用 Protractor（依赖于存在的 Testability API）测试应用程序。
  *
@@ -271,9 +268,11 @@ export class BrowserModule {
    * The ID must match between the client and server versions of the app.
    *
    * 包含要迁移的应用 id 的对象。在应用的客户端版本和服务端版本中这个 ID 必须匹配。
-   *
    * @returns The reconfigured `BrowserModule` to import into the app's root `AppModule`.
-   * @deprecated Use {@link APP_ID} instead to set the application ID.
+   * @deprecated
+   *
+   * Use {@link APP_ID} instead to set the application ID.
+   *
    */
   static withServerTransition(params: {appId: string}): ModuleWithProviders<BrowserModule> {
     return {

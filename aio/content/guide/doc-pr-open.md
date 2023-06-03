@@ -28,7 +28,7 @@ These steps are performed in your web browser.
 
       </div>
 
-      In the alert message with your `working` branch, click **Compare &amp; pull request** to open a pull request and continue to the next step.
+      In the alert message with your `working` branch, click **Compare & pull request** to open a pull request and continue to the next step.
 
       在与你的 `working` 分支的警报消息中，单击**比较&Pull Request**以打开 Pull Request 并继续下一步。
 
@@ -72,37 +72,37 @@ These steps are performed in your web browser.
 
 <!-- vale Angular.Google_We = NO -->
 
-    1.  **The commit message follows our guidelines**
+  1.  **The commit message follows our guidelines**
 
-        Mark this comment when you're sure your commit messages are in the correct format.
-        Remember that the commit messages and the pull request title are different.
-        For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
+      Mark this comment when you're sure your commit messages are in the correct format.
+      Remember that the commit messages and the pull request title are different.
+      For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
 
-    1.  **Docs have been added / updated \(for bug fixes / features\)**
+  1.  **Docs have been added / updated \(for bug fixes / features\)**
 
-        Mark this comment to show that documentation has been updated.
+      Mark this comment to show that documentation has been updated.
 
-    1.  **Documentation content changes**
+  1.  **Documentation content changes**
 
-    Mark this comment to identify this is a documentation pull request.
-    If you also updated other types of content, you can mark those as well.
+  Mark this comment to identify this is a documentation pull request.
+  If you also updated other types of content, you can mark those as well.
 
-    1.  **What is the current behavior?**
+  1.  **What is the current behavior?**
 
-        Briefly describe what wasn't working or what was incorrect in the documentation before you made the changes in this pull request.
-        Add the issue number here, if the problem is described in an issue.
+      Briefly describe what wasn't working or what was incorrect in the documentation before you made the changes in this pull request.
+      Add the issue number here, if the problem is described in an issue.
 
-    1.  **What is the new behavior?**
+  1.  **What is the new behavior?**
 
-        Briefly describe what was added to fix the problem.
+      Briefly describe what was added to fix the problem.
 
-    1.  **Does this PR introduce a breaking change?**
+  1.  **Does this PR introduce a breaking change?**
 
-        For most documentation updates, the answer to this should be `No`.
+      For most documentation updates, the answer to this should be `No`.
 
-    1.  **Other information**
+  1.  **Other information**
 
-        Add any other information that can help reviewers understand your pull request here.
+      Add any other information that can help reviewers understand your pull request here.
 
 <!-- vale Angular.Google_We = YES -->
 
@@ -115,11 +115,11 @@ These steps are performed in your web browser.
       You might use this option to see how your pull request passes the CI testing before you send it for review to be merged.
       Draft pull requests cannot be merged.
 
-      Pull Request 草案会运行持续集成 (CI) 测试，但不会将 Pull Request 发送给审阅者。你可以通过向人们发送 Pull Request 链接来让他们查看它。你可以用此选项来查看你的 Pull Request 如何在将其发送以供审核之前通过 CI 测试。无法合并草稿 Pull Request。
+      Pull Request 草案会运行持续集成（CI）测试，但不会将 Pull Request 发送给审阅者。你可以通过向人们发送 Pull Request 链接来让他们查看它。你可以用此选项来查看你的 Pull Request 如何在将其发送以供审核之前通过 CI 测试。无法合并草稿 Pull Request。
 
    1. A pull request runs the continuous integration \(CI\) testing and sends your pull request to reviewers to review and merge.
 
-      Pull Request 运行持续集成 (CI) 测试，并将你的 Pull Request 发送给审阅者以查看和合并。
+      Pull Request 运行持续集成（CI）测试，并将你的 Pull Request 发送给审阅者以查看和合并。
 
       <div class="alert is-helpful">
 

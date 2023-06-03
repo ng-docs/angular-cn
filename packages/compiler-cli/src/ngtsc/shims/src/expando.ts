@@ -141,7 +141,7 @@ export function isFileShimSourceFile(sf: ts.SourceFile): sf is NgFileShimSourceF
 }
 
 /**
- * Check whether `sf` is a shim `ts.SourceFile` (either a per-file shim or a top-level shim).
+ * Check whether `sf` is a shim `ts.SourceFile` \(either a per-file shim or a top-level shim\).
  *
  * 检查 `sf` 是否是 shim `ts.SourceFile`（每个文件的 shim 或顶级 shim）。
  *

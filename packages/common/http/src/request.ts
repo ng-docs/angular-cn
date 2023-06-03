@@ -152,17 +152,19 @@ export class HttpRequest<T> {
    *
    * 该请求是否应该暴露出进度事件。
    *
-   * Progress events are expensive (change detection runs on each event) and so
+   * Progress events are expensive \(change detection runs on each event\) and so
    * they should only be requested if the consumer intends to monitor them.
    *
    * 进度事件很昂贵（在每个事件中都会执行一次变更检测），所以只有当消费者关心这些事件时才应该请求这些进度事件。
+   *
    */
   readonly reportProgress: boolean = false;
 
   /**
-   * Whether this request should be sent with outgoing credentials (cookies).
+   * Whether this request should be sent with outgoing credentials \(cookies\).
    *
    * 此请求是否应该带着凭证（Cookie）一起外发。
+   *
    */
   readonly withCredentials: boolean = false;
 

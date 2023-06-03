@@ -24,9 +24,9 @@ To have a localized version of Angular documentation listed on [angular.io](http
 
 要在[angular.io](https://angular.io)上列出本地化版本的 Angular 文档，你必须：
 
-* Be an Angular [Google Developer Expert (GDE)](https://developers.google.com/community/experts)
+* Be an Angular [Google Developer Expert \(GDE\)](https://developers.google.com/community/experts)
 
-  成为 Angular [Google 开发人员专家 (GDE)](https://developers.google.com/community/experts)
+  成为 Angular [Google 开发人员专家（GDE）](https://developers.google.com/community/experts)
 
 * Have an Angular GDE nominate you for localizing the content
 
