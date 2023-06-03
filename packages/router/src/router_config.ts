@@ -49,7 +49,7 @@ export type ErrorHandler = (error: any) => any;
  *   The bootstrap is blocked until the initial navigation is complete. This value is required
  *   for [server-side rendering](guide/universal) to work.
  *
- *   'enabledBlocking' - 初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务器渲染](guide/universal)正常工作所必需的。
+ *   'enabledBlocking' - 初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务端渲染](guide/universal)正常工作所必需的。
  *
  * * 'disabled' - The initial navigation is not performed. The location listener is set up before
  *   the root component gets created. Use if there is a reason to have

@@ -14,7 +14,7 @@ import {PLATFORM_SERVER_PROVIDERS} from './server';
 /**
  * Sets up providers necessary to enable server rendering functionality for the application.
  *
- * 设置为应用程序启用服务器渲染功能所需的提供程序。
+ * 设置为应用程序启用服务端渲染功能所需的提供程序。
  *
  * @usageNotes
  *

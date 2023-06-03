@@ -149,7 +149,7 @@ function generateHash(value: string): string {
  * By default, when using server rendering, requests are performed twice: once on the server and
  * other one on the browser.
  *
- * 默认情况下，当使用服务器渲染时，请求执行两次：一次在服务器上，另一次在浏览器上。
+ * 默认情况下，当使用服务端渲染时，请求执行两次：一次在服务器上，另一次在浏览器上。
  *
  * When these providers are added, requests performed on the server are cached and reused during the
  * bootstrapping of the application in the browser thus avoiding duplicate requests and reducing

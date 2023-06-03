@@ -392,7 +392,7 @@ For example, the component might render first on the server as part of a strateg
 The server-side renderer might not support the full HTML element API.
 If it doesn't support `querySelector`, the previous test could fail.
 
-比如，作为优化策略的一部分，该组件可能会首先在服务器上渲染，以便在连接不良的设备上更快地启动本应用。服务端渲染器可能不支持完整的 HTML 元素 API。如果它不支持 `querySelector`，之前的测试就会失败。
+比如，作为优化策略的一部分，该组件可能会首先在服务端渲染，以便在连接不良的设备上更快地启动本应用。服务端渲染器可能不支持完整的 HTML 元素 API。如果它不支持 `querySelector`，之前的测试就会失败。
 
 The `DebugElement` offers query methods that work for all supported platforms.
 These query methods take a *predicate* function that returns `true` when a node in the `DebugElement` tree matches the selection criteria.
