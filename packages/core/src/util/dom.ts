@@ -64,7 +64,7 @@ const COMMENT_DELIMITER_ESCAPED = '\u200B$1\u200B';
  *
  * 此函数通过查找注释分隔符（`<` 和 `>`）并用 `_>_` 包围它们来转译注释文本，其中 `_` 是零宽度空格
  * `\u200B` 。结果是，如果注释包含任何注释开始/结束分隔符（例如 `<!--`、`-->` 或 `--!>`
- * ），它将正常呈现文本，但不会导致 HTML 解析器关闭/打开评论。
+ * ），它将正常渲染文本，但不会导致 HTML 解析器关闭/打开评论。
  *
  * @param value text to make safe for comment node by escaping the comment open/close character
  *     sequence.

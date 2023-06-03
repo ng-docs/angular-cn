@@ -495,7 +495,7 @@ class TcbTemplateBodyOp extends TcbOp {
 /**
  * A `TcbOp` which renders a text binding \(interpolation\) into the TCB.
  *
- * 一个 `TcbOp` ，它将文本绑定（插值）呈现到 TCB 中。
+ * 一个 `TcbOp` ，它将文本绑定（插值）渲染到 TCB 中。
  *
  * Executing this operation returns nothing.
  *

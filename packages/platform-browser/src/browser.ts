@@ -42,7 +42,7 @@ export {ApplicationConfig};
    * application's root component. More information about standalone components can be found in [this
    * guide](guide/standalone-components).
    *
-   * 引导 Angular 应用程序的实例，并将独立组件呈现为应用程序的根组件。有关独立组件的更多信息，请参阅[本指南](guide/standalone-components)。
+   * 引导 Angular 应用程序的实例，并将独立组件渲染为应用程序的根组件。有关独立组件的更多信息，请参阅[本指南](guide/standalone-components)。
    *
    * @usageNotes
    *

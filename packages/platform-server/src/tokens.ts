@@ -89,7 +89,7 @@ export const INITIAL_CONFIG = new InjectionToken<PlatformConfig>('Server.INITIAL
  * A function that will be executed when calling `renderApplication` or
  * `renderModule` just before current platform state is rendered to string.
  *
- * 在当前平台状态呈现为字符串之前调用 `renderApplication` 或 `renderModule` 时将执行的函数。
+ * 在当前平台状态渲染为字符串之前调用 `renderApplication` 或 `renderModule` 时将执行的函数。
  *
  * @publicApi
  */

@@ -123,7 +123,7 @@ export class RouterTestingHarness {
    * components. The root component is reused within the same test in subsequent calls to
    * `navigateForTest`.
    *
-   * 具有为线束创建的 `RouterOutlet` 的根组件用于呈现 `Route` 组件。 在对 `navigateForTest` 后续调用中，根组件在同一测试中重复使用。
+   * 具有为线束创建的 `RouterOutlet` 的根组件用于渲染 `Route` 组件。 在对 `navigateForTest` 后续调用中，根组件在同一测试中重复使用。
    *
    * When testing `Routes` with a guards that reject the navigation, the `RouterOutlet` might not be
    * activated and the `activatedComponent` may be `null`.
@@ -153,7 +153,7 @@ export class RouterTestingHarness {
    * The root component with a `RouterOutlet` created for the harness is used to render `Route`
    * components.
    *
-   * 具有为线束创建的 `RouterOutlet` 的根组件用于呈现 `Route` 组件。
+   * 具有为线束创建的 `RouterOutlet` 的根组件用于渲染 `Route` 组件。
    *
    * {@example router/testing/test/router_testing_harness_examples.spec.ts region='RoutedComponent'}
    *

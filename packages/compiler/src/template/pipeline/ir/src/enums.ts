@@ -45,7 +45,7 @@ export enum OpKind {
   /**
    * An operation to begin rendering of an element.
    *
-   * 开始呈现元素的操作。
+   * 开始渲染元素的操作。
    *
    */
   ElementStart,
@@ -69,7 +69,7 @@ export enum OpKind {
   /**
    * An operation to end rendering of an element previously started with `ElementStart`.
    *
-   * 结束之前使用 `ElementStart` 开始的元素呈现的操作。
+   * 结束之前使用 `ElementStart` 开始的元素渲染的操作。
    *
    */
   ElementEnd,

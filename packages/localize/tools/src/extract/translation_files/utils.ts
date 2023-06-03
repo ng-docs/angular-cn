@@ -19,7 +19,7 @@ import {MessageId, ɵParsedMessage, ɵSourceLocation} from '@angular/localize';
  *
  * To ensure that messages are rendered in a deterministic order:
  *
- * 为确保消息以确定的顺序呈现：
+ * 为确保消息以确定的顺序渲染：
  *
  * - the messages within a group are sorted by location \(file path, then start position\)
  *

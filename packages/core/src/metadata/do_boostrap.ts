@@ -31,7 +31,7 @@ import {ApplicationRef} from '../application_ref';
  * The example below uses `ApplicationRef.bootstrap()` to render the
  * `AppComponent` on the page.
  *
- * 下面的示例使用 `ApplicationRef.bootstrap()` 来在页面上呈现 `AppComponent` 。
+ * 下面的示例使用 `ApplicationRef.bootstrap()` 来在页面上渲染 `AppComponent` 。
  *
  * ```typescript
  * class AppModule implements DoBootstrap {

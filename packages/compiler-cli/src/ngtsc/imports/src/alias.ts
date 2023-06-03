@@ -66,7 +66,7 @@ export interface AliasingHost {
   /**
    * Controls whether any alias re-exports are rendered into .d.ts files.
    *
-   * 控制是否将任何别名重新导出呈现到 .d.ts 文件中。
+   * 控制是否将任何别名重新导出渲染到 .d.ts 文件中。
    *
    * This is not always necessary for aliasing to function correctly, so this flag allows an
    * `AliasingHost` to avoid cluttering the .d.ts files if exports are not strictly needed.

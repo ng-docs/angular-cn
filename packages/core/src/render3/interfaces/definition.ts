@@ -442,7 +442,7 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
   /**
    * A set of styles that the component needs to be present for component to render correctly.
    *
-   * 组件需要存在的一组样式，以便组件正确呈现。
+   * 组件需要存在的一组样式，以便组件正确渲染。
    *
    */
   readonly styles: string[];

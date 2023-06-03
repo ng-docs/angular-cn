@@ -236,7 +236,7 @@ export interface LView<T = unknown> extends Array<any> {
    * - For dynamic views, this is the context with which to render the template \(e.g.
    *   `NgForContext`\), or `{}` if not defined explicitly.
    *
-   *   对于动态视图，这是用于呈现模板的上下文（例如 `NgForContext` ），如果未明确定义，则为 `{}` 。
+   *   对于动态视图，这是用于渲染模板的上下文（例如 `NgForContext` ），如果未明确定义，则为 `{}` 。
    *
    * - For root view of the root component it's a reference to the component instance itself.
    *
@@ -1108,7 +1108,7 @@ export interface TView {
    * It's necessary to keep a copy of the full def list on the TView so it's possible
    * to render template functions without a host component.
    *
-   * 有必要在 TView 上保留一份完整的 def 列表，这样就可以在没有宿主组件的情况下呈现模板函数。
+   * 有必要在 TView 上保留一份完整的 def 列表，这样就可以在没有宿主组件的情况下渲染模板函数。
    *
    */
   directiveRegistry: DirectiveDefList|null;
@@ -1126,7 +1126,7 @@ export interface TView {
    * It's necessary to keep a copy of the full def list on the TView so it's possible
    * to render template functions without a host component.
    *
-   * 有必要在 TView 上保留一份完整的 def 列表，这样就可以在没有宿主组件的情况下呈现模板函数。
+   * 有必要在 TView 上保留一份完整的 def 列表，这样就可以在没有宿主组件的情况下渲染模板函数。
    *
    */
   pipeRegistry: PipeDefList|null;

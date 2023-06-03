@@ -130,7 +130,7 @@ function getSourceSpan(message: i18n.Message): ParseSourceSpan {
  * One contains the literal string pieces and the other the placeholders that will be replaced by
  * expressions when rendering `$localize` tagged template literals.
  *
- * 一个包含文字字符串，另一个包含在呈现 `$localize` 标记的模板文字时将被表达式替换的占位符。
+ * 一个包含文字字符串，另一个包含在渲染 `$localize` 标记的模板文字时将被表达式替换的占位符。
  *
  * @param pieces The pieces to process.
  *

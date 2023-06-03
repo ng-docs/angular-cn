@@ -101,7 +101,7 @@ export interface MessageMetadata {
   /**
    * A human readable rendering of the message
    *
-   * 消息的人类可读呈现
+   * 消息的人类可读渲染
    *
    */
   text: string;

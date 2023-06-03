@@ -383,7 +383,7 @@ function createRootComponentTNode(lView: LView, rNode: RNode): TElementNode {
  *
  * @param hostRNode Render host element.
  *
- * 呈现宿主元素。
+ * 渲染宿主元素。
  *
  * @param rootComponentDef ComponentDef
  * @param rootView The parent view where the host node is stored

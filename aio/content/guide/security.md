@@ -261,7 +261,7 @@ When serving your Angular application, the server should include a  randomly-gen
 You must provide this nonce to Angular so that the framework can render `<style>` elements.
 You can set the nonce for Angular in one of two ways:
 
-在为 Angular 应用程序提供服务时，服务器应在每个请求的 HTTP 标头中包含一个随机生成的随机数。 你必须向 Angular 提供此随机数，以便框架可以呈现 `<style>` 元素。 你可以通过以下两种方式之一为 Angular 设置随机数：
+在为 Angular 应用程序提供服务时，服务器应在每个请求的 HTTP 标头中包含一个随机生成的随机数。 你必须向 Angular 提供此随机数，以便框架可以渲染 `<style>` 元素。 你可以通过以下两种方式之一为 Angular 设置随机数：
 
 1. Set the `ngCspNonce` attribute on the root application element as `<app ngCspNonce="randomNonceGoesHere"></app>`. Use this approach if you have access to server-side templating that can add the nonce both to the header and the `index.html` when constructing the response.
 

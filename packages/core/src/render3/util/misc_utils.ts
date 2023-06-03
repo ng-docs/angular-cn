@@ -52,7 +52,7 @@ export function ɵɵresolveBody(element: RElement&{ownerDocument: Document}) {
  * This character is typically rendered as a question mark inside of a diamond.
  * See [https://en.wikipedia.org/wiki/Specials\_\(Unicode_block](<https://en.wikipedia.org/wiki/Specials_(Unicode_block>)\)
  *
- * 此字符通常呈现为钻石内的问号。请参阅 [https://en.wikipedia.org/wiki/Specials\_\(Unicode_block](<https://en.wikipedia.org/wiki/Specials_(Unicode_block>) \)
+ * 此字符通常渲染为钻石内的问号。请参阅 [https://en.wikipedia.org/wiki/Specials\_\(Unicode_block](<https://en.wikipedia.org/wiki/Specials_(Unicode_block>) \)
  *
  */
 export const INTERPOLATION_DELIMITER = `�`;

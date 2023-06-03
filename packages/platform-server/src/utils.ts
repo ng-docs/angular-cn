@@ -154,11 +154,11 @@ function sanitizeServerContext(serverContext: string): string {
  * - `document` - the document of the page to render, either as an HTML string or
  *                as a reference to the `document` instance.
  *
- *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *   `document` - 要渲染的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
  *
  * - `url` - the URL for the current render request.
  *
- *   `url` - 当前呈现请求的 URL。
+ *   `url` - 当前渲染请求的 URL。
  *
  * - `extraProviders` - set of platform level providers for the current render request.
  *
@@ -181,7 +181,7 @@ export async function renderModule<T>(moduleType: Type<T>, options: {
 /**
  * Bootstraps an instance of an Angular application and renders it to a string.
  *
- * 引导 Angular 应用程序的实例并将其呈现为字符串。
+ * 引导 Angular 应用程序的实例并将其渲染为字符串。
  *
  * ```typescript
  * const bootstrap = () => bootstrapApplication(RootComponent, appConfig);
@@ -200,11 +200,11 @@ export async function renderModule<T>(moduleType: Type<T>, options: {
  * - `document` - the document of the page to render, either as an HTML string or
  *                as a reference to the `document` instance.
  *
- *   `document` - 要呈现的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
+ *   `document` - 要渲染的页面的文档，可以是 HTML 字符串，也可以是对 `document` 实例的引用。
  *
  * - `url` - the URL for the current render request.
  *
- *   `url` - 当前呈现请求的 URL。
+ *   `url` - 当前渲染请求的 URL。
  *
  * - `platformProviders` - the platform level providers for the current render request.
  *
@@ -213,7 +213,7 @@ export async function renderModule<T>(moduleType: Type<T>, options: {
  *
  * A Promise, that returns serialized \(to a string\) rendered page, once resolved.
  *
- * 一个承诺，一旦解决，它就会返回序列化（到一个字符串）呈现的页面。
+ * 一个承诺，一旦解决，它就会返回序列化（到一个字符串）渲染的页面。
  *
  * @publicApi
  * @developerPreview

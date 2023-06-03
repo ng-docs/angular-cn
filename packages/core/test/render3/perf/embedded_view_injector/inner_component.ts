@@ -16,7 +16,7 @@ import {InjectorComp} from './injector_component';
  * between the root and where the template with the injector component will be rendered.
  * Template corresponds to:
  *
- * 创建一个将在主应用程序中呈现的组件，该组件在根和带有注入器组件的模板将被呈现的位置之间添加几层元素。模板对应于：
+ * 创建一个将在主应用程序中渲染的组件，该组件在根和带有注入器组件的模板将被渲染的位置之间添加几层元素。模板对应于：
  *
  * <div>
  *   <div>

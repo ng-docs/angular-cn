@@ -139,7 +139,7 @@ function whenStable(appRef: ApplicationRef, injector: Injector): Promise<void> {
  * included into the `provideClientHydration` public API function from
  * the `platform-browser` package.
  *
- * 返回为服务器端呈现的应用程序设置水合支持所需的一组提供程序。 该函数包含在 `platform-browser` 包中的 `provideClientHydration` 公共 API 函数中。
+ * 返回为服务器端渲染的应用程序设置水合支持所需的一组提供程序。 该函数包含在 `platform-browser` 包中的 `provideClientHydration` 公共 API 函数中。
  *
  * The function sets up an internal flag that would be recognized during
  * the server side rendering time as well, so there is no need to

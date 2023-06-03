@@ -99,7 +99,7 @@ export function ɵgetUnknownPropertyStrictMode() {
  *
  * @param lView An `LView` that represents a current component that is being rendered
  *
- * 代表正在呈现的当前组件的 `LView`
+ * 代表正在渲染的当前组件的 `LView`
  *
  * @param tagName Name of the tag to check
  *
@@ -314,7 +314,7 @@ export function reportUnknownPropertyError(message: string) {
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
- * 表示正在呈现的当前组件的 `LView` 。
+ * 表示正在渲染的当前组件的 `LView` 。
  *
  */
 export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|null {
@@ -342,7 +342,7 @@ export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
- * 表示正在呈现的当前组件的 `LView` 。
+ * 表示正在渲染的当前组件的 `LView` 。
  *
  */
 export function isHostComponentStandalone(lView: LView): boolean {
@@ -367,7 +367,7 @@ export function isHostComponentStandalone(lView: LView): boolean {
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
- * 表示正在呈现的当前组件的 `LView` 。
+ * 表示正在渲染的当前组件的 `LView` 。
  *
  */
 export function getTemplateLocationDetails(lView: LView): string {

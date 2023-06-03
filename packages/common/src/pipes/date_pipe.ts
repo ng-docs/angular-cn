@@ -99,7 +99,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * Note that mutating a `Date` object does not cause the pipe to be rendered again.
  * To ensure that the pipe is executed, you must create a new `Date` object.
  *
- * 请注意，更改 `Date` 对象不会导致管道再次呈现。为确保管道被执行，你必须创建一个新的 `Date` 对象。
+ * 请注意，更改 `Date` 对象不会导致管道再次渲染。为确保管道被执行，你必须创建一个新的 `Date` 对象。
  *
  * Only the `en-US` locale data comes with Angular. To localize dates
  * in another language, you must import the corresponding locale data.

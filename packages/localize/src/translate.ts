@@ -51,8 +51,8 @@ declare const $localize: LocalizeFn&{TRANSLATIONS: Record<MessageId, ParsedTrans
  * translation files when extracting messages. In particular, placeholders in messages are rendered
  * using the `{$PLACEHOLDER_NAME}` syntax. For example the message from the following template:
  *
- * 消息 ID 和翻译的格式与提取消息时呈现为“简单 JSON”翻译文件的格式相同。特别是，消息中的占位符是使用
- * `{$PLACEHOLDER_NAME}` 语法呈现的。例如来自以下模板的消息：
+ * 消息 ID 和翻译的格式与提取消息时渲染为“简单 JSON”翻译文件的格式相同。特别是，消息中的占位符是使用
+ * `{$PLACEHOLDER_NAME}` 语法渲染的。例如来自以下模板的消息：
  *
  * ```html
  * <div i18n>pre<span>inner-pre<b>bold</b>inner-post</span>post</div>

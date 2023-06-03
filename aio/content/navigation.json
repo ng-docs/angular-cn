@@ -606,7 +606,7 @@
           "title": "Hydration",
           "tooltip": "How to enable hydration on your server rendered applications.",
           "titleCn": "补水",
-          "tooltipCn": "如何在服务器呈现的应用程序上启用水合作用。"
+          "tooltipCn": "如何在服务器渲染的应用程序上启用水合作用。"
         },
         {
           "url": "guide/image-directive",

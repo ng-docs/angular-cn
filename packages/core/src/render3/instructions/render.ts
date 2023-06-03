@@ -164,7 +164,7 @@ export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
 /**
  * Renders child components in the current view \(creation mode\).
  *
- * 在当前视图（创建模式）中呈现子组件。
+ * 在当前视图（创建模式）中渲染子组件。
  *
  */
 function renderChildComponents(hostLView: LView, components: number[]): void {

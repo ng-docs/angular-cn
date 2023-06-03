@@ -10,7 +10,7 @@ import {ɵParsedMessage} from '@angular/localize';
 /**
  * Implement this interface to provide a class that can render messages into a translation file.
  *
- * 实现此接口以提供一个可以将消息呈现到翻译文件中的类。
+ * 实现此接口以提供一个可以将消息渲染到翻译文件中的类。
  *
  */
 export interface TranslationSerializer {
@@ -21,7 +21,7 @@ export interface TranslationSerializer {
    *
    * @param messages The messages to render to the file.
    *
-   * 要呈现到文件的消息。
+   * 要渲染到文件的消息。
    *
    * @returns
    *

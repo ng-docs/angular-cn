@@ -53,7 +53,7 @@ function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
  * Disables DOM nodes reuse during hydration. Effectively makes
  * Angular re-render an application from scratch on the client.
  *
- * 在水合作用期间禁用 DOM 节点重用。 有效地使 Angular 在客户端从头开始重新呈现应用程序。
+ * 在水合作用期间禁用 DOM 节点重用。 有效地使 Angular 在客户端从头开始重新渲染应用程序。
  *
  * When this option is enabled, make sure that the initial navigation
  * option is configured for the Router as `enabledBlocking` by using the

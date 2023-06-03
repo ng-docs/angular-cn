@@ -22,7 +22,7 @@ import {getTemplateMapping, TemplateSourceResolver} from './tcb_util';
  *
  * 将节点包装在括号中，以便插入的 span 注释附加到正确的节点。这是
  * `ts.factory.createParenthesizedExpression`
- * 的别名，其好处是它表明插入的括号用于诊断目的，而不是为了呈现的 TCB 代码的正确性。
+ * 的别名，其好处是它表明插入的括号用于诊断目的，而不是为了渲染的 TCB 代码的正确性。
  *
  * Note that it is important that nodes and its attached comment are not wrapped into parenthesis
  * by default, as it prevents correct translation of e.g. diagnostics produced for incorrect method
@@ -44,7 +44,7 @@ export function wrapForDiagnostics(expr: ts.Expression): ts.Expression {
  *
  * 将节点包装在括号中，以便插入的 span 注释附加到正确的节点。这是
  * `ts.factory.createParenthesizedExpression`
- * 的别名，其好处是它表明插入的括号是供类型检查器使用的，而不是为了呈现的 TCB 代码的正确性。
+ * 的别名，其好处是它表明插入的括号是供类型检查器使用的，而不是为了渲染的 TCB 代码的正确性。
  *
  */
 export function wrapForTypeChecker(expr: ts.Expression): ts.Expression {

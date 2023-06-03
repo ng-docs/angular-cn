@@ -67,7 +67,7 @@ export function ɵɵhostProperty<T>(
  * triggers are defined\).
  *
  * 本操作指南是出于兼容性目的，旨在确保合成宿主绑定（例如 `@HostBinding('@foo')`
- * ）在组件的渲染器中正确呈现。通常，所有宿主绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
+ * ）在组件的渲染器中正确渲染。通常，所有宿主绑定都是使用父组件的渲染器进行估算的，但是，对于动画 @triggers
  * ，它们需要使用子组件的渲染器进行估算（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `elementProperty`. This instruction

@@ -127,7 +127,7 @@ export interface TranslateFn {
  * expression. These placeholder names are stripped out of the rendered localized string.
  *
  * 通过在表达式之后直接提供用 `:`
- * 字符包装的占位符名称来实现。这些占位符名称会从呈现的本地化字符串中删除。
+ * 字符包装的占位符名称来实现。这些占位符名称会从渲染的本地化字符串中删除。
  *
  * For example, to name the `items.length` expression placeholder `itemCount` you write:
  *

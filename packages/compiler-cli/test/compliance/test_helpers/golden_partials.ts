@@ -20,7 +20,7 @@ const headerEnd =
  *
  * @param files The partially compiled files to be rendered.
  *
- * 要呈现的部分编译的文件。
+ * 要渲染的部分编译的文件。
  *
  */
 export function renderGoldenPartial(files: PartiallyCompiledFile[]): string {
