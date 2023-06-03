@@ -82,7 +82,7 @@ function addBody<T>(
  *
  * Sample HTTP requests for the [Tour of Heroes](/tutorial/tour-of-heroes/toh-pt0) application.
  *
- * [“英雄之旅”](/tutorial/toh-pt0)应用程序的示例 HTTP 请求。
+ * [“英雄之旅”](/tutorial/tour-of-heroes/toh-pt0)应用程序的示例 HTTP 请求。
  *
  * ### HTTP Request Example
  *
